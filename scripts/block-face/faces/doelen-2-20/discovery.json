@@ -1,0 +1,680 @@
+{
+ "street": "Oude Doelenstraat",
+ "seed": "0363100012178753",
+ "members": [
+  "0363100012178828",
+  "0363100012178826",
+  "0363100012178830",
+  "0363100012178829",
+  "0363100012178827",
+  "0363100012178824",
+  "0363100012178755",
+  "0363100012178754",
+  "0363100012178753"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012178753 (face continues: 171240)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165293",
+   "reason": "frontage 30.3 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012165369",
+   "reason": "frontage 68.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012167473",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012167915",
+   "reason": "frontage 76.5 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012167916",
+   "reason": "frontage 80.6 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171201",
+   "reason": "frontage 35.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171202",
+   "reason": "frontage 47.8 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171203",
+   "reason": "frontage 48.5 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171238",
+   "reason": "frontage 37.5 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171239",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178753"
+  },
+  {
+   "pandId": "0363100012171241",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012171239"
+  },
+  {
+   "pandId": "0363100012178646",
+   "reason": "frontage 73.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178649",
+   "reason": "frontage 79.8 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178657",
+   "reason": "frontage 61.0 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012165371",
+   "reason": "frontage 77.9 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171204",
+   "reason": "frontage 50.4 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171205",
+   "reason": "frontage 38.6 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171206",
+   "reason": "frontage 48.0 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171207",
+   "reason": "frontage 61.6 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171208",
+   "reason": "frontage 48.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171209",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171210",
+   "reason": "frontage 46.4 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171211",
+   "reason": "frontage 41.0 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171212",
+   "reason": "frontage 46.4 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171213",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171214",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171215",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171235",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171236",
+   "reason": "frontage 42.8 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171237",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171242",
+   "reason": "frontage 94.4 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171243",
+   "reason": "frontage 89.5 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171244",
+   "reason": "frontage 110.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171245",
+   "reason": "frontage 52.5 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171246",
+   "reason": "frontage 61.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171247",
+   "reason": "frontage 65.2 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171249",
+   "reason": "frontage 56.6 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171250",
+   "reason": "frontage 62.6 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171251",
+   "reason": "frontage 51.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171253",
+   "reason": "frontage 51.3 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171789",
+   "reason": "frontage 103.2 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171792",
+   "reason": "frontage 109.2 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178640",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178641",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178643",
+   "reason": "frontage 50.9 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178644",
+   "reason": "frontage 50.9 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178645",
+   "reason": "frontage 47.6 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178647",
+   "reason": "frontage 68.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178656",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178658",
+   "reason": "frontage 55.0 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178661",
+   "reason": "frontage 33.4 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178662",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178826"
+  },
+  {
+   "pandId": "0363100012178663",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178828"
+  },
+  {
+   "pandId": "0363100012178738",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178751"
+  },
+  {
+   "pandId": "0363100012178739",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178738"
+  },
+  {
+   "pandId": "0363100012178740",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178739"
+  },
+  {
+   "pandId": "0363100012178741",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178739"
+  },
+  {
+   "pandId": "0363100012178748",
+   "reason": "frontage 32.2 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178825",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178662"
+  },
+  {
+   "pandId": "0363100012178918",
+   "reason": "frontage 72.4 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178659",
+   "reason": "frontage 38.3 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178660",
+   "reason": "frontage 34.3 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178732",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178733",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178735",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178734"
+  },
+  {
+   "pandId": "0363100012178736",
+   "reason": "frontage 31.5 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178737",
+   "reason": "frontage 36.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178743",
+   "reason": "frontage 30.9 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178744",
+   "reason": "frontage 42.3 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178745",
+   "reason": "frontage 36.2 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178746",
+   "reason": "frontage 56.3 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178749",
+   "reason": "frontage 37.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178750",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178832"
+  },
+  {
+   "pandId": "0363100012178834",
+   "reason": "frontage 47.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178835",
+   "reason": "frontage 36.4 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178836",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178837",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178750"
+  },
+  {
+   "pandId": "0363100012178838",
+   "reason": "sightline to Oude Doelenstraat crosses 0363100012178750"
+  },
+  {
+   "pandId": "0363100012178842",
+   "reason": "frontage 102.5 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178843",
+   "reason": "frontage 102.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178910",
+   "reason": "frontage 102.8 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178915",
+   "reason": "frontage 70.0 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178916",
+   "reason": "frontage 81.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178917",
+   "reason": "frontage 85.0 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178920",
+   "reason": "frontage 79.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179958",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179959",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179960",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180029",
+   "reason": "frontage 65.8 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180030",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180031",
+   "reason": "frontage 70.4 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180032",
+   "reason": "frontage 72.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180033",
+   "reason": "frontage 74.8 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180034",
+   "reason": "frontage 72.4 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180035",
+   "reason": "frontage 61.6 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180036",
+   "reason": "frontage 40.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180037",
+   "reason": "frontage 38.2 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180038",
+   "reason": "frontage 43.5 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180039",
+   "reason": "frontage 37.3 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180040",
+   "reason": "frontage 65.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180138",
+   "reason": "frontage 55.4 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180139",
+   "reason": "frontage 77.9 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180140",
+   "reason": "frontage 75.2 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180142",
+   "reason": "frontage 48.8 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180143",
+   "reason": "frontage 41.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180144",
+   "reason": "frontage 51.9 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180145",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180146",
+   "reason": "frontage 47.6 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180147",
+   "reason": "frontage 34.8 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180148",
+   "reason": "frontage 32.4 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180212",
+   "reason": "frontage 45.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180213",
+   "reason": "frontage 34.3 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180214",
+   "reason": "frontage 63.6 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180215",
+   "reason": "frontage 78.3 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180216",
+   "reason": "frontage 84.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180217",
+   "reason": "frontage 59.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180218",
+   "reason": "frontage 32.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180219",
+   "reason": "frontage 30.5 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180220",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180221",
+   "reason": "frontage 57.8 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180315",
+   "reason": "frontage 52.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180316",
+   "reason": "frontage 66.1 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180317",
+   "reason": "frontage 52.2 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180384",
+   "reason": "frontage 35.0 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180385",
+   "reason": "no frontage on Oude Doelenstraat: No footprint edge faces Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180386",
+   "reason": "frontage 94.7 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012186196",
+   "reason": "frontage 94.9 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012250980",
+   "reason": "frontage 52.6 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012250981",
+   "reason": "frontage 79.5 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012250983",
+   "reason": "frontage 83.3 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178921",
+   "reason": "frontage 75.9 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178928",
+   "reason": "frontage 98.2 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178930",
+   "reason": "frontage 93.6 m from Oude Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178751",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178832",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178833",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178734",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178831",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178839",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012178828",
+   "alongM": -38.26,
+   "widthM": 5.15,
+   "eavesM": 9.04,
+   "roofMaxM": 12.45,
+   "storeys3dbag": 0,
+   "builtYear": 1650,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012178826",
+   "alongM": -34.06,
+   "widthM": 3.26,
+   "eavesM": 12.42,
+   "roofMaxM": 13.1,
+   "storeys3dbag": 4,
+   "builtYear": 1708,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178830",
+   "alongM": -30.73,
+   "widthM": 3.4,
+   "eavesM": 10.73,
+   "roofMaxM": 13.28,
+   "storeys3dbag": 4,
+   "builtYear": 1725,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178829",
+   "alongM": -27.43,
+   "widthM": 3.21,
+   "eavesM": 11.02,
+   "roofMaxM": 18.03,
+   "storeys3dbag": 4,
+   "builtYear": 1735,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178827",
+   "alongM": -22.76,
+   "widthM": 6.12,
+   "eavesM": 15.34,
+   "roofMaxM": 19.09,
+   "storeys3dbag": 5,
+   "builtYear": 1717,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178824",
+   "alongM": -17.62,
+   "widthM": 4.16,
+   "eavesM": 13.82,
+   "roofMaxM": 16.18,
+   "storeys3dbag": 5,
+   "builtYear": 1704,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178755",
+   "alongM": -12.15,
+   "widthM": 6.77,
+   "eavesM": 11.5,
+   "roofMaxM": 14.47,
+   "storeys3dbag": 5,
+   "builtYear": 1701,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178754",
+   "alongM": -6.39,
+   "widthM": 4.76,
+   "eavesM": 12.42,
+   "roofMaxM": 14.32,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012178753",
+   "alongM": 0,
+   "widthM": 8.02,
+   "eavesM": 9.33,
+   "roofMaxM": 9.37,
+   "storeys3dbag": 0,
+   "builtYear": 1905,
+   "uncertainty": []
+  }
+ ]
+}

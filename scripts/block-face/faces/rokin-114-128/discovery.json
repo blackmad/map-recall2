@@ -1,0 +1,582 @@
+{
+ "street": "Rokin",
+ "seed": "0363100012168056",
+ "members": [
+  "0363100012175228",
+  "0363100012167997",
+  "0363100012168054",
+  "0363100012168057",
+  "0363100012168058",
+  "0363100012168059",
+  "0363100012168055",
+  "0363100012168056"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012175228 (face continues: 168053 175226 175227)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012168056 (face continues: 165109)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168144",
+   "reason": "frontage 77.2 m from Rokin"
+  },
+  {
+   "pandId": "0363100012168145",
+   "reason": "frontage 62.2 m from Rokin"
+  },
+  {
+   "pandId": "0363100012168146",
+   "reason": "frontage 99.3 m from Rokin"
+  },
+  {
+   "pandId": "0363100012168195",
+   "reason": "sightline to Rokin crosses 0363100012168288"
+  },
+  {
+   "pandId": "0363100012168196",
+   "reason": "sightline to Rokin crosses 0363100012175266"
+  },
+  {
+   "pandId": "0363100012168199",
+   "reason": "frontage 61.8 m from Rokin"
+  },
+  {
+   "pandId": "0363100012168200",
+   "reason": "sightline to Rokin crosses 0363100012168349"
+  },
+  {
+   "pandId": "0363100012168289",
+   "reason": "sightline to Rokin crosses 0363100012175267"
+  },
+  {
+   "pandId": "0363100012168320",
+   "reason": "sightline to Rokin crosses 0363100012175261"
+  },
+  {
+   "pandId": "0363100012168321",
+   "reason": "sightline to Rokin crosses 0363100012168319"
+  },
+  {
+   "pandId": "0363100012168325",
+   "reason": "sightline to Rokin crosses 0363100012168322"
+  },
+  {
+   "pandId": "0363100012167505",
+   "reason": "sightline to Rokin crosses 0363100012167997"
+  },
+  {
+   "pandId": "0363100012167506",
+   "reason": "frontage 56.8 m from Rokin"
+  },
+  {
+   "pandId": "0363100012167508",
+   "reason": "frontage 57.7 m from Rokin"
+  },
+  {
+   "pandId": "0363100012167509",
+   "reason": "frontage 31.0 m from Rokin"
+  },
+  {
+   "pandId": "0363100012167923",
+   "reason": "frontage 122.6 m from Rokin"
+  },
+  {
+   "pandId": "0363100012167925",
+   "reason": "frontage 101.2 m from Rokin"
+  },
+  {
+   "pandId": "0363100012167926",
+   "reason": "frontage 57.6 m from Rokin"
+  },
+  {
+   "pandId": "0363100012167927",
+   "reason": "frontage 57.6 m from Rokin"
+  },
+  {
+   "pandId": "0363100012167994",
+   "reason": "frontage 34.2 m from Rokin"
+  },
+  {
+   "pandId": "0363100012167998",
+   "reason": "sightline to Rokin crosses 0363100012167997"
+  },
+  {
+   "pandId": "0363100012167999",
+   "reason": "sightline to Rokin crosses 0363100012175228"
+  },
+  {
+   "pandId": "0363100012168172",
+   "reason": "frontage 46.6 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175019",
+   "reason": "frontage 82.7 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175020",
+   "reason": "frontage 78.9 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175021",
+   "reason": "frontage 75.5 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175022",
+   "reason": "frontage 56.4 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175023",
+   "reason": "frontage 57.2 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175024",
+   "reason": "frontage 83.9 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175025",
+   "reason": "frontage 57.7 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175225",
+   "reason": "sightline to Rokin crosses 0363100012175222"
+  },
+  {
+   "pandId": "0363100012175258",
+   "reason": "sightline to Rokin crosses 0363100012168319"
+  },
+  {
+   "pandId": "0363100012175259",
+   "reason": "sightline to Rokin crosses 0363100012168319"
+  },
+  {
+   "pandId": "0363100012175260",
+   "reason": "sightline to Rokin crosses 0363100012168319"
+  },
+  {
+   "pandId": "0363100012175262",
+   "reason": "sightline to Rokin crosses 0363100012175261"
+  },
+  {
+   "pandId": "0363100012175265",
+   "reason": "sightline to Rokin crosses 0363100012175261"
+  },
+  {
+   "pandId": "0363100012175466",
+   "reason": "frontage 59.9 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175467",
+   "reason": "frontage 88.0 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175468",
+   "reason": "frontage 84.4 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175469",
+   "reason": "frontage 58.4 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175470",
+   "reason": "frontage 77.0 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175471",
+   "reason": "frontage 92.4 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175472",
+   "reason": "frontage 61.1 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175473",
+   "reason": "frontage 101.2 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175487",
+   "reason": "frontage 34.7 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175488",
+   "reason": "frontage 59.4 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175489",
+   "reason": "frontage 61.3 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175490",
+   "reason": "sightline to Rokin crosses 0363100012168289"
+  },
+  {
+   "pandId": "0363100012175491",
+   "reason": "frontage 78.0 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175492",
+   "reason": "frontage 74.7 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175493",
+   "reason": "frontage 71.7 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175494",
+   "reason": "frontage 62.8 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175495",
+   "reason": "frontage 81.8 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175631",
+   "reason": "frontage 102.1 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175632",
+   "reason": "frontage 37.2 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175639",
+   "reason": "frontage 102.3 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175668",
+   "reason": "frontage 99.5 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175669",
+   "reason": "frontage 36.2 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175670",
+   "reason": "sightline to Rokin crosses 0363100012168288"
+  },
+  {
+   "pandId": "0363100012175726",
+   "reason": "sightline to Rokin crosses 0363100012168196"
+  },
+  {
+   "pandId": "0363100012175727",
+   "reason": "sightline to Rokin crosses 0363100012168289"
+  },
+  {
+   "pandId": "0363100012175728",
+   "reason": "sightline to Rokin crosses 0363100012168196"
+  },
+  {
+   "pandId": "0363100012175730",
+   "reason": "frontage 60.1 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175732",
+   "reason": "frontage 63.1 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175733",
+   "reason": "frontage 41.9 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175484",
+   "reason": "frontage 57.5 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175485",
+   "reason": "frontage 56.6 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175486",
+   "reason": "frontage 57.0 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175735",
+   "reason": "frontage 32.2 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175736",
+   "reason": "frontage 57.5 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175737",
+   "reason": "frontage 57.4 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175738",
+   "reason": "frontage 33.0 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176770",
+   "reason": "sightline to Rokin crosses 0363100012168350"
+  },
+  {
+   "pandId": "0363100012176771",
+   "reason": "frontage 33.2 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175739",
+   "reason": "frontage 81.0 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175740",
+   "reason": "frontage 77.4 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175741",
+   "reason": "frontage 57.9 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175742",
+   "reason": "frontage 34.3 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175743",
+   "reason": "frontage 32.8 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175744",
+   "reason": "frontage 31.8 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175876",
+   "reason": "frontage 85.3 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175877",
+   "reason": "frontage 122.5 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175878",
+   "reason": "frontage 122.1 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175881",
+   "reason": "frontage 104.4 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175883",
+   "reason": "frontage 103.9 m from Rokin"
+  },
+  {
+   "pandId": "0363100012175884",
+   "reason": "frontage 104.6 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176052",
+   "reason": "frontage 104.8 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176053",
+   "reason": "frontage 104.5 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176054",
+   "reason": "frontage 90.2 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176055",
+   "reason": "frontage 90.4 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176056",
+   "reason": "frontage 103.3 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176057",
+   "reason": "frontage 92.5 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176058",
+   "reason": "frontage 104.7 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176129",
+   "reason": "frontage 102.8 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176130",
+   "reason": "frontage 102.4 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176133",
+   "reason": "frontage 65.6 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176134",
+   "reason": "frontage 56.6 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176135",
+   "reason": "frontage 56.6 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176136",
+   "reason": "frontage 56.7 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176138",
+   "reason": "frontage 86.0 m from Rokin"
+  },
+  {
+   "pandId": "0363100012176764",
+   "reason": "frontage 58.5 m from Rokin"
+  },
+  {
+   "pandId": "0363100012247454",
+   "reason": "frontage 71.7 m from Rokin"
+  },
+  {
+   "pandId": "0363100012253551",
+   "reason": "frontage 31.1 m from Rokin"
+  },
+  {
+   "pandId": "0363100012165686",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168288",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168319",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168322",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168324",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168349",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168350",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175261",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175263",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175264",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175266",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175267",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175270",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253950",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012175228",
+   "alongM": -41.11,
+   "widthM": 3.43,
+   "eavesM": 17.13,
+   "roofMaxM": 18.44,
+   "storeys3dbag": 5,
+   "builtYear": 1804,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167997",
+   "alongM": -35.2,
+   "widthM": 3.98,
+   "eavesM": 13.78,
+   "roofMaxM": 15.67,
+   "storeys3dbag": 4,
+   "builtYear": 1756,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168054",
+   "alongM": -29.4,
+   "widthM": 4.02,
+   "eavesM": 13.94,
+   "roofMaxM": 16.41,
+   "storeys3dbag": 4,
+   "builtYear": 1711,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012168057",
+   "alongM": -23.91,
+   "widthM": 7.12,
+   "eavesM": 20.75,
+   "roofMaxM": 22.4,
+   "storeys3dbag": 0,
+   "builtYear": 1735,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168058",
+   "alongM": -17.95,
+   "widthM": 4.8,
+   "eavesM": 16.45,
+   "roofMaxM": 20,
+   "storeys3dbag": 5,
+   "builtYear": 1755,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168059",
+   "alongM": -12.57,
+   "widthM": 5.98,
+   "eavesM": 17.04,
+   "roofMaxM": 19.99,
+   "storeys3dbag": 4,
+   "builtYear": 1709,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012168055",
+   "alongM": -6.61,
+   "widthM": 5.95,
+   "eavesM": 17.25,
+   "roofMaxM": 20.17,
+   "storeys3dbag": 5,
+   "builtYear": 1733,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168056",
+   "alongM": 0,
+   "widthM": 7.27,
+   "eavesM": 14.53,
+   "roofMaxM": 14.68,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  }
+ ]
+}

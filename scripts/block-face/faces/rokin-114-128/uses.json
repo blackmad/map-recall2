@@ -1,0 +1,432 @@
+{
+ "street": "Rokin",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:50:42.430Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012175228",
+   "addresses": [
+    "Rokin 128A",
+    "Rokin 128B",
+    "Rokin 128C",
+    "Rokin 128D",
+    "Rokin 128E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 128A",
+     "use": "winkelfunctie",
+     "areaM2": 151,
+     "bagId": "0363010001007206"
+    },
+    {
+     "address": "Rokin 128B",
+     "use": "bijeenkomstfunctie,winkelfunctie",
+     "areaM2": 164,
+     "bagId": "0363010001007207"
+    },
+    {
+     "address": "Rokin 128C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001007208"
+    },
+    {
+     "address": "Rokin 128D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001007212"
+    },
+    {
+     "address": "Rokin 128E",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001007214"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167997",
+   "addresses": [
+    "Rokin 126A",
+    "Rokin 126C",
+    "Rokin 126D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 126A",
+     "use": "winkelfunctie",
+     "areaM2": 183,
+     "bagId": "0363010000795849"
+    },
+    {
+     "address": "Rokin 126C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000795850"
+    },
+    {
+     "address": "Rokin 126D",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000795851"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4212657874,
+     "lngLat": [
+      4.8920518,
+      52.3684703
+     ],
+     "tags": {
+      "check_date": "2024-05-10",
+      "name": "Agnis B.",
+      "shop": "clothes",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:50:42.430Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168054",
+   "addresses": [
+    "Rokin 124"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 124",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 229,
+     "bagId": "0363010003691682"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038559,
+     "lngLat": [
+      4.8920091,
+      52.3685164
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "124",
+      "addr:postcode": "1012LC",
+      "addr:street": "Rokin",
+      "contact:facebook": "BettyBTattoo",
+      "contact:instagram": "betty_b_amsterdam_official",
+      "disused:shop": "yes",
+      "email": "info@bettybamsterdam.nl",
+      "opening_hours": "Mo-Su 11:00-21:00",
+      "phone": "+31 20 7721219",
+      "shop": "tattoo",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://bettybamsterdam.nl"
+     },
+     "fetchedAt": "2026-11-10T08:50:42.430Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168057",
+   "addresses": [
+    "Rokin 122"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 122-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 435,
+     "bagId": "0363010000795842"
+    },
+    {
+     "address": "Rokin 122-2",
+     "use": "kantoorfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000795843"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4212657850,
+     "lngLat": [
+      4.8919679,
+      52.3685584
+     ],
+     "tags": {
+      "name": "Mathieu Hart",
+      "shop": "antiques",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:50:42.430Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168058",
+   "addresses": [
+    "Rokin 120A",
+    "Rokin 120B",
+    "Rokin 120C",
+    "Rokin 120D",
+    "Rokin 120E",
+    "Rokin 120F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 120A",
+     "use": "winkelfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001007768"
+    },
+    {
+     "address": "Rokin 120D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012146161"
+    },
+    {
+     "address": "Rokin 120E",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012146162"
+    },
+    {
+     "address": "Rokin 120F",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012146163"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4212657877,
+     "lngLat": [
+      4.8919483,
+      52.368615
+     ],
+     "tags": {
+      "amenity": "teeth_whitening",
+      "name": "Tandartspraktijk Wit"
+     },
+     "fetchedAt": "2026-11-10T08:50:42.430Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168059",
+   "addresses": [
+    "Rokin 118",
+    "Rokin 118A",
+    "Rokin 118B",
+    "Rokin 118C",
+    "Rokin 118D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 118",
+     "use": "winkelfunctie",
+     "areaM2": 728,
+     "bagId": "0363010000795840"
+    },
+    {
+     "address": "Rokin 118A",
+     "use": "winkelfunctie",
+     "areaM2": 311,
+     "bagId": "0363010012158900"
+    },
+    {
+     "address": "Rokin 118B",
+     "use": "kantoorfunctie",
+     "areaM2": 153,
+     "bagId": "0363010012158901"
+    },
+    {
+     "address": "Rokin 118C",
+     "use": "woonfunctie",
+     "areaM2": 221,
+     "bagId": "0363010012158902"
+    },
+    {
+     "address": "Rokin 118D",
+     "use": "woonfunctie",
+     "areaM2": 243,
+     "bagId": "0363010012158903"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038547,
+     "lngLat": [
+      4.891919,
+      52.3686564
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "118",
+      "addr:postcode": "1012LB",
+      "addr:street": "Rokin",
+      "name": "La Panetteria",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:50:42.430Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168055",
+   "addresses": [
+    "Rokin 116A",
+    "Rokin 116B",
+    "Rokin 116C",
+    "Rokin 116D",
+    "Rokin 116E",
+    "Rokin 116F",
+    "Rokin 116G",
+    "Rokin 116K",
+    "Rokin 116L",
+    "Rokin 116M"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 116A",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010001038973"
+    },
+    {
+     "address": "Rokin 116B",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001038974"
+    },
+    {
+     "address": "Rokin 116C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001038975"
+    },
+    {
+     "address": "Rokin 116D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001038976"
+    },
+    {
+     "address": "Rokin 116E",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010001038977"
+    },
+    {
+     "address": "Rokin 116F",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001038978"
+    },
+    {
+     "address": "Rokin 116G",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001038979"
+    },
+    {
+     "address": "Rokin 116K",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001038980"
+    },
+    {
+     "address": "Rokin 116L",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001038981"
+    },
+    {
+     "address": "Rokin 116M",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001038982"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4212657864,
+     "lngLat": [
+      4.8919166,
+      52.3687109
+     ],
+     "tags": {
+      "check_date": "2024-05-10",
+      "name": "Bofb",
+      "shop": "jewelry",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:50:42.430Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168056",
+   "addresses": [
+    "Rokin 114A",
+    "Rokin 114B",
+    "Rokin 114C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 114A",
+     "use": "kantoorfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000991282"
+    },
+    {
+     "address": "Rokin 114B",
+     "use": "kantoorfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000991283"
+    },
+    {
+     "address": "Rokin 114C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000991284"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

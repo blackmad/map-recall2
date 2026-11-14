@@ -1,0 +1,161 @@
+{
+ "street": "Kloveniersburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:10:42.687Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171200",
+   "addresses": [
+    "Kloveniersburgwal 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 50",
+     "use": "kantoorfunctie",
+     "areaM2": 2763,
+     "bagId": "0363010000708226"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11889572666,
+     "lngLat": [
+      4.8978529,
+      52.3703167
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:10:42.687Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    },
+    {
+     "type": "way",
+     "id": 267001354,
+     "lngLat": [
+      4.897604,
+      52.3704459
+     ],
+     "tags": {
+      "amenity": "theatre",
+      "building": "commercial",
+      "name": "Compagnietheater",
+      "ref:bag": "0363100012171200",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "start_date": "1793",
+      "wikidata": "Q1844809",
+      "wikimedia_commons": "Category:Compagnie Theater"
+     },
+     "fetchedAt": "2026-11-10T08:10:42.687Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165008",
+   "addresses": [
+    "Kloveniersburgwal 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 48",
+     "use": "onderwijsfunctie",
+     "areaM2": 3673,
+     "bagId": "0363010000944120"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4734528821,
+     "lngLat": [
+      4.8980255,
+      52.3709981
+     ],
+     "tags": {
+      "heritage": "2",
+      "heritage:operator": "rce",
+      "name": "Oost-Indisch Huis",
+      "name:en": "Dutch East Indian Company",
+      "name:nl": "Oost-Indisch Huis",
+      "tourism": "attraction",
+      "wikidata": "Q2223310",
+      "wikimedia_commons": "Category:East India House (Amsterdam)",
+      "wikipedia": "nl:Oost-Indisch Huis (Amsterdam)"
+     },
+     "fetchedAt": "2026-11-10T08:10:42.687Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11889572667,
+     "lngLat": [
+      4.8980803,
+      52.3705502
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:10:42.687Z",
+     "match": "frontage",
+     "distanceM": 8
+    },
+    {
+     "type": "node",
+     "id": 11889572668,
+     "lngLat": [
+      4.8981665,
+      52.3706397
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:10:42.687Z",
+     "match": "frontage",
+     "distanceM": 8
+    },
+    {
+     "type": "relation",
+     "id": 3584291,
+     "lngLat": [
+      4.8980067,
+      52.3708811
+     ],
+     "tags": {
+      "alt_name:es": "Oost-Indische_Huis",
+      "building": "yes",
+      "layer": "1",
+      "name": "Oost-Indisch Huis",
+      "ref:bag": "0363100012165008",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "start_date": "1606",
+      "tourism": "attraction",
+      "type": "multipolygon",
+      "wikidata": "Q2223310",
+      "wikipedia": "nl:Oost-Indisch Huis (Amsterdam)"
+     },
+     "fetchedAt": "2026-11-10T08:10:42.687Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

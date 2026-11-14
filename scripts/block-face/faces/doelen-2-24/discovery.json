@@ -1,0 +1,1062 @@
+{
+ "street": "Nieuwe Doelenstraat",
+ "seed": "0363100012168170",
+ "members": [
+  "0363100012180410",
+  "0363100012180413",
+  "0363100012180412",
+  "0363100012180414",
+  "0363100012168239",
+  "0363100012168170"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165109",
+   "reason": "frontage 189.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012165686",
+   "reason": "frontage 106.3 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168289",
+   "reason": "frontage 215.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012165086",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012165110",
+   "reason": "frontage 39.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012167505",
+   "reason": "frontage 164.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012167506",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012167507",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012167509",
+   "reason": "frontage 172.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012167996",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012167997",
+   "reason": "frontage 146.4 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012167998",
+   "reason": "frontage 157.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012167999",
+   "reason": "frontage 155.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168000",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168001",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168002",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168003",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168045",
+   "reason": "frontage 51.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168053",
+   "reason": "frontage 131.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168054",
+   "reason": "frontage 153.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168055",
+   "reason": "frontage 176.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168056",
+   "reason": "frontage 181.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168057",
+   "reason": "frontage 157.4 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168058",
+   "reason": "frontage 166.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168059",
+   "reason": "frontage 171.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168110",
+   "reason": "frontage 102.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168111",
+   "reason": "frontage 98.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168172",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012168174"
+  },
+  {
+   "pandId": "0363100012168173",
+   "reason": "frontage 47.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168182",
+   "reason": "frontage 176.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168183",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168184",
+   "reason": "frontage 170.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168185",
+   "reason": "frontage 173.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168186",
+   "reason": "frontage 167.3 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168187",
+   "reason": "frontage 78.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168188",
+   "reason": "frontage 121.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168189",
+   "reason": "frontage 81.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168190",
+   "reason": "frontage 73.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168191",
+   "reason": "frontage 88.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168192",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168194",
+   "reason": "frontage 169.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168238",
+   "reason": "frontage 59.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168256",
+   "reason": "frontage 107.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168257",
+   "reason": "frontage 109.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168341",
+   "reason": "frontage 192.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168344",
+   "reason": "frontage 203.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171126",
+   "reason": "frontage 181.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171132",
+   "reason": "frontage 173.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171159",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012177822"
+  },
+  {
+   "pandId": "0363100012171160",
+   "reason": "frontage 38.3 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171161",
+   "reason": "frontage 44.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177746",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012177745"
+  },
+  {
+   "pandId": "0363100012177772",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012177775"
+  },
+  {
+   "pandId": "0363100012177775",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012177773"
+  },
+  {
+   "pandId": "0363100012169332",
+   "reason": "frontage 38.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175264",
+   "reason": "frontage 166.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175267",
+   "reason": "frontage 211.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175490",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168482",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012169158",
+   "reason": "frontage 188.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012169280",
+   "reason": "frontage 125.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012169281",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171098",
+   "reason": "frontage 178.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171099",
+   "reason": "frontage 124.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171100",
+   "reason": "frontage 139.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171127",
+   "reason": "frontage 149.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171128",
+   "reason": "frontage 145.4 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171129",
+   "reason": "frontage 177.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171130",
+   "reason": "frontage 175.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012171156",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012171136"
+  },
+  {
+   "pandId": "0363100012171162",
+   "reason": "frontage 30.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175172",
+   "reason": "frontage 175.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175216",
+   "reason": "frontage 111.4 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175218",
+   "reason": "frontage 57.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175219",
+   "reason": "frontage 64.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175220",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175221",
+   "reason": "frontage 73.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175222",
+   "reason": "frontage 100.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175223",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175224",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175225",
+   "reason": "frontage 103.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175226",
+   "reason": "frontage 131.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175227",
+   "reason": "frontage 137.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175228",
+   "reason": "frontage 143.3 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175229",
+   "reason": "frontage 94.3 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175230",
+   "reason": "frontage 80.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175231",
+   "reason": "frontage 89.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175232",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175255",
+   "reason": "frontage 91.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175256",
+   "reason": "frontage 97.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012175257",
+   "reason": "frontage 94.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177773",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177774",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012177773"
+  },
+  {
+   "pandId": "0363100012177776",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012177775"
+  },
+  {
+   "pandId": "0363100012177783",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012177775"
+  },
+  {
+   "pandId": "0363100012177791",
+   "reason": "frontage 45.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177792",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177818",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012177772"
+  },
+  {
+   "pandId": "0363100012177822",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177823",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012177745"
+  },
+  {
+   "pandId": "0363100012177824",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012177745"
+  },
+  {
+   "pandId": "0363100012178949",
+   "reason": "frontage 149.4 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178953",
+   "reason": "frontage 149.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178954",
+   "reason": "frontage 149.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177827",
+   "reason": "frontage 78.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177830",
+   "reason": "frontage 63.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177784",
+   "reason": "frontage 52.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177785",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177786",
+   "reason": "frontage 57.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177787",
+   "reason": "frontage 56.3 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177788",
+   "reason": "frontage 51.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177789",
+   "reason": "frontage 41.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177790",
+   "reason": "frontage 34.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012177819",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012177772"
+  },
+  {
+   "pandId": "0363100012177825",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178945",
+   "reason": "frontage 186.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178948",
+   "reason": "frontage 149.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178952",
+   "reason": "frontage 163.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012178956",
+   "reason": "frontage 142.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179384",
+   "reason": "frontage 100.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179385",
+   "reason": "frontage 98.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179386",
+   "reason": "frontage 129.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179387",
+   "reason": "frontage 177.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179388",
+   "reason": "frontage 143.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179389",
+   "reason": "frontage 145.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179390",
+   "reason": "frontage 148.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179391",
+   "reason": "frontage 147.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179392",
+   "reason": "frontage 157.4 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179393",
+   "reason": "frontage 123.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179394",
+   "reason": "frontage 140.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179395",
+   "reason": "frontage 132.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179396",
+   "reason": "frontage 94.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179397",
+   "reason": "frontage 163.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179398",
+   "reason": "frontage 147.3 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179399",
+   "reason": "frontage 137.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179400",
+   "reason": "frontage 160.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179401",
+   "reason": "frontage 90.4 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179402",
+   "reason": "frontage 143.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179403",
+   "reason": "frontage 164.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179404",
+   "reason": "frontage 164.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179405",
+   "reason": "frontage 165.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179455",
+   "reason": "frontage 173.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179456",
+   "reason": "frontage 169.4 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179457",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179459",
+   "reason": "frontage 55.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179460",
+   "reason": "frontage 52.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179461",
+   "reason": "frontage 49.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179462",
+   "reason": "frontage 53.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179463",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179464",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179465",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179466",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179467",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179468",
+   "reason": "frontage 76.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179469",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179470",
+   "reason": "frontage 82.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179471",
+   "reason": "frontage 75.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179472",
+   "reason": "frontage 70.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179473",
+   "reason": "sightline to Nieuwe Doelenstraat crosses 0363100012168174"
+  },
+  {
+   "pandId": "0363100012179632",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179633",
+   "reason": "frontage 163.3 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179634",
+   "reason": "frontage 161.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179805",
+   "reason": "frontage 138.3 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179806",
+   "reason": "frontage 145.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179807",
+   "reason": "frontage 148.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179808",
+   "reason": "frontage 149.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179809",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179874",
+   "reason": "frontage 156.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179875",
+   "reason": "frontage 152.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179876",
+   "reason": "frontage 162.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179877",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179878",
+   "reason": "frontage 156.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179879",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179880",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179881",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179882",
+   "reason": "frontage 132.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179883",
+   "reason": "frontage 155.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179884",
+   "reason": "frontage 147.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179885",
+   "reason": "frontage 133.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179886",
+   "reason": "frontage 131.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179887",
+   "reason": "frontage 159.3 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179888",
+   "reason": "frontage 174.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179889",
+   "reason": "frontage 167.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012179890",
+   "reason": "frontage 161.3 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180071",
+   "reason": "frontage 177.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180072",
+   "reason": "frontage 170.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180073",
+   "reason": "frontage 174.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180074",
+   "reason": "frontage 167.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180075",
+   "reason": "frontage 194.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180076",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180077",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180149",
+   "reason": "frontage 146.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180150",
+   "reason": "frontage 176.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012253758",
+   "reason": "frontage 45.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012571650",
+   "reason": "frontage 35.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180195",
+   "reason": "frontage 78.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180196",
+   "reason": "frontage 51.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180197",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180151",
+   "reason": "frontage 186.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180152",
+   "reason": "frontage 206.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180153",
+   "reason": "frontage 198.1 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180154",
+   "reason": "frontage 195.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180155",
+   "reason": "frontage 186.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180156",
+   "reason": "frontage 185.4 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180157",
+   "reason": "frontage 171.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180158",
+   "reason": "frontage 174.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180159",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180160",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180161",
+   "reason": "frontage 184.8 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180162",
+   "reason": "frontage 189.4 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180165",
+   "reason": "frontage 118.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180334",
+   "reason": "frontage 109.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180335",
+   "reason": "frontage 113.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180336",
+   "reason": "frontage 128.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180337",
+   "reason": "frontage 135.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180338",
+   "reason": "frontage 144.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180339",
+   "reason": "frontage 148.2 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180340",
+   "reason": "frontage 151.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180341",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180405",
+   "reason": "frontage 96.4 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180406",
+   "reason": "frontage 79.5 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180407",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180408",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012180409",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012185994",
+   "reason": "frontage 186.6 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012246529",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012253551",
+   "reason": "frontage 178.7 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012253928",
+   "reason": "no frontage on Nieuwe Doelenstraat: No footprint edge faces Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012570810",
+   "reason": "frontage 139.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100100092399",
+   "reason": "frontage 143.0 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100100092603",
+   "reason": "frontage 67.9 m from Nieuwe Doelenstraat"
+  },
+  {
+   "pandId": "0363100012168171",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168174",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177745",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169331",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171136",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180411",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253808",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253809",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253810",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571527",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571528",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012180410",
+   "alongM": -112.36,
+   "widthM": 42.93,
+   "eavesM": 21.11,
+   "roofMaxM": 31.12,
+   "storeys3dbag": 0,
+   "builtYear": 1883,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012180413",
+   "alongM": -82.24,
+   "widthM": 17.32,
+   "eavesM": 14.8,
+   "roofMaxM": 24.37,
+   "storeys3dbag": 0,
+   "builtYear": 1674,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180412",
+   "alongM": -60.94,
+   "widthM": 25.28,
+   "eavesM": 14.46,
+   "roofMaxM": 19.62,
+   "storeys3dbag": 0,
+   "builtYear": 1632,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012180414",
+   "alongM": -41.18,
+   "widthM": 14.25,
+   "eavesM": 13.34,
+   "roofMaxM": 23.21,
+   "storeys3dbag": 0,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168239",
+   "alongM": -26.94,
+   "widthM": 14.22,
+   "eavesM": 15.85,
+   "roofMaxM": 25.93,
+   "storeys3dbag": 0,
+   "builtYear": 1765,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168170",
+   "alongM": 0,
+   "widthM": 39.66,
+   "eavesM": 19.29,
+   "roofMaxM": 29.49,
+   "storeys3dbag": 0,
+   "builtYear": 1896,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

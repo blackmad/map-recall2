@@ -1,0 +1,41 @@
+{
+ "street": "Oudezijds Achterburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:23:52.247Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178733",
+   "addresses": [
+    "Oudezijds Achterburgwal 151"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 151-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000941719"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178732",
+   "addresses": [
+    "Oudezijds Achterburgwal 153"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 153-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000759192"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,144 @@
+{
+ "street": "Oudezijds Achterburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:26:44.152Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178654",
+   "addresses": [
+    "Oudezijds Achterburgwal 189"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 189",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001025101"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171181",
+   "addresses": [
+    "Oudezijds Achterburgwal 191C",
+    "Oudezijds Achterburgwal 191D",
+    "Oudezijds Achterburgwal 191A",
+    "Oudezijds Achterburgwal 191B",
+    "Oudezijds Achterburgwal 191E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 191C",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010001025104"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 191D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001025106"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 191A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010001025102"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 191B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010001025103"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 191E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001025107"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571560",
+   "addresses": [
+    "Oudezijds Achterburgwal 193"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 193",
+     "use": "winkelfunctie",
+     "areaM2": 104,
+     "bagId": "0363010001025109"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571562",
+   "addresses": [
+    "Oudezijds Achterburgwal 195D",
+    "Oudezijds Achterburgwal 195B",
+    "Oudezijds Achterburgwal 195A",
+    "Oudezijds Achterburgwal 195C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 195D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001025116"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 195B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010001025114"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 195A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001025112"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 195C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010001025115"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171170",
+   "addresses": [
+    "Oudezijds Achterburgwal 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 197-O",
+     "use": "industriefunctie",
+     "areaM2": 36,
+     "bagId": "0363010000954947"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 197-H",
+     "use": "kantoorfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000954948"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

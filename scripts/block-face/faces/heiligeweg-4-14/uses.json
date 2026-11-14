@@ -1,0 +1,233 @@
+{
+ "street": "Heiligeweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:14:03.622Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176138",
+   "addresses": [
+    "Heiligeweg 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 14",
+     "use": "winkelfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000661127"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038580,
+     "lngLat": [
+      4.8911642,
+      52.3678803
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14",
+      "addr:postcode": "1012XR",
+      "addr:street": "Heiligeweg",
+      "brand": "Seiko",
+      "brand:wikidata": "Q322601",
+      "name": "Seiko",
+      "shop": "watches",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:14:03.622Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2724038690,
+     "lngLat": [
+      4.8910911,
+      52.367853
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18",
+      "addr:postcode": "1012XR",
+      "addr:street": "Heiligeweg",
+      "amenity": "ice_cream",
+      "brand": "IJscuypje",
+      "brand:wikidata": "Q121742244",
+      "cuisine": "ice_cream",
+      "email": "info@ijscuypje.nl",
+      "name": "IJscuypje",
+      "opening_hours": "Mo-Su 12:00-22:00",
+      "phone": "+31 20 617 0039",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "toilets:wheelchair": "no",
+      "website": "https://www.ijscuypje.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:14:03.622Z",
+     "match": "frontage",
+     "distanceM": 3.4
+    },
+    {
+     "type": "node",
+     "id": 2724038773,
+     "lngLat": [
+      4.8910473,
+      52.3678259
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "20-H",
+      "addr:postcode": "1012XR",
+      "addr:street": "Heiligeweg",
+      "email": "amsterdam@belicio.nl",
+      "name": "Belicio Cheats",
+      "shop": "pastry",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://belicio-cheats.com/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:14:03.622Z",
+     "match": "frontage",
+     "distanceM": 6.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175019",
+   "addresses": [
+    "Heiligeweg 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 12",
+     "use": "winkelfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000661126"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175020",
+   "addresses": [
+    "Heiligeweg 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 10",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000661124"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038525,
+     "lngLat": [
+      4.8912666,
+      52.3679077
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "10",
+      "addr:postcode": "1012XR",
+      "addr:street": "Heiligeweg",
+      "name": "Seacret",
+      "shop": "cosmetics",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:14:03.622Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175021",
+   "addresses": [
+    "Heiligeweg 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 8",
+     "use": "winkelfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000661122"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724039125,
+     "lngLat": [
+      4.8913105,
+      52.3679259
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8",
+      "addr:postcode": "1012XR",
+      "addr:street": "Heiligeweg",
+      "name": "York",
+      "shop": "optician",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:14:03.622Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176133",
+   "addresses": [
+    "Heiligeweg 4",
+    "Heiligeweg 4A",
+    "Heiligeweg 4B",
+    "Heiligeweg 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 6",
+     "use": "winkelfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000661121"
+    },
+    {
+     "address": "Heiligeweg 4",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000711879"
+    },
+    {
+     "address": "Heiligeweg 6",
+     "use": "winkelfunctie",
+     "areaM2": 184,
+     "bagId": "0363010012597288"
+    },
+    {
+     "address": "Heiligeweg 4",
+     "use": "winkelfunctie",
+     "areaM2": 181,
+     "bagId": "0363010012578348"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

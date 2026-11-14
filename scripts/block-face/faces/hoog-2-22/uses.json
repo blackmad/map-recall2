@@ -1,0 +1,344 @@
+{
+ "street": "Oude Hoogstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:33:03.433Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171252",
+   "addresses": [
+    "Oude Hoogstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oude Hoogstraat 22",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000766693"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724826860,
+     "lngLat": [
+      4.8976721,
+      52.3712349
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "22",
+      "addr:postcode": "1012CE",
+      "addr:street": "Oude Hoogstraat",
+      "email": "info@hetkleinstehuis.nl",
+      "name": "Het Kleinste Huis",
+      "name:nl": "Het Kleinste Huis",
+      "opening_hours": "We-Sa 11:00-18:00",
+      "phone": "+31 20 752 75 85",
+      "ref:vatin": "NL002096245B77",
+      "shop": "tea",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "start_date": "2014",
+      "website": "https://www.hetkleinstehuis.nl"
+     },
+     "fetchedAt": "2026-11-10T08:33:03.433Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171248",
+   "addresses": [
+    "Oude Hoogstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oude Hoogstraat 20-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000766687"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4212686668,
+     "lngLat": [
+      4.8976102,
+      52.3712381
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Barbecue"
+     },
+     "fetchedAt": "2026-11-10T08:33:03.433Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171204",
+   "addresses": [
+    "Oude Hoogstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oude Hoogstraat 14",
+     "use": "winkelfunctie",
+     "areaM2": 1073,
+     "bagId": "0363010001975593"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4172780889,
+     "lngLat": [
+      4.8974843,
+      52.3712607
+     ],
+     "tags": {
+      "addr:street": "Oude Hoogstraat",
+      "name": "Kok",
+      "shop": "books"
+     },
+     "fetchedAt": "2026-11-10T08:33:03.433Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171210",
+   "addresses": [
+    "Oude Hoogstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oude Hoogstraat 12-H",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000804553"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4212686672,
+     "lngLat": [
+      4.8973404,
+      52.3713094
+     ],
+     "tags": {
+      "name": "Stetson",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-10T08:33:03.433Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171211",
+   "addresses": [
+    "Oude Hoogstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oude Hoogstraat 10-H",
+     "use": "winkelfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000766667"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178737",
+   "addresses": [
+    "Oude Hoogstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oude Hoogstraat 8-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 47,
+     "bagId": "0363010001019530"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4212686676,
+     "lngLat": [
+      4.8972436,
+      52.371334
+     ],
+     "tags": {
+      "amenity": "pub",
+      "name": "Cafe De Pool"
+     },
+     "fetchedAt": "2026-11-10T08:33:03.433Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178736",
+   "addresses": [
+    "Oude Hoogstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oude Hoogstraat 6-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001172172"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4212686667,
+     "lngLat": [
+      4.8971699,
+      52.3713503
+     ],
+     "tags": {
+      "name": "De Grote Tas",
+      "shop": "bag"
+     },
+     "fetchedAt": "2026-11-10T08:33:03.433Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178735",
+   "addresses": [
+    "Oude Hoogstraat 4A",
+    "Oude Hoogstraat 4B",
+    "Oude Hoogstraat 4C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oude Hoogstraat 4A",
+     "use": "winkelfunctie",
+     "areaM2": 62,
+     "bagId": "0363010001964653"
+    },
+    {
+     "address": "Oude Hoogstraat 4B",
+     "use": "kantoorfunctie",
+     "areaM2": 31,
+     "bagId": "0363010001964654"
+    },
+    {
+     "address": "Oude Hoogstraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010001964655"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724826643,
+     "lngLat": [
+      4.8971152,
+      52.3714642
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1012CD",
+      "addr:street": "Oude Hoogstraat",
+      "name": "Capsicum",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:33:03.433Z",
+     "match": "frontage",
+     "distanceM": 8
+    },
+    {
+     "type": "node",
+     "id": 4212686671,
+     "lngLat": [
+      4.8970887,
+      52.3713694
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4",
+      "addr:postcode": "1012CE",
+      "addr:street": "Oude Hoogstraat",
+      "name": "Number One",
+      "note": "head-shop/smartshop",
+      "shop": "smartshop"
+     },
+     "fetchedAt": "2026-11-10T08:33:03.433Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178734",
+   "addresses": [
+    "Oude Hoogstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oude Hoogstraat 2-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000766658"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724826841,
+     "lngLat": [
+      4.8969847,
+      52.3713648
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-H",
+      "addr:postcode": "1012CE",
+      "addr:street": "Oude Hoogstraat",
+      "amenity": "restaurant",
+      "name": "Burger Zaken",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://burger-zaken.net/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:33:03.433Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,506 @@
+{
+ "street": "Heiligeweg",
+ "seed": "0363100012167510",
+ "members": [
+  "0363100012167510",
+  "0363100012167502",
+  "0363100012167501",
+  "0363100012185925",
+  "0363100012185839",
+  "0363100012175810",
+  "0363100012175807"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012167510 (face continues: 167506 176131 176132 176137 165086)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012175807 (face continues: 175814 175813 168533)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165085",
+   "reason": "frontage 89.1 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167500",
+   "reason": "sightline to Heiligeweg crosses 0363100012168533"
+  },
+  {
+   "pandId": "0363100012167505",
+   "reason": "frontage 43.1 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167507",
+   "reason": "sightline to Heiligeweg crosses 0363100012167506"
+  },
+  {
+   "pandId": "0363100012167508",
+   "reason": "frontage 61.9 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167509",
+   "reason": "frontage 50.4 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167923",
+   "reason": "frontage 52.6 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167924",
+   "reason": "frontage 61.4 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167925",
+   "reason": "frontage 74.8 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167926",
+   "reason": "frontage 69.8 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167927",
+   "reason": "frontage 67.0 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167996",
+   "reason": "frontage 48.6 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167997",
+   "reason": "no frontage on Heiligeweg: No footprint edge faces Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167998",
+   "reason": "frontage 39.5 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167999",
+   "reason": "frontage 33.8 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012168000",
+   "reason": "frontage 43.4 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012168001",
+   "reason": "sightline to Heiligeweg crosses 0363100012167506"
+  },
+  {
+   "pandId": "0363100012168002",
+   "reason": "sightline to Heiligeweg crosses 0363100012167506"
+  },
+  {
+   "pandId": "0363100012168003",
+   "reason": "sightline to Heiligeweg crosses 0363100012167506"
+  },
+  {
+   "pandId": "0363100012168053",
+   "reason": "no frontage on Heiligeweg: No footprint edge faces Heiligeweg"
+  },
+  {
+   "pandId": "0363100012168054",
+   "reason": "frontage 52.7 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012168057",
+   "reason": "frontage 50.3 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012168332",
+   "reason": "frontage 61.7 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012168333",
+   "reason": "frontage 57.1 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012168334",
+   "reason": "frontage 59.4 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012168479",
+   "reason": "no frontage on Heiligeweg: No footprint edge faces Heiligeweg"
+  },
+  {
+   "pandId": "0363100012168534",
+   "reason": "sightline to Heiligeweg crosses 0363100012168484"
+  },
+  {
+   "pandId": "0363100012168536",
+   "reason": "frontage 109.6 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175022",
+   "reason": "sightline to Heiligeweg crosses 0363100012175020"
+  },
+  {
+   "pandId": "0363100012175023",
+   "reason": "frontage 40.7 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175024",
+   "reason": "frontage 64.9 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175025",
+   "reason": "frontage 51.4 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175026",
+   "reason": "frontage 49.3 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175027",
+   "reason": "frontage 51.7 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175028",
+   "reason": "frontage 53.3 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175029",
+   "reason": "frontage 55.1 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175031",
+   "reason": "frontage 53.4 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175220",
+   "reason": "frontage 83.3 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175221",
+   "reason": "frontage 93.5 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175222",
+   "reason": "no frontage on Heiligeweg: No footprint edge faces Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175223",
+   "reason": "frontage 39.8 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175224",
+   "reason": "frontage 35.9 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175225",
+   "reason": "sightline to Heiligeweg crosses 0363100012175222"
+  },
+  {
+   "pandId": "0363100012175226",
+   "reason": "sightline to Heiligeweg crosses 0363100012168053"
+  },
+  {
+   "pandId": "0363100012175227",
+   "reason": "no frontage on Heiligeweg: No footprint edge faces Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175228",
+   "reason": "no frontage on Heiligeweg: No footprint edge faces Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175229",
+   "reason": "no frontage on Heiligeweg: No footprint edge faces Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175232",
+   "reason": "frontage 52.4 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175255",
+   "reason": "frontage 47.2 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175256",
+   "reason": "frontage 39.0 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175484",
+   "reason": "frontage 46.4 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175485",
+   "reason": "sightline to Heiligeweg crosses 0363100012175022"
+  },
+  {
+   "pandId": "0363100012175486",
+   "reason": "frontage 36.8 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175808",
+   "reason": "sightline to Heiligeweg crosses 0363100012175814"
+  },
+  {
+   "pandId": "0363100012175809",
+   "reason": "no frontage on Heiligeweg: No footprint edge faces Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175811",
+   "reason": "no frontage on Heiligeweg: No footprint edge faces Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175875",
+   "reason": "sightline to Heiligeweg crosses 0363100012175807"
+  },
+  {
+   "pandId": "0363100012175876",
+   "reason": "sightline to Heiligeweg crosses 0363100012176138"
+  },
+  {
+   "pandId": "0363100012175877",
+   "reason": "frontage 48.4 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175878",
+   "reason": "frontage 39.8 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175879",
+   "reason": "sightline to Heiligeweg crosses 0363100012175880"
+  },
+  {
+   "pandId": "0363100012175883",
+   "reason": "frontage 52.3 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012175884",
+   "reason": "frontage 42.7 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012176052",
+   "reason": "frontage 38.2 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012176053",
+   "reason": "frontage 33.8 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012176054",
+   "reason": "sightline to Heiligeweg crosses 0363100012176057"
+  },
+  {
+   "pandId": "0363100012176055",
+   "reason": "frontage 33.3 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012176056",
+   "reason": "frontage 61.6 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012176057",
+   "reason": "sightline to Heiligeweg crosses 0363100012176126"
+  },
+  {
+   "pandId": "0363100012176058",
+   "reason": "sightline to Heiligeweg crosses 0363100012176060"
+  },
+  {
+   "pandId": "0363100012176126",
+   "reason": "sightline to Heiligeweg crosses 0363100012176128"
+  },
+  {
+   "pandId": "0363100012176129",
+   "reason": "frontage 69.7 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012176130",
+   "reason": "frontage 74.3 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012176135",
+   "reason": "sightline to Heiligeweg crosses 0363100012176133"
+  },
+  {
+   "pandId": "0363100012176136",
+   "reason": "sightline to Heiligeweg crosses 0363100012176134"
+  },
+  {
+   "pandId": "0363100012176247",
+   "reason": "frontage 38.3 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012176252",
+   "reason": "frontage 40.4 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012176253",
+   "reason": "frontage 46.2 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012176255",
+   "reason": "frontage 43.2 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012253551",
+   "reason": "frontage 56.2 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100100092603",
+   "reason": "frontage 61.0 m from Heiligeweg"
+  },
+  {
+   "pandId": "0363100012167503",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167504",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168483",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168484",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168485",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168535",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175019",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175020",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175021",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175880",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175881",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175882",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176059",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176060",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176127",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176128",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176133",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176134",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176138",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012167510",
+   "alongM": 0,
+   "widthM": 16.06,
+   "eavesM": 13.34,
+   "roofMaxM": 18.55,
+   "storeys3dbag": 5,
+   "builtYear": 1766,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167502",
+   "alongM": 11.5,
+   "widthM": 5.07,
+   "eavesM": 13.07,
+   "roofMaxM": 13.53,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167501",
+   "alongM": 16.64,
+   "widthM": 5.2,
+   "eavesM": 12.4,
+   "roofMaxM": 15.65,
+   "storeys3dbag": 0,
+   "builtYear": 1727,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012185925",
+   "alongM": 21.42,
+   "widthM": 4.36,
+   "eavesM": 12.19,
+   "roofMaxM": 14.53,
+   "storeys3dbag": 5,
+   "builtYear": 1767,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012185839",
+   "alongM": 26.09,
+   "widthM": 4.99,
+   "eavesM": 15.26,
+   "roofMaxM": 15.36,
+   "storeys3dbag": 5,
+   "builtYear": 1808,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012175810",
+   "alongM": 31.91,
+   "widthM": 6.67,
+   "eavesM": 15.14,
+   "roofMaxM": 17.23,
+   "storeys3dbag": 4,
+   "builtYear": 1732,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012175807",
+   "alongM": 37.92,
+   "widthM": 5.35,
+   "eavesM": 13.37,
+   "roofMaxM": 13.42,
+   "storeys3dbag": 0,
+   "builtYear": 1986,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

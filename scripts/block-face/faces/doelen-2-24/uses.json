@@ -1,0 +1,406 @@
+{
+ "street": "Nieuwe Doelenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:17:07.761Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012180410",
+   "addresses": [
+    "Nieuwe Doelenstraat 24",
+    "Nieuwe Doelenstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Doelenstraat 24",
+     "use": "logiesfunctie",
+     "areaM2": 4224,
+     "bagId": "0363010000755426"
+    },
+    {
+     "address": "Nieuwe Doelenstraat 26",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010003692229"
+    },
+    {
+     "address": "Nieuwe Doelenstraat 24",
+     "use": "logiesfunctie",
+     "areaM2": 3770,
+     "bagId": "0363010012081640"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 416568030,
+     "lngLat": [
+      4.8957416,
+      52.368205
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "24",
+      "addr:postcode": "1012CP",
+      "addr:street": "Nieuwe Doelenstraat",
+      "check_date": "2025-08-24",
+      "check_date:internet_access": "2025-08-24",
+      "internet_access": "wlan",
+      "name": "Tivoli Doelen Amsterdam",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "hotel",
+      "website": "https://www.nh-collection.com/en/hotel/nh-collection-amsterdam-doelen",
+      "wheelchair": "no",
+      "wikidata": "Q2737085",
+      "wikimedia_commons": "Category:Doelen Hotel",
+      "wikipedia": "nl:Doelen Hotel"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 5048599930,
+     "lngLat": [
+      4.8960281,
+      52.3683444
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "frontage",
+     "distanceM": 4
+    },
+    {
+     "type": "node",
+     "id": 13723128745,
+     "lngLat": [
+      4.8960678,
+      52.3683566
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "frontage",
+     "distanceM": 7
+    },
+    {
+     "type": "node",
+     "id": 13723128746,
+     "lngLat": [
+      4.896059,
+      52.3683684
+     ],
+     "tags": {
+      "information": "guidepost",
+      "tourism": "information"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "frontage",
+     "distanceM": 7.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180413",
+   "addresses": [
+    "Nieuwe Doelenstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Doelenstraat 20",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1355,
+     "bagId": "0363010001166056"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 251823631,
+     "lngLat": [
+      4.8953468,
+      52.3680595
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "20",
+      "addr:postcode": "1012CP",
+      "addr:street": "Nieuwe Doelenstraat",
+      "amenity": "restaurant",
+      "check_date": "2025-09-27",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "internet_access": "yes",
+      "internet_access:fee": "no",
+      "name": "De Jaren",
+      "opening_hours": "Mo-Su 09:00-23:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "no",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.cafedejaren.nl",
+      "wheelchair": "no",
+      "wikidata": "Q28656899",
+      "wikipedia": "nl:De Jaren"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180412",
+   "addresses": [
+    "Nieuwe Doelenstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Doelenstraat 16",
+     "use": "onderwijsfunctie",
+     "areaM2": 2775,
+     "bagId": "0363010001167167"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "relation",
+     "id": 3583193,
+     "lngLat": [
+      4.8951956,
+      52.3678601
+     ],
+     "tags": {
+      "amenity": "theatre",
+      "building": "yes",
+      "height": "19.6",
+      "name": "Universiteitstheater",
+      "ref:bag": "0363100012180412",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "start_date": "1005",
+      "type": "multipolygon"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180414",
+   "addresses": [
+    "Nieuwe Doelenstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Doelenstraat 12",
+     "use": "kantoorfunctie",
+     "areaM2": 3772,
+     "bagId": "0363010000755422"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168239",
+   "addresses": [
+    "Nieuwe Doelenstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Doelenstraat 10",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1681,
+     "bagId": "0363010000755421"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168170",
+   "addresses": [
+    "Nieuwe Doelenstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Doelenstraat 2",
+     "use": "logiesfunctie",
+     "areaM2": 5445,
+     "bagId": "0363010001167181"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 251823632,
+     "lngLat": [
+      4.8944657,
+      52.3676444
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-14",
+      "addr:postcode": "1012CP",
+      "addr:street": "Nieuwe Doelenstraat",
+      "contact:facebook": "https://www.facebook.com/DeLEuropeAms",
+      "contact:instagram": "leuropeams",
+      "email": "hotel@deleurope.com",
+      "name": "Hotel de l'Europe",
+      "phone": "+31 20 531 1777",
+      "stars": "5",
+      "toilets:wheelchair": "yes",
+      "tourism": "hotel",
+      "website": "https://www.deleurope.com",
+      "wheelchair": "yes",
+      "wikidata": "Q2463682",
+      "wikimedia_commons": "Category:Hotel de l'Europe",
+      "wikipedia": "nl:De L'Europe Amsterdam"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 1310974815,
+     "lngLat": [
+      4.8943025,
+      52.3674539
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-14",
+      "addr:postcode": "1012CP",
+      "addr:street": "Nieuwe Doelenstraat",
+      "amenity": "restaurant",
+      "award:michelin": "2",
+      "contact:facebook": "restaurantflore",
+      "contact:instagram": "restaurant.flore",
+      "name": "Flore",
+      "opening_hours": "We-Th 18:30-22:00; Fr-Sa 12:00-16:00, 18:30-22:00",
+      "phone": "+31 20 531 1619",
+      "stars": "2",
+      "toilets:wheelchair": "yes",
+      "website": "https://restaurantflore.com",
+      "wheelchair": "yes",
+      "wikidata": "Q124246755",
+      "wikipedia": "nl:Flore (restaurant)"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2724102636,
+     "lngLat": [
+      4.8943087,
+      52.3676598
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2",
+      "addr:postcode": "1012CP",
+      "addr:street": "Nieuwe Doelenstraat",
+      "consulate": "honorary_consul",
+      "country": "MC",
+      "diplomatic": "consulate",
+      "name": "Honorair Consulaat van Monaco",
+      "name:en": "Honorary Consulate of Monaco",
+      "name:fr": "Consulat de Monaco",
+      "name:nl": "Honorair Consulaat van Monaco",
+      "office": "diplomatic",
+      "official_name": "Honorair Consulaat van het Vorstendom Monaco",
+      "official_name:en": "Honorary Consulate of The Principality of Monaco",
+      "opening_hours": "\"by appointment\"",
+      "phone": "+31 20 531 1604",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "target": "NL"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4212686670,
+     "lngLat": [
+      4.8941269,
+      52.3675928
+     ],
+     "tags": {
+      "amenity": "pub",
+      "check_date": "2025-09-05",
+      "check_date:opening_hours": "2025-09-05",
+      "name": "Freddy's bar",
+      "opening_hours": "Mo-Su 12:00-01:00",
+      "toilets:wheelchair": "yes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4212686679,
+     "lngLat": [
+      4.8941508,
+      52.3675216
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Hèt Terras",
+      "toilets:wheelchair": "yes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 6295748085,
+     "lngLat": [
+      4.8944145,
+      52.3674335
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-14",
+      "addr:street": "Nieuwe Doelenstraat",
+      "amenity": "restaurant",
+      "check_date": "2023-04-14",
+      "name": "Marie",
+      "website": "https://marieamsterdam.com/"
+     },
+     "fetchedAt": "2026-11-10T08:17:07.761Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

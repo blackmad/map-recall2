@@ -1,0 +1,515 @@
+{
+ "street": "Handboogstraat",
+ "seed": "0363100012167924",
+ "members": [
+  "0363100012167924",
+  "0363100012167923",
+  "0363100012175877",
+  "0363100012175878",
+  "0363100012175881",
+  "0363100012175879"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012167924 (face continues: 167925)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012175879 (face continues: 175880)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165109",
+   "reason": "frontage 89.2 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012165086",
+   "reason": "sightline to Handboogstraat crosses 0363100012175810"
+  },
+  {
+   "pandId": "0363100012167500",
+   "reason": "sightline to Handboogstraat crosses 0363100012175807"
+  },
+  {
+   "pandId": "0363100012167501",
+   "reason": "sightline to Handboogstraat crosses 0363100012185839"
+  },
+  {
+   "pandId": "0363100012167502",
+   "reason": "sightline to Handboogstraat crosses 0363100012167501"
+  },
+  {
+   "pandId": "0363100012167504",
+   "reason": "sightline to Handboogstraat crosses 0363100012167503"
+  },
+  {
+   "pandId": "0363100012167505",
+   "reason": "frontage 92.7 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012167506",
+   "reason": "frontage 74.1 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012167508",
+   "reason": "frontage 58.9 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012167509",
+   "reason": "frontage 93.0 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012167510",
+   "reason": "sightline to Handboogstraat crosses 0363100012167501"
+  },
+  {
+   "pandId": "0363100012167926",
+   "reason": "frontage 46.4 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012167927",
+   "reason": "frontage 62.3 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012167994",
+   "reason": "frontage 92.7 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012167998",
+   "reason": "frontage 92.5 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012167999",
+   "reason": "frontage 92.5 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012168053",
+   "reason": "frontage 92.4 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012168055",
+   "reason": "frontage 108.6 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012168059",
+   "reason": "frontage 108.6 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012168483",
+   "reason": "sightline to Handboogstraat crosses 0363100012167503"
+  },
+  {
+   "pandId": "0363100012168484",
+   "reason": "frontage 32.8 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012168485",
+   "reason": "sightline to Handboogstraat crosses 0363100012167503"
+  },
+  {
+   "pandId": "0363100012168533",
+   "reason": "sightline to Handboogstraat crosses 0363100012175813"
+  },
+  {
+   "pandId": "0363100012168535",
+   "reason": "sightline to Handboogstraat crosses 0363100012167503"
+  },
+  {
+   "pandId": "0363100012175019",
+   "reason": "frontage 55.1 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175020",
+   "reason": "frontage 58.5 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175021",
+   "reason": "frontage 62.2 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175022",
+   "reason": "frontage 52.7 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175023",
+   "reason": "frontage 68.7 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175024",
+   "reason": "frontage 46.2 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175025",
+   "reason": "frontage 45.5 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175032",
+   "reason": "frontage 41.4 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175484",
+   "reason": "frontage 44.3 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175485",
+   "reason": "frontage 50.8 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175486",
+   "reason": "frontage 43.1 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175036",
+   "reason": "frontage 50.3 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012165080",
+   "reason": "frontage 95.4 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012171818",
+   "reason": "frontage 101.3 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175030",
+   "reason": "frontage 99.7 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175033",
+   "reason": "frontage 50.1 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175034",
+   "reason": "frontage 51.9 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175488",
+   "reason": "frontage 75.2 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175489",
+   "reason": "frontage 50.8 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175503",
+   "reason": "no frontage on Handboogstraat: No footprint edge faces Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175732",
+   "reason": "frontage 72.5 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175733",
+   "reason": "frontage 89.0 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175734",
+   "reason": "frontage 36.3 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175735",
+   "reason": "frontage 92.3 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175736",
+   "reason": "frontage 70.3 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175737",
+   "reason": "frontage 62.9 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175738",
+   "reason": "frontage 91.9 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175739",
+   "reason": "frontage 55.9 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175740",
+   "reason": "frontage 59.5 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175741",
+   "reason": "frontage 64.0 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175742",
+   "reason": "frontage 91.1 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175743",
+   "reason": "frontage 90.4 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175744",
+   "reason": "frontage 89.9 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175807",
+   "reason": "no frontage on Handboogstraat: No footprint edge faces Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175808",
+   "reason": "no frontage on Handboogstraat: No footprint edge faces Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175810",
+   "reason": "sightline to Handboogstraat crosses 0363100012185839"
+  },
+  {
+   "pandId": "0363100012175813",
+   "reason": "sightline to Handboogstraat crosses 0363100012175807"
+  },
+  {
+   "pandId": "0363100012175814",
+   "reason": "sightline to Handboogstraat crosses 0363100012175807"
+  },
+  {
+   "pandId": "0363100012175875",
+   "reason": "sightline to Handboogstraat crosses 0363100012175807"
+  },
+  {
+   "pandId": "0363100012175876",
+   "reason": "frontage 48.5 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175882",
+   "reason": "sightline to Handboogstraat crosses 0363100012175880"
+  },
+  {
+   "pandId": "0363100012175883",
+   "reason": "sightline to Handboogstraat crosses 0363100012167923"
+  },
+  {
+   "pandId": "0363100012175884",
+   "reason": "sightline to Handboogstraat crosses 0363100012175877"
+  },
+  {
+   "pandId": "0363100012176052",
+   "reason": "sightline to Handboogstraat crosses 0363100012175878"
+  },
+  {
+   "pandId": "0363100012176053",
+   "reason": "sightline to Handboogstraat crosses 0363100012175881"
+  },
+  {
+   "pandId": "0363100012176054",
+   "reason": "frontage 42.4 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176055",
+   "reason": "frontage 42.5 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176056",
+   "reason": "sightline to Handboogstraat crosses 0363100012167924"
+  },
+  {
+   "pandId": "0363100012176057",
+   "reason": "frontage 42.4 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176058",
+   "reason": "sightline to Handboogstraat crosses 0363100012175881"
+  },
+  {
+   "pandId": "0363100012176059",
+   "reason": "sightline to Handboogstraat crosses 0363100012175880"
+  },
+  {
+   "pandId": "0363100012176060",
+   "reason": "frontage 30.3 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176126",
+   "reason": "frontage 42.1 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176127",
+   "reason": "frontage 42.3 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176128",
+   "reason": "frontage 44.8 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176129",
+   "reason": "sightline to Handboogstraat crosses 0363100012167925"
+  },
+  {
+   "pandId": "0363100012176130",
+   "reason": "sightline to Handboogstraat crosses 0363100012167925"
+  },
+  {
+   "pandId": "0363100012175510",
+   "reason": "frontage 54.3 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175512",
+   "reason": "frontage 52.9 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176131",
+   "reason": "frontage 63.9 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176132",
+   "reason": "frontage 59.8 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176133",
+   "reason": "frontage 65.7 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176134",
+   "reason": "frontage 73.1 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176135",
+   "reason": "frontage 62.2 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176136",
+   "reason": "frontage 72.6 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176137",
+   "reason": "frontage 42.0 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176138",
+   "reason": "frontage 49.2 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012176764",
+   "reason": "frontage 63.0 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012185839",
+   "reason": "no frontage on Handboogstraat: No footprint edge faces Handboogstraat"
+  },
+  {
+   "pandId": "0363100012185925",
+   "reason": "no frontage on Handboogstraat: No footprint edge faces Handboogstraat"
+  },
+  {
+   "pandId": "0363100012247454",
+   "reason": "frontage 64.5 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012253551",
+   "reason": "frontage 93.0 m from Handboogstraat"
+  },
+  {
+   "pandId": "0363100012175035",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165085",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167503",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168534",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168536",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175031",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175497",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175502",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175511",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012167924",
+   "alongM": 0,
+   "widthM": 13.75,
+   "eavesM": 12.33,
+   "roofMaxM": 15.29,
+   "storeys3dbag": 0,
+   "builtYear": 1728,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167923",
+   "alongM": 11.15,
+   "widthM": 8.59,
+   "eavesM": 6.89,
+   "roofMaxM": 15.75,
+   "storeys3dbag": 0,
+   "builtYear": 1005,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012175877",
+   "alongM": 17.67,
+   "widthM": 4.5,
+   "eavesM": 12.64,
+   "roofMaxM": 15.73,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012175878",
+   "alongM": 24.2,
+   "widthM": 8.61,
+   "eavesM": 12.52,
+   "roofMaxM": 13.86,
+   "storeys3dbag": 4,
+   "builtYear": 1773,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012175881",
+   "alongM": 37.84,
+   "widthM": 18.78,
+   "eavesM": 7.98,
+   "roofMaxM": 17.53,
+   "storeys3dbag": 5,
+   "builtYear": 1738,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012175879",
+   "alongM": 50.94,
+   "widthM": 7.5,
+   "eavesM": 12.75,
+   "roofMaxM": 15.87,
+   "storeys3dbag": 5,
+   "builtYear": 1798,
+   "uncertainty": []
+  }
+ ]
+}

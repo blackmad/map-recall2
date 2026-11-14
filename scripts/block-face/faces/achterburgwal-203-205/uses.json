@@ -1,0 +1,62 @@
+{
+ "street": "Oudezijds Achterburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:28:50.779Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012180278",
+   "addresses": [
+    "Oudezijds Achterburgwal 203B",
+    "Oudezijds Achterburgwal 203C",
+    "Oudezijds Achterburgwal 203D",
+    "Oudezijds Achterburgwal 203A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 203B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000584888"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 203C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000584889"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 203D",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000584890"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 203A",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000584866"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179862",
+   "addresses": [
+    "Oudezijds Achterburgwal 205"
+   ],
+   "groundUnits": [
+    {
+     "address": "Slijkstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000811215"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

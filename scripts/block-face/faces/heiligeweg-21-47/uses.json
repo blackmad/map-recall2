@@ -1,0 +1,367 @@
+{
+ "street": "Heiligeweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:15:56.748Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167510",
+   "addresses": [
+    "Heiligeweg 21",
+    "Heiligeweg 25",
+    "Heiligeweg 27",
+    "Heiligeweg 29",
+    "Heiligeweg 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 21",
+     "use": "winkelfunctie",
+     "areaM2": 284,
+     "bagId": "0363010000661131"
+    },
+    {
+     "address": "Heiligeweg 25",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 399,
+     "bagId": "0363010012101306"
+    },
+    {
+     "address": "Heiligeweg 25-H",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001169281"
+    },
+    {
+     "address": "Heiligeweg 25-1",
+     "use": "sportfunctie",
+     "areaM2": 381,
+     "bagId": "0363010001169282"
+    },
+    {
+     "address": "Heiligeweg 31",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010012590103"
+    },
+    {
+     "address": "Heiligeweg 29",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010012590102"
+    },
+    {
+     "address": "Heiligeweg 27",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010012590101"
+    },
+    {
+     "address": "Heiligeweg 25",
+     "use": "winkelfunctie",
+     "areaM2": 172,
+     "bagId": "0363010012590100"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038780,
+     "lngLat": [
+      4.8909755,
+      52.3676818
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "21",
+      "addr:postcode": "1012XN",
+      "addr:street": "Heiligeweg",
+      "name": "Expresso",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:15:56.748Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167502",
+   "addresses": [
+    "Heiligeweg 33A",
+    "Heiligeweg 33B",
+    "Heiligeweg 33",
+    "Heiligeweg 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 33A",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010012102740"
+    },
+    {
+     "address": "Heiligeweg 33B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012102741"
+    },
+    {
+     "address": "Heiligeweg 33",
+     "use": "woonfunctie",
+     "areaM2": 232,
+     "bagId": "0363010012092226"
+    },
+    {
+     "address": "Heiligeweg 35",
+     "use": "winkelfunctie",
+     "areaM2": 159,
+     "bagId": "0363010012092227"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038857,
+     "lngLat": [
+      4.8907999,
+      52.3676271
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "35",
+      "addr:postcode": "1012XN",
+      "addr:street": "Heiligeweg",
+      "name": "State of Art",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:15:56.748Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167501",
+   "addresses": [
+    "Heiligeweg 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 37",
+     "use": "winkelfunctie",
+     "areaM2": 212,
+     "bagId": "0363010000661137"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038859,
+     "lngLat": [
+      4.8907268,
+      52.3675999
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "37",
+      "addr:postcode": "1012XN",
+      "addr:street": "Heiligeweg",
+      "name": "El Ganso",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:15:56.748Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 5672518018,
+     "lngLat": [
+      4.890652,
+      52.3676628
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-10T08:15:56.748Z",
+     "match": "frontage",
+     "distanceM": 6.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012185925",
+   "addresses": [
+    "Heiligeweg 39",
+    "Heiligeweg 39A",
+    "Heiligeweg 39B",
+    "Heiligeweg 39C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000977647"
+    },
+    {
+     "address": "Heiligeweg 39A",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012164684"
+    },
+    {
+     "address": "Heiligeweg 39B",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012164685"
+    },
+    {
+     "address": "Heiligeweg 39C",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000960823"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3459827590,
+     "lngLat": [
+      4.8906811,
+      52.3675766
+     ],
+     "tags": {
+      "name": "Kipling",
+      "shop": "bag"
+     },
+     "fetchedAt": "2026-11-10T08:15:56.748Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012185839",
+   "addresses": [
+    "Heiligeweg 41A",
+    "Heiligeweg 41B",
+    "Heiligeweg 41C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 41A",
+     "use": "winkelfunctie",
+     "areaM2": 35,
+     "bagId": "0363010001041622"
+    },
+    {
+     "address": "Heiligeweg 41B",
+     "use": "kantoorfunctie",
+     "areaM2": 23,
+     "bagId": "0363010001041623"
+    },
+    {
+     "address": "Heiligeweg 41C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001041624"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3459869795,
+     "lngLat": [
+      4.8906046,
+      52.3675588
+     ],
+     "tags": {
+      "name": "Uno de 50",
+      "shop": "jewelry",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:15:56.748Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175810",
+   "addresses": [
+    "Heiligeweg 43",
+    "Heiligeweg 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 43",
+     "use": "woonfunctie",
+     "areaM2": 252,
+     "bagId": "0363010000661157"
+    },
+    {
+     "address": "Heiligeweg 45",
+     "use": "winkelfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000661160"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175807",
+   "addresses": [
+    "Heiligeweg 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 47",
+     "use": "winkelfunctie",
+     "areaM2": 215,
+     "bagId": "0363010000994567"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724039093,
+     "lngLat": [
+      4.8904635,
+      52.3675089
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47",
+      "addr:postcode": "1012XP",
+      "addr:street": "Heiligeweg",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:15:56.748Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
