@@ -877,6 +877,16 @@ export class GroundStore {
       const reach = Math.max(...profiles.map(p => Math.max(...p.halfWidth, ...(p.sides ?? []), dry.has(p) ? DRY_EDGE_M : 0))) + 4;
       const within: Rect = [Math.min(...profiles.map(p => p.bbox[0])) - reach, Math.min(...profiles.map(p => p.bbox[1])) - reach, Math.max(...profiles.map(p => p.bbox[2])) + reach, Math.max(...profiles.map(p => p.bbox[3])) + reach];
       const idx = await RoadIndex.paced([null, ...await this.waited(Promise.all(around.map(k => this.roadCell(k))), wait)], within, pace);
+      // holeCarry's crossers: the ground-level streets and tracks (not bridges) that may pass under a deck's hole range,
+      // with their boxes; built only when a deck has a hole range.
+      let crossLines: { g: Vec2[]; box: [number, number, number, number] }[] | null = null;
+      const crossersIn = ([bx0, by0, bx1, by1]: readonly number[]): Vec2[][] => {
+        crossLines ??= osms.flatMap(o => o?.ways ?? []).filter(w => (w.tags.highway || w.tags.railway) && !(w.tags.bridge && w.tags.bridge !== 'no')).map(w => {
+          const g = w.g.map(q => toLocal(q[0], q[1]));
+          return { g, box: [Math.min(...g.map(q => q[0])), Math.min(...g.map(q => q[1])), Math.max(...g.map(q => q[0])), Math.max(...g.map(q => q[1]))] as [number, number, number, number] };
+        });
+        return crossLines.filter(({ box }) => box[0] <= bx1 && box[2] >= bx0 && box[1] <= by1 && box[3] >= by0).map(l => l.g);
+      };
       for (const profile of profiles) {
         // A dry way deck's edge also stops halfway to the next dry way deck (the bus station's lanes share one structure:
         // each takes its own half of the survey polygon, so the pieces meet edge to edge instead of overlapping).
@@ -888,7 +898,7 @@ export class GroundStore {
         };
         const edges = surveyDeckEdges(profile, (x, y) => idx.onDeck(x, y), (x, y) => (idx.onGround(x, y) && !idx.onDeck(x, y)) || nearer(x, y), dry.has(profile) ? DRY_EDGE_M : 0, this.options.medianEdges !== false);
         if (edges) { profile.edges = edges; profile.bbox = edgesBox(profile, edges); }
-        if (profile.under && this.options.holeCarried !== false) { const carry = holeCarry(profile, (x, y) => idx.onGround(x, y) && !idx.onDeck(x, y)); if (carry) profile.underCarry = carry; }
+        if (profile.under && this.options.holeCarried !== false) { const carry = holeCarry(profile, (x, y) => idx.onGround(x, y) && !idx.onDeck(x, y), crossersIn(profile.bbox)); if (carry) profile.underCarry = carry; }
         await pace();
       }
     }

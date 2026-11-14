@@ -336,10 +336,31 @@ export function surveyDeckEdges(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidt
  * walk along the deck reaches as far as the ground-level (and not deck-level) survey runs on unbroken (gaps up to
  * HOLE_CARRY_GAP_M); those stations, padded by HOLE_CARRY_PAD_M, keep the deck's lift (GroundSurface.inUnderStreets).
  * A path crossing under the deck mid-range is not connected to the deck end and still drapes. Off: `?holeCarried=0`.
+ *
+ * `crossers` (the real ground-level network, lane f1b-jagged round 2: check:rail-joins tram crossings 51265,-42181 /
+ * 51271,-42150 / 51272,-42144 at the Provincialeweg OSM 7040533, where the Weesperstraat runs along the quay under the
+ * road and tram bridges): a non-bridge highway or railway OSM line crossing the road line inside a hole range (at more
+ * than HOLE_CARRY_CROSS_ANGLE to it) is a street under the deck, not the deck's own road; the carry stops
+ * HOLE_CARRY_CROSS_M short of it, so the survey drawing that street continuous with the approach no longer lifts it.
  */
-export const HOLE_CARRY_GAP_M = 1;
+export const HOLE_CARRY_GAP_M = 1, HOLE_CARRY_CROSS_M = 5, HOLE_CARRY_CROSS_ANGLE = 0.5;
 export interface HoleCarry { cols: Float64Array; lo: Float64Array; hi: Float64Array }
-export function holeCarry(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | 'edges' | 'deck' | 'under' | 'water'>, groundRoad: (x: number, y: number) => boolean): HoleCarry | undefined {
+/** Stations of the road line where a crosser line crosses it at more than HOLE_CARRY_CROSS_ANGLE (sine). */
+export function holeCrossStations(p: Pick<DeckProfile, 'x' | 'y' | 's'>, crossers: readonly (readonly (readonly [number, number])[])[]): number[] {
+  const out: number[] = [], n = p.s.length;
+  for (const line of crossers) for (let j = 0; j + 1 < line.length; j++) {
+    const [cx, cy] = line[j], [dx, dy] = line[j + 1], ex = dx - cx, ey = dy - cy, el = Math.hypot(ex, ey);
+    if (el < 1e-9) continue;
+    for (let i = 0; i + 1 < n; i++) {
+      const ax = p.x[i], ay = p.y[i], rx = p.x[i + 1] - ax, ry = p.y[i + 1] - ay, rl = Math.hypot(rx, ry), den = rx * ey - ry * ex;
+      if (rl < 1e-9 || Math.abs(den) / (rl * el) < HOLE_CARRY_CROSS_ANGLE) continue;
+      const t = ((cx - ax) * ey - (cy - ay) * ex) / den, u = ((cx - ax) * ry - (cy - ay) * rx) / den;
+      if (t >= 0 && t <= 1 && u >= 0 && u <= 1) out.push(p.s[i] + t * (p.s[i + 1] - p.s[i]));
+    }
+  }
+  return out;
+}
+export function holeCarry(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | 'edges' | 'deck' | 'under' | 'water'>, groundRoad: (x: number, y: number) => boolean, crossers: readonly (readonly (readonly [number, number])[])[] = []): HoleCarry | undefined {
   if (!p.under?.length) return undefined;
   const n = p.s.length;
   let reach = 0;
@@ -351,6 +372,7 @@ export function holeCarry(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | '
     return [p.x[i] - dy / l * t, p.y[i] + dx / l * t];
   };
   let any = false;
+  const crossStations = crossers.length ? holeCrossStations(p, crossers) : [];
   for (const [a, b] of p.under) {
     // A hole range runs from its land end to the water (wayDecks.ts runs: [lo, first] before it, [last, hi] after it).
     const fromStart = p.water ? Math.abs(b - p.water[0]) < 1 : Math.abs(a - p.deck[0]) < 1, fromEnd = !fromStart && (p.water ? Math.abs(a - p.water[1]) < 1 : Math.abs(b - p.deck[1]) < 1);
@@ -361,10 +383,14 @@ export function holeCarry(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | '
     // Only where the deck's road line itself is still ground-level survey at the deck end (the bridge's survey starts
     // inside the range): a deck whose road is deck-level from its end (Lelylaan 7382981) carries nothing at ground level.
     if (!idx.length || !groundRoad(p.x[idx[0]], p.y[idx[0]])) continue;
+    // A street crossing under the deck in this range: the carry stops HOLE_CARRY_CROSS_M short of it.
+    const cross = crossStations.filter(v => v >= a - HOLE_CARRY_CROSS_M && v <= b + HOLE_CARRY_CROSS_M);
+    const stop = fromStart ? Math.min(Infinity, ...cross) - HOLE_CARRY_CROSS_M : Math.max(-Infinity, ...cross) + HOLE_CARRY_CROSS_M;
     for (let c = 0; c < cols.length; c++) {
       let last = -1, gapFrom = -1;
       for (let k = 0; k < idx.length; k++) {
         const i = idx[k];
+        if (fromStart ? p.s[i] > stop : p.s[i] < stop) break;
         if (groundRoad(...at(i, cols[c]))) { last = k; gapFrom = -1; continue; }
         if (last < 0) break;
         if (gapFrom < 0) gapFrom = k;

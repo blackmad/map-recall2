@@ -7,7 +7,8 @@ import { buildCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { kitTrace, parapetTrace } from '../../src/canalRecall/ownGround/bridgeKit.ts';
 import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGround/railingRuns.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
-import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
+import { GroundSurface, type Vec2 } from '../../src/canalRecall/ownGround/surface.ts';
+import { HOLE_CARRY_CROSS_M, holeCrossStations } from '../../src/canalRecall/ownGround/bridgeGaps.ts';
 
 type Read = (path: string) => Promise<Uint8Array>;
 type Check = (ok: boolean, what: string) => void;
@@ -213,7 +214,8 @@ export async function f1bRegressions(readExtract: Read, check: Check): Promise<v
  * holeCarry). Within the first JUNCTION_M of a hole range from its deck-end side, inside the deck's footprint (0.5 m in
  * from its edge), clear of every deck-level survey polygon and off a median berm, at most `maxSunk` road-surface vertices
  * lie more than JUNCTION_SUNK_M under the riding surface (the junction is continuous with the deck); `holeCarried: false`
- * (main before this lane) puts the shard back.
+ * (main before this lane) puts the shard back. The zone stops HOLE_CARRY_CROSS_M short of a street that crosses under
+ * the deck (Coentunnelcircuit: the Meteorenweg under both carriageways at station 18.8), which holeCarry leaves draped.
  */
 // OSM7376770 (the user's frame) carries no pinMin: its shard is a few long triangles that this metric reads as 1 vertex
 // and 0 m2 with or without holeCarried; its liveness is the frame pair (tests/e2e/f1b-jagged-frames.spec.ts).
@@ -226,10 +228,14 @@ export const HOLE_JUNCTIONS: readonly { id: string; label: string; at: [number, 
 export const JUNCTION_M = 12, JUNCTION_SUNK_M = 0.3;
 const JUNCTION_LAYERS = ['asphalt', 'paving', 'klinker', 'brick', 'cycle', 'square'] as const;
 /** Road-surface vertices of a built cell sunk under the riding surface at a hole deck's junction (see HOLE_JUNCTIONS). */
-export function junctionSunk(st: GroundStore, cell: ReturnType<typeof buildCell>, index: RoadIndex, d: GroundStore['surface']['decks'][number]): { n: number; maxM: number; areaM2: number } {
+export function junctionSunk(st: GroundStore, cell: ReturnType<typeof buildCell>, index: RoadIndex, d: GroundStore['surface']['decks'][number], crossS: readonly number[] = []): { n: number; maxM: number; areaM2: number } {
   const p = d.profile, [bx0, by0, bx1, by1] = p.bbox;
-  // The first JUNCTION_M of each hole range from its deck-end side (the deck may run on past it).
-  const zones = (p.under ?? []).map(([a, b]): [number, number] => (Math.abs(a - p.deck[0]) <= Math.abs(b - p.deck[1]) ? [a, a + JUNCTION_M] : [b - JUNCTION_M, b]));
+  // The first JUNCTION_M of each hole range from its deck-end side (the deck may run on past it), short of a street that
+  // crosses under the deck there (crossS, bridgeGaps.ts holeCrossStations: that street lies under the deck, not at its end).
+  const zones = (p.under ?? []).map(([a, b]): [number, number] => {
+    const near = crossS.filter(v => v >= a - HOLE_CARRY_CROSS_M && v <= b + HOLE_CARRY_CROSS_M);
+    return Math.abs(a - p.deck[0]) <= Math.abs(b - p.deck[1]) ? [a, Math.min(a + JUNCTION_M, ...near.map(v => v - HOLE_CARRY_CROSS_M))] : [Math.max(b - JUNCTION_M, ...near.map(v => v + HOLE_CARRY_CROSS_M)), b];
+  });
   // In the junction zone, inside the footprint, off deck-level polygons and median berms, sunk more than JUNCTION_SUNK_M.
   const sunkAt = (x: number, y: number, z: number, probe: boolean): number => {
     if (x < bx0 || x > bx1 || y < by0 || y > by1) return 0;
@@ -262,7 +268,13 @@ export function junctionSunk(st: GroundStore, cell: ReturnType<typeof buildCell>
 export async function holeJunctionSunk(readExtract: Read, opts: Record<string, boolean>, reg: (typeof HOLE_JUNCTIONS)[number]): Promise<{ n: number; maxM: number; areaM2: number } | null> {
   const { st, cell, index } = await parapetLines(readExtract, opts, reg.at, []);
   const d = st.surface.decks.find(q => q.profile.id === reg.id && q.profile.under);
-  return d ? junctionSunk(st, cell, index, d) : null;
+  if (!d) return null;
+  const [x, y] = toLocal(reg.at[0], reg.at[1]), seen = new Set<number>(), lines: Vec2[][] = [];
+  for (const k of GroundStore.neighbours(st.cellAt(x, y))) for (const w of (await st.osmCell(k))?.ways ?? []) {
+    if (seen.has(w.id) || !(w.tags.highway || w.tags.railway) || (w.tags.bridge && w.tags.bridge !== 'no')) continue;
+    seen.add(w.id); lines.push(w.g.map(q => toLocal(q[0], q[1])));
+  }
+  return junctionSunk(st, cell, index, d, holeCrossStations(d.profile, lines));
 }
 export async function holeJunctionRegressions(readExtract: Read, check: Check): Promise<void> {
   for (const reg of HOLE_JUNCTIONS) {
