@@ -1,0 +1,162 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179436",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "souterrain": false,
+    "gable": "cornice",
+    "rowHeads": [
+     "flat",
+     "segmental",
+     "flat"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#685747"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179436.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179436.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179436.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179436.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179436.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179436.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179436.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179436.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179436.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179436.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#36322e",
+   "estimate": "#635a50",
+   "drawn": "#837160",
+   "brick": "#685747",
+   "captures": [
+    {
+     "hex": "#36322e",
+     "captured": "2023-01-16T10:07:05.555330Z",
+     "panoId": "TMX7316010203-002937_pano_0006_000038",
+     "pinned": true,
+     "out": "#57514b",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5b6260",
+     "captured": "2025-07-14T07:58:57Z",
+     "panoId": "recording_2025-07-14_07-34-51_00894",
+     "out": "#555c5a",
+     "gain": 0.867,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#776b64",
+     "captured": "2019-05-10T09:47:45.575620Z",
+     "panoId": "TMX7316010203-001176_pano_0000_000142",
+     "out": "#655a54",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5d5a56",
+     "captured": "2016-08-15T07:02:44.781440Z",
+     "panoId": "TMX7316060226-000020_pano_0000_000519",
+     "out": "#716d68",
+     "gain": 1.497,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white projecting bay window on consoles on the first upper storey at the left"
+  },
+  {
+   "component": "shutters",
+   "what": "striped fabric awnings over the top-storey windows"
+  },
+  {
+   "component": "balcony",
+   "what": "a low iron balconette in front of the right first-storey window"
+  }
+ ]
+}

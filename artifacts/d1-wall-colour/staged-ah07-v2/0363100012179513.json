@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179513",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 3,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "bands": "speklagen",
+    "cornice": "none"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#7d5444"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179513.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179513.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179513.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179513.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179513.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179513.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179513.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179513.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179513.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179513.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#5f524e",
+   "estimate": "#74584e",
+   "drawn": "#9a705f",
+   "brick": "#7d5444",
+   "captures": [
+    {
+     "hex": "#5f524e",
+     "captured": "2021-03-15T08:50:16.372630Z",
+     "panoId": "TMX7316010203-002040_pano_0001_000521",
+     "pinned": true,
+     "out": "#695b57",
+     "gain": 1.244,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#675243",
+     "captured": "2024-12-03T14:02:15Z",
+     "panoId": "b_20241203_1333_Track19_Sphere_00057",
+     "out": "#7f6654",
+     "gain": 1.569,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#64585f",
+     "captured": "2018-05-02T08:26:26.918760Z",
+     "panoId": "TMX7316010203-000702_pano_0000_000580",
+     "out": "#5a4f56",
+     "gain": 0.804,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5d4f49",
+     "captured": "2019-01-10T12:11:22.726680Z",
+     "panoId": "TMX7316010203-001047_pano_0000_002536",
+     "out": "#6c5c55",
+     "gain": 1.369,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "a plain triangular gable with white coping and one attic window"
+  },
+  {
+   "component": "balcony",
+   "what": "wrought-iron balconets on the centre axis"
+  },
+  {
+   "component": "shopfront",
+   "what": "a vertical hotel sign and a red canopy over the door"
+  },
+  {
+   "component": "door",
+   "what": "twin round-arched fanlight with a small pedimented gablet over the door"
+  }
+ ]
+}

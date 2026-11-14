@@ -3395,3 +3395,45 @@ within 3 points of opus except exact storeys (-4), bands (-8), band kind (-11) a
 Prompt `prompt-v4.1.md` adds `block-dressings`, `attic-frieze`, `off-centre`, `bays: 0` and checked `low` keys. Pilot AH07:
 194 of 219 pands had a cut (25 without a panorama in 5-35 m; none has an archived crop), staged at
 `artifacts/describer-d1/staged-ah07/` (never published).
+
+## §15 Wall sample v2: exposure-normalised D1 wall colour (lane d1-wall-colour, 2026-11-14, flag `WALL_SAMPLE=2` / `?wallSample=2`, default off)
+
+Why: D1 staged walls went near-black. 3 in 4 staged fronts sat on the display floor (drawn L 0.34, pixel ~0.36, C ~0.01, hue ~230 blue-grey). Over the 189 page pands the means were photo L 0.458 / C 0.026, sample 0.409 / 0.016 and staged pixel 0.381 / 0.013.
+
+Chain from sample to pixel:
+
+1. `cuts.json w1.hex` (the pinned capture, game-lens cut) goes to `stage.ts wallBrickFromSample`. That runs `fitWallBrick` with gain 1.14 × `cityWallTint`, under a floor brick at L 0.3, and writes `palette/brick`.
+2. `view.ts` copies it to `wallHex`.
+3. `decorate.ts specWallColour` applies `specWallSource`, then `specWallDisplay` (lift to minL 0.34), then `paleWarmHeld`.
+4. `threeBuildingFeatures` applies `levelWallHex` (chroma ×0.91).
+5. `cityLookTint` clamps HSL S to 0.12–0.5 and sets L to 0.12 + 0.9L in 0.3–0.6.
+6. The tint multiplies the brick cell and is then lit.
+
+Method (`src/canalRecall/houseSpec/wallSample.ts`, pure and tested):
+
+1. Per capture, apply a linear gain to the scene median Y, aiming for 0.085. The gain is clamped to 0.7–2.6.
+2. Take a per-axis OKLab median across the pand's captures, from `scripts/house-specs/wall-sample/captures.ts`, at up to 4 captures within 40 m.
+3. Apply chroma ×1.8 and cap the L change at 0.22.
+4. Invert the measured render transfer (pixel L = 0.617·drawn + 0.127, C ×0.836, cast −0.005/−0.008).
+5. Invert `specWallDisplay` by bisection.
+6. Hold below the pale-warm guard.
+
+The receipt goes in `facts/wallSample`. The calibration gives zero mean bias against the rule-10 photos. Grey-world white balance was rejected because it kills brick chroma. Hue is not corrected.
+
+Results (rule-10 rows, W1 wallLab, 39 rows):
+
+| | mean \|dL\| | mean dL | mean dC |
+|---|---|---|---|
+| today | 0.109 | −0.047 | −0.015 |
+| D1 staged | 0.139 | −0.120 | −0.020 |
+| v2 | 0.112 | −0.024 | −0.005 |
+
+v2 removes the near-black fronts. It also lifts fronts that really are painted black or dark (keizersgracht-odd-1, herengracht-even-2). A single photo's capture is not predictable: the per-pand |dL| to the photo is ~0.115 whichever rule is used.
+
+Lane tools are in `scripts/house-specs/wall-sample/`:
+
+- `captures.ts` takes the samples.
+- `calibrate.ts` fits the transfer and the exposure target.
+- `restage.ts` re-applies v2 to a staged dir.
+- `row-lab.ts` measures the rows.
+- `sheets.ts` builds the sheets.

@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171983",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 3,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "souterrain": false,
+    "gable": "cornice"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#55412c"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171983.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171983.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171983.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171983.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171983.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171983.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171983.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171983.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171983.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171983.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop",
+  "wallSample": {
+   "v": 2,
+   "raw": "#4e4132",
+   "estimate": "#524639",
+   "drawn": "#65503b",
+   "brick": "#55412c",
+   "captures": [
+    {
+     "hex": "#4e4132",
+     "captured": "2024-12-03T14:18:51Z",
+     "panoId": "b_20241203_1333_Track24_Sphere_00065",
+     "pinned": true,
+     "out": "#584a39",
+     "gain": 1.279,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#514a43",
+     "captured": "2020-04-29T11:35:17.379410Z",
+     "panoId": "TMX7316010203-001681_pano_0000_004334",
+     "out": "#4f4841",
+     "gain": 0.944,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#3e3b38",
+     "captured": "2022-04-26T08:10:58.465130Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000132",
+     "out": "#34312e",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#554e46",
+     "captured": "2020-08-31T11:40:48.171210Z",
+     "panoId": "TMX7316010203-001900_pano_0003_000113",
+     "out": "#4d473f",
+     "gain": 0.82,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "shopfront",
+   "what": "a red-painted timber shopfront with a gridded upper glazing band over a door, a window and a panel, under a black fascia"
+  },
+  {
+   "component": "window",
+   "what": "the right axis has white stone surrounds with ornamented heads on the first and second storeys"
+  },
+  {
+   "component": "dormer",
+   "what": "a wide brick dormer with two windows and a white pediment with hoist beam stands behind the cornice"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a white frieze with a row of dark square panels under the cornice"
+  }
+ ]
+}

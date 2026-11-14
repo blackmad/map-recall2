@@ -1,0 +1,170 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176210",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 2,
+    "bands": "storey",
+    "souterrain": false,
+    "gable": "cornice",
+    "rowHeads": [
+     "flat",
+     "flat",
+     "segmental",
+     "flat"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#594c3d"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176210.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176210.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176210.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176210.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176210.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176210.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176210.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176210.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176210.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176210.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176210.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop",
+  "wallSample": {
+   "v": 2,
+   "raw": "#5f503d",
+   "estimate": "#565047",
+   "drawn": "#6e6050",
+   "brick": "#594c3d",
+   "captures": [
+    {
+     "hex": "#5f503d",
+     "captured": "2024-12-03T14:19:12Z",
+     "panoId": "b_20241203_1333_Track24_Sphere_00077",
+     "pinned": true,
+     "out": "#8b765b",
+     "gain": 2.252,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#625b53",
+     "captured": "2019-05-10T10:30:43.951420Z",
+     "panoId": "TMX7316010203-001176_pano_0001_000346",
+     "out": "#5e5850",
+     "gain": 0.924,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#565755",
+     "captured": "2018-05-02T08:29:19.832510Z",
+     "panoId": "TMX7316010203-000702_pano_0000_000715",
+     "out": "#484947",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#464442",
+     "captured": "2022-06-22T07:49:32.878920Z",
+     "panoId": "TMX7316010203-002619_pano_0014_000027",
+     "out": "#3a3937",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "balcony",
+   "what": "a white balustraded balcony across both windows of the second storey"
+  },
+  {
+   "component": "window",
+   "what": "white arched hood mouldings over the second-storey windows"
+  },
+  {
+   "component": "dormer",
+   "what": "one white ornamented dormer plus two roof lights in the roof"
+  }
+ ]
+}

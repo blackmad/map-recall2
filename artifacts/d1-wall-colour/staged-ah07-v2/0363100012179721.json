@@ -1,0 +1,153 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179721",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "storey"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#645245"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179721.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179721.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179721.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179721.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179721.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179721.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179721.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179721.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179721.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#433733",
+   "estimate": "#5f554e",
+   "drawn": "#7c695c",
+   "brick": "#645245",
+   "captures": [
+    {
+     "hex": "#433733",
+     "captured": "2019-01-11T08:06:53.944430Z",
+     "panoId": "TMX7316010203-001048_pano_0000_000469",
+     "pinned": true,
+     "out": "#6b5953",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#525352",
+     "captured": "2025-07-14T07:52:15Z",
+     "panoId": "recording_2025-07-14_07-34-51_00628",
+     "out": "#454645",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5b524f",
+     "captured": "2019-01-10T12:11:17.216730Z",
+     "panoId": "TMX7316010203-001047_pano_0000_002524",
+     "out": "#6c615e",
+     "gain": 1.426,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#575651",
+     "captured": "2016-08-15T05:58:13.463370Z",
+     "panoId": "TMX7316060226-000019_pano_0000_004992",
+     "out": "#52514c",
+     "gain": 0.889,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "a stone balustrade parapet with a small carved pedimented gablet over the left bay"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched door in a grey stone portal with pilasters"
+  },
+  {
+   "component": "window",
+   "what": "grey stone pilaster strips and frames divide the brick into panels round every window"
+  }
+ ]
+}

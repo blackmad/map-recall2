@@ -1,0 +1,131 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179511",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 2,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#695342"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179511.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179511.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179511.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179511.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179511.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179511.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179511.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "balcony",
+   "what": "wrought-iron balconets on the left axis"
+  }
+ ],
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#342e2a",
+   "estimate": "#64564c",
+   "drawn": "#836b5a",
+   "brick": "#695342",
+   "captures": [
+    {
+     "hex": "#342e2a",
+     "captured": "2023-01-16T10:06:58.460350Z",
+     "panoId": "TMX7316010203-002937_pano_0006_000028",
+     "pinned": true,
+     "out": "#544b45",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6f6561",
+     "captured": "2019-05-10T09:47:36.145700Z",
+     "panoId": "TMX7316010203-001176_pano_0000_000131",
+     "out": "#615854",
+     "gain": 0.746,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#484340",
+     "captured": "2016-08-15T07:02:39.046610Z",
+     "panoId": "TMX7316060226-000020_pano_0000_000511",
+     "out": "#5e5854",
+     "gain": 1.744,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#564d3b",
+     "captured": "2024-12-04T09:48:44Z",
+     "panoId": "b_20241204_1003_Track07_Sphere_00130",
+     "out": "#615743",
+     "gain": 1.284,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

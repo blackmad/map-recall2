@@ -52,7 +52,7 @@ export const WALL_SAMPLE = {
   /** Cap on the OKLab L change against the pinned raw sample. */
   maxDL: 0.22,
   /** The render transfer, drawn wall (decorate's specRecipe.wallHex) -> rule-10 pixel (W1 wallLab), measured on the belt frames. */
-  render: { kL: 0.649, cL: 0.141, kC: 0.62, cast: [-0.002, -0.004] as readonly [number, number] },
+  render: { kL: 0.617, cL: 0.127, kC: 0.836, cast: [-0.0051, -0.0076] as readonly [number, number] },
   /** Highest drawn L a warm brick may take: under PALE_WARM.minL, so the guard does not hold it. */
   maxDrawnWarmL: PALE_WARM.minL - 0.01,
   /** Highest drawn chroma (a sane brick). */

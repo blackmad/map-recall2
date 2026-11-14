@@ -1,0 +1,155 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179382",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 2,
+    "souterrain": false,
+    "rowHeads": [
+     "flat",
+     "relieving",
+     "flat"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#634c3f"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179382.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179382.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179382.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179382.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179382.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179382.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179382.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179382.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179382.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#373431",
+   "estimate": "#5e5149",
+   "drawn": "#796254",
+   "brick": "#634c3f",
+   "captures": [
+    {
+     "hex": "#373431",
+     "captured": "2023-01-16T10:07:01.035490Z",
+     "panoId": "TMX7316010203-002937_pano_0006_000032",
+     "pinned": true,
+     "out": "#595450",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6d635d",
+     "captured": "2019-05-10T09:47:40.640610Z",
+     "panoId": "TMX7316010203-001176_pano_0000_000136",
+     "out": "#5c534e",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#505152",
+     "captured": "2016-08-15T07:02:42.101440Z",
+     "panoId": "TMX7316060226-000020_pano_0000_000515",
+     "out": "#525354",
+     "gain": 1.042,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5e554f",
+     "captured": "2020-04-29T11:30:35.736570Z",
+     "panoId": "TMX7316010203-001681_pano_0000_003994",
+     "out": "#584f49",
+     "gain": 0.864,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window",
+   "what": "a round brick arch with a filled tympanum over a first-storey window"
+  },
+  {
+   "component": "relief",
+   "what": "white stone blocks set in chains up the window reveals and piers"
+  },
+  {
+   "component": "dormer",
+   "what": "a dormer in the mansard face above the cornice"
+  }
+ ]
+}

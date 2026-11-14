@@ -1,0 +1,160 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179370",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "storey",
+    "souterrain": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#734c3b"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179370.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179370.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179370.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179370.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179370.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179370.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179370.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179370.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179370.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179370.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#615044",
+   "estimate": "#6d5146",
+   "drawn": "#8d6452",
+   "brick": "#734c3b",
+   "captures": [
+    {
+     "hex": "#615044",
+     "captured": "2019-01-30T13:03:51.343830Z",
+     "panoId": "TMX7316010203-001075_pano_0001_000038",
+     "pinned": true,
+     "out": "#635145",
+     "gain": 1.036,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6b514c",
+     "captured": "2023-02-06T08:44:59.090170Z",
+     "panoId": "TMX7316010203-002956_pano_0005_000068",
+     "out": "#6c524d",
+     "gain": 1.017,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#3c3531",
+     "captured": "2023-03-13T08:27:08.969900Z",
+     "panoId": "TMX7316010203-002994_pano_0000_000068",
+     "out": "#605650",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#615452",
+     "captured": "2023-02-20T08:55:30.603810Z",
+     "panoId": "TMX7316010203-002975_pano_0007_000179",
+     "out": "#6b5d5b",
+     "gain": 1.241,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white projecting bay window on the first upper storey at the left"
+  },
+  {
+   "component": "door",
+   "what": "double doors under a pair of round-arched transom lights"
+  },
+  {
+   "component": "roof",
+   "what": "a large glazed roof-storey window set into the mansard"
+  }
+ ]
+}

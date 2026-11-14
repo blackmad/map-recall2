@@ -1,0 +1,160 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171823",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 5,
+    "bays": 6,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": false,
+    "cornice": "none"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#58422d"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171823.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop",
+  "wallSample": {
+   "v": 2,
+   "raw": "#5d5148",
+   "estimate": "#554739",
+   "drawn": "#69523c",
+   "brick": "#58422d",
+   "captures": [
+    {
+     "hex": "#5d5148",
+     "captured": "2019-01-10T12:01:44.667010Z",
+     "panoId": "TMX7316010203-001047_pano_0000_001722",
+     "pinned": true,
+     "out": "#594e45",
+     "gain": 0.914,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#3b3021",
+     "captured": "2024-12-11T10:03:55Z",
+     "panoId": "b_20241211_0954_Track09_Sphere_00283",
+     "out": "#443726",
+     "gain": 1.303,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#46525c",
+     "captured": "2025-07-14T06:46:01Z",
+     "panoId": "recording_2025-07-14_06-43-08_00075",
+     "out": "#3a454d",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#7c756e",
+     "captured": "2020-04-24T11:07:10.090920Z",
+     "panoId": "TMX7316010203-001675_pano_0000_005734",
+     "out": "#69635d",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "stacked full-height glazed bay windows with metal fronts and glass balconies on top, three such columns on the front"
+  },
+  {
+   "component": "roof",
+   "what": "a curved glass-roofed rooftop pavilion on the corner stair tower"
+  },
+  {
+   "component": "shopfront",
+   "what": "a recessed arcade ground storey on round columns with an office entrance canopy and a jeweller's shop"
+  }
+ ]
+}

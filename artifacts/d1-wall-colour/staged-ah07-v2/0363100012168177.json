@@ -1,0 +1,171 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168177",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "speklagen",
+    "souterrain": true,
+    "gable": "cornice"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#594631"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168177.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168177.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168177.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168177.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168177.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168177.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168177.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168177.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168177.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168177.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168177.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#44413f",
+   "estimate": "#564b3d",
+   "drawn": "#6c5842",
+   "brick": "#594631",
+   "captures": [
+    {
+     "hex": "#44413f",
+     "captured": "2022-12-14T12:41:48.558840Z",
+     "panoId": "TMX7316010203-002857_pano_0008_000059",
+     "pinned": true,
+     "out": "#615d5b",
+     "gain": 2.087,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#605a4f",
+     "captured": "2020-04-24T11:08:39.010590Z",
+     "panoId": "TMX7316010203-001675_pano_0000_005850",
+     "out": "#544f45",
+     "gain": 0.759,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#575046",
+     "captured": "2018-05-02T08:26:21.903850Z",
+     "panoId": "TMX7316010203-000702_pano_0000_000572",
+     "out": "#49433a",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#483e39",
+     "captured": "2019-01-10T12:11:19.042000Z",
+     "panoId": "TMX7316010203-001047_pano_0000_002528",
+     "out": "#544843",
+     "gain": 1.356,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "balcony",
+   "what": "a stone balcony on heavy consoles at the first storey centre and a small rounded stone balcony at the second storey centre"
+  },
+  {
+   "component": "relief",
+   "what": "round stone medallions on the wall beside the second-storey windows"
+  },
+  {
+   "component": "door",
+   "what": "the door sits in a deep round-arched portal at the top of a short stoop"
+  },
+  {
+   "component": "dormer",
+   "what": "a dormer over the centre, covered by a blue tarpaulin"
+  }
+ ]
+}

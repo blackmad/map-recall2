@@ -1,0 +1,153 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179444",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": true
+   }
+  ],
+  "palette": {
+   "wallMaterial": "painted-brick",
+   "brick": "#514143"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179444.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179444.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179444.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179444.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179444.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179444.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179444.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179444.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179444.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#453d40",
+   "estimate": "#4e464b",
+   "drawn": "#605052",
+   "brick": "#514143",
+   "captures": [
+    {
+     "hex": "#453d40",
+     "captured": "2021-03-15T08:50:21.062370Z",
+     "panoId": "TMX7316010203-002040_pano_0001_000528",
+     "pinned": true,
+     "out": "#4f464a",
+     "gain": 1.323,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#484245",
+     "captured": "2018-05-11T09:38:29.860300Z",
+     "panoId": "TMX7316010203-000714_pano_0001_004159",
+     "out": "#4d474a",
+     "gain": 1.158,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#4c4e57",
+     "captured": "2020-04-29T11:32:48.655490Z",
+     "panoId": "TMX7316010203-001681_pano_0000_004176",
+     "out": "#4c4e57",
+     "gain": 1.005,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#3a342b",
+     "captured": "2024-12-03T14:02:23Z",
+     "panoId": "b_20241203_1333_Track19_Sphere_00066",
+     "out": "#484136",
+     "gain": 1.536,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "one ornate white dormer with scrolled sides, a balconet and a pediment, flanked by two small dormers"
+  },
+  {
+   "component": "window",
+   "what": "white head blocks: a keystone and corner blocks over each window"
+  },
+  {
+   "component": "door",
+   "what": "double door under a white fanlight with three small round arches"
+  }
+ ]
+}

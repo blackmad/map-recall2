@@ -1,0 +1,111 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012175788",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "windowHead": {
+     "kind": "flat"
+    }
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#705d44"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175788.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175788.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175788.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175788.jpg",
+   "at": "2026-11-14"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175788.jpg",
+   "at": "2026-11-14"
+  }
+ },
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#312b26",
+   "estimate": "#695f4e",
+   "drawn": "#8d795f",
+   "brick": "#705d44",
+   "captures": [
+    {
+     "hex": "#312b26",
+     "captured": "2020-01-10T10:06:58.272310Z",
+     "panoId": "TMX7316010203-001549_pano_0000_000503",
+     "pinned": true,
+     "out": "#413933",
+     "gain": 1.711,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#403d3a",
+     "captured": "2023-01-30T09:38:19.276730Z",
+     "panoId": "TMX7316010203-002950_pano_0001_000101",
+     "out": "#66625d",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5b554a",
+     "captured": "2022-04-22T10:45:03.912910Z",
+     "panoId": "TMX7316010203-002538_pano_0000_002899",
+     "out": "#635d51",
+     "gain": 1.196,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#605a51",
+     "captured": "2023-02-27T11:26:57.820270Z",
+     "panoId": "TMX7316010203-002985_pano_0013_000014",
+     "out": "#6f695e",
+     "gain": 1.368,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

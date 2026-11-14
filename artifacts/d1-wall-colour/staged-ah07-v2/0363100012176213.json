@@ -1,0 +1,167 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176213",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 3,
+    "souterrain": false,
+    "gable": "cornice",
+    "rowHeads": [
+     "flat",
+     "segmental",
+     "flat",
+     "flat"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#433426"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176213.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176213.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176213.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176213.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176213.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176213.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176213.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176213.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176213.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176213.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#342c1c",
+   "estimate": "#413931",
+   "drawn": "#4a3a2c",
+   "brick": "#433426",
+   "captures": [
+    {
+     "hex": "#342c1c",
+     "captured": "2024-12-11T10:04:30Z",
+     "panoId": "b_20241211_0954_Track10_Sphere_00009",
+     "pinned": true,
+     "out": "#39301f",
+     "gain": 1.18,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#47423e",
+     "captured": "2019-05-10T10:30:40.431420Z",
+     "panoId": "TMX7316010203-001176_pano_0001_000341",
+     "out": "#45403d",
+     "gain": 0.954,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#463c3e",
+     "captured": "2020-08-31T11:41:00.041280Z",
+     "panoId": "TMX7316010203-001900_pano_0003_000127",
+     "out": "#3e3537",
+     "gain": 0.796,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#3f3c36",
+     "captured": "2016-08-02T10:29:45.824300Z",
+     "panoId": "TMX7316060226-000011_pano_0000_008926",
+     "out": "#403d37",
+     "gain": 1.033,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window",
+   "what": "white arched hood mouldings joined across the first-floor windows"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconettes in front of the first-floor French windows and a small balconette on the centre second-floor window"
+  },
+  {
+   "component": "door",
+   "what": "the ground storey is painted white with a red panelled door under a toplight"
+  },
+  {
+   "component": "dormer",
+   "what": "one white dormer behind the cornice"
+  }
+ ]
+}

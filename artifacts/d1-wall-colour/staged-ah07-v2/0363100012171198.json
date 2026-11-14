@@ -1,0 +1,153 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171198",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 1,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "painted-brick",
+   "brick": "#9b947c"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171198.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "door-only",
+  "wallSample": {
+   "v": 2,
+   "raw": "#747670",
+   "estimate": "#7b7b6c",
+   "drawn": "#b0a890",
+   "brick": "#9b947c",
+   "captures": [
+    {
+     "hex": "#747670",
+     "captured": "2023-03-06T08:22:06.644460Z",
+     "panoId": "TMX7316010203-002988_pano_0009_000062",
+     "pinned": true,
+     "out": "#7e807a",
+     "gain": 1.195,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#676458",
+     "captured": "2023-03-13T08:29:33.438800Z",
+     "panoId": "TMX7316010203-002994_pano_0001_000061",
+     "out": "#787567",
+     "gain": 1.386,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#787a77",
+     "captured": "2019-05-10T10:01:29.639290Z",
+     "panoId": "TMX7316010203-001176_pano_0000_000773",
+     "out": "#6f706e",
+     "gain": 0.84,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#87887d",
+     "captured": "2023-01-30T12:01:51.173660Z",
+     "panoId": "TMX7316010203-002951_pano_0021_000063",
+     "out": "#88897e",
+     "gain": 1.019,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "balcony",
+   "what": "a black iron balcony across the front at the second-storey floor and a white balustraded balcony at the first-storey floor"
+  },
+  {
+   "component": "window",
+   "what": "each storey has one wide window of a centre pair with narrow side lights under a row of top lights"
+  },
+  {
+   "component": "roof",
+   "what": "a dark roof face with one white-framed dormer behind the cornice"
+  }
+ ]
+}

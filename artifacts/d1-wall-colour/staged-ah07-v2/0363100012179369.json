@@ -1,0 +1,133 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179369",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "souterrain": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#724a34"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179369.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179369.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179369.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179369.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179369.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179369.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179369.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#53483b",
+   "estimate": "#6c4f41",
+   "drawn": "#8b614b",
+   "brick": "#724a34",
+   "captures": [
+    {
+     "hex": "#53483b",
+     "captured": "2019-01-30T13:03:50.853810Z",
+     "panoId": "TMX7316010203-001075_pano_0001_000037",
+     "pinned": true,
+     "out": "#51463a",
+     "gain": 0.956,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5f4d4c",
+     "captured": "2023-02-06T08:44:57.845380Z",
+     "panoId": "TMX7316010203-002956_pano_0005_000066",
+     "out": "#645150",
+     "gain": 1.118,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#3b3430",
+     "captured": "2023-03-13T08:27:07.059900Z",
+     "panoId": "TMX7316010203-002994_pano_0000_000065",
+     "out": "#5f544e",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#947367",
+     "captured": "2023-01-30T11:58:38.605290Z",
+     "panoId": "TMX7316010203-002951_pano_0020_000067",
+     "out": "#947367",
+     "gain": 0.999,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white projecting bay window on the first upper storey at the left edge"
+  },
+  {
+   "component": "dormer",
+   "what": "one dormer in the slate mansard face"
+  }
+ ]
+}

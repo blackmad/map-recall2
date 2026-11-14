@@ -1,0 +1,90 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176838",
+ "design": {
+  "palette": {
+   "brick": "#423530"
+  }
+ },
+ "provenance": {
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176838.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176838.jpg",
+   "at": null
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "a glazed set-back roof storey shows above the scaffold"
+  }
+ ],
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#1e1d1c",
+   "estimate": "#413a39",
+   "drawn": "#4a3c37",
+   "brick": "#423530",
+   "captures": [
+    {
+     "hex": "#1e1d1c",
+     "captured": "2021-12-29T11:17:19.518670Z",
+     "panoId": "TMX7316010203-002363_pano_0005_000489",
+     "pinned": true,
+     "out": "#343231",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#4a4646",
+     "captured": "2018-05-11T09:39:35.624730Z",
+     "panoId": "TMX7316010203-000714_pano_0001_004245",
+     "out": "#3e3a3a",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#474446",
+     "captured": "2022-04-26T08:10:49.315220Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000112",
+     "out": "#3e3b3d",
+     "gain": 0.762,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#463a34",
+     "captured": "2019-01-10T12:12:20.466210Z",
+     "panoId": "TMX7316010203-001047_pano_0000_002629",
+     "out": "#50423b",
+     "gain": 1.294,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

@@ -1,0 +1,156 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171193",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "bands": "both",
+    "souterrain": true
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#7c583f"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171193.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171193.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171193.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171193.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171193.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171193.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171193.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171193.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171193.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171193.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#614e3b",
+   "estimate": "#7d6352",
+   "drawn": "#9a745a",
+   "brick": "#7c583f",
+   "captures": [
+    {
+     "hex": "#614e3b",
+     "captured": "2024-12-04T09:51:38Z",
+     "panoId": "b_20241204_1003_Track09_Sphere_00003",
+     "pinned": true,
+     "out": "#79624b",
+     "gain": 1.609,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#493f39",
+     "captured": "2020-01-27T13:32:16.902890Z",
+     "panoId": "TMX7316010203-001594_pano_0004_000087",
+     "out": "#706159",
+     "gain": 2.427,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#575352",
+     "captured": "2016-08-15T06:58:02.608320Z",
+     "panoId": "TMX7316060226-000020_pano_0000_000310",
+     "out": "#6f6a69",
+     "gain": 1.664,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#7f7065",
+     "captured": "2021-03-19T10:17:40.867330Z",
+     "panoId": "TMX7316010203-002050_pano_0000_001605",
+     "out": "#7f7065",
+     "gain": 1.001,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "a light-coloured glazed top storey runs along the top of the front, possibly a later addition"
+  },
+  {
+   "component": "shopfront",
+   "what": "a vertical hotel sign hangs from the front at the right edge"
+  }
+ ]
+}

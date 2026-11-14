@@ -1,0 +1,171 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179100",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "storey",
+    "souterrain": true,
+    "gable": "cornice"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "painted-brick",
+   "brick": "#50443c"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179100.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179100.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179100.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179100.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179100.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179100.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179100.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179100.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179100.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179100.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179100.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#493f39",
+   "estimate": "#4d4945",
+   "drawn": "#60544b",
+   "brick": "#50443c",
+   "captures": [
+    {
+     "hex": "#493f39",
+     "captured": "2019-01-11T08:06:49.844440Z",
+     "panoId": "TMX7316010203-001048_pano_0000_000460",
+     "pinned": true,
+     "out": "#74655c",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#46443e",
+     "captured": "2024-12-03T14:01:57Z",
+     "panoId": "b_20241203_1333_Track19_Sphere_00036",
+     "out": "#4f4d46",
+     "gain": 1.273,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#374044",
+     "captured": "2025-07-14T07:52:08Z",
+     "panoId": "recording_2025-07-14_07-34-51_00619",
+     "out": "#2d3539",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#403d40",
+     "captured": "2021-03-15T08:50:00.172610Z",
+     "panoId": "TMX7316010203-002040_pano_0001_000498",
+     "out": "#484548",
+     "gain": 1.275,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "balcony",
+   "what": "a small iron-railed balcony on consoles in front of the centre window of the second storey"
+  },
+  {
+   "component": "door",
+   "what": "door with a white pedimented aedicule surround and a small window above it"
+  },
+  {
+   "component": "window",
+   "what": "lintels made of a row of hanging white blocks like a crenellation over every upper window"
+  },
+  {
+   "component": "dormer",
+   "what": "one central dormer with a pointed pediment and white ornament above the cornice"
+  }
+ ]
+}

@@ -1,0 +1,159 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179514",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 3,
+    "bands": "storey",
+    "gable": "cornice",
+    "rowHeads": [
+     "flat",
+     "segmental",
+     "segmental",
+     "flat"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "painted-brick",
+   "brick": "#5c5348"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179514.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179514.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179514.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179514.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179514.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179514.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179514.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179514.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179514.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179514.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#303031",
+   "estimate": "#595651",
+   "drawn": "#746a5f",
+   "brick": "#5c5348",
+   "captures": [
+    {
+     "hex": "#303031",
+     "captured": "2019-01-11T08:08:57.223530Z",
+     "panoId": "TMX7316010203-001048_pano_0000_000608",
+     "pinned": true,
+     "out": "#4e4e50",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#625b53",
+     "captured": "2022-04-26T08:18:37.766590Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000532",
+     "out": "#625b53",
+     "gain": 0.999,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#686964",
+     "captured": "2021-03-19T10:20:10.236140Z",
+     "panoId": "TMX7316010203-002050_pano_0000_001753",
+     "out": "#6a6b66",
+     "gain": 1.036,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#454442",
+     "captured": "2018-11-21T11:00:05.621700Z",
+     "panoId": "TMX7316010203-000998_pano_0001_000118",
+     "out": "#52514f",
+     "gain": 1.417,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "relief",
+   "what": "small sculpted head keystones over the storey 1 and 2 windows"
+  },
+  {
+   "component": "shopfront",
+   "what": "fabric awnings over the ground-storey windows and door"
+  }
+ ]
+}

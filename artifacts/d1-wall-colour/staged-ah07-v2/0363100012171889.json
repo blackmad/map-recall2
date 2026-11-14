@@ -1,0 +1,178 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171889",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "bands": "speklagen",
+    "souterrain": false,
+    "gable": "step",
+    "cornice": "none"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#69543b"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171889.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#59534b",
+   "estimate": "#635747",
+   "drawn": "#826c53",
+   "brick": "#69543b",
+   "captures": [
+    {
+     "hex": "#59534b",
+     "captured": "2019-01-10T12:01:47.606960Z",
+     "panoId": "TMX7316010203-001047_pano_0000_001728",
+     "pinned": true,
+     "out": "#665f56",
+     "gain": 1.334,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#534839",
+     "captured": "2024-12-11T10:04:01Z",
+     "panoId": "b_20241211_0954_Track09_Sphere_00289",
+     "out": "#5c503f",
+     "gain": 1.227,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#4a4948",
+     "captured": "2022-04-26T08:10:45.295240Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000104",
+     "out": "#3e3d3c",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#80776d",
+     "captured": "2020-04-24T11:07:12.795900Z",
+     "panoId": "TMX7316010203-001675_pano_0000_005740",
+     "out": "#6c655c",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "a dark brick corbel table frieze at the gable foot and a stepped gable with paired attic windows"
+  },
+  {
+   "component": "erker",
+   "what": "a shallow projecting bay on the right axis of the second storey with a small balustrade under its window"
+  },
+  {
+   "component": "door",
+   "what": "a tall panelled double door in a stone surround with pilasters, a top light and two wall lamps"
+  },
+  {
+   "component": "wall",
+   "what": "a smooth grey-painted plinth carries two barred basement windows"
+  }
+ ]
+}

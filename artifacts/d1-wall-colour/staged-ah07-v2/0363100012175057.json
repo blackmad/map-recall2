@@ -1,0 +1,153 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012175057",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 3,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "souterrain": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#784d35"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012175057.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop",
+  "wallSample": {
+   "v": 2,
+   "raw": "#594a42",
+   "estimate": "#715242",
+   "drawn": "#93664d",
+   "brick": "#784d35",
+   "captures": [
+    {
+     "hex": "#594a42",
+     "captured": "2019-01-10T12:03:07.151410Z",
+     "panoId": "TMX7316010203-001047_pano_0000_001774",
+     "pinned": true,
+     "out": "#66554c",
+     "gain": 1.338,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#756258",
+     "captured": "2020-04-29T11:35:29.649290Z",
+     "panoId": "TMX7316010203-001681_pano_0000_004354",
+     "out": "#67564d",
+     "gain": 0.762,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#776358",
+     "captured": "2020-08-31T11:41:05.831120Z",
+     "panoId": "TMX7316010203-001900_pano_0003_000133",
+     "out": "#68564d",
+     "gain": 0.752,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#8a816d",
+     "captured": "2020-04-24T11:07:35.285780Z",
+     "panoId": "TMX7316010203-001675_pano_0000_005787",
+     "out": "#756d5c",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "shopfront",
+   "what": "a white stuccoed ground storey with a café front: double doors, glazed doors with sidelights and narrow round-topped windows"
+  },
+  {
+   "component": "dormer",
+   "what": "one white dormer with a hoist beam in a steep roof behind a white frieze-and-console cornice"
+  },
+  {
+   "component": "window",
+   "what": "dark-painted window frames; the top storey has coloured glass in the top lights"
+  }
+ ]
+}

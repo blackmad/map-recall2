@@ -1,0 +1,156 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012180096",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "bands": "speklagen",
+    "souterrain": true
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#6d5241"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180096.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#3e3933",
+   "estimate": "#67554b",
+   "drawn": "#876a59",
+   "brick": "#6d5241",
+   "captures": [
+    {
+     "hex": "#3e3933",
+     "captured": "2019-11-11T11:26:31.838220Z",
+     "panoId": "TMX7316060226-000478_pano_0001_000314",
+     "pinned": true,
+     "out": "#4a443d",
+     "gain": 1.418,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#71665e",
+     "captured": "2022-04-26T08:18:52.696460Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000553",
+     "out": "#6b6159",
+     "gain": 0.891,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6a5f59",
+     "captured": "2019-05-10T09:48:02.915510Z",
+     "panoId": "TMX7316010203-001176_pano_0000_000159",
+     "out": "#5d534e",
+     "gain": 0.754,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#625854",
+     "captured": "2020-04-29T11:31:06.546350Z",
+     "panoId": "TMX7316010203-001681_pano_0000_004020",
+     "out": "#655b57",
+     "gain": 1.069,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "stone dormer with a curved scrolled surround and a small pediment in the slate mansard, one per house"
+  },
+  {
+   "component": "relief",
+   "what": "a row of small light blocks like a dentil frieze under the cornice"
+  }
+ ]
+}

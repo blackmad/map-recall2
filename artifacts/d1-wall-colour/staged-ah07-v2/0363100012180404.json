@@ -1,0 +1,149 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012180404",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "storey"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#755a3c"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180404.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180404.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180404.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180404.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180404.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180404.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180404.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180404.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180404.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#433c35",
+   "estimate": "#6e5c48",
+   "drawn": "#927557",
+   "brick": "#755a3c",
+   "captures": [
+    {
+     "hex": "#433c35",
+     "captured": "2020-01-06T09:15:30.356350Z",
+     "panoId": "TMX7316010203-001533_pano_0000_000126",
+     "pinned": true,
+     "out": "#635a50",
+     "gain": 2.24,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#80705c",
+     "captured": "2023-02-06T08:44:48.265330Z",
+     "panoId": "TMX7316010203-002956_pano_0005_000050",
+     "out": "#7d6d5a",
+     "gain": 0.946,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#796d5f",
+     "captured": "2023-01-11T12:19:22.967620Z",
+     "panoId": "TMX7316010203-002925_pano_0013_000058",
+     "out": "#6b6054",
+     "gain": 0.766,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#434039",
+     "captured": "2023-02-13T08:27:28.298030Z",
+     "panoId": "TMX7316010203-002965_pano_0000_000031",
+     "out": "#615d53",
+     "gain": 2.112,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "relief",
+   "what": "rows of light stone diamond and block ornaments in the brick at each floor line"
+  },
+  {
+   "component": "window",
+   "what": "wide ground-storey window group with a top light row over several lights"
+  }
+ ]
+}

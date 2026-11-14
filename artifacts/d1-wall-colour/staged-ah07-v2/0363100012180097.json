@@ -1,0 +1,135 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012180097",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 2,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#634231"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180097.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180097.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180097.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180097.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180097.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180097.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180097.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "shallow three-sided timber bay windows on the first and second upper storeys"
+  },
+  {
+   "component": "balcony",
+   "what": "French balconies with iron railings on the top storey, standing on the erker roofs"
+  }
+ ],
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#494340",
+   "estimate": "#5e483e",
+   "drawn": "#765443",
+   "brick": "#634231",
+   "captures": [
+    {
+     "hex": "#494340",
+     "captured": "2019-01-11T08:09:23.783060Z",
+     "panoId": "TMX7316010203-001048_pano_0000_000634",
+     "pinned": true,
+     "out": "#746b66",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#4b3827",
+     "captured": "2024-12-11T10:05:46Z",
+     "panoId": "b_20241211_0954_Track10_Sphere_00059",
+     "out": "#533f2c",
+     "gain": 1.238,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#4e3f39",
+     "captured": "2019-01-10T12:11:29.396620Z",
+     "panoId": "TMX7316010203-001047_pano_0000_002549",
+     "out": "#594842",
+     "gain": 1.321,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#635d56",
+     "captured": "2025-07-14T08:10:23Z",
+     "panoId": "recording_2025-07-14_07-34-51_01377",
+     "out": "#534e48",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

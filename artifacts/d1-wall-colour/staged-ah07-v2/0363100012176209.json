@@ -1,0 +1,173 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176209",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "bands": "both",
+    "souterrain": true,
+    "cornice": "none",
+    "rowHeads": [
+     "mixed",
+     "flat",
+     "relieving"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#754f2f"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176209.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176209.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176209.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176209.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176209.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176209.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176209.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176209.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176209.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176209.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176209.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#614f3d",
+   "estimate": "#6e543e",
+   "drawn": "#906948",
+   "brick": "#754f2f",
+   "captures": [
+    {
+     "hex": "#614f3d",
+     "captured": "2024-12-03T14:20:07Z",
+     "panoId": "b_20241203_1333_Track24_Sphere_00085",
+     "pinned": true,
+     "out": "#5a4938",
+     "gain": 0.851,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#807068",
+     "captured": "2020-08-31T11:43:33.055270Z",
+     "panoId": "TMX7316010203-001900_pano_0003_000184",
+     "out": "#917f76",
+     "gain": 1.312,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#63564b",
+     "captured": "2018-05-11T07:57:11.030900Z",
+     "panoId": "TMX7316010203-000714_pano_0001_000883",
+     "out": "#65584c",
+     "gain": 1.038,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#625749",
+     "captured": "2022-04-26T08:11:18.190000Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000152",
+     "out": "#63584a",
+     "gain": 1.022,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white carved timber oriel on the first floor at the right, carried on brackets, rising into the second floor"
+  },
+  {
+   "component": "gable ornament",
+   "what": "an iron anchor finial at the gable apex and white decorative blocks in the gable"
+  },
+  {
+   "component": "window",
+   "what": "top storey arches have decorated brick tympana over the windows"
+  },
+  {
+   "component": "door",
+   "what": "the door has a round-arched fanlight in a white frame"
+  }
+ ]
+}

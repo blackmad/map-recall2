@@ -1,0 +1,156 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012180225",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 2,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "bands": "speklagen",
+    "cornice": "none"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "painted-brick",
+   "brick": "#564941"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180225.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180225.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180225.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180225.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180225.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180225.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180225.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180225.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180225.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180225.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#2a2726",
+   "estimate": "#534d4a",
+   "drawn": "#695b53",
+   "brick": "#564941",
+   "captures": [
+    {
+     "hex": "#2a2726",
+     "captured": "2023-01-16T10:06:38.185550Z",
+     "panoId": "TMX7316010203-002937_pano_0006_000003",
+     "pinned": true,
+     "out": "#45413f",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#474544",
+     "captured": "2018-11-21T10:59:27.297050Z",
+     "panoId": "TMX7316010203-000998_pano_0001_000083",
+     "out": "#4a4746",
+     "gain": 1.073,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#515b60",
+     "captured": "2025-07-14T07:58:10Z",
+     "panoId": "recording_2025-07-14_07-34-51_00854",
+     "out": "#4d565b",
+     "gain": 0.893,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#544c46",
+     "captured": "2022-04-26T08:17:10.682280Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000472",
+     "out": "#71675f",
+     "gain": 1.876,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "a stone pinnacle block on the apex of the point gable"
+  },
+  {
+   "component": "window",
+   "what": "brick arches with light block ends over each upper window"
+  }
+ ]
+}

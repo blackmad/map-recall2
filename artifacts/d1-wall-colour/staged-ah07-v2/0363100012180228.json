@@ -1,0 +1,146 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012180228",
+ "design": {
+  "fronts": [
+   {
+    "bays": 2,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "storey",
+    "souterrain": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#775b42"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180228.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180228.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180228.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180228.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180228.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180228.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180228.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180228.jpg",
+   "at": null
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "wallSample": {
+   "v": 2,
+   "raw": "#8a7e6e",
+   "estimate": "#897665",
+   "drawn": "#94775d",
+   "brick": "#775b42",
+   "captures": [
+    {
+     "hex": "#8a7e6e",
+     "captured": "2023-01-30T11:58:12.465520Z",
+     "panoId": "TMX7316010203-002951_pano_0020_000034",
+     "pinned": true,
+     "out": "#786d5f",
+     "gain": 0.733,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#959997",
+     "captured": "2025-07-14T07:58:03Z",
+     "panoId": "recording_2025-07-14_07-34-51_00849",
+     "out": "#808482",
+     "gain": 0.724,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#645c58",
+     "captured": "2020-04-29T11:30:07.021940Z",
+     "panoId": "TMX7316010203-001681_pano_0000_003956",
+     "out": "#786e6a",
+     "gain": 1.463,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#967e6c",
+     "captured": "2022-04-26T08:16:49.912440Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000468",
+     "out": "#a08774",
+     "gain": 1.16,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "balcony",
+   "what": "stone balcony with a balustrade on carved consoles over the entrance"
+  },
+  {
+   "component": "door",
+   "what": "carved timber double door in a heavy stone portal with brackets"
+  },
+  {
+   "component": "relief",
+   "what": "rusticated stone pilaster strips at the edge of the front"
+  }
+ ]
+}

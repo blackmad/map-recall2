@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171217",
+ "design": {
+  "fronts": [
+   {
+    "bays": 1,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "storey"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#66604d"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171217.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171217.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171217.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171217.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171217.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171217.jpg",
+   "at": null
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window",
+   "what": "one wide window per storey, a large pane with a narrow side light under a top light"
+  },
+  {
+   "component": "relief",
+   "what": "a row of small white stone blocks along each floor line over the windows"
+  }
+ ],
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#575650",
+   "estimate": "#606156",
+   "drawn": "#827c69",
+   "brick": "#66604d",
+   "captures": [
+    {
+     "hex": "#575650",
+     "captured": "2023-01-11T11:49:40.487300Z",
+     "panoId": "TMX7316010203-002925_pano_0004_000084",
+     "pinned": true,
+     "out": "#65645d",
+     "gain": 1.357,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#646662",
+     "captured": "2023-02-20T09:01:11.560860Z",
+     "panoId": "TMX7316010203-002976_pano_0000_000068",
+     "out": "#7c7e79",
+     "gain": 1.576,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#53504a",
+     "captured": "2023-01-30T12:01:54.128650Z",
+     "panoId": "TMX7316010203-002951_pano_0021_000067",
+     "out": "#5f5c55",
+     "gain": 1.319,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#4d504c",
+     "captured": "2023-03-06T08:22:09.629470Z",
+     "panoId": "TMX7316010203-002988_pano_0009_000066",
+     "out": "#4e514d",
+     "gain": 1.018,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

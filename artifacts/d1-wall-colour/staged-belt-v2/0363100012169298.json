@@ -1,0 +1,57 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012169298",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3
+   }
+  ],
+  "palette": {
+   "brick": "#898075"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169298.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169298.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012169298.jpg",
+   "at": null
+  }
+ },
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#72716e",
+   "estimate": "#73716c",
+   "drawn": "#a1988d",
+   "brick": "#898075",
+   "captures": [
+    {
+     "hex": "#72716e",
+     "pinned": true,
+     "out": "#72716e",
+     "gain": 1,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

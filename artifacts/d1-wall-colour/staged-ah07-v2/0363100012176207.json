@@ -1,0 +1,169 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176207",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "bands": "courses",
+    "souterrain": true,
+    "cornice": "none",
+    "rowHeads": [
+     "mixed",
+     "segmental",
+     "flat"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#5c3f0f"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176207.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#534936",
+   "estimate": "#584526",
+   "drawn": "#6c4e21",
+   "brick": "#5c3f0f",
+   "captures": [
+    {
+     "hex": "#534936",
+     "captured": "2024-12-03T14:20:21Z",
+     "panoId": "b_20241203_1333_Track24_Sphere_00093",
+     "pinned": true,
+     "out": "#574d39",
+     "gain": 1.105,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#463d32",
+     "captured": "2020-08-31T11:43:05.605440Z",
+     "panoId": "TMX7316010203-001900_pano_0003_000174",
+     "out": "#4d4338",
+     "gain": 1.22,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5e4f37",
+     "captured": "2018-05-11T07:56:55.865640Z",
+     "panoId": "TMX7316010203-000714_pano_0001_000874",
+     "out": "#594a34",
+     "gain": 0.885,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#3d382c",
+     "captured": "2020-04-29T11:34:03.240020Z",
+     "panoId": "TMX7316010203-001681_pano_0000_004233",
+     "out": "#484234",
+     "gain": 1.377,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white timber bay window over two storeys' height on the right axes of the first storey, with a balustraded balcony on top in front of the second storey"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched recessed door bay with a fanlight and side lights"
+  },
+  {
+   "component": "gable ornament",
+   "what": "small stone tablets with dates or inscriptions flank the attic window in the point gable"
+  }
+ ]
+}

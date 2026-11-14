@@ -1,0 +1,167 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179800",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 5,
+    "bays": 2,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "bands": "speklagen",
+    "souterrain": true,
+    "gable": "cornice"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#6c4846"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179800.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#635452",
+   "estimate": "#674d4f",
+   "drawn": "#845e5c",
+   "brick": "#6c4846",
+   "captures": [
+    {
+     "hex": "#635452",
+     "captured": "2021-03-15T08:50:04.257470Z",
+     "panoId": "TMX7316010203-002040_pano_0001_000504",
+     "pinned": true,
+     "out": "#685957",
+     "gain": 1.117,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#594b4e",
+     "captured": "2018-05-11T09:38:14.430280Z",
+     "panoId": "TMX7316010203-000714_pano_0001_004131",
+     "out": "#57494c",
+     "gain": 0.953,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#514b52",
+     "captured": "2022-04-26T08:20:02.930970Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000681",
+     "out": "#443f45",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5b4944",
+     "captured": "2019-01-14T12:11:37.823640Z",
+     "panoId": "TMX7316010203-001053_pano_0000_001357",
+     "out": "#725c56",
+     "gain": 1.597,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "door",
+   "what": "two recessed door portals side by side under fanlight arches, each reached by its own stone stoop"
+  },
+  {
+   "component": "dormer",
+   "what": "ornate white stone dormer with a pediment over the cornice"
+  },
+  {
+   "component": "relief",
+   "what": "light stone blocks scattered in the brick like broken speklagen and keystones over each arch"
+  }
+ ]
+}

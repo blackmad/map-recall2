@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012180223",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 2,
+    "windowHead": {
+     "kind": "flat"
+    }
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#7a593e"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180223.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180223.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180223.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180223.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180223.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012180223.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white timber bay window on the first upper storey at the left"
+  },
+  {
+   "component": "dormer",
+   "what": "white dormer with side scrolls in a slate mansard"
+  }
+ ],
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#88754f",
+   "estimate": "#796350",
+   "drawn": "#977559",
+   "brick": "#7a593e",
+   "captures": [
+    {
+     "hex": "#88754f",
+     "captured": "2022-03-22T07:26:12.891640Z",
+     "panoId": "TMX7316010203-002461_pano_0000_000889",
+     "pinned": true,
+     "out": "#7c6a47",
+     "gain": 0.812,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#67584f",
+     "captured": "2023-02-06T08:44:45.830290Z",
+     "panoId": "TMX7316010203-002956_pano_0005_000046",
+     "out": "#67584f",
+     "gain": 1.005,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#7e6d62",
+     "captured": "2023-01-11T12:19:20.112640Z",
+     "panoId": "TMX7316010203-002925_pano_0013_000054",
+     "out": "#77675d",
+     "gain": 0.887,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#423e3b",
+     "captured": "2023-02-13T08:27:31.223040Z",
+     "panoId": "TMX7316010203-002965_pano_0000_000035",
+     "out": "#69635f",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

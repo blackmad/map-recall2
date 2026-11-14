@@ -1,0 +1,91 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179374",
+ "design": {
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#5a3e28"
+  }
+ },
+ "provenance": {
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179374.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179374.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179374.jpg",
+   "at": null
+  }
+ },
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#28251e",
+   "estimate": "#564335",
+   "drawn": "#694c36",
+   "brick": "#5a3e28",
+   "captures": [
+    {
+     "hex": "#28251e",
+     "captured": "2020-01-06T09:15:36.046440Z",
+     "panoId": "TMX7316010203-001533_pano_0000_000138",
+     "pinned": true,
+     "out": "#423e33",
+     "gain": 2.596,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5a4e46",
+     "captured": "2023-02-06T08:44:55.250170Z",
+     "panoId": "TMX7316010203-002956_pano_0005_000062",
+     "out": "#5d5149",
+     "gain": 1.076,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#322b28",
+     "captured": "2023-03-13T08:27:04.284910Z",
+     "panoId": "TMX7316010203-002994_pano_0000_000061",
+     "out": "#514742",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#332c27",
+     "captured": "2021-12-29T11:59:14.687420Z",
+     "panoId": "TMX7316010203-002364_pano_0004_000220",
+     "out": "#4d433c",
+     "gain": 2.224,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

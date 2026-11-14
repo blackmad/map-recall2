@@ -1,0 +1,151 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168277",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 1,
+    "souterrain": false,
+    "cornice": "none",
+    "rowHeads": [
+     "round"
+    ],
+    "archedStoreys": [
+     0
+    ]
+   }
+  ],
+  "palette": {
+   "brick": "#010000"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/archedStoreys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168277.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop",
+  "wallSample": {
+   "v": 2,
+   "raw": "#130907",
+   "estimate": "#332317",
+   "drawn": "#2f1704",
+   "brick": "#010000",
+   "captures": [
+    {
+     "hex": "#130907",
+     "captured": "2019-11-11T11:26:18.583350Z",
+     "panoId": "TMX7316060226-000478_pano_0001_000300",
+     "pinned": true,
+     "out": "#1d100d",
+     "gain": 1.931,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#252824",
+     "captured": "2025-07-14T05:39:37Z",
+     "panoId": "recording_2025-07-14_05-25-22_00092",
+     "out": "#252824",
+     "gain": 0.989,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#382a24",
+     "captured": "2022-06-22T07:51:57.733210Z",
+     "panoId": "TMX7316010203-002619_pano_0015_000039",
+     "out": "#372923",
+     "gain": 0.958,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#241d0f",
+     "captured": "2024-12-03T13:47:52Z",
+     "panoId": "b_20241203_1333_Track15_Sphere_00097",
+     "out": "#2d2514",
+     "gain": 1.514,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "a single-storey café pavilion under a tall pyramid roof with a green-edged flat canopy all round"
+  },
+  {
+   "component": "door",
+   "what": "a round-arched glazed entrance in the centre of the pavilion front"
+  }
+ ]
+}

@@ -1,0 +1,149 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171228",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "both",
+    "souterrain": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#6d4530"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171228.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171228.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171228.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171228.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171228.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171228.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171228.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171228.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012171228.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#564740",
+   "estimate": "#674b3d",
+   "drawn": "#835a44",
+   "brick": "#6d4530",
+   "captures": [
+    {
+     "hex": "#564740",
+     "captured": "2021-03-15T09:13:57.474960Z",
+     "panoId": "TMX7316010203-002040_pano_0001_001621",
+     "pinned": true,
+     "out": "#584942",
+     "gain": 1.047,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#574634",
+     "captured": "2024-12-04T09:51:46Z",
+     "panoId": "b_20241204_1003_Track09_Sphere_00009",
+     "out": "#614e3a",
+     "gain": 1.245,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#64544e",
+     "captured": "2020-04-29T11:29:03.547300Z",
+     "panoId": "TMX7316010203-001681_pano_0000_003907",
+     "out": "#64544e",
+     "gain": 0.99,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#41352f",
+     "captured": "2020-01-27T13:31:55.378020Z",
+     "panoId": "TMX7316010203-001594_pano_0004_000084",
+     "out": "#604f47",
+     "gain": 2.21,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "a slate mansard with small dormers behind a thin white cornice"
+  },
+  {
+   "component": "balcony",
+   "what": "small iron french balconies at the left-axis windows of the first and second storeys"
+  }
+ ]
+}

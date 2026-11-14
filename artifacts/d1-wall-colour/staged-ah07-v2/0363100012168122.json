@@ -1,0 +1,138 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168122",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 5,
+    "bays": 9,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "storey",
+    "souterrain": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#635040"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168122.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168122.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168122.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168122.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168122.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168122.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168122.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168122.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "a deep white overhanging roof edge runs round the top of the block"
+  }
+ ],
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#3e3733",
+   "estimate": "#5e534a",
+   "drawn": "#7a6656",
+   "brick": "#635040",
+   "captures": [
+    {
+     "hex": "#3e3733",
+     "captured": "2019-01-11T08:09:09.693230Z",
+     "panoId": "TMX7316010203-001048_pano_0000_000623",
+     "pinned": true,
+     "out": "#5e544f",
+     "gain": 2.348,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6b625e",
+     "captured": "2020-04-29T11:30:43.051660Z",
+     "panoId": "TMX7316010203-001681_pano_0000_004006",
+     "out": "#5a534f",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#403f36",
+     "captured": "2024-12-04T09:49:14Z",
+     "panoId": "b_20241204_1003_Track08_Sphere_00002",
+     "out": "#545347",
+     "gain": 1.728,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6b6767",
+     "captured": "2022-04-26T08:18:42.231590Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000541",
+     "out": "#5f5c5c",
+     "gain": 0.786,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

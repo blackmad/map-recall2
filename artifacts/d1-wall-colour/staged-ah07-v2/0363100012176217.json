@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176217",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 2,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "souterrain": true,
+    "gable": "cornice"
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#958069"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176217.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176217.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176217.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176217.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176217.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176217.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176217.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176217.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176217.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012176217.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#6e6358",
+   "estimate": "#7c7162",
+   "drawn": "#ad9880",
+   "brick": "#958069",
+   "captures": [
+    {
+     "hex": "#6e6358",
+     "captured": "2022-12-14T12:30:25.025460Z",
+     "panoId": "TMX7316010203-002857_pano_0004_000049",
+     "pinned": true,
+     "out": "#8f8173",
+     "gain": 1.772,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#58565c",
+     "captured": "2021-09-09T09:45:46.054000Z",
+     "panoId": "TMX7316010203-002306_pano_0001_000064",
+     "out": "#59575d",
+     "gain": 1.025,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#797469",
+     "captured": "2016-08-16T07:07:42.722840Z",
+     "panoId": "TMX7316060226-000022_pano_0000_000627",
+     "out": "#666259",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#a49f95",
+     "captured": "2025-07-14T06:07:50Z",
+     "panoId": "recording_2025-07-14_05-25-22_01193",
+     "out": "#908b82",
+     "gain": 0.748,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "relief",
+   "what": "white rusticated block pilasters (quoin strips) at both edges of the front"
+  },
+  {
+   "component": "shopfront",
+   "what": "the ground storey is faced in light rusticated stone over the souterrain"
+  },
+  {
+   "component": "door",
+   "what": "a double timber door under a small-paned top light, up a stoop"
+  },
+  {
+   "component": "dormer",
+   "what": "one pedimented dormer on the roof"
+  }
+ ]
+}

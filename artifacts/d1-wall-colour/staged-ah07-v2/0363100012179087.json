@@ -1,0 +1,66 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179087",
+ "design": {
+  "fronts": [
+   {
+    "bays": 2
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#010000"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179087.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179087.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179087.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179087.jpg",
+   "at": null
+  }
+ },
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#1d1716",
+   "estimate": "#372725",
+   "drawn": "#361e18",
+   "brick": "#010000",
+   "captures": [
+    {
+     "hex": "#1d1716",
+     "captured": "2019-01-11T08:08:30.198490Z",
+     "panoId": "TMX7316010203-001048_pano_0000_000571",
+     "pinned": true,
+     "out": "#322928",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

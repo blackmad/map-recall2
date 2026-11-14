@@ -1,0 +1,179 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168176",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "bays": 3,
+    "bands": "both",
+    "souterrain": false,
+    "gable": "step",
+    "rowHeads": [
+     "flat",
+     "segmental",
+     "segmental",
+     "round"
+    ],
+    "archedStoreys": [
+     3
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#6e5c48"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/archedStoreys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012168176.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "shop",
+  "groundKind": "shop",
+  "wallSample": {
+   "v": 2,
+   "raw": "#494641",
+   "estimate": "#685e51",
+   "drawn": "#8b7863",
+   "brick": "#6e5c48",
+   "captures": [
+    {
+     "hex": "#494641",
+     "captured": "2022-12-14T12:41:48.034000Z",
+     "panoId": "TMX7316010203-002857_pano_0008_000058",
+     "pinned": true,
+     "out": "#68645d",
+     "gain": 2.092,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#504b44",
+     "captured": "2019-01-10T12:03:44.210850Z",
+     "panoId": "TMX7316010203-001047_pano_0000_001836",
+     "out": "#605a52",
+     "gain": 1.465,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6c665f",
+     "captured": "2019-05-10T09:48:24.310340Z",
+     "panoId": "TMX7316010203-001176_pano_0000_000184",
+     "out": "#5b5650",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#847665",
+     "captured": "2022-04-26T08:19:07.386370Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000578",
+     "out": "#706455",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "shopfront",
+   "what": "a white shopfront with pilasters and a fascia carrying the house number, a central shop window with a white grille top light, a door on each side"
+  },
+  {
+   "component": "balcony",
+   "what": "a small iron balcony on the centre axis of the second storey"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a stepped gable rising from behind the cornice line with a window in it"
+  }
+ ]
+}

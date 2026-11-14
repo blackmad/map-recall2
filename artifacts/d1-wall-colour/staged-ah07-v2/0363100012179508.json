@@ -1,0 +1,109 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179508",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#66574c"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179508.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179508.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179508.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179508.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179508.jpg",
+   "at": null
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "wallSample": {
+   "v": 2,
+   "raw": "#3a3733",
+   "estimate": "#615954",
+   "drawn": "#807065",
+   "brick": "#66574c",
+   "captures": [
+    {
+     "hex": "#3a3733",
+     "captured": "2019-01-11T08:08:50.758330Z",
+     "panoId": "TMX7316010203-001048_pano_0000_000598",
+     "pinned": true,
+     "out": "#5d5953",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6b6563",
+     "captured": "2022-04-26T08:18:32.681670Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000523",
+     "out": "#605a59",
+     "gain": 0.794,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6f6864",
+     "captured": "2020-04-29T11:30:32.516600Z",
+     "panoId": "TMX7316010203-001681_pano_0000_003989",
+     "out": "#6e6763",
+     "gain": 0.985,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#485354",
+     "captured": "2025-07-14T07:58:42Z",
+     "panoId": "recording_2025-07-14_07-34-51_00882",
+     "out": "#4b5758",
+     "gain": 1.097,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

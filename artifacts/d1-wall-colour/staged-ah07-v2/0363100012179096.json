@@ -1,0 +1,125 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179096",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 5,
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "souterrain": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#6b5854"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179096.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179096.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179096.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179096.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179096.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179096.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012179096.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#383333",
+   "estimate": "#655b5a",
+   "drawn": "#86736e",
+   "brick": "#6b5854",
+   "captures": [
+    {
+     "hex": "#383333",
+     "captured": "2019-01-11T08:08:45.568380Z",
+     "panoId": "TMX7316010203-001048_pano_0000_000590",
+     "pinned": true,
+     "out": "#5a5353",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#687374",
+     "captured": "2025-07-14T07:58:31Z",
+     "panoId": "recording_2025-07-14_07-34-51_00871",
+     "out": "#5a6364",
+     "gain": 0.735,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#534f4e",
+     "captured": "2018-11-21T10:59:47.311850Z",
+     "panoId": "TMX7316010203-000998_pano_0001_000099",
+     "out": "#605b5a",
+     "gain": 1.346,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6e6158",
+     "captured": "2021-03-19T10:19:55.781220Z",
+     "panoId": "TMX7316010203-002050_pano_0000_001733",
+     "out": "#685c53",
+     "gain": 0.896,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}

@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012169016",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 3,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "both",
+    "souterrain": true
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#7b5a34"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012169016.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012169016.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012169016.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012169016.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012169016.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012169016.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012169016.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012169016.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012169016.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012169016.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#544c48",
+   "estimate": "#846d53",
+   "drawn": "#997650",
+   "brick": "#7b5a34",
+   "captures": [
+    {
+     "hex": "#544c48",
+     "captured": "2022-12-14T12:41:53.808760Z",
+     "panoId": "TMX7316010203-002857_pano_0008_000069",
+     "pinned": true,
+     "out": "#756a65",
+     "gain": 1.988,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#988774",
+     "captured": "2018-05-02T13:48:31.916170Z",
+     "panoId": "TMX7316010203-000703_pano_0000_007893",
+     "out": "#817262",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#908369",
+     "captured": "2020-04-24T11:08:43.735390Z",
+     "panoId": "TMX7316010203-001675_pano_0000_005860",
+     "out": "#7d715a",
+     "gain": 0.731,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#8f8274",
+     "captured": "2022-04-26T08:19:12.551350Z",
+     "panoId": "TMX7316010203-002545_pano_0000_000590",
+     "out": "#796e62",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "door",
+   "what": "the street door at the top of a stoop has a white stone surround with a pointed pediment over a small window"
+  },
+  {
+   "component": "balcony",
+   "what": "a white stone balustrade balcony on the centre axis of the first storey"
+  },
+  {
+   "component": "window",
+   "what": "a crown of small white blocks stepped over each first-storey window head"
+  },
+  {
+   "component": "dormer",
+   "what": "one pedimented dormer with a hoist beam over the centre of a slate mansard"
+  }
+ ]
+}

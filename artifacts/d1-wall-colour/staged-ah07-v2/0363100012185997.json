@@ -1,0 +1,160 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012185997",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 5,
+    "bays": 1,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "bands": "lintel",
+    "souterrain": false
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#84887d"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012185997.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012185997.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012185997.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bands": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012185997.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012185997.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012185997.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012185997.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012185997.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012185997.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012185997.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "door-only",
+  "wallSample": {
+   "v": 2,
+   "raw": "#4a4742",
+   "estimate": "#6d7671",
+   "drawn": "#9b9f94",
+   "brick": "#84887d",
+   "captures": [
+    {
+     "hex": "#4a4742",
+     "captured": "2023-02-13T08:30:20.386530Z",
+     "panoId": "TMX7316010203-002965_pano_0001_000067",
+     "pinned": true,
+     "out": "#757169",
+     "gain": 2.6,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#3b4e4c",
+     "captured": "2025-07-14T05:54:51Z",
+     "panoId": "recording_2025-07-14_05-25-22_00689",
+     "out": "#354644",
+     "gain": 0.809,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#565b5d",
+     "captured": "2023-02-27T08:34:38.384510Z",
+     "panoId": "TMX7316010203-002983_pano_0002_000168",
+     "out": "#73797c",
+     "gain": 1.826,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#7c817a",
+     "captured": "2023-03-27T07:40:22.907990Z",
+     "panoId": "TMX7316010203-003010_pano_0005_000065",
+     "out": "#737871",
+     "gain": 0.854,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window",
+   "what": "one wide window group per storey: a central pair between narrow side lights under a gridded top light"
+  },
+  {
+   "component": "shopfront",
+   "what": "the two lower storeys are rendered pale with a wide framed window and garden doors at the foot"
+  },
+  {
+   "component": "relief",
+   "what": "small white corbel blocks in a row under each lintel band"
+  }
+ ]
+}

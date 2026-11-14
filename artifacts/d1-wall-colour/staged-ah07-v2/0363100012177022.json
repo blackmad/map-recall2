@@ -1,0 +1,162 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177022",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "bays": 2,
+    "souterrain": true,
+    "cornice": "none",
+    "rowHeads": [
+     "segmental",
+     "segmental",
+     "flat"
+    ]
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#573e30"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177022.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177022.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177022.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/cornice": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177022.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177022.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/pui": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177022.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/groundKind": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177022.jpg",
+   "at": "2026-11-13"
+  },
+  "fronts/0/rowHeads": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177022.jpg",
+   "at": "2026-11-13"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177022.jpg",
+   "at": "2026-11-13"
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/cuts-ah07/0363100012177022.jpg",
+   "at": "2026-11-13"
+  }
+ },
+ "facts": {
+  "pui": "residential",
+  "groundKind": "dwelling",
+  "wallSample": {
+   "v": 2,
+   "raw": "#423a34",
+   "estimate": "#54443b",
+   "drawn": "#674d3e",
+   "brick": "#573e30",
+   "captures": [
+    {
+     "hex": "#423a34",
+     "captured": "2019-01-10T12:01:48.566970Z",
+     "panoId": "TMX7316010203-001047_pano_0000_001730",
+     "pinned": true,
+     "out": "#4f453e",
+     "gain": 1.417,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#504b4b",
+     "captured": "2019-05-13T08:50:35.922330Z",
+     "panoId": "TMX7316010203-001178_pano_0001_003494",
+     "out": "#433f3f",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#5f544a",
+     "captured": "2018-05-02T13:46:31.586910Z",
+     "panoId": "TMX7316010203-000703_pano_0000_007776",
+     "out": "#50463e",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#6b615e",
+     "captured": "2020-04-29T12:23:46.977330Z",
+     "panoId": "TMX7316010203-001681_pano_0000_007271",
+     "out": "#5a524f",
+     "gain": 0.7,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "erker",
+   "what": "a white timber bay window on the second storey at the left, on timber brackets, with a small roof"
+  },
+  {
+   "component": "balcony",
+   "what": "an iron balcony under a canopy across the left axis of the first storey, in front of a three-light window"
+  },
+  {
+   "component": "gable ornament",
+   "what": "a point gable with white carved bargeboards, an arched timber infill and a finial"
+  }
+ ]
+}

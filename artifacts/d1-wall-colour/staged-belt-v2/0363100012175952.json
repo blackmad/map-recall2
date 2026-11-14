@@ -1,0 +1,141 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012175952",
+ "design": {
+  "fronts": [
+   {
+    "bays": 2,
+    "windowHead": {
+     "kind": "flat"
+    },
+    "gable": "cornice",
+    "readDormers": {
+     "count": 1,
+     "kind": "plain"
+    },
+    "readBayWindow": []
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick",
+   "brick": "#56432d"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175952.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHead": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175952.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/gable": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175952.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readDormers": {
+   "source": "vision-judge",
+   "confidence": 0.35,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175952.jpg",
+   "at": "2026-11-14"
+  },
+  "fronts/0/readBayWindow": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175952.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/wallMaterial": {
+   "source": "vision-judge",
+   "confidence": 0.7,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175952.jpg",
+   "at": "2026-11-14"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175952.jpg",
+   "at": null
+  },
+  "facts/wallSample": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175952.jpg",
+   "at": null
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "shutters",
+   "what": "dark timber shutters beside every upper window, both bays"
+  }
+ ],
+ "facts": {
+  "wallSample": {
+   "v": 2,
+   "raw": "#514d4c",
+   "estimate": "#524839",
+   "drawn": "#66533c",
+   "brick": "#56432d",
+   "captures": [
+    {
+     "hex": "#514d4c",
+     "captured": "2023-03-27T10:21:38.589370Z",
+     "panoId": "TMX7316010203-003013_pano_0011_000022",
+     "pinned": true,
+     "out": "#4b4746",
+     "gain": 0.844,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#4f4c48",
+     "captured": "2023-02-06T11:29:47.658310Z",
+     "panoId": "TMX7316010203-002961_pano_0016_000033",
+     "out": "#575450",
+     "gain": 1.223,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#383128",
+     "captured": "2016-08-17T08:03:29.827510Z",
+     "panoId": "TMX7316060226-000030_pano_0005_000208",
+     "out": "#53493d",
+     "gain": 2.197,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    {
+     "hex": "#413c2f",
+     "captured": "2024-11-21T13:55:56Z",
+     "panoId": "b_20241121_1354_Track03_Sphere_01237",
+     "out": "#4e4839",
+     "gain": 1.446,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "capped": false
+  }
+ }
+}
