@@ -736,6 +736,8 @@ export function buildCell(input: CellInput): BuiltCell {
   // level beside them). railingRuns.ts waterOutside `plein`, railRuns breaks the run there.
   const plein: WaterTest | undefined = roadIndex && input.pleinRails !== false ? (x, y) => roadIndex.findAll(x, y).length > 0 : undefined;
   for (const placed of input.decks) {
+    // An overFlat way deck (wayDecks.ts WAY_END_DIP_M) only lifts the surface: its flat footprint draws the bridge on it.
+    if (placed.profile.overFlat) continue;
     // A way deck's bank climb (DeckProfile.core, wayDecks.ts BANK_CLIMB_MAX_M) is road on an embankment, not bridge: the
     // kit (body, parapets, top) keeps to the bridge itself; the surface carries the road up the bank.
     const deck = kitDeck(placed);

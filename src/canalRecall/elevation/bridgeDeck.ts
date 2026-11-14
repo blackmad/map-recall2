@@ -82,6 +82,17 @@ export interface DeckProfile {
   banks?: [number, number][];
   /** With `banks`: the deck's range without the bank climb (the bridge itself), which the kit's body, top and parapets keep to (decks.ts deckReach). */
   core?: [number, number];
+  /**
+   * Way decks only (ownGround/wayDecks.ts WAY_END_DIP_M, lane dips-deck-ends 2026-11-14): a deck under a flat register
+   * footprint whose relief sags under the way's end nodes. It only lifts the riding surface, at the footprint's width;
+   * the footprint draws the bridge (kit, top) on it, so the deck draws neither.
+   */
+  overFlat?: boolean;
+  /**
+   * Way decks only (ownGround/wayDecks.ts WAY_END_DIP_M): the stretches past the water the deck runs on to the way's own
+   * end nodes over a sag. Lifted whole; hole windows (`under`) open only where a street crosses under them.
+   */
+  wayEnds?: [number, number][];
 }
 
 /** An outline this much wider than the road deck on a side widens the deck there (DeckProfile.sides), at most OUTLINE_REACH_MAX_M. */

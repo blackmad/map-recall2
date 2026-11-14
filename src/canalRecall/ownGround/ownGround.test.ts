@@ -30,7 +30,7 @@ import { closedRays, courtyardSurface, inBlockInterior, pixelVegetated, segments
 import { bandedInPolygon, buildWaterMask, maskDistance, midSpanLand, openUnderFootbridges, quayWallMesh, splitAtRings, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
-import { bridgeWayBundles, capDeckSides, deckEdgeSides, roadEdgeSides, joinChains, setDeckSides, wayDeckGroups, wayDeckProfile, wayOpeningDeck, WAY_OPENING_PAST_M, WAY_OPENING_REACH_M } from './wayDecks';
+import { bridgeWayBundles, capDeckSides, deckEdgeSides, roadEdgeSides, joinChains, setDeckSides, crossingDipOn, wayDeckGroups, wayDeckProfile, wayEndWindows, wayOpeningDeck, WAY_OPENING_PAST_M, WAY_OPENING_REACH_M } from './wayDecks';
 import { pointInRing, canalMouth, mouthFacts, parapetRuns, BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, drapeFoot, drapeRange, DRAPE_MIN_M, DRAPE_SINK_M, footprintBase, frontBase, FRONT_MAX_RAISE_M, liftRanges } from './placement';
 import { CAP_M, RAIL_VIADUCTS, STRIP_M, TOP_LIFT_M, capViaductFloor, floorZone, insideRing, planarRing, viaductMesh, type RailViaduct } from './railViaducts';
@@ -2764,4 +2764,39 @@ test('deck-level polygons inside a deck ignore a bank-climbed deck beside it (de
   assert.ok(Math.abs(level(false, [20, 3]) - 4.5) < 1e-9, 'no banks: the highest within reach, as before');
   assert.ok(Math.abs(level(true, [20, 6]) - 4.5) < 1e-9, 'off both decks: the highest within reach');
   assert.ok(Math.abs(level(true, [20, 10]) - 4.5) < 1e-9, 'inside the banked deck: its level');
+});
+
+test('way decks run on to the way\'s own end nodes over a sag (wayEnds, Haarlemmer Houttuinen 7376117 under BRU0095, lane dips-deck-ends 2026-11-14)', () => {
+  // A 100 m viaduct way 0..100, water x 52..78, the relief filtered under it: 3.3 at x 0 sagging gently (no 4 % climb
+  // anywhere near the water) to -0.1 beside the water, back up to 4.4 at x 100.
+  const wet = (x: number) => x > 52 && x < 78;
+  const road: [number, number][] = [[0, 0], [100, 0]];
+  const relief = (x: number) => (x <= 52 ? -0.1 + 3.4 * ((52 - Math.max(0, x)) / 52) ** 2.5 : x >= 78 ? -0.2 + 0.25 * (Math.min(96, x) - 78) : -0.3);
+  const ends = { hole: true, bank: true, ends: true } as const, bank = { hole: true, bank: true } as const;
+  // Without a flat footprint the bank climb already carries the steep east bank: the crossing does not dip, the gate
+  // keeps the deck without way ends (byte for byte).
+  const p = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, relief, false, ends)!, b = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, relief, false, bank)!;
+  assert.deepEqual([p.deck, p.wayEnds], [b.deck, b.wayEnds]);
+  assert.ok(crossingDipOn([[-10, 0], [110, 0]], wet, relief, null) > 2.5, 'the relief alone dips like Haarlemmer Houttuinen (2.87 m)');
+  // The forced build (a bundle member dips): the deck spans the way, the stretches past the water lifted whole.
+  const forced = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, relief, false, { ...ends, endsForce: true })!;
+  assert.ok(forced.x[0] + forced.deck[0] <= 0.6 && forced.x[0] + forced.deck[1] >= 99.4, `the forced deck spans the way (x ${(forced.x[0] + forced.deck[0]).toFixed(1)}..${(forced.x[0] + forced.deck[1]).toFixed(1)})`);
+  assert.ok(!forced.under && forced.wayEnds?.length === 2, 'the stretches past the water are way-end stretches, lifted whole (not hole ranges)');
+  assert.deepEqual(wayEndWindows([[0, 50]], [30, 35, 200]), [[20, 45]], 'a street crossing under opens a merged hole window');
+  // A flat footprint over the whole way: claimed without `hard` (the before), an overFlat deck with it.
+  const flat = () => true, none = () => false;
+  assert.equal(wayDeckProfile('OSM1', 'test', road, 6, wet, flat, relief, false, bank), null);
+  const f = wayDeckProfile('OSM1', 'test', road, 6, wet, flat, relief, false, { ...ends, hard: none })!;
+  assert.ok(f && f.overFlat && f.x[0] + f.deck[0] <= 0.6, 'a flat footprint over the sag takes an overFlat deck to the way\'s ends');
+  // A measured deck there (a hard claim) still keeps the way off.
+  assert.equal(wayDeckProfile('OSM1', 'test', road, 6, wet, flat, relief, false, { ...ends, hard: flat }), null);
+  // An ordinary canal bridge (quays level, a slope down to the water within HOLE_MIN_M): unchanged, under a flat footprint no deck.
+  const quay = (x: number) => (x > 52 && x < 78 ? -0.4 : x > 50 && x <= 52 ? 1 - (x - 50) * 0.5 : x >= 78 && x < 80 ? 1 - (80 - x) * 0.5 : 1);
+  assert.deepEqual(wayDeckProfile('OSM1', 'test', road, 6, wet, none, quay, false, ends)!.deck, wayDeckProfile('OSM1', 'test', road, 6, wet, none, quay, false, bank)!.deck);
+  // Under a flat footprint the relief over the water is the riding surface: interpolated at the quays (the usual case)
+  // the footprint stands alone; at the canal bed (the Kabouterbrug BRU0360) an overFlat deck lifts it over the water.
+  const level = (x: number) => (x > 50 && x < 80 ? 0.9 : 1);
+  assert.equal(wayDeckProfile('OSM1', 'test', road, 6, wet, flat, level, false, { ...ends, hard: none }), null, 'a level flat bridge keeps its footprint alone');
+  const bed = wayDeckProfile('OSM1', 'test', road, 6, wet, flat, quay, false, { ...ends, hard: none })!;
+  assert.ok(bed.overFlat && !bed.under, 'over the canal bed: an overFlat deck over the water, no hole ranges');
 });

@@ -307,12 +307,20 @@ export async function holeJunctionRegressions(readExtract: Read, check: Check): 
  * most `maxDipM` under the straight line between the bank tops (crossing-dip.ts); `?bankClimb=0` (the before) dips at
  * least `pinMinM`. City survey: probe-crossing-dips.ts.
  */
-export const BANK_DIPS: readonly { way: number; label: string; at: [number, number]; maxDipM: number; pinMinM: number }[] = [
+export const BANK_DIPS: readonly { way: number; label: string; at: [number, number]; maxDipM: number; pinMinM: number; /** The pin's before (default `{ bankClimb: false }`). */ off?: Record<string, boolean> }[] = [
   { way: 7382983, label: 'Ringweg-West slip over the Slotervaart, Lelylaan (user 2026-11-14)', at: [4.84294, 52.35607], maxDipM: 0.3, pinMinM: 2.5 },
   // The bundled dual carriageway beside it (wayDecks.ts groupWayDecks): it climbs its banks as one deck.
   { way: 7382981, label: 'Ringweg-West over the Slotervaart, Lelylaan (bundle)', at: [4.84244, 52.35604], maxDipM: 0.3, pinMinM: 2 },
   { way: 499557561, label: 'Gaasperdammerweg viaduct', at: [4.99773, 52.31769], maxDipM: 0.35, pinMinM: 2.5 },
   { way: 7382973, label: 'Ringweg-West, the crossing south of the Lelylaan (bundle)', at: [4.84251, 52.35227], maxDipM: 0.3, pinMinM: 1.4 },
+  // Lane dips-deck-ends 2026-11-14 (wayDecks.ts WAY_END_DIP_M): the four crossings still dipping over 1 m after bankClimb.
+  // A flat register footprint (BRU0095) over 50 m of relief filtered under the viaduct: an overFlat deck to the way's ends.
+  { way: 7376117, label: 'Haarlemmer Houttuinen viaduct under BRU0095', at: [4.89017, 52.38213], maxDipM: 0.3, pinMinM: 2.5, off: { wayEnds: false } },
+  // 150 m flyovers over the polder: the dual carriageway's deck runs on to its way's end nodes.
+  { way: 424283770, label: 'Amsterdamse Baan link (bundle with 424283771)', at: [4.7565, 52.34344], maxDipM: 0.3, pinMinM: 2.3, off: { wayEnds: false } },
+  { way: 1251743255, label: 'Van der Madeweg (bundle with 1339616201)', at: [4.93744, 52.32953], maxDipM: 0.3, pinMinM: 1.2, off: { wayEnds: false } },
+  // The Kabouterbrug (BRU0360, flat): the relief over the water lies at the canal bed; the overFlat deck spans the water.
+  { way: 38282903, label: 'Schinkelhavenstraat cycleway, Kabouterbrug BRU0360', at: [4.85372, 52.35476], maxDipM: 0.45, pinMinM: 1, off: { wayEnds: false } },
 ];
 async function wayDip(readExtract: Read, opts: Record<string, boolean>, reg: (typeof BANK_DIPS)[number]): Promise<number | null> {
   const st = new GroundStore(readExtract, { roads: true, ...opts });
@@ -329,8 +337,8 @@ async function wayDip(readExtract: Read, opts: Record<string, boolean>, reg: (ty
 }
 export async function bankDipRegressions(readExtract: Read, check: Check): Promise<void> {
   for (const reg of BANK_DIPS) {
-    const d = await wayDip(readExtract, {}, reg), was = await wayDip(readExtract, { bankClimb: false }, reg);
+    const off = reg.off ?? { bankClimb: false }, d = await wayDip(readExtract, {}, reg), was = await wayDip(readExtract, off, reg);
     check(d !== null && d <= reg.maxDipM, `OSM ${reg.way} (${reg.label}): the crossing dips ${d?.toFixed(2) ?? 'n/a'} m under the bank tops' line (<= ${reg.maxDipM})`);
-    check(was !== null && was >= reg.pinMinM, `OSM ${reg.way}: without bankClimb ${was?.toFixed(2) ?? 'n/a'} m (>= ${reg.pinMinM}, the pin is live)`);
+    check(was !== null && was >= reg.pinMinM, `OSM ${reg.way}: without ${Object.keys(off).join(', ')} ${was?.toFixed(2) ?? 'n/a'} m (>= ${reg.pinMinM}, the pin is live)`);
   }
 }
