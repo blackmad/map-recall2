@@ -3499,3 +3499,36 @@ review); D owns records and the solve, R the renderer.
 - **Weteringschans wall-colour sheet** (`ui/2026-11-14-d1-wall-colour/round2/weteringschans.jpg`): it drew `staged-ah07` ("D1
   staged") and `staged-ah07-v3` = staged-ah07 restaged with `WALL_SAMPLE=2` (the last panel); the lane's `round2.sh` shows it. Order left
   to right is 168096, 168042, 169016, 171218.
+
+### §16a The row solve and `house:rows` (lane D, #386)
+
+- **Command.** `npm run house:rows -- <row> [...] [--out dir] [--check]` (rows from `scripts/house-specs/rows/rows.json`). Writes
+  `artifacts/house-rows/staging/<row>.json` (`{row: RowRecord, rowFronts: RowFrontRecord[]}`), `<row>.row-check.json` (P's gate
+  shape, `houseSpec/row/check.ts`), `<row>.report.md` (per series: value, source, ref and votes of every field; flags; members
+  overruled; read, not drawn) and `<row>/<pandId>.json` (one HouseSpec per pand, the `--drawn-specs` dir of the sheet). Stages only.
+- **Contract.** `houseSpec/row/types.ts`: RowRecord (members in street order, fronts with `sub` spans for module pands, series,
+  flags, readNotDrawn, overruled), `RowDesign` (every field a `RowField` with source and ref), `frontDesign(row, front)`.
+  Heights in a series design are above the street ground; `front.topM` is in the pand's datum (3DBAG ground minus the strip's).
+  `front.ground.colour` is the pui colour family (dark, light, green, red, white, timber), source `single-read`, only when a D1
+  reading names a colour on the shopfront, pui or shutter itself (`groundColourOfRead`); it outranks the face's `shopPaint`.
+  Reviewed statements (`scripts/house-specs/rows/reviewed.json`, keyed by row and front id) replace a field, or with `add: true`
+  merge a list into it (Weteringschans 169016 speklagen, review 4); field `ground.colour` sets a front's pui colour; a reviewed per-front `heads` (Kinkerstraat 100 `block-surround`) is P's per-house `headVariant` (Kinkerstraat
+  92–94, 98, 100, 106–108, over the face's wrong shopPaint). All are flagged `reviewed`.
+- **Solve** (`houseSpec/row/solve.ts`). Fronts: face modules, or a read with twice the row's bays on a 1.6x-wide two-number pand
+  (flag `extent-mismatch`). A read mentioning scaffold or netting is held whole (`readHeld`, flag `scaffold`); the front takes its
+  series and the face. Series: one face-stated design (type, head dressing, dormers, crown), else one read signature (crown,
+  cornice class, roof storey, storeys, bays); a front stating nothing joins its left neighbour. Per field: face mode > read
+  consensus (2+, ties go to the read not marked `low`) > single read > period default; an incompatible face/read class is
+  flagged `class-disagreement` (compatible classes: heavy~bracketed, tall-upper~t-window, block-course~dentil-lintel~jack-blocks,
+  pediment~gabled dormers, the brick reds). Cornice line: the face's measured eaves (strip rows -> metres), else the row line,
+  else the 3DBAG height (minus 3.0 m when the series has a roof storey: 3DBAG reads the mansard), flagged. Wall: one judged
+  family per series (`judgedColour.ts`), the tone seeded by row and family; sampled hexes are reported, never drawn.
+- **Specs** (`houseSpec/row/emit.ts`): the face spec (`fromFace.ts`, one receipt per field) or an empty spec, with the series design
+  over it. Row source -> receipt: face intent `streetlevel-measured` 0.85, consensus `vision-judge` 0.75, single read 0.6, period
+  default `default` 0.3. `roofStorey`, `readDormers` are spec-level fields compilers ignore today: lane R draws the roof storey
+  from the row record.
+- **Scores** (`scripts/house-specs/rows/scores.ts`): D1 series consensus (rows solved without their face) against the 22 Kinkerstraat
+  face intents, per field -> `artifacts/house-rows/scores-kinkerstraat.json`.
+- **Batch-1 restore** (`scripts/house-specs/rows/batch1-restore.ts`, dry run): lists the 293 fronts of 36182f238, which round 1
+  replaces, and for the rest the spec to `git rm`, the tiles to rebuild and each pand's pre-D1 record state.
+- Tests: `src/canalRecall/houseSpec/row/row.test.ts` in `test:house-spec` (fixtures under `row/fixtures/d1`).

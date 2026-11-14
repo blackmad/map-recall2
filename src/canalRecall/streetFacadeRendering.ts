@@ -98,6 +98,9 @@ export const SPEC_BAY_SCALE = { min: 0.7, max: 1.5 } as const;
 /** A street front's stated window bays (HouseSpec, houseSpec/decorate.ts), and how many window axes one texture cell
  *  of this building carries (bay-look cells hold 2 or 3; `MeshBuilding.openings.upper.axes`). */
 export type FrontageBays = { bays?: number; axesPerCell: number; storeys?: number; exposedM?: number;
+  /** House rows (lane R): the count is a row series' (photo-read per front), drawn as stated down to ROW_AXIS_MIN_M a
+   *  window axis: no MIN_COLUMN_M, bay-scale or odd-axis pitch cap (Kinkerstraat 102 and 90: three axes in 4.2-4.3 m). */
+  exact?: true;
   /** H11 (#361, released with SPEC_DESIGN_HELD.storeys): the stated ground storey's height (m). */
   groundM?: number;
   /** H11: `nearest` draws the nearest count the clamp allows and lets the ground storey yield first; absent = H9's exact fit. */
@@ -154,10 +157,13 @@ export const MIN_COLUMN_M = 1.8;
  * Then it is held to what the run can carry: cells no narrower than `axesPerCell` columns of MIN_COLUMN_M, and a
  * count the bay-scale clamp (SPEC_BAY_SCALE) lets `layoutWall` reproduce.
  */
-export function specCellCount(bays: number, axesPerCell: number, lengthM: number, nominalBayM: number): number {
+/** House rows: the narrowest window axis a row series' stated count draws (m): a 0.8 m sash and its piers. */
+export const ROW_AXIS_MIN_M = 1.2;
+export function specCellCount(bays: number, axesPerCell: number, lengthM: number, nominalBayM: number, exact = false): number {
   const axes = Math.max(1, Math.floor(axesPerCell || 1));
   const lo = Math.max(1, Math.floor(bays / axes)), hi = Math.max(1, Math.ceil(bays / axes));
   let cells = Math.abs(lo * axes - bays) <= Math.abs(hi * axes - bays) ? lo : hi;
+  if (exact) return Math.max(1, Math.min(cells, Math.floor(lengthM / (axes * ROW_AXIS_MIN_M))));
   const widest = Math.max(1, Math.floor(lengthM / (axes * MIN_COLUMN_M)));
   const reach = (scale: number) => Math.max(1, Math.round(lengthM / (nominalBayM * scale)));
   cells = Math.min(cells, widest, reach(SPEC_BAY_SCALE.min));
@@ -182,7 +188,7 @@ export function frontageLayoutScale(recipe: ArchitecturalRecipe | undefined, fal
   // A street-appearance recipe's own bays keep their original fit (whole cells, scale clamped); only a spec's bays,
   // counted in window columns, go through specCellCount.
   if (recipe?.bays) return {...scaled,bay:Math.min(SPEC_BAY_SCALE.max,Math.max(SPEC_BAY_SCALE.min,lengthM / Math.max(1,Math.round(recipe.bays)) / nominal))};
-  const cells = specCellCount(bays, spec?.axesPerCell ?? 1, lengthM, nominal);
+  const cells = specCellCount(bays, spec?.axesPerCell ?? 1, lengthM, nominal, !!spec?.exact);
   return {...scaled,bay:lengthM / cells / nominal};
 }
 
@@ -262,7 +268,7 @@ export function axisUnitPlan(spec: FrontageBays | undefined, openings: Openings 
   const unit = axisUnitOpenings(openings);
   if (!unit) return null;
   const nominal = STYLE_DIMS[style], pitch = lengthM / bays;
-  if (pitch < (bays <= AXIS_UNIT_NARROW_MAX ? MIN_AXIS_PITCH_M : MIN_COLUMN_M) || pitch > nominal.bay / 2 * SPEC_BAY_SCALE.max) return null;
+  if (spec.exact ? pitch < ROW_AXIS_MIN_M : pitch < (bays <= AXIS_UNIT_NARROW_MAX ? MIN_AXIS_PITCH_M : MIN_COLUMN_M) || pitch > nominal.bay / 2 * SPEC_BAY_SCALE.max) return null;
   const { doorU, ...openingsOfUnit } = unit;
   return { units: bays, openings: openingsOfUnit, doorU, scale: { ...fallback, bay: pitch / nominal.bay, doorEvery: nominal.doorEvery * 2, doorMinBayM: 1.2 } };
 }

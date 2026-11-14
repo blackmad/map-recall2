@@ -12,7 +12,7 @@ import { ROOF_CELL_M } from './roofCells.js';
 import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
-import { ROW_FRONT_EXTRAS, rowFrontShopHex } from './houseLine/rowFront.js';
+import { ROW_FRONT_EXTRAS, rowFrontShopHex, type RowHeadsDraw } from './houseLine/rowFront.js';
 import { wallVarietyOn } from './look/measuredWallPool.js';
 import { paletteFor } from './bayTextures.js';
 import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
@@ -140,10 +140,29 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
   building.parapetM = system.parapetM;
 }
 
+/** House rows: a feature's `rowDress` (houseLine/rowFront.ts rowDressOf), validated. */
+function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[] } | null {
+  if (!v || typeof v !== 'object') return null;
+  const d = v as { cornice?: unknown; heads?: unknown; extras?: unknown };
+  const heads = Array.isArray(d.heads) ? (d.heads as RowHeadsDraw[]).filter(h => h && Number.isFinite(h.a0) && Number.isFinite(h.a1) && typeof h.dressing === 'string') : [];
+  const extras = Array.isArray(d.extras) ? (d.extras as unknown[]).filter((x): x is string => typeof x === 'string') : [];
+  const out = { ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}) };
+  return Object.keys(out).length ? out : null;
+}
+
 /** Lane WG step 2: route A's fields (houseSpec/routeAFields.ts), unless `?specFields=0`. */
 const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (specFieldsOn() ? ownFields(specRecipeOf(p)?.fields) : undefined);
 /** The window look the bay pick takes: H11's stated look (held), then route A's head (flat/segmental) and the street
  *  template's pale surround; absent fields leave it as before. */
+/** House rows: the series' look (houseLine/rowFront.ts RowSeriesDraw.look), validated. */
+/** House rows: the wall band a row cornice takes over the storeys (m), by cornice kind. */
+const ROW_CORNICE_BAND_M: Record<string, number> = { simple: 0.35, bracketed: 0.7, heavy: 0.75, frieze: 0.75, 'attic-frieze': 0.9 };
+function rowLookOf(p: Record<string, unknown>): { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean } | null {
+  const v = p.rowLook as { bays?: unknown; year?: unknown; heightM?: unknown } | undefined;
+  if (!v || typeof v !== 'object' || !(Number.isInteger(v.bays) && (v.bays as number) > 0)) return null;
+  const num = (x: unknown) => typeof x === 'number' && Number.isFinite(x) ? x : null;
+  return { bays: v.bays as number, year: num(v.year), heightM: num(v.heightM), ...(typeof (v as { seed?: unknown }).seed === 'string' ? { seed: (v as { seed: string }).seed } : {}), ...(typeof (v as { whiteFrames?: unknown }).whiteFrames === 'boolean' ? { whiteFrames: (v as { whiteFrames: boolean }).whiteFrames } : {}) };
+}
 function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean } | undefined {
   const r = specRecipeOf(p), draw = fieldsDraw(fieldsOf(p));
   // Lane WC (`?wallFinish=1`): a spec'd render, painted or stone finish takes the painted preset's smooth cells (bayLook).
@@ -151,6 +170,13 @@ function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolea
   const extra = { ...(draw.arch !== undefined && r?.look?.arch === undefined ? { arch: draw.arch } : {}), ...(draw.pale !== undefined && r?.look?.pale === undefined ? { pale: draw.pale } : {}) };
   // Lane 1 step e (rowFront flag, houseLine/rowFront.ts): a front record's house takes no block surrounds (the pale
   // presets' alternating masonry blocks) unless a record states them; it states none yet.
+  // House rows (lane R): a series member's window look is the series' (its preset seeded by the series id); a per-pand
+  // spec look (a D1 reading of this building alone) does not move it.
+  if (typeof p.rowFront === 'string' && typeof p.rowSeries === 'string') {
+    const windowH = Number((r as { windowH?: number } | undefined)?.windowH), rl = rowLookOf(p), perFront = rl?.bays;
+    // The series' white joinery is the light-sash trait (dark: false); unstated keeps the preset's own.
+    return { pale: false, ...(rl?.whiteFrames !== undefined ? { dark: !rl.whiteFrames } : {}), ...(perFront ? { bays: perFront } : r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
+  }
   if (typeof p.rowFront === 'string') {
     const windowH = Number((r as { windowH?: number } | undefined)?.windowH);
     return { ...r?.look, ...extra, pale: false, ...(r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}), ...painted };
@@ -190,9 +216,13 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const at = polygons[0]?.[0]?.[0];
     const profile = at ? buurtProfileAt(at[0], at[1]) : null;
-    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
-      year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
-      specLookOf(p), poolPointOf(polygons, at));
+    // House rows (lane R): a series member's bay preset is the series' (one preset per series, seeded by its id).
+    // The series' look (rowLook): its year, cornice line and bays per front, and no positional pool draw.
+    const rowLook = rowLookOf(p);
+    const lookYear = rowLook ? rowLook.year ?? year : year;
+    const bay = bayLookFor(rowLook?.seed ?? (typeof p.rowSeries === 'string' ? p.rowSeries : id), lookYear, rowLook?.heightM ?? (Number(p.height) || heightM), look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), rowLook ? null : profile,
+      lookYear !== null && lookYear >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
+      specLookOf(p), rowLook ? undefined : poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
@@ -298,7 +328,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       if (measured?.cell && measured.cell !== 'flat') plan = { ...plan, material: measured.cell };
       // Where dormers are a choice (not a mansard's or a school roof's own), 3DBAG's roof parts decide, not the dice.
       if (typeof p.roofDormer === 'boolean' && (plan.kind === 'pitched' || plan.kind === 'hipped' || plan.kind === 'gable' || plan.kind === 'halfHipped')) plan = { ...plan, dormers: p.roofDormer };
-      building.roof = { plan, roofHex: measured?.cell && measured.cell !== 'flat' ? measured.hex : roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
+      // A row roof is its series' slate (roofMesh.ts ROW_SLATE_TONE), never a per-pand measured stamp.
+      building.roof = { plan, roofHex: measured?.cell && measured.cell !== 'flat' && !plan.rowDormers ? measured.hex : roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
         layers: { slope: roofBase + (plan.material === 'tile' ? 0 : 1), plain, dormer: roofBase + 2 } };
       if(plan.repeatedTerrace){
         // One observed material family also owns exposed returns and roof-side closures.
@@ -345,6 +376,24 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     // cross the glass of a window that is not on the grid.
     const boxed = !!specRecipeOf(p)?.windowBoxes?.length;
     if (building.extras) building.onlyExtras = [...ROW_FRONT_EXTRAS.filter(id => !boxed || (id !== 'window-sills' && id !== 'white-window-frames')), ...(building.registerForce ?? []), ...(building.specFieldsForce ?? []), ...(p.rowFrontHoist ? ['hoist-beam'] : [])];
+    // House rows (lane R): a series member's stated dressing (heads, cornice) dresses first, its dice seeded by the series.
+    // The series record is the description: a per-pand spec's forced parts give way to what the series states
+    // (`rowDress.extras`: bands and the like, read for the series), the register's stated parts stay.
+    const dress = rowDressOf(p.rowDress);
+    if (building.extras && typeof p.rowSeries === 'string') {
+      building.rowSeries = p.rowSeries;
+      // The series cornice's band: the storey cells stop under it so the top storey keeps its head dressing and the
+      // frieze sits above (Kinkerstraat 100-106: the block course ran under the consoles).
+      const band = ROW_CORNICE_BAND_M[String(dress?.cornice ?? 'none')] ?? 0;
+      if (band > 0) building.parapetM = band;
+      const ids = [...(dress?.heads?.length ? ['row-heads'] : []), ...(dress?.cornice ? ['row-cornice'] : []), ...(dress?.extras ?? [])];
+      const register = Array.isArray(p.registerForce) ? p.registerForce as string[] : [];
+      if (dress) building.rowDress = dress;
+      building.registerForce = [...register, ...ids];
+      building.specFieldsForce = ids;
+      delete building.specBandM;
+      building.onlyExtras = [...ROW_FRONT_EXTRAS.filter(id => !boxed || (id !== 'window-sills' && id !== 'white-window-frames')), ...register, ...ids, ...(p.rowFrontHoist ? ['hoist-beam'] : [])];
+    }
     if (building.shopfront || building.shop) {
       // The photo's shopfront colour, muted (the row keeps its variety); none read: the plain dark band.
       const traced = (specRecipeOf(p) as { fasciaHex?: unknown } | undefined)?.fasciaHex;
@@ -485,12 +534,14 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
     const flat = mode === 'coarse' || mode === 'shell';
     // Shell roofs: the same roof decision as the detail chunk (its visual roof from the street profiles included).
     const shellRoof = flat && !!chunkOptions.shellRoofs && !f.properties.gardenShed && !f.properties.kitRoof;
-    const visualRoof = (!flat || shellRoof) && profiles.length ? sourceVisualRoof(f, profiles) : undefined;
+    // House rows: a series member's roof is its series' (no surveyed visual roof in place of it).
+    const visualRoof = (!flat || shellRoof) && profiles.length && typeof f.properties.rowSeries !== 'string' ? sourceVisualRoof(f, profiles) : undefined;
     const building = meshBuildingFor(visualRoof?.feature ?? f, look, flat && !shellRoof, visualRoof?.plan);
     if (building && roomContext && f.properties.gardenRoom) building.gardenRoom = { tris: gardenRoomTrisFor(f, building, look, roomContext, shedStreets) };
     if(building){
       const binding=surveyedEnvelopes.get(building.id),geometry=f.geometry as {type?:string;coordinates?:number[][][]};
-      if(binding&&binding.nativeParentId===building.id&&geometry.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(geometry as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)building.surveyedEnvelope=binding;
+      // House rows: a series member draws its series' roof storey, not 3DBAG's surveyed envelope over its wall top.
+      if(binding&&typeof f.properties.rowSeries!=='string'&&binding.nativeParentId===building.id&&geometry.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(geometry as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)building.surveyedEnvelope=binding;
     }
     if (building && shellRoof && building.roof && !building.surveyedEnvelope && shellRoofed(building.roof.plan)) {
       // Walls (and their windows) stop at the eaves under the low-poly planned roof, in the detail's roof colour.
@@ -517,7 +568,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       building.streetAppearance = { profiles: localProfiles, look, sourceHeightM: Number(f.properties.height) || building.heightM, year: p.constructionYear == null || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear), mappedWallHex, shopfront: shopfrontOf(p), periodWallHex: periodWallOf(p) };
     }
     return building;
-  }).filter((b): b is MeshBuilding => !!b).flatMap(b => b.setbackCrown ? withSetbackCrown(b, look) : [b]), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const roofed=(mode==='coarse'||mode==='shell')&&!!chunkOptions.shellRoofs&&!f.properties.gardenShed&&!f.properties.kitRoof;const b=meshBuildingFor(f,look,(mode==='coarse'||mode==='shell')&&!roofed);if(b){const binding=surveyedEnvelopes.get(b.id),g=f.geometry as {type?:string;coordinates?:number[][][]};if(binding&&binding.nativeParentId===b.id&&g.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(g as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)b.surveyedEnvelope=binding;}if(b&&(mode==='coarse'||mode==='shell')&&!(roofed&&b.roof&&shellRoofed(b.roof.plan))){b.heightM=f.properties.kitRoof?wallTopHeightM(f.properties):Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings, chunkOptions.facadeRecord ? { facadeRecord: true, ...(chunkOptions.specFor ? { specFor: chunkOptions.specFor } : {}) } : {});
+  }).filter((b): b is MeshBuilding => !!b).flatMap(b => b.setbackCrown ? withSetbackCrown(b, look) : [b]), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const roofed=(mode==='coarse'||mode==='shell')&&!!chunkOptions.shellRoofs&&!f.properties.gardenShed&&!f.properties.kitRoof;const b=meshBuildingFor(f,look,(mode==='coarse'||mode==='shell')&&!roofed);if(b){const binding=surveyedEnvelopes.get(b.id),g=f.geometry as {type?:string;coordinates?:number[][][]};if(binding&&typeof f.properties.rowSeries!=='string'&&binding.nativeParentId===b.id&&g.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(g as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)b.surveyedEnvelope=binding;}if(b&&(mode==='coarse'||mode==='shell')&&!(roofed&&b.roof&&shellRoofed(b.roof.plan))){b.heightM=f.properties.kitRoof?wallTopHeightM(f.properties):Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings, chunkOptions.facadeRecord ? { facadeRecord: true, ...(chunkOptions.specFor ? { specFor: chunkOptions.specFor } : {}) } : {});
   // F1 record mode: allotment houses are appended in the legacy layout only (no record arrays for them yet).
   if (!garden.length || mode === 'extras' || chunk.record) return chunk;
   const flatLayer = (cellSetOf(look) === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT) + 3;

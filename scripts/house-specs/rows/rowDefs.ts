@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export interface RowMemberDef { pandId: string; label: string; widthM: number; x0M?: number; px?: [number, number] }
+export interface RowMemberDef { pandId: string; label: string; widthM: number; x0M?: number; px?: [number, number]; eavesM?: number }
 export interface RowDef { id: string; title: string; face?: string; members: RowMemberDef[]; cutsDir: string; cutsLocal?: string; answersDir: string; stagedDir: string; pixelsPerMetre?: number; note?: string }
 
 const HERE = path.dirname(new URL(import.meta.url).pathname);

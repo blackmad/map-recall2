@@ -13,10 +13,30 @@
     "weteringschans-168096-171218": {
       "title": "Weteringschans 168096-171218 (labels are BAG number ids, not house numbers)",
       "members": [
-        { "pandId": "0363100012168096", "label": "168096", "widthM": 6.36 },
-        { "pandId": "0363100012168042", "label": "168042", "widthM": 6.3 },
-        { "pandId": "0363100012169016", "label": "169016", "widthM": 6.51 },
-        { "pandId": "0363100012171218", "label": "171218", "widthM": 6.51 }
+        {
+          "pandId": "0363100012168096",
+          "label": "168096",
+          "widthM": 6.36,
+          "eavesM": 14.31
+        },
+        {
+          "pandId": "0363100012168042",
+          "label": "168042",
+          "widthM": 6.3,
+          "eavesM": 14.17
+        },
+        {
+          "pandId": "0363100012169016",
+          "label": "169016",
+          "widthM": 6.51,
+          "eavesM": 14.7
+        },
+        {
+          "pandId": "0363100012171218",
+          "label": "171218",
+          "widthM": 6.51,
+          "eavesM": 14.32
+        }
       ],
       "cuts": "cuts-ah07",
       "cutsLocal": "artifacts/house-rows/cuts-ah07",
@@ -27,7 +47,8 @@
         "sheet": "ui/2026-11-14-d1-wall-colour/round2/weteringschans.jpg (screenshots repo)",
         "stagedSet": "staged-ah07-v3 = staged-ah07 restaged by scripts/house-specs/wall-sample/restage.ts with WALL_SAMPLE=2 (answers-ah07, cuts-ah07, captures-ah07.json); the 'D1 staged' panel is plain staged-ah07, the 'D1 staged + wall sample v2 round 2' panel is staged-ah07-v3. Source: round2.sh in the d1-wall-colour lane (artifacts/d1-wall-colour, kept under _pruned-sheets/venues-r5-20261114/). Confirmed, not inferred: round2.sh restages artifacts/describer-d1/staged-ah07 into staged-ah07-v3 and builds the extract from it.",
         "orderNote": "Street order left to right (viewer facing north, east to the right): 168096, 168042, 169016, 171218, from the cut wall midpoints in cuts-ah07/cuts.json."
-      }
+      },
+      "eavesNote": "eavesM: 3DBAG eaves of each pand as the game draws its wall top (threeBuildingMesh.ts wallTopHeightM on the decorated feature), read from house:row-sheet's today measure.json (heights.eavesM). The row solve takes the series median when no face measures the cornice (house:rows, lane D)."
     }
   }
 }

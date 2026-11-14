@@ -196,7 +196,187 @@ export function canalSideEntrance(c: ExtraContext, s: ExtraSink): void {
   s.commit();
 }
 
+// --- House rows (lane R): a series' stated dressing ---------------------------------------------------------------------
+/** The row dressings' sizes (m). Head course blocks: the dotted course of white blocks at the window heads (Kinkerstraat
+ *  110-100); keystone: a white key on a flat brick arch (98, 96, 92); tympanum: the segmental head's stone fill and its
+ *  brick ring (94, 90, 86-88); cornice: the heavy consoled cornice with its frieze (110-90). */
+export const ROW_DRESS = {
+  block: { w: 0.15, tall: 0.3, short: 0.2, gap: 0.09, pier: 0.42, out: 0.05 },
+  keystone: { w: 0.18, h: 0.34, arch: 0.24, out: 0.06 },
+  tympanum: { rise: 0.32, ring: 0.14, out: 0.04 },
+  cornice: { h: 1.15, frieze: 0.62, console: 0.16, pitch: 0.85, corona: 0.42, out: 0.45 },
+} as const;
+
+type RowWindow = { x0: number; x1: number; z0: number; z1: number; storey: number; shape?: string; dressing?: string };
+/** The windows a row dressing hangs on: the record's boxes on this edge, else the grid's windows with the heads by span. */
+export function rowWindowsOf(c: ExtraContext): RowWindow[] {
+  const d = c.rowDress;
+  if (!d) return [];
+  if (d.windows?.length) return d.windows;
+  const out: RowWindow[] = [];
+  for (let k = 0; k < Math.min(6, c.layout.storeys); k++) for (const w of windowSpans(c, k)) {
+    const head = d.heads?.find(h => w.x >= h.x0 - 1e-6 && w.x <= h.x1 + 1e-6 && (!h.storeys || h.storeys.includes(k + 1)));
+    out.push({ x0: w.x - w.hw, x1: w.x + w.hw, z0: w.z0, z1: w.z1, storey: k + 1, ...(head ? { shape: head.shape, dressing: head.dressing } : {}) });
+  }
+  return out;
+}
+
+const CONSOLE_MIN = 0.32;
+/** The top of the highest head dressing a row wall draws (block course, keystone arch, tympanum, lintel); -inf with none. */
+function rowHeadsTop(c: ExtraContext): number {
+  let top = -Infinity;
+  for (const w of rowWindowsOf(c)) {
+    const d = w.dressing;
+    const rise = d === 'block-course' ? ROW_DRESS.block.tall : d === 'keystone' || d === 'jack-blocks' ? ROW_DRESS.keystone.h
+      : d === 'segmental-tympanum' || (w.shape === 'segmental' && d && d !== 'none') ? ROW_DRESS.tympanum.rise + ROW_DRESS.tympanum.ring + 0.04
+      : d === 'stone-lintel' || d === 'dentil-lintel' ? 0.2 : d === 'arch-ring' || w.shape === 'round' ? (w.x1 - w.x0) / 2 + 0.22 : -Infinity;
+    top = Math.max(top, w.z1 + rise);
+  }
+  return top;
+}
+
+/** One storey's dotted head course: blocks over each window (alternating tall and short) and one on each pier. */
+function blockCourse(c: ExtraContext, s: ExtraSink, row: RowWindow[]): void {
+  const B = ROW_DRESS.block, z = Math.max(...row.map(w => w.z1)), white = c.accentHex && c.accentHex !== '#ffffff' ? WHITE : WHITE;
+  const xs = row.map(w => [w.x0, w.x1] as const).sort((p, q) => p[0] - q[0]);
+  for (const [x0, x1] of xs) {
+    const n = Math.max(2, Math.round((x1 - x0 + 0.2) / (B.w + B.gap))), step = (x1 - x0 + 0.2) / n;
+    for (let i = 0; i < n; i++) { const a = x0 - 0.1 + i * step + (step - B.w) / 2, h = i % 2 ? B.short : B.tall; s.strip(c.f, a, a + B.w, B.out, z, Math.min(c.top, z + h), white); }
+  }
+  // The course runs on across the piers, one block per pier gap at least, and out to the front's ends.
+  const gaps: Array<[number, number]> = [];
+  let at = 0;
+  for (const [x0, x1] of xs) { gaps.push([at, x0 - 0.12]); at = x1 + 0.12; }
+  gaps.push([at, c.f.len]);
+  for (const [g0, g1] of gaps) {
+    const n = Math.floor((g1 - g0) / B.pier);
+    for (let i = 0; i < n; i++) { const a = g0 + (g1 - g0) * (i + 0.5) / n - B.w / 2; s.strip(c.f, a, a + B.w, B.out, z, Math.min(c.top, z + (i % 2 ? B.short : B.tall)), white); }
+  }
+}
+
+/** A window's flat brick arch (a darker band over the head) with a white keystone at its centre. */
+function keystoneHead(c: ExtraContext, s: ExtraSink, w: RowWindow): void {
+  const K = ROW_DRESS.keystone, mid = (w.x0 + w.x1) / 2, top = Math.min(c.top, w.z1 + K.arch);
+  s.strip(c.f, w.x0 - 0.06, w.x1 + 0.06, 0.02, w.z1, top, shadeHex(c.wallHex, 0.8));
+  s.strip(c.f, mid - K.w / 2, mid + K.w / 2, K.out, w.z1 - 0.04, Math.min(c.top, w.z1 + K.h), WHITE);
+}
+
+/** A segmental head: the stone tympanum over the window's flat head under a segmental brick ring, as three facets. */
+function tympanumHead(c: ExtraContext, s: ExtraSink, w: RowWindow): void {
+  const T = ROW_DRESS.tympanum, l = w.x0 - 0.02, r = w.x1 + 0.02, m = (l + r) / 2, z = w.z1, rise = T.rise;
+  if (z + rise + T.ring > c.top) return;
+  const arc = (t: number) => z + rise * (1 - (2 * t - 1) ** 2) * 0.55 + rise * 0.45;
+  const pts = [0, 0.25, 0.5, 0.75, 1].map(t => [l + (r - l) * t, arc(t)] as [number, number]);
+  for (let i = 0; i < pts.length - 1; i++) {
+    const [x0, z0] = pts[i], [x1, z1] = pts[i + 1];
+    s.wallQuad(c.f, [[x0, z], [x1, z], [x1, z1], [x0, z0]], T.out, STONE);
+    s.wallQuad(c.f, [[x0 - (i ? 0 : 0.08), z0], [x1 + (i === pts.length - 2 ? 0.08 : 0), z1], [x1 + (i === pts.length - 2 ? 0.08 : 0), z1 + T.ring], [x0 - (i ? 0 : 0.08), z0 + T.ring]], T.out + 0.01, shadeHex(c.wallHex, 0.82));
+  }
+  s.strip(c.f, m - 0.07, m + 0.07, T.out + 0.02, arc(0.5) - 0.05, arc(0.5) + T.ring + 0.04, WHITE);
+}
+
+/** A round-arched head (`arch-ring`, Weteringschans 171218 top storey): the glazing runs up into a half-round over the
+ *  window's head, under a raised white ring with a keystone. Faceted in ARCH_FACETS. */
+const ARCH_FACETS = 6, ARCH_GLASS = '#3d4955';
+function archRingHead(c: ExtraContext, s: ExtraSink, w: RowWindow): void {
+  const r = (w.x1 - w.x0) / 2, m = (w.x0 + w.x1) / 2, z = w.z1, ring = 0.14;
+  if (z + r + ring + 0.04 > c.top) return;
+  const at = (t: number, rr: number) => [m - Math.cos(Math.PI * t) * rr, z + Math.sin(Math.PI * t) * rr] as [number, number];
+  for (let i = 0; i < ARCH_FACETS; i++) {
+    const t0 = i / ARCH_FACETS, t1 = (i + 1) / ARCH_FACETS;
+    s.wallQuad(c.f, [[at(t0, r)[0], z], [at(t1, r)[0], z], at(t1, r), at(t0, r)], 0.015, ARCH_GLASS);
+    s.wallQuad(c.f, [at(t0, r), at(t1, r), at(t1, r + ring), at(t0, r + ring)], 0.05, WHITE);
+  }
+  s.strip(c.f, m - 0.08, m + 0.08, 0.07, z + r - 0.04, z + r + ring + 0.08, WHITE);
+}
+
+/** House rows: a front's stated parts beyond the heads and cornice, drawn only when the series or front states them. */
+const RUSTIC = { course: 0.32, joint: 0.035, stone: '#b7ab95', jointHex: '#8a806f', out: 0.04 } as const;
+const BALCONY = { depth: 0.55, slab: 0.16, rail: 0.1, height: 0.95, post: 0.07, pitch: 0.16, side: 0.3 } as const;
+const PORCH = { pier: 0.22, out: 0.32, beam: 0.24, rise: 0.55 } as const;
+
+export const ROW_COMPONENTS: readonly WallComponent[] = [
+  { id: 'row-rustication', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'plinth-face', build: (c, s) => {
+    // A rusticated stone souterrain (Weteringschans 171218): stone courses with sunk joints over the ground cell,
+    // stopping at its windows and door.
+    if (!c.groundLevel) return;
+    const z0 = c.base, z1 = c.base + c.layout.groundM;
+    const holes = [...windowSpans(c, -1).map(w => [w.x - w.hw - 0.05, w.x + w.hw + 0.05, w.z0, w.z1] as const), ...(doorSpan(c) ? [(d => [d.x - d.hw - 0.05, d.x + d.hw + 0.05, d.z0, d.z1] as const)(doorSpan(c)!)] : [])];
+    for (let z = z0; z < z1 - 0.05; z += RUSTIC.course) {
+      const za = z, zb = Math.min(z1, z + RUSTIC.course - RUSTIC.joint);
+      const cut = holes.filter(h => h[2] < zb && h[3] > za).sort((a, b) => a[0] - b[0]);
+      let x = 0;
+      for (const h of [...cut, [c.f.len, c.f.len, 0, 0] as const]) {
+        if (h[0] - x > 0.1) {
+          // The sunk joint behind each course, then the stone proud of it.
+          s.strip(c.f, x, Math.min(c.f.len, h[0]), RUSTIC.out * 0.4, za, Math.min(z1, za + RUSTIC.course), RUSTIC.jointHex);
+          s.strip(c.f, x, Math.min(c.f.len, h[0]), RUSTIC.out, za, zb, RUSTIC.stone);
+        }
+        x = Math.max(x, h[1]);
+      }
+    }
+  } },
+  { id: 'row-balcony', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'balcony', build: (c, s) => {
+    // A stone balustrade balcony before the centre window of the first upper storey (Weteringschans 169016, 171218).
+    const ws = rowWindowsOf(c).filter(w => w.storey === 1);
+    if (!ws.length) return;
+    const mid = c.f.len / 2, w = ws.reduce((a, b) => Math.abs((b.x0 + b.x1) / 2 - mid) < Math.abs((a.x0 + a.x1) / 2 - mid) ? b : a);
+    const x0 = w.x0 - BALCONY.side, x1 = w.x1 + BALCONY.side, z = w.z0 - 0.05;
+    s.box(c.f, x0, x1, 0, BALCONY.depth, z - BALCONY.slab, z, STONE, true);
+    s.box(c.f, x0 + 0.1, x1 - 0.1, 0, 0.12, z - BALCONY.slab - 0.22, z - BALCONY.slab, STONE, true);
+    const top = z + BALCONY.height, n = Math.max(3, Math.round((x1 - x0) / BALCONY.pitch));
+    for (let i = 0; i <= n; i++) { const x = x0 + 0.04 + (x1 - x0 - 0.08) * i / n; s.box(c.f, x - BALCONY.post / 2, x + BALCONY.post / 2, BALCONY.depth - 0.1, BALCONY.depth - 0.03, z, top - BALCONY.rail, WHITE); }
+    s.box(c.f, x0, x1, BALCONY.depth - 0.13, BALCONY.depth, top - BALCONY.rail, top, WHITE);
+    for (const xe of [x0, x1 - 0.12]) s.box(c.f, xe, xe + 0.12, 0, BALCONY.depth, z, top, WHITE);
+  } },
+  { id: 'row-porch', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'door-surround', build: (c, s) => {
+    // A gabled entrance porch: stone piers either side of the street door, a beam and a pointed pediment over it.
+    const d = doorSpan(c);
+    if (!d || !c.groundLevel) return;
+    const l = d.x - d.hw - PORCH.pier, r = d.x + d.hw + PORCH.pier, zt = Math.min(c.top - 0.6, d.z1 + 0.12);
+    for (const x of [l, r - PORCH.pier]) s.box(c.f, x, x + PORCH.pier, 0, PORCH.out, d.z0, zt, WHITE);
+    s.box(c.f, l - 0.06, r + 0.06, 0, PORCH.out + 0.04, zt, zt + PORCH.beam, WHITE, true);
+    const zb = zt + PORCH.beam, apex = zb + PORCH.rise;
+    s.wallQuad(c.f, [[l - 0.06, zb], [r + 0.06, zb], [d.x + 0.001, apex], [d.x, apex]], PORCH.out + 0.02, WHITE);
+    s.wallQuad(c.f, [[l + 0.12, zb + 0.06], [r - 0.12, zb + 0.06], [d.x + 0.001, apex - 0.14], [d.x, apex - 0.14]], PORCH.out + 0.035, STONE);
+  } },
+  { id: 'row-cornice', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'crown', build: (c, s) => {
+    // The series' cornice at the wall top: a cream frieze, consoles at a steady pitch, a corona and its cyma, white.
+    // `simple` keeps the corona and cyma alone.
+    const C = ROW_DRESS.cornice, t = c.top, kind = c.rowDress?.cornice;
+    if (!kind || c.roofKind === 'gable') return;
+    const simple = kind === 'simple';
+    if (!simple) {
+      // The frieze sits on the top storey's head dressing, never over it (Kinkerstraat 104: the block course runs right
+      // under the frieze); with no room left above the heads the frieze goes and the consoles stand on the course.
+      const z0 = Math.max(t - C.h, rowHeadsTop(c) + 0.04, Math.max(-Infinity, ...rowWindowsOf(c).map(w => w.z1)) + 0.12), frieze = Math.min(C.frieze, t - 0.4 - z0);
+      if (frieze > 0.12) s.strip(c.f, 0, c.f.len, 0.03, z0, z0 + frieze, CREAM);
+      const n = Math.max(2, Math.round(c.f.len / C.pitch));
+      // Consoles keep at least CONSOLE_MIN under the corona: on a front whose top heads reach the cornice
+      // (Weteringschans 169016) they stand between the heads rather than vanish.
+      const c0 = Math.min(z0 + 0.1, t - 0.4 - CONSOLE_MIN);
+      for (let i = 0; i < n; i++) { const x = (i + 0.5) * c.f.len / n; s.box(c.f, Math.max(0, x - C.console / 2), Math.min(c.f.len, x + C.console / 2), 0.03, 0.3, c0, t - 0.4, WHITE); }
+    }
+    s.box(c.f, 0, c.f.len, 0, 0.3, t - 0.4, t - 0.2, WHITE, true);
+    s.box(c.f, 0, c.f.len, 0, simple ? 0.3 : C.out, t - 0.2, t, WHITE, true);
+  } },
+  { id: 'row-heads', styles: ['canal', 'c19', 'school'], p: 0, wide: true, group: 'window-head', build: (c, s) => {
+    // The series' head dressing per window (houseLine/rowFront.ts RowHeadsDraw): a block course per storey of the spans
+    // that state one, keystones and tympana per window. Plain heads draw nothing.
+    const ws = rowWindowsOf(c);
+    const storeys = [...new Set(ws.filter(w => w.dressing === 'block-course').map(w => w.storey))];
+    for (const k of storeys) blockCourse(c, s, ws.filter(w => w.storey === k && w.dressing === 'block-course'));
+    for (const w of ws) {
+      if (w.dressing === 'keystone' || w.dressing === 'jack-blocks') keystoneHead(c, s, w);
+      else if (w.dressing === 'arch-ring' || w.shape === 'round') archRingHead(c, s, w);
+      else if (w.dressing === 'segmental-tympanum' || (w.shape === 'segmental' && w.dressing !== 'none')) tympanumHead(c, s, w);
+      else if (w.dressing === 'stone-lintel' || w.dressing === 'dentil-lintel') s.strip(c.f, w.x0 - 0.08, w.x1 + 0.08, 0.05, w.z1 + 0.02, Math.min(c.top, w.z1 + 0.2), WHITE);
+    }
+  } },
+];
+
 export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
+  ...ROW_COMPONENTS,
   { id: 'kroonlijst', styles: CANAL, p: { canal: 0.6, c19: 0.15 }, wide: true, street: true, group: 'crown', build: (c, s, r) => {
     // Deep moulded cornice in white: a bed moulding, the corona and a drip, on consoles at the piers.
     // Not under a stepped or neck gable: that front ends in its gable (roofMesh.ts).

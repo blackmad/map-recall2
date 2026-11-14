@@ -1,0 +1,212 @@
+// House rows, lane D (#386): the row solve on the two round-1 rows, with the named regressions of the 2026-11-14
+// rejection (docs/handoffs/house-rows-plan-20261114.md). D1 answers are fixtures (fixtures/d1, copied from the
+// d1-tranche-ring worktree) so the test does not depend on another worktree.
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+process.env.ROW_D1_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures/d1');
+const { loadRowDefs } = await import('../../../../scripts/house-specs/rows/rowDefs.ts');
+const { loadRow } = await import('../../../../scripts/house-specs/rows/house-rows.ts');
+const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, groundColourOfRead } = await import('./solve.ts');
+const { rowSpec, rowFrontRecords } = await import('./emit.ts');
+const { toRowCheck } = await import('./check.ts');
+const { frontDesign } = await import('./types.ts');
+const { ROW_FRONT_EXTRAS } = await import('../../houseLine/rowFront.ts');
+const { checkRow, runRegressions, checkOneDesign } = await import('../rowChecks.ts');
+const { specProblems } = await import('../spec.ts');
+
+const defs = loadRowDefs();
+function solved(id: string) {
+  const l = loadRow(defs[id], '2026-11-14');
+  const row = solveRow(l.input);
+  const specs = Object.fromEntries(row.members.map(m => [m.pandId, rowSpec(row, m.pandId, l.faceSpecs[m.pandId], '2026-11-14')!]));
+  return { ...l, row, specs };
+}
+const K = solved('kinkerstraat-86-110');
+const W = solved('weteringschans-168096-171218');
+const design = (r: typeof K, frontId: string) => frontDesign(r.row, r.row.fronts.find(f => f.id === frontId)!);
+const strip = (d: ReturnType<typeof design>) => JSON.stringify(Object.fromEntries(Object.entries(d).map(([k, v]) => [k, v.value])));
+
+test('Kinkerstraat 106–108 (0363100012236027) is two fronts with their own numbers', () => {
+  const m = K.row.members.find(x => x.pandId === '0363100012236027')!;
+  assert.deepEqual(m.fronts, ['0363100012236027#m0', '0363100012236027#m1']);
+  const fs = m.fronts.map(id => K.row.fronts.find(f => f.id === id)!);
+  assert.deepEqual(fs.map(f => f.numbers), [[108], [106]]);
+  assert.deepEqual(fs.map(f => f.sub), [{ index: 0, of: 2, a0: 0, a1: 0.5 }, { index: 1, of: 2, a0: 0.5, a1: 1 }]);
+  for (const id of m.fronts) assert.equal(design(K, id).bays.value, 3, 'each front 3 bays (the reader counted 6 on one)');
+  assert.ok(K.row.flags.some(f => f.kind === 'extent-mismatch' && f.fronts.includes('0363100012236027')));
+  const rec = rowFrontRecords(K.row).find(r => r.pandId === '0363100012236027')!;
+  assert.equal(rec.subFronts?.length, 2);
+  assert.equal(rec.bays, 6);
+  assert.equal(K.specs['0363100012236027'].design.fronts?.length, 2);
+});
+
+test('Kinkerstraat 104, 102, 100 (159635, 152925, 160809) resolve to one design', () => {
+  const ids = ['0363100012159635', '0363100012152925', '0363100012160809'];
+  const fronts = ids.map(id => K.row.fronts.find(f => f.id === id)!);
+  assert.equal(new Set(fronts.map(f => f.seriesId)).size, 1);
+  // one design but for 100's own dormer (an ornate wall dormer with a pediment and finial: D1 gap + face "larger pediment dormer")
+  // and its reviewed block surrounds (integrator, sheet photo, 2026-11-14)
+  const noDormerKind = (id: string) => { const d = design(K, id); return strip({ ...d, heads: design(K, ids[0]).heads, roofStorey: { ...d.roofStorey, value: { ...d.roofStorey.value, dormerKind: undefined } } }); };
+  assert.equal(new Set(ids.map(noDormerKind)).size, 1);
+  assert.equal(design(K, '0363100012160809').roofStorey.value.dormerKind, 'ornate-pinnacle');
+  assert.equal(design(K, '0363100012152925').roofStorey.value.dormerKind, 'pediment');
+  // one wall tone, one roof, one cornice line (street datum) for the three; the hash path drew one red and two tan
+  const bricks = ids.map(id => K.specs[id].design.palette?.brick);
+  assert.equal(new Set(bricks).size, 1);
+  const d = design(K, ids[0]);
+  assert.equal(d.corniceTopM.value, 14.18);
+  assert.deepEqual(d.roofStorey.value, { kind: 'mansard', material: 'slate', dormersPerFront: 1, dormerKind: 'pediment' });
+  assert.deepEqual(d.heads.value, { shape: 'flat', dressing: 'block-course' }, 's1 heads on every upper storey (no storeys list)');
+  assert.equal(d.wall.value.family, 'red-brown-brick');
+});
+
+test('Kinkerstraat 92–94 (236213): nothing staged from the scaffold read', () => {
+  const fronts = K.row.fronts.filter(f => f.pandId === '0363100012236213');
+  assert.equal(fronts.length, 2);
+  for (const f of fronts) assert.match(f.readHeld ?? '', /scaffold/);
+  assert.ok(K.row.flags.some(f => f.kind === 'scaffold'));
+  const spec = K.specs['0363100012236213'];
+  const reading = K.answers['0363100012236213']!.image.ref;
+  for (const [p, prov] of Object.entries(spec.provenance)) {
+    assert.ok(!prov.ref.includes(reading), `${p} cites the scaffold cut`);
+    assert.ok(!prov.ref.includes('0363100012236213') || !/D1 answers/.test(prov.ref), `${p} cites the scaffold reading`);
+  }
+  assert.ok(!K.row.overruled.some(o => o.front.startsWith('0363100012236213')), 'no reading of it is weighed');
+  // its two modules keep the face's head variants (keystone left, segmental tympanum right) and the row's lines
+  assert.deepEqual(fronts.map(f => (design(K, f.id).heads.value as { dressing: string }).dressing), ['keystone', 'segmental-tympanum']);
+  assert.notEqual(spec.design.palette?.brick, '#243142', 'the netting colour is not the wall');
+});
+
+test('Weteringschans 169016: a slate mansard with a pedimented dormer and a hoist, no pointed gable', () => {
+  const d = design(W, '0363100012169016');
+  assert.equal(d.crown.value, 'cornice');
+  assert.deepEqual(d.roofStorey.value, { kind: 'mansard', material: 'slate', dormersPerFront: 1, dormerKind: 'pediment', hoist: true });
+  // the hoist is 169016's own: 171218's ornate dormer has none
+  assert.equal(design(W, '0363100012171218').roofStorey.value.hoist, undefined);
+  const f = W.specs['0363100012169016'].design.fronts![0] as Record<string, unknown>;
+  assert.equal(f.gable, 'cornice');
+  assert.equal(f.roofStorey, 'mansard');
+  assert.equal(f.dormers, 1);
+  assert.equal(f.dormerStyle, 'pediment');
+  // 171218 is its own series (round heads on its top storey); both mansards keep a line under the 3DBAG height
+  assert.notEqual(W.row.fronts.find(x => x.id === '0363100012171218')!.seriesId, W.row.fronts.find(x => x.id === '0363100012169016')!.seriesId);
+  assert.deepEqual(design(W, '0363100012171218').heads.value, [{ shape: 'flat', dressing: 'stone-lintel', storeys: [1] }, { shape: 'round', dressing: 'arch-ring', storeys: [2] }]);
+  assert.deepEqual(design(W, '0363100012171218').extras.value.slice(6).sort(), ['row-balcony', 'row-porch', 'row-rustication', 'speklagen']);
+  assert.deepEqual(design(W, '0363100012169016').extras.value.slice(6).sort(), ['floor-cornices', 'row-balcony', 'row-porch', 'speklagen', 'string-courses'], 'speklagen added by review 4');
+  assert.ok(d.corniceTopM.value! < 15);
+  // s1's cornice is the 3DBAG eaves (14.31 / 14.17), not the 16.5 m roof height: within 0.5 m of the mansard pair's line
+  const s1 = design(W, '0363100012168096').corniceTopM;
+  assert.equal(s1.value, 14.24);
+  assert.ok(Math.abs(s1.value! - d.corniceTopM.value!) < 0.5);
+  assert.ok(W.row.flags.some(f => f.kind === 'no-reading' && f.field === 'corniceTopM' && f.fronts.includes('0363100012168096')));
+  // bands are read and drawn as extras: 169016 floor cornices and string courses, 171218 speklagen
+  assert.ok(['floor-cornices', 'string-courses'].every(x => design(W, '0363100012169016').extras.value.includes(x)));
+  assert.ok(design(W, '0363100012171218').extras.value.includes('speklagen'));
+  // review 4 adds speklagen to 169016 (reviewed); the read alone drew only its floor cornices and string courses
+  assert.ok(!W.row.readNotDrawn.some(r => r.field === 'bands'));
+  assert.deepEqual(W.row.fronts.map(x => x.pandId), ['0363100012168096', '0363100012168042', '0363100012169016', '0363100012171218']);
+  assert.equal(design(W, '0363100012168096').roofStorey.value.kind, 'none');
+});
+
+test('every staged spec validates and the row passes check:rows and its regressions', () => {
+  for (const r of [K, W]) {
+    for (const s of Object.values(r.specs)) assert.deepEqual(specProblems(s), [], s.pandId);
+    const c = toRowCheck(r.row, r.answers, new Set(Object.keys(r.specs)));
+    assert.deepEqual(checkRow(c), []);
+  }
+  const regs = runRegressions([toRowCheck(K.row, K.answers, new Set(Object.keys(K.specs))), toRowCheck(W.row, W.answers, new Set(Object.keys(W.specs)))]);
+  for (const g of regs) assert.equal(g.status, 'pass', `${g.id}: ${g.message}`);
+});
+
+test('no sampled hex is drawn; one judged tone per series', () => {
+  for (const r of [K, W]) for (const s of r.row.series) {
+    const tones = new Set(s.fronts.map(id => r.specs[r.row.fronts.find(f => f.id === id)!.pandId].design.palette?.brick));
+    assert.equal(tones.size, 1, s.id);
+    assert.equal([...tones][0], s.design.wall.value.hex);
+  }
+  assert.ok(K.row.readNotDrawn.some(x => x.field === 'measuredPalette.brick'));
+});
+
+test('helpers: dormers from a gap sentence, held reads, class compatibility, the extras copy', () => {
+  assert.deepEqual(readDormers({ gaps: [{ component: 'dormer', what: 'one pedimented dormer with a hoist beam over the centre of a slate mansard' }] } as never),
+    { count: 1, kind: 'pediment', hoist: true, from: 'gap: one pedimented dormer with a hoist beam over the centre of a slate mansard' });
+  assert.ok(heldReason({ notes: 'The whole upper front is wrapped in scaffold and blue netting', gaps: [] } as never));
+  assert.equal(heldReason({ notes: 'a clean front', gaps: [] } as never), null);
+  assert.ok(compatible('cornice', 'heavy', 'bracketed'));
+  assert.ok(!compatible('heads', { dressing: 'keystone' }, { dressing: 'segmental-tympanum' }));
+  assert.deepEqual([...ROW_EXTRAS_DEFAULT], [...ROW_FRONT_EXTRAS]);
+});
+
+test('Weteringschans review 3: doors left, 168042 a shop, block crowns on the first storey only, balconies on the first storey', () => {
+  for (const id of ['0363100012168096', '0363100012169016', '0363100012171218']) {
+    const f = W.row.fronts.find(x => x.id === id)!;
+    assert.equal(f.ground.doorSide, 'left', id);
+    assert.equal((W.specs[id].design.fronts![0] as Record<string, unknown>).doorBay, 0, id);
+  }
+  assert.equal(W.row.fronts.find(x => x.id === '0363100012168042')!.ground.use, 'shop');
+  assert.equal(W.specs['0363100012168042'].facts?.pui, 'shop');
+  assert.deepEqual(design(W, '0363100012168096').heads.value, { shape: 'flat', dressing: 'jack-blocks', storeys: [1] });
+  assert.equal(design(W, '0363100012168096').storeys.value, 3);
+  for (const id of ['0363100012169016', '0363100012171218']) {
+    assert.equal(design(W, id).storeys.value, 3, 'bel-etage + 2 above; the souterrain is not counted');
+    assert.deepEqual(design(W, id).balcony?.value, { storeys: [1], axis: 'centre' });
+  }
+});
+
+test('Kinkerstraat 90 and 92: reviewed heads on every upper storey, the face disagreement flagged', () => {
+  for (const id of ['0363100012155794', '0363100012236213#m1']) {
+    const h = design(K, id).heads;
+    assert.equal(h.source, 'reviewed');
+    assert.deepEqual(h.value, { shape: 'segmental', dressing: 'segmental-tympanum' });
+  }
+  assert.equal((design(K, '0363100012236213#m0').heads.value as { dressing: string }).dressing, 'keystone');
+  assert.ok(K.row.flags.some(f => f.kind === 'reviewed' && f.fronts.includes('0363100012155794')));
+});
+
+
+test('Weteringschans review 4: 169016 adds speklagen (reviewed) and keeps its floor cornices, its own series; 168096 ground stated', () => {
+  const ex = design(W, '0363100012169016').extras;
+  assert.equal(ex.source, 'reviewed');
+  for (const e of ['speklagen', 'floor-cornices', 'string-courses']) assert.ok(ex.value.includes(e), e);
+  const sid = (id: string) => W.row.fronts.find(x => x.id === id)!.seriesId;
+  assert.notEqual(sid('0363100012169016'), sid('0363100012171218'));
+  assert.deepEqual(W.row.fronts.find(x => x.id === '0363100012168096')!.ground, { use: 'dwelling', doorSide: 'left', doorIndex: 0, groundBays: 3, basement: 'windows' });
+  assert.notEqual(W.specs['0363100012168096'].design.fronts![0].souterrain, true, 'basement windows are not a souterrain');
+});
+
+test('Kinkerstraat shopfront colour: read where a reading names it, reviewed over the face shopPaint', () => {
+  const g = (id: string) => K.row.fronts.find(x => x.id === id)!.ground.colour;
+  // reviewed (integrator, sheet photo): 106-108 dark, 92-94 white, 100 light, 98 dark (the read agrees); face shopPaint flagged
+  const want: Record<string, string> = { '0363100012236027#m0': 'dark', '0363100012236027#m1': 'dark', '0363100012236213#m0': 'white', '0363100012236213#m1': 'white', '0363100012160809': 'light', '0363100012158180': 'dark' };
+  for (const [id, v] of Object.entries(want)) assert.deepEqual([g(id)?.value, g(id)?.source], [v, 'reviewed'], id);
+  for (const id of ['0363100012236027#m0', '0363100012236213#m1', '0363100012160809']) assert.ok(K.row.flags.some(f => f.kind === 'reviewed' && f.field === 'ground.colour' && f.fronts.includes(id) && /shopPaint/.test(f.detail)), id);
+  assert.ok(!K.row.flags.some(f => f.field === 'ground.colour' && f.fronts.includes('0363100012158180')), '98 agrees with its read');
+  for (const id of ['0363100012159635', '0363100012156028', '0363100012165799']) assert.equal(g(id), undefined, id);
+  const read = (what: string, notes = '') => groundColourOfRead({ gaps: [{ component: 'shopfront', what }], notes } as never)?.value ?? null;
+  assert.equal(read('a painted timber shopfront with a row of transom lights'), null);
+  assert.equal(read('a deep dark canopy runs along the whole row over the shopfronts'), null);
+  assert.equal(read('a red-and-white shopfront'), 'red');
+  assert.equal(read('', 'a black pui with gold lettering'), 'dark');
+  assert.equal(read('a varnished timber shopfront'), 'timber');
+});
+
+test('Kinkerstraat 100: reviewed block surrounds as a front override in s1; the one-design gate takes it as headVariant', () => {
+  const f = K.row.fronts.find(x => x.id === '0363100012160809')!;
+  assert.equal(f.seriesId, K.row.fronts.find(x => x.id === '0363100012159635')!.seriesId);
+  assert.deepEqual([f.overrides.heads?.value, f.overrides.heads?.source], [{ shape: 'flat', dressing: 'block-surround' }, 'reviewed']);
+  const fr = K.specs['0363100012160809'].design.fronts![0] as Record<string, unknown>;
+  assert.equal(fr.windowSurround, 'block-dressings');
+  assert.equal(fr.bandLines, undefined, 'the face head band is replaced, not added to');
+  const c = toRowCheck(K.row, {}, new Set());
+  const m = c.members.find(x => x.key === '0363100012160809')!;
+  assert.equal(m.design.headVariant, 'flat/block-surround');
+  assert.equal(m.design.head, c.members.find(x => x.key === '0363100012159635')!.design.head);
+  assert.deepEqual(checkOneDesign(c), []);
+  // an unreviewed per-front heads difference still fails the gate
+  const row2 = structuredClone(K.row);
+  row2.fronts.find(x => x.id === '0363100012160809')!.overrides.heads!.source = 'single-read';
+  assert.ok(checkOneDesign(toRowCheck(row2, {}, new Set())).length > 0);
+});
