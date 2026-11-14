@@ -1,0 +1,315 @@
+{
+ "schemaVersion": 1,
+ "id": "skatecafe",
+ "pand": "0363100012122913",
+ "brief": "scripts/landmarks/skatecafe-brief.md",
+ "signature": [
+  "sawtooth-gables",
+  "chalet-gable",
+  "scalloped-barge",
+  "blue-shutters",
+  "yellow-balcony",
+  "graffiti"
+ ],
+ "walls": [
+  {
+   "tag": "w01-123",
+   "bearing": 123,
+   "lengthM": 40.5,
+   "centre": [
+    4.925566,
+    52.385363
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_09-10-27_02646",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "sawtooth-gables",
+     "kind": "other",
+     "where": "south-west 22 m of the front: six north-light gables, valleys 4.3-22.0 m, apexes 9.2 m, glazed short slopes",
+     "approxSizeM": [
+      22,
+      9.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "hall-kit sawtoothHall: solid long slopes, glass short slopes, gable triangles at both ends"
+    },
+    {
+     "id": "chalet-gable",
+     "kind": "other",
+     "where": "the cafe front s 24.4-29.9: black vertical boards in a pitched gable",
+     "approxSizeM": [
+      5.5,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "dark boarded gable polygon with battens over the chalet section"
+    },
+    {
+     "id": "scalloped-barge",
+     "kind": "other",
+     "where": "white scalloped bargeboards along both rakes of the chalet gable",
+     "approxSizeM": [
+      6,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "hall-kit scallopedRake, seven scallops a side"
+    },
+    {
+     "id": "finial",
+     "kind": "sculpture",
+     "where": "pinnacle on the chalet apex",
+     "approxSizeM": [
+      0.2,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "dark post with a small gold knob"
+    },
+    {
+     "id": "gable-window",
+     "kind": "window-shape",
+     "where": "four-pane white window in a dark surround in the chalet gable",
+     "approxSizeM": [
+      1.1,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "layered surround, white frame, glass and cross bars"
+    },
+    {
+     "id": "blue-shutters",
+     "kind": "other",
+     "where": "three windows with pairs of blue shutters on the white half-timbered storey",
+     "approxSizeM": [
+      4.3,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "front-kit openings with blue shutter slabs and dark posts"
+    },
+    {
+     "id": "yellow-balcony",
+     "kind": "balcony-ironwork",
+     "where": "yellow balcony band with blue X balusters over the entrance, 3.2-4.0 m",
+     "approxSizeM": [
+      4.3,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "gold band slab with blue X strips and a dark rail"
+    },
+    {
+     "id": "cafe-entrance",
+     "kind": "canopy",
+     "where": "glazed entrance with dark frames under a dark beam",
+     "approxSizeM": [
+      4.8,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "front-kit openings and a projecting beam"
+    },
+    {
+     "id": "gable-windows-row",
+     "kind": "window-shape",
+     "where": "one two-light window per saw-tooth bay at 5.5-6.4 m with concrete sill and lintel",
+     "approxSizeM": [
+      22,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "front-kit openings, concrete strips"
+    },
+    {
+     "id": "downpipes",
+     "kind": "other",
+     "where": "black downpipes with hoppers in every valley",
+     "approxSizeM": [
+      0.2,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "dark slabs and hopper boxes"
+    },
+    {
+     "id": "graffiti",
+     "kind": "other",
+     "where": "tag pieces and throw-ups over the lower storey of the saw-tooth bays; a big silver piece at 3.2-5.3 m in the second bay",
+     "approxSizeM": [
+      21,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "hall-kit graffitiBand: generated bubble-letter pieces in the photographed colours (silver, pink, teal, yellow, light blue), not the actual tags"
+    },
+    {
+     "id": "ivy",
+     "kind": "other",
+     "where": "ivy over the link between the bays and the chalet, climbing to about 9 m",
+     "approxSizeM": [
+      4.4,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "a lumpy green sheet over the link"
+    },
+    {
+     "id": "warehouse-door",
+     "kind": "other",
+     "where": "warehouse door in the third bay, 2.4 m wide",
+     "approxSizeM": [
+      2.4,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "deep dark opening with a concrete lintel"
+    },
+    {
+     "id": "blue-door",
+     "kind": "other",
+     "where": "blue door in the second bay",
+     "approxSizeM": [
+      1.0,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "front-kit opening with a blue back"
+    },
+    {
+     "id": "wing-windows",
+     "kind": "window-shape",
+     "where": "four white-framed upper windows on the brick wing, ground doors and blue-framed windows",
+     "approxSizeM": [
+      10.5,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "how": "front-kit openings"
+    },
+    {
+     "id": "poster-wall",
+     "kind": "sign",
+     "where": "paste-up posters over the first bays below 3 m",
+     "approxSizeM": [
+      5.5,
+      2.8
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "skip": {
+      "reason": "temporary",
+      "note": "paste-ups change; the graffiti band covers the storey"
+     }
+    },
+    {
+     "id": "yard-crane",
+     "kind": "other",
+     "where": "a Sennebogen crawler crane parked in the yard in front of the first bays, boom to about 10 m",
+     "approxSizeM": [
+      10,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "skip": {
+      "reason": "temporary",
+      "note": "a movable machine in the yard, not part of the building (not in the 2017 and 2020 captures)"
+     }
+    },
+    {
+     "id": "yard-crosses",
+     "kind": "other",
+     "where": "wooden cross-shaped frames and picnic tables in the yard",
+     "approxSizeM": [
+      4,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-22_09-10-27_02646",
+     "skip": {
+      "reason": "temporary",
+      "note": "yard furniture, changes between captures"
+     }
+    }
+   ],
+   "note": "Current state from the 2024-10-22 capture (rectified 50 px/m); the 2020 and 2019 captures for tone and the saw-tooth crown."
+  },
+  {
+   "tag": "w02-303",
+   "bearing": 303,
+   "lengthM": 18.5,
+   "centre": [
+    4.9254985,
+    52.3855065
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0008_004267",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [],
+   "note": "North-west side of the chalet and wing (18.5 m), 2016 capture: plain brick behind a fence and trees."
+  },
+  {
+   "tag": "w03-303",
+   "bearing": 303,
+   "lengthM": 22.0,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002343_pano_0000_000424",
+   "capturedAt": "2021-12-24",
+   "checked": true,
+   "note": "North-west gable fronts of the saw-tooth bays (BAG ring 3-4), rectified with venue-face-crops.ts: same gables, one window per bay, a door with paste-ups, graffiti below.",
+   "items": [
+    {
+     "id": "nw-gables",
+     "kind": "other",
+     "where": "six saw-tooth gables with one window per bay",
+     "approxSizeM": [
+      22,
+      9.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002343_pano_0000_000424",
+     "how": "the same sawtoothHall gables, front-kit windows mirrored"
+    },
+    {
+     "id": "nw-graffiti",
+     "kind": "other",
+     "where": "graffiti over the lower storey",
+     "approxSizeM": [
+      21,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002343_pano_0000_000424",
+     "how": "graffitiBand pieces"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

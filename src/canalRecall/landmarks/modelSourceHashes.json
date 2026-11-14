@@ -1,5 +1,5 @@
 {
-  "toolchain": "7f489b8e99de9c2b60b62d01e54513d35240c318702f8ca4c2906cc8072b834f",
+  "toolchain": "3ad9fe288e3bf31caab68725cfd47333f26d9e76072ae6a8a8d42ace31110d5e",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -33,6 +33,7 @@
     "artis-entrance": "d58e2909b5da43189efce594afc7b77f4460e7adb6aa55cd71d1c492abcaa4d1",
     "artis-library": "9481fa68a34a4996363af0815057da8e336585c85e68aee92f50cde88017427b",
     "artis-planetarium": "982adc852aa273f5955e6707554a5068e1bbdc39aa113d7a00cfce01aa3c7b30",
+    "asscher-diamantslijperij": "a05381b1025cafea87444102ccebafe402a079b6b5c681d2c1477982e6506325",
     "asterweg-23": "aff9e9d9b3b15cd6e676333c8fa04a9fc0cef94d53ead3ffa99436ea0495c62d",
     "athenaeum": "a5a99a723ed69b446e76c06129f63f9698c55dd236ab515686d11c9c020f21e2",
     "atlanta-stadhouderskade": "1b89c11a5a70b11bb7b57eacc3757b8c20936ee54c167093f9ea1152f0bb57e5",
@@ -87,6 +88,7 @@
     "compagnietheater": "c674e9405392cdf9c130d2092f9b466aec92b61d344af10a7eb8d2b949cd47fa",
     "concertgebouw": "394b39c8ddee06b007b796729a70edc5e20b5249860705981e628a41557ae809",
     "conservatorium": "5db188738b03bc40700db5a80abb0b06cece042bfa24ce9babfaa3c4ff1bc95e",
+    "conservatorium-van-amsterdam": "b8095521cc48e77ff6e4e65d3d6b23536f7b094c75deef3da0c842da4e7cd8e2",
     "coymanshuis": "9ce9b0bb0a7ccfcc868eb848bd4c1afe5e6e220246d85509540d12e2bb795c76",
     "cromhouthuizen": "2d966bf7343e19416eb3edacceab4e58ea0de6aad8a8e411bd281e63da9a9eaa",
     "d-admiraal": "4a7f8680390879665c69d1b5d66e392d7e13df12c6ab078c6e3a66bf4fa2957e",
@@ -108,6 +110,7 @@
     "de-krakeling": "5c9402ddb4023e6a1fa2615b17f76612d16922c387fc9496c21540ed71550921",
     "de-makroon": "f1822c222b6bc40d717be659b5e8a1e818a0596e2be4ccd47073e598327c9fe0",
     "de-nederlandsche-bank": "56313a20f52e3f29a02252b021c9cc1be236805f2adff9ae0fefcef046de2f73",
+    "de-nieuwe-liefde": "e5e678ae6c7c4fcb6b5da1dc8f13b32f6b7756d2591676d394d31047a626fc32",
     "de-otter": "dfee71789fc25762b3563233a24186717601c09ed005f156ff0591e00ba06de5",
     "de-papegaai": "d49a5082842109fd87d371ef0d0a5f77793a16b33969979179fdee1ae8f316de",
     "de-piramides": "ffb50bfc347b3bd8e1ddc8e5a3e513f91cf4266ea40951fa5cd143cab04e4388",
@@ -366,6 +369,7 @@
     "rembrandtmonument": "bd8c5416a8dafca8d5769d4752ffe4a9fb726f9a3e9326e860fff6504796fe29",
     "rialto": "d4a017370742dc6fada8d7c7161ebb07278d464989eb1742a69e10bcafc3fc97",
     "rietveld-academie-2006": "927d37f1d4665d5e0cf3a1d59ee8f15ae985f7d98c8437f51949c206cdc11420",
+    "rijksakademie": "d2136e8259d242fe3004d7b88b4d69d278abdccb37ae45ec85e778df930d628e",
     "rijksmuseum": "2241b4d7236f0b19823fb5cad37b3aac05bdcd88dabed460314b79ebae95636a",
     "rode-hoed": "2988f15124b3dfd1ef04dd8742e5fcde90b781580e234264a54d6304c8ce98ec",
     "roeterseiland-rec-a": "878188326536cc1dcfec6f2dfda9ac2d3f120ec952ca9c876d4e0c3282445188",
@@ -388,6 +392,7 @@
     "sint-nicolaas": "690ee9faeae33baef476735e1e2c9efa98988e8c26f73bcab55d239fe2ead995",
     "sint-nicolaaslyceum": "0ab8dc0022cf066f79f0d4b2ea679c68fad8003c0526ef5b4b8a6d63580736a2",
     "sint-olofskapel": "e90ff11422e69188dd94eba2ca65db3dd4559f53443a2719e9690ac4ee3272f7",
+    "skatecafe": "337859377c02b94461d65692b7351c67bd8da43d16519ec0e3857bade476c1dd",
     "slavernijmonument": "e3c8f38fa885ef492f762beb86c16ac018510cef6082007aee08b62c9feb64f6",
     "sloterdijk-station": "9bc82ef221f997c21743f3554483099fa7649da4767de8f4f236644343ef3547",
     "social-history": "17864020947311f211363753cd9b177d88c469d12f727f15b7a78aa91952d9db",
@@ -418,6 +423,7 @@
     "tobacco-theater": "24dc216bf8253c840ba729e017b5fab2bca15164030dcb3c9ffedd184083a2cc",
     "toekomstmuziek": "30fec0a296e31ce96c267364616af58c91c8c6e8d6b47e90dc9fcdeff85c82d2",
     "tolhuis-paviljoen": "3e650db24c3d8a00b0fce36c17871f8fecbff8b5a7f4ed4b9fc12c993a163020",
+    "tolstraat-160-tempel": "2fd97fe43d22329e90659ace89aadffb21e3f373d7e3e0733e1d0e6736c8ea4e",
     "torture-museum": "6a5ac5eb60611ef5efc43e24423657a644104fa235e3a1e74fc39312ca77003f",
     "tramremise-lekstraat": "eb3b3eba421fbb3b12e867a83ea4001b65d8bbf79fa5b522919f098d0c1f98ac",
     "treehouse-ndsm": "fc206e4b7ab5d089073a0ade629d6dc8af63505824e82858bb416037abfde4ca",
@@ -451,6 +457,7 @@
     "waterdraagster-bellamyplein": "dd3475253cbbd3a8db9b31fe35d8ae661be7b72e142bf8d28c17280d5df7d1c2",
     "watertoren-amstelveenseweg": "aa96c42167d3487a694a507acf4d4f3f13b4b219ffd4f0d1845d48f8d46f42b4",
     "wereldmuseum-amsterdam": "990108093d784b51f4f431ec88db6f681e3da7d2f874a5c37c46004e5e204460",
+    "werf-kromhout": "99d113d6735e0ade45f197953c24599b088777fac2b5135f039594a296bcbf99",
     "west-india-house": "28234409fcba2e4d3b36f413dc0d0ee55d8226bbe92d1b3be8581ca73cbed06a",
     "west-indisch-pakhuis": "d95a1b98a776beea2e36604edc282175d0ab8e82e693c3a7d6b7191fca9d8c44",
     "westerdok-748": "a44dceda5892b60d94cf6df332781d7073ba9d2d7ce48e3626f098ba94cd3122",
@@ -474,12 +481,6 @@
     "zonnehuis": "b4554915147b653805b86b65b66a744f1ef173c280ed9f588f074921458b4927",
     "zuiderbad": "99513d5a1e2e302d557886235fdd7c74e38f2a5cf2c44ae5105465a005deb9e6",
     "zuiderkerk": "25cec372a2e9a7c37861d5b54df6621c27eb8c57e976c1f54aa01fc75dea6935",
-    "zuiveringshal-west": "fb9a2b0866fcc0de1300d377507a84070b4c7bca32b627bc0e50f76570114099",
-    "asscher-diamantslijperij": "a05381b1025cafea87444102ccebafe402a079b6b5c681d2c1477982e6506325",
-    "conservatorium-van-amsterdam": "b8095521cc48e77ff6e4e65d3d6b23536f7b094c75deef3da0c842da4e7cd8e2",
-    "de-nieuwe-liefde": "e5e678ae6c7c4fcb6b5da1dc8f13b32f6b7756d2591676d394d31047a626fc32",
-    "rijksakademie": "d2136e8259d242fe3004d7b88b4d69d278abdccb37ae45ec85e778df930d628e",
-    "tolstraat-160-tempel": "2fd97fe43d22329e90659ace89aadffb21e3f373d7e3e0733e1d0e6736c8ea4e",
-    "werf-kromhout": "99d113d6735e0ade45f197953c24599b088777fac2b5135f039594a296bcbf99"
+    "zuiveringshal-west": "fb9a2b0866fcc0de1300d377507a84070b4c7bca32b627bc0e50f76570114099"
   }
 }
