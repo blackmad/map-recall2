@@ -21,9 +21,9 @@ import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, signWord, templateForTags, type Retai
 import { insideCentre, RING_KM, DAM } from '../../src/canalRecall/retailArea.ts';
 import { streetPriors, type StreetRead } from '../../src/canalRecall/retailPuiPaint.ts';
 import { bikeShopClass, bikeCode } from '../../src/canalRecall/retailBikes.ts';
-import { addressPand, matchAddress, type Vbo } from '../../src/canalRecall/retailAddress.ts';
+import { addressPand, atOnStreetWall, matchAddress, type Vbo } from '../../src/canalRecall/retailAddress.ts';
 
-import { CACHE, nodes, LAT0, KX, KY, local, grid, streets, walls, facing, open, near, bagUses, bagKey, type Building, type Node } from './city.ts';
+import { CACHE, nodes, LAT0, KX, KY, local, grid, streets, walls, facing, open, near, bagUses, bagKey, namedSegs, lngLatOf, type Building, type Node } from './city.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const STAGING = 'data/retail-ground/shop-templates.json', PUBLISHED = 'public/data/extracts/amsterdam/shop-templates.json';
@@ -57,7 +57,7 @@ for (const n of allNodes) {
   const [x, y] = local(n.lon, n.lat), h = byAddress(n) ?? hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open);
   if (h) occupied.add(h.id);
 }
-let spilled = 0, added = 0;
+let spilled = 0, added = 0, onStreet = 0;
 const records: { n: Node; t: RetailTemplate; hit: ReturnType<typeof hostOnFront>; plain: ReturnType<typeof hostOnFront> }[] = [];
 for (const n of allNodes) {
   const tags = n.tags ?? {};
@@ -87,7 +87,11 @@ for (const n of allNodes) {
   const held = placed.get(hit.id);
   if (held && RETAIL_TEMPLATES.indexOf(held.t) <= RETAIL_TEMPLATES.indexOf(t)) continue;
   const ring = Math.hypot((n.lon - DAM[0]) * KX, (n.lat - DAM[1]) * KY) / 1000 <= RING_KM;
-  placed.set(hit.id, { t, at: [Math.round(n.lon * 1e6) / 1e6, Math.round(n.lat * 1e6) / 1e6], front: hit.front, name: tags.name ?? '', tags: Object.entries(tags).filter(([k]) => /^(shop|amenity|cuisine|brand|name|addr:street|addr:housenumber|bar|origin)$/.test(k)).map(([k, v]) => `${k}=${v}`).join(' '), centre: insideCentre(n.lon, n.lat), ring, ...(t === 'bike' ? { bike: bikeShopClass(tags) } : {}) });
+  // Round 8: on a corner pand, the front goes on the wall facing the node's addr:street (retailAddress.ts atOnStreetWall).
+  let at: [number, number] = [n.lon, n.lat];
+  const pand = tags['addr:street'] && hit.front === 'street' ? near(x, y).find(c => c.id === hit.id) : undefined;
+  if (pand) { const p = atOnStreetWall(pand.ring, x, y, tags['addr:street'], namedSegs.filter(s => Math.abs(s.x0 - x) < 80 && Math.abs(s.y0 - y) < 80)); if (p && Math.hypot(p[0] - x, p[1] - y) > 0.5) { at = lngLatOf(p[0], p[1]); onStreet++; } }
+  placed.set(hit.id, { t, at: [Math.round(at[0] * 1e6) / 1e6, Math.round(at[1] * 1e6) / 1e6], front: hit.front, name: tags.name ?? '', tags: Object.entries(tags).filter(([k]) => /^(shop|amenity|cuisine|brand|name|addr:street|addr:housenumber|bar|origin)$/.test(k)).map(([k, v]) => `${k}=${v}`).join(' '), centre: insideCentre(n.lon, n.lat), ring, ...(t === 'bike' ? { bike: bikeShopClass(tags) } : {}) });
 }
 
 const rows = RETAIL_TEMPLATES.map(t => {
@@ -179,6 +183,7 @@ if (process.argv.includes('--addresses')) await auditAddresses();
 console.log(`address and source hosts (${ADDRESS_HOSTS}, ${SOURCE_HOSTS}): ${addressed} POIs hosted by an address or second source; ${added} template POIs added by a second source`);
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, JSON.stringify(out));
+console.log(`fronts moved onto the wall facing addr:street (atOnStreetWall): ${onStreet}`);
 console.log(`spill (retailHosting.ts SPILL): ${spilled} POIs moved to a much bigger shop next door`);
 console.log(`staged ${placed.size} pands -> ${STAGING} (${(fs.statSync(STAGING).size / 1024).toFixed(0)} KB)`);
 if (process.argv.includes('--publish')) { fs.copyFileSync(STAGING, PUBLISHED); console.log(`published -> ${PUBLISHED}`); }

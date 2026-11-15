@@ -35,3 +35,16 @@ test('no street, unknown number or a letter that does not exist: no address host
   assert.deepEqual(matchAddress('Eerste Constantijn Huygensstraat', '88A', vbos), []);
   assert.equal(addressPand([], pands, insideRing), null);
 });
+
+import { atOnStreetWall } from './retailAddress.js';
+test('round 8: a corner pand is fronted on the wall facing the addr:street, not the nearest wall', () => {
+  // A 10 x 10 m corner pand; Main Street runs along y = -3 (south), Side Street along x = 13 (east). The node stands
+  // near the east wall but its address is Main Street.
+  const ring: [number, number][] = [[0, 0], [10, 0], [10, 10], [0, 10], [0, 0]];
+  const segs = [{ name: 'Main Street', x0: -20, y0: -3, x1: 30, y1: -3 }, { name: 'Side Street', x0: 13, y0: -20, x1: 13, y1: 30 }];
+  const at = atOnStreetWall(ring, 9, 4, 'Main Street', segs)!;
+  assert.ok(Math.abs(at[1]) < 1e-9 && at[0] >= 1 && at[0] <= 9, `${at}`);
+  assert.equal(atOnStreetWall(ring, 9, 4, 'Elsewhere', segs), null);
+  // Already on the street's wall: no move.
+  assert.equal(atOnStreetWall(ring, 5, 0.5, 'Main Street', segs), null);
+});

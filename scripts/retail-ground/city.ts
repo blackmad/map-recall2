@@ -55,3 +55,11 @@ export const open = (c: { owner?: number }, e: ReturnType<typeof ringEdges>[numb
 export const near = (x: number, y: number) => { const gx = Math.floor(x / CELL), gy = Math.floor(y / CELL), out: Building[] = []; for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) out.push(...(grid.get(`${gx + dx},${gy + dy}`) ?? [])); return out; };
 export const bagUses = (JSON.parse(fs.readFileSync('.cache/industrial/bag-uses.json', 'utf8')) as { pands: BagUsesTable }).pands;
 export const bagKey = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
+
+// Round 8: the named street segments (any highway with a name), for atOnStreetWall (retailAddress.ts).
+export const namedSegs: { name: string; x0: number; y0: number; x1: number; y1: number }[] = [];
+for (const w of JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as Array<{ name?: string; path: [number, number][] }>) {
+  if (!w.name) continue;
+  for (let i = 1; i < w.path.length; i++) { const a = local(w.path[i - 1][1], w.path[i - 1][0]), b = local(w.path[i][1], w.path[i][0]); namedSegs.push({ name: w.name, x0: a[0], y0: a[1], x1: b[0], y1: b[1] }); }
+}
+export const lngLatOf = (x: number, y: number): [number, number] => [x / KX + 4.9, y / KY + LAT0];

@@ -40,3 +40,39 @@ export function addressPand<P extends { id: string; ring: readonly [number, numb
   for (const v of hits) for (const p of pands) if (inside(p.ring, v.at[0], v.at[1])) score.set(p, (score.get(p) ?? 0) + Math.max(1, v.m2));
   return [...score].sort((a, b) => b[1] - a[1] || (a[0].id < b[0].id ? -1 : 1))[0]?.[0] ?? null;
 }
+
+/** Round 8: the wall a shop fronts. On a corner pand the nearest wall to the OSM point can be the side street's; a
+ *  node whose addr:street names one of the streets the pand faces is fronted on the ring edge nearest that street
+ *  (its midpoint within STREET_WALL_M of a segment of that name). Returns the node's point moved onto that edge (the
+ *  mesher picks the candidate wall nearest `at`), or null when no edge faces the named street or the nearest edge does. */
+export const STREET_WALL_M = 25;
+export type NamedSeg = { name: string; x0: number; y0: number; x1: number; y1: number };
+const segDistM = (s: { x0: number; y0: number; x1: number; y1: number }, x: number, y: number) => {
+  const dx = s.x1 - s.x0, dy = s.y1 - s.y0, l = dx * dx + dy * dy, t = l ? Math.max(0, Math.min(1, ((x - s.x0) * dx + (y - s.y0) * dy) / l)) : 0;
+  return Math.hypot(x - s.x0 - dx * t, y - s.y0 - dy * t);
+};
+export function atOnStreetWall(ring: readonly [number, number][], x: number, y: number, street: string, segs: readonly NamedSeg[]): [number, number] | null {
+  const want = norm(street), mine = segs.filter(s => norm(s.name) === want);
+  if (!mine.length) return null;
+  let best: { d: number; p: [number, number]; i: number } | null = null, nearest = -1, nd = Infinity;
+  for (let i = 0; i + 1 < ring.length; i++) { if (Math.hypot(ring[i + 1][0] - ring[i][0], ring[i + 1][1] - ring[i][1]) < 2.5) continue; const d = segDistM({ x0: ring[i][0], y0: ring[i][1], x1: ring[i + 1][0], y1: ring[i + 1][1] }, x, y); if (d < nd) { nd = d; nearest = i; } }
+  // One wall: the same edge, or a near-collinear piece of the same facade (the mesher's stepped run): parallel within
+  // 15 degrees and its line within 1 m.
+  const sameWall = (i: number, j: number) => {
+    if (i === j) return true; if (i < 0 || j < 0) return false;
+    const ax = ring[i + 1][0] - ring[i][0], ay = ring[i + 1][1] - ring[i][1], bx = ring[j + 1][0] - ring[j][0], by = ring[j + 1][1] - ring[j][1];
+    const la = Math.hypot(ax, ay), lb = Math.hypot(bx, by), cos = (ax * bx + ay * by) / (la * lb);
+    const off = Math.abs((ring[j][0] - ring[i][0]) * ay - (ring[j][1] - ring[i][1]) * ax) / la;
+    return cos > Math.cos(Math.PI / 12) && off < 1;
+  };
+  for (let i = 0; i + 1 < ring.length; i++) {
+    const e = { x0: ring[i][0], y0: ring[i][1], x1: ring[i + 1][0], y1: ring[i + 1][1] }, len = Math.hypot(e.x1 - e.x0, e.y1 - e.y0);
+    if (len < 2.5) continue;
+    const mx = (e.x0 + e.x1) / 2, my = (e.y0 + e.y1) / 2, d = Math.min(...mine.map(s => segDistM(s, mx, my)));
+    if (d > STREET_WALL_M || (best && d >= best.d)) continue;
+    const dx = e.x1 - e.x0, dy = e.y1 - e.y0, t = Math.max(0.1, Math.min(0.9, ((x - e.x0) * dx + (y - e.y0) * dy) / (len * len)));
+    best = { d, p: [e.x0 + dx * t, e.y0 + dy * t], i };
+  }
+  // Only a corner needs it: when the nearest wall already faces the street, the point stays as it is.
+  return best && !sameWall(best.i, nearest) ? best.p : null;
+}
