@@ -178,7 +178,10 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     const line = line0 !== null && flat.length && Math.max(...flat) > line0 + ROW_RAISED_FRONT_M ? Math.max(...flat) : line0;
     // A stated gable (RowDesign.gable) stands its rise over the front's line: the top is the gable's apex.
     const lift = (v: number, d: RowDesign | undefined) => { const g = d ? statedGable(d) : null; return g ? +(v + g.riseM).toFixed(2) : v; };
-    const lined = line !== null && line > 2 ? { topM: lift(line, designs[0]), eavesM: line, ...(rec.subFronts ? { subFronts: rec.subFronts.map((sf, i) => ({ ...sf, topM: lift(designs[i]?.corniceTopM.value ?? line, designs[i]), eavesM: designs[i]?.corniceTopM.value ?? line })) } : {}) } : {};
+    // A stated gable below a taller pand line stands on that line: stepped down, its gable stood in the pand's notch under
+    // the roof storey's face (Kinkerstraat 69's neck under 71-73's mansard, round 4). Other fronts keep their own line.
+    const footOf = (d: RowDesign | undefined): number => { const v = d?.corniceTopM.value ?? line!; return d && statedGable(d) && line !== null && line > v ? line : v; };
+    const lined = line !== null && line > 2 ? { topM: lift(line, designs[0]), eavesM: line, ...(rec.subFronts ? { subFronts: rec.subFronts.map((sf, i) => { const own = footOf(designs[i]); return { ...sf, topM: lift(own, designs[i]), eavesM: own }; }) } : {}) } : {};
     const out: RowFrontRecord = {
       ...rec, ...lined, series: seriesDraw(fronts, designs, seriesYear(row, fronts[0].seriesId), row.id, fronts.map(f => (row.series.find(x => x.id === f.seriesId) as { type?: string } | undefined)?.type)),
       wall: { hex: walls[0].hex, source: 'judged', finish: walls[0].material },

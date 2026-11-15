@@ -185,6 +185,8 @@ export interface RowGable {
   cap?: 'pediment' | 'segmental' | 'rounded' | 'flat';
   /** White stone finials on the steps' corners (step) or the shoulders' feet (neck, bell, spout). */
   finials?: boolean;
+  /** Step gable: the lowest tread on each side is a sloped shoulder from the foot to the first riser's top (Kinkerstraat 67). */
+  shoulder?: 'sloped';
   /** Neck or bell: the upright neck's height over the shoulders' top, cap included (m; absent: the kit's stock). */
   neckOverM?: number;
   /** The attic light's head (absent: square). */

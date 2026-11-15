@@ -48,3 +48,17 @@ test('crown accents: HD20 167818 neck draws one centred attic light with a white
   assert.ok(Math.abs(mid) < 1e-6, 'centred');
   assert.ok(Math.max(...ys) - Math.min(...ys) < 1.55, 'inside the neck');
 });
+
+test('crown profile: Kinkerstraat 67 step gable with sloped shoulders (one step, then the top tread), symmetric', () => {
+  const W = 5, plain = rowCrownProfile({ shape: 'step', riseM: 2.9, steps: 2 }, W, 0);
+  const sloped = rowCrownProfile({ shape: 'step', riseM: 2.9, steps: 2, shoulder: 'sloped' }, W, 0);
+  // The eaves-level corners under the first risers are gone; the rest of the outline is the plain step's.
+  assert.equal(sloped.length, plain.length - 2);
+  const inner = (p: readonly (readonly [number, number])[]) => p.filter(([x, y]) => Math.abs(x) < W / 2 - 1e-6 && y < 0.1).length;
+  assert.equal(inner(sloped), inner(plain) - 2);
+  for (let i = 0; i < sloped.length; i++) {
+    const [x, y] = sloped[i], [mx, my] = sloped[sloped.length - 1 - i];
+    assert.ok(Math.abs(x + mx) < 1e-6 && Math.abs(y - my) < 1e-6, `symmetric at ${i}`);
+  }
+  assert.equal(Math.max(...sloped.map(p => p[1])), Math.max(...plain.map(p => p[1])));
+});
