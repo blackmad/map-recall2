@@ -288,10 +288,11 @@ export function rowCrownStone(c: RowCrown): NonNullable<RowCrown['stone']> | und
   if (c.dress !== 'belt') return undefined;
   return c.shape === 'bell' || c.shape === 'step' ? { crest: 'crest' } : {};
 }
-/** Weathered sandstone (coordinator 2026-11-15): the trim white mixed this far toward a warm grey-buff, and the values the
- *  pieces walk through, so the stone reads as stone rather than one bright paint. A cooler near-white base (0.3 toward
- *  #d6d8d6) lost a blind A/B 0-6, and per-face shading by orientation lost 0-5-1 (returns read into the sky). */
-export const ROW_STONE_WEATHER = { hex: '#c9bda6', mix: 0.18, values: [1, 0.95, 1.02, 0.97, 0.93, 1.01, 0.96] } as const;
+/** The belt's sandstone: the trim white mixed this far toward a bright warm white, and the values the pieces walk
+ *  through, so the stone reads as stone rather than one paint. Blind A/Bs 2026-11-15: a cooler near-white (0.3 toward
+ *  #d6d8d6) lost 0-6 to a warm grey-buff (0.18 toward #c9bda6); per-face shading by orientation lost 0-5-1 (returns read
+ *  into the sky); this brighter warm white beat the buff 5-1 (the one loss a dim, overcast photo). */
+export const ROW_STONE_WEATHER = { hex: '#f7efdd', mix: 0.35, values: [1.02, 0.99, 1.04, 1, 0.97, 1.03, 1] } as const;
 function mixHex(a: string, b: string, t: number): string {
   const p = (h: string) => { const n = parseInt(h.replace('#', '').slice(0, 6), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
   const [x, y] = [p(a), p(b)];
@@ -408,7 +409,7 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
       if (claw.length >= 2) stoneBand(s, claw, f, e, 0, c.shape === 'bell' ? S.bellClaw : S.claw, S.clawProud, S.back * 0.5, tone());
       // The klauwstuk against a neck: a quarter round standing on the shoulder, its foot along the outline (a bell's
       // shoulders curve into its body and carry none).
-      const w = clamp((foot - neck) * 0.35, 0.3, 0.75), ht = clamp((tN - neckFoot) * 0.3, 0.4, 0.9);
+      const carved = st.claws === 'carved', w = carved ? clamp((foot - neck) * 0.5, 0.45, 1.05) : clamp((foot - neck) * 0.35, 0.3, 0.75), ht = clamp((tN - neckFoot) * 0.3, 0.4, 0.9);
       const xs = sg * (neck + w), ys = edgeAt(prof, xs);
       if (c.shape === 'neck' && Number.isFinite(ys)) {
         const under = prof.filter(([x, y]) => sg * x > neck + 1e-3 && sg * x < neck + w - 1e-3 && y > 0.01).sort((p, q) => sg * (p[0] - q[0]));
@@ -416,10 +417,10 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
         if (st.claws === 'carved') {
           // A carved scroll (klauwstuk) standing above the shoulder line against the neck: an S-curved back rising to a
           // curl at the neck, about half the neck's height, a volute at its top and a carved leaf on its face.
-          const hc = clamp((tN - neckFoot) * 0.5, 0.6, 1.4);
+          const hc = clamp((tN - neckFoot) * 0.68, 0.8, 1.9);
           for (let i = 0; i <= 12; i++) { const t = i / 12; arc.push([sg * (neck + w * Math.cos(t * Math.PI / 2) * (1 - 0.3 * Math.sin(t * Math.PI))), base + hc * Math.sin(t * Math.PI / 2)]); }
           prism(s, [[sg * neck, neckFoot], ...under, [xs, ys], ...(base > ys + 1e-3 ? arc : arc.slice(1))], f, e, S.piece, S.back * 0.5, tone());
-          const rt = clamp(w * 0.22, 0.1, 0.18);
+          const rt = clamp(w * 0.24, 0.12, 0.26);
           volute(s, f, e, sg * (neck + rt + 0.02), base + hc - rt * 0.4, rt, tone(), S.piece + 0.03);
           prism(s, [[sg * (neck + w * 0.35), base + hc * 0.25], [sg * (neck + w * 0.6), base + hc * 0.3], [sg * (neck + w * 0.45), base + hc * 0.62], [sg * (neck + w * 0.3), base + hc * 0.5]], f, e, S.piece + 0.02, 0, shade(tone(), 0.8));
           const rv = clamp(w * 0.28, 0.12, 0.22) * S.voluteK;
@@ -456,11 +457,10 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
       prism(s, [[-lw, tN - S.ledgeH], [lw, tN - S.ledgeH], [lw, tN], [-lw, tN]], f, e, S.ledge, S.back, tone());
     }
   }
-  // Carving in the neck between its light and the cap: a framed panel, a cartouche, or an oeil-de-boeuf.
+  // Carving in the neck between its light and the cap: a framed panel, a cartouche, or an oeil-de-boeuf. (In the cap's
+  // tympanum instead it lost a blind A/B 0-3-3: the photos keep the piece in the neck, under the cornice.)
   if (necked && st.neck && Number.isFinite(neckFoot)) {
-    const zl = clear ? clear[1] + 0.2 : neckFoot + 0.3, zh = tN - S.ledgeH - (st.hood ? 0.22 : 0.06) - 0.08, hh = zh - zl;
-    const cy = (zl + zh) / 2, rx = Math.min(neck * 0.55, 0.42), ry = Math.min(hh / 2, 0.32);
-    if (hh >= 0.36 && rx >= 0.2) {
+    const carve = (cy: number, rx: number, ry: number): void => {
       const oval = (a: number, b: number, n = 18): V2[] => Array.from({ length: n }, (_, i): V2 => [a * Math.cos(2 * Math.PI * i / n), cy + b * Math.sin(2 * Math.PI * i / n)]);
       if (st.neck === 'panel') {
         const pw = rx, ph = ry, b = 0.06;
@@ -476,6 +476,17 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
         prism(s, [[-0.02, cy - ry * 0.72], [0.02, cy - ry * 0.72], [0.02, cy + ry * 0.72], [-0.02, cy + ry * 0.72]], f, e, 0.07, 0, tone());
         prism(s, [[-rx * 0.62, cy - 0.02], [rx * 0.62, cy - 0.02], [rx * 0.62, cy + 0.02], [-rx * 0.62, cy + 0.02]], f, e, 0.07, 0, tone());
       }
+    };
+    const zl = clear ? clear[1] + 0.2 : neckFoot + 0.3, zh = tN - S.ledgeH - (st.hood ? 0.22 : 0.06) - 0.08, hh = zh - zl;
+    const rx = Math.min(neck * 0.55, 0.42);
+    if (hh >= 0.36 && rx >= 0.2) carve((zl + zh) / 2, rx, Math.min(hh / 2, 0.32));
+    else if (st.neck !== 'panel' && rx >= 0.2) {
+      // Where the light fills the neck (Herengracht 31, 57) a small round piece still sits between the light's head and
+      // the cornice (the photos: below the cap, never in it), tight to both.
+      const lo = clear ? clear[1] + 0.06 : neckFoot + 0.3, hi = tN - S.ledgeH - (st.hood ? 0.18 : 0) - 0.03, r = (hi - lo) / 2;
+      // A small round piece (a blind judge: a dot a third the light's width, not a wide ellipse), clear of both.
+      const rr = Math.min(r * 0.75, 0.16);
+      if (rr >= 0.08) carve((lo + hi) / 2, rr / 0.85, rr);
     }
   }
   // The spout's cap slab on its upright top.

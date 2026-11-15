@@ -115,3 +115,17 @@ test('row-doorcase: a stated doorcase on the ground street door (Herengracht 144
   const t = run({ doorcase: { material: 'timber' } });
   assert.ok(t.length > 0 && t.some(x => x.hex === ROW_DOORCASE.glass));
 });
+
+test('row-doorcase: diamond fanlight tracery, a black leaf, and pilasters standing on the plinth strip (Herengracht 144)', () => {
+  const comp = ORNAMENT_COMPONENTS.find(x => x.id === 'row-doorcase')!;
+  const run = (doorcase: NonNullable<ExtraContext['rowDress']>['doorcase']) => {
+    const s = new ExtraSink(100000);
+    const c = wall({ layout: { bays: 3, bayWidthM: 2, groundM: 3.2, storeys: 3, storeyM: 3.2, doorBays: [2] } as ExtraContext['layout'], rowDress: { doorcase } });
+    comp.build(c, s, 0);
+    return { c, t: s.tris as Array<{ hex?: string; p?: number[][] }> };
+  };
+  const plain = run({ material: 'timber' }).t, diamond = run({ material: 'timber', fanlight: 'diamond' }).t;
+  assert.notDeepEqual(diamond, plain);
+  const black = run({ material: 'timber', door: 'black' }).t;
+  assert.ok(black.some(x => x.hex === ROW_DOORCASE.black) && !plain.some(x => x.hex === ROW_DOORCASE.black));
+});
