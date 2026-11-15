@@ -257,7 +257,16 @@
       "ref": "lane D round 2"
     }
   ],
-  "herengracht-2-24": [],
+  "herengracht-2-24": [
+    {
+      "fronts": [
+        "0363100012179760"
+      ],
+      "component": "roof",
+      "what": "18: a steep hipped tiled roof with two small roof lights behind the cornice; the kit has no hipped roof storey (mansard, attic, none), so none is drawn",
+      "ref": "lane D belt fix (2026-11-15)"
+    }
+  ],
   "herengracht-26-46": [
     {
       "fronts": [
@@ -290,14 +299,35 @@
     },
     {
       "fronts": [
-        "0363100012168129",
-        "0363100012168130",
-        "0363100012179750",
+        "0363100012168129"
+      ],
+      "component": "crown",
+      "what": "51: a pale ornamented attic frieze with a white carved crest and cartouche over the centre, red shutters at the attic window; drawn as a plain attic-frieze cornice, no roof form",
+      "ref": "lane D belt fix (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012168130"
+      ],
+      "component": "crown",
+      "what": "53: a small triangular pediment on the cornice over the centre of the white attic frieze; drawn as a plain attic-frieze cornice",
+      "ref": "lane D belt fix (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012179751"
+      ],
+      "component": "dormer",
+      "what": "65: a small pale pedimented dormer over the cornice in a dark roof face that the cut does not measure; no roof form is drawn",
+      "ref": "lane D belt fix (2026-11-15)"
+    },
+    {
+      "fronts": [
         "0363100012179675"
       ],
-      "component": "roof",
-      "what": "the record states a slate mansard (D1 reads a dormer); the preview draws the roof face red and tall over a cornice canal house, where only the dormer shows over the cornice from the quay",
-      "ref": "lane D belt sheet"
+      "component": "crown",
+      "what": "69: the RCE register names a point gable (topgevel); the cut is an unusable corner shot, so the front is unread: series line, no roof form",
+      "ref": "lane D belt fix (2026-11-15)"
     },
     {
       "fronts": [

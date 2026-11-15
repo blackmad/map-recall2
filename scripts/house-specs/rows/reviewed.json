@@ -402,11 +402,11 @@
       "fronts": [
         "0363100012179675"
       ],
-      "field": "crown",
-      "value": "point",
-      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "field": "unread",
+      "value": "a steep wide-angle corner shot: the outline is distorted and the top is not seen",
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
       "at": "2026-11-15",
-      "note": "Herengracht 69 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable plain"
+      "note": "69: the D1 read is low on storeys, roof, crown, ground and bays; the RCE register's point gable is a text, not a read of the top (limits.json)"
     },
     {
       "fronts": [
@@ -414,15 +414,12 @@
       ],
       "field": "roofStorey",
       "value": {
-        "kind": "mansard",
-        "material": "slate",
-        "dormersPerFront": 1,
-        "dormerKind": "gabled",
-        "riseM": 1.4
+        "kind": "none",
+        "dormersPerFront": 0
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012168129.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
       "at": "2026-11-15",
-      "note": "51: a slate mansard behind the cornice; only the dormer shows over the cornice from the quay (confirmed: slate, dormer only)"
+      "note": "51: the cut shows a pale ornamented attic frieze with a carved crest over the cornice, no roof face; no roof form is drawn"
     },
     {
       "fronts": [
@@ -430,15 +427,12 @@
       ],
       "field": "roofStorey",
       "value": {
-        "kind": "mansard",
-        "material": "slate",
-        "dormersPerFront": 1,
-        "dormerKind": "gabled",
-        "riseM": 1.4
+        "kind": "none",
+        "dormersPerFront": 0
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012168130.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
       "at": "2026-11-15",
-      "note": "53: as 51, slate behind a plain cornice, one dormer showing"
+      "note": "53: a pale attic frieze with a small pediment on the cornice; no roof face shows; no roof form is drawn"
     },
     {
       "fronts": [
@@ -446,15 +440,12 @@
       ],
       "field": "roofStorey",
       "value": {
-        "kind": "mansard",
-        "material": "slate",
-        "dormersPerFront": 1,
-        "dormerKind": "gabled",
-        "riseM": 1.4
+        "kind": "none",
+        "dormersPerFront": 0
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179751.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
       "at": "2026-11-15",
-      "note": "65: as 51, a small dormer centred over the cornice"
+      "note": "65: a small pale dormer shows over the cornice, the roof face is not measured; no roof form is drawn (limits.json)"
     },
     {
       "fronts": [
@@ -613,20 +604,20 @@
         "0363100012168129"
       ],
       "field": "windows",
-      "value": "sash-small-panes",
-      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168129.jpg (house rows round 5)",
+      "value": "sash",
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
       "at": "2026-11-15",
-      "note": "51: gridded small-pane sashes in the cut (D1 read tall-upper)"
+      "note": "51: large sashes, two panes across and one up a sash (2-over-2), white frames; not small panes"
     },
     {
       "fronts": [
         "0363100012168130"
       ],
       "field": "windows",
-      "value": "sash-small-panes",
-      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168130.jpg (house rows round 5)",
+      "value": "sash",
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
       "at": "2026-11-15",
-      "note": "53: gridded small-pane sashes in the cut (D1 read tall-upper)"
+      "note": "53: large sashes, two panes across and one up a sash (2-over-2), white frames; not small panes"
     },
     {
       "fronts": [
@@ -655,6 +646,30 @@
       "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179748.jpg (house rows round 5)",
       "at": "2026-11-15",
       "note": "59: a tall ground storey framed by white pilasters (D1 gap)"
+    },
+    {
+      "fronts": [
+        "0363100012168129"
+      ],
+      "field": "glazing",
+      "value": {
+        "panes": 2
+      },
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "51: two panes a sash"
+    },
+    {
+      "fronts": [
+        "0363100012168130"
+      ],
+      "field": "glazing",
+      "value": {
+        "panes": 2
+      },
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "53: two panes a sash"
     }
   ],
   "herengracht-75-89": [
@@ -1025,6 +1040,49 @@
       "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168202.jpg (house rows round 5)",
       "at": "2026-11-15",
       "note": "2-4: white plastered piers frame the ground windows (D1 gap); its evidence is filed under 0363100012168202"
+    },
+    {
+      "fronts": [
+        "0363100012179760"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "none",
+        "dormersPerFront": 0
+      },
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "18: a steep hipped tiled roof with two roof lights rises behind the cornice; the kit has no hipped roof storey, so no roof form is drawn (limits.json), not a slate mansard"
+    },
+    {
+      "fronts": [
+        "0363100012179752",
+        "0363100100091828"
+      ],
+      "field": "whiteFrames",
+      "value": true,
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "22 (and 2-4 in its series): white-painted frames round every window in the cut (D1 read none)"
+    },
+    {
+      "fronts": [
+        "0363100012179838",
+        "0363100012179752",
+        "0363100012179753",
+        "0363100012179760",
+        "0363100012179761",
+        "0363100012179765",
+        "0363100012179763",
+        "0363100100091828"
+      ],
+      "field": "glazing",
+      "value": {
+        "frameM": 0.13
+      },
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "2-24: heavy white window frames in every cut (no lintels: the reads see no surround); frame 0.13 m, not the kit 0.09 m"
     }
   ],
   "herengracht-26-46": [

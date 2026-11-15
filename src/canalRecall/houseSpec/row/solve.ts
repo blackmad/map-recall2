@@ -110,7 +110,9 @@ export interface RowInput {
 /** `fronts`: front ids (`<pandId>` or `<pandId>#m1` for one module of a two-front pand). */
 /** `add`: the value is a list merged into the field's current list (an extra the reviewer adds), not a replacement. */
 /** `ground.colour` sets `front.ground.colour` (a RowGroundColour) on each listed front; it outranks a read and the face's shopPaint. */
-export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour' | 'series'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
+/** `unread` (value: the reason) sets a listed pand's reading aside, as a held one: an unusable cut (Herengracht 69, a steep
+ *  corner shot) states nothing, so its front draws as unread. */
+export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour' | 'series' | 'unread'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
 
 // --- compatibility of classes (a face value and a read that name the same thing) ------------------------------------------
 
@@ -289,8 +291,10 @@ export function solveRow(input: RowInput): RowRecord {
   const firstN = input.members[0]?.numbers[0], lastN = input.members[input.members.length - 1]?.numbers[0];
   const descending = firstN !== undefined && lastN !== undefined && firstN > lastN;
 
+  const reviewedUnread = (pid: string) => (input.reviewed ?? []).find(st => st.field === 'unread' && st.fronts.includes(pid));
   for (const m of input.members) {
-    const held = m.read ? heldReason(m.read) : null;
+    const ru = m.read ? reviewedUnread(m.pandId) : undefined;
+    const held = ru ? `reviewed unusable: ${String(ru.value)}` : m.read ? heldReason(m.read) : null;
     const { n, why } = splitCount(m, rowBays, rowWidth);
     if (n >= 2 && !m.face?.length && m.read?.extent === 'single') flags.push({ kind: 'extent-mismatch', field: 'extent', fronts: [m.pandId], detail: `read extent single, split into ${n} fronts: ${why}` });
     else if (n >= 2 && m.read?.extent === 'single' && num(m.read.bays) && (m.read.bays as number) >= 2 * (rowBays ?? 99))
@@ -298,9 +302,13 @@ export function solveRow(input: RowInput): RowRecord {
     const ids = n === 1 ? [m.pandId] : Array.from({ length: n }, (_, i) => `${m.pandId}#m${i}`);
     const nums = [...m.numbers].sort((a, b) => descending ? b - a : a - b);
     members.push({ pandId: m.pandId, label: m.label, numbers: m.numbers, built: m.built, widthM: m.widthM, fronts: ids, ...(m.wallOnly ? { wallOnly: m.wallOnly } : {}) });
-    const readVals = m.read && !held ? readValues(m.read, m.built, m.wallSample) : undefined;
+    // A reading the reader marked unreadable (Herengracht 8: a hoarding fills the outline) states nothing.
+    const readVals = m.read && !held && m.read.readable !== false ? readValues(m.read, m.built, m.wallSample) : undefined;
     if (m.reread) flags.push({ kind: 'reread', fronts: ids, detail: `re-read from the ${m.reread.captured} capture ${m.reread.panoId} (${m.reread.ref}); the first read (${m.reread.firstRead.captured ?? '?'} ${m.reread.firstRead.ref}) was held: ${m.reread.firstRead.held}${m.readFront !== undefined ? `; it describes front ${m.readFront + 1} of ${n} only` : ''}` });
-    if (held) {
+    if (ru) {
+      flags.push({ kind: 'no-reading', fronts: ids, detail: `reading set aside by review: ${String(ru.value)} (${ru.ref}, ${ru.at})` });
+      readNotDrawn.push({ front: m.pandId, field: 'reading', value: m.readRef ?? m.read!.image?.ref, reason: `reviewed unusable: ${String(ru.value)}; the front is unread` });
+    } else if (held) {
       flags.push({ kind: 'scaffold', fronts: ids, detail: `reading not used: ${held}; queued for a re-read from another capture year (scripts/house-specs/rows/reread-queue.ts)` });
       readNotDrawn.push({ front: m.pandId, field: 'reading', value: m.readRef ?? m.read!.image?.ref, reason: `held: ${held}; the front takes its series` });
     }
@@ -385,6 +393,29 @@ export function solveRow(input: RowInput): RowRecord {
       ...(type ? { type } : {}), fronts: ev.map(e => e.front.id), design };
   });
 
+  // Unread fronts in a row of measured cuts (the canal belt): a front whose top nobody read states no height and no roof. It
+  // takes the series line of its nearest read neighbours (their mean) under a plain cornice lid, and the sheet prints it as
+  // unread (integrator, 2026-11-15: Herengracht 6 and 8 drew full fronts at 3DBAG height; 69 a big gable from a corner shot).
+  if (sampled) {
+    const lineOf = (i: number) => { const s = series.find(x => x.id === evs[i].front.seriesId)!; return keys[i]!.startsWith('unread:') ? null : s.design.corniceTopM.value; };
+    for (const s of series) {
+      const idx = evs.map((e, i) => (e.front.seriesId === s.id && keys[i]!.startsWith('unread:') ? i : -1)).filter(i => i >= 0);
+      if (!idx.length) continue;
+      const i = idx[0];
+      const left = [...Array(i).keys()].reverse().find(j => lineOf(j) !== null), right = [...Array(evs.length).keys()].find(j => j > i && lineOf(j) !== null);
+      const near = [left, right].filter((j): j is number => j !== undefined);
+      const why = evs[i].front.readHeld ?? (evs[i].member.read ? 'the reading is unreadable' : 'no reading');
+      for (const j of idx) evs[j].front.topUnread = why;
+      if (near.length) {
+        const vals = near.map(j => lineOf(j)!);
+        s.design.corniceTopM = field(r2(vals.reduce((a, b) => a + b, 0) / vals.length), 'period-default', `top not read (${why}): the neighbours' series line, mean of ${near.map(j => `${evs[j].member.pandId} ${lineOf(j)} m`).join(' and ')}`, { samples: vals });
+      }
+      s.design.crown = field('cornice', 'period-default', 'top not read: a plain cornice lid, no roof form');
+      s.design.roofStorey = field({ kind: 'none', dormersPerFront: 0 }, 'period-default', 'top not read: no roof form');
+      s.label = `unread (${why})`;
+    }
+  }
+
   // Fronts against their series.
   for (const e of evs) {
     const s = series.find(x => x.id === e.front.seriesId)!;
@@ -466,7 +497,7 @@ export function solveRow(input: RowInput): RowRecord {
       }
       continue;
     }
-    if (st.field === 'series') continue;
+    if (st.field === 'series' || st.field === 'unread') continue;
     const field = st.field;
     const merged = (cur: unknown) => ({ value: st.add && Array.isArray(cur) ? [...cur, ...(st.value as unknown[]).filter(x => !cur.includes(x))] : st.value, source: 'reviewed' as const, ref });
     for (const s of series) {
@@ -651,8 +682,12 @@ function solveSeries(id: string, ev: Ev[], input: RowInput, flags: RowFlag[], al
   }
   const bandReads = ev.filter(e => e.read).map(e => e.read!.bands ?? []);
   const shared = bandReads.length >= 2 ? bandReads[0].filter(b => bandReads.every(r => r.includes(b))) : [];
-  out.extras = shared.length ? field([...ROW_EXTRAS_DEFAULT, ...shared], 'series-consensus', `rowFront.ts ROW_FRONT_EXTRAS + bands read on every front (${readRef})`)
-    : field([...ROW_EXTRAS_DEFAULT], 'period-default', 'rowFront.ts ROW_FRONT_EXTRAS');
+  // Belt rows (canal windows) leave the wall anchors out: the kit's 0.5 m iron crosses read as crosshairs at sheet and street
+  // scale (integrator, 2026-11-15); the cuts show anchors as small dots, under the kit's scale.
+  const base = input.canalWindows ? ROW_EXTRAS_DEFAULT.filter(x => x !== 'wall-anchors') : ROW_EXTRAS_DEFAULT;
+  const baseRef = input.canalWindows ? 'rowFront.ts ROW_FRONT_EXTRAS less wall-anchors (belt rows: the crosses are over scale)' : 'rowFront.ts ROW_FRONT_EXTRAS';
+  out.extras = shared.length ? field([...base, ...shared], 'series-consensus', `${baseRef} + bands read on every front (${readRef})`)
+    : field([...base], 'period-default', baseRef);
   if (!out.storeys) out.storeys = field(4, 'period-default', 'period default');
   if (!out.bays) out.bays = field(3, 'period-default', 'period default');
   if (!out.heads) out.heads = field(PERIOD.heads!, 'period-default', 'period default');

@@ -39,7 +39,7 @@ import type { HouseSpec, SpecFacts } from './spec.ts';
 export const JUDGED_FAMILIES = [
   'red-brown-brick', 'brown-brick', 'purple-brown-brick', 'orange-red-brick', 'buff-brick',
   'painted-white', 'cream-render', 'pale-grey-stucco', 'grey-stone', 'painted-dark', 'sandstone',
-  'dark-grey-brick',
+  'dark-grey-brick', 'painted-black',
 ] as const;
 export type JudgedFamily = (typeof JUDGED_FAMILIES)[number];
 
@@ -66,10 +66,15 @@ export const JUDGED_PALETTE: Record<JudgedFamily, JudgedTone> = {
   // Herengracht's old canal brick under overcast cuts: dark and nearly grey (55 L .41 C .004, 63 L .40 C .017, 65 L .37
   // C .015), where purple-brown (C .045) drew maroon (round 4, lane D bins by chroma). Appended: unused, nothing changes.
   'dark-grey-brick':    { L: 0.40, C: 0.010, h: 40, dL: 0.02, dC: 0.004, dh: 8, maxL: 0.44, wallFamily: 'brown', pale: false, label: 'dark, nearly grey canal brick' },
+  // Herengracht's dark painted fronts measure neutral, a touch warm (53 L .32 C .005 h 68, 71 L .33 C .003, 10 L .32 C .006
+  // h 56): painted-dark's green-black (h 150) drew them green (integrator, 2026-11-15). Appended: only a cut sample picks it.
+  'painted-black':      { L: 0.32, C: 0.008, h: 60, dL: 0.015, dC: 0.003, dh: 12, maxL: 0.35, wallFamily: 'dark', pale: false, label: 'painted black (neutral, warm)' },
 };
 
 /** The decision's knobs (see the header). */
 export const JUDGED = {
+  /** dark paint whose cut sample is under this chroma is black paint (painted-black), not green-black (absolute mode) */
+  paintBlackMaxC: 0.015,
   /** sample L under the row median by more than this: one step darker (red-brown -> purple-brown) */
   darkerRel: -0.07,
   /** sample L over the row median by more than this, hue under `redHue`: orange-red (before 1905 / from 1905) */
@@ -190,6 +195,8 @@ export function judgeFront(input: JudgedInput, rowMedianL: number | null = null)
   const dark = describerDarkPhrase({ readable: true, finish, notes: input.notes, pale: input.pale });
   if (dark) {
     const black = /black/i.test(dark) || finish === 'painted-brick';
+    // the cut's sample says which dark paint: no colour in it is black, not green-black (Herengracht 53, "dark front")
+    if (black && input.absolute && s && s.C < JUDGED.paintBlackMaxC) return out('painted-black', 'words', `reader calls the front dark: "${dark}"; the cut's sample C ${s.C.toFixed(3)} has no colour: black paint`, dark);
     return out(black ? 'painted-dark' : 'purple-brown-brick', 'words', `reader calls the front dark: "${dark}"`, dark);
   }
   // With a measured cut sample, a colour word in the notes is not taken: belt readers' notes name neighbours' colours
@@ -219,6 +226,8 @@ export function judgeFront(input: JudgedInput, rowMedianL: number | null = null)
     if (pale) return s && warm(s) && s.C > 0.035 ? out('cream-render', 'finish', 'pale paint, warm sample: cream') : out('painted-white', 'finish', 'pale paint: white');
     // dark paint: black / dark green-black unless the sample is clearly a warm brown (oxblood, dark brown paint)
     if (s && warm(s) && s.C >= JUDGED.paintBrownMinC && s.h < 80 && (rel === undefined || rel > JUDGED.darkerRel)) return out('purple-brown-brick', 'sample', 'painted brick, not pale, a warm sample: dark brown / oxblood paint');
+    // a cut's measured sample with no colour in it is black paint, not green-black (the canal belt, absolute mode only)
+    if (input.absolute && s && s.C < JUDGED.paintBlackMaxC) return out('painted-black', 'sample', `painted brick, not pale, the cut's measured wall L ${s.L.toFixed(2)} C ${s.C.toFixed(3)}: neutral black paint`);
     return out('painted-dark', 'finish', 'painted brick, not pale: dark paint');
   }
   if (finish === 'brick') {
@@ -239,6 +248,9 @@ export function brickFromSample(s: Lch): JudgedFamily {
   // Dark brick bins by chroma: nearly grey (Herengracht's overcast canal brick, C .004-.017) is dark-grey-brick; dark
   // with colour stays purple-brown (the integrator's 2026-11-15 cutoff, C .025).
   if (s.L < 0.44) return s.C < 0.025 ? 'dark-grey-brick' : 'purple-brown-brick';
+  // Just over the dark line with no colour at all is still the dark grey-brown brick, never the warm mid brown (Herengracht
+  // 20: L .447 C .010, a dark brown front drawn warm red-brown; integrator, 2026-11-15).
+  if (s.L < 0.46 && s.C < 0.015) return 'dark-grey-brick';
   if (s.C >= 0.05 && s.h < 50) return 'red-brown-brick';
   return 'brown-brick';
 }

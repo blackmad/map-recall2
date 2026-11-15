@@ -305,8 +305,9 @@ test('Herengracht belt rows: a front with no face and no usable reading draws it
 test('Herengracht belt rows: the cut sample judges brick; painted stays painted; no-cut fronts take their neighbours', () => {
   const r = solveRow(loadRow(loadRowDefs()['herengracht-56-74'], '2026-11-15').input);
   const wall = (pid: string) => frontDesign(r, r.fronts.find(f => f.pandId === pid)!).wall.value;
-  // 58 is painted dark (its note's "red brick" is the neighbour); 56 brick never shares its series.
-  assert.equal(wall('0363100012167495').family, 'painted-dark');
+  // 58 is painted dark (its note's "red brick" is the neighbour), black paint by its colourless sample (2026-11-15: the
+  // green-black painted-dark drew Herengracht's dark fronts green); 56 brick never shares its series.
+  assert.equal(wall('0363100012167495').family, 'painted-black');
   assert.notEqual(r.fronts.find(f => f.pandId === '0363100012167494')!.seriesId, r.fronts.find(f => f.pandId === '0363100012167495')!.seriesId);
   // 74 (sample L 0.42) is dark purple-brown, not the era red-brown.
   assert.equal(wall('0363100012175616').family, 'purple-brown-brick');
@@ -324,4 +325,26 @@ test('Canal windows (round 5): belt series with read white frames state glazing;
   assert.ok(belt.series.some(s => s.design.glazing));
   const k = solveRow(loadRow(loadRowDefs()['kinkerstraat-86-110'], '2026-11-15').input);
   assert.ok(k.series.every(s => !s.design.glazing));
+});
+
+test('Herengracht belt fix (2026-11-15): unread tops take the neighbours\' line, no roof form; no invented roofs; no anchor crosses', () => {
+  const a = solveRow(loadRow(loadRowDefs()['herengracht-2-24'], '2026-11-15').input);
+  const front = (pid: string) => a.fronts.find(f => f.pandId === pid)!;
+  // 6 (no read) and 8 (a hoarding: the reader marked it unreadable) are unread: the line of 10 and 2-4, a plain lid.
+  for (const pid of ['0363100012179834', '0363100012179833']) {
+    const f = front(pid), d = frontDesign(a, f);
+    assert.ok(f.topUnread, `${pid} is unread`);
+    assert.equal(d.roofStorey.value.kind, 'none');
+    assert.equal(d.crown.value, 'cornice');
+    const line = (frontDesign(a, front('0363100012179763')).corniceTopM.value! + frontDesign(a, front('0363100100091828')).corniceTopM.value!) / 2;
+    assert.ok(Math.abs(d.corniceTopM.value! - line) < 0.01, `${pid} takes the neighbours' line ${line}`);
+  }
+  assert.ok(!front('0363100012179763').topUnread);
+  // 18's hipped tiled roof is a kit gap, not a slate mansard.
+  assert.equal(frontDesign(a, front('0363100012179760')).roofStorey.value.kind, 'none');
+  assert.ok(a.series.every(s => !s.design.extras.value.includes('wall-anchors')), 'belt rows draw no anchor crosses');
+  const b = solveRow(loadRow(loadRowDefs()['herengracht-51-73'], '2026-11-15').input);
+  for (const pid of ['0363100012168129', '0363100012168130', '0363100012179751']) assert.equal(frontDesign(b, b.fronts.find(f => f.pandId === pid)!).roofStorey.value.kind, 'none', `${pid}: no invented roof`);
+  const k = solveRow(loadRow(loadRowDefs()['kinkerstraat-86-110'], '2026-11-15').input);
+  assert.ok(k.fronts.every(f => !f.topUnread) && k.series.every(s => s.design.extras.value.includes('wall-anchors')));
 });

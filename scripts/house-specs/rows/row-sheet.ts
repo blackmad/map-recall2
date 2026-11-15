@@ -172,6 +172,19 @@ async function main() {
     const t = `re-read ${r.captured} (not the ${r.firstRead.captured ?? 'first'} read)`, w = Math.min(widths[i], 8 + t.length * 7);
     layers.push({ input: Buffer.from(`<svg width="${w}" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="20" fill="#f2c500"/><text x="4" y="14" font-size="12" font-weight="bold" fill="#000" font-family="Helvetica">${esc(t)}</text></svg>`), left: xs[i], top: head + band + band });
   }
+  // A front whose top was not read (no cut, unreadable, held, or a reviewed unusable cut) draws the series line with no roof
+  // form; the sheet says so over its drawn tile, never on the blind pair.
+  const unread = new Map<string, string>();
+  try {
+    const rec = env.ROW_FRONT_RECORDS ? JSON.parse(fs.readFileSync(env.ROW_FRONT_RECORDS, 'utf8')) as { row?: { fronts?: Array<{ pandId: string; topUnread?: string }> } } : null;
+    for (const f of rec?.row?.fronts ?? []) if (f.topUnread) unread.set(f.pandId, f.topUnread);
+  } catch { /* no records: nothing to label */ }
+  def.members.forEach((m, i) => {
+    if (!unread.has(m.pandId)) return;
+    const t = 'unread: series line', w = Math.min(widths[i], 8 + t.length * 6.5), d = drawn.get(m.pandId);
+    const top = head + band + (H + band + 4) + band + Math.max(0, H - (d?.heightPx ?? 0) - 20);
+    layers.push({ input: Buffer.from(`<svg width="${Math.round(w)}" height="18" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="18" fill="#f2c500"/><text x="4" y="13" font-size="11" font-weight="bold" fill="#000" font-family="Helvetica">${esc(t)}</text></svg>`), left: xs[i], top });
+  });
   await sharp({ create: { width: W, height: total, channels: 3, background: '#111' } }).composite(layers).jpeg({ quality: 86 }).toFile(path.join(out, 'sheet.jpg'));
   fs.writeFileSync(path.join(out, 'manifest.json'), JSON.stringify({ row: id, ppm, drawn: { label: drawnLabel, env, specsDir: specsDir ?? null, sameAsToday: drawnIsToday }, members: def.members.map((m, i) => ({ ...m, photo: shown[i]?.file ?? null, captureNote: shown[i]?.note ?? null, capture: shown[i]?.capture ?? null, firstReadCapture: shown[i]?.firstReadCapture ?? null, ...(rereads[m.pandId] ? { reread: rereads[m.pandId] } : {}), drawnTopM: drawn.get(m.pandId)?.topM ?? null, todayTopM: today.get(m.pandId)?.topM ?? null })), missingCuts: missing }, null, 1));
   console.log(`${id}: ${def.members.length} fronts, ${missing.length} missing cuts, sheet ${path.join(out, 'sheet.jpg')}, blind pair ${path.join(out, 'blind')}`);

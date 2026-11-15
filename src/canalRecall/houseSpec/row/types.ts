@@ -239,6 +239,9 @@ export interface RowFront {
   /** Not staged (scaffold or netting over the upper storeys): the reason. The front still belongs to its series and
    *  draws the series design; nothing from its own reading is used. */
   readHeld?: string;
+  /** Its top was not read (no cut, an unreadable or held reading, or a reviewed unusable cut) in a row of measured cuts: it
+   *  draws the neighbours' series line with no roof form, and the sheet prints it as unread. The reason. */
+  topUnread?: string;
   /** The pand's read describes another of its fronts only (a multi-front capture, `MemberInput.readFront`): nothing of it is drawn here. */
   readElsewhere?: string;
 }
