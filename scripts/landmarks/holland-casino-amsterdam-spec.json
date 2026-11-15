@@ -1,0 +1,92 @@
+{
+ "id": "holland-casino-amsterdam",
+ "name": "Holland Casino Amsterdam, Max Euweplein 62",
+ "heightMetres": 24,
+ "bagYear": 1991,
+ "galleryView": {
+  "theta": -0.9,
+  "phi": 1.2
+ },
+ "pandPart": {
+  "ring": [
+   [
+    4.8821544,
+    52.3628714
+   ],
+   [
+    4.8822208,
+    52.3628429
+   ],
+   [
+    4.882298,
+    52.3627705
+   ],
+   [
+    4.8824126,
+    52.3627575
+   ],
+   [
+    4.8824775,
+    52.3627335
+   ],
+   [
+    4.8825197,
+    52.3627624
+   ],
+   [
+    4.8825556,
+    52.3628336
+   ],
+   [
+    4.882753,
+    52.3627751
+   ],
+   [
+    4.8827522,
+    52.3622035
+   ],
+   [
+    4.8821238,
+    52.3622035
+   ],
+   [
+    4.8817294,
+    52.3624193
+   ],
+   [
+    4.8817298,
+    52.3629001
+   ]
+  ],
+  "note": "The 1991 casino's share of pand 0363100012173447, traced on the 3DBAG LoD2.2 roof faces over the PDOK 2024 orthophoto: the round casino hall (21-24 m), the pergola canal front on the Singelgracht and the glass fronts on the Max Euweplein. The cut runs across the root of the north-east arm, where the hall's drum meets the arm's 23-30 m roofs. The arm, the older Leidsekade range, stays with the rows line.",
+  "rest": {
+   "height": 26.19,
+   "eaves": 23.04,
+   "ridge": 29.52
+  }
+ },
+ "surveyedSource": "Vertex average of the BAG 0363100012173447 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/holland-casino-amsterdam-footprints.json, written by bag-shell-prepare.ts). The casino stands on part of the pand (pandPart). The massing is the 3DBAG LoD2.2 shell (CC BY 4.0) clipped to that part. The canal front and the drum are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-001967_pano_0000_000698, TMX7316010203-001968_pano_0000_000135, TMX7316010203-001968_pano_0000_000136, TMX7316010203-001967_pano_0000_000694, recording_2025-07-14_05-25-22_02175). Per wall in scripts/landmarks/holland-casino-amsterdam-inventory.json.",
+ "materialOverrides": {
+  "concrete": "#e3e1da",
+  "stone": "#5b5d60",
+  "red": "#a8322c",
+  "ochre": "#9a6a3c",
+  "gold": "#d6a227",
+  "glass": "#2f3438",
+  "frame": "#3a3c3e",
+  "dark": "#2a2b2d",
+  "white": "#e8e6df",
+  "blue": "#203a6e",
+  "slate": "#6b6e72",
+  "bronze": "#2c2e2e",
+  "brick": "#6a4a3c"
+ },
+ "attribution": {
+  "title": "Holland Casino Amsterdam, Max Euweplein 62 (1991)",
+  "author": "Map Recall",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Holland_Casino_Amsterdam",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0), the casino's part of the pand only, with the 3DBAG LoD2.2 shell (CC BY 4.0): the white-tiled drum storey with its sign and flags, the red-steel pergola with its timber lattice over the glazed canal floors, and the deck. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

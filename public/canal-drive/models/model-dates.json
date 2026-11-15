@@ -582,8 +582,18 @@
       "dateSource": "asset-update"
     },
     "banks-mansion": {
-      "updatedAt": "2026-11-15T11:36:53.684Z",
-      "version": "d8cc19330265f9aa",
+      "updatedAt": "2026-11-15T12:23:57.111Z",
+      "version": "55601879ee08ac99",
+      "dateSource": "asset-update"
+    },
+    "banks-mansion.lod1": {
+      "updatedAt": "2026-11-15T16:41:33.158Z",
+      "version": "7181d3d325cc22ad",
+      "dateSource": "asset-update"
+    },
+    "banks-mansion.lod2": {
+      "updatedAt": "2026-11-15T16:41:33.159Z",
+      "version": "043b839081c4f180",
       "dateSource": "asset-update"
     },
     "barbizon-palace": {
@@ -1586,6 +1596,11 @@
       "version": "4e8e94b5a73992e1",
       "dateSource": "asset-update"
     },
+    "de-jaren": {
+      "updatedAt": "2026-11-15T12:49:37.286Z",
+      "version": "62e89606fb5a5146",
+      "dateSource": "asset-update"
+    },
     "de-krakeling": {
       "updatedAt": "2026-10-20T10:13:08.865Z",
       "version": "aad82236830324a4",
@@ -2521,6 +2536,11 @@
       "version": "c4a500441e941173",
       "dateSource": "asset-update"
     },
+    "handelsbank-singel-250": {
+      "updatedAt": "2026-11-15T14:43:34.645Z",
+      "version": "78dca899a0ccfd15",
+      "dateSource": "asset-update"
+    },
     "hannekes-boom": {
       "updatedAt": "2026-10-20T10:15:50.226Z",
       "version": "a11dbf621df46ba6",
@@ -2939,6 +2959,11 @@
     "hofkerk.lod2": {
       "updatedAt": "2026-11-07T14:08:58.157Z",
       "version": "f9240ab0b647fc0b",
+      "dateSource": "asset-update"
+    },
+    "holland-casino-amsterdam": {
+      "updatedAt": "2026-11-15T14:53:33.185Z",
+      "version": "208f869dd6af5267",
       "dateSource": "asset-update"
     },
     "hollandsche-manege": {
@@ -4109,6 +4134,11 @@
     "marnixbad.lod2": {
       "updatedAt": "2026-11-07T14:08:58.169Z",
       "version": "9cd8eb4ab7f8271b",
+      "dateSource": "asset-update"
+    },
+    "mauritskade-61": {
+      "updatedAt": "2026-11-15T22:56:39.817Z",
+      "version": "0a28c8c3db29a13f",
       "dateSource": "asset-update"
     },
     "max-euwe-centrum": {
@@ -5282,8 +5312,18 @@
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort": {
-      "updatedAt": "2026-11-15T11:36:53.564Z",
-      "version": "04f473be95f21701",
+      "updatedAt": "2026-11-15T12:18:40.130Z",
+      "version": "0bdb601c55a2a6c1",
+      "dateSource": "asset-update"
+    },
+    "politiebureau-raampoort.lod1": {
+      "updatedAt": "2026-11-15T16:41:33.165Z",
+      "version": "5645777ed62c3dd9",
+      "dateSource": "asset-update"
+    },
+    "politiebureau-raampoort.lod2": {
+      "updatedAt": "2026-11-15T16:41:33.167Z",
+      "version": "5c0228351d127604",
       "dateSource": "asset-update"
     },
     "pont-13": {
@@ -5309,6 +5349,11 @@
     "pontsteiger.lod2": {
       "updatedAt": "2026-11-14T09:36:17.183Z",
       "version": "b65c245edd4e5c90",
+      "dateSource": "asset-update"
+    },
+    "port-van-cleve": {
+      "updatedAt": "2026-11-15T22:43:12.033Z",
+      "version": "c1a5018c241c1cc9",
       "dateSource": "asset-update"
     },
     "portuguese-synagogue": {
@@ -5429,6 +5474,11 @@
     "rasphuispoort.lod2": {
       "updatedAt": "2026-11-07T14:08:58.180Z",
       "version": "2539a438b9b2ae58",
+      "dateSource": "asset-update"
+    },
+    "reinwardt-academie": {
+      "updatedAt": "2026-11-15T12:48:30.651Z",
+      "version": "a97ccea0c49756c8",
       "dateSource": "asset-update"
     },
     "rem-eiland": {
@@ -5709,6 +5759,11 @@
     "scheltema.lod2": {
       "updatedAt": "2026-11-07T14:08:58.182Z",
       "version": "ef8cee79e990a212",
+      "dateSource": "asset-update"
+    },
+    "schiller-rembrandtplein": {
+      "updatedAt": "2026-11-15T15:22:40.059Z",
+      "version": "21952a6e7fd5948b",
       "dateSource": "asset-update"
     },
     "schreierstoren": {
