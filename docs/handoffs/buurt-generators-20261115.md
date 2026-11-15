@@ -625,3 +625,68 @@ Sheets, A/B bands and keys are in `_pruned-sheets/buurt-generators-20261115/roun
 - **Minervalaan line.** It stands about 2 m below the photo: 4 tall storeys at about 15.5 m. A `topM` would add a storey, because storeys follow the line.
 - **Achillesstraat.** Balconies and arched portiek doorways (a kit gap).
 - **Stair windows.** The upper-storey windows the portiek bay half-covers still show a sliver at its edges.
+
+## Round 8 (2026-11-15): held-out test, measured roof rise, gable-bay slivers
+
+### Held-out test (no tuning before judging)
+
+The street notes come from the photos that were judged, so in round 7 the 8/8 only measured the noted streets. To test the rest, this round drew a held-out set with `artifacts/buurt-generators/tools/heldout2.mts` (gitignored):
+
+- **Candidates:** one row per street with at least 4 members, in either district. A street is excluded if its name appears anywhere in the library JSON text, which leaves 106 candidates.
+- **Weighting:** by routable km in `streets-routing.json`. There are no local ride logs, so this stands in for ride km.
+- **Pick:** a seeded LCG draw (seed `r8-heldout`) of 7 rows.
+- **Photos:** panoramas listed and cached with the repo User-Agent at a 500 ms gap: 26 requests, about 16 MB.
+- **Judging:** the sheets were rendered once and judged blind, before against after, by one fresh opus judge per street.
+
+| Street (row) | District | Members | Winner | Confidence |
+|---|---|---|---|---|
+| Stadionweg (116969) | Apollo | 11 | generator | high |
+| Parnassusweg (068103) | Apollo | 15 | generator | high |
+| Amstelveenseweg (143628) | Apollo | 19 | generator | medium |
+| Michelangelostraat (117261) | Apollo | 13 | generator | high |
+| Borssenburgstraat (070575) | Rivierenbuurt | 8 | generator | high |
+| President Kennedylaan (125454) | Rivierenbuurt | 8 | generator | high |
+| Europaplein (137940) | Rivierenbuurt | 9 | generator | high |
+
+The generator won 7/7. The judges named these gaps on the held-out streets:
+
+- **Brick too dark.** Most photos are buff, tan or yellow; the district pools are dark brown.
+- **Missing erkers.**
+- **Missing arched or recessed entrances.**
+- **Michelangelostraat:** drawn flat, but the photo has a dark tiled hipped roof.
+- **President Kennedylaan:** the photo has a fifth storey up to about 15 m under a flat top; the generator draws it pitched at 12 m.
+
+### Pitched roof height
+
+`pitchedRiseOf` now draws `min(maxRiseM, 3DBAG rise, street note riseM ?? variant/district capRiseM)`. The 3DBAG rise still decides whether the roof is pitched (it must be at least `minRiseM`). Rises were measured on the rectified sheets as visible tile above the eaves:
+
+| Where | Value | Evidence |
+|---|---|---|
+| Herculesstraat note `riseM` | 1.3 m | 39 px/m |
+| Sportstraat note `riseM` | 1.2 m | 40 px/m |
+| Apollo `pitched.capRiseM` | 1.3 m | the two Apollo streets above |
+| Rivierenbuurt `pitched.capRiseM` | 1.0 m | Biesboschstraat, 37 px/m, tiles 0.8–1.1 m |
+| Rivierenbuurt `pitchedEaves.capRiseM` | 0.6 m | Rooseveltlaan, only the eaves slab is visible |
+
+When the 3DBAG rise exceeds the drawn rise by more than 0.3 m, the row lists it under read-not-drawn (`3dbag-roof-rise`). Dormers now scale to 0.8 × the rise, with a minimum of 0.6 m. The ground plate, ground lights and doors sit 0.12 m proud, so mesher sills no longer show through; these were the white bars on Herculesstraat.
+
+### Gable-bay slivers
+
+When an entry has `cells`, every window the bay overlaps is bricked. The free part of the window on each side of the bay is redrawn as its own light if it is at least 0.9 m wide.
+
+### Round 8 against round 7 (blind, new after band against old after band)
+
+| Street | Winner | Confidence | Judge's reason |
+|---|---|---|---|
+| Herculesstraat | r8 | medium | low tile band at the photo's eaves; no stray white base lines |
+| Sportstraat | r8 | medium | eaves and ridge within about 0.4 m of the photo; gable bays rise through the eaves |
+| Biesboschstraat | r8 | high | low tile band |
+| Rooseveltlaan | r8 | high | flat top over the eaves slab |
+
+r8 won 4/4. Still open on the noted streets:
+
+- Paired entrances under concrete slab canopies (Herculesstraat).
+- Dark shutter panels on the top floor (Sportstraat).
+- Chimneys; the generator draws dormers where the photo has chimneys.
+
+Sheets, A/B folders and keys: `map-recall2-worktrees/_pruned-sheets/buurt-generators-20261115/round8/`.

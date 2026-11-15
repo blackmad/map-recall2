@@ -94,7 +94,9 @@
         "roofHex": "#494345",
         "evidence": "round 5 slate sample: the slate-slot roofs on Biesboschstraat (142780), Scheldestraat (146131, 144881) and Victorieplein (114412) are steep dark tiles with dormers behind a cornice, not slate eaves; Biesboschstraat 142780 (TMX7316010203-001034_pano_0000_001940, overcast) measures #504643 and #483c3a on the roof face, divided by the renderer's tile shift (#9e5b42 drew #a35a3d) to #494345"
       }
-    }
+    },
+    "capRiseM": 1.0,
+    "capRiseEvidence": "Biesboschstraat sheet (TMX7316010203-001034_pano_0000_001940, 37 px/m): the red tiles rise 0.8-1.1 m over the eaves line on the rectified photo, the dormers standing above them; 3DBAG's rise there is 4-6 m. Round 8"
   },
   "notDrawn": [
     {
@@ -115,7 +117,9 @@
     "dormerKind": "plain",
     "hoist": false,
     "eavesM": 0.9,
-    "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865 (2022-03-24): a flat-looking top, broad white eaves with a soffit over a white lattice frieze 0.85 m tall (kit eaves, roofKit.ts EAVES_LOOK); no roof or dormer seen above them from the pavement, the camera 7.4 m off the front sees no slope under about 59 deg behind the 0.9 m eaves. Drawn at 35 deg to the 3DBAG rise. Round 5: gated by the street note, not the orthophoto slot: of six other slate-slot rows sampled from cached panoramas none shows eaves and frieze (plan doc, round 5)"
+    "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865 (2022-03-24): a flat-looking top, broad white eaves with a soffit over a white lattice frieze 0.85 m tall (kit eaves, roofKit.ts EAVES_LOOK); no roof or dormer seen above them from the pavement, the camera 7.4 m off the front sees no slope under about 59 deg behind the 0.9 m eaves. Drawn at 35 deg to the 3DBAG rise. Round 5: gated by the street note, not the orthophoto slot: of six other slate-slot rows sampled from cached panoramas none shows eaves and frieze (plan doc, round 5)",
+    "capRiseM": 0.6,
+    "capRiseEvidence": "Rooseveltlaan sheet (TMX7316010203-002477_pano_0002_000865, 29 px/m): no roof is seen over the eaves slab, sky directly above it; 0.6 m is the kit's least pitched roof, hidden behind the frieze and slab. Round 8"
   },
   "rowNotes": {
     "maasstraat-129732": {

@@ -53,7 +53,10 @@ export interface DistrictPitchedRoof { minRiseM: number; maxRiseM: number; pitch
   slotLooks?: Record<string, { material: 'tile' | 'slate'; roofHex: string; evidence: string }>;
   /** true: the pitched roof is drawn only on a street whose note measures it (`roof: 'pitched'`): the district's 3DBAG
    *  roof type reads `slanted` on blocks the street sees as flat (round 7, Apollo). */
-  streetNoteOnly?: true }
+  streetNoteOnly?: true;
+  /** The drawn rise's cap (m; round 8): the roof as the street sees it over the eaves, measured on the district's photos.
+   *  3DBAG's rise (ridge - eaves) only gates the roof; drawn at full height the roof stood far taller than any photo. */
+  capRiseM?: number; capRiseEvidence?: string }
 export interface DistrictLibrary {
   district: string;
   title: string;
@@ -69,7 +72,8 @@ export interface DistrictLibrary {
   pitchedEaves?: DistrictPitchedRoof;
   /** Per street, what its photos measure (round 5): `eaves` draws `pitchedEaves` on its pitched series; `erkerBands`
    *  draws its erkers' windows as continuous white bands. */
-  streetNotes?: Record<string, { eaves?: true; erkerBands?: true; /** The roof form the street's photos show (round 7). */ roof?: 'pitched' | 'flat'; evidence: string }>;
+  streetNotes?: Record<string, { eaves?: true; erkerBands?: true; /** The roof form the street's photos show (round 7). */ roof?: 'pitched' | 'flat';
+    /** The roof's seen rise over the eaves on the street's photo (m; round 8): the drawn rise there. */ riseM?: number; evidence: string }>;
   /** A flat series' top (round 7, Apollo): the broad eaves slab over the street front, no frieze. */
   flatEaves?: { eavesM: number; frieze?: false; evidence: string };
   /** Per row (generator row id), what a photo of it states: `pierPhase` 0 puts the first pier after the row's first
@@ -149,11 +153,17 @@ export function pitchGate(lib: DistrictLibrary, s: GenSeries): string | null {
   const code = seriesRoofCode(s);
   return code !== null && code !== 3 ? `3DBAG roof type ${code === 1 ? 'flat' : 'several flats'}` : null;
 }
-/** A series' roof rise (median 3DBAG ridge - eaves of its members, m), when the district's pitched roof applies to it; else null. */
+/** A series' 3DBAG roof rise (median ridge - eaves of its members, m); null when unread. */
+export const bagRiseOf = (s: GenSeries): number | null => median(s.members.flatMap(m => m.pand.eavesM !== null && m.pand.ridgeM !== null ? [m.pand.ridgeM - m.pand.eavesM] : []));
+/** A series' drawn roof rise (m), when the district's pitched roof applies to it (3DBAG's rise at least `minRiseM` and the
+ *  gate passes); else null. Drawn (round 8): the street note's seen rise, else the variant's or district's cap, never
+ *  over 3DBAG's rise or `maxRiseM`. */
 export function pitchedRiseOf(lib: DistrictLibrary, s: GenSeries): number | null {
   if (!lib.pitched || pitchGate(lib, s) !== null) return null;
-  const rise = median(s.members.flatMap(m => m.pand.eavesM !== null && m.pand.ridgeM !== null ? [m.pand.ridgeM - m.pand.eavesM] : []));
-  return rise !== null && rise >= lib.pitched.minRiseM ? +Math.min(lib.pitched.maxRiseM, rise).toFixed(2) : null;
+  const rise = bagRiseOf(s);
+  if (rise === null || rise < lib.pitched.minRiseM) return null;
+  const seen = lib.streetNotes?.[s.members[0]?.front.street ?? '']?.riseM, cap = pitchedVariantOf(lib, s)?.capRiseM ?? lib.pitched.capRiseM;
+  return +Math.min(lib.pitched.maxRiseM, rise, seen ?? cap ?? Infinity).toFixed(2);
 }
 
 /** One series' design: the family's design over the district's, every field `period-default` with its ref. */
@@ -171,7 +181,7 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
     wall: ((w) => f({ material: d.wall.material, family: d.wall.family, hex: w.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, w.hex ? `measured brick ${w.hex} (${w.evidence ?? 'district photos'})` : ''))(wallHexOf(lib, fam, rowId)),
     roofStorey: riseM !== null && pv
       ? f<RowRoofStorey>({ kind: 'mansard', material: pv.material, dormersPerFront: pv.dormersPerFront, dormerKind: pv.dormerKind, ...(pv.hoist ? { hoist: true } : {}) },
-        `pitched roof: median 3DBAG rise ${riseM} m >= ${lib.pitched!.minRiseM} m (${pv.evidence}); drawn as the row mansard at ${pv.pitchDeg} deg under buurtKit`)
+        `pitched roof: 3DBAG rise ${bagRiseOf(s)} m >= ${lib.pitched!.minRiseM} m, drawn at the seen rise ${riseM} m (${pv.evidence}); drawn as the row mansard at ${pv.pitchDeg} deg under buurtKit`)
       : f(d.roofStorey),
     extras: f(d.extras),
     windowShare: f(d.windowShare),
@@ -214,7 +224,8 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
       fronts.push({ id: pid, pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], widthM: m.front.lengthM, seriesId, ground: { use: 'other' }, overrides: {}, groundOffsetM: 0, topM: s.eavesM });
       const e = m.pand.eavesM, r = m.pand.ridgeM;
       if (s.clamped.includes(m.pand.id) && e !== null) readNotDrawn.push({ front: pid, field: '3dbag-eaves', value: e, reason: `clamped to the series line ${s.eavesM} m (row coherence: a lone step over 0.8 m)` });
-      const gate = lib.pitched ? pitchGate(lib, s) : null;
+      const gate = lib.pitched ? pitchGate(lib, s) : null, drawn = pitchedRiseOf(lib, s);
+      if (e !== null && r !== null && drawn !== null && r - e > drawn + 0.3) readNotDrawn.push({ front: pid, field: '3dbag-roof-rise', value: +(r - e).toFixed(2), reason: `drawn at the seen rise ${drawn} m (${lib.streetNotes?.[row.street]?.riseM !== undefined ? 'street note' : 'district cap'}): the roof as the street sees it over the eaves` });
       if (e !== null && r !== null && r - e > 1 && pitchedRiseOf(lib, s) === null) readNotDrawn.push({ front: pid, field: '3dbag-roof-rise', value: +(r - e).toFixed(2), reason: gate ? `${gate}: flat top at the series line${lib.flatEaves ? ' under the broad eaves' : ''}` : `under the district's pitched-roof rise (${lib.pitched?.minRiseM ?? '-'} m series median): flat lid at the series line` });
     }
   }

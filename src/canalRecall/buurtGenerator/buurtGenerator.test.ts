@@ -127,3 +127,13 @@ test('round 7: a row note sets the line and the entrances; a flat series under f
   assert.ok(kits.every(k => !k.roof && JSON.stringify(k.eaves) === JSON.stringify({ overhangM: 1, frieze: false })));
   assert.deepEqual([...new Set(res.rows[0].series.map(s => s.design.corniceTopM.value))], [15.4]);
 });
+
+test('round 8: the drawn rise is the seen rise (street note), else the cap; 3DBAG only gates it', () => {
+  const series = (street = 'Teststraat') => districtRows([0, 1, 2].map(i => ({ ...pand(i, 1929, 12.4), roofCode: 3 })), [{ ...streets[0], name: street }]).rows[0].series[0];
+  const bag = pitchedRiseOf({ ...lib, pitched: { ...lib.pitched!, capRiseM: undefined } }, series())!;
+  assert.ok(bag > 2.5, 'uncapped: 3DBAG');
+  assert.equal(pitchedRiseOf({ ...lib, pitched: { ...lib.pitched!, capRiseM: 1 } }, series()), 1);
+  assert.equal(pitchedRiseOf({ ...lib, pitched: { ...lib.pitched!, capRiseM: 1 }, streetNotes: { Teststraat: { riseM: 1.3, evidence: 'test' } } }, series()), 1.3);
+  // Under the gate it stays flat whatever the cap.
+  assert.equal(pitchedRiseOf({ ...lib, pitched: { ...lib.pitched!, capRiseM: 1, minRiseM: 50 } }, series()), null);
+});

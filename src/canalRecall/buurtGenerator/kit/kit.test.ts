@@ -262,5 +262,11 @@ test('round 7: a flat series takes its own broad eaves; entries draw the red doo
   assert.ok(bay.out.some(t => t.hex === ENTRY_LOOK.dark), 'its diamond');
   assert.ok(bay.out.filter(t => t.hex === '#4f5f69').length >= 2 * 4, 'a stair light per upper storey');
   assert.ok(bay.out.every(t => t.p.every(q => Math.abs(q[1]) <= W4 / 2 + 1e-6)), 'inside the member');
+  // With the cells known no window pokes out at the bay's edge: every light on the upper storeys clears the bay by its gap.
+  const cut = sink();
+  drawKitFront(cut, kit4({ entries: [{ a: 0.43, kind: 'gable-bay', cells: 2 }], groundZ: -16 }), L4, W4, 1);
+  const c = (0.43 - 0.5) * W4, half = ENTRY_LOOK.bayW / 2;
+  const upper = cut.out.filter(t => t.hex === '#4f5f69' && t.p.every(q => q[2] > -12.9) && t.p.some(q => Math.abs(q[1]) > 0.01));
+  assert.ok(upper.every(t => t.p.every(q => q[1] * 1 <= c - half - 0.2 || q[1] >= c + half + 0.2 || Math.abs(q[1] - c) <= ENTRY_LOOK.stairW / 2 + 1e-6)), 'lights clear the bay');
 });
 const ERKER_LOOK_WHITE = '#ece9e1';
