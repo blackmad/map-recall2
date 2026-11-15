@@ -29,3 +29,25 @@ export class NearFarWatch {
 export function nearFarFlag(search: string = typeof location !== 'undefined' ? location.search : ''): boolean {
   try { return new URLSearchParams(search).get('nearFar') !== '0'; } catch { return true; }
 }
+
+/** Metres from the view centre within which a touch device builds a cell at `full` detail, not only the rider's own cell. */
+export const TOUCH_FINE_M = 200;
+
+/**
+ * `?touchFine=<m>`: cells whose nearest edge is within m of the view centre stay `full` on a touch device (default
+ * TOUCH_FINE_M; `0` restores the own-cell-only rule). The rider standing near a cell edge (Cornelis Lelylaan, G4 #369:
+ * the neighbour 58 m away stayed `touch` for good, 3 cells of 9 within 260 m) drew the coarse level under the wheels.
+ */
+export function touchFineFlag(search: string = typeof location !== 'undefined' ? location.search : ''): number {
+  try {
+    const v = new URLSearchParams(search).get('touchFine');
+    if (v !== null && Number.isFinite(Number(v)) && Number(v) >= 0) return Number(v);
+  } catch { /* no location */ }
+  return TOUCH_FINE_M;
+}
+
+/** Whether a touch device builds this wanted cell at full detail (pure; wantedCells). */
+export function touchFine(groundNear: 'block' | 'cell' | 'all', own: boolean, beside: boolean, distM: number, fineM: number): boolean {
+  if (groundNear === 'all') return false;
+  return own || (groundNear === 'block' && beside) || distM <= fineM;
+}

@@ -22,3 +22,14 @@ test('nearFarFlag: on unless ?nearFar=0', () => {
   assert.equal(nearFarFlag(''), true);
   assert.equal(nearFarFlag('?nearFar=0'), false);
 });
+
+import { touchFine, touchFineFlag, TOUCH_FINE_M } from './nearFarWatch';
+test('touchFine: a cell within the fine distance of the centre is full; the old own-cell rule at 0; `all` stays coarse', () => {
+  assert.equal(touchFine('cell', false, true, 58, TOUCH_FINE_M), true, 'Lelylaan: neighbour 58 m away');
+  assert.equal(touchFine('cell', false, true, 245, TOUCH_FINE_M), false, '245 m is beyond it');
+  assert.equal(touchFine('cell', false, true, 58, 0), false, '?touchFine=0 = the old rule');
+  assert.equal(touchFine('cell', true, false, 0, 0), true);
+  assert.equal(touchFine('all', true, true, 0, TOUCH_FINE_M), false);
+  assert.equal(touchFineFlag('?touchFine=0'), 0);
+  assert.equal(touchFineFlag(''), TOUCH_FINE_M);
+});

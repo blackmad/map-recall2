@@ -53,7 +53,7 @@ import { footprintBase } from './placement.js';
 import { cutMesh, disposeTiles, setTileReach } from '../rendererShared/tiledGeometry.js';
 import { cellTileGrid, type CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
-import { NearFarWatch, nearFarFlag } from './nearFarWatch.js';
+import { NearFarWatch, nearFarFlag, touchFine, touchFineFlag } from './nearFarWatch.js';
 import { farBlockCells, farBlocksWithin, farHorizonEnabled, farRadiusM, horizonReachM, FAR_KEEP_M, FAR_STEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
@@ -493,6 +493,7 @@ export class OwnGround {
   private readonly farEmpty = new Set<string>();
   private readonly nearFarWatch = new NearFarWatch();
   private nearFarAt = 0;
+  private touchFineM: number | undefined;
   private nearFarOn: boolean | undefined;
   private readonly farStats = { built: 0, buildMs: [] as number[] };
   /** The overview → city blend (transition on): drawn while `blend.active`, dithered by `blendUniform`. */
@@ -829,7 +830,7 @@ export class OwnGround {
       const near: [number, number] = [Math.max(rect[0], Math.min(rect[2], x)), Math.max(rect[1], Math.min(rect[3], y))];
       if (view ? !inTouchRing(d, d > 1e-6 && direction ? ((near[0] - x) * direction[0] + (near[1] - y) * direction[1]) / d : 0, R, ahead) : d > R) continue;
       const own = dx === 0 && dy === 0, beside = Math.abs(dx) <= 1 && Math.abs(dy) <= 1;
-      const fine = this.opts.groundNear === 'all' ? false : own || (this.opts.groundNear === 'block' && beside);
+      const fine = touchFine(this.opts.groundNear, own, beside, d, this.touchFineM ??= touchFineFlag());
       out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, detail: this.opts.detail === 'touch' && !fine ? 'touch' : 'full', d, rank: this.focus && inFocusBlock(key, this.focusCell) ? FOCUS_RANK_BASE + this.rectDistance(rect, this.focus) : direction ? aheadRankXY(this.centre, near, direction) : d });
     }
     return out.sort((a, b) => a.rank - b.rank || a.d - b.d);
@@ -983,6 +984,17 @@ export class OwnGround {
       if (d > r) continue;
       const res = this.resident.get(key);
       out.push({ key, distM: Math.round(d), resident: !!res, fading: !!res?.fade, pending: this.pending.has(key), lod: res ? res.lod : null });
+    }
+    return out;
+  }
+
+  /** G4 (#369): resident cells within nearM of the view centre still drawn at LOD 1 or `touch` detail (a first paint never replaced). */
+  nearCoarseCells(): { key: string; distM: number; lod: number; detail: string; pending: boolean }[] {
+    const c = this.centre, out: { key: string; distM: number; lod: number; detail: string; pending: boolean }[] = [];
+    if (!c) return out;
+    for (const r of this.resident.values()) {
+      const d = this.rectDistance(this.store.cellRect(r.key), c);
+      if (d <= this.opts.nearM && (r.lod !== 0 || r.detail !== 'full')) out.push({ key: r.key, distM: Math.round(d), lod: r.lod, detail: r.detail, pending: this.pending.has(r.key) });
     }
     return out;
   }
@@ -1695,7 +1707,7 @@ export class OwnGround {
       downloadedKB: Object.fromEntries(Object.entries(this.store.loadedBytes).map(([k, v]) => [k, Math.round(v / 1024)])),
       overlays: Object.fromEntries(Object.entries(this.overlays).map(([k, m]) => [k, m ? m.geometry.index.count / 3 : 0])),
       far: {
-        nearRider: this.nearFarParts(), radiusM: this.farRadius, blocks: this.far.size, pending: this.farPending.size, built: this.farStats.built, buildMsMedian: median(this.farStats.buildMs),
+        nearRider: this.nearFarParts(), nearCoarse: this.nearCoarseCells(), radiusM: this.farRadius, blocks: this.far.size, pending: this.farPending.size, built: this.farStats.built, buildMsMedian: median(this.farStats.buildMs),
         parts: [...this.far.values()].reduce((n, f) => n + f.parts.size, 0), partsShown: [...this.far.values()].reduce((n, f) => n + [...f.parts.values()].filter(m => m.visible).length, 0),
         triangles: [...this.far.values()].reduce((n, f) => n + f.triangles, 0), geometryMB: +([...this.far.values()].reduce((n, f) => n + f.bytes, 0) / 1048576).toFixed(1),
       },
