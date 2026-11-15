@@ -16,7 +16,7 @@ import type { DescriberAnswer } from '../houseSpec/describer.ts';
 import { solveRow, type MemberInput, type RowInput } from '../houseSpec/row/solve.ts';
 import type { RowDesign, RowField, RowRecord } from '../houseSpec/row/types.ts';
 import { districtRows, type GenPand, type GenRow, type GenStreet } from '../buurtGenerator/rows.ts';
-import { donorDistance, donorFor, fittedRead, frontTopM, gableable, GABLED_CROWNS, mansardAsDormers, stripRoofStorey, type BeltDonor, type BeltTarget } from './donors.ts';
+import { BELT_LOOK, donorDistance, donorFor, fittedRead, frontTopM, gableable, GABLED_CROWNS, mansardAsDormers, stripRoofStorey, type BeltDonor, type BeltTarget, type LookDistrict } from './donors.ts';
 import { MANSARD_RISE } from '../houseLine/rowFront.ts';
 import type { RowGable } from '../houseSpec/row/types.ts';
 import { dressBeltStone } from './stone.ts';
@@ -48,13 +48,13 @@ export function brickDonorSample(d: Pick<BeltDonor, 'answer' | 'sample'>): strin
  * judged with no sample and took the era default, red-brown before the ring: 468 of the 469 red-brown belt fronts of
  * round 6 (held-out round 6: Prinsengracht 168601 and 182462 drawn red where the photos are brown and grey-purple).
  */
-export function nearestBrickSample(t: BeltTarget, donors: readonly BeltDonor[]): { sample: string; from: string } | null {
+export function nearestBrickSample(t: BeltTarget, donors: readonly BeltDonor[], look: LookDistrict = BELT_LOOK): { sample: string; from: string } | null {
   let best: { sample: string; from: string; s: number } | null = null;
   for (const d of donors) {
     if (d.pandId === t.pandId) continue;
     const sample = brickDonorSample(d);
     if (!sample) continue;
-    const s = donorDistance(t, d);
+    const s = donorDistance(t, d, look);
     if (!best || s < best.s || (s === best.s && d.pandId < best.from)) best = { sample, from: d.pandId, s };
   }
   return best && { sample: best.sample, from: best.from };
@@ -103,7 +103,7 @@ export function ahnGableApex(a: AhnFront | undefined, foot: number | null, ridge
 /** A generator row as a row-solve input: own reads where read, donors' fitted reads elsewhere. `ahn`: measured AHN street
  *  fronts per pand (ahnFront.ts): a cornice front stands at its band's p90, a gable's apex at its band's top (held-out
  *  round 5 judges' photo heights matched AHN where 3DBAG's eaves and height did not). */
-export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, prov: BeltGenResult['provenance'], stated: ReadonlyMap<string, BeltStated> = new Map(), ahn: ReadonlyMap<string, AhnFront> = new Map()): RowInput | null {
+export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, prov: BeltGenResult['provenance'], stated: ReadonlyMap<string, BeltStated> = new Map(), ahn: ReadonlyMap<string, AhnFront> = new Map(), look: LookDistrict = BELT_LOOK): RowInput | null {
   const members: MemberInput[] = [];
   for (const m of row.members) {
     // The front's top (frontTopM: 3DBAG's eaves is often a rear eave under the street cornice).
@@ -111,7 +111,7 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     const af = ahn.get(pid), ahnTop = ahnCorniceTop(af, m.pand);
     const sd = stated.get(pid);
     const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge0, roofCode: m.pand.roofCode ?? null, heightM: m.pand.heightM ?? null,
-      ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}), ...(sd?.finish ? { finish: sd.finish } : {}), ...(sd?.storeys ? { storeys: sd.storeys } : {}), ...(sd?.stoop ? { stoop: true } : {}), ...(sd?.roofStorey ? { roofStorey: true } : {}), ...(sd?.warehouse ? { warehouse: true } : {}), ...(sd?.elements?.length ? { elements: sd.elements } : {}) };
+      ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}), ...(sd?.finish ? { finish: sd.finish } : {}), ...(sd?.storeys ? { storeys: sd.storeys } : {}), ...(sd?.stoop ? { stoop: true } : {}), ...(sd?.roofStorey ? { roofStorey: true } : {}), ...(sd?.warehouse ? { warehouse: true } : {}), ...(sd?.elements?.length ? { elements: sd.elements } : {}), ...(look !== BELT_LOOK ? { district: look.id } : {}) };
     const own = reads.get(pid);
     let read: DescriberAnswer, sample: string | undefined, readRef: string;
     // A pand's own read keeps an attic it saw; dormers read over a cornice are not a mansard front unless the register
@@ -119,19 +119,19 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     // each), and a read mansard stands as dormers (round 7 sample: one read mansard in five was one).
     if (own) { read = t.roofStorey ? mansardAsDormers(structuredClone(own.answer)) : stripRoofStorey(structuredClone(own.answer), true); sample = own.sample; readRef = own.ref; prov[pid] = { own: true, ref: own.ref }; }
     else {
-      const d = donorFor(t, donors);
+      const d = donorFor(t, donors, look);
       if (!d) return null;
       // A cornice front stands at 3DBAG's representative height (its storeys fitted to it); a gable's foot stays at the
       // front top, the gable rising to the ridge.
       const corniceTop = !GABLED_CROWNS.has(String(t.statedCrown ?? d.donor.answer.crown)) && eaves !== null ? (ahnTop ?? (t.heightM != null ? corniceLine({ crown: 'cornice' }, t, eaves, m.pand.eavesM) : null)) : null;
-      read = fittedRead(corniceTop !== null ? { ...t, eavesM: corniceTop } : t, d.donor);
+      read = fittedRead(corniceTop !== null ? { ...t, eavesM: corniceTop } : t, d.donor, look);
       if (t.roofStorey) read = statedDormer(read);
       readRef = `${BELT_LOOK_REF}: donor ${d.donor.pandId}`;
       // A stated plaster or stone front is judged pale from its finish, not the donor's brick sample.
       // A donor's sample is a brick colour only when the donor is a brick front and the sample is not a buff (tan) brick;
       // otherwise the solve takes the neighbours' family (round 4: tan and pale fronts over dark brick rows).
       sample = t.finish === 'plaster' || t.finish === 'stone' ? undefined : brickDonorSample(d.donor);
-      if (!sample && (read as { finish?: string }).finish === 'brick') sample = nearestBrickSample(t, donors)?.sample;
+      if (!sample && (read as { finish?: string }).finish === 'brick') sample = nearestBrickSample(t, donors, look)?.sample;
       prov[pid] = { donor: d.donor.pandId, distance: d.distance, rank: d.rank, of: d.of };
     }
     const gabled = GABLED_CROWNS.has(String(read.crown));
@@ -144,7 +144,7 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       eaves3dbag: top, height3dbag: top, ...(ridge !== null && (gableable(t) || (gabled && af)) ? { ridge3dbag: +ridge.toFixed(2) } : {}),
       read, readRef, ...(sample ? { wallSample: sample } : {}) });
   }
-  return { id: `belt-${row.id}`, canalWindows: true, street: row.street, side: 'mixed', members, inputs: [BELT_LOOK_REF, 'public/data/extracts/amsterdam/bag-tiles/14', 'public/data/extracts/amsterdam/streets-routing.json'], solvedAt: at };
+  return { id: `${look.id}-${row.id}`, canalWindows: true, street: row.street, side: 'mixed', members, inputs: [BELT_LOOK_REF, 'public/data/extracts/amsterdam/bag-tiles/14', 'public/data/extracts/amsterdam/streets-routing.json'], solvedAt: at };
 }
 
 /** A field the solve drew from a donor (its ref cites a donor-filled member) becomes `period-default` under the belt look. */
@@ -170,14 +170,14 @@ export function relabelDonorFields(row: RowRecord, donorFilled: ReadonlySet<stri
  * The belt: rows from the undescribed pands, each solved as a belt row. `reads` are the belt tranche's own reads (pand ->
  * read); `donors` the usable reads the look draws from.
  */
-export function generateBelt(pands: readonly GenPand[], streets: readonly GenStreet[], described: ReadonlySet<string>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, stated: ReadonlyMap<string, BeltStated> = new Map(), ahn: ReadonlyMap<string, AhnFront> = new Map()): BeltGenResult {
+export function generateBelt(pands: readonly GenPand[], streets: readonly GenStreet[], described: ReadonlySet<string>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, stated: ReadonlyMap<string, BeltStated> = new Map(), ahn: ReadonlyMap<string, AhnFront> = new Map(), look: LookDistrict = BELT_LOOK): BeltGenResult {
   const skipped: BeltGenResult['skipped'] = [], provenance: BeltGenResult['provenance'] = {}, fronts: BeltGenResult['fronts'] = {};
   const free = pands.filter(p => { const d = described.has(pandNumber(p.id)); if (d) skipped.push({ id: pandNumber(p.id), reason: 'described' }); return !d; });
   const res = districtRows(free, streets, { singles: true });
   for (const u of res.unplaced) skipped.push({ id: pandNumber(u.id), reason: u.reason });
   const rows: RowRecord[] = [];
   for (const r of res.rows) {
-    const input = beltRowInput(r, reads, donors, at, provenance, stated, ahn);
+    const input = beltRowInput(r, reads, donors, at, provenance, stated, ahn, look);
     if (!input) { for (const m of r.members) skipped.push({ id: pandNumber(m.pand.id), reason: 'no-donor' }); continue; }
     const donorFilled = new Set(input.members.filter(m => 'donor' in provenance[m.pandId]).map(m => m.pandId));
     const elements = new Map(input.members.map(m => [m.pandId, stated.get(m.pandId)?.elements ?? []]));
