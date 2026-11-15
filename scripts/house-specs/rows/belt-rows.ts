@@ -41,7 +41,7 @@ export function beltMembers(rows: readonly SelectRow[], cuts: ReadonlyMap<string
       return {
         pandId: r.pandId, label, widthM: w ? +w.toFixed(2) : +Math.min(12, Math.max(3.5, r.areaM2 / 15)).toFixed(2),
         widthSource: w ? 'cut wall segment' : 'BAG area / 15 m (no cut)', numbers: nums.length ? nums : [r.number], built: r.year,
-        side: parity === 0 ? 'even' as const : 'odd' as const,
+        side: parity === 0 ? 'even' as const : 'odd' as const, ...(r.height ? { heightM: r.height } : {}),
       };
     });
 }
@@ -50,7 +50,7 @@ function main() {
   const argv = process.argv.slice(2);
   const arg = (k: string) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : undefined; };
   const rowsJson = JSON.parse(fs.readFileSync(ROWS, 'utf8'));
-  const root = process.env.ROW_D1_ROOT_BELT ?? path.resolve(rowsJson.d1Root, '../../../d1-tranche-belt-20261114/artifacts/describer-d1');
+  const root = process.env.ROW_D1_ROOT ?? rowsJson.d1Root;
   const street = arg('street') ?? 'Herengracht';
   const runs = (arg('runs') ?? '').split(',').filter(Boolean).map(s => s.split('-').map(Number) as [number, number]);
   if (!runs.length) { console.error('usage: belt-rows.ts --street Herengracht --runs 2-24,1-23 [--write]'); process.exit(2); }
@@ -69,6 +69,7 @@ function main() {
       title: `${street} ${a}-${b} (${a % 2 ? 'odd' : 'even'} side, ${Math.min(...members.map(m => m.built!))}-${Math.max(...members.map(m => m.built!))})`,
       members, cuts: path.relative(rowsJson.d1Root, path.join(root, BELT, 'cuts')), answers: path.relative(rowsJson.d1Root, path.join(root, BELT, 'answers-kept')),
       staged: path.relative(rowsJson.d1Root, path.join(root, 'staged-belt-20261114')),
+      wallFromCuts: true,
       note: `canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)`,
     };
   }

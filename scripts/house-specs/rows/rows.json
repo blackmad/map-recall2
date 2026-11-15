@@ -1,5 +1,5 @@
 {
-  "d1Root": "/Users/blackmad/Code/map-recall2-worktrees/d1-tranche-ring-20261114/artifacts/describer-d1",
+  "d1Root": "/Users/blackmad/Code/map-recall2-worktrees/_pruned-sheets/house-rows-d/d1-root",
   "rows": {
     "kinkerstraat-86-110": {
       "title": "Kinkerstraat 86-110 (even side, 1893)",
@@ -378,7 +378,8 @@
             4
           ],
           "built": 1616,
-          "side": "even"
+          "side": "even",
+          "heightM": 12.75
         },
         {
           "pandId": "0363100012179834",
@@ -389,7 +390,8 @@
             6
           ],
           "built": 1880,
-          "side": "even"
+          "side": "even",
+          "heightM": 19.03
         },
         {
           "pandId": "0363100012179833",
@@ -400,7 +402,8 @@
             8
           ],
           "built": 1880,
-          "side": "even"
+          "side": "even",
+          "heightM": 18.95
         },
         {
           "pandId": "0363100012179763",
@@ -411,7 +414,8 @@
             10
           ],
           "built": 1933,
-          "side": "even"
+          "side": "even",
+          "heightM": 15.58
         },
         {
           "pandId": "0363100012179765",
@@ -422,7 +426,8 @@
             12
           ],
           "built": 1630,
-          "side": "even"
+          "side": "even",
+          "heightM": 17.4
         },
         {
           "pandId": "0363100012179761",
@@ -433,7 +438,8 @@
             16
           ],
           "built": 1735,
-          "side": "even"
+          "side": "even",
+          "heightM": 12.39
         },
         {
           "pandId": "0363100012179760",
@@ -444,7 +450,8 @@
             18
           ],
           "built": 1615,
-          "side": "even"
+          "side": "even",
+          "heightM": 12.38
         },
         {
           "pandId": "0363100012179753",
@@ -455,7 +462,8 @@
             20
           ],
           "built": 1639,
-          "side": "even"
+          "side": "even",
+          "heightM": 18.95
         },
         {
           "pandId": "0363100012179752",
@@ -466,7 +474,8 @@
             22
           ],
           "built": 1615,
-          "side": "even"
+          "side": "even",
+          "heightM": 12.92
         },
         {
           "pandId": "0363100012179838",
@@ -477,12 +486,14 @@
             24
           ],
           "built": 1615,
-          "side": "even"
+          "side": "even",
+          "heightM": 13.52
         }
       ],
-      "cuts": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/cuts",
-      "answers": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/answers-kept",
-      "staged": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/staged-belt-20261114",
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
       "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     },
     "herengracht-26-46": {
@@ -497,7 +508,8 @@
             26
           ],
           "built": 1905,
-          "side": "even"
+          "side": "even",
+          "heightM": 15.45
         },
         {
           "pandId": "0363100012179837",
@@ -508,7 +520,8 @@
             28
           ],
           "built": 1712,
-          "side": "even"
+          "side": "even",
+          "heightM": 13.44
         },
         {
           "pandId": "0363100012168138",
@@ -519,7 +532,8 @@
             30
           ],
           "built": 1905,
-          "side": "even"
+          "side": "even",
+          "heightM": 14.87
         },
         {
           "pandId": "0363100012168069",
@@ -530,7 +544,8 @@
             32
           ],
           "built": 1615,
-          "side": "even"
+          "side": "even",
+          "heightM": 14.7
         },
         {
           "pandId": "0363100012179684",
@@ -541,7 +556,8 @@
             36
           ],
           "built": 1615,
-          "side": "even"
+          "side": "even",
+          "heightM": 12.7
         },
         {
           "pandId": "0363100012179671",
@@ -552,7 +568,8 @@
             38
           ],
           "built": 1615,
-          "side": "even"
+          "side": "even",
+          "heightM": 12.16
         },
         {
           "pandId": "0363100012179668",
@@ -563,7 +580,8 @@
             40
           ],
           "built": 1790,
-          "side": "even"
+          "side": "even",
+          "heightM": 21.36
         },
         {
           "pandId": "0363100012179670",
@@ -574,7 +592,8 @@
             42
           ],
           "built": 1870,
-          "side": "even"
+          "side": "even",
+          "heightM": 15.33
         },
         {
           "pandId": "0363100012179669",
@@ -585,7 +604,8 @@
             44
           ],
           "built": 1725,
-          "side": "even"
+          "side": "even",
+          "heightM": 10.96
         },
         {
           "pandId": "0363100012169270",
@@ -597,7 +617,8 @@
             48
           ],
           "built": 1760,
-          "side": "even"
+          "side": "even",
+          "heightM": 18.66
         },
         {
           "pandId": "0363100012179667",
@@ -608,12 +629,14 @@
             46
           ],
           "built": 1905,
-          "side": "even"
+          "side": "even",
+          "heightM": 14.87
         }
       ],
-      "cuts": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/cuts",
-      "answers": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/answers-kept",
-      "staged": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/staged-belt-20261114",
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
       "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     },
     "herengracht-56-74": {
@@ -628,7 +651,8 @@
             56
           ],
           "built": 1615,
-          "side": "even"
+          "side": "even",
+          "heightM": 17.06
         },
         {
           "pandId": "0363100012167495",
@@ -639,7 +663,8 @@
             58
           ],
           "built": 1905,
-          "side": "even"
+          "side": "even",
+          "heightM": 15.77
         },
         {
           "pandId": "0363100012167492",
@@ -650,7 +675,8 @@
             60
           ],
           "built": 1740,
-          "side": "even"
+          "side": "even",
+          "heightM": 16.74
         },
         {
           "pandId": "0363100012167493",
@@ -661,7 +687,8 @@
             62
           ],
           "built": 1740,
-          "side": "even"
+          "side": "even",
+          "heightM": 15.86
         },
         {
           "pandId": "0363100012168545",
@@ -672,7 +699,8 @@
             64
           ],
           "built": 1625,
-          "side": "even"
+          "side": "even",
+          "heightM": 14.53
         },
         {
           "pandId": "0363100012175698",
@@ -683,7 +711,8 @@
             68
           ],
           "built": 1770,
-          "side": "even"
+          "side": "even",
+          "heightM": 18.65
         },
         {
           "pandId": "0363100012175618",
@@ -694,7 +723,8 @@
             70
           ],
           "built": 1640,
-          "side": "even"
+          "side": "even",
+          "heightM": 18.83
         },
         {
           "pandId": "0363100012175617",
@@ -705,7 +735,8 @@
             72
           ],
           "built": 1640,
-          "side": "even"
+          "side": "even",
+          "heightM": 17.14
         },
         {
           "pandId": "0363100012175616",
@@ -716,12 +747,14 @@
             74
           ],
           "built": 1905,
-          "side": "even"
+          "side": "even",
+          "heightM": 13.88
         }
       ],
-      "cuts": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/cuts",
-      "answers": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/answers-kept",
-      "staged": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/staged-belt-20261114",
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
       "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     },
     "herengracht-76-90": {
@@ -737,7 +770,8 @@
             78
           ],
           "built": 1905,
-          "side": "even"
+          "side": "even",
+          "heightM": 9.9
         },
         {
           "pandId": "0363100012175783",
@@ -748,7 +782,8 @@
             80
           ],
           "built": 1905,
-          "side": "even"
+          "side": "even",
+          "heightM": 13.66
         },
         {
           "pandId": "0363100012175703",
@@ -759,7 +794,8 @@
             82
           ],
           "built": 1905,
-          "side": "even"
+          "side": "even",
+          "heightM": 14.38
         },
         {
           "pandId": "0363100012175702",
@@ -770,7 +806,8 @@
             84
           ],
           "built": 1615,
-          "side": "even"
+          "side": "even",
+          "heightM": 13.28
         },
         {
           "pandId": "0363100012169010",
@@ -781,7 +818,8 @@
             88
           ],
           "built": 1880,
-          "side": "even"
+          "side": "even",
+          "heightM": 12.2
         },
         {
           "pandId": "0363100012175701",
@@ -792,12 +830,14 @@
             90
           ],
           "built": 1630,
-          "side": "even"
+          "side": "even",
+          "heightM": 14.95
         }
       ],
-      "cuts": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/cuts",
-      "answers": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/answers-kept",
-      "staged": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/staged-belt-20261114",
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
       "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     },
     "herengracht-1-23": {
@@ -812,7 +852,8 @@
             1
           ],
           "built": 1735,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 16.44
         },
         {
           "pandId": "0363100012175393",
@@ -823,7 +864,8 @@
             3
           ],
           "built": 1889,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 18.6
         },
         {
           "pandId": "0363100012175377",
@@ -834,7 +876,8 @@
             5
           ],
           "built": 1645,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 16.87
         },
         {
           "pandId": "0363100012175411",
@@ -846,7 +889,8 @@
             9
           ],
           "built": 1760,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 10.82
         },
         {
           "pandId": "0363100012175410",
@@ -857,7 +901,8 @@
             13
           ],
           "built": 1929,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 13.09
         },
         {
           "pandId": "0363100012175397",
@@ -868,7 +913,8 @@
             21
           ],
           "built": 1690,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 10.94
         },
         {
           "pandId": "0363100012175408",
@@ -879,12 +925,14 @@
             23
           ],
           "built": 1875,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 11.18
         }
       ],
-      "cuts": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/cuts",
-      "answers": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/answers-kept",
-      "staged": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/staged-belt-20261114",
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
       "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     },
     "herengracht-25-49": {
@@ -900,7 +948,8 @@
             29
           ],
           "built": 1896,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 12.74
         },
         {
           "pandId": "0363100012175404",
@@ -911,7 +960,8 @@
             27
           ],
           "built": 1890,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 13.44
         },
         {
           "pandId": "0363100012175403",
@@ -922,7 +972,8 @@
             31
           ],
           "built": 1638,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 13.57
         },
         {
           "pandId": "0363100012175409",
@@ -933,7 +984,8 @@
             33
           ],
           "built": 1638,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 13.2
         },
         {
           "pandId": "0363100012175407",
@@ -944,7 +996,8 @@
             35
           ],
           "built": 1720,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 12.12
         },
         {
           "pandId": "0363100012168213",
@@ -955,7 +1008,8 @@
             37
           ],
           "built": 1750,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 19.06
         },
         {
           "pandId": "0363100012168210",
@@ -966,7 +1020,8 @@
             39
           ],
           "built": 1773,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 18.03
         },
         {
           "pandId": "0363100012175291",
@@ -977,7 +1032,8 @@
             41
           ],
           "built": 1625,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 12.21
         },
         {
           "pandId": "0363100012168212",
@@ -989,7 +1045,8 @@
             45
           ],
           "built": 1905,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 12.06
         },
         {
           "pandId": "0363100012168211",
@@ -1000,7 +1057,8 @@
             47
           ],
           "built": 1875,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 13.2
         },
         {
           "pandId": "0363100012168131",
@@ -1011,12 +1069,14 @@
             49
           ],
           "built": 1638,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 16.89
         }
       ],
-      "cuts": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/cuts",
-      "answers": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/answers-kept",
-      "staged": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/staged-belt-20261114",
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
       "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     },
     "herengracht-51-73": {
@@ -1031,7 +1091,8 @@
             51
           ],
           "built": 1638,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 16.04
         },
         {
           "pandId": "0363100012168130",
@@ -1042,7 +1103,8 @@
             53
           ],
           "built": 1663,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 15.16
         },
         {
           "pandId": "0363100012169271",
@@ -1053,7 +1115,8 @@
             55
           ],
           "built": 1715,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 15.46
         },
         {
           "pandId": "0363100012179673",
@@ -1064,7 +1127,8 @@
             57
           ],
           "built": 1730,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 11.15
         },
         {
           "pandId": "0363100012179748",
@@ -1075,7 +1139,8 @@
             59
           ],
           "built": 1659,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 16.04
         },
         {
           "pandId": "0363100012179672",
@@ -1086,7 +1151,8 @@
             61
           ],
           "built": 1666,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 14.87
         },
         {
           "pandId": "0363100012179683",
@@ -1097,7 +1163,8 @@
             63
           ],
           "built": 1666,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 14.95
         },
         {
           "pandId": "0363100012179751",
@@ -1108,7 +1175,8 @@
             65
           ],
           "built": 1632,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 15.9
         },
         {
           "pandId": "0363100012179750",
@@ -1119,7 +1187,8 @@
             67
           ],
           "built": 1632,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 14.86
         },
         {
           "pandId": "0363100012179675",
@@ -1130,7 +1199,8 @@
             69
           ],
           "built": 1750,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 12.53
         },
         {
           "pandId": "0363100012179682",
@@ -1141,7 +1211,8 @@
             71
           ],
           "built": 1720,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 17.85
         },
         {
           "pandId": "0363100012179681",
@@ -1152,12 +1223,14 @@
             73
           ],
           "built": 1646,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 19.05
         }
       ],
-      "cuts": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/cuts",
-      "answers": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/answers-kept",
-      "staged": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/staged-belt-20261114",
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
       "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     },
     "herengracht-75-89": {
@@ -1172,7 +1245,8 @@
             75
           ],
           "built": 1661,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 15.4
         },
         {
           "pandId": "0363100012179749",
@@ -1183,7 +1257,8 @@
             77
           ],
           "built": 1630,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 12.42
         },
         {
           "pandId": "0363100012168064",
@@ -1194,7 +1269,8 @@
             79
           ],
           "built": 1700,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 11.9
         },
         {
           "pandId": "0363100012179665",
@@ -1205,7 +1281,8 @@
             81
           ],
           "built": 1626,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 12.08
         },
         {
           "pandId": "0363100012179664",
@@ -1216,7 +1293,8 @@
             83
           ],
           "built": 1625,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 13.98
         },
         {
           "pandId": "0363100012179601",
@@ -1227,7 +1305,8 @@
             85
           ],
           "built": 1636,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 14.11
         },
         {
           "pandId": "0363100012179594",
@@ -1238,7 +1317,8 @@
             87
           ],
           "built": 1667,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 14.84
         },
         {
           "pandId": "0363100012180438",
@@ -1249,13 +1329,16 @@
             89
           ],
           "built": 1650,
-          "side": "odd"
+          "side": "odd",
+          "heightM": 13.88
         }
       ],
-      "cuts": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/cuts",
-      "answers": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/belt-20261114/answers-kept",
-      "staged": "../../../d1-tranche-belt-20261114/artifacts/describer-d1/staged-belt-20261114",
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
       "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     }
-  }
+  },
+  "d1RootNote": "2026-11-15: the d1-tranche-ring worktree was pruned by the sweep. This root holds ring-20261114/answers restored from lane/d1-tranche-ring-20261114 (git), the ring cut jpgs the prune staged, staged-ring from _pruned-sheets/d1-ring-20261114, and links to the belt tranche worktree for the street, ah07 and belt dirs. The ring cuts.json (capture dates, cut wall heights) was not tracked and is lost."
 }

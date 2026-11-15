@@ -275,3 +275,16 @@ test('Herengracht belt rows: a front with no face and no usable reading draws it
   assert.notEqual(s82, r.fronts.find(f => f.pandId === '0363100012175783')!.seriesId);
   assert.equal(frontDesign(r, r.fronts.find(f => f.pandId === '0363100012175703')!).crown.value, 'cornice');
 });
+
+test('Herengracht belt rows: the cut sample judges brick; painted stays painted; no-cut fronts take their neighbours', () => {
+  const r = solveRow(loadRow(loadRowDefs()['herengracht-56-74'], '2026-11-15').input);
+  const wall = (pid: string) => frontDesign(r, r.fronts.find(f => f.pandId === pid)!).wall.value;
+  // 58 is painted dark (its note's "red brick" is the neighbour); 56 brick never shares its series.
+  assert.equal(wall('0363100012167495').family, 'painted-dark');
+  assert.notEqual(r.fronts.find(f => f.pandId === '0363100012167494')!.seriesId, r.fronts.find(f => f.pandId === '0363100012167495')!.seriesId);
+  // 74 (sample L 0.42) is dark purple-brown, not the era red-brown.
+  assert.equal(wall('0363100012175616').family, 'purple-brown-brick');
+  const a = solveRow(loadRow(loadRowDefs()['herengracht-2-24'], '2026-11-15').input);
+  const six = a.fronts.find(f => f.pandId === '0363100012179834')!;
+  assert.equal(frontDesign(a, six).wall.value.family, frontDesign(a, a.fronts.find(f => f.pandId === '0363100012168202')!).wall.value.family, '6 (no cut) takes its neighbour 2-4');
+});

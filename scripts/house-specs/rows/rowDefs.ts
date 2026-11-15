@@ -4,7 +4,9 @@ import path from 'node:path';
 
 export interface RowMemberDef { pandId: string; label: string; widthM: number; x0M?: number; px?: [number, number]; eavesM?: number;
   /** A row with no street survey (the canal belt, scripts/house-specs/rows/belt-rows.ts) states the house numbers, BAG year and side. */
-  numbers?: number[]; built?: number; side?: 'even' | 'odd'; widthSource?: string }
+  numbers?: number[]; built?: number; side?: 'even' | 'odd'; widthSource?: string;
+  /** 3DBAG b3_h_dak_70p over ground (the cutter's wall height), for a member with no cut. */
+  heightM?: number }
 export interface RowDef { id: string; title: string; face?: string; members: RowMemberDef[]; cutsDir: string; cutsLocal?: string; answersDir: string; stagedDir: string; pixelsPerMetre?: number; note?: string;
   /** Answer and cut dirs in order of preference (rows.json `answers` / `cuts` may be a list: Kinkerstraat's reads sit in the
    *  ring tranche and the earlier street tranche). The first is `answersDir` / `cutsDir`. */
