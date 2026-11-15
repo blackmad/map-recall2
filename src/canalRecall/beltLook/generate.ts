@@ -132,7 +132,7 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     const af = ahn.get(pid), sloped = look.slopedBand ? slopedBandTop(m.pand, af) : null, ahnTop = sloped ?? ahnCorniceTop(af, m.pand);
     // roofSignals.ts: a gable never stands on a measured flat top (a register gable there describes a front that is gone).
     const flatTop = !!look.flatTopNoGable && measuredFlatTop(m.pand, af);
-    const sd0 = stated.get(pid), sd = flatTop && sd0?.crown && GABLED_CROWNS.has(sd0.crown) ? (({ crown: _c, ...rest }) => rest)(sd0) : sd0;
+    const sd0 = stated.get(pid), sd: BeltStated | undefined = flatTop && sd0?.crown && GABLED_CROWNS.has(sd0.crown) ? { ...sd0, crown: undefined } : sd0;
     const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge0, roofCode: m.pand.roofCode ?? null, heightM: m.pand.heightM ?? null,
       ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}), ...(sd?.finish ? { finish: sd.finish } : {}), ...(sd?.storeys ? { storeys: sd.storeys } : {}), ...(sd?.stoop ? { stoop: true } : {}), ...(sd?.roofStorey ? { roofStorey: true } : {}), ...(sd?.warehouse ? { warehouse: true } : {}), ...(sd?.elements?.length ? { elements: sd.elements } : {}), ...(look !== BELT_LOOK ? { district: look.id } : {}) };
     const own = reads.get(pid);
