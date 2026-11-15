@@ -79,63 +79,7 @@ for (const x of fs.readdirSync(TILES)) for (const f of fs.readdirSync(path.join(
 }
 console.log(`read ${read} pands; candidates ${pands.length}; skipped`, skipped);
 
-// ---- pairing --------------------------------------------------------------------------------------------------------
-const COMPLEX = 0.25;
-function compatible(a: Pand, b: Pand): boolean {
-  return a.roof === b.roof && Math.abs(a.year - b.year) <= T.years && Math.abs(a.height - b.height) <= T.heightM
-    && Math.abs(a.sig.L - b.sig.L) <= T.sideM && Math.abs(a.sig.W - b.sig.W) <= T.sideM
-    && Math.abs(a.sig.area - b.sig.area) <= T.areaShare * Math.max(a.sig.area, b.sig.area);
-}
-const parent = pands.map((_, i) => i);
-const find = (i: number): number => (parent[i] === i ? i : (parent[i] = find(parent[i])));
-const pairD = new Map<string, number>();
-let tested = 0, joined = 0;
-function tryPair(i: number, j: number) {
-  const a = pands[i], b = pands[j];
-  if (!compatible(a, b)) return;
-  tested++;
-  const tol = shapeTolerance(Math.max(a.sig.L, b.sig.L));
-  const {d} = shapeDistance(a.sig, b.sig, tol);
-  if (d <= tol) { parent[find(i)] = find(j); joined++; if (pairD.size < 2e6) pairD.set(i < j ? `${i},${j}` : `${j},${i}`, d); }
-}
-// (a) local pairs: every pand against pands within LOCAL_M (spatial grid)
-{
-  const grid = new Map<string, number[]>(), C = LOCAL_M;
-  pands.forEach((p, i) => { const k = `${Math.floor(p.c[0] / C)},${Math.floor(p.c[1] / C)}`; (grid.get(k) ?? grid.set(k, []).get(k)!).push(i); });
-  pands.forEach((p, i) => {
-    if (i % 20000 === 0) console.log(`local ${i}/${pands.length} tested ${tested} joined ${joined}`);
-    const gx = Math.floor(p.c[0] / C), gy = Math.floor(p.c[1] / C);
-    for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (const j of grid.get(`${gx + dx},${gy + dy}`) ?? []) {
-      if (j <= i) continue;
-      const q = pands[j];
-      if (Math.hypot(p.c[0] - q.c[0], p.c[1] - q.c[1]) > LOCAL_M) continue;
-      tryPair(i, j);
-    }
-  });
-  console.log(`local: tested ${tested}, joined ${joined}`);
-}
-// (b) city-wide pairs for footprints with notches/arms: bins on roof, year/4, L and W at 0.8 m
-{
-  const bins = new Map<string, number[]>(), key = (r: number, y: number, l: number, w: number) => `${r}|${y}|${l}|${w}`;
-  pands.forEach((p, i) => { if (p.cx < COMPLEX) return; const k = key(p.roof, Math.floor(p.year / 4), Math.floor(p.sig.L / T.sideM), Math.floor(p.sig.W / T.sideM)); (bins.get(k) ?? bins.set(k, []).get(k)!).push(i); });
-  const before = tested;
-  pands.forEach((p, i) => {
-    if (p.cx < COMPLEX) return;
-    const y = Math.floor(p.year / 4), l = Math.floor(p.sig.L / T.sideM), w = Math.floor(p.sig.W / T.sideM);
-    for (let dy = -1; dy <= 1; dy++) for (let dl = -1; dl <= 1; dl++) for (let dw = -1; dw <= 1; dw++) for (const j of bins.get(key(p.roof, y + dy, l + dl, w + dw)) ?? []) {
-      if (j <= i) continue;
-      if (Math.hypot(p.c[0] - pands[j].c[0], p.c[1] - pands[j].c[1]) <= LOCAL_M) continue; // done in (a)
-      tryPair(i, j);
-    }
-  });
-  console.log(`city-wide: tested ${tested - before}, joined total ${joined}`);
-}
-
 // ---- exposure --------------------------------------------------------------------------------------------------------
-const groupsRaw = new Map<number, number[]>();
-pands.forEach((_, i) => { const r = find(i); (groupsRaw.get(r) ?? groupsRaw.set(r, []).get(r)!).push(i); });
-const multi = [...groupsRaw.values()].filter(g => g.length >= 3);
-console.log(`groups with ≥3 copies: ${multi.length}`);
 
 const t0 = Date.now();
 const routesFile = `.cache/repeated-buildings/routes-${nRoutes}-${seed}.json`;
@@ -165,6 +109,47 @@ const exposureOf = (p: Pand): number => {
   return e;
 };
 
+const exposureByIdx = pands.map(p => exposureOf(p));
+const onRoute = exposureByIdx.map(e => e > 0);
+console.log(`on-route seeds (≤ ${EXPOSURE_M} m of a sampled route): ${onRoute.filter(Boolean).length}`);
+// ---- pairing --------------------------------------------------------------------------------------------------------
+const COMPLEX = 0.25;
+function compatible(a: Pand, b: Pand): boolean {
+  return a.roof === b.roof && Math.abs(a.year - b.year) <= T.years && Math.abs(a.height - b.height) <= T.heightM
+    && Math.abs(a.sig.L - b.sig.L) <= T.sideM && Math.abs(a.sig.W - b.sig.W) <= T.sideM
+    && Math.abs(a.sig.area - b.sig.area) <= T.areaShare * Math.max(a.sig.area, b.sig.area);
+}
+// Star clustering, no chaining: on-route pands lead in exposure order; a leader takes every still-free pand that is
+// compatible with IT and within the shape tolerance of IT (union-find chained 18,310 nineteenth-century houses into one
+// group across 1870-1943 in the first run).
+const grid = new Map<string, number[]>(), C = LOCAL_M;
+pands.forEach((p, i) => { const k = `${Math.floor(p.c[0] / C)},${Math.floor(p.c[1] / C)}`; (grid.get(k) ?? grid.set(k, []).get(k)!).push(i); });
+const bins = new Map<string, number[]>(), key = (r: number, y: number, l: number, w: number) => `${r}|${y}|${l}|${w}`;
+pands.forEach((p, i) => { if (p.cx < COMPLEX) return; const k = key(p.roof, Math.floor(p.year / 4), Math.floor(p.sig.L / T.sideM), Math.floor(p.sig.W / T.sideM)); (bins.get(k) ?? bins.set(k, []).get(k)!).push(i); });
+const owner = new Int32Array(pands.length).fill(-1);
+let tested = 0;
+const multi: number[][] = [];
+const order = pands.map((_, i) => i).filter(i => onRoute[i]).sort((a, b) => exposureByIdx[b] - exposureByIdx[a]);
+for (const [n, i] of order.entries()) {
+  if (n % 5000 === 0) console.log(`leaders ${n}/${order.length}, groups ${multi.length}, tested ${tested}`);
+  if (owner[i] >= 0) continue;
+  const p = pands[i], cand = new Set<number>();
+  const gx = Math.floor(p.c[0] / C), gy = Math.floor(p.c[1] / C);
+  for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (const j of grid.get(`${gx + dx},${gy + dy}`) ?? []) if (Math.hypot(p.c[0] - pands[j].c[0], p.c[1] - pands[j].c[1]) <= LOCAL_M) cand.add(j);
+  if (p.cx >= COMPLEX) {
+    const y = Math.floor(p.year / 4), l = Math.floor(p.sig.L / T.sideM), w = Math.floor(p.sig.W / T.sideM);
+    for (let dy = -1; dy <= 1; dy++) for (let dl = -1; dl <= 1; dl++) for (let dw = -1; dw <= 1; dw++) for (const j of bins.get(key(p.roof, y + dy, l + dl, w + dw)) ?? []) cand.add(j);
+  }
+  const g = [i];
+  for (const j of cand) {
+    if (j === i || owner[j] >= 0 || !compatible(p, pands[j])) continue;
+    tested++;
+    const tol = shapeTolerance(Math.max(p.sig.L, pands[j].sig.L));
+    if (shapeDistance(p.sig, pands[j].sig, tol).d <= tol) g.push(j);
+  }
+  if (g.length >= 3) { for (const j of g) owner[j] = multi.length; multi.push(g); }
+}
+console.log(`groups with ≥3 copies: ${multi.length}`);
 // ---- streets and architects -----------------------------------------------------------------------------------------
 const streetSegs: {name: string; a: P; b: P}[] = [];
 for (const f of JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as any[]) {
@@ -221,7 +206,7 @@ for (const g of multi) {
   let medoid = probe[0], bestSum = Infinity;
   for (const i of probe) { let s = 0; for (const j of probe) if (i !== j) s += shapeDistance(pands[i].sig, pands[j].sig, 5).d; if (s < bestSum) { bestSum = s; medoid = i; } }
   const m = pands[medoid];
-  const members = g.map(i => { const p = pands[i], sd = i === medoid ? {d: 0, mirrored: false} : shapeDistance(m.sig, p.sig); return {pand: p.id, lngLat: p.lngLat, street: nearestStreet(p), year: p.year, height: round(p.height, 1), shapeM: round(sd.d), mirrored: sd.mirrored, exposure: Math.round(exposureOf(p))}; });
+  const members = g.map(i => { const p = pands[i], sd = i === medoid ? {d: 0, mirrored: false} : shapeDistance(m.sig, p.sig); return {pand: p.id, lngLat: p.lngLat, street: nearestStreet(p), year: p.year, height: round(p.height, 1), shapeM: round(sd.d), mirrored: sd.mirrored, exposure: Math.round(exposureByIdx[i])}; });
   const exposure = members.reduce((s, x) => s + x.exposure, 0);
   const streets = new Map<string, number>(); for (const x of members) if (x.street) streets.set(x.street, (streets.get(x.street) ?? 0) + 1);
   const arch = new Set<string>(), names = new Set<string>(); for (const p of ms) { const f = facts.get(p.id); if (f?.a) arch.add(f.a); if (f?.n) names.add(f.n); }
