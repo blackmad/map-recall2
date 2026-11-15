@@ -56,7 +56,8 @@ export const entriesOf = (v: unknown): BuurtEntry[] => (Array.isArray(v) ? v : [
 /** The paired casements' white mullion, a share of the window's width (Maasstraat: about 0.5 m on a 1.6 m opening). */
 export const KIT_MULLION_SHARE = 0.3;
 /** A flat series draws the low coping when the kit hangs anything on its front (erkers, ribbon, rhythm, piers). */
-export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.rhythm || k.sides || k.loggias || k.eaves || k.entries?.length);
+/** Round 10: a member carrying its series' `copingHex` draws the coping too (the series line runs through). */
+export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.rhythm || k.sides || k.loggias || k.eaves || k.entries?.length || k.copingHex);
 /** A flat series with erkers draws its lid as a low coping behind the white cornice ledge (m), the erkers on it. */
 export const KIT_FLAT_RISE_M = 0.55;
 

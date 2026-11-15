@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, generateDistrict, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, type DistrictLibrary } from './generate.js';
+import { baysFor, blockLines, generateDistrict, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, type DistrictLibrary } from './generate.js';
 import { BAY_STYLES, PLAN_ZUID_CASEMENT } from '../bayLook.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
@@ -158,4 +158,21 @@ test('round 9: the measured row brick sits under the row note and over the pool;
   // The disagreement is logged (Achillesstraat: noted flat, AHN4 pitched).
   const res = generateDistrict({ ...lib, measured: { roofs: roofs('pitched') }, streetNotes: { Teststraat: { roof: 'flat', evidence: 'test' } } }, pands, streets, new Set(), 'test');
   assert.ok(res.rows[0].readNotDrawn.some(r => r.field === 'ahn-roof-form' && /street note's flat/.test(r.reason)), JSON.stringify(res.rows[0].readNotDrawn));
+});
+
+test('block lines: a 3DBAG step AHN does not see is one line (Hunzestraat 120343); a step AHN confirms stands', () => {
+  // Five pands at 12.1 m, then two whose 3DBAG eaves read 6.2 m (a low rear part); AHN reads all seven 12.1 m at the front.
+  const pands = [0, 1, 2, 3, 4].map(i => pand(i, 1934, 12.1)).concat([pand(5, 1934, 6.2), pand(6, 1934, 6.3)]);
+  const { rows } = districtRows(pands, streets);
+  assert.deepEqual(rows[0].series.map(s => s.eavesM), [12.1, 6.25], '3DBAG alone splits the block');
+  const roofs = (front: (i: number) => number) => Object.fromEntries(pands.map((p, i) => [p.id.slice(-16), { form: 'flat' as const, frontRiseM: 0, eavesM: front(i), why: '' }]));
+  const flat = { ...lib, measured: { roofs: roofs(() => 12.12) } };
+  const { rows: fixed, clamped } = blockLines(flat, rows);
+  assert.deepEqual(fixed[0].series.map(s => s.eavesM), [12.1, 12.1]);
+  assert.deepEqual([...clamped.keys()], [pands[5].id.slice(-16), pands[6].id.slice(-16)]);
+  // AHN reads the step too: it stands.
+  const stepped = { ...lib, measured: { roofs: roofs(i => (i < 5 ? 12.12 : 9.3)) } };
+  assert.deepEqual(blockLines(stepped, rows).rows[0].series.map(s => s.eavesM), [12.1, 6.25]);
+  // No AHN: unchanged.
+  assert.deepEqual(blockLines(lib, rows).rows[0].series.map(s => s.eavesM), [12.1, 6.25]);
 });

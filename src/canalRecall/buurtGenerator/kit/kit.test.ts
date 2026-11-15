@@ -270,3 +270,9 @@ test('round 7: a flat series takes its own broad eaves; entries draw the red doo
   assert.ok(upper.every(t => t.p.every(q => q[1] * 1 <= c - half - 0.2 || q[1] >= c + half + 0.2 || Math.abs(q[1] - c) <= ENTRY_LOOK.stairW / 2 + 1e-6)), 'lights clear the bay');
 });
 const ERKER_LOOK_WHITE = '#ece9e1';
+
+test('an erker stands over the series line only under a pitched roof (round 10, Hunzestraat)', async () => {
+  const { erkerCapOf, ERKER_LOOK } = await import('./roofKit.js');
+  assert.equal(erkerCapOf({}), -ERKER_LOOK.capM, 'flat series: the cap tops out at the line');
+  assert.equal(erkerCapOf({ roof: { pitchDeg: 62, riseM: 1.3 } }), ERKER_LOOK.capM);
+});

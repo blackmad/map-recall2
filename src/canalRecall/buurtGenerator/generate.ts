@@ -12,8 +12,8 @@
 import { variedTone, type JudgedFamily } from '../houseSpec/judgedColour.ts';
 import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
-import { ROW_RECORD_VERSION, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
-import { districtRows, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
+import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
+import { districtRows, ROW_EAVES_STEP_M, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
 import { erkersOnCells, type BuurtEntry, type BuurtKitFront } from './kit/frontKit.ts';
 
 export interface DistrictDesign {
@@ -93,7 +93,7 @@ export interface DistrictLibrary {
 /** Round 9 measurements: `walls` per generator row id (street-firstPand), `roofs` per pand (AHN4 DSM, measure.ts roofFormOf). */
 export interface DistrictMeasured {
   walls?: Record<string, { hex: string; n: number; of: number; dates: number; reads: Array<{ pano: string; date: string; hex: string }> }>;
-  roofs?: Record<string, { form: 'flat' | 'pitched' | 'hidden-pitch' | 'gable-street' | 'unclear'; frontRiseM: number; why: string }>;
+  roofs?: Record<string, { form: 'flat' | 'pitched' | 'hidden-pitch' | 'gable-street' | 'unclear'; frontRiseM: number; eavesM?: number; ridgeM?: number; why: string }>;
   rowRoofs?: Record<string, { form: string; hipped: { start: boolean; end: boolean } }>;
   /** Round 10: per row, each kit erker (`<pandId>:<index>`) and the finish its panoramas read (measure.ts erkerFinishOf,
    *  then the row's consensus for unread ones): `white` is the white-framed lights running corner to corner. */
@@ -281,17 +281,62 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
 }
 
 /**
+ * Round 10 (block coherence, David on Hunzestraat 120343: "one continuous long building with consistent roof line and
+ * floors"). Adjacent series of one row from the same period (`BLOCK_YEARS`) whose 3DBAG lines step by more than
+ * `ROW_EAVES_STEP_M` while AHN4 at the street front does not (each side's median front height, `measured.roofs[].eavesM`,
+ * within the step of the other's) are one block: every series of the chain draws one line, the chain's series line
+ * nearest its AHN front median. 3DBAG's eaves are a roof-surface percentile over the whole pand, so a low rear part drags
+ * a front down: Hunzestraat 074339 and 111890 read 6.2 and 6.3 m (a 9.35 m, three-storey series) where AHN reads 12.14
+ * and 12.17 m at the front, as do their 12 m neighbours. A step AHN confirms, or a side AHN does not read, stands.
+ * Returns the rows and, per pand, the line it was clamped from.
+ */
+export const BLOCK_YEARS = 5;
+export function blockLines(lib: DistrictLibrary, rows: readonly GenRow[]): { rows: GenRow[]; clamped: Map<string, { read: number; drawn: number; why: string }> } {
+  const roofs = lib.measured?.roofs, clamped = new Map<string, { read: number; drawn: number; why: string }>();
+  if (!roofs) return { rows: [...rows], clamped };
+  const frontOf = (sr: GenSeries) => median(sr.members.flatMap(m => { const r = roofs[pandNumber(m.pand.id)]; return r && r.form !== 'unclear' && typeof r.eavesM === 'number' && r.eavesM > 2 ? [r.eavesM] : []; }));
+  return { rows: rows.map(row => {
+    const S = row.series, ahn = S.map(frontOf);
+    const joins = S.map((sr, k) => {
+      if (k === 0) return false;
+      const a = S[k - 1], la = a.eavesM, lb = sr.eavesM, ha = ahn[k - 1], hb = ahn[k];
+      return la !== null && lb !== null && Math.abs(la - lb) > ROW_EAVES_STEP_M && a.year !== null && sr.year !== null && Math.abs(a.year - sr.year) <= BLOCK_YEARS
+        && ha !== null && hb !== null && Math.abs(ha - hb) <= ROW_EAVES_STEP_M;
+    });
+    if (!joins.some(Boolean)) return row;
+    const out = [...S];
+    for (let k0 = 0; k0 < S.length;) {
+      let k1 = k0; while (k1 + 1 < S.length && joins[k1 + 1]) k1++;
+      if (k1 > k0) {
+        const chain = S.slice(k0, k1 + 1), h = median(chain.flatMap(sr => { const v = frontOf(sr); return v === null ? [] : sr.members.map(() => v); }))!;
+        const line = chain.map(sr => sr.eavesM!).sort((x, y) => Math.abs(x - h) - Math.abs(y - h))[0];
+        for (let k = k0; k <= k1; k++) if (S[k].eavesM !== line) {
+          for (const m of S[k].members) clamped.set(pandNumber(m.pand.id), { read: S[k].eavesM!, drawn: line, why: `one block with its neighbours: AHN4 reads the fronts at ${h.toFixed(2)} m on both sides of the 3DBAG step (${S[k].eavesM} m against ${line} m), blockLines` });
+          out[k] = { ...S[k], eavesM: line, clamped: S[k].members.map(m => m.pand.id) };
+        }
+      }
+      k0 = k1 + 1;
+    }
+    return { ...row, series: out };
+  }), clamped };
+}
+
+/**
  * The district: rows from the undescribed pands (`described` ids never enter a row; they only break one), each series
  * designed from the library. `records` are the renderer's front records (`ROW_FRONT_RECORDS`, `{records}` shape).
  */
 export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[], streets: readonly GenStreet[], described: ReadonlySet<string>, at: string): GenResult {
   const skipped: GenResult['skipped'] = [];
   const free = pands.filter(p => { const d = described.has(pandNumber(p.id)); if (d) skipped.push({ id: pandNumber(p.id), reason: 'described' }); return !d; });
-  const res0: RowsResult = districtRows(free, streets);
+  const resD: RowsResult = districtRows(free, streets), block = blockLines(lib, resD.rows);
+  const res0: RowsResult = { ...resD, rows: block.rows }, eavesOverruled = block.clamped;
   // A row whose photo measures its line (row note `topM`) draws every series at it.
   const res: RowsResult = { ...res0, rows: res0.rows.map(r => { const t = lib.rowNotes?.[r.id]?.topM; return t ? { ...r, series: r.series.map(s => ({ ...s, eavesM: t, clamped: [] })) } : r; }) };
   for (const u of res.unplaced) skipped.push({ id: pandNumber(u.id), reason: u.reason });
-  const rows = res.rows.flatMap(r => rowRecordOf(lib, r, at, skipped));
+  const rows = res.rows.flatMap(r => rowRecordOf(lib, r, at, skipped)).map(rec => {
+    const ov: Overruled[] = rec.members.flatMap(m => { const o = eavesOverruled.get(m.pandId); return o ? [{ front: m.pandId, field: 'corniceTopM', read: o.read, drawn: o.drawn, by: 'series-consensus' as const, why: o.why }] : []; });
+    return ov.length ? { ...rec, overruled: [...rec.overruled, ...ov] } : rec;
+  });
   const drawn = new Set(rows.flatMap(r => r.members.map(m => m.pandId)));
   const fronts: GenResult['fronts'] = {};
   const kits = new Map<string, BuurtKitFront>();
@@ -308,6 +353,10 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
     const mErk = lib.measured?.erkers?.[r.id], whiteErker = (pid: string) => !!mErk && Object.entries(mErk).some(([k, v]) => k.startsWith(`${pid}:`) && v.finish === 'white');
     const bands = !!lib.streetNotes?.[r.street]?.erkerBands, coping = wallHexOf(lib, fam, r.id).hex;
     const ents = note?.entries ?? [], entryAt = (i: number): BuurtEntry | null => ents.length ? { ...ents[i % ents.length], cells: bays } : null;
+    // Round 10: the flat series' coping is the series', not the member's: when any drawn member hangs something on its
+    // front (ribbon, erkers, eaves, entrance), every member draws it, so the roof line runs through (David on
+    // Hunzestraat: the erker members' coping stood 0.55 m over their neighbours').
+    const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || mm.front.erkers.length || lib.flatEaves || entryAt(r.members.indexOf(mm))));
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
       if (!drawn.has(pid)) continue;
@@ -321,7 +370,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
         ...(fam?.kit?.piers && (joins.left || joins.right) ? { sides: { ...(joins.left ? { left: pierAfter(i - 1) ? 'pier' as const : 'pair' as const } : {}), ...(joins.right ? { right: pierAfter(i) ? 'pier' as const : 'pair' as const } : {}) } } : {}),
         ...(fam?.kit?.sash ? { sash: fam.kit.sash.value } : {}), ...(fam?.kit?.ribbon ? { ribbon: true as const } : {}),
         ...((bands || whiteErker(pid)) && m.front.erkers.length ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
-        ...(rise === null && (fam?.kit?.ribbon || m.front.erkers.length || lib.flatEaves || entryAt(i)) && coping ? { copingHex: coping } : {}),
+        ...(rise === null && seriesCoping && coping ? { copingHex: coping } : {}),
         ...(rise === null && lib.flatEaves ? { eaves: { overhangM: lib.flatEaves.eavesM, ...(lib.flatEaves.frieze === false ? { frieze: false as const } : {}) } } : {}),
         ...(entryAt(i) ? { entries: [entryAt(i)!] } : {}),
         ...(joins.left || joins.right ? { joins } : {}) });
