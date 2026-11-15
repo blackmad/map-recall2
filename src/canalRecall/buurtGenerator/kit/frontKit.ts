@@ -63,6 +63,10 @@ export interface BuurtKitFront {
   eaves?: KitEaves;
   /** The member's street entrances (round 7, a row note from its photo): fraction across the front and what stands there. */
   entries?: BuurtEntry[];
+  /** Stacked balconies (round 14): `KitBalcony`. */
+  balconies?: KitBalcony[];
+  /** Small-paned upper sashes (round 14): `KitPanes`. */
+  panes?: KitPanes;
 }
 /**
  * A flat series' broad eaves. `overhangM` the slab's reach over the street; `frieze` absent the Rooseveltlaan lattice
@@ -99,16 +103,50 @@ export function kitAtticOf(v: unknown): KitAttic | null {
 }
 /** An entrance: `door` a red door in a white frame; `canopy` that door under a white flat canopy; `gable-bay` the
  *  portiek bay: a brick strip proud of the wall from the pavement through the eaves, the stair's narrow lights up it, the
- *  door under a canopy at its foot and a white gable with a dark diamond over the eaves (Sportstraat). */
-export type BuurtEntryKind = 'door' | 'canopy' | 'gable-bay';
-export interface BuurtEntry { a: number; kind: BuurtEntryKind; /** The series' ground cells: the kit redraws the member's ground storey with the door in its place (no stray door). */ cells?: number }
+ *  door under a canopy at its foot and a white gable with a dark diamond over the eaves (Sportstraat). Round 14 (lane R):
+ *  `porch` the Amsterdam School timber porch, a varnished timber front of glazed leaves under a toplight band between
+ *  stone piers, a stone canopy over it (Gerrit van der Veenstraat); `portiek` the recessed stair doorway, a dark opening
+ *  in deep brick reveals, the steps and the door at its back (Trompenburgstraat); `arched` the round-arched brick
+ *  doorway, a brick ring over a dark recess, the timber door in it (President Kennedylaan). */
+export type BuurtEntryKind = 'door' | 'canopy' | 'gable-bay' | 'porch' | 'portiek' | 'arched';
+const ENTRY_KINDS: readonly BuurtEntryKind[] = ['door', 'canopy', 'gable-bay', 'porch', 'portiek', 'arched'];
+export interface BuurtEntry { a: number; kind: BuurtEntryKind; /** The series' ground cells: the kit redraws the member's ground storey with the door in its place (no stray door). */ cells?: number;
+  /** Round 14, `porch`/`portiek`/`arched` only: the opening's width (m; absent the kind's measured width, ENTRY_KIND_LOOK)
+   *  and the door leaf's tone (absent varnished timber). */
+  widthM?: number; doorHex?: string }
+const HEX = /^#[0-9a-f]{6}$/i;
 export const entriesOf = (v: unknown): BuurtEntry[] => (Array.isArray(v) ? v : []).filter((e): e is BuurtEntry => !!e && typeof e === 'object'
-  && Number.isFinite(e.a) && e.a > 0 && e.a < 1 && (e.kind === 'door' || e.kind === 'canopy' || e.kind === 'gable-bay')).map(e => ({ a: e.a, kind: e.kind, ...(Number.isInteger(e.cells) && e.cells! >= 1 && e.cells! <= 12 ? { cells: e.cells } : {}) }));
+  && Number.isFinite(e.a) && e.a > 0 && e.a < 1 && ENTRY_KINDS.includes(e.kind)).map(e => {
+  const late = e.kind === 'porch' || e.kind === 'portiek' || e.kind === 'arched';
+  return { a: e.a, kind: e.kind, ...(Number.isInteger(e.cells) && e.cells! >= 1 && e.cells! <= 12 ? { cells: e.cells } : {}),
+    ...(late && Number.isFinite(e.widthM) && e.widthM! >= 0.8 && e.widthM! <= 6 ? { widthM: e.widthM } : {}), ...(late && typeof e.doorHex === 'string' && HEX.test(e.doorHex) ? { doorHex: e.doorHex } : {}) };
+});
+/** Stacked balconies (round 14, lane R; Trompenburgstraat 2025-07-14 at 31 px/m): over [a0, a1] of the front (left to
+ *  right as seen), on `storeys` upper storeys from upper storey `from` (1 the first; absent every upper storey under an
+ *  attic or ribbon), a slab `depthM` out (absent 1.0) with its railing: `dark` (absent) a dark steel railing of thin
+ *  bars, `white` the same in white, `solid` a white parapet (Gerrit van der Veenstraat's top-storey balconies). */
+export interface KitBalcony { a0: number; a1: number; from?: number; storeys?: number; depthM?: number; rail?: 'dark' | 'white' | 'solid' }
+export const balconiesOf = (v: unknown): KitBalcony[] => (Array.isArray(v) ? v : []).filter((b): b is KitBalcony => !!b && typeof b === 'object'
+  && [b.a0, b.a1].every(Number.isFinite) && b.a0 >= 0 && b.a1 <= 1 && b.a1 - b.a0 > 0.02).map(b => ({ a0: b.a0, a1: b.a1,
+  ...(Number.isInteger(b.from) && b.from! >= 1 && b.from! <= 12 ? { from: b.from } : {}), ...(Number.isInteger(b.storeys) && b.storeys! >= 1 && b.storeys! <= 12 ? { storeys: b.storeys } : {}),
+  ...(Number.isFinite(b.depthM) && b.depthM! >= 0.3 && b.depthM! <= 2.5 ? { depthM: b.depthM } : {}), ...(b.rail === 'dark' || b.rail === 'white' || b.rail === 'solid' ? { rail: b.rail } : {}) }));
+/** Small-paned white upper sashes (round 14, lane R; Gerrit van der Veenstraat 2025-07-14 at 37 px/m): the upper
+ *  storeys' `cells` windows redrawn by the kit over a brick plate, each a white-framed casement pair under a toplight band
+ *  of small panes: `rows` of panes (absent 2) about `paneM` wide (absent 0.3), the band `share` of the window (absent
+ *  0.42), the window `widthShare` of its cell (absent 0.62). */
+export interface KitPanes { cells: number; rows?: 1 | 2; paneM?: number; share?: number; widthShare?: number }
+export function kitPanesOf(v: unknown): KitPanes | null {
+  const x = v as { cells?: unknown; rows?: unknown; paneM?: unknown; share?: unknown; widthShare?: unknown } | undefined;
+  if (!x || typeof x !== 'object' || !Number.isInteger(x.cells) || !((x.cells as number) >= 1 && (x.cells as number) <= 12)) return null;
+  const p = Number(x.paneM), sh = Number(x.share), ws = Number(x.widthShare);
+  return { cells: x.cells as number, ...(x.rows === 1 || x.rows === 2 ? { rows: x.rows } : {}), ...(p >= 0.15 && p <= 0.8 ? { paneM: p } : {}),
+    ...(sh >= 0.15 && sh <= 0.7 ? { share: sh } : {}), ...(ws >= 0.3 && ws <= 0.95 ? { widthShare: ws } : {}) };
+}
 /** The paired casements' white mullion, a share of the window's width (Maasstraat: about 0.5 m on a 1.6 m opening). */
 export const KIT_MULLION_SHARE = 0.3;
 /** A flat series draws the low coping when the kit hangs anything on its front (erkers, ribbon, rhythm, piers). */
 /** Round 10: a member carrying its series' `copingHex` draws the coping too (the series line runs through). */
-export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.sides || k.loggias || k.eaves || k.entries?.length || k.copingHex);
+export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.sides || k.loggias || k.eaves || k.entries?.length || k.balconies?.length || k.panes || k.copingHex);
 /** A flat series with erkers draws its lid as a low coping behind the white cornice ledge (m), the erkers on it. */
 export const KIT_FLAT_RISE_M = 0.55;
 
@@ -182,11 +220,11 @@ export function buurtKitOf(v: unknown): BuurtKitFront | null {
   const rr = k.roof as { dormers?: unknown; eavesM?: unknown; eavesFrieze?: unknown } | undefined, eavesM = Number(rr?.eavesM);
   const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM), ...(hex ? { roofHex: hex } : {}),
     ...(rr?.dormers === false ? { dormers: false as const } : {}), ...(eavesM > 0.2 && eavesM < 2 ? { eavesM, ...(rr?.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } : undefined;
-  const x = v as { sash?: unknown; ribbon?: unknown; attic?: unknown; raised?: unknown; copingHex?: unknown; rhythm?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown }; eaves?: unknown; entries?: unknown };
-  const flatEaves = !roof ? kitEavesOf(x.eaves) : null, entries = entriesOf(x.entries), attic = kitAtticOf(x.attic), raised = raisedOf(x.raised);
+  const x = v as { sash?: unknown; ribbon?: unknown; attic?: unknown; raised?: unknown; copingHex?: unknown; rhythm?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown }; eaves?: unknown; entries?: unknown; balconies?: unknown; panes?: unknown };
+  const flatEaves = !roof ? kitEavesOf(x.eaves) : null, entries = entriesOf(x.entries), attic = kitAtticOf(x.attic), raised = raisedOf(x.raised), balconies = balconiesOf(x.balconies), panes = kitPanesOf(x.panes);
   const side = (q: unknown) => q === 'pier' || q === 'pair' ? q : null, sl = side(x.sides?.left), sr = side(x.sides?.right);
   const joins = k.joins && typeof k.joins === 'object' ? { ...(k.joins.left === true ? { left: true } : {}), ...(k.joins.right === true ? { right: true } : {}) } : {};
-  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}), ...(flatEaves ? { eaves: flatEaves } : {}), ...(entries.length ? { entries } : {}), ...(attic ? { attic } : {}), ...(raised.length ? { raised } : {}) };
+  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}), ...(flatEaves ? { eaves: flatEaves } : {}), ...(entries.length ? { entries } : {}), ...(attic ? { attic } : {}), ...(raised.length ? { raised } : {}), ...(balconies.length ? { balconies } : {}), ...(panes ? { panes } : {}) };
 }
 
 /**
