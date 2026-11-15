@@ -292,6 +292,16 @@
       "ref": "lane D belt A/B 3, 3DBAG wall height median (12.2 m) read as the cornice",
       "at": "2026-11-15",
       "note": "88: the cornice stands a storey above the outline's 9.2 m"
+    },
+    {
+      "fronts": [
+        "0363100012169010"
+      ],
+      "field": "storeys",
+      "value": 4,
+      "ref": "lane D belt A/B 4, the cut re-read after the second blind review (2026-11-15: today still won)",
+      "at": "2026-11-15",
+      "note": "88: four storeys to the 12.2 m cornice (shop ground, two banded storeys, one over the outline); the read's 3 counted only what the outline shows"
     }
   ],
   "herengracht-1-23": [
