@@ -355,6 +355,10 @@ test('a stated gable (RowDesign.gable) draws the kit outline on the series line;
   assert.deepEqual(st.crown, { shape: 'step', riseM: 3, steps: 3, attic: 1 });
   assert.equal(crownDims(st.crown, m.widthM!).steps, 3, 'the stated tread count');
   assert.equal(crownDims({ shape: 'step', riseM: 3 }, 6).steps, 4, 'unstated: one per 0.85 m as before');
+  // A raised front mid-run starts its plate at its foot (no risers down the wall under it); a whole front keeps its own.
+  const { rowCrownProfile } = await import('./crownProfile.ts');
+  assert.ok(rowCrownProfile({ shape: 'raised', riseM: 1.7, bandM: 1.7, cap: 'flat', onWall: true }, 6, 1.6).every(([, y]) => y >= 0));
+  assert.ok(rowCrownProfile({ shape: 'raised', riseM: 1.7, bandM: 0.5, cap: 'flat' }, 6, 0.4).some(([, y]) => y < 0));
   // A pointed gable on one sub-front of a two-front pand (Kinkerstraat 369): the kit's triangle on that span only.
   const subs = [{ a0: 0, a1: 0.53, eavesM: line, topM: line, crown: { family: 'cornice' as const } }, { a0: 0.53, a1: 1, eavesM: line, topM: line + 2.6, crown: { family: 'point' as const, riseM: 2.6, atticWindows: 1 } }];
   const two = rowRaisedFronts({ ...before, subFronts: subs, spanM: 8.3 }, line)!;

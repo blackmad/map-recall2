@@ -76,6 +76,8 @@ export interface RowCrown {
   steps?: number;
   /** Raised centre: the cornice band's height over the wall's eaves (the band covers the low saddle behind it). */
   bandM?: number;
+  /** Raised centre on a front standing mid-run (house rows' raised fronts): the plate starts at its foot. */
+  onWall?: boolean;
   /** Raised centre: the piece's cap (a pediment, a segmental arch, or a flat cornice cap). */
   cap?: 'pediment' | 'segmental' | 'flat';
 }
@@ -129,7 +131,10 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
   let kit: CanalhousePoint[] | null, x0: number;
   if (c.shape === 'raised') {
     const b = c.bandM ?? 0.5, flat = c.cap === 'flat';
-    kit = [[0, -KIT_Z], ...canalhouseCrownProfile('lijst', 2 * half, b + KIT_Z, T + KIT_Z, 2 * neck, b + KIT_Z, 0, { cap: flat ? 'flat' : c.cap === 'pediment' ? 'pediment' : 'segmental', capRiseM: flat ? 0 : d.cap, crestWidthM: 2 * neck }), [2 * half, -KIT_Z]];
+    // The outline's ends: KIT_Z under the foot (a whole front's plate, its ends inside the party walls), or at the foot
+    // for a front standing mid-run (`onWall`), whose plate ends would otherwise show as risers down the wall below it.
+    const end = c.onWall ? KIT_Z : -KIT_Z;
+    kit = [[0, end], ...canalhouseCrownProfile('lijst', 2 * half, b + KIT_Z, T + KIT_Z, 2 * neck, b + KIT_Z, 0, { cap: flat ? 'flat' : c.cap === 'pediment' ? 'pediment' : 'segmental', capRiseM: flat ? 0 : d.cap, crestWidthM: 2 * neck }), [2 * half, end]];
     x0 = -half;
   } else {
     kit = crownProfile({ gable: c.shape, ...(c.neckW ? { crownNeckWidth: neck / foot } : {}), crownSteps: d.steps || undefined } as unknown as FrontIntent, 2 * foot, y0 + KIT_Z, T + KIT_Z);

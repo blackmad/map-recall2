@@ -455,7 +455,7 @@ export function rowRaisedFronts(rec: RowFrontRecord, top: number): Array<SubFron
     // A front stating its gable (step, neck, bell, point with its rise) draws that outline from the line to its top.
     const g = f.crown ? rowGableCrown(f.crown, rise) : null;
     if (g) return { ...f, step: { wallTopM: top, crown: g.crown, gable: g.gable, riseM: rowCrownRoofRise(g.crown, W) } };
-    const crown: RowCrown = { shape: 'raised', riseM: rise, bandM: rise, cap: 'flat' };
+    const crown: RowCrown = { shape: 'raised', riseM: rise, bandM: rise, cap: 'flat', onWall: true };
     return { ...f, step: { wallTopM: top, crown, gable: 'cornice' as const, riseM: rowCrownRoofRise(crown, W) } };
   });
 }
