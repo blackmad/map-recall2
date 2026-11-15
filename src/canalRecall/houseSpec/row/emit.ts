@@ -71,6 +71,10 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
   fronts.forEach((f, i) => {
     const d: RowDesign = frontDesign(row, f);
     const P = `fronts/${i}/`;
+    // A pand split into fronts by its reading alone (no face spec states shares): each front's share of the wall is its span
+    // (Herengracht 200-202, one pand read as two houses).
+    if (fronts.length > 1 && f.sub && typeof (spec.design.fronts?.[i] as { share?: unknown } | undefined)?.share !== 'number')
+      put(P + 'share', +(f.sub.a1 - f.sub.a0).toFixed(3), { value: null, source: 'single-read', ref: `${f.pandId}: the front's span of the pand wall (${f.sub.a0}-${f.sub.a1})` });
     put(P + 'storeys', d.storeys.value, d.storeys);
     put(P + 'bays', d.bays.value, d.bays);
     put(P + 'gable', d.crown.value, d.crown);

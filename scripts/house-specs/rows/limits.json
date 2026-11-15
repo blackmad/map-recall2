@@ -324,5 +324,61 @@
       "what": "the record states a slate mansard (D1 reads a dormer); the preview draws the roof face red and tall over a cornice canal house, where only the dormer shows over the cornice from the quay",
       "ref": "lane D belt sheet"
     }
+  ],
+  "herengracht-92-120": [
+    {
+      "fronts": [
+        "0363100012167710"
+      ],
+      "component": "crown",
+      "what": "the register names 100 a cornice front; the cut shows a dark step gable with white trim centred in the outline: the read (step) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012167710.jpg against monument-gables.json"
+    }
+  ],
+  "herengracht-130-148": [
+    {
+      "fronts": [
+        "0363100012177017"
+      ],
+      "component": "crown",
+      "what": "the register names 148 (the 1900 pand) a neck front; the cut shows a tall red-brick 1900 front with a flat cornice top and an erker; the register term likely belongs to the 1710 pand of 148: the read (cornice) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012177017.jpg against monument-gables.json"
+    }
+  ],
+  "herengracht-150-166": [
+    {
+      "fronts": [
+        "0363100012167659"
+      ],
+      "component": "crown",
+      "what": "the register names 156 a cornice front; the cut shows a narrow neck gable rising behind the tree: the read (neck) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012167659.jpg against monument-gables.json"
+    },
+    {
+      "fronts": [
+        "0363100012176313"
+      ],
+      "component": "crown",
+      "what": "the register names 154 a neck front; the cut shows a 1910 white bay-window front with a flat top: the read (cornice) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012176313.jpg against monument-gables.json"
+    },
+    {
+      "fronts": [
+        "0363100012176314"
+      ],
+      "component": "crown",
+      "what": "the register names 150-152 a step front; the cut shows a cream rendered front with a flat top and a set-back roof storey: the read (cornice) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012176314.jpg against monument-gables.json"
+    }
+  ],
+  "herengracht-125-161": [
+    {
+      "fronts": [
+        "0363100012167679"
+      ],
+      "component": "crown",
+      "what": "the register names 161 a bell front; the cut shows a gable with scrolled shoulders at the cut resolution; bell or neck is not decidable from it: the read (neck) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012167679.jpg against monument-gables.json"
+    }
   ]
 }

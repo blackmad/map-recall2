@@ -24,10 +24,11 @@ export function loadRowDefs(): Record<string, RowDef> {
     let ppm: number | undefined;
     if (r.face) {
       const strip = JSON.parse(fs.readFileSync(path.join(REPO, 'scripts/block-face/faces', r.face, 'strip.json'), 'utf8'));
-      const survey = JSON.parse(fs.readFileSync(path.join(REPO, 'scripts/street-surveys/streets', `${r.street}.json`), 'utf8'));
+      const survey = r.members ? { pands: [] } : JSON.parse(fs.readFileSync(path.join(REPO, 'scripts/street-surveys/streets', `${r.street}.json`), 'utf8'));
       const label = new Map<string, string>(survey.pands.map((p: any) => [p.pandId, String(p.label).replace(/^.*?\s(\d[\d–-]*)$/, '$1')]));
       ppm = strip.pixelsPerMetre;
-      members = strip.spans.map((s: any) => ({ pandId: s.pandId.replace(/^NL\.IMBAG\.Pand\./, ''), label: label.get(s.pandId) ?? s.pandId.slice(-6), widthM: +(s.x1M - s.x0M).toFixed(2), x0M: s.x0M, px: s.px }));
+      // A belt row that names a face for some of its pands (Herengracht 92-96, herengracht-84-148-r1) states its own members.
+      if (!r.members) members = strip.spans.map((s: any) => ({ pandId: s.pandId.replace(/^NL\.IMBAG\.Pand\./, ''), label: label.get(s.pandId) ?? s.pandId.slice(-6), widthM: +(s.x1M - s.x0M).toFixed(2), x0M: s.x0M, px: s.px }));
     }
     const list = (v: string | string[]) => (Array.isArray(v) ? v : [v]).map(d => path.resolve(root, d));
     const answersDirs = list(r.answers), cutsDirs = list(r.cuts);

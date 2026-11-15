@@ -32,7 +32,9 @@ export function beltMembers(rows: readonly SelectRow[], cuts: ReadonlyMap<string
   const parity = a % 2;
   return rows
     .filter(r => r.street === street && r.number % 2 === parity && r.number >= a && r.number <= b)
-    .sort((x, y) => x.number - y.number || x.pandId.localeCompare(y.pandId))
+    // Left to right as seen from the street: on the even side of the canal the numbers fall (the October strips:
+    // herengracht-84-148 reads 116C, 114, 112 ...), on the odd side they rise.
+    .sort((x, y) => (parity === 0 ? y.number - x.number : x.number - y.number) || x.pandId.localeCompare(y.pandId))
     .map(r => {
       const nums = numbersOf(r.addresses, street).filter(n => n % 2 === parity);
       const cut = cuts.get(r.pandId);
@@ -44,6 +46,33 @@ export function beltMembers(rows: readonly SelectRow[], cuts: ReadonlyMap<string
         side: parity === 0 ? 'even' as const : 'odd' as const, ...(r.height ? { heightM: r.height } : {}),
       };
     });
+}
+
+const FACES = path.join(REPO, 'scripts/block-face/faces');
+
+/** An October block face with an intent on this street whose houses fall in the run: its id and the houses the belt
+ *  selection lacks, as members (width from the strip span, year and height from the face's 3DBAG facts). */
+export function faceForRun(street: string, a: number, b: number, have: ReadonlySet<string>): { id: string; extra: RowMemberDef[] } | null {
+  const parity = a % 2;
+  for (const id of fs.existsSync(FACES) ? fs.readdirSync(FACES).sort() : []) {
+    const f = path.join(FACES, id, 'intent.json');
+    if (!fs.existsSync(f)) continue;
+    const intent = JSON.parse(fs.readFileSync(f, 'utf8')) as { street?: string; houses: Array<{ pandId: string; address?: string }> };
+    if (intent.street !== street) continue;
+    const inRun = intent.houses.map(h => ({ h, n: numbersOf([h.address ?? ''], street)[0] })).filter(x => x.n !== undefined && x.n % 2 === parity && x.n >= a && x.n <= b);
+    if (!inRun.length) continue;
+    const strip = JSON.parse(fs.readFileSync(path.join(FACES, id, 'strip.json'), 'utf8')) as { spans: Array<{ pandId: string; x0M: number; x1M: number }> };
+    const extra = inRun.filter(x => !have.has(x.h.pandId)).map(({ h, n }) => {
+      const span = strip.spans.find(s => s.pandId.endsWith(h.pandId));
+      const facts = path.join(FACES, id, 'pands', h.pandId, 'facts.json');
+      const at = fs.existsSync(facts) ? (JSON.parse(fs.readFileSync(facts, 'utf8')).attributes as Record<string, number>) : null;
+      return { pandId: h.pandId, label: (h.address ?? '').replace(`${street} `, ''), widthM: span ? +(span.x1M - span.x0M).toFixed(2) : 6,
+        widthSource: span ? `face ${id} strip span` : 'default 6 m (no span)', numbers: [n!], built: at?.oorspronkelijkbouwjaar ?? 1700,
+        side: parity === 0 ? 'even' as const : 'odd' as const, ...(at ? { heightM: +(at.b3_h_dak_70p - at.b3_h_maaiveld).toFixed(2) } : {}) } satisfies RowMemberDef;
+    });
+    return { id, extra };
+  }
+  return null;
 }
 
 function main() {
@@ -60,7 +89,10 @@ function main() {
   const slug = street.toLowerCase().replace(/\s+/g, '-');
   const out: Record<string, unknown> = {};
   for (const [a, b] of runs) {
-    const members = beltMembers(sel, cuts, street, a, b);
+    const belt = beltMembers(sel, cuts, street, a, b);
+    const face = faceForRun(street, a, b, new Set(belt.map(m => m.pandId)));
+    const key = (m: RowMemberDef) => m.numbers?.[0] ?? 0;
+    const members = [...belt, ...(face?.extra ?? [])].sort((x, y) => (a % 2 === 0 ? key(y) - key(x) : key(x) - key(y)));
     const id = `${slug}-${a}-${b}`;
     const lacks = members.map(m => ({ m, cut: has('cuts', m.pandId, 'jpg'), read: has('answers-kept', m.pandId, 'json'), held: has('answers-held', m.pandId, 'json') }));
     console.log(`${id}: ${members.length} pands`);
@@ -70,7 +102,9 @@ function main() {
       members, cuts: path.relative(rowsJson.d1Root, path.join(root, BELT, 'cuts')), answers: path.relative(rowsJson.d1Root, path.join(root, BELT, 'answers-kept')),
       staged: path.relative(rowsJson.d1Root, path.join(root, 'staged-belt-20261114')),
       wallFromCuts: true,
-      note: `canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)`,
+      ...(face ? { face: face.id } : {}),
+      note: face ? `canal belt as rows: the October face ${face.id} for its houses (${face.extra.map(m => m.label).join(', ') || 'all in the belt tranche'} added from it), the belt D1 tranche for the rest (belt-rows.ts)`
+        : `canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)`,
     };
   }
   if (argv.includes('--write')) {

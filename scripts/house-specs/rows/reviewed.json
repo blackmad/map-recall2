@@ -541,5 +541,63 @@
       "note": "31 is black-painted brick; the period default brown was wrong. The crown stays a cornice: the pointed piece is a corner gablet over the chamfered corner bay, not a front gable",
       "at": "2026-11-15"
     }
+  ],
+  "herengracht-92-120": [
+    {
+      "fronts": [
+        "0363100012169007"
+      ],
+      "field": "crown",
+      "value": "cornice",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 108 has no usable D1 read (the read was held as outline-off); the register names the gable cornice"
+    }
+  ],
+  "herengracht-125-161": [
+    {
+      "fronts": [
+        "0363100012167682"
+      ],
+      "field": "crown",
+      "value": "bell",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 131 has no usable D1 read (the read was held as outline-off); the register names the gable bell"
+    }
+  ],
+  "herengracht-179-215": [
+    {
+      "fronts": [
+        "0363100012167636"
+      ],
+      "field": "crown",
+      "value": "cornice",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 201 has no usable D1 read (the read was held as outline-off); the register names the gable cornice"
+    }
+  ],
+  "herengracht-163-177": [
+    {
+      "fronts": [
+        "0363100012167668"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 163: the D1 read states no crown (drawn from the period default); the register names the gable neck"
+    },
+    {
+      "fronts": [
+        "0363100012176317"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 171: the D1 read states no crown (drawn from the period default); the register names the gable neck"
+    }
   ]
 }

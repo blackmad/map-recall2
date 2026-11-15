@@ -600,7 +600,7 @@ function solveSeries(id: string, ev: Ev[], input: RowInput, flags: RowFlag[], al
   // read walls either side (wall colour by judgement, 2026-11-14), never the era default's red-brown.
   const near = input.members.some(m => m.wallSample) ? nearestWall(all, all.indexOf(ev[0])) : null;
   const wall = classField('wall', faceWall, R('wall') as RowWall[], faceRef, readRef, flags, ids,
-    near ? { material: 'brick', family: near.family, hex: '' } as RowWall : { material: 'brick', family: eraFamily(ev[0]?.member.built ?? null), hex: '' } as RowWall,
+    near ? { material: near.material, family: near.family, hex: '' } as RowWall : { material: 'brick', family: eraFamily(ev[0]?.member.built ?? null), hex: '' } as RowWall,
     near ? `neighbours: ${near.family} from ${near.from.join(', ')}` : 'period default: era brick');
   if (wall) { wall.value = { ...wall.value, hex: variedTone(wall.value.family, `${input.id}:${wall.value.family}`) }; delete wall.votes; wall.votes = votes((R('wall') as RowWall[]).map(w => ({ ...w, hex: '' }))).map(x => ({ value: x.value, n: x.n })); if (!wall.votes.length) delete wall.votes; }
   set('wall', wall);
@@ -648,13 +648,19 @@ function solveSeries(id: string, ev: Ev[], input: RowInput, flags: RowFlag[], al
 function eraFamily(year: number | null): JudgedFamily { return year !== null && year < 1860 ? 'red-brown-brick' : 'brown-brick'; }
 export const familyTone = (f: JudgedFamily) => JUDGED_PALETTE[f];
 
-/** The wall family of the nearest read fronts either side of index `i` (one each side; a tie goes to the left one). */
-function nearestWall(evs: readonly Ev[], i: number): { family: JudgedFamily; from: string[] } | null {
+/** The wall of the nearest read fronts either side of index `i` (one each side). When they differ, the nearer one wins;
+ *  at equal distance, the one built closer to this front's year (Herengracht 82, 1905: its 1905 neighbour 80, not the
+ *  1615 house 84), then the left one. The material comes with the family (a painted neighbour gives painted brick). */
+function nearestWall(evs: readonly Ev[], i: number): { material: RowWallMaterial; family: JudgedFamily; from: string[] } | null {
   const walled = evs.map((e, j) => ({ e, j, w: e.read?.wall as RowWall | undefined })).filter(x => x.w && x.j !== i);
   const left = walled.filter(x => x.j < i).pop(), right = walled.find(x => x.j > i);
   const pick = [left, right].filter((x): x is NonNullable<typeof x> => !!x);
   if (!pick.length) return null;
-  const fams = pick.map(x => x.w!.family as JudgedFamily);
-  const family = fams.length === 2 && fams[0] !== fams[1] ? (i - left!.j <= right!.j - i ? fams[0] : fams[1]) : fams[0];
-  return { family, from: pick.map(x => x.e.member.pandId) };
+  let w = pick[0];
+  if (left && right && left.w!.family !== right.w!.family) {
+    const dl = i - left.j, dr = right.j - i, y = evs[i].member.built;
+    const age = (x: typeof left) => (y == null || x.e.member.built == null ? 0 : Math.abs(x.e.member.built - y));
+    w = dl !== dr ? (dl < dr ? left : right) : age(right) < age(left) ? right : left;
+  }
+  return { material: w.w!.material, family: w.w!.family as JudgedFamily, from: pick.map(x => x.e.member.pandId) };
 }

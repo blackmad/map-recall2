@@ -289,12 +289,17 @@ test('Herengracht belt rows: a front with no face and no usable reading draws it
     { pandId: 'c', street: 'Herengracht', number: 2, addresses: ['Herengracht 2'], year: 1616, height: 12, areaM2: 300, picked: true },
   ];
   const ms = beltMembers(sel, new Map([['a', { pandId: 'a', wallLenM: 5.123 }]]), 'Herengracht', 2, 4);
-  assert.deepEqual(ms.map(m => [m.pandId, m.widthM, m.side]), [['c', 12, 'even'], ['a', 5.12, 'even']]);
+  // Left to right as seen from the street: the even side's numbers fall (the October strip of herengracht-84-148).
+  assert.deepEqual(ms.map(m => [m.pandId, m.widthM, m.side]), [['a', 5.12, 'even'], ['c', 12, 'even']]);
+  assert.deepEqual(beltMembers([...sel, { ...sel[1], pandId: 'd', number: 5, addresses: ['Herengracht 5'] }], new Map(), 'Herengracht', 3, 5).map(m => m.pandId), ['b', 'd']);
   // Herengracht 82 (held read) is its own series, never 80's neck gable; the register gable is its crown.
   const r = solveRow(loadRow(loadRowDefs()['herengracht-76-90'], '2026-11-15').input);
   const s82 = r.fronts.find(f => f.pandId === '0363100012175703')!.seriesId;
   assert.notEqual(s82, r.fronts.find(f => f.pandId === '0363100012175783')!.seriesId);
   assert.equal(frontDesign(r, r.fronts.find(f => f.pandId === '0363100012175703')!).crown.value, 'cornice');
+  // 82 (1905, no cut read) sits between 84 (1615, painted dark) and 80 (1905, buff): equal distance, so the neighbour of its
+  // own era gives the wall, with its material.
+  assert.deepEqual(frontDesign(r, r.fronts.find(f => f.pandId === '0363100012175703')!).wall.value, { material: 'brick', family: 'buff-brick', hex: frontDesign(r, r.fronts.find(f => f.pandId === '0363100012175703')!).wall.value.hex });
 });
 
 test('Herengracht belt rows: the cut sample judges brick; painted stays painted; no-cut fronts take their neighbours', () => {
