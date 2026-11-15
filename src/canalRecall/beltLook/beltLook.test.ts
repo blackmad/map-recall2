@@ -307,3 +307,16 @@ test('round 8: pitched dormers, not a mansard; bays by width; storeys under a so
   assert.equal(runTakesSteps(1.6, 4.11), false);
   assert.equal(runTakesSteps(6.5, 4.11), false);
 });
+
+test('round 9: an attiek is no roof storey; a register-silent pand takes no donor gable; a donor full frame stays with the donor', async () => {
+  const { registerRoofStorey } = await import('./generate.ts');
+  // Keizersgracht 177468: register stoep + attiek, a flat white cornice in the photo.
+  assert.equal(registerRoofStorey(['stoop', 'attic']), false);
+  assert.equal(registerRoofStorey(['dormer']), true);
+  // Keizersgracht 171508: register silent; a donor never brings a gable (its own read's necks, seen on the 2023 cut, stay).
+  const d = donorFor(target({ pandId: '0363100012171508', eavesM: 10.91, ridgeM: 15.13, roofCode: 3 }), DONORS);
+  assert.ok(d && !['neck', 'bell', 'step', 'spout', 'point'].includes(String(d.donor.answer.crown)));
+  // Reguliersgracht 178585: a donor's full-frame surround does not travel.
+  const f = fittedRead(target(), donor('0363100012174842', 'Keizersgracht', 1700, 6.3, 15, { windowSurround: 'full-frame' } as never)) as unknown as { windowSurround: string };
+  assert.equal(f.windowSurround, 'none');
+});

@@ -30,6 +30,13 @@ export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: strin
 export interface BeltStated { crown?: string; year?: number; shop?: boolean; finish?: BeltTarget['finish']; storeys?: number; stoop?: boolean; roofStorey?: boolean; warehouse?: boolean; elements?: string[]; /** A published house spec states a mansard (not the register's dakkapel). */ mansard?: boolean;
   /** A published house spec's measured wall colour (palette.brick). */ specHex?: string;
   /** The pand's cut wall sample (lane W1 on the pinned capture), from any cut, readable or not. */ photo?: BeltPhoto }
+/**
+ * The register states a roof storey only with a dakkapel (dormer). An attiek is a raised parapet over the cornice, not a roof
+ * storey (round 9: Keizersgracht 177468, register stoep + attiek, drew a hipped roof with dormers over a flat white cornice).
+ */
+export function registerRoofStorey(elements: readonly string[]): boolean {
+  return elements.includes('dormer');
+}
 /** A cut's wall sample: hex, OKLab lightness, chroma, hue (deg) and the sampled pixel count. */
 export interface BeltPhoto { hex: string; L: number; C: number; h: number; n: number }
 /** A photo wall sample strong enough to colour a front: enough wall pixels, and neither foliage (green hue with chroma) nor a

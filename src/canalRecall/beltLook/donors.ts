@@ -250,7 +250,9 @@ export function fittedRead(t: BeltTarget, d: BeltDonor): DescriberAnswer {
   // porches drawn where the photos show plain fronts): 89 % of the belt's reads show plain windows, and the nearest-donor
   // pick multiplied each rare dressing over many pands. Own reads and the register still draw them.
   const ad = a as { windowSurround?: string; bands?: string; gaps?: Array<{ component?: string; what: string }> };
-  if (ad.windowSurround && ad.windowSurround !== 'none' && ad.windowSurround !== 'not-visible' && ad.windowSurround !== 'sill' && ad.windowSurround !== 'full-frame') ad.windowSurround = 'none';
+  // A donor's full frame (drawn as stone lintels) goes too (round 9: Reguliersgracht 178585 drew white surrounds the photo does
+  // not show; judges named heavy white in four rounds). Only a sill travels.
+  if (ad.windowSurround && ad.windowSurround !== 'none' && ad.windowSurround !== 'not-visible' && ad.windowSurround !== 'sill') ad.windowSurround = 'none';
   if (ad.bands && ad.bands !== 'none' && ad.bands !== 'not-visible') ad.bands = 'none';
   if (ad.gaps) ad.gaps = ad.gaps.filter(g => !DONOR_ONE_OFF.test(g.what));
   // A warehouse: its ground is the warehouse's (no house door and stoop), unless a shop is on record.

@@ -15,7 +15,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { districtPands, namedStreets, describedPands } from '../buurt-generators/generate.ts';
 import type { DistrictLibrary } from '../../src/canalRecall/buurtGenerator/generate.ts';
-import { generateBelt, specPhotoDisagree, type BeltPhoto, type BeltRead, type BeltStated } from '../../src/canalRecall/beltLook/generate.ts';
+import { generateBelt, registerRoofStorey, specPhotoDisagree, type BeltPhoto, type BeltRead, type BeltStated } from '../../src/canalRecall/beltLook/generate.ts';
 import type { AhnFront } from '../../src/canalRecall/beltLook/ahnFront.ts';
 import { usableDonor, segmentOf, type BeltDonor } from '../../src/canalRecall/beltLook/donors.ts';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.ts';
@@ -85,7 +85,7 @@ export function statedPands(): Map<string, BeltStated> {
     const k = id.replace(/^NL\.IMBAG\.Pand\./, ''), cur = out.get(k) ?? {}, els = new Set<string>((f.elements ?? []).map((e: any) => e.key));
     const crown = cur.crown ?? CROWN[f.gable], year = cur.year ?? f.facadeDate?.from ?? f.coreDate?.from;
     out.set(k, { ...cur, ...(crown ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}), ...(typeof f.finish === 'string' ? { finish: f.finish } : {}),
-      ...(Number.isInteger(f.storeys) && f.storeys > 0 ? { storeys: f.storeys } : {}), ...(els.has('stoop') ? { stoop: true } : {}), ...((f.elements ?? []).some((e: any) => e.key === 'shopfront' && SHOP_PUI.test(String(e.term ?? ''))) ? { shop: true } : {}), ...(els.has('dormer') || els.has('attic') ? { roofStorey: true } : {}),
+      ...(Number.isInteger(f.storeys) && f.storeys > 0 ? { storeys: f.storeys } : {}), ...(els.has('stoop') ? { stoop: true } : {}), ...((f.elements ?? []).some((e: any) => e.key === 'shopfront' && SHOP_PUI.test(String(e.term ?? ''))) ? { shop: true } : {}), ...(registerRoofStorey([...els]) ? { roofStorey: true } : {}),
       ...(f.type?.key === 'warehouse' ? { warehouse: true } : {}), ...(els.size ? { elements: [...els].sort() } : {}) });
   }
   // Shop ground storeys: the extract's shopfronts.json (the game's own shopfront layer).
