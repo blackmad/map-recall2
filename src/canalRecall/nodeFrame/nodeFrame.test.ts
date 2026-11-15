@@ -155,3 +155,17 @@ test('surfaceMaterial: standard at roughness 1 is close to Lambert; DFG terms st
   assert.ok(Math.abs(a[0] - b[0]) < 0.06, `${a[0]} vs ${b[0]}`);
   for (const r of [0.1, 0.5, 1]) for (const nv of [0, 0.5, 1]) { const [x, y] = dfgApprox(r, nv); assert.ok(x + y > 0 && x + y <= 1.05); }
 });
+
+test('compareFrames: identical frames are perfect, a shifted edge still matches, a recolour shows in dE', async () => {
+  const { compareFrames, lab } = await import('./compare.ts');
+  const w = 20, h = 10, mk = (split: number, col: number[]) => { const d = new Uint8Array(w * h * 3); for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) d.set(x < split ? [0x9e, 0xc3, 0xed] : col, (y * w + x) * 3); return { width: w, height: h, data: d, channels: 3 }; };
+  const a = mk(10, [120, 60, 40]);
+  const same = compareFrames(a, a);
+  assert.equal(same.meanDE, 0); assert.equal(same.skyIoU, 1); assert.equal(same.edgeIoU, 1);
+  const shifted = compareFrames(a, mk(11, [120, 60, 40]));
+  assert.equal(shifted.edgeIoU, 1);
+  assert.ok(shifted.skyIoU > 0.85);
+  const recoloured = compareFrames(a, mk(10, [60, 60, 120]));
+  assert.ok(recoloured.meanDE > 10);
+  assert.ok(Math.abs(lab(255, 255, 255)[0] - 100) < 0.01);
+});

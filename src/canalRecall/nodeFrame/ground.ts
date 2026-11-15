@@ -80,7 +80,7 @@ const rectDistance = (r: readonly number[], x: number, y: number) => Math.hypot(
  * The ground cells the game would draw around `centre` (own-ground local metres), skipping cells whose rect lies
  * wholly behind the camera's horizontal view (`forward`, local x/y, unit) with a margin.
  */
-export async function loadGround(root: string, cacheDir: string, centre: [number, number], forward: [number, number] | null, opts: { radiusM?: number; nearM?: number; log?: (s: string) => void } = {}): Promise<GroundScene> {
+export async function loadGround(root: string, cacheDir: string, centre: [number, number], forward: [number, number] | null, opts: { radiusM?: number; nearM?: number; log?: (s: string) => void; seen?: (rect: readonly number[]) => boolean } = {}): Promise<GroundScene> {
   const { GroundStore, maybeGunzip } = await import('../ownGround/groundStore.ts');
   const { buildCell } = await import('../ownGround/groundCell.ts');
   const t0 = performance.now();
@@ -102,6 +102,7 @@ export async function loadGround(root: string, cacheDir: string, centre: [number
       const ahead = [[rect[0], rect[1]], [rect[2], rect[1]], [rect[0], rect[3]], [rect[2], rect[3]]].some(([px, py]) => ((px - x) * forward[0] + (py - y) * forward[1]) > -0.2 * Math.hypot(px - x, py - y));
       if (!ahead) continue;
     }
+    if (opts.seen && d > 50 && !opts.seen(rect)) continue;
     wanted.push({ key, lod: d <= NEAR ? 0 : 1, d });
   }
   wanted.sort((a, b) => a.d - b.d);

@@ -95,6 +95,13 @@ export type WorldImage = {
   locate(id: number): [number, number];
 };
 
+/** Distance from the eye to a draw's bounding box (0 inside). */
+function boxDistance(P: ArrayLike<number>, ex: number, ey: number, ez: number): number {
+  let x0 = Infinity, y0 = Infinity, z0 = Infinity, x1 = -Infinity, y1 = -Infinity, z1 = -Infinity;
+  for (let i = 0; i < P.length; i += 3) { const x = P[i], y = P[i + 1], z = P[i + 2]; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; if (z < z0) z0 = z; if (z > z1) z1 = z; }
+  return Math.hypot(Math.max(x0 - ex, 0, ex - x1), Math.max(y0 - ey, 0, ey - y1), Math.max(z0 - ez, 0, ez - z1));
+}
+
 /** A draw's bounding box against the view frustum: false when all eight corners are outside one plane. */
 function drawVisible(P: ArrayLike<number>, ex: number, ey: number, ez: number, rx: number, ry: number, rz: number, ux: number, uy: number, uz: number, fx: number, fy: number, fz: number, focal: number, cxs: number, cys: number, near: number, far: number): boolean {
   let x0 = Infinity, y0 = Infinity, z0 = Infinity, x1 = -Infinity, y1 = -Infinity, z1 = -Infinity;
@@ -136,7 +143,9 @@ export function rasteriseWorld(draws: readonly WorldDraw[], camera: WorldCamera,
   const cv = new Float64Array(9), poly = new Float64Array(5 * 3 * 2), out2 = new Float64Array(5 * 3 * 2);
   const sx = new Float64Array(6), sy = new Float64Array(6), sw = new Float64Array(6);
   const blendTris: Array<{ d: number; t: number; depth: number }> = [];
-  for (let di = 0; di < draws.length; di++) {
+  // Near draws first (by their boxes' nearest point): later, farther samples fail the depth test before any write or cut.
+  const order = draws.map((d, i) => ({ i, d: boxDistance(d.positions, ex, ey, ez) })).sort((a, b) => a.d - b.d).map(o => o.i);
+  for (const di of order) {
     const d = draws[di], P = d.positions, I = d.indices, cull = d.cull !== 'none', nt = Math.floor(I.length / 3), keep = d.keep, cut = d.cut, offK = d.offset ?? 0;
     if (!drawVisible(P, ex, ey, ez, rx, ry, rz, ux, uy, uz, fx, fy, fz, focal, cxs, cys, near, far)) continue;
     for (let t = 0; t < nt; t++) {

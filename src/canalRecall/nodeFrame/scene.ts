@@ -102,7 +102,13 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
 
   // ---- ground ---------------------------------------------------------------------------------------------------
   t = performance.now();
-  const ground = await loadGround(root, opts.cacheDir, [cxl, cyl], view.aerial ? null : fwd2, { log });
+  // A ground cell is wanted when any of a 5 x 5 grid of its points is in the view wedge (40 m margin).
+  const seen = (rect: readonly number[]) => {
+    const p = new Float64Array(3);
+    for (let i = 0; i <= 4; i++) for (let j = 0; j <= 4; j++) { toWorld(rect[0] + (rect[2] - rect[0]) * i / 4, rect[1] + (rect[3] - rect[1]) * j / 4, 0, p, 0); if (inView(p[0], p[1], 40)) return true; }
+    return false;
+  };
+  const ground = await loadGround(root, opts.cacheDir, [cxl, cyl], view.aerial ? null : fwd2, { log, seen });
   T.ground = ms(t); N.groundCells = ground.cells.length; N.groundBuilt = ground.ms.built;
   const height = ground.store.surface.ground.bind(ground.store.surface);
   const relief = (x: number, y: number) => (ground.store.hasRelief(x, y) ? height(x, y) : NaN);
