@@ -87,7 +87,7 @@ export interface RowFrontRecord {
 export interface RowHeadsDraw {
   a0: number; a1: number;
   shape: 'flat' | 'segmental' | 'round' | 'relieving';
-  dressing: 'none' | 'block-course' | 'keystone' | 'segmental-tympanum' | 'dentil-lintel' | 'jack-blocks' | 'stone-lintel' | 'arch-ring' | 'block-surround';
+  dressing: 'none' | 'block-course' | 'keystone' | 'segmental-tympanum' | 'dentil-lintel' | 'jack-blocks' | 'stone-lintel' | 'arch-ring' | 'block-surround' | 'tablet';
   /** Upper storeys (1 = first above the ground) the dressing is on; absent = every upper storey. */
   storeys?: number[];
 }

@@ -95,7 +95,7 @@ export interface RowCrown {
   /** A small round-headed light over the attic light, high in the neck (stated per house). */
   upperLight?: boolean;
   /** House rows: the gable's white sandstone with thickness (copings, treads, klauwstukken, cap); absent: flat white edges. */
-  stone?: { copingM?: number; claws?: boolean | 'carved'; crest?: 'pediment' | 'segmental' | 'crest'; hood?: 'dark' | string; neck?: 'panel' | 'cartouche' | 'oculus'; cap?: 'shell' | 'carved' };
+  stone?: { copingM?: number; claws?: boolean | 'carved'; crest?: 'pediment' | 'segmental' | 'crest'; hood?: 'dark' | string; neck?: 'panel' | 'cartouche' | 'oculus'; cap?: 'shell' | 'carved'; festoon?: boolean; shoulders?: 'oval' };
   /** `belt`: the canal belt's gable dress (BELT_GABLE). Absent: the kit's stock outlines and trim, byte-identical. */
   dress?: 'belt';
 }
@@ -280,7 +280,11 @@ function finials(s: RoofSink, c: RowCrown, prof: readonly V2[], f: number, e: nu
 /** The gable's stone with thickness (RowCrown.stone, or the belt dress): how far each piece stands proud of the brick,
  *  and how far behind the front it reaches (`back`: past the plate, whose depth is `plate` for a stone crown). */
 export const ROW_STONE = { plate: 0.45, back: 0.2, coping: 0.06, overhang: 0.03, copingW: 0.08, claw: 0.16, bellClaw: 0.12, clawProud: 0.04, piece: 0.06,
-  volute: 0.08, voluteK: 0.75, cap: 0.08, capBand: 0.14, capOver: 0.1, ledge: 0.1, ledgeH: 0.12, band: 0.1 } as const;
+  volute: 0.08, voluteK: 0.75, cap: 0.08, capBand: 0.14, capOver: 0.1, ledge: 0.1, ledgeH: 0.12, band: 0.1,
+  /** Shoulder ovals: half-height (m), width to height, how proud. */
+  oval: { ry: 0.3, k: 0.78, out: 0.05, under: 0.22 },
+  /** A neck festoon: leaf radius, the garland's sag, the side drops' length, the centre pendant's height (m). */
+  festoon: { r: 0.1, sag: 0.3, drop: 0.95, pend: 0.24, out: 0.07 } } as const;
 /** The stone a crown draws: its stated stone, else the belt dress's (claws, the crest a bell or step stands under). */
 export function rowCrownStone(c: RowCrown): NonNullable<RowCrown['stone']> | undefined {
   if (c.shape === 'raised') return undefined;
@@ -489,9 +493,51 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
       prism(s, [[-lw, tN - S.ledgeH], [lw, tN - S.ledgeH], [lw, tN], [-lw, tN]], f, e, S.ledge, S.back, tone());
     }
   }
+  // Oval cartouches on the shoulders (0363100012176326): a carved frame with a dark oval field, in the brick under each
+  // claw, midway between the neck and the foot.
+  if (necked && st.shoulders === 'oval' && Number.isFinite(neckFoot)) for (const sg of [-1, 1]) {
+    // The belt's low shoulders leave little brick under the claw: the oval may hang into the wall under the foot (the
+    // photo's sit beside the top storey's lights), clear of the top windows' heads.
+    const xc = sg * (neck + foot) / 2, edge = edgeAt(prof, xc), base = y0 - S.oval.under, room = edge - bw - 0.08 - base;
+    const ry = Math.min(S.oval.ry, room / 2), rx = Math.min(ry * S.oval.k, (foot - neck) * 0.3);
+    if (ry < 0.14 || rx < 0.1) continue;
+    const cy = base + room / 2, ring = (a: number, b: number, n = 20): V2[] => Array.from({ length: n }, (_, i): V2 => [xc + a * Math.cos(2 * Math.PI * i / n), cy + b * Math.sin(2 * Math.PI * i / n)]);
+    const lit = tone();
+    prism(s, ring(rx * 1.18, ry * 1.12), f, e, S.oval.out, 0.02, shade(lit, 0.82));
+    prism(s, ring(rx, ry), f, e, S.oval.out + 0.015, 0, lit);
+    prism(s, ring(rx * 0.6, ry * 0.66), f, e, S.oval.out + 0.025, 0, shade(lit, 0.42));
+    // The frame's carving: leaves at the top and foot, a small scroll each side.
+    for (const dy of [1, -1]) prism(s, [[xc - rx * 0.45, cy + dy * ry * 0.95], [xc + rx * 0.45, cy + dy * ry * 0.95], [xc, cy + dy * (ry * 1.12 + 0.1)]], f, e, S.oval.out + 0.02, 0, lit);
+    for (const sx of [-1, 1]) volute(s, f, e, xc + sx * rx * 1.12, cy, Math.min(0.08, rx * 0.3), lit, S.oval.out + 0.02);
+  }
+  // A festoon across the neck under the cap (0363100012176326): a garland of leaves sagging between two knots, a pendant
+  // at its centre and drops hanging down both sides of the neck. It takes the neck's carving space.
+  let festooned = false;
+  if (c.shape === 'neck' && st.festoon && Number.isFinite(neckFoot)) {
+    const F = S.festoon, zt = tN - S.ledgeH - (st.hood ? 0.22 : 0) - 0.05, xe = neck - bw - F.r - 0.06, lo = clear ? clear[1] + 0.04 : neckFoot + 0.3;
+    const sag = Math.min(F.sag, zt - F.r - lo);
+    if (xe > 0.25 && sag >= 0.08) {
+      festooned = true;
+      const lit = tone(), dark = shade(lit, 0.78), n = Math.max(7, Math.round(2 * xe / (F.r * 1.3)));
+      // The garland: overlapping leaf discs, fullest at the middle, on a catenary-like sag.
+      for (let i = 0; i <= n; i++) {
+        const u = i / n, x = -xe + 2 * xe * u, y = zt - F.r - sag * Math.sin(Math.PI * u), r = F.r * (0.65 + 0.35 * Math.sin(Math.PI * u));
+        prism(s, disc(x, y, r, 10), f, e, F.out + (i % 2) * 0.008, 0.02, i % 2 ? dark : lit);
+      }
+      // The knots at its ends and the drops down the neck's sides, each bead smaller.
+      const dropLo = Math.max(neckFoot + 0.15, zt - F.drop);
+      for (const sg of [-1, 1]) {
+        prism(s, disc(sg * xe, zt - F.r * 0.6, F.r * 0.9, 10), f, e, F.out + 0.015, 0.02, lit);
+        for (let k = 0, y = zt - F.r * 1.8; y > dropLo; k++, y -= F.r * 1.25) prism(s, disc(sg * xe, y, F.r * Math.max(0.5, 0.9 - k * 0.07), 8), f, e, F.out + (k % 2) * 0.008, 0.02, k % 2 ? dark : lit);
+      }
+      // The pendant: a bell-shaped drop under the garland's centre.
+      const py = zt - F.r - sag - F.r * 0.6;
+      if (py - F.pend > lo) prism(s, [[-F.r * 0.5, py], [F.r * 0.5, py], [F.r * 0.9, py - F.pend * 0.8], [0, py - F.pend], [-F.r * 0.9, py - F.pend * 0.8]], f, e, F.out + 0.012, 0.02, lit);
+    }
+  }
   // Carving in the neck between its light and the cap: a framed panel, a cartouche, or an oeil-de-boeuf. (In the cap's
   // tympanum instead it lost a blind A/B 0-3-3: the photos keep the piece in the neck, under the cornice.)
-  if (necked && st.neck && Number.isFinite(neckFoot)) {
+  if (necked && st.neck && !festooned && Number.isFinite(neckFoot)) {
     const carve = (cy: number, rx: number, ry: number): void => {
       const oval = (a: number, b: number, n = 18): V2[] => Array.from({ length: n }, (_, i): V2 => [a * Math.cos(2 * Math.PI * i / n), cy + b * Math.sin(2 * Math.PI * i / n)]);
       if (st.neck === 'panel') {

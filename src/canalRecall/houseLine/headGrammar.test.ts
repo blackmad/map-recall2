@@ -82,3 +82,18 @@ test('a stone lintel is one slab', () => {
   assert.equal(p.length, 1);
   assert.equal(p[0].tone, 'white');
 });
+
+test('tablet (Herengracht 27, 0363100012175404): a white stone block on the axis over the head; relieving adds the brick arch', () => {
+  const g = headGrammarOf('tablet', 'flat')!, p = headPieces(g, 0, 1.1, 10);
+  assert.deepEqual(g, { shape: 'flat', tablet: true });
+  assert.equal(p.length, 1);
+  const t = p[0].pts;
+  assert.equal(p[0].tone, 'white');
+  assert.ok(Math.abs((t[0][0] + t[1][0]) / 2 - 0.55) < 1e-9 && t[0][1] > 10, 'centred, above the head');
+  assert.ok(t[1][0] - t[0][0] >= 0.26 - 1e-9 && t[2][1] - t[1][1] >= 0.36 - 1e-9, 'at row scale');
+  assert.ok(Math.abs(10 + headRise(g, 1.1) - t[2][1]) < 1e-9, 'headRise reaches its top');
+  const r = headGrammarOf('tablet', 'relieving')!, pr = headPieces(r, 0, 1.1, 10);
+  assert.ok(pr.filter(x => x.tone === 'brick').length >= HEAD.minBlocks, 'the relieving ring');
+  const tab = pr.find(x => x.tone === 'white')!;
+  assert.ok(tab.pts[0][1] >= Math.max(...pr.filter(x => x.tone === 'brick').flatMap(x => x.pts.map(q => q[1]))) - 1e-9, 'the tablet over the ring');
+});

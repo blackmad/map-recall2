@@ -147,6 +147,23 @@ test('row-doorcase: a ground-storey surround (span ground) frames the door and w
   assert.notDeepEqual(run({ material: 'timber', fanlight: 'oval-spoked' }), run({ material: 'timber', fanlight: 'oval' }));
 });
 
+test('row-doorcase: a ground frame (span frame, Herengracht 279) posts across the front with an entresol rail; no door pilasters', () => {
+  const comp = ORNAMENT_COMPONENTS.find(x => x.id === 'row-doorcase')!;
+  const run = (doorcase: NonNullable<ExtraContext['rowDress']>['doorcase']) => {
+    const s = new ExtraSink(100000);
+    comp.build(wall({ layout: { bays: 3, bayWidthM: 2, groundM: 3.2, storeys: 3, storeyM: 3.2, doorBays: [0] } as ExtraContext['layout'], rowDress: { doorcase } }), s, 0);
+    return s.tris as Array<{ hex?: string; p: number[][] }>;
+  };
+  const own = run({ material: 'timber' }), frame = run({ material: 'timber', span: 'frame' });
+  const white = (t: typeof own) => t.filter(x => x.hex === '#efece4');
+  const xs = white(frame).flatMap(x => x.p.map(p => p[0]));
+  assert.ok(Math.max(...xs) - Math.min(...xs) > 5.5, 'the frame spans the 6 m front');
+  // The entresol rail: a white piece spanning the front at one height inside the storey.
+  const rail = white(frame).filter(x => { const xx = x.p.map(p => p[0]), zz = x.p.map(p => p[2]); return Math.max(...xx) - Math.min(...xx) > 5.5 && Math.max(...zz) - Math.min(...zz) < 0.2 && Math.max(...zz) < 3; });
+  assert.ok(rail.length > 0, 'an entresol rail under the head beam');
+  assert.notDeepEqual(run({ material: 'timber', span: 'frame', entresol: 0.7 }), frame);
+});
+
 test('row-cornice: a stated timber cornice draws attic lights, supports and a centre; absent: the kind as today (Herengracht 174, 248)', () => {
   const comp = ORNAMENT_COMPONENTS.find(x => x.id === 'row-cornice')!;
   const run = (rowDress: ExtraContext['rowDress']) => {
