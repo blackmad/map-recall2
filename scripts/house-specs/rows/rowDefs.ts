@@ -2,7 +2,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export interface RowMemberDef { pandId: string; label: string; widthM: number; x0M?: number; px?: [number, number]; eavesM?: number }
+export interface RowMemberDef { pandId: string; label: string; widthM: number; x0M?: number; px?: [number, number]; eavesM?: number;
+  /** A row with no street survey (the canal belt, scripts/house-specs/rows/belt-rows.ts) states the house numbers, BAG year and side. */
+  numbers?: number[]; built?: number; side?: 'even' | 'odd'; widthSource?: string }
 export interface RowDef { id: string; title: string; face?: string; members: RowMemberDef[]; cutsDir: string; cutsLocal?: string; answersDir: string; stagedDir: string; pixelsPerMetre?: number; note?: string;
   /** Answer and cut dirs in order of preference (rows.json `answers` / `cuts` may be a list: Kinkerstraat's reads sit in the
    *  ring tranche and the earlier street tranche). The first is `answersDir` / `cutsDir`. */
@@ -25,9 +27,9 @@ export function loadRowDefs(): Record<string, RowDef> {
       ppm = strip.pixelsPerMetre;
       members = strip.spans.map((s: any) => ({ pandId: s.pandId.replace(/^NL\.IMBAG\.Pand\./, ''), label: label.get(s.pandId) ?? s.pandId.slice(-6), widthM: +(s.x1M - s.x0M).toFixed(2), x0M: s.x0M, px: s.px }));
     }
-    const list = (v: string | string[]) => (Array.isArray(v) ? v : [v]).map(d => path.join(root, d));
+    const list = (v: string | string[]) => (Array.isArray(v) ? v : [v]).map(d => path.resolve(root, d));
     const answersDirs = list(r.answers), cutsDirs = list(r.cuts);
-    out[id] = { id, title: r.title, face: r.face, members, cutsDir: cutsDirs[0], cutsLocal: r.cutsLocal ? path.join(REPO, r.cutsLocal) : undefined, answersDir: answersDirs[0], stagedDir: path.join(root, r.staged ?? 'staged-ring-20261114'), pixelsPerMetre: ppm, note: r.note, answersDirs, cutsDirs, ...(r.street ? { street: r.street } : {}) };
+    out[id] = { id, title: r.title, face: r.face, members, cutsDir: cutsDirs[0], cutsLocal: r.cutsLocal ? path.join(REPO, r.cutsLocal) : undefined, answersDir: answersDirs[0], stagedDir: path.resolve(root, r.staged ?? 'staged-ring-20261114'), pixelsPerMetre: ppm, note: r.note, answersDirs, cutsDirs, ...(r.street ? { street: r.street } : {}) };
   }
   return out;
 }

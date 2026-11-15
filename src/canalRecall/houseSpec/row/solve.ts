@@ -349,6 +349,9 @@ export function solveRow(input: RowInput): RowRecord {
   const keys = evs.map(e => e.face && !e.face.heads && evs.some(o => o !== e && o.face?.heads) ? null : sig(e));
   const joined = keys.map((k, i) => {
     if (k !== null) return k;
+    // No face and no usable reading (canal belt: no cut, or a held read): nothing is stated, so the front draws the plain
+    // period default on its own - never a neighbour's design (Herengracht 82, a 1905 front beside 1615 neck gables).
+    if (!evs[i].face && !evs[i].read) return `unread:${evs[i].front.id}`;
     const like = (j: number) => keys[j] !== null && stated(evs[j]) === stated(evs[i]);
     const order = [...Array(keys.length).keys()].filter(j => j !== i).sort((a, b) => Math.abs(a - i) - Math.abs(b - i) || a - b);
     const j = order.find(like);
