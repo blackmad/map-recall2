@@ -167,3 +167,25 @@ test('a shop pand prefers a shop donor and its fitted read has a shopfront groun
   assert.equal(f.ground, 'shopfront');
   assert.notEqual(f.basement, 'stoop');
 });
+
+test('register silent: a donor pand takes a cornice; register finish and storeys are drawn; a cornice front stands at the height', () => {
+  for (let i = 0; i < 40; i++) {
+    const d = donorFor({ ...target(), pandId: `03631000128${String(i).padStart(5, '0')}` }, DONORS)!;
+    assert.ok(!['neck', 'bell', 'step', 'point', 'spout'].includes(String(d.donor.answer.crown)), 'unstated takes no gable');
+  }
+  const f = fittedRead({ ...target(), finish: 'plaster', storeys: 5 }, DONORS[2]) as unknown as { finish: string; pale: boolean; storeys: number };
+  assert.equal(f.finish, 'stucco'); assert.equal(f.pale, true); assert.equal(f.storeys, 5);
+  const pands = Array.from({ length: 3 }, (_, i) => ({ ...pand(i), eavesM: 9, ridgeM: 12, heightM: 13.5 }));
+  const res = generateBelt(pands, streets, new Set(), new Map(), DONORS, '2026-11-15');
+  for (const s of res.rows[0].series) assert.equal(s.design.corniceTopM.value, 13.5, 'a cornice front at the representative height');
+});
+
+test('a belt read frieze cornice draws RowCorniceDress.frieze (attic-frieze: attic lights, frieze: panels)', () => {
+  const pands = Array.from({ length: 2 }, (_, i) => ({ ...pand(i), year: 1850 }));
+  for (const [cornice, frieze] of [['attic-frieze', 'attic-lights'], ['frieze', 'panels']] as const) {
+    const own = new Map(pands.map(p => { const id = p.id.slice(-16); return [id, { answer: read(id, { cornice } as never), sample: '#5a4a40', ref: `own/${id}` }]; }));
+    const res = generateBelt(pands, streets, new Set(), own, DONORS, '2026-11-15');
+    for (const s of res.rows[0].series) assert.equal((s.design.corniceDress?.value as { frieze?: string }).frieze, frieze);
+    assert.ok(!res.rows[0].readNotDrawn.some(x => x.field === 'cornice'), 'the frieze is drawn, not noted');
+  }
+});

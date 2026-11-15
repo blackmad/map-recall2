@@ -68,6 +68,15 @@ export function statedPands(): Map<string, BeltStated> {
       if (typeof crown === 'string' || typeof year === 'number') out.set(id.replace(/^NL\.IMBAG\.Pand\./, ''), { ...(typeof crown === 'string' ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}) });
     }
   }
+  // The monument register's parsed facts (monument-facts.json): its gable where house-specs states none, the facade finish,
+  // storeys, a stoop and a shopfront. The register's `plain` gable is left unstated (its kind is not named).
+  const CROWN: Record<string, string> = { cornice: 'cornice', neck: 'neck', bell: 'bell', step: 'step', spout: 'spout', raisedNeck: 'raised-neck' };
+  for (const [id, f] of Object.entries<any>(JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/monument-facts.json', 'utf8')).buildings ?? {})) {
+    const k = id.replace(/^NL\.IMBAG\.Pand\./, ''), cur = out.get(k) ?? {}, els = new Set<string>((f.elements ?? []).map((e: any) => e.key));
+    const crown = cur.crown ?? CROWN[f.gable], year = cur.year ?? f.facadeDate?.from ?? f.coreDate?.from;
+    out.set(k, { ...cur, ...(crown ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}), ...(typeof f.finish === 'string' ? { finish: f.finish } : {}),
+      ...(Number.isInteger(f.storeys) && f.storeys > 0 ? { storeys: f.storeys } : {}), ...(els.has('stoop') ? { stoop: true } : {}), ...(els.has('shopfront') ? { shop: true } : {}) });
+  }
   // Shop ground storeys: the extract's shopfronts.json (the game's own shopfront layer).
   for (const id of Object.keys(JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/shopfronts.json', 'utf8')).buildings ?? {})) {
     const k = id.replace(/^NL\.IMBAG\.Pand\./, ''); out.set(k, { ...(out.get(k) ?? {}), shop: true });

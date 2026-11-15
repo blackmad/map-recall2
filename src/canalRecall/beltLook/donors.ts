@@ -45,6 +45,15 @@ export interface BeltTarget {
   /** The pand has a shop ground storey (the extract's shopfronts.json): a shop donor is preferred and the fitted read's
    *  ground is a shopfront (held-out round 2: dwelling doors drawn on Leidsestraat's and Reguliersbreestraat's shops). */
   shop?: boolean;
+  /** The register's facade finish (monument-facts `finish`): a plastered or stone front is drawn pale stucco or stone. */
+  finish?: 'plaster' | 'stone' | 'brick' | 'ornamentalBrick' | 'painted';
+  /** The register's storey count (monument-facts `storeys`): the fitted read's storeys. */
+  storeys?: number;
+  /** The register names a stoop (monument-facts elements). */
+  stoop?: boolean;
+  /** 3DBAG's representative height (bag tiles `height`): a cornice front stands at it (held-out round 3: Huidenstraat and
+   *  Hartenstraat 169174 drawn at the eaves, 7-12 m against 13-17 m). */
+  heightM?: number | null;
 }
 
 /** Crown families a stated crown admits among donor reads (held-out A/B 2026-11-15: gables drawn over the register's
@@ -67,7 +76,7 @@ export const DONOR_K = 4;
 /** A donor's storey pitch (cut wall height / read storeys) is held to this band: a cut whose wall takes in a mansard or roof
  *  storey (Langestraat's donor 169011: 2 storeys in 12.9 m) would otherwise halve a pand's storeys (held-out sheet 1). */
 export const PITCH_M = { min: 2.8, max: 3.8 } as const;
-export const DONOR_WEIGHTS = { segment: 1.5, sameStreet: -0.3, yearPer: 50, widthPer: 2, eavesPer: 3, gableOnFlat: 4, shopMismatch: 1.5 } as const;
+export const DONOR_WEIGHTS = { segment: 1.5, sameStreet: -0.3, yearPer: 50, widthPer: 2, eavesPer: 3, gableOnFlat: 4, shopMismatch: 1.5, finishMismatch: 1 } as const;
 
 /** A usable donor read: readable, one front, its crown and storeys seen. */
 export function usableDonor(a: DescriberAnswer | null | undefined): a is DescriberAnswer {
@@ -104,6 +113,8 @@ export function donorDistance(t: BeltTarget, d: BeltDonor): number {
   if (t.eavesM !== null) s += Math.abs(t.eavesM - d.heightM) / w.eavesPer;
   if (GABLED_CROWNS.has(String(d.answer.crown)) && !gableable(t)) s += w.gableOnFlat;
   if (t.shop && d.answer.ground !== 'shopfront') s += w.shopMismatch;
+  if (t.finish === 'plaster' && d.answer.finish !== 'stucco') s += w.finishMismatch;
+  if (t.finish === 'stone' && d.answer.finish !== 'stone' && d.answer.finish !== 'stucco') s += w.finishMismatch;
   return s;
 }
 
@@ -117,12 +128,13 @@ export function hash32(s: string): number {
 /** The pand's donor: one of the `DONOR_K` nearest (ties broken by pand id), picked by the pand id's hash. */
 export function donorFor(t: BeltTarget, donors: readonly BeltDonor[]): { donor: BeltDonor; distance: number; rank: number; of: number } | null {
   // A flat-topped pand never takes a gabled donor (while any other is left): the gable would stand on no roof.
-  // A stated crown picks the donors of its family (else any gabled donor for a stated gable); unstated, a flat-topped pand
-  // never takes a gabled donor (while any other is left): the gable would stand on no roof.
+  // A stated crown picks the donors of its family (else any gabled donor for a stated gable). Unstated, the pand takes a
+  // cornice: only a photo read or the register says gable (held-out rounds 1-3: gables over flat fronts the register is
+  // silent on were the judges' commonest crown fault).
   const st = t.statedCrown;
   let pool: readonly BeltDonor[] = st ? donors.filter(d => admits(st, String(d.answer.crown))) : [];
   if (st && !pool.length && GABLED_CROWNS.has(st)) pool = donors.filter(d => GABLED_CROWNS.has(String(d.answer.crown)));
-  if (!pool.length) pool = gableable(t) ? donors : donors.filter(d => !GABLED_CROWNS.has(String(d.answer.crown)));
+  if (!pool.length) pool = donors.filter(d => !GABLED_CROWNS.has(String(d.answer.crown)));
   const near = (pool.length ? pool : donors).filter(d => d.pandId !== t.pandId).map(d => ({ d, s: donorDistance(t, d) }))
     .sort((a, b) => a.s - b.s || (a.d.pandId < b.d.pandId ? -1 : 1)).slice(0, DONOR_K);
   if (!near.length) return null;
@@ -137,7 +149,8 @@ export function donorFor(t: BeltTarget, donors: readonly BeltDonor[]): { donor: 
 export function fittedRead(t: BeltTarget, d: BeltDonor): DescriberAnswer {
   const a = structuredClone(d.answer) as DescriberAnswer & { columns?: number[]; storeyParts?: { full?: number }; groundBays?: number; doorIndex?: number };
   const pitch = Math.min(PITCH_M.max, Math.max(PITCH_M.min, d.heightM / (d.answer.storeys as number)));
-  if (t.eavesM !== null) {
+  if (t.storeys && t.storeys > 0) { if (t.storeys !== a.storeys) { a.storeys = t.storeys; if (a.storeyParts) a.storeyParts.full = t.storeys; delete a.columns; } }
+  else if (t.eavesM !== null) {
     const n = Math.max(1, Math.round(t.eavesM / pitch));
     if (n !== a.storeys) { a.storeys = n; if (a.storeyParts) a.storeyParts.full = n; delete a.columns; }
   }
@@ -152,6 +165,12 @@ export function fittedRead(t: BeltTarget, d: BeltDonor): DescriberAnswer {
     }
   }
   if (t.statedCrown && GABLED_CROWNS.has(t.statedCrown)) (a as { crown: string }).crown = t.statedCrown;
+  // The register's finish: plaster a pale stucco front, stone a pale stone one; a stated brick front is never stucco.
+  const ax = a as { finish?: string; pale?: boolean; basement?: string };
+  if (t.finish === 'plaster') { ax.finish = 'stucco'; ax.pale = true; }
+  else if (t.finish === 'stone') { ax.finish = 'stone'; ax.pale = true; }
+  else if ((t.finish === 'brick' || t.finish === 'ornamentalBrick') && (ax.finish === 'stucco' || ax.finish === 'painted-brick')) { ax.finish = 'brick'; delete ax.pale; }
+  if (t.stoop && !t.shop && ax.basement !== 'stoop' && ax.basement !== 'stoop-and-windows') ax.basement = 'stoop';
   if (t.shop && a.ground !== 'shopfront') {
     (a as { ground: string }).ground = 'shopfront';
     if (a.basement === 'stoop' || a.basement === 'stoop-and-windows') (a as { basement: string }).basement = 'none';

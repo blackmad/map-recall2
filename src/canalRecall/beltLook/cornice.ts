@@ -6,7 +6,7 @@
  *   frieze  attic lights 5, plain 2, panels 1
  *   under   modillions 3, dentils 2, consoles 2, none 1
  *   centre  none 5, balustrade 2, pediment 1 (a centre only on a front of three bays or more)
- * A stated cornice dress or a reviewed one is never touched. Deterministic per series, row-coherent. Pure.
+ * A reviewed cornice dress is never touched; a read frieze (the row solve's) keeps its frieze and takes the rest. Deterministic per series, row-coherent. Pure.
  */
 import type { RowCorniceDress, RowRecord } from '../houseSpec/row/types.ts';
 import { hash32 } from './donors.ts';
@@ -39,10 +39,12 @@ export function beltCornice(key: string, year: number | null, bays: number): Row
 export function dressBeltCornice(row: RowRecord, ref: string): RowRecord {
   const built = new Map(row.members.map(m => [m.pandId, m.built ?? null]));
   for (const s of row.series) {
-    if (s.design.crown?.value !== 'cornice' || s.design.corniceDress) continue;
+    const was = s.design.corniceDress;
+    if (s.design.crown?.value !== 'cornice' || was?.source === 'reviewed' || (was?.value && Object.keys(was.value).some(k => k !== 'frieze'))) continue;
     const ids = s.fronts.map(f => f.split('#')[0]), years = ids.map(id => built.get(id)).filter((y): y is number => typeof y === 'number').sort((a, b) => a - b);
     const dress = beltCornice([...ids].sort()[0], years.length ? years[years.length >> 1] : null, Number(s.design.bays?.value ?? 0));
-    if (dress) s.design.corniceDress = { value: dress, source: 'period-default', ref: `${ref}: 1800s timber cornice at the rates of lane R's eight read cornices` };
+    // A read frieze (solve: RowCorniceDress.frieze from the read cornice) stays; the period draws the rest round it.
+    if (dress) s.design.corniceDress = was?.value ? { ...was, value: { ...dress, ...was.value }, ref: `${was.ref ?? ''}; paint, supports and centre: ${ref}` } : { value: dress, source: 'period-default', ref: `${ref}: 1800s timber cornice at the rates of lane R's eight read cornices` };
   }
   return row;
 }

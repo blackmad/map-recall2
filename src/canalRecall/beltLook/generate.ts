@@ -16,13 +16,13 @@ import type { DescriberAnswer } from '../houseSpec/describer.ts';
 import { solveRow, type MemberInput, type RowInput } from '../houseSpec/row/solve.ts';
 import type { RowDesign, RowField, RowRecord } from '../houseSpec/row/types.ts';
 import { districtRows, type GenPand, type GenRow, type GenStreet } from '../buurtGenerator/rows.ts';
-import { donorFor, fittedRead, frontTopM, gableable, type BeltDonor, type BeltTarget } from './donors.ts';
+import { donorFor, fittedRead, frontTopM, gableable, GABLED_CROWNS, type BeltDonor, type BeltTarget } from './donors.ts';
 import { dressBeltStone } from './stone.ts';
 import { dressBeltCornice } from './cornice.ts';
 
 export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: string }
 /** What a published source states for a pand (the monument register via house-specs): its crown and facade year. */
-export interface BeltStated { crown?: string; year?: number; shop?: boolean }
+export interface BeltStated { crown?: string; year?: number; shop?: boolean; finish?: BeltTarget['finish']; storeys?: number; stoop?: boolean }
 export interface BeltGenResult {
   rows: RowRecord[];
   /** Per drawn pand, where its design came from. */
@@ -41,18 +41,25 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     // The front's top (frontTopM: 3DBAG's eaves is often a rear eave under the street cornice).
     const pid = pandNumber(m.pand.id), eaves = frontTopM(m.pand.eavesM, m.pand.heightM, m.pand.ridgeM), ridge = m.pand.ridgeM;
     const sd = stated.get(pid);
-    const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge, roofCode: m.pand.roofCode ?? null, ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}) };
+    const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge, roofCode: m.pand.roofCode ?? null, heightM: m.pand.heightM ?? null,
+      ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}), ...(sd?.finish ? { finish: sd.finish } : {}), ...(sd?.storeys ? { storeys: sd.storeys } : {}), ...(sd?.stoop ? { stoop: true } : {}) };
     const own = reads.get(pid);
     let read: DescriberAnswer, sample: string | undefined, readRef: string;
     if (own) { read = own.answer; sample = own.sample; readRef = own.ref; prov[pid] = { own: true, ref: own.ref }; }
     else {
       const d = donorFor(t, donors);
       if (!d) return null;
-      read = fittedRead(t, d.donor); sample = d.donor.sample; readRef = `${BELT_LOOK_REF}: donor ${d.donor.pandId}`;
+      // A cornice front stands at 3DBAG's representative height (its storeys fitted to it); a gable's foot stays at the
+      // front top, the gable rising to the ridge.
+      const corniceTop = !GABLED_CROWNS.has(String(t.statedCrown ?? d.donor.answer.crown)) && t.heightM != null && eaves !== null && t.heightM > eaves ? t.heightM : null;
+      read = fittedRead(corniceTop !== null ? { ...t, eavesM: corniceTop } : t, d.donor); readRef = `${BELT_LOOK_REF}: donor ${d.donor.pandId}`;
+      // A stated plaster or stone front is judged pale from its finish, not the donor's brick sample.
+      sample = t.finish === 'plaster' || t.finish === 'stone' ? undefined : d.donor.sample;
       prov[pid] = { donor: d.donor.pandId, distance: d.distance, rank: d.rank, of: d.of };
     }
+    const top = !GABLED_CROWNS.has(String(read.crown)) && t.heightM != null && eaves !== null && t.heightM > eaves ? +t.heightM.toFixed(2) : eaves;
     members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: t.year, widthM: +m.front.lengthM.toFixed(2),
-      eaves3dbag: eaves, height3dbag: eaves, ...(ridge !== null && gableable(t) ? { ridge3dbag: +ridge.toFixed(2) } : {}),
+      eaves3dbag: top, height3dbag: top, ...(ridge !== null && gableable(t) ? { ridge3dbag: +ridge.toFixed(2) } : {}),
       read, readRef, ...(sample ? { wallSample: sample } : {}) });
   }
   return { id: `belt-${row.id}`, canalWindows: true, street: row.street, side: 'mixed', members, inputs: [BELT_LOOK_REF, 'public/data/extracts/amsterdam/bag-tiles/14', 'public/data/extracts/amsterdam/streets-routing.json'], solvedAt: at };

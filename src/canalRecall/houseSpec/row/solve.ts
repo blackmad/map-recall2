@@ -608,6 +608,14 @@ export function solveRow(input: RowInput): RowRecord {
   if (fronts.some(f => f.groundOffsetM === null || f.groundOffsetM === undefined))
     flags.push({ kind: 'no-reading', field: 'groundOffsetM', fronts: fronts.filter(f => f.groundOffsetM == null).map(f => f.id), detail: 'no street ground: topM is the series line above the pand ground (offset 0 assumed)' });
 
+  // Canal belt rows: a read frieze cornice draws lane R's timber frieze (RowCorniceDress.frieze): `frieze` its sunk panels,
+  // `attic-frieze` a low light over each axis. A stated cornice dress is kept.
+  if (input.canalWindows) for (const s of series) {
+    const c = s.design.cornice;
+    if (s.design.crown.value !== 'cornice' || !c || s.design.corniceDress) continue;
+    const frieze = c.value === 'frieze' ? 'panels' as const : c.value === 'attic-frieze' ? 'attic-lights' as const : null;
+    if (frieze) s.design.corniceDress = { value: { frieze }, source: c.source, ref: `${c.ref ?? ''}; the read ${c.value} cornice drawn as RowCorniceDress.frieze ${frieze}` };
+  }
   const schemaLimits = (input.limits ?? []).flatMap(l => l.fronts.filter(id => fronts.some(f => f.id === id)).map(front => ({ front, component: l.component, what: l.what, ref: l.ref })));
   return { v: ROW_RECORD_VERSION, id: input.id, street: input.street, side: input.side, ...(input.face ? { face: input.face } : {}), members, fronts, series, flags, readNotDrawn, overruled, ...(schemaLimits.length ? { schemaLimits } : {}), inputs: input.inputs, solvedAt: input.solvedAt };
 }
@@ -666,7 +674,7 @@ function notDrawnOfRead(a: DescriberAnswer, belt = false): Array<Omit<ReadNotDra
   if (Array.isArray(a.balconies) && a.balconies.length) out.push({ field: 'balconies', value: a.balconies, reason: 'not on the row allow-list: a balcony needs a reviewed statement (ROW_FRONT_EXTRAS)' });
   if (Array.isArray(a.bayWindow) && a.bayWindow.length) out.push({ field: 'bayWindow', value: a.bayWindow, reason: 'not on the row allow-list (the oriel dice drew the Kinkerstraat centre strip)' });
   if (a.bands && a.bands !== NV && a.bands !== 'none' && !BAND_EXTRAS[a.bands]) out.push({ field: 'bands', value: a.bands, reason: 'the row design has no band field; the head dressing carries the white course' });
-  if (a.cornice === 'frieze' || a.cornice === 'attic-frieze') out.push({ field: 'cornice', value: a.cornice, reason: 'drawn as the series cornice; the frieze panels are not drawn' });
+  if ((a.cornice === 'frieze' || a.cornice === 'attic-frieze') && !belt) out.push({ field: 'cornice', value: a.cornice, reason: 'drawn as the series cornice; the frieze panels are not drawn' });
   if (a.doorSurround === true && !beltDoorcase(a, belt)) out.push({ field: 'doorSurround', value: true, reason: 'door-surround is on the allow-list; its shape is not described' });
   for (const g of a.gaps ?? []) {
     const drawnBy = GAP_EXTRAS.find(x => x.test.test(g.what));
