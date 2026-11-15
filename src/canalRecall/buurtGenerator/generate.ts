@@ -1,0 +1,148 @@
+/**
+ * Buurt generator (docs/handoffs/buurt-generators-20261115.md): a district's undescribed street-side rows as house-rows
+ * records. Each series takes the district design its family states (storeys from the series' eaves line, the window
+ * cell, wall family and crown measured for the district); the row and its fronts are lane D's RowRecord
+ * (houseSpec/row/types.ts), joined to the renderer's records by lane R's `rowFrontsWithSeries` (houseLine/rowSeries.ts),
+ * so the row renderer, `check:rows` and the HouseSpec emit read them unchanged. Pure: no fs, no DOM.
+ *
+ * Every field is source `period-default` with a ref to the district library and its evidence: the district design is the
+ * series' stated value, never a per-pand pick. What the generator reads and does not draw (3DBAG roof rises, clamped
+ * eaves) is listed in `readNotDrawn`; what the kit cannot say is the library's `notDrawn`, copied into `schemaLimits`.
+ */
+import { variedTone, type JudgedFamily } from '../houseSpec/judgedColour.ts';
+import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
+import type { RowFrontRecord } from '../houseLine/rowFront.ts';
+import { ROW_RECORD_VERSION, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
+import { districtRows, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
+
+export interface DistrictDesign {
+  groundM: number;
+  storeyM: number;
+  axisM: number;
+  windowShare: number;
+  windows: RowWindowKind;
+  whiteFrames: boolean;
+  heads: RowHeads;
+  sills: boolean;
+  cornice: RowCorniceKind;
+  crown: RowCrownKind;
+  wall: { material: RowWallMaterial; family: JudgedFamily };
+  roofStorey: RowRoofStorey;
+  extras: string[];
+}
+export interface DistrictFamily { id: string; storeys: number; label: string; design?: Partial<DistrictDesign> }
+export interface DistrictLibrary {
+  district: string;
+  title: string;
+  buurten: string[];
+  /** Build years the district design covers (inclusive). */
+  years: [number, number];
+  evidence: string[];
+  design: DistrictDesign;
+  families: DistrictFamily[];
+  notDrawn: Array<{ component: string; what: string }>;
+}
+
+/** Why a pand of the district is not drawn by the generator. */
+export type GenSkip = 'described' | 'minor' | 'no-front' | 'single' | 'off-years' | 'off-storeys' | 'no-eaves';
+export interface GenResult {
+  rows: RowRecord[];
+  records: RowFrontRecord[];
+  skipped: Array<{ id: string; reason: GenSkip; detail?: string }>;
+  /** Series and pands per family. */
+  families: Record<string, { series: number; pands: number }>;
+  /** Each drawn front's line (lng/lat, left to right as seen from the street): the sheet rectifies the photo on it. */
+  fronts: Record<string, { street: string; a: readonly [number, number]; b: readonly [number, number]; lengthM: number }>;
+}
+
+/** The storey count a series line holds under the district's ground and upper pitch. */
+export function storeysFor(eavesM: number, d: Pick<DistrictDesign, 'groundM' | 'storeyM'>): number {
+  return Math.max(1, Math.round((eavesM - d.groundM) / d.storeyM) + 1);
+}
+/** Window axes on a front of this width at the district's axis pitch (at least two). */
+export function baysFor(widthM: number, d: Pick<DistrictDesign, 'axisM'>): number {
+  return Math.max(2, Math.round(widthM / d.axisM));
+}
+
+const pandNumber = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
+
+/** One series' design: the family's design over the district's, every field `period-default` with its ref. */
+export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSeries, rowId: string, bays: number): RowDesign {
+  const d = { ...lib.design, ...fam.design };
+  const ref = `buurt-generator ${lib.district} ${fam.id}`;
+  const f = <T>(value: T, why = ''): RowField<T> => ({ value, source: 'period-default', ref: why ? `${ref}: ${why}` : ref });
+  const design: RowDesign & { windowShare: RowField<number> } = {
+    corniceTopM: f<number | null>(s.eavesM, `series line = median 3DBAG eaves of ${s.members.length} members`),
+    crown: f(d.crown), cornice: f(d.cornice),
+    storeys: f(fam.storeys, `${s.eavesM} m line over a ${d.groundM} m ground and ${d.storeyM} m storeys`),
+    bays: f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes`),
+    windows: f(d.windows), heads: f<RowHeads | RowHeads[]>(d.heads), whiteFrames: f(d.whiteFrames), sills: f(d.sills),
+    wall: f({ material: d.wall.material, family: d.wall.family, hex: variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }),
+    roofStorey: f(d.roofStorey), extras: f(d.extras),
+    windowShare: f(d.windowShare),
+  };
+  return design;
+}
+
+function familyFor(lib: DistrictLibrary, storeys: number): DistrictFamily | null {
+  return lib.families.find(x => x.storeys === storeys) ?? null;
+}
+
+/** A generator row (rows.ts) as lane D's RowRecord, its series designed from the library; members off the library are cut out. */
+export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipped: GenResult['skipped']): RowRecord[] {
+  const out: RowRecord[] = [];
+  // A series the library cannot design splits the row: each run of designed series is its own record.
+  let members: RowMember[] = [], fronts: RowFront[] = [], series: RowSeries[] = [], readNotDrawn: ReadNotDrawn[] = [];
+  const flush = () => {
+    if (members.length >= 2) {
+      const id = `${row.id}-${members[0].pandId.slice(-6)}`;
+      out.push({ v: ROW_RECORD_VERSION, id, street: row.street, side: 'mixed', members, fronts, series, flags: [], readNotDrawn, overruled: [], inputs: [`src/canalRecall/buurtGenerator/districts/${lib.district}.json`, 'public/data/extracts/amsterdam/bag-tiles/14', 'public/data/extracts/amsterdam/streets-routing.json'], solvedAt: at,
+        schemaLimits: fronts.flatMap(fr => lib.notDrawn.map((l): RowLimit => ({ front: fr.id, component: l.component, what: l.what, ref: `buurt-generator ${lib.district}` }))) });
+    } else for (const m of members) skipped.push({ id: m.pandId, reason: 'single', detail: 'its designed run is one pand' });
+    members = []; fronts = []; series = []; readNotDrawn = [];
+  };
+  for (const s of row.series) {
+    const years = s.members.map(m => m.pand.year).filter((y): y is number => y !== null);
+    const off = (reason: GenSkip, detail: string) => { flush(); for (const m of s.members) skipped.push({ id: pandNumber(m.pand.id), reason, detail }); };
+    if (s.eavesM === null) { off('no-eaves', 'no 3DBAG eaves on the series'); continue; }
+    if (!years.length || years.some(y => y < lib.years[0] || y > lib.years[1])) { off('off-years', `built ${[...new Set(years)].join('/') || '?'}`); continue; }
+    const storeys = storeysFor(s.eavesM, lib.design), fam = familyFor(lib, storeys);
+    if (!fam) { off('off-storeys', `${storeys} storeys at ${s.eavesM} m`); continue; }
+    const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b);
+    const bays = baysFor(widths[widths.length >> 1], lib.design);
+    const seriesId = s.id;
+    const design = seriesDesign(lib, fam, s, row.id, bays);
+    series.push({ id: seriesId, label: `${fam.label}, built ${s.year ?? '?'}`, type: fam.id, fronts: s.members.map(m => pandNumber(m.pand.id)), design });
+    for (const m of s.members) {
+      const pid = pandNumber(m.pand.id);
+      members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: m.pand.year, widthM: m.front.lengthM, fronts: [pid] });
+      fronts.push({ id: pid, pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], widthM: m.front.lengthM, seriesId, ground: { use: 'other' }, overrides: {}, groundOffsetM: 0, topM: s.eavesM });
+      const e = m.pand.eavesM, r = m.pand.ridgeM;
+      if (s.clamped.includes(m.pand.id) && e !== null) readNotDrawn.push({ front: pid, field: '3dbag-eaves', value: e, reason: `clamped to the series line ${s.eavesM} m (row coherence: a lone step over 0.8 m)` });
+      if (e !== null && r !== null && r - e > 1) readNotDrawn.push({ front: pid, field: '3dbag-roof-rise', value: +(r - e).toFixed(2), reason: `${lib.design.roofStorey.kind === 'none' ? 'flat lid at the series line' : 'the series roof storey'}: roofs from the front, not 3DBAG` });
+    }
+  }
+  flush();
+  return out;
+}
+
+/**
+ * The district: rows from the undescribed pands (`described` ids never enter a row; they only break one), each series
+ * designed from the library. `records` are the renderer's front records (`ROW_FRONT_RECORDS`, `{records}` shape).
+ */
+export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[], streets: readonly GenStreet[], described: ReadonlySet<string>, at: string): GenResult {
+  const skipped: GenResult['skipped'] = [];
+  const free = pands.filter(p => { const d = described.has(pandNumber(p.id)); if (d) skipped.push({ id: pandNumber(p.id), reason: 'described' }); return !d; });
+  const res: RowsResult = districtRows(free, streets);
+  for (const u of res.unplaced) skipped.push({ id: pandNumber(u.id), reason: u.reason });
+  const rows = res.rows.flatMap(r => rowRecordOf(lib, r, at, skipped));
+  const drawn = new Set(rows.flatMap(r => r.members.map(m => m.pandId)));
+  const fronts: GenResult['fronts'] = {};
+  for (const r of res.rows) for (const m of r.members) {
+    const pid = pandNumber(m.pand.id);
+    if (drawn.has(pid)) fronts[pid] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
+  }
+  const families: GenResult['families'] = {};
+  for (const r of rows) for (const s of r.series) { const f = families[s.type!] ??= { series: 0, pands: 0 }; f.series++; f.pands += s.fronts.length; }
+  return { rows, records: rows.flatMap(r => rowFrontsWithSeries(r)), skipped, families, fronts };
+}

@@ -117,8 +117,9 @@ Erasmusgracht. By ride per pand, Rivierenbuurt and Apollo/Stadion lead.
 
 ## Phase 2: the Rivierenbuurt generator (this lane)
 
-- `src/canalRecall/buurtGenerator/` (typed, pure, tested): `rows.ts` (party-wall rows on one front street, series),
-  `design.ts` (the district families, from the type library), `emit.ts` (RowRecord + joined RowFrontRecords).
+- `src/canalRecall/buurtGenerator/` (typed, pure, tested in `buurtGenerator.test.ts`): `rows.ts` (party-wall rows on
+  one front street, series), `generate.ts` (the district families as series designs, RowRecord + joined
+  RowFrontRecords), `kitFlag.ts` (`?buurtKit=1` / `BUURT_KIT=1`, off by default).
 - `src/canalRecall/buurtGenerator/districts/rivierenbuurt.json`: the district library.
 - `scripts/buurt-generators/generate.ts --district=rivierenbuurt`: stages
   `artifacts/buurt-generators/<district>/` (records, per-row reports, coverage counts); never publishes.
@@ -127,3 +128,85 @@ Erasmusgracht. By ride per pand, Rivierenbuurt and Apollo/Stadion lead.
 - Publishing (`data/front-records/`, the world compile) stays with the integrator after David approves the first sheet.
 
 The results (counts, sheet path, verdicts, kit gaps) are appended below by the lane.
+
+## Phase 2 results (2026-11-15)
+
+### What was built
+
+- `node --import tsx scripts/buurt-generators/generate.ts --district=rivierenbuurt --check` (~35 s) stages
+  `artifacts/buurt-generators/rivierenbuurt/`: `row-front.json` (`{records}`, for `ROW_FRONT=1 ROW_FRONT_RECORDS=`),
+  `rows.json` (lane D RowRecords), `fronts.json` (front lines), `check/<row>.row-check.json`, and `report.md`.
+- **Rows.** A member's front is its longest unshared footprint edge facing a named street, extended over collinear
+  jogs of 1.6 m or less. Neighbours join when they face the same street within 25°, share a party wall of at least
+  2 m, and their front ends meet within 1.2 m.
+- **Series.** A series splits at a build-year step over 1 or an eaves step over 0.8 m. A lone outlier is clamped and
+  listed in `readNotDrawn`.
+- **Family and design.** The storey count is `round((line - 3.1) / 3.0) + 1`, which picks the family: three, four or
+  five storeys. Every design field is `period-default` with a ref to the library. The wall tone is seeded by the row,
+  not per pand. 3DBAG roof rises are listed as read, not drawn.
+- **Kit addition.** `bayLook.ts` `PLAN_ZUID_CASEMENT` is the Plan Zuid casement cell: white transom casements at a
+  share of 0.71, no head blocks, no lintel, no pale floor band (`proportions: 'wide'`). It is appended to the school
+  presets only under `buurtKit`, so with the flag off the bay table is byte-identical; the test pins that.
+  `bayLook.ts` is a lane-R file: the change is a single flag-gated append.
+- **Preview atlas.** `scripts/house-preview/atlas.ts` now has the layer count in the cache key, so a flag that adds
+  presets paints its own atlas.
+- **Sheet.** `scripts/buurt-generators/sheet.ts` lays out photo | before | after for one row, all on the row line at one
+  scale. The photo is the cached panorama, rectified offline.
+
+### Measured counts (Rivierenbuurt, 11 buurten)
+
+| | pands |
+|---|---:|
+| BAG pands in the district | 5,390 |
+| **drawn by the generator** | **2,495** (512 rows, 730 series) |
+| - rivieren-four | 1,417 |
+| - rivieren-three | 567 |
+| - rivieren-five | 511 |
+| described already (HouseSpec, row fronts, models, building types): untouched | 120 |
+| minor (eaves < 5 m or < 30 m²: sheds, annexes, garages) | 2,213 |
+| single (no party-wall neighbour on the same front street; corners, detached) | 337 |
+| off-years (outside 1915-1940) | 88 |
+| off-storeys (2 or 6+ storeys) | 79 |
+| no front street | 58 |
+
+Excluding the minor and described pands, 2,495 of 3,057 are drawn (82 %).
+
+### First sheet
+
+The first sheet is the Biesboschstraat row `biesboschstraat-069135-069135`: 10 members, 81.8 m, built 1929, a series
+line of 12.4 m, four storeys. The photo is panorama TMX7316010203-001034_pano_0000_001940 (2019-01-03), and the sheet
+is at `artifacts/buurt-generators/rivierenbuurt/sheets/biesboschstraat-069135-069135/sheet.jpg`.
+
+- **Before.** Ten unrelated houses: red, orange, pale and dark walls; four hipped or tiled gable roofs at different
+  heights; an oriel; 19th-century head blocks and floor bands.
+- **After.** One brown-brick four-storey row at one cornice line, with white transom casements on every upper storey.
+  This matches the photo's mass, colour, storey lines and window cell.
+- **Still wrong against the photo:**
+  - the tile roof behind the cornice is not drawn (a flat lid);
+  - the canted erkers on four of the members are missing;
+  - four members draw two wide windows per storey instead of four casements (the renderer gap below);
+  - the ground storey has single doors where the photo shows portiek doors.
+
+### Kit gaps (what the kit cannot say)
+
+1. **Erker jogs make the row renderer change the window cell.** The house preview picks the longest single front edge
+   (4.0 m on an erker member, against an 8 m front line). The mesher cannot fit the series' 4 bays there and draws 2
+   wide cells, so one series shows two window cells. This needs lane R (`rowFront.ts` / the mesher's street run) to fit
+   the series cell on the whole front line, or to accept per-front bays from the record.
+2. **No eaves-front pitched roof with dormers behind the cornice.** The row path has a flat lid or a mansard only.
+   Biesboschstraat, Scheldestraat and Churchilllaan show red tile roofs. This is the main gap for Apollo/Stadion
+   (district 2).
+3. **No canted or box erker on a row member.**
+4. **No portiek: paired doors under one transom.**
+5. **No deep white fascia and soffit at the flat top.** The cornice draws a band.
+6. **The toplight is one pane, not small panes.**
+7. **No brick soldier course over the ground storey.**
+
+### For the integrator
+
+- The lane did not publish or install anything.
+- **Publish.** After David approves the sheet, copy the staged `row-front.json` records into
+  `public/data/front-records/` (merge with `row-front.json`, which lists described pands that the generator already
+  excludes). Then recompile the world with `BUURT_KIT` / `buurtKit` on, or make it the default.
+- **Run on the sweep.** Re-run the generator after any HouseSpec or row publish in the district: described pands drop
+  out of its rows by construction.

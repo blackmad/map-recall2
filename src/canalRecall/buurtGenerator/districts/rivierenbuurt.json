@@ -1,0 +1,38 @@
+{
+  "district": "rivierenbuurt",
+  "title": "Rivierenbuurt (Plan Zuid north: Schelde-, IJsel- and Rijnbuurt)",
+  "buurten": ["KK01", "KK02", "KK03", "KK04", "KK05", "KL01", "KL02", "KM01", "KM02", "KM03", "KM04"],
+  "years": [1915, 1940],
+  "evidence": [
+    "scripts/block-face/types/rivierenbuurt/rijn-1934-flat-three.json: Boterdiepstraat 6-34 strip 2022-03-24 at 40 px/m (windows 1.44 m on 2.03 m axes, share 0.71; storeys 3.1/3.0/3.0/3.0 m; white frames #efeee8; brick #7a6a5f; flat top under a white trim)",
+    "17 cached municipal panoramas in KK02-04, KL01-02, KM01-03 (2019-01-03 to 2023-01-03), lane sheet artifacts/buurt-generators/rivierenbuurt/survey: four- and five-storey brown-red brick blocks, white casements with toplights, two to four per pand on every upper storey, no head or sill dressings, a flat top with a thin white trim on the side streets"
+  ],
+  "design": {
+    "groundM": 3.1,
+    "storeyM": 3.0,
+    "axisM": 2.03,
+    "windowShare": 0.71,
+    "windows": "casement-toplight",
+    "whiteFrames": true,
+    "heads": { "shape": "flat", "dressing": "none" },
+    "sills": false,
+    "cornice": "simple",
+    "crown": "cornice",
+    "wall": { "material": "brick", "family": "brown-brick" },
+    "roofStorey": { "kind": "none", "dormersPerFront": 0 },
+    "extras": []
+  },
+  "families": [
+    { "id": "rivieren-three", "storeys": 3, "label": "three-storey Plan Zuid row (eaves 8.4-10.6 m)" },
+    { "id": "rivieren-four", "storeys": 4, "label": "four-storey Plan Zuid block (eaves 10.6-13.6 m): the district's main family" },
+    { "id": "rivieren-five", "storeys": 5, "label": "five-storey Plan Zuid block (eaves 13.6-16.6 m; Rijnstraat, Churchilllaan)" }
+  ],
+  "notDrawn": [
+    { "component": "roof", "what": "the roof behind the flat top (3DBAG rises 3-5 m on most pands): not seen from the street on the photographed side streets; drawn as a flat lid at the series line (roofs from the front, memory 2026-10)" },
+    { "component": "portiek-doors", "what": "paired house doors under one transom at a party wall: the renderer's ground cell draws one door" },
+    { "component": "eaves-overhang", "what": "the deep white fascia and soffit of the 1934 rows (0.75 m): drawn as the simple cornice band" },
+    { "component": "erker", "what": "canted and box erkers on some members: the row path has no projecting bay" },
+    { "component": "toplight-panes", "what": "the small-pane toplight over two casements: the painter's transom is one pane" },
+    { "component": "pitched-roof-front", "what": "Scheldestraat and Churchilllaan blocks show a dark pitched roof with box dormers behind the eaves; the row path has a flat lid or a mansard only" }
+  ]
+}

@@ -17,6 +17,7 @@ import { modernPandWall } from './buurtProfiles/modernPandWalls.js';
 import { shopGrammarEnabled, shopGroundHex } from './shopGrammar.js';
 import { modernFacadesEnabled, modernUseFor, modernVocabulary, type ModernFacts, type ModernVocabulary } from './modernFacades.js';
 import { contemporaryLookFor, newbuildFamilyEnabled, type ContemporaryLook } from './contemporaryFamily.js';
+import { buurtKitEnabled } from './buurtGenerator/kitFlag.js';
 
 /**
  * The contemporary family's tall preset (contemporaryFamily.ts, `?newbuildFamily=1`): two tall windows to the floor per
@@ -31,6 +32,14 @@ export const TALL_FRENCH_BALCONY = { windows: 2, shape: 'rect', shutters: false,
  */
 export const BALCONY_BAND = { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .74, openingHeight: .78, sash: 'plain', trimDensity: 'restrained', lintel: 'none', frameTone: 'dark', wallMaterial: 'brick', facadeAssembly: 'balcony-band' } as const;
 
+/**
+ * Buurt generator kit (`?buurtKit=1`, buurtGenerator/kitFlag.ts): the Plan Zuid casement block (Rivierenbuurt,
+ * scripts/block-face/types/rivierenbuurt/rijn-1934-flat-three.json): white-framed casements under a toplight on even
+ * axes in plain brick, no stone floor band, no lintel, no pale accents. `proportions` keeps the school painter's paired
+ * windows and floor band (bayTextures.ts) out of these cells. The only school preset with a transom sash, so a row whose
+ * windows are `casement-toplight` (rowSeries.ts ROW_SASH) takes it through `sashStyle`. Only in the array with the flag on.
+ */
+export const PLAN_ZUID_CASEMENT = { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'wide', openingOccupancy: .71, openingHeight: .56, sash: 'transom', trimDensity: 'restrained', lintel: 'none', wallMaterial: 'brick' } as const;
 export const BAY_KINDS = ['upper', 'ground', 'groundDoor', ...SHOP_KINDS, 'plain'] as const satisfies readonly BayKind[];
 const isShopKind = (kind: string) => (SHOP_KINDS as readonly string[]).includes(kind);
 type BayStyle = Omit<BayVariant, 'kind' | 'archetype'>;
@@ -76,6 +85,7 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
   school: [
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: true },
+    ...(buurtKitEnabled() ? [PLAN_ZUID_CASEMENT] : []),
   ],
   modern: [
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .65, openingHeight: .52, sash: 'plain', trimDensity: 'restrained', lintel: 'none', wallMaterial: 'brick' },
