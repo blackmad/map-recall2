@@ -102,7 +102,7 @@ function front(b: BuildingTools, {f, len}: {f: Frame; len: number}) {
 function stripedTower(b: BuildingTools, {f, len}: {f: Frame; len: number}) {
   const TOP = 11.3;
   slab(b, f, len / 2, 0.1, len - 0.2, TOP - 0.1, 0.12, 'glass');
-  for (let y = 0.9; y + 0.75 < TOP; y += 1.55) slab(b, f, len / 2, y, len - 0.3, 0.75, 0.16, 'red'); // red bands
+  for (let y = 0.9; y + 0.75 < TOP; y += 1.55) slab(b, f, len / 2, y, len - 0.3, 0.75, 0.16, 'green'); // red enamel bands: the 'green' accent slot carries the spec's red, so they draw smooth, not as atlas brick
   for (let y = 0.1; y < TOP; y += 1.55) slab(b, f, len / 2, y, len - 0.5, 0.1, 0.2, 'white'); // white transoms
   for (const t of [0.3, len / 2, len - 0.3]) slab(b, f, t, 0.1, 0.12, TOP - 0.1, 0.14, 'white'); // mullions
   slab(b, f, len / 2, TOP - 0.35, len - 0.5, 0.35, 0.3, 'white'); // coping, kept under the 3DBAG roof (11.5 m)
