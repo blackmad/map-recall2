@@ -10,7 +10,8 @@ const { loadRowDefs } = await import('../../../scripts/house-specs/rows/rowDefs.
 const { loadRow } = await import('../../../scripts/house-specs/rows/house-rows.ts');
 const { solveRow } = await import('../houseSpec/row/solve.ts');
 const { rowFrontsWithSeries, seriesDraw } = await import('./rowSeries.ts');
-const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE, rowDressOf, ROW_WALL_SUFFIX, ROW_WALL_SLAB } = await import('./rowFront.ts');
+const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE, rowDressOf, ROW_WALL_SUFFIX, ROW_WALL_SLAB, rowRaisedFronts, ROW_RAISED_FRONT_M } = await import('./rowFront.ts');
+const { rowEdgeGrid } = await import('../threeBuildingMesh.ts');
 const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE, roofTriangles, roofTrianglesForOutline } = await import('../roofMesh.ts');
 const { specCellCount } = await import('../streetFacadeRendering.ts');
 const { isGardenShed } = await import('../gardenSheds.ts');
@@ -301,4 +302,33 @@ test('a chunk-owned corner (86-88): the row draws its stated street wall as a sl
   assert.equal(isGardenShed({ ...out, properties: { ...p, rowWallOnly: undefined } } as never, far, { lng, lat }), true, 'without the mark it would be a shed');
   // Flag off: untouched.
   assert.equal(withRowFront(f), f);
+});
+
+// Round 2 (Kinkerstraat 126-138, pand 233461): one pand, seven fronts of two series, s2's two fronts (m3, m6) to 16.45 m
+// over s1's 13.45 m line. Before: one wall to the line for all seven, and on its kinked street run (3.2 + 11.5 + 18.0 m,
+// 19 axes) the glass on the run's grid while the frames took each edge's own, half a bay apart over the middle fronts.
+test('a member whose fronts stand to two lines draws a raised front on each taller span; its kinked run paints one grid', () => {
+  const base = rec(K, '0363100012165799'), line = base.eavesM!;
+  const a = [0, 0.15, 0.3, 0.45, 0.56, 0.73, 0.89, 1], tall = new Set([3, 6]);
+  const subFronts = a.slice(0, -1).map((a0, i) => ({ a0, a1: a[i + 1], eavesM: tall.has(i) ? line + 3 : line, topM: tall.has(i) ? line + 3 : line, crown: { family: 'cornice' as const } }));
+  const r = { ...base, pandId: '0363100012233461', subFronts, spanM: 32.8 };
+  const raised = rowRaisedFronts(r, line)!;
+  assert.equal(raised.length, 7);
+  raised.forEach((f, i) => {
+    assert.equal(f.step.wallTopM, line, 'every wall stops at the series line');
+    if (tall.has(i)) { assert.equal(f.step.crown?.shape, 'raised'); assert.equal(f.step.crown?.riseM, 3); assert.equal(f.step.crown?.bandM, 3, 'a full-width front to its own top'); }
+    else assert.equal(f.step.crown, undefined);
+  });
+  const p = withFlag([r], () => withRowFront(feature(r.pandId, 16))).properties as any;
+  assert.equal(p.rowSeries, base.series!.id);
+  assert.equal(p.roofEavesHeightM, line, 'the series mansard stands on the line');
+  assert.deepEqual(p.specRecipe.subFronts.map((f: any) => f.step.crown?.riseM ?? 0), [0, 0, 0, 3, 0, 0, 3]);
+  // One line (every published round-1 member): nothing changes.
+  assert.equal(rowRaisedFronts({ ...r, subFronts: subFronts.map(f => ({ ...f, eavesM: line, topM: line + ROW_RAISED_FRONT_M })) }, line), null);
+  assert.equal(rowRaisedFronts({ ...r, spanM: undefined }, line), null, 'no width, no raised fronts');
+  const plain = withFlag([base], () => withRowFront(feature(base.pandId, 16))).properties as any;
+  assert.equal(plain.specRecipe?.subFronts, undefined);
+  // The kinked run: each edge on its own whole bays, numbered on along the run (the extras' edgeLayout grid).
+  const bw = 32.68 / 19, grid = rowEdgeGrid({ bays: 19, bayWidthM: bw, groundM: 3.6, storeys: 3, storeyM: 3.2, doorBays: [], lengthM: 32.68, edgeStartM: [0, 3.17, 14.7] }, [3.17, 11.53, 17.99]);
+  assert.deepEqual(grid, [{ u0: 0, bays: 2 }, { u0: 2, bays: 7 }, { u0: 9, bays: 10 }]);
 });
