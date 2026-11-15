@@ -39,6 +39,7 @@ import type { HouseSpec, SpecFacts } from './spec.ts';
 export const JUDGED_FAMILIES = [
   'red-brown-brick', 'brown-brick', 'purple-brown-brick', 'orange-red-brick', 'buff-brick',
   'painted-white', 'cream-render', 'pale-grey-stucco', 'grey-stone', 'painted-dark', 'sandstone',
+  'dark-grey-brick',
 ] as const;
 export type JudgedFamily = (typeof JUDGED_FAMILIES)[number];
 
@@ -62,6 +63,9 @@ export const JUDGED_PALETTE: Record<JudgedFamily, JudgedTone> = {
   'grey-stone':         { L: 0.63, C: 0.012, h: 85, dL: 0.02, dC: 0.004, dh: 6, maxL: 0.68, wallFamily: 'grey', pale: true, label: 'mid grey stone' },
   'painted-dark':       { L: 0.30, C: 0.012, h: 150, dL: 0.015, dC: 0.004, dh: 25, maxL: 0.33, wallFamily: 'dark', pale: false, label: 'painted black / dark green-black' },
   'sandstone':          { L: 0.76, C: 0.055, h: 76, dL: 0.02, dC: 0.008, dh: 3, maxL: 0.8, wallFamily: 'buff', pale: true, label: 'sandstone' },
+  // Herengracht's old canal brick under overcast cuts: dark and nearly grey (55 L .41 C .004, 63 L .40 C .017, 65 L .37
+  // C .015), where purple-brown (C .045) drew maroon (round 4, lane D bins by chroma). Appended: unused, nothing changes.
+  'dark-grey-brick':    { L: 0.40, C: 0.010, h: 40, dL: 0.02, dC: 0.004, dh: 8, maxL: 0.44, wallFamily: 'brown', pale: false, label: 'dark, nearly grey canal brick' },
 };
 
 /** The decision's knobs (see the header). */
@@ -253,7 +257,7 @@ const eraWhy = (f: JudgedFamily, year: number | null | undefined, rel: number | 
   `brick${Number.isFinite(year) ? ` (${year})` : ''}${rel !== undefined ? `, sample ${rel >= 0 ? '+' : ''}${rel.toFixed(2)} L against its row` : ', no sample'}: ${JUDGED_PALETTE[f].label}`;
 
 const median = (xs: number[]) => { const v = [...xs].sort((a, b) => a - b), m = v.length >> 1; return v.length % 2 ? v[m] : (v[m - 1] + v[m]) / 2; };
-const BRICKS: readonly JudgedFamily[] = ['red-brown-brick', 'brown-brick', 'purple-brown-brick', 'orange-red-brick', 'buff-brick'];
+const BRICKS: readonly JudgedFamily[] = ['red-brown-brick', 'brown-brick', 'purple-brown-brick', 'orange-red-brick', 'buff-brick', 'dark-grey-brick'];
 
 /**
  * A street row in order (left to right along the street): each front judged against the row's median sample (or, with
