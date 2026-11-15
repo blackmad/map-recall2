@@ -358,11 +358,38 @@ const RUSTIC = { course: 0.34, joint: 0.06, block: 0.95, stone: '#a3a199', joint
  *  shared components' courses. */
 const ROW_BANDS = { spek: 0.1, spekLines: [0.04, 0.5, 0.96], spekOut: 0.03, course: 0.2, courseOut: 0.08, margin: 0.06, floor: 0.1, floorOut: 0.05, floorHex: '#a9a193' } as const;
 /** The stoop: steps and cheek walls up to the bel-etage door over a souterrain (Weteringschans 169016, 171218). */
-const STOOP = { rise: 0.19, tread: 0.3, landing: 0.85, reach: 1.75, cheek: 0.22, side: 0.12, rail: 0.75, hex: '#a3a199', door: '#3b2f27' } as const;
+const STOOP = { rise: 0.19, tread: 0.3, landing: 0.85, reach: 1.75, cheek: 0.22, side: 0.12, rail: 0.75, hex: '#a3a199', door: '#3b2f27', shutters: 0.4, maxRise: 3, lowRise: 0.95 } as const;
 /** The bel-etage street door over a stated stoop: the bel-etage window at the stated end, from the floor up. */
+/** The souterrain windows a stoop flight over [x0, x1] stands in front of, with their shutters' margin: [x0, x1, z0, z1]. */
+export function stoopHiddenWindows(c: ExtraContext, x0: number, x1: number): Array<[number, number, number, number]> {
+  // The souterrain under a stoop's flight [x0, x1]: when the front has souterrain windows (the grid's or traced ones below
+  // the bel-etage floor), the cell behind the flight is walled over to the floor, a shutter's width past the cheeks, so no
+  // frame or shutter peeks out beside the flight (Herengracht 130); the windows beside it stay.
+  const floor = storeyZ(c, 0);
+  const low = windowSpans(c, -1).length > 0 || (c.rowDress?.windows ?? []).some(w => w.z1 <= floor + 0.2);
+  return low && floor - c.base > 0.6 ? [[Math.max(0, x0 - STOOP.shutters), Math.min(c.f.len, x1 + STOOP.shutters), c.base, floor - 0.1]] : [];
+}
 export function stoopDoor(c: ExtraContext): Span | null {
   const st = c.rowDress?.stoop;
   if (!st || !c.groundLevel || c.layout.storeys < 1) return null;
+  if (st.at !== undefined) {
+    // The read door's place (rowDressOnEdge stoopAt): the bel-etage window nearest it, a traced one when the record traced
+    // the windows. A read door index is the place itself: the painted cells draw the read window count, which the extras'
+    // grid need not share (Herengracht 132: 6 painted windows, 4 grid spans; the door slab stood over half a window).
+    const floor = storeyZ(c, 0), above = (c.rowDress?.windows ?? []).filter(w => w.z0 >= floor - 0.3), sill = Math.min(...above.map(w => w.z0));
+    const traced = above.filter(w => w.z0 < sill + 0.5).map(w => ({ x: (w.x0 + w.x1) / 2, hw: (w.x1 - w.x0) / 2, z1: w.z1 }));
+    const ws = traced.length ? traced : windowSpans(c, 0);
+    if (!ws.length) return null;
+    const w = ws.reduce((a, b) => Math.abs(b.x - st.at!) < Math.abs(a.x - st.at!) ? b : a);
+    const x = st.exact && !traced.length ? Math.min(c.f.len - 0.6, Math.max(0.6, st.at)) : w.x;
+    // A full ground storey under the stated stoop (no souterrain cell: Herengracht 162's bel-etage floor 4.4 m up): the door
+    // stands in the ground storey up a short flight, not a storey-high grey block under a slab (reviewers' 113, 248-287).
+    if (floor - c.base > STOOP.maxRise) {
+      const head = Math.max(...windowSpans(c, -1).map(g => g.z1), c.base + STOOP.lowRise + 2.1);
+      return { x, hw: Math.max(w.hw, 0.5), z0: c.base + STOOP.lowRise, z1: Math.min(floor - 0.25, head) };
+    }
+    return { x, hw: Math.max(w.hw, 0.5), z0: floor, z1: w.z1 };
+  }
   const ws = windowSpans(c, 0).sort((a, b) => a.x - b.x);
   if (!ws.length) return null;
   const w = st.end === 'start' ? ws[0] : st.end === 'end' ? ws[ws.length - 1] : ws.reduce((a, b) => Math.abs(b.x - c.f.len / 2) < Math.abs(a.x - c.f.len / 2) ? b : a);
@@ -559,6 +586,10 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     const h = d.z0 - c.base;
     if (h < 0.3) return;
     const n = Math.max(2, Math.ceil(h / STOOP.rise)), rise = h / n, x0 = d.x - d.hw - 0.1, x1 = d.x + d.hw + 0.1;
+    // A souterrain window behind the flight (basement 'stoop-and-windows', Herengracht 130): the flight stands where the read
+    // door is, so the window cell there is walled over (its frame and shutters peeked out beside the flight); the souterrain
+    // windows beside it stay.
+    if (c.rowDress?.stoop?.steps !== false && d.z0 >= storeyZ(c, 0) - 1e-6) for (const [a, b, z0, z1] of stoopHiddenWindows(c, x0 - STOOP.cheek, x1 + STOOP.cheek)) s.strip(c.f, a, b, 0.1, z0, z1, c.wallHex);
     // The door leaf and its white frame, over the bel-etage window's glass.
     s.strip(c.f, d.x - d.hw, d.x + d.hw, 0.03, d.z0, d.z1, STOOP.door);
     s.strip(c.f, d.x - d.hw - 0.1, d.x - d.hw, 0.05, d.z0, d.z1 + 0.1, WHITE);
