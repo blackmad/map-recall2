@@ -158,5 +158,95 @@
       "what": "75-87 ground floors carry an entresol (a second row of shop glazing) that the kit ground storey cannot draw",
       "ref": "lane D, D1 cuts"
     }
+  ],
+  "kinkerstraat-363-371": [
+    {
+      "fronts": [
+        "0363100012089984#m0",
+        "0363100012089984#m1",
+        "0363100012237269#m0",
+        "0363100012237269#m1"
+      ],
+      "component": "crown",
+      "what": "module crowns of 363-365 and 369 are not drawn per module: the renderer draws one roof over the pand (lane R, as on 126-138)",
+      "ref": "lane D round 2 sheet"
+    },
+    {
+      "fronts": [
+        "0363100012089984#m0",
+        "0363100012089984#m1",
+        "0363100012089983"
+      ],
+      "component": "storeys",
+      "what": "the photo shows four window rows over the ground floor on 363-367 where face and D1 both state 4 storeys (3 drawn above the ground); second look at the blind review",
+      "ref": "lane D round 2 sheet"
+    },
+    {
+      "fronts": [
+        "0363100012089984#m0",
+        "0363100012089983",
+        "0363100012237269#m1"
+      ],
+      "component": "balcony",
+      "what": "stacked iron balconies on the centre axis of every upper storey; one balcony is drawn",
+      "ref": "lane D round 2 sheet"
+    }
+  ],
+  "kinkerstraat-315-359": [
+    {
+      "fronts": [
+        "0363100012160018",
+        "0363100012165777",
+        "0363100012237373#m0"
+      ],
+      "component": "balcony",
+      "what": "French balconies on the centre axis of every upper storey (kinker-1902-balcony-axis); the kit draws one at the first storey",
+      "ref": "lane D round 2 sheet"
+    }
+  ],
+  "kinkerstraat-334-374": [
+    {
+      "fronts": [
+        "0363100012160347",
+        "0363100012155971",
+        "0363100012156317",
+        "0363100012167305"
+      ],
+      "component": "crown",
+      "what": "344-352 are under scaffolding in the D1 capture: the face's bell gables are unverified (D1 reads neck 2 of 2)",
+      "ref": "lane D round 2 sheet; 7 scaffold flags"
+    },
+    {
+      "fronts": [
+        "0363100012160344#m0",
+        "0363100012160344#m1",
+        "0363100012160344#m2",
+        "0363100012072741#m0",
+        "0363100012072741#m1"
+      ],
+      "component": "window",
+      "what": "D1 (5 of 5) reads painted block-course heads and a simple cornice where the face says keystone heads and a bracketed cornice; face drawn",
+      "ref": "lane D round 2 scores"
+    }
+  ],
+  "kinkerstraat-186-202": [
+    {
+      "fronts": [
+        "0363100012160226"
+      ],
+      "component": "crown",
+      "what": "186 has a curved (bell) gable with round attic windows over the cornice; drawn as a cornice front",
+      "ref": "lane D round 2 sheet"
+    }
+  ],
+  "kinkerstraat-244-332": [
+    {
+      "fronts": [
+        "0363100012233496"
+      ],
+      "component": "wall",
+      "what": "244-248 is dark brown brick (face measured #302d23); the face palette dark-brown-brick has no row family, so the single read's brown-brick tone is drawn",
+      "ref": "lane D round 2"
+    }
   ]
 }

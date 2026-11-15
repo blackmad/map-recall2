@@ -138,5 +138,36 @@
       "at": "2026-11-15",
       "note": "75-87: the dormers are flat-topped boxes with a small triangle ornament, not pediments; D1 6 of 6 reads plain"
     }
+  ],
+  "kinkerstraat-315-359": [
+    {
+      "fronts": [
+        "0363100012156907",
+        "0363100012237373#m2",
+        "0363100012153818",
+        "0363100012153447",
+        "0363100012159990",
+        "0363100012167386"
+      ],
+      "field": "crown",
+      "value": "point",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-315-359/blind/photo.jpg)",
+      "at": "2026-11-15",
+      "note": "the gables are straight-sided triangles with one round-arched attic window, not bell curves; D1 reads point 5 of 6"
+    }
+  ],
+  "kinkerstraat-363-371": [
+    {
+      "fronts": [
+        "0363100012089984#m0",
+        "0363100012089983",
+        "0363100012237269#m1"
+      ],
+      "field": "crown",
+      "value": "point",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-363-371/blind/photo.jpg)",
+      "at": "2026-11-15",
+      "note": "363, 367 and 369 rise in pointed triangular gables over the cornice line; the face's bell and D1's cornice (3 of 3) both miss them"
+    }
   ]
 }

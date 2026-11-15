@@ -265,6 +265,8 @@ interface Ev { front: RowFront; face?: FaceFront; read?: ReturnType<typeof readV
 
 export function splitCount(m: MemberInput, rowBays: number | null, rowWidth: number | null): { n: number; why?: string } {
   if ((m.face?.length ?? 0) >= 2) return { n: m.face!.length, why: 'face intent modules' };
+  // A face that states one front is the description: a wide reading never splits it (Kinkerstraat 244-248, the 1985 infill).
+  if (m.face?.length === 1) return { n: 1 };
   const b = num(m.read?.bays);
   if (b && rowBays && m.numbers.length >= 2 && b >= 2 * rowBays && m.widthM && rowWidth && m.widthM >= 1.6 * rowWidth)
     return { n: 2, why: `read ${b} bays on ${m.widthM} m against the row's ${rowBays} on ${rowWidth} m, two numbers` };
