@@ -227,3 +227,28 @@ test('Weteringschans 168042: one dark shopfront (a narrow door and one large win
   assert.deepEqual([sf.displayWindows, sf.glazing, sf.entrance], [1, 'single', 'left']);
   assert.equal(oneShopfront({ gaps: [{ component: 'shopfront', what: 'two shops side by side under one fascia' }] } as never), null);
 });
+
+test('Kinkerstraat 31-49 (round 2): a front with no head joins only a neighbour of the same type, dormers and crown', () => {
+  const r = solveRow(loadRow(loadRowDefs()['kinkerstraat-31-49'], '2026-11-15').input);
+  const series = (pid: string) => r.fronts.find(f => f.pandId === pid)!.seriesId;
+  // 31 (158968): no dormer, its own series; 49 (157926): the 1893 neo-renaissance corner, its own series; 33-47 one series.
+  assert.notEqual(series('0363100012158968'), series('0363100012160646'));
+  assert.notEqual(series('0363100012157926'), series('0363100012161457'));
+  assert.equal(new Set(['0363100012160646', '0363100012155369', '0363100012160073', '0363100012160074', '0363100012167106', '0363100012159384', '0363100012154359', '0363100012161457'].map(series)).size, 1);
+  const d31 = frontDesign(r, r.fronts.find(f => f.pandId === '0363100012158968')!);
+  assert.equal(d31.roofStorey.value.dormersPerFront, 0, '31 draws no dormer');
+  // Keystones stated as a surround (windowSurround keystone) are the series head.
+  assert.equal(headsList(d31.heads.value)[0].dressing, 'keystone');
+});
+
+test('Kinkerstraat 126-138 (round 2): a module pand splits by the face module shares, not equally', () => {
+  const r = solveRow(loadRow(loadRowDefs()['kinkerstraat-120-138'], '2026-11-15').input);
+  const subs = r.fronts.filter(f => f.pandId === '0363100012233461').map(f => f.sub!);
+  assert.equal(subs.length, 7);
+  assert.equal(subs[0].a0, 0);
+  assert.equal(subs[6].a1, 1);
+  // The two narrow round-window gable axes (modules 4 and 7, shares 0.113 and 0.109) are narrower than their neighbours.
+  const w = subs.map(s => s.a1 - s.a0);
+  assert.ok(w[3] < w[2] && w[3] < w[4], `module 4 narrow: ${w.join(',')}`);
+  assert.ok(w[6] < w[5], `module 7 narrow: ${w.join(',')}`);
+});

@@ -41,6 +41,8 @@ export const BAND_EXTRAS: Readonly<Record<string, string[]>> = {
 /** What a face intent states for one house front (a module of a two-module pand is its own entry). */
 export interface FaceFront {
   type?: string;
+  /** A module front's share of the pand's street wall (the face's module share); absent = equal split. */
+  share?: number;
   crown?: RowCrownKind;
   cornice?: RowCorniceKind;
   storeys?: number;
@@ -294,13 +296,17 @@ export function solveRow(input: RowInput): RowRecord {
       flags.push({ kind: 'scaffold', fronts: ids, detail: `reading not used: ${held}; queued for a re-read from another capture year (scripts/house-specs/rows/reread-queue.ts)` });
       readNotDrawn.push({ front: m.pandId, field: 'reading', value: m.readRef ?? m.read!.image?.ref, reason: `held: ${held}; the front takes its series` });
     }
+    // Module shares from the face (Kinkerstraat 126-138: two narrow gable axes among wider modules); else an equal split.
+    const shares = m.face?.length === n && m.face.every(f => typeof f.share === 'number' && f.share > 0) ? m.face.map(f => f.share!) : Array.from({ length: n }, () => 1);
+    const total = shares.reduce((a, b) => a + b, 0);
+    const cut = shares.reduce<number[]>((acc, x) => [...acc, acc[acc.length - 1] + x / total], [0]);
     ids.forEach((id, i) => {
       const face = m.face?.[i];
       const label = n === 1 ? m.label : `${input.street} ${nums[i] ?? `${m.numbers.join('–')} (${i + 1}/${n})`}`;
       const front: RowFront = {
         id, pandId: m.pandId, label, numbers: n === 1 ? m.numbers : nums[i] !== undefined ? [nums[i]] : m.numbers,
-        ...(n > 1 ? { sub: { index: i, of: n, a0: r2(i / n), a1: r2((i + 1) / n) } } : {}),
-        widthM: m.widthM === null ? null : r2(m.widthM / n), seriesId: '', ground: face?.ground ?? groundOfRead(m.read && !held ? m.read : null),
+        ...(n > 1 ? { sub: { index: i, of: n, a0: r2(cut[i]), a1: r2(cut[i + 1]) } } : {}),
+        widthM: m.widthM === null ? null : r2(m.widthM * (cut[i + 1] - cut[i])), seriesId: '', ground: face?.ground ?? groundOfRead(m.read && !held ? m.read : null),
         overrides: {}, groundOffsetM: m.groundOffsetM ?? null, topM: null, ...(held ? { readHeld: held } : {}),
         ...(m.readFront !== undefined && m.readFront !== i ? { readElsewhere: `the read describes front ${m.readFront + 1} of ${n} only` } : {}),
       };
@@ -333,12 +339,20 @@ export function solveRow(input: RowInput): RowRecord {
     const shapes = headsList(r.heads as RowHeads | RowHeads[] | undefined).map(h => h.shape).sort().join('+') || null;
     return JSON.stringify([r.crown ?? null, cornice, r.roofKind ?? null, r.storeys ?? null, e.frontsOfPand > 1 ? Math.round((r.bays as number) / e.frontsOfPand) : r.bays ?? null, shapes]);
   };
-  // A face front that states the type but no head joins its neighbour (rule 2: unstated takes the series value).
+  // A face front that states the type but no head joins its neighbour (rule 2: unstated takes the series value) - the
+  // nearest one that states the same type, dormers and crown: only the head is unstated. A different type or crown is a
+  // statement, not a gap (Kinkerstraat 31-49, round 2: the 1893 neo-renaissance corner 49 and the dormerless 31 had
+  // joined the keystone series of 33-47 and drawn its dormer).
+  const stated = (e: Ev) => e.face ? JSON.stringify([e.face.type, e.face.dormers ?? null, e.face.crown ?? null]) : null;
   const keys = evs.map(e => e.face && !e.face.heads && evs.some(o => o !== e && o.face?.heads) ? null : sig(e));
-  for (let i = 0; i < keys.length; i++) if (keys[i] === null) {
-    const left = keys.slice(0, i).reverse().find(k => k !== null), right = keys.slice(i + 1).find(k => k !== null);
-    keys[i] = left ?? right ?? 'none';
-  }
+  const joined = keys.map((k, i) => {
+    if (k !== null) return k;
+    const like = (j: number) => keys[j] !== null && stated(evs[j]) === stated(evs[i]);
+    const order = [...Array(keys.length).keys()].filter(j => j !== i).sort((a, b) => Math.abs(a - i) - Math.abs(b - i) || a - b);
+    const j = order.find(like);
+    return j !== undefined ? keys[j]! : sig(evs[i]) ?? 'none';
+  });
+  keys.splice(0, keys.length, ...joined);
   const seriesKeys: string[] = [];
   for (const k of keys) if (!seriesKeys.includes(k!)) seriesKeys.push(k!);
   const series: RowSeries[] = seriesKeys.map((k, si) => {
