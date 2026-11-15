@@ -17,6 +17,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
+import { decodeRoofFactTile } from '../../src/canalRecall/roofs/roofSlots.ts';
 import { generateDistrict, type DistrictLibrary } from '../../src/canalRecall/buurtGenerator/generate.ts';
 import type { GenPand, GenStreet, LngLat } from '../../src/canalRecall/buurtGenerator/rows.ts';
 import { rowSpec } from '../../src/canalRecall/houseSpec/row/emit.ts';
@@ -54,6 +55,9 @@ export function districtPands(lib: DistrictLibrary): GenPand[] {
   for (let x = tx(box[0]); x <= tx(box[2]); x++) for (let y = ty(box[3]); y <= ty(box[1]); y++) {
     const file = `${EXTRACT}/bag-tiles/14/${x}/${y}.geojson.gz`;
     if (!fs.existsSync(file)) continue;
+    // The orthophoto roof reading per pand (roof-facts sidecar): the series' roof material and its eaves type follow it.
+    const factsFile = `${EXTRACT}/roof-facts/14/${x}/${y}.json.gz`;
+    const facts = fs.existsSync(factsFile) ? decodeRoofFactTile(JSON.parse(zlib.gunzipSync(fs.readFileSync(factsFile)).toString('utf8'))) : new Map();
     for (const f of JSON.parse(zlib.gunzipSync(fs.readFileSync(file)).toString('utf8')).features) {
       const p = f.properties, id = String(p.id ?? '');
       if (!/Pand\.\d{16}$|^\d{16}$/.test(id) || out.has(id)) continue;
@@ -61,7 +65,8 @@ export function districtPands(lib: DistrictLibrary): GenPand[] {
       const cx = ring.reduce((t, c) => t + c[0], 0) / ring.length, cy = ring.reduce((t, c) => t + c[1], 0) / ring.length;
       if (!polys.some((q: any) => cx >= q.box[0] && cx <= q.box[2] && cy >= q.box[1] && cy <= q.box[3] && inside(q.rings, cx, cy))) continue;
       const num = (v: unknown) => typeof v === 'number' && Number.isFinite(v) ? v : null;
-      out.set(id, { id, ring: ring.map(c => [c[0], c[1]] as const), year: num(p.year), eavesM: num(p.eaves), ridgeM: num(p.ridge) });
+      const fact = facts.get(id.replace(/^NL\.IMBAG\.Pand\./, '')) ?? facts.get(id);
+      out.set(id, { id, ring: ring.map(c => [c[0], c[1]] as const), year: num(p.year), eavesM: num(p.eaves), ridgeM: num(p.ridge), roofSlot: fact?.slot ?? null });
     }
   }
   return [...out.values()].sort((a, b) => a.id < b.id ? -1 : 1);

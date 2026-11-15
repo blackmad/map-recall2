@@ -24,6 +24,8 @@ export interface GenPand {
   /** 3DBAG eaves and ridge above the pand's ground (m), as the base tiles carry them. */
   eavesM: number | null;
   ridgeM: number | null;
+  /** The orthophoto roof reading (roof-facts sidecar, roofs/roofSlots.ts): tile, slate, gravel, ...; null unread. */
+  roofSlot?: string | null;
 }
 export interface GenStreet { name: string; path: readonly LngLat[] }
 
@@ -40,6 +42,8 @@ export const JOIN_DEG = 25;
 export const EXTEND_OFFSET_M = 1.5;
 export const EXTEND_DEG = 20;
 export const EXTEND_JOG_M = 1.6;
+/** A ring vertex this close to the front line (m) is on it: the line runs on to the furthest such vertex. */
+export const FRONT_ON_LINE_M = 0.3;
 /** Pands under this eaves (m) or footprint (m²) are sheds, porches and garages: never row members (they break no row either). */
 export const MINOR_EAVES_M = 5;
 export const MINOR_AREA_M2 = 30;
@@ -160,9 +164,15 @@ export function frontEdgeOf(pand: GenPand, ringXY: XY[], neighbours: XY[][], str
     // Left to right as seen from the street: the viewer faces -n, so right is (-n.y, n.x).
     const right = { x: -n.y, y: n.x };
     const [aa, bb] = dot(sub(hi, lo), right) >= 0 ? [lo, hi] : [hi, lo];
-    const proj = (v: XY): XY => { const t = dot(sub(v, p), u); return { x: p.x + u.x * t, y: p.y + u.y * t }; };
-    const la = proj(aa), lb = proj(bb);
-    best = { score, e: { street: near.name, a: aa, b: bb, aLngLat: frame.lngLat(aa), bLngLat: frame.lngLat(bb), lengthM: +len(sub(bb, aa)).toFixed(2), n, streetM: +near.m.toFixed(1),
+    // The line runs on to the pand's own front corners: a ring vertex on the line (within FRONT_ON_LINE_M) beyond the
+    // walked ends is still this front (Rooseveltlaan 080196: a 0.64 m strip by the party wall that the neighbour's
+    // overlapping outline marks as shared; the front stopped short, and the row roof, sized to it, hipped mid-row).
+    const ta = dot(sub(aa, p), u), tb = dot(sub(bb, p), u), sgn = tb >= ta ? 1 : -1;
+    let tMin = Math.min(ta, tb), tMax = Math.max(ta, tb);
+    for (const v of ringXY) if (Math.abs(dot(sub(v, p), n)) <= FRONT_ON_LINE_M) { const t = dot(sub(v, p), u); tMin = Math.min(tMin, t); tMax = Math.max(tMax, t); }
+    const at = (t: number): XY => ({ x: p.x + u.x * t, y: p.y + u.y * t });
+    const la = sgn > 0 ? at(tMin) : at(tMax), lb = sgn > 0 ? at(tMax) : at(tMin);
+    best = { score, e: { street: near.name, a: aa, b: bb, aLngLat: frame.lngLat(aa), bLngLat: frame.lngLat(bb), lengthM: +(tMax - tMin).toFixed(2), n, streetM: +near.m.toFixed(1),
       lineA: frame.lngLat(la), lineB: frame.lngLat(lb), erkers: [], la, lb } as FrontEdge & { la: XY; lb: XY } };
   }
   if (!best) return null;

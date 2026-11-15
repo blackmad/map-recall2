@@ -4,7 +4,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { erkersOf, erkersOnCells, straightenRing, KIT_MULLION_SHARE, type BuurtKitFront, type LngLat } from './frontKit.js';
-import { buurtRoofKitFor, KIT_DORMER, pitchBandM } from './roofKit.js';
+import { buurtRoofKitFor, drawKitFront, kitDrawsFront, EAVES_LOOK, KIT_DORMER, PIER_LOOK, RIBBON_LOOK, pitchBandM, type BuurtRoofKit } from './roofKit.js';
+import { RoofSink } from '../../roofSink.js';
+import { kitWantsCoping } from './frontKit.js';
 import { bayDoorGeometry, variantKey, type BayVariant } from '../../bayTextures.js';
 import { BAY_STYLES } from '../../bayLook.js';
 import { resetRowFront, setRowFrontRecords, withRowFront, type RowFrontRecord } from '../../houseLine/rowFront.js';
@@ -144,4 +146,65 @@ test('painter: existing variants keep their keys and doors; the kit presets exis
   assert.equal(bayDoorGeometry(pair).width, 200);
   // Flag off (the module was loaded without BUURT_KIT): the school presets are the stock two.
   assert.equal(BAY_STYLES.school.length, process.env.BUURT_KIT === '1' ? 4 : 2);
+});
+
+// Round 4: the series pattern (rhythm), the block piers, the Rooseveltlaan eaves, all on the street end of the row roof.
+// A sink in the identity frame: the front end is x = L/2, c (left to right as seen) is y, z up from the series line.
+const L4 = 10, W4 = 8;
+const sink = () => new RoofSink({ cx: 0, cy: 0, ux: 1, uy: 0 } as never, 0, { bayM: 2, storeyM: 3, cellM: 1 } as never);
+const kit4 = (k: Partial<BuurtRoofKit>): BuurtRoofKit => ({ erkers: [], z0: -12.9, storeyM: 3.225, rows: 4, capM: 0.2, ...k });
+
+test('roof kit for round 4: dormers:false drops the dormer, eavesM gives the eaves, sides only with a ribbon or rhythm', () => {
+  const eaves = buurtRoofKitFor({ erkers: [], roof: { pitchDeg: 35, dormers: false, eavesM: 0.9 }, joins: { left: true, right: true } }, 13.1, 4, 3.2)!;
+  assert.deepEqual([eaves.dormer, eaves.eaves, eaves.joins], [undefined, { overhangM: 0.9 }, { left: true, right: true }]);
+  assert.ok(kitDrawsFront(eaves));
+  const ribbon = buurtRoofKitFor({ erkers: [], ribbon: true, rhythm: true, sides: { left: 'pier', right: 'pair' } }, 16.4, 5, 3.5)!;
+  assert.deepEqual([ribbon.rhythm, ribbon.sides], [true, { left: 'pier', right: 'pair' }]);
+  // Rhythm is the plain wall's pattern: with erkers the erkers say the rhythm, and sides without a ribbon or rhythm are dropped.
+  const erk = buurtRoofKitFor({ erkers: [{ a0: 0.4, a1: 0.6, depthM: 0.6, faceM: 1 }], rhythm: true }, 16.4, 5, 3.5)!;
+  assert.equal(erk.rhythm, undefined);
+  assert.equal(buurtRoofKitFor({ erkers: [], sides: { left: 'pier' } }, 16.4, 5, 3.5)!.sides, undefined);
+  assert.ok(kitWantsCoping({ erkers: [], rhythm: true } as never) && !kitWantsCoping({ erkers: [] } as never));
+});
+
+test('rhythm: one pair light at the pair wall with its half panel, singles across the rest, all on the front', () => {
+  const s = sink();
+  drawKitFront(s, kit4({ rhythm: true, ribbon: true, sides: { right: 'pair' } }), L4, W4, 1);
+  assert.ok(s.out.length > 0 && s.out.every(t => t.p.every(q => q[0] >= L4 / 2 - 1e-6)), 'nothing behind the wall plane');
+  // The white panel at the pair wall: from W/2 - 0.45 to W/2 on every storey under the ribbon (3 of the 4 rows).
+  const panels = s.out.filter(t => t.hex && t.p.some(q => Math.abs(q[1] - W4 / 2) < 1e-6) && t.p.some(q => Math.abs(q[1] - (W4 / 2 - 0.45)) < 1e-6) && t.part === 'trim');
+  assert.ok(panels.length >= 6, `the pair panel on three storeys (${panels.length} tris)`);
+  // No light crosses the pier side (left wall).
+  assert.ok(s.out.filter(t => t.part === 'trim').every(t => t.p.every(q => q[1] >= -W4 / 2 - 1e-6)));
+  // Off: no rhythm, no sides, no ribbon draws nothing.
+  const none = sink(); drawKitFront(none, kit4({}), L4, W4, 1); assert.equal(none.out.length, 0);
+});
+
+test('piers: a pilaster over the line at a pier side; the ribbon stops short of it and runs on through a joined side', () => {
+  const s = sink();
+  drawKitFront(s, kit4({ ribbon: true, sides: { left: 'pier' }, joins: { left: true, right: true } }), L4, W4, 1);
+  const top = Math.max(...s.out.flatMap(t => t.p.map(q => q[2])));
+  assert.ok(Math.abs(top - PIER_LOOK.stackM) < 1e-6, 'the stack rises over the coping');
+  const pier = s.out.filter(t => t.p.every(q => q[1] <= -W4 / 2 + PIER_LOOK.halfM + 1e-6) && t.p.some(q => q[2] > 0.5));
+  assert.ok(pier.length >= 2);
+  // The ribbon band (its glass, the series ribbon heights) starts at -W/2 + 1.6 and runs to the joined right wall.
+  const z0 = -3.225 + RIBBON_LOOK.footM;
+  const band = s.out.filter(t => t.part === 'trim' && t.p.every(q => q[2] >= z0 - 0.2 && q[2] <= z0 + RIBBON_LOOK.heightM + 0.2));
+  const ys = band.flatMap(t => t.p.map(q => q[1]));
+  assert.ok(Math.min(...ys) >= -W4 / 2 + PIER_LOOK.ribbonInsetM - 0.2, `ribbon stops short of the pier (${Math.min(...ys)})`);
+  assert.ok(Math.max(...ys) > W4 / 2 - 0.05, 'and runs on through the joined right wall');
+});
+
+test('eaves: the lattice frieze on the line and the white slab over it, end caps only on free sides', () => {
+  const joined = sink(); drawKitFront(joined, kit4({ eaves: { overhangM: 0.9 }, joins: { left: true, right: true } }), L4, W4, 1);
+  const zs = joined.out.flatMap(t => t.p.map(q => q[2])), xs = joined.out.flatMap(t => t.p.map(q => q[0]));
+  assert.ok(Math.abs(Math.max(...zs) - (EAVES_LOOK.friezeM + EAVES_LOOK.thickM)) < 1e-6);
+  assert.ok(Math.abs(Math.max(...xs) - (L4 / 2 + 0.9)) < 1e-6, 'the overhang');
+  const ys = joined.out.flatMap(t => t.p.map(q => q[1]));
+  assert.deepEqual([Math.min(...ys), Math.max(...ys)], [-W4 / 2, W4 / 2], 'joined: wall to wall');
+  const free = sink(); drawKitFront(free, kit4({ eaves: { overhangM: 0.9 } }), L4, W4, 1);
+  const fy = free.out.flatMap(t => t.p.map(q => q[1]));
+  assert.deepEqual([Math.min(...fy), Math.max(...fy)], [-W4 / 2 - 0.9, W4 / 2 + 0.9], 'free: returned round the ends');
+  assert.equal(free.out.length - joined.out.length, 4, 'two end caps');
+  assert.ok(joined.out.some(t => t.hex === EAVES_LOOK.dark), 'the frieze openings');
 });

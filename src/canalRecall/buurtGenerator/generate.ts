@@ -33,12 +33,22 @@ export interface DistrictDesign {
   extras: string[];
 }
 /** What a family's rows show that the house-rows vocabulary has no field for, drawn by the buurt kit (frontKit.ts), with the photo that states it. */
-export interface DistrictFamilyKit { ribbon?: { evidence: string }; sash?: { value: 'paired-transom'; evidence: string } }
+export interface DistrictFamilyKit {
+  ribbon?: { evidence: string }; sash?: { value: 'paired-transom'; evidence: string };
+  /** Blocks of two pands: a brick pier with a chimney stack at every other party wall, the stair's pair at the others. */
+  piers?: { evidence: string };
+  /** The upper storeys' window rhythm, singles on the pier side and the stair pair at the middle wall (roofKit drawRhythm). */
+  rhythm?: { evidence: string };
+}
 export interface DistrictFamily { id: string; storeys: number; label: string; design?: Partial<DistrictDesign>; kit?: DistrictFamilyKit }
 /** The district's pitched roof: a series whose median 3DBAG rise (ridge - eaves) is at least `minRiseM` draws it. */
 export interface DistrictPitchedRoof { minRiseM: number; maxRiseM: number; pitchDeg: number; material: 'tile' | 'slate'; dormersPerFront: number; dormerKind: 'plain' | 'gabled'; hoist: boolean; evidence: string;
   /** The tiles' tone measured on the cached panorama (round 3): the kit's roof hex. */
-  roofHex?: string; roofHexEvidence?: string }
+  roofHex?: string; roofHexEvidence?: string;
+  /** The orthophoto roof slots (roof-facts) this variant draws for, by the series' majority reading. */
+  slots?: string[];
+  /** Broad flat eaves over the street front, this overhang (m). */
+  eavesM?: number }
 export interface DistrictLibrary {
   district: string;
   title: string;
@@ -49,6 +59,11 @@ export interface DistrictLibrary {
   design: DistrictDesign;
   families: DistrictFamily[];
   pitched?: DistrictPitchedRoof;
+  /** A second pitched variant (round 4): a series whose orthophoto roof is one of its `slots` draws it instead. */
+  pitchedEaves?: DistrictPitchedRoof;
+  /** Per row (generator row id), what a photo of it states: `pierPhase` 0 puts the first pier after the row's first
+   *  member, 1 (the default: a block starts at the row's first member) after its second. */
+  rowNotes?: Record<string, { pierPhase: 0 | 1; evidence: string }>;
   notDrawn: Array<{ component: string; what: string }>;
 }
 
@@ -76,6 +91,19 @@ export function baysFor(widthM: number, d: Pick<DistrictDesign, 'axisM'>): numbe
 const pandNumber = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
 const median = (xs: number[]) => { const v = [...xs].sort((a, b) => a - b); return v.length ? (v.length % 2 ? v[v.length >> 1] : (v[v.length / 2 - 1] + v[v.length / 2]) / 2) : null; };
 
+/** The series' orthophoto roof reading: its members' majority slot (roof-facts), or null when none is read. */
+export function seriesSlot(s: GenSeries): string | null {
+  const n = new Map<string, number>();
+  for (const m of s.members) if (m.pand.roofSlot) n.set(m.pand.roofSlot, (n.get(m.pand.roofSlot) ?? 0) + 1);
+  return [...n.entries()].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))[0]?.[0] ?? null;
+}
+/** The pitched variant a series draws: the eaves variant when its orthophoto slot is one of that variant's, else the
+ *  district's pitched roof. The rise test (`pitchedRiseOf`) decides whether it is pitched at all. */
+export function pitchedVariantOf(lib: DistrictLibrary, s: GenSeries): DistrictPitchedRoof | null {
+  if (!lib.pitched) return null;
+  const slot = seriesSlot(s);
+  return lib.pitchedEaves && slot && lib.pitchedEaves.slots?.includes(slot) ? lib.pitchedEaves : lib.pitched;
+}
 /** A series' roof rise (median 3DBAG ridge - eaves of its members, m), when the district's pitched roof applies to it; else null. */
 export function pitchedRiseOf(lib: DistrictLibrary, s: GenSeries): number | null {
   if (!lib.pitched) return null;
@@ -86,6 +114,7 @@ export function pitchedRiseOf(lib: DistrictLibrary, s: GenSeries): number | null
 /** One series' design: the family's design over the district's, every field `period-default` with its ref. */
 export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSeries, rowId: string, bays: number, riseM: number | null = pitchedRiseOf(lib, s)): RowDesign {
   const d = { ...lib.design, ...fam.design };
+  const pv = pitchedVariantOf(lib, s);
   const ref = `buurt-generator ${lib.district} ${fam.id}`;
   const f = <T>(value: T, why = ''): RowField<T> => ({ value, source: 'period-default', ref: why ? `${ref}: ${why}` : ref });
   const design: RowDesign & { windowShare: RowField<number> } = {
@@ -95,9 +124,9 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
     bays: f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes`),
     windows: f(d.windows), heads: f<RowHeads | RowHeads[]>(d.heads), whiteFrames: f(d.whiteFrames), sills: f(d.sills),
     wall: f({ material: d.wall.material, family: d.wall.family, hex: d.wall.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, d.wall.hex ? `measured brick ${d.wall.hex} (${d.wall.evidence ?? 'district photos'})` : ''),
-    roofStorey: riseM !== null && lib.pitched
-      ? f<RowRoofStorey>({ kind: 'mansard', material: lib.pitched.material, dormersPerFront: lib.pitched.dormersPerFront, dormerKind: lib.pitched.dormerKind, ...(lib.pitched.hoist ? { hoist: true } : {}) },
-        `pitched roof: median 3DBAG rise ${riseM} m >= ${lib.pitched.minRiseM} m (${lib.pitched.evidence}); drawn as the row mansard at ${lib.pitched.pitchDeg} deg under buurtKit`)
+    roofStorey: riseM !== null && pv
+      ? f<RowRoofStorey>({ kind: 'mansard', material: pv.material, dormersPerFront: pv.dormersPerFront, dormerKind: pv.dormerKind, ...(pv.hoist ? { hoist: true } : {}) },
+        `pitched roof: median 3DBAG rise ${riseM} m >= ${lib.pitched!.minRiseM} m (${pv.evidence}); drawn as the row mansard at ${pv.pitchDeg} deg under buurtKit`)
       : f(d.roofStorey),
     extras: f(d.extras),
     windowShare: f(d.windowShare),
@@ -164,7 +193,10 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
     const rise = pitchedRiseOf(lib, s);
     const fam = s.eavesM === null ? null : familyFor(lib, storeysFor(s.eavesM, lib.design));
     const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b), bays = baysFor(widths[widths.length >> 1], lib.design);
-    const roofHex = lib.pitched?.roofHex;
+    const pv = pitchedVariantOf(lib, s), roofHex = pv?.roofHex;
+    // Blocks of two pands (family kit `piers`): the pier at every other party wall, phased by the row's photo if one
+    // states it, else a block starting at the row's first member.
+    const phase = lib.rowNotes?.[r.id]?.pierPhase ?? 1, pierAfter = (j: number) => ((j - phase) % 2 + 2) % 2 === 0;
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
       if (!drawn.has(pid)) continue;
@@ -173,7 +205,9 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
       const i = r.members.indexOf(m), joins = { ...(i > 0 && drawn.has(pandNumber(r.members[i - 1].pand.id)) ? { left: true } : {}), ...(i < r.members.length - 1 && drawn.has(pandNumber(r.members[i + 1].pand.id)) ? { right: true } : {}) };
       // Erkers on the series' cells (frontKit.ts erkersOnCells): the series draws `bays` cells on every member.
       kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers: erkersOnCells(m.front.erkers, bays, m.front.lengthM),
-        ...(rise !== null && lib.pitched ? { roof: { pitchDeg: lib.pitched.pitchDeg, riseM: rise, ...(roofHex ? { roofHex } : {}) } } : {}),
+        ...(rise !== null && pv ? { roof: { pitchDeg: pv.pitchDeg, riseM: rise, ...(roofHex ? { roofHex } : {}), ...(pv.dormersPerFront === 0 ? { dormers: false as const } : {}), ...(pv.eavesM ? { eavesM: pv.eavesM } : {}) } } : {}),
+        ...(fam?.kit?.rhythm ? { rhythm: true as const } : {}),
+        ...(fam?.kit?.piers && (joins.left || joins.right) ? { sides: { ...(joins.left ? { left: pierAfter(i - 1) ? 'pier' as const : 'pair' as const } : {}), ...(joins.right ? { right: pierAfter(i) ? 'pier' as const : 'pair' as const } : {}) } } : {}),
         ...(fam?.kit?.sash ? { sash: fam.kit.sash.value } : {}), ...(fam?.kit?.ribbon ? { ribbon: true as const } : {}),
         ...(rise === null && (fam?.kit?.ribbon || m.front.erkers.length) && (fam?.design?.wall?.hex ?? lib.design.wall.hex) ? { copingHex: fam?.design?.wall?.hex ?? lib.design.wall.hex } : {}),
         ...(joins.left || joins.right ? { joins } : {}) });

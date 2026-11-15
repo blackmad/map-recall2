@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, generateDistrict, storeysFor, type DistrictLibrary } from './generate.js';
+import { baysFor, generateDistrict, pitchedVariantOf, seriesSlot, storeysFor, type DistrictLibrary } from './generate.js';
 import { BAY_STYLES, PLAN_ZUID_CASEMENT } from '../bayLook.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
@@ -63,4 +63,27 @@ test('kit flag off: the school bay presets are unchanged; on: the Plan Zuid case
   const off = run({}), on = run({ BUURT_KIT: '1' });
   assert.deepEqual(off, [BAY_STYLES.school.length, false]);
   assert.deepEqual(on, [BAY_STYLES.school.length + 2, true]);
+});
+
+test('the orthophoto slot picks the pitched variant: slate the Rooseveltlaan eaves, tile or unread the Plan Zuid tiles', () => {
+  const withSlot = (slots: Array<string | null>) => districtRows(slots.map((sl, i) => ({ ...pand(i, 1929, 12.4), roofSlot: sl })), streets).rows[0].series[0];
+  const slate = withSlot(['slate', 'slate', 'pantile-red']);
+  assert.equal(seriesSlot(slate), 'slate');
+  assert.equal(pitchedVariantOf(lib, slate), lib.pitchedEaves);
+  assert.equal(pitchedVariantOf(lib, withSlot(['pantile-red', 'pantile-red', 'slate'])), lib.pitched);
+  const unread = withSlot([null, null, null]);
+  assert.equal(seriesSlot(unread), null);
+  assert.equal(pitchedVariantOf(lib, unread), lib.pitched);
+});
+
+test('the front runs on to its own corner where the neighbour overlaps a strip of it (Rooseveltlaan 080196)', () => {
+  // Pand 0's front is split at x = 6.36; its last 0.64 m is also the neighbour's front (the neighbour's outline takes a
+  // 0.64 x 0.5 m corner of it, so that strip of front edge is shared and the walk along the front stops there).
+  const p0: GenPand = { id: 'NL.IMBAG.Pand.0363100012000000', ring: [at(0, 6), at(6.36, 6), at(7, 6), at(7, 16), at(0, 16), at(0, 6)], year: 1929, eavesM: 12.4, ridgeM: 16.4 };
+  const p1: GenPand = { id: 'NL.IMBAG.Pand.0363100012000001', ring: [at(6.36, 6), at(14, 6), at(14, 16), at(7, 16), at(7, 6.5), at(6.36, 6.5), at(6.36, 6)], year: 1929, eavesM: 12.4, ridgeM: 16.4 };
+  const p2: GenPand = { ...pand(2, 1929, 12.4) };
+  const { rows } = districtRows([p0, p1, p2], streets);
+  assert.equal(rows.length, 1, JSON.stringify(rows.map(r => r.members.length)));
+  const m0 = rows[0].members.find(m => m.pand.id === p0.id)!;
+  assert.equal(m0.front.lengthM, 7, 'the whole front, not 6.36 m');
 });

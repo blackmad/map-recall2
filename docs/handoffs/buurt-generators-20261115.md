@@ -350,3 +350,56 @@ Rooseveltlaan does not fully hold:
    every cell.
 4. The photo-camera view of the roof: the elevation shows the true rise, not the foreshortened one.
 5. Brick soldier course over the ground storey.
+
+## Round 4 (2026-11-15): tile in the same light, piers, eaves, the hips, the rhythm
+
+Sheets (Node, from cached panoramas): `artifacts/buurt-generators/rivierenbuurt/sheets/{maasstraat-129732-129732,
+rooseveltlaan-146491-146491,biesboschstraat-069135-069135}/sheet.jpg`.
+
+1. **Roof tile.** Calibrated against the photo's shaded tile, not a median that includes sunlit patches. On the
+   Biesboschstraat sheet the photo's tile (rows 112-150, x 2360-2600) measures `#9e5b40`, L 0.537, C 0.099, hue 43.
+   The render measures `#a35a3d`, L 0.547, C 0.105, hue 42; the round-3 hex rendered C 0.118, hue 49. The new
+   `pitched.roofHex` is `#9e5b42`.
+2. **Piers (Maasstraat).** The pier is a brick pilaster 1.45 m wide (each member draws its half), 0.12 m proud of the
+   front, with a stack 1.2 m over the coping and 0.7 m into the roof. The attic ribbon stops 1.6 m short of it, so
+   there is one ribbon per block. The pier phase comes from the photo: piers stand after members 0, 2 and 4
+   (`rowNotes.maasstraat-129732.pierPhase = 0`). Other rows take phase 1 by default. That default is not measured.
+3. **Rooseveltlaan.**
+   - **The hips were the generator's, not lane R's.** Member 080196 has a 0.64 m strip by the party wall that the
+     neighbour's overlapping outline marks as shared. The front walk stopped there, so the series `frontM` sized the
+     row roof short, and the roof hipped. Every record already had both joins true.
+   - Fix (`rows.ts` `FRONT_ON_LINE_M`): the line runs on to the furthest ring vertex within 0.3 m of the line. A
+     named regression test pins it.
+   - The eaves are a kit roof edge (`roofKit.ts` `drawEaves`): a white lattice frieze 0.85 m tall on the series line,
+     then a slab with a 0.9 m overhang, a 0.4 m fascia and the soffit. The slab runs on through joined walls and
+     returns round free ends.
+   - Which series gets them: the orthophoto roof-facts slot. `slate` selects `pitchedEaves` (35 deg, no dormers);
+     `pantile-*` or an unread slot selects the tiled Plan Zuid roof.
+   - Caveat: the slate-to-eaves rule rests on Rooseveltlaan alone, and it now covers 1062 pands. Sample other slate
+     streets before trusting it district-wide.
+4. **Rhythm (Maasstraat), a series pattern.** A brick plate covers the mesher's even cells under the ribbon. Per
+   storey, singles 2.2 m wide are spaced over the pier side. At the pair wall each member draws one 1.3 m light and
+   half of the 0.45 m white panel; the neighbour draws the other half. This gives single, pair, single per pand.
+   - The pattern is drawn only when the series has no erkers, because erkers already state the rhythm.
+   - `PLAN_ZUID_PAIRED` (bayLook.ts) is no longer used by data, since the five family dropped `sash`. It is still
+     flag-gated.
+5. **As-played frames:** deferred. The disk was at 11-12 GB, so no compiles were run.
+
+Cost (front-cost, BUURT_KIT=1; before, then round 3, then round 4):
+
+| Row | Before | Round 3 | Round 4 |
+|---|---|---|---|
+| Maasstraat (7 pands) | 2112 tris, 213 KiB | 5342 tris, 543 KiB | 6158 tris, 626 KiB |
+| Rooseveltlaan (13 pands) | 4301 tris, 422 KiB | 9343 tris, 938 KiB | 10447 tris, 1055 KiB |
+| Biesboschstraat (10 pands) | 2941 tris, 289 KiB | 6113 tris, 616 KiB | 6113 tris, 616 KiB |
+
+Kinkerstraat identity holds with the flag off and on: 165799 `6a4cdff9...`, 158180 `207d7ac7...`.
+
+Remaining gaps the kit cannot say:
+
+- The erker tops on Rooseveltlaan stand into the frieze; the photo's erkers stop under it.
+- Toplight panes in casements and erkers.
+- Loggias (Rooseveltlaan's west end).
+- The soldier course over the ground storey.
+- The elevation sheet shows the true roof rise. From the pavement, a slope under about 40 deg is hidden behind the
+  Rooseveltlaan eaves.

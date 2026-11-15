@@ -68,9 +68,11 @@
         "ribbon": {
           "evidence": "Maasstraat panorama TMX7316010203-002473_pano_0000_000333 (2022-03-23): the top storey is one white-framed band of low attic lights through the party walls, brick above and below"
         },
-        "sash": {
-          "value": "paired-transom",
-          "evidence": "Maasstraat panorama (2022-03-23): the upper storeys' casements stand in pairs, two lights parted by a broad white mullion, one pair per axis"
+        "piers": {
+          "evidence": "Maasstraat panorama (2022-03-23): one attic ribbon per block of two pands, broken at a brick pier whose chimney stack rises over the coping at every other party wall"
+        },
+        "rhythm": {
+          "evidence": "Maasstraat panorama (2022-03-23): per block, a single two-light casement (2.2 m) near each pier and the stair's pair at the middle wall over the portiek, two 1.3 m lights either side of a white panel; about two axes a pand, not the 2.03 m axis grid"
         }
       }
     }
@@ -84,8 +86,12 @@
     "dormerKind": "plain",
     "hoist": true,
     "evidence": "Biesboschstraat panorama TMX7316010203-001034_pano_0000_001940 (2019-01-03): red tile roof behind the cornice, one white-topped box dormer per pand with a hoist beam; 3DBAG ridge-eaves is bimodal over the district's series (1,193 pands under 2 m, 1,243 at 3 m and over); round 3: the photo roof top edge projects at 14.34 m from the camera 10.3 m off the front at 2.44 m, which puts the 3DBAG ridge (eaves + 5.0 m, every Biesboschstraat member; the 6 m cap does not bind) about 2.65 m behind the cornice: a 62 deg street slope, not 52",
-    "roofHex": "#a15a30",
-    "roofHexEvidence": "median of the tile pixels on the Biesboschstraat panorama TMX7316010203-001034_pano_0000_001940 rectified on the row line (round 3): a muted red, not the period tile table (#c0603f)"
+    "roofHex": "#9e5b42",
+    "roofHexEvidence": "round 4: matched in the same light. A pure tile patch of the Biesboschstraat panorama TMX7316010203-001034_pano_0000_001940 (no brick, sky or sunlit edge; sheet x 2390-2500) is #a55a3a, OKLab L 0.549 C 0.109 hue 42; the round-3 hex #a15a30 rendered #a7592a (C 0.118, hue 49, more orange). #9e5b42 renders #a45b3e (L 0.550, C 0.105, hue 42)",
+    "slots": [
+      "pantile-red",
+      "pantile-dark"
+    ]
   },
   "notDrawn": [
     {
@@ -93,12 +99,28 @@
       "what": "a series under the pitched rise (median 3DBAG rise < 2.5 m) draws a flat lid at the series line; its low set-back roof is not drawn"
     },
     {
-      "component": "eaves-overhang",
-      "what": "the deep white fascia and soffit of the 1934 rows (0.75 m): drawn as the simple cornice band"
-    },
-    {
       "component": "toplight-panes",
       "what": "the small-pane toplight over two casements: the painter's transom is one pane"
     }
-  ]
+  ],
+  "pitchedEaves": {
+    "minRiseM": 2.5,
+    "maxRiseM": 6,
+    "pitchDeg": 35,
+    "material": "slate",
+    "dormersPerFront": 0,
+    "dormerKind": "plain",
+    "hoist": false,
+    "slots": [
+      "slate"
+    ],
+    "eavesM": 0.9,
+    "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865 (2022-03-24): a flat-looking top, broad white eaves with a soffit over the street front over a white lattice frieze 0.85 m tall (drawn by the kit eaves, roofKit.ts EAVES_LOOK) and no roof or dormer seen above them from the pavement, so the roof behind rises at most about 40 deg (the sight line over the 13.1 m eaves from the camera); the orthophoto reads slate on all 13 members (roof-facts), not the red pantiles of Biesboschstraat. Drawn at 35 deg to the 3DBAG rise."
+  },
+  "rowNotes": {
+    "maasstraat-129732": {
+      "pierPhase": 0,
+      "evidence": "Maasstraat panorama TMX7316010203-002473_pano_0000_000333 (2022-03-23): chimney piers at the party walls after members 1, 3 and 5 (129732|131549, 114621|074500, 147234|147836), the stair pairs over the portiek doors at the others"
+    }
+  }
 }

@@ -19,11 +19,16 @@ export interface BuurtKitFront {
   erkers: BuurtErker[];
   /** The series roof: an eaves-front pitched roof at this pitch over the 3DBAG rise (roofs from the front: the photo
    *  shows it; 3DBAG gives its height). Absent: the series' stated roof storey as the row path draws it. */
-  roof?: { pitchDeg: number; riseM: number; roofHex?: string };
+  roof?: { pitchDeg: number; riseM: number; roofHex?: string; /** false: the series shows no dormers (Rooseveltlaan). */ dormers?: false;
+    /** Broad flat eaves over the street front, this overhang (m) (round 4, Rooseveltlaan). */ eavesM?: number };
   /** The series' windows are paired casements, one cell with a white mullion (round 3: Maasstraat). */
   sash?: 'paired-transom';
   /** The top storey is a ribbon of attic lights across the front, party wall to party wall (round 3: Maasstraat). */
   ribbon?: true;
+  /** The upper storeys' window rhythm (singles and the stair pair) drawn by the kit (round 4, roofKit.ts drawRhythm). */
+  rhythm?: true;
+  /** What stands at each party wall: a block's end pier or its middle (pair) wall (round 4). */
+  sides?: { left?: 'pier' | 'pair'; right?: 'pier' | 'pair' };
   /** A flat series' low coping (erkers or ribbon on it) in the series brick, read as the parapet it is (round 3). */
   copingHex?: string;
   /** The member's row neighbours (left/right as seen): a flat series' coping runs on into theirs (no hip). */
@@ -31,6 +36,8 @@ export interface BuurtKitFront {
 }
 /** The paired casements' white mullion, a share of the window's width (Maasstraat: about 0.5 m on a 1.6 m opening). */
 export const KIT_MULLION_SHARE = 0.3;
+/** A flat series draws the low coping when the kit hangs anything on its front (erkers, ribbon, rhythm, piers). */
+export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.rhythm || k.sides);
 /** A flat series with erkers draws its lid as a low coping behind the white cornice ledge (m), the erkers on it. */
 export const KIT_FLAT_RISE_M = 0.55;
 
@@ -101,10 +108,13 @@ export function buurtKitOf(v: unknown): BuurtKitFront | null {
   const erkers = (Array.isArray(k.erkers) ? k.erkers : []).filter((e): e is BuurtErker => !!e && typeof e === 'object'
     && [e.a0, e.a1, e.depthM, e.faceM].every(Number.isFinite) && e.a1 > e.a0 && e.depthM > 0);
   const hex = k.roof && typeof (k.roof as { roofHex?: unknown }).roofHex === 'string' && /^#[0-9a-f]{6}$/i.test((k.roof as { roofHex: string }).roofHex) ? (k.roof as { roofHex: string }).roofHex : null;
-  const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM), ...(hex ? { roofHex: hex } : {}) } : undefined;
-  const x = v as { sash?: unknown; ribbon?: unknown; copingHex?: unknown };
+  const rr = k.roof as { dormers?: unknown; eavesM?: unknown } | undefined, eavesM = Number(rr?.eavesM);
+  const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM), ...(hex ? { roofHex: hex } : {}),
+    ...(rr?.dormers === false ? { dormers: false as const } : {}), ...(eavesM > 0.2 && eavesM < 2 ? { eavesM } : {}) } : undefined;
+  const x = v as { sash?: unknown; ribbon?: unknown; copingHex?: unknown; rhythm?: unknown; sides?: { left?: unknown; right?: unknown } };
+  const side = (q: unknown) => q === 'pier' || q === 'pair' ? q : null, sl = side(x.sides?.left), sr = side(x.sides?.right);
   const joins = k.joins && typeof k.joins === 'object' ? { ...(k.joins.left === true ? { left: true } : {}), ...(k.joins.right === true ? { right: true } : {}) } : {};
-  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(joins.left || joins.right ? { joins } : {}) };
+  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}) };
 }
 
 /**

@@ -17,7 +17,7 @@ import { hexToOklab, oklabToHex, paleWarmHeld } from '../houseSpec/wallColour.js
 import { SOUTERRAIN_FACTOR } from '../houseSpec/storeyPlan.js';
 import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
 import { buurtKitEnabled } from '../buurtGenerator/kitFlag.js';
-import { buurtKitOf, KIT_FLAT_RISE_M, KIT_MULLION_SHARE, straightenFeature, type BuurtKitFront } from '../buurtGenerator/kit/frontKit.js';
+import { buurtKitOf, KIT_FLAT_RISE_M, KIT_MULLION_SHARE, kitWantsCoping, straightenFeature, type BuurtKitFront } from '../buurtGenerator/kit/frontKit.js';
 import { buurtRoofKitFor } from '../buurtGenerator/kit/roofKit.js';
 
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
@@ -528,7 +528,7 @@ export function withRowFront<T extends Feature>(feature: T): T {
     // series' bays fit the whole front), the roof at the kit's rise and pitch, its erkers on the roof kit. No kit: as before.
     const kit = buurtKitEnabled() ? buurtKitOf(rec.buurtKit) : null;
     if (kit) feature = straightenFeature(feature, kit);
-    const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(kit?.roof?.riseM ?? rs.riseM) : kit?.erkers.length || kit?.ribbon ? KIT_FLAT_RISE_M : 0;
+    const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(kit?.roof?.riseM ?? rs.riseM) : kit && kitWantsCoping(kit) ? KIT_FLAT_RISE_M : 0;
     const mansard = rs && rise > 0.5 ? { ...rs, riseM: rise, ...(rs.kind !== 'mansard' && kit?.joins ? { joins: kit.joins } : {}) } : null;
     const lv = levels(sr, rec, top, true);
     // The series' souterrain reaches the storey plan (levels drops a spec's own); a lone spec read never does.
