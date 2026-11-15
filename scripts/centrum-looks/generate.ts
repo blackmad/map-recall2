@@ -79,7 +79,7 @@ async function main() {
   const belt = beltReads();
   const donors = [...own.donors, ...belt.donors.map(d => ({ ...d, district: 'belt' }))];
   const reads = new Map<string, BeltRead>([...belt.reads, ...own.reads]);
-  const ahnFile = arg('ahn') ?? `artifacts/buurt-generators/${id}-ahn/fronts.json`;
+  const ahnFile = arg('ahn') ?? [`artifacts/buurt-generators/${id}-ahn/fronts.json`, `data/buurt-generators/${id}/ahn-fronts.json`].find(f => fs.existsSync(f)) ?? '';
   const ahn = new Map<string, AhnFront>(!process.argv.includes('--no-ahn') && fs.existsSync(ahnFile) ? Object.entries(JSON.parse(fs.readFileSync(ahnFile, 'utf8')).fronts) : []);
   const res = generateBelt(pands, streets, described, reads, donors, at, stated, ahn, look);
   const records = res.rows.flatMap(r => rowFrontsWithSeries(r));
