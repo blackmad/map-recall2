@@ -252,6 +252,9 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
       const e = m.pand.eavesM, r = m.pand.ridgeM;
       if (s.clamped.includes(m.pand.id) && e !== null) readNotDrawn.push({ front: pid, field: '3dbag-eaves', value: e, reason: `clamped to the series line ${s.eavesM} m (row coherence: a lone step over 0.8 m)` });
       const gate = lib.pitched ? pitchGate(lib, s) : null, drawn = pitchedRiseOf(lib, s);
+      // Round 9: a street note that AHN4 contradicts still wins (the photo); the disagreement is logged per front.
+      const noted = lib.streetNotes?.[row.street]?.roof, seen = measuredRoofOf(lib, s);
+      if (noted && seen && noted !== seen) readNotDrawn.push({ front: pid, field: 'ahn-roof-form', value: lib.measured?.roofs?.[pid]?.form ?? seen, reason: `AHN4 reads the series ${seen}; the street note's ${noted} (the photo) wins` });
       if (e !== null && r !== null && drawn !== null && r - e > drawn + 0.3) readNotDrawn.push({ front: pid, field: '3dbag-roof-rise', value: +(r - e).toFixed(2), reason: `drawn at the seen rise ${drawn} m (${lib.streetNotes?.[row.street]?.riseM !== undefined ? 'street note' : 'district cap'}): the roof as the street sees it over the eaves` });
       if (e !== null && r !== null && r - e > 1 && pitchedRiseOf(lib, s) === null) readNotDrawn.push({ front: pid, field: '3dbag-roof-rise', value: +(r - e).toFixed(2), reason: gate ? `${gate}: flat top at the series line${lib.flatEaves ? ' under the broad eaves' : ''}` : `under the district's pitched-roof rise (${lib.pitched?.minRiseM ?? '-'} m series median): flat lid at the series line` });
     }

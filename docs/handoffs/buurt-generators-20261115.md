@@ -726,11 +726,11 @@ Order in `wallHexOf`: row note, then measured row, then family, then district po
 
 | District | Rows measured | On the pool | Note |
 |---|---|---|---|
-| Apollo/Stadion | 154 of 334 (767 pands) | 180 (905 pands) | 52 rows skipped (split or lone reads); the run stopped at the disk floor at row ~210 |
+| Apollo/Stadion | 224 of 334 (1,109 pands) | 110 (563 pands) | resumed after the disk recovered; it stopped at the floor again at row ~290 |
 | Rivierenbuurt | 0 of 512 | 512 | not run (disk floor) |
 
-Downloads: 462 requests, 363 MB, with 333 MB purged every 20 rows. The first, killed run left about 240 MB of
-panoramas in `.cache/pand-reference` unpurged.
+Downloads: 857 requests, 652 MB over two runs, purged every 20 rows. The killed run's leftovers were purged by
+timestamp window: 411 files, 451 MB, keeping the 7 held-out panoramas.
 
 The measured bricks are much lighter than the pools: Apollo's is #5b4e47 and Achillesstraat's own note is #352d2a,
 while the measured rows mostly fall at L 0.45-0.65. This answers the round 8 held-out "brick too dark" finding, but
@@ -763,7 +763,7 @@ Against the Apollo street notes the AHN form agrees on 4 of 5 streets:
 | Sportstraat | pitched | pitched (31/43) |
 | Minervalaan | flat | flat or hidden (40/47) |
 | Quinten Massijsstraat | flat | hidden (7/10) |
-| Achillesstraat | flat | pitched (72/72): **wrong**; the photo's top is a fifth storey |
+| Achillesstraat | flat | pitched (72/72): **wrong**; the photo's top is a fifth storey. The street note wins, and every front logs it (`readNotDrawn` field `ahn-roof-form`) |
 
 Michelangelostraat 117261, the test case, reads pitched on all 13 members, with a hipped end.
 

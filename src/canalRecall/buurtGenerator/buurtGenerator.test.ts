@@ -155,4 +155,7 @@ test('round 9: the measured row brick sits under the row note and over the pool;
   assert.match(pitchGate({ ...lib, measured: { roofs: roofs('flat') } }, s)!, /AHN4 measures a flat top/);
   assert.equal(pitchGate({ ...lib, measured: { roofs: roofs('unclear') } }, s), null, 'unclear: 3DBAG decides');
   assert.equal(pitchGate({ ...lib, measured: { roofs: roofs('flat') }, streetNotes: { Teststraat: { roof: 'pitched', evidence: 'test' } } }, s), null, 'the street note wins');
+  // The disagreement is logged (Achillesstraat: noted flat, AHN4 pitched).
+  const res = generateDistrict({ ...lib, measured: { roofs: roofs('pitched') }, streetNotes: { Teststraat: { roof: 'flat', evidence: 'test' } } }, pands, streets, new Set(), 'test');
+  assert.ok(res.rows[0].readNotDrawn.some(r => r.field === 'ahn-roof-form' && /street note's flat/.test(r.reason)), JSON.stringify(res.rows[0].readNotDrawn));
 });
