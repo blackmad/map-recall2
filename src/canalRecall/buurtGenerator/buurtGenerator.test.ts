@@ -137,3 +137,22 @@ test('round 8: the drawn rise is the seen rise (street note), else the cap; 3DBA
   // Under the gate it stays flat whatever the cap.
   assert.equal(pitchedRiseOf({ ...lib, pitched: { ...lib.pitched!, capRiseM: 1, minRiseM: 50 } }, series()), null);
 });
+
+test('round 9: the measured row brick sits under the row note and over the pool; AHN roof form gates the pitch', () => {
+  const fam = lib.families[0];
+  const read = { hex: '#8a7465', n: 2, of: 3, dates: 2, reads: [{ pano: 'p1', date: '2022-03-21', hex: '#8c7666' }, { pano: 'p2', date: '2021-04-28', hex: '#887264' }] };
+  const m: DistrictLibrary = { ...lib, measured: { walls: { 'teststraat-000000': read, 'rooseveltlaan-146491': read } } };
+  assert.equal(wallHexOf(m, fam, 'teststraat-000000').hex, '#8a7465');
+  assert.match(wallHexOf(m, fam, 'teststraat-000000').evidence!, /2 of 3 reads agree \(2 capture dates/);
+  assert.equal(wallHexOf(m, fam, 'rooseveltlaan-146491').hex, lib.rowNotes!['rooseveltlaan-146491'].wall!.hex, 'the row note wins');
+  assert.equal(wallHexOf(m, fam, 'other-000000').hex, fam.design?.wall?.hex ?? lib.design.wall.hex, 'unmeasured: the pool');
+  const pands = [0, 1, 2].map(i => ({ ...pand(i, 1929, 12.4), roofCode: 3 }));
+  const s = districtRows(pands, streets).rows[0].series[0];
+  const roofs = (form: 'flat' | 'pitched' | 'unclear') => Object.fromEntries(pands.map(p => [p.id.replace(/^NL\.IMBAG\.Pand\./, ''), { form, frontRiseM: 2, why: 'test' }]));
+  const only: DistrictLibrary = { ...lib, pitched: { ...lib.pitched!, streetNoteOnly: true } };
+  assert.equal(pitchedRiseOf(only, s), null, 'note-only, unmeasured: flat');
+  assert.ok(pitchedRiseOf({ ...only, measured: { roofs: roofs('pitched') } }, s) !== null, 'AHN pitched: pitched without a note');
+  assert.match(pitchGate({ ...lib, measured: { roofs: roofs('flat') } }, s)!, /AHN4 measures a flat top/);
+  assert.equal(pitchGate({ ...lib, measured: { roofs: roofs('unclear') } }, s), null, 'unclear: 3DBAG decides');
+  assert.equal(pitchGate({ ...lib, measured: { roofs: roofs('flat') }, streetNotes: { Teststraat: { roof: 'pitched', evidence: 'test' } } }, s), null, 'the street note wins');
+});

@@ -27,8 +27,12 @@ const EXTRACT = 'public/data/extracts/amsterdam';
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const STREET_CLASSES = new Set(['residential', 'tertiary', 'secondary', 'primary', 'unclassified', 'living_street', 'pedestrian', 'busway', 'trunk']);
 
+/** The district library, with its round-9 measurements (`districts/measured/<district>.json`) unless BUURT_MEASURED=0. */
 export function loadLibrary(district: string): DistrictLibrary {
-  return JSON.parse(fs.readFileSync(`src/canalRecall/buurtGenerator/districts/${district}.json`, 'utf8'));
+  const lib: DistrictLibrary = JSON.parse(fs.readFileSync(`src/canalRecall/buurtGenerator/districts/${district}.json`, 'utf8'));
+  const m = `src/canalRecall/buurtGenerator/districts/measured/${district}.json`;
+  if (process.env.BUURT_MEASURED !== '0' && fs.existsSync(m)) { const { walls, roofs, rowRoofs } = JSON.parse(fs.readFileSync(m, 'utf8')); lib.measured = { walls, roofs, rowRoofs }; }
+  return lib;
 }
 
 type Ring = LngLat[];

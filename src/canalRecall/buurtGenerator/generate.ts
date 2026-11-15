@@ -86,6 +86,15 @@ export interface DistrictLibrary {
     /** The entrances, member by member along the row (left to right as seen), the list repeating (round 7). */
     entries?: BuurtEntry[]; evidence: string }>;
   notDrawn: Array<{ component: string; what: string }>;
+  /** Round 9: the per-row measurements (`districts/measured/<district>.json`, staged by scripts/buurt-generators/
+   *  measure-walls.ts and measure-roofs.ts), under the row and street notes and over the family and district. */
+  measured?: DistrictMeasured;
+}
+/** Round 9 measurements: `walls` per generator row id (street-firstPand), `roofs` per pand (AHN4 DSM, measure.ts roofFormOf). */
+export interface DistrictMeasured {
+  walls?: Record<string, { hex: string; n: number; of: number; dates: number; reads: Array<{ pano: string; date: string; hex: string }> }>;
+  roofs?: Record<string, { form: 'flat' | 'pitched' | 'hidden-pitch' | 'gable-street' | 'unclear'; frontRiseM: number; why: string }>;
+  rowRoofs?: Record<string, { form: string; hipped: { start: boolean; end: boolean } }>;
 }
 
 /** Why a pand of the district is not drawn by the generator. */
@@ -129,10 +138,13 @@ export function pitchedVariantOf(lib: DistrictLibrary, s: GenSeries): DistrictPi
 }
 /** The window axis a row draws: its own photo's (row note), else the district's. */
 export const axisOf = (lib: DistrictLibrary, rowId: string): Pick<DistrictDesign, 'axisM'> => ({ axisM: lib.rowNotes?.[rowId]?.axisM ?? lib.design.axisM });
-/** The series wall hex: the row's own measured brick (row note) over the family's and the district's. */
+/** The series wall hex: the row's own photo (row note), then the row's measured brick (round 9, panoramas voted across
+ *  captures), over the family's and the district's pool. */
 export function wallHexOf(lib: DistrictLibrary, fam: DistrictFamily | null, rowId: string): { hex?: string; evidence?: string } {
   const own = lib.rowNotes?.[rowId]?.wall;
   if (own) return { hex: own.hex, evidence: `the row's own photo: ${own.evidence}` };
+  const m = lib.measured?.walls?.[rowId];
+  if (m) return { hex: m.hex, evidence: `the row's panoramas: ${m.n} of ${m.of} reads agree (${m.dates} capture date${m.dates === 1 ? '' : 's'}; ${m.reads.map(r => `${r.pano} ${r.date} ${r.hex}`).join(', ')})` };
   const d = { ...lib.design.wall, ...fam?.design?.wall };
   return d.hex ? { hex: d.hex, evidence: d.evidence } : {};
 }
@@ -143,15 +155,30 @@ export function seriesRoofCode(s: GenSeries): number | null {
   return [...n.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0]?.[0] ?? null;
 }
 /** Why the district's pitched roof is not drawn on a series whose rise would carry it (round 7); null: the gate passes.
- *  The roof form must be measured: a street note's `roof` wins (the photo); else 3DBAG's roof type must read slanted, and a
+ *  The roof form must be measured: a street note's `roof` wins (the photo), then AHN4's form at the front (round 9,
+ *  measuredRoofOf); else 3DBAG's roof type must read slanted, and a
  *  `streetNoteOnly` district asks for the note. */
 export function pitchGate(lib: DistrictLibrary, s: GenSeries): string | null {
   const note = lib.streetNotes?.[s.members[0]?.front.street ?? '']?.roof;
   if (note === 'flat') return 'the street note measures a flat top';
   if (note === 'pitched') return null;
+  const seen = measuredRoofOf(lib, s);
+  if (seen === 'flat') return 'AHN4 measures a flat top at the front';
+  if (seen === 'pitched') return null;
   if (lib.pitched?.streetNoteOnly) return `no street note measures a pitched roof (${lib.district}: 3DBAG reads slanted on blocks the street sees flat)`;
   const code = seriesRoofCode(s);
   return code !== null && code !== 3 ? `3DBAG roof type ${code === 1 ? 'flat' : 'several flats'}` : null;
+}
+/** Round 9: the roof form the series' members show the street in AHN4 (`measured.roofs`): pitched or flat when at least
+ *  `ROOF_MAJORITY` of the members read clearly agree and at least half the members read clearly; else null (unread). */
+export const ROOF_MAJORITY = 0.6;
+export function measuredRoofOf(lib: DistrictLibrary, s: GenSeries): 'pitched' | 'flat' | null {
+  const roofs = lib.measured?.roofs; if (!roofs) return null;
+  // A pitch hidden over the eaves (measure.ts `hidden-pitch`) is a flat top to the street.
+  const forms = s.members.map(m => { const f = roofs[pandNumber(m.pand.id)]?.form; return f === 'hidden-pitch' ? 'flat' : f; }).filter((f): f is 'pitched' | 'flat' => f === 'pitched' || f === 'flat');
+  if (!forms.length || forms.length < s.members.length / 2) return null;
+  const p = forms.filter(f => f === 'pitched').length / forms.length;
+  return p >= ROOF_MAJORITY ? 'pitched' : 1 - p >= ROOF_MAJORITY ? 'flat' : null;
 }
 /** A series' 3DBAG roof rise (median ridge - eaves of its members, m); null when unread. */
 export const bagRiseOf = (s: GenSeries): number | null => median(s.members.flatMap(m => m.pand.eavesM !== null && m.pand.ridgeM !== null ? [m.pand.ridgeM - m.pand.eavesM] : []));

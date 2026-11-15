@@ -690,3 +690,100 @@ r8 won 4/4. Still open on the noted streets:
 - Chimneys; the generator draws dormers where the photo has chimneys.
 
 Sheets, A/B folders and keys: `map-recall2-worktrees/_pruned-sheets/buurt-generators-20261115/round8/`.
+
+## Round 9 (2026-11-15, partial: stopped at the 15 GB disk floor): per-row brick and roof form
+
+Status: the code, the tests and the measurements taken so far are committed. Staging has not been regenerated, so the
+round 9 held-out A/B has not been run. The disk fell to 14 GB during the wall run and to 8.9 GB a few minutes later,
+mostly from other lanes. Bos en Lommer is not started.
+
+### Per-row brick from panoramas
+
+Scripts: `scripts/buurt-generators/measure-walls.ts`, with the pure logic in `src/canalRecall/buurtGenerator/measure.ts`.
+The approach is the retail lane's `measure-pui`. Its `retailPuiPaint.ts` is copied verbatim from
+`lane/retail-look-20261114` at fc23b430a.
+
+For each generator row:
+
+1. **Pick the captures.** Take panoramas 5-30 m off the front, one per capture date, newest first, up to 4.
+2. **Cut the band.** Rectify the row at 20 px/m. Read from 0.4 m up to 0.3 m under the series line, within ±12 m of
+   the camera's foot.
+3. **Gate it.** At least 85 % of the band must be in the cut.
+   - Foliage uses a stricter `isFoliage`, because measureFacade's `isLeaf` also counts yellow brick as leaf. The read
+     is dropped if foliage covers more than 30 % of the band.
+   - Where retailPuiPaint's vehicle gate fires, the 0.4-2.4 m strip is dropped.
+4. **Balance on the trim.** White-balance on the band's own white trim (its brightest 3 %, near neutral and not
+   warm). The cameras disagree:
+   - the 2025 recordings read the white at L 0.70 with a cyan cast;
+   - the 2024 spheres read it at L 0.99.
+
+   The brick's lightness relative to its white is steady across captures, at 0.61-0.66 on Herculesstraat 131422. So
+   the brick is drawn at that ratio × L 0.92.
+5. **Read the brick.** Take the median of the warm pixels. k-means on brick only cuts the band into lightness slices.
+6. **Vote.** Two or more captures must agree within dL 0.1 and dAB 0.03. Otherwise the district pool stands.
+
+Order in `wallHexOf`: row note, then measured row, then family, then district pool.
+
+| District | Rows measured | On the pool | Note |
+|---|---|---|---|
+| Apollo/Stadion | 154 of 334 (767 pands) | 180 (905 pands) | 52 rows skipped (split or lone reads); the run stopped at the disk floor at row ~210 |
+| Rivierenbuurt | 0 of 512 | 512 | not run (disk floor) |
+
+Downloads: 462 requests, 363 MB, with 333 MB purged every 20 rows. The first, killed run left about 240 MB of
+panoramas in `.cache/pand-reference` unpurged.
+
+The measured bricks are much lighter than the pools: Apollo's is #5b4e47 and Achillesstraat's own note is #352d2a,
+while the measured rows mostly fall at L 0.45-0.65. This answers the round 8 held-out "brick too dark" finding, but
+it has not yet been judged.
+
+### Roof form from AHN4
+
+Script: `scripts/buurt-generators/measure-roofs.ts`. It reads the AHN4 0.5 m DSM and DTM from the PDOK WCS in 200 m
+tiles, cached in `.cache/bag-gaps-ahn`: 62 MB for both districts.
+
+AHN5 was tried first. `scripts/lib/ahnFootprint.ts` decodes its sheets as vertical stripes, which needs fixing before
+anyone uses it.
+
+For each pand, `roofFormOf` takes the depth profile behind the front:
+- **pitched:** it rises at least 1 m within 6 m, and at least 1.3 m per metre in the first 2 m (a mansard face the
+  street sees);
+- **hidden-pitch:** it rises, but more gently;
+- **flat:** it is level, or highest at the front;
+- hipped row ends are read as well.
+
+A series is pitched or flat when at least 60 % of its clearly read members agree.
+
+Order in `pitchGate`: street note, then AHN form, then 3DBAG and `streetNoteOnly`.
+
+Against the Apollo street notes the AHN form agrees on 4 of 5 streets:
+
+| Street | Note | AHN4 |
+|---|---|---|
+| Herculesstraat | pitched | pitched (67/77) |
+| Sportstraat | pitched | pitched (31/43) |
+| Minervalaan | flat | flat or hidden (40/47) |
+| Quinten Massijsstraat | flat | hidden (7/10) |
+| Achillesstraat | flat | pitched (72/72): **wrong**; the photo's top is a fifth storey |
+
+Michelangelostraat 117261, the test case, reads pitched on all 13 members, with a hipped end.
+
+District totals:
+- Apollo: 1,175 pitched, 286 hidden, 196 flat.
+- Rivierenbuurt: 1,243 pitched, 409 hidden, 812 flat.
+
+### Held-out round 9 (drawn, not judged)
+
+Seed `r9-heldout`. Both the library streets and the round 8 held-out streets are excluded, leaving 99 candidates;
+29 requests (16 MB) were fetched.
+
+| Row | District |
+|---|---|
+| hunzestraat-120343 | Rivierenbuurt |
+| lekstraat-147614 | Rivierenbuurt |
+| trompenburgstraat-097377 | Rivierenbuurt |
+| beethovenstraat-145103 | Apollo |
+| kuinderstraat-067158 | Rivierenbuurt |
+| stadionkade-063989 | Apollo |
+| vechtstraat-144142 | Rivierenbuurt |
+
+To finish: regenerate staging with the measured layer, cut the sheets, and run the blind A/B once with no tuning.
