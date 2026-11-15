@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+## Node world frames (2026-11-15)
+
+- Merged lane/node-world-frames-20261115 (4e6cab29a): `scripts/house-frames/node-frame.ts` renders the game's first-person frame in Node (src/canalRecall/nodeFrame), without Chromium or a dev server. Usage is in docs/house-line.md §8a. It is a first-pass tool for lanes; acceptance stays on browser house:frames pairs.
+- Fidelity against browser frames on 19 likeness poses: median mean ΔE about 4.4, edge IoU about 0.79. A blind opus judge rated 20/20 interchangeable on the round-1 prompt and 13/20 on a strict prompt. About 9 s a frame at dpr 1 in a batch on a quiet machine.
+- Bugs found on the way: the routing extract stores [lat, lng], which Node first read reversed, so no doors were drawn. Cached ground cells skipped deck placement, which put the rider up to 0.8 m low on bridges. Street chunks stand each pand on its own footing (`pandRanges`).
+- Still open: kerb-ramp wedges (the worker's compactCell is suspected), water tone, POI labels, far prisms beyond 1.5 km, the windowGrid shader.
+
 ## Retail look: shop templates, chain logos, second sources (2026-11-15)
 
 - Merged lane/retail-look-20261114 (0000871c9); default off in round m, switched on in round n the same day (David: "Why retail still off?"). One template is held: `brownBar` (pubs, brown cafés) drew café Hendrix as an opaque dark box with a row of lit dots, worse than the glazed café cell fixed on 2026-11-14, so `RETAIL_HELD`/`RETAIL_HELD_KINDS` keep those fronts on the flag-off cell until the template wins a blind photo review (frames in `artifacts/round-n/hendrix-{off,on,on2}`). Bruna's CC BY-SA 3.0 logo is credited on credits.html. Every template change was kept only if it won a blind, shuffled photo A/B by a fresh opus reviewer; bikes were judged on held-out fronts because the lane had tuned on the first-pass verdicts.
