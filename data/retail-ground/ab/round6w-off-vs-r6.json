@@ -1,0 +1,87 @@
+{
+ "date": "2026-11-15",
+ "method": "blind-ab.ts seed 11, likeness frames crop [0,0.3,1,0.95], fresh opus judge, one pass, no tuning",
+ "fronts": "scripts/retail-ground/round6-fronts-walls.json (at moved onto the street wall)",
+ "tally": {
+  "bike-premium": {
+   "r6": 0,
+   "off": 0,
+   "tie": 1
+  },
+  "mcdonalds": {
+   "r6": 2,
+   "off": 0,
+   "tie": 1
+  },
+  "kruidvat": {
+   "r6": 3,
+   "off": 0,
+   "tie": 0
+  }
+ },
+ "rows": [
+  {
+   "pair": "01",
+   "front": "bike-premium-2",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "shopfronts hidden by bikes; identical"
+  },
+  {
+   "pair": "02",
+   "front": "mcdonalds-1",
+   "A": "off",
+   "B": "r6",
+   "verdict": "B",
+   "winner": "r6",
+   "judge": "dark McDonald's front with logo; other generic yellow awnings"
+  },
+  {
+   "pair": "03",
+   "front": "mcdonalds-2",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "shopfronts too distant and dark in photo"
+  },
+  {
+   "pair": "04",
+   "front": "mcdonalds-3",
+   "A": "off",
+   "B": "r6",
+   "verdict": "B",
+   "winner": "r6",
+   "judge": "dark McDonald's corner front with golden arch"
+  },
+  {
+   "pair": "05",
+   "front": "kruidvat-1",
+   "A": "off",
+   "B": "r6",
+   "verdict": "B",
+   "winner": "r6",
+   "judge": "red Kruidvat fascia and logo match photo"
+  },
+  {
+   "pair": "06",
+   "front": "kruidvat-2",
+   "A": "r6",
+   "B": "off",
+   "verdict": "A",
+   "winner": "r6",
+   "judge": "red Kruidvat fascia like photo; other none"
+  },
+  {
+   "pair": "07",
+   "front": "kruidvat-3",
+   "A": "r6",
+   "B": "off",
+   "verdict": "A",
+   "winner": "r6",
+   "judge": "photo flat fascia, no awnings; other adds orange scalloped awnings"
+  }
+ ]
+}

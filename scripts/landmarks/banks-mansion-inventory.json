@@ -1,0 +1,241 @@
+{
+ "schemaVersion": 1,
+ "id": "banks-mansion",
+ "pand": "0363100012165078",
+ "brief": "scripts/landmarks/banks-mansion-brief.md",
+ "signature": [
+  "corner-dormer",
+  "colonnade",
+  "balcony-first",
+  "balcony-third",
+  "modillion-cornice",
+  "dormers",
+  "corner-entrance",
+  "banks-lettering"
+ ],
+ "walls": [
+  {
+   "tag": "w01-193",
+   "bearing": 193,
+   "lengthM": 17.9,
+   "centre": [
+    4.8932365,
+    52.36533
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000753",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "herengracht-colonnade",
+     "kind": "colonnade",
+     "where": "Herengracht ground floor: six engaged columns between five large windows",
+     "approxSizeM": [
+      17.9,
+      4.6
+     ],
+     "plan": "simplified",
+     "how": "as colonnade",
+     "seenIn": "TMX7316010203-000355_pano_0000_000753"
+    },
+    {
+     "id": "herengracht-bays",
+     "kind": "window-shape",
+     "where": "six bays of architraved windows on three floors, both balconies and six dormers",
+     "approxSizeM": [
+      17.9,
+      12
+     ],
+     "plan": "modelled",
+     "how": "upper() at the rectified bay centres",
+     "seenIn": "TMX7316010203-000355_pano_0000_000753"
+    }
+   ]
+  },
+  {
+   "tag": "w02-282",
+   "bearing": 282,
+   "lengthM": 16.3,
+   "centre": [
+    4.893079,
+    52.3654695
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002619_pano_0015_000187",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "colonnade",
+     "kind": "colonnade",
+     "where": "Vijzelstraat ground floor: five engaged columns between four large small-paned windows on a white rendered storey, under an entablature",
+     "approxSizeM": [
+      16.3,
+      4.6
+     ],
+     "plan": "simplified",
+     "how": "half-round white shafts (r 0.38 m) with square base and capital blocks, no fluting; shopWin() 3x4 panes at the rectified centres",
+     "seenIn": "TMX7316010203-002619_pano_0015_000187"
+    },
+    {
+     "id": "balcony-first",
+     "kind": "balcony-ironwork",
+     "where": "wrought-iron balcony along the whole first floor on the ground-floor cornice",
+     "approxSizeM": [
+      16.3,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "stone slab 0.55 m deep, rails and bars every 0.16 m; the scroll rings are drawn as a mid rail",
+     "seenIn": "TMX7316010203-002619_pano_0015_000187"
+    },
+    {
+     "id": "balcony-third",
+     "kind": "balcony-ironwork",
+     "where": "second wrought-iron balcony along the third floor over the string cornice",
+     "approxSizeM": [
+      16.3,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "as balcony-first, 0.45 m deep",
+     "seenIn": "TMX7316010203-002619_pano_0015_000187"
+    },
+    {
+     "id": "architraved-windows",
+     "kind": "window-shape",
+     "where": "five bays of tall windows with stone architraves, sills and hood cornices on the first floor",
+     "approxSizeM": [
+      1.2,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "win() with architrave, frame, mullion and transom; hood cornice over the first floor",
+     "seenIn": "TMX7316010203-002619_pano_0015_000187"
+    },
+    {
+     "id": "modillion-cornice",
+     "kind": "other",
+     "where": "frieze and projecting main cornice on modillions at 17.2-17.7 m",
+     "approxSizeM": [
+      16.3,
+      0.6
+     ],
+     "plan": "modelled",
+     "how": "frieze slab, modillions every 0.5 m, 0.65 m cornice",
+     "seenIn": "TMX7316010203-002619_pano_0015_000187"
+    },
+    {
+     "id": "dormers",
+     "kind": "window-shape",
+     "where": "five stone dormers with flat cornice caps in the slate mansard",
+     "approxSizeM": [
+      1.6,
+      1.9
+     ],
+     "plan": "modelled",
+     "how": "dormer(): sandstone box with a window and a cap, set into the 3DBAG mansard",
+     "seenIn": "TMX7316010203-002619_pano_0015_000187"
+    },
+    {
+     "id": "hotel-sign",
+     "kind": "sign",
+     "where": "vertical HOTEL blade sign at the north end of the Vijzelstraat front",
+     "approxSizeM": [
+      0.5,
+      5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002619_pano_0015_000187",
+     "skip": {
+      "reason": "temporary",
+      "note": "hotel operator blade sign"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-237",
+   "bearing": 237,
+   "lengthM": 6.8,
+   "centre": [
+    4.893081,
+    52.3653725
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_01641",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-entrance",
+     "kind": "other",
+     "where": "corner entrance: tall dark double doors with a glazed transom between two columns",
+     "approxSizeM": [
+      2.0,
+      3.9
+     ],
+     "plan": "modelled",
+     "how": "frame, dark leaves, glass transom, two engaged columns",
+     "seenIn": "recording_2025-06-16_06-42-40_01641"
+    },
+    {
+     "id": "banks-lettering",
+     "kind": "lettering",
+     "where": "BANKS in dark capitals (MANSION below, small) on the white render panels either side of the entrance",
+     "approxSizeM": [
+      1.0,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "letters() 0.034 m pixels at t 0.95 and 5.75 m; MANSION (0.12 m letters) too small to draw",
+     "seenIn": "recording_2025-06-16_06-42-40_01641"
+    },
+    {
+     "id": "lanterns",
+     "kind": "lamp",
+     "where": "two black lanterns on brackets beside the entrance",
+     "approxSizeM": [
+      0.3,
+      0.6
+     ],
+     "plan": "simplified",
+     "how": "dark box with a lit panel on a bracket",
+     "seenIn": "recording_2025-06-16_06-42-40_01641"
+    },
+    {
+     "id": "corner-dormer",
+     "kind": "window-shape",
+     "where": "large central stone dormer over the corner, crowning the mansard",
+     "approxSizeM": [
+      2.9,
+      3.2
+     ],
+     "plan": "modelled",
+     "how": "dormer() 2.9 m wide to 20.8 m with a cap",
+     "seenIn": "recording_2025-06-16_06-42-40_01641"
+    },
+    {
+     "id": "corner-windows",
+     "kind": "window-shape",
+     "where": "two windows a floor on the corner, three on the third floor",
+     "approxSizeM": [
+      1.15,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "upper() with a three-window top row",
+     "seenIn": "recording_2025-06-16_06-42-40_01641"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

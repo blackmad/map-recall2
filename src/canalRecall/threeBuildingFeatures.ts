@@ -44,7 +44,9 @@ import { periodWallList } from './look/brickLift.js';
 import { hashSeed } from './wallBays.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 import { applyGlazing, glazingOf } from './glassParts.js';
-import { evidencelessPuiPaint, RETAIL_TEMPLATES, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
+import { RETAIL_TEMPLATES, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
+import { paintOverGuess } from './retailPuiPaint.js';
+import { bikeFromCode } from './retailBikes.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -148,7 +150,7 @@ function rowDressOf(v: unknown): { omitExtras?: string[]; cornice?: string; corn
   const ws = (v as { windowShare?: unknown }).windowShare, windowShare = typeof ws === 'number' && ws > 0.3 && ws < 0.95 ? { windowShare: ws } : {};
   const ms = (v as { mullionShare?: unknown }).mullionShare, mullionShare = typeof ms === 'number' && ms > 0 && ms < 0.6 ? { mullionShare: ms } : {};
   const d = v as { cornice?: unknown; heads?: unknown; extras?: unknown; stoop?: { side?: unknown }; door?: { side?: unknown; index?: unknown; bays?: unknown }; balcony?: { storeys?: unknown; axis?: unknown } };
-  const doorcaseOf = (dc: { material?: unknown; top?: unknown; fanlight?: unknown; door?: unknown } | undefined) => dc && (dc.material === 'stone' || dc.material === 'timber') ? { doorcase: { material: dc.material as 'stone' | 'timber', ...(dc.top === 'entablature' || dc.top === 'pediment' || dc.top === 'segmental' ? { top: dc.top as 'entablature' | 'pediment' | 'segmental' } : {}), ...(dc.fanlight === false || dc.fanlight === 'diamond' || dc.fanlight === 'oval' || dc.fanlight === 'oval-spoked' ? { fanlight: dc.fanlight as false | 'diamond' | 'oval' | 'oval-spoked' } : {}), ...((dc as { span?: unknown }).span === 'ground' ? { span: 'ground' as const } : {}), ...(dc.door === 'black' || (typeof dc.door === 'string' && /^#[0-9a-f]{6}$/i.test(dc.door)) ? { door: dc.door as string } : {}) } } : {};
+  const doorcaseOf = (dc: { material?: unknown; top?: unknown; fanlight?: unknown; door?: unknown } | undefined) => dc && (dc.material === 'stone' || dc.material === 'timber') ? { doorcase: { material: dc.material as 'stone' | 'timber', ...(dc.top === 'entablature' || dc.top === 'pediment' || dc.top === 'segmental' ? { top: dc.top as 'entablature' | 'pediment' | 'segmental' } : {}), ...(dc.fanlight === false || dc.fanlight === 'diamond' || dc.fanlight === 'oval' || dc.fanlight === 'oval-spoked' ? { fanlight: dc.fanlight as false | 'diamond' | 'oval' | 'oval-spoked' } : {}), ...((dc as { span?: unknown }).span === 'ground' || (dc as { span?: unknown }).span === 'frame' ? { span: (dc as { span: 'ground' | 'frame' }).span } : {}), ...(typeof (dc as { entresol?: unknown }).entresol === 'number' ? { entresol: (dc as { entresol: number }).entresol } : {}), ...(dc.door === 'black' || (typeof dc.door === 'string' && /^#[0-9a-f]{6}$/i.test(dc.door)) ? { door: dc.door as string } : {}) } } : {};
   const doorSide = rowSideOf(d.door?.side), door = doorSide ? { side: doorSide, ...(typeof d.door?.index === 'number' && typeof d.door?.bays === 'number' && d.door.bays > 0 ? { index: d.door.index, bays: d.door.bays } : {}), ...doorcaseOf((d.door as { doorcase?: { material?: unknown } } | undefined)?.doorcase) } : null;
   const balcony = d.balcony && Array.isArray(d.balcony.storeys) && d.balcony.storeys.every(k => typeof k === 'number') ? { storeys: d.balcony.storeys as number[], axis: d.balcony.axis === 'all' ? 'all' as const : 'centre' as const } : null;
   const sf = (v as { shopFront?: { frameHex?: unknown; side?: unknown } }).shopFront, sfSide = rowSideOf(sf?.side);
@@ -264,7 +266,6 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     // Lane retail-look round 3c (`?retailGround=1`): bay.groundHex here is the shop grammar's guess (no recipe is passed),
     // so a pale one goes dark; a measured paint (spec shopHex, row-front trace, a street recipe's groundWallHex) wins later.
-    if (retailGroundOn() && look === 'photo' && building.groundHex) building.groundHex = evidencelessPuiPaint(building.groundHex, id);
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
     if (storeyScale !== 1) building.storeyScale = storeyScale;
     building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);
@@ -293,6 +294,11 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (p.registerFinish === 'light' || p.registerFinish === 'brick') building.registerFinish = p.registerFinish;
   // A spec'd shopfront's measured paint (H11) on the shop's ground storey, in the look's palette.
   if (specRecipe?.shopHex && building.groundHex && shopfrontOf(p) !== 'quiet' && cellSetOf(look) !== 'procedural') building.groundHex = lookHex(specRecipe.shopHex, look as Look);
+  // Lane retail-look round 4 (`?retailGround=1`): the pui paint measured on a street panorama (measure-pui.ts, stamped by
+  // decorateShopTemplate) outranks both the guess and the spec's shop read.
+  const puiPaint = retailGroundOn() && cellSetOf(look) !== 'procedural' && typeof p.puiPaint === 'string' ? lookHex(p.puiPaint, look as Look) : undefined;
+  // Round 5b: a dark reading only replaces a pale guess (retailPuiPaint.ts paintOverGuess).
+  if (puiPaint && building.groundHex && shopfrontOf(p) !== 'quiet') building.groundHex = paintOverGuess(building.groundHex, puiPaint, p.puiDark === 1);
   // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
   let sourcedWall: string | undefined;
   if (look === 'photo') {
@@ -320,7 +326,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?, 1?] : null;
   if (template && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && !p.frontCarrier && cellSetOf(look) !== 'procedural') {
     const logo = logoFor(template[0] as RetailTemplate), logoLayer = retailLogoLayer(cellSetOf(look));
-    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer, ...logo } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}) };
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer + logo.page, rect: logo.rect, aspect: logo.aspect } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(puiPaint && p.puiDark !== 1 ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}), ...(typeof p.shopAwning === 'string' && /^#[0-9a-f]{6}$/i.test(p.shopAwning) ? { awning: p.shopAwning } : {}) };
     delete building.signature;
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);

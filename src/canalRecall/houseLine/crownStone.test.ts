@@ -96,3 +96,19 @@ test('crown stone: a stated cap carving fills the tympanum (shell or carved); ab
   const plain = draw(c).tris;
   for (const cap of ['shell', 'carved'] as const) assert.ok(draw({ ...c, stone: { cap } }).tris.length > plain.length, cap);
 });
+
+test('crown stone: a stated festoon and shoulder ovals (Herengracht 0363100012176326) add carving; absent: unchanged', () => {
+  const c: RowCrown = { shape: 'neck', riseM: 4.2, attic: 1, dress: 'belt' };
+  const base = draw(c).tris, fest = draw({ ...c, stone: { festoon: true } }).tris, ovals = draw({ ...c, stone: { shoulders: 'oval' } }).tris;
+  assert.deepEqual(draw({ ...c, stone: {} }).tris, base, 'an empty stone is the belt dress');
+  assert.ok(fest.length > base.length + 100, 'the garland, its drops and the pendant');
+  // The festoon hangs in the neck, clear of the neck's coping band, over the attic light.
+  const extra = fest.slice(0).filter(t => t.part === 'trim' && !base.some(b => JSON.stringify(b) === JSON.stringify(t)));
+  const vs = extra.flatMap(t => t.p.map(p => Math.abs(p[1])));
+  assert.ok(Math.max(...vs) < 6.12 / 2, 'inside the gable');
+  // One oval each side, out on the shoulders.
+  const ov = ovals.filter(t => !base.some(b => JSON.stringify(b) === JSON.stringify(t))).flatMap(t => t.p.map(p => p[1]));
+  assert.ok(ov.some(v => v < -1.6) && ov.some(v => v > 1.6), 'both shoulders');
+  // A festoon takes the neck's carving space: a stated cartouche gives way.
+  assert.deepEqual(draw({ ...c, stone: { festoon: true, neck: 'cartouche' } }).tris.length, fest.length);
+});

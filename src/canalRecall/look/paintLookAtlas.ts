@@ -8,7 +8,7 @@ import { BAY_ENTRIES, BAY_LAYER_COUNT, bayVariant } from '../bayLook.js';
 import { paintGlassBlockCell } from '../glassBlockTexture.js';
 import { SHOP_KINDS, bayTextures, releaseBayTextures, type Look } from '../bayTextures.js';
 import { retailGroundOn } from '../retailTemplates.js';
-import { glyphCellBox, LOGO_ATLAS_PATH, retailLogoLayer } from '../retailLogos.js';
+import { glyphCellBox, LOGO_ATLAS_PATH, LOGO_ATLAS_2_PATH, retailLogoLayer } from '../retailLogos.js';
 import { LOOK_VARIANTS, PHOTO_WALL_CELL_MEAN } from './palette.js';
 import { FACADE_STYLES } from '../genericFacades.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from '../streetFacadeRendering.js';
@@ -31,9 +31,10 @@ export function lookAtlasLayers(look: 'procedural' | Look, slots: boolean): { la
   // The flat-roof surface (lane R5-E, roofs/flatRoofSurface.ts) after the slot layers, at a fixed ordinal with or without them.
   const surface = flatRoofSurfaceEnabled() ? flatRoofSurfaceLayer(look) : null;
   const total = surface !== null ? surface + 1 : layers + (slots ? SLOT_LAYER_COUNT : 0);
-  // Lane retail-ground (`?retailGround=1`): the chain-logo layer at its fixed ordinal (retailLogos.ts) after the rest.
+  // Lane retail-ground (`?retailGround=1`): the chain-logo layers at their fixed ordinals (retailLogos.ts) after the rest:
+  // the first page and (round 6) the second.
   const logo = retailGroundOn() ? retailLogoLayer(look) : null;
-  return { layers, total: logo !== null ? Math.max(total, logo + 1) : total };
+  return { layers, total: logo !== null ? Math.max(total, logo + 2) : total };
 }
 
 /** A look's painted arrays: `colour` RGBA and `mask` RG, `total` layers of `size`², rows bottom-up. */
@@ -144,7 +145,7 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
   if (surfaceLayer !== null) copyCell(paintFlatRoofSurfaceCell(), surfaceLayer);
   for (const [i, cell] of paintRoofLayers(LOOK_VARIANTS[look].cartoonRoofCells).entries()) { copyCell(cell, roofBase + i); await yieldBudget(); }
   const logoLayer = retailGroundOn() ? retailLogoLayer(look) : null;
-  if (logoLayer !== null) await paintLogoLayer(colour, mask, logoLayer, size);
+  if (logoLayer !== null) { await paintLogoLayer(colour, mask, logoLayer, size); await paintLogoLayer(colour, mask, logoLayer + 1, size, LOGO_ATLAS_2_PATH); }
   let brick: CanvasImageSource = document.createElement('canvas');
   if (look === 'photo') {
     const image = new Image(); image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
@@ -185,21 +186,22 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
  * The chain-logo layer (lane retail-ground, retailLogos.ts): the published atlas drawn to the layer, rows bottom-first,
  * mask zero (the logo's own colours, untinted). An atlas that fails to load leaves a white layer (a plain board).
  */
-async function paintLogoLayer(colour: Uint8Array, mask: Uint8Array, layer: number, size: number): Promise<void> {
+async function paintLogoLayer(colour: Uint8Array, mask: Uint8Array, layer: number, size: number, path = LOGO_ATLAS_PATH): Promise<void> {
   const px = size * size, canvas = document.createElement('canvas'); canvas.width = canvas.height = size;
   const ctx = canvas.getContext('2d', { willReadFrequently: true })!;
   ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, size, size);
-  try { const image = new Image(); image.src = new URL(LOGO_ATLAS_PATH, document.baseURI).href; await image.decode(); ctx.imageSmoothingQuality = 'high'; ctx.drawImage(image, 0, 0, size, size); } catch { /* white board */ }
+  try { const image = new Image(); image.src = new URL(path, document.baseURI).href; await image.decode(); ctx.imageSmoothingQuality = 'high'; ctx.drawImage(image, 0, 0, size, size); } catch { /* white board */ }
   const pixels = ctx.getImageData(0, 0, size, size).data;
   // Round 3c (lane retail-look): the lettering cell is white, its glyph coverage in the tint channel (the letters'
   // colour) and the rest in the accent channel (the board's), so a letter quad takes both from its triangle.
   const g = glyphCellBox(), gx0 = Math.round(g.x * size), gx1 = Math.round((g.x + g.w) * size), gy0 = Math.round(g.y * size), gy1 = Math.round((g.y + g.h) * size);
   // An atlas without the lettering cell (a stale publish, or none loaded: that cell is white) letters nothing: the
   // whole cell takes the board's colour, so a letter quad reads as plain board, never as a solid block.
-  const lettered = pixels[((gy0 + 1) * size + gx0 + 1) * 4] < 32;
+  // Round 6: only the first page has the lettering cell.
+  const glyphs = path === LOGO_ATLAS_PATH, lettered = glyphs && pixels[((gy0 + 1) * size + gx0 + 1) * 4] < 32;
   for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
     const iy = size - 1 - y, from = (iy * size + x) * 4, at = layer * px + y * size + x;
-    if (x >= gx0 && x < gx1 && iy >= gy0 && iy < gy1) {
+    if (glyphs && x >= gx0 && x < gx1 && iy >= gy0 && iy < gy1) {
       const cover = lettered ? pixels[from] : 0;
       colour[at * 4] = colour[at * 4 + 1] = colour[at * 4 + 2] = 255; colour[at * 4 + 3] = 255;
       mask[at * 2] = cover; mask[at * 2 + 1] = 255 - cover;

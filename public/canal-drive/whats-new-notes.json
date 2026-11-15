@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-15",
+      "title": "Politiebureau Raampoort and Banks Mansion",
+      "text": "Two more landmarks on the ride ring are modelled. The 1888 police station at the Raampoort on Marnixstraat has its banded brick, round-headed windows under dark arches, its clock tower and the crenellated corner over the Singelgracht. Banks Mansion on the corner of Herengracht and Vijzelstraat has its white rendered ground floor with columns, two full-length iron balconies, the slate mansard with stone dormers and the lettered corner entrance.",
+      "images": [
+        {
+          "src": "ui/2026-11-15-landmarks/raampoort.jpg",
+          "alt": "Politiebureau Raampoort: the street panorama beside the game frame on Marnixstraat",
+          "caption": "Raampoort, photo and game"
+        },
+        {
+          "src": "ui/2026-11-15-landmarks/banks-mansion.jpg",
+          "alt": "Banks Mansion: the corner from across the Herengracht, photo beside the game",
+          "caption": "Banks Mansion, photo and game"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
       "title": "The Diamond Museum on Paulus Potterstraat",
       "text": "The Diamant Museum at Paulus Potterstraat 8 (1899) is now modelled. It has its corner turret with the slate spire, the DIAMOND MUSEUM letters, the stone balcony with its iron railing and the lettered entrance surround.",
       "where": [

@@ -100,3 +100,6 @@ const PROCEDURAL: Record<FacadeStyle, Openings> = {
 };
 
 export const proceduralOpenings = (style: FacadeStyle): Openings => PROCEDURAL[style];
+const BAY_LOOK_STYLES: readonly FacadeStyle[] = ['canal', 'school', 'modern'];
+/** A wall's openings when its context states none: the style's bay look, else its procedural preset. */
+export const presetOpenings = (id: string, style: FacadeStyle): Openings => BAY_LOOK_STYLES.includes(style) ? bayLookOpenings(id, style) : proceduralOpenings(style);

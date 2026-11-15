@@ -22,6 +22,9 @@ export type WallLayout = {
   storeyM: number;
   /** Bay indices that carry a front door, ascending. */
   doorBays: number[];
+  /** House rows: the door bay drawn mirrored, its door where the read door is (Herengracht 144: a one-bay front's read
+   *  door on the right drew on the preset's left). Absent: the preset's door axis, as before. */
+  doorMirror?: true;
 };
 
 /** Walls shorter than this get no facade cells (chamfers, notches). */
@@ -137,5 +140,5 @@ export function edgeGroundPieces(run: RunLayout, edge: number, edgeLenM: number)
 export function edgeLayout(run: RunLayout, edge: number, edgeLenM: number): WallLayout {
   const bays = Math.max(1, Math.round(edgeLenM / run.bayWidthM)), bayWidthM = edgeLenM / bays, s = run.edgeStartM[edge];
   const doorBays = run.doorBays.map(b => (b + 0.5) * run.bayWidthM - s).filter(c => c > 0 && c < edgeLenM).map(c => Math.min(bays - 1, Math.floor(c / bayWidthM)));
-  return { bays, bayWidthM, groundM: run.groundM, storeys: run.storeys, storeyM: run.storeyM, doorBays: [...new Set(doorBays)] };
+  return { bays, bayWidthM, groundM: run.groundM, storeys: run.storeys, storeyM: run.storeyM, doorBays: [...new Set(doorBays)], ...(run.doorMirror ? { doorMirror: true as const } : {}) };
 }

@@ -70,7 +70,9 @@ export type RowDormerKind = (typeof ROW_DORMER_KINDS)[number];
  *   arch-ring           a raised white arch ring with keystone over a round head
  *   none                plain brick heads
  */
-export const ROW_HEAD_DRESSINGS = ['none', 'block-course', 'keystone', 'segmental-tympanum', 'dentil-lintel', 'jack-blocks', 'stone-lintel', 'arch-ring', 'block-surround'] as const;
+export const ROW_HEAD_DRESSINGS = ['none', 'block-course', 'keystone', 'segmental-tympanum', 'dentil-lintel', 'jack-blocks', 'stone-lintel', 'arch-ring', 'block-surround', 'tablet'] as const;
+/** `tablet`: a light stone tablet in the brick over each window (Herengracht 175404); with the `relieving` shape, over a
+ *  brick relieving arch. */
 /** `block-surround`: white blocks framing the whole window, alternating quoins up both jambs with a keyed head (Kinkerstraat 100, reviewed). */
 export type RowHeadDressing = (typeof ROW_HEAD_DRESSINGS)[number];
 export const ROW_HEAD_SHAPES = ['flat', 'segmental', 'round', 'relieving'] as const;
@@ -271,6 +273,12 @@ export interface RowGableStone {
   cap?: 'shell' | 'carved';
   /** The cap on top: a pediment, a segmental hood, or a carved crest (absent: the gable's `cap`, else the kit's stock). */
   crest?: 'pediment' | 'segmental' | 'crest';
+  /** Neck: a carved festoon hung across the neck under the cap, its ends dropping down the neck's sides (Herengracht
+   *  0363100012176326). Stated, it takes the neck's carving space (it replaces `neck`). Absent: none. */
+  festoon?: boolean;
+  /** Neck or bell: an oval cartouche in a carved frame on each shoulder, in the brick under the claws (0363100012176326).
+   *  Absent: none. */
+  shoulders?: 'oval';
 }
 export interface RowDoorcase {
   material: 'stone' | 'timber'; top?: 'entablature' | 'pediment' | 'segmental';
@@ -278,8 +286,12 @@ export interface RowDoorcase {
    *  with a small lozenge inside, `oval-spoked` the ring with four short spokes to the frame, false none. */
   fanlight?: boolean | 'diamond' | 'oval' | 'oval-spoked';
   /** `ground`: one pilastered frame over the whole ground storey, the door and the windows beside it under one
-   *  entablature (Herengracht 142's shop surround). Absent: the door's own case. */
-  span?: 'ground';
+   *  entablature (Herengracht 142's shop surround). `frame`: a white timber frame of tall openings over the whole ground
+   *  storey, posts between the door and every window and an entresol rail across them with a light over each opening
+   *  (0363100012176327); it replaces the door's own case. Absent: the door's own case. */
+  span?: 'ground' | 'frame';
+  /** `frame`: the entresol rail's height as a share of the frame (absent 0.58). */
+  entresol?: number;
   /** The leaf's paint: `black` (near-black, the belt's usual door) or a hex. Absent: the kit's brown. */
   door?: 'black' | string;
 }
