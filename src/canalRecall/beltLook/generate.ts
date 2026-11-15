@@ -16,7 +16,7 @@ import type { DescriberAnswer } from '../houseSpec/describer.ts';
 import { solveRow, type MemberInput, type RowInput } from '../houseSpec/row/solve.ts';
 import type { RowDesign, RowField, RowRecord } from '../houseSpec/row/types.ts';
 import { districtRows, type GenPand, type GenRow, type GenStreet } from '../buurtGenerator/rows.ts';
-import { donorFor, fittedRead, frontTopM, gableable, GABLED_CROWNS, stripRoofStorey, type BeltDonor, type BeltTarget } from './donors.ts';
+import { donorDistance, donorFor, fittedRead, frontTopM, gableable, GABLED_CROWNS, mansardAsDormers, stripRoofStorey, type BeltDonor, type BeltTarget } from './donors.ts';
 import { MANSARD_RISE } from '../houseLine/rowFront.ts';
 import type { RowGable } from '../houseSpec/row/types.ts';
 import { dressBeltStone } from './stone.ts';
@@ -42,6 +42,23 @@ export function brickDonorSample(d: Pick<BeltDonor, 'answer' | 'sample'>): strin
   return brickFromSample(lchOf(d.sample)) === 'buff-brick' ? undefined : d.sample;
 }
 
+/**
+ * The measured brick of the pand's nearest brick donor (donorDistance; a plain brick front with a non-buff sample), for a
+ * brick front whose own donor lends no brick colour (its donor painted, stucco or pale). Without it the read's brick was
+ * judged with no sample and took the era default, red-brown before the ring: 468 of the 469 red-brown belt fronts of
+ * round 6 (held-out round 6: Prinsengracht 168601 and 182462 drawn red where the photos are brown and grey-purple).
+ */
+export function nearestBrickSample(t: BeltTarget, donors: readonly BeltDonor[]): { sample: string; from: string } | null {
+  let best: { sample: string; from: string; s: number } | null = null;
+  for (const d of donors) {
+    if (d.pandId === t.pandId) continue;
+    const sample = brickDonorSample(d);
+    if (!sample) continue;
+    const s = donorDistance(t, d);
+    if (!best || s < best.s || (s === best.s && d.pandId < best.from)) best = { sample, from: d.pandId, s };
+  }
+  return best && { sample: best.sample, from: best.from };
+}
 const pandNumber = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
 /**
  * A front's wall top over the street: a gabled front stands at the front top (its gable rises to the ridge); a cornice
@@ -97,10 +114,10 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}), ...(sd?.finish ? { finish: sd.finish } : {}), ...(sd?.storeys ? { storeys: sd.storeys } : {}), ...(sd?.stoop ? { stoop: true } : {}), ...(sd?.roofStorey ? { roofStorey: true } : {}), ...(sd?.warehouse ? { warehouse: true } : {}), ...(sd?.elements?.length ? { elements: sd.elements } : {}) };
     const own = reads.get(pid);
     let read: DescriberAnswer, sample: string | undefined, readRef: string;
-    // A pand's own read keeps a roof storey it saw as one (a mansard or attic roof part); dormers read over a cornice with
-    // the roof part unseen, none or only dormers are not a mansard front unless the register states one (held-out round 5:
-    // Keizersgracht 176027-176028 and 165044 drew whole slate mansards from one dormer each).
-    if (own) { read = t.roofStorey ? own.answer : stripRoofStorey(structuredClone(own.answer), true); sample = own.sample; readRef = own.ref; prov[pid] = { own: true, ref: own.ref }; }
+    // A pand's own read keeps an attic it saw; dormers read over a cornice are not a mansard front unless the register
+    // states one (held-out round 5: Keizersgracht 176027-176028 and 165044 drew whole slate mansards from one dormer
+    // each), and a read mansard stands as dormers (round 7 sample: one read mansard in five was one).
+    if (own) { read = t.roofStorey ? mansardAsDormers(structuredClone(own.answer)) : stripRoofStorey(structuredClone(own.answer), true); sample = own.sample; readRef = own.ref; prov[pid] = { own: true, ref: own.ref }; }
     else {
       const d = donorFor(t, donors);
       if (!d) return null;
@@ -114,14 +131,17 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       // A donor's sample is a brick colour only when the donor is a brick front and the sample is not a buff (tan) brick;
       // otherwise the solve takes the neighbours' family (round 4: tan and pale fronts over dark brick rows).
       sample = t.finish === 'plaster' || t.finish === 'stone' ? undefined : brickDonorSample(d.donor);
+      if (!sample && (read as { finish?: string }).finish === 'brick') sample = nearestBrickSample(t, donors)?.sample;
       prov[pid] = { donor: d.donor.pandId, distance: d.distance, rank: d.rank, of: d.of };
     }
     const gabled = GABLED_CROWNS.has(String(read.crown));
     const top = !gabled && ahnTop !== null ? ahnTop : corniceLine(read, t, eaves, m.pand.eavesM);
     // A gable's apex: the AHN front's top under the 3DBAG ridge (the ridge often belongs to the roof behind the front).
-    const ridge = gabled && af ? ahnGableApex(af, top, ridge0) : ridge0;
+    // The minimum rise counts from 3DBAG's own eaves, not the front top lifted to the height (round 6: Keizersgracht 178869
+    // and 178868, AHN front tops 15.05 and 15.5 m, drawn 16.3 m as front top 14.3 + 2).
+    const ridge = gabled && af ? ahnGableApex(af, m.pand.eavesM ?? top, ridge0) : ridge0;
     members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: t.year, widthM: +m.front.lengthM.toFixed(2),
-      eaves3dbag: top, height3dbag: top, ...(ridge !== null && gableable(t) ? { ridge3dbag: +ridge.toFixed(2) } : {}),
+      eaves3dbag: top, height3dbag: top, ...(ridge !== null && (gableable(t) || (gabled && af)) ? { ridge3dbag: +ridge.toFixed(2) } : {}),
       read, readRef, ...(sample ? { wallSample: sample } : {}) });
   }
   return { id: `belt-${row.id}`, canalWindows: true, street: row.street, side: 'mixed', members, inputs: [BELT_LOOK_REF, 'public/data/extracts/amsterdam/bag-tiles/14', 'public/data/extracts/amsterdam/streets-routing.json'], solvedAt: at };
@@ -161,8 +181,8 @@ export function generateBelt(pands: readonly GenPand[], streets: readonly GenStr
     if (!input) { for (const m of r.members) skipped.push({ id: pandNumber(m.pand.id), reason: 'no-donor' }); continue; }
     const donorFilled = new Set(input.members.filter(m => 'donor' in provenance[m.pandId]).map(m => m.pandId));
     const elements = new Map(input.members.map(m => [m.pandId, stated.get(m.pandId)?.elements ?? []]));
-    const dressed = dressBeltCornice(dressBeltStone(relabelDonorFields(solveRow(input), donorFilled), BELT_LOOK_REF, elements), BELT_LOOK_REF);
-    rows.push(warehouseFronts(measuredGables(dressed, input, donorFilled), stated));
+    const dressed = dressBeltCornice(dressBeltStone(relabelDonorFields(solveRow(input), donorFilled), BELT_LOOK_REF, elements), BELT_LOOK_REF, elements);
+    rows.push(warehouseFronts(apexOnFront(measuredGables(dressed, input, donorFilled), input, ahn), stated));
     for (const m of r.members) fronts[pandNumber(m.pand.id)] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
   }
   return { rows, provenance, skipped, fronts };
@@ -212,6 +232,31 @@ export function warehouseFronts(row: RowRecord, stated: ReadonlyMap<string, Belt
     const cur = base?.value ?? [], more = [...new Set(add)].filter(x => !cur.includes(x));
     if (!more.length) continue;
     fo.extras = { value: [...cur, ...more], source: 'period-default', ref: `${base?.ref ?? ''}; ${BELT_LOOK_REF}: ${more.join(', ')} from the monument register (${sd?.warehouse ? 'pakhuis' : 'hoist beam'})` };
+  }
+  return row;
+}
+
+/**
+ * Every unreviewed gabled front with an AHN front measurement stands with its apex on the measured front top (the member's
+ * ridge3dbag, AHN-capped in beltRowInput): the foot is the apex less the gable's rise, the rise trimmed (never under the
+ * 2 m minimum) where the front is lower than foot + rise. The solve moves a foot onto its ridge only within 4 m and only
+ * for a whole series (round 6: 67 belt gables 2-4.5 m over their AHN front, Keizersgracht 178947 a neck 4.2 m over a
+ * front that tops out at 11.4 m).
+ */
+export function apexOnFront(row: RowRecord, input: RowInput, ahn: ReadonlyMap<string, AhnFront>): RowRecord {
+  for (const f of row.fronts) {
+    if (f.sub || !ahn.has(f.pandId)) continue;
+    const s = row.series.find(x => x.id === f.seriesId), m = input.members.find(x => x.pandId === f.pandId);
+    const fo = f.overrides as { gable?: RowField<RowGable>; corniceTopM?: RowField<number | null>; crown?: RowField<string> };
+    const g = fo.gable ?? s?.design.gable, line = fo.corniceTopM ?? s?.design.corniceTopM;
+    if (!s || !m || !g?.value || g.source === 'reviewed' || line?.source === 'reviewed' || !GABLED_CROWNS.has(String(fo.crown?.value ?? s.design.crown.value))) continue;
+    const apex = m.ridge3dbag, foot = line?.value, rise = g.value.riseM;
+    if (apex == null || foot == null || !(rise > 0) || Math.abs(foot + rise - apex) < 0.3) continue;
+    const r = +Math.max(AHN_BOUNDS.gableMinRiseM, Math.min(rise, apex - (input.members.find(x => x.pandId === f.pandId)?.eaves3dbag ?? foot))).toFixed(2);
+    const r2 = Math.min(r, rise), newFoot = +(apex - r2).toFixed(2);
+    if (r2 !== rise) fo.gable = { value: { ...g.value, riseM: r2 }, source: g.source, ref: `${g.ref ?? ''}; ${BELT_LOOK_REF}: rise trimmed to the AHN front (${apex} m)` };
+    fo.corniceTopM = { value: newFoot, source: 'period-default', ref: `${BELT_LOOK_REF}: the gable's apex on the AHN front top ${apex} m, its foot the apex less the ${r2} m rise` };
+    f.topM = +(newFoot - (f.groundOffsetM ?? 0)).toFixed(2);
   }
   return row;
 }

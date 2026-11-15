@@ -5,7 +5,8 @@
  *   paint   cream 3, white 3, grey 1, buff (#cfcabd) 1
  *   frieze  attic lights 5, plain 2, panels 1
  *   under   modillions 3, dentils 2, consoles 2, none 1
- *   centre  none 5, balustrade 2, pediment 1 (a centre only on a front of three bays or more)
+ *   centre  the register's balustrade or pediment only (round 7; R's rates were none 5, balustrade 2, pediment 1), on a
+ *           front of three bays or more
  * A reviewed cornice dress is never touched; a read frieze (the row solve's) keeps its frieze and takes the rest. Deterministic per series, row-coherent. Pure.
  */
 import type { RowCorniceDress, RowRecord } from '../houseSpec/row/types.ts';
@@ -16,7 +17,6 @@ export const BELT_CORNICE_RATES = {
   paint: [['cream', 3], ['white', 3], ['grey', 1], ['#cfcabd', 1]] as Weighted<string>,
   frieze: [['attic-lights', 5], ['plain', 2], ['panels', 1]] as Weighted<NonNullable<RowCorniceDress['frieze']>>,
   supports: [['modillions', 3], ['dentils', 2], ['consoles', 2], ['none', 1]] as Weighted<NonNullable<RowCorniceDress['supports']>>,
-  centre: [[null, 5], ['balustrade', 2], ['pediment', 1]] as Weighted<RowCorniceDress['centre'] | null>,
 } as const;
 /** The years the rates describe (the facade year when the register states one, else BAG's). */
 export const BELT_CORNICE_YEARS = { from: 1800, to: 1899 } as const;
@@ -29,20 +29,26 @@ const pick = <T>(w: Weighted<T>, key: string, salt: string): T => {
 };
 
 /** The cornice dress a cornice series of this build year and bay count draws (null outside the period). */
-export function beltCornice(key: string, year: number | null, bays: number): RowCorniceDress | null {
+/** The cornice centre the monument register names (a balustrade, a pediment); unstated, none (held-out rounds 5-6: white
+ *  balustrades drawn where the photos show plain cornices; the rates came from eight Herengracht cornices). */
+export function registerCentre(elements: readonly string[] | undefined): RowCorniceDress['centre'] | null {
+  const e = new Set(elements ?? []);
+  return e.has('balustrade') ? 'balustrade' : e.has('pediment') ? 'pediment' : null;
+}
+export function beltCornice(key: string, year: number | null, bays: number, elements?: readonly string[]): RowCorniceDress | null {
   if (year === null || year < BELT_CORNICE_YEARS.from || year > BELT_CORNICE_YEARS.to) return null;
-  const r = BELT_CORNICE_RATES, centre = bays >= 3 ? pick(r.centre, key, 'centre') : null;
+  const r = BELT_CORNICE_RATES, centre = bays >= 3 ? registerCentre(elements) : null;
   return { paint: pick(r.paint, key, 'paint'), frieze: pick(r.frieze, key, 'frieze'), supports: pick(r.supports, key, 'supports'), ...(centre ? { centre } : {}) };
 }
 
 /** Dress each generated cornice series without a stated cornice dress (`ref` names the look). */
-export function dressBeltCornice(row: RowRecord, ref: string): RowRecord {
+export function dressBeltCornice(row: RowRecord, ref: string, elements: ReadonlyMap<string, readonly string[]> = new Map()): RowRecord {
   const built = new Map(row.members.map(m => [m.pandId, m.built ?? null]));
   for (const s of row.series) {
     const was = s.design.corniceDress;
     if (s.design.crown?.value !== 'cornice' || was?.source === 'reviewed' || (was?.value && Object.keys(was.value).some(k => k !== 'frieze'))) continue;
     const ids = s.fronts.map(f => f.split('#')[0]), years = ids.map(id => built.get(id)).filter((y): y is number => typeof y === 'number').sort((a, b) => a - b);
-    const dress = beltCornice([...ids].sort()[0], years.length ? years[years.length >> 1] : null, Number(s.design.bays?.value ?? 0));
+    const dress = beltCornice([...ids].sort()[0], years.length ? years[years.length >> 1] : null, Number(s.design.bays?.value ?? 0), [...new Set(ids.flatMap(id => elements.get(id) ?? []))]);
     // A read frieze (solve: RowCorniceDress.frieze from the read cornice) stays; the period draws the rest round it.
     if (dress) s.design.corniceDress = was?.value ? { ...was, value: { ...dress, ...was.value }, ref: `${was.ref ?? ''}; paint, supports and centre: ${ref}` } : { value: dress, source: 'period-default', ref: `${ref}: 1800s timber cornice at the rates of lane R's eight read cornices` };
   }

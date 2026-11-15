@@ -5,7 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { donorFor, fittedRead, frontTopM, gableable, hash32, segmentOf, type BeltDonor, type BeltTarget } from './donors.ts';
 import { generateBelt, BELT_LOOK_REF, brickDonorSample, corniceLine, WAREHOUSE_EXTRAS } from './generate.ts';
-import { stripRoofStorey, warehouseRead } from './donors.ts';
+import { mansardAsDormers, stripRoofStorey, warehouseRead } from './donors.ts';
 import { registerStone } from './stone.ts';
 import { frontBandHeights } from './ahnFront.ts';
 import { ahnCorniceTop, ahnGableApex } from './generate.ts';
@@ -59,6 +59,8 @@ test('a donor read is fitted: storeys to the eaves at the donor pitch, bays to t
   assert.equal(f.groundBays, 3);
   assert.equal(f.doorIndex, 2);
   assert.equal(f.pandId, '0363100012800001');
+  // Round 7: a 17.8 m front at a tall donor pitch takes 4 storeys, not 5 (Keizersgracht 571488).
+  assert.equal(fittedRead(target({ eavesM: 17.76 }), donor('0363100012178164', 'Keizersgracht', 1700, 7, 15.1, { crown: 'cornice', storeys: 2, bays: 3 })).storeys, 4);
   assert.equal(d.answer.bays, 5, 'the donor is untouched');
   // A mansard donor whose cut wall takes in the roof (2 storeys in 12.9 m) still gives a 10.8 m pand its 3-4 storeys.
   const m = donor('0363100012169011', 'Keizersgracht', 1900, 10.35, 12.93, { crown: 'mansard', storeys: 2, bays: 4 });
@@ -134,7 +136,12 @@ test('belt cornice: 1800s cornice series only, deterministic, near the read rate
   assert.deepEqual(beltCornice('k', 1850, 3), beltCornice('k', 1850, 3));
   const n = 3000, count: Record<string, number> = {};
   for (let i = 0; i < n; i++) { const d = beltCornice(`p${i}`, 1850, 4)!; for (const k of ['paint', 'frieze', 'supports', 'centre'] as const) { const key = `${k}:${d[k] ?? null}`; count[key] = (count[key] ?? 0) + 1; } assert.equal(beltCornice(`p${i}`, 1850, 2)!.centre, undefined); }
-  for (const k of ['paint', 'frieze', 'supports', 'centre'] as const) {
+  // Round 7: the centre is the register's (a balustrade or pediment it names), never drawn at a rate.
+  assert.equal(count['centre:null'], n);
+  assert.equal(beltCornice('k', 1850, 3, ['balustrade'])!.centre, 'balustrade');
+  assert.equal(beltCornice('k', 1850, 3, ['pediment'])!.centre, 'pediment');
+  assert.equal(beltCornice('k', 1850, 2, ['balustrade'])!.centre, undefined);
+  for (const k of ['paint', 'frieze', 'supports'] as const) {
     const w = BELT_CORNICE_RATES[k] as ReadonlyArray<readonly [unknown, number]>, tot = w.reduce((s, [, x]) => s + x, 0);
     for (const [v, x] of w) assert.ok(Math.abs((count[`${k}:${v}`] ?? 0) / n - x / tot) < 0.04, `${k} ${v}`);
   }
@@ -217,7 +224,9 @@ test('round 6: own dormers are no mansard unless seen as one or stated; pakhuis 
   const dorm = stripRoofStorey(read('x', { storeyParts: { full: 4, roof: 'dormers', souterrain: false }, dormers: { count: 1, kind: 'plain' } } as never), true) as unknown as { dormers: { count: number }; storeyParts: { roof: string } };
   assert.deepEqual([dorm.dormers.count, dorm.storeyParts.roof], [0, 'none']);
   const seen = stripRoofStorey(read('x', { storeyParts: { full: 4, roof: 'mansard', souterrain: false }, dormers: { count: 2, kind: 'plain' } } as never), true) as unknown as { dormers: { count: number } };
-  assert.equal(seen.dormers.count, 2, 'a mansard read as one stays');
+  assert.equal(seen.dormers.count, 0, 'a read mansard is not kept without a stated roof storey (round 7 sample)');
+  const statedM = mansardAsDormers(read('x', { crown: 'mansard', storeyParts: { full: 4, roof: 'mansard', souterrain: false }, dormers: { count: 3, kind: 'plain' } } as never)) as unknown as { crown: string; dormers: { count: number }; storeyParts: { roof: string } };
+  assert.deepEqual([statedM.crown, statedM.storeyParts.roof, statedM.dormers.count], ['cornice', 'dormers', 3], 'a stated roof storey over a read mansard: dormers');
   // Molenpad 174768: a register dormer (roof storey) over 3DBAG eaves 7.2, height 14.07: the cornice at 14.07 - 2.2.
   assert.equal(corniceLine({ crown: 'cornice' }, { heightM: 14.07, roofStorey: true }, 14.07, 7.2), 11.87);
   assert.equal(corniceLine({ crown: 'cornice' }, { heightM: 14.07 }, 12, 12), 14.07, 'no roof storey: the height');

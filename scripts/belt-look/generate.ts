@@ -60,6 +60,10 @@ export function specOnlyPands(): Set<string> {
 }
 
 /** What the published house-specs state per pand (the monument register's current gable and facade year), and its shop. */
+/** The register's pui terms that name a shop (winkelpui, bedrijfspui). A plain `pui` or `onderpui` is the ground storey's
+ *  front of any house, not a shop (held-out round 6: Prinsengracht 182459, a register "pui" drawn as a three-bay
+ *  shopfront over its souterrain windows); a shop otherwise needs the extract's shopfront layer (POIs). */
+export const SHOP_PUI = /winkel|bedrijf/i;
 export function statedPands(): Map<string, BeltStated> {
   const out = new Map<string, BeltStated>(), dir = 'public/data/extracts/amsterdam/house-specs/14';
   for (const x of fs.readdirSync(dir)) for (const f of fs.readdirSync(path.join(dir, x))) {
@@ -77,7 +81,7 @@ export function statedPands(): Map<string, BeltStated> {
     const k = id.replace(/^NL\.IMBAG\.Pand\./, ''), cur = out.get(k) ?? {}, els = new Set<string>((f.elements ?? []).map((e: any) => e.key));
     const crown = cur.crown ?? CROWN[f.gable], year = cur.year ?? f.facadeDate?.from ?? f.coreDate?.from;
     out.set(k, { ...cur, ...(crown ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}), ...(typeof f.finish === 'string' ? { finish: f.finish } : {}),
-      ...(Number.isInteger(f.storeys) && f.storeys > 0 ? { storeys: f.storeys } : {}), ...(els.has('stoop') ? { stoop: true } : {}), ...(els.has('shopfront') ? { shop: true } : {}), ...(els.has('dormer') || els.has('attic') ? { roofStorey: true } : {}),
+      ...(Number.isInteger(f.storeys) && f.storeys > 0 ? { storeys: f.storeys } : {}), ...(els.has('stoop') ? { stoop: true } : {}), ...((f.elements ?? []).some((e: any) => e.key === 'shopfront' && SHOP_PUI.test(String(e.term ?? ''))) ? { shop: true } : {}), ...(els.has('dormer') || els.has('attic') ? { roofStorey: true } : {}),
       ...(f.type?.key === 'warehouse' ? { warehouse: true } : {}), ...(els.size ? { elements: [...els].sort() } : {}) });
   }
   // Shop ground storeys: the extract's shopfronts.json (the game's own shopfront layer).

@@ -85,10 +85,16 @@ export const DONOR_K = 4;
 /** The match weights: one unit is a street segment apart, 50 years, 2 m of width or 3 m of eaves. */
 /** A donor's storey pitch (cut wall height / read storeys) is held to this band: a cut whose wall takes in a mansard or roof
  *  storey (Langestraat's donor 169011: 2 storeys in 12.9 m) would otherwise halve a pand's storeys (held-out sheet 1). */
-export const PITCH_M = { min: 2.8, max: 3.8 } as const;
+// Round 7: the band follows the belt's measured cornice fronts (cut wall height / read storeys over 401 reads: p10 3.39,
+// median 4.10, p75 4.65 m); at 3.8 a 17.8 m Keizersgracht front (571488) drew 5 storeys where the photo shows 4. The
+// max stays under the p75 so a 10.8 m front held to a mansard donor's tall cut keeps its 3 storeys.
+export const PITCH_M = { min: 3.2, max: 4.3 } as const;
 export const DONOR_WEIGHTS = { segment: 1.5, sameStreet: -0.3, yearPer: 50, widthPer: 2, eavesPer: 3, gableOnFlat: 4, shopMismatch: 1.5, finishMismatch: 1, warehouseMismatch: 3 } as const;
 /** A warehouse's floor pitch (m): pakhuis floors are low (2.4-3.0 m in the belt's read warehouses), so the eaves hold more storeys. */
 export const WAREHOUSE_PITCH_M = 2.7;
+/** Gap sentences naming a house's own ornament, which a donor does not lend: balconies, porches, aedicules, rustication,
+ *  bay windows, oriels, sculpture. */
+export const DONOR_ONE_OFF = /balcon|porch|aedicule|rustic|oriel|bay window|sculpt|statue|relief|cartouche|coat of arms/i;
 /** A read that describes a warehouse front: its ground read as one, or its notes naming a pakhuis or loading doors. */
 export function warehouseRead(a: DescriberAnswer): boolean {
   if (a.ground === 'warehouse') return true;
@@ -98,15 +104,30 @@ export function warehouseRead(a: DescriberAnswer): boolean {
 /**
  * No roof storey stated (by the register or a read of the roof itself): a mansard crown, a mansard or attic roof part and
  * dormers leave the read, and a cornice front gets a flat lid behind (held-out rounds 4-5: slate mansards with dormers
- * over flat cornice fronts). `keepRoof` keeps a read's own mansard or attic (its roof part seen as one).
+ * over flat cornice fronts). `keepRoof` keeps a read's own attic (its roof part seen as one). A read mansard is not kept:
+ * on a blind sample of 40 belt cuts (round 7) one read mansard in five was a mansard, the other four dormers in a pitched
+ * roof, while read dormers held in 19 of 20 and register dormers showed from the street in 13 of 19.
  */
 export function stripRoofStorey(a: DescriberAnswer, keepRoof = false): DescriberAnswer {
   const ar = a as { crown?: string; storeyParts?: { roof?: string }; dormers?: unknown; gaps?: Array<{ component?: string; what: string }> };
-  if (keepRoof && (ar.crown === 'mansard' || ar.storeyParts?.roof === 'mansard' || ar.storeyParts?.roof === 'attic')) return a;
+  if (keepRoof && ar.storeyParts?.roof === 'attic' && ar.crown !== 'mansard') return a;
   if (ar.crown === 'mansard') ar.crown = 'cornice';
   if (ar.storeyParts && (ar.storeyParts.roof === 'mansard' || ar.storeyParts.roof === 'attic' || ar.storeyParts.roof === 'dormers')) ar.storeyParts.roof = 'none';
   if (ar.dormers && typeof ar.dormers === 'object') ar.dormers = { kind: 'none', count: 0 };
   if (ar.gaps) ar.gaps = ar.gaps.filter(g => !/dormer|mansard/i.test(g.what));
+  return a;
+}
+
+/**
+ * A stated roof storey over a read mansard: the mansard reads as dormers in a pitched roof (round 7 sample: four read
+ * mansards in five were dormers; Prinsengracht 177416's slate mansard), keeping the read's dormer count.
+ */
+export function mansardAsDormers(a: DescriberAnswer): DescriberAnswer {
+  const ar = a as { crown?: string; storeyParts?: { roof?: string }; dormers?: { count?: number; kind?: string } };
+  if (ar.crown !== 'mansard' && ar.storeyParts?.roof !== 'mansard') return a;
+  if (ar.crown === 'mansard') ar.crown = 'cornice';
+  if (ar.storeyParts) ar.storeyParts.roof = 'dormers';
+  ar.dormers = { kind: ar.dormers?.kind && ar.dormers.kind !== 'none' ? ar.dormers.kind : 'plain', count: Math.max(1, ar.dormers?.count ?? 0) };
   return a;
 }
 
@@ -211,6 +232,13 @@ export function fittedRead(t: BeltTarget, d: BeltDonor): DescriberAnswer {
   else if (t.finish !== 'painted' && (ax.finish === 'stucco' || ax.finish === 'painted-brick' || ax.finish === 'stone')) { ax.finish = 'brick'; delete ax.pale; }
   // No roof storey stated: the donor's mansard and dormers stay with the donor (a cornice front gets a flat lid behind).
   if (!t.roofStorey) stripRoofStorey(a);
+  // A donor's one-off white dressing stays with the donor (held-out rounds 5-6: heavy block surrounds, bands, balconies and
+  // porches drawn where the photos show plain fronts): 89 % of the belt's reads show plain windows, and the nearest-donor
+  // pick multiplied each rare dressing over many pands. Own reads and the register still draw them.
+  const ad = a as { windowSurround?: string; bands?: string; gaps?: Array<{ component?: string; what: string }> };
+  if (ad.windowSurround && ad.windowSurround !== 'none' && ad.windowSurround !== 'not-visible' && ad.windowSurround !== 'sill' && ad.windowSurround !== 'full-frame') ad.windowSurround = 'none';
+  if (ad.bands && ad.bands !== 'none' && ad.bands !== 'not-visible') ad.bands = 'none';
+  if (ad.gaps) ad.gaps = ad.gaps.filter(g => !DONOR_ONE_OFF.test(g.what));
   // A warehouse: its ground is the warehouse's (no house door and stoop), unless a shop is on record.
   if (!t.warehouse && a.ground === 'warehouse') (a as { ground: string }).ground = 'dwelling';
   if (t.warehouse && !t.shop) { (a as { ground: string }).ground = 'warehouse'; if (ax.basement === 'stoop' || ax.basement === 'stoop-and-windows') ax.basement = 'none'; }
