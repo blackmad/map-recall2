@@ -24,8 +24,9 @@ const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
  * process-wide (cache hits never reach `get`), `maxAttempts` raises the retry count, and a 429 or 5xx backs off
  * exponentially (honouring Retry-After). Defaults keep the old behaviour: no spacing, 4 attempts, 400 ms * 2^i.
  */
-/** `offline`: a cache miss throws instead of fetching (house:crops --offline: judge-pick re-rectification must cost no downloads) */
-export const http = { offline: false, minGapMs: 0, maxAttempts: 4, userAgent: UA, requests: 0, bytes: 0, retries: 0, status429: 0, status5xx: 0, failures: 0 };
+/** `offline`: a cache miss throws instead of fetching (house:crops --offline: judge-pick re-rectification must cost no downloads;
+ *  PAND_REFERENCE_OFFLINE=1 sets it for any run, e.g. house:frames on cached panoramas only) */
+export const http = { offline: process.env.PAND_REFERENCE_OFFLINE === '1', minGapMs: 0, maxAttempts: 4, userAgent: UA, requests: 0, bytes: 0, retries: 0, status429: 0, status5xx: 0, failures: 0 };
 let nextStart = 0;
 async function pace() {
   if (!http.minGapMs) return;

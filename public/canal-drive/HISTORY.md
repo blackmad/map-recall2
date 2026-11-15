@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+## Retail look: shop templates, chain logos, second sources (2026-11-15)
+
+- Merged lane/retail-look-20261114 (0000871c9) behind `?retailGround=1`, still default off. Every template change was kept only if it won a blind, shuffled photo A/B by a fresh opus reviewer; bikes were judged on held-out fronts because the lane had tuned on the first-pass verdicts.
+- Hosting: OSM shop/amenity nodes stay the base. A node whose BAG address lies in another pand moves there (`retailAddress.ts`); horeca exploitation permits (api.data.amsterdam.nl) move or add POIs only on a BAG address match or exact normalised name, because loose name matches were wrong about 1 in 7; All the Places (CC0) needs an address match before it moves anything; Overture is report-only and sign OCR confirm-only.
+- Chain logos from web search are allowed since 2026-11-15 (David), with source URL and fetch date in provenance.json; the atlas gained a second page.
+
 ## Landmarks: target list, Politiebureau Raampoort, Banks Mansion (2026-11-15)
 
 - The factory queue had no buildable rows left, so `scripts/landmarks/landmark-targets-next.ts` ranks unmodelled OSM landmarks in and just outside the belt by ride exposure (1,500 routes, walls within 60 m) × recognisability (Wikipedia 2, wikidata 1.4, monument 1.2). The top 15 with verdicts are in `docs/reports/landmark-targets-20261115.json`; canal-house fronts go to house rows.

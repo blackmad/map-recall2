@@ -1,0 +1,83 @@
+{
+ "rule": "opus judge marked the awning box on each cut (fabric, open, on the pand photographed); dropped: fixed canopies, rolled-up strips, low-confidence, side flank, striped",
+ "date": "2026-11-15",
+ "reads": [
+  {
+   "pand": "0363100012168920",
+   "file": "artifacts/retail-look/ocr-cuts/1328378818-recording_2025-07-03_08-35-58_01780.jpg",
+   "box": [
+    0.367,
+    0.393,
+    0.487,
+    0.44
+   ],
+   "note": "dark grey; small canopy over the left shop window; a second smaller one over the right window (judge read 7)"
+  },
+  {
+   "pand": "0363100012177260",
+   "file": "artifacts/retail-look/ocr-cuts/2736376844-TMX7316010203-001053_pano_0000_002699.jpg",
+   "box": [
+    0.361,
+    0.348,
+    0.736,
+    0.479
+   ],
+   "note": "grey; full extended fabric awning across the shopfront (judge read 28)"
+  },
+  {
+   "pand": "0363100012178524",
+   "file": "artifacts/retail-look/ocr-cuts/3414542012-TMX7316010203-002983_pano_0007_000037.jpg",
+   "box": [
+    0.527,
+    0.265,
+    0.828,
+    0.325
+   ],
+   "note": "olive green; two adjacent awnings with blue edging and yellow side flaps; box is the larger right one (judge read 41)"
+  },
+  {
+   "pand": "0363100012157870",
+   "file": "artifacts/retail-look/r6-on/florist-2/likeness-photo.jpg",
+   "box": [
+    0.446,
+    0.483,
+    0.552,
+    0.523
+   ],
+   "note": "navy; fabric awning lettered AmsterdamFlora on the valance; a second navy awning wraps the corner to the right (judge read 98)"
+  },
+  {
+   "pand": "0363100012131204",
+   "file": "artifacts/retail-look/r6-on/florist-3/likeness-photo.jpg",
+   "box": [
+    0.304,
+    0.722,
+    0.68,
+    0.755
+   ],
+   "note": "green; long green awning lettered 'Heeft U Al Eens Binnen Gekeken?'; lettering cannot be avoided (judge read 99)"
+  },
+  {
+   "pand": "0363100012158893",
+   "file": "artifacts/retail-look/r6-on/gallgall-1/likeness-photo.jpg",
+   "box": [
+    0.068,
+    0.618,
+    0.391,
+    0.7
+   ],
+   "note": "black; centre shop is signed 10DAYS, not Gall & Gall; there are 3 black awnings, and the box covers the largest (left) one (judge read 100)"
+  },
+  {
+   "pand": "0363100012089211",
+   "file": "artifacts/retail-look/r6-on/hairdresser-3/likeness-photo.jpg",
+   "box": [
+    0.076,
+    0.423,
+    0.288,
+    0.516
+   ],
+   "note": "black; centre shop is signed Unique Eyefashion, not Kinki; it has 3 black scalloped awnings and the box covers the largest; the valance is lettered (judge read 108)"
+  }
+ ]
+}

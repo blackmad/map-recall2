@@ -1,0 +1,197 @@
+{
+ "date": "2026-11-15",
+ "method": "blind-ab.ts, likeness frames crop [0,0.3,1,0.95], fresh opus judge, one pass, no tuning",
+ "fronts": "scripts/retail-ground/round6-fronts.json",
+ "tally": {
+  "gallgall": {
+   "r6": 2,
+   "off": 0,
+   "tie": 1
+  },
+  "apotheek": {
+   "r6": 0,
+   "off": 0,
+   "tie": 3
+  },
+  "hairdresser": {
+   "r6": 1,
+   "off": 0,
+   "tie": 2
+  },
+  "bike-used": {
+   "r6": 0,
+   "off": 1,
+   "tie": 1
+  },
+  "bike-rental": {
+   "r6": 0,
+   "off": 1,
+   "tie": 1
+  },
+  "bike-premium": {
+   "r6": 0,
+   "off": 0,
+   "tie": 1
+  },
+  "florist": {
+   "r6": 3,
+   "off": 0,
+   "tie": 0
+  }
+ },
+ "rows": [
+  {
+   "pair": "10",
+   "front": "gallgall-2",
+   "A": "off",
+   "B": "r6",
+   "verdict": "B",
+   "winner": "r6",
+   "judge": "dark fascias, lettered"
+  },
+  {
+   "pair": "11",
+   "front": "gallgall-3",
+   "A": "r6",
+   "B": "off",
+   "verdict": "A",
+   "winner": "r6",
+   "judge": "dark navy frame; other adds fruit not there"
+  },
+  {
+   "pair": "12",
+   "front": "apotheek-1",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "scaffolding"
+  },
+  {
+   "pair": "13",
+   "front": "apotheek-2",
+   "A": "off",
+   "B": "r6",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "identical"
+  },
+  {
+   "pair": "14",
+   "front": "apotheek-3",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "no shopfront in view"
+  },
+  {
+   "pair": "15",
+   "front": "hairdresser-1",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "residential in view"
+  },
+  {
+   "pair": "16",
+   "front": "hairdresser-2",
+   "A": "r6",
+   "B": "off",
+   "verdict": "A",
+   "winner": "r6",
+   "judge": "black fascias, other pale"
+  },
+  {
+   "pair": "17",
+   "front": "hairdresser-3",
+   "A": "off",
+   "B": "r6",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "photo black awnings, both renders red"
+  },
+  {
+   "pair": "01",
+   "front": "bike-used-1",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "photo red signage, both dark green"
+  },
+  {
+   "pair": "02",
+   "front": "bike-used-2",
+   "A": "r6",
+   "B": "off",
+   "verdict": "B",
+   "winner": "off",
+   "judge": "bikes in window, awnings (off side; r6 hosted the bike shop on the wrong front)"
+  },
+  {
+   "pair": "03",
+   "front": "bike-rental-1",
+   "A": "r6",
+   "B": "off",
+   "verdict": "B",
+   "winner": "off",
+   "judge": "terrace tables"
+  },
+  {
+   "pair": "04",
+   "front": "bike-rental-2",
+   "A": "off",
+   "B": "r6",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "tram occludes"
+  },
+  {
+   "pair": "05",
+   "front": "bike-premium-1",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "identical"
+  },
+  {
+   "pair": "06",
+   "front": "florist-1",
+   "A": "r6",
+   "B": "off",
+   "verdict": "A",
+   "winner": "r6",
+   "judge": "green awning and produce"
+  },
+  {
+   "pair": "07",
+   "front": "florist-2",
+   "A": "r6",
+   "B": "off",
+   "verdict": "A",
+   "winner": "r6",
+   "judge": "awning with plant displays"
+  },
+  {
+   "pair": "08",
+   "front": "florist-3",
+   "A": "off",
+   "B": "r6",
+   "verdict": "B",
+   "winner": "r6",
+   "judge": "dark green sign band"
+  },
+  {
+   "pair": "09",
+   "front": "gallgall-1",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "photo black awnings, neither render"
+  }
+ ]
+}

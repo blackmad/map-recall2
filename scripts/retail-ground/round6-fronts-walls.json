@@ -1,0 +1,72 @@
+[
+ {
+  "pandId": "0363100012235891",
+  "key": "bike-premium-2",
+  "case": "bike premium: QicQ Concept Store",
+  "at": [
+   4.871781,
+   52.386162
+  ],
+  "note": "at moved 4.9 m from the OSM node to the pand's street wall (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012236821",
+  "key": "mcdonalds-1",
+  "case": "McDonald's: McDonald's",
+  "at": [
+   4.927824,
+   52.362513
+  ],
+  "note": "at moved 5.3 m from the OSM node to the pand's street wall (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012170966",
+  "key": "mcdonalds-2",
+  "case": "McDonald's: McDonald's",
+  "at": [
+   4.897719,
+   52.376872
+  ],
+  "note": "at moved 3.6 m from the OSM node to the pand's street wall (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012156467",
+  "key": "mcdonalds-3",
+  "case": "McDonald's: McDonald's",
+  "at": [
+   4.890006,
+   52.355001
+  ],
+  "note": "at moved 3.3 m from the OSM node to the pand's street wall (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012117197",
+  "key": "kruidvat-1",
+  "case": "kruidvat: Kruidvat",
+  "at": [
+   4.927506,
+   52.361948
+  ],
+  "note": "at moved 4.8 m from the OSM node to the pand's street wall (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012080657",
+  "key": "kruidvat-2",
+  "case": "kruidvat: Kruidvat",
+  "at": [
+   4.901388,
+   52.354442
+  ],
+  "note": "at moved 4.3 m from the OSM node to the pand's street wall (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012126283",
+  "key": "kruidvat-3",
+  "case": "kruidvat: Kruidvat",
+  "at": [
+   4.913268,
+   52.35708
+  ],
+  "note": "at moved 3.6 m from the OSM node to the pand's street wall (frames need a wall within 3 m)"
+ }
+]
