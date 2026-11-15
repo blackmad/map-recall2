@@ -56,6 +56,16 @@ test('rasteriseWorld: blended draws composite over the opaque scene', () => {
   assert.deepEqual(px(img, 50, 30), [128, 128, 128]);
 });
 
+test('rasteriseWorld: a window (moved principal point) is the same rows of the full frame', () => {
+  const glass: WorldMaterial = { shade(_s, out) { out[0] = 1; out[1] = 1; out[2] = 1; out[3] = 0.5; return true; } };
+  const draws: WorldDraw[] = [{ positions: wall(20), indices: QUAD, material: flat(1, 0, 0), cull: 'none' }, { positions: wall(10, 1), indices: QUAD, material: flat(0, 1, 0), cull: 'none' },
+    { positions: wall(8, 0.5), indices: QUAD, material: glass, cull: 'none', blend: true }];
+  const full = rasteriseWorld(draws, cam, bg);
+  // Rows 10..29 of the 60-row frame: a 20-row image whose principal point sits 20 rows below its top.
+  const win = rasteriseWorld(draws, { ...cam, height: 20, cy: 30 - 10 }, bg);
+  assert.deepEqual(win.rgba, full.rgba.subarray(10 * 100 * 4, 30 * 100 * 4));
+});
+
 test('mipChain and atlas sampling: box filter, repeat wrap, layer means', () => {
   const colour = new Uint8Array(4 * 4 * 4), mask = new Uint8Array(4 * 4 * 2);
   for (let i = 0; i < 16; i++) { colour[i * 4] = i % 2 ? 255 : 0; colour[i * 4 + 3] = 255; mask[i * 2] = 255; }

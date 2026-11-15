@@ -32,6 +32,9 @@ export type WorldCamera = {
   near?: number; far?: number;
   /** The game camera's near plane, metres, for polygon offsets' depth units (fpsCamera: centre distance / 120). */
   glNear?: number;
+  /** The principal point in output px (default the image centre): a window cut from a taller frame (house:frames'
+   *  clipped likeness) is the tall frame's camera with the principal point moved, so only the window is rastered. */
+  cx?: number; cy?: number;
 };
 
 /** What a shader gets per shaded pixel and triangle. */
@@ -103,7 +106,7 @@ function boxDistance(P: ArrayLike<number>, ex: number, ey: number, ez: number): 
 }
 
 /** A draw's bounding box against the view frustum: false when all eight corners are outside one plane. */
-function drawVisible(P: ArrayLike<number>, ex: number, ey: number, ez: number, rx: number, ry: number, rz: number, ux: number, uy: number, uz: number, fx: number, fy: number, fz: number, focal: number, cxs: number, cys: number, near: number, far: number): boolean {
+function drawVisible(P: ArrayLike<number>, ex: number, ey: number, ez: number, rx: number, ry: number, rz: number, ux: number, uy: number, uz: number, fx: number, fy: number, fz: number, focal: number, cxs: number, cys: number, W: number, H: number, near: number, far: number): boolean {
   let x0 = Infinity, y0 = Infinity, z0 = Infinity, x1 = -Infinity, y1 = -Infinity, z1 = -Infinity;
   for (let i = 0; i < P.length; i += 3) { const x = P[i], y = P[i + 1], z = P[i + 2]; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; if (z < z0) z0 = z; if (z > z1) z1 = z; }
   if (!(x0 <= x1)) return false;
@@ -111,7 +114,7 @@ function drawVisible(P: ArrayLike<number>, ex: number, ey: number, ez: number, r
   for (let k = 0; k < 8; k++) {
     const dx = (k & 1 ? x1 : x0) - ex, dy = (k & 2 ? y1 : y0) - ey, dz = (k & 4 ? z1 : z0) - ez;
     const x = (dx * rx + dy * ry + dz * rz) * focal, y = (dx * ux + dy * uy + dz * uz) * focal, z = dx * fx + dy * fy + dz * fz;
-    if (z < near) out[0]++; if (z > far) out[1]++; if (x < -cxs * z) out[2]++; if (x > cxs * z) out[3]++; if (y > cys * z) out[4]++; if (y < -cys * z) out[5]++;
+    if (z < near) out[0]++; if (z > far) out[1]++; if (x < -cxs * z) out[2]++; if (x > (W - cxs) * z) out[3]++; if (y > cys * z) out[4]++; if (y < -(H - cys) * z) out[5]++;
   }
   return !out.some(n => n === 8);
 }
@@ -125,7 +128,7 @@ export function rasteriseWorld(draws: readonly WorldDraw[], camera: WorldCamera,
   const near = camera.near ?? 0.25, far = camera.far ?? 20000;
   const ex = camera.eye[0], ey = camera.eye[1], ez = camera.eye[2];
   const [rx, ry, rz] = camera.right, [ux, uy, uz] = camera.up, [fx, fy, fz] = camera.forward;
-  const focal = camera.focal * 2, cxs = W / 2, cys = H / 2, glNear = camera.glNear ?? 0.2;
+  const focal = camera.focal * 2, cxs = 2 * (camera.cx ?? width / 2), cys = 2 * (camera.cy ?? height / 2), glNear = camera.glNear ?? 0.2;
   const depth = new Float32Array(N).fill(Infinity), ids = new Int32Array(N).fill(-1);
   const base: number[] = [];
   let total = 0;
@@ -147,7 +150,7 @@ export function rasteriseWorld(draws: readonly WorldDraw[], camera: WorldCamera,
   const order = draws.map((d, i) => ({ i, d: boxDistance(d.positions, ex, ey, ez) })).sort((a, b) => a.d - b.d).map(o => o.i);
   for (const di of order) {
     const d = draws[di], P = d.positions, I = d.indices, cull = d.cull !== 'none', nt = Math.floor(I.length / 3), keep = d.keep, cut = d.cut, offK = d.offset ?? 0;
-    if (!drawVisible(P, ex, ey, ez, rx, ry, rz, ux, uy, uz, fx, fy, fz, focal, cxs, cys, near, far)) continue;
+    if (!drawVisible(P, ex, ey, ez, rx, ry, rz, ux, uy, uz, fx, fy, fz, focal, cxs, cys, W, H, near, far)) continue;
     for (let t = 0; t < nt; t++) {
       if (keep && !keep(t)) continue;
       let allNear = true, allFar = true;
@@ -163,7 +166,7 @@ export function rasteriseWorld(draws: readonly WorldDraw[], camera: WorldCamera,
       let outL = 0, outR = 0, outT = 0, outB = 0;
       for (let k = 0; k < 3; k++) {
         const x = cv[k * 3] * focal, y = cv[k * 3 + 1] * focal, z = cv[k * 3 + 2];
-        if (x < -cxs * z) outL++; if (x > cxs * z) outR++; if (y > cys * z) outT++; if (y < -cys * z) outB++;
+        if (x < -cxs * z) outL++; if (x > (W - cxs) * z) outR++; if (y > cys * z) outT++; if (y < -(H - cys) * z) outB++;
       }
       if (outL === 3 || outR === 3 || outT === 3 || outB === 3) continue;
       // Near clip (Sutherland-Hodgman on z >= near).
@@ -244,7 +247,7 @@ export function rasteriseWorld(draws: readonly WorldDraw[], camera: WorldCamera,
   const col = new Float64Array(4), bg = new Float64Array(4), dir: V3 = [0, 0, 0];
   const s: ShadeInput = { i0: 0, i1: 0, i2: 0, b0: 0, b1: 0, b2: 0, px: 0, py: 0, pz: 0, dist: 0, nx: 0, ny: 0, nz: 0, back: false, x: 0, y: 0, cosView: 1 };
   const cid = [0, 0, 0, 0], cnt = [0, 0, 0, 0];
-  const pixFocal = camera.focal;
+  const pixFocal = camera.focal, pcx = camera.cx ?? width / 2, pcy = camera.cy ?? height / 2;
   /** Cast the pixel ray onto triangle `id`; fill `s`; false when degenerate. */
   const setup = (id: number, dX: number, dY: number, dZ: number): WorldDraw | null => {
     const [di, t] = locate(id), d = draws[di], P = d.positions, I = d.indices;
@@ -276,7 +279,7 @@ export function rasteriseWorld(draws: readonly WorldDraw[], camera: WorldCamera,
     return d;
   };
   for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
-    const sxp = (x + 0.5 - width / 2) / pixFocal, syp = -(y + 0.5 - height / 2) / pixFocal;
+    const sxp = (x + 0.5 - pcx) / pixFocal, syp = -(y + 0.5 - pcy) / pixFocal;
     const dX = fx + rx * sxp + ux * syp, dY = fy + ry * sxp + uy * syp, dZ = fz + rz * sxp + uz * syp;
     let nU = 0, sky = 0, nearest = Infinity, nearId = -1;
     for (let q = 0; q < 4; q++) {
@@ -316,7 +319,7 @@ export function rasteriseWorld(draws: readonly WorldDraw[], camera: WorldCamera,
       const v = I[bt.t * 3 + k] * 3, dx = P[v] - ex, dy = P[v + 1] - ey, dz = P[v + 2] - ez;
       const z = dx * fx + dy * fy + dz * fz;
       if (z < near) { ok = false; break; }
-      sx[k] = width / 2 + (dx * rx + dy * ry + dz * rz) * pixFocal / z; sy[k] = height / 2 - (dx * ux + dy * uy + dz * uz) * pixFocal / z;
+      sx[k] = pcx + (dx * rx + dy * ry + dz * rz) * pixFocal / z; sy[k] = pcy - (dx * ux + dy * uy + dz * uz) * pixFocal / z;
     }
     if (!ok) continue;
     const Ax = sx[0], Ay = sy[0], Bx = sx[1], By = sy[1], Cx = sx[2], Cy = sy[2];
@@ -329,7 +332,7 @@ export function rasteriseWorld(draws: readonly WorldDraw[], camera: WorldCamera,
       const px = x + 0.5, py = y + 0.5;
       const w0 = ((Bx - px) * (Cy - py) - (Cx - px) * (By - py)) * inv, w1 = ((Cx - px) * (Ay - py) - (Ax - px) * (Cy - py)) * inv;
       if (w0 < 0 || w1 < 0 || 1 - w0 - w1 < 0) continue;
-      const sxp = (px - width / 2) / pixFocal, syp = -(py - height / 2) / pixFocal;
+      const sxp = (px - pcx) / pixFocal, syp = -(py - pcy) / pixFocal;
       const dX = fx + rx * sxp + ux * syp, dY = fy + ry * sxp + uy * syp, dZ = fz + rz * sxp + uz * syp;
       if (!setup(base[bt.d] + bt.t, dX, dY, dZ)) continue;
       const along = s.dist / Math.hypot(dX, dY, dZ);

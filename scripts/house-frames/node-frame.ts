@@ -52,12 +52,15 @@ for (const input of inputs) {
   const poseFile = input.endsWith('.json') ? input : path.join(input, 'pose.json');
   const dir = path.dirname(poseFile), pj = JSON.parse(fs.readFileSync(poseFile, 'utf8'));
   const key = pj.key ?? path.basename(dir);
-  const pose = opt('frame', 'likeness') === 'game' ? pj.pose : (pj.rule10?.likeness?.lp?.pose ?? pj.pose);
+  const lp = opt('frame', 'likeness') === 'game' ? undefined : pj.rule10?.likeness?.lp;
+  const pose = lp?.pose ?? pj.pose;
+  // A clipped likeness pose is a tall frame whose top window rows are the picture (rule10Frames.ts cutWindow).
+  const win = lp?.window && lp.window.height < pose.height ? { top: 0, height: lp.window.height } : undefined;
   const out = outRoot ? path.join(outRoot, key) : dir;
   fs.mkdirSync(out, { recursive: true });
   const fps = fpsFor(pose), frame = frameFor(pose);
   const t0 = performance.now();
-  const r = await renderNodeFrame({ lngLat: pose.lngLat, frame, width: pose.width, height: pose.height, dpr, center: fps.center, zoom: fps.zoom }, {
+  const r = await renderNodeFrame({ lngLat: pose.lngLat, frame, width: pose.width, height: pose.height, window: win, dpr, center: fps.center, zoom: fps.zoom }, {
     root, cacheDir: path.join(root, '.cache/node-frame'), log: s => console.log(`  ${s}`),
     shadows: !flag('no-shadows'), models: !flag('no-models'), ground: !flag('no-ground'), shells: !flag('no-shells'),
   });

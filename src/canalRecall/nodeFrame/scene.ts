@@ -16,6 +16,7 @@ import path from 'node:path';
 import type { CameraFrame } from '../ownMap/mapCamera.ts';
 import { loadAtlas } from './atlas.ts';
 import { chunkMaterial, type ChunkLook } from './chunkMaterial.ts';
+import { riderPose as surfaceRiderPose } from '../ownGround/surface.ts';
 import { geoFrame, chunkToWorld, transformPositions, worldOfLngLat, type GeoFrame } from './frame.ts';
 import { fogFor, type FogSetup } from './fog.ts';
 import { groundDraws, groundLook, loadGround } from './ground.ts';
@@ -39,6 +40,9 @@ export type NodeView = {
   /** The map's view centre and zoom (shadow box, depth fade). */
   center: [number, number]; zoom: number;
   aerial?: boolean;
+  /** Draw only rows [top, top + height) (CSS px) of the width x height frame: house:frames' clipped likeness window
+   *  (rule10Frames.ts cutWindow: the tall frame's top `window.height` rows). */
+  window?: { top: number; height: number };
   /** URL-style flags (the light rig's `?look=` etc.). */
   search?: string;
 };
@@ -82,8 +86,8 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   const { shellOrigin } = await import('../world/shellMesh.ts');
 
   const gf: GeoFrame = geoFrame(view.lngLat);
-  const fr = view.frame, dpr = view.dpr, W = view.width * dpr, H = view.height * dpr, focal = fr.focal * dpr;
-  const eye = fr.eye, fwd2 = (() => { const l = Math.hypot(fr.forward[0], fr.forward[1]); return l > 1e-6 ? [fr.forward[0] / l, fr.forward[1] / l] as [number, number] : null; })();
+  const fr = view.frame, dpr = view.dpr, W = view.width * dpr, H = (view.window?.height ?? view.height) * dpr, focal = fr.focal * dpr;
+  const eye = [fr.eye[0], fr.eye[1], fr.eye[2]], fwd2 = (() => { const l = Math.hypot(fr.forward[0], fr.forward[1]); return l > 1e-6 ? [fr.forward[0] / l, fr.forward[1] / l] as [number, number] : null; })();
   const toWorld = chunkToWorld(gf, ORIGIN);
   // Ground-local (ORIGIN metres) ↔ world: the composed affine and its inverse (for the water cut's mask lookups).
   const A = [[0, 0, 0], [1, 0, 0], [0, 1, 0], [0, 0, 1]].map(([x, y, z]) => { const o = new Float64Array(3); toWorld(x, y, z, o, 0); return o; });
@@ -112,6 +116,12 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   T.ground = ms(t); N.groundCells = ground.cells.length; N.groundBuilt = ground.ms.built;
   const height = ground.store.surface.ground.bind(ground.store.surface);
   const relief = (x: number, y: number) => (ground.store.hasRelief(x, y) ? height(x, y) : NaN);
+  // The game's camera stands on the rider's surface (ownWorldView riderSurfaceM: gameGround.ts riderPose over
+  // surface.height, kerbs and decks included, not the bare ground), so the eye rises with the surface under the pose;
+  // the aerial camera keeps elevation 0 (detached).
+  const riderGround = view.aerial || !fwd2 ? 0 : surfaceRiderPose(ground.store.surface.height.bind(ground.store.surface), cxl, cyl, fwd2, 1.2).z;
+  N.riderGroundM = Number.isFinite(riderGround) ? Math.round(riderGround * 100) / 100 : 0;
+  if (Number.isFinite(riderGround)) eye[2] += riderGround;
   const baseOf = (ring: [number, number][]): number | null => {
     const local = ring.map(p => toLocal(p[0], p[1]));
     if (!ground.store.reliefCovered(local[0][0], local[0][1])) return null;
@@ -283,7 +293,7 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   T.shadow = ms(t);
   t = performance.now();
   const sky = fog.sky;
-  const image = rasteriseWorld(draws, { eye: fr.eye, right: fr.right, up: fr.up, forward: fr.forward, focal, width: W, height: H, glNear: Math.max(0.05, fr.distance / 120) }, { background: (_x, _y, _d, o) => { o[0] = sky[0]; o[1] = sky[1]; o[2] = sky[2]; } });
+  const image = rasteriseWorld(draws, { eye, right: fr.right, up: fr.up, forward: fr.forward, focal, width: W, height: H, cx: W / 2, cy: (view.height / 2 - (view.window?.top ?? 0)) * dpr, glNear: Math.max(0.05, fr.distance / 120) }, { background: (_x, _y, _d, o) => { o[0] = sky[0]; o[1] = sky[1]; o[2] = sky[2]; } });
   T.raster = ms(t); T.total = ms(t0); T.cpu = Math.round((process.cpuUsage().user + process.cpuUsage().system - cpu0) / 1000);
   N.triangles = image.stats.triangles; N.drawn = image.stats.drawn; T.visibility = Math.round(image.stats.visibilityMs); T.resolve = Math.round(image.stats.resolveMs); T.blend = Math.round(image.stats.blendMs);
   return { image, timings: T, counts: N };
