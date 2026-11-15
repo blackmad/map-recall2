@@ -24,6 +24,8 @@ export interface GenPand {
   /** 3DBAG eaves and ridge above the pand's ground (m), as the base tiles carry them. */
   eavesM: number | null;
   ridgeM: number | null;
+  /** 3DBAG's representative height (the base tiles' `height`), when read: the belt look's front top (beltLook/donors.ts). */
+  heightM?: number | null;
   /** The orthophoto roof reading (roof-facts sidecar, roofs/roofSlots.ts): tile, slate, gravel, ...; null unread. */
   roofSlot?: string | null;
   /** 3DBAG's roof type as the base tiles carry it (bagTiles.ts roofCode: 0 unknown, 1 flat, 2 several flats, 3 slanted). */

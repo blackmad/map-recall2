@@ -16,13 +16,13 @@ import type { DescriberAnswer } from '../houseSpec/describer.ts';
 import { solveRow, type MemberInput, type RowInput } from '../houseSpec/row/solve.ts';
 import type { RowDesign, RowField, RowRecord } from '../houseSpec/row/types.ts';
 import { districtRows, type GenPand, type GenRow, type GenStreet } from '../buurtGenerator/rows.ts';
-import { donorFor, fittedRead, gableable, type BeltDonor, type BeltTarget } from './donors.ts';
+import { donorFor, fittedRead, frontTopM, gableable, type BeltDonor, type BeltTarget } from './donors.ts';
 import { dressBeltStone } from './stone.ts';
 import { dressBeltCornice } from './cornice.ts';
 
 export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: string }
 /** What a published source states for a pand (the monument register via house-specs): its crown and facade year. */
-export interface BeltStated { crown?: string; year?: number }
+export interface BeltStated { crown?: string; year?: number; shop?: boolean }
 export interface BeltGenResult {
   rows: RowRecord[];
   /** Per drawn pand, where its design came from. */
@@ -38,9 +38,10 @@ export const BELT_LOOK_REF = 'belt look (lane D 2026-11-15, src/canalRecall/belt
 export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, prov: BeltGenResult['provenance'], stated: ReadonlyMap<string, BeltStated> = new Map()): RowInput | null {
   const members: MemberInput[] = [];
   for (const m of row.members) {
-    const pid = pandNumber(m.pand.id), eaves = m.pand.eavesM, ridge = m.pand.ridgeM;
+    // The front's top (frontTopM: 3DBAG's eaves is often a rear eave under the street cornice).
+    const pid = pandNumber(m.pand.id), eaves = frontTopM(m.pand.eavesM, m.pand.heightM, m.pand.ridgeM), ridge = m.pand.ridgeM;
     const sd = stated.get(pid);
-    const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge, roofCode: m.pand.roofCode ?? null, ...(sd?.crown ? { statedCrown: sd.crown } : {}) };
+    const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge, roofCode: m.pand.roofCode ?? null, ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}) };
     const own = reads.get(pid);
     let read: DescriberAnswer, sample: string | undefined, readRef: string;
     if (own) { read = own.answer; sample = own.sample; readRef = own.ref; prov[pid] = { own: true, ref: own.ref }; }

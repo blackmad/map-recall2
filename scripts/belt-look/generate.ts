@@ -58,7 +58,7 @@ export function specOnlyPands(): Set<string> {
   return spec;
 }
 
-/** What the published house-specs state per pand (the monument register's current gable and facade year). */
+/** What the published house-specs state per pand (the monument register's current gable and facade year), and its shop. */
 export function statedPands(): Map<string, BeltStated> {
   const out = new Map<string, BeltStated>(), dir = 'public/data/extracts/amsterdam/house-specs/14';
   for (const x of fs.readdirSync(dir)) for (const f of fs.readdirSync(path.join(dir, x))) {
@@ -67,6 +67,10 @@ export function statedPands(): Map<string, BeltStated> {
       const crown = b?.d?.fronts?.[0]?.gable, year = b?.x?.facadeYear ?? b?.v?.year;
       if (typeof crown === 'string' || typeof year === 'number') out.set(id.replace(/^NL\.IMBAG\.Pand\./, ''), { ...(typeof crown === 'string' ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}) });
     }
+  }
+  // Shop ground storeys: the extract's shopfronts.json (the game's own shopfront layer).
+  for (const id of Object.keys(JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/shopfronts.json', 'utf8')).buildings ?? {})) {
+    const k = id.replace(/^NL\.IMBAG\.Pand\./, ''); out.set(k, { ...(out.get(k) ?? {}), shop: true });
   }
   return out;
 }

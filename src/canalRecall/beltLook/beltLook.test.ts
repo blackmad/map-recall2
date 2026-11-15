@@ -3,7 +3,7 @@
 // pands only break a row.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { donorFor, fittedRead, gableable, hash32, segmentOf, type BeltDonor, type BeltTarget } from './donors.ts';
+import { donorFor, fittedRead, frontTopM, gableable, hash32, segmentOf, type BeltDonor, type BeltTarget } from './donors.ts';
 import { generateBelt, BELT_LOOK_REF } from './generate.ts';
 import type { GenPand, GenStreet } from '../buurtGenerator/rows.ts';
 import type { DescriberAnswer } from '../houseSpec/describer.ts';
@@ -145,4 +145,25 @@ test('belt cornice: 1800s cornice series only, deterministic, near the read rate
   assert.equal(ss[0].design.corniceDress?.source, 'period-default');
   assert.equal(ss[1].design.corniceDress, undefined);
   assert.deepEqual(ss[2].design.corniceDress?.value, { paint: 'grey' });
+});
+
+test('front top: 3DBAG eaves unless a rear eave or mansard sits well under the front (Leidsestraat, Amstelstraat)', () => {
+  assert.equal(frontTopM(9.3, 17.66, null), 17.66, 'Leidsestraat 176397: no ridge, eaves under 0.75 of the height');
+  assert.equal(frontTopM(22, 27.76, 25.6), 22, 'Leidsestraat 176395: a pitched roof over its eaves');
+  assert.equal(frontTopM(8.8, 14.05, 12), 14.05, 'Leidsestraat 176398: the ridge under the height is a lower part');
+  assert.equal(frontTopM(5.3, 14.16, 13.9), 13.9, 'Amstelstraat 182681: a mansard 8.6 m over its eaves stands at the ridge');
+  assert.equal(frontTopM(10.8, 12.8, 14.4), 10.8);
+  assert.equal(frontTopM(null, 12, null), 12);
+});
+test('front top: Reguliersbreestraat 179879 (no ridge, eaves 0.75 of the height) stands at the height', () => {
+  assert.equal(frontTopM(12.6, 16.84, null), 16.84);
+});
+
+test('a shop pand prefers a shop donor and its fitted read has a shopfront ground, never a stoop', () => {
+  const shopDonor = donor('0363100012900009', 'Keizersgracht', 1690, 6.2, 13, { crown: 'cornice', ground: 'shopfront' } as never);
+  const d = donorFor({ ...target(), shop: true, statedCrown: 'cornice' }, [...DONORS, shopDonor])!;
+  assert.equal(fittedRead({ ...target(), shop: true }, d.donor).ground, 'shopfront');
+  const f = fittedRead({ ...target(), shop: true }, DONORS[2]);
+  assert.equal(f.ground, 'shopfront');
+  assert.notEqual(f.basement, 'stoop');
 });

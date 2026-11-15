@@ -42,6 +42,9 @@ export interface BeltTarget {
   /** The crown a published source states for the pand (the monument register's gable, house-specs `fronts[0].gable`):
    *  the donor must carry that crown family, and a stated gable kind is drawn as stated. */
   statedCrown?: string;
+  /** The pand has a shop ground storey (the extract's shopfronts.json): a shop donor is preferred and the fitted read's
+   *  ground is a shopfront (held-out round 2: dwelling doors drawn on Leidsestraat's and Reguliersbreestraat's shops). */
+  shop?: boolean;
 }
 
 /** Crown families a stated crown admits among donor reads (held-out A/B 2026-11-15: gables drawn over the register's
@@ -64,7 +67,7 @@ export const DONOR_K = 4;
 /** A donor's storey pitch (cut wall height / read storeys) is held to this band: a cut whose wall takes in a mansard or roof
  *  storey (Langestraat's donor 169011: 2 storeys in 12.9 m) would otherwise halve a pand's storeys (held-out sheet 1). */
 export const PITCH_M = { min: 2.8, max: 3.8 } as const;
-export const DONOR_WEIGHTS = { segment: 1.5, sameStreet: -0.3, yearPer: 50, widthPer: 2, eavesPer: 3, gableOnFlat: 4 } as const;
+export const DONOR_WEIGHTS = { segment: 1.5, sameStreet: -0.3, yearPer: 50, widthPer: 2, eavesPer: 3, gableOnFlat: 4, shopMismatch: 1.5 } as const;
 
 /** A usable donor read: readable, one front, its crown and storeys seen. */
 export function usableDonor(a: DescriberAnswer | null | undefined): a is DescriberAnswer {
@@ -75,6 +78,22 @@ export function usableDonor(a: DescriberAnswer | null | undefined): a is Describ
 export const gableable = (t: Pick<BeltTarget, 'eavesM' | 'ridgeM' | 'roofCode'>): boolean =>
   t.eavesM !== null && t.ridgeM !== null && t.ridgeM - t.eavesM >= GABLE_MIN_RISE_M && t.roofCode !== 1 && t.roofCode !== 2;
 
+/**
+ * The front's top over the street (m) from 3DBAG: the base tiles' `eaves` is the roof's lowest edge, often a rear or dormer
+ * eave well under a street front's cornice (held-out round 2, 2026-11-15: Leidsestraat drawn at 7-9 m against 13-14 m in
+ * the photo). Without a ridge (no nok within 0.5 m of the roof top) or with a ridge under the representative height (the
+ * ridge belongs to a lower part), a front whose eaves sit under 0.75 of the height stands at the height; a pitched roof
+ * more than 5 m over its eaves (a mansard or a rear eave) stands at the ridge, capped by the height; else the eaves.
+ */
+export function frontTopM(eaves: number | null, height: number | null | undefined, ridge: number | null): number | null {
+  const h = height ?? null;
+  if (eaves === null) return h;
+  const r = ridge !== null && h !== null && h > ridge + 0.5 ? null : ridge;
+  if (r !== null) return r - eaves > FRONT_TOP.mansardM ? +Math.min(h ?? r, r).toFixed(2) : eaves;
+  return h !== null && eaves < FRONT_TOP.eavesShare * h ? h : eaves;
+}
+export const FRONT_TOP = { eavesShare: 0.75, mansardM: 5 } as const;
+
 /** The match distance of a donor to a pand (lower is closer). */
 export function donorDistance(t: BeltTarget, d: BeltDonor): number {
   const w = DONOR_WEIGHTS;
@@ -84,6 +103,7 @@ export function donorDistance(t: BeltTarget, d: BeltDonor): number {
   s += Math.abs(t.widthM - d.widthM) / w.widthPer;
   if (t.eavesM !== null) s += Math.abs(t.eavesM - d.heightM) / w.eavesPer;
   if (GABLED_CROWNS.has(String(d.answer.crown)) && !gableable(t)) s += w.gableOnFlat;
+  if (t.shop && d.answer.ground !== 'shopfront') s += w.shopMismatch;
   return s;
 }
 
@@ -132,6 +152,10 @@ export function fittedRead(t: BeltTarget, d: BeltDonor): DescriberAnswer {
     }
   }
   if (t.statedCrown && GABLED_CROWNS.has(t.statedCrown)) (a as { crown: string }).crown = t.statedCrown;
+  if (t.shop && a.ground !== 'shopfront') {
+    (a as { ground: string }).ground = 'shopfront';
+    if (a.basement === 'stoop' || a.basement === 'stoop-and-windows') (a as { basement: string }).basement = 'none';
+  }
   a.pandId = t.pandId;
   return a;
 }
