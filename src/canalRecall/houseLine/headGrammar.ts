@@ -48,7 +48,9 @@ export function headGrammarOf(dressing: string | undefined, shape: string | unde
     case 'keystone': return { shape: arch, voussoirs: { alternate: 'brick', depth: 0.24 }, keystone: 'raised' };
     // Jack blocks (Weteringschans 168096, 168042, 169016; head sheet 2026-11-14): a white lintel slab wider than the
     // opening with a stepped crown of white blocks on it, one at each end and the tallest on the axis.
-    case 'jack-blocks': return { shape: 'flat', lintel: true, crown: 'jack-blocks' };
+    // On a round or segmental window (Herengracht 71's warehouse arches): the glass up into the arch, white blocks at its
+    // feet and a white key at its crown, the jack blocks of an arch.
+    case 'jack-blocks': return arch !== 'flat' ? { shape: arch, keystone: 'plain', springers: true } : { shape: 'flat', lintel: true, crown: 'jack-blocks' };
     // Segmental tympanum (Kinkerstraat 94/90/86-88): a brick segmental ring over a stone-filled tympanum, a white key.
     case 'segmental-tympanum': return { shape: 'segmental', voussoirs: { alternate: 'brick', depth: 0.16 }, keystone: 'plain', tympanum: true };
     // Arch ring (Weteringschans 171218 top storey): a white half-round ring with a keystone, the glass up into the arch.
@@ -57,6 +59,8 @@ export function headGrammarOf(dressing: string | undefined, shape: string | unde
     // Block surround (Kinkerstraat 100): alternating white quoins up both jambs and a keyed flat head of white blocks.
     case 'block-surround': return { shape: arch, voussoirs: { alternate: 'white', depth: 0.2 }, keystone: 'raised', surround: 'blocks' };
     case 'voussoirs': return { shape: arch === 'flat' ? 'segmental' : arch, voussoirs: { alternate: 'white-brick', depth: 0.22 }, keystone: 'raised', springers: true };
+    // A plain arched window (no dressing stated): the glass up into its arch, the brick round it.
+    case 'none': return arch !== 'flat' ? { shape: arch } : null;
     default:
       // A stated arched window with a dressing the grammar does not name: a white ring of its shape.
       return dressing && dressing !== 'none' && arch !== 'flat' ? { shape: arch, voussoirs: { alternate: 'white', depth: 0.16 }, keystone: 'plain' } : null;

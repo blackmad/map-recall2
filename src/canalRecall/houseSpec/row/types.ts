@@ -102,6 +102,8 @@ export interface RowRoofStorey {
   dormerKind?: RowDormerKind;
   /** A hoist beam in the dormer (Weteringschans 169016). */
   hoist?: boolean;
+  /** The mansard's rise over the cornice line as read (m; absent: the renderer's period default). */
+  riseM?: number;
 }
 export interface RowWall {
   material: RowWallMaterial;
@@ -171,9 +173,23 @@ export interface RowDesign {
    *  (m), the step count of a step gable, the attic lights in it and the neck (or top tread) width. Absent: the crown
    *  kind alone, which draws no gable over the row line. */
   gable?: RowField<RowGable>;
+  /** Upper windows' glass height per storey as read (m), lowest first: every storey that draws upper windows (over a
+   *  souterrain the bel-etage is the first). The storeys share the wall by these heights (tall lower storeys). Absent: one
+   *  window height on an even storey grid. */
+  windowHeights?: RowField<number[]>;
 }
 /** A gabled crown's outline (RowDesign.gable): symmetric, standing on the series line. */
-export interface RowGable { riseM: number; steps?: number; attic?: number; neckWidthM?: number }
+export interface RowGable {
+  riseM: number; steps?: number; attic?: number; neckWidthM?: number;
+  /** Neck or bell: the neck's cap as read (a curved pediment is `segmental`; absent: the kit's stock). */
+  cap?: 'pediment' | 'segmental' | 'rounded' | 'flat';
+  /** White stone finials on the steps' corners (step) or the shoulders' feet (neck, bell, spout). */
+  finials?: boolean;
+  /** Neck or bell: the upright neck's height over the shoulders' top, cap included (m; absent: the kit's stock). */
+  neckOverM?: number;
+  /** The attic light's head (absent: square). */
+  atticHead?: 'round' | 'segmental';
+}
 export type RowDesignKey = keyof RowDesign;
 
 // --- members, fronts, series ------------------------------------------------------------------------------------------
