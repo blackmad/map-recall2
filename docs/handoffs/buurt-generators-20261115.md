@@ -486,7 +486,7 @@ They apply to the four west members of `rooseveltlaan-146491` (146491, 148931, 1
 - The loggias' slab soffits are not drawn.
 - Other Rooseveltlaan rows have no row photo, so they keep the pool brick.
 
-## Round 6 (2026-11-15): blind A/B on Rivierenbuurt, district 2 started (stopped at 14 GB free)
+## Round 6 (2026-11-15): blind A/B on Rivierenbuurt, district 2 (Apollo + Stadion)
 
 ### Blind A/B on the r5 sheets (bd9ffc763)
 
@@ -526,7 +526,17 @@ Coverage: 3,848 pands; 1,672 drawn in 334 rows. Not drawn:
 | Described | 35 |
 | Off-years | 16 |
 
-Sheets drawn before the notes: Achillesstraat, Herculesstraat, Minervalaan, Quinten Massijsstraat and Sportstraat. **They are not redrawn and have no A/B.** The disk dropped to 14 GB free, and the lane rule is to stop under 15 GB.
+Sheets were redrawn with the row notes once the disk was back at 21 GB. Each street got a blind A/B from a fresh opus judge, with the drawings shuffled into A and B. The key is in `_pruned-sheets/buurt-generators-20261115/apollo-stadion/ab-apollo-keys.json`.
+
+| Street | Winner | Confidence | Judge's biggest gap in the generator drawing |
+|---|---|---|---|
+| Achillesstraat | generator | high | A red-tile roof with dormers where the photo has a fifth brick storey under a flat top |
+| Herculesstraat | generator | high | Too uniform: no entrance porches or red doors, windows not grouped in pairs, evenly spaced dormers |
+| Minervalaan | generator | high | A tall pitched roof where the photo has a flat roof behind a deep eave |
+| Quinten Massijsstraat | generator | high | A slate hip where the photo has a flat roof with a thin white eave; no erkers or corner bays |
+| Sportstraat | generator | high | No white central gabled bays, stair-tower strips or canopy porches |
+
+The generator wins 5/5. Three of the five named gaps are the roof: Achillesstraat, Minervalaan and Quinten Massijsstraat are flat-roofed behind an eave or a top storey, but the four- and five-storey families draw pitched roofs. **Next:** gate the pitched roof on a measured roof form for those families, for example the 3DBAG roof type or a street note, and draw a flat top with the broad eave otherwise.
 
 What the kit cannot say here yet:
 
@@ -536,3 +546,4 @@ What the kit cannot say here yet:
 - First-floor balconies (Achillesstraat).
 - Hipped roof ends and a central entrance bay with a stair window strip (Sportstraat).
 - Front gardens.
+- Entrance canopy porches with red doors, and stair-window strips (Herculesstraat, Sportstraat).
