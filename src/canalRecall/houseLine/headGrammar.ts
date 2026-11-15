@@ -89,7 +89,9 @@ export function headRise(g: HeadGrammar, span: number): number {
 }
 
 /** A tablet's foot over the head line: clear of a relieving arch's ring. */
-const tabletFoot = (g: HeadGrammar, span: number) => (g.relieving ? HEAD.relieve.lift + relieveRise(span) + HEAD.relieve.depth : 0) + HEAD.tablet.gap;
+// Over a relieving arch the tablet sits on the ring's crown as its key (Herengracht 27; blind review: lifted clear of it,
+// it hung under the next storey's sill like a tab).
+const tabletFoot = (g: HeadGrammar, span: number) => g.relieving ? HEAD.relieve.lift + relieveRise(span) + HEAD.relieve.depth - 0.04 : HEAD.tablet.gap;
 const relieveRise = (span: number) => Math.min(HEAD.relieve.rise, (span + 2 * HEAD.relieve.over) * 0.14);
 const segRise = (span: number) => Math.min(span / 2 * 0.8, Math.max(span * HEAD.rise, HEAD.minRise));
 const tone = (p: VoussoirPattern, i: number, n: number): HeadTone =>

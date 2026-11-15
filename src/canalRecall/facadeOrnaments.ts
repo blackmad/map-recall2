@@ -512,11 +512,10 @@ function rowGroundFrame(c: ExtraContext, s: ExtraSink, d: Span, dc: { material: 
     // The entresol light over every cell, a bar down its middle.
     s.strip(c.f, a, b, 0.05, ze + K.rail / 2, zt, ROW_DOORCASE.glass);
     s.strip(c.f, mid - K.bar / 2, mid + K.bar / 2, 0.06, ze, zt, hex);
-    if (two) { const zz = ze + (zt - ze) * 0.72; s.strip(c.f, a, b, 0.06, zz - K.bar / 2, zz + K.bar / 2, hex); }
     if (opens[i].door) {
       // The door under its light, filling the cell, with two raised panels.
       s.strip(c.f, a, b, 0.05, g0, ze, leaf);
-      for (const [p, q] of [[g0 + 0.15, g0 + (ze - g0) * 0.42], [g0 + (ze - g0) * 0.5, ze - 0.15]] as const) s.strip(c.f, a + 0.1, b - 0.1, 0.06, p, q, shadeHex(leaf, dc.door === 'black' ? 1.04 : 1.12));
+      for (const [p, q] of [[g0 + 0.15, g0 + (ze - g0) * 0.42], [g0 + (ze - g0) * 0.5, ze - 0.15]] as const) s.strip(c.f, a + 0.1, b - 0.1, 0.06, p, q, shadeHex(leaf, dc.door === 'black' ? 1.6 : 1.12));
     } else {
       // The window glazed to the frame's low sill, a mullion and a transom.
       s.strip(c.f, a, b, 0.05, g0, ze - K.rail / 2, ROW_DOORCASE.glass);
@@ -918,7 +917,7 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       const doors = b.doors.map(([p, q]) => { const m = (p + q) / 2, hw = Math.min(K.doorW, (q - p) * 0.8) / 2; return [Math.max(x0 + 0.1, m - hw), Math.min(x1 - 0.1, m + hw)] as const; }).filter(([p, q]) => q - p > 0.5);
       const over = (a: number, z: number) => doors.some(([p, q]) => a > p - K.ring - 0.05 && a < q + K.ring + 0.05) && z > 0;
       const holes = windowSpans(c, -1).filter(w => w.x > x0 && w.x < x1 && !over(w.x, 1)).map(w => [w.x - w.hw, w.x + w.hw, w.z0, w.z1] as const);
-      const zt = top, joint = shadeHex(b.hex, 0.62);
+      const zt = top, joint = shadeHex(b.hex, 0.8);
       for (const [za, zb, xs] of groundWallBands(holes, x0, x1, c.base, zt)) for (const [p, q] of xs) {
         s.strip(c.f, p, q, K.out, za, zb, b.hex);
         // Sunk joints every course.

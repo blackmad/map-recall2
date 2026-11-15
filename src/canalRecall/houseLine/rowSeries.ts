@@ -119,7 +119,7 @@ export function groundWallOf(g: RowGroundWall | undefined): Omit<RowGroundWallDr
   return { hex, top: g.top === 'plain' || g.top === 'scrolled' ? g.top : 'ledge' };
 }
 /** A basement plinth's grey (Herengracht 25-29: a grey hardstone band). */
-export const ROW_BASEMENT_GREY = '#8e8f8b';
+export const ROW_BASEMENT_GREY = '#7d7a73';
 /** The stated joinery (RowDesign.glazing) as the series draws it: the window kind with its frame, bars and panes. */
 export const ROW_GLAZING = { frameM: 0.09, barM: 0.035 } as const;
 function glazingOf(d: RowDesign): { glazing?: NonNullable<RowSeriesDraw['glazing']> } {
@@ -154,7 +154,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     }
     if (g.basementFront && SOUTERRAIN_GROUNDS.has(g.basement ?? '')) {
       const b = g.basementFront, c = typeof b.plinth === 'string' ? b.plinth.toLowerCase() : '';
-      basements.push({ a0, a1, hex: /^#[0-9a-f]{6}$/.test(c) ? c : ROW_GROUND_WALL_HEX[c] ?? ROW_BASEMENT_GREY, head: b.head === 'segmental' ? 'segmental' : 'round',
+      basements.push({ a0, a1, hex: /^#[0-9a-f]{6}$/.test(c) ? c : c === 'grey' || !c ? ROW_BASEMENT_GREY : ROW_GROUND_WALL_HEX[c] ?? ROW_BASEMENT_GREY, head: b.head === 'segmental' ? 'segmental' : 'round',
         doors: gb > 0 ? (b.doors ?? []).filter(i => i >= 0 && i < gb).map(at) : [] });
     }
     for (const h of hs) if (h && (h.dressing !== 'none' || h.shape === 'round' || h.shape === 'segmental')) heads.push({ a0, a1, shape: h.shape, dressing: h.dressing, ...(h.storeys?.length ? { storeys: h.storeys.map(k => k + shift) } : {}) });

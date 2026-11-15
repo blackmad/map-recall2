@@ -451,7 +451,7 @@ test('stated arched ground openings and a basement front (Herengracht 27, 25-29)
   const s = seriesDraw(fr({ basement: 'windows', groundBays: 2, archedOpenings: { index: [1] }, basementFront: { plinth: 'grey', doors: [0] } }), [d0]);
   // Over a souterrain the ground openings are the bel-etage's: renderer storey 1.
   assert.deepEqual(s.heads!.find(h => h.dressing === 'arched-frame'), { a0: 0.5, a1: 1, shape: 'segmental', dressing: 'arched-frame', storeys: [1] });
-  assert.deepEqual(s.basements, [{ a0: 0, a1: 1, hex: '#b9b7b0', head: 'round', doors: [[0, 0.5]] }]);
+  assert.deepEqual(s.basements, [{ a0: 0, a1: 1, hex: '#7d7a73', head: 'round', doors: [[0, 0.5]] }]);
   // No souterrain: the basement front is not drawn; the arch sits on the ground storey.
   const g = seriesDraw(fr({ groundBays: 2, archedOpenings: { index: [0], shape: 'round' }, basementFront: { doors: [0] } }), [d0]);
   assert.equal(g.basements, undefined);
