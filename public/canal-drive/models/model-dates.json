@@ -1792,8 +1792,18 @@
       "dateSource": "asset-update"
     },
     "diamant-museum": {
-      "updatedAt": "2026-11-15T08:33:39.134Z",
-      "version": "5e5197ca6e5b6e09",
+      "updatedAt": "2026-11-15T08:45:29.964Z",
+      "version": "482d3e0478526be4",
+      "dateSource": "asset-update"
+    },
+    "diamant-museum.lod1": {
+      "updatedAt": "2026-11-15T08:37:16.363Z",
+      "version": "be33f3bbbc5298ee",
+      "dateSource": "asset-update"
+    },
+    "diamant-museum.lod2": {
+      "updatedAt": "2026-11-15T08:37:17.454Z",
+      "version": "daeffb0b724dd8b9",
       "dateSource": "asset-update"
     },
     "doelen-hotel": {

@@ -105042,8 +105042,8 @@
       },
       "bagYear": 1899,
       "materialOverrides": {
-        "brick": "#9c5a43",
-        "red": "#87412f",
+        "brick": "#8c6a5a",
+        "red": "#6e4a3c",
         "stone": "#d6d0c3",
         "white": "#efece4",
         "frame": "#f2f0ea",
@@ -105162,16 +105162,16 @@
         "depthCoverage": 1.0014496114518907
       },
       "triangles": 15011,
-      "bytes": 189760,
+      "bytes": 189756,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "5e5197ca6e5b6e09",
+        "sourceHash": "482d3e0478526be4",
         "buildVersion": 2,
-        "bytes": 55996,
+        "bytes": 55992,
         "triangles": 2473
       },
       "lod2": {
-        "sourceHash": "5e5197ca6e5b6e09",
+        "sourceHash": "482d3e0478526be4",
         "buildVersion": 6,
         "bytes": 9788,
         "triangles": 298
