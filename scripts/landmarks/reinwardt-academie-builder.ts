@@ -23,7 +23,8 @@ export function buildReinwardtAcademie(_w: number, _d: number, b: BuildingTools)
   addShell(b, src as never, {
     wall: 'brick', roof: 'slate',
     wallFor: s => { const [x, z, top] = cen(s); if (top < 6.7 && x < 3 && z > -3) return 'red'; if (z > 11.5 && x > 7.5) return 'concrete'; return 'brick'; },
-    roofFor: s => { const [x, z] = cen(s); return z > 11.5 && x > 7.5 ? 'concrete' : 'slate'; },
+    // the stair tower and rear block carry a hipped red-brown tile roof (w08-277); the school roof stays slate
+    roofFor: s => { const [x, z] = cen(s); return z > 11.5 && x > 7.5 ? 'concrete' : x < -4 ? 'copper' : 'slate'; },
   });
   const sink0 = getSink();
   setSink(0.05);
@@ -115,9 +116,10 @@ export function buildReinwardtAcademie(_w: number, _d: number, b: BuildingTools)
 
   // ---------- red pavilion: window band on its two street walls (ring edges 17, 22) ----------
   // edge 17 is 6.1 m tall, edge 22 only 3.9 m (both 3DBAG walls stand on the BAG ring)
-  for (const [i, y0, y1] of [[17, 1.75, 4.45], [22, 0.95, 3.2]] as [number, number, number][]) {
+  // window band in the upper half over a grey plinth wall (w08-277, blind review)
+  for (const [i, y0, y1] of [[17, 2.9, 5.4], [22, 1.9, 3.4]] as [number, number, number][]) {
     const {f, len} = ringFrame(ring, i);
-    slab(b, f, len / 2, 0, len - 0.1, Math.min(0.9, y0 - 0.15), 0.08, 'concrete');
+    slab(b, f, len / 2, 0, len - 0.1, y0 - 0.2, 0.08, 'concrete');
     const n = Math.max(2, Math.round(len / 0.9));
     slab(b, f, len / 2, y0 - 0.05, len - 0.4, y1 - y0 + 0.1, 0.09, 'white');
     slab(b, f, len / 2, y0, len - 0.5, y1 - y0, 0.13, 'glass');

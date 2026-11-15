@@ -9,16 +9,17 @@
  "bagYear": 1902,
  "surveyedSource": "Vertex average of the BAG 0363100012181859 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/reinwardt-academie-footprints.json, written by bag-shell-prepare.ts). The massing is the 3DBAG LoD2.2 shell (CC BY 4.0); the school windows, courses, pilasters, eave, dormers, the wing gable, the tower windows and letters and the pavilion window bands are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-002542_pano_0000_000144, TMX7316010203-002544_pano_0000_002779, recording_2025-06-19_03-28-47_02976, TMX7316010203-002544_pano_0000_002776). Per wall in scripts/landmarks/reinwardt-academie-inventory.json.",
  "materialOverrides": {
-  "brick": "#8a4838",
+  "brick": "#6e4236",
   "stone": "#c8bba0",
   "ochre": "#a39a7e",
   "concrete": "#e2ddcf",
   "white": "#ece9e1",
   "glass": "#3a4046",
   "slate": "#55504e",
-  "red": "#8e2f33",
+  "red": "#5a2328",
   "greyBrick": "#6e4a3e",
-  "bronze": "#2a2c2c"
+  "bronze": "#2a2c2c",
+  "copper": "#7a4636"
  },
  "attribution": {
   "title": "Reinwardt Academie, Hortusplantsoen 2: double school of 1897-1902 on the former St. Antonies churchyard (municipal monument 202056)",
