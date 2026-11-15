@@ -143,6 +143,7 @@ test('row-doorcase: a ground-storey surround (span ground) frames the door and w
   const reach = (t: typeof own) => Math.max(...xsOf(t)) - Math.min(...xsOf(t));
   assert.ok(reach(ground) > reach(own) + 2, `${reach(ground)} vs ${reach(own)}`);
   assert.notDeepEqual(run({ material: 'timber', fanlight: 'oval' }), own);
+  assert.notDeepEqual(run({ material: 'timber', fanlight: 'oval-spoked' }), run({ material: 'timber', fanlight: 'oval' }));
 });
 
 test('row-cornice: a stated timber cornice draws attic lights, supports and a centre; absent: the kind as today (Herengracht 174, 248)', () => {
