@@ -85335,7 +85335,7 @@
  {
   "id": "port-van-cleve",
   "status": "held",
-  "heldReason": "Blind review 2026-11-15: fail, then fix after one fix round (frieze, sign, measured brick/stone tints). The front still reads cream stone: the city look lifts the measured #7a705f sandstone to about #cdbb98 lit, and the stone surrounds cover most of the brick. Also: no carved pediments over the bays, a stubby central aedicule, and the neon sign hidden behind the gable.",
+  "heldReason": "Blind reviews 2026-11-15/16: fail, fix, then fix x2 in the second pass (stone area cut from 83 % to 36 % of the first floor, carved fan pediments, cast-iron balconettes, stacked finial to 23 m, neon sign clear of the dormers, slate mansard face, oculus, dark Spuistraat brick, measured dark glass). Still: the main front reads beige stone at gallery size (measure brick 36 % vs about 49 % in nzv-0; the stone tone read cream at #958a78/#7a705f/#776b5e and cool grey at #6b6560); the central crown is not dominant; the oriel is one flat stack; the Spuistraat shopfront is a blank band.",
   "name": "Hotel Die Port van Cleve, Nieuwezijds Voorburgwal 176-180",
   "modelUrl": "./models/port-van-cleve.glb",
   "suppressOsmIds": [
@@ -85367,12 +85367,12 @@
    "phi": 1.2
   },
   "materialOverrides": {
-   "brick": "#6e3e34",
-   "sandstone": "#7a705f",
+   "brick": "#5e342b",
+   "sandstone": "#776b5e",
    "stone": "#8c8a84",
    "slate": "#4a4c54",
    "red": "#a8401f",
-   "glass": "#3a3e42",
+   "glass": "#2a2a2e",
    "frame": "#4a3028",
    "white": "#e2ded4",
    "dark": "#2a2a2c",
@@ -85380,7 +85380,8 @@
    "pink": "#d0303a",
    "concrete": "#e2ded4",
    "greyBrick": "#7c828c",
-   "bronze": "#2a2a2c"
+   "bronze": "#2a2a2c",
+   "ochre": "#4e3a34"
   },
   "attribution": {
    "title": "Hotel Die Port van Cleve, Nieuwezijds Voorburgwal 176-180: hotel-restaurant by I. Gosschalk (1888), rijksmonument 5988",
@@ -85605,7 +85606,7 @@
  {
   "id": "mauritskade-61",
   "status": "held",
-  "heldReason": "Blind review 2026-11-15: fix, then fix after one fix round (NW bays given windows, plinth, thinner eave, no stone piers, measured brick). Still: quoined surrounds on every window where the photo has plain lintels with ears and sills, no continuous sill/lintel string courses, windows too narrow and evenly spaced against the photo's 2-3 light groups, and the eave reads cream stone. Frame colour is unsettled: the two reviewers read the frames as dark (2024 NW) and white (2019/2022 front); check a current panorama before the next pass.",
+  "heldReason": "Blind reviews 2026-11-15/16: fix x4 (second pass: plain lintels with ears, sills, impost blocks and string courses replacing the quoined surrounds; measured widths from w01-59; side walls at the w08-329 pitch; pale reveals round dark frames, confirmed current by the 2024/2025 crops; darker brick and grey stone). Still: the brick reads red, not dull purple-brown (#5a4038 measured draws about #7a3328 lit); the game ground sits about 1.2 m above the 3DBAG base (groundNAP -0.61), burying the plinth so the ground-floor windows read as doors; the gables do not read in the street pairs or the chase view; the flat 3DBAG front has no projecting risalits; windows read narrow (the reveal and frame eat 0.28 m of each light).",
   "name": "Former laboratory, Mauritskade 61",
   "modelUrl": "./models/mauritskade-61.glb",
   "suppressOsmIds": [
@@ -85639,8 +85640,8 @@
   },
   "bagYear": 1908,
   "materialOverrides": {
-   "brick": "#6e5044",
-   "sandstone": "#c9bea4",
+   "brick": "#5a4038",
+   "sandstone": "#a8a596",
    "stone": "#7f7b74",
    "red": "#6e4a40",
    "white": "#e4e0d2",

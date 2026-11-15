@@ -107450,6 +107450,8 @@
     },
     "port-van-cleve": {
       "id": "port-van-cleve",
+      "status": "held",
+      "heldReason": "Blind review 2026-11-15: fail, then fix after one fix round (frieze, sign, measured brick/stone tints). The front still reads cream stone: the city look lifts the measured #7a705f sandstone to about #cdbb98 lit, and the stone surrounds cover most of the brick. Also: no carved pediments over the bays, a stubby central aedicule, and the neon sign hidden behind the gable.",
       "name": "Hotel Die Port van Cleve, Nieuwezijds Voorburgwal 176-180",
       "modelUrl": "./models/port-van-cleve.glb",
       "suppressOsmIds": [
@@ -107481,20 +107483,21 @@
         "phi": 1.2
       },
       "materialOverrides": {
-        "brick": "#8a4a3c",
-        "sandstone": "#9c917c",
+        "brick": "#5e342b",
+        "sandstone": "#776b5e",
         "stone": "#8c8a84",
         "slate": "#4a4c54",
         "red": "#a8401f",
-        "glass": "#3a3e42",
-        "frame": "#d8d2c4",
+        "glass": "#2a2a2e",
+        "frame": "#4a3028",
         "white": "#e2ded4",
         "dark": "#2a2a2c",
         "blue": "#24345a",
         "pink": "#d0303a",
         "concrete": "#e2ded4",
         "greyBrick": "#7c828c",
-        "bronze": "#2a2a2c"
+        "bronze": "#2a2a2c",
+        "ochre": "#4e3a34"
       },
       "attribution": {
         "title": "Hotel Die Port van Cleve, Nieuwezijds Voorburgwal 176-180: hotel-restaurant by I. Gosschalk (1888), rijksmonument 5988",
@@ -107718,7 +107721,7 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -24.207311630249023,
+          -24.368988037109375,
           -9.536743306171047e-8,
           -20.56075668334961
         ],
@@ -107739,17 +107742,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 39.93370819091797,
+        "widthMetres": 40.09538459777832,
         "heightMetres": 26.715000247955324,
         "depthMetres": 39.34588432312012,
         "depthCoverage": 0.9986265056629472
       },
-      "triangles": 15078,
-      "bytes": 194944,
+      "triangles": 16154,
+      "bytes": 211148,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "mauritskade-61": {
       "id": "mauritskade-61",
+      "status": "held",
+      "heldReason": "Blind review 2026-11-15: fix, then fix after one fix round (NW bays given windows, plinth, thinner eave, no stone piers, measured brick). Still: quoined surrounds on every window where the photo has plain lintels with ears and sills, no continuous sill/lintel string courses, windows too narrow and evenly spaced against the photo's 2-3 light groups, and the eave reads cream stone. Frame colour is unsettled: the two reviewers read the frames as dark (2024 NW) and white (2019/2022 front); check a current panorama before the next pass.",
       "name": "Former laboratory, Mauritskade 61",
       "modelUrl": "./models/mauritskade-61.glb",
       "suppressOsmIds": [
@@ -107783,13 +107788,14 @@
       },
       "bagYear": 1908,
       "materialOverrides": {
-        "brick": "#5c4440",
-        "sandstone": "#c9bea4",
+        "brick": "#5a4038",
+        "sandstone": "#a8a596",
         "stone": "#7f7b74",
         "red": "#6e4a40",
         "white": "#e4e0d2",
-        "glass": "#3a3e42",
-        "concrete": "#ddd7c6"
+        "glass": "#2e3438",
+        "concrete": "#ddd7c6",
+        "dark": "#2a302a"
       },
       "attribution": {
         "title": "Former laboratory, Mauritskade 61 (1908), gemeentelijk monument 200984, on the north edge of the Oosterpark",
@@ -108299,9 +108305,10 @@
         "depthMetres": 54.39959716796875,
         "depthCoverage": 1.0055378404430453
       },
-      "triangles": 57157,
-      "bytes": 809956,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 20185,
+      "bytes": 297164,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     }
   }
 }

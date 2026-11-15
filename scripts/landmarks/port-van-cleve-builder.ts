@@ -2,7 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
 import {rawWall} from './big-kit';
-import {archBand, archSlab, letters, poly, ringFrame, setSink, getSink, slab, type Frame} from './nearbar-kit';
+import {archBand, archSlab, disc, letters, poly, ringFrame, setSink, getSink, slab, type Frame} from './nearbar-kit';
 import source from './port-van-cleve-footprints.json';
 
 /**
@@ -48,7 +48,7 @@ export function buildPortVanCleve(_w: number, _d: number, b: BuildingTools) {
     archSlab(b, f, t, 0.5, 2.3, 5.85, 0.24, 'glass');
     slab(b, f, t, 4.5, 2.3, 0.12, 0.28, 'red');
     for (const dt of [-0.58, 0, 0.58]) slab(b, f, t + dt, 4.6, 0.07, 1.2, 0.28, 'red');
-    slab(b, f, t, 0.5, 0.08, 4.0, 0.28, 'red');
+    for (const dt of [-0.58, 0, 0.58]) slab(b, f, t + dt, 0.5, dt ? 0.06 : 0.08, 4.0, 0.28, 'red');
   }
   for (const t of [M0 + 0.3, 8.95, 12.75, 16.5, M1 - 0.3]) {
     slab(b, f, t, 0.4, 0.55, 4.6, 0.38, 'stone');
@@ -64,24 +64,30 @@ export function buildPortVanCleve(_w: number, _d: number, b: BuildingTools) {
 
   // ---------- first floor: bowed stone balconettes, three-light windows, carved lunettes ----------
   for (const t of BAYS) {
+    // stone balcony slab with a cast-iron balconette (nzv-0: dark railings on every bay; blind re-read 2026-11-15)
     poly(b, f, t, 7.35, [[-1.45, 0], [1.45, 0], [1.45, 0.12], [-1.45, 0.12]], 0.5, 'sandstone', 0);
-    slab(b, f, t, 7.47, 2.7, 0.75, 0.08, 'sandstone', 0.42);
-    for (const dt of [-0.9, -0.3, 0.3, 0.9]) slab(b, f, t + dt, 7.6, 0.32, 0.5, 0.06, 'dark', 0.5);
-    slab(b, f, t, 8.25, 3.0, 0.12, 0.55, 'sandstone');
-    // window: stone surround, stone mullions, transom, glass
-    slab(b, f, t, 8.3, 3.0, 2.85, 0.27, 'sandstone');
+    for (const y of [7.5, 8.12]) slab(b, f, t, y, 2.7, 0.06, 0.06, 'slate', 0.42);
+    for (let k = 0; k <= 16; k++) slab(b, f, t - 1.32 + k * 0.165, 7.56, 0.035, 0.56, 0.04, 'slate', 0.43);
+    slab(b, f, t, 8.25, 2.8, 0.12, 0.55, 'sandstone');
+    // window: stone surround, stone mullions, transom, glass. The surround is a 0.1 m rim: nzv-0 measures the first floor
+    // at about half brick, half stone (rectified crop, r/g split), the model drew 83 % stone with a 3.0 m surround.
+    slab(b, f, t, 8.3, 2.8, 2.85, 0.27, 'sandstone');
     slab(b, f, t, 8.4, 2.7, 2.6, 0.31, 'frame');
     slab(b, f, t, 8.45, 2.6, 2.5, 0.36, 'glass');
     for (const dt of [-0.45, 0.45]) slab(b, f, t + dt, 8.4, 0.16, 2.6, 0.42, 'sandstone');
     slab(b, f, t, 10.2, 2.6, 0.1, 0.47, 'frame');
-    // lunette: a semicircular stone tympanum with a carved shell boss (the lobed window heads)
-    archSlab(b, f, t, 11.0, 3.4, 1.7, 0.27, 'sandstone', 0, 12);
-    archBand(b, f, t, 11.0, 3.6, 1.8, 0.18, 0.33, 'sandstone', 0, 12);
+    // carved pediment: a semicircular stone tympanum with a fan of carved ribs round a shell boss, under a moulded arch
+    archSlab(b, f, t, 11.0, 3.0, 1.5, 0.27, 'sandstone', 0, 12);
+    archBand(b, f, t, 11.0, 3.2, 1.6, 0.18, 0.33, 'sandstone', 0, 12);
+    for (const a of [0.35, 0.82, 1.29, 1.85, 2.32, 2.79]) {
+      const r = 1.3, da = 0.07;
+      poly(b, f, t, 11.0, [[0, 0], [r * Math.cos(a - da), r * Math.sin(a - da)], [r * Math.cos(a + da), r * Math.sin(a + da)]], 0.32, 'stone', 0);
+    }
     archSlab(b, f, t, 11.2, 1.1, 0.9, 0.39, 'stone', 0, 8);
   }
   // stone pilaster strips at the bay divisions rising to pinnacles above the balustrade
   for (const t of [M0 + 0.3, 8.95, 12.75, 16.5, M1 - 0.3]) {
-    slab(b, f, t, 7.35, 0.5, 7.3, 0.45, 'sandstone');
+    slab(b, f, t, 7.35, 0.36, 7.3, 0.45, 'sandstone');
     slab(b, f, t, 14.65, 0.42, 0.55, 0.42, 'sandstone', -0.06);
     poly(b, f, t, 15.2, [[-0.2, 0], [0.2, 0], [0, 0.65]], 0.3, 'sandstone', 0.0);
   }
@@ -92,13 +98,16 @@ export function buildPortVanCleve(_w: number, _d: number, b: BuildingTools) {
     letters(b, f, word, t, 13.13, 0.33, 0.055, 0.03, 'bronze', 0.055);
   }
   // cornice and pierced balustrade
-  slab(b, f, (M0 + M1) / 2, 13.65, M1 - M0 - 0.06, 0.3, 0.55, 'sandstone');
+  slab(b, f, (M0 + M1) / 2, 13.65, M1 - M0 - 0.06, 0.22, 0.55, 'sandstone');
   slab(b, f, (M0 + M1) / 2, 13.95, M1 - M0 - 0.06, 0.12, 0.4, 'sandstone');
   slab(b, f, (M0 + M1) / 2, 14.5, M1 - M0 - 0.06, 0.15, 0.4, 'sandstone');
   for (let t = M0 + 0.6; t < M1 - 0.4; t += 0.55) slab(b, f, t, 14.07, 0.18, 0.43, 0.3, 'sandstone', 0.05);
   slab(b, f, (M0 + M1) / 2, 14.07, M1 - M0 - 0.06, 0.43, 0.04, 'slate', 0.12);
 
-  // ---------- roof: stone dormers with pointed caps, chimneys, the central gable ----------
+  // ---------- roof: the slate mansard face behind the balustrade, stone dormers with pointed caps, chimneys, the central gable ----------
+  // nzv-0: a dark slate mansard spans the front behind the balustrade to ~17.3 m; the 3DBAG roof there sits lower (blind review
+  // 2026-11-15: sky showed between the dormers). Drawn as a face set 1.3 m back, the dormers standing out of it.
+  for (const [a, z] of [[M0 + 0.3, 11.57], [15.76, M1 - 0.3]] as [number, number][]) slab(b, f, (a + z) / 2, 14.6, z - a, 2.7, 0.3, 'slate', -1.6);
   for (const t of [7.4, 9.6, 17.4, 19.2]) {
     slab(b, f, t, 14.65, 1.1, 1.6, 0.9, 'sandstone', -1.0);
     slab(b, f, t, 14.85, 0.7, 1.15, 0.04, 'glass', -0.1);
@@ -118,17 +127,24 @@ export function buildPortVanCleve(_w: number, _d: number, b: BuildingTools) {
     slab(b, f, c, 18.0, 2.3, 1.6, 0.9, 'brick', -0.8);
     archSlab(b, f, c, 18.2, 0.8, 1.2, 0.9, 'sandstone', -0.7);
     for (const s of [-1, 1]) slab(b, f, c + s * 1.15, 18.0, 0.3, 1.9, 0.98, 'sandstone', -0.72);
-    poly(b, f, c, 19.6, [[-1.35, 0], [1.35, 0], [0.5, 0.55], [0.25, 0.55], [0.12, 1.15], [-0.12, 1.15], [-0.25, 0.55], [-0.5, 0.55]], 0.8, 'sandstone', -0.7);
+    poly(b, f, c, 19.6, [[-1.35, 0], [1.35, 0], [0.5, 0.55], [0.35, 0.55], [0.35, 1.15], [-0.35, 1.15], [-0.35, 0.55], [-0.5, 0.55]], 0.8, 'sandstone', -0.7);
+    // the stacked finial to the 23.1 m crown (pair pvc-nzv: skyline crown 23.07 m)
+    slab(b, f, c, 20.75, 0.6, 0.85, 0.6, 'sandstone', -0.65);
+    poly(b, f, c, 21.6, [[-0.45, 0], [0.45, 0], [0.18, 0.4], [-0.18, 0.4]], 0.5, 'sandstone', -0.6);
+    slab(b, f, c, 22.0, 0.22, 0.55, 0.3, 'sandstone', -0.5);
+    poly(b, f, c, 22.55, [[-0.12, 0], [0.12, 0], [0, 0.52]], 0.2, 'sandstone', -0.45);
   }
 
   // ---------- red neon roof sign on a dark frame over the south half ----------
   {
     const c = 8.2;
-    // nzv-0: the letters stand ~2.8 m tall above the cornice, two lines from 15.75 m to ~18 m on a bar at 15.55 m
-    for (const t of [c - 2.9, c + 2.9]) slab(b, f, t, 14.6, 0.1, 4.9, 0.1, 'bronze', -1.6);
-    slab(b, f, c, 15.55, 6.0, 0.08, 0.1, 'bronze', -1.6);
-    letters(b, f, 'DIE PORT', c - 0.2, 16.85, -1.5, 0.11, 0.07, 'pink', 0.16);
-    letters(b, f, 'VAN CLEVE', c + 0.1, 15.75, -1.5, 0.1, 0.07, 'pink', 0.13);
+    // nzv-0: the script sign stands clear above the dormers, small 'die'/'van' beside big PORT/CLEVE, top at ~19.6-20 m
+    for (const t of [c - 2.9, c + 2.9]) slab(b, f, t, 14.6, 0.1, 5.4, 0.1, 'bronze', -1.6);
+    slab(b, f, c, 17.45, 6.0, 0.08, 0.1, 'bronze', -1.6);
+    letters(b, f, 'VAN', c - 1.89, 17.6, -1.5, 0.07, 0.07, 'pink', 0.09);
+    letters(b, f, 'CLEVE', c + 0.74, 17.6, -1.5, 0.12, 0.07, 'pink', 0.15);
+    letters(b, f, 'DIE', c - 1.6, 18.8, -1.5, 0.07, 0.07, 'pink', 0.09);
+    letters(b, f, 'PORT', c + 0.67, 18.8, -1.5, 0.12, 0.07, 'pink', 0.15);
   }
 
   // ---------- annex (t 0-4.84): shopfront, erker with lead dome, bell gable with oculus ----------
@@ -185,8 +201,9 @@ export function buildPortVanCleve(_w: number, _d: number, b: BuildingTools) {
     for (const s of [-1, 1]) poly(b, f, c + s * 1.8, 14.2, [[-0.35, 0], [0.35, 0], [0.2, 2.2], [-0.2, 2.2]], 0.48, 'sandstone', -0.1);
     poly(b, f, c, 17.25, [[-1.4, 0], [1.4, 0], [0, 0.55]], 0.5, 'sandstone', -0.1);
     // oculus: a round dark light in a stone ring (built from slabs: a square ring of four, then the dark disc proud of it)
-    for (const [dt, dy, w, h] of [[0, 0.42, 0.9, 0.18], [0, -0.42, 0.9, 0.18], [-0.42, 0, 0.18, 0.9], [0.42, 0, 0.18, 0.9]] as [number, number, number, number][]) slab(b, f, c + dt, 15.6 + dy - h / 2, w, h, 0.52, 'sandstone', -0.1);
-    archSlab(b, f, c, 15.25, 0.66, 0.7, 0.5, 'dark', -0.1, 10);
+    // round oculus in a stone ring (w04-117)
+    disc(b, f, c, 15.6, 0.5, 0.52, 'sandstone', -0.1);
+    disc(b, f, c, 15.6, 0.32, 0.56, 'dark', -0.1);
   }
 
   // ---------- Spuistraat back: the later brick hotel block, white-framed windows in a grid ----------
@@ -197,12 +214,16 @@ export function buildPortVanCleve(_w: number, _d: number, b: BuildingTools) {
     const y0 = Math.max(w.base + 3.6, 3.6);
     const n = Math.max(1, Math.floor((w.len - 0.6) / 2.4));
     const pitch = w.len / n;
-    if (w.base < 1) slab(b, fr, w.len / 2, 0, w.len - 0.4, 3.0, 0.12, 'glass');
+    // dark purple-brown brick face over the shell (blind re-read 2026-11-15: the shell brick drew this block orange)
+    // inset 10 cm at the ends and under the top so its sides never lie in the shell's jog walls or roof (audit zfight)
+    poly(b, fr, 0, 0, w.poly.map(([t, y]) => [Math.min(Math.max(t, 0.1), w.len - 0.1), Math.min(y, w.top - 0.1)] as [number, number]), 0.12, 'ochre', -0.02);
+    const o = 0.17; // the window backs (out - sink) clear the 0.10 m brick face
+    if (w.base < 1) slab(b, fr, w.len / 2, 0, w.len - 0.4, 3.0, 0.12, 'glass', o);
     for (let y = y0; y + 1.7 <= yTop; y += 3.0) for (let k = 0; k < n; k++) {
       const t = pitch * (k + 0.5);
-      slab(b, fr, t, y, 1.5, 1.8, 0.08, 'white');
-      slab(b, fr, t, y + 0.08, 1.34, 1.64, 0.12, 'glass');
-      slab(b, fr, t, y + 1.2, 1.34, 0.06, 0.16, 'white');
+      slab(b, fr, t, y, 1.5, 1.8, 0.08, 'white', o);
+      slab(b, fr, t, y + 0.08, 1.34, 1.64, 0.12, 'glass', o);
+      slab(b, fr, t, y + 1.2, 1.34, 0.06, 0.16, 'white', o);
     }
   }
   // ---------- Spuistraat: the stepped-gable house in the pand (w02-290, 7 m; 3DBAG walls 9 and 13) ----------

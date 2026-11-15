@@ -9,8 +9,8 @@
  },
  "surveyedSource": "Vertex average of the BAG 0363100012153693 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/mauritskade-61-footprints.json, written by bag-shell-prepare.ts). The massing is the 3DBAG LoD2.2 shell (CC BY 4.0); the Mauritskade front is drawn from the rectified Gemeente Amsterdam panorama TMX7316010203-001209_pano_0000_000078 (2019, CC BY 4.0), the other street walls from the brief's panoramas. Per wall in scripts/landmarks/mauritskade-61-inventory.json.",
  "materialOverrides": {
-  "brick": "#6e5044",
-  "sandstone": "#c9bea4",
+  "brick": "#5a4038",
+  "sandstone": "#a8a596",
   "stone": "#7f7b74",
   "red": "#6e4a40",
   "white": "#e4e0d2",
