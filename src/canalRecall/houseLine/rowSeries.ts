@@ -148,9 +148,11 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
   // The renderer takes the first head whose span and storeys match a window: storey-specific dressings go first.
   heads.sort((p, q) => (p.storeys ? 0 : 1) - (q.storeys ? 0 : 1));
   const extras = (d0.extras.value ?? []).filter(x => !ROW_FRONT_EXTRAS.includes(x));
+  const omitExtras = ROW_FRONT_EXTRAS.filter(x => !(d0.extras.value ?? []).includes(x));
   const m = mansard as RowDesign['roofStorey']['value'] | null;
   return {
     id: fronts[0].seriesId,
+    ...(omitExtras.length ? { omitExtras } : {}),
     ...(d0.cornice.value ? { cornice: d0.cornice.value } : {}),
     roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers, ...(m.riseM && m.riseM > 0 ? { riseM: m.riseM } : ROW_MANSARD_RISE[rowId] ? { riseM: ROW_MANSARD_RISE[rowId].riseM } : {}) } : { kind: 'none', riseM: 0, dormers: [] },
     ...(heads.length ? { heads } : {}),

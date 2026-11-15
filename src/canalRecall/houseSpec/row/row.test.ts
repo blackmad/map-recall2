@@ -327,7 +327,7 @@ test('Canal windows (round 5): belt series with read white frames state glazing;
   assert.ok(k.series.every(s => !s.design.glazing));
 });
 
-test('Herengracht belt fix (2026-11-15): unread tops take the neighbours\' line, no roof form; no invented roofs; no anchor crosses', () => {
+test('Herengracht belt fix (2026-11-15): unread tops take the neighbours\' line, no roof form; no invented roofs; no anchor crosses', async () => {
   const a = solveRow(loadRow(loadRowDefs()['herengracht-2-24'], '2026-11-15').input);
   const front = (pid: string) => a.fronts.find(f => f.pandId === pid)!;
   // 6 (no read) and 8 (a hoarding: the reader marked it unreadable) are unread: the line of 10 and 2-4, a plain lid.
@@ -343,8 +343,11 @@ test('Herengracht belt fix (2026-11-15): unread tops take the neighbours\' line,
   // 18's hipped tiled roof is a kit gap, not a slate mansard.
   assert.equal(frontDesign(a, front('0363100012179760')).roofStorey.value.kind, 'none');
   assert.ok(a.series.every(s => !s.design.extras.value.includes('wall-anchors')), 'belt rows draw no anchor crosses');
+  const { rowFrontsWithSeries } = await import('../../houseLine/rowSeries.ts');
+  assert.ok(rowFrontsWithSeries(a).every(r => r.series?.omitExtras?.includes('wall-anchors')), 'the series draw omits the anchors');
   const b = solveRow(loadRow(loadRowDefs()['herengracht-51-73'], '2026-11-15').input);
   for (const pid of ['0363100012168129', '0363100012168130', '0363100012179751']) assert.equal(frontDesign(b, b.fronts.find(f => f.pandId === pid)!).roofStorey.value.kind, 'none', `${pid}: no invented roof`);
   const k = solveRow(loadRow(loadRowDefs()['kinkerstraat-86-110'], '2026-11-15').input);
   assert.ok(k.fronts.every(f => !f.topUnread) && k.series.every(s => s.design.extras.value.includes('wall-anchors')));
+  assert.ok(rowFrontsWithSeries(k).every(r => !r.series?.omitExtras), 'Kinkerstraat omits nothing');
 });

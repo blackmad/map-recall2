@@ -601,26 +601,6 @@
     },
     {
       "fronts": [
-        "0363100012168129"
-      ],
-      "field": "windows",
-      "value": "sash",
-      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
-      "at": "2026-11-15",
-      "note": "51: large sashes, two panes across and one up a sash (2-over-2), white frames; not small panes"
-    },
-    {
-      "fronts": [
-        "0363100012168130"
-      ],
-      "field": "windows",
-      "value": "sash",
-      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
-      "at": "2026-11-15",
-      "note": "53: large sashes, two panes across and one up a sash (2-over-2), white frames; not small panes"
-    },
-    {
-      "fronts": [
         "0363100012179681"
       ],
       "field": "groundWall",
@@ -646,30 +626,6 @@
       "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179748.jpg (house rows round 5)",
       "at": "2026-11-15",
       "note": "59: a tall ground storey framed by white pilasters (D1 gap)"
-    },
-    {
-      "fronts": [
-        "0363100012168129"
-      ],
-      "field": "glazing",
-      "value": {
-        "panes": 2
-      },
-      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
-      "at": "2026-11-15",
-      "note": "51: two panes a sash"
-    },
-    {
-      "fronts": [
-        "0363100012168130"
-      ],
-      "field": "glazing",
-      "value": {
-        "panes": 2
-      },
-      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
-      "at": "2026-11-15",
-      "note": "53: two panes a sash"
     }
   ],
   "herengracht-75-89": [

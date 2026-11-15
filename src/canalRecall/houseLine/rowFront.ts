@@ -89,6 +89,9 @@ export interface RowDormerDraw { a: number; kind: 'pediment' | 'gabled' | 'plain
 export interface RowSeriesDraw {
   /** The series id: it seeds the bay preset, the extras' dice and the roof tone, so every member draws alike. */
   id: string;
+  /** Plain extras (ROW_FRONT_EXTRAS) the series leaves out (Herengracht belt rows: the wall-anchor crosses read as
+   *  crosshairs, 2026-11-15). Absent: all of them may draw. */
+  omitExtras?: string[];
   /** The cornice moulding at the wall top (`row-cornice`); none or absent: the plain band. */
   cornice?: 'none' | 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
   /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, or a flat lid. */
@@ -307,10 +310,10 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
 /** House rows: the wall dressing a series states (the mesher hands it to the extras as `rowDress`). */
 /** A single shopfront's frame when the record states no ground colour. */
 export const ROW_SHOP_FRAME = '#e6e1d6';
-export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
+export function rowDressOf(series: RowSeriesDraw): { omitExtras?: string[]; cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
   const single = series.shop === true && series.shopUnits === 1;
   const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.windowShare ? ['row-glazing'] : []), ...(series.glazing ? ['row-sash'] : []), ...(series.floorsM?.length ? ['row-floors'] : []), ...(series.groundWalls?.length ? ['row-ground-wall'] : []), ...(single ? ['row-shopfront'] : [])];
-  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(series.glazing ? { glazing: series.glazing } : {}), ...(series.floorsM?.length ? { floorsM: series.floorsM } : {}), ...(series.groundWalls?.length ? { groundWalls: series.groundWalls } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
+  return { ...(series.omitExtras?.length ? { omitExtras: series.omitExtras } : {}), ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(series.glazing ? { glazing: series.glazing } : {}), ...(series.floorsM?.length ? { floorsM: series.floorsM } : {}), ...(series.groundWalls?.length ? { groundWalls: series.groundWalls } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
 }
 
 /** Crown family -> the roof planner's gable profile. */
