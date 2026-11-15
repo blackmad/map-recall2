@@ -865,3 +865,21 @@ split it (120343..112149 at 12 m / 4 storeys, 074339 and 111890 at 9.35 m / 3 st
   3. install: `for d in cells shells far; do rsync -a --delete artifacts/world/staging/$d/ public/data/extracts/amsterdam/world-v1/$d/; done; cp artifacts/world/staging/{index.json,tiles.json,strings.bin} public/data/extracts/amsterdam/world-v1/`,
      then `npm run world:verify` and `npm run test:world-format`;
   4. check that `tiles.json shells.layers` equals the runtime hash (kit on: `e6620c29`), then `test:baked-fabric`.
+
+### Blind A/B, round 10 against round 9 (Hunzestraat + 6 held-out, one shot, no tuning)
+
+Both sides were rendered on the same panorama: round 10 at the branch tip, round 9 at 8cd6b0022 (after bands only). One
+fresh opus judge per street. Sheets, bands and key: `_pruned-sheets/buurt-generators-20261115/round10/`.
+
+| Street (row) | District | Winner | Confidence | What the judge said |
+|---|---|---|---|---|
+| Hunzestraat (120343) | Rivierenbuurt | round 10 | high | one continuous 4-storey block with one eaves line; round 9 drops the right half to 3 storeys. Gap: wide white bays drawn as dark narrow shafts |
+| Patroclosstraat (084515) | Apollo | round 10 | high | residential ground floor; round 9 drew shop glazing. Gap: white small-paned frames |
+| Gerrit van der Veenstraat (078737) | Apollo | round 10 | medium | white-framed small-pane ground floor and framed entrances. Gap: balconies, upper lights |
+| Schubertstraat (134551) | Apollo | round 10 | medium | keeps the continuous eaves line; round 9 put a taller flat block mid-row. Gap: a flat stretch under the tiled roof; walls too dark |
+| Amstelkade (105304) | Rivierenbuurt | round 9 | low | the extra storey on the left. Gap in both: right block's parapet near 15 m, not 12 m |
+| Pieter Lastmankade (115143) | Apollo | round 9 | low | round 9 keeps the taller right-end block; round 10 flattens it. **A block-coherence false positive:** s1 (068475/077661) was clamped from 9.95 m to 8.7 m because AHN4 reads its front at 9.07-9.27 m, within 0.8 m of s0 |
+| Rubensstraat (133237) | Apollo | round 9 | low | brick: round 9's darker red-brown beat round 10's re-measured pinkish-mauve |
+
+Round 10 wins 4/7; all three losses are low confidence. Open: the AHN front read misses a parapet step (Pieter
+Lastmankade), and white bays and oriels are still the most-named gap.
