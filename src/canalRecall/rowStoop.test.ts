@@ -103,3 +103,15 @@ test('row-stoop: a stated doorcase draws pilasters, an entablature, a pediment a
   assert.ok(!run({ end: 'centre', at: 5, exact: true, steps: false, doorcase: { material: 'stone', fanlight: false } }).some(t => t.hex === ROW_DOORCASE.glass));
   assert.ok(ent.some(t => t.hex === ROW_DOORCASE.stone) && !plain.some(t => t.hex === ROW_DOORCASE.stone));
 });
+
+test('row-doorcase: a stated doorcase on the ground street door (Herengracht 144); absent: nothing', () => {
+  const comp = ORNAMENT_COMPONENTS.find(x => x.id === 'row-doorcase')!;
+  const run = (rowDress: ExtraContext['rowDress']) => {
+    const s = new ExtraSink(100000);
+    comp.build(wall({ layout: { bays: 3, bayWidthM: 2, groundM: 3.2, storeys: 3, storeyM: 3.2, doorBays: [2] } as ExtraContext['layout'], ...(rowDress ? { rowDress } : {}) }), s, 0);
+    return s.tris as Array<{ hex?: string }>;
+  };
+  assert.equal(run(undefined).length, 0);
+  const t = run({ doorcase: { material: 'timber' } });
+  assert.ok(t.length > 0 && t.some(x => x.hex === ROW_DOORCASE.glass));
+});

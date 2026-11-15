@@ -93,7 +93,7 @@ export interface RowCrown {
   /** The attic light's head: a round or segmental arch (absent: square). */
   atticHead?: 'round' | 'segmental';
   /** House rows: the gable's white sandstone with thickness (copings, treads, klauwstukken, cap); absent: flat white edges. */
-  stone?: { copingM?: number; claws?: boolean; crest?: 'pediment' | 'segmental' | 'crest' };
+  stone?: { copingM?: number; claws?: boolean | 'carved'; crest?: 'pediment' | 'segmental' | 'crest'; hood?: 'dark' | string; neck?: 'panel' | 'cartouche' | 'oculus' };
   /** `belt`: the canal belt's gable dress (BELT_GABLE). Absent: the kit's stock outlines and trim, byte-identical. */
   dress?: 'belt';
 }
@@ -287,7 +287,8 @@ export function rowCrownStone(c: RowCrown): NonNullable<RowCrown['stone']> | und
   return c.shape === 'bell' || c.shape === 'step' ? { crest: 'crest' } : {};
 }
 /** Weathered sandstone (coordinator 2026-11-15): the trim white mixed this far toward a warm grey-buff, and the values the
- *  pieces walk through, so the stone reads as stone rather than one bright paint. */
+ *  pieces walk through, so the stone reads as stone rather than one bright paint. A cooler near-white base (0.3 toward
+ *  #d6d8d6) lost a blind A/B 0-6, and per-face shading by orientation lost 0-5-1 (returns read into the sky). */
 export const ROW_STONE_WEATHER = { hex: '#c9bda6', mix: 0.18, values: [1, 0.95, 1.02, 0.97, 0.93, 1.01, 0.96] } as const;
 function mixHex(a: string, b: string, t: number): string {
   const p = (h: string) => { const n = parseInt(h.replace('#', '').slice(0, 6), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
@@ -299,7 +300,7 @@ function mixHex(a: string, b: string, t: number): string {
 function shade(hex: string, k: number): string {
   const n = parseInt(hex.replace('#', '').slice(0, 6), 16);
   if (!Number.isFinite(n)) return hex;
-  const ch = (sh: number) => Math.round(((n >> sh) & 255) * k).toString(16).padStart(2, '0');
+  const ch = (sh: number) => Math.min(255, Math.round(((n >> sh) & 255) * k)).toString(16).padStart(2, '0');
   return `#${ch(16)}${ch(8)}${ch(0)}`;
 }
 /** A convex outline (x across, y up) as a stone block on the end at u = f: its face `proud` in front of the brick, its
@@ -320,6 +321,8 @@ function prism(s: RoofSink, pts: readonly V2[], f: number, e: number, proud: num
     s.quad([uF, x0, y0], [uF, x1, y1], [uB, x1, y1], [uB, x0, y0], [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, nx, ny], hex);
   }
 }
+/** The colour of a stated dark hood (`stone.hood: 'dark'`): a painted dark green-grey. */
+export const ROW_STONE_HOOD = '#3f4a44';
 const STONE_SEG = 16;
 const disc = (cx: number, cy: number, r: number, n = STONE_SEG): V2[] => Array.from({ length: n }, (_, i): V2 => [cx + r * Math.cos((i / n) * 2 * Math.PI), cy + r * Math.sin((i / n) * 2 * Math.PI)]);
 /** A volute: a stone drum with a darker coil and a white eye, its face standing `proud`. */
@@ -408,10 +411,22 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
       if (c.shape === 'neck' && Number.isFinite(ys)) {
         const under = prof.filter(([x, y]) => sg * x > neck + 1e-3 && sg * x < neck + w - 1e-3 && y > 0.01).sort((p, q) => sg * (p[0] - q[0]));
         const base = Math.max(ys, neckFoot - 0.05), arc: V2[] = [];
-        for (let i = 0; i <= 8; i++) { const a = (i / 8) * Math.PI / 2; arc.push([sg * (neck + w * Math.cos(a)), base + ht * Math.sin(a)]); }
+        if (st.claws === 'carved') {
+          // A carved scroll (klauwstuk) standing above the shoulder line against the neck: an S-curved back rising to a
+          // curl at the neck, about half the neck's height, a volute at its top and a carved leaf on its face.
+          const hc = clamp((tN - neckFoot) * 0.5, 0.6, 1.4);
+          for (let i = 0; i <= 12; i++) { const t = i / 12; arc.push([sg * (neck + w * Math.cos(t * Math.PI / 2) * (1 - 0.3 * Math.sin(t * Math.PI))), base + hc * Math.sin(t * Math.PI / 2)]); }
+          prism(s, [[sg * neck, neckFoot], ...under, [xs, ys], ...(base > ys + 1e-3 ? arc : arc.slice(1))], f, e, S.piece, S.back * 0.5, tone());
+          const rt = clamp(w * 0.22, 0.1, 0.18);
+          volute(s, f, e, sg * (neck + rt + 0.02), base + hc - rt * 0.4, rt, tone(), S.piece + 0.03);
+          prism(s, [[sg * (neck + w * 0.35), base + hc * 0.25], [sg * (neck + w * 0.6), base + hc * 0.3], [sg * (neck + w * 0.45), base + hc * 0.62], [sg * (neck + w * 0.3), base + hc * 0.5]], f, e, S.piece + 0.02, 0, shade(tone(), 0.8));
+          const rv = clamp(w * 0.28, 0.12, 0.22) * S.voluteK;
+          volute(s, f, e, xs - sg * rv * 0.4, base + rv * 0.9, rv, tone(), S.piece + 0.02);
+        } else {
         prism(s, [[sg * neck, neckFoot], ...under, [xs, ys], ...(base > ys + 1e-3 ? arc : arc.slice(1))], f, e, S.piece, S.back * 0.5, tone());
         const rv = clamp(w * 0.28, 0.12, 0.22) * S.voluteK;
         volute(s, f, e, xs - sg * rv * 0.4, base + rv * 0.9, rv, tone(), S.piece + 0.02);
+        }
       }
       // The claw's foot: a large volute where the shoulder meets the eaves.
       const r = (c.shape === 'bell' ? clamp((foot - neck) * 0.16, 0.16, 0.3) : clamp((foot - neck) * 0.2, 0.2, 0.42)) * S.voluteK;
@@ -423,11 +438,43 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
   }
   if (necked && d.cap > 0) {
     const capRim = prof.filter(([x, y]) => y >= tN - 1e-3 && Math.abs(x) <= neck + 1e-6);
-    // The cap's moulding: a broad stone hood along its outline (the tympanum inside it stays brick).
-    if (capRim.length >= 2) stoneBand(s, capRim, f, e, S.overhang + 0.02, S.capBand, S.ledge, S.back, tone());
-    // The moulding the cap stands on: a ledge at the springing, overhanging the neck.
     const lw = neck + S.capOver;
-    prism(s, [[-lw, tN - S.ledgeH], [lw, tN - S.ledgeH], [lw, tN], [-lw, tN]], f, e, S.ledge, S.back, tone());
+    if (st.hood) {
+      // A solid hood over a cornice (Herengracht 55, 57, 31: a dark green or grey curved hood standing on a white
+      // entablature): the cap filled in the hood's colour, a little over the outline; under it a two-layer cornice.
+      const hex = st.hood === 'dark' ? ROW_STONE_HOOD : st.hood;
+      const rim = offsetRun(capRim, -(S.overhang + 0.02));
+      if (rim.length >= 2) prism(s, [[0, tN], [rim[0][0], tN], ...rim, [rim[rim.length - 1][0], tN]], f, e, S.ledge + 0.02, S.back, hex);
+      prism(s, [[-lw, tN - S.ledgeH], [lw, tN - S.ledgeH], [lw, tN], [-lw, tN]], f, e, S.ledge + 0.04, S.back, tone());
+      prism(s, [[-lw + 0.05, tN - S.ledgeH - 0.18], [lw - 0.05, tN - S.ledgeH - 0.18], [lw - 0.05, tN - S.ledgeH], [-lw + 0.05, tN - S.ledgeH]], f, e, S.ledge - 0.03, 0.02, tone());
+    } else {
+      // The cap's moulding: a broad stone hood along its outline (the tympanum inside it stays brick).
+      if (capRim.length >= 2) stoneBand(s, capRim, f, e, S.overhang + 0.02, S.capBand, S.ledge, S.back, tone());
+      // The moulding the cap stands on: a ledge at the springing, overhanging the neck.
+      prism(s, [[-lw, tN - S.ledgeH], [lw, tN - S.ledgeH], [lw, tN], [-lw, tN]], f, e, S.ledge, S.back, tone());
+    }
+  }
+  // Carving in the neck between its light and the cap: a framed panel, a cartouche, or an oeil-de-boeuf.
+  if (necked && st.neck && Number.isFinite(neckFoot)) {
+    const zl = clear ? clear[1] + 0.2 : neckFoot + 0.3, zh = tN - S.ledgeH - (st.hood ? 0.22 : 0.06) - 0.08, hh = zh - zl;
+    const cy = (zl + zh) / 2, rx = Math.min(neck * 0.55, 0.42), ry = Math.min(hh / 2, 0.32);
+    if (hh >= 0.36 && rx >= 0.2) {
+      const oval = (a: number, b: number, n = 18): V2[] => Array.from({ length: n }, (_, i): V2 => [a * Math.cos(2 * Math.PI * i / n), cy + b * Math.sin(2 * Math.PI * i / n)]);
+      if (st.neck === 'panel') {
+        const pw = rx, ph = ry, b = 0.06;
+        for (const pts of [[[-pw, cy - ph], [pw, cy - ph], [pw, cy - ph + b], [-pw, cy - ph + b]], [[-pw, cy + ph - b], [pw, cy + ph - b], [pw, cy + ph], [-pw, cy + ph]], [[-pw, cy - ph], [-pw + b, cy - ph], [-pw + b, cy + ph], [-pw, cy + ph]], [[pw - b, cy - ph], [pw, cy - ph], [pw, cy + ph], [pw - b, cy + ph]]] as V2[][]) prism(s, pts, f, e, 0.05, 0.02, tone());
+        prism(s, [[-pw + b, cy - ph + b], [pw - b, cy - ph + b], [pw - b, cy + ph - b], [-pw + b, cy + ph - b]], f, e, 0.025, 0, shade(tone(), 0.86));
+      } else if (st.neck === 'cartouche') {
+        prism(s, oval(rx * 0.8, ry), f, e, 0.06, 0.02, tone());
+        prism(s, oval(rx * 0.52, ry * 0.66), f, e, 0.075, 0, shade(tone(), 0.8));
+        for (const sg of [-1, 1]) volute(s, f, e, sg * rx * 0.9, cy + ry * 0.35, Math.min(0.1, ry * 0.4), tone(), 0.07);
+      } else {
+        prism(s, oval(rx * 0.85, ry), f, e, 0.06, 0.02, tone());
+        prism(s, oval(rx * 0.62, ry * 0.72), f, e, 0.065, 0, GLASS);
+        prism(s, [[-0.02, cy - ry * 0.72], [0.02, cy - ry * 0.72], [0.02, cy + ry * 0.72], [-0.02, cy + ry * 0.72]], f, e, 0.07, 0, tone());
+        prism(s, [[-rx * 0.62, cy - 0.02], [rx * 0.62, cy - 0.02], [rx * 0.62, cy + 0.02], [-rx * 0.62, cy + 0.02]], f, e, 0.07, 0, tone());
+      }
+    }
   }
   // The spout's cap slab on its upright top.
   let top = Math.max(...prof.map(([, y]) => y)) + S.overhang;

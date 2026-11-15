@@ -40,8 +40,10 @@ function doorOf(fronts: readonly RowFront[]): { door?: NonNullable<RowSeriesDraw
   const g = f.ground, side = g.doorSide as 'left' | 'right' | 'centre';
   const offset = fronts.length > 1 ? span(f) : null;
   // A pand of several fronts: the door's place as a fraction of the pand (the mesher reads index/bays of the pand front).
-  if (offset && g.doorIndex !== undefined && g.groundBays) return { door: { side, index: +(offset[0] + (g.doorIndex + 0.5) / g.groundBays * (offset[1] - offset[0])).toFixed(4) * 1000 | 0, bays: 1000 } };
-  return { door: { side, ...(g.doorIndex !== undefined && g.groundBays ? { index: g.doorIndex, bays: g.groundBays } : {}) } };
+  // A stated doorcase (RowGround.doorcase) dresses the street door (row-doorcase; a stoop's door takes it on the stoop).
+  const dc = g.doorcase ? { doorcase: { ...g.doorcase } } : {};
+  if (offset && g.doorIndex !== undefined && g.groundBays) return { door: { side, index: +(offset[0] + (g.doorIndex + 0.5) / g.groundBays * (offset[1] - offset[0])).toFixed(4) * 1000 | 0, bays: 1000, ...dc } };
+  return { door: { side, ...(g.doorIndex !== undefined && g.groundBays ? { index: g.doorIndex, bays: g.groundBays } : {}), ...dc } };
 }
 /** The ground use as read: a shop ground draws the shop window, a dwelling ground none; other uses leave the extract's. */
 function shopOf(fronts: readonly RowFront[]): { shop?: boolean } {

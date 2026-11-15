@@ -68,6 +68,8 @@ export type RowDressContext = {
     form?: 'straight' | 'side' | 'double'; railing?: true;
     /** The door's stated doorcase (RowGround.doorcase): pilasters, entablature or pediment, fanlight. */
     doorcase?: import('./houseSpec/row/types.js').RowDoorcase };
+  /** The street door's stated doorcase (RowGround.doorcase on a front without a stoop): row-doorcase draws it. */
+  doorcase?: import('./houseSpec/row/types.js').RowDoorcase;
   /** The stated balcony: renderer upper storeys (1 = the first upper row) and axis. */
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
   /** Upper windows' share of their axis pitch, frames included (a row type's window width). */

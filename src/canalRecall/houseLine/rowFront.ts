@@ -115,7 +115,7 @@ export interface RowSeriesDraw {
   /** The basement row's share of the upper pitch, when not SOUTERRAIN_FACTOR (low basement windows). */
   souterrainFactor?: number;
   /** The street door as read (left/right/centre as seen; `index` of `bays` ground openings, left to right as seen). */
-  door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number };
+  door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number; /** A stated doorcase (RowGround.doorcase). */ doorcase?: import('../houseSpec/row/types.ts').RowDoorcase };
   /** The ground storey's use: a shop ground draws the shop window (specShop), a dwelling ground none. */
   shop?: boolean;
   /** The ground (shopfront) colour as the record states it (`ground.colour`), drawn as stated. */
@@ -313,7 +313,7 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
 export const ROW_SHOP_FRAME = '#e6e1d6';
 export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
   const single = series.shop === true && series.shopUnits === 1;
-  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.windowShare ? ['row-glazing'] : []), ...(series.glazing ? ['row-sash'] : []), ...(series.floorsM?.length ? ['row-floors'] : []), ...(series.groundWalls?.length ? ['row-ground-wall'] : []), ...(single ? ['row-shopfront'] : [])];
+  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.door?.doorcase && !series.stoop ? ['row-doorcase'] : []), ...(series.windowShare ? ['row-glazing'] : []), ...(series.glazing ? ['row-sash'] : []), ...(series.floorsM?.length ? ['row-floors'] : []), ...(series.groundWalls?.length ? ['row-ground-wall'] : []), ...(single ? ['row-shopfront'] : [])];
   return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(series.glazing ? { glazing: series.glazing } : {}), ...(series.floorsM?.length ? { floorsM: series.floorsM } : {}), ...(series.groundWalls?.length ? { groundWalls: series.groundWalls } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
 }
 

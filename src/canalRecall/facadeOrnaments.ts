@@ -716,6 +716,12 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       s.box(c.f, x - 0.012, x + 0.012, o1 - 0.04, o1 - 0.015, c.base + (k + 1) * rise, z, STOOP_PARALLEL.iron);
     }
   } },
+  { id: 'row-doorcase', styles: ['canal', 'c19', 'school'], p: 0, street: true, group: 'door-frame', build: (c, s) => {
+    // A stated doorcase on the street door (RowGround.doorcase): pilasters, entablature or pediment, fanlight.
+    const dc = c.rowDress?.doorcase, d = doorSpan(c);
+    if (!dc || !d) return;
+    rowDoorcase(c, s, d, dc);
+  } },
   { id: 'row-cornice', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'crown', build: (c, s) => {
     // The series' cornice at the wall top: a cream frieze, consoles at a steady pitch, a corona and its cyma, white.
     // `simple` keeps the corona and cyma alone.

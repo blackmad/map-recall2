@@ -143,11 +143,12 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
 /** House rows: a feature's `rowDress` (houseLine/rowFront.ts rowDressOf), validated. */
 type RowSide = 'left' | 'right' | 'centre';
 const rowSideOf = (v: unknown): RowSide | null => v === 'left' || v === 'right' || v === 'centre' ? v : null;
-function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false; form?: 'straight' | 'side' | 'double'; railing?: true; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; door?: { side: RowSide; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: RowSide } } | null {
+function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false; form?: 'straight' | 'side' | 'double'; railing?: true; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; door?: { side: RowSide; index?: number; bays?: number; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: RowSide } } | null {
   if (!v || typeof v !== 'object') return null;
   const ws = (v as { windowShare?: unknown }).windowShare, windowShare = typeof ws === 'number' && ws > 0.3 && ws < 0.95 ? { windowShare: ws } : {};
   const d = v as { cornice?: unknown; heads?: unknown; extras?: unknown; stoop?: { side?: unknown }; door?: { side?: unknown; index?: unknown; bays?: unknown }; balcony?: { storeys?: unknown; axis?: unknown } };
-  const doorSide = rowSideOf(d.door?.side), door = doorSide ? { side: doorSide, ...(typeof d.door?.index === 'number' && typeof d.door?.bays === 'number' && d.door.bays > 0 ? { index: d.door.index, bays: d.door.bays } : {}) } : null;
+  const doorcaseOf = (dc: { material?: unknown; top?: unknown; fanlight?: unknown } | undefined) => dc && (dc.material === 'stone' || dc.material === 'timber') ? { doorcase: { material: dc.material as 'stone' | 'timber', ...(dc.top === 'entablature' || dc.top === 'pediment' || dc.top === 'segmental' ? { top: dc.top as 'entablature' | 'pediment' | 'segmental' } : {}), ...(dc.fanlight === false ? { fanlight: false } : {}) } } : {};
+  const doorSide = rowSideOf(d.door?.side), door = doorSide ? { side: doorSide, ...(typeof d.door?.index === 'number' && typeof d.door?.bays === 'number' && d.door.bays > 0 ? { index: d.door.index, bays: d.door.bays } : {}), ...doorcaseOf((d.door as { doorcase?: { material?: unknown } } | undefined)?.doorcase) } : null;
   const balcony = d.balcony && Array.isArray(d.balcony.storeys) && d.balcony.storeys.every(k => typeof k === 'number') ? { storeys: d.balcony.storeys as number[], axis: d.balcony.axis === 'all' ? 'all' as const : 'centre' as const } : null;
   const sf = (v as { shopFront?: { frameHex?: unknown; side?: unknown } }).shopFront, sfSide = rowSideOf(sf?.side);
   const shopFront = sf && typeof sf.frameHex === 'string' && /^#[0-9a-f]{6}$/i.test(sf.frameHex) && sfSide ? { shopFront: { frameHex: sf.frameHex, side: sfSide } } : {};
@@ -160,7 +161,7 @@ function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; ext
   const sf0 = (d.stoop as { form?: unknown; railing?: unknown } | undefined), stoopForm = sf0?.form === 'straight' || sf0?.form === 'side' || sf0?.form === 'double' ? { form: sf0.form as 'straight' | 'side' | 'double' } : {};
   const stoopRail = sf0?.railing === true ? { railing: true as const } : {};
   const dc = (d.stoop as { doorcase?: { material?: unknown; top?: unknown; fanlight?: unknown } } | undefined)?.doorcase;
-  const doorcase = dc && (dc.material === 'stone' || dc.material === 'timber') ? { doorcase: { material: dc.material as 'stone' | 'timber', ...(dc.top === 'entablature' || dc.top === 'pediment' || dc.top === 'segmental' ? { top: dc.top as 'entablature' | 'pediment' | 'segmental' } : {}), ...(dc.fanlight === false ? { fanlight: false } : {}) } } : {};
+  const doorcase = doorcaseOf(dc);
   const side: 'left' | 'right' | 'centre' | null = d.stoop && (d.stoop.side === 'left' || d.stoop.side === 'right' || d.stoop.side === 'centre') ? d.stoop.side : null;
   const heads = Array.isArray(d.heads) ? (d.heads as RowHeadsDraw[]).filter(h => h && Number.isFinite(h.a0) && Number.isFinite(h.a1) && typeof h.dressing === 'string') : [];
   const extras = Array.isArray(d.extras) ? (d.extras as unknown[]).filter((x): x is string => typeof x === 'string') : [];
