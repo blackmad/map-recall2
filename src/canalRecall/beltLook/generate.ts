@@ -19,16 +19,24 @@ import { districtRows, type GenPand, type GenRow, type GenStreet } from '../buur
 import { donorFor, fittedRead, frontTopM, gableable, GABLED_CROWNS, type BeltDonor, type BeltTarget } from './donors.ts';
 import { dressBeltStone } from './stone.ts';
 import { dressBeltCornice } from './cornice.ts';
+import { brickFromSample, lchOf } from '../houseSpec/judgedColour.ts';
 
 export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: string }
 /** What a published source states for a pand (the monument register via house-specs): its crown and facade year. */
-export interface BeltStated { crown?: string; year?: number; shop?: boolean; finish?: BeltTarget['finish']; storeys?: number; stoop?: boolean }
+export interface BeltStated { crown?: string; year?: number; shop?: boolean; finish?: BeltTarget['finish']; storeys?: number; stoop?: boolean; roofStorey?: boolean }
 export interface BeltGenResult {
   rows: RowRecord[];
   /** Per drawn pand, where its design came from. */
   provenance: Record<string, { own: true; ref: string } | { donor: string; distance: number; rank: number; of: number }>;
   skipped: Array<{ id: string; reason: 'described' | 'no-front' | 'single' | 'minor' | 'no-donor' }>;
   fronts: Record<string, { street: string; a: readonly [number, number]; b: readonly [number, number]; lengthM: number }>;
+}
+
+/** The donor's measured wall when it is a brick colour to lend: a plain brick front, its sample not a buff brick. */
+export function brickDonorSample(d: Pick<BeltDonor, 'answer' | 'sample'>): string | undefined {
+  const a = d.answer as { finish?: string; pale?: boolean };
+  if (!d.sample || a.finish !== 'brick' || a.pale) return undefined;
+  return brickFromSample(lchOf(d.sample)) === 'buff-brick' ? undefined : d.sample;
 }
 
 const pandNumber = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
@@ -42,7 +50,7 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     const pid = pandNumber(m.pand.id), eaves = frontTopM(m.pand.eavesM, m.pand.heightM, m.pand.ridgeM), ridge = m.pand.ridgeM;
     const sd = stated.get(pid);
     const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge, roofCode: m.pand.roofCode ?? null, heightM: m.pand.heightM ?? null,
-      ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}), ...(sd?.finish ? { finish: sd.finish } : {}), ...(sd?.storeys ? { storeys: sd.storeys } : {}), ...(sd?.stoop ? { stoop: true } : {}) };
+      ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}), ...(sd?.finish ? { finish: sd.finish } : {}), ...(sd?.storeys ? { storeys: sd.storeys } : {}), ...(sd?.stoop ? { stoop: true } : {}), ...(sd?.roofStorey ? { roofStorey: true } : {}) };
     const own = reads.get(pid);
     let read: DescriberAnswer, sample: string | undefined, readRef: string;
     if (own) { read = own.answer; sample = own.sample; readRef = own.ref; prov[pid] = { own: true, ref: own.ref }; }
@@ -54,7 +62,9 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       const corniceTop = !GABLED_CROWNS.has(String(t.statedCrown ?? d.donor.answer.crown)) && t.heightM != null && eaves !== null && t.heightM > eaves ? t.heightM : null;
       read = fittedRead(corniceTop !== null ? { ...t, eavesM: corniceTop } : t, d.donor); readRef = `${BELT_LOOK_REF}: donor ${d.donor.pandId}`;
       // A stated plaster or stone front is judged pale from its finish, not the donor's brick sample.
-      sample = t.finish === 'plaster' || t.finish === 'stone' ? undefined : d.donor.sample;
+      // A donor's sample is a brick colour only when the donor is a brick front and the sample is not a buff (tan) brick;
+      // otherwise the solve takes the neighbours' family (round 4: tan and pale fronts over dark brick rows).
+      sample = t.finish === 'plaster' || t.finish === 'stone' ? undefined : brickDonorSample(d.donor);
       prov[pid] = { donor: d.donor.pandId, distance: d.distance, rank: d.rank, of: d.of };
     }
     const top = !GABLED_CROWNS.has(String(read.crown)) && t.heightM != null && eaves !== null && t.heightM > eaves ? +t.heightM.toFixed(2) : eaves;

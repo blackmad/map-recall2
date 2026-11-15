@@ -4,7 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { donorFor, fittedRead, frontTopM, gableable, hash32, segmentOf, type BeltDonor, type BeltTarget } from './donors.ts';
-import { generateBelt, BELT_LOOK_REF } from './generate.ts';
+import { generateBelt, BELT_LOOK_REF, brickDonorSample } from './generate.ts';
 import type { GenPand, GenStreet } from '../buurtGenerator/rows.ts';
 import type { DescriberAnswer } from '../houseSpec/describer.ts';
 
@@ -188,4 +188,22 @@ test('a belt read frieze cornice draws RowCorniceDress.frieze (attic-frieze: att
     for (const s of res.rows[0].series) assert.equal((s.design.corniceDress?.value as { frieze?: string }).frieze, frieze);
     assert.ok(!res.rows[0].readNotDrawn.some(x => x.field === 'cornice'), 'the frieze is drawn, not noted');
   }
+});
+
+test('round 5: a donor brings no roof storey the register does not state, no paint the register does not state, no shop without one on record', () => {
+  const m = donor('0363100012900007', 'Keizersgracht', 1700, 6.2, 13, { crown: 'mansard', finish: 'stucco', pale: true, ground: 'shopfront', basement: 'none',
+    storeyParts: { full: 4, roof: 'mansard', souterrain: false }, dormers: { kind: 'pediment', count: 2 }, gaps: [{ component: 'dormer', what: 'two pedimented dormers in the slate mansard' }] } as never);
+  const f = fittedRead(target(), m) as unknown as { crown: string; finish: string; pale?: boolean; ground: string; storeyParts: { roof: string }; dormers: { count: number }; gaps: unknown[] };
+  assert.deepEqual([f.crown, f.storeyParts.roof, f.dormers.count, f.gaps.length], ['cornice', 'none', 0, 0]);
+  assert.deepEqual([f.finish, f.pale, f.ground], ['brick', undefined, 'dwelling']);
+  const g = fittedRead(target({ roofStorey: true, finish: 'painted', shop: true }), m) as unknown as typeof f;
+  assert.deepEqual([g.storeyParts.roof, g.dormers.count, g.finish, g.ground], ['mansard', 2, 'stucco', 'shopfront'], 'stated: drawn as the donor read it');
+  // A no-shop pand prefers a house donor.
+  const shopDonor = donor('0363100012900008', 'Keizersgracht', 1690, 6.2, 13, { ground: 'shopfront' });
+  const houseDonor = donor('0363100012900009', 'Keizersgracht', 1690, 6.2, 13);
+  assert.equal(donorFor(target({ pandId: '0363100012800009' }), [shopDonor, houseDonor].map(d => ({ ...d })))!.of, 2);
+  // Only a brick donor's non-buff sample is lent.
+  assert.equal(brickDonorSample({ answer: read('x'), sample: '#6a5040' }), '#6a5040');
+  assert.equal(brickDonorSample({ answer: read('x', { finish: 'stucco' } as never), sample: '#d8d0c0' }), undefined);
+  assert.equal(brickDonorSample({ answer: read('x'), sample: '#c9a46a' }), undefined, 'a buff (tan) sample');
 });

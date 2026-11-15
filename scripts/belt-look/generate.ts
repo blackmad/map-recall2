@@ -64,8 +64,9 @@ export function statedPands(): Map<string, BeltStated> {
   for (const x of fs.readdirSync(dir)) for (const f of fs.readdirSync(path.join(dir, x))) {
     const buf = fs.readFileSync(path.join(dir, x, f));
     for (const [id, b] of Object.entries<any>(JSON.parse((f.endsWith('.gz') ? zlib.gunzipSync(buf) : buf).toString('utf8')).buildings ?? {})) {
-      const crown = b?.d?.fronts?.[0]?.gable, year = b?.x?.facadeYear ?? b?.v?.year;
-      if (typeof crown === 'string' || typeof year === 'number') out.set(id.replace(/^NL\.IMBAG\.Pand\./, ''), { ...(typeof crown === 'string' ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}) });
+      const crown = b?.d?.fronts?.[0]?.gable, year = b?.x?.facadeYear ?? b?.v?.year, rs = b?.d?.fronts?.[0]?.roofStorey;
+      const roofStorey = rs === 'mansard' || rs === 'attic';
+      if (typeof crown === 'string' || typeof year === 'number' || roofStorey) out.set(id.replace(/^NL\.IMBAG\.Pand\./, ''), { ...(typeof crown === 'string' ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}), ...(roofStorey ? { roofStorey } : {}) });
     }
   }
   // The monument register's parsed facts (monument-facts.json): its gable where house-specs states none, the facade finish,
@@ -75,7 +76,7 @@ export function statedPands(): Map<string, BeltStated> {
     const k = id.replace(/^NL\.IMBAG\.Pand\./, ''), cur = out.get(k) ?? {}, els = new Set<string>((f.elements ?? []).map((e: any) => e.key));
     const crown = cur.crown ?? CROWN[f.gable], year = cur.year ?? f.facadeDate?.from ?? f.coreDate?.from;
     out.set(k, { ...cur, ...(crown ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}), ...(typeof f.finish === 'string' ? { finish: f.finish } : {}),
-      ...(Number.isInteger(f.storeys) && f.storeys > 0 ? { storeys: f.storeys } : {}), ...(els.has('stoop') ? { stoop: true } : {}), ...(els.has('shopfront') ? { shop: true } : {}) });
+      ...(Number.isInteger(f.storeys) && f.storeys > 0 ? { storeys: f.storeys } : {}), ...(els.has('stoop') ? { stoop: true } : {}), ...(els.has('shopfront') ? { shop: true } : {}), ...(els.has('dormer') || els.has('attic') ? { roofStorey: true } : {}) });
   }
   // Shop ground storeys: the extract's shopfronts.json (the game's own shopfront layer).
   for (const id of Object.keys(JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/shopfronts.json', 'utf8')).buildings ?? {})) {

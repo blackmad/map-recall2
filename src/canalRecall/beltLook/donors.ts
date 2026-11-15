@@ -54,6 +54,10 @@ export interface BeltTarget {
   /** 3DBAG's representative height (bag tiles `height`): a cornice front stands at it (held-out round 3: Huidenstraat and
    *  Hartenstraat 169174 drawn at the eaves, 7-12 m against 13-17 m). */
   heightM?: number | null;
+  /** A published source states a roof storey (house-specs `roofStorey` mansard or attic, or the register's dormer or
+   *  attic element). Absent: a donor's mansard and dormers are not drawn (held-out round 4: invented slate mansards with
+   *  dormers over flat cornice fronts on the losing streets). */
+  roofStorey?: boolean;
 }
 
 /** Crown families a stated crown admits among donor reads (held-out A/B 2026-11-15: gables drawn over the register's
@@ -113,6 +117,8 @@ export function donorDistance(t: BeltTarget, d: BeltDonor): number {
   if (t.eavesM !== null) s += Math.abs(t.eavesM - d.heightM) / w.eavesPer;
   if (GABLED_CROWNS.has(String(d.answer.crown)) && !gableable(t)) s += w.gableOnFlat;
   if (t.shop && d.answer.ground !== 'shopfront') s += w.shopMismatch;
+  // No shop on record: a shop donor is the worse match (round 4: generic shopfronts where the photo has stoops and doors).
+  if (!t.shop && d.answer.ground === 'shopfront') s += w.shopMismatch;
   if (t.finish === 'plaster' && d.answer.finish !== 'stucco') s += w.finishMismatch;
   if (t.finish === 'stone' && d.answer.finish !== 'stone' && d.answer.finish !== 'stucco') s += w.finishMismatch;
   return s;
@@ -170,6 +176,20 @@ export function fittedRead(t: BeltTarget, d: BeltDonor): DescriberAnswer {
   if (t.finish === 'plaster') { ax.finish = 'stucco'; ax.pale = true; }
   else if (t.finish === 'stone') { ax.finish = 'stone'; ax.pale = true; }
   else if ((t.finish === 'brick' || t.finish === 'ornamentalBrick') && (ax.finish === 'stucco' || ax.finish === 'painted-brick')) { ax.finish = 'brick'; delete ax.pale; }
+  // The register silent or brick: a donor's paint or stucco is not this house's. The wall is brick, judged from the
+  // neighbours (round 4: pale, cream and tan fronts drawn where the photo is dark or red-brown brick; David's colour by
+  // judgement, plausible from the neighbours). Only the register (or the pand's own read) paints a front.
+  else if (t.finish !== 'painted' && (ax.finish === 'stucco' || ax.finish === 'painted-brick' || ax.finish === 'stone')) { ax.finish = 'brick'; delete ax.pale; }
+  // No roof storey stated: the donor's mansard and dormers stay with the donor (a cornice front gets a flat lid behind).
+  if (!t.roofStorey) {
+    const ar = a as { crown?: string; storeyParts?: { roof?: string }; dormers?: unknown; gaps?: Array<{ component?: string; what: string }> };
+    if (ar.crown === 'mansard') ar.crown = 'cornice';
+    if (ar.storeyParts && (ar.storeyParts.roof === 'mansard' || ar.storeyParts.roof === 'attic')) ar.storeyParts.roof = 'none';
+    if (ar.dormers && typeof ar.dormers === 'object') ar.dormers = { kind: 'none', count: 0 };
+    if (ar.gaps) ar.gaps = ar.gaps.filter(g => !/dormer|mansard/i.test(g.what));
+  }
+  // No shop on record: the donor's shopfront becomes a house ground storey with its door.
+  if (!t.shop && a.ground === 'shopfront') (a as { ground: string }).ground = 'dwelling';
   if (t.stoop && !t.shop && ax.basement !== 'stoop' && ax.basement !== 'stoop-and-windows') ax.basement = 'stoop';
   if (t.shop && a.ground !== 'shopfront') {
     (a as { ground: string }).ground = 'shopfront';
