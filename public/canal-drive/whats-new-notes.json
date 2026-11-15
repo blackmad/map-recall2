@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-15",
+      "title": "Shops look like the shops on the street",
+      "text": "Shop ground floors now draw as real shopfronts: dark glass with goods in the window, a coloured fascia with the shop's name, and recognisable chain fronts like Albert Heijn, Kruidvat, Etos, HEMA, Bruna and Gall & Gall. Florists, bike shops with bikes outside, hairdressers, bakeries, butchers, greengrocers with crates, and snack bars each have their own look. Shops are placed by their registered address and the city's horeca permits, so they sit on the right building and face the right street. Each look was kept only if a reviewer, comparing against street photos, picked it over the old plain shop band.",
+      "images": [
+        {
+          "src": "ui/2026-11-15-retail/templates.jpg",
+          "alt": "A grid of shopfront templates: chain supermarkets, drugstores, cafés, bike shop, greengrocer and snack bars",
+          "caption": "The shopfront set"
+        },
+        {
+          "src": "ui/2026-11-14-retail-ground-r2/as-played-centre-v2-on.jpg",
+          "alt": "A shopping street in the centre as played, with the new shopfronts",
+          "caption": "In the game"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
       "title": "Politiebureau Raampoort and Banks Mansion",
       "text": "Two more landmarks on the ride ring are modelled. The 1888 police station at the Raampoort on Marnixstraat has its banded brick, round-headed windows under dark arches, its clock tower and the crenellated corner over the Singelgracht. Banks Mansion on the corner of Herengracht and Vijzelstraat has its white rendered ground floor with columns, two full-length iron balconies, the slate mansard with stone dormers and the lettered corner entrance.",
       "images": [

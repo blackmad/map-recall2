@@ -14,7 +14,7 @@ import type { DescriberAnswer } from '../houseSpec/describer.ts';
 /** The four canals; any other street of the belt is a cross street. */
 export const BELT_CANALS = ['Herengracht', 'Keizersgracht', 'Prinsengracht', 'Singel'] as const;
 export type BeltSegment = (typeof BELT_CANALS)[number] | 'cross';
-export const segmentOf = (street: string): BeltSegment => (BELT_CANALS as readonly string[]).includes(street) ? street as BeltSegment : 'cross';
+export const segmentOf = (street: string, canals: readonly string[] = BELT_CANALS): BeltSegment => canals.includes(street) ? street as BeltSegment : 'cross';
 
 /** A read belt house: its read, its cut's wall sample, and what the donor match weighs. */
 export interface BeltDonor {
@@ -28,6 +28,8 @@ export interface BeltDonor {
   answer: DescriberAnswer;
   /** The cut's measured wall colour (cuts.json w1 / wallHex): the row solve judges the brick family from it. */
   sample?: string;
+  /** The district look the donor's read belongs to (LookDistrict.id); absent in the belt look's own pool. */
+  district?: string;
 }
 /** What the match knows of an undescribed pand. */
 export interface BeltTarget {
@@ -64,6 +66,8 @@ export interface BeltTarget {
   warehouse?: boolean;
   /** The register's named front elements (monument-facts `elements` keys: claws, festoons, oeilDeBoeuf, hoistBeam, ...). */
   elements?: readonly string[];
+  /** The district look drawing the pand (LookDistrict.id); a donor of another district costs `foreignDonor`. */
+  district?: string;
 }
 
 /** Crown families a stated crown admits among donor reads (held-out A/B 2026-11-15: gables drawn over the register's
@@ -90,6 +94,28 @@ export const DONOR_K = 4;
 // max stays under the p75 so a 10.8 m front held to a mansard donor's tall cut keeps its 3 storeys.
 export const PITCH_M = { min: 3.2, max: 4.3 } as const;
 export const DONOR_WEIGHTS = { segment: 1.5, sameStreet: -0.3, yearPer: 50, widthPer: 2, eavesPer: 3, gableOnFlat: 4, shopMismatch: 1.5, finishMismatch: 1, warehouseMismatch: 3 } as const;
+/**
+ * A district look (centrum-looks lane, 2026-11-15): the belt look's donor method over another district, with that district's
+ * own segments (its canals), storey pitch band (measured on its own reads) and a cost for a donor read from another
+ * district. BELT_LOOK is the belt's own: every default argument below is it, so the belt output is unchanged.
+ */
+export interface LookDistrict {
+  /** Row id prefix and the donor/target district tag ('belt'). */
+  id: string;
+  /** Streets that are their own donor segment; any other street is a cross street. */
+  canals: readonly string[];
+  /** The storey pitch band a donor's read is fitted at (m). */
+  pitchM: { readonly min: number; readonly max: number };
+  /** Added to donorDistance for a donor tagged with another district (0: no cost). */
+  foreignDonor: number;
+  /** roofSignals.ts: no gable (stated or a donor's) on a measured flat top. */
+  flatTopNoGable?: boolean;
+  /** roofSignals.ts: a cornice front whose AHN band climbs a roof slope stands at the band's p50. */
+  slopedBand?: boolean;
+  /** roofSignals.ts: a roof storey (one dormer) over a cornice front whose 3DBAG ridge stands 2 m over the front top. */
+  measuredRoofStorey?: boolean;
+}
+export const BELT_LOOK: LookDistrict = { id: 'belt', canals: BELT_CANALS, pitchM: PITCH_M, foreignDonor: 0 };
 /** A warehouse's floor pitch (m): pakhuis floors are low (2.4-3.0 m in the belt's read warehouses), so the eaves hold more storeys. */
 export const WAREHOUSE_PITCH_M = 2.7;
 /** Gap sentences naming a house's own ornament, which a donor does not lend: balconies, porches, aedicules, rustication,
@@ -157,9 +183,10 @@ export function frontTopM(eaves: number | null, height: number | null | undefine
 export const FRONT_TOP = { eavesShare: 0.75, mansardM: 5 } as const;
 
 /** The match distance of a donor to a pand (lower is closer). */
-export function donorDistance(t: BeltTarget, d: BeltDonor): number {
+export function donorDistance(t: BeltTarget, d: BeltDonor, look: LookDistrict = BELT_LOOK): number {
   const w = DONOR_WEIGHTS;
-  let s = segmentOf(t.street) === segmentOf(d.street) ? 0 : w.segment;
+  let s = segmentOf(t.street, look.canals) === segmentOf(d.street, look.canals) ? 0 : w.segment;
+  if (look.foreignDonor && t.district !== undefined && d.district !== undefined && t.district !== d.district) s += look.foreignDonor;
   if (t.street === d.street) s += w.sameStreet;
   s += t.year !== null && d.year !== null ? Math.abs(t.year - d.year) / w.yearPer : 1;
   s += Math.abs(t.widthM - d.widthM) / w.widthPer;
@@ -182,7 +209,7 @@ export function hash32(s: string): number {
 }
 
 /** The pand's donor: one of the `DONOR_K` nearest (ties broken by pand id), picked by the pand id's hash. */
-export function donorFor(t: BeltTarget, donors: readonly BeltDonor[]): { donor: BeltDonor; distance: number; rank: number; of: number } | null {
+export function donorFor(t: BeltTarget, donors: readonly BeltDonor[], look: LookDistrict = BELT_LOOK): { donor: BeltDonor; distance: number; rank: number; of: number } | null {
   // A flat-topped pand never takes a gabled donor (while any other is left): the gable would stand on no roof.
   // A stated crown picks the donors of its family (else any gabled donor for a stated gable). Unstated, the pand takes a
   // cornice: only a photo read or the register says gable (held-out rounds 1-3: gables over flat fronts the register is
@@ -191,7 +218,7 @@ export function donorFor(t: BeltTarget, donors: readonly BeltDonor[]): { donor: 
   let pool: readonly BeltDonor[] = st ? donors.filter(d => admits(st, String(d.answer.crown))) : [];
   if (st && !pool.length && GABLED_CROWNS.has(st)) pool = donors.filter(d => GABLED_CROWNS.has(String(d.answer.crown)));
   if (!pool.length) pool = donors.filter(d => !GABLED_CROWNS.has(String(d.answer.crown)));
-  const near = (pool.length ? pool : donors).filter(d => d.pandId !== t.pandId).map(d => ({ d, s: donorDistance(t, d) }))
+  const near = (pool.length ? pool : donors).filter(d => d.pandId !== t.pandId).map(d => ({ d, s: donorDistance(t, d, look) }))
     .sort((a, b) => a.s - b.s || (a.d.pandId < b.d.pandId ? -1 : 1)).slice(0, DONOR_K);
   if (!near.length) return null;
   const rank = hash32(t.pandId) % near.length;
@@ -212,9 +239,9 @@ export function beltBays(widthM: number): number {
  * The donor's read fitted to the pand: its storeys to the pand's eaves at the donor's own storey pitch (held to PITCH_M), its bays to the
  * pand's width at the donor's own axis, the door kept inside the ground bays. Everything else is the donor's as read.
  */
-export function fittedRead(t: BeltTarget, d: BeltDonor): DescriberAnswer {
+export function fittedRead(t: BeltTarget, d: BeltDonor, look: LookDistrict = BELT_LOOK): DescriberAnswer {
   const a = structuredClone(d.answer) as DescriberAnswer & { columns?: number[]; storeyParts?: { full?: number }; groundBays?: number; doorIndex?: number };
-  const pitch = t.warehouse ? WAREHOUSE_PITCH_M : Math.min(PITCH_M.max, Math.max(PITCH_M.min, d.heightM / (d.answer.storeys as number)));
+  const pitch = t.warehouse ? WAREHOUSE_PITCH_M : Math.min(look.pitchM.max, Math.max(look.pitchM.min, d.heightM / (d.answer.storeys as number)));
   if (t.storeys && t.storeys > 0) { if (t.storeys !== a.storeys) { a.storeys = t.storeys; if (a.storeyParts) a.storeyParts.full = t.storeys; delete a.columns; } }
   else if (t.eavesM !== null) {
     // A souterrain takes its cell of the wall first (the row draws it SOUTERRAIN_FACTOR of the pitch, basement windows
