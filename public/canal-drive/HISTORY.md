@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Retail look: shop templates, chain logos, second sources (2026-11-15)
+
+- Merged lane/retail-look-20261114 (0000871c9); default off in round m, switched on in round n the same day (David: "Why retail still off?"). One template is held: `brownBar` (pubs, brown cafés) drew café Hendrix as an opaque dark box with a row of lit dots, worse than the glazed café cell fixed on 2026-11-14, so `RETAIL_HELD`/`RETAIL_HELD_KINDS` keep those fronts on the flag-off cell until the template wins a blind photo review (frames in `artifacts/round-n/hendrix-{off,on,on2}`). Bruna's CC BY-SA 3.0 logo is credited on credits.html. Every template change was kept only if it won a blind, shuffled photo A/B by a fresh opus reviewer; bikes were judged on held-out fronts because the lane had tuned on the first-pass verdicts.
+- Hosting: OSM shop/amenity nodes stay the base. A node whose BAG address lies in another pand moves there (`retailAddress.ts`); horeca exploitation permits (api.data.amsterdam.nl) move or add POIs only on a BAG address match or exact normalised name, because loose name matches were wrong about 1 in 7; All the Places (CC0) needs an address match before it moves anything; Overture is report-only and sign OCR confirm-only.
+- Chain logos from web search are allowed since 2026-11-15 (David), with source URL and fetch date in provenance.json; the atlas gained a second page.
+
+## Landmarks: target list, Politiebureau Raampoort, Banks Mansion (2026-11-15)
+
+- The factory queue had no buildable rows left, so `scripts/landmarks/landmark-targets-next.ts` ranks unmodelled OSM landmarks in and just outside the belt by ride exposure (1,500 routes, walls within 60 m) × recognisability (Wikipedia 2, wikidata 1.4, monument 1.2). The top 15 with verdicts are in `docs/reports/landmark-targets-20261115.json`; canal-house fronts go to house rows.
+- Built: Politiebureau Raampoort (pand 0363100012169781, 1888, 27,395 tris) and Banks Mansion (0363100012165078, 1923, 16,330 tris; own mansard because 3DBAG reads the balconies as roofs). Each read FIX then PASS by a fresh opus reviewer on rule-10 pairs. Lane lane/landmarks-next-20261115.
+
 ## Landmarks: Diamant Museum, and four venue fixes judged blind (2026-11-15)
 
 - New: Diamant Museum, Paulus Potterstraat 8 (pand 0363100012076129, 1899): bespoke builder `scripts/landmarks/diamant-museum-*`, 15,011 tris, lod2 298. The first read flagged orange brick (#c8603e); after a fix to #8c6a5a the same reviewer passed it. The west flank is blank because hedges hide it in every panorama. The landmark factory queue had nothing else buildable; Bags and Purses (Herengracht 571–573) is three canal fronts and belongs to house rows. Lane lane/landmarks-new-20261115.

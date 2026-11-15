@@ -54,7 +54,7 @@
     },
     {
       "file": "public/canal-drive/models/signature-landmarks.json",
-      "sha256": "e975bfb2f28c982be97514bbc518ab8d795ca9dc5c73a8c989a3165f5825cb16"
+      "sha256": "61b268e7d25c02f64ff231b30433ab730755f5b3166f1532e6ddd4f919f8a7c3"
     },
     {
       "file": "scripts/street-appearance/bake-frontages.ts",
@@ -70,11 +70,11 @@
     },
     {
       "file": "src/canalRecall/threeBuildingFeatures.ts",
-      "sha256": "d4f05b66f8181dccf71ae26189fdda091e63b56e5d80f73a0a7fa165504b6854"
+      "sha256": "0950b6388edca9d28dc3e7622937814081bc032ed56d1a1d55055d67d1f57930"
     },
     {
       "file": "src/canalRecall/threeBuildingMesh.ts",
-      "sha256": "9c9711863fbb11566795cc1f31b830325ee83228ea4df790c2991a8063a5623b"
+      "sha256": "4351df72a915202adefb84c04aa43a7dd6c28b259f0000e40e3894deb18f2bea"
     },
     {
       "file": "src/canalRecall/genericFacades.ts",
@@ -98,7 +98,7 @@
     },
     {
       "file": "src/canalRecall/bayTextures.ts",
-      "sha256": "0fe180a3f776a8714e8ea4770c00697769d3308ff232f9ca9c9e41cecc4b10ae"
+      "sha256": "2501d5866dac022c2cdb780caa07f4d5c501abce6b887b85ac13487c21280c2a"
     },
     {
       "file": "src/canalRecall/facadeOrnaments.ts",

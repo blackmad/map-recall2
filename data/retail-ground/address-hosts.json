@@ -1,0 +1,575 @@
+{
+ "note": "build-templates.ts --addresses: OSM nodes whose BAG address lies in another pand than the geometric host; the build hosts them here",
+ "hosts": {
+  "249576661": {
+   "pand": "0363100012117692",
+   "at": [
+    4.9046648,
+    52.3469767
+   ],
+   "addr": "Rijnstraat 48",
+   "name": "Dirk",
+   "was": "0363100012071992"
+  },
+  "251168507": {
+   "pand": "0363100012171704",
+   "at": [
+    4.8992524,
+    52.3720662
+   ],
+   "addr": "Kloveniersburgwal 6-8",
+   "name": "De Bekeerde Suster",
+   "was": "0363100012182581"
+  },
+  "253139885": {
+   "pand": "0363100012148010",
+   "at": [
+    4.8822075,
+    52.3524105
+   ],
+   "addr": "Joh.M. Coenenstraat 1",
+   "name": "Bvd Tweewielers Zuid",
+   "was": "w277117928"
+  },
+  "467095933": {
+   "pand": "0363100012124425",
+   "at": [
+    4.9397678,
+    52.3631667
+   ],
+   "addr": "Molukkenstraat 71-73",
+   "name": "Etos",
+   "was": "0363100012085956"
+  },
+  "469327701": {
+   "pand": "0363100012180316",
+   "at": [
+    4.8952995,
+    52.3723195
+   ],
+   "addr": "Pijlsteeg 31",
+   "name": "Wynand Fockink",
+   "was": "0363100012165293"
+  },
+  "483553118": {
+   "pand": "0363100012157890",
+   "at": [
+    4.8816882,
+    52.3541606
+   ],
+   "addr": "Van Baerlestraat 85",
+   "name": "Gall & Gall",
+   "was": "0363100012233447"
+  },
+  "907877869": {
+   "pand": "0362100001077214",
+   "at": [
+    4.8553101,
+    52.298895
+   ],
+   "addr": "Keizer Karelplein 12",
+   "name": "Van Rietschoten Tweewielers",
+   "was": "0362100001077210"
+  },
+  "915619302": {
+   "pand": "0363100012236639",
+   "at": [
+    4.8645152,
+    52.3616091
+   ],
+   "addr": "Jan Pieter Heijestraat 154-160",
+   "name": "Wiel tot wiel tweewielers",
+   "was": "0363100012159905"
+  },
+  "1223236804": {
+   "pand": "0363100012176125",
+   "at": [
+    4.890004,
+    52.3809975
+   ],
+   "addr": "Haarlemmerstraat 131",
+   "name": "Shop 30",
+   "was": "0363100012169278"
+  },
+  "1427417003": {
+   "pand": "0363100012173453",
+   "at": [
+    4.8825531,
+    52.3646173
+   ],
+   "addr": "Leidseplein 14",
+   "name": "De Waard",
+   "was": "0363100012173452"
+  },
+  "1513706947": {
+   "pand": "0363100012243817",
+   "at": [
+    4.9263393,
+    52.368016
+   ],
+   "addr": "Czaar Peterstraat 2",
+   "name": "Mediq Apotheek Czaar Peter",
+   "was": "0363100012238656"
+  },
+  "1552005229": {
+   "pand": "0363100012178324",
+   "at": [
+    4.8963605,
+    52.3772941
+   ],
+   "addr": "Nieuwendijk 70",
+   "name": "McDonald's",
+   "was": "0363100012170951"
+  },
+  "1686808194": {
+   "pand": "0363100012160253",
+   "at": [
+    4.8637677,
+    52.3627562
+   ],
+   "addr": "Jan Pieter Heijestraat 112",
+   "name": "Aziatische supermarket (slagerij)Arzu",
+   "was": "0363100012165487"
+  },
+  "2452226913": {
+   "pand": "0363100012160871",
+   "at": [
+    4.8665354,
+    52.3658512
+   ],
+   "addr": "Kinkerstraat 208",
+   "name": "Etos",
+   "was": "0363100012233589"
+  },
+  "2503783599": {
+   "pand": "0363100012148010",
+   "at": [
+    4.8822169,
+    52.3522338
+   ],
+   "addr": "Gerard Terborgstraat 46",
+   "name": "Apotheek Oud Zuid",
+   "was": "w277117928"
+  },
+  "2721519386": {
+   "pand": "0363100012179609",
+   "at": [
+    4.8948624,
+    52.3786271
+   ],
+   "addr": "Nieuwendijk 12-H",
+   "name": "",
+   "was": "0363100012179605"
+  },
+  "2721722595": {
+   "pand": "0363100012179219",
+   "at": [
+    4.8935756,
+    52.3741638
+   ],
+   "addr": "Zoutsteeg 13",
+   "name": "Alien Visitors",
+   "was": "0363100012179184"
+  },
+  "2721722609": {
+   "pand": "0363100012179187",
+   "at": [
+    4.8936043,
+    52.3742268
+   ],
+   "addr": "Zoutsteeg 14",
+   "name": "Kadinsky",
+   "was": "0363100012179184"
+  },
+  "2721722776": {
+   "pand": "0363100012175389",
+   "at": [
+    4.8925391,
+    52.3736202
+   ],
+   "addr": "Nieuwendijk 226",
+   "name": "Cheese & More",
+   "was": "0363100012175387"
+  },
+  "2721771402": {
+   "pand": "0363100012170991",
+   "at": [
+    4.8949539,
+    52.3756795
+   ],
+   "addr": "Nieuwendijk 150",
+   "name": "Just in Case",
+   "was": "0363100012170992"
+  },
+  "2721771428": {
+   "pand": "0363100012179704",
+   "at": [
+    4.8948552,
+    52.3753106
+   ],
+   "addr": "Nieuwendijk 165",
+   "name": "Candle Palace",
+   "was": "0363100012179703"
+  },
+  "2724283838": {
+   "pand": "0363100012252020",
+   "at": [
+    4.896411,
+    52.3739662
+   ],
+   "addr": "Warmoesstraat 129",
+   "name": "Belushi's Amsterdam",
+   "was": "0363100012171802"
+  },
+  "2725878856": {
+   "pand": "0363100012178854",
+   "at": [
+    4.896504,
+    52.3656556
+   ],
+   "addr": "Rembrandtplein 24",
+   "name": "Coffeeshop Smokey",
+   "was": "0363100012178856"
+  },
+  "2745437787": {
+   "pand": "w1088839242",
+   "at": [
+    4.8948426,
+    52.384482
+   ],
+   "addr": "IJdok 47",
+   "name": "Amsterdam Bike Rent",
+   "was": "w1088839241"
+  },
+  "2801441273": {
+   "pand": "0384100000000379",
+   "at": [
+    4.9556063,
+    52.3292053
+   ],
+   "addr": "Dalsteindreef 2036",
+   "name": "Het Zwarte Fietsenplan",
+   "was": "w55118308"
+  },
+  "2817516177": {
+   "pand": "0363100012159394",
+   "at": [
+    4.8907923,
+    52.3551881
+   ],
+   "addr": "Albert Cuypstraat 79-H;81-H",
+   "name": "Kruithof Souvenirs",
+   "was": "0363100012153779"
+  },
+  "2818885926": {
+   "pand": "w985991440",
+   "at": [
+    4.8730292,
+    52.3363458
+   ],
+   "addr": "Gustav Mahlerplein 118",
+   "name": "Het zwarte fietsenplan",
+   "was": "w985991438"
+  },
+  "2818887029": {
+   "pand": "w985991440",
+   "at": [
+    4.872986,
+    52.3362737
+   ],
+   "addr": "Gustav Mahlerplein 222",
+   "name": "Limon",
+   "was": "w985991438"
+  },
+  "2827539555": {
+   "pand": "0363100012156651",
+   "at": [
+    4.9319849,
+    52.3633527
+   ],
+   "addr": "Javastraat 6-H",
+   "name": "HAQ's International",
+   "was": "0363100012159398"
+  },
+  "2830048763": {
+   "pand": "0363100012135573",
+   "at": [
+    4.939769,
+    52.3630498
+   ],
+   "addr": "Molukkenstraat 75-H",
+   "name": "Kruidvat",
+   "was": "0363100012074320"
+  },
+  "2830049967": {
+   "pand": "0363100012094386",
+   "at": [
+    4.9397705,
+    52.3628971
+   ],
+   "addr": "Molukkenstraat 81",
+   "name": "Molukken Apotheek",
+   "was": "0363100012130593"
+  },
+  "2842392093": {
+   "pand": "0363100012115635",
+   "at": [
+    4.990283,
+    52.3585654
+   ],
+   "addr": "IJburglaan 653",
+   "name": "Bakker Jongejans",
+   "was": null
+  },
+  "2847285245": {
+   "pand": "w280657737",
+   "at": [
+    4.9167827,
+    52.4077294
+   ],
+   "addr": "Bezaanjachtplein 237",
+   "name": "Elmo's",
+   "was": "0363100012239468"
+  },
+  "2848272529": {
+   "pand": "w280779906",
+   "at": [
+    4.9546789,
+    52.3922147
+   ],
+   "addr": "Waterlandplein 256",
+   "name": "Toko Joyce",
+   "was": "w280780463"
+  },
+  "2848272744": {
+   "pand": "w1228651349",
+   "at": [
+    4.9549173,
+    52.3925866
+   ],
+   "addr": "Waterlandplein 266",
+   "name": "De Lekkere Dingen Bakker",
+   "was": "w280779906"
+  },
+  "2848272814": {
+   "pand": "w1228651349",
+   "at": [
+    4.9547045,
+    52.3926512
+   ],
+   "addr": "Waterlandplein 272",
+   "name": "Dunya Design Cadeaushop",
+   "was": "w280779906"
+  },
+  "2857695585": {
+   "pand": "0363100012173561",
+   "at": [
+    4.8837078,
+    52.3689543
+   ],
+   "addr": "Runstraat 12-14",
+   "name": "De Doffer",
+   "was": "0363100012253905"
+  },
+  "2862569235": {
+   "pand": "w282331370",
+   "at": [
+    4.9774797,
+    52.3158723
+   ],
+   "addr": "Karspeldreef 1253",
+   "name": "De Lekkere Dingen Bakker",
+   "was": "w46879578"
+  },
+  "2862571952": {
+   "pand": "passage:w282332320:1",
+   "at": [
+    4.9773697,
+    52.321483
+   ],
+   "addr": "Grubbehoeve 40",
+   "name": "Melly The Barber",
+   "was": "w1486478941"
+  },
+  "2874255139": {
+   "pand": "w1237824805",
+   "at": [
+    4.9130679,
+    52.4296881
+   ],
+   "addr": "Burgemeester Postweg 2B",
+   "name": "Benu",
+   "was": "w1237824800"
+  },
+  "2937809206": {
+   "pand": "0363100012179477",
+   "at": [
+    4.8934096,
+    52.3692918
+   ],
+   "addr": "Grimburgwal 2",
+   "name": "Printed In Space",
+   "was": "0363100012179474"
+  },
+  "4135836393": {
+   "pand": "0363100012180168",
+   "at": [
+    4.895125,
+    52.3761386
+   ],
+   "addr": "Kolksteeg 3",
+   "name": "Aura",
+   "was": "0363100012179973"
+  },
+  "4212536387": {
+   "pand": "0363100012178325",
+   "at": [
+    4.8973642,
+    52.3768399
+   ],
+   "addr": "Haringpakkerssteeg 2-4",
+   "name": "Phone Point",
+   "was": "0363100012170964"
+  },
+  "4315507754": {
+   "pand": "0363100012167914",
+   "at": [
+    4.8946845,
+    52.3721642
+   ],
+   "addr": "Damstraat 20",
+   "name": "Damstraat Rentabike",
+   "was": "0363100012167915"
+  },
+  "4453950325": {
+   "pand": "r14382490",
+   "at": [
+    4.8901984,
+    52.3728285
+   ],
+   "addr": "Nieuwezijds Voorburgwal 226",
+   "name": "Albert Heijn",
+   "was": "w1080954285"
+  },
+  "4563246668": {
+   "pand": "passage:w1241683740:0",
+   "at": [
+    4.8928035,
+    52.3395395
+   ],
+   "addr": "Europaboulevard 19",
+   "name": "Dirk",
+   "was": "w1241683741"
+  },
+  "4563246669": {
+   "pand": "passage:w1241683740:0",
+   "at": [
+    4.8928004,
+    52.3395559
+   ],
+   "addr": "Europaboulevard 17",
+   "name": "Action",
+   "was": "w1241683741"
+  },
+  "4796173322": {
+   "pand": "0363100012166730",
+   "at": [
+    4.8646424,
+    52.362032
+   ],
+   "addr": "Jan Pieter Heijestraat 131",
+   "name": "Warung Celebes",
+   "was": "0363100012166256"
+  },
+  "4796174821": {
+   "pand": "0363100012166730",
+   "at": [
+    4.8646424,
+    52.362032
+   ],
+   "addr": "Jan Pieter Heijestraat 131",
+   "name": "Tony Hairstyling",
+   "was": "0363100012156754"
+  },
+  "4811918679": {
+   "pand": "passage:NL.IMBAG.Pand.0363100012243127:0",
+   "at": [
+    4.857109,
+    52.3445879
+   ],
+   "addr": "Stadionplein 115",
+   "name": "Albert Heijn",
+   "was": "passage:w488909416:0"
+  },
+  "4858678367": {
+   "pand": "0363100012151931",
+   "at": [
+    4.8307128,
+    52.3797361
+   ],
+   "addr": "Burgemeester De Vlugtlaan 81-83",
+   "name": "Konak",
+   "was": "0363100012125073"
+  },
+  "5060048556": {
+   "pand": "0363100012169212",
+   "at": [
+    4.8975792,
+    52.3653455
+   ],
+   "addr": "Utrechtsestraat 18",
+   "name": "Bar Bitterbal",
+   "was": "0363100012169159"
+  },
+  "5607562023": {
+   "pand": "0363100012235998",
+   "at": [
+    4.8731981,
+    52.366114
+   ],
+   "addr": "Bilderdijkstraat 205",
+   "name": "Café de Vos",
+   "was": "0363100012167450"
+  },
+  "6605849672": {
+   "pand": "w282331893",
+   "at": [
+    4.9780272,
+    52.3160687
+   ],
+   "addr": "Karspeldreef 1313",
+   "name": "Primera",
+   "was": "w46879578"
+  },
+  "6605849673": {
+   "pand": "w282332443",
+   "at": [
+    4.976467,
+    52.3158075
+   ],
+   "addr": "Kikkensteinstraat 8",
+   "name": "Action",
+   "was": "w46879578"
+  },
+  "10799554205": {
+   "pand": "0363100012155444",
+   "at": [
+    4.8729561,
+    52.3743277
+   ],
+   "addr": "Hugo de Grootplein 9",
+   "name": "Two Chefs Bar",
+   "was": "0363100012085345"
+  },
+  "14177326405": {
+   "pand": "0363100012139182",
+   "at": [
+    4.8874538,
+    52.3505453
+   ],
+   "addr": "Cornelis Trooststraat 19-23",
+   "name": "Amsterdam's Scooter City",
+   "was": "0363100012067572"
+  }
+ }
+}

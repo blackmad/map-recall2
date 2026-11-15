@@ -7,7 +7,7 @@
  * `cartoon` (flat colour, thick outlines). Browser only.
  */
 import { hashSeed } from './wallBays.js';
-import { PUI, retailGroundOn } from './retailTemplates.js';
+import { PUI, RETAIL_HELD_KINDS, retailGroundOn } from './retailTemplates.js';
 import { LOOK_VARIANTS, OUTLINE_INK, PALETTES, periodForYear, type Period, type TexturedLook } from './look/palette.js';
 
 export const PX_PER_M = 100;
@@ -619,7 +619,7 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
     // wall only
   } else if (v.family === 'ribbon' || v.family === 'curtain') {
     if (!ground) ribbon(p, w, v.family === 'curtain' ? 8 : v.kind === 'attic' ? 120 : 70, v.family === 'curtain' ? h - 24 : v.kind === 'attic' ? 90 : 140);
-    else if (isShop) { paintedGround(p, w, h); if (retailGroundOn()) puiAt(p, w, h, v.kind); else if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
+    else if (isShop) { paintedGround(p, w, h); if (retailGroundOn() && !RETAIL_HELD_KINDS.includes(v.kind)) puiAt(p, w, h, v.kind); else if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else { windowAt(p, w * 0.2, 80, 140, 140, { ...v, shape: 'rect', archetype: 'modern' }); if (v.kind === 'groundDoor') doorAt(p, w * 0.62, h - 24, v); }
   } else if (ground) {
     if (v.groundAssembly) {
@@ -631,7 +631,7 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
       const g=bayWindowGeometry(v,70,240,p.look);
       for(const axis of (v.kind==='groundDoor'?[.17,.83]:[.17,.5,.83])){const ww=w*(axis===.5?.28:.145);windowAt(p,w*axis-ww/2,g.y,ww,g.height,{...v,sash:axis===.5?'paired-transom':'transom'});}
       if(v.kind==='groundDoor')quietDoorAt(p,v,h-24);
-    } else if (isShop) { paintedGround(p, w, h); if (retailGroundOn()) puiAt(p, w, h, v.kind); else if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
+    } else if (isShop) { paintedGround(p, w, h); if (retailGroundOn() && !RETAIL_HELD_KINDS.includes(v.kind)) puiAt(p, w, h, v.kind); else if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else if (v.entranceAssembly === 'raised-plain') {
       const g=bayDoorWindowGeometry(v,p.look), axes=v.kind==='groundDoor'?[.20,.47]:[.20,.47,.80];
       // A quiet raised residence: paired ground glazing and its side entrance share the upper axes.
@@ -688,7 +688,7 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
 
 /** One tileable bay in colour plus its tint mask, drawn once per variant and cached. */
 export function bayTextures(v: BayVariant, brick: CanvasImageSource, look: Look): { colour: HTMLCanvasElement; mask: HTMLCanvasElement } {
-  const key = variantKey(v, look) + (retailGroundOn() && (SHOP_KINDS as readonly string[]).includes(v.kind) ? '|pui' : ''), hit = cache.get(key);
+  const key = variantKey(v, look) + (retailGroundOn() && (SHOP_KINDS as readonly string[]).includes(v.kind) && !RETAIL_HELD_KINDS.includes(v.kind) ? '|pui' : ''), hit = cache.get(key);
   if (hit) return hit;
   const w = BAY_PX, h = v.kind === 'upper' || v.kind === 'upperTall' || v.kind === 'attic' || v.kind === 'plain' ? STOREY_PX : GROUND_PX;
   const make = (pass: Pass) => {
