@@ -1,118 +1,324 @@
 {
  "schemaVersion": 1,
  "pandId": "0363100012155794",
+ "address": "Kinkerstraat 90",
  "design": {
   "fronts": [
    {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Kinkerstraat",
     "storeys": 4,
     "bays": 3,
-    "souterrain": false,
+    "cornice": "heavy",
+    "windows": "t-window",
+    "windowHeights": [
+     0.7,
+     0.72,
+     0.72,
+     0.7
+    ],
     "gable": "cornice",
-    "readBalconies": [],
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerBody": "stone",
+    "dormerSize": {
+     "sill": 0.4,
+     "rise": 1.3,
+     "setback": 0.3
+    },
+    "doorBay": null,
+    "basement": "none",
+    "hoist": false,
+    "windowHead": {
+     "kind": "segmental",
+     "tympanum": "stone",
+     "storeys": [
+      1,
+      2
+     ]
+    },
+    "shopfront": {
+     "colour": "white",
+     "fascia": true,
+     "name": "E-cigarette store",
+     "sign": {
+      "text": "E-cigarette store",
+      "textColour": "white",
+      "mount": "fascia",
+      "background": "#2e3236"
+     },
+     "entrance": "right",
+     "residentialDoor": {
+      "side": "left",
+      "colour": "white"
+     },
+     "glazing": "split",
+     "stallriser": "low",
+     "evidence": "strip.jpg pand 9 (zoom): white pui, \"E-cigarette store\" in white and blue over the window, \"Mr-Joy\" painted on the panel below; no OSM node"
+    },
+    "roofStorey": "mansard",
     "readDormers": {
      "count": 1,
      "kind": "gabled"
-    },
-    "readBayWindow": [],
-    "readDoorSurround": false,
-    "rowHeads": [
-     "flat",
-     "relieving",
-     "relieving",
-     "flat"
-    ]
+    }
    }
   ],
+  "roof": {
+   "material": "slate",
+   "source": "front",
+   "rise": 0.25,
+   "pitchDeg": 45,
+   "evidence": "strips 2024-11-29/2024-12-11: over the cornice only the dormers stand against the sky, no roof face shows; PDOK orthophoto 2024: flat roofs (terraces, bitumen) behind a ~1 m front slope on Kinkerstraat 1A-5, 4-20, 55-63; a low attic behind the cornice instead of the 70 degree attic storey"
+  },
   "palette": {
+   "brick": "#6e4238",
+   "frame": "#b8b6a4",
+   "door": "black",
+   "stone": "#b8b9a7",
+   "cornice": "#b4b69e",
    "wallMaterial": "brick"
-  }
+  },
+  "notes": [
+   "type kinker-1890-plain-brick: crown pediment-dormer, palette red-brown + measured brick #926e4b",
+   "type deviations: windowHead {\"kind\":\"segmental\",\"storeys\":[1,2],\"tympanum\":\"stone\"} (type: unset)",
+   "house-rows kinkerstraat-86-110: series kinkerstraat-86-110/s3"
+  ]
  },
  "provenance": {
+  "fronts/0/partyClip": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/id": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/street": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
   "fronts/0/storeys": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
   "fronts/0/bays": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "fronts/0/souterrain": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
+  "fronts/0/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
+  },
+  "fronts/0/windows": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
+   "at": "2026-11-14"
+  },
+  "fronts/0/windowHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
   },
   "fronts/0/gable": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "fronts/0/readBalconies": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
+  "fronts/0/dormers": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: kind: face-intent (scripts/block-face/faces/kinker-86-110/intent.json); dormers: face-intent, kind face-intent",
+   "at": "2026-11-14"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: kind: face-intent (scripts/block-face/faces/kinker-86-110/intent.json); dormers: face-intent, kind face-intent",
+   "at": "2026-11-14"
+  },
+  "fronts/0/dormerBody": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/dormerSize": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/doorBay": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/basement": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/hoist": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/windowHead": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json; storeys 3 from 0363100012236213 reading (multi, half weight) heads [\"flat\",\"segmental\",\"segmental\",\"flat\"] surround jack-blocks; 0363100012155794 reading heads [\"flat\",\"relieving\",\"relieving\",\"flat\"] surround keystone; face: strip.jpg pand 9 (zoom): 3 axes on 4.2 m, segmental heads with ornamented tympana on storeys 1-2, flat heads on storey 3, pediment dormer",
+   "at": "2026-11-14"
+  },
+  "fronts/0/shopfront": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/material": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/source": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/rise": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/pitchDeg": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/evidence": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
+   "at": "2026-11-14"
+  },
+  "palette/frame": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/door": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/stone": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "notes": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "facts/pui": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/roofStorey": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: kind: face-intent (scripts/block-face/faces/kinker-86-110/intent.json); dormers: face-intent, kind face-intent",
    "at": "2026-11-14"
   },
   "fronts/0/readDormers": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
-   "at": "2026-11-14"
-  },
-  "fronts/0/readBayWindow": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
-   "at": "2026-11-14"
-  },
-  "fronts/0/readDoorSurround": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: kind: face-intent (scripts/block-face/faces/kinker-86-110/intent.json); dormers: face-intent, kind face-intent",
    "at": "2026-11-14"
   },
   "palette/wallMaterial": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "facts/pui": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
+  "facts/wallFamily": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "facts/groundKind": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
-   "at": "2026-11-14"
-  },
-  "fronts/0/rowHeads": {
-   "source": "vision-judge",
-   "confidence": 0.35,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012155794.jpg",
+  "facts/wallJudged": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   }
- },
- "facts": {
-  "pui": "shop",
-  "groundKind": "shop"
  },
  "schemaLimits": [
   {
-   "component": "window",
-   "what": "first- and second-floor windows sit under brick arches whose tympana are filled with decorative brick or tile infill"
+   "component": "facade",
+   "what": "iron wall anchors between the windows"
   },
   {
-   "component": "dormer",
-   "what": "a pedimented dormer with a hoist beam stands on the roof over the middle bay"
+   "component": "facade",
+   "what": "carved ornament in the tympana drawn as plain stone fills"
   }
- ]
+ ],
+ "facts": {
+  "pui": "shop",
+  "wallFamily": "red-brown",
+  "wallJudged": {
+   "v": 1,
+   "source": "judged",
+   "family": "red-brown-brick",
+   "hex": "#6e4238",
+   "by": "words",
+   "why": "house-rows series kinkerstraat-86-110/s3: face-intent (scripts/block-face/faces/kinker-86-110/intent.json)",
+   "ruling": "user 2026-11-14: judge colour from neighbours and brick knowledge, not exact samples",
+   "year": 1893
+  }
+ }
 }

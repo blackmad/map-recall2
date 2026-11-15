@@ -14,6 +14,8 @@
     "house:specs": "node --import tsx scripts/house-specs/build-house-specs.ts",
     "house:stage": "node --import tsx scripts/house-specs/stage.ts",
     "house:row-wall-variant": "node --import tsx scripts/block-face/row-wall-variant.ts",
+    "house:rows-publish": "node --import tsx scripts/house-specs/rows/publish-rows.ts",
+    "house:batch1-restore": "node --import tsx scripts/house-specs/rows/batch1-restore.ts",
     "house:rows": "node --import tsx scripts/house-specs/rows/house-rows.ts",
     "house:publish": "node --max-old-space-size=8192 --import tsx scripts/house-specs/publish.ts",
     "test:house-publish": "node --import tsx --test src/canalRecall/houseSpec/allow.test.ts src/canalRecall/houseSpec/staged.test.ts src/canalRecall/houseSpec/publishPlan.test.ts src/canalRecall/world/tileCovers.test.ts",

@@ -1,6 +1,17 @@
 # Canal Recall — what is built
 
+## Bridges hold their level end to end: `wayEnds` (2026-11-15)
 
+- After `bankClimb`, four crossings still dipped more than 1 m. Under viaducts the elevation model is filtered over tens of metres into a gentle sag, and a 4 % bank climb never starts up it. Haarlemmer Houttuinen 7376117 also sat under the flat register footprint BRU0095, which lifts nothing.
+- Way decks now run on to the way's own end nodes where the relief sags more than 1 m under the line between them (`WAY_END_DIP_M`, at most 160 m past the water). That stretch is lifted whole; only OSM streets crossing under it open ±10 m hole windows. A flat-only register claim takes an `overFlat` deck that lifts the surface at the footprint's width and lets the footprint draw the bridge.
+- The rule is gated on the probe's own crossing-dip measure (`crossingDipOn`, every bundle member): the ungated cut changed 150 decks and sank road at 28 deck ends. Gated, 4 decks change. `?wayEnds=0` is the before (byte-identical).
+- Dips over 1 m: 4 → 0 (Haarlemmer Houttuinen 2.87, Amsterdamse Baan 424283770 2.51, Van der Madeweg 1251743255 1.33 → 0; Schinkelhavenstraat 38282903 1.06 → 0.36). Over 0.3 m: 19 → 16. Pinned in `BANK_DIPS` (`bridge-feedback-pins.ts`) with live before checks.
+- `probe-hole-junctions` now stops short of streets under the deck, as the pins do: its old 17 decks / 178 vertices were really 8 / 64 (Lelylaan 7382981, 7382638 and Wageningendreef were only streets under the deck). Those 8 remain; see TODO.
+- Integration note: the crossing-grade push 80663a380 carried only its notes and allow-list shrink, because the shared integrator worktree had been switched to another branch. `bankClimb` (3107a35c2) reaches main with this merge.
+
+## 2026-11-15 — First row published; batch 1 off
+
+Kinkerstraat 86–110 is the first row published under the rows plan. The install needed two compile changes. A row's wall-only slab is accepted as its pand's FOOT, and nothing else may replace geometry. The full compile now keeps the published string table: restoring 285 fronts had dropped 60 strings, which shifted the table and re-encoded 595 unchanged cells. The published-rows file carries only signed-off rows. The 128 Haarlemmerdijk lane-1 records were dropped, never having been approved.
 ## 2026-11-14 — Rows round 1 blocking narrowed; corner chunk becomes a row wall
 
 The fresh zoom reviewers failed both rows on ornament: voussoir splay, friezes, dormer richness. The review session ruled that only what reads from the photo pose blocks (same houses, roof line from the rule-10 pair, colour family, amount of white, nothing invented). Ornament goes on the sheet as known differences, counted by how many fronts share each. It also ruled that the photo strip is perspective, so roof height is judged on the rule-10 pair only.
@@ -32,15 +43,6 @@ The worst thing in frame was a blank slab at Kinkerstraat 86–88. It was not a 
 - `puiAt` lost its fixed pale frame.
 - Floating door frames are gone.
 - A `house:frames --lists` bug made per-list flag comparisons byte-identical; it is fixed.
-
-## Bridges hold their level end to end: `wayEnds` (2026-11-15)
-
-- After `bankClimb`, four crossings still dipped more than 1 m. Under viaducts the elevation model is filtered over tens of metres into a gentle sag, and a 4 % bank climb never starts up it. Haarlemmer Houttuinen 7376117 also sat under the flat register footprint BRU0095, which lifts nothing.
-- Way decks now run on to the way's own end nodes where the relief sags more than 1 m under the line between them (`WAY_END_DIP_M`, at most 160 m past the water). That stretch is lifted whole; only OSM streets crossing under it open ±10 m hole windows. A flat-only register claim takes an `overFlat` deck that lifts the surface at the footprint's width and lets the footprint draw the bridge.
-- The rule is gated on the probe's own crossing-dip measure (`crossingDipOn`, every bundle member): the ungated cut changed 150 decks and sank road at 28 deck ends. Gated, 4 decks change. `?wayEnds=0` is the before (byte-identical).
-- Dips over 1 m: 4 → 0 (Haarlemmer Houttuinen 2.87, Amsterdamse Baan 424283770 2.51, Van der Madeweg 1251743255 1.33 → 0; Schinkelhavenstraat 38282903 1.06 → 0.36). Over 0.3 m: 19 → 16. Pinned in `BANK_DIPS` (`bridge-feedback-pins.ts`) with live before checks.
-- `probe-hole-junctions` now stops short of streets under the deck, as the pins do: its old 17 decks / 178 vertices were really 8 / 64 (Lelylaan 7382981, 7382638 and Wageningendreef were only streets under the deck). Those 8 remain; see TODO.
-- Integration note: the crossing-grade push 80663a380 carried only its notes and allow-list shrink, because the shared integrator worktree had been switched to another branch. `bankClimb` (3107a35c2) reaches main with this merge.
 
 ## Crossings hold their grade (2026-11-14)
 

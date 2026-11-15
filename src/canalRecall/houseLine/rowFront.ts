@@ -467,6 +467,11 @@ export const ROW_WALL_SUFFIX = '#row-wall';
 /** A row wall slab's depth behind its street face, and how far its back corners are pulled in along the face (m): its ends
  *  slant into the building, never in the plane of the chunk's side wall at a corner. */
 export const ROW_WALL_SLAB = { depthM: 0.4, taperM: 0.15 } as const;
+/** A feature withRowFront turned into a row wall slab (its own `#row-wall` id and the chunk it stands in front of). */
+export function isRowWallSlab(f: { properties?: Record<string, unknown> | null }): boolean {
+  const p = f.properties;
+  return !!p && typeof p.rowWallOnly === 'string' && String(p.id ?? '').endsWith(ROW_WALL_SUFFIX);
+}
 
 export function rowWallOnlyOf(v: unknown): RowWallOnly | null {
   const w = v as { chunk?: unknown; edge?: unknown } | null;
@@ -488,7 +493,9 @@ export function rowWallSlab(edge: RowWallOnly['edge'], geometry: unknown): { typ
   let nx = -uy, ny = ux;
   if (nx * mx + ny * my < 0) { nx = -nx; ny = -ny; }
   const { depthM: d, taperM: t } = ROW_WALL_SLAB;
-  const at = (x: number, y: number) => [lng0 + x / kx, lat0 + y / ky];
+  // On the world cells' 1e-7 degree grid (cellFormat.ts FOOT): the compile bakes the slab as the pand's footprint.
+  const grid = (v: number) => Math.round(v * 1e7) / 1e7;
+  const at = (x: number, y: number) => [grid(lng0 + x / kx), grid(lat0 + y / ky)];
   const a = at(0, 0), b = at(ex, ey), c = at(ex - ux * t + nx * d, ey - uy * t + ny * d), e = at(ux * t + nx * d, uy * t + ny * d);
   return { type: 'Polygon', coordinates: [[a, b, c, e, a]] };
 }

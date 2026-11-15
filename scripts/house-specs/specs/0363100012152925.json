@@ -1,115 +1,332 @@
 {
  "schemaVersion": 1,
  "pandId": "0363100012152925",
+ "address": "Kinkerstraat 102",
  "design": {
   "fronts": [
    {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Kinkerstraat",
     "storeys": 4,
     "bays": 3,
-    "windowHead": {
-     "kind": "flat"
-    },
-    "souterrain": false,
+    "cornice": "heavy",
+    "windows": "t-window",
+    "windowHeights": [
+     0.7,
+     0.72,
+     0.72,
+     0.7
+    ],
     "gable": "cornice",
-    "readBalconies": [],
+    "dormers": 1,
+    "dormerStyle": "plain",
+    "dormerBody": "stone",
+    "dormerSize": {
+     "sill": 0.4,
+     "rise": 1.3,
+     "setback": 0.3
+    },
+    "doorBay": null,
+    "basement": "none",
+    "hoist": true,
+    "bands": "painted",
+    "bandLines": [
+     "head"
+    ],
+    "bandHeights": {
+     "head": 0.3
+    },
+    "shopfront": {
+     "colour": "white",
+     "fascia": true,
+     "name": "Massage & Acupunctuur",
+     "sign": {
+      "text": "Massage & Acupunctuur",
+      "textColour": "#3c9a46",
+      "mount": "fascia",
+      "background": "#f0eee4",
+      "span": 0.95
+     },
+     "entrance": "right",
+     "glazing": "single",
+     "stallriser": "low",
+     "evidence": "strip.jpg pand 4 (zoom): white pui, green \"Massage & Acupunctuur\" lettering on the fascia, brown louvred panel over the window, glazed door right; no OSM node"
+    },
+    "roofStorey": "mansard",
     "readDormers": {
      "count": 1,
-     "kind": "gabled"
-    },
-    "readBayWindow": [],
-    "readDoorSurround": false
+     "kind": "plain"
+    }
    }
   ],
+  "roof": {
+   "material": "slate",
+   "source": "front",
+   "rise": 0.25,
+   "pitchDeg": 45,
+   "evidence": "strips 2024-11-29/2024-12-11: over the cornice only the dormers stand against the sky, no roof face shows; PDOK orthophoto 2024: flat roofs (terraces, bitumen) behind a ~1 m front slope on Kinkerstraat 1A-5, 4-20, 55-63; a low attic behind the cornice instead of the 70 degree attic storey"
+  },
   "palette": {
+   "brick": "#6e4238",
+   "frame": "#b8b6a4",
+   "door": "black",
+   "stone": "#b8b9a7",
+   "cornice": "#b4b69e",
    "wallMaterial": "brick"
-  }
+  },
+  "notes": [
+   "type kinker-1890-plain-brick: crown pediment-dormer, palette red-brown + measured brick #817057",
+   "type deviations: bands \"painted\" (type: unset); bandLines [\"head\"] (type: unset); bandHeights {\"head\":0.3} (type: unset)",
+   "house-rows kinkerstraat-86-110: series kinkerstraat-86-110/s1"
+  ]
  },
  "provenance": {
+  "fronts/0/partyClip": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/id": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/street": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
   "fronts/0/storeys": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
   "fronts/0/bays": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "fronts/0/windowHead": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
+  "fronts/0/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "fronts/0/souterrain": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
+  "fronts/0/windows": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
+  },
+  "fronts/0/windowHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
   },
   "fronts/0/gable": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "fronts/0/readBalconies": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
+  "fronts/0/dormers": {
+   "source": "reviewed",
+   "confidence": 0.9,
+   "ref": "house-rows: integrator, blind review 6 (sheet photo) (2026-11-14): 102, 104, 106-108: tall flat-topped white hoist dormers, not pointed pediments; the face's pediment dormer style needs correcting",
+   "at": "2026-11-14"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "reviewed",
+   "confidence": 0.9,
+   "ref": "house-rows: integrator, blind review 6 (sheet photo) (2026-11-14): 102, 104, 106-108: tall flat-topped white hoist dormers, not pointed pediments; the face's pediment dormer style needs correcting",
+   "at": "2026-11-14"
+  },
+  "fronts/0/dormerBody": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/dormerSize": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/doorBay": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/basement": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/hoist": {
+   "source": "reviewed",
+   "confidence": 0.9,
+   "ref": "house-rows: integrator, blind review 6 (sheet photo) (2026-11-14): 102, 104, 106-108: tall flat-topped white hoist dormers, not pointed pediments; the face's pediment dormer style needs correcting",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bands": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bandLines": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
+   "at": "2026-11-14"
+  },
+  "fronts/0/bandHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
+   "at": "2026-11-14"
+  },
+  "fronts/0/shopfront": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/material": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/source": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/rise": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/pitchDeg": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/evidence": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
+   "at": "2026-11-14"
+  },
+  "palette/frame": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/door": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/stone": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "notes": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "facts/pui": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/roofStorey": {
+   "source": "reviewed",
+   "confidence": 0.9,
+   "ref": "house-rows: integrator, blind review 6 (sheet photo) (2026-11-14): 102, 104, 106-108: tall flat-topped white hoist dormers, not pointed pediments; the face's pediment dormer style needs correcting",
    "at": "2026-11-14"
   },
   "fronts/0/readDormers": {
-   "source": "vision-judge",
-   "confidence": 0.35,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
-   "at": "2026-11-14"
-  },
-  "fronts/0/readBayWindow": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
-   "at": "2026-11-14"
-  },
-  "fronts/0/readDoorSurround": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
+   "source": "reviewed",
+   "confidence": 0.9,
+   "ref": "house-rows: integrator, blind review 6 (sheet photo) (2026-11-14): 102, 104, 106-108: tall flat-topped white hoist dormers, not pointed pediments; the face's pediment dormer style needs correcting",
    "at": "2026-11-14"
   },
   "palette/wallMaterial": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "facts/pui": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
+  "facts/wallFamily": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "facts/groundKind": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012152925.jpg",
+  "facts/wallJudged": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   }
- },
- "facts": {
-  "pui": "shop",
-  "groundKind": "shop"
  },
  "schemaLimits": [
   {
-   "component": "window",
-   "what": "each window head carries a row of alternating light stone blocks across the brick, like a cogged lintel"
+   "component": "facade",
+   "what": "the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)"
   },
   {
-   "component": "shopfront",
-   "what": "a tall ground storey whose upper half is a panel of small louvred boxes under the shop sign"
+   "component": "facade",
+   "what": "brown louvred timber panel filling the shop transom"
   }
- ]
+ ],
+ "facts": {
+  "pui": "shop",
+  "wallFamily": "red-brown",
+  "wallJudged": {
+   "v": 1,
+   "source": "judged",
+   "family": "red-brown-brick",
+   "hex": "#6e4238",
+   "by": "words",
+   "why": "house-rows series kinkerstraat-86-110/s1: face-intent (scripts/block-face/faces/kinker-86-110/intent.json)",
+   "ruling": "user 2026-11-14: judge colour from neighbours and brick knowledge, not exact samples",
+   "year": 1893
+  }
+ }
 }

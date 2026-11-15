@@ -1,104 +1,322 @@
 {
  "schemaVersion": 1,
  "pandId": "0363100012160809",
+ "address": "Kinkerstraat 100",
  "design": {
   "fronts": [
    {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Kinkerstraat",
     "storeys": 4,
     "bays": 3,
-    "windowHead": {
-     "kind": "flat"
-    },
-    "souterrain": false,
+    "cornice": "heavy",
+    "windows": "t-window",
+    "windowHeights": [
+     0.7,
+     0.72,
+     0.72,
+     0.7
+    ],
     "gable": "cornice",
-    "readBalconies": [],
+    "dormers": 1,
+    "dormerStyle": "plain",
+    "dormerBody": "stone",
+    "dormerSize": {
+     "sill": 0.4,
+     "rise": 1.3,
+     "setback": 0.3
+    },
+    "doorBay": null,
+    "basement": "none",
+    "hoist": false,
+    "shopfront": {
+     "colour": "#3a3532",
+     "fascia": true,
+     "name": "Swiss Juwelier",
+     "sign": {
+      "text": "Swiss Juwelier",
+      "textColour": "#c4232a",
+      "mount": "fascia",
+      "background": "#efece2"
+     },
+     "entrance": "left",
+     "residentialDoor": {
+      "side": "right",
+      "colour": "black"
+     },
+     "glazing": "split",
+     "stallriser": "low",
+     "fasciaColour": "#efece2",
+     "evidence": "strip.jpg pand 5 (zoom): white fascia with red \"Swiss\" and black \"JUWELIER\", graffiti on the shutter below; no OSM node"
+    },
+    "windowSurround": "block-dressings",
+    "roofStorey": "mansard",
     "readDormers": {
      "count": 1,
      "kind": "gabled"
-    },
-    "readBayWindow": []
+    }
    }
   ],
+  "roof": {
+   "material": "slate",
+   "source": "front",
+   "rise": 0.25,
+   "pitchDeg": 45,
+   "evidence": "strips 2024-11-29/2024-12-11: over the cornice only the dormers stand against the sky, no roof face shows; PDOK orthophoto 2024: flat roofs (terraces, bitumen) behind a ~1 m front slope on Kinkerstraat 1A-5, 4-20, 55-63; a low attic behind the cornice instead of the 70 degree attic storey"
+  },
   "palette": {
+   "brick": "#6e4238",
+   "frame": "#b8b6a4",
+   "door": "black",
+   "stone": "#b8b9a7",
+   "cornice": "#b4b69e",
    "wallMaterial": "brick"
-  }
+  },
+  "notes": [
+   "type kinker-1890-plain-brick: crown pediment-dormer, palette red-brown + measured brick #8c7a5d",
+   "type deviations: bands \"painted\" (type: unset); bandLines [\"head\"] (type: unset); bandHeights {\"head\":0.3} (type: unset)",
+   "house-rows kinkerstraat-86-110: series kinkerstraat-86-110/s1"
+  ]
  },
  "provenance": {
+  "fronts/0/partyClip": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/id": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/street": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
   "fronts/0/storeys": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
   "fronts/0/bays": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "fronts/0/windowHead": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
+  "fronts/0/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "fronts/0/souterrain": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
+  "fronts/0/windows": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
+  },
+  "fronts/0/windowHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
   },
   "fronts/0/gable": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "fronts/0/readBalconies": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
+  "fronts/0/dormers": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: 0363100012160809 reading: dormers gabled + gap: a wall dormer rising out of the front over the middle bay, with a small pediment and a finial; face: strip.jpg pand 5 (zoom): 3 axes, white blocked flat lintels, larger pediment dormer",
+   "at": "2026-11-14"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: 0363100012160809 reading: dormers gabled + gap: a wall dormer rising out of the front over the middle bay, with a small pediment and a finial; face: strip.jpg pand 5 (zoom): 3 axes, white blocked flat lintels, larger pediment dormer",
+   "at": "2026-11-14"
+  },
+  "fronts/0/dormerBody": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/dormerSize": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/doorBay": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/basement": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/hoist": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/shopfront": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/material": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/source": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/rise": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/pitchDeg": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "roof/evidence": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
+   "at": "2026-11-14"
+  },
+  "palette/frame": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/door": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/stone": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "palette/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "notes": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "facts/pui": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/kinker-86-110/strip.json",
+   "at": "2024-11-29"
+  },
+  "fronts/0/windowSurround": {
+   "source": "reviewed",
+   "confidence": 0.9,
+   "ref": "house-rows: integrator, sheet photo artifacts/house-rows/sheets/kinkerstraat-86-110/sheet.jpg (own look) (2026-11-14): 100: white block surrounds frame each whole window, jambs and head, on every upper storey; a front override, 100 stays in s1",
+   "at": "2026-11-14"
+  },
+  "fronts/0/roofStorey": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: 0363100012160809 reading: dormers gabled + gap: a wall dormer rising out of the front over the middle bay, with a small pediment and a finial; face: strip.jpg pand 5 (zoom): 3 axes, white blocked flat lintels, larger pediment dormer",
    "at": "2026-11-14"
   },
   "fronts/0/readDormers": {
-   "source": "vision-judge",
-   "confidence": 0.35,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
-   "at": "2026-11-14"
-  },
-  "fronts/0/readBayWindow": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: 0363100012160809 reading: dormers gabled + gap: a wall dormer rising out of the front over the middle bay, with a small pediment and a finial; face: strip.jpg pand 5 (zoom): 3 axes, white blocked flat lintels, larger pediment dormer",
    "at": "2026-11-14"
   },
   "palette/wallMaterial": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "facts/pui": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
+  "facts/wallFamily": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   },
-  "facts/groundKind": {
-   "source": "vision-judge",
-   "confidence": 0.7,
-   "ref": "artifacts/describer-d1/ring-20261114/cuts/0363100012160809.jpg",
+  "facts/wallJudged": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "house-rows: scripts/block-face/faces/kinker-86-110/intent.json",
    "at": "2026-11-14"
   }
- },
- "facts": {
-  "pui": "shop",
-  "groundKind": "shop"
  },
  "schemaLimits": [
   {
+   "component": "facade",
+   "what": "the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)"
+  },
+  {
+   "component": "facade",
+   "what": "graffiti roller shutter down over the shop"
+  },
+  {
    "component": "dormer",
-   "what": "a wall dormer rising out of the front over the middle bay, with a small pediment and a finial"
+   "what": "the top dormer is brick with a white frame and a small capped pediment; the kit dormer is all white (drawn as a white stepped dormer)"
   }
- ]
+ ],
+ "facts": {
+  "pui": "shop",
+  "wallFamily": "red-brown",
+  "wallJudged": {
+   "v": 1,
+   "source": "judged",
+   "family": "red-brown-brick",
+   "hex": "#6e4238",
+   "by": "words",
+   "why": "house-rows series kinkerstraat-86-110/s1: face-intent (scripts/block-face/faces/kinker-86-110/intent.json)",
+   "ruling": "user 2026-11-14: judge colour from neighbours and brick knowledge, not exact samples",
+   "year": 1893
+  }
+ }
 }

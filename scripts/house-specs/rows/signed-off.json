@@ -1,0 +1,9 @@
+{
+  "about": "Rows David has signed off (plan rule: he approves the first row of each kind). Only these publish (house:rows-publish) and only their staged specs replace batch-1 fronts (batch1-restore.ts); a staged row not listed stays off and its batch-1 fronts are restored. Add a row here, with the reference, when he OKs it.",
+  "rows": {
+    "kinkerstraat-86-110": { "by": "David", "ref": "#389 \"sign off, okay\"; review session \"this looks pretty good enough, keep going?\"", "at": "2026-11-15" }
+  },
+  "pending": {
+    "weteringschans-168096-171218": "asked in the review session 2026-11-15; restored with batch 1 until he OKs it"
+  }
+}

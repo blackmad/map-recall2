@@ -54,7 +54,9 @@ export function worldV1Enabled(search: string = typeof location !== 'undefined' 
     const params = new URLSearchParams(search), asked = params.get('world');
     // Lane 1 row fronts (`?rowFront=1`): the compiled cells were decorated without them, so the flag draws from the live
     // tiles, which the main thread decorates with the records (houseLine/rowFront.ts); `?world=v1` still forces the cells.
-    if (params.get('rowFront') === '1' && asked !== 'v1') return false;
+    // Since the round-1 install the cells bake the published rows (scripts/world/pipeline.ts), so `?rowFront=0` (every row
+    // off) also draws from the live tiles, which the main thread decorates without them.
+    if ((params.get('rowFront') === '1' || params.get('rowFront') === '0') && asked !== 'v1') return false;
     return !(asked === 'live' || asked === '0' || asked === 'off' || asked === 'tiles');
   } catch { return true; }
 }

@@ -4,7 +4,7 @@
 import '../../../scripts/world/useBrowserMath.js'; // first: the browser's Math.cos/sin (browserMath.ts)
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cellGlobalRef, chooseGlobalStrings, decodeGlobalStrings, encodeGlobalStrings, type Geometry, decodeCell, encodeCell, rawFeature, styledFeature, sameValue, Writer, Reader, StringTable, writeValue, readValue, WORLD_FORMAT_VERSION, type Cell, type CellBuilding } from './cellFormat.js';
+import { cellGlobalRef, chooseGlobalStrings, sharedStringList, decodeGlobalStrings, encodeGlobalStrings, type Geometry, decodeCell, encodeCell, rawFeature, styledFeature, sameValue, Writer, Reader, StringTable, writeValue, readValue, WORLD_FORMAT_VERSION, type Cell, type CellBuilding } from './cellFormat.js';
 import { buildingCell, cellOf, cellBounds, parseCellKey } from './cellGrid.js';
 import { readWorldIndex } from './worldCells.js';
 import { applyPolicy, areaM2, DEFAULT_POLICY_OPTIONS, emptyPolicyReport, HEIGHT_KEYS, policyOptionsFromArgs, policyOptionsOf, quantiseHeights, sharedVertices, simplifyGeometry } from './cellPolicy.js';
@@ -18,7 +18,8 @@ import { RAIL_INFRA_FILE } from '../railInfraBuildings.js';
 const TILES = ['8413/5384', '8414/5384', '8420/5385'];
 let rowsPromise: Promise<Row[]> | null = null;
 const rows = () => rowsPromise ??= (async () => { const chain = gameChain(), out: Row[] = []; for (const t of TILES) out.push(...await loadTile(t, chain)); return out; })();
-const toBuilding = (r: Row): CellBuilding => ({ id: String(r.raw.properties.id), tile: r.tile, ordinal: r.ordinal, geometry: r.raw.geometry, attr: r.raw.properties, styled: r.styled === r.raw ? undefined : r.styled.properties });
+// The building id is the styled id, as world:compile writes it (a row wall slab carries its own `#row-wall` id).
+const toBuilding = (r: Row): CellBuilding => ({ id: String(r.styled.properties.id), tile: r.tile, ordinal: r.ordinal, geometry: r.raw.geometry, attr: r.raw.properties, styled: r.styled === r.raw ? undefined : r.styled.properties });
 function cellsOf(list: Row[]): Map<string, Row[]> { const m = new Map<string, Row[]>(); for (const r of list) { let l = m.get(r.cell); if (!l) m.set(r.cell, l = []); l.push(r); } return m; }
 const cellFrom = (key: string, list: Row[], debug = true): Cell => { const [i, j] = parseCellKey(key); return debug ? { i, j, buildings: list.map(toBuilding), hide: [], debug } : { i, j, buildings: list.map(toBuilding), hide: [] }; };
 
@@ -75,7 +76,7 @@ test('runtime cells (no ATTR) give back the styled bags, ids and geometry exactl
     back.buildings.forEach((b, k) => {
       const src = list[k], raw = rawFeature(b), styled = styledFeature(b, raw);
       assert.equal(styled, raw, `${b.id}: a runtime cell's feature is its own styled copy`);
-      assert.equal(b.id, String(src.raw.properties.id));
+      assert.equal(b.id, String(src.styled.properties.id));
       assert.ok(sameValue(raw.geometry, src.raw.geometry), `${b.id} geometry`);
       assert.ok(sameValue(styled.properties, src.styled.properties), `${b.id} styled`);
       checked++;
@@ -505,4 +506,49 @@ test('v6: SHEL and SHL1 round-trip in a cell and in a shell file; a v6 cell with
   assert.throws(() => encodeShellCell({ i: 0, j: 0 }), /no shell stream/);
   for (let n = 0; n < file.bytes.length; n += Math.max(1, Math.floor(file.bytes.length / 301))) assert.throws(() => decodeShellCell(file.bytes.subarray(0, n)), /./, `prefix ${n}`);
   const trailing = new Uint8Array(file.bytes.length + 1); trailing.set(file.bytes); assert.throws(() => decodeShellCell(trailing), /trailing/);
+});
+
+// House rows (round-1 install, rows on by default): Kinkerstraat 86-88 (233580) is a chunk-owned pand whose street wall
+// the row draws as a slab (houseLine/rowFront.ts rowWallSlab). The slab is the one decorator footprint the compile takes
+// as FOOT; any other replaced geometry still stops it.
+test('a row wall slab is baked with its own footprint and id; any other geometry-replacing decorator still counts', async () => {
+  const { isRowWallSlab, ROW_WALL_SUFFIX } = await import('../houseLine/rowFront.js');
+  const env = process.env.ROW_FRONT;
+  try {
+    delete process.env.ROW_FRONT;
+    const { resetRowFront } = await import('../houseLine/rowFront.js'); resetRowFront();
+    const chain = gameChain(), stats = { sourceFeatures: 0, droppedNested: 0, noCell: 0, geometryChangedByDecorator: 0 };
+    const list = await loadTile('8413/5384', chain, stats);
+    assert.equal(stats.geometryChangedByDecorator, 0, 'the slab does not trip the compile guard');
+    const slab = list.find(r => String(r.styled.properties.id) === `NL.IMBAG.Pand.0363100012233580${ROW_WALL_SUFFIX}`);
+    assert.ok(slab, 'the published Kinkerstraat record draws 233580 as its wall slab');
+    assert.ok(isRowWallSlab(slab!.styled));
+    assert.equal(slab!.raw.geometry, slab!.styled.geometry, 'FOOT is the slab the world draws');
+    assert.equal(slab!.raw.properties.id, 'NL.IMBAG.Pand.0363100012233580', 'the source bag keeps the pand id');
+    // As the compile builds it: the styled id, the slab footprint; it round-trips through the cell format.
+    const b: CellBuilding = { id: String(slab!.styled.properties.id), tile: slab!.tile, ordinal: slab!.ordinal, geometry: slab!.raw.geometry, attr: slab!.styled.properties };
+    const [i, j] = parseCellKey(slab!.cell), back = decodeCell(encodeCell({ i, j, buildings: [b], hide: [] }).bytes);
+    assert.ok(sameValue(back.buildings[0], b), 'the slab round-trips');
+    assert.ok(sameValue(styledFeature(back.buildings[0]).geometry, slab!.styled.geometry));
+    // Any other decorator that replaces geometry still trips the guard.
+    const other = { ...stats, geometryChangedByDecorator: 0 };
+    const reshaping = { ...chain, decorate: (f: any) => String(f.properties.id).endsWith('155794') ? { ...f, geometry: JSON.parse(JSON.stringify(f.geometry)) } : chain.decorate(f) };
+    await loadTile('8413/5384', reshaping as typeof chain, other);
+    assert.equal(other.geometryChangedByDecorator, 1);
+  } finally { if (env === undefined) delete process.env.ROW_FRONT; else process.env.ROW_FRONT = env; }
+});
+
+// Round j (2026-11-15): 285 restored fronts dropped 60 strings from the city's counts, the re-chosen shared table moved
+// every index, and 595 of 604 cells changed bytes with no building changed. A compile keeps the reference's table.
+test('a kept shared table leaves a cell whose buildings did not change byte-identical', async () => {
+  const all = await rows(), cells = [...cellsOf(all)].slice(0, 6).map(([key, list]) => cellFrom(key, list, false));
+  const before = encodeGlobalStrings(sharedStringList(cells.map(c => encodeCell(c).strings))).table;
+  // Two cells' buildings lose their described fields (as the restored fronts lost theirs): the city's counts move.
+  const changed = cells.map((c, k) => k > 1 ? c : { ...c, buildings: c.buildings.map(b => ({ ...b, attr: { id: b.attr.id, height: b.attr.height }, styled: undefined })) });
+  const lists = changed.map(c => encodeCell(c).strings);
+  const kept = encodeGlobalStrings(sharedStringList(lists, before)).table, fresh = encodeGlobalStrings(sharedStringList(lists)).table;
+  assert.deepEqual(kept.list, before.list, 'the reference table as it stands');
+  for (const c of cells.slice(2)) assert.deepEqual(encodeCell(c, 5, kept).bytes, encodeCell(c, 5, before).bytes, 'unchanged cell, same bytes');
+  for (const c of changed.slice(0, 2)) assert.ok(sameValue(decodeCell(encodeCell(c, 5, kept).bytes, 'kept', kept), decodeCell(encodeCell(c, 5, fresh).bytes, 'fresh', fresh)), 'a changed cell decodes the same either way');
+  assert.ok(cells.slice(2).some(c => Buffer.compare(Buffer.from(encodeCell(c, 5, fresh).bytes), Buffer.from(encodeCell(c, 5, before).bytes)) !== 0), 'a re-chosen table would have moved them');
 });

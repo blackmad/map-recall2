@@ -13,6 +13,7 @@ import { WorldCellClient, WorldCellWorkerHost, readWorldIndex, WORLD_BATCH } fro
 import { parseCellKey } from './cellGrid.js';
 import { WorkerPool } from '../engine/workerPool.js';
 import { EXTRACT, gameChain, loadTile, type Row } from '../../../scripts/world/pipeline.js';
+import { isRowWallSlab } from '../houseLine/rowFront.js';
 
 const TILES = ['8414/5384', '8413/5384'];
 const BASE = 'http://test/extract';
@@ -25,7 +26,7 @@ async function worldFiles(debug: boolean): Promise<Map<string, Uint8Array>> {
   const files = new Map<string, Uint8Array>(), tileCells: Record<string, string[]> = {}, cells: Record<string, unknown> = {};
   for (const [key, list] of byCell) {
     const [i, j] = parseCellKey(key);
-    const cell: Cell = { i, j, hide: [], ...(debug ? { debug } : {}), buildings: list.map(r => ({ id: String(r.raw.properties.id), tile: r.tile, ordinal: r.ordinal, geometry: r.raw.geometry, attr: r.raw.properties, styled: r.styled === r.raw ? undefined : r.styled.properties })) };
+    const cell: Cell = { i, j, hide: [], ...(debug ? { debug } : {}), buildings: list.map(r => ({ id: String(r.styled.properties.id), tile: r.tile, ordinal: r.ordinal, geometry: r.raw.geometry, attr: r.raw.properties, styled: r.styled === r.raw ? undefined : r.styled.properties })) };
     files.set(`world-v1/cells/${key}.bin`, zlib.gzipSync(encodeCell(cell).bytes));
     for (const t of new Set(list.map(r => r.tile))) (tileCells[t] ??= []).push(key);
     cells[key] = { buildings: list.length };
@@ -79,7 +80,10 @@ for (const debug of [true, false]) test(`world-v1 resident set equals the defaul
     const y = b.out.get(key)!;
     assert.equal(y.raw.length, x.raw.length, `${key} count`);
     x.raw.forEach((f, i) => {
-      assert.ok(sameValue(y.raw[i].geometry, f.geometry), `${key}#${i} geometry`);
+      // The drawn footprint is the same; a row wall slab (houseLine/rowFront.ts) is the one feature whose FOOT is its
+      // styled slab rather than the tile's footprint (scripts/world/pipeline.ts loadTile).
+      assert.ok(sameValue(y.styled[i].geometry, x.styled[i].geometry), `${key}#${i} drawn geometry`);
+      assert.ok(sameValue(y.raw[i].geometry, isRowWallSlab(x.styled[i]) ? x.styled[i].geometry : f.geometry), `${key}#${i} geometry`);
       if (debug) assert.ok(sameValue(y.raw[i].properties, f.properties), `${key}#${i} raw ${f.properties.id}`);
       else assert.equal(y.styled[i], y.raw[i], `${key}#${i}: a runtime cell's feature is its own styled copy`);
       assert.ok(sameValue(y.styled[i].properties, x.styled[i].properties), `${key}#${i} styled ${f.properties.id}`);

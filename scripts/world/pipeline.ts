@@ -24,7 +24,7 @@ import { gameTileEnricher } from '../../src/canalRecall/gameTileEnricher.js';
 import { HOUSE_SPECS_DIR, houseSpecsEnabled } from '../../src/canalRecall/houseSpec/decorate.js';
 import { houseSpecsStamp, type HouseSpecsStamp } from '../../src/canalRecall/houseSpec/extractStamp.js';
 import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
-import { rowFrontOn, rowFrontsFromFile, setRowFrontRecords } from '../../src/canalRecall/houseLine/rowFront.js';
+import { isRowWallSlab, rowFrontOn, rowFrontsFromFile, setRowFrontRecords, ROW_FRONT_BROWSER_PATH } from '../../src/canalRecall/houseLine/rowFront.js';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.js';
 import { coversHides, resolveTileIds, tileCoversHash, type TileIdsCache } from '../../src/canalRecall/world/tileCovers.js';
 
@@ -102,6 +102,11 @@ export function gameChain(options: { registerFacts?: RegisterFactsMap | null } =
       const json = readJson(path.resolve(f));
       return json.row && Array.isArray(json.row.series) ? rowFrontsWithSeries(json.row) : rowFrontsFromFile(json, interim);
     }));
+  } else if (rowFrontOn()) {
+    // House rows (on by default since the round-1 install): the world bakes the published records the browser reads
+    // (signed-off rows only), so the default world-v1 cells draw them as the live tiles do. ROW_FRONT=0 compiles without.
+    const file = path.join(ROOT, 'public', ROW_FRONT_BROWSER_PATH);
+    if (fs.existsSync(file)) setRowFrontRecords(rowFrontsFromFile(readJson(file)));
   }
   const registerFacts = options.registerFacts === null ? undefined : options.registerFacts ?? publishedRegisterFacts();
   const gablesJson = readJson(path.join(EXTRACT, 'monument-gables.json'));
@@ -139,13 +144,20 @@ export async function loadTile(tile: string, chain: Chain, stats?: TileStats): P
   // built without it puts `t14` last in the runtime's styled copy, not where the default path has it (key order).
   stampTile(features as any);
   const rows: Row[] = [];
-  features.forEach((raw, ordinal) => {
-    const cell = raw.geometry ? buildingCell(raw.geometry) : null;
+  features.forEach((source, ordinal) => {
+    const cell = source.geometry ? buildingCell(source.geometry) : null;
     if (!cell) { if (stats) stats.noCell++; return; }
-    const before = JSON.stringify(raw.properties);
-    const styled = chain.decorate(raw);
-    if (JSON.stringify(raw.properties) !== before) throw Error(`${raw.properties.id}: a decorator mutated the source properties`);
-    if (styled.geometry !== raw.geometry && stats) stats.geometryChangedByDecorator++;
+    const before = JSON.stringify(source.properties);
+    const styled = chain.decorate(source);
+    if (JSON.stringify(source.properties) !== before) throw Error(`${source.properties.id}: a decorator mutated the source properties`);
+    let raw = source;
+    if (styled.geometry !== source.geometry) {
+      // House rows: a chunk-owned pand's street wall (houseLine/rowFront.ts rowWallSlab, its own `#row-wall` id) is the
+      // one decorator allowed to replace the footprint: the slab is what the world draws, so it is the cell's FOOT
+      // (the chunk keeps hiding the pand's own id). Any other replaced geometry still stops the compile.
+      if (isRowWallSlab(styled)) raw = { ...source, geometry: styled.geometry };
+      else if (stats) stats.geometryChangedByDecorator++;
+    }
     rows.push({ tile, ordinal, raw, styled, cell });
   });
   return rows;
