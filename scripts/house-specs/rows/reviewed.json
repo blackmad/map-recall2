@@ -169,5 +169,135 @@
       "at": "2026-11-15",
       "note": "363, 367 and 369 rise in pointed triangular gables over the cornice line; the face's bell and D1's cornice (3 of 3) both miss them"
     }
+  ],
+  "herengracht-76-90": [
+    {
+      "fronts": [
+        "0363100012175784"
+      ],
+      "field": "crown",
+      "value": "bell",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 76–78 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable bell"
+    },
+    {
+      "fronts": [
+        "0363100012175703"
+      ],
+      "field": "crown",
+      "value": "cornice",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 82 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable cornice"
+    }
+  ],
+  "herengracht-1-23": [
+    {
+      "fronts": [
+        "0363100012175411"
+      ],
+      "field": "crown",
+      "value": "bell",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 7–9 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable bell"
+    },
+    {
+      "fronts": [
+        "0363100012175410"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 13 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable neck"
+    },
+    {
+      "fronts": [
+        "0363100012175408"
+      ],
+      "field": "crown",
+      "value": "point",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 23 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable plain"
+    }
+  ],
+  "herengracht-25-49": [
+    {
+      "fronts": [
+        "0363100012175409"
+      ],
+      "field": "crown",
+      "value": "bell",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 33 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable bell"
+    },
+    {
+      "fronts": [
+        "0363100012175407"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 35 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable neck"
+    },
+    {
+      "fronts": [
+        "0363100012168212"
+      ],
+      "field": "crown",
+      "value": "point",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 43–45 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable plain"
+    }
+  ],
+  "herengracht-51-73": [
+    {
+      "fronts": [
+        "0363100012179675"
+      ],
+      "field": "crown",
+      "value": "point",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 69 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable plain"
+    }
+  ],
+  "herengracht-75-89": [
+    {
+      "fronts": [
+        "0363100012179749"
+      ],
+      "field": "crown",
+      "value": "step",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 77 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable step"
+    },
+    {
+      "fronts": [
+        "0363100012168064"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 79 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable neck"
+    },
+    {
+      "fronts": [
+        "0363100012180438"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 89 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable neck"
+    }
   ]
 }

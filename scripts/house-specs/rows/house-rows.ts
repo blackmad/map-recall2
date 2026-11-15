@@ -76,7 +76,7 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
     const groundOffsetM = attrs && strip ? Math.round((attrs.b3_h_maaiveld - strip.groundNAP) * 100) / 100 : null;
     const cut = cuts?.rows.find(r => r.pandId === pid);
     return {
-      pandId: pid, label: sp?.label ?? `${def.title.split(' ')[0]} (pand ${md.label})`, numbers: sp?.numbers ?? [], built: sp?.buildYear ?? null,
+      pandId: pid, label: sp?.label ?? (md.numbers?.length ? `${def.title.split(' ')[0]} ${md.label}` : `${def.title.split(' ')[0]} (pand ${md.label})`), numbers: sp?.numbers ?? md.numbers ?? [], built: sp?.buildYear ?? md.built ?? null,
       widthM: sp?.survey?.frontWidthM ?? md.widthM ?? null, groundOffsetM, eaves3dbag: md.eavesM ?? null,
       height3dbag: cut?.wall.heightM ?? (attrs ? Math.round((attrs.b3_h_dak_50p - attrs.b3_h_maaiveld) * 100) / 100 : null),
       ...(fronts?.length ? { face: fronts } : {}), read: answer, readRef: answer?.image?.ref,
@@ -85,7 +85,7 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
       ...(wallOnly[pid] ? { wallOnly: { chunk: wallOnly[pid].chunk, edge: wallOnly[pid].edgeRD.map(([x, y]) => rdToLngLat(x, y).map(v => Math.round(v * 1e8) / 1e8)) as [[number, number], [number, number]], edgeRD: wallOnly[pid].edgeRD, ref: wallOnly[pid].ref } } : {}),
     };
   });
-  const side = (survey?.pands.find(p => p.pandId === members[0]?.pandId) as { side?: 'even' | 'odd' } | undefined)?.side ?? 'mixed';
+  const side = (survey?.pands.find(p => p.pandId === members[0]?.pandId) as { side?: 'even' | 'odd' } | undefined)?.side ?? def.members[0]?.side ?? 'mixed';
   const reviewedFile = path.join(REPO, 'scripts/house-specs/rows/reviewed.json');
   const reviewed = (readJson(reviewedFile) as Record<string, RowInput['reviewed']> | null)?.[def.id];
   if (reviewed?.length) inputs.push(rel(reviewedFile));

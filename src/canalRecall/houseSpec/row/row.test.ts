@@ -258,3 +258,20 @@ test('Kinkerstraat 244-248 (round 2): a face that states one front is never spli
   assert.deepEqual(r.fronts.filter(f => f.pandId === '0363100012233496').map(f => f.id), ['0363100012233496']);
   assert.ok(r.series.every(s => s.type), 'every series has a face type');
 });
+
+test('Herengracht belt rows: a front with no face and no usable reading draws its own plain series', async () => {
+  const { numbersOf, beltMembers } = await import('../../../../scripts/house-specs/rows/belt-rows.ts');
+  assert.deepEqual(numbersOf(['Herengracht 46D', 'Herengracht 48', 'Herengracht 46A'], 'Herengracht'), [46, 48]);
+  const sel = [
+    { pandId: 'a', street: 'Herengracht', number: 4, addresses: ['Herengracht 4'], year: 1615, height: 12, areaM2: 90, picked: true },
+    { pandId: 'b', street: 'Herengracht', number: 3, addresses: ['Herengracht 3'], year: 1889, height: 18, areaM2: 90, picked: true },
+    { pandId: 'c', street: 'Herengracht', number: 2, addresses: ['Herengracht 2'], year: 1616, height: 12, areaM2: 300, picked: true },
+  ];
+  const ms = beltMembers(sel, new Map([['a', { pandId: 'a', wallLenM: 5.123 }]]), 'Herengracht', 2, 4);
+  assert.deepEqual(ms.map(m => [m.pandId, m.widthM, m.side]), [['c', 12, 'even'], ['a', 5.12, 'even']]);
+  // Herengracht 82 (held read) is its own series, never 80's neck gable; the register gable is its crown.
+  const r = solveRow(loadRow(loadRowDefs()['herengracht-76-90'], '2026-11-15').input);
+  const s82 = r.fronts.find(f => f.pandId === '0363100012175703')!.seriesId;
+  assert.notEqual(s82, r.fronts.find(f => f.pandId === '0363100012175783')!.seriesId);
+  assert.equal(frontDesign(r, r.fronts.find(f => f.pandId === '0363100012175703')!).crown.value, 'cornice');
+});
