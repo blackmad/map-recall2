@@ -29,7 +29,7 @@ import { structureGuess, structurePriorStoreys } from './houseSpec/structurePrio
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import { boxPlacementFor, groundOpeningRect } from './houseLine/boxCells.js';
 import { cellOnBox, groundSpans } from './houseLine/boxPlacement.js';
-import { runTakesTrace } from './houseLine/rowFront.js';
+import { runTakesSteps, runTakesTrace } from './houseLine/rowFront.js';
 import type { RowCrown } from './houseLine/crownProfile.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
@@ -994,7 +994,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         finish();
       }
       // Lane 1 (rowFront, stepped run): sub-fronts with their own wall tops and crowns (houseLine/rowFront stepCrown).
-      const steps = streetRun && traceRun && b.specRecipe?.subFronts?.some(f => f.step) ? stepSpans(b.specRecipe.subFronts, seenLeftToRight(first), layout.lengthM, base) : null;
+      const steps = streetRun && (traceRun || runTakesSteps(layout.lengthM, b.specRecipe?.frontSpanM)) && b.specRecipe?.subFronts?.some(f => f.step) ? stepSpans(b.specRecipe.subFronts, seenLeftToRight(first), layout.lengthM, base) : null;
       // House rows: a series member's street run round a kink paints each edge's own bay grid (edgeLayout), the grid its
       // window frames and dressings take; the run's continuous grid set the glass half a bay off the frames on the middle
       // edges (Kinkerstraat 126-138: 3.2 + 11.5 + 18.0 m, 19 axes). Only when every edge holds a bay: a short jog (90's

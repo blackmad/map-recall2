@@ -811,6 +811,9 @@ function buildHipped(s: RoofSink, plan: RoofPlan, L: number, W: number, R: numbe
     const pf = (W / 2) * 0.7, need = surfV(pf) - 0.15 + 1.3 + 0.06, reach = a + (W / 2) * (1 - need / R) - 0.4;
     const dw = Math.min(L * 0.7, 2 * reach);
     if (dw >= 2) for (const sd of [-1, 1]) dormer(s, { axis: 'v', side: sd, c: 0, pf, dw, hd: 1.3, surf: (q: number) => surfV(q), band: true }, plan);
+  } else if (plan.rowDormers) {
+    // House rows (rowFront `pitched`): the series' dormers on the street hip behind the cornice, no dice, no side dormers.
+    if (plan.dormers) rowDormersOnEnds(s, plan, L, W, (u: number) => (u > a ? R * (1 - (u - a) / (W / 2)) : R), L / 2 - Math.min(0.9, W * 0.15));
   } else if (plan.dormers) {
     const n = Math.min(3, Math.floor((2 * a + 1) / 3.2));
     for (const sd of [-1, 1]) for (let i = 0; i < n; i++) dormer(s, { axis: 'v', side: sd, c: n === 1 ? 0 : -a + ((i + 0.5) * 2 * a) / n, pf: (W / 2) * 0.72, dw: 1.05, hd: 1.3, surf: (q: number) => surfV(q) }, plan);
@@ -1436,7 +1439,7 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
     const pts = openRing(ring), rect = fitRect(pts, 40);
     if (!rect || !(height - rr.riseM >= 2)) return null;
     const box: Rect = { ...rect, coverage: 1, maxDev: 0 };
-    const rowPlan: RoofPlan = { kind: 'mansardHip', gable: 'plain', riseM: rr.riseM, dormers: rr.dormers.length > 0, material: rr.material === 'tile' ? 'tile' : 'slate',
+    const rowPlan: RoofPlan = { kind: rr.shape === 'hipped' ? 'hipped' : 'mansardHip', gable: 'plain', riseM: rr.riseM, dormers: rr.dormers.length > 0, material: rr.material === 'tile' ? 'tile' : 'slate',
       tone: ROW_SLATE_TONE, seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.joins ? { rowJoins: rr.joins } : {}), ...(rr.frontM ? { rowFrontM: rr.frontM } : {}), ...(rr.kit ? { buurtKit: rr.kit } : {}) };
     return { ...rowPlan, pieces: [{ rect: box, plan: rowPlan }], keepLid: true };
   }
@@ -1453,15 +1456,15 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
 /** House rows: every row mansard is the one dark slate (look/palette.ts MEASURED_SLATE[1], #606b79): one tone per
  *  series and the same across a row (blind review 2026-11-14: Weteringschans 169016 and 171218 differed). */
 export const ROW_SLATE_TONE = 0.5;
-export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number; kit?: BuurtRoofKit } | null {
+export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number; kit?: BuurtRoofKit; shape?: 'hipped' } | null {
   if (!v || typeof v !== 'object') return null;
-  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown; kit?: unknown };
+  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown; kit?: unknown; shape?: unknown };
   if (!(Number(r.riseM) > 0.5) || typeof r.series !== 'string' || !Array.isArray(r.dormers)) return null;
   const dormers = (r.dormers as Array<{ a?: unknown; kind?: unknown; hoist?: unknown }>).filter(d => Number.isFinite(Number(d.a)) && (ROW_DORMER_DRAW_KINDS as readonly unknown[]).includes(d.kind))
     .map(d => ({ a: Math.max(0.05, Math.min(0.95, Number(d.a))), kind: d.kind as RowDormerKind, ...(d.hoist === true ? { hoist: true } : {}) }));
   const joins = r.joins && typeof r.joins === 'object' ? { ...(r.joins.left === true ? { left: true } : {}), ...(r.joins.right === true ? { right: true } : {}) } : null;
   const kit = r.kit === undefined ? null : buurtRoofKitOf(r.kit);
-  return { riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers, ...(joins && (joins.left || joins.right) ? { joins } : {}), ...(Number(r.frontM) > 1 ? { frontM: Number(r.frontM) } : {}), ...(kit ? { kit } : {}) };
+  return { riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers, ...(joins && (joins.left || joins.right) ? { joins } : {}), ...(Number(r.frontM) > 1 ? { frontM: Number(r.frontM) } : {}), ...(kit ? { kit } : {}), ...(r.shape === 'hipped' ? { shape: 'hipped' as const } : {}) };
 }
 
 /**

@@ -275,3 +275,35 @@ test('AHN street fronts: the band over the front line; a cornice at its p90 with
   assert.equal(ahnGableApex({ n: 30, p50: 13, p90: 15.4, max: 16.15 }, 13.7, 16.8), 16.15);
   assert.equal(ahnGableApex(undefined, 13.7, 16.8), 16.8);
 });
+
+test('round 8: pitched dormers, not a mansard; bays by width; storeys under a souterrain; photo samples and spec colour flags; step gables on a partial run', async () => {
+  const { pitchedDormers, strongPhoto, specPhotoDisagree } = await import('./generate.ts');
+  const { beltBays } = await import('./donors.ts');
+  const { runTakesSteps, runTakesTrace } = await import('../houseLine/rowFront.ts');
+  const { rowRoofOf } = await import('../roofMesh.ts');
+  // A register dakkapel: the series roof storey becomes dormers in a tile pitched roof; a spec-stated mansard stays.
+  const rs = { value: { kind: 'mansard' as const, material: 'slate' as const, dormersPerFront: 1 }, source: 'period-default' as const, ref: 'r' };
+  const row = { series: [{ id: 's1', design: { roofStorey: structuredClone(rs) } }], fronts: [{ pandId: 'p1', seriesId: 's1', overrides: {} }] } as never;
+  const out = pitchedDormers(row, new Map([['p1', { roofStorey: true }]])) as unknown as { series: Array<{ design: { roofStorey: { value: { pitched?: boolean; material?: string } } } }> };
+  assert.deepEqual([out.series[0].design.roofStorey.value.pitched, out.series[0].design.roofStorey.value.material], [true, 'slate']);
+  const kept = pitchedDormers({ series: [{ id: 's1', design: { roofStorey: structuredClone(rs) } }], fronts: [{ pandId: 'p1', seriesId: 's1', overrides: {} }] } as never, new Map([['p1', { roofStorey: true, mansard: true }]])) as unknown as typeof out;
+  assert.equal(kept.series[0].design.roofStorey.value.pitched, undefined, 'a spec-stated mansard stays a mansard');
+  assert.deepEqual(rowRoofOf({ riseM: 3, series: 's', dormers: [{ a: 0.5, kind: 'plain' }], shape: 'hipped' })?.shape, 'hipped');
+  assert.equal(rowRoofOf({ riseM: 2.2, series: 's', dormers: [] })?.shape, undefined, 'absent: a mansard, as before');
+  // Amstel 182460 (5.11 m) and 182461 (4.92 m): three bays; a 4.27 m front two; 9.35 m four.
+  assert.deepEqual([beltBays(5.11), beltBays(4.92), beltBays(4.27), beltBays(9.35)], [3, 3, 2, 4]);
+  // Prinsengracht 175987: 11.46 m over a souterrain at a 4.3 m pitch: two storeys, not three.
+  const f = fittedRead(target({ eavesM: 11.46, widthM: 9.35 }), donor('0363100012176314', 'Prinsengracht', 1700, 9, 12.9, { storeys: 3, bays: 3, basement: 'souterrain' } as never));
+  assert.equal(f.storeys, 2);
+  // Keizersgracht 176392: the unreadable cut's wall sample is strong; foliage and few pixels are not.
+  assert.equal(strongPhoto({ hex: '#4a423b', L: 0.386, C: 0.016, h: 64, n: 384 }), true);
+  assert.equal(strongPhoto({ hex: '#4a5a3b', L: 0.45, C: 0.05, h: 130, n: 400 }), false);
+  assert.equal(strongPhoto({ hex: '#4a423b', L: 0.386, C: 0.016, h: 64, n: 50 }), false);
+  assert.equal(specPhotoDisagree({ specHex: '#c9b48a', photo: { hex: '#4a423b', L: 0.386, C: 0.016, h: 64, n: 384 } })?.photoHex, '#4a423b');
+  assert.equal(specPhotoDisagree({ specHex: '#4d443c', photo: { hex: '#4a423b', L: 0.386, C: 0.016, h: 64, n: 384 } }), null);
+  // Prinsengracht 175981: a 2.51 m street run of a 4.11 m front takes its step gable; a longer run (a corner) still does not.
+  assert.equal(runTakesTrace(2.51, 4.11), false);
+  assert.equal(runTakesSteps(2.51, 4.11), true);
+  assert.equal(runTakesSteps(1.6, 4.11), false);
+  assert.equal(runTakesSteps(6.5, 4.11), false);
+});
