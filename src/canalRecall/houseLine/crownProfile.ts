@@ -288,7 +288,7 @@ export function rowCrownStone(c: RowCrown): NonNullable<RowCrown['stone']> | und
 }
 /** Weathered sandstone (coordinator 2026-11-15): the trim white mixed this far toward a warm grey-buff, and the values the
  *  pieces walk through, so the stone reads as stone rather than one bright paint. */
-export const ROW_STONE_WEATHER = { hex: '#bfb29a', mix: 0.35, values: [1, 0.95, 1.02, 0.97, 0.93, 1.01, 0.96] } as const;
+export const ROW_STONE_WEATHER = { hex: '#c9bda6', mix: 0.18, values: [1, 0.95, 1.02, 0.97, 0.93, 1.01, 0.96] } as const;
 function mixHex(a: string, b: string, t: number): string {
   const p = (h: string) => { const n = parseInt(h.replace('#', '').slice(0, 6), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
   const [x, y] = [p(a), p(b)];
