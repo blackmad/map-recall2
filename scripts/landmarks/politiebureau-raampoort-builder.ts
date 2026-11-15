@@ -122,6 +122,8 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
     // flat-roofed part: cornice with the green copper coping
     ledgeStrip(b, f, 6.2, 12.45, 12.4, 0.3, 0.2, 'brick');
     slab(b, f, 6.2, 12.75, 12.4, 0.2, 0.3, 'copper', -0.1);
+    // the arched corbel table runs under the flat-roofed cornice too (blind review fix)
+    for (let k = 0; k < 24; k++) archBand(b, f, 0.3 + (k + 0.5) * 0.5, 12.0, 0.5, 0.42, 0.07, 0.1, 'brick', 0.0, 4);
     // hipped north-east block: pilasters, arched corbel table, cornice, pinnacles
     for (const t of [12.65, 16.55]) slab(b, f, t, 0.4, 0.5, 12.0, 0.16, 'brick');
     corbels(f, 12.9, 16.3, 12.0);
