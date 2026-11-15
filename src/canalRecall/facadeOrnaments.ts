@@ -430,25 +430,39 @@ export const ROW_DOORCASE = { pilaster: 0.2, gap: 0.08, out: 0.12, frieze: 0.22,
  *  of the front and in each gap between its openings, under one fascia and cornice over the door and the windows. */
 function rowGroundSurround(c: ExtraContext, s: ExtraSink, d: Span, dc: { material: 'stone' | 'timber' }, z0: number): void {
   const K = ROW_DOORCASE, hex = dc.material === 'stone' ? K.stone : WHITE, L = c.f.len;
-  const opens = [[d.x - d.hw, d.x + d.hw, d.z1] as const, ...windowSpans(c, -1).map(w => [w.x - w.hw, w.x + w.hw, w.z1] as const)].sort((p, q) => p[0] - q[0]);
-  const zt = Math.max(...opens.map(o => o[2])) + 0.08, P = K.pilaster + 0.06;
-  const xs = [0, L - P];
-  for (let i = 0; i + 1 < opens.length; i++) { const g0 = opens[i][1] + 0.06, g1 = opens[i + 1][0] - 0.06; if (g1 - g0 >= P) xs.push((g0 + g1) / 2 - P / 2); }
-  // The shadow each pilaster and the cornice throw, so a white frame reads on a pale ground storey.
-  const shadow = shadeHex(hex, 0.55);
-  // (in front of a stated ground facing, ROW_GROUND_WALL.out)
-  for (const a of xs) s.strip(c.f, Math.min(L - 0.08, a + P), Math.min(L, a + P + 0.08), 0.045, z0, zt, shadow);
-  s.strip(c.f, 0, L, 0.045, zt - 0.08, zt, shadow);
+  const wins = windowSpans(c, -1);
+  const opens = [[d.x - d.hw, d.x + d.hw, d.z1] as const, ...wins.map(w => [w.x - w.hw, w.x + w.hw, w.z1] as const)].sort((p, q) => p[0] - q[0]);
+  const zt = Math.max(...opens.map(o => o[2])) + 0.08, P = K.pilaster + 0.06, zf = zt + K.frieze + 0.08, zc = zf + K.cornice;
+  // Pilasters at both ends of the front and beside the door; the rest of the storey is one shop window between them.
+  const xs = [0, L - P, ...[d.x - d.hw - 0.06 - P, d.x + d.hw + 0.06].filter(a => a > P + 0.1 && a + P < L - P - 0.1)];
+  const shadow = shadeHex(hex, 0.5);
+  // The shadows each pilaster and the band throw (in front of a stated ground facing, ROW_GROUND_WALL.out), so a white
+  // frame reads as one solid frame on a pale ground storey.
+  for (const a of xs) for (const [p, q] of [[a - 0.07, a], [a + P, a + P + 0.07]] as const) if (p >= 0 && q <= L) s.strip(c.f, p, q, 0.045, z0, zt, shadow);
+  s.strip(c.f, 0, L, 0.045, zt - 0.09, zt, shadow);
+  // The shop window: the bays beside the door glazed from a low sill to the band, two mullions and a transom, white.
+  if (wins.length) {
+    const dl = d.x - d.hw - 0.06 - P, dr = d.x + d.hw + 0.06 + P;
+    for (const [a, b] of [[P + 0.08, dl - 0.08], [dr + 0.08, L - P - 0.08]] as const) {
+      if (b - a < 0.9) continue;
+      const g0 = z0 + 0.45, g1 = zt - 0.1, F = 0.07, bar = 0.06, tz = g0 + (g1 - g0) * 0.74;
+      s.strip(c.f, a, b, 0.05, g0, g1, K.glass);
+      for (const [p, q, r, u] of [[a, b, g0 - F, g0], [a, b, g1, g1 + F], [a - F, a, g0 - F, g1 + F], [b, b + F, g0 - F, g1 + F]] as const) s.strip(c.f, p, q, 0.06, r, u, hex);
+      for (const k of [1, 2]) { const x = a + (b - a) * k / 3; s.strip(c.f, x - bar / 2, x + bar / 2, 0.062, g0, g1, hex); }
+      s.strip(c.f, a, b, 0.062, tz - bar / 2, tz + bar / 2, hex);
+      // A panelled stall board under the glass.
+      s.strip(c.f, a, b, 0.055, z0, g0 - F, shadeHex(hex, 0.92));
+    }
+  }
   for (const a of xs) {
     s.box(c.f, a, a + P, 0, K.out, z0, zt, hex);
     s.box(c.f, a - 0.03, a + P + 0.03, 0, K.out + 0.03, z0, z0 + 0.3, hex);
     s.box(c.f, a - 0.03, a + P + 0.03, 0, K.out + 0.03, zt - 0.12, zt, hex);
   }
-  // A white frame round each window between the pilasters.
-  for (const [a, b] of opens.slice(0)) if (b - a > 0.3) { s.strip(c.f, a - 0.06, a, 0.06, z0, zt, hex); s.strip(c.f, b, b + 0.06, 0.06, z0, zt, hex); }
-  // The fascia and the cornice over the whole front.
-  s.box(c.f, 0, L, 0, K.out, zt, zt + K.frieze + 0.08, hex);
-  s.box(c.f, 0, L, 0, K.corniceOut, zt + K.frieze + 0.08, zt + K.frieze + 0.08 + K.cornice, hex);
+  // One solid band over the whole front: a fascia, a shadow line under the cornice, the cornice.
+  s.box(c.f, 0, L, 0, K.out, zt, zf, hex);
+  s.strip(c.f, 0, L, K.out + 0.005, zf - 0.05, zf, shadow);
+  s.box(c.f, 0, L, 0, K.corniceOut, zf, zc, hex);
 }
 /** An 1800s timber cornice as stated (RowDesign.corniceDress; Herengracht 158, 164, 174, 209, 248): a painted corona and
  *  bed moulding, what carries them (modillions, consoles over the piers, dentils), a painted frieze over the top windows
@@ -479,10 +493,15 @@ function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNull
       if (lh >= 0.18) for (const w of top) {
         // One wide low light per window axis (blind review: single openings, not paired lights).
         const xm = (w.x0 + w.x1) / 2, hw = Math.min(K.light.maxW, (w.x1 - w.x0) * 0.95) / 2, F = K.light.frame;
+        // A shadowed reveal round the opening, a white frame inside it, and glazing bars: three panes, a transom when tall.
+        const R = 0.035, Wf = WHITE, bar = 0.03, sh = shadeHex(P, 0.62);
+        s.strip(c.f, xm - hw - R, xm + hw + R, 0.035, lz0 - R, lz0 + lh + R, sh);
         s.strip(c.f, xm - hw, xm + hw, 0.04, lz0, lz0 + lh, ROW_DOORCASE.glass);
-        s.strip(c.f, xm - hw - F, xm + hw + F, 0.055, lz0 - F, lz0, P);
-        s.strip(c.f, xm - hw - F, xm + hw + F, 0.055, lz0 + lh, lz0 + lh + F, P);
-        for (const x of [xm - hw - F, xm + hw]) s.strip(c.f, x, x + F, 0.055, lz0, lz0 + lh, P);
+        s.strip(c.f, xm - hw, xm + hw, 0.05, lz0, lz0 + F * 0.6, Wf);
+        s.strip(c.f, xm - hw, xm + hw, 0.05, lz0 + lh - F * 0.6, lz0 + lh, Wf);
+        for (const x of [xm - hw, xm + hw - F * 0.6]) s.strip(c.f, x, x + F * 0.6, 0.05, lz0, lz0 + lh, Wf);
+        for (const k of [1, 2]) { const x = xm - hw + (2 * hw) * k / 3; s.strip(c.f, x - bar / 2, x + bar / 2, 0.052, lz0, lz0 + lh, Wf); }
+        if (lh >= 0.36) s.strip(c.f, xm - hw, xm + hw, 0.052, lz0 + lh * 0.55 - bar / 2, lz0 + lh * 0.55 + bar / 2, Wf);
       }
     } else if (dr.frieze === 'panels') {
       // Sunk panels between the piers: a raised frame round each, its field a shade darker.
@@ -511,6 +530,11 @@ function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNull
       s.box(c.f, a, b, 0, K.bedOut + 0.04, zb - 0.22, zb, P);
       s.box(c.f, a + 0.02, b - 0.02, 0, K.console.out * 0.6, zb - h * 0.65, zb - 0.22, P);
       s.box(c.f, a + 0.04, b - 0.04, 0, K.console.out * 0.35, zb - h, zb - h * 0.65, P);
+      // Carved: a scroll's eye at the head and a smaller one at the foot, a leaf down the face.
+      wallDisc(c, s, x, zb - 0.13, W2 * 0.8, K.console.out + 0.02, shadeHex(P, 0.72));
+      wallDisc(c, s, x, zb - 0.13, W2 * 0.4, K.console.out + 0.03, P);
+      wallDisc(c, s, x, zb - h + 0.08, W2 * 0.55, K.console.out * 0.35 + 0.02, shadeHex(P, 0.72));
+      s.wallQuad(c.f, [[x - W2 * 0.35, zb - 0.26], [x + W2 * 0.35, zb - 0.26], [x + 0.01, zb - h * 0.7], [x - 0.01, zb - h * 0.7]], K.console.out * 0.6 + 0.01, shadeHex(P, 0.8));
     }
   } else if (dr.supports === 'dentils') {
     const D = ROW_DENTILS, n = Math.max(4, Math.round(L / D.pitch));
@@ -524,9 +548,15 @@ function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNull
   if (dr.centre === 'pediment' || dr.centre === 'segmental') {
     const w = L * (dr.centreShare ?? 0.5), a = (L - w) / 2, b = a + w, mid = L / 2, rise = w / 2 * K.pediment.slope, B = K.pediment.band;
     if (dr.centre === 'pediment') {
-      s.wallQuad(c.f, [[a, t], [b, t], [mid, t + rise], [mid, t + rise]], 0.06, P);
-      wallBar(c, s, [a - 0.04, t + B / 2], [mid, t + rise + B / 2], B, K.bedOut, P);
-      wallBar(c, s, [mid, t + rise + B / 2], [b + 0.04, t + B / 2], B, K.bedOut, P);
+      // A moulded pediment: a recessed tympanum a shade darker, the raking cornices in two steps with a shadow line under
+      // them, and a cornice across its foot.
+      s.wallQuad(c.f, [[a, t], [b, t], [mid, t + rise], [mid, t + rise]], 0.04, shadeHex(P, 0.9));
+      for (const [p0, p1] of [[[a - 0.04, t], [mid, t + rise]], [[mid, t + rise], [b + 0.04, t]]] as Array<[[number, number], [number, number]]>) {
+        wallBar(c, s, [p0[0], p0[1] - B * 0.35], [p1[0], p1[1] - B * 0.35], 0.05, 0.08, shadeHex(P, 0.6));
+        wallBar(c, s, [p0[0], p0[1] + B * 0.15], [p1[0], p1[1] + B * 0.15], B * 0.7, K.bedOut - 0.08, shadeHex(P, 0.86));
+        wallBar(c, s, [p0[0], p0[1] + B * 0.6], [p1[0], p1[1] + B * 0.6], B * 0.55, K.bedOut, P);
+      }
+      s.box(c.f, a, b, 0, K.bedOut - 0.08, t, t + 0.08, shadeHex(P, 0.86));
     } else {
       const n = 12, h = (u: number) => rise * 1.3 * Math.sin(Math.PI * u);
       for (let i = 0; i < n; i++) {
@@ -551,6 +581,13 @@ function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNull
     s.box(c.f, a, b, 0.02, out, t + Bq.h - 0.12, t + Bq.h, P);
   }
 }
+/** A disc of radius r on the wall face (a scroll's eye, a boss), as a fan of quads. */
+function wallDisc(c: ExtraContext, s: ExtraSink, x: number, z: number, r: number, out: number, hex: string, n = 12): void {
+  for (let i = 0; i < n; i++) {
+    const a0 = 2 * Math.PI * i / n, a1 = 2 * Math.PI * (i + 1) / n;
+    s.wallQuad(c.f, [[x, z], [x + r * Math.cos(a0), z + r * Math.sin(a0)], [x + r * Math.cos(a1), z + r * Math.sin(a1)], [x, z]], out, hex);
+  }
+}
 /** A bar of width w from p to q on the wall face (fanlight tracery). */
 function wallBar(c: ExtraContext, s: ExtraSink, p: readonly [number, number], q: readonly [number, number], w: number, out: number, hex: string): void {
   const dx = q[0] - p[0], dz = q[1] - p[1], L = Math.hypot(dx, dz) || 1, nx = -dz / L * w / 2, nz = dx / L * w / 2;
@@ -573,8 +610,8 @@ function rowDoorcase(c: ExtraContext, s: ExtraSink, d: Span, dc: NonNullable<Non
         const a0 = 2 * Math.PI * i / n, a1 = 2 * Math.PI * (i + 1) / n;
         wallBar(c, s, [xm + hx * Math.cos(a0), zm + hz * Math.sin(a0)], [xm + hx * Math.cos(a1), zm + hz * Math.sin(a1)], K.bar, 0.05, hex);
       }
-      const pts: Array<[number, number]> = [[xm - hx * 0.4, zm], [xm, zm + hz * 0.45], [xm + hx * 0.4, zm], [xm, zm - hz * 0.45]];
-      for (let i = 0; i < 4; i++) wallBar(c, s, pts[i], pts[(i + 1) % 4], K.bar, 0.05, hex);
+      // Four short spokes from the ring to the frame's mid-points (Herengracht 144: no inner lozenge).
+      for (const [p, q] of [[[xm - hx, zm], [x0, zm]], [[xm + hx, zm], [x1, zm]], [[xm, zm + hz], [xm, d.z1]], [[xm, zm - hz], [xm, zf]]] as Array<[[number, number], [number, number]]>) wallBar(c, s, p, q, K.bar, 0.05, hex);
     } else if (dc.fanlight === 'diamond') {
       // A lozenge touching the fanlight's frame at its four mid-points, and a smaller one inside it.
       const xm = (x0 + x1) / 2, zm = (zf + d.z1) / 2, hx = (x1 - x0) / 2, hz = (d.z1 - zf) / 2;

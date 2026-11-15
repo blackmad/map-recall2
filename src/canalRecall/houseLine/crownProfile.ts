@@ -461,15 +461,25 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
             const hinge: V2 = [0, tN + 0.02], n = 9;
             const at = (u: number): V2 => { const i = Math.min(inner.length - 2, Math.floor(u * (inner.length - 1))), k = u * (inner.length - 1) - i; return [inner[i][0] + (inner[i + 1][0] - inner[i][0]) * k, inner[i][1] + (inner[i + 1][1] - inner[i][1]) * k]; };
             const base = tone();
-            for (let i = 0; i < n; i++) prism(s, [hinge, at(i / n), at((i + 1) / n)], f, e, S.ledge * 0.7, 0.02, shade(base, i % 2 ? 0.82 : 1));
-            prism(s, disc(0, tN + 0.02, Math.min(0.14, rise * 0.25)).filter(([, y]) => y >= tN), f, e, S.ledge * 0.8, 0, shade(base, 0.9));
+            // Flutes fanning over the whole tympanum, alternately lit and in shadow (blind review: the first fan read faint
+            // and small), a ridge between each pair, and the hinge boss.
+            for (let i = 0; i < n; i++) prism(s, [hinge, at(i / n), at((i + 1) / n)], f, e, S.ledge * 0.7, 0.02, shade(base, i % 2 ? 0.7 : 0.98));
+            for (let i = 1; i < n; i++) { const p = at(i / n), dx = p[0] - hinge[0], dy = p[1] - hinge[1], l = Math.hypot(dx, dy) || 1, w = 0.015;
+              prism(s, [[hinge[0] - dy / l * w, hinge[1] + dx / l * w], [p[0] - dy / l * w, p[1] + dx / l * w], [p[0] + dy / l * w, p[1] - dx / l * w], [hinge[0] + dy / l * w, hinge[1] - dx / l * w]], f, e, S.ledge * 0.7 + 0.015, 0, shade(base, 1.04)); }
+            prism(s, disc(0, tN + 0.02, Math.min(0.2, rise * 0.3)).filter(([, y]) => y >= tN), f, e, S.ledge * 0.8, 0, shade(base, 0.85));
           } else {
             prism(s, [[inner[0][0], tN], ...inner, [inner[inner.length - 1][0], tN]], f, e, S.ledge * 0.6, 0.02, tone());
-            const cy = tN + rise * 0.45, ry = Math.min(rise * 0.3, 0.3), rx = Math.min(ry * 1.3, neck * 0.35);
+            // The cartouche and its leaves fill the field (blind review: the first read small and faint).
+            const cy = tN + rise * 0.45, ry = Math.min(rise * 0.42, 0.5), rx = Math.min(ry * 1.9, (neck - S.capBand) * 0.5);
             const oval = (a: number, b: number): V2[] => Array.from({ length: 18 }, (_, i): V2 => [a * Math.cos(2 * Math.PI * i / 18), cy + b * Math.sin(2 * Math.PI * i / 18)]);
-            prism(s, oval(rx, ry), f, e, S.ledge * 0.6 + 0.04, 0, shade(tone(), 0.84));
-            prism(s, oval(rx * 0.6, ry * 0.6), f, e, S.ledge * 0.6 + 0.06, 0, tone());
-            for (const sg of [-1, 1]) prism(s, [[sg * rx * 1.05, cy - ry * 0.2], [sg * (rx + Math.min(0.5, neck * 0.4)), tN + 0.06], [sg * (rx + Math.min(0.35, neck * 0.3)), tN + 0.06], [sg * rx * 1.02, cy - ry * 0.5]], f, e, S.ledge * 0.6 + 0.03, 0, shade(tone(), 0.84));
+            prism(s, oval(rx * 1.12, ry * 1.12), f, e, S.ledge * 0.6 + 0.03, 0, shade(tone(), 0.66));
+            prism(s, oval(rx, ry), f, e, S.ledge * 0.6 + 0.045, 0, tone());
+            prism(s, oval(rx * 0.62, ry * 0.62), f, e, S.ledge * 0.6 + 0.06, 0, shade(tone(), 0.78));
+            const reach = Math.max(0.2, neck - S.capBand - rx - 0.05);
+            for (const sg of [-1, 1]) {
+              prism(s, [[sg * rx * 1.05, cy - ry * 0.1], [sg * (rx + reach), tN + 0.06], [sg * (rx + reach * 0.6), tN + 0.06], [sg * rx * 1.02, cy - ry * 0.6]], f, e, S.ledge * 0.6 + 0.03, 0, shade(tone(), 0.7));
+              volute(s, f, e, sg * (rx + reach * 0.55), tN + 0.06 + Math.min(0.14, rise * 0.15), Math.min(0.14, rise * 0.15), tone(), S.ledge * 0.6 + 0.05);
+            }
           }
         }
       }

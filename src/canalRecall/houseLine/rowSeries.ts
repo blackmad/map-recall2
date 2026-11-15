@@ -147,7 +147,14 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     if (rs.kind !== 'mansard') return;
     mansard ??= rs;
     const n = Math.max(0, Math.round(rs.dormersPerFront));
-    for (let k = 0; k < n; k++) dormers.push({ a: +(a0 + (k + 0.5) / n * (a1 - a0)).toFixed(4), kind: rs.dormerKind ?? 'plain', ...(rs.hoist ? { hoist: true } : {}) });
+    // A stated pediment or segmental cap on the cornice (RowCorniceDress.centre) stands where a centre dormer would: the
+    // dormer behind it goes, rather than poke over the cap (Herengracht 248).
+    const cd = d.corniceDress?.value, capped = cd?.centre === 'pediment' || cd?.centre === 'segmental', half = (cd?.centreShare ?? 0.5) / 2;
+    for (let k = 0; k < n; k++) {
+      const u = (k + 0.5) / n;
+      if (capped && Math.abs(u - 0.5) < half) continue;
+      dormers.push({ a: +(a0 + u * (a1 - a0)).toFixed(4), kind: rs.dormerKind ?? 'plain', ...(rs.hoist ? { hoist: true } : {}) });
+    }
   });
   // The renderer takes the first head whose span and storeys match a window: storey-specific dressings go first.
   heads.sort((p, q) => (p.storeys ? 0 : 1) - (q.storeys ? 0 : 1));
