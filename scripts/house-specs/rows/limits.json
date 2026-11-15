@@ -400,6 +400,14 @@
       "component": "crown",
       "what": "the register names 161 a bell front; the cut shows a gable with scrolled shoulders at the cut resolution; bell or neck is not decidable from it: the read (neck) is drawn",
       "ref": "lane D, cut belt-20261114/cuts/0363100012167679.jpg against monument-gables.json"
+    },
+    {
+      "fronts": [
+        "0363100012167680"
+      ],
+      "component": "cornice",
+      "what": "a white attic with balustrade panels and a raised curved centre over the cornice",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
     }
   ],
   "herengracht-25-49": [
@@ -436,6 +444,54 @@
       "component": "crown",
       "what": "41: a small white pedimented top piece over the frieze cornice, and red brick with white bands; drawn as a plain frieze cornice",
       "ref": "lane D belt fix 2 (2026-11-15)"
+    }
+  ],
+  "herengracht-75-89": [
+    {
+      "fronts": [
+        "0363100012179665"
+      ],
+      "component": "wall",
+      "what": "white stone bands and a tall blind centre panel across the step gable front",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
+    }
+  ],
+  "herengracht-76-90": [
+    {
+      "fronts": [
+        "0363100012169010"
+      ],
+      "component": "wall",
+      "what": "white stone banding (speklagen) at every storey",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
+    }
+  ],
+  "herengracht-91-123": [
+    {
+      "fronts": [
+        "0363100012180437"
+      ],
+      "component": "gable",
+      "what": "carved claw pieces beside the neck",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012179051"
+      ],
+      "component": "roof",
+      "what": "a small white top piece over the cornice",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
+    }
+  ],
+  "herengracht-179-215": [
+    {
+      "fronts": [
+        "0363100012176310"
+      ],
+      "component": "cornice",
+      "what": "a frieze with balustrade over the cornice",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
     }
   ]
 }
