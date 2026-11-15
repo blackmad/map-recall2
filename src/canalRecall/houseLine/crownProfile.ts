@@ -92,7 +92,20 @@ export interface RowCrown {
   shoulder?: 'sloped';
   /** The attic light's head: a round or segmental arch (absent: square). */
   atticHead?: 'round' | 'segmental';
+  /** `belt`: the canal belt's gable dress (BELT_GABLE). Absent: the kit's stock outlines and trim, byte-identical. */
+  dress?: 'belt';
 }
+/**
+ * The canal belt's gable outlines (lane D, 2026-11-15; David on #391: "Gables still look pretty bad"), from the Herengracht
+ * 25-73 cuts beside the sheets. Outline proportions only; the trim (claws, copings, caps, finials) is lane R's.
+ *   neck  - the neck stands tall on low claw pieces (shoulders at 0.3 of the rise, the photos' 0.25-0.35, not the kit's
+ *           0.45 that made a wide trapezoid); a segmental cap a sixth of the rise high;
+ *   bell  - the arched crest narrower than the bell's body (0.72), so a ledge shows at its springing; a cap a fifth of
+ *           the rise;
+ *   step  - treads about 0.6 m high (3-7 a side; the kit's 0.85 m drew three broad steps on Herengracht 27's six);
+ *   spout - the upright top a fifth of the rise (0.5-0.9 m; the kit's third drew a chimney).
+ */
+export const BELT_GABLE = { tread: 0.6, steps: [3, 7], neckShoulder: 0.3, neckCap: [0.16, 0.7], bellCrest: 0.72, bellCap: [0.2, 0.9], spoutTop: [0.2, 0.5, 0.9] } as const;
 export function isRowCrown(v: unknown): v is RowCrown {
   const c = v as RowCrown | null;
   return !!c && typeof c === 'object' && (ROW_GABLE_SHAPES as readonly string[]).includes(c.shape) && Number.isFinite(c.riseM) && c.riseM > 0.5;
@@ -106,11 +119,15 @@ export function crownDims(c: RowCrown, W: number) {
   const half = W / 2, T = c.riseM;
   const foot = clamp(c.footW ?? W, Math.min(W, 1.6), W) / 2;
   const defaultNeck = c.shape === 'raised' ? clamp(W * 0.32, 1.1, 2.4) : c.shape === 'bell' ? foot * 0.46 : c.shape === 'step' ? foot * 0.3 : c.shape === 'spout' ? foot * 0.32 : foot * 0.5; // the kit's stock shares (crownOutline neckShare, trap 0.3)
-  const neck = clamp((c.neckW ?? defaultNeck) / 2, 0.45, foot * 0.8);
+  const belt = c.dress === 'belt' && (c.shape === 'neck' || c.shape === 'bell');
+  // The belt's neck and bell: the neck as wide as the profile draws it (the kit's stock share of the foot when unread).
+  const neck = clamp((c.neckW ?? (belt ? 2 * foot * (c.shape === 'bell' ? 0.46 : 0.5) : defaultNeck)) / 2, 0.45, foot * 0.8);
   // Neck and bell: the kit's stock cap rise (crownOutline capRiseOf), so the trim and the opening follow its outline.
   const kitCap = (c.shape === 'neck' || c.shape === 'bell') ? capRiseOf({ gable: c.shape, ...(c.cap ? { crownCap: c.cap } : {}) } as unknown as FrontIntent, T, 2 * foot) : 0;
-  const cap = c.shape === 'neck' || c.shape === 'bell' ? kitCap : c.shape === 'raised' ? clamp(c.cap === 'flat' ? 0.25 : neck * 0.55, 0.2, Math.min(0.6, (T - (c.bandM ?? 0.5)) * 0.35)) : 0;
-  const steps = c.shape === 'step' ? (c.steps && c.steps >= 1 ? clamp(Math.round(c.steps), 1, 8) : clamp(Math.round(T / 0.85), 2, 5)) : 0;
+  const B = BELT_GABLE;
+  const cap = belt ? (c.shape === 'bell' ? clamp(T * B.bellCap[0], 0.3, B.bellCap[1]) : clamp(T * B.neckCap[0], 0.3, B.neckCap[1]))
+    : c.shape === 'neck' || c.shape === 'bell' ? kitCap : c.shape === 'raised' ? clamp(c.cap === 'flat' ? 0.25 : neck * 0.55, 0.2, Math.min(0.6, (T - (c.bandM ?? 0.5)) * 0.35)) : 0;
+  const steps = c.shape === 'step' ? (c.steps && c.steps >= 1 ? clamp(Math.round(c.steps), 1, 8) : c.dress === 'belt' ? clamp(Math.round(T / B.tread), B.steps[0], B.steps[1]) : clamp(Math.round(T / 0.85), 2, 5)) : 0;
   return { half, T, foot, neck, cap, steps };
 }
 
@@ -150,13 +167,19 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
     x0 = -half;
   } else {
     const necked = c.shape === 'neck' || c.shape === 'bell';
+    if (necked && c.dress === 'belt') {
+      // The belt's neck and bell (BELT_GABLE): the kit's own outline maths, at the belt's shoulders, crest and cap.
+      const b = y0 + KIT_Z, t = T + KIT_Z, bell = c.shape === 'bell', sr = c.shoulderRise ?? (bell ? 0.55 : BELT_GABLE.neckShoulder);
+      kit = canalhouseCrownProfile(bell ? 'klok' : 'hals', 2 * foot, b, t, 2 * neck, b + (T - y0) * sr, 0,
+        { cap: c.cap ?? (bell ? 'rounded' : 'segmental'), capRiseM: Math.min(d.cap, (T - y0) * (1 - sr)), crestWidthM: bell ? 2 * neck * BELT_GABLE.bellCrest : 2 * neck, shoulder: 'concave' });
+    } else
     kit = crownProfile({ gable: c.shape, ...(c.neckW ? { crownNeckWidth: neck / foot } : {}), crownSteps: d.steps || undefined,
       ...(necked && c.cap ? { crownCap: c.cap } : {}), ...(necked && c.shoulderRise ? { crownShoulderRise: c.shoulderRise } : {}) } as unknown as FrontIntent, 2 * foot, y0 + KIT_Z, T + KIT_Z);
     x0 = -foot;
     // The spout (tuitgevel, Herengracht 71/73): straight rakes up to small shoulders, then a narrow upright top the neck's
     // width, about a third of the rise tall (the kit's tuit drew a truncated point, its top a third of the front wide).
     if (c.shape === 'spout') {
-      const b = y0 + KIT_Z, t = T + KIT_Z, sy = t - clamp(T * 0.3, 0.8, 1.4), ledge = clamp(foot * 0.08, 0.12, 0.25);
+      const b = y0 + KIT_Z, t = T + KIT_Z, sy = t - spoutTop(c), ledge = clamp(foot * 0.08, 0.12, 0.25);
       kit = [[0, b], [foot - neck - ledge, sy], [foot - neck, sy], [foot - neck, t], [foot + neck, t], [foot + neck, sy], [foot + neck + ledge, sy], [2 * foot, b]];
     }
     // A sloped shoulder: the eaves-level corners under the first risers go, so the foot runs straight to the riser's top.
@@ -176,6 +199,8 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
   return out;
 }
 
+/** The spout's upright top: a third of the rise (0.8-1.4 m), the belt's a fifth (0.5-0.9 m). */
+const spoutTop = (c: RowCrown) => c.dress === 'belt' ? clamp(c.riseM * BELT_GABLE.spoutTop[0], BELT_GABLE.spoutTop[1], BELT_GABLE.spoutTop[2]) : clamp(c.riseM * 0.3, 0.8, 1.4);
 const PROUD = 0.014, PROUD_HI = 0.026;
 const GLASS = '#272c33';
 
@@ -284,7 +309,7 @@ export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f
   // The crown's opening: a hoist door (white frame, dark leaves) or an attic light, centred, inside the profile.
   const lights = c.attic ?? 1;
   if (!c.hoist && lights < 1) return;
-  const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - clamp(T * 0.3, 0.8, 1.4) - 0.1 : T - 0.25;
+  const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - spoutTop(c) - 0.1 : T - 0.25;
   const z0 = c.shape === 'raised' ? (c.bandM ?? 0.5) + 0.12 : Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
   const z1 = Math.min(capTop - 0.15, z0 + (c.hoist ? 1.5 : 1.15));
   if (z1 - z0 < 0.55) return;

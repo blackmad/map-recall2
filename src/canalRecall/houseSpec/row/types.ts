@@ -213,6 +213,10 @@ export interface RowGable {
   neckOverM?: number;
   /** The attic light's head (absent: square). */
   atticHead?: 'round' | 'segmental';
+  /** `belt`: the canal belt's gable dress (houseLine/crownProfile.ts BELT_GABLE): a tall neck on low white claw pieces with a
+   *  band at its foot and an overhanging cap moulding, a bell with a narrower moulded crest and a crest ornament, finer
+   *  step treads with a crest finial, a short capped spout top. Absent: the kit's stock outlines (byte-identical). */
+  dress?: 'belt';
 }
 export type RowDesignKey = keyof RowDesign;
 

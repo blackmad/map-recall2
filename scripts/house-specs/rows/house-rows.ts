@@ -77,7 +77,7 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
     const cut = cuts?.rows.find(r => r.pandId === evidenceId(pid));
     return {
       pandId: pid, label: sp?.label ?? (md.numbers?.length ? `${def.title.split(' ')[0]} ${md.label}` : `${def.title.split(' ')[0]} (pand ${md.label})`), numbers: sp?.numbers ?? md.numbers ?? [], built: sp?.buildYear ?? md.built ?? null,
-      widthM: sp?.survey?.frontWidthM ?? md.widthM ?? null, groundOffsetM, eaves3dbag: md.eavesM ?? null,
+      widthM: sp?.survey?.frontWidthM ?? md.widthM ?? null, groundOffsetM, eaves3dbag: md.eavesM ?? null, ...(md.ridgeM ? { ridge3dbag: md.ridgeM } : {}),
       height3dbag: cut?.wall.heightM ?? (attrs ? Math.round((attrs.b3_h_dak_50p - attrs.b3_h_maaiveld) * 100) / 100 : null) ?? md.heightM ?? null,
       ...(fronts?.length ? { face: fronts } : {}), read: answer, readRef: answer?.image?.ref,
       ...(raw.wallFromCuts && (cut?.w1?.hex ?? cut?.wallHex) ? { wallSample: cut!.w1?.hex ?? cut!.wallHex } : {}),

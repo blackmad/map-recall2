@@ -7,6 +7,8 @@ export interface RowMemberDef { pandId: string; label: string; widthM: number; x
   numbers?: number[]; built?: number; side?: 'even' | 'odd'; widthSource?: string;
   /** 3DBAG b3_h_dak_70p over ground (the cutter's wall height), for a member with no cut. */
   heightM?: number;
+  /** 3DBAG b3_h_dak_max over ground: the ridge, a street gable's apex (belt-ridges.ts). */
+  ridgeM?: number;
   /** The pand the evidence (D1 cut, answer, cuts.json row) is filed under, when the world draws the house as another pand
    *  (Herengracht 2-4: the world keeps the taller twin NL.IMBAG.Pand.0363100100091828 over the D1 pand 0363100012168202). */
   evidencePandId?: string }

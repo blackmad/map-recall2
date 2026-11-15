@@ -76,6 +76,8 @@ export interface MemberInput {
   /** 3DBAG eaves of the pand (m above its ground, the game's decorated feature: threeBuildingMesh.ts wallTopHeightM), when no
    *  face measures the cornice: the wall top under a roof storey, so no roof-storey allowance is taken off it. */
   eaves3dbag?: number | null;
+  /** 3DBAG ridge of the pand (b3_h_dak_max over its ground): a street gable's apex (belt rows, rows.json `ridgeM`). */
+  ridge3dbag?: number | null;
   /** Face statements per front (length 2 for a two-module pand). */
   face?: FaceFront[];
   read?: DescriberAnswer | null;
@@ -264,6 +266,9 @@ function votes<T>(xs: T[]): Array<{ value: T; n: number }> {
 }
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
 const r2 = (v: number) => Math.round(v * 100) / 100;
+/** A gable's foot moves onto its ridge only between these: a larger gap is another roof or a poor 3DBAG fit (Herengracht 63:
+ *  20.70 m on a rear block, the photo level with 61; 57: 11.46 m with no ridge line, nok -0.6 m). */
+export const GABLE_ON_RIDGE = { minMoveM: 0.05, maxMoveM: 2 } as const;
 /** A gabled crown's rise when no gable was read (belt rows): the medians of the reviewed belt gables (2026-11-15:
  *  neck 2.9 m of 9, step 2.9 of 3, spout 3.3 of 2, point 3.4 of 3, bell 3.4 of 1). */
 export const BELT_GABLE_RISE = { neck: 2.9, bell: 3.4, step: 2.9, spout: 3.3, point: 3.4 } as const;
@@ -542,6 +547,48 @@ export function solveRow(input: RowInput): RowRecord {
     if (line.value !== null && line.source !== 'reviewed' && /^3DBAG wall height median; no measured cornice$/.test(line.ref ?? '')) {
       s.design.corniceTopM = { ...line, value: r2(line.value - rise / 2), ref: `${line.ref}; the gable's foot half its default rise (${rise} m) under the median` };
       for (const f of fs) if (f.topM !== null && f.topM !== undefined) f.topM = r2(f.topM - rise / 2);
+    }
+  }
+  // A stated gable's apex on the pand's 3DBAG ridge (canal belt rows; David on #391, 2026-11-15: "Gables still look pretty
+  // bad"). The line under a gabled front was the 3DBAG wall median, which stands mid-gable, plus the rise on top: every belt
+  // gable stood 1-3 m over its real apex with an extra band of wall under its shoulders (Herengracht 59: 16.04 + 2.8 =
+  // 18.84 m against a 17.91 m ridge). The foot is the ridge less the rise, per front, unless a reviewed line states it.
+  // The belt's gable dress (crownProfile.ts BELT_GABLE) on every stated gable of a belt row: a renderer dress for the
+  // canal-belt gable families, not a read; the read fields (rise, neck, cap, steps) stand as stated.
+  if (sampled) {
+    const dress = (g: RowField<RowGable> | undefined) => { if (g?.value && g.value.riseM > 0 && !g.value.dress) g.value = { ...g.value, dress: 'belt' }; };
+    for (const s of series) dress(s.design.gable);
+    for (const f of fronts) dress((f.overrides as { gable?: RowField<RowGable> }).gable);
+  }
+  if (sampled) {
+    // Each gable proposes a foot on its own ridge; a series is one design, so its fronts move together onto the mean of
+    // their proposals, and only when every front of the series has one (Herengracht 155/157: ridges 1.24 m apart gave a
+    // cornice step inside the pair).
+    const props = new Map<RowFront, { foot: number; ridge: number; rise: number; line: number }>();
+    for (const f of fronts) {
+      const m = input.members.find(x => x.pandId === f.pandId), ridge = m?.ridge3dbag;
+      const s = series.find(x => x.id === f.seriesId);
+      const fo = f.overrides as { gable?: RowField<RowGable>; corniceTopM?: RowField<number | null> };
+      const rise = (fo.gable?.value ?? s?.design.gable?.value)?.riseM ?? 0;
+      if (!ridge || !s || !(rise > 0) || f.sub) continue;
+      if (fo.corniceTopM?.source === 'reviewed' || (!fo.corniceTopM && s.design.corniceTopM.source === 'reviewed')) continue;
+      const line = fo.corniceTopM?.value ?? s.design.corniceTopM.value;
+      if (line === null || line === undefined) continue;
+      const foot = r2(ridge - rise);
+      if (Math.abs(foot - line) < GABLE_ON_RIDGE.minMoveM || Math.abs(foot - line) > GABLE_ON_RIDGE.maxMoveM) continue;
+      props.set(f, { foot, ridge, rise, line });
+    }
+    for (const s of series) {
+      const members = fronts.filter(f => f.seriesId === s.id && !f.sub);
+      if (!members.length || !members.every(f => props.has(f))) continue;
+      const foot = r2(members.reduce((a, f) => a + props.get(f)!.foot, 0) / members.length);
+      if (members.some(f => Math.abs(foot - props.get(f)!.line) > GABLE_ON_RIDGE.maxMoveM)) continue;
+      for (const f of members) {
+        const p = props.get(f)!, fo = f.overrides as { corniceTopM?: RowField<number | null> };
+        const of = members.length > 1 ? `; the series' ${members.length} fronts take the mean, ${foot} m` : '';
+        fo.corniceTopM = { value: foot, source: 'single-read', ref: `3DBAG ridge ${p.ridge} m (b3_h_dak_max) less the gable's ${p.rise} m rise; the line was ${p.line} m${of}` };
+        f.topM = r2(foot - (f.groundOffsetM ?? 0));
+      }
     }
   }
   if (fronts.some(f => f.groundOffsetM === null || f.groundOffsetM === undefined))

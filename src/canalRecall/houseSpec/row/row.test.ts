@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 process.env.ROW_D1_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures/d1');
 const { loadRowDefs } = await import('../../../../scripts/house-specs/rows/rowDefs.ts');
 const { loadRow } = await import('../../../../scripts/house-specs/rows/house-rows.ts');
-const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, BELT_GABLE_RISE, groundColourOfRead, headsList, oneShopfront } = await import('./solve.ts');
+const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, BELT_GABLE_RISE, GABLE_ON_RIDGE, groundColourOfRead, headsList, oneShopfront } = await import('./solve.ts');
 const { rowSpec, rowFrontRecords } = await import('./emit.ts');
 const { toRowCheck } = await import('./check.ts');
 const { frontDesign } = await import('./types.ts');
@@ -366,10 +366,13 @@ test('Herengracht belt follow-up: a gabled crown with no read rise takes the fam
   // The fixtures carry no cut samples; a sample on one member makes it a row of measured cuts, as the live belt rows are.
   const belt = (id: string) => { const inp = loadRow(loadRowDefs()[id], '2026-11-15').input; inp.members[0].wallSample = '#6a5040'; return solveRow(inp); };
   const r = belt('herengracht-75-89'), at = (id: string) => frontDesign(r, r.fronts.find(f => f.pandId === id)!);
-  // 79 (register neck, no read): the default neck rise, its foot half the rise under the 3DBAG median (11.9 m).
+  // 79 (register neck, no read): the default neck rise; its foot (10.45 m, half the rise under the 3DBAG median) then moves
+  // onto the 3DBAG ridge (13.7 m) less the rise, so the apex stands at the ridge and not above it.
   assert.equal(at('0363100012168064').gable?.value.riseM, BELT_GABLE_RISE.neck);
   assert.equal(at('0363100012168064').gable?.source, 'period-default');
-  assert.equal(at('0363100012168064').corniceTopM.value, 10.45);
+  assert.equal(at('0363100012168064').gable?.value.dress, 'belt');
+  assert.equal(at('0363100012168064').corniceTopM.value, +(13.7 - BELT_GABLE_RISE.neck).toFixed(2));
+  assert.match(at('0363100012168064').corniceTopM.ref ?? '', /3DBAG ridge 13.7 m/);
   // 85 (reviewed bell rise 3.4 at 12.4 m) keeps its own; a cornice front takes none.
   assert.equal(at('0363100012179601').gable?.value.riseM, 3.4);
   assert.equal(at('0363100012179601').corniceTopM.value, 12.4);
@@ -377,6 +380,33 @@ test('Herengracht belt follow-up: a gabled crown with no read rise takes the fam
   // Rows without measured cuts (Kinkerstraat) are untouched.
   const k = solveRow(loadRow(loadRowDefs()['kinkerstraat-65-87'], '2026-11-15').input);
   assert.ok(k.series.every(x => x.design.gable?.source !== 'period-default'));
+});
+
+test('Herengracht gables: a ridge further than the cap from the foot is another roof and leaves the line alone', () => {
+  // 57: 3DBAG ridge 11.46 m with no ridge line (nok under the eaves); 63: 20.70 m on a rear block. Both stay on their line.
+  const inp = loadRow(loadRowDefs()['herengracht-51-73'], '2026-11-15').input; inp.members[0].wallSample = '#6a5040';
+  const r = solveRow(inp), at = (id: string) => frontDesign(r, r.fronts.find(f => f.pandId === id)!);
+  for (const pid of ['0363100012179673', '0363100012179682']) {
+    const m = inp.members.find(x => x.pandId === pid)!, d = at(pid);
+    const moved = /3DBAG ridge/.test(d.corniceTopM.ref ?? '');
+    const gap = Math.abs((m.ridge3dbag ?? 0) - (d.gable?.value.riseM ?? 0) - d.corniceTopM.value!);
+    assert.ok(moved ? gap < 0.01 : true, `${pid} moved onto its ridge`);
+    if (moved) assert.ok(Math.abs(m.ridge3dbag! - d.gable!.value.riseM - d.corniceTopM.value!) <= GABLE_ON_RIDGE.maxMoveM);
+  }
+  assert.ok(!/3DBAG ridge/.test(at('0363100012179673').corniceTopM.ref ?? ''), '57 keeps its line');
+  assert.ok(inp.members.find(x => x.pandId === '0363100012179673')?.ridge3dbag, '57 carries a 3DBAG ridge');
+  const movedFronts = r.fronts.filter(f => /3DBAG ridge/.test(frontDesign(r, f).corniceTopM.ref ?? ''));
+  assert.ok(movedFronts.length >= 3, `the row's other gables stand on their ridges (${movedFronts.length})`);
+  // A series moves as one (Herengracht 155/157, one design with ridges 1.24 m apart, stepped 1.24 m inside the pair):
+  // no front moved onto its ridge differs from the rest of its series.
+  for (const id of ['herengracht-51-73', 'herengracht-25-49', 'herengracht-75-89', 'herengracht-125-161']) {
+    const i = loadRow(loadRowDefs()[id], '2026-11-15').input; i.members[0].wallSample = '#6a5040';
+    const rr = solveRow(i);
+    for (const s of rr.series) {
+      const fs = rr.fronts.filter(f => f.seriesId === s.id && !f.sub), lines = fs.map(f => frontDesign(rr, f).corniceTopM);
+      if (lines.some(l => /3DBAG ridge/.test(l.ref ?? ''))) assert.equal(new Set(lines.map(l => l.value)).size, 1, `${s.id} moves as one`);
+    }
+  }
 });
 
 test('a module pand shares its read dormers out whole per front, at least one where any was read', () => {
