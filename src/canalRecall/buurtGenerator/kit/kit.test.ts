@@ -353,3 +353,58 @@ test('round 13: raised brick parts over the line, flush or proud from the paveme
   assert.ok(flush.length && flush.every(t => t.p.every(q => q[2] >= -0.05 - 1e-9)), 'a flush part stands on the line');
   assert.equal(buurtRoofKitFor({ erkers: [] }, 12, 4, 3)!.raised, undefined);
 });
+
+test('round 14: stacked balconies with a dark railing, on the stated storeys', async () => {
+  const { BALCONY_LOOK, buurtRoofKitOf } = await import('./roofKit.js');
+  const { balconiesOf, buurtKitOf } = await import('./frontKit.js');
+  assert.deepEqual(balconiesOf([{ a0: 0.2, a1: 0.6, from: 2, storeys: 2, depthM: 1.2, rail: 'dark', x: 1 }, { a0: 0.5, a1: 0.4 }, { a0: 0.1, a1: 0.3, rail: 'gold', depthM: 9 }]),
+    [{ a0: 0.2, a1: 0.6, from: 2, storeys: 2, depthM: 1.2, rail: 'dark' }, { a0: 0.1, a1: 0.3 }]);
+  const front = buurtKitOf({ frontLine: line, erkers: [], balconies: [{ a0: 0.3, a1: 0.7, from: 2 }] })!;
+  assert.ok(kitWantsCoping(front));
+  const kit = buurtRoofKitFor(front, 15, 5, 3)!;
+  assert.deepEqual(kit.balconies, [{ a0: 0.3, a1: 0.7, from: 2 }]);
+  assert.ok(kitDrawsFront(kit) && buurtRoofKitOf(kit)?.balconies?.length === 1);
+  const s = sink(); drawKitFront(s, kit, L4, W4, 1);
+  const slabs = s.out.filter(t => t.hex === BALCONY_LOOK.slab && t.n?.[2] === 1);
+  // From the second upper storey to the top: three slabs (two triangles each), each at its floor, reaching 1.0 m out.
+  assert.equal(slabs.length, 2 * 3);
+  assert.ok(slabs.every(t => Math.max(...t.p.map(q => q[0])) > L4 / 2 + 1.0));
+  const dark = s.out.filter(t => t.hex === BALCONY_LOOK.dark);
+  assert.ok(dark.length > 3 * 30 && dark.every(t => t.p.every(q => Math.abs(q[1]) <= 0.2 * W4 + 1e-6)), 'the railing bars within the span');
+  // An attic top storey keeps its balcony-free band; `solid` a white parapet with no bars.
+  const s2 = sink(); drawKitFront(s2, { ...kit, attic: {}, balconies: [{ a0: 0.3, a1: 0.7, rail: 'solid' }] }, L4, W4, 1);
+  assert.equal(s2.out.filter(t => t.hex === BALCONY_LOOK.slab && t.n?.[2] === 1).length, 2 * 3);
+  assert.equal(s2.out.filter(t => t.hex === BALCONY_LOOK.dark).length, 0);
+});
+
+test('round 14: porch, portiek and arched doorways; old entries parse as before', async () => {
+  const { ENTRY_KIND_LOOK, entryHalfM } = await import('./roofKit.js');
+  const { entriesOf } = await import('./frontKit.js');
+  assert.deepEqual(entriesOf([{ a: 0.5, kind: 'canopy', widthM: 2, doorHex: '#123456' }]), [{ a: 0.5, kind: 'canopy' }], 'old kinds take no new fields');
+  assert.deepEqual(entriesOf([{ a: 0.5, kind: 'arched', widthM: 2.4, doorHex: '#7a2420', cells: 3 }, { a: 0.4, kind: 'tent' }]), [{ a: 0.5, kind: 'arched', cells: 3, widthM: 2.4, doorHex: '#7a2420' }]);
+  assert.equal(entryHalfM({ a: 0.5, kind: 'door' }), ENTRY_LOOK.plateW / 2);
+  const draw = (en: object, gz = -16) => { const s = sink(); drawKitFront(s, kit4({ entries: [en as never], groundZ: gz }), L4, W4, 1); return s.out; };
+  const porch = draw({ a: 0.5, kind: 'porch' });
+  assert.ok(porch.some(t => t.hex === ENTRY_KIND_LOOK.timber) && porch.some(t => t.hex === ENTRY_KIND_LOOK.stone && t.n?.[2] === 1));
+  assert.ok(Math.max(...porch.flatMap(t => t.p.map(q => q[2]))) < -12.9, 'under the first floor');
+  const portiek = draw({ a: 0.5, kind: 'portiek' });
+  assert.equal(portiek.filter(t => t.hex === ENTRY_KIND_LOOK.step).length, 2 * ENTRY_KIND_LOOK.portiek.steps);
+  assert.ok(portiek.some(t => t.hex === ENTRY_KIND_LOOK.recess));
+  const arch = draw({ a: 0.5, kind: 'arched', widthM: 2.4, doorHex: '#7a2420' }, -17);
+  const crown = Math.max(...arch.filter(t => t.hex === ENTRY_KIND_LOOK.recess).flatMap(t => t.p.map(q => q[2])));
+  assert.ok(Math.abs(crown - (-17 + ENTRY_KIND_LOOK.arched.springM + 1.2)) < 1e-6, 'the round arch\'s crown');
+  const low = draw({ a: 0.5, kind: 'arched', widthM: 2.4 });
+  assert.ok(Math.max(...low.flatMap(t => t.p.map(q => q[2]))) <= -12.9 - 0.1 + 1e-9, 'a low ground storey lowers the springing, never the first floor');
+  assert.ok(arch.some(t => t.hex === '#7a2420') && arch.filter(t => t.part === 'plate').length >= ENTRY_KIND_LOOK.arched.segs);
+});
+
+test('round 14: small-paned upper sashes on the stated cells, clear of the erkers', async () => {
+  const { PANES_LOOK } = await import('./roofKit.js');
+  const { kitPanesOf } = await import('./frontKit.js');
+  assert.equal(kitPanesOf({ rows: 2 }), null);
+  assert.deepEqual(kitPanesOf({ cells: 3, rows: 1, paneM: 2, share: 0.35 }), { cells: 3, rows: 1, share: 0.35 });
+  const mullions = (k: Partial<BuurtRoofKit>) => { const s = sink(); drawKitFront(s, kit4(k), L4, W4, 1); return s.out.filter(t => t.hex === ERKER_LOOK_WHITE && Math.abs(Math.abs(t.p[1][1] - t.p[0][1]) - PANES_LOOK.mullionM) < 1e-9).length / 2; };
+  assert.equal(mullions({ panes: { cells: 3 } }), 4 * 3);
+  assert.equal(mullions({ panes: { cells: 3 }, attic: {} }), 3 * 3, 'not in the attic storey');
+  assert.equal(mullions({ panes: { cells: 3 }, erkers: [{ a0: 0.35, a1: 0.65, depthM: 0.6, faceM: 1.6, storeys: 1 }] }), 4 * 3 - 1, 'the middle cell under a one-storey oriel');
+});
