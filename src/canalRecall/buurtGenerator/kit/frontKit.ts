@@ -10,6 +10,7 @@
  * of the line, within the member's span, move), so the front is one run, and the erker is drawn as what it is, a bay on
  * the upper storeys (roofKit.ts `drawErkers`). Pure: no fs, no DOM.
  */
+import { redLightFrontOf, type RedLightFront } from '../../groundParts/redLightFront.js';
 export type LngLat = readonly [number, number];
 /** One erker on a member's front: its base span (fractions of the front line, left to right as seen), depth and face width (m). */
 export interface BuurtErker { a0: number; a1: number; depthM: number; faceM: number;
@@ -69,7 +70,17 @@ export interface BuurtKitFront {
   panes?: KitPanes;
   /** Canted folds of the front (round 15): `KitCant`. */
   cants?: KitCant[];
+  /** Ground-storey window fronts (round 16, De Wallen): `KitWindowFront`. */
+  windowFronts?: KitWindowFront[];
 }
+/** A De Wallen window front over [a0, a1] of the front (groundParts/redLightFront.ts), from the pavement. */
+export type KitWindowFront = { a0: number; a1: number } & RedLightFront;
+/** Stated window fronts from untrusted JSON: a span inside the front, unknown fields dropped. */
+export const windowFrontsOf = (v: unknown): KitWindowFront[] => (Array.isArray(v) ? v : []).flatMap(w => {
+  if (!w || typeof w !== 'object') return [];
+  const a0 = Number((w as { a0?: unknown }).a0), a1 = Number((w as { a1?: unknown }).a1), f = redLightFrontOf(w);
+  return f && Number.isFinite(a0) && Number.isFinite(a1) && a0 >= 0 && a1 <= 1 && a1 - a0 > 0.05 ? [{ a0, a1, ...f }] : [];
+});
 /**
  * A flat series' broad eaves. `overhangM` the slab's reach over the street; `frieze` absent the Rooseveltlaan lattice
  * frieze under it, `false` none. Round 13 (lane R), each drawn only when stated:
@@ -148,7 +159,7 @@ export function kitPanesOf(v: unknown): KitPanes | null {
 export const KIT_MULLION_SHARE = 0.3;
 /** A flat series draws the low coping when the kit hangs anything on its front (erkers, ribbon, rhythm, piers). */
 /** Round 10: a member carrying its series' `copingHex` draws the coping too (the series line runs through). */
-export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.sides || k.loggias || k.eaves || k.entries?.length || k.balconies?.length || k.panes || k.cants?.length || k.copingHex);
+export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.sides || k.loggias || k.eaves || k.entries?.length || k.balconies?.length || k.panes || k.cants?.length || k.windowFronts?.length || k.copingHex);
 /** A flat series with erkers draws its lid as a low coping behind the white cornice ledge (m), the erkers on it. */
 export const KIT_FLAT_RISE_M = 0.55;
 
@@ -296,11 +307,11 @@ export function buurtKitOf(v: unknown): BuurtKitFront | null {
   const rr = k.roof as { dormers?: unknown; eavesM?: unknown; eavesFrieze?: unknown } | undefined, eavesM = Number(rr?.eavesM);
   const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM), ...(hex ? { roofHex: hex } : {}),
     ...(rr?.dormers === false ? { dormers: false as const } : {}), ...(eavesM > 0.2 && eavesM < 2 ? { eavesM, ...(rr?.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } : undefined;
-  const x = v as { sash?: unknown; ribbon?: unknown; attic?: unknown; raised?: unknown; copingHex?: unknown; rhythm?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown }; eaves?: unknown; entries?: unknown; balconies?: unknown; panes?: unknown; cants?: unknown };
-  const flatEaves = !roof ? kitEavesOf(x.eaves) : null, entries = entriesOf(x.entries), attic = kitAtticOf(x.attic), raised = raisedOf(x.raised), balconies = balconiesOf(x.balconies), panes = kitPanesOf(x.panes), cants = cantsValid(x.cants);
+  const x = v as { sash?: unknown; ribbon?: unknown; attic?: unknown; raised?: unknown; copingHex?: unknown; rhythm?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown }; eaves?: unknown; entries?: unknown; balconies?: unknown; panes?: unknown; cants?: unknown; windowFronts?: unknown };
+  const flatEaves = !roof ? kitEavesOf(x.eaves) : null, entries = entriesOf(x.entries), attic = kitAtticOf(x.attic), raised = raisedOf(x.raised), balconies = balconiesOf(x.balconies), panes = kitPanesOf(x.panes), cants = cantsValid(x.cants), windowFronts = windowFrontsOf(x.windowFronts);
   const side = (q: unknown) => q === 'pier' || q === 'pair' ? q : null, sl = side(x.sides?.left), sr = side(x.sides?.right);
   const joins = k.joins && typeof k.joins === 'object' ? { ...(k.joins.left === true ? { left: true } : {}), ...(k.joins.right === true ? { right: true } : {}) } : {};
-  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}), ...(flatEaves ? { eaves: flatEaves } : {}), ...(entries.length ? { entries } : {}), ...(attic ? { attic } : {}), ...(raised.length ? { raised } : {}), ...(balconies.length ? { balconies } : {}), ...(panes ? { panes } : {}), ...(cants.length ? { cants } : {}) };
+  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}), ...(flatEaves ? { eaves: flatEaves } : {}), ...(entries.length ? { entries } : {}), ...(attic ? { attic } : {}), ...(raised.length ? { raised } : {}), ...(balconies.length ? { balconies } : {}), ...(panes ? { panes } : {}), ...(cants.length ? { cants } : {}), ...(windowFronts.length ? { windowFronts } : {}) };
 }
 
 /**

@@ -489,3 +489,26 @@ test('round 15: a row box squared to the kit\'s street normal when it faces a si
     for (const m of [wide, skew, deep]) assert.equal(JSON.stringify(tris(m.feat, true, null)), JSON.stringify(tris(m.feat, false, null)), `${m.rec.pandId}: no street facing, byte-identical`);
   } finally { delete g.__canalRecallBuurtKit; process.env.ROW_FRONT = '0'; resetRowFront(); setRowFrontRecords([]); }
 });
+
+test('round 16: a cant bricks over the window it half covers; window fronts draw from the pavement; absent, as before', async () => {
+  const { cantsOnCells } = await import('./frontKit.js');
+  const { buurtRoofKitFor, drawKitFront, kitDrawsFront } = await import('./roofKit.js');
+  // 091497: three cells, the cant over 0.79-1 of the front: the third window (0.71 of its cell glazed) is bricked from the cell's edge.
+  const [c] = cantsOnCells([{ a0: 0.7892, ap: 0.9549, a1: 1, outM: 0.46 }], 3);
+  assert.deepEqual(c.plates, [[0.6667, 0.7892]]);
+  // A cant clear of every window keeps no plates (byte-identical record).
+  assert.deepEqual(cantsOnCells([{ a0: 0.97, ap: 1, a1: 1, outM: 0.3 }], 3), [{ a0: 0.97, ap: 1, a1: 1, outM: 0.3 }]);
+  const base = { erkers: [] as never[] };
+  const plain = buurtRoofKitFor(base, 9.3, 3, 3.3)!;
+  const front = buurtRoofKitFor({ ...base, windowFronts: [{ a0: 0.05, a1: 0.95, doors: 3 }] }, 9.3, 3, 3.3)!;
+  assert.equal(kitDrawsFront(plain), false);
+  assert.equal(kitDrawsFront(front), true);
+  assert.equal(front.footZ, -9.3);
+  const { RoofSink } = await import('../../roofSink.js');
+  const s = new RoofSink({ cx: 0, cy: 0, ux: 1, uy: 0, len: 10, wid: 4, coverage: 1, maxDev: 0 } as never, 0, { bayM: 2, storeyM: 3, cellM: 1 } as never);
+  drawKitFront(s, front, 10, 4, 1);
+  const zs = s.out.flatMap(t => t.p.map(p => p[2]));
+  assert.ok(Math.abs(Math.min(...zs) + 9.3) < 1e-6, 'from the pavement');
+  assert.ok(Math.max(...zs) <= front.z0 + 1e-6, 'the ground storey only (its brick infill to the storey top)');
+  assert.ok(s.out.some(t => t.hex === '#ff2a3a'), 'the tube');
+});
