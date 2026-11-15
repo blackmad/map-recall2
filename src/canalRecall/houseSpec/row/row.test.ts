@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 process.env.ROW_D1_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures/d1');
 const { loadRowDefs } = await import('../../../../scripts/house-specs/rows/rowDefs.ts');
 const { loadRow } = await import('../../../../scripts/house-specs/rows/house-rows.ts');
-const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, groundColourOfRead, headsList, oneShopfront } = await import('./solve.ts');
+const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, BELT_GABLE_RISE, groundColourOfRead, headsList, oneShopfront } = await import('./solve.ts');
 const { rowSpec, rowFrontRecords } = await import('./emit.ts');
 const { toRowCheck } = await import('./check.ts');
 const { frontDesign } = await import('./types.ts');
@@ -360,4 +360,21 @@ test('Herengracht belt fix 2: a reviewed split reads two gables; a reviewed top 
   for (const f of fs) { assert.ok(!f.topUnread); assert.equal(frontDesign(r, f).crown.value, 'point'); }
   const a = solveRow(loadRow(loadRowDefs()['herengracht-2-24'], '2026-11-15').input);
   assert.equal(a.fronts.find(f => f.pandId === '0363100012179760')!.topM, 12.4);
+});
+
+test('Herengracht belt follow-up: a gabled crown with no read rise takes the family rise, its foot under the 3DBAG median', () => {
+  // The fixtures carry no cut samples; a sample on one member makes it a row of measured cuts, as the live belt rows are.
+  const belt = (id: string) => { const inp = loadRow(loadRowDefs()[id], '2026-11-15').input; inp.members[0].wallSample = '#6a5040'; return solveRow(inp); };
+  const r = belt('herengracht-75-89'), at = (id: string) => frontDesign(r, r.fronts.find(f => f.pandId === id)!);
+  // 79 (register neck, no read): the default neck rise, its foot half the rise under the 3DBAG median (11.9 m).
+  assert.equal(at('0363100012168064').gable?.value.riseM, BELT_GABLE_RISE.neck);
+  assert.equal(at('0363100012168064').gable?.source, 'period-default');
+  assert.equal(at('0363100012168064').corniceTopM.value, 10.45);
+  // 85 (reviewed bell rise 3.4 at 12.4 m) keeps its own; a cornice front takes none.
+  assert.equal(at('0363100012179601').gable?.value.riseM, 3.4);
+  assert.equal(at('0363100012179601').corniceTopM.value, 12.4);
+  assert.equal(at('0363100012179680').gable, undefined);
+  // Rows without measured cuts (Kinkerstraat) are untouched.
+  const k = solveRow(loadRow(loadRowDefs()['kinkerstraat-65-87'], '2026-11-15').input);
+  assert.ok(k.series.every(x => x.design.gable?.source !== 'period-default'));
 });

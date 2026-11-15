@@ -464,6 +464,14 @@
       "component": "wall",
       "what": "white stone banding (speklagen) at every storey",
       "ref": "lane D belt A/B 3 (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012175701"
+      ],
+      "component": "cornice",
+      "what": "a white attic piece with a hoist window and curved top over the cornice",
+      "ref": "lane D belt follow-up (2026-11-15)"
     }
   ],
   "herengracht-91-123": [

@@ -302,6 +302,33 @@
       "ref": "lane D belt A/B 4, the cut re-read after the second blind review (2026-11-15: today still won)",
       "at": "2026-11-15",
       "note": "88: four storeys to the 12.2 m cornice (shop ground, two banded storeys, one over the outline); the read's 3 counted only what the outline shows"
+    },
+    {
+      "fronts": [
+        "0363100012175701"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "none",
+        "dormersPerFront": 0
+      },
+      "ref": "lane D belt follow-up, the cut re-read (d1-root/belt-20261114/cuts/0363100012175701.jpg, 2026-11-15)",
+      "at": "2026-11-15",
+      "note": "90: a white attic piece with one hoist window over the cornice, no slate roof face; the read's dormer is that attic (limits.json)"
+    },
+    {
+      "fronts": [
+        "0363100012175701"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "painted-brick",
+        "family": "brown-brick",
+        "hex": "#6d594e"
+      },
+      "ref": "lane D belt follow-up, the cut re-read (d1-root/belt-20261114/cuts/0363100012175701.jpg, 2026-11-15)",
+      "at": "2026-11-15",
+      "note": "90: a mid taupe-brown front in the cut, lighter than the read's purple-brown"
     }
   ],
   "herengracht-1-23": [

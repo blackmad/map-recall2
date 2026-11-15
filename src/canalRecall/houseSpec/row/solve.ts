@@ -21,7 +21,7 @@ import type { DescriberAnswer } from '../describer.ts';
 import { JUDGED_PALETTE, judgeFront, variedTone, type JudgedFamily } from '../judgedColour.ts';
 import {
   ROW_RECORD_VERSION, ROW_SOURCE_RANK, type ReadNotDrawn, type Overruled, type RowCorniceKind, type RowCrownKind, type RowDesign,
-  type RowDesignKey, type RowDormerKind, type RowField, type RowFieldSource, type RowFlag, type RowFront, type RowGround, type RowGroundColour, type RowHeadDressing,
+  type RowDesignKey, type RowDormerKind, type RowField, type RowFieldSource, type RowGable, type RowFlag, type RowFront, type RowGround, type RowGroundColour, type RowHeadDressing,
   type RowHeadShape, type RowHeads, type RowMember, type RowRecord, type RowRoofStorey, type RowRoofStoreyKind, type RowSeries, type RowWall,
   type RowWallMaterial, type RowWallOnly, type RowWindowKind,
 } from './types.ts';
@@ -264,6 +264,9 @@ function votes<T>(xs: T[]): Array<{ value: T; n: number }> {
 }
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
 const r2 = (v: number) => Math.round(v * 100) / 100;
+/** A gabled crown's rise when no gable was read (belt rows): the medians of the reviewed belt gables (2026-11-15:
+ *  neck 2.9 m of 9, step 2.9 of 3, spout 3.3 of 2, point 3.4 of 3, bell 3.4 of 1). */
+export const BELT_GABLE_RISE = { neck: 2.9, bell: 3.4, step: 2.9, spout: 3.3, point: 3.4 } as const;
 const PERIOD: { [K in RowDesignKey]?: NonNullable<RowDesign[K]>['value'] } = {
   crown: 'cornice', cornice: 'simple', windows: 'tall-upper', whiteFrames: true, sills: true,
   heads: { shape: 'flat', dressing: 'none' },
@@ -522,6 +525,23 @@ export function solveRow(input: RowInput): RowRecord {
         flags.push({ kind: 'reviewed', field: field, fronts: inside.map(f => f.id), detail: `reviewed ${st.add ? 'adds ' : ''}${JSON.stringify(st.value)} ${st.add ? 'to' : 'overrides'} ${was.source} ${JSON.stringify(was.value)} (${was.ref}): the ${was.source === 'face-intent' ? 'face intent' : 'source'} needs correcting` });
       // A reviewed cornice line moves the fronts' tops with it (Kinkerstraat 126-138: the gable axes' line, not their apex).
       if (field === 'corniceTopM') for (const f of inside) f.topM = st.value === null ? null : r2((st.value as number) - (f.groundOffsetM ?? 0));
+    }
+  }
+  // Gabled crowns with no stated rise (canal belt rows only): a crown read from a cut or named by the register, with no
+  // gable outline, drew as the old plain pitched roof without the series' joinery (rowFront.ts withRowFront takes the
+  // series path only for a stated gable; integrator, 2026-11-15: Herengracht 77, 79, 89 and 91). The family's measured
+  // rise stands in, and where the line is the 3DBAG wall median (which stands mid-gable on a gabled front) the foot
+  // drops by half the rise so the gable straddles it (Herengracht 85, 87: the photos' apexes 1.6-1.7 m over the median).
+  if (sampled) for (const s of series) {
+    const fam = s.design.crown.value, rise = BELT_GABLE_RISE[fam as keyof typeof BELT_GABLE_RISE];
+    if (!rise || ((s.design.gable?.value?.riseM ?? 0) > 0)) continue;
+    const fs = fronts.filter(f => f.seriesId === s.id);
+    if (fs.some(f => ((f.overrides as { gable?: RowField<RowGable> }).gable?.value?.riseM ?? 0) > 0)) continue;
+    s.design.gable = { value: { riseM: rise, ...(fam === 'step' ? {} : { attic: 1 }) }, source: 'period-default', ref: `the belt's measured ${fam} rise (median of the reviewed ${fam} gables, lane D 2026-11-15); no gable read` };
+    const line = s.design.corniceTopM;
+    if (line.value !== null && line.source !== 'reviewed' && /^3DBAG wall height median; no measured cornice$/.test(line.ref ?? '')) {
+      s.design.corniceTopM = { ...line, value: r2(line.value - rise / 2), ref: `${line.ref}; the gable's foot half its default rise (${rise} m) under the median` };
+      for (const f of fs) if (f.topM !== null && f.topM !== undefined) f.topM = r2(f.topM - rise / 2);
     }
   }
   if (fronts.some(f => f.groundOffsetM === null || f.groundOffsetM === undefined))
