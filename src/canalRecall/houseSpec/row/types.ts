@@ -192,6 +192,24 @@ export interface RowDesign {
   /** The ground storey's own facing (stucco, stone) under the wall above: a front override for one house, or the series'.
    *  Absent: the ground storey is the wall (today). */
   groundWall?: RowField<RowGroundWall>;
+  /** A flat-top front's timber cornice as read (Herengracht 158, 164, 174, 209, 248): its paint, what carries the corona,
+   *  its frieze, and a stated centre over it. Absent: the `cornice` kind as drawn today. */
+  corniceDress?: RowField<RowCorniceDress>;
+}
+/** An 1800s timber cornice (RowDesign.corniceDress). Every part is drawn only as stated. */
+export interface RowCorniceDress {
+  /** The cornice's paint: a hex, or `white`, `cream`, `grey`; absent white. */
+  paint?: string;
+  /** Under the corona: `modillions` (small blocks at a close pitch), `consoles` (tall brackets over the piers), `dentils`,
+   *  or `none`. Absent: none. */
+  supports?: 'modillions' | 'consoles' | 'dentils' | 'none';
+  /** The frieze under it: `plain` a painted board, `attic-lights` a low light over each window axis in a painted board,
+   *  `panels` sunk panels in a painted board. Absent: the wall's brick. */
+  frieze?: 'plain' | 'attic-lights' | 'panels';
+  /** On the cornice: a `pediment` or a `segmental` cap over the centre, or a `balustrade`. Absent: none. */
+  centre?: 'pediment' | 'segmental' | 'balustrade';
+  /** The centre's width as a share of the front (absent: 0.5 for a cap, the whole front for a balustrade). */
+  centreShare?: number;
 }
 /** A canal window's joinery (RowDesign.glazing): the white frame's width round the glass, the glazing bars' width, and the
  *  panes per sash for the sash kinds (sash-8-over-8: 8; sash-small-panes: 12; absent: the kind's own). */
@@ -241,13 +259,20 @@ export interface RowGableStone {
   hood?: 'dark' | string;
   /** Carving in the neck between its light and the cap: a framed panel, a cartouche, or an oeil-de-boeuf. Absent: none. */
   neck?: 'panel' | 'cartouche' | 'oculus';
+  /** Carving in the cap's tympanum (no hood): a `shell` of fluting from the springing, or a `carved` field with a
+   *  cartouche and leaves. Absent: the tympanum stays brick. */
+  cap?: 'shell' | 'carved';
   /** The cap on top: a pediment, a segmental hood, or a carved crest (absent: the gable's `cap`, else the kit's stock). */
   crest?: 'pediment' | 'segmental' | 'crest';
 }
 export interface RowDoorcase {
   material: 'stone' | 'timber'; top?: 'entablature' | 'pediment' | 'segmental';
-  /** The fanlight: absent or true plain bars, `diamond` a lozenge in its frame (Herengracht 144), false none. */
-  fanlight?: boolean | 'diamond';
+  /** The fanlight: absent or true plain bars, `diamond` a lozenge in its frame (Herengracht 144), `oval` an oval ring
+   *  round a small lozenge, false none. */
+  fanlight?: boolean | 'diamond' | 'oval';
+  /** `ground`: one pilastered frame over the whole ground storey, the door and the windows beside it under one
+   *  entablature (Herengracht 142's shop surround). Absent: the door's own case. */
+  span?: 'ground';
   /** The leaf's paint: `black` (near-black, the belt's usual door) or a hex. Absent: the kit's brown. */
   door?: 'black' | string;
 }

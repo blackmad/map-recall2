@@ -93,6 +93,8 @@ export interface RowSeriesDraw {
   id: string;
   /** The cornice moulding at the wall top (`row-cornice`); none or absent: the plain band. */
   cornice?: 'none' | 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
+  /** A stated timber cornice (RowDesign.corniceDress): drawn by `row-cornice` in place of the kind's moulding. */
+  corniceDress?: import('../houseSpec/row/types.js').RowCorniceDress;
   /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, or a flat lid. */
   roofStorey?: { kind: 'mansard' | 'none'; riseM?: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[];
     /** The mansard runs on into the neighbour's on this side (left/right as seen): no hip, no eaves return there. */
@@ -311,10 +313,10 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
 /** House rows: the wall dressing a series states (the mesher hands it to the extras as `rowDress`). */
 /** A single shopfront's frame when the record states no ground colour. */
 export const ROW_SHOP_FRAME = '#e6e1d6';
-export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
+export function rowDressOf(series: RowSeriesDraw): { cornice?: string; corniceDress?: RowSeriesDraw['corniceDress']; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
   const single = series.shop === true && series.shopUnits === 1;
   const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.door?.doorcase && !series.stoop ? ['row-doorcase'] : []), ...(series.windowShare ? ['row-glazing'] : []), ...(series.glazing ? ['row-sash'] : []), ...(series.floorsM?.length ? ['row-floors'] : []), ...(series.groundWalls?.length ? ['row-ground-wall'] : []), ...(single ? ['row-shopfront'] : [])];
-  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(series.glazing ? { glazing: series.glazing } : {}), ...(series.floorsM?.length ? { floorsM: series.floorsM } : {}), ...(series.groundWalls?.length ? { groundWalls: series.groundWalls } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
+  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.corniceDress ? { corniceDress: series.corniceDress } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(series.glazing ? { glazing: series.glazing } : {}), ...(series.floorsM?.length ? { floorsM: series.floorsM } : {}), ...(series.groundWalls?.length ? { groundWalls: series.groundWalls } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
 }
 
 /** Crown family -> the roof planner's gable profile. */

@@ -57,6 +57,8 @@ export type ExtraContext = {
 export type RowHeadKind = { shape?: string; dressing?: string };
 export type RowDressContext = {
   cornice?: string;
+  /** A stated timber cornice (RowDesign.corniceDress): `row-cornice` draws it in place of the kind's moulding. */
+  corniceDress?: import('./houseSpec/row/types.js').RowCorniceDress;
   windows?: Array<{ x0: number; x1: number; z0: number; z1: number; storey: number } & RowHeadKind>;
   heads?: Array<{ x0: number; x1: number; storeys?: number[] } & RowHeadKind>;
   /** A stoop up to a bel-etage street door over a souterrain, the door at this end of the wall as laid out (x grows). */

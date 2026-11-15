@@ -90,3 +90,9 @@ test('crown stone: where the light fills the neck, a stated oculus still sits sm
   const capGlass = glass(withOculus).length - glass(hooded).length;
   assert.ok(capGlass > 0);
 });
+
+test('crown stone: a stated cap carving fills the tympanum (shell or carved); absent: brick (Herengracht 51, 69)', () => {
+  const c: RowCrown = { shape: 'neck', riseM: 3.4, attic: 1, cap: 'segmental', dress: 'belt' } as RowCrown;
+  const plain = draw(c).tris;
+  for (const cap of ['shell', 'carved'] as const) assert.ok(draw({ ...c, stone: { cap } }).tris.length > plain.length, cap);
+});

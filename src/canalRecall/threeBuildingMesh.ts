@@ -92,7 +92,7 @@ export type MeshBuilding = {
   /** House rows (lane R): the series this building draws (its extras' dice are the series'), and the series' stated
    *  wall dressing (heads per front span, cornice): the extras' `row-heads` and `row-cornice` draw it on the street run. */
   rowSeries?: string;
-  rowDress?: { cornice?: string; heads?: import('./houseLine/rowFront.js').RowHeadsDraw[]; stoop?: { side: 'left' | 'right' | 'centre'; steps?: false; form?: 'straight' | 'side' | 'double'; railing?: true; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; glazing?: import('./houseLine/rowFront.js').RowGlazingDraw; floorsM?: number[]; groundWalls?: import('./houseLine/rowFront.js').RowGroundWallDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } };
+  rowDress?: { cornice?: string; corniceDress?: import('./houseSpec/row/types.js').RowCorniceDress; heads?: import('./houseLine/rowFront.js').RowHeadsDraw[]; stoop?: { side: 'left' | 'right' | 'centre'; steps?: false; form?: 'straight' | 'side' | 'double'; railing?: true; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; glazing?: import('./houseLine/rowFront.js').RowGlazingDraw; floorsM?: number[]; groundWalls?: import('./houseLine/rowFront.js').RowGroundWallDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } };
   /** The house spec's stoop (threeBuildingFeatures from `specStoop`): facadeExtras draws it typed on the street wall. */
   stoop?: StoopIntent;
   wallHex: string;
@@ -594,7 +594,7 @@ function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM
   const stoop = { ...(st && stoopHere ? { stoop: { end: st.side === 'centre' ? 'centre' as const : (st.side === 'left') === ltr ? 'start' as const : 'end' as const, ...(st.steps === false ? { steps: false as const } : {}), ...(st.form ? { form: st.form } : {}), ...(st.railing ? { railing: true as const } : {}), ...(st.doorcase ? { doorcase: st.doorcase } : {}), ...(place ? { at: +place.at.toFixed(3), ...(place.exact ? { exact: true as const } : {}) } : {}) } } : {}), ...(b.rowDress?.door?.doorcase ? { doorcase: b.rowDress.door.doorcase } : {}), ...(b.rowDress?.balcony ? { balcony: b.rowDress.balcony } : {}), ...(b.rowDress?.windowShare ? { windowShare: b.rowDress.windowShare } : {}), ...(b.rowDress?.glazing ? { glazing: b.rowDress.glazing } : {}), ...(b.rowDress?.floorsM ? { floorsM: b.rowDress.floorsM } : {}), ...(b.rowDress?.groundWalls ? { groundWalls: b.rowDress.groundWalls.map(g => ({ x0: (ltr ? g.a0 : 1 - g.a1) * runM - edgeStartM, x1: (ltr ? g.a1 : 1 - g.a0) * runM - edgeStartM, hex: g.hex, top: g.top })) } : {}), ...(b.rowDress?.shopFront ? { shopFront: { frameHex: b.rowDress.shopFront.frameHex, doorEnd: b.rowDress.shopFront.side === 'centre' ? 'centre' as const : (b.rowDress.shopFront.side === 'left') === ltr ? 'start' as const : 'end' as const } } : {}) };
   // A member with raised fronts hangs its heads only on the run its fronts were measured on (rowFront.ts frontSpanM).
   const off = !boxed && !!b.specRecipe?.subFronts?.some(f => f.step) && !!b.specRecipe.frontSpanM;
-  if (!boxes.length) return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), heads: (off ? [] : heads).map(h => ({ ...h, x0: (ltr ? h.a0 : 1 - h.a1) * runM - edgeStartM, x1: (ltr ? h.a1 : 1 - h.a0) * runM - edgeStartM })) };
+  if (!boxes.length) return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), ...(b.rowDress?.corniceDress ? { corniceDress: b.rowDress.corniceDress } : {}), heads: (off ? [] : heads).map(h => ({ ...h, x0: (ltr ? h.a0 : 1 - h.a1) * runM - edgeStartM, x1: (ltr ? h.a1 : 1 - h.a0) * runM - edgeStartM })) };
   const sills = [...new Set(boxes.map(w => Math.round(w.sillM * 10) / 10))].sort((p, q) => p - q);
   const windows = boxes.flatMap(w => {
     const mid = (w.a0 + w.a1) / 2, storey = sills.indexOf(Math.round(w.sillM * 10) / 10) + 1;
@@ -603,7 +603,7 @@ function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM
     if (x1 <= 0.05 || x0 >= edgeM - 0.05) return [];
     return [{ x0, x1, z0: base + w.sillM, z1: base + w.headM, storey, ...(head ? { shape: head.shape, dressing: head.dressing } : {}) }];
   });
-  return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), windows };
+  return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), ...(b.rowDress?.corniceDress ? { corniceDress: b.rowDress.corniceDress } : {}), windows };
 }
 
 export function wallRuns(rings: readonly (readonly Edge[])[], hidden: (e: Edge) => boolean): Array<Array<{ e: Edge }>> {

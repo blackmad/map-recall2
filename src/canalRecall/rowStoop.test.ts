@@ -129,3 +129,35 @@ test('row-doorcase: diamond fanlight tracery, a black leaf, and pilasters standi
   const black = run({ material: 'timber', door: 'black' }).t;
   assert.ok(black.some(x => x.hex === ROW_DOORCASE.black) && !plain.some(x => x.hex === ROW_DOORCASE.black));
 });
+
+test('row-doorcase: a ground-storey surround (span ground) frames the door and windows under one entablature (Herengracht 142); oval fanlight', () => {
+  const comp = ORNAMENT_COMPONENTS.find(x => x.id === 'row-doorcase')!;
+  const run = (doorcase: NonNullable<ExtraContext['rowDress']>['doorcase']) => {
+    const s = new ExtraSink(100000);
+    comp.build(wall({ layout: { bays: 3, bayWidthM: 2, groundM: 3.2, storeys: 3, storeyM: 3.2, doorBays: [0] } as ExtraContext['layout'], rowDress: { doorcase } }), s, 0);
+    return s.tris as Array<{ hex?: string; p: number[][] }>;
+  };
+  const own = run({ material: 'timber' }), ground = run({ material: 'timber', span: 'ground' });
+  const xsOf = (t: typeof own) => t.filter(x => x.hex === '#efece4').flatMap(x => x.p.map(p => p[0]));
+  // The entablature reaches the far end of the 6 m front; the door's own case stays by the door.
+  const reach = (t: typeof own) => Math.max(...xsOf(t)) - Math.min(...xsOf(t));
+  assert.ok(reach(ground) > reach(own) + 2, `${reach(ground)} vs ${reach(own)}`);
+  assert.notDeepEqual(run({ material: 'timber', fanlight: 'oval' }), own);
+});
+
+test('row-cornice: a stated timber cornice draws attic lights, supports and a centre; absent: the kind as today (Herengracht 174, 248)', () => {
+  const comp = ORNAMENT_COMPONENTS.find(x => x.id === 'row-cornice')!;
+  const run = (rowDress: ExtraContext['rowDress']) => {
+    const s = new ExtraSink(100000);
+    comp.build(wall({ top: 16, layout: { bays: 3, bayWidthM: 2, groundM: 3.2, storeys: 4, storeyM: 3.0, doorBays: [0] } as ExtraContext['layout'], ...(rowDress ? { rowDress } : {}) }), s, 0);
+    return s.tris as Array<{ hex?: string; p: number[][] }>;
+  };
+  const today = run({ cornice: 'heavy' });
+  assert.deepEqual(run({ cornice: 'heavy' }), today);
+  const lights = run({ cornice: 'heavy', corniceDress: { paint: 'cream', frieze: 'attic-lights', supports: 'modillions' } });
+  assert.ok(lights.some(t => t.hex === ROW_DOORCASE.glass) && !today.some(t => t.hex === ROW_DOORCASE.glass));
+  const ped = run({ cornice: 'heavy', corniceDress: { frieze: 'plain', centre: 'pediment' } });
+  assert.ok(Math.max(...ped.flatMap(t => t.p.map(p => p[2]))) > 16.3, 'pediment over the corona');
+  const bal = run({ cornice: 'heavy', corniceDress: { centre: 'balustrade' } });
+  assert.ok(Math.max(...bal.flatMap(t => t.p.map(p => p[2]))) > 16.5, 'balustrade on the corona');
+});

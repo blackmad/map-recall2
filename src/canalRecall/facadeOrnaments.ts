@@ -426,12 +426,137 @@ export const ROW_DOORCASE = { pilaster: 0.2, gap: 0.08, out: 0.12, frieze: 0.22,
   stone: '#d9d0bd', glass: '#2b3138', black: '#1d201f',
   /** The top of the dark 'plinth' strip (facadeExtras): a street door's pilasters stand on it, not through it. */
   plinthTop: 0.5 } as const;
+/** A pilastered frame over the whole ground storey (RowDoorcase.span 'ground', Herengracht 142): pilasters at both ends
+ *  of the front and in each gap between its openings, under one fascia and cornice over the door and the windows. */
+function rowGroundSurround(c: ExtraContext, s: ExtraSink, d: Span, dc: { material: 'stone' | 'timber' }, z0: number): void {
+  const K = ROW_DOORCASE, hex = dc.material === 'stone' ? K.stone : WHITE, L = c.f.len;
+  const opens = [[d.x - d.hw, d.x + d.hw, d.z1] as const, ...windowSpans(c, -1).map(w => [w.x - w.hw, w.x + w.hw, w.z1] as const)].sort((p, q) => p[0] - q[0]);
+  const zt = Math.max(...opens.map(o => o[2])) + 0.08, P = K.pilaster + 0.06;
+  const xs = [0, L - P];
+  for (let i = 0; i + 1 < opens.length; i++) { const g0 = opens[i][1] + 0.06, g1 = opens[i + 1][0] - 0.06; if (g1 - g0 >= P) xs.push((g0 + g1) / 2 - P / 2); }
+  // The shadow each pilaster and the cornice throw, so a white frame reads on a pale ground storey.
+  const shadow = shadeHex(hex, 0.55);
+  // (in front of a stated ground facing, ROW_GROUND_WALL.out)
+  for (const a of xs) s.strip(c.f, Math.min(L - 0.08, a + P), Math.min(L, a + P + 0.08), 0.045, z0, zt, shadow);
+  s.strip(c.f, 0, L, 0.045, zt - 0.08, zt, shadow);
+  for (const a of xs) {
+    s.box(c.f, a, a + P, 0, K.out, z0, zt, hex);
+    s.box(c.f, a - 0.03, a + P + 0.03, 0, K.out + 0.03, z0, z0 + 0.3, hex);
+    s.box(c.f, a - 0.03, a + P + 0.03, 0, K.out + 0.03, zt - 0.12, zt, hex);
+  }
+  // A white frame round each window between the pilasters.
+  for (const [a, b] of opens.slice(0)) if (b - a > 0.3) { s.strip(c.f, a - 0.06, a, 0.06, z0, zt, hex); s.strip(c.f, b, b + 0.06, 0.06, z0, zt, hex); }
+  // The fascia and the cornice over the whole front.
+  s.box(c.f, 0, L, 0, K.out, zt, zt + K.frieze + 0.08, hex);
+  s.box(c.f, 0, L, 0, K.corniceOut, zt + K.frieze + 0.08, zt + K.frieze + 0.08 + K.cornice, hex);
+}
+/** An 1800s timber cornice as stated (RowDesign.corniceDress; Herengracht 158, 164, 174, 209, 248): a painted corona and
+ *  bed moulding, what carries them (modillions, consoles over the piers, dentils), a painted frieze over the top windows
+ *  (plain, sunk panels, or a low attic light over each window axis), and a pediment, segmental cap or balustrade on top. */
+export const ROW_TIMBER_CORNICE = { corona: 0.2, coronaOut: 0.5, bed: 0.16, bedOut: 0.32, architrave: 0.1, archOut: 0.07,
+  modillion: { w: 0.1, h: 0.14, pitch: 0.34 }, console: { w: 0.2, h: 0.62, out: 0.3 }, frieze: { plain: 0.55, panels: 0.65, 'attic-lights': 0.85, min: 0.3 },
+  /** The shadow under the corona between its supports, as the photos read it (the supports stand out light against it). */
+  soffit: 0.62,
+  light: { maxW: 1.4, h: 0.42, frame: 0.07 }, pediment: { slope: 0.3, band: 0.16 }, balustrade: { h: 0.72, baluster: 0.09, pitch: 0.24 },
+  paints: { white: WHITE, cream: CREAM, grey: '#8f918c' } } as const;
+function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNullable<ExtraContext['rowDress']>['corniceDress']>): void {
+  const K = ROW_TIMBER_CORNICE, t = c.top, L = c.f.len;
+  const P = dr.paint ? (K.paints as Record<string, string>)[dr.paint] ?? dr.paint : WHITE;
+  const zc = t - K.corona, zb = zc - K.bed;
+  // The frieze: from over the top windows' heads (their dressing included) up to the bed moulding.
+  const ws = rowWindowsOf(c), topZ1 = ws.length ? Math.max(...ws.map(w => w.z1)) : zb - K.frieze.plain;
+  const top = ws.filter(w => w.z1 > topZ1 - 0.3);
+  const fmax = dr.frieze ? K.frieze[dr.frieze] : K.frieze.plain;
+  const fz0 = Math.max(zb - fmax, Math.max(rowHeadsTop(c), topZ1) + 0.12), fh = zb - fz0;
+  if (dr.frieze && fh >= K.frieze.min) {
+    s.strip(c.f, 0, L, 0.03, fz0, zb, P);
+    // The architrave: a thin moulding along the frieze's foot.
+    s.box(c.f, 0, L, 0, K.archOut, fz0 - K.architrave, fz0, P, true);
+    if (dr.frieze === 'attic-lights') {
+      // Centred in the frieze below what carries the corona.
+      const sup = dr.supports === 'modillions' ? K.modillion.h : dr.supports === 'dentils' ? ROW_DENTILS.h : 0, fr = fh - sup;
+      const lh = Math.min(K.light.h, fr - 0.16), lz0 = fz0 + (fr - lh) / 2;
+      if (lh >= 0.18) for (const w of top) {
+        // One wide low light per window axis (blind review: single openings, not paired lights).
+        const xm = (w.x0 + w.x1) / 2, hw = Math.min(K.light.maxW, (w.x1 - w.x0) * 0.95) / 2, F = K.light.frame;
+        s.strip(c.f, xm - hw, xm + hw, 0.04, lz0, lz0 + lh, ROW_DOORCASE.glass);
+        s.strip(c.f, xm - hw - F, xm + hw + F, 0.055, lz0 - F, lz0, P);
+        s.strip(c.f, xm - hw - F, xm + hw + F, 0.055, lz0 + lh, lz0 + lh + F, P);
+        for (const x of [xm - hw - F, xm + hw]) s.strip(c.f, x, x + F, 0.055, lz0, lz0 + lh, P);
+      }
+    } else if (dr.frieze === 'panels') {
+      // Sunk panels between the piers: a raised frame round each, its field a shade darker.
+      const xs = [0, ...top.map(w => (w.x0 + w.x1) / 2), L].sort((a, b) => a - b), m = 0.12;
+      for (let i = 0; i + 1 < xs.length; i++) {
+        const a = xs[i] + m, b = xs[i + 1] - m, z0 = fz0 + m, z1 = zb - m;
+        if (b - a < 0.3 || z1 - z0 < 0.12) continue;
+        s.strip(c.f, a, b, 0.035, z0, z1, shadeHex(P, 0.9));
+        for (const [p, q, r, u] of [[a, b, z0 - 0.04, z0], [a, b, z1, z1 + 0.04], [a - 0.04, a, z0 - 0.04, z1 + 0.04], [b, b + 0.04, z0 - 0.04, z1 + 0.04]] as const) s.strip(c.f, p, q, 0.05, r, u, P);
+      }
+    }
+  }
+  // What carries the corona.
+  if (dr.supports === 'modillions') {
+    // Under the bed moulding, light blocks against the soffit's shadow.
+    s.strip(c.f, 0, L, 0.035, zb - K.modillion.h, zb, shadeHex(P, K.soffit));
+    const n = Math.max(3, Math.round(L / K.modillion.pitch));
+    for (let i = 0; i < n; i++) { const x = (i + 0.5) * L / n; s.box(c.f, Math.max(0, x - K.modillion.w / 2), Math.min(L, x + K.modillion.w / 2), 0, K.bedOut + 0.06, zb - K.modillion.h, zb, P); }
+  } else if (dr.supports === 'consoles') {
+    // A console over each pier: a deep head under the corona tapering to a slim foot (a scroll in profile).
+    const h = Math.min(K.console.h, Math.max(0.3, zb - fz0 + K.bed)), W2 = K.console.w / 2;
+    for (const x of pierXs(c)) {
+      const a = Math.max(0, x - W2), b = Math.min(L, x + W2);
+      // Its shadow on the frieze round it, so a painted console reads on a painted frieze.
+      s.strip(c.f, Math.max(0, a - 0.05), Math.min(L, b + 0.05), 0.035, zb - h - 0.04, zb, shadeHex(P, K.soffit));
+      s.box(c.f, a, b, 0, K.bedOut + 0.04, zb - 0.22, zb, P);
+      s.box(c.f, a + 0.02, b - 0.02, 0, K.console.out * 0.6, zb - h * 0.65, zb - 0.22, P);
+      s.box(c.f, a + 0.04, b - 0.04, 0, K.console.out * 0.35, zb - h, zb - h * 0.65, P);
+    }
+  } else if (dr.supports === 'dentils') {
+    const D = ROW_DENTILS, n = Math.max(4, Math.round(L / D.pitch));
+    s.strip(c.f, 0, L, 0.035, zb - D.h, zb, shadeHex(P, K.soffit));
+    for (let i = 0; i < n; i++) { const x = (i + 0.5) * L / n; s.box(c.f, Math.max(0, x - D.w / 2), Math.min(L, x + D.w / 2), 0, K.bedOut + 0.06, zb - D.h, zb, P); }
+  }
+  // The bed moulding (in the corona's shadow) and the corona.
+  s.box(c.f, 0, L, 0, K.bedOut, zb, zc, shadeHex(P, 0.84), true);
+  s.box(c.f, 0, L, 0, K.coronaOut, zc, t, P, true);
+  // On top: a cap over the centre, or a balustrade.
+  if (dr.centre === 'pediment' || dr.centre === 'segmental') {
+    const w = L * (dr.centreShare ?? 0.5), a = (L - w) / 2, b = a + w, mid = L / 2, rise = w / 2 * K.pediment.slope, B = K.pediment.band;
+    if (dr.centre === 'pediment') {
+      s.wallQuad(c.f, [[a, t], [b, t], [mid, t + rise], [mid, t + rise]], 0.06, P);
+      wallBar(c, s, [a - 0.04, t + B / 2], [mid, t + rise + B / 2], B, K.bedOut, P);
+      wallBar(c, s, [mid, t + rise + B / 2], [b + 0.04, t + B / 2], B, K.bedOut, P);
+    } else {
+      const n = 12, h = (u: number) => rise * 1.3 * Math.sin(Math.PI * u);
+      for (let i = 0; i < n; i++) {
+        const u0 = i / n, u1 = (i + 1) / n, x0 = a + w * u0, x1 = a + w * u1;
+        s.wallQuad(c.f, [[x0, t], [x1, t], [x1, t + h(u1)], [x0, t + h(u0)]], 0.06, P);
+        wallBar(c, s, [x0, t + h(u0) + B / 2], [x1, t + h(u1) + B / 2], B, K.bedOut, P);
+      }
+    }
+  } else if (dr.centre === 'balustrade') {
+    const w = L * (dr.centreShare ?? 1), a = (L - w) / 2, b = a + w, Bq = K.balustrade, out = K.coronaOut - 0.12;
+    s.box(c.f, a, b, 0.02, out, t, t + 0.12, P);
+    const n = Math.max(2, Math.floor(w / Bq.pitch));
+    // Turned balusters: a belly, a slim neck and a cap between plinth and rail.
+    const bh = Bq.h - 0.24, bz = t + 0.12, bw = Bq.baluster;
+    for (let i = 0; i < n; i++) {
+      const x = a + (i + 0.5) * w / n;
+      s.box(c.f, x - bw / 2, x + bw / 2, out - 0.2, out - 0.06, bz, bz + bh * 0.45, P);
+      s.box(c.f, x - bw * 0.28, x + bw * 0.28, out - 0.18, out - 0.08, bz + bh * 0.45, bz + bh * 0.8, P);
+      s.box(c.f, x - bw * 0.42, x + bw * 0.42, out - 0.19, out - 0.07, bz + bh * 0.8, bz + bh, P);
+    }
+    for (const x of [a, b - 0.2]) s.box(c.f, x, x + 0.2, 0.02, out, t + 0.12, t + Bq.h - 0.12, P);
+    s.box(c.f, a, b, 0.02, out, t + Bq.h - 0.12, t + Bq.h, P);
+  }
+}
 /** A bar of width w from p to q on the wall face (fanlight tracery). */
 function wallBar(c: ExtraContext, s: ExtraSink, p: readonly [number, number], q: readonly [number, number], w: number, out: number, hex: string): void {
   const dx = q[0] - p[0], dz = q[1] - p[1], L = Math.hypot(dx, dz) || 1, nx = -dz / L * w / 2, nz = dx / L * w / 2;
   s.wallQuad(c.f, [[p[0] + nx, p[1] + nz], [q[0] + nx, q[1] + nz], [q[0] - nx, q[1] - nz], [p[0] - nx, p[1] - nz]], out, hex);
 }
-function rowDoorcase(c: ExtraContext, s: ExtraSink, d: Span, dc: NonNullable<NonNullable<NonNullable<ExtraContext['rowDress']>['stoop']>['doorcase']>, z0 = d.z0): void {
+function rowDoorcase(c: ExtraContext, s: ExtraSink, d: Span, dc: NonNullable<NonNullable<NonNullable<ExtraContext['rowDress']>['stoop']>['doorcase']>, z0 = d.z0, own = true): void {
   const K = ROW_DOORCASE, hex = dc.material === 'stone' ? K.stone : WHITE, x0 = d.x - d.hw, x1 = d.x + d.hw;
   const leaf = dc.door === 'black' ? K.black : dc.door ?? STOOP.door;
   const fan = dc.fanlight === false ? 0 : Math.min(K.fan, (d.z1 - d.z0) * 0.25), zf = d.z1 - fan;
@@ -441,7 +566,16 @@ function rowDoorcase(c: ExtraContext, s: ExtraSink, d: Span, dc: NonNullable<Non
   if (fan > 0) {
     s.strip(c.f, x0, x1, 0.03, zf, d.z1, K.glass);
     s.strip(c.f, x0, x1, 0.05, zf, zf + K.bar * 1.5, hex);
-    if (dc.fanlight === 'diamond') {
+    if (dc.fanlight === 'oval') {
+      // An oval ring touching the fanlight's frame, a small lozenge at its centre.
+      const xm = (x0 + x1) / 2, zm = (zf + d.z1) / 2, hx = (x1 - x0) / 2 - 0.03, hz = (d.z1 - zf) / 2 - 0.03, n = 18;
+      for (let i = 0; i < n; i++) {
+        const a0 = 2 * Math.PI * i / n, a1 = 2 * Math.PI * (i + 1) / n;
+        wallBar(c, s, [xm + hx * Math.cos(a0), zm + hz * Math.sin(a0)], [xm + hx * Math.cos(a1), zm + hz * Math.sin(a1)], K.bar, 0.05, hex);
+      }
+      const pts: Array<[number, number]> = [[xm - hx * 0.4, zm], [xm, zm + hz * 0.45], [xm + hx * 0.4, zm], [xm, zm - hz * 0.45]];
+      for (let i = 0; i < 4; i++) wallBar(c, s, pts[i], pts[(i + 1) % 4], K.bar, 0.05, hex);
+    } else if (dc.fanlight === 'diamond') {
       // A lozenge touching the fanlight's frame at its four mid-points, and a smaller one inside it.
       const xm = (x0 + x1) / 2, zm = (zf + d.z1) / 2, hx = (x1 - x0) / 2, hz = (d.z1 - zf) / 2;
       for (const k of [1, 0.5]) {
@@ -453,6 +587,7 @@ function rowDoorcase(c: ExtraContext, s: ExtraSink, d: Span, dc: NonNullable<Non
   // The frame round the opening.
   s.strip(c.f, x0 - 0.06, x0, 0.06, z0, d.z1, hex);
   s.strip(c.f, x1, x1 + 0.06, 0.06, z0, d.z1, hex);
+  if (!own) return;
   // Pilasters on plinths.
   const pl0 = x0 - K.gap - K.pilaster, pr1 = x1 + K.gap + K.pilaster;
   for (const [a, b] of [[pl0, x0 - K.gap], [x1 + K.gap, pr1]] as const) {
@@ -736,12 +871,15 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     const dc = c.rowDress?.doorcase, d = doorSpan(c);
     if (!dc || !d) return;
     // The pilasters stand on the dark plinth strip, not through it.
-    rowDoorcase(c, s, d, dc, Math.max(d.z0, Math.min(c.base + ROW_DOORCASE.plinthTop, d.z1 - 1)));
+    const z0 = Math.max(d.z0, Math.min(c.base + ROW_DOORCASE.plinthTop, d.z1 - 1));
+    rowDoorcase(c, s, d, dc, z0, dc.span !== 'ground');
+    if (dc.span === 'ground') rowGroundSurround(c, s, d, dc, z0);
   } },
-  { id: 'row-cornice', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'crown', build: (c, s) => {
+  { id: 'row-cornice', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'crown', rise: 1.6, build: (c, s) => {
     // The series' cornice at the wall top: a cream frieze, consoles at a steady pitch, a corona and its cyma, white.
-    // `simple` keeps the corona and cyma alone.
+    // `simple` keeps the corona and cyma alone. A stated timber cornice (RowDesign.corniceDress) draws its own parts.
     const C = ROW_DRESS.cornice, t = c.top, kind = c.rowDress?.cornice;
+    if (c.rowDress?.corniceDress && c.roofKind !== 'gable') { rowTimberCornice(c, s, c.rowDress.corniceDress); return; }
     if (!kind || c.roofKind === 'gable') return;
     const simple = kind === 'simple';
     if (kind === 'frieze') {
