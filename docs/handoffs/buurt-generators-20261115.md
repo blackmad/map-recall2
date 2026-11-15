@@ -1,0 +1,129 @@
+# Buurt generators: large uniform districts the rows will not reach soon (2026-11-15)
+
+David, 2026-11-14: "schedule buurts next". TODO "House rows first": start buurt generator lanes beside rows round 2,
+one district per lane, ranked by ride; targets Plan Zuid Amsterdam School, Rivierenbuurt edges, Westelijke Tuinsteden;
+each district's first sheet goes to David. Lane `lane/buurt-generators-20261115` (port 4631). This file is phase 1
+(the ranking and the plan) and the record of phase 2 (the first generator, Rivierenbuurt).
+
+## What a buurt generator is here
+
+The fallback for **undescribed** houses in one district, drawn by the ordinary renderer through the house-rows path
+(`docs/house-line.md` §16): the generator writes a `RowRecord` per street side (lane D's contract,
+`src/canalRecall/houseSpec/row/types.ts`) and the joined `RowFrontRecord`s (`houseLine/rowSeries.ts`), so every
+house-rows rule holds by construction:
+
+- **The row is the unit.** Members are BAG pands in street order along one street side (party walls touch, one front
+  street). A **series** is a run of one design: same build year (±1), eaves within the row-coherence step (a lone
+  outlier over 0.8 m is clamped to the row line, memory "row coherence"), same roof class. One cornice line, one storey
+  count, one window cell, one wall family and one roof per series.
+- **Unstated never means dice.** A series draws the district design its family states (build-year band, storeys from
+  the series eaves, roof class). Nothing is hashed per pand; the bay preset and wall tone are seeded by the series id.
+- **Described houses do not change.** A pand with a HouseSpec, a signed-off row, an installed chunk, a building-type
+  instance, a landmark or any model is excluded before the rows are formed; it only breaks a row into two.
+- **No silent drops.** A pand the generator does not draw is reported with its reason (described, corner/irregular,
+  off-family year, no front street, single-pand run).
+
+The building-types runtime (instanced designs, `src/canalRecall/buildingTypes/`) stays the route for detached slabs and
+terraces (Nieuw-West); perimeter-block districts go through rows because David prefers the ordinary renderer's facade
+detail (memory "visible result first") and HouseSpec is the one description (memory "reuse models for nondescript houses").
+
+## Phase 1: the ranking (measured 2026-11-15)
+
+Inputs, all local: BAG pands, years, 3DBAG eaves/ridge from `public/data/extracts/amsterdam/bag-tiles/14`;
+buurt polygons, tiers and own-look status from `coverage-v1/buurten.json` and `explorer-looks.json` (2026-11-15);
+route metres from `docs/reports/ride-ring-buurten-20261110.json` (2,000 seeded routes); type libraries under
+`scripts/block-face/types/` and `src/canalRecall/buildingTypes/types/`; cached panoramas indexed from
+`.cache/pand-reference` and `.cache/building-types` (no downloads). Excluded: the canal belt (Grachtengordel-West/-Zuid,
+the rows' belt plan covers it), Centrum (rows and typed faces reach it first), Oude Pijp, Frederik Hendrikbuurt and the
+other typed-face buurten of rows round 3, and buurten whose own look already draws more than ~15 % of their pands.
+
+Uniformity is the share of dated pands (≥ 30 m²) in the interwar band 1915–1940 or the post-war band 1946–1965, and
+the size of the top 5-year build-year bands. Ride is route km inside the district. "Generic" is pands the game draws
+with no district kit today.
+
+| # | District (buurten) | Pands | Generic | Route km | Main family | Top 5-y bands | Eaves median |
+|---|---|---:|---:|---:|---|---|---:|
+| 1 | **Rivierenbuurt** (Schelde-, IJsel-, Rijnbuurt: KK01–05, KL01–02, KM01–04) | 5,254 | 5,140 | 130 | 1915–40: 3,386 of 3,493 (97 %) | 1930: 1,216; 1925: 945; 1920: 665; 1935: 511 | 12.5 m |
+| 2 | **Apollobuurt + Stadionbuurt** (Plan Zuid south: KJ02–06, KH01, KH03–05) | 3,856 | 3,840 | 125 | 1915–40: 2,598 of 2,678 (97 %) | 1930: 1,581; 1925: 556 | 10.0 m |
+| 3 | **Bos en Lommer** (Landlust rest, Erasmuspark, Geuzenbuurt: EE01/02/04/05, EF01–02, EL01–03) | 4,051 | 4,037 | 201 | 1915–40: 2,179 of 2,893 (75 %) | 1930: 726; 1935: 570; 1940: 421 | 12.6 m |
+| 4 | **De Baarsjes, Plan West remainder** (Columbusplein, Paramariboplein, Chassé, Orteliusbuurt-Midden: EM01/02/04, ER02, EN01–04, EK04) | 3,009 | 2,911 | 89 | 1915–40: 2,404 of 2,577 (93 %) | 1925: 1,421; 1920: 572 | 12.3 m |
+| 5 | **Hoofddorppleinbuurt + Schinkelbuurt** (KA01–05, KB01–02) | 3,289 | 3,284 | 29 | 1915–40: 1,714 of 2,361 (73 %) | 1930: 1,035; 1925: 441; 1910: 410 | 11.8 m |
+| – | Volewijck (Noord: NK01–03) | 4,639 | 4,629 | 77 | 1915–40: 2,273 (85 %) | 1925: 970 | 6.4 m |
+| – | Westelijke Tuinsteden (42 buurten F*) | 25,690 | 20,700 | 127 | 1946–65: 8,578 (52 %) | 1955: 4,113; 1950: 2,850 | 5.8 m |
+
+Not chosen: **Volewijck** is Noord (focus ruling 2026-11-10: centre and first ring, no Noord lanes). **Westelijke
+Tuinsteden**: ride is spread over 42 buurten, the stock is 2–3 storey terraces and slabs that the building-types
+runtime already draws (nw-*, 59 Nieuw-West types; 4,948 pands are instanced there today); extend those libraries
+rather than start a rows generator. **Betondorp** (3,058 pands, 96 % 1922–27) has 2.6 route km.
+
+Ride caveat: route metres favour long through-routes; Bos en Lommer's 201 km is mostly Bos en Lommerweg and the
+Erasmusgracht. By ride per pand, Rivierenbuurt and Apollo/Stadion lead.
+
+### 1. Rivierenbuurt (chosen for phase 2)
+
+- **Stock** (17 cached panoramas, 2019–2023, KK02–04, KL01–02, KM01–03; sheet in the lane's artifacts): four-storey
+  (some five) perimeter blocks of dark red-brown brick, 1920–1938; white-framed casement windows with toplights, two to
+  three per ~6–8 m pand on every upper storey, no head or sill dressings; portiek doors (paired house doors under one
+  transom) at a party wall; a thin white trim or deep white fascia at the flat top; recurring canted or box erkers;
+  shopfronts on Scheldestraat, Rijnstraat, Maasstraat, IJsselstraat. Two roof families: a flat top with a set-back
+  low roof (most side streets) and a dark pitched roof with box dormers (Scheldestraat, Churchilllaan side).
+- **Counts:** 5,254 pands, 5,140 generic; 3,386 dated interwar. 3DBAG ridge-eaves: 0–2 m 189, 3–5 m 1,107, 6 m+ 374;
+  eaves bands 9 m (261), 12–13 m (808), 15 m (90).
+- **Kit reused:** row records and the row-front renderer (`rowFront.ts`, `rowSeries.ts`); the measured type
+  `rijn-1934-flat-three` (storeys 3.1/3.0/3.0/3.0 m, window share 0.71, casement-toplight, frame #efeee8, brick #7a6a5f,
+  0.75 m white fascia) and its erker siblings (`scripts/block-face/types/rivierenbuurt/`); the judged wall families
+  (`judgedColour.ts`); the 103 installed Rijnbuurt-Oost chunks stay as they are.
+- **Kit cannot say (ordinary renderer):** paired portiek doors under one transom (one door drawn); the deep white
+  fascia overhang of the flat top (the row cornice draws a band, no soffit); canted and box erkers on a row member
+  (no projecting bay in the row path); the brick soldier course over the ground storey; an eaves-front pitched roof
+  behind the cornice line with evenly spaced box dormers (the row path has a flat lid or a slate/tile mansard); the
+  1920s small-pane toplight (the painter's transom is one pane).
+
+### 2. Apollobuurt + Stadionbuurt
+
+- **Stock** (8 cached panoramas, not yet sheeted): Plan Zuid of 1925–1935: three-storey brick blocks under steep tile
+  roofs (median eaves 10.0 m, 2,192 of 2,217 measured roofs pitched), some villas and the Stadionplein blocks.
+- **Counts:** 3,856 pands, 3,840 generic; 2,598 interwar; 1930–34 alone 1,581.
+- **Kit reused:** the Rivierenbuurt generator (same row partition and families); Landlust's tile-roof types
+  (`landlust-1933-three-axis-tile`, `-1934-tile-pair`) for the dormer roofs.
+- **Kit cannot say:** the eaves-front tile roof with dormers (the same gap as above, the main one here), garden walls
+  and front gardens, villa-like free-standing pands (out of scope: rows only).
+
+### 3. Bos en Lommer (Landlust rest, Erasmuspark, Geuzenbuurt)
+
+- **Stock:** 1924–1940 four- and five-storey red-brown brick rows and slot blocks, erkers and ribbon attics; the
+  Landlust lane typed 11 designs (73 pands installed in EE06).
+- **Counts:** 4,051 pands, 4,037 generic; 2,179 interwar, 327 post-war (Bosleeuw).
+- **Kit reused:** the 11 Landlust types as the district library; the Bestevaer stair-block types for 1924–26.
+- **Kit cannot say:** ribbon attic windows across party walls, canted erkers in the row path, slot balconies.
+
+### 4. De Baarsjes, Plan West remainder
+
+- **Stock:** 1922–1929 Amsterdam School rows (J.F. Staal, Van der Mey fronts), dark brown brick, triple-light
+  casements, tile roofs with white attics; Postjeskade, Orteliusbuurt and Jan Maijenbuurt already instanced as
+  building types (we-pk-*, we-or-*, we-jm-*, 710 pands in EM, ER and EK).
+- **Counts:** 3,009 pands, 2,911 generic; 2,404 interwar, 1,421 of them 1925–29.
+- **Kit reused:** the six Jan Evertsenstraat types (`scripts/block-face/types/de-baarsjes/`), the we-* building types.
+- **Kit cannot say:** hood slabs and lisenes as row dressings, white attic storeys on a tile roof, the sculpted
+  corner blocks (landmark-level, out of scope).
+
+### 5. Hoofddorppleinbuurt + Schinkelbuurt
+
+- **Stock:** 1929–1935 four-storey brick rows (Westlandgracht, Aalsmeerweg), a 1910 band of older rows
+  (Schinkelbuurt, 410 pands).
+- **Counts:** 3,289 pands, 3,284 generic; 1,714 interwar. Ride low (29 km).
+- **Kit reused:** the Rivierenbuurt generator; the c19 row path for the 1910 band.
+- **Kit cannot say:** as Rivierenbuurt.
+
+## Phase 2: the Rivierenbuurt generator (this lane)
+
+- `src/canalRecall/buurtGenerator/` (typed, pure, tested): `rows.ts` (party-wall rows on one front street, series),
+  `design.ts` (the district families, from the type library), `emit.ts` (RowRecord + joined RowFrontRecords).
+- `src/canalRecall/buurtGenerator/districts/rivierenbuurt.json`: the district library.
+- `scripts/buurt-generators/generate.ts --district=rivierenbuurt`: stages
+  `artifacts/buurt-generators/<district>/` (records, per-row reports, coverage counts); never publishes.
+- `scripts/buurt-generators/sheet.ts`: photo | before | after per row from cached panoramas, rectified to the row's
+  front line at one scale (rule 10's in-game frames follow only after David's answer).
+- Publishing (`data/front-records/`, the world compile) stays with the integrator after David approves the first sheet.
+
+The results (counts, sheet path, verdicts, kit gaps) are appended below by the lane.
