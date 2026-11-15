@@ -62,3 +62,14 @@ test('crown profile: Kinkerstraat 67 step gable with sloped shoulders (one step,
   }
   assert.equal(Math.max(...sloped.map(p => p[1])), Math.max(...plain.map(p => p[1])));
 });
+
+test('spout (Herengracht 71/73, round 5): symmetric, a narrow upright top on small shoulders, not a bell or a point', () => {
+  const W = 5.6, c: RowCrown = { shape: 'spout', riseM: 3.3, attic: 1 }, p = rowCrownProfile(c, W, rowCrownRoofRise(c, W)), top = Math.max(...p.map(q => q[1]));
+  const crest = p.filter(q => Math.abs(q[1] - top) < 1e-6);
+  assert.equal(crest.length, 2);
+  const crestW = Math.abs(crest[1][0] - crest[0][0]);
+  assert.ok(crestW > 0.6 && crestW < W * 0.4, `crest ${crestW}`);
+  // Each crest corner stands on an upright side at least 0.8 m tall.
+  for (const c of crest) assert.ok(p.some(q => Math.abs(q[0] - c[0]) < 1e-6 && top - q[1] >= 0.8 - 1e-6), 'upright top');
+  for (const [x, y] of p) assert.ok(p.some(([u, v]) => Math.abs(u + x) < 1e-6 && Math.abs(v - y) < 1e-6), `asymmetric at ${x}`);
+});

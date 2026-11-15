@@ -105,7 +105,7 @@ const r3 = (v: number) => Math.round(v * 1000) / 1000;
 export function crownDims(c: RowCrown, W: number) {
   const half = W / 2, T = c.riseM;
   const foot = clamp(c.footW ?? W, Math.min(W, 1.6), W) / 2;
-  const defaultNeck = c.shape === 'raised' ? clamp(W * 0.32, 1.1, 2.4) : c.shape === 'bell' ? foot * 0.46 : c.shape === 'step' ? foot * 0.3 : c.shape === 'spout' ? foot * 0.68 : foot * 0.5; // the kit's stock shares (crownOutline neckShare, trap 0.3)
+  const defaultNeck = c.shape === 'raised' ? clamp(W * 0.32, 1.1, 2.4) : c.shape === 'bell' ? foot * 0.46 : c.shape === 'step' ? foot * 0.3 : c.shape === 'spout' ? foot * 0.32 : foot * 0.5; // the kit's stock shares (crownOutline neckShare, trap 0.3)
   const neck = clamp((c.neckW ?? defaultNeck) / 2, 0.45, foot * 0.8);
   // Neck and bell: the kit's stock cap rise (crownOutline capRiseOf), so the trim and the opening follow its outline.
   const kitCap = (c.shape === 'neck' || c.shape === 'bell') ? capRiseOf({ gable: c.shape, ...(c.cap ? { crownCap: c.cap } : {}) } as unknown as FrontIntent, T, 2 * foot) : 0;
@@ -153,6 +153,12 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
     kit = crownProfile({ gable: c.shape, ...(c.neckW ? { crownNeckWidth: neck / foot } : {}), crownSteps: d.steps || undefined,
       ...(necked && c.cap ? { crownCap: c.cap } : {}), ...(necked && c.shoulderRise ? { crownShoulderRise: c.shoulderRise } : {}) } as unknown as FrontIntent, 2 * foot, y0 + KIT_Z, T + KIT_Z);
     x0 = -foot;
+    // The spout (tuitgevel, Herengracht 71/73): straight rakes up to small shoulders, then a narrow upright top the neck's
+    // width, about a third of the rise tall (the kit's tuit drew a truncated point, its top a third of the front wide).
+    if (c.shape === 'spout') {
+      const b = y0 + KIT_Z, t = T + KIT_Z, sy = t - clamp(T * 0.3, 0.8, 1.4), ledge = clamp(foot * 0.08, 0.12, 0.25);
+      kit = [[0, b], [foot - neck - ledge, sy], [foot - neck, sy], [foot - neck, t], [foot + neck, t], [foot + neck, sy], [foot + neck + ledge, sy], [2 * foot, b]];
+    }
     // A sloped shoulder: the eaves-level corners under the first risers go, so the foot runs straight to the riser's top.
     if (kit && c.shape === 'step' && c.shoulder === 'sloped') { const base = y0 + KIT_Z, w = 2 * foot; kit = kit.filter(([x, y]) => !(Math.abs(y - base) < 1e-6 && x > 1e-6 && x < w - 1e-6)); }
   }
@@ -278,7 +284,7 @@ export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f
   // The crown's opening: a hoist door (white frame, dark leaves) or an attic light, centred, inside the profile.
   const lights = c.attic ?? 1;
   if (!c.hoist && lights < 1) return;
-  const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - 0.8 : T - 0.25;
+  const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - clamp(T * 0.3, 0.8, 1.4) - 0.1 : T - 0.25;
   const z0 = c.shape === 'raised' ? (c.bandM ?? 0.5) + 0.12 : Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
   const z1 = Math.min(capTop - 0.15, z0 + (c.hoist ? 1.5 : 1.15));
   if (z1 - z0 < 0.55) return;
