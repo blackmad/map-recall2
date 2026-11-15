@@ -95,6 +95,9 @@ export interface DistrictMeasured {
   walls?: Record<string, { hex: string; n: number; of: number; dates: number; reads: Array<{ pano: string; date: string; hex: string }> }>;
   roofs?: Record<string, { form: 'flat' | 'pitched' | 'hidden-pitch' | 'gable-street' | 'unclear'; frontRiseM: number; why: string }>;
   rowRoofs?: Record<string, { form: string; hipped: { start: boolean; end: boolean } }>;
+  /** Round 10: per row, each kit erker (`<pandId>:<index>`) and the finish its panoramas read (measure.ts erkerFinishOf,
+   *  then the row's consensus for unread ones): `white` is the white-framed lights running corner to corner. */
+  erkers?: Record<string, Record<string, { finish: 'white' | 'brick' | null; read: boolean; reads: string[] }>>;
 }
 
 /** Why a pand of the district is not drawn by the generator. */
@@ -190,7 +193,21 @@ export function pitchedRiseOf(lib: DistrictLibrary, s: GenSeries): number | null
   const rise = bagRiseOf(s);
   if (rise === null || rise < lib.pitched.minRiseM) return null;
   const seen = lib.streetNotes?.[s.members[0]?.front.street ?? '']?.riseM, cap = pitchedVariantOf(lib, s)?.capRiseM ?? lib.pitched.capRiseM;
-  return +Math.min(lib.pitched.maxRiseM, rise, seen ?? cap ?? Infinity).toFixed(2);
+  return +Math.min(lib.pitched.maxRiseM, rise, seen ?? measuredRiseOf(lib, s) ?? cap ?? Infinity).toFixed(2);
+}
+/**
+ * Round 10: the rise AHN4 measures over a series that reads pitched (`measuredRoofOf`), the median `frontRiseM` of its
+ * pitched members; null when unread. The district caps (Apollo 1.3 m, Rivierenbuurt 1.0 m) were the tile seen on a
+ * photo rectified onto the wall plane, and a roof leaning back from the wall is foreshortened there: 3 m of 62-degree
+ * tiles behind a 14 m eaves line project to about 1 m from a camera 10 m off the front, 2 m from one 25 m off
+ * (Beethovenstraat 145103, round 9 held-out: "the dark grey hipped roof shows as a thin strip"; AHN reads 4.1 m).
+ * The game's camera foreshortens the true roof itself, so un-noted series draw what AHN measures; a street note's seen
+ * rise still wins.
+ */
+export function measuredRiseOf(lib: DistrictLibrary, s: GenSeries): number | null {
+  const roofs = lib.measured?.roofs;
+  if (!roofs || measuredRoofOf(lib, s) !== 'pitched') return null;
+  return median(s.members.flatMap(m => { const r = roofs[pandNumber(m.pand.id)]; return r?.form === 'pitched' && r.frontRiseM > 0 ? [r.frontRiseM] : []; }));
 }
 
 /** One series' design: the family's design over the district's, every field `period-default` with its ref. */
@@ -208,7 +225,7 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
     wall: ((w) => f({ material: d.wall.material, family: d.wall.family, hex: w.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, w.hex ? `measured brick ${w.hex} (${w.evidence ?? 'district photos'})` : ''))(wallHexOf(lib, fam, rowId)),
     roofStorey: riseM !== null && pv
       ? f<RowRoofStorey>({ kind: 'mansard', material: pv.material, dormersPerFront: pv.dormersPerFront, dormerKind: pv.dormerKind, ...(pv.hoist ? { hoist: true } : {}) },
-        `pitched roof: 3DBAG rise ${bagRiseOf(s)} m >= ${lib.pitched!.minRiseM} m, drawn at the seen rise ${riseM} m (${pv.evidence}); drawn as the row mansard at ${pv.pitchDeg} deg under buurtKit`)
+        `pitched roof: 3DBAG rise ${bagRiseOf(s)} m >= ${lib.pitched!.minRiseM} m, drawn at ${lib.streetNotes?.[s.members[0]?.front.street ?? '']?.riseM !== undefined ? 'the street note\'s seen rise' : measuredRiseOf(lib, s) !== null ? 'the AHN4 front rise (series median)' : 'the district\'s seen-rise cap'} ${riseM} m (${pv.evidence}); drawn as the row mansard at ${pv.pitchDeg} deg under buurtKit`)
       : f(d.roofStorey),
     extras: f(d.extras),
     windowShare: f(d.windowShare),
@@ -286,6 +303,9 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
     // Blocks of two pands (family kit `piers`): the pier at every other party wall, phased by the row's photo if one
     // states it, else a block starting at the row's first member.
     const note = lib.rowNotes?.[r.id], phase = note?.pierPhase ?? 1, pierAfter = (j: number) => ((j - phase) % 2 + 2) % 2 === 0;
+    // Erker bands: the street's photo says so (round 5), or the row's panoramas read its erkers white (round 10: the
+    // judges' "white wrap-around oriels", Kuinderstraat 067158 reads 0.45-0.56 white over the wall's 0.20-0.23).
+    const mErk = lib.measured?.erkers?.[r.id], whiteErker = (pid: string) => !!mErk && Object.entries(mErk).some(([k, v]) => k.startsWith(`${pid}:`) && v.finish === 'white');
     const bands = !!lib.streetNotes?.[r.street]?.erkerBands, coping = wallHexOf(lib, fam, r.id).hex;
     const ents = note?.entries ?? [], entryAt = (i: number): BuurtEntry | null => ents.length ? { ...ents[i % ents.length], cells: bays } : null;
     for (const m of s.members) {
@@ -300,7 +320,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
         ...(fam?.kit?.rhythm ? { rhythm: true as const } : {}),
         ...(fam?.kit?.piers && (joins.left || joins.right) ? { sides: { ...(joins.left ? { left: pierAfter(i - 1) ? 'pier' as const : 'pair' as const } : {}), ...(joins.right ? { right: pierAfter(i) ? 'pier' as const : 'pair' as const } : {}) } } : {}),
         ...(fam?.kit?.sash ? { sash: fam.kit.sash.value } : {}), ...(fam?.kit?.ribbon ? { ribbon: true as const } : {}),
-        ...(bands && m.front.erkers.length ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
+        ...((bands || whiteErker(pid)) && m.front.erkers.length ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
         ...(rise === null && (fam?.kit?.ribbon || m.front.erkers.length || lib.flatEaves || entryAt(i)) && coping ? { copingHex: coping } : {}),
         ...(rise === null && lib.flatEaves ? { eaves: { overhangM: lib.flatEaves.eavesM, ...(lib.flatEaves.frieze === false ? { frieze: false as const } : {}) } } : {}),
         ...(entryAt(i) ? { entries: [entryAt(i)!] } : {}),

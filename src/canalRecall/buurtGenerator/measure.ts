@@ -128,7 +128,7 @@ export type RoofCell = { t: number; n: number; h: number };
  * `pitchedM`. A free row end is hipped when the ridge-depth height in its last `endM` falls at least `hipM` under the
  * middle's.
  */
-export const ROOF_FORM = { endM: 4, frontM: 6, pitchedM: 1.0, flatM: 0.8, hipM: 1.0, minCells: 60, chimneyQ: 0.97, yardM: 2.5, seenSlope: 1.3 } as const;
+export const ROOF_FORM = { endM: 4, frontM: 6, pitchedM: 1.0, flatM: 0.8, hipM: 1.0, minCells: 60, chimneyQ: 0.97, yardM: 2.5, seenSlope: 1.3, steepSlope: 1.0 } as const;
 /**
  * `hidden-pitch`: a roof that rises behind the front but too gently to be seen over the eaves from the street. Apollo's
  * noted streets (round 9, AHN4): the tiles the photos show (Herculesstraat, Sportstraat, Michelangelostraat) rise
@@ -136,7 +136,10 @@ export const ROOF_FORM = { endM: 4, frontM: 6, pitchedM: 1.0, flatM: 0.8, hipM: 
  * (Minervalaan, Quinten Massijsstraat 110788) rise 0.7-0.8 m per metre. A rise under `seenSlope` m per metre over the
  * first 2 m is hidden, and the street sees a flat top.
  */
-export type RoofForm = { form: 'flat' | 'pitched' | 'hidden-pitch' | 'gable-street' | 'unclear'; frontRiseM: number; ridgeM: number; eavesM: number; hipped: { start: boolean; end: boolean }; cells: number; why: string };
+export type RoofForm = { form: 'flat' | 'pitched' | 'hidden-pitch' | 'gable-street' | 'unclear'; frontRiseM: number;
+  /** Round 10 (pitched only): the rise of the roof's steep face, from the front up the depth bins while each climbs at
+   *  least `steepSlope` m per metre; a mansard's face stops at its break, a full hipped roof runs to its ridge. */
+  steepRiseM?: number; ridgeM: number; eavesM: number; hipped: { start: boolean; end: boolean }; cells: number; why: string };
 const medianOf = (v: number[]) => { if (!v.length) return NaN; const s = [...v].sort((a, b) => a - b); return s.length % 2 ? s[s.length >> 1] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2; };
 function profile(cells: RoofCell[], key: 't' | 'n', lo: number, hi: number): Map<number, number> {
   const bins = new Map<number, number[]>();
@@ -166,7 +169,9 @@ export function roofFormOf(raw: readonly RoofCell[], lenM: number, free: { start
     const hipped = { start: free.start && midH - endH(0, F.endM / 2) >= F.hipM, end: free.end && midH - endH(lenM - F.endM / 2, lenM) >= F.hipM };
     const near = depth.filter(([b]) => b > depth[0][0] && b <= depth[0][0] + 2), slope = near.length ? Math.max(...near.map(([b, h]) => (h - front) / (b - depth[0][0]))) : 0;
     if (slope < F.seenSlope) return { form: 'hidden-pitch', frontRiseM: r2(rise), ridgeM: r2(top), eavesM: r2(front), hipped, cells: cells.length, why: `rises ${r2(rise)} m within ${F.frontM} m but only ${r2(slope)} m per metre at the front: hidden over the eaves` };
-    return { form: 'pitched', frontRiseM: r2(rise), ridgeM: r2(top), eavesM: r2(front), hipped, cells: cells.length, why: `depth profile rises ${r2(rise)} m within ${F.frontM} m of the front, ${r2(slope)} m per metre at the front` };
+    let steep = front, prev = depth[0];
+    for (const bin of depth.slice(1)) { if (bin[0] > depth[0][0] + F.frontM || (bin[1] - prev[1]) / (bin[0] - prev[0]) < F.steepSlope) break; steep = bin[1]; prev = bin; }
+    return { form: 'pitched', frontRiseM: r2(rise), steepRiseM: r2(Math.max(0, steep - front)), ridgeM: r2(top), eavesM: r2(front), hipped, cells: cells.length, why: `depth profile rises ${r2(rise)} m within ${F.frontM} m of the front, ${r2(slope)} m per metre at the front` };
   }
   if (spread <= F.flatM) {
     const along = [...profile(cells.filter(c => c.n < F.frontM), 't', 0, lenM).values()];
@@ -180,4 +185,111 @@ export function roofFormOf(raw: readonly RoofCell[], lenM: number, free: { start
   // line, so the street sees a flat top at the front edge.
   if (Math.max(...all) - front <= F.flatM) return { form: 'flat', frontRiseM: r2(rise), ridgeM: r2(Math.max(...all)), eavesM: r2(front), hipped: none, cells: cells.length, why: `highest at the front, ${r2(front - Math.min(...all))} m lower behind` };
   return { form: 'unclear', frontRiseM: r2(rise), ridgeM: r2(Math.max(...all)), eavesM: r2(front), hipped: none, cells: cells.length, why: `front rise ${r2(rise)} m under ${F.pitchedM} m but depth spread ${r2(spread)} m (a back pitch or a stepped block)` };
+}
+
+// ---- which part of the row a camera sees -------------------------------------------------------------------------
+type Pt = { x: number; y: number };
+/** Gates on the view ray to each metre of the front (round 10). A pale rendered block beside the camera, or a stretch
+ *  seen edge-on (a smear), must not be read as the row's brick. A column counts only when the ray from the camera to it
+ *  crosses no other building's footprint and meets the front within `maxObliquityDeg` of square on. (Lekstraat 147614's
+ *  grey read, which first looked like this, was the bent row's chord: `localFront`.) */
+export const VIEW_GATE = { maxObliquityDeg: 55, stepM: 0.5, endInsetM: 0.3 } as const;
+const cross = (o: Pt, a: Pt, b: Pt) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+function segmentsCross(p: Pt, q: Pt, a: Pt, b: Pt): boolean {
+  const d1 = cross(a, b, p), d2 = cross(a, b, q), d3 = cross(p, q, a), d4 = cross(p, q, b);
+  return ((d1 > 0) !== (d2 > 0)) && ((d3 > 0) !== (d4 > 0));
+}
+/** Visibility of the front a→b from `cam`, sampled every `stepM` metres along it: true where the camera sees the wall.
+ *  `occluders` are the rings (RD metres) of every building but the row's own members. */
+export function visibleAlong(cam: Pt, a: Pt, b: Pt, occluders: readonly (readonly Pt[])[]): boolean[] {
+  const len = Math.hypot(b.x - a.x, b.y - a.y), ux = (b.x - a.x) / len, uy = (b.y - a.y) / len;
+  const out: boolean[] = [];
+  for (let t = 0; t <= len + 1e-9; t += VIEW_GATE.stepM) {
+    const p = { x: a.x + ux * t, y: a.y + uy * t };
+    const vx = cam.x - p.x, vy = cam.y - p.y, d = Math.hypot(vx, vy);
+    const standoff = Math.abs(vx * uy - vy * ux); // distance off the line (either side)
+    if (d < 1e-6 || (Math.acos(Math.min(1, standoff / d)) * 180) / Math.PI > VIEW_GATE.maxObliquityDeg) { out.push(false); continue; }
+    // Stop the ray just short of the wall so a neighbour sharing the wall line does not count.
+    const k = (d - VIEW_GATE.endInsetM) / d, q = { x: p.x + vx * (1 - k), y: p.y + vy * (1 - k) };
+    let blocked = false;
+    for (const ring of occluders) {
+      for (let i = 0; i + 1 < ring.length && !blocked; i++) blocked = segmentsCross(cam, q, ring[i], ring[i + 1]);
+      if (blocked) break;
+    }
+    out.push(!blocked);
+  }
+  return out;
+}
+
+// ---- the stretch of a bent row a camera reads ----------------------------------------------------------------------
+/** A row's front is its members' front lines in row order, and long rows bend: Lekstraat 147614 runs 236 m, and the
+ *  chord from its first to its last member passes 29 m off the facade at the 2025 camera, so the read window held a
+ *  tree and a block across the square, not the row (round 10). A read rectifies onto the straight run of members
+ *  nearest the camera instead: from the member closest to it, grown one neighbour at a time (the nearer one first)
+ *  while each turns less than `maxTurnDeg` from it and the run stays within `spanM`. */
+export const LOCAL_FRONT = { spanM: 30, maxTurnDeg: 12 } as const;
+export type FrontSeg = readonly [Pt, Pt];
+export function localFront(segs: readonly FrontSeg[], cam: Pt): { a: Pt; b: Pt; lo: number; hi: number; offM: number } | null {
+  if (!segs.length) return null;
+  const distTo = ([p, q]: FrontSeg) => {
+    const dx = q.x - p.x, dy = q.y - p.y, l2 = dx * dx + dy * dy || 1e-9, t = Math.max(0, Math.min(1, ((cam.x - p.x) * dx + (cam.y - p.y) * dy) / l2));
+    return Math.hypot(cam.x - p.x - t * dx, cam.y - p.y - t * dy);
+  };
+  const dir = ([p, q]: FrontSeg) => Math.atan2(q.y - p.y, q.x - p.x);
+  let k = 0;
+  segs.forEach((s, i) => { if (distTo(s) < distTo(segs[k])) k = i; });
+  const turnOk = (i: number) => { let d = Math.abs(dir(segs[i]) - dir(segs[k])) % (2 * Math.PI); if (d > Math.PI) d = 2 * Math.PI - d; return (d * 180) / Math.PI < LOCAL_FRONT.maxTurnDeg; };
+  const span = (lo: number, hi: number) => Math.hypot(segs[hi][1].x - segs[lo][0].x, segs[hi][1].y - segs[lo][0].y);
+  let lo = k, hi = k;
+  for (;;) {
+    const opts = [lo - 1, hi + 1].filter(i => i >= 0 && i < segs.length && turnOk(i) && span(Math.min(lo, i), Math.max(hi, i)) <= LOCAL_FRONT.spanM);
+    if (!opts.length) break;
+    const i = opts.sort((x, y) => distTo(segs[x]) - distTo(segs[y]))[0];
+    if (i < lo) lo = i; else hi = i;
+  }
+  const a = segs[lo][0], b = segs[hi][1], len = Math.hypot(b.x - a.x, b.y - a.y) || 1e-9;
+  // The camera's offset off the run, positive on the side of the row's normal (uy, -ux), as measure-walls takes it.
+  const offM = ((cam.x - a.x) * (b.y - a.y) - (cam.y - a.y) * (b.x - a.x)) / len;
+  return { a, b, lo, hi, offM };
+}
+
+// ---- the erker's finish: white timber or the row's brick (round 10) -------------------------------------------------
+/** A pixel is white trim when it is near neutral and at least `relL` of the band's white reference (or `absL` with
+ *  none: the 2025 recordings read white frames at L 0.70). An erker reads white when, over its face from the first
+ *  floor to under the line, `share` of its seen pixels are white and that is `overWall` above the row's wall beside it
+ *  (a brick erker's white frames and sills come to 0.15-0.30, as does the wall's own windows' white). The judges named
+ *  white wrap-around and angled oriels drawn in brick on Hunzestraat 120343, Kuinderstraat 067158 and Stadionkade
+ *  063989 (round 9 held-out). */
+export const ERKER_WHITE = { relL: 0.8, absL: 0.72, maxC: 0.035, share: 0.4, overWall: 0.15, minPx: 400, minReads: 2, rowMajority: 0.6 } as const;
+export function whiteShareOf(px: readonly Lab[], ref: WhiteRef): number {
+  if (!px.length) return 0;
+  const minL = ref ? ref.L * ERKER_WHITE.relL : ERKER_WHITE.absL, a0 = ref?.a ?? 0, b0 = ref?.b ?? 0;
+  let n = 0;
+  for (const [L, a, b] of px) if (L >= minL && Math.hypot(a - a0, b - b0) <= ERKER_WHITE.maxC) n++;
+  return n / px.length;
+}
+export type ErkerRead = { share: number; wall: number; brick?: number; wallBrick?: number };
+/** The share of warm (brick) pixels, after the white reference's cast. */
+export function brickShareOf(px: readonly Lab[], ref: WhiteRef): number {
+  if (!px.length) return 0;
+  const a0 = ref?.a ?? 0, b0 = ref?.b ?? 0;
+  let n = 0;
+  for (const [L, a, b] of px) { const A = a - a0, B = b - b0, C = Math.hypot(A, B), h = ((Math.atan2(B, A) * 180) / Math.PI + 360) % 360; if (C >= WARM.C && h >= WARM.h0 && h <= WARM.h1 && L >= WARM.L0 && L <= WARM.L1) n++; }
+  return n / px.length;
+}
+/** One erker's finish from its reads (distinct panoramas): white when `minReads` agree it is white, brick when as many
+ *  agree it is not; split or thin reads leave it unread (null). */
+export function erkerFinishOf(reads: readonly ErkerRead[]): 'white' | 'brick' | null {
+  const white = reads.filter(r => r.share >= ERKER_WHITE.share && r.share - r.wall >= ERKER_WHITE.overWall).length;
+  const brick = reads.length - white;
+  if (white >= ERKER_WHITE.minReads && white > brick) return 'white';
+  if (brick >= ERKER_WHITE.minReads && brick > white) return 'brick';
+  return null;
+}
+/** The row's erkers: each read erker keeps its own finish; an unread one takes the row's when `rowMajority` of the
+ *  read ones agree (the series value), else stays unread. */
+export function rowErkerFinish(finishes: readonly ('white' | 'brick' | null)[]): ('white' | 'brick' | null)[] {
+  const read = finishes.filter((f): f is 'white' | 'brick' => !!f), w = read.filter(f => f === 'white').length;
+  const row = read.length ? (w / read.length >= ERKER_WHITE.rowMajority ? 'white' : (read.length - w) / read.length >= ERKER_WHITE.rowMajority ? 'brick' : null) : null;
+  return finishes.map(f => f ?? row);
 }

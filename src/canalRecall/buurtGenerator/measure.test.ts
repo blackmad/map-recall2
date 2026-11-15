@@ -2,7 +2,7 @@
 // balance on the trim, warm median, the vote across captures) and the roof form from the AHN DSM.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { isFoliage, labOf, roofFormOf, voteWall, wallBrickOf, whiteRefOf, type RoofCell, type WallRead } from './measure.js';
+import { isFoliage, labOf, localFront, roofFormOf, visibleAlong, voteWall, wallBrickOf, whiteRefOf, type RoofCell, type WallRead } from './measure.js';
 import { oklab } from '../retailPuiPaint.js';
 
 test('foliage: green counts, yellow brick does not', () => {
@@ -51,4 +51,33 @@ test('roof form: pitched from the front, flat, highest at the front, and hipped 
   assert.deepEqual(hip.hipped, { start: true, end: true });
   assert.deepEqual(roofFormOf(cells((t, n) => 10 + Math.min(n, 10 - n, t, 20 - t) * 1.6), 20, { start: false, end: true }).hipped, { start: false, end: true });
   assert.equal(roofFormOf(cells(() => 12).slice(0, 20), 20).form, 'unclear', 'too few cells');
+});
+
+test('the camera sees only the unblocked, not edge-on, part of the row (Lekstraat 147614: a corner block filled the window)', () => {
+  // A 40 m front on y = 0, the camera 12 m out at x = 10; a block between them covering x 0-6 at y 3-8.
+  const a = { x: 0, y: 0 }, b = { x: 40, y: 0 }, cam = { x: 10, y: 12 };
+  const block = [{ x: 0, y: 3 }, { x: 6, y: 3 }, { x: 6, y: 8 }, { x: 0, y: 8 }, { x: 0, y: 3 }];
+  const free = visibleAlong(cam, a, b, []), seen = visibleAlong(cam, a, b, [block]);
+  const at = (v: boolean[], t: number) => v[Math.round(t / 0.5)];
+  assert.equal(at(free, 10), true, 'square on');
+  assert.equal(at(free, 35), false, 'edge-on (64 deg): a smear');
+  assert.equal(at(seen, 2), false, 'behind the block');
+  assert.equal(at(seen, 12), true);
+  // A neighbour sharing the wall line (touching the front) does not block it.
+  const party = [{ x: 40, y: 0 }, { x: 50, y: 0 }, { x: 50, y: 10 }, { x: 40, y: 10 }, { x: 40, y: 0 }];
+  assert.equal(at(visibleAlong(cam, a, b, [party]), 15), true);
+});
+
+test('a bent row is read on the straight run nearest the camera, not its chord', () => {
+  // Ten 6 m members along x, then ten turning 40 degrees: the chord from first to last cuts the corner.
+  const segs: [{ x: number; y: number }, { x: number; y: number }][] = [];
+  for (let i = 0; i < 10; i++) segs.push([{ x: i * 6, y: 0 }, { x: i * 6 + 6, y: 0 }]);
+  const c = Math.cos((40 * Math.PI) / 180), s = Math.sin((40 * Math.PI) / 180);
+  for (let i = 0; i < 10; i++) segs.push([{ x: 60 + i * 6 * c, y: i * 6 * s }, { x: 60 + (i + 1) * 6 * c, y: (i + 1) * 6 * s }]);
+  const lf = localFront(segs, { x: 20, y: -15 })!;
+  assert.ok(lf.hi <= 9, 'the run stops at the bend');
+  assert.ok(Math.hypot(lf.b.x - lf.a.x, lf.b.y - lf.a.y) <= 30.001, 'within spanM');
+  assert.ok(Math.abs(lf.a.y) < 1e-9 && Math.abs(lf.b.y) < 1e-9, 'on the straight leg');
+  assert.ok(Math.abs(Math.abs(lf.offM) - 15) < 1e-9, 'offset is the camera distance off the run');
+  assert.equal(localFront([], { x: 0, y: 0 }), null);
 });
