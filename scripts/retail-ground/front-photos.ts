@@ -3,7 +3,14 @@
  * the nearest facing open-data Amsterdam panorama (data.amsterdam.nl, CC BY 4.0; the house line's pand-reference cache
  * and selection), aimed at the wall's ground storey, written as <out>/<node>-<pano>.jpg with a receipts JSON. Used to
  * spot-check a template rule (bike shop classes) and to sample real fronts for new templates. A node with no template
- * pand is hosted on the footprint it stands in, else the nearest within 8 m (sampling shops no template draws yet). Panoramas this run
+ * pand is hosted on the footprint it stands in, else the nearest within 8 m (sampling shops no template draws yet).
+ *
+ * The aim (round 6b; the first pass missed about half its shops): the shop's own stretch of its wall, AIM.halfM either
+ * side of the node's foot on it (not the whole frontage, which on a block-long new build is somewhere else), the
+ * ground storey and fascia only (AIM.heightM); the wall a street-facing one near the node (the nearest edge of a deep
+ * pand can be its back); panoramas ranked against that stretch, near ones first (AIM.window); up to AIM.tries cuts,
+ * skipping one whose ground band reads as a vehicle (retailPuiPaint.ts vehicleBand, as measure-pui.ts) or barely
+ * covers the stretch. Panoramas this run
  * downloads are purged afterwards; the 15 GB disk floor and --max-mb stop it.
  *   node --import tsx scripts/retail-ground/front-photos.ts --nodes=<id,id> --out=<dir> [--per=1] [--max-mb=60] [--offline]
  */
@@ -12,9 +19,21 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { execSync } from 'node:child_process';
 import { CACHE_DIR, findPands, http, lngLatToRd, neighbourhood, nearestOnSeg, panoTracker, purgeFiles, type Footprint } from '../pand-reference/core.ts';
-import { exposedWalls, listPanos, rankPanos } from '../pand-reference/select.ts';
+import { listPanos, pickWall, rankPanos } from '../pand-reference/select.ts';
 import { aimPose, frameFor, gridConvergenceDeg, type WallQuad } from '../house-frames/pose.ts';
-import { cutPerspective, loadEquirect } from '../house-frames/photo.ts';
+import { cutPerspective, loadEquirect, rectifyFromFrame } from '../house-frames/photo.ts';
+import { PUI_BAND, vehicleBand } from '../../src/canalRecall/retailPuiPaint.ts';
+import type { RankWindow, Wall } from '../pand-reference/select.ts';
+
+export const AIM = { halfM: 3.5, minM: 5, heightM: 4.6, window: { minD: 3.5, maxD: 25, strict: [4, 15], maxObliquityDeg: 50 } as RankWindow, tries: 6, minValid: 0.6 } as const;
+/** The stretch of `wall` around the node's foot: AIM.halfM either side, at least AIM.minM, inside the wall. */
+export function shopStretch(wall: Wall, node: { x: number; y: number }): Wall {
+  const ux = (wall.b.x - wall.a.x) / wall.len, uy = (wall.b.y - wall.a.y) / wall.len;
+  const t = Math.max(0, Math.min(wall.len, (node.x - wall.a.x) * ux + (node.y - wall.a.y) * uy));
+  const half = Math.min(wall.len, Math.max(AIM.minM, 2 * AIM.halfM)) / 2, t0 = Math.max(0, Math.min(wall.len - 2 * half, t - half)), t1 = t0 + 2 * half;
+  const a = { x: wall.a.x + ux * t0, y: wall.a.y + uy * t0 }, b = { x: wall.a.x + ux * t1, y: wall.a.y + uy * t1 };
+  return { ...wall, a, b, len: t1 - t0, mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 } };
+}
 
 http.userAgent = 'MapRecall/1.0 (+https://github.com/blackmad/map-recall2)';
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -45,22 +64,37 @@ for (const e of want) {
     if (best && best.d <= 8) { fp = best.f; id = best.f.id; }
   }
   if (!id || !fp) { receipts[e.id] = { skip: 'no pand within 8 m' }; continue; }
-  const wall = exposedWalls(fp, others).map(w => ({ w, d: nearestOnSeg(node, { a: w.a, b: w.b }).d })).sort((p, q) => p.d - q.d).find(x => x.d <= 6)?.w;
-  if (!wall) { receipts[e.id] = { skip: 'no exposed wall within 6 m' }; continue; }
-  let done = 0;
+  // A street-facing wall near the node: distance to the node plus half its distance to the road.
+  // pickWall annotates each exposed wall with its road distance and how squarely it faces the road.
+  const picked = await pickWall(fp, others), walls = picked.others ?? (picked.wall ? [picked.wall] : []);
+  const score = (w: Wall, d: number) => d + 0.5 * Math.min(w.roadDistM, 30) + (w.facing > 0.5 ? 0 : 10);
+  const near = walls.map(w => ({ w, d: nearestOnSeg(node, { a: w.a, b: w.b }).d })).filter(x => x.d <= 8);
+  const wall = near.sort((p, q) => score(p.w, p.d) - score(q.w, q.d))[0]?.w;
+  if (!wall) { receipts[e.id] = { skip: 'no exposed wall within 8 m' }; continue; }
+  const shop = shopStretch(wall, node), quad: WallQuad = { a: shop.a, b: shop.b, heightM: AIM.heightM };
+  let done = 0; const tried: string[] = [];
   try {
-    for (const pick of rankPanos(wall, await listPanos(wall.mid, 35)).slice(0, 4)) {
+    for (const pick of rankPanos(shop, await listPanos(shop.mid, 30), AIM.window).slice(0, AIM.tries)) {
       if (done >= PER) break;
       const img = await loadEquirect(pick.record, 'small'); if (!img) continue;
       const ll: [number, number] = [pick.record.geometry.coordinates[0], pick.record.geometry.coordinates[1]], published = Number(pick.record.geometry.coordinates[2]);
-      const quad: WallQuad = { a: wall.a, b: wall.b, heightM: 5 };
       const pose = aimPose({ lngLat: ll, cameraNap: published > 0 ? published - 43.5 : null }, quad, { width: 900, height: 560 }), frame = frameFor(pose);
       const cut = cutPerspective(img, frame, gridConvergenceDeg(ll));
+      // The ground band rectified onto the stretch: how much of it the cut covers, and whether a vehicle hides it.
+      const topM = PUI_BAND.z1 + 0.2, rect = rectifyFromFrame(cut, frame, pose, quad, PUI_BAND.ppm, topM);
+      const luma: number[] = []; let rows = 0, valid = 0, n = 0;
+      for (let j = 0; j < rect.height; j++) {
+        const z = topM - (j + 0.5) / rect.ppm; if (z < PUI_BAND.z0 || z > PUI_BAND.z1) continue; rows++;
+        for (let i = 0; i < rect.width; i++) { const k = j * rect.width + i, q = k * 3; n++; if (rect.valid[k]) valid++; luma.push(0.299 * rect.rgb[q] + 0.587 * rect.rgb[q + 1] + 0.114 * rect.rgb[q + 2]); }
+      }
+      const v = vehicleBand(luma, rect.width, rows), cover = n ? valid / n : 0;
+      if (v.vehicle || cover < AIM.minValid) { tried.push(`${pick.panoId}: ${v.vehicle ? `vehicle (${v.vehicle})` : `covers ${(100 * cover).toFixed(0)} %`}`); continue; }
       const file = path.join(OUT, `${e.id}-${pick.panoId}.jpg`);
       await sharp(Buffer.from(cut.data), { raw: { width: cut.width, height: cut.height, channels: 3 } }).jpeg({ quality: 85 }).toFile(file);
-      receipts[e.id] = { pand: id, name: e.tags?.name ?? '', pano: pick.panoId, date: String(pick.timestamp).slice(0, 10), distM: +pick.distM.toFixed(1), obliquityDeg: +pick.obliquityDeg.toFixed(1), file };
+      receipts[e.id] = { pand: id, name: e.tags?.name ?? '', pano: pick.panoId, date: String(pick.timestamp).slice(0, 10), distM: +pick.distM.toFixed(1), obliquityDeg: +pick.obliquityDeg.toFixed(1), stretchM: +shop.len.toFixed(1), cover: +cover.toFixed(2), ...(tried.length ? { skipped: tried } : {}), file };
       done++;
     }
+    if (!done) receipts[e.id] = { pand: id, name: e.tags?.name ?? '', skip: tried.length ? 'every candidate blocked or off the cut' : 'no panorama facing the stretch', skipped: tried };
   } catch (err) { receipts[e.id] = { skip: (err as Error).message }; }
   const mine = [...panoTracker.touched].filter(f => !before.has(path.basename(f))); panoTracker.touched.clear(); await purgeFiles(mine);
 }

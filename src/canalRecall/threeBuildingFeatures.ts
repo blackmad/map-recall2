@@ -259,7 +259,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?, 1?] : null;
   if (template && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && !p.frontCarrier && cellSetOf(look) !== 'procedural') {
     const logo = logoFor(template[0] as RetailTemplate), logoLayer = retailLogoLayer(cellSetOf(look));
-    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer, ...logo } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(puiPaint && p.puiDark !== 1 ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}) };
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer + logo.page, rect: logo.rect, aspect: logo.aspect } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(puiPaint && p.puiDark !== 1 ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}) };
     delete building.signature;
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);

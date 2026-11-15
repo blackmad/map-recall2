@@ -50,7 +50,7 @@
    ]
   },
   "clothes": {
-   "verdict": "held",
+   "verdict": "superseded by resample",
    "why": "3 of 6 clear (LFDY yellow and white art nouveau, Kings of Indigo navy board and awning, Pek&Kleren white band black letters): no shared colour, sign or glass split; the plain front with measured pui paint stays",
    "samples": [
     {
@@ -98,7 +98,7 @@
    ]
   },
   "hairdresser": {
-   "verdict": "held",
+   "verdict": "superseded by resample",
    "why": "2-3 clear (Barbershop black band white letters, a barber shop glass band, Schoonheid & Nagels green letters): no shared look",
    "samples": [
     {
@@ -146,7 +146,7 @@
    ]
   },
   "beauty": {
-   "verdict": "held",
+   "verdict": "superseded by resample",
    "why": "1-2 clear (a white-framed salon, New World Nails behind a van): too few clear samples",
    "samples": [
     {
@@ -194,7 +194,7 @@
    ]
   },
   "convenience": {
-   "verdict": "held",
+   "verdict": "superseded by resample",
    "why": "3 clear (Avondwinkel black board yellow letters and posters, Dapper Post white board striped awning, Super Market dark): posters and a lit sign are common but the board colours are not; resample before building",
    "samples": [
     {
@@ -283,7 +283,7 @@
    ]
   },
   "slijterij": {
-   "verdict": "held",
+   "verdict": "superseded by resample",
    "why": "1 clear (Wijnhandel-Slijterij Drankenhandel: dark green front, cream band): too few",
    "samples": [
     {
@@ -380,7 +380,7 @@
    ]
   },
   "optician": {
-   "verdict": "held",
+   "verdict": "superseded by resample",
    "why": "2 clear (Arnold Booden black awnings white serif, a red-framed front): too few",
    "samples": [
     {
@@ -476,7 +476,7 @@
    ]
   },
   "apotheek": {
-   "verdict": "held",
+   "verdict": "superseded by resample",
    "why": "1 clear (Ferdinand Bol Apotheek: white board blue letters, red doors): too few; most cuts aimed at the wrong wall",
    "samples": [
     {
@@ -651,7 +651,7 @@
     ]
    },
    "kruidvat": {
-    "verdict": "held",
+    "verdict": "superseded by resample",
     "why": "3 show red and white (flags, red discs on the glass) but every clear cut is too far to measure the board; resample closer",
     "samples": [
      {
@@ -895,6 +895,482 @@
       "pand": "passage:NL.IMBAG.Pand.0363100012137406:0",
       "pano": "recording_2025-06-18_07-44-47_02789",
       "date": "2025-06-18"
+     }
+    ]
+   }
+  }
+ },
+ "resample": {
+  "note": "Round 6b: front-photos.ts aims at the shop's own stretch of its street-facing wall (7 m around the node's foot, ground storey and fascia), ranks panoramas against that stretch (3.5-25 m, near first, obliquity <= 50), and skips cuts whose ground band reads as a vehicle or covers under 60 %. Same seeded nodes as the first pass. On target: 31 of 47 cuts (first pass about 40 %); the misses left are OSM nodes on the wrong building and two scaffolded fronts.",
+  "categories": {
+   "apotheek": {
+    "verdict": "built",
+    "why": "4 of 6 on target (was 1): De Ruyter Apotheek (white board, blue-grey letters, green cross), Ferdinand Bol Apotheek (white board, blue letters, red doors), Transvaal Alphega (green signs, white frames), Medicijnman aimed at the Fysioline next door (node placement); one under scaffolding",
+    "samples": [
+     {
+      "node": 59441638,
+      "name": "Transvaal Alphega-apotheek",
+      "pand": "NL.IMBAG.Pand.0363100012114066",
+      "pano": "TMX7316010203-001906_pano_0004_000228",
+      "date": "2020-09-04",
+      "distM": 12.8,
+      "obliquityDeg": 1.9
+     },
+     {
+      "node": 332661081,
+      "name": "Ferdinand Bol Apotheek",
+      "pand": "NL.IMBAG.Pand.0363100012161137",
+      "pano": "TMX7316010203-002470_pano_0000_000985",
+      "date": "2022-03-23",
+      "distM": 8.6,
+      "obliquityDeg": 0.5
+     },
+     {
+      "node": 1513706947,
+      "name": "Mediq Apotheek Czaar Peter",
+      "pand": "NL.IMBAG.Pand.0363100012238656",
+      "pano": "recording_2025-06-19_09-55-15_00105",
+      "date": "2025-06-19",
+      "distM": 11.3,
+      "obliquityDeg": 1.8
+     },
+     {
+      "node": 2503783599,
+      "name": "Apotheek Oud Zuid",
+      "pand": "NL.IMBAG.Pand.0363100012148010",
+      "pano": "recording_2025-07-30_09-09-11_00350",
+      "date": "2025-07-30",
+      "distM": 10.3,
+      "obliquityDeg": 1.2
+     },
+     {
+      "node": 2720875314,
+      "name": "Medicijnman Apotheek Jordaan",
+      "pand": "NL.IMBAG.Pand.0363100012173441",
+      "pano": "TMX7316010203-002043_pano_0000_001191",
+      "date": "2021-03-17",
+      "distM": 8.1,
+      "obliquityDeg": 0.5
+     },
+     {
+      "node": 5782829380,
+      "name": "De Ruyter Apotheek",
+      "pand": "NL.IMBAG.Pand.0363100012153384",
+      "pano": "TMX7316010203-002064_pano_0000_000674",
+      "date": "2021-03-26",
+      "distM": 9.6,
+      "obliquityDeg": 0.4
+     }
+    ]
+   },
+   "hairdresser": {
+    "verdict": "built",
+    "why": "4 of 6 on target: Barbershop (black front, off-white letters), a barber shop (grey glass band, white letters), Hofman Kappers (black awnings, white letters), Schoonheid & Nagels (green letters on brick); Menspire and Tommy'z Toko aimed at neighbours (node placement)",
+    "samples": [
+     {
+      "node": 1223236816,
+      "name": "Menspire",
+      "pand": "NL.IMBAG.Pand.0363100012180015",
+      "pano": "TMX7316010203-002361_pano_0002_000003",
+      "date": "2021-12-29",
+      "distM": 6.9,
+      "obliquityDeg": 0.9
+     },
+     {
+      "node": 2363285234,
+      "name": "The Hair Doctor",
+      "pand": "NL.IMBAG.Pand.0363100012106082",
+      "pano": "TMX7316010203-002591_pano_0000_002067",
+      "date": "2022-06-13",
+      "distM": 8,
+      "obliquityDeg": 1.7
+     },
+     {
+      "node": 2812164672,
+      "name": "Tommy'z Toko",
+      "pand": "NL.IMBAG.Pand.0363100012157646",
+      "pano": "TMX7316010203-002554_pano_0000_002002",
+      "date": "2022-05-02",
+      "distM": 8.6,
+      "obliquityDeg": 0.5
+     },
+     {
+      "node": 2817450799,
+      "name": "Hofman Kappers",
+      "pand": "NL.IMBAG.Pand.0363100012236375",
+      "pano": "TMX7316010203-002225_pano_0000_000459",
+      "date": "2021-07-09",
+      "distM": 6.1,
+      "obliquityDeg": 0.7
+     },
+     {
+      "node": 2817779771,
+      "name": "Kapsalon Naomi",
+      "pand": "NL.IMBAG.Pand.0363100012095350",
+      "pano": "recording_2024-09-04_05-35-54_07630",
+      "date": "2024-09-04",
+      "distM": 11.2,
+      "obliquityDeg": 2.6
+     },
+     {
+      "node": 13485082540,
+      "name": "Barbershop",
+      "pand": "NL.IMBAG.Pand.0363100012106106",
+      "pano": "TMX7316010203-002578_pano_0001_000712",
+      "date": "2022-05-12",
+      "distM": 12,
+      "obliquityDeg": 4.3
+     }
+    ]
+   },
+   "kruidvat": {
+    "verdict": "built",
+    "why": "4 of 5 on target (the first cut is the Blokker next door): red window frames (measured #95090d, #852629), red decals, a red logo box over the door, red racks out front",
+    "samples": [
+     {
+      "node": 2788286547,
+      "name": "Kruidvat",
+      "pand": "NL.IMBAG.Pand.0363100012161608",
+      "pano": "TMX7315080123-000291_pano_0000_002562",
+      "date": "2016-06-15",
+      "distM": 9.8,
+      "obliquityDeg": 0.2
+     },
+     {
+      "node": 2808849858,
+      "name": "Kruidvat",
+      "pand": "NL.IMBAG.Pand.0363100012236159",
+      "pano": "TMX7316010203-002439_pano_0006_000137",
+      "date": "2022-01-25",
+      "distM": 13.6,
+      "obliquityDeg": 0.2
+     },
+     {
+      "node": 2809216531,
+      "name": "Kruidvat",
+      "pand": "NL.IMBAG.Pand.0363100012233496",
+      "pano": "TMX7316010203-002060_pano_0000_001017",
+      "date": "2021-03-25",
+      "distM": 13.6,
+      "obliquityDeg": 0.3
+     },
+     {
+      "node": 2817514764,
+      "name": "Kruidvat",
+      "pand": "NL.IMBAG.Pand.0363100012236036",
+      "pano": "TMX7316010203-002455_pano_0001_000890",
+      "date": "2022-03-21",
+      "distM": 8.9,
+      "obliquityDeg": 1.3
+     },
+     {
+      "node": 4249154695,
+      "name": "Kruidvat",
+      "pand": "NL.IMBAG.Pand.0363100012243823",
+      "pano": "recording_2024-10-21_11-57-59_02342",
+      "date": "2024-10-21",
+      "distM": 13.8,
+      "obliquityDeg": 5.9
+     }
+    ]
+   },
+   "beauty": {
+    "verdict": "held",
+    "why": "2 of 6 on target: the same misplaced nodes as before (the fix cannot move an OSM node)",
+    "samples": [
+     {
+      "node": 2348208245,
+      "name": "New World Nails",
+      "pand": "NL.IMBAG.Pand.0363100012154130",
+      "pano": "recording_2025-09-26_07-29-39_01364",
+      "date": "2025-09-26",
+      "distM": 12.1,
+      "obliquityDeg": 1.1
+     },
+     {
+      "node": 5842025468,
+      "name": "Sorti Beatycenter",
+      "pand": "NL.IMBAG.Pand.0363100012114155",
+      "pano": "TMX7316060226-000474_pano_0000_000060",
+      "date": "2019-11-08",
+      "distM": 14.8,
+      "obliquityDeg": 2.4
+     },
+     {
+      "node": 12729230544,
+      "name": "Beauty by Zehra",
+      "pand": "NL.IMBAG.Pand.0363100012116204",
+      "pano": "TMX7316010203-000721_pano_0000_001328",
+      "date": "2018-05-15",
+      "distM": 9.7,
+      "obliquityDeg": 1.1
+     },
+     {
+      "node": 11415105617,
+      "name": "JDz",
+      "pand": "NL.IMBAG.Pand.0363100012165102",
+      "pano": "TMX7316010203-002365_pano_0007_000027",
+      "date": "2021-12-30",
+      "distM": 6.2,
+      "obliquityDeg": 0.8
+     },
+     {
+      "node": 4856400722,
+      "name": "Clinic Pure",
+      "pand": "NL.IMBAG.Pand.0363100012166521",
+      "pano": "TMX7316010203-000787_pano_0000_000140",
+      "date": "2018-06-12",
+      "distM": 14.7,
+      "obliquityDeg": 0.8
+     },
+     {
+      "node": 12828614486,
+      "name": "Vogue Clinic",
+      "pand": "NL.IMBAG.Pand.0363100012159359",
+      "pano": "TMX7316010203-001145_pano_0000_001012",
+      "date": "2019-04-29",
+      "distM": 6.4,
+      "obliquityDeg": 1
+     }
+    ]
+   },
+   "convenience": {
+    "verdict": "held",
+    "why": "4 of 6 on target, and they differ: Dapper Post (white board, orange letters, striped awning), Avondwinkel (black board, yellow letters, posters), Super Market (dark), The Bulldog shop (white frames)",
+    "samples": [
+     {
+      "node": 275457798,
+      "name": "Avondwinkel",
+      "pand": "NL.IMBAG.Pand.0363100012164396",
+      "pano": "TMX7316010203-002060_pano_0000_004037",
+      "date": "2021-03-25",
+      "distM": 8.6,
+      "obliquityDeg": 0.5
+     },
+     {
+      "node": 2348245295,
+      "name": "Dapper Post",
+      "pand": "NL.IMBAG.Pand.0363100012236602",
+      "pano": "recording_2025-09-26_12-26-58_00353",
+      "date": "2025-09-26",
+      "distM": 14.7,
+      "obliquityDeg": 0.7
+     },
+     {
+      "node": 2725795417,
+      "name": "Bobo Market",
+      "pand": "NL.IMBAG.Pand.0363100012182258",
+      "pano": "TMX7316010203-002031_pano_0000_000145",
+      "date": "2021-03-08",
+      "distM": 6.8,
+      "obliquityDeg": 0.4
+     },
+     {
+      "node": 2737854562,
+      "name": "Supermarket",
+      "pand": "NL.IMBAG.Pand.0363100012178600",
+      "pano": "TMX7316010203-002865_pano_0006_000337",
+      "date": "2022-12-15",
+      "distM": 5.2,
+      "obliquityDeg": 3.3
+     },
+     {
+      "node": 2848703818,
+      "name": "Jawda supermarkt",
+      "pand": "NL.IMBAG.Pand.0363100012154009",
+      "pano": "TMX7316060226-000495_pano_0000_002908",
+      "date": "2019-11-15",
+      "distM": 11.8,
+      "obliquityDeg": 3.7
+     },
+     {
+      "node": 4089931982,
+      "name": "Mirna Supermarkt",
+      "pand": "NL.IMBAG.Pand.0363100012178914",
+      "pano": "recording_2025-06-16_06-42-40_02099",
+      "date": "2025-06-16",
+      "distM": 14.7,
+      "obliquityDeg": 20.2
+     }
+    ]
+   },
+   "slijterij": {
+    "verdict": "held",
+    "why": "3 of 6 on target, and they differ: a Slijterij liquor store (black, gold), Drankenhandel (dark green, red and white awnings), a cream front",
+    "samples": [
+     {
+      "node": 1328355090,
+      "name": "Sterk",
+      "pand": "NL.IMBAG.Pand.0363100012236141",
+      "pano": "TMX7316010203-001147_pano_0000_001801",
+      "date": "2019-04-29",
+      "distM": 14.1,
+      "obliquityDeg": 1.3
+     },
+     {
+      "node": 2809206725,
+      "name": "Topido",
+      "pand": "NL.IMBAG.Pand.0363100012092172",
+      "pano": "recording_2025-07-31_12-19-21_00073",
+      "date": "2025-07-31",
+      "distM": 6.8,
+      "obliquityDeg": 0.3
+     },
+     {
+      "node": 2826852254,
+      "name": "Bureau Wijn Oost",
+      "pand": "NL.IMBAG.Pand.0363100012236289",
+      "pano": "recording_2025-09-26_12-26-58_00363",
+      "date": "2025-09-26",
+      "distM": 14.6,
+      "obliquityDeg": 2
+     },
+     {
+      "node": 9001664637,
+      "name": "The Wine Spot",
+      "pand": "NL.IMBAG.Pand.0363100012119810",
+      "pano": "TMX7316010203-002787_pano_0000_001594",
+      "date": "2022-09-02",
+      "distM": 14.4,
+      "obliquityDeg": 0.3
+     },
+     {
+      "node": 11415060817,
+      "name": "Design & Wijn",
+      "pand": "NL.IMBAG.Pand.0363100012173469",
+      "pano": "b_20241211_1256_Track12_Sphere_00600",
+      "date": "2024-12-11",
+      "distM": 6.3,
+      "obliquityDeg": 2.4
+     },
+     {
+      "node": 4866268108,
+      "name": "Madison Slijterij",
+      "pand": "NL.IMBAG.Pand.0363100012166085",
+      "pano": "TMX7316010203-002470_pano_0000_000953",
+      "date": "2022-03-23",
+      "distM": 6.8,
+      "obliquityDeg": 0.3
+     }
+    ]
+   },
+   "optician": {
+    "verdict": "held",
+    "why": "4 of 6 on target, and they differ: Arnold Booden (black awnings, white serif), George de Jong Optiek (white board, blue letters), a white optiek front, Vroom & Nobbe (dark)",
+    "samples": [
+     {
+      "node": 3050578441,
+      "name": "Occhiali",
+      "pand": "NL.IMBAG.Pand.0363100012176248",
+      "pano": "TMX7316060226-000478_pano_0002_001718",
+      "date": "2019-11-11",
+      "distM": 4.9,
+      "obliquityDeg": 1.2
+     },
+     {
+      "node": 4294260134,
+      "name": "George de Jong Optiek",
+      "pand": "NL.IMBAG.Pand.0363100012100410",
+      "pano": "TMX7316010203-001149_pano_0000_000894",
+      "date": "2019-04-30",
+      "distM": 13,
+      "obliquityDeg": 2.2
+     },
+     {
+      "node": 11415099119,
+      "name": "Blincq",
+      "pand": "NL.IMBAG.Pand.0363100012167786",
+      "pano": "TMX7316010203-000704_pano_0000_001355",
+      "date": "2018-05-03",
+      "distM": 6.3,
+      "obliquityDeg": 3.6
+     },
+     {
+      "node": 11993668954,
+      "name": "Arnold Booden",
+      "pand": "NL.IMBAG.Pand.0363100012121676",
+      "pano": "TMX7316010203-001062_pano_0000_000891",
+      "date": "2019-01-17",
+      "distM": 7.3,
+      "obliquityDeg": 1
+     },
+     {
+      "node": 11989713707,
+      "name": "Vroom & Nobbe",
+      "pand": "NL.IMBAG.Pand.0363100012174552",
+      "pano": "recording_2025-07-03_10-31-52_00191",
+      "date": "2025-07-03",
+      "distM": 6.4,
+      "obliquityDeg": 1.5
+     },
+     {
+      "node": 12850635648,
+      "name": "Cityoptiek",
+      "pand": "NL.IMBAG.Pand.0363100012168180",
+      "pano": "recording_2025-06-19_03-28-47_01866",
+      "date": "2025-06-19",
+      "distM": 13.7,
+      "obliquityDeg": 0.1
+     }
+    ]
+   },
+   "clothes": {
+    "verdict": "held",
+    "why": "6 of 6 on target (was 3), and they differ: LFDY yellow and white, an Allbirds white art deco front, a black front, Studio Chicas dark board, Pek&Kleren grey board and black awnings, a cream front",
+    "samples": [
+     {
+      "node": 1348523707,
+      "name": "LFDY",
+      "pand": "NL.IMBAG.Pand.0363100012177233",
+      "pano": "TMX7316010203-000227_pano_0000_002177",
+      "date": "2017-03-29",
+      "distM": 5.1,
+      "obliquityDeg": 2.3
+     },
+     {
+      "node": 2817556924,
+      "name": "Studio Chicas",
+      "pand": "NL.IMBAG.Pand.0363100012155461",
+      "pano": "TMX7316010203-002453_pano_0000_000377",
+      "date": "2022-03-21",
+      "distM": 9.4,
+      "obliquityDeg": 2.8
+     },
+     {
+      "node": 2847191144,
+      "name": "Pek&Kleren",
+      "pand": "NL.IMBAG.Pand.0363100012126450",
+      "pano": "TMX7316010203-001734_pano_0000_000575",
+      "date": "2020-06-02",
+      "distM": 7.2,
+      "obliquityDeg": 2.3
+     },
+     {
+      "node": 12803676301,
+      "name": "Kings Of Indigo",
+      "pand": "NL.IMBAG.Pand.0363100012177231",
+      "pano": "TMX7316010203-002362_pano_0001_000048",
+      "date": "2021-12-29",
+      "distM": 4.7,
+      "obliquityDeg": 3.3
+     },
+     {
+      "node": 4712834217,
+      "name": "JPH Women & Kids Wear",
+      "pand": "NL.IMBAG.Pand.0363100012092757",
+      "pano": "TMX7316010203-002060_pano_0000_004386",
+      "date": "2021-03-25",
+      "distM": 9.6,
+      "obliquityDeg": 0.1
+     },
+     {
+      "node": 10922165568,
+      "name": "Studio Onrust",
+      "pand": "NL.IMBAG.Pand.0363100012167818",
+      "pano": "TMX7316010203-001672_pano_0000_002756",
+      "date": "2020-04-24",
+      "distM": 6.1,
+      "obliquityDeg": 0.9
      }
     ]
    }

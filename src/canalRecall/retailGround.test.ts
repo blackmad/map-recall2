@@ -484,3 +484,21 @@ test('round 6: bikes stand on the pavement beside the door, side-on, and cost wh
     if (cls === 'rental') assert.ok(outside.some(t => t.hex === '#f2c21b'));
   }
 });
+
+test("round 6b: the second logo page (McDonald's, Gall & Gall, Kruidvat), & and ' in the glyph cell", async () => {
+  const { LOGOS_2 } = await import('./retailLogos.js');
+  for (const { key } of LOGOS_2) {
+    const l = logoFor(key)!;
+    assert.equal(l.page, 1, key);
+    assert.ok(l.rect[0] >= 0 && l.rect[2] <= 1 && l.rect[1] >= 0 && l.rect[3] <= 1 && l.rect[2] > l.rect[0], key);
+  }
+  assert.equal(logoFor('ah')!.page, 0);
+  assert.equal(glyphLayout('GALL & GALL').quads.map(q => q.ch).join(''), 'GALL&GALL');
+  assert.equal(glyphLayout("McDONALD'S").quads.map(q => q.ch).join(''), "MCDONALD'S");
+  // Every glyph's rect stays inside the lettering cell.
+  const g = glyphCellBox();
+  for (const q of glyphLayout("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&'").quads) assert.ok(q.rect[0] >= g.x - 1e-9 && q.rect[2] <= g.x + g.w + 1e-9, q.ch);
+  assert.equal(templateForTags({ shop: 'chemist', name: 'Kruidvat', brand: 'Kruidvat' }), 'kruidvat');
+  assert.equal(templateForTags({ shop: 'alcohol', name: 'Gall & Gall' }), 'gallgall');
+  assert.equal(templateForTags({ amenity: 'fast_food', name: "McDonald's" }), 'mcdonalds');
+});

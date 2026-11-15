@@ -379,7 +379,7 @@ function pavement(b: Builder, look: TemplateLook, a0: number, a1: number, base: 
   } else if (look.pavement === 'racks' || look.pavement === 'boards') {
     for (const a of [a0 + 0.4, a1 - 1.0]) if (a + 0.6 <= a1 && a >= a0) {
       b.box(a, a + 0.6, 0.3, 0.42, base, base + (look.pavement === 'racks' ? 1.6 : 0.9), look.pavement === 'racks' ? '#d9d4c7' : '#5a4632');
-      b.panel(a + 0.04, a + 0.56, 0.425, base + 0.3, base + (look.pavement === 'racks' ? 1.5 : 0.85), look.pavement === 'racks' ? '#2f6fb0' : '#c9a227');
+      b.panel(a + 0.04, a + 0.56, 0.425, base + 0.3, base + (look.pavement === 'racks' ? 1.5 : 0.85), look.pavement === 'racks' ? look.rack ?? '#2f6fb0' : '#c9a227');
     }
   } else if (look.pavement === 'flowers') {
     // A bloemist's display (round 6): a low timber table along the front with pots of greens and blooms on it, and a
