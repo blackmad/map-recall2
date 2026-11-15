@@ -76,7 +76,7 @@ export type RowHeadDressing = (typeof ROW_HEAD_DRESSINGS)[number];
 export const ROW_HEAD_SHAPES = ['flat', 'segmental', 'round', 'relieving'] as const;
 export type RowHeadShape = (typeof ROW_HEAD_SHAPES)[number];
 /** The upper window cell: tall sash/T-windows (the period default) or casements with a top light. */
-export const ROW_WINDOW_KINDS = ['tall-upper', 'sash', 't-window', 'casement-toplight', 'casement'] as const;
+export const ROW_WINDOW_KINDS = ['tall-upper', 'sash', 't-window', 'casement-toplight', 'casement', 'sash-8-over-8', 'sash-small-panes'] as const;
 export type RowWindowKind = (typeof ROW_WINDOW_KINDS)[number];
 /** The wall material; the colour is a judged family (judgedColour.ts JUDGED_FAMILIES), never a sampled hex. */
 export const ROW_WALL_MATERIALS = ['brick', 'painted-brick', 'stucco', 'stone'] as const;
@@ -177,6 +177,28 @@ export interface RowDesign {
    *  souterrain the bel-etage is the first). The storeys share the wall by these heights (tall lower storeys). Absent: one
    *  window height on an even storey grid. */
   windowHeights?: RowField<number[]>;
+  /** The window joinery as drawn (house rows round 5): white frames and glazing bars of the series' window kind over every
+   *  upper window. Absent: the preset's painted window (today). */
+  glazing?: RowField<RowGlazing>;
+  /** The ground storey's own facing (stucco, stone) under the wall above: a front override for one house, or the series'.
+   *  Absent: the ground storey is the wall (today). */
+  groundWall?: RowField<RowGroundWall>;
+}
+/** A canal window's joinery (RowDesign.glazing): the white frame's width round the glass, the glazing bars' width, and the
+ *  panes per sash for the sash kinds (sash-8-over-8: 8; sash-small-panes: 12; absent: the kind's own). */
+/** A ground storey faced apart from the wall above (Herengracht 12: white stucco with a scrolled top under brown brick). */
+export interface RowGroundWall {
+  material: 'stucco' | 'stone' | 'render' | 'brick';
+  /** The facing's colour: a hex, or a named colour (white, cream, grey, sandstone). Absent: the material's own. */
+  colour?: string;
+  /** Its top: a plain edge, a moulded ledge, or a ledge with scrolled ends. Absent: a ledge. */
+  top?: 'plain' | 'ledge' | 'scrolled';
+}
+
+export interface RowGlazing {
+  frameM?: number;
+  barM?: number;
+  panes?: number;
 }
 /** A gabled crown's outline (RowDesign.gable): symmetric, standing on the series line. */
 export interface RowGable {
