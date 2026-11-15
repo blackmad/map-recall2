@@ -4,7 +4,8 @@
  * footprints and OSM names; a lone pand between described ones is a one-member row); each member takes its own D1 read when the belt tranche read it, else its donor's read fitted
  * to it (`donors.ts`); the row is then solved by lane D's row solve as any belt row is (series, the belt gable rises and
  * dress, the 3DBAG ridge, canal windows), so the belt kit (BELT_GABLE outlines, lane R's stone and stoops) draws them; a
- * 1700s neck or bell series then takes the period's gable stone (carved claws, dark hood, neck cartouche: `stone.ts`).
+ * 1700s neck or bell series then takes the period's gable stone (carved claws, dark hood, neck carving: `stone.ts`), an
+ * 1800s cornice series a painted timber cornice (`cornice.ts`). A member's year is the register's facade year when stated.
  *
  * Provenance: a field the solve takes from a donor's read is not a read of this house. Every such field is relabelled
  * `period-default` with a ref naming the belt look and the donor, so the spec emit and `check:rows` never mistake it for a
@@ -17,6 +18,7 @@ import type { RowDesign, RowField, RowRecord } from '../houseSpec/row/types.ts';
 import { districtRows, type GenPand, type GenRow, type GenStreet } from '../buurtGenerator/rows.ts';
 import { donorFor, fittedRead, gableable, type BeltDonor, type BeltTarget } from './donors.ts';
 import { dressBeltStone } from './stone.ts';
+import { dressBeltCornice } from './cornice.ts';
 
 export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: string }
 /** What a published source states for a pand (the monument register via house-specs): its crown and facade year. */
@@ -48,7 +50,7 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       read = fittedRead(t, d.donor); sample = d.donor.sample; readRef = `${BELT_LOOK_REF}: donor ${d.donor.pandId}`;
       prov[pid] = { donor: d.donor.pandId, distance: d.distance, rank: d.rank, of: d.of };
     }
-    members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: m.pand.year, widthM: +m.front.lengthM.toFixed(2),
+    members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: t.year, widthM: +m.front.lengthM.toFixed(2),
       eaves3dbag: eaves, height3dbag: eaves, ...(ridge !== null && gableable(t) ? { ridge3dbag: +ridge.toFixed(2) } : {}),
       read, readRef, ...(sample ? { wallSample: sample } : {}) });
   }
@@ -88,7 +90,7 @@ export function generateBelt(pands: readonly GenPand[], streets: readonly GenStr
     const input = beltRowInput(r, reads, donors, at, provenance, stated);
     if (!input) { for (const m of r.members) skipped.push({ id: pandNumber(m.pand.id), reason: 'no-donor' }); continue; }
     const donorFilled = new Set(input.members.filter(m => 'donor' in provenance[m.pandId]).map(m => m.pandId));
-    rows.push(dressBeltStone(relabelDonorFields(solveRow(input), donorFilled), BELT_LOOK_REF));
+    rows.push(dressBeltCornice(dressBeltStone(relabelDonorFields(solveRow(input), donorFilled), BELT_LOOK_REF), BELT_LOOK_REF));
     for (const m of r.members) fronts[pandNumber(m.pand.id)] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
   }
   return { rows, provenance, skipped, fronts };

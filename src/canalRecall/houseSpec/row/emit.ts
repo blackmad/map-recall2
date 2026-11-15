@@ -53,6 +53,8 @@ export function rowFrontRecords(row: RowRecord): RowFrontRecord[] {
       storeys: d.storeys.value, bays: designs.reduce((n, x) => n + x.bays.value, 0),
       confidence: Math.min(CONF[d.corniceTopM.source], CONF[d.storeys.source]), sources,
     };
+    const pc = d.crown.value === 'cornice' ? d.crownPiece?.value : undefined;
+    if (pc && f0.topM !== null && pc.riseM > 0) rec.crown = { ...rec.crown, piece: { topM: +(f0.topM + pc.riseM).toFixed(2), kind: pc.kind, ...(pc.widthM ? { widthM: pc.widthM } : {}) } };
     if (fronts.length > 1) rec.subFronts = fronts.map((f, i) => ({ a0: f.sub!.a0, a1: f.sub!.a1, eavesM: f.topM, topM: gableTop(f.topM, designs[i]), crown: crownOf(designs[i]) }));
     return rec;
   });

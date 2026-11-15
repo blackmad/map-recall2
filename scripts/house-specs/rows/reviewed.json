@@ -695,12 +695,13 @@
         "attic": 1,
         "cap": "segmental",
         "stone": {
-          "claws": "carved"
+          "claws": "carved",
+          "cap": "carved"
         }
       },
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
       "at": "2026-11-15",
-      "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap | Gable rise re-measured 2026-11-15 (lane D, #391): 55 1.47 and 61 1.32 storeys from the claw foot to the cap top, about 4.4 and 4.0 m; the series takes 4.2, at 3.0 m a storey; the read was 3.2 m, which left the necks short (blind gable review). 55: carved claw pieces, no dark hood (R audit)."
+      "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap | Gable rise re-measured 2026-11-15 (lane D, #391): 55 1.47 and 61 1.32 storeys from the claw foot to the cap top, about 4.4 and 4.0 m; the series takes 4.2, at 3.0 m a storey; the read was 3.2 m, which left the necks short (blind gable review). 55: carved claw pieces, no dark hood (R audit). Cap carving carved (R d6a094ae5)."
     },
     {
       "fronts": [
@@ -751,12 +752,13 @@
         "upperLight": true,
         "stone": {
           "claws": "carved",
-          "neck": "oculus"
+          "neck": "oculus",
+          "cap": "shell"
         }
       },
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179673.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
       "at": "2026-11-15",
-      "note": "57: a short neck with a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 57 1.41 storeys from the neck foot to the cap top, at 3.0 m a storey; the read was 2.6 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15). 57: carved claws, no hood (R audit). 57: a small neck oculus (R 569360013)."
+      "note": "57: a short neck with a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 57 1.41 storeys from the neck foot to the cap top, at 3.0 m a storey; the read was 2.6 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15). 57: carved claws, no hood (R audit). 57: a small neck oculus (R 569360013). Cap carving shell (R d6a094ae5)."
     },
     {
       "fronts": [
@@ -1388,6 +1390,33 @@
       "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.52 C 0.024 h 54; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
       "at": "2026-11-15",
       "note": "157: the read said dark-grey-brick (series-consensus); the cut measures warm brick; one wall for the series with its neighbour (155 #6c4839 and 157 #7b5944 measured, drawn at their mean)"
+    },
+    {
+      "fronts": [
+        "0363100012167680"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "white",
+        "frieze": "plain",
+        "centre": "balustrade"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-125-161-after.json",
+      "at": "2026-11-15",
+      "note": "159: its timber cornice as lane R read the photo's top crop"
+    },
+    {
+      "fronts": [
+        "0363100012167680"
+      ],
+      "field": "crownPiece",
+      "value": {
+        "riseM": 1.6,
+        "kind": "segmental"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-125-161-after.json",
+      "at": "2026-11-15",
+      "note": "159: a raised white centre with a segmental cap over the balustrade (rise read from R's note, about half a storey)"
     }
   ],
   "herengracht-179-215": [
@@ -1438,6 +1467,20 @@
       "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.51 C 0.031 h 29; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
       "at": "2026-11-15",
       "note": "203: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    },
+    {
+      "fronts": [
+        "0363100012176310"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "cream",
+        "frieze": "attic-lights",
+        "supports": "modillions"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-179-215-after.json",
+      "at": "2026-11-15",
+      "note": "209: its timber cornice as lane R read the photo's top crop"
     }
   ],
   "herengracht-163-177": [
@@ -1722,12 +1765,13 @@
       "value": {
         "doorcase": {
           "material": "timber",
-          "door": "black"
+          "door": "black",
+          "span": "ground"
         }
       },
-      "ref": "lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
+      "ref": "lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint; lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/",
       "at": "2026-11-15",
-      "note": "142: a painted timber doorcase round a black street door."
+      "note": "142: one painted timber surround over the whole ground storey (door and window under one entablature), a black door."
     },
     {
       "fronts": [
@@ -1804,6 +1848,34 @@
       "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
       "at": "2026-11-15",
       "note": "156: glazing bars"
+    },
+    {
+      "fronts": [
+        "0363100012167645"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "cream",
+        "frieze": "plain",
+        "supports": "dentils"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-150-166-after.json",
+      "at": "2026-11-15",
+      "note": "158: its timber cornice as lane R read the photo's top crop"
+    },
+    {
+      "fronts": [
+        "0363100012176358"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "grey",
+        "frieze": "panels",
+        "supports": "modillions"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-150-166-after.json",
+      "at": "2026-11-15",
+      "note": "164: its timber cornice as lane R read the photo's top crop"
     }
   ],
   "herengracht-91-123": [
@@ -1911,6 +1983,52 @@
       "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.50 C 0.021 h 31; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
       "at": "2026-11-15",
       "note": "252: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    },
+    {
+      "fronts": [
+        "0363100012176851"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "#cfcabd",
+        "frieze": "attic-lights",
+        "supports": "dentils",
+        "centre": "pediment",
+        "centreShare": 0.9
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-238-256-after.json",
+      "at": "2026-11-15",
+      "note": "248: its timber cornice as lane R read the photo's top crop"
+    },
+    {
+      "fronts": [
+        "0363100012176864"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "white",
+        "frieze": "attic-lights",
+        "supports": "consoles",
+        "centre": "balustrade",
+        "centreShare": 0.5
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-238-256-after.json",
+      "at": "2026-11-15",
+      "note": "250: its timber cornice as lane R read the photo's top crop"
+    },
+    {
+      "fronts": [
+        "0363100012176863"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "white",
+        "frieze": "attic-lights",
+        "supports": "consoles"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-238-256-after.json",
+      "at": "2026-11-15",
+      "note": "252: its timber cornice as lane R read the photo's top crop"
     }
   ],
   "herengracht-268-286": [
@@ -2053,6 +2171,22 @@
       "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.45 C 0.022 h 69; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
       "at": "2026-11-15",
       "note": "255: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    }
+  ],
+  "herengracht-168-198": [
+    {
+      "fronts": [
+        "0363100012176353"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "cream",
+        "frieze": "attic-lights",
+        "supports": "modillions"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-168-198-after.json",
+      "at": "2026-11-15",
+      "note": "174: its timber cornice as lane R read the photo's top crop"
     }
   ]
 }

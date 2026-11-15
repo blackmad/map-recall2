@@ -123,3 +123,26 @@ test('belt stone: 1700s necks and bells only, deterministic, near the audited ra
   assert.deepEqual(ss[1].design.gable.value.stone, { claws: false });
   assert.equal(ss[2].design.gable.value.stone, undefined);
 });
+
+test('belt cornice: 1800s cornice series only, deterministic, near the read rates, a centre only on three bays or more', async () => {
+  const { beltCornice, dressBeltCornice, BELT_CORNICE_RATES } = await import('./cornice.ts');
+  assert.equal(beltCornice('a', 1750, 3), null);
+  assert.deepEqual(beltCornice('k', 1850, 3), beltCornice('k', 1850, 3));
+  const n = 3000, count: Record<string, number> = {};
+  for (let i = 0; i < n; i++) { const d = beltCornice(`p${i}`, 1850, 4)!; for (const k of ['paint', 'frieze', 'supports', 'centre'] as const) { const key = `${k}:${d[k] ?? null}`; count[key] = (count[key] ?? 0) + 1; } assert.equal(beltCornice(`p${i}`, 1850, 2)!.centre, undefined); }
+  for (const k of ['paint', 'frieze', 'supports', 'centre'] as const) {
+    const w = BELT_CORNICE_RATES[k] as ReadonlyArray<readonly [unknown, number]>, tot = w.reduce((s, [, x]) => s + x, 0);
+    for (const [v, x] of w) assert.ok(Math.abs((count[`${k}:${v}`] ?? 0) / n - x / tot) < 0.04, `${k} ${v}`);
+  }
+  const row = { members: [{ pandId: 'p1', built: 1850 }], series: [
+    { id: 's1', fronts: ['p1'], design: { crown: { value: 'cornice' }, bays: { value: 3 } } },
+    { id: 's2', fronts: ['p1'], design: { crown: { value: 'neck' }, bays: { value: 3 } } },
+    { id: 's3', fronts: ['p1'], design: { crown: { value: 'cornice' }, bays: { value: 3 }, corniceDress: { value: { paint: 'grey' }, source: 'reviewed', ref: 'r' } } },
+  ] } as never;
+  dressBeltCornice(row, 'look');
+  const ss = (row as { series: Array<{ design: { corniceDress?: { value: unknown; source: string } } }> }).series;
+  assert.deepEqual(ss[0].design.corniceDress?.value, beltCornice('p1', 1850, 3));
+  assert.equal(ss[0].design.corniceDress?.source, 'period-default');
+  assert.equal(ss[1].design.corniceDress, undefined);
+  assert.deepEqual(ss[2].design.corniceDress?.value, { paint: 'grey' });
+});

@@ -195,6 +195,10 @@ export interface RowDesign {
   /** A flat-top front's timber cornice as read (Herengracht 158, 164, 174, 209, 248): its paint, what carries the corona,
    *  its frieze, and a stated centre over it. Absent: the `cornice` kind as drawn today. */
   corniceDress?: RowField<RowCorniceDress>;
+  /** A raised centre piece standing on a cornice front (Herengracht 159: a white attic with a segmental cap over the
+   *  balustrade): its rise over the cornice line (m), its top's kind as the crown piece draws it, and its width. Drawn
+   *  through rowFront's crown.piece. Absent: none. */
+  crownPiece?: RowField<{ riseM: number; kind: string; widthM?: number }>;
 }
 /** An 1800s timber cornice (RowDesign.corniceDress). Every part is drawn only as stated. */
 export interface RowCorniceDress {
