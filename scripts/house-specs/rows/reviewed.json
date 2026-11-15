@@ -1670,5 +1670,63 @@
       "at": "2026-11-15",
       "note": "272: red-brown brick in the cut, not dark grey"
     }
+  ],
+  "herengracht-292-310": [
+    {
+      "fronts": [
+        "0363100012176660"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#6e4a3e"
+      },
+      "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "304: red-brown brick in the cut, not dark grey"
+    }
+  ],
+  "herengracht-219-237": [
+    {
+      "fronts": [
+        "0363100012177364"
+      ],
+      "field": "bays",
+      "value": 2,
+      "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "235: two windows a storey on a 3.1 m front"
+    },
+    {
+      "fronts": [
+        "0363100012177191"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#7a4636"
+      },
+      "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "237: red brick with stone bands in the cut, not dark grey"
+    }
+  ],
+  "herengracht-218-236": [
+    {
+      "fronts": [
+        "0363100012177218"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#7a4234"
+      },
+      "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "218-220: red brick with white stone bands in the cut; the period default drew dark grey"
+    }
   ]
 }
