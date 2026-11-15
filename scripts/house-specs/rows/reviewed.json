@@ -99,5 +99,44 @@
       "at": "2026-11-14",
       "note": "heavy white banding across the whole wall, the same speklagen as 171218; its floor cornices and string courses stay"
     }
+  ],
+  "kinkerstraat-65-87": [
+    {
+      "fronts": [
+        "0363100012155934",
+        "0363100012096181",
+        "0363100012157331",
+        "0363100012156102",
+        "0363100012162717",
+        "0363100012161747",
+        "0363100012156991"
+      ],
+      "field": "storeys",
+      "value": 4,
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg)",
+      "at": "2026-11-15",
+      "note": "75-87: three window storeys over a tall ground floor with an entresol; the face's 5 counts the entresol as a storey, D1 (6 of 6) reads 4"
+    },
+    {
+      "fronts": [
+        "0363100012155934",
+        "0363100012096181",
+        "0363100012157331",
+        "0363100012156102",
+        "0363100012162717",
+        "0363100012161747",
+        "0363100012156991"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "mansard",
+        "material": "slate",
+        "dormersPerFront": 1,
+        "dormerKind": "plain"
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg)",
+      "at": "2026-11-15",
+      "note": "75-87: the dormers are flat-topped boxes with a small triangle ornament, not pediments; D1 6 of 6 reads plain"
+    }
   ]
 }

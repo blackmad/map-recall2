@@ -49,6 +49,321 @@
         "orderNote": "Street order left to right (viewer facing north, east to the right): 168096, 168042, 169016, 171218, from the cut wall midpoints in cuts-ah07/cuts.json."
       },
       "eavesNote": "eavesM: 3DBAG eaves of each pand as the game draws its wall top (threeBuildingMesh.ts wallTopHeightM on the decorated feature), read from house:row-sheet's today measure.json (heights.eavesM). The row solve takes the series median when no face measures the cornice (house:rows, lane D)."
+    },
+    "kinkerstraat-1-29": {
+      "title": "Kinkerstraat 1-29 (odd side, 1883-1900)",
+      "face": "kinker-1-29",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 7, kinker-1885-wall-dormer 3, kinker-1985-infill 1"
+    },
+    "kinkerstraat-109-161": {
+      "title": "Kinkerstraat 109-161 (odd side, 1989)",
+      "face": "kinker-109-161",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1985-infill 13"
+    },
+    "kinkerstraat-112-116": {
+      "title": "Kinkerstraat 112-116 (even side, 1895)",
+      "face": "kinker-112-116",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 2"
+    },
+    "kinkerstraat-120-138": {
+      "title": "Kinkerstraat 120-138 (even side, 1895)",
+      "face": "kinker-120-138",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 3"
+    },
+    "kinkerstraat-142-178": {
+      "title": "Kinkerstraat 142-178 (even side, 1895-1989)",
+      "face": "kinker-142-178",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1985-infill 4, kinker-1890-brick-arched 3, kinker-1890-plain-brick 3, kinker-1886-neo-renaissance 1"
+    },
+    "kinkerstraat-173-225": {
+      "title": "Kinkerstraat 173-225 (odd side, 1982)",
+      "face": "kinker-173-225",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1985-infill 10"
+    },
+    "kinkerstraat-182-184": {
+      "title": "Kinkerstraat 182-184 (even side, 1989)",
+      "face": "kinker-182-184",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1985-infill 2"
+    },
+    "kinkerstraat-186-202": {
+      "title": "Kinkerstraat 186-202 (even side, 1897-1917)",
+      "face": "kinker-186-202",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-brick-arched 5, kinker-1890-plain-brick 1"
+    },
+    "kinkerstraat-2-30": {
+      "title": "Kinkerstraat 2-30 (even side, 1886-1889)",
+      "face": "kinker-2-30",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-brick-arched 11, kinker-1890-plain-brick 3, kinker-1895-painted-band 2"
+    },
+    "kinkerstraat-206-242": {
+      "title": "Kinkerstraat 206-242 (even side, 1896-1904)",
+      "face": "kinker-206-242",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 8, kinker-1895-painted-band 5, kinker-1890-brick-arched 2"
+    },
+    "kinkerstraat-244-332": {
+      "title": "Kinkerstraat 244-332 (even side, 1897-1990)",
+      "face": "kinker-244-332",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-brick-arched 10, kinker-1890-plain-brick 10, kinker-1900-stucco-front 3, kinker-1985-infill 2, kinker-1895-painted-band 1"
+    },
+    "kinkerstraat-265-313": {
+      "title": "Kinkerstraat 265-313 (odd side, 1992)",
+      "face": "kinker-265-313",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1985-infill 3"
+    },
+    "kinkerstraat-31-49": {
+      "title": "Kinkerstraat 31-49 (odd side, 1885-1893)",
+      "face": "kinker-31-49",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 9, kinker-1886-neo-renaissance 1"
+    },
+    "kinkerstraat-315-359": {
+      "title": "Kinkerstraat 315-359 (odd side, 1903-1987)",
+      "face": "kinker-315-359",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1902-balcony-axis 18, kinker-1985-infill 1"
+    },
+    "kinkerstraat-334-374": {
+      "title": "Kinkerstraat 334-374 (even side, 1902-1915)",
+      "face": "kinker-334-374",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1902-balcony-axis 10, kinker-1890-plain-brick 6, kinker-1890-brick-arched 2"
+    },
+    "kinkerstraat-363-371": {
+      "title": "Kinkerstraat 363-371 (odd side, 1914-1916)",
+      "face": "kinker-363-371",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1902-balcony-axis 4"
+    },
+    "kinkerstraat-376-380": {
+      "title": "Kinkerstraat 376-380 (even side, 1902)",
+      "face": "kinker-376-380",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 3"
+    },
+    "kinkerstraat-386-390": {
+      "title": "Kinkerstraat 386-390 (even side, 1914)",
+      "face": "kinker-386-390",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 1, kinker-1902-balcony-axis 1"
+    },
+    "kinkerstraat-49-63": {
+      "title": "Kinkerstraat 49-63 (odd side, 1886-1892)",
+      "face": "kinker-49-63",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1886-neo-renaissance 4, kinker-1890-brick-arched 3, kinker-1890-plain-brick 2"
+    },
+    "kinkerstraat-56-84": {
+      "title": "Kinkerstraat 56-84 (even side, 1893-1979)",
+      "face": "kinker-56-84",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1886-neo-renaissance 4, kinker-1985-infill 1"
+    },
+    "kinkerstraat-65-87": {
+      "title": "Kinkerstraat 65-87 (odd side, 1893)",
+      "face": "kinker-65-87",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 7, kinker-1893-plain-step-gable 2, kinker-1895-painted-band 1"
     }
   }
 }

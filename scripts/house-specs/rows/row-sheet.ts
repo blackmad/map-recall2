@@ -19,7 +19,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import sharp from 'sharp';
-import { loadRowDefs, loadRereads, cutPath, REPO, type RowDef } from './rowDefs.ts';
+import { loadRowDefs, loadRereads, cutPath, cutsDirOf, REPO, type RowDef } from './rowDefs.ts';
 
 const argv = process.argv.slice(2);
 const arg = (k: string) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : undefined; };
@@ -107,7 +107,7 @@ async function main() {
     const rr = reread && fs.existsSync(path.join(reread, `${m.pandId}.jpg`)) ? path.join(reread, `${m.pandId}.jpg`) : null;
     const file = rr ?? cutPath(def, m.pandId);
     if (!file) return null;
-    const first = dateOf(def.cutsDir, m.pandId), now = dateOf(path.dirname(file), m.pandId);
+    const first = dateOf(cutsDirOf(def, m.pandId), m.pandId), now = dateOf(path.dirname(file), m.pandId);
     const note = rr ? `re-read: ${now ?? 'capture date unknown'}` : first && now && first !== now ? `shown capture ≠ first read (${now} vs ${first})` : null;
     return { file, note, capture: now, firstReadCapture: first };
   });

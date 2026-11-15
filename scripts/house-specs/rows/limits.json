@@ -93,5 +93,70 @@
       "what": "the souterrain windows are round-arched (D1 gap: 'two barred arched windows'); the record states basement windows and rustication, not their arch",
       "ref": "integrator, blind review 6 (2026-11-14)"
     }
+  ],
+  "kinkerstraat-31-49": [
+    {
+      "fronts": [
+        "0363100012160646",
+        "0363100012155369",
+        "0363100012160073",
+        "0363100012160074"
+      ],
+      "component": "roof",
+      "what": "the face reads red-tile saddle roofs hipped down behind the cornice (orthophoto); the strip shows only the tile edge, so the drawn mansard face is taller than what shows from the street",
+      "ref": "scripts/block-face/faces/kinker-31-49/intent.json roof evidence"
+    },
+    {
+      "fronts": [
+        "0363100012167106",
+        "0363100012159384",
+        "0363100012154359",
+        "0363100012161457"
+      ],
+      "component": "roof",
+      "what": "41-47 roof material is unstated; drawn slate (series default) beside red tile on 33-39",
+      "ref": "lane D round 2"
+    },
+    {
+      "fronts": [
+        "0363100012160646",
+        "0363100012155369",
+        "0363100012160073",
+        "0363100012160074",
+        "0363100012167106",
+        "0363100012159384",
+        "0363100012154359",
+        "0363100012161457"
+      ],
+      "component": "cornice",
+      "what": "D1 (7 of 7) reads a simple cornice where the face says heavy; face drawn",
+      "ref": "lane D round 2 scores"
+    }
+  ],
+  "kinkerstraat-65-87": [
+    {
+      "fronts": [
+        "0363100012236453#m0",
+        "0363100012236453#m1",
+        "0363100012236453#m2"
+      ],
+      "component": "roof",
+      "what": "69-73: one slate roof spans the pand with three dormers; the photo shows the step gable on 69 and a flat cornice with two dormers on 71-73",
+      "ref": "lane D, row sheet round 2"
+    },
+    {
+      "fronts": [
+        "0363100012155934",
+        "0363100012096181",
+        "0363100012157331",
+        "0363100012156102",
+        "0363100012162717",
+        "0363100012161747",
+        "0363100012156991"
+      ],
+      "component": "ground",
+      "what": "75-87 ground floors carry an entresol (a second row of shop glazing) that the kit ground storey cannot draw",
+      "ref": "lane D, D1 cuts"
+    }
   ]
 }
