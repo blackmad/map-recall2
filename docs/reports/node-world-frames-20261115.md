@@ -214,3 +214,50 @@ node --import tsx scripts/house-frames/node-frame.ts <house:frames out dir>/<key
 node --import tsx scripts/house-frames/node-frame.ts <dir>/<key> --probe 200,780;100,700
 node --import tsx scripts/house-frames/node-frame.ts --aerial <lng>,<lat>,<zoom>,<pitch>,<bearing> --name <view> --out <dir>
 ```
+
+## Round 4: camera offset, kerb ramps, chunk pands (2026-11-15, after main 894631990)
+
+**Camera offset.** The browser was probed on port 4674 with `__canalRecallKeepGroundArrays`. The probe read the
+pose's eye, the zoom, the field of view, the pitch, `riderSurfaceM` and `layersAt` along the frame. Node's projection
+(near plane, eye-height rounding, pixel centre) matched the browser's; neither cause was in the camera. There were
+two causes in the world instead:
+- **Bridge decks.** Cached ground cells skipped `store.prepareCell`, so the measured decks were never placed. The
+  rider stood up to 0.8 m low, which shifted 165078 and 080338. Cached cells now call it, for LOD 0 cells only:
+  preparing every cell cost about 15 s a frame. The ground cache key now hashes all of `src/canalRecall`, not only
+  `ownGround/`. Rider heights now match the browser: 164843 −0.36, 169781 0.58, 165078 1.08, 167483 −0.53,
+  080338 1.52.
+- **Street chunks.** On models flagged `chunkPands` (Nassaukade, for example), the browser separates the pands and
+  stands each one on the lowest relief under its own footing (`_applyChunkPandBases`). Node used one anchor base for
+  the whole chunk. It now does the same as the browser, through `models.ts` `separateChunkPands` and
+  `liftChunkPands`, reading the GLB `extras.pandRanges` (unit-tested).
+
+Measured vertical shift (Node against the browser, rows 15–110):
+
+| pose | before | after |
+|---|---|---|
+| 164843 | (0, −7) | (0, −1) |
+| 165078 | 5–6 px (strict judge) | (0, 0) |
+| 080338 | deck pose, rider low | (0, 0) |
+
+On 164843, mean dE went from 5.69 to 3.50 and edge IoU from 0.48 to 0.68. Fidelity after the deck fix, with the
+other poses unchanged: 061842 3.78/0.80, 080338 6.17/0.83, 165023 4.14/0.34, 165078 4.01/0.93, 167483 6.83/0.74,
+167627 4.02/0.86, 168136 5.62/0.75, 168578 4.22/0.76, 169116 6.19/0.81, 169781 3.18/0.87, 171023 5.54/0.71,
+171218 4.41/0.93, 173447 5.00/0.79, 175318 5.74/0.74, 175320 3.22/0.73, 175321 5.77/0.80, 175358 6.24/0.79,
+180413 1.70/0.59.
+
+**Kerb-ramp wedges (167483): open, narrowed.** `layersAt` was compared on a 247-point grid around the ramp (land
+ignored), and 62 points differ. At 32 of them the browser's cell holds kerb faces about 2.5 cm over the klinker,
+where Node's cell −1_−1 has only klinker. These were ruled out:
+- a stale cache (fresh rebuild);
+- neighbour cells;
+- LOD 1;
+- a cell built alone;
+- every ground flag default (roads, deterministic, planShare, groundFixes, rampGaps, crossings);
+- the water cut.
+
+Two suspects remain: the worker's `compactCell` (the browser runs compact), and plan state the worker shares across
+cells. The scratch probes are in `artifacts/node-frames/bprobe/` (not committed).
+
+**Timing.** Under machine load 70–80 during this round, ground took 90–270 s for a fresh three-pose batch. That
+figure is contention, not the renderer: the 9 s a frame measured at dpr 1 was taken on a quieter machine. It needs a
+re-measure on a quiet machine.

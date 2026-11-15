@@ -17,11 +17,12 @@ import type { CameraFrame } from '../ownMap/mapCamera.ts';
 import { loadAtlas } from './atlas.ts';
 import { chunkMaterial, type ChunkLook } from './chunkMaterial.ts';
 import { riderPose as surfaceRiderPose } from '../ownGround/surface.ts';
-import { geoFrame, chunkToWorld, transformPositions, worldOfLngLat, type GeoFrame } from './frame.ts';
+import { geoFrame, chunkToWorld, lngLatOfWorld, transformPositions, worldOfLngLat, type GeoFrame } from './frame.ts';
 import { fogFor, type FogSetup } from './fog.ts';
 import { groundDraws, groundLook, loadGround } from './ground.ts';
 import { sceneLight } from './light.ts';
 import { furnitureDraws, furnitureInstances, furnitureOn } from './furniture.ts';
+import { liftChunkPands, separateChunkPands } from './models.ts';
 import { gameModels, glbBounds, loadGlbFile, LOD1_M, modelDraws, modelFile, modelMatrix, type ModelSpec } from './models.ts';
 import { shadowMap } from './shadow.ts';
 import type { SurfaceEnv } from './surfaceMaterial.ts';
@@ -335,8 +336,21 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
       const recentre: [number, number, number] = spec.surveyed ? [0, -b.min[1], 0] : [-(b.min[0] + b.max[0]) / 2, -b.min[1], -(b.min[2] + b.max[2]) / 2];
       // pointBase: the lowest relief within 3 m of the anchor (0 off the relief).
       const base = pointBase(placement.anchor);
-      const M = modelMatrix(gf, placement, recentre, base);
-      for (const dr of modelDraws(glb, M, envL, `model/${spec.id}`, { atlas, year: typeof (spec as any).bagYear === 'number' ? (spec as any).bagYear : null, exposure: (spec as any).wallExposure ?? null })) { draws.push(dr); if (!dr.blend) casters.push(dr); }
+      // A street chunk (spec.chunkPands): every pand on its own base, the holder at street level
+      // (signature-landmarks-source.js _applyChunkPandBases); other models on the anchor's base.
+      const chunk = (spec as any).chunkPands ? await separateChunkPands(glb) : null;
+      const M = modelMatrix(gf, placement, recentre, chunk ? 0 : base);
+      const md = modelDraws(chunk ? chunk.scene : glb, M, envL, `model/${spec.id}`, { atlas, year: typeof (spec as any).bagYear === 'number' ? (spec as any).bagYear : null, exposure: (spec as any).wallExposure ?? null });
+      if (chunk) {
+        const lifted = await liftChunkPands(md, chunk.owners, (x, y) => {
+          const [lng, lat] = lngLatOfWorld(gf, x, y), [lx, ly] = toLocal(lng, lat);
+          if (!ground.store.reliefCovered(lx, ly)) return 0;
+          return ground.store.hasRelief(lx, ly) ? height(lx, ly) : undefined;
+        });
+        if (lifted) N.chunkPands = (N.chunkPands ?? 0) + 1;
+        else for (const dr of md) for (let i = 2; i < dr.positions.length; i += 3) dr.positions[i] += base;
+      }
+      for (const dr of md) { draws.push(dr); if (!dr.blend) casters.push(dr); }
       placed++;
     }
     N.models = placed;

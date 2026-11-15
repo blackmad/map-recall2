@@ -119,7 +119,9 @@ export async function loadGround(root: string, cacheDir: string, centre: [number
     // A cached cell skips cellInput, which prepares the cell in the store: its measured decks (bridges) placed on the
     // riding surface, as the game's main-thread store has them. Without this the rider, the furniture and every
     // surface read stood on the bare relief under a bridge (Rijnstraat 080338, 165078: 0.8 m low).
-    if (cell) await store.prepareCell(w.key);
+    // Near cells only (LOD 0, within GROUND_NEAR_M): the surface is read there (rider, furniture within 220 m, chunk
+    // bases); preparing the far ring too cost ~15 s a frame (each prepare plans that cell's deck edges from its roads).
+    if (cell && w.lod === 0) await store.prepareCell(w.key);
     if (!cell) {
       const tb = performance.now();
       const input = await store.cellInput(w.key, w.lod, 'full');

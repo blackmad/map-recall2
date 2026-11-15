@@ -2768,8 +2768,10 @@ process per lane is enough; it needs no browser-queue slot.
 **Known differences** (do not read these as findings about the house):
 - No POI labels.
 - Water is a slightly different tone.
-- The dark kerb-ramp wedges on some quays (the browser) are open.
-- There is a small vertical camera offset at a few poses.
+- The dark kerb-ramp wedges on some quays are missing in Node. At 167483 the browser's cell holds kerb faces about 2.5 cm
+  over the klinker where Node's cell has only klinker; the cause is open (the worker's compacted cell is the suspect).
+- The camera matches the browser to within one pixel. The earlier 5–7 px offsets were the rider's height on bridge
+  decks and per-pand bases in street chunks, both fixed.
 - Far prisms beyond 1.5 km are not drawn.
 - The shader window grid on `windowGrid` GLB walls is not drawn.
 - Highlight and dim states are not drawn.

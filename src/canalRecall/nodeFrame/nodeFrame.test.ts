@@ -219,3 +219,24 @@ test('furnitureDraws: instances stand on the surface base + the ride lift, turne
   assert.ok(Math.abs(p[2] - (1 + RIDE_BASE_LIFT_M + m.positions[2])) < 1e-4);
   assert.ok([...Array(m.positions.length / 3).keys()].some(v => isSlot(m.colours[v * 3], m.colours[v * 3 + 1], m.colours[v * 3 + 2])), 'the column has a poster slot');
 });
+
+test('separateChunkPands + liftChunkPands: each pand stands on the lowest relief under its own footing', async () => {
+  const { separateChunkPands, liftChunkPands } = await import('./models.ts');
+  // Two pands sharing an edge (vertices 1, 2): pand 0 is triangle 0, pand 1 is triangle 1; plus a holder triangle (no pand).
+  const positions = new Float32Array([0, 0, 0, 1, 0, 0, 1, 1, 0, 2, 0, 0, 5, 5, 0, 6, 5, 0, 5, 6, 0]);
+  const prim = { positions, normals: null, uvs: null, colors: null, indices: new Uint32Array([0, 1, 2, 1, 3, 2, 4, 5, 6]), extras: { pandRanges: [[0, 0, 1], [1, 1, 1]] } };
+  const { scene, owners } = await separateChunkPands({ primitives: [prim] } as any);
+  const sep = scene.primitives[0];
+  assert.equal(sep.positions.length / 3, 9, 'the shared edge is duplicated for the second pand');
+  const draws = [{ positions: Float32Array.from(sep.positions), indices: sep.indices }] as any;
+  assert.equal(await liftChunkPands(draws, owners, x => (x < 1.5 ? 0.25 : 0.75)), true);
+  const z = (i: number) => draws[0].positions[i * 3 + 2];
+  const own = owners[0]!;
+  for (let i = 0; i < own.length; i++) {
+    const want = own[i] === 0 ? 0.25 : own[i] === 1 ? 0.25 : 0; // pand 1's lowest footing (x = 1) is on 0.25 relief
+    assert.ok(Math.abs(z(i) - want) < 1e-6, `vertex ${i} (pand ${own[i]}) at ${z(i)}, want ${want}`);
+  }
+  const fresh = [{ positions: Float32Array.from(sep.positions), indices: sep.indices }] as any;
+  assert.equal(await liftChunkPands(fresh, owners, () => undefined), false, 'no relief yet: nothing lifted');
+  assert.ok(fresh[0].positions.every((v: number, i: number) => i % 3 !== 2 || v === 0));
+});

@@ -184,3 +184,55 @@ export function typeInstanceMatrices(f: GeoFrame, instances: readonly TypeInstan
   }
   return out;
 }
+
+/**
+ * A street chunk's primitives with every pand on its own vertices (ownGround/chunkBases.ts separatePands, as
+ * signature-landmarks-source.js _chunkPandMeshes does), and per primitive the separated vertex → pand owner (null on a
+ * primitive without `pandRanges`). The draws modelDraws makes from it come one per primitive, in order.
+ */
+export async function separateChunkPands(g: GlbScene): Promise<{ scene: GlbScene; owners: (Int32Array | null)[] }> {
+  const { separatePands } = await import('../ownGround/chunkBases.ts');
+  const owners: (Int32Array | null)[] = [];
+  const primitives = g.primitives.map(p => {
+    const ranges = p.extras?.pandRanges as [number, number, number][] | undefined;
+    if (!Array.isArray(ranges) || !ranges.length) { owners.push(null); return p; }
+    const sep = separatePands(p.indices, p.positions.length / 3, ranges);
+    const remap = (a: Float32Array | null, n: number): Float32Array | null => {
+      if (!a) return null;
+      const out = new Float32Array(sep.source.length * n);
+      for (let v = 0; v < sep.source.length; v++) for (let c = 0; c < n; c++) out[v * n + c] = a[sep.source[v] * n + c];
+      return out;
+    };
+    owners.push(sep.owner);
+    return { ...p, positions: remap(p.positions, 3)!, normals: remap(p.normals, 3), uvs: remap(p.uvs, 2), colors: remap(p.colors, 4), indices: sep.index };
+  });
+  return { scene: { ...g, primitives }, owners };
+}
+
+/**
+ * Per-pand bases for a placed street chunk (signature-landmarks-source.js _applyChunkPandBases, full level): each pand
+ * stands on the lowest relief under its ground-level vertices (chunkBases.ts groundVertices, `pointBase(lngLat, 0)`),
+ * lifting its own vertices; the holder stays at street level. `draws` are modelDraws' output for the separated scene
+ * placed at base 0. Returns false (nothing lifted) where a ground point has no relief yet, as the game waits.
+ */
+export async function liftChunkPands(draws: readonly WorldDraw[], owners: readonly (Int32Array | null)[], base: (x: number, y: number) => number | undefined): Promise<boolean> {
+  const { groundVertices } = await import('../ownGround/chunkBases.ts');
+  const bases = new Map<number, number>();
+  for (let k = 0; k < draws.length; k++) {
+    const owner = owners[k];
+    if (!owner) continue;
+    const P = draws[k].positions;
+    for (const [pand, list] of groundVertices(owner, i => P[i * 3 + 2])) for (const i of list) {
+      const z = base(P[i * 3], P[i * 3 + 1]);
+      if (z === undefined) return false;
+      bases.set(pand, Math.min(bases.get(pand) ?? Infinity, z));
+    }
+  }
+  for (let k = 0; k < draws.length; k++) {
+    const owner = owners[k];
+    if (!owner) continue;
+    const P = draws[k].positions;
+    for (let i = 0; i < owner.length; i++) { const d = owner[i] >= 0 ? bases.get(owner[i]) ?? 0 : 0; if (d) P[i * 3 + 2] += d; }
+  }
+  return true;
+}

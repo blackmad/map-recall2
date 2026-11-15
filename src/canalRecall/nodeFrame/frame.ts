@@ -29,6 +29,12 @@ export function worldOfLngLat(f: GeoFrame, lng: number, lat: number, z = 0): [nu
   return [(m[0] - f.mx) / f.unitsPerMetre, -(m[1] - f.my) / f.unitsPerMetre, z];
 }
 
+/** Camera metres → lng/lat (the inverse of worldOfLngLat, Web Mercator). */
+export function lngLatOfWorld(f: GeoFrame, x: number, y: number): [number, number] {
+  const mx = f.mx + x * f.unitsPerMetre, my = f.my - y * f.unitsPerMetre;
+  return [mx * 360 - 180, Math.atan(Math.sinh(Math.PI * (1 - 2 * my))) * 180 / Math.PI];
+}
+
 /**
  * An affine map (column-major 4x4 like three's Matrix4.elements, local → Mercator) composed with Mercator → camera
  * metres: returns a function writing world positions for local ones.
