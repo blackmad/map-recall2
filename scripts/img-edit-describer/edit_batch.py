@@ -35,7 +35,8 @@ def main():
             "--steps", str(a.steps), "--guidance", str(a.guidance)]
     if a.lora:
         argv += ["--lora-paths", a.lora, "--lora-scales", str(a.lora_scale)]
-    args = build_parser().parse_args(argv)
+    sys.argv = ["mflux-generate-qwen-edit"] + argv  # mflux's parser reads sys.argv only
+    args = build_parser().parse_args()
     t0 = time.time()
     model = QwenImageEditCommand.load(args)
     print(f"load {time.time() - t0:.1f} s", flush=True)
