@@ -4,7 +4,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { donorFor, fittedRead, frontTopM, gableable, hash32, segmentOf, type BeltDonor, type BeltTarget } from './donors.ts';
-import { generateBelt, BELT_LOOK_REF, brickDonorSample } from './generate.ts';
+import { generateBelt, BELT_LOOK_REF, brickDonorSample, corniceLine, WAREHOUSE_EXTRAS } from './generate.ts';
+import { stripRoofStorey, warehouseRead } from './donors.ts';
+import { registerStone } from './stone.ts';
 import type { GenPand, GenStreet } from '../buurtGenerator/rows.ts';
 import type { DescriberAnswer } from '../houseSpec/describer.ts';
 
@@ -206,4 +208,44 @@ test('round 5: a donor brings no roof storey the register does not state, no pai
   assert.equal(brickDonorSample({ answer: read('x'), sample: '#6a5040' }), '#6a5040');
   assert.equal(brickDonorSample({ answer: read('x', { finish: 'stucco' } as never), sample: '#d8d0c0' }), undefined);
   assert.equal(brickDonorSample({ answer: read('x'), sample: '#c9a46a' }), undefined, 'a buff (tan) sample');
+});
+
+test('round 6: own dormers are no mansard unless seen as one or stated; pakhuis fronts; measured gable rise; register stone; a roof storey under the height', () => {
+  // Keizersgracht 176027 and 165044: one dormer read over a cornice (roof part none / dormers) is not a mansard front.
+  const dorm = stripRoofStorey(read('x', { storeyParts: { full: 4, roof: 'dormers', souterrain: false }, dormers: { count: 1, kind: 'plain' } } as never), true) as unknown as { dormers: { count: number }; storeyParts: { roof: string } };
+  assert.deepEqual([dorm.dormers.count, dorm.storeyParts.roof], [0, 'none']);
+  const seen = stripRoofStorey(read('x', { storeyParts: { full: 4, roof: 'mansard', souterrain: false }, dormers: { count: 2, kind: 'plain' } } as never), true) as unknown as { dormers: { count: number } };
+  assert.equal(seen.dormers.count, 2, 'a mansard read as one stays');
+  // Molenpad 174768: a register dormer (roof storey) over 3DBAG eaves 7.2, height 14.07: the cornice at 14.07 - 2.2.
+  assert.equal(corniceLine({ crown: 'cornice' }, { heightM: 14.07, roofStorey: true }, 14.07, 7.2), 11.87);
+  assert.equal(corniceLine({ crown: 'cornice' }, { heightM: 14.07 }, 12, 12), 14.07, 'no roof storey: the height');
+  assert.equal(corniceLine({ crown: 'neck' }, { heightM: 14.07, roofStorey: true }, 12, 12), 12, 'a gable stands at the front top');
+  assert.deepEqual(registerStone('neck', ['claws', 'festoons', 'oeilDeBoeuf']), { claws: 'carved', festoon: true });
+  assert.deepEqual(registerStone('neck', ['oeilDeBoeuf']), { neck: 'oculus' });
+  assert.equal(registerStone('cornice', ['claws']), null);
+  assert.ok(warehouseRead(read('x', { ground: 'warehouse' } as never)) && !warehouseRead(read('x', { notes: 'the dark warehouse front beside it' } as never)));
+
+  const ps = Array.from({ length: 4 }, (_, i) => pand(i));
+  // 0: own read with one dormer and the roof unseen; 1: a register pakhuis with a point gable; 2: a register point gable
+  // over measured eaves 13.7 and ridge 16.8 (Driekoningenstraat 167637); 3: a register neck with claws and a festoon.
+  Object.assign(ps[1], { eavesM: 12.8, ridgeM: 17.2, heightM: 15.85, year: 1650 });
+  Object.assign(ps[2], { eavesM: 13.7, ridgeM: 16.8, heightM: 15.8, year: 1737 });
+  Object.assign(ps[3], { eavesM: 13, ridgeM: 17.4, heightM: 15.5, year: 1660 });
+  const id = (i: number) => `03631000128000${String(i).padStart(2, '0')}`;
+  const own = new Map([[id(0), { answer: read(id(0), { storeyParts: { full: 4, roof: 'none', souterrain: false }, dormers: { count: 1, kind: 'gabled' } } as never), sample: '#5a4a40', ref: 'own' }]]);
+  const donors = [...DONORS, donor('0363100012900007', 'Keizersgracht', 1650, 6, 12.8, { crown: 'point', storeys: 5, bays: 3, ground: 'warehouse' }),
+    donor('0363100012900008', 'Keizersgracht', 1730, 6, 13.5, { crown: 'point', storeys: 4, bays: 3 })];
+  const stated = new Map([[id(1), { crown: 'point', warehouse: true }], [id(2), { crown: 'point' }], [id(3), { crown: 'neck', elements: ['claws', 'festoons'] }]]);
+  const r = generateBelt(ps, streets, new Set(), own, donors, '2026-11-15', stated as never);
+  const row = r.rows[0], sOf = (i: number) => row.series.find(s => s.fronts.some(f => f.startsWith(id(i))))!, fOf = (i: number) => row.fronts.find(f => f.pandId === id(i))!;
+  assert.equal(sOf(0).design.roofStorey.value.kind, 'none', 'own dormer over a cornice: no mansard');
+  const ex = (i: number) => ((fOf(i).overrides as { extras?: { value: string[] } }).extras?.value ?? sOf(i).design.extras.value);
+  assert.deepEqual(WAREHOUSE_EXTRAS.filter(x => ex(1).includes(x)), [...WAREHOUSE_EXTRAS]);
+  assert.ok(!ex(2).includes('warehouse-shutters'), 'the house beside it draws no loading doors');
+  assert.notEqual(fOf(2).ground.use, 'warehouse');
+  assert.equal(fOf(1).ground.use, 'warehouse');
+  const g2 = (fOf(2).overrides as { gable?: { value: { riseM: number } } }).gable;
+  assert.deepEqual([g2?.value.riseM, fOf(2).topM], [3.1, 13.7], 'the gable from the measured front top to the ridge');
+  const st3 = (sOf(3).design.gable?.value as { stone?: { claws?: unknown; festoon?: boolean } } | undefined)?.stone;
+  assert.deepEqual([st3?.claws, st3?.festoon], ['carved', true], 'the register names claws and a festoon (any year)');
 });

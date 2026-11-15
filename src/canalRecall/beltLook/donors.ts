@@ -58,6 +58,12 @@ export interface BeltTarget {
    *  attic element). Absent: a donor's mansard and dormers are not drawn (held-out round 4: invented slate mansards with
    *  dormers over flat cornice fronts on the losing streets). */
   roofStorey?: boolean;
+  /** The register's building type is a warehouse (monument-facts `type` pakhuis): a warehouse donor is preferred, its storeys
+   *  at a warehouse's low floor pitch, and the front draws its loading doors and hoist (held-out round 5: Molenpad's
+   *  pakhuis drawn as a red-brick house of three tall storeys). */
+  warehouse?: boolean;
+  /** The register's named front elements (monument-facts `elements` keys: claws, festoons, oeilDeBoeuf, hoistBeam, ...). */
+  elements?: readonly string[];
 }
 
 /** Crown families a stated crown admits among donor reads (held-out A/B 2026-11-15: gables drawn over the register's
@@ -80,7 +86,29 @@ export const DONOR_K = 4;
 /** A donor's storey pitch (cut wall height / read storeys) is held to this band: a cut whose wall takes in a mansard or roof
  *  storey (Langestraat's donor 169011: 2 storeys in 12.9 m) would otherwise halve a pand's storeys (held-out sheet 1). */
 export const PITCH_M = { min: 2.8, max: 3.8 } as const;
-export const DONOR_WEIGHTS = { segment: 1.5, sameStreet: -0.3, yearPer: 50, widthPer: 2, eavesPer: 3, gableOnFlat: 4, shopMismatch: 1.5, finishMismatch: 1 } as const;
+export const DONOR_WEIGHTS = { segment: 1.5, sameStreet: -0.3, yearPer: 50, widthPer: 2, eavesPer: 3, gableOnFlat: 4, shopMismatch: 1.5, finishMismatch: 1, warehouseMismatch: 3 } as const;
+/** A warehouse's floor pitch (m): pakhuis floors are low (2.4-3.0 m in the belt's read warehouses), so the eaves hold more storeys. */
+export const WAREHOUSE_PITCH_M = 2.7;
+/** A read that describes a warehouse front: its ground read as one, or its notes naming a pakhuis or loading doors. */
+export function warehouseRead(a: DescriberAnswer): boolean {
+  if (a.ground === 'warehouse') return true;
+  const text = [a.notes ?? '', ...(a.gaps ?? []).map(g => g.what)].join(' ');
+  return /\b(pakhuis|warehouse front|a warehouse|loading doors?)\b/i.test(text) && !/next door|beside it|neighbou?r/i.test(text);
+}
+/**
+ * No roof storey stated (by the register or a read of the roof itself): a mansard crown, a mansard or attic roof part and
+ * dormers leave the read, and a cornice front gets a flat lid behind (held-out rounds 4-5: slate mansards with dormers
+ * over flat cornice fronts). `keepRoof` keeps a read's own mansard or attic (its roof part seen as one).
+ */
+export function stripRoofStorey(a: DescriberAnswer, keepRoof = false): DescriberAnswer {
+  const ar = a as { crown?: string; storeyParts?: { roof?: string }; dormers?: unknown; gaps?: Array<{ component?: string; what: string }> };
+  if (keepRoof && (ar.crown === 'mansard' || ar.storeyParts?.roof === 'mansard' || ar.storeyParts?.roof === 'attic')) return a;
+  if (ar.crown === 'mansard') ar.crown = 'cornice';
+  if (ar.storeyParts && (ar.storeyParts.roof === 'mansard' || ar.storeyParts.roof === 'attic' || ar.storeyParts.roof === 'dormers')) ar.storeyParts.roof = 'none';
+  if (ar.dormers && typeof ar.dormers === 'object') ar.dormers = { kind: 'none', count: 0 };
+  if (ar.gaps) ar.gaps = ar.gaps.filter(g => !/dormer|mansard/i.test(g.what));
+  return a;
+}
 
 /** A usable donor read: readable, one front, its crown and storeys seen. */
 export function usableDonor(a: DescriberAnswer | null | undefined): a is DescriberAnswer {
@@ -121,6 +149,7 @@ export function donorDistance(t: BeltTarget, d: BeltDonor): number {
   if (!t.shop && d.answer.ground === 'shopfront') s += w.shopMismatch;
   if (t.finish === 'plaster' && d.answer.finish !== 'stucco') s += w.finishMismatch;
   if (t.finish === 'stone' && d.answer.finish !== 'stone' && d.answer.finish !== 'stucco') s += w.finishMismatch;
+  if (!!t.warehouse !== warehouseRead(d.answer)) s += w.warehouseMismatch;
   return s;
 }
 
@@ -154,7 +183,7 @@ export function donorFor(t: BeltTarget, donors: readonly BeltDonor[]): { donor: 
  */
 export function fittedRead(t: BeltTarget, d: BeltDonor): DescriberAnswer {
   const a = structuredClone(d.answer) as DescriberAnswer & { columns?: number[]; storeyParts?: { full?: number }; groundBays?: number; doorIndex?: number };
-  const pitch = Math.min(PITCH_M.max, Math.max(PITCH_M.min, d.heightM / (d.answer.storeys as number)));
+  const pitch = t.warehouse ? WAREHOUSE_PITCH_M : Math.min(PITCH_M.max, Math.max(PITCH_M.min, d.heightM / (d.answer.storeys as number)));
   if (t.storeys && t.storeys > 0) { if (t.storeys !== a.storeys) { a.storeys = t.storeys; if (a.storeyParts) a.storeyParts.full = t.storeys; delete a.columns; } }
   else if (t.eavesM !== null) {
     const n = Math.max(1, Math.round(t.eavesM / pitch));
@@ -181,13 +210,10 @@ export function fittedRead(t: BeltTarget, d: BeltDonor): DescriberAnswer {
   // judgement, plausible from the neighbours). Only the register (or the pand's own read) paints a front.
   else if (t.finish !== 'painted' && (ax.finish === 'stucco' || ax.finish === 'painted-brick' || ax.finish === 'stone')) { ax.finish = 'brick'; delete ax.pale; }
   // No roof storey stated: the donor's mansard and dormers stay with the donor (a cornice front gets a flat lid behind).
-  if (!t.roofStorey) {
-    const ar = a as { crown?: string; storeyParts?: { roof?: string }; dormers?: unknown; gaps?: Array<{ component?: string; what: string }> };
-    if (ar.crown === 'mansard') ar.crown = 'cornice';
-    if (ar.storeyParts && (ar.storeyParts.roof === 'mansard' || ar.storeyParts.roof === 'attic')) ar.storeyParts.roof = 'none';
-    if (ar.dormers && typeof ar.dormers === 'object') ar.dormers = { kind: 'none', count: 0 };
-    if (ar.gaps) ar.gaps = ar.gaps.filter(g => !/dormer|mansard/i.test(g.what));
-  }
+  if (!t.roofStorey) stripRoofStorey(a);
+  // A warehouse: its ground is the warehouse's (no house door and stoop), unless a shop is on record.
+  if (!t.warehouse && a.ground === 'warehouse') (a as { ground: string }).ground = 'dwelling';
+  if (t.warehouse && !t.shop) { (a as { ground: string }).ground = 'warehouse'; if (ax.basement === 'stoop' || ax.basement === 'stoop-and-windows') ax.basement = 'none'; }
   // No shop on record: the donor's shopfront becomes a house ground storey with its door.
   if (!t.shop && a.ground === 'shopfront') (a as { ground: string }).ground = 'dwelling';
   if (t.stoop && !t.shop && ax.basement !== 'stoop' && ax.basement !== 'stoop-and-windows') ax.basement = 'stoop';

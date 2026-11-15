@@ -76,7 +76,8 @@ export function statedPands(): Map<string, BeltStated> {
     const k = id.replace(/^NL\.IMBAG\.Pand\./, ''), cur = out.get(k) ?? {}, els = new Set<string>((f.elements ?? []).map((e: any) => e.key));
     const crown = cur.crown ?? CROWN[f.gable], year = cur.year ?? f.facadeDate?.from ?? f.coreDate?.from;
     out.set(k, { ...cur, ...(crown ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}), ...(typeof f.finish === 'string' ? { finish: f.finish } : {}),
-      ...(Number.isInteger(f.storeys) && f.storeys > 0 ? { storeys: f.storeys } : {}), ...(els.has('stoop') ? { stoop: true } : {}), ...(els.has('shopfront') ? { shop: true } : {}), ...(els.has('dormer') || els.has('attic') ? { roofStorey: true } : {}) });
+      ...(Number.isInteger(f.storeys) && f.storeys > 0 ? { storeys: f.storeys } : {}), ...(els.has('stoop') ? { stoop: true } : {}), ...(els.has('shopfront') ? { shop: true } : {}), ...(els.has('dormer') || els.has('attic') ? { roofStorey: true } : {}),
+      ...(f.type?.key === 'warehouse' ? { warehouse: true } : {}), ...(els.size ? { elements: [...els].sort() } : {}) });
   }
   // Shop ground storeys: the extract's shopfronts.json (the game's own shopfront layer).
   for (const id of Object.keys(JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/shopfronts.json', 'utf8')).buildings ?? {})) {

@@ -29,17 +29,38 @@ export function beltStone(key: string, crown: string, year: number | null): RowG
   return Object.keys(s).length ? s : null;
 }
 
-/** Dress each generated series' unstated gable with the period's stone (`ref` names the look). */
-export function dressBeltStone(row: RowRecord, ref: string): RowRecord {
+/**
+ * The stone the monument register names on a pand's front (monument-facts `elements`): klauwstukken (`claws`) carved, a
+ * festoon (`festoons`) across a neck, an oeil-de-boeuf (`oeilDeBoeuf`) in the neck. Stated, it draws at any build year and
+ * outranks the period's rates. Null: the register names none of them, or the crown carries no neck or bell stone.
+ */
+export function registerStone(crown: string, elements: readonly string[] | undefined): RowGableStone | null {
+  if (!STONE_CROWNS.has(crown) || !elements?.length) return null;
+  const e = new Set(elements), s: RowGableStone = {};
+  if (e.has('claws')) s.claws = 'carved';
+  if (crown !== 'bell' && e.has('festoons')) s.festoon = true;
+  else if (crown !== 'bell' && e.has('oeilDeBoeuf')) s.neck = 'oculus';
+  return Object.keys(s).length ? s : null;
+}
+
+/** Dress each generated series' unstated gable with the period's stone (`ref` names the look); the register's stated
+ *  stone (`elements`, per pand) on top of it. */
+export function dressBeltStone(row: RowRecord, ref: string, elements: ReadonlyMap<string, readonly string[]> = new Map()): RowRecord {
   const built = new Map(row.members.map(m => [m.pandId, m.built ?? null]));
   for (const s of row.series) {
     const g = s.design.gable;
     if (!g?.value || g.source === 'reviewed' || (g.value as RowGable).stone) continue;
     const ids = s.fronts.map(f => f.split('#')[0]), years = ids.map(id => built.get(id)).filter((y): y is number => typeof y === 'number').sort((a, b) => a - b);
     const year = years.length ? years[years.length >> 1] : null;
-    const stone = beltStone([...ids].sort()[0], String(s.design.crown?.value ?? ''), year);
-    if (!stone) continue;
-    s.design.gable = { ...g, value: { ...(g.value as RowGable), stone }, ref: `${g.ref ?? ''}; stone: ${ref} (1700s neck and bell rates of lane R's audit)` };
+    const crown = String(s.design.crown?.value ?? '');
+    const period = beltStone([...ids].sort()[0], crown, year);
+    // The register's elements of the series' pands (a series is one design: any pand's statement dresses it).
+    const named = registerStone(crown, [...new Set(ids.flatMap(id => elements.get(id) ?? []))]);
+    if (!period && !named) continue;
+    const stone: RowGableStone = { ...(period ?? {}), ...(named ?? {}) };
+    if (stone.festoon) delete stone.neck;
+    const why = [period ? `${ref} (1700s neck and bell rates of lane R's audit)` : null, named ? `the monument register names ${Object.keys(named).join(', ')} (monument-facts elements of ${ids.filter(id => elements.get(id)?.length).join(', ')})` : null].filter(Boolean).join('; ');
+    s.design.gable = { ...g, value: { ...(g.value as RowGable), stone }, ref: `${g.ref ?? ''}; stone: ${why}` };
   }
   return row;
 }
