@@ -266,12 +266,14 @@ function votes<T>(xs: T[]): Array<{ value: T; n: number }> {
 }
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
 const r2 = (v: number) => Math.round(v * 100) / 100;
-/** A gable's foot moves onto its ridge only between these: a larger gap is another roof or a poor 3DBAG fit (Herengracht 63:
- *  20.70 m on a rear block, the photo level with 61; 57: 11.46 m with no ridge line, nok -0.6 m). */
-export const GABLE_ON_RIDGE = { minMoveM: 0.05, maxMoveM: 2 } as const;
-/** A gabled crown's rise when no gable was read (belt rows): the medians of the reviewed belt gables (2026-11-15:
- *  neck 2.9 m of 9, step 2.9 of 3, spout 3.3 of 2, point 3.4 of 3, bell 3.4 of 1). */
-export const BELT_GABLE_RISE = { neck: 2.9, bell: 3.4, step: 2.9, spout: 3.3, point: 3.4 } as const;
+/** A gable's foot moves onto its ridge only between these: a larger gap is another roof or a poor 3DBAG fit. A ridge with no
+ *  nok line is never offered (belt-ridges.ts, Herengracht 57); a ridge on a rear block is a reviewed foot (63: 20.70 m, the
+ *  cut level with 61). 4 m since the rises were re-measured (neck 4.2 m): 55's foot moves 2.2 m off the wall median. */
+export const GABLE_ON_RIDGE = { minMoveM: 0.05, maxMoveM: 4 } as const;
+/** A gabled crown's rise when no gable was read (belt rows): the medians of the belt gables re-measured in storeys on the
+ *  D1 cuts (2026-11-15, #391, at 3.0 m a storey: neck 4.2 m of 7, bell 4.5 and 5.2, step 3.2 and 4.8, spout 4.1 and 4.5,
+ *  point 4.6 and 4.8). The first reads (neck 2.9, bell 3.4) left every neck short in the blind gable review. */
+export const BELT_GABLE_RISE = { neck: 4.2, bell: 4.8, step: 4, spout: 4.3, point: 4.7 } as const;
 const PERIOD: { [K in RowDesignKey]?: NonNullable<RowDesign[K]>['value'] } = {
   crown: 'cornice', cornice: 'simple', windows: 'tall-upper', whiteFrames: true, sills: true,
   heads: { shape: 'flat', dressing: 'none' },

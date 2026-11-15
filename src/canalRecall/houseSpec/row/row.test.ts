@@ -382,21 +382,23 @@ test('Herengracht belt follow-up: a gabled crown with no read rise takes the fam
   assert.ok(k.series.every(x => x.design.gable?.source !== 'period-default'));
 });
 
-test('Herengracht gables: a ridge further than the cap from the foot is another roof and leaves the line alone', () => {
-  // 57: 3DBAG ridge 11.46 m with no ridge line (nok under the eaves); 63: 20.70 m on a rear block. Both stay on their line.
+test('Herengracht gables: a 3DBAG ridge counts only over a nok line; moves stay within the cap', async () => {
+  // 57: dak_max 11.46 m with no nok (a flat roof behind a false front) offers no ridge and keeps its line.
+  const { ridgeOf } = await import('../../../../scripts/house-specs/rows/belt-ridges.ts');
+  const item = (a: Record<string, number>) => ({ feature: { CityObjects: { 'NL.IMBAG.Pand.1': { attributes: { b3_h_maaiveld: 0.5, ...a } } } } });
+  assert.equal(ridgeOf(item({ b3_h_dak_max: 11.96, b3_h_nok: -0.1, b3_n_nok: 0 })), null);
+  assert.equal(ridgeOf(item({ b3_h_dak_max: 17.7, b3_h_nok: 17.83, b3_n_nok: 5 })), 17.2);
   const inp = loadRow(loadRowDefs()['herengracht-51-73'], '2026-11-15').input; inp.members[0].wallSample = '#6a5040';
   const r = solveRow(inp), at = (id: string) => frontDesign(r, r.fronts.find(f => f.pandId === id)!);
-  for (const pid of ['0363100012179673', '0363100012179682']) {
-    const m = inp.members.find(x => x.pandId === pid)!, d = at(pid);
-    const moved = /3DBAG ridge/.test(d.corniceTopM.ref ?? '');
-    const gap = Math.abs((m.ridge3dbag ?? 0) - (d.gable?.value.riseM ?? 0) - d.corniceTopM.value!);
-    assert.ok(moved ? gap < 0.01 : true, `${pid} moved onto its ridge`);
-    if (moved) assert.ok(Math.abs(m.ridge3dbag! - d.gable!.value.riseM - d.corniceTopM.value!) <= GABLE_ON_RIDGE.maxMoveM);
-  }
+  assert.equal(inp.members.find(x => x.pandId === '0363100012179673')?.ridge3dbag ?? null, null, '57 has no ridge');
   assert.ok(!/3DBAG ridge/.test(at('0363100012179673').corniceTopM.ref ?? ''), '57 keeps its line');
-  assert.ok(inp.members.find(x => x.pandId === '0363100012179673')?.ridge3dbag, '57 carries a 3DBAG ridge');
   const movedFronts = r.fronts.filter(f => /3DBAG ridge/.test(frontDesign(r, f).corniceTopM.ref ?? ''));
   assert.ok(movedFronts.length >= 3, `the row's other gables stand on their ridges (${movedFronts.length})`);
+  for (const f of movedFronts) {
+    const d = frontDesign(r, f), m = inp.members.find(x => x.pandId === f.pandId)!;
+    assert.ok(d.corniceTopM.ref!.includes(`3DBAG ridge ${m.ridge3dbag} m`), `${f.pandId} cites its own ridge`);
+    assert.ok(Math.abs(m.ridge3dbag! - d.gable!.value.riseM - d.corniceTopM.value!) <= GABLE_ON_RIDGE.maxMoveM, `${f.pandId} within the cap of its ridge`);
+  }
   // A series moves as one (Herengracht 155/157, one design with ridges 1.24 m apart, stepped 1.24 m inside the pair):
   // no front moved onto its ridge differs from the rest of its series.
   for (const id of ['herengracht-51-73', 'herengracht-25-49', 'herengracht-75-89', 'herengracht-125-161']) {

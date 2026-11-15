@@ -98,14 +98,14 @@ export interface RowCrown {
 /**
  * The canal belt's gable outlines (lane D, 2026-11-15; David on #391: "Gables still look pretty bad"), from the Herengracht
  * 25-73 cuts beside the sheets. Outline proportions only; the trim (claws, copings, caps, finials) is lane R's.
- *   neck  - the neck stands tall on low claw pieces (shoulders at 0.3 of the rise, the photos' 0.25-0.35, not the kit's
- *           0.45 that made a wide trapezoid); a segmental cap a sixth of the rise high;
+ *   neck  - the neck stands tall on low claw pieces (shoulders at 0.22 of the rise: the photos measure 0.17 on 55 and
+ *           0.3 on 31; the kit's 0.45 made a wide trapezoid); a segmental cap a sixth of the rise high;
  *   bell  - the arched crest narrower than the bell's body (0.72), so a ledge shows at its springing; a cap a fifth of
  *           the rise;
  *   step  - treads about 0.6 m high (3-7 a side; the kit's 0.85 m drew three broad steps on Herengracht 27's six);
  *   spout - the upright top a fifth of the rise (0.5-0.9 m; the kit's third drew a chimney).
  */
-export const BELT_GABLE = { tread: 0.6, steps: [3, 7], neckShoulder: 0.3, neckCap: [0.16, 0.7], bellCrest: 0.72, bellCap: [0.2, 0.9], spoutTop: [0.2, 0.5, 0.9] } as const;
+export const BELT_GABLE = { tread: 0.6, steps: [3, 7], neckShoulder: 0.22, neckCap: [0.16, 0.7], bellCrest: 0.72, bellCap: [0.2, 0.9], spoutTop: [0.2, 0.5, 0.9] } as const;
 export function isRowCrown(v: unknown): v is RowCrown {
   const c = v as RowCrown | null;
   return !!c && typeof c === 'object' && (ROW_GABLE_SHAPES as readonly string[]).includes(c.shape) && Number.isFinite(c.riseM) && c.riseM > 0.5;
@@ -310,7 +310,10 @@ export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f
   const lights = c.attic ?? 1;
   if (!c.hoist && lights < 1) return;
   const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - spoutTop(c) - 0.1 : T - 0.25;
-  const z0 = c.shape === 'raised' ? (c.bandM ?? 0.5) + 0.12 : Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
+  const zLow = c.shape === 'raised' ? (c.bandM ?? 0.5) + 0.12 : Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
+  // A belt gable's light stands in the middle of its face, the claws beside its lower half (Herengracht 55, 59, 61: the
+  // window sits in the neck); at the foot it left the tall re-measured neck a blank plate under the cap.
+  const z0 = c.dress === 'belt' && !c.hoist ? Math.max(zLow, r3((zLow + capTop - 0.15) / 2 - 0.575)) : zLow;
   const z1 = Math.min(capTop - 0.15, z0 + (c.hoist ? 1.5 : 1.15));
   if (z1 - z0 < 0.55) return;
   const sp = spanAt(prof, z1), inner = sp ? Math.min(-sp[0], sp[1]) - 0.2 : 0;

@@ -15,12 +15,17 @@ const ROWS = path.join(REPO, 'scripts/house-specs/rows/rows.json'), CACHE = path
 const UA = 'MapRecall/1.0 (+https://github.com/blackmad/map-recall2)';
 const r2 = (v: number) => Math.round(v * 100) / 100;
 
-/** The pand's ridge over its ground from a 3DBAG item (null when the item has no heights). */
+/** The pand's ridge over its ground from a 3DBAG item: null when the item has no heights or no ridge line, a highest point
+ *  with no nok under it being a flat roof or a chimney (Herengracht 57: dak_max 11.46 m, no nok, nok height -0.6 m). */
 export function ridgeOf(item: { feature?: { CityObjects?: Record<string, { attributes?: Record<string, number> }> } }): number | null {
   const co = item.feature?.CityObjects ?? {};
   const a = Object.entries(co).find(([k]) => !k.includes('-'))?.[1]?.attributes;
-  return a && Number.isFinite(a.b3_h_dak_max) && Number.isFinite(a.b3_h_maaiveld) ? r2(a.b3_h_dak_max - a.b3_h_maaiveld) : null;
+  if (!a || !Number.isFinite(a.b3_h_dak_max) || !Number.isFinite(a.b3_h_maaiveld)) return null;
+  if (!(a.b3_n_nok > 0) || !(Math.abs(a.b3_h_nok - a.b3_h_dak_max) <= RIDGE_NOK_M)) return null;
+  return r2(a.b3_h_dak_max - a.b3_h_maaiveld);
 }
+/** The highest roof point stands for the ridge only when a nok line lies within this of it. */
+export const RIDGE_NOK_M = 0.5;
 
 async function item(pandId: string): Promise<unknown | null> {
   const f = path.join(CACHE, `${pandId}.json`);
@@ -41,7 +46,7 @@ async function main() {
     if (!id.startsWith('herengracht-') || (argv.includes('--rows') && !only.includes(id))) continue;
     for (const m of row.members) {
       const j = await item(m.pandId), r = j ? ridgeOf(j as never) : null;
-      if (r !== null) m.ridgeM = r;
+      if (r !== null) m.ridgeM = r; else delete m.ridgeM;
       console.log(`${id} ${m.label.padEnd(8)} ${m.pandId} ridge ${r ?? '-'}`);
     }
   }

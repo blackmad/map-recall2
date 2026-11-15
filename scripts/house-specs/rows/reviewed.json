@@ -460,14 +460,14 @@
       ],
       "field": "gable",
       "value": {
-        "riseM": 2.8,
+        "riseM": 3.5,
         "neckOverM": 2,
         "attic": 1,
         "cap": "segmental"
       },
       "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
       "at": "2026-11-15",
-      "note": "31: a neck with a curved bell-like cap and white carved shoulder pieces (D1 gap), as today draws it"
+      "note": "31: a neck with a curved bell-like cap and white carved shoulder pieces (D1 gap), as today draws it | Gable rise re-measured 2026-11-15 (lane D, #391): 31 1.18 storeys from the claw foot to the cap top, at 3.0 m a storey; the read was 2.8 m, which left the necks short (blind gable review)."
     },
     {
       "fronts": [
@@ -517,12 +517,12 @@
       ],
       "field": "gable",
       "value": {
-        "riseM": 3.4,
+        "riseM": 4.7,
         "attic": 1
       },
       "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
       "at": "2026-11-15",
-      "note": "43-45: each gable rises about three metres over the eaves with an attic light"
+      "note": "43-45: each gable rises about three metres over the eaves with an attic light | Gable rise re-measured 2026-11-15 (lane D, #391): 43-45: the left point 1.54, the right 1.6 storeys from the slope foot to the top, at 3.0 m a storey; the read was 3.4 m, which left the necks short (blind gable review)."
     },
     {
       "fronts": [
@@ -640,7 +640,7 @@
       ],
       "field": "gable",
       "value": {
-        "riseM": 3.2,
+        "riseM": 4.2,
         "neckWidthM": 3,
         "neckOverM": 2.4,
         "attic": 1,
@@ -648,7 +648,7 @@
       },
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
       "at": "2026-11-15",
-      "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap"
+      "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap | Gable rise re-measured 2026-11-15 (lane D, #391): 55 1.47 and 61 1.32 storeys from the claw foot to the cap top, about 4.4 and 4.0 m; the series takes 4.2, at 3.0 m a storey; the read was 3.2 m, which left the necks short (blind gable review)."
     },
     {
       "fronts": [
@@ -671,14 +671,14 @@
       ],
       "field": "gable",
       "value": {
-        "riseM": 2.6,
+        "riseM": 4.2,
         "neckOverM": 1.8,
         "attic": 1,
         "cap": "segmental"
       },
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179673.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
       "at": "2026-11-15",
-      "note": "57: a short neck with a segmental cap (confirmed)"
+      "note": "57: a short neck with a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 57 1.41 storeys from the neck foot to the cap top, at 3.0 m a storey; the read was 2.6 m, which left the necks short (blind gable review)."
     },
     {
       "fronts": [
@@ -686,14 +686,14 @@
       ],
       "field": "gable",
       "value": {
-        "riseM": 2.8,
+        "riseM": 4.2,
         "neckOverM": 2,
         "attic": 1,
         "cap": "segmental"
       },
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179748.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
       "at": "2026-11-15",
-      "note": "59: a dark neck gable with claw pieces and a segmental cap (confirmed)"
+      "note": "59: a dark neck gable with claw pieces and a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 59 1.41 storeys from the claw foot (over the oval attic storey) to the cap top, at 3.0 m a storey; the read was 2.8 m, which left the necks short (blind gable review)."
     },
     {
       "fronts": [
@@ -701,7 +701,7 @@
       ],
       "field": "gable",
       "value": {
-        "riseM": 3,
+        "riseM": 4.2,
         "neckOverM": 2.2,
         "attic": 1,
         "finials": true,
@@ -709,7 +709,7 @@
       },
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179683.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
       "at": "2026-11-15",
-      "note": "63: white claw pieces and finials on the shoulders; the cap is segmental like 55's (R's trial had none)"
+      "note": "63: white claw pieces and finials on the shoulders; the cap is segmental like 55's (R's trial had none) | Gable rise re-measured 2026-11-15 (lane D, #391): 63 1.41 storeys from the claw foot to the cap top, at 3.0 m a storey; the read was 3 m, which left the necks short (blind gable review)."
     },
     {
       "fronts": [
@@ -717,14 +717,14 @@
       ],
       "field": "gable",
       "value": {
-        "riseM": 2.9,
+        "riseM": 4.5,
         "finials": true,
         "attic": 1,
         "atticHead": "round"
       },
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179682.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
       "at": "2026-11-15",
-      "note": "71: a spout gable with a round-headed attic light (confirmed)"
+      "note": "71: a spout gable with a round-headed attic light (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 71 1.55 storeys from the slope foot to the top block, at 3.0 m a storey; the read was 2.9 m, which left the necks short (blind gable review)."
     },
     {
       "fronts": [
@@ -732,12 +732,12 @@
       ],
       "field": "gable",
       "value": {
-        "riseM": 3.3,
+        "riseM": 4.1,
         "attic": 1
       },
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179681.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
       "at": "2026-11-15",
-      "note": "73: a spout gable with a square attic light (confirmed)"
+      "note": "73: a spout gable with a square attic light (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 73 1.4 storeys from the slope foot (over the full-width attic) to the top block, at 3.0 m a storey; the read was 3.3 m, which left the necks short (blind gable review)."
     },
     {
       "fronts": [
@@ -812,6 +812,16 @@
       "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179748.jpg (house rows round 5)",
       "at": "2026-11-15",
       "note": "59: a tall ground storey framed by white pilasters (D1 gap)"
+    },
+    {
+      "fronts": [
+        "0363100012179683"
+      ],
+      "field": "corniceTopM",
+      "value": 12.6,
+      "ref": "lane D gable rise re-read 2026-11-15 (#391), the D1 cut of 63 beside 61's",
+      "at": "2026-11-15",
+      "note": "63: its 3DBAG top (dak_max 20.7 m, nok 20.64) is a rear block; the cut shows 63's neck level with 61's (ridge 16.82) over the same oval attic storey, so its claw foot stands on 61's, 16.8 less the 4.2 m rise."
     }
   ],
   "herengracht-75-89": [
@@ -875,12 +885,12 @@
       ],
       "field": "gable",
       "value": {
-        "riseM": 4.4,
-        "steps": 4
+        "riseM": 4.8,
+        "steps": 5
       },
       "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
       "at": "2026-11-15",
-      "note": "81: a tall step gable over two storeys, its top cut off in the capture"
+      "note": "81: a tall step gable over two storeys, its top cut off in the capture | Gable rise re-measured 2026-11-15 (lane D, #391): 1.6 storeys from the lowest step to the top step; five steps a side, at 3.0 m a storey; the read was 4.4 m, which left the necks short (blind gable review)."
     },
     {
       "fronts": [
@@ -978,12 +988,12 @@
       ],
       "field": "gable",
       "value": {
-        "riseM": 3.4,
+        "riseM": 4.6,
         "attic": 1
       },
       "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
       "at": "2026-11-15",
-      "note": "87: neck gable with one attic light"
+      "note": "87: neck gable with one attic light | Gable rise re-measured 2026-11-15 (lane D, #391): 1.6 storeys from the neck foot to the cap top (tree in front; rounded down), at 3.0 m a storey; the read was 3.4 m, which left the necks short (blind gable review)."
     }
   ],
   "kinkerstraat-120-138": [
