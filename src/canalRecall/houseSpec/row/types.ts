@@ -268,8 +268,8 @@ export interface RowGableStone {
 export interface RowDoorcase {
   material: 'stone' | 'timber'; top?: 'entablature' | 'pediment' | 'segmental';
   /** The fanlight: absent or true plain bars, `diamond` a lozenge in its frame (Herengracht 144), `oval` an oval ring
-   *  with four short spokes to the frame, false none. */
-  fanlight?: boolean | 'diamond' | 'oval';
+   *  with a small lozenge inside, `oval-spoked` the ring with four short spokes to the frame, false none. */
+  fanlight?: boolean | 'diamond' | 'oval' | 'oval-spoked';
   /** `ground`: one pilastered frame over the whole ground storey, the door and the windows beside it under one
    *  entablature (Herengracht 142's shop surround). Absent: the door's own case. */
   span?: 'ground';

@@ -603,15 +603,20 @@ function rowDoorcase(c: ExtraContext, s: ExtraSink, d: Span, dc: NonNullable<Non
   if (fan > 0) {
     s.strip(c.f, x0, x1, 0.03, zf, d.z1, K.glass);
     s.strip(c.f, x0, x1, 0.05, zf, zf + K.bar * 1.5, hex);
-    if (dc.fanlight === 'oval') {
-      // An oval ring touching the fanlight's frame, a small lozenge at its centre.
+    if (dc.fanlight === 'oval' || dc.fanlight === 'oval-spoked') {
+      // An oval ring touching the fanlight's frame; `oval` a small lozenge at its centre (judged closer on
+      // Herengracht 144, 2026-11-15), `oval-spoked` four short spokes from the ring to the frame instead.
       const xm = (x0 + x1) / 2, zm = (zf + d.z1) / 2, hx = (x1 - x0) / 2 - 0.03, hz = (d.z1 - zf) / 2 - 0.03, n = 18;
       for (let i = 0; i < n; i++) {
         const a0 = 2 * Math.PI * i / n, a1 = 2 * Math.PI * (i + 1) / n;
         wallBar(c, s, [xm + hx * Math.cos(a0), zm + hz * Math.sin(a0)], [xm + hx * Math.cos(a1), zm + hz * Math.sin(a1)], K.bar, 0.05, hex);
       }
-      // Four short spokes from the ring to the frame's mid-points (Herengracht 144: no inner lozenge).
-      for (const [p, q] of [[[xm - hx, zm], [x0, zm]], [[xm + hx, zm], [x1, zm]], [[xm, zm + hz], [xm, d.z1]], [[xm, zm - hz], [xm, zf]]] as Array<[[number, number], [number, number]]>) wallBar(c, s, p, q, K.bar, 0.05, hex);
+      if (dc.fanlight === 'oval-spoked') {
+        for (const [p, q] of [[[xm - hx, zm], [x0, zm]], [[xm + hx, zm], [x1, zm]], [[xm, zm + hz], [xm, d.z1]], [[xm, zm - hz], [xm, zf]]] as Array<[[number, number], [number, number]]>) wallBar(c, s, p, q, K.bar, 0.05, hex);
+      } else {
+        const pts: Array<[number, number]> = [[xm - hx * 0.4, zm], [xm, zm + hz * 0.45], [xm + hx * 0.4, zm], [xm, zm - hz * 0.45]];
+        for (let i = 0; i < 4; i++) wallBar(c, s, pts[i], pts[(i + 1) % 4], K.bar, 0.05, hex);
+      }
     } else if (dc.fanlight === 'diamond') {
       // A lozenge touching the fanlight's frame at its four mid-points, and a smaller one inside it.
       const xm = (x0 + x1) / 2, zm = (zf + d.z1) / 2, hx = (x1 - x0) / 2, hz = (d.z1 - zf) / 2;
