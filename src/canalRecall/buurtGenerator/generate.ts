@@ -81,7 +81,10 @@ export interface DistrictLibrary {
    *  member, 1 (the default: a block starts at the row's first member) after its second; `wall` the row's own measured
    *  brick, which wins over the district's (series photo > district pool); `loggias` the members (last six digits of
    *  the pand id) whose upper storeys are loggias between the erkers. */
-  rowNotes?: Record<string, { pierPhase?: 0 | 1; wall?: { hex: string; evidence: string }; roof?: { hex: string; evidence: string }; axisM?: number; loggias?: string[];
+  rowNotes?: Record<string, { pierPhase?: 0 | 1; wall?: { hex: string; evidence: string };
+    /** Round 11: the wall family the row's photo states, over a measured brick the photo contradicts (Stadionkade 063989:
+     *  dark grey-brown brick where the panorama vote read a light tan); drawn at the family's varied tone. */
+    wallFamily?: { family: JudgedFamily; evidence: string }; roof?: { hex: string; evidence: string }; axisM?: number; loggias?: string[];
     /** The series line the photo measures (m; round 7: Achillesstraat's fifth storey stands over 3DBAG's eaves). */
     topM?: number;
     /** The entrances, member by member along the row (left to right as seen), the list repeating (round 7). */
@@ -146,11 +149,13 @@ export function pitchedVariantOf(lib: DistrictLibrary, s: GenSeries): DistrictPi
 }
 /** The window axis a row draws: its own photo's (row note), else the district's. */
 export const axisOf = (lib: DistrictLibrary, rowId: string): Pick<DistrictDesign, 'axisM'> => ({ axisM: lib.rowNotes?.[rowId]?.axisM ?? lib.design.axisM });
-/** The series wall hex: the row's own photo (row note), then the row's measured brick (round 9, panoramas voted across
+/** The series wall hex: the row's own photo (row note: a hex, else a stated family), then the row's measured brick (round 9, panoramas voted across
  *  captures), over the family's and the district's pool. */
-export function wallHexOf(lib: DistrictLibrary, fam: DistrictFamily | null, rowId: string): { hex?: string; evidence?: string } {
+export function wallHexOf(lib: DistrictLibrary, fam: DistrictFamily | null, rowId: string): { hex?: string; evidence?: string; family?: JudgedFamily } {
   const own = lib.rowNotes?.[rowId]?.wall;
   if (own) return { hex: own.hex, evidence: `the row's own photo: ${own.evidence}` };
+  const stated = lib.rowNotes?.[rowId]?.wallFamily;
+  if (stated) return { hex: variedTone(stated.family, `${rowId}:${stated.family}`), family: stated.family, evidence: `the row's own photo states ${stated.family}: ${stated.evidence}` };
   const m = lib.measured?.walls?.[rowId];
   if (m) return { hex: m.hex, evidence: `the row's panoramas: ${m.n} of ${m.of} reads agree (${m.dates} capture date${m.dates === 1 ? '' : 's'}; ${m.reads.map(r => `${r.pano} ${r.date} ${r.hex}`).join(', ')})` };
   const d = { ...lib.design.wall, ...fam?.design?.wall };
@@ -228,7 +233,7 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
     storeys: f(fam.storeys, `${s.eavesM} m line over a ${d.groundM} m ground and ${d.storeyM} m storeys`),
     bays: f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes`),
     windows: f(d.windows), heads: f<RowHeads | RowHeads[]>(d.heads), whiteFrames: f(d.whiteFrames), sills: f(d.sills),
-    wall: ((w) => f({ material: d.wall.material, family: d.wall.family, hex: w.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, w.hex ? `measured brick ${w.hex} (${w.evidence ?? 'district photos'})` : ''))(wallHexOf(lib, fam, rowId)),
+    wall: ((w) => f({ material: d.wall.material, family: w.family ?? d.wall.family, hex: w.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, w.family ? `${w.family} ${w.hex} (${w.evidence})` : w.hex ? `measured brick ${w.hex} (${w.evidence ?? 'district photos'})` : ''))(wallHexOf(lib, fam, rowId)),
     roofStorey: riseM !== null && pv
       ? f<RowRoofStorey>({ kind: 'mansard', material: pv.material, dormersPerFront: pv.dormersPerFront, dormerKind: pv.dormerKind, ...(pv.hoist ? { hoist: true } : {}) },
         `pitched roof: 3DBAG rise ${bagRiseOf(s)} m >= ${lib.pitched!.minRiseM} m, drawn at ${lib.streetNotes?.[s.members[0]?.front.street ?? '']?.riseM !== undefined ? 'the street note\'s seen rise' : 'the district\'s seen-rise cap'} ${riseM} m${measuredRiseOf(lib, s) !== null ? ` (AHN4 front rise ${measuredRiseOf(lib, s)} m)` : ''} (${pv.evidence}); drawn as the row mansard at ${pv.pitchDeg} deg under buurtKit`)
@@ -297,19 +302,53 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
  * Returns the rows and, per pand, the line it was clamped from.
  */
 export const BLOCK_YEARS = 5;
+/** Round 11: AHN4's flat front over 3DBAG's line by more than `minM` (63 flat series in both districts read a storey,
+ *  > 2 m, over it; 137 agree within 0.8 m), on `share` of the members and at least `minReads`. */
+export const AHN_RAISE = { minM: 1.5, share: 0.6, minReads: 2 } as const;
+/** Round 11: the least AHN4 step kept as real between same-period series (blockLines realStep). */
+export const REAL_STEP = { minM: 0.3 } as const;
 export function blockLines(lib: DistrictLibrary, rows: readonly GenRow[]): { rows: GenRow[]; clamped: Map<string, { read: number; drawn: number; why: string }> } {
   const roofs = lib.measured?.roofs, clamped = new Map<string, { read: number; drawn: number; why: string }>();
   if (!roofs) return { rows: [...rows], clamped };
-  const frontOf = (sr: GenSeries) => median(sr.members.flatMap(m => { const r = roofs[pandNumber(m.pand.id)]; return r && r.form !== 'unclear' && typeof r.eavesM === 'number' && r.eavesM > 2 ? [r.eavesM] : []; }));
+  const readsOf = (sr: GenSeries) => sr.members.flatMap(m => { const r = roofs[pandNumber(m.pand.id)]; return r && r.form !== 'unclear' && typeof r.eavesM === 'number' && r.eavesM > 2 ? [r.eavesM] : []; });
+  const frontOf = (sr: GenSeries) => median(readsOf(sr));
   return { rows: rows.map(row => {
-    const S = row.series, ahn = S.map(frontOf);
+    // Round 11 (Kuinderstraat 067158: five storeys under a deep eaves slab at ~16 m, drawn 4 at 13 m): a series AHN4
+    // reads flat at the front a storey over its 3DBAG line, its members agreeing, draws AHN's line (AHN_RAISE).
+    const S0 = row.series.map(sr => {
+      const v = readsOf(sr), forms = sr.members.map(m => roofs[pandNumber(m.pand.id)]?.form), h = median(v);
+      if (sr.eavesM === null || h === null || v.length < Math.max(AHN_RAISE.minReads, sr.members.length * AHN_RAISE.share) || forms.filter(f => f === 'flat').length < sr.members.length * AHN_RAISE.share) return sr;
+      if (h - sr.eavesM <= AHN_RAISE.minM || Math.max(...v) - Math.min(...v) > ROW_EAVES_STEP_M) return sr;
+      const line = Math.round(h * 20) / 20;
+      if (!familyFor(lib, storeysFor(line, lib.design))) return sr; // the district designs no family that tall: keep the line
+      for (const m of sr.members) clamped.set(pandNumber(m.pand.id), { read: sr.eavesM, drawn: line, why: `AHN4 reads the flat front at ${h.toFixed(2)} m on ${v.length} of ${sr.members.length} members (spread ${(Math.max(...v) - Math.min(...v)).toFixed(2)} m), ${(h - sr.eavesM).toFixed(2)} m over 3DBAG's ${sr.eavesM} m line, blockLines AHN_RAISE` });
+      return { ...sr, eavesM: line, clamped: sr.members.map(m => m.pand.id) };
+    });
+    // A raised line within the step of a same-period neighbour's (unraised) line is that line: one eaves (Hunzestraat
+    // 074339/111890: AHN 12.15 m beside the block's 12 m).
+    const S = S0.map((sr, k) => {
+      if (sr === row.series[k] || sr.eavesM === null) return sr;
+      const nb = [S0[k - 1], S0[k + 1]].find(n => n && n === row.series[S0.indexOf(n)] && n.eavesM !== null && Math.abs(n.eavesM - sr.eavesM!) <= ROW_EAVES_STEP_M && n.year !== null && sr.year !== null && Math.abs(n.year - sr.year) <= BLOCK_YEARS);
+      if (!nb) return sr;
+      for (const m of sr.members) { const c = clamped.get(pandNumber(m.pand.id)); if (c) clamped.set(pandNumber(m.pand.id), { ...c, drawn: nb.eavesM!, why: `${c.why}; at the neighbour series' ${nb.eavesM} m line (one eaves)` }); }
+      return { ...sr, eavesM: nb.eavesM };
+    });
+    const ahn = S.map(frontOf);
+    // Round 11 (Pieter Lastmankade 115143: a real parapet step hidden): a small AHN step that agrees with 3DBAG's in sign,
+    // at least REAL_STEP.minM, every read of the higher series over the lower's median, is a step, not an outlier.
+    const realStep = (a: GenSeries, b: GenSeries) => {
+      const va = readsOf(a), vb = readsOf(b), ma = median(va), mb = median(vb);
+      if (ma === null || mb === null || a.eavesM === null || b.eavesM === null || Math.sign(mb - ma) !== Math.sign(b.eavesM - a.eavesM) || Math.abs(mb - ma) < REAL_STEP.minM) return false;
+      return mb > ma ? vb.every(x => x > ma) : va.every(x => x > mb);
+    };
     const joins = S.map((sr, k) => {
       if (k === 0) return false;
       const a = S[k - 1], la = a.eavesM, lb = sr.eavesM, ha = ahn[k - 1], hb = ahn[k];
       return la !== null && lb !== null && Math.abs(la - lb) > ROW_EAVES_STEP_M && a.year !== null && sr.year !== null && Math.abs(a.year - sr.year) <= BLOCK_YEARS
-        && ha !== null && hb !== null && Math.abs(ha - hb) <= ROW_EAVES_STEP_M;
+        && ha !== null && hb !== null && Math.abs(ha - hb) <= ROW_EAVES_STEP_M && !realStep(a, sr);
     });
-    if (!joins.some(Boolean)) return row;
+    const raised = S.some((sr, k) => sr !== row.series[k]);
+    if (!joins.some(Boolean)) return raised ? { ...row, series: S } : row;
     const out = [...S];
     for (let k0 = 0; k0 < S.length;) {
       let k1 = k0; while (k1 + 1 < S.length && joins[k1 + 1]) k1++;

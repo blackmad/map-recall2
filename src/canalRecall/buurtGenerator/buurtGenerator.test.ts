@@ -144,6 +144,10 @@ test('round 9: the measured row brick sits under the row note and over the pool;
   assert.match(wallHexOf(m, fam, 'teststraat-000000').evidence!, /2 of 3 reads agree \(2 capture dates/);
   assert.equal(wallHexOf(m, fam, 'rooseveltlaan-146491').hex, lib.rowNotes!['rooseveltlaan-146491'].wall!.hex, 'the row note wins');
   assert.equal(wallHexOf(m, fam, 'other-000000').hex, fam.design?.wall?.hex ?? lib.design.wall.hex, 'unmeasured: the pool');
+  // Round 11: a family the row's photo states beats the measured brick (Stadionkade 063989).
+  const st: DistrictLibrary = { ...m, rowNotes: { ...m.rowNotes, 'teststraat-000000': { wallFamily: { family: 'dark-brown-brick', evidence: 'test' } } } };
+  assert.equal(wallHexOf(st, fam, 'teststraat-000000').family, 'dark-brown-brick');
+  assert.notEqual(wallHexOf(st, fam, 'teststraat-000000').hex, '#8a7465');
   const pands = [0, 1, 2].map(i => ({ ...pand(i, 1929, 12.4), roofCode: 3 }));
   const s = districtRows(pands, streets).rows[0].series[0];
   const roofs = (form: 'flat' | 'pitched' | 'unclear') => Object.fromEntries(pands.map(p => [p.id.replace(/^NL\.IMBAG\.Pand\./, ''), { form, frontRiseM: 2, why: 'test' }]));
@@ -168,9 +172,19 @@ test('block lines: a 3DBAG step AHN does not see is one line (Hunzestraat 120343
   const { rows: fixed, clamped } = blockLines(flat, rows);
   assert.deepEqual(fixed[0].series.map(s => s.eavesM), [12.1, 12.1]);
   assert.deepEqual([...clamped.keys()], [pands[5].id.slice(-16), pands[6].id.slice(-16)]);
-  // AHN reads the step too: it stands.
+  // AHN reads a step too: it stands, at AHN's flat front (round 11 AHN_RAISE: 3DBAG's 6.25 m is a storey under it).
   const stepped = { ...lib, measured: { roofs: roofs(i => (i < 5 ? 12.12 : 9.3)) } };
-  assert.deepEqual(blockLines(stepped, rows).rows[0].series.map(s => s.eavesM), [12.1, 6.25]);
+  assert.deepEqual(blockLines(stepped, rows).rows[0].series.map(s => s.eavesM), [12.1, 9.3]);
+  // A raise to a storey count the district has no family for keeps 3DBAG's line (no series dropped off-storeys).
+  const tall = { ...lib, measured: { roofs: roofs(i => (i < 5 ? 12.12 : 30)) } };
+  assert.deepEqual(blockLines(tall, rows).rows[0].series.map(s => s.eavesM), [12.1, 6.25]);
+  // Round 11 (Pieter Lastmankade 115143): a small AHN step that agrees with 3DBAG's in sign, every read of the higher
+  // series over the lower's median, is real: no clamp. The same step with an overlapping read is clamped.
+  const two = [0, 1, 2, 3, 4].map(i => pand(i, 1922, 8.7)).concat([pand(5, 1922, 9.95), pand(6, 1922, 9.95)]);
+  const r2 = districtRows(two, streets).rows;
+  const roofs2 = (front: (i: number) => number) => Object.fromEntries(two.map((p, i) => [p.id.slice(-16), { form: 'flat' as const, frontRiseM: 0, eavesM: front(i), why: '' }]));
+  assert.deepEqual(blockLines({ ...lib, measured: { roofs: roofs2(i => (i < 5 ? 8.77 : 9.17)) } }, r2).rows[0].series.map(s => s.eavesM), [8.7, 9.95]);
+  assert.deepEqual(blockLines({ ...lib, measured: { roofs: roofs2(i => (i < 5 ? 8.77 : i === 5 ? 8.6 : 9.4)) } }, r2).rows[0].series.map(s => s.eavesM), [8.7, 8.7]);
   // No AHN: unchanged.
   assert.deepEqual(blockLines(lib, rows).rows[0].series.map(s => s.eavesM), [12.1, 6.25]);
 });
