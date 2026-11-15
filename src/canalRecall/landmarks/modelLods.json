@@ -6173,5 +6173,17 @@
    "bytes": 10940,
    "triangles": 343
   }
+ },
+ "diamant-museum": {
+  "sourceHash": "5e5197ca6e5b6e09",
+  "buildVersion": 2,
+  "bytes": 55996,
+  "triangles": 2473,
+  "lod2": {
+   "sourceHash": "5e5197ca6e5b6e09",
+   "buildVersion": 6,
+   "bytes": 9788,
+   "triangles": 298
+  }
  }
 }
