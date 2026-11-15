@@ -24,5 +24,16 @@
   "licence": "CC BY 4.0",
   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the dark brick hall with its high window strip and glass slot, the entrance block's window band and projecting glass box, the east front's windows and the VICTORIABAD garden wall. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
- }
+ },
+ "detachedStructures": [
+  {
+   "box": [
+    19.8,
+    -25.3,
+    21.9,
+    -14.3
+   ],
+   "evidence": "The low brick garden wall lettered VICTORIABAD, freestanding about 7 m in front of the east front (ring edge 1); Gemeente Amsterdam panorama w03-84 (victoriabad-brief.md)."
+  }
+ ]
 }

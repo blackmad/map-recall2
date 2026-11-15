@@ -105922,8 +105922,8 @@
         "depthMetres": 191.8248519897461,
         "depthCoverage": 1.0363309129645926
       },
-      "triangles": 11915,
-      "bytes": 122652,
+      "triangles": 11867,
+      "bytes": 122092,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "sportplaza-mercator": {
@@ -109257,7 +109257,7 @@
         "depthCoverage": 1.0157582433778483
       },
       "triangles": 2045,
-      "bytes": 32520,
+      "bytes": 32388,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

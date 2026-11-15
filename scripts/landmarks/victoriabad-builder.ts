@@ -53,5 +53,5 @@ function band(b: BuildingTools, f: Frame, t: number, w: number, y: number, h: nu
 /** A freestanding low brick wall `out` metres in front of the front, `len` long, lettered VICTORIABAD in white. */
 function gardenWall(b: BuildingTools, f: Frame, t: number, out: number, len: number) {
   slab(b, f, t, 0, len, 0.95, 0.35, 'brick', out);
-  letters(b, f, 'VICTORIABAD', t, 0.2, out + 0.35, 0.09, 0.03, 'white');
+  letters(b, f, 'VICTORIABAD', t, 0.2, out + 0.35, 0.09, 0.05, 'white'); // 5 cm proud: 3 cm letters z-fought the wall face (audit zfight-tight)
 }

@@ -1,6 +1,6 @@
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
-import {eaveOffset, ringFrame, slab, setSink, getSink, type Frame} from './nearbar-kit';
+import {eaveOffset, ledgeStrip, ringFrame, slab, setSink, getSink, type Frame} from './nearbar-kit';
 import {basin, glassDome, offsetRing, post, prismRing, spiralSlide, tubePath, type XZ} from './pool-kit';
 import source from './de-mirandabad-footprints.json';
 
@@ -101,11 +101,13 @@ function front(b: BuildingTools, {f, len}: {f: Frame; len: number}) {
 /** A glass tower front: full-height glass in white frames, banded with red panels every storey band (w08-5 crop). */
 function stripedTower(b: BuildingTools, {f, len}: {f: Frame; len: number}) {
   const TOP = 11.3;
-  slab(b, f, len / 2, 0.1, len - 0.2, TOP - 0.1, 0.12, 'glass');
+  // the glass as a front-only strip, 5 cm behind the mullions: its (double-sided) back plane lay on the bands' and trims' back
+  // planes and its front 2 cm off the mullions' (audit zfight 20 m2 + zfight-tight 3.4 m2, 2026-11-15)
+  ledgeStrip(b, f, len / 2, 0.1, len - 0.2, TOP - 0.45, 0.09, 'glass'); // up to the coping's underside, 5 cm behind the mullions
   for (let y = 0.9; y + 0.75 < TOP; y += 1.55) slab(b, f, len / 2, y, len - 0.3, 0.75, 0.16, 'green'); // red enamel bands: the 'green' accent slot carries the spec's red, so they draw smooth, not as atlas brick
   for (let y = 0.1; y < TOP; y += 1.55) slab(b, f, len / 2, y, len - 0.5, 0.1, 0.2, 'white'); // white transoms
   for (const t of [0.3, len / 2, len - 0.3]) slab(b, f, t, 0.1, 0.12, TOP - 0.1, 0.14, 'white'); // mullions
-  slab(b, f, len / 2, TOP - 0.35, len - 0.5, 0.35, 0.3, 'white'); // coping, kept under the 3DBAG roof (11.5 m)
+  ledgeStrip(b, f, len / 2, TOP - 0.35, len - 0.5, 0.35, 0.3, 'white'); // coping (front and top only: its back plane lay on the top transom's), kept under the 3DBAG roof (11.5 m)
 }
 
 /** Convex hull (monotone chain) of native points. */
