@@ -92,7 +92,22 @@ export interface RowCrown {
   shoulder?: 'sloped';
   /** The attic light's head: a round or segmental arch (absent: square). */
   atticHead?: 'round' | 'segmental';
+  /** House rows: the gable's white sandstone with thickness (copings, treads, klauwstukken, cap); absent: flat white edges. */
+  stone?: { copingM?: number; claws?: boolean; crest?: 'pediment' | 'segmental' | 'crest' };
+  /** `belt`: the canal belt's gable dress (BELT_GABLE). Absent: the kit's stock outlines and trim, byte-identical. */
+  dress?: 'belt';
 }
+/**
+ * The canal belt's gable outlines (lane D, 2026-11-15; David on #391: "Gables still look pretty bad"), from the Herengracht
+ * 25-73 cuts beside the sheets. Outline proportions only; the trim (claws, copings, caps, finials) is lane R's.
+ *   neck  - the neck stands tall on low claw pieces (shoulders at 0.3 of the rise, the photos' 0.25-0.35, not the kit's
+ *           0.45 that made a wide trapezoid); a segmental cap a sixth of the rise high;
+ *   bell  - the arched crest narrower than the bell's body (0.72), so a ledge shows at its springing; a cap a fifth of
+ *           the rise;
+ *   step  - treads about 0.6 m high (3-7 a side; the kit's 0.85 m drew three broad steps on Herengracht 27's six);
+ *   spout - the upright top a fifth of the rise (0.5-0.9 m; the kit's third drew a chimney).
+ */
+export const BELT_GABLE = { tread: 0.6, steps: [3, 7], neckShoulder: 0.3, neckCap: [0.16, 0.7], bellCrest: 0.72, bellCap: [0.2, 0.9], spoutTop: [0.2, 0.5, 0.9] } as const;
 export function isRowCrown(v: unknown): v is RowCrown {
   const c = v as RowCrown | null;
   return !!c && typeof c === 'object' && (ROW_GABLE_SHAPES as readonly string[]).includes(c.shape) && Number.isFinite(c.riseM) && c.riseM > 0.5;
@@ -106,11 +121,15 @@ export function crownDims(c: RowCrown, W: number) {
   const half = W / 2, T = c.riseM;
   const foot = clamp(c.footW ?? W, Math.min(W, 1.6), W) / 2;
   const defaultNeck = c.shape === 'raised' ? clamp(W * 0.32, 1.1, 2.4) : c.shape === 'bell' ? foot * 0.46 : c.shape === 'step' ? foot * 0.3 : c.shape === 'spout' ? foot * 0.32 : foot * 0.5; // the kit's stock shares (crownOutline neckShare, trap 0.3)
-  const neck = clamp((c.neckW ?? defaultNeck) / 2, 0.45, foot * 0.8);
+  const belt = c.dress === 'belt' && (c.shape === 'neck' || c.shape === 'bell');
+  // The belt's neck and bell: the neck as wide as the profile draws it (the kit's stock share of the foot when unread).
+  const neck = clamp((c.neckW ?? (belt ? 2 * foot * (c.shape === 'bell' ? 0.46 : 0.5) : defaultNeck)) / 2, 0.45, foot * 0.8);
   // Neck and bell: the kit's stock cap rise (crownOutline capRiseOf), so the trim and the opening follow its outline.
   const kitCap = (c.shape === 'neck' || c.shape === 'bell') ? capRiseOf({ gable: c.shape, ...(c.cap ? { crownCap: c.cap } : {}) } as unknown as FrontIntent, T, 2 * foot) : 0;
-  const cap = c.shape === 'neck' || c.shape === 'bell' ? kitCap : c.shape === 'raised' ? clamp(c.cap === 'flat' ? 0.25 : neck * 0.55, 0.2, Math.min(0.6, (T - (c.bandM ?? 0.5)) * 0.35)) : 0;
-  const steps = c.shape === 'step' ? (c.steps && c.steps >= 1 ? clamp(Math.round(c.steps), 1, 8) : clamp(Math.round(T / 0.85), 2, 5)) : 0;
+  const B = BELT_GABLE;
+  const cap = belt ? (c.shape === 'bell' ? clamp(T * B.bellCap[0], 0.3, B.bellCap[1]) : clamp(T * B.neckCap[0], 0.3, B.neckCap[1]))
+    : c.shape === 'neck' || c.shape === 'bell' ? kitCap : c.shape === 'raised' ? clamp(c.cap === 'flat' ? 0.25 : neck * 0.55, 0.2, Math.min(0.6, (T - (c.bandM ?? 0.5)) * 0.35)) : 0;
+  const steps = c.shape === 'step' ? (c.steps && c.steps >= 1 ? clamp(Math.round(c.steps), 1, 8) : c.dress === 'belt' ? clamp(Math.round(T / B.tread), B.steps[0], B.steps[1]) : clamp(Math.round(T / 0.85), 2, 5)) : 0;
   return { half, T, foot, neck, cap, steps };
 }
 
@@ -150,13 +169,19 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
     x0 = -half;
   } else {
     const necked = c.shape === 'neck' || c.shape === 'bell';
+    if (necked && c.dress === 'belt') {
+      // The belt's neck and bell (BELT_GABLE): the kit's own outline maths, at the belt's shoulders, crest and cap.
+      const b = y0 + KIT_Z, t = T + KIT_Z, bell = c.shape === 'bell', sr = c.shoulderRise ?? (bell ? 0.55 : BELT_GABLE.neckShoulder);
+      kit = canalhouseCrownProfile(bell ? 'klok' : 'hals', 2 * foot, b, t, 2 * neck, b + (T - y0) * sr, 0,
+        { cap: c.cap ?? (bell ? 'rounded' : 'segmental'), capRiseM: Math.min(d.cap, (T - y0) * (1 - sr)), crestWidthM: bell ? 2 * neck * BELT_GABLE.bellCrest : 2 * neck, shoulder: 'concave' });
+    } else
     kit = crownProfile({ gable: c.shape, ...(c.neckW ? { crownNeckWidth: neck / foot } : {}), crownSteps: d.steps || undefined,
       ...(necked && c.cap ? { crownCap: c.cap } : {}), ...(necked && c.shoulderRise ? { crownShoulderRise: c.shoulderRise } : {}) } as unknown as FrontIntent, 2 * foot, y0 + KIT_Z, T + KIT_Z);
     x0 = -foot;
     // The spout (tuitgevel, Herengracht 71/73): straight rakes up to small shoulders, then a narrow upright top the neck's
     // width, about a third of the rise tall (the kit's tuit drew a truncated point, its top a third of the front wide).
     if (c.shape === 'spout') {
-      const b = y0 + KIT_Z, t = T + KIT_Z, sy = t - clamp(T * 0.3, 0.8, 1.4), ledge = clamp(foot * 0.08, 0.12, 0.25);
+      const b = y0 + KIT_Z, t = T + KIT_Z, sy = t - spoutTop(c), ledge = clamp(foot * 0.08, 0.12, 0.25);
       kit = [[0, b], [foot - neck - ledge, sy], [foot - neck, sy], [foot - neck, t], [foot + neck, t], [foot + neck, sy], [foot + neck + ledge, sy], [2 * foot, b]];
     }
     // A sloped shoulder: the eaves-level corners under the first risers go, so the foot runs straight to the riser's top.
@@ -176,6 +201,8 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
   return out;
 }
 
+/** The spout's upright top: a third of the rise (0.8-1.4 m), the belt's a fifth (0.5-0.9 m). */
+const spoutTop = (c: RowCrown) => c.dress === 'belt' ? clamp(c.riseM * BELT_GABLE.spoutTop[0], BELT_GABLE.spoutTop[1], BELT_GABLE.spoutTop[2]) : clamp(c.riseM * 0.3, 0.8, 1.4);
 const PROUD = 0.014, PROUD_HI = 0.026;
 const GLASS = '#272c33';
 
@@ -248,13 +275,191 @@ function finials(s: RoofSink, c: RowCrown, prof: readonly V2[], f: number, e: nu
   }
 }
 
+/** The gable's stone with thickness (RowCrown.stone, or the belt dress): how far each piece stands proud of the brick,
+ *  and how far behind the front it reaches (`back`: past the plate, whose depth is `plate` for a stone crown). */
+export const ROW_STONE = { plate: 0.45, back: 0.47, coping: 0.15, overhang: 0.06, copingW: 0.15, claw: 0.4, bellClaw: 0.25, clawProud: 0.1, piece: 0.12,
+  volute: 0.17, cap: 0.12, capBand: 0.3, capOver: 0.15, ledge: 0.2, band: 0.18 } as const;
+/** The stone a crown draws: its stated stone, else the belt dress's (claws, the crest a bell or step stands under). */
+export function rowCrownStone(c: RowCrown): NonNullable<RowCrown['stone']> | undefined {
+  if (c.shape === 'raised') return undefined;
+  if (c.stone) return c.stone;
+  if (c.dress !== 'belt') return undefined;
+  return c.shape === 'bell' || c.shape === 'step' ? { crest: 'crest' } : {};
+}
+/** A darker stone for the scroll's coil, so the volute reads as carved. */
+function shade(hex: string, k: number): string {
+  const n = parseInt(hex.replace('#', '').slice(0, 6), 16);
+  if (!Number.isFinite(n)) return hex;
+  const ch = (sh: number) => Math.round(((n >> sh) & 255) * k).toString(16).padStart(2, '0');
+  return `#${ch(16)}${ch(8)}${ch(0)}`;
+}
+/** A convex outline (x across, y up) as a stone block on the end at u = f: its face `proud` in front of the brick, its
+ *  sides reaching `back` behind the front. */
+function prism(s: RoofSink, pts: readonly V2[], f: number, e: number, proud: number, back: number, hex: string): void {
+  if (pts.length < 3) return;
+  const uF = f + e * proud, uB = f - e * back;
+  let cx = 0, cy = 0;
+  for (const [x, y] of pts) { cx += x; cy += y; }
+  cx /= pts.length; cy /= pts.length;
+  s.flatPoly(pts.map(([x, y]): V3 => [uF, x, y]), 'trim', [e, 0, 0], hex);
+  for (let i = 0; i < pts.length; i++) {
+    const [x0, y0] = pts[i], [x1, y1] = pts[(i + 1) % pts.length];
+    const l = Math.hypot(x1 - x0, y1 - y0);
+    if (l < 1e-4) continue;
+    let nx = (y1 - y0) / l, ny = -(x1 - x0) / l;
+    if (nx * ((x0 + x1) / 2 - cx) + ny * ((y0 + y1) / 2 - cy) < 0) { nx = -nx; ny = -ny; }
+    s.quad([uF, x0, y0], [uF, x1, y1], [uB, x1, y1], [uB, x0, y0], [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, nx, ny], hex);
+  }
+}
+const STONE_SEG = 16;
+const disc = (cx: number, cy: number, r: number, n = STONE_SEG): V2[] => Array.from({ length: n }, (_, i): V2 => [cx + r * Math.cos((i / n) * 2 * Math.PI), cy + r * Math.sin((i / n) * 2 * Math.PI)]);
+/** A volute: a stone drum with a darker coil and a white eye, its face standing `proud`. */
+function volute(s: RoofSink, f: number, e: number, cx: number, cy: number, r: number, hex: string, proud: number = ROW_STONE.volute): void {
+  prism(s, disc(cx, cy, r), f, e, proud, 0.02, hex);
+  prism(s, disc(cx + r * 0.12, cy + r * 0.08, r * 0.58), f, e, proud + 0.012, 0, shade(hex, 0.8));
+  prism(s, disc(cx + r * 0.2, cy + r * 0.12, r * 0.24, 10), f, e, proud + 0.024, 0, hex);
+}
+/** The crown's edges a coping runs along (the edgeBand rule: not the eaves, not the roof cheeks outside the foot), as runs
+ *  of consecutive outline points. */
+function copingRuns(prof: readonly V2[], foot: number): V2[][] {
+  const runs: V2[][] = [];
+  let cur: V2[] = [];
+  for (let i = 0; i < prof.length - 1; i++) {
+    const [x0, y0] = prof[i], [x1, y1] = prof[i + 1];
+    const skip = (y0 < 0.02 && y1 < 0.02) || (Math.max(Math.abs(x0), Math.abs(x1)) > foot + 0.01 && Math.min(Math.abs(x0), Math.abs(x1)) >= foot - 0.01) || Math.hypot(x1 - x0, y1 - y0) < 1e-4;
+    if (skip) { if (cur.length >= 2) runs.push(cur); cur = []; continue; }
+    if (!cur.length) cur.push(prof[i]);
+    cur.push(prof[i + 1]);
+  }
+  if (cur.length >= 2) runs.push(cur);
+  return runs;
+}
+/** A run of outline offset `dist` inward (negative: outward), mitred at its corners (mitre held to 3x). */
+function offsetRun(run: readonly V2[], dist: number): V2[] {
+  const nrm = (a: V2, b: V2): V2 => { const l = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1; return [(b[1] - a[1]) / l, -(b[0] - a[0]) / l]; };
+  return run.map((p, i): V2 => {
+    const n0 = i > 0 ? nrm(run[i - 1], p) : null, n1 = i < run.length - 1 ? nrm(p, run[i + 1]) : null;
+    let m: V2 = n0 && n1 ? [n0[0] + n1[0], n0[1] + n1[1]] : (n0 ?? n1)!;
+    const ml = Math.hypot(m[0], m[1]);
+    if (ml < 1e-6) m = n1 ?? n0!;
+    else m = [m[0] / ml, m[1] / ml];
+    const cos = n1 ? m[0] * n1[0] + m[1] * n1[1] : 1, k = dist / Math.max(1 / 3, cos);
+    return [p[0] + m[0] * k, Math.max(0, p[1] + m[1] * k)];
+  });
+}
+/** A stone band along a run: from `out` outside the outline to `bw` inside it, each segment a block. */
+function stoneBand(s: RoofSink, run: readonly V2[], f: number, e: number, out: number, bw: number, proud: number, back: number, hex: string): void {
+  const a = offsetRun(run, -out), b = offsetRun(run, bw);
+  for (let i = 0; i < run.length - 1; i++) prism(s, [a[i], a[i + 1], b[i + 1], b[i]], f, e, proud, back, hex);
+}
+/** The outline's height at x on the side `sg` (the highest crossing on that side, the crown's edge). */
+function edgeAt(prof: readonly V2[], x: number): number {
+  let best = -Infinity;
+  for (let i = 0; i < prof.length - 1; i++) {
+    const [x0, y0] = prof[i], [x1, y1] = prof[i + 1];
+    if ((x0 - x) * (x1 - x) > 0 || Math.abs(x1 - x0) < 1e-9) continue;
+    best = Math.max(best, y0 + ((x - x0) / (x1 - x0)) * (y1 - y0));
+  }
+  return best;
+}
+
+/**
+ * The gable's sandstone as built (RowCrown.stone, or the belt dress), in place of the flat white edges (lane D's renderer
+ * asks, 2026-11-15, David on #391: "Gables still look pretty bad"):
+ *   - a coping with thickness along every crown edge, its face proud of the brick, its top running back past the plate
+ *     (on a step gable each tread and riser);
+ *   - neck and bell: the klauwstukken, a broad stone band along each claw from the foot to the neck with a large volute at
+ *     the foot, and a quarter-round piece standing on the shoulder against the neck with its own volute; a stone band
+ *     across the neck's foot;
+ *   - neck and bell: the cap block over the neck on a moulded ledge overhanging the neck;
+ *   - spout: a cap slab on the upright top; a stated pediment or segmental cap on a flat top (step, spout);
+ *   - a stated crest (the belt's bell and step): a pedestal and ball over the apex.
+ */
+function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>, prof: readonly V2[], f: number, e: number, d: ReturnType<typeof crownDims>, y0: number, trimHex: string, clear: readonly [number, number] | null): void {
+  const S = ROW_STONE, { T, foot, neck } = d, bw = clamp(st.copingM ?? S.copingW, 0.1, 0.4);
+  for (const run of copingRuns(prof, foot)) stoneBand(s, run, f, e, S.overhang, bw, S.coping, S.back, trimHex);
+  const necked = c.shape === 'neck' || c.shape === 'bell';
+  // The neck's upright sides (x = neck): their foot, and their top where the cap springs (the belt's bell steps in there).
+  const upright = prof.filter(([x, y]) => Math.abs(Math.abs(x) - neck) < 0.02 && y > y0 + 0.05).map(([, y]) => y);
+  const neckFoot = upright.length ? Math.min(...upright) : NaN;
+  const tN = upright.length > 1 ? Math.max(...upright) : T - d.cap;
+  if (necked && st.claws !== false && Number.isFinite(neckFoot) && neckFoot < tN - 0.4) {
+    for (const sg of [-1, 1]) {
+      // The claw: a broad band along the shoulder from the foot to the neck.
+      const claw = prof.filter(([x, y]) => sg * x >= neck - 1e-3 && sg * x <= foot + 1e-6 && y <= neckFoot + 1e-3 && y > -1e-3);
+      if (claw.length >= 2) stoneBand(s, claw, f, e, 0, c.shape === 'bell' ? S.bellClaw : S.claw, S.clawProud, S.back * 0.5, trimHex);
+      // The klauwstuk against a neck: a quarter round standing on the shoulder, its foot along the outline (a bell's
+      // shoulders curve into its body and carry none).
+      const w = clamp((foot - neck) * 0.35, 0.3, 0.75), ht = clamp((tN - neckFoot) * 0.3, 0.4, 0.9);
+      const xs = sg * (neck + w), ys = edgeAt(prof, xs);
+      if (c.shape === 'neck' && Number.isFinite(ys)) {
+        const under = prof.filter(([x, y]) => sg * x > neck + 1e-3 && sg * x < neck + w - 1e-3 && y > 0.01).sort((p, q) => sg * (p[0] - q[0]));
+        const base = Math.max(ys, neckFoot - 0.05), arc: V2[] = [];
+        for (let i = 0; i <= 8; i++) { const a = (i / 8) * Math.PI / 2; arc.push([sg * (neck + w * Math.cos(a)), base + ht * Math.sin(a)]); }
+        prism(s, [[sg * neck, neckFoot], ...under, [xs, ys], ...(base > ys + 1e-3 ? arc : arc.slice(1))], f, e, S.piece, S.back * 0.5, trimHex);
+        const rv = clamp(w * 0.28, 0.12, 0.22);
+        volute(s, f, e, xs - sg * rv * 0.4, base + rv * 0.9, rv, trimHex, S.piece + 0.03);
+      }
+      // The claw's foot: a large volute where the shoulder meets the eaves.
+      const r = c.shape === 'bell' ? clamp((foot - neck) * 0.16, 0.16, 0.3) : clamp((foot - neck) * 0.2, 0.2, 0.42);
+      volute(s, f, e, sg * (foot - r - 0.02), y0 + r + 0.03, r, trimHex);
+    }
+    // A stone band across the neck's foot, unless the crown's light or door stands there.
+    const o = clear;
+    if (!o || neckFoot + S.band < o[0] - 0.1 || neckFoot > o[1] + 0.1) prism(s, [[-neck, neckFoot], [neck, neckFoot], [neck, neckFoot + S.band], [-neck, neckFoot + S.band]], f, e, S.clawProud, 0.02, trimHex);
+  }
+  if (necked && d.cap > 0) {
+    const capRim = prof.filter(([x, y]) => y >= tN - 1e-3 && Math.abs(x) <= neck + 1e-6);
+    // The cap's moulding: a broad stone hood along its outline (the tympanum inside it stays brick).
+    if (capRim.length >= 2) stoneBand(s, capRim, f, e, S.overhang + 0.04, S.capBand, S.ledge, S.back, trimHex);
+    // The moulding the cap stands on: a ledge at the springing, overhanging the neck.
+    const lw = neck + S.capOver;
+    prism(s, [[-lw, tN - 0.16], [lw, tN - 0.16], [lw, tN], [-lw, tN]], f, e, S.ledge, S.back, trimHex);
+  }
+  // The spout's cap slab on its upright top.
+  let top = Math.max(...prof.map(([, y]) => y)) + S.overhang;
+  if (c.shape === 'spout') {
+    const hw = neck + S.overhang + 0.03;
+    prism(s, [[-hw, top], [hw, top], [hw, top + 0.12], [-hw, top + 0.12]], f, e, S.ledge, S.back, trimHex);
+    top += 0.12;
+  }
+  // A cap on a flat top: a pediment or a segmental arch standing on it.
+  if ((c.shape === 'step' || c.shape === 'spout') && (st.crest === 'pediment' || st.crest === 'segmental')) {
+    const hw = neck + S.overhang + 0.06, rise = clamp(hw * 0.4, 0.3, 0.6), pts: V2[] = [[-hw, top]];
+    if (st.crest === 'pediment') pts.push([0, top + rise]);
+    else for (let i = 1; i < 12; i++) { const a = Math.PI * (1 - i / 12); pts.push([hw * Math.cos(a), top + rise * Math.sin(a)]); }
+    pts.push([hw, top]);
+    prism(s, pts, f, e, S.cap, S.back, trimHex);
+    top += rise;
+  }
+  if (st.crest === 'crest') {
+    // A crest over the apex: a pedestal and a stone ball (the finial on a step's top, the ornament on a bell's crest).
+    const hw = c.shape === 'step' ? 0.2 : 0.24;
+    prism(s, [[-hw, top - 0.02], [hw, top - 0.02], [hw * 0.8, top + 0.26], [-hw * 0.8, top + 0.26]], f, e, S.piece, 0.25, trimHex);
+    prism(s, disc(0, top + 0.26 + 0.18, 0.18), f, e, S.piece, 0.14, trimHex);
+    if (c.shape === 'bell') for (const sg of [-1, 1]) volute(s, f, e, sg * (hw + 0.16), top + 0.13, 0.15, trimHex, S.piece);
+  }
+}
+
+/** The crown's opening's height (a hoist door or an attic light), or null when it has none. */
+function openingZ(c: RowCrown, d: ReturnType<typeof crownDims>, y0: number): [number, number] | null {
+  const T = d.T, lights = c.attic ?? 1;
+  if (!c.hoist && lights < 1) return null;
+  const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - spoutTop(c) - 0.1 : T - 0.25;
+  const z0 = c.shape === 'raised' ? (c.bandM ?? 0.5) + 0.12 : Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
+  const z1 = Math.min(capTop - 0.15, z0 + (c.hoist ? 1.5 : 1.15));
+  return z1 - z0 < 0.55 ? null : [z0, z1];
+}
+
 /** White edge trim, scrolls, cap, shoulder blocks and the crown's light or hoist door on one gable end at u = f. */
 export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f: number, e: number, W: number, R: number, trimHex: string): void {
   const d = crownDims(c, W), { T, foot, neck } = d;
   const slope = (x: number) => R * (1 - Math.abs(x) / d.half);
   const y0 = foot < d.half - 0.01 ? slope(-foot) + 0.04 : 0;
-  edgeBand(s, prof, f, e, c.shape === 'point' ? 0.2 : 0.15, foot, trimHex);
-  if (c.shape === 'neck') {
+  const stone = rowCrownStone(c);
+  if (stone) stoneCrown(s, c, stone, prof, f, e, d, y0, trimHex, openingZ(c, d, y0));
+  else edgeBand(s, prof, f, e, c.shape === 'point' ? 0.2 : 0.15, foot, trimHex);
+  if (c.shape === 'neck' && !stone) {
     // Scroll pieces: a broad white stone band along each claw (the brick shows inside it) ending in a volute at the
     // foot; the pediment cap filled white.
     const tN = T - d.cap;
@@ -277,17 +482,14 @@ export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f
     if (capRim.length >= 3) fan(s, f, e, [0, tN], capRim, trimHex);
     else rect(s, f, e, -neck, neck, tN, T, trimHex, PROUD_HI);
   }
-  if (c.shape === 'bell') for (const side of [-1, 1]) rect(s, f, e, side < 0 ? -foot : foot - 0.4, side < 0 ? -foot + 0.4 : foot, y0, y0 + 0.32, trimHex, PROUD_HI);
+  if (c.shape === 'bell' && !stone) for (const side of [-1, 1]) rect(s, f, e, side < 0 ? -foot : foot - 0.4, side < 0 ? -foot + 0.4 : foot, y0, y0 + 0.32, trimHex, PROUD_HI);
   if (c.finials) finials(s, c, prof, f, e, foot, neck, trimHex);
   if (c.chimney && c.chimney.topM > T + 0.2) chimneyStack(s, c.chimney, f, e, T, d.cap);
   if (c.lights?.length) { tracedLights(s, c.lights, prof, f, e, trimHex); return; }
   // The crown's opening: a hoist door (white frame, dark leaves) or an attic light, centred, inside the profile.
-  const lights = c.attic ?? 1;
-  if (!c.hoist && lights < 1) return;
-  const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - clamp(T * 0.3, 0.8, 1.4) - 0.1 : T - 0.25;
-  const z0 = c.shape === 'raised' ? (c.bandM ?? 0.5) + 0.12 : Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
-  const z1 = Math.min(capTop - 0.15, z0 + (c.hoist ? 1.5 : 1.15));
-  if (z1 - z0 < 0.55) return;
+  const oz = openingZ(c, d, y0);
+  if (!oz) return;
+  const [z0, z1] = oz;
   const sp = spanAt(prof, z1), inner = sp ? Math.min(-sp[0], sp[1]) - 0.2 : 0;
   const hw = Math.min(c.hoist ? 0.5 : 0.42, inner, (c.shape === 'neck' || c.shape === 'step' || c.shape === 'raised' ? neck : foot) - 0.22);
   if (hw < 0.22) return;
