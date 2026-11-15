@@ -15,7 +15,7 @@ for (const d of process.argv.slice(2)) {
     const ya = med(a.fronts.map((f: string) => built.get(f) ?? 0)), yb = med(b.fronts.map((f: string) => built.get(f) ?? 0));
     if (la == null || lb == null || Math.abs(la - lb) <= ROW_EAVES_STEP_M || ya == null || yb == null || Math.abs(ya - yb) > YEAR) continue;
     pairs++;
-    const ha = med(a.fronts.flatMap((f: string) => roofs[f]?.form !== 'unclear' && roofs[f]?.eavesM > 2 ? [roofs[f].eavesM] : [])), hb = med(b.fronts.flatMap((f: string) => roofs[f]?.form !== 'unclear' && roofs[f]?.eavesM > 2 ? [roofs[f].eavesM] : []));
+    const ha = med(a.fronts.flatMap((f: string) => roofs[f]?.form === 'flat' && roofs[f]?.eavesM > 2 ? [roofs[f].eavesM] : [])), hb = med(b.fronts.flatMap((f: string) => roofs[f]?.form === 'flat' && roofs[f]?.eavesM > 2 ? [roofs[f].eavesM] : []));
     if (ha == null || hb == null) { unread++; continue; }
     if (Math.abs(ha - hb) <= ROW_EAVES_STEP_M) { unsupported++; rowsHit.add(r.id); if (ex.length < 8) ex.push(`${r.id}: lines ${la}/${lb} m, AHN front ${ha}/${hb} m`); } else supported++;
   }

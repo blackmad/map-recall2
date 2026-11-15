@@ -196,11 +196,158 @@
           }
         ]
       },
-      "evidence": "Hunzestraat panorama recording_2025-07-14_11-01-54_02067 (2025-07-14, round 10 held-out sheet, 40 px/m), lane R round 12: every erker is a white timber front, lights corner to corner in thick white frames, brick only between storeys. The wide box pair over 095203/108726 (BAG's spans) covers the first and second floors, plain windows over it; two canted oriels at the right end rise to the line, BAG's on 111890 at 0.05-0.28 and one BAG does not draw at 41.0-43.9 m on the line (074339 0.76 to its party wall, closed there)"
+      "eaves": {
+        "overhangM": 0.5,
+        "fasciaM": 0.2,
+        "lid": true,
+        "frieze": false
+      },
+      "evidence": "Hunzestraat panorama recording_2025-07-14_11-01-54_02067 (2025-07-14, round 10 held-out sheet, 40 px/m), lane R round 12: every erker is a white timber front, lights corner to corner in thick white frames, brick only between storeys. The wide box pair over 095203/108726 (BAG's spans) covers the first and second floors, plain windows over it; two canted oriels at the right end rise to the line, BAG's on 111890 at 0.05-0.28 and one BAG does not draw at 41.0-43.9 m on the line (074339 0.76 to its party wall, closed there); Hunzestraat round 9 sheet (recording_2025-07-14_11-01-54_02067): a thin white slab as the flat roof lid, about 0.5 m out; no pitched edge"
     },
     "kuinderstraat-067158": {
       "erkerFront": "timber",
-      "evidence": "Kuinderstraat panorama recording_2025-07-14_11-01-54_02163 (2025-07-14, round 9 held-out sheet, 36 px/m), lane R round 12: the canted oriels (BAG's spans) are white timber fronts, three lights a storey corner to corner with toplights, white sills, brick only between storeys; the corner member 148704's oriel the same"
+      "eaves": {
+        "overhangM": 1,
+        "fasciaM": 0.25,
+        "lid": true,
+        "frieze": false
+      },
+      "evidence": "Kuinderstraat panorama recording_2025-07-14_11-01-54_02163 (2025-07-14, round 9 held-out sheet, 36 px/m), lane R round 12: the canted oriels (BAG's spans) are white timber fronts, three lights a storey corner to corner with toplights, white sills, brick only between storeys; the corner member 148704's oriel the same; Kuinderstraat round 9 sheet (36 px/m): a deep white slab, about 1 m of soffit seen from below and a ~0.25 m fascia, the flat roof lid near 16.8 m over five storeys (the line from AHN4, round 11)"
+    },
+    "europaplein-137940": {
+      "eaves": {
+        "overhangM": 1,
+        "fasciaM": 0.2,
+        "lid": true,
+        "frieze": false
+      },
+      "attic": {
+        "heightM": 1,
+        "pitchM": 1.5
+      },
+      "evidence": "Europaplein: thin white slab as the flat roof lid over a ~1.0 m white attic band of paired small lights (lane R round 13 trial record, blind A/B won, medium)"
+    },
+    "trompenburgstraat-097377": {
+      "eaves": {
+        "overhangM": 1,
+        "fasciaM": 0.2,
+        "lid": true,
+        "frieze": false
+      },
+      "evidence": "Trompenburgstraat: thin white eaves slab as the flat roof lid (lane R round 13 trial record, blind A/B won, low)"
+    },
+    "borssenburgstraat-070575": {
+      "raised": {
+        "071895": [
+          {
+            "a0": 0.73,
+            "a1": 0.98,
+            "riseM": 1.6
+          }
+        ],
+        "127490": [
+          {
+            "a0": 0.04,
+            "a1": 0.2,
+            "riseM": 1.5,
+            "outM": 0.3
+          }
+        ],
+        "133955": [
+          {
+            "a0": 0.86,
+            "a1": 1,
+            "riseM": 2.5,
+            "outM": 0.4
+          }
+        ],
+        "113738": [
+          {
+            "a0": 0,
+            "a1": 0.17,
+            "riseM": 2.5,
+            "outM": 0.4
+          }
+        ],
+        "140390": [
+          {
+            "a0": 0.72,
+            "a1": 1,
+            "riseM": 2,
+            "outM": 0.2
+          }
+        ],
+        "106321": [
+          {
+            "a0": 0,
+            "a1": 0.32,
+            "riseM": 2,
+            "outM": 0.2
+          }
+        ]
+      },
+      "evidence": "Borssenburgstraat: brick fins and piers rising over the line, a raised parapet at 071895 (lane R round 13 trial record, blind A/B won, medium)"
+    },
+    "amstelkade-105304": {
+      "raised": {
+        "132424": [
+          {
+            "a0": 0,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "087311": [
+          {
+            "a0": 0,
+            "a1": 0.95,
+            "riseM": 2.8
+          }
+        ],
+        "092562": [
+          {
+            "a0": 0.05,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "118793": [
+          {
+            "a0": 0,
+            "a1": 0.95,
+            "riseM": 2.8
+          }
+        ],
+        "064359": [
+          {
+            "a0": 0.05,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "104422": [
+          {
+            "a0": 0,
+            "a1": 0.95,
+            "riseM": 2.8
+          }
+        ],
+        "083750": [
+          {
+            "a0": 0.05,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "145501": [
+          {
+            "a0": 0,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ]
+      },
+      "evidence": "Amstelkade (recording_2025-07-15_08-32-06_03211, 31 px/m): the blocks of two pands from 132424 to 145501 carry a brick parapet to ~15.1 m, ~2.8 m over the 12.3 m line, hiding the pitched roof (AHN4 ridges 14.5 m), with V notches at the block joins; the left end is blurred and not stated"
     }
   },
   "streetNotes": {

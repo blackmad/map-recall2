@@ -253,7 +253,30 @@
           }
         ]
       },
-      "evidence": "Stadionkade panorama recording_2025-07-30_06-07-02_01201 (2025-07-30, round 9 held-out sheet, 26 px/m), lane R round 12; BAG draws no erkers on this row. Brick canted bay columns with white-framed lights: two at the left end (063989 0.5 to its party wall and 101049 from it, each closed there), 149160 0.54-0.82 and 079933 to 0.22 (first to third floor), 119687 0.29-0.63 and 0.65-0.94; one-storey white timber oriels on a white apron over the ground floor: 117276 0.66-0.98, 085491 0.2-0.6, 074162 0.04-0.43 and 0.46-0.82. Spans read off the rectified photo against the member lines (+-0.3 m)"
+      "attic": {
+        "heightM": 1.6
+      },
+      "evidence": "Stadionkade panorama recording_2025-07-30_06-07-02_01201 (2025-07-30, round 9 held-out sheet, 26 px/m), lane R round 12; BAG draws no erkers on this row. Brick canted bay columns with white-framed lights: two at the left end (063989 0.5 to its party wall and 101049 from it, each closed there), 149160 0.54-0.82 and 079933 to 0.22 (first to third floor), 119687 0.29-0.63 and 0.65-0.94; one-storey white timber oriels on a white apron over the ground floor: 117276 0.66-0.98, 085491 0.2-0.6, 074162 0.04-0.43 and 0.46-0.82. Spans read off the rectified photo against the member lines (+-0.3 m); Stadionkade (recording_2025-07-30_06-07-02_01201): the top storey a ~1.6 m white attic frieze of paired small lights under the line"
+    },
+    "pieter-lastmankade-115143": {
+      "topM": 8.7,
+      "raised": {
+        "068475": [
+          {
+            "a0": 0,
+            "a1": 0.54,
+            "riseM": 1.2
+          }
+        ],
+        "095079": [
+          {
+            "a0": 0,
+            "a1": 0.23,
+            "riseM": 0.65
+          }
+        ]
+      },
+      "evidence": "Pieter Lastmankade (recording_2025-07-30_07-40-42_00759, 40 px/m): one parapet near 9.3 m along the row (AHN4 8.7-9.3 m), with brick stair towers over it: 068475 left half ~1.2 m, 095079 left end ~0.65 m; drawn at the row line with raised parts, not as a 9.95 m series"
     }
   },
   "streetNotes": {

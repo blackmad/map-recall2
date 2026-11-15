@@ -145,7 +145,7 @@ test('round 9: the measured row brick sits under the row note and over the pool;
   assert.equal(wallHexOf(m, fam, 'rooseveltlaan-146491').hex, lib.rowNotes!['rooseveltlaan-146491'].wall!.hex, 'the row note wins');
   assert.equal(wallHexOf(m, fam, 'other-000000').hex, fam.design?.wall?.hex ?? lib.design.wall.hex, 'unmeasured: the pool');
   // Round 11: a family the row's photo states beats the measured brick (Stadionkade 063989).
-  const st: DistrictLibrary = { ...m, rowNotes: { ...m.rowNotes, 'teststraat-000000': { wallFamily: { family: 'dark-brown-brick', evidence: 'test' } } } };
+  const st: DistrictLibrary = { ...m, rowNotes: { ...m.rowNotes, 'teststraat-000000': { wallFamily: { family: 'dark-brown-brick', evidence: 'test' }, evidence: 'test' } } };
   assert.equal(wallHexOf(st, fam, 'teststraat-000000').family, 'dark-brown-brick');
   assert.notEqual(wallHexOf(st, fam, 'teststraat-000000').hex, '#8a7465');
   const pands = [0, 1, 2].map(i => ({ ...pand(i, 1929, 12.4), roofCode: 3 }));
