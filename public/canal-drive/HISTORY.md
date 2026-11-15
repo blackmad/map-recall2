@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Landmarks: target list, Politiebureau Raampoort, Banks Mansion (2026-11-15)
+
+- The factory queue had no buildable rows left, so `scripts/landmarks/landmark-targets-next.ts` ranks unmodelled OSM landmarks in and just outside the belt by ride exposure (1,500 routes, walls within 60 m) × recognisability (Wikipedia 2, wikidata 1.4, monument 1.2). The top 15 with verdicts are in `docs/reports/landmark-targets-20261115.json`; canal-house fronts go to house rows.
+- Built: Politiebureau Raampoort (pand 0363100012169781, 1888, 27,395 tris) and Banks Mansion (0363100012165078, 1923, 16,330 tris; own mansard because 3DBAG reads the balconies as roofs). Each read FIX then PASS by a fresh opus reviewer on rule-10 pairs. Lane lane/landmarks-next-20261115.
+
 ## Landmarks: Diamant Museum, and four venue fixes judged blind (2026-11-15)
 
 - New: Diamant Museum, Paulus Potterstraat 8 (pand 0363100012076129, 1899): bespoke builder `scripts/landmarks/diamant-museum-*`, 15,011 tris, lod2 298. The first read flagged orange brick (#c8603e); after a fix to #8c6a5a the same reviewer passed it. The west flank is blank because hedges hide it in every panorama. The landmark factory queue had nothing else buildable; Bags and Purses (Herengracht 571–573) is three canal fronts and belongs to house rows. Lane lane/landmarks-new-20261115.
