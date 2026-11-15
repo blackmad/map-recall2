@@ -94,19 +94,24 @@ let extract: ShopfrontExtract | null = null;
 
 /** Shopfront templates (lane retail-ground, `?retailGround=1`): pand id -> [template index, lng, lat, sign word?]. */
 /** buildings: [template index, lng, lat, word ('' none), 1 = the front goes on the node's nearest open wall, not a street wall]. */
-export type ShopTemplateExtract = { version: 1; templates: string[]; buildings: Record<string, [number, number, number, string?, 1?]> };
+/** paint: pand id -> the pui paint measured on a street panorama (measure-pui.ts, receipts in data/retail-ground/pui-paint.json). */
+export type ShopTemplateExtract = { version: 1; templates: string[]; buildings: Record<string, [number, number, number, string?, 1?]>; paint?: Record<string, string> };
 let templates: ShopTemplateExtract | null = null;
 /** Install the template extract (only the flag's loader calls this); null removes it. Absent = nothing stamped. */
 export function setShopTemplates(data: ShopTemplateExtract | null): void {
   templates = data && Array.isArray(data.templates) && data.buildings ? data : null;
 }
-/** Stamp `shopTemplate` ([name, lng, lat, word?, nearest?]) on a pand the template extract lists; the same feature otherwise. */
+/**
+ * Stamp `shopTemplate` ([name, lng, lat, word?, nearest?]) on a pand the template extract lists, and `puiPaint` (a hex)
+ * on a pand whose shopfront paint was measured; the same feature otherwise.
+ */
 export function decorateShopTemplate<T extends GeoFeature>(feature: T): T {
   if (!templates) return feature;
-  const row = templates.buildings[String(feature.properties.id ?? '')];
-  if (!row || feature.properties.shopTemplate !== undefined) return feature;
-  const name = templates.templates[row[0]];
-  return name ? { ...feature, properties: { ...feature.properties, shopTemplate: [name, row[1], row[2], ...(row[3] || row[4] ? [row[3] ?? ''] : []), ...(row[4] === 1 ? [1] : [])] } } : feature;
+  const id = String(feature.properties.id ?? ''), row = templates.buildings[id], paint = templates.paint?.[id];
+  const name = row && feature.properties.shopTemplate === undefined ? templates.templates[row[0]] : undefined;
+  const stamp = paint && /^#[0-9a-f]{6}$/i.test(paint) && feature.properties.puiPaint === undefined;
+  if (!name && !stamp) return feature;
+  return { ...feature, properties: { ...feature.properties, ...(name ? { shopTemplate: [name, row![1], row![2], ...(row![3] || row![4] ? [row![3] ?? ''] : []), ...(row![4] === 1 ? [1] : [])] } : {}), ...(stamp ? { puiPaint: paint } : {}) } };
 }
 
 /** Install the published extract; null removes it (every building falls back to the old random shops). */

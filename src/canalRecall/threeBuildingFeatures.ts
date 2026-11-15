@@ -197,7 +197,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     // Lane retail-look round 3c (`?retailGround=1`): bay.groundHex here is the shop grammar's guess (no recipe is passed),
     // so a pale one goes dark; a measured paint (spec shopHex, row-front trace, a street recipe's groundWallHex) wins later.
-    if (retailGroundOn() && look === 'photo' && building.groundHex) building.groundHex = evidencelessPuiPaint(building.groundHex, id);
+    if (retailGroundOn() && look === 'photo' && building.groundHex && typeof p.puiPaint !== 'string') building.groundHex = evidencelessPuiPaint(building.groundHex, id);
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
     if (storeyScale !== 1) building.storeyScale = storeyScale;
     building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);
@@ -226,6 +226,10 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (p.registerFinish === 'light' || p.registerFinish === 'brick') building.registerFinish = p.registerFinish;
   // A spec'd shopfront's measured paint (H11) on the shop's ground storey, in the look's palette.
   if (specRecipe?.shopHex && building.groundHex && shopfrontOf(p) !== 'quiet' && cellSetOf(look) !== 'procedural') building.groundHex = lookHex(specRecipe.shopHex, look as Look);
+  // Lane retail-look round 4 (`?retailGround=1`): the pui paint measured on a street panorama (measure-pui.ts, stamped by
+  // decorateShopTemplate) outranks both the guess and the spec's shop read.
+  const puiPaint = retailGroundOn() && cellSetOf(look) !== 'procedural' && typeof p.puiPaint === 'string' ? lookHex(p.puiPaint, look as Look) : undefined;
+  if (puiPaint && building.groundHex && shopfrontOf(p) !== 'quiet') building.groundHex = puiPaint;
   // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
   let sourcedWall: string | undefined;
   if (look === 'photo') {
@@ -253,7 +257,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?, 1?] : null;
   if (template && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && !p.frontCarrier && cellSetOf(look) !== 'procedural') {
     const logo = logoFor(template[0] as RetailTemplate), logoLayer = retailLogoLayer(cellSetOf(look));
-    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer, ...logo } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}) };
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer, ...logo } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(puiPaint ? { paint: puiPaint } : {}) };
     delete building.signature;
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);

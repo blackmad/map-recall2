@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import { decorateShopfront, setShopfronts, setShopTemplates } from './shopfronts.js';
 import { bayTextures, type BayVariant } from './bayTextures.js';
 import { insideCentre } from './retailArea.js';
+import { clusters, drawnPaint, labHex, oklab, paintOf, type Lab } from './retailPuiPaint.js';
 
 const g = globalThis as { __canalRecallRetailGround?: boolean };
 
@@ -336,4 +337,47 @@ test('round 3c paint: a guessed pale pui goes dark; dark and mid paints stay', (
   assert.ok((DARK_PUI_PAINTS as readonly string[]).includes(evidencelessPuiPaint('#ece6e0', 'NL.IMBAG.Pand.1')));
   for (const hex of ['#7a4a38', '#2a2a2c', '#3a3c3c', '#8a8a86', '#3a4f7a']) assert.equal(evidencelessPuiPaint(hex, 'x'), hex);
   assert.equal(evidencelessPuiPaint('#ece6e0', 'a'), evidencelessPuiPaint('#ece6e0', 'a'));
+});
+
+const labOf = (hex: string): Lab => oklab(parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16));
+const band = (parts: [string, number][]): Lab[] => parts.flatMap(([hex, n]) => Array.from({ length: n }, () => labOf(hex)));
+
+test('round 4 pui paint: a pale frame share reads pale, a coloured one colour, glass and dark paint dark, a muddle nothing', () => {
+  // Pouw (Westerstraat, 2025 pano): white frames in shade among dark glass.
+  assert.equal(paintOf(clusters(band([['#a8b4b8', 30], ['#1e1c1c', 50], ['#4a4644', 20]])))?.cls, 'pale');
+  assert.equal(paintOf(clusters(band([['#2e5a3c', 30], ['#1e1c1c', 60], ['#3a3634', 10]])))?.cls, 'colour');
+  assert.equal(paintOf(clusters(band([['#262221', 60], ['#1a1818', 30], ['#504a46', 10]])))?.cls, 'dark');
+  // A mid-grey wall with a bit of everything states nothing.
+  assert.equal(paintOf(clusters(band([['#7a7672', 40], ['#8a8682', 40], ['#1e1c1c', 20]]))), null);
+  assert.equal(paintOf([]), null);
+});
+
+test('round 4 pui paint: a pale reading is drawn as a lit white or cream, a dark one as read', () => {
+  const pale = labOf(drawnPaint('pale', '#9fafb4'));
+  assert.ok(pale[0] > 0.9 && Math.hypot(pale[1], pale[2]) <= 0.026, `pale ${drawnPaint('pale', '#9fafb4')}`);
+  assert.equal(drawnPaint('dark', '#262221'), '#262221');
+  assert.ok(labOf(drawnPaint('colour', '#2e5a3c'))[0] > labOf('#2e5a3c')[0]);
+  assert.equal(labHex(labOf('#336699')), '#336699');
+});
+
+test('round 4 pui paint: the extract stamps the measured paint on template and plain shop pands, only once installed', () => {
+  const f = (id: string): { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown } => ({ type: 'Feature', properties: { id }, geometry: null });
+  setShopfronts(null);
+  setShopTemplates({ version: 1, templates: ['ah'], buildings: { 'NL.IMBAG.Pand.1': [0, 4.9, 52.37] }, paint: { 'NL.IMBAG.Pand.1': '#e8ecee', 'NL.IMBAG.Pand.2': '#262221', 'NL.IMBAG.Pand.3': 'white' } });
+  const a = decorateShopfront(f('NL.IMBAG.Pand.1')).properties;
+  assert.deepEqual([a.shopTemplate, a.puiPaint], [['ah', 4.9, 52.37], '#e8ecee']);
+  const b = decorateShopfront(f('NL.IMBAG.Pand.2')).properties;
+  assert.deepEqual([b.shopTemplate, b.puiPaint], [undefined, '#262221']);
+  const plain = f('NL.IMBAG.Pand.3');
+  assert.equal(decorateShopfront(plain), plain);
+  setShopTemplates(null);
+  const off = f('NL.IMBAG.Pand.2');
+  assert.equal(decorateShopfront(off), off);
+});
+
+test('round 4 pui paint: a measured paint frames the template front; absent, the template frame', () => {
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1, len: 6 } as const;
+  const hexes = (paint?: string) => new Set(retailFrontTris({ template: 'butcher', seed: 'x', ...(paint ? { paint } : {}) }, e, 0, 6, 0, 3.4).map(t => t.hex));
+  assert.ok(hexes('#e8ecee').has('#e8ecee'));
+  assert.ok(!hexes().has('#e8ecee'));
 });

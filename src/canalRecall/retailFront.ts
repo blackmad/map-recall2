@@ -350,6 +350,9 @@ export type RetailFrontInput = {
   /** Round 3c: the building's shop cell and its glass's uv rect: each pane's interior is one quad of it. Absent: the
    *  flat-colour goods. */
   interior?: { layer: number; rect: readonly [number, number, number, number] };
+  /** Round 4: the pui paint measured on a street panorama (measure-pui.ts), in the look's palette; it paints the frame
+   *  (bead, posts, mullions, transom) in place of the template's. Absent: the template's frame. */
+  paint?: string;
 };
 
 /** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
@@ -422,7 +425,7 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   if (s1 - s0 < 1.2) return [];
   const b = new Builder(e);
   const top = base + Math.min(Math.max(2.8, groundM), 4.6) - FRONT.fasciaGapM, bottom = top - FRONT.fasciaM;
-  const frame = look.frame ?? '#2b2724', head = doorHead(base, groundM), puiTop = bottom - FRONT.beadM;
+  const frame = input.paint ?? look.frame ?? '#2b2724', head = doorHead(base, groundM), puiTop = bottom - FRONT.beadM;
   const timber = look.surround ?? frame, riser = look.surround ?? shadeHex(frame, 1.12);
   // Fascia board, a cornice cap over it (a step darker, standing further out) and a bead under it.
   // Round 3c (cost): each member draws the faces a rider sees (Builder.slab): the board and cap their front, underside

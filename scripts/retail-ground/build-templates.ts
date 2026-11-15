@@ -130,6 +130,14 @@ if (samples) {
   }
 }
 const out = { version: 1, source: '© OpenStreetMap contributors (ODbL), Overpass ' + new Date(fs.statSync(CACHE).mtime).toISOString().slice(0, 10), templates: [...RETAIL_TEMPLATES], buildings: Object.fromEntries([...placed].sort().map(([id, p]) => [id, [RETAIL_TEMPLATES.indexOf(p.t), p.at[0], p.at[1], ...(TEMPLATE_LOOKS[p.t].word === 'name' && signWord(p.name) ? [signWord(p.name)] : p.front === 'nearest' ? [''] : []), ...(p.front === 'nearest' ? [1] : [])]])) };
+// Round 4: the pui paint measured on street panoramas (measure-pui.ts; receipts stay in its file), for any shop pand.
+const PUI = 'data/retail-ground/pui-paint.json';
+if (fs.existsSync(PUI)) {
+  const pui = JSON.parse(fs.readFileSync(PUI, 'utf8')) as { buildings: Record<string, { paint?: string }> };
+  const paint = Object.fromEntries(Object.entries(pui.buildings).filter(([, v]) => typeof v.paint === 'string').map(([id, v]) => [id, v.paint!]).sort((a, b) => a[0] < b[0] ? -1 : 1));
+  Object.assign(out, { paint });
+  console.log(`pui paint: ${Object.keys(paint).length} pands (${Object.keys(paint).filter(id => out.buildings[id]).length} with a template)`);
+}
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, JSON.stringify(out));
 console.log(`staged ${placed.size} pands -> ${STAGING} (${(fs.statSync(STAGING).size / 1024).toFixed(0)} KB)`);
