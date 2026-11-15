@@ -14,7 +14,7 @@ import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
 import { districtRows, ROW_EAVES_STEP_M, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
-import { erkersOnCells, kitAtticOf, kitEavesOf, raisedOf, type BuurtEntry, type BuurtErker, type BuurtKitFront } from './kit/frontKit.ts';
+import { balconiesOf, entriesOf, erkersOnCells, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, type BuurtEntry, type BuurtErker, type BuurtKitFront } from './kit/frontKit.ts';
 
 export interface DistrictDesign {
   groundM: number;
@@ -101,6 +101,10 @@ export interface DistrictLibrary {
     /** Round 13: raised brick parts over the line per member (last six digits; frontKit KitRaised): towers, parapets,
      *  piers and fins (`outM`), drawn with the series coping. */
     raised?: Record<string, { a0: number; a1: number; riseM: number; outM?: number }[]>;
+    /** Round 14 (lane R's kit, emitted here): per member (last six digits) what its photo shows: `panes` small-paned
+     *  white upper sashes (KitPanes), `balconies` stacked balconies (KitBalcony), `entries` its own doorways (porch,
+     *  portiek, arched; `cells` defaults to the series' cells so the mesher's door is replaced) over the row's list. */
+    members?: Record<string, { panes?: unknown; balconies?: unknown; entries?: unknown }>;
     evidence: string }>;
   notDrawn: Array<{ component: string; what: string }>;
   /** Round 9: the per-row measurements (`districts/measured/<district>.json`, staged by scripts/buurt-generators/
@@ -421,6 +425,8 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
     // Round 13: the row note's eaves slab, attic band and raised parts (lane R's kit), validated by the kit's own readers.
     const noteEaves = note?.eaves ? kitEavesOf({ overhangM: note.eaves.overhangM ?? lib.flatEaves?.eavesM ?? 0.6, frieze: note.eaves.frieze ?? lib.flatEaves?.frieze, fasciaM: note.eaves.fasciaM, lid: note.eaves.lid }) : null;
     const attic = note?.attic ? kitAtticOf(note.attic) : null, raisedFor = (pid: string) => raisedOf(note?.raised?.[pid.slice(-6)]);
+    const own = (pid: string) => note?.members?.[pid.slice(-6)];
+    const ownEntries = (pid: string): BuurtEntry[] | null => { const v = own(pid)?.entries; return Array.isArray(v) ? entriesOf(v.map(e => ({ cells: bays, ...e }))) : null; };
     const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || mm.front.erkers.length || note?.erkers?.[pandNumber(mm.pand.id).slice(-6)]?.length || lib.flatEaves || noteEaves || attic || raisedFor(pandNumber(mm.pand.id)).length || entryAt(r.members.indexOf(mm))));
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
@@ -439,7 +445,9 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
         ...((bands || whiteErker(pid)) && (m.front.erkers.length || note?.erkers?.[pid.slice(-6)]?.length) ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
         ...(rise === null && seriesCoping && coping ? { copingHex: coping } : {}),
         ...(rise === null && noteEaves ? { eaves: noteEaves } : rise === null && lib.flatEaves ? { eaves: { overhangM: lib.flatEaves.eavesM, ...(lib.flatEaves.frieze === false ? { frieze: false as const } : {}) } } : {}),
-        ...(entryAt(i) ? { entries: [entryAt(i)!] } : {}),
+        ...(ownEntries(pid)?.length ? { entries: ownEntries(pid)! } : entryAt(i) ? { entries: [entryAt(i)!] } : {}),
+        ...(balconiesOf(own(pid)?.balconies).length ? { balconies: balconiesOf(own(pid)?.balconies) } : {}),
+        ...(kitPanesOf(own(pid)?.panes) ? { panes: kitPanesOf(own(pid)?.panes)! } : {}),
         ...(joins.left || joins.right ? { joins } : {}) });
     }
   }

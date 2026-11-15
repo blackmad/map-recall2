@@ -99,8 +99,276 @@
         "hex": "#352d2a",
         "evidence": "Achillesstraat panorama TMX7316010203-001036_pano_0003_000942 (2019-01-04, overcast): brick median #342a25 between 3.5 and 9 m over the middle of the row, divided by the renderer's own brick shift on that sheet (the pool #5b504a drew #594b41)"
       },
-      "evidence": "the row's own cached panorama (round 6 sheet); round 7: five storeys (ground and four upper) on the photo, so the line is the five-storey line 15.4 m (3.1 m ground + 4 x 3.0 m + 0.3 m), over 3DBAG's 13.2 m eaves; 3DBAG's 70th-percentile roof height is 15.9 m",
-      "topM": 15.4
+      "topM": 15.4,
+      "members": {
+        "109276": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "balconies": [
+            {
+              "a0": 0.223,
+              "a1": 1,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "115921": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.036,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0.098,
+              "a1": 0.997,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "144773": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.271,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0.643,
+              "a1": 1,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "150130": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.719,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0,
+              "a1": 0.409,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "150727": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "balconies": [
+            {
+              "a0": 0.06,
+              "a1": 0.961,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "153854": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.321,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0.486,
+              "a1": 1,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "074742": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          }
+        },
+        "077419": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.793,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0.767,
+              "a1": 1,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "094877": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.861,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0,
+              "a1": 0.587,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            },
+            {
+              "a0": 0.831,
+              "a1": 1,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "065150": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "balconies": [
+            {
+              "a0": 0,
+              "a1": 0.757,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "075392": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.803,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0,
+              "a1": 0.694,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "080810": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "balconies": [
+            {
+              "a0": 0,
+              "a1": 0.538,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "070947": {
+          "panes": {
+            "cells": 6,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          }
+        }
+      },
+      "evidence": "the row's own cached panorama (round 6 sheet); round 7: five storeys (ground and four upper) on the photo, so the line is the five-storey line 15.4 m (3.1 m ground + 4 x 3.0 m + 0.3 m), over 3DBAG's 13.2 m eaves; 3DBAG's 70th-percentile roof height is 15.9 m; Achillesstraat: small-paned upper sashes, stacked balconies with dark rails (integrator: dark on Achillesstraat), arched doorways (lane R round 14 trial patch (erk/r14), blind A/B won)"
     },
     "herculesstraat-131422": {
       "wall": {
@@ -277,6 +545,135 @@
         ]
       },
       "evidence": "Pieter Lastmankade (recording_2025-07-30_07-40-42_00759, 40 px/m): one parapet near 9.3 m along the row (AHN4 8.7-9.3 m), with brick stair towers over it: 068475 left half ~1.2 m, 095079 left end ~0.65 m; drawn at the row line with raised parts, not as a 9.95 m series"
+    },
+    "gerrit-van-der-veenstraat-078737": {
+      "members": {
+        "080391": {
+          "entries": [
+            {
+              "a": 0.53,
+              "kind": "porch",
+              "widthM": 4.2,
+              "cells": 6
+            }
+          ],
+          "panes": {
+            "cells": 4
+          }
+        },
+        "066529": {
+          "entries": [
+            {
+              "a": 0.54,
+              "kind": "porch",
+              "widthM": 4.2,
+              "cells": 6
+            }
+          ],
+          "panes": {
+            "cells": 4
+          }
+        },
+        "068659": {
+          "entries": [
+            {
+              "a": 0.52,
+              "kind": "porch",
+              "widthM": 4.2,
+              "cells": 6
+            }
+          ],
+          "panes": {
+            "cells": 4
+          }
+        }
+      },
+      "evidence": "Gerrit van der Veenstraat: wide porch entrances over six cells, small-paned sashes (lane R round 14 trial patch (erk/r14), blind A/B won)"
+    },
+    "patroclosstraat-084515": {
+      "members": {
+        "084515": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "088338": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "082094": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "145606": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "117088": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "097287": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "130630": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "137581": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          },
+          "entries": [
+            {
+              "a": 0.75,
+              "kind": "arched",
+              "widthM": 1.2,
+              "cells": 2
+            }
+          ]
+        },
+        "133916": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.6
+          }
+        }
+      },
+      "evidence": "Patroclosstraat: small-paned upper sashes, an arched doorway at 137581 (lane R round 14 trial patch (erk/r14), blind A/B won)"
     }
   },
   "streetNotes": {

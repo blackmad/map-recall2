@@ -225,7 +225,45 @@
         "heightM": 1,
         "pitchM": 1.5
       },
-      "evidence": "Europaplein: thin white slab as the flat roof lid over a ~1.0 m white attic band of paired small lights (lane R round 13 trial record, blind A/B won, medium)"
+      "members": {
+        "081476": {
+          "entries": [
+            {
+              "a": 0.08,
+              "kind": "portiek",
+              "widthM": 1.0
+            }
+          ]
+        },
+        "124939": {
+          "entries": [
+            {
+              "a": 0.06,
+              "kind": "portiek",
+              "widthM": 1.0
+            }
+          ]
+        },
+        "103273": {
+          "entries": [
+            {
+              "a": 0.05,
+              "kind": "portiek",
+              "widthM": 1.0
+            }
+          ]
+        },
+        "110992": {
+          "entries": [
+            {
+              "a": 0.03,
+              "kind": "portiek",
+              "widthM": 1.0
+            }
+          ]
+        }
+      },
+      "evidence": "Europaplein: thin white slab as the flat roof lid over a ~1.0 m white attic band of paired small lights (lane R round 13 trial record, blind A/B won, medium); Europaplein: portiek doorways 1.0 m wide (lane R round 14 trial patch (erk/r14), blind A/B won)"
     },
     "trompenburgstraat-097377": {
       "eaves": {
