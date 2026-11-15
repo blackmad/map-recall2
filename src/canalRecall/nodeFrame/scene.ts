@@ -369,7 +369,9 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
     const [di, tri] = image.locate(id), d = draws[di];
     if (!d) return '?';
     const v = d.indices[tri * 3], hit = idRanges.get(d)?.find(r => v >= r.start && v < r.start + r.count);
-    return hit ? `${d.name}/${hit.id}` : d.name ?? '?';
+    // The triangle's world corners (x, y, z in metres from the frame origin; z above the eye's ground datum).
+    const P = d.positions, corner = (k: number) => { const i = d.indices[tri * 3 + k]; return `${P[i * 3].toFixed(2)},${P[i * 3 + 1].toFixed(2)},${P[i * 3 + 2].toFixed(2)}`; };
+    return `${hit ? `${d.name}/${hit.id}` : d.name ?? '?'} [${corner(0)} | ${corner(1)} | ${corner(2)}] eye z ${eye[2].toFixed(2)}`;
   };
   return { image, timings: T, counts: N, probe };
 }
