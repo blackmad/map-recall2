@@ -45,6 +45,7 @@ import { hashSeed } from './wallBays.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 import { applyGlazing, glazingOf } from './glassParts.js';
 import { RETAIL_TEMPLATES, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
+import { paintOverGuess } from './retailPuiPaint.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -228,7 +229,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Lane retail-look round 4 (`?retailGround=1`): the pui paint measured on a street panorama (measure-pui.ts, stamped by
   // decorateShopTemplate) outranks both the guess and the spec's shop read.
   const puiPaint = retailGroundOn() && cellSetOf(look) !== 'procedural' && typeof p.puiPaint === 'string' ? lookHex(p.puiPaint, look as Look) : undefined;
-  if (puiPaint && building.groundHex && shopfrontOf(p) !== 'quiet') building.groundHex = puiPaint;
+  // Round 5b: a dark reading only replaces a pale guess (retailPuiPaint.ts paintOverGuess).
+  if (puiPaint && building.groundHex && shopfrontOf(p) !== 'quiet') building.groundHex = paintOverGuess(building.groundHex, puiPaint, p.puiDark === 1);
   // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
   let sourcedWall: string | undefined;
   if (look === 'photo') {
@@ -256,7 +258,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?, 1?] : null;
   if (template && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && !p.frontCarrier && cellSetOf(look) !== 'procedural') {
     const logo = logoFor(template[0] as RetailTemplate), logoLayer = retailLogoLayer(cellSetOf(look));
-    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer, ...logo } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(puiPaint ? { paint: puiPaint } : {}) };
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer, ...logo } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(puiPaint && p.puiDark !== 1 ? { paint: puiPaint } : {}) };
     delete building.signature;
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);

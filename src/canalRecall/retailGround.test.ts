@@ -10,7 +10,7 @@ import fs from 'node:fs';
 import { decorateShopfront, setShopfronts, setShopTemplates } from './shopfronts.js';
 import { bayTextures, type BayVariant } from './bayTextures.js';
 import { insideCentre } from './retailArea.js';
-import { PRIOR, clusters, drawnPaint, labHex, oklab, paintOf, streetPriors, type Lab } from './retailPuiPaint.js';
+import { PRIOR, VEHICLE_GATE, paintOverGuess, clusters, drawnPaint, labHex, oklab, paintOf, streetPriors, vehicleBand, type Lab } from './retailPuiPaint.js';
 
 const g = globalThis as { __canalRecallRetailGround?: boolean };
 
@@ -381,13 +381,52 @@ test('round 4 pui paint: a measured paint frames the template front; absent, the
   assert.ok(!hexes().has('#e8ecee'));
 });
 
-test('round 5 street prior: a clear majority of measured shops on a street, else nothing', () => {
+test('round 5b street prior: a tight pale or coloured majority on a street, never a dark one', () => {
   const r = (street: string, cls: 'pale' | 'colour' | 'dark', paint: string) => ({ street, cls, paint });
-  const p = streetPriors([r('A', 'dark', '#3a3430'), r('A', 'dark', '#4a4440'), r('A', 'dark', '#5a5450'), r('A', 'pale', '#eeeeee'),
-    r('B', 'dark', '#3a3430'), r('B', 'pale', '#eeeeee'), r('B', 'pale', '#f0f0f0'), r('B', 'colour', '#2e5a3c'),
-    r('C', 'pale', '#eeeeee'), r('C', 'pale', '#f0f0f0'), r('', 'pale', '#eeeeee')]);
-  assert.deepEqual(p.get('A'), { cls: 'dark', paint: '#4a4440', n: 4, share: 0.75 });
-  assert.equal(p.get('B'), undefined, 'no majority');
-  assert.equal(p.get('C'), undefined, `fewer than ${PRIOR.minReads} reads`);
+  const p = streetPriors([
+    r('Dark', 'dark', '#3a3430'), r('Dark', 'dark', '#4a4440'), r('Dark', 'dark', '#5a5450'), r('Dark', 'dark', '#5a5450'),
+    r('White', 'pale', '#eeeeee'), r('White', 'pale', '#f0f0ec'), r('White', 'pale', '#e8eaec'), r('White', 'dark', '#3a3430'),
+    r('Loose', 'pale', '#eeeeee'), r('Loose', 'pale', '#d8c08a'), r('Loose', 'pale', '#e8eaec'),
+    r('Mixed', 'pale', '#eeeeee'), r('Mixed', 'pale', '#f0f0f0'), r('Mixed', 'colour', '#2e5a3c'), r('Mixed', 'dark', '#3a3430'),
+    r('Few', 'pale', '#eeeeee'), r('Few', 'pale', '#f0f0f0'), r('', 'pale', '#eeeeee')]);
+  assert.equal(p.get('Dark'), undefined, 'a dark majority is glass, not a paint: no prior');
+  assert.deepEqual(p.get('White'), { cls: 'pale', paint: '#eeeeee', n: 4, share: 0.75 });
+  assert.equal(p.get('Loose'), undefined, 'paints too far apart');
+  assert.equal(p.get('Mixed'), undefined, 'no 75 % majority');
+  assert.equal(p.get('Few'), undefined, `fewer than ${PRIOR.minReads} reads`);
   assert.equal(p.size, 1);
+});
+
+test('round 5b vehicles: a flat panel across the band or an extreme sideways smear reads as a vehicle; mullions do not', () => {
+  const w = 60, h = 42, band = (f: (x: number, y: number) => number) => Array.from({ length: w * h }, (_, i) => f(i % w, Math.floor(i / w)));
+  // A shopfront: glass with goods behind it between pale mullions every 12 px.
+  assert.equal(vehicleBand(band((x, y) => (x % 12 < 2 ? 200 : 40) + ((x * 37 + y * 91) % 31)), w, h).vehicle, null);
+  // A van's side: one flat panel.
+  assert.equal(vehicleBand(band(() => 180), w, h).vehicle, 'panel');
+  // A passing tram: horizontal streaks, nothing vertical.
+  const smear = vehicleBand(band((x, y) => (y % 5 < 2 ? 210 : 60) + ((x + y) % 3)), w, h);
+  assert.ok(smear.aniso < VEHICLE_GATE.minAniso);
+  assert.equal(smear.vehicle, 'smear');
+});
+
+test('round 5b dark readings: replace a pale guess, keep a darker one; pale and coloured readings always replace', () => {
+  assert.equal(paintOverGuess('#ece6e0', '#4a3f38', true), '#4a3f38');
+  for (const guess of ['#2a4a38', '#1f2f4f', '#3a2a1f']) assert.equal(paintOverGuess(guess, '#4a3f38', true), guess);
+  assert.equal(paintOverGuess('#2a4a38', '#eef0f0', false), '#eef0f0');
+  // The stamp carries the dark flag.
+  setShopfronts(null);
+  setShopTemplates({ version: 1, templates: [], buildings: {}, paint: { 'NL.IMBAG.Pand.7': '#4a3f38', 'NL.IMBAG.Pand.8': '#eef0f0' }, dark: ['NL.IMBAG.Pand.7'] });
+  const f = (id: string) => decorateShopfront({ type: 'Feature', properties: { id }, geometry: null } as { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown }).properties;
+  assert.equal(f('NL.IMBAG.Pand.7').puiDark, 1);
+  assert.equal(f('NL.IMBAG.Pand.8').puiDark, undefined);
+  setShopTemplates(null);
+});
+
+test('round 5b board: a measured paint paints the board of a front with no chain logo, letters in contrast', () => {
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1, len: 6 } as const;
+  const tris = retailFrontTris({ template: 'butcher', seed: 'x', paint: '#e8ecee', letters: 99 }, e, 0, 6, 0, 3.4);
+  assert.ok(!tris.some(t => t.hex === TEMPLATE_LOOKS.butcher.fascia), 'no red board');
+  assert.ok(tris.filter(t => t.layer === 99).every(t => t.hex === '#2b2724'), 'dark letters on a pale board');
+  const plain = retailFrontTris({ template: 'butcher', seed: 'x' }, e, 0, 6, 0, 3.4);
+  assert.ok(plain.some(t => t.hex === TEMPLATE_LOOKS.butcher.fascia));
 });

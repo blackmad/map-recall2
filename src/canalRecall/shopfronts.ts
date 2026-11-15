@@ -96,11 +96,12 @@ let extract: ShopfrontExtract | null = null;
 /** buildings: [template index, lng, lat, word ('' none), 1 = the front goes on the node's nearest open wall, not a street wall]. */
 /** paint: pand id -> the pui paint measured on a street panorama (measure-pui.ts, receipts in data/retail-ground/pui-paint.json);
  *  prior: an unmeasured plain shop -> its street's measured prior (retailPuiPaint.ts streetPriors). */
-export type ShopTemplateExtract = { version: 1; templates: string[]; buildings: Record<string, [number, number, number, string?, 1?]>; paint?: Record<string, string>; prior?: Record<string, string> };
-let templates: ShopTemplateExtract | null = null;
+export type ShopTemplateExtract = { version: 1; templates: string[]; buildings: Record<string, [number, number, number, string?, 1?]>; paint?: Record<string, string>; prior?: Record<string, string>; /** Round 5b: the measured pands whose reading was dark. */ dark?: string[] };
+let templates: ShopTemplateExtract | null = null, darkReads: Set<string> = new Set();
 /** Install the template extract (only the flag's loader calls this); null removes it. Absent = nothing stamped. */
 export function setShopTemplates(data: ShopTemplateExtract | null): void {
   templates = data && Array.isArray(data.templates) && data.buildings ? data : null;
+  darkReads = new Set(templates?.dark ?? []);
 }
 /**
  * Stamp `shopTemplate` ([name, lng, lat, word?, nearest?]) on a pand the template extract lists, and `puiPaint` (a hex)
@@ -112,7 +113,7 @@ export function decorateShopTemplate<T extends GeoFeature>(feature: T): T {
   const name = row && feature.properties.shopTemplate === undefined ? templates.templates[row[0]] : undefined;
   const stamp = paint && /^#[0-9a-f]{6}$/i.test(paint) && feature.properties.puiPaint === undefined;
   if (!name && !stamp) return feature;
-  return { ...feature, properties: { ...feature.properties, ...(name ? { shopTemplate: [name, row![1], row![2], ...(row![3] || row![4] ? [row![3] ?? ''] : []), ...(row![4] === 1 ? [1] : [])] } : {}), ...(stamp ? { puiPaint: paint } : {}) } };
+  return { ...feature, properties: { ...feature.properties, ...(name ? { shopTemplate: [name, row![1], row![2], ...(row![3] || row![4] ? [row![3] ?? ''] : []), ...(row![4] === 1 ? [1] : [])] } : {}), ...(stamp ? { puiPaint: paint, ...(darkReads.has(id) && templates.paint?.[id] ? { puiDark: 1 } : {}) } : {}) } };
 }
 
 /** Install the published extract; null removes it (every building falls back to the old random shops). */

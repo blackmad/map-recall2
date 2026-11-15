@@ -4152,32 +4152,6 @@
     "leaf": 0.019
    }
   },
-  "NL.IMBAG.Pand.0363100012092013": {
-   "paint": "#413c39",
-   "hex": "#1e1a17",
-   "cls": "dark",
-   "share": 0.596,
-   "agree": 2,
-   "receipt": {
-    "pano": "TMX7316010203-002374_pano_0001_000036",
-    "date": "2021-12-31",
-    "distM": 11.3,
-    "obliquityDeg": 4.1,
-    "crop": {
-     "a0": 5.25,
-     "a1": 60.42,
-     "z0": 1.2,
-     "z1": 3.3
-    },
-    "valid": 0.974,
-    "leaf": 0.003,
-    "second": {
-     "pano": "TMX7316010203-001041_pano_0002_002789",
-     "date": "2019-01-09",
-     "hex": "#312b28"
-    }
-   }
-  },
   "NL.IMBAG.Pand.0363100012092190": {
    "paint": "#e9e5d3",
    "hex": "#9c9369",
@@ -22155,27 +22129,6 @@
     "leaf": 0.02
    }
   },
-  "NL.IMBAG.Pand.0363100012173480": {
-   "paint": "#dbe7ee",
-   "hex": "#9da8af",
-   "cls": "pale",
-   "share": 0.238,
-   "agree": 1,
-   "receipt": {
-    "pano": "TMX7316010203-001549_pano_0000_000057",
-    "date": "2020-01-10",
-    "distM": 9.3,
-    "obliquityDeg": 28.1,
-    "crop": {
-     "a0": 0.35,
-     "a1": 4.04,
-     "z0": 1.2,
-     "z1": 3.3
-    },
-    "valid": 1,
-    "leaf": 0
-   }
-  },
   "NL.IMBAG.Pand.0363100012173496": {
    "paint": "#423b3b",
    "hex": "#2d2727",
@@ -25259,178 +25212,6 @@
      "date": "2023-02-06",
      "hex": "#32302f"
     }
-   }
-  },
-  "NL.IMBAG.Pand.0363100012176699": {
-   "paint": "#d7e8ed",
-   "hex": "#9fafb4",
-   "cls": "pale",
-   "share": 0.202,
-   "agree": 2,
-   "receipt": {
-    "pano": "recording_2025-07-03_06-23-16_00182",
-    "date": "2025-07-03",
-    "distM": 9,
-    "obliquityDeg": 33.2,
-    "crop": {
-     "a0": 0.47,
-     "a1": 5.42,
-     "z0": 1.2,
-     "z1": 3.3
-    },
-    "valid": 1,
-    "leaf": 0.068,
-    "second": {
-     "pano": "recording_2025-07-03_06-23-16_00184",
-     "date": "2025-07-03",
-     "hex": "#afbbc1"
-    }
-   }
-  },
-  "NL.IMBAG.Pand.0363100012159635": {
-   "paint": "#403c3b",
-   "hex": "#262221",
-   "cls": "dark",
-   "share": 0.686,
-   "agree": 2,
-   "receipt": {
-    "pano": "TMX7316010203-001702_pano_0000_005715",
-    "date": "2020-05-11",
-    "distM": 14.6,
-    "obliquityDeg": 1.2,
-    "crop": {
-     "a0": 0.39,
-     "a1": 4.46,
-     "z0": 1.2,
-     "z1": 3.3
-    },
-    "valid": 1,
-    "leaf": 0.009,
-    "second": {
-     "pano": "TMX7316010203-002928_pano_0010_000064",
-     "date": "2023-01-12",
-     "hex": "#201c18"
-    }
-   }
-  },
-  "NL.IMBAG.Pand.0363100012158180": {
-   "paint": "#3b3d3e",
-   "hex": "#2e3031",
-   "cls": "dark",
-   "share": 0.684,
-   "agree": 2,
-   "receipt": {
-    "pano": "recording_2025-06-30_05-16-46_00460",
-    "date": "2025-06-30",
-    "distM": 14.6,
-    "obliquityDeg": 1.3,
-    "crop": {
-     "a0": 0.44,
-     "a1": 5.11,
-     "z0": 1.2,
-     "z1": 3.3
-    },
-    "valid": 1,
-    "leaf": 0.006,
-    "second": {
-     "pano": "TMX7316010203-001041_pano_0002_005266",
-     "date": "2019-01-09",
-     "hex": "#454747"
-    }
-   }
-  },
-  "NL.IMBAG.Pand.0363100012177422": {
-   "paint": "#4c403b",
-   "hex": "#4c403b",
-   "cls": "dark",
-   "share": 0.642,
-   "agree": 1,
-   "receipt": {
-    "pano": "TMX7316010203-002938_pano_0008_000178",
-    "date": "2023-01-16",
-    "distM": 23.8,
-    "obliquityDeg": 2.1,
-    "crop": {
-     "a0": 0.59,
-     "a1": 6.8,
-     "z0": 1.2,
-     "z1": 3.3
-    },
-    "valid": 1,
-    "leaf": 0
-   }
-  },
-  "NL.IMBAG.Pand.0363100012178796": {
-   "paint": "#473938",
-   "hex": "#1d1110",
-   "cls": "dark",
-   "share": 0.683,
-   "agree": 2,
-   "receipt": {
-    "pano": "TMX7316060226-000478_pano_0003_000028",
-    "date": "2019-11-11",
-    "distM": 8.1,
-    "obliquityDeg": 6.6,
-    "crop": {
-     "a0": 0.38,
-     "a1": 4.33,
-     "z0": 1.2,
-     "z1": 3.3
-    },
-    "valid": 1,
-    "leaf": 0.004,
-    "second": {
-     "pano": "TMX7316010203-001053_pano_0000_000822",
-     "date": "2019-01-14",
-     "hex": "#371c15"
-    }
-   }
-  },
-  "NL.IMBAG.Pand.0363100012178799": {
-   "paint": "#433c34",
-   "hex": "#332c25",
-   "cls": "dark",
-   "share": 0.641,
-   "agree": 2,
-   "receipt": {
-    "pano": "TMX7316010203-001048_pano_0000_002617",
-    "date": "2019-01-11",
-    "distM": 8.3,
-    "obliquityDeg": 4.3,
-    "crop": {
-     "a0": 0.39,
-     "a1": 4.53,
-     "z0": 1.2,
-     "z1": 3.3
-    },
-    "valid": 1,
-    "leaf": 0.007,
-    "second": {
-     "pano": "TMX7316010203-001048_pano_0000_001276",
-     "date": "2019-01-11",
-     "hex": "#251d19"
-    }
-   }
-  },
-  "NL.IMBAG.Pand.0363100012233666": {
-   "paint": "#3a3e3e",
-   "hex": "#303434",
-   "cls": "dark",
-   "share": 0.685,
-   "agree": 1,
-   "receipt": {
-    "pano": "recording_2025-09-29_09-14-27_00456",
-    "date": "2025-09-29",
-    "distM": 13.1,
-    "obliquityDeg": 2.2,
-    "crop": {
-     "a0": 0.35,
-     "a1": 3.99,
-     "z0": 1.2,
-     "z1": 3.3
-    },
-    "valid": 1,
-    "leaf": 0
    }
   },
   "NL.IMBAG.Pand.0363100012177663": {
@@ -28566,6 +28347,287 @@
     "valid": 1,
     "leaf": 0.026
    }
+  },
+  "NL.IMBAG.Pand.0363100012152738": {
+   "paint": "#413c3b",
+   "hex": "#201b1b",
+   "cls": "dark",
+   "share": 0.629,
+   "agree": 2,
+   "of": 3,
+   "receipt": {
+    "pano": "TMX7316060226-000011_pano_0000_000104",
+    "date": "2016-08-02",
+    "distM": 9.5,
+    "obliquityDeg": 3.6,
+    "crop": {
+     "a0": 0.47,
+     "a1": 5.45,
+     "z0": 1.2,
+     "z1": 3.3
+    },
+    "valid": 1,
+    "leaf": 0,
+    "vehicle": {
+     "aniso": 2.46,
+     "smooth": 0.34
+    },
+    "second": {
+     "pano": "TMX7316010203-001681_pano_0000_004630",
+     "date": "2020-04-29",
+     "hex": "#352420"
+    }
+   }
+  },
+  "NL.IMBAG.Pand.0363100012165106": {
+   "paint": "#d3e9f0",
+   "hex": "#869ea6",
+   "cls": "pale",
+   "share": 0.267,
+   "agree": 3,
+   "of": 3,
+   "receipt": {
+    "pano": "recording_2025-07-03_06-23-16_00185",
+    "date": "2025-07-03",
+    "distM": 8.8,
+    "obliquityDeg": 28.7,
+    "crop": {
+     "a0": 1.83,
+     "a1": 21.09,
+     "z0": 1.2,
+     "z1": 3.3
+    },
+    "valid": 1,
+    "leaf": 0.01,
+    "vehicle": {
+     "aniso": 1.1,
+     "smooth": 0.04
+    },
+    "second": {
+     "pano": "TMX7316010203-000704_pano_0000_001340",
+     "date": "2018-05-03",
+     "hex": "#c1b9a7"
+    }
+   }
+  },
+  "NL.IMBAG.Pand.0363100012169187": {
+   "paint": "#e5e5de",
+   "hex": "#9d9d96",
+   "cls": "pale",
+   "share": 0.353,
+   "agree": 1,
+   "of": 1,
+   "receipt": {
+    "pano": "TMX7316010203-002549_pano_0000_001855",
+    "date": "2022-04-29",
+    "distM": 19.9,
+    "obliquityDeg": 2.6,
+    "crop": {
+     "a0": 1.78,
+     "a1": 20.46,
+     "z0": 1.2,
+     "z1": 3.3
+    },
+    "valid": 1,
+    "leaf": 0.01,
+    "vehicle": {
+     "aniso": 1.05,
+     "smooth": 0.3
+    },
+    "vehicleSkipped": [
+     "TMX7316010203-002445_pano_0014_000007",
+     "TMX7316010203-000703_pano_0000_005494"
+    ]
+   }
+  },
+  "NL.IMBAG.Pand.0363100012178796": {
+   "paint": "#52352d",
+   "hex": "#371c15",
+   "cls": "dark",
+   "share": 0.638,
+   "agree": 1,
+   "of": 1,
+   "receipt": {
+    "pano": "TMX7316010203-001053_pano_0000_000822",
+    "date": "2019-01-14",
+    "distM": 8.2,
+    "obliquityDeg": 14.2,
+    "crop": {
+     "a0": 0.38,
+     "a1": 4.33,
+     "z0": 1.2,
+     "z1": 3.3
+    },
+    "valid": 1,
+    "leaf": 0.043,
+    "vehicle": {
+     "aniso": 1.2,
+     "smooth": 0.13
+    },
+    "vehicleSkipped": [
+     "TMX7316060226-000478_pano_0003_000028",
+     "TMX7316010203-001641_pano_0002_000262",
+     "TMX7316010203-001641_pano_0002_000261"
+    ]
+   }
+  },
+  "NL.IMBAG.Pand.0363100012178799": {
+   "paint": "#433c34",
+   "hex": "#332c25",
+   "cls": "dark",
+   "share": 0.641,
+   "agree": 2,
+   "of": 2,
+   "receipt": {
+    "pano": "TMX7316010203-001048_pano_0000_002617",
+    "date": "2019-01-11",
+    "distM": 8.3,
+    "obliquityDeg": 4.3,
+    "crop": {
+     "a0": 0.39,
+     "a1": 4.53,
+     "z0": 1.2,
+     "z1": 3.3
+    },
+    "valid": 1,
+    "leaf": 0.007,
+    "vehicle": {
+     "aniso": 0.66,
+     "smooth": 0.09
+    },
+    "second": {
+     "pano": "TMX7316010203-001048_pano_0000_001276",
+     "date": "2019-01-11",
+     "hex": "#251d19"
+    }
+   }
+  },
+  "NL.IMBAG.Pand.0363100012233666": {
+   "paint": "#3a3e3e",
+   "hex": "#303434",
+   "cls": "dark",
+   "share": 0.685,
+   "agree": 2,
+   "of": 2,
+   "receipt": {
+    "pano": "recording_2025-09-29_09-14-27_00456",
+    "date": "2025-09-29",
+    "distM": 13.1,
+    "obliquityDeg": 2.2,
+    "crop": {
+     "a0": 0.35,
+     "a1": 3.99,
+     "z0": 1.2,
+     "z1": 3.3
+    },
+    "valid": 1,
+    "leaf": 0,
+    "vehicle": {
+     "aniso": 1.25,
+     "smooth": 0.27
+    },
+    "second": {
+     "pano": "TMX7316010203-002223_pano_0000_000285",
+     "date": "2021-07-08",
+     "hex": "#160f0d"
+    }
+   }
+  },
+  "NL.IMBAG.Pand.0363100012158180": {
+   "paint": "#3b3d3e",
+   "hex": "#2e3031",
+   "cls": "dark",
+   "share": 0.684,
+   "agree": 2,
+   "of": 2,
+   "receipt": {
+    "pano": "recording_2025-06-30_05-16-46_00460",
+    "date": "2025-06-30",
+    "distM": 14.6,
+    "obliquityDeg": 1.3,
+    "crop": {
+     "a0": 0.44,
+     "a1": 5.11,
+     "z0": 1.2,
+     "z1": 3.3
+    },
+    "valid": 1,
+    "leaf": 0.006,
+    "vehicle": {
+     "aniso": 1.16,
+     "smooth": 0.18
+    },
+    "second": {
+     "pano": "TMX7316010203-001041_pano_0002_005266",
+     "date": "2019-01-09",
+     "hex": "#454747"
+    }
+   }
+  },
+  "NL.IMBAG.Pand.0363100012159635": {
+   "paint": "#403c3b",
+   "hex": "#262221",
+   "cls": "dark",
+   "share": 0.686,
+   "agree": 2,
+   "of": 2,
+   "receipt": {
+    "pano": "TMX7316010203-001702_pano_0000_005715",
+    "date": "2020-05-11",
+    "distM": 14.6,
+    "obliquityDeg": 1.2,
+    "crop": {
+     "a0": 0.39,
+     "a1": 4.46,
+     "z0": 1.2,
+     "z1": 3.3
+    },
+    "valid": 1,
+    "leaf": 0.009,
+    "vehicle": {
+     "aniso": 0.9,
+     "smooth": 0.11
+    },
+    "vehicleSkipped": [
+     "TMX7316010203-002928_pano_0010_000064"
+    ],
+    "second": {
+     "pano": "recording_2025-06-30_05-16-46_00457",
+     "date": "2025-06-30",
+     "hex": "#202223"
+    }
+   }
+  },
+  "NL.IMBAG.Pand.0363100012176699": {
+   "paint": "#d7e8ed",
+   "hex": "#9fafb4",
+   "cls": "pale",
+   "share": 0.202,
+   "agree": 3,
+   "of": 3,
+   "receipt": {
+    "pano": "recording_2025-07-03_06-23-16_00182",
+    "date": "2025-07-03",
+    "distM": 9,
+    "obliquityDeg": 33.2,
+    "crop": {
+     "a0": 0.47,
+     "a1": 5.42,
+     "z0": 1.2,
+     "z1": 3.3
+    },
+    "valid": 1,
+    "leaf": 0.068,
+    "vehicle": {
+     "aniso": 0.81,
+     "smooth": 0
+    },
+    "second": {
+     "pano": "recording_2025-07-03_06-23-16_00184",
+     "date": "2025-07-03",
+     "hex": "#afbbc1"
+    }
+   }
   }
  },
  "skipped": {
@@ -28887,7 +28949,6 @@
   "NL.IMBAG.Pand.0363100012151972": "no exposed wall within 6 m of the node",
   "NL.IMBAG.Pand.0363100012152416": "panoramas disagree: pale (recording_2025-07-30_09-59-09_01250) vs dark (TMX7316060226-000012_pano_0000_000110)",
   "NL.IMBAG.Pand.0363100012152541": "panoramas disagree: dark (TMX7316010203-002373_pano_0007_000365) vs pale (TMX7316010203-002551_pano_0000_001908)",
-  "NL.IMBAG.Pand.0363100012152738": "panoramas disagree: pale (TMX7316010203-002455_pano_0001_000884) vs dark (TMX7316060226-000011_pano_0000_000104)",
   "NL.IMBAG.Pand.0363100012152752": "panoramas disagree: pale (TMX7316010203-002778_pano_0003_000698) vs dark (TMX7316010203-000748_pano_0000_003700)",
   "NL.IMBAG.Pand.0363100012152938": "panoramas disagree: pale (recording_2025-09-26_07-29-39_01347) vs dark (TMX7316010203-001008_pano_0008_000319)",
   "NL.IMBAG.Pand.0363100012153475": "no clear paint (TMX7316010203-002137_pano_0001_000587, TMX7316010203-000249_pano_0000_000291)",
@@ -29031,7 +29092,6 @@
   "NL.IMBAG.Pand.0363100012168757": "no exposed wall within 6 m of the node",
   "NL.IMBAG.Pand.0363100012168791": "no exposed wall within 6 m of the node",
   "NL.IMBAG.Pand.0363100012168929": "no exposed wall within 6 m of the node",
-  "NL.IMBAG.Pand.0363100012169187": "panoramas disagree: dark (TMX7316010203-002445_pano_0014_000007) vs pale (TMX7316010203-002549_pano_0000_001855)",
   "NL.IMBAG.Pand.0363100012169214": "foliage 34 % (b_20241203_1333_Track01_Sphere_00298); band 77 % in the cut (TMX7316010203-001547_pano_0000_000831); band 75 % in the cut (TMX7316010203-001547_pano_0000_000832); band 74 % in the cut (TMX7316010203-002542_pano_0000_001884)",
   "NL.IMBAG.Pand.0363100012169242": "foliage 21 % (TMX7316010203-000707_pano_0000_000433); foliage 36 % (TMX7316010203-000707_pano_0000_000434); foliage 18 % (TMX7316010203-000707_pano_0000_000432); foliage 39 % (TMX7316010203-000707_pano_0000_000435)",
   "NL.IMBAG.Pand.0363100012169252": "no exposed wall within 6 m of the node",
@@ -29594,6 +29654,9 @@
   "NL.IMBAG.Pand.0363100012162704": "no clear paint (TMX7316010203-001045_pano_0000_001162, TMX7316010203-002461_pano_0000_000092)",
   "NL.IMBAG.Pand.0363100012105015": "no exposed wall within 6 m of the node",
   "NL.IMBAG.Pand.0363100012077055": "no exposed wall within 6 m of the node",
-  "NL.IMBAG.Pand.0363100012244160": "pano TMX7316060226-000009_pano_0000_001640 did not load; pano TMX7316010203-002125_pano_0000_003332 did not load; pano TMX7316010203-002476_pano_0001_002289 did not load; pano TMX7316010203-001163_pano_0000_004100 did not load"
+  "NL.IMBAG.Pand.0363100012244160": "pano TMX7316060226-000009_pano_0000_001640 did not load; pano TMX7316010203-002125_pano_0000_003332 did not load; pano TMX7316010203-002476_pano_0001_002289 did not load; pano TMX7316010203-001163_pano_0000_004100 did not load",
+  "NL.IMBAG.Pand.0363100012092013": "panoramas disagree: dark (TMX7316010203-001041_pano_0002_002789) vs pale (TMX7316010203-001632_pano_0000_000009)",
+  "NL.IMBAG.Pand.0363100012173480": "no clear paint (TMX7316010203-001549_pano_0000_000058 (panel: aniso 0.77 smooth 0.54 obl 5.2), TMX7316010203-001549_pano_0000_000057 (smear: aniso 0.36 smooth 0.13 obl 28.1), TMX7316010203-001549_pano_0000_000059 (smear: aniso 0.56 smooth 0.42 obl 34.2))",
+  "NL.IMBAG.Pand.0363100012177422": "no clear paint (TMX7316010203-002938_pano_0008_000178 (panel: aniso 1.74 smooth 0.4 obl 2.1), TMX7316010203-002037_pano_0000_002241 (muddle: aniso 1.84 smooth 0.22 obl 3.5), TMX7316010203-003006_pano_0001_000184 (muddle: aniso 2.02 smooth 0.32 obl 3.9))"
  }
 }

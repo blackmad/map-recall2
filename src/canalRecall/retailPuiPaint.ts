@@ -72,11 +72,14 @@ export function drawnPaint(cls: 'pale' | 'colour' | 'dark', hex: string): string
 
 
 /**
- * Round 5: a street's pui prior. An unmeasured plain shop on a street with at least PRIOR.minReads measured shops, a
- * PRIOR.majority of them one class, takes that class's middle paint (by lightness) on the street; else nothing (the
- * shop keeps its own guessed paint: no blanket default). Templates keep their own frame colours.
+ * Round 5b: a street's pui prior, only where its readings agree tightly in colour. An unmeasured plain shop on a street
+ * with at least PRIOR.minReads measured shops, at least PRIOR.majority of them one PAINT class (pale or colour), whose
+ * paints all lie within PRIOR.spread (OKLab distance) of their middle one, takes that middle paint. A dark majority
+ * gives no prior: a dark reading is glass with dark paint among it, not a measured paint, and a dark prior flattened
+ * mixed rows like Kinkerstraat 86-110 into one band (round 5's A/B lost both Kinkerstraat fronts). Everywhere else the
+ * shop keeps its own guessed paint. Templates keep their own frame colours.
  */
-export const PRIOR = { minReads: 3, majority: 0.6 } as const;
+export const PRIOR = { minReads: 3, majority: 0.75, spread: 0.06 } as const;
 export type StreetRead = { street: string; cls: 'pale' | 'colour' | 'dark'; paint: string };
 export function streetPriors(reads: readonly StreetRead[]): Map<string, { cls: StreetRead['cls']; paint: string; n: number; share: number }> {
   const by = new Map<string, StreetRead[]>();
@@ -87,10 +90,48 @@ export function streetPriors(reads: readonly StreetRead[]): Map<string, { cls: S
     const counts = new Map<StreetRead['cls'], number>();
     for (const r of list) counts.set(r.cls, (counts.get(r.cls) ?? 0) + 1);
     const [cls, n] = [...counts].sort((p, q) => q[1] - p[1] || (p[0] < q[0] ? -1 : 1))[0];
-    if (n / list.length < PRIOR.majority) continue;
+    if (cls === 'dark' || n / list.length < PRIOR.majority) continue;
     const paints = list.filter(r => r.cls === cls).map(r => r.paint).sort((p, q) => labOfHex(p)[0] - labOfHex(q)[0] || (p < q ? -1 : 1));
-    out.set(street, { cls, paint: paints[Math.floor((paints.length - 1) / 2)], n: list.length, share: +(n / list.length).toFixed(2) });
+    const mid = paints[Math.floor((paints.length - 1) / 2)], m = labOfHex(mid);
+    if (paints.some(p => { const q = labOfHex(p); return Math.hypot(q[0] - m[0], q[1] - m[1], q[2] - m[2]) > PRIOR.spread; })) continue;
+    out.set(street, { cls, paint: mid, n: list.length, share: +(n / list.length).toFixed(2) });
   }
   return out;
 }
 function labOfHex(hex: string): Lab { return oklab(parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)); }
+
+/**
+ * Round 5b: a band that is mostly a vehicle reads as unclear. Measured on the sheet fronts' bands (20 px/m luma): a van
+ * or a row of parked cars across the front is flat panels (> 0.4 of 6 x 6 px blocks with a spread under 4 grey levels:
+ * Kinkerstraat 104's 2023 van 0.46, AH Kinkerstraat 89's parked cars 0.45; a shopfront 0.04-0.30). A passing tram
+ * smears the band sideways (sideways / vertical gradient 0.80-0.90 against a shopfront's 0.95-1.27), but window
+ * reflections streak the same way (Bakkerij Verhagen 0.66-0.76, no vehicle), so only an extreme smear (< 0.6) counts;
+ * the cross-date vote in measure-pui.ts handles the rest (a vehicle rarely stands in two captures).
+ */
+export const VEHICLE_GATE = { minAniso: 0.6, maxSmooth: 0.4, block: 6, flat: 4 } as const;
+export function vehicleBand(luma: ArrayLike<number>, w: number, h: number): { aniso: number; smooth: number; vehicle: 'smear' | 'panel' | null } {
+  let dx = 0, dy = 0;
+  for (let y = 0; y < h - 1; y++) for (let x = 0; x < w - 1; x++) { const v = luma[y * w + x]; dx += Math.abs(luma[y * w + x + 1] - v); dy += Math.abs(luma[(y + 1) * w + x] - v); }
+  const B = VEHICLE_GATE.block; let flat = 0, blocks = 0;
+  for (let by = 0; by + B <= h; by += B) for (let bx = 0; bx + B <= w; bx += B) {
+    let s = 0, s2 = 0;
+    for (let y = by; y < by + B; y++) for (let x = bx; x < bx + B; x++) { const v = luma[y * w + x]; s += v; s2 += v * v; }
+    const mu = s / (B * B); blocks++; if (Math.sqrt(Math.max(0, s2 / (B * B) - mu * mu)) < VEHICLE_GATE.flat) flat++;
+  }
+  const aniso = dy ? dx / dy : 1, smooth = blocks ? flat / blocks : 0;
+  return { aniso: +aniso.toFixed(2), smooth: +smooth.toFixed(2), vehicle: aniso < VEHICLE_GATE.minAniso ? 'smear' : smooth > VEHICLE_GATE.maxSmooth ? 'panel' : null };
+}
+
+/**
+ * Round 5b: how a stamped reading meets a guessed paint. A pale or coloured reading is a measured paint and replaces the
+ * guess. A dark reading only says "not pale, not coloured" (glass with dark paint among it): it replaces a pale guess
+ * (OKLab L >= PALE_GUESS_L) and leaves a darker guess, so a row of dark-read units keeps its varied dark timbers, greens
+ * and blues (round 5's A/B lost Kinkerstraat 98/104 to one uniform band).
+ */
+export const PALE_GUESS_L = 0.6;
+export function paintOverGuess(guess: string, reading: string, dark: boolean): string {
+  if (!dark) return reading;
+  const m = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(guess);
+  if (!m) return reading;
+  return oklab(parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16))[0] >= PALE_GUESS_L ? reading : guess;
+}

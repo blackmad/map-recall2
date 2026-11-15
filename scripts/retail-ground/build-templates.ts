@@ -149,6 +149,8 @@ if (fs.existsSync(PUI)) {
   const pui = JSON.parse(fs.readFileSync(PUI, 'utf8')) as { buildings: Record<string, { paint?: string }> };
   const paint = Object.fromEntries(Object.entries(pui.buildings).filter(([, v]) => typeof v.paint === 'string').map(([id, v]) => [id, v.paint!]).sort((a, b) => a[0] < b[0] ? -1 : 1));
   Object.assign(out, { paint });
+  // Round 5b: which readings were dark (only a pale guess gives way to them: retailPuiPaint.ts paintOverGuess).
+  Object.assign(out, { dark: Object.entries(pui.buildings as Record<string, { cls?: string }>).filter(([id, v]) => v.cls === 'dark' && paint[id]).map(([id]) => id).sort() });
   console.log(`pui paint: ${Object.keys(paint).length} pands (${Object.keys(paint).filter(id => out.buildings[id]).length} with a template)`);
   // Round 5: the street prior for unmeasured plain shops (retailPuiPaint.ts streetPriors). A pand's street is the named
   // street way nearest its centroid within PRIOR_STREET_M.

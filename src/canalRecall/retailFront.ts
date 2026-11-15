@@ -351,7 +351,9 @@ export type RetailFrontInput = {
    *  flat-colour goods. */
   interior?: { layer: number; rect: readonly [number, number, number, number] };
   /** Round 4: the pui paint measured on a street panorama (measure-pui.ts), in the look's palette; it paints the frame
-   *  (bead, posts, mullions, transom) in place of the template's. Absent: the template's frame. */
+   *  (bead, posts, mullions, transom) in place of the template's, and (round 5b) on a front with no chain logo also the
+   *  fascia board and cap, the letters in a contrasting dark or white: the photos' independent shops (Keurslagerij Pouw)
+   *  paint board and frame one colour. Absent: the template's frame and board. */
   paint?: string;
 };
 
@@ -388,6 +390,11 @@ function doorUnit(b: Builder, d0: number, d1: number, o: number, base: number, h
   // Round 3c (cost): the leaf's reflection and the handle are gone; in the recess's shadow they read as nothing.
 }
 
+/** A hex's relative luminance (linear sRGB, Rec. 709). */
+function hexLuma(hex: string): number {
+  const n = parseInt(hex.slice(1), 16), lin = (v: number) => { const c = v / 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
+  return 0.2126 * lin((n >> 16) & 255) + 0.7152 * lin((n >> 8) & 255) + 0.0722 * lin(n & 255);
+}
 /** A hex a step darker (k < 1) or lighter (k > 1), kept in gamut. */
 function shadeHex(hex: string, k: number): string {
   const n = parseInt(hex.slice(1), 16);
@@ -430,14 +437,16 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   // Fascia board, a cornice cap over it (a step darker, standing further out) and a bead under it.
   // Round 3c (cost): each member draws the faces a rider sees (Builder.slab): the board and cap their front, underside
   // and the board's ends, the cap and bead their front and underside.
-  b.slab(s0, s1, 0.01, FRONT.fasciaOutM, bottom, top, look.fascia, 'bottom', true, look.lit);
-  b.slab(s0 - 0.04, s1 + 0.04, 0.01, FRONT.capOutM, top, top + FRONT.capM, look.cap ?? shadeHex(look.fascia, 0.72), 'bottom');
+  const board = input.paint && !input.logo ? input.paint : look.fascia, cap = input.paint && !input.logo ? shadeHex(input.paint, 0.85) : look.cap ?? shadeHex(look.fascia, 0.72);
+  const ink = input.paint && !input.logo ? (hexLuma(input.paint) > 0.35 ? '#2b2724' : '#f4f1ea') : look.letters;
+  b.slab(s0, s1, 0.01, FRONT.fasciaOutM, bottom, top, board, 'bottom', true, look.lit);
+  b.slab(s0 - 0.04, s1 + 0.04, 0.01, FRONT.capOutM, top, top + FRONT.capM, cap, 'bottom');
   b.slab(s0, s1, 0.01, FRONT.fasciaOutM - 0.02, puiTop, bottom, frame, 'bottom');
   const word = look.word === 'name' ? (input.word ? signText(input.word) : input.word) : look.word;
   if (input.logo) {
     const hM = FRONT.fasciaM - 0.1, wM = Math.min(s1 - s0 - 0.4, hM * input.logo.aspect), mid = (s0 + s1) / 2;
     b.textured(mid - wM / 2, mid + wM / 2, FRONT.fasciaOutM + FRONT.letterOutM, bottom + 0.05, bottom + 0.05 + (wM / input.logo.aspect), input.logo.layer, input.logo.rect);
-  } else if (word) b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, FRONT.fasciaOutM + FRONT.letterOutM, MAX_LETTER_H, look.letters, look.fascia, look.lit, input.letters);
+  } else if (word) b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, FRONT.fasciaOutM + FRONT.letterOutM, MAX_LETTER_H, ink, board, look.lit, input.letters);
   const windows = look.content === 'redGlow';
   // End posts: the pui's frame against the neighbours, in the timber or the frame colour.
   if (!windows) { b.fin(s0, s0 + FRONT.postM, 0, FRONT.frameOutM, base, puiTop, timber); b.fin(s1 - FRONT.postM, s1, 0, FRONT.frameOutM, base, puiTop, timber); }
