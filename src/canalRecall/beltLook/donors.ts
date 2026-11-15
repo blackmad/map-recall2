@@ -39,7 +39,19 @@ export interface BeltTarget {
   ridgeM: number | null;
   /** 3DBAG roof type (bag tiles `roof`: 1 flat, 2 several flats, 3 slanted). */
   roofCode: number | null;
+  /** The crown a published source states for the pand (the monument register's gable, house-specs `fronts[0].gable`):
+   *  the donor must carry that crown family, and a stated gable kind is drawn as stated. */
+  statedCrown?: string;
 }
+
+/** Crown families a stated crown admits among donor reads (held-out A/B 2026-11-15: gables drawn over the register's
+ *  cornices lost 5 of 7 streets). */
+export const CROWN_FAMILY: Record<string, readonly string[]> = {
+  cornice: ['cornice', 'mansard', 'pitched-eaves'], flat: ['flat', 'cornice'],
+  neck: ['neck', 'raised-neck', 'shouldered'], 'raised-neck': ['raised-neck', 'neck'], shouldered: ['shouldered', 'neck'],
+  bell: ['bell'], point: ['point'], step: ['step'], spout: ['spout'],
+};
+const admits = (stated: string, crown: string) => (CROWN_FAMILY[stated] ?? [stated]).includes(crown);
 
 /** D1 crowns that stand a gable over the line. */
 export const GABLED_CROWNS = new Set(['neck', 'raised-neck', 'shouldered', 'bell', 'point', 'step', 'spout']);
@@ -85,8 +97,13 @@ export function hash32(s: string): number {
 /** The pand's donor: one of the `DONOR_K` nearest (ties broken by pand id), picked by the pand id's hash. */
 export function donorFor(t: BeltTarget, donors: readonly BeltDonor[]): { donor: BeltDonor; distance: number; rank: number; of: number } | null {
   // A flat-topped pand never takes a gabled donor (while any other is left): the gable would stand on no roof.
-  const flatOk = gableable(t) ? donors : donors.filter(d => !GABLED_CROWNS.has(String(d.answer.crown)));
-  const near = (flatOk.length ? flatOk : donors).filter(d => d.pandId !== t.pandId).map(d => ({ d, s: donorDistance(t, d) }))
+  // A stated crown picks the donors of its family (else any gabled donor for a stated gable); unstated, a flat-topped pand
+  // never takes a gabled donor (while any other is left): the gable would stand on no roof.
+  const st = t.statedCrown;
+  let pool: readonly BeltDonor[] = st ? donors.filter(d => admits(st, String(d.answer.crown))) : [];
+  if (st && !pool.length && GABLED_CROWNS.has(st)) pool = donors.filter(d => GABLED_CROWNS.has(String(d.answer.crown)));
+  if (!pool.length) pool = gableable(t) ? donors : donors.filter(d => !GABLED_CROWNS.has(String(d.answer.crown)));
+  const near = (pool.length ? pool : donors).filter(d => d.pandId !== t.pandId).map(d => ({ d, s: donorDistance(t, d) }))
     .sort((a, b) => a.s - b.s || (a.d.pandId < b.d.pandId ? -1 : 1)).slice(0, DONOR_K);
   if (!near.length) return null;
   const rank = hash32(t.pandId) % near.length;
@@ -114,6 +131,7 @@ export function fittedRead(t: BeltTarget, d: BeltDonor): DescriberAnswer {
       if (typeof a.doorIndex === 'number' && typeof a.groundBays === 'number') a.doorIndex = Math.min(a.doorIndex, a.groundBays - 1);
     }
   }
+  if (t.statedCrown && GABLED_CROWNS.has(t.statedCrown)) (a as { crown: string }).crown = t.statedCrown;
   a.pandId = t.pandId;
   return a;
 }

@@ -37,6 +37,14 @@ test('the donor is one of the nearest, the same for the same pand, and never gab
     assert.ok(!['neck', 'bell', 'step', 'point', 'spout'].includes(String(d.donor.answer.crown)), `flat pand ${i} took a ${d.donor.answer.crown}`);
   }
   assert.equal(segmentOf('Kerkstraat'), 'cross');
+  // A stated crown (the monument register via house-specs) picks its family: a register cornice never takes a gable.
+  for (let i = 0; i < 40; i++) {
+    const id = `03631000128${String(i).padStart(5, '0')}`;
+    assert.ok(['cornice', 'mansard', 'pitched-eaves'].includes(String(donorFor({ ...target(), pandId: id, statedCrown: 'cornice' }, DONORS)!.donor.answer.crown)));
+    const g = donorFor({ ...target({ ridgeM: 13.2, roofCode: 1 }), pandId: id, statedCrown: 'bell' }, DONORS)!;
+    assert.equal(g.donor.answer.crown, 'bell', 'a stated bell takes a bell donor even on a flat-topped pand');
+    assert.equal(fittedRead({ ...target(), pandId: id, statedCrown: 'point' }, g.donor).crown, 'point', 'a stated gable kind is drawn as stated');
+  }
 });
 
 test('a donor read is fitted: storeys to the eaves at the donor pitch, bays to the width at its axis, the door inside', () => {

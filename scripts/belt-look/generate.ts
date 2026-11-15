@@ -15,7 +15,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { districtPands, namedStreets, describedPands } from '../buurt-generators/generate.ts';
 import type { DistrictLibrary } from '../../src/canalRecall/buurtGenerator/generate.ts';
-import { generateBelt, type BeltRead } from '../../src/canalRecall/beltLook/generate.ts';
+import { generateBelt, type BeltRead, type BeltStated } from '../../src/canalRecall/beltLook/generate.ts';
 import { usableDonor, segmentOf, type BeltDonor } from '../../src/canalRecall/beltLook/donors.ts';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.ts';
 import { toRowCheck } from '../../src/canalRecall/houseSpec/row/check.ts';
@@ -58,6 +58,19 @@ export function specOnlyPands(): Set<string> {
   return spec;
 }
 
+/** What the published house-specs state per pand (the monument register's current gable and facade year). */
+export function statedPands(): Map<string, BeltStated> {
+  const out = new Map<string, BeltStated>(), dir = 'public/data/extracts/amsterdam/house-specs/14';
+  for (const x of fs.readdirSync(dir)) for (const f of fs.readdirSync(path.join(dir, x))) {
+    const buf = fs.readFileSync(path.join(dir, x, f));
+    for (const [id, b] of Object.entries<any>(JSON.parse((f.endsWith('.gz') ? zlib.gunzipSync(buf) : buf).toString('utf8')).buildings ?? {})) {
+      const crown = b?.d?.fronts?.[0]?.gable, year = b?.x?.facadeYear ?? b?.v?.year;
+      if (typeof crown === 'string' || typeof year === 'number') out.set(id.replace(/^NL\.IMBAG\.Pand\./, ''), { ...(typeof crown === 'string' ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}) });
+    }
+  }
+  return out;
+}
+
 /** Lane D's row members: their row records draw them (the look stays under them). */
 export function laneDRowPands(): Set<string> {
   const raw = JSON.parse(fs.readFileSync(ROWS, 'utf8'));
@@ -73,7 +86,8 @@ async function main() {
   for (const id of specOnly) described.delete(id);
   for (const id of rowsD) described.add(id);
   const { reads, donors } = beltReads();
-  const res = generateBelt(pands, streets, described, reads, donors, at);
+  const stated = statedPands();
+  const res = generateBelt(pands, streets, described, reads, donors, at, stated);
   const records = res.rows.flatMap(r => rowFrontsWithSeries(r));
   fs.mkdirSync(out, { recursive: true });
   fs.writeFileSync(path.join(out, 'row-front.json'), JSON.stringify({ version: 1, district: 'belt', generatedAt: at, records }));
@@ -93,7 +107,7 @@ async function main() {
   const crowns: Record<string, number> = {};
   for (const r of res.rows) for (const f of r.fronts) { const s = r.series.find(x => x.id === f.seriesId)!; const c = (f.overrides as any)?.crown?.value ?? s.design.crown.value; crowns[c] = (crowns[c] ?? 0) + 1; }
   const report = { at, buurten: BELT_BUURTEN, overSpecs, specOnlyRedrawn: Object.keys(res.provenance).filter(id => specOnly.has(id)).length, pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length, laneDRowPands: [...rowsD].filter(id => pands.some(p => p.id.endsWith(id))).length,
-    drawn: drawn.length, ownRead: own, donorRead: drawn.length - own, rows: res.rows.length, records: records.length, donors: donors.length, skipped: bySkip, bySegment: bySeg, crowns, findings, ms: Date.now() - t0 };
+    drawn: drawn.length, ownRead: own, donorRead: drawn.length - own, rows: res.rows.length, records: records.length, donors: donors.length, skipped: bySkip, bySegment: bySeg, crowns, findings, statedCrown: Object.keys(res.provenance).filter(id => stated.get(id)?.crown).length, ms: Date.now() - t0 };
   fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify({ ...report, skippedList: res.skipped }, null, 1));
   console.log(JSON.stringify(report, null, 1));
 }

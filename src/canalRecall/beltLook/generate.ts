@@ -19,6 +19,8 @@ import { donorFor, fittedRead, gableable, type BeltDonor, type BeltTarget } from
 import { dressBeltStone } from './stone.ts';
 
 export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: string }
+/** What a published source states for a pand (the monument register via house-specs): its crown and facade year. */
+export interface BeltStated { crown?: string; year?: number }
 export interface BeltGenResult {
   rows: RowRecord[];
   /** Per drawn pand, where its design came from. */
@@ -31,11 +33,12 @@ const pandNumber = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
 export const BELT_LOOK_REF = 'belt look (lane D 2026-11-15, src/canalRecall/beltLook)';
 
 /** A generator row as a row-solve input: own reads where read, donors' fitted reads elsewhere. */
-export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, prov: BeltGenResult['provenance']): RowInput | null {
+export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, prov: BeltGenResult['provenance'], stated: ReadonlyMap<string, BeltStated> = new Map()): RowInput | null {
   const members: MemberInput[] = [];
   for (const m of row.members) {
     const pid = pandNumber(m.pand.id), eaves = m.pand.eavesM, ridge = m.pand.ridgeM;
-    const t: BeltTarget = { pandId: pid, street: row.street, year: m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge, roofCode: m.pand.roofCode ?? null };
+    const sd = stated.get(pid);
+    const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge, roofCode: m.pand.roofCode ?? null, ...(sd?.crown ? { statedCrown: sd.crown } : {}) };
     const own = reads.get(pid);
     let read: DescriberAnswer, sample: string | undefined, readRef: string;
     if (own) { read = own.answer; sample = own.sample; readRef = own.ref; prov[pid] = { own: true, ref: own.ref }; }
@@ -75,14 +78,14 @@ export function relabelDonorFields(row: RowRecord, donorFilled: ReadonlySet<stri
  * The belt: rows from the undescribed pands, each solved as a belt row. `reads` are the belt tranche's own reads (pand ->
  * read); `donors` the usable reads the look draws from.
  */
-export function generateBelt(pands: readonly GenPand[], streets: readonly GenStreet[], described: ReadonlySet<string>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string): BeltGenResult {
+export function generateBelt(pands: readonly GenPand[], streets: readonly GenStreet[], described: ReadonlySet<string>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, stated: ReadonlyMap<string, BeltStated> = new Map()): BeltGenResult {
   const skipped: BeltGenResult['skipped'] = [], provenance: BeltGenResult['provenance'] = {}, fronts: BeltGenResult['fronts'] = {};
   const free = pands.filter(p => { const d = described.has(pandNumber(p.id)); if (d) skipped.push({ id: pandNumber(p.id), reason: 'described' }); return !d; });
   const res = districtRows(free, streets, { singles: true });
   for (const u of res.unplaced) skipped.push({ id: pandNumber(u.id), reason: u.reason });
   const rows: RowRecord[] = [];
   for (const r of res.rows) {
-    const input = beltRowInput(r, reads, donors, at, provenance);
+    const input = beltRowInput(r, reads, donors, at, provenance, stated);
     if (!input) { for (const m of r.members) skipped.push({ id: pandNumber(m.pand.id), reason: 'no-donor' }); continue; }
     const donorFilled = new Set(input.members.filter(m => 'donor' in provenance[m.pandId]).map(m => m.pandId));
     rows.push(dressBeltStone(relabelDonorFields(solveRow(input), donorFilled), BELT_LOOK_REF));
