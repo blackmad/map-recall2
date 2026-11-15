@@ -9,7 +9,7 @@
 
 ## Retail look: shop templates, chain logos, second sources (2026-11-15)
 
-- Merged lane/retail-look-20261114 (0000871c9) behind `?retailGround=1`, still default off. Every template change was kept only if it won a blind, shuffled photo A/B by a fresh opus reviewer; bikes were judged on held-out fronts because the lane had tuned on the first-pass verdicts.
+- Merged lane/retail-look-20261114 (0000871c9); default off in round m, switched on in round n the same day (David: "Why retail still off?"). One template is held: `brownBar` (pubs, brown cafés) drew café Hendrix as an opaque dark box with a row of lit dots, worse than the glazed café cell fixed on 2026-11-14, so `RETAIL_HELD`/`RETAIL_HELD_KINDS` keep those fronts on the flag-off cell until the template wins a blind photo review (frames in `artifacts/round-n/hendrix-{off,on,on2}`). Bruna's CC BY-SA 3.0 logo is credited on credits.html. Every template change was kept only if it won a blind, shuffled photo A/B by a fresh opus reviewer; bikes were judged on held-out fronts because the lane had tuned on the first-pass verdicts.
 - Hosting: OSM shop/amenity nodes stay the base. A node whose BAG address lies in another pand moves there (`retailAddress.ts`); horeca exploitation permits (api.data.amsterdam.nl) move or add POIs only on a BAG address match or exact normalised name, because loose name matches were wrong about 1 in 7; All the Places (CC0) needs an address match before it moves anything; Overture is report-only and sign OCR confirm-only.
 - Chain logos from web search are allowed since 2026-11-15 (David), with source URL and fetch date in provenance.json; the atlas gained a second page.
 
