@@ -90,7 +90,11 @@ export interface MemberInput {
   /** The pand belongs to another street's face chunk: the row draws only this street's wall (RowMember.wallOnly). */
   wallOnly?: RowWallOnly;
 }
+/** D1 sash words that are a paned sash: panes per sash (the round-5 `sash-small-panes` kind with `glazing.panes`). */
+const READ_SASH_PANES: Readonly<Record<string, number>> = { 'sash-6-over-6': 6, 'sash-4-over-4': 4 };
 export interface RowInput {
+  /** Canal belt rows (rows.json `canalWindows`): read sash words and white frames state the round-5 window joinery. */
+  canalWindows?: boolean;
   id: string;
   street: string;
   side: RowRecord['side'];
@@ -593,6 +597,15 @@ function solveSeries(id: string, ev: Ev[], input: RowInput, flags: RowFlag[], al
   set('heads', classField('heads', F('heads'), R('heads') as RowHeads[], faceRef, readRef, flags, ids, PERIOD.heads));
   set('whiteFrames', classField('whiteFrames', [], R('whiteFrames') as boolean[], faceRef, readRef, flags, ids, PERIOD.whiteFrames));
   set('sills', classField('sills', [], R('sills') as boolean[], faceRef, readRef, flags, ids, PERIOD.sills));
+  // Canal windows (house rows round 5, belt rows only): a read's paned sash word is the round-5 kind with its panes, and a
+  // series whose reads show white frames states the joinery (glazing `{}`: the kind's own frame, bars and panes).
+  if (input.canalWindows) {
+    const w = out.windows, panes = w ? READ_SASH_PANES[w.value as string] : undefined;
+    if (w && panes) out.windows = { ...w, value: 'sash-small-panes', ref: `${w.ref}; read "${w.value}": sash-small-panes, ${panes} panes a sash` };
+    const wf = out.whiteFrames;
+    if (wf?.value === true && wf.source !== 'period-default')
+      out.glazing = { value: panes ? { panes } : {}, source: wf.source, ref: `the reads' white frames (${wf.ref}): white frames and glazing bars of the window kind` };
+  }
   // Wall: one family per series (face palette name, else the reads' judged families); the tone is seeded by row and family,
   // so series of one family in a row (and the two fronts of a module pand, which carry one palette) share one tone.
   const faceWall = ev.filter(e => e.face?.wallFamily).map(e => ({ material: e.face!.wallMaterial ?? 'brick', family: e.face!.wallFamily!, hex: '' } as RowWall));

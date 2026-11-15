@@ -31,7 +31,7 @@ import { toRowCheck } from '../../../src/canalRecall/houseSpec/row/check.ts';
 import { rowReport } from '../../../src/canalRecall/houseSpec/row/report.ts';
 import type { RowRecord } from '../../../src/canalRecall/houseSpec/row/types.ts';
 
-const RAW = JSON.parse(fs.readFileSync(path.join(REPO, 'scripts/house-specs/rows/rows.json'), 'utf8')) as { rows: Record<string, { street?: string; face?: string; wallFromCuts?: boolean }> };
+const RAW = JSON.parse(fs.readFileSync(path.join(REPO, 'scripts/house-specs/rows/rows.json'), 'utf8')) as { rows: Record<string, { street?: string; face?: string; wallFromCuts?: boolean; canalWindows?: boolean }> };
 const readJson = (f: string) => fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null;
 const rel = (f: string) => path.relative(REPO, f).startsWith('..') ? f : path.relative(REPO, f);
 
@@ -93,7 +93,7 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
   const limitsFile = path.join(REPO, 'scripts/house-specs/rows/limits.json');
   const limits = (readJson(limitsFile) as Record<string, RowInput['limits']> | null)?.[def.id];
   if (limits?.length) inputs.push(rel(limitsFile));
-  return { input: { id: def.id, ...(reviewed?.length ? { reviewed } : {}), ...(limits?.length ? { limits } : {}), street: face?.street ?? def.title.split(' ')[0], side, ...(def.face ? { face: def.face, faceRef: `scripts/block-face/faces/${def.face}/intent.json` } : {}), members, inputs, solvedAt }, answers, faceSpecs };
+  return { input: { id: def.id, ...(raw.canalWindows ? { canalWindows: true } : {}), ...(reviewed?.length ? { reviewed } : {}), ...(limits?.length ? { limits } : {}), street: face?.street ?? def.title.split(' ')[0], side, ...(def.face ? { face: def.face, faceRef: `scripts/block-face/faces/${def.face}/intent.json` } : {}), members, inputs, solvedAt }, answers, faceSpecs };
 }
 
 /**

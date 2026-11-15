@@ -314,3 +314,14 @@ test('Herengracht belt rows: the cut sample judges brick; painted stays painted;
   const six = a.fronts.find(f => f.pandId === '0363100012179834')!;
   assert.equal(frontDesign(a, six).wall.value.family, frontDesign(a, a.fronts.find(f => f.pandId === '0363100100091828')!).wall.value.family, '6 (no cut) takes its neighbour 2-4');
 });
+
+test('Canal windows (round 5): belt series with read white frames state glazing; Kinkerstraat rows do not', () => {
+  const belt = solveRow(loadRow(loadRowDefs()['herengracht-56-74'], '2026-11-15').input);
+  for (const s of belt.series) {
+    const wf = s.design.whiteFrames;
+    assert.equal(!!s.design.glazing, wf.value === true && wf.source !== 'period-default', `${s.id}: glazing follows the read white frames`);
+  }
+  assert.ok(belt.series.some(s => s.design.glazing));
+  const k = solveRow(loadRow(loadRowDefs()['kinkerstraat-86-110'], '2026-11-15').input);
+  assert.ok(k.series.every(s => !s.design.glazing));
+});

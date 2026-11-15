@@ -333,6 +333,68 @@
       "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
       "at": "2026-11-15",
       "note": "Herengracht 43–45 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable plain"
+    },
+    {
+      "fronts": [
+        "0363100012168213"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168213.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "37: gridded small-pane sashes in the cut (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012168131"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168131.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "49: gridded small-pane sashes in the cut (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012168213"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168213.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "37: a white pilastered ground storey (D1 gap)"
+    },
+    {
+      "fronts": [
+        "0363100012168210"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168210.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "39: a ground storey of white pilasters round a wide loading door (D1 notes)"
+    },
+    {
+      "fronts": [
+        "0363100012175291"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012175291.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "41: two street doors between white pilasters (D1 notes)"
     }
   ],
   "herengracht-51-73": [
@@ -499,6 +561,100 @@
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179681.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
       "at": "2026-11-15",
       "note": "73: a spout gable with a square attic light (confirmed)"
+    },
+    {
+      "fronts": [
+        "0363100012169271",
+        "0363100012179672"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012169271.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "55 and 61: paned sashes, three panes across and two up a sash on the first storeys (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012169271",
+        "0363100012179672"
+      ],
+      "field": "glazing",
+      "value": {
+        "panes": 6
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012169271.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "55 and 61: six panes a sash"
+    },
+    {
+      "fronts": [
+        "0363100012179683"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179683.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "63: three panes across in every sash; six a sash, not eight (R's trial had sash-8-over-8)"
+    },
+    {
+      "fronts": [
+        "0363100012179683"
+      ],
+      "field": "glazing",
+      "value": {
+        "panes": 6
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179683.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "63: six panes a sash"
+    },
+    {
+      "fronts": [
+        "0363100012168129"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168129.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "51: gridded small-pane sashes in the cut (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012168130"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168130.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "53: gridded small-pane sashes in the cut (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012179681"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179681.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "73: the ground storey is painted white with pilasters under a ledge; the first storey is white too (a two-storey plinth), which groundWall cannot say (limit)"
+    },
+    {
+      "fronts": [
+        "0363100012179748"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179748.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "59: a tall ground storey framed by white pilasters (D1 gap)"
     }
   ],
   "herengracht-75-89": [
@@ -729,6 +885,44 @@
       "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
       "at": "2026-11-15",
       "note": "Herengracht 131 has no usable D1 read (the read was held as outline-off); the register names the gable bell"
+    },
+    {
+      "fronts": [
+        "0363100012175037"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012175037.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "127: gridded small-pane sashes in the cut (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012167681"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012167681.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "157: a white pilastered ground-storey frame round an arched opening (D1 gap)"
+    },
+    {
+      "fronts": [
+        "0363100012167679"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stone",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012167679.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "161: a white stone ground storey with pilasters and an entablature (D1 gap)"
     }
   ],
   "herengracht-179-215": [
@@ -793,6 +987,86 @@
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179763.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-2-24.json)",
       "at": "2026-11-15",
       "note": "10: three upper window storeys shortening upward (confirmed)"
+    },
+    {
+      "fronts": [
+        "0363100012179763"
+      ],
+      "field": "windows",
+      "value": "t-window",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179763.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "10: a mullion and transom cross in each upper window (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012179765"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "scrolled"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179765.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "12: a white stucco ground storey with a scrolled top under the brown brick (D1 gap; the cut)"
+    },
+    {
+      "fronts": [
+        "0363100100091828"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168202.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "2-4: white plastered piers frame the ground windows (D1 gap); its evidence is filed under 0363100012168202"
+    }
+  ],
+  "herengracht-26-46": [
+    {
+      "fronts": [
+        "0363100012169270"
+      ],
+      "field": "windows",
+      "value": "t-window",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012169270.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "46-48: a mullion and transom cross in each upper window of the white front (D1 read tall-upper)"
+    }
+  ],
+  "herengracht-130-148": [
+    {
+      "fronts": [
+        "0363100012177020"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "render",
+        "colour": "white",
+        "top": "plain"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012177020.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "142: the ground storey is rendered white (D1 gap)"
+    },
+    {
+      "fronts": [
+        "0363100012177019"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "render",
+        "colour": "white",
+        "top": "plain"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012177019.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "144: the ground storey is rendered white under the dark painted front (D1 gap)"
     }
   ]
 }

@@ -108,6 +108,7 @@ function main() {
       members, cuts: path.relative(rowsJson.d1Root, path.join(root, BELT, 'cuts')), answers: path.relative(rowsJson.d1Root, path.join(root, BELT, 'answers-kept')),
       staged: path.relative(rowsJson.d1Root, path.join(root, 'staged-belt-20261114')),
       wallFromCuts: true,
+      canalWindows: true,
       ...(face ? { face: face.id } : {}),
       ...(members.some(m => m.evidencePandId) ? { twinNote: members.filter(m => m.evidencePandId).map(m => `${street} ${m.label}: the member is the world's pand ${m.pandId} (same footprint, taller; the world drops the D1 pand ${m.evidencePandId}); its cut and read stay filed under ${m.evidencePandId}`).join('; ') } : {}),
       note: face ? `canal belt as rows: the October face ${face.id} for its houses (${face.extra.map(m => m.label).join(', ') || 'all in the belt tranche'} added from it), the belt D1 tranche for the rest (belt-rows.ts)`

@@ -257,16 +257,7 @@
       "ref": "lane D round 2"
     }
   ],
-  "herengracht-2-24": [
-    {
-      "fronts": [
-        "0363100012179765"
-      ],
-      "component": "ground",
-      "what": "12 has a white stucco ground storey with a scrolled top under brown brick upper storeys; the wall is drawn brick to the ground. The upper wall is brown brick in the cut (the jambs either side of the tree; sample L .49 C .020, brown-brick, correct): the front reads pale on the sheet because of the white ground storey and the sunlit cornice band, which the kit cannot state per storey",
-      "ref": "D1 read gaps; lane D, cut belt-20261114/cuts/0363100012179765.jpg (2026-11-15)"
-    }
-  ],
+  "herengracht-2-24": [],
   "herengracht-26-46": [
     {
       "fronts": [
@@ -307,6 +298,14 @@
       "component": "roof",
       "what": "the record states a slate mansard (D1 reads a dormer); the preview draws the roof face red and tall over a cornice canal house, where only the dormer shows over the cornice from the quay",
       "ref": "lane D belt sheet"
+    },
+    {
+      "fronts": [
+        "0363100012179681"
+      ],
+      "component": "ground",
+      "what": "73 is white over two storeys (ground and first) with pilasters, near-black above; groundWall faces the ground storey only",
+      "ref": "D1 read gaps; lane D (2026-11-15)"
     }
   ],
   "herengracht-92-120": [
