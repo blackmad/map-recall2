@@ -2,7 +2,8 @@
  * Shopfront photo samples (lane retail-look round 6): for each OSM node named, its template pand's street wall cut from
  * the nearest facing open-data Amsterdam panorama (data.amsterdam.nl, CC BY 4.0; the house line's pand-reference cache
  * and selection), aimed at the wall's ground storey, written as <out>/<node>-<pano>.jpg with a receipts JSON. Used to
- * spot-check a template rule (bike shop classes) and to sample real fronts for new templates. Panoramas this run
+ * spot-check a template rule (bike shop classes) and to sample real fronts for new templates. A node with no template
+ * pand is hosted on the footprint it stands in, else the nearest within 8 m (sampling shops no template draws yet). Panoramas this run
  * downloads are purged afterwards; the 15 GB disk floor and --max-mb stop it.
  *   node --import tsx scripts/retail-ground/front-photos.ts --nodes=<id,id> --out=<dir> [--per=1] [--max-mb=60] [--offline]
  */
@@ -35,10 +36,15 @@ const receipts: Record<string, unknown> = {};
 for (const e of want) {
   if (freeGb() < 15) { console.log('under 15 GB free: stopping'); break; }
   if (http.bytes > MAX_MB * 1024 ** 2) { console.log(`${MAX_MB} MB downloaded: stopping`); break; }
-  const id = byAt.get(`${Math.round(e.lon * 1e6) / 1e6},${Math.round(e.lat * 1e6) / 1e6}`), fp = id ? fps.get(id) : undefined;
-  if (!id || !fp) { receipts[e.id] = { skip: 'no template pand' }; continue; }
-  const node = lngLatToRd([e.lon, e.lat]), centre = fp.ring.reduce((s, p) => ({ x: s.x + p.x / fp.ring.length, y: s.y + p.y / fp.ring.length }), { x: 0, y: 0 });
-  const others: Footprint[] = await neighbourhood(centre);
+  const node = lngLatToRd([e.lon, e.lat]);
+  let id = byAt.get(`${Math.round(e.lon * 1e6) / 1e6},${Math.round(e.lat * 1e6) / 1e6}`), fp = id ? fps.get(id) : undefined;
+  const others: Footprint[] = await neighbourhood(node);
+  if (!fp) {
+    const ringDist = (f: Footprint) => inside(node, f.ring) ? 0 : Math.min(...f.ring.slice(1).map((p, i) => nearestOnSeg(node, { a: f.ring[i], b: p }).d));
+    const best = others.map(f => ({ f, d: ringDist(f) })).sort((a, b) => a.d - b.d)[0];
+    if (best && best.d <= 8) { fp = best.f; id = best.f.id; }
+  }
+  if (!id || !fp) { receipts[e.id] = { skip: 'no pand within 8 m' }; continue; }
   const wall = exposedWalls(fp, others).map(w => ({ w, d: nearestOnSeg(node, { a: w.a, b: w.b }).d })).sort((p, q) => p.d - q.d).find(x => x.d <= 6)?.w;
   if (!wall) { receipts[e.id] = { skip: 'no exposed wall within 6 m' }; continue; }
   let done = 0;
@@ -57,6 +63,11 @@ for (const e of want) {
     }
   } catch (err) { receipts[e.id] = { skip: (err as Error).message }; }
   const mine = [...panoTracker.touched].filter(f => !before.has(path.basename(f))); panoTracker.touched.clear(); await purgeFiles(mine);
+}
+function inside(p: { x: number; y: number }, ring: ReadonlyArray<{ x: number; y: number }>): boolean {
+  let c = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) if ((ring[i].y > p.y) !== (ring[j].y > p.y) && p.x < (ring[j].x - ring[i].x) * (p.y - ring[i].y) / (ring[j].y - ring[i].y) + ring[i].x) c = !c;
+  return c;
 }
 fs.writeFileSync(path.join(OUT, 'receipts.json'), JSON.stringify(receipts, null, 1));
 console.log(`${Object.keys(receipts).length} fronts -> ${OUT}; ${http.requests} requests, ${(http.bytes / 1048576).toFixed(1)} MB (purged)`);

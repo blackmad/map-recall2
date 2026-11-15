@@ -62,7 +62,7 @@ export function puiInteriorUv(): [number, number, number, number] {
 export const RETAIL_TEMPLATES = [
   'ah', 'jumbo', 'dirk', 'etos', 'hema', 'action', 'febo', 'stach', 'sla', 'bruna', 'bestseller', 'duck', 'moneyTransfer',
   'coffeeshop', 'smartshop', 'brownBar', 'bike', 'redLight',
-  'doner', 'toko', 'butcher', 'greengrocer', 'turkishBakery', 'bakery', 'nuts', 'frites', 'cheese', 'waffle', 'pancake',
+  'doner', 'toko', 'butcher', 'greengrocer', 'florist', 'turkishBakery', 'bakery', 'nuts', 'frites', 'cheese', 'waffle', 'pancake',
   'souvenir', 'books', 'tobacco', 'phone', 'gelato', 'exchange',
 ] as const;
 export type RetailTemplate = (typeof RETAIL_TEMPLATES)[number];
@@ -115,6 +115,8 @@ export function templateForTags(tags: Record<string, string>): RetailTemplate | 
   if (shop === 'butcher') return 'butcher';
   if (shop === 'greengrocer') return 'greengrocer';
   if (shop === 'convenience' && (has(tags.produce, /./) || /groente|fruit|verse|agf/.test(name))) return 'greengrocer';
+  // A bloemist (round 6): shop=florist, or a named garden shop selling flowers.
+  if (shop === 'florist' || shop === 'garden_centre' && /bloem|flower|fleur|plant/.test(name)) return 'florist';
   if (shop === 'bakery' && (has(cuisine, /^turkish$/) || /f[ıi]r[ıi]n|bakkerij (öz|oz|ay|yil|yıl|kar|ist)|turk|pide|simit|baklava/.test(name))) return 'turkishBakery';
   if (amenity && FOOD.has(amenity) && has(cuisine, /^(friture|fries|chips)$/)) return 'frites';
   if (shop === 'cheese') return 'cheese';
@@ -151,7 +153,7 @@ export type TemplateLook = {
   /** A straight awning over the window, in this colour. */
   awning?: string;
   /** What stands on the pavement in front (crates, racks, bikes in a row). */
-  pavement?: 'crates' | 'racks' | 'bikes' | 'boards';
+  pavement?: 'crates' | 'racks' | 'bikes' | 'boards' | 'flowers';
   /** Tube light round the window (red-light rows), and the glow colour. */
   tube?: string;
   /** A hanging blade sign in this colour (brown cafes, pancake houses). */
@@ -191,6 +193,11 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   toko: { fascia: '#f3e7c9', letters: '#7a1f12', word: 'name', content: 'bainMarie', lit: true },
   butcher: { fascia: '#b3121b', letters: '#ffffff', word: 'SLAGERIJ', content: 'meat', lit: true },
   greengrocer: { fascia: '#2f6b2a', letters: '#ffffff', word: 'name', content: 'produce', lit: false, awning: '#2f6b2a', pavement: 'crates' },
+  // Round 6, from open panoramas (scripts/retail-ground/front-photos.ts, data/retail-ground/template-samples.json):
+  // Het Groene Paradijs (green awnings, plant tables), Hugo's (green awnings, plant racks), Sevgi bloemhuis (green and
+  // white awning, white board, green letters, buckets out front), Arjan bloemen (dark grey awnings, a plant table and
+  // potted olives), Fleurmonde (dark board, white script). The pavement display is the signature; the awning green.
+  florist: { fascia: '#24382c', letters: '#f4f1ea', word: 'name', content: 'produce', lit: false, awning: '#2f5d3f', pavement: 'flowers' },
   turkishBakery: { fascia: '#f2b01e', letters: '#7a1f12', word: 'name', content: 'bread', lit: true },
   bakery: { fascia: '#f3e7c9', letters: '#6b3a1e', word: 'name', content: 'bread', lit: true },
   nuts: { fascia: '#f2b01e', letters: '#1d1d1b', word: 'name', content: 'jars', lit: true },

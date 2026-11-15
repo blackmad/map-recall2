@@ -381,6 +381,28 @@ function pavement(b: Builder, look: TemplateLook, a0: number, a1: number, base: 
       b.box(a, a + 0.6, 0.3, 0.42, base, base + (look.pavement === 'racks' ? 1.6 : 0.9), look.pavement === 'racks' ? '#d9d4c7' : '#5a4632');
       b.panel(a + 0.04, a + 0.56, 0.425, base + 0.3, base + (look.pavement === 'racks' ? 1.5 : 0.85), look.pavement === 'racks' ? '#2f6fb0' : '#c9a227');
     }
+  } else if (look.pavement === 'flowers') {
+    // A bloemist's display (round 6): a low timber table along the front with pots of greens and blooms on it, and a
+    // row of zinc buckets of cut flowers on the pavement before it. Fronts and tops only.
+    const BLOOMS = ['#e85a8c', '#f2c21b', '#f4efe2', '#c8262d', '#8a4fb0', '#f08a2a', '#f7a8c4'], LEAF = ['#3d6b35', '#4f7a3a', '#2f5a30'];
+    const r = (k: string) => hash01(`${seed}:fl:${k}`);
+    for (const [t0, t1] of [[a0 + 0.2, a0 + Math.min(2.4, (a1 - a0) * 0.45)], [a1 - Math.min(2.4, (a1 - a0) * 0.45), a1 - 0.2]] as const) {
+      if (t1 - t0 < 0.6) continue;
+      b.slab(t0, t1, 0.25, 0.85, base + 0.62, base + 0.68, '#6b4e33', 'top');
+      b.panel(t0 + 0.04, t0 + 0.1, 0.8, base, base + 0.62, '#4a3624');
+      b.panel(t1 - 0.1, t1 - 0.04, 0.8, base, base + 0.62, '#4a3624');
+      // Each pot: its terracotta front, then one mass of leaf or bloom (front and top) over it.
+      for (let a = t0 + 0.06, k = 0; a < t1 - 0.2; a += 0.26, k++) {
+        const h = 0.16 + r(`h${t0}${k}`) * 0.22, bloom = r(`b${t0}${k}`) < 0.7;
+        b.panel(a, a + 0.18, 0.62, base + 0.68, base + 0.8, '#a0522d');
+        b.slab(a - 0.03, a + 0.21, 0.42, 0.6, base + 0.8, base + 0.8 + h, bloom ? BLOOMS[Math.floor(r(`c${t0}${k}`) * BLOOMS.length)] : LEAF[k % LEAF.length], 'top');
+      }
+      // Buckets on the pavement: the zinc front, the bunch over it.
+      for (let a = t0 + 0.1, k = 0; a < t1 - 0.25; a += 0.32, k++) {
+        b.panel(a, a + 0.24, 1.05, base, base + 0.32, '#8d9396');
+        b.slab(a - 0.03, a + 0.27, 0.92, 1.07, base + 0.32, base + 0.55 + r(`s${t0}${k}`) * 0.15, BLOOMS[Math.floor(r(`d${t0}${k}`) * BLOOMS.length)], 'top');
+      }
+    }
   } else if (look.pavement === 'bikes') {
     // A row of bikes parked nose-in to the wall (side-on to the street): wheel discs as thin boxes, a top tube.
     for (let a = a0 + 0.3, k = 0; a < a1 - 0.3; a += 0.55, k++) {

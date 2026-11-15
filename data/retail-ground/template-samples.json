@@ -1,0 +1,568 @@
+{
+ "note": "Round 6 generic templates: 6 seeded independents (no brand tag, within the ride ring) per category, each cut from the nearest open data.amsterdam.nl panorama (CC BY 4.0) by scripts/retail-ground/front-photos.ts on 2026-11-15; photos in artifacts/retail-look/generic-samples (not committed). A template is built only from 3 or more clear samples that share a look.",
+ "categories": {
+  "florist": {
+   "verdict": "built",
+   "why": "4 of 6 clear (Het Groene Paradijs, Arjan bloemen, Sevgi, Hugo's; Fleurmonde's 2025 capture shows the board only, Pachouly aimed off): pavement display of plants and buckets on every clear one, green awnings on 3 (one dark grey)",
+   "samples": [
+    {
+     "node": 1222424049,
+     "name": "Het Groene Paradijs",
+     "pand": "NL.IMBAG.Pand.0363100012144264",
+     "pano": "TMX7316010203-002635_pano_0009_000000",
+     "date": "2022-06-27"
+    },
+    {
+     "node": 1593841747,
+     "name": "Arjan bloemen",
+     "pand": "NL.IMBAG.Pand.0363100012152759",
+     "pano": "TMX7316010203-000052_pano_0002_001360",
+     "date": "2016-08-09"
+    },
+    {
+     "node": 2817557457,
+     "name": "Pachouly Flowers",
+     "pand": "NL.IMBAG.Pand.0363100012163696",
+     "pano": "TMX7316010203-002115_pano_0000_001097",
+     "date": "2021-04-23"
+    },
+    {
+     "node": 9142767845,
+     "name": "Fleurmonde",
+     "pand": "NL.IMBAG.Pand.0363100012177658",
+     "pano": "recording_2025-07-03_06-23-16_00689",
+     "date": "2025-07-03"
+    },
+    {
+     "node": 4396190565,
+     "name": "Sevgi",
+     "pand": "NL.IMBAG.Pand.0363100012161412",
+     "pano": "TMX7316010203-002025_pano_0000_001727",
+     "date": "2021-02-22"
+    },
+    {
+     "node": 4719445385,
+     "name": "Hugo's",
+     "pand": "NL.IMBAG.Pand.0363100012083379",
+     "pano": "TMX7316010203-002473_pano_0000_000304",
+     "date": "2022-03-23"
+    }
+   ]
+  },
+  "clothes": {
+   "verdict": "held",
+   "why": "3 of 6 clear (LFDY yellow and white art nouveau, Kings of Indigo navy board and awning, Pek&Kleren white band black letters): no shared colour, sign or glass split; the plain front with measured pui paint stays",
+   "samples": [
+    {
+     "node": 1348523707,
+     "name": "LFDY",
+     "pand": "NL.IMBAG.Pand.0363100012177233",
+     "pano": "TMX7316010203-002865_pano_0017_000064",
+     "date": "2022-12-15"
+    },
+    {
+     "node": 2817556924,
+     "name": "Studio Chicas",
+     "pand": "NL.IMBAG.Pand.0363100012155461",
+     "pano": "TMX7316010203-001532_pano_0000_000069",
+     "date": "2020-01-06"
+    },
+    {
+     "node": 2847191144,
+     "name": "Pek&Kleren",
+     "pand": "NL.IMBAG.Pand.0363100012126450",
+     "pano": "recording_2024-10-21_11-57-59_00078",
+     "date": "2024-10-21"
+    },
+    {
+     "node": 12803676301,
+     "name": "Kings Of Indigo",
+     "pand": "NL.IMBAG.Pand.0363100012177231",
+     "pano": "b_20241216_0911_Track60_Sphere_00051",
+     "date": "2024-12-16"
+    },
+    {
+     "node": 4712834217,
+     "name": "JPH Women & Kids Wear",
+     "pand": "NL.IMBAG.Pand.0363100012092757",
+     "pano": "TMX7316010203-002374_pano_0001_000230",
+     "date": "2021-12-31"
+    },
+    {
+     "node": 10922165568,
+     "name": "Studio Onrust",
+     "pand": "NL.IMBAG.Pand.0363100012167818",
+     "pano": "TMX7316010203-001900_pano_0000_000502",
+     "date": "2020-08-31"
+    }
+   ]
+  },
+  "hairdresser": {
+   "verdict": "held",
+   "why": "2-3 clear (Barbershop black band white letters, a barber shop glass band, Schoonheid & Nagels green letters): no shared look",
+   "samples": [
+    {
+     "node": 1223236816,
+     "name": "Menspire",
+     "pand": "NL.IMBAG.Pand.0363100012180015",
+     "pano": "TMX7316010203-001672_pano_0000_001574",
+     "date": "2020-04-24"
+    },
+    {
+     "node": 2363285234,
+     "name": "The Hair Doctor",
+     "pand": "NL.IMBAG.Pand.0363100012106082",
+     "pano": "TMX7316010203-000231_pano_0002_000292",
+     "date": "2017-03-29"
+    },
+    {
+     "node": 2812164672,
+     "name": "Tommy'z Toko",
+     "pand": "NL.IMBAG.Pand.0363100012157646",
+     "pano": "TMX7316010203-000994_pano_0000_003220",
+     "date": "2018-11-19"
+    },
+    {
+     "node": 2817450799,
+     "name": "Hofman Kappers",
+     "pand": "NL.IMBAG.Pand.0363100012236375",
+     "pano": "TMX7316010203-001703_pano_0000_002577",
+     "date": "2020-05-13"
+    },
+    {
+     "node": 2817779771,
+     "name": "Kapsalon Naomi",
+     "pand": "NL.IMBAG.Pand.0363100012095350",
+     "pano": "recording_2024-09-04_05-35-54_07630",
+     "date": "2024-09-04"
+    },
+    {
+     "node": 13485082540,
+     "name": "Barbershop",
+     "pand": "NL.IMBAG.Pand.0363100012106106",
+     "pano": "TMX7316010203-002578_pano_0001_000711",
+     "date": "2022-05-12"
+    }
+   ]
+  },
+  "beauty": {
+   "verdict": "held",
+   "why": "1-2 clear (a white-framed salon, New World Nails behind a van): too few clear samples",
+   "samples": [
+    {
+     "node": 2348208245,
+     "name": "New World Nails",
+     "pand": "NL.IMBAG.Pand.0363100012154130",
+     "pano": "recording_2025-09-26_07-29-39_01364",
+     "date": "2025-09-26"
+    },
+    {
+     "node": 5842025468,
+     "name": "Sorti Beatycenter",
+     "pand": "NL.IMBAG.Pand.0363100012114155",
+     "pano": "2025_10_02_06_52_49_00294",
+     "date": "2025-10-02"
+    },
+    {
+     "node": 12729230544,
+     "name": "Beauty by Zehra",
+     "pand": "NL.IMBAG.Pand.0363100012116204",
+     "pano": "TMX7316010203-000721_pano_0000_001328",
+     "date": "2018-05-15"
+    },
+    {
+     "node": 11415105617,
+     "name": "JDz",
+     "pand": "NL.IMBAG.Pand.0363100012165102",
+     "pano": "TMX7316010203-001549_pano_0000_000065",
+     "date": "2020-01-10"
+    },
+    {
+     "node": 4856400722,
+     "name": "Clinic Pure",
+     "pand": "NL.IMBAG.Pand.0363100012166521",
+     "pano": "TMX7316010203-000787_pano_0000_000140",
+     "date": "2018-06-12"
+    },
+    {
+     "node": 12828614486,
+     "name": "Vogue Clinic",
+     "pand": "NL.IMBAG.Pand.0363100012159359",
+     "pano": "TMX7316010203-002025_pano_0000_000304",
+     "date": "2021-02-22"
+    }
+   ]
+  },
+  "convenience": {
+   "verdict": "held",
+   "why": "3 clear (Avondwinkel black board yellow letters and posters, Dapper Post white board striped awning, Super Market dark): posters and a lit sign are common but the board colours are not; resample before building",
+   "samples": [
+    {
+     "node": 275457798,
+     "name": "Avondwinkel",
+     "pand": "NL.IMBAG.Pand.0363100012164396",
+     "pano": "TMX7316010203-002228_pano_0002_001671",
+     "date": "2021-07-12"
+    },
+    {
+     "node": 2348245295,
+     "name": "Dapper Post",
+     "pand": "NL.IMBAG.Pand.0363100012236602",
+     "pano": "recording_2025-09-26_12-26-58_00353",
+     "date": "2025-09-26"
+    },
+    {
+     "node": 2725795417,
+     "name": "Bobo Market",
+     "pand": "NL.IMBAG.Pand.0363100012182258",
+     "pano": "TMX7316010203-002863_pano_0001_000086",
+     "date": "2022-12-15"
+    },
+    {
+     "node": 2737854562,
+     "name": "Supermarket",
+     "pand": "NL.IMBAG.Pand.0363100012178600",
+     "pano": "b_20250120_0926_Track30_Sphere_00247",
+     "date": "2025-01-20"
+    },
+    {
+     "node": 2848703818,
+     "name": "Jawda supermarkt",
+     "pand": "NL.IMBAG.Pand.0363100012154009",
+     "pano": "TMX7316010203-002578_pano_0001_000953",
+     "date": "2022-05-12"
+    },
+    {
+     "node": 4089931982,
+     "name": "Mirna Supermarkt",
+     "pand": "NL.IMBAG.Pand.0363100012178914",
+     "pano": "TMX7316010203-001981_pano_0000_000249",
+     "date": "2021-01-25"
+    }
+   ]
+  },
+  "jewelry": {
+   "verdict": "held",
+   "why": "2 clear (Topkapi Juwelier white band, a cream gold-shop front): too few",
+   "samples": [
+    {
+     "node": 2721947584,
+     "name": "Beadies Amsterdam",
+     "pand": "NL.IMBAG.Pand.0363100012176604",
+     "pano": "b_20250109_1300_Track07_Sphere_00053",
+     "date": "2025-01-09"
+    },
+    {
+     "node": 4212657879,
+     "name": "Sharp Gear",
+     "pand": "NL.IMBAG.Pand.0363100012165127",
+     "pano": "b_20241211_0954_Track19_Sphere_00346",
+     "date": "2024-12-11"
+    },
+    {
+     "node": 12117250872,
+     "name": "Kroonjuweeltjes",
+     "pand": "NL.IMBAG.Pand.0363100012175620",
+     "pano": "TMX7316010203-002538_pano_0000_002561",
+     "date": "2022-04-22"
+    },
+    {
+     "node": 12693179692,
+     "name": "Topkapi",
+     "pand": "NL.IMBAG.Pand.0363100012156954",
+     "pano": "TMX7316010203-002417_pano_0019_000164",
+     "date": "2022-01-12"
+    },
+    {
+     "node": 12703051291,
+     "name": "Aleppo Juwelier",
+     "pand": "NL.IMBAG.Pand.0363100012153339",
+     "pano": "recording_2025-09-26_12-26-58_00305",
+     "date": "2025-09-26"
+    }
+   ]
+  },
+  "slijterij": {
+   "verdict": "held",
+   "why": "1 clear (Wijnhandel-Slijterij Drankenhandel: dark green front, cream band): too few",
+   "samples": [
+    {
+     "node": 1328355090,
+     "name": "Sterk",
+     "pand": "NL.IMBAG.Pand.0363100012236141",
+     "pano": "TMX7316010203-001147_pano_0000_001801",
+     "date": "2019-04-29"
+    },
+    {
+     "node": 2809206725,
+     "name": "Topido",
+     "pand": "NL.IMBAG.Pand.0363100012092172",
+     "pano": "TMX7316010203-001702_pano_0000_002296",
+     "date": "2020-05-11"
+    },
+    {
+     "node": 2826852254,
+     "name": "Bureau Wijn Oost",
+     "pand": "NL.IMBAG.Pand.0363100012236289",
+     "pano": "TMX7316010203-002138_pano_0000_003736",
+     "date": "2021-05-12"
+    },
+    {
+     "node": 9001664637,
+     "name": "The Wine Spot",
+     "pand": "NL.IMBAG.Pand.0363100012119810",
+     "pano": "TMX7316010203-002787_pano_0000_001594",
+     "date": "2022-09-02"
+    },
+    {
+     "node": 11415060817,
+     "name": "Design & Wijn",
+     "pand": "NL.IMBAG.Pand.0363100012173469",
+     "pano": "TMX7316010203-001549_pano_0000_000060",
+     "date": "2020-01-10"
+    },
+    {
+     "node": 4866268108,
+     "name": "Madison Slijterij",
+     "pand": "NL.IMBAG.Pand.0363100012166085",
+     "pano": "TMX7316010203-002223_pano_0000_000306",
+     "date": "2021-07-08"
+    }
+   ]
+  },
+  "laundry": {
+   "verdict": "held",
+   "why": "2 clear (Wassalon/Laundry white with blue letters, Medine dry cleaning white and blue board): promising (white and blue), needs a third",
+   "samples": [
+    {
+     "node": 2506067248,
+     "name": "Wassalon Regenboog",
+     "pand": "NL.IMBAG.Pand.0363100012157530",
+     "pano": "TMX7316010203-002225_pano_0000_000450",
+     "date": "2021-07-09"
+    },
+    {
+     "node": 2812162642,
+     "name": "Mister Wash",
+     "pand": "NL.IMBAG.Pand.0363100012116545",
+     "pano": "terdam_21112024_Track34_Sphere_00036",
+     "date": "2024-11-21"
+    },
+    {
+     "node": 2816834784,
+     "name": "Hendrikse",
+     "pand": "NL.IMBAG.Pand.0363100012091684",
+     "pano": "TMX7316010203-001162_pano_0000_000714",
+     "date": "2019-05-06"
+    },
+    {
+     "node": 2817534347,
+     "name": "Kleermakerij & Stomerijdepot Medine",
+     "pand": "NL.IMBAG.Pand.0363100012164778",
+     "pano": "TMX7316010203-002410_pano_0003_000378",
+     "date": "2022-01-11"
+    },
+    {
+     "node": 13730360601,
+     "name": "Wasserette De Roos",
+     "pand": "NL.IMBAG.Pand.0363100012142550",
+     "pano": "TMX7316010203-002181_pano_0000_000358",
+     "date": "2021-06-16"
+    },
+    {
+     "node": 6471821091,
+     "name": null,
+     "pand": null,
+     "pano": null,
+     "date": null,
+     "skip": "no exposed wall within 6 m"
+    }
+   ]
+  },
+  "optician": {
+   "verdict": "held",
+   "why": "2 clear (Arnold Booden black awnings white serif, a red-framed front): too few",
+   "samples": [
+    {
+     "node": 3050578441,
+     "name": "Occhiali",
+     "pand": "NL.IMBAG.Pand.0363100012176248",
+     "pano": "TMX7316010203-000355_pano_0000_000790",
+     "date": "2017-07-07"
+    },
+    {
+     "node": 4294260134,
+     "name": "George de Jong Optiek",
+     "pand": "NL.IMBAG.Pand.0363100012100410",
+     "pano": "terdam_21112024_Track31_Sphere_00019",
+     "date": "2024-11-21"
+    },
+    {
+     "node": 11415099119,
+     "name": "Blincq",
+     "pand": "NL.IMBAG.Pand.0363100012167786",
+     "pano": "TMX7316010203-001900_pano_0000_000680",
+     "date": "2020-08-31"
+    },
+    {
+     "node": 11993668954,
+     "name": "Arnold Booden",
+     "pand": "NL.IMBAG.Pand.0363100012121676",
+     "pano": "TMX7316010203-001155_pano_0000_000735",
+     "date": "2019-05-02"
+    },
+    {
+     "node": 11989713707,
+     "name": "Vroom & Nobbe",
+     "pand": "NL.IMBAG.Pand.0363100012174552",
+     "pano": "TMX7316010203-002044_pano_0000_000311",
+     "date": "2021-03-17"
+    },
+    {
+     "node": 12850635648,
+     "name": "Cityoptiek",
+     "pand": "NL.IMBAG.Pand.0363100012168180",
+     "pano": "recording_2025-06-19_03-28-47_01866",
+     "date": "2025-06-19"
+    }
+   ]
+  },
+  "tattoo": {
+   "verdict": "held",
+   "why": "1 clear (Waterloo Tattoo, dark red frame, gold letters): too few",
+   "samples": [
+    {
+     "node": 2724317546,
+     "name": "Tattoo Peter",
+     "pand": "NL.IMBAG.Pand.0363100012178051",
+     "pano": "TMX7316010203-002629_pano_0001_000207",
+     "date": "2022-06-27"
+    },
+    {
+     "node": 2847190279,
+     "name": "Trenchart",
+     "pand": "NL.IMBAG.Pand.0363100012122614",
+     "pano": "recording_2025-06-30_10-32-24_00189",
+     "date": "2025-06-30"
+    },
+    {
+     "node": 11416872033,
+     "name": "house of tattoos",
+     "pand": "NL.IMBAG.Pand.0363100012176571",
+     "pano": "TMX7316010203-002620_pano_0003_000044",
+     "date": "2022-06-22"
+    },
+    {
+     "node": 4866706201,
+     "name": "Hanky Panky",
+     "pand": "NL.IMBAG.Pand.0363100012178928",
+     "pano": "TMX7316010203-000354_pano_0001_000315",
+     "date": "2017-07-06"
+    },
+    {
+     "node": 10991974154,
+     "name": "Subculture",
+     "pand": "NL.IMBAG.Pand.0363100012174037",
+     "pano": "TMX7316010203-002044_pano_0000_001685",
+     "date": "2021-03-17"
+    },
+    {
+     "node": 12118891418,
+     "name": "Waterloo Tattoo",
+     "pand": "NL.IMBAG.Pand.0363100012165554",
+     "pano": "TMX7316010203-002541_pano_0000_001084",
+     "date": "2022-04-25"
+    }
+   ]
+  },
+  "apotheek": {
+   "verdict": "held",
+   "why": "1 clear (Ferdinand Bol Apotheek: white board blue letters, red doors): too few; most cuts aimed at the wrong wall",
+   "samples": [
+    {
+     "node": 59441638,
+     "name": "Transvaal Alphega-apotheek",
+     "pand": "NL.IMBAG.Pand.0363100012114066",
+     "pano": "TMX7316010203-001679_pano_0000_003615",
+     "date": "2020-04-29"
+    },
+    {
+     "node": 332661081,
+     "name": "Ferdinand Bol Apotheek",
+     "pand": "NL.IMBAG.Pand.0363100012161137",
+     "pano": "TMX7316010203-002470_pano_0000_000985",
+     "date": "2022-03-23"
+    },
+    {
+     "node": 1513706947,
+     "name": "Mediq Apotheek Czaar Peter",
+     "pand": "NL.IMBAG.Pand.0363100012238656",
+     "pano": "recording_2025-06-19_09-55-15_00093",
+     "date": "2025-06-19"
+    },
+    {
+     "node": 2503783599,
+     "name": "Apotheek Oud Zuid",
+     "pand": "NL.IMBAG.Pand.0363100012148010",
+     "pano": "recording_2025-07-30_09-09-11_00350",
+     "date": "2025-07-30"
+    },
+    {
+     "node": 2720875314,
+     "name": "Medicijnman Apotheek Jordaan",
+     "pand": "NL.IMBAG.Pand.0363100012173441",
+     "pano": "TMX7316010203-001674_pano_0000_000366",
+     "date": "2020-04-24"
+    }
+   ]
+  },
+  "shoes": {
+   "verdict": "held",
+   "why": "not read closely this round: the sampler aims off on about half of all cuts",
+   "samples": [
+    {
+     "node": 2721829315,
+     "name": "Tenue de N\u00eemes",
+     "pand": "NL.IMBAG.Pand.0363100012170191",
+     "pano": "recording_2025-06-30_05-16-46_00607",
+     "date": "2025-06-30"
+    },
+    {
+     "node": 2721938942,
+     "name": "Terra",
+     "pand": "NL.IMBAG.Pand.0363100012173664",
+     "pano": "TMX7316010203-000076_pano_0000_004366",
+     "date": "2016-08-17"
+    },
+    {
+     "node": 2722209270,
+     "name": "solebox",
+     "pand": "NL.IMBAG.Pand.0363100012167516",
+     "pano": "TMX7316010203-002538_pano_0000_001620",
+     "date": "2022-04-22"
+    },
+    {
+     "node": 2724038744,
+     "name": "Sidestep",
+     "pand": "NL.IMBAG.Pand.0363100012176134",
+     "pano": "TMX7316010203-001658_pano_0000_002624",
+     "date": "2020-04-21"
+    },
+    {
+     "node": 3899063072,
+     "name": "Bask\u00e8ts",
+     "pand": "NL.IMBAG.Pand.0363100012165639",
+     "pano": "TMX7316010203-001075_pano_0001_000474",
+     "date": "2019-01-30"
+    },
+    {
+     "node": 4972738524,
+     "name": "C. de Jong en Zn.",
+     "pand": "NL.IMBAG.Pand.0363100012153323",
+     "pano": "TMX7316010203-001168_pano_0000_005563",
+     "date": "2019-05-08"
+    }
+   ]
+  }
+ }
+}

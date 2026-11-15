@@ -331,8 +331,10 @@ test('round 3c cost: panes are one interior quad of the shop cell; every templat
   const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 }, rect = [0.08, 0.155, 0.92, 0.56] as const;
   for (const t of RETAIL_TEMPLATES) {
     const tris = retailFrontTris({ template: t, seed: 'x', word: 'VERHAGEN', letters: 99, interior: { layer: 7, rect } }, e, 0.3, 6.3, 0, 3.6);
-    const props = ['bike', 'greengrocer', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t);
+    const props = ['bike', 'greengrocer', 'florist', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t);
     if (!props) assert.ok(tris.length <= 140, `${t}: ${tris.length} tris`);
+    // Round 6: the bloemist's pavement display (two tables of pots, buckets before them) stays within 320.
+    if (t === 'florist') assert.ok(tris.length <= 320, `${t}: ${tris.length} tris`);
     if (!props) assert.ok(tris.some(tri => tri.layer === 7) && !tris.some(tri => /^#7d878e$/i.test(tri.hex)), `${t}: the shop cell's interior, not flat goods`);
   }
 });
