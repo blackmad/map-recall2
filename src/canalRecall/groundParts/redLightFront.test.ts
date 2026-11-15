@@ -41,3 +41,10 @@ test('red-light front: a tube per door and curtains gathered over a dark room (1
   assert.equal(redLightDoors(0, 0.5).length, 0, 'too narrow: nothing');
   assert.deepEqual(windowFrontsOf([{ a0: 0.1, a1: 0.9, doors: 3 }, { a0: 0.5, a1: 0.52 }, null, { a0: -1, a1: 1 }]), [{ a0: 0.1, a1: 0.9, doors: 3 }]);
 });
+
+test('red-light front: tube none draws no tube (round 17: a sign band or awning over the head)', () => {
+  const { out, sink } = recorder();
+  drawRedLightFront(sink, 0, 3.2, 0, 0, { tube: 'none' });
+  assert.equal(out.filter(r => r.hex === RED_LIGHT_LOOK.tubeHex).length, 0);
+  assert.equal(redLightFrontOf({ tube: 'none' })?.tube, 'none');
+});
