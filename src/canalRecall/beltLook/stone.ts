@@ -1,8 +1,9 @@
 /**
  * The belt look's gable stone (lane D 2026-11-15, on lane R's RowGableStone): the 1700s neck and bell gables of the canal
  * belt carry carved claw pieces, a dark painted hood over the cap and, on some necks, a cartouche. The rates are the
- * measured belt necks and bells of Herengracht 25-73 that lane R audited against their photos (31, 55, 57, 59, 61, 63, 168213):
- * carved claws 6 of 7, a dark hood 4 of 7, a neck cartouche 2 of 7. A generated series draws them by a hash of its first
+ * measured belt necks and bells of Herengracht 25-73 that lane R audited against their photos (31, 55, 57, 59, 61, 63, 168213;
+ * R's 569360013): carved claws 5 of 7, a dark hood 4 of 7, carving in the neck 4 of 7 (a cartouche on 61 and 63, a small
+ * oculus on 31 and 57). A generated series draws them by a hash of its first
  * front, so a row is coherent and the same pand always draws the same stone; a stated gable stone is never touched.
  * Pure: no fs, no DOM.
  */
@@ -10,7 +11,7 @@ import type { RowGable, RowGableStone, RowRecord } from '../houseSpec/row/types.
 import { hash32 } from './donors.ts';
 
 /** Measured rates (of 7 audited 1700s necks and bells). */
-export const BELT_STONE_RATES = { carvedClaws: 6 / 7, darkHood: 4 / 7, neckCartouche: 2 / 7 } as const;
+export const BELT_STONE_RATES = { carvedClaws: 5 / 7, darkHood: 4 / 7, neckCartouche: 2 / 7, neckOculus: 2 / 7 } as const;
 /** The build years the rates describe. */
 export const BELT_STONE_YEARS = { from: 1700, to: 1799 } as const;
 const STONE_CROWNS = new Set(['neck', 'raised-neck', 'bell']);
@@ -24,7 +25,7 @@ export function beltStone(key: string, crown: string, year: number | null): RowG
   const r = BELT_STONE_RATES, s: RowGableStone = {};
   if (draw(key, 'claws') < r.carvedClaws) s.claws = 'carved';
   if (draw(key, 'hood') < r.darkHood) s.hood = 'dark';
-  if (crown !== 'bell' && draw(key, 'neck') < r.neckCartouche) s.neck = 'cartouche';
+  if (crown !== 'bell') { const n = draw(key, 'neck'); if (n < r.neckCartouche) s.neck = 'cartouche'; else if (n < r.neckCartouche + r.neckOculus) s.neck = 'oculus'; }
   return Object.keys(s).length ? s : null;
 }
 

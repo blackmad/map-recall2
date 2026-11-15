@@ -90,16 +90,17 @@ test('belt stone: 1700s necks and bells only, deterministic, near the audited ra
   assert.equal(beltStone('a', 'neck', 1650), null);
   assert.equal(beltStone('a', 'step', 1750), null);
   assert.deepEqual(beltStone('k1', 'neck', 1750), beltStone('k1', 'neck', 1750));
-  let carved = 0, hood = 0, cart = 0;
+  let carved = 0, hood = 0, cart = 0, ocu = 0;
   const n = 2000;
   for (let i = 0; i < n; i++) {
     const s = beltStone(`03631000127${String(i).padStart(5, '0')}`, 'neck', 1740) ?? {};
-    if (s.claws === 'carved') carved++; if (s.hood === 'dark') hood++; if (s.neck === 'cartouche') cart++;
+    if (s.claws === 'carved') carved++; if (s.hood === 'dark') hood++; if (s.neck === 'cartouche') cart++; if (s.neck === 'oculus') ocu++;
     assert.equal(beltStone(`x${i}`, 'bell', 1740)?.neck, undefined, 'a bell has no neck');
   }
   assert.ok(Math.abs(carved / n - BELT_STONE_RATES.carvedClaws) < 0.04, `carved ${carved / n}`);
   assert.ok(Math.abs(hood / n - BELT_STONE_RATES.darkHood) < 0.04, `hood ${hood / n}`);
   assert.ok(Math.abs(cart / n - BELT_STONE_RATES.neckCartouche) < 0.04, `cartouche ${cart / n}`);
+  assert.ok(Math.abs(ocu / n - BELT_STONE_RATES.neckOculus) < 0.04, `oculus ${ocu / n}`);
   const row = { members: [{ pandId: 'p1', built: 1740 }], series: [
     { id: 's1', fronts: ['p1'], design: { crown: { value: 'neck' }, gable: { value: { riseM: 4.2 }, source: 'period-default', ref: 'r' } } },
     { id: 's2', fronts: ['p1'], design: { crown: { value: 'neck' }, gable: { value: { riseM: 4.2, stone: { claws: false } }, source: 'period-default', ref: 'r' } } },
