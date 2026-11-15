@@ -27,14 +27,14 @@
     {
      "id": "z1-triplets",
      "kind": "window-shape",
-     "where": "every storey of each of the five bays a triplet of tall white multi-pane windows (wide between two narrow) with segmental heads under arch rings with light voussoirs",
+     "where": "every storey of each of the five bays a triplet of tall white multi-pane windows (wide between two narrow) with segmental heads under orange-red brick arch rings",
      "approxSizeM": [
       2.0,
       3.6
      ],
      "plan": "modelled",
      "seenIn": "TMX7316010203-002554_pano_0000_006569",
-     "how": "cut segment-headed openings with white frames and pane bars, stone arch rings"
+     "how": "cut segment-headed openings with white frames and pane bars, red-brick arch rings (orange-red brick in the photo, not stone)"
     },
     {
      "id": "z1-gable",
@@ -51,7 +51,7 @@
     {
      "id": "z1-100",
      "kind": "sign",
-     "where": "the venue: three black ground-floor windows in the south-west bay painted with large white 1 0 0, a yellow ZAAL 100 sign band and a vertical black 100 sign on the lesene",
+     "where": "the venue: three black ground-floor windows in the south-west bay painted with large white 1 0 0, a yellow ZAAL 100 sign band and a dark ZAAL 100 banner on the lesene hung from a bracket arm, lettered top-down (small gold ZAAL, large white 100)",
      "approxSizeM": [
       6.0,
       3.0
@@ -70,7 +70,7 @@
      ],
      "plan": "simplified",
      "seenIn": "TMX7316010203-002554_pano_0000_006569",
-     "how": "three brick dormer boxes with glass panels and flared white hood solids; the fourth stands in the raised north-east roof piece the 3DBAG shell carries as a plain box"
+     "how": "four brick dormer boxes with glass and flared white hoods at s 4.5, 11.67, 26.25 and 33.8 (the fourth in the raised north-east roof piece)"
     },
     {
      "id": "z1-cornice",

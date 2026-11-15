@@ -97409,12 +97409,6 @@
         "buildVersion": 2,
         "bytes": 43796,
         "triangles": 1359
-      },
-      "lod2": {
-        "sourceHash": "67fd98a5064e4938",
-        "buildVersion": 6,
-        "bytes": 8668,
-        "triangles": 176
       }
     },
     "club-raum": {
@@ -98804,12 +98798,6 @@
         "buildVersion": 2,
         "bytes": 72476,
         "triangles": 3674
-      },
-      "lod2": {
-        "sourceHash": "1bc0ef84380d9fef",
-        "buildVersion": 6,
-        "bytes": 11024,
-        "triangles": 480
       }
     },
     "tolstraat-160-tempel": {
@@ -100994,7 +100982,7 @@
         ],
         "max": [
           27.511722564697266,
-          42.58399963378906,
+          41.83000183105469,
           17.952999114990234
         ]
       },
@@ -101010,24 +100998,18 @@
       },
       "extent": {
         "widthMetres": 41.19072246551514,
-        "heightMetres": 42.88399964570999,
+        "heightMetres": 42.13000184297562,
         "depthMetres": 34.428998947143555,
         "depthCoverage": 1.1034935559981909
       },
-      "triangles": 16737,
-      "bytes": 214668,
+      "triangles": 19185,
+      "bytes": 239124,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "8814ac9fd5b12e8a",
         "buildVersion": 2,
         "bytes": 66000,
         "triangles": 3293
-      },
-      "lod2": {
-        "sourceHash": "8814ac9fd5b12e8a",
-        "buildVersion": 6,
-        "bytes": 11584,
-        "triangles": 444
       }
     },
     "splendor": {
@@ -104039,20 +104021,14 @@
         "depthMetres": 26.9586124420166,
         "depthCoverage": 1.558301297226393
       },
-      "triangles": 6165,
-      "bytes": 96536,
+      "triangles": 6528,
+      "bytes": 101872,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "ed171ce8059179f7",
         "buildVersion": 2,
         "bytes": 32604,
         "triangles": 1230
-      },
-      "lod2": {
-        "sourceHash": "ed171ce8059179f7",
-        "buildVersion": 6,
-        "bytes": 6396,
-        "triangles": 190
       }
     },
     "crea": {
@@ -104090,8 +104066,8 @@
       },
       "bagYear": 1965,
       "materialOverrides": {
-        "brick": "#5e4033",
-        "red": "#6a3f33",
+        "brick": "#5f4e46",
+        "red": "#63473e",
         "white": "#e9e7df",
         "stone": "#c4c0b6",
         "concrete": "#b9b6ad",
@@ -104314,12 +104290,6 @@
         "buildVersion": 2,
         "bytes": 82244,
         "triangles": 4747
-      },
-      "lod2": {
-        "sourceHash": "aafa3c0e296e9ed0",
-        "buildVersion": 6,
-        "bytes": 16992,
-        "triangles": 1037
       }
     },
     "roode-bioscoop": {
@@ -104657,12 +104627,6 @@
         "buildVersion": 2,
         "bytes": 27308,
         "triangles": 1081
-      },
-      "lod2": {
-        "sourceHash": "cb3733a0c3c11244",
-        "buildVersion": 6,
-        "bytes": 5808,
-        "triangles": 146
       }
     },
     "zaal-100": {
@@ -104709,7 +104673,8 @@
         "dark": "#26292c",
         "glass": "#3f4c55",
         "frame": "#e6e3da",
-        "slate": "#4b4f57"
+        "slate": "#4b4f57",
+        "red": "#a24a36"
       },
       "attribution": {
         "title": "Zaal 100, De Wittenstraat 100, Amsterdam: music and theatre venue in a brick building of 1892",
@@ -104835,20 +104800,14 @@
         "depthMetres": 37.43712329864502,
         "depthCoverage": 2.5467430815404777
       },
-      "triangles": 9657,
-      "bytes": 147504,
+      "triangles": 10197,
+      "bytes": 155548,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "902e363b33b3bfa9",
         "buildVersion": 2,
         "bytes": 48584,
         "triangles": 2211
-      },
-      "lod2": {
-        "sourceHash": "902e363b33b3bfa9",
-        "buildVersion": 6,
-        "bytes": 10112,
-        "triangles": 319
       }
     },
     "afas-live": {

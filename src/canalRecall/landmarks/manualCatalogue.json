@@ -82456,8 +82456,8 @@
   },
   "bagYear": 1965,
   "materialOverrides": {
-   "brick": "#5e4033",
-   "red": "#6a3f33",
+   "brick": "#5f4e46",
+   "red": "#63473e",
    "white": "#e9e7df",
    "stone": "#c4c0b6",
    "concrete": "#b9b6ad",
@@ -83055,7 +83055,8 @@
    "dark": "#26292c",
    "glass": "#3f4c55",
    "frame": "#e6e3da",
-   "slate": "#4b4f57"
+   "slate": "#4b4f57",
+   "red": "#a24a36"
   },
   "attribution": {
    "title": "Zaal 100, De Wittenstraat 100, Amsterdam: music and theatre venue in a brick building of 1892",
