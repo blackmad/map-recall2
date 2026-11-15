@@ -158,6 +158,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     id: fronts[0].seriesId,
     ...(omitExtras.length ? { omitExtras } : {}),
     ...(d0.cornice.value ? { cornice: d0.cornice.value } : {}),
+    ...(d0.corniceDress?.value ? { corniceDress: d0.corniceDress.value } : {}),
     roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers, ...(m.riseM && m.riseM > 0 ? { riseM: m.riseM } : ROW_MANSARD_RISE[rowId] ? { riseM: ROW_MANSARD_RISE[rowId].riseM } : {}) } : { kind: 'none', riseM: 0, dormers: [] },
     ...(heads.length ? { heads } : {}),
     ...(extras.length ? { extras } : {}),

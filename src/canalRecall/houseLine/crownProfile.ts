@@ -95,7 +95,7 @@ export interface RowCrown {
   /** A small round-headed light over the attic light, high in the neck (stated per house). */
   upperLight?: boolean;
   /** House rows: the gable's white sandstone with thickness (copings, treads, klauwstukken, cap); absent: flat white edges. */
-  stone?: { copingM?: number; claws?: boolean | 'carved'; crest?: 'pediment' | 'segmental' | 'crest'; hood?: 'dark' | string; neck?: 'panel' | 'cartouche' | 'oculus' };
+  stone?: { copingM?: number; claws?: boolean | 'carved'; crest?: 'pediment' | 'segmental' | 'crest'; hood?: 'dark' | string; neck?: 'panel' | 'cartouche' | 'oculus'; cap?: 'shell' | 'carved' };
   /** `belt`: the canal belt's gable dress (BELT_GABLE). Absent: the kit's stock outlines and trim, byte-identical. */
   dress?: 'belt';
 }
@@ -453,6 +453,28 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
     } else {
       // The cap's moulding: a broad stone hood along its outline (the tympanum inside it stays brick).
       if (capRim.length >= 2) stoneBand(s, capRim, f, e, S.overhang + 0.02, S.capBand, S.ledge, S.back, tone());
+      // A stated carved tympanum (Herengracht 51, 69): a shell's flutes fanning from the springing, or a carved field with a
+      // cartouche and leaves, inside the moulding.
+      if (st.cap && capRim.length >= 3) {
+        const inner = offsetRun(capRim, S.capBand * 0.9).map(([x, y]): V2 => [clamp(x, -neck + 0.04, neck - 0.04), Math.max(y, tN)]);
+        const rise = Math.max(...inner.map(([, y]) => y)) - tN;
+        if (rise >= 0.25) {
+          if (st.cap === 'shell') {
+            const hinge: V2 = [0, tN + 0.02], n = 9;
+            const at = (u: number): V2 => { const i = Math.min(inner.length - 2, Math.floor(u * (inner.length - 1))), k = u * (inner.length - 1) - i; return [inner[i][0] + (inner[i + 1][0] - inner[i][0]) * k, inner[i][1] + (inner[i + 1][1] - inner[i][1]) * k]; };
+            const base = tone();
+            for (let i = 0; i < n; i++) prism(s, [hinge, at(i / n), at((i + 1) / n)], f, e, S.ledge * 0.7, 0.02, shade(base, i % 2 ? 0.82 : 1));
+            prism(s, disc(0, tN + 0.02, Math.min(0.14, rise * 0.25)).filter(([, y]) => y >= tN), f, e, S.ledge * 0.8, 0, shade(base, 0.9));
+          } else {
+            prism(s, [[inner[0][0], tN], ...inner, [inner[inner.length - 1][0], tN]], f, e, S.ledge * 0.6, 0.02, tone());
+            const cy = tN + rise * 0.45, ry = Math.min(rise * 0.3, 0.3), rx = Math.min(ry * 1.3, neck * 0.35);
+            const oval = (a: number, b: number): V2[] => Array.from({ length: 18 }, (_, i): V2 => [a * Math.cos(2 * Math.PI * i / 18), cy + b * Math.sin(2 * Math.PI * i / 18)]);
+            prism(s, oval(rx, ry), f, e, S.ledge * 0.6 + 0.04, 0, shade(tone(), 0.84));
+            prism(s, oval(rx * 0.6, ry * 0.6), f, e, S.ledge * 0.6 + 0.06, 0, tone());
+            for (const sg of [-1, 1]) prism(s, [[sg * rx * 1.05, cy - ry * 0.2], [sg * (rx + Math.min(0.5, neck * 0.4)), tN + 0.06], [sg * (rx + Math.min(0.35, neck * 0.3)), tN + 0.06], [sg * rx * 1.02, cy - ry * 0.5]], f, e, S.ledge * 0.6 + 0.03, 0, shade(tone(), 0.84));
+          }
+        }
+      }
       // The moulding the cap stands on: a ledge at the springing, overhanging the neck.
       prism(s, [[-lw, tN - S.ledgeH], [lw, tN - S.ledgeH], [lw, tN], [-lw, tN]], f, e, S.ledge, S.back, tone());
     }
