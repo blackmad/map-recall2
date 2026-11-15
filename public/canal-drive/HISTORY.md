@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+## Node world frames (2026-11-15)
+
+- Merged lane/node-world-frames-20261115 (4e6cab29a): `scripts/house-frames/node-frame.ts` renders the game's first-person frame in Node (src/canalRecall/nodeFrame), without Chromium or a dev server. Usage is in docs/house-line.md §8a. It is a first-pass tool for lanes; acceptance stays on browser house:frames pairs.
+- Fidelity against browser frames on 19 likeness poses: median mean ΔE about 4.4, edge IoU about 0.79. A blind opus judge rated 20/20 interchangeable on the round-1 prompt and 13/20 on a strict prompt. About 9 s a frame at dpr 1 in a batch on a quiet machine.
+- Bugs found on the way: the routing extract stores [lat, lng], which Node first read reversed, so no doors were drawn. Cached ground cells skipped deck placement, which put the rider up to 0.8 m low on bridges. Street chunks stand each pand on its own footing (`pandRanges`).
+- Still open: kerb-ramp wedges (the worker's compactCell is suspected), water tone, POI labels, far prisms beyond 1.5 km, the windowGrid shader.
+
 ## Buurt generator: Rivierenbuurt and Apollo/Stadion published, kit on by default (2026-11-15)
 
 - David approved on #390 after held-out blind A/Bs: 7/7 on round 8's untuned streets and 7/7 on round 9's (seed r9-heldout). Published 4,167 row-front records (`scripts/buurt-generators/publish.ts`) into `public/data/front-records/row-front.json`. The buurt kit (erkers, eaves, entrances, Plan Zuid casements) is now on by default; `?buurtKit=0` / BUURT_KIT=0 turns it off.
