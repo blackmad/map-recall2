@@ -419,3 +419,17 @@ test('a module pand shares its read dormers out whole per front, at least one wh
     for (const f of r.flags.filter(x => x.kind === 'class-disagreement' && x.field === 'dormers')) assert.doesNotMatch(f.detail, /consensus "\d+\.\d+"/, f.detail);
   }
 });
+
+test('a tablet head (Herengracht 175404) emits a HouseSpec keystone head, the relieving arch in the wall colour, and a limit', () => {
+  for (const [shape, kind, colour] of [['relieving', 'relieving', 'wall'], ['flat', 'flat', 'stone']] as const) {
+    const row = structuredClone(K.row);
+    const f = row.fronts.find(x => x.id === '0363100012160809')!;
+    f.overrides.heads = { value: { shape, dressing: 'tablet' }, source: 'reviewed', ref: 'test' } as never;
+    const spec = rowSpec(row, '0363100012160809', undefined, '2026-11-15')!;
+    const head = (spec.design.fronts?.[0] as { windowHead?: { kind: string; archRing?: { colour: string; keystone?: boolean } } }).windowHead!;
+    assert.equal(head.kind, kind);
+    assert.deepEqual([head.archRing?.colour, head.archRing?.keystone], [colour, true]);
+    assert.ok((spec.schemaLimits ?? []).some(l => (l as { what?: string }).what?.includes('tablet')));
+    assert.deepEqual(specProblems(spec).filter(p => /windowHead|schemaLimits/.test(p)), []);
+  }
+});

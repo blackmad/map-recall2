@@ -100,6 +100,15 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
       }
     }
     else if (h.dressing === 'jack-blocks' || h.dressing === 'dentil-lintel' || h.dressing === 'stone-lintel') put(P + 'windowSurround', h.dressing, d.heads);
+    else if (h.dressing === 'tablet') {
+      // HouseSpec has no tablet: the stone block on the axis is its keystone; over a relieving shape, the brick relieving
+      // arch (archRing in the wall colour) carries it. The block's tablet proportion is printed as a limit.
+      put(P + 'windowHead', h.shape === 'relieving'
+        ? { kind: 'relieving', ...(h.storeys ? { storeys: h.storeys } : {}), archRing: { colour: 'wall', style: 'solid', keystone: true } }
+        : { kind: h.shape === 'round' || h.shape === 'segmental' ? h.shape : 'flat', ...(h.storeys ? { storeys: h.storeys } : {}), archRing: { colour: 'stone', style: 'none', keystone: true } }, d.heads);
+      const what = `${f.id}: a light stone tablet over each window (row head 'tablet'), drawn as a keystone block`;
+      if (!(spec.schemaLimits ?? []).some(l => (l as { what?: string }).what === what)) spec.schemaLimits = [...(spec.schemaLimits ?? []), { component: 'windowHead', what }];
+    }
     if (d.sills.value && h.dressing === 'none') put(P + 'windowSurround', 'sill', d.sills);
     // Per-house ground the read states and the face does not (a souterrain with a stoop, Weteringschans).
     // Per-house ground the read states (no face spec): the door's opening index, the ground kind.

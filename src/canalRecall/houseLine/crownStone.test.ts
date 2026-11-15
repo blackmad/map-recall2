@@ -112,3 +112,10 @@ test('crown stone: a stated festoon and shoulder ovals (Herengracht 036310001217
   // A festoon takes the neck's carving space: a stated cartouche gives way.
   assert.deepEqual(draw({ ...c, stone: { festoon: true, neck: 'cartouche' } }).tris.length, fest.length);
 });
+
+test('belt neck: the attic light stands in the neck over the shoulders (Herengracht 0363100012176326); undressed: as before', () => {
+  const glassZ = (c: RowCrown) => draw(c).tris.filter(t => t.hex === '#272c33').flatMap(t => t.p.map(p => p[2]));
+  const belt = glassZ({ shape: 'neck', riseM: 4.2, attic: 1, dress: 'belt' }), plain = glassZ({ shape: 'neck', riseM: 4.2, attic: 1 });
+  assert.ok(Math.min(...belt) >= 4.2 * 0.22, 'above the belt shoulder band');
+  assert.ok(Math.abs(Math.min(...plain) - 0.3) < 1e-6, 'the stock neck keeps its light at the foot');
+});

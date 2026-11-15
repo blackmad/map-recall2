@@ -599,6 +599,14 @@ function openingZ(c: RowCrown, d: ReturnType<typeof crownDims>, y0: number): [nu
   const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - spoutTop(c) - 0.1 : T - 0.25;
   const z0 = c.shape === 'raised' ? (c.bandM ?? 0.5) + 0.12 : Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
   const z1 = Math.min(capTop - 0.15, z0 + (c.hoist ? 1.5 : 1.15));
+  // The belt's neck: the attic light stands in the neck, over the shoulders, not in the shoulder band (Herengracht
+  // 0363100012176326, R's festoon review 2026-11-15: the drops frame the light in the neck). Too little neck: as before.
+  if (c.dress === 'belt' && c.shape === 'neck' && !c.hoist) {
+    // A stated neck carving (oculus, cartouche) keeps its room under the cap.
+    const carved = !!(c as { stone?: { neck?: string } }).stone?.neck;
+    const n0 = y0 + (T - y0) * (c.shoulderRise ?? BELT_GABLE.neckShoulder) + 0.15, n1 = Math.min(capTop - (carved ? 0.8 : 0.15), n0 + 1.15);
+    if (n0 > z0 && n1 - n0 >= 0.55) return [n0, n1];
+  }
   return z1 - z0 < 0.55 ? null : [z0, z1];
 }
 

@@ -631,6 +631,19 @@
       "ref": "lane R gable-stone audit (lane/rows-belt-stone-20261115 205735344), lane D statement",
       "at": "2026-11-15",
       "note": "27: a narrow step gable with about six to seven small steps a side up to a narrow top tread (D1 cut, glare on the left)."
+    },
+    {
+      "fronts": [
+        "0363100012175404"
+      ],
+      "field": "heads",
+      "value": {
+        "shape": "flat",
+        "dressing": "tablet"
+      },
+      "ref": "lane D, reading of the photo in lane R's belt-gaps-1 A/B (_pruned-sheets/house-rows-r/belt-gaps-1/house3.jpg) after R's 24a406086",
+      "at": "2026-11-15",
+      "note": "27: a light stone tablet over each upper window; no relieving arch is legible in the cut (glare), so the shape stays flat."
     }
   ],
   "herengracht-51-73": [
@@ -2187,6 +2200,59 @@
       "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-168-198-after.json",
       "at": "2026-11-15",
       "note": "174: its timber cornice as lane R read the photo's top crop"
+    }
+  ],
+  "herengracht-275-291": [
+    {
+      "fronts": [
+        "0363100012176326",
+        "0363100012176325"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.2,
+        "attic": 1,
+        "dress": "belt",
+        "stone": {
+          "festoon": true,
+          "shoulders": "oval"
+        }
+      },
+      "ref": "lane D, reading of the photo in lane R's belt-gaps-1 A/B (_pruned-sheets/house-rows-r/belt-gaps-1/house1.jpg) after R's 24a406086",
+      "at": "2026-11-15",
+      "note": "279-281 pair (176326, 176325): both necks carry a festoon hung under the cap with drops down the neck's sides, and a framed oval cartouche on each shoulder; the attic light stands in the neck. Rise stays the belt's neck median (no rise read)."
+    },
+    {
+      "fronts": [
+        "0363100012176327"
+      ],
+      "field": "ground.door",
+      "value": {
+        "doorcase": {
+          "material": "timber",
+          "span": "frame",
+          "door": "black",
+          "entresol": 0.55
+        }
+      },
+      "ref": "lane D, reading of the photo in lane R's belt-gaps-1 A/B (_pruned-sheets/house-rows-r/belt-gaps-1/house2.jpg) after R's 24a406086",
+      "at": "2026-11-15",
+      "note": "277: the bel-etage is one white timber frame of four tall openings with an entresol tier of lights above, the door near-black."
+    },
+    {
+      "fronts": [
+        "0363100012176327"
+      ],
+      "field": "windowHeights",
+      "value": [
+        3.1,
+        1.8,
+        1.75,
+        1.5
+      ],
+      "ref": "lane D, reading of the photo in lane R's belt-gaps-1 A/B (_pruned-sheets/house-rows-r/belt-gaps-1/house2.jpg) after R's 24a406086",
+      "at": "2026-11-15",
+      "note": "277: the framed bel-etage is about twice an upper storey's glass (two tall tiers), over the souterrain; the three upper storeys diminish."
     }
   ]
 }
