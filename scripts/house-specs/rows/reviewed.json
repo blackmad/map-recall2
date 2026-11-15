@@ -463,11 +463,14 @@
         "riseM": 3.5,
         "neckOverM": 2,
         "attic": 1,
-        "cap": "segmental"
+        "cap": "segmental",
+        "stone": {
+          "hood": "dark"
+        }
       },
-      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
       "at": "2026-11-15",
-      "note": "31: a neck with a curved bell-like cap and white carved shoulder pieces (D1 gap), as today draws it | Gable rise re-measured 2026-11-15 (lane D, #391): 31 1.18 storeys from the claw foot to the cap top, at 3.0 m a storey; the read was 2.8 m, which left the necks short (blind gable review)."
+      "note": "31: a neck with a curved bell-like cap and white carved shoulder pieces (D1 gap), as today draws it | Gable rise re-measured 2026-11-15 (lane D, #391): 31 1.18 storeys from the claw foot to the cap top, at 3.0 m a storey; the read was 2.8 m, which left the necks short (blind gable review). 31: a dark hood over the cap (R audit)."
     },
     {
       "fronts": [
@@ -681,7 +684,25 @@
     },
     {
       "fronts": [
-        "0363100012169271",
+        "0363100012169271"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.2,
+        "neckWidthM": 3,
+        "neckOverM": 2.4,
+        "attic": 1,
+        "cap": "segmental",
+        "stone": {
+          "claws": "carved"
+        }
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
+      "at": "2026-11-15",
+      "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap | Gable rise re-measured 2026-11-15 (lane D, #391): 55 1.47 and 61 1.32 storeys from the claw foot to the cap top, about 4.4 and 4.0 m; the series takes 4.2, at 3.0 m a storey; the read was 3.2 m, which left the necks short (blind gable review). 55: carved claw pieces, no dark hood (R audit)."
+    },
+    {
+      "fronts": [
         "0363100012179672"
       ],
       "field": "gable",
@@ -690,11 +711,16 @@
         "neckWidthM": 3,
         "neckOverM": 2.4,
         "attic": 1,
-        "cap": "segmental"
+        "cap": "segmental",
+        "stone": {
+          "claws": "carved",
+          "hood": "dark",
+          "neck": "cartouche"
+        }
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
       "at": "2026-11-15",
-      "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap | Gable rise re-measured 2026-11-15 (lane D, #391): 55 1.47 and 61 1.32 storeys from the claw foot to the cap top, about 4.4 and 4.0 m; the series takes 4.2, at 3.0 m a storey; the read was 3.2 m, which left the necks short (blind gable review)."
+      "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap | Gable rise re-measured 2026-11-15 (lane D, #391): 55 1.47 and 61 1.32 storeys from the claw foot to the cap top, about 4.4 and 4.0 m; the series takes 4.2, at 3.0 m a storey; the read was 3.2 m, which left the necks short (blind gable review). 61: dark hood, carved claws, a cartouche on the neck (R audit)."
     },
     {
       "fronts": [
@@ -721,11 +747,14 @@
         "neckOverM": 1.8,
         "attic": 1,
         "cap": "segmental",
-        "upperLight": true
+        "upperLight": true,
+        "stone": {
+          "claws": "carved"
+        }
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179673.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179673.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
       "at": "2026-11-15",
-      "note": "57: a short neck with a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 57 1.41 storeys from the neck foot to the cap top, at 3.0 m a storey; the read was 2.6 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15)."
+      "note": "57: a short neck with a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 57 1.41 storeys from the neck foot to the cap top, at 3.0 m a storey; the read was 2.6 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15). 57: carved claws, no hood (R audit)."
     },
     {
       "fronts": [
@@ -736,11 +765,15 @@
         "riseM": 4.2,
         "neckOverM": 2,
         "attic": 1,
-        "cap": "segmental"
+        "cap": "segmental",
+        "stone": {
+          "claws": "carved",
+          "hood": "dark"
+        }
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179748.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179748.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
       "at": "2026-11-15",
-      "note": "59: a dark neck gable with claw pieces and a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 59 1.41 storeys from the claw foot (over the oval attic storey) to the cap top, at 3.0 m a storey; the read was 2.8 m, which left the necks short (blind gable review)."
+      "note": "59: a dark neck gable with claw pieces and a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 59 1.41 storeys from the claw foot (over the oval attic storey) to the cap top, at 3.0 m a storey; the read was 2.8 m, which left the necks short (blind gable review). 59: dark hood, carved claws (R audit)."
     },
     {
       "fronts": [
@@ -752,11 +785,16 @@
         "neckOverM": 2.2,
         "attic": 1,
         "finials": true,
-        "cap": "segmental"
+        "cap": "segmental",
+        "stone": {
+          "claws": "carved",
+          "hood": "dark",
+          "neck": "cartouche"
+        }
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179683.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179683.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
       "at": "2026-11-15",
-      "note": "63: white claw pieces and finials on the shoulders; the cap is segmental like 55's (R's trial had none) | Gable rise re-measured 2026-11-15 (lane D, #391): 63 1.41 storeys from the claw foot to the cap top, at 3.0 m a storey; the read was 3 m, which left the necks short (blind gable review)."
+      "note": "63: white claw pieces and finials on the shoulders; the cap is segmental like 55's (R's trial had none) | Gable rise re-measured 2026-11-15 (lane D, #391): 63 1.41 storeys from the claw foot to the cap top, at 3.0 m a storey; the read was 3 m, which left the necks short (blind gable review). 63: dark hood, carved claws, a cartouche on the neck (R audit)."
     },
     {
       "fronts": [
@@ -1673,6 +1711,35 @@
       "ref": "lane R's stoop forms (_pruned-sheets/house-rows-r/stoop-forms/herengracht-130-148-test-record.json), lane D statement",
       "at": "2026-11-15",
       "note": "148: a raised door over basement windows with a straight railed flight; no stoop was read."
+    },
+    {
+      "fronts": [
+        "0363100012177020"
+      ],
+      "field": "ground.door",
+      "value": {
+        "doorcase": {
+          "material": "timber"
+        }
+      },
+      "ref": "lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
+      "at": "2026-11-15",
+      "note": "142: a painted timber doorcase round the street door."
+    },
+    {
+      "fronts": [
+        "0363100012177019"
+      ],
+      "field": "ground.door",
+      "value": {
+        "doorSide": "right",
+        "doorcase": {
+          "material": "timber"
+        }
+      },
+      "ref": "lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
+      "at": "2026-11-15",
+      "note": "144: a painted timber doorcase; the door is on the right and the window on the left (drawn mirrored before)."
     }
   ],
   "herengracht-150-166": [

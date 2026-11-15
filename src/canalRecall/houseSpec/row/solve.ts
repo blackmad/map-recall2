@@ -113,12 +113,14 @@ export interface RowInput {
 /** `add`: the value is a list merged into the field's current list (an extra the reviewer adds), not a replacement. */
 /** `ground.colour` sets `front.ground.colour` (a RowGroundColour) on each listed front; it outranks a read and the face's shopPaint. */
 /** `ground.stoop` (value: `{ stoopForm?, stoopRailing?, doorcase? }`) sets the stoop's flight form, railing and doorcase on
- *  each listed front (lane R's RowGround.stoopForm/stoopRailing/doorcase; Herengracht 130 double with railings, 148 straight with railings). */
+ *  each listed front (lane R's RowGround.stoopForm/stoopRailing/doorcase; Herengracht 130 double with railings, 148 straight with railings).
+ *  `ground.door` (value: `{ doorSide?, doorcase? }`) sets the street door's side and doorcase the same way (Herengracht 142 and 144:
+ *  timber doorcases; 144's door is on the right, its read had it mirrored). */
 /** `unread` (value: the reason) sets a listed pand's reading aside, as a held one: an unusable cut (Herengracht 69, a steep
  *  corner shot) states nothing, so its front draws as unread. */
 /** `split` (value: `{ n, shares? }`) splits a listed pand into n fronts read from its cut (Herengracht 43-45: two point
  *  gables in one pand), `<pandId>#m0..`; shares are the fronts' widths in street order (absent: equal). */
-export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour' | 'ground.stoop' | 'series' | 'unread' | 'split'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
+export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour' | 'ground.stoop' | 'ground.door' | 'series' | 'unread' | 'split'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
 
 // --- compatibility of classes (a face value and a read that name the same thing) ------------------------------------------
 
@@ -516,10 +518,12 @@ export function solveRow(input: RowInput): RowRecord {
       }
       continue;
     }
-    if (st.field === 'ground.stoop') {
-      const v = st.value as Pick<RowGround, 'stoopForm' | 'stoopRailing' | 'doorcase'>;
-      for (const f of fronts.filter(x => st.fronts.includes(x.id)))
-        f.ground = { ...f.ground, ...(v.stoopForm ? { stoopForm: v.stoopForm } : {}), ...(v.stoopRailing ? { stoopRailing: true } : {}), ...(v.doorcase ? { doorcase: { ...v.doorcase } } : {}) };
+    if (st.field === 'ground.stoop' || st.field === 'ground.door') {
+      const v = st.value as Pick<RowGround, 'stoopForm' | 'stoopRailing' | 'doorcase' | 'doorSide'>;
+      for (const f of fronts.filter(x => st.fronts.includes(x.id))) {
+        if (v.doorSide && f.ground.doorSide && f.ground.doorSide !== v.doorSide) flags.push({ kind: 'reviewed', field: 'ground.doorSide', fronts: [f.id], detail: `reviewed ${v.doorSide} overrides the read ${f.ground.doorSide}` });
+        f.ground = { ...f.ground, ...(v.stoopForm ? { stoopForm: v.stoopForm } : {}), ...(v.stoopRailing ? { stoopRailing: true } : {}), ...(v.doorcase ? { doorcase: { ...v.doorcase } } : {}), ...(v.doorSide ? { doorSide: v.doorSide } : {}) };
+      }
       continue;
     }
     if (st.field === 'series' || st.field === 'unread' || st.field === 'split') continue;

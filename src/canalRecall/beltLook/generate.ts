@@ -1,9 +1,10 @@
 /**
  * Belt look generator (lane D, 2026-11-15): every undescribed canal-belt pand as a house-rows front. The street-side rows
  * and their front lines are the buurt generator's (`buurtGenerator/rows.ts`: party-wall rows on one front street, from BAG
- * footprints and OSM names); each member takes its own D1 read when the belt tranche read it, else its donor's read fitted
+ * footprints and OSM names; a lone pand between described ones is a one-member row); each member takes its own D1 read when the belt tranche read it, else its donor's read fitted
  * to it (`donors.ts`); the row is then solved by lane D's row solve as any belt row is (series, the belt gable rises and
- * dress, the 3DBAG ridge, canal windows), so the belt kit (BELT_GABLE outlines, lane R's stone and stoops) draws them.
+ * dress, the 3DBAG ridge, canal windows), so the belt kit (BELT_GABLE outlines, lane R's stone and stoops) draws them; a
+ * 1700s neck or bell series then takes the period's gable stone (carved claws, dark hood, neck cartouche: `stone.ts`).
  *
  * Provenance: a field the solve takes from a donor's read is not a read of this house. Every such field is relabelled
  * `period-default` with a ref naming the belt look and the donor, so the spec emit and `check:rows` never mistake it for a
@@ -15,6 +16,7 @@ import { solveRow, type MemberInput, type RowInput } from '../houseSpec/row/solv
 import type { RowDesign, RowField, RowRecord } from '../houseSpec/row/types.ts';
 import { districtRows, type GenPand, type GenRow, type GenStreet } from '../buurtGenerator/rows.ts';
 import { donorFor, fittedRead, gableable, type BeltDonor, type BeltTarget } from './donors.ts';
+import { dressBeltStone } from './stone.ts';
 
 export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: string }
 export interface BeltGenResult {
@@ -76,14 +78,14 @@ export function relabelDonorFields(row: RowRecord, donorFilled: ReadonlySet<stri
 export function generateBelt(pands: readonly GenPand[], streets: readonly GenStreet[], described: ReadonlySet<string>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string): BeltGenResult {
   const skipped: BeltGenResult['skipped'] = [], provenance: BeltGenResult['provenance'] = {}, fronts: BeltGenResult['fronts'] = {};
   const free = pands.filter(p => { const d = described.has(pandNumber(p.id)); if (d) skipped.push({ id: pandNumber(p.id), reason: 'described' }); return !d; });
-  const res = districtRows(free, streets);
+  const res = districtRows(free, streets, { singles: true });
   for (const u of res.unplaced) skipped.push({ id: pandNumber(u.id), reason: u.reason });
   const rows: RowRecord[] = [];
   for (const r of res.rows) {
     const input = beltRowInput(r, reads, donors, at, provenance);
     if (!input) { for (const m of r.members) skipped.push({ id: pandNumber(m.pand.id), reason: 'no-donor' }); continue; }
     const donorFilled = new Set(input.members.filter(m => 'donor' in provenance[m.pandId]).map(m => m.pandId));
-    rows.push(relabelDonorFields(solveRow(input), donorFilled));
+    rows.push(dressBeltStone(relabelDonorFields(solveRow(input), donorFilled), BELT_LOOK_REF));
     for (const m of r.members) fronts[pandNumber(m.pand.id)] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
   }
   return { rows, provenance, skipped, fronts };
