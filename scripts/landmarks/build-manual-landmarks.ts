@@ -3,6 +3,8 @@ import {buildLofi} from './lofi-builder';
 import {buildTheOtherSide} from './the-other-side-builder';
 import {buildAsscherDiamantslijperij} from './asscher-diamantslijperij-builder';
 import {buildDiamantMuseum} from './diamant-museum-builder';
+import {buildPolitiebureauRaampoort} from './politiebureau-raampoort-builder';
+import {buildBanksMansion} from './banks-mansion-builder';
 import {buildTolstraat160Tempel} from './tolstraat-160-tempel-builder';
 import {buildDeNieuweLiefde} from './de-nieuwe-liefde-builder';
 import {buildRijksakademie} from './rijksakademie-builder';
@@ -699,6 +701,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='the-other-side')buildTheOtherSide(w,d,helpers);
     else if(id==='asscher-diamantslijperij')buildAsscherDiamantslijperij(w,d,helpers);
     else if(id==='diamant-museum')buildDiamantMuseum(w,d,helpers);
+    else if(id==='politiebureau-raampoort')buildPolitiebureauRaampoort(w,d,helpers);
+    else if(id==='banks-mansion')buildBanksMansion(w,d,helpers);
     else if(id==='tolstraat-160-tempel')buildTolstraat160Tempel(w,d,helpers);
     else if(id==='de-nieuwe-liefde')buildDeNieuweLiefde(w,d,helpers);
     else if(id==='rijksakademie')buildRijksakademie(w,d,helpers);

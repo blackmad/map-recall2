@@ -19,68 +19,59 @@ import { hostOnFront, ringEdges, insideRing as insideRingOf } from '../../src/ca
 import { FRONT_HIGHWAYS, SegmentGrid, streetDistance } from '../../src/canalRecall/streetFronts.ts';
 import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, signWord, templateForTags, type RetailTemplate } from '../../src/canalRecall/retailTemplates.ts';
 import { insideCentre, RING_KM, DAM } from '../../src/canalRecall/retailArea.ts';
+import { streetPriors, type StreetRead } from '../../src/canalRecall/retailPuiPaint.ts';
+import { bikeShopClass, bikeCode } from '../../src/canalRecall/retailBikes.ts';
+import { addressPand, atOnStreetWall, matchAddress, type Vbo } from '../../src/canalRecall/retailAddress.ts';
+
+import { CACHE, nodes, LAT0, KX, KY, local, grid, streets, walls, facing, open, near, bagUses, bagKey, namedSegs, lngLatOf, type Building, type Node } from './city.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
-const CACHE = arg('cache') ?? '.cache/retail-ground/overpass.json';
 const STAGING = 'data/retail-ground/shop-templates.json', PUBLISHED = 'public/data/extracts/amsterdam/shop-templates.json';
-const BBOX = '52.28,4.75,52.43,5.05';
-const QUERY = `[out:json][timeout:180];(node["shop"](${BBOX});node["amenity"~"^(cafe|restaurant|bar|pub|fast_food|ice_cream|pharmacy|bank)$"](${BBOX}););out;`;
-
-type Node = { id: number; lat: number; lon: number; tags?: Record<string, string> };
-async function nodes(): Promise<Node[]> {
-  if (fs.existsSync(CACHE)) return JSON.parse(fs.readFileSync(CACHE, 'utf8')).elements;
-  const r = await fetch('https://overpass-api.de/api/interpreter', { method: 'POST', body: new URLSearchParams({ data: QUERY }), headers: { 'User-Agent': 'map-recall2 retail-ground (https://github.com/blackmad/map-recall2)' } });
-  const json = await r.json();
-  fs.mkdirSync(path.dirname(CACHE), { recursive: true }); fs.writeFileSync(CACHE, JSON.stringify(json));
-  return json.elements;
-}
-
-const LAT0 = 52.37, KX = 111_320 * Math.cos(LAT0 * Math.PI / 180), KY = 110_540, CELL = 50;
-const local = (lng: number, lat: number): [number, number] => [(lng - 4.9) * KX, (lat - LAT0) * KY];
-type Building = { id: string; ring: [number, number][]; cx: number; cy: number; owner: number };
-const wallSegs: number[] = [], wallOwners: number[] = [];
-let owners = 0;
-const grid = new Map<string, Building[]>();
-const root = 'public/data/extracts/amsterdam/building-tiles/14';
-for (const x of fs.readdirSync(root)) for (const f of fs.readdirSync(path.join(root, x))) {
-  const bytes = fs.readFileSync(path.join(root, x, f));
-  for (const feature of JSON.parse((bytes[0] === 0x1f ? zlib.gunzipSync(bytes) : bytes).toString()).features) {
-    const g = feature.geometry, outer = g.type === 'Polygon' ? g.coordinates[0] : g.type === 'MultiPolygon' ? g.coordinates[0][0] : null;
-    if (!outer || Number(feature.properties.minHeight) > 2) continue;
-    const ring = outer.map(([lng, lat]: number[]) => local(lng, lat));
-    const cx = ring.reduce((s: number, p: number[]) => s + p[0], 0) / ring.length, cy = ring.reduce((s: number, p: number[]) => s + p[1], 0) / ring.length;
-    const key = `${Math.floor(cx / CELL)},${Math.floor(cy / CELL)}`;
-    const owner = owners++;
-    for (const e of ringEdges(ring)) { wallSegs.push(e.x0, e.y0, e.x1, e.y1); wallOwners.push(owner); }
-    let list = grid.get(key); if (!list) grid.set(key, list = []); list.push({ id: String(feature.properties.id), ring, cx, cy, owner });
-  }
-}
-// Street-facing walls as the mesher decides them (streetFronts.ts): a FRONT_HIGHWAYS way within reach, unobstructed.
-const streetSegs: number[] = [];
-for (const w of JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as Array<{ highway?: string; path: [number, number][] }>) {
-  if (w.highway && !FRONT_HIGHWAYS.has(w.highway)) continue;
-  for (let i = 1; i < w.path.length; i++) { const a = local(w.path[i - 1][1], w.path[i - 1][0]), b = local(w.path[i][1], w.path[i][0]); streetSegs.push(a[0], a[1], b[0], b[1]); }
-}
-const streets = new SegmentGrid(Float32Array.from(streetSegs)), walls = new SegmentGrid(Float32Array.from(wallSegs), 25, Int32Array.from(wallOwners));
-const facing = (c: { owner?: number }, e: ReturnType<typeof ringEdges>[number]) => streetDistance(e, streets, walls, (c as Building).owner) < Infinity;
-// Not a party wall: no other footprint's wall within 1 m straight in front of its middle.
-const open = (c: { owner?: number }, e: ReturnType<typeof ringEdges>[number]) => walls.firstHit((e.x0 + e.x1) / 2 - e.nx * 0.05, (e.y0 + e.y1) / 2 - e.ny * 0.05, e.nx, e.ny, 1.05, (c as Building).owner) === Infinity;
-const near = (x: number, y: number) => { const gx = Math.floor(x / CELL), gy = Math.floor(y / CELL), out: Building[] = []; for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) out.push(...(grid.get(`${gx + dx},${gy + dy}`) ?? [])); return out; };
-const bagUses = (JSON.parse(fs.readFileSync('.cache/industrial/bag-uses.json', 'utf8')) as { pands: BagUsesTable }).pands;
-const bagKey = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
 
 // `--explain=<osm node id>,...`: every footprint within 30 m of the node, with its distance, BAG uses and the host picked.
 const explain = new Set((arg('explain') ?? '').split(',').filter(Boolean));
-const placed = new Map<string, { t: RetailTemplate; at: [number, number]; front: 'street' | 'nearest'; name: string; tags: string; centre: boolean; ring: boolean }>();
+const placed = new Map<string, { t: RetailTemplate; at: [number, number]; front: 'street' | 'nearest'; name: string; tags: string; centre: boolean; ring: boolean; bike?: ReturnType<typeof bikeShopClass> }>();
 const pois: Record<string, number> = {}, unhosted: Record<string, number> = {}, moved = { host: 0, nearest: 0, lost: 0, gained: 0 };
-for (const n of await nodes()) {
+// Round 5: the pands some template POI sits on by the plain rules; a POI moves to a bigger shop next door
+// (retailHosting.ts SPILL) only when no other POI holds it.
+// Round 7: the address hosts staged by --addresses (retailAddress.ts): a node whose BAG address lies in another pand
+// than its geometry picks is hosted on the address's pand, from the matching VBO's point.
+const ADDRESS_HOSTS = 'data/retail-ground/address-hosts.json';
+// Then the second sources' moves (second-sources.ts --apply, source-hosts.json); an address host outranks them. Its
+// adds (businesses OSM lacks) join the OSM nodes.
+const SOURCE_HOSTS = 'data/retail-ground/source-hosts.json';
+const sourceHosts = (fs.existsSync(SOURCE_HOSTS) ? JSON.parse(fs.readFileSync(SOURCE_HOSTS, 'utf8')) : { hosts: {}, adds: [] }) as { hosts: Record<string, { pand: string; at: [number, number] }>; adds: Array<{ id: string; lon: number; lat: number; tags: Record<string, string> }> };
+const addressHosts = new Map<string, { pand: string; at: [number, number] }>([...Object.entries(sourceHosts.hosts), ...(fs.existsSync(ADDRESS_HOSTS) ? Object.entries((JSON.parse(fs.readFileSync(ADDRESS_HOSTS, 'utf8')) as { hosts: Record<string, { pand: string; at: [number, number] }> }).hosts) : [])]);
+const sourceAdds: Node[] = sourceHosts.adds.map((a, i) => ({ id: -(i + 1), lat: a.lat, lon: a.lon, tags: { ...a.tags, 'source:retail': a.id } }));
+const allNodes = [...await nodes(), ...sourceAdds];
+let addressed = 0;
+const byAddress = (n: Node) => {
+  const a = addressHosts.get(String(n.id)); if (!a) return null;
+  const [x, y] = local(a.at[0], a.at[1]), pand = near(x, y).find(c => bagKey(c.id) === a.pand);
+  return pand ? hostOnFront([pand], x, y, id => bagUses[bagKey(id)], facing, open) : null;
+};
+const occupied = new Set<string>();
+for (const n of allNodes) {
+  const tags = n.tags ?? {};
+  if (Number(tags.level) > 0 || !templateForTags(tags)) continue;
+  const [x, y] = local(n.lon, n.lat), h = byAddress(n) ?? hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open);
+  if (h) occupied.add(h.id);
+}
+let spilled = 0, added = 0, onStreet = 0;
+const records: { n: Node; t: RetailTemplate; hit: ReturnType<typeof hostOnFront>; plain: ReturnType<typeof hostOnFront> }[] = [];
+for (const n of allNodes) {
   const tags = n.tags ?? {};
   if (Number(tags.level) > 0) continue;
   const t = templateForTags(tags);
+  if (t && n.id < 0) added++;
   if (!t) continue;
   pois[t] = (pois[t] ?? 0) + 1;
   const [x, y] = local(n.lon, n.lat);
-  const hit = hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open);
+  const plain = hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open), moved1 = t !== 'redLight' ? hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open, true) : plain;
+  const addr = byAddress(n); if (addr) addressed++;
+  const hit = addr ?? (moved1 && plain && moved1.id !== plain.id && occupied.has(moved1.id) ? plain : moved1);
+  records.push({ n, t, hit, plain });
+  if (hit && plain && hit.id !== plain.id) { spilled++; if (explain.size) console.log(`spill ${n.id} ${tags.name ?? ''}: ${bagKey(plain.id)} -> ${bagKey(hit.id)}`); }
   if (explain.has(String(n.id))) {
     console.log(`explain ${n.id} ${tags.name ?? ''} -> ${t} host ${hit ? `${bagKey(hit.id)} ${hit.inside ? 'inside' : 'outside'}, ${hit.front} front ${hit.distanceM.toFixed(1)} m` : 'none'}`);
     for (const c of near(x, y).map(c => ({ c, d: edgeDistM(c.ring, x, y) })).filter(v => v.d < 30).sort((a, b) => a.d - b.d)) {
@@ -96,7 +87,11 @@ for (const n of await nodes()) {
   const held = placed.get(hit.id);
   if (held && RETAIL_TEMPLATES.indexOf(held.t) <= RETAIL_TEMPLATES.indexOf(t)) continue;
   const ring = Math.hypot((n.lon - DAM[0]) * KX, (n.lat - DAM[1]) * KY) / 1000 <= RING_KM;
-  placed.set(hit.id, { t, at: [Math.round(n.lon * 1e6) / 1e6, Math.round(n.lat * 1e6) / 1e6], front: hit.front, name: tags.name ?? '', tags: Object.entries(tags).filter(([k]) => /^(shop|amenity|cuisine|brand|name|addr:street|addr:housenumber|bar|origin)$/.test(k)).map(([k, v]) => `${k}=${v}`).join(' '), centre: insideCentre(n.lon, n.lat), ring });
+  // Round 8: on a corner pand, the front goes on the wall facing the node's addr:street (retailAddress.ts atOnStreetWall).
+  let at: [number, number] = [n.lon, n.lat];
+  const pand = tags['addr:street'] && hit.front === 'street' ? near(x, y).find(c => c.id === hit.id) : undefined;
+  if (pand) { const p = atOnStreetWall(pand.ring, x, y, tags['addr:street'], namedSegs.filter(s => Math.abs(s.x0 - x) < 80 && Math.abs(s.y0 - y) < 80)); if (p && Math.hypot(p[0] - x, p[1] - y) > 0.5) { at = lngLatOf(p[0], p[1]); onStreet++; } }
+  placed.set(hit.id, { t, at: [Math.round(at[0] * 1e6) / 1e6, Math.round(at[1] * 1e6) / 1e6], front: hit.front, name: tags.name ?? '', tags: Object.entries(tags).filter(([k]) => /^(shop|amenity|cuisine|brand|name|addr:street|addr:housenumber|bar|origin)$/.test(k)).map(([k, v]) => `${k}=${v}`).join(' '), centre: insideCentre(n.lon, n.lat), ring, ...(t === 'bike' ? { bike: bikeShopClass(tags) } : {}) });
 }
 
 const rows = RETAIL_TEMPLATES.map(t => {
@@ -107,13 +102,13 @@ console.log('template        POIs  unhosted  pands  ring(<=' + RING_KM + 'km Dam
 for (const r of rows) console.log(`${r.t.padEnd(14)} ${String(r.pois).padStart(5)} ${String(r.unhosted).padStart(9)} ${String(r.pands).padStart(6)} ${String(r.ring).padStart(8)} ${String(r.centre).padStart(8)}`);
 // The named hosting regressions (retailGround.test.ts): each node's candidates within 30 m, rings in local metres
 // around the node, and each wall's street/open reading, so the test runs hostOnFront without the city.
-const REGRESSIONS: Record<string, string> = { '2809217417': 'Kinkerstraat 252-H, MapFour (bike)', '2809219299': 'Kinkerstraat 288, Cycle (bike)', '5198582619': 'Nieuwe Hemweg 11, AH to go at a BP station: its front, not the car wash' };
+const REGRESSIONS: Record<string, string> = { '2809217417': 'Kinkerstraat 252-H, MapFour (bike)', '2809219299': 'Kinkerstraat 288, Cycle (bike)', '5198582619': 'Nieuwe Hemweg 11, AH to go at a BP station: its front, not the car wash', '10829630288': 'Haarlemmerdijk 95, Keurslagerij Pouw: the 15 m white shopfront next door (349 m2 shop), not the 23 m2 unit its node falls in' };
 if (process.argv.includes('--fixture')) {
   const cases = [];
   for (const n of await nodes()) {
     if (!REGRESSIONS[String(n.id)]) continue;
     const [x, y] = local(n.lon, n.lat), cands = near(x, y).filter(c => edgeDistM(c.ring, x, y) < 30 || insideRingOf(c.ring, x, y));
-    const hit = hostOnFront(cands, x, y, id => bagUses[bagKey(id)], facing, open);
+    const hit = hostOnFront(cands, x, y, id => bagUses[bagKey(id)], facing, open, true);
     cases.push({ node: n.id, what: REGRESSIONS[String(n.id)], expect: hit && { pand: bagKey(hit.id), front: hit.front },
       candidates: cands.map(c => ({ id: bagKey(c.id), uses: bagUses[bagKey(c.id)] ?? null, ring: c.ring.map(([px, py]) => [+(px - x).toFixed(2), +(py - y).toFixed(2)]), street: ringEdges(c.ring).map(e => facing(c, e)), open: ringEdges(c.ring).map(e => open(c, e)) })) });
   }
@@ -130,8 +125,66 @@ if (samples) {
   }
 }
 const out = { version: 1, source: '© OpenStreetMap contributors (ODbL), Overpass ' + new Date(fs.statSync(CACHE).mtime).toISOString().slice(0, 10), templates: [...RETAIL_TEMPLATES], buildings: Object.fromEntries([...placed].sort().map(([id, p]) => [id, [RETAIL_TEMPLATES.indexOf(p.t), p.at[0], p.at[1], ...(TEMPLATE_LOOKS[p.t].word === 'name' && signWord(p.name) ? [signWord(p.name)] : p.front === 'nearest' ? [''] : []), ...(p.front === 'nearest' ? [1] : [])]])) };
+// Round 4: the pui paint measured on street panoramas (measure-pui.ts; receipts stay in its file), for any shop pand.
+const PUI = 'data/retail-ground/pui-paint.json';
+if (fs.existsSync(PUI)) {
+  const pui = JSON.parse(fs.readFileSync(PUI, 'utf8')) as { buildings: Record<string, { paint?: string }> };
+  const paint = Object.fromEntries(Object.entries(pui.buildings).filter(([, v]) => typeof v.paint === 'string').map(([id, v]) => [id, v.paint!]).sort((a, b) => a[0] < b[0] ? -1 : 1));
+  Object.assign(out, { paint });
+  // Round 5b: which readings were dark (only a pale guess gives way to them: retailPuiPaint.ts paintOverGuess).
+  Object.assign(out, { dark: Object.entries(pui.buildings as Record<string, { cls?: string }>).filter(([id, v]) => v.cls === 'dark' && paint[id]).map(([id]) => id).sort() });
+  console.log(`pui paint: ${Object.keys(paint).length} pands (${Object.keys(paint).filter(id => out.buildings[id]).length} with a template)`);
+  // Round 5: the street prior for unmeasured plain shops (retailPuiPaint.ts streetPriors). A pand's street is the named
+  // street way nearest its centroid within PRIOR_STREET_M.
+  const PRIOR_STREET_M = 30;
+  const named: { name: string; x0: number; y0: number; x1: number; y1: number }[] = [];
+  for (const w of JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as Array<{ name?: string; highway?: string; path: [number, number][] }>) {
+    if (!w.name || (w.highway && !FRONT_HIGHWAYS.has(w.highway))) continue;
+    for (let i = 1; i < w.path.length; i++) { const a = local(w.path[i - 1][1], w.path[i - 1][0]), b = local(w.path[i][1], w.path[i][0]); named.push({ name: w.name, x0: a[0], y0: a[1], x1: b[0], y1: b[1] }); }
+  }
+  const namedGrid = new SegmentGrid(Float32Array.from(named.flatMap(n => [n.x0, n.y0, n.x1, n.y1])));
+  const byId = new Map<string, Building>(); for (const list of grid.values()) for (const b of list) byId.set(b.id, b);
+  const streetOf = (id: string): string => {
+    const b = byId.get(id); if (!b) return '';
+    let best = '', bd = PRIOR_STREET_M;
+    for (const i of namedGrid.near(b.cx - PRIOR_STREET_M, b.cy - PRIOR_STREET_M, b.cx + PRIOR_STREET_M, b.cy + PRIOR_STREET_M)) { const n = named[i], d = edgeDistM([[n.x0, n.y0], [n.x1, n.y1]], b.cx, b.cy); if (d < bd) { bd = d; best = n.name; } }
+    return best;
+  };
+  const reads: StreetRead[] = Object.entries(pui.buildings as Record<string, { paint?: string; cls?: StreetRead['cls'] }>).filter(([, v]) => v.paint && v.cls).map(([id, v]) => ({ street: streetOf(id), cls: v.cls!, paint: v.paint! }));
+  const priors = streetPriors(reads);
+  const plainShops = Object.keys((JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/shopfronts.json', 'utf8')) as { buildings: Record<string, number> }).buildings).filter(id => !out.buildings[id] && !paint[id]);
+  const prior: Record<string, string> = {};
+  for (const id of plainShops.sort()) { const p = priors.get(streetOf(id)); if (p) prior[id] = p.paint; }
+  Object.assign(out, { prior });
+  const cls = [...priors.values()].reduce((m, p) => (m[p.cls] = (m[p.cls] ?? 0) + 1, m), {} as Record<string, number>);
+  console.log(`street priors: ${priors.size} streets (${JSON.stringify(cls)}); ${Object.keys(prior).length} of ${plainShops.length} unmeasured plain shops take one`);
+}
+// Round 7: the awnings measured on panoramas (measure-awning.ts), for template pands.
+{
+  const AWN = 'data/retail-ground/awnings.json';
+  if (fs.existsSync(AWN)) {
+    const a = (JSON.parse(fs.readFileSync(AWN, 'utf8')) as { buildings: Record<string, { hex: string }> }).buildings;
+    const awnings = Object.fromEntries(Object.entries(a).map(([k, v]) => [`NL.IMBAG.Pand.${k}`, v.hex] as const).filter(([id]) => out.buildings[id]).sort((p, q) => p[0] < q[0] ? -1 : 1));
+    if (Object.keys(awnings).length) Object.assign(out, { awnings });
+    console.log(`awnings: ${Object.keys(awnings).length} of ${Object.keys(a).length} measured pands have a template`);
+  }
+}
+// Round 6: each bike shop's class (retailBikes.ts BIKE_RULE: used, premium or rental), which decides what stands outside
+// and in the window; the rule, the counts per class and step, and the panorama spot check go to bike-classes.json.
+{
+  const bikes = [...placed].filter(([, p]) => p.bike).sort((a, b) => a[0] < b[0] ? -1 : 1);
+  Object.assign(out, { bikes: Object.fromEntries(bikes.map(([id, p]) => [id, bikeCode(p.bike!)])) });
+  const count = (f: (b: ReturnType<typeof bikeShopClass>) => string) => bikes.reduce((m, [, p]) => (m[f(p.bike!)] = (m[f(p.bike!)] ?? 0) + 1, m), {} as Record<string, number>);
+  const BIKES = 'data/retail-ground/bike-classes.json', prev = fs.existsSync(BIKES) ? JSON.parse(fs.readFileSync(BIKES, 'utf8')) : {};
+  fs.writeFileSync(BIKES, JSON.stringify({ ...prev, rule: 'src/canalRecall/retailBikes.ts BIKE_RULE (header comment), first match wins', classes: count(b => b.cls), steps: count(b => `${b.step} ${b.cls}: ${b.why}`), ringByClass: bikes.filter(([, p]) => p.ring).reduce((m, [, p]) => (m[p.bike!.cls] = (m[p.bike!.cls] ?? 0) + 1, m), {} as Record<string, number>) }, null, 1));
+  console.log(`bike classes: ${JSON.stringify(count(b => b.cls))} (ring ${bikes.filter(([, p]) => p.ring).length}) -> ${BIKES}`);
+}
+if (process.argv.includes('--addresses')) await auditAddresses();
+console.log(`address and source hosts (${ADDRESS_HOSTS}, ${SOURCE_HOSTS}): ${addressed} POIs hosted by an address or second source; ${added} template POIs added by a second source`);
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, JSON.stringify(out));
+console.log(`fronts moved onto the wall facing addr:street (atOnStreetWall): ${onStreet}`);
+console.log(`spill (retailHosting.ts SPILL): ${spilled} POIs moved to a much bigger shop next door`);
 console.log(`staged ${placed.size} pands -> ${STAGING} (${(fs.statSync(STAGING).size / 1024).toFixed(0)} KB)`);
 if (process.argv.includes('--publish')) { fs.copyFileSync(STAGING, PUBLISHED); console.log(`published -> ${PUBLISHED}`); }
 
@@ -139,4 +192,60 @@ function edgeDistM(ring: [number, number][], x: number, y: number): number {
   let best = Infinity;
   for (let i = 0; i + 1 < ring.length; i++) { const [ax, ay] = ring[i], [bx, by] = ring[i + 1], dx = bx - ax, dy = by - ay, l = dx * dx + dy * dy, t = l ? Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / l)) : 0; best = Math.min(best, Math.hypot(x - ax - dx * t, y - ay - dy * t)); }
   return best;
+}
+
+// Round 7 audit (--addresses): every bike shop, every POI sharing its host pand with another POI and every POI
+// within AUDIT_NEIGHBOUR_M of another POI hosted elsewhere. For each with addr:street + addr:housenumber, fetch the BAG
+// VBOs within VBO_BOX_M (PDOK BAG OGC v2, cached per node), find the pand holding the address and compare it with the
+// geometric host. Writes data/retail-ground/hosting-audit.json and stages the differing ones in address-hosts.json.
+async function auditAddresses() {
+  const AUDIT_NEIGHBOUR_M = 12, VBO_BOX_M = 30, DIR = '.cache/retail-ground/vbo';
+  fs.mkdirSync(DIR, { recursive: true });
+  const byHost = new Map<string, number>(); for (const r of records) if (r.hit) byHost.set(r.hit.id, (byHost.get(r.hit.id) ?? 0) + 1);
+  const pts = records.map(r => local(r.n.lon, r.n.lat));
+  const why = (i: number): string => {
+    const r = records[i];
+    if (r.t === 'bike') return 'bike';
+    if (r.hit && byHost.get(r.hit.id)! > 1) return 'shared';
+    for (let j = 0; j < records.length; j++) if (j !== i && Math.abs(pts[j][0] - pts[i][0]) < AUDIT_NEIGHBOUR_M && Math.abs(pts[j][1] - pts[i][1]) < AUDIT_NEIGHBOUR_M && Math.hypot(pts[j][0] - pts[i][0], pts[j][1] - pts[i][1]) < AUDIT_NEIGHBOUR_M && records[j].hit?.id !== r.hit?.id) return 'neighbour';
+    return '';
+  };
+  const audit: Array<{ node: number; name: string; t: string; why: string; addr: string; status: string; host: string | null; address: string | null; vbo?: [number, number] }> = [];
+  const dLat = VBO_BOX_M / KY, dLon = VBO_BOX_M / KX;
+  let fetched = 0;
+  for (let i = 0; i < records.length; i++) {
+    const w = why(i); if (!w) continue;
+    const { n, t, hit } = records[i], tags = n.tags ?? {}, addr = `${tags['addr:street'] ?? ''} ${tags['addr:housenumber'] ?? ''}`.trim();
+    const row = { node: n.id, name: tags.name ?? '', t, why: w, addr, status: 'no-address', host: hit ? bagKey(hit.id) : null, address: null as string | null } as (typeof audit)[number];
+    audit.push(row);
+    if (!tags['addr:street'] || !tags['addr:housenumber']) continue;
+    const file = path.join(DIR, `${n.id}.json`);
+    if (!fs.existsSync(file)) {
+      const url = `https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?f=json&limit=1000&bbox=${(n.lon - dLon).toFixed(6)},${(n.lat - dLat).toFixed(6)},${(n.lon + dLon).toFixed(6)},${(n.lat + dLat).toFixed(6)}`;
+      const res = await fetch(url, { headers: { 'User-Agent': 'MapRecall/1.0 (+https://github.com/blackmad/map-recall2)' } });
+      if (!res.ok) { row.status = `fetch ${res.status}`; continue; }
+      const j = await res.json() as { features: Array<{ properties: Record<string, unknown>; geometry: { coordinates: [number, number] } }> };
+      const slim: Vbo[] = j.features.map(f => ({ street: String(f.properties.openbare_ruimte_naam ?? ''), short: String(f.properties.openbare_ruimte_naam_kort ?? ''), nr: Number(f.properties.huisnummer), letter: (f.properties.huisletter as string | null) ?? null, add: (f.properties.toevoeging as string | null) ?? null, use: String(f.properties.gebruiksdoel ?? ''), m2: Number(f.properties.oppervlakte ?? 0), at: [+f.geometry.coordinates[0].toFixed(7), +f.geometry.coordinates[1].toFixed(7)] }));
+      fs.writeFileSync(file, JSON.stringify({ url, fetched: new Date().toISOString().slice(0, 10), vbos: slim }));
+      fetched++;
+    }
+    const vbos = (JSON.parse(fs.readFileSync(file, 'utf8')) as { vbos: Vbo[] }).vbos;
+    const hits = matchAddress(tags['addr:street'], tags['addr:housenumber'], vbos);
+    if (!hits.length) { row.status = 'no-match'; continue; }
+    const [x, y] = local(n.lon, n.lat);
+    const local1 = hits.map(v => ({ ...v, at: local(v.at[0], v.at[1]) }));
+    const pand = addressPand(local1, near(x, y), insideRingOf);
+    if (!pand) { row.status = 'no-pand'; continue; }
+    row.address = bagKey(pand.id);
+    const best = hits.find(v => insideRingOf(pand.ring, ...local(v.at[0], v.at[1])))!;
+    row.vbo = best.at;
+    row.status = row.address === row.host ? 'match' : 'moved';
+  }
+  const count = (k: 'status' | 'why') => audit.reduce((m, r) => (m[r[k]] = (m[r[k]] ?? 0) + 1, m), {} as Record<string, number>);
+  const byWhy: Record<string, Record<string, number>> = {};
+  for (const r of audit) { byWhy[r.why] ??= {}; byWhy[r.why][r.status] = (byWhy[r.why][r.status] ?? 0) + 1; }
+  fs.writeFileSync('data/retail-ground/hosting-audit.json', JSON.stringify({ rule: 'src/canalRecall/retailAddress.ts; build-templates.ts auditAddresses', date: new Date().toISOString().slice(0, 10), source: 'BAG verblijfsobject, PDOK OGC API v2 (CC0)', status: count('status'), byWhy, moved: audit.filter(r => r.status === 'moved'), rows: audit }));
+  const hosts = Object.fromEntries(audit.filter(r => r.status === 'moved').map(r => [String(r.node), { pand: r.address!, at: r.vbo!, addr: r.addr, name: r.name, was: r.host }]));
+  fs.writeFileSync(ADDRESS_HOSTS, JSON.stringify({ note: 'build-templates.ts --addresses: OSM nodes whose BAG address lies in another pand than the geometric host; the build hosts them here', hosts }, null, 1));
+  console.log(`address audit: ${audit.length} POIs (${JSON.stringify(count('why'))}), ${fetched} fetched; ${JSON.stringify(count('status'))} -> data/retail-ground/hosting-audit.json, ${ADDRESS_HOSTS}`);
 }
