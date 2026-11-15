@@ -14,8 +14,8 @@ import { PRIOR, VEHICLE_GATE, paintOverGuess, clusters, drawnPaint, labHex, okla
 
 const g = globalThis as { __canalRecallRetailGround?: boolean };
 
-test('flag: off by default, URL beats env', () => {
-  assert.equal(retailGroundEnabled(null, null), false);
+test('flag: on by default, URL beats env', () => {
+  assert.equal(retailGroundEnabled(null, null), true);
   assert.equal(retailGroundEnabled('?retailGround=1', null), true);
   assert.equal(retailGroundEnabled('?retailGround=0', '1'), false);
   assert.equal(retailGroundEnabled('', '1'), true);
@@ -151,7 +151,8 @@ function paintCalls(v: BayVariant): string[] {
 }
 
 test('shop cells: the pui with the flag on (no props), unchanged with it off', () => {
-  const kinds = ['groundShop', 'shopCafe', 'shopWindow', 'shopBar', 'shopDeli', 'shopFlorist', 'shopBike'] as const;
+  // shopBar is held (RETAIL_HELD_KINDS, round n): it keeps the flag-off brown-café cell, tested in brownCafe.test.ts.
+  const kinds = ['groundShop', 'shopCafe', 'shopWindow', 'shopDeli', 'shopFlorist', 'shopBike'] as const;
   for (const kind of kinds) {
     const v: BayVariant = { archetype: 'canal', kind, windows: 2, shape: 'rect', shutters: false, paintedFrames: false };
     g.__canalRecallRetailGround = false;
@@ -516,4 +517,12 @@ test('round 7: a measured awning draws in its colour, replaces the template awni
   assert.equal(measured.length, green.length);
   const g = (ts: typeof green) => ts.filter(t => t.hex === TEMPLATE_LOOKS.greengrocer.awning).length; // the fascia shares the green
   assert.ok(g(measured) < g(green) && measured.some(t => t.hex === '#1f1f21'));
+});
+
+// Named regression, round n 2026-11-15: café Hendrix (pand 0363100012132271, feedback 7be6c55a) drew as an opaque dark
+// box with lit dots under the brownBar template; pubs and brown cafés keep the glazed café cell until a blind win.
+test('brownBar is held: its cell keeps the flag-off painter', async () => {
+  const { RETAIL_HELD, RETAIL_HELD_KINDS } = await import('./retailTemplates.js');
+  assert.ok(RETAIL_HELD.includes('brownBar'));
+  assert.ok(RETAIL_HELD_KINDS.includes('shopBar'));
 });
