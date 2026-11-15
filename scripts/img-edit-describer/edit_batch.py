@@ -47,10 +47,11 @@ def main():
     if a.te_bits:
         import mlx.core as mx
         import mlx.nn as nn
-        nn.quantize(model.text_encoder, bits=a.te_bits, class_predicate=lambda p, m: hasattr(m, "to_quantized"))
+        nn.quantize(model.text_encoder, bits=a.te_bits, class_predicate=lambda p, m: hasattr(m, "to_quantized") and m.weight.shape[-1] % 64 == 0)
         mx.eval(model.text_encoder.parameters())
         mx.clear_cache()
-    print(f"load {time.time() - t0:.1f} s", flush=True)
+    import mlx.core as mx
+    print(f"load {time.time() - t0:.1f} s  active {mx.get_active_memory() / 2**30:.1f} GB  peak {mx.get_peak_memory() / 2**30:.1f} GB", flush=True)
     from PIL import Image
     for j in todo:
         w, h = Image.open(j["input"]).size
@@ -65,7 +66,7 @@ def main():
         dt = time.time() - t
         json.dump({"seconds": round(dt, 1), "width": args.width, "height": args.height, "steps": a.steps, "lora": a.lora, "prompt": j["prompt"]},
                   open(j["output"] + ".json", "w"))
-        print(f"{dt:.1f} s  {args.width}x{args.height}  {j['output']}", flush=True)
+        print(f"{dt:.1f} s  {args.width}x{args.height}  {j['output']}  peak {mx.get_peak_memory() / 2**30:.1f} GB", flush=True)
 
 
 if __name__ == "__main__":
