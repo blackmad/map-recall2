@@ -1,5 +1,5 @@
 {
-  "toolchain": "fb849dc1817034ce1ee3f44511b44b02a8c52b7be31a262f832d50efbdcd744a",
+  "toolchain": "7314ced0bbe877b7c06b449371d104f3c17c23babf4445ed404a9e48c989a0bb",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -42,7 +42,7 @@
     "auschwitz-monument": "2773edfd0f5ae8e26ace02a71739ee2051efad2d669c7a7ee7fd5d93f186f063",
     "autopon": "81d97bc5e6064fad1c7179f49d777102bf4b299376240666b1b4e75114ddea30",
     "badhuistheater": "483b88d5d47f72316bedcd9d7127836bcd4c0d4e92e5a84701819cf4d72568c1",
-    "banks-mansion": "4365037a5792e0072cf5a37b6de903fb7559177ca831b894911387b6a9e05c0d",
+    "banks-mansion": "1cebf801ad6e53e4b175f1cb0aa65aaf1af4783a313266641b3705369d41cce6",
     "barbizon-palace": "4c458c9adf55a3adfaa86ba9998b1e78fa08900d9f756d2e4fc0c304197228fa",
     "barlaeus-gymnasium": "ea340e7d06e629718c1562207e2f9680d5c4062ba02899eab2d7608d221baf23",
     "beest-boulders": "6f9a2a3616a745395bd11d6987acbcdc195d19c2e9b1b5e076fb6c74a956c33a",
@@ -111,6 +111,7 @@
     "de-duif": "93ba384556e88fdbc4ea28f255df861c9f953ad739df0514b76b735183e17d03",
     "de-gooyer": "66b744bc3d81fabb1d209db82237e9e40aa312839634b1dfd06d29f7cb63e7a1",
     "de-hallen": "b8c2892e147228a3cf14ec4a422eb9c73950cbd1b01cb1033a6cbc034f6fea8d",
+    "de-jaren": "3ca41ecc374b8c3687cc74f7cc78e75bd87c84234d0676a323c978f1ce827706",
     "de-krakeling": "5c9402ddb4023e6a1fa2615b17f76612d16922c387fc9496c21540ed71550921",
     "de-makroon": "f1822c222b6bc40d717be659b5e8a1e818a0596e2be4ccd47073e598327c9fe0",
     "de-nederlandsche-bank": "56313a20f52e3f29a02252b021c9cc1be236805f2adff9ae0fefcef046de2f73",
@@ -362,7 +363,7 @@
     "politie-nieuwezijds-voorburgwal": "401c5fba4e5a25765ae67aaab4d15cfa336001f6d76f10f61250a5658c886b91",
     "politie-oost-watergraafsmeer": "ae93efa603729f4d1f51b477e58dfdffdc6cb549e1d4390a1c9a8b938a0d48e5",
     "politiebureau-postjesweg": "c9839d84bbe8114f49b69147d2046861d43b2b5f1dd4065682bf520b7e3ebd2d",
-    "politiebureau-raampoort": "d8cf930e03c38cd2171e5531144abec59ba393d1b6b5054630a196a871eb0a71",
+    "politiebureau-raampoort": "dfa0100992ac536f781dcab887012b146972e48437a25e5ad3e2e5fc5a3a9bc2",
     "pont-13": "dd1d35fa1dc8cbd46037d4788f6911e0e7225697da2033ba20a9470a2d88d3ce",
     "pontsteiger": "f8bdeaf00137ff2ab747c3f2115e2dc39389f0b07233096a44200df8ba1c66b6",
     "portuguese-synagogue": "bc887fee119a92d463292172896abbfe9f75c4100ff3b36d66a07d84cc4e24ed",

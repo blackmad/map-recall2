@@ -1,0 +1,233 @@
+{
+ "schemaVersion": 1,
+ "id": "de-jaren",
+ "pand": "0363100012180413",
+ "brief": "scripts/landmarks/de-jaren-brief.md",
+ "signature": [
+  "ob-mosaic",
+  "entrance-bay",
+  "arched-ground-windows",
+  "blade-sign",
+  "conservatory",
+  "parapet-slits"
+ ],
+ "walls": [
+  {
+   "tag": "w01-329",
+   "bearing": 329,
+   "lengthM": 17.3,
+   "centre": [
+    4.895333,
+    52.368088
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002356_pano_0005_000346",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-bay",
+     "kind": "other",
+     "where": "stone-framed entrance bay with a round-arched doorway over steps, three-light windows and a pointed gable above the roofline",
+     "approxSizeM": [
+      4.2,
+      16.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002356_pano_0005_000346",
+     "how": "stone pilasters, arch band, dark door reveal with glazed door, three steps, two three-light windows, brick gable with stone coping"
+    },
+    {
+     "id": "ob-mosaic",
+     "kind": "lettering",
+     "where": "arched gold mosaic panel lettered O&B at the top of the entrance bay",
+     "approxSizeM": [
+      2.8,
+      1.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002356_pano_0005_000346",
+     "how": "gold arch panel in a stone band, O&B in block letters; the mosaic pattern is not drawn"
+    },
+    {
+     "id": "window-columns",
+     "kind": "window-shape",
+     "where": "four columns of two-light windows on two floors with segmental heads and stone keystone blocks",
+     "approxSizeM": [
+      1.5,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002356_pano_0005_000346",
+     "how": "win() with segmental greyBrick heads and stone blocks at the springing"
+    },
+    {
+     "id": "arched-ground-windows",
+     "kind": "window-shape",
+     "where": "two groups of three tall ground-floor windows between stone piers under small segmental arches",
+     "approxSizeM": [
+      4.6,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002356_pano_0005_000346",
+     "how": "stone piers, one-light windows with transoms, segmental heads"
+    },
+    {
+     "id": "parapet-slits",
+     "kind": "other",
+     "where": "parapet with groups of vertical slit balusters over each window column",
+     "approxSizeM": [
+      1.6,
+      1.15
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002356_pano_0005_000346",
+     "how": "four dark slit slabs per column"
+    },
+    {
+     "id": "blade-sign",
+     "kind": "sign",
+     "where": "vertical blade sign 'cafe de jaren' on a bracket",
+     "approxSizeM": [
+      0.6,
+      5.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002356_pano_0005_000346",
+     "how": "dark plate perpendicular to the front with bracket rails; the lettering is not drawn"
+    },
+    {
+     "id": "courses",
+     "kind": "other",
+     "where": "stone plinth, string courses and the coping",
+     "approxSizeM": [
+      17.3,
+      0.25
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002356_pano_0005_000346",
+     "how": "stone slabs"
+    }
+   ]
+  },
+  {
+   "tag": "w02-150",
+   "bearing": 150,
+   "lengthM": 13.8,
+   "centre": [
+    4.895566,
+    52.3679265
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001174",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "conservatory",
+     "kind": "window-shape",
+     "where": "the cafe's full-height glass conservatory on the Amstel with the roof terrace and its white balustrade",
+     "approxSizeM": [
+      13.8,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001174",
+     "how": "glass wall with mullions every 1.05 m and a transom, cream cornice, balustrade of rails and posts every 0.3 m"
+    },
+    {
+     "id": "water-terrace",
+     "kind": "canopy",
+     "where": "timber terrace decks on piles in the Amstel with tables",
+     "approxSizeM": [
+      14,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_001174",
+     "skip": {
+      "reason": "not-visible",
+      "note": "on the water, outside the BAG footprint; furniture"
+     }
+    },
+    {
+     "id": "heineken-sign",
+     "kind": "sign",
+     "where": "green brewery sign on the roof",
+     "approxSizeM": [
+      2,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_001174",
+     "skip": {
+      "reason": "temporary",
+      "note": "advertising"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-55",
+   "bearing": 55,
+   "lengthM": 6.8,
+   "centre": [
+    4.8955075,
+    52.36787
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001176",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "conservatory-side",
+     "kind": "window-shape",
+     "where": "side of the conservatory, glazed, the brick block behind",
+     "approxSizeM": [
+      6.8,
+      6.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001176",
+     "how": "3DBAG shell; glazing drawn on the river front only"
+    }
+   ]
+  },
+  {
+   "tag": "w04-145",
+   "bearing": 145,
+   "lengthM": 4.4,
+   "centre": [
+    4.8955095,
+    52.3678335
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001280",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "banded-bay",
+     "kind": "other",
+     "where": "brick bay on the Amstel with white stone bands on the lower storeys and wide windows above",
+     "approxSizeM": [
+      4.4,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001280",
+     "how": "cream bands every 0.7 m to 6.4 m, two three-light windows"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
