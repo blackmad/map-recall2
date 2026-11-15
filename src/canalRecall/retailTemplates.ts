@@ -61,12 +61,13 @@ export function puiInteriorUv(): [number, number, number, number] {
  */
 export const RETAIL_TEMPLATES = [
   'ah', 'jumbo', 'dirk', 'etos', 'hema', 'action', 'febo', 'stach', 'sla', 'bruna', 'bestseller', 'duck', 'moneyTransfer',
+  'gallgall', 'mcdonalds',
   'coffeeshop', 'smartshop', 'brownBar', 'bike', 'redLight',
   'doner', 'toko', 'butcher', 'greengrocer', 'florist', 'turkishBakery', 'bakery', 'nuts', 'frites', 'cheese', 'waffle', 'pancake',
   'souvenir', 'books', 'tobacco', 'phone', 'gelato', 'exchange',
 ] as const;
 export type RetailTemplate = (typeof RETAIL_TEMPLATES)[number];
-export const CHAIN_TEMPLATES: readonly RetailTemplate[] = ['ah', 'jumbo', 'dirk', 'etos', 'hema', 'action', 'febo', 'stach', 'sla', 'bruna', 'bestseller', 'duck', 'moneyTransfer'];
+export const CHAIN_TEMPLATES: readonly RetailTemplate[] = ['ah', 'jumbo', 'dirk', 'etos', 'hema', 'action', 'febo', 'stach', 'sla', 'bruna', 'bestseller', 'duck', 'moneyTransfer', 'gallgall', 'mcdonalds'];
 
 /** brand:wikidata ids (checked against the 2026-11-14 Overpass answer: brand + wikidata pairs per name). */
 const WIKIDATA: Record<string, RetailTemplate> = {
@@ -79,6 +80,7 @@ const NAMES: Array<[RegExp, RetailTemplate]> = [
   [/^etos\b/, 'etos'], [/^hema$/, 'hema'], [/^action$/, 'action'], [/^febo\b/, 'febo'], [/^stach\b/, 'stach'], [/^sla$/, 'sla'],
   [/^bruna\b/, 'bruna'], [/^bestsellers?( amsterdam)?$/, 'bestseller'], [/duck(s)? store/, 'duck'],
   [/western union|^ria\b|moneygram/, 'moneyTransfer'],
+  [/^gall ?& ?gall\b/, 'gallgall'], [/^mcdonald'?s\b/, 'mcdonalds'],
 ];
 const has = (list: string | undefined, re: RegExp) => !!list && list.toLowerCase().split(/[;,]/).some(v => re.test(v.trim()));
 const FOOD = new Set(['fast_food', 'restaurant']);
@@ -184,6 +186,13 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   bestseller: { fascia: '#1d1d1b', letters: '#ffffff', word: 'BESTSELLER', content: 'magazines', lit: true, pavement: 'racks' },
   duck: { fascia: '#ffd400', letters: '#1d1d1b', word: 'DUCK STORE', content: 'ducks', lit: true },
   moneyTransfer: { fascia: '#ffdd00', letters: '#1d1d1b', word: 'MONEY TRANSFER', content: 'stickers', lit: true },
+  // Round 6, measured on open panoramas (data/retail-ground/template-samples.json chains): Gall & Gall, Utrechtsestraat
+  // and three more: a near-black board (#282221) and front (#140e0f) with off-white letters (#d6d4c8); one historic
+  // branch is cream (held as the exception). McDonald's: charcoal or dark burgundy bands with white letters (Damrak
+  // McCafe, Leidsestraat, Ferdinand Bolstraat); its golden M wants the second logo layer (not drawn yet).
+  // The glyph cell has no & or apostrophe: the words render GALL  GALL and MCDONALDS.
+  gallgall: { fascia: '#282221', letters: '#e6e3d6', word: 'GALL & GALL', content: 'shelves', lit: true, frame: '#2a2321' },
+  mcdonalds: { fascia: '#2b2422', letters: '#ffffff', word: 'MCDONALDS', content: 'counter', lit: true, frame: '#3a3533' },
   coffeeshop: { fascia: '#1f5a2e', letters: '#e8f0d8', word: 'name', content: 'frosted', lit: false },
   smartshop: { fascia: '#2a1640', letters: '#ff4fd8', word: 'name', content: 'neon', lit: true },
   brownBar: { fascia: '#24160e', letters: '#e2c48a', word: 'name', content: 'barGlow', lit: false, blade: '#7a1f12', frame: '#2a1a10', surround: '#2e1c12', paneM: 1.3 },

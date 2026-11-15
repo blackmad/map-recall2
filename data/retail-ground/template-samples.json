@@ -564,5 +564,340 @@
     }
    ]
   }
+ },
+ "chains": {
+  "note": "Round 6 chains: 5 seeded ring branches each, cut as the generic samples; photos in artifacts/retail-look/chain-samples (not committed). AH to go already takes the ah template (templateForTags NAMES).",
+  "categories": {
+   "gallgall": {
+    "verdict": "built",
+    "why": "4 of 5 clear: three near-black fronts with white lettering (483553142 Utrechtsestraat area, 483553148 beside an AH, 483553534), one cream historic front (2788280913); measured board #282221, front #140e0f, letters #d6d4c8 on 483553142",
+    "samples": [
+     {
+      "node": 483553142,
+      "name": "Gall & Gall",
+      "pand": "NL.IMBAG.Pand.0363100012178795",
+      "pano": "TMX7316010203-001053_pano_0000_000823",
+      "date": "2019-01-14"
+     },
+     {
+      "node": 483553148,
+      "name": "Gall & Gall",
+      "pand": "w1080954285",
+      "pano": "b_20250108_1349_Track19_Sphere_00226",
+      "date": "2025-01-08"
+     },
+     {
+      "node": 483553534,
+      "name": "Gall & Gall",
+      "pand": "NL.IMBAG.Pand.0363100012173862",
+      "pano": "b_20241216_0911_Track04_Sphere_00255",
+      "date": "2024-12-16"
+     },
+     {
+      "node": 2721299725,
+      "name": "Gall & Gall",
+      "pand": "NL.IMBAG.Pand.0363100012176515",
+      "pano": "TMX7316010203-000704_pano_0000_002027",
+      "date": "2018-05-03"
+     },
+     {
+      "node": 2788280913,
+      "name": "Gall & Gall",
+      "pand": "NL.IMBAG.Pand.0363100012233623",
+      "pano": "TMX7316010203-001598_pano_0000_000307",
+      "date": "2020-01-29"
+     }
+    ]
+   },
+   "mcdonalds": {
+    "verdict": "built",
+    "why": "3 clear (2721722757 McCafe dark charcoal front, 34044096 dark burgundy front with white letters and the golden M, and the Ferdinand Bolstraat branch beside Holland & Barrett on the hollandBarrett sheet): dark band, white letters; the golden M is not drawn (needs a second logo layer)",
+    "samples": [
+     {
+      "node": 34044096,
+      "name": "McDonald's",
+      "pand": "w267116733",
+      "pano": "b_20241203_1333_Track15_Sphere_00289",
+      "date": "2024-12-03"
+     },
+     {
+      "node": 1552005229,
+      "name": "McDonald's",
+      "pand": "NL.IMBAG.Pand.0363100012170951",
+      "pano": "TMX7316010203-002628_pano_0000_000473",
+      "date": "2022-06-27"
+     },
+     {
+      "node": 2721722757,
+      "name": "McDonald's",
+      "pand": "NL.IMBAG.Pand.0363100012168049",
+      "pano": "TMX7316010203-000720_pano_0000_000266",
+      "date": "2018-05-15"
+     },
+     {
+      "node": 2724000978,
+      "name": "McDonald's",
+      "pand": "NL.IMBAG.Pand.0363100012165125",
+      "pano": "TMX7316010203-001530_pano_0004_000105",
+      "date": "2019-12-20"
+     },
+     {
+      "node": 2730039493,
+      "name": "McDonald's",
+      "pand": "NL.IMBAG.Pand.0363100012174474",
+      "pano": "TMX7316010203-001178_pano_0001_003266",
+      "date": "2019-05-13"
+     }
+    ]
+   },
+   "kruidvat": {
+    "verdict": "held",
+    "why": "3 show red and white (flags, red discs on the glass) but every clear cut is too far to measure the board; resample closer",
+    "samples": [
+     {
+      "node": 2788286547,
+      "name": "Kruidvat",
+      "pand": "NL.IMBAG.Pand.0363100012161608",
+      "pano": "TMX7316010203-001068_pano_0002_000281",
+      "date": "2019-01-18"
+     },
+     {
+      "node": 2808849858,
+      "name": "Kruidvat",
+      "pand": "NL.IMBAG.Pand.0363100012236159",
+      "pano": "TMX7316010203-002552_pano_0002_001449",
+      "date": "2022-04-29"
+     },
+     {
+      "node": 2809216531,
+      "name": "Kruidvat",
+      "pand": "NL.IMBAG.Pand.0363100012233496",
+      "pano": "TMX7316010203-002637_pano_0004_000030",
+      "date": "2022-06-28"
+     },
+     {
+      "node": 2817514764,
+      "name": "Kruidvat",
+      "pand": "NL.IMBAG.Pand.0363100012236036",
+      "pano": "recording_2025-09-29_09-14-27_00938",
+      "date": "2025-09-29"
+     },
+     {
+      "node": 4249154695,
+      "name": "Kruidvat",
+      "pand": "NL.IMBAG.Pand.0363100012243823",
+      "pano": "recording_2024-10-21_11-57-59_01423",
+      "date": "2024-10-21"
+     }
+    ]
+   },
+   "hollandBarrett": {
+    "verdict": "held",
+    "why": "2 clear (charcoal board, white wordmark, green leaf)",
+    "samples": [
+     {
+      "node": 2724038584,
+      "name": null,
+      "pand": null,
+      "pano": null,
+      "date": null,
+      "skip": "no exposed wall within 6 m"
+     },
+     {
+      "node": 2816880938,
+      "name": "Holland & Barrett",
+      "pand": "NL.IMBAG.Pand.0363100012098993",
+      "pano": "recording_2025-07-15_11-16-59_01146",
+      "date": "2025-07-15"
+     },
+     {
+      "node": 2817614204,
+      "name": "Holland & Barrett",
+      "pand": "NL.IMBAG.Pand.0363100012236698",
+      "pano": "TMX7316010203-000783_pano_0000_000936",
+      "date": "2018-06-11"
+     },
+     {
+      "node": 3303780663,
+      "name": "Holland & Barrett",
+      "pand": "NL.IMBAG.Pand.0363100012170947",
+      "pano": "TMX7316010203-002037_pano_0000_000791",
+      "date": "2021-03-11"
+     },
+     {
+      "node": 4724996015,
+      "name": "Holland & Barrett",
+      "pand": "NL.IMBAG.Pand.0363100012159351",
+      "pano": "TMX7316010203-002921_pano_0011_000086",
+      "date": "2023-01-10"
+     }
+    ]
+   },
+   "bagelsBeans": {
+    "verdict": "held",
+    "why": "2 clear (olive awning, cream band, terrace)",
+    "samples": [
+     {
+      "node": 1169109810,
+      "name": "Bagels & Beans",
+      "pand": "NL.IMBAG.Pand.0363100012140304",
+      "pano": "TMX7316010203-002913_pano_0001_000032",
+      "date": "2023-01-03"
+     },
+     {
+      "node": 2788280959,
+      "name": "Bagels & Beans",
+      "pand": "NL.IMBAG.Pand.0363100012236797",
+      "pano": "2025_09_29_07_20_07_00392",
+      "date": "2025-09-29"
+     },
+     {
+      "node": 4564687192,
+      "name": "Bagels & Beans",
+      "pand": "NL.IMBAG.Pand.0363100012145730",
+      "pano": "TMX7316010203-001013_pano_0006_000065",
+      "date": "2018-12-14"
+     },
+     {
+      "node": 4485068991,
+      "name": "Bagels & Beans",
+      "pand": "NL.IMBAG.Pand.0363100012249716",
+      "pano": "TMX7316010203-001975_pano_0000_000129",
+      "date": "2021-01-22"
+     },
+     {
+      "node": 4738035264,
+      "name": "Bagels & Beans",
+      "pand": "NL.IMBAG.Pand.0363100012153066",
+      "pano": "TMX7316010203-001041_pano_0002_005497",
+      "date": "2019-01-09"
+     }
+    ]
+   },
+   "coffeeCompany": {
+    "verdict": "held",
+    "why": "2 clear (white small-paned front, lowercase dark wordmark)",
+    "samples": [
+     {
+      "node": 1215448494,
+      "name": "Coffee Company",
+      "pand": "NL.IMBAG.Pand.0363100012159927",
+      "pano": "recording_2025-07-31_10-53-44_01656",
+      "date": "2025-07-31"
+     },
+     {
+      "node": 1221433734,
+      "name": "Coffee Company",
+      "pand": "NL.IMBAG.Pand.0363100012178831",
+      "pano": "TMX7316010203-003000_pano_0002_000032",
+      "date": "2023-03-20"
+     },
+     {
+      "node": 1310911737,
+      "name": "Screaming Beans",
+      "pand": "NL.IMBAG.Pand.0363100012171991",
+      "pano": "TMX7316010203-001658_pano_0000_000849",
+      "date": "2020-04-21"
+     },
+     {
+      "node": 1704735201,
+      "name": "Coffee Company",
+      "pand": "NL.IMBAG.Pand.0363100012174608",
+      "pano": "TMX7316010203-002537_pano_0001_000574",
+      "date": "2022-04-22"
+     },
+     {
+      "node": 2722210848,
+      "name": "Coffee Company",
+      "pand": "NL.IMBAG.Pand.0363100012175505",
+      "pano": "TMX7316010203-002306_pano_0002_001511",
+      "date": "2021-09-09"
+     }
+    ]
+   },
+   "starbucks": {
+    "verdict": "held",
+    "why": "1-2 clear (green siren disc on a dark front; a white stone front with small lettering)",
+    "samples": [
+     {
+      "node": 502311741,
+      "name": "Starbucks",
+      "pand": "NL.IMBAG.Pand.0363100012174473",
+      "pano": "recording_2025-07-14_05-25-22_01746",
+      "date": "2025-07-14"
+     },
+     {
+      "node": 1253701511,
+      "name": null,
+      "pand": null,
+      "pano": null,
+      "date": null,
+      "skip": "no exposed wall within 6 m"
+     },
+     {
+      "node": 2270405447,
+      "name": "Starbucks",
+      "pand": "NL.IMBAG.Pand.0363100012176252",
+      "pano": "TMX7316010203-000354_pano_0001_000206",
+      "date": "2017-07-06"
+     },
+     {
+      "node": 2724001437,
+      "name": "Starbucks",
+      "pand": "NL.IMBAG.Pand.0363100012571539",
+      "pano": "TMX7316010203-001659_pano_0000_000059",
+      "date": "2020-04-21"
+     },
+     {
+      "node": 2817515127,
+      "name": "Starbucks",
+      "pand": "NL.IMBAG.Pand.0363100012155928",
+      "pano": "recording_2024-09-04_05-35-54_04456",
+      "date": "2024-09-04"
+     }
+    ]
+   },
+   "nyPizza": {
+    "verdict": "held",
+    "why": "1 clear (dark board, green letters, red arrow, green awning)",
+    "samples": [
+     {
+      "node": 2721772959,
+      "name": "New York Pizza",
+      "pand": "NL.IMBAG.Pand.0363100012180397",
+      "pano": "b_20250108_1349_Track19_Sphere_00329",
+      "date": "2025-01-08"
+     },
+     {
+      "node": 2826203660,
+      "name": "New York Pizza",
+      "pand": "NL.IMBAG.Pand.0363100012071071",
+      "pano": "TMX7316010203-001619_pano_0004_000084",
+      "date": "2020-02-03"
+     },
+     {
+      "node": 4212710260,
+      "name": "New York Pizza",
+      "pand": "NL.IMBAG.Pand.0363100012167915",
+      "pano": "TMX7316010203-000227_pano_0000_000547",
+      "date": "2017-03-29"
+     },
+     {
+      "node": 11411962634,
+      "name": "New York Pizza",
+      "pand": "NL.IMBAG.Pand.0363100012153173",
+      "pano": "TMX7316010203-002550_pano_0000_003264",
+      "date": "2022-04-29"
+     },
+     {
+      "node": 11271438553,
+      "name": "New York Pizza",
+      "pand": "passage:NL.IMBAG.Pand.0363100012137406:0",
+      "pano": "recording_2025-06-18_07-44-47_02789",
+      "date": "2025-06-18"
+     }
+    ]
+   }
+  }
  }
 }
