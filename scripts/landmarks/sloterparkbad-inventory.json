@@ -1,0 +1,184 @@
+{
+ "schemaVersion": 1,
+ "id": "sloterparkbad",
+ "pand": "0363100012084387",
+ "brief": "scripts/landmarks/sloterparkbad-brief.md",
+ "signature": [],
+ "walls": [
+  {
+   "tag": "w01-309",
+   "bearing": 309,
+   "lengthM": 113.4,
+   "centre": [
+    4.817839,
+    52.370338
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002508_pano_0004_000065",
+   "capturedAt": "2022-04-12",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-309",
+   "bearing": 309,
+   "lengthM": 59.3,
+   "centre": [
+    4.816863,
+    52.3698705
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002508_pano_0004_000111",
+   "capturedAt": "2022-04-12",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-124",
+   "bearing": 124,
+   "lengthM": 52.7,
+   "centre": [
+    4.8185995,
+    52.370384
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-128",
+   "bearing": 128,
+   "lengthM": 35.9,
+   "centre": [
+    4.817086,
+    52.369619
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w05-129",
+   "bearing": 129,
+   "lengthM": 28.7,
+   "centre": [
+    4.81866,
+    52.3708475
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-309",
+   "bearing": 309,
+   "lengthM": 27.5,
+   "centre": [
+    4.8185615,
+    52.370902
+   ],
+   "evidence": "photo",
+   "panoId": "MS_26112024_845_Track13_Sphere_00042",
+   "capturedAt": "2024-11-26",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w07-44",
+   "bearing": 44,
+   "lengthM": 26.7,
+   "centre": [
+    4.818672,
+    52.3706635
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w08-126",
+   "bearing": 126,
+   "lengthM": 23,
+   "centre": [
+    4.818286,
+    52.3701035
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w09-309",
+   "bearing": 309,
+   "lengthM": 22.9,
+   "centre": [
+    4.816921,
+    52.369621
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002508_pano_0004_000107",
+   "capturedAt": "2022-04-12",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w10-129",
+   "bearing": 129,
+   "lengthM": 22.6,
+   "centre": [
+    4.8180945,
+    52.36993
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w11-129",
+   "bearing": 129,
+   "lengthM": 21.7,
+   "centre": [
+    4.816882,
+    52.3696465
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w12-219",
+   "bearing": 219,
+   "lengthM": 16.4,
+   "centre": [
+    4.8166885,
+    52.3696155
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002508_pano_0004_000100",
+   "capturedAt": "2022-04-12",
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

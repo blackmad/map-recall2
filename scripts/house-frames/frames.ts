@@ -16,7 +16,7 @@ import os from 'node:os';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import sharp from 'sharp';
-import { findPands, lngLatToRd, loadRoads, nearestOnSeg, neighbourhood, normId, pointInRing, type Footprint } from '../pand-reference/core.ts';
+import { cachedJson, findPands, lngLatToRd, loadRoads, nearestOnSeg, neighbourhood, normId, pointInRing, type Footprint } from '../pand-reference/core.ts';
 import { exposedWalls, FACADE_WINDOW, listPanos, pickWall, rankPanos, type PanoPick, type Wall } from '../pand-reference/select.ts';
 import { isLeaf } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { aimPose, fpsFor, frameFor, gridConvergenceDeg, hfovDeg, wallOutline, wallPoint, CROWN_EXTRA_M, FRAME_H, FRAME_W, type FramePose, type WallQuad } from './pose.ts';
@@ -687,6 +687,17 @@ function rule10Job(args: Args, prepared: Prepared[]): Rule10Job {
 }
 
 /** Pick, pose and cut every entry of one input; writes <out>/prepared.json and <out>/job.json. */
+/** BAG outline (RD) and 3DBAG 70th-percentile roof height of a pand that is not in the building tiles. */
+async function bagFootprint(id: string): Promise<Footprint | null> {
+  const bag = normId(id).replace('NL.IMBAG.Pand.', '');
+  const wfs: any = await cachedJson(`https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeName=bag:pand&outputFormat=application/json&srsName=urn:ogc:def:crs:EPSG::28992&count=1&filter=${encodeURIComponent(`<Filter><PropertyIsEqualTo><PropertyName>identificatie</PropertyName><Literal>${bag}</Literal></PropertyIsEqualTo></Filter>`)}`);
+  const g = wfs?.features?.[0]?.geometry;
+  if (!g) return null;
+  const ring = (g.type === 'Polygon' ? g.coordinates[0] : g.coordinates[0][0]).map((p: number[]) => ({ x: p[0], y: p[1] }));
+  let height = 12;
+  try { const d: any = await cachedJson(`https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${bag}`); const a = d.feature.CityObjects[`NL.IMBAG.Pand.${bag}`].attributes; height = Math.max(3, a.b3_h_dak_70p - a.b3_h_maaiveld); } catch { /* keep 12 m */ }
+  return { id: normId(bag), ring, height };
+}
 async function prepareAll(args: Args): Promise<{ prepared: Prepared[]; skipped: Skipped[] }> {
   const prepared: Prepared[] = [], skipped: Skipped[] = [];
   const t0 = Date.now();
@@ -696,6 +707,9 @@ async function prepareAll(args: Args): Promise<{ prepared: Prepared[]; skipped: 
   const misses = args.pands.filter(e => !hits.has(e));
   if (misses.length) await loadRoads();
   const found = misses.length ? await findPands(misses.map(p => p.id)) : new Map();
+  // A pand missing from the building tiles (De Mirandabad's 1979 hall, 2026-11-15) is framed from its BAG outline (PDOK WFS, CC0)
+  // and its 3DBAG height (CC BY 4.0), as landmark-brief.ts does, instead of being skipped.
+  for (const e of misses) if (/^\d{16}$|^NL\.IMBAG\.Pand\.\d{16}$/.test(e.id) && !found.has(normId(e.id))) { const fp = await bagFootprint(e.id).catch(() => null); if (fp) { found.set(normId(e.id), fp); console.log(`${e.id}: not in the building tiles, BAG outline from PDOK WFS (height ${fp.height.toFixed(1)} m from 3DBAG)`); } }
   for (const e of args.pands) {
     const hit = hits.get(e);
     if (hit) { prepared.push(hit); console.log(`${e.id}: cached pick, pose and photo (${hit.street} pano ${hit.pick.timestamp.slice(0, 10)}), ${hit.route}`); continue; }

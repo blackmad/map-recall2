@@ -1,0 +1,241 @@
+{
+ "schemaVersion": 1,
+ "id": "flevoparkbad",
+ "pand": "0363100012186770",
+ "brief": "scripts/landmarks/flevoparkbad-brief.md",
+ "signature": [
+  "l-bath",
+  "pyramid-roof-wings",
+  "peuterbad",
+  "diving-board"
+ ],
+ "walls": [
+  {
+   "tag": "w01-172",
+   "bearing": 172,
+   "lengthM": 18,
+   "centre": [
+    4.9528805,
+    52.365075
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "south side of the staff building, toward the pool; not photographed; drawn as the 3DBAG shell in brick"
+  },
+  {
+   "tag": "w02-352",
+   "bearing": 352,
+   "lengthM": 18,
+   "centre": [
+    4.9528575,
+    52.365168
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000064_pano_0001_000208",
+   "capturedAt": "2016-06-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-walls",
+     "kind": "other",
+     "where": "whole front: plain brown brick wall, flat roof with a light concrete edge",
+     "approxSizeM": [
+      18,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000064_pano_0001_000208",
+     "how": "3DBAG shell in brick, slate roof"
+    },
+    {
+     "id": "chimney-stacks",
+     "kind": "other",
+     "where": "roof: two dark round flue stacks",
+     "approxSizeM": [
+      0.4,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7315120208-000064_pano_0001_000208",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m flues behind the parapet"
+     }
+    },
+    {
+     "id": "graffiti",
+     "kind": "other",
+     "where": "lower wall: graffiti pieces",
+     "approxSizeM": [
+      18,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7315120208-000064_pano_0001_000208",
+     "skip": {
+      "reason": "temporary",
+      "note": "graffiti changes; not drawn"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-262",
+   "bearing": 262,
+   "lengthM": 10.5,
+   "centre": [
+    4.9527385,
+    52.3651095
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001907_pano_0002_000752",
+   "capturedAt": "2020-09-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "fence",
+     "kind": "other",
+     "where": "west: green mesh fence and gate round the service yard",
+     "approxSizeM": [
+      12,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001907_pano_0002_000752",
+     "skip": {
+      "reason": "too-small",
+      "note": "open mesh, under the kit's ironwork scale at this distance"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-82",
+   "bearing": 82,
+   "lengthM": 9.6,
+   "centre": [
+    4.9530005,
+    52.3651295
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_09-29-57_02094",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-wall",
+     "kind": "other",
+     "where": "east: the same brick wall, flat roof",
+     "approxSizeM": [
+      9.6,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_09-29-57_02094",
+     "how": "3DBAG shell in brick"
+    }
+   ]
+  },
+  {
+   "tag": "site-aerial",
+   "bearing": 0,
+   "lengthM": 140,
+   "centre": [
+    4.952896,
+    52.365134
+   ],
+   "evidence": "photo",
+   "panoId": "pdok-luchtfoto-Actueel_orthoHR (2025)",
+   "capturedAt": "2025",
+   "checked": true,
+   "note": "the outdoor bath read from the orthophoto gridded in native metres (artifacts/pools/ortho/flevoparkbad-overlay.jpg) with the OSM basin outlines",
+   "items": [
+    {
+     "id": "l-bath",
+     "kind": "other",
+     "where": "centre/east: L-shaped bath, deep 50 m leg (east) and shallow leg (south), one OSM ring",
+     "approxSizeM": [
+      92,
+      79
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK luchtfoto; OSM a148160422",
+     "how": "pool-kit basin() with a 4.5 m deck; lane lines x 3..21 in the deep leg"
+    },
+    {
+     "id": "pyramid-roof-wings",
+     "kind": "other",
+     "where": "north and west: 1967 changing-room wings under a field of small square pyramid roof-lights",
+     "approxSizeM": [
+      60,
+      46
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK luchtfoto",
+     "how": "outline traced on the gridded orthophoto (BAG has only fragments); brick block to 3.0 m, 4.6 m pyramids 0.9 m high; the flat middle strip of the west wing left flat"
+    },
+    {
+     "id": "peuterbad",
+     "kind": "other",
+     "where": "west: round toddler pool with a centre fountain on a paved round",
+     "approxSizeM": [
+      14,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK luchtfoto; OSM a148167872",
+     "how": "basin() plus a 6.5 m paved round and a fountain post"
+    },
+    {
+     "id": "diving-board",
+     "kind": "other",
+     "where": "south end of the deep leg: light-blue board reaching over the water",
+     "approxSizeM": [
+      1,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK luchtfoto",
+     "how": "board on a stand, 1.0 m; height inferred"
+    },
+    {
+     "id": "shallow-canopy",
+     "kind": "canopy",
+     "where": "shallow leg: light-blue square canopy on posts",
+     "approxSizeM": [
+      8,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK luchtfoto",
+     "how": "low pyramid canopy on four posts, 2.4 m; height inferred"
+    },
+    {
+     "id": "starting-blocks",
+     "kind": "other",
+     "where": "north end of the deep leg: a row of starting blocks",
+     "approxSizeM": [
+      0.6,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "PDOK luchtfoto",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.6 m blocks"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

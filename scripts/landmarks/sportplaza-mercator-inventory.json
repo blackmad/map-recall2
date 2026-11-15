@@ -1,0 +1,337 @@
+{
+ "schemaVersion": 1,
+ "id": "sportplaza-mercator",
+ "pand": "0363100012092403",
+ "brief": "scripts/landmarks/sportplaza-mercator-brief.md",
+ "signature": [
+  "planted-walls",
+  "glazed-ground-floor",
+  "lap-pool",
+  "zwemmen-lettering"
+ ],
+ "walls": [
+  {
+   "tag": "w01-358",
+   "bearing": 358,
+   "lengthM": 35.3,
+   "centre": [
+    4.845748,
+    52.371802
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002064_pano_0000_002391",
+   "capturedAt": "2021-03-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "planted-walls",
+     "kind": "other",
+     "where": "the whole wall above the ground floor and every other wall: a planted (green) facade running up into the green roof",
+     "approxSizeM": [
+      35,
+      7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002064_pano_0000_002391",
+     "how": "shell walls in a dark moss green, roof in olive (no plants modelled)"
+    },
+    {
+     "id": "glazed-ground-floor",
+     "kind": "window-shape",
+     "where": "ground floor: doors to 3 m, dark transom, upper lights to 5.6 m, mullions about 1.8 m",
+     "approxSizeM": [
+      35,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002064_pano_0000_002391",
+     "how": "glazedFront()/glassBand(): glass slabs with mullions, transom and fascia"
+    },
+    {
+     "id": "steel-canopy",
+     "kind": "canopy",
+     "where": "over the entrance half at about 7.2 m",
+     "approxSizeM": [
+      20,
+      0.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002064_pano_0000_002391",
+     "how": "one dark slab 1.6 m deep on three brackets, on edge 22"
+    },
+    {
+     "id": "strip-windows",
+     "kind": "window-shape",
+     "where": "two strip windows in the planted wall at 8.2-9.4 m",
+     "approxSizeM": [
+      6,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002064_pano_0000_002391",
+     "how": "framed glass slabs"
+    },
+    {
+     "id": "mercator-panel",
+     "kind": "sign",
+     "where": "east end beside the ZWEMMEN bay (left of the street view), teal panel lettered SPORTPLAZA MERCATOR SPORTFONDSEN",
+     "approxSizeM": [
+      4.6,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002064_pano_0000_002391",
+     "how": "teal slab with SPORTPLAZA / MERCATOR in white; the small SPORTFONDSEN line and the ads around it are not drawn"
+    },
+    {
+     "id": "ad-panels",
+     "kind": "sign",
+     "where": "east end of the ground floor: printed ad panels (fitness, swimming)",
+     "approxSizeM": [
+      10,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002064_pano_0000_002391",
+     "skip": {
+      "reason": "temporary",
+      "note": "printed adverts that change"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-357",
+   "bearing": 357,
+   "lengthM": 23.3,
+   "centre": [
+    4.8462895,
+    52.371837
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-37-16_00030",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [],
+   "note": "same front as w01-358 (glazed ground floor, canopy, strip windows); trees in front"
+  },
+  {
+   "tag": "w03-88",
+   "bearing": 88,
+   "lengthM": 22.6,
+   "centre": [
+    4.846439,
+    52.3714995
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-183",
+   "bearing": 183,
+   "lengthM": 22.4,
+   "centre": [
+    4.846124,
+    52.371429
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w05-88",
+   "bearing": 88,
+   "lengthM": 16.3,
+   "centre": [
+    4.8466805,
+    52.371761
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-269",
+   "bearing": 269,
+   "lengthM": 14.9,
+   "centre": [
+    4.8454415,
+    52.371504
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001878_pano_0005_002818",
+   "capturedAt": "2020-08-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "kfc-box",
+     "kind": "other",
+     "where": "west, a grey box with a KFC sign (a tenant unit against the planted wall)",
+     "approxSizeM": [
+      8,
+      6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001878_pano_0005_002818",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage; the box itself is in the 3DBAG shell"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-268",
+   "bearing": 268,
+   "lengthM": 10,
+   "centre": [
+    4.8454285,
+    52.371615
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_25_08_37_35_00235",
+   "capturedAt": "2025-09-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-glazing",
+     "kind": "window-shape",
+     "where": "west front: glazed ground floor under the planted wall",
+     "approxSizeM": [
+      10,
+      4.2
+     ],
+     "plan": "simplified",
+     "seenIn": "2025_09_25_08_37_35_00235",
+     "how": "glass band with mullions and a dark fascia"
+    }
+   ]
+  },
+  {
+   "tag": "w08-178",
+   "bearing": 178,
+   "lengthM": 9.6,
+   "centre": [
+    4.8458095,
+    52.371458
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w09-179",
+   "bearing": 179,
+   "lengthM": 8.7,
+   "centre": [
+    4.846609,
+    52.371599
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w10-358",
+   "bearing": 358,
+   "lengthM": 8.3,
+   "centre": [
+    4.846525,
+    52.3718195
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241217_0841_Track76_Sphere_00210",
+   "capturedAt": "2024-12-17",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w11-343",
+   "bearing": 343,
+   "lengthM": 8,
+   "centre": [
+    4.846063,
+    52.371819
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001700_pano_0003_000005",
+   "capturedAt": "2020-05-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "zwemmen-lettering",
+     "kind": "lettering",
+     "where": "angled entrance bay: ZWEMMEN in white over the glass",
+     "approxSizeM": [
+      4.5,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001700_pano_0003_000005",
+     "how": "letters() in white on the bay's glass"
+    }
+   ]
+  },
+  {
+   "tag": "site-aerial",
+   "bearing": 0,
+   "lengthM": 60,
+   "centre": [
+    4.8462,
+    52.3709
+   ],
+   "evidence": "photo",
+   "panoId": "pdok-luchtfoto-Actueel_orthoHR (2025)",
+   "capturedAt": "2025",
+   "checked": true,
+   "note": "the outdoor lap pool south-east of the hall (artifacts/pools/ortho/sportplaza-mercator-overlay.jpg)",
+   "items": [
+    {
+     "id": "lap-pool",
+     "kind": "other",
+     "where": "the park south-east of the hall: lap pool with eight lanes, white coping and a pale deck",
+     "approxSizeM": [
+      20,
+      50
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK luchtfoto; OSM a147998778",
+     "how": "pool-kit basin(), 8 lanes, 3.5 m deck"
+    },
+    {
+     "id": "roof-solar",
+     "kind": "other",
+     "where": "green roof: rows of solar panels on the flat parts",
+     "approxSizeM": [
+      12,
+      8
+     ],
+     "plan": "skipped",
+     "seenIn": "PDOK luchtfoto",
+     "skip": {
+      "reason": "not-visible",
+      "note": "flat on the roof, not seen from the street; the chase camera shows the roof but panels are under 0.3 m"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

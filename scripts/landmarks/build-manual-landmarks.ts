@@ -3,6 +3,12 @@ import {buildLofi} from './lofi-builder';
 import {buildTheOtherSide} from './the-other-side-builder';
 import {buildAsscherDiamantslijperij} from './asscher-diamantslijperij-builder';
 import {buildDiamantMuseum} from './diamant-museum-builder';
+// Pools lane 2026-11-15 (pool-kit.ts: outdoor basins, decks, slides, domes)
+import {buildDeMirandabad} from './de-mirandabad-builder';
+import {buildSportplazaMercator} from './sportplaza-mercator-builder';
+import {buildFlevoparkbad} from './flevoparkbad-builder';
+import {buildBrediusbad} from './brediusbad-builder';
+import {buildNoorderparkbad} from './noorderparkbad-builder';
 import {buildTolstraat160Tempel} from './tolstraat-160-tempel-builder';
 import {buildDeNieuweLiefde} from './de-nieuwe-liefde-builder';
 import {buildRijksakademie} from './rijksakademie-builder';
@@ -699,6 +705,11 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='the-other-side')buildTheOtherSide(w,d,helpers);
     else if(id==='asscher-diamantslijperij')buildAsscherDiamantslijperij(w,d,helpers);
     else if(id==='diamant-museum')buildDiamantMuseum(w,d,helpers);
+    else if(id==='de-mirandabad')buildDeMirandabad(w,d,helpers);
+    else if(id==='sportplaza-mercator')buildSportplazaMercator(w,d,helpers);
+    else if(id==='flevoparkbad')buildFlevoparkbad(w,d,helpers);
+    else if(id==='brediusbad')buildBrediusbad(w,d,helpers);
+    else if(id==='noorderparkbad')buildNoorderparkbad(w,d,helpers);
     else if(id==='tolstraat-160-tempel')buildTolstraat160Tempel(w,d,helpers);
     else if(id==='de-nieuwe-liefde')buildDeNieuweLiefde(w,d,helpers);
     else if(id==='rijksakademie')buildRijksakademie(w,d,helpers);

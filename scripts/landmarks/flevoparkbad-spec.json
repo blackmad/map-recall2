@@ -1,0 +1,40 @@
+{
+ "id": "flevoparkbad",
+ "name": "Flevoparkbad, Zeeburgerdijk",
+ "heightMetres": 6,
+ "bagYear": 1967,
+ "galleryView": {
+  "theta": 0.6,
+  "phi": 0.75
+ },
+ "surveyedSource": "Vertex average of the BAG 0363100012186770 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/flevoparkbad-footprints.json, written by pool-site-prepare.ts, with the site's twelve further panden and the OSM basin outlines a148160422 and a148167872, ODbL). Decks, lane lines, the diving board, the canopy in the shallow basin, the Peuterbad's paved round and the pyramid-roofed changing-room wings are read from the PDOK luchtfoto 2025 (Beeldmateriaal Nederland, CC BY 4.0) gridded in native metres. Per item in scripts/landmarks/flevoparkbad-inventory.json.",
+ "materialOverrides": {
+  "brick": "#7a5a48",
+  "slate": "#4a4d50",
+  "blue": "#3cb4e0",
+  "white": "#f1f1ec",
+  "concrete": "#d2cdc2",
+  "dark": "#1f5f8e",
+  "copper": "#7cc3e6",
+  "frame": "#e8e8e4"
+ },
+ "attribution": {
+  "title": "Flevoparkbad, Zeeburgerdijk: outdoor bath of 1967 in the Flevopark",
+  "author": "Map Recall",
+  "sourceUrl": "https://www.wikidata.org/wiki/Q134139280",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry: the L-shaped bath (deep 50 m lap leg with lane lines and a diving board, shallow leg with a light-blue canopy), its paved deck, the round Peuterbad on its paved round, the pyramid-roofed changing-room wings and the pavilions on their BAG footprints (CC0) and 3DBAG LoD2.2 shells (CC BY 4.0). Basin outlines from OpenStreetMap (ODbL) checked on the PDOK luchtfoto (CC BY 4.0). No pixels or meshes imported."
+ },
+ "detachedStructures": [
+  {
+   "box": [
+    -116,
+    -6,
+    31,
+    114
+   ],
+   "evidence": "outdoor bath site: the L-shaped bath, the Peuterbad on its paved round and the pavilions spread over 145 x 120 m round the small staff building (BAG 0363100012186770) that anchors the model; PDOK luchtfoto 2025 and OSM a148160422, a148167872"
+  }
+ ]
+}

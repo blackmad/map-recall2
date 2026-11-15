@@ -1,0 +1,352 @@
+{
+ "schemaVersion": 1,
+ "id": "noorderparkbad",
+ "pand": "0363100012241531",
+ "brief": "scripts/landmarks/noorderparkbad-brief.md",
+ "signature": [
+  "brick-lettering",
+  "entrance-piers",
+  "outdoor-basins",
+  "eave-band"
+ ],
+ "walls": [
+  {
+   "tag": "w01-244",
+   "bearing": 244,
+   "lengthM": 19.2,
+   "centre": [
+    4.9177675,
+    52.3979505
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_08-45-16_01311",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "upper-drum",
+     "kind": "other",
+     "where": "set-back upper storey: dark round drum with tall windows",
+     "approxSizeM": [
+      15,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-30_08-45-16_01311",
+     "how": "3DBAG shell set-back in the wall colour; the drum's dark cladding is not separated"
+    },
+    {
+     "id": "eave-band",
+     "kind": "canopy",
+     "where": "deep grey band over the ground storey",
+     "approxSizeM": [
+      19,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_08-45-16_01311",
+     "how": "ringBand round the whole ring, 3.7-4.5 m, 1 m proud"
+    }
+   ]
+  },
+  {
+   "tag": "w02-155",
+   "bearing": 155,
+   "lengthM": 17.4,
+   "centre": [
+    4.9184735,
+    52.3978125
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "no panorama; drawn as the 3DBAG shell with the eave band, inferred"
+  },
+  {
+   "tag": "w03-145",
+   "bearing": 145,
+   "lengthM": 15.4,
+   "centre": [
+    4.918266,
+    52.397739
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "no panorama; drawn as the 3DBAG shell with the eave band, inferred"
+  },
+  {
+   "tag": "w04-164",
+   "bearing": 164,
+   "lengthM": 13,
+   "centre": [
+    4.9186805,
+    52.397862
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "no panorama; drawn as the 3DBAG shell with the eave band, inferred"
+  },
+  {
+   "tag": "w05-251",
+   "bearing": 251,
+   "lengthM": 11.4,
+   "centre": [
+    4.9178565,
+    52.3978245
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002182_pano_0000_000435",
+   "capturedAt": "2021-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "service-doors",
+     "kind": "other",
+     "where": "ground storey: four dark service doors between striped brick piers",
+     "approxSizeM": [
+      3,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002182_pano_0000_000435",
+     "how": "four dark door slabs 2.2 x 3.0 m along the curve; the striped piers are the wall colour"
+    },
+    {
+     "id": "flue",
+     "kind": "other",
+     "where": "roof edge: a steel flue pipe",
+     "approxSizeM": [
+      0.4,
+      5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002182_pano_0000_000435",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m pipe"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-171",
+   "bearing": 171,
+   "lengthM": 9.8,
+   "centre": [
+    4.918843,
+    52.397885
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "no panorama; drawn as the 3DBAG shell with the eave band, inferred"
+  },
+  {
+   "tag": "w07-328",
+   "bearing": 328,
+   "lengthM": 9.5,
+   "centre": [
+    4.918361,
+    52.398301
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "no panorama; drawn as the 3DBAG shell with the eave band, inferred"
+  },
+  {
+   "tag": "w08-358",
+   "bearing": 358,
+   "lengthM": 9.1,
+   "centre": [
+    4.917929,
+    52.3982205
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000876_pano_0000_003023",
+   "capturedAt": "2018-07-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-lettering",
+     "kind": "lettering",
+     "where": "north wall, ground storey: NOORDERPARKBAD laid in red brick into the striped brick, about 2.2 m tall, following the curve",
+     "approxSizeM": [
+      26,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000876_pano_0000_003023; recording_2024-10-22_11-23-02_01905",
+     "how": "pixel-font letters (0.31 m px) in red laid along the ring, centred on the wall"
+    },
+    {
+     "id": "striped-brick",
+     "kind": "other",
+     "where": "pale and grey horizontal brick stripes, both storeys",
+     "approxSizeM": [
+      9,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000876_pano_0000_003023",
+     "how": "one pale grey-brick wall colour; the stripes are under the kit's flat-colour scale"
+    }
+   ]
+  },
+  {
+   "tag": "w09-59",
+   "bearing": 59,
+   "lengthM": 8.9,
+   "centre": [
+    4.918796,
+    52.398247
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000876_pano_0000_001230",
+   "capturedAt": "2018-07-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-piers",
+     "kind": "other",
+     "where": "entrance: a white pier with a red N and a red pier with a white diamond lattice",
+     "approxSizeM": [
+      2.6,
+      3.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000876_pano_0000_001230",
+     "how": "slabs with an N and an X pixel letter; the diamond lattice is drawn as an X"
+    },
+    {
+     "id": "entrance-glass",
+     "kind": "window-shape",
+     "where": "glazed entrance front between the piers",
+     "approxSizeM": [
+      16,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000876_pano_0000_001230",
+     "how": "glass slabs along the curve"
+    }
+   ]
+  },
+  {
+   "tag": "w10-40",
+   "bearing": 40,
+   "lengthM": 8.4,
+   "centre": [
+    4.9189925,
+    52.398108
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000876_pano_0000_001233",
+   "capturedAt": "2018-07-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "diamond-panel",
+     "kind": "other",
+     "where": "east end: a second red diamond-lattice brick panel",
+     "approxSizeM": [
+      2.5,
+      3.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000876_pano_0000_001233",
+     "how": "red slab with an X pixel letter, 3.5 m right of the wall centre"
+    }
+   ]
+  },
+  {
+   "tag": "site-aerial",
+   "bearing": 0,
+   "lengthM": 110,
+   "centre": [
+    4.918401,
+    52.39805
+   ],
+   "evidence": "photo",
+   "panoId": "pdok-luchtfoto-Actueel_orthoHR (2025)",
+   "capturedAt": "2025",
+   "checked": true,
+   "note": "the outdoor basins read from the orthophoto (artifacts/pools/ortho/noorderparkbad-overlay.jpg) with the OSM basin outlines",
+   "items": [
+    {
+     "id": "outdoor-basins",
+     "kind": "other",
+     "where": "south: lap basin (six lanes), teaching basin, two paddling basins, slide basin",
+     "approxSizeM": [
+      70,
+      45
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK luchtfoto; OSM a1009154122-a1009154130",
+     "how": "pool-kit basin() on convex-hull decks"
+    },
+    {
+     "id": "chute",
+     "kind": "other",
+     "where": "covered chute running south-east out of the slide basin",
+     "approxSizeM": [
+      5,
+      15
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK luchtfoto",
+     "how": "dark tube on three posts; heights inferred"
+    },
+    {
+     "id": "solar-roof",
+     "kind": "other",
+     "where": "roof: solar panel fields and roof-lights",
+     "approxSizeM": [
+      30,
+      20
+     ],
+     "plan": "skipped",
+     "seenIn": "PDOK luchtfoto",
+     "skip": {
+      "reason": "too-small",
+      "note": "flat on the roof, under 0.3 m"
+     }
+    },
+    {
+     "id": "playground-mosaics",
+     "kind": "other",
+     "where": "lawn: two mosaic play surfaces",
+     "approxSizeM": [
+      10,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "PDOK luchtfoto",
+     "skip": {
+      "reason": "too-small",
+      "note": "flat on the ground"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
