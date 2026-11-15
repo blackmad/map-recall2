@@ -74,7 +74,6 @@ function glazedFront(b: BuildingTools, {f, len}: {f: Frame; len: number}, canopy
   if (canopy) {
     const {y, depth, share} = canopy;
     slab(b, f, len / 2, y, len * share, 0.22, depth, 'dark');
-    slab(b, f, len / 2, y - 0.06, len * share - 0.1, 0.06, depth - 0.1, 'white', 0.05); // the canopy's light soffit
     if (y > 5.7) for (const t of [len * 0.2, len * 0.5, len * 0.8]) slab(b, f, t, y - 0.5, 0.12, 0.5, depth - 0.2, 'frame');
     else for (const t of [0.4, len - 0.4]) slab(b, f, t, y - 0.4, 0.12, 0.4, depth - 0.2, 'frame');
   }
