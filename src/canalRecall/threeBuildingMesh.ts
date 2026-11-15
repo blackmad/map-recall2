@@ -22,7 +22,7 @@ import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from '.
 
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, type WallCut, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
-import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
+import { presetOpenings, recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, SPEC_SOUTERRAIN_GROUND_MIN, type FrontageBays, type StreetFacadeContext } from './streetFacadeRendering.js';
 import { storeyDraw, storeyGuardOn, storeyPlan, storeyPlanDraws, storeyPlanProbe, storeyRejectPrior } from './houseSpec/storeyPlan.js';
 import { structureGuess, structurePriorStoreys } from './houseSpec/structurePrior.js';
@@ -582,6 +582,14 @@ export function stoopAt(door: { side: string; index?: number; bays?: number } | 
   const seen = exact ? (door.index! + 0.5) / door.bays! : door.side === 'left' ? 0.001 : door.side === 'right' ? 0.999 : 0.5;
   return { at: (ltr ? seen : 1 - seen) * runM - edgeStartM, exact };
 }
+/** A row front's read street door on a run of `bays` layout bays: its bay, and whether that bay is drawn mirrored because
+ *  the read door sits on the other side of its bay from the preset's door axis `axis` (0-1 across the bay). Herengracht
+ *  144: a 4.3 m front is one bay, so its read right-hand door drew at the preset's left. */
+export function rowDoorBay(door: { side: string; index?: number; bays?: number }, ltr: boolean, bays: number, axis: number): { bay: number; mirror: boolean } {
+  const seen = door.index !== undefined && door.bays ? (door.index + 0.5) / door.bays : door.side === 'left' ? 0.001 : door.side === 'right' ? 0.999 : 0.5;
+  const f = ltr ? seen : 1 - seen, bay = Math.max(0, Math.min(bays - 1, Math.floor(f * bays))), local = f * bays - bay;
+  return { bay, mirror: Math.abs(1 - axis - local) + 1e-6 < Math.abs(axis - local) };
+}
 function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM: number, ltr: boolean, base: number, boxed: boolean, stoopRun = true): NonNullable<ExtraContext['rowDress']> {
   const boxes = boxed ? b.specRecipe?.windowBoxes ?? [] : [], heads = b.rowDress?.heads ?? [];
   // No boxes on this run (the record has none, or the run is not the traced front): the grid's windows, the heads by
@@ -928,9 +936,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       if (b.rowSeries && b.rowDress?.stoop) layout.doorBays.length = 0;
       // A row front's street door where the record reads it (ground.doorSide / doorIndex of groundBays, as seen).
       else if (b.rowSeries && b.rowDress?.door && !b.shopfront && layout.doorBays.length) {
-        const d = b.rowDress.door, seen = d.index !== undefined && d.bays ? (d.index + 0.5) / d.bays : d.side === 'left' ? 0.001 : d.side === 'right' ? 0.999 : 0.5;
-        const f = seenLeftToRight(first) ? seen : 1 - seen;
-        layout.doorBays = [Math.max(0, Math.min(layout.bays - 1, Math.floor(f * layout.bays)))];
+        const look = b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo';
+        const axis = (b.recipe ? recipeBayOpenings(b.id, b.recipe, look) : units ? units.openings : b.openings ?? presetOpenings(b.id, b.style)).door.axis;
+        const placed = rowDoorBay(b.rowDress.door, seenLeftToRight(first), layout.bays, axis);
+        layout.doorBays = [placed.bay];
+        if (placed.mirror) layout.doorMirror = true;
       }
       const bw = layout.bayWidthM, groundTop = base + layout.groundM;
       const compound=b.recipe?.compoundFrontage&&b.layers&&b.plainLayer!==undefined&&base<.5
@@ -1029,7 +1039,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
           for (const [w0, w1] of fit?.walls ?? []) quads.push({ kind: 'ground-wall', e, u0: a0 / 5, u1: a1 / 5, v0: w0 / 3, v1: w1 / 3, layer: b.plainLayer!, accent, z0: w0, z1: w1, tint: paint, along0, along1 });
         }else for (const piece of edgeGroundPieces(layout, k, e.len)) {
           // An axis-unit door samples the half of the door cell around the door, clear of its side window (units.doorU).
-          const pu0 = !units ? piece.a0 / bw : piece.door ? units.doorU : piece.a0 / bw * cellU, pu1 = !units ? piece.a1 / bw : piece.door ? units.doorU + cellU * (piece.a1 - piece.a0) / bw : piece.a1 / bw * cellU;
+          const qu0 = !units ? piece.a0 / bw : piece.door ? units.doorU : piece.a0 / bw * cellU, qu1 = !units ? piece.a1 / bw : piece.door ? units.doorU + cellU * (piece.a1 - piece.a0) / bw : piece.a1 / bw * cellU;
+          // A mirrored door bay (layout.doorMirror, a row front's read door): the door cell sampled right to left.
+          const [pu0, pu1] = piece.door && layout.doorMirror ? [qu1, qu0] : [qu0, qu1];
           quads.push({ kind: piece.door ? 'door' : 'ground', e, u0: pu0, u1: pu1, v1: 1, tint: (piece.door && !b.recipe?.groundWallHex) || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
         }
         if (placed) {

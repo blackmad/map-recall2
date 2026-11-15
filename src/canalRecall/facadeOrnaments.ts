@@ -14,7 +14,7 @@
 // is drawn as flat-coloured boxes and strips, and is atomic (all of a cornice or none of it).
 
 import { hash01, type ExtraContext, type ExtraSink, type WallComponent } from './facadeExtraCore.js';
-import { bayLookOpenings, proceduralOpenings, type OpeningRow, type Openings } from './facadeOpenings.js';
+import { presetOpenings, type OpeningRow, type Openings } from './facadeOpenings.js';
 import type { FacadeStyle } from './genericFacades.js';
 import { pilasterHex } from './look/pilasterTone.js';
 import { headGrammarOf, headPieces, headRise, type HeadGrammar } from './houseLine/headGrammar.js';
@@ -34,9 +34,12 @@ export function shadeHex(hex: string, k: number): string {
 }
 
 // --- Geometry helpers --------------------------------------------------------------
-const BAY_LOOK_STYLES: readonly FacadeStyle[] = ['canal', 'school', 'modern'];
 /** The openings this building's walls show: given by the mesh, else the bay look's (the default look). */
-export const openingsOf = (c: ExtraContext): Openings => c.openings ?? (BAY_LOOK_STYLES.includes(c.style) ? bayLookOpenings(c.id, c.style) : proceduralOpenings(c.style));
+export const openingsOf = (c: ExtraContext): Openings => {
+  const o = c.openings ?? presetOpenings(c.id, c.style);
+  // A mirrored door bay (WallLayout.doorMirror): the door and its side window change sides, as the painted cell does.
+  return c.layout.doorMirror ? { ...o, door: { ...o.door, axis: 1 - o.door.axis }, doorWindow: o.doorWindow ? { ...o.doorWindow, axes: o.doorWindow.axes.map(a => 1 - a), ...(o.doorWindow.widths ? { widths: [...o.doorWindow.widths] } : {}) } : null } : o;
+};
 export const isStreetWall = (c: ExtraContext) => c.streetSide ?? c.layout.doorBays.length > 0;
 export const storeyZ = (c: ExtraContext, s: number) => c.base + c.layout.groundM + s * c.layout.storeyM;
 

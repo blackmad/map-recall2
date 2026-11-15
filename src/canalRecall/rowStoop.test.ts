@@ -6,7 +6,8 @@ import { test } from 'node:test';
 import type { ExtraContext } from './facadeExtras.js';
 import { ORNAMENT_COMPONENTS, ROW_DOORCASE, STOOP_PARALLEL, stoopDoor, stoopFlights, stoopHiddenWindows } from './facadeOrnaments.js';
 import { ExtraSink } from './facadeExtraCore.js';
-import { stoopAt } from './threeBuildingMesh.js';
+import { rowDoorBay, stoopAt } from './threeBuildingMesh.js';
+import { openingsOf } from './facadeOrnaments.js';
 
 const wall = (over: Partial<ExtraContext> = {}): ExtraContext => ({
   id: 'h130', style: 'canal', period: 'canal', wallKey: 'front',
@@ -161,4 +162,23 @@ test('row-cornice: a stated timber cornice draws attic lights, supports and a ce
   assert.ok(Math.max(...ped.flatMap(t => t.p.map(p => p[2]))) > 16.3, 'pediment over the corona');
   const bal = run({ cornice: 'heavy', corniceDress: { centre: 'balustrade' } });
   assert.ok(Math.max(...bal.flatMap(t => t.p.map(p => p[2]))) > 16.5, 'balustrade on the corona');
+});
+
+test('rowDoorBay: a read door on the other side of its bay from the preset door mirrors the bay (Herengracht 144, one bay)', () => {
+  // Herengracht 144: doorIndex 1 of 2 ground openings, a 4.3 m front of one layout bay, the canal preset's door at 0.3.
+  assert.deepEqual(rowDoorBay({ side: 'right', index: 1, bays: 2 }, true, 1, 0.3), { bay: 0, mirror: true });
+  assert.deepEqual(rowDoorBay({ side: 'right', index: 1, bays: 2 }, false, 1, 0.3), { bay: 0, mirror: false });
+  assert.deepEqual(rowDoorBay({ side: 'left', index: 0, bays: 2 }, true, 1, 0.3), { bay: 0, mirror: false });
+  assert.deepEqual(rowDoorBay({ side: 'right' }, true, 1, 0.3), { bay: 0, mirror: true });
+  assert.deepEqual(rowDoorBay({ side: 'left' }, true, 3, 0.3), { bay: 0, mirror: false });
+  assert.deepEqual(rowDoorBay({ side: 'centre' }, true, 3, 0.3), { bay: 1, mirror: false });
+});
+
+test('openingsOf: a mirrored door bay swaps the door and its side window; absent: the preset as is', () => {
+  const layout = { bays: 1, bayWidthM: 4.3, groundM: 3.4, storeys: 3, storeyM: 3, doorBays: [0] };
+  const c = { id: 'h144', style: 'canal', layout } as unknown as ExtraContext;
+  const plain = openingsOf(c), mirrored = openingsOf({ ...c, layout: { ...layout, doorMirror: true } } as unknown as ExtraContext);
+  assert.ok(Math.abs(mirrored.door.axis - (1 - plain.door.axis)) < 1e-9);
+  assert.deepEqual(mirrored.doorWindow?.axes, plain.doorWindow?.axes.map(a => 1 - a));
+  assert.deepEqual(mirrored.upper, plain.upper);
 });
