@@ -819,3 +819,49 @@ The generator won 7/7, as on round 8's draw (7/7). Remaining gaps on un-noted st
 6. Regenerate before gating: bake-frontages, `build:content-stats`, `build:buurt-pages`. Then `check:canal`.
 7. Re-run `generate.ts` (with `--stage-data`) after any HouseSpec or row publish in these districts. The generator's
    own published records no longer count as described (`describedPands` skips `buurtKit` records).
+
+### Round 10: block coherence (David on Hunzestraat, #390)
+
+David: Hunzestraat 120343..111890 is "one continuous long building with consistent roof line and floors"; round 9
+split it (120343..112149 at 12 m / 4 storeys, 074339 and 111890 at 9.35 m / 3 storeys) and an erker over
+095203/108726 stood above the line.
+
+- **One line per block** (`generate.ts blockLines`): adjacent series in one street wall with the same build period
+  (within 5 years) whose 3DBAG lines step by more than `ROW_EAVES_STEP_M` (0.8 m) while AHN4 at the front wall does not
+  (each side's median front height within the step of the other's) draw one line, the chain's line nearest AHN, with
+  one storey count. Hunzestraat: AHN4 reads 12.14 / 12.17 m at 074339 / 111890, so both are now 12 m / 4 storeys.
+  Clamped members are logged in `overruled` (corniceTopM, series-consensus).
+- **Erkers stay under the line** (`roofKit erkerCapOf`): on a flat series the erker cap tops out at the line; pitched
+  series keep the Plan Zuid cap. The coping is the series' (`frontKit kitWantsCoping`, `generate seriesCoping`), so an
+  erker member no longer stands 0.55 m over its neighbours.
+- **Audit** (`scripts/buurt-generators/audit-steps.ts rivierenbuurt apollo-stadion`): same-period series steps over
+  0.8 m that AHN does not support went from 78 to 5 (Rivierenbuurt, 104 same-period steps, 96 AHN-supported) and from
+  41 to 4 (Apollo/Stadion, 89, 83 supported). The 9 left were not clamped by `blockLines`; why is not yet checked
+  (churchill-laan-120912, gaaspstraat-140068, holendrechtstraat-151757,
+  rooseveltlaan-112272, vrijheidslaan-148822, achillesstraat-131811, albrecht-d-rerstraat-091984,
+  minervalaan-099520, stadionkade-063989); left for a per-street look.
+- **Roof rise:** an AHN4-measured rise for un-noted pitched series lost 3 of 6 in the first round 10 blind A/B ("a huge
+  red tiled roof the photo does not have": Olympiaplein, Apollolaan, Argonautenstraat), so the seen-rise cap stays;
+  `measuredRiseOf` is kept for the evidence text only.
+
+### Round 11: the byte layer budget and the baked tier (round m gate)
+
+- **Layer budget.** Kit on, `BAY_LAYER_COUNT` was 195 (189 off): 64 + 195 + 1 = 260 > 256, so procedural layer
+  indices overflowed their byte. The two Plan Zuid presets now share the school presets' ground-storey cells
+  (`bayLook.ts` `KIT_GROUND_SHARED`, a redirect in `cellKey`; lane R's file, 5 lines), so the kit adds 2 layers, not 6:
+  191 on, 64 + 191 + 1 = 256. Kit off is unchanged (189). `measuredWallPool.test.ts` and
+  `contemporaryFamilyOn.test.ts` pass with the kit on and off.
+- **Why the baked tier was off.** Round m flipped `kitFlag.ts` to default-on but did not run
+  `build:canal-three-buildings`, so the browser bundles still had the kit-off bay table (layer hash `92f67375`) while
+  world-v1 was baked kit-on (`11482477`, the 195-layer table). The runtime compares `tiles.json shells.layers` with its
+  own `shellLayerHash()` (`ownWorldView.ts`) and drops the baked tier on a mismatch.
+- **Rebake for a new layer table.** Every change to the bay table (`BAY_ENTRIES` order or count, the masonry cell or
+  the roof cell count) changes `shellLayerHash()` (`src/canalRecall/world/shellLayers.ts`) and needs:
+  1. the bundles rebuilt: `npm run build:canal-three-buildings`, `build:building-gallery`, `build:landmark-gallery`,
+     `build:house-playground` (the bundles that carry `bayLook.ts`);
+  2. `npm run world:compile -- --no-policy --shell` (add `--against=none` when the decorators changed on purpose, as
+     here: the round 10 coping and erker cap change published buurt pands); about 8 min for the 295 tiles on this
+     machine at load ~35, 12 GB heap;
+  3. install: `for d in cells shells far; do rsync -a --delete artifacts/world/staging/$d/ public/data/extracts/amsterdam/world-v1/$d/; done; cp artifacts/world/staging/{index.json,tiles.json,strings.bin} public/data/extracts/amsterdam/world-v1/`,
+     then `npm run world:verify` and `npm run test:world-format`;
+  4. check that `tiles.json shells.layers` equals the runtime hash (kit on: `e6620c29`), then `test:baked-fabric`.
