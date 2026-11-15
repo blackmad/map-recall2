@@ -3,7 +3,7 @@
 // (0363100012179672, neck with a segmental cap), 37/39 (bells), 27 (step), 71/73 (spouts), all on D's 20e83bae2 records.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ROW_STONE, rowCrownAccents, rowCrownProfile, rowCrownRoofRise, rowCrownStone, type RowCrown } from './crownProfile.ts';
+import { ROW_STONE, ROW_STONE_HOOD, rowCrownAccents, rowCrownProfile, rowCrownRoofRise, rowCrownStone, type RowCrown } from './crownProfile.ts';
 import { RoofSink } from '../roofSink.ts';
 
 const W = 6.2, F = 7, TRIM = '#efebe2';
@@ -66,4 +66,18 @@ test('crown stone: the neck foot band never crosses the attic light', () => {
   // No stone quad spanning the light's width at its height in front of it.
   const across = tris.filter(t => t.part === 'trim' && t.p.every(p => p[2] > g0 + 0.05 && p[2] < g1 - 0.05) && t.p.some(p => p[1] < -0.3) && t.p.some(p => p[1] > 0.3) && t.n[0] > 0.9);
   assert.equal(across.length, 0);
+});
+
+test('crown stone: a dark hood over a cornice, carved scrolls above the shoulder, and neck carving (Herengracht 55, 31)', () => {
+  const c: RowCrown = { shape: 'neck', riseM: 3.4, attic: 1, dress: 'belt' };
+  const plain = draw(c).tris;
+  const hood = draw({ ...c, stone: { hood: 'dark' } }).tris;
+  assert.ok(hood.some(t => t.hex === ROW_STONE_HOOD) && !plain.some(t => t.hex === ROW_STONE_HOOD));
+  const carved = draw({ ...c, stone: { claws: 'carved' } }).tris, topOf = (ts: typeof plain) => Math.max(...ts.filter(t => t.part === 'trim').flatMap(t => t.p.filter(p => Math.abs(p[1]) < 2.2 && Math.abs(p[1]) > 1).map(p => p[2])));
+  assert.ok(carved.length > plain.length);
+  for (const neck of ['panel', 'cartouche', 'oculus'] as const) {
+    const ts = draw({ ...c, riseM: 4.2, stone: { neck } }).tris;
+    assert.ok(ts.length > draw({ ...c, riseM: 4.2 }).tris.length, `${neck} drawn`);
+  }
+  assert.ok(Number.isFinite(topOf(carved)));
 });

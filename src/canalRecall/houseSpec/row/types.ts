@@ -237,8 +237,13 @@ export interface RowGable {
 export interface RowGableStone {
   /** Coping width along the outline (m; absent 0.2). */
   copingM?: number;
-  /** Neck or bell: scrolled shoulder pieces (klauwstukken) filling beside the neck (absent: true). */
-  claws?: boolean;
+  /** Neck or bell: scrolled shoulder pieces (klauwstukken) filling beside the neck (absent: true); `carved`: a taller carved
+   *  scroll standing above the shoulder line against the neck. */
+  claws?: boolean | 'carved';
+  /** The neck's cap as a solid hood over a cornice: `dark` (a painted dark green-grey) or a hex. Absent: a stone hood moulding. */
+  hood?: 'dark' | string;
+  /** Carving in the neck between its light and the cap: a framed panel, a cartouche, or an oeil-de-boeuf. Absent: none. */
+  neck?: 'panel' | 'cartouche' | 'oculus';
   /** The cap on top: a pediment, a segmental hood, or a carved crest (absent: the gable's `cap`, else the kit's stock). */
   crest?: 'pediment' | 'segmental' | 'crest';
 }
