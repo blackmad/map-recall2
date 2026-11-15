@@ -110,10 +110,11 @@ function dormers(c: Ctx) {
  */
 function middleGable(c: Ctx) {
   const {b} = c;
-  const f = frameAt(F, 0, 0), s = 10.65, y = EAVES + 0.02;
-  concaveGable(b, f, s, y, {half: 1.3, shoulder: 0.3, neckHalf: 0.3, neckY: 2.1, apexY: 2.7}, {depth: 2.2, wall: 'brick', trim: 'sandstone', rim: 0.14, rimD: 0.08});
-  slab(b, f, s, y + 0.18, 1.06, 1.0, 0.07, 'white');                      // window frame
-  slab(b, f, s, y + 0.26, 0.86, 0.84, 0.09, 'glass');
+  const f = frameAt(F, 0, 0.2), s = 10.65, y = EAVES + 0.02;   // its face 0.2 m out, on the cornice
+  concaveGable(b, f, s, y, {half: 1.3, shoulder: 0.3, neckHalf: 0.3, neckY: 2.1, apexY: 2.7}, {depth: 2.4, wall: 'brick', trim: 'sandstone', rim: 0.14, rimD: 0.08});
+  for (const sd of [-1, 1]) slab(b, f, s + sd * 0.48, y + 0.18, 0.1, 1.0, 0.07, 'white');   // window frame
+  for (const yy of [y + 0.18, y + 1.1]) slab(b, f, s, yy, 0.86, 0.08, 0.07, 'white');
+  slab(b, f, s, y + 0.26, 0.86, 0.84, 0.03, 'glass');
   slab(b, f, s, y + 0.18, 0.07, 1.0, 0.11, 'white');                      // mullion
   slab(b, f, s, y + 0.1, 1.2, 0.1, 0.14, 'sandstone');                    // sill
   slab(b, f, s, y + 2.15, 0.16, 0.2, 0.75, 'dark');                       // hoist beam

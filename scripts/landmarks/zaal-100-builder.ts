@@ -88,7 +88,7 @@ function front(c: Ctx) {
     slab(b, f, s, 0, w, CORNICE - 0.1, 0.14, 'brick');
     slab(b, f, s, CORNICE - 0.55, w + 0.12, 0.5, 0.3, 'white');
   }
-  slab(b, f, L / 2, 0, L - 0.02, 0.5, 0.05, 'stone', 0.0);
+  slab(b, f, L / 2, 0, L - 0.1, 0.5, 0.05, 'stone', 0.0);
   profileAlong(b, f, 0.02, L - 0.02, [[-0.3, CORNICE - 0.05], [0.32, CORNICE - 0.05], [0.42, CORNICE + 0.12], [0.42, EAVES + 0.08], [-0.3, EAVES + 0.08]], 'white');
   gable(c, f);
   dormers(c);
@@ -118,12 +118,20 @@ function gable(c: Ctx, f: ReturnType<FrontKit['faceFrame']>) {
  *  stands in the raised north-east roof piece of the 3DBAG shell). */
 function dormers(c: Ctx) {
   const {b} = c;
-  for (const [s, w] of [[4.5, 2.4], [11.67, 2.0], [26.25, 2.4], [33.8, 2.4]] as Array<[number, number]>) {
+  for (const [s, w] of [[4.5, 2.4], [11.67, 2.0], [26.25, 2.4]] as Array<[number, number]>) {
     const fr = frameAt(F, 0, -0.6), y0 = EAVES - 0.1, y1 = EAVES + 1.5;
     slab(b, fr, s, y0, w, y1 - y0, 1.6, 'brick', -1.6);
     slab(b, fr, s, y0 + 0.65, w - 0.4, y1 - y0 - 0.85, 0.06, 'glass', 0.0);
     poly(b, fr, s, y1, [[-w / 2 - 0.35, 0], [w / 2 + 0.35, 0], [w / 2 - 0.1, 0.45], [-w / 2 + 0.1, 0.45]], 1.9, 'white', -1.7);
   }
+  // the fourth: 3DBAG already carries its body (front on the wall plane, s 33.5-35.0, to 17.6 m), so its window and flared
+  // hood go on that front
+  const f0 = frameAt(F, 0, 0), s4 = 34.27, w4 = 1.45, top4 = 17.55;
+  const h4 = top4 - EAVES - 0.75;                                          // white frame round the glass
+  for (const sd of [-1, 1]) slab(b, f0, s4 + sd * (w4 - 0.45) / 2, EAVES + 0.45, 0.1, h4, 0.07, 'white');
+  for (const yy of [EAVES + 0.45, EAVES + 0.45 + h4 - 0.08]) slab(b, f0, s4, yy, w4 - 0.55, 0.08, 0.07, 'white');
+  slab(b, f0, s4, EAVES + 0.53, w4 - 0.55, h4 - 0.16, 0.03, 'glass');
+  poly(b, f0, s4, top4 - 0.05, [[-w4 / 2 - 0.35, 0], [w4 / 2 + 0.35, 0], [w4 / 2 - 0.1, 0.45], [-w4 / 2 + 0.1, 0.45]], 0.45, 'white', -0.05);
 }
 
 export function buildZaal100(_w: number, _d: number, b: BuildingTools) {

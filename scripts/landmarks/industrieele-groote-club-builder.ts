@@ -94,15 +94,14 @@ function chordSO(x: number, z: number): [number, number] {
   return [dx * dmF.tangent[0] + dz * dmF.tangent[1], dx * dmF.n[0] + dz * dmF.n[1]];
 }
 /**
- * A 3DBAG piece of the tower top, by its centroid in the tower plan (s 21.0-28.6, up to 6.3 m back): 'drop' when it
- * starts at or above the strip cornice and reaches over the shaft top, 'clip' (keep the part under the shaft top) when
- * it starts lower, 'keep' otherwise.
+ * A 3DBAG piece of the tower top, when every vertex lies in the tower plan (s 20.0-28.7, up to 6.5 m back; a big roof
+ * that only reaches into it is kept whole): 'drop' when it starts at or above the strip cornice and reaches over the shaft
+ * top, 'clip' (keep the part under the shaft top) when it starts lower, 'keep' otherwise.
  */
 function inTowerTop(s: Surface): 'drop' | 'clip' | 'keep' {
-  const r = s.rings[0], n = r.length;
-  const cx = r.reduce((a, p) => a + p[0], 0) / n, cz = r.reduce((a, p) => a + p[2], 0) / n;
-  const [cs, co] = chordSO(cx, cz), ys = r.map(p => p[1]);
-  if (!(cs > 21.0 && cs < 28.6 && co > -6.3 && co < 0.3) || Math.max(...ys) <= TOP.tw + 0.3) return 'keep';
+  const r = s.rings[0], ys = r.map(p => p[1]);
+  const inPlan = r.every(p => { const [ps, po] = chordSO(p[0], p[2]); return ps > 20.0 && ps < 28.7 && po > -6.5 && po < 0.3; });
+  if (!inPlan || Math.max(...ys) <= TOP.tw + 0.3) return 'keep';
   return Math.min(...ys) >= TOP.strip - 0.05 ? 'drop' : 'clip';
 }
 /** Newell normal of a wall ring pointing into the block (away from the Dam). */
@@ -252,7 +251,7 @@ function tower(c: Ctx) {
   for (const [y0, y1, tr] of [[6.3, 9.0, 7.75], [10.6, 12.9, 11.75], [14.0, 16.3, 15.3], [17.3, 19.6, 18.7]] as const)
     for (const [t, w] of lights) cross(c, W, t, y0, y1, w, tr, {dress: 'stone'});
   for (const [t, w] of lights) arched(c, W, t, 21.3, 23.0, w);
-  for (const dt of [-0.6, 0, 0.6]) arched(c, W, TW_MID + dt, 24.95, 27.0, 0.34, 'dark', 0.3, null);   // tall louvred lights
+  for (const dt of [-0.78, 0, 0.78]) arched(c, W, TW_MID + dt, 24.95, 27.0, 0.32, 'dark', 0.3, null);   // tall louvred lights
   band(c, W, TW[0] + 0.04, TW_E - 0.04, 20.2, 0.28, 0.1);
   const fw = ff(c, W);
   slab(b, fw, TW_MID, TOP.gb - 0.05, TW_E - TW[0] - 0.08, 0.35, 0.22, 'stone');                    // corbel course
@@ -290,9 +289,10 @@ function towerTop(c: Ctx) {
     const mid: XZ = [f.origin[0] + f.tangent[0] * len / 2, f.origin[1] + f.tangent[1] * len / 2], cen = at(sm, om);
     const outward = (mid[0] - cen[0]) * f.n[0] + (mid[1] - cen[1]) * f.n[1] > 0;
     const g: Frame = outward ? f : {origin: [f.origin[0] + f.tangent[0] * len, f.origin[1] + f.tangent[1] * len], tangent: [-f.tangent[0], -f.tangent[1]], n: [-f.n[0], -f.n[1]]};
+    if (g.n[0] * dmF.n[0] + g.n[1] * dmF.n[1] < -0.5) continue;              // the back face sits under the block's roofs
     for (const dt of [-0.75, 0, 0.75]) {
-      archSlab(b, g, len / 2 + dt, 29.0, 0.36, 3.2, 0.04, 'dark', 0);
-      archBand(b, g, len / 2 + dt, 28.92, 0.5, 3.36, 0.07, 0.08, 'stone', 0);
+      archSlab(b, g, len / 2 + dt, 29.0, 0.3, 2.4, 0.04, 'dark', 0);
+      archBand(b, g, len / 2 + dt, 28.92, 0.44, 2.56, 0.07, 0.08, 'stone', 0);
     }
     slab(b, g, len / 2, 28.75, len - 0.6, 0.12, 0.1, 'stone');                       // sill band
     for (const sd of [-1, 1]) slab(b, g, len / 2 + sd * (len / 2 - 0.25), STAGE.y0, 0.5, STAGE.y1 - STAGE.y0, 0.12, 'brick');
