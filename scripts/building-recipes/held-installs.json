@@ -1,4 +1,6 @@
 {
-  "_doc": "Large recipes whose fit-golden moved on purpose while the installed GLB stays the old one; check:stale-installs reports them as held, not stale. Remove an id when it is re-installed.",
-  "held": {}
+ "_doc": "Large recipes whose fit-golden moved on purpose while the installed GLB stays the old one; check:stale-installs reports them as held, not stale. Remove an id when it is re-installed.",
+ "held": {
+  "spec-0363100012175654": "staged spec 2026-11-10"
+ }
 }

@@ -1,0 +1,94 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012175654",
+ "pandId": "0363100012175654",
+ "address": "Keizersgracht 614",
+ "sources": [
+  {
+   "id": "scripts-building-recipes-houses-spec-0363100012175654-intent",
+   "kind": "human-review",
+   "capturedAt": "2026-11-10"
+  },
+  {
+   "id": "verdict-doc-strip-2023-03-27-keizersgracht-596-648-gemeente-",
+   "kind": "human-review",
+   "capturedAt": "2026-11-10"
+  },
+  {
+   "id": "scripts-block-face-faces-keizersgracht-596-648-r1-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-27"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "windows",
+   "basementDoor": 1,
+   "bays": 2,
+   "cornice": "frieze",
+   "doorBay": null,
+   "entablature": {
+    "rise": 2.4,
+    "cap": 0.5,
+    "frieze": "trim",
+    "architrave": 0.15
+   },
+   "gable": "cornice",
+   "headLines": [
+    0.86,
+    0.86,
+    0.8,
+    0.7
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "souterrain": true,
+   "storeyHeights": [
+    2.8,
+    4.2,
+    3.7,
+    3.35,
+    2.85
+   ],
+   "storeyWindows": {
+    "0": "sash-1-over-1"
+   },
+   "storeys": 4,
+   "street": "Keizersgracht",
+   "windowFrames": {
+    "frame": 0.12,
+    "eared": {
+     "upper": 3
+    }
+   },
+   "windowHeights": [
+    0.75,
+    0.72,
+    0.66,
+    0.53
+   ],
+   "windowShare": 0.48,
+   "windowSurround": "sill",
+   "windows": "sash-4-over-4"
+  }
+ ],
+ "roof": {
+  "form": "flat",
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#80726a",
+  "cornice": "#ddd7c6",
+  "door": "#1e2422",
+  "frame": "white-painted",
+  "stone": "#a5a69e",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type belt-1700-canal-house: crown cornice, mirrored, palette dark-brick-belt + measured brick #80726a",
+  "type deviations: bays 2 (type: 3); storeyWindows {\"0\":\"sash-1-over-1\"} (type: unset); windowFrames {\"frame\":0.12,\"eared\":{\"upper\":3}} (type: {\"frame\":0.12}); palette {\"stone\":\"#a5a69e\"} (type palette dark-brick-belt)"
+ ]
+}

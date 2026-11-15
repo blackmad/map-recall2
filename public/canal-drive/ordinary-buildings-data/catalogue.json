@@ -53818,6 +53818,373 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-30T08:37:10.466Z"
+    },
+    {
+      "id": "ordinary-0363100012167896",
+      "category": "street-survey",
+      "buildingId": "NL.IMBAG.Pand.0363100012167896",
+      "name": "Keizersgracht 610",
+      "hash": "6e967c7d0bd9e18424ec586bba9291d492383164c4eafb97502751168a61003b",
+      "sha256": "6e967c7d0bd9e18424ec586bba9291d492383164c4eafb97502751168a61003b",
+      "bytes": 125512,
+      "triangles": 1714,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -3.783,
+          0,
+          -31.136
+        ],
+        "max": [
+          3.789,
+          21.283,
+          1.42
+        ]
+      },
+      "anchor": [
+        4.89022350067654,
+        52.3639153263845
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8902207,
+              52.3637517
+            ],
+            [
+              4.8901635,
+              52.3637598
+            ],
+            [
+              4.8901755,
+              52.3637927
+            ],
+            [
+              4.8902327,
+              52.3637846
+            ],
+            [
+              4.8902777,
+              52.3639079
+            ],
+            [
+              4.8901693,
+              52.3639227
+            ],
+            [
+              4.8900769,
+              52.3636694
+            ],
+            [
+              4.890161,
+              52.3636579
+            ],
+            [
+              4.8901538,
+              52.3636382
+            ],
+            [
+              4.8901781,
+              52.3636348
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 21.28,
+      "height": 21.28,
+      "modelUrl": "./models/ordinary-buildings/recipe-spec-0363100012167896.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012167896"
+      ],
+      "instance": {
+        "anchor": [
+          4.89022350067654,
+          52.3639153263845
+        ],
+        "northOffsetDegrees": 192.5993,
+        "mirror": false
+      },
+      "source": "building-recipes",
+      "recipe": {
+        "id": "spec-0363100012167896",
+        "mesh": "spec-0363100012167896",
+        "shared": false,
+        "intentSources": [
+          "scripts-building-recipes-houses-spec-0363100012167896-intent",
+          "verdict-doc-strip-2023-03-27-keizersgracht-596-648-gemeente-"
+        ],
+        "footprintIoU": 1,
+        "frontZoneIoU": 1,
+        "maxDimDeltaM": 0,
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/front0:pass",
+          "storey-height/front0:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "openings-within-walls:FAIL"
+        ]
+      },
+      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+      "limitations": [
+        "Facade proportions are rule-fitted, not rectified from the photograph.",
+        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+      ],
+      "reviewState": "recipe-draft-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167896",
+        "https://data.amsterdam.nl/"
+      ],
+      "updatedAt": "2026-11-10T20:38:13.756Z"
+    },
+    {
+      "id": "ordinary-0363100012175655",
+      "category": "street-survey",
+      "buildingId": "NL.IMBAG.Pand.0363100012175655",
+      "name": "Keizersgracht 616A",
+      "hash": "6e43aa0bbdfdf307d2f42fab07d61493d728a093f873f9fdd873ee4e51e3e701",
+      "sha256": "6e43aa0bbdfdf307d2f42fab07d61493d728a093f873f9fdd873ee4e51e3e701",
+      "bytes": 159512,
+      "triangles": 2254,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -3.793,
+          -0.941,
+          -29.933
+        ],
+        "max": [
+          3.793,
+          21.238,
+          0.4
+        ]
+      },
+      "anchor": [
+        4.890543244298713,
+        52.36387190032183
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8905976,
+              52.3638645
+            ],
+            [
+              4.8904889,
+              52.3638793
+            ],
+            [
+              4.8904238,
+              52.3636891
+            ],
+            [
+              4.8904142,
+              52.3636628
+            ],
+            [
+              4.8904665,
+              52.3636556
+            ],
+            [
+              4.8904496,
+              52.3636091
+            ],
+            [
+              4.8905019,
+              52.363602
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 21.24,
+      "height": 21.24,
+      "modelUrl": "./models/ordinary-buildings/recipe-spec-0363100012175655.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012175655"
+      ],
+      "instance": {
+        "anchor": [
+          4.890543244298713,
+          52.36387190032183
+        ],
+        "northOffsetDegrees": 192.5344,
+        "mirror": false
+      },
+      "source": "building-recipes",
+      "recipe": {
+        "id": "spec-0363100012175655",
+        "mesh": "spec-0363100012175655",
+        "shared": false,
+        "intentSources": [
+          "scripts-building-recipes-houses-spec-0363100012175655-intent",
+          "verdict-doc-strip-2023-03-27-keizersgracht-596-648-gemeente-"
+        ],
+        "footprintIoU": 1,
+        "frontZoneIoU": 1,
+        "maxDimDeltaM": 0,
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/front0:pass",
+          "storey-height/front0:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "openings-within-walls:FAIL"
+        ]
+      },
+      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+      "limitations": [
+        "Facade proportions are rule-fitted, not rectified from the photograph.",
+        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+      ],
+      "reviewState": "recipe-draft-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175655",
+        "https://data.amsterdam.nl/"
+      ],
+      "updatedAt": "2026-11-10T20:38:17.619Z"
+    },
+    {
+      "id": "ordinary-0363100012176066",
+      "category": "street-survey",
+      "buildingId": "NL.IMBAG.Pand.0363100012176066",
+      "name": "Keizersgracht 608",
+      "hash": "5f788f4b44a3949a4b449f58cb34c05d89b214840729c0464b7b23c924555e18",
+      "sha256": "5f788f4b44a3949a4b449f58cb34c05d89b214840729c0464b7b23c924555e18",
+      "bytes": 195380,
+      "triangles": 2786,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -3.718,
+          0,
+          -28.604
+        ],
+        "max": [
+          3.739,
+          20.917,
+          1.42
+        ]
+      },
+      "anchor": [
+        4.890116007036469,
+        52.363929983462356
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8901693,
+              52.3639227
+            ],
+            [
+              4.8900627,
+              52.3639372
+            ],
+            [
+              4.8900189,
+              52.3638173
+            ],
+            [
+              4.890069,
+              52.3638102
+            ],
+            [
+              4.8900562,
+              52.363775
+            ],
+            [
+              4.8900062,
+              52.3637822
+            ],
+            [
+              4.8899632,
+              52.3636643
+            ],
+            [
+              4.8899875,
+              52.3636609
+            ],
+            [
+              4.8899947,
+              52.3636807
+            ],
+            [
+              4.8900769,
+              52.3636694
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 20.92,
+      "height": 20.92,
+      "modelUrl": "./models/ordinary-buildings/recipe-spec-0363100012176066.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012176066"
+      ],
+      "instance": {
+        "anchor": [
+          4.890116007036469,
+          52.363929983462356
+        ],
+        "northOffsetDegrees": 192.5749,
+        "mirror": false
+      },
+      "source": "building-recipes",
+      "recipe": {
+        "id": "spec-0363100012176066",
+        "mesh": "spec-0363100012176066",
+        "shared": false,
+        "intentSources": [
+          "scripts-building-recipes-houses-spec-0363100012176066-intent",
+          "verdict-doc-strip-2023-03-27-keizersgracht-596-648-gemeente-",
+          "scripts-block-face-faces-keizersgracht-596-648-r2-strip-json"
+        ],
+        "footprintIoU": 1,
+        "frontZoneIoU": 1,
+        "maxDimDeltaM": 0,
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/front0:pass",
+          "storey-height/front0:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "openings-within-walls:pass"
+        ]
+      },
+      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+      "limitations": [
+        "Facade proportions are rule-fitted, not rectified from the photograph.",
+        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+      ],
+      "reviewState": "recipe-draft-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012176066",
+        "https://data.amsterdam.nl/"
+      ],
+      "updatedAt": "2026-11-10T20:38:19.423Z"
     }
   ]
 }

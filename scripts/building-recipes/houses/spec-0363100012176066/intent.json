@@ -1,0 +1,96 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012176066",
+ "pandId": "0363100012176066",
+ "address": "Keizersgracht 608",
+ "sources": [
+  {
+   "id": "scripts-building-recipes-houses-spec-0363100012176066-intent",
+   "kind": "human-review",
+   "capturedAt": "2026-11-10"
+  },
+  {
+   "id": "verdict-doc-strip-2023-03-27-keizersgracht-596-648-gemeente-",
+   "kind": "human-review",
+   "capturedAt": "2026-11-10"
+  },
+  {
+   "id": "scripts-block-face-faces-keizersgracht-596-648-r2-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-27"
+  }
+ ],
+ "fronts": [
+  {
+   "atticWindowWidth": 1.4,
+   "atticWindows": 1,
+   "basement": "stoop-and-windows",
+   "bays": 3,
+   "cornice": "none",
+   "crownNeckWidth": 0.42,
+   "crownRise": 1.6,
+   "doorBay": 0,
+   "doorSurround": {
+    "pilaster": 0.22,
+    "cap": 0.3
+   },
+   "gable": "neck",
+   "gableOrnament": {
+    "wings": "scrolls",
+    "cartouche": true,
+    "wingDepth": 1.8
+   },
+   "headLines": [
+    0.86,
+    0.95,
+    0.92,
+    0.8
+   ],
+   "hoist": true,
+   "id": "front0",
+   "partyClip": true,
+   "souterrain": true,
+   "stoopRails": {
+    "rail": 0.9
+   },
+   "storeyHeights": [
+    2.8,
+    4.2,
+    3.7,
+    3.35,
+    2.85
+   ],
+   "storeys": 4,
+   "street": "Keizersgracht",
+   "windowFrames": {
+    "frame": 0.12
+   },
+   "windowHeights": [
+    0.75,
+    0.8,
+    0.74,
+    0.6
+   ],
+   "windowShare": 0.48,
+   "windowSurround": "sill",
+   "windows": "sash-6-over-6"
+  }
+ ],
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#706360",
+  "cornice": "#ddd7c6",
+  "door": "#1e2422",
+  "frame": "white-painted",
+  "stone": "#999588",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type belt-1700-canal-house: crown neck, palette dark-brick-belt + measured brick #706360",
+  "type deviations: windows \"sash-6-over-6\" (type: \"sash-4-over-4\"); headLines [0.86,0.95,0.92,0.8] (type: [0.86,0.86,0.8,0.7]); windowHeights [0.75,0.8,0.74,0.6] (type: [0.75,0.72,0.66,0.53]); palette {\"stone\":\"#999588\"} (type palette dark-brick-belt)"
+ ]
+}

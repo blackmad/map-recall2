@@ -1,0 +1,92 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012167896",
+ "pandId": "0363100012167896",
+ "address": "Keizersgracht 610",
+ "sources": [
+  {
+   "id": "scripts-building-recipes-houses-spec-0363100012167896-intent",
+   "kind": "human-review",
+   "capturedAt": "2026-11-10"
+  },
+  {
+   "id": "verdict-doc-strip-2023-03-27-keizersgracht-596-648-gemeente-",
+   "kind": "human-review",
+   "capturedAt": "2026-11-10"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "stoop-and-windows",
+   "bays": 3,
+   "cornice": "frieze",
+   "doorBay": 2,
+   "doorSurround": {
+    "pilaster": 0.22,
+    "cap": 0.3
+   },
+   "entablature": {
+    "rise": 2.4,
+    "cap": 0.5,
+    "frieze": "trim",
+    "architrave": 0.15
+   },
+   "gable": "cornice",
+   "headLines": [
+    0.86,
+    0.95,
+    0.92,
+    0.8
+   ],
+   "hoist": false,
+   "id": "front0",
+   "partyClip": true,
+   "souterrain": true,
+   "stoopRails": {
+    "rail": 0.9
+   },
+   "storeyHeights": [
+    2.8,
+    4.2,
+    3.7,
+    3.35,
+    2.85
+   ],
+   "storeyWindows": {
+    "last": "casement-transom"
+   },
+   "storeys": 4,
+   "street": "Keizersgracht",
+   "windowFrames": {
+    "frame": 0.12
+   },
+   "windowHeights": [
+    0.75,
+    0.8,
+    0.74,
+    0.6
+   ],
+   "windowShare": 0.48,
+   "windowSurround": "sill",
+   "windows": "cross"
+  }
+ ],
+ "roof": {
+  "form": "flat",
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "palette": {
+  "brick": "#7f6b69",
+  "cornice": "#ddd7c6",
+  "door": "#1e2422",
+  "frame": "white-painted",
+  "stone": "#999588",
+  "stoneMaterial": "painted"
+ },
+ "notes": [
+  "type belt-1700-canal-house: crown cornice, mirrored, palette dark-brick-belt + measured brick #7f6b69",
+  "type deviations: windows \"cross\" (type: \"sash-4-over-4\"); storeyWindows {\"last\":\"casement-transom\"} (type: unset); headLines [0.86,0.95,0.92,0.8] (type: [0.86,0.86,0.8,0.7]); windowHeights [0.75,0.8,0.74,0.6] (type: [0.75,0.72,0.66,0.53]); palette {\"stone\":\"#999588\"} (type palette dark-brick-belt)"
+ ]
+}
