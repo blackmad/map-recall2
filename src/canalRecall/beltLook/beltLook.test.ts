@@ -7,6 +7,8 @@ import { donorFor, fittedRead, frontTopM, gableable, hash32, segmentOf, type Bel
 import { generateBelt, BELT_LOOK_REF, brickDonorSample, corniceLine, WAREHOUSE_EXTRAS } from './generate.ts';
 import { stripRoofStorey, warehouseRead } from './donors.ts';
 import { registerStone } from './stone.ts';
+import { frontBandHeights } from './ahnFront.ts';
+import { ahnCorniceTop, ahnGableApex } from './generate.ts';
 import type { GenPand, GenStreet } from '../buurtGenerator/rows.ts';
 import type { DescriberAnswer } from '../houseSpec/describer.ts';
 
@@ -248,4 +250,19 @@ test('round 6: own dormers are no mansard unless seen as one or stated; pakhuis 
   assert.deepEqual([g2?.value.riseM, fOf(2).topM], [3.1, 13.7], 'the gable from the measured front top to the ridge');
   const st3 = (sOf(3).design.gable?.value as { stone?: { claws?: unknown; festoon?: boolean } } | undefined)?.stone;
   assert.deepEqual([st3?.claws, st3?.festoon], ['carved', true], 'the register names claws and a festoon (any year)');
+});
+
+test('AHN street fronts: the band over the front line; a cornice at its p90 within the 3DBAG roof; a gable apex under the ridge', () => {
+  // A 6 m front along y = 0, a wall top at 9.6 m in the band, the roof rising to 14.6 m behind it (Molenpad 174768).
+  const cells: Array<[number, number, number]> = [];
+  for (let x = 0.25; x < 6; x += 0.5) for (let y = 0.25; y < 10; y += 0.5) cells.push([x, y, 1 + (y <= 1.5 ? 9.6 : 9.6 + Math.min(5, (y - 1.5)))]);
+  const a = frontBandHeights(cells, Array(20).fill(1), [0, 0], [6, 0])!;
+  assert.deepEqual([a.p90, a.max], [9.6, 9.6]);
+  assert.equal(ahnCorniceTop(a, { eavesM: 7.2, heightM: 14.07, ridgeM: 15.5 }), 9.6);
+  assert.equal(ahnCorniceTop({ ...a, p90: 25 }, { eavesM: 7.2, heightM: 14.07, ridgeM: 15.5 }), null, 'over the ridge: not the front (a tree, a tower)');
+  assert.equal(ahnCorniceTop({ ...a, p90: 4 }, { eavesM: 7.2, heightM: 14.07, ridgeM: 15.5 }), null, 'well under the eaves');
+  // Molenpad's pakhuis: AHN front top 14.59 under a 17.2 m ridge on 12.8 m eaves: the apex at 14.8 (the 2 m minimum rise).
+  assert.equal(ahnGableApex({ n: 100, p50: 13.5, p90: 14.4, max: 14.59 }, 12.8, 17.2), 14.8);
+  assert.equal(ahnGableApex({ n: 30, p50: 13, p90: 15.4, max: 16.15 }, 13.7, 16.8), 16.15);
+  assert.equal(ahnGableApex(undefined, 13.7, 16.8), 16.8);
 });

@@ -16,6 +16,7 @@ import zlib from 'node:zlib';
 import { districtPands, namedStreets, describedPands } from '../buurt-generators/generate.ts';
 import type { DistrictLibrary } from '../../src/canalRecall/buurtGenerator/generate.ts';
 import { generateBelt, type BeltRead, type BeltStated } from '../../src/canalRecall/beltLook/generate.ts';
+import type { AhnFront } from '../../src/canalRecall/beltLook/ahnFront.ts';
 import { usableDonor, segmentOf, type BeltDonor } from '../../src/canalRecall/beltLook/donors.ts';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.ts';
 import { toRowCheck } from '../../src/canalRecall/houseSpec/row/check.ts';
@@ -102,7 +103,10 @@ async function main() {
   for (const id of rowsD) described.add(id);
   const { reads, donors } = beltReads();
   const stated = statedPands();
-  const res = generateBelt(pands, streets, described, reads, donors, at, stated);
+  // Measured AHN street fronts (scripts/belt-look/ahn-fronts.ts, staged); --no-ahn draws from 3DBAG alone.
+  const ahnFile = arg('ahn') ?? ['artifacts/buurt-generators/belt-ahn/fronts.json', 'data/buurt-generators/belt/ahn-fronts.json'].find(f => fs.existsSync(f)) ?? '';
+  const ahn = new Map<string, AhnFront>(!process.argv.includes('--no-ahn') && fs.existsSync(ahnFile) ? Object.entries(JSON.parse(fs.readFileSync(ahnFile, 'utf8')).fronts) : []);
+  const res = generateBelt(pands, streets, described, reads, donors, at, stated, ahn);
   const records = res.rows.flatMap(r => rowFrontsWithSeries(r));
   fs.mkdirSync(out, { recursive: true });
   fs.writeFileSync(path.join(out, 'row-front.json'), JSON.stringify({ version: 1, district: 'belt', generatedAt: at, records }));
@@ -121,7 +125,7 @@ async function main() {
   for (const r of res.rows) bySeg[segmentOf(r.street)] = (bySeg[segmentOf(r.street)] ?? 0) + r.members.length;
   const crowns: Record<string, number> = {};
   for (const r of res.rows) for (const f of r.fronts) { const s = r.series.find(x => x.id === f.seriesId)!; const c = (f.overrides as any)?.crown?.value ?? s.design.crown.value; crowns[c] = (crowns[c] ?? 0) + 1; }
-  const report = { at, buurten: BELT_BUURTEN, overSpecs, specOnlyRedrawn: Object.keys(res.provenance).filter(id => specOnly.has(id)).length, pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length, laneDRowPands: [...rowsD].filter(id => pands.some(p => p.id.endsWith(id))).length,
+  const report = { at, buurten: BELT_BUURTEN, ahnFronts: ahn.size, overSpecs, specOnlyRedrawn: Object.keys(res.provenance).filter(id => specOnly.has(id)).length, pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length, laneDRowPands: [...rowsD].filter(id => pands.some(p => p.id.endsWith(id))).length,
     drawn: drawn.length, ownRead: own, donorRead: drawn.length - own, rows: res.rows.length, records: records.length, donors: donors.length, skipped: bySkip, bySegment: bySeg, crowns, findings, statedCrown: Object.keys(res.provenance).filter(id => stated.get(id)?.crown).length, ms: Date.now() - t0 };
   fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify({ ...report, skippedList: res.skipped }, null, 1));
   console.log(JSON.stringify(report, null, 1));

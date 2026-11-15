@@ -22,6 +22,7 @@ import type { RowGable } from '../houseSpec/row/types.ts';
 import { dressBeltStone } from './stone.ts';
 import { dressBeltCornice } from './cornice.ts';
 import { brickFromSample, lchOf } from '../houseSpec/judgedColour.ts';
+import type { AhnFront } from './ahnFront.ts';
 
 export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: string }
 /** What a published source states for a pand (the monument register via house-specs): its crown and facade year. */
@@ -67,14 +68,32 @@ export function statedDormer(a: DescriberAnswer): DescriberAnswer {
 }
 export const BELT_LOOK_REF = 'belt look (lane D 2026-11-15, src/canalRecall/beltLook)';
 
-/** A generator row as a row-solve input: own reads where read, donors' fitted reads elsewhere. */
-export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, prov: BeltGenResult['provenance'], stated: ReadonlyMap<string, BeltStated> = new Map()): RowInput | null {
+/** How far an AHN front height may stand outside the pand's 3DBAG roof (m): under its eaves, over its ridge (or height). */
+export const AHN_BOUNDS = { underEavesM: 1.5, overRidgeM: 0.5, gableMinRiseM: 2 } as const;
+/** The AHN front's wall top for a cornice front (its band p90), when it stands within the pand's 3DBAG roof; else null. */
+export function ahnCorniceTop(a: AhnFront | undefined, pand: { eavesM: number | null; heightM?: number | null; ridgeM: number | null }): number | null {
+  if (!a) return null;
+  const lo = Math.min(pand.eavesM ?? Infinity, pand.heightM ?? Infinity) - AHN_BOUNDS.underEavesM, hi = Math.max(pand.ridgeM ?? -Infinity, pand.heightM ?? -Infinity) + AHN_BOUNDS.overRidgeM;
+  return Number.isFinite(lo) && Number.isFinite(hi) && a.p90 >= lo && a.p90 <= hi && a.p90 >= 3 ? a.p90 : null;
+}
+/** A gabled front's apex from AHN (the band's max), capped by the 3DBAG ridge and at least the minimum rise over the foot. */
+export function ahnGableApex(a: AhnFront | undefined, foot: number | null, ridge: number | null): number | null {
+  if (!a || foot === null) return ridge;
+  const apex = Math.max(foot + AHN_BOUNDS.gableMinRiseM, ridge !== null ? Math.min(ridge, a.max) : a.max);
+  return +apex.toFixed(2);
+}
+
+/** A generator row as a row-solve input: own reads where read, donors' fitted reads elsewhere. `ahn`: measured AHN street
+ *  fronts per pand (ahnFront.ts): a cornice front stands at its band's p90, a gable's apex at its band's top (held-out
+ *  round 5 judges' photo heights matched AHN where 3DBAG's eaves and height did not). */
+export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, prov: BeltGenResult['provenance'], stated: ReadonlyMap<string, BeltStated> = new Map(), ahn: ReadonlyMap<string, AhnFront> = new Map()): RowInput | null {
   const members: MemberInput[] = [];
   for (const m of row.members) {
     // The front's top (frontTopM: 3DBAG's eaves is often a rear eave under the street cornice).
-    const pid = pandNumber(m.pand.id), eaves = frontTopM(m.pand.eavesM, m.pand.heightM, m.pand.ridgeM), ridge = m.pand.ridgeM;
+    const pid = pandNumber(m.pand.id), eaves = frontTopM(m.pand.eavesM, m.pand.heightM, m.pand.ridgeM), ridge0 = m.pand.ridgeM;
+    const af = ahn.get(pid), ahnTop = ahnCorniceTop(af, m.pand);
     const sd = stated.get(pid);
-    const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge, roofCode: m.pand.roofCode ?? null, heightM: m.pand.heightM ?? null,
+    const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge0, roofCode: m.pand.roofCode ?? null, heightM: m.pand.heightM ?? null,
       ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}), ...(sd?.finish ? { finish: sd.finish } : {}), ...(sd?.storeys ? { storeys: sd.storeys } : {}), ...(sd?.stoop ? { stoop: true } : {}), ...(sd?.roofStorey ? { roofStorey: true } : {}), ...(sd?.warehouse ? { warehouse: true } : {}), ...(sd?.elements?.length ? { elements: sd.elements } : {}) };
     const own = reads.get(pid);
     let read: DescriberAnswer, sample: string | undefined, readRef: string;
@@ -87,7 +106,7 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       if (!d) return null;
       // A cornice front stands at 3DBAG's representative height (its storeys fitted to it); a gable's foot stays at the
       // front top, the gable rising to the ridge.
-      const corniceTop = !GABLED_CROWNS.has(String(t.statedCrown ?? d.donor.answer.crown)) && t.heightM != null && eaves !== null ? corniceLine({ crown: 'cornice' }, t, eaves, m.pand.eavesM) : null;
+      const corniceTop = !GABLED_CROWNS.has(String(t.statedCrown ?? d.donor.answer.crown)) && eaves !== null ? (ahnTop ?? (t.heightM != null ? corniceLine({ crown: 'cornice' }, t, eaves, m.pand.eavesM) : null)) : null;
       read = fittedRead(corniceTop !== null ? { ...t, eavesM: corniceTop } : t, d.donor);
       if (t.roofStorey) read = statedDormer(read);
       readRef = `${BELT_LOOK_REF}: donor ${d.donor.pandId}`;
@@ -97,7 +116,10 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       sample = t.finish === 'plaster' || t.finish === 'stone' ? undefined : brickDonorSample(d.donor);
       prov[pid] = { donor: d.donor.pandId, distance: d.distance, rank: d.rank, of: d.of };
     }
-    const top = corniceLine(read, t, eaves, m.pand.eavesM);
+    const gabled = GABLED_CROWNS.has(String(read.crown));
+    const top = !gabled && ahnTop !== null ? ahnTop : corniceLine(read, t, eaves, m.pand.eavesM);
+    // A gable's apex: the AHN front's top under the 3DBAG ridge (the ridge often belongs to the roof behind the front).
+    const ridge = gabled && af ? ahnGableApex(af, top, ridge0) : ridge0;
     members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: t.year, widthM: +m.front.lengthM.toFixed(2),
       eaves3dbag: top, height3dbag: top, ...(ridge !== null && gableable(t) ? { ridge3dbag: +ridge.toFixed(2) } : {}),
       read, readRef, ...(sample ? { wallSample: sample } : {}) });
@@ -128,14 +150,14 @@ export function relabelDonorFields(row: RowRecord, donorFilled: ReadonlySet<stri
  * The belt: rows from the undescribed pands, each solved as a belt row. `reads` are the belt tranche's own reads (pand ->
  * read); `donors` the usable reads the look draws from.
  */
-export function generateBelt(pands: readonly GenPand[], streets: readonly GenStreet[], described: ReadonlySet<string>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, stated: ReadonlyMap<string, BeltStated> = new Map()): BeltGenResult {
+export function generateBelt(pands: readonly GenPand[], streets: readonly GenStreet[], described: ReadonlySet<string>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, stated: ReadonlyMap<string, BeltStated> = new Map(), ahn: ReadonlyMap<string, AhnFront> = new Map()): BeltGenResult {
   const skipped: BeltGenResult['skipped'] = [], provenance: BeltGenResult['provenance'] = {}, fronts: BeltGenResult['fronts'] = {};
   const free = pands.filter(p => { const d = described.has(pandNumber(p.id)); if (d) skipped.push({ id: pandNumber(p.id), reason: 'described' }); return !d; });
   const res = districtRows(free, streets, { singles: true });
   for (const u of res.unplaced) skipped.push({ id: pandNumber(u.id), reason: u.reason });
   const rows: RowRecord[] = [];
   for (const r of res.rows) {
-    const input = beltRowInput(r, reads, donors, at, provenance, stated);
+    const input = beltRowInput(r, reads, donors, at, provenance, stated, ahn);
     if (!input) { for (const m of r.members) skipped.push({ id: pandNumber(m.pand.id), reason: 'no-donor' }); continue; }
     const donorFilled = new Set(input.members.filter(m => 'donor' in provenance[m.pandId]).map(m => m.pandId));
     const elements = new Map(input.members.map(m => [m.pandId, stated.get(m.pandId)?.elements ?? []]));
