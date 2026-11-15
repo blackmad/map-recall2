@@ -458,19 +458,23 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   const half = Math.min((L - 0.6) / 2, RETAIL_FRONT.maxSpanM / 2), s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half)), s1 = s0 + 2 * half;
   // The traced door, when the trace's front is this wall (its span within a quarter of the wall's length).
   const span = b.specRecipe?.frontSpanM, boxes = b.specRecipe?.groundBoxes;
-  let door: { a0: number; a1: number; depthM: number } | undefined;
+  let door: { a0: number; a1: number; depthM: number } | undefined, bays: number | undefined;
   if (span && boxes?.length && Math.abs(span - best.len) < 0.25 * span) {
     const ltr = seenLeftToRight(best), mid = (s0 + s1) / 2;
     const doors = boxes.filter(o => o.kind === 'door').map(o => ({ a0: shift + (ltr ? o.a0 : 1 - o.a1) * best.len, a1: shift + (ltr ? o.a1 : 1 - o.a0) * best.len }))
       .filter(o => o.a0 >= s0 - 1e-6 && o.a1 <= s1 + 1e-6 && o.a1 - o.a0 >= 0.6 && o.a1 - o.a0 <= 2.2)
       .sort((p, q) => Math.abs((p.a0 + p.a1) / 2 - mid) - Math.abs((q.a0 + q.a1) / 2 - mid));
     if (doors[0]) door = { ...doors[0], depthM: RETAIL_FRONT.recessM };
+    // Lane retail-real: the traced ground cells inside the front (a red-light front puts a door in each).
+    const cells = boxes.map(o => ({ a0: shift + (ltr ? o.a0 : 1 - o.a1) * best.len, a1: shift + (ltr ? o.a1 : 1 - o.a0) * best.len }))
+      .filter(o => o.a0 >= s0 - 0.3 && o.a1 <= s1 + 0.3 && o.a1 - o.a0 >= 0.6 && o.a1 - o.a0 <= 2.2).length;
+    if (cells) bays = cells;
   }
   // Round 3c: the lettering from the logo layer; each pane's interior from the building's own shop cell (puiAt) when it
   // has one.
   const shopCell = b.layers && b.layers.ground < BAY_LAYER_COUNT && (SHOP_KINDS as readonly string[]).includes(BAY_ENTRIES[b.layers.ground]?.kind ?? '') ? b.layers.ground : undefined;
   const input = { template: front.template, word: front.word, seed: b.id, ...(door ? { door } : {}), ...(front.logo ? { logo: front.logo } : {}),
-    ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}) };
+    ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(bays ? { bays } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}) };
   const tris = retailFrontTris(input, e, s0, s1, base, groundM);
   // Round 3: every template door stands in a recess (retailDoor), traced or not, so the wall is cut over each.
   const opening = retailDoor(input, s0, s1);

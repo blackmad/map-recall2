@@ -4,6 +4,7 @@
 // layer is spent: the atlas has two free layers. Pure (no DOM): runs in the mesh worker and in Node tests.
 import { glyphLayout } from './retailLogos.js';
 import { goodsCell, goodsTiles } from './retailGoods.js';
+import { drawRedLightFront } from './groundParts/redLightFront.js';
 import { capShare, titleCase, typeLayout, type TypeFace } from './retailTypeFaces.js';
 import { BIKE, bikeQuads, outsideBikes, SHOW_HEXES, USED_HEXES, type BikeClass } from './retailBikes.js';
 import { signText, TEMPLATE_LOOKS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
@@ -453,6 +454,9 @@ export type RetailFrontInput = {
   faces?: number;
   /** Lane retail-real: a chain's board and letter colours and its name (lettered when it has no logo). */
   chain?: { fascia: string; letters: string; word: string };
+  /** Lane retail-real: the host front's ground-floor cells across [s0, s1] where a read or register traced them
+   *  (specRecipe.groundBoxes); a red-light front puts one door in each. Absent: doors at the measured 1.15 m pitch. */
+  bays?: number;
 };
 
 /** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
@@ -531,6 +535,14 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   if (s1 - s0 < 1.2) return [];
   const b = new Builder(e);
   const top = base + Math.min(Math.max(2.8, groundM), 4.6) - FRONT.fasciaGapM, bottom = top - FRONT.fasciaM;
+  // Lane retail-real (coordinator 2026-11-15): a red-light front is lane R's window-front part (groundParts/
+  // redLightFront.ts: glazed doors in a cream frame, kick panels, curtains, a lit red tube on the head), with no pui
+  // fascia, riser or recessed door; `?retailReal=0` keeps round n's redGlow box.
+  if (look.content === 'redGlow' && look.goods && input.goods !== undefined) {
+    const n = Math.floor(hash01(input.seed + ":redLight") * 12);
+    drawRedLightFront(b, s0, s1, base, 0, { ...(input.bays ? { doors: input.bays } : {}), tube: n % 3 === 0 ? 'doors' : 'run', curtains: n % 4 === 1 ? 'gathered' : 'drawn' });
+    return b.out;
+  }
   const frame = input.paint ?? look.frame ?? '#2b2724', head = doorHead(base, groundM), puiTop = bottom - FRONT.beadM;
   const timber = look.surround ?? frame, riser = look.surround ?? shadeHex(frame, 1.12);
   // Fascia board, a cornice cap over it (a step darker, standing further out) and a bead under it.
@@ -581,24 +593,6 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   if (door && puiTop - head > 0.25) b.slab(door.a0, door.a1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame, 'bottom');
   for (const [c0, c1] of segs) {
     if (c1 - c0 < 0.4) { if (c1 > c0) b.fin(c0, c1, 0, FRONT.frameOutM - 0.02, base, puiTop, timber); continue; }
-    if (windows && look.goods && input.goods !== undefined) {
-      // Lane retail-real (coordinator 2026-11-15, De Wallen): a row of framed glass doors, each a red-lit room with its
-      // curtain (the redWindow cell), a dark timber frame and the red tube light round it, from the pavement up.
-      const cell = goodsCell(look.goods), layer = input.goods + cell.page, [u0, v0, u1, v1] = cell.rect;
-      const doors = Math.max(1, Math.floor((c1 - c0) / 1.15)), dw = (c1 - c0) / doors, z0 = base + 0.12, z1 = puiTop - FRONT.headGapM, f = 0.08, t = 0.035, hex = look.tube ?? '#ff2a3a';
-      for (let k = 0; k < doors; k++) {
-        const d0 = c0 + k * dw, d1 = d0 + dw;
-        b.fin(d0, d0 + f, 0, FRONT.frameOutM, base, puiTop, '#2a1810'); b.fin(d1 - f, d1, 0, FRONT.frameOutM, base, puiTop, '#2a1810');
-        b.slab(d0, d1, 0, FRONT.frameOutM, z1, z1 + f, '#2a1810', 'bottom');
-        b.panel(d0 + f, d1 - f, 0.015, base, z0, '#2a1810');
-        const first = b.out.length;
-        b.textured(d0 + f, d1 - f, FRONT.contentOutM, z0, z1, layer, k % 2 ? [u1, v0, u0, v1] : [u0, v0, u1, v1]);
-        void first;
-        b.panel(d0 + f, d1 - f, FRONT.frameOutM + 0.005, z1 - t, z1, hex, true);
-        b.panel(d0 + f, d0 + f + t, FRONT.frameOutM + 0.005, z0, z1, hex, true); b.panel(d1 - f - t, d1 - f, FRONT.frameOutM + 0.005, z0, z1, hex, true);
-      }
-      continue;
-    }
     if (windows) { content(b, look, c0, c1, zr, puiTop - FRONT.headGapM, input.seed); continue; }
     const panes = Math.max(1, Math.ceil((c1 - c0) / (look.paneM ?? FRONT.paneMaxM))), pw = (c1 - c0) / panes;
     // Stall riser in the riser colour, a sill over it (round 3c: one riser panel; the per-pane sunk panels were 2 tris a

@@ -279,10 +279,12 @@ const LOOKS_N: Record<RetailTemplate, TemplateLook> = {
   liquor: { fascia: '#282221', letters: '#ffffff', content: 'shelves', lit: true },
   variety: { fascia: '#ffffff', letters: '#1d1d1b', content: 'shelves', lit: true },
   tattoo: { fascia: '#1d1d1b', letters: '#e8dcc0', word: 'name', content: 'neon', lit: false },
-  snackbar: { fascia: '#c4161c', letters: '#ffffff', word: 'name', content: 'counter', lit: true },
+  snackbar: { fascia: '#1d1d1b', letters: '#f2d16b', word: 'name', content: 'counter', lit: true },
 };
 
-/** Lane retail-real (2026-11-15): what each template's window shows and the face its name is lettered in. */
+/** Lane retail-real (2026-11-15): what each template's window shows and the face its name is lettered in. Blind round 1
+ *  (held-out fronts, r1): butcher 0-1-0 and hairdresser 0-1-1 lost with goods (a busy display where the photo's glass is
+ *  dark), so they keep round n's shop-cell interior; snackbar 0-2-0 lost on an invented red fascia (now dark). */
 export const TEMPLATE_REAL: Record<RetailTemplate, Pick<TemplateLook, 'goods' | 'face'>> = {
   ah: { goods: 'aisles' }, jumbo: { goods: 'aisles' }, dirk: { goods: 'aisles' }, etos: { goods: 'drugstore' }, hema: { goods: 'drugstore' },
   action: { goods: 'aisles' }, febo: { goods: 'automatiek' }, stach: { goods: 'deli' }, sla: { goods: 'bowls' }, bruna: { goods: 'magazines' },
@@ -290,9 +292,9 @@ export const TEMPLATE_REAL: Record<RetailTemplate, Pick<TemplateLook, 'goods' | 
   mcdonalds: { goods: 'fastfood' }, kruidvat: { goods: 'drugstore' },
   coffeeshop: { goods: 'coffeeshop', face: 'script' }, smartshop: { goods: 'smartshop', face: 'condensed' }, brownBar: { goods: 'brownBar', face: 'serif' },
   bike: { goods: 'bikes', face: 'condensed' }, redLight: { goods: 'redWindow' },
-  doner: { goods: 'doner', face: 'condensed' }, toko: { goods: 'bainMarie', face: 'condensed' }, butcher: { goods: 'butcher', face: 'serif' },
+  doner: { goods: 'doner', face: 'condensed' }, toko: { goods: 'bainMarie', face: 'condensed' }, butcher: { face: 'serif' },
   greengrocer: { goods: 'produce', face: 'condensed' }, florist: { goods: 'flowers', face: 'script' }, apotheek: { goods: 'pharmacy' },
-  hairdresser: { goods: 'hair', face: 'serif' }, turkishBakery: { goods: 'bread', face: 'condensed' }, bakery: { goods: 'bread', face: 'script' },
+  hairdresser: { face: 'serif' }, turkishBakery: { goods: 'bread', face: 'condensed' }, bakery: { goods: 'bread', face: 'script' },
   nuts: { goods: 'jars', face: 'script' }, frites: { goods: 'frites', face: 'condensed' }, cheese: { goods: 'cheese', face: 'serif' },
   waffle: { goods: 'waffles', face: 'script' }, pancake: { goods: 'pancakes', face: 'serif' }, souvenir: { goods: 'souvenirs', face: 'condensed' },
   books: { goods: 'books', face: 'serif' }, tobacco: { goods: 'tobacco', face: 'serif' }, phone: { goods: 'phones', face: 'condensed' },
