@@ -1,0 +1,766 @@
+{
+ "rule": "src/canalRecall/signRead.ts",
+ "ocr": "tesseract tesseract 5.5.3, eng, psm 11",
+ "counts": {
+  "none": 73,
+  "mismatch": 5,
+  "match": 3
+ },
+ "rows": [
+  {
+   "file": "artifacts/retail-look/ocr-cuts/34044774-TMX7316010203-002788_pano_0000_000499.jpg",
+   "pand": "0363100012089314",
+   "name": "Albert Heijn",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/94829657-TMX7316010203-002907_pano_0000_000178.jpg",
+   "pand": "0363100012112463",
+   "name": "De Biertuin",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/494157341-b_20241211_0838_Track44_Sphere_00004.jpg",
+   "pand": "0363100012092013",
+   "name": "Albert Heijn",
+   "verdict": "none",
+   "words": "ooo:55 oOo:53"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/497285832-TMX7316010203-002059_pano_0000_002825.jpg",
+   "pand": "0363100012164501",
+   "name": "Cafe Kompleet",
+   "verdict": "none",
+   "words": "ire:55"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/545842932-TMX7316010203-001658_pano_0000_000881.jpg",
+   "pand": "0363100012165555",
+   "name": "Rembrandt Corner",
+   "verdict": "none",
+   "words": "tel:65 Ae):55 SRO:59"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/858194373-recording_2025-07-03_04-36-25_00406.jpg",
+   "pand": "0363100012185844",
+   "name": "Orff",
+   "verdict": "mismatch",
+   "word": "cademie",
+   "words": "cademie:86 voor:96 Theater:96 Dans:96 «f~:51 cademie:86 voor:96 Theater:96 Dans:96 «f~:59"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/1328378818-recording_2025-07-03_08-35-58_01780.jpg",
+   "pand": "0363100012168920",
+   "name": "Hair Look",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/1724414492-TMX7316010203-001672_pano_0000_000350.jpg",
+   "pand": "0363100012169414",
+   "name": "Etos",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/1827993011-recording_2025-07-14_06-43-08_00754.jpg",
+   "pand": "0363100012156466",
+   "name": "Srikandi",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2138577011-TMX7316010203-001674_pano_0000_002389.jpg",
+   "pand": "0363100012174475",
+   "name": "Crystal",
+   "verdict": "none",
+   "words": "FRY:76 STAL,:81 THE:58 BODY:96 SHOP.:65 FRY:71 STAL,:82 BODY:97 SHOP.:63"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2366138093-TMX7315120208-000062_pano_0009_000079.jpg",
+   "pand": "0363100012116204",
+   "name": "Bkry",
+   "verdict": "mismatch",
+   "word": "sphin",
+   "words": "SPhin:92 SPhin:91 =>::59"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2662199462-TMX7316010203-001045_pano_0000_000488.jpg",
+   "pand": "0363100012128221",
+   "name": "Roti corner",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2721521816-recording_2025-06-16_06-42-40_02570.jpg",
+   "pand": "0363100012180376",
+   "name": "Cafe Bar Amsterdam",
+   "verdict": "none",
+   "words": "BAR:97 BAR:97 ita:60"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2721522226-recording_2025-06-16_03-46-32_00566.jpg",
+   "pand": "0363100012179066",
+   "name": "FEBO",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2721722757-TMX7316010203-000720_pano_0000_000266.jpg",
+   "pand": "0363100012168049",
+   "name": "McDonald's",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2721723196-TMX7316010203-001054_pano_0000_000543.jpg",
+   "pand": "0363100012170990",
+   "name": "Royal Delft",
+   "verdict": "none",
+   "words": "RLO:79 RLO:85"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2721772967-TMX7316010203-000716_pano_0000_001317.jpg",
+   "pand": "0363100012178488",
+   "name": "Istanbul",
+   "verdict": "none",
+   "words": "\\tg:60"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2722191434-b_20241216_0911_Track30_Sphere_00049.jpg",
+   "pand": "0363100012177526",
+   "name": "Cafe Perdu",
+   "verdict": "mismatch",
+   "word": "lekker",
+   "words": "Lekker:96 Lekker:96"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2722209323-b_20250109_1300_Track05_Sphere_00189.jpg",
+   "pand": "0363100012175748",
+   "name": "The Minds",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2724000766-TMX7316010203-001530_pano_0004_000111.jpg",
+   "pand": "0363100012175340",
+   "name": "Jamin",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2724826947-TMX7316010203-002973_pano_0000_000163.jpg",
+   "pand": "0363100012178198",
+   "name": "Cheesecake Project",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2725878712-TMX7316010203-000716_pano_0001_000086.jpg",
+   "pand": "0363100012179108",
+   "name": "Woody's",
+   "verdict": "none",
+   "words": "wind:58"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2725878717-TMX7316010203-002544_pano_0000_003143.jpg",
+   "pand": "0363100012182757",
+   "name": "Café Langereis",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2725879124-TMX7316010203-000998_pano_0004_000937.jpg",
+   "pand": "0363100012182681",
+   "name": "Coffeeshop Kooi",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2725879476-TMX7316010203-001530_pano_0002_000183.jpg",
+   "pand": "0363100012168179",
+   "name": "De Slegte",
+   "verdict": "match",
+   "word": "siegte",
+   "words": "Siegte:63"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2729940946-recording_2025-06-16_06-21-55_00393.jpg",
+   "pand": "0363100012176167",
+   "name": "Le temps retrouve",
+   "verdict": "none",
+   "words": "She:61 Ves:61 She:56 Ves:53"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2729941686-TMX7316010203-001178_pano_0000_001527.jpg",
+   "pand": "0363100012172447",
+   "name": "Hartman",
+   "verdict": "none",
+   "words": "ALPERS:83 ALPERS:84"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2736376844-TMX7316010203-001053_pano_0000_002699.jpg",
+   "pand": "0363100012177260",
+   "name": "Peppernuts",
+   "verdict": "none",
+   "words": "iit:50"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2737855576-TMX7316010203-002824_pano_0021_000125.jpg",
+   "pand": "0363100012178161",
+   "name": "Zwart op Wit",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2743482771-TMX7316010203-002625_pano_0007_000041.jpg",
+   "pand": "0363100012181328",
+   "name": "Bar Guzzo",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2743670684-recording_2025-06-16_03-46-32_00156.jpg",
+   "pand": "0363100012174170",
+   "name": "Coffeeshop Bronx",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2817508732-TMX7316010203-002455_pano_0001_001054.jpg",
+   "pand": "0363100012166339",
+   "name": "Café Life",
+   "verdict": "none",
+   "words": "ver:53 ver:70"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2817534208-recording_2025-07-14_07-34-51_02018.jpg",
+   "pand": "0363100012156163",
+   "name": "Coffeeshop IBIZA",
+   "verdict": "none",
+   "words": "{ih:58 Fire:61 tir:52 tick:52 Bing:50 Fire:54 hick:61"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2817536265-TMX7316010203-001792_pano_0000_000685.jpg",
+   "pand": "0363100012163368",
+   "name": "8 Amsterdam Midtown Hairsalon",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2817559393-TMX7316010203-001792_pano_0000_000704.jpg",
+   "pand": "0363100012163631",
+   "name": "HS Amsterdam",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2817559734-recording_2025-07-15_09-44-59_02033.jpg",
+   "pand": "0363100012167255",
+   "name": "Casperle",
+   "verdict": "none",
+   "words": "Ke):82 Ke):75"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2817610192-recording_2024-09-04_05-35-54_06288.jpg",
+   "pand": "0363100012162954",
+   "name": "Swapfiets",
+   "verdict": "none",
+   "words": "———:60"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2817630058-TMX7316010203-001169_pano_0000_000765.jpg",
+   "pand": "0363100012165567",
+   "name": "Britton's",
+   "verdict": "none",
+   "words": "Any:74 Dies:56 Any:74"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2817631428-TMX7316010203-001892_pano_0000_001688.jpg",
+   "pand": "0363100012158800",
+   "name": "Kebab",
+   "verdict": "match",
+   "word": "kebab",
+   "words": "ret:69 KEBAB:74 ame.:51 ret:71 KEBAB:74 Leer:53"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/2825254498-recording_2025-06-20_10-43-25_02258.jpg",
+   "pand": "0363100012061690",
+   "name": "Etos",
+   "verdict": "none",
+   "words": "lee:50"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/3414542012-TMX7316010203-002983_pano_0007_000037.jpg",
+   "pand": "0363100012178524",
+   "name": "Royal Tobacco",
+   "verdict": "none",
+   "words": "met:57 war:55 wai:63 met:52 war:57 wai:56"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/4166609790-TMX7316010203-001177_pano_0000_000171.jpg",
+   "pand": "0363100012172035",
+   "name": "Cafe The Tribe",
+   "verdict": "none",
+   "words": "—_<:58"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/4249154774-recording_2025-06-30_07-34-08_00607.jpg",
+   "pand": "0363100012243823",
+   "name": "Albert Heijn",
+   "verdict": "none",
+   "words": "aie.:52"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/4268044761-TMX7316010203-001187_pano_0000_000891.jpg",
+   "pand": "0363100012178622",
+   "name": "Donnerkebab",
+   "verdict": "none",
+   "words": "iis:84 iis:76"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/4794966821-TMX7316010203-002553_pano_0000_002292.jpg",
+   "pand": "0363100012160041",
+   "name": "Café Quelle",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/12070318554-TMX7316010203-001169_pano_0000_001333.jpg",
+   "pand": "0363100012159118",
+   "name": "Barbershop De Pijp",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/10891616036-TMX7316010203-002033_pano_0001_000291.jpg",
+   "pand": "0363100012171582",
+   "name": "Flower Loves Me",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/11434624774-TMX7316010203-001179_pano_0000_004407.jpg",
+   "pand": "0363100012169802",
+   "name": "Marnix",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/5028417622-TMX7316010203-001178_pano_0000_001618.jpg",
+   "pand": "0363100012175806",
+   "name": "Exit Café",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/12118891415-TMX7316010203-002310_pano_0001_001475.jpg",
+   "pand": "0363100012181313",
+   "name": "Jabsen & Jansen Souvenirs",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/5494117149-TMX7316010203-002040_pano_0001_002711.jpg",
+   "pand": "0363100012178611",
+   "name": "Kinki Kappers",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/5774803478-TMX7316010203-002554_pano_0000_001976.jpg",
+   "pand": "0363100012152459",
+   "name": "Rijwielhandel P. aan De Wiel",
+   "verdict": "none",
+   "words": "c=):63 Tee:58 haa:55 c=):71 Tee:63 haa:57"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/6445631163-TMX7316010203-001182_pano_0000_002042.jpg",
+   "pand": "0363100012099239",
+   "name": "Apotheek Amsterdam",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/12729261516-TMX7316010203-002137_pano_0000_005394.jpg",
+   "pand": "0363100012101798",
+   "name": "Coffeeshop Oost",
+   "verdict": "none",
+   "words": "fon.:54"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/11237757804-recording_2025-06-17_08-04-10_02387.jpg",
+   "pand": "0363100012177664",
+   "name": "Hairstories.amsterdam",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/11989742223-recording_2025-07-03_10-31-52_00164.jpg",
+   "pand": "0363100012170189",
+   "name": "Bromo Indah",
+   "verdict": "none",
+   "words": "Tae:54 ial:76 BARBERHOOD:58 ial:74"
+  },
+  {
+   "file": "artifacts/retail-look/ocr-cuts/14107651801-b_20250108_1349_Track25_Sphere_00015.jpg",
+   "pand": "0363100012180221",
+   "name": "The Candy Lab",
+   "verdict": "match",
+   "word": "canty",
+   "words": "ota:64 “He:63 Canty:58 Lab:95 ota:62 “He:56 Lab:95"
+  },
+  {
+   "file": "artifacts/retail-look/apotheek-r7/565704820-recording_2025-06-19_07-14-50_01615.jpg",
+   "pand": "0363100012181336",
+   "name": "De Vogel",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/apotheek-r7/2721294650-TMX7316010203-001549_pano_0000_000048.jpg",
+   "pand": "0363100012171352",
+   "name": "Medicijnman Apotheek Mouw & Kruysse",
+   "verdict": "none",
+   "words": "eet:51 eat:59"
+  },
+  {
+   "file": "artifacts/retail-look/apotheek-r7/2721828852-TMX7316010203-001675_pano_0000_004558.jpg",
+   "pand": "0363100012168649",
+   "name": "BENU",
+   "verdict": "none",
+   "words": "ACLEAN:82 wast:65 ACLEAN:75 wast:67"
+  },
+  {
+   "file": "artifacts/retail-look/apotheek-r7/2725663326-TMX7316010203-003009_pano_0004_000002.jpg",
+   "pand": "0363100012182294",
+   "name": "Apotheek H.W. van der Meulen",
+   "verdict": "none",
+   "words": "KUE:69 KUE:74"
+  },
+  {
+   "file": "artifacts/retail-look/apotheek-r7/2737864835-TMX7316010203-002865_pano_0006_000214.jpg",
+   "pand": "0363100012178688",
+   "name": "MedicijnMan Apotheek",
+   "verdict": "none",
+   "words": "BES:54 EES:54"
+  },
+  {
+   "file": "artifacts/retail-look/apotheek-r7/2737956305-TMX7316010203-002040_pano_0001_001269.jpg",
+   "pand": "0363100012179902",
+   "name": "Apotheek Koek, Schaeffer & van Tijen",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/apotheek-r7/2809450539-TMX7316010203-002929_pano_0011_000007.jpg",
+   "pand": "0363100012155842",
+   "name": "Wittop Koning",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/apotheek-r7/11134097449-TMX7316010203-000227_pano_0000_001368.jpg",
+   "pand": "0363100012172146",
+   "name": "Apotheek Leidsestraat",
+   "verdict": "mismatch",
+   "word": "parfumerie",
+   "words": "POURVoUS:82 POUR:96 vous:97 PARFUMERIE:89 EEK:76 POURVoUS:82 POUR:95 vous:97 PARFUMERIE:90"
+  },
+  {
+   "file": "artifacts/retail-look/apotheek-r7/12090241810-TMX7316010203-002551_pano_0000_003035.jpg",
+   "pand": "0363100012158634",
+   "name": "Benu Apotheek Zieseniss",
+   "verdict": "none",
+   "words": "BME:64 BIE:58"
+  },
+  {
+   "file": "artifacts/retail-look/apotheek-r7/12041361327-recording_2025-06-16_03-37-16_00376.jpg",
+   "pand": "0363100012126724",
+   "name": "Apotheek Frederik Hendrik",
+   "verdict": "none",
+   "words": "2am,:57"
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/30731918-recording_2025-07-30_07-40-42_01610.jpg",
+   "pand": "0363100012236562",
+   "name": "Zwarte Fietsenplan",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/60868596-recording_2025-06-19_06-21-49_00272.jpg",
+   "pand": "0363100012182512",
+   "name": "MacBike",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/249442607-TMX7316010203-001793_pano_0000_003656.jpg",
+   "pand": "0363100012071223",
+   "name": "Zijwind fietsen",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/253139885-TMX7316010203-002118_pano_0000_000962.jpg",
+   "pand": "w277117928",
+   "name": "Bvd Tweewielers Zuid",
+   "verdict": "none",
+   "words": "hy,:53 hy,:61"
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/393235136-recording_2024-10-02_11-14-57_01774.jpg",
+   "pand": "0363100012164552",
+   "name": "Fietsenmakerij Jeroen",
+   "verdict": "none",
+   "words": "——-:57"
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/427989914-TMX7316010203-002225_pano_0001_000832.jpg",
+   "pand": "0363100012134132",
+   "name": "Danny's Bike Shop",
+   "verdict": "none",
+   "words": "Meg:70"
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/1477529624-TMX7316010203-001681_pano_0000_006901.jpg",
+   "pand": "0363100012169548",
+   "name": "Green Budget Bikes",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/2375431045-recording_2025-06-16_06-42-40_02515.jpg",
+   "pand": "0363100012179314",
+   "name": "Yellow Bike",
+   "verdict": "none",
+   "words": "JU}:80 JU}:76"
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/2429947212-TMX7316010203-002553_pano_0000_002152.jpg",
+   "pand": "0363100012155567",
+   "name": "Trompton",
+   "verdict": "mismatch",
+   "word": "cespace",
+   "words": "few:54 CESPACE:91 Nie:55 few:52 CESPACE:92 Fae:52"
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/2614500497-TMX7316010203-001316_pano_0000_001411.jpg",
+   "pand": "0363100012129535",
+   "name": "SAM Tweewielen Service & Bike Rental",
+   "verdict": "none",
+   "words": "pra:55 pra:51"
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/2809004856-TMX7316010203-002054_pano_0000_003981.jpg",
+   "pand": "0363100012233610",
+   "name": "Gregario Cycling Services",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/2810049961-b_20241129_0829_Track01_Sphere_00107.jpg",
+   "pand": "0363100012153778",
+   "name": "Club 204",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/2817559440-TMX7316010203-001792_pano_0000_001332.jpg",
+   "pand": "0363100012159819",
+   "name": "Veloretti",
+   "verdict": "none",
+   "words": ""
+  },
+  {
+   "file": "artifacts/retail-look/bike-samples/2817834275-recording_2024-09-04_09-37-25_01114.jpg",
+   "pand": "0363100012113529",
+   "name": "Maats Cycling Culture",
+   "verdict": "none",
+   "words": ""
+  }
+ ],
+ "handCheck": {
+  "date": "2026-11-15",
+  "by": "lane agent, by eye",
+  "cuts": [
+   {
+    "i": 1,
+    "name": "Orff",
+    "verdict": "mismatch",
+    "word": "cademie",
+    "file": "artifacts/retail-look/ocr-cuts/858194373-recording_2025-07-03_04-36-25_00406.jpg",
+    "truth": "wrong",
+    "note": "the building sign (Academie voor Theater en Dans) above; cafe-restaurant ORFF sign small, host right"
+   },
+   {
+    "i": 2,
+    "name": "Bkry",
+    "verdict": "mismatch",
+    "word": "sphin",
+    "file": "artifacts/retail-look/ocr-cuts/2366138093-TMX7315120208-000062_pano_0009_000079.jpg",
+    "truth": "wrong",
+    "note": "neighbour sign (SPhinx) in the cut; Bkry not legible"
+   },
+   {
+    "i": 3,
+    "name": "Cafe Perdu",
+    "verdict": "mismatch",
+    "word": "lekker",
+    "file": "artifacts/retail-look/ocr-cuts/2722191434-b_20241216_0911_Track30_Sphere_00049.jpg",
+    "truth": "wrong",
+    "note": "delivery truck text (Lekker kerstinkopen)"
+   },
+   {
+    "i": 4,
+    "name": "De Slegte",
+    "verdict": "match",
+    "word": "siegte",
+    "file": "artifacts/retail-look/ocr-cuts/2725879476-TMX7316010203-001530_pano_0002_000183.jpg",
+    "truth": "right",
+    "note": "Boekhandel De Slegte"
+   },
+   {
+    "i": 5,
+    "name": "Kebab",
+    "verdict": "match",
+    "word": "kebab",
+    "file": "artifacts/retail-look/ocr-cuts/2817631428-TMX7316010203-001892_pano_0000_001688.jpg",
+    "truth": "right",
+    "note": "KEBAB"
+   },
+   {
+    "i": 6,
+    "name": "The Candy Lab",
+    "verdict": "match",
+    "word": "canty",
+    "file": "artifacts/retail-look/ocr-cuts/14107651801-b_20250108_1349_Track25_Sphere_00015.jpg",
+    "truth": "right",
+    "note": "The Candy Lab"
+   },
+   {
+    "i": 7,
+    "name": "Apotheek Leidsestraat",
+    "verdict": "mismatch",
+    "word": "parfumerie",
+    "file": "artifacts/retail-look/apotheek-r7/11134097449-TMX7316010203-000227_pano_0000_001368.jpg",
+    "truth": "wrong",
+    "note": "the shop trades as Pourvous (drogisterij, parfumerie, apotheek); host right, OSM name differs"
+   },
+   {
+    "i": 8,
+    "name": "Trompton",
+    "verdict": "mismatch",
+    "word": "cespace",
+    "file": "artifacts/retail-look/bike-samples/2429947212-TMX7316010203-002553_pano_0000_002152.jpg",
+    "truth": "wrong",
+    "note": "neighbour sign (Bouncespace); Trompton not legible"
+   },
+   {
+    "i": 9,
+    "name": "Albert Heijn",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/34044774-TMX7316010203-002788_pano_0000_000499.jpg",
+    "truth": "missed",
+    "note": "Albert Heijn and logo legible"
+   },
+   {
+    "i": 10,
+    "name": "De Biertuin",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/94829657-TMX7316010203-002907_pano_0000_000178.jpg",
+    "truth": "right",
+    "note": "no sign legible"
+   },
+   {
+    "i": 11,
+    "name": "Albert Heijn",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/494157341-b_20241211_0838_Track44_Sphere_00004.jpg",
+    "truth": "missed",
+    "note": "Albert Heijn legible"
+   },
+   {
+    "i": 12,
+    "name": "Cafe Kompleet",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/497285832-TMX7316010203-002059_pano_0000_002825.jpg",
+    "truth": "right",
+    "note": "no sign legible"
+   },
+   {
+    "i": 13,
+    "name": "Rembrandt Corner",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/545842932-TMX7316010203-001658_pano_0000_000881.jpg",
+    "truth": "missed",
+    "note": "Rembrandt Corner legible"
+   },
+   {
+    "i": 14,
+    "name": "Hair Look",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/1328378818-recording_2025-07-03_08-35-58_01780.jpg",
+    "truth": "right",
+    "note": "no sign legible"
+   },
+   {
+    "i": 15,
+    "name": "Etos",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/1724414492-TMX7316010203-001672_pano_0000_000350.jpg",
+    "truth": "missed",
+    "note": "Etos script legible"
+   },
+   {
+    "i": 16,
+    "name": "Srikandi",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/1827993011-recording_2025-07-14_06-43-08_00754.jpg",
+    "truth": "right",
+    "note": "no sign legible"
+   },
+   {
+    "i": 17,
+    "name": "Crystal",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/2138577011-TMX7316010203-001674_pano_0000_002389.jpg",
+    "truth": "missed",
+    "note": "CRYSTAL legible"
+   },
+   {
+    "i": 18,
+    "name": "Roti corner",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/2662199462-TMX7316010203-001045_pano_0000_000488.jpg",
+    "truth": "right",
+    "note": "van in front"
+   },
+   {
+    "i": 19,
+    "name": "Cafe Bar Amsterdam",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/2721521816-recording_2025-06-16_06-42-40_02570.jpg",
+    "truth": "right",
+    "note": "CAFE BAR: only generic words"
+   },
+   {
+    "i": 20,
+    "name": "FEBO",
+    "verdict": "none",
+    "file": "artifacts/retail-look/ocr-cuts/2721522226-recording_2025-06-16_03-46-32_00566.jpg",
+    "truth": "missed",
+    "note": "FEBO legible"
+   }
+  ],
+  "summary": {
+   "matchPrecision": "3/3",
+   "mismatchPrecision": "0/5 (building sign, neighbour sign x2, truck, trade name)",
+   "legibleSignsMatched": "3 of 10 (Orff counted legible)",
+   "use": "a match confirms a host; a mismatch is not evidence to re-host"
+  }
+ }
+}

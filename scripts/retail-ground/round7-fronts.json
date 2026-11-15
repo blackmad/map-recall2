@@ -1,0 +1,143 @@
+[
+ {
+  "pandId": "0363100012236182",
+  "key": "bike-used-1",
+  "case": "bike used: Velespit",
+  "at": [
+   4.908458,
+   52.355922
+  ],
+  "note": "at moved 2.8 m from the OSM node to the pand's outline (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012236373",
+  "key": "bike-used-2",
+  "case": "bike used: Het Zwarte Fietsenplan",
+  "at": [
+   4.874751,
+   52.363064
+  ],
+  "note": "at moved 2.9 m from the OSM node to the pand's outline (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012180294",
+  "key": "bike-rental-1",
+  "case": "bike rental: King Bikes",
+  "at": [
+   4.894751,
+   52.377411
+  ]
+ },
+ {
+  "pandId": "0363100012571550",
+  "key": "bike-rental-2",
+  "case": "bike rental: Green Budget Bikes",
+  "at": [
+   4.8918,
+   52.37459
+  ]
+ },
+ {
+  "pandId": "0363100012236683",
+  "key": "bike-premium-1",
+  "case": "bike premium: Giant",
+  "at": [
+   4.870166,
+   52.361279
+  ],
+  "note": "at moved 2.6 m from the OSM node to the pand's outline (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012235891",
+  "key": "bike-premium-2",
+  "case": "bike premium: QicQ Concept Store",
+  "at": [
+   4.871781,
+   52.386162
+  ]
+ },
+ {
+  "pandId": "0363100012176125",
+  "key": "bike-used-r7-1",
+  "case": "bike used: Shop 30",
+  "at": [
+   4.889933,
+   52.381001
+  ],
+  "note": "at moved 5.4 m from the OSM node to the pand's outline (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012106448",
+  "key": "bike-used-r7-2",
+  "case": "bike used: Amsterdamse Fietswinkel",
+  "at": [
+   4.8528209,
+   52.3644421
+  ]
+ },
+ {
+  "pandId": "0363100012171886",
+  "key": "bike-rental-r7-1",
+  "case": "bike rental: Black Bikes",
+  "at": [
+   4.8977101,
+   52.3739267
+  ]
+ },
+ {
+  "pandId": "0363100012179273",
+  "key": "bike-rental-r7-2",
+  "case": "bike rental: Discount Bike Rental",
+  "at": [
+   4.893358,
+   52.3752832
+  ]
+ },
+ {
+  "pandId": "0363100012172146",
+  "key": "apotheek-r7-1",
+  "case": "apotheek: Apotheek Leidsestraat",
+  "at": [
+   4.884881,
+   52.365287
+  ],
+  "note": "at moved 2.7 m from the OSM node to the pand's outline (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012155842",
+  "key": "apotheek-r7-2",
+  "case": "apotheek: Wittop Koning",
+  "at": [
+   4.8758365,
+   52.3627008
+  ]
+ },
+ {
+  "pandId": "0363100012181336",
+  "key": "apotheek-r7-3",
+  "case": "apotheek: De Vogel",
+  "at": [
+   4.916506,
+   52.370857
+  ],
+  "note": "at moved 4.7 m from the OSM node to the pand's outline (frames need a wall within 3 m)"
+ },
+ {
+  "pandId": "0363100012158893",
+  "key": "gallgall-1-awning",
+  "case": "Gall & Gall: Gall & Gall (in-sample: awning measured on this photo)",
+  "at": [
+   4.87097,
+   52.355255
+  ]
+ },
+ {
+  "pandId": "0363100012089211",
+  "key": "hairdresser-3-awning",
+  "case": "hairdresser: Kinki (in-sample: awning measured on this photo)",
+  "at": [
+   4.881834,
+   52.353956
+  ]
+ }
+]

@@ -15,9 +15,16 @@ export const LOGOS: ReadonlyArray<{ key: RetailTemplate; aspect: number }> = [
   { key: 'etos', aspect: 960 / 766 }, { key: 'dirk', aspect: 960 / 557 }, { key: 'action', aspect: 960 / 182 },
   { key: 'bruna', aspect: 219 / 60 },
 ];
+/** Round 6 (lane retail-look): the second logo page, one more layer after the first (retailLogoLayer + 1), the same
+ *  2 x 4 grid with no lettering cell. Commons renders (public domain, provenance.json), matched to open panoramas. */
+export const LOGOS_2: ReadonlyArray<{ key: RetailTemplate; aspect: number }> = [
+  { key: 'mcdonalds', aspect: 954 / 833 }, { key: 'gallgall', aspect: 616 / 334 }, { key: 'kruidvat', aspect: 960 / 252 },
+];
 export const LOGO_GRID = { cols: 2, rows: 4, pad: 0.025 } as const;
 /** The atlas's published path under canal-drive/ (scripts/retail-ground/build-logo-atlas.ts --publish). */
 export const LOGO_ATLAS_PATH = 'materials/retail-logos/atlas.png';
+/** The second page's atlas (round 6). */
+export const LOGO_ATLAS_2_PATH = 'materials/retail-logos/atlas-2.png';
 
 /**
  * The logo layer's ordinal: after the flat-roof surface layer (flatRoofSurfaceLayer), so the bay, roof, glass-block, slot
@@ -28,19 +35,23 @@ export function retailLogoLayer(cells: string): number | null {
 }
 
 /** A logo's cell in image space (x, y from the top-left, fractions) and the logo's fitted box inside it. */
-export function logoBox(i: number): { x: number; y: number; w: number; h: number } {
-  const { cols, rows, pad } = LOGO_GRID, cw = 1 / cols, ch = 1 / rows, A = LOGOS[i].aspect;
+export function logoBox(i: number, page: 0 | 1 = 0): { x: number; y: number; w: number; h: number } {
+  const { cols, rows, pad } = LOGO_GRID, cw = 1 / cols, ch = 1 / rows, A = (page ? LOGOS_2 : LOGOS)[i].aspect;
   const iw = cw - 2 * pad, ih = ch - 2 * pad;
   const [w, h] = A > iw / ih ? [iw, iw / A] : [ih * A, ih];
   return { x: (i % cols) * cw + (cw - w) / 2, y: Math.floor(i / cols) * ch + (ch - h) / 2, w, h };
 }
 
-/** The template's logo: the uv rect (u0, v0, u1, v1; v up, as the array rows are bottom-first) and its aspect. */
-export function logoFor(template: RetailTemplate): { rect: [number, number, number, number]; aspect: number } | null {
-  const i = LOGOS.findIndex(l => l.key === template);
-  if (i < 0) return null;
-  const b = logoBox(i);
-  return { rect: [b.x, 1 - (b.y + b.h), b.x + b.w, 1 - b.y], aspect: LOGOS[i].aspect };
+/** The template's logo: the uv rect (u0, v0, u1, v1; v up, as the array rows are bottom-first), its aspect, and its
+ *  page (0: the logo layer, 1: the layer after it). */
+export function logoFor(template: RetailTemplate): { rect: [number, number, number, number]; aspect: number; page: 0 | 1 } | null {
+  for (const page of [0, 1] as const) {
+    const list = page ? LOGOS_2 : LOGOS, i = list.findIndex(l => l.key === template);
+    if (i < 0) continue;
+    const b = logoBox(i, page);
+    return { rect: [b.x, 1 - (b.y + b.h), b.x + b.w, 1 - b.y], aspect: list[i].aspect, page };
+  }
+  return null;
 }
 
 /**
@@ -52,10 +63,12 @@ export function logoFor(template: RetailTemplate): { rect: [number, number, numb
  * ride distance. Texture filtering and mips keep a solid stroke at any distance.
  */
 export const GLYPH_CELL = 7;
-export const GLYPH_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-export const GLYPH_GRID = { cols: 9, rows: 4 } as const;
+// Round 6: & and ' (Gall & Gall, McDonald's), in a 10 x 4 grid at nine tenths of the old size (a W still fits its
+// narrower cell; the ink fractions of the cell's width are unchanged).
+export const GLYPH_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&'";
+export const GLYPH_GRID = { cols: 10, rows: 4 } as const;
 /** Font size as a share of a glyph cell's height, and the baseline's place in it (the builder's text layout). */
-export const GLYPH_FONT = { size: 26 / 32, baseline: 0.5 + (26 / 32) * 0.36 } as const;
+export const GLYPH_FONT = { size: 0.9 * 26 / 32, baseline: 0.5 + 0.9 * (26 / 32) * 0.36 } as const;
 /** Each glyph's ink, [x0, x1] as fractions of its cell's width (measured by the builder, which checks them). */
 export const GLYPH_INK: Readonly<Record<string, readonly [number, number]>> = {
   '0': [0.263, 0.732], '1': [0.311, 0.605], '2': [0.263, 0.732], '3': [0.259, 0.737], '4': [0.259, 0.741], '5': [0.263, 0.737],
@@ -64,6 +77,7 @@ export const GLYPH_INK: Readonly<Record<string, readonly [number, number]>> = {
   I: [0.425, 0.57], J: [0.259, 0.689], K: [0.232, 0.833], L: [0.289, 0.754], M: [0.149, 0.851], N: [0.224, 0.776],
   O: [0.18, 0.82], P: [0.259, 0.776], Q: [0.18, 0.82], R: [0.232, 0.794], S: [0.224, 0.776], T: [0.232, 0.768],
   U: [0.219, 0.776], V: [0.206, 0.794], W: [0.07, 0.925], X: [0.189, 0.807], Y: [0.189, 0.811], Z: [0.224, 0.776],
+  '&': [0.215, 0.82], "'": [0.449, 0.551],
 };
 /** A letter quad's rows of its cell (v from the cell's top): the caps run 0.21-0.79, Q's tail to 0.85. */
 export const GLYPH_V = [0.1, 0.9] as const;
