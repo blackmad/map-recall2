@@ -88,6 +88,8 @@ export interface RowCrown {
   shoulderRise?: number;
   /** White stone finials: on each tread's outer corner (step), at the shoulders' feet (neck, bell, spout). */
   finials?: boolean;
+  /** Step: the lowest tread each side is a sloped shoulder from the foot to the first riser's top (Kinkerstraat 67). */
+  shoulder?: 'sloped';
   /** The attic light's head: a round or segmental arch (absent: square). */
   atticHead?: 'round' | 'segmental';
 }
@@ -151,6 +153,8 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
     kit = crownProfile({ gable: c.shape, ...(c.neckW ? { crownNeckWidth: neck / foot } : {}), crownSteps: d.steps || undefined,
       ...(necked && c.cap ? { crownCap: c.cap } : {}), ...(necked && c.shoulderRise ? { crownShoulderRise: c.shoulderRise } : {}) } as unknown as FrontIntent, 2 * foot, y0 + KIT_Z, T + KIT_Z);
     x0 = -foot;
+    // A sloped shoulder: the eaves-level corners under the first risers go, so the foot runs straight to the riser's top.
+    if (kit && c.shape === 'step' && c.shoulder === 'sloped') { const base = y0 + KIT_Z, w = 2 * foot; kit = kit.filter(([x, y]) => !(Math.abs(y - base) < 1e-6 && x > 1e-6 && x < w - 1e-6)); }
   }
   if (!kit) return [[-half, 0], [half, 0]];
   const out: V2[] = [];

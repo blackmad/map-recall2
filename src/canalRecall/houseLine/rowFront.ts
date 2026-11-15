@@ -33,7 +33,7 @@ export interface RowFrontRecord {
     /** A step gable's treads up each side (house rows: RowDesign.gable.steps). */
     steps?: number;
     /** House rows' stated gable (RowDesign.gable): the neck's cap, finials, the neck's height over the shoulders, the attic light's head. */
-    cap?: 'pediment' | 'segmental' | 'rounded' | 'flat'; finials?: boolean; neckOverM?: number; atticHead?: 'round' | 'segmental';
+    cap?: 'pediment' | 'segmental' | 'rounded' | 'flat'; finials?: boolean; shoulder?: 'sloped'; neckOverM?: number; atticHead?: 'round' | 'segmental';
     /** Traced attic lights in the crown, [x0, x1, z0, z1]: x from the front's centre as seen, z above the crown's foot. */
     lights?: Array<[number, number, number, number]>;
     /** A chimney stack on the crown: its top (pand datum) and width. */
@@ -482,6 +482,7 @@ export function rowGableCrown(c: RowFrontRecord['crown'], rise: number): { crown
   // The neck over the shoulders: the shoulders end that far under the top (kit crownShoulderRise, a share of the rise).
   if (necked && c.neckOverM && c.neckOverM > 0) crown.shoulderRise = +Math.max(0.1, Math.min(0.9, 1 - c.neckOverM / rise)).toFixed(3);
   if (c.finials) crown.finials = true;
+  if (shape === 'step' && c.shoulder === 'sloped') crown.shoulder = 'sloped';
   if (c.atticHead) crown.atticHead = c.atticHead;
   return { crown, gable };
 }
