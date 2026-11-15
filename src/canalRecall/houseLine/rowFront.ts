@@ -111,7 +111,7 @@ export interface RowSeriesDraw {
   /** A stoop up to the bel-etage street door (a souterrain front), the door on this side as seen from the street. */
   stoop?: { side: 'left' | 'right' | 'centre'; /** false: a raised ground door with no stoop read (no steps drawn). */ steps?: false;
     /** The flight's form and an iron railing, as the ground states (RowGround.stoopForm / stoopRailing). */
-    form?: 'straight' | 'side' | 'double'; railing?: true };
+    form?: 'straight' | 'side' | 'double'; railing?: true; doorcase?: import('../houseSpec/row/types.ts').RowDoorcase };
   /** The basement row's share of the upper pitch, when not SOUTERRAIN_FACTOR (low basement windows). */
   souterrainFactor?: number;
   /** The street door as read (left/right/centre as seen; `index` of `bays` ground openings, left to right as seen). */

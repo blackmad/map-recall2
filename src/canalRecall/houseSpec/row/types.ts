@@ -135,6 +135,9 @@ export interface RowGround {
   stoopForm?: 'straight' | 'side' | 'double';
   /** The stoop has a black iron railing (Herengracht 130). Absent: stone cheek walls only. */
   stoopRailing?: boolean;
+  /** The stoop door's doorcase as seen (Herengracht 130): stone or painted timber pilasters, an entablature (absent `top`)
+   *  or a pediment over it, a fanlight over the leaf (absent: true). Absent: the plain white frame. */
+  doorcase?: RowDoorcase;
   /**
    * The shopfront colour family, source `single-read`: only when a D1 reading names a colour on the shopfront, pui or
    * shutter itself (a canopy or sign colour does not count; `painted timber` names no colour). Omitted when nothing is
@@ -236,6 +239,7 @@ export interface RowGableStone {
   /** The cap on top: a pediment, a segmental hood, or a carved crest (absent: the gable's `cap`, else the kit's stock). */
   crest?: 'pediment' | 'segmental' | 'crest';
 }
+export interface RowDoorcase { material: 'stone' | 'timber'; top?: 'entablature' | 'pediment' | 'segmental'; fanlight?: boolean }
 export type RowDesignKey = keyof RowDesign;
 
 // --- members, fronts, series ------------------------------------------------------------------------------------------

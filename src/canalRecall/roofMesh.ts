@@ -897,7 +897,9 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
     if (plan.rowCrown) {
       const prof = rowCrownProfile(plan.rowCrown, W, R);
       // A crown in stone (stated, or the belt dress) stands deeper, so its sides read as a wall, not a cut-out.
-      gableSlab(s, prof, e, L, accents ? 'trim' : 'plate', trim, accents && rowCrownStone(plan.rowCrown) ? ROW_STONE.plate : 0.32);
+      // Its top stays brick behind the stone coping (David 2026-11-15: a white top 0.45 m deep read as a thick white edge).
+      const stoneCrown = accents && !!rowCrownStone(plan.rowCrown);
+      gableSlab(s, prof, e, L, accents && !stoneCrown ? 'trim' : 'plate', trim, stoneCrown ? ROW_STONE.plate : 0.32);
       if (accents) rowCrownAccents(s, plan.rowCrown, prof, f, e, W, R, trim);
       continue;
     }

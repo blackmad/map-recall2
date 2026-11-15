@@ -4,7 +4,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import type { ExtraContext } from './facadeExtras.js';
-import { ORNAMENT_COMPONENTS, STOOP_PARALLEL, stoopDoor, stoopFlights, stoopHiddenWindows } from './facadeOrnaments.js';
+import { ORNAMENT_COMPONENTS, ROW_DOORCASE, STOOP_PARALLEL, stoopDoor, stoopFlights, stoopHiddenWindows } from './facadeOrnaments.js';
 import { ExtraSink } from './facadeExtraCore.js';
 import { stoopAt } from './threeBuildingMesh.js';
 
@@ -86,4 +86,20 @@ test('row-stoop: Herengracht 130 double stoop with railings draws flights along 
   assert.ok(iron.length > 20, 'railings drawn');
   const straightRail = run({ end: 'centre', at: 5, exact: true, railing: true });
   assert.ok(straightRail.some(t => (t as { hex?: string }).hex === STOOP_PARALLEL.iron), 'a straight flight takes the railing too');
+});
+
+test('row-stoop: a stated doorcase draws pilasters, an entablature, a pediment and a fanlight; absent: the plain frame', () => {
+  const comp = ORNAMENT_COMPONENTS.find(x => x.id === 'row-stoop')!;
+  const run = (stoop: NonNullable<NonNullable<ExtraContext['rowDress']>['stoop']>) => {
+    const s = new ExtraSink(100000);
+    comp.build(wall({ layout: { bays: 5, bayWidthM: 2, groundM: 1.6, storeys: 3, storeyM: 3.2, doorBays: [], souterrain: true } as ExtraContext['layout'], rowDress: { stoop } }), s, 0);
+    return s.tris as Array<{ hex?: string; p: number[][] }>;
+  };
+  const plain = run({ end: 'centre', at: 5, exact: true, steps: false });
+  const ent = run({ end: 'centre', at: 5, exact: true, steps: false, doorcase: { material: 'stone' } });
+  const ped = run({ end: 'centre', at: 5, exact: true, steps: false, doorcase: { material: 'stone', top: 'pediment' } });
+  assert.ok(ent.length > plain.length && ped.length > ent.length);
+  assert.ok(ent.some(t => t.hex === ROW_DOORCASE.glass), 'a fanlight');
+  assert.ok(!run({ end: 'centre', at: 5, exact: true, steps: false, doorcase: { material: 'stone', fanlight: false } }).some(t => t.hex === ROW_DOORCASE.glass));
+  assert.ok(ent.some(t => t.hex === ROW_DOORCASE.stone) && !plain.some(t => t.hex === ROW_DOORCASE.stone));
 });
