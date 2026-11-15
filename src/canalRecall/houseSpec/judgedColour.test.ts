@@ -3,7 +3,7 @@
 // variation, and the spec writer.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { JUDGED_FAMILIES, JUDGED_PALETTE, withoutSampledWall, describerColourWord, judgeFront, judgeRow, lchOf, variedTone, withJudgedWall, type JudgedInput } from './judgedColour.ts';
+import { JUDGED_FAMILIES, JUDGED_PALETTE, brickFromSample, withoutSampledWall, describerColourWord, judgeFront, judgeRow, lchOf, variedTone, withJudgedWall, type JudgedInput } from './judgedColour.ts';
 import { specWallColour } from './decorate.ts';
 import { specView } from './view.ts';
 import { validateSpec, type HouseSpec } from './spec.ts';
@@ -129,4 +129,33 @@ test('deferring to a stronger wall source drops only the sampled wall', () => {
   assert.equal(s.provenance['palette/brick'], undefined);
   assert.equal(s.facts, undefined);
   validateSpec(s);
+});
+
+test('dark-grey-brick: Herengracht canal brick reads dark and nearly grey (55, 63, 65 cuts), not purple-brown maroon', () => {
+  assert.ok((JUDGED_FAMILIES as readonly string[]).includes('dark-grey-brick'));
+  for (const id of ['herengracht-51-73:dark-grey-brick', '0363100012168207', 'x']) {
+    const t = lchOf(variedTone('dark-grey-brick', id))!;
+    assert.ok(t.L > 0.37 && t.L <= 0.44, `L ${t.L}`);
+    assert.ok(t.C < 0.016, `C ${t.C}`);
+    assert.ok(t.C < lchOf(variedTone('purple-brown-brick', id))!.C - 0.025);
+  }
+});
+
+test('brickFromSample: dark brick bins by chroma (Herengracht 51-73 cuts)', () => {
+  // 55 #4f4c4d, 63 #4a423b, 65 #433b33: dark and nearly grey -> dark-grey-brick; dark with colour stays purple-brown.
+  assert.equal(brickFromSample({ L: 0.419, C: 0.004, h: 347 }), 'dark-grey-brick');
+  assert.equal(brickFromSample({ L: 0.385, C: 0.017, h: 64 }), 'dark-grey-brick');
+  assert.equal(brickFromSample({ L: 0.40, C: 0.03, h: 30 }), 'purple-brown-brick');
+  assert.equal(brickFromSample({ L: 0.50, C: 0.006, h: 50 }), 'brown-brick');
+  assert.equal(brickFromSample({ L: 0.48, C: 0.06, h: 35 }), 'red-brown-brick');
+  // Herengracht 20 #57544e: just over the dark line, no colour -> dark grey-brown, not the warm mid brown.
+  assert.equal(brickFromSample({ L: 0.447, C: 0.010, h: 85 }), 'dark-grey-brick');
+  assert.equal(brickFromSample({ L: 0.447, C: 0.03, h: 50 }), 'brown-brick');
+});
+
+test('judgeFront: a dark painted front with a neutral cut sample is black paint, not green-black (Herengracht 53, 71)', () => {
+  const base = { pandId: 'x', readable: true, finish: 'painted-brick', pale: false, notes: null, year: 1650, absolute: true } as JudgedInput;
+  assert.equal(judgeFront({ ...base, sample: '#343230' }).family, 'painted-black');
+  assert.equal(judgeFront({ ...base, sample: '#2a3a30' }).family, 'painted-dark');
+  assert.equal(judgeFront({ ...base, absolute: false, sample: '#343230' }).family, 'painted-dark');
 });

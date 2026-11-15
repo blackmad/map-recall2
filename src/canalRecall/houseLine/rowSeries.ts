@@ -11,10 +11,11 @@
  *
  * Nothing here is rolled: a field the series does not state is left out and the renderer draws no component for it.
  */
-import { frontDesign, type RowDesign, type RowFront, type RowRecord } from '../houseSpec/row/types.ts';
-import { rowFrontRecords } from '../houseSpec/row/emit.ts';
+import { frontDesign, type RowDesign, type RowGroundWall, type RowFront, type RowRecord } from '../houseSpec/row/types.ts';
+import { rowFrontRecords, statedGable } from '../houseSpec/row/emit.ts';
 import { headsList } from '../houseSpec/row/solve.ts';
-import { ROW_FRONT_EXTRAS, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
+import { SOUTERRAIN_FACTOR } from '../houseSpec/storeyPlan.ts';
+import { ROW_FRONT_EXTRAS, ROW_RAISED_FRONT_M, rowGroundM, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowBasementDraw, type RowGroundWallDraw, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
 
 /** Grounds that put the ground storey on a souterrain (stoop over basement windows). */
 const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows', 'windows']);
@@ -27,8 +28,10 @@ function stoopOf(fronts: readonly RowFront[]): { stoop: NonNullable<RowSeriesDra
   const f = fronts.find(x => x.ground.basement === 'stoop' || x.ground.basement === 'stoop-and-windows' || x.ground.basement === 'windows');
   if (!f) return null;
   const side = f.ground.doorSide === 'right' ? 'right' : f.ground.doorSide === 'centre' ? 'centre' : f.ground.doorSide === 'left' ? 'left' : null;
-  // `windows`: the door is at the raised ground, but no stoop was read, so none is drawn (steps: false).
-  return side ? { stoop: { side, ...(f.ground.basement === 'windows' ? { steps: false as const } : {}) } } : null;
+  // `windows`: the door is at the raised ground, but no stoop was read, so none is drawn (steps: false), unless the ground
+  // states the flight's form (Herengracht 148: the raised door's short flight).
+  const form = f.ground.stoopForm, extra = { ...(form ? { form } : {}), ...(f.ground.stoopRailing ? { railing: true as const } : {}), ...(f.ground.doorcase ? { doorcase: { ...f.ground.doorcase } } : {}) };
+  return side ? { stoop: { side, ...(f.ground.basement === 'windows' && !form ? { steps: false as const } : {}), ...extra } } : null;
 }
 /** The street door as read on the pand's first front with one (left/right/centre; index of the ground openings). */
 function doorOf(fronts: readonly RowFront[]): { door?: NonNullable<RowSeriesDraw['door']> } {
@@ -37,8 +40,10 @@ function doorOf(fronts: readonly RowFront[]): { door?: NonNullable<RowSeriesDraw
   const g = f.ground, side = g.doorSide as 'left' | 'right' | 'centre';
   const offset = fronts.length > 1 ? span(f) : null;
   // A pand of several fronts: the door's place as a fraction of the pand (the mesher reads index/bays of the pand front).
-  if (offset && g.doorIndex !== undefined && g.groundBays) return { door: { side, index: +(offset[0] + (g.doorIndex + 0.5) / g.groundBays * (offset[1] - offset[0])).toFixed(4) * 1000 | 0, bays: 1000 } };
-  return { door: { side, ...(g.doorIndex !== undefined && g.groundBays ? { index: g.doorIndex, bays: g.groundBays } : {}) } };
+  // A stated doorcase (RowGround.doorcase) dresses the street door (row-doorcase; a stoop's door takes it on the stoop).
+  const dc = g.doorcase ? { doorcase: { ...g.doorcase } } : {};
+  if (offset && g.doorIndex !== undefined && g.groundBays) return { door: { side, index: +(offset[0] + (g.doorIndex + 0.5) / g.groundBays * (offset[1] - offset[0])).toFixed(4) * 1000 | 0, bays: 1000, ...dc } };
+  return { door: { side, ...(g.doorIndex !== undefined && g.groundBays ? { index: g.doorIndex, bays: g.groundBays } : {}), ...dc } };
 }
 /** The ground use as read: a shop ground draws the shop window, a dwelling ground none; other uses leave the extract's. */
 function shopOf(fronts: readonly RowFront[]): { shop?: boolean } {
@@ -104,11 +109,32 @@ export const ROW_MANSARD_RISE: Readonly<Record<string, { riseM: number; ref: str
  *  paint large panes under a transom light (Weteringschans review 5: six-over-six grids read wrong); a casement is one
  *  pane; a plain `sash` keeps the preset's own. */
 export const ROW_SASH: Readonly<Record<string, 'plain' | 'transom'>> = { 't-window': 'transom', 'tall-upper': 'transom', 'casement-toplight': 'transom', casement: 'plain' };
+/** A ground-storey facing's colour by material (white stucco, a pale stone) and the named colours a reading may give. */
+export const ROW_GROUND_WALL_HEX: Readonly<Record<string, string>> = { stucco: '#e8e3d6', render: '#e2dccd', stone: '#cdc4b0', brick: '#7a4a38', white: '#ece8de', cream: '#e4dcc4', grey: '#b9b7b0', sandstone: '#cdbb98' };
+/** The stated ground-storey facing (RowDesign.groundWall) as drawn: its colour and top. Unreadable: nothing (today). */
+export function groundWallOf(g: RowGroundWall | undefined): Omit<RowGroundWallDraw, 'a0' | 'a1'> | null {
+  if (!g || !ROW_GROUND_WALL_HEX[g.material]) return null;
+  const c = typeof g.colour === 'string' ? g.colour.toLowerCase() : '';
+  const hex = /^#[0-9a-f]{6}$/.test(c) ? c : ROW_GROUND_WALL_HEX[c] ?? ROW_GROUND_WALL_HEX[g.material];
+  return { hex, top: g.top === 'plain' || g.top === 'scrolled' ? g.top : 'ledge' };
+}
+/** A basement plinth's grey (Herengracht 25-29: a grey hardstone band). */
+export const ROW_BASEMENT_GREY = '#7d7a73';
+/** The stated joinery (RowDesign.glazing) as the series draws it: the window kind with its frame, bars and panes. */
+export const ROW_GLAZING = { frameM: 0.09, barM: 0.035 } as const;
+function glazingOf(d: RowDesign): { glazing?: NonNullable<RowSeriesDraw['glazing']> } {
+  const g = d.glazing?.value;
+  if (!g) return {};
+  const ok = (v: unknown, lo: number, hi: number) => typeof v === 'number' && v >= lo && v <= hi;
+  return { glazing: { kind: d.windows.value, frameM: ok(g.frameM, 0.03, 0.25) ? g.frameM! : ROW_GLAZING.frameM, barM: ok(g.barM, 0.015, 0.1) ? g.barM! : ROW_GLAZING.barM, ...(ok(g.panes, 1, 24) ? { panes: Math.round(g.panes!) } : {}) } };
+}
 /** One pand's series draw from its fronts (street order) and their designs. */
 export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDesign[], built?: number | null, rowId = '', types: readonly (string | undefined)[] = []): RowSeriesDraw {
   const d0 = designs[0];
   const heads: RowHeadsDraw[] = [];
   const dormers: RowDormerDraw[] = [];
+  const groundWalls: RowGroundWallDraw[] = [];
+  const basements: RowBasementDraw[] = [];
   let mansard: RowDesign['roofStorey']['value'] | null = null;
   // Over a souterrain the bel-etage (D's ground, storey 0) is the renderer's first upper row: stated storeys shift by one.
   const shift = fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? 1 : 0;
@@ -116,21 +142,46 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     const [a0, a1] = span(f), d = designs[i];
     // A front may state several dressings by storey (171218: jack-blocks below, arch rings on the top storey).
     const hs = d.heads.value ? headsList(d.heads.value) : [];
-    for (const h of hs) if (h && h.dressing !== 'none') heads.push({ a0, a1, shape: h.shape, dressing: h.dressing, ...(h.storeys?.length ? { storeys: h.storeys.map(k => k + shift) } : {}) });
+    // A plain arched head (round or segmental, no dressing) still draws its arched glass (headGrammar).
+    const gw = groundWallOf(d.groundWall?.value);
+    if (gw) groundWalls.push({ a0, a1, ...gw });
+    // Stated arched ground openings (by index of the ground bays as seen): a head on the ground storey, the bel-etage's
+    // over a souterrain.
+    const g = f.ground, gb = g.groundBays ?? 0, at = (i: number): [number, number] => [+(a0 + (a1 - a0) * i / gb).toFixed(4), +(a0 + (a1 - a0) * (i + 1) / gb).toFixed(4)];
+    if (g.archedOpenings && gb > 0) for (const i of g.archedOpenings.index) if (i >= 0 && i < gb) {
+      const [p, q] = at(i);
+      heads.push({ a0: p, a1: q, shape: g.archedOpenings.shape ?? 'segmental', dressing: 'arched-frame', storeys: [shift] });
+    }
+    if (g.basementFront && SOUTERRAIN_GROUNDS.has(g.basement ?? '')) {
+      const b = g.basementFront, c = typeof b.plinth === 'string' ? b.plinth.toLowerCase() : '';
+      basements.push({ a0, a1, hex: /^#[0-9a-f]{6}$/.test(c) ? c : c === 'grey' || !c ? ROW_BASEMENT_GREY : ROW_GROUND_WALL_HEX[c] ?? ROW_BASEMENT_GREY, head: b.head === 'segmental' ? 'segmental' : 'round',
+        doors: gb > 0 ? (b.doors ?? []).filter(i => i >= 0 && i < gb).map(at) : [] });
+    }
+    for (const h of hs) if (h && (h.dressing !== 'none' || h.shape === 'round' || h.shape === 'segmental')) heads.push({ a0, a1, shape: h.shape, dressing: h.dressing, ...(h.storeys?.length ? { storeys: h.storeys.map(k => k + shift) } : {}) });
     const rs = d.roofStorey.value;
     if (rs.kind !== 'mansard') return;
     mansard ??= rs;
     const n = Math.max(0, Math.round(rs.dormersPerFront));
-    for (let k = 0; k < n; k++) dormers.push({ a: +(a0 + (k + 0.5) / n * (a1 - a0)).toFixed(4), kind: rs.dormerKind ?? 'plain', ...(rs.hoist ? { hoist: true } : {}) });
+    // A stated pediment or segmental cap on the cornice (RowCorniceDress.centre) stands where a centre dormer would: the
+    // dormer behind it goes, rather than poke over the cap (Herengracht 248).
+    const cd = d.corniceDress?.value, capped = cd?.centre === 'pediment' || cd?.centre === 'segmental', half = (cd?.centreShare ?? 0.5) / 2;
+    for (let k = 0; k < n; k++) {
+      const u = (k + 0.5) / n;
+      if (capped && Math.abs(u - 0.5) < half) continue;
+      dormers.push({ a: +(a0 + u * (a1 - a0)).toFixed(4), kind: rs.dormerKind ?? 'plain', ...(rs.hoist ? { hoist: true } : {}) });
+    }
   });
   // The renderer takes the first head whose span and storeys match a window: storey-specific dressings go first.
   heads.sort((p, q) => (p.storeys ? 0 : 1) - (q.storeys ? 0 : 1));
   const extras = (d0.extras.value ?? []).filter(x => !ROW_FRONT_EXTRAS.includes(x));
+  const omitExtras = ROW_FRONT_EXTRAS.filter(x => !(d0.extras.value ?? []).includes(x));
   const m = mansard as RowDesign['roofStorey']['value'] | null;
   return {
     id: fronts[0].seriesId,
+    ...(omitExtras.length ? { omitExtras } : {}),
     ...(d0.cornice.value ? { cornice: d0.cornice.value } : {}),
-    roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers, ...(ROW_MANSARD_RISE[rowId] ? { riseM: ROW_MANSARD_RISE[rowId].riseM } : {}) } : { kind: 'none', riseM: 0, dormers: [] },
+    ...(d0.corniceDress?.value ? { corniceDress: d0.corniceDress.value } : {}),
+    roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers, ...(m.riseM && m.riseM > 0 ? { riseM: m.riseM } : ROW_MANSARD_RISE[rowId] ? { riseM: ROW_MANSARD_RISE[rowId].riseM } : {}) } : { kind: 'none', riseM: 0, dormers: [] },
     ...(heads.length ? { heads } : {}),
     ...(extras.length ? { extras } : {}),
     ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrain: true } : {}),
@@ -142,6 +193,9 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...groundColourOf(fronts),
     ...balconyOf(designs, shift),
     ...windowShareOf(designs, types),
+    ...glazingOf(d0),
+    ...(groundWalls.length ? { groundWalls } : {}),
+    ...(basements.length ? { basements } : {}),
     // One window preset per window kind in the row (Kinkerstraat: every series states t-windows), not per series.
     look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value, ...(ROW_SASH[d0.windows.value] ? { sash: ROW_SASH[d0.windows.value] } : {}) },
   };
@@ -168,14 +222,33 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     const walls = designs.map(d => d.wall.value);
     // The world draws every pand from flat ground (no terrain under the mesher), so a row stands to its series line in
     // the street datum: per-pand 3DBAG ground offsets stepped the drawn cornice (Kinkerstraat 104 0.2 m, 110 0.7 m low).
-    const line = designs[0].corniceTopM.value;
-    const lined = line !== null && line > 2 ? { topM: line, eavesM: line, ...(rec.subFronts ? { subFronts: rec.subFronts.map((sf, i) => ({ ...sf, topM: designs[i]?.corniceTopM.value ?? line, eavesM: designs[i]?.corniceTopM.value ?? line })) } : {}) } : {};
+    // A pand whose fronts stand to different lines stands to the tallest line of a front that is not a stated gable (a
+    // gable stands on its own line): Herengracht/Kinkerstraat 69-73, 69's neck at 14.6 m beside 71-73's cornice at 16.3 m.
+    // The lower fronts step down to their own lines (rowFront.ts rowRaisedFronts). One front, or one line: the first's.
+    const line0 = designs[0].corniceTopM.value;
+    const flat = rec.subFronts ? designs.filter(d => !statedGable(d)).map(d => d.corniceTopM.value).filter((v): v is number => v !== null) : [];
+    const line = line0 !== null && flat.length && Math.max(...flat) > line0 + ROW_RAISED_FRONT_M ? Math.max(...flat) : line0;
+    // A stated gable (RowDesign.gable) stands its rise over the front's line: the top is the gable's apex.
+    const lift = (v: number, d: RowDesign | undefined) => { const g = d ? statedGable(d) : null; return g ? +(v + g.riseM).toFixed(2) : v; };
+    // A stated gable below a taller pand line stands on that line: stepped down, its gable stood in the pand's notch under
+    // the roof storey's face (Kinkerstraat 69's neck under 71-73's mansard, round 4). Other fronts keep their own line.
+    const footOf = (d: RowDesign | undefined): number => { const v = d?.corniceTopM.value ?? line!; return d && statedGable(d) && line !== null && line > v ? line : v; };
+    const lined = line !== null && line > 2 ? { topM: lift(line, designs[0]), eavesM: line, ...(rec.subFronts ? { subFronts: rec.subFronts.map((sf, i) => { const own = footOf(designs[i]); return { ...sf, topM: lift(own, designs[i]), eavesM: own }; }) } : {}) } : {};
     const out: RowFrontRecord = {
       ...rec, ...lined, series: seriesDraw(fronts, designs, seriesYear(row, fronts[0].seriesId), row.id, fronts.map(f => (row.series.find(x => x.id === f.seriesId) as { type?: string } | undefined)?.type)),
       wall: { hex: walls[0].hex, source: 'judged', finish: walls[0].material },
       sources: { ...rec.sources, ...(line !== null ? { eaves: `${rec.sources.eaves}; drawn at the series line ${line} m (street datum: the world has no terrain)` } : {}), series: `house-rows ${row.id}: ${[...new Set(fronts.map(f => f.seriesId))].join(', ')}`, wall: `judged ${walls[0].family} (${designs[0].wall.source}: ${designs[0].wall.ref})` },
     };
     if (rec.subFronts && walls.some(w => w.hex !== walls[0].hex)) out.subFronts = rec.subFronts.map((s, i) => ({ ...s, wallHex: walls[i]?.hex ?? walls[0].hex }));
+    // A member whose fronts stand to different series lines gets its width, so the renderer can size each front's
+    // raised top (rowFront.ts rowRaisedFronts); a member on one line is unchanged.
+    // A one-front member with a stated gable gets it too (the gable's width).
+    if (!out.spanM && member.widthM && member.widthM > 1 && line !== null && (out.subFronts ? out.subFronts.some(f => (f.topM ?? line) > line + ROW_RAISED_FRONT_M || (f.eavesM ?? line) < line - ROW_RAISED_FRONT_M) : !!statedGable(designs[0]))) out.spanM = member.widthM;
+    // Stated window heights per storey (RowDesign.windowHeights): the storeys share the wall by them, each window low in
+    // its storey; the renderer places the windows on these rows (levels: windowBoxes).
+    const rows = line !== null && line > 2 && out.storeys ? rowWindowRows(designs[0].windowHeights?.value, line, out.storeys, out.series?.souterrain ? out.series.souterrainFactor ?? SOUTERRAIN_FACTOR : null) : null;
+    // The floor lines between the stated rows: the series draws its floor bands on them (row-floors), not on the even grid.
+    if (rows) { out.rows = rows.rows; out.groundTopM = rows.groundTopM; if (out.series) out.series.floorsM = rows.floorsM; }
     const joins = mansardJoins(row, rec.pandId);
     if (joins && out.series?.roofStorey?.kind === 'mansard') out.series.roofStorey.joins = joins;
     // A corner member's roof faces its row's street, not the side street nearer its outline (Kinkerstraat 110).
@@ -185,6 +258,32 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     if (wallOnly) out.wallOnly = wallOnly;
     return out;
   });
+}
+
+/** Where a stated window sits in its storey: this share of the storey's spare height under the sill. */
+export const ROW_WINDOW_SILL_SHARE = 0.35;
+/**
+ * The upper window rows a series states by height (RowDesign.windowHeights, m, lowest first) on a front `storeys` high
+ * to `line`: the ground storey (or a souterrain cell, `souterrain` its share of the pitch) as the series draws it, the
+ * storeys above in proportion to their windows, each window ROW_WINDOW_SILL_SHARE of its spare height up. Null when no
+ * heights are stated, their count does not match the storeys that draw windows, or a window would not fit.
+ */
+export function rowWindowRows(heights: readonly number[] | undefined, line: number, storeys: number, souterrain: number | null): { rows: Array<{ sillM: number; headM: number }>; groundTopM: number; floorsM: number[] } | null {
+  if (!heights?.length || !heights.every(h => Number.isFinite(h) && h > 0.3)) return null;
+  const upper = souterrain !== null ? storeys : storeys - 1;
+  if (heights.length !== upper || upper < 1) return null;
+  const ground = souterrain !== null ? +(souterrain * line / (storeys + souterrain)).toFixed(2) : rowGroundM(line, storeys);
+  const sum = heights.reduce((a, b) => a + b, 0), wall = line - ground;
+  if (!(sum < wall * 0.85)) return null;
+  let z = ground;
+  const floorsM: number[] = [];
+  const rows = heights.map(h => {
+    const pitch = wall * h / sum, sill = +(z + (pitch - h) * ROW_WINDOW_SILL_SHARE).toFixed(2);
+    floorsM.push(+z.toFixed(2));
+    z += pitch;
+    return { sillM: sill, headM: +(sill + h).toFixed(2) };
+  });
+  return { rows, groundTopM: ground, floorsM };
 }
 
 /** Cornice lines within this step (m, street datum) read as one line: the mansard runs on across the party wall. */

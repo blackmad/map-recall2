@@ -17,6 +17,8 @@ import { modernPandWall } from './buurtProfiles/modernPandWalls.js';
 import { shopGrammarEnabled, shopGroundHex } from './shopGrammar.js';
 import { modernFacadesEnabled, modernUseFor, modernVocabulary, type ModernFacts, type ModernVocabulary } from './modernFacades.js';
 import { contemporaryLookFor, newbuildFamilyEnabled, type ContemporaryLook } from './contemporaryFamily.js';
+import { buurtKitEnabled } from './buurtGenerator/kitFlag.js';
+import { KIT_MULLION_SHARE } from './buurtGenerator/kit/frontKit.js';
 
 /**
  * The contemporary family's tall preset (contemporaryFamily.ts, `?newbuildFamily=1`): two tall windows to the floor per
@@ -31,6 +33,18 @@ export const TALL_FRENCH_BALCONY = { windows: 2, shape: 'rect', shutters: false,
  */
 export const BALCONY_BAND = { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .74, openingHeight: .78, sash: 'plain', trimDensity: 'restrained', lintel: 'none', frameTone: 'dark', wallMaterial: 'brick', facadeAssembly: 'balcony-band' } as const;
 
+/**
+ * Buurt generator kit (`?buurtKit=1`, buurtGenerator/kitFlag.ts): the Plan Zuid casement block (Rivierenbuurt,
+ * scripts/block-face/types/rivierenbuurt/rijn-1934-flat-three.json): white-framed casements under a toplight on even
+ * axes in plain brick, no stone floor band, no lintel, no pale accents. `proportions` keeps the school painter's paired
+ * windows and floor band (bayTextures.ts) out of these cells. The only school preset with a transom sash, so a row whose
+ * windows are `casement-toplight` (rowSeries.ts ROW_SASH) takes it through `sashStyle`; its door is the portiek pair
+ * (bayTextures.ts portiekPair, round 3). Only in the array with the flag on.
+ */
+export const PLAN_ZUID_CASEMENT = { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'wide', openingOccupancy: .71, openingHeight: .56, sash: 'transom', trimDensity: 'restrained', lintel: 'none', wallMaterial: 'brick', door: 'portiek-pair' } as const;
+/** Its paired casements (Maasstraat, round 3): two lights parted by a broad white mullion (the kit's `sash`). The row's
+ *  upper windows are row-glazing's (facadeOrnaments.ts, rowDress.mullionShare); this paints the same pair in the cells. */
+export const PLAN_ZUID_PAIRED = { ...PLAN_ZUID_CASEMENT, sash: 'paired-transom', mullionShare: KIT_MULLION_SHARE } as const;
 export const BAY_KINDS = ['upper', 'ground', 'groundDoor', ...SHOP_KINDS, 'plain'] as const satisfies readonly BayKind[];
 const isShopKind = (kind: string) => (SHOP_KINDS as readonly string[]).includes(kind);
 type BayStyle = Omit<BayVariant, 'kind' | 'archetype'>;
@@ -76,6 +90,7 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
   school: [
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: true },
+    ...(buurtKitEnabled() ? [PLAN_ZUID_CASEMENT, PLAN_ZUID_PAIRED] : []),
   ],
   modern: [
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .65, openingHeight: .52, sash: 'plain', trimDensity: 'restrained', lintel: 'none', wallMaterial: 'brick' },
@@ -254,6 +269,16 @@ export function sashStyle(archetype: Archetype, from: number, sash: NonNullable<
   const score = (i: number) => { const v = styles[i] as BayVariant; return ((v.frameTone ?? 'pale') === (base.frameTone ?? 'pale') ? 0 : 4) + ((v.lintel ?? 'flat') === (base.lintel ?? 'flat') ? 0 : 2) + (!!v.paleAccents === !!base.paleAccents ? 0 : 2) + ((v.windows || 1) === (base.windows || 1) ? 0 : 1) + Math.abs((v.openingHeight ?? 0.7) - (base.openingHeight ?? 0.7)) * 5; };
   return pool.reduce((best, i) => score(i) < score(best) ? i : best, pool[0]);
 }
+/** The nearest preset that paints no lintel (house rows' stated joinery: the record draws the window and its head). */
+export function plainHeadStyle(archetype: Archetype, from: number, bays?: number): number {
+  const styles = BAY_STYLES[archetype], base = styles[from] as BayVariant;
+  if ((base.lintel ?? 'flat') === 'none') return from;
+  const plain = styles.flatMap((v, i) => (v.lintel ?? 'flat') === 'none' && !v.facadeAssembly && !v.entranceAssembly && !v.openingGroup && !v.groundAssembly
+    && (!v.family || v.family === 'masonry') && (!bays || bays % (v.windows || 1) === 0) ? [i] : []);
+  if (!plain.length) return from;
+  const score = (i: number) => { const v = styles[i] as BayVariant; return ((v.sash ?? 'six-over-six') === (base.sash ?? 'six-over-six') ? 0 : 3) + ((v.frameTone ?? 'pale') === (base.frameTone ?? 'pale') ? 0 : 4) + (!!v.paleAccents === !!base.paleAccents ? 0 : 2) + ((v.windows || 1) === (base.windows || 1) ? 0 : 1) + Math.abs((v.openingHeight ?? 0.7) - (base.openingHeight ?? 0.7)) * 5; };
+  return plain.reduce((best, i) => score(i) < score(best) ? i : best, plain[0]);
+}
 export function rowFrontStyle(archetype: Archetype, windowH: number, dark: boolean, bays?: number): number | null {
   const styles = BAY_STYLES[archetype];
   const pool = styles.flatMap((v, i) => v.openingOccupancy !== undefined && v.openingHeight !== undefined && !v.paleAccents && !v.facadeAssembly && !v.entranceAssembly && !v.openingGroup && !v.groundAssembly
@@ -309,7 +334,7 @@ export function bayStyleForTraits(id: string, archetype: Archetype, traits: Prof
  * photo look, no recipe or modern vocabulary, a pre-1945 archetype with enough measured neighbours: their wall replaces
  * the profile's and the period palette's swatch (and outranks a material prior as a profile wall does). Absent = as before.
  */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean; sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six' }, at?: readonly [number, number]) {
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean; sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six'; plainHead?: boolean }, at?: readonly [number, number]) {
   const buurt = !recipe && look === 'photo' && profile ? profile : null;
   const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern')
     : year === null && buurt?.dominantEra && heightM < 28 ? buurt.dominantEra : archetypeFor(id, year, heightM);
@@ -340,7 +365,8 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const picked = measuredStyle !== null ? measuredStyle : painted ? PAINTED_BASE_STYLE[archetype]! : ownStyle();
   // House rows (lane R): a stated glazing (the row record's window kind, houseLine/rowSeries.ts) picks the nearest preset
   // that paints it (Weteringschans: the 1880s T-window, large panes under a transom light, not six-over-six).
-  const style = spec?.sash && !recipe && !vocab && !contemporary && !painted ? sashStyle(archetype, picked, spec.sash, spec.bays) : picked;
+  const sashed = spec?.sash && !recipe && !vocab && !contemporary && !painted ? sashStyle(archetype, picked, spec.sash, spec.bays) : picked;
+  const style = spec?.plainHead && !recipe && !vocab && !contemporary && !painted ? plainHeadStyle(archetype, sashed, spec.bays) : sashed;
   // Without the extract: a third of buildings (or the buurt's measured share), picking among the original four shopfronts.
   const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly || recipe?.openingGroup) && !shopfront ? false : shopfront ? shopfront !== 'quiet'
     : (buurt?.shopfrontShare ?? buurt?.shopShare) !== undefined ? unitDraw(id, 'shop') < (buurt!.shopfrontShare ?? buurt!.shopShare!) : (h >>> 13) % 3 === 0;

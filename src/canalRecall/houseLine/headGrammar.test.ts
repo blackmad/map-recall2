@@ -4,9 +4,12 @@ import { HEAD, headGrammarOf, headPieces, headRise } from './headGrammar.ts';
 
 const span = (pieces: ReturnType<typeof headPieces>) => pieces.flatMap(p => p.pts.map(q => q[1]));
 
-test('every head dressing D states maps onto the grammar; plain and block-course do not', () => {
+test('every head dressing D states maps onto the grammar; plain flat and block-course do not', () => {
   for (const d of ['keystone', 'jack-blocks', 'segmental-tympanum', 'arch-ring', 'stone-lintel']) assert.ok(headGrammarOf(d, undefined), d);
-  assert.equal(headGrammarOf('none', 'round'), null);
+  // A plain arched window (round lane 4): the glass up into its arch, no ring; a plain flat head stays nothing.
+  assert.deepEqual(headGrammarOf('none', 'round'), { shape: 'round' });
+  assert.ok(headPieces(headGrammarOf('none', 'segmental')!, 0, 1.1, 10).every(p => p.tone === 'glass'));
+  assert.equal(headGrammarOf('none', 'flat'), null);
   assert.equal(headGrammarOf('block-course', undefined), null);
   assert.equal(headGrammarOf(undefined, 'rect'), null);
 });
@@ -78,4 +81,30 @@ test('a stone lintel is one slab', () => {
   const p = headPieces(headGrammarOf('stone-lintel', undefined)!, 0, 1, 3);
   assert.equal(p.length, 1);
   assert.equal(p[0].tone, 'white');
+});
+
+test('tablet (Herengracht 27, 0363100012175404): a white stone block on the axis over the head; relieving adds the brick arch', () => {
+  const g = headGrammarOf('tablet', 'flat')!, p = headPieces(g, 0, 1.1, 10);
+  assert.deepEqual(g, { shape: 'flat', tablet: true });
+  assert.equal(p.length, 1);
+  const t = p[0].pts;
+  assert.equal(p[0].tone, 'white');
+  assert.ok(Math.abs((t[0][0] + t[1][0]) / 2 - 0.55) < 1e-9 && t[0][1] > 10, 'centred, above the head');
+  assert.ok(t[1][0] - t[0][0] >= 0.26 - 1e-9 && t[2][1] - t[1][1] >= 0.36 - 1e-9, 'at row scale');
+  assert.ok(Math.abs(10 + headRise(g, 1.1) - t[2][1]) < 1e-9, 'headRise reaches its top');
+  const r = headGrammarOf('tablet', 'relieving')!, pr = headPieces(r, 0, 1.1, 10);
+  assert.ok(pr.filter(x => x.tone === 'brick').length >= HEAD.minBlocks, 'the relieving ring');
+  const tab = pr.find(x => x.tone === 'white')!;
+  // The tablet sits on the ring's crown as its key: its foot just inside the ring's top.
+  const ringTop = Math.max(...pr.filter(x => x.tone !== 'white').flatMap(x => x.pts.map(q => q[1])));
+  assert.ok(tab.pts[0][1] >= ringTop - 0.05 && tab.pts[0][1] < ringTop, 'the tablet keyed on the ring');
+});
+
+test('relieving arch springs over the window frame; an arched frame is a slim white ring with the glass in the arch', () => {
+  const r = headPieces(headGrammarOf('tablet', 'relieving')!, 0, 1.1, 10);
+  const ring = r.filter(x => x.tone !== 'white');
+  assert.ok(Math.min(...ring.flatMap(x => x.pts.map(q => q[1]))) >= 10 + HEAD.relieve.lift - 1e-9);
+  const a = headGrammarOf('arched-frame', 'segmental')!, p = headPieces(a, 0, 1.2, 10);
+  assert.ok(p.some(x => x.tone === 'glass') && p.filter(x => x.tone === 'white').length >= HEAD.minBlocks);
+  assert.equal(headGrammarOf('arched-frame', 'flat')!.shape, 'segmental');
 });

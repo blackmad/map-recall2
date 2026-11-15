@@ -14,10 +14,10 @@
 // is drawn as flat-coloured boxes and strips, and is atomic (all of a cornice or none of it).
 
 import { hash01, type ExtraContext, type ExtraSink, type WallComponent } from './facadeExtraCore.js';
-import { bayLookOpenings, proceduralOpenings, type OpeningRow, type Openings } from './facadeOpenings.js';
+import { presetOpenings, type OpeningRow, type Openings } from './facadeOpenings.js';
 import type { FacadeStyle } from './genericFacades.js';
 import { pilasterHex } from './look/pilasterTone.js';
-import { headGrammarOf, headPieces, headRise, type HeadGrammar } from './houseLine/headGrammar.js';
+import { HEAD, headGrammarOf, headPieces, headRise, type HeadGrammar } from './houseLine/headGrammar.js';
 
 // --- Palette ---------------------------------------------------------------------
 export const WHITE = '#efece4', CREAM = '#e4d9bf', STONE = '#cfc6b4', SANDSTONE = '#cdbb98', BLUESTONE = '#5b6066';
@@ -34,9 +34,12 @@ export function shadeHex(hex: string, k: number): string {
 }
 
 // --- Geometry helpers --------------------------------------------------------------
-const BAY_LOOK_STYLES: readonly FacadeStyle[] = ['canal', 'school', 'modern'];
 /** The openings this building's walls show: given by the mesh, else the bay look's (the default look). */
-export const openingsOf = (c: ExtraContext): Openings => c.openings ?? (BAY_LOOK_STYLES.includes(c.style) ? bayLookOpenings(c.id, c.style) : proceduralOpenings(c.style));
+export const openingsOf = (c: ExtraContext): Openings => {
+  const o = c.openings ?? presetOpenings(c.id, c.style);
+  // A mirrored door bay (WallLayout.doorMirror): the door and its side window change sides, as the painted cell does.
+  return c.layout.doorMirror ? { ...o, door: { ...o.door, axis: 1 - o.door.axis }, doorWindow: o.doorWindow ? { ...o.doorWindow, axes: o.doorWindow.axes.map(a => 1 - a), ...(o.doorWindow.widths ? { widths: [...o.doorWindow.widths] } : {}) } : null } : o;
+};
 export const isStreetWall = (c: ExtraContext) => c.streetSide ?? c.layout.doorBays.length > 0;
 export const storeyZ = (c: ExtraContext, s: number) => c.base + c.layout.groundM + s * c.layout.storeyM;
 
@@ -274,13 +277,78 @@ const ROW_GLASS = { light: '#566b79', pane: '#2c3b46' } as const;
 const ROW_TYPE_GLASS = { light: '#8d9ca5', pane: '#5f6f79', frame: 0.1, frameOut: 0.03 } as const;
 /** A single stated shopfront (row-shopfront): frame and fascia in the stated colour, a door, one wide curtained pane. */
 const ROW_SHOP = { glass: '#2f3a40', sheen: '#3b4950', panel: '#3c464b', doorHex: '#262c30', door: 1.05, post: 0.14, riser: 0.45, fascia: 0.45, side: 0.22, out: 0.03 } as const;
+/** Row joinery (row-sash): the glass a little proud of the painted cell, the frame and bars proud of the glass. */
+const ROW_SASH_OUT = { glass: 0.014, frame: 0.024 } as const;
+/** Panes per sash by window kind (RowDesign.glazing.panes overrides): 8-over-8, 12-over-12 small panes, a plain sash 1. */
+const ROW_SASH_PANES: Readonly<Record<string, number>> = { 'sash-8-over-8': 8, 'sash-small-panes': 12, sash: 1, 'small-over-one': 6, arched: 6 };
+/** A sash's panes as columns x rows: the factor pair whose panes stand closest to 1.3 tall to 1 wide (at most 4 columns). */
+export function sashGrid(n: number, w: number, h: number): [number, number] {
+  let best: [number, number] = [1, n], err = Infinity;
+  for (let cols = 1; cols <= Math.min(4, n); cols++) {
+    if (n % cols) continue;
+    const rows = n / cols, e = Math.abs(Math.log((h / rows) / (w / cols) / 1.3));
+    if (e < err - 1e-9) { err = e; best = [cols, rows]; }
+  }
+  return best;
+}
+type SashPiece = { x0: number; x1: number; z0: number; z1: number; out: number; hex: string };
+/** One window's joinery as flat pieces (wall metres): glass, the white frame ring, then the kind's bars. */
+export function rowSashPieces(g: { kind: string; frameM: number; barM: number; panes?: number }, x0: number, x1: number, z0: number, z1: number): SashPiece[] {
+  const w = x1 - x0, h = z1 - z0, F = Math.min(g.frameM, w * 0.2, h * 0.12), B = g.barM;
+  if (w < 0.3 || h < 0.4) return [];
+  const gx0 = x0 + F, gx1 = x1 - F, gz0 = z0 + F, gz1 = z1 - F, out: SashPiece[] = [];
+  const glass = (a: number, b: number, hex: string) => out.push({ x0: gx0, x1: gx1, z0: a, z1: b, out: ROW_SASH_OUT.glass, hex });
+  const piece = (a0: number, a1: number, b0: number, b1: number) => out.push({ x0: a0, x1: a1, z0: b0, z1: b1, out: ROW_SASH_OUT.frame, hex: WHITE });
+  const vbar = (x: number, b0: number, b1: number) => piece(x - B / 2, x + B / 2, b0, b1);
+  const hbar = (z: number, wide = 1) => piece(gx0, gx1, z - B * wide / 2, z + B * wide / 2);
+  const split = gz1 - (gz1 - gz0) * 0.29;
+  glass(split, gz1, ROW_GLASS.light); glass(gz0, split, ROW_GLASS.pane);
+  // The frame ring: head, sill rail, jambs.
+  piece(x0, x1, gz1, z1); piece(x0, x1, z0, gz0); piece(x0, gx0, gz0, gz1); piece(gx1, x1, gz0, gz1);
+  const gw = gx1 - gx0, gh = gz1 - gz0, mid = (gx0 + gx1) / 2;
+  if (g.kind in ROW_SASH_PANES || g.kind.startsWith('sash')) {
+    // Two sashes on a meeting rail, each its grid of panes.
+    const n = g.panes ?? ROW_SASH_PANES[g.kind] ?? 1, zm = gz0 + gh / 2;
+    hbar(zm, 1.6);
+    // Small panes over one (small-over-one): the upper sash alone is glazed in panes.
+    const lower = g.kind !== 'small-over-one', [cols, rows] = sashGrid(n, gw, gh / 2);
+    for (let i = 1; i < cols; i++) vbar(gx0 + gw * i / cols, lower ? gz0 : zm, gz1);
+    for (const base of lower ? [gz0, zm] : [zm]) for (let j = 1; j < rows; j++) hbar(base + gh / 2 * j / rows);
+  } else if (g.kind === 'casement') vbar(mid, gz0, gz1);
+  else if (g.kind === 'cross') {
+    // A cross window (kruiskozijn, Herengracht 27): a mullion the full height and a transom a third down, both broad.
+    const zt = gz1 - gh * 0.36;
+    hbar(zt, 1.8); vbar(mid, gz0, gz1);
+    out[out.length - 1].x0 = mid - B * 0.9; out[out.length - 1].x1 = mid + B * 0.9;
+  }
+  else {
+    // T-window, tall upper sash, casements under a toplight: the transom and a mullion under it.
+    const zt = g.kind === 'casement-toplight' ? gz1 - gh * 0.25 : split;
+    hbar(zt, 1.4); vbar(mid, gz0, zt);
+  }
+  return out;
+}
 /** Where a head stands: on the opening's head line, or lowered into the opening's top when it would run into the cornice
  *  (Kinkerstraat 90's top storey: the arches sit right under the corona); null when that would take half the opening. */
 function headLine(c: ExtraContext, w: RowWindow, rise: number): number | null {
   const room = c.top - (c.rowDress?.cornice ? 0.42 : 0.02), z = Math.min(w.z1, room - rise);
   return z < (w.z0 + w.z1) / 2 ? null : z;
 }
+/** The room a tablet keeps under a gable's foot band (blind review, Herengracht 27: the band cut the top tablets in two). */
+const TABLET_FOOT = 0.26;
 function grammarHead(c: ExtraContext, s: ExtraSink, w: RowWindow, g: HeadGrammar): void {
+  if (g.tablet) {
+    // A tablet stays one whole block: under a gable's foot band, losing its relieving arch first where the room is short.
+    const room = c.top - (c.rowDress?.cornice ? 0.42 : c.roofKind === 'gable' ? TABLET_FOOT : 0.02);
+    if (w.z1 + headRise(g, w.x1 - w.x0) > room && g.relieving) g = { ...g, relieving: false };
+    if (w.z1 + headRise(g, w.x1 - w.x0) > room) {
+      // Still short (the top storey under a gable foot, Herengracht 27): one block tight under the band, a little lower
+      // and squarer, never cut in two; none when not even that fits.
+      const T = HEAD.tablet, z0 = Math.max(w.z1 + 0.06, room - T.h), m = (w.x0 + w.x1) / 2;
+      if (room - z0 >= T.minH) s.wallQuad(c.f, [[m - T.w / 2, z0], [m + T.w / 2, z0], [m + T.w / 2, room], [m - T.w / 2, room]], T.out, WHITE);
+      return;
+    }
+  }
   const z = headLine(c, w, headRise(g, w.x1 - w.x0));
   if (z === null) return;
   // The tympanum fill is the wall's own family, a darker ornamented brick (Fable on round 6: a cream fill read as white
@@ -289,19 +357,396 @@ function grammarHead(c: ExtraContext, s: ExtraSink, w: RowWindow, g: HeadGrammar
   for (const p of headPieces(g, w.x0, w.x1, z, w.z0)) s.wallQuad(c.f, p.pts, p.out, hex[p.tone]);
 }
 
+/** A stated basement front (row-basement): stone courses and their sunk joints, the ledge on top, arched doorways. */
+const ROW_BASEMENT = { under: 0.05, out: 0.03, course: 0.32, joint: 0.025, ledge: 0.12, ledgeOut: 0.08, doorW: 1.0, doorH: 2.3, ring: 0.2, recess: '#202326' } as const;
 /** House rows: a front's stated parts beyond the heads and cornice, drawn only when the series or front states them. */
 // Grey sandstone/hardstone blocks with deep sunk joints (171218's photo: grey, not the warm cream of the dressings).
+const ROW_GROUND_WALL = { out: 0.025, ledge: 0.22, ledgeOut: 0.12, scroll: 0.28, scrollH: 0.45 } as const;
+/** A faced ground storey's plate between its openings: horizontal bands cut at every opening's sill and head, each band's
+ *  pieces between the openings that cross it. */
+export function groundWallBands(holes: ReadonlyArray<readonly [number, number, number, number]>, x0: number, x1: number, z0: number, z1: number): Array<[number, number, Array<[number, number]>]> {
+  const cuts = [...new Set([z0, z1, ...holes.flatMap(h => [h[2], h[3]]).filter(z => z > z0 && z < z1)])].sort((a, b) => a - b), out: Array<[number, number, Array<[number, number]>]> = [];
+  for (let i = 0; i + 1 < cuts.length; i++) {
+    const za = cuts[i], zb = cuts[i + 1];
+    if (zb - za < 0.02) continue;
+    const cross = holes.filter(h => h[2] < zb - 1e-6 && h[3] > za + 1e-6 && h[1] > x0 && h[0] < x1).sort((a, b) => a[0] - b[0]), xs: Array<[number, number]> = [];
+    let x = x0;
+    for (const h of cross) { if (h[0] - x > 0.05) xs.push([x, h[0]]); x = Math.max(x, h[1]); }
+    if (x1 - x > 0.05) xs.push([x, x1]);
+    if (xs.length) out.push([za, zb, xs]);
+  }
+  return out;
+}
 const RUSTIC = { course: 0.34, joint: 0.06, block: 0.95, stone: '#a3a199', jointHex: '#4f4d48', out: 0.07 } as const;
 /** Row bands: speklagen as three 10 cm courses a storey at the sill, middle and head lines (the type default until the
  *  record states a count), string-courses and floor-line bands 20 cm (169016). Walls without a row record keep the
  *  shared components' courses. */
 const ROW_BANDS = { spek: 0.1, spekLines: [0.04, 0.5, 0.96], spekOut: 0.03, course: 0.2, courseOut: 0.08, margin: 0.06, floor: 0.1, floorOut: 0.05, floorHex: '#a9a193' } as const;
 /** The stoop: steps and cheek walls up to the bel-etage door over a souterrain (Weteringschans 169016, 171218). */
-const STOOP = { rise: 0.19, tread: 0.3, landing: 0.85, reach: 1.75, cheek: 0.22, side: 0.12, rail: 0.75, hex: '#a3a199', door: '#3b2f27' } as const;
+const STOOP = { rise: 0.19, tread: 0.3, landing: 0.85, reach: 1.75, cheek: 0.22, side: 0.12, rail: 0.75, hex: '#a3a199', door: '#3b2f27', shutters: 0.4, maxRise: 3, lowRise: 0.95 } as const;
 /** The bel-etage street door over a stated stoop: the bel-etage window at the stated end, from the floor up. */
+/** The souterrain windows a stoop flight over [x0, x1] stands in front of, with their shutters' margin: [x0, x1, z0, z1]. */
+export function stoopHiddenWindows(c: ExtraContext, x0: number, x1: number): Array<[number, number, number, number]> {
+  // The souterrain under a stoop's flight [x0, x1]: when the front has souterrain windows (the grid's or traced ones below
+  // the bel-etage floor), the cell behind the flight is walled over to the floor, a shutter's width past the cheeks, so no
+  // frame or shutter peeks out beside the flight (Herengracht 130); the windows beside it stay.
+  const floor = storeyZ(c, 0);
+  const low = windowSpans(c, -1).length > 0 || (c.rowDress?.windows ?? []).some(w => w.z1 <= floor + 0.2);
+  return low && floor - c.base > 0.6 ? [[Math.max(0, x0 - STOOP.shutters), Math.min(c.f.len, x1 + STOOP.shutters), c.base, floor - 0.1]] : [];
+}
+/** A stoop's flights along the wall (form `side` / `double`, Herengracht 130): the landing before the door, `PD` deep and
+ *  `LW` past the door each side; flights `FW` deep, treads `tread` (no less than `minTread`). The iron railing: `railH` over
+ *  the nosings, bars every `bar`. */
+export const STOOP_PARALLEL = { PD: 1.15, LW: 0.15, FW: 1.0, tread: 0.22, rise: 0.21, minTread: 0.18, railH: 0.9, rail: 0.05, bar: 0.13, barW: 0.025, iron: '#1d1f20' } as const;
+/** The flights' plan for a door `d` and `n` rises: each flight's direction and tread, or null when no flight fits on the wall
+ *  (the caller draws the straight flight). `double` falls back to `side`, `side` to the side with more room. */
+export function stoopFlights(len: number, d: { x: number; hw: number }, n: number, form: 'side' | 'double'): { lx0: number; lx1: number; flights: Array<{ dir: -1 | 1; tread: number }> } | null {
+  const P = STOOP_PARALLEL, lx0 = d.x - d.hw - P.LW, lx1 = d.x + d.hw + P.LW, steps = Math.max(1, n - 1);
+  const fit = (dir: -1 | 1) => { const room = (dir > 0 ? len - lx1 : lx0) - 0.05, t = Math.min(P.tread, room / steps); return t >= P.minTread ? { dir, tread: t } : null; };
+  const l = fit(-1), r = fit(1);
+  if (form === 'double' && l && r) { const t = Math.min(l.tread, r.tread); return { lx0, lx1, flights: [{ dir: -1, tread: t }, { dir: 1, tread: t }] }; }
+  const one = l && r ? (len - lx1 >= lx0 ? r : l) : (l ?? r);
+  return one ? { lx0, lx1, flights: [one] } : null;
+}
+/** An iron railing in the wall's plane at `out`: a rail from (xa, za) to (xb, zb) at the rail height, bars down to the
+ *  nosings under it. */
+function ironRail(c: ExtraContext, s: ExtraSink, out: number, xa: number, za: number, xb: number, zb: number): void {
+  const P = STOOP_PARALLEL, h = P.railH;
+  s.wallQuad(c.f, [[xa, za + h - P.rail], [xb, zb + h - P.rail], [xb, zb + h], [xa, za + h]], out, P.iron);
+  const len = Math.abs(xb - xa), m = Math.max(1, Math.round(len / P.bar));
+  for (let i = 0; i <= m; i++) {
+    const t = i / m, x = xa + (xb - xa) * t, z = za + (zb - za) * t, w = i === 0 || i === m ? 0.05 : P.barW / 2;
+    s.strip(c.f, x - w, x + w, out, z, z + h - P.rail / 2, P.iron, 0.03);
+  }
+}
+/** The stoop along the wall (form side/double): a landing at the door, flights descending along the wall, the souterrain
+ *  behind them walled over, iron railings when stated. Returns false when no flight fits (the straight flight is drawn). */
+function parallelStoop(c: ExtraContext, s: ExtraSink, d: Span, n: number, rise: number, form: 'side' | 'double', rail: boolean): boolean {
+  const P = STOOP_PARALLEL, plan = stoopFlights(c.f.len, d, n, form);
+  if (!plan) return false;
+  const { lx0, lx1, flights } = plan, steps = n - 1;
+  const ends = flights.map(f => f.dir > 0 ? lx1 + steps * f.tread : lx0 - steps * f.tread);
+  // The walled-over souterrain takes whole window cells: a cell the flights half cover goes with its shutters (130).
+  let lo = Math.min(lx0, ...ends), hi = Math.max(lx1, ...ends);
+  for (const w of windowSpans(c, -1)) if (w.x + w.hw + STOOP.shutters > lo && w.x - w.hw - STOOP.shutters < hi) { lo = Math.min(lo, w.x - w.hw); hi = Math.max(hi, w.x + w.hw); }
+  for (const [a, b, z0, z1] of stoopHiddenWindows(c, lo, hi)) s.strip(c.f, a, b, 0.1, z0, z1, c.wallHex);
+  s.box(c.f, lx0, lx1, 0, P.PD, c.base, d.z0, STOOP.hex);
+  for (const f of flights) for (let k = 0; k < steps; k++) {
+    const reach = (steps - k) * f.tread, a = f.dir > 0 ? lx1 : lx0 - reach, b = f.dir > 0 ? lx1 + reach : lx0;
+    s.box(c.f, a, b, 0, P.FW, c.base + k * rise, c.base + (k + 1) * rise, STOOP.hex);
+  }
+  if (!rail) return true;
+  // The landing's railing across its front, and down each flight's outer edge to its foot.
+  ironRail(c, s, P.PD - 0.02, lx0, d.z0, lx1, d.z0);
+  for (const f of flights) {
+    const x0 = f.dir > 0 ? lx1 : lx0, x1 = x0 + f.dir * steps * f.tread;
+    ironRail(c, s, P.FW - 0.02, x0, d.z0, x1 - f.dir * f.tread * 0.5, c.base + rise);
+  }
+  return true;
+}
+/** A stated doorcase (RowGround.doorcase, Herengracht 130): pilasters on plinths each side, a frieze and a cornice over
+ *  the opening, a pediment or segmental hood on a stated top, and a fanlight with bars over a panelled leaf. Stone is a
+ *  warm weathered off-white, painted timber the trim white. */
+export const ROW_DOORCASE = { pilaster: 0.2, gap: 0.08, out: 0.12, frieze: 0.22, cornice: 0.12, corniceOut: 0.22, over: 0.1, fan: 0.55, bar: 0.04, rise: 0.42,
+  stone: '#d9d0bd', glass: '#2b3138', black: '#1d201f',
+  /** The top of the dark 'plinth' strip (facadeExtras): a street door's pilasters stand on it, not through it. */
+  plinthTop: 0.5 } as const;
+/** A pilastered frame over the whole ground storey (RowDoorcase.span 'ground', Herengracht 142): pilasters at both ends
+ *  of the front and in each gap between its openings, under one fascia and cornice over the door and the windows. */
+function rowGroundSurround(c: ExtraContext, s: ExtraSink, d: Span, dc: { material: 'stone' | 'timber' }, z0: number): void {
+  const K = ROW_DOORCASE, hex = dc.material === 'stone' ? K.stone : WHITE, L = c.f.len;
+  const wins = windowSpans(c, -1);
+  const opens = [[d.x - d.hw, d.x + d.hw, d.z1] as const, ...wins.map(w => [w.x - w.hw, w.x + w.hw, w.z1] as const)].sort((p, q) => p[0] - q[0]);
+  const zt = Math.max(...opens.map(o => o[2])) + 0.08, P = K.pilaster + 0.06, zf = zt + K.frieze + 0.08, zc = zf + K.cornice;
+  // Pilasters at both ends of the front and beside the door; the rest of the storey is one shop window between them.
+  const xs = [0, L - P, ...[d.x - d.hw - 0.06 - P, d.x + d.hw + 0.06].filter(a => a > P + 0.1 && a + P < L - P - 0.1)];
+  const shadow = shadeHex(hex, 0.5);
+  // The shadows each pilaster and the band throw (in front of a stated ground facing, ROW_GROUND_WALL.out), so a white
+  // frame reads as one solid frame on a pale ground storey.
+  for (const a of xs) for (const [p, q] of [[a - 0.07, a], [a + P, a + P + 0.07]] as const) if (p >= 0 && q <= L) s.strip(c.f, p, q, 0.045, z0, zt, shadow);
+  s.strip(c.f, 0, L, 0.045, zt - 0.09, zt, shadow);
+  // The shop window: the bays beside the door glazed from a low sill to the band, two mullions and a transom, white.
+  if (wins.length) {
+    const dl = d.x - d.hw - 0.06 - P, dr = d.x + d.hw + 0.06 + P;
+    for (const [a, b] of [[P + 0.08, dl - 0.08], [dr + 0.08, L - P - 0.08]] as const) {
+      if (b - a < 0.9) continue;
+      const g0 = z0 + 0.45, g1 = zt - 0.1, F = 0.07, bar = 0.06, tz = g0 + (g1 - g0) * 0.74;
+      s.strip(c.f, a, b, 0.05, g0, g1, K.glass);
+      for (const [p, q, r, u] of [[a, b, g0 - F, g0], [a, b, g1, g1 + F], [a - F, a, g0 - F, g1 + F], [b, b + F, g0 - F, g1 + F]] as const) s.strip(c.f, p, q, 0.06, r, u, hex);
+      for (const k of [1, 2]) { const x = a + (b - a) * k / 3; s.strip(c.f, x - bar / 2, x + bar / 2, 0.062, g0, g1, hex); }
+      s.strip(c.f, a, b, 0.062, tz - bar / 2, tz + bar / 2, hex);
+      // A panelled stall board under the glass.
+      s.strip(c.f, a, b, 0.055, z0, g0 - F, shadeHex(hex, 0.92));
+    }
+  }
+  for (const a of xs) {
+    s.box(c.f, a, a + P, 0, K.out, z0, zt, hex);
+    s.box(c.f, a - 0.03, a + P + 0.03, 0, K.out + 0.03, z0, z0 + 0.3, hex);
+    s.box(c.f, a - 0.03, a + P + 0.03, 0, K.out + 0.03, zt - 0.12, zt, hex);
+  }
+  // One solid band over the whole front: a fascia, a shadow line under the cornice, the cornice.
+  s.box(c.f, 0, L, 0, K.out, zt, zf, hex);
+  s.strip(c.f, 0, L, K.out + 0.005, zf - 0.05, zf, shadow);
+  s.box(c.f, 0, L, 0, K.corniceOut, zf, zc, hex);
+}
+/** A white timber frame over the whole ground storey (RowDoorcase.span 'frame', 0363100012176327): posts at the front's
+ *  ends and between the door and each window, an entresol rail across them all with a light over every opening, the
+ *  windows glazed to the floor of the frame, the door under its own light, a head beam and a slim cornice on top. */
+export const ROW_GROUND_FRAME = { post: 0.15, rail: 0.12, beam: 0.18, out: 0.09, corniceOut: 0.16, cornice: 0.08, sill: 0.3, bar: 0.05, entresol: 0.58, tiers: 0.5, under: 0.3 } as const;
+function rowGroundFrame(c: ExtraContext, s: ExtraSink, d: Span, dc: { material: 'stone' | 'timber'; door?: string; entresol?: number; tiers?: 2 }, z0: number): void {
+  const K = ROW_GROUND_FRAME, hex = dc.material === 'stone' ? ROW_DOORCASE.stone : WHITE, L = c.f.len, P = K.post;
+  const wins = windowSpans(c, -1);
+  const opens = [{ a: d.x - d.hw, b: d.x + d.hw, z1: d.z1, door: true }, ...wins.map(w => ({ a: w.x - w.hw, b: w.x + w.hw, z1: w.z1, door: false }))].sort((p, q) => p.a - q.a);
+  // Two tall tiers (Herengracht 279): the frame fills its storey up to under the next storey's sills, the rail at mid
+  // height, the upper lights glazed like the lower; else it stops over the openings, the entresol low under the beam.
+  const next = Array.from({ length: c.layout.storeys + 1 }, (_, k) => storeyZ(c, k)).find(z => z > z0 + 1.5);
+  const two = dc.tiers === 2 && next !== undefined, top = Math.max(...opens.map(o => o.z1)) + 0.08;
+  const zt = two ? Math.max(top, next! - K.under - K.beam - K.cornice) : top, ze = z0 + (zt - z0) * Math.min(0.8, Math.max(0.4, dc.entresol ?? (two ? K.tiers : K.entresol)));
+  // Cells: the front cut midway between neighbouring openings, a post on every cut.
+  const cuts = [0, ...opens.slice(1).map((o, i) => (opens[i].b + o.a) / 2), L];
+  const shadow = shadeHex(hex, 0.5), leaf = dc.door === 'black' ? ROW_DOORCASE.black : dc.door ?? STOOP.door;
+  for (let i = 0; i < opens.length; i++) {
+    const a = cuts[i] + (i ? P / 2 : P), b = cuts[i + 1] - (i + 1 < opens.length ? P / 2 : P);
+    if (b - a < 0.3) continue;
+    const mid = (a + b) / 2, g0 = opens[i].door ? d.z0 : z0 + K.sill;
+    // The entresol light over every cell, a bar down its middle.
+    s.strip(c.f, a, b, 0.05, ze + K.rail / 2, zt, ROW_DOORCASE.glass);
+    s.strip(c.f, mid - K.bar / 2, mid + K.bar / 2, 0.06, ze, zt, hex);
+    if (opens[i].door) {
+      // The door under its light, filling the cell, with two raised panels.
+      s.strip(c.f, a, b, 0.05, g0, ze, leaf);
+      for (const [p, q] of [[g0 + 0.15, g0 + (ze - g0) * 0.42], [g0 + (ze - g0) * 0.5, ze - 0.15]] as const) s.strip(c.f, a + 0.1, b - 0.1, 0.06, p, q, shadeHex(leaf, dc.door === 'black' ? 1.1 : 1.12));
+    } else {
+      // The window glazed to the frame's low sill, a mullion and a transom.
+      s.strip(c.f, a, b, 0.05, g0, ze - K.rail / 2, ROW_DOORCASE.glass);
+      s.strip(c.f, mid - K.bar / 2, mid + K.bar / 2, 0.06, g0, ze, hex);
+      s.strip(c.f, a, b, 0.06, g0 + (ze - g0) * 0.72 - K.bar / 2, g0 + (ze - g0) * 0.72 + K.bar / 2, hex);
+      s.strip(c.f, a, b, 0.055, z0, g0, shadeHex(hex, 0.92));
+    }
+  }
+  // Posts with their shadows, the entresol rail, the head beam and cornice.
+  for (let i = 0; i < cuts.length; i++) {
+    const a = i === 0 ? 0 : i === cuts.length - 1 ? L - P : cuts[i] - P / 2;
+    for (const [p, q] of [[a - 0.06, a], [a + P, a + P + 0.06]] as const) if (p >= 0 && q <= L) s.strip(c.f, p, q, 0.045, z0, zt, shadow);
+    s.box(c.f, a, a + P, 0, K.out, z0, zt, hex);
+  }
+  s.box(c.f, 0, L, 0, K.out - 0.02, ze - K.rail / 2, ze + K.rail / 2, hex);
+  s.strip(c.f, 0, L, 0.045, zt - 0.06, zt, shadow);
+  s.box(c.f, 0, L, 0, K.out, zt, zt + K.beam, hex);
+  s.box(c.f, 0, L, 0, K.corniceOut, zt + K.beam, zt + K.beam + K.cornice, hex);
+}
+/** An 1800s timber cornice as stated (RowDesign.corniceDress; Herengracht 158, 164, 174, 209, 248): a painted corona and
+ *  bed moulding, what carries them (modillions, consoles over the piers, dentils), a painted frieze over the top windows
+ *  (plain, sunk panels, or a low attic light over each window axis), and a pediment, segmental cap or balustrade on top. */
+export const ROW_TIMBER_CORNICE = { corona: 0.2, coronaOut: 0.5, bed: 0.16, bedOut: 0.32, architrave: 0.1, archOut: 0.07,
+  modillion: { w: 0.1, h: 0.14, pitch: 0.34 }, console: { w: 0.2, h: 0.62, out: 0.3 }, frieze: { plain: 0.55, panels: 0.65, 'attic-lights': 0.85, min: 0.3 },
+  /** The shadow under the corona between its supports, as the photos read it (the supports stand out light against it). */
+  soffit: 0.62,
+  light: { maxW: 1.4, h: 0.42, frame: 0.07 }, pediment: { slope: 0.3, band: 0.16 }, balustrade: { h: 0.72, baluster: 0.09, pitch: 0.24 },
+  paints: { white: WHITE, cream: CREAM, grey: '#8f918c' } } as const;
+function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNullable<ExtraContext['rowDress']>['corniceDress']>): void {
+  const K = ROW_TIMBER_CORNICE, t = c.top, L = c.f.len;
+  const P = dr.paint ? (K.paints as Record<string, string>)[dr.paint] ?? dr.paint : WHITE;
+  const zc = t - K.corona, zb = zc - K.bed;
+  // The frieze: from over the top windows' heads (their dressing included) up to the bed moulding.
+  const ws = rowWindowsOf(c), topZ1 = ws.length ? Math.max(...ws.map(w => w.z1)) : zb - K.frieze.plain;
+  const top = ws.filter(w => w.z1 > topZ1 - 0.3);
+  const fmax = dr.frieze ? K.frieze[dr.frieze] : K.frieze.plain;
+  const fz0 = Math.max(zb - fmax, Math.max(rowHeadsTop(c), topZ1) + 0.12), fh = zb - fz0;
+  if (dr.frieze && fh >= K.frieze.min) {
+    s.strip(c.f, 0, L, 0.03, fz0, zb, P);
+    // The architrave: a thin moulding along the frieze's foot.
+    s.box(c.f, 0, L, 0, K.archOut, fz0 - K.architrave, fz0, P, true);
+    if (dr.frieze === 'attic-lights') {
+      // Centred in the frieze below what carries the corona.
+      const sup = dr.supports === 'modillions' ? K.modillion.h : dr.supports === 'dentils' ? ROW_DENTILS.h : 0, fr = fh - sup;
+      const lh = Math.min(K.light.h, fr - 0.16), lz0 = fz0 + (fr - lh) / 2;
+      if (lh >= 0.18) for (const w of top) {
+        // One wide low light per window axis (blind review: single openings, not paired lights).
+        const xm = (w.x0 + w.x1) / 2, hw = Math.min(K.light.maxW, (w.x1 - w.x0) * 0.95) / 2, F = K.light.frame;
+        // A shadowed reveal round the opening, a white frame inside it, and glazing bars: three panes, a transom when tall.
+        const R = 0.035, Wf = WHITE, bar = 0.03, sh = shadeHex(P, 0.62);
+        s.strip(c.f, xm - hw - R, xm + hw + R, 0.035, lz0 - R, lz0 + lh + R, sh);
+        s.strip(c.f, xm - hw, xm + hw, 0.04, lz0, lz0 + lh, ROW_DOORCASE.glass);
+        s.strip(c.f, xm - hw, xm + hw, 0.05, lz0, lz0 + F * 0.6, Wf);
+        s.strip(c.f, xm - hw, xm + hw, 0.05, lz0 + lh - F * 0.6, lz0 + lh, Wf);
+        for (const x of [xm - hw, xm + hw - F * 0.6]) s.strip(c.f, x, x + F * 0.6, 0.05, lz0, lz0 + lh, Wf);
+        for (const k of [1, 2]) { const x = xm - hw + (2 * hw) * k / 3; s.strip(c.f, x - bar / 2, x + bar / 2, 0.052, lz0, lz0 + lh, Wf); }
+        if (lh >= 0.36) s.strip(c.f, xm - hw, xm + hw, 0.052, lz0 + lh * 0.55 - bar / 2, lz0 + lh * 0.55 + bar / 2, Wf);
+      }
+    } else if (dr.frieze === 'panels') {
+      // Sunk panels between the piers: a raised frame round each, its field a shade darker.
+      const xs = [0, ...top.map(w => (w.x0 + w.x1) / 2), L].sort((a, b) => a - b), m = 0.12;
+      for (let i = 0; i + 1 < xs.length; i++) {
+        const a = xs[i] + m, b = xs[i + 1] - m, z0 = fz0 + m, z1 = zb - m;
+        if (b - a < 0.3 || z1 - z0 < 0.12) continue;
+        s.strip(c.f, a, b, 0.035, z0, z1, shadeHex(P, 0.9));
+        for (const [p, q, r, u] of [[a, b, z0 - 0.04, z0], [a, b, z1, z1 + 0.04], [a - 0.04, a, z0 - 0.04, z1 + 0.04], [b, b + 0.04, z0 - 0.04, z1 + 0.04]] as const) s.strip(c.f, p, q, 0.05, r, u, P);
+      }
+    }
+  }
+  // What carries the corona.
+  if (dr.supports === 'modillions') {
+    // Under the bed moulding, light blocks against the soffit's shadow.
+    s.strip(c.f, 0, L, 0.035, zb - K.modillion.h, zb, shadeHex(P, K.soffit));
+    const n = Math.max(3, Math.round(L / K.modillion.pitch));
+    for (let i = 0; i < n; i++) { const x = (i + 0.5) * L / n; s.box(c.f, Math.max(0, x - K.modillion.w / 2), Math.min(L, x + K.modillion.w / 2), 0, K.bedOut + 0.06, zb - K.modillion.h, zb, P); }
+  } else if (dr.supports === 'consoles') {
+    // A console over each pier: a deep head under the corona tapering to a slim foot (a scroll in profile).
+    const h = Math.min(K.console.h, Math.max(0.3, zb - fz0 + K.bed)), W2 = K.console.w / 2;
+    for (const x of pierXs(c)) {
+      const a = Math.max(0, x - W2), b = Math.min(L, x + W2);
+      // Its shadow on the frieze round it, so a painted console reads on a painted frieze.
+      s.strip(c.f, Math.max(0, a - 0.05), Math.min(L, b + 0.05), 0.035, zb - h - 0.04, zb, shadeHex(P, K.soffit));
+      s.box(c.f, a, b, 0, K.bedOut + 0.04, zb - 0.22, zb, P);
+      s.box(c.f, a + 0.02, b - 0.02, 0, K.console.out * 0.6, zb - h * 0.65, zb - 0.22, P);
+      s.box(c.f, a + 0.04, b - 0.04, 0, K.console.out * 0.35, zb - h, zb - h * 0.65, P);
+      // Carved: a scroll's eye at the head and a smaller one at the foot, a leaf down the face.
+      wallDisc(c, s, x, zb - 0.13, W2 * 0.8, K.console.out + 0.02, shadeHex(P, 0.72));
+      wallDisc(c, s, x, zb - 0.13, W2 * 0.4, K.console.out + 0.03, P);
+      wallDisc(c, s, x, zb - h + 0.08, W2 * 0.55, K.console.out * 0.35 + 0.02, shadeHex(P, 0.72));
+      s.wallQuad(c.f, [[x - W2 * 0.35, zb - 0.26], [x + W2 * 0.35, zb - 0.26], [x + 0.01, zb - h * 0.7], [x - 0.01, zb - h * 0.7]], K.console.out * 0.6 + 0.01, shadeHex(P, 0.8));
+    }
+  } else if (dr.supports === 'dentils') {
+    const D = ROW_DENTILS, n = Math.max(4, Math.round(L / D.pitch));
+    s.strip(c.f, 0, L, 0.035, zb - D.h, zb, shadeHex(P, K.soffit));
+    for (let i = 0; i < n; i++) { const x = (i + 0.5) * L / n; s.box(c.f, Math.max(0, x - D.w / 2), Math.min(L, x + D.w / 2), 0, K.bedOut + 0.06, zb - D.h, zb, P); }
+  }
+  // The bed moulding (in the corona's shadow) and the corona.
+  s.box(c.f, 0, L, 0, K.bedOut, zb, zc, shadeHex(P, 0.84), true);
+  s.box(c.f, 0, L, 0, K.coronaOut, zc, t, P, true);
+  // On top: a cap over the centre, or a balustrade.
+  if (dr.centre === 'pediment' || dr.centre === 'segmental') {
+    const w = L * (dr.centreShare ?? 0.5), a = (L - w) / 2, b = a + w, mid = L / 2, rise = w / 2 * K.pediment.slope, B = K.pediment.band;
+    if (dr.centre === 'pediment') {
+      // A moulded pediment: a recessed tympanum a shade darker, the raking cornices in two steps with a shadow line under
+      // them, and a cornice across its foot.
+      s.wallQuad(c.f, [[a, t], [b, t], [mid, t + rise], [mid, t + rise]], 0.04, shadeHex(P, 0.9));
+      for (const [p0, p1] of [[[a - 0.04, t], [mid, t + rise]], [[mid, t + rise], [b + 0.04, t]]] as Array<[[number, number], [number, number]]>) {
+        wallBar(c, s, [p0[0], p0[1] - B * 0.35], [p1[0], p1[1] - B * 0.35], 0.05, 0.08, shadeHex(P, 0.6));
+        wallBar(c, s, [p0[0], p0[1] + B * 0.15], [p1[0], p1[1] + B * 0.15], B * 0.7, K.bedOut - 0.08, shadeHex(P, 0.86));
+        wallBar(c, s, [p0[0], p0[1] + B * 0.6], [p1[0], p1[1] + B * 0.6], B * 0.55, K.bedOut, P);
+      }
+      s.box(c.f, a, b, 0, K.bedOut - 0.08, t, t + 0.08, shadeHex(P, 0.86));
+    } else {
+      const n = 12, h = (u: number) => rise * 1.3 * Math.sin(Math.PI * u);
+      for (let i = 0; i < n; i++) {
+        const u0 = i / n, u1 = (i + 1) / n, x0 = a + w * u0, x1 = a + w * u1;
+        s.wallQuad(c.f, [[x0, t], [x1, t], [x1, t + h(u1)], [x0, t + h(u0)]], 0.06, P);
+        wallBar(c, s, [x0, t + h(u0) + B / 2], [x1, t + h(u1) + B / 2], B, K.bedOut, P);
+      }
+    }
+  } else if (dr.centre === 'balustrade') {
+    const w = L * (dr.centreShare ?? 1), a = (L - w) / 2, b = a + w, Bq = K.balustrade, out = K.coronaOut - 0.12;
+    s.box(c.f, a, b, 0.02, out, t, t + 0.12, P);
+    const n = Math.max(2, Math.floor(w / Bq.pitch));
+    // Turned balusters: a belly, a slim neck and a cap between plinth and rail.
+    const bh = Bq.h - 0.24, bz = t + 0.12, bw = Bq.baluster;
+    for (let i = 0; i < n; i++) {
+      const x = a + (i + 0.5) * w / n;
+      s.box(c.f, x - bw / 2, x + bw / 2, out - 0.2, out - 0.06, bz, bz + bh * 0.45, P);
+      s.box(c.f, x - bw * 0.28, x + bw * 0.28, out - 0.18, out - 0.08, bz + bh * 0.45, bz + bh * 0.8, P);
+      s.box(c.f, x - bw * 0.42, x + bw * 0.42, out - 0.19, out - 0.07, bz + bh * 0.8, bz + bh, P);
+    }
+    for (const x of [a, b - 0.2]) s.box(c.f, x, x + 0.2, 0.02, out, t + 0.12, t + Bq.h - 0.12, P);
+    s.box(c.f, a, b, 0.02, out, t + Bq.h - 0.12, t + Bq.h, P);
+  }
+}
+/** A disc of radius r on the wall face (a scroll's eye, a boss), as a fan of quads. */
+function wallDisc(c: ExtraContext, s: ExtraSink, x: number, z: number, r: number, out: number, hex: string, n = 12): void {
+  for (let i = 0; i < n; i++) {
+    const a0 = 2 * Math.PI * i / n, a1 = 2 * Math.PI * (i + 1) / n;
+    s.wallQuad(c.f, [[x, z], [x + r * Math.cos(a0), z + r * Math.sin(a0)], [x + r * Math.cos(a1), z + r * Math.sin(a1)], [x, z]], out, hex);
+  }
+}
+/** A bar of width w from p to q on the wall face (fanlight tracery). */
+function wallBar(c: ExtraContext, s: ExtraSink, p: readonly [number, number], q: readonly [number, number], w: number, out: number, hex: string): void {
+  const dx = q[0] - p[0], dz = q[1] - p[1], L = Math.hypot(dx, dz) || 1, nx = -dz / L * w / 2, nz = dx / L * w / 2;
+  s.wallQuad(c.f, [[p[0] + nx, p[1] + nz], [q[0] + nx, q[1] + nz], [q[0] - nx, q[1] - nz], [p[0] - nx, p[1] - nz]], out, hex);
+}
+function rowDoorcase(c: ExtraContext, s: ExtraSink, d: Span, dc: NonNullable<NonNullable<NonNullable<ExtraContext['rowDress']>['stoop']>['doorcase']>, z0 = d.z0, own = true): void {
+  const K = ROW_DOORCASE, hex = dc.material === 'stone' ? K.stone : WHITE, x0 = d.x - d.hw, x1 = d.x + d.hw;
+  const leaf = dc.door === 'black' ? K.black : dc.door ?? STOOP.door;
+  const fan = dc.fanlight === false ? 0 : Math.min(K.fan, (d.z1 - d.z0) * 0.25), zf = d.z1 - fan;
+  // The leaf with two raised panels, and the fanlight's glass with its transom and bars.
+  s.strip(c.f, x0, x1, 0.03, d.z0, zf, leaf);
+  for (const [a, b] of [[d.z0 + 0.15, d.z0 + (zf - d.z0) * 0.42], [d.z0 + (zf - d.z0) * 0.5, zf - 0.15]] as const) s.strip(c.f, x0 + 0.1, x1 - 0.1, 0.045, a, b, shadeHex(leaf, 1.1));
+  if (fan > 0) {
+    s.strip(c.f, x0, x1, 0.03, zf, d.z1, K.glass);
+    s.strip(c.f, x0, x1, 0.05, zf, zf + K.bar * 1.5, hex);
+    if (dc.fanlight === 'oval' || dc.fanlight === 'oval-spoked') {
+      // An oval ring touching the fanlight's frame; `oval` a small lozenge at its centre (judged closer on
+      // Herengracht 144, 2026-11-15), `oval-spoked` four short spokes from the ring to the frame instead.
+      const xm = (x0 + x1) / 2, zm = (zf + d.z1) / 2, hx = (x1 - x0) / 2 - 0.03, hz = (d.z1 - zf) / 2 - 0.03, n = 18;
+      for (let i = 0; i < n; i++) {
+        const a0 = 2 * Math.PI * i / n, a1 = 2 * Math.PI * (i + 1) / n;
+        wallBar(c, s, [xm + hx * Math.cos(a0), zm + hz * Math.sin(a0)], [xm + hx * Math.cos(a1), zm + hz * Math.sin(a1)], K.bar, 0.05, hex);
+      }
+      if (dc.fanlight === 'oval-spoked') {
+        for (const [p, q] of [[[xm - hx, zm], [x0, zm]], [[xm + hx, zm], [x1, zm]], [[xm, zm + hz], [xm, d.z1]], [[xm, zm - hz], [xm, zf]]] as Array<[[number, number], [number, number]]>) wallBar(c, s, p, q, K.bar, 0.05, hex);
+      } else {
+        const pts: Array<[number, number]> = [[xm - hx * 0.4, zm], [xm, zm + hz * 0.45], [xm + hx * 0.4, zm], [xm, zm - hz * 0.45]];
+        for (let i = 0; i < 4; i++) wallBar(c, s, pts[i], pts[(i + 1) % 4], K.bar, 0.05, hex);
+      }
+    } else if (dc.fanlight === 'diamond') {
+      // A lozenge touching the fanlight's frame at its four mid-points, and a smaller one inside it.
+      const xm = (x0 + x1) / 2, zm = (zf + d.z1) / 2, hx = (x1 - x0) / 2, hz = (d.z1 - zf) / 2;
+      for (const k of [1, 0.5]) {
+        const pts: Array<[number, number]> = [[xm - hx * k, zm], [xm, zm + hz * k], [xm + hx * k, zm], [xm, zm - hz * k]];
+        for (let i = 0; i < 4; i++) wallBar(c, s, pts[i], pts[(i + 1) % 4], K.bar, 0.05, hex);
+      }
+    } else for (let i = 1; i < 4; i++) { const x = x0 + (x1 - x0) * i / 4; s.strip(c.f, x - K.bar / 2, x + K.bar / 2, 0.05, zf, d.z1, hex); }
+  }
+  // The frame round the opening.
+  s.strip(c.f, x0 - 0.06, x0, 0.06, z0, d.z1, hex);
+  s.strip(c.f, x1, x1 + 0.06, 0.06, z0, d.z1, hex);
+  if (!own) return;
+  // Pilasters on plinths.
+  const pl0 = x0 - K.gap - K.pilaster, pr1 = x1 + K.gap + K.pilaster;
+  for (const [a, b] of [[pl0, x0 - K.gap], [x1 + K.gap, pr1]] as const) {
+    s.box(c.f, a, b, 0, K.out, z0, d.z1 + 0.05, hex);
+    s.box(c.f, a - 0.03, b + 0.03, 0, K.out + 0.03, z0, z0 + 0.3, hex);
+    s.box(c.f, a - 0.03, b + 0.03, 0, K.out + 0.03, d.z1 - 0.12, d.z1 + 0.05, hex);
+  }
+  // The entablature: a frieze and a cornice over the pilasters.
+  const zt = d.z1 + 0.05, zc = zt + K.frieze;
+  s.box(c.f, pl0, pr1, 0, K.out, zt, zc, hex);
+  s.box(c.f, pl0 - K.over, pr1 + K.over, 0, K.corniceOut, zc, zc + K.cornice, hex);
+  const top = zc + K.cornice, a = pl0 - K.over, b = pr1 + K.over, mid = (a + b) / 2, rise = Math.min(K.rise, (b - a) * 0.22);
+  if (dc.top === 'pediment') {
+    s.wallQuad(c.f, [[a, top], [b, top], [mid, top + rise], [mid, top + rise]], K.corniceOut - 0.04, hex);
+    // The raking cornices as thin slabs over the face.
+    s.wallQuad(c.f, [[a - 0.04, top], [mid, top + rise + 0.06], [mid, top + rise - 0.04], [a + 0.12, top]], K.corniceOut, shadeHex(hex, 1.04));
+    s.wallQuad(c.f, [[b + 0.04, top], [mid, top + rise + 0.06], [mid, top + rise - 0.04], [b - 0.12, top]], K.corniceOut, shadeHex(hex, 1.04));
+  } else if (dc.top === 'segmental') {
+    const n = 10;
+    for (let i = 0; i < n; i++) {
+      const t0 = i / n, t1 = (i + 1) / n, h = (t: number) => rise * Math.sin(Math.PI * t);
+      s.wallQuad(c.f, [[a + (b - a) * t0, top], [a + (b - a) * t1, top], [a + (b - a) * t1, top + h(t1)], [a + (b - a) * t0, top + h(t0)]], K.corniceOut - 0.04, hex);
+    }
+  }
+}
 export function stoopDoor(c: ExtraContext): Span | null {
   const st = c.rowDress?.stoop;
   if (!st || !c.groundLevel || c.layout.storeys < 1) return null;
+  if (st.at !== undefined) {
+    // The read door's place (rowDressOnEdge stoopAt): the bel-etage window nearest it, a traced one when the record traced
+    // the windows. A read door index is the place itself: the painted cells draw the read window count, which the extras'
+    // grid need not share (Herengracht 132: 6 painted windows, 4 grid spans; the door slab stood over half a window).
+    const floor = storeyZ(c, 0), above = (c.rowDress?.windows ?? []).filter(w => w.z0 >= floor - 0.3), sill = Math.min(...above.map(w => w.z0));
+    const traced = above.filter(w => w.z0 < sill + 0.5).map(w => ({ x: (w.x0 + w.x1) / 2, hw: (w.x1 - w.x0) / 2, z1: w.z1 }));
+    const ws = traced.length ? traced : windowSpans(c, 0);
+    if (!ws.length) return null;
+    const w = ws.reduce((a, b) => Math.abs(b.x - st.at!) < Math.abs(a.x - st.at!) ? b : a);
+    const x = st.exact && !traced.length ? Math.min(c.f.len - 0.6, Math.max(0.6, st.at)) : w.x;
+    // A full ground storey under the stated stoop (no souterrain cell: Herengracht 162's bel-etage floor 4.4 m up): the door
+    // stands in the ground storey up a short flight, not a storey-high grey block under a slab (reviewers' 113, 248-287).
+    if (floor - c.base > STOOP.maxRise) {
+      const head = Math.max(...windowSpans(c, -1).map(g => g.z1), c.base + STOOP.lowRise + 2.1);
+      return { x, hw: Math.max(w.hw, 0.5), z0: c.base + STOOP.lowRise, z1: Math.min(floor - 0.25, head) };
+    }
+    return { x, hw: Math.max(w.hw, 0.5), z0: floor, z1: w.z1 };
+  }
   const ws = windowSpans(c, 0).sort((a, b) => a.x - b.x);
   if (!ws.length) return null;
   const w = st.end === 'start' ? ws[0] : st.end === 'end' ? ws[ws.length - 1] : ws.reduce((a, b) => Math.abs(b.x - c.f.len / 2) < Math.abs(a.x - c.f.len / 2) ? b : a);
@@ -428,8 +873,82 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       s.strip(c.f, l - ROW_FRAME_M, r + ROW_FRAME_M, ROW_TYPE_GLASS.frameOut, w.z1 - fo, w.z1 + ROW_FRAME_M, WHITE);
       s.strip(c.f, l - ROW_FRAME_M, r + ROW_FRAME_M, ROW_TYPE_GLASS.frameOut, w.z0 - ROW_FRAME_M, w.z0 + fo, WHITE);
       s.strip(c.f, l, r, 0.02, zt - 0.03, zt + 0.03, WHITE);
-      s.strip(c.f, w.x - 0.025, w.x + 0.025, 0.02, w.z0, zt - 0.03, WHITE);
+      // Buurt kit paired casements (rowDress.mullionShare): a broad white post the full height parts the pair.
+      const mh = c.rowDress.mullionShare ? (r - l) * c.rowDress.mullionShare / 2 : 0;
+      if (mh) s.strip(c.f, w.x - mh, w.x + mh, 0.025, w.z0, w.z1, WHITE);
+      else s.strip(c.f, w.x - 0.025, w.x + 0.025, 0.02, w.z0, zt - 0.03, WHITE);
     }
+  } },
+  { id: 'row-floors', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-floors', build: (c, s) => {
+    // Floor bands on the stated rows' floor lines (RowDesign.windowHeights, house rows round 5): the traced windows stand
+    // on a plain wall, so the storeys' floor lines are drawn here where the painted cells would have put them.
+    const fl = c.rowDress?.floorsM, top = c.top - (c.rowDress?.cornice ? 0.95 : 0.3);
+    if (!fl) return;
+    for (const f of fl) { const z = c.base + f; if (z > c.base + 0.5 && z + ROW_BANDS.floor < top) rowBand(c, s, [], z - ROW_BANDS.floor / 2, z + ROW_BANDS.floor / 2, ROW_BANDS.floorOut, ROW_BANDS.floorHex); }
+  } },
+  { id: 'row-ground-wall', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-ground-wall', build: (c, s) => {
+    // A ground storey faced apart from the wall above (RowDesign.groundWall, house rows round 5): Herengracht 12's white
+    // stucco under brown brick, a belt house's white pilastered plinth storey. A plate over the front's span of the ground
+    // cell, open at its windows and door, under a ledge (scrolled ends when stated).
+    const gw = c.rowDress?.groundWalls;
+    if (!gw?.length || !c.groundLevel) return;
+    const z0 = c.base, z1 = c.base + c.layout.groundM;
+    const holes = [...windowSpans(c, -1).map(w => [w.x - w.hw - 0.04, w.x + w.hw + 0.04, w.z0, w.z1] as const),
+      ...rowWindowsOf(c).filter(w => w.z0 < z1 - 0.1).map(w => [w.x0 - 0.04, w.x1 + 0.04, w.z0, w.z1] as const),
+      ...(doorSpan(c) ? [(d => [d.x - d.hw - 0.05, d.x + d.hw + 0.05, d.z0, d.z1] as const)(doorSpan(c)!)] : [])];
+    for (const g of gw) {
+      const x0 = Math.max(0, g.x0), x1 = Math.min(c.f.len, g.x1);
+      if (x1 - x0 < 0.3) continue;
+      for (const [za, zb, xs] of groundWallBands(holes, x0, x1, z0, z1)) for (const [a, b] of xs) s.strip(c.f, a, b, ROW_GROUND_WALL.out, za, zb, g.hex);
+      if (g.top === 'plain') continue;
+      // The ledge: a moulded band proud of the facing, a little wider than it; scrolled ends stand under it at both ends.
+      s.box(c.f, x0, x1, 0, ROW_GROUND_WALL.ledgeOut, z1 - ROW_GROUND_WALL.ledge, z1, g.hex, true);
+      if (g.top === 'scrolled') for (const [a, b] of [[x0, x0 + ROW_GROUND_WALL.scroll], [x1 - ROW_GROUND_WALL.scroll, x1]] as const) s.box(c.f, a, b, 0, ROW_GROUND_WALL.ledgeOut * 0.8, z1 - ROW_GROUND_WALL.ledge - ROW_GROUND_WALL.scrollH, z1 - ROW_GROUND_WALL.ledge, g.hex, true);
+    }
+  } },
+  { id: 'row-basement', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-basement', build: (c, s) => {
+    // A stated basement front (RowGround.basementFront, Herengracht 25-29): the souterrain faced in a stone plinth with
+    // sunk joints, arched doorways in it (a stone ring, a dark recess, a door leaf), the basement windows left open.
+    const K = ROW_BASEMENT, top = storeyZ(c, 0) - K.under;
+    if (top - c.base < 0.9) return;
+    for (const b of c.rowDress?.basements ?? []) {
+      const x0 = Math.max(0, b.x0), x1 = Math.min(c.f.len, b.x1);
+      if (x1 - x0 < 0.5) continue;
+      const doors = b.doors.map(([p, q]) => { const m = (p + q) / 2, hw = Math.min(K.doorW, (q - p) * 0.8) / 2; return [Math.max(x0 + 0.1, m - hw), Math.min(x1 - 0.1, m + hw)] as const; }).filter(([p, q]) => q - p > 0.5);
+      const over = (a: number, z: number) => doors.some(([p, q]) => a > p - K.ring - 0.05 && a < q + K.ring + 0.05) && z > 0;
+      const holes = windowSpans(c, -1).filter(w => w.x > x0 && w.x < x1 && !over(w.x, 1)).map(w => [w.x - w.hw, w.x + w.hw, w.z0, w.z1] as const);
+      const zt = top, joint = shadeHex(b.hex, 0.8);
+      for (const [za, zb, xs] of groundWallBands(holes, x0, x1, c.base, zt)) for (const [p, q] of xs) {
+        s.strip(c.f, p, q, K.out, za, zb, b.hex);
+        // Sunk joints every course.
+        for (let z = za + K.course; z < zb - 0.05; z += K.course) s.strip(c.f, p, q, K.out + 0.004, z - K.joint / 2, z + K.joint / 2, joint);
+      }
+      s.box(c.f, x0, x1, 0, K.ledgeOut, zt - K.ledge, zt, shadeHex(b.hex, 1.08), true);
+      for (const [p, q] of doors) {
+        const w = q - p, m = (p + q) / 2, rise = b.head === 'round' ? w / 2 : Math.max(0.2, w / 5), zs = Math.min(zt - K.ledge - 0.08 - rise - K.ring, c.base + K.doorH);
+        if (zs - c.base < 1.2) continue;
+        const N = 12, arc = (r: number, t: number): [number, number] => {
+          const R = (w * w / 4 + rise * rise) / (2 * rise), cz = zs + rise - R, half = Math.asin(Math.min(1, w / 2 / R)), a = -half + 2 * half * t;
+          return [m + (R + r) * Math.sin(a), cz + (R + r) * Math.cos(a)];
+        };
+        // The recess: dark, up into the arch; the door leaf in it, set back.
+        s.wallQuad(c.f, [[p, c.base], [q, c.base], [q, zs], [p, zs]], K.out + 0.006, K.recess);
+        for (let i = 0; i < N; i++) { const a = arc(0, i / N), d = arc(0, (i + 1) / N); s.wallQuad(c.f, [[a[0], zs], [d[0], zs], d, a], K.out + 0.006, K.recess); }
+        s.wallQuad(c.f, [[p + 0.08, c.base], [q - 0.08, c.base], [q - 0.08, zs - 0.05], [p + 0.08, zs - 0.05]], K.out + 0.01, ROW_DOORCASE.black);
+        // The stone ring: voussoirs, the key a little proud.
+        for (let i = 0; i < N; i++) { const a0 = arc(0, i / N), a1 = arc(0, (i + 1) / N), b1 = arc(K.ring, (i + 1) / N), b0 = arc(K.ring, i / N); s.wallQuad(c.f, [a0, a1, b1, b0], K.out + 0.02 + (i % 2) * 0.004, shadeHex(b.hex, i === N / 2 || i === N / 2 - 1 ? 1.16 : 1.06)); }
+        // The jambs.
+        for (const [a, d] of [[p - K.ring * 0.7, p], [q, q + K.ring * 0.7]] as const) s.strip(c.f, a, d, K.out + 0.02, c.base, zs, shadeHex(b.hex, 1.06));
+      }
+    }
+  } },
+  { id: 'row-sash', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-sash', build: (c, s) => {
+    // The stated joinery (RowDesign.glazing, house rows round 5): the glass, a white frame round it and the window kind's
+    // glazing bars over every upper window, so a canal front carries its white (8-over-8 sashes, T-windows) instead of the
+    // painted cell's dark glass and thin outline.
+    const g = c.rowDress?.glazing;
+    if (!g) return;
+    for (const w of rowWindowsOf(c)) for (const p of rowSashPieces(g, w.x0, w.x1, w.z0, w.z1)) s.wallQuad(c.f, [[p.x0, p.z0], [p.x1, p.z0], [p.x1, p.z1], [p.x0, p.z1]], p.out, p.hex);
   } },
   { id: 'row-shopfront', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'shopfront', build: (c, s) => {
     // A stated single shopfront (ground.shopUnits 1; Weteringschans 168042 "a black-framed shopfront with a patterned glass
@@ -463,12 +982,28 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     const h = d.z0 - c.base;
     if (h < 0.3) return;
     const n = Math.max(2, Math.ceil(h / STOOP.rise)), rise = h / n, x0 = d.x - d.hw - 0.1, x1 = d.x + d.hw + 0.1;
+    const form = c.rowDress?.stoop?.form, rail = !!c.rowDress?.stoop?.railing;
+    // A stated flight along the wall (Herengracht 130's double stoop): the door first, then the landing and flights.
+    // Along the wall the flights rise steeper (STOOP_PARALLEL.rise, tread), as the canal-house double stoops do (130).
+    const nA = Math.max(2, Math.ceil(h / STOOP_PARALLEL.rise));
+    const along = c.rowDress?.stoop?.steps !== false && (form === 'side' || form === 'double') && stoopFlights(c.f.len, d, nA, form);
+    // A souterrain window behind the flight (basement 'stoop-and-windows', Herengracht 130): the flight stands where the read
+    // door is, so the window cell there is walled over (its frame and shutters peeked out beside the flight); the souterrain
+    // windows beside it stay.
+    if (!along && c.rowDress?.stoop?.steps !== false && d.z0 >= storeyZ(c, 0) - 1e-6) for (const [a, b, z0, z1] of stoopHiddenWindows(c, x0 - STOOP.cheek, x1 + STOOP.cheek)) s.strip(c.f, a, b, 0.1, z0, z1, c.wallHex);
     // The door leaf and its white frame, over the bel-etage window's glass.
-    s.strip(c.f, d.x - d.hw, d.x + d.hw, 0.03, d.z0, d.z1, STOOP.door);
-    s.strip(c.f, d.x - d.hw - 0.1, d.x - d.hw, 0.05, d.z0, d.z1 + 0.1, WHITE);
-    s.strip(c.f, d.x + d.hw, d.x + d.hw + 0.1, 0.05, d.z0, d.z1 + 0.1, WHITE);
-    s.strip(c.f, d.x - d.hw - 0.1, d.x + d.hw + 0.1, 0.05, d.z1, d.z1 + 0.1, WHITE);
+    const dcase = c.rowDress?.stoop?.doorcase;
+    // A stated ground frame (0363100012176327's stoop door in its white frame) stands from the stoop's landing.
+    if (dcase?.span === 'frame') rowGroundFrame(c, s, d, dcase, d.z0);
+    else if (dcase) rowDoorcase(c, s, d, dcase);
+    else {
+      s.strip(c.f, d.x - d.hw, d.x + d.hw, 0.03, d.z0, d.z1, STOOP.door);
+      s.strip(c.f, d.x - d.hw - 0.1, d.x - d.hw, 0.05, d.z0, d.z1 + 0.1, WHITE);
+      s.strip(c.f, d.x + d.hw, d.x + d.hw + 0.1, 0.05, d.z0, d.z1 + 0.1, WHITE);
+      s.strip(c.f, d.x - d.hw - 0.1, d.x + d.hw + 0.1, 0.05, d.z1, d.z1 + 0.1, WHITE);
+    }
     if (c.rowDress?.stoop?.steps === false) return;
+    if (along && parallelStoop(c, s, d, nA, h / nA, form as 'side' | 'double', rail)) return;
     // The flight stays within the pavement (STOOP.reach out from the wall): a tall bel-etage gets steeper treads.
     const tread = n > 1 ? Math.min(STOOP.tread, (STOOP.reach - STOOP.landing) / (n - 1)) : STOOP.tread;
     for (let k = 0; k < n; k++) s.box(c.f, x0, x1, 0, STOOP.landing + (n - 1 - k) * tread, c.base + k * rise, c.base + (k + 1) * rise, STOOP.hex);
@@ -478,11 +1013,28 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       s.box(c.f, a0, a1, 0, run + STOOP.side, c.base, c.base + Math.max(0.5, h * 0.5) + 0.25, STOOP.hex);
       s.box(c.f, a0, a1, 0, STOOP.landing + STOOP.side, c.base, d.z0 + STOOP.rail, STOOP.hex);
     }
+    // A stated railing on the straight flight: iron bars and a rail over each cheek, stepping down with the treads.
+    if (rail) for (const x of [x0 - STOOP.cheek / 2, x1 + STOOP.cheek / 2]) for (let k = 0; k < n; k++) {
+      const o0 = k === n - 1 ? 0 : STOOP.landing + (n - 2 - k) * tread, o1 = STOOP.landing + (n - 1 - k) * tread, z = c.base + (k + 1) * rise + STOOP_PARALLEL.railH;
+      s.box(c.f, x - 0.025, x + 0.025, o0, o1, z - STOOP_PARALLEL.rail, z, STOOP_PARALLEL.iron);
+      s.box(c.f, x - 0.012, x + 0.012, o1 - 0.04, o1 - 0.015, c.base + (k + 1) * rise, z, STOOP_PARALLEL.iron);
+    }
   } },
-  { id: 'row-cornice', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'crown', build: (c, s) => {
+  { id: 'row-doorcase', styles: ['canal', 'c19', 'school'], p: 0, street: true, group: 'door-frame', build: (c, s) => {
+    // A stated doorcase on the street door (RowGround.doorcase): pilasters, entablature or pediment, fanlight.
+    const dc = c.rowDress?.doorcase, d = doorSpan(c);
+    if (!dc || !d) return;
+    // The pilasters stand on the dark plinth strip, not through it.
+    const z0 = Math.max(d.z0, Math.min(c.base + ROW_DOORCASE.plinthTop, d.z1 - 1));
+    if (dc.span === 'frame') { rowGroundFrame(c, s, d, dc, z0); return; }
+    rowDoorcase(c, s, d, dc, z0, dc.span !== 'ground');
+    if (dc.span === 'ground') rowGroundSurround(c, s, d, dc, z0);
+  } },
+  { id: 'row-cornice', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'crown', rise: 1.6, build: (c, s) => {
     // The series' cornice at the wall top: a cream frieze, consoles at a steady pitch, a corona and its cyma, white.
-    // `simple` keeps the corona and cyma alone.
+    // `simple` keeps the corona and cyma alone. A stated timber cornice (RowDesign.corniceDress) draws its own parts.
     const C = ROW_DRESS.cornice, t = c.top, kind = c.rowDress?.cornice;
+    if (c.rowDress?.corniceDress && c.roofKind !== 'gable') { rowTimberCornice(c, s, c.rowDress.corniceDress); return; }
     if (!kind || c.roofKind === 'gable') return;
     const simple = kind === 'simple';
     if (kind === 'frieze') {
@@ -526,6 +1078,14 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       if (w.dressing === 'block-course') continue;
       const g = headGrammarOf(w.dressing, w.shape);
       if (g) grammarHead(c, s, w, g);
+    }
+    // A head stated on the ground storey itself (storeys [0]: RowGround.archedOpenings, Herengracht 27's arched ground
+    // window): only where it says so, never by an unlisted storey.
+    if (c.rowDress?.windows?.length) return;
+    for (const w of windowSpans(c, -1)) {
+      const h = c.rowDress?.heads?.find(q => q.storeys?.includes(0) && w.x >= q.x0 - 1e-6 && w.x <= q.x1 + 1e-6);
+      const g = h && headGrammarOf(h.dressing, h.shape);
+      if (g) grammarHead(c, s, { x0: w.x - w.hw, x1: w.x + w.hw, z0: w.z0, z1: w.z1, storey: 0, shape: h.shape, dressing: h.dressing }, g);
     }
   } },
 ];

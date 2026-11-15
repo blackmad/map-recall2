@@ -14,7 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { checkRow, runRegressions, type RowCheckMember, type RowCheckRow, type FieldFate } from '../../../src/canalRecall/houseSpec/rowChecks.ts';
-import { loadRowDefs, REPO } from './rowDefs.ts';
+import { answerFile, loadRowDefs, REPO } from './rowDefs.ts';
 
 const argv = process.argv.slice(2);
 const arg = (k: string) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : undefined; };
@@ -45,7 +45,7 @@ function fromStaged(pandId: string, answersDir: string, stagedDir: string, serie
 function auditStaged(rowId: string) {
   const def = loadRowDefs()[rowId];
   if (!def) { console.error(`unknown row ${rowId}`); process.exit(2); }
-  const members = def.members.map(m => fromStaged(m.pandId, def.answersDir, def.stagedDir, def.face ? 'row' : m.pandId));
+  const members = def.members.map(m => fromStaged(m.pandId, path.dirname(answerFile(def, m.pandId) ?? path.join(def.answersDir, 'x')), def.stagedDir, def.face ? 'row' : m.pandId));
   const row: RowCheckRow = { row: rowId, members };
   const findings = checkRow(row);
   const byGate = new Map<string, number>();
