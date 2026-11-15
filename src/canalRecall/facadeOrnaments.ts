@@ -423,26 +423,41 @@ function parallelStoop(c: ExtraContext, s: ExtraSink, d: Span, n: number, rise: 
  *  the opening, a pediment or segmental hood on a stated top, and a fanlight with bars over a panelled leaf. Stone is a
  *  warm weathered off-white, painted timber the trim white. */
 export const ROW_DOORCASE = { pilaster: 0.2, gap: 0.08, out: 0.12, frieze: 0.22, cornice: 0.12, corniceOut: 0.22, over: 0.1, fan: 0.55, bar: 0.04, rise: 0.42,
-  stone: '#d9d0bd', glass: '#2b3138' } as const;
-function rowDoorcase(c: ExtraContext, s: ExtraSink, d: Span, dc: NonNullable<NonNullable<NonNullable<ExtraContext['rowDress']>['stoop']>['doorcase']>): void {
+  stone: '#d9d0bd', glass: '#2b3138', black: '#1d201f',
+  /** The top of the dark 'plinth' strip (facadeExtras): a street door's pilasters stand on it, not through it. */
+  plinthTop: 0.5 } as const;
+/** A bar of width w from p to q on the wall face (fanlight tracery). */
+function wallBar(c: ExtraContext, s: ExtraSink, p: readonly [number, number], q: readonly [number, number], w: number, out: number, hex: string): void {
+  const dx = q[0] - p[0], dz = q[1] - p[1], L = Math.hypot(dx, dz) || 1, nx = -dz / L * w / 2, nz = dx / L * w / 2;
+  s.wallQuad(c.f, [[p[0] + nx, p[1] + nz], [q[0] + nx, q[1] + nz], [q[0] - nx, q[1] - nz], [p[0] - nx, p[1] - nz]], out, hex);
+}
+function rowDoorcase(c: ExtraContext, s: ExtraSink, d: Span, dc: NonNullable<NonNullable<NonNullable<ExtraContext['rowDress']>['stoop']>['doorcase']>, z0 = d.z0): void {
   const K = ROW_DOORCASE, hex = dc.material === 'stone' ? K.stone : WHITE, x0 = d.x - d.hw, x1 = d.x + d.hw;
+  const leaf = dc.door === 'black' ? K.black : dc.door ?? STOOP.door;
   const fan = dc.fanlight === false ? 0 : Math.min(K.fan, (d.z1 - d.z0) * 0.25), zf = d.z1 - fan;
   // The leaf with two raised panels, and the fanlight's glass with its transom and bars.
-  s.strip(c.f, x0, x1, 0.03, d.z0, zf, STOOP.door);
-  for (const [a, b] of [[d.z0 + 0.15, d.z0 + (zf - d.z0) * 0.42], [d.z0 + (zf - d.z0) * 0.5, zf - 0.15]] as const) s.strip(c.f, x0 + 0.1, x1 - 0.1, 0.045, a, b, shadeHex(STOOP.door, 1.1));
+  s.strip(c.f, x0, x1, 0.03, d.z0, zf, leaf);
+  for (const [a, b] of [[d.z0 + 0.15, d.z0 + (zf - d.z0) * 0.42], [d.z0 + (zf - d.z0) * 0.5, zf - 0.15]] as const) s.strip(c.f, x0 + 0.1, x1 - 0.1, 0.045, a, b, shadeHex(leaf, 1.1));
   if (fan > 0) {
     s.strip(c.f, x0, x1, 0.03, zf, d.z1, K.glass);
     s.strip(c.f, x0, x1, 0.05, zf, zf + K.bar * 1.5, hex);
-    for (let i = 1; i < 4; i++) { const x = x0 + (x1 - x0) * i / 4; s.strip(c.f, x - K.bar / 2, x + K.bar / 2, 0.05, zf, d.z1, hex); }
+    if (dc.fanlight === 'diamond') {
+      // A lozenge touching the fanlight's frame at its four mid-points, and a smaller one inside it.
+      const xm = (x0 + x1) / 2, zm = (zf + d.z1) / 2, hx = (x1 - x0) / 2, hz = (d.z1 - zf) / 2;
+      for (const k of [1, 0.5]) {
+        const pts: Array<[number, number]> = [[xm - hx * k, zm], [xm, zm + hz * k], [xm + hx * k, zm], [xm, zm - hz * k]];
+        for (let i = 0; i < 4; i++) wallBar(c, s, pts[i], pts[(i + 1) % 4], K.bar, 0.05, hex);
+      }
+    } else for (let i = 1; i < 4; i++) { const x = x0 + (x1 - x0) * i / 4; s.strip(c.f, x - K.bar / 2, x + K.bar / 2, 0.05, zf, d.z1, hex); }
   }
   // The frame round the opening.
-  s.strip(c.f, x0 - 0.06, x0, 0.06, d.z0, d.z1, hex);
-  s.strip(c.f, x1, x1 + 0.06, 0.06, d.z0, d.z1, hex);
+  s.strip(c.f, x0 - 0.06, x0, 0.06, z0, d.z1, hex);
+  s.strip(c.f, x1, x1 + 0.06, 0.06, z0, d.z1, hex);
   // Pilasters on plinths.
   const pl0 = x0 - K.gap - K.pilaster, pr1 = x1 + K.gap + K.pilaster;
   for (const [a, b] of [[pl0, x0 - K.gap], [x1 + K.gap, pr1]] as const) {
-    s.box(c.f, a, b, 0, K.out, d.z0, d.z1 + 0.05, hex);
-    s.box(c.f, a - 0.03, b + 0.03, 0, K.out + 0.03, d.z0, d.z0 + 0.3, hex);
+    s.box(c.f, a, b, 0, K.out, z0, d.z1 + 0.05, hex);
+    s.box(c.f, a - 0.03, b + 0.03, 0, K.out + 0.03, z0, z0 + 0.3, hex);
     s.box(c.f, a - 0.03, b + 0.03, 0, K.out + 0.03, d.z1 - 0.12, d.z1 + 0.05, hex);
   }
   // The entablature: a frieze and a cornice over the pilasters.
@@ -720,7 +735,8 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     // A stated doorcase on the street door (RowGround.doorcase): pilasters, entablature or pediment, fanlight.
     const dc = c.rowDress?.doorcase, d = doorSpan(c);
     if (!dc || !d) return;
-    rowDoorcase(c, s, d, dc);
+    // The pilasters stand on the dark plinth strip, not through it.
+    rowDoorcase(c, s, d, dc, Math.max(d.z0, Math.min(c.base + ROW_DOORCASE.plinthTop, d.z1 - 1)));
   } },
   { id: 'row-cornice', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'crown', build: (c, s) => {
     // The series' cornice at the wall top: a cream frieze, consoles at a steady pitch, a corona and its cyma, white.

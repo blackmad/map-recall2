@@ -81,3 +81,12 @@ test('crown stone: a dark hood over a cornice, carved scrolls above the shoulder
   }
   assert.ok(Number.isFinite(topOf(carved)));
 });
+
+test('crown stone: where the light fills the neck, a stated oculus still sits small between its head and the cornice (Herengracht 31)', () => {
+  const c: RowCrown = { shape: 'neck', riseM: 2.8, attic: 1, cap: 'segmental', dress: 'belt' } as RowCrown;
+  const hooded = draw({ ...c, stone: { hood: 'dark' } }).tris, withOculus = draw({ ...c, stone: { hood: 'dark', neck: 'oculus' } }).tris;
+  assert.ok(withOculus.length > hooded.length);
+  const glass = (ts: typeof hooded) => ts.filter(t => t.hex === '#272c33');
+  const capGlass = glass(withOculus).length - glass(hooded).length;
+  assert.ok(capGlass > 0);
+});

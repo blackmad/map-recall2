@@ -244,7 +244,13 @@ export interface RowGableStone {
   /** The cap on top: a pediment, a segmental hood, or a carved crest (absent: the gable's `cap`, else the kit's stock). */
   crest?: 'pediment' | 'segmental' | 'crest';
 }
-export interface RowDoorcase { material: 'stone' | 'timber'; top?: 'entablature' | 'pediment' | 'segmental'; fanlight?: boolean }
+export interface RowDoorcase {
+  material: 'stone' | 'timber'; top?: 'entablature' | 'pediment' | 'segmental';
+  /** The fanlight: absent or true plain bars, `diamond` a lozenge in its frame (Herengracht 144), false none. */
+  fanlight?: boolean | 'diamond';
+  /** The leaf's paint: `black` (near-black, the belt's usual door) or a hex. Absent: the kit's brown. */
+  door?: 'black' | string;
+}
 export type RowDesignKey = keyof RowDesign;
 
 // --- members, fronts, series ------------------------------------------------------------------------------------------
