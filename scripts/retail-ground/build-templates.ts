@@ -20,6 +20,7 @@ import { FRONT_HIGHWAYS, SegmentGrid, streetDistance } from '../../src/canalReca
 import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, signWord, templateForTags, type RetailTemplate } from '../../src/canalRecall/retailTemplates.ts';
 import { insideCentre, RING_KM, DAM } from '../../src/canalRecall/retailArea.ts';
 import { streetPriors, type StreetRead } from '../../src/canalRecall/retailPuiPaint.ts';
+import { bikeShopClass, bikeCode } from '../../src/canalRecall/retailBikes.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const CACHE = arg('cache') ?? '.cache/retail-ground/overpass.json';
@@ -72,7 +73,7 @@ const bagKey = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
 
 // `--explain=<osm node id>,...`: every footprint within 30 m of the node, with its distance, BAG uses and the host picked.
 const explain = new Set((arg('explain') ?? '').split(',').filter(Boolean));
-const placed = new Map<string, { t: RetailTemplate; at: [number, number]; front: 'street' | 'nearest'; name: string; tags: string; centre: boolean; ring: boolean }>();
+const placed = new Map<string, { t: RetailTemplate; at: [number, number]; front: 'street' | 'nearest'; name: string; tags: string; centre: boolean; ring: boolean; bike?: ReturnType<typeof bikeShopClass> }>();
 const pois: Record<string, number> = {}, unhosted: Record<string, number> = {}, moved = { host: 0, nearest: 0, lost: 0, gained: 0 };
 // Round 5: the pands some template POI sits on by the plain rules; a POI moves to a bigger shop next door
 // (retailHosting.ts SPILL) only when no other POI holds it.
@@ -109,7 +110,7 @@ for (const n of await nodes()) {
   const held = placed.get(hit.id);
   if (held && RETAIL_TEMPLATES.indexOf(held.t) <= RETAIL_TEMPLATES.indexOf(t)) continue;
   const ring = Math.hypot((n.lon - DAM[0]) * KX, (n.lat - DAM[1]) * KY) / 1000 <= RING_KM;
-  placed.set(hit.id, { t, at: [Math.round(n.lon * 1e6) / 1e6, Math.round(n.lat * 1e6) / 1e6], front: hit.front, name: tags.name ?? '', tags: Object.entries(tags).filter(([k]) => /^(shop|amenity|cuisine|brand|name|addr:street|addr:housenumber|bar|origin)$/.test(k)).map(([k, v]) => `${k}=${v}`).join(' '), centre: insideCentre(n.lon, n.lat), ring });
+  placed.set(hit.id, { t, at: [Math.round(n.lon * 1e6) / 1e6, Math.round(n.lat * 1e6) / 1e6], front: hit.front, name: tags.name ?? '', tags: Object.entries(tags).filter(([k]) => /^(shop|amenity|cuisine|brand|name|addr:street|addr:housenumber|bar|origin)$/.test(k)).map(([k, v]) => `${k}=${v}`).join(' '), centre: insideCentre(n.lon, n.lat), ring, ...(t === 'bike' ? { bike: bikeShopClass(tags) } : {}) });
 }
 
 const rows = RETAIL_TEMPLATES.map(t => {
@@ -176,6 +177,16 @@ if (fs.existsSync(PUI)) {
   Object.assign(out, { prior });
   const cls = [...priors.values()].reduce((m, p) => (m[p.cls] = (m[p.cls] ?? 0) + 1, m), {} as Record<string, number>);
   console.log(`street priors: ${priors.size} streets (${JSON.stringify(cls)}); ${Object.keys(prior).length} of ${plainShops.length} unmeasured plain shops take one`);
+}
+// Round 6: each bike shop's class (retailBikes.ts BIKE_RULE: used, premium or rental), which decides what stands outside
+// and in the window; the rule, the counts per class and step, and the panorama spot check go to bike-classes.json.
+{
+  const bikes = [...placed].filter(([, p]) => p.bike).sort((a, b) => a[0] < b[0] ? -1 : 1);
+  Object.assign(out, { bikes: Object.fromEntries(bikes.map(([id, p]) => [id, bikeCode(p.bike!)])) });
+  const count = (f: (b: ReturnType<typeof bikeShopClass>) => string) => bikes.reduce((m, [, p]) => (m[f(p.bike!)] = (m[f(p.bike!)] ?? 0) + 1, m), {} as Record<string, number>);
+  const BIKES = 'data/retail-ground/bike-classes.json', prev = fs.existsSync(BIKES) ? JSON.parse(fs.readFileSync(BIKES, 'utf8')) : {};
+  fs.writeFileSync(BIKES, JSON.stringify({ ...prev, rule: 'src/canalRecall/retailBikes.ts BIKE_RULE (header comment), first match wins', classes: count(b => b.cls), steps: count(b => `${b.step} ${b.cls}: ${b.why}`), ringByClass: bikes.filter(([, p]) => p.ring).reduce((m, [, p]) => (m[p.bike!.cls] = (m[p.bike!.cls] ?? 0) + 1, m), {} as Record<string, number>) }, null, 1));
+  console.log(`bike classes: ${JSON.stringify(count(b => b.cls))} (ring ${bikes.filter(([, p]) => p.ring).length}) -> ${BIKES}`);
 }
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, JSON.stringify(out));

@@ -46,6 +46,7 @@ import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './i
 import { applyGlazing, glazingOf } from './glassParts.js';
 import { RETAIL_TEMPLATES, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
 import { paintOverGuess } from './retailPuiPaint.js';
+import { bikeFromCode } from './retailBikes.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -258,7 +259,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?, 1?] : null;
   if (template && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && !p.frontCarrier && cellSetOf(look) !== 'procedural') {
     const logo = logoFor(template[0] as RetailTemplate), logoLayer = retailLogoLayer(cellSetOf(look));
-    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer, ...logo } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(puiPaint && p.puiDark !== 1 ? { paint: puiPaint } : {}) };
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer, ...logo } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(puiPaint && p.puiDark !== 1 ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}) };
     delete building.signature;
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);

@@ -276,7 +276,8 @@ const LOOK_PINS: Array<[string, string, string]> = [
   ['0363100012092013', 'ah', 'Albert Heijn, Kinkerstraat 89'],
   ['0363100012169187', 'ah', 'Albert Heijn, Westerstraat 79'],
   ['0363100012233666', 'hema', 'HEMA, Ferdinand Bolstraat 93A'],
-  ['0363100012176699', 'butcher', 'Keurslagerij Pouw, Haarlemmerdijk 95'],
+  // Round 5: Pouw's front is the 15 m white shopfront next door (retailHosting.ts SPILL), not its 23 m2 node unit.
+  ['0363100012165106', 'butcher', 'Keurslagerij Pouw, Haarlemmerdijk 95'],
   ['0363100012173480', 'books', 'De Kookboekhandel, Haarlemmerdijk 133'],
   ['0363100012178799', 'bakery', 'Bakkerij Verhagen, Utrechtsestraat 61'],
   ['0363100012152738', 'doner', 'Kebab House, Ferdinand Bolstraat 23'],
@@ -284,7 +285,8 @@ const LOOK_PINS: Array<[string, string, string]> = [
 ];
 
 test('retail look: the pinned shops keep their templates; the Kinkerstraat 98/104 shops draw the plain pui', () => {
-  const extract = JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/shop-templates.json', 'utf8')) as { templates: string[]; buildings: Record<string, [number, ...unknown[]]> };
+  // The staged extract (the lane's, reviewed); the published copy follows it when the integrator publishes.
+  const extract = JSON.parse(fs.readFileSync('data/retail-ground/shop-templates.json', 'utf8')) as { templates: string[]; buildings: Record<string, [number, ...unknown[]]> };
   for (const [pand, template, what] of LOOK_PINS) {
     const row = extract.buildings[`NL.IMBAG.Pand.${pand}`];
     assert.ok(row, `${what}: in the template extract`);
@@ -429,4 +431,54 @@ test('round 5b board: a measured paint paints the board of a front with no chain
   assert.ok(tris.filter(t => t.layer === 99).every(t => t.hex === '#2b2724'), 'dark letters on a pale board');
   const plain = retailFrontTris({ template: 'butcher', seed: 'x' }, e, 0, 6, 0, 3.4);
   assert.ok(plain.some(t => t.hex === TEMPLATE_LOOKS.butcher.fascia));
+});
+
+test('round 6: bike shop classes from OSM tags (the panorama spot check of 2026-11-15)', async () => {
+  const { bikeShopClass, bikeCode, bikeFromCode } = await import('./retailBikes.js');
+  const cases: Array<[Record<string, string>, string, string?]> = [
+    [{ shop: 'bicycle', name: 'Yellow Bike', 'service:bicycle:rental': 'yes' }, 'rental', '#f2c21b'],
+    [{ shop: 'bicycle', name: 'MacBike' }, 'rental', '#c8262d'],
+    [{ amenity: 'bicycle_rental', name: 'Bike City' }, 'rental'],
+    // SAM Tweewielen Service & Bike Rental, Karel Klinkenbergstraat 10: no rental row in the photo; a repair shop first.
+    [{ shop: 'bicycle', name: 'SAM Tweewielen Service & Bike Rental' }, 'used'],
+    [{ shop: 'bicycle', name: 'Gregario Cycling Services' }, 'used'],
+    [{ shop: 'bicycle', name: 'Veloretti' }, 'premium'],
+    [{ shop: 'bicycle', name: 'Maats Cycling Culture', 'service:bicycle:retail': 'yes' }, 'premium'],
+    [{ shop: 'bicycle', name: 'Fietsen Veloretti', second_hand: 'yes' }, 'used'],
+    [{ shop: 'bicycle', name: 'Rijwielhandel De Pijp' }, 'used'],
+    [{ shop: 'bicycle', name: 'Mo', 'service:bicycle:retail': 'yes', 'service:bicycle:repair': 'yes' }, 'used'],
+    [{ shop: 'bicycle' }, 'used'],
+  ];
+  for (const [tags, cls, hex] of cases) {
+    const c = bikeShopClass(tags);
+    assert.equal(c.cls, cls, tags.name);
+    assert.equal(c.fleetHex, hex, tags.name);
+    assert.deepEqual(bikeFromCode(bikeCode(c)), hex ? { cls, fleetHex: hex } : { cls });
+  }
+  assert.equal(bikeFromCode('x'), null);
+  assert.equal(bikeFromCode(undefined), null);
+});
+
+test('round 6: bikes stand on the pavement beside the door, side-on, and cost what the receipt says', async () => {
+  const { bikeQuads } = await import('./retailBikes.js');
+  assert.equal(bikeQuads().length, 29);
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  const off = retailFrontTris({ template: 'bike', seed: 'pand-1' }, e, 0.3, 6.3, 0, 3.6);
+  for (const cls of ['used', 'premium', 'rental'] as const) {
+    const input = { template: 'bike' as const, seed: 'pand-1', bike: { cls, ...(cls === 'rental' ? { fleetHex: '#f2c21b' } : {}) } };
+    const on = retailFrontTris(input, e, 0.3, 6.3, 0, 3.6), door = retailDoor(input, 0.3, 6.3)!;
+    const bikes = Math.round((on.length - off.length + 8 * 2) / 58); // the template's 4 pavement disc pairs give way (4 x 4 tris)
+    assert.ok(bikes >= 4 && bikes <= 12, `${cls}: ${bikes} bikes`);
+    for (const t of on) for (const [x, y, z] of t.p) {
+      assert.ok(-y <= 1.11 && z <= 4.6 && x >= 0.2 && x <= 6.4, `${cls}: ${x} ${y} ${z}`);
+    }
+    // Outside bikes (more than 0.25 m out) keep clear of the door and of the road side of the pavement.
+    const outside = on.filter(t => t.p.every(p => -p[1] > 0.25 && p[2] < 1.2));
+    assert.ok(outside.length >= 2 * 58, `${cls}: ${outside.length} outside tris`);
+    for (const t of outside) for (const [x, y] of t.p) {
+      assert.ok(-y <= 0.7, `${cls}: bike ${-y} m out`);
+      assert.ok(x <= door.a0 - 0.1 || x >= door.a1 + 0.1, `${cls}: bike over the door at ${x}`);
+    }
+    if (cls === 'rental') assert.ok(outside.some(t => t.hex === '#f2c21b'));
+  }
 });
