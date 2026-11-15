@@ -107745,14 +107745,11 @@
         "depthCoverage": 0.9986265056629472
       },
       "triangles": 15078,
-      "bytes": 194424,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "bytes": 194944,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "mauritskade-61": {
       "id": "mauritskade-61",
-      "status": "held",
-      "heldReason": "New 2026-11-15: awaiting its rule-10 frames and blind review (browser runs paused for the round-n gate).",
       "name": "Former laboratory, Mauritskade 61",
       "modelUrl": "./models/mauritskade-61.glb",
       "suppressOsmIds": [
@@ -108277,11 +108274,11 @@
       "bounds": {
         "min": [
           -21.784000396728516,
-          -1.1920929132713809e-8,
-          -38.874176025390625
+          -9.53674295089968e-9,
+          -38.71931076049805
         ],
         "max": [
-          32.872535705566406,
+          32.615596771240234,
           21.073999404907227,
           28.066999435424805
         ]
@@ -108297,15 +108294,14 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 66.94117546081543,
-        "heightMetres": 21.073999416828155,
-        "depthMetres": 54.65653610229492,
-        "depthCoverage": 1.0102871737947305
+        "widthMetres": 66.78631019592285,
+        "heightMetres": 21.073999414443968,
+        "depthMetres": 54.39959716796875,
+        "depthCoverage": 1.0055378404430453
       },
-      "triangles": 40609,
-      "bytes": 575804,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "triangles": 57157,
+      "bytes": 809956,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

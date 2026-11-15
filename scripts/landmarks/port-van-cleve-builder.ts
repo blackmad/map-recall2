@@ -85,9 +85,9 @@ export function buildPortVanCleve(_w: number, _d: number, b: BuildingTools) {
     slab(b, f, t, 14.65, 0.42, 0.55, 0.42, 'sandstone', -0.06);
     poly(b, f, t, 15.2, [[-0.2, 0], [0.2, 0], [0, 0.65]], 0.3, 'sandstone', 0.0);
   }
-  // lettered frieze: four white panels DIE / PORT / VAN / CLEVE
+  // lettered frieze: four white panels DIE / PORT / VAN / CLEVE, one word per bay between the pilasters (nzv-0)
   slab(b, f, (M0 + M1) / 2, 12.85, M1 - M0 - 0.06, 0.2, 0.28, 'sandstone');
-  for (const [t, w, word] of [[9.9, 1.6, 'DIE'], [12.0, 1.5, 'PORT'], [13.8, 1.4, 'VAN'], [15.75, 1.7, 'CLEVE']] as [number, number, string][]) {
+  for (const [t, w, word] of [[BAYS[0], 1.6, 'DIE'], [BAYS[1], 1.8, 'PORT'], [BAYS[2], 1.6, 'VAN'], [BAYS[3], 2.1, 'CLEVE']] as [number, number, string][]) {
     slab(b, f, t, 13.05, w, 0.55, 0.33, 'concrete');
     letters(b, f, word, t, 13.13, 0.33, 0.055, 0.03, 'bronze', 0.055);
   }
@@ -124,10 +124,11 @@ export function buildPortVanCleve(_w: number, _d: number, b: BuildingTools) {
   // ---------- red neon roof sign on a dark frame over the south half ----------
   {
     const c = 8.2;
-    for (const t of [c - 2.4, c + 2.4]) slab(b, f, t, 14.6, 0.08, 3.7, 0.08, 'bronze', -1.6);
-    slab(b, f, c, 17.1, 5.0, 0.06, 0.08, 'bronze', -1.6);
-    letters(b, f, 'DIE PORT', c - 0.2, 17.35, -1.52, 0.09, 0.06, 'pink', 0.12);
-    letters(b, f, 'VAN CLEVE', c + 0.15, 16.2, -1.52, 0.085, 0.06, 'pink', 0.11);
+    // nzv-0: the letters stand ~2.8 m tall above the cornice, two lines from 15.75 m to ~18 m on a bar at 15.55 m
+    for (const t of [c - 2.9, c + 2.9]) slab(b, f, t, 14.6, 0.1, 4.9, 0.1, 'bronze', -1.6);
+    slab(b, f, c, 15.55, 6.0, 0.08, 0.1, 'bronze', -1.6);
+    letters(b, f, 'DIE PORT', c - 0.2, 16.85, -1.5, 0.11, 0.07, 'pink', 0.16);
+    letters(b, f, 'VAN CLEVE', c + 0.1, 15.75, -1.5, 0.1, 0.07, 'pink', 0.13);
   }
 
   // ---------- annex (t 0-4.84): shopfront, erker with lead dome, bell gable with oculus ----------

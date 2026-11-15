@@ -85335,7 +85335,7 @@
  {
   "id": "port-van-cleve",
   "status": "held",
-  "heldReason": "New 2026-11-15: awaiting its rule-10 frames and blind review (browser runs paused for the round-n gate).",
+  "heldReason": "Blind review 2026-11-15: fail, then fix after one fix round (frieze, sign, measured brick/stone tints). The front still reads cream stone: the city look lifts the measured #7a705f sandstone to about #cdbb98 lit, and the stone surrounds cover most of the brick. Also: no carved pediments over the bays, a stubby central aedicule, and the neon sign hidden behind the gable.",
   "name": "Hotel Die Port van Cleve, Nieuwezijds Voorburgwal 176-180",
   "modelUrl": "./models/port-van-cleve.glb",
   "suppressOsmIds": [
@@ -85367,13 +85367,13 @@
    "phi": 1.2
   },
   "materialOverrides": {
-   "brick": "#8a4a3c",
-   "sandstone": "#9c917c",
+   "brick": "#6e3e34",
+   "sandstone": "#7a705f",
    "stone": "#8c8a84",
    "slate": "#4a4c54",
    "red": "#a8401f",
    "glass": "#3a3e42",
-   "frame": "#d8d2c4",
+   "frame": "#4a3028",
    "white": "#e2ded4",
    "dark": "#2a2a2c",
    "blue": "#24345a",
@@ -85605,7 +85605,7 @@
  {
   "id": "mauritskade-61",
   "status": "held",
-  "heldReason": "New 2026-11-15: awaiting its rule-10 frames and blind review (browser runs paused for the round-n gate).",
+  "heldReason": "Blind review 2026-11-15: fix, then fix after one fix round (NW bays given windows, plinth, thinner eave, no stone piers, measured brick). Still: quoined surrounds on every window where the photo has plain lintels with ears and sills, no continuous sill/lintel string courses, windows too narrow and evenly spaced against the photo's 2-3 light groups, and the eave reads cream stone. Frame colour is unsettled: the two reviewers read the frames as dark (2024 NW) and white (2019/2022 front); check a current panorama before the next pass.",
   "name": "Former laboratory, Mauritskade 61",
   "modelUrl": "./models/mauritskade-61.glb",
   "suppressOsmIds": [
@@ -85639,13 +85639,14 @@
   },
   "bagYear": 1908,
   "materialOverrides": {
-   "brick": "#5c4440",
+   "brick": "#6e5044",
    "sandstone": "#c9bea4",
    "stone": "#7f7b74",
    "red": "#6e4a40",
    "white": "#e4e0d2",
-   "glass": "#3a3e42",
-   "concrete": "#ddd7c6"
+   "glass": "#2e3438",
+   "concrete": "#ddd7c6",
+   "dark": "#2a302a"
   },
   "attribution": {
    "title": "Former laboratory, Mauritskade 61 (1908), gemeentelijk monument 200984, on the north edge of the Oosterpark",
