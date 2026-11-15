@@ -143,7 +143,7 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
 /** House rows: a feature's `rowDress` (houseLine/rowFront.ts rowDressOf), validated. */
 type RowSide = 'left' | 'right' | 'centre';
 const rowSideOf = (v: unknown): RowSide | null => v === 'left' || v === 'right' || v === 'centre' ? v : null;
-function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false }; door?: { side: RowSide; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: RowSide } } | null {
+function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false; form?: 'straight' | 'side' | 'double'; railing?: true }; door?: { side: RowSide; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: RowSide } } | null {
   if (!v || typeof v !== 'object') return null;
   const ws = (v as { windowShare?: unknown }).windowShare, windowShare = typeof ws === 'number' && ws > 0.3 && ws < 0.95 ? { windowShare: ws } : {};
   const d = v as { cornice?: unknown; heads?: unknown; extras?: unknown; stoop?: { side?: unknown }; door?: { side?: unknown; index?: unknown; bays?: unknown }; balcony?: { storeys?: unknown; axis?: unknown } };
@@ -156,10 +156,13 @@ function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; ext
   const fl = (v as { floorsM?: unknown }).floorsM, floorsM = Array.isArray(fl) && fl.length && fl.every(x => typeof x === 'number' && Number.isFinite(x)) ? { floorsM: fl as number[] } : {};
   const gws = (v as { groundWalls?: unknown }).groundWalls, groundWalls = Array.isArray(gws) ? (gws as RowGroundWallDraw[]).filter(g => g && Number.isFinite(g.a0) && Number.isFinite(g.a1) && typeof g.hex === 'string' && /^#[0-9a-f]{6}$/i.test(g.hex)).map(g => ({ a0: g.a0, a1: g.a1, hex: g.hex, top: g.top === 'plain' || g.top === 'scrolled' ? g.top : 'ledge' as const })) : [];
   const steps = d.stoop && (d.stoop as { steps?: unknown }).steps === false ? { steps: false as const } : {};
+  // The flight's form and railing as the ground states them (house rows stoops, Herengracht 130, 148).
+  const sf0 = (d.stoop as { form?: unknown; railing?: unknown } | undefined), stoopForm = sf0?.form === 'straight' || sf0?.form === 'side' || sf0?.form === 'double' ? { form: sf0.form } : {};
+  const stoopRail = sf0?.railing === true ? { railing: true as const } : {};
   const side: 'left' | 'right' | 'centre' | null = d.stoop && (d.stoop.side === 'left' || d.stoop.side === 'right' || d.stoop.side === 'centre') ? d.stoop.side : null;
   const heads = Array.isArray(d.heads) ? (d.heads as RowHeadsDraw[]).filter(h => h && Number.isFinite(h.a0) && Number.isFinite(h.a1) && typeof h.dressing === 'string') : [];
   const extras = Array.isArray(d.extras) ? (d.extras as unknown[]).filter((x): x is string => typeof x === 'string') : [];
-  const out = { ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side, ...steps } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}), ...windowShare, ...glazing, ...floorsM, ...(groundWalls.length ? { groundWalls } : {}), ...shopFront };
+  const out = { ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side, ...steps, ...stoopForm, ...stoopRail } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}), ...windowShare, ...glazing, ...floorsM, ...(groundWalls.length ? { groundWalls } : {}), ...shopFront };
   return Object.keys(out).length ? out : null;
 }
 

@@ -369,6 +369,53 @@ export function stoopHiddenWindows(c: ExtraContext, x0: number, x1: number): Arr
   const low = windowSpans(c, -1).length > 0 || (c.rowDress?.windows ?? []).some(w => w.z1 <= floor + 0.2);
   return low && floor - c.base > 0.6 ? [[Math.max(0, x0 - STOOP.shutters), Math.min(c.f.len, x1 + STOOP.shutters), c.base, floor - 0.1]] : [];
 }
+/** A stoop's flights along the wall (form `side` / `double`, Herengracht 130): the landing before the door, `PD` deep and
+ *  `LW` past the door each side; flights `FW` deep, treads `tread` (no less than `minTread`). The iron railing: `railH` over
+ *  the nosings, bars every `bar`. */
+export const STOOP_PARALLEL = { PD: 1.15, LW: 0.25, FW: 1.0, tread: 0.28, minTread: 0.2, railH: 0.9, rail: 0.05, bar: 0.13, barW: 0.025, iron: '#1d1f20' } as const;
+/** The flights' plan for a door `d` and `n` rises: each flight's direction and tread, or null when no flight fits on the wall
+ *  (the caller draws the straight flight). `double` falls back to `side`, `side` to the side with more room. */
+export function stoopFlights(len: number, d: { x: number; hw: number }, n: number, form: 'side' | 'double'): { lx0: number; lx1: number; flights: Array<{ dir: -1 | 1; tread: number }> } | null {
+  const P = STOOP_PARALLEL, lx0 = d.x - d.hw - P.LW, lx1 = d.x + d.hw + P.LW, steps = Math.max(1, n - 1);
+  const fit = (dir: -1 | 1) => { const room = (dir > 0 ? len - lx1 : lx0) - 0.05, t = Math.min(P.tread, room / steps); return t >= P.minTread ? { dir, tread: t } : null; };
+  const l = fit(-1), r = fit(1);
+  if (form === 'double' && l && r) { const t = Math.min(l.tread, r.tread); return { lx0, lx1, flights: [{ dir: -1, tread: t }, { dir: 1, tread: t }] }; }
+  const one = l && r ? (len - lx1 >= lx0 ? r : l) : (l ?? r);
+  return one ? { lx0, lx1, flights: [one] } : null;
+}
+/** An iron railing in the wall's plane at `out`: a rail from (xa, za) to (xb, zb) at the rail height, bars down to the
+ *  nosings under it. */
+function ironRail(c: ExtraContext, s: ExtraSink, out: number, xa: number, za: number, xb: number, zb: number): void {
+  const P = STOOP_PARALLEL, h = P.railH;
+  s.wallQuad(c.f, [[xa, za + h - P.rail], [xb, zb + h - P.rail], [xb, zb + h], [xa, za + h]], out, P.iron);
+  const len = Math.abs(xb - xa), m = Math.max(1, Math.round(len / P.bar));
+  for (let i = 0; i <= m; i++) {
+    const t = i / m, x = xa + (xb - xa) * t, z = za + (zb - za) * t, w = i === 0 || i === m ? 0.05 : P.barW / 2;
+    s.strip(c.f, x - w, x + w, out, z, z + h - P.rail / 2, P.iron, 0.03);
+  }
+}
+/** The stoop along the wall (form side/double): a landing at the door, flights descending along the wall, the souterrain
+ *  behind them walled over, iron railings when stated. Returns false when no flight fits (the straight flight is drawn). */
+function parallelStoop(c: ExtraContext, s: ExtraSink, d: Span, n: number, rise: number, form: 'side' | 'double', rail: boolean): boolean {
+  const P = STOOP_PARALLEL, plan = stoopFlights(c.f.len, d, n, form);
+  if (!plan) return false;
+  const { lx0, lx1, flights } = plan, steps = n - 1;
+  const ends = flights.map(f => f.dir > 0 ? lx1 + steps * f.tread : lx0 - steps * f.tread);
+  for (const [a, b, z0, z1] of stoopHiddenWindows(c, Math.min(lx0, ...ends), Math.max(lx1, ...ends))) s.strip(c.f, a, b, 0.1, z0, z1, c.wallHex);
+  s.box(c.f, lx0, lx1, 0, P.PD, c.base, d.z0, STOOP.hex);
+  for (const f of flights) for (let k = 0; k < steps; k++) {
+    const reach = (steps - k) * f.tread, a = f.dir > 0 ? lx1 : lx0 - reach, b = f.dir > 0 ? lx1 + reach : lx0;
+    s.box(c.f, a, b, 0, P.FW, c.base + k * rise, c.base + (k + 1) * rise, STOOP.hex);
+  }
+  if (!rail) return true;
+  // The landing's railing across its front, and down each flight's outer edge to its foot.
+  ironRail(c, s, P.PD - 0.02, lx0, d.z0, lx1, d.z0);
+  for (const f of flights) {
+    const x0 = f.dir > 0 ? lx1 : lx0, x1 = x0 + f.dir * steps * f.tread;
+    ironRail(c, s, P.FW - 0.02, x0, d.z0, x1 - f.dir * f.tread * 0.5, c.base + rise);
+  }
+  return true;
+}
 export function stoopDoor(c: ExtraContext): Span | null {
   const st = c.rowDress?.stoop;
   if (!st || !c.groundLevel || c.layout.storeys < 1) return null;
@@ -586,16 +633,20 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     const h = d.z0 - c.base;
     if (h < 0.3) return;
     const n = Math.max(2, Math.ceil(h / STOOP.rise)), rise = h / n, x0 = d.x - d.hw - 0.1, x1 = d.x + d.hw + 0.1;
+    const form = c.rowDress?.stoop?.form, rail = !!c.rowDress?.stoop?.railing;
+    // A stated flight along the wall (Herengracht 130's double stoop): the door first, then the landing and flights.
+    const along = c.rowDress?.stoop?.steps !== false && (form === 'side' || form === 'double') && stoopFlights(c.f.len, d, n, form);
     // A souterrain window behind the flight (basement 'stoop-and-windows', Herengracht 130): the flight stands where the read
     // door is, so the window cell there is walled over (its frame and shutters peeked out beside the flight); the souterrain
     // windows beside it stay.
-    if (c.rowDress?.stoop?.steps !== false && d.z0 >= storeyZ(c, 0) - 1e-6) for (const [a, b, z0, z1] of stoopHiddenWindows(c, x0 - STOOP.cheek, x1 + STOOP.cheek)) s.strip(c.f, a, b, 0.1, z0, z1, c.wallHex);
+    if (!along && c.rowDress?.stoop?.steps !== false && d.z0 >= storeyZ(c, 0) - 1e-6) for (const [a, b, z0, z1] of stoopHiddenWindows(c, x0 - STOOP.cheek, x1 + STOOP.cheek)) s.strip(c.f, a, b, 0.1, z0, z1, c.wallHex);
     // The door leaf and its white frame, over the bel-etage window's glass.
     s.strip(c.f, d.x - d.hw, d.x + d.hw, 0.03, d.z0, d.z1, STOOP.door);
     s.strip(c.f, d.x - d.hw - 0.1, d.x - d.hw, 0.05, d.z0, d.z1 + 0.1, WHITE);
     s.strip(c.f, d.x + d.hw, d.x + d.hw + 0.1, 0.05, d.z0, d.z1 + 0.1, WHITE);
     s.strip(c.f, d.x - d.hw - 0.1, d.x + d.hw + 0.1, 0.05, d.z1, d.z1 + 0.1, WHITE);
     if (c.rowDress?.stoop?.steps === false) return;
+    if (along && parallelStoop(c, s, d, n, rise, form as 'side' | 'double', rail)) return;
     // The flight stays within the pavement (STOOP.reach out from the wall): a tall bel-etage gets steeper treads.
     const tread = n > 1 ? Math.min(STOOP.tread, (STOOP.reach - STOOP.landing) / (n - 1)) : STOOP.tread;
     for (let k = 0; k < n; k++) s.box(c.f, x0, x1, 0, STOOP.landing + (n - 1 - k) * tread, c.base + k * rise, c.base + (k + 1) * rise, STOOP.hex);
@@ -604,6 +655,12 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     for (const [a0, a1] of [[x0 - STOOP.cheek, x0], [x1, x1 + STOOP.cheek]] as const) {
       s.box(c.f, a0, a1, 0, run + STOOP.side, c.base, c.base + Math.max(0.5, h * 0.5) + 0.25, STOOP.hex);
       s.box(c.f, a0, a1, 0, STOOP.landing + STOOP.side, c.base, d.z0 + STOOP.rail, STOOP.hex);
+    }
+    // A stated railing on the straight flight: iron bars and a rail over each cheek, stepping down with the treads.
+    if (rail) for (const x of [x0 - STOOP.cheek / 2, x1 + STOOP.cheek / 2]) for (let k = 0; k < n; k++) {
+      const o0 = k === n - 1 ? 0 : STOOP.landing + (n - 2 - k) * tread, o1 = STOOP.landing + (n - 1 - k) * tread, z = c.base + (k + 1) * rise + STOOP_PARALLEL.railH;
+      s.box(c.f, x - 0.025, x + 0.025, o0, o1, z - STOOP_PARALLEL.rail, z, STOOP_PARALLEL.iron);
+      s.box(c.f, x - 0.012, x + 0.012, o1 - 0.04, o1 - 0.015, c.base + (k + 1) * rise, z, STOOP_PARALLEL.iron);
     }
   } },
   { id: 'row-cornice', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'crown', build: (c, s) => {

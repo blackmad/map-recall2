@@ -4,7 +4,8 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import type { ExtraContext } from './facadeExtras.js';
-import { stoopDoor, stoopHiddenWindows } from './facadeOrnaments.js';
+import { ORNAMENT_COMPONENTS, STOOP_PARALLEL, stoopDoor, stoopFlights, stoopHiddenWindows } from './facadeOrnaments.js';
+import { ExtraSink } from './facadeExtraCore.js';
 import { stoopAt } from './threeBuildingMesh.js';
 
 const wall = (over: Partial<ExtraContext> = {}): ExtraContext => ({
@@ -58,4 +59,31 @@ test('a stated stoop over a full ground storey (Herengracht 162, floor 4.4 m up)
   assert.ok(d.z1 < 4.4 && d.z1 > 3, JSON.stringify(d));
   // A souterrain stoop keeps its door at the bel-etage floor.
   assert.equal(stoopDoor(wall({ rowDress: { stoop: { end: 'centre', at: 5, exact: true } } }))!.z0, 2.4);
+});
+
+test('stoopFlights: a double stoop fits both flights at one tread; else one flight to the roomier side; else none', () => {
+  const d = { x: 5, hw: 0.5 };
+  const dbl = stoopFlights(10, d, 8, 'double')!;
+  assert.deepEqual(dbl.flights.map(f => f.dir), [-1, 1]);
+  assert.equal(dbl.flights[0].tread, dbl.flights[1].tread);
+  // Door near the right end (Herengracht 148): only the left flight fits.
+  const one = stoopFlights(10, { x: 9, hw: 0.5 }, 8, 'double')!;
+  assert.deepEqual(one.flights.map(f => f.dir), [-1]);
+  assert.equal(stoopFlights(10, d, 8, 'side')!.flights.length, 1);
+  assert.equal(stoopFlights(2.2, { x: 1.1, hw: 0.5 }, 12, 'side'), null);
+});
+
+test('row-stoop: Herengracht 130 double stoop with railings draws flights along the wall and iron; absent form: unchanged', () => {
+  const comp = ORNAMENT_COMPONENTS.find(x => x.id === 'row-stoop')!;
+  const run = (stoop: NonNullable<NonNullable<ExtraContext['rowDress']>['stoop']>) => {
+    const s = new ExtraSink(100000);
+    comp.build(wall({ layout: { bays: 5, bayWidthM: 2, groundM: 1.6, storeys: 3, storeyM: 3.2, doorBays: [], souterrain: true } as ExtraContext['layout'], rowDress: { stoop } }), s, 0);
+    return s.tris;
+  };
+  const plain = run({ end: 'centre', at: 5, exact: true }), dbl = run({ end: 'centre', at: 5, exact: true, form: 'double', railing: true });
+  assert.ok(plain.length > 0 && dbl.length > plain.length);
+  const iron = dbl.filter(t => (t as { hex?: string }).hex === STOOP_PARALLEL.iron);
+  assert.ok(iron.length > 20, 'railings drawn');
+  const straightRail = run({ end: 'centre', at: 5, exact: true, railing: true });
+  assert.ok(straightRail.some(t => (t as { hex?: string }).hex === STOOP_PARALLEL.iron), 'a straight flight takes the railing too');
 });
