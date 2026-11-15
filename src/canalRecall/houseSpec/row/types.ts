@@ -107,6 +107,10 @@ export interface RowRoofStorey {
   hoist?: boolean;
   /** The mansard's rise over the cornice line as read (m; absent: the renderer's period default). */
   riseM?: number;
+  /** The dormers stand in a pitched (hipped) roof behind the cornice, not on a mansard face (rowFront `pitched`; lane D
+   *  round 8: a register dakkapel showed from the street as a dormer in a tiled roof in 13 of 19 belt cuts, never as a
+   *  mansard). Absent: a mansard, as before. */
+  pitched?: boolean;
 }
 export interface RowWall {
   material: RowWallMaterial;

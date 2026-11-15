@@ -219,6 +219,16 @@ export function donorFor(t: BeltTarget, donors: readonly BeltDonor[], look: Look
   return { donor: near[rank].d, distance: +near[rank].s.toFixed(3), rank, of: near.length };
 }
 
+/** A souterrain's share of a storey pitch in the drawn wall (rowSeries: SOUTERRAIN_FACTOR, basement windows 0.35). */
+export const SOUTERRAIN_SHARE: Readonly<Record<string, number>> = { souterrain: 0.58, 'stoop-and-windows': 0.58, windows: 0.35 };
+/**
+ * A donor-filled front's bays from its width: the belt's own reads by width (1859 fronts, round 8: under 4.5 m two bays
+ * in 63 %, 4.5-8 m three in 71-93 %, wider about one per 2.6 m), not the donor's axis, which drew 4.9-5.1 m fronts at
+ * two bays (Amstel 182460, 182461) and 6.5-8 m fronts at four in 36 % against 3 % read.
+ */
+export function beltBays(widthM: number): number {
+  return widthM < 4.5 ? 2 : widthM < 8 ? 3 : Math.max(3, Math.round(widthM / 2.6));
+}
 /**
  * The donor's read fitted to the pand: its storeys to the pand's eaves at the donor's own storey pitch (held to PITCH_M), its bays to the
  * pand's width at the donor's own axis, the door kept inside the ground bays. Everything else is the donor's as read.
@@ -228,12 +238,16 @@ export function fittedRead(t: BeltTarget, d: BeltDonor, look: LookDistrict = BEL
   const pitch = t.warehouse ? WAREHOUSE_PITCH_M : Math.min(look.pitchM.max, Math.max(look.pitchM.min, d.heightM / (d.answer.storeys as number)));
   if (t.storeys && t.storeys > 0) { if (t.storeys !== a.storeys) { a.storeys = t.storeys; if (a.storeyParts) a.storeyParts.full = t.storeys; delete a.columns; } }
   else if (t.eavesM !== null) {
-    const n = Math.max(1, Math.round(t.eavesM / pitch));
+    // A souterrain takes its cell of the wall first (the row draws it SOUTERRAIN_FACTOR of the pitch, basement windows
+    // BASEMENT_WINDOWS_FACTOR; round 7: Prinsengracht 175987, an almshouse front of two storeys over a souterrain, drawn
+    // three over one at 11.5 m).
+    const sub = SOUTERRAIN_SHARE[String((a as { basement?: string }).basement)] ?? 0;
+    const n = Math.max(1, Math.round(t.eavesM / pitch - sub));
     if (n !== a.storeys) { a.storeys = n; if (a.storeyParts) a.storeyParts.full = n; delete a.columns; }
   }
   const axis = d.widthM / (d.answer.bays as number);
   if (axis > 0.8) {
-    const b = Math.max(1, Math.round(t.widthM / axis));
+    const b = beltBays(t.widthM);
     if (b !== a.bays) {
       const wasAll = a.groundBays === a.bays;
       a.bays = b; delete a.columns;

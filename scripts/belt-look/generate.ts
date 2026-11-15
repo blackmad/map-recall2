@@ -15,7 +15,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { districtPands, namedStreets, describedPands } from '../buurt-generators/generate.ts';
 import type { DistrictLibrary } from '../../src/canalRecall/buurtGenerator/generate.ts';
-import { generateBelt, type BeltRead, type BeltStated } from '../../src/canalRecall/beltLook/generate.ts';
+import { generateBelt, specPhotoDisagree, type BeltPhoto, type BeltRead, type BeltStated } from '../../src/canalRecall/beltLook/generate.ts';
 import type { AhnFront } from '../../src/canalRecall/beltLook/ahnFront.ts';
 import { usableDonor, segmentOf, type BeltDonor } from '../../src/canalRecall/beltLook/donors.ts';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.ts';
@@ -27,11 +27,14 @@ const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slic
 const ROWS = 'scripts/house-specs/rows/rows.json';
 
 /** The belt tranche: its kept reads, the cuts' widths, heights and wall samples, and BAG's street and year per pand. */
-export function beltReads(): { reads: Map<string, BeltRead>; donors: BeltDonor[]; root: string } {
+export function beltReads(): { reads: Map<string, BeltRead>; donors: BeltDonor[]; root: string; photo: Map<string, BeltPhoto> } {
   const root = path.join(process.env.ROW_D1_ROOT ?? JSON.parse(fs.readFileSync(ROWS, 'utf8')).d1Root, 'belt-20261114');
   const select = new Map<string, { street: string; year: number }>((JSON.parse(fs.readFileSync(path.join(root, 'belt-select.json'), 'utf8')).rows as any[]).map(r => [r.pandId, { street: r.street, year: r.year }]));
   const cuts = new Map<string, any>((JSON.parse(fs.readFileSync(path.join(root, 'cuts/cuts.json'), 'utf8')).rows as any[]).map(r => [r.pandId, r]));
   const reads = new Map<string, BeltRead>(), donors: BeltDonor[] = [];
+  // Every cut's wall sample (lane W1 on the pinned capture), an unreadable read's too: the photo's wall colour.
+  const photo = new Map<string, BeltPhoto>();
+  for (const [pid, c] of cuts) if (c.w1?.hex && typeof c.w1.n === 'number') photo.set(pid, { hex: c.w1.hex, L: c.w1.L, C: c.w1.C, h: c.w1.h, n: c.w1.n });
   const dir = path.join(root, 'answers-kept');
   for (const f of fs.readdirSync(dir).filter(x => x.endsWith('.json')).sort()) {
     const a = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')) as DescriberAnswer, pid = a.pandId, cut = cuts.get(pid), sel = select.get(pid);
@@ -41,7 +44,7 @@ export function beltReads(): { reads: Map<string, BeltRead>; donors: BeltDonor[]
     if (usableDonor(a) && cut.wallLenM > 2 && cut.wall?.heightM > 3)
       donors.push({ pandId: pid, street: sel.street, year: sel.year ?? null, widthM: cut.wallLenM, heightM: cut.wall.heightM, answer: a, ...(sample ? { sample } : {}) });
   }
-  return { reads, donors, root };
+  return { reads, donors, root, photo };
 }
 
 /** Pands whose only description is a published per-house HouseSpec (no model, building type or row record). */
@@ -70,8 +73,9 @@ export function statedPands(): Map<string, BeltStated> {
     const buf = fs.readFileSync(path.join(dir, x, f));
     for (const [id, b] of Object.entries<any>(JSON.parse((f.endsWith('.gz') ? zlib.gunzipSync(buf) : buf).toString('utf8')).buildings ?? {})) {
       const crown = b?.d?.fronts?.[0]?.gable, year = b?.x?.facadeYear ?? b?.v?.year, rs = b?.d?.fronts?.[0]?.roofStorey;
+      const specHex = typeof b?.d?.palette?.brick === 'string' && /^#[0-9a-f]{6}$/i.test(b.d.palette.brick) ? b.d.palette.brick as string : undefined;
       const roofStorey = rs === 'mansard' || rs === 'attic';
-      if (typeof crown === 'string' || typeof year === 'number' || roofStorey) out.set(id.replace(/^NL\.IMBAG\.Pand\./, ''), { ...(typeof crown === 'string' ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}), ...(roofStorey ? { roofStorey } : {}) });
+      if (typeof crown === 'string' || typeof year === 'number' || roofStorey || specHex) out.set(id.replace(/^NL\.IMBAG\.Pand\./, ''), { ...(typeof crown === 'string' ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}), ...(roofStorey ? { roofStorey } : {}), ...(rs === 'mansard' ? { mansard: true } : {}), ...(specHex ? { specHex } : {}) });
     }
   }
   // The monument register's parsed facts (monument-facts.json): its gable where house-specs states none, the facade finish,
@@ -105,8 +109,9 @@ async function main() {
   const overSpecs = process.argv.includes('--over-specs'), specOnly = overSpecs ? specOnlyPands() : new Set<string>();
   for (const id of specOnly) described.delete(id);
   for (const id of rowsD) described.add(id);
-  const { reads, donors } = beltReads();
+  const { reads, donors, photo } = beltReads();
   const stated = statedPands();
+  for (const [pid, ph] of photo) stated.set(pid, { ...(stated.get(pid) ?? {}), photo: ph });
   // Measured AHN street fronts (scripts/belt-look/ahn-fronts.ts, staged); --no-ahn draws from 3DBAG alone.
   const ahnFile = arg('ahn') ?? ['artifacts/buurt-generators/belt-ahn/fronts.json', 'data/buurt-generators/belt/ahn-fronts.json'].find(f => fs.existsSync(f)) ?? '';
   const ahn = new Map<string, AhnFront>(!process.argv.includes('--no-ahn') && fs.existsSync(ahnFile) ? Object.entries(JSON.parse(fs.readFileSync(ahnFile, 'utf8')).fronts) : []);
@@ -129,7 +134,10 @@ async function main() {
   for (const r of res.rows) bySeg[segmentOf(r.street)] = (bySeg[segmentOf(r.street)] ?? 0) + r.members.length;
   const crowns: Record<string, number> = {};
   for (const r of res.rows) for (const f of r.fronts) { const s = r.series.find(x => x.id === f.seriesId)!; const c = (f.overrides as any)?.crown?.value ?? s.design.crown.value; crowns[c] = (crowns[c] ?? 0) + 1; }
-  const report = { at, buurten: BELT_BUURTEN, ahnFronts: ahn.size, overSpecs, specOnlyRedrawn: Object.keys(res.provenance).filter(id => specOnly.has(id)).length, pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length, laneDRowPands: [...rowsD].filter(id => pands.some(p => p.id.endsWith(id))).length,
+  // A spec's wall colour against a strong photo read: flagged, never overridden (round 8: the belt look keeps the spec's).
+  const specColourFlags = Object.keys(res.provenance).map(id => ({ id, f: specPhotoDisagree(stated.get(id)) })).filter(x => x.f).map(x => ({ pandId: x.id, ...x.f! }));
+  fs.writeFileSync(path.join(out, 'spec-colour-flags.json'), JSON.stringify(specColourFlags, null, 1));
+  const report = { at, specColourFlags: specColourFlags.length, buurten: BELT_BUURTEN, ahnFronts: ahn.size, overSpecs, specOnlyRedrawn: Object.keys(res.provenance).filter(id => specOnly.has(id)).length, pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length, laneDRowPands: [...rowsD].filter(id => pands.some(p => p.id.endsWith(id))).length,
     drawn: drawn.length, ownRead: own, donorRead: drawn.length - own, rows: res.rows.length, records: records.length, donors: donors.length, skipped: bySkip, bySegment: bySeg, crowns, findings, statedCrown: Object.keys(res.provenance).filter(id => stated.get(id)?.crown).length, ms: Date.now() - t0 };
   fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify({ ...report, skippedList: res.skipped }, null, 1));
   console.log(JSON.stringify(report, null, 1));

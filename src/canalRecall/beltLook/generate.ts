@@ -18,7 +18,9 @@ import type { RowDesign, RowField, RowRecord } from '../houseSpec/row/types.ts';
 import { districtRows, type GenPand, type GenRow, type GenStreet } from '../buurtGenerator/rows.ts';
 import { BELT_LOOK, donorDistance, donorFor, fittedRead, frontTopM, gableable, GABLED_CROWNS, mansardAsDormers, stripRoofStorey, type BeltDonor, type BeltTarget, type LookDistrict } from './donors.ts';
 import { MANSARD_RISE } from '../houseLine/rowFront.ts';
-import type { RowGable } from '../houseSpec/row/types.ts';
+import type { RowGable, RowRoofStorey } from '../houseSpec/row/types.ts';
+import { hexToOklab } from '../houseSpec/wallColour.ts';
+import { measuredFlatTop, roofStoreyOverCornice, slopedBandTop } from './roofSignals.ts';
 import { dressBeltStone } from './stone.ts';
 import { dressBeltCornice } from './cornice.ts';
 import { brickFromSample, lchOf } from '../houseSpec/judgedColour.ts';
@@ -26,7 +28,26 @@ import type { AhnFront } from './ahnFront.ts';
 
 export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: string }
 /** What a published source states for a pand (the monument register via house-specs): its crown and facade year. */
-export interface BeltStated { crown?: string; year?: number; shop?: boolean; finish?: BeltTarget['finish']; storeys?: number; stoop?: boolean; roofStorey?: boolean; warehouse?: boolean; elements?: string[] }
+export interface BeltStated { crown?: string; year?: number; shop?: boolean; finish?: BeltTarget['finish']; storeys?: number; stoop?: boolean; roofStorey?: boolean; warehouse?: boolean; elements?: string[]; /** A published house spec states a mansard (not the register's dakkapel). */ mansard?: boolean;
+  /** A published house spec's measured wall colour (palette.brick). */ specHex?: string;
+  /** The pand's cut wall sample (lane W1 on the pinned capture), from any cut, readable or not. */ photo?: BeltPhoto }
+/** A cut's wall sample: hex, OKLab lightness, chroma, hue (deg) and the sampled pixel count. */
+export interface BeltPhoto { hex: string; L: number; C: number; h: number; n: number }
+/** A photo wall sample strong enough to colour a front: enough wall pixels, and neither foliage (green hue with chroma) nor a
+ *  washed-out or shadowed patch (lightness band). Round 8: Keizersgracht 176392, an unreadable cut (no storeys seen) whose
+ *  wall sample #4a423b is the dark brick of the photo, was drawn #6f5543 from the neighbours. */
+export const PHOTO_SAMPLE = { minN: 200, foliageHue: [95, 170] as const, foliageC: 0.025, minL: 0.2, maxL: 0.8 } as const;
+export function strongPhoto(p: BeltPhoto | undefined): p is BeltPhoto {
+  if (!p || !(p.n >= PHOTO_SAMPLE.minN) || !(p.L >= PHOTO_SAMPLE.minL && p.L <= PHOTO_SAMPLE.maxL)) return false;
+  return !(p.C >= PHOTO_SAMPLE.foliageC && p.h >= PHOTO_SAMPLE.foliageHue[0] && p.h <= PHOTO_SAMPLE.foliageHue[1]);
+}
+/** OKLab distance over which a spec's wall colour and a strong photo sample disagree (flagged, not overridden). */
+export const SPEC_PHOTO_FLAG = 0.1;
+export function specPhotoDisagree(sd: BeltStated | undefined): { specHex: string; photoHex: string; dE: number } | null {
+  if (!sd?.specHex || !strongPhoto(sd.photo)) return null;
+  const a = hexToOklab(sd.specHex), b = hexToOklab(sd.photo.hex), dE = Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+  return dE > SPEC_PHOTO_FLAG ? { specHex: sd.specHex, photoHex: sd.photo.hex, dE: +dE.toFixed(3) } : null;
+}
 export interface BeltGenResult {
   rows: RowRecord[];
   /** Per drawn pand, where its design came from. */
@@ -108,8 +129,10 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
   for (const m of row.members) {
     // The front's top (frontTopM: 3DBAG's eaves is often a rear eave under the street cornice).
     const pid = pandNumber(m.pand.id), eaves = frontTopM(m.pand.eavesM, m.pand.heightM, m.pand.ridgeM), ridge0 = m.pand.ridgeM;
-    const af = ahn.get(pid), ahnTop = ahnCorniceTop(af, m.pand);
-    const sd = stated.get(pid);
+    const af = ahn.get(pid), sloped = look.slopedBand ? slopedBandTop(m.pand, af) : null, ahnTop = sloped ?? ahnCorniceTop(af, m.pand);
+    // roofSignals.ts: a gable never stands on a measured flat top (a register gable there describes a front that is gone).
+    const flatTop = !!look.flatTopNoGable && measuredFlatTop(m.pand, af);
+    const sd0 = stated.get(pid), sd = flatTop && sd0?.crown && GABLED_CROWNS.has(sd0.crown) ? (({ crown: _c, ...rest }) => rest)(sd0) : sd0;
     const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge0, roofCode: m.pand.roofCode ?? null, heightM: m.pand.heightM ?? null,
       ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}), ...(sd?.finish ? { finish: sd.finish } : {}), ...(sd?.storeys ? { storeys: sd.storeys } : {}), ...(sd?.stoop ? { stoop: true } : {}), ...(sd?.roofStorey ? { roofStorey: true } : {}), ...(sd?.warehouse ? { warehouse: true } : {}), ...(sd?.elements?.length ? { elements: sd.elements } : {}), ...(look !== BELT_LOOK ? { district: look.id } : {}) };
     const own = reads.get(pid);
@@ -119,18 +142,20 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     // each), and a read mansard stands as dormers (round 7 sample: one read mansard in five was one).
     if (own) { read = t.roofStorey ? mansardAsDormers(structuredClone(own.answer)) : stripRoofStorey(structuredClone(own.answer), true); sample = own.sample; readRef = own.ref; prov[pid] = { own: true, ref: own.ref }; }
     else {
-      const d = donorFor(t, donors, look);
+      const d = donorFor(t, flatTop ? donors.filter(x => !GABLED_CROWNS.has(String(x.answer.crown))) : donors, look);
       if (!d) return null;
       // A cornice front stands at 3DBAG's representative height (its storeys fitted to it); a gable's foot stays at the
       // front top, the gable rising to the ridge.
       const corniceTop = !GABLED_CROWNS.has(String(t.statedCrown ?? d.donor.answer.crown)) && eaves !== null ? (ahnTop ?? (t.heightM != null ? corniceLine({ crown: 'cornice' }, t, eaves, m.pand.eavesM) : null)) : null;
       read = fittedRead(corniceTop !== null ? { ...t, eavesM: corniceTop } : t, d.donor, look);
-      if (t.roofStorey) read = statedDormer(read);
+      if (t.roofStorey || (look.measuredRoofStorey && !GABLED_CROWNS.has(String(read.crown)) && roofStoreyOverCornice(m.pand, corniceTop))) read = statedDormer(read);
       readRef = `${BELT_LOOK_REF}: donor ${d.donor.pandId}`;
       // A stated plaster or stone front is judged pale from its finish, not the donor's brick sample.
       // A donor's sample is a brick colour only when the donor is a brick front and the sample is not a buff (tan) brick;
       // otherwise the solve takes the neighbours' family (round 4: tan and pale fronts over dark brick rows).
-      sample = t.finish === 'plaster' || t.finish === 'stone' ? undefined : brickDonorSample(d.donor);
+      // A published spec's measured wall colour stands (a strong photo read that disagrees is flagged by the script); else
+      // the pand's own cut sample when strong (round 8: an unreadable cut still shows the wall); else the donor's brick.
+      sample = t.finish === 'plaster' || t.finish === 'stone' ? undefined : sd?.specHex ?? (strongPhoto(sd?.photo) ? sd!.photo!.hex : brickDonorSample(d.donor));
       if (!sample && (read as { finish?: string }).finish === 'brick') sample = nearestBrickSample(t, donors, look)?.sample;
       prov[pid] = { donor: d.donor.pandId, distance: d.distance, rank: d.rank, of: d.of };
     }
@@ -182,7 +207,7 @@ export function generateBelt(pands: readonly GenPand[], streets: readonly GenStr
     const donorFilled = new Set(input.members.filter(m => 'donor' in provenance[m.pandId]).map(m => m.pandId));
     const elements = new Map(input.members.map(m => [m.pandId, stated.get(m.pandId)?.elements ?? []]));
     const dressed = dressBeltCornice(dressBeltStone(relabelDonorFields(solveRow(input), donorFilled), BELT_LOOK_REF, elements), BELT_LOOK_REF, elements);
-    rows.push(warehouseFronts(apexOnFront(measuredGables(dressed, input, donorFilled), input, ahn), stated));
+    rows.push(pitchedDormers(warehouseFronts(apexOnFront(measuredGables(dressed, input, donorFilled), input, ahn), stated), stated));
     for (const m of r.members) fronts[pandNumber(m.pand.id)] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
   }
   return { rows, provenance, skipped, fronts };
@@ -222,6 +247,22 @@ export const WAREHOUSE_EXTRAS = ['warehouse-shutters', 'hoist-beam'] as const;
  * beam; a pand whose register names a hoist beam draws the beam. Per front (a series may hold a warehouse beside a house of
  * the same outline); a reviewed extras list stays.
  */
+/**
+ * A belt roof storey is dormers in a dark pitched roof behind the cornice, not a slate mansard, unless a member's house spec
+ * states a mansard or a reviewer set it (round 7 sample of 40 belt cuts: register dakkapels showed as dormers in a pitched
+ * roof in 13 of 19, a mansard in none; read mansards held in 1 of 5; Prinsengracht 177416, Singel 167969).
+ */
+export function pitchedDormers(row: RowRecord, stated: ReadonlyMap<string, BeltStated>): RowRecord {
+  const pitch = (f: RowField<RowRoofStorey> | undefined, ids: readonly string[]) => {
+    if (!f || f.source === 'reviewed' || f.value.kind !== 'mansard' || ids.some(id => stated.get(id)?.mansard)) return;
+    f.value = { ...f.value, pitched: true, material: 'slate' };
+    f.ref = `${f.ref}; ${BELT_LOOK_REF}: dormers in a dark pitched roof, no mansard stated (a red tile hip read loud on the sheet, Prinsengracht 177410)`;
+  };
+  for (const s of row.series) pitch(s.design.roofStorey, row.fronts.filter(f => f.seriesId === s.id).map(f => f.pandId));
+  for (const f of row.fronts) pitch((f.overrides as { roofStorey?: RowField<RowRoofStorey> }).roofStorey, [f.pandId]);
+  return row;
+}
+
 export function warehouseFronts(row: RowRecord, stated: ReadonlyMap<string, BeltStated>): RowRecord {
   for (const f of row.fronts) {
     const sd = stated.get(f.pandId), s = row.series.find(x => x.id === f.seriesId);

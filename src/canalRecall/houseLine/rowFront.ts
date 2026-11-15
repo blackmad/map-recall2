@@ -104,8 +104,9 @@ export interface RowSeriesDraw {
   cornice?: 'none' | 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
   /** A stated timber cornice (RowDesign.corniceDress): drawn by `row-cornice` in place of the kind's moulding. */
   corniceDress?: import('../houseSpec/row/types.js').RowCorniceDress;
-  /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, or a flat lid. */
-  roofStorey?: { kind: 'mansard' | 'none'; riseM?: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[];
+  /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, a pitched (hipped)
+   *  roof with its dormers on the street slope (`pitched`), or a flat lid. */
+  roofStorey?: { kind: 'mansard' | 'pitched' | 'none'; riseM?: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[];
     /** The mansard runs on into the neighbour's on this side (left/right as seen): no hip, no eaves return there. */
     joins?: { left?: boolean; right?: boolean };
     /** The member's street front width (lane D `members[].widthM`, m): which outline wall the roof faces on a corner. */
@@ -379,6 +380,13 @@ export function windowShare(rec: RowFrontRecord, eavesM: number): number | null 
 export const ROW_FRONT_SPAN_TOLERANCE = { m: 0.5, share: 0.12 } as const;
 export const runTakesTrace = (runM: number, spanM: number | undefined): boolean =>
   !spanM || Math.abs(runM - spanM) <= Math.max(ROW_FRONT_SPAN_TOLERANCE.m, ROW_FRONT_SPAN_TOLERANCE.share * spanM);
+/** A stated sub-front crown (a step gable) also stands on a street run shorter than the front, down to this share of it: the
+ *  outline's front breaks at a party-wall overlap or a kink, so the visible run is part of this front, never a corner
+ *  (lane D round 8: 6 of 12 belt gables in held-out rounds 5-7 were dropped, Prinsengracht 175981-175984 on 2.5-2.7 m
+ *  runs of 4.1-4.2 m fronts, 168411 4.1 of 8.8 m). */
+export const STEP_RUN_MIN_SHARE = 0.45;
+export const runTakesSteps = (runM: number, spanM: number | undefined): boolean =>
+  runTakesTrace(runM, spanM) || (!!spanM && runM < spanM && runM >= STEP_RUN_MIN_SHARE * spanM);
 
 /** Interim window width as a share of the bay (coordinator: about 60-70 %). */
 export const ROW_FRONT_WINDOW_SHARE = 0.64;
@@ -551,6 +559,9 @@ export const ROW_GROUND_FACTOR = 1.1;
 export function rowGroundM(topM: number, storeys: number): number {
   return +(ROW_GROUND_FACTOR * topM / (storeys - 1 + ROW_GROUND_FACTOR)).toFixed(2);
 }
+/** A pitched roof storey's rise over the cornice line (m): a hipped roof behind a belt cornice, its dormers on the street
+ *  slope (lane D round 8). One rise per series, as the mansard's. */
+export const PITCHED_RISE = { period: 3.0 } as const;
 export function mansardRise(stated: number | undefined): number {
   return typeof stated === 'number' && Number.isFinite(stated) && stated > 0 ? stated : MANSARD_RISE.period;
 }
@@ -616,7 +627,7 @@ export function withRowFront<T extends Feature>(feature: T): T {
     // series' bays fit the whole front), the roof at the kit's rise and pitch, its erkers on the roof kit. No kit: as before.
     const kit = buurtKitEnabled() ? buurtKitOf(rec.buurtKit) : null;
     if (kit) feature = straightenFeature(feature, kit);
-    const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(kit?.roof?.riseM ?? rs.riseM) : kit && kitWantsCoping(kit) ? KIT_FLAT_RISE_M : 0;
+    const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(kit?.roof?.riseM ?? rs.riseM) : rs?.kind === 'pitched' ? (rs.riseM && rs.riseM > 0 ? rs.riseM : PITCHED_RISE.period) : kit && kitWantsCoping(kit) ? KIT_FLAT_RISE_M : 0;
     const mansard = rs && rise > 0.5 ? { ...rs, riseM: rise, ...(rs.kind !== 'mansard' && kit?.joins ? { joins: kit.joins } : {}) } : null;
     const lv = levels(sr, rec, top, true);
     // The series' souterrain reaches the storey plan (levels drops a spec's own); a lone spec read never does.
@@ -651,8 +662,9 @@ export function withRowFront<T extends Feature>(feature: T): T {
     // the side street) keeps them off its other run by the member's width (runTakesTrace).
     if (sr2 && raised && rec.spanM && !sr2.frontSpanM) sr2.frontSpanM = rec.spanM;
     const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: kit?.sash ? { ...rowDressOf(rec.series), mullionShare: KIT_MULLION_SHARE } : rowDressOf(rec.series), ...(rec.series.shop !== undefined ? { specShop: rec.series.shop } : {}), ...(rec.series.look ? { rowLook: kit?.sash ? { ...rec.series.look, sash: kit.sash } : rec.series.look } : {}), ...lv };
-    if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
-      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}), ...(mansard.frontM ? { frontM: mansard.frontM } : {}),
+    const pitched = mansard?.kind === 'pitched';
+    if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: pitched ? 'hipped' : 'mansardHip', roofDormer: mansard.dormers.length > 0,
+      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? (pitched ? 'tile' : 'slate'), dormers: mansard.dormers, series: rec.series.id, ...(pitched ? { shape: 'hipped' } : {}), ...(mansard.joins ? { joins: mansard.joins } : {}), ...(mansard.frontM ? { frontM: mansard.frontM } : {}),
         ...(kit && rec.storeys ? { kit: buurtRoofKitFor(kit, top, rec.storeys, Number(sr2?.groundM) || rowGroundM(top, rec.storeys)) } : {}) } });
     else Object.assign(props, { height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' });
     const slab = rec.wallOnly ? rowWallSlab(rec.wallOnly.edge, feature.geometry) : null;

@@ -181,7 +181,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...(omitExtras.length ? { omitExtras } : {}),
     ...(d0.cornice.value ? { cornice: d0.cornice.value } : {}),
     ...(d0.corniceDress?.value ? { corniceDress: d0.corniceDress.value } : {}),
-    roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers, ...(m.riseM && m.riseM > 0 ? { riseM: m.riseM } : ROW_MANSARD_RISE[rowId] ? { riseM: ROW_MANSARD_RISE[rowId].riseM } : {}) } : { kind: 'none', riseM: 0, dormers: [] },
+    roofStorey: m?.pitched ? { kind: 'pitched', material: m.material ?? 'tile', dormers, ...(m.riseM && m.riseM > 0 ? { riseM: m.riseM } : {}) } : m ? { kind: 'mansard', material: m.material ?? 'slate', dormers, ...(m.riseM && m.riseM > 0 ? { riseM: m.riseM } : ROW_MANSARD_RISE[rowId] ? { riseM: ROW_MANSARD_RISE[rowId].riseM } : {}) } : { kind: 'none', riseM: 0, dormers: [] },
     ...(heads.length ? { heads } : {}),
     ...(extras.length ? { extras } : {}),
     ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrain: true } : {}),
@@ -252,7 +252,7 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     const joins = mansardJoins(row, rec.pandId);
     if (joins && out.series?.roofStorey?.kind === 'mansard') out.series.roofStorey.joins = joins;
     // A corner member's roof faces its row's street, not the side street nearer its outline (Kinkerstraat 110).
-    if (out.series?.roofStorey?.kind === 'mansard' && member.widthM && member.widthM > 1) out.series.roofStorey.frontM = member.widthM;
+    if ((out.series?.roofStorey?.kind === 'mansard' || out.series?.roofStorey?.kind === 'pitched') && member.widthM && member.widthM > 1) out.series.roofStorey.frontM = member.widthM;
     // A chunk-owned pand whose street wall the row draws (lane D states the chunk and the edge on the member).
     const wallOnly = rowWallOnlyOf((member as { wallOnly?: unknown }).wallOnly);
     if (wallOnly) out.wallOnly = wallOnly;
