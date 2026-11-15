@@ -361,3 +361,46 @@ export function sashWindows(b: BuildingTools, f: Frame, ts: number[], o: {lean?:
     if (o.lintel) slab(b, g, t, o.y + o.h + 0.06, o.w + 0.4, 0.14, 0.14, o.lintel);
   }
 }
+
+/**
+ * A brick pattern panel of nested diamonds (2026-11-15, pools2 lane): Noorderparkbad's entrance piers carry a red diamond
+ * lattice laid in brick into white brick (w09-59, w10-40). It was drawn as one X glyph; a reviewer read it as "an X", not a
+ * lattice. The pattern is a grid of `cols` x `rows` brick cells: within each `period`-cell tile, a cell is on when its
+ * Manhattan distance to the tile centre is a multiple of `step` (concentric diamonds, the tiles' corners joining into the
+ * lattice between them). Pure: rows top-down of '0'/'1', like the GL glyphs.
+ */
+export function diamondLatticeRows(cols: number, rows: number, period = 10, step = 3): string[] {
+  const out: string[] = [];
+  const h = period / 2;
+  for (let j = 0; j < rows; j++) {
+    let row = '';
+    for (let i = 0; i < cols; i++) {
+      // tile coordinates centred on the panel's middle column, so the pattern is symmetric left to right
+      const u = (((i - (cols - 1) / 2) % period) + period) % period, v = (((j - (rows - 1) / 2) % period) + period) % period;
+      const du = Math.min(u, period - u), dv = Math.min(v, period - v);
+      const d = Math.round(du + dv);
+      row += d % step === 0 && d <= h * 2 ? '1' : '0';
+    }
+    out.push(row);
+  }
+  return out;
+}
+/**
+ * Draw a pattern panel: a background slab (`ground`) w x h with its back on the wall, and the '1' cells of `pattern` as
+ * merged horizontal runs standing `d` proud of it in `ink`. `pattern` rows run top-down. Returns the run count.
+ */
+export function patternPanel(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, pattern: string[], ground: Col, ink: Col, depth = 0.25, d = 0.04, out = 0) {
+  slab(b, f, t, y, w, h, depth, ground, out);
+  const rows = pattern.length, cols = pattern[0]?.length ?? 0, cw = w / cols, ch = h / rows;
+  let n = 0;
+  for (let j = 0; j < rows; j++) {
+    const row = pattern[j]; let k = 0;
+    while (k < cols) {
+      if (row[k] !== '1') { k++; continue; }
+      let e = k; while (e < cols && row[e] === '1') e++;
+      slab(b, f, t - w / 2 + ((k + e) / 2) * cw, y + (rows - 1 - j) * ch, (e - k) * cw, ch, d, ink, out + depth);
+      n++; k = e;
+    }
+  }
+  return n;
+}

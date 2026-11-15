@@ -226,9 +226,9 @@
       2.6,
       3.6
      ],
-     "plan": "simplified",
+     "plan": "modelled",
      "seenIn": "TMX7316010203-000876_pano_0000_001230",
-     "how": "slabs with an N and an X pixel letter; the diamond lattice is drawn as an X"
+     "how": "two piers: white with a red N glyph; white with the red diamond lattice as a patternPanel (13 x 18 bricks)"
     },
     {
      "id": "entrance-glass",
@@ -265,9 +265,9 @@
       2.5,
       3.4
      ],
-     "plan": "simplified",
+     "plan": "modelled",
      "seenIn": "TMX7316010203-000876_pano_0000_001233",
-     "how": "red slab with an X pixel letter, 3.5 m right of the wall centre"
+     "how": "nearbar-kit patternPanel() with diamondLatticeRows(13, 17): red brick runs proud of a white panel (pools2 lane; was an X glyph)"
     }
    ]
   },
@@ -312,17 +312,14 @@
     {
      "id": "solar-roof",
      "kind": "other",
-     "where": "roof: solar panel fields and roof-lights",
+     "where": "roof: solar-panel fields on the north-east upper roof and the two low south roofs; round roof-lights on the middle roof",
      "approxSizeM": [
       30,
       20
      ],
-     "plan": "skipped",
+     "plan": "modelled",
      "seenIn": "PDOK luchtfoto",
-     "skip": {
-      "reason": "too-small",
-      "note": "flat on the roof, under 0.3 m"
-     }
+     "how": "pool-kit solarField(): four fields traced on the orthophoto, rows 1.0 m at 1.25 m pitch, tilted 10 deg (pools2 lane); the roof-lights are not drawn"
     },
     {
      "id": "playground-mosaics",

@@ -146,11 +146,11 @@ export function boxAt(b: BuildingTools, c: XZ, w: number, d: number, y0: number,
  * Spherical-cap glass dome over a circle (centre c, base radius R) from y0 to the apex, with meridian ribs and ring ribs.
  * The glass is one cap; ribs stand 4 cm proud of it so they never share its surface.
  */
-export function glassDome(b: BuildingTools, c: XZ, R: number, y0: number, apex: number, o: {glass?: string; rib?: string; meridians?: number; rings?: number; segments?: number} = {}) {
+export function glassDome(b: BuildingTools, c: XZ, R: number, y0: number, apex: number, o: {glass?: string; rib?: string; meridians?: number; rings?: number; segments?: number; panes?: boolean} = {}) {
   const h = apex - y0, Rs = (R * R + h * h) / (2 * h), theta = Math.asin(Math.min(1, R / Rs)), segs = o.segments ?? 48;
   const cy = apex - Rs;
-  const g = new T.SphereGeometry(Rs, segs, 12, 0, Math.PI * 2, 0, theta).translate(c[0], cy, c[1]);
-  add(b, g, o.glass ?? 'glass', 'roof');
+  if (o.panes) add(b, domePanes(c, Rs, cy, theta, o.meridians ?? 16, (o.rings ?? 3) + 1), o.glass ?? 'glass', 'roof');
+  else add(b, new T.SphereGeometry(Rs, segs, 12, 0, Math.PI * 2, 0, theta).translate(c[0], cy, c[1]), o.glass ?? 'glass', 'roof');
   const rib = o.rib ?? 'frame', M = o.meridians ?? 16;
   for (let k = 0; k < M; k++) {
     const a = (k / M) * Math.PI * 2, pts: T.Vector3[] = [];
@@ -165,9 +165,121 @@ export function glassDome(b: BuildingTools, c: XZ, R: number, y0: number, apex: 
   add(b, new T.TorusGeometry(R + 0.05, 0.22, 4, segs).rotateX(Math.PI / 2).translate(c[0], y0 + 0.12, c[1]), rib);
 }
 
+/**
+ * The glass of a spherical cap as one pane per rib cell, each pane a flat quad with its own UV 0..1 (2026-11-15, pools2 lane).
+ *
+ * Why: the game dresses a glass-slot material with a per-pane cell (look/slotCells.ts paintGlassCanvas: sky-lit top, dark
+ * foot, a diagonal streak), read through the mesh's UVs. One SphereGeometry gave the whole Mirandabad dome a single sliver
+ * of that cell (the cap's v range is the top 25 % of the sphere's), so it drew as one flat pale shell and the reviewers read it
+ * as opaque. Per-pane UVs give every cell between the ribs the pane's gradient and streak, which is what reads as glazing on
+ * the orthophoto and from the street. Panes are flat (4 corners on the sphere), rings of cells from the apex to the foot;
+ * the apex cell row is triangles. Pure geometry, native frame; `meridians` x `rows` cells.
+ */
+export function domePanes(c: XZ, Rs: number, cy: number, theta: number, meridians: number, rows: number): T.BufferGeometry {
+  const pos: number[] = [], uv: number[] = [], idx: number[] = [];
+  const P = (j: number, k: number) => { const t = (theta * j) / rows, a = (k / meridians) * Math.PI * 2; return [c[0] + Math.cos(a) * Rs * Math.sin(t), cy + Rs * Math.cos(t), c[1] + Math.sin(a) * Rs * Math.sin(t)]; };
+  for (let j = 0; j < rows; j++) for (let k = 0; k < meridians; k++) {
+    // corners: top (ring j, nearer the apex) and bottom (ring j + 1); v runs up the pane (1 at the top edge)
+    const n = pos.length / 3;
+    const tl = P(j, k + 1), tr = P(j, k), bl = P(j + 1, k + 1), br = P(j + 1, k);
+    pos.push(...bl, ...br, ...tr, ...tl);
+    uv.push(0, 0, 1, 0, 1, 1, 0, 1);
+    // outward-facing winding (counter-clockwise seen from outside)
+    if (j === 0) idx.push(n, n + 1, n + 2); // apex row: tl == tr, a triangle
+    else idx.push(n, n + 1, n + 2, n, n + 2, n + 3);
+  }
+  const g = new T.BufferGeometry();
+  g.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
+  g.setAttribute('uv', new T.Float32BufferAttribute(uv, 2));
+  g.setIndex(idx);
+  // flat shading per pane: split normals by computing them on a non-indexed copy
+  const flat = g.toNonIndexed(); flat.computeVertexNormals();
+  return flat;
+}
+
 /** Point-in-ring for native (x, z). */
 export function inRing(ring: number[][], x: number, z: number) {
   let ins = false;
   for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, zi] = ring[i], [xj, zj] = ring[j]; if ((zi > z) !== (zj > z) && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) ins = !ins; }
   return ins;
+}
+
+export type SolarOptions = {
+  /** Rows run along this plan axis (the orthophoto's stripes): 'x' = east-west rows, 'z' = north-south rows. */
+  along?: 'x' | 'z';
+  /** Panel depth across the row (m), row pitch (m, >= depth), tilt (deg) facing +z (south) for x rows, +x (east) for z rows. */
+  depth?: number; pitch?: number; tilt?: number;
+  /** Keep this far inside the field ring (m). Rows shorter than `minRun` are dropped. */
+  inset?: number; minRun?: number;
+  /** Turn the row axis by this many degrees (clockwise in plan, from +x toward +z) for a field on a building that is not
+   *  square to the grid (Sloterparkbad's wing runs at 309 deg). */
+  angleDeg?: number;
+};
+/**
+ * Solar-panel rows over a roof field (2026-11-15, pools2 lane): pure plan layout. The field ring (native x, z) is inset, cut
+ * by scanlines every `pitch` metres across the row axis, and each scanline's inside runs become one row from p0 to p1
+ * (at the row's centre line). Rows are what the orthophoto shows on Sportplaza Mercator and Noorderparkbad: dark striped
+ * fields that the plain green or dark roof lost.
+ */
+export function solarRows(field: number[][], o: SolarOptions = {}): {p0: XZ; p1: XZ}[] {
+  if (o.angleDeg) {
+    // rotate the field by -angle, lay the rows square, rotate them back
+    const a = (o.angleDeg * Math.PI) / 180, c = Math.cos(a), s = Math.sin(a);
+    const rot = (p: number[], k: number): XZ => [p[0] * c + k * p[1] * s, p[1] * c - k * p[0] * s];
+    return solarRows(field.map(p => rot(p, 1)), {...o, angleDeg: 0}).map(r => ({p0: rot(r.p0, -1), p1: rot(r.p1, -1)}));
+  }
+  const along = o.along ?? 'x', depth = o.depth ?? 1.0, pitch = Math.max(depth, o.pitch ?? 1.6), minRun = o.minRun ?? 1.5;
+  const r = o.inset ? offsetRing(field, -Math.abs(o.inset)) : cleanRing(field);
+  // work in (u along, v across)
+  const uv = r.map(p => (along === 'x' ? [p[0], p[1]] : [p[1], p[0]]));
+  const vs = uv.map(p => p[1]), v0 = Math.min(...vs), v1 = Math.max(...vs);
+  const rows: {p0: XZ; p1: XZ}[] = [];
+  for (let v = v0 + depth / 2 + 0.01; v <= v1 - depth / 2; v += pitch) {
+    // the row must fit across its whole depth: intersect the runs at its two edges
+    const runs = [v - depth / 2, v + depth / 2].map(vv => scan(uv, vv));
+    for (const [a0, a1] of runs[0]) for (const [b0, b1] of runs[1]) {
+      const u0 = Math.max(a0, b0), u1 = Math.min(a1, b1);
+      if (u1 - u0 >= minRun) rows.push(along === 'x' ? {p0: [u0, v], p1: [u1, v]} : {p0: [v, u0], p1: [v, u1]});
+    }
+  }
+  return rows;
+}
+/** Inside runs [u0, u1] of a polygon (u, v) on the line v = vv. */
+function scan(poly: number[][], vv: number): [number, number][] {
+  const xs: number[] = [];
+  for (let i = 0; i < poly.length; i++) {
+    const a = poly[i], c = poly[(i + 1) % poly.length];
+    if ((a[1] > vv) !== (c[1] > vv)) xs.push(a[0] + ((vv - a[1]) / (c[1] - a[1])) * (c[0] - a[0]));
+  }
+  xs.sort((p, q) => p - q);
+  const out: [number, number][] = [];
+  for (let i = 0; i + 1 < xs.length; i += 2) out.push([xs[i], xs[i + 1]]);
+  return out;
+}
+/**
+ * Draw solarRows as tilted panel rows standing on the roof: each row a closed wedge prism (its foot 5 cm into the roof at the
+ * row's lowest roof height, the low edge 0.2 m up, the panel face tilted `tilt` degrees), so it is grounded and never shares a
+ * plane with the roof. `roofAt(x, z)` is the roof height there (nearbar-kit roofHeightAt over the 3DBAG surfaces); a row
+ * whose ends have no roof is skipped. Returns the row count.
+ */
+export function solarField(b: BuildingTools, field: number[][], roofAt: (x: number, z: number) => number | null, colour: string, o: SolarOptions = {}): number {
+  const depth = o.depth ?? 1.0, tilt = ((o.tilt ?? 12) * Math.PI) / 180, rise = depth * Math.sin(tilt), run = depth * Math.cos(tilt);
+  let n = 0;
+  for (const {p0, p1} of solarRows(field, o)) {
+    const ys = [p0, p1, [(p0[0] + p1[0]) / 2, (p0[1] + p1[1]) / 2]].map(p => roofAt(p[0], p[1]));
+    if (ys.some(y => y === null)) continue;
+    const yb = Math.min(...(ys as number[])) - 0.05, yLo = Math.max(...(ys as number[])) + 0.2;
+    // cross-section in (across, up), across = left of the row direction (north for an eastward row, a right-handed basis):
+    // the low edge on the south/east side (-across), the high edge on the other
+    const sec = new T.Shape([new T.Vector2(-run / 2, yb), new T.Vector2(run / 2, yb), new T.Vector2(run / 2, yLo + rise), new T.Vector2(-run / 2, yLo)]);
+    const L = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]);
+    const g = new T.ExtrudeGeometry(sec, {depth: L, bevelEnabled: false});
+    // shape x = across, y = up, extrusion z = along; turn the extrusion axis onto the row
+    const dir = [(p1[0] - p0[0]) / L, (p1[1] - p0[1]) / L];
+    const m = new T.Matrix4().makeBasis(new T.Vector3(dir[1], 0, -dir[0]), new T.Vector3(0, 1, 0), new T.Vector3(dir[0], 0, dir[1])).setPosition(p0[0], 0, p0[1]);
+    g.applyMatrix4(m);
+    add(b, g, colour, 'roof');
+    n++;
+  }
+  return n;
 }

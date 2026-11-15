@@ -65,7 +65,7 @@ try {
       }, id, {timeout: 60000, polling: 1000});
       await settleHeldWorld(page);
       const file = path.join(out, `ingame-${v.name}-${size}.png`);
-      await page.screenshot({path: file});
+      await page.screenshot({path: file, timeout: 180000}); // a loaded machine (load 70-100) took over 30 s per frame
       console.log(file);
       if (underlay) {
         // The model hidden, its suppression kept: whatever still draws on the footprint is a second building. The layer's
@@ -81,7 +81,7 @@ try {
         await page.waitForTimeout(1500);
         await settleHeldWorld(page);
         const under = path.join(out, `ingame-${v.name}-${size}-underlay.png`);
-        await page.screenshot({path: under});
+        await page.screenshot({path: under, timeout: 180000});
         const share = await changedShareOfFiles(file, under);
         console.log(under, `${(share * 100).toFixed(1)} % of pixels changed`);
         if (share < 0.002) throw new Error(`${id} ${v.name} ${size}: the underlay shot equals the model shot (${(share * 100).toFixed(2)} % changed): the model was not hidden, or it is off screen`);

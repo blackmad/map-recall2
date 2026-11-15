@@ -35,7 +35,9 @@ export function buildDeMirandabad(_w: number, _d: number, b: BuildingTools) {
   const R = Math.max(...domeV.map(v => Math.hypot(v[0] - cx, v[2] - cz))) + 0.4;
   const APEX = Math.max(...domeV.map(v => v[1])) + 0.3;
   addShell(b, src as never, {wall: 'greyBrick', roof: 'slate'});
-  glassDome(b, [cx, cz], R, DOME_BASE, APEX, {glass: 'canopyGlass', rib: 'frame', meridians: 20, rings: 3});
+  // one glass pane per rib cell (pool-kit domePanes: each pane takes the game's glass cell), 32 meridians and 6 rings as the
+  // orthophoto counts them; the single shell of 20 x 3 read as an opaque pale dome (review 2026-11-15)
+  glassDome(b, [cx, cz], R, DOME_BASE, APEX, {glass: 'canopyGlass', rib: 'frame', meridians: 32, rings: 6, panes: true});
   // the dome's centre boss (orthophoto: a white hub where the ribs meet)
   post(b, [cx, cz], APEX - 0.1, APEX + 0.35, 0.8, 'frame');
 
@@ -45,6 +47,12 @@ export function buildDeMirandabad(_w: number, _d: number, b: BuildingTools) {
   // each front stands on the 3DBAG wall (median eave offset from the BAG edge), not on the BAG line
   const roofs = src.surfaces.filter(s => s.type === 'RoofSurface');
   for (const i of [41, 42, 44, 46]) front(b, ringFrame(ring, i, Math.max(-0.5, Math.min(1.5, eaveOffset(ring, roofs, i)))));
+  setSink(sink0);
+
+  // ---- the striped glass entrance tower (ring edges 36-38: the 6 x 6 m block between the hall and the drum, 3DBAG roof
+  // 11.5 m; TMX7316010203-001173_pano_0000_001317: glass in white frames, banded with red panels) ----
+  setSink(0.05);
+  for (const i of [36, 37, 38]) stripedTower(b, ringFrame(ring, i, 0.02));
   setSink(sink0);
 
   // ---- the other panden of the site on their 3DBAG shells ----
@@ -88,6 +96,16 @@ function front(b: BuildingTools, {f, len}: {f: Frame; len: number}) {
   }
   slab(b, f, len / 2, 8.4, len, 1.65, 0.45, 'sandstone'); // fascia
   for (let k = 1; k < n; k++) slab(b, f, k * step, 8.55, Math.min(3, step * 0.5), 0.55, 0.08, 'glass', 0.45); // clerestory notches over the panels, between the windows (w04 crop)
+}
+
+/** A glass tower front: full-height glass in white frames, banded with red panels every storey band (w08-5 crop). */
+function stripedTower(b: BuildingTools, {f, len}: {f: Frame; len: number}) {
+  const TOP = 11.3;
+  slab(b, f, len / 2, 0.1, len - 0.2, TOP - 0.1, 0.12, 'glass');
+  for (let y = 0.9; y + 0.75 < TOP; y += 1.55) slab(b, f, len / 2, y, len - 0.3, 0.75, 0.16, 'red'); // red bands
+  for (let y = 0.1; y < TOP; y += 1.55) slab(b, f, len / 2, y, len - 0.5, 0.1, 0.2, 'white'); // white transoms
+  for (const t of [0.3, len / 2, len - 0.3]) slab(b, f, t, 0.1, 0.12, TOP - 0.1, 0.14, 'white'); // mullions
+  slab(b, f, len / 2, TOP - 0.35, len - 0.5, 0.35, 0.3, 'white'); // coping, kept under the 3DBAG roof (11.5 m)
 }
 
 /** Convex hull (monotone chain) of native points. */

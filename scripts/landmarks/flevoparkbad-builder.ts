@@ -46,7 +46,8 @@ export function buildFlevoparkbad(_w: number, _d: number, b: BuildingTools) {
   for (let x = -83; x < -22; x += CELL) for (let z = 10; z < 56; z += CELL) {
     const cs: XZ[] = [[x, z], [x + CELL, z], [x + CELL, z + CELL], [x, z + CELL]];
     if (!cs.every(c => inRing(WINGS, c[0], c[1])) || flat(x + CELL / 2, z + CELL / 2)) continue;
-    pyramid(b, [x + CELL / 2, z + CELL / 2], CELL - 0.3, WALL_TOP - 0.05, PYR, 'slate');
+    // dark grey (orthophoto and review 2026-11-15): 'dark' keeps its tint in the game (door slot); 'slate' drew a light blue-grey
+    pyramid(b, [x + CELL / 2, z + CELL / 2], CELL - 0.3, WALL_TOP - 0.05, PYR, 'dark');
   }
 
   // ---- the L-shaped bath and its deck ----

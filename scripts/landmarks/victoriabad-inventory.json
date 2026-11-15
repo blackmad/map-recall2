@@ -1,0 +1,476 @@
+{
+ "schemaVersion": 1,
+ "id": "victoriabad",
+ "pand": "0457100000062818",
+ "brief": "scripts/landmarks/victoriabad-brief.md",
+ "signature": [
+  "garden-wall-lettering",
+  "curved-hall",
+  "entrance-block"
+ ],
+ "walls": [
+  {
+   "tag": "w01-184",
+   "bearing": 184,
+   "lengthM": 35.6,
+   "centre": [
+    5.0269305,
+    52.298133
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-10_09-36-20_00737",
+   "capturedAt": "2024-10-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "curved-hall",
+     "kind": "other",
+     "where": "dark brown brick hall under a gently curved roof line",
+     "approxSizeM": [
+      36,
+      9.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-10_09-36-20_00737",
+     "how": "3DBAG shell (its roof carries the curve) in dark brick"
+    },
+    {
+     "id": "high-strip",
+     "kind": "window-shape",
+     "where": "strip of windows high on the east half",
+     "approxSizeM": [
+      15,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-10_09-36-20_00737",
+     "how": "band() at 5.9 m on edge 32"
+    },
+    {
+     "id": "glass-slot",
+     "kind": "window-shape",
+     "where": "full-height glass slot at the west end of the tall hall",
+     "approxSizeM": [
+      1.2,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-10_09-36-20_00737",
+     "how": "frame and glass slabs on edge 32"
+    },
+    {
+     "id": "gate",
+     "kind": "other",
+     "where": "steel gate and fence across the yard",
+     "approxSizeM": [
+      10,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-10_09-36-20_00737",
+     "skip": {
+      "reason": "too-small",
+      "note": "open mesh, not a part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-341",
+   "bearing": 341,
+   "lengthM": 34.3,
+   "centre": [
+    5.026759,
+    52.298782
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w03-84",
+   "bearing": 84,
+   "lengthM": 22.4,
+   "centre": [
+    5.02714,
+    52.29862
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001924_pano_0000_002245",
+   "capturedAt": "2020-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "garden-wall-lettering",
+     "kind": "lettering",
+     "where": "VICTORIABAD in white letters on a low brick garden wall in front of the east front",
+     "approxSizeM": [
+      10,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001924_pano_0000_002245",
+     "how": "gardenWall(): freestanding brick wall 7 m out, white glyphs"
+    },
+    {
+     "id": "east-windows",
+     "kind": "window-shape",
+     "where": "row of windows in the dark brick",
+     "approxSizeM": [
+      15,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001924_pano_0000_002245",
+     "how": "four framed windows at 2 m on edge 1; their count is read through trees"
+    }
+   ]
+  },
+  {
+   "tag": "w04-84",
+   "bearing": 84,
+   "lengthM": 19.2,
+   "centre": [
+    5.0272085,
+    52.2982575
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w05-4",
+   "bearing": 4,
+   "lengthM": 18.1,
+   "centre": [
+    5.02667,
+    52.2982815
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w06-156",
+   "bearing": 156,
+   "lengthM": 14.3,
+   "centre": [
+    5.0266405,
+    52.298421
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w07-185",
+   "bearing": 185,
+   "lengthM": 13.5,
+   "centre": [
+    5.026571,
+    52.2981475
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-10_09-36-20_00732",
+   "capturedAt": "2024-10-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-hidden",
+     "kind": "other",
+     "where": "the south-west wing behind dense trees",
+     "approxSizeM": [
+      13,
+      5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-10_09-36-20_00732",
+     "skip": {
+      "reason": "not-visible",
+      "note": "fully screened by trees in both captures"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w08-275",
+   "bearing": 275,
+   "lengthM": 13.4,
+   "centre": [
+    5.0268505,
+    52.298297
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w09-275",
+   "bearing": 275,
+   "lengthM": 11,
+   "centre": [
+    5.026478,
+    52.2982015
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w10-94",
+   "bearing": 94,
+   "lengthM": 10.1,
+   "centre": [
+    5.027147,
+    52.2983965
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w11-79",
+   "bearing": 79,
+   "lengthM": 10.1,
+   "centre": [
+    5.027023,
+    52.2987545
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001924_pano_0000_002241",
+   "capturedAt": "2020-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-wall",
+     "kind": "other",
+     "where": "dark brick with a glazed lower part at the north-east",
+     "approxSizeM": [
+      10,
+      7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001924_pano_0000_002241",
+     "how": "3DBAG shell; the glazed part is not drawn (seen through a tree)"
+    }
+   ]
+  },
+  {
+   "tag": "w12-271",
+   "bearing": 271,
+   "lengthM": 9.7,
+   "centre": [
+    5.026546,
+    52.2984375
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w13-245",
+   "bearing": 245,
+   "lengthM": 9.1,
+   "centre": [
+    5.026831,
+    52.298439
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w14-108",
+   "bearing": 108,
+   "lengthM": 6.3,
+   "centre": [
+    5.027284,
+    52.298127
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001924_pano_0000_002193",
+   "capturedAt": "2020-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance",
+     "kind": "other",
+     "where": "entrance doors under a dark canopy, a flag pole in front",
+     "approxSizeM": [
+      6,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001924_pano_0000_002193",
+     "how": "glass door slab and dark canopy on edge 35; the flag pole is not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w15-349",
+   "bearing": 349,
+   "lengthM": 5.8,
+   "centre": [
+    5.027079,
+    52.298715
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001924_pano_0000_002237",
+   "capturedAt": "2020-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-corner",
+     "kind": "other",
+     "where": "brick corner seen through trees",
+     "approxSizeM": [
+      6,
+      6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001924_pano_0000_002237",
+     "skip": {
+      "reason": "not-visible",
+      "note": "43 deg obliquity behind trees"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w16-197",
+   "bearing": 197,
+   "lengthM": 5.7,
+   "centre": [
+    5.02723,
+    52.2981075
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000914_pano_0003_002752",
+   "capturedAt": "2018-08-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-block",
+     "kind": "window-shape",
+     "where": "cubic entrance block: a long window band in the upper storey and a dark-framed glass box projecting at the ground",
+     "approxSizeM": [
+      6,
+      9.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000914_pano_0003_002752",
+     "how": "3DBAG shell only: the low box (3.4 m) and the cube behind it in dark brick. Not drawn: the box's glass front (the openings gate reads it as past the 3DBAG wall silhouette) and the cube's upper window band (its wall is set back from the BAG ring)"
+    }
+   ]
+  },
+  {
+   "tag": "w17-157",
+   "bearing": 157,
+   "lengthM": 5.6,
+   "centre": [
+    5.0267645,
+    52.298466
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w18-22",
+   "bearing": 22,
+   "lengthM": 5.4,
+   "centre": [
+    5.0272615,
+    52.298163
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w19-273",
+   "bearing": 273,
+   "lengthM": 5,
+   "centre": [
+    5.026874,
+    52.2983785
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w20-274",
+   "bearing": 274,
+   "lengthM": 4.2,
+   "centre": [
+    5.026536,
+    52.298268
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  },
+  {
+   "tag": "w21-94",
+   "bearing": 94,
+   "lengthM": 4,
+   "centre": [
+    5.0268,
+    52.298258
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (garden and car-park side behind trees); drawn as the 3DBAG shell, inferred"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

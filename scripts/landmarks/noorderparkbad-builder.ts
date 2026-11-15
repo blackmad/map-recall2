@@ -1,7 +1,7 @@
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
-import {alongRing, letters, slab, setSink, getSink} from './nearbar-kit';
-import {basin, offsetRing, post, prismRing, ringBand, tubePath, type XZ} from './pool-kit';
+import {alongRing, diamondLatticeRows, letters, patternPanel, roofHeightAt, slab, setSink, getSink} from './nearbar-kit';
+import {basin, inRing, offsetRing, post, prismRing, ringBand, solarField, tubePath, type XZ} from './pool-kit';
 import {lngLatToRd} from '../../src/canalRecall/facade/rdNew';
 import source from './noorderparkbad-footprints.json';
 
@@ -36,18 +36,22 @@ export function buildNoorderparkbad(_w: number, _d: number, b: BuildingTools) {
   const e = native(4.918796, 52.398247);
   alongRing(ring, e, Array.from({length: 9}, () => ({ch: '', w: 1.8})), (f, t) => slab(b, f, t, 0.1, 1.7, 3.5, 0.12, 'glass', 0.02));
   alongRing(ring, e, [{ch: 'N', w: 5.4}, {ch: 'X', w: 5.4}], (f, t, ch) => {
-    slab(b, f, t, 0, 2.6, 3.6, 0.3, ch === 'N' ? 'white' : 'red', 0.02);
-    letters(b, f, ch, t, 0.3, 0.32, 0.43, 0.04, ch === 'N' ? 'red' : 'white');
+    if (ch === 'N') { slab(b, f, t, 0, 2.6, 3.6, 0.3, 'white', 0.02); letters(b, f, ch, t, 0.3, 0.32, 0.43, 0.04, 'red'); }
+    // the diamond lattice laid in red brick into white brick (w09-59), a pattern panel of 13 x 18 bricks, not an X glyph
+    else patternPanel(b, f, t, 0, 2.6, 3.6, diamondLatticeRows(13, 18), 'white', 'red', 0.3, 0.04, 0.02);
   });
   // west service front (w05-251): four dark doors between the brick piers
   alongRing(ring, native(4.9178565, 52.3978245), Array.from({length: 4}, () => ({ch: '', w: 3.0})), (f, t) => slab(b, f, t, 0.05, 2.2, 3.0, 0.1, 'dark', 0.02));
   // east end (w10-40): the second diamond-lattice panel, 3.5 m right of the wall centre
   alongRing(ring, native(4.9189925, 52.398108), [{ch: '', w: 4.4}, {ch: 'X', w: 2.6}], (f, t, ch) => {
-    if (!ch) return;
-    slab(b, f, t, 0, 2.5, 3.4, 0.3, 'red', 0.02);
-    letters(b, f, ch, t, 0.3, 0.32, 0.4, 0.04, 'white');
+    if (ch) patternPanel(b, f, t, 0, 2.5, 3.4, diamondLatticeRows(13, 17), 'white', 'red', 0.3, 0.04, 0.02);
   });
   setSink(sink0);
+
+  // ---- solar-panel fields (PDOK luchtfoto 2025 at 12.5 cm/px: the NE upper roof and the two low south roofs; the middle roof
+  // carries round roof-lights, not panels) ----
+  const roofAt = (x: number, z: number) => roofHeightAt(src.surfaces, x, z);
+  for (const [x0, x1, z0, z1] of [[6.4, 19.5, -34.0, -10.3], [15.8, 45.1, -10.3, 18.4], [-30.5, -7.4, 6.0, 34.7], [-3.6, 24.5, 4.1, 22.8]]) solarField(b, [[x0, z0], [x1, z0], [x1, z1], [x0, z1]], (x, z) => (inRing(offsetRing(ring, -1.5), x, z) ? roofAt(x, z) : null), 'dark', {depth: 1.0, pitch: 1.25, tilt: 10, inset: 0.3});
 
   // ---- outdoor basins on their decks ----
   const B = (id: string) => src.basins.find(x => x.osm === id)!.ring;

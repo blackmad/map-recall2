@@ -5,6 +5,7 @@
  "brief": "scripts/landmarks/de-mirandabad-brief.md",
  "signature": [
   "glass-dome",
+  "striped-glass-tower",
   "lap-pool",
   "hexagon-basins",
   "spiral-slide"
@@ -76,7 +77,7 @@
      ],
      "plan": "modelled",
      "seenIn": "TMX7316010203-001173_pano_0000_001323 and the PDOK luchtfoto",
-     "how": "pool-kit glassDome: spherical cap fitted to the 3DBAG roof vertices above 12 m and the 21.1 m NAP ridge, 20 meridian ribs, 3 ring ribs, base ring beam, white hub"
+     "how": "pool-kit glassDome with panes: spherical cap fitted to the 3DBAG roof vertices above 12 m and the 21.1 m NAP ridge, one flat glass pane per rib cell (domePanes, UV 0..1 per pane so each takes the game glass cell), 32 meridian ribs, 6 ring ribs, base ring beam, white hub (pools2 lane: the single shell read opaque)"
     },
     {
      "id": "west-front-bays",
@@ -173,19 +174,16 @@
      "how": "front() as on the west front"
     },
     {
-     "id": "red-entrance-panels",
+     "id": "striped-glass-tower",
      "kind": "other",
-     "where": "left edge of the crop: red-and-glass entrance volume",
+     "where": "the 6 x 6 m entrance tower between the hall and the round drum (ring edges 36-38, 3DBAG roof 11.5 m): glass banded with red panels in white frames",
      "approxSizeM": [
       4,
       9
      ],
-     "plan": "skipped",
+     "plan": "modelled",
      "seenIn": "TMX7316010203-001173_pano_0000_001317",
-     "skip": {
-      "reason": "not-visible",
-      "note": "only its edge is in the crop; its own wall has no panorama"
-     }
+     "how": "stripedTower(): full-height glass, red bands every 1.55 m, white transoms and mullions, coping, on edges 36-38 (pools2 lane)"
     }
    ],
    "note": "north end: same front language; a red and glass entrance volume to its left (east)"

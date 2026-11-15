@@ -45,19 +45,19 @@
      ],
      "plan": "modelled",
      "seenIn": "TMX7316010203-002064_pano_0000_002391",
-     "how": "glazedFront()/glassBand(): glass slabs with mullions, transom and fascia"
+     "how": "glazedFront()/glassBand(): glass slabs with mullions, transom and fascia on edges 22, 24, 25 and 26 (the west third was planted wall until the pools2 lane)"
     },
     {
      "id": "steel-canopy",
      "kind": "canopy",
-     "where": "over the entrance half at about 7.2 m",
+     "where": "entrance canopy over the middle of the front at about 6.4 m, a lower canopy over the west end at 5 m, the east canopy at 7.1 m",
      "approxSizeM": [
       20,
       0.3
      ],
-     "plan": "simplified",
+     "plan": "modelled",
      "seenIn": "TMX7316010203-002064_pano_0000_002391",
-     "how": "one dark slab 1.6 m deep on three brackets, on edge 22"
+     "how": "glazedFront() canopies on edges 24 (6.4 m, 2.6 m deep), 25-26 (5.0 m, 2.0 m), 22 (7.1 m): dark slab, light soffit, brackets (pools2 lane)"
     },
     {
      "id": "strip-windows",
@@ -312,17 +312,14 @@
     {
      "id": "roof-solar",
      "kind": "other",
-     "where": "green roof: rows of solar panels on the flat parts",
+     "where": "flat green roofs: six fields of solar-panel rows",
      "approxSizeM": [
       12,
       8
      ],
-     "plan": "skipped",
+     "plan": "modelled",
      "seenIn": "PDOK luchtfoto",
-     "skip": {
-      "reason": "not-visible",
-      "note": "flat on the roof, not seen from the street; the chase camera shows the roof but panels are under 0.3 m"
-     }
+     "how": "pool-kit solarField(): east-west rows 1.0 m deep at 1.35 m pitch, tilted 12 deg, traced on the orthophoto (pools2 lane)"
     }
    ]
   }

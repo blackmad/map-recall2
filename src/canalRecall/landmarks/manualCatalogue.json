@@ -83327,7 +83327,7 @@
    "sandstone": "#5f5852",
    "slate": "#3c3d3f",
    "glass": "#38444c",
-   "canopyGlass": "#9fb7b6",
+   "canopyGlass": "#4f7f86",
    "frame": "#eef0ec",
    "brick": "#7b4c3c",
    "blue": "#3cb4e0",
@@ -83335,7 +83335,8 @@
    "concrete": "#cdc8bc",
    "dark": "#1f5f8e",
    "copper": "#2f6cb8",
-   "gold": "#f0c22c"
+   "gold": "#f0c22c",
+   "red": "#b8322e"
   },
   "attribution": {
    "title": "De Mirandabad, De Mirandalaan 9: subtropical bath of 1979 with outdoor basins",
@@ -84161,7 +84162,7 @@
    "blue": "#3cb4e0",
    "white": "#f1f1ec",
    "concrete": "#d2cdc2",
-   "dark": "#1f5f8e",
+   "dark": "#3a3d40",
    "copper": "#7cc3e6",
    "frame": "#e8e8e4"
   },
@@ -84441,7 +84442,8 @@
    "red": "#9a4a35",
    "white": "#ece8e0",
    "glass": "#2c363d",
-   "blue": "#3cb4e0"
+   "blue": "#3cb4e0",
+   "dark": "#262d36"
   },
   "attribution": {
    "title": "Noorderparkbad, Noorderpark: indoor bath of 2015 with outdoor basins",
@@ -85854,6 +85856,865 @@
      [
       4.9187219,
       52.398327
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "sloterparkbad",
+  "name": "Sloterparkbad, President Allendelaan 3",
+  "modelUrl": "./models/sloterparkbad.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012084387"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.81776099,
+    52.37004103
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 191.2,
+   "widthMetres": 152
+  },
+  "surveyed": {
+   "anchor": [
+    4.81776099,
+    52.37004103
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012084387 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/sloterparkbad-footprints.json, written by pool-site-prepare.ts, with the OSM basin outline a488807746, ODbL). The shell is the 3DBAG LoD2.2 (CC BY 4.0); the north-west fronts are read from Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-002508_pano_0004_000065, _000111, _000107, _000100); the roofs, solar field and basin deck from the PDOK luchtfoto (Beeldmateriaal Nederland, CC BY 4.0). Per item in scripts/landmarks/sloterparkbad-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 21,
+  "galleryView": {
+   "theta": 2.3,
+   "phi": 0.9
+  },
+  "bagYear": 2001,
+  "materialOverrides": {
+   "brick": "#8c4a36",
+   "greyBrick": "#8b9092",
+   "concrete": "#cfcfca",
+   "glass": "#2c363d",
+   "frame": "#c9ccc8",
+   "dark": "#262d36",
+   "gold": "#d9662c",
+   "white": "#f2f2ee",
+   "blue": "#3cb4e0",
+   "sandstone": "#bfc3c1"
+  },
+  "attribution": {
+   "title": "Sloterparkbad, President Allendelaan 3: swimming and sports centre of 2001 on the Sloterplas",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/way/115721216",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the red-brick north-west front with its rows of square windows, glazed ground floor, ramped walkway with perforated balustrades and steel stair; the zinc west wing with its orange BASIC FIT bands; the solar field on the wing roof; the outdoor basin with its lanes and deck. Basin outline from OpenStreetMap (ODbL) checked on the PDOK luchtfoto (CC BY 4.0); fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8174954,
+      52.3700699
+     ],
+     [
+      4.8174391,
+      52.3700259
+     ],
+     [
+      4.8174347,
+      52.3700225
+     ],
+     [
+      4.8173226,
+      52.3699351
+     ],
+     [
+      4.8172782,
+      52.3699565
+     ],
+     [
+      4.8173179,
+      52.3699874
+     ],
+     [
+      4.8171296,
+      52.3700779
+     ],
+     [
+      4.8165916,
+      52.3696586
+     ],
+     [
+      4.8166042,
+      52.3696526
+     ],
+     [
+      4.8167808,
+      52.369568
+     ],
+     [
+      4.8169783,
+      52.3697213
+     ],
+     [
+      4.8170227,
+      52.3697
+     ],
+     [
+      4.8168139,
+      52.3695379
+     ],
+     [
+      4.8168174,
+      52.3695362
+     ],
+     [
+      4.8168199,
+      52.3695382
+     ],
+     [
+      4.8169171,
+      52.3694917
+     ],
+     [
+      4.8169145,
+      52.3694897
+     ],
+     [
+      4.8169179,
+      52.369488
+     ],
+     [
+      4.816921,
+      52.3694902
+     ],
+     [
+      4.8172454,
+      52.3697434
+     ],
+     [
+      4.8172956,
+      52.3697333
+     ],
+     [
+      4.8173471,
+      52.3697258
+     ],
+     [
+      4.8173993,
+      52.369721
+     ],
+     [
+      4.8174526,
+      52.3697188
+     ],
+     [
+      4.8175059,
+      52.3697194
+     ],
+     [
+      4.817559,
+      52.3697227
+     ],
+     [
+      4.817564,
+      52.3697008
+     ],
+     [
+      4.8176163,
+      52.3697066
+     ],
+     [
+      4.8176099,
+      52.3697281
+     ],
+     [
+      4.8176448,
+      52.3697339
+     ],
+     [
+      4.8176791,
+      52.3697408
+     ],
+     [
+      4.8177127,
+      52.3697489
+     ],
+     [
+      4.8177317,
+      52.369754
+     ],
+     [
+      4.8177504,
+      52.3697594
+     ],
+     [
+      4.8177688,
+      52.3697653
+     ],
+     [
+      4.817776,
+      52.3697677
+     ],
+     [
+      4.8177831,
+      52.3697701
+     ],
+     [
+      4.8177901,
+      52.3697726
+     ],
+     [
+      4.8177972,
+      52.3697751
+     ],
+     [
+      4.8178041,
+      52.3697777
+     ],
+     [
+      4.817811,
+      52.3697804
+     ],
+     [
+      4.8178158,
+      52.3697771
+     ],
+     [
+      4.8178742,
+      52.3697375
+     ],
+     [
+      4.8180205,
+      52.3698322
+     ],
+     [
+      4.8179907,
+      52.3698471
+     ],
+     [
+      4.8179892,
+      52.3698478
+     ],
+     [
+      4.8181941,
+      52.3700076
+     ],
+     [
+      4.8182037,
+      52.3700031
+     ],
+     [
+      4.8182081,
+      52.3700067
+     ],
+     [
+      4.8181847,
+      52.3700179
+     ],
+     [
+      4.8182239,
+      52.370049
+     ],
+     [
+      4.8182624,
+      52.3700805
+     ],
+     [
+      4.8183003,
+      52.3701123
+     ],
+     [
+      4.818328,
+      52.3701362
+     ],
+     [
+      4.8183553,
+      52.3701603
+     ],
+     [
+      4.8183823,
+      52.3701845
+     ],
+     [
+      4.8188112,
+      52.3705793
+     ],
+     [
+      4.8185276,
+      52.3707444
+     ],
+     [
+      4.8187869,
+      52.3709469
+     ],
+     [
+      4.8187834,
+      52.3709487
+     ],
+     [
+      4.8187811,
+      52.3709469
+     ],
+     [
+      4.8186845,
+      52.3709932
+     ],
+     [
+      4.818687,
+      52.3709951
+     ],
+     [
+      4.8186833,
+      52.3709968
+     ],
+     [
+      4.8184341,
+      52.3708025
+     ],
+     [
+      4.8183881,
+      52.3708246
+     ],
+     [
+      4.8183046,
+      52.3707594
+     ],
+     [
+      4.8183507,
+      52.3707373
+     ],
+     [
+      4.8180342,
+      52.3704903
+     ],
+     [
+      4.8180196,
+      52.370479
+     ],
+     [
+      4.8179991,
+      52.3704629
+     ],
+     [
+      4.8179829,
+      52.3704503
+     ],
+     [
+      4.817975,
+      52.3704441
+     ],
+     [
+      4.8179603,
+      52.3704327
+     ],
+     [
+      4.8178952,
+      52.3703819
+     ],
+     [
+      4.8178792,
+      52.3703694
+     ],
+     [
+      4.8175862,
+      52.3701407
+     ],
+     [
+      4.8175701,
+      52.3701281
+     ],
+     [
+      4.8175001,
+      52.3700736
+     ],
+     [
+      4.8174954,
+      52.3700699
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "zwembad-bijlmer",
+  "name": "Zwembad Bijlmer, Bijlmer Sportcentrum",
+  "modelUrl": "./models/zwembad-bijlmer.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012103346"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.95788658,
+    52.31548891
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 109.7,
+   "widthMetres": 101.5
+  },
+  "surveyed": {
+   "anchor": [
+    4.95788658,
+    52.31548891
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012103346 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/zwembad-bijlmer-footprints.json, written by pool-site-prepare.ts). The shell is the 3DBAG LoD2.2 (CC BY 4.0); every front is read from Gemeente Amsterdam panoramas (CC BY 4.0), listed per wall in scripts/landmarks/zwembad-bijlmer-brief.md and per item in scripts/landmarks/zwembad-bijlmer-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 13,
+  "galleryView": {
+   "theta": 3.6,
+   "phi": 0.95
+  },
+  "bagYear": 2008,
+  "materialOverrides": {
+   "greyBrick": "#867b6e",
+   "slate": "#4a4c4e",
+   "concrete": "#c9c7c0",
+   "glass": "#3a4a55",
+   "canopyGlass": "#8fa6b4",
+   "frame": "#d6d8d4",
+   "white": "#f2f2ee",
+   "green": "#3d9a3a",
+   "red": "#c8323a",
+   "dark": "#4d5256"
+  },
+  "attribution": {
+   "title": "Zwembad Bijlmer, Bijlmer Sportcentrum: sports and swimming hall of 2008",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/13057635556",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the glass curtain wall on the west and south, the sign band of white squares with green letters, the red BIJLMER SPORTCENTRUM lettering, the brick walls on their concrete plinth with the high strip windows and canopies. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9585998,
+      52.3152242
+     ],
+     [
+      4.958507,
+      52.3153257
+     ],
+     [
+      4.9584917,
+      52.3153423
+     ],
+     [
+      4.9584676,
+      52.3153687
+     ],
+     [
+      4.9584539,
+      52.3153837
+     ],
+     [
+      4.9581413,
+      52.3157254
+     ],
+     [
+      4.958141,
+      52.3157257
+     ],
+     [
+      4.9581089,
+      52.3157146
+     ],
+     [
+      4.9580757,
+      52.3157032
+     ],
+     [
+      4.9578232,
+      52.3159791
+     ],
+     [
+      4.9577738,
+      52.3159621
+     ],
+     [
+      4.957531,
+      52.3158787
+     ],
+     [
+      4.9574868,
+      52.3158636
+     ],
+     [
+      4.9572427,
+      52.3157797
+     ],
+     [
+      4.9571991,
+      52.3157648
+     ],
+     [
+      4.9571929,
+      52.3157627
+     ],
+     [
+      4.9573959,
+      52.3155412
+     ],
+     [
+      4.9574137,
+      52.3155217
+     ],
+     [
+      4.9574272,
+      52.315507
+     ],
+     [
+      4.9574372,
+      52.3154961
+     ],
+     [
+      4.9574436,
+      52.3154891
+     ],
+     [
+      4.9574492,
+      52.315483
+     ],
+     [
+      4.9574635,
+      52.3154674
+     ],
+     [
+      4.957443,
+      52.3154603
+     ],
+     [
+      4.9574881,
+      52.3153803
+     ],
+     [
+      4.9575314,
+      52.3151399
+     ],
+     [
+      4.9578607,
+      52.3151624
+     ],
+     [
+      4.9581412,
+      52.3149945
+     ],
+     [
+      4.958616,
+      52.3151047
+     ],
+     [
+      4.9586627,
+      52.3151207
+     ],
+     [
+      4.9586869,
+      52.315129
+     ],
+     [
+      4.9586737,
+      52.3151435
+     ],
+     [
+      4.9585998,
+      52.3152242
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "victoriabad",
+  "name": "Victoriabad, Weesp",
+  "modelUrl": "./models/victoriabad.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0457100000062818"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    5.02694008,
+    52.29844632
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 81.7,
+   "widthMetres": 56.3
+  },
+  "surveyed": {
+   "anchor": [
+    5.02694008,
+    52.29844632
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0457100000062818 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/victoriabad-footprints.json, written by pool-site-prepare.ts). The shell is the 3DBAG LoD2.2 (CC BY 4.0); the south and east fronts are read from Gemeente Amsterdam panoramas (CC BY 4.0), listed in scripts/landmarks/victoriabad-brief.md and per item in scripts/landmarks/victoriabad-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 10,
+  "galleryView": {
+   "theta": 0.4,
+   "phi": 1
+  },
+  "bagYear": 2005,
+  "materialOverrides": {
+   "brick": "#5f4b41",
+   "slate": "#45474a",
+   "glass": "#33414a",
+   "frame": "#2e3134",
+   "dark": "#2a2c2e",
+   "white": "#f2f2ee"
+  },
+  "attribution": {
+   "title": "Victoriabad, Weesp: indoor bath of 2005",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/1618233446",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the dark brick hall with its high window strip and glass slot, the entrance block's window band and projecting glass box, the east front's windows and the VICTORIABAD garden wall. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      5.0271726,
+      52.2985196
+     ],
+     [
+      5.0271567,
+      52.2985183
+     ],
+     [
+      5.0271188,
+      52.2987181
+     ],
+     [
+      5.0270338,
+      52.2987077
+     ],
+     [
+      5.0270059,
+      52.2987965
+     ],
+     [
+      5.0270532,
+      52.2988029
+     ],
+     [
+      5.027052,
+      52.2988062
+     ],
+     [
+      5.0270042,
+      52.2988003
+     ],
+     [
+      5.0269932,
+      52.2988312
+     ],
+     [
+      5.0265197,
+      52.2987294
+     ],
+     [
+      5.0265432,
+      52.2986967
+     ],
+     [
+      5.0265091,
+      52.2986874
+     ],
+     [
+      5.0265125,
+      52.2986672
+     ],
+     [
+      5.02653,
+      52.298562
+     ],
+     [
+      5.0265442,
+      52.2984787
+     ],
+     [
+      5.0265419,
+      52.298392
+     ],
+     [
+      5.0267335,
+      52.2984456
+     ],
+     [
+      5.0267285,
+      52.2984515
+     ],
+     [
+      5.0267265,
+      52.2984508
+     ],
+     [
+      5.026724,
+      52.2984538
+     ],
+     [
+      5.0267988,
+      52.2984741
+     ],
+     [
+      5.0268575,
+      52.2983999
+     ],
+     [
+      5.0268729,
+      52.2983988
+     ],
+     [
+      5.0268689,
+      52.2983544
+     ],
+     [
+      5.0268548,
+      52.2983545
+     ],
+     [
+      5.0268407,
+      52.298235
+     ],
+     [
+      5.0267957,
+      52.2982376
+     ],
+     [
+      5.0267993,
+      52.2982742
+     ],
+     [
+      5.0265357,
+      52.2982846
+     ],
+     [
+      5.0265308,
+      52.2982468
+     ],
+     [
+      5.0264816,
+      52.298249
+     ],
+     [
+      5.0264696,
+      52.2981502
+     ],
+     [
+      5.0266669,
+      52.2981414
+     ],
+     [
+      5.0271885,
+      52.2981211
+     ],
+     [
+      5.0271875,
+      52.2981133
+     ],
+     [
+      5.0272678,
+      52.2980975
+     ],
+     [
+      5.0272954,
+      52.2981523
+     ],
+     [
+      5.0272221,
+      52.29817
+     ],
+     [
+      5.0271897,
+      52.2983408
+     ],
+     [
+      5.0271366,
+      52.2983432
+     ],
+     [
+      5.027137,
+      52.2983491
+     ],
+     [
+      5.0271392,
+      52.2983488
+     ],
+     [
+      5.0271497,
+      52.2984399
+     ],
+     [
+      5.027148,
+      52.29844
+     ],
+     [
+      5.0271484,
+      52.2984446
+     ],
+     [
+      5.0271656,
+      52.2984454
+     ],
+     [
+      5.0271622,
+      52.2984665
+     ],
+     [
+      5.0271816,
+      52.2984677
+     ],
+     [
+      5.0271812,
+      52.2984703
+     ],
+     [
+      5.0271618,
+      52.2984691
+     ],
+     [
+      5.0271602,
+      52.2984785
+     ],
+     [
+      5.0271797,
+      52.2984797
+     ],
+     [
+      5.0271756,
+      52.2985048
+     ],
+     [
+      5.0271595,
+      52.2985037
+     ],
+     [
+      5.0271572,
+      52.2985153
+     ],
+     [
+      5.0271733,
+      52.2985163
+     ],
+     [
+      5.0271726,
+      52.2985196
      ]
     ]
    ]

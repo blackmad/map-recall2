@@ -3,7 +3,12 @@
  "id": "sloterparkbad",
  "pand": "0363100012084387",
  "brief": "scripts/landmarks/sloterparkbad-brief.md",
- "signature": [],
+ "signature": [
+  "walkway",
+  "brick-front-windows",
+  "zinc-wing-bands",
+  "outdoor-basin"
+ ],
  "walls": [
   {
    "tag": "w01-309",
@@ -16,8 +21,72 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-002508_pano_0004_000065",
    "capturedAt": "2022-04-12",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "walkway",
+     "kind": "other",
+     "where": "in front of the whole north-west front: a deck on posts 3.2 m out, a ramp rising from the north-east end to about 3.8 m, perforated light-grey balustrade panels",
+     "approxSizeM": [
+      113,
+      4.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002508_pano_0004_000065",
+     "how": "walkway(): deck in 3 m steps along edges 65-77 (ramp on 67), balustrade panels both sides, posts every 6 m"
+    },
+    {
+     "id": "brick-front-windows",
+     "kind": "window-shape",
+     "where": "red brick wall: two rows of small square windows at about 5.2 and 8.6 m, every 3.3 m",
+     "approxSizeM": [
+      0.8,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002508_pano_0004_000065",
+     "how": "square(): light frame, dark glass, on edges 65-77"
+    },
+    {
+     "id": "steel-stair",
+     "kind": "other",
+     "where": "steel stair climbing from the walkway to a door at about 8.6 m, a quarter of the way from the north-east end",
+     "approxSizeM": [
+      17,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002508_pano_0004_000065",
+     "how": "stair(): 14 treads with balustrade panels, a foot platform and a landing with the door; stringers not separate"
+    },
+    {
+     "id": "ground-glazing",
+     "kind": "window-shape",
+     "where": "glazed ground floor under the walkway",
+     "approxSizeM": [
+      100,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002508_pano_0004_000065",
+     "how": "groundGlass(): glass with mullions every 1.8 m and a dark head band"
+    },
+    {
+     "id": "billboards",
+     "kind": "sign",
+     "where": "two large advertising boards on the brick (swimming lessons, a whale)",
+     "approxSizeM": [
+      8,
+      3.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002508_pano_0004_000065",
+     "skip": {
+      "reason": "temporary",
+      "note": "changing advertising prints"
+     }
+    }
+   ]
   },
   {
    "tag": "w02-309",
@@ -30,8 +99,36 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-002508_pano_0004_000111",
    "capturedAt": "2022-04-12",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "zinc-wing-bands",
+     "kind": "lettering",
+     "where": "grey zinc wing in horizontal courses; an orange band of window panels near the top and one at the ground, lettered BASIC FIT",
+     "approxSizeM": [
+      59,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002508_pano_0004_000111",
+     "how": "ledgeStrip courses every 0.75 m; orangeBand() at 1.0 and 6.2 m with BASIC FIT in white glyphs twice"
+    },
+    {
+     "id": "orange-graphics",
+     "kind": "other",
+     "where": "line graphics (ladders, zigzags) printed on the orange panels",
+     "approxSizeM": [
+      2,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002508_pano_0004_000111",
+     "skip": {
+      "reason": "too-small",
+      "note": "printed line art inside the panels, under 0.1 m strokes"
+     }
+    }
+   ]
   },
   {
    "tag": "w03-124",
@@ -45,7 +142,8 @@
    "panoId": null,
    "capturedAt": null,
    "checked": false,
-   "items": []
+   "items": [],
+   "note": "no panorama (lake and garden side); drawn as the 3DBAG shell, inferred; the lake end (edge 45) gets a glazed ground floor from the orthophoto"
   },
   {
    "tag": "w04-128",
@@ -59,7 +157,8 @@
    "panoId": null,
    "capturedAt": null,
    "checked": false,
-   "items": []
+   "items": [],
+   "note": "no panorama (lake and garden side); drawn as the 3DBAG shell, inferred"
   },
   {
    "tag": "w05-129",
@@ -73,7 +172,8 @@
    "panoId": null,
    "capturedAt": null,
    "checked": false,
-   "items": []
+   "items": [],
+   "note": "no panorama (lake and garden side); drawn as the 3DBAG shell, inferred"
   },
   {
    "tag": "w06-309",
@@ -86,8 +186,21 @@
    "evidence": "photo",
    "panoId": "MS_26112024_845_Track13_Sphere_00042",
    "capturedAt": "2024-11-26",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-end",
+     "kind": "other",
+     "where": "the north-east end of the hall behind a parked coach: brick and a glazed corner",
+     "approxSizeM": [
+      27,
+      12
+     ],
+     "plan": "simplified",
+     "seenIn": "MS_26112024_845_Track13_Sphere_00042",
+     "how": "3DBAG shell in brick, ground glazing and the walkway's low start on edge 65"
+    }
+   ]
   },
   {
    "tag": "w07-44",
@@ -101,7 +214,8 @@
    "panoId": null,
    "capturedAt": null,
    "checked": false,
-   "items": []
+   "items": [],
+   "note": "no panorama (lake and garden side); drawn as the 3DBAG shell, inferred"
   },
   {
    "tag": "w08-126",
@@ -115,7 +229,8 @@
    "panoId": null,
    "capturedAt": null,
    "checked": false,
-   "items": []
+   "items": [],
+   "note": "no panorama (lake and garden side); drawn as the 3DBAG shell, inferred"
   },
   {
    "tag": "w09-309",
@@ -128,8 +243,21 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-002508_pano_0004_000107",
    "capturedAt": "2022-04-12",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "curved-corner-bands",
+     "kind": "lettering",
+     "where": "the curved zinc corner of the wing: the same two orange BASIC FIT bands",
+     "approxSizeM": [
+      23,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002508_pano_0004_000107",
+     "how": "orangeBand() on edges 0 and 2 without lettering (the lettering stands on the long wing wall)"
+    }
+   ]
   },
   {
    "tag": "w10-129",
@@ -143,7 +271,8 @@
    "panoId": null,
    "capturedAt": null,
    "checked": false,
-   "items": []
+   "items": [],
+   "note": "no panorama (lake and garden side); drawn as the 3DBAG shell, inferred"
   },
   {
    "tag": "w11-129",
@@ -157,7 +286,8 @@
    "panoId": null,
    "capturedAt": null,
    "checked": false,
-   "items": []
+   "items": [],
+   "note": "no panorama (lake and garden side); drawn as the 3DBAG shell, inferred"
   },
   {
    "tag": "w12-219",
@@ -170,14 +300,99 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-002508_pano_0004_000100",
    "capturedAt": "2022-04-12",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-strip-windows",
+     "kind": "window-shape",
+     "where": "south-west end of the zinc wing: two long strip windows",
+     "approxSizeM": [
+      10,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002508_pano_0004_000100",
+     "how": "frame and glass strips at 1.4 and 5.0 m on edge 8"
+    }
+   ]
+  },
+  {
+   "tag": "site-aerial",
+   "bearing": 0,
+   "lengthM": 200,
+   "centre": [
+    4.817758,
+    52.370041
+   ],
+   "evidence": "photo",
+   "panoId": "pdok-luchtfoto-Actueel_orthoHR (2025)",
+   "capturedAt": "2025",
+   "checked": true,
+   "note": "roofs and the outdoor basin read from the orthophoto with the OSM basin outline",
+   "items": [
+    {
+     "id": "outdoor-basin",
+     "kind": "other",
+     "where": "lake side: 25 m basin with lanes on a paved deck",
+     "approxSizeM": [
+      25,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK luchtfoto; OSM a488807746",
+     "how": "pool-kit basin() with a 4 m deck and six lanes"
+    },
+    {
+     "id": "wing-solar",
+     "kind": "other",
+     "where": "the west wing's flat roof, covered in solar panels",
+     "approxSizeM": [
+      55,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK luchtfoto",
+     "how": "pool-kit solarField() rows parallel to the wing (angleDeg -51.4)"
+    },
+    {
+     "id": "glass-peak",
+     "kind": "other",
+     "where": "the hall's glass peak over the lake end (3DBAG roof max 20.5 m NAP)",
+     "approxSizeM": [
+      20,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK luchtfoto",
+     "how": "3DBAG shell roof in the roof colour; glazed ground floor on edge 45"
+    },
+    {
+     "id": "s-disc",
+     "kind": "other",
+     "where": "terrace: a round white play surface with a large S",
+     "approxSizeM": [
+      10,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "PDOK luchtfoto",
+     "skip": {
+      "reason": "too-small",
+      "note": "flat on the ground, read only from above"
+     }
+    }
+   ]
   }
  ],
  "sources": [
   {
    "name": "Gemeente Amsterdam panoramas",
    "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "PDOK luchtfoto Actueel_orthoHR",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
    "licence": "CC BY 4.0"
   }
  ]
