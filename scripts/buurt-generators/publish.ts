@@ -16,11 +16,15 @@
  *    model or building-type instance: generate.ts describedPands) is dropped and listed: what describes a pand wins.
  * 3. Records are written slim: `sources` keeps only its `record` line (the full provenance stays in the staged copy),
  *    which halves the file the browser fetches.
+ *    --over-specs (the belt look, generated with scripts/belt-look/generate.ts --over-specs): a pand whose only
+ *    description is a per-house HouseSpec is kept, as the generator drew it over that spec; a row record, model or
+ *    building type still wins.
  * Then (the integrator): turn the kit on for these records (kitFlag.ts) and recompile the world (--no-policy --shell).
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { describedPands } from './generate.ts';
+import { specOnlyPands } from '../belt-look/generate.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const districts = (arg('districts') ?? '').split(',').filter(Boolean);
@@ -30,6 +34,7 @@ const OUT = 'public/data/front-records/row-front.json';
 type Rec = { pandId: string; sources?: Record<string, string>; buurtKit?: unknown; [k: string]: unknown };
 const current = JSON.parse(fs.readFileSync(OUT, 'utf8')) as { schema: string; source: string[]; records: Rec[] };
 const described = describedPands();
+if (process.argv.includes('--over-specs')) for (const id of specOnlyPands()) described.delete(id);
 
 let records = current.records, sources = current.source.filter(s => !districts.some(d => s.startsWith(`buurt-generator ${d} `)));
 const report: string[] = [];
