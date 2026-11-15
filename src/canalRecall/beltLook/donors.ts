@@ -108,6 +108,12 @@ export interface LookDistrict {
   pitchM: { readonly min: number; readonly max: number };
   /** Added to donorDistance for a donor tagged with another district (0: no cost). */
   foreignDonor: number;
+  /** roofSignals.ts: no gable (stated or a donor's) on a measured flat top. */
+  flatTopNoGable?: boolean;
+  /** roofSignals.ts: a cornice front whose AHN band climbs a roof slope stands at the band's p50. */
+  slopedBand?: boolean;
+  /** roofSignals.ts: a roof storey (one dormer) over a cornice front whose 3DBAG ridge stands 2 m over the front top. */
+  measuredRoofStorey?: boolean;
 }
 export const BELT_LOOK: LookDistrict = { id: 'belt', canals: BELT_CANALS, pitchM: PITCH_M, foreignDonor: 0 };
 /** A warehouse's floor pitch (m): pakhuis floors are low (2.4-3.0 m in the belt's read warehouses), so the eaves hold more storeys. */

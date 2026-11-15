@@ -48,13 +48,13 @@ for (const [wijk, buurten] of Object.entries(WIJKEN)) {
   let inRows = 0, offLine = 0;
   for (const r of res.rows) {
     if (r.members.length < 3) continue;
-    const A = r.members[0].front.a, B = r.members[r.members.length - 1].front.b, L = Math.hypot(B[0] - A[0], B[1] - A[1]);
+    const A = r.members[0].front.a, B = r.members[r.members.length - 1].front.b, L = Math.hypot(B.x - A.x, B.y - A.y);
     if (L < 1) continue;
-    const ux = (B[0] - A[0]) / L, uy = (B[1] - A[1]) / L;
+    const ux = (B.x - A.x) / L, uy = (B.y - A.y) / L;
     for (const m of r.members) {
       inRows++;
-      const mx = (m.front.a[0] + m.front.b[0]) / 2, my = (m.front.a[1] + m.front.b[1]) / 2, off = Math.abs((mx - A[0]) * uy - (my - A[1]) * ux);
-      const fx = m.front.b[0] - m.front.a[0], fy = m.front.b[1] - m.front.a[1], ang = Math.acos(Math.min(1, Math.abs((fx * ux + fy * uy) / Math.max(1e-6, Math.hypot(fx, fy))))) * 180 / Math.PI;
+      const mx = (m.front.a.x + m.front.b.x) / 2, my = (m.front.a.y + m.front.b.y) / 2, off = Math.abs((mx - A.x) * uy - (my - A.y) * ux);
+      const fx = m.front.b.x - m.front.a.x, fy = m.front.b.y - m.front.a.y, ang = Math.acos(Math.min(1, Math.abs((fx * ux + fy * uy) / Math.max(1e-6, Math.hypot(fx, fy))))) * 180 / Math.PI;
       if (off > 0.75 || ang > 12) offLine++;
     }
   }
@@ -71,7 +71,7 @@ for (const [wijk, buurten] of Object.entries(WIJKEN)) {
     let hit = 0, alleyN = 0, alleyHit = 0;
     for (const f of sample) {
       const fr = f.m.front, mid = [(fr.aLngLat[0] + fr.bLngLat[0]) / 2, (fr.aLngLat[1] + fr.bLngLat[1]) / 2], d = Math.min(6, fr.streetM);
-      const lat = mid[1] + fr.n[1] * d / 110540, lng = mid[0] + fr.n[0] * d / (111320 * Math.cos(mid[1] * Math.PI / 180));
+      const lat = mid[1] + fr.n.y * d / 110540, lng = mid[0] + fr.n.x * d / (111320 * Math.cos(mid[1] * Math.PI / 180));
       const url = `https://api.data.amsterdam.nl/panorama/panoramas/?near=${lng.toFixed(6)},${lat.toFixed(6)}&radius=10&srid=4326&page_size=1`;
       let c = 0;
       try { c = ((await (await fetch(url, { headers: { 'User-Agent': 'map-recall2 (https://github.com/blackmad/map-recall2)' } })).json()) as { count?: number }).count ?? 0; } catch { c = -1; }
