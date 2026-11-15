@@ -759,6 +759,8 @@ function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: n
  */
 /** Triangles of stated row dormers (rowDormersOnEnds), for the cut at the walls. */
 const ROW_DORMER_TRIS = new WeakSet<RoofTri>();
+/** Those stood back inside the walls (outlineRoof): never matched as a wall plate by the cut. */
+const ROW_DORMER_BACK = new WeakSet<RoofTri>();
 function rowDormersOnEnds(s: RoofSink, plan: RoofPlan, L: number, W: number, surf: (a: number) => number, pf: number): void {
   const ds = plan.rowDormers ?? [];
   if (!ds.length) return;
@@ -1012,8 +1014,8 @@ function sourceRoofWithinOutline(triangles:RoofTri[],outline:Vec2[],h0:number,di
     for(const t of triangles){
       if(t.part==='slope')continue;
       // A vertical plate standing on one wall edge (a gable or mansard end) is cut to that edge's extent and keeps closing it.
-      // A stated row dormer's face is never a wall plate (stood back, it can fall on a stepped front's edge: Herengracht 65).
-      const wall=Math.abs(t.n[2])<.05&&!ROW_DORMER_TRIS.has(t)?ring.findIndex((r0,j)=>t.p.every(q=>near(q,r0,ring[(j+1)%ring.length]))):-1;
+      // A stood-back row dormer's face is never a wall plate (it can fall on a stepped front's edge: Herengracht 65).
+      const wall=Math.abs(t.n[2])<.05&&!ROW_DORMER_BACK.has(t)?ring.findIndex((r0,j)=>t.p.every(q=>near(q,r0,ring[(j+1)%ring.length]))):-1;
       if(wall>=0){
         const r0=ring[wall],r1=ring[(wall+1)%ring.length],dx=r1[0]-r0[0],dy=r1[1]-r0[1];
         let poly:Vertex[]=half(t.p.map((p,i)=>({p,uv:t.uv[i]})),r0,[r0[0]-dy,r0[1]+dx],-1);
@@ -1180,7 +1182,7 @@ function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: num
       // A stated dormer standing outside the walls (a front stepped back behind a part that stands forward, Herengracht 51:
       // the box's end is the forward part's) would be cut away at the walls: it stands back by its overhang instead.
       const keep = insetRing(openRing(mesh), -0.05) ?? openRing(mesh), hang = Math.max(0, ...tris.filter(t => ROW_DORMER_TRIS.has(t)).map(t => pointsHangM(t.p, keep)));
-      if (hang > ROOF_PART_HANG_M) tris = roofTriangles(inside, { ...rp, rowDormerBackM: +(hang + 0.2).toFixed(2) }, h0, dims);
+      if (hang > ROOF_PART_HANG_M) { tris = roofTriangles(inside, { ...rp, rowDormerBackM: +(hang + 0.2).toFixed(2) }, h0, dims); for (const t of tris) if (ROW_DORMER_TRIS.has(t)) ROW_DORMER_BACK.add(t); }
       out.push(...tris); continue;
     }
     const innerPlan = plan.sourceCrownFront ? {...piece.plan, kind: piece.plan.kind === 'gable' ? 'pitched' as const : piece.plan.kind, accents:false, sourceCrownFront:undefined} : withStreetEnds(piece.plan, rect, facing);
