@@ -430,3 +430,14 @@ test('stated window heights stack the storeys by them; a pand to two lines takes
   rowStepLow(list, 0, [{ x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: 1, a0: 0, a1: 3, z: 14.6 }]);
   assert.deepEqual(list.map(t => t.p[0][0] + ':' + t.p[0][2]), ['1:14', '5:15']);
 });
+
+test('a stated pediment on the cornice (RowCorniceDress.centre) takes the centre dormer behind it; absent: the dormers as stated (Herengracht 248)', () => {
+  const d0 = solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input).series[0].design;
+  const fr = [{ id: 'x', pandId: 'x', label: '', numbers: [], widthM: 8, seriesId: 's', ground: { use: 'dwelling' as const }, overrides: {}, topM: 14 }];
+  const roof = { value: { kind: 'mansard' as const, material: 'slate' as const, dormersPerFront: 3, dormerKind: 'plain' as const }, source: 'face-intent' as const, ref: 't' };
+  const plain = seriesDraw(fr, [{ ...d0, roofStorey: roof }]);
+  assert.equal(plain.roofStorey!.dormers.length, 3);
+  const ped = seriesDraw(fr, [{ ...d0, roofStorey: roof, corniceDress: { value: { centre: 'pediment', centreShare: 0.5 }, source: 'reviewed', ref: 't' } }]);
+  assert.deepEqual(ped.roofStorey!.dormers.map(d => d.a), [0.1667, 0.8333]);
+  assert.deepEqual(ped.corniceDress, { centre: 'pediment', centreShare: 0.5 });
+});
