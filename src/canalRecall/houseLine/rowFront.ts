@@ -436,6 +436,25 @@ export function stepCrown(f: SubFrontRecord, widthM: number): StepCrown | null {
   return { wallTopM: f.topM ?? f.eavesM };
 }
 
+/** A sub-front this much over its member's series line draws its own raised front (m). */
+export const ROW_RAISED_FRONT_M = 0.5;
+/** The sub-fronts of a series member with their steps when any front's top stands ROW_RAISED_FRONT_M over the series
+ *  line `top`: every wall stops at the line, and a taller front carries a full-width raised front (a cornice band to
+ *  its own top, `raised` crown with the band over the whole rise) on its span. Null when none is taller, the record has
+ *  no span, or steps are off. */
+export function rowRaisedFronts(rec: RowFrontRecord, top: number): Array<SubFrontRecord & { step: StepCrown }> | null {
+  const span = rec.spanM, subs = rec.subFronts;
+  if (!rowFrontStepsOn() || !span || !subs || subs.length < 2) return null;
+  const topOf = (f: SubFrontRecord) => f.topM ?? f.eavesM ?? top;
+  if (!subs.some(f => topOf(f) > top + ROW_RAISED_FRONT_M)) return null;
+  return subs.map(f => {
+    const rise = +(topOf(f) - top).toFixed(2), W = (f.a1 - f.a0) * span;
+    if (!(rise > ROW_RAISED_FRONT_M)) return { ...f, step: { wallTopM: top } };
+    const crown: RowCrown = { shape: 'raised', riseM: rise, bandM: rise, cap: 'flat' };
+    return { ...f, step: { wallTopM: top, crown, gable: 'cornice' as const, riseM: rowCrownRoofRise(crown, W) } };
+  });
+}
+
 /** `ROW_FRONT_STEPS=0` / `?rowFrontSteps=0`: a pand with sub-fronts keeps one top and one crown (the tallest front's). */
 export function rowFrontStepsOn(search?: string): boolean {
   try {
@@ -538,6 +557,11 @@ export function withRowFront<T extends Feature>(feature: T): T {
     }
     // A stated ground colour is the shopfront's paint, drawn as stated (threeBuildingFeatures takes fasciaHex as is).
     if (sr2 && rec.series.groundHex) sr2.fasciaHex = rec.series.groundHex;
+    // A member whose fronts carry their own taller tops (Kinkerstraat 126-138: two fronts of another series to 16.45 m
+    // over 13.45 m): the wall keeps the series line and each taller front stands a raised front of its own to its top,
+    // the step mesher's crown on its span (threeBuildingMesh steps). Without one, nothing changes.
+    const raised = sr2 ? rowRaisedFronts(rec, top) : null;
+    if (sr2 && raised) sr2.subFronts = raised;
     const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...(rec.series.shop !== undefined ? { specShop: rec.series.shop } : {}), ...(rec.series.look ? { rowLook: rec.series.look } : {}), ...lv };
     if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
       rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}), ...(mansard.frontM ? { frontM: mansard.frontM } : {}) } });

@@ -34,7 +34,7 @@ import type { RowCrown } from './houseLine/crownProfile.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
 import { CELL_VARIANTS, CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
-import { edgeGroundPieces, edgeLayout, layoutRun, type LayoutScale } from './facadeLayout.js';
+import { edgeGroundPieces, edgeLayout, layoutRun, type LayoutScale, type RunLayout } from './facadeLayout.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetDistance } from './streetFronts.js';
 import type { StreetFacing } from './streetGableEnds.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
@@ -504,6 +504,12 @@ function subFrontSpans(subs: ReadonlyArray<{ a0: number; a1: number; wallHex?: s
 const STEP_NOTCH_M = 0.8, STEP_CROWN_DEPTH_M = 1.2;
 type StepSpan = { a0: number; a1: number; topZ: number; crown?: RowCrown; gable?: GableShape; riseM?: number };
 /** Sub-fronts with a step on the run (metres along it, the run's direction), each with its wall top in mesh z. */
+/** Each edge of a run on its own bay grid (facadeLayout edgeLayout: the grid the extras draw on), numbered on from the
+ *  run's start: u0 is the bays before it. */
+export function rowEdgeGrid(layout: RunLayout, lens: readonly number[]): { u0: number; bays: number }[] {
+  let u = 0;
+  return lens.map((len, k) => { const bays = edgeLayout(layout, k, len).bays, g = { u0: u, bays }; u += bays; return g; });
+}
 function stepSpans(subs: ReadonlyArray<{ a0: number; a1: number; step?: { wallTopM: number; crown?: RowCrown; gable?: GableShape; riseM?: number } | null }>, ltr: boolean, len: number, base: number): StepSpan[] | null {
   if (subs.some(f => !f.step)) return null;
   return subs.map(f => ({ a0: (ltr ? f.a0 : 1 - f.a1) * len, a1: (ltr ? f.a1 : 1 - f.a0) * len, topZ: base + f.step!.wallTopM,
@@ -725,6 +731,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const wallExtraContexts: ExtraContext[] = [];
     const frontageTriangles: SignTri[] = [];
     const cornice: StreetCrownTri[] = [];
+    // Step crowns (rowFront sub-fronts): kept under a planned roof too (a row's raised fronts over its mansard).
+    const stepCrownTris: StreetCrownTri[] = [];
     let extraTris = 0;
     const doorAllowed = doorWalls(bi);
     // The pavement in front of a wall, for a spec stoop (stoopExtra.ts): wall to street centreline less half a carriageway.
@@ -937,6 +945,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       }
       // Lane 1 (rowFront, stepped run): sub-fronts with their own wall tops and crowns (houseLine/rowFront stepCrown).
       const steps = streetRun && traceRun && b.specRecipe?.subFronts?.some(f => f.step) ? stepSpans(b.specRecipe.subFronts, seenLeftToRight(first), layout.lengthM, base) : null;
+      // House rows: a series member's street run round a kink paints each edge's own bay grid (edgeLayout), the grid its
+      // window frames and dressings take; the run's continuous grid set the glass half a bay off the frames on the middle
+      // edges (Kinkerstraat 126-138: 3.2 + 11.5 + 18.0 m, 19 axes). Only when every edge holds a bay: a short jog (90's
+      // 0.5 m return) keeps the run's grid. Single-edge runs and every other building keep it.
+      const edgeGrid = b.rowSeries && streetRun && run.length > 1 && run.every(r => r.e.len >= bw) && !compound && !regular && !terrace ? rowEdgeGrid(layout, run.map(r => r.e.len)) : null;
+      const uOf = (k: number, s: number, len: number): [number, number] => edgeGrid ? [edgeGrid[k].u0 * cellU, (edgeGrid[k].u0 + edgeGrid[k].bays) * cellU] : units ? [s / bw * cellU, (s + len) / bw * cellU] : [s / bw, (s + len) / bw];
       run.forEach(({ e }, k) => {
         walls++;
         const q0 = quads.length;
@@ -992,8 +1006,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
             const t = party ? [tint[0] * PARTY_BREAK_SHADE, tint[1] * PARTY_BREAK_SHADE, tint[2] * PARTY_BREAK_SHADE, tint[3]] as [number, number, number, number] : tintAt((a0 + a1) / 2);
             quads.push({ kind: 'upper-wall', e, u0: a0 / 5, u1: a1 / 5, v0: w.z0 / 3, v1: w.z1 / 3, layer: b.plainLayer!, accent, z0: w.z0, z1: w.z1, tint: t, along0: (a0 - s) / e.len, along1: (a1 - s) / e.len });
           }
-        } else if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: units ? s / bw * cellU : s / bw, u1: units ? (s + e.len) / bw * cellU : (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
-        if (parapet && b.plainLayer !== undefined) quads.push({ kind: 'parapet', e, u0: units ? s / bw * cellU : s / bw, u1: units ? (s + e.len) / bw * cellU : (s + e.len) / bw, v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
+        } else if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
+        if (parapet && b.plainLayer !== undefined) quads.push({ kind: 'parapet', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
         if (steps && b.plainLayer !== undefined) {
           // Each front's wall stops at its own top; above a lower front, a wall set STEP_NOTCH_M back up to the run's
           // top (the taller neighbour's flank closes each side), and its crown stands on its own top.
@@ -1016,7 +1030,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
             if (st.crown && mid >= s - 1e-6 && mid < s + e.len - 1e-6) {
               const W = st.a1 - st.a0, D = STEP_CROWN_DEPTH_M, [mx, my] = at(mid);
               const plan: RoofPlan = { kind: 'gable', gable: st.gable!, rowCrown: st.crown, riseM: st.riseM!, gableEnds: [true, true], streetEnds: [true, false], dormers: false, material: 'slate', tone: 0.5, seed: `${b.id}:step:${mid.toFixed(2)}`, chimney: false, accents: true, trimHex: b.accentHex ?? '#f1ece2' };
-              cornice.push(...(roofTriangles({ cx: mx - e.nx * D / 2, cy: my - e.ny * D / 2, ux: -e.nx, uy: -e.ny, len: D, wid: W, coverage: 1, maxDev: 0 }, plan, st.topZ, { bayM: bw, storeyM: layout.storeyM, cellM: 5 }) as StreetCrownTri[]));
+              const crownTris = roofTriangles({ cx: mx - e.nx * D / 2, cy: my - e.ny * D / 2, ux: -e.nx, uy: -e.ny, len: D, wid: W, coverage: 1, maxDev: 0 }, plan, st.topZ, { bayM: bw, storeyM: layout.storeyM, cellM: 5 }) as StreetCrownTri[];
+              cornice.push(...crownTris); stepCrownTris.push(...crownTris);
             }
           }
         }
@@ -1049,6 +1064,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     }else if (b.roof) {
       roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal, !b.roof.lowPoly && (b.roof.plan.kind === 'gable' || b.roof.plan.streetRidge || b.roof.plan.rowDormers) ? crownFacing(bi) : undefined);
       if (crownFronts.length&&!b.roof.plan.repeatedTerrace&&!b.roof.lowPoly) roof = streetCrown(roof,crownFronts,b.heightM,['gable','pitched','halfHipped'].includes(b.roof.plan.kind)&&!b.roof.plan.shutters);
+      if (stepCrownTris.length) roof = [...roof, ...stepCrownTris];
     }
     const walled = mode === 'walls', shellMode = mode === 'shell';
     const lid = (walled || shellMode) && !b.surveyedEnvelope && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;

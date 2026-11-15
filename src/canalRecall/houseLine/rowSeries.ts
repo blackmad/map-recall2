@@ -14,7 +14,7 @@
 import { frontDesign, type RowDesign, type RowFront, type RowRecord } from '../houseSpec/row/types.ts';
 import { rowFrontRecords } from '../houseSpec/row/emit.ts';
 import { headsList } from '../houseSpec/row/solve.ts';
-import { ROW_FRONT_EXTRAS, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
+import { ROW_FRONT_EXTRAS, ROW_RAISED_FRONT_M, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
 
 /** Grounds that put the ground storey on a souterrain (stoop over basement windows). */
 const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows', 'windows']);
@@ -176,6 +176,9 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
       sources: { ...rec.sources, ...(line !== null ? { eaves: `${rec.sources.eaves}; drawn at the series line ${line} m (street datum: the world has no terrain)` } : {}), series: `house-rows ${row.id}: ${[...new Set(fronts.map(f => f.seriesId))].join(', ')}`, wall: `judged ${walls[0].family} (${designs[0].wall.source}: ${designs[0].wall.ref})` },
     };
     if (rec.subFronts && walls.some(w => w.hex !== walls[0].hex)) out.subFronts = rec.subFronts.map((s, i) => ({ ...s, wallHex: walls[i]?.hex ?? walls[0].hex }));
+    // A member whose fronts stand to different series lines gets its width, so the renderer can size each front's
+    // raised top (rowFront.ts rowRaisedFronts); a member on one line is unchanged.
+    if (out.subFronts && !out.spanM && member.widthM && member.widthM > 1 && line !== null && out.subFronts.some(f => (f.topM ?? line) > line + ROW_RAISED_FRONT_M)) out.spanM = member.widthM;
     const joins = mansardJoins(row, rec.pandId);
     if (joins && out.series?.roofStorey?.kind === 'mansard') out.series.roofStorey.joins = joins;
     // A corner member's roof faces its row's street, not the side street nearer its outline (Kinkerstraat 110).
