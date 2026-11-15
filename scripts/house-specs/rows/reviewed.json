@@ -596,6 +596,37 @@
       "ref": "lane D gable rise re-read 2026-11-15 (#391), the D1 cut of 39",
       "at": "2026-11-15",
       "note": "39: a bell 1.74 storeys from the claw foot to the crest (5.2 m, stated at the belt bell's 4.8), a small opening high in the neck over the hoist lights (blind gable review 3)."
+    },
+    {
+      "fronts": [
+        "0363100012168213"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.5,
+        "attic": 1,
+        "neckWidthM": 2.4,
+        "stone": {
+          "claws": false
+        }
+      },
+      "ref": "lane R gable-stone audit (lane/rows-belt-stone-20261115 205735344), lane D statement",
+      "at": "2026-11-15",
+      "note": "37: a plain neck on small shoulders, no klauwstukken; the neck narrower than the stock share (about 0.4 of the front); 1.5 storeys from the shoulders to the cap (4.5 m)."
+    },
+    {
+      "fronts": [
+        "0363100012175404"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4,
+        "steps": 7,
+        "neckWidthM": 1.4
+      },
+      "ref": "lane R gable-stone audit (lane/rows-belt-stone-20261115 205735344), lane D statement",
+      "at": "2026-11-15",
+      "note": "27: a narrow step gable with about six to seven small steps a side up to a narrow top tread (D1 cut, glare on the left)."
     }
   ],
   "herengracht-51-73": [
@@ -1621,11 +1652,14 @@
       "field": "ground.stoop",
       "value": {
         "stoopForm": "double",
-        "stoopRailing": true
+        "stoopRailing": true,
+        "doorcase": {
+          "material": "stone"
+        }
       },
       "ref": "lane R's stoop forms (_pruned-sheets/house-rows-r/stoop-forms/herengracht-130-148-test-record.json), lane D statement",
       "at": "2026-11-15",
-      "note": "130: a double stoop with iron railings (the blind judge: a solid grey block where the photo shows railings)."
+      "note": "130: a double stoop with iron railings (the blind judge: a solid grey block where the photo shows railings). A stone doorcase round the door (lane R doorcase kit, 399aa3cfc)."
     },
     {
       "fronts": [
