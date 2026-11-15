@@ -61,6 +61,13 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     concrete: {slot: 'stone', measured: '#d6d6d4', why: 'cool light-grey tiles of the set-back storey and the drum, and the white banners (w03-257, w04-245)'},
     bronze: {slot: 'accent', measured: '#b08a4a', why: 'bronze-gold HOLLAND CASINO letters on the roof edge (w03-257)'},
   },
+  'port-van-cleve': {
+    pink: {slot: 'accent', why: 'red neon letters of the roof sign die PORT van CLEVE (TMX7316010203-001900_pano_0006_000054)'},
+    concrete: {slot: 'stone', why: 'white stone frieze panels, sign lettering and the stepped-gable house\'s white ground floor and step caps (w02-290)'},
+    greyBrick: {slot: 'slate', why: 'lead dome over the annex erker (w04-117)'},
+    bronze: {slot: 'frame', why: 'dark letters of the frieze and the steel frame of the roof sign'},
+    blue: {slot: 'paint', why: 'dark blue entrance canopy and the De Blauwe Parade sign panel'},
+  },
   'schiller-rembrandtplein': {
     brick: {slot: 'brick', measured: '#5a3530', why: 'purple-brown brick of the hotel front (w01-348, w04-253; blind review 2026-11-15: the palette brick read saturated red)'},
     sandstone: {slot: 'stone', measured: '#b3a58e', why: 'pale beige-grey stone of the oriels, the corner tower and the window dressings (w01-348)'},

@@ -107447,6 +107447,306 @@
       "triangles": 6346,
       "bytes": 96044,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "port-van-cleve": {
+      "id": "port-van-cleve",
+      "name": "Hotel Die Port van Cleve, Nieuwezijds Voorburgwal 176-180",
+      "modelUrl": "./models/port-van-cleve.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012175580"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8905571,
+          52.37408156
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 38.7,
+        "widthMetres": 39.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.8905571,
+          52.37408156
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012175580 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/port-van-cleve-footprints.json, written by bag-shell-prepare.ts). The massing is the 3DBAG LoD2.2 shell (CC BY 4.0); the Nieuwezijds Voorburgwal front is drawn from the rectified Gemeente Amsterdam panorama TMX7316010203-001900_pano_0006_000054 (2020, CC BY 4.0) and TMX7316010203-002623_pano_0002_000123 (2022). Per wall in scripts/landmarks/port-van-cleve-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 20.6,
+      "galleryView": {
+        "theta": 0.6,
+        "phi": 1.2
+      },
+      "materialOverrides": {
+        "brick": "#8a4a3c",
+        "sandstone": "#9c917c",
+        "stone": "#8c8a84",
+        "slate": "#4a4c54",
+        "red": "#a8401f",
+        "glass": "#3a3e42",
+        "frame": "#d8d2c4",
+        "white": "#e2ded4",
+        "dark": "#2a2a2c",
+        "blue": "#24345a",
+        "pink": "#d0303a",
+        "concrete": "#e2ded4",
+        "greyBrick": "#7c828c",
+        "bronze": "#2a2a2c"
+      },
+      "attribution": {
+        "title": "Hotel Die Port van Cleve, Nieuwezijds Voorburgwal 176-180: hotel-restaurant by I. Gosschalk (1888), rijksmonument 5988",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Hotel_Die_Port_van_Cleve",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell (CC BY 4.0): the four-arched stone ground floor, three-light windows under carved lunettes, the lettered frieze, balustrade and pinnacles, dormers, the central gable, the neon roof sign, and the annex with its erker and bell gable. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.890677,
+              52.3741101
+            ],
+            [
+              4.8906317,
+              52.3741216
+            ],
+            [
+              4.8905624,
+              52.3741391
+            ],
+            [
+              4.8905149,
+              52.374151
+            ],
+            [
+              4.890533,
+              52.3741715
+            ],
+            [
+              4.8904366,
+              52.3741958
+            ],
+            [
+              4.890461,
+              52.3742256
+            ],
+            [
+              4.8904052,
+              52.3742412
+            ],
+            [
+              4.8903341,
+              52.374261
+            ],
+            [
+              4.8903334,
+              52.3742603
+            ],
+            [
+              4.8903168,
+              52.3742321
+            ],
+            [
+              4.8903119,
+              52.3742237
+            ],
+            [
+              4.8903067,
+              52.374215
+            ],
+            [
+              4.8903009,
+              52.374205
+            ],
+            [
+              4.8902985,
+              52.3742005
+            ],
+            [
+              4.8903,
+              52.3742003
+            ],
+            [
+              4.8902926,
+              52.3741861
+            ],
+            [
+              4.8902912,
+              52.3741864
+            ],
+            [
+              4.890238,
+              52.3740836
+            ],
+            [
+              4.8902394,
+              52.3740833
+            ],
+            [
+              4.8902323,
+              52.3740696
+            ],
+            [
+              4.8902309,
+              52.3740699
+            ],
+            [
+              4.8902031,
+              52.3740164
+            ],
+            [
+              4.890641,
+              52.3739149
+            ],
+            [
+              4.8906527,
+              52.373929
+            ],
+            [
+              4.8906759,
+              52.3739568
+            ],
+            [
+              4.8906756,
+              52.3739572
+            ],
+            [
+              4.8906784,
+              52.3739606
+            ],
+            [
+              4.8906797,
+              52.3739602
+            ],
+            [
+              4.890681,
+              52.3739618
+            ],
+            [
+              4.8906836,
+              52.373965
+            ],
+            [
+              4.8906823,
+              52.3739654
+            ],
+            [
+              4.8907022,
+              52.3739895
+            ],
+            [
+              4.8907035,
+              52.3739891
+            ],
+            [
+              4.8907054,
+              52.3739914
+            ],
+            [
+              4.8907075,
+              52.3739939
+            ],
+            [
+              4.8907062,
+              52.3739943
+            ],
+            [
+              4.8907267,
+              52.3740191
+            ],
+            [
+              4.890728,
+              52.3740187
+            ],
+            [
+              4.890732,
+              52.3740236
+            ],
+            [
+              4.8907307,
+              52.374024
+            ],
+            [
+              4.8907518,
+              52.3740496
+            ],
+            [
+              4.8907531,
+              52.3740492
+            ],
+            [
+              4.8907571,
+              52.374054
+            ],
+            [
+              4.8907558,
+              52.3740544
+            ],
+            [
+              4.8907757,
+              52.3740785
+            ],
+            [
+              4.890777,
+              52.3740781
+            ],
+            [
+              4.8907809,
+              52.3740829
+            ],
+            [
+              4.8907796,
+              52.3740833
+            ],
+            [
+              4.8907802,
+              52.3740841
+            ],
+            [
+              4.890677,
+              52.3741101
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -24.207311630249023,
+          -9.536743306171047e-8,
+          -20.56075668334961
+        ],
+        "max": [
+          15.726396560668945,
+          26.71500015258789,
+          18.785127639770508
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8905571,
+          52.37408156
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 39.93370819091797,
+        "heightMetres": 26.715000247955324,
+        "depthMetres": 39.34588432312012,
+        "depthCoverage": 0.9986265056629472
+      },
+      "triangles": 15078,
+      "bytes": 194424,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

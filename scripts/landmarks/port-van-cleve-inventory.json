@@ -1,0 +1,320 @@
+{
+ "schemaVersion": 1,
+ "id": "port-van-cleve",
+ "pand": "0363100012175580",
+ "brief": "scripts/landmarks/port-van-cleve-brief.md",
+ "signature": [
+  "neon-sign",
+  "ground-arches",
+  "frieze-lettering",
+  "central-gable",
+  "lunettes",
+  "annex-erker",
+  "bell-gable",
+  "striped-brick"
+ ],
+ "walls": [
+  {
+   "tag": "w01-288",
+   "bearing": 288,
+   "lengthM": 11.9,
+   "centre": [
+    4.8902675,
+    52.374137
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002932_pano_0001_000108",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "back-grid",
+     "kind": "window-shape",
+     "where": "later brick hotel block on the Spuistraat side: six storeys of white-framed windows in a regular grid, a glazed restaurant ground floor under a concrete band",
+     "approxSizeM": [
+      12,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002932_pano_0001_000108",
+     "how": "shell brick with a white-framed window grid on 3m storeys and a glazed ground floor"
+    }
+   ]
+  },
+  {
+   "tag": "w02-290",
+   "bearing": 290,
+   "lengthM": 7,
+   "centre": [
+    4.8903185,
+    52.3742325
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track02_Sphere_00093",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "stepped-gable",
+     "kind": "other",
+     "where": "a narrow brick canal house within the pand: stepped gable with white stone step caps and a hoist hatch",
+     "approxSizeM": [
+      7,
+      6.3
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00093",
+     "how": "brick stepped outline with white step caps over the 3DBAG gable wall; the hoist hatch and the two gable lights are not drawn: above the 3DBAG eave (11.7 m) the shell is a roof slope and the openings gate reads lights on a gable face drawn over it as buried (kit gap)"
+    },
+    {
+     "id": "gable-house-windows",
+     "kind": "window-shape",
+     "where": "two white-framed many-paned windows per floor, a white pilastered ground floor with tall windows and a dark door",
+     "approxSizeM": [
+      1.5,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00093",
+     "how": "white frames with cross bars on the two storeys, white ground floor with three tall lights and a dark door; heights scaled 0.84 to the 3DBAG eave"
+    }
+   ]
+  },
+  {
+   "tag": "w03-288",
+   "bearing": 288,
+   "lengthM": 6.3,
+   "centre": [
+    4.89022,
+    52.374045
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-003046_pano_0000_000287",
+   "capturedAt": "2023-04-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "back-balconies",
+     "kind": "other",
+     "where": "the same block with iron French-balcony rails at each window",
+     "approxSizeM": [
+      6.3,
+      20
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-003046_pano_0000_000287",
+     "how": "window grid; the 1 m rails are not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w04-117",
+   "bearing": 117,
+   "lengthM": 21,
+   "centre": [
+    4.8906615,
+    52.373938
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0006_000054",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "ground-arches",
+     "kind": "window-shape",
+     "where": "four round stone arches across the main ground floor with orange-red timber frames, between grey stone columns with carved capitals",
+     "approxSizeM": [
+      2.9,
+      6.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "archBand stone surrounds, red arch frames with glazing bars, columns and capitals, spandrel panels"
+    },
+    {
+     "id": "lunettes",
+     "kind": "relief",
+     "where": "semicircular carved stone lunettes with a shell boss over each first-floor window (the lobed window heads of the register)",
+     "approxSizeM": [
+      3.4,
+      1.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "stone half-disc tympanum with a band and a raised boss; the carving is not drawn"
+    },
+    {
+     "id": "first-floor-windows",
+     "kind": "window-shape",
+     "where": "four three-light windows with stone mullions and transoms over bowed stone balconettes with iron infill",
+     "approxSizeM": [
+      2.7,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "stone surround, two stone mullions, frame transom, balconette slab with dark iron panels"
+    },
+    {
+     "id": "frieze-lettering",
+     "kind": "lettering",
+     "where": "DIE PORT VAN CLEVE in dark letters on four white panels in the frieze under the cornice",
+     "approxSizeM": [
+      7.5,
+      0.55
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "four white panels with block letters"
+    },
+    {
+     "id": "balustrade-pinnacles",
+     "kind": "other",
+     "where": "pierced stone balustrade along the cornice with stone pinnacles over the pilaster strips",
+     "approxSizeM": [
+      16,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "balusters at 0.55 m over a dark backing, pilaster strips with pyramid pinnacles"
+    },
+    {
+     "id": "striped-brick",
+     "kind": "other",
+     "where": "red brick banded with stone courses every 0.6-0.7 m on the main block and the annex",
+     "approxSizeM": [
+      21,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "sandstone courses over the brick face"
+    },
+    {
+     "id": "central-gable",
+     "kind": "other",
+     "where": "the middle top gable: brick with two round-arched lights, stone shoulders and a finialled aedicule to about 20.5 m",
+     "approxSizeM": [
+      4.8,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "brick gable, two arched lights, stepped stone shoulders, aedicule with arched niche and finial"
+    },
+    {
+     "id": "dormers",
+     "kind": "window-shape",
+     "where": "four small stone dormers with pointed slate caps in the slate front slope",
+     "approxSizeM": [
+      1.1,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "stone dormer box, glazing, slate triangular cap"
+    },
+    {
+     "id": "neon-sign",
+     "kind": "sign",
+     "where": "red neon roof sign die PORT van CLEVE on a dark steel frame over the south half of the roof",
+     "approxSizeM": [
+      4.6,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "red block letters on two posts and a rail; the lowercase script is drawn in capitals"
+    },
+    {
+     "id": "entrance-canopy",
+     "kind": "sign",
+     "where": "dark blue canopy lettered de Port van Cleve over the first arch",
+     "approxSizeM": [
+      2.9,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "blue box with small white letters"
+    },
+    {
+     "id": "annex-erker",
+     "kind": "other",
+     "where": "two-storey canted stone erker on the annex with orange-red framed windows and a lead dome",
+     "approxSizeM": [
+      2.8,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "canted stone prism on a corbel, two framed windows, half-dome cap"
+    },
+    {
+     "id": "bell-gable",
+     "kind": "other",
+     "where": "neo-baroque bell gable of the annex with a stone pediment, scrolled stone edges and an oculus",
+     "approxSizeM": [
+      4.8,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "brick gable outline, stone side strips, pediment, oculus in a stone ring"
+    },
+    {
+     "id": "blauwe-parade-sign",
+     "kind": "sign",
+     "where": "De Blauwe Parade script sign in blue and white over the annex shopfront, orange awning fascia",
+     "approxSizeM": [
+      3.2,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "how": "blue panel with BLAUWE PARADE in block letters; the script face is not drawn"
+    },
+    {
+     "id": "wall-anchors",
+     "kind": "other",
+     "where": "dark ornamental wall anchors between the lunettes",
+     "approxSizeM": [
+      0.4,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m dark iron pieces, invisible at riding distance"
+     }
+    },
+    {
+     "id": "tram-shelter",
+     "kind": "other",
+     "where": "GVB tram shelter in front of the ground floor",
+     "approxSizeM": [
+      16,
+      2.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001900_pano_0006_000054",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture, not the building"
+     }
+    }
+   ],
+   "note": "The brief listed only a 5.2 m jag of the BAG saw-tooth front; the whole 21 m Nieuwezijds Voorburgwal front was rectified on 3DBAG wall 92 (big-rectify.ts) from TMX7316010203-001900_pano_0006_000054 and read from that crop. The 2022 panorama TMX7316010203-002623_pano_0002_000123 shows the annex closely."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
