@@ -253,6 +253,27 @@ test('Kinkerstraat 126-138 (round 2): a module pand splits by the face module sh
   assert.ok(w[6] < w[5], `module 7 narrow: ${w.join(',')}`);
 });
 
+test('Kinkerstraat 126-138 (round 3): reviewed series split the left building and 132; a reviewed cornice line moves the tops', () => {
+  const r = solveRow(loadRow(loadRowDefs()['kinkerstraat-120-138'], '2026-11-15').input);
+  const f = (n: number) => r.fronts.find(x => x.numbers.includes(n))!;
+  const s = (n: number) => r.series.find(x => x.id === f(n).seriesId)!;
+  // 138-134 are one series of their own, on a lower line; 132 and 126 are separate gabled designs on the series line.
+  assert.equal(new Set([138, 136, 134].map(n => f(n).seriesId)).size, 1);
+  assert.ok(![132, 130, 128, 126, 122, 120].some(n => f(n).seriesId === f(138).seriesId));
+  assert.equal(s(138).design.corniceTopM.value, 12.5);
+  assert.equal(f(138).topM, 12.89);
+  assert.notEqual(f(132).seriesId, f(126).seriesId);
+  assert.equal(s(132).design.crown.value, 'step');
+  assert.deepEqual(s(132).design.gable?.value, { riseM: 2.7, steps: 2, attic: 1 });
+  assert.equal(s(126).design.crown.value, 'neck');
+  for (const n of [132, 126]) {
+    assert.equal(s(n).design.corniceTopM.value, 13.45);
+    assert.equal(f(n).topM, 13.84, `${n}: the series line, not the 16.45 apex`);
+    assert.deepEqual(s(n).design.heads.value, { shape: 'round', dressing: 'arch-ring' });
+  }
+  assert.equal(f(130).topM, 13.84);
+});
+
 test('Kinkerstraat 244-248 (round 2): a face that states one front is never split by a wide reading', () => {
   const r = solveRow(loadRow(loadRowDefs()['kinkerstraat-244-332'], '2026-11-15').input);
   assert.deepEqual(r.fronts.filter(f => f.pandId === '0363100012233496').map(f => f.id), ['0363100012233496']);

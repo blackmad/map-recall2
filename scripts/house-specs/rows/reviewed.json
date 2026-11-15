@@ -137,6 +137,59 @@
       "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg)",
       "at": "2026-11-15",
       "note": "75-87: the dormers are flat-topped boxes with a small triangle ornament, not pediments; D1 6 of 6 reads plain"
+    },
+    {
+      "fronts": [
+        "0363100012106015",
+        "0363100012156997"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.9,
+        "steps": 3,
+        "attic": 1
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "65 and 67 rise in step gables over the cornice line, one attic window each; rise about one storey (the attic window storey), read ±0.4 m against the storey pitch",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012156997"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.9,
+        "steps": 2,
+        "attic": 1
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "67: sloped shoulders, one step, then the top tread (65 has three treads a side); the sloped shoulder is a schemaLimit",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012106015",
+        "0363100012156997"
+      ],
+      "field": "bays",
+      "value": 3,
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "65 and 67 both have three window axes under the gable, the attic window on the middle one; the face and D1 read 2",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012236453#m0"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 3,
+        "attic": 1
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "69: a straight-sided neck gable with a small top cap, one attic door with a railing; slightly taller than 65-67",
+      "at": "2026-11-15"
     }
   ],
   "kinkerstraat-315-359": [
@@ -168,6 +221,21 @@
       "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-363-371/blind/photo.jpg)",
       "at": "2026-11-15",
       "note": "363, 367 and 369 rise in pointed triangular gables over the cornice line; the face's bell and D1's cornice (3 of 3) both miss them"
+    },
+    {
+      "fronts": [
+        "0363100012089984#m0",
+        "0363100012089983",
+        "0363100012237269#m1"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.1,
+        "attic": 1
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-363-371/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "pointed gables 2.2 m (363), 1.7 m (367), 2.1 m (369) over the cornice, read against the storey pitch; one attic window each",
+      "at": "2026-11-15"
     }
   ],
   "herengracht-76-90": [
@@ -298,6 +366,180 @@
       "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
       "at": "2026-11-15",
       "note": "Herengracht 89 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable neck"
+    }
+  ],
+  "kinkerstraat-120-138": [
+    {
+      "fronts": [
+        "0363100012233461#m0",
+        "0363100012233461#m1",
+        "0363100012233461#m2"
+      ],
+      "field": "series",
+      "value": "left-building",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "138-134 is a separate building from 132-126: a lower cornice, a lower shop band, plain flat-headed windows, one gabled dormer per front",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m0",
+        "0363100012233461#m1",
+        "0363100012233461#m2"
+      ],
+      "field": "corniceTopM",
+      "value": 12.5,
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "the left building's cornice sits about 1 m below the right building's line (13.45) at the shared party wall, 22 px at about 23 px/m",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m0",
+        "0363100012233461#m1",
+        "0363100012233461#m2"
+      ],
+      "field": "heads",
+      "value": {
+        "shape": "flat",
+        "dressing": "none"
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "plain flat heads, white frames, no dressing",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3",
+        "0363100012233461#m6"
+      ],
+      "field": "corniceTopM",
+      "value": 13.45,
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "the gable axes stand on the right building's cornice line (pand 233461's 3DBAG 16.45 less the 3 m mansard storey, the line s1 drew before the split); 16.45 was their apex",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m4",
+        "0363100012233461#m5"
+      ],
+      "field": "corniceTopM",
+      "value": 13.45,
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "130 and 128 are the right building's flat modules between the gable axes: the same 13.45 line, not the 13.27 median they take with 122 and 120 once the left building is its own series",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3",
+        "0363100012233461#m6"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "126: a neck gable with a capped top over the cornice line; one attic window",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3",
+        "0363100012233461#m6"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.9,
+        "attic": 1
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "rise about 60-75 px over the cornice at about 23 px/m; one attic window each",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3",
+        "0363100012233461#m6"
+      ],
+      "field": "heads",
+      "value": {
+        "shape": "round",
+        "dressing": "arch-ring"
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "both gable axes have round-arched windows on all three upper storeys, under brick arch rings with a pale edge; the flanking modules are flat-headed",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3"
+      ],
+      "field": "series",
+      "value": "step-gable-axis",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "132's step gable is a different crown from 126's neck: one design each (rows check one-design)",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3"
+      ],
+      "field": "crown",
+      "value": "step",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "132: a small stepped gable, a top tread and one step a side",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.7,
+        "steps": 2,
+        "attic": 1
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "132 is a little lower than 126",
+      "at": "2026-11-15"
+    }
+  ],
+  "kinkerstraat-31-49": [
+    {
+      "fronts": [
+        "0363100012160646",
+        "0363100012155369",
+        "0363100012160073",
+        "0363100012160074",
+        "0363100012167106",
+        "0363100012159384",
+        "0363100012154359",
+        "0363100012161457"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "mansard",
+        "material": "slate",
+        "dormersPerFront": 1,
+        "dormerKind": "pediment"
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-31-49/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "33-47: a dark grey slate mansard behind the cornice (2016 panorama in lane R's rule-10 frame); red tile was a period default",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012158968"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "painted-brick",
+        "family": "painted-dark",
+        "hex": "#272c25"
+      },
+      "ref": "face strip citation (scripts/block-face/faces/kinker-31-49/intent.json: \"black-painted brick\") and the 2021-03-24 panorama in lane R's rule-10 frame (_pruned-sheets/house-rows-r/round3/rule10-k31-49.jpg); 31 has no D1 cut",
+      "note": "31 is black-painted brick; the period default brown was wrong. The crown stays a cornice: the pointed piece is a corner gablet over the chamfered corner bay, not a front gable",
+      "at": "2026-11-15"
     }
   ]
 }

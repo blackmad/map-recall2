@@ -131,6 +131,14 @@
       "component": "cornice",
       "what": "D1 (7 of 7) reads a simple cornice where the face says heavy; face drawn",
       "ref": "lane D round 2 scores"
+    },
+    {
+      "fronts": [
+        "0363100012158968"
+      ],
+      "component": "roof/attic",
+      "what": "31 is a corner house: a pointed gablet over the chamfered corner bay and a balcony on the corner axis; the kit has no corner bay or corner gablet",
+      "ref": "lane D, model judgement on the D1 cuts and lane R round-3 frames (2026-11-15)"
     }
   ],
   "kinkerstraat-65-87": [
@@ -157,6 +165,14 @@
       "component": "ground",
       "what": "75-87 ground floors carry an entresol (a second row of shop glazing) that the kit ground storey cannot draw",
       "ref": "lane D, D1 cuts"
+    },
+    {
+      "fronts": [
+        "0363100012156997"
+      ],
+      "component": "gable",
+      "what": "67's gable has sloped shoulders up to one step and the top tread; the kit step gable draws square treads all the way",
+      "ref": "lane D, model judgement on the D1 cuts and lane R round-3 frames (2026-11-15)"
     }
   ],
   "kinkerstraat-363-371": [

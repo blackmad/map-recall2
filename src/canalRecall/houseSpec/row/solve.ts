@@ -478,6 +478,8 @@ export function solveRow(input: RowInput): RowRecord {
       }
       if (was && JSON.stringify(was.value) !== JSON.stringify(st.value))
         flags.push({ kind: 'reviewed', field: field, fronts: inside.map(f => f.id), detail: `reviewed ${st.add ? 'adds ' : ''}${JSON.stringify(st.value)} ${st.add ? 'to' : 'overrides'} ${was.source} ${JSON.stringify(was.value)} (${was.ref}): the ${was.source === 'face-intent' ? 'face intent' : 'source'} needs correcting` });
+      // A reviewed cornice line moves the fronts' tops with it (Kinkerstraat 126-138: the gable axes' line, not their apex).
+      if (field === 'corniceTopM') for (const f of inside) f.topM = st.value === null ? null : r2((st.value as number) - (f.groundOffsetM ?? 0));
     }
   }
   if (fronts.some(f => f.groundOffsetM === null || f.groundOffsetM === undefined))
