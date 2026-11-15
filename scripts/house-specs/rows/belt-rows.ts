@@ -55,6 +55,29 @@ export function beltMembers(rows: readonly SelectRow[], cuts: ReadonlyMap<string
     });
 }
 
+/** A member with no cut takes its street wall's length (pand-reference pickWall: the longest exposed wall on the nearest
+ *  road, the wall the preview and the mesher draw) instead of BAG area / 15 m. The estimate made a stated gable's span
+ *  differ from the drawn run by more than ROW_FRONT_SPAN_TOLERANCE, so the renderer dropped the gable (Herengracht 77:
+ *  5.33 m estimated, 6.67 m wall; 2026-11-15). Unmeasurable: the estimate stays. */
+export async function streetWallWidths(members: RowMemberDef[]): Promise<RowMemberDef[]> {
+  const est = members.filter(m => m.widthSource === 'BAG area / 15 m (no cut)');
+  if (!est.length) return members;
+  const { findPands, neighbourhood } = await import('../../pand-reference/core.ts');
+  const { pickWall } = await import('../../pand-reference/select.ts');
+  const fps = await findPands(est.map(m => m.pandId));
+  for (const m of est) {
+    const fp = fps.get(`NL.IMBAG.Pand.${m.pandId}`);
+    if (!fp) continue;
+    const c = fp.ring.reduce((t, q) => ({ x: t.x + q.x / fp.ring.length, y: t.y + q.y / fp.ring.length }), { x: 0, y: 0 });
+    const picked = await pickWall(fp, await neighbourhood(c));
+    // Only where the estimate would miss the drawn run (rowFront.ts runTakesTrace's tolerance): a close estimate stays,
+    // so rows already under review keep their records (Herengracht 6: 4.87 m estimated, 4.85 m wall).
+    const est0 = m.widthM ?? 0, tol = Math.max(0.5, 0.12 * est0);
+    if (picked.wall && picked.wall.len > 2 && Math.abs(picked.wall.len - est0) > tol) Object.assign(m, { widthM: +picked.wall.len.toFixed(2), widthSource: 'street wall (pickWall; no cut)' });
+  }
+  return members;
+}
+
 const FACES = path.join(REPO, 'scripts/block-face/faces');
 
 /** An October block face with an intent on this street whose houses fall in the run: its id and the houses the belt
@@ -82,7 +105,7 @@ export function faceForRun(street: string, a: number, b: number, have: ReadonlyS
   return null;
 }
 
-function main() {
+async function main() {
   const argv = process.argv.slice(2);
   const arg = (k: string) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : undefined; };
   const rowsJson = JSON.parse(fs.readFileSync(ROWS, 'utf8'));
@@ -96,7 +119,7 @@ function main() {
   const slug = street.toLowerCase().replace(/\s+/g, '-');
   const out: Record<string, unknown> = {};
   for (const [a, b] of runs) {
-    const belt = beltMembers(sel, cuts, street, a, b);
+    const belt = await streetWallWidths(beltMembers(sel, cuts, street, a, b));
     const face = faceForRun(street, a, b, new Set(belt.map(m => m.pandId)));
     const key = (m: RowMemberDef) => m.numbers?.[0] ?? 0;
     const members = [...belt, ...(face?.extra ?? [])].sort((x, y) => (a % 2 === 0 ? key(y) - key(x) : key(x) - key(y)));
