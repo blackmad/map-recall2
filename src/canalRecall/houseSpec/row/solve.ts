@@ -112,11 +112,13 @@ export interface RowInput {
 /** `fronts`: front ids (`<pandId>` or `<pandId>#m1` for one module of a two-front pand). */
 /** `add`: the value is a list merged into the field's current list (an extra the reviewer adds), not a replacement. */
 /** `ground.colour` sets `front.ground.colour` (a RowGroundColour) on each listed front; it outranks a read and the face's shopPaint. */
+/** `ground.stoop` (value: `{ stoopForm?, stoopRailing? }`) sets the stoop's flight form and railing on each listed front
+ *  (lane R's RowGround.stoopForm/stoopRailing; Herengracht 130 double with railings, 148 straight with railings). */
 /** `unread` (value: the reason) sets a listed pand's reading aside, as a held one: an unusable cut (Herengracht 69, a steep
  *  corner shot) states nothing, so its front draws as unread. */
 /** `split` (value: `{ n, shares? }`) splits a listed pand into n fronts read from its cut (Herengracht 43-45: two point
  *  gables in one pand), `<pandId>#m0..`; shares are the fronts' widths in street order (absent: equal). */
-export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour' | 'series' | 'unread' | 'split'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
+export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour' | 'ground.stoop' | 'series' | 'unread' | 'split'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
 
 // --- compatibility of classes (a face value and a read that name the same thing) ------------------------------------------
 
@@ -512,6 +514,12 @@ export function solveRow(input: RowInput): RowRecord {
         f.ground = { ...f.ground, colour: { value: st.value as RowGroundColour, source: 'reviewed', ref } };
         if (was !== st.value) flags.push({ kind: 'reviewed', field: 'ground.colour', fronts: [f.id], detail: `reviewed ${JSON.stringify(st.value)} overrides ${was ?? 'no reading'}${f.ground.shopPaint ? ': the face intent shopPaint needs correcting' : ''}` });
       }
+      continue;
+    }
+    if (st.field === 'ground.stoop') {
+      const v = st.value as Pick<RowGround, 'stoopForm' | 'stoopRailing'>;
+      for (const f of fronts.filter(x => st.fronts.includes(x.id)))
+        f.ground = { ...f.ground, ...(v.stoopForm ? { stoopForm: v.stoopForm } : {}), ...(v.stoopRailing ? { stoopRailing: true } : {}) };
       continue;
     }
     if (st.field === 'series' || st.field === 'unread' || st.field === 'split') continue;

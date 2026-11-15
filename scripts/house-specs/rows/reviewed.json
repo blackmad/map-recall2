@@ -518,11 +518,12 @@
       "field": "gable",
       "value": {
         "riseM": 4.7,
-        "attic": 1
+        "attic": 1,
+        "upperLight": true
       },
       "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
       "at": "2026-11-15",
-      "note": "43-45: each gable rises about three metres over the eaves with an attic light | Gable rise re-measured 2026-11-15 (lane D, #391): 43-45: the left point 1.54, the right 1.6 storeys from the slope foot to the top, at 3.0 m a storey; the read was 3.4 m, which left the necks short (blind gable review)."
+      "note": "43-45: each gable rises about three metres over the eaves with an attic light | Gable rise re-measured 2026-11-15 (lane D, #391): 43-45: the left point 1.54, the right 1.6 storeys from the slope foot to the top, at 3.0 m a storey; the read was 3.4 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15)."
     },
     {
       "fronts": [
@@ -581,6 +582,20 @@
       "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
       "at": "2026-11-15",
       "note": "41: the cut wall height (3DBAG 12.21 m); the mansard had lowered the line by 3 m"
+    },
+    {
+      "fronts": [
+        "0363100012168210"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.8,
+        "attic": 1,
+        "upperLight": true
+      },
+      "ref": "lane D gable rise re-read 2026-11-15 (#391), the D1 cut of 39",
+      "at": "2026-11-15",
+      "note": "39: a bell 1.74 storeys from the claw foot to the crest (5.2 m, stated at the belt bell's 4.8), a small opening high in the neck over the hoist lights (blind gable review 3)."
     }
   ],
   "herengracht-51-73": [
@@ -674,11 +689,12 @@
         "riseM": 4.2,
         "neckOverM": 1.8,
         "attic": 1,
-        "cap": "segmental"
+        "cap": "segmental",
+        "upperLight": true
       },
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179673.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
       "at": "2026-11-15",
-      "note": "57: a short neck with a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 57 1.41 storeys from the neck foot to the cap top, at 3.0 m a storey; the read was 2.6 m, which left the necks short (blind gable review)."
+      "note": "57: a short neck with a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 57 1.41 storeys from the neck foot to the cap top, at 3.0 m a storey; the read was 2.6 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15)."
     },
     {
       "fronts": [
@@ -720,11 +736,12 @@
         "riseM": 4.5,
         "finials": true,
         "attic": 1,
-        "atticHead": "round"
+        "atticHead": "round",
+        "upperLight": true
       },
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179682.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
       "at": "2026-11-15",
-      "note": "71: a spout gable with a round-headed attic light (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 71 1.55 storeys from the slope foot to the top block, at 3.0 m a storey; the read was 2.9 m, which left the necks short (blind gable review)."
+      "note": "71: a spout gable with a round-headed attic light (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 71 1.55 storeys from the slope foot to the top block, at 3.0 m a storey; the read was 2.9 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15)."
     },
     {
       "fronts": [
@@ -733,11 +750,12 @@
       "field": "gable",
       "value": {
         "riseM": 4.1,
-        "attic": 1
+        "attic": 1,
+        "upperLight": true
       },
       "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179681.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
       "at": "2026-11-15",
-      "note": "73: a spout gable with a square attic light (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 73 1.4 storeys from the slope foot (over the full-width attic) to the top block, at 3.0 m a storey; the read was 3.3 m, which left the necks short (blind gable review)."
+      "note": "73: a spout gable with a square attic light (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 73 1.4 storeys from the slope foot (over the full-width attic) to the top block, at 3.0 m a storey; the read was 3.3 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15)."
     },
     {
       "fronts": [
@@ -1595,6 +1613,32 @@
       "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.36 C 0.021 h 61; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
       "at": "2026-11-15",
       "note": "140: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    },
+    {
+      "fronts": [
+        "0363100012177006"
+      ],
+      "field": "ground.stoop",
+      "value": {
+        "stoopForm": "double",
+        "stoopRailing": true
+      },
+      "ref": "lane R's stoop forms (_pruned-sheets/house-rows-r/stoop-forms/herengracht-130-148-test-record.json), lane D statement",
+      "at": "2026-11-15",
+      "note": "130: a double stoop with iron railings (the blind judge: a solid grey block where the photo shows railings)."
+    },
+    {
+      "fronts": [
+        "0363100012177017"
+      ],
+      "field": "ground.stoop",
+      "value": {
+        "stoopForm": "straight",
+        "stoopRailing": true
+      },
+      "ref": "lane R's stoop forms (_pruned-sheets/house-rows-r/stoop-forms/herengracht-130-148-test-record.json), lane D statement",
+      "at": "2026-11-15",
+      "note": "148: a raised door over basement windows with a straight railed flight; no stoop was read."
     }
   ],
   "herengracht-150-166": [

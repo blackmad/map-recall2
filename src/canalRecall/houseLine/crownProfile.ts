@@ -92,6 +92,8 @@ export interface RowCrown {
   shoulder?: 'sloped';
   /** The attic light's head: a round or segmental arch (absent: square). */
   atticHead?: 'round' | 'segmental';
+  /** A small round-headed light over the attic light, high in the neck (stated per house). */
+  upperLight?: boolean;
   /** `belt`: the canal belt's gable dress (BELT_GABLE). Absent: the kit's stock outlines and trim, byte-identical. */
   dress?: 'belt';
 }
@@ -310,16 +312,25 @@ export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f
   const lights = c.attic ?? 1;
   if (!c.hoist && lights < 1) return;
   const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - spoutTop(c) - 0.1 : T - 0.25;
-  const zLow = c.shape === 'raised' ? (c.bandM ?? 0.5) + 0.12 : Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
-  // A belt gable's light stands in the middle of its face, the claws beside its lower half (Herengracht 55, 59, 61: the
-  // window sits in the neck); at the foot it left the tall re-measured neck a blank plate under the cap.
-  const z0 = c.dress === 'belt' && !c.hoist ? Math.max(zLow, r3((zLow + capTop - 0.15) / 2 - 0.575)) : zLow;
+  const z0 = c.shape === 'raised' ? (c.bandM ?? 0.5) + 0.12 : Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
   const z1 = Math.min(capTop - 0.15, z0 + (c.hoist ? 1.5 : 1.15));
   if (z1 - z0 < 0.55) return;
   const sp = spanAt(prof, z1), inner = sp ? Math.min(-sp[0], sp[1]) - 0.2 : 0;
   const hw = Math.min(c.hoist ? 0.5 : 0.42, inner, (c.shape === 'neck' || c.shape === 'step' || c.shape === 'raised' ? neck : foot) - 0.22);
   if (hw < 0.22) return;
   const fr = 0.08;
+  // A stated upper light: a small round-headed light over the attic light, under the cap (Herengracht 39, 57, 71, 73;
+  // blind gable reviews 2-3, 2026-11-15: right on those, wrong where the photo has one window).
+  if (c.upperLight && !c.hoist && !c.lights?.length) {
+    const u0 = z1 + fr + 0.3, uw = Math.min(0.24, hw * 0.6), u1 = Math.min(capTop - 0.2, u0 + uw * 2.6);
+    const usp = spanAt(prof, u1), uin = usp ? Math.min(-usp[0], usp[1]) - 0.15 : 0;
+    if (u1 - u0 >= uw * 2 && uin >= uw + fr) {
+      rect(s, f, e, -uw - fr, uw + fr, u0 - fr, u1 - uw, trimHex);
+      arch(s, f, e, uw + fr, uw + fr * 0.6, u1 - uw, trimHex, PROUD);
+      rect(s, f, e, -uw, uw, u0, u1 - uw, GLASS, PROUD_HI);
+      arch(s, f, e, uw, uw, u1 - uw, GLASS, PROUD_HI);
+    }
+  }
   if (c.atticHead && !c.hoist) {
     // An arched light: the jambs to the springing, the arch (a half round, or a segment of a sixth of the span) over it,
     // all inside the profile; a white frame ring round it.

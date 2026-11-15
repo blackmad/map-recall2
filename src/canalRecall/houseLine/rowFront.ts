@@ -33,7 +33,7 @@ export interface RowFrontRecord {
     /** A step gable's treads up each side (house rows: RowDesign.gable.steps). */
     steps?: number;
     /** House rows' stated gable (RowDesign.gable): the neck's cap, finials, the neck's height over the shoulders, the attic light's head. */
-    cap?: 'pediment' | 'segmental' | 'rounded' | 'flat'; finials?: boolean; shoulder?: 'sloped'; neckOverM?: number; atticHead?: 'round' | 'segmental'; dress?: 'belt';
+    cap?: 'pediment' | 'segmental' | 'rounded' | 'flat'; finials?: boolean; shoulder?: 'sloped'; neckOverM?: number; atticHead?: 'round' | 'segmental'; upperLight?: boolean; dress?: 'belt';
     /** Traced attic lights in the crown, [x0, x1, z0, z1]: x from the front's centre as seen, z above the crown's foot. */
     lights?: Array<[number, number, number, number]>;
     /** A chimney stack on the crown: its top (pand datum) and width. */
@@ -496,6 +496,7 @@ export function rowGableCrown(c: RowFrontRecord['crown'], rise: number): { crown
   if (c.finials) crown.finials = true;
   if (shape === 'step' && c.shoulder === 'sloped') crown.shoulder = 'sloped';
   if (c.atticHead) crown.atticHead = c.atticHead;
+  if (c.upperLight) crown.upperLight = true;
   if (c.dress === 'belt') crown.dress = 'belt';
   return { crown, gable };
 }

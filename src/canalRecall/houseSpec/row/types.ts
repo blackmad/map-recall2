@@ -129,6 +129,12 @@ export interface RowGround {
   /** Souterrain / stoop as read (Weteringschans). */
   /** `windows`: basement windows under a raised ground storey (no stoop read), Weteringschans 168096. */
   basement?: 'none' | 'souterrain' | 'stoop' | 'stoop-and-windows' | 'windows';
+  /** The stoop's flight as seen (house rows stoops, Herengracht 130, 148): `straight` out to the pavement, `side` one flight
+   *  along the wall, `double` two flights along the wall from a landing at the door. Stated on a `windows` basement it draws
+   *  the flight the raised door needs (148). Absent: the straight flight between stone cheeks, or none on `windows`. */
+  stoopForm?: 'straight' | 'side' | 'double';
+  /** The stoop has a black iron railing (Herengracht 130). Absent: stone cheek walls only. */
+  stoopRailing?: boolean;
   /**
    * The shopfront colour family, source `single-read`: only when a D1 reading names a colour on the shopfront, pui or
    * shutter itself (a canopy or sign colour does not count; `painted timber` names no colour). Omitted when nothing is
@@ -213,6 +219,9 @@ export interface RowGable {
   neckOverM?: number;
   /** The attic light's head (absent: square). */
   atticHead?: 'round' | 'segmental';
+  /** A small round-headed light high in the neck over the attic light, as the photo shows one (Herengracht 39, 57, 71, 73;
+   *  not 31, 37, 59, 61, 63): stated per house, never a default (blind gable review 3, 2026-11-15). */
+  upperLight?: boolean;
   /** `belt`: the canal belt's gable dress (houseLine/crownProfile.ts BELT_GABLE): a tall neck on low white claw pieces with a
    *  band at its foot and an overhanging cap moulding, a bell with a narrower moulded crest and a crest ornament, finer
    *  step treads with a crest finial, a short capped spout top. Absent: the kit's stock outlines (byte-identical). */
