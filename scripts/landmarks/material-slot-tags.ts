@@ -61,6 +61,10 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     concrete: {slot: 'stone', measured: '#d6d6d4', why: 'cool light-grey tiles of the set-back storey and the drum, and the white banners (w03-257, w04-245)'},
     bronze: {slot: 'accent', measured: '#b08a4a', why: 'bronze-gold HOLLAND CASINO letters on the roof edge (w03-257)'},
   },
+  'schiller-rembrandtplein': {
+    brick: {slot: 'brick', measured: '#5a3530', why: 'purple-brown brick of the hotel front (w01-348, w04-253; blind review 2026-11-15: the palette brick read saturated red)'},
+    sandstone: {slot: 'stone', measured: '#b3a58e', why: 'pale beige-grey stone of the oriels, the corner tower and the window dressings (w01-348)'},
+  },
   kalvertoren: {
     white: {slot: 'accent', why: 'white stone bands, keystones, portals and gable dressings on the red-brick Singel range (w01-192L)'},
     red: {slot: 'roofTile', why: 'red pantile saddle roofs behind the two Singel gables (tower-singel-even-e), not brick'},

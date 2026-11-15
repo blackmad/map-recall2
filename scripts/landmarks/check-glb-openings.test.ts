@@ -59,3 +59,10 @@ test('liveness: De Hallen as exported before the R2-C fix fails the gate (panes 
   assert.ok(r.worstGapM > 0.5, `worst gap ${r.worstGapM}`);
   assert.ok(verdict(r.counts, undefined).over.length > 0);
 });
+
+test('liveness: oriel fronts elsewhere on a facade do not host a window on another bay (Hotel Schiller, oriels 1.2 m proud)', async () => {
+  // Before the face-presence test, the coplanar fronts of the oriel balconettes made one sparse plane spanning the front;
+  // it hosted the corner bay's first-floor window, which then read as buried behind the tower (poke 1).
+  const r = await measureModel('schiller-deep-oriels', path.join(import.meta.dirname, 'fixtures/schiller-deep-oriels.glb'));
+  assert.equal(r.counts.poke, 0, JSON.stringify(r.offenders));
+});

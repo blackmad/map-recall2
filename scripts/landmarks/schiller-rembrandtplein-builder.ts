@@ -115,23 +115,29 @@ export function buildSchillerRembrandtplein(_w: number, _d: number, b: BuildingT
   // ---------- upper floors: window columns, oriels, main cornice ----------
   for (const t of COLS) for (const [y0, y1] of FLOORS) win(f, t, y0, y1, 1.45);
   for (const t of ORIELS) {
-    const pts: [number, number][] = [[t - 1.25, -0.05], [t - 0.85, 0.6], [t + 0.85, 0.6], [t + 1.25, -0.05]];
+    // Canted oriels 0.95 m proud (w01-348: the side lights read square to the street at 45 degrees), on a stepped corbel.
+    const D = 0.95, pts: [number, number][] = [[t - 1.3, -0.05], [t - 0.8, D], [t + 0.8, D], [t + 1.3, -0.05]];
     prism(f, pts, 10.3, 21.5, 'sandstone');
-    prism(f, [[t - 1.15, -0.05], [t - 0.75, 0.45], [t + 0.75, 0.45], [t + 1.15, -0.05]], 9.75, 10.3, 'sandstone'); // corbel
-    const front = segFrame(P(f, t - 0.85, 0.6), P(f, t + 0.85, 0.6), P(f, t, -1));
+    prism(f, [[t - 1.2, -0.05], [t - 0.75, 0.7], [t + 0.75, 0.7], [t + 1.2, -0.05]], 9.7, 10.3, 'sandstone'); // corbel
+    prism(f, [[t - 1.0, -0.05], [t - 0.6, 0.4], [t + 0.6, 0.4], [t + 1.0, -0.05]], 9.2, 9.7, 'sandstone');
+    const front = segFrame(P(f, t - 0.8, D), P(f, t + 0.8, D), P(f, t, -1));
     const cen = P(f, t, -1);
-    const left = segFrame(P(f, t - 1.25, -0.05), P(f, t - 0.85, 0.6), cen), right = segFrame(P(f, t + 0.85, 0.6), P(f, t + 1.25, -0.05), cen);
-    const sideLen = Math.hypot(0.4, 0.65);
+    const left = segFrame(P(f, t - 1.3, -0.05), P(f, t - 0.8, D), cen), right = segFrame(P(f, t + 0.8, D), P(f, t + 1.3, -0.05), cen);
+    const sideLen = Math.hypot(0.5, D + 0.05);
     for (const [y0, y1] of FLOORS) {
-      win(front, 0.85, y0, y1, 1.15, 0, false);
-      win(left, sideLen / 2, y0 + 0.1, y1 - 0.1, 0.42, 0, false);
-      win(right, sideLen / 2, y0 + 0.1, y1 - 0.1, 0.42, 0, false);
-      slab(b, front, 0.85, y1 + 0.2, 1.7, 0.18, 0.06, 'stone');
+      win(front, 0.8, y0, y1, 1.15, 0, false);
+      win(left, sideLen / 2, y0 + 0.1, y1 - 0.1, 0.55, 0, false);
+      win(right, sideLen / 2, y0 + 0.1, y1 - 0.1, 0.55, 0, false);
+      slab(b, front, 0.8, y1 + 0.2, 1.6, 0.18, 0.06, 'stone');
     }
-    rail(front, 0.85, 11.1, 1.3, 0.85, 0, 0.32);
+    rail(front, 0.8, 11.1, 1.3, 0.85, 0, 0.32);
   }
-  slab(b, f, 11.55, 21.45, 23.0, 0.3, 0.8, 'stone', -0.05);
-  for (let t = 0.6; t < 22.9; t += 1.0) slab(b, f, t, 21.0, 0.16, 0.45, 0.45, 'stone');
+  // stone sill courses across the brick piers between the bays (w01-348: the banded piers)
+  for (const [y0] of FLOORS) for (const [a, z] of [[0.15, 3.95], [6.65, 10.15], [12.85, 16.25], [18.95, 22.9]] as [number, number][]) slab(b, f, (a + z) / 2, y0 - 0.45, z - a, 0.16, 0.06, 'sandstone');
+  // main cornice: a deep stone eave on brackets with a dark soffit (blind review: it did not read)
+  slab(b, f, 11.55, 21.45, 23.0, 0.32, 1.15, 'stone', -0.05);
+  slab(b, f, 11.55, 21.3, 23.0, 0.15, 1.0, 'dark', -0.05);
+  for (let t = 0.6; t < 22.9; t += 1.0) slab(b, f, t, 20.75, 0.18, 0.55, 0.85, 'stone');
 
   // ---------- top storey in the mansard, flush with the front (the 3DBAG slope starts at the eave): brick face, windows with balconettes, deep bracketed eave ----------
   slab(b, f, 11.6, 21.7, 23.0, 2.75, 0.3, 'brick', -0.3);

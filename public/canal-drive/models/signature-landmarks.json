@@ -105542,6 +105542,8 @@
     },
     "schiller-rembrandtplein": {
       "id": "schiller-rembrandtplein",
+      "status": "held",
+      "heldReason": "Blind review FAIL after the one fix (2026-11-15): the three oriels do not read as pale projecting bays and the brick reads saturated red against the photo's purple-brown. The GLB stays in git; un-hold after a fix round that passes a fresh review.",
       "name": "Hotel Schiller, Rembrandtplein 26",
       "modelUrl": "./models/schiller-rembrandtplein.glb",
       "suppressOsmIds": [
@@ -105702,8 +105704,8 @@
         "depthMetres": 37.838951110839844,
         "depthCoverage": 0.9342950891565394
       },
-      "triangles": 13458,
-      "bytes": 194744,
+      "triangles": 13650,
+      "bytes": 198948,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "held": true
     },
