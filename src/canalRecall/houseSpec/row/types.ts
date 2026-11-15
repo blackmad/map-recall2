@@ -167,7 +167,13 @@ export interface RowDesign {
   /** Where the `row-balcony` extra stands: the storeys (0 = the ground storey, which is the bel-etage over a souterrain; 1 = the
    *  first storey above it) and the axis. Absent = the renderer's default (first upper storey, centre). */
   balcony?: RowField<{ storeys: number[]; axis: 'centre' | 'all' }>;
+  /** A gabled crown's outline as read on the photo (`crown` step, neck, bell or point): its rise over the cornice line
+   *  (m), the step count of a step gable, the attic lights in it and the neck (or top tread) width. Absent: the crown
+   *  kind alone, which draws no gable over the row line. */
+  gable?: RowField<RowGable>;
 }
+/** A gabled crown's outline (RowDesign.gable): symmetric, standing on the series line. */
+export interface RowGable { riseM: number; steps?: number; attic?: number; neckWidthM?: number }
 export type RowDesignKey = keyof RowDesign;
 
 // --- members, fronts, series ------------------------------------------------------------------------------------------

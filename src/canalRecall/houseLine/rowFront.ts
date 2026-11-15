@@ -30,6 +30,8 @@ export interface RowFrontRecord {
   /** Where the crown starts (m): a cornice front's top (= topM), a gable's foot. */
   eavesM: number | null;
   crown: { family: RowCrownFamily; riseM?: number; widthM?: number; neckWidthM?: number; atticWindows?: number; hoist?: boolean;
+    /** A step gable's treads up each side (house rows: RowDesign.gable.steps). */
+    steps?: number;
     /** Traced attic lights in the crown, [x0, x1, z0, z1]: x from the front's centre as seen, z above the crown's foot. */
     lights?: Array<[number, number, number, number]>;
     /** A chimney stack on the crown: its top (pand datum) and width. */
@@ -450,10 +452,39 @@ export function rowRaisedFronts(rec: RowFrontRecord, top: number): Array<SubFron
   return subs.map(f => {
     const rise = +(topOf(f) - top).toFixed(2), W = (f.a1 - f.a0) * span;
     if (!(rise > ROW_RAISED_FRONT_M)) return { ...f, step: { wallTopM: top } };
+    // A front stating its gable (step, neck, bell, point with its rise) draws that outline from the line to its top.
+    const g = f.crown ? rowGableCrown(f.crown, rise) : null;
+    if (g) return { ...f, step: { wallTopM: top, crown: g.crown, gable: g.gable, riseM: rowCrownRoofRise(g.crown, W) } };
     const crown: RowCrown = { shape: 'raised', riseM: rise, bandM: rise, cap: 'flat' };
     return { ...f, step: { wallTopM: top, crown, gable: 'cornice' as const, riseM: rowCrownRoofRise(crown, W) } };
   });
 }
+
+/**
+ * House rows: a stated gable crown (lane D's RowDesign.gable: the record's crown carries `riseM`) as the kit's
+ * symmetric outline, `rise` over the series line: step treads (`steps`), neck, bell or point, white coping and edge
+ * trim, the attic lights as stated (none stated: one where it fits). Null for a cornice crown or one without a rise.
+ */
+export function rowGableCrown(c: RowFrontRecord['crown'], rise: number): { crown: RowCrown; gable: GableShape } | null {
+  const gable = FAMILY_GABLE[c.family], shape = c.family as RowCrownShape;
+  if (!gable || !(ROW_CROWN_SHAPES as readonly string[]).includes(shape) || shape === 'raised' || !(typeof c.riseM === 'number' && c.riseM > 0) || !(rise > ROW_RAISED_FRONT_M)) return null;
+  const crown: RowCrown = { shape, riseM: rise };
+  if (c.steps) crown.steps = c.steps;
+  if (c.atticWindows !== undefined) crown.attic = c.atticWindows;
+  if (c.neckWidthM) crown.neckW = c.neckWidthM;
+  return { crown, gable };
+}
+/** A one-front series member stating its gable: the whole front as one stepped span, its wall at the line, the gable on it. */
+export function rowGableFront(rec: RowFrontRecord, top: number): Array<SubFrontRecord & { step: StepCrown }> | null {
+  const span = rec.spanM;
+  if (!rowFrontStepsOn() || !span || rec.subFronts?.length || rec.topM === null) return null;
+  const g = rowGableCrown(rec.crown, +(rec.topM - top).toFixed(2));
+  if (!g) return null;
+  return [{ a0: 0, a1: 1, eavesM: top, topM: rec.topM, crown: rec.crown, step: { wallTopM: top, crown: g.crown, gable: g.gable, riseM: rowCrownRoofRise(g.crown, span) } }];
+}
+/** A series member whose crown is a stated gable (house rows): drawn by the series branch, the gable on its line. */
+export const rowStatedGable = (rec: RowFrontRecord): boolean =>
+  !!rec.series && rec.eavesM !== null && rec.topM !== null && rowGableCrown(rec.crown, +(rec.topM - rec.eavesM).toFixed(2)) !== null;
 
 /** `ROW_FRONT_STEPS=0` / `?rowFrontSteps=0`: a pand with sub-fronts keeps one top and one crown (the tallest front's). */
 export function rowFrontStepsOn(search?: string): boolean {
@@ -536,7 +567,7 @@ export function withRowFront<T extends Feature>(feature: T): T {
   const sr = p.specRecipe && typeof p.specRecipe === 'object' ? p.specRecipe as Record<string, unknown> : null;
   // House rows (lane R): a series member draws its series' design. A cornice front (the round-1 rows) stands to the
   // series cornice line with the series roof storey behind it; a gabled member takes the record's crown as before.
-  if (rec.series && (family === 'cornice' || family === 'raised-cornice-dormer')) {
+  if (rec.series && (family === 'cornice' || family === 'raised-cornice-dormer' || rowStatedGable(rec))) {
     const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(rs.riseM) : 0;
     const mansard = rs && rise > 0.5 ? { ...rs, riseM: rise } : null;
     const lv = levels(sr, rec, top, true);
@@ -560,7 +591,8 @@ export function withRowFront<T extends Feature>(feature: T): T {
     // A member whose fronts carry their own taller tops (Kinkerstraat 126-138: two fronts of another series to 16.45 m
     // over 13.45 m): the wall keeps the series line and each taller front stands a raised front of its own to its top,
     // the step mesher's crown on its span (threeBuildingMesh steps). Without one, nothing changes.
-    const raised = sr2 ? rowRaisedFronts(rec, top) : null;
+    // A stated gable (house rows round 3: RowDesign.gable) is the same step on the gabled front's span.
+    const raised = sr2 ? rowRaisedFronts(rec, top) ?? rowGableFront(rec, top) : null;
     if (sr2 && raised) sr2.subFronts = raised;
     const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...(rec.series.shop !== undefined ? { specShop: rec.series.shop } : {}), ...(rec.series.look ? { rowLook: rec.series.look } : {}), ...lv };
     if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
