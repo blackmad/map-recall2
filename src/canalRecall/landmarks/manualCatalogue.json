@@ -76855,8 +76855,8 @@
   "materialOverrides": {
    "brick": "#75645b",
    "greyBrick": "#8e7f71",
-   "ochre": "#e6e3db",
-   "white": "#e6e3db",
+   "ochre": "#d8cfb6",
+   "white": "#d8cfb6",
    "stone": "#77746f",
    "concrete": "#3d3a3b",
    "slate": "#333236",
@@ -77949,7 +77949,7 @@
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
   "materialOverrides": {
-   "brick": "#c99c6e",
+   "brick": "#b89b78",
    "red": "#a5513a",
    "stone": "#b8b3a6",
    "white": "#eeeae0",
@@ -82456,8 +82456,8 @@
   },
   "bagYear": 1965,
   "materialOverrides": {
-   "brick": "#5e4033",
-   "red": "#6a3f33",
+   "brick": "#5f4e46",
+   "red": "#63473e",
    "white": "#e9e7df",
    "stone": "#c4c0b6",
    "concrete": "#b9b6ad",
@@ -83055,7 +83055,8 @@
    "dark": "#26292c",
    "glass": "#3f4c55",
    "frame": "#e6e3da",
-   "slate": "#4b4f57"
+   "slate": "#4b4f57",
+   "red": "#a24a36"
   },
   "attribution": {
    "title": "Zaal 100, De Wittenstraat 100, Amsterdam: music and theatre venue in a brick building of 1892",

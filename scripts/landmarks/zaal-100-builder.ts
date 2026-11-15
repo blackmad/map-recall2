@@ -15,10 +15,10 @@ import source from './zaal-100-footprints.json' with {type: 'json'};
  * foot sits below the pavement: the ground-floor sills and door feet put the pavement at crop py 558, so y = (558 - py) / 30.
  *
  * Light salmon-buff brick in five bays between brick lesenes, each storey a triplet of tall segment-headed windows (a wide
- * one between two narrow ones) under arch rings with light voussoirs, light stone string courses at the sills, a light
+ * one between two narrow ones) under red-brick arch rings, light stone string courses at the sills, a light
  * cornice with white consoles at the lesenes, four dormers with flared white hoods in the roof, and in the middle bay a
  * crested gable over the cornice with a small round-headed window. The south-west bay holds the venue: three black
- * ground-floor windows painted 1 0 0, a ZAAL 100 sign band and a vertical 100 sign on the lesene. Roofs and the side and
+ * ground-floor windows painted 1 0 0, a ZAAL 100 sign band and a ZAAL 100 banner on the lesene reading top-down. Roofs and the side and
  * back walls keep the 3DBAG LoD2.2 shell (CC BY 4.0); the side walls adjoin the neighbours.
  */
 type Shell = {nativeRing: XZ[]; surfaces: Surface[]};
@@ -51,10 +51,10 @@ function front(c: Ctx) {
   const at = (s: number) => S.find(q => s > q.s0 && s < q.s1)!;
   const f = K.faceFrame(S[0], 0);
   const floors: Array<[number, number]> = [[Y(300), Y(410)], [Y(158), Y(268)]];        // [top, foot] of the upper storeys
-  // upper storeys: segment-headed triplets with light arch rings, stone sill courses
+  // upper storeys: segment-headed triplets under red-brick arch rings (the photo's rings are orange-red brick, not stone), stone sill courses
   for (const [s0, s1] of BAYS) for (const [top, foot] of floors) for (const [s, w] of TRIPLET(s0, s1)) {
     K.opening(at(s), s, foot, w, top - foot, {...win, cols: w > 1.5 ? 3 : 2, rows: 3, rise: 0.28});
-    K.archHead(at(s), s, top - 0.28, w, 0.28, 0.2, 0.07, 'stone');
+    K.archHead(at(s), s, top - 0.28, w, 0.28, 0.2, 0.07, 'red');
   }
   for (const [, foot] of floors) slab(b, f, L / 2, foot - 0.3, L - 0.1, 0.22, 0.08, 'stone');
   slab(b, f, L / 2, Y(300) + 0.35, L - 0.1, 0.16, 0.08, 'stone');                    // band over the first floor
@@ -62,12 +62,12 @@ function front(c: Ctx) {
   const gTop = Y(445), gFoot = Y(535);
   for (const [s0, s1] of BAYS.slice(2)) for (const [s, w] of TRIPLET(s0, s1)) {
     K.opening(at(s), s, gFoot, w, gTop - gFoot, {...win, cols: w > 1.5 ? 3 : 2, rows: 2, rise: 0.25});
-    K.archHead(at(s), s, gTop - 0.25, w, 0.25, 0.2, 0.07, 'stone');
+    K.archHead(at(s), s, gTop - 0.25, w, 0.25, 0.2, 0.07, 'red');
   }
   K.opening(at(10.0), 10.0, 0.05, 1.9, Y(458) - 0.05, {frame: 'white', back: 'blue', depth: 0.3, edge: 0.09, cols: 2, bars: [2.4], rise: 0.95});
-  K.archHead(at(10.0), 10.0, Y(458) - 0.95, 1.9, 0.95, 0.22, 0.08, 'stone');
+  K.archHead(at(10.0), 10.0, Y(458) - 0.95, 1.9, 0.95, 0.22, 0.08, 'red');
   K.opening(at(13.15), 13.15, gFoot, 1.9, gTop - gFoot, {...win, cols: 3, rows: 2, rise: 0.25});
-  K.archHead(at(13.15), 13.15, gTop - 0.25, 1.9, 0.25, 0.2, 0.07, 'stone');
+  K.archHead(at(13.15), 13.15, gTop - 0.25, 1.9, 0.25, 0.2, 0.07, 'red');
   const nums = [[2.0, '1'], [4.1, '0'], [6.1, '0']] as const;
   for (const [s, ch] of nums) {
     K.opening(at(s), s, Y(535), s === 4.1 ? 2.0 : 1.3, Y(450) - Y(535), {frame: 'dark', back: 'dark', depth: 0.22, edge: 0.08});
@@ -75,9 +75,13 @@ function front(c: Ctx) {
   }
   slab(b, f, 4.1, Y(445), 6.0, Y(418) - Y(445), 0.12, 'ochre');                       // the ZAAL 100 sign band
   lettering(b, f, 'ZAAL 100', 4.1, Y(442), 0.06, 0.03, 'dark', 0.12);
-  // the vertical 100 sign on the first lesene
-  slab(b, f, 7.73, Y(470), 0.42, Y(395) - Y(470), 0.5, 'dark', 0.2);
-  verticalLettering(b, f, '100', 7.73, Y(462), 0.07, 0.03, 'concrete', 0.7);
+  // the ZAAL 100 banner on the first lesene: a dark banner hung 0.25 m off the wall from a bracket arm, its lettering
+  // reading top-down (small gold ZAAL over a large white 100), crop x 185-215, py 385-470
+  const bTop = Y(385), bFoot = Y(470), bOut = 0.25;
+  slab(b, f, 7.73, bFoot, 0.85, bTop - bFoot, 0.05, 'dark', bOut);
+  slab(b, f, 7.73, bTop, 1.0, 0.06, bOut + 0.12, 'dark');                           // bracket arm
+  const zw = verticalLettering(b, f, 'ZAAL', 7.73 - 0.12, bTop - 0.12, 0.045, 0.03, 'ochre', bOut + 0.05, 'down');
+  verticalLettering(b, f, '100', 7.73 - 0.02, bTop - 0.12 - zw - 0.18, 0.085, 0.03, 'concrete', bOut + 0.05, 'down');
   // lesenes up into consoles under the cornice; plinth course
   for (const s of [0.2, ...LESENES, L - 0.2]) {
     const w = s < 1 || s > L - 1 ? 0.38 : 0.5;
@@ -110,11 +114,11 @@ function gable(c: Ctx, f: ReturnType<FrontKit['faceFrame']>) {
   for (const sd of [-1, 1]) slab(b, f, m + sd * 0.9, Y(75), 0.3, 0.5, 0.1, 'white');
 }
 
-/** Dormers with flared white hoods in the front roof slope (crop x 95-175, 320-380, 750-825); the fourth (crop x 955-1050)
- *  stands in the raised north-east roof piece the 3DBAG shell already carries. */
+/** Four dormers with flared white hoods in the front roof slope (crop x 95-175, 320-380, 750-825, 955-1050; the fourth
+ *  stands in the raised north-east roof piece of the 3DBAG shell). */
 function dormers(c: Ctx) {
   const {b} = c;
-  for (const [s, w] of [[4.5, 2.4], [11.67, 2.0], [26.25, 2.4]] as Array<[number, number]>) {
+  for (const [s, w] of [[4.5, 2.4], [11.67, 2.0], [26.25, 2.4], [33.8, 2.4]] as Array<[number, number]>) {
     const fr = frameAt(F, 0, -0.6), y0 = EAVES - 0.1, y1 = EAVES + 1.5;
     slab(b, fr, s, y0, w, y1 - y0, 1.6, 'brick', -1.6);
     slab(b, fr, s, y0 + 0.65, w - 0.4, y1 - y0 - 0.85, 0.06, 'glass', 0.0);

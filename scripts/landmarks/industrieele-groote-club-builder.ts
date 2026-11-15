@@ -2,14 +2,14 @@ import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
 import {archBand, archSlab, disc, poly, ringSlab, setSink, slab, type Frame} from './nearbar-kit';
 import {frameAt, makeFrontKit, type Chord, type FrontKit, type Sec} from './street-front-kit';
-import {arcLettering, clipRingByLine, clipRingByY, segDist, TriSink, type Col, type XZ} from './venue-kit';
+import {arcLettering, clipRingByLine, clipRingByY, roundedTowerCap, segDist, TriSink, type Col, type XZ} from './venue-kit';
 import source from './industrieele-groote-club-footprints.json' with {type: 'json'};
 
 /**
  * Koninklijke Industrieele Groote Club, Dam 27 (BAG pand 0363100012165129, bouwjaar 1916; the club building of
  * 1913-1916). The BAG pand also holds the house at Dam 21 (Ripley's on the ground floor), the Gassan arcade at the
  * Rokin end and the Kalverstraat backs, so the model keeps the 3DBAG LoD2.2 shell (CC BY 4.0) for the roofs, the gable
- * and tower tops and the backs, and draws the Dam front's storeys with cut openings below them.
+ * and gable top and the backs, and draws the Dam front's storeys with cut openings below them.
  *
  * Read from rectified Gemeente Amsterdam panoramas (CC BY 4.0, venue-face-crops.ts, 40.5 px/m over the 34.4 m Dam chord;
  * ids in industrieele-groote-club-inventory.json): TMX7316010203-002031_pano_0001_001692 (2021-03-08, bare trees) for
@@ -25,7 +25,8 @@ import source from './industrieele-groote-club-footprints.json' with {type: 'jso
  *    storeys of five two-tier cross windows between stone bands, a row of round-headed attic lights, white stone
  *    corbel blocks at the gable foot (24.4 m) and a round window in the gable.
  *  - Tower (21.7-26.5): the club entrance, a round arch under the carved arc DE INDUSTRIEELE GROOTE CLUB and a crown,
- *    three-light windows on five storeys, tall louvred lights in the set-back top (3DBAG cap to 42.6 m).
+ *    three-light windows on five storeys; over the shaft a lantern stage with tall louvred lights, a drum and a tall
+ *    rounded slate dome with a gilt ball (drawn: 3DBAG reads the top as a pyramid to 42.6 m).
  *  - Gassan arcade (28.6-34.4): stone, round-arched shop windows, 5.3 m terrace roof; the set-back east wing above.
  *
  * Native frame of industrieele-groote-club-footprints.json (x east, z south, y up from the 1.29 m NAP pavement).
@@ -75,8 +76,34 @@ function shell(c: Ctx) {
       if (r.length) out.push({...s, rings: [r]});
     }
   }
-  const towerCap = (s: Surface) => s.type === 'RoofSurface' && Math.min(...s.rings[0].map(p => p[1])) > 33;
-  addShell(c.b, {surfaces: out, nativeRing: R}, {wall: 'brick', roof: 'slate', roofFor: s => (towerCap(s) ? 'brick' : 'slate')});
+  // the tower top above the shaft: 3DBAG reads the lantern stage and dome as one pyramid to 42.6 m. Drop every piece
+  // whose centroid stands in the tower plan above the shaft (and the strip's front above its cornice, which with the
+  // pyramid gone would stand alone); towerTop() draws the stage, drum and dome from the photo.
+  const kept: Surface[] = [];
+  for (const s of out) {
+    const t = inTowerTop(s);
+    if (t === 'drop') continue;
+    if (t === 'clip') { const r = clipRingByY(s.rings[0], TOP.tw, -1); if (r.length) kept.push({...s, rings: [r]}); continue; }
+    kept.push(s);
+  }
+  addShell(c.b, {surfaces: kept, nativeRing: R}, {wall: 'brick', roof: 'slate'});
+}
+/** Chord s and outward offset o of a plan point. */
+function chordSO(x: number, z: number): [number, number] {
+  const dx = x - dmF.origin[0], dz = z - dmF.origin[1];
+  return [dx * dmF.tangent[0] + dz * dmF.tangent[1], dx * dmF.n[0] + dz * dmF.n[1]];
+}
+/**
+ * A 3DBAG piece of the tower top, by its centroid in the tower plan (s 21.0-28.6, up to 6.3 m back): 'drop' when it
+ * starts at or above the strip cornice and reaches over the shaft top, 'clip' (keep the part under the shaft top) when
+ * it starts lower, 'keep' otherwise.
+ */
+function inTowerTop(s: Surface): 'drop' | 'clip' | 'keep' {
+  const r = s.rings[0], n = r.length;
+  const cx = r.reduce((a, p) => a + p[0], 0) / n, cz = r.reduce((a, p) => a + p[2], 0) / n;
+  const [cs, co] = chordSO(cx, cz), ys = r.map(p => p[1]);
+  if (!(cs > 21.0 && cs < 28.6 && co > -6.3 && co < 0.3) || Math.max(...ys) <= TOP.tw + 0.3) return 'keep';
+  return Math.min(...ys) >= TOP.strip - 0.05 ? 'drop' : 'clip';
 }
 /** Newell normal of a wall ring pointing into the block (away from the Dam). */
 function facesIn(s: Surface): boolean {
@@ -233,9 +260,52 @@ function tower(c: Ctx) {
   // the east strip in front of the wing (3DBAG wall to 29 m): one column of narrow lights
   const E = K.sec(DM, TW_E, TW[1], GF, TOP.strip, 'brick', 0);
   for (const y0 of [6.6, 10.4, 13.8, 17.2]) cross(c, E, 27.5, y0, y0 + 1.7, 0.6, null);
-  // tall lights in the tower top (3DBAG wall above 28 m)
-  const tf = frameAt(DM, 0, 0);
-  for (const dt of [-0.75, 0, 0.75]) slab(b, tf, TW_MID + dt, 29.0, 0.3, 2.4, 0.03, 'dark');
+  towerTop(c);
+}
+
+/**
+ * The tower top, read on the rectified Dam-front crops (25 px/m; TMX7316010203-001662_pano_0000_001492, 2020-04-21, and
+ * recording_2025-07-03_03-29-47_02632), heights corrected for the set-back with the 3DBAG walls (37.7-38.1 m) and apex
+ * (42.6 m): a brick lantern stage 28-34.4 m a little narrower than the shaft with three tall louvred lights a side, a
+ * stone cornice, a short drum, and a tall rounded slate dome (base about 4.2 m across) with a gilt ball and spike, where
+ * 3DBAG has a pyramid. The east strip's roof behind its 24.4 m cornice slopes back to the wing.
+ */
+const STAGE = {s0: 21.9, s1: 26.3, o0: -0.15, o1: -4.85, y0: TOP.tw - 0.02, y1: 34.4};
+function towerTop(c: Ctx) {
+  const {b} = c;
+  const tf = frameAt(DM, 0, 0), sm = (STAGE.s0 + STAGE.s1) / 2, om = (STAGE.o0 + STAGE.o1) / 2;
+  const w = STAGE.s1 - STAGE.s0, d = STAGE.o0 - STAGE.o1;
+  slab(b, tf, sm, STAGE.y0, w, STAGE.y1 - STAGE.y0, d, 'brick', STAGE.o1);
+  // louvred lights on all four faces: three tall arched lights with stone bands, the corner piers proud
+  const faces: Array<{f: Frame; len: number}> = [];
+  const corner = (s: number, o: number): XZ => at(s, o);
+  const quad: XZ[] = [corner(STAGE.s0, STAGE.o0), corner(STAGE.s1, STAGE.o0), corner(STAGE.s1, STAGE.o1), corner(STAGE.s0, STAGE.o1)];
+  for (let i = 0; i < 4; i++) {
+    const p = quad[i], q = quad[(i + 1) % 4], L = Math.hypot(q[0] - p[0], q[1] - p[1]);
+    const tg: XZ = [(q[0] - p[0]) / L, (q[1] - p[1]) / L];
+    faces.push({f: {origin: p, tangent: tg, n: [-tg[1], tg[0]]}, len: L});
+  }
+  for (const {f, len} of faces) {
+    // n = (-tz, tx) points out of a counter-clockwise ring; check against the stage centre and flip if needed
+    const mid: XZ = [f.origin[0] + f.tangent[0] * len / 2, f.origin[1] + f.tangent[1] * len / 2], cen = at(sm, om);
+    const outward = (mid[0] - cen[0]) * f.n[0] + (mid[1] - cen[1]) * f.n[1] > 0;
+    const g: Frame = outward ? f : {origin: [f.origin[0] + f.tangent[0] * len, f.origin[1] + f.tangent[1] * len], tangent: [-f.tangent[0], -f.tangent[1]], n: [-f.n[0], -f.n[1]]};
+    for (const dt of [-0.75, 0, 0.75]) {
+      archSlab(b, g, len / 2 + dt, 29.0, 0.36, 3.2, 0.04, 'dark', 0);
+      archBand(b, g, len / 2 + dt, 28.92, 0.5, 3.36, 0.07, 0.08, 'stone', 0);
+    }
+    slab(b, g, len / 2, 28.75, len - 0.6, 0.12, 0.1, 'stone');                       // sill band
+    for (const sd of [-1, 1]) slab(b, g, len / 2 + sd * (len / 2 - 0.25), STAGE.y0, 0.5, STAGE.y1 - STAGE.y0, 0.12, 'brick');
+  }
+  // stone cornice over the stage, then the drum, dome, ball and spike
+  slab(b, tf, sm, STAGE.y1, w + 0.5, 0.35, d + 0.5, 'stone', STAGE.o1 - 0.25);
+  roundedTowerCap(b, tf, sm, om, STAGE.y1 + 0.35, {drumR: 2.0, drumH: 1.1, sides: 8, corniceR: 2.25, corniceH: 0.22, domeR: 2.1, domeH: 4.6, fullness: 0.75, ballR: 0.35, spikeH: 0.6},
+    {drum: 'brick', trim: 'stone', dome: 'slate', ball: 'gold'});
+  // the east strip's roof: from the 24.4 m cornice back to the wing behind (a slate slope, 3DBAG's front piece dropped)
+  const a0 = at(TW_E - 0.01, 0), a1 = at(TW[1] + 0.3, 0), b1 = at(TW[1] + 0.3, -5.0), b0 = at(TW_E - 0.01, -5.0);
+  const y0 = TOP.strip, y1 = TOP.strip + 3.6;
+  c.M.quad('slate', [a0[0], y0, a0[1]], [a1[0], y0, a1[1]], [b1[0], y1, b1[1]], [b0[0], y1, b0[1]], [dmF.n[0] * 0.8, 0.6, dmF.n[1] * 0.8]);
+  c.M.tri('slate', [a1[0], y0, a1[1]], [b1[0], y1, b1[1]], [b1[0], y0, b1[1]], [dmF.tangent[0], 0, dmF.tangent[1]]);
 }
 
 // ---- Gassan arcade and the east wing behind its terrace ---------------------------------------------------------------------------

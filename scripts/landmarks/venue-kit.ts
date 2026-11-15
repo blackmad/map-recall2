@@ -195,12 +195,53 @@ export function lettering(b: BuildingTools, f: Frame, text: string, t: number, y
   return width;
 }
 
-/** Glyph runs set vertically (reading bottom to top) on a wall frame: the text's baseline runs up the wall at t. */
-export function verticalLettering(b: BuildingTools, f: Frame, text: string, t: number, y0: number, px: number, d: number, c: Col, out = 0) {
+/**
+ * Glyph runs set vertically on a wall frame. Default 'up': reading bottom to top from y0, the letters' tops facing -t.
+ * 'down' (a banner read top-down, Zaal 100's ZAAL 100 banner): reading top to bottom from y0, the tops facing +t.
+ */
+export function verticalLettering(b: BuildingTools, f: Frame, text: string, t: number, y0: number, px: number, d: number, c: Col, out = 0, dir: 'up' | 'down' = 'up') {
   const {runs, width} = glyphRuns(text, px, MIXED_CASE_GLYPHS);
-  // text x -> up the wall, text y (0..7px) -> to the left of t (letters' tops face -t)
-  for (const r of runs) slab(b, f, t - (r.y0 + r.y1) / 2 + 3.5 * px, y0 + r.t0, r.y1 - r.y0, r.t1 - r.t0, d, c, out);
+  // text x -> along the wall's vertical, text y (0..7px) -> across t
+  if (dir === 'down') for (const r of runs) slab(b, f, t + (r.y0 + r.y1) / 2 - 3.5 * px, y0 - r.t1, r.y1 - r.y0, r.t1 - r.t0, d, c, out);
+  else for (const r of runs) slab(b, f, t - (r.y0 + r.y1) / 2 + 3.5 * px, y0 + r.t0, r.y1 - r.y0, r.t1 - r.t0, d, c, out);
   return width;
+}
+
+/**
+ * Concave-sided dormer gable (Perdu, Kloveniersburgwal 86): a gable rising from the cornice whose sides run up from
+ * short vertical shoulders and curve inward (concave to the sky, as a neck gable's claws) to a narrow neck, closed by a
+ * point. Outline in (t - axis, y - base), counter-clockwise, base on y = 0.
+ */
+export type ConcaveGable = {half: number; shoulder: number; neckHalf: number; neckY: number; apexY: number};
+export function concaveGableOutline(g: ConcaveGable, steps = 8): [number, number][] {
+  const side = (sd: -1 | 1): [number, number][] => {
+    const pts: [number, number][] = [];
+    for (let i = 0; i <= steps; i++) {
+      const a = (i / steps) * Math.PI / 2;
+      // flat at the shoulder, turning vertical against the neck
+      pts.push([sd * (g.half - (g.half - g.neckHalf) * Math.sin(a)), g.shoulder + (g.neckY - g.shoulder) * (1 - Math.cos(a))]);
+    }
+    return pts;
+  };
+  return [[-g.half, 0], [g.half, 0], ...side(1), [0, g.apexY], ...side(-1).reverse()];
+}
+/**
+ * The gable as solids on a wall frame: a body `depth` deep standing behind the wall plane (its sides run back into the
+ * roof), and a stone edge `rim` wide standing `rimD` proud along the shoulders, the curves and the point.
+ */
+export function concaveGable(b: BuildingTools, f: Frame, t: number, y: number, g: ConcaveGable, o: {depth: number; wall: Col; trim: Col; rim: number; rimD: number}) {
+  const ring = concaveGableOutline(g);
+  poly(b, f, t, y, ring, o.depth, o.wall, -o.depth);
+  // edge blocks just inside every outline segment but the base (the left of a counter-clockwise ring's travel)
+  for (let i = 1; i < ring.length; i++) {
+    const p = ring[i], q = ring[(i + 1) % ring.length];
+    if (i + 1 === ring.length) break;                                   // the closing base segment
+    const L = Math.hypot(q[0] - p[0], q[1] - p[1]);
+    if (L < 1e-6) continue;
+    const m = new T.BoxGeometry(L + o.rim * 0.5, o.rim, o.rimD + 0.04).translate(0, o.rim / 2, (o.rimD + 0.04) / 2 - 0.04).rotateZ(Math.atan2(q[1] - p[1], q[0] - p[0]));
+    put(b, f, m, t + (p[0] + q[0]) / 2, y + (p[1] + q[1]) / 2, 0, o.trim);
+  }
+  return ring;
 }
 
 /**
@@ -366,4 +407,32 @@ export function tiledFront(K: {sec: (ch: Chord, s0: number, s1: number, y0: numb
     return secs[Math.max(0, i)][Math.max(0, j)];
   };
   return {secs: secs.flat(), at};
+}
+
+/**
+ * Rounded tower cap (the Industrieele Groote Club's Dam tower, 2026-11-15; the kit had only 3DBAG pyramids and cones):
+ * a drum of `sides` facets, a tall rounded dome over it (a bullet profile: radius r at the foot, vertical tangent there,
+ * closing to a point `h` higher, fuller than a cone and narrower than a hemisphere) and a ball with a short spike.
+ * Profile points (radius, height over the dome foot), foot to tip: r = r0 cos(u pi/2)^f. The side rises vertical from the
+ * foot; f 1 closes in a point at a finite angle, f 0.5 is close to an ellipse quarter (round top), between is a rounded bullet.
+ */
+export function bulletDomeProfile(r: number, h: number, fullness = 0.8, steps = 10): [number, number][] {
+  const pts: [number, number][] = [];
+  for (let i = 0; i < steps; i++) { const u = i / steps; pts.push([r * Math.pow(Math.cos(u * Math.PI / 2), fullness), h * u]); }
+  pts.push([0, h]);
+  return pts;
+}
+export type TowerCap = {drumR: number; drumH: number; sides: number; corniceR: number; corniceH: number; domeR: number; domeH: number; fullness?: number; ballR: number; spikeH: number};
+/** Builds the cap on frame f at (t, out) with its foot at y; returns the top of the spike. */
+export function roundedTowerCap(b: BuildingTools, f: Frame, t: number, out: number, y: number, c: TowerCap, col: {drum: Col; trim: Col; dome: Col; ball: Col}) {
+  const at = (g: T.BufferGeometry, yy: number, colour: Col) => put(b, f, g, t, yy, out, colour);
+  at(new T.CylinderGeometry(c.drumR, c.drumR, c.drumH, c.sides, 1, false, Math.PI / c.sides).translate(0, c.drumH / 2, 0), y, col.drum);
+  at(new T.CylinderGeometry(c.corniceR, c.corniceR, c.corniceH, c.sides, 1, false, Math.PI / c.sides).translate(0, c.corniceH / 2, 0), y + c.drumH, col.trim);
+  const foot = y + c.drumH + c.corniceH;
+  const prof = bulletDomeProfile(c.domeR, c.domeH, c.fullness ?? 0.8).map(([r, hh]) => new T.Vector2(r, hh));
+  at(new T.LatheGeometry(prof, c.sides * 2), foot, col.dome);
+  const top = foot + c.domeH;
+  at(new T.SphereGeometry(c.ballR, 10, 6).translate(0, c.ballR * 0.8, 0), top, col.ball);
+  at(new T.CylinderGeometry(0.03, 0.05, c.spikeH, 6).translate(0, c.spikeH / 2, 0), top + c.ballR * 1.6, col.ball);
+  return top + c.ballR * 1.6 + c.spikeH;
 }
