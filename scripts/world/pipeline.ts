@@ -154,8 +154,10 @@ export async function loadTile(tile: string, chain: Chain, stats?: TileStats): P
     if (styled.geometry !== source.geometry) {
       // House rows: a chunk-owned pand's street wall (houseLine/rowFront.ts rowWallSlab, its own `#row-wall` id) is the
       // one decorator allowed to replace the footprint: the slab is what the world draws, so it is the cell's FOOT
-      // (the chunk keeps hiding the pand's own id). Any other replaced geometry still stops the compile.
-      if (isRowWallSlab(styled)) raw = { ...source, geometry: styled.geometry };
+      // (the chunk keeps hiding the pand's own id). A buurt-kit front (buurtGenerator/kit/frontKit.ts straightenFeature,
+      // a row-front record) straightens its footprint onto the kit's front line; that ring is what the runtime draws too,
+      // so it is the FOOT as well. Any other replaced geometry still stops the compile.
+      if (isRowWallSlab(styled) || styled.properties?.rowFront) raw = { ...source, geometry: styled.geometry };
       else if (stats) stats.geometryChangedByDecorator++;
     }
     rows.push({ tile, ordinal, raw, styled, cell });

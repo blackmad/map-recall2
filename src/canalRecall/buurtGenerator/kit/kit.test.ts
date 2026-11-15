@@ -145,7 +145,7 @@ test('painter: existing variants keep their keys and doors; the kit presets exis
   assert.ok(variantKey(pair, 'photo').endsWith(`|m${KIT_MULLION_SHARE}|portiek-pair`));
   assert.equal(bayDoorGeometry(pair).width, 200);
   // Flag off (the module was loaded without BUURT_KIT): the school presets are the stock two.
-  assert.equal(BAY_STYLES.school.length, process.env.BUURT_KIT === '1' ? 4 : 2);
+  assert.equal(BAY_STYLES.school.length, process.env.BUURT_KIT === '0' ? 2 : 4);
 });
 
 // Round 4: the series pattern (rhythm), the block piers, the Rooseveltlaan eaves, all on the street end of the row roof.

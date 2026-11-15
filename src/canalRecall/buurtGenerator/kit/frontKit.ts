@@ -215,7 +215,9 @@ export function straightenRing(ring: readonly LngLat[], line: readonly [LngLat, 
     keep = next;
   }
   if (keep.length < 3) return ring.slice();
-  const outRing = keep.map(back);
+  // On the world cells' 1e-7 degree grid (cellFormat.ts FOOT), as rowWallSlab: the compile bakes this ring as the footprint.
+  const grid = (v: number) => Math.round(v * 1e7) / 1e7;
+  const outRing = keep.map(back).map((q): LngLat => [grid(q[0]), grid(q[1])]);
   return closed ? [...outRing, outRing[0]] : outRing;
 }
 
