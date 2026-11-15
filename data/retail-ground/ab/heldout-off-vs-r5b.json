@@ -1,0 +1,77 @@
+{
+ "verdicts": {
+  "01": "A",
+  "02": "B",
+  "03": "TIE",
+  "04": "TIE",
+  "05": "B",
+  "06": "TIE",
+  "07": "TIE",
+  "08": "B",
+  "09": "B",
+  "10": "A",
+  "11": "A"
+ },
+ "key": {
+  "front-01.jpg": {
+   "front": "action",
+   "A": "r5b",
+   "B": "off"
+  },
+  "front-02.jpg": {
+   "front": "hema-eerste-van-swindenstraat-379",
+   "A": "off",
+   "B": "r5b"
+  },
+  "front-03.jpg": {
+   "front": "etos-kinkerstraat-208",
+   "A": "r5b",
+   "B": "off"
+  },
+  "front-04.jpg": {
+   "front": "mikkeller-lange-leidsedwarsstraat-4",
+   "A": "off",
+   "B": "r5b"
+  },
+  "front-05.jpg": {
+   "front": "odonnells-ferdinand-bolstraat-5",
+   "A": "off",
+   "B": "r5b"
+  },
+  "front-06.jpg": {
+   "front": "coffeeshop-noord-ooievaarsweg-10",
+   "A": "off",
+   "B": "r5b"
+  },
+  "front-07.jpg": {
+   "front": "bar-blij-bartholomeus-diazstraat-15",
+   "A": "off",
+   "B": "r5b"
+  },
+  "front-08.jpg": {
+   "front": "plain-167816",
+   "A": "r5b",
+   "B": "off"
+  },
+  "front-09.jpg": {
+   "front": "plain-159990",
+   "A": "off",
+   "B": "r5b"
+  },
+  "front-10.jpg": {
+   "front": "plain-106015",
+   "A": "r5b",
+   "B": "off"
+  },
+  "front-11.jpg": {
+   "front": "plain-159845",
+   "A": "r5b",
+   "B": "off"
+  }
+ },
+ "tally": {
+  "off": 1,
+  "r5b": 6,
+  "tie": 4
+ }
+}
