@@ -37,6 +37,8 @@ export interface RowFrontRecord {
     steps?: number;
     /** House rows' stated gable (RowDesign.gable): the neck's cap, finials, the neck's height over the shoulders, the attic light's head. */
     cap?: 'pediment' | 'segmental' | 'rounded' | 'flat'; finials?: boolean; shoulder?: 'sloped'; neckOverM?: number; atticHead?: 'round' | 'segmental'; upperLight?: boolean; dress?: 'belt';
+    /** The gable's white sandstone as stated (RowDesign.gable.stone). */
+    stone?: import('../houseSpec/row/types.ts').RowGableStone;
     /** Traced attic lights in the crown, [x0, x1, z0, z1]: x from the front's centre as seen, z above the crown's foot. */
     lights?: Array<[number, number, number, number]>;
     /** A chimney stack on the crown: its top (pand datum) and width. */
@@ -503,6 +505,7 @@ export function rowGableCrown(c: RowFrontRecord['crown'], rise: number): { crown
   if (shape === 'step' && c.shoulder === 'sloped') crown.shoulder = 'sloped';
   if (c.atticHead) crown.atticHead = c.atticHead;
   if (c.upperLight) crown.upperLight = true;
+  if (c.stone) crown.stone = { ...c.stone };
   if (c.dress === 'belt') crown.dress = 'belt';
   return { crown, gable };
 }

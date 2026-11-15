@@ -34,7 +34,7 @@ import { turnRect, turnRidgeToAxis, turnRidgeToStreet, TURN_MAX_FRONT_M } from '
 import { gableEndWalls } from './streetGableEnds.js';
 import { axisGapDeg } from './roofs/ridgeAxis.js';
 import { zeroArea } from './roofOverhang.js';
-import { isRowCrown, rowCrownAccents, rowCrownProfile, type RowCrown } from './houseLine/crownProfile.js';
+import { isRowCrown, ROW_STONE, rowCrownAccents, rowCrownProfile, rowCrownStone, type RowCrown } from './houseLine/crownProfile.js';
 
 /** House rows: the dormer kinds a row roof draws. `ornate-pinnacle`: a tall light-stone dormer, stepped, with a crowned top and
  *  raking cornices and a pinnacle on its apex (Kinkerstraat 100), drawn only when stated. */
@@ -907,7 +907,8 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
     }
     if (plan.rowCrown) {
       const prof = rowCrownProfile(plan.rowCrown, W, R);
-      gableSlab(s, prof, e, L, accents ? 'trim' : 'plate', trim);
+      // A crown in stone (stated, or the belt dress) stands deeper, so its sides read as a wall, not a cut-out.
+      gableSlab(s, prof, e, L, accents ? 'trim' : 'plate', trim, accents && rowCrownStone(plan.rowCrown) ? ROW_STONE.plate : 0.32);
       if (accents) rowCrownAccents(s, plan.rowCrown, prof, f, e, W, R, trim);
       continue;
     }

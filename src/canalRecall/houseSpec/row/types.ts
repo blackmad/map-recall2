@@ -222,10 +222,22 @@ export interface RowGable {
   /** A small round-headed light high in the neck over the attic light, as the photo shows one (Herengracht 39, 57, 71, 73;
    *  not 31, 37, 59, 61, 63): stated per house, never a default (blind gable review 3, 2026-11-15). */
   upperLight?: boolean;
+  /** The gable's white sandstone as built (house rows gable round): copings with thickness along the outline and the
+   *  treads, scrolled shoulder pieces (klauwstukken) beside a neck or bell, the cap or crest on top. Absent: today's flat
+   *  white edge. */
+  stone?: RowGableStone;
   /** `belt`: the canal belt's gable dress (houseLine/crownProfile.ts BELT_GABLE): a tall neck on low white claw pieces with a
    *  band at its foot and an overhanging cap moulding, a bell with a narrower moulded crest and a crest ornament, finer
    *  step treads with a crest finial, a short capped spout top. Absent: the kit's stock outlines (byte-identical). */
   dress?: 'belt';
+}
+export interface RowGableStone {
+  /** Coping width along the outline (m; absent 0.2). */
+  copingM?: number;
+  /** Neck or bell: scrolled shoulder pieces (klauwstukken) filling beside the neck (absent: true). */
+  claws?: boolean;
+  /** The cap on top: a pediment, a segmental hood, or a carved crest (absent: the gable's `cap`, else the kit's stock). */
+  crest?: 'pediment' | 'segmental' | 'crest';
 }
 export type RowDesignKey = keyof RowDesign;
 
