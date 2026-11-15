@@ -6,7 +6,7 @@
  * variance floor of about |dL| 0.115). So the wall colour is now a judged FAMILY with a representative tone, not a
  * calibrated sample.
  *
- * The palette (`JUDGED_PALETTE`) is eleven facade families that cover Amsterdam's canal belt and 19th/20th-century ring,
+ * The palette (`JUDGED_PALETTE`) is twelve facade families that cover Amsterdam's canal belt and 19th/20th-century ring,
  * each with an OKLab tone chosen to draw well through the game's wall chain (decorate.ts specWallColour: specWallSource,
  * specWallDisplay's lift, the pale-warm guard): every family's varied tones draw (never held, never swapped for the
  * family tone; judgedColour.test.ts runs the real chain).
@@ -39,6 +39,8 @@ import type { HouseSpec, SpecFacts } from './spec.ts';
 export const JUDGED_FAMILIES = [
   'red-brown-brick', 'brown-brick', 'purple-brown-brick', 'orange-red-brick', 'buff-brick',
   'painted-white', 'cream-render', 'pale-grey-stucco', 'grey-stone', 'painted-dark', 'sandstone',
+  // Round 12 (lane R): appended so no index or iteration order moves; nothing picks it yet but a stated family.
+  'dark-brown-brick',
 ] as const;
 export type JudgedFamily = (typeof JUDGED_FAMILIES)[number];
 
@@ -62,6 +64,9 @@ export const JUDGED_PALETTE: Record<JudgedFamily, JudgedTone> = {
   'grey-stone':         { L: 0.63, C: 0.012, h: 85, dL: 0.02, dC: 0.004, dh: 6, maxL: 0.68, wallFamily: 'grey', pale: true, label: 'mid grey stone' },
   'painted-dark':       { L: 0.30, C: 0.012, h: 150, dL: 0.015, dC: 0.004, dh: 25, maxL: 0.33, wallFamily: 'dark', pale: false, label: 'painted black / dark green-black' },
   'sandstone':          { L: 0.76, C: 0.055, h: 76, dL: 0.02, dC: 0.008, dh: 3, maxL: 0.8, wallFamily: 'buff', pale: true, label: 'sandstone' },
+  // The dark chocolate-brown klinker of the 1920s-30s (Plan Zuid blocks, Sloterparkbad): as dark as purple-brown but at
+  // brown's hue, not its mauve; the uncalibrated panorama reads of Rubensstraat 133237 (#413b37 h 56, #564740 h 46).
+  'dark-brown-brick':   { L: 0.39, C: 0.032, h: 52, dL: 0.02, dC: 0.007, dh: 5, maxL: 0.43, wallFamily: 'brown', pale: false, label: 'dark chocolate-brown brick' },
 };
 
 /** The decision's knobs (see the header). */

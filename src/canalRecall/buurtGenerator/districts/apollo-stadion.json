@@ -150,6 +150,106 @@
           "kind": "canopy"
         }
       ]
+    },
+    "stadionkade-063989": {
+      "erkers": {
+        "063989": [
+          {
+            "a0": 0.5,
+            "a1": 0.995,
+            "depthM": 0.6,
+            "faceM": 2.2,
+            "corner": true
+          }
+        ],
+        "101049": [
+          {
+            "a0": 0.03,
+            "a1": 0.55,
+            "depthM": 0.6,
+            "faceM": 2.31,
+            "corner": true
+          }
+        ],
+        "117276": [
+          {
+            "a0": 0.66,
+            "a1": 0.98,
+            "depthM": 0.6,
+            "faceM": 1.42,
+            "front": "timber",
+            "storeys": 1,
+            "apron": true
+          }
+        ],
+        "085491": [
+          {
+            "a0": 0.2,
+            "a1": 0.6,
+            "depthM": 0.6,
+            "faceM": 1.78,
+            "front": "timber",
+            "storeys": 1,
+            "apron": true
+          }
+        ],
+        "149160": [
+          {
+            "a0": 0.54,
+            "a1": 0.82,
+            "depthM": 0.6,
+            "faceM": 1.24,
+            "storeys": 3
+          }
+        ],
+        "079933": [
+          {
+            "a0": 0.005,
+            "a1": 0.22,
+            "depthM": 0.6,
+            "faceM": 0.95,
+            "corner": true,
+            "storeys": 3
+          }
+        ],
+        "074162": [
+          {
+            "a0": 0.04,
+            "a1": 0.43,
+            "depthM": 0.6,
+            "faceM": 1.73,
+            "front": "timber",
+            "storeys": 1,
+            "apron": true
+          },
+          {
+            "a0": 0.46,
+            "a1": 0.82,
+            "depthM": 0.6,
+            "faceM": 1.6,
+            "front": "timber",
+            "storeys": 1,
+            "apron": true
+          }
+        ],
+        "119687": [
+          {
+            "a0": 0.29,
+            "a1": 0.63,
+            "depthM": 0.6,
+            "faceM": 1.51,
+            "storeys": 3
+          },
+          {
+            "a0": 0.65,
+            "a1": 0.94,
+            "depthM": 0.6,
+            "faceM": 1.29,
+            "storeys": 3
+          }
+        ]
+      },
+      "evidence": "Stadionkade panorama recording_2025-07-30_06-07-02_01201 (2025-07-30, round 9 held-out sheet, 26 px/m), lane R round 12; BAG draws no erkers on this row. Brick canted bay columns with white-framed lights: two at the left end (063989 0.5 to its party wall and 101049 from it, each closed there), 149160 0.54-0.82 and 079933 to 0.22 (first to third floor), 119687 0.29-0.63 and 0.65-0.94; one-storey white timber oriels on a white apron over the ground floor: 117276 0.66-0.98, 085491 0.2-0.6, 074162 0.04-0.43 and 0.46-0.82. Spans read off the rectified photo against the member lines (+-0.3 m)"
     }
   },
   "streetNotes": {

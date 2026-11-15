@@ -12,7 +12,7 @@
  *    BAG outline has it (frontKit.ts `erkersOf`), never by dice.
  */
 import type { RoofSink, V3 } from '../../roofSink.js';
-import { entriesOf, type BuurtEntry, type BuurtErker } from './frontKit.js';
+import { entriesOf, erkerRowsOf, type BuurtEntry, type BuurtErker } from './frontKit.js';
 
 export interface BuurtRoofKit {
   /** Street slope pitch (degrees): the row mansard's band becomes a pitched roof face. Absent: the stock band. */
@@ -87,6 +87,13 @@ export const ERKER_LOOK = {
   /** A light's foot above its floor and head under the next floor (m): the series' casement heights. */
   lightFootM: 0.8, lightHeadM: 0.35, sideMarginM: 0.1,
 } as const;
+/** The white timber bay front (round 12, lane R; Hunzestraat 2025-07-14 at 40 px/m, Kuinderstraat 2025-07-14 at 36 px/m,
+ *  Stadionkade 2025-07-30 at 26 px/m): lights from 0.85 m over the floor to 0.3 m under the next, corner to corner on
+ *  every face; white posts 0.07 m each side of a corner (0.14 m together), head and sill 0.1 m, a transom at 68 % with
+ *  the toplights over it in panes about 0.32 m wide, casements about 0.8 m wide. The glass reads pale (net curtains and
+ *  sky), the brick only as the spandrel between storeys; a one-storey oriel stops 0.25 m under the next floor. */
+export const TIMBER_LOOK = { footM: 0.85, headM: 0.3, postM: 0.07, railM: 0.1, transom: 0.68, transomM: 0.08, toplightM: 0.32, barM: 0.035, casementM: 0.8, mullionM: 0.08,
+  glass: '#9eabb1', apronPanelM: 0.06, partialCapGapM: 0.25 } as const;
 
 /** The row mansard's street band depth for a pitched face: rise over the pitch, leaving a ridge strip behind it. */
 export function pitchBandM(riseM: number, depthM: number, pitchDeg: number): number {
@@ -121,20 +128,23 @@ export function buurtRoofKitOf(v: unknown): BuurtRoofKit | null {
  */
 export function drawErkers(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
   // Under broad eaves the erker rises through the frieze to the eaves slab, which caps it (Rooseveltlaan).
-  const Lk = ERKER_LOOK, z0 = kit.z0, z1 = kit.eaves ? friezeOf(kit) : kit.capM;
+  const Lk = ERKER_LOOK, T = TIMBER_LOOK, z0 = kit.z0, zLine = kit.eaves ? friezeOf(kit) : kit.capM;
   // (c, o, z): c across the front left to right as seen, o out from the wall, z up from the series line.
   const P = (c: number, o: number, z: number): V3 => [e * (L / 2 + o), e * c, z];
   const H = (dc: number, doo: number, dz: number): V3 => [e * doo, e * dc, dz];
   for (const k of kit.erkers) {
+    // Round 12: a bay over fewer storeys than the series stops under the next floor, with its own white cap.
+    const rows = erkerRowsOf(k, kit.rows), partial = rows < kit.rows, timber = k.front === 'timber';
+    const z1 = partial ? z0 + rows * kit.storeyM - T.partialCapGapM : zLine;
     const c0 = (k.a0 - 0.5) * W, c1 = (k.a1 - 0.5) * W, cm = (c0 + c1) / 2, d = Math.min(k.depthM, 1.2);
     // BAG's span inside its cells: brick over a cell whose window the erker half covers.
-    if (k.plates) { const q = frontQuad(s, L, e); for (const [p0, p1] of k.plates) if (p1 - p0 > 0.002) q((p0 - 0.5) * W, (p1 - 0.5) * W, z0, 0, PLATE_O, 'plate'); }
+    if (k.plates) { const q = frontQuad(s, L, e); for (const [p0, p1] of k.plates) if (p1 - p0 > 0.002) q((p0 - 0.5) * W, (p1 - 0.5) * W, z0, partial ? z1 : 0, PLATE_O, 'plate'); }
     const fw = Math.max(0.6, Math.min(c1 - c0, k.faceM || c1 - c0));
     const canted = fw < c1 - c0 - 0.15;
     // The plan: base left, face left, face right, base right (as seen).
     // Half of a pair across the party wall (the span reaches the front's end): straight and open on that side, the
     // neighbour's half closes it.
-    const openL = k.a0 <= 0.005, openR = k.a1 >= 0.995;
+    const openL = k.a0 <= 0.005 && !k.corner, openR = k.a1 >= 0.995 && !k.corner;
     const fl = openL ? c0 : canted ? (openR ? c1 - fw : cm - fw / 2) : c0, frr = openR ? c1 : canted ? (openL ? c0 + fw : cm + fw / 2) : c1;
     const plan: Array<[number, number]> = [[c0, 0], [fl, d], [frr, d], [c1, 0]];
     for (let i = 0; i < 3; i++) {
@@ -147,6 +157,7 @@ export function drawErkers(s: RoofSink, kit: BuurtRoofKit, L: number, W: number,
       // Brick between the lights (the series wall), first floor to cap.
       s.quad(at(0, 0, z0), at(1, 0, z0), at(1, 0, z1), at(0, 0, z1), s.wallUv(0, z0), s.wallUv(sl, z0), s.wallUv(sl, z1), s.wallUv(0, z1), 'plate', hint);
       // Bands (erkerBands): the lights run corner to corner, so the white frames read as one band round the erker.
+      if (timber) { timberFace(s, at, hint, sl, kit.storeyM, z0, z1, rows, !!k.apron, i === 0 || (i === 1 && openL), i === 2 || (i === 1 && openR)); continue; }
       const m = kit.erkerBands ? 0 : Math.min(Lk.sideMarginM, sl * 0.12) / sl;
       for (let r = 0; r < kit.rows; r++) {
         const zf = z0 + r * kit.storeyM, za = zf + Lk.lightFootM, zb = Math.min(zf + kit.storeyM - Lk.lightHeadM, z1 - 0.15);
@@ -175,7 +186,39 @@ export function drawErkers(s: RoofSink, kit: BuurtRoofKit, L: number, W: number,
       for (let i = 1; i < 3; i++) { s.tri(lo[0], lo[i], lo[i + 1], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, -1], Lk.white); s.tri(hi[0], hi[i], hi[i + 1], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], Lk.white); }
     };
     slab(z0 - Lk.sillM, z0);
-    slab(z1, z1 + (kit.eaves ? EAVES_LOOK.thickM : Lk.capM));
+    slab(z1, z1 + (kit.eaves && !partial ? EAVES_LOOK.thickM : Lk.capM));
+  }
+}
+
+/**
+ * One face of a white timber bay (round 12, TIMBER_LOOK) over its brick plate: per storey the pale glass corner to
+ * corner, the white posts at its edges (`postL`/`postR`: the face meets another face or the wall there), head, sill, the
+ * transom and the toplight bars over it, the casement mullions; `apron` paints the first storey's spandrel white under
+ * its lights. `at(f, out, z)` is the face's frame: f along it, out from it.
+ */
+function timberFace(s: RoofSink, at: (f: number, out: number, z: number) => V3, hint: V3, sl: number, storeyM: number, z0: number, z1: number, rows: number, apron: boolean, postL: boolean, postR: boolean): void {
+  const T = TIMBER_LOOK, wh = ERKER_LOOK.white;
+  const strip = (f0: number, f1: number, zz0: number, zz1: number, out = 0.04) => s.quad(at(f0, out, zz0), at(f1, out, zz0), at(f1, out, zz1), at(f0, out, zz1), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', hint, wh);
+  const pw = T.postM / sl, mw = T.mullionM / sl, bw = T.barM / sl;
+  for (let r = 0; r < rows; r++) {
+    const zf = z0 + r * storeyM, za = zf + T.footM, zb = Math.min(zf + storeyM - T.headM, z1 - 0.1);
+    if (zb - za < 0.6) continue;
+    if (apron && r === 0) {
+      strip(0, 1, zf, za, 0.03);
+      const zm = (zf + za) / 2; strip(0, 1, zm - T.apronPanelM / 2, zm + T.apronPanelM / 2, 0.045);
+    }
+    s.quad(at(0, 0.02, za), at(1, 0.02, za), at(1, 0.02, zb), at(0, 0.02, zb), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', hint, T.glass);
+    // Posts: a full post where the face meets the wall, half of the shared corner post where it meets the next face.
+    strip(0, postL ? pw * 1.4 : pw, za, zb); strip(1 - (postR ? pw * 1.4 : pw), 1, za, zb);
+    strip(0, 1, zb - T.railM, zb); strip(0, 1, za, za + T.railM);
+    // The sill ledge under the lights, proud of the frames.
+    strip(0, 1, za - 0.05, za + 0.02, 0.07);
+    const zt = za + (zb - za) * T.transom; strip(0, 1, zt - T.transomM / 2, zt + T.transomM / 2);
+    // Casements below the transom, the toplights' small panes above it.
+    const nc = Math.max(1, Math.round(sl / T.casementM));
+    for (let i = 1; i < nc; i++) { const f = i / nc; strip(f - mw / 2, f + mw / 2, za, zb); }
+    const np = Math.max(2, Math.round(sl / T.toplightM));
+    for (let i = 1; i < np; i++) { const f = i / np; if (nc > 1 && Array.from({ length: nc - 1 }, (_, j) => (j + 1) / nc).some(g => Math.abs(g - f) < mw)) continue; strip(f - bw / 2, f + bw / 2, zt, zb - T.railM); }
   }
 }
 

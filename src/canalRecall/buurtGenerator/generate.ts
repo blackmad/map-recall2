@@ -14,7 +14,7 @@ import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
 import { districtRows, ROW_EAVES_STEP_M, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
-import { erkersOnCells, type BuurtEntry, type BuurtKitFront } from './kit/frontKit.ts';
+import { erkersOnCells, type BuurtEntry, type BuurtErker, type BuurtKitFront } from './kit/frontKit.ts';
 
 export interface DistrictDesign {
   groundM: number;
@@ -72,7 +72,8 @@ export interface DistrictLibrary {
   pitchedEaves?: DistrictPitchedRoof;
   /** Per street, what its photos measure (round 5): `eaves` draws `pitchedEaves` on its pitched series; `erkerBands`
    *  draws its erkers' windows as continuous white bands. */
-  streetNotes?: Record<string, { eaves?: true; erkerBands?: true; /** The roof form the street's photos show (round 7). */ roof?: 'pitched' | 'flat';
+  streetNotes?: Record<string, { eaves?: true; erkerBands?: true;
+    /** Round 12 (lane R): the street's erkers are white-painted timber bay fronts (frontKit.ts BuurtErker.front). */ erkerFront?: 'timber'; /** The roof form the street's photos show (round 7). */ roof?: 'pitched' | 'flat';
     /** The roof's seen rise over the eaves on the street's photo (m; round 8): the drawn rise there. */ riseM?: number; evidence: string }>;
   /** A flat series' top (round 7, Apollo): the broad eaves slab over the street front, no frieze. */
   flatEaves?: { eavesM: number; frieze?: false; evidence: string };
@@ -84,7 +85,11 @@ export interface DistrictLibrary {
     /** The series line the photo measures (m; round 7: Achillesstraat's fifth storey stands over 3DBAG's eaves). */
     topM?: number;
     /** The entrances, member by member along the row (left to right as seen), the list repeating (round 7). */
-    entries?: BuurtEntry[]; evidence: string }>;
+    entries?: BuurtEntry[];
+    /** Round 12 (lane R): the row's erkers are white timber fronts; `erkers` the bays the row's photo shows, per member
+     *  (last six digits of the pand id), in place of BAG's (Stadionkade: BAG draws none, the photo stacked bay columns,
+     *  corner oriels and one-storey white oriels). */
+    erkerFront?: 'timber'; erkers?: Record<string, BuurtErker[]>; evidence: string }>;
   notDrawn: Array<{ component: string; what: string }>;
   /** Round 9: the per-row measurements (`districts/measured/<district>.json`, staged by scripts/buurt-generators/
    *  measure-walls.ts and measure-roofs.ts), under the row and street notes and over the family and district. */
@@ -353,11 +358,17 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
     // judges' "white wrap-around oriels", Kuinderstraat 067158 reads 0.45-0.56 white over the wall's 0.20-0.23).
     const mErk = lib.measured?.erkers?.[r.id], whiteErker = (pid: string) => !!mErk && Object.entries(mErk).some(([k, v]) => k.startsWith(`${pid}:`) && v.finish === 'white');
     const bands = !!lib.streetNotes?.[r.street]?.erkerBands, coping = wallHexOf(lib, fam, r.id).hex;
+    // Round 12: a timber note dresses the row's erkers; a row note's own erkers replace BAG's on that member.
+    const timber = (note?.erkerFront ?? lib.streetNotes?.[r.street]?.erkerFront) === 'timber';
+    const erkersFor = (pid: string, bag: BuurtErker[]): BuurtErker[] => {
+      const own = note?.erkers?.[pid.slice(-6)], list = own ? own.map(x => ({ ...x })) : bag;
+      return timber ? list.map(x => x.front ? x : { ...x, front: 'timber' as const }) : list;
+    };
     const ents = note?.entries ?? [], entryAt = (i: number): BuurtEntry | null => ents.length ? { ...ents[i % ents.length], cells: bays } : null;
     // Round 10: the flat series' coping is the series', not the member's: when any drawn member hangs something on its
     // front (ribbon, erkers, eaves, entrance), every member draws it, so the roof line runs through (David on
     // Hunzestraat: the erker members' coping stood 0.55 m over their neighbours').
-    const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || mm.front.erkers.length || lib.flatEaves || entryAt(r.members.indexOf(mm))));
+    const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || mm.front.erkers.length || note?.erkers?.[pandNumber(mm.pand.id).slice(-6)]?.length || lib.flatEaves || entryAt(r.members.indexOf(mm))));
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
       if (!drawn.has(pid)) continue;
@@ -365,12 +376,13 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
       const r6 = (q: readonly [number, number]): [number, number] => [+q[0].toFixed(8), +q[1].toFixed(8)];
       const i = r.members.indexOf(m), joins = { ...(i > 0 && drawn.has(pandNumber(r.members[i - 1].pand.id)) ? { left: true } : {}), ...(i < r.members.length - 1 && drawn.has(pandNumber(r.members[i + 1].pand.id)) ? { right: true } : {}) };
       // Erkers on the series' cells (frontKit.ts erkersOnCells): the series draws `bays` cells on every member.
-      kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers: erkersOnCells(m.front.erkers, bays, m.front.lengthM, fam?.design?.windowShare ?? lib.design.windowShare),
+      const erkers = erkersFor(pid, erkersOnCells(m.front.erkers, bays, m.front.lengthM, fam?.design?.windowShare ?? lib.design.windowShare));
+      kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers,
         ...(rise !== null && pv ? { roof: { pitchDeg: pv.pitchDeg, riseM: rise, ...(roofHex ? { roofHex } : {}), ...(pv.dormersPerFront === 0 ? { dormers: false as const } : {}), ...(pv.eavesM ? { eavesM: pv.eavesM, ...(pv.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } } : {}),
         ...(fam?.kit?.rhythm ? { rhythm: true as const } : {}),
         ...(fam?.kit?.piers && (joins.left || joins.right) ? { sides: { ...(joins.left ? { left: pierAfter(i - 1) ? 'pier' as const : 'pair' as const } : {}), ...(joins.right ? { right: pierAfter(i) ? 'pier' as const : 'pair' as const } : {}) } } : {}),
         ...(fam?.kit?.sash ? { sash: fam.kit.sash.value } : {}), ...(fam?.kit?.ribbon ? { ribbon: true as const } : {}),
-        ...((bands || whiteErker(pid)) && m.front.erkers.length ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
+        ...((bands || whiteErker(pid)) && (m.front.erkers.length || note?.erkers?.[pid.slice(-6)]?.length) ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
         ...(rise === null && seriesCoping && coping ? { copingHex: coping } : {}),
         ...(rise === null && lib.flatEaves ? { eaves: { overhangM: lib.flatEaves.eavesM, ...(lib.flatEaves.frieze === false ? { frieze: false as const } : {}) } } : {}),
         ...(entryAt(i) ? { entries: [entryAt(i)!] } : {}),

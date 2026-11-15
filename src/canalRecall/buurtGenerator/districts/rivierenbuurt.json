@@ -138,6 +138,69 @@
         "080196"
       ],
       "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865: the four west members carry recessed loggias with brick parapets on the three upper storeys between their erkers"
+    },
+    "hunzestraat-120343": {
+      "erkerFront": "timber",
+      "erkers": {
+        "095203": [
+          {
+            "a0": 0.456,
+            "a1": 0.912,
+            "depthM": 0.72,
+            "faceM": 1.88,
+            "plates": [
+              [
+                0.3333,
+                0.456
+              ],
+              [
+                0.912,
+                1
+              ]
+            ],
+            "storeys": 2
+          }
+        ],
+        "108726": [
+          {
+            "a0": 0.0871,
+            "a1": 0.543,
+            "depthM": 0.77,
+            "faceM": 1.88,
+            "plates": [
+              [
+                0,
+                0.0871
+              ],
+              [
+                0.543,
+                0.6667
+              ]
+            ],
+            "storeys": 2
+          }
+        ],
+        "074339": [
+          {
+            "a0": 0.76,
+            "a1": 0.995,
+            "depthM": 0.64,
+            "faceM": 1.77,
+            "corner": true,
+            "plates": [
+              [
+                0.6667,
+                0.76
+              ]
+            ]
+          }
+        ]
+      },
+      "evidence": "Hunzestraat panorama recording_2025-07-14_11-01-54_02067 (2025-07-14, round 10 held-out sheet, 40 px/m), lane R round 12: every erker is a white timber front, lights corner to corner in thick white frames, brick only between storeys. The wide box pair over 095203/108726 (BAG's spans) covers the first and second floors, plain windows over it; two canted oriels at the right end rise to the line, BAG's on 111890 at 0.05-0.28 and one BAG does not draw at 41.0-43.9 m on the line (074339 0.76 to its party wall, closed there)"
+    },
+    "kuinderstraat-067158": {
+      "erkerFront": "timber",
+      "evidence": "Kuinderstraat panorama recording_2025-07-14_11-01-54_02163 (2025-07-14, round 9 held-out sheet, 36 px/m), lane R round 12: the canted oriels (BAG's spans) are white timber fronts, three lights a storey corner to corner with toplights, white sills, brick only between storeys; the corner member 148704's oriel the same"
     }
   },
   "streetNotes": {

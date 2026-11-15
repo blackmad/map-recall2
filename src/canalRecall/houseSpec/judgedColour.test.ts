@@ -130,3 +130,11 @@ test('deferring to a stronger wall source drops only the sampled wall', () => {
   assert.equal(s.facts, undefined);
   validateSpec(s);
 });
+
+test('dark-brown-brick (round 12): a dark brick at brown\'s hue, darker than brown-brick, browner than purple-brown', async () => {
+  const { JUDGED_PALETTE: P, JUDGED_FAMILIES: F, variedTone } = await import('./judgedColour.ts');
+  assert.equal(F[F.length - 1], 'dark-brown-brick', 'appended: no family moves');
+  const d = P['dark-brown-brick'];
+  assert.ok(d.L < P['brown-brick'].L && Math.abs(d.L - P['purple-brown-brick'].L) < 0.02 && d.h > P['purple-brown-brick'].h + 15 && !d.pale);
+  assert.match(variedTone('dark-brown-brick', 'rubensstraat-133237'), /^#[0-9a-f]{6}$/);
+});

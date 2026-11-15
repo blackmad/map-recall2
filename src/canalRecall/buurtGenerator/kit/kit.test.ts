@@ -276,3 +276,34 @@ test('an erker stands over the series line only under a pitched roof (round 10, 
   assert.equal(erkerCapOf({}), -ERKER_LOOK.capM, 'flat series: the cap tops out at the line');
   assert.equal(erkerCapOf({ roof: { pitchDeg: 62, riseM: 1.3 } }), ERKER_LOOK.capM);
 });
+
+test('round 12: timber erker fronts, one-storey oriels on an apron, corner oriels; absent fields draw as before', async () => {
+  const { TIMBER_LOOK, ERKER_LOOK } = await import('./roofKit.js');
+  const { erkerRowsOf } = await import('./frontKit.js');
+  const erk = { a0: 0.3, a1: 0.7, depthM: 0.7, faceM: 1.9 };
+  const draw = (k: Partial<BuurtRoofKit>) => { const s = sink(); drawKitFront(s, kit4(k), L4, W4, 1); return s.out; };
+  // Absent: exactly the old draw (the same triangles whether or not the new fields are spelled out as undefined).
+  assert.deepEqual(draw({ erkers: [{ ...erk, front: undefined, storeys: undefined, corner: undefined, apron: undefined }] }), draw({ erkers: [erk] }));
+  // Timber: pale glass on every face and storey, no casement-blue glass; brick still between storeys (the plate).
+  const tim = draw({ erkers: [{ ...erk, front: 'timber' }] });
+  assert.ok(!tim.some(t => t.hex === ERKER_LOOK.glass) && tim.filter(t => t.hex === TIMBER_LOOK.glass).length === 2 * 3 * 4, 'pale glass: 3 faces x 4 storeys');
+  assert.ok(tim.some(t => t.part === 'plate'), 'brick spandrels');
+  // Toplight bars: more white than the stock erker.
+  const white = (o: typeof tim) => o.filter(t => t.hex === ERKER_LOOK.white).length;
+  assert.ok(white(tim) > white(draw({ erkers: [erk] })));
+  // The glass runs corner to corner: on the face, its ends meet the plan's corners.
+  const face = tim.filter(t => t.hex === TIMBER_LOOK.glass && t.p.every(q => Math.abs(q[0] - (L4 / 2 + 0.7 + 0.02)) < 1e-6));
+  assert.ok(face.length > 0);
+  // One storey: lights on the first floor only, the cap under the second floor; the apron white under the lights.
+  const one = draw({ erkers: [{ ...erk, front: 'timber', storeys: 1, apron: true }] });
+  assert.equal(one.filter(t => t.hex === TIMBER_LOOK.glass).length, 2 * 3);
+  const topZ = Math.max(...one.flatMap(t => t.p.map(q => q[2])));
+  assert.ok(Math.abs(topZ - (-12.9 + 3.225 - TIMBER_LOOK.partialCapGapM + ERKER_LOOK.capM)) < 1e-6, 'its cap under the next floor');
+  assert.ok(one.some(t => t.hex === ERKER_LOOK.white && t.p.every(q => q[2] <= -12.9 + TIMBER_LOOK.footM + 1e-6) && t.p.some(q => q[2] < -12.9 + 0.3)), 'the apron');
+  assert.equal(erkerRowsOf({ ...erk, storeys: 9 }, 4), 4);
+  assert.equal(erkerRowsOf({ ...erk, storeys: 0 }, 4), 4);
+  // A half erker at the party wall is open there; a corner oriel closes that side.
+  const half = { a0: 0, a1: 0.35, depthM: 0.6, faceM: 1.6 };
+  const faces = (o: typeof tim) => o.filter(t => t.part === 'plate' && t.p.some(q => q[0] > L4 / 2 + 0.1)).length;
+  assert.equal(faces(draw({ erkers: [{ ...half, corner: true }] })), faces(draw({ erkers: [half] })) + 2, 'one more brick face, the closed side');
+});

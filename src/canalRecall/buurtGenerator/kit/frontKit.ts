@@ -15,7 +15,21 @@ export type LngLat = readonly [number, number];
 export interface BuurtErker { a0: number; a1: number; depthM: number; faceM: number;
   /** Brick strips (front fractions) beside an erker that keeps BAG's span (round 5): where a cell's window would be half
    *  behind the erker, the kit bricks over the rest of that cell so no window pokes out beside it. */
-  plates?: Array<[number, number]> }
+  plates?: Array<[number, number]>;
+  /** Round 12 (lane R, Plan Zuid photos): `timber` a white-painted timber bay front, the lights corner to corner on every
+   *  face in thick white frames and corner posts, a band of small-paned toplights over a transom and pale glass; the
+   *  brick shows only as the spandrels between storeys (Hunzestraat, Kuinderstraat, Stadionkade). Absent: brick between
+   *  white-framed lights, as before. */
+  front?: 'timber';
+  /** The upper storeys the bay covers from the first floor (Stadionkade's one-storey oriels over the ground floor);
+   *  absent: every upper storey to the line. */
+  storeys?: number;
+  /** A corner oriel: closed on its party-wall side too, where a half erker would be left open for its neighbour's half. */
+  corner?: true;
+  /** A white timber apron under the first storey's lights (Stadionkade's oriels), in place of the brick spandrel. */
+  apron?: true }
+/** An erker's covered upper storeys (its `storeys`, else all `rows`). */
+export const erkerRowsOf = (k: BuurtErker, rows: number): number => Number.isInteger(k.storeys) && k.storeys! >= 1 ? Math.min(rows, k.storeys!) : rows;
 export interface BuurtKitFront {
   /** The member's front line, left to right as seen from the street (lng/lat). */
   frontLine: [LngLat, LngLat];
