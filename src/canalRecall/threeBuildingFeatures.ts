@@ -341,7 +341,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     if (plan) {
       const dims = STYLE_DIMS[layout];
       // A measured pitched slot picks the cell (pantile or slate) and the tint; other slots keep the planned tone.
-      if (measured?.cell && measured.cell !== 'flat') plan = { ...plan, material: measured.cell };
+      // A row roof (rowRoof: rowDormers set) keeps its stated material: the stamp's pantile drew Herengracht 51's slate red.
+      if (measured?.cell && measured.cell !== 'flat' && !plan.rowDormers) plan = { ...plan, material: measured.cell };
       // Where dormers are a choice (not a mansard's or a school roof's own), 3DBAG's roof parts decide, not the dice.
       if (typeof p.roofDormer === 'boolean' && (plan.kind === 'pitched' || plan.kind === 'hipped' || plan.kind === 'gable' || plan.kind === 'halfHipped')) plan = { ...plan, dormers: p.roofDormer };
       // A row roof is its series' slate (roofMesh.ts ROW_SLATE_TONE), never a per-pand measured stamp.

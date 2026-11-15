@@ -20,8 +20,11 @@ import type { RoofSink, V2, V3 } from '../roofSink.js';
 import { canalhouseCrownProfile, capRiseOf, crownProfile, type CanalhousePoint } from '../crownOutline.js';
 import type { FrontIntent } from '../buildingRecipe/intent.js';
 
-export type RowCrownShape = 'neck' | 'bell' | 'point' | 'step' | 'raised';
+export type RowCrownShape = 'neck' | 'bell' | 'point' | 'step' | 'raised' | 'spout';
+/** The shapes a lane 2 front record's measured crown draws (unchanged: a spout there keeps the planner's gable). */
 export const ROW_CROWN_SHAPES: readonly RowCrownShape[] = ['neck', 'bell', 'point', 'step', 'raised'];
+/** House rows: every shape a stated gable (RowDesign.gable) draws, the spout (tuitgevel) included. */
+export const ROW_GABLE_SHAPES: readonly RowCrownShape[] = [...ROW_CROWN_SHAPES, 'spout'];
 /** Brick of a chimney stack on a crown, and its stone cap. */
 const CHIMNEY_HEX = '#6a4034', CHIMNEY_CAP_HEX = '#d9d3c7';
 /** A stack on the crown's top, just behind the front plane: four brick sides, a stone cap. */
@@ -78,12 +81,19 @@ export interface RowCrown {
   bandM?: number;
   /** Raised centre on a front standing mid-run (house rows' raised fronts): the plate starts at its foot. */
   onWall?: boolean;
-  /** Raised centre: the piece's cap (a pediment, a segmental arch, or a flat cornice cap). */
-  cap?: 'pediment' | 'segmental' | 'flat';
+  /** Raised centre: the piece's cap (a pediment, a segmental arch, or a flat cornice cap). Neck and bell (house rows'
+   *  stated gable): the neck's cap, the kit's crownCap (absent: the kit's stock pediment on a neck, rounded on a bell). */
+  cap?: 'pediment' | 'segmental' | 'rounded' | 'flat';
+  /** Neck and bell: where the shoulders end, as a share of the rise (the kit's crownShoulderRise; absent: its stock). */
+  shoulderRise?: number;
+  /** White stone finials: on each tread's outer corner (step), at the shoulders' feet (neck, bell, spout). */
+  finials?: boolean;
+  /** The attic light's head: a round or segmental arch (absent: square). */
+  atticHead?: 'round' | 'segmental';
 }
 export function isRowCrown(v: unknown): v is RowCrown {
   const c = v as RowCrown | null;
-  return !!c && typeof c === 'object' && (ROW_CROWN_SHAPES as readonly string[]).includes(c.shape) && Number.isFinite(c.riseM) && c.riseM > 0.5;
+  return !!c && typeof c === 'object' && (ROW_GABLE_SHAPES as readonly string[]).includes(c.shape) && Number.isFinite(c.riseM) && c.riseM > 0.5;
 }
 
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
@@ -93,10 +103,10 @@ const r3 = (v: number) => Math.round(v * 1000) / 1000;
 export function crownDims(c: RowCrown, W: number) {
   const half = W / 2, T = c.riseM;
   const foot = clamp(c.footW ?? W, Math.min(W, 1.6), W) / 2;
-  const defaultNeck = c.shape === 'raised' ? clamp(W * 0.32, 1.1, 2.4) : c.shape === 'bell' ? foot * 0.46 : c.shape === 'step' ? foot * 0.3 : foot * 0.5; // the kit's stock shares (crownOutline neckShare, trap 0.3)
+  const defaultNeck = c.shape === 'raised' ? clamp(W * 0.32, 1.1, 2.4) : c.shape === 'bell' ? foot * 0.46 : c.shape === 'step' ? foot * 0.3 : c.shape === 'spout' ? foot * 0.68 : foot * 0.5; // the kit's stock shares (crownOutline neckShare, trap 0.3)
   const neck = clamp((c.neckW ?? defaultNeck) / 2, 0.45, foot * 0.8);
   // Neck and bell: the kit's stock cap rise (crownOutline capRiseOf), so the trim and the opening follow its outline.
-  const kitCap = (c.shape === 'neck' || c.shape === 'bell') ? capRiseOf({ gable: c.shape } as unknown as FrontIntent, T, 2 * foot) : 0;
+  const kitCap = (c.shape === 'neck' || c.shape === 'bell') ? capRiseOf({ gable: c.shape, ...(c.cap ? { crownCap: c.cap } : {}) } as unknown as FrontIntent, T, 2 * foot) : 0;
   const cap = c.shape === 'neck' || c.shape === 'bell' ? kitCap : c.shape === 'raised' ? clamp(c.cap === 'flat' ? 0.25 : neck * 0.55, 0.2, Math.min(0.6, (T - (c.bandM ?? 0.5)) * 0.35)) : 0;
   const steps = c.shape === 'step' ? (c.steps && c.steps >= 1 ? clamp(Math.round(c.steps), 1, 8) : clamp(Math.round(T / 0.85), 2, 5)) : 0;
   return { half, T, foot, neck, cap, steps };
@@ -137,7 +147,9 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
     kit = [[0, end], ...canalhouseCrownProfile('lijst', 2 * half, b + KIT_Z, T + KIT_Z, 2 * neck, b + KIT_Z, 0, { cap: flat ? 'flat' : c.cap === 'pediment' ? 'pediment' : 'segmental', capRiseM: flat ? 0 : d.cap, crestWidthM: 2 * neck }), [2 * half, end]];
     x0 = -half;
   } else {
-    kit = crownProfile({ gable: c.shape, ...(c.neckW ? { crownNeckWidth: neck / foot } : {}), crownSteps: d.steps || undefined } as unknown as FrontIntent, 2 * foot, y0 + KIT_Z, T + KIT_Z);
+    const necked = c.shape === 'neck' || c.shape === 'bell';
+    kit = crownProfile({ gable: c.shape, ...(c.neckW ? { crownNeckWidth: neck / foot } : {}), crownSteps: d.steps || undefined,
+      ...(necked && c.cap ? { crownCap: c.cap } : {}), ...(necked && c.shoulderRise ? { crownShoulderRise: c.shoulderRise } : {}) } as unknown as FrontIntent, 2 * foot, y0 + KIT_Z, T + KIT_Z);
     x0 = -foot;
   }
   if (!kit) return [[-half, 0], [half, 0]];
@@ -192,6 +204,40 @@ function spanAt(prof: readonly V2[], y: number): [number, number] | null {
   return hi > lo ? [lo, hi] : null;
 }
 
+/** An arch `hw` half-wide rising `rise` over the springing z (a half ellipse), filled, on the end at u = f. */
+function arch(s: RoofSink, f: number, e: number, hw: number, rise: number, z: number, hex: string, proud: number): void {
+  const u = f + e * proud, n = 12;
+  for (let i = 0; i < n; i++) {
+    const a0 = Math.PI * i / n, a1 = Math.PI * (i + 1) / n;
+    s.tri([u, 0, z], [u, hw * Math.cos(a0), z + rise * Math.sin(a0)], [u, hw * Math.cos(a1), z + rise * Math.sin(a1)], [0, 0], [0, 0], [0, 0], 'decal', [e, 0, 0], hex);
+  }
+}
+/** Stone finials (a post and a ball cap) standing on a crown: each step's outer top corner, or the shoulders' tops beside
+ *  the neck (neck, bell, spout). */
+export const ROW_FINIAL = { w: 0.16, h: 0.38, capW: 0.26, capH: 0.16 } as const;
+function finials(s: RoofSink, c: RowCrown, prof: readonly V2[], f: number, e: number, foot: number, neck: number, trimHex: string): void {
+  const F = ROW_FINIAL, at: V2[] = [];
+  if (c.shape === 'step') {
+    // A riser's top: the vertex whose neighbour on the outer side is directly below it.
+    for (let i = 1; i < prof.length - 1; i++) {
+      const [x, y] = prof[i], p = prof[i - 1], q = prof[i + 1];
+      if (y < 0.05 || Math.abs(x) > foot + 1e-6) continue;
+      const outer = x < 0 ? p : q;
+      if (Math.abs(outer[0] - x) < 1e-6 && outer[1] < y - 0.05) at.push([x < 0 ? x + F.w / 2 : x - F.w / 2, y]);
+    }
+  } else for (const sg of [-1, 1]) {
+    // The shoulder's top: the outline's highest point outside the neck on this side.
+    const side = prof.filter(([x]) => sg * x >= neck + F.capW && sg * x <= foot + 1e-6);
+    if (!side.length) continue;
+    const top = side.reduce((a, b) => b[1] > a[1] ? b : a);
+    at.push([top[0] + sg * F.w / 2, top[1]]);
+  }
+  for (const [x, y] of at) {
+    rect(s, f, e, x - F.w / 2, x + F.w / 2, y, y + F.h, trimHex, PROUD_HI);
+    rect(s, f, e, x - F.capW / 2, x + F.capW / 2, y + F.h, y + F.h + F.capH, trimHex, PROUD_HI);
+  }
+}
+
 /** White edge trim, scrolls, cap, shoulder blocks and the crown's light or hoist door on one gable end at u = f. */
 export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f: number, e: number, W: number, R: number, trimHex: string): void {
   const d = crownDims(c, W), { T, foot, neck } = d;
@@ -222,12 +268,13 @@ export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f
     else rect(s, f, e, -neck, neck, tN, T, trimHex, PROUD_HI);
   }
   if (c.shape === 'bell') for (const side of [-1, 1]) rect(s, f, e, side < 0 ? -foot : foot - 0.4, side < 0 ? -foot + 0.4 : foot, y0, y0 + 0.32, trimHex, PROUD_HI);
+  if (c.finials) finials(s, c, prof, f, e, foot, neck, trimHex);
   if (c.chimney && c.chimney.topM > T + 0.2) chimneyStack(s, c.chimney, f, e, T, d.cap);
   if (c.lights?.length) { tracedLights(s, c.lights, prof, f, e, trimHex); return; }
   // The crown's opening: a hoist door (white frame, dark leaves) or an attic light, centred, inside the profile.
   const lights = c.attic ?? 1;
   if (!c.hoist && lights < 1) return;
-  const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : T - 0.25;
+  const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - 0.8 : T - 0.25;
   const z0 = c.shape === 'raised' ? (c.bandM ?? 0.5) + 0.12 : Math.max(y0 + 0.3, c.shape === 'point' ? 0.35 : y0 + 0.3);
   const z1 = Math.min(capTop - 0.15, z0 + (c.hoist ? 1.5 : 1.15));
   if (z1 - z0 < 0.55) return;
@@ -235,6 +282,20 @@ export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f
   const hw = Math.min(c.hoist ? 0.5 : 0.42, inner, (c.shape === 'neck' || c.shape === 'step' || c.shape === 'raised' ? neck : foot) - 0.22);
   if (hw < 0.22) return;
   const fr = 0.08;
+  if (c.atticHead && !c.hoist) {
+    // An arched light: the jambs to the springing, the arch (a half round, or a segment of a sixth of the span) over it,
+    // all inside the profile; a white frame ring round it.
+    const rise = c.atticHead === 'round' ? hw : Math.max(0.12, hw / 3), zs = z1 - rise;
+    if (zs - z0 >= 0.25) {
+      rect(s, f, e, -hw - fr, hw + fr, z0 - fr, zs, trimHex);
+      arch(s, f, e, hw + fr, rise + fr * 0.6, zs, trimHex, PROUD);
+      rect(s, f, e, -hw, hw, z0, zs, GLASS, PROUD_HI);
+      arch(s, f, e, hw, rise, zs, GLASS, PROUD_HI);
+      rect(s, f, e, -hw - fr - 0.06, hw + fr + 0.06, z0 - fr - 0.07, z0 - fr, trimHex, PROUD_HI);
+      rect(s, f, e, -0.025, 0.025, z0, zs, trimHex, PROUD_HI + 0.004);
+      return;
+    }
+  }
   rect(s, f, e, -hw - fr, hw + fr, z0 - fr, z1 + fr, trimHex);
   rect(s, f, e, -hw, hw, z0, z1, GLASS, PROUD_HI);
   // A white sill a little wider than the frame.

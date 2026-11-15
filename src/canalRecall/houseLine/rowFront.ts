@@ -15,7 +15,7 @@ import { GABLE_SHAPES, roofPlanForFeature, type GableShape } from '../roofMesh.j
 import { heightAbovePandGround, type FrontRecord, type FrontRecordTable } from './frontRecord.js';
 import { hexToOklab, oklabToHex, paleWarmHeld } from '../houseSpec/wallColour.js';
 import { SOUTERRAIN_FACTOR } from '../houseSpec/storeyPlan.js';
-import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
+import { ROW_CROWN_SHAPES, ROW_GABLE_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
 
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
 export interface RowFrontRecord {
@@ -32,6 +32,8 @@ export interface RowFrontRecord {
   crown: { family: RowCrownFamily; riseM?: number; widthM?: number; neckWidthM?: number; atticWindows?: number; hoist?: boolean;
     /** A step gable's treads up each side (house rows: RowDesign.gable.steps). */
     steps?: number;
+    /** House rows' stated gable (RowDesign.gable): the neck's cap, finials, the neck's height over the shoulders, the attic light's head. */
+    cap?: 'pediment' | 'segmental' | 'rounded' | 'flat'; finials?: boolean; neckOverM?: number; atticHead?: 'round' | 'segmental';
     /** Traced attic lights in the crown, [x0, x1, z0, z1]: x from the front's centre as seen, z above the crown's foot. */
     lights?: Array<[number, number, number, number]>;
     /** A chimney stack on the crown: its top (pand datum) and width. */
@@ -448,13 +450,16 @@ export function rowRaisedFronts(rec: RowFrontRecord, top: number): Array<SubFron
   const span = rec.spanM, subs = rec.subFronts;
   if (!rowFrontStepsOn() || !span || !subs || subs.length < 2) return null;
   const topOf = (f: SubFrontRecord) => f.topM ?? f.eavesM ?? top;
-  if (!subs.some(f => topOf(f) > top + ROW_RAISED_FRONT_M)) return null;
+  // A front standing to a lower line than the pand's (rowSeries: the pand takes its tallest line) steps down to it.
+  const lowOf = (f: SubFrontRecord) => f.eavesM != null && f.eavesM < top - ROW_RAISED_FRONT_M ? f.eavesM : null;
+  if (!subs.some(f => topOf(f) > top + ROW_RAISED_FRONT_M || lowOf(f) !== null)) return null;
   return subs.map(f => {
-    const rise = +(topOf(f) - top).toFixed(2), W = (f.a1 - f.a0) * span;
-    if (!(rise > ROW_RAISED_FRONT_M)) return { ...f, step: { wallTopM: top } };
-    // A front stating its gable (step, neck, bell, point with its rise) draws that outline from the line to its top.
+    const foot = lowOf(f) ?? top, rise = +(topOf(f) - foot).toFixed(2), W = (f.a1 - f.a0) * span;
+    // A front stating its gable (step, neck, bell, point, spout with its rise) draws that outline from its line to its top.
     const g = f.crown ? rowGableCrown(f.crown, rise) : null;
-    if (g) return { ...f, step: { wallTopM: top, crown: g.crown, gable: g.gable, riseM: rowCrownRoofRise(g.crown, W) } };
+    if (g) return { ...f, step: { wallTopM: foot, crown: g.crown, gable: g.gable, riseM: rowCrownRoofRise(g.crown, W) } };
+    if (foot < top) return { ...f, step: { wallTopM: foot } };
+    if (!(rise > ROW_RAISED_FRONT_M)) return { ...f, step: { wallTopM: top } };
     const crown: RowCrown = { shape: 'raised', riseM: rise, bandM: rise, cap: 'flat', onWall: true };
     return { ...f, step: { wallTopM: top, crown, gable: 'cornice' as const, riseM: rowCrownRoofRise(crown, W) } };
   });
@@ -467,11 +472,17 @@ export function rowRaisedFronts(rec: RowFrontRecord, top: number): Array<SubFron
  */
 export function rowGableCrown(c: RowFrontRecord['crown'], rise: number): { crown: RowCrown; gable: GableShape } | null {
   const gable = FAMILY_GABLE[c.family], shape = c.family as RowCrownShape;
-  if (!gable || !(ROW_CROWN_SHAPES as readonly string[]).includes(shape) || shape === 'raised' || !(typeof c.riseM === 'number' && c.riseM > 0) || !(rise > ROW_RAISED_FRONT_M)) return null;
+  if (!gable || !(ROW_GABLE_SHAPES as readonly string[]).includes(shape) || shape === 'raised' || !(typeof c.riseM === 'number' && c.riseM > 0) || !(rise > ROW_RAISED_FRONT_M)) return null;
   const crown: RowCrown = { shape, riseM: rise };
   if (c.steps) crown.steps = c.steps;
   if (c.atticWindows !== undefined) crown.attic = c.atticWindows;
   if (c.neckWidthM) crown.neckW = c.neckWidthM;
+  const necked = shape === 'neck' || shape === 'bell';
+  if (necked && c.cap) crown.cap = c.cap;
+  // The neck over the shoulders: the shoulders end that far under the top (kit crownShoulderRise, a share of the rise).
+  if (necked && c.neckOverM && c.neckOverM > 0) crown.shoulderRise = +Math.max(0.1, Math.min(0.9, 1 - c.neckOverM / rise)).toFixed(3);
+  if (c.finials) crown.finials = true;
+  if (c.atticHead) crown.atticHead = c.atticHead;
   return { crown, gable };
 }
 /** A one-front series member stating its gable: the whole front as one stepped span, its wall at the line, the gable on it. */
@@ -585,6 +596,11 @@ export function withRowFront<T extends Feature>(feature: T): T {
       // series line and count alone (the mesher's own fit scaled it with each front's width: Kinkerstraat 102 3.59 m,
       // 104 3.78 m, so 102's first-storey windows sat lower).
       sr2.groundM = rowGroundM(top, rec.storeys);
+    }
+    // Stated window rows (rowSeries.ts rowWindowRows): the ground storey, or the souterrain cell, they stand on.
+    if (sr2?.windowBoxes && rec.rows?.length && rec.groundTopM !== undefined) {
+      sr2.groundM = rec.groundTopM;
+      if (rec.series.souterrain && rec.storeys) sr2.storeys = rec.storeys + 1;
     }
     // A stated ground colour is the shopfront's paint, drawn as stated (threeBuildingFeatures takes fasciaHex as is).
     if (sr2 && rec.series.groundHex) sr2.fasciaHex = rec.series.groundHex;
