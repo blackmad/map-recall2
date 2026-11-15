@@ -332,3 +332,38 @@ test('a member whose fronts stand to two lines draws a raised front on each tall
   const bw = 32.68 / 19, grid = rowEdgeGrid({ bays: 19, bayWidthM: bw, groundM: 3.6, storeys: 3, storeyM: 3.2, doorBays: [], lengthM: 32.68, edgeStartM: [0, 3.17, 14.7] }, [3.17, 11.53, 17.99]);
   assert.deepEqual(grid, [{ u0: 0, bays: 2 }, { u0: 2, bays: 7 }, { u0: 9, bays: 10 }]);
 });
+
+test('a stated gable (RowDesign.gable) draws the kit outline on the series line; absent, the record is unchanged', async () => {
+  const { crownDims } = await import('./crownProfile.ts');
+  const row = structuredClone(solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input));
+  const m = row.members.find(x => x.fronts.length === 1 && x.widthM && !(x as { wallOnly?: unknown }).wallOnly)!;
+  const f = row.fronts.find(x => x.id === m.fronts[0])!;
+  const before = rec(K, m.pandId);
+  f.overrides = { ...f.overrides, crown: { value: 'step', source: 'reviewed', ref: 'test' }, gable: { value: { riseM: 3, steps: 3, attic: 1 }, source: 'reviewed', ref: 'test' } };
+  const r = rowFrontsWithSeries(row).find(x => x.pandId === m.pandId)!, line = before.eavesM!;
+  assert.equal(r.eavesM, line, 'the gable stands on the series line');
+  assert.equal(r.topM, +(line + 3).toFixed(2));
+  assert.deepEqual(r.crown, { family: 'step', riseM: 3, steps: 3, atticWindows: 1 });
+  assert.equal(r.spanM, m.widthM);
+  const p = withFlag([r], () => withRowFront(feature(r.pandId, 16))).properties as any;
+  assert.equal(p.rowSeries, before.series!.id, 'a gabled member keeps its series design');
+  assert.equal(p.roofEavesHeightM, line, 'the wall stops at the line');
+  assert.equal(p.specRecipe.subFronts.length, 1);
+  const st = p.specRecipe.subFronts[0].step;
+  assert.equal(st.wallTopM, line);
+  assert.equal(st.gable, 'step');
+  assert.deepEqual(st.crown, { shape: 'step', riseM: 3, steps: 3, attic: 1 });
+  assert.equal(crownDims(st.crown, m.widthM!).steps, 3, 'the stated tread count');
+  assert.equal(crownDims({ shape: 'step', riseM: 3 }, 6).steps, 4, 'unstated: one per 0.85 m as before');
+  // A pointed gable on one sub-front of a two-front pand (Kinkerstraat 369): the kit's triangle on that span only.
+  const subs = [{ a0: 0, a1: 0.53, eavesM: line, topM: line, crown: { family: 'cornice' as const } }, { a0: 0.53, a1: 1, eavesM: line, topM: line + 2.6, crown: { family: 'point' as const, riseM: 2.6, atticWindows: 1 } }];
+  const two = rowRaisedFronts({ ...before, subFronts: subs, spanM: 8.3 }, line)!;
+  assert.equal(two[0].step.crown, undefined);
+  assert.equal(two[1].step.gable, 'plain');
+  assert.deepEqual(two[1].step.crown, { shape: 'point', riseM: 2.6, attic: 1 });
+  // The crown kind alone (no gable stated): the record and the drawing are today's.
+  const row2 = structuredClone(solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input));
+  row2.fronts.find(x => x.id === m.fronts[0])!.overrides.crown = { value: 'step', source: 'reviewed', ref: 'test' };
+  const r2 = rowFrontsWithSeries(row2).find(x => x.pandId === m.pandId)!;
+  assert.equal(r2.topM, line); assert.deepEqual(r2.crown, { family: 'step' }); assert.equal(r2.spanM, before.spanM);
+});

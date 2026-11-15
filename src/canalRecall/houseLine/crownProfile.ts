@@ -72,6 +72,8 @@ export interface RowCrown {
   /** A chimney stack standing on the crown: its top above the crown's foot and its width (m). */
   chimney?: { topM: number; widthM: number };
   hoist?: boolean;
+  /** Step gable: the treads up each side as read on the photo (absent: one per ~0.85 m of rise, 2 to 5). */
+  steps?: number;
   /** Raised centre: the cornice band's height over the wall's eaves (the band covers the low saddle behind it). */
   bandM?: number;
   /** Raised centre: the piece's cap (a pediment, a segmental arch, or a flat cornice cap). */
@@ -94,7 +96,7 @@ export function crownDims(c: RowCrown, W: number) {
   // Neck and bell: the kit's stock cap rise (crownOutline capRiseOf), so the trim and the opening follow its outline.
   const kitCap = (c.shape === 'neck' || c.shape === 'bell') ? capRiseOf({ gable: c.shape } as unknown as FrontIntent, T, 2 * foot) : 0;
   const cap = c.shape === 'neck' || c.shape === 'bell' ? kitCap : c.shape === 'raised' ? clamp(c.cap === 'flat' ? 0.25 : neck * 0.55, 0.2, Math.min(0.6, (T - (c.bandM ?? 0.5)) * 0.35)) : 0;
-  const steps = c.shape === 'step' ? clamp(Math.round(T / 0.85), 2, 5) : 0;
+  const steps = c.shape === 'step' ? (c.steps && c.steps >= 1 ? clamp(Math.round(c.steps), 1, 8) : clamp(Math.round(T / 0.85), 2, 5)) : 0;
   return { half, T, foot, neck, cap, steps };
 }
 
