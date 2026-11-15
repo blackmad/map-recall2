@@ -510,6 +510,9 @@ export function rowEdgeGrid(layout: RunLayout, lens: readonly number[]): { u0: n
   let u = 0;
   return lens.map((len, k) => { const bays = edgeLayout(layout, k, len).bays, g = { u0: u, bays }; u += bays; return g; });
 }
+/** House rows: a series member's step crown (raised front or stated gable) wears white stone coping and trim; the
+ *  building's accent is its shopfront paint there (Kinkerstraat 65's yellow, 69's black). */
+export const ROW_CROWN_TRIM_HEX = '#f1ece2';
 function stepSpans(subs: ReadonlyArray<{ a0: number; a1: number; step?: { wallTopM: number; crown?: RowCrown; gable?: GableShape; riseM?: number } | null }>, ltr: boolean, len: number, base: number): StepSpan[] | null {
   if (subs.some(f => !f.step)) return null;
   return subs.map(f => ({ a0: (ltr ? f.a0 : 1 - f.a1) * len, a1: (ltr ? f.a1 : 1 - f.a0) * len, topZ: base + f.step!.wallTopM,
@@ -1029,7 +1032,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
             const mid = (st.a0 + st.a1) / 2;
             if (st.crown && mid >= s - 1e-6 && mid < s + e.len - 1e-6) {
               const W = st.a1 - st.a0, D = STEP_CROWN_DEPTH_M, [mx, my] = at(mid);
-              const plan: RoofPlan = { kind: 'gable', gable: st.gable!, rowCrown: st.crown, riseM: st.riseM!, gableEnds: [true, true], streetEnds: [true, false], dormers: false, material: 'slate', tone: 0.5, seed: `${b.id}:step:${mid.toFixed(2)}`, chimney: false, accents: true, trimHex: b.accentHex ?? '#f1ece2' };
+              const plan: RoofPlan = { kind: 'gable', gable: st.gable!, rowCrown: st.crown, riseM: st.riseM!, gableEnds: [true, true], streetEnds: [true, false], dormers: false, material: 'slate', tone: 0.5, seed: `${b.id}:step:${mid.toFixed(2)}`, chimney: false, accents: true, trimHex: b.rowSeries ? ROW_CROWN_TRIM_HEX : b.accentHex ?? '#f1ece2' };
               const crownTris = roofTriangles({ cx: mx - e.nx * D / 2, cy: my - e.ny * D / 2, ux: -e.nx, uy: -e.ny, len: D, wid: W, coverage: 1, maxDev: 0 }, plan, st.topZ, { bayM: bw, storeyM: layout.storeyM, cellM: 5 }) as StreetCrownTri[];
               cornice.push(...crownTris); stepCrownTris.push(...crownTris);
             }
