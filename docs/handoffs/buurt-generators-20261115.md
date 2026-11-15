@@ -547,3 +547,81 @@ What the kit cannot say here yet:
 - Hipped roof ends and a central entrance bay with a stair window strip (Sportstraat).
 - Front gardens.
 - Entrance canopy porches with red doors, and stair-window strips (Herculesstraat, Sportstraat).
+
+## Round 7 (2026-11-15): roof gating, entrances, blind A/B on all eight streets
+
+### Roof gating
+A pitched roof is drawn only where the roof form is measured. The gate is `generate.ts` `pitchGate`:
+- **Street note first.** A street note's `roof: 'flat' | 'pitched'`, read from the street's photo, decides.
+- **Then 3DBAG.** 3DBAG's roof type must read slanted (`GenPand.roofCode`, from the base tiles' `roof`). A series that reads flat or multi-flat draws flat.
+- **Note-only districts.** A district with `pitched.streetNoteOnly` asks for the street note.
+
+Apollo is note-only. 3DBAG reads slanted on every one of its 1,602 series pands whose rise carries a roof. That includes the flat-topped blocks of Achillesstraat, Minervalaan and Quinten Massijsstraat, so 3DBAG cannot tell them apart.
+
+Apollo's street notes:
+
+| Street | Note |
+|---|---|
+| Achillesstraat | flat |
+| Minervalaan | flat |
+| Quinten Massijsstraat | flat |
+| Herculesstraat | pitched |
+| Sportstraat | pitched |
+
+A flat series under the library's `flatEaves` draws the broad eaves slab (1 m, no frieze) on the kit coping. Achillesstraat's row note `topM` 15.4 m gives it the photo's five storeys over 3DBAG's 13.2 m eaves.
+
+Apollo now draws 93 pands pitched and 1,579 flat under the eaves.
+
+Rivierenbuurt keeps its pitched rows. Only `ijselstraat-072727:s1` (2 pands, 3DBAG flat) went flat. The three sheeted rows re-rendered from fresh renders are pixel-identical to r5 (AE 0).
+
+### Entrances (row notes, `frontKit.ts` `BuurtEntry`, `roofKit.ts` `drawEntries`)
+
+| Kind | What it draws |
+|---|---|
+| `door` | A red door in a white frame |
+| `canopy` | The same door under a white flat canopy |
+| `gable-bay` | The portiek bay: a brick strip 0.15 m proud from the pavement to the line, the stair's narrow lights, the door under a canopy, and a white gable with a dark diamond over the eaves |
+
+Placement:
+- Entrances repeat member by member along the row.
+- Each carries the series' ground cells. The kit lays a brick plate over the member's ground storey and redraws a window in each cell the door leaves free, so the mesher's own door goes.
+
+Sheeted rows:
+- **Herculesstraat:** doors at 0.43 and 0.57 of alternate fronts. The white discs over its open stairs are street lamps, not canopies.
+- **Sportstraat:** a gable bay at 0.43, then a canopy door at 0.40.
+
+**Paired windows are not drawn.** On close inspection the Herculesstraat photo shows evenly spaced tall narrow lights with French-balcony rails, not pairs.
+
+### Blind A/B (fresh opus judges, one per comparison, A/B shuffled)
+
+**Against the game today (`ab-r7`).** The generator wins 8/8. Seven are high confidence.
+
+| Street | Winner | Confidence | Biggest gap named |
+|---|---|---|---|
+| Achillesstraat | generator | high | First-floor balconies, arched doorways, the wide/narrow window alternation |
+| Herculesstraat | generator | high | Roof too tall against the photo's low strip; no brick piers between the windows |
+| Minervalaan | generator | high | Amsterdam School blocks between pierced-brick piers, stone frames, striped plinth; line ~2 m low |
+| Quinten Massijsstraat | generator | high | No projecting erkers |
+| Sportstraat | generator | high | Too many gables and dormers; no dark stairwell strips; glass too dark |
+| Maasstraat | generator | high | Ribbon glazing should sit in a white band; pale cornice stripe not in the photo |
+| Rooseveltlaan | generator | high | Tall slate roof where the judge reads a flat block with a white eaves line; flat erkers |
+| Biesboschstraat | generator | high | Roof too tall (a thin strip in the photo); erkers too narrow |
+
+**Round 7 against round 6 (`ab-r7vs6`, Apollo only).** Round 7 wins 5/5.
+
+| Street | Winner | Confidence | Note |
+|---|---|---|---|
+| Achillesstraat | r7 | medium | Flat top and five storeys |
+| Herculesstraat | r7 | medium | Ground floor: red doors in place of shop doors |
+| Minervalaan | r7 | medium | Flat with the eaves slab |
+| Quinten Massijsstraat | r7 | high | Flat roofs |
+| Sportstraat | r7 | high | Gable bays, canopies and red doors |
+
+Sheets, A/B bands and keys are in `_pruned-sheets/buurt-generators-20261115/round7/`.
+
+### Remaining gaps
+- **Roof height on pitched rows.** Herculesstraat, Rooseveltlaan and Biesboschstraat draw the full 3DBAG rise, but the photo shows a low strip. The roof should be the photo's seen height, not the 3DBAG ridge.
+- **Erkers on Quinten Massijsstraat.** BAG gives none on these pands, although the photo shows them.
+- **Minervalaan line.** It stands about 2 m below the photo: 4 tall storeys at about 15.5 m. A `topM` would add a storey, because storeys follow the line.
+- **Achillesstraat.** Balconies and arched portiek doorways (a kit gap).
+- **Stair windows.** The upper-storey windows the portiek bay half-covers still show a sliver at its edges.

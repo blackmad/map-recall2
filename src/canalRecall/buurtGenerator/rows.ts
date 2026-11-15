@@ -26,6 +26,8 @@ export interface GenPand {
   ridgeM: number | null;
   /** The orthophoto roof reading (roof-facts sidecar, roofs/roofSlots.ts): tile, slate, gravel, ...; null unread. */
   roofSlot?: string | null;
+  /** 3DBAG's roof type as the base tiles carry it (bagTiles.ts roofCode: 0 unknown, 1 flat, 2 several flats, 3 slanted). */
+  roofCode?: number | null;
 }
 export interface GenStreet { name: string; path: readonly LngLat[] }
 

@@ -14,7 +14,7 @@ import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
 import { districtRows, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
-import { erkersOnCells, type BuurtKitFront } from './kit/frontKit.ts';
+import { erkersOnCells, type BuurtEntry, type BuurtKitFront } from './kit/frontKit.ts';
 
 export interface DistrictDesign {
   groundM: number;
@@ -50,7 +50,10 @@ export interface DistrictPitchedRoof { minRiseM: number; maxRiseM: number; pitch
   /** false: the eaves have no lattice frieze under the slab (Apollo's broad flat eaves). */
   eavesFrieze?: false;
   /** Per orthophoto slot (roof-facts), what the photos of that slot show (round 5: `slate` reads dark glazed tiles). */
-  slotLooks?: Record<string, { material: 'tile' | 'slate'; roofHex: string; evidence: string }> }
+  slotLooks?: Record<string, { material: 'tile' | 'slate'; roofHex: string; evidence: string }>;
+  /** true: the pitched roof is drawn only on a street whose note measures it (`roof: 'pitched'`): the district's 3DBAG
+   *  roof type reads `slanted` on blocks the street sees as flat (round 7, Apollo). */
+  streetNoteOnly?: true }
 export interface DistrictLibrary {
   district: string;
   title: string;
@@ -66,12 +69,18 @@ export interface DistrictLibrary {
   pitchedEaves?: DistrictPitchedRoof;
   /** Per street, what its photos measure (round 5): `eaves` draws `pitchedEaves` on its pitched series; `erkerBands`
    *  draws its erkers' windows as continuous white bands. */
-  streetNotes?: Record<string, { eaves?: true; erkerBands?: true; evidence: string }>;
+  streetNotes?: Record<string, { eaves?: true; erkerBands?: true; /** The roof form the street's photos show (round 7). */ roof?: 'pitched' | 'flat'; evidence: string }>;
+  /** A flat series' top (round 7, Apollo): the broad eaves slab over the street front, no frieze. */
+  flatEaves?: { eavesM: number; frieze?: false; evidence: string };
   /** Per row (generator row id), what a photo of it states: `pierPhase` 0 puts the first pier after the row's first
    *  member, 1 (the default: a block starts at the row's first member) after its second; `wall` the row's own measured
    *  brick, which wins over the district's (series photo > district pool); `loggias` the members (last six digits of
    *  the pand id) whose upper storeys are loggias between the erkers. */
-  rowNotes?: Record<string, { pierPhase?: 0 | 1; wall?: { hex: string; evidence: string }; roof?: { hex: string; evidence: string }; axisM?: number; loggias?: string[]; evidence: string }>;
+  rowNotes?: Record<string, { pierPhase?: 0 | 1; wall?: { hex: string; evidence: string }; roof?: { hex: string; evidence: string }; axisM?: number; loggias?: string[];
+    /** The series line the photo measures (m; round 7: Achillesstraat's fifth storey stands over 3DBAG's eaves). */
+    topM?: number;
+    /** The entrances, member by member along the row (left to right as seen), the list repeating (round 7). */
+    entries?: BuurtEntry[]; evidence: string }>;
   notDrawn: Array<{ component: string; what: string }>;
 }
 
@@ -123,9 +132,26 @@ export function wallHexOf(lib: DistrictLibrary, fam: DistrictFamily | null, rowI
   const d = { ...lib.design.wall, ...fam?.design?.wall };
   return d.hex ? { hex: d.hex, evidence: d.evidence } : {};
 }
+/** 3DBAG's roof type of the series, its members' majority (`roofCode`: 1 flat, 2 several flats, 3 slanted); null unread. */
+export function seriesRoofCode(s: GenSeries): number | null {
+  const n = new Map<number, number>();
+  for (const m of s.members) if (m.pand.roofCode) n.set(m.pand.roofCode, (n.get(m.pand.roofCode) ?? 0) + 1);
+  return [...n.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0]?.[0] ?? null;
+}
+/** Why the district's pitched roof is not drawn on a series whose rise would carry it (round 7); null: the gate passes.
+ *  The roof form must be measured: a street note's `roof` wins (the photo); else 3DBAG's roof type must read slanted, and a
+ *  `streetNoteOnly` district asks for the note. */
+export function pitchGate(lib: DistrictLibrary, s: GenSeries): string | null {
+  const note = lib.streetNotes?.[s.members[0]?.front.street ?? '']?.roof;
+  if (note === 'flat') return 'the street note measures a flat top';
+  if (note === 'pitched') return null;
+  if (lib.pitched?.streetNoteOnly) return `no street note measures a pitched roof (${lib.district}: 3DBAG reads slanted on blocks the street sees flat)`;
+  const code = seriesRoofCode(s);
+  return code !== null && code !== 3 ? `3DBAG roof type ${code === 1 ? 'flat' : 'several flats'}` : null;
+}
 /** A series' roof rise (median 3DBAG ridge - eaves of its members, m), when the district's pitched roof applies to it; else null. */
 export function pitchedRiseOf(lib: DistrictLibrary, s: GenSeries): number | null {
-  if (!lib.pitched) return null;
+  if (!lib.pitched || pitchGate(lib, s) !== null) return null;
   const rise = median(s.members.flatMap(m => m.pand.eavesM !== null && m.pand.ridgeM !== null ? [m.pand.ridgeM - m.pand.eavesM] : []));
   return rise !== null && rise >= lib.pitched.minRiseM ? +Math.min(lib.pitched.maxRiseM, rise).toFixed(2) : null;
 }
@@ -188,7 +214,8 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
       fronts.push({ id: pid, pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], widthM: m.front.lengthM, seriesId, ground: { use: 'other' }, overrides: {}, groundOffsetM: 0, topM: s.eavesM });
       const e = m.pand.eavesM, r = m.pand.ridgeM;
       if (s.clamped.includes(m.pand.id) && e !== null) readNotDrawn.push({ front: pid, field: '3dbag-eaves', value: e, reason: `clamped to the series line ${s.eavesM} m (row coherence: a lone step over 0.8 m)` });
-      if (e !== null && r !== null && r - e > 1 && pitchedRiseOf(lib, s) === null) readNotDrawn.push({ front: pid, field: '3dbag-roof-rise', value: +(r - e).toFixed(2), reason: `under the district's pitched-roof rise (${lib.pitched?.minRiseM ?? '-'} m series median): flat lid at the series line` });
+      const gate = lib.pitched ? pitchGate(lib, s) : null;
+      if (e !== null && r !== null && r - e > 1 && pitchedRiseOf(lib, s) === null) readNotDrawn.push({ front: pid, field: '3dbag-roof-rise', value: +(r - e).toFixed(2), reason: gate ? `${gate}: flat top at the series line${lib.flatEaves ? ' under the broad eaves' : ''}` : `under the district's pitched-roof rise (${lib.pitched?.minRiseM ?? '-'} m series median): flat lid at the series line` });
     }
   }
   flush();
@@ -202,7 +229,9 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
 export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[], streets: readonly GenStreet[], described: ReadonlySet<string>, at: string): GenResult {
   const skipped: GenResult['skipped'] = [];
   const free = pands.filter(p => { const d = described.has(pandNumber(p.id)); if (d) skipped.push({ id: pandNumber(p.id), reason: 'described' }); return !d; });
-  const res: RowsResult = districtRows(free, streets);
+  const res0: RowsResult = districtRows(free, streets);
+  // A row whose photo measures its line (row note `topM`) draws every series at it.
+  const res: RowsResult = { ...res0, rows: res0.rows.map(r => { const t = lib.rowNotes?.[r.id]?.topM; return t ? { ...r, series: r.series.map(s => ({ ...s, eavesM: t, clamped: [] })) } : r; }) };
   for (const u of res.unplaced) skipped.push({ id: pandNumber(u.id), reason: u.reason });
   const rows = res.rows.flatMap(r => rowRecordOf(lib, r, at, skipped));
   const drawn = new Set(rows.flatMap(r => r.members.map(m => m.pandId)));
@@ -217,6 +246,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
     // states it, else a block starting at the row's first member.
     const note = lib.rowNotes?.[r.id], phase = note?.pierPhase ?? 1, pierAfter = (j: number) => ((j - phase) % 2 + 2) % 2 === 0;
     const bands = !!lib.streetNotes?.[r.street]?.erkerBands, coping = wallHexOf(lib, fam, r.id).hex;
+    const ents = note?.entries ?? [], entryAt = (i: number): BuurtEntry | null => ents.length ? { ...ents[i % ents.length], cells: bays } : null;
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
       if (!drawn.has(pid)) continue;
@@ -230,7 +260,9 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
         ...(fam?.kit?.piers && (joins.left || joins.right) ? { sides: { ...(joins.left ? { left: pierAfter(i - 1) ? 'pier' as const : 'pair' as const } : {}), ...(joins.right ? { right: pierAfter(i) ? 'pier' as const : 'pair' as const } : {}) } } : {}),
         ...(fam?.kit?.sash ? { sash: fam.kit.sash.value } : {}), ...(fam?.kit?.ribbon ? { ribbon: true as const } : {}),
         ...(bands && m.front.erkers.length ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
-        ...(rise === null && (fam?.kit?.ribbon || m.front.erkers.length) && coping ? { copingHex: coping } : {}),
+        ...(rise === null && (fam?.kit?.ribbon || m.front.erkers.length || lib.flatEaves || entryAt(i)) && coping ? { copingHex: coping } : {}),
+        ...(rise === null && lib.flatEaves ? { eaves: { overhangM: lib.flatEaves.eavesM, ...(lib.flatEaves.frieze === false ? { frieze: false as const } : {}) } } : {}),
+        ...(entryAt(i) ? { entries: [entryAt(i)!] } : {}),
         ...(joins.left || joins.right ? { joins } : {}) });
     }
   }

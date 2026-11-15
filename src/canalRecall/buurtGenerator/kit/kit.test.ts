@@ -4,7 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { erkersOf, erkersOnCells, straightenRing, KIT_MULLION_SHARE, type BuurtKitFront, type LngLat } from './frontKit.js';
-import { buurtRoofKitFor, drawKitFront, kitDrawsFront, EAVES_LOOK, LOGGIA_LOOK, KIT_DORMER, PIER_LOOK, RIBBON_LOOK, pitchBandM, type BuurtRoofKit } from './roofKit.js';
+import { buurtRoofKitFor, drawKitFront, kitDrawsFront, EAVES_LOOK, ENTRY_LOOK, LOGGIA_LOOK, KIT_DORMER, PIER_LOOK, RIBBON_LOOK, pitchBandM, type BuurtRoofKit } from './roofKit.js';
 import { RoofSink } from '../../roofSink.js';
 import { kitWantsCoping } from './frontKit.js';
 import { bayDoorGeometry, variantKey, type BayVariant } from '../../bayTextures.js';
@@ -240,3 +240,27 @@ test('erkers under broad eaves rise to the slab; bands run corner to corner; log
   assert.ok(dark.every(t => t.p.every(q => q[1] >= (0.38 - 0.5) * W4 + LOGGIA_LOOK.sideM - 1e-6)));
   assert.ok(kitDrawsFront(kit4({ loggias: true })));
 });
+
+test('round 7: a flat series takes its own broad eaves; entries draw the red door, the canopy and the portiek bay', () => {
+  const flat = buurtRoofKitFor({ erkers: [], eaves: { overhangM: 1, frieze: false }, entries: [{ a: 0.4, kind: 'canopy' }] }, 15.4, 5, 3.1)!;
+  assert.deepEqual([flat.pitchDeg, flat.eaves, flat.entries, flat.groundZ], [undefined, { overhangM: 1, frieze: false }, [{ a: 0.4, kind: 'canopy' }], -15.4]);
+  assert.ok(kitDrawsFront(flat) && kitWantsCoping({ erkers: [], eaves: { overhangM: 1 } } as never) && kitWantsCoping({ erkers: [], entries: [{ a: 0.5, kind: 'door' }] } as never));
+  // A pitched roof's eaves stay the roof's; the flat eaves are not drawn under a pitched roof.
+  assert.equal(buurtRoofKitFor({ erkers: [], roof: { pitchDeg: 40 }, eaves: { overhangM: 1 } }, 9.5, 3, 3.1)!.eaves, undefined);
+  const door = sink();
+  drawKitFront(door, kit4({ entries: [{ a: 0.43, kind: 'door' }], groundZ: -16 }), L4, W4, 1);
+  const red = door.out.filter(t => t.hex === ENTRY_LOOK.red);
+  assert.ok(red.length === 2 && red.every(t => t.p.every(q => q[2] >= -16 - 1e-6 && q[2] <= -16 + ENTRY_LOOK.doorH + 1e-6)), 'one red leaf from the pavement');
+  assert.ok(!door.out.some(t => t.p.some(q => q[2] > 0)), 'a door draws nothing over the line');
+  // With the series' cells the ground is redrawn: a window in each of the 3 cells the door's plate leaves free (of 4).
+  const ground = sink();
+  drawKitFront(ground, kit4({ entries: [{ a: 0.4, kind: 'door', cells: 4 }], groundZ: -16 }), L4, W4, 1);
+  assert.equal(ground.out.filter(t => t.hex === '#4f5f69').length, 2 * 3);
+  const bay = sink();
+  drawKitFront(bay, kit4({ entries: [{ a: 0.43, kind: 'gable-bay' }], groundZ: -16 }), L4, W4, 1);
+  assert.ok(bay.out.some(t => t.hex === ERKER_LOOK_WHITE && t.p.some(q => q[2] >= ENTRY_LOOK.gableH - 1e-6)), 'the white gable over the line');
+  assert.ok(bay.out.some(t => t.hex === ENTRY_LOOK.dark), 'its diamond');
+  assert.ok(bay.out.filter(t => t.hex === '#4f5f69').length >= 2 * 4, 'a stair light per upper storey');
+  assert.ok(bay.out.every(t => t.p.every(q => Math.abs(q[1]) <= W4 / 2 + 1e-6)), 'inside the member');
+});
+const ERKER_LOOK_WHITE = '#ece9e1';

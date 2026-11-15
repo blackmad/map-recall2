@@ -41,11 +41,22 @@ export interface BuurtKitFront {
   copingHex?: string;
   /** The member's row neighbours (left/right as seen): a flat series' coping runs on into theirs (no hip). */
   joins?: { left?: boolean; right?: boolean };
+  /** A flat series' broad eaves (round 7, Apollo: the 3DBAG roof behind is not seen from the street), overhang (m). */
+  eaves?: { overhangM: number; frieze?: false };
+  /** The member's street entrances (round 7, a row note from its photo): fraction across the front and what stands there. */
+  entries?: BuurtEntry[];
 }
+/** An entrance: `door` a red door in a white frame; `canopy` that door under a white flat canopy; `gable-bay` the
+ *  portiek bay: a brick strip proud of the wall from the pavement through the eaves, the stair's narrow lights up it, the
+ *  door under a canopy at its foot and a white gable with a dark diamond over the eaves (Sportstraat). */
+export type BuurtEntryKind = 'door' | 'canopy' | 'gable-bay';
+export interface BuurtEntry { a: number; kind: BuurtEntryKind; /** The series' ground cells: the kit redraws the member's ground storey with the door in its place (no stray door). */ cells?: number }
+export const entriesOf = (v: unknown): BuurtEntry[] => (Array.isArray(v) ? v : []).filter((e): e is BuurtEntry => !!e && typeof e === 'object'
+  && Number.isFinite(e.a) && e.a > 0 && e.a < 1 && (e.kind === 'door' || e.kind === 'canopy' || e.kind === 'gable-bay')).map(e => ({ a: e.a, kind: e.kind, ...(Number.isInteger(e.cells) && e.cells! >= 1 && e.cells! <= 12 ? { cells: e.cells } : {}) }));
 /** The paired casements' white mullion, a share of the window's width (Maasstraat: about 0.5 m on a 1.6 m opening). */
 export const KIT_MULLION_SHARE = 0.3;
 /** A flat series draws the low coping when the kit hangs anything on its front (erkers, ribbon, rhythm, piers). */
-export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.rhythm || k.sides || k.loggias);
+export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.rhythm || k.sides || k.loggias || k.eaves || k.entries?.length);
 /** A flat series with erkers draws its lid as a low coping behind the white cornice ledge (m), the erkers on it. */
 export const KIT_FLAT_RISE_M = 0.55;
 
@@ -119,10 +130,11 @@ export function buurtKitOf(v: unknown): BuurtKitFront | null {
   const rr = k.roof as { dormers?: unknown; eavesM?: unknown; eavesFrieze?: unknown } | undefined, eavesM = Number(rr?.eavesM);
   const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM), ...(hex ? { roofHex: hex } : {}),
     ...(rr?.dormers === false ? { dormers: false as const } : {}), ...(eavesM > 0.2 && eavesM < 2 ? { eavesM, ...(rr?.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } : undefined;
-  const x = v as { sash?: unknown; ribbon?: unknown; copingHex?: unknown; rhythm?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown } };
+  const x = v as { sash?: unknown; ribbon?: unknown; copingHex?: unknown; rhythm?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown }; eaves?: { overhangM?: unknown; frieze?: unknown }; entries?: unknown };
+  const fe = Number(x.eaves?.overhangM), flatEaves = !roof && fe > 0.2 && fe < 2 ? { overhangM: fe, ...(x.eaves?.frieze === false ? { frieze: false as const } : {}) } : null, entries = entriesOf(x.entries);
   const side = (q: unknown) => q === 'pier' || q === 'pair' ? q : null, sl = side(x.sides?.left), sr = side(x.sides?.right);
   const joins = k.joins && typeof k.joins === 'object' ? { ...(k.joins.left === true ? { left: true } : {}), ...(k.joins.right === true ? { right: true } : {}) } : {};
-  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}) };
+  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}), ...(flatEaves ? { eaves: flatEaves } : {}), ...(entries.length ? { entries } : {}) };
 }
 
 /**

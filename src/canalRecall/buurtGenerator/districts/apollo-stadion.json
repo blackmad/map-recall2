@@ -72,9 +72,10 @@
     "dormersPerFront": 1,
     "dormerKind": "plain",
     "hoist": true,
-    "evidence": "red pantile roofs on both sheeted pitched rows (Herculesstraat 2022-03-21, Sportstraat 2022-03-21, hue 49 and 61 in sun), although the orthophoto reads slate on Sportstraat's six members: the slot is not used here. Pitch and dormers as Rivierenbuurt's Biesboschstraat until a sheet here measures them",
+    "evidence": "red pantile roofs on both sheeted pitched rows (Herculesstraat 2022-03-21, Sportstraat 2022-03-21, hue 49 and 61 in sun), although the orthophoto reads slate on Sportstraat's six members: the slot is not used here. Pitch and dormers as Rivierenbuurt's Biesboschstraat until a sheet here measures them. Round 7: drawn only on a street whose photo shows it (streetNoteOnly): 3DBAG reads 'slanted' on all 1,602 pands whose rise carries a roof, the flat-topped blocks of Achillesstraat, Minervalaan and Quinten Massijsstraat included",
     "roofHex": "#9e5b42",
-    "roofHexEvidence": "the Plan Zuid red pantile measured in overcast light on Biesboschstraat (Rivierenbuurt round 4, #9e5b42); the Apollo photos are sunlit, so only their hue is used"
+    "roofHexEvidence": "the Plan Zuid red pantile measured in overcast light on Biesboschstraat (Rivierenbuurt round 4, #9e5b42); the Apollo photos are sunlit, so only their hue is used",
+    "streetNoteOnly": true
   },
   "notDrawn": [
     {
@@ -96,14 +97,25 @@
         "hex": "#352d2a",
         "evidence": "Achillesstraat panorama TMX7316010203-001036_pano_0003_000942 (2019-01-04, overcast): brick median #342a25 between 3.5 and 9 m over the middle of the row, divided by the renderer's own brick shift on that sheet (the pool #5b504a drew #594b41)"
       },
-      "evidence": "the row's own cached panorama (round 6 sheet)"
+      "evidence": "the row's own cached panorama (round 6 sheet); round 7: five storeys (ground and four upper) on the photo, so the line is the five-storey line 15.4 m (3.1 m ground + 4 x 3.0 m + 0.3 m), over 3DBAG's 13.2 m eaves; 3DBAG's 70th-percentile roof height is 15.9 m",
+      "topM": 15.4
     },
     "herculesstraat-131422": {
       "wall": {
         "hex": "#665c57",
         "evidence": "Herculesstraat panorama TMX7316010203-002460_pano_0003_001231 (2022-03-21, front in shade): brick median #544d48, divided by the renderer's own brick shift on that sheet (the pool #5b504a drew #4b433d)"
       },
-      "evidence": "the row's own cached panorama (round 6 sheet)"
+      "evidence": "the row's own cached panorama (round 6 sheet); round 7: one red street door per member in a white frame, at 0.43 and 0.57 of alternate fronts (photo members 2-8: 0.54, 0.43, 0.57, 0.43, 0.59, 0.43, 0.57), no canopy (the white discs over the open stairs are street lamps)",
+      "entries": [
+        {
+          "a": 0.43,
+          "kind": "door"
+        },
+        {
+          "a": 0.57,
+          "kind": "door"
+        }
+      ]
     },
     "minervalaan-066413": {
       "wall": {
@@ -124,30 +136,45 @@
         "hex": "#7b6b5f",
         "evidence": "Sportstraat panorama TMX7316010203-002460_pano_0003_000929 (2022-03-21): brick median #544b43, divided by the renderer's own brick shift on that sheet (the pool #5b504a drew #3e3834)"
       },
-      "evidence": "Sportstraat panorama TMX7316010203-002460_pano_0003_000929: three to four wide white casements per 14.4 m pand on each upper storey, not the 2.03 m grid",
-      "axisM": 3.6
+      "evidence": "Sportstraat panorama TMX7316010203-002460_pano_0003_000929: three to four wide white casements per 14.4 m pand on each upper storey, not the 2.03 m grid; round 7: the blocks alternate member by member: a portiek bay at 0.42-0.45 (brick strip, stair lights, red door under a canopy, white gable with a diamond over the eaves) and a red door under a 5 m white canopy at 0.37-0.42",
+      "axisM": 3.6,
+      "entries": [
+        {
+          "a": 0.43,
+          "kind": "gable-bay"
+        },
+        {
+          "a": 0.4,
+          "kind": "canopy"
+        }
+      ]
     }
   },
   "streetNotes": {
+    "Achillesstraat": {
+      "roof": "flat",
+      "evidence": "Achillesstraat panorama (round 6 sheet achillesstraat-074742): five brick storeys to the top of the frame, no roof slope over the front (blind A/B judge, 2026-11-15)"
+    },
     "Minervalaan": {
-      "eaves": true,
-      "evidence": "Minervalaan panorama TMX7316010203-001499_pano_0000_000616 (2019-12-09): broad flat eaves along the row"
+      "roof": "flat",
+      "evidence": "Minervalaan panorama TMX7316010203-001499_pano_0000_000616 (2019-12-09): a deep flat eaves over the top storey, no roof slope seen"
     },
     "Quinten Massijsstraat": {
-      "eaves": true,
-      "evidence": "Quinten Massijsstraat panorama TMX7316010203-002464_pano_0002_001688 (2022-03-22): broad flat white eaves on both blocks"
+      "roof": "flat",
+      "evidence": "Quinten Massijsstraat panorama TMX7316010203-002464_pano_0002_001688 (2022-03-22): a thin white flat eaves on both blocks, no roof seen"
+    },
+    "Herculesstraat": {
+      "roof": "pitched",
+      "evidence": "Herculesstraat panorama (round 6 sheet herculesstraat-131422, 2022-03-21): one continuous red pantile roof with small dormers and chimneys over three storeys"
+    },
+    "Sportstraat": {
+      "roof": "pitched",
+      "evidence": "Sportstraat panorama (round 6 sheet sportstraat-066634, 2022-03-21): red pantile roofs over three storeys, hipped at the block ends"
     }
   },
-  "pitchedEaves": {
-    "minRiseM": 2.5,
-    "maxRiseM": 6,
-    "pitchDeg": 35,
-    "material": "tile",
-    "dormersPerFront": 0,
-    "dormerKind": "plain",
-    "hoist": false,
+  "flatEaves": {
     "eavesM": 1.0,
-    "eavesFrieze": false,
-    "evidence": "Minervalaan (TMX7316010203-001499_pano_0000_000616) and Quinten Massijsstraat (TMX7316010203-002464_pano_0002_001688): a broad flat eaves slab about 1 m deep over the front, no frieze, no roof or dormer seen above it; 3DBAG puts a roof 3.8-5.4 m behind it"
+    "frieze": false,
+    "evidence": "Minervalaan (TMX7316010203-001499_pano_0000_000616, 2019-12-09) and Quinten Massijsstraat (TMX7316010203-002464_pano_0002_001688, 2022-03-22): a broad flat eaves slab about 1 m deep over the front, no frieze, no roof seen above it; 3DBAG puts a roof 3.8-5.4 m behind it, out of sight from the street"
   }
 }

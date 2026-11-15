@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, generateDistrict, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, type DistrictLibrary } from './generate.js';
+import { baysFor, generateDistrict, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, type DistrictLibrary } from './generate.js';
 import { BAY_STYLES, PLAN_ZUID_CASEMENT } from '../bayLook.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
@@ -100,4 +100,30 @@ test('the front runs on to its own corner where the neighbour overlaps a strip o
   assert.equal(rows.length, 1, JSON.stringify(rows.map(r => r.members.length)));
   const m0 = rows[0].members.find(m => m.pand.id === p0.id)!;
   assert.equal(m0.front.lengthM, 7, 'the whole front, not 6.36 m');
+});
+
+test('round 7: the pitched roof needs a measured form: a flat note, a flat 3DBAG type or a note-only district draw flat', () => {
+  const series = (code: number | null, street = 'Teststraat') => districtRows([0, 1, 2].map(i => ({ ...pand(i, 1929, 12.4), roofCode: code })), [{ ...streets[0], name: street }]).rows[0].series[0];
+  assert.equal(pitchGate(lib, series(3)), null);
+  assert.ok(pitchedRiseOf(lib, series(3)) !== null, 'slanted: pitched');
+  assert.ok(pitchedRiseOf(lib, series(null)) !== null, 'unread: as before');
+  assert.match(pitchGate(lib, series(1))!, /3DBAG roof type flat/);
+  assert.equal(pitchedRiseOf(lib, series(1)), null);
+  const noted: DistrictLibrary = { ...lib, streetNotes: { Teststraat: { roof: 'flat', evidence: 'test' } } };
+  assert.equal(pitchedRiseOf(noted, series(3)), null);
+  const only: DistrictLibrary = { ...lib, pitched: { ...lib.pitched!, streetNoteOnly: true } };
+  assert.equal(pitchedRiseOf(only, series(3)), null);
+  assert.ok(pitchedRiseOf({ ...only, streetNotes: { Teststraat: { roof: 'pitched', evidence: 'test' } } }, series(3)) !== null);
+});
+
+test('round 7: a row note sets the line and the entrances; a flat series under flatEaves draws the broad eaves', () => {
+  const libF: DistrictLibrary = { ...lib, pitched: { ...lib.pitched!, streetNoteOnly: true }, flatEaves: { eavesM: 1, frieze: false, evidence: 'test' },
+    rowNotes: { 'teststraat-000000': { topM: 15.4, entries: [{ a: 0.43, kind: 'gable-bay' }, { a: 0.4, kind: 'canopy' }], evidence: 'test' } } };
+  const pands = [0, 1, 2].map(i => ({ ...pand(i, 1929, 12.4), roofCode: 3 }));
+  const rid = districtRows(pands, streets).rows[0].id;
+  const res = generateDistrict({ ...libF, rowNotes: { [rid]: libF.rowNotes!['teststraat-000000'] } }, pands, streets, new Set(), 'test');
+  const kits = res.records.map(r => (r as { buurtKit?: { roof?: unknown; eaves?: unknown; entries?: Array<{ kind: string }> } }).buurtKit!);
+  assert.deepEqual(kits.map(k => k.entries?.[0].kind), ['gable-bay', 'canopy', 'gable-bay']);
+  assert.ok(kits.every(k => !k.roof && JSON.stringify(k.eaves) === JSON.stringify({ overhangM: 1, frieze: false })));
+  assert.deepEqual([...new Set(res.rows[0].series.map(s => s.design.corniceTopM.value))], [15.4]);
 });
