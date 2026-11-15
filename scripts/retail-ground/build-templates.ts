@@ -19,6 +19,7 @@ import { hostOnFront, ringEdges, insideRing as insideRingOf } from '../../src/ca
 import { FRONT_HIGHWAYS, SegmentGrid, streetDistance } from '../../src/canalRecall/streetFronts.ts';
 import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, signWord, templateForTags, type RetailTemplate } from '../../src/canalRecall/retailTemplates.ts';
 import { insideCentre, RING_KM, DAM } from '../../src/canalRecall/retailArea.ts';
+import { streetPriors, type StreetRead } from '../../src/canalRecall/retailPuiPaint.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const CACHE = arg('cache') ?? '.cache/retail-ground/overpass.json';
@@ -73,6 +74,16 @@ const bagKey = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
 const explain = new Set((arg('explain') ?? '').split(',').filter(Boolean));
 const placed = new Map<string, { t: RetailTemplate; at: [number, number]; front: 'street' | 'nearest'; name: string; tags: string; centre: boolean; ring: boolean }>();
 const pois: Record<string, number> = {}, unhosted: Record<string, number> = {}, moved = { host: 0, nearest: 0, lost: 0, gained: 0 };
+// Round 5: the pands some template POI sits on by the plain rules; a POI moves to a bigger shop next door
+// (retailHosting.ts SPILL) only when no other POI holds it.
+const occupied = new Set<string>();
+for (const n of await nodes()) {
+  const tags = n.tags ?? {};
+  if (Number(tags.level) > 0 || !templateForTags(tags)) continue;
+  const [x, y] = local(n.lon, n.lat), h = hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open);
+  if (h) occupied.add(h.id);
+}
+let spilled = 0;
 for (const n of await nodes()) {
   const tags = n.tags ?? {};
   if (Number(tags.level) > 0) continue;
@@ -80,7 +91,9 @@ for (const n of await nodes()) {
   if (!t) continue;
   pois[t] = (pois[t] ?? 0) + 1;
   const [x, y] = local(n.lon, n.lat);
-  const hit = hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open);
+  const plain = hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open), moved1 = t !== 'redLight' ? hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open, true) : plain;
+  const hit = moved1 && plain && moved1.id !== plain.id && occupied.has(moved1.id) ? plain : moved1;
+  if (hit && plain && hit.id !== plain.id) { spilled++; if (explain.size) console.log(`spill ${n.id} ${tags.name ?? ''}: ${bagKey(plain.id)} -> ${bagKey(hit.id)}`); }
   if (explain.has(String(n.id))) {
     console.log(`explain ${n.id} ${tags.name ?? ''} -> ${t} host ${hit ? `${bagKey(hit.id)} ${hit.inside ? 'inside' : 'outside'}, ${hit.front} front ${hit.distanceM.toFixed(1)} m` : 'none'}`);
     for (const c of near(x, y).map(c => ({ c, d: edgeDistM(c.ring, x, y) })).filter(v => v.d < 30).sort((a, b) => a.d - b.d)) {
@@ -107,13 +120,13 @@ console.log('template        POIs  unhosted  pands  ring(<=' + RING_KM + 'km Dam
 for (const r of rows) console.log(`${r.t.padEnd(14)} ${String(r.pois).padStart(5)} ${String(r.unhosted).padStart(9)} ${String(r.pands).padStart(6)} ${String(r.ring).padStart(8)} ${String(r.centre).padStart(8)}`);
 // The named hosting regressions (retailGround.test.ts): each node's candidates within 30 m, rings in local metres
 // around the node, and each wall's street/open reading, so the test runs hostOnFront without the city.
-const REGRESSIONS: Record<string, string> = { '2809217417': 'Kinkerstraat 252-H, MapFour (bike)', '2809219299': 'Kinkerstraat 288, Cycle (bike)', '5198582619': 'Nieuwe Hemweg 11, AH to go at a BP station: its front, not the car wash' };
+const REGRESSIONS: Record<string, string> = { '2809217417': 'Kinkerstraat 252-H, MapFour (bike)', '2809219299': 'Kinkerstraat 288, Cycle (bike)', '5198582619': 'Nieuwe Hemweg 11, AH to go at a BP station: its front, not the car wash', '10829630288': 'Haarlemmerdijk 95, Keurslagerij Pouw: the 15 m white shopfront next door (349 m2 shop), not the 23 m2 unit its node falls in' };
 if (process.argv.includes('--fixture')) {
   const cases = [];
   for (const n of await nodes()) {
     if (!REGRESSIONS[String(n.id)]) continue;
     const [x, y] = local(n.lon, n.lat), cands = near(x, y).filter(c => edgeDistM(c.ring, x, y) < 30 || insideRingOf(c.ring, x, y));
-    const hit = hostOnFront(cands, x, y, id => bagUses[bagKey(id)], facing, open);
+    const hit = hostOnFront(cands, x, y, id => bagUses[bagKey(id)], facing, open, true);
     cases.push({ node: n.id, what: REGRESSIONS[String(n.id)], expect: hit && { pand: bagKey(hit.id), front: hit.front },
       candidates: cands.map(c => ({ id: bagKey(c.id), uses: bagUses[bagKey(c.id)] ?? null, ring: c.ring.map(([px, py]) => [+(px - x).toFixed(2), +(py - y).toFixed(2)]), street: ringEdges(c.ring).map(e => facing(c, e)), open: ringEdges(c.ring).map(e => open(c, e)) })) });
   }
@@ -137,9 +150,34 @@ if (fs.existsSync(PUI)) {
   const paint = Object.fromEntries(Object.entries(pui.buildings).filter(([, v]) => typeof v.paint === 'string').map(([id, v]) => [id, v.paint!]).sort((a, b) => a[0] < b[0] ? -1 : 1));
   Object.assign(out, { paint });
   console.log(`pui paint: ${Object.keys(paint).length} pands (${Object.keys(paint).filter(id => out.buildings[id]).length} with a template)`);
+  // Round 5: the street prior for unmeasured plain shops (retailPuiPaint.ts streetPriors). A pand's street is the named
+  // street way nearest its centroid within PRIOR_STREET_M.
+  const PRIOR_STREET_M = 30;
+  const named: { name: string; x0: number; y0: number; x1: number; y1: number }[] = [];
+  for (const w of JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as Array<{ name?: string; highway?: string; path: [number, number][] }>) {
+    if (!w.name || (w.highway && !FRONT_HIGHWAYS.has(w.highway))) continue;
+    for (let i = 1; i < w.path.length; i++) { const a = local(w.path[i - 1][1], w.path[i - 1][0]), b = local(w.path[i][1], w.path[i][0]); named.push({ name: w.name, x0: a[0], y0: a[1], x1: b[0], y1: b[1] }); }
+  }
+  const namedGrid = new SegmentGrid(Float32Array.from(named.flatMap(n => [n.x0, n.y0, n.x1, n.y1])));
+  const byId = new Map<string, Building>(); for (const list of grid.values()) for (const b of list) byId.set(b.id, b);
+  const streetOf = (id: string): string => {
+    const b = byId.get(id); if (!b) return '';
+    let best = '', bd = PRIOR_STREET_M;
+    for (const i of namedGrid.near(b.cx - PRIOR_STREET_M, b.cy - PRIOR_STREET_M, b.cx + PRIOR_STREET_M, b.cy + PRIOR_STREET_M)) { const n = named[i], d = edgeDistM([[n.x0, n.y0], [n.x1, n.y1]], b.cx, b.cy); if (d < bd) { bd = d; best = n.name; } }
+    return best;
+  };
+  const reads: StreetRead[] = Object.entries(pui.buildings as Record<string, { paint?: string; cls?: StreetRead['cls'] }>).filter(([, v]) => v.paint && v.cls).map(([id, v]) => ({ street: streetOf(id), cls: v.cls!, paint: v.paint! }));
+  const priors = streetPriors(reads);
+  const plainShops = Object.keys((JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/shopfronts.json', 'utf8')) as { buildings: Record<string, number> }).buildings).filter(id => !out.buildings[id] && !paint[id]);
+  const prior: Record<string, string> = {};
+  for (const id of plainShops.sort()) { const p = priors.get(streetOf(id)); if (p) prior[id] = p.paint; }
+  Object.assign(out, { prior });
+  const cls = [...priors.values()].reduce((m, p) => (m[p.cls] = (m[p.cls] ?? 0) + 1, m), {} as Record<string, number>);
+  console.log(`street priors: ${priors.size} streets (${JSON.stringify(cls)}); ${Object.keys(prior).length} of ${plainShops.length} unmeasured plain shops take one`);
 }
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, JSON.stringify(out));
+console.log(`spill (retailHosting.ts SPILL): ${spilled} POIs moved to a much bigger shop next door`);
 console.log(`staged ${placed.size} pands -> ${STAGING} (${(fs.statSync(STAGING).size / 1024).toFixed(0)} KB)`);
 if (process.argv.includes('--publish')) { fs.copyFileSync(STAGING, PUBLISHED); console.log(`published -> ${PUBLISHED}`); }
 

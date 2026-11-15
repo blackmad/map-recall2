@@ -58,12 +58,39 @@ export function paintOf(cs: Cluster[]): Verdict {
 /**
  * The paint drawn for a reading. The panoramas expose a shop street dim (mean ground L 0.37), so a pale reading is a
  * white or cream paint seen in shade: its hue kept, its chroma capped at 0.025, lit to L 0.92. A coloured reading is
- * lifted by a tenth; a dark one is drawn as read.
+ * lifted by a tenth. A dark reading is mostly glass with dark paint among it (the class has no paint cluster of its own),
+ * so it is drawn as a dark painted timber at least DARK_PAINT_L, its hue kept (round 5: drawn as read, the rows went
+ * brown-black and the ground/upper ratio fell to 0.81 against the photos' 0.86).
  */
+export const DARK_PAINT_L = 0.36;
 export function drawnPaint(cls: 'pale' | 'colour' | 'dark', hex: string): string {
   const m = /^#(..)(..)(..)$/.exec(hex)!, [L, a, b] = oklab(parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)), C = Math.hypot(a, b);
   if (cls === 'pale') { const k = C > 0.025 ? 0.025 / C : 1; return labHex([0.92, a * k, b * k]); }
   if (cls === 'colour') return labHex([Math.min(0.85, L * 1.1), a, b]);
-  return hex;
+  return L >= DARK_PAINT_L ? hex : labHex([DARK_PAINT_L, a, b]);
 }
 
+
+/**
+ * Round 5: a street's pui prior. An unmeasured plain shop on a street with at least PRIOR.minReads measured shops, a
+ * PRIOR.majority of them one class, takes that class's middle paint (by lightness) on the street; else nothing (the
+ * shop keeps its own guessed paint: no blanket default). Templates keep their own frame colours.
+ */
+export const PRIOR = { minReads: 3, majority: 0.6 } as const;
+export type StreetRead = { street: string; cls: 'pale' | 'colour' | 'dark'; paint: string };
+export function streetPriors(reads: readonly StreetRead[]): Map<string, { cls: StreetRead['cls']; paint: string; n: number; share: number }> {
+  const by = new Map<string, StreetRead[]>();
+  for (const r of reads) { if (!r.street) continue; let l = by.get(r.street); if (!l) by.set(r.street, l = []); l.push(r); }
+  const out = new Map<string, { cls: StreetRead['cls']; paint: string; n: number; share: number }>();
+  for (const [street, list] of by) {
+    if (list.length < PRIOR.minReads) continue;
+    const counts = new Map<StreetRead['cls'], number>();
+    for (const r of list) counts.set(r.cls, (counts.get(r.cls) ?? 0) + 1);
+    const [cls, n] = [...counts].sort((p, q) => q[1] - p[1] || (p[0] < q[0] ? -1 : 1))[0];
+    if (n / list.length < PRIOR.majority) continue;
+    const paints = list.filter(r => r.cls === cls).map(r => r.paint).sort((p, q) => labOfHex(p)[0] - labOfHex(q)[0] || (p < q ? -1 : 1));
+    out.set(street, { cls, paint: paints[Math.floor((paints.length - 1) / 2)], n: list.length, share: +(n / list.length).toFixed(2) });
+  }
+  return out;
+}
+function labOfHex(hex: string): Lab { return oklab(parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)); }

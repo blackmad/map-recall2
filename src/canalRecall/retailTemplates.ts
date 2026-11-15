@@ -225,21 +225,3 @@ export function signWord(name: string): string {
   return out || (words[0] ?? '').slice(0, 14);
 }
 
-/**
- * Round 3c (lane retail-look-20261114): a pui's paint without evidence. The shop grammar's drawn paints (white, cream,
- * pale grey...) put pale frames on shops that the photos show in dark timber or anthracite, and they read as toy-like.
- * With the flag on, a guessed paint lighter than PALE_PUI_LUMA gives way to one of the dark paints, chosen per pand. A
- * measured paint (a HouseSpec shopHex, a row-front trace, a street recipe's groundWallHex) is applied after this and
- * keeps whatever colour it is.
- */
-export const PALE_PUI_LUMA = 0.45;
-export const DARK_PUI_PAINTS = ['#2b2826', '#3a2a1f', '#26302b', '#33302c'] as const;
-export function evidencelessPuiPaint(hex: string, id: string): string {
-  const m = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex);
-  if (!m) return hex;
-  const lin = (v: string) => { const c = parseInt(v, 16) / 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
-  const luma = 0.2126 * lin(m[1]) + 0.7152 * lin(m[2]) + 0.0722 * lin(m[3]);
-  if (luma <= PALE_PUI_LUMA) return hex;
-  let h = 2166136261; for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 16777619);
-  return DARK_PUI_PAINTS[(h >>> 0) % DARK_PUI_PAINTS.length];
-}

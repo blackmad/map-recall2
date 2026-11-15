@@ -2,7 +2,7 @@
 // byte-identity when off. `node --import tsx --test src/canalRecall/retailGround.test.ts`
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { DARK_PUI_PAINTS, RETAIL_TEMPLATES, TEMPLATE_LOOKS, evidencelessPuiPaint, retailGroundEnabled, signText, signWord, templateForTags } from './retailTemplates.js';
+import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, retailGroundEnabled, signText, signWord, templateForTags } from './retailTemplates.js';
 import { FRONT, LETTER_STEM, MAX_LETTER_H, MIN_LETTER_H, fitWord, glassTone, retailDoor, retailFrontTris, strokePx } from './retailFront.js';
 import { LOGOS, LOGO_GRID, glyphCellBox, glyphLayout, logoFor, retailLogoLayer } from './retailLogos.js';
 import { hostOnFront, ringEdges, segDist, steppedRun } from './retailHosting.js';
@@ -10,7 +10,7 @@ import fs from 'node:fs';
 import { decorateShopfront, setShopfronts, setShopTemplates } from './shopfronts.js';
 import { bayTextures, type BayVariant } from './bayTextures.js';
 import { insideCentre } from './retailArea.js';
-import { clusters, drawnPaint, labHex, oklab, paintOf, type Lab } from './retailPuiPaint.js';
+import { PRIOR, clusters, drawnPaint, labHex, oklab, paintOf, streetPriors, type Lab } from './retailPuiPaint.js';
 
 const g = globalThis as { __canalRecallRetailGround?: boolean };
 
@@ -238,15 +238,17 @@ test('hosting regressions: Kinkerstraat bike shops on their street fronts, the B
     2809217417: { pand: '0363100012156816', front: 'street' },
     2809219299: { pand: '0363100012061473', front: 'street' },
     5198582619: { pand: '0363100012239989', front: 'nearest' },
+    // Round 5: Keurslagerij Pouw on the 15 m white shopfront next door (SPILL), not the 23 m2 unit its node falls in.
+    10829630288: { pand: '0363100012165106', front: 'street' },
   };
-  assert.equal(fx.cases.length, 3);
+  assert.equal(fx.cases.length, 4);
   for (const c of fx.cases) {
     const cands = c.candidates.map((k: { id: string; ring: [number, number][] }) => ({ id: k.id, ring: k.ring }));
     const read = (key: 'street' | 'open') => (cand: { id: string; ring: [number, number][] }, e: ReturnType<typeof ringEdges>[number]) => {
       const k = c.candidates.find((q: { id: string }) => q.id === cand.id);
       return k[key][ringEdges(cand.ring).findIndex(f => f.x0 === e.x0 && f.y0 === e.y0)];
     };
-    const hit = hostOnFront(cands, 0, 0, id => c.candidates.find((q: { id: string }) => q.id === id)?.uses ?? undefined, read('street'), read('open'));
+    const hit = hostOnFront(cands, 0, 0, id => c.candidates.find((q: { id: string }) => q.id === id)?.uses ?? undefined, read('street'), read('open'), true);
     assert.deepEqual(hit && { pand: hit.id, front: hit.front }, want[c.node], c.what);
   }
 });
@@ -333,11 +335,6 @@ test('round 3c cost: panes are one interior quad of the shop cell; every templat
   }
 });
 
-test('round 3c paint: a guessed pale pui goes dark; dark and mid paints stay', () => {
-  assert.ok((DARK_PUI_PAINTS as readonly string[]).includes(evidencelessPuiPaint('#ece6e0', 'NL.IMBAG.Pand.1')));
-  for (const hex of ['#7a4a38', '#2a2a2c', '#3a3c3c', '#8a8a86', '#3a4f7a']) assert.equal(evidencelessPuiPaint(hex, 'x'), hex);
-  assert.equal(evidencelessPuiPaint('#ece6e0', 'a'), evidencelessPuiPaint('#ece6e0', 'a'));
-});
 
 const labOf = (hex: string): Lab => oklab(parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16));
 const band = (parts: [string, number][]): Lab[] => parts.flatMap(([hex, n]) => Array.from({ length: n }, () => labOf(hex)));
@@ -355,7 +352,8 @@ test('round 4 pui paint: a pale frame share reads pale, a coloured one colour, g
 test('round 4 pui paint: a pale reading is drawn as a lit white or cream, a dark one as read', () => {
   const pale = labOf(drawnPaint('pale', '#9fafb4'));
   assert.ok(pale[0] > 0.9 && Math.hypot(pale[1], pale[2]) <= 0.026, `pale ${drawnPaint('pale', '#9fafb4')}`);
-  assert.equal(drawnPaint('dark', '#262221'), '#262221');
+  assert.ok(Math.abs(labOf(drawnPaint('dark', '#262221'))[0] - 0.36) < 0.01, 'a dark reading is drawn as dark paint, not glass-black');
+  assert.equal(drawnPaint('dark', '#5a5048'), '#5a5048');
   assert.ok(labOf(drawnPaint('colour', '#2e5a3c'))[0] > labOf('#2e5a3c')[0]);
   assert.equal(labHex(labOf('#336699')), '#336699');
 });
@@ -363,11 +361,12 @@ test('round 4 pui paint: a pale reading is drawn as a lit white or cream, a dark
 test('round 4 pui paint: the extract stamps the measured paint on template and plain shop pands, only once installed', () => {
   const f = (id: string): { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown } => ({ type: 'Feature', properties: { id }, geometry: null });
   setShopfronts(null);
-  setShopTemplates({ version: 1, templates: ['ah'], buildings: { 'NL.IMBAG.Pand.1': [0, 4.9, 52.37] }, paint: { 'NL.IMBAG.Pand.1': '#e8ecee', 'NL.IMBAG.Pand.2': '#262221', 'NL.IMBAG.Pand.3': 'white' } });
+  setShopTemplates({ version: 1, templates: ['ah'], buildings: { 'NL.IMBAG.Pand.1': [0, 4.9, 52.37] }, paint: { 'NL.IMBAG.Pand.1': '#e8ecee', 'NL.IMBAG.Pand.2': '#262221', 'NL.IMBAG.Pand.3': 'white' }, prior: { 'NL.IMBAG.Pand.4': '#4a3f38', 'NL.IMBAG.Pand.2': '#ffffff' } });
   const a = decorateShopfront(f('NL.IMBAG.Pand.1')).properties;
   assert.deepEqual([a.shopTemplate, a.puiPaint], [['ah', 4.9, 52.37], '#e8ecee']);
   const b = decorateShopfront(f('NL.IMBAG.Pand.2')).properties;
   assert.deepEqual([b.shopTemplate, b.puiPaint], [undefined, '#262221']);
+  assert.equal(decorateShopfront(f('NL.IMBAG.Pand.4')).properties.puiPaint, '#4a3f38', 'a street prior stamps an unmeasured shop');
   const plain = f('NL.IMBAG.Pand.3');
   assert.equal(decorateShopfront(plain), plain);
   setShopTemplates(null);
@@ -380,4 +379,15 @@ test('round 4 pui paint: a measured paint frames the template front; absent, the
   const hexes = (paint?: string) => new Set(retailFrontTris({ template: 'butcher', seed: 'x', ...(paint ? { paint } : {}) }, e, 0, 6, 0, 3.4).map(t => t.hex));
   assert.ok(hexes('#e8ecee').has('#e8ecee'));
   assert.ok(!hexes().has('#e8ecee'));
+});
+
+test('round 5 street prior: a clear majority of measured shops on a street, else nothing', () => {
+  const r = (street: string, cls: 'pale' | 'colour' | 'dark', paint: string) => ({ street, cls, paint });
+  const p = streetPriors([r('A', 'dark', '#3a3430'), r('A', 'dark', '#4a4440'), r('A', 'dark', '#5a5450'), r('A', 'pale', '#eeeeee'),
+    r('B', 'dark', '#3a3430'), r('B', 'pale', '#eeeeee'), r('B', 'pale', '#f0f0f0'), r('B', 'colour', '#2e5a3c'),
+    r('C', 'pale', '#eeeeee'), r('C', 'pale', '#f0f0f0'), r('', 'pale', '#eeeeee')]);
+  assert.deepEqual(p.get('A'), { cls: 'dark', paint: '#4a4440', n: 4, share: 0.75 });
+  assert.equal(p.get('B'), undefined, 'no majority');
+  assert.equal(p.get('C'), undefined, `fewer than ${PRIOR.minReads} reads`);
+  assert.equal(p.size, 1);
 });

@@ -47,22 +47,28 @@
     "key": "kinkerstraat-98",
     "case": "Kinkerstraat 98, plain shop (row 86-110)",
     "crop": [
-      0.25,
-      0.72,
-      0.85,
-      1
-    ]
+      0.1,
+      0.3,
+      0.95,
+      0.6
+    ],
+    "pano": "recording_2025-06-30_05-16-46_00460",
+    "frame": "game",
+    "note": "round 5: the clear frontal capture measure-pui read (the rule-10 pick had a van across the front)"
   },
   {
     "pandId": "0363100012159635",
     "key": "kinkerstraat-104",
     "case": "Kinkerstraat 104, plain shop (row 86-110)",
     "crop": [
-      0.0,
-      0.72,
-      0.7,
-      1
-    ]
+      0.1,
+      0.3,
+      0.95,
+      0.6
+    ],
+    "pano": "TMX7316010203-002928_pano_0010_000064",
+    "frame": "game",
+    "note": "round 5: the 2023-01-12 frontal capture measure-pui read second (the rule-10 pick and the 2020 capture both have a passing tram)"
   },
   {
     "pandId": "0363100012176699",
@@ -76,7 +82,8 @@
       0.3,
       1,
       0.65
-    ]
+    ],
+    "note": "round 5: Pouw now hosted on 0363100012165106, its 15 m white shopfront (retailHosting.ts SPILL); framed from the awning pand 176699 next door, whose cached capture shows both fronts"
   },
   {
     "pandId": "0363100012173480",
