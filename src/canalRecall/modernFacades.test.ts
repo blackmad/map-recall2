@@ -1,6 +1,7 @@
 import './testing/newbuildFamilyOff.js';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { buurtKitEnabled } from './buurtGenerator/kitFlag.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, bayLookFor } from './bayLook.js';
 import { MODERN_STYLE, MODERN_WALLS, modernEraFor, modernUseFor, modernVocabulary } from './modernFacades.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
@@ -23,7 +24,9 @@ test('preset indices name the presets they claim', () => {
   assert.equal(m[MODERN_STYLE.gallery].facadeAssembly, 'stacked-open-balcony');
   // No new texture layers: the vocabulary only selects presets already in the array (the contemporary family's own
   // table, `?newbuildFamily=1`, is pinned in contemporaryFamilyOn.test.ts).
-  assert.equal(BAY_LAYER_COUNT, newbuildFamilyEnabled() ? 181 : 191);
+  // The buurt kit (default on) adds its two Plan Zuid upper cells and shares the restrained shop cells (bayLook.ts), so
+  // the procedural array stays within 256 with the family off as well (64 + 185 + 1).
+  assert.equal(BAY_LAYER_COUNT, newbuildFamilyEnabled() ? 181 : buurtKitEnabled() ? 185 : 191);
 });
 
 test('pre-1945 and undated buildings never take the modern vocabulary', () => {

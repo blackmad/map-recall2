@@ -118,7 +118,7 @@ type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[num
  * the baked shells' hash (world/shellLayers.ts) as before.
  */
 const RESTRAINED_SHOP_CELL: Record<ShopKind, ShopKind> = { groundShop: 'shopCafe', shopCafe: 'shopCafe', shopBar: 'shopBar', shopWindow: 'shopWindow', shopDeli: 'shopWindow', shopFlorist: 'shopWindow', shopBike: 'shopWindow' };
-const sharedRestrainedShops = newbuildFamilyEnabled();
+const sharedRestrainedShops = newbuildFamilyEnabled() || buurtKitEnabled();
 // Shop cells are shared by period and art direction, not every opening preset.
 // Share only cells whose painter output is identical. Upper cells do not draw
 // ground assemblies; side-entry ground and groundDoor both paint the same door.
