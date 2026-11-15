@@ -181,8 +181,9 @@ async function main() {
   } catch { /* no records: nothing to label */ }
   def.members.forEach((m, i) => {
     if (!unread.has(m.pandId)) return;
-    const t = 'unread: series line', w = Math.min(widths[i], 8 + t.length * 6.5), d = drawn.get(m.pandId);
-    const top = head + band + (H + band + 4) + band + Math.max(0, H - (d?.heightPx ?? 0) - 20);
+    // In the drawn block's caption band, above the strip: the blind pair crops (the strips) never carry it.
+    const t = 'unread: series line', w = Math.min(widths[i], 8 + t.length * 6.5);
+    const top = head + band + (H + band + 4) + 4;
     layers.push({ input: Buffer.from(`<svg width="${Math.round(w)}" height="18" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="18" fill="#f2c500"/><text x="4" y="13" font-size="11" font-weight="bold" fill="#000" font-family="Helvetica">${esc(t)}</text></svg>`), left: xs[i], top });
   });
   await sharp({ create: { width: W, height: total, channels: 3, background: '#111' } }).composite(layers).jpeg({ quality: 86 }).toFile(path.join(out, 'sheet.jpg'));

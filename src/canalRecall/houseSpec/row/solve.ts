@@ -112,7 +112,9 @@ export interface RowInput {
 /** `ground.colour` sets `front.ground.colour` (a RowGroundColour) on each listed front; it outranks a read and the face's shopPaint. */
 /** `unread` (value: the reason) sets a listed pand's reading aside, as a held one: an unusable cut (Herengracht 69, a steep
  *  corner shot) states nothing, so its front draws as unread. */
-export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour' | 'series' | 'unread'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
+/** `split` (value: `{ n, shares? }`) splits a listed pand into n fronts read from its cut (Herengracht 43-45: two point
+ *  gables in one pand), `<pandId>#m0..`; shares are the fronts' widths in street order (absent: equal). */
+export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour' | 'series' | 'unread' | 'split'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
 
 // --- compatibility of classes (a face value and a read that name the same thing) ------------------------------------------
 
@@ -295,7 +297,9 @@ export function solveRow(input: RowInput): RowRecord {
   for (const m of input.members) {
     const ru = m.read ? reviewedUnread(m.pandId) : undefined;
     const held = ru ? `reviewed unusable: ${String(ru.value)}` : m.read ? heldReason(m.read) : null;
-    const { n, why } = splitCount(m, rowBays, rowWidth);
+    const rs = (input.reviewed ?? []).find(st => st.field === 'split' && st.fronts.includes(m.pandId));
+    const rsv = rs?.value as { n?: number; shares?: number[] } | undefined;
+    const { n, why } = rsv?.n && rsv.n >= 2 ? { n: rsv.n, why: `reviewed split (${rs!.ref})` } : splitCount(m, rowBays, rowWidth);
     if (n >= 2 && !m.face?.length && m.read?.extent === 'single') flags.push({ kind: 'extent-mismatch', field: 'extent', fronts: [m.pandId], detail: `read extent single, split into ${n} fronts: ${why}` });
     else if (n >= 2 && m.read?.extent === 'single' && num(m.read.bays) && (m.read.bays as number) >= 2 * (rowBays ?? 99))
       flags.push({ kind: 'extent-mismatch', field: 'extent', fronts: [m.pandId], detail: `read extent single with ${m.read.bays} bays; ${why}: ${n} fronts` });
@@ -313,7 +317,8 @@ export function solveRow(input: RowInput): RowRecord {
       readNotDrawn.push({ front: m.pandId, field: 'reading', value: m.readRef ?? m.read!.image?.ref, reason: `held: ${held}; the front takes its series` });
     }
     // Module shares from the face (Kinkerstraat 126-138: two narrow gable axes among wider modules); else an equal split.
-    const shares = m.face?.length === n && m.face.every(f => typeof f.share === 'number' && f.share > 0) ? m.face.map(f => f.share!) : Array.from({ length: n }, () => 1);
+    const shares = m.face?.length === n && m.face.every(f => typeof f.share === 'number' && f.share > 0) ? m.face.map(f => f.share!)
+      : rsv?.shares?.length === n && rsv.shares.every(x => x > 0) ? rsv.shares : Array.from({ length: n }, () => 1);
     const total = shares.reduce((a, b) => a + b, 0);
     const cut = shares.reduce<number[]>((acc, x) => [...acc, acc[acc.length - 1] + x / total], [0]);
     ids.forEach((id, i) => {
@@ -402,6 +407,8 @@ export function solveRow(input: RowInput): RowRecord {
       const idx = evs.map((e, i) => (e.front.seriesId === s.id && keys[i]!.startsWith('unread:') ? i : -1)).filter(i => i >= 0);
       if (!idx.length) continue;
       const i = idx[0];
+      // A reviewer who read the top from the cut (a crown or gable statement on these fronts) has read it: not unread.
+      if ((input.reviewed ?? []).some(st => (st.field === 'crown' || st.field === 'gable') && idx.some(j => st.fronts.includes(evs[j].front.id)))) continue;
       const left = [...Array(i).keys()].reverse().find(j => lineOf(j) !== null), right = [...Array(evs.length).keys()].find(j => j > i && lineOf(j) !== null);
       const near = [left, right].filter((j): j is number => j !== undefined);
       const why = evs[i].front.readHeld ?? (evs[i].member.read ? 'the reading is unreadable' : 'no reading');
@@ -497,7 +504,7 @@ export function solveRow(input: RowInput): RowRecord {
       }
       continue;
     }
-    if (st.field === 'series' || st.field === 'unread') continue;
+    if (st.field === 'series' || st.field === 'unread' || st.field === 'split') continue;
     const field = st.field;
     const merged = (cur: unknown) => ({ value: st.add && Array.isArray(cur) ? [...cur, ...(st.value as unknown[]).filter(x => !cur.includes(x))] : st.value, source: 'reviewed' as const, ref });
     for (const s of series) {

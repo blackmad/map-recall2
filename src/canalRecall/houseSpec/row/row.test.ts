@@ -351,3 +351,13 @@ test('Herengracht belt fix (2026-11-15): unread tops take the neighbours\' line,
   assert.ok(k.fronts.every(f => !f.topUnread) && k.series.every(s => s.design.extras.value.includes('wall-anchors')));
   assert.ok(rowFrontsWithSeries(k).every(r => !r.series?.omitExtras), 'Kinkerstraat omits nothing');
 });
+
+test('Herengracht belt fix 2: a reviewed split reads two gables; a reviewed top is not unread; 18 stands at 16\'s line', () => {
+  const r = solveRow(loadRow(loadRowDefs()['herengracht-25-49'], '2026-11-15').input);
+  const fs = r.fronts.filter(f => f.pandId === '0363100012168212');
+  assert.deepEqual(fs.map(f => f.id), ['0363100012168212#m0', '0363100012168212#m1']);
+  assert.ok(fs[0].widthM! < fs[1].widthM!, 'the right gable is the wider');
+  for (const f of fs) { assert.ok(!f.topUnread); assert.equal(frontDesign(r, f).crown.value, 'point'); }
+  const a = solveRow(loadRow(loadRowDefs()['herengracht-2-24'], '2026-11-15').input);
+  assert.equal(a.fronts.find(f => f.pandId === '0363100012179760')!.topM, 12.4);
+});

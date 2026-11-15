@@ -265,6 +265,14 @@
       "component": "roof",
       "what": "18: a steep hipped tiled roof with two small roof lights behind the cornice; the kit has no hipped roof storey (mansard, attic, none), so none is drawn",
       "ref": "lane D belt fix (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012179763"
+      ],
+      "component": "roof",
+      "what": "10: a grey box over the cornice is the pand's own roof mass from the world chunk (3DBAG roof to 18.5 m over a 15.58 m wall), not the record; the cut does not show it",
+      "ref": "lane D belt fix 2 (2026-11-15)"
     }
   ],
   "herengracht-26-46": [
@@ -392,6 +400,42 @@
       "component": "crown",
       "what": "the register names 161 a bell front; the cut shows a gable with scrolled shoulders at the cut resolution; bell or neck is not decidable from it: the read (neck) is drawn",
       "ref": "lane D, cut belt-20261114/cuts/0363100012167679.jpg against monument-gables.json"
+    }
+  ],
+  "herengracht-25-49": [
+    {
+      "fronts": [
+        "0363100012168213"
+      ],
+      "component": "shutters",
+      "what": "37: red shutters flank the central column of loading-door windows on every upper storey; the kit's shutters draw one storey in a dice colour, so none are drawn",
+      "ref": "lane D belt fix 2 (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012168212#m0",
+        "0363100012168212#m1"
+      ],
+      "component": "bands",
+      "what": "43-45: white stone bands and a central column of white panels with small-paned windows up into the gable; not drawn",
+      "ref": "lane D belt fix 2 (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012175409",
+        "0363100012175407"
+      ],
+      "component": "crown",
+      "what": "33 and 35: the register names a bell and a neck gable, but the cuts are oblique (33 top cut off, 35 its side wall): unread, series line",
+      "ref": "lane D belt fix 2 (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012175291"
+      ],
+      "component": "crown",
+      "what": "41: a small white pedimented top piece over the frieze cornice, and red brick with white bands; drawn as a plain frieze cornice",
+      "ref": "lane D belt fix 2 (2026-11-15)"
     }
   ]
 }
