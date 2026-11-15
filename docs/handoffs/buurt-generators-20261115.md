@@ -485,3 +485,54 @@ They apply to the four west members of `rooseveltlaan-146491` (146491, 148931, 1
 - Erker glass reads darker than the photo's white bands.
 - The loggias' slab soffits are not drawn.
 - Other Rooseveltlaan rows have no row photo, so they keep the pool brick.
+
+## Round 6 (2026-11-15): blind A/B on Rivierenbuurt, district 2 started (stopped at 14 GB free)
+
+### Blind A/B on the r5 sheets (bd9ffc763)
+
+Each judge was a fresh opus subagent. It saw the photo and two shuffled, unlabelled bands: today's drawing and r5.
+
+| Street | Winner | Confidence | Judge's biggest remaining gap |
+|---|---|---|---|
+| Maasstraat | r5 | high | a pale band under the roof edge, which the photo does not have |
+| Rooseveltlaan | r5 | high | a tall grey roof band in the elevation; the photo's block ends flat |
+| Biesboschstraat | r5 | high | the tile roof is far too tall in elevation; erker placement differs in places |
+
+- **Score:** 3 wins, 0 losses, 0 ties. No gap cost a loss.
+- **The pale band** on Maasstraat is 0.13 m tall (`#cfcecb`). It is neither the series cornice nor the row mansard's trim: both were tried, and both left it in place, so both changes were reverted.
+- **The roofs:** both judges read the true roof rise on the elevation sheet. From the pavement, perspective hides most of it.
+
+### District 2: Apollobuurt + Stadionbuurt (`lane/buurt-apollo-stadion-20261115`)
+
+The library is `districts/apollo-stadion.json`.
+
+- **Families:** three, four and five storeys.
+- **Wall pool:** `#5b4e47`, the average of the four brown rows sheeted here.
+- **Wall per row:** each sheeted row draws its own photo's brick (row notes, calibrated through the renderer on its own sheet). Quinten Massijsstraat is pale yellow, `#b7a984`.
+- **Roof:** red pantile on every pitched row.
+  - Both photographed pitched rows are red, although the orthophoto reads slate on all six Sportstraat members. The slot is therefore not used here.
+  - The colour comes from the overcast Biesboschstraat measurement. The Apollo photos are sunlit, so only their hue is used.
+- **Eaves:** broad flat eaves with no frieze. A new `eavesFrieze: false` kit option draws them, gated by street notes on Minervalaan and Quinten Massijsstraat.
+- **Window axis:** Sportstraat has three to four wide casements per 14.4 m pand, so it draws a 3.6 m axis (`rowNotes.axisM`).
+
+Coverage: 3,848 pands; 1,672 drawn in 334 rows. Not drawn:
+
+| Reason | Pands |
+|---|---:|
+| Minor (sheds, garages, eaves under 5 m) | 1,563 |
+| Single | 325 |
+| Off-storeys | 163 |
+| No front | 74 |
+| Described | 35 |
+| Off-years | 16 |
+
+Sheets drawn before the notes: Achillesstraat, Herculesstraat, Minervalaan, Quinten Massijsstraat and Sportstraat. **They are not redrawn and have no A/B.** The disk dropped to 14 GB free, and the lane rule is to stop under 15 GB.
+
+What the kit cannot say here yet:
+
+- Amsterdam School grid windows (Minervalaan: framed multi-pane lights in a white grid).
+- Striped brick ground floors.
+- Arched portiek doorways (Achillesstraat).
+- First-floor balconies (Achillesstraat).
+- Hipped roof ends and a central entrance bay with a stair window strip (Sportstraat).
+- Front gardens.

@@ -47,6 +47,8 @@ export interface DistrictPitchedRoof { minRiseM: number; maxRiseM: number; pitch
   roofHex?: string; roofHexEvidence?: string;
   /** Broad flat eaves over the street front, this overhang (m). */
   eavesM?: number;
+  /** false: the eaves have no lattice frieze under the slab (Apollo's broad flat eaves). */
+  eavesFrieze?: false;
   /** Per orthophoto slot (roof-facts), what the photos of that slot show (round 5: `slate` reads dark glazed tiles). */
   slotLooks?: Record<string, { material: 'tile' | 'slate'; roofHex: string; evidence: string }> }
 export interface DistrictLibrary {
@@ -69,7 +71,7 @@ export interface DistrictLibrary {
    *  member, 1 (the default: a block starts at the row's first member) after its second; `wall` the row's own measured
    *  brick, which wins over the district's (series photo > district pool); `loggias` the members (last six digits of
    *  the pand id) whose upper storeys are loggias between the erkers. */
-  rowNotes?: Record<string, { pierPhase?: 0 | 1; wall?: { hex: string; evidence: string }; loggias?: string[]; evidence: string }>;
+  rowNotes?: Record<string, { pierPhase?: 0 | 1; wall?: { hex: string; evidence: string }; roof?: { hex: string; evidence: string }; axisM?: number; loggias?: string[]; evidence: string }>;
   notDrawn: Array<{ component: string; what: string }>;
 }
 
@@ -112,6 +114,8 @@ export function pitchedVariantOf(lib: DistrictLibrary, s: GenSeries): DistrictPi
   const slot = seriesSlot(s), look = slot ? lib.pitched.slotLooks?.[slot] : undefined;
   return look ? { ...lib.pitched, material: look.material, roofHex: look.roofHex, evidence: `${lib.pitched.evidence}; orthophoto ${slot}: ${look.evidence}` } : lib.pitched;
 }
+/** The window axis a row draws: its own photo's (row note), else the district's. */
+export const axisOf = (lib: DistrictLibrary, rowId: string): Pick<DistrictDesign, 'axisM'> => ({ axisM: lib.rowNotes?.[rowId]?.axisM ?? lib.design.axisM });
 /** The series wall hex: the row's own measured brick (row note) over the family's and the district's. */
 export function wallHexOf(lib: DistrictLibrary, fam: DistrictFamily | null, rowId: string): { hex?: string; evidence?: string } {
   const own = lib.rowNotes?.[rowId]?.wall;
@@ -174,7 +178,7 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
     const storeys = storeysFor(s.eavesM, lib.design), fam = familyFor(lib, storeys);
     if (!fam) { off('off-storeys', `${storeys} storeys at ${s.eavesM} m`); continue; }
     const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b);
-    const bays = baysFor(widths[widths.length >> 1], lib.design);
+    const bays = baysFor(widths[widths.length >> 1], axisOf(lib, row.id));
     const seriesId = s.id;
     const design = seriesDesign(lib, fam, s, row.id, bays);
     series.push({ id: seriesId, label: `${fam.label}, built ${s.year ?? '?'}`, type: fam.id, fronts: s.members.map(m => pandNumber(m.pand.id)), design });
@@ -207,8 +211,8 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   for (const r of res.rows) for (const s of r.series) {
     const rise = pitchedRiseOf(lib, s);
     const fam = s.eavesM === null ? null : familyFor(lib, storeysFor(s.eavesM, lib.design));
-    const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b), bays = baysFor(widths[widths.length >> 1], lib.design);
-    const pv = pitchedVariantOf(lib, s), roofHex = pv?.roofHex;
+    const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b), bays = baysFor(widths[widths.length >> 1], axisOf(lib, r.id));
+    const pv = pitchedVariantOf(lib, s), roofHex = lib.rowNotes?.[r.id]?.roof?.hex ?? pv?.roofHex;
     // Blocks of two pands (family kit `piers`): the pier at every other party wall, phased by the row's photo if one
     // states it, else a block starting at the row's first member.
     const note = lib.rowNotes?.[r.id], phase = note?.pierPhase ?? 1, pierAfter = (j: number) => ((j - phase) % 2 + 2) % 2 === 0;
@@ -221,7 +225,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
       const i = r.members.indexOf(m), joins = { ...(i > 0 && drawn.has(pandNumber(r.members[i - 1].pand.id)) ? { left: true } : {}), ...(i < r.members.length - 1 && drawn.has(pandNumber(r.members[i + 1].pand.id)) ? { right: true } : {}) };
       // Erkers on the series' cells (frontKit.ts erkersOnCells): the series draws `bays` cells on every member.
       kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers: erkersOnCells(m.front.erkers, bays, m.front.lengthM, fam?.design?.windowShare ?? lib.design.windowShare),
-        ...(rise !== null && pv ? { roof: { pitchDeg: pv.pitchDeg, riseM: rise, ...(roofHex ? { roofHex } : {}), ...(pv.dormersPerFront === 0 ? { dormers: false as const } : {}), ...(pv.eavesM ? { eavesM: pv.eavesM } : {}) } } : {}),
+        ...(rise !== null && pv ? { roof: { pitchDeg: pv.pitchDeg, riseM: rise, ...(roofHex ? { roofHex } : {}), ...(pv.dormersPerFront === 0 ? { dormers: false as const } : {}), ...(pv.eavesM ? { eavesM: pv.eavesM, ...(pv.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } } : {}),
         ...(fam?.kit?.rhythm ? { rhythm: true as const } : {}),
         ...(fam?.kit?.piers && (joins.left || joins.right) ? { sides: { ...(joins.left ? { left: pierAfter(i - 1) ? 'pier' as const : 'pair' as const } : {}), ...(joins.right ? { right: pierAfter(i) ? 'pier' as const : 'pair' as const } : {}) } } : {}),
         ...(fam?.kit?.sash ? { sash: fam.kit.sash.value } : {}), ...(fam?.kit?.ribbon ? { ribbon: true as const } : {}),

@@ -38,7 +38,7 @@ export interface BuurtRoofKit {
    *  side, drawn by the kit over a brick plate (`drawRhythm`), in place of the mesher's even cells. */
   rhythm?: true;
   /** Broad flat eaves with a white soffit and fascia over the street front (round 4, Rooseveltlaan): overhang (m). */
-  eaves?: { overhangM: number };
+  eaves?: { overhangM: number; /** false: no lattice frieze, the slab sits on the line. */ frieze?: false };
   /** Erker windows as continuous white bands, corner to corner on every face (round 5, Rooseveltlaan). */
   erkerBands?: true;
   /** Loggias on every upper storey between the erkers (round 5, Rooseveltlaan's west end): `drawLoggias`. */
@@ -59,6 +59,8 @@ export const EAVES_LOOK = { overhangM: 0.9, thickM: 0.4, backM: 0.2, friezeM: 0.
 /** A loggia (Rooseveltlaan west end, 2022-03-24): a brick parapet 1.0 m over the floor, the opening dark to 0.25 m
  *  under the next floor, the window wall behind it 0.3 m into the opening; 0.35 m of brick either side. */
 export const LOGGIA_LOOK = { parapetM: 1.0, headM: 0.25, sideM: 0.35, minM: 1.5, dark: '#2f2b29', backInsetM: 0.3 } as const;
+/** The eaves frieze's height on a kit (0 when the eaves have none). */
+export const friezeOf = (kit: BuurtRoofKit): number => kit.eaves && kit.eaves.frieze !== false ? EAVES_LOOK.friezeM : 0;
 /** The kit plates over the mesher's front: brick at 0.09 m, glass 0.1 m, white frames 0.115 m proud of the wall. */
 const PLATE_O = 0.09, GLASS_O = 0.1, FRAME_O = 0.115;
 
@@ -97,7 +99,7 @@ export function buurtRoofKitOf(v: unknown): BuurtRoofKit | null {
   const joins = j && typeof j === 'object' ? { ...(j.left === true ? { left: true } : {}), ...(j.right === true ? { right: true } : {}) } : {};
   const sd = k.sides as { left?: unknown; right?: unknown } | undefined, side = (x: unknown): KitSide | null => x === 'pier' || x === 'pair' ? x : null;
   const sides = sd && typeof sd === 'object' ? { ...(side(sd.left) ? { left: side(sd.left)! } : {}), ...(side(sd.right) ? { right: side(sd.right)! } : {}) } : {};
-  const ev = k.eaves as { overhangM?: unknown } | undefined, eaves = ev && Number(ev.overhangM) > 0.2 && Number(ev.overhangM) < 2 ? { overhangM: Number(ev.overhangM) } : null;
+  const ev = k.eaves as { overhangM?: unknown; frieze?: unknown } | undefined, eaves = ev && Number(ev.overhangM) > 0.2 && Number(ev.overhangM) < 2 ? { overhangM: Number(ev.overhangM), ...(ev.frieze === false ? { frieze: false as const } : {}) } : null;
   return { ...(pitch > 10 && pitch < 80 ? { pitchDeg: pitch } : {}), ...(hex ? { roofHex: hex } : {}), ...(dormer ? { dormer } : {}), erkers, z0: Number(k.z0), storeyM: Number(k.storeyM), rows: Math.round(Number(k.rows)), capM: Number(k.capM),
     ...(joins.left || joins.right ? { joins } : {}), ...(k.ribbon === true ? { ribbon: true as const } : {}), ...(k.rhythm === true ? { rhythm: true as const } : {}),
     ...(sides.left || sides.right ? { sides } : {}), ...(eaves ? { eaves } : {}), ...(k.erkerBands === true ? { erkerBands: true as const } : {}), ...(k.loggias === true ? { loggias: true as const } : {}) };
@@ -109,7 +111,7 @@ export function buurtRoofKitOf(v: unknown): BuurtRoofKit | null {
  */
 export function drawErkers(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
   // Under broad eaves the erker rises through the frieze to the eaves slab, which caps it (Rooseveltlaan).
-  const Lk = ERKER_LOOK, z0 = kit.z0, z1 = kit.eaves ? EAVES_LOOK.friezeM : kit.capM;
+  const Lk = ERKER_LOOK, z0 = kit.z0, z1 = kit.eaves ? friezeOf(kit) : kit.capM;
   // (c, o, z): c across the front left to right as seen, o out from the wall, z up from the series line.
   const P = (c: number, o: number, z: number): V3 => [e * (L / 2 + o), e * c, z];
   const H = (dc: number, doo: number, dz: number): V3 => [e * doo, e * dc, dz];
@@ -169,14 +171,14 @@ export function drawErkers(s: RoofSink, kit: BuurtRoofKit, L: number, W: number,
 
 /** The roof kit a member's front kit asks for: its erkers over the upper storeys (the series' ground and storey lines,
  *  rowFront.ts rowGroundM) and the series pitch. `topM` is the series line, `groundM` the ground storey's top. */
-export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg: number; roofHex?: string; dormers?: false; eavesM?: number }; ribbon?: true; rhythm?: true; sides?: { left?: KitSide; right?: KitSide }; copingHex?: string; erkerBands?: true; loggias?: true; joins?: { left?: boolean; right?: boolean } }, topM: number, storeys: number, groundM: number): BuurtRoofKit | null {
+export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg: number; roofHex?: string; dormers?: false; eavesM?: number; eavesFrieze?: false }; ribbon?: true; rhythm?: true; sides?: { left?: KitSide; right?: KitSide }; copingHex?: string; erkerBands?: true; loggias?: true; joins?: { left?: boolean; right?: boolean } }, topM: number, storeys: number, groundM: number): BuurtRoofKit | null {
   const rows = Math.max(1, storeys - 1), storeyM = (topM - groundM) / rows;
   if (!(storeyM > 1.5) || !(groundM > 1.5)) return null;
   const sided = front.ribbon || front.rhythm || front.roof?.eavesM;
   return { ...(front.roof ? { pitchDeg: front.roof.pitchDeg, ...(front.roof.dormers === false ? {} : { dormer: { ...KIT_DORMER } }) } : {}), ...(front.roof?.roofHex ? { roofHex: front.roof.roofHex } : !front.roof && front.copingHex ? { roofHex: front.copingHex } : {}),
     erkers: front.erkers, z0: +(groundM - topM).toFixed(3), storeyM: +storeyM.toFixed(3), rows, capM: ERKER_LOOK.capM,
     ...(sided && front.joins ? { joins: { ...front.joins } } : {}), ...(front.ribbon ? { ribbon: true as const } : {}), ...(front.rhythm && !front.erkers.length ? { rhythm: true as const } : {}),
-    ...(front.sides && (front.ribbon || front.rhythm) ? { sides: { ...front.sides } } : {}), ...(front.roof?.eavesM ? { eaves: { overhangM: front.roof.eavesM } } : {}),
+    ...(front.sides && (front.ribbon || front.rhythm) ? { sides: { ...front.sides } } : {}), ...(front.roof?.eavesM ? { eaves: { overhangM: front.roof.eavesM, ...(front.roof.eavesFrieze === false ? { frieze: false as const } : {}) } } : {}),
     ...(front.erkerBands && front.erkers.length ? { erkerBands: true as const } : {}), ...(front.loggias ? { loggias: true as const } : {}) };
 }
 
@@ -281,16 +283,19 @@ export function drawLoggias(s: RoofSink, kit: BuurtRoofKit, L: number, W: number
 export function drawEaves(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
   const E = EAVES_LOOK, ov = kit.eaves!.overhangM, wh = ERKER_LOOK.white, q = frontQuad(s, L, e);
   // The frieze: a white band with dark openings and a V strut in each, on a white sill.
+  const fz = friezeOf(kit);
+  if (fz) {
   q(-W / 2, W / 2, 0, E.friezeM, PLATE_O, 'trim', wh);
   q(-W / 2, W / 2, -E.sillM / 2, E.sillM, FRAME_O + 0.02, 'trim', wh);
-  const n = Math.max(1, Math.round(W / E.bayM)), bay = W / n, za = E.sillM + 0.06, zb = E.friezeM - 0.06;
+  }
+  const n = fz ? Math.max(1, Math.round(W / E.bayM)) : 0, bay = W / Math.max(1, n), za = E.sillM + 0.06, zb = E.friezeM - 0.06;
   for (let i = 0; i < n; i++) {
     const c = -W / 2 + (i + 0.5) * bay, h = Math.min(E.openM, bay - 0.12) / 2;
     q(c - h, c + h, za, zb, GLASS_O, 'trim', E.dark);
     const P = (cc: number, z: number): V3 => [e * (L / 2 + FRAME_O), e * cc, z], t = E.strutM / 2;
     for (const sg of [-1, 1] as const) s.quad(P(c - t, za), P(c + t, za), P(c + sg * h + t, zb), P(c + sg * h - t, zb), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [e, 0, 0], wh);
   }
-  const cL = -W / 2 - (kit.joins?.left ? 0 : ov), cR = W / 2 + (kit.joins?.right ? 0 : ov), zb0 = E.friezeM, zt = E.friezeM + E.thickM;
+  const cL = -W / 2 - (kit.joins?.left ? 0 : ov), cR = W / 2 + (kit.joins?.right ? 0 : ov), zb0 = fz, zt = fz + E.thickM;
   const P = (c: number, o: number, z: number): V3 => [e * (L / 2 + o), e * c, z];
   s.quad(P(cL, -E.backM, zb0), P(cR, -E.backM, zb0), P(cR, ov, zb0), P(cL, ov, zb0), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, -1], wh);
   s.quad(P(cL, ov, zb0), P(cR, ov, zb0), P(cR, ov, zt), P(cL, ov, zt), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [e, 0, 0], wh);

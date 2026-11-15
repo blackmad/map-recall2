@@ -27,7 +27,8 @@ export interface BuurtKitFront {
   /** The series roof: an eaves-front pitched roof at this pitch over the 3DBAG rise (roofs from the front: the photo
    *  shows it; 3DBAG gives its height). Absent: the series' stated roof storey as the row path draws it. */
   roof?: { pitchDeg: number; riseM: number; roofHex?: string; /** false: the series shows no dormers (Rooseveltlaan). */ dormers?: false;
-    /** Broad flat eaves over the street front, this overhang (m) (round 4, Rooseveltlaan). */ eavesM?: number };
+    /** Broad flat eaves over the street front, this overhang (m) (round 4, Rooseveltlaan). */ eavesM?: number;
+    /** false: the eaves slab sits on the line with no lattice frieze under it (Apollo: Minervalaan, Quinten Massijsstraat). */ eavesFrieze?: false };
   /** The series' windows are paired casements, one cell with a white mullion (round 3: Maasstraat). */
   sash?: 'paired-transom';
   /** The top storey is a ribbon of attic lights across the front, party wall to party wall (round 3: Maasstraat). */
@@ -115,9 +116,9 @@ export function buurtKitOf(v: unknown): BuurtKitFront | null {
   const erkers = (Array.isArray(k.erkers) ? k.erkers : []).filter((e): e is BuurtErker => !!e && typeof e === 'object'
     && [e.a0, e.a1, e.depthM, e.faceM].every(Number.isFinite) && e.a1 > e.a0 && e.depthM > 0);
   const hex = k.roof && typeof (k.roof as { roofHex?: unknown }).roofHex === 'string' && /^#[0-9a-f]{6}$/i.test((k.roof as { roofHex: string }).roofHex) ? (k.roof as { roofHex: string }).roofHex : null;
-  const rr = k.roof as { dormers?: unknown; eavesM?: unknown } | undefined, eavesM = Number(rr?.eavesM);
+  const rr = k.roof as { dormers?: unknown; eavesM?: unknown; eavesFrieze?: unknown } | undefined, eavesM = Number(rr?.eavesM);
   const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM), ...(hex ? { roofHex: hex } : {}),
-    ...(rr?.dormers === false ? { dormers: false as const } : {}), ...(eavesM > 0.2 && eavesM < 2 ? { eavesM } : {}) } : undefined;
+    ...(rr?.dormers === false ? { dormers: false as const } : {}), ...(eavesM > 0.2 && eavesM < 2 ? { eavesM, ...(rr?.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } : undefined;
   const x = v as { sash?: unknown; ribbon?: unknown; copingHex?: unknown; rhythm?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown } };
   const side = (q: unknown) => q === 'pier' || q === 'pair' ? q : null, sl = side(x.sides?.left), sr = side(x.sides?.right);
   const joins = k.joins && typeof k.joins === 'object' ? { ...(k.joins.left === true ? { left: true } : {}), ...(k.joins.right === true ? { right: true } : {}) } : {};
