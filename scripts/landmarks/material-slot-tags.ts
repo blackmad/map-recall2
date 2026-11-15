@@ -52,6 +52,15 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
   'joods-verzetsmonument': {
     dark: {slot: 'stone', why: 'a stele of polished black stone (builder header, Gemeente Amsterdam panoramas), not painted joinery'},
   },
+  'handelsbank-singel-250': {
+    sandstone: {slot: 'stone', measured: '#a99c86', why: 'warm grey-beige Bentheimer sandstone of the bank fronts, lit (Gemeente Amsterdam panoramas w01-10, w02-104; blind review read #a99c86 lit, #8c8170 in shade); the city look drew it cream'},
+    stone: {slot: 'stone', measured: '#7f7b74', why: 'grey granite plinth, the rustication joints and the festoon panels (w01-10, w03-103)'},
+  },
+  'holland-casino-amsterdam': {
+    ochre: {slot: 'stone', measured: '#8a5a3a', why: 'mid-brown timber of the deck, pergola rafters and lattice screens (w03-257, w07-252; blind review #8a5a3a); the look drew it pale orange'},
+    concrete: {slot: 'stone', measured: '#d6d6d4', why: 'cool light-grey tiles of the set-back storey and the drum, and the white banners (w03-257, w04-245)'},
+    bronze: {slot: 'accent', measured: '#b08a4a', why: 'bronze-gold HOLLAND CASINO letters on the roof edge (w03-257)'},
+  },
   kalvertoren: {
     white: {slot: 'accent', why: 'white stone bands, keystones, portals and gable dressings on the red-brick Singel range (w01-192L)'},
     red: {slot: 'roofTile', why: 'red pantile saddle roofs behind the two Singel gables (tower-singel-even-e), not brick'},

@@ -16,6 +16,7 @@ import {MeshoptDecoder} from 'meshoptimizer';
 import {NodeIO} from '@gltf-transform/core';
 import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
 import {soupFromDocument} from '../audit-glb-quality';
+import {clipToParts, type LngLat as LngLatPoint, type PandPart} from '../../src/canalRecall/landmarks/pandParts';
 import {nativeRingToLngLat, orientedRectRing, outerRings, ringsFootprint, unionFootprint, soupFootprint, unsuppressedUnder, type Footprint, type Ring, type TileBuilding, type LngLat} from '../../src/canalRecall/landmarks/osmUnderModels';
 
 export const ROOT = path.resolve(import.meta.dirname, '../..');
@@ -89,14 +90,19 @@ export function allSpecs(): SignatureModelSpec[] {
   return [...PLACED_MODELS, ...MANUAL_LANDMARKS, ...chunkSpecs].filter(m => !seen.has(m.id) && !!seen.add(m.id));
 }
 
+type LngLatRing = LngLatPoint[];
+/** A split landmark's declared parts (catalogue `pandParts`), else undefined. */
+const partsOf = (spec: SignatureModelSpec): PandPart[] | undefined => (spec as {pandParts?: PandPart[]}).pandParts;
+
 export async function footprintOf(spec: SignatureModelSpec, force = false): Promise<{fp: Footprint | null; source: string; named: Record<string, Footprint>}> {
   const parts: Footprint[] = [], src: string[] = [], named: Record<string, Footprint> = {};
   const native = `${ROOT}/scripts/landmarks/${spec.id}-footprints.json`;
   if (fs.existsSync(native)) {
     const F = readJson(native);
-    if (F.nativeRing && F.anchor) { parts.push(named.native = ringsFootprint([nativeRingToLngLat(F.nativeRing, F.anchor)])); src.push('native'); }
+    // A split landmark (pandParts) stands on its part only; its native ring is the whole pand.
+    if (F.nativeRing && F.anchor) { parts.push(named.native = ringsFootprint(clipToParts([nativeRingToLngLat(F.nativeRing, F.anchor)] as LngLatRing[], partsOf(spec)))); src.push('native'); }
   }
-  const plan = spec.buildingFootprint ? outerRings(spec.buildingFootprint as {type: string; coordinates: unknown}) : [];
+  const plan = spec.buildingFootprint ? clipToParts(outerRings(spec.buildingFootprint as {type: string; coordinates: unknown}) as LngLatRing[], partsOf(spec)) : [];
   if (plan.length) { parts.push(ringsFootprint(plan)); src.push('plan'); }
   if (!plan.length || force) { const g = await glbFootprint(spec); if (g) { parts.push(named.glb = g); src.push('glb'); } }
   const f = spec.footprint;
