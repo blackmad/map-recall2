@@ -339,7 +339,7 @@ export function solveRow(input: RowInput): RowRecord {
       const front: RowFront = {
         id, pandId: m.pandId, label, numbers: n === 1 ? m.numbers : nums[i] !== undefined ? [nums[i]] : m.numbers,
         ...(n > 1 ? { sub: { index: i, of: n, a0: r2(cut[i]), a1: r2(cut[i + 1]) } } : {}),
-        widthM: m.widthM === null ? null : r2(m.widthM * (cut[i + 1] - cut[i])), seriesId: '', ground: face?.ground ?? groundOfRead(m.read && !held ? m.read : null),
+        widthM: m.widthM === null ? null : r2(m.widthM * (cut[i + 1] - cut[i])), seriesId: '', ground: face?.ground ?? groundOfRead(m.read && !held ? m.read : null, !!input.canalWindows),
         overrides: {}, groundOffsetM: m.groundOffsetM ?? null, topM: null, ...(held ? { readHeld: held } : {}),
         ...(m.readFront !== undefined && m.readFront !== i ? { readElsewhere: `the read describes front ${m.readFront + 1} of ${n} only` } : {}),
       };
@@ -351,7 +351,7 @@ export function solveRow(input: RowInput): RowRecord {
       fronts.push(front);
       evs.push({ front, face, read: m.readFront === undefined || m.readFront === i ? readVals : undefined, readRef: m.readRef, member: m, frontsOfPand: n });
     });
-    if (m.read && !held) for (const r of notDrawnOfRead(m.read)) readNotDrawn.push({ front: m.pandId, ...r });
+    if (m.read && !held) for (const r of notDrawnOfRead(m.read, !!input.canalWindows)) readNotDrawn.push({ front: m.pandId, ...r });
     for (const f of m.face ?? []) {
       if (f.sampledHex) readNotDrawn.push({ front: m.pandId, field: 'measuredPalette.brick', value: f.sampledHex, reason: 'a sampled hex is never drawn: the wall is the series judged family' });
       for (const l of f.limits ?? []) readNotDrawn.push({ front: m.pandId, field: 'face schemaLimit', value: l, reason: 'kit cannot say it (face intent)' });
@@ -645,22 +645,25 @@ export function oneShopfront(a: DescriberAnswer): string | null {
   return g?.what ?? null;
 }
 
-function groundOfRead(a: DescriberAnswer | null): RowGround {
+/** Canal belt rows: a read door surround over a stoop draws lane R's stone doorcase (the belt's sandstone frame; its top
+ *  and fanlight are not read, so the kit's plain case). */
+export const beltDoorcase = (a: DescriberAnswer, belt: boolean): boolean => belt && a.doorSurround === true && (a.basement === 'stoop' || a.basement === 'stoop-and-windows');
+function groundOfRead(a: DescriberAnswer | null, belt = false): RowGround {
   if (!a) return { use: 'other' };
   const use: RowGround['use'] = a.ground === 'shopfront' ? 'shop' : a.ground === 'dwelling' ? 'dwelling' : a.ground === 'warehouse' ? 'warehouse' : 'other';
   const doorSide = a.doorBay === 'left' || a.doorBay === 'right' || a.doorBay === 'several' || a.doorBay === 'none' ? a.doorBay : a.doorBay === 'centre' || a.doorBay === 'off-centre' ? 'centre' as const : undefined;
   const basement = a.basement === 'stoop-and-windows' ? 'stoop-and-windows' as const : a.basement === 'windows' ? 'windows' as const : a.basement === 'stoop' ? 'stoop' as const
     : a.basement === 'none' ? 'none' as const : a.souterrain ? 'souterrain' as const : undefined;
-  return { use, ...(doorSide ? { doorSide } : {}), ...(Number.isInteger(a.doorIndex) ? { doorIndex: a.doorIndex as number } : {}), ...(Number.isInteger(a.groundBays) ? { groundBays: a.groundBays } : {}), ...(basement ? { basement } : {}) };
+  return { use, ...(doorSide ? { doorSide } : {}), ...(Number.isInteger(a.doorIndex) ? { doorIndex: a.doorIndex as number } : {}), ...(Number.isInteger(a.groundBays) ? { groundBays: a.groundBays } : {}), ...(basement ? { basement } : {}), ...(beltDoorcase(a, belt) ? { doorcase: { material: 'stone' as const } } : {}) };
 }
 /** Fields a reading states that the row design has no place for (programme rule 3). */
-function notDrawnOfRead(a: DescriberAnswer): Array<Omit<ReadNotDrawn, 'front'>> {
+function notDrawnOfRead(a: DescriberAnswer, belt = false): Array<Omit<ReadNotDrawn, 'front'>> {
   const out: Array<Omit<ReadNotDrawn, 'front'>> = [];
   if (Array.isArray(a.balconies) && a.balconies.length) out.push({ field: 'balconies', value: a.balconies, reason: 'not on the row allow-list: a balcony needs a reviewed statement (ROW_FRONT_EXTRAS)' });
   if (Array.isArray(a.bayWindow) && a.bayWindow.length) out.push({ field: 'bayWindow', value: a.bayWindow, reason: 'not on the row allow-list (the oriel dice drew the Kinkerstraat centre strip)' });
   if (a.bands && a.bands !== NV && a.bands !== 'none' && !BAND_EXTRAS[a.bands]) out.push({ field: 'bands', value: a.bands, reason: 'the row design has no band field; the head dressing carries the white course' });
   if (a.cornice === 'frieze' || a.cornice === 'attic-frieze') out.push({ field: 'cornice', value: a.cornice, reason: 'drawn as the series cornice; the frieze panels are not drawn' });
-  if (a.doorSurround === true) out.push({ field: 'doorSurround', value: true, reason: 'door-surround is on the allow-list; its shape is not described' });
+  if (a.doorSurround === true && !beltDoorcase(a, belt)) out.push({ field: 'doorSurround', value: true, reason: 'door-surround is on the allow-list; its shape is not described' });
   for (const g of a.gaps ?? []) {
     const drawnBy = GAP_EXTRAS.find(x => x.test.test(g.what));
     out.push({ field: `gap:${g.component}`, value: g.what, reason: drawnBy ? `drawn as ${drawnBy.id} (its ornament detail is not)` : 'kit gap (the kit cannot say it)' });

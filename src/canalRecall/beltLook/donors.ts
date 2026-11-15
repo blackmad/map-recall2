@@ -81,7 +81,9 @@ export function hash32(s: string): number {
 
 /** The pand's donor: one of the `DONOR_K` nearest (ties broken by pand id), picked by the pand id's hash. */
 export function donorFor(t: BeltTarget, donors: readonly BeltDonor[]): { donor: BeltDonor; distance: number; rank: number; of: number } | null {
-  const near = donors.filter(d => d.pandId !== t.pandId).map(d => ({ d, s: donorDistance(t, d) }))
+  // A flat-topped pand never takes a gabled donor (while any other is left): the gable would stand on no roof.
+  const flatOk = gableable(t) ? donors : donors.filter(d => !GABLED_CROWNS.has(String(d.answer.crown)));
+  const near = (flatOk.length ? flatOk : donors).filter(d => d.pandId !== t.pandId).map(d => ({ d, s: donorDistance(t, d) }))
     .sort((a, b) => a.s - b.s || (a.d.pandId < b.d.pandId ? -1 : 1)).slice(0, DONOR_K);
   if (!near.length) return null;
   const rank = hash32(t.pandId) % near.length;
