@@ -8,10 +8,14 @@
  *   node --import tsx scripts/house-frames/node-frame.ts --aerial <lng>,<lat>,<zoom>,<pitch>,<bearing>[,<w>,<h>] --out <dir>
  *        [--name <name>] [--dpr 1]   (an ingame-capture.ts view: jumpTo({center, zoom, pitch, bearing}), 1280 x 800)
  *
+ *   node --import tsx scripts/house-frames/node-frame.ts --pands <id,id…> [house:frames selection options] --out <dir>
+ *        (no browser at all: house:frames' Node prepare step picks the panorama, the likeness pose and the photo cut)
+ *
  * A frame dir is a house:frames output folder (<key>/pose.json, likeness-photo.jpg). Writes <out>/<key>/
  * likeness.node.png, likeness.node.json (timings, counts) and pair.node.jpg. --out defaults to the frame dir itself.
  * The first frame near a place builds its ground cells (cached in .cache/node-frame/ground); later ones read them.
  */
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -25,7 +29,29 @@ const { frameFor, fpsFor } = await import('./pose.ts');
 const args = process.argv.slice(2);
 const flag = (n: string) => args.includes(`--${n}`);
 const opt = (n: string, d: string) => { const i = args.indexOf(`--${n}`); return i >= 0 ? args[i + 1] : d; };
-const inputs = args.filter((a, i) => !a.startsWith('--') && !(i > 0 && /^--(out|dpr|frame|aerial|name|probe)$/.test(args[i - 1])));
+const OWN_VALUE = /^--(out|dpr|frame|aerial|name|probe)$/, OWN_FLAG = /^--(no-shadows|no-models|no-ground|no-shells)$/;
+let inputs = args.filter((a, i) => !a.startsWith('--') && !(i > 0 && OWN_VALUE.test(args[i - 1])));
+// Poses without a browser: any house:frames selection (--pands, --face, --buurt, --list, with its own options such as
+// --max-dist or --pano-size) runs house:frames' Node prepare step (`--likeness --prep-only`: pano pick, the likeness
+// pose, the photo cut), then this renders every prepared pose. Out: <--out>/<key>/.
+if (['pands', 'face', 'buurt', 'list'].some(n => args.includes(`--${n}`))) {
+  const outDir = path.resolve(opt('out', 'artifacts/node-frames/run'));
+  const pass = args.filter((a, i) => !OWN_VALUE.test(a) && !OWN_FLAG.test(a) && !(i > 0 && OWN_VALUE.test(args[i - 1])));
+  const prep = spawnSync(process.execPath, ['--import', 'tsx', 'scripts/house-frames/frames.ts', ...(pass.includes('--likeness') || pass.includes('--rule10') ? [] : ['--likeness']), '--prep-only', ...pass, '--out', outDir], { stdio: 'inherit' });
+  if (prep.status !== 0) { console.error(`house:frames prepare failed (${prep.status})`); process.exit(prep.status ?? 1); }
+  inputs = [outDir];
+}
+// A house:frames out dir with prepared.json (a --prep-only run, or a browser run) stands for its prepared poses.
+type PoseInput = { dir: string; pj: Record<string, any> };
+const poseInputs: PoseInput[] = inputs.flatMap(input => {
+  const prepFile = path.join(input, 'prepared.json');
+  if (!input.endsWith('.json') && !fs.existsSync(path.join(input, 'pose.json')) && fs.existsSync(prepFile)) {
+    const { prepared } = JSON.parse(fs.readFileSync(prepFile, 'utf8')) as { prepared: Array<Record<string, any>> };
+    return prepared.map(e => ({ dir: path.join(input, e.key), pj: { key: e.key, pandId: e.pandId, pose: e.pose, ...(e.likeness ? { rule10: { likeness: e.likeness } } : {}) } }));
+  }
+  const poseFile = input.endsWith('.json') ? input : path.join(input, 'pose.json');
+  return [{ dir: path.dirname(poseFile), pj: JSON.parse(fs.readFileSync(poseFile, 'utf8')) }];
+});
 if (args.includes('--aerial')) {
   const { cameraFrame } = await import('../../src/canalRecall/ownMap/mapCamera.ts');
   const { isAerialView } = await import('../../src/canalRecall/rendererShared/aerialView.ts');
@@ -45,12 +71,10 @@ if (args.includes('--aerial')) {
   console.log(`${name}: ${Math.round(performance.now() - t0)} ms`, JSON.stringify(r.timings), JSON.stringify(r.counts));
   process.exit(0);
 }
-if (!inputs.length) { console.error('usage: node-frame.ts <frame dir | pose.json>... [--out dir] [--dpr 2]'); process.exit(2); }
+if (!poseInputs.length) { console.error('usage: node-frame.ts <frame dir | pose.json | prepared dir>... | --pands <ids> [house:frames options] [--out dir] [--dpr 2]'); process.exit(2); }
 const dpr = Number(opt('dpr', '2')), outRoot = opt('out', '');
 
-for (const input of inputs) {
-  const poseFile = input.endsWith('.json') ? input : path.join(input, 'pose.json');
-  const dir = path.dirname(poseFile), pj = JSON.parse(fs.readFileSync(poseFile, 'utf8'));
+for (const { dir, pj } of poseInputs) {
   const key = pj.key ?? path.basename(dir);
   const lp = opt('frame', 'likeness') === 'game' ? undefined : pj.rule10?.likeness?.lp;
   const pose = lp?.pose ?? pj.pose;
