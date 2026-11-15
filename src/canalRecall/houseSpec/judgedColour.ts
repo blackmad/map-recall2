@@ -94,6 +94,9 @@ export type JudgedInput = {
   notes?: string | null;
   year?: number | null;
   sample?: string | null;
+  /** The sample is a measured wall colour from the reader's own cut (the canal belt rows, which have no row of face
+   *  samples to stand against): a brick front takes the family nearest its sample's lightness, not the era default. */
+  absolute?: boolean;
 };
 export type Judgement = {
   pandId: string;
@@ -185,7 +188,9 @@ export function judgeFront(input: JudgedInput, rowMedianL: number | null = null)
     const black = /black/i.test(dark) || finish === 'painted-brick';
     return out(black ? 'painted-dark' : 'purple-brown-brick', 'words', `reader calls the front dark: "${dark}"`, dark);
   }
-  const word = describerColourWord({ readable: true, notes: input.notes });
+  // With a measured cut sample, a colour word in the notes is not taken: belt readers' notes name neighbours' colours
+  // (Herengracht 58, painted dark: "the right neighbour is ... in unpainted red brick").
+  const word = input.absolute && s ? null : describerColourWord({ readable: true, notes: input.notes });
   const wf = word ? familyOfWord(word, finish) : null;
   // a word that contradicts the reader's own pale flag (a "white" front the reader called not pale) is not taken, except
   // on brick, whose pale flag is about the brick and whose words name its colour
@@ -214,10 +219,22 @@ export function judgeFront(input: JudgedInput, rowMedianL: number | null = null)
   }
   if (finish === 'brick') {
     if (pale) return out('buff-brick', 'finish', 'brick the reader calls pale: buff / yellow brick');
+    if (input.absolute && s) { const f = brickFromSample(s); return out(f, 'sample', `brick, the cut's measured wall L ${s.L.toFixed(2)} C ${s.C.toFixed(3)} h ${Math.round(s.h)}: ${JUDGED_PALETTE[f].label}`); }
     const f = eraBrick(input.year, s, rel);
     return out(f, rel !== undefined && f !== 'red-brown-brick' && f !== 'brown-brick' ? 'sample' : 'era', eraWhy(f, input.year, rel));
   }
   return out(eraBrick(input.year, s, rel), 'era', `finish ${finish}: era brick`);
+}
+
+/**
+ * A brick family from a measured cut sample alone (overcast winter cuts: chroma is low, so lightness leads). Herengracht's
+ * 17th-century brick reads L 0.36-0.44: dark purple-brown, not the era default's red-brown (integrator, 2026-11-15).
+ */
+export function brickFromSample(s: Lch): JudgedFamily {
+  if (s.L >= 0.56 && s.C >= 0.045 && s.h >= 60) return 'buff-brick';
+  if (s.L < 0.44) return 'purple-brown-brick';
+  if (s.C >= 0.05 && s.h < 50) return 'red-brown-brick';
+  return 'brown-brick';
 }
 
 /** The brick family from era and the sample's place in its row. */

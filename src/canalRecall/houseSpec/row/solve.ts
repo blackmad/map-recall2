@@ -85,6 +85,8 @@ export interface MemberInput {
   readFront?: number;
   /** The read is a re-read from another capture year, the first read having been held (scaffold, netting). */
   reread?: { panoId: string; captured: string; ref: string; firstRead: { ref: string; panoId?: string; captured?: string; held: string } };
+  /** The measured wall colour of the reader's cut (canal belt rows: cuts.json w1 hex): judges a brick read's family. */
+  wallSample?: string;
   /** The pand belongs to another street's face chunk: the row draws only this street's wall (RowMember.wallOnly). */
   wallOnly?: RowWallOnly;
 }
@@ -104,7 +106,7 @@ export interface RowInput {
 /** `fronts`: front ids (`<pandId>` or `<pandId>#m1` for one module of a two-front pand). */
 /** `add`: the value is a list merged into the field's current list (an extra the reviewer adds), not a replacement. */
 /** `ground.colour` sets `front.ground.colour` (a RowGroundColour) on each listed front; it outranks a read and the face's shopPaint. */
-export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
+export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour' | 'series'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
 
 // --- compatibility of classes (a face value and a read that name the same thing) ------------------------------------------
 
@@ -217,7 +219,7 @@ export function gapExtras(a: DescriberAnswer): Array<{ id: string; what: string 
 }
 export interface ReadValues { [k: string]: unknown }
 /** The class and metre values one reading states, in the row vocabulary (undefined = not stated). */
-export function readValues(a: DescriberAnswer, year: number | null): Partial<Record<RowDesignKey, unknown>> & { dormers?: ReturnType<typeof readDormers>; roofKind?: RowRoofStoreyKind; bands?: string[] } {
+export function readValues(a: DescriberAnswer, year: number | null, sample?: string): Partial<Record<RowDesignKey, unknown>> & { dormers?: ReturnType<typeof readDormers>; roofKind?: RowRoofStoreyKind; bands?: string[] } {
   const out: ReturnType<typeof readValues> = {};
   if (a.crown && a.crown !== NV) out.crown = CROWN_OF[a.crown];
   if (a.cornice && a.cornice !== NV) out.cornice = a.cornice;
@@ -228,7 +230,7 @@ export function readValues(a: DescriberAnswer, year: number | null): Partial<Rec
   if (typeof a.whiteFrames === 'boolean') out.whiteFrames = a.whiteFrames;
   if (a.sills && a.sills !== NV) out.sills = a.sills !== 'none';
   if (a.finish && a.finish !== NV) {
-    const j = judgeFront({ pandId: a.pandId, readable: a.readable, finish: a.finish, pale: (a as { pale?: boolean }).pale ?? null, notes: a.notes ?? null, year });
+    const j = judgeFront({ pandId: a.pandId, readable: a.readable, finish: a.finish, pale: (a as { pale?: boolean }).pale ?? null, notes: a.notes ?? null, year, ...(sample ? { sample, absolute: true } : {}) });
     out.wall = { material: a.finish as RowWallMaterial, family: j.family, hex: '' } satisfies RowWall;
   }
   const roof = a.storeyParts?.roof;
@@ -292,7 +294,7 @@ export function solveRow(input: RowInput): RowRecord {
     const ids = n === 1 ? [m.pandId] : Array.from({ length: n }, (_, i) => `${m.pandId}#m${i}`);
     const nums = [...m.numbers].sort((a, b) => descending ? b - a : a - b);
     members.push({ pandId: m.pandId, label: m.label, numbers: m.numbers, built: m.built, widthM: m.widthM, fronts: ids, ...(m.wallOnly ? { wallOnly: m.wallOnly } : {}) });
-    const readVals = m.read && !held ? readValues(m.read, m.built) : undefined;
+    const readVals = m.read && !held ? readValues(m.read, m.built, m.wallSample) : undefined;
     if (m.reread) flags.push({ kind: 'reread', fronts: ids, detail: `re-read from the ${m.reread.captured} capture ${m.reread.panoId} (${m.reread.ref}); the first read (${m.reread.firstRead.captured ?? '?'} ${m.reread.firstRead.ref}) was held: ${m.reread.firstRead.held}${m.readFront !== undefined ? `; it describes front ${m.readFront + 1} of ${n} only` : ''}` });
     if (held) {
       flags.push({ kind: 'scaffold', fronts: ids, detail: `reading not used: ${held}; queued for a re-read from another capture year (scripts/house-specs/rows/reread-queue.ts)` });
@@ -329,6 +331,7 @@ export function solveRow(input: RowInput): RowRecord {
   dedupeNotDrawn(readNotDrawn);
 
   // Series partition.
+  const sampled = input.members.some(m => m.wallSample);
   const sig = (e: Ev): string | null => {
     if (e.face) {
       const f = e.face;
@@ -339,7 +342,11 @@ export function solveRow(input: RowInput): RowRecord {
     const r = e.read;
     const cornice = r.cornice === undefined ? null : (COMPAT.cornice.find(g => g.includes(String(r.cornice)))?.[0] ?? r.cornice);
     const shapes = headsList(r.heads as RowHeads | RowHeads[] | undefined).map(h => h.shape).sort().join('+') || null;
-    return JSON.stringify([r.crown ?? null, cornice, r.roofKind ?? null, r.storeys ?? null, e.frontsOfPand > 1 ? Math.round((r.bays as number) / e.frontsOfPand) : r.bays ?? null, shapes]);
+    const key = [r.crown ?? null, cornice, r.roofKind ?? null, r.storeys ?? null, e.frontsOfPand > 1 ? Math.round((r.bays as number) / e.frontsOfPand) : r.bays ?? null, shapes];
+    // Rows of measured cuts (the canal belt): a front never shares a series with another wall family, so the series wall
+    // never repaints a front (Herengracht 56 brick beside 58 painted dark; 26 buff beside 32 purple-brown).
+    if (sampled) key.push(String((r.wall as RowWall | undefined)?.family ?? null));
+    return JSON.stringify(key);
   };
   // A face front that states the type but no head joins its neighbour (rule 2: unstated takes the series value) - the
   // nearest one that states the same type, dormers and crown: only the head is unstated. A different type or crown is a
@@ -358,6 +365,9 @@ export function solveRow(input: RowInput): RowRecord {
     return j !== undefined ? keys[j]! : sig(evs[i]) ?? 'none';
   });
   keys.splice(0, keys.length, ...joined);
+  // A reviewed `series` statement: the listed fronts are one design of their own (Kinkerstraat 138-134, the left building
+  // of pand 233461: a lower cornice and plainer windows than the gabled right building it shares a face type with).
+  for (const st of input.reviewed ?? []) if (st.field === 'series') evs.forEach((e, i) => { if (st.fronts.includes(e.front.id)) keys[i] = `${keys[i]}|series:${String(st.value)}`; });
   const seriesKeys: string[] = [];
   for (const k of keys) if (!seriesKeys.includes(k!)) seriesKeys.push(k!);
   const series: RowSeries[] = seriesKeys.map((k, si) => {
@@ -452,6 +462,7 @@ export function solveRow(input: RowInput): RowRecord {
       }
       continue;
     }
+    if (st.field === 'series') continue;
     const field = st.field;
     const merged = (cur: unknown) => ({ value: st.add && Array.isArray(cur) ? [...cur, ...(st.value as unknown[]).filter(x => !cur.includes(x))] : st.value, source: 'reviewed' as const, ref });
     for (const s of series) {
@@ -583,8 +594,12 @@ function solveSeries(id: string, ev: Ev[], input: RowInput, flags: RowFlag[], al
   // Wall: one family per series (face palette name, else the reads' judged families); the tone is seeded by row and family,
   // so series of one family in a row (and the two fronts of a module pand, which carry one palette) share one tone.
   const faceWall = ev.filter(e => e.face?.wallFamily).map(e => ({ material: e.face!.wallMaterial ?? 'brick', family: e.face!.wallFamily!, hex: '' } as RowWall));
+  // A series with no wall evidence in a row of measured cuts (the canal belt) takes its neighbours' family: the nearest
+  // read walls either side (wall colour by judgement, 2026-11-14), never the era default's red-brown.
+  const near = input.members.some(m => m.wallSample) ? nearestWall(all, all.indexOf(ev[0])) : null;
   const wall = classField('wall', faceWall, R('wall') as RowWall[], faceRef, readRef, flags, ids,
-    { material: 'brick', family: eraFamily(ev[0]?.member.built ?? null), hex: '' } as RowWall, 'period default: era brick');
+    near ? { material: 'brick', family: near.family, hex: '' } as RowWall : { material: 'brick', family: eraFamily(ev[0]?.member.built ?? null), hex: '' } as RowWall,
+    near ? `neighbours: ${near.family} from ${near.from.join(', ')}` : 'period default: era brick');
   if (wall) { wall.value = { ...wall.value, hex: variedTone(wall.value.family, `${input.id}:${wall.value.family}`) }; delete wall.votes; wall.votes = votes((R('wall') as RowWall[]).map(w => ({ ...w, hex: '' }))).map(x => ({ value: x.value, n: x.n })); if (!wall.votes.length) delete wall.votes; }
   set('wall', wall);
   // Roof storey: kind, dormers per front, dormer kind, hoist.
@@ -630,3 +645,14 @@ function solveSeries(id: string, ev: Ev[], input: RowInput, flags: RowFlag[], al
 }
 function eraFamily(year: number | null): JudgedFamily { return year !== null && year < 1860 ? 'red-brown-brick' : 'brown-brick'; }
 export const familyTone = (f: JudgedFamily) => JUDGED_PALETTE[f];
+
+/** The wall family of the nearest read fronts either side of index `i` (one each side; a tie goes to the left one). */
+function nearestWall(evs: readonly Ev[], i: number): { family: JudgedFamily; from: string[] } | null {
+  const walled = evs.map((e, j) => ({ e, j, w: e.read?.wall as RowWall | undefined })).filter(x => x.w && x.j !== i);
+  const left = walled.filter(x => x.j < i).pop(), right = walled.find(x => x.j > i);
+  const pick = [left, right].filter((x): x is NonNullable<typeof x> => !!x);
+  if (!pick.length) return null;
+  const fams = pick.map(x => x.w!.family as JudgedFamily);
+  const family = fams.length === 2 && fams[0] !== fams[1] ? (i - left!.j <= right!.j - i ? fams[0] : fams[1]) : fams[0];
+  return { family, from: pick.map(x => x.e.member.pandId) };
+}

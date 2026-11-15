@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012179753",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 6,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "heads": [
+  "not-visible",
+  "flat",
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "none",
+ "doorBay": "not-visible",
+ "doorIndex": null,
+ "ground": "not-visible",
+ "basement": "not-visible",
+ "crown": "flat",
+ "cornice": "simple",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "storeyParts.full",
+  "cornice",
+  "finish"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "an early-20th-century grid front: the wall is reduced to narrow dark piers and spandrels between wide windows"
+  }
+ ],
+ "notes": "Construction works, a portable toilet and a crane hide the ground storey; branches cross the top two storeys.",
+ "storeys": 6,
+ "wallFamily": "not-visible"
+}

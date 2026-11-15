@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "pandId": "0363100012175617",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": true
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "both",
+ "windowSurround": "full-frame",
+ "sills": "stone",
+ "doorBay": "right",
+ "doorIndex": 1,
+ "groundBays": 2,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "souterrain": true,
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": true,
+ "sameAs": "both",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": true,
+ "low": [
+  "storeyParts.roof",
+  "cornice",
+  "doorSurround",
+  "basement"
+ ],
+ "gaps": [
+  {
+   "component": "relief",
+   "what": "wreath ornaments in the frieze above the top-storey windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the wider front has a central triangular pediment with a cartouche over this part"
+  }
+ ],
+ "notes": "Two bays cut from one wide neo-renaissance front; a tree covers much of the cut and cars hide the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}
