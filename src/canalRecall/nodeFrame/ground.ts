@@ -62,7 +62,9 @@ export function groundCacheKey(root: string): string {
       else if (/\.(ts|js)$/.test(e.name) && !/\.test\.ts$/.test(e.name)) h.update(fs.readFileSync(p));
     }
   };
-  walk(path.join(root, 'src/canalRecall/ownGround'));
+  // The whole src/canalRecall tree: the builder imports outside ownGround/ (elevation/bridgeDeck, look/palette,
+  // threeBuildingFeatures, streetFronts, routing), and a stale cell drew last week's kerbs (lane node-world-frames).
+  walk(path.join(root, 'src/canalRecall'));
   for (const d of ['ground-height-v1', 'own-ground-osm-v1', 'elevation-v1', 'parks-v1', 'roads-v1', 'courtyards-v1', 'open-ground-v1', 'open-ground-v2', 'road-marks-v1', 'rail-v1']) {
     const dir = path.join(root, EXTRACT, d);
     if (!fs.existsSync(dir)) continue;
@@ -114,6 +116,10 @@ export async function loadGround(root: string, cacheDir: string, centre: [number
     const file = path.join(dir, `${w.key}-lod${w.lod}-${hash}.v8.gz`);
     let cell: BuiltCell | null = null;
     if (fs.existsSync(file)) { try { cell = v8.deserialize(gunzipSync(fs.readFileSync(file))) as BuiltCell; cached++; } catch { cell = null; } }
+    // A cached cell skips cellInput, which prepares the cell in the store: its measured decks (bridges) placed on the
+    // riding surface, as the game's main-thread store has them. Without this the rider, the furniture and every
+    // surface read stood on the bare relief under a bridge (Rijnstraat 080338, 165078: 0.8 m low).
+    if (cell) await store.prepareCell(w.key);
     if (!cell) {
       const tb = performance.now();
       const input = await store.cellInput(w.key, w.lod, 'full');
