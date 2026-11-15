@@ -61,7 +61,8 @@ export function rowFrontRecords(row: RowRecord): RowFrontRecord[] {
 }
 
 const prov = (fl: RowField<unknown>, at: string): Prov => ({ ...ROW_PROV[fl.source], ref: `house-rows: ${fl.ref}`, at });
-const WINDOWS_DRAWN: Record<string, string> = { 'tall-upper': 't-window' };
+// `cross` (the row's kruiskozijn, Herengracht 27) is HouseSpec's cross-transom: a mullion and a transom high in the light.
+const WINDOWS_DRAWN: Record<string, string> = { 'tall-upper': 't-window', cross: 'cross-transom' };
 
 /** The pand's HouseSpec from its row. `base` is the face spec (specFromFace) or undefined. */
 export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefined, at: string): HouseSpec | null {
@@ -132,6 +133,19 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
       if ((BASEMENTS as readonly string[]).includes(bm)) put(P + 'basement', bm, g);
       if (bm !== 'windows') put(P + 'souterrain', true, g);
     }
+    // A stated basement front (RowGround.basementFront, Herengracht 25-29): the stone over the whole basement and its first
+    // doorway as the souterrain's street door; more doorways, a round/segmental head and a named plinth colour are limits.
+    const limit = (component: string, what: string) => { if (!(spec.schemaLimits ?? []).some(l => (l as { what?: string }).what === what)) spec.schemaLimits = [...(spec.schemaLimits ?? []), { component, what }]; };
+    const bf = f.ground.basementFront;
+    if (bf && bm && bm !== 'none') {
+      const g: RowField<unknown> = { value: bf, source: 'reviewed', ref: `${f.pandId}: the basement front as stated (row ground.basementFront)` };
+      put(P + 'plinth', 'full', g);
+      if (bf.doors?.length) put(P + 'basementDoor', bf.doors[0], g);
+      limit('basementDoor', `${f.id}: the basement's doorways ${JSON.stringify(bf.doors ?? [])} under ${bf.head ?? 'round'} heads in a ${bf.plinth ?? 'grey'} plinth (row basementFront); HouseSpec draws one square basement door in the stone colour`);
+    }
+    // Arched ground openings by bay (RowGround.archedOpenings, Herengracht 27): HouseSpec heads are per storey, not per bay.
+    const ao = f.ground.archedOpenings;
+    if (ao?.index.length) limit('windowHead', `${f.id}: ground openings ${JSON.stringify(ao.index)} of ${f.ground.groundBays ?? '?'} have ${ao.shape ?? 'segmental'} arched heads (row archedOpenings); HouseSpec arches whole storeys only`);
     const rs = d.roofStorey.value;
     put(P + 'roofStorey', rs.kind, d.roofStorey);
     if (rs.dormersPerFront > 0) {

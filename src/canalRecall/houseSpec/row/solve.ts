@@ -120,7 +120,7 @@ export interface RowInput {
  *  corner shot) states nothing, so its front draws as unread. */
 /** `split` (value: `{ n, shares? }`) splits a listed pand into n fronts read from its cut (Herengracht 43-45: two point
  *  gables in one pand), `<pandId>#m0..`; shares are the fronts' widths in street order (absent: equal). */
-export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour' | 'ground.stoop' | 'ground.door' | 'series' | 'unread' | 'split'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
+export interface ReviewedStatement { fronts: string[]; field: RowDesignKey | 'ground.colour' | 'ground.stoop' | 'ground.door' | 'ground.openings' | 'series' | 'unread' | 'split'; value: unknown; ref: string; at: string; note?: string; add?: boolean }
 
 // --- compatibility of classes (a face value and a read that name the same thing) ------------------------------------------
 
@@ -523,6 +523,15 @@ export function solveRow(input: RowInput): RowRecord {
       for (const f of fronts.filter(x => st.fronts.includes(x.id))) {
         if (v.doorSide && f.ground.doorSide && f.ground.doorSide !== v.doorSide) flags.push({ kind: 'reviewed', field: 'ground.doorSide', fronts: [f.id], detail: `reviewed ${v.doorSide} overrides the read ${f.ground.doorSide}` });
         f.ground = { ...f.ground, ...(v.stoopForm ? { stoopForm: v.stoopForm } : {}), ...(v.stoopRailing ? { stoopRailing: true } : {}), ...(v.doorcase ? { doorcase: { ...v.doorcase } } : {}), ...(v.doorSide ? { doorSide: v.doorSide } : {}) };
+      }
+      continue;
+    }
+    // The ground storey's openings as read (Herengracht 25-29, lane R 4ab58606a): their count, the arched ones, the basement front.
+    if (st.field === 'ground.openings') {
+      const v = st.value as Pick<RowGround, 'groundBays' | 'archedOpenings' | 'basementFront'>;
+      for (const f of fronts.filter(x => st.fronts.includes(x.id))) {
+        if (v.groundBays && f.ground.groundBays && f.ground.groundBays !== v.groundBays) flags.push({ kind: 'reviewed', field: 'ground.groundBays', fronts: [f.id], detail: `reviewed ${v.groundBays} overrides the read ${f.ground.groundBays}` });
+        f.ground = { ...f.ground, ...(Number.isInteger(v.groundBays) ? { groundBays: v.groundBays } : {}), ...(v.archedOpenings ? { archedOpenings: { ...v.archedOpenings, index: [...v.archedOpenings.index] } } : {}), ...(v.basementFront ? { basementFront: { ...v.basementFront, ...(v.basementFront.doors ? { doors: [...v.basementFront.doors] } : {}) } } : {}) };
       }
       continue;
     }

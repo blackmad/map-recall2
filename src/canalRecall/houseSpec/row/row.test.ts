@@ -433,3 +433,22 @@ test('a tablet head (Herengracht 175404) emits a HouseSpec keystone head, the re
     assert.deepEqual(specProblems(spec).filter(p => /windowHead|schemaLimits/.test(p)), []);
   }
 });
+
+test("lane R's ground openings (Herengracht 25-29, 27): a reviewed ground.openings states the bays, the arched one and the basement front; cross windows emit cross-transom", () => {
+  const l = loadRow(defs['kinkerstraat-86-110'], '2026-11-15');
+  const id = '0363100012160809';
+  const input = { ...l.input, reviewed: [...(l.input.reviewed ?? []), { fronts: [id], field: 'ground.openings' as const, value: { groundBays: 2, archedOpenings: { index: [1] }, basementFront: { plinth: 'grey', doors: [0] } }, ref: 'test', at: '2026-11-15' }] };
+  const row = solveRow(input);
+  const f = row.fronts.find(x => x.id === id)!;
+  assert.deepEqual([f.ground.groundBays, f.ground.archedOpenings, f.ground.basementFront], [2, { index: [1] }, { plinth: 'grey', doors: [0] }]);
+  // Other fronts untouched.
+  for (const o of row.fronts.filter(x => x.id !== id)) assert.ok(!o.ground.archedOpenings && !o.ground.basementFront, o.id);
+  f.ground.basement = 'windows';
+  f.overrides.windows = { value: 'cross', source: 'reviewed', ref: 'test' } as never;
+  const spec = rowSpec(row, id, undefined, '2026-11-15')!;
+  const fr = spec.design.fronts?.[0] as Record<string, unknown>;
+  assert.deepEqual([fr.windows, fr.plinth, fr.basementDoor], ['cross-transom', 'full', 0]);
+  const limits = (spec.schemaLimits ?? []).map(x => (x as { what: string }).what);
+  assert.ok(limits.some(w => /archedOpenings/.test(w)) && limits.some(w => /basementFront/.test(w)), limits.join('\n'));
+  assert.deepEqual(specProblems(spec).filter(p => /windows|plinth|basementDoor|schemaLimits/.test(p)), []);
+});
