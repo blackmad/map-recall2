@@ -26,3 +26,19 @@ test('the XS4ALL sign and the kpn wordmark (kpn-teleport) have every glyph they 
   for (const ch of 'XS4ALLkpn') assert.ok(GL[ch], `missing glyph ${ch}`);
   assert.equal(GL.p.length, 9);
 });
+
+test('alongRingPlacements centres a run on the nearest vertex and walks the edges left to right from outside', async () => {
+  const {alongRingPlacements, ringFrame} = await import('./nearbar-kit');
+  // a 10 x 10 square, native x east, z south
+  const ring = [[0, 0], [10, 0], [10, 10], [0, 10]];
+  const {ordered, at} = alongRingPlacements(ring, [10, 0], [2, 2, 2]);
+  assert.equal(at.length, 3);
+  // the middle item sits on the corner nearest (10, 0): t = 0 on the edge leaving it, or the end of the edge before it
+  const mid = ringFrame(ordered, at[1].edge).f;
+  const p = [mid.origin[0] + mid.tangent[0] * at[1].t, mid.origin[1] + mid.tangent[1] * at[1].t];
+  assert.ok(Math.hypot(p[0] - 10, p[1] - 0) < 1e-9, `middle item at ${p}`);
+  // items run 2 m apart along the perimeter
+  const pos = at.map(a => { const f = ringFrame(ordered, a.edge).f; return [f.origin[0] + f.tangent[0] * a.t, f.origin[1] + f.tangent[1] * a.t]; });
+  assert.ok(Math.abs(Math.hypot(pos[0][0] - pos[1][0], pos[0][1] - pos[1][1]) - 2) < 1e-9);
+  assert.ok(Math.abs(Math.hypot(pos[2][0] - pos[1][0], pos[2][1] - pos[1][1]) - 2) < 1e-9);
+});

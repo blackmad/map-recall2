@@ -1,7 +1,7 @@
 /**
  * GLB quality gate + audit.
  *
- *   npx tsx scripts/audit-glb-quality.ts --id=torture-museum        # gate one landmark (exit 1 on fail)
+ *   npx tsx scripts/audit-glb-quality.ts --id=torture-museum        # gate one landmark (exit 1 on fail); `--id torture-museum` too
  *   npx tsx scripts/audit-glb-quality.ts --file=path/to.glb
  *   npx tsx scripts/audit-glb-quality.ts                            # audit every landmark GLB
  *   npx tsx scripts/audit-glb-quality.ts --set=ordinary [--limit=200]
@@ -183,11 +183,28 @@ function summaryView(g: GeometryAuditReport): GeometryAuditReport {
     zfight: {...g.zfight, patches: []}};
 }
 
-function arg(name: string): string | undefined {
-  const a = process.argv.find(x => x.startsWith(`--${name}=`));
-  return a ? a.slice(name.length + 3) : undefined;
+/**
+ * `--name=value` or `--name value`. `--id foo` (a space, not `=`) used to read as no --id at all and audited every model
+ * (2026-11-15, pools lane): the spaced form is now taken too, and a valued option given without a value throws.
+ */
+export function argValue(argv: readonly string[], name: string): string | undefined {
+  const eq = argv.find(x => x.startsWith(`--${name}=`));
+  if (eq) return eq.slice(name.length + 3);
+  const i = argv.indexOf(`--${name}`);
+  if (i < 0) return undefined;
+  const next = argv[i + 1];
+  if (next === undefined || next.startsWith('--')) throw new Error(`--${name} needs a value (--${name}=<value> or --${name} <value>)`);
+  return next;
 }
+/** Options that take a value: `--id` alone (no value) must not fall through to an every-model run. */
+export const VALUED_OPTIONS = ['file', 'set', 'id', 'limit', 'out', 'top', 'write-baseline-keys'] as const;
+function arg(name: string): string | undefined { return argValue(process.argv, name); }
 const flag = (name: string) => process.argv.includes(`--${name}`);
+/** Ids asked for with --id that have no GLB: an error, never a silent smaller (or empty, or whole-set) run. */
+export function missingIds(asked: readonly string[], found: readonly {id: string}[]): string[] {
+  const have = new Set(found.map(t => t.id));
+  return asked.filter(id => !have.has(id));
+}
 
 export function listTargets(): {id: string; file: string; status?: string}[] {
   const file = arg('file');
@@ -296,7 +313,11 @@ function slotsMd(rows: Row[]): string {
 }
 
 async function main(): Promise<void> {
+  for (const k of VALUED_OPTIONS) arg(k); // throws on a valued option given without a value
   const targets = listTargets();
+  const asked = arg('id')?.split(',').filter(Boolean) ?? [];
+  const missing = missingIds(asked, targets);
+  if (missing.length) { console.error(`No GLB for --id ${missing.join(', ')}`); process.exit(2); }
   if (!targets.length) { console.error('No matching models'); process.exit(2); }
   const th = {...DEFAULT_THRESHOLDS};
   const rows: Row[] = [];

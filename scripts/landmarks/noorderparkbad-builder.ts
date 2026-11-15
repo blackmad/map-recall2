@@ -1,6 +1,6 @@
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
-import {letters, ringFrame, slab, setSink, getSink} from './nearbar-kit';
+import {alongRing, letters, slab, setSink, getSink} from './nearbar-kit';
 import {basin, offsetRing, post, prismRing, ringBand, tubePath, type XZ} from './pool-kit';
 import {lngLatToRd} from '../../src/canalRecall/facade/rdNew';
 import source from './noorderparkbad-footprints.json';
@@ -31,18 +31,18 @@ export function buildNoorderparkbad(_w: number, _d: number, b: BuildingTools) {
   const sink0 = getSink();
   setSink(0.03);
   // NOORDERPARKBAD in red brick, centred on the photographed north wall (w08-358)
-  alongRing(b, ring, native(4.917929, 52.3982205), [...'NOORDERPARKBAD'].map(ch => ({ch, w: 6 * 0.31})), (f, t, ch) => letters(b, f, ch, t, 0.5, 0.02, 0.31, 0.04, 'red'));
+  alongRing(ring, native(4.917929, 52.3982205), [...'NOORDERPARKBAD'].map(ch => ({ch, w: 6 * 0.31})), (f, t, ch) => letters(b, f, ch, t, 0.5, 0.02, 0.31, 0.04, 'red'));
   // entrance (w09-59): glass between two patterned piers
   const e = native(4.918796, 52.398247);
-  alongRing(b, ring, e, Array.from({length: 9}, () => ({ch: '', w: 1.8})), (f, t) => slab(b, f, t, 0.1, 1.7, 3.5, 0.12, 'glass', 0.02));
-  alongRing(b, ring, e, [{ch: 'N', w: 5.4}, {ch: 'X', w: 5.4}], (f, t, ch) => {
+  alongRing(ring, e, Array.from({length: 9}, () => ({ch: '', w: 1.8})), (f, t) => slab(b, f, t, 0.1, 1.7, 3.5, 0.12, 'glass', 0.02));
+  alongRing(ring, e, [{ch: 'N', w: 5.4}, {ch: 'X', w: 5.4}], (f, t, ch) => {
     slab(b, f, t, 0, 2.6, 3.6, 0.3, ch === 'N' ? 'white' : 'red', 0.02);
     letters(b, f, ch, t, 0.3, 0.32, 0.43, 0.04, ch === 'N' ? 'red' : 'white');
   });
   // west service front (w05-251): four dark doors between the brick piers
-  alongRing(b, ring, native(4.9178565, 52.3978245), Array.from({length: 4}, () => ({ch: '', w: 3.0})), (f, t) => slab(b, f, t, 0.05, 2.2, 3.0, 0.1, 'dark', 0.02));
+  alongRing(ring, native(4.9178565, 52.3978245), Array.from({length: 4}, () => ({ch: '', w: 3.0})), (f, t) => slab(b, f, t, 0.05, 2.2, 3.0, 0.1, 'dark', 0.02));
   // east end (w10-40): the second diamond-lattice panel, 3.5 m right of the wall centre
-  alongRing(b, ring, native(4.9189925, 52.398108), [{ch: '', w: 4.4}, {ch: 'X', w: 2.6}], (f, t, ch) => {
+  alongRing(ring, native(4.9189925, 52.398108), [{ch: '', w: 4.4}, {ch: 'X', w: 2.6}], (f, t, ch) => {
     if (!ch) return;
     slab(b, f, t, 0, 2.5, 3.4, 0.3, 'red', 0.02);
     letters(b, f, ch, t, 0.3, 0.32, 0.4, 0.04, 'white');
@@ -63,28 +63,6 @@ export function buildNoorderparkbad(_w: number, _d: number, b: BuildingTools) {
   for (const [x, z, h] of [[12.3, 99, 3.0], [11.1, 95, 2.4], [9.6, 90.5, 1.4]] as [number, number, number][]) post(b, [x, z], 0, h, 0.12, 'white');
 }
 
-/**
- * Lay items (each `w` metres wide) along the ring's outside, reading left to right from outside, centred on the ring point
- * nearest `c`; calls `put` with the frame of the edge under each item's centre.
- */
-function alongRing(b: BuildingTools, ring: number[][], c: XZ, items: {ch: string; w: number}[], put: (f: ReturnType<typeof ringFrame>['f'], t: number, ch: string) => void) {
-  void b;
-  const flipped = ringFrame(ring, 0).f.origin[0] !== ring[0][0] || ringFrame(ring, 0).f.origin[1] !== ring[0][1];
-  const ord = flipped ? [...ring].reverse() : ring;
-  const S: number[] = [0];
-  for (let i = 0; i < ord.length; i++) { const a = ord[i], q = ord[(i + 1) % ord.length]; S.push(S[i] + Math.hypot(q[0] - a[0], q[1] - a[1])); }
-  const P = S[ord.length];
-  let k0 = 0, best = Infinity;
-  ord.forEach((p, i) => { const d = Math.hypot(p[0] - c[0], p[1] - c[1]); if (d < best) { best = d; k0 = i; } });
-  const total = items.reduce((s, it) => s + it.w, 0);
-  let s = S[k0] - total / 2;
-  for (const it of items) {
-    const m = (((s + it.w / 2) % P) + P) % P;
-    let j = 0; while (j < ord.length - 1 && S[j + 1] <= m) j++;
-    put(ringFrame(ord, j).f, m - S[j], it.ch);
-    s += it.w;
-  }
-}
 /** Convex hull (monotone chain) of native points. */
 function hull(pts: XZ[]): XZ[] {
   const p = [...pts].sort((a, c) => a[0] - c[0] || a[1] - c[1]);

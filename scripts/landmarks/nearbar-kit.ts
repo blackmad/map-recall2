@@ -244,6 +244,36 @@ export function ringFrame(ring: number[][], i: number, off = 0, into = false): {
   if (inRingXZ(ring, (a[0] + c[0]) / 2 + n[0] * 0.4, (a[1] + c[1]) / 2 + n[1] * 0.4) !== into) { n = [tz, -tx]; tangent = [-tx, -tz]; o = c; }
   return {f: {origin: [o[0] + n[0] * off, o[1] + n[1] * off], tangent, n}, len};
 }
+/**
+ * Items laid along a ring's outside (curved-wall lettering, bays round a drum): each item `w` metres of perimeter, read left to
+ * right facing the wall from outside, the run centred on the ring vertex nearest `c`. Returns, per item, the ring edge under
+ * its centre (an index into `ordered`, the ring in the direction ringFrame reads left to right) and its offset `t` along that
+ * edge. Pure; moved here from noorderparkbad-builder.ts (2026-11-15, pools2 lane) so every curved front can use it.
+ */
+export function alongRingPlacements(ring: number[][], c: [number, number], widths: number[]): {ordered: number[][]; at: {edge: number; t: number}[]} {
+  const flipped = ringFrame(ring, 0).f.origin[0] !== ring[0][0] || ringFrame(ring, 0).f.origin[1] !== ring[0][1];
+  const ord = flipped ? [...ring].reverse() : ring;
+  const S: number[] = [0];
+  for (let i = 0; i < ord.length; i++) { const a = ord[i], q = ord[(i + 1) % ord.length]; S.push(S[i] + Math.hypot(q[0] - a[0], q[1] - a[1])); }
+  const P = S[ord.length];
+  let k0 = 0, best = Infinity;
+  ord.forEach((p, i) => { const d = Math.hypot(p[0] - c[0], p[1] - c[1]); if (d < best) { best = d; k0 = i; } });
+  const total = widths.reduce((s, w) => s + w, 0);
+  let s = S[k0] - total / 2;
+  const at: {edge: number; t: number}[] = [];
+  for (const w of widths) {
+    const m = (((s + w / 2) % P) + P) % P;
+    let j = 0; while (j < ord.length - 1 && S[j + 1] <= m) j++;
+    at.push({edge: j, t: m - S[j]});
+    s += w;
+  }
+  return {ordered: ord, at};
+}
+/** alongRingPlacements, calling `put` with the frame of the edge under each item's centre. */
+export function alongRing(ring: number[][], c: [number, number], items: {ch: string; w: number}[], put: (f: Frame, t: number, ch: string) => void) {
+  const {ordered, at} = alongRingPlacements(ring, c, items.map(it => it.w));
+  at.forEach((p, k) => put(ringFrame(ordered, p.edge).f, p.t, items[k].ch));
+}
 /** Median outward offset of the 3DBAG eave vertices along a ring edge: where the shell wall really is. */
 export function eaveOffset(ring: number[][], roofs: {rings: number[][][]}[], i: number, u0 = 0.3, u1 = Infinity, reach = 0.8) {
   const a = ring[i], c = ring[(i + 1) % ring.length], len = Math.hypot(c[0] - a[0], c[1] - a[1]);
