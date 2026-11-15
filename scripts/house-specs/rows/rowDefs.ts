@@ -3,7 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export interface RowMemberDef { pandId: string; label: string; widthM: number; x0M?: number; px?: [number, number]; eavesM?: number }
-export interface RowDef { id: string; title: string; face?: string; members: RowMemberDef[]; cutsDir: string; cutsLocal?: string; answersDir: string; stagedDir: string; pixelsPerMetre?: number; note?: string }
+export interface RowDef { id: string; title: string; face?: string; members: RowMemberDef[]; cutsDir: string; cutsLocal?: string; answersDir: string; stagedDir: string; pixelsPerMetre?: number; note?: string;
+  /** Answer and cut dirs in order of preference (rows.json `answers` / `cuts` may be a list: Kinkerstraat's reads sit in the
+   *  ring tranche and the earlier street tranche). The first is `answersDir` / `cutsDir`. */
+  answersDirs?: string[]; cutsDirs?: string[]; street?: string }
 
 const HERE = path.dirname(new URL(import.meta.url).pathname);
 export const REPO = path.resolve(HERE, '../../..');
@@ -22,7 +25,9 @@ export function loadRowDefs(): Record<string, RowDef> {
       ppm = strip.pixelsPerMetre;
       members = strip.spans.map((s: any) => ({ pandId: s.pandId.replace(/^NL\.IMBAG\.Pand\./, ''), label: label.get(s.pandId) ?? s.pandId.slice(-6), widthM: +(s.x1M - s.x0M).toFixed(2), x0M: s.x0M, px: s.px }));
     }
-    out[id] = { id, title: r.title, face: r.face, members, cutsDir: path.join(root, r.cuts), cutsLocal: r.cutsLocal ? path.join(REPO, r.cutsLocal) : undefined, answersDir: path.join(root, r.answers), stagedDir: path.join(root, r.staged), pixelsPerMetre: ppm, note: r.note };
+    const list = (v: string | string[]) => (Array.isArray(v) ? v : [v]).map(d => path.join(root, d));
+    const answersDirs = list(r.answers), cutsDirs = list(r.cuts);
+    out[id] = { id, title: r.title, face: r.face, members, cutsDir: cutsDirs[0], cutsLocal: r.cutsLocal ? path.join(REPO, r.cutsLocal) : undefined, answersDir: answersDirs[0], stagedDir: path.join(root, r.staged ?? 'staged-ring-20261114'), pixelsPerMetre: ppm, note: r.note, answersDirs, cutsDirs, ...(r.street ? { street: r.street } : {}) };
   }
   return out;
 }
@@ -40,4 +45,9 @@ export function loadRereads(): Record<string, Reread> {
 }
 /** The reader's cut for a pand: a re-read's capture first (the sheet shows what the read saw), then the canonical D1 dir,
  *  then the regenerated local copy. */
-export const cutPath = (def: RowDef, pandId: string): string | null => [loadRereads()[pandId] ? path.dirname(path.join(REPO, loadRereads()[pandId].cut)) : undefined, def.cutsDir, def.cutsLocal].filter(Boolean).map(d => path.join(d!, `${pandId}.jpg`)).find(f => fs.existsSync(f)) ?? null;
+export const cutPath = (def: RowDef, pandId: string): string | null => [loadRereads()[pandId] ? path.dirname(path.join(REPO, loadRereads()[pandId].cut)) : undefined, ...(def.cutsDirs ?? [def.cutsDir]), def.cutsLocal].filter(Boolean).map(d => path.join(d!, `${pandId}.jpg`)).find(f => fs.existsSync(f)) ?? null;
+
+/** The D1 answer file of a pand: the first answer dir that has it. */
+export const answerFile = (def: RowDef, pandId: string): string | null => (def.answersDirs ?? [def.answersDir]).map(d => path.join(d, `${pandId}.json`)).find(f => fs.existsSync(f)) ?? null;
+/** The cut dir a pand's cut came from (its cuts.json carries the capture): the first that has the jpg. */
+export const cutsDirOf = (def: RowDef, pandId: string): string => (def.cutsDirs ?? [def.cutsDir]).find(d => fs.existsSync(path.join(d, `${pandId}.jpg`))) ?? def.cutsDir;

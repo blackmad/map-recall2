@@ -18,7 +18,7 @@
 import { rdToLngLat } from '../../../src/canalRecall/rdCoordinates.ts';
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadRereads, loadRowDefs, REPO, type RowDef } from './rowDefs.ts';
+import { answerFile, loadRereads, loadRowDefs, REPO, type RowDef } from './rowDefs.ts';
 import { validateBlockFace, type BlockFaceIntent } from '../../../src/canalRecall/blockFace/intent.ts';
 import { fromBlockFace } from '../../../src/canalRecall/houseSpec/adapters.ts';
 import { specFromFace } from '../../../src/canalRecall/houseSpec/fromFace.ts';
@@ -51,9 +51,10 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
     inputs.push(rel(path.join(dir, 'intent.json')), rel(path.join(dir, 'strip.json')));
   }
   if (raw.street) { const f = path.join(REPO, 'scripts/street-surveys/streets', `${raw.street}.json`); survey = readJson(f); if (survey) inputs.push(rel(f)); }
-  const cuts = readJson(path.join(def.cutsDir, 'cuts.json')) as { rows: Array<{ pandId: string; wall: { heightM: number } }> } | null;
-  if (cuts) inputs.push(rel(path.join(def.cutsDir, 'cuts.json')));
-  inputs.push(`${rel(def.answersDir)}/<pandId>.json`);
+  const cutsFiles = (def.cutsDirs ?? [def.cutsDir]).map(d => path.join(d, 'cuts.json'));
+  const cutRows = cutsFiles.flatMap(f => { const c = readJson(f) as { rows: Array<{ pandId: string; wall: { heightM: number } }> } | null; if (c) inputs.push(rel(f)); return c?.rows ?? []; });
+  const cuts = cutRows.length ? { rows: cutRows } : null;
+  for (const d of def.answersDirs ?? [def.answersDir]) inputs.push(`${rel(d)}/<pandId>.json`);
   const rereads = loadRereads();
   const wallOnlyFile = path.join(REPO, 'scripts/house-specs/rows/wall-only.json');
   const wallOnly = (readJson(wallOnlyFile) as { rows?: Record<string, Record<string, { chunk: string; edgeRD: [[number, number], [number, number]]; ref: string }>> } | null)?.rows?.[def.id] ?? {};
@@ -62,7 +63,7 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
     const pid = md.pandId;
     const sp = survey?.pands.find(p => p.pandId === pid);
     const rr = rereads[pid];
-    const answer = (rr ? readJson(path.join(REPO, rr.answer)) : readJson(path.join(def.answersDir, `${pid}.json`))) as DescriberAnswer | null;
+    const answer = (rr ? readJson(path.join(REPO, rr.answer)) : (answerFile(def, pid) ? readJson(answerFile(def, pid)!) : null)) as DescriberAnswer | null;
     if (rr) inputs.push(rr.answer);
     answers[pid] = answer;
     let fronts: ReturnType<typeof faceFronts> | undefined;
