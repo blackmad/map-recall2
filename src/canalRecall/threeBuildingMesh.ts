@@ -580,7 +580,9 @@ function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM
   // the edge's place on the run (headsAt in facadeOrnaments).
   // The stoop's door side as seen from the street, on this wall's own x (seenLeftToRight: left is the start).
   const st = b.rowDress?.stoop, stoop = { ...(st ? { stoop: { end: st.side === 'centre' ? 'centre' as const : (st.side === 'left') === ltr ? 'start' as const : 'end' as const, ...(st.steps === false ? { steps: false as const } : {}) } } : {}), ...(b.rowDress?.balcony ? { balcony: b.rowDress.balcony } : {}), ...(b.rowDress?.windowShare ? { windowShare: b.rowDress.windowShare } : {}), ...(b.rowDress?.shopFront ? { shopFront: { frameHex: b.rowDress.shopFront.frameHex, doorEnd: b.rowDress.shopFront.side === 'centre' ? 'centre' as const : (b.rowDress.shopFront.side === 'left') === ltr ? 'start' as const : 'end' as const } } : {}) };
-  if (!boxes.length) return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), heads: heads.map(h => ({ ...h, x0: (ltr ? h.a0 : 1 - h.a1) * runM - edgeStartM, x1: (ltr ? h.a1 : 1 - h.a0) * runM - edgeStartM })) };
+  // A member with raised fronts hangs its heads only on the run its fronts were measured on (rowFront.ts frontSpanM).
+  const off = !boxed && !!b.specRecipe?.subFronts?.some(f => f.step) && !!b.specRecipe.frontSpanM;
+  if (!boxes.length) return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), heads: (off ? [] : heads).map(h => ({ ...h, x0: (ltr ? h.a0 : 1 - h.a1) * runM - edgeStartM, x1: (ltr ? h.a1 : 1 - h.a0) * runM - edgeStartM })) };
   const sills = [...new Set(boxes.map(w => Math.round(w.sillM * 10) / 10))].sort((p, q) => p - q);
   const windows = boxes.flatMap(w => {
     const mid = (w.a0 + w.a1) / 2, storey = sills.indexOf(Math.round(w.sillM * 10) / 10) + 1;
