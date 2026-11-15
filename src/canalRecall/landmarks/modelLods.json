@@ -5798,13 +5798,7 @@
   "sourceHash": "67fd98a5064e4938",
   "buildVersion": 2,
   "bytes": 43796,
-  "triangles": 1359,
-  "lod2": {
-   "sourceHash": "67fd98a5064e4938",
-   "buildVersion": 6,
-   "bytes": 8668,
-   "triangles": 176
-  }
+  "triangles": 1359
  },
  "club-raum": {
   "lod2": {
@@ -5874,13 +5868,7 @@
   "sourceHash": "1bc0ef84380d9fef",
   "buildVersion": 2,
   "bytes": 72476,
-  "triangles": 3674,
-  "lod2": {
-   "sourceHash": "1bc0ef84380d9fef",
-   "buildVersion": 6,
-   "bytes": 11024,
-   "triangles": 480
-  }
+  "triangles": 3674
  },
  "tolstraat-160-tempel": {
   "sourceHash": "13a743aa6bcb4a0e",
@@ -5955,15 +5943,15 @@
   }
  },
  "industrieele-groote-club": {
-  "sourceHash": "8814ac9fd5b12e8a",
+  "sourceHash": "55d60746e50d2bff",
   "buildVersion": 2,
-  "bytes": 66000,
-  "triangles": 3293,
+  "bytes": 71160,
+  "triangles": 3570,
   "lod2": {
-   "sourceHash": "8814ac9fd5b12e8a",
+   "sourceHash": "55d60746e50d2bff",
    "buildVersion": 6,
-   "bytes": 11584,
-   "triangles": 444
+   "bytes": 11360,
+   "triangles": 433
   }
  },
  "splendor": {
@@ -6103,24 +6091,24 @@
   }
  },
  "perdu": {
-  "sourceHash": "ed171ce8059179f7",
+  "sourceHash": "94166a5620444b41",
   "buildVersion": 2,
-  "bytes": 32604,
-  "triangles": 1230,
+  "bytes": 33272,
+  "triangles": 1264,
   "lod2": {
-   "sourceHash": "ed171ce8059179f7",
+   "sourceHash": "94166a5620444b41",
    "buildVersion": 6,
-   "bytes": 6396,
+   "bytes": 6380,
    "triangles": 190
   }
  },
  "crea": {
-  "sourceHash": "aafa3c0e296e9ed0",
+  "sourceHash": "91fec7525e9b5de9",
   "buildVersion": 2,
   "bytes": 82244,
   "triangles": 4747,
   "lod2": {
-   "sourceHash": "aafa3c0e296e9ed0",
+   "sourceHash": "91fec7525e9b5de9",
    "buildVersion": 6,
    "bytes": 16992,
    "triangles": 1037
@@ -6142,24 +6130,18 @@
   "sourceHash": "cb3733a0c3c11244",
   "buildVersion": 2,
   "bytes": 27308,
-  "triangles": 1081,
-  "lod2": {
-   "sourceHash": "cb3733a0c3c11244",
-   "buildVersion": 6,
-   "bytes": 5808,
-   "triangles": 146
-  }
+  "triangles": 1081
  },
  "zaal-100": {
-  "sourceHash": "902e363b33b3bfa9",
+  "sourceHash": "0ae481bf5e58419a",
   "buildVersion": 2,
-  "bytes": 48584,
-  "triangles": 2211,
+  "bytes": 52748,
+  "triangles": 2390,
   "lod2": {
-   "sourceHash": "902e363b33b3bfa9",
+   "sourceHash": "0ae481bf5e58419a",
    "buildVersion": 6,
-   "bytes": 10112,
-   "triangles": 319
+   "bytes": 10184,
+   "triangles": 323
   }
  },
  "afas-live": {
@@ -6172,6 +6154,18 @@
    "buildVersion": 6,
    "bytes": 10940,
    "triangles": 343
+  }
+ },
+ "diamant-museum": {
+  "sourceHash": "482d3e0478526be4",
+  "buildVersion": 2,
+  "bytes": 55992,
+  "triangles": 2473,
+  "lod2": {
+   "sourceHash": "482d3e0478526be4",
+   "buildVersion": 6,
+   "bytes": 9788,
+   "triangles": 298
   }
  }
 }
