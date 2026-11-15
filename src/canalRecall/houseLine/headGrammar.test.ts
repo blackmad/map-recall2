@@ -95,5 +95,16 @@ test('tablet (Herengracht 27, 0363100012175404): a white stone block on the axis
   const r = headGrammarOf('tablet', 'relieving')!, pr = headPieces(r, 0, 1.1, 10);
   assert.ok(pr.filter(x => x.tone === 'brick').length >= HEAD.minBlocks, 'the relieving ring');
   const tab = pr.find(x => x.tone === 'white')!;
-  assert.ok(tab.pts[0][1] >= Math.max(...pr.filter(x => x.tone === 'brick').flatMap(x => x.pts.map(q => q[1]))) - 1e-9, 'the tablet over the ring');
+  // The tablet sits on the ring's crown as its key: its foot just inside the ring's top.
+  const ringTop = Math.max(...pr.filter(x => x.tone !== 'white').flatMap(x => x.pts.map(q => q[1])));
+  assert.ok(tab.pts[0][1] >= ringTop - 0.05 && tab.pts[0][1] < ringTop, 'the tablet keyed on the ring');
+});
+
+test('relieving arch springs over the window frame; an arched frame is a slim white ring with the glass in the arch', () => {
+  const r = headPieces(headGrammarOf('tablet', 'relieving')!, 0, 1.1, 10);
+  const ring = r.filter(x => x.tone !== 'white');
+  assert.ok(Math.min(...ring.flatMap(x => x.pts.map(q => q[1]))) >= 10 + HEAD.relieve.lift - 1e-9);
+  const a = headGrammarOf('arched-frame', 'segmental')!, p = headPieces(a, 0, 1.2, 10);
+  assert.ok(p.some(x => x.tone === 'glass') && p.filter(x => x.tone === 'white').length >= HEAD.minBlocks);
+  assert.equal(headGrammarOf('arched-frame', 'flat')!.shape, 'segmental');
 });

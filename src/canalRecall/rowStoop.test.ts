@@ -164,6 +164,38 @@ test('row-doorcase: a ground frame (span frame, Herengracht 279) posts across th
   assert.notDeepEqual(run({ material: 'timber', span: 'frame', entresol: 0.7 }), frame);
 });
 
+test('row-doorcase: a two-tier frame fills its storey; the leaf takes the stated paint (Herengracht 279)', () => {
+  const comp = ORNAMENT_COMPONENTS.find(x => x.id === 'row-doorcase')!;
+  const run = (doorcase: NonNullable<ExtraContext['rowDress']>['doorcase']) => {
+    const s = new ExtraSink(100000);
+    comp.build(wall({ layout: { bays: 3, bayWidthM: 2, groundM: 4, storeys: 3, storeyM: 3.2, doorBays: [0] } as ExtraContext['layout'], rowDress: { doorcase } }), s, 0);
+    return s.tris as Array<{ hex?: string; p: number[][] }>;
+  };
+  const top = (t: Array<{ p: number[][] }>) => Math.max(...t.flatMap(x => x.p.map(p => p[2])));
+  const one = run({ material: 'timber', span: 'frame' }), two = run({ material: 'timber', span: 'frame', tiers: 2 });
+  assert.ok(top(two) > top(one) + 0.1 && top(two) < 4, `${top(two)} vs ${top(one)}: under the next storey`);
+  assert.ok(run({ material: 'timber', span: 'frame', door: 'black' }).some(x => x.hex === ROW_DOORCASE.black));
+  assert.ok(!one.some(x => x.hex === ROW_DOORCASE.black), 'absent: the kit brown');
+});
+
+test('row-basement: a stated basement front faces the souterrain in stone with an arched doorway; absent: nothing', () => {
+  const comp = ORNAMENT_COMPONENTS.find(x => x.id === 'row-basement')!;
+  const run = (rowDress: ExtraContext['rowDress']) => { const s = new ExtraSink(100000); comp.build(wall({ rowDress }), s, 0); return s.tris as Array<{ hex?: string; p: number[][] }>; };
+  assert.equal(run({}).length, 0);
+  const t = run({ basements: [{ x0: 0, x1: 10, hex: '#8e8f8b', head: 'round', doors: [[0, 2]] }] });
+  assert.ok(t.some(x => x.hex === '#8e8f8b'), 'the plinth');
+  const recess = t.filter(x => x.hex === '#202326').flatMap(x => x.p.map(p => p[2]));
+  assert.ok(recess.length && Math.max(...recess) < 2.4, 'the doorway under the bel-etage floor');
+});
+
+test('row-sash: a cross window has a full-height mullion and a transom', async () => {
+  const { rowSashPieces } = await import('./facadeOrnaments.js');
+  const p = rowSashPieces({ kind: 'cross', frameM: 0.09, barM: 0.035 }, 0, 1.2, 0, 2);
+  const mull = p.filter(x => x.x1 - x.x0 < 0.1 && x.z1 - x.z0 > 1.7 && x.x0 > 0.3 && x.x1 < 0.9);
+  const tran = p.filter(x => x.x1 - x.x0 > 0.9 && x.z1 - x.z0 < 0.1 && x.z0 > 1.1 && x.z0 < 1.6);
+  assert.equal(mull.length, 1); assert.equal(tran.length, 1);
+});
+
 test('row-cornice: a stated timber cornice draws attic lights, supports and a centre; absent: the kind as today (Herengracht 174, 248)', () => {
   const comp = ORNAMENT_COMPONENTS.find(x => x.id === 'row-cornice')!;
   const run = (rowDress: ExtraContext['rowDress']) => {

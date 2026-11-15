@@ -82,6 +82,8 @@ export type RowDressContext = {
   floorsM?: number[];
   /** Ground storeys faced apart from the wall (row-ground-wall), on this wall's x: the facing's colour and its top. */
   groundWalls?: Array<{ x0: number; x1: number; hex: string; top: 'plain' | 'ledge' | 'scrolled' }>;
+  /** Stated basement fronts (row-basement): a stone plinth over the souterrain with arched doorways, on this wall's x. */
+  basements?: Array<{ x0: number; x1: number; hex: string; head: 'round' | 'segmental'; doors: Array<[number, number]> }>;
   /** Buurt kit paired casements: the white mullion parting each window, a share of its width (row-glazing). */
   mullionShare?: number;
   /** One stated shop opening (row-shopfront): its frame colour and the entrance's end of this wall as laid out. */

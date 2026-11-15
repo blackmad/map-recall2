@@ -441,3 +441,19 @@ test('a stated pediment on the cornice (RowCorniceDress.centre) takes the centre
   assert.deepEqual(ped.roofStorey!.dormers.map(d => d.a), [0.1667, 0.8333]);
   assert.deepEqual(ped.corniceDress, { centre: 'pediment', centreShare: 0.5 });
 });
+
+test('stated arched ground openings and a basement front (Herengracht 27, 25-29) draw only as stated', () => {
+  const d0 = solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input).series[0].design;
+  const fr = (ground: Record<string, unknown>) => [{ id: 'x', pandId: 'x', label: '', numbers: [], widthM: 5, seriesId: 's', ground: { use: 'dwelling' as const, ...ground }, overrides: {}, topM: 12 }];
+  const plain = seriesDraw(fr({ basement: 'windows', groundBays: 2 }), [d0]);
+  assert.equal(plain.basements, undefined);
+  assert.ok(!(plain.heads ?? []).some(h => h.dressing === 'arched-frame'));
+  const s = seriesDraw(fr({ basement: 'windows', groundBays: 2, archedOpenings: { index: [1] }, basementFront: { plinth: 'grey', doors: [0] } }), [d0]);
+  // Over a souterrain the ground openings are the bel-etage's: renderer storey 1.
+  assert.deepEqual(s.heads!.find(h => h.dressing === 'arched-frame'), { a0: 0.5, a1: 1, shape: 'segmental', dressing: 'arched-frame', storeys: [1] });
+  assert.deepEqual(s.basements, [{ a0: 0, a1: 1, hex: '#7d7a73', head: 'round', doors: [[0, 0.5]] }]);
+  // No souterrain: the basement front is not drawn; the arch sits on the ground storey.
+  const g = seriesDraw(fr({ groundBays: 2, archedOpenings: { index: [0], shape: 'round' }, basementFront: { doors: [0] } }), [d0]);
+  assert.equal(g.basements, undefined);
+  assert.deepEqual(g.heads!.find(h => h.dressing === 'arched-frame')!.storeys, [0]);
+});

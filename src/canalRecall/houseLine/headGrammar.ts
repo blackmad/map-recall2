@@ -40,7 +40,7 @@ export interface HeadPiece { pts: [[number, number], [number, number], [number, 
  *  least 0.26 m wide and 0.36 m tall in full white, a segmental rise of at least 0.22 m. */
 export const HEAD = { block: 0.16, minBlocks: 5, rise: 1 / 6, minRise: 0.22, keyUp: 0.07, keyDown: 0.04, keyW: 0.26, keyTopW: 0.32, keyH: 0.36, out: 0.04, keyOut: 0.07,
   quoinLong: 0.42, quoinShort: 0.24, quoinH: 0.27, quoinGap: 0.06,
-  tablet: { w: 0.26, h: 0.36, gap: 0.12, out: 0.06 }, relieve: { over: 0.06, rise: 0.16, depth: 0.12 },
+  tablet: { w: 0.26, h: 0.36, gap: 0.12, out: 0.06, minH: 0.2 }, relieve: { over: 0.06, rise: 0.16, depth: 0.12, lift: 0.08 },
   springerW: 0.18, springerH: 0.2, lintel: 0.16, lintelOver: 0.12, jack: { end: 0.15, mid: 0.22, endW: 0.16, midW: 0.18 }, jackOut: 0.06, glassOut: 0.012, flatFan: 2.2 } as const;
 
 /**
@@ -64,6 +64,8 @@ export function headGrammarOf(dressing: string | undefined, shape: string | unde
     // A stone tablet over the head (Herengracht 175404): a light block in the brick on the axis; over a relieving-arch
     // head the arch's brick ring under it.
     case 'tablet': return shape === 'relieving' ? { shape: 'flat', tablet: true, relieving: true } : { shape: 'flat', tablet: true };
+    // A stated arched opening (RowGround.archedOpenings): the glass up into its arch inside a slim white frame.
+    case 'arched-frame': return { shape: arch === 'flat' ? 'segmental' : arch, voussoirs: { alternate: 'white', depth: 0.08 } };
     case 'stone-lintel': case 'dentil-lintel': return { shape: 'flat', lintel: true };
     // Block surround (Kinkerstraat 100): alternating white quoins up both jambs and a keyed flat head of white blocks.
     case 'block-surround': return { shape: arch, voussoirs: { alternate: 'white', depth: 0.2 }, keystone: 'raised', surround: 'blocks' };
@@ -87,7 +89,9 @@ export function headRise(g: HeadGrammar, span: number): number {
 }
 
 /** A tablet's foot over the head line: clear of a relieving arch's ring. */
-const tabletFoot = (g: HeadGrammar, span: number) => (g.relieving ? relieveRise(span) + HEAD.relieve.depth : 0) + HEAD.tablet.gap;
+// Over a relieving arch the tablet sits on the ring's crown as its key (Herengracht 27; blind review: lifted clear of it,
+// it hung under the next storey's sill like a tab).
+const tabletFoot = (g: HeadGrammar, span: number) => g.relieving ? HEAD.relieve.lift + relieveRise(span) + HEAD.relieve.depth - 0.04 : HEAD.tablet.gap;
 const relieveRise = (span: number) => Math.min(HEAD.relieve.rise, (span + 2 * HEAD.relieve.over) * 0.14);
 const segRise = (span: number) => Math.min(span / 2 * 0.8, Math.max(span * HEAD.rise, HEAD.minRise));
 const tone = (p: VoussoirPattern, i: number, n: number): HeadTone =>
@@ -103,11 +107,13 @@ export function headPieces(g: HeadGrammar, x0: number, x1: number, z: number, si
   if (g.tablet) {
     if (g.relieving) {
       // The relieving arch: a shallow segmental ring of brick headers springing just outside the jambs, its segment brick.
-      const R0 = HEAD.relieve, l = x0 - R0.over, r = x1 + R0.over, S = r - l, rise = relieveRise(L), Rr = (S * S / 4 + rise * rise) / (2 * rise), cz = z + rise - Rr;
+      // It springs over the window's white frame head (blind review: inside the frame it read as a dark glass fanlight).
+      const R0 = HEAD.relieve, l = x0 - R0.over, r = x1 + R0.over, S = r - l, rise = relieveRise(L), zs = z + R0.lift, Rr = (S * S / 4 + rise * rise) / (2 * rise), cz = zs + rise - Rr;
       const half = Math.asin(Math.min(1, S / 2 / Rr)), n = Math.max(HEAD.minBlocks, Math.round(2 * half * Rr / 0.11)) | 1;
       const pt = (t: number, d: number): [number, number] => { const a = -half + 2 * half * t; return [m + (Rr + d) * Math.sin(a), cz + (Rr + d) * Math.cos(a)]; };
-      for (let i = 0; i < 8; i++) out.push({ pts: [[pt(i / 8, 0)[0], z], [pt((i + 1) / 8, 0)[0], z], pt((i + 1) / 8, 0), pt(i / 8, 0)], tone: 'stone', out: HEAD.out * 0.4 });
-      for (let i = 0; i < n; i++) out.push({ pts: [pt(i / n, 0), pt((i + 1) / n, 0), pt((i + 1) / n, R0.depth), pt(i / n, R0.depth)], tone: 'brick', out: HEAD.out * 0.6 + (i % 2) * 0.004 });
+      for (let i = 0; i < 8; i++) out.push({ pts: [[pt(i / 8, 0)[0], zs], [pt((i + 1) / 8, 0)[0], zs], pt((i + 1) / 8, 0), pt(i / 8, 0)], tone: 'brick', out: HEAD.out * 0.4 });
+      // The ring's headers in the darker burnt brick, so the arch reads against the wall.
+      for (let i = 0; i < n; i++) out.push({ pts: [pt(i / n, 0), pt((i + 1) / n, 0), pt((i + 1) / n, R0.depth), pt(i / n, R0.depth)], tone: i % 2 ? 'stone' : 'brick', out: HEAD.out * 0.6 + (i % 2) * 0.004 });
     }
     const T = HEAD.tablet, zb = z + tabletFoot(g, L);
     out.push({ pts: [[m - T.w / 2, zb], [m + T.w / 2, zb], [m + T.w / 2, zb + T.h], [m - T.w / 2, zb + T.h]], tone: 'white', out: T.out });

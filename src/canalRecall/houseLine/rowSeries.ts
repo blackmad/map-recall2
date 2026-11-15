@@ -15,7 +15,7 @@ import { frontDesign, type RowDesign, type RowGroundWall, type RowFront, type Ro
 import { rowFrontRecords, statedGable } from '../houseSpec/row/emit.ts';
 import { headsList } from '../houseSpec/row/solve.ts';
 import { SOUTERRAIN_FACTOR } from '../houseSpec/storeyPlan.ts';
-import { ROW_FRONT_EXTRAS, ROW_RAISED_FRONT_M, rowGroundM, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowGroundWallDraw, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
+import { ROW_FRONT_EXTRAS, ROW_RAISED_FRONT_M, rowGroundM, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowBasementDraw, type RowGroundWallDraw, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
 
 /** Grounds that put the ground storey on a souterrain (stoop over basement windows). */
 const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows', 'windows']);
@@ -118,6 +118,8 @@ export function groundWallOf(g: RowGroundWall | undefined): Omit<RowGroundWallDr
   const hex = /^#[0-9a-f]{6}$/.test(c) ? c : ROW_GROUND_WALL_HEX[c] ?? ROW_GROUND_WALL_HEX[g.material];
   return { hex, top: g.top === 'plain' || g.top === 'scrolled' ? g.top : 'ledge' };
 }
+/** A basement plinth's grey (Herengracht 25-29: a grey hardstone band). */
+export const ROW_BASEMENT_GREY = '#7d7a73';
 /** The stated joinery (RowDesign.glazing) as the series draws it: the window kind with its frame, bars and panes. */
 export const ROW_GLAZING = { frameM: 0.09, barM: 0.035 } as const;
 function glazingOf(d: RowDesign): { glazing?: NonNullable<RowSeriesDraw['glazing']> } {
@@ -132,6 +134,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
   const heads: RowHeadsDraw[] = [];
   const dormers: RowDormerDraw[] = [];
   const groundWalls: RowGroundWallDraw[] = [];
+  const basements: RowBasementDraw[] = [];
   let mansard: RowDesign['roofStorey']['value'] | null = null;
   // Over a souterrain the bel-etage (D's ground, storey 0) is the renderer's first upper row: stated storeys shift by one.
   const shift = fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? 1 : 0;
@@ -142,6 +145,18 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     // A plain arched head (round or segmental, no dressing) still draws its arched glass (headGrammar).
     const gw = groundWallOf(d.groundWall?.value);
     if (gw) groundWalls.push({ a0, a1, ...gw });
+    // Stated arched ground openings (by index of the ground bays as seen): a head on the ground storey, the bel-etage's
+    // over a souterrain.
+    const g = f.ground, gb = g.groundBays ?? 0, at = (i: number): [number, number] => [+(a0 + (a1 - a0) * i / gb).toFixed(4), +(a0 + (a1 - a0) * (i + 1) / gb).toFixed(4)];
+    if (g.archedOpenings && gb > 0) for (const i of g.archedOpenings.index) if (i >= 0 && i < gb) {
+      const [p, q] = at(i);
+      heads.push({ a0: p, a1: q, shape: g.archedOpenings.shape ?? 'segmental', dressing: 'arched-frame', storeys: [shift] });
+    }
+    if (g.basementFront && SOUTERRAIN_GROUNDS.has(g.basement ?? '')) {
+      const b = g.basementFront, c = typeof b.plinth === 'string' ? b.plinth.toLowerCase() : '';
+      basements.push({ a0, a1, hex: /^#[0-9a-f]{6}$/.test(c) ? c : c === 'grey' || !c ? ROW_BASEMENT_GREY : ROW_GROUND_WALL_HEX[c] ?? ROW_BASEMENT_GREY, head: b.head === 'segmental' ? 'segmental' : 'round',
+        doors: gb > 0 ? (b.doors ?? []).filter(i => i >= 0 && i < gb).map(at) : [] });
+    }
     for (const h of hs) if (h && (h.dressing !== 'none' || h.shape === 'round' || h.shape === 'segmental')) heads.push({ a0, a1, shape: h.shape, dressing: h.dressing, ...(h.storeys?.length ? { storeys: h.storeys.map(k => k + shift) } : {}) });
     const rs = d.roofStorey.value;
     if (rs.kind !== 'mansard') return;
@@ -180,6 +195,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...windowShareOf(designs, types),
     ...glazingOf(d0),
     ...(groundWalls.length ? { groundWalls } : {}),
+    ...(basements.length ? { basements } : {}),
     // One window preset per window kind in the row (Kinkerstraat: every series states t-windows), not per series.
     look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value, ...(ROW_SASH[d0.windows.value] ? { sash: ROW_SASH[d0.windows.value] } : {}) },
   };
