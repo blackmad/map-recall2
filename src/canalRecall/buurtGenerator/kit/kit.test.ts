@@ -408,3 +408,33 @@ test('round 14: small-paned upper sashes on the stated cells, clear of the erker
   assert.equal(mullions({ panes: { cells: 3 }, attic: {} }), 3 * 3, 'not in the attic storey');
   assert.equal(mullions({ panes: { cells: 3 }, erkers: [{ a0: 0.35, a1: 0.65, depthM: 0.6, faceM: 1.6, storeys: 1 }] }), 4 * 3 - 1, 'the middle cell under a one-storey oriel');
 });
+
+// Named regressions (coordinator 2026-11-15, lane R round 14): the corner members Europaplein 0363100012145394 and
+// Patroclosstraat 0363100012133916 drew no kit on their front. The row roof box faced the nearer side street, so the
+// whole kit (attic, eaves lid, piers, entries, panes, dormer) drew on the side wall. The kit's front line now states
+// the front width (kitFrontM) and the box matches it within 0.5 m.
+test('corner members (Europaplein 145394, Patroclosstraat 133916): the kit draws on the stated front, not the nearer side street', () => {
+  process.env.ROW_FRONT = '1'; resetRowFront();
+  const g = globalThis as { __canalRecallBuurtKit?: boolean };
+  try {
+    // Patroclosstraat 133916's proportions: a 9.01 m front at y=0 (street at -y, 8.5 m off), 8.0 m deep, its side wall
+    // at x=9.01 6.0 m from the cross street. Counter-clockwise, outward normals: front -y, side +x.
+    const corner = [XY(0, 0), XY(9.01, 0), XY(9.01, 8), XY(0, 8)];
+    const front: [LngLat, LngLat] = [ll(XY(0, 0)), ll(XY(9.01, 0))];
+    const f = { ...feature('0363100012133916'), geometry: { type: 'Polygon', coordinates: [[...corner.map(ll), ll(corner[0])].map(p => [...p])] } };
+    const cornerSeries = { ...series, roofStorey: { ...series.roofStorey, frontM: 9.01 } };
+    const r: RowFrontRecord = { ...rec('0363100012133916'), series: cornerSeries, buurtKit: { frontLine: front, erkers: [], roof: { pitchDeg: 62, riseM: 1.3 }, panes: { cells: 3, rows: 1 } } as BuurtKitFront };
+    setRowFrontRecords([r]);
+    g.__canalRecallBuurtKit = true;
+    const out = withRowFront(f);
+    assert.equal((out.properties.rowRoof as { frontM?: number }).frontM, 9.01, 'the kit front width reaches the roof');
+    const o = (out.geometry as { coordinates: number[][][] }).coordinates[0];
+    const facing = (w: { nx: number; ny: number }) => w.ny < -0.9 ? 8.5 : w.nx > 0.9 ? 6.0 : Infinity;
+    const tris = roofTrianglesForOutline(o, { lng: o[0][0], lat: o[0][1] }, roofPlanForFeature(out as never)!, 12.4, { bayM: 2, storeyM: 3, cellM: 1 }, KX, facing).filter(t => t.kit);
+    assert.ok(tris.length > 0, 'kit triangles drawn');
+    // Local frame of roofTrianglesForOutline: metres from the ring's first vertex (0, 0). The front face is y ~ 0.
+    const ys = tris.flatMap(t => t.p.map(p => p[1])), xs = tris.flatMap(t => t.p.map(p => p[0]));
+    assert.ok(Math.max(...ys) < 1.5, `the kit stands on the front (y ${Math.min(...ys).toFixed(1)}..${Math.max(...ys).toFixed(1)})`);
+    assert.ok(Math.max(...xs) - Math.min(...xs) > 6, 'and spans the front, not the 8 m side');
+  } finally { delete g.__canalRecallBuurtKit; process.env.ROW_FRONT = '0'; resetRowFront(); setRowFrontRecords([]); }
+});

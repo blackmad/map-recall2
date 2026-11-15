@@ -143,6 +143,12 @@ export function kitPanesOf(v: unknown): KitPanes | null {
     ...(sh >= 0.15 && sh <= 0.7 ? { share: sh } : {}), ...(ws >= 0.3 && ws <= 0.95 ? { widthShare: ws } : {}) };
 }
 /** The paired casements' white mullion, a share of the window's width (Maasstraat: about 0.5 m on a 1.6 m opening). */
+/** The kit's front line length (m): the street front the row roof faces (a corner member's side street can stand nearer,
+ *  Europaplein 145394, Patroclosstraat 133916: the roof box, and every kit part on its street end, faced the side). */
+export const kitFrontM = (k: BuurtKitFront): number => {
+  const [[x0, y0], [x1, y1]] = k.frontLine, kx = 111_320 * Math.cos(((y0 + y1) / 2) * Math.PI / 180);
+  return +Math.hypot((x1 - x0) * kx, (y1 - y0) * 110_540).toFixed(2);
+};
 export const KIT_MULLION_SHARE = 0.3;
 /** A flat series draws the low coping when the kit hangs anything on its front (erkers, ribbon, rhythm, piers). */
 /** Round 10: a member carrying its series' `copingHex` draws the coping too (the series line runs through). */
