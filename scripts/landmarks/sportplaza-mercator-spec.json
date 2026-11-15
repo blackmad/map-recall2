@@ -1,0 +1,42 @@
+{
+ "id": "sportplaza-mercator",
+ "name": "Sportplaza Mercator, Jan van Galenstraat",
+ "heightMetres": 15,
+ "bagYear": 2006,
+ "galleryView": {
+  "theta": 0.2,
+  "phi": 1.0
+ },
+ "surveyedSource": "Vertex average of the BAG 0363100012092403 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/sportplaza-mercator-footprints.json, written by pool-site-prepare.ts, with the OSM outline of the outdoor basin, ODbL). Planted walls and green roof on the 3DBAG LoD2.2 shell (CC BY 4.0); north and west fronts read from Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-002064_pano_0000_002391, TMX7316010203-001700_pano_0003_000005, 2025_09_25_08_37_35_00235); the outdoor basin from the PDOK luchtfoto (Beeldmateriaal Nederland, CC BY 4.0). Per item in scripts/landmarks/sportplaza-mercator-inventory.json.",
+ "materialOverrides": {
+  "green": "#4f5939",
+  "bronze": "#646a48",
+  "glass": "#2f3b42",
+  "dark": "#26292b",
+  "frame": "#3b4044",
+  "white": "#f2f2ee",
+  "copper": "#3f8fa6",
+  "blue": "#3cb4e0",
+  "concrete": "#cdc8bc",
+  "sandstone": "#25689a"
+ },
+ "attribution": {
+  "title": "Sportplaza Mercator, Jan van Galenstraat: planted sports bath of 2006 with the outdoor pool of the Jan van Galenbad",
+  "author": "Map Recall",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Sportplaza_Mercator",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the planted walls and green roof, the two-tier glazed ground floor with its fascia and steel canopy, the strip windows in the planted wall, the SPORTPLAZA MERCATOR panel and the ZWEMMEN lettering, and the outdoor lap pool with eight lanes, white coping and its deck. Basin outline from OpenStreetMap (ODbL) checked on the PDOK luchtfoto (CC BY 4.0); fronts measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ },
+ "detachedStructures": [
+  {
+   "box": [
+    8.8,
+    6.2,
+    59.0,
+    68.3
+   ],
+   "evidence": "the outdoor lap pool of the former Jan van Galenbad in the park south-east of the hall, on its own deck (PDOK luchtfoto; OSM a147998778)"
+  }
+ ]
+}

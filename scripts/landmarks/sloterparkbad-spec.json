@@ -1,0 +1,31 @@
+{
+ "id": "sloterparkbad",
+ "name": "Sloterparkbad, President Allendelaan 3",
+ "heightMetres": 21,
+ "bagYear": 2001,
+ "galleryView": {
+  "theta": 2.3,
+  "phi": 0.9
+ },
+ "surveyedSource": "Vertex average of the BAG 0363100012084387 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/sloterparkbad-footprints.json, written by pool-site-prepare.ts, with the OSM basin outline a488807746, ODbL). The shell is the 3DBAG LoD2.2 (CC BY 4.0); the north-west fronts are read from Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-002508_pano_0004_000065, _000111, _000107, _000100); the roofs, solar field and basin deck from the PDOK luchtfoto (Beeldmateriaal Nederland, CC BY 4.0). Per item in scripts/landmarks/sloterparkbad-inventory.json.",
+ "materialOverrides": {
+  "brick": "#8c4a36",
+  "greyBrick": "#8b9092",
+  "concrete": "#cfcfca",
+  "glass": "#2c363d",
+  "frame": "#c9ccc8",
+  "dark": "#262d36",
+  "gold": "#d9662c",
+  "white": "#f2f2ee",
+  "blue": "#3cb4e0",
+  "sandstone": "#bfc3c1"
+ },
+ "attribution": {
+  "title": "Sloterparkbad, President Allendelaan 3: swimming and sports centre of 2001 on the Sloterplas",
+  "author": "Map Recall",
+  "sourceUrl": "https://www.openstreetmap.org/way/115721216",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the red-brick north-west front with its rows of square windows, glazed ground floor, ramped walkway with perforated balustrades and steel stair; the zinc west wing with its orange BASIC FIT bands; the solar field on the wing roof; the outdoor basin with its lanes and deck. Basin outline from OpenStreetMap (ODbL) checked on the PDOK luchtfoto (CC BY 4.0); fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}
