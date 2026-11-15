@@ -483,9 +483,11 @@ export function drawBalconies(s: RoofSink, kit: BuurtRoofKit, L: number, W: numb
 
 /** The small-paned sashes (KitPanes, Gerrit van der Veenstraat 2025-07-14 at 37 px/m): windows 0.9 m over the floor to
  *  0.3 m under the next, a white frame, a pair of casements with a white mullion under the toplight band of small panes. */
-export const PANES_LOOK = { footM: 0.9, headM: 0.3, rows: 2, paneM: 0.3, share: 0.42, widthShare: 0.62, barM: 0.035, mullionM: 0.08 } as const;
+export const PANES_LOOK = { footM: 0.9, headM: 0.3, rows: 2, paneM: 0.3, share: 0.42, widthShare: 0.62, barM: 0.035, mullionM: 0.08, overO: 0.045 } as const;
 export function drawPanes(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
-  const Pn = PANES_LOOK, p = kit.panes!, wh = ERKER_LOOK.white, f = ERKER_LOOK.frameM, q = frontQuad(s, L, e), rows = kit.rows - (kit.attic || kit.ribbon ? 1 : 0);
+  // The plate and the windows stand `overO` further out than the other kit plates: the mesher's sills reach past 0.09 m
+  // (Gerrit van der Veenstraat showed them as white strips through the plate).
+  const Pn = PANES_LOOK, p = kit.panes!, wh = ERKER_LOOK.white, f = ERKER_LOOK.frameM, q = frontQuadAt(s, L, e, Pn.overO), rows = kit.rows - (kit.attic || kit.ribbon ? 1 : 0);
   if (rows < 1) return;
   q(-W / 2, W / 2, kit.z0 + 0.05, kit.z0 + rows * kit.storeyM - 0.05, PLATE_O, 'plate');
   const cw = W / p.cells, ww = cw * (p.widthShare ?? Pn.widthShare), share = p.share ?? Pn.share, pr = p.rows ?? Pn.rows, pane = p.paneM ?? Pn.paneM;
