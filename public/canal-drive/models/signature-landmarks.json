@@ -105406,7 +105406,19 @@
       },
       "triangles": 27395,
       "bytes": 341572,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "04f473be95f21701",
+        "buildVersion": 2,
+        "bytes": 89768,
+        "triangles": 4264
+      },
+      "lod2": {
+        "sourceHash": "04f473be95f21701",
+        "buildVersion": 6,
+        "bytes": 16012,
+        "triangles": 546
+      }
     },
     "banks-mansion": {
       "id": "banks-mansion",
@@ -105538,7 +105550,19 @@
       },
       "triangles": 16330,
       "bytes": 244488,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "d8cc19330265f9aa",
+        "buildVersion": 2,
+        "bytes": 64456,
+        "triangles": 2908
+      },
+      "lod2": {
+        "sourceHash": "d8cc19330265f9aa",
+        "buildVersion": 6,
+        "bytes": 9036,
+        "triangles": 325
+      }
     }
   }
 }
