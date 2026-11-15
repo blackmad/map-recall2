@@ -678,7 +678,9 @@ function solveSeries(id: string, ev: Ev[], input: RowInput, flags: RowFlag[], al
   // Roof storey: kind, dormers per front, dormer kind, hoist.
   const faceKind = F('roofKind'), readKind = ev.map(e => e.read?.roofKind).filter((v): v is RowRoofStoreyKind => !!v);
   const kindF = classField<RowRoofStoreyKind>('roofStorey', faceKind, readKind, faceRef, readRef, flags, ids, 'none', 'period default: a flat lid behind the cornice');
-  const readDorm = ev.map(e => e.read?.dormers ? { ...e.read.dormers, count: e.read.dormers.count / e.frontsOfPand } : undefined).filter((d): d is NonNullable<typeof d> => !!d);
+  // A module pand's dormers are shared out like its bays, whole per front and at least one where any was read (Herengracht
+  // 320-324: one dormer read over two fronts gave 0.5 a front, which the spec schema refuses).
+  const readDorm = ev.map(e => e.read?.dormers ? { ...e.read.dormers, count: e.read.dormers.count > 0 ? Math.max(1, Math.round(e.read.dormers.count / e.frontsOfPand)) : 0 } : undefined).filter((d): d is NonNullable<typeof d> => !!d);
   const dormersF = classField('dormers', F('dormers'), readDorm.map(d => d.count), faceRef, readRef, flags, ids, 0, 'period default: no dormers');
   const dkF = classField('dormerKind', F('dormerKind'), readDorm.map(d => d.kind).filter((k): k is RowDormerKind => !!k), faceRef, readRef, flags, ids, undefined);
   // A hoist is per house: the series draws one only when every dormer reading in it names one (fronts below carry their own).

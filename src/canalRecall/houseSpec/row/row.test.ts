@@ -378,3 +378,12 @@ test('Herengracht belt follow-up: a gabled crown with no read rise takes the fam
   const k = solveRow(loadRow(loadRowDefs()['kinkerstraat-65-87'], '2026-11-15').input);
   assert.ok(k.series.every(x => x.design.gable?.source !== 'period-default'));
 });
+
+test('a module pand shares its read dormers out whole per front, at least one where any was read', () => {
+  // Herengracht 320-324: one dormer read over two fronts gave 0.5 a front, which the spec schema refuses.
+  for (const id of ['kinkerstraat-120-138', 'kinkerstraat-65-87', 'kinkerstraat-86-110']) {
+    const r = solveRow(loadRow(loadRowDefs()[id], '2026-11-15').input);
+    for (const s of r.series) assert.ok(Number.isInteger(s.design.roofStorey.value.dormersPerFront), `${s.id}: ${s.design.roofStorey.value.dormersPerFront}`);
+    for (const f of r.flags.filter(x => x.kind === 'class-disagreement' && x.field === 'dormers')) assert.doesNotMatch(f.detail, /consensus "\d+\.\d+"/, f.detail);
+  }
+});
