@@ -35,7 +35,8 @@ export function statedGable(d: RowDesign): RowGable | null {
 function crownOf(d: RowDesign): RowFrontRecord['crown'] {
   const crown: RowFrontRecord['crown'] = { family: d.crown.value === 'cornice' ? 'cornice' : d.crown.value }, g = statedGable(d);
   if (!g) return crown;
-  return { ...crown, riseM: g.riseM, ...(g.steps ? { steps: g.steps } : {}), ...(g.attic !== undefined ? { atticWindows: g.attic } : {}), ...(g.neckWidthM ? { neckWidthM: g.neckWidthM } : {}) };
+  return { ...crown, riseM: g.riseM, ...(g.steps ? { steps: g.steps } : {}), ...(g.attic !== undefined ? { atticWindows: g.attic } : {}), ...(g.neckWidthM ? { neckWidthM: g.neckWidthM } : {}),
+    ...(g.cap ? { cap: g.cap } : {}), ...(g.finials ? { finials: true } : {}), ...(g.shoulder === 'sloped' ? { shoulder: 'sloped' as const } : {}), ...(g.neckOverM ? { neckOverM: g.neckOverM } : {}), ...(g.atticHead ? { atticHead: g.atticHead } : {}) };
 }
 /** A stated gable stands its rise over the front's cornice line (the gable's foot); else the line is the top. */
 const gableTop = (top: number | null, d: RowDesign) => { const g = statedGable(d); return g && top !== null ? +(top + g.riseM).toFixed(2) : top; };

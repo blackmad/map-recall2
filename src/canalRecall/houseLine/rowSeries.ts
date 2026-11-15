@@ -14,7 +14,8 @@
 import { frontDesign, type RowDesign, type RowFront, type RowRecord } from '../houseSpec/row/types.ts';
 import { rowFrontRecords, statedGable } from '../houseSpec/row/emit.ts';
 import { headsList } from '../houseSpec/row/solve.ts';
-import { ROW_FRONT_EXTRAS, ROW_RAISED_FRONT_M, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
+import { SOUTERRAIN_FACTOR } from '../houseSpec/storeyPlan.ts';
+import { ROW_FRONT_EXTRAS, ROW_RAISED_FRONT_M, rowGroundM, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
 
 /** Grounds that put the ground storey on a souterrain (stoop over basement windows). */
 const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows', 'windows']);
@@ -116,7 +117,8 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     const [a0, a1] = span(f), d = designs[i];
     // A front may state several dressings by storey (171218: jack-blocks below, arch rings on the top storey).
     const hs = d.heads.value ? headsList(d.heads.value) : [];
-    for (const h of hs) if (h && h.dressing !== 'none') heads.push({ a0, a1, shape: h.shape, dressing: h.dressing, ...(h.storeys?.length ? { storeys: h.storeys.map(k => k + shift) } : {}) });
+    // A plain arched head (round or segmental, no dressing) still draws its arched glass (headGrammar).
+    for (const h of hs) if (h && (h.dressing !== 'none' || h.shape === 'round' || h.shape === 'segmental')) heads.push({ a0, a1, shape: h.shape, dressing: h.dressing, ...(h.storeys?.length ? { storeys: h.storeys.map(k => k + shift) } : {}) });
     const rs = d.roofStorey.value;
     if (rs.kind !== 'mansard') return;
     mansard ??= rs;
@@ -130,7 +132,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
   return {
     id: fronts[0].seriesId,
     ...(d0.cornice.value ? { cornice: d0.cornice.value } : {}),
-    roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers, ...(ROW_MANSARD_RISE[rowId] ? { riseM: ROW_MANSARD_RISE[rowId].riseM } : {}) } : { kind: 'none', riseM: 0, dormers: [] },
+    roofStorey: m ? { kind: 'mansard', material: m.material ?? 'slate', dormers, ...(m.riseM && m.riseM > 0 ? { riseM: m.riseM } : ROW_MANSARD_RISE[rowId] ? { riseM: ROW_MANSARD_RISE[rowId].riseM } : {}) } : { kind: 'none', riseM: 0, dormers: [] },
     ...(heads.length ? { heads } : {}),
     ...(extras.length ? { extras } : {}),
     ...(fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? { souterrain: true } : {}),
@@ -168,10 +170,18 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     const walls = designs.map(d => d.wall.value);
     // The world draws every pand from flat ground (no terrain under the mesher), so a row stands to its series line in
     // the street datum: per-pand 3DBAG ground offsets stepped the drawn cornice (Kinkerstraat 104 0.2 m, 110 0.7 m low).
-    const line = designs[0].corniceTopM.value;
+    // A pand whose fronts stand to different lines stands to the tallest line of a front that is not a stated gable (a
+    // gable stands on its own line): Herengracht/Kinkerstraat 69-73, 69's neck at 14.6 m beside 71-73's cornice at 16.3 m.
+    // The lower fronts step down to their own lines (rowFront.ts rowRaisedFronts). One front, or one line: the first's.
+    const line0 = designs[0].corniceTopM.value;
+    const flat = rec.subFronts ? designs.filter(d => !statedGable(d)).map(d => d.corniceTopM.value).filter((v): v is number => v !== null) : [];
+    const line = line0 !== null && flat.length && Math.max(...flat) > line0 + ROW_RAISED_FRONT_M ? Math.max(...flat) : line0;
     // A stated gable (RowDesign.gable) stands its rise over the front's line: the top is the gable's apex.
     const lift = (v: number, d: RowDesign | undefined) => { const g = d ? statedGable(d) : null; return g ? +(v + g.riseM).toFixed(2) : v; };
-    const lined = line !== null && line > 2 ? { topM: lift(line, designs[0]), eavesM: line, ...(rec.subFronts ? { subFronts: rec.subFronts.map((sf, i) => ({ ...sf, topM: lift(designs[i]?.corniceTopM.value ?? line, designs[i]), eavesM: designs[i]?.corniceTopM.value ?? line })) } : {}) } : {};
+    // A stated gable below a taller pand line stands on that line: stepped down, its gable stood in the pand's notch under
+    // the roof storey's face (Kinkerstraat 69's neck under 71-73's mansard, round 4). Other fronts keep their own line.
+    const footOf = (d: RowDesign | undefined): number => { const v = d?.corniceTopM.value ?? line!; return d && statedGable(d) && line !== null && line > v ? line : v; };
+    const lined = line !== null && line > 2 ? { topM: lift(line, designs[0]), eavesM: line, ...(rec.subFronts ? { subFronts: rec.subFronts.map((sf, i) => { const own = footOf(designs[i]); return { ...sf, topM: lift(own, designs[i]), eavesM: own }; }) } : {}) } : {};
     const out: RowFrontRecord = {
       ...rec, ...lined, series: seriesDraw(fronts, designs, seriesYear(row, fronts[0].seriesId), row.id, fronts.map(f => (row.series.find(x => x.id === f.seriesId) as { type?: string } | undefined)?.type)),
       wall: { hex: walls[0].hex, source: 'judged', finish: walls[0].material },
@@ -181,7 +191,11 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     // A member whose fronts stand to different series lines gets its width, so the renderer can size each front's
     // raised top (rowFront.ts rowRaisedFronts); a member on one line is unchanged.
     // A one-front member with a stated gable gets it too (the gable's width).
-    if (!out.spanM && member.widthM && member.widthM > 1 && line !== null && (out.subFronts ? out.subFronts.some(f => (f.topM ?? line) > line + ROW_RAISED_FRONT_M) : !!statedGable(designs[0]))) out.spanM = member.widthM;
+    if (!out.spanM && member.widthM && member.widthM > 1 && line !== null && (out.subFronts ? out.subFronts.some(f => (f.topM ?? line) > line + ROW_RAISED_FRONT_M || (f.eavesM ?? line) < line - ROW_RAISED_FRONT_M) : !!statedGable(designs[0]))) out.spanM = member.widthM;
+    // Stated window heights per storey (RowDesign.windowHeights): the storeys share the wall by them, each window low in
+    // its storey; the renderer places the windows on these rows (levels: windowBoxes).
+    const rows = line !== null && line > 2 && out.storeys ? rowWindowRows(designs[0].windowHeights?.value, line, out.storeys, out.series?.souterrain ? out.series.souterrainFactor ?? SOUTERRAIN_FACTOR : null) : null;
+    if (rows) { out.rows = rows.rows; out.groundTopM = rows.groundTopM; }
     const joins = mansardJoins(row, rec.pandId);
     if (joins && out.series?.roofStorey?.kind === 'mansard') out.series.roofStorey.joins = joins;
     // A corner member's roof faces its row's street, not the side street nearer its outline (Kinkerstraat 110).
@@ -191,6 +205,30 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     if (wallOnly) out.wallOnly = wallOnly;
     return out;
   });
+}
+
+/** Where a stated window sits in its storey: this share of the storey's spare height under the sill. */
+export const ROW_WINDOW_SILL_SHARE = 0.35;
+/**
+ * The upper window rows a series states by height (RowDesign.windowHeights, m, lowest first) on a front `storeys` high
+ * to `line`: the ground storey (or a souterrain cell, `souterrain` its share of the pitch) as the series draws it, the
+ * storeys above in proportion to their windows, each window ROW_WINDOW_SILL_SHARE of its spare height up. Null when no
+ * heights are stated, their count does not match the storeys that draw windows, or a window would not fit.
+ */
+export function rowWindowRows(heights: readonly number[] | undefined, line: number, storeys: number, souterrain: number | null): { rows: Array<{ sillM: number; headM: number }>; groundTopM: number } | null {
+  if (!heights?.length || !heights.every(h => Number.isFinite(h) && h > 0.3)) return null;
+  const upper = souterrain !== null ? storeys : storeys - 1;
+  if (heights.length !== upper || upper < 1) return null;
+  const ground = souterrain !== null ? +(souterrain * line / (storeys + souterrain)).toFixed(2) : rowGroundM(line, storeys);
+  const sum = heights.reduce((a, b) => a + b, 0), wall = line - ground;
+  if (!(sum < wall * 0.85)) return null;
+  let z = ground;
+  const rows = heights.map(h => {
+    const pitch = wall * h / sum, sill = +(z + (pitch - h) * ROW_WINDOW_SILL_SHARE).toFixed(2);
+    z += pitch;
+    return { sillM: sill, headM: +(sill + h).toFixed(2) };
+  });
+  return { rows, groundTopM: ground };
 }
 
 /** Cornice lines within this step (m, street datum) read as one line: the mansard runs on across the party wall. */

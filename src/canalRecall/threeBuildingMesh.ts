@@ -518,6 +518,21 @@ function stepSpans(subs: ReadonlyArray<{ a0: number; a1: number; step?: { wallTo
   return subs.map(f => ({ a0: (ltr ? f.a0 : 1 - f.a1) * len, a1: (ltr ? f.a1 : 1 - f.a0) * len, topZ: base + f.step!.wallTopM,
     ...(f.step!.crown ? { crown: f.step!.crown, gable: f.step!.gable, riseM: f.step!.riseM } : {}) })).sort((p, q) => p.a0 - q.a0);
 }
+/** A stepped-down span of a row member's street wall: the edge frame (mesh metres), the span along it and its own top. */
+export interface RowLowStep { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number; a0: number; a1: number; z: number }
+/** Drop the wall extras (from index `from`) standing wholly above a stepped-down front's top in front of its span: the
+ *  run's cornice, sills and frames of storeys that front does not have (Herengracht 69 under 71-73's line). */
+export function rowStepLow(tris: { p: readonly (readonly number[])[] }[], from: number, steps: readonly RowLowStep[]): void {
+  let w = from;
+  for (let i = from; i < tris.length; i++) {
+    const t = tris[i], zMin = Math.min(...t.p.map(q => q[2]));
+    const cx = t.p.reduce((a, q) => a + q[0], 0) / t.p.length, cy = t.p.reduce((a, q) => a + q[1], 0) / t.p.length;
+    const above = steps.some(st => { const dx = cx - st.x0, dy = cy - st.y0, a = dx * st.ux + dy * st.uy, o = dx * st.nx + dy * st.ny;
+      return zMin > st.z + 0.02 && a > st.a0 + 1e-3 && a < st.a1 - 1e-3 && o > -0.2 && o < 2; });
+    if (!above) tris[w++] = t as never;
+  }
+  tris.length = w;
+}
 function edgeOf(x0: number, y0: number, x1: number, y1: number): Edge {
   const dx = x1 - x0, dy = y1 - y0, len = Math.hypot(dx, dy);
   return { x0, y0, x1, y1, len, nx: dy / len, ny: -dx / len, hole: false };
@@ -565,7 +580,9 @@ function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM
   // the edge's place on the run (headsAt in facadeOrnaments).
   // The stoop's door side as seen from the street, on this wall's own x (seenLeftToRight: left is the start).
   const st = b.rowDress?.stoop, stoop = { ...(st ? { stoop: { end: st.side === 'centre' ? 'centre' as const : (st.side === 'left') === ltr ? 'start' as const : 'end' as const, ...(st.steps === false ? { steps: false as const } : {}) } } : {}), ...(b.rowDress?.balcony ? { balcony: b.rowDress.balcony } : {}), ...(b.rowDress?.windowShare ? { windowShare: b.rowDress.windowShare } : {}), ...(b.rowDress?.shopFront ? { shopFront: { frameHex: b.rowDress.shopFront.frameHex, doorEnd: b.rowDress.shopFront.side === 'centre' ? 'centre' as const : (b.rowDress.shopFront.side === 'left') === ltr ? 'start' as const : 'end' as const } } : {}) };
-  if (!boxes.length) return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), heads: heads.map(h => ({ ...h, x0: (ltr ? h.a0 : 1 - h.a1) * runM - edgeStartM, x1: (ltr ? h.a1 : 1 - h.a0) * runM - edgeStartM })) };
+  // A member with raised fronts hangs its heads only on the run its fronts were measured on (rowFront.ts frontSpanM).
+  const off = !boxed && !!b.specRecipe?.subFronts?.some(f => f.step) && !!b.specRecipe.frontSpanM;
+  if (!boxes.length) return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), heads: (off ? [] : heads).map(h => ({ ...h, x0: (ltr ? h.a0 : 1 - h.a1) * runM - edgeStartM, x1: (ltr ? h.a1 : 1 - h.a0) * runM - edgeStartM })) };
   const sills = [...new Set(boxes.map(w => Math.round(w.sillM * 10) / 10))].sort((p, q) => p - q);
   const windows = boxes.flatMap(w => {
     const mid = (w.a0 + w.a1) / 2, storey = sills.indexOf(Math.round(w.sillM * 10) / 10) + 1;
@@ -736,6 +753,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const cornice: StreetCrownTri[] = [];
     // Step crowns (rowFront sub-fronts): kept under a planned roof too (a row's raised fronts over its mansard).
     const stepCrownTris: StreetCrownTri[] = [];
+    // House rows: the spans of a series member's street wall stepped down under the run's top (a lower front), where the
+    // wall extras drawn above that front's own top are taken out again (rowStepLow).
+    const lowSteps: RowLowStep[] = [];
     let extraTris = 0;
     const doorAllowed = doorWalls(bi);
     // The pavement in front of a wall, for a spec stoop (stoopExtra.ts): wall to street centreline less half a carriageway.
@@ -1022,6 +1042,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
             const a0 = Math.max(s, st.a0), a1 = Math.min(s + e.len, st.a1);
             if (a1 - a0 < 1e-3) continue;
             if (st.topZ < top - 0.05) {
+              if (b.rowSeries) lowSteps.push({ x0: e.x0, y0: e.y0, ux, uy, nx: e.nx, ny: e.ny, a0: a0 - s, a1: a1 - s, z: st.topZ });
               const [p0, p1] = [at(a0), at(a1)];
               const back = edgeOf(p0[0] - nx, p0[1] - ny, p1[0] - nx, p1[1] - ny);
               quads.push({ kind: 'step-notch', e: back, u0: a0 / 5, u1: a1 / 5, v0: st.topZ / 3, v1: top / 3, layer: b.plainLayer, accent, z0: st.topZ, z1: top, tint: shade(0.82), along0: 0, along1: 1 });
@@ -1084,7 +1105,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     if (walled && b.gardenRoom) { sign.push(...b.gardenRoom.tris); gardenTotal += b.gardenRoom.tris.length; }
     if (walled && b.industrial && b.lid) sign.push(...industrialTris({ id: b.id, spec: b.industrial, wallHex: b.wallHex, edges, street: doorAllowed, hidden: e => hiddenByNeighbour(e as Edge, b), base: b.minHeightM, top: buildingTop }));
     if (extraSink) {
+      const t0 = extraSink.tris.length;
       buildingWallExtras(wallExtraContexts, extraSink);
+      if (lowSteps.length) rowStepLow(extraSink.tris, t0, lowSteps);
       // Roof extras on a flat roof only (a pitched roof has its own chimneys and dormers).
       if (!b.surveyedEnvelope && (!b.roof || b.roof.plan.kind === 'parapet')) {
         const outer = b.polygons[0]?.[0] ?? [];

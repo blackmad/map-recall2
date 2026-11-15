@@ -4,9 +4,12 @@ import { HEAD, headGrammarOf, headPieces, headRise } from './headGrammar.ts';
 
 const span = (pieces: ReturnType<typeof headPieces>) => pieces.flatMap(p => p.pts.map(q => q[1]));
 
-test('every head dressing D states maps onto the grammar; plain and block-course do not', () => {
+test('every head dressing D states maps onto the grammar; plain flat and block-course do not', () => {
   for (const d of ['keystone', 'jack-blocks', 'segmental-tympanum', 'arch-ring', 'stone-lintel']) assert.ok(headGrammarOf(d, undefined), d);
-  assert.equal(headGrammarOf('none', 'round'), null);
+  // A plain arched window (round lane 4): the glass up into its arch, no ring; a plain flat head stays nothing.
+  assert.deepEqual(headGrammarOf('none', 'round'), { shape: 'round' });
+  assert.ok(headPieces(headGrammarOf('none', 'segmental')!, 0, 1.1, 10).every(p => p.tone === 'glass'));
+  assert.equal(headGrammarOf('none', 'flat'), null);
   assert.equal(headGrammarOf('block-course', undefined), null);
   assert.equal(headGrammarOf(undefined, 'rect'), null);
 });

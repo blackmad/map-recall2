@@ -130,3 +130,13 @@ test('deferring to a stronger wall source drops only the sampled wall', () => {
   assert.equal(s.facts, undefined);
   validateSpec(s);
 });
+
+test('dark-grey-brick: Herengracht canal brick reads dark and nearly grey (55, 63, 65 cuts), not purple-brown maroon', () => {
+  assert.ok((JUDGED_FAMILIES as readonly string[]).includes('dark-grey-brick'));
+  for (const id of ['herengracht-51-73:dark-grey-brick', '0363100012168207', 'x']) {
+    const t = lchOf(variedTone('dark-grey-brick', id))!;
+    assert.ok(t.L > 0.37 && t.L <= 0.44, `L ${t.L}`);
+    assert.ok(t.C < 0.016, `C ${t.C}`);
+    assert.ok(t.C < lchOf(variedTone('purple-brown-brick', id))!.C - 0.025);
+  }
+});
