@@ -1,6 +1,10 @@
 # Canal Recall — what is built
 
 
+
+## 2026-11-15 — First row published; batch 1 off
+
+Kinkerstraat 86–110 is the first row published under the rows plan. The install needed two compile changes. A row's wall-only slab is accepted as its pand's FOOT, and nothing else may replace geometry. The full compile now keeps the published string table: restoring 285 fronts had dropped 60 strings, which shifted the table and re-encoded 595 unchanged cells. The published-rows file carries only signed-off rows. The 128 Haarlemmerdijk lane-1 records were dropped, never having been approved.
 ## 2026-11-14 — Rows round 1 blocking narrowed; corner chunk becomes a row wall
 
 The fresh zoom reviewers failed both rows on ornament: voussoir splay, friezes, dormer richness. The review session ruled that only what reads from the photo pose blocks (same houses, roof line from the rule-10 pair, colour family, amount of white, nothing invented). Ornament goes on the sheet as known differences, counted by how many fronts share each. It also ruled that the photo strip is perspective, so roof height is judged on the rule-10 pair only.
