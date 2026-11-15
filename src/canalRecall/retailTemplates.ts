@@ -12,13 +12,19 @@
 //
 // Off: nothing here is called and every cell, layer and feature is as before.
 
-/** Default off; the URL flag or the env switch turns it on (`retailGround=0` / RETAIL_GROUND=0 force it off). */
-export const RETAIL_GROUND_DEFAULT = false;
+/** Default on since 2026-11-15 (round n); `?retailGround=0` / RETAIL_GROUND=0 turn it off. */
+export const RETAIL_GROUND_DEFAULT = true;
 export function retailGroundEnabled(search?: string | null, env?: string | null): boolean {
   const q = search ? /[?&]retailGround=([01])\b/.exec(search)?.[1] : undefined;
   const v = q ?? (env === '0' || env === '1' ? env : undefined);
   return v === undefined ? RETAIL_GROUND_DEFAULT : v === '1';
 }
+/** Templates held back while the look is on: their fronts draw as before (the flag-off cell and no template mesh)
+ *  until they win a blind photo review. brownBar: café Hendrix (feedback 7be6c55a) drew as an opaque dark box with a row
+ *  of lit dots, worse than the glazed brown-café cell (round n, 2026-11-15, artifacts/round-n/hendrix-on). */
+export const RETAIL_HELD: readonly string[] = ['brownBar'];
+/** Bay kinds whose cell keeps the flag-off painter while the look is on (the brownBar template's cell kind). */
+export const RETAIL_HELD_KINDS: readonly string[] = ['shopBar'];
 let cached: boolean | undefined;
 /** The flag for this page or process (a test may set `__canalRecallRetailGround`). */
 export function retailGroundOn(): boolean {

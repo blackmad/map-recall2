@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-15",
+      "title": "Shops look like the shops on the street",
+      "text": "Shop ground floors now draw as real shopfronts: dark glass with goods in the window, a coloured fascia with the shop's name, and recognisable chain fronts like Albert Heijn, Kruidvat, Etos, HEMA, Bruna and Gall & Gall. Florists, bike shops with bikes outside, hairdressers, bakeries, butchers, greengrocers with crates, and snack bars each have their own look. Shops are placed by their registered address and the city's horeca permits, so they sit on the right building and face the right street. Each look was kept only if a reviewer, comparing against street photos, picked it over the old plain shop band.",
+      "images": [
+        {
+          "src": "ui/2026-11-15-retail/templates.jpg",
+          "alt": "A grid of shopfront templates: chain supermarkets, drugstores, cafés, bike shop, greengrocer and snack bars",
+          "caption": "The shopfront set"
+        },
+        {
+          "src": "ui/2026-11-14-retail-ground-r2/as-played-centre-v2-on.jpg",
+          "alt": "A shopping street in the centre as played, with the new shopfronts",
+          "caption": "In the game"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
       "title": "Rivierenbuurt, Apollobuurt and Stadionbuurt get their own look",
       "text": "About 4,100 houses in three districts south of the centre now draw as the long brick blocks of the 1920s and 30s that line their streets. Each block has one roof line, a regular rhythm of white-framed windows, ground-floor entrances, bays, and brick in the colour measured from street photos of that row. Before, every house was drawn on its own with a random roof. On seven streets nobody had tuned, a reviewer comparing against the photos picked the new drawing every time.",
       "images": [
