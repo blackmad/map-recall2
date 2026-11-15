@@ -16,8 +16,8 @@ import source from './cristofori-footprints.json' with {type: 'json'};
  * 19 m, the clearest), TMX7316010203-001974_pano_0000_000921 (2021-01-22) and TMX7316010203-003007_pano_0007_000009
  * (2023-03-20, the parapet). Crop pavement at py 950, 1 px = 2 cm, so y = (950 - py) / 50.
  *
- * Grey stone over the ground and first floors: two wide arched openings with cream surrounds (four white glazed door leaves,
- * a signboard band and a railed fanlight in each), CRISTOFORI in gold letters between them and the first-floor windows, a small emblem on the
+ * Grey stone over the ground and first floors: two wide arched openings with cream surrounds (doors, a signboard band and
+ * a railed fanlight in each), CRISTOFORI in gold letters between them and the first-floor windows, a small emblem on the
  * middle pier, and six first-floor windows; above a stone string course, dark brown brick in two mirrored halves (the two
  * former warehouses), each storey a wide round-arched French window on a balcony between two narrow round-arched windows,
  * under a corbelled brick parapet with stepped blocks. Roof and the other walls keep the 3DBAG LoD2.2 shell (CC BY 4.0);
@@ -54,15 +54,6 @@ function front(c: Ctx) {
     K.opening(G, s, y0, w, top - y0, {frame: 'white', back: 'glass', depth: 0.3, edge: 0.1, cols: 4, bars: [2.0, 2.8], rise});
     K.archHead(G, s, top - rise, w, rise, 0.22, 0.08, 'white');
     slab(b, f, s, 2.0, w - 0.2, 0.8, 0.04, 'white', -0.26);                // signboard band inside the reveal
-    // four white door leaves under the band (the photo's doors are white-painted timber with tall glazed lights over a
-    // low panel, TMX7316010203-000205_pano_0000_001106): stiles, bottom panel and top rail, the glass showing between
-    const lw = (w - 0.2) / 4;
-    for (let k = 0; k < 4; k++) {
-      const c0 = s - (w - 0.2) / 2 + lw * (k + 0.5);
-      for (const sd of [-1, 1]) slab(b, f, c0 + sd * (lw / 2 - 0.07), 0.05, 0.14, 1.95, 0.08, 'white', -0.25);
-      slab(b, f, c0, 0.05, lw - 0.28, 0.72, 0.08, 'white', -0.25);
-      slab(b, f, c0, 1.84, lw - 0.28, 0.16, 0.08, 'white', -0.25);
-    }
     balustradeRun(b, f, s - w / 2 + 0.15, s + w / 2 - 0.15, 2.82, {h: 0.62, d: 0.03, pitch: 0.18, c: 'bronze', out: -0.2});
     for (const sd of [-1, 1]) slab(b, f, s + sd * (w / 2 + 0.15), 0, 0.22, top - rise, 0.08, 'white');   // cream jambs
   }
