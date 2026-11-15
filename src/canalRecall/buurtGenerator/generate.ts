@@ -14,6 +14,7 @@ import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
 import { districtRows, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
+import type { BuurtKitFront } from './kit/frontKit.ts';
 
 export interface DistrictDesign {
   groundM: number;
@@ -31,6 +32,8 @@ export interface DistrictDesign {
   extras: string[];
 }
 export interface DistrictFamily { id: string; storeys: number; label: string; design?: Partial<DistrictDesign> }
+/** The district's pitched roof: a series whose median 3DBAG rise (ridge - eaves) is at least `minRiseM` draws it. */
+export interface DistrictPitchedRoof { minRiseM: number; maxRiseM: number; pitchDeg: number; material: 'tile' | 'slate'; dormersPerFront: number; dormerKind: 'plain' | 'gabled'; hoist: boolean; evidence: string }
 export interface DistrictLibrary {
   district: string;
   title: string;
@@ -40,6 +43,7 @@ export interface DistrictLibrary {
   evidence: string[];
   design: DistrictDesign;
   families: DistrictFamily[];
+  pitched?: DistrictPitchedRoof;
   notDrawn: Array<{ component: string; what: string }>;
 }
 
@@ -65,9 +69,17 @@ export function baysFor(widthM: number, d: Pick<DistrictDesign, 'axisM'>): numbe
 }
 
 const pandNumber = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
+const median = (xs: number[]) => { const v = [...xs].sort((a, b) => a - b); return v.length ? (v.length % 2 ? v[v.length >> 1] : (v[v.length / 2 - 1] + v[v.length / 2]) / 2) : null; };
+
+/** A series' roof rise (median 3DBAG ridge - eaves of its members, m), when the district's pitched roof applies to it; else null. */
+export function pitchedRiseOf(lib: DistrictLibrary, s: GenSeries): number | null {
+  if (!lib.pitched) return null;
+  const rise = median(s.members.flatMap(m => m.pand.eavesM !== null && m.pand.ridgeM !== null ? [m.pand.ridgeM - m.pand.eavesM] : []));
+  return rise !== null && rise >= lib.pitched.minRiseM ? +Math.min(lib.pitched.maxRiseM, rise).toFixed(2) : null;
+}
 
 /** One series' design: the family's design over the district's, every field `period-default` with its ref. */
-export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSeries, rowId: string, bays: number): RowDesign {
+export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSeries, rowId: string, bays: number, riseM: number | null = pitchedRiseOf(lib, s)): RowDesign {
   const d = { ...lib.design, ...fam.design };
   const ref = `buurt-generator ${lib.district} ${fam.id}`;
   const f = <T>(value: T, why = ''): RowField<T> => ({ value, source: 'period-default', ref: why ? `${ref}: ${why}` : ref });
@@ -78,7 +90,11 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
     bays: f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes`),
     windows: f(d.windows), heads: f<RowHeads | RowHeads[]>(d.heads), whiteFrames: f(d.whiteFrames), sills: f(d.sills),
     wall: f({ material: d.wall.material, family: d.wall.family, hex: variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }),
-    roofStorey: f(d.roofStorey), extras: f(d.extras),
+    roofStorey: riseM !== null && lib.pitched
+      ? f<RowRoofStorey>({ kind: 'mansard', material: lib.pitched.material, dormersPerFront: lib.pitched.dormersPerFront, dormerKind: lib.pitched.dormerKind, ...(lib.pitched.hoist ? { hoist: true } : {}) },
+        `pitched roof: median 3DBAG rise ${riseM} m >= ${lib.pitched.minRiseM} m (${lib.pitched.evidence}); drawn as the row mansard at ${lib.pitched.pitchDeg} deg under buurtKit`)
+      : f(d.roofStorey),
+    extras: f(d.extras),
     windowShare: f(d.windowShare),
   };
   return design;
@@ -119,7 +135,7 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
       fronts.push({ id: pid, pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], widthM: m.front.lengthM, seriesId, ground: { use: 'other' }, overrides: {}, groundOffsetM: 0, topM: s.eavesM });
       const e = m.pand.eavesM, r = m.pand.ridgeM;
       if (s.clamped.includes(m.pand.id) && e !== null) readNotDrawn.push({ front: pid, field: '3dbag-eaves', value: e, reason: `clamped to the series line ${s.eavesM} m (row coherence: a lone step over 0.8 m)` });
-      if (e !== null && r !== null && r - e > 1) readNotDrawn.push({ front: pid, field: '3dbag-roof-rise', value: +(r - e).toFixed(2), reason: `${lib.design.roofStorey.kind === 'none' ? 'flat lid at the series line' : 'the series roof storey'}: roofs from the front, not 3DBAG` });
+      if (e !== null && r !== null && r - e > 1 && pitchedRiseOf(lib, s) === null) readNotDrawn.push({ front: pid, field: '3dbag-roof-rise', value: +(r - e).toFixed(2), reason: `under the district's pitched-roof rise (${lib.pitched?.minRiseM ?? '-'} m series median): flat lid at the series line` });
     }
   }
   flush();
@@ -138,11 +154,20 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   const rows = res.rows.flatMap(r => rowRecordOf(lib, r, at, skipped));
   const drawn = new Set(rows.flatMap(r => r.members.map(m => m.pandId)));
   const fronts: GenResult['fronts'] = {};
-  for (const r of res.rows) for (const m of r.members) {
-    const pid = pandNumber(m.pand.id);
-    if (drawn.has(pid)) fronts[pid] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
+  const kits = new Map<string, BuurtKitFront>();
+  for (const r of res.rows) for (const s of r.series) {
+    const rise = pitchedRiseOf(lib, s);
+    for (const m of s.members) {
+      const pid = pandNumber(m.pand.id);
+      if (!drawn.has(pid)) continue;
+      fronts[pid] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
+      const r6 = (q: readonly [number, number]): [number, number] => [+q[0].toFixed(8), +q[1].toFixed(8)];
+      const i = r.members.indexOf(m), joins = { ...(i > 0 && drawn.has(pandNumber(r.members[i - 1].pand.id)) ? { left: true } : {}), ...(i < r.members.length - 1 && drawn.has(pandNumber(r.members[i + 1].pand.id)) ? { right: true } : {}) };
+      kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers: m.front.erkers, ...(rise !== null && lib.pitched ? { roof: { pitchDeg: lib.pitched.pitchDeg, riseM: rise } } : {}), ...(joins.left || joins.right ? { joins } : {}) });
+    }
   }
   const families: GenResult['families'] = {};
   for (const r of rows) for (const s of r.series) { const f = families[s.type!] ??= { series: 0, pands: 0 }; f.series++; f.pands += s.fronts.length; }
-  return { rows, records: rows.flatMap(r => rowFrontsWithSeries(r)), skipped, families, fronts };
+  const records = rows.flatMap(r => rowFrontsWithSeries(r)).map(rec => kits.has(rec.pandId) ? { ...rec, buurtKit: kits.get(rec.pandId)! } : rec);
+  return { rows, records, skipped, families, fronts };
 }

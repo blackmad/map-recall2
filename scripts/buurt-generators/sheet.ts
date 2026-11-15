@@ -32,16 +32,20 @@ const work = path.join(path.dirname(out), 'renders');
 const row = (JSON.parse(fs.readFileSync(path.join(stage, 'rows.json'), 'utf8')).rows as any[]).find(r => r.id === rowId);
 if (!row) throw new Error(`no row ${rowId} in ${stage}/rows.json`);
 const fronts = JSON.parse(fs.readFileSync(path.join(stage, 'fronts.json'), 'utf8')).fronts as Record<string, { a: [number, number]; b: [number, number] }>;
+// Each member is framed on its record's front line (buurtKit.frontLine), before and after alike, so a jogged front is
+// drawn whole and both bands show the same span.
+const kitLine = new Map<string, [[number, number], [number, number]]>((JSON.parse(fs.readFileSync(path.join(stage, 'row-front.json'), 'utf8')).records as any[]).filter(r => r.buurtKit?.frontLine).map(r => [r.pandId, r.buurtKit.frontLine]));
+const lineOf = (id: string) => kitLine.get(id) ?? [fronts[id].a, fronts[id].b];
 const record = (JSON.parse(fs.readFileSync(search, 'utf8'))._embedded?.panoramas ?? []).find((p: any) => p.pano_id === panoId);
 if (!record) throw new Error(`no panorama ${panoId} in ${search}`);
 delete record._links.equirectangular_full; // read the cached medium image only: no download
 
 // The row's front line in RD, members projected onto it.
 const ids: string[] = row.members.map((m: any) => m.pandId);
-const A = lngLatToRd(fronts[ids[0]].a), B = lngLatToRd(fronts[ids[ids.length - 1]].b);
+const A = lngLatToRd(lineOf(ids[0])[0]), B = lngLatToRd(lineOf(ids[ids.length - 1])[1]);
 const len = Math.hypot(B.x - A.x, B.y - A.y), ux = (B.x - A.x) / len, uy = (B.y - A.y) / len;
 const along = (p: { x: number; y: number }) => (p.x - A.x) * ux + (p.y - A.y) * uy;
-const spans = ids.map(id => ({ id, x0: along(lngLatToRd(fronts[id].a)), x1: along(lngLatToRd(fronts[id].b)) }));
+const spans = ids.map(id => ({ id, x0: along(lngLatToRd(lineOf(id)[0])), x1: along(lngLatToRd(lineOf(id)[1])) }));
 const lineM = Math.max(...row.series.map((s: any) => s.design.corniceTopM.value as number));
 const wall: Wall = { a: A, b: B, len, nx: uy, ny: -ux, mid: { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 }, roadDistM: 0, facing: 0 };
 const pick: PanoPick = { panoId, timestamp: record.timestamp, missionYear: Number(record.mission_year), missionType: record.mission_type ?? '', surface: record.surface_type ?? '', distM: 0, obliquityDeg: 0, relaxed: false, record };
@@ -58,7 +62,7 @@ async function band(env: Record<string, string>, tag: string): Promise<{ img: Bu
   for (const sp of spans) {
     const dir = path.join(work, tag, sp.id);
     if (!fs.existsSync(path.join(dir, 'front.png'))) {
-      const r = spawnSync('node', ['--import', 'tsx', 'scripts/house-preview/preview.ts', sp.id, '--ppm', String(Math.round(s)), '--out', dir], { encoding: 'utf8', env: { ...process.env, ...env } });
+      const r = spawnSync('node', ['--import', 'tsx', 'scripts/house-preview/preview.ts', sp.id, '--wall', `line:${lineOf(sp.id).flat().join(',')}`, '--ppm', String(Math.round(s)), '--out', dir], { encoding: 'utf8', env: { ...process.env, ...env } });
       if (r.status !== 0) { console.error(`${tag} ${sp.id}: preview failed\n${(r.stderr || r.stdout).slice(-600)}`); continue; }
     }
     const m = JSON.parse(fs.readFileSync(path.join(dir, 'measure.json'), 'utf8')) as { heights?: { topM: number; eavesM: number }; layout?: { storeys?: number } };

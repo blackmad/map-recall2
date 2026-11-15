@@ -210,3 +210,72 @@ is at `artifacts/buurt-generators/rivierenbuurt/sheets/biesboschstraat-069135-06
   excludes). Then recompile the world with `BUURT_KIT` / `buurtKit` on, or make it the default.
 - **Run on the sweep.** Re-run the generator after any HouseSpec or row publish in the district: described pands drop
   out of its rows by construction.
+
+## Round 2 (2026-11-15): the kit the Biesboschstraat photo asked for
+
+The integrator held the first sheet: three things that make the street read were missing (window cell, roof, erkers).
+All four additions are behind `buurtKit` (`?buurtKit=1`, `BUURT_KIT=1`) **and** a record field the generator alone
+writes (`RowFrontRecord.buurtKit`). Published rows (Kinkerstraat 86-110) carry no such field. Their previews are the same
+bytes with the flag off, with it on, and on the base commit 96c9fcc0c (pands 0363100012165799 and 0363100012158180).
+
+- **One window cell per series (gap 1).** BAG outlines are the plan from above, so an upper-storey erker is in the
+  footprint. The game extruded it from the pavement, splitting the street front into several wall runs, and fitted the
+  series' bays to each piece. A 4.0 m piece of a 7.95 m front drew two wide cells instead of four.
+  - The generator now records each member's **front line**: the chosen street edge's line over the whole front.
+  - It also records the **erkers** in front of that line (`kit/frontKit.ts erkersOf`): runs of outline vertices 0.2-1.5 m
+    in front of the line and 0.9-3.5 m wide. A run reaching the front's end is half of a pair across the party wall.
+  - Under the kit, `withRowFront` straightens the outline onto the line (`straightenFeature`). Only BAG jitter (within
+    0.2 m) and the vertices of a recorded erker move; a deeper step outside an erker span (a wing) stays. The front is
+    then one run and the series' cell holds across it.
+- **Pitched red-tile roof with dormers and hoist beams (gap 2).** A series whose median 3DBAG rise is 2.5 m or more
+  (1,270 of the 2,495 pands; the district is bimodal) states the district's pitched roof:
+  - a tile row roof storey at 52 deg, rise from 3DBAG, capped at 6 m;
+  - one plain dormer per front, each with a hoist beam.
+  - It is drawn by the row mansard with its street band as deep as the pitch asks (`kit/roofKit.ts pitchBandM`) and
+    joined at the party walls; a plain dormer's hoist beam is drawn too.
+  - With the flag off the same records draw the stock tile mansard.
+- **Erkers (gap 3).** 952 erkers on 907 members are drawn by `kit/roofKit.ts drawErkers` through the row roof's hook:
+  - canted or box (half and open at a party wall);
+  - from the first floor to a white cap just over the cornice;
+  - brick between white-framed lights on every face and storey (transom, mullion), with a white sill slab.
+  - Erker triangles are kept out of the roof's outline cut (`RoofTri.kit`).
+  - A flat series with erkers (338 members) draws its lid as a 0.55 m coping behind the white cornice ledge, so the hook
+    exists.
+- **Portiek doors (gap 4): not done.** The ground cell's door belongs to the mesher's ground layout (lane R), and a kit
+  door over it would double it. This is left for lane R.
+
+### Sheets (photo | before | after, cached panoramas, Node)
+
+- **Biesboschstraat** `biesboschstraat-069135-069135`: 10 members, 81.8 m, four storeys, pitched.
+  - `artifacts/buurt-generators/rivierenbuurt/sheets/biesboschstraat-069135-069135/sheet.jpg`
+  - After: one cell along the row, the red tile roof with a dormer and hoist beam per pand, erkers where BAG has them
+    (paired ones read as one box across the party wall).
+- **Maasstraat** `maasstraat-129732-129732`: 7 members, 48.3 m, five storeys, flat, shops.
+  - `artifacts/buurt-generators/rivierenbuurt/sheets/maasstraat-129732-129732/sheet.jpg`
+  - After: one five-storey brown row at its 16.4 m line with shops where the shop data puts them. The photo's top
+    storey is a continuous band of white attic lights across the party walls, and the windows come in pairs; neither
+    is drawn.
+
+### Cost (scripts/house-line/row-front/front-cost.ts: walls + roof + extras, per row)
+
+| row | today | rows (ROW_FRONT) | rows + kit |
+|---|---:|---:|---:|
+| Biesboschstraat (10 pands) | 2,941 tris, 289 KiB | 4,804 tris, 477 KiB | 6,257 tris, 631 KiB |
+| Maasstraat (7 pands) | 2,112 tris, 213 KiB | 3,616 tris, 366 KiB | 5,078 tris, 516 KiB |
+
+About 210 triangles per pand come from the Plan Zuid casement preset's frames and sills (Maasstraat has no erkers or
+pitched roof). An erker is about 150-200 triangles.
+
+### Kit gaps still open
+
+1. **Portiek doors:** paired doors under one transom with a white canopy (lane R's ground layout).
+2. **Attic ribbon:** the top storey's continuous band of white lights across party walls (Maasstraat, Rijnstraat; also
+   Bos en Lommer).
+3. **Paired windows:** two casements with a brick or white pier between them as one cell; the preset draws evenly
+   spaced single lights.
+4. **Erker detail:**
+   - small-pane toplights;
+   - the erker's own window count per face (one light per face is drawn);
+   - wall windows hidden behind an erker still poke out at its sides.
+5. **Dormer size:** the photo's dormers are wider and set higher on the slope than the row dormer's 1.0 m cap.
+6. **Brick soldier course** over the ground storey; brick tone a shade darker in the photos.

@@ -91,7 +91,8 @@ Flags
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
                       normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall;
-                      "face": the frontage of the block face that lists the pand (its facts.json fronts[0], the chord over an erker)
+                      "face": the frontage of the block face that lists the pand (its facts.json fronts[0], the chord over an erker);
+                      "line:<lng,lat,lng,lat>": a stated front line, left to right as seen (buurt generator sheets)
   --set <set.json>    render every pand of a house-line set (scripts/house-specs/sets/*.json, e.g. the standing
                       easy-houses-20261110 acceptance set) in one session, each into <out>/<pand> (default
                       artifacts/house-preview/sets/<set name>/<pand>), other flags applied to each
@@ -314,6 +315,14 @@ async function frontWall(pandId: string, own: Feature, neighbours: Feature[], wa
       return { a: rdToLngLat({ x: a[0], y: a[1] }), b: rdToLngLat({ x: b[0], y: b[1] }), lengthM: Math.hypot(b[0] - a[0], b[1] - a[1]), source: `--wall face: ${face} frontage (${fr.street ?? ''})` };
     }
     throw new Error(`${pandId}: --wall face: no block face lists the pand`);
+  }
+  if (wallSpec?.startsWith('line:')) {
+    // --wall line:<lng,lat,lng,lat> (buurt generator sheets): a stated front line, left to right as seen from the street
+    // (the record's buurtKit.frontLine), so a jogged front is framed whole.
+    const [a0, a1, b0, b1] = wallSpec.slice(5).split(',').map(Number);
+    if (![a0, a1, b0, b1].every(Number.isFinite)) throw new Error(`--wall ${wallSpec}: want line:lng,lat,lng,lat`);
+    const ra = lngLatToRd([a0, a1]), rb = lngLatToRd([b0, b1]);
+    return { a: [a0, a1], b: [b0, b1], lengthM: Math.hypot(rb.x - ra.x, rb.y - ra.y), source: `--wall line: stated front line` };
   }
   if (wallSpec) {
     // --wall: the framed wall is a footprint edge (index or bearing), not the reference's or pickWall's choice.

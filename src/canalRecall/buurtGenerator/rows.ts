@@ -13,6 +13,8 @@
  * Nothing here is hashed: the same footprints give the same rows and series, whatever order they come in.
  */
 
+import { erkersOf, type BuurtErker } from './kit/frontKit.ts';
+
 export type LngLat = readonly [number, number];
 export interface GenPand {
   id: string;
@@ -56,6 +58,10 @@ export interface FrontEdge {
   n: XY;
   /** Street centre line distance from the edge midpoint (m). */
   streetM: number;
+  /** The front line: the chosen edge's line over the whole front (a, b projected onto it), lng/lat, left to right. */
+  lineA: LngLat; lineB: LngLat;
+  /** Erkers BAG draws in front of the line (kit/frontKit.ts erkersOf). */
+  erkers: BuurtErker[];
 }
 export interface GenMember { pand: GenPand; front: FrontEdge }
 export interface GenSeries {
@@ -154,9 +160,14 @@ export function frontEdgeOf(pand: GenPand, ringXY: XY[], neighbours: XY[][], str
     // Left to right as seen from the street: the viewer faces -n, so right is (-n.y, n.x).
     const right = { x: -n.y, y: n.x };
     const [aa, bb] = dot(sub(hi, lo), right) >= 0 ? [lo, hi] : [hi, lo];
-    best = { score, e: { street: near.name, a: aa, b: bb, aLngLat: frame.lngLat(aa), bLngLat: frame.lngLat(bb), lengthM: +len(sub(bb, aa)).toFixed(2), n, streetM: +near.m.toFixed(1) } };
+    const proj = (v: XY): XY => { const t = dot(sub(v, p), u); return { x: p.x + u.x * t, y: p.y + u.y * t }; };
+    const la = proj(aa), lb = proj(bb);
+    best = { score, e: { street: near.name, a: aa, b: bb, aLngLat: frame.lngLat(aa), bLngLat: frame.lngLat(bb), lengthM: +len(sub(bb, aa)).toFixed(2), n, streetM: +near.m.toFixed(1),
+      lineA: frame.lngLat(la), lineB: frame.lngLat(lb), erkers: [], la, lb } as FrontEdge & { la: XY; lb: XY } };
   }
-  return best?.e ?? null;
+  if (!best) return null;
+  const { la, lb, ...e } = best.e as FrontEdge & { la: XY; lb: XY };
+  return { ...e, erkers: erkersOf(ringXY, la, lb, e.n) };
 }
 
 const angleDeg = (u: XY, v: XY) => Math.acos(Math.max(-1, Math.min(1, dot(u, v) / (len(u) * len(v) || 1)))) * 180 / Math.PI;
