@@ -1,0 +1,64 @@
+{
+ "about": "Opus front verdicts on the front-check montages (artifacts/repeated-buildings/front-check/<group>.jpg), 2026-11-15, by a fresh reviewer that did not build the detector. Membership is decided on the front photo; the footprint group is only the candidate. Pands are given by their last 6 digits and resolved against front-check.json copiesDetail. exact = one model fits every member bar paint; near = one design family with variants; false = different buildings that share a footprint.",
+ "groups": {
+  "pre-war-house-1898-160905": {"verdict": "exact", "confidence": "high", "families": [
+   {"name": "Staatsliedenbuurt red-door banded block", "front": "4 storeys plus cornice with small dormer pediments; dark red-brown brick with cream speklagen and cream window-head blocks; paired red doors; no balconies. 163783 and 164255 carry a ground-floor shop (corner variant).",
+    "pands": ["164325","162901","159018","152824","157270","157716","165179","166822","155669","153637","156725","162195","164255","152789","156164","166050","154220","160905","163783","152378","164747","159387","162154","157219","155828","156074","159068","156403","152438","155649","156097","160524","166413","167168"]}],
+   "notInDesign": ["156020","163912","167104","155730"]},
+  "pre-war-house-1888-157676": {"verdict": "exact", "confidence": "high", "families": [
+   {"name": "Frederik Hendrikbuurt red-door banded block", "front": "4 storeys, red-brown brick, white window heads and bands, paired red doors, flat cornice with small dormer pediments (same corporation style as 1898-160905).",
+    "pands": ["155831","156059","153678","157111","157672","157692","158307","156794","156727","159135","156678","157843","158151","164721","165508","167163","162863","153786","162506","152999","166596","163222","160880","158949","167046","165332","158704","160230","165392"]},
+   {"name": "Frederik Hendrikbuurt block, gabled centre", "front": "same facade, crown with a central stepped or neck brick gable",
+    "pands": ["152931","164007","158916","152966"]}]},
+  "pre-war-house-1927-099667": {"verdict": "exact", "confidence": "high", "families": [
+   {"name": "Hoofdweg Amsterdam School block (Wijdeveld)", "front": "4 storeys, brown brick, flat roof with a row of small square attic windows, white window bands, paired painted doors (door colour is paint only).",
+    "pands": ["129749","120168","072329","134340","146201","092627","138458","135431","082464","133578","123035","110282","138770","131310","080872","111342","099251","140454","117529","098317","101779","117766","131570","097225","074912","136919","072117","105775","068751","136266","105397"]},
+   {"name": "Hoofdweg block, corner loggia stair tower", "front": "corner/loggia stair-tower variant", "pands": ["081322","149423","076747","077772","143312"]},
+   {"name": "Hoofdweg block, shop base", "front": "shop-base variant", "pands": ["112696","114366"]}],
+   "notInDesign": ["118248"], "unusable": ["125604"]},
+  "pre-war-house-1932-110618": {"verdict": "exact", "confidence": "high", "families": [
+   {"name": "Orteliusstraat 1932 block with bays and roof band", "front": "3 storeys dark-brown brick under a red-tile hipped roof with small dormers; top floor a continuous white window band with short white piers; floors 1-2 wide shallow bays with white frames; recessed open stair entrances.",
+    "pands": ["125381","098572","068549","151631","103324","068615","105593","075460","148546","088802","086400","076764","094537","146968","079190","117053","111492","139478","152006","109453","091777","089046","111292","099715","101975","083367","098506","150975"]}],
+   "notInDesign": ["082732","181908","140701"]},
+  "pre-war-house-1910-181351": {"verdict": "exact", "confidence": "high", "families": [
+   {"name": "Sarphatistraat arched-door block (Berlage)", "front": "4 storeys, brown brick, paired round-arched ground-floor doorways, small balconies on the upper floors, flat cornice with small dormers.",
+    "pands": ["181466","181389","181465","170677","170824","181421","181458","181385","180964","181351","170680","181420","181390","180966","170681","181463","181388","181394","181350"]}],
+   "near": ["181464"], "unusable": ["181393","180965"]},
+  "post-war-house-1974-108639": {"verdict": "exact", "confidence": "high", "families": [
+   {"name": "Roomtuintjes 1974 gallery block segment", "front": "4-storey red-brown brick block, continuous green-glass balcony band, white window grid, garage-door plinth; one long building split into pands (075294 and 147606 are end bays).",
+    "pands": ["098140","075294","147606","091953","076805","080316","141178","128006","116936","133877","063442","145563","068704","085504","107875","138401","108639","114890"]}]},
+  "post-war-house-1987-086090": {"verdict": "exact", "confidence": "medium", "families": [
+   {"name": "Nieuwendammerdijk 1987 dormer terrace house", "front": "brick ground floor, steep dark tiled roof with a large white box dormer, white porch/garage panel; 137179 is an end house.",
+    "pands": ["100111","127501","104331","067355","092212","081636","086090","137179"]}],
+   "notInDesign": ["158438"], "unusable": ["108068"]},
+  "pre-war-house-1888-173381": {"verdict": "near", "confidence": "medium-high", "families": [
+   {"name": "Marnixstraat red-brick block", "front": "4 storeys, red brick, cream segmental window heads, cornice with small dormer pediments; shop bases on 173376, 172787, 172599, 172786.",
+    "pands": ["169695","173333","173332","169693","173376","173337","173338","173378","172787","172599","173362","173377","169697","168633","168634","173254","172788","172601","172786","173336"]},
+   {"name": "Marnixkade purple-brown block", "front": "4 storeys, darker purple-brown brick, white window surrounds, flat cornice, white door cases.",
+    "pands": ["168678","168711","168680","173738","168682","173737","168671","173381","168674","173736","168672","168673"]}],
+   "unusable": ["169469","173382","173380","173741"]},
+  "pre-war-house-1924-121384": {"verdict": "near", "confidence": "medium", "families": [
+   {"name": "Vogelbuurt dark-brick mid-row unit", "front": "2 storeys plus tiled roof with box dormer; wide 3-light window plus a narrow window, paired green doors.", "pands": ["103927","067838","121272","093848","084287","130020","132122","137973","106396","131012","121384","083297"]},
+   {"name": "Vogelbuurt red-brick gable-centred unit", "front": "Pelikaanstraat", "pands": ["120713","104432","153865","087399"]},
+   {"name": "Vogelbuurt red-brick mid-row unit", "front": "Pelikaanstraat", "pands": ["108368","131893","065905"]},
+   {"name": "Vogelbuurt grey-blue brick hipped unit", "front": "blue frames, hipped roof with dormers", "pands": ["108158","132131","100976"]},
+   {"name": "Vogelbuurt grey-brick gable unit", "front": "", "pands": ["093505","141500","110710","090659"]}]},
+  "pre-war-house-1936-094314": {"verdict": "near", "confidence": "medium", "families": [
+   {"name": "1936 light-brick terrace with set-back box dormer", "front": "2 storeys plus set-back white box dormer, wide 3-light white windows", "pands": ["094314","117593","062170","090474","134959","063186"]},
+   {"name": "1936 pitched-roof terrace, arched doors", "front": "", "pands": ["111388","129477","071978"]},
+   {"name": "1936 darker brick flat-crown terrace", "front": "", "pands": ["063420","150631","135655"]}]},
+  "pre-war-house-1933-165863": {"verdict": "near", "confidence": "medium", "families": [
+   {"name": "Schellingwouderdijk white bell gable", "front": "white render, curved bell gable with one window", "pands": ["152820","165863","153005","155987"]}]},
+  "pre-war-house-1933-162360": {"verdict": "near-or-false", "confidence": "medium", "families": []},
+  "pre-war-house-1933-107627": {"verdict": "near", "confidence": "low", "families": [
+   {"name": "1930s brick villa with rounded corner bay", "front": "", "pands": ["106053","107627","061296"]}]},
+  "pre-war-house-1937-076953": {"verdict": "near", "confidence": "low", "families": [
+   {"name": "Schellingwouderdijk hipped brick terrace", "front": "seen only distantly", "pands": ["061227","133978","082762"]}]},
+  "pre-war-house-1912-153580": {"verdict": "near-or-false", "confidence": "medium", "families": []},
+  "pre-war-house-1899-163041": {"verdict": "false", "confidence": "high", "families": []},
+  "pre-war-house-1890-155408": {"verdict": "false", "confidence": "high", "families": []},
+  "pre-war-block-1850-571557": {"verdict": "false", "confidence": "high", "why": "three parts of one corner building, not repeats", "families": []},
+  "pre-war-house-1932-099268": {"verdict": "false", "confidence": "low", "why": "unusable fronts", "families": []},
+  "pre-war-house-1934-102591": {"verdict": "unusable", "confidence": "low", "families": []}
+ }
+}

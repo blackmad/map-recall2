@@ -1,0 +1,4592 @@
+{
+ "generatedAt": "2026-11-15T17:37:18.216Z",
+ "method": {
+  "detect": {
+   "signature": "src/canalRecall/repeatedBuildings/signature.ts: BAG ring in RD New, collinear-simplified (0.15 m), centroid + MRR long axis frame; symmetric Hausdorff over 4 poses (8 when square-ish), mirrored copies match",
+   "tolerance": {
+    "shapeM": 0.9,
+    "sideM": 0.8,
+    "areaShare": 0.07,
+    "heightM": 1.3,
+    "years": 3,
+    "shape": "max(0.9 m, 2 % of L)",
+    "localPairsM": 250,
+    "cityWidePairsComplexityMin": 0.25
+   },
+   "exposure": "ride-visibility.ts sampleRoutes(800 routes, seed 7), Σ 5 m × passes of samples within 35 m of the footprint",
+   "skipped": {
+    "minor": 117041,
+    "noYear": 12822,
+    "noSig": 1,
+    "covered": 15256
+   },
+   "candidates": 205785,
+   "coveredSkipped": 15256,
+   "sources": "bag-tiles/14 (BAG CC0 + 3DBAG CC BY 4.0), building-facts (RCE register), streets-routing (OSM ODbL), panoramas data.amsterdam.nl (CC BY 4.0)"
+  },
+  "rule": "footprint group = candidate; membership decided on the front photo (opus montage review)"
+ },
+ "summary": {
+  "candidatesInDetector": 3110,
+  "reported": 50,
+  "frontChecked": 20,
+  "exactGroups": 7,
+  "copiesFrontChecked": 322,
+  "copiesInAcceptedFamilies": 256,
+  "copiesFootprintMatchFrontDiffers": 90
+ },
+ "groups": [
+  {
+   "rank": 1,
+   "group": "pre-war-house-1898-160905",
+   "copies": 40,
+   "exposure": 46905,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1895,
+    1901
+   ],
+   "footprint": {
+    "L": 12.1,
+    "W": 5,
+    "height": 16.1,
+    "roof": 3,
+    "complexity": 0.32
+   },
+   "spread": {
+    "maxShapeM": 0.8,
+    "medianShapeM": 0.13,
+    "heightM": 2.2,
+    "years": 6,
+    "mirroredShare": 0.53,
+    "spanKm": 2.7
+   },
+   "streets": [
+    {
+     "name": "Rombout Hogerbeetsstraat",
+     "n": 17
+    },
+    {
+     "name": "Gillis van Ledenberchstraat",
+     "n": 17
+    },
+    {
+     "name": "Tweede Hugo de Grootstraat",
+     "n": 2
+    },
+    {
+     "name": "Palmstraat",
+     "n": 1
+    },
+    {
+     "name": "Eerste Helmersstraat",
+     "n": 1
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.48,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 38,
+    "read": 34,
+    "autoFamilies": [
+     2,
+     9,
+     1,
+     15,
+     1,
+     4,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1898-160905.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "high",
+    "notInDesign": [
+     "156020",
+     "163912",
+     "167104",
+     "155730"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "Staatsliedenbuurt red-door banded block",
+     "front": "4 storeys plus cornice with small dormer pediments; dark red-brown brick with cream speklagen and cream window-head blocks; paired red doors; no balconies. 163783 and 164255 carry a ground-floor shop (corner variant).",
+     "copies": 34,
+     "autoFamiliesSpanned": 7,
+     "pands": [
+      "0363100012164325",
+      "0363100012162901",
+      "0363100012159018",
+      "0363100012152824",
+      "0363100012157270",
+      "0363100012157716",
+      "0363100012165179",
+      "0363100012166822",
+      "0363100012155669",
+      "0363100012153637",
+      "0363100012156725",
+      "0363100012162195",
+      "0363100012164255",
+      "0363100012152789",
+      "0363100012156164",
+      "0363100012166050",
+      "0363100012154220",
+      "0363100012160905",
+      "0363100012163783",
+      "0363100012152378",
+      "0363100012164747",
+      "0363100012159387",
+      "0363100012162154",
+      "0363100012157219",
+      "0363100012155828",
+      "0363100012156074",
+      "0363100012159068",
+      "0363100012156403",
+      "0363100012152438",
+      "0363100012155649",
+      "0363100012156097",
+      "0363100012160524",
+      "0363100012166413",
+      "0363100012167168"
+     ],
+     "exposure": 36170
+    }
+   ],
+   "memberPands": [
+    "0363100012167104",
+    "0363100012155730",
+    "0363100012156164",
+    "0363100012166050",
+    "0363100012154220",
+    "0363100012160905",
+    "0363100012159068",
+    "0363100012164325",
+    "0363100012156403",
+    "0363100012162901",
+    "0363100012156020",
+    "0363100012163912",
+    "0363100012159018",
+    "0363100012152438",
+    "0363100012152824",
+    "0363100012157270",
+    "0363100012157716",
+    "0363100012165179",
+    "0363100012166822",
+    "0363100012157219",
+    "0363100012155669",
+    "0363100012155828",
+    "0363100012156074",
+    "0363100012156097",
+    "0363100012160524",
+    "0363100012166413",
+    "0363100012163783",
+    "0363100012153637",
+    "0363100012156725",
+    "0363100012152378",
+    "0363100012164747",
+    "0363100012155649",
+    "0363100012162195",
+    "0363100012164255",
+    "0363100012167168",
+    "0363100012159387",
+    "0363100012152789",
+    "0363100012162154",
+    "0363100012173092",
+    "0363100012172826"
+   ]
+  },
+  {
+   "rank": 2,
+   "group": "pre-war-house-1936-094314",
+   "copies": 12,
+   "exposure": 44750,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1936,
+    1939
+   ],
+   "footprint": {
+    "L": 8.5,
+    "W": 5.6,
+    "height": 11.3,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.21,
+    "medianShapeM": 0.14,
+    "heightM": 1.2,
+    "years": 3,
+    "mirroredShare": 0.58,
+    "spanKm": 0.15
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 12
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 12,
+    "read": 8,
+    "autoFamilies": [
+     1,
+     5,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1936-094314.jpg"
+   },
+   "verdict": {
+    "verdict": "near",
+    "confidence": "medium"
+   },
+   "exactFamilies": [
+    {
+     "name": "1936 light-brick terrace with set-back box dormer",
+     "front": "2 storeys plus set-back white box dormer, wide 3-light white windows",
+     "copies": 6,
+     "autoFamiliesSpanned": 2,
+     "pands": [
+      "0363100012094314",
+      "0363100012117593",
+      "0363100012062170",
+      "0363100012090474",
+      "0363100012134959",
+      "0363100012063186"
+     ],
+     "exposure": 22500
+    },
+    {
+     "name": "1936 pitched-roof terrace, arched doors",
+     "front": "",
+     "copies": 3,
+     "autoFamiliesSpanned": 2,
+     "pands": [
+      "0363100012111388",
+      "0363100012129477",
+      "0363100012071978"
+     ],
+     "exposure": 11000
+    },
+    {
+     "name": "1936 darker brick flat-crown terrace",
+     "front": "",
+     "copies": 3,
+     "autoFamiliesSpanned": 1,
+     "pands": [
+      "0363100012063420",
+      "0363100012150631",
+      "0363100012135655"
+     ],
+     "exposure": 11250
+    }
+   ],
+   "memberPands": [
+    "0363100012062170",
+    "0363100012090474",
+    "0363100012111388",
+    "0363100012129477",
+    "0363100012134959",
+    "0363100012063186",
+    "0363100012063420",
+    "0363100012094314",
+    "0363100012117593",
+    "0363100012135655",
+    "0363100012150631",
+    "0363100012071978"
+   ]
+  },
+  {
+   "rank": 3,
+   "group": "pre-war-house-1888-173381",
+   "copies": 58,
+   "exposure": 44620,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1887,
+    1890
+   ],
+   "footprint": {
+    "L": 13.2,
+    "W": 5.8,
+    "height": 16.7,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.22,
+    "medianShapeM": 0.13,
+    "heightM": 1.6,
+    "years": 3,
+    "mirroredShare": 0.48,
+    "spanKm": 0.4
+   },
+   "streets": [
+    {
+     "name": "Marnixkade",
+     "n": 36
+    },
+    {
+     "name": "Marnixstraat",
+     "n": 22
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 40,
+    "read": 39,
+    "autoFamilies": [
+     3,
+     6,
+     5,
+     3,
+     9,
+     3,
+     1,
+     1,
+     1,
+     1,
+     1,
+     3,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1888-173381.jpg"
+   },
+   "verdict": {
+    "verdict": "near",
+    "confidence": "medium-high",
+    "unusable": [
+     "169469",
+     "173382",
+     "173380",
+     "173741"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "Marnixstraat red-brick block",
+     "front": "4 storeys, red brick, cream segmental window heads, cornice with small dormer pediments; shop bases on 173376, 172787, 172599, 172786.",
+     "copies": 20,
+     "autoFamiliesSpanned": 8,
+     "pands": [
+      "0363100012169695",
+      "0363100012173333",
+      "0363100012173332",
+      "0363100012169693",
+      "0363100012173376",
+      "0363100012173337",
+      "0363100012173338",
+      "0363100012173378",
+      "0363100012172787",
+      "0363100012172599",
+      "0363100012173362",
+      "0363100012173377",
+      "0363100012169697",
+      "0363100012168633",
+      "0363100012168634",
+      "0363100012173254",
+      "0363100012172788",
+      "0363100012172601",
+      "0363100012172786",
+      "0363100012173336"
+     ],
+     "exposure": 28700
+    },
+    {
+     "name": "Marnixkade purple-brown block",
+     "front": "4 storeys, darker purple-brown brick, white window surrounds, flat cornice, white door cases.",
+     "copies": 12,
+     "autoFamiliesSpanned": 9,
+     "pands": [
+      "0363100012168678",
+      "0363100012168711",
+      "0363100012168680",
+      "0363100012173738",
+      "0363100012168682",
+      "0363100012173737",
+      "0363100012168671",
+      "0363100012173381",
+      "0363100012168674",
+      "0363100012173736",
+      "0363100012168672",
+      "0363100012168673"
+     ],
+     "exposure": 5720
+    }
+   ],
+   "memberPands": [
+    "0363100012173362",
+    "0363100012169693",
+    "0363100012173376",
+    "0363100012173377",
+    "0363100012173378",
+    "0363100012169697",
+    "0363100012169695",
+    "0363100012173336",
+    "0363100012173337",
+    "0363100012169469",
+    "0363100012173338",
+    "0363100012168634",
+    "0363100012173254",
+    "0363100012173333",
+    "0363100012168633",
+    "0363100012172601",
+    "0363100012173332",
+    "0363100012172786",
+    "0363100012172787",
+    "0363100012172788",
+    "0363100012172789",
+    "0363100012172599",
+    "0363100012173358",
+    "0363100012173357",
+    "0363100012173380",
+    "0363100012173738",
+    "0363100012168671",
+    "0363100012168678",
+    "0363100012173381",
+    "0363100012168672",
+    "0363100012168711",
+    "0363100012173446",
+    "0363100012168673",
+    "0363100012168674",
+    "0363100012168680",
+    "0363100012173741",
+    "0363100012168682",
+    "0363100012173382",
+    "0363100012173736",
+    "0363100012173737",
+    "0363100012173740",
+    "0363100012168357",
+    "0363100012168364",
+    "0363100012168363",
+    "0363100012173368",
+    "0363100012174068",
+    "0363100012174070",
+    "0363100012168355",
+    "0363100012168361",
+    "0363100012174067",
+    "0363100012168358",
+    "0363100012173366",
+    "0363100012173367",
+    "0363100012173365",
+    "0363100012174071",
+    "0363100012168359",
+    "0363100012173369",
+    "0363100012173363"
+   ]
+  },
+  {
+   "rank": 4,
+   "group": "pre-war-house-1927-099667",
+   "copies": 51,
+   "exposure": 38560,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1927,
+    1927
+   ],
+   "footprint": {
+    "L": 11.5,
+    "W": 6,
+    "height": 15.5,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.84,
+    "medianShapeM": 0.12,
+    "heightM": 1.2,
+    "years": 0,
+    "mirroredShare": 0.39,
+    "spanKm": 0.36
+   },
+   "streets": [
+    {
+     "name": "Hoofdweg",
+     "n": 51
+    }
+   ],
+   "architects": [
+    "H. Th. Wijdeveld"
+   ],
+   "names": [],
+   "detectorConfidence": 0.6,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 40,
+    "read": 32,
+    "autoFamilies": [
+     2,
+     6,
+     4,
+     11,
+     3,
+     3,
+     1,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1927-099667.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "high",
+    "notInDesign": [
+     "118248"
+    ],
+    "unusable": [
+     "125604"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "Hoofdweg Amsterdam School block (Wijdeveld)",
+     "front": "4 storeys, brown brick, flat roof with a row of small square attic windows, white window bands, paired painted doors (door colour is paint only).",
+     "copies": 31,
+     "autoFamiliesSpanned": 8,
+     "pands": [
+      "0363100012129749",
+      "0363100012120168",
+      "0363100012072329",
+      "0363100012134340",
+      "0363100012146201",
+      "0363100012092627",
+      "0363100012138458",
+      "0363100012135431",
+      "0363100012082464",
+      "0363100012133578",
+      "0363100012123035",
+      "0363100012110282",
+      "0363100012138770",
+      "0363100012131310",
+      "0363100012080872",
+      "0363100012111342",
+      "0363100012099251",
+      "0363100012140454",
+      "0363100012117529",
+      "0363100012098317",
+      "0363100012101779",
+      "0363100012117766",
+      "0363100012131570",
+      "0363100012097225",
+      "0363100012074912",
+      "0363100012136919",
+      "0363100012072117",
+      "0363100012105775",
+      "0363100012068751",
+      "0363100012136266",
+      "0363100012105397"
+     ],
+     "exposure": 24390
+    },
+    {
+     "name": "Hoofdweg block, corner loggia stair tower",
+     "front": "corner/loggia stair-tower variant",
+     "copies": 5,
+     "autoFamiliesSpanned": 2,
+     "pands": [
+      "0363100012081322",
+      "0363100012149423",
+      "0363100012076747",
+      "0363100012077772",
+      "0363100012143312"
+     ],
+     "exposure": 3925
+    }
+   ],
+   "memberPands": [
+    "0363100012114366",
+    "0363100012133578",
+    "0363100012138770",
+    "0363100012129749",
+    "0363100012099251",
+    "0363100012112696",
+    "0363100012097225",
+    "0363100012123035",
+    "0363100012074912",
+    "0363100012140454",
+    "0363100012081322",
+    "0363100012149423",
+    "0363100012136919",
+    "0363100012120168",
+    "0363100012131310",
+    "0363100012072329",
+    "0363100012118248",
+    "0363100012076747",
+    "0363100012077772",
+    "0363100012101779",
+    "0363100012110282",
+    "0363100012143312",
+    "0363100012080872",
+    "0363100012134340",
+    "0363100012146201",
+    "0363100012092627",
+    "0363100012117529",
+    "0363100012138458",
+    "0363100012072117",
+    "0363100012105775",
+    "0363100012068751",
+    "0363100012117766",
+    "0363100012136266",
+    "0363100012125604",
+    "0363100012135431",
+    "0363100012082464",
+    "0363100012098317",
+    "0363100012105397",
+    "0363100012131570",
+    "0363100012111342",
+    "0363100012099667",
+    "0363100012102843",
+    "0363100012111525",
+    "0363100012121692",
+    "0363100012098130",
+    "0363100012130179",
+    "0363100012114151",
+    "0363100012149273",
+    "0363100012115491",
+    "0363100012127048",
+    "0363100012120206"
+   ]
+  },
+  {
+   "rank": 5,
+   "group": "pre-war-house-1933-165863",
+   "copies": 6,
+   "exposure": 37380,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1933,
+    1933
+   ],
+   "footprint": {
+    "L": 7.4,
+    "W": 5.6,
+    "height": 8.1,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.31,
+    "medianShapeM": 0.12,
+    "heightM": 1.4,
+    "years": 0,
+    "mirroredShare": 0.5,
+    "spanKm": 0.11
+   },
+   "streets": [
+    {
+     "name": "Schellingwouderdijk",
+     "n": 6
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.5,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 6,
+    "read": 5,
+    "autoFamilies": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1933-165863.jpg"
+   },
+   "verdict": {
+    "verdict": "near",
+    "confidence": "medium"
+   },
+   "exactFamilies": [
+    {
+     "name": "Schellingwouderdijk white bell gable",
+     "front": "white render, curved bell gable with one window",
+     "copies": 4,
+     "autoFamiliesSpanned": 3,
+     "pands": [
+      "0363100012152820",
+      "0363100012165863",
+      "0363100012153005",
+      "0363100012155987"
+     ],
+     "exposure": 25200
+    }
+   ],
+   "memberPands": [
+    "0363100012162491",
+    "0363100012152820",
+    "0363100012153005",
+    "0363100012155987",
+    "0363100012165863",
+    "0363100012164415"
+   ]
+  },
+  {
+   "rank": 6,
+   "group": "post-war-house-1987-086090",
+   "copies": 10,
+   "exposure": 36250,
+   "archetypeGuess": "post-war house",
+   "years": [
+    1987,
+    1987
+   ],
+   "footprint": {
+    "L": 9.6,
+    "W": 5.1,
+    "height": 9,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.43,
+    "medianShapeM": 0.07,
+    "heightM": 1.3,
+    "years": 0,
+    "mirroredShare": 0.6,
+    "spanKm": 0.05
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 10
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.5,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 10,
+    "read": 8,
+    "autoFamilies": [
+     3,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/post-war-house-1987-086090.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "medium",
+    "notInDesign": [
+     "158438"
+    ],
+    "unusable": [
+     "108068"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "Nieuwendammerdijk 1987 dormer terrace house",
+     "front": "brick ground floor, steep dark tiled roof with a large white box dormer, white porch/garage panel; 137179 is an end house.",
+     "copies": 8,
+     "autoFamiliesSpanned": 5,
+     "pands": [
+      "0363100012100111",
+      "0363100012127501",
+      "0363100012104331",
+      "0363100012067355",
+      "0363100012092212",
+      "0363100012081636",
+      "0363100012086090",
+      "0363100012137179"
+     ],
+     "exposure": 29000
+    }
+   ],
+   "memberPands": [
+    "0363100012081636",
+    "0363100012100111",
+    "0363100012104331",
+    "0363100012127501",
+    "0363100012158438",
+    "0363100012108068",
+    "0363100012067355",
+    "0363100012086090",
+    "0363100012092212",
+    "0363100012137179"
+   ]
+  },
+  {
+   "rank": 7,
+   "group": "pre-war-house-1924-121384",
+   "copies": 69,
+   "exposure": 35315,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1924,
+    1930
+   ],
+   "footprint": {
+    "L": 9.9,
+    "W": 6.4,
+    "height": 10.9,
+    "roof": 3,
+    "complexity": 0.25
+   },
+   "spread": {
+    "maxShapeM": 0.89,
+    "medianShapeM": 0.24,
+    "heightM": 2.4,
+    "years": 6,
+    "mirroredShare": 0.51,
+    "spanKm": 6.97
+   },
+   "streets": [
+    {
+     "name": "Adelaarsweg",
+     "n": 19
+    },
+    {
+     "name": "Pelikaanstraat",
+     "n": 10
+    },
+    {
+     "name": "Pluvierplein",
+     "n": 10
+    },
+    {
+     "name": "Pieter Lastmankade",
+     "n": 6
+    },
+    {
+     "name": "Kalkoenstraat",
+     "n": 5
+    }
+   ],
+   "architects": [
+    "J.C. van Epen"
+   ],
+   "names": [
+    "Woningbouwcomplex Amstelveenseweg eo"
+   ],
+   "detectorConfidence": 0.56,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 35,
+    "read": 32,
+    "autoFamilies": [
+     2,
+     8,
+     2,
+     5,
+     2,
+     2,
+     1,
+     2,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1924-121384.jpg"
+   },
+   "verdict": {
+    "verdict": "near",
+    "confidence": "medium"
+   },
+   "exactFamilies": [
+    {
+     "name": "Vogelbuurt dark-brick mid-row unit",
+     "front": "2 storeys plus tiled roof with box dormer; wide 3-light window plus a narrow window, paired green doors.",
+     "copies": 12,
+     "autoFamiliesSpanned": 8,
+     "pands": [
+      "0363100012103927",
+      "0363100012067838",
+      "0363100012121272",
+      "0363100012093848",
+      "0363100012084287",
+      "0363100012130020",
+      "0363100012132122",
+      "0363100012137973",
+      "0363100012106396",
+      "0363100012131012",
+      "0363100012121384",
+      "0363100012083297"
+     ],
+     "exposure": 14510
+    },
+    {
+     "name": "Vogelbuurt red-brick gable-centred unit",
+     "front": "Pelikaanstraat",
+     "copies": 4,
+     "autoFamiliesSpanned": 3,
+     "pands": [
+      "0363100012120713",
+      "0363100012104432",
+      "0363100012153865",
+      "0363100012087399"
+     ],
+     "exposure": 3180
+    },
+    {
+     "name": "Vogelbuurt red-brick mid-row unit",
+     "front": "Pelikaanstraat",
+     "copies": 3,
+     "autoFamiliesSpanned": 3,
+     "pands": [
+      "0363100012108368",
+      "0363100012131893",
+      "0363100012065905"
+     ],
+     "exposure": 2280
+    },
+    {
+     "name": "Vogelbuurt grey-blue brick hipped unit",
+     "front": "blue frames, hipped roof with dormers",
+     "copies": 3,
+     "autoFamiliesSpanned": 3,
+     "pands": [
+      "0363100012108158",
+      "0363100012132131",
+      "0363100012100976"
+     ],
+     "exposure": 4220
+    },
+    {
+     "name": "Vogelbuurt grey-brick gable unit",
+     "front": "",
+     "copies": 4,
+     "autoFamiliesSpanned": 4,
+     "pands": [
+      "0363100012093505",
+      "0363100012141500",
+      "0363100012110710",
+      "0363100012090659"
+     ],
+     "exposure": 5295
+    }
+   ],
+   "memberPands": [
+    "0363100012116365",
+    "0363100012110710",
+    "0363100012094241",
+    "0363100012121272",
+    "0363100012100976",
+    "0363100012093505",
+    "0363100012106396",
+    "0363100012103927",
+    "0363100012108158",
+    "0363100012132131",
+    "0363100012067838",
+    "0363100012132122",
+    "0363100012083297",
+    "0363100012084287",
+    "0363100012090659",
+    "0363100012093848",
+    "0363100012091888",
+    "0363100012137973",
+    "0363100012141500",
+    "0363100012130020",
+    "0363100012153865",
+    "0363100012121384",
+    "0363100012065905",
+    "0363100012131893",
+    "0363100012087361",
+    "0363100012087399",
+    "0363100012120713",
+    "0363100012131012",
+    "0363100012104432",
+    "0363100012108368",
+    "0363100012075147",
+    "0363100012094104",
+    "0363100012081764",
+    "0363100012083471",
+    "0363100012082139",
+    "0363100012061542",
+    "0363100012063621",
+    "0363100012070701",
+    "0363100012090671",
+    "0363100012097125",
+    "0363100012099505",
+    "0363100012099649",
+    "0363100012100538",
+    "0363100012108326",
+    "0363100012113533",
+    "0363100012115096",
+    "0363100012116656",
+    "0363100012122496",
+    "0363100012125723",
+    "0363100012141895",
+    "0363100012149277",
+    "0363100012150102",
+    "0363100012151759",
+    "0363100012139726",
+    "0363100012115376",
+    "0363100012124227",
+    "0363100012115619",
+    "0363100012123964",
+    "0363100012079876",
+    "0363100012110185",
+    "0363100012124829",
+    "0363100012128455",
+    "0363100012148892",
+    "0363100012154965",
+    "0363100012141629",
+    "0363100012141046",
+    "0363100012147105",
+    "0363100012111845",
+    "0363100012139341"
+   ]
+  },
+  {
+   "rank": 8,
+   "group": "pre-war-house-1912-153580",
+   "copies": 40,
+   "exposure": 34940,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1907,
+    1913
+   ],
+   "footprint": {
+    "L": 12.3,
+    "W": 8.2,
+    "height": 16.9,
+    "roof": 3,
+    "complexity": 0.25
+   },
+   "spread": {
+    "maxShapeM": 0.93,
+    "medianShapeM": 0.2,
+    "heightM": 1.9,
+    "years": 6,
+    "mirroredShare": 0.5,
+    "spanKm": 5.4
+   },
+   "streets": [
+    {
+     "name": "Admiraal De Ruijterweg",
+     "n": 28
+    },
+    {
+     "name": "Eerste Helmersstraat",
+     "n": 4
+    },
+    {
+     "name": "Retiefstraat",
+     "n": 2
+    },
+    {
+     "name": "Amstelveenseweg",
+     "n": 1
+    },
+    {
+     "name": "Hondecoeterstraat",
+     "n": 1
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.46,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 33,
+    "read": 31,
+    "autoFamilies": [
+     3,
+     1,
+     2,
+     5,
+     5,
+     3,
+     8,
+     1,
+     1,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1912-153580.jpg"
+   },
+   "verdict": {
+    "verdict": "near-or-false",
+    "confidence": "medium"
+   },
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012166473",
+    "0363100012153612",
+    "0363100012152913",
+    "0363100012074389",
+    "0363100012157910",
+    "0363100012157991",
+    "0363100012159937",
+    "0363100012160841",
+    "0363100012161574",
+    "0363100012165965",
+    "0363100012153045",
+    "0363100012160883",
+    "0363100012164194",
+    "0363100012160579",
+    "0363100012156376",
+    "0363100012076508",
+    "0363100012162509",
+    "0363100012161079",
+    "0363100012153580",
+    "0363100012158891",
+    "0363100012160184",
+    "0363100012158688",
+    "0363100012158456",
+    "0363100012158914",
+    "0363100012161161",
+    "0363100012162568",
+    "0363100012165933",
+    "0363100012088786",
+    "0363100012161241",
+    "0363100012153799",
+    "0363100012068730",
+    "0363100012081061",
+    "0363100012233703",
+    "0363100012069330",
+    "0363100012120031",
+    "0363100012120432",
+    "0363100012141661",
+    "0363100012152365",
+    "0363100012106170",
+    "0363100012110972"
+   ]
+  },
+  {
+   "rank": 9,
+   "group": "pre-war-house-1937-076953",
+   "copies": 6,
+   "exposure": 34935,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1937,
+    1940
+   ],
+   "footprint": {
+    "L": 8.6,
+    "W": 6.1,
+    "height": 11.1,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.24,
+    "medianShapeM": 0.13,
+    "heightM": 0.7,
+    "years": 3,
+    "mirroredShare": 0.33,
+    "spanKm": 0.11
+   },
+   "streets": [
+    {
+     "name": "Schellingwouderdijk",
+     "n": 6
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 6,
+    "read": 4,
+    "autoFamilies": [
+     2,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1937-076953.jpg"
+   },
+   "verdict": {
+    "verdict": "near",
+    "confidence": "low"
+   },
+   "exactFamilies": [
+    {
+     "name": "Schellingwouderdijk hipped brick terrace",
+     "front": "seen only distantly",
+     "copies": 3,
+     "autoFamiliesSpanned": 2,
+     "pands": [
+      "0363100012061227",
+      "0363100012133978",
+      "0363100012082762"
+     ],
+     "exposure": 17550
+    }
+   ],
+   "memberPands": [
+    "0363100012061227",
+    "0363100012084040",
+    "0363100012133978",
+    "0363100012148019",
+    "0363100012082762",
+    "0363100012076953"
+   ]
+  },
+  {
+   "rank": 10,
+   "group": "pre-war-house-1932-099268",
+   "copies": 17,
+   "exposure": 33005,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1930,
+    1934
+   ],
+   "footprint": {
+    "L": 8.6,
+    "W": 6.5,
+    "height": 10.8,
+    "roof": 3,
+    "complexity": 0.25
+   },
+   "spread": {
+    "maxShapeM": 1.24,
+    "medianShapeM": 0.14,
+    "heightM": 1.6,
+    "years": 4,
+    "mirroredShare": 0.47,
+    "spanKm": 7.54
+   },
+   "streets": [
+    {
+     "name": "Smaragdplein",
+     "n": 10
+    },
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 5
+    },
+    {
+     "name": "Schellingwouderdijk",
+     "n": 1
+    },
+    {
+     "name": "Patroclosstraat",
+     "n": 1
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.46,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 6,
+    "read": 2,
+    "autoFamilies": [
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1932-099268.jpg"
+   },
+   "verdict": {
+    "verdict": "false",
+    "confidence": "low",
+    "why": "unusable fronts"
+   },
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012083833",
+    "0363100012087492",
+    "0363100012134032",
+    "0363100012073548",
+    "0363100012152157",
+    "0363100012154880",
+    "0363100012095242",
+    "0363100012145526",
+    "0363100012072051",
+    "0363100012072867",
+    "0363100012092110",
+    "0363100012099268",
+    "0363100012102474",
+    "0363100012105258",
+    "0363100012124978",
+    "0363100012125630",
+    "0363100012149398"
+   ]
+  },
+  {
+   "rank": 11,
+   "group": "pre-war-house-1934-102591",
+   "copies": 11,
+   "exposure": 31560,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1930,
+    1935
+   ],
+   "footprint": {
+    "L": 9,
+    "W": 5.5,
+    "height": 11,
+    "roof": 3,
+    "complexity": 0.4
+   },
+   "spread": {
+    "maxShapeM": 0.78,
+    "medianShapeM": 0.19,
+    "heightM": 2.4,
+    "years": 5,
+    "mirroredShare": 0.36,
+    "spanKm": 12.86
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 5
+    },
+    {
+     "name": "Meidoornplein",
+     "n": 2
+    },
+    {
+     "name": "Schellingwouderdijk",
+     "n": 1
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.5,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 6,
+    "read": 3,
+    "autoFamilies": [
+     1,
+     2
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1934-102591.jpg"
+   },
+   "verdict": {
+    "verdict": "unusable",
+    "confidence": "low"
+   },
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012111503",
+    "0363100012151706",
+    "0363100012133288",
+    "0363100012080442",
+    "0363100012102591",
+    "0363100012118007",
+    "0363100012116034",
+    "0363100012105136",
+    "0479100000041026",
+    "0479100000041603",
+    "0479100000041699"
+   ]
+  },
+  {
+   "rank": 12,
+   "group": "post-war-house-1974-108639",
+   "copies": 18,
+   "exposure": 31550,
+   "archetypeGuess": "post-war house",
+   "years": [
+    1974,
+    1974
+   ],
+   "footprint": {
+    "L": 7.6,
+    "W": 5.3,
+    "height": 16.7,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.29,
+    "medianShapeM": 0.13,
+    "heightM": 0.5,
+    "years": 0,
+    "mirroredShare": 0.44,
+    "spanKm": 0.19
+   },
+   "streets": [
+    {
+     "name": "Roomtuintjes",
+     "n": 18
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.6,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 18,
+    "read": 8,
+    "autoFamilies": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     3
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/post-war-house-1974-108639.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "high"
+   },
+   "exactFamilies": [
+    {
+     "name": "Roomtuintjes 1974 gallery block segment",
+     "front": "4-storey red-brown brick block, continuous green-glass balcony band, white window grid, garage-door plinth; one long building split into pands (075294 and 147606 are end bays).",
+     "copies": 18,
+     "autoFamiliesSpanned": 6,
+     "pands": [
+      "0363100012098140",
+      "0363100012075294",
+      "0363100012147606",
+      "0363100012091953",
+      "0363100012076805",
+      "0363100012080316",
+      "0363100012141178",
+      "0363100012128006",
+      "0363100012116936",
+      "0363100012133877",
+      "0363100012063442",
+      "0363100012145563",
+      "0363100012068704",
+      "0363100012085504",
+      "0363100012107875",
+      "0363100012138401",
+      "0363100012108639",
+      "0363100012114890"
+     ],
+     "exposure": 31550
+    }
+   ],
+   "memberPands": [
+    "0363100012098140",
+    "0363100012075294",
+    "0363100012147606",
+    "0363100012091953",
+    "0363100012076805",
+    "0363100012080316",
+    "0363100012141178",
+    "0363100012128006",
+    "0363100012116936",
+    "0363100012133877",
+    "0363100012063442",
+    "0363100012145563",
+    "0363100012068704",
+    "0363100012085504",
+    "0363100012107875",
+    "0363100012138401",
+    "0363100012108639",
+    "0363100012114890"
+   ]
+  },
+  {
+   "rank": 13,
+   "group": "pre-war-house-1899-163041",
+   "copies": 28,
+   "exposure": 31020,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1899,
+    1901
+   ],
+   "footprint": {
+    "L": 12,
+    "W": 5.7,
+    "height": 16.4,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.52,
+    "medianShapeM": 0.2,
+    "heightM": 2,
+    "years": 2,
+    "mirroredShare": 0.57,
+    "spanKm": 0.23
+   },
+   "streets": [
+    {
+     "name": "Cornelis Anthoniszstraat",
+     "n": 20
+    },
+    {
+     "name": "Balthasar Floriszstraat",
+     "n": 8
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 28,
+    "read": 18,
+    "autoFamilies": [
+     4,
+     2,
+     1,
+     4,
+     1,
+     2,
+     1,
+     2,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1899-163041.jpg"
+   },
+   "verdict": {
+    "verdict": "false",
+    "confidence": "high"
+   },
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012164567",
+    "0363100012158426",
+    "0363100012095198",
+    "0363100012164820",
+    "0363100012161461",
+    "0363100012158761",
+    "0363100012166868",
+    "0363100012159981",
+    "0363100012164605",
+    "0363100012156095",
+    "0363100012162400",
+    "0363100012156523",
+    "0363100012157821",
+    "0363100012159228",
+    "0363100012163041",
+    "0363100012164356",
+    "0363100012155484",
+    "0363100012157745",
+    "0363100012162939",
+    "0363100012164691",
+    "0363100012167342",
+    "0363100012161443",
+    "0363100012163557",
+    "0363100012166412",
+    "0363100012162853",
+    "0363100012156940",
+    "0363100012166004",
+    "0363100012158862"
+   ]
+  },
+  {
+   "rank": 14,
+   "group": "pre-war-house-1933-162360",
+   "copies": 5,
+   "exposure": 30660,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1933,
+    1933
+   ],
+   "footprint": {
+    "L": 6.7,
+    "W": 5.1,
+    "height": 7.9,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.35,
+    "medianShapeM": 0.28,
+    "heightM": 0.2,
+    "years": 0,
+    "mirroredShare": 0.4,
+    "spanKm": 0.12
+   },
+   "streets": [
+    {
+     "name": "Schellingwouderdijk",
+     "n": 5
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.6,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 5,
+    "read": 5,
+    "autoFamilies": [
+     2,
+     1,
+     2
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1933-162360.jpg"
+   },
+   "verdict": {
+    "verdict": "near-or-false",
+    "confidence": "medium"
+   },
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012162360",
+    "0363100012164870",
+    "0363100012167380",
+    "0363100012156457",
+    "0363100012166146"
+   ]
+  },
+  {
+   "rank": 15,
+   "group": "pre-war-house-1933-107627",
+   "copies": 11,
+   "exposure": 29670,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1932,
+    1935
+   ],
+   "footprint": {
+    "L": 10,
+    "W": 5.5,
+    "height": 11.2,
+    "roof": 3,
+    "complexity": 0.39
+   },
+   "spread": {
+    "maxShapeM": 0.77,
+    "medianShapeM": 0.19,
+    "heightM": 1.8,
+    "years": 3,
+    "mirroredShare": 0.27,
+    "spanKm": 10.38
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 6
+    },
+    {
+     "name": "Amsterdamseweg",
+     "n": 2
+    },
+    {
+     "name": "Margriete van Clevelaan",
+     "n": 1
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.5,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 6,
+    "read": 1,
+    "autoFamilies": [
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1933-107627.jpg"
+   },
+   "verdict": {
+    "verdict": "near",
+    "confidence": "low"
+   },
+   "exactFamilies": [
+    {
+     "name": "1930s brick villa with rounded corner bay",
+     "front": "",
+     "copies": 3,
+     "autoFamiliesSpanned": 0,
+     "pands": [
+      "0363100012106053",
+      "0363100012107627",
+      "0363100012061296"
+     ],
+     "exposure": 15180
+    }
+   ],
+   "memberPands": [
+    "0363100012106053",
+    "0363100012107627",
+    "0363100012061296",
+    "0363100012064574",
+    "0363100012096027",
+    "0363100012136885",
+    "0362100001081724",
+    "0362100001081673",
+    "0362100001081725",
+    "0384100000005232",
+    "0362100001082773"
+   ]
+  },
+  {
+   "rank": 16,
+   "group": "pre-war-house-1888-157676",
+   "copies": 53,
+   "exposure": 28270,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1887,
+    1888
+   ],
+   "footprint": {
+    "L": 10.9,
+    "W": 4.7,
+    "height": 15.9,
+    "roof": 3,
+    "complexity": 0.3
+   },
+   "spread": {
+    "maxShapeM": 0.77,
+    "medianShapeM": 0.15,
+    "heightM": 0.5,
+    "years": 1,
+    "mirroredShare": 0.49,
+    "spanKm": 0.12
+   },
+   "streets": [
+    {
+     "name": "Van Houweningenstraat",
+     "n": 27
+    },
+    {
+     "name": "Van Reigersbergenstraat",
+     "n": 14
+    },
+    {
+     "name": "Frederik Hendrikstraat",
+     "n": 10
+    },
+    {
+     "name": "Tweede Hugo de Grootstraat",
+     "n": 2
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.53,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 33,
+    "read": 30,
+    "autoFamilies": [
+     4,
+     7,
+     13,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1888-157676.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "high"
+   },
+   "exactFamilies": [
+    {
+     "name": "Frederik Hendrikbuurt red-door banded block",
+     "front": "4 storeys, red-brown brick, white window heads and bands, paired red doors, flat cornice with small dormer pediments (same corporation style as 1898-160905).",
+     "copies": 29,
+     "autoFamiliesSpanned": 8,
+     "pands": [
+      "0363100012155831",
+      "0363100012156059",
+      "0363100012153678",
+      "0363100012157111",
+      "0363100012157672",
+      "0363100012157692",
+      "0363100012158307",
+      "0363100012156794",
+      "0363100012156727",
+      "0363100012159135",
+      "0363100012156678",
+      "0363100012157843",
+      "0363100012158151",
+      "0363100012164721",
+      "0363100012165508",
+      "0363100012167163",
+      "0363100012162863",
+      "0363100012153786",
+      "0363100012162506",
+      "0363100012152999",
+      "0363100012166596",
+      "0363100012163222",
+      "0363100012160880",
+      "0363100012158949",
+      "0363100012167046",
+      "0363100012165332",
+      "0363100012158704",
+      "0363100012160230",
+      "0363100012165392"
+     ],
+     "exposure": 27060
+    },
+    {
+     "name": "Frederik Hendrikbuurt block, gabled centre",
+     "front": "same facade, crown with a central stepped or neck brick gable",
+     "copies": 4,
+     "autoFamiliesSpanned": 2,
+     "pands": [
+      "0363100012152931",
+      "0363100012164007",
+      "0363100012158916",
+      "0363100012152966"
+     ],
+     "exposure": 1210
+    }
+   ],
+   "memberPands": [
+    "0363100012153786",
+    "0363100012156678",
+    "0363100012158704",
+    "0363100012155831",
+    "0363100012156059",
+    "0363100012162506",
+    "0363100012153678",
+    "0363100012160230",
+    "0363100012163222",
+    "0363100012157843",
+    "0363100012152931",
+    "0363100012160880",
+    "0363100012164007",
+    "0363100012158151",
+    "0363100012157111",
+    "0363100012152966",
+    "0363100012164721",
+    "0363100012165508",
+    "0363100012165392",
+    "0363100012158916",
+    "0363100012167163",
+    "0363100012158949",
+    "0363100012152999",
+    "0363100012157672",
+    "0363100012167046",
+    "0363100012157692",
+    "0363100012165332",
+    "0363100012166596",
+    "0363100012158307",
+    "0363100012156794",
+    "0363100012162863",
+    "0363100012156727",
+    "0363100012159135",
+    "0363100012153807",
+    "0363100012158366",
+    "0363100012162380",
+    "0363100012162778",
+    "0363100012153212",
+    "0363100012153758",
+    "0363100012153810",
+    "0363100012156096",
+    "0363100012156927",
+    "0363100012157676",
+    "0363100012159933",
+    "0363100012163303",
+    "0363100012163315",
+    "0363100012163395",
+    "0363100012163814",
+    "0363100012164833",
+    "0363100012165393",
+    "0363100012166918",
+    "0363100012167020",
+    "0363100012167267"
+   ]
+  },
+  {
+   "rank": 17,
+   "group": "pre-war-house-1910-181351",
+   "copies": 22,
+   "exposure": 28035,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1909,
+    1910
+   ],
+   "footprint": {
+    "L": 13.6,
+    "W": 6.5,
+    "height": 17.2,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.64,
+    "medianShapeM": 0.12,
+    "heightM": 1.2,
+    "years": 1,
+    "mirroredShare": 0.45,
+    "spanKm": 0.15
+   },
+   "streets": [
+    {
+     "name": "Sarphatistraat",
+     "n": 21
+    },
+    {
+     "name": "Pancrasstraat",
+     "n": 1
+    }
+   ],
+   "architects": [
+    "H.P. Berlage"
+   ],
+   "names": [],
+   "detectorConfidence": 0.45,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 22,
+    "read": 18,
+    "autoFamilies": [
+     6,
+     2,
+     5,
+     1,
+     2,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1910-181351.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "high",
+    "unusable": [
+     "181393",
+     "180965"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "Sarphatistraat arched-door block (Berlage)",
+     "front": "4 storeys, brown brick, paired round-arched ground-floor doorways, small balconies on the upper floors, flat cornice with small dormers.",
+     "copies": 19,
+     "autoFamiliesSpanned": 6,
+     "pands": [
+      "0363100012181466",
+      "0363100012181389",
+      "0363100012181465",
+      "0363100012170677",
+      "0363100012170824",
+      "0363100012181421",
+      "0363100012181458",
+      "0363100012181385",
+      "0363100012180964",
+      "0363100012181351",
+      "0363100012170680",
+      "0363100012181420",
+      "0363100012181390",
+      "0363100012180966",
+      "0363100012170681",
+      "0363100012181463",
+      "0363100012181388",
+      "0363100012181394",
+      "0363100012181350"
+     ],
+     "exposure": 24140
+    }
+   ],
+   "memberPands": [
+    "0363100012181463",
+    "0363100012181466",
+    "0363100012181464",
+    "0363100012181458",
+    "0363100012181389",
+    "0363100012181465",
+    "0363100012170677",
+    "0363100012181388",
+    "0363100012181390",
+    "0363100012181393",
+    "0363100012170824",
+    "0363100012181385",
+    "0363100012180966",
+    "0363100012180965",
+    "0363100012170681",
+    "0363100012180964",
+    "0363100012181394",
+    "0363100012181420",
+    "0363100012181350",
+    "0363100012181351",
+    "0363100012170680",
+    "0363100012181421"
+   ]
+  },
+  {
+   "rank": 18,
+   "group": "pre-war-house-1890-155408",
+   "copies": 19,
+   "exposure": 27100,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1887,
+    1892
+   ],
+   "footprint": {
+    "L": 15.3,
+    "W": 4.7,
+    "height": 16.2,
+    "roof": 3,
+    "complexity": 0.28
+   },
+   "spread": {
+    "maxShapeM": 0.57,
+    "medianShapeM": 0.34,
+    "heightM": 2.2,
+    "years": 5,
+    "mirroredShare": 0.53,
+    "spanKm": 4.35
+   },
+   "streets": [
+    {
+     "name": "Potgieterstraat",
+     "n": 10
+    },
+    {
+     "name": "Willemsstraat",
+     "n": 2
+    },
+    {
+     "name": "Da Costakade",
+     "n": 1
+    },
+    {
+     "name": "Blasiusstraat",
+     "n": 1
+    },
+    {
+     "name": "Plantage Kerklaan",
+     "n": 1
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.42,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 19,
+    "read": 12,
+    "autoFamilies": [
+     2,
+     4,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1890-155408.jpg"
+   },
+   "verdict": {
+    "verdict": "false",
+    "confidence": "high"
+   },
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012132643",
+    "0363100012160293",
+    "0363100012172959",
+    "0363100012162097",
+    "0363100012154153",
+    "0363100012172763",
+    "0363100012155426",
+    "0363100012153562",
+    "0363100012155867",
+    "0363100012157218",
+    "0363100012155408",
+    "0363100012161112",
+    "0363100012181662",
+    "0363100012153513",
+    "0363100012236501",
+    "0363100012181241",
+    "0363100012157700",
+    "0363100012161753",
+    "0363100012157622"
+   ]
+  },
+  {
+   "rank": 19,
+   "group": "pre-war-block-1850-571557",
+   "copies": 3,
+   "exposure": 26580,
+   "archetypeGuess": "pre-war block",
+   "years": [
+    1850,
+    1850
+   ],
+   "footprint": {
+    "L": 25.4,
+    "W": 23.3,
+    "height": 13.9,
+    "roof": 3,
+    "complexity": 1
+   },
+   "spread": {
+    "maxShapeM": 0,
+    "medianShapeM": 0,
+    "heightM": 0.2,
+    "years": 0,
+    "mirroredShare": 0,
+    "spanKm": 0
+   },
+   "streets": [
+    {
+     "name": "Onkelboerensteeg",
+     "n": 3
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.85,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 3,
+    "read": 3,
+    "autoFamilies": [
+     1,
+     2
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-block-1850-571557.jpg"
+   },
+   "verdict": {
+    "verdict": "false",
+    "confidence": "high",
+    "why": "three parts of one corner building, not repeats"
+   },
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012571557",
+    "0363100012571558",
+    "0363100012571559"
+   ]
+  },
+  {
+   "rank": 20,
+   "group": "pre-war-house-1932-110618",
+   "copies": 145,
+   "exposure": 26445,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1931,
+    1937
+   ],
+   "footprint": {
+    "L": 11.8,
+    "W": 6.1,
+    "height": 12.6,
+    "roof": 3,
+    "complexity": 0.43
+   },
+   "spread": {
+    "maxShapeM": 1,
+    "medianShapeM": 0.56,
+    "heightM": 2.5,
+    "years": 6,
+    "mirroredShare": 0.47,
+    "spanKm": 7.26
+   },
+   "streets": [
+    {
+     "name": "Orteliusstraat",
+     "n": 69
+    },
+    {
+     "name": "Legmeerstraat",
+     "n": 19
+    },
+    {
+     "name": "Kribbestraat",
+     "n": 12
+    },
+    {
+     "name": "Eemsstraat",
+     "n": 9
+    },
+    {
+     "name": "Gaaspstraat",
+     "n": 8
+    }
+   ],
+   "architects": [
+    "J. Roodenburgh",
+    "A.J. Kropholler"
+   ],
+   "names": [
+    "Linnaeushof"
+   ],
+   "detectorConfidence": 0.46,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 40,
+    "read": 29,
+    "autoFamilies": [
+     1,
+     5,
+     2,
+     2,
+     1,
+     7,
+     1,
+     1,
+     3,
+     5,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check/pre-war-house-1932-110618.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "high",
+    "notInDesign": [
+     "082732",
+     "181908",
+     "140701"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "Orteliusstraat 1932 block with bays and roof band",
+     "front": "3 storeys dark-brown brick under a red-tile hipped roof with small dormers; top floor a continuous white window band with short white piers; floors 1-2 wide shallow bays with white frames; recessed open stair entrances.",
+     "copies": 28,
+     "autoFamiliesSpanned": 9,
+     "pands": [
+      "0363100012125381",
+      "0363100012098572",
+      "0363100012068549",
+      "0363100012151631",
+      "0363100012103324",
+      "0363100012068615",
+      "0363100012105593",
+      "0363100012075460",
+      "0363100012148546",
+      "0363100012088802",
+      "0363100012086400",
+      "0363100012076764",
+      "0363100012094537",
+      "0363100012146968",
+      "0363100012079190",
+      "0363100012117053",
+      "0363100012111492",
+      "0363100012139478",
+      "0363100012152006",
+      "0363100012109453",
+      "0363100012091777",
+      "0363100012089046",
+      "0363100012111292",
+      "0363100012099715",
+      "0363100012101975",
+      "0363100012083367",
+      "0363100012098506",
+      "0363100012150975"
+     ],
+     "exposure": 10750
+    }
+   ],
+   "memberPands": [
+    "0363100012181908",
+    "0363100012075460",
+    "0363100012109453",
+    "0363100012089046",
+    "0363100012099715",
+    "0363100012109499",
+    "0363100012125381",
+    "0363100012140701",
+    "0363100012110053",
+    "0363100012098572",
+    "0363100012101975",
+    "0363100012148546",
+    "0363100012068549",
+    "0363100012151631",
+    "0363100012103324",
+    "0363100012111492",
+    "0363100012139478",
+    "0363100012082732",
+    "0363100012088802",
+    "0363100012094537",
+    "0363100012073323",
+    "0363100012098506",
+    "0363100012111292",
+    "0363100012131673",
+    "0363100012146968",
+    "0363100012065232",
+    "0363100012068615",
+    "0363100012127770",
+    "0363100012079190",
+    "0363100012105593",
+    "0363100012086400",
+    "0363100012117053",
+    "0363100012076764",
+    "0363100012083367",
+    "0363100012134302",
+    "0363100012074871",
+    "0363100012084493",
+    "0363100012091777",
+    "0363100012150975",
+    "0363100012152006",
+    "0363100012124106",
+    "0363100012147272",
+    "0363100012084208",
+    "0363100012141535",
+    "0363100012141373",
+    "0363100012071481",
+    "0363100012072510",
+    "0363100012074611",
+    "0363100012075490",
+    "0363100012079993",
+    "0363100012082618",
+    "0363100012085011",
+    "0363100012094194",
+    "0363100012094470",
+    "0363100012099635",
+    "0363100012110618",
+    "0363100012113308",
+    "0363100012114249",
+    "0363100012115908",
+    "0363100012122217",
+    "0363100012124075",
+    "0363100012126543",
+    "0363100012126902",
+    "0363100012138161",
+    "0363100012142528",
+    "0363100012143758",
+    "0363100012146571",
+    "0363100012147273",
+    "0363100012148381",
+    "0363100012075323",
+    "0363100012110536",
+    "0363100012139573",
+    "0363100012065831",
+    "0363100012105163",
+    "0363100012063377",
+    "0363100012067805",
+    "0363100012080600",
+    "0363100012086863",
+    "0363100012088136",
+    "0363100012094162",
+    "0363100012099618",
+    "0363100012107612",
+    "0363100012112870",
+    "0363100012114949",
+    "0363100012117998",
+    "0363100012119488",
+    "0363100012128884",
+    "0363100012137374",
+    "0363100012141559",
+    "0363100012142013",
+    "0363100012147295",
+    "0363100012126063",
+    "0363100012132741",
+    "0363100012076998",
+    "0363100012078942",
+    "0363100012088894",
+    "0363100012091332",
+    "0363100012094704",
+    "0363100012108993",
+    "0363100012137579",
+    "0363100012139506",
+    "0363100012140702",
+    "0363100012142458",
+    "0363100012143645",
+    "0363100012144161",
+    "0363100012065472",
+    "0363100012068033",
+    "0363100012072303",
+    "0363100012078537",
+    "0363100012080666",
+    "0363100012087247",
+    "0363100012093438",
+    "0363100012102689",
+    "0363100012107697",
+    "0363100012114387",
+    "0363100012115651",
+    "0363100012129373",
+    "0363100012133315",
+    "0363100012138077",
+    "0363100012147468",
+    "0363100012083429",
+    "0363100012065027",
+    "0363100012097642",
+    "0363100012105107",
+    "0363100012112801",
+    "0363100012113642",
+    "0363100012131394",
+    "0363100012089766",
+    "0363100012091827",
+    "0363100012103895",
+    "0363100012104465",
+    "0363100012117743",
+    "0363100012154049",
+    "0363100100091374",
+    "0363100012076139",
+    "0363100012092506",
+    "0363100012105408",
+    "0363100012109989",
+    "0363100012121256",
+    "0363100012132452",
+    "0363100012138437",
+    "0363100012129531",
+    "0363100012091938",
+    "0363100012145569",
+    "0363100012135029"
+   ]
+  },
+  {
+   "rank": 21,
+   "group": "pre-war-house-1927-125663",
+   "copies": 12,
+   "exposure": 26350,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1926,
+    1927
+   ],
+   "footprint": {
+    "L": 15,
+    "W": 11.9,
+    "height": 11.1,
+    "roof": 3,
+    "complexity": 0.76
+   },
+   "spread": {
+    "maxShapeM": 0.77,
+    "medianShapeM": 0.12,
+    "heightM": 0.3,
+    "years": 1,
+    "mirroredShare": 0.5,
+    "spanKm": 4.45
+   },
+   "streets": [
+    {
+     "name": "Zeeburgerdijk",
+     "n": 11
+    },
+    {
+     "name": "Apollolaan",
+     "n": 1
+    }
+   ],
+   "architects": [
+    "J. Gratama"
+   ],
+   "names": [],
+   "detectorConfidence": 0.74,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012090264",
+    "0363100012100806",
+    "0363100012103933",
+    "0363100012073872",
+    "0363100012080525",
+    "0363100012091468",
+    "0363100012105497",
+    "0363100012107029",
+    "0363100012125663",
+    "0363100012136055",
+    "0363100012147732",
+    "0363100012126406"
+   ]
+  },
+  {
+   "rank": 22,
+   "group": "post-war-house-1960-160460",
+   "copies": 7,
+   "exposure": 26000,
+   "archetypeGuess": "post-war house",
+   "years": [
+    1958,
+    1960
+   ],
+   "footprint": {
+    "L": 7.7,
+    "W": 5.5,
+    "height": 8.4,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.7,
+    "medianShapeM": 0.19,
+    "heightM": 0.9,
+    "years": 2,
+    "mirroredShare": 0.71,
+    "spanKm": 0.24
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 7
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012154145",
+    "0363100012157720",
+    "0363100012162578",
+    "0363100012162716",
+    "0363100012165257",
+    "0363100012160460",
+    "0363100012163527"
+   ]
+  },
+  {
+   "rank": 23,
+   "group": "post-war-house-1950-109956",
+   "copies": 114,
+   "exposure": 25590,
+   "archetypeGuess": "post-war house",
+   "years": [
+    1949,
+    1950
+   ],
+   "footprint": {
+    "L": 8.5,
+    "W": 5.5,
+    "height": 7.5,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.2,
+    "medianShapeM": 0.12,
+    "heightM": 0.7,
+    "years": 1,
+    "mirroredShare": 0.45,
+    "spanKm": 0.23
+   },
+   "streets": [
+    {
+     "name": "Hoornsestraat",
+     "n": 25
+    },
+    {
+     "name": "Medemblikstraat",
+     "n": 24
+    },
+    {
+     "name": "Wervershoofstraat",
+     "n": 24
+    },
+    {
+     "name": "Purmerweg",
+     "n": 16
+    },
+    {
+     "name": "Hoogwoudstraat",
+     "n": 12
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012127445",
+    "0363100012109145",
+    "0363100012111899",
+    "0363100012133542",
+    "0363100012088528",
+    "0363100012103958",
+    "0363100012090237",
+    "0363100012104011",
+    "0363100012114134",
+    "0363100012114825",
+    "0363100012138586",
+    "0363100012154745",
+    "0363100012098907",
+    "0363100012148878",
+    "0363100012067916",
+    "0363100012142946",
+    "0363100012065571",
+    "0363100012102436",
+    "0363100012109885",
+    "0363100012123362",
+    "0363100012123406",
+    "0363100012092464",
+    "0363100012155178",
+    "0363100012085514",
+    "0363100012100227",
+    "0363100012146625",
+    "0363100012112316",
+    "0363100012145996",
+    "0363100012073936",
+    "0363100012117791",
+    "0363100012125189",
+    "0363100012124530",
+    "0363100012068927",
+    "0363100012069232",
+    "0363100012074919",
+    "0363100012075200",
+    "0363100012076966",
+    "0363100012080541",
+    "0363100012080996",
+    "0363100012081589",
+    "0363100012082090",
+    "0363100012088056",
+    "0363100012088476",
+    "0363100012088668",
+    "0363100012088933",
+    "0363100012101411",
+    "0363100012106122",
+    "0363100012110397",
+    "0363100012112065",
+    "0363100012117923",
+    "0363100012119157",
+    "0363100012122160",
+    "0363100012122543",
+    "0363100012125221",
+    "0363100012128255",
+    "0363100012128423",
+    "0363100012129139",
+    "0363100012130105",
+    "0363100012130556",
+    "0363100012135566",
+    "0363100012137019",
+    "0363100012137119",
+    "0363100012138665",
+    "0363100012141348",
+    "0363100012146519",
+    "0363100012147783",
+    "0363100012150344",
+    "0363100012151153",
+    "0363100012151617",
+    "0363100012153917",
+    "0363100012075946",
+    "0363100012077701",
+    "0363100012094461",
+    "0363100012098762",
+    "0363100012100368",
+    "0363100012101293",
+    "0363100012105278",
+    "0363100012105771",
+    "0363100012112355",
+    "0363100012114889",
+    "0363100012114974",
+    "0363100012133935",
+    "0363100012063102",
+    "0363100012065534",
+    "0363100012067700",
+    "0363100012069019",
+    "0363100012071423",
+    "0363100012071964",
+    "0363100012080197",
+    "0363100012082112",
+    "0363100012085592",
+    "0363100012088510",
+    "0363100012093971",
+    "0363100012098744",
+    "0363100012106837",
+    "0363100012107896",
+    "0363100012109830",
+    "0363100012109956",
+    "0363100012111083",
+    "0363100012113202",
+    "0363100012114023",
+    "0363100012115045",
+    "0363100012116173",
+    "0363100012118217",
+    "0363100012127562",
+    "0363100012136649",
+    "0363100012139741",
+    "0363100012139981",
+    "0363100012140470",
+    "0363100012141446",
+    "0363100012143541",
+    "0363100012144041",
+    "0363100012145771",
+    "0363100012150800"
+   ]
+  },
+  {
+   "rank": 24,
+   "group": "pre-war-house-1937-084727",
+   "copies": 5,
+   "exposure": 24820,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1934,
+    1937
+   ],
+   "footprint": {
+    "L": 8.9,
+    "W": 6.1,
+    "height": 10.5,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.16,
+    "medianShapeM": 0.12,
+    "heightM": 1.1,
+    "years": 3,
+    "mirroredShare": 0.6,
+    "spanKm": 0.22
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 3
+    },
+    {
+     "name": "Nieuwendammerstraat",
+     "n": 2
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012087457",
+    "0363100012084727",
+    "0363100012082950",
+    "0363100012114278",
+    "0363100012137342"
+   ]
+  },
+  {
+   "rank": 25,
+   "group": "pre-war-house-1933-158165",
+   "copies": 4,
+   "exposure": 24360,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1933,
+    1933
+   ],
+   "footprint": {
+    "L": 12.1,
+    "W": 5.6,
+    "height": 9,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.13,
+    "medianShapeM": 0.13,
+    "heightM": 0.7,
+    "years": 0,
+    "mirroredShare": 0.5,
+    "spanKm": 0.02
+   },
+   "streets": [
+    {
+     "name": "Schellingwouderdijk",
+     "n": 4
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.5,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012158165",
+    "0363100012159435",
+    "0363100012160207",
+    "0363100012163675"
+   ]
+  },
+  {
+   "rank": 26,
+   "group": "post-war-house-1953-086149",
+   "copies": 4,
+   "exposure": 24075,
+   "archetypeGuess": "post-war house",
+   "years": [
+    1953,
+    1953
+   ],
+   "footprint": {
+    "L": 7.6,
+    "W": 6.1,
+    "height": 10.5,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.12,
+    "medianShapeM": 0.12,
+    "heightM": 0.2,
+    "years": 0,
+    "mirroredShare": 0.25,
+    "spanKm": 0.02
+   },
+   "streets": [
+    {
+     "name": "Schellingwouderdijk",
+     "n": 4
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.6,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012103862",
+    "0363100012106558",
+    "0363100012086149",
+    "0363100012096981"
+   ]
+  },
+  {
+   "rank": 27,
+   "group": "pre-war-house-1928-155886",
+   "copies": 4,
+   "exposure": 23520,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1928,
+    1928
+   ],
+   "footprint": {
+    "L": 7.6,
+    "W": 5.2,
+    "height": 8.9,
+    "roof": 3,
+    "complexity": 0.02
+   },
+   "spread": {
+    "maxShapeM": 0.35,
+    "medianShapeM": 0.27,
+    "heightM": 0.4,
+    "years": 0,
+    "mirroredShare": 0.25,
+    "spanKm": 0.05
+   },
+   "streets": [
+    {
+     "name": "Schellingwouderdijk",
+     "n": 4
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.6,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012153382",
+    "0363100012155886",
+    "0363100012154238",
+    "0363100012162207"
+   ]
+  },
+  {
+   "rank": 28,
+   "group": "pre-war-house-1914-120631",
+   "copies": 24,
+   "exposure": 23300,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1913,
+    1917
+   ],
+   "footprint": {
+    "L": 10.2,
+    "W": 6.2,
+    "height": 17,
+    "roof": 3,
+    "complexity": 0.26
+   },
+   "spread": {
+    "maxShapeM": 0.89,
+    "medianShapeM": 0.28,
+    "heightM": 1.3,
+    "years": 4,
+    "mirroredShare": 0.58,
+    "spanKm": 6.7
+   },
+   "streets": [
+    {
+     "name": "Zeeburgerdijk",
+     "n": 12
+    },
+    {
+     "name": "Tasmanstraat",
+     "n": 4
+    },
+    {
+     "name": "Soendastraat",
+     "n": 2
+    },
+    {
+     "name": "Nova Zemblastraat",
+     "n": 2
+    },
+    {
+     "name": "Djambistraat",
+     "n": 1
+    }
+   ],
+   "architects": [
+    "H.J.M. Walenkamp"
+   ],
+   "names": [],
+   "detectorConfidence": 0.57,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012120631",
+    "0363100012126786",
+    "0363100012074063",
+    "0363100012083849",
+    "0363100012088199",
+    "0363100012102651",
+    "0363100012103977",
+    "0363100012119824",
+    "0363100012093210",
+    "0363100012123386",
+    "0363100012139587",
+    "0363100012119301",
+    "0363100012131309",
+    "0363100012069682",
+    "0363100012092089",
+    "0363100012104592",
+    "0363100012129450",
+    "0363100012138086",
+    "0363100012114450",
+    "0363100012130643",
+    "0363100012098853",
+    "0363100012089691",
+    "0363100012140717",
+    "0363100012153937"
+   ]
+  },
+  {
+   "rank": 29,
+   "group": "pre-war-house-1914-107958",
+   "copies": 10,
+   "exposure": 22935,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1914,
+    1914
+   ],
+   "footprint": {
+    "L": 9.6,
+    "W": 8.3,
+    "height": 15.5,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.15,
+    "medianShapeM": 0.12,
+    "heightM": 0.7,
+    "years": 0,
+    "mirroredShare": 0.4,
+    "spanKm": 0.09
+   },
+   "streets": [
+    {
+     "name": "Zeeburgerdijk",
+     "n": 10
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.5,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012153934",
+    "0363100012083957",
+    "0363100012123330",
+    "0363100012125164",
+    "0363100012074546",
+    "0363100012128400",
+    "0363100012141494",
+    "0363100012073961",
+    "0363100012091478",
+    "0363100012107958"
+   ]
+  },
+  {
+   "rank": 30,
+   "group": "pre-war-house-1903-152689",
+   "copies": 6,
+   "exposure": 22640,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1900,
+    1903
+   ],
+   "footprint": {
+    "L": 11.6,
+    "W": 6,
+    "height": 15.2,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.33,
+    "medianShapeM": 0.26,
+    "heightM": 1,
+    "years": 3,
+    "mirroredShare": 0.33,
+    "spanKm": 0.11
+   },
+   "streets": [
+    {
+     "name": "Tweede Hugo de Grootstraat",
+     "n": 3
+    },
+    {
+     "name": "Hugo de Grootplein",
+     "n": 3
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012163198",
+    "0363100012159205",
+    "0363100012163129",
+    "0363100012152689",
+    "0363100012158868",
+    "0363100012157364"
+   ]
+  },
+  {
+   "rank": 31,
+   "group": "post-war-house-1949-142801",
+   "copies": 128,
+   "exposure": 22505,
+   "archetypeGuess": "post-war house",
+   "years": [
+    1948,
+    1950
+   ],
+   "footprint": {
+    "L": 7.6,
+    "W": 5.4,
+    "height": 7.8,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.36,
+    "medianShapeM": 0.15,
+    "heightM": 1.5,
+    "years": 2,
+    "mirroredShare": 0.41,
+    "spanKm": 0.3
+   },
+   "streets": [
+    {
+     "name": "Hoornsestraat",
+     "n": 35
+    },
+    {
+     "name": "Wervershoofstraat",
+     "n": 27
+    },
+    {
+     "name": "Dirkshornplantsoen",
+     "n": 23
+    },
+    {
+     "name": "Nibbixwoudstraat",
+     "n": 16
+    },
+    {
+     "name": "Hoogwoudstraat",
+     "n": 14
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012093623",
+    "0363100012091413",
+    "0363100012144254",
+    "0363100012087626",
+    "0363100012114931",
+    "0363100012142801",
+    "0363100012112267",
+    "0363100012148349",
+    "0363100012062302",
+    "0363100012106577",
+    "0363100012066763",
+    "0363100012068736",
+    "0363100012079374",
+    "0363100012117299",
+    "0363100012074076",
+    "0363100012142627",
+    "0363100012150529",
+    "0363100012079020",
+    "0363100012116957",
+    "0363100012107610",
+    "0363100012084088",
+    "0363100012089738",
+    "0363100012119875",
+    "0363100012124963",
+    "0363100012094885",
+    "0363100012075994",
+    "0363100012064577",
+    "0363100012140164",
+    "0363100012123105",
+    "0363100012078102",
+    "0363100012098931",
+    "0363100012088005",
+    "0363100012095361",
+    "0363100012069363",
+    "0363100012074046",
+    "0363100012082936",
+    "0363100012085169",
+    "0363100012085710",
+    "0363100012088306",
+    "0363100012094427",
+    "0363100012095369",
+    "0363100012097991",
+    "0363100012102386",
+    "0363100012104098",
+    "0363100012108510",
+    "0363100012111745",
+    "0363100012113249",
+    "0363100012122694",
+    "0363100012141806",
+    "0363100012143125",
+    "0363100012148057",
+    "0363100012150651",
+    "0363100012061485",
+    "0363100012061937",
+    "0363100012062671",
+    "0363100012069110",
+    "0363100012070248",
+    "0363100012071173",
+    "0363100012078099",
+    "0363100012082418",
+    "0363100012083444",
+    "0363100012086125",
+    "0363100012086147",
+    "0363100012086453",
+    "0363100012086809",
+    "0363100012087158",
+    "0363100012088597",
+    "0363100012088626",
+    "0363100012089858",
+    "0363100012092027",
+    "0363100012094517",
+    "0363100012097578",
+    "0363100012101395",
+    "0363100012101653",
+    "0363100012101760",
+    "0363100012102869",
+    "0363100012106897",
+    "0363100012107319",
+    "0363100012111498",
+    "0363100012112197",
+    "0363100012113230",
+    "0363100012117010",
+    "0363100012119925",
+    "0363100012121254",
+    "0363100012125739",
+    "0363100012125989",
+    "0363100012132465",
+    "0363100012134047",
+    "0363100012138365",
+    "0363100012139546",
+    "0363100012140952",
+    "0363100012145759",
+    "0363100012147877",
+    "0363100012148217",
+    "0363100012149695",
+    "0363100012150093",
+    "0363100012150847",
+    "0363100012062784",
+    "0363100012064188",
+    "0363100012071948",
+    "0363100012074411",
+    "0363100012077885",
+    "0363100012079266",
+    "0363100012079363",
+    "0363100012085779",
+    "0363100012090101",
+    "0363100012090869",
+    "0363100012092201",
+    "0363100012093376",
+    "0363100012095884",
+    "0363100012096692",
+    "0363100012105994",
+    "0363100012106982",
+    "0363100012108005",
+    "0363100012108095",
+    "0363100012108477",
+    "0363100012109531",
+    "0363100012111266",
+    "0363100012112218",
+    "0363100012113134",
+    "0363100012114686",
+    "0363100012117363",
+    "0363100012121681",
+    "0363100012125764",
+    "0363100012127999",
+    "0363100012131110",
+    "0363100012137234",
+    "0363100012148461"
+   ]
+  },
+  {
+   "rank": 32,
+   "group": "pre-war-house-1872-168360",
+   "copies": 24,
+   "exposure": 22455,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1872,
+    1872
+   ],
+   "footprint": {
+    "L": 11.8,
+    "W": 6.7,
+    "height": 13.3,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.29,
+    "medianShapeM": 0.18,
+    "heightM": 1,
+    "years": 0,
+    "mirroredShare": 0.42,
+    "spanKm": 0.4
+   },
+   "streets": [
+    {
+     "name": "Marnixstraat",
+     "n": 24
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.5,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012169468",
+    "0363100012173360",
+    "0363100012173359",
+    "0363100012173356",
+    "0363100012172790",
+    "0363100012172794",
+    "0363100012172799",
+    "0363100012172808",
+    "0363100012172793",
+    "0363100012172791",
+    "0363100012172792",
+    "0363100012168679",
+    "0363100012168681",
+    "0363100012173735",
+    "0363100012172069",
+    "0363100012173277",
+    "0363100012168360",
+    "0363100012168356",
+    "0363100012168365",
+    "0363100012173256",
+    "0363100012173275",
+    "0363100012173370",
+    "0363100012173371",
+    "0363100012173257"
+   ]
+  },
+  {
+   "rank": 33,
+   "group": "post-war-house-1985-182330",
+   "copies": 3,
+   "exposure": 22185,
+   "archetypeGuess": "post-war house",
+   "years": [
+    1983,
+    1985
+   ],
+   "footprint": {
+    "L": 14.2,
+    "W": 6.5,
+    "height": 15,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.34,
+    "medianShapeM": 0.26,
+    "heightM": 0.4,
+    "years": 2,
+    "mirroredShare": 0.33,
+    "spanKm": 0.01
+   },
+   "streets": [
+    {
+     "name": "Nieuwe Hoogstraat",
+     "n": 3
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.45,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012182329",
+    "0363100012182330",
+    "0363100012182331"
+   ]
+  },
+  {
+   "rank": 34,
+   "group": "post-war-house-1958-080560",
+   "copies": 6,
+   "exposure": 22000,
+   "archetypeGuess": "post-war house",
+   "years": [
+    1958,
+    1958
+   ],
+   "footprint": {
+    "L": 7.9,
+    "W": 6.1,
+    "height": 10.6,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.18,
+    "medianShapeM": 0.15,
+    "heightM": 0.7,
+    "years": 0,
+    "mirroredShare": 0.5,
+    "spanKm": 0.04
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 6
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.5,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012110122",
+    "0363100012126608",
+    "0363100012132308",
+    "0363100012134832",
+    "0363100012080560",
+    "0363100012138523"
+   ]
+  },
+  {
+   "rank": 35,
+   "group": "pre-war-house-1931-085882",
+   "copies": 10,
+   "exposure": 21450,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1931,
+    1931
+   ],
+   "footprint": {
+    "L": 15.1,
+    "W": 11.1,
+    "height": 17.1,
+    "roof": 3,
+    "complexity": 0.43
+   },
+   "spread": {
+    "maxShapeM": 0.54,
+    "medianShapeM": 0.18,
+    "heightM": 0.9,
+    "years": 0,
+    "mirroredShare": 0.5,
+    "spanKm": 0.1
+   },
+   "streets": [
+    {
+     "name": "Beethovenstraat",
+     "n": 10
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.61,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012078879",
+    "0363100012069644",
+    "0363100012132610",
+    "0363100012138399",
+    "0363100012085882",
+    "0363100012143272",
+    "0363100012083132",
+    "0363100012083664",
+    "0363100012114834",
+    "0363100012155073"
+   ]
+  },
+  {
+   "rank": 36,
+   "group": "post-war-house-1956-100347",
+   "copies": 5,
+   "exposure": 20695,
+   "archetypeGuess": "post-war house",
+   "years": [
+    1956,
+    1956
+   ],
+   "footprint": {
+    "L": 7.6,
+    "W": 6.3,
+    "height": 9.7,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.13,
+    "medianShapeM": 0.12,
+    "heightM": 0.7,
+    "years": 0,
+    "mirroredShare": 0.4,
+    "spanKm": 0.14
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 3
+    },
+    {
+     "name": "Wognumerstraat",
+     "n": 1
+    },
+    {
+     "name": "Monnikendammerweg",
+     "n": 1
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.5,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012095239",
+    "0363100012068868",
+    "0363100012100347",
+    "0363100012104232",
+    "0363100012151564"
+   ]
+  },
+  {
+   "rank": 37,
+   "group": "pre-war-house-1913-130245",
+   "copies": 13,
+   "exposure": 20260,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1912,
+    1914
+   ],
+   "footprint": {
+    "L": 15.1,
+    "W": 9.2,
+    "height": 15.3,
+    "roof": 3,
+    "complexity": 0.47
+   },
+   "spread": {
+    "maxShapeM": 0.74,
+    "medianShapeM": 0.2,
+    "heightM": 0.8,
+    "years": 2,
+    "mirroredShare": 0.38,
+    "spanKm": 0.45
+   },
+   "streets": [
+    {
+     "name": "Spaarndammerstraat",
+     "n": 11
+    },
+    {
+     "name": "Nova Zemblastraat",
+     "n": 2
+    }
+   ],
+   "architects": [
+    "J.H. Lesmeister"
+   ],
+   "names": [],
+   "detectorConfidence": 0.57,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012144503",
+    "0363100012090137",
+    "0363100012151090",
+    "0363100012154331",
+    "0363100012134155",
+    "0363100012236935",
+    "0363100012064867",
+    "0363100012066154",
+    "0363100012130245",
+    "0363100012135409",
+    "0363100012107171",
+    "0363100012074397",
+    "0363100012102111"
+   ]
+  },
+  {
+   "rank": 38,
+   "group": "pre-war-house-1932-109727",
+   "copies": 15,
+   "exposure": 19955,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1930,
+    1935
+   ],
+   "footprint": {
+    "L": 8.9,
+    "W": 5.6,
+    "height": 10.1,
+    "roof": 3,
+    "complexity": 0.39
+   },
+   "spread": {
+    "maxShapeM": 0.87,
+    "medianShapeM": 0.32,
+    "heightM": 1.9,
+    "years": 5,
+    "mirroredShare": 0.53,
+    "spanKm": 11.75
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 4
+    },
+    {
+     "name": "Meidoornplein",
+     "n": 1
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.4,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012109727",
+    "0363100012097327",
+    "0363100012099285",
+    "0363100012061461",
+    "0479100000042497",
+    "0479100000042511",
+    "0479100000038299",
+    "0479100000035028",
+    "0479100000037346",
+    "0479100000037920",
+    "0479100000041663",
+    "0479100000030386",
+    "0479100000030793",
+    "0363100012101622",
+    "0479100000039770"
+   ]
+  },
+  {
+   "rank": 39,
+   "group": "pre-war-house-1898-155772",
+   "copies": 8,
+   "exposure": 19050,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1895,
+    1901
+   ],
+   "footprint": {
+    "L": 12,
+    "W": 5.3,
+    "height": 15.7,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.5,
+    "medianShapeM": 0.23,
+    "heightM": 1.5,
+    "years": 6,
+    "mirroredShare": 0.5,
+    "spanKm": 0.21
+   },
+   "streets": [
+    {
+     "name": "Tweede Hugo de Grootstraat",
+     "n": 4
+    },
+    {
+     "name": "Derde Hugo de Grootstraat",
+     "n": 2
+    },
+    {
+     "name": "Hugo de Grootplein",
+     "n": 2
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012155772",
+    "0363100012153800",
+    "0363100012161539",
+    "0363100012162014",
+    "0363100012167086",
+    "0363100012162764",
+    "0363100012163008",
+    "0363100012165578"
+   ]
+  },
+  {
+   "rank": 40,
+   "group": "pre-war-house-1933-096832",
+   "copies": 31,
+   "exposure": 18620,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1933,
+    1937
+   ],
+   "footprint": {
+    "L": 10.6,
+    "W": 6.2,
+    "height": 15.5,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.54,
+    "medianShapeM": 0.12,
+    "heightM": 1.8,
+    "years": 4,
+    "mirroredShare": 0.65,
+    "spanKm": 0.43
+   },
+   "streets": [
+    {
+     "name": "De Rijpgracht",
+     "n": 13
+    },
+    {
+     "name": "Jan van Galenstraat",
+     "n": 13
+    },
+    {
+     "name": "Jan den Haenstraat",
+     "n": 3
+    },
+    {
+     "name": "Jasper Leijnsenstraat",
+     "n": 1
+    },
+    {
+     "name": "De Rijpstraat",
+     "n": 1
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012124337",
+    "0363100012062141",
+    "0363100012124911",
+    "0363100012064565",
+    "0363100012100410",
+    "0363100012107290",
+    "0363100012122649",
+    "0363100012147152",
+    "0363100012084175",
+    "0363100012142659",
+    "0363100012100440",
+    "0363100012118984",
+    "0363100012077081",
+    "0363100012110462",
+    "0363100012131219",
+    "0363100012063203",
+    "0363100012133746",
+    "0363100012109667",
+    "0363100012115570",
+    "0363100012154577",
+    "0363100012089597",
+    "0363100012071754",
+    "0363100012128652",
+    "0363100012073277",
+    "0363100012096832",
+    "0363100012137538",
+    "0363100012147833",
+    "0363100012154479",
+    "0363100012140027",
+    "0363100012141001",
+    "0363100012146143"
+   ]
+  },
+  {
+   "rank": 41,
+   "group": "pre-war-house-1936-163369",
+   "copies": 5,
+   "exposure": 18500,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1936,
+    1939
+   ],
+   "footprint": {
+    "L": 8.7,
+    "W": 5.7,
+    "height": 9.2,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.14,
+    "medianShapeM": 0.13,
+    "heightM": 0.5,
+    "years": 3,
+    "mirroredShare": 0.6,
+    "spanKm": 0.19
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 5
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.45,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012153047",
+    "0363100012161650",
+    "0363100012153080",
+    "0363100012163369",
+    "0363100012165911"
+   ]
+  },
+  {
+   "rank": 42,
+   "group": "post-war-house-1991-129978",
+   "copies": 7,
+   "exposure": 17515,
+   "archetypeGuess": "post-war house",
+   "years": [
+    1991,
+    1991
+   ],
+   "footprint": {
+    "L": 12.8,
+    "W": 7.4,
+    "height": 14.8,
+    "roof": 3,
+    "complexity": 0.2
+   },
+   "spread": {
+    "maxShapeM": 0.62,
+    "medianShapeM": 0.45,
+    "heightM": 0,
+    "years": 0,
+    "mirroredShare": 0.57,
+    "spanKm": 0.04
+   },
+   "streets": [
+    {
+     "name": "Haarlemmerweg",
+     "n": 7
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.55,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012066465",
+    "0363100012119531",
+    "0363100012129978",
+    "0363100012112377",
+    "0363100012126866",
+    "0363100012074358",
+    "0363100012075978"
+   ]
+  },
+  {
+   "rank": 43,
+   "group": "kiosk-utility-1997-176709",
+   "copies": 38,
+   "exposure": 17405,
+   "archetypeGuess": "kiosk / utility",
+   "years": [
+    1997,
+    1997
+   ],
+   "footprint": {
+    "L": 9.4,
+    "W": 6,
+    "height": 3.8,
+    "roof": 0,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.28,
+    "medianShapeM": 0.12,
+    "heightM": 1.2,
+    "years": 0,
+    "mirroredShare": 0.47,
+    "spanKm": 0.27
+   },
+   "streets": [
+    {
+     "name": "Tussen de Bogen",
+     "n": 38
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.5,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012167827",
+    "0363100012176720",
+    "0363100012167835",
+    "0363100012176708",
+    "0363100012177032",
+    "0363100012167833",
+    "0363100012176705",
+    "0363100012176706",
+    "0363100012176707",
+    "0363100012176709",
+    "0363100012176811",
+    "0363100012176293",
+    "0363100012176704",
+    "0363100012176717",
+    "0363100012176719",
+    "0363100012177033",
+    "0363100012176810",
+    "0363100012176291",
+    "0363100012176292",
+    "0363100012167836",
+    "0363100012176703",
+    "0363100012176800",
+    "0363100012176801",
+    "0363100012176289",
+    "0363100012176802",
+    "0363100012176718",
+    "0363100012177028",
+    "0363100012176290",
+    "0363100012171356",
+    "0363100012171447",
+    "0363100012171448",
+    "0363100012173125",
+    "0363100012171361",
+    "0363100012177046",
+    "0363100012176286",
+    "0363100012176288",
+    "0363100012176287",
+    "0363100012171355"
+   ]
+  },
+  {
+   "rank": 44,
+   "group": "pre-war-house-1934-150494",
+   "copies": 157,
+   "exposure": 16425,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1934,
+    1940
+   ],
+   "footprint": {
+    "L": 11.6,
+    "W": 6.1,
+    "height": 15.4,
+    "roof": 3,
+    "complexity": 0.38
+   },
+   "spread": {
+    "maxShapeM": 0.94,
+    "medianShapeM": 0.51,
+    "heightM": 2.6,
+    "years": 6,
+    "mirroredShare": 0.47,
+    "spanKm": 7.71
+   },
+   "streets": [
+    {
+     "name": "Orteliuskade",
+     "n": 25
+    },
+    {
+     "name": "Westzaanstraat",
+     "n": 18
+    },
+    {
+     "name": "Kinderdijkstraat",
+     "n": 15
+    },
+    {
+     "name": "Vechtstraat",
+     "n": 12
+    },
+    {
+     "name": "Sanderijnstraat",
+     "n": 12
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.45,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012070262",
+    "0363100012130079",
+    "0363100012097082",
+    "0363100012144613",
+    "0363100012078811",
+    "0363100012144432",
+    "0363100012142349",
+    "0363100012112111",
+    "0363100012111162",
+    "0363100012114208",
+    "0363100012154845",
+    "0363100012065845",
+    "0363100012094776",
+    "0363100012098846",
+    "0363100012108754",
+    "0363100012123809",
+    "0363100012067767",
+    "0363100012063417",
+    "0363100012081042",
+    "0363100012116807",
+    "0363100012081462",
+    "0363100012151071",
+    "0363100012089477",
+    "0363100012127942",
+    "0363100012136824",
+    "0363100012111931",
+    "0363100012093950",
+    "0363100012100792",
+    "0363100012108327",
+    "0363100012154752",
+    "0363100012070580",
+    "0363100012095061",
+    "0363100012109654",
+    "0363100012079823",
+    "0363100012090021",
+    "0363100012099981",
+    "0363100012110080",
+    "0363100012125224",
+    "0363100012127473",
+    "0363100012131757",
+    "0363100012150345",
+    "0363100012073247",
+    "0363100012097853",
+    "0363100012102376",
+    "0363100012119338",
+    "0363100012134936",
+    "0363100012136613",
+    "0363100012096651",
+    "0363100012065018",
+    "0363100012070834",
+    "0363100012143672",
+    "0363100012095799",
+    "0363100012065164",
+    "0363100012081120",
+    "0363100012094647",
+    "0363100012095556",
+    "0363100012097630",
+    "0363100012099992",
+    "0363100012105029",
+    "0363100012105235",
+    "0363100012106943",
+    "0363100012114255",
+    "0363100012118932",
+    "0363100012131050",
+    "0363100012108378",
+    "0363100012114011",
+    "0363100012067007",
+    "0363100012138312",
+    "0363100012181825",
+    "0363100012098015",
+    "0363100012073917",
+    "0363100012082003",
+    "0363100012085092",
+    "0363100012096830",
+    "0363100012107502",
+    "0363100012154964",
+    "0363100012067158",
+    "0363100012081152",
+    "0363100012094114",
+    "0363100012104713",
+    "0363100012115174",
+    "0363100012119641",
+    "0363100012122885",
+    "0363100012147014",
+    "0363100012148704",
+    "0363100012150494",
+    "0363100012151358",
+    "0363100012181827",
+    "0363100012105850",
+    "0363100012152195",
+    "0363100012152124",
+    "0363100012131620",
+    "0363100012071190",
+    "0363100012081170",
+    "0363100012140203",
+    "0363100012083157",
+    "0363100012139695",
+    "0363100012071134",
+    "0363100012118924",
+    "0363100012068522",
+    "0363100012074830",
+    "0363100012129300",
+    "0363100012139105",
+    "0363100012140445",
+    "0363100012144520",
+    "0363100012071568",
+    "0363100012092148",
+    "0363100012063943",
+    "0363100012107944",
+    "0363100012121547",
+    "0363100012134050",
+    "0363100012140227",
+    "0363100012142341",
+    "0363100012144363",
+    "0363100012073766",
+    "0363100012083340",
+    "0363100012086088",
+    "0363100012095006",
+    "0363100012107428",
+    "0363100012108878",
+    "0363100012112605",
+    "0363100012118981",
+    "0363100012123357",
+    "0363100012126718",
+    "0363100012138258",
+    "0363100012139006",
+    "0363100012148101",
+    "0363100012148772",
+    "0363100012068565",
+    "0363100012091280",
+    "0363100012096686",
+    "0363100012100129",
+    "0363100012064382",
+    "0363100012069414",
+    "0363100012092547",
+    "0363100012101845",
+    "0363100012104048",
+    "0363100012114130",
+    "0363100012114252",
+    "0363100012118486",
+    "0363100012125416",
+    "0363100012142188",
+    "0363100012154649",
+    "0363100012155270",
+    "0363100012065639",
+    "0363100012083965",
+    "0363100012102076",
+    "0363100012111163",
+    "0363100012112542",
+    "0363100012114367",
+    "0363100012114468",
+    "0363100012119711",
+    "0363100012132005",
+    "0363100012132456",
+    "0363100012132608",
+    "0363100012137395",
+    "0363100012145465"
+   ]
+  },
+  {
+   "rank": 45,
+   "group": "pre-war-house-1916-068787",
+   "copies": 8,
+   "exposure": 16410,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1916,
+    1916
+   ],
+   "footprint": {
+    "L": 8.2,
+    "W": 7.4,
+    "height": 12.4,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.13,
+    "medianShapeM": 0.07,
+    "heightM": 0.5,
+    "years": 0,
+    "mirroredShare": 0.13,
+    "spanKm": 0.05
+   },
+   "streets": [
+    {
+     "name": "Zeeburgerdijk",
+     "n": 8
+    }
+   ],
+   "architects": [
+    "J.H.W. Leliman"
+   ],
+   "names": [],
+   "detectorConfidence": 0.7,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012131587",
+    "0363100012082517",
+    "0363100012101257",
+    "0363100012089774",
+    "0363100012068787",
+    "0363100012150787",
+    "0363100012081431",
+    "0363100012124833"
+   ]
+  },
+  {
+   "rank": 46,
+   "group": "pre-war-house-1934-102932",
+   "copies": 3,
+   "exposure": 16360,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1931,
+    1934
+   ],
+   "footprint": {
+    "L": 10.1,
+    "W": 5.7,
+    "height": 10.2,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.26,
+    "medianShapeM": 0.18,
+    "heightM": 0.2,
+    "years": 3,
+    "mirroredShare": 0.33,
+    "spanKm": 0.01
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 3
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.45,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012120045",
+    "0363100012102932",
+    "0363100012104663"
+   ]
+  },
+  {
+   "rank": 47,
+   "group": "pre-war-house-1884-159153",
+   "copies": 12,
+   "exposure": 16230,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1883,
+    1884
+   ],
+   "footprint": {
+    "L": 12.2,
+    "W": 5.2,
+    "height": 15.6,
+    "roof": 3,
+    "complexity": 0.02
+   },
+   "spread": {
+    "maxShapeM": 0.59,
+    "medianShapeM": 0.13,
+    "heightM": 2.2,
+    "years": 1,
+    "mirroredShare": 0.25,
+    "spanKm": 0.06
+   },
+   "streets": [
+    {
+     "name": "Knollendamstraat",
+     "n": 8
+    },
+    {
+     "name": "Spaarndammerstraat",
+     "n": 4
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012152722",
+    "0363100012155810",
+    "0363100012159153",
+    "0363100012161333",
+    "0363100012161452",
+    "0363100012161751",
+    "0363100012160526",
+    "0363100012163529",
+    "0363100012156903",
+    "0363100012167134",
+    "0363100012162126",
+    "0363100012164619"
+   ]
+  },
+  {
+   "rank": 48,
+   "group": "post-war-house-2011-240899",
+   "copies": 3,
+   "exposure": 15870,
+   "archetypeGuess": "post-war house",
+   "years": [
+    2009,
+    2011
+   ],
+   "footprint": {
+    "L": 12.2,
+    "W": 5.7,
+    "height": 10.4,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.36,
+    "medianShapeM": 0.12,
+    "heightM": 0.7,
+    "years": 2,
+    "mirroredShare": 0,
+    "spanKm": 0.04
+   },
+   "streets": [
+    {
+     "name": "Nieuwendammerdijk",
+     "n": 3
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012240373",
+    "0363100012066485",
+    "0363100012240899"
+   ]
+  },
+  {
+   "rank": 49,
+   "group": "pre-war-house-1890-152390",
+   "copies": 8,
+   "exposure": 15790,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1887,
+    1892
+   ],
+   "footprint": {
+    "L": 13.2,
+    "W": 6,
+    "height": 15.2,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.89,
+    "medianShapeM": 0.21,
+    "heightM": 0.8,
+    "years": 5,
+    "mirroredShare": 0.25,
+    "spanKm": 0.23
+   },
+   "streets": [
+    {
+     "name": "Van Oldenbarneveldtstraat",
+     "n": 5
+    },
+    {
+     "name": "Tweede Hugo de Grootstraat",
+     "n": 2
+    },
+    {
+     "name": "Marnixstraat",
+     "n": 1
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.35,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012152390",
+    "0363100012161994",
+    "0363100012156999",
+    "0363100012155561",
+    "0363100012169803",
+    "0363100012152888",
+    "0363100012155999",
+    "0363100012158963"
+   ]
+  },
+  {
+   "rank": 50,
+   "group": "pre-war-house-1936-082775",
+   "copies": 89,
+   "exposure": 15745,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1930,
+    1936
+   ],
+   "footprint": {
+    "L": 10.9,
+    "W": 6.1,
+    "height": 9.6,
+    "roof": 3,
+    "complexity": 0.39
+   },
+   "spread": {
+    "maxShapeM": 1.04,
+    "medianShapeM": 0.38,
+    "heightM": 2.2,
+    "years": 6,
+    "mirroredShare": 0.55,
+    "spanKm": 21.39
+   },
+   "streets": [
+    {
+     "name": "Margriete van Clevelaan",
+     "n": 26
+    },
+    {
+     "name": "Kalfjeslaan",
+     "n": 8
+    },
+    {
+     "name": "Amsterdamseweg",
+     "n": 8
+    },
+    {
+     "name": "Voltaplein",
+     "n": 6
+    },
+    {
+     "name": "Holbeinstraat",
+     "n": 5
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.45,
+   "samplePanorama": null,
+   "frontCheck": null,
+   "verdict": null,
+   "exactFamilies": [],
+   "memberPands": [
+    "0363100012159655",
+    "0363100012072800",
+    "0363100012162734",
+    "0362100001085822",
+    "0362100001081696",
+    "0362100001081700",
+    "0362100001081734",
+    "0362100001081747",
+    "0362100001081834",
+    "0362100001081838",
+    "0363100012061844",
+    "0362100001081702",
+    "0362100001081769",
+    "0362100001081812",
+    "0362100001080230",
+    "0363100012069386",
+    "0362100001071124",
+    "0362100001080211",
+    "0362100001081735",
+    "0362100001082880",
+    "0363100012082337",
+    "0363100012088903",
+    "0363100012090212",
+    "0363100012096638",
+    "0363100012141578",
+    "0363100012080919",
+    "0363100012085109",
+    "0363100012124889",
+    "0362100001081731",
+    "0362100001082879",
+    "0363100012116588",
+    "0362100001081679",
+    "0362100001081710",
+    "0362100001081737",
+    "0362100001081740",
+    "0362100001082855",
+    "0362100001082856",
+    "0362100001082857",
+    "0362100001082858",
+    "0362100001082913",
+    "0362100001082952",
+    "0362100001082953",
+    "0362100001082955",
+    "0362100001108959",
+    "0362100001108963",
+    "0363100012148453",
+    "0358100022274613",
+    "0362100001081709",
+    "0362100001082910",
+    "0362100001082954",
+    "0362100001108965",
+    "0394100000210436",
+    "0363100012091897",
+    "0363100012118687",
+    "0363100012134161",
+    "0363100012081961",
+    "0362100001082911",
+    "0362100001082946",
+    "0362100001088534",
+    "0393100000000270",
+    "0393100000000539",
+    "0394100000219214",
+    "0363100012110230",
+    "0363100012081073",
+    "0363100012091081",
+    "0363100012093048",
+    "0363100012110950",
+    "0363100012113057",
+    "0363100012130194",
+    "0363100012131233",
+    "0362100001058330",
+    "0393100000000212",
+    "0362100001073458",
+    "0362100001073497",
+    "0362100001074738",
+    "0362100001058333",
+    "0362100001081602",
+    "0362100001081659",
+    "0362100001082775",
+    "0362100001082776",
+    "0362100001082778",
+    "0362100001085772",
+    "0362100001085799",
+    "0362100001073457",
+    "0362100001058332",
+    "0362100001073456",
+    "0362100001073470",
+    "0362100001073473",
+    "0362100001074212"
+   ]
+  }
+ ]
+}
