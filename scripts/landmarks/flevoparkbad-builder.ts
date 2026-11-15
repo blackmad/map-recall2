@@ -41,6 +41,9 @@ export function buildFlevoparkbad(_w: number, _d: number, b: BuildingTools) {
 
   // ---- changing-room wings: low brick block, a field of square pyramid roof-lights ----
   prismRing(b, WINGS, 0, WALL_TOP, 'brick');
+  // the roof deck between the pyramids is dark grey on the orthophoto, not brick (blind review 2026-11-15: the brick top read
+  // as a terracotta slab with black stickers); a thin dark cap just inside the wall line
+  prismRing(b, offsetRing(WINGS, -0.15), WALL_TOP, WALL_TOP + 0.04, 'dark', 'roof');
   // the flat-roofed middle strip of the west wing (BAG ...186769-...186771) has no pyramids on the orthophoto
   const flat = (x: number, z: number) => x > -73 && z > 26 && z < 49;
   for (let x = -83; x < -22; x += CELL) for (let z = 10; z < 56; z += CELL) {
@@ -72,6 +75,9 @@ export function buildFlevoparkbad(_w: number, _d: number, b: BuildingTools) {
 
 /** A closed square pyramid (base side s at y0, apex h higher), axis-aligned. */
 function pyramid(b: BuildingTools, c: XZ, s: number, y0: number, h: number, colour: string) {
-  const g = new T.ConeGeometry(s / Math.SQRT2, h, 4, 1, false).rotateY(Math.PI / 4).translate(c[0], y0 + h / 2, c[1]);
+  // flat-shaded: the cone's smooth normals lit all four faces alike, so the pyramids read as flat tiles from above (blind
+  // review 2026-11-15); per-face normals give each slope its own light like the orthophoto's
+  const g = new T.ConeGeometry(s / Math.SQRT2, h, 4, 1, false).rotateY(Math.PI / 4).translate(c[0], y0 + h / 2, c[1]).toNonIndexed();
+  g.computeVertexNormals();
   b.add(g, colour as never);
 }
