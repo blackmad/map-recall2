@@ -883,3 +883,59 @@ fresh opus judge per street. Sheets, bands and key: `_pruned-sheets/buurt-genera
 
 Round 10 wins 4/7; all three losses are low confidence. Open: the AHN front read misses a parapet step (Pieter
 Lastmankade), and white bays and oriels are still the most-named gap.
+
+### Round 11: brick hue guard, AHN raise, real steps, lane R's round 13 fields
+
+- **Brick hue guard** (`measure.ts hueGuard`, `HUE_GUARD`). Lane R found the white balance pushes the brick red. On a
+  cyan-cast capture, removing the cast adds red, and on a dim band the cast can be larger than the brick's own
+  chroma. 77 Rivierenbuurt and 30 Apollo/Stadion measured rows drew pink-mauve (hue under 36 deg or over 300), among
+  them Rubensstraat, which lost its round 10 A/B on colour.
+  - When the raw read has real chroma (C >= 0.012), the balance may move its hue at most 12 deg toward red.
+  - When the raw read is grey, its hue means nothing; a read moved more than 12 deg into pink-mauve is set to 36 deg.
+  - `scripts/buurt-generators/revote-walls.ts` re-votes the stored reads; nothing is fetched. 447 + 238 reads were
+    guarded. Pink-mauve rows went from 77 to 27 and from 30 to 8; the rest sit at 33-36 deg or under C 0.01. 4 + 2 rows
+    went back to the pool.
+- **Stated wall family** (`rowNotes.wallFamily`). A family the row's photo states beats a measured brick that the
+  photo contradicts. Stadionkade 063989 is `dark-brown-brick` (lane R's family); the vote there read #ae9772, a light
+  tan.
+- **AHN raise** (`blockLines AHN_RAISE`). A series that AHN4 reads flat at the front, more than 1.5 m over its 3DBAG
+  line with its members within 0.8 m of each other, draws AHN's line.
+  - It applies only when the district has a family for the new storey count, so no series drops off-storeys.
+  - A raised line snaps to a same-period neighbour within 0.8 m.
+  - Across the two districts, 137 flat series agree with 3DBAG within 0.8 m and 63 read more than 2 m over it.
+  - Kuinderstraat 067158 went from 13 / 13.8 m (4 storeys) to 15.35 / 16.25 m (5 storeys); 53 + 13 series were raised.
+- **Real small steps** (`realStep`, Pieter Lastmankade). A step of at least 0.3 m in AHN that agrees in sign with
+  3DBAG's, with every read of the higher series above the lower series' median, is not clamped. Pieter Lastmankade
+  itself is now stated by its photo: a `topM` of 8.7 m plus `raised` stair towers.
+- **Block coherence reads flat fronts only.** On a pitched or mansard front, AHN's front height sits up the roof face.
+  On held-out Leonardostraat 077281, three storeys under tile at 9.9 m had been lifted to 11 m and drawn as four. The
+  audit now counts 3 + 0 unsupported steps; steps on pitched fronts stay with 3DBAG.
+- **Lane R's round 13 fields, emitted from row notes** on flat series only, validated by the kit's own readers:
+  - `eaves {overhangM, fasciaM, lid, frieze}`: Kuinderstraat (1 m, 0.25), Hunzestraat (0.5 m, 0.2), Europaplein,
+    Trompenburgstraat;
+  - `attic {heightM, pitchM}`, which replaces `ribbon`: Europaplein 1.0 m, Stadionkade 1.6 m;
+  - `raised` per member: Borssenburgstraat's fins and piers, Pieter Lastmankade's towers, and Amstelkade's block
+    parapets 2.8 m over the line;
+  - Europaplein's records equal lane R's trial records.
+  - Rubensstraat's stair tower is on a pitched series, so it is not stated (raised parts are drawn on flat series
+    only).
+
+### Held-out round 11 (blind; new seed `r11-heldout`; round 11 at 51434fe89 against round 9 at 8cd6b0022)
+
+Every street used before was excluded, along with the library's noted streets. 83 candidates remained, and 10
+requests (6 MB) were fetched. One fresh opus judge per street; the sheets and key are in
+`_pruned-sheets/buurt-generators-20261115/round11/`.
+
+| Street (row) | District | Winner | Confidence | What the judge said |
+|---|---|---|---|---|
+| Albrecht Dürerstraat (142046) | Apollo | round 11 | medium | residential ground floor. Gap: steep dark mansard, tower bay |
+| Deurloostraat (075052) | Rivierenbuurt | round 11 | medium | residential ground floor. Gap: wide white multi-pane windows |
+| Roerstraat (112650) | Rivierenbuurt | round 11 | medium | residential ground floor. Gap: wall too purple; white bays drawn dark |
+| Uithoornstraat (067867) | Rivierenbuurt | round 11 | low | ground floor, one eaves line on the left. Gap: walls grey, the photo dark brown |
+| Vrijheidslaan (148822) | Rivierenbuurt | round 11 | low | ground floor. Gap: lighter tan brick, stair-tower glazing |
+| Leonardostraat (077281) | Apollo | round 9 | medium | round 11 drew four storeys where the photo has three under tile. The block clamp read a mansard face as eaves; **fixed after judging** (flat fronts only) |
+| Amsteldijk (076326) | Rivierenbuurt | round 9 | low | round 9's warmer wall; round 11's reads grey-green |
+
+Round 11 wins 5/7. Most wins come from the residential ground floor, which round 9's published records drew as shop
+glazing, rather than from this round's line and hue changes. Colour is still the most-named gap: grey or grey-green
+where the photo is warm. The hue guard keeps reads out of pink-mauve but cannot recover the warmth of a grey raw read.
