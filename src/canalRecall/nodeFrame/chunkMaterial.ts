@@ -14,7 +14,7 @@
  * the thin fade's dissolve, highlight/ghost states (hidden ranges are dropped before drawing).
  */
 import { sampleAtlas, type Atlas } from './atlas.ts';
-import { lambert, linearToSrgb, sunFacing, type SceneLight } from './light.ts';
+import { lambert, linearToSrgb, pow22, sunFacing, type SceneLight } from './light.ts';
 import type { ShadeInput, WorldMaterial } from './worldRaster.ts';
 
 export type ChunkArrays = { uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array; accentSize?: 3 | 4 };
@@ -86,7 +86,7 @@ export function chunkMaterial(look: ChunkLook, a: ChunkArrays, positions: Float3
       const glaze = (1 - smoothstep(0.06, 0.2, luma)) * (1 - m[0]);
       const lit = look.shadow && sunFacing(light, s.nx, s.ny, s.nz) > 0 ? look.shadow(s.px, s.py, s.pz, s.nx, s.ny, s.nz) : 1;
       lambert(light, s.nx, s.ny, s.nz, lit, irr);
-      for (let k = 0; k < 3; k++) out[k] = linearToSrgb(Math.pow(Math.max(0, c[k]), 2.2) * irr[k] + SKY_TINT[k] * glaze);
+      for (let k = 0; k < 3; k++) out[k] = linearToSrgb(pow22(c[k]) * irr[k] + SKY_TINT[k] * glaze);
       if (look.fog) look.fog(s.dist, out);
       out[3] = 1;
       return true;

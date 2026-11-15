@@ -50,18 +50,21 @@ export function shadowMap(casters: readonly WorldDraw[], toSun: readonly [number
     }
   }
   const q = new Float64Array(3);
-  const at = (x: number, y: number) => (x < 0 || y < 0 || x >= size || y >= size ? Infinity : depth[y * size + x]);
+  // three's PCFShadowMap: five Vogel-disk taps of radius 1 texel, each a bilinear (hardware) 2 x 2 compare. The disk's
+  // per-pixel rotation (interleaved gradient noise) is fixed here: the frame is a still, not an average over frames.
+  const TAPS = [0, 1, 2, 3, 4].map(k => { const r = Math.sqrt((k + 0.5) / 5), th = k * 2.399963; return [r * Math.cos(th) - 0.5, r * Math.sin(th) - 0.5]; });
+  const tx0 = TAPS.map(t => t[0]), ty0 = TAPS.map(t => t[1]), last = size - 1;
   const lookup: ShadowFn = (x, y, z, nx, ny, nz) => {
     toMap(x + nx * normalBias, y + ny * normalBias, z + nz * normalBias, q, 0);
     const zr = q[2] + bias;
     if (q[0] < 0 || q[1] < 0 || q[0] >= size || q[1] >= size || zr > far) return 1;
-    // three's PCFShadowMap: five Vogel-disk taps of radius 1 texel, each a bilinear (hardware) 2 x 2 compare. The disk's
-    // per-pixel rotation (interleaved gradient noise) is fixed here: the frame is a still, not an average over frames.
     let lit = 0;
     for (let k = 0; k < 5; k++) {
-      const r = Math.sqrt((k + 0.5) / 5), th = k * 2.399963;
-      const fx = q[0] + r * Math.cos(th) - 0.5, fy = q[1] + r * Math.sin(th) - 0.5, ix = Math.floor(fx), iy = Math.floor(fy), tx = fx - ix, ty = fy - iy;
-      const a = zr <= at(ix, iy) ? 1 : 0, b = zr <= at(ix + 1, iy) ? 1 : 0, c = zr <= at(ix, iy + 1) ? 1 : 0, e = zr <= at(ix + 1, iy + 1) ? 1 : 0;
+      const fx = q[0] + tx0[k], fy = q[1] + ty0[k], ix = Math.floor(fx), iy = Math.floor(fy), tx = fx - ix, ty = fy - iy;
+      // Outside the map reads as lit (three clamps to the border; the box is far larger than the view near the rider).
+      const xa = ix < 0 ? -1 : ix, xb = ix + 1 > last ? -1 : ix + 1, ya = iy < 0 ? -1 : iy * size, yb = iy + 1 > last ? -1 : (iy + 1) * size;
+      const a = xa >= 0 && ya >= 0 && zr > depth[ya + xa] ? 0 : 1, b = xb >= 0 && ya >= 0 && zr > depth[ya + xb] ? 0 : 1;
+      const c = xa >= 0 && yb >= 0 && zr > depth[yb + xa] ? 0 : 1, e = xb >= 0 && yb >= 0 && zr > depth[yb + xb] ? 0 : 1;
       lit += (a * (1 - tx) + b * tx) * (1 - ty) + (c * (1 - tx) + e * tx) * ty;
     }
     return lit / 5;

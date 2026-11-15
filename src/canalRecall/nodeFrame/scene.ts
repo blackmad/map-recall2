@@ -135,7 +135,19 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   for (const c of near) { try { cells.set(c.key, await reader.cell(c.key)); } catch { /* no cell */ } }
   const hidden = new Set<string>();
   for (const c of cells.values()) for (const h of c.hide) hidden.add(h.id);
-  T.cells = ms(t); N.cells = cells.size; N.hidden = hidden.size;
+  // Building-type instances in view: their pands go from the detail tier and the shells (suppressOsmIds).
+  const { typeInstanceMatrices } = await import('./models.ts');
+  const typeFile = path.join(root, 'public/canal-drive/building-types/instances.json');
+  const pointBase = (a: [number, number]) => {
+    const [lx, ly] = toLocal(a[0], a[1]);
+    if (!ground.store.reliefCovered(lx, ly)) return 0;
+    let b = Infinity;
+    for (const ox of [-3, 0, 3]) for (const oy of [-3, 0, 3]) { const h = relief(lx + ox, ly + oy); if (Number.isFinite(h)) b = Math.min(b, h); }
+    return Number.isFinite(b) ? b : 0;
+  };
+  const types = opts.models !== false && fs.existsSync(typeFile) ? typeInstanceMatrices(gf, JSON.parse(fs.readFileSync(typeFile, 'utf8')), pointBase, (wx, wy) => Math.hypot(wx - eye[0], wy - eye[1]) < (view.aerial ? 1500 : 700) && inView(wx, wy, 40)) : [];
+  for (const ti of types) for (const h of ti.hides) hidden.add(h);
+  T.cells = ms(t); N.cells = cells.size; N.hidden = hidden.size; N.typeInstances = types.length;
 
   // ---- detail block -----------------------------------------------------------------------------------------------
   t = performance.now();
@@ -227,7 +239,7 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
       if (!anchor) continue;
       const [wx, wy] = worldOfLngLat(gf, anchor[0], anchor[1]);
       const d = Math.hypot(wx - eye[0], wy - eye[1]);
-      if (d > MODEL_RADIUS_M || (d > 80 && !ahead(wx, wy, 0.3 * d + 60))) continue;
+      if (d > (view.aerial ? 2000 : MODEL_RADIUS_M) || (d > 80 && !ahead(wx, wy, 0.3 * d + 60))) continue;
       let file = modelFile(root, spec.modelUrl);
       const lod1 = file.replace(/\.glb$/, '.lod1.glb');
       if (d > LOD1_M && fs.existsSync(lod1)) file = lod1;
@@ -239,14 +251,18 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
       try { placement = placementFor(spec as never, { min: b.min, max: b.max }) as any; } catch { continue; }
       const recentre: [number, number, number] = spec.surveyed ? [0, -b.min[1], 0] : [-(b.min[0] + b.max[0]) / 2, -b.min[1], -(b.min[2] + b.max[2]) / 2];
       // pointBase: the lowest relief within 3 m of the anchor (0 off the relief).
-      const [lx, ly] = toLocal(placement.anchor[0], placement.anchor[1]);
-      let base = 0;
-      if (ground.store.reliefCovered(lx, ly)) { base = Infinity; for (const ox of [-3, 0, 3]) for (const oy of [-3, 0, 3]) { const h = relief(lx + ox, ly + oy); if (Number.isFinite(h)) base = Math.min(base, h); } if (!Number.isFinite(base)) base = 0; }
+      const base = pointBase(placement.anchor);
       const M = modelMatrix(gf, placement, recentre, base);
       for (const dr of modelDraws(glb, M, envL, `model/${spec.id}`)) { draws.push(dr); if (!dr.blend) casters.push(dr); }
       placed++;
     }
     N.models = placed;
+    for (const ti of types) {
+      const file = path.join(root, 'public/canal-drive/building-types', `${ti.inst.unit}.glb`);
+      if (!fs.existsSync(file)) continue;
+      const glb = await loadGlbFile(file);
+      for (const dr of modelDraws(glb, ti.M, envL, `type/${ti.inst.pand}`)) { draws.push(dr); if (!dr.blend) casters.push(dr); }
+    }
   }
   T.models = ms(t);
 

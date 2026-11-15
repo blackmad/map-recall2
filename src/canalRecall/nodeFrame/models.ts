@@ -135,3 +135,39 @@ export function modelDraws(g: GlbScene, M: number[], env: SurfaceEnv, name: stri
 }
 
 export const linear3 = (hex: string): [number, number, number] => { const n = parseInt(hex.replace('#', ''), 16); return [srgbToLinear(((n >> 16) & 255) / 255), srgbToLinear(((n >> 8) & 255) / 255), srgbToLinear((n & 255) / 255)]; };
+
+/** buildingTypes/runtime.ts RuntimeInstance (public/canal-drive/building-types/instances.json). */
+export type TypeInstance = { pand: string; unit: string; anchor: [number, number]; northOffsetDegrees: number; scale: [number, number, number]; groundAltitudeMetres: number; area?: string; alsoSuppress?: string[] };
+
+/**
+ * Building-type instances (buildingTypes/runtime.ts, wired in signature-landmarks-source.js): each area is a surveyed
+ * spec at its instances' bounding-box centre, rotation 90 (GLB +x east, +z south), lifted by the ground base at that
+ * anchor; inside it each instance is T(east, alt, south) . Ry(yaw) . S with yaw = pi - (180 + northOffset) deg.
+ * Returns, per wanted instance, its GLB-to-world 3x4 and the pand ids it suppresses. The runtime draws instances
+ * past NEAR_METRES as massing boxes and culls them past CULL_METRES; this keeps the unit mesh out to `radiusM`.
+ */
+export function typeInstanceMatrices(f: GeoFrame, instances: readonly TypeInstance[], areaBase: (anchor: [number, number]) => number, want: (wx: number, wy: number) => boolean): { inst: TypeInstance; M: number[]; hides: string[] }[] {
+  const byArea = new Map<string, TypeInstance[]>();
+  for (const i of instances) { const k = i.area ?? ''; let l = byArea.get(k); if (!l) byArea.set(k, l = []); l.push(i); }
+  const out: { inst: TypeInstance; M: number[]; hides: string[] }[] = [];
+  for (const list of byArea.values()) {
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    for (const i of list) { x0 = Math.min(x0, i.anchor[0]); x1 = Math.max(x1, i.anchor[0]); y0 = Math.min(y0, i.anchor[1]); y1 = Math.max(y1, i.anchor[1]); }
+    const anchor: [number, number] = [(x0 + x1) / 2, (y0 + y1) / 2];
+    let base: number | null = null;
+    const [ax, ay] = worldOfLngLat(f, anchor[0], anchor[1]);
+    const k = 1 / (2 * Math.PI * MEAN_RADIUS_M * Math.cos(anchor[1] * Math.PI / 180)) / f.unitsPerMetre;
+    for (const inst of list) {
+      const [wx, wy] = worldOfLngLat(f, inst.anchor[0], inst.anchor[1]);
+      if (!want(wx, wy)) continue;
+      base ??= areaBase(anchor);
+      // East/south metres from the area anchor in the loader's frame (equatorial Mercator metre at the anchor).
+      const east = (wx - ax) / k, south = -(wy - ay) / k;
+      const yaw = Math.PI - ((180 + inst.northOffsetDegrees) * Math.PI) / 180, c = Math.cos(yaw), s = Math.sin(yaw), [sx, sy, sz] = inst.scale;
+      // Area frame: E = c sx x + s sz z + east, U = sy y + alt, S = -s sx x + c sz z + south; world = anchor + k (E, -S, U).
+      const M = [k * c * sx, 0, k * s * sz, ax + k * east, k * s * sx, 0, -k * c * sz, ay - k * south, 0, k * sy, 0, base + k * inst.groundAltitudeMetres];
+      out.push({ inst, M, hides: [inst.pand, ...(inst.alsoSuppress ?? [])].map(p => `NL.IMBAG.Pand.${p}`) });
+    }
+  }
+  return out;
+}

@@ -10,7 +10,7 @@
  *   lambert:   light.ts lambert(); basic: the colour itself
  *   out = linearToSRGB(... + emissive), then the fog in sRGB.
  */
-import { lambert, linearToSrgb, srgbToLinear, sunFacing, type SceneLight } from './light.ts';
+import { lambert, linearToSrgb, srgbToLinearFast, sunFacing, type SceneLight } from './light.ts';
 import { sample2D, type Texture2D } from './texture.ts';
 import type { ShadeInput, WorldMaterial } from './worldRaster.ts';
 import type { FogFn, ShadowFn } from './chunkMaterial.ts';
@@ -105,7 +105,7 @@ export function surfaceMaterial(spec: SurfaceSpec, arr: SurfaceArrays, env: Surf
         const minor = s.dist / env.focal, major = minor / Math.max(0.02, s.cosView);
         const rho = texPerM * Math.max(minor, major / aniso);
         sample2D(spec.map, u, v, rho > 0 ? Math.log2(rho) : 0, tex);
-        dc[0] *= srgbToLinear(tex[0]); dc[1] *= srgbToLinear(tex[1]); dc[2] *= srgbToLinear(tex[2]);
+        dc[0] *= srgbToLinearFast(tex[0]); dc[1] *= srgbToLinearFast(tex[1]); dc[2] *= srgbToLinearFast(tex[2]);
         alpha *= tex[3];
       }
       const C = arr.colors;
