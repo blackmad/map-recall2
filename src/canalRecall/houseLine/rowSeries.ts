@@ -12,9 +12,9 @@
  * Nothing here is rolled: a field the series does not state is left out and the renderer draws no component for it.
  */
 import { frontDesign, type RowDesign, type RowFront, type RowRecord } from '../houseSpec/row/types.ts';
-import { rowFrontRecords } from '../houseSpec/row/emit.ts';
+import { rowFrontRecords, statedGable } from '../houseSpec/row/emit.ts';
 import { headsList } from '../houseSpec/row/solve.ts';
-import { ROW_FRONT_EXTRAS, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
+import { ROW_FRONT_EXTRAS, ROW_RAISED_FRONT_M, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
 
 /** Grounds that put the ground storey on a souterrain (stoop over basement windows). */
 const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows', 'windows']);
@@ -169,13 +169,19 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     // The world draws every pand from flat ground (no terrain under the mesher), so a row stands to its series line in
     // the street datum: per-pand 3DBAG ground offsets stepped the drawn cornice (Kinkerstraat 104 0.2 m, 110 0.7 m low).
     const line = designs[0].corniceTopM.value;
-    const lined = line !== null && line > 2 ? { topM: line, eavesM: line, ...(rec.subFronts ? { subFronts: rec.subFronts.map((sf, i) => ({ ...sf, topM: designs[i]?.corniceTopM.value ?? line, eavesM: designs[i]?.corniceTopM.value ?? line })) } : {}) } : {};
+    // A stated gable (RowDesign.gable) stands its rise over the front's line: the top is the gable's apex.
+    const lift = (v: number, d: RowDesign | undefined) => { const g = d ? statedGable(d) : null; return g ? +(v + g.riseM).toFixed(2) : v; };
+    const lined = line !== null && line > 2 ? { topM: lift(line, designs[0]), eavesM: line, ...(rec.subFronts ? { subFronts: rec.subFronts.map((sf, i) => ({ ...sf, topM: lift(designs[i]?.corniceTopM.value ?? line, designs[i]), eavesM: designs[i]?.corniceTopM.value ?? line })) } : {}) } : {};
     const out: RowFrontRecord = {
       ...rec, ...lined, series: seriesDraw(fronts, designs, seriesYear(row, fronts[0].seriesId), row.id, fronts.map(f => (row.series.find(x => x.id === f.seriesId) as { type?: string } | undefined)?.type)),
       wall: { hex: walls[0].hex, source: 'judged', finish: walls[0].material },
       sources: { ...rec.sources, ...(line !== null ? { eaves: `${rec.sources.eaves}; drawn at the series line ${line} m (street datum: the world has no terrain)` } : {}), series: `house-rows ${row.id}: ${[...new Set(fronts.map(f => f.seriesId))].join(', ')}`, wall: `judged ${walls[0].family} (${designs[0].wall.source}: ${designs[0].wall.ref})` },
     };
     if (rec.subFronts && walls.some(w => w.hex !== walls[0].hex)) out.subFronts = rec.subFronts.map((s, i) => ({ ...s, wallHex: walls[i]?.hex ?? walls[0].hex }));
+    // A member whose fronts stand to different series lines gets its width, so the renderer can size each front's
+    // raised top (rowFront.ts rowRaisedFronts); a member on one line is unchanged.
+    // A one-front member with a stated gable gets it too (the gable's width).
+    if (!out.spanM && member.widthM && member.widthM > 1 && line !== null && (out.subFronts ? out.subFronts.some(f => (f.topM ?? line) > line + ROW_RAISED_FRONT_M) : !!statedGable(designs[0]))) out.spanM = member.widthM;
     const joins = mansardJoins(row, rec.pandId);
     if (joins && out.series?.roofStorey?.kind === 'mansard') out.series.roofStorey.joins = joins;
     // A corner member's roof faces its row's street, not the side street nearer its outline (Kinkerstraat 110).

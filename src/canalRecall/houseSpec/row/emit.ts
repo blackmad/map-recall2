@@ -14,7 +14,7 @@ import { BASEMENTS } from '../../buildingRecipe/intent.ts';
 import { emptySpec, setSpecField, type HouseSpec, type Prov, type SpecSource } from '../spec.ts';
 import { JUDGED_PALETTE, JUDGED_RULING, type WallJudgedFact } from '../judgedColour.ts';
 import { headsList } from './solve.ts';
-import { frontDesign, type RowDesign, type RowField, type RowFieldSource, type RowRecord } from './types.ts';
+import { frontDesign, type RowDesign, type RowField, type RowFieldSource, type RowGable, type RowRecord } from './types.ts';
 
 /** Row source -> the spec receipt's source and confidence. */
 export const ROW_PROV: Readonly<Record<RowFieldSource, { source: SpecSource; confidence: number }>> = {
@@ -26,6 +26,20 @@ export const ROW_PROV: Readonly<Record<RowFieldSource, { source: SpecSource; con
 };
 const CONF: Record<RowFieldSource, number> = { reviewed: 0.9, 'face-intent': 0.9, 'series-consensus': 0.7, 'single-read': 0.5, 'period-default': 0.3 };
 
+/** A stated gable outline (RowDesign.gable) on a gabled crown; else none. */
+export function statedGable(d: RowDesign): RowGable | null {
+  const g = d.gable?.value;
+  return g && d.crown.value !== 'cornice' && Number.isFinite(g.riseM) && g.riseM > 0 ? g : null;
+}
+/** The front's crown: its family, and a stated gable's rise, steps, attic lights and neck. */
+function crownOf(d: RowDesign): RowFrontRecord['crown'] {
+  const crown: RowFrontRecord['crown'] = { family: d.crown.value === 'cornice' ? 'cornice' : d.crown.value }, g = statedGable(d);
+  if (!g) return crown;
+  return { ...crown, riseM: g.riseM, ...(g.steps ? { steps: g.steps } : {}), ...(g.attic !== undefined ? { atticWindows: g.attic } : {}), ...(g.neckWidthM ? { neckWidthM: g.neckWidthM } : {}) };
+}
+/** A stated gable stands its rise over the front's cornice line (the gable's foot); else the line is the top. */
+const gableTop = (top: number | null, d: RowDesign) => { const g = statedGable(d); return g && top !== null ? +(top + g.riseM).toFixed(2) : top; };
+
 export function rowFrontRecords(row: RowRecord): RowFrontRecord[] {
   return row.members.map(m => {
     const fronts = m.fronts.map(id => row.fronts.find(f => f.id === id)!);
@@ -34,11 +48,11 @@ export function rowFrontRecords(row: RowRecord): RowFrontRecord[] {
     const sources: Record<string, string> = { record: `house-rows ${row.id} ${f0.seriesId}`, eaves: `${d.corniceTopM.source}: ${d.corniceTopM.ref}` };
     const rec: RowFrontRecord = {
       pandId: m.pandId, ...(row.face ? { face: row.face } : {}),
-      topM: f0.topM, eavesM: f0.topM, crown: { family: d.crown.value === 'cornice' ? 'cornice' : d.crown.value },
+      topM: gableTop(f0.topM, d), eavesM: f0.topM, crown: crownOf(d),
       storeys: d.storeys.value, bays: designs.reduce((n, x) => n + x.bays.value, 0),
       confidence: Math.min(CONF[d.corniceTopM.source], CONF[d.storeys.source]), sources,
     };
-    if (fronts.length > 1) rec.subFronts = fronts.map((f, i) => ({ a0: f.sub!.a0, a1: f.sub!.a1, eavesM: f.topM, topM: f.topM, crown: { family: designs[i].crown.value === 'cornice' ? 'cornice' : designs[i].crown.value } }));
+    if (fronts.length > 1) rec.subFronts = fronts.map((f, i) => ({ a0: f.sub!.a0, a1: f.sub!.a1, eavesM: f.topM, topM: gableTop(f.topM, designs[i]), crown: crownOf(designs[i]) }));
     return rec;
   });
 }

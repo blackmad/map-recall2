@@ -72,8 +72,12 @@ export interface RowCrown {
   /** A chimney stack standing on the crown: its top above the crown's foot and its width (m). */
   chimney?: { topM: number; widthM: number };
   hoist?: boolean;
+  /** Step gable: the treads up each side as read on the photo (absent: one per ~0.85 m of rise, 2 to 5). */
+  steps?: number;
   /** Raised centre: the cornice band's height over the wall's eaves (the band covers the low saddle behind it). */
   bandM?: number;
+  /** Raised centre on a front standing mid-run (house rows' raised fronts): the plate starts at its foot. */
+  onWall?: boolean;
   /** Raised centre: the piece's cap (a pediment, a segmental arch, or a flat cornice cap). */
   cap?: 'pediment' | 'segmental' | 'flat';
 }
@@ -94,7 +98,7 @@ export function crownDims(c: RowCrown, W: number) {
   // Neck and bell: the kit's stock cap rise (crownOutline capRiseOf), so the trim and the opening follow its outline.
   const kitCap = (c.shape === 'neck' || c.shape === 'bell') ? capRiseOf({ gable: c.shape } as unknown as FrontIntent, T, 2 * foot) : 0;
   const cap = c.shape === 'neck' || c.shape === 'bell' ? kitCap : c.shape === 'raised' ? clamp(c.cap === 'flat' ? 0.25 : neck * 0.55, 0.2, Math.min(0.6, (T - (c.bandM ?? 0.5)) * 0.35)) : 0;
-  const steps = c.shape === 'step' ? clamp(Math.round(T / 0.85), 2, 5) : 0;
+  const steps = c.shape === 'step' ? (c.steps && c.steps >= 1 ? clamp(Math.round(c.steps), 1, 8) : clamp(Math.round(T / 0.85), 2, 5)) : 0;
   return { half, T, foot, neck, cap, steps };
 }
 
@@ -127,7 +131,10 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
   let kit: CanalhousePoint[] | null, x0: number;
   if (c.shape === 'raised') {
     const b = c.bandM ?? 0.5, flat = c.cap === 'flat';
-    kit = [[0, -KIT_Z], ...canalhouseCrownProfile('lijst', 2 * half, b + KIT_Z, T + KIT_Z, 2 * neck, b + KIT_Z, 0, { cap: flat ? 'flat' : c.cap === 'pediment' ? 'pediment' : 'segmental', capRiseM: flat ? 0 : d.cap, crestWidthM: 2 * neck }), [2 * half, -KIT_Z]];
+    // The outline's ends: KIT_Z under the foot (a whole front's plate, its ends inside the party walls), or at the foot
+    // for a front standing mid-run (`onWall`), whose plate ends would otherwise show as risers down the wall below it.
+    const end = c.onWall ? KIT_Z : -KIT_Z;
+    kit = [[0, end], ...canalhouseCrownProfile('lijst', 2 * half, b + KIT_Z, T + KIT_Z, 2 * neck, b + KIT_Z, 0, { cap: flat ? 'flat' : c.cap === 'pediment' ? 'pediment' : 'segmental', capRiseM: flat ? 0 : d.cap, crestWidthM: 2 * neck }), [2 * half, end]];
     x0 = -half;
   } else {
     kit = crownProfile({ gable: c.shape, ...(c.neckW ? { crownNeckWidth: neck / foot } : {}), crownSteps: d.steps || undefined } as unknown as FrontIntent, 2 * foot, y0 + KIT_Z, T + KIT_Z);
