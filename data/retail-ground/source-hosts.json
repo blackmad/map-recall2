@@ -1,0 +1,6491 @@
+{
+ "note": "second-sources.ts --apply: OSM node hosts moved by a second source, and businesses OSM lacks",
+ "hosts": {
+  "34044760": {
+   "pand": "0363100012070707",
+   "at": [
+    4.939794,
+    52.362686
+   ],
+   "source": "atp",
+   "name": "Albert Heijn",
+   "was": "0363100012101846"
+  },
+  "251165506": {
+   "pand": "0363100012182303",
+   "at": [
+    4.900966,
+    52.372525
+   ],
+   "source": "horeca",
+   "name": "Bern",
+   "was": "0363100012181818"
+  },
+  "251168511": {
+   "pand": "0363100012182854",
+   "at": [
+    4.899571,
+    52.37249
+   ],
+   "source": "horeca",
+   "name": "Downtown Burger American Dinner",
+   "was": "0363100012182855"
+  },
+  "412512561": {
+   "pand": "0363100012124262",
+   "at": [
+    4.928312,
+    52.362134
+   ],
+   "source": "horeca",
+   "name": "Nara Nara",
+   "was": "0363100012081960"
+  },
+  "428078545": {
+   "pand": "0363100012083387",
+   "at": [
+    4.855938,
+    52.381735
+   ],
+   "source": "atp",
+   "name": "Albert Heijn",
+   "was": "0363100012142181"
+  },
+  "431759749": {
+   "pand": "0363100012092403",
+   "at": [
+    4.845488,
+    52.371446
+   ],
+   "source": "atp",
+   "name": "KFC",
+   "was": "0363100012135604"
+  },
+  "447815483": {
+   "pand": "0363100012169653",
+   "at": [
+    4.884513,
+    52.363934
+   ],
+   "source": "horeca",
+   "name": "Bollywood Indian Restaurant",
+   "was": "0363100012169655"
+  },
+  "483554621": {
+   "pand": "0363100012092363",
+   "at": [
+    4.855828,
+    52.352808
+   ],
+   "source": "atp",
+   "name": "Gall & Gall",
+   "was": "0363100012092364"
+  },
+  "497171384": {
+   "pand": "0363100012129283",
+   "at": [
+    4.874255,
+    52.362299
+   ],
+   "source": "horeca",
+   "name": "Restaurant One Dim Sum",
+   "was": "0363100012152643"
+  },
+  "497179291": {
+   "pand": "0363100012168687",
+   "at": [
+    4.882932,
+    52.362094
+   ],
+   "source": "horeca",
+   "name": "The Hard Rock Café",
+   "was": "0363100012168689"
+  },
+  "571185748": {
+   "pand": "0363100012124807",
+   "at": [
+    4.827006,
+    52.353438
+   ],
+   "source": "horeca",
+   "name": "Chinees-Indisch Restaurant San Lok",
+   "was": "0363100012140578"
+  },
+  "595264885": {
+   "pand": "0363100012074860",
+   "at": [
+    4.85305,
+    52.371328
+   ],
+   "source": "horeca",
+   "name": "Café Cook - private dining",
+   "was": "0363100012142005"
+  },
+  "622472303": {
+   "pand": "0363100012179573",
+   "at": [
+    4.892034,
+    52.379424
+   ],
+   "source": "horeca",
+   "name": "De Belhamel",
+   "was": "0363100012179574"
+  },
+  "706792079": {
+   "pand": "0363100012137685",
+   "at": [
+    4.826564,
+    52.35589
+   ],
+   "source": "horeca",
+   "name": "Brasserie 't Siertje",
+   "was": "0363100012132658"
+  },
+  "746906771": {
+   "pand": "0363100012083640",
+   "at": [
+    4.81087,
+    52.345961
+   ],
+   "source": "atp",
+   "name": "Bruna",
+   "was": "0363100012062300"
+  },
+  "761215756": {
+   "pand": "0363100012096779",
+   "at": [
+    4.906597,
+    52.343389
+   ],
+   "source": "atp",
+   "name": "Albert Heijn",
+   "was": "0363100012109950"
+  },
+  "826146613": {
+   "pand": "0363100012070334",
+   "at": [
+    4.854256,
+    52.357699
+   ],
+   "source": "horeca",
+   "name": "Oslo Beers",
+   "was": "0363100012104557"
+  },
+  "850718020": {
+   "pand": "0363100012241555",
+   "at": [
+    4.8765,
+    52.33152
+   ],
+   "source": "atp",
+   "name": "HEMA",
+   "was": null
+  },
+  "1208516713": {
+   "pand": "0363100012236920",
+   "at": [
+    4.901064,
+    52.354556
+   ],
+   "source": "atp",
+   "name": "Ekoplaza",
+   "was": "0363100012236643"
+  },
+  "1310911734": {
+   "pand": "0363100012174476",
+   "at": [
+    4.883996,
+    52.364273
+   ],
+   "source": "horeca",
+   "name": "Eetcafé Stoop & Stoop",
+   "was": "0363100012174477"
+  },
+  "1328358034": {
+   "pand": "0363100012168436",
+   "at": [
+    4.875792,
+    52.372947
+   ],
+   "source": "horeca",
+   "name": "Sound Garden",
+   "was": "0363100012168432"
+  },
+  "1436379684": {
+   "pand": "0363100012164880",
+   "at": [
+    4.870131,
+    52.360924
+   ],
+   "source": "horeca",
+   "name": "Plan B Overtoom",
+   "was": "0363100012237372"
+  },
+  "1444572935": {
+   "pand": "0363100012169639",
+   "at": [
+    4.884252,
+    52.363672
+   ],
+   "source": "horeca",
+   "name": "El Rancho Argentino",
+   "was": "0363100012169653"
+  },
+  "1444572961": {
+   "pand": "0363100012172373",
+   "at": [
+    4.884637,
+    52.363431
+   ],
+   "source": "horeca",
+   "name": "Ristorante Peppino",
+   "was": "0363100012172374"
+  },
+  "1477529682": {
+   "pand": "0363100012169558",
+   "at": [
+    4.885732,
+    52.362663
+   ],
+   "source": "horeca",
+   "name": "De Gieter",
+   "was": "0363100012172249"
+  },
+  "1483619826": {
+   "pand": "0363100012168559",
+   "at": [
+    4.884822,
+    52.36389
+   ],
+   "source": "horeca",
+   "name": "El Vino",
+   "was": "0363100012168560"
+  },
+  "1486109761": {
+   "pand": "0363100012173769",
+   "at": [
+    4.882797,
+    52.365086
+   ],
+   "source": "horeca",
+   "name": "Bombay Inn",
+   "was": "0363100012173774"
+  },
+  "1656117435": {
+   "pand": "0363100012158125",
+   "at": [
+    4.86446,
+    52.362535
+   ],
+   "source": "horeca",
+   "name": "Gebrouwen Door Vrouwen Bar",
+   "was": "0363100012156137"
+  },
+  "1688841879": {
+   "pand": "0363100012233561",
+   "at": [
+    4.863389,
+    52.359977
+   ],
+   "source": "horeca",
+   "name": "Café Parck",
+   "was": "0363100012148700"
+  },
+  "1704746489": {
+   "pand": "0363100012169852",
+   "at": [
+    4.880489,
+    52.364051
+   ],
+   "source": "horeca",
+   "name": "De Smoeshaan",
+   "was": "0363100012169857"
+  },
+  "1783971866": {
+   "pand": "0363100012169590",
+   "at": [
+    4.885372,
+    52.380178
+   ],
+   "source": "horeca",
+   "name": "Toscanini",
+   "was": "0363100012169658"
+  },
+  "1803859899": {
+   "pand": "0363100012169923",
+   "at": [
+    4.881009,
+    52.366094
+   ],
+   "source": "horeca",
+   "name": "Bierproeflikaal \"De Zotte\"",
+   "was": "0363100012168790"
+  },
+  "2051068002": {
+   "pand": "0363100012087402",
+   "at": [
+    4.826695,
+    52.363
+   ],
+   "source": "horeca",
+   "name": "Café Amore",
+   "was": "0363100012109603"
+  },
+  "2165936476": {
+   "pand": "0363100012159231",
+   "at": [
+    4.890532,
+    52.357021
+   ],
+   "source": "horeca",
+   "name": "Yuan's Hot Pot Amsterdam De Pijp",
+   "was": "0363100012167250"
+  },
+  "2348168280": {
+   "pand": "0363100012093447",
+   "at": [
+    4.935229,
+    52.364066
+   ],
+   "source": "horeca",
+   "name": "The Meets Eatery",
+   "was": "0363100012147446"
+  },
+  "2366138134": {
+   "pand": "0363100012164694",
+   "at": [
+    4.90746,
+    52.355823
+   ],
+   "source": "horeca",
+   "name": "Lou Lou Pizzabar",
+   "was": "0363100012157281"
+  },
+  "2411543478": {
+   "pand": "0363100012160030",
+   "at": [
+    4.875401,
+    52.362259
+   ],
+   "source": "horeca",
+   "name": "Trattoria Toto",
+   "was": "0363100012158719"
+  },
+  "2423864348": {
+   "pand": "0363100012161340",
+   "at": [
+    4.876309,
+    52.363674
+   ],
+   "source": "horeca",
+   "name": "Restaurant Hap-Hmm",
+   "was": "0363100012163575"
+  },
+  "2506116244": {
+   "pand": "0363100012156146",
+   "at": [
+    4.887406,
+    52.354751
+   ],
+   "source": "horeca",
+   "name": "Monte Verde",
+   "was": "0363100012165953"
+  },
+  "2721357738": {
+   "pand": "0363100012176607",
+   "at": [
+    4.886851,
+    52.377946
+   ],
+   "source": "horeca",
+   "name": "De Klepel",
+   "was": "0363100012176559"
+  },
+  "2721723328": {
+   "pand": "0363100012179187",
+   "at": [
+    4.893604,
+    52.374227
+   ],
+   "source": "horeca",
+   "name": "Coffeeshop Kadinsky",
+   "was": "0363100012179223"
+  },
+  "2721826417": {
+   "pand": "0363100012172773",
+   "at": [
+    4.882168,
+    52.373918
+   ],
+   "source": "horeca",
+   "name": "Amigo Café",
+   "was": "0363100012174004"
+  },
+  "2724000770": {
+   "pand": "0363100012175469",
+   "at": [
+    4.890793,
+    52.369524
+   ],
+   "source": "horeca",
+   "name": "De Pilsener Club",
+   "was": "0363100012175470"
+  },
+  "2724038569": {
+   "pand": "0363100012175228",
+   "at": [
+    4.892083,
+    52.368414
+   ],
+   "source": "horeca",
+   "name": "De Drie Graefjes B.V.",
+   "was": "0363100012175227"
+  },
+  "2724285108": {
+   "pand": "0363100012178811",
+   "at": [
+    4.898524,
+    52.375515
+   ],
+   "source": "horeca",
+   "name": "Spaans Restaurant La Paella V.O.F.",
+   "was": "0363100012178816"
+  },
+  "2725663253": {
+   "pand": "0363100012171641",
+   "at": [
+    4.900474,
+    52.374498
+   ],
+   "source": "horeca",
+   "name": "Wing Kee B.V.",
+   "was": "0363100012171426"
+  },
+  "2725793336": {
+   "pand": "0363100012171909",
+   "at": [
+    4.903493,
+    52.373171
+   ],
+   "source": "horeca",
+   "name": "Hemelse Modder B.V.",
+   "was": "0363100012171843"
+  },
+  "2725794647": {
+   "pand": "0363100012183032",
+   "at": [
+    4.902745,
+    52.373626
+   ],
+   "source": "horeca",
+   "name": "Captein & Co",
+   "was": "0363100012571669"
+  },
+  "2725878388": {
+   "pand": "0363100012177690",
+   "at": [
+    4.898329,
+    52.366589
+   ],
+   "source": "horeca",
+   "name": "Restaurant Graphite",
+   "was": "0363100012177692"
+  },
+  "2725914010": {
+   "pand": "0363100012175557",
+   "at": [
+    4.890756,
+    52.366324
+   ],
+   "source": "horeca",
+   "name": "Restaurant Black and Blue",
+   "was": null
+  },
+  "2725914034": {
+   "pand": "0363100012175624",
+   "at": [
+    4.891094,
+    52.36628
+   ],
+   "source": "horeca",
+   "name": "Secret Garden",
+   "was": "0363100012175625"
+  },
+  "2725914141": {
+   "pand": "0363100012175629",
+   "at": [
+    4.891502,
+    52.366552
+   ],
+   "source": "horeca",
+   "name": "Ramen Bar Amsterdam",
+   "was": "0363100012175805"
+  },
+  "2730033733": {
+   "pand": "0363100012172376",
+   "at": [
+    4.884518,
+    52.363511
+   ],
+   "source": "horeca",
+   "name": "jazz café Alto",
+   "was": "0363100012172379"
+  },
+  "2737949191": {
+   "pand": "0363100012180097",
+   "at": [
+    4.89315,
+    52.35962
+   ],
+   "source": "horeca",
+   "name": "NK Thai Noodles B.V.",
+   "was": "0363100012168178"
+  },
+  "2746144115": {
+   "pand": "0363100012233553",
+   "at": [
+    4.931478,
+    52.357065
+   ],
+   "source": "atp",
+   "name": "Action",
+   "was": "0363100012239578"
+  },
+  "2795374703": {
+   "pand": "0363100012074933",
+   "at": [
+    4.8402,
+    52.353545
+   ],
+   "source": "horeca",
+   "name": "Aries Noodles",
+   "was": "w274869332"
+  },
+  "2816521205": {
+   "pand": "0363100012165798",
+   "at": [
+    4.880482,
+    52.355711
+   ],
+   "source": "horeca",
+   "name": "L Entrecote Et Les Dames BV Zabar's",
+   "was": "0363100012159529"
+  },
+  "2816953161": {
+   "pand": "0363100012092153",
+   "at": [
+    4.859646,
+    52.345149
+   ],
+   "source": "horeca",
+   "name": "Swagat Oriental",
+   "was": "0363100012144814"
+  },
+  "2816953269": {
+   "pand": "0363100012134703",
+   "at": [
+    4.859047,
+    52.344886
+   ],
+   "source": "horeca",
+   "name": "Cucina Casalinga",
+   "was": "0363100012136842"
+  },
+  "2817557735": {
+   "pand": "0363100012161318",
+   "at": [
+    4.898111,
+    52.355758
+   ],
+   "source": "horeca",
+   "name": "Little Collins",
+   "was": "0363100012115560"
+  },
+  "2817558767": {
+   "pand": "0363100012166771",
+   "at": [
+    4.898765,
+    52.356327
+   ],
+   "source": "horeca",
+   "name": "Restaurant Mont Blanc",
+   "was": "0363100012166374"
+  },
+  "2825117539": {
+   "pand": "0363100012158420",
+   "at": [
+    4.910217,
+    52.356734
+   ],
+   "source": "horeca",
+   "name": "Snackbar 2002",
+   "was": "0363100012166325"
+  },
+  "2825121921": {
+   "pand": "0363100012109357",
+   "at": [
+    4.913126,
+    52.348961
+   ],
+   "source": "horeca",
+   "name": "Troef",
+   "was": "0363100012126407"
+  },
+  "2826203660": {
+   "pand": "0363100012144205",
+   "at": [
+    4.926925,
+    52.356983
+   ],
+   "source": "atp",
+   "name": "New York Pizza",
+   "was": "0363100012071071"
+  },
+  "2846850122": {
+   "pand": "0363100012109461",
+   "at": [
+    4.886305,
+    52.412043
+   ],
+   "source": "horeca",
+   "name": "Restaurant Eetcafé Menora",
+   "was": "0363100012105920"
+  },
+  "2847194256": {
+   "pand": "0363100012064761",
+   "at": [
+    4.910387,
+    52.389476
+   ],
+   "source": "horeca",
+   "name": "Royalvis & Traiteur",
+   "was": "0363100012118311"
+  },
+  "2857695585": {
+   "pand": "0363100012253905",
+   "at": [
+    4.88362,
+    52.368963
+   ],
+   "source": "horeca",
+   "name": "Café De Doffer",
+   "was": "0363100012173561"
+  },
+  "2971360870": {
+   "pand": "0363100012170282",
+   "at": [
+    4.916372,
+    52.3681
+   ],
+   "source": "horeca",
+   "name": "Gollem aan het Water",
+   "was": "w269077753"
+  },
+  "3231282371": {
+   "pand": "0363100012070059",
+   "at": [
+    4.863428,
+    52.352949
+   ],
+   "source": "horeca",
+   "name": "Kleine Jules B.V.",
+   "was": "0363100012164118"
+  },
+  "3400741581": {
+   "pand": "0363100012169401",
+   "at": [
+    4.881336,
+    52.369663
+   ],
+   "source": "horeca",
+   "name": "Rakang",
+   "was": "0363100012169358"
+  },
+  "4175408539": {
+   "pand": "0363100012179221",
+   "at": [
+    4.893782,
+    52.374111
+   ],
+   "source": "horeca",
+   "name": "Shiki Japans Restaurant",
+   "was": "0363100012179220"
+  },
+  "4212657887": {
+   "pand": "0363100012179224",
+   "at": [
+    4.893914,
+    52.374093
+   ],
+   "source": "horeca",
+   "name": "Cafe Oporto",
+   "was": "0363100012179227"
+  },
+  "4212708433": {
+   "pand": "0363100012180144",
+   "at": [
+    4.895277,
+    52.371735
+   ],
+   "source": "horeca",
+   "name": "Coffeeshop Rick's Juice Bar BV",
+   "was": "0363100012180138"
+  },
+  "4265589726": {
+   "pand": "0363100012182038",
+   "at": [
+    4.903914,
+    52.367367
+   ],
+   "source": "horeca",
+   "name": "MuseumCafé Kokadorus",
+   "was": "0363100012182037"
+  },
+  "4268735847": {
+   "pand": "0363100012126595",
+   "at": [
+    4.861321,
+    52.374814
+   ],
+   "source": "atp",
+   "name": "Albert Heijn",
+   "was": "0363100012150718"
+  },
+  "12768209216": {
+   "pand": "0363100012254332",
+   "at": [
+    4.893534,
+    52.33761
+   ],
+   "source": "horeca",
+   "name": "The Block Coffee",
+   "was": null
+  },
+  "4943034928": {
+   "pand": "0363100012157726",
+   "at": [
+    4.868526,
+    52.366363
+   ],
+   "source": "horeca",
+   "name": "Salsa Shop Kinkerstraat BV",
+   "was": "0363100012139609"
+  },
+  "11163251069": {
+   "pand": "0363100012250971",
+   "at": [
+    4.853176,
+    52.385863
+   ],
+   "source": "horeca",
+   "name": "Bar Pepe",
+   "was": "w1529423741"
+  },
+  "4455347821": {
+   "pand": "0363100012092373",
+   "at": [
+    4.9185,
+    52.357091
+   ],
+   "source": "horeca",
+   "name": "Massalia",
+   "was": "0363100012124452"
+  },
+  "5101769221": {
+   "pand": "0363100012236271",
+   "at": [
+    4.856814,
+    52.357925
+   ],
+   "source": "horeca",
+   "name": "Grillroom Fame",
+   "was": "0363100012235944"
+  },
+  "12006329289": {
+   "pand": "0363100012237340",
+   "at": [
+    4.869182,
+    52.366527
+   ],
+   "source": "horeca",
+   "name": "Meat The Balls B.V.",
+   "was": "0363100012236035"
+  },
+  "13448773878": {
+   "pand": "0363100012139185",
+   "at": [
+    4.883158,
+    52.354059
+   ],
+   "source": "horeca",
+   "name": "Hendrik Amsterdam B.V.",
+   "was": "0363100012102526"
+  },
+  "5434162840": {
+   "pand": "0363100012082569",
+   "at": [
+    4.895427,
+    52.35154
+   ],
+   "source": "horeca",
+   "name": "Wijmpje Beukers",
+   "was": "0363100012132916"
+  },
+  "11381162865": {
+   "pand": "0363100012236474",
+   "at": [
+    4.871764,
+    52.368256
+   ],
+   "source": "horeca",
+   "name": "Café Duzz Dat",
+   "was": "0363100012167243"
+  },
+  "9035363787": {
+   "pand": "0363100012158033",
+   "at": [
+    4.86483,
+    52.361071
+   ],
+   "source": "horeca",
+   "name": "Night Kitchen Amsterdam",
+   "was": "0363100012158034"
+  },
+  "6592952185": {
+   "pand": "0363100012171332",
+   "at": [
+    4.898707,
+    52.374913
+   ],
+   "source": "horeca",
+   "name": "Madam Pancake",
+   "was": "0363100012178284"
+  },
+  "4971373567": {
+   "pand": "0363100012236905",
+   "at": [
+    4.888595,
+    52.354756
+   ],
+   "source": "horeca",
+   "name": "Harmani / Microroasterie de Pijp bv",
+   "was": "0363100012163659"
+  },
+  "6649035186": {
+   "pand": "0363100012236937",
+   "at": [
+    4.929856,
+    52.363318
+   ],
+   "source": "horeca",
+   "name": "Motion Coffee",
+   "was": "0363100012122126"
+  },
+  "12765936768": {
+   "pand": "0363100012161402",
+   "at": [
+    4.874455,
+    52.384356
+   ],
+   "source": "horeca",
+   "name": "Pazzi Westerpark BV",
+   "was": "0363100012165896"
+  },
+  "5821325963": {
+   "pand": "0363100012093827",
+   "at": [
+    4.855279,
+    52.382554
+   ],
+   "source": "horeca",
+   "name": "Samar",
+   "was": "0363100012094050"
+  },
+  "12692932057": {
+   "pand": "0363100012120784",
+   "at": [
+    4.936602,
+    52.36389
+   ],
+   "source": "horeca",
+   "name": "Ocakbasi Cinar",
+   "was": "0363100012160562"
+  },
+  "9609724683": {
+   "pand": "0363100012169235",
+   "at": [
+    4.884236,
+    52.378715
+   ],
+   "source": "horeca",
+   "name": "Schout bij nacht",
+   "was": "0363100012169465"
+  },
+  "4307362198": {
+   "pand": "0363100012166111",
+   "at": [
+    4.874857,
+    52.357315
+   ],
+   "source": "horeca",
+   "name": "George W B.V.",
+   "was": "0363100012166982"
+  },
+  "5101769222": {
+   "pand": "0363100012136573",
+   "at": [
+    4.857671,
+    52.358127
+   ],
+   "source": "horeca",
+   "name": "Parallel Amsterdam",
+   "was": "0363100012077452"
+  },
+  "9039078300": {
+   "pand": "0363100012178846",
+   "at": [
+    4.897061,
+    52.365748
+   ],
+   "source": "horeca",
+   "name": "Indrapura",
+   "was": "0363100012178851"
+  },
+  "7235507196": {
+   "pand": "0363100012161889",
+   "at": [
+    4.872851,
+    52.36731
+   ],
+   "source": "horeca",
+   "name": "Amoi",
+   "was": "0363100012164246"
+  },
+  "12077123320": {
+   "pand": "0363100012179724",
+   "at": [
+    4.890889,
+    52.380696
+   ],
+   "source": "horeca",
+   "name": "Barney's Coffeeshop",
+   "was": "0363100012179726"
+  },
+  "13630715660": {
+   "pand": "0363100012175578",
+   "at": [
+    4.890771,
+    52.374125
+   ],
+   "source": "horeca",
+   "name": "Bouillon d'Amsterdam",
+   "was": "0363100012175580"
+  },
+  "13243504701": {
+   "pand": "0363100012179060",
+   "at": [
+    4.895551,
+    52.378338
+   ],
+   "source": "atp",
+   "name": "Albert Heijn",
+   "was": "0363100012170968"
+  },
+  "5198500579": {
+   "pand": "0363100012113168",
+   "at": [
+    4.893063,
+    52.417169
+   ],
+   "source": "atp",
+   "name": "Albert Heijn",
+   "was": "0363100012146525"
+  },
+  "4719456815": {
+   "pand": "0363100012081253",
+   "at": [
+    4.89525,
+    52.346068
+   ],
+   "source": "atp",
+   "name": "Albert Heijn",
+   "was": "0363100012088444"
+  },
+  "11271483598": {
+   "pand": "0363100012233537",
+   "at": [
+    4.87834,
+    52.38254
+   ],
+   "source": "atp",
+   "name": "Zeeman",
+   "was": "0363100012237192"
+  },
+  "5893114027": {
+   "pand": "0363100012108568",
+   "at": [
+    4.812335,
+    52.377405
+   ],
+   "source": "atp",
+   "name": "New York Pizza",
+   "was": "0363100012083152"
+  }
+ },
+ "adds": [
+  {
+   "id": "horeca:18706",
+   "lon": 4.893235,
+   "lat": 52.404386,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Copain",
+    "addr:street": "tt. Vasumweg",
+    "addr:housenumber": "42"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9912",
+   "lon": 4.922297,
+   "lat": 52.354804,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Otantik 58 V.O.F.",
+    "addr:street": "Pretoriusstraat",
+    "addr:housenumber": "65-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:483",
+   "lon": 4.854253,
+   "lat": 52.364107,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Snackpoint Break Even",
+    "addr:street": "Postjesweg",
+    "addr:housenumber": "89-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16776",
+   "lon": 4.883491,
+   "lat": 52.409649,
+   "tags": {
+    "amenity": "bar",
+    "name": "Dokzicht B.V.",
+    "addr:street": "Netwerkweg",
+    "addr:housenumber": "3"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18785",
+   "lon": 4.90211,
+   "lat": 52.373902,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Gobeef Hotpot",
+    "addr:street": "Binnen Bantammerstraat",
+    "addr:housenumber": "7-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9268",
+   "lon": 4.895523,
+   "lat": 52.365436,
+   "tags": {
+    "amenity": "bar",
+    "name": "Walkabout Shooters",
+    "addr:street": "Thorbeckeplein",
+    "addr:housenumber": "14-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19094",
+   "lon": 4.86835,
+   "lat": 52.358795,
+   "tags": {
+    "amenity": "bar",
+    "name": "Bar Festina",
+    "addr:street": "Vondelpark",
+    "addr:housenumber": "2A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:1113",
+   "lon": 4.919325,
+   "lat": 52.354028,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Nagtegaal",
+    "addr:street": "Krugerplein",
+    "addr:housenumber": "22-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16992",
+   "lon": 4.888191,
+   "lat": 52.368813,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Lanskroon Banketbakkerij Tearoom",
+    "addr:street": "Singel",
+    "addr:housenumber": "385-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18806",
+   "lon": 4.854824,
+   "lat": 52.393598,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "LFTOVR",
+    "addr:street": "Contactweg",
+    "addr:housenumber": "47"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9233",
+   "lon": 4.878057,
+   "lat": 52.390519,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Ying Yang",
+    "addr:street": "Knollendamstraat",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19321",
+   "lon": 4.911937,
+   "lat": 52.366842,
+   "tags": {
+    "amenity": "cafe",
+    "name": "IJshuysje",
+    "addr:street": "Plantage Kerklaan",
+    "addr:housenumber": "35-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15573",
+   "lon": 4.922284,
+   "lat": 52.371467,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Markerhuisje",
+    "addr:street": "Tweede Wittenburgerdwarsstraat",
+    "addr:housenumber": "133"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19810",
+   "lon": 4.890372,
+   "lat": 52.356004,
+   "tags": {
+    "amenity": "bar",
+    "name": "Mini Duke B.V.",
+    "addr:street": "Ferdinand Bolstraat",
+    "addr:housenumber": "44-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15526",
+   "lon": 4.935352,
+   "lat": 52.368605,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Foer",
+    "addr:street": "Cruquiusweg",
+    "addr:housenumber": "9"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12824",
+   "lon": 4.926647,
+   "lat": 52.35847,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Baking Lab",
+    "addr:street": "Linnaeusstraat",
+    "addr:housenumber": "99-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:4427",
+   "lon": 4.885932,
+   "lat": 52.364389,
+   "tags": {
+    "amenity": "bar",
+    "name": "Snooker-Club Final Touch",
+    "addr:street": "Prinsengracht",
+    "addr:housenumber": "735-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14569",
+   "lon": 4.929772,
+   "lat": 52.354428,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Vlaamsch Broodhuys Amsterdam Middenweg",
+    "addr:street": "Middenweg",
+    "addr:housenumber": "43-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15105",
+   "lon": 4.870484,
+   "lat": 52.336445,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Starbucks Gustav Mahler Zuid-as",
+    "addr:street": "Gustav Mahlerlaan",
+    "addr:housenumber": "841A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14275",
+   "lon": 4.878278,
+   "lat": 52.36486,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Ciro Passami L'Olio",
+    "addr:street": "Tweede Helmersstraat",
+    "addr:housenumber": "3"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19538",
+   "lon": 4.869156,
+   "lat": 52.341174,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "HORTA",
+    "addr:street": "Parnassusweg",
+    "addr:housenumber": "219"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:3184",
+   "lon": 4.884017,
+   "lat": 52.365001,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Restaurant Thijs",
+    "addr:street": "Prinsengracht",
+    "addr:housenumber": "444"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11806",
+   "lon": 4.867665,
+   "lat": 52.360949,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Bagels & Beans",
+    "addr:street": "Overtoom",
+    "addr:housenumber": "306-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18323",
+   "lon": 4.839292,
+   "lat": 52.37841,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Shoarma & Grill by Meseuut",
+    "addr:street": "Bos en Lommerweg",
+    "addr:housenumber": "379"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13209",
+   "lon": 4.851541,
+   "lat": 52.369838,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Restaurant en eetcafé Pamukkale",
+    "addr:street": "Mercatorplein",
+    "addr:housenumber": "24-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17954",
+   "lon": 4.913807,
+   "lat": 52.393849,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Thais Restaurant Pasoek",
+    "addr:street": "Kamperfoelieweg",
+    "addr:housenumber": "7-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19225",
+   "lon": 4.892082,
+   "lat": 52.352758,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Shakespeare/ The Milkshake Bar Amsterdam BV",
+    "addr:street": "Ceintuurbaan",
+    "addr:housenumber": "296-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18687",
+   "lon": 4.874026,
+   "lat": 52.371476,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Restaurant Kenneh",
+    "addr:street": "Nassaukade",
+    "addr:housenumber": "153G"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17120",
+   "lon": 4.800877,
+   "lat": 52.362452,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Saidia Mediterrania V.O.F.",
+    "addr:street": "Osdorper Ban",
+    "addr:housenumber": "48"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17225",
+   "lon": 4.937013,
+   "lat": 52.35682,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Bakkerij & Eethuis Mas",
+    "addr:street": "Newtonstraat",
+    "addr:housenumber": "101"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18525",
+   "lon": 4.849212,
+   "lat": 52.350018,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Tarim Uyghur Restaurant",
+    "addr:street": "Aalsmeerweg",
+    "addr:housenumber": "34-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:8500",
+   "lon": 4.893844,
+   "lat": 52.379081,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop The Bulldog B.V.",
+    "addr:street": "Singel",
+    "addr:housenumber": "12-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13592",
+   "lon": 4.877568,
+   "lat": 52.340746,
+   "tags": {
+    "amenity": "cafe",
+    "name": "V'Business BV",
+    "addr:street": "Beethovenplein",
+    "addr:housenumber": "10"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11900",
+   "lon": 4.934694,
+   "lat": 52.363856,
+   "tags": {
+    "amenity": "cafe",
+    "name": "IJs van Oost",
+    "addr:street": "Javastraat",
+    "addr:housenumber": "79A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14153",
+   "lon": 4.881153,
+   "lat": 52.368979,
+   "tags": {
+    "amenity": "bar",
+    "name": "Bar Parry",
+    "addr:street": "Eerste Looiersdwarsstraat",
+    "addr:housenumber": "15-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16521",
+   "lon": 4.889751,
+   "lat": 52.381338,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Het Koffiehuis",
+    "addr:street": "Haarlemmerstraat",
+    "addr:housenumber": "146-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15722",
+   "lon": 4.777389,
+   "lat": 52.382116,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "The Unbound",
+    "addr:street": "Tom Schreursweg",
+    "addr:housenumber": "40A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:335",
+   "lon": 4.878635,
+   "lat": 52.39009,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Johnny's Pizza Express",
+    "addr:street": "Spaarndammerstraat",
+    "addr:housenumber": "93A-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14868",
+   "lon": 4.873373,
+   "lat": 52.338129,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "NS Stations B.V. t.h.o.d.n Julia's",
+    "addr:street": "Spoorslag",
+    "addr:housenumber": "23"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12462",
+   "lon": 4.991441,
+   "lat": 52.312606,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Gaasper Camping Amsterdam Services B.V.",
+    "addr:street": "Loosdrechtdreef",
+    "addr:housenumber": "7"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12933",
+   "lon": 4.894655,
+   "lat": 52.366915,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "ZUSHI AMSTERDAM",
+    "addr:street": "Amstel",
+    "addr:housenumber": "20"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17765",
+   "lon": 4.854325,
+   "lat": 52.350742,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Dam Tasty",
+    "addr:street": "Zeilstraat",
+    "addr:housenumber": "41"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17548",
+   "lon": 4.886242,
+   "lat": 52.361676,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Terps Army",
+    "addr:street": "Zieseniskade",
+    "addr:housenumber": "22-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:7262",
+   "lon": 4.790834,
+   "lat": 52.351626,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Het Tuinterras",
+    "addr:street": "Osdorperweg",
+    "addr:housenumber": "247"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16051",
+   "lon": 4.833994,
+   "lat": 52.379239,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Bereket Bakkerij",
+    "addr:street": "Burgemeester De Vlugtlaan",
+    "addr:housenumber": "33"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17557",
+   "lon": 4.871376,
+   "lat": 52.371328,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Stacks Diner",
+    "addr:street": "De Clercqstraat",
+    "addr:housenumber": "32-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18995",
+   "lon": 4.916275,
+   "lat": 52.371804,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Buurtboerderij Centraal",
+    "addr:street": "Kattenburgerstraat",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18457",
+   "lon": 4.907441,
+   "lat": 52.396645,
+   "tags": {
+    "amenity": "bar",
+    "name": "Stretch and Fold",
+    "addr:street": "Papaverhof",
+    "addr:housenumber": "71"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19915",
+   "lon": 4.883662,
+   "lat": 52.363903,
+   "tags": {
+    "amenity": "bar",
+    "name": "Fabian B.V.",
+    "addr:street": "Korte Leidsedwarsstraat",
+    "addr:housenumber": "24A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15471",
+   "lon": 4.883868,
+   "lat": 52.363922,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Casa di Sergio",
+    "addr:street": "Korte Leidsedwarsstraat",
+    "addr:housenumber": "83"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13869",
+   "lon": 4.896198,
+   "lat": 52.410557,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Far East",
+    "addr:street": "Pomonastraat",
+    "addr:housenumber": "22"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:2138",
+   "lon": 4.888393,
+   "lat": 52.368839,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop De Tweede Kamer",
+    "addr:street": "Heisteeg",
+    "addr:housenumber": "6-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19959",
+   "lon": 4.823071,
+   "lat": 52.390271,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Luvé B.V.",
+    "addr:street": "Rhôneweg",
+    "addr:housenumber": "46"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12487",
+   "lon": 4.905662,
+   "lat": 52.348419,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Relax",
+    "addr:street": "Vechtstraat",
+    "addr:housenumber": "9-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:3464",
+   "lon": 4.878614,
+   "lat": 52.372707,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Flower Power",
+    "addr:street": "Rozengracht",
+    "addr:housenumber": "139"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15078",
+   "lon": 4.861774,
+   "lat": 52.384597,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Westervilla",
+    "addr:street": "Haarlemmerweg",
+    "addr:housenumber": "369"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18274",
+   "lon": 4.892303,
+   "lat": 52.363149,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Maha Plus",
+    "addr:street": "Vijzelstraat",
+    "addr:housenumber": "103-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15285",
+   "lon": 4.847459,
+   "lat": 52.348123,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Vascobelo V-bar Aalsmeerweg",
+    "addr:street": "Aalsmeerweg",
+    "addr:housenumber": "96-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14322",
+   "lon": 4.865931,
+   "lat": 52.369848,
+   "tags": {
+    "amenity": "bar",
+    "name": "Jamaica Lounge",
+    "addr:street": "De Clercqstraat",
+    "addr:housenumber": "117-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11800",
+   "lon": 4.888856,
+   "lat": 52.374674,
+   "tags": {
+    "amenity": "bar",
+    "name": "Grey Area Coffeeshop",
+    "addr:street": "Oude Leliestraat",
+    "addr:housenumber": "2"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18994",
+   "lon": 4.896331,
+   "lat": 52.370027,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop The Hit B.V.",
+    "addr:street": "Rusland",
+    "addr:housenumber": "16"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13468",
+   "lon": 4.914395,
+   "lat": 52.390738,
+   "tags": {
+    "amenity": "cafe",
+    "name": "de Bakkerszonen",
+    "addr:street": "Mosveld",
+    "addr:housenumber": "113"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13523",
+   "lon": 4.887592,
+   "lat": 52.389148,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Baba",
+    "addr:street": "Barentszstraat",
+    "addr:housenumber": "130"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:4898",
+   "lon": 4.901295,
+   "lat": 52.357227,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop D & L",
+    "addr:street": "Govert Flinckstraat",
+    "addr:housenumber": "323-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:8506",
+   "lon": 4.799735,
+   "lat": 52.362222,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Restaurant Toros",
+    "addr:street": "Osdorper Ban",
+    "addr:housenumber": "74"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15142",
+   "lon": 5.006107,
+   "lat": 52.351868,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "STIJLdepartment",
+    "addr:street": "Pampuslaan",
+    "addr:housenumber": "23"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19345",
+   "lon": 4.910257,
+   "lat": 52.397638,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "The Tandoor Company",
+    "addr:street": "Klaprozenweg",
+    "addr:housenumber": "36A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18928",
+   "lon": 4.854134,
+   "lat": 52.380078,
+   "tags": {
+    "amenity": "bar",
+    "name": "Theatercafé Podium Mozaïek",
+    "addr:street": "Bos en Lommerweg",
+    "addr:housenumber": "191"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10508",
+   "lon": 4.830949,
+   "lat": 52.374956,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Koffiehuis Elwafa",
+    "addr:street": "Louis Couperusstraat",
+    "addr:housenumber": "33"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:6035",
+   "lon": 4.899049,
+   "lat": 52.371859,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Ijssalon Tofani",
+    "addr:street": "Kloveniersburgwal",
+    "addr:housenumber": "16-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17080",
+   "lon": 4.892912,
+   "lat": 52.37016,
+   "tags": {
+    "amenity": "bar",
+    "name": "Bar du Champagne",
+    "addr:street": "Rokin",
+    "addr:housenumber": "91A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20410",
+   "lon": 4.884246,
+   "lat": 52.377135,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Mr. Haz Tacobar B.V.",
+    "addr:street": "Egelantiersstraat",
+    "addr:housenumber": "24"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17145",
+   "lon": 4.885983,
+   "lat": 52.349541,
+   "tags": {
+    "amenity": "bar",
+    "name": "van Aemstel Gastvrij",
+    "addr:street": "Hobbemakade",
+    "addr:housenumber": "122"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16457",
+   "lon": 4.895057,
+   "lat": 52.366396,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Oh my Bun!",
+    "addr:street": "Reguliersbreestraat",
+    "addr:housenumber": "36"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18828",
+   "lon": 4.911535,
+   "lat": 52.354602,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Bottleshop Amsterdam",
+    "addr:street": "Wibautstraat",
+    "addr:housenumber": "130"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:7668",
+   "lon": 4.84948,
+   "lat": 52.372669,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Loft",
+    "addr:street": "Jan van Galenstraat",
+    "addr:housenumber": "285-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20061",
+   "lon": 4.885873,
+   "lat": 52.363193,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Reyhoon Restaurant",
+    "addr:street": "Lange Leidsedwarsstraat",
+    "addr:housenumber": "93-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:1702",
+   "lon": 4.881236,
+   "lat": 52.374507,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Paradox",
+    "addr:street": "Eerste Bloemdwarsstraat",
+    "addr:housenumber": "2-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:1444",
+   "lon": 4.939748,
+   "lat": 52.365117,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Best Friends Oost BV",
+    "addr:street": "Niasstraat",
+    "addr:housenumber": "1-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16980",
+   "lon": 4.895761,
+   "lat": 52.366488,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Little Buddha Asian Restaurant",
+    "addr:street": "Halvemaansteeg",
+    "addr:housenumber": "18"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:2290",
+   "lon": 4.897366,
+   "lat": 52.370045,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Bagheera",
+    "addr:street": "Kloveniersburgwal",
+    "addr:housenumber": "60-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18554",
+   "lon": 4.896503,
+   "lat": 52.368136,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Pazzo",
+    "addr:street": "Kloveniersburgwal",
+    "addr:housenumber": "131A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19657",
+   "lon": 4.858291,
+   "lat": 52.368951,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "A Sentimento",
+    "addr:street": "Witte de Withplein",
+    "addr:housenumber": "43"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16044",
+   "lon": 4.806266,
+   "lat": 52.359445,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Osdorp Kismet",
+    "addr:street": "Osdorpplein",
+    "addr:housenumber": "726"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15041",
+   "lon": 4.877719,
+   "lat": 52.391793,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop The Corner",
+    "addr:street": "Spaarndammerdijk",
+    "addr:housenumber": "9"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11594",
+   "lon": 4.886026,
+   "lat": 52.358673,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Brasserie Zuiderbad",
+    "addr:street": "Hobbemastraat",
+    "addr:housenumber": "28"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16493",
+   "lon": 4.847848,
+   "lat": 52.375241,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "MasMais",
+    "addr:street": "Hoofdweg",
+    "addr:housenumber": "456"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18665",
+   "lon": 4.877556,
+   "lat": 52.372775,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Restaurant Teheran",
+    "addr:street": "Rozengracht",
+    "addr:housenumber": "192-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:367",
+   "lon": 4.853429,
+   "lat": 52.365487,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Ruthless",
+    "addr:street": "Hoofdweg",
+    "addr:housenumber": "174-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10545",
+   "lon": 4.93739,
+   "lat": 52.397913,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Banketbakkerij Kwekkeboom",
+    "addr:street": "Buikslotermeerplein",
+    "addr:housenumber": "152"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13479",
+   "lon": 4.866667,
+   "lat": 52.365888,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Chong Kee",
+    "addr:street": "Kinkerstraat",
+    "addr:housenumber": "204A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16685",
+   "lon": 4.936666,
+   "lat": 52.363613,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Warda II",
+    "addr:street": "Javastraat",
+    "addr:housenumber": "104-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15303",
+   "lon": 4.847389,
+   "lat": 52.351448,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Boi Boi",
+    "addr:street": "Heemstedestraat",
+    "addr:housenumber": "27-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18417",
+   "lon": 4.865192,
+   "lat": 52.352629,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Clandestino BV",
+    "addr:street": "Lassusstraat",
+    "addr:housenumber": "6"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15882",
+   "lon": 4.879775,
+   "lat": 52.38925,
+   "tags": {
+    "amenity": "bar",
+    "name": "Rayleigh & Ramsay Westerpark",
+    "addr:street": "Van Noordtstraat",
+    "addr:housenumber": "28"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:7353",
+   "lon": 4.896431,
+   "lat": 52.366425,
+   "tags": {
+    "amenity": "bar",
+    "name": "Heck's",
+    "addr:street": "Rembrandtplein",
+    "addr:housenumber": "15"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17044",
+   "lon": 4.880095,
+   "lat": 52.359987,
+   "tags": {
+    "amenity": "bar",
+    "name": "Cafe georgette",
+    "addr:street": "Pieter Cornelisz. Hooftstraat",
+    "addr:housenumber": "87A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18655",
+   "lon": 5.003283,
+   "lat": 52.353109,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffee Mama Bar",
+    "addr:street": "Krijn Taconiskade",
+    "addr:housenumber": "3"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9981",
+   "lon": 4.892299,
+   "lat": 52.363029,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Vlaamsch Broodhuys Amsterdam Vijzelstr",
+    "addr:street": "Vijzelstraat",
+    "addr:housenumber": "111"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18874",
+   "lon": 4.895529,
+   "lat": 52.378082,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "SMASHLAB.",
+    "addr:street": "Nieuwendijk",
+    "addr:housenumber": "38-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18902",
+   "lon": 4.796544,
+   "lat": 52.351619,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Casa Comida",
+    "addr:street": "Pieter Calandlaan",
+    "addr:housenumber": "244H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18931",
+   "lon": 4.859423,
+   "lat": 52.372569,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop NCC Power Flower Amsterdam",
+    "addr:street": "Admiraal De Ruijterweg",
+    "addr:housenumber": "104-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11312",
+   "lon": 4.843372,
+   "lat": 52.382231,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Stichting WOW",
+    "addr:street": "Wiltzanghlaan",
+    "addr:housenumber": "60"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13499",
+   "lon": 4.811713,
+   "lat": 52.374801,
+   "tags": {
+    "amenity": "bar",
+    "name": "Eetcafé Riad",
+    "addr:street": "Burgemeester Van Leeuwenlaan",
+    "addr:housenumber": "13"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11766",
+   "lon": 4.88622,
+   "lat": 52.362305,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Casa di Leo",
+    "addr:street": "Lijnbaansgracht",
+    "addr:housenumber": "274-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11181",
+   "lon": 4.85931,
+   "lat": 52.358575,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Vondel",
+    "addr:street": "Overtoom",
+    "addr:housenumber": "451-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14928",
+   "lon": 4.888908,
+   "lat": 52.35563,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "FactoryGirl Amsterdam BV",
+    "addr:street": "Saenredamstraat",
+    "addr:housenumber": "32"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19458",
+   "lon": 4.839636,
+   "lat": 52.363401,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "To Be At Your Daily B.V.",
+    "addr:street": "August Allebéplein",
+    "addr:housenumber": "72"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18966",
+   "lon": 4.889003,
+   "lat": 52.369435,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Los Santos - Argentina Restaurant",
+    "addr:street": "Spuistraat",
+    "addr:housenumber": "285B"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:7130",
+   "lon": 4.928918,
+   "lat": 52.395903,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Bastion Hotel Amsterdam-Noord B.V.",
+    "addr:street": "Rode Kruisstraat",
+    "addr:housenumber": "28"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14164",
+   "lon": 4.826695,
+   "lat": 52.362928,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Restaurant/ eetcafe The happiness",
+    "addr:street": "Johan Huizingalaan",
+    "addr:housenumber": "90"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13685",
+   "lon": 4.888936,
+   "lat": 52.370565,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop New Times",
+    "addr:street": "Spuistraat",
+    "addr:housenumber": "260-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9539",
+   "lon": 4.898453,
+   "lat": 52.371281,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Goa",
+    "addr:street": "Kloveniersburgwal",
+    "addr:housenumber": "42C"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18905",
+   "lon": 4.889347,
+   "lat": 52.376762,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Vincenzo Capuano",
+    "addr:street": "Herengracht",
+    "addr:housenumber": "88A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16335",
+   "lon": 4.82615,
+   "lat": 52.354953,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Laz Kebab",
+    "addr:street": "Sierplein",
+    "addr:housenumber": "49"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18057",
+   "lon": 4.806537,
+   "lat": 52.3593,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Asian Delight Amsterdam B.V.",
+    "addr:street": "Osdorpplein",
+    "addr:housenumber": "732"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14693",
+   "lon": 4.90089,
+   "lat": 52.369997,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Blue Bird",
+    "addr:street": "Sint Antoniesbreestraat",
+    "addr:housenumber": "71"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19487",
+   "lon": 4.897458,
+   "lat": 52.365642,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "CHAR'D B.V.",
+    "addr:street": "Utrechtsestraat",
+    "addr:housenumber": "6-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19289",
+   "lon": 4.889972,
+   "lat": 52.344516,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "El Encanto",
+    "addr:street": "Scheldeplein",
+    "addr:housenumber": "18"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:1962",
+   "lon": 4.90201,
+   "lat": 52.376338,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Voyagers",
+    "addr:street": "Geldersekade",
+    "addr:housenumber": "2-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10277",
+   "lon": 4.895579,
+   "lat": 52.356403,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Roxy",
+    "addr:street": "Gerard Doustraat",
+    "addr:housenumber": "188-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18803",
+   "lon": 4.97601,
+   "lat": 52.295462,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Cafetaria Reigersbos",
+    "addr:street": "Reigersbos",
+    "addr:housenumber": "102B"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:5020",
+   "lon": 4.901047,
+   "lat": 52.355698,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Carmona",
+    "addr:street": "Tweede Jan van der Heijdenstraat",
+    "addr:housenumber": "43-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19365",
+   "lon": 4.83947,
+   "lat": 52.378974,
+   "tags": {
+    "amenity": "cafe",
+    "name": "NAD's Palmeraie",
+    "addr:street": "Bos en Lommerweg",
+    "addr:housenumber": "260B"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19231",
+   "lon": 4.875788,
+   "lat": 52.363069,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Joe en the Juice Netherlands",
+    "addr:street": "Overtoom",
+    "addr:housenumber": "74-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11457",
+   "lon": 4.904566,
+   "lat": 52.36558,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Dignita Hoftuin B.V.",
+    "addr:street": "Nieuwe Herengracht",
+    "addr:housenumber": "18A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18845",
+   "lon": 4.893071,
+   "lat": 52.370657,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Mister Highland Hotel",
+    "addr:street": "Rokin",
+    "addr:housenumber": "71"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16636",
+   "lon": 4.85368,
+   "lat": 52.370198,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Tandoori Restaurant",
+    "addr:street": "Vespuccistraat",
+    "addr:housenumber": "31-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11530",
+   "lon": 4.897203,
+   "lat": 52.376848,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Cafe City Hall BV / Prix D'Ami",
+    "addr:street": "Haringpakkerssteeg",
+    "addr:housenumber": "3"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15014",
+   "lon": 4.897484,
+   "lat": 52.373946,
+   "tags": {
+    "amenity": "bar",
+    "name": "Ziggy's Bar",
+    "addr:street": "Oudekerksplein",
+    "addr:housenumber": "56-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15009",
+   "lon": 4.901631,
+   "lat": 52.354604,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Blue Sea B.V.",
+    "addr:street": "Van Woustraat",
+    "addr:housenumber": "87-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20049",
+   "lon": 4.898411,
+   "lat": 52.375128,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "La Carbonara Trattoria",
+    "addr:street": "Lange Niezel",
+    "addr:housenumber": "7-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16255",
+   "lon": 4.890063,
+   "lat": 52.366599,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Tokyo Ramen Flower Market",
+    "addr:street": "Reguliersdwarsstraat",
+    "addr:housenumber": "23"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13995",
+   "lon": 4.895951,
+   "lat": 52.366516,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Q&B Snackbar & Sweets BV",
+    "addr:street": "Halvemaansteeg",
+    "addr:housenumber": "19"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19503",
+   "lon": 4.869846,
+   "lat": 52.370306,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Indiaas Restaurant Mother India",
+    "addr:street": "Ter Haarstraat",
+    "addr:housenumber": "14-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15789",
+   "lon": 4.925148,
+   "lat": 52.38549,
+   "tags": {
+    "amenity": "bar",
+    "name": "Dick & Dick",
+    "addr:street": "Gedempt Hamerkanaal",
+    "addr:housenumber": "36"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19677",
+   "lon": 4.877163,
+   "lat": 52.36348,
+   "tags": {
+    "amenity": "bar",
+    "name": "Chez Chloe",
+    "addr:street": "Overtoom",
+    "addr:housenumber": "28-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19989",
+   "lon": 4.901637,
+   "lat": 52.354056,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Steans Café",
+    "addr:street": "Van Woustraat",
+    "addr:housenumber": "110-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12238",
+   "lon": 4.891901,
+   "lat": 52.355822,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Media BV",
+    "addr:street": "Gerard Doustraat",
+    "addr:housenumber": "85"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17535",
+   "lon": 4.806119,
+   "lat": 52.382575,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Cafetaria Eethuis De Noodstop",
+    "addr:street": "Ruys de Beerenbrouckstraat",
+    "addr:housenumber": "106"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19889",
+   "lon": 4.874136,
+   "lat": 52.367696,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "The Braise Brothers",
+    "addr:street": "Kinkerstraat",
+    "addr:housenumber": "45-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17721",
+   "lon": 4.916275,
+   "lat": 52.371804,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Kanteen25",
+    "addr:street": "Kattenburgerstraat",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14990",
+   "lon": 4.84071,
+   "lat": 52.362212,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Monalisa Daily Lunchroom",
+    "addr:street": "Derkinderenstraat",
+    "addr:housenumber": "68"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14135",
+   "lon": 4.82965,
+   "lat": 52.359113,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Paris Broodjeszaak",
+    "addr:street": "Comeniusstraat",
+    "addr:housenumber": "281"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19310",
+   "lon": 4.854889,
+   "lat": 52.370994,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Apo Usta",
+    "addr:street": "Jan Evertsenstraat",
+    "addr:housenumber": "74-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19323",
+   "lon": 4.89417,
+   "lat": 52.366958,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop The Old Church 2",
+    "addr:street": "Amstel",
+    "addr:housenumber": "8-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:5927",
+   "lon": 4.871317,
+   "lat": 52.375111,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Sensemillia",
+    "addr:street": "Gillis van Ledenberchstraat",
+    "addr:housenumber": "135-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11775",
+   "lon": 4.871494,
+   "lat": 52.375058,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Snackbar Happy Snacks",
+    "addr:street": "Tweede Hugo de Grootstraat",
+    "addr:housenumber": "60-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10144",
+   "lon": 4.89902,
+   "lat": 52.375858,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Bite",
+    "addr:street": "Warmoesstraat",
+    "addr:housenumber": "21-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16641",
+   "lon": 4.849392,
+   "lat": 52.372641,
+   "tags": {
+    "amenity": "bar",
+    "name": "Agira",
+    "addr:street": "Jan van Galenstraat",
+    "addr:housenumber": "287-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16296",
+   "lon": 4.839636,
+   "lat": 52.363401,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Eten bij mama",
+    "addr:street": "August Allebéplein",
+    "addr:housenumber": "72"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:6904",
+   "lon": 4.857548,
+   "lat": 52.362306,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop AFS  B.V.",
+    "addr:street": "Baarsjesweg",
+    "addr:housenumber": "239"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19774",
+   "lon": 4.888891,
+   "lat": 52.354569,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "La Brutal",
+    "addr:street": "Albert Cuypstraat",
+    "addr:housenumber": "48-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19120",
+   "lon": 4.904972,
+   "lat": 52.388138,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Café Nous",
+    "addr:street": "Docklandsweg",
+    "addr:housenumber": "29"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9531",
+   "lon": 4.891105,
+   "lat": 52.374495,
+   "tags": {
+    "amenity": "bar",
+    "name": "Jesse",
+    "addr:street": "Nieuwezijds Voorburgwal",
+    "addr:housenumber": "160"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17757",
+   "lon": 4.871588,
+   "lat": 52.33999,
+   "tags": {
+    "amenity": "cafe",
+    "name": "2Amsterdam",
+    "addr:street": "Eduard van Beinumstraat",
+    "addr:housenumber": "4"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17908",
+   "lon": 4.925631,
+   "lat": 52.356012,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "TBST",
+    "addr:street": "Pretoriusstraat",
+    "addr:housenumber": "22-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19311",
+   "lon": 4.885596,
+   "lat": 52.388346,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Guji Coffee",
+    "addr:street": "Zoutkeetsplein",
+    "addr:housenumber": "9"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:2003",
+   "lon": 4.89849,
+   "lat": 52.375937,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "De Bistro Compagnon`s",
+    "addr:street": "Guldehandsteeg",
+    "addr:housenumber": "17"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:4843",
+   "lon": 4.890583,
+   "lat": 52.345058,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Pakistan Restaurant VOF",
+    "addr:street": "Scheldestraat",
+    "addr:housenumber": "100"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18452",
+   "lon": 4.841286,
+   "lat": 52.390254,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Azura Amsterdam",
+    "addr:street": "La Guardiaweg",
+    "addr:housenumber": "55"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12661",
+   "lon": 4.884785,
+   "lat": 52.365912,
+   "tags": {
+    "amenity": "bar",
+    "name": "Foe-Yong-Hai B.V.",
+    "addr:street": "Kerkstraat",
+    "addr:housenumber": "23A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:6047",
+   "lon": 4.826995,
+   "lat": 52.354337,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Waroeng Adji",
+    "addr:street": "Johan Huizingalaan",
+    "addr:housenumber": "264"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18495",
+   "lon": 4.918728,
+   "lat": 52.39827,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Grand Cafe Noorderparkbad",
+    "addr:street": "Sneeuwbalweg",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14994",
+   "lon": 4.902465,
+   "lat": 52.353574,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Spaghetteria Van Woustraat BV",
+    "addr:street": "Van Woustraat",
+    "addr:housenumber": "123-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:1574",
+   "lon": 4.852882,
+   "lat": 52.366986,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Sinbad",
+    "addr:street": "Hoofdweg",
+    "addr:housenumber": "226-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:4565",
+   "lon": 4.894173,
+   "lat": 52.374208,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Delifrance Damrak B.V.",
+    "addr:street": "Damrak",
+    "addr:housenumber": "83B"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17177",
+   "lon": 4.942703,
+   "lat": 52.305473,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Best Friends Zuidoost",
+    "addr:street": "Hettenheuvelweg",
+    "addr:housenumber": "35"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19771",
+   "lon": 4.792483,
+   "lat": 52.356497,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Vis en Meer",
+    "addr:street": "Tussen Meer",
+    "addr:housenumber": "337"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:2490",
+   "lon": 4.88328,
+   "lat": 52.363946,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop The Bulldog",
+    "addr:street": "Leidseplein",
+    "addr:housenumber": "17A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11286",
+   "lon": 4.796574,
+   "lat": 52.351583,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Baklava & Simit Plaza BV",
+    "addr:street": "Pieter Calandlaan",
+    "addr:housenumber": "244A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18430",
+   "lon": 4.848447,
+   "lat": 52.335616,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Het Bosch Waterfront Kitchen B.V.",
+    "addr:street": "Jollenpad",
+    "addr:housenumber": "10"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17865",
+   "lon": 4.861153,
+   "lat": 52.364102,
+   "tags": {
+    "amenity": "bar",
+    "name": "Meoscolosseum",
+    "addr:street": "Lootsstraat",
+    "addr:housenumber": "5-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19940",
+   "lon": 4.899025,
+   "lat": 52.374902,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "II Masakzone",
+    "addr:street": "Lange Niezel",
+    "addr:housenumber": "29A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12730",
+   "lon": 4.859516,
+   "lat": 52.365955,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop The Dream",
+    "addr:street": "Witte de Withstraat",
+    "addr:housenumber": "30A-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17580",
+   "lon": 4.827019,
+   "lat": 52.353591,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Bon Appetit",
+    "addr:street": "Johan Huizingalaan",
+    "addr:housenumber": "300"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12478",
+   "lon": 4.907475,
+   "lat": 52.353064,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Dragons Delight",
+    "addr:street": "Tolstraat",
+    "addr:housenumber": "200"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:6922",
+   "lon": 4.893447,
+   "lat": 52.365966,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Free I",
+    "addr:street": "Reguliersdwarsstraat",
+    "addr:housenumber": "70-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:59",
+   "lon": 4.873054,
+   "lat": 52.382363,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Chapiteau",
+    "addr:street": "Van Boetzelaerstraat",
+    "addr:housenumber": "31-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15336",
+   "lon": 4.925626,
+   "lat": 52.364937,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Cukur 1",
+    "addr:street": "Pieter Vlamingstraat",
+    "addr:housenumber": "11-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:6235",
+   "lon": 4.892965,
+   "lat": 52.378907,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Siberie B.V.",
+    "addr:street": "Brouwersgracht",
+    "addr:housenumber": "11-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19234",
+   "lon": 4.895174,
+   "lat": 52.3558,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Cuyp Hospitality",
+    "addr:street": "Albert Cuypstraat",
+    "addr:housenumber": "182"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10499",
+   "lon": 4.882883,
+   "lat": 52.367908,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "HIHCL Amsterdam / Andaz Amsterdam Prinsengracht",
+    "addr:street": "Prinsengracht",
+    "addr:housenumber": "587"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16510",
+   "lon": 4.902971,
+   "lat": 52.35292,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Warda 1",
+    "addr:street": "Van Woustraat",
+    "addr:housenumber": "147-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16252",
+   "lon": 4.952407,
+   "lat": 52.31562,
+   "tags": {
+    "amenity": "bar",
+    "name": "Change=PRO B.V.",
+    "addr:street": "Elizabeth Cady Stantonplein",
+    "addr:housenumber": "801"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13319",
+   "lon": 4.916275,
+   "lat": 52.371804,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Scheepskameel B.V.",
+    "addr:street": "Kattenburgerstraat",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10111",
+   "lon": 4.906525,
+   "lat": 52.345996,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Topweazle",
+    "addr:street": "Vechtstraat",
+    "addr:housenumber": "63-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19078",
+   "lon": 5.0033,
+   "lat": 52.353129,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "The Poke Maniacs IJBURG",
+    "addr:street": "Krijn Taconiskade",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14904",
+   "lon": 4.817211,
+   "lat": 52.390835,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Amsterdome",
+    "addr:street": "Seineweg",
+    "addr:housenumber": "2"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16533",
+   "lon": 4.850535,
+   "lat": 52.357089,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Restaurant Norma",
+    "addr:street": "Haarlemmermeerstraat",
+    "addr:housenumber": "27"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13871",
+   "lon": 4.886151,
+   "lat": 52.377566,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Brasserie Prinsengracht 193",
+    "addr:street": "Prinsengracht",
+    "addr:housenumber": "193A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:1468",
+   "lon": 4.86442,
+   "lat": 52.343525,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop De Kade B.V.",
+    "addr:street": "Stadionkade",
+    "addr:housenumber": "107"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10651",
+   "lon": 4.975968,
+   "lat": 52.295423,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café Het Reigertje",
+    "addr:street": "Reigersbos",
+    "addr:housenumber": "104"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15402",
+   "lon": 4.891144,
+   "lat": 52.345244,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Buon Gusto di Italia",
+    "addr:street": "Scheldestraat",
+    "addr:housenumber": "85"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18661",
+   "lon": 4.882212,
+   "lat": 52.364921,
+   "tags": {
+    "amenity": "bar",
+    "name": "Me We Amsterdam",
+    "addr:street": "Korte Leidsedwarsstraat",
+    "addr:housenumber": "14"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19239",
+   "lon": 4.853122,
+   "lat": 52.351959,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Cafe wiesje / foodbar63",
+    "addr:street": "Schinkelkade",
+    "addr:housenumber": "34"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14398",
+   "lon": 4.939893,
+   "lat": 52.3535,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Febo Galileiplantsoen",
+    "addr:street": "Galileïplantsoen",
+    "addr:housenumber": "46"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19708",
+   "lon": 4.847389,
+   "lat": 52.351448,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Saba Restaurant 2 B.V.",
+    "addr:street": "Heemstedestraat",
+    "addr:housenumber": "27-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19818",
+   "lon": 4.902402,
+   "lat": 52.375477,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Ogiri - African Kitchen Restaurant",
+    "addr:street": "Geldersekade",
+    "addr:housenumber": "23"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15247",
+   "lon": 4.863791,
+   "lat": 52.341034,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Fred",
+    "addr:street": "Fred. Roeskestraat",
+    "addr:housenumber": "97A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17318",
+   "lon": 4.925116,
+   "lat": 52.337135,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Brouwclub Levenslang Amsterdam",
+    "addr:street": "H.J.E. Wenckebachweg",
+    "addr:housenumber": "48"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16271",
+   "lon": 4.888262,
+   "lat": 52.36874,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Strain Hunters Amsterdam",
+    "addr:street": "Singel",
+    "addr:housenumber": "387-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10921",
+   "lon": 4.871965,
+   "lat": 52.374971,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "SOwiesO Eten en Drinken",
+    "addr:street": "Tweede Hugo de Grootstraat",
+    "addr:housenumber": "44-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:8741",
+   "lon": 4.890059,
+   "lat": 52.366887,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Amsterdam Pancake Company",
+    "addr:street": "Singel",
+    "addr:housenumber": "492A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9209",
+   "lon": 4.874735,
+   "lat": 52.367828,
+   "tags": {
+    "amenity": "cafe",
+    "name": "La Chesa",
+    "addr:street": "Kinkerstraat",
+    "addr:housenumber": "31-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12653",
+   "lon": 4.902852,
+   "lat": 52.375919,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Lunchroom Sabroso",
+    "addr:street": "Prins Hendrikkade",
+    "addr:housenumber": "97"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11739",
+   "lon": 4.896377,
+   "lat": 52.367803,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Bête a Bon Dieu",
+    "addr:street": "'s-Gravelandse Veer",
+    "addr:housenumber": "2"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:5740",
+   "lon": 4.903462,
+   "lat": 52.352346,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Penultimate IV/Greenhouse",
+    "addr:street": "Tolstraat",
+    "addr:housenumber": "91-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13494",
+   "lon": 4.906489,
+   "lat": 52.338464,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Amstel Boathouse",
+    "addr:street": "Amsteldijk",
+    "addr:housenumber": "223"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15491",
+   "lon": 4.827487,
+   "lat": 52.363013,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Marhaba West B.V.",
+    "addr:street": "Johan Huizingalaan",
+    "addr:housenumber": "87"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:8244",
+   "lon": 4.895822,
+   "lat": 52.371513,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop City Hall",
+    "addr:street": "Oudezijds Voorburgwal",
+    "addr:housenumber": "189A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:701",
+   "lon": 4.859289,
+   "lat": 52.368992,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop El Marssa",
+    "addr:street": "Witte de Withstraat",
+    "addr:housenumber": "106-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:2448",
+   "lon": 4.892998,
+   "lat": 52.369353,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Kadinsky",
+    "addr:street": "Langebrugsteeg",
+    "addr:housenumber": "7A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:5114",
+   "lon": 4.883324,
+   "lat": 52.363982,
+   "tags": {
+    "amenity": "bar",
+    "name": "The Bulldog Palace",
+    "addr:street": "Leidseplein",
+    "addr:housenumber": "15A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9158",
+   "lon": 4.855422,
+   "lat": 52.362063,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Pardas B.V.",
+    "addr:street": "Bonairestraat",
+    "addr:housenumber": "78"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10893",
+   "lon": 4.857116,
+   "lat": 52.322001,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop The Border B.V.",
+    "addr:street": "Amstelveenseweg",
+    "addr:housenumber": "1160"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20337",
+   "lon": 4.858291,
+   "lat": 52.368951,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Waroeng Padang Lapak",
+    "addr:street": "Witte de Withplein",
+    "addr:housenumber": "43"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15906",
+   "lon": 4.859057,
+   "lat": 52.372442,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Lunchroom Hannah's Amsterdam",
+    "addr:street": "Admiraal De Ruijterweg",
+    "addr:housenumber": "107-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:5896",
+   "lon": 4.879792,
+   "lat": 52.382653,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Catch 33",
+    "addr:street": "Nassaukade",
+    "addr:housenumber": "33-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20207",
+   "lon": 4.857671,
+   "lat": 52.358127,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Combo",
+    "addr:street": "Overtoom",
+    "addr:housenumber": "495-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18342",
+   "lon": 4.89456,
+   "lat": 52.355653,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café Super Angelo",
+    "addr:street": "Albert Cuypstraat",
+    "addr:housenumber": "158A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:7715",
+   "lon": 4.892922,
+   "lat": 52.380066,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Dampkring",
+    "addr:street": "Haarlemmerstraat",
+    "addr:housenumber": "44"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16078",
+   "lon": 4.862629,
+   "lat": 52.360999,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Koroglu",
+    "addr:street": "Staringplein",
+    "addr:housenumber": "6-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19884",
+   "lon": 4.875101,
+   "lat": 52.36792,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Shawarma EBLA",
+    "addr:street": "Kinkerstraat",
+    "addr:housenumber": "27-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19533",
+   "lon": 4.845707,
+   "lat": 52.378658,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Mimoza Smash Burgers",
+    "addr:street": "Bos en Lommerplein",
+    "addr:housenumber": "164A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11832",
+   "lon": 4.898025,
+   "lat": 52.364853,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Boerejongens",
+    "addr:street": "Utrechtsestraat",
+    "addr:housenumber": "21"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18732",
+   "lon": 4.886974,
+   "lat": 52.366304,
+   "tags": {
+    "amenity": "cafe",
+    "name": "NIO House Café",
+    "addr:street": "Leidsestraat",
+    "addr:housenumber": "32B"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20269",
+   "lon": 4.878987,
+   "lat": 52.372188,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Ramen Impossible",
+    "addr:street": "Rozenstraat",
+    "addr:housenumber": "143"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17845",
+   "lon": 5.016302,
+   "lat": 52.305119,
+   "tags": {
+    "amenity": "bar",
+    "name": "Villa Tante Bep VOF",
+    "addr:street": "Lange Stammerdijk",
+    "addr:housenumber": "3A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12427",
+   "lon": 4.80035,
+   "lat": 52.362351,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Steakhouse Pizzeria Osdorperban",
+    "addr:street": "Osdorper Ban",
+    "addr:housenumber": "60"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11767",
+   "lon": 4.895889,
+   "lat": 52.366821,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Andalucia",
+    "addr:street": "Halvemaansteeg",
+    "addr:housenumber": "1"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14361",
+   "lon": 4.911917,
+   "lat": 52.370033,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Sotto Pizza III",
+    "addr:street": "Kadijksplein",
+    "addr:housenumber": "4"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14554",
+   "lon": 4.855898,
+   "lat": 52.353948,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Best Friends Oud Zuid BV",
+    "addr:street": "Amstelveenseweg",
+    "addr:housenumber": "61-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17523",
+   "lon": 4.792823,
+   "lat": 52.356552,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Masie Catering",
+    "addr:street": "Tussen Meer",
+    "addr:housenumber": "331"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12035",
+   "lon": 4.885127,
+   "lat": 52.364251,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Superskunk",
+    "addr:street": "Prinsengracht",
+    "addr:housenumber": "480-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13463",
+   "lon": 4.848798,
+   "lat": 52.351463,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Snackbar El Hefnawy",
+    "addr:street": "Heemstedestraat",
+    "addr:housenumber": "7-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9550",
+   "lon": 4.840723,
+   "lat": 52.362328,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Broodjeszaak Erciyes",
+    "addr:street": "Derkinderenstraat",
+    "addr:housenumber": "70"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10809",
+   "lon": 4.85404,
+   "lat": 52.38058,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Frank & Lydia",
+    "addr:street": "Bos en Lommerweg",
+    "addr:housenumber": "156"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20186",
+   "lon": 4.884104,
+   "lat": 52.363761,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Gyoza Bar",
+    "addr:street": "Korte Leidsedwarsstraat",
+    "addr:housenumber": "95A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16198",
+   "lon": 4.877833,
+   "lat": 52.349893,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Sushiclub B.V.",
+    "addr:street": "Beethovenstraat",
+    "addr:housenumber": "18-1"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18789",
+   "lon": 4.892583,
+   "lat": 52.373653,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Eazie",
+    "addr:street": "Nieuwendijk",
+    "addr:housenumber": "224"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17810",
+   "lon": 4.855962,
+   "lat": 52.353797,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Mangia Pasta Bar CV",
+    "addr:street": "Amstelveenseweg",
+    "addr:housenumber": "65-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17093",
+   "lon": 4.847616,
+   "lat": 52.372642,
+   "tags": {
+    "amenity": "bar",
+    "name": "Bij Barbra",
+    "addr:street": "Jan van Galenstraat",
+    "addr:housenumber": "198"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20189",
+   "lon": 4.874255,
+   "lat": 52.362299,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Mozaïek Restaurant",
+    "addr:street": "Overtoom",
+    "addr:housenumber": "109-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14764",
+   "lon": 4.889267,
+   "lat": 52.372079,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Soho House Amsterdam BV",
+    "addr:street": "Spuistraat",
+    "addr:housenumber": "210"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19460",
+   "lon": 4.889522,
+   "lat": 52.370126,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "New Miso Amsterdam",
+    "addr:street": "Nieuwezijds Voorburgwal",
+    "addr:housenumber": "312"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18119",
+   "lon": 4.85421,
+   "lat": 52.368915,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "September Amsterdam",
+    "addr:street": "Baffinstraat",
+    "addr:housenumber": "1"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11013",
+   "lon": 4.884444,
+   "lat": 52.34807,
+   "tags": {
+    "amenity": "bar",
+    "name": "Horeca Apollohal",
+    "addr:street": "Apollolaan",
+    "addr:housenumber": "4"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19299",
+   "lon": 4.83665,
+   "lat": 52.386293,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Powerfull Pizza",
+    "addr:street": "Arlandaweg",
+    "addr:housenumber": "35"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17803",
+   "lon": 4.861387,
+   "lat": 52.379864,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Eva Chicken Amsterdam BV",
+    "addr:street": "Willem de Zwijgerlaan",
+    "addr:housenumber": "283"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12833",
+   "lon": 4.919768,
+   "lat": 52.383264,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Foodmarkt Amsterdam",
+    "addr:street": "Gedempt Hamerkanaal",
+    "addr:housenumber": "223"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19245",
+   "lon": 4.878361,
+   "lat": 52.356367,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Restaurant Chang-i",
+    "addr:street": "Jan Willem Brouwersstraat",
+    "addr:housenumber": "3"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19961",
+   "lon": 4.873536,
+   "lat": 52.355968,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "'t Lemmeke",
+    "addr:street": "Van Breestraat",
+    "addr:housenumber": "107-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:5879",
+   "lon": 4.863791,
+   "lat": 52.344583,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Japans Restaurant Umeno",
+    "addr:street": "Agamemnonstraat",
+    "addr:housenumber": "27"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:6479",
+   "lon": 4.899708,
+   "lat": 52.353338,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Nice Place",
+    "addr:street": "Van Ostadestraat",
+    "addr:housenumber": "290-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14493",
+   "lon": 4.809509,
+   "lat": 52.345313,
+   "tags": {
+    "amenity": "bar",
+    "name": "Sportclub Match & Eetcafé Thijs",
+    "addr:street": "Sint Gilleshof",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15527",
+   "lon": 4.895744,
+   "lat": 52.366677,
+   "tags": {
+    "amenity": "bar",
+    "name": "24K Bar",
+    "addr:street": "Halvemaansteeg",
+    "addr:housenumber": "8A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17568",
+   "lon": 4.816251,
+   "lat": 52.377079,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Juicebar de Watersnip B.V.",
+    "addr:street": "Lodewijk van Deysselstraat",
+    "addr:housenumber": "37"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19255",
+   "lon": 4.866913,
+   "lat": 52.368675,
+   "tags": {
+    "amenity": "bar",
+    "name": "Ornina",
+    "addr:street": "Agatha Dekenstraat",
+    "addr:housenumber": "40-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11695",
+   "lon": 4.779073,
+   "lat": 52.39158,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Deas Horeca h/o FEBO Westpoort",
+    "addr:street": "Tijnmuiden",
+    "addr:housenumber": "53"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:7507",
+   "lon": 4.892141,
+   "lat": 52.380305,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Green house",
+    "addr:street": "Haarlemmerstraat",
+    "addr:housenumber": "64-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9944",
+   "lon": 4.914291,
+   "lat": 52.385681,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café Mazazik",
+    "addr:street": "Sperwerlaan",
+    "addr:housenumber": "27"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15701",
+   "lon": 4.892984,
+   "lat": 52.369263,
+   "tags": {
+    "amenity": "cafe",
+    "name": "De Laatste Kruimel",
+    "addr:street": "Langebrugsteeg",
+    "addr:housenumber": "4"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16491",
+   "lon": 4.987501,
+   "lat": 52.297484,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Cafetaria 't Gein",
+    "addr:street": "Wisseloord",
+    "addr:housenumber": "196A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13420",
+   "lon": 4.856394,
+   "lat": 52.396762,
+   "tags": {
+    "amenity": "bar",
+    "name": "Thuishaven Events B.V.",
+    "addr:street": "Contactweg",
+    "addr:housenumber": "68"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19762",
+   "lon": 4.937733,
+   "lat": 52.355331,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Borista - Koffie, Ontbijt en Lunchzaak",
+    "addr:street": "Copernicusstraat",
+    "addr:housenumber": "49"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13899",
+   "lon": 4.873821,
+   "lat": 52.371887,
+   "tags": {
+    "amenity": "bar",
+    "name": "The Kiwi",
+    "addr:street": "Nassaukade",
+    "addr:housenumber": "152"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18563",
+   "lon": 4.975606,
+   "lat": 52.295587,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Kon Esi Baka - Biryanihuis",
+    "addr:street": "Renooiplein",
+    "addr:housenumber": "60"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18456",
+   "lon": 4.938226,
+   "lat": 52.314089,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "BAUT B.V.",
+    "addr:street": "De passage",
+    "addr:housenumber": "92"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:8247",
+   "lon": 4.937524,
+   "lat": 52.399127,
+   "tags": {
+    "amenity": "bar",
+    "name": "Poolcentrum Boven 't IJ",
+    "addr:street": "Buikslotermeerplein",
+    "addr:housenumber": "145"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19778",
+   "lon": 4.897783,
+   "lat": 52.356197,
+   "tags": {
+    "amenity": "bar",
+    "name": "Ilario",
+    "addr:street": "Eerste Sweelinckstraat",
+    "addr:housenumber": "11-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:5458",
+   "lon": 4.803432,
+   "lat": 52.376962,
+   "tags": {
+    "amenity": "bar",
+    "name": "Sanny's Place",
+    "addr:street": "Nicolaas Ruychaverstraat",
+    "addr:housenumber": "40"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19151",
+   "lon": 4.900039,
+   "lat": 52.356575,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "TLC Amsterdam",
+    "addr:street": "Van Woustraat",
+    "addr:housenumber": "29-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:1389",
+   "lon": 4.837708,
+   "lat": 52.349795,
+   "tags": {
+    "amenity": "bar",
+    "name": "Modgroepbar Twist",
+    "addr:street": "Rijswijkstraat",
+    "addr:housenumber": "185"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15114",
+   "lon": 4.875911,
+   "lat": 52.371473,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Wilde Westen Marnixstraat BV",
+    "addr:street": "Marnixstraat",
+    "addr:housenumber": "198-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:6657",
+   "lon": 4.898265,
+   "lat": 52.375073,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Churros and Crepes",
+    "addr:street": "Lange Niezel",
+    "addr:housenumber": "6-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19785",
+   "lon": 4.899889,
+   "lat": 52.375628,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Harry’s All Day Italian",
+    "addr:street": "Oudezijds Voorburgwal",
+    "addr:housenumber": "10-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19574",
+   "lon": 4.834595,
+   "lat": 52.382918,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Kebapci Yavuz Usta / star take away food",
+    "addr:street": "Burgemeester Vening Meineszlaan",
+    "addr:housenumber": "46"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20013",
+   "lon": 4.865818,
+   "lat": 52.365677,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Zayt & Za’atar",
+    "addr:street": "Kinkerstraat",
+    "addr:housenumber": "234-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10510",
+   "lon": 4.929827,
+   "lat": 52.366131,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Trefpunt",
+    "addr:street": "Zeeburgerdijk",
+    "addr:housenumber": "33-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14770",
+   "lon": 4.897707,
+   "lat": 52.373705,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Wilvri Coffee-Shops B.V.",
+    "addr:street": "Oudezijds Voorburgwal",
+    "addr:housenumber": "88-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19558",
+   "lon": 4.911984,
+   "lat": 52.390678,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Tandoori King",
+    "addr:street": "Hagedoornweg",
+    "addr:housenumber": "72"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17977",
+   "lon": 4.889394,
+   "lat": 52.369877,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Mexicaanse Gastronomie B.V.",
+    "addr:street": "Nieuwezijds Voorburgwal",
+    "addr:housenumber": "320-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19906",
+   "lon": 4.891214,
+   "lat": 52.412784,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Kauffmann Noord",
+    "addr:street": "Zonneplein",
+    "addr:housenumber": "18A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:4847",
+   "lon": 4.867386,
+   "lat": 52.324556,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "La Brochette",
+    "addr:street": "Ter Kleef",
+    "addr:housenumber": "1"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17793",
+   "lon": 4.851994,
+   "lat": 52.368815,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Tropico B VOF",
+    "addr:street": "Hoofdweg",
+    "addr:housenumber": "294-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19490",
+   "lon": 4.866136,
+   "lat": 52.369867,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "AL YEMEN ALSAEED",
+    "addr:street": "De Clercqstraat",
+    "addr:housenumber": "113-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:8049",
+   "lon": 4.879559,
+   "lat": 52.415879,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Snackbar Orion",
+    "addr:street": "Meteorenweg",
+    "addr:housenumber": "248"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20142",
+   "lon": 4.930426,
+   "lat": 52.375004,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Cafecito Panama",
+    "addr:street": "Oostelijke Handelskade",
+    "addr:housenumber": "4"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:8731",
+   "lon": 4.851918,
+   "lat": 52.36904,
+   "tags": {
+    "amenity": "bar",
+    "name": "'t Baasje",
+    "addr:street": "Hoofdweg",
+    "addr:housenumber": "302"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17749",
+   "lon": 4.898799,
+   "lat": 52.375893,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café Warmoes 24 B.V.",
+    "addr:street": "Warmoesstraat",
+    "addr:housenumber": "24"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12016",
+   "lon": 4.881919,
+   "lat": 52.373863,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Kessens",
+    "addr:street": "Rozengracht",
+    "addr:housenumber": "24-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19211",
+   "lon": 5.003352,
+   "lat": 52.353162,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Cavern",
+    "addr:street": "Krijn Taconiskade",
+    "addr:housenumber": "7"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15117",
+   "lon": 4.8938,
+   "lat": 52.379045,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop The Store",
+    "addr:street": "Singel",
+    "addr:housenumber": "14-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14236",
+   "lon": 4.927582,
+   "lat": 52.375981,
+   "tags": {
+    "amenity": "bar",
+    "name": "Stichting Café Mezrab",
+    "addr:street": "Veemkade",
+    "addr:housenumber": "576"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16563",
+   "lon": 4.84856,
+   "lat": 52.351741,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café Dizingof 18",
+    "addr:street": "Heemstedestraat",
+    "addr:housenumber": "18-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19069",
+   "lon": 4.895905,
+   "lat": 52.366741,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Balou Amsterdam BV",
+    "addr:street": "Halvemaansteeg",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19414",
+   "lon": 4.892806,
+   "lat": 52.379931,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Popeye",
+    "addr:street": "Haarlemmerstraat",
+    "addr:housenumber": "63-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14604",
+   "lon": 4.927452,
+   "lat": 52.344623,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Friet van Oost",
+    "addr:street": "Fizeaustraat",
+    "addr:housenumber": "15"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13575",
+   "lon": 4.926161,
+   "lat": 52.36005,
+   "tags": {
+    "amenity": "bar",
+    "name": "Ras Eetcafé",
+    "addr:street": "Wijttenbachstraat",
+    "addr:housenumber": "16-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17266",
+   "lon": 4.916276,
+   "lat": 52.356398,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Oost",
+    "addr:street": "Derde Oosterparkstraat",
+    "addr:housenumber": "73-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19355",
+   "lon": 4.888908,
+   "lat": 52.35563,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Layers Bakery B.V.",
+    "addr:street": "Saenredamstraat",
+    "addr:housenumber": "32"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11232",
+   "lon": 4.891306,
+   "lat": 52.368303,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Croissanterie Outmayer",
+    "addr:street": "Kalverstraat",
+    "addr:housenumber": "174"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18920",
+   "lon": 4.809425,
+   "lat": 52.357621,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Chez Moussa",
+    "addr:street": "Meer en Vaart",
+    "addr:housenumber": "195"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19228",
+   "lon": 4.925587,
+   "lat": 52.3602,
+   "tags": {
+    "amenity": "bar",
+    "name": "Rayleigh & Ramsay Oost",
+    "addr:street": "Wijttenbachstraat",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17653",
+   "lon": 4.924316,
+   "lat": 52.390538,
+   "tags": {
+    "amenity": "cafe",
+    "name": "IJskoud de Beste",
+    "addr:street": "Meeuwenlaan",
+    "addr:housenumber": "331-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18409",
+   "lon": 4.894972,
+   "lat": 52.366063,
+   "tags": {
+    "amenity": "bar",
+    "name": "Los Bij Jos",
+    "addr:street": "Korte Reguliersdwarsstraat",
+    "addr:housenumber": "12-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17786",
+   "lon": 4.885025,
+   "lat": 52.369364,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "NIM",
+    "addr:street": "Keizersgracht",
+    "addr:housenumber": "335-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16778",
+   "lon": 4.902741,
+   "lat": 52.352451,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Anatoliaa",
+    "addr:street": "Van Woustraat",
+    "addr:housenumber": "158-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15634",
+   "lon": 4.80649,
+   "lat": 52.359292,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Enver's Eethuis/Döner Arbi V.O.F.",
+    "addr:street": "Osdorpplein",
+    "addr:housenumber": "733"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20023",
+   "lon": 4.858718,
+   "lat": 52.371335,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café De Leven",
+    "addr:street": "Witte de Withstraat",
+    "addr:housenumber": "153"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12907",
+   "lon": 4.873075,
+   "lat": 52.371704,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "MANOTO",
+    "addr:street": "De Clercqstraat",
+    "addr:housenumber": "18-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20011",
+   "lon": 4.820138,
+   "lat": 52.379217,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Boonchance",
+    "addr:street": "Slotermeerlaan",
+    "addr:housenumber": "103D"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16633",
+   "lon": 4.898563,
+   "lat": 52.394181,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Vlees en Co Amsterdam B.V.",
+    "addr:street": "Albert Molhof",
+    "addr:housenumber": "1"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14054",
+   "lon": 4.871781,
+   "lat": 52.354136,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Joe & The Juice Netherlands B.V.",
+    "addr:street": "Cornelis Schuytstraat",
+    "addr:housenumber": "50-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13047",
+   "lon": 4.88597,
+   "lat": 52.364955,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Nader VOF",
+    "addr:street": "Kerkstraat",
+    "addr:housenumber": "66A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20199",
+   "lon": 4.890815,
+   "lat": 52.353139,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Effendy Ferdinand Bolstraat BV",
+    "addr:street": "Ferdinand Bolstraat",
+    "addr:housenumber": "128-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10859",
+   "lon": 4.826977,
+   "lat": 52.354589,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Thais Restaurant Suvarnaphum",
+    "addr:street": "Johan Huizingalaan",
+    "addr:housenumber": "250"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17783",
+   "lon": 4.89506,
+   "lat": 52.366072,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café Bloemenbeppie",
+    "addr:street": "Korte Reguliersdwarsstraat",
+    "addr:housenumber": "10-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19845",
+   "lon": 4.903062,
+   "lat": 52.352614,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Coffeecompany Jun Van Woustraat / V..O.F. Coffeecompany Jun",
+    "addr:street": "Van Woustraat",
+    "addr:housenumber": "153-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14840",
+   "lon": 4.929845,
+   "lat": 52.384809,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "De VerbroederIJ B.V.",
+    "addr:street": "Johan van Hasseltweg",
+    "addr:housenumber": "21"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15540",
+   "lon": 4.906737,
+   "lat": 52.369724,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Clinkmama",
+    "addr:street": "Valkenburgerstraat",
+    "addr:housenumber": "124"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9400",
+   "lon": 4.942848,
+   "lat": 52.322365,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Naz Food I",
+    "addr:street": "Albert Camuslaan",
+    "addr:housenumber": "117"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18674",
+   "lon": 4.896645,
+   "lat": 52.376774,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Mona Lisa Nieuwendijk",
+    "addr:street": "Nieuwendijk",
+    "addr:housenumber": "89-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19920",
+   "lon": 4.880613,
+   "lat": 52.34169,
+   "tags": {
+    "amenity": "bar",
+    "name": "Circus Odesa",
+    "addr:street": "Prinses Irenestraat",
+    "addr:housenumber": "19"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13254",
+   "lon": 4.890708,
+   "lat": 52.369236,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Poké Sisters",
+    "addr:street": "Rozenboomsteeg",
+    "addr:housenumber": "8"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13522",
+   "lon": 4.89397,
+   "lat": 52.37697,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "M&B Horeca BV",
+    "addr:street": "Spuistraat",
+    "addr:housenumber": "7A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17626",
+   "lon": 4.82747,
+   "lat": 52.363228,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Broodjeszaak Oguz",
+    "addr:street": "Johan Huizingalaan",
+    "addr:housenumber": "81"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12624",
+   "lon": 4.798905,
+   "lat": 52.360627,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Viswinkel/Restaurant Saidia",
+    "addr:street": "Hoekenes",
+    "addr:housenumber": "23"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13116",
+   "lon": 4.883899,
+   "lat": 52.384959,
+   "tags": {
+    "amenity": "cafe",
+    "name": "De Deli Haarlemmerbuurt",
+    "addr:street": "Haarlemmerplein",
+    "addr:housenumber": "36"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17313",
+   "lon": 4.887729,
+   "lat": 52.352173,
+   "tags": {
+    "amenity": "bar",
+    "name": "Vice Versa",
+    "addr:street": "Ceintuurbaan",
+    "addr:housenumber": "206-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18135",
+   "lon": 4.881157,
+   "lat": 52.380169,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Eethuis Insaeng",
+    "addr:street": "Goudsbloemstraat",
+    "addr:housenumber": "207-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:443",
+   "lon": 4.853007,
+   "lat": 52.368766,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Flash Back",
+    "addr:street": "Hudsonstraat",
+    "addr:housenumber": "138"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9544",
+   "lon": 4.827017,
+   "lat": 52.353699,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Eethuis Medina",
+    "addr:street": "Johan Huizingalaan",
+    "addr:housenumber": "294"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12237",
+   "lon": 4.902898,
+   "lat": 52.351853,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Café Carbón",
+    "addr:street": "Van Woustraat",
+    "addr:housenumber": "174-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19575",
+   "lon": 4.884252,
+   "lat": 52.363672,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Restaurant El Capricho B.V.",
+    "addr:street": "Korte Leidsedwarsstraat",
+    "addr:housenumber": "103"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19046",
+   "lon": 4.856219,
+   "lat": 52.353133,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Kim's So W Amsterdam B.V.",
+    "addr:street": "Amstelveenseweg",
+    "addr:housenumber": "83-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:2327",
+   "lon": 4.881958,
+   "lat": 52.365271,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Indian Restaurant Akbar",
+    "addr:street": "Korte Leidsedwarsstraat",
+    "addr:housenumber": "15"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15726",
+   "lon": 4.924286,
+   "lat": 52.368113,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Coulisse",
+    "addr:street": "Oostenburgergracht",
+    "addr:housenumber": "75"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12840",
+   "lon": 4.893277,
+   "lat": 52.35483,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop-Galerie \"Katsu\"",
+    "addr:street": "Eerste Van der Helststraat",
+    "addr:housenumber": "70-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18670",
+   "lon": 4.855671,
+   "lat": 52.353535,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Caffé Combo B.V",
+    "addr:street": "Amstelveenseweg",
+    "addr:housenumber": "156-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15397",
+   "lon": 4.896561,
+   "lat": 52.374759,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Babylon",
+    "addr:street": "Beursstraat",
+    "addr:housenumber": "27A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12572",
+   "lon": 4.886059,
+   "lat": 52.363626,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Van de Kaart",
+    "addr:street": "Prinsengracht",
+    "addr:housenumber": "512-O"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16576",
+   "lon": 4.899295,
+   "lat": 52.373513,
+   "tags": {
+    "amenity": "bar",
+    "name": "Hotel Bar Royal Taste",
+    "addr:street": "Oudezijds Achterburgwal",
+    "addr:housenumber": "47"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14912",
+   "lon": 4.881522,
+   "lat": 52.370068,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "29 Spices",
+    "addr:street": "Elandsgracht",
+    "addr:housenumber": "36-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:1929",
+   "lon": 4.882096,
+   "lat": 52.369909,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Johnny",
+    "addr:street": "Elandsgracht",
+    "addr:housenumber": "3-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19694",
+   "lon": 4.862009,
+   "lat": 52.367449,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Massawa / West",
+    "addr:street": "Chasséstraat",
+    "addr:housenumber": "4"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:10117",
+   "lon": 4.901939,
+   "lat": 52.376176,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Ship Chandlers Warehouse",
+    "addr:street": "Geldersekade",
+    "addr:housenumber": "8"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:2193",
+   "lon": 4.90209,
+   "lat": 52.369013,
+   "tags": {
+    "amenity": "cafe",
+    "name": "The Coffee Gallery",
+    "addr:street": "Jodenbreestraat",
+    "addr:housenumber": "94"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:5107",
+   "lon": 4.884834,
+   "lat": 52.362847,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Rijp Lijnbaansgracht B.V.",
+    "addr:street": "Lijnbaansgracht",
+    "addr:housenumber": "253"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17448",
+   "lon": 4.857596,
+   "lat": 52.37923,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Bella Storia",
+    "addr:street": "Karel Doormanstraat",
+    "addr:housenumber": "141"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18056",
+   "lon": 4.919303,
+   "lat": 52.346051,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Buno Coffee",
+    "addr:street": "Julianaplein",
+    "addr:housenumber": "4"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:1116",
+   "lon": 4.91655,
+   "lat": 52.360849,
+   "tags": {
+    "amenity": "bar",
+    "name": "Hotel Arena",
+    "addr:street": "'s-Gravesandestraat",
+    "addr:housenumber": "55"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18720",
+   "lon": 4.851571,
+   "lat": 52.369784,
+   "tags": {
+    "amenity": "bar",
+    "name": "Brunch Babes",
+    "addr:street": "Mercatorplein",
+    "addr:housenumber": "22-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:328",
+   "lon": 4.878593,
+   "lat": 52.382153,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop De Republiek",
+    "addr:street": "Tweede Nassaustraat",
+    "addr:housenumber": "1A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13928",
+   "lon": 4.865282,
+   "lat": 52.346351,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Broodje de Hut B.V.",
+    "addr:street": "Olympiaplein",
+    "addr:housenumber": "134-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19375",
+   "lon": 4.861792,
+   "lat": 52.359851,
+   "tags": {
+    "amenity": "cafe",
+    "name": "MLT Bakery",
+    "addr:street": "Pieter Langendijkstraat",
+    "addr:housenumber": "53-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20091",
+   "lon": 4.853579,
+   "lat": 52.370108,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Arvo Amsterdam",
+    "addr:street": "Bartholomeus Diazstraat",
+    "addr:housenumber": "34-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13434",
+   "lon": 4.883986,
+   "lat": 52.363868,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Ristorante Pizzeria Amarone",
+    "addr:street": "Korte Leidsedwarsstraat",
+    "addr:housenumber": "89"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14911",
+   "lon": 4.883256,
+   "lat": 52.364764,
+   "tags": {
+    "amenity": "bar",
+    "name": "Tapmarin Leidse",
+    "addr:street": "Lange Leidsedwarsstraat",
+    "addr:housenumber": "70"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:2797",
+   "lon": 4.836805,
+   "lat": 52.388285,
+   "tags": {
+    "amenity": "bar",
+    "name": "Grand Café Hermes B.V.",
+    "addr:street": "Orlyplein",
+    "addr:housenumber": "150"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13831",
+   "lon": 4.842412,
+   "lat": 52.390042,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Holland Casino Amsterdam West",
+    "addr:street": "La Guardiaweg",
+    "addr:housenumber": "61"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9068",
+   "lon": 4.895357,
+   "lat": 52.377775,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Resin",
+    "addr:street": "Hekelveld",
+    "addr:housenumber": "7A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17179",
+   "lon": 4.868282,
+   "lat": 52.337034,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Vascobelo V-Bar Noma House B.V.",
+    "addr:street": "Parnassusweg",
+    "addr:housenumber": "400"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13277",
+   "lon": 4.864167,
+   "lat": 52.345061,
+   "tags": {
+    "amenity": "bar",
+    "name": "TRIMAT BV Coffeeshop DNA",
+    "addr:street": "Achillesstraat",
+    "addr:housenumber": "104"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18893",
+   "lon": 4.860841,
+   "lat": 52.3483,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "PIATTINI",
+    "addr:street": "Marathonweg",
+    "addr:housenumber": "8-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:1080",
+   "lon": 4.912749,
+   "lat": 52.359529,
+   "tags": {
+    "amenity": "bar",
+    "name": "Mike's Badhuistheater",
+    "addr:street": "Boerhaaveplein",
+    "addr:housenumber": "28"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18294",
+   "lon": 4.893238,
+   "lat": 52.331965,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Minigolf Amstelpark",
+    "addr:street": "Amstelpark",
+    "addr:housenumber": "2B"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15148",
+   "lon": 4.858748,
+   "lat": 52.371236,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café Bar Gultepe",
+    "addr:street": "Witte de Withstraat",
+    "addr:housenumber": "149-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18934",
+   "lon": 4.869691,
+   "lat": 52.370943,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "JEJU Korean Kitchen and Bar",
+    "addr:street": "De Clercqstraat",
+    "addr:housenumber": "56-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11990",
+   "lon": 4.860741,
+   "lat": 52.36419,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café Casanova",
+    "addr:street": "Lootsstraat",
+    "addr:housenumber": "6-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13340",
+   "lon": 4.927963,
+   "lat": 52.365143,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Eastwood",
+    "addr:street": "Pieter Vlamingstraat",
+    "addr:housenumber": "286"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14045",
+   "lon": 4.894024,
+   "lat": 52.366886,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Dolce & Gelato",
+    "addr:street": "Reguliersbreestraat",
+    "addr:housenumber": "7"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12033",
+   "lon": 4.826861,
+   "lat": 52.36141,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Argana",
+    "addr:street": "Johan Huizingalaan",
+    "addr:housenumber": "108"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:4456",
+   "lon": 4.922223,
+   "lat": 52.354785,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Crash Light",
+    "addr:street": "Pretoriusstraat",
+    "addr:housenumber": "67-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19957",
+   "lon": 4.857127,
+   "lat": 52.348302,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Koemans Belegde Broodjes BV",
+    "addr:street": "Amstelveenseweg",
+    "addr:housenumber": "284-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20294",
+   "lon": 4.969283,
+   "lat": 52.372211,
+   "tags": {
+    "amenity": "bar",
+    "name": "Rialto Silo / Bar Hattie Amsterdam",
+    "addr:street": "Faas Wilkesstraat",
+    "addr:housenumber": "102"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14588",
+   "lon": 4.899193,
+   "lat": 52.370799,
+   "tags": {
+    "amenity": "bar",
+    "name": "San Diego B.V.",
+    "addr:street": "Nieuwe Hoogstraat",
+    "addr:housenumber": "2A-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:3141",
+   "lon": 4.902911,
+   "lat": 52.375856,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Old Bridge",
+    "addr:street": "Prins Hendrikkade",
+    "addr:housenumber": "98B"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14335",
+   "lon": 4.941405,
+   "lat": 52.365134,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Ela Palermo Méditerrané Eetcafé",
+    "addr:street": "Niasstraat",
+    "addr:housenumber": "29"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13495",
+   "lon": 4.988462,
+   "lat": 52.35927,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Amadi Panorama Hotel",
+    "addr:street": "IJburglaan",
+    "addr:housenumber": "539"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14727",
+   "lon": 4.855138,
+   "lat": 52.371112,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Sapporo Ramen SORA - West",
+    "addr:street": "Marco Polostraat",
+    "addr:housenumber": "223-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18735",
+   "lon": 4.850892,
+   "lat": 52.372459,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café Torres",
+    "addr:street": "Torresstraat",
+    "addr:housenumber": "151"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13057",
+   "lon": 4.890505,
+   "lat": 52.367752,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop De Dampkring",
+    "addr:street": "Handboogstraat",
+    "addr:housenumber": "29-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18432",
+   "lon": 4.88691,
+   "lat": 52.37792,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Christiaan Smit",
+    "addr:street": "Prinsenstraat",
+    "addr:housenumber": "20-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18925",
+   "lon": 4.838667,
+   "lat": 52.347847,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "4ooD",
+    "addr:street": "Rodenrijsstraat",
+    "addr:housenumber": "119"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16752",
+   "lon": 4.893174,
+   "lat": 52.379914,
+   "tags": {
+    "amenity": "bar",
+    "name": "Miss B",
+    "addr:street": "Haarlemmerstraat",
+    "addr:housenumber": "34-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17516",
+   "lon": 4.812483,
+   "lat": 52.375434,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Patisserie Corner",
+    "addr:street": "Burgemeester Van Leeuwenlaan",
+    "addr:housenumber": "36-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12156",
+   "lon": 4.887198,
+   "lat": 52.353699,
+   "tags": {
+    "amenity": "bar",
+    "name": "Stones Coffeeshop",
+    "addr:street": "Ruysdaelkade",
+    "addr:housenumber": "145-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16177",
+   "lon": 4.876404,
+   "lat": 52.336539,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "McDonald's Nederland",
+    "addr:street": "Gustav Mahlerlaan",
+    "addr:housenumber": "27"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17846",
+   "lon": 4.896301,
+   "lat": 52.377384,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Q Global Kitchen",
+    "addr:street": "Nieuwendijk",
+    "addr:housenumber": "62D"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:1990",
+   "lon": 4.89262,
+   "lat": 52.374232,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Barraka",
+    "addr:street": "Gravenstraat",
+    "addr:housenumber": "9"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18216",
+   "lon": 4.873877,
+   "lat": 52.386151,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Amsterdam Flavours V.O.F.",
+    "addr:street": "Pazzanistraat",
+    "addr:housenumber": "7"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13095",
+   "lon": 4.800832,
+   "lat": 52.378082,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Ankara Smit VOF",
+    "addr:street": "Lambertus Zijlplein",
+    "addr:housenumber": "17A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9483",
+   "lon": 4.804856,
+   "lat": 52.382551,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café 't Ruysje",
+    "addr:street": "Ruys de Beerenbrouckstraat",
+    "addr:housenumber": "108"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12678",
+   "lon": 4.916275,
+   "lat": 52.371804,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Homeland restaurant",
+    "addr:street": "Kattenburgerstraat",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:118",
+   "lon": 4.874766,
+   "lat": 52.374048,
+   "tags": {
+    "amenity": "bar",
+    "name": "Café Same Place",
+    "addr:street": "Nassaukade",
+    "addr:housenumber": "120-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19610",
+   "lon": 4.901404,
+   "lat": 52.361982,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "BEATZZA",
+    "addr:street": "Utrechtsedwarsstraat",
+    "addr:housenumber": "141"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:20102",
+   "lon": 4.884415,
+   "lat": 52.363583,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Casa Italiana",
+    "addr:street": "Korte Leidsedwarsstraat",
+    "addr:housenumber": "109-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17347",
+   "lon": 4.936706,
+   "lat": 52.362535,
+   "tags": {
+    "amenity": "cafe",
+    "name": "KH Tweede Generatie",
+    "addr:street": "Eerste Atjehstraat",
+    "addr:housenumber": "112-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19911",
+   "lon": 5.01508,
+   "lat": 52.358392,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Eethuis Frimangron",
+    "addr:street": "Pampuslaan",
+    "addr:housenumber": "505"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:8441",
+   "lon": 4.885864,
+   "lat": 52.365252,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Happy Feelings",
+    "addr:street": "Kerkstraat",
+    "addr:housenumber": "51-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:12088",
+   "lon": 4.899736,
+   "lat": 52.373533,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Mariam Antonio",
+    "addr:street": "Molensteeg",
+    "addr:housenumber": "8-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15636",
+   "lon": 4.837875,
+   "lat": 52.347302,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Wow Lieven",
+    "addr:street": "Rodenrijsstraat",
+    "addr:housenumber": "150"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17618",
+   "lon": 4.895007,
+   "lat": 52.352401,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Koffiehuis Karanfil",
+    "addr:street": "Tweede Van der Helststraat",
+    "addr:housenumber": "7-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15483",
+   "lon": 4.920488,
+   "lat": 52.383304,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Escape Factory",
+    "addr:street": "Gedempt Hamerkanaal",
+    "addr:housenumber": "267"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17701",
+   "lon": 4.887185,
+   "lat": 52.38219,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Relax Centrum",
+    "addr:street": "Binnen Oranjestraat",
+    "addr:housenumber": "9-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11467",
+   "lon": 4.941104,
+   "lat": 52.35875,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop The Stud BV",
+    "addr:street": "Molukkenstraat",
+    "addr:housenumber": "581"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16072",
+   "lon": 4.891957,
+   "lat": 52.370472,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Jungle Burger",
+    "addr:street": "Wijde Kapelsteeg",
+    "addr:housenumber": "6"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18796",
+   "lon": 4.887251,
+   "lat": 52.37766,
+   "tags": {
+    "amenity": "bar",
+    "name": "Cafe de Knoop",
+    "addr:street": "Prinsenstraat",
+    "addr:housenumber": "5-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:4819",
+   "lon": 4.905902,
+   "lat": 52.345211,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Khong Kha",
+    "addr:street": "Rijnstraat",
+    "addr:housenumber": "87-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9892",
+   "lon": 4.893854,
+   "lat": 52.370228,
+   "tags": {
+    "amenity": "bar",
+    "name": "Frascati Café",
+    "addr:street": "Sint Barberenstraat",
+    "addr:housenumber": "7"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18087",
+   "lon": 4.916275,
+   "lat": 52.371804,
+   "tags": {
+    "amenity": "bar",
+    "name": "Kometen Brood Loket",
+    "addr:street": "Kattenburgerstraat",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13539",
+   "lon": 4.859923,
+   "lat": 52.335434,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Brasserie Marion",
+    "addr:street": "De Boelelaan",
+    "addr:housenumber": "1110"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15164",
+   "lon": 4.873453,
+   "lat": 52.339607,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Starbucks (Amsterdam Zuid Station)",
+    "addr:street": "Zuidplein",
+    "addr:housenumber": "11"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:15889",
+   "lon": 4.812444,
+   "lat": 52.377375,
+   "tags": {
+    "amenity": "fast_food",
+    "name": "Snackbar Ekmek Teknesi",
+    "addr:street": "Burgemeester Van Leeuwenlaan",
+    "addr:housenumber": "75-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19021",
+   "lon": 4.924901,
+   "lat": 52.351729,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Chasse Hotel",
+    "addr:street": "James Wattstraat",
+    "addr:housenumber": "56"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:9522",
+   "lon": 4.902661,
+   "lat": 52.371865,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop SOLO",
+    "addr:street": "Korte Koningsstraat",
+    "addr:housenumber": "2"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13383",
+   "lon": 4.891206,
+   "lat": 52.37206,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Abraxas",
+    "addr:street": "Jonge Roelensteeg",
+    "addr:housenumber": "12-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17103",
+   "lon": 4.856778,
+   "lat": 52.349342,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Haarlemmermeerstation B.V.",
+    "addr:street": "Amstelveenseweg",
+    "addr:housenumber": "266"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:16704",
+   "lon": 4.918701,
+   "lat": 52.37006,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Vegan sushi bar",
+    "addr:street": "Wittenburgergracht",
+    "addr:housenumber": "143"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:17407",
+   "lon": 4.874358,
+   "lat": 52.390242,
+   "tags": {
+    "amenity": "bar",
+    "name": "Pipes and Beans",
+    "addr:street": "Oostzaanstraat",
+    "addr:housenumber": "28"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18699",
+   "lon": 4.885667,
+   "lat": 52.37227,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Madame Croissant",
+    "addr:street": "Hartenstraat",
+    "addr:housenumber": "29-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18925",
+   "lon": 4.838327,
+   "lat": 52.347376,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "4ooD",
+    "addr:street": "Rodenrijsstraat",
+    "addr:housenumber": "129"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19274",
+   "lon": 4.897449,
+   "lat": 52.366459,
+   "tags": {
+    "amenity": "bar",
+    "name": "HiG Amsterdam 1 B.V.",
+    "addr:street": "Rembrandtplein",
+    "addr:housenumber": "27"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:2256",
+   "lon": 4.889787,
+   "lat": 52.383333,
+   "tags": {
+    "amenity": "bar",
+    "name": "Squash City",
+    "addr:street": "Ketelmakerstraat",
+    "addr:housenumber": "6"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18289",
+   "lon": 4.851489,
+   "lat": 52.364436,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Iets Aparts",
+    "addr:street": "Postjesweg",
+    "addr:housenumber": "122-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:18425",
+   "lon": 4.844537,
+   "lat": 52.340749,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Bennies Restaurant",
+    "addr:street": "Helicopterstraat",
+    "addr:housenumber": "28"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13418",
+   "lon": 4.875837,
+   "lat": 52.371563,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop 1e Hulp",
+    "addr:street": "Marnixstraat",
+    "addr:housenumber": "194-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14315",
+   "lon": 4.959762,
+   "lat": 52.287105,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Brasserie De Hoge Dijk B.V.",
+    "addr:street": "Abcouderstraatweg",
+    "addr:housenumber": "46"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19166",
+   "lon": 4.882962,
+   "lat": 52.378186,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop The Spirit",
+    "addr:street": "Westerstraat",
+    "addr:housenumber": "121A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14276",
+   "lon": 4.874473,
+   "lat": 52.377741,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Lucifera",
+    "addr:street": "Frederik Hendrikstraat",
+    "addr:housenumber": "22-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14260",
+   "lon": 4.918839,
+   "lat": 52.341956,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "George Marina",
+    "addr:street": "Spaklerweg",
+    "addr:housenumber": "10A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19318",
+   "lon": 4.827866,
+   "lat": 52.349802,
+   "tags": {
+    "amenity": "restaurant",
+    "name": "Pattaya Restaurant",
+    "addr:street": "Abraham Staalmanplein",
+    "addr:housenumber": "1"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:3034",
+   "lon": 4.896237,
+   "lat": 52.372512,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop The Bulldog B.V.",
+    "addr:street": "Oudezijds Voorburgwal",
+    "addr:housenumber": "220"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:11529",
+   "lon": 4.879636,
+   "lat": 52.379587,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop t Keteltje",
+    "addr:street": "Marnixstraat",
+    "addr:housenumber": "74-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14996",
+   "lon": 4.968127,
+   "lat": 52.370968,
+   "tags": {
+    "amenity": "bar",
+    "name": "Nautilus",
+    "addr:street": "Eef Kamerbeekstraat",
+    "addr:housenumber": "1004"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:13230",
+   "lon": 4.884289,
+   "lat": 52.364274,
+   "tags": {
+    "amenity": "bar",
+    "name": "Bar-B",
+    "addr:street": "Lange Leidsedwarsstraat",
+    "addr:housenumber": "29-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14704",
+   "lon": 4.779075,
+   "lat": 52.391454,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Doner Westpoort B.V.",
+    "addr:street": "Tijnmuiden",
+    "addr:housenumber": "57"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:944",
+   "lon": 4.884681,
+   "lat": 52.353059,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Pacific",
+    "addr:street": "Balthasar Floriszstraat",
+    "addr:housenumber": "10-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:19147",
+   "lon": 4.812401,
+   "lat": 52.37724,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Women’s Corner",
+    "addr:street": "Burgemeester Van Leeuwenlaan",
+    "addr:housenumber": "71-H"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:14630",
+   "lon": 4.878595,
+   "lat": 52.35004,
+   "tags": {
+    "amenity": "cafe",
+    "name": "Joe & The Juice Netherlands BV",
+    "addr:street": "Beethovenstraat",
+    "addr:housenumber": "5"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "horeca:3666",
+   "lon": 4.89611,
+   "lat": 52.365438,
+   "tags": {
+    "amenity": "bar",
+    "name": "De Heeren van Aemstel",
+    "addr:street": "Thorbeckeplein",
+    "addr:housenumber": "5A"
+   },
+   "source": "horeca"
+  },
+  {
+   "id": "atp:dirk_nl:https://www.dirk.nl/winkels/amsterdam/warmoesstraat#location",
+   "lon": 4.8954,
+   "lat": 52.373363,
+   "tags": {
+    "shop": "supermarket",
+    "name": "Dirk",
+    "brand": "Dirk",
+    "brand:wikidata": "Q17502722",
+    "addr:street": "Warmoesstraat",
+    "addr:housenumber": "157"
+   },
+   "source": "atp"
+  },
+  {
+   "id": "atp:spar_nl:https://www.spar.nl/winkels/spar-city-rijksmuseum-1315/",
+   "lon": 4.888087,
+   "lat": 52.360654,
+   "tags": {
+    "shop": "supermarket",
+    "name": "SPAR City Rijksmuseum",
+    "brand": "Spar",
+    "brand:wikidata": "Q610492",
+    "addr:street": "Weteringschans",
+    "addr:housenumber": "111"
+   },
+   "source": "atp"
+  },
+  {
+   "id": "atp:spar_nl:https://www.spar.nl/winkels/spar-city-sloterdijk-687/",
+   "lon": 4.837522,
+   "lat": 52.388479,
+   "tags": {
+    "shop": "supermarket",
+    "name": "SPAR city Sloterdijk",
+    "brand": "Spar",
+    "brand:wikidata": "Q610492",
+    "addr:street": "Orlyplein",
+    "addr:housenumber": "147"
+   },
+   "source": "atp"
+  },
+  {
+   "id": "atp:vomar_nl:1212",
+   "lon": 4.7853,
+   "lat": 52.35563,
+   "tags": {
+    "shop": "supermarket",
+    "name": "Vomar",
+    "brand": "Vomar",
+    "brand:wikidata": "Q3202837",
+    "addr:street": "Dijkgraafplein",
+    "addr:housenumber": "409"
+   },
+   "source": "atp"
+  },
+  {
+   "id": "atp:gall_and_gall_nl:6436",
+   "lon": 4.855952,
+   "lat": 52.381686,
+   "tags": {
+    "shop": "alcohol",
+    "name": "BOS EN LOMMERWEG AMSTERDAM",
+    "brand": "Gall & Gall",
+    "brand:wikidata": "Q13639185"
+   },
+   "source": "atp"
+  },
+  {
+   "id": "atp:bruna_nl:2601",
+   "lon": 4.895269,
+   "lat": 52.373752,
+   "tags": {
+    "shop": "books",
+    "name": "Bruna",
+    "brand": "Bruna",
+    "brand:wikidata": "Q3317555"
+   },
+   "source": "atp"
+  },
+  {
+   "id": "atp:xenos_nl:https://www.xenos.nl/winkels/amsterdam-kalverstraat-228",
+   "lon": 4.89259,
+   "lat": 52.3673,
+   "tags": {
+    "shop": "houseware",
+    "name": "Xenos",
+    "brand": "Xenos",
+    "brand:wikidata": "Q16547960",
+    "addr:street": "Kalverstraat",
+    "addr:housenumber": "228"
+   },
+   "source": "atp"
+  },
+  {
+   "id": "atp:action:https://www.action.com/nl-nl/winkels/amsterdam-marius-bauerstraat-233-b2/",
+   "lon": 4.837407,
+   "lat": 52.362534,
+   "tags": {
+    "shop": "variety_store",
+    "name": "Action",
+    "brand": "Action",
+    "brand:wikidata": "Q2634111"
+   },
+   "source": "atp"
+  },
+  {
+   "id": "atp:new_york_pizza_nl_de:nl-26",
+   "lon": 4.975738,
+   "lat": 52.295643,
+   "tags": {
+    "amenity": "fast_food",
+    "cuisine": "pizza",
+    "name": "New York Pizza",
+    "brand": "New York Pizza",
+    "brand:wikidata": "Q2639128"
+   },
+   "source": "atp"
+  },
+  {
+   "id": "atp:dominos_pizza_nl:30792",
+   "lon": 4.90574,
+   "lat": 52.34589,
+   "tags": {
+    "amenity": "fast_food",
+    "cuisine": "pizza",
+    "name": "Domino's",
+    "brand": "Domino's",
+    "brand:wikidata": "Q839466",
+    "addr:street": "Rijnstraat",
+    "addr:housenumber": "61a"
+   },
+   "source": "atp"
+  }
+ ],
+ "provenance": {
+  "horeca": "Gemeente Amsterdam, horeca exploitatievergunningen (api.data.amsterdam.nl/v1/horeca/exploitatievergunning), CC BY 4.0, fetched 2026-11-15",
+  "atp": "All the Places run 2026-10-31-13-32-34 (alltheplaces-data.openaddresses.io, output CC0-1.0), spiders: albert_heijn_nl, dirk_nl, plus_nl, spar_nl, vomar_nl, ekoplaza_nl, gall_and_gall_nl, primera_nl, bruna_nl, blokker_nl, xenos_nl, praxis_nl, action, hema, zeeman, hunkemoller, rituals, new_york_pizza_nl_de, dominos_pizza_nl, kfc_nl; empty this run: jumbo_nl, etos_nl, douglas_nl"
+ }
+}
