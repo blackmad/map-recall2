@@ -22,7 +22,21 @@ export interface BuurtRoofKit {
   z0: number; storeyM: number; rows: number;
   /** The erker's cap above the series line (m). */
   capM: number;
+  /** The series' tile tone measured from the cached panorama (round 3; threeBuildingFeatures.ts takes it as the roof hex). */
+  roofHex?: string;
+  /** The series' dormers measured from the photo: width, face height (m) and set-back up the street slope (share of the band). */
+  dormer?: { widthM: number; heightM: number; setback: number };
+  /** The top storey is a ribbon of attic lights across the front (round 3, Maasstraat): `drawRibbon`. */
+  ribbon?: true;
+  /** Joined sides (left/right as seen): the ribbon runs on through the party wall there. */
+  joins?: { left?: boolean; right?: boolean };
 }
+
+/** The Plan Zuid dormer as the Biesboschstraat photo shows it: a broad white-cheeked box high on the tiles, its hoist beam. */
+export const KIT_DORMER = { widthM: 1.6, heightM: 1.45, setback: 0.6 } as const;
+
+/** The attic ribbon (Maasstraat 2022-03-23, 40 px/m): lights 1.1 m tall from 1.0 m over the top floor, about 1.2 m apart. */
+export const RIBBON_LOOK = { footM: 1.0, heightM: 1.1, lightM: 1.2, frameM: 0.09, endM: 0.45 } as const;
 
 export const ERKER_LOOK = {
   /** White frames and slabs (the rows' frame white, rowFront.ts ROW_SHOP_FRAME family). */
@@ -46,7 +60,13 @@ export function buurtRoofKitOf(v: unknown): BuurtRoofKit | null {
   if (![k.z0, k.storeyM, k.rows, k.capM].every(x => Number.isFinite(Number(x))) || !(Number(k.storeyM) > 1) || !(Number(k.rows) >= 1)) return null;
   const erkers = (Array.isArray(k.erkers) ? k.erkers : []).filter((e): e is BuurtErker => !!e && typeof e === 'object' && [e.a0, e.a1, e.depthM, e.faceM].every(Number.isFinite) && e.a1 > e.a0 && e.depthM > 0);
   const pitch = Number(k.pitchDeg);
-  return { ...(pitch > 10 && pitch < 80 ? { pitchDeg: pitch } : {}), erkers, z0: Number(k.z0), storeyM: Number(k.storeyM), rows: Math.round(Number(k.rows)), capM: Number(k.capM) };
+  const hex = typeof k.roofHex === 'string' && /^#[0-9a-f]{6}$/i.test(k.roofHex) ? k.roofHex : null;
+  const dm = k.dormer as Record<string, unknown> | undefined;
+  const dormer = dm && [dm.widthM, dm.heightM, dm.setback].every(x => Number(x) > 0) ? { widthM: Number(dm.widthM), heightM: Number(dm.heightM), setback: Math.min(0.9, Number(dm.setback)) } : null;
+  const j = k.joins as { left?: unknown; right?: unknown } | undefined;
+  const joins = j && typeof j === 'object' ? { ...(j.left === true ? { left: true } : {}), ...(j.right === true ? { right: true } : {}) } : {};
+  return { ...(pitch > 10 && pitch < 80 ? { pitchDeg: pitch } : {}), ...(hex ? { roofHex: hex } : {}), ...(dormer ? { dormer } : {}), erkers, z0: Number(k.z0), storeyM: Number(k.storeyM), rows: Math.round(Number(k.rows)), capM: Number(k.capM),
+    ...(k.ribbon === true ? { ribbon: true as const, ...(joins.left || joins.right ? { joins } : {}) } : {}) };
 }
 
 /**
@@ -87,7 +107,10 @@ export function drawErkers(s: RoofSink, kit: BuurtRoofKit, L: number, W: number,
         strip(m, m + fr, za, zb); strip(1 - m - fr, 1 - m, za, zb);
         strip(m, 1 - m, zb - Lk.frameM, zb); strip(m, 1 - m, za, za + Lk.frameM);
         const zt = za + (zb - za) * 0.72; strip(m, 1 - m, zt - Lk.frameM / 2, zt + Lk.frameM / 2);
-        if (sl > 1.1) strip(0.5 - fr / 2, 0.5 + fr / 2, za, zt);
+        // A casement every ~0.9 m of face (the photo's erkers: three lights on a 2 m face), white mullions between.
+        const nl = Math.max(1, Math.round(sl * (1 - 2 * m) / 0.9));
+        if (nl > 1) for (let i = 1; i < nl; i++) { const f = m + (1 - 2 * m) * i / nl; strip(f - fr / 2, f + fr / 2, za, zb); }
+        else if (sl > 1.1) strip(0.5 - fr / 2, 0.5 + fr / 2, za, zt);
       }
     }
     // The white sill slab under its foot (seen from the pavement) and the white cap over it, both a little proud.
@@ -108,8 +131,35 @@ export function drawErkers(s: RoofSink, kit: BuurtRoofKit, L: number, W: number,
 
 /** The roof kit a member's front kit asks for: its erkers over the upper storeys (the series' ground and storey lines,
  *  rowFront.ts rowGroundM) and the series pitch. `topM` is the series line, `groundM` the ground storey's top. */
-export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg: number } }, topM: number, storeys: number, groundM: number): BuurtRoofKit | null {
+export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg: number; roofHex?: string }; ribbon?: true; copingHex?: string; joins?: { left?: boolean; right?: boolean } }, topM: number, storeys: number, groundM: number): BuurtRoofKit | null {
   const rows = Math.max(1, storeys - 1), storeyM = (topM - groundM) / rows;
   if (!(storeyM > 1.5) || !(groundM > 1.5)) return null;
-  return { ...(front.roof ? { pitchDeg: front.roof.pitchDeg } : {}), erkers: front.erkers, z0: +(groundM - topM).toFixed(3), storeyM: +storeyM.toFixed(3), rows, capM: ERKER_LOOK.capM };
+  return { ...(front.roof ? { pitchDeg: front.roof.pitchDeg, dormer: { ...KIT_DORMER } } : {}), ...(front.roof?.roofHex ? { roofHex: front.roof.roofHex } : !front.roof && front.copingHex ? { roofHex: front.copingHex } : {}),
+    erkers: front.erkers, z0: +(groundM - topM).toFixed(3), storeyM: +storeyM.toFixed(3), rows, capM: ERKER_LOOK.capM,
+    ...(front.ribbon ? { ribbon: true as const, ...(front.joins ? { joins: { ...front.joins } } : {}) } : {}) };
+}
+
+/**
+ * The attic ribbon on the street end `e` of a row roof box (L deep, W wide): the top storey's own windows are covered by
+ * a brick plate (the series wall) a hair proud of the wall, and on it one white-framed band of lights from party wall to
+ * party wall. A joined side runs to the wall's end, so the band reads continuous along the row; a free end stops short.
+ */
+export function drawRibbon(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
+  const Rl = RIBBON_LOOK, wh = ERKER_LOOK.white, z0 = -kit.storeyM, za = z0 + Rl.footM, zb = za + Rl.heightM;
+  const P = (c: number, o: number, z: number): V3 => [e * (L / 2 + o), e * c, z];
+  const hint: V3 = [e, 0, 0];
+  const cL = -W / 2 + (kit.joins?.left ? 0 : Rl.endM), cR = W / 2 - (kit.joins?.right ? 0 : Rl.endM);
+  const q = (c0: number, c1: number, z0q: number, z1q: number, o: number, part: 'plate' | 'trim', hex?: string) =>
+    s.quad(P(c0, o, z0q), P(c1, o, z0q), P(c1, o, z1q), P(c0, o, z1q), part === 'plate' ? s.wallUv(c0, z0q) : [0, 0], part === 'plate' ? s.wallUv(c1, z0q) : [0, 0], part === 'plate' ? s.wallUv(c1, z1q) : [0, 0], part === 'plate' ? s.wallUv(c0, z1q) : [0, 0], part, hint, hex);
+  q(-W / 2, W / 2, z0 + 0.05, -0.02, 0.09, 'plate');
+  if (cR - cL < 0.8) return;
+  q(cL, cR, za, zb, 0.1, 'trim', ERKER_LOOK.glass);
+  const f = Rl.frameM, n = Math.max(1, Math.round((cR - cL) / Rl.lightM));
+  q(cL, cR, za - f, za, 0.115, 'trim', wh); q(cL, cR, zb, zb + f, 0.115, 'trim', wh);
+  q(cL, cR, za + (zb - za) * 0.62 - f / 2, za + (zb - za) * 0.62 + f / 2, 0.115, 'trim', wh);
+  for (let i = 0; i <= n; i++) {
+    const c = cL + (cR - cL) * i / n;
+    if ((i === 0 && kit.joins?.left) || (i === n && kit.joins?.right)) continue;
+    q(Math.max(cL, c - f / 2), Math.min(cR, c + f / 2), za, zb, 0.115, 'trim', wh);
+  }
 }

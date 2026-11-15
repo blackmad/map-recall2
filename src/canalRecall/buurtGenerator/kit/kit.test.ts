@@ -3,8 +3,10 @@
 // (pitch band, erkers kept out of the outline cut, no kit: the roof as before).
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { erkersOf, straightenRing, type BuurtKitFront, type LngLat } from './frontKit.js';
-import { pitchBandM } from './roofKit.js';
+import { erkersOf, erkersOnCells, straightenRing, KIT_MULLION_SHARE, type BuurtKitFront, type LngLat } from './frontKit.js';
+import { buurtRoofKitFor, KIT_DORMER, pitchBandM } from './roofKit.js';
+import { bayDoorGeometry, variantKey, type BayVariant } from '../../bayTextures.js';
+import { BAY_STYLES } from '../../bayLook.js';
 import { resetRowFront, setRowFrontRecords, withRowFront, type RowFrontRecord } from '../../houseLine/rowFront.js';
 import { roofPlanForFeature, roofTrianglesForOutline } from '../../roofMesh.js';
 
@@ -81,4 +83,65 @@ test('row roof hook: the pitch sets the street band, erkers stand past the walls
     assert.equal(pitchBandM(5, 10, 52), 5 / Math.tan(52 * Math.PI / 180));
     assert.equal(pitchBandM(5, 6, 52), 2.6, 'a shallow box keeps a ridge strip');
   } finally { delete g.__canalRecallBuurtKit; process.env.ROW_FRONT = '0'; resetRowFront(); setRowFrontRecords([]); }
+});
+
+// Round 3 (docs/handoffs/buurt-generators-20261115.md): erkers on the series' cells, the roof hex and dormer, the attic
+// ribbon, the paired mullion and the portiek door. Everything is behind the kit; existing variants keep their keys.
+
+test('erkersOnCells: a whole erker takes the cells it reaches into, a half one at a party wall one cell', () => {
+  // Biesboschstraat 077118: BAG's 2.1 m base at 0.47-0.73 of a 7.95 m four-cell front, 0.66 m deep, canted.
+  const [e] = erkersOnCells([{ a0: 0.47, a1: 0.73, depthM: 0.66, faceM: 1.0 }], 4, 7.95);
+  assert.equal(+(e.a1 - e.a0).toFixed(2), 0.5, 'two cells');
+  assert.equal(e.faceM, 2.19, 'canted: 55 % of the 4 m base, near the photo 2.0 m');
+  const [h] = erkersOnCells([{ a0: 0, a1: 0.3, depthM: 0.8, faceM: 1.4 }], 4, 8);
+  assert.deepEqual([h.a0, h.a1], [0, 0.25]);
+  // A box erker keeps its face the whole base; no bays: unchanged.
+  assert.equal(erkersOnCells([{ a0: 0.3, a1: 0.45, depthM: 0.5, faceM: 1.2 }], 4, 8)[0].faceM, 2);
+  assert.deepEqual(erkersOnCells([{ a0: 0.3, a1: 0.45, depthM: 0.5, faceM: 1.2 }], 0, 8), [{ a0: 0.3, a1: 0.45, depthM: 0.5, faceM: 1.2 }]);
+});
+
+test('roof kit: the measured tile hex and the photo dormer on a pitched kit; a flat kit takes its coping hex and ribbon', () => {
+  const pitched = buurtRoofKitFor({ erkers: [], roof: { pitchDeg: 62, roofHex: '#a15a30' } }, 12.4, 4, 3.3)!;
+  assert.equal(pitched.roofHex, '#a15a30');
+  assert.deepEqual(pitched.dormer, { ...KIT_DORMER });
+  const flat = buurtRoofKitFor({ erkers: [], ribbon: true, copingHex: '#5b504a', joins: { left: true } }, 16.4, 5, 3.5)!;
+  assert.deepEqual([flat.roofHex, flat.ribbon, flat.joins, flat.dormer], ['#5b504a', true, { left: true }, undefined]);
+  assert.equal(buurtRoofKitFor({ erkers: [] }, 12.4, 4, 3.3)!.roofHex, undefined);
+});
+
+test('ribbon: drawn on the flat coping, kit triangles past the wall; paired sash reaches rowLook and rowDress', () => {
+  process.env.ROW_FRONT = '1'; resetRowFront();
+  const g = globalThis as { __canalRecallBuurtKit?: boolean };
+  const flatSeries = { ...series, id: 'test-row:s1', roofStorey: { kind: 'none' as const, dormers: [] }, look: { bays: 4, sash: 'transom' as const } };
+  const r: RowFrontRecord = { ...rec('0363100012000003', { frontLine: line, erkers: [], ribbon: true, sash: 'paired-transom', copingHex: '#5b504a' }), series: flatSeries };
+  try {
+    setRowFrontRecords([r]);
+    g.__canalRecallBuurtKit = true;
+    const on = withRowFront(feature('0363100012000003'));
+    const p = on.properties as Record<string, any>;
+    assert.equal(p.rowLook.sash, 'paired-transom');
+    assert.equal(p.rowDress.mullionShare, KIT_MULLION_SHARE);
+    assert.equal(p.rowRoof.kit.ribbon, true);
+    const plan = roofPlanForFeature(on as never)!;
+    assert.equal(plan.buurtKit?.roofHex, '#5b504a');
+    const o = (on.geometry as { coordinates: number[][][] }).coordinates[0];
+    const tris = roofTrianglesForOutline(o, { lng: o[0][0], lat: o[0][1] }, plan, 12.4, { bayM: 2, storeyM: 3, cellM: 1 }, KX);
+    const zs = tris.filter(t => t.kit).flatMap(t => t.p.map(q => q[2]));
+    assert.ok(zs.length && Math.min(...zs) < 12.4 - 2.5 && Math.max(...zs) < 12.4, 'the top storey, under the line');
+    g.__canalRecallBuurtKit = false;
+    const off = withRowFront(feature('0363100012000003')).properties as Record<string, any>;
+    assert.equal(off.rowLook.sash, 'transom'); assert.equal(off.rowDress.mullionShare, undefined); assert.equal(off.rowRoof, undefined);
+  } finally { delete g.__canalRecallBuurtKit; process.env.ROW_FRONT = '0'; resetRowFront(); setRowFrontRecords([]); }
+});
+
+test('painter: existing variants keep their keys and doors; the kit presets exist only under the flag', () => {
+  const v: BayVariant = { archetype: 'school', kind: 'groundDoor', windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'wide', openingOccupancy: .71, openingHeight: .56, sash: 'transom', trimDensity: 'restrained', lintel: 'none', wallMaterial: 'brick' };
+  // The key format before round 3, literally: a variant without the new fields keys (and so paints and caches) as before.
+  assert.equal(variantKey(v, 'photo'), 'photo|school|groundDoor|2|rect|false|false|masonry|wide|pale|none|false|0.71|0.56|transom|restrained|brick|none|none|none|none');
+  assert.deepEqual(bayDoorGeometry(v), { x: 520 * .14, width: 98, height: 214, bottom: 24, fanlight: false });
+  const pair: BayVariant = { ...v, door: 'portiek-pair', sash: 'paired-transom', mullionShare: KIT_MULLION_SHARE };
+  assert.ok(variantKey(pair, 'photo').endsWith(`|m${KIT_MULLION_SHARE}|portiek-pair`));
+  assert.equal(bayDoorGeometry(pair).width, 200);
+  // Flag off (the module was loaded without BUURT_KIT): the school presets are the stock two.
+  assert.equal(BAY_STYLES.school.length, process.env.BUURT_KIT === '1' ? 4 : 2);
 });

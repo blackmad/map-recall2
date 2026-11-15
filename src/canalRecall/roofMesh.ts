@@ -25,7 +25,7 @@
 import earcut from 'earcut';
 import { largeTierProperties } from './largeBuildingTier.js';
 import { RoofSink, type V2, type V3 } from './roofSink.js';
-import { buurtRoofKitOf, drawErkers, pitchBandM, type BuurtRoofKit } from './buurtGenerator/kit/roofKit.js';
+import { buurtRoofKitOf, drawErkers, drawRibbon, pitchBandM, type BuurtRoofKit } from './buurtGenerator/kit/roofKit.js';
 import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, perimeterRoofInset, rectHangM, ringAreaM2, signedArea, uncoveredShare } from './roofFootprint.js';
 import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
 import { repeatedTerraceRoofTriangles, type RepeatedTerraceRoof } from './repeatedTerraceRoof.js';
@@ -745,9 +745,9 @@ function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: n
     s.quad([o[i][0], o[i][1], 0], [o[j][0], o[j][1], 0], [ex[j][0], ex[j][1], lip], [ex[i][0], ex[i][1], lip], [0, 0], [1, 0], [1, 0.25], [0, 0.25], part, [out[0] * 0.05, out[1] * 0.05, 1], hex);
     if (plan.accents) fascia(s, [ex[i][0], ex[i][1], lip], [ex[j][0], ex[j][1], lip], [out[0], out[1], 0], trim, 0.26);
   }
-  if (plan.buurtKit?.erkers.length) { const from = s.out.length; drawErkers(s, plan.buurtKit, L, W, e); for (let i = from; i < s.out.length; i++) s.out[i].kit = true; }
+  if (plan.buurtKit?.erkers.length || plan.buurtKit?.ribbon) { const from = s.out.length; if (plan.buurtKit.ribbon) drawRibbon(s, plan.buurtKit, L, W, e); drawErkers(s, plan.buurtKit, L, W, e); for (let i = from; i < s.out.length; i++) s.out[i].kit = true; }
   if (!plan.dormers) return;
-  if (plan.rowDormers) { rowDormersOnEnds(s, plan, L, W, (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R), L / 2 - k * 0.3); return; }
+  if (plan.rowDormers) { rowDormersOnEnds(s, plan, L, W, (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R), L / 2 - k * (plan.buurtKit?.dormer?.setback ?? 0.3)); return; }
   // Dormers on the short ends (the street front of a row house); on the long sides only when they are not party walls.
   const nE = W >= 7.5 ? 2 : 1, dwE = Math.min(1.3, (W - 2 * k) / nE - 0.5);
   const surfU = (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R);
@@ -773,7 +773,8 @@ function rowDormersOnEnds(s: RoofSink, plan: RoofPlan, L: number, W: number, sur
   const dw = Math.max(0.7, Math.min(1.0, W / ds.length - 1.1));
   for (const e of ends) for (const dm of ds) {
     const ornate = dm.kind === 'ornate-pinnacle';
-    dormer(s, { axis: 'u', side: e, c: e * (dm.a - 0.5) * W, pf, dw: ornate ? Math.min(1.25, dw + 0.25) : dw, hd: ornate ? 1.45 : 1.15, surf, kind: dm.kind, hoist: dm.hoist, standing: true, ...(plan.buurtKit ? { kitHoist: true } : {}) }, plan);
+    const kd = plan.buurtKit?.dormer;
+    dormer(s, { axis: 'u', side: e, c: e * (dm.a - 0.5) * W, pf, dw: kd ? Math.min(kd.widthM, W / ds.length - 0.6) : ornate ? Math.min(1.25, dw + 0.25) : dw, hd: kd ? kd.heightM : ornate ? 1.45 : 1.15, surf, kind: dm.kind, hoist: dm.hoist, standing: true, ...(plan.buurtKit ? { kitHoist: true } : {}) }, plan);
   }
 }
 

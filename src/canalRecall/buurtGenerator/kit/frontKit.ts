@@ -19,10 +19,18 @@ export interface BuurtKitFront {
   erkers: BuurtErker[];
   /** The series roof: an eaves-front pitched roof at this pitch over the 3DBAG rise (roofs from the front: the photo
    *  shows it; 3DBAG gives its height). Absent: the series' stated roof storey as the row path draws it. */
-  roof?: { pitchDeg: number; riseM: number };
+  roof?: { pitchDeg: number; riseM: number; roofHex?: string };
+  /** The series' windows are paired casements, one cell with a white mullion (round 3: Maasstraat). */
+  sash?: 'paired-transom';
+  /** The top storey is a ribbon of attic lights across the front, party wall to party wall (round 3: Maasstraat). */
+  ribbon?: true;
+  /** A flat series' low coping (erkers or ribbon on it) in the series brick, read as the parapet it is (round 3). */
+  copingHex?: string;
   /** The member's row neighbours (left/right as seen): a flat series' coping runs on into theirs (no hip). */
   joins?: { left?: boolean; right?: boolean };
 }
+/** The paired casements' white mullion, a share of the window's width (Maasstraat: about 0.5 m on a 1.6 m opening). */
+export const KIT_MULLION_SHARE = 0.3;
 /** A flat series with erkers draws its lid as a low coping behind the white cornice ledge (m), the erkers on it. */
 export const KIT_FLAT_RISE_M = 0.55;
 
@@ -92,9 +100,37 @@ export function buurtKitOf(v: unknown): BuurtKitFront | null {
   if (!Array.isArray(line) || line.length !== 2 || !pt(line[0]) || !pt(line[1])) return null;
   const erkers = (Array.isArray(k.erkers) ? k.erkers : []).filter((e): e is BuurtErker => !!e && typeof e === 'object'
     && [e.a0, e.a1, e.depthM, e.faceM].every(Number.isFinite) && e.a1 > e.a0 && e.depthM > 0);
-  const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM) } : undefined;
+  const hex = k.roof && typeof (k.roof as { roofHex?: unknown }).roofHex === 'string' && /^#[0-9a-f]{6}$/i.test((k.roof as { roofHex: string }).roofHex) ? (k.roof as { roofHex: string }).roofHex : null;
+  const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM), ...(hex ? { roofHex: hex } : {}) } : undefined;
+  const x = v as { sash?: unknown; ribbon?: unknown; copingHex?: unknown };
   const joins = k.joins && typeof k.joins === 'object' ? { ...(k.joins.left === true ? { left: true } : {}), ...(k.joins.right === true ? { right: true } : {}) } : {};
-  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(joins.left || joins.right ? { joins } : {}) };
+  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(joins.left || joins.right ? { joins } : {}) };
+}
+
+/**
+ * Erkers on the series' window cells (round 3): BAG draws the erker's plan, the series its bays. An erker takes as many
+ * whole cells as its base reaches into, centred where BAG puts it (a half erker at a party wall one cell), so no wall window pokes out beside it
+ * (Biesboschstraat 077118: BAG's 2.1 m base at 0.47-0.73 of a four-cell 7.95 m front; the photo shows the erker over the
+ * middle two axes, a window either side). Canted: the face is the base less twice the depth, at most 55 % of the base
+ * (photo: about 2.0 m on that 4 m base). A half erker at a party wall keeps that end. Overlapping results merge.
+ */
+export function erkersOnCells(erkers: readonly BuurtErker[], bays: number, widthM: number): BuurtErker[] {
+  if (!(bays >= 1) || !(widthM > 0)) return [...erkers];
+  const out: BuurtErker[] = [], cw = 1 / bays;
+  for (const k of erkers) {
+    // A whole erker takes the cells its base reaches into (a tenth of a cell over is a whole cell); a half one at a party
+    // wall takes one cell, its neighbour's half the other: two axes for the pair, as the photo's whole erkers.
+    const atL = k.a0 <= 0.005, atR = k.a1 >= 0.995, span = k.a1 - k.a0;
+    const n = atL || atR ? 1 : Math.min(bays, Math.max(1, Math.ceil(span / cw + 0.1)));
+    const start = atL ? 0 : atR ? bays - n : Math.max(0, Math.min(bays - n, Math.round((k.a0 + k.a1) / 2 / cw - n / 2)));
+    const a0 = +(start * cw).toFixed(4), a1 = +((start + n) * cw).toFixed(4), base = (a1 - a0) * widthM;
+    const canted = k.faceM < span * widthM - 0.15, half = atL || atR;
+    const faceM = +(canted ? Math.max(0.6, Math.min(base - (half ? 1 : 2) * k.depthM, base * (half ? 0.78 : 0.55))) : base).toFixed(2);
+    const prev = out[out.length - 1];
+    if (prev && a0 < prev.a1 - 1e-6) { prev.a1 = Math.max(prev.a1, a1); prev.faceM = Math.max(prev.faceM, faceM); continue; }
+    out.push({ a0, a1, depthM: k.depthM, faceM });
+  }
+  return out;
 }
 
 /**

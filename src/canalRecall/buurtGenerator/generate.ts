@@ -14,7 +14,7 @@ import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
 import { districtRows, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
-import type { BuurtKitFront } from './kit/frontKit.ts';
+import { erkersOnCells, type BuurtKitFront } from './kit/frontKit.ts';
 
 export interface DistrictDesign {
   groundM: number;
@@ -27,13 +27,18 @@ export interface DistrictDesign {
   sills: boolean;
   cornice: RowCorniceKind;
   crown: RowCrownKind;
-  wall: { material: RowWallMaterial; family: JudgedFamily };
+  /** `hex`: the brick measured from the district's cached panoramas (calibrated through the renderer); absent, the family's varied tone. */
+  wall: { material: RowWallMaterial; family: JudgedFamily; hex?: string; evidence?: string };
   roofStorey: RowRoofStorey;
   extras: string[];
 }
-export interface DistrictFamily { id: string; storeys: number; label: string; design?: Partial<DistrictDesign> }
+/** What a family's rows show that the house-rows vocabulary has no field for, drawn by the buurt kit (frontKit.ts), with the photo that states it. */
+export interface DistrictFamilyKit { ribbon?: { evidence: string }; sash?: { value: 'paired-transom'; evidence: string } }
+export interface DistrictFamily { id: string; storeys: number; label: string; design?: Partial<DistrictDesign>; kit?: DistrictFamilyKit }
 /** The district's pitched roof: a series whose median 3DBAG rise (ridge - eaves) is at least `minRiseM` draws it. */
-export interface DistrictPitchedRoof { minRiseM: number; maxRiseM: number; pitchDeg: number; material: 'tile' | 'slate'; dormersPerFront: number; dormerKind: 'plain' | 'gabled'; hoist: boolean; evidence: string }
+export interface DistrictPitchedRoof { minRiseM: number; maxRiseM: number; pitchDeg: number; material: 'tile' | 'slate'; dormersPerFront: number; dormerKind: 'plain' | 'gabled'; hoist: boolean; evidence: string;
+  /** The tiles' tone measured on the cached panorama (round 3): the kit's roof hex. */
+  roofHex?: string; roofHexEvidence?: string }
 export interface DistrictLibrary {
   district: string;
   title: string;
@@ -89,7 +94,7 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
     storeys: f(fam.storeys, `${s.eavesM} m line over a ${d.groundM} m ground and ${d.storeyM} m storeys`),
     bays: f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes`),
     windows: f(d.windows), heads: f<RowHeads | RowHeads[]>(d.heads), whiteFrames: f(d.whiteFrames), sills: f(d.sills),
-    wall: f({ material: d.wall.material, family: d.wall.family, hex: variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }),
+    wall: f({ material: d.wall.material, family: d.wall.family, hex: d.wall.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, d.wall.hex ? `measured brick ${d.wall.hex} (${d.wall.evidence ?? 'district photos'})` : ''),
     roofStorey: riseM !== null && lib.pitched
       ? f<RowRoofStorey>({ kind: 'mansard', material: lib.pitched.material, dormersPerFront: lib.pitched.dormersPerFront, dormerKind: lib.pitched.dormerKind, ...(lib.pitched.hoist ? { hoist: true } : {}) },
         `pitched roof: median 3DBAG rise ${riseM} m >= ${lib.pitched.minRiseM} m (${lib.pitched.evidence}); drawn as the row mansard at ${lib.pitched.pitchDeg} deg under buurtKit`)
@@ -157,13 +162,21 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   const kits = new Map<string, BuurtKitFront>();
   for (const r of res.rows) for (const s of r.series) {
     const rise = pitchedRiseOf(lib, s);
+    const fam = s.eavesM === null ? null : familyFor(lib, storeysFor(s.eavesM, lib.design));
+    const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b), bays = baysFor(widths[widths.length >> 1], lib.design);
+    const roofHex = lib.pitched?.roofHex;
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
       if (!drawn.has(pid)) continue;
       fronts[pid] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
       const r6 = (q: readonly [number, number]): [number, number] => [+q[0].toFixed(8), +q[1].toFixed(8)];
       const i = r.members.indexOf(m), joins = { ...(i > 0 && drawn.has(pandNumber(r.members[i - 1].pand.id)) ? { left: true } : {}), ...(i < r.members.length - 1 && drawn.has(pandNumber(r.members[i + 1].pand.id)) ? { right: true } : {}) };
-      kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers: m.front.erkers, ...(rise !== null && lib.pitched ? { roof: { pitchDeg: lib.pitched.pitchDeg, riseM: rise } } : {}), ...(joins.left || joins.right ? { joins } : {}) });
+      // Erkers on the series' cells (frontKit.ts erkersOnCells): the series draws `bays` cells on every member.
+      kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers: erkersOnCells(m.front.erkers, bays, m.front.lengthM),
+        ...(rise !== null && lib.pitched ? { roof: { pitchDeg: lib.pitched.pitchDeg, riseM: rise, ...(roofHex ? { roofHex } : {}) } } : {}),
+        ...(fam?.kit?.sash ? { sash: fam.kit.sash.value } : {}), ...(fam?.kit?.ribbon ? { ribbon: true as const } : {}),
+        ...(rise === null && (fam?.kit?.ribbon || m.front.erkers.length) && (fam?.design?.wall?.hex ?? lib.design.wall.hex) ? { copingHex: fam?.design?.wall?.hex ?? lib.design.wall.hex } : {}),
+        ...(joins.left || joins.right ? { joins } : {}) });
     }
   }
   const families: GenResult['families'] = {};

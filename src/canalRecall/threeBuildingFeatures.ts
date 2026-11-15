@@ -143,9 +143,10 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
 /** House rows: a feature's `rowDress` (houseLine/rowFront.ts rowDressOf), validated. */
 type RowSide = 'left' | 'right' | 'centre';
 const rowSideOf = (v: unknown): RowSide | null => v === 'left' || v === 'right' || v === 'centre' ? v : null;
-function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false }; door?: { side: RowSide; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; shopFront?: { frameHex: string; side: RowSide } } | null {
+function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false }; door?: { side: RowSide; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; mullionShare?: number; shopFront?: { frameHex: string; side: RowSide } } | null {
   if (!v || typeof v !== 'object') return null;
   const ws = (v as { windowShare?: unknown }).windowShare, windowShare = typeof ws === 'number' && ws > 0.3 && ws < 0.95 ? { windowShare: ws } : {};
+  const ms = (v as { mullionShare?: unknown }).mullionShare, mullionShare = typeof ms === 'number' && ms > 0 && ms < 0.6 ? { mullionShare: ms } : {};
   const d = v as { cornice?: unknown; heads?: unknown; extras?: unknown; stoop?: { side?: unknown }; door?: { side?: unknown; index?: unknown; bays?: unknown }; balcony?: { storeys?: unknown; axis?: unknown } };
   const doorSide = rowSideOf(d.door?.side), door = doorSide ? { side: doorSide, ...(typeof d.door?.index === 'number' && typeof d.door?.bays === 'number' && d.door.bays > 0 ? { index: d.door.index, bays: d.door.bays } : {}) } : null;
   const balcony = d.balcony && Array.isArray(d.balcony.storeys) && d.balcony.storeys.every(k => typeof k === 'number') ? { storeys: d.balcony.storeys as number[], axis: d.balcony.axis === 'all' ? 'all' as const : 'centre' as const } : null;
@@ -155,7 +156,7 @@ function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; ext
   const side: 'left' | 'right' | 'centre' | null = d.stoop && (d.stoop.side === 'left' || d.stoop.side === 'right' || d.stoop.side === 'centre') ? d.stoop.side : null;
   const heads = Array.isArray(d.heads) ? (d.heads as RowHeadsDraw[]).filter(h => h && Number.isFinite(h.a0) && Number.isFinite(h.a1) && typeof h.dressing === 'string') : [];
   const extras = Array.isArray(d.extras) ? (d.extras as unknown[]).filter((x): x is string => typeof x === 'string') : [];
-  const out = { ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side, ...steps } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}), ...windowShare, ...shopFront };
+  const out = { ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side, ...steps } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}), ...windowShare, ...mullionShare, ...shopFront };
   return Object.keys(out).length ? out : null;
 }
 
@@ -344,8 +345,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       if (measured?.cell && measured.cell !== 'flat') plan = { ...plan, material: measured.cell };
       // Where dormers are a choice (not a mansard's or a school roof's own), 3DBAG's roof parts decide, not the dice.
       if (typeof p.roofDormer === 'boolean' && (plan.kind === 'pitched' || plan.kind === 'hipped' || plan.kind === 'gable' || plan.kind === 'halfHipped')) plan = { ...plan, dormers: p.roofDormer };
-      // A row roof is its series' slate (roofMesh.ts ROW_SLATE_TONE), never a per-pand measured stamp.
-      building.roof = { plan, roofHex: measured?.cell && measured.cell !== 'flat' && !plan.rowDormers ? measured.hex : roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
+      // A row roof is its series' slate (roofMesh.ts ROW_SLATE_TONE), never a per-pand measured stamp; a buurt kit row its
+      // series' tile as the panorama measured it (buurtGenerator/kit/roofKit.ts roofHex).
+      building.roof = { plan, roofHex: plan.buurtKit?.roofHex ? (cellSetOf(look) === 'procedural' ? plan.buurtKit.roofHex : lookHex(plan.buurtKit.roofHex, look)) : measured?.cell && measured.cell !== 'flat' && !plan.rowDormers ? measured.hex : roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
         layers: { slope: roofBase + (plan.material === 'tile' ? 0 : 1), plain, dormer: roofBase + 2 } };
       if(plan.repeatedTerrace){
         // One observed material family also owns exposed returns and roof-side closures.

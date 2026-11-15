@@ -279,3 +279,74 @@ pitched roof). An erker is about 150-200 triangles.
    - wall windows hidden behind an erker still poke out at its sides.
 5. **Dormer size:** the photo's dormers are wider and set higher on the slope than the row dormer's 1.0 m cap.
 6. **Brick soldier course** over the ground storey; brick tone a shade darker in the photos.
+
+## Round 3 (2026-11-15): roof, erkers, Maasstraat, dormers, portiek doors
+
+Both round-2 sheets went to David as a direction check (#390); nothing is published. Everything below stays behind
+`buurtKit` and the generator's own record field; published Kinkerstraat 86-110 previews are still the same bytes with
+the flag off and on (0363100012165799 `6a4cdff9…`, 0363100012158180 `207d7ac7…`, unchanged from round 2).
+
+- **Roof (checked against 3DBAG, tone from the photo).**
+  - 3DBAG ridge minus eaves is 5.0 m on every Biesboschstraat member, so the 6 m cap does not bind.
+  - The 52° pitch was too shallow. From the camera (10.3 m off the front, 2.44 m up), the photo's roof top edge
+    projects at 14.34 m. A ridge at 17.4 m projects there only if the slope reaches it about 2.65 m behind the
+    cornice, which is 62°. The district now states 62°.
+  - The elevation still draws the true 5 m rise. The street camera foreshortens that rise to about 1.9 m, which is why
+    the photo's roof looks lower than the elevation's.
+  - Tile tone: the median of the photo's tile pixels is `#a15a30` (`pitched.roofHex`, carried by the kit into
+    `threeBuildingFeatures` as the row roof hex). It renders at about `#a85a2b`, against the period table's `#c0603f`.
+- **Erkers sized on the series' cells** (`frontKit.ts erkersOnCells`):
+  - A whole erker takes every cell its BAG base reaches into (a tenth of a cell over the edge counts), centred where
+    BAG puts it. A half erker at a party wall takes one cell.
+  - Canted face = base less twice the depth, capped at 55 % of the base. On Biesboschstraat 077118 that gives a 4 m
+    base and a 2.19 m face (photo: about 2.0 m), with one wall window either side.
+  - No wall window pokes out beside an erker any more.
+  - Each face draws one casement per ~0.9 m, with white mullions.
+  - District counts: 951 erkers; 753 one cell wide, 146 two, 21 three.
+- **Maasstraat (rivieren-five family kit, Maasstraat photo as the evidence):**
+  - Attic ribbon (`roofKit.ts drawRibbon`): a brick plate over the top storey and one white-framed band of lights on
+    it, run through joined party walls.
+  - Paired casements: `PLAN_ZUID_PAIRED` (flag-only preset). In the painter it is `mullionShare`. In the row's 3D
+    glazing it is `rowDress.mullionShare`: a white post 30 % of the window wide, full height.
+  - The flat coping under the ribbon takes the series brick (`copingHex`), so it reads as the parapet.
+  - 511 pands carry the ribbon and the pairs.
+- **Brick:** one measured district hex, `#5b504a`. It is each photo's brick median (Biesboschstraat `#534842`,
+  Maasstraat `#48413b`) divided by the renderer's own shift on that sheet, then averaged. It renders at about
+  `#55483f` on Biesboschstraat. The measured wall pool's wide draw agrees (`#534946`, `#584e4a`, `#544b45` near the
+  three rows).
+- **Dormers:** 1.6 m wide, 1.45 m face, set 60 % up the street band (`KIT_DORMER`), with the hoist beam.
+- **Portiek doors:** `door: 'portiek-pair'` on the Plan Zuid presets. The painter (`portiekPair`) draws two leaves
+  under one glazed transom in a white frame, 200 px of the 520 px door cell. `variantKey` appends `|portiek-pair` only
+  when the field is set, and a test pins the pre-round-3 key string literally.
+
+### Sheets (round 3)
+
+| Street | Sheet | What it shows |
+|---|---|---|
+| Biesboschstraat | `artifacts/buurt-generators/rivierenbuurt/sheets/biesboschstraat-069135-069135/sheet.jpg` | Wider erkers, muted tiles, larger dormers, portiek doors, darker brick |
+| Maasstraat | `artifacts/buurt-generators/rivierenbuurt/sheets/maasstraat-129732-129732/sheet.jpg` | Ribbon, pairs, brick coping, portiek doors |
+| Rooseveltlaan | `artifacts/buurt-generators/rivierenbuurt/sheets/rooseveltlaan-146491-146491/sheet.jpg` | Same four-storey family, 13 members, panorama TMX7316010203-002477_pano_0002_000865 (2022-03-24) |
+
+Rooseveltlaan does not fully hold:
+- The photo's brick is orange-red in spring sun, while the measured pool around it is brown. It is not held on colour
+  (wall colour by judgement).
+- Its fronts end in broad white eaves soffits rather than a cornice.
+- The photo crops at about 15.5 m, so the pitched roof is neither confirmed nor ruled out there.
+- Two of its row records break into hipped roof ends mid-row (lane R's row joins).
+
+### Cost (front-cost.ts, rows + kit, round 3)
+
+| Row | Round 2 | Round 3 |
+|---|---:|---:|
+| Biesboschstraat (10 pands) | 6,257 tris, 631 KiB | 6,113 tris, 616 KiB |
+| Maasstraat (7 pands) | 5,078 tris, 516 KiB | 5,342 tris, 543 KiB |
+| Rooseveltlaan (13 pands; 4,301 tris / 422 KiB today) | - | 9,343 tris, 938 KiB |
+
+### Kit gaps still open
+
+1. Broad flat eaves with white soffits (Rooseveltlaan); `eaves-overhang` stays in `notDrawn`.
+2. Small-pane toplights in casements and erkers (`toplight-panes`).
+3. Pair spacing: Maasstraat's pairs stand wider than a cell (single, pair, single per pand). The kit draws a pair in
+   every cell.
+4. The photo-camera view of the roof: the elevation shows the true rise, not the foreshortened one.
+5. Brick soldier course over the ground storey.

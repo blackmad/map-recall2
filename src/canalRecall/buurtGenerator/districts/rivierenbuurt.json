@@ -39,7 +39,9 @@
     "crown": "cornice",
     "wall": {
       "material": "brick",
-      "family": "brown-brick"
+      "family": "brown-brick",
+      "hex": "#5b504a",
+      "evidence": "Biesboschstraat (#534842) and Maasstraat (#48413b) panorama brick medians, each divided by the renderer's own shift on that sheet (series #70594d drew #6e5244, #71594b drew #55423b), averaged (round 3)"
     },
     "roofStorey": {
       "kind": "none",
@@ -61,27 +63,34 @@
     {
       "id": "rivieren-five",
       "storeys": 5,
-      "label": "five-storey Plan Zuid block (eaves 13.6-16.6 m; Rijnstraat, Churchilllaan)"
+      "label": "five-storey Plan Zuid block (eaves 13.6-16.6 m; Rijnstraat, Churchilllaan)",
+      "kit": {
+        "ribbon": {
+          "evidence": "Maasstraat panorama TMX7316010203-002473_pano_0000_000333 (2022-03-23): the top storey is one white-framed band of low attic lights through the party walls, brick above and below"
+        },
+        "sash": {
+          "value": "paired-transom",
+          "evidence": "Maasstraat panorama (2022-03-23): the upper storeys' casements stand in pairs, two lights parted by a broad white mullion, one pair per axis"
+        }
+      }
     }
   ],
   "pitched": {
     "minRiseM": 2.5,
     "maxRiseM": 6,
-    "pitchDeg": 52,
+    "pitchDeg": 62,
     "material": "tile",
     "dormersPerFront": 1,
     "dormerKind": "plain",
     "hoist": true,
-    "evidence": "Biesboschstraat panorama TMX7316010203-001034_pano_0000_001940 (2019-01-03): red tile roof behind the cornice, one white-topped box dormer per pand with a hoist beam; 3DBAG ridge-eaves is bimodal over the district's series (1,193 pands under 2 m, 1,243 at 3 m and over)"
+    "evidence": "Biesboschstraat panorama TMX7316010203-001034_pano_0000_001940 (2019-01-03): red tile roof behind the cornice, one white-topped box dormer per pand with a hoist beam; 3DBAG ridge-eaves is bimodal over the district's series (1,193 pands under 2 m, 1,243 at 3 m and over); round 3: the photo roof top edge projects at 14.34 m from the camera 10.3 m off the front at 2.44 m, which puts the 3DBAG ridge (eaves + 5.0 m, every Biesboschstraat member; the 6 m cap does not bind) about 2.65 m behind the cornice: a 62 deg street slope, not 52",
+    "roofHex": "#a15a30",
+    "roofHexEvidence": "median of the tile pixels on the Biesboschstraat panorama TMX7316010203-001034_pano_0000_001940 rectified on the row line (round 3): a muted red, not the period tile table (#c0603f)"
   },
   "notDrawn": [
     {
       "component": "roof",
       "what": "a series under the pitched rise (median 3DBAG rise < 2.5 m) draws a flat lid at the series line; its low set-back roof is not drawn"
-    },
-    {
-      "component": "portiek-doors",
-      "what": "paired house doors under one transom at a party wall: the renderer's ground cell draws one door"
     },
     {
       "component": "eaves-overhang",
@@ -90,14 +99,6 @@
     {
       "component": "toplight-panes",
       "what": "the small-pane toplight over two casements: the painter's transom is one pane"
-    },
-    {
-      "component": "attic-ribbon",
-      "what": "a top storey of white lights in one band across the party walls (Maasstraat, Rijnstraat): the row draws its storey grid"
-    },
-    {
-      "component": "paired-windows",
-      "what": "two casements with a pier between them as one cell: the Plan Zuid preset draws evenly spaced single lights"
     }
   ]
 }
