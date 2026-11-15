@@ -34,7 +34,8 @@ export async function loadAtlas(look: 'procedural' | Look = 'photo', size = 256)
   const t0 = performance.now();
   const hash = await painterHash();
   const { layers, total } = lookAtlasLayers(look, false);
-  const file = path.join(ATLAS_DIR, `atlas-${look}-${size}-${hash}.bin`);
+  // The layer count joins the key: a flag that appends presets (newbuildFamily, buurtKit) paints another atlas.
+  const file = path.join(ATLAS_DIR, `atlas-${look}-${size}-${hash}-L${total}.bin`);
   if (fs.existsSync(file)) {
     const buf = fs.readFileSync(file);
     const atlas = lookAtlasArraysOf(new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength), size, layers, total);
