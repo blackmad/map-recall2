@@ -4,7 +4,8 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import type {Frame} from './nearbar-kit';
 import {setSink} from './nearbar-kit';
-import {arcLettering, balusterCentres, balustradeRun, festoonPanel, swagOutline, clipRingByLine, lettering, clipRingByY, cutFrontWalls, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering, wallFacingXZ} from './venue-kit';
+import {arcLettering, balusterCentres, balustradeRun, festoonPanel, swagOutline, clipRingByLine, lettering, clipRingByY, cutFrontWalls, insidePoly, modillionCentres, pedimentOutline, pedimentSolid, profileGeometry, segDist, TriSink, verticalLettering, wallFacingXZ, concaveGable, concaveGableOutline, bulletDomeProfile, roundedTowerCap} from './venue-kit';
+import {signedArea} from './neck-gable';
 import {addShell} from './worship-shell';
 
 /** BuildingTools that only collects geometries per colour. */
@@ -73,6 +74,50 @@ test('verticalLettering reads upward and stays within its column', () => {
   const bb = boxOf(got.map(x => x.g));
   assert.ok(bb.min.y >= 5 - 1e-9 && Math.abs(bb.max.y - (5 + width)) < px + 1e-5, 'text runs up the wall over its width');
   assert.ok(bb.max.x - bb.min.x <= 7 * px + 1e-5, 'glyph height lies across the column');
+});
+
+test('verticalLettering down reads top to bottom, mirrors up, and the default is unchanged', () => {
+  setSink(0);
+  const px = 0.05;
+  const up = collector(), down = collector();
+  const w = verticalLettering(up.b, F, '100', 2, 5, px, 0.02, 'white');
+  const w2 = verticalLettering(down.b, F, '100', 2, 5, px, 0.02, 'white', 0, 'down');
+  assert.equal(w, w2);
+  const bu = boxOf(up.got.map(x => x.g)), bd = boxOf(down.got.map(x => x.g));
+  assert.ok(bd.max.y <= 5 + 1e-9 && Math.abs(bd.min.y - (5 - w)) < px + 1e-5, 'text runs down the wall from y0');
+  assert.ok(Math.abs((bu.max.x + bu.min.x) / 2 + (bd.max.x + bd.min.x) / 2 - 4) < 1e-6, 'columns mirror about t');
+  // the first glyph ('1') sits at the top when reading down, at the bottom when reading up
+  const first = (g: typeof down.got, top: boolean) => g.map(x => boxOf([x.g])).sort((a, c) => top ? c.max.y - a.max.y : a.min.y - c.min.y)[0];
+  assert.ok(first(down.got, true).max.y > 5 - 7 * px, 'reading down starts at the top');
+  assert.ok(first(up.got, false).min.y < 5 + 7 * px, 'reading up starts at the bottom');
+  // the default call draws exactly what the explicit 'up' draws
+  const ex = collector();
+  verticalLettering(ex.b, F, '100', 2, 5, px, 0.02, 'white', 0, 'up');
+  assert.deepEqual(ex.got.map(x => Array.from(x.g.getAttribute('position').array)), up.got.map(x => Array.from(x.g.getAttribute('position').array)));
+});
+
+test('concaveGableOutline is symmetric, counter-clockwise, concave between shoulder and neck', () => {
+  const g = {half: 1.3, shoulder: 0.3, neckHalf: 0.3, neckY: 2.1, apexY: 2.7};
+  const r = concaveGableOutline(g);
+  assert.ok(signedArea(r) > 0, 'counter-clockwise');
+  for (const [x, y] of r) assert.ok(r.some(([x2, y2]) => Math.abs(x2 + x) < 1e-9 && Math.abs(y2 - y) < 1e-9), 'mirror point exists');
+  assert.ok(Math.max(...r.map(p => p[1])) === g.apexY && Math.max(...r.map(p => Math.abs(p[0]))) === g.half);
+  // concave: the curve's midpoint lies below the straight line from shoulder to neck
+  const right = r.filter(p => p[0] > 0 && p[1] >= g.shoulder && p[1] <= g.neckY);
+  const mid = right[Math.floor(right.length / 2)];
+  const lineY = g.shoulder + (g.neckY - g.shoulder) * (g.half - mid[0]) / (g.half - g.neckHalf);
+  assert.ok(mid[1] < lineY, 'curve sags below the chord');
+});
+
+test('concaveGable keeps the body behind the wall plane and the rim inside the outline, proud of it', () => {
+  setSink(0);
+  const {b, got} = collector();
+  const g = {half: 1.3, shoulder: 0.3, neckHalf: 0.3, neckY: 2.1, apexY: 2.7};
+  concaveGable(b, F, 10, 12, g, {depth: 1.5, wall: 'brick', trim: 'sandstone', rim: 0.14, rimD: 0.08});
+  const body = boxOf(got.filter(x => x.c === 'brick').map(x => x.g)), rim = boxOf(got.filter(x => x.c === 'sandstone').map(x => x.g));
+  assert.ok(Math.abs(body.max.z) < 1e-6 && Math.abs(body.min.z + 1.5) < 1e-6, 'body from -depth to the wall plane');
+  assert.ok(Math.abs(rim.max.z - 0.08) < 1e-6, 'rim stands rimD proud');
+  assert.ok(rim.min.x >= 10 - 1.3 - 0.1 && rim.max.x <= 10 + 1.3 + 0.1 && rim.max.y <= 12 + 2.7 + 0.1 && rim.min.y >= 12 - 0.07, 'rim within the outline (half a rim of overrun at the joints)');
 });
 
 test('profileGeometry extrudes outwards with outward-facing windings', () => {
@@ -226,4 +271,24 @@ test('wallFacingXZ points away from the block whatever the winding; addShell wal
   addShell(coloured.b, {surfaces, nativeRing: []}, {wall: 'brick', roof: 'slate', wallFor: s => (wallFacingXZ(s, [0, 0])[1] > 0.5 ? 'white' : 'brick')});
   assert.deepEqual(plain.got.map(g => g.c), ['brick', 'brick', 'slate']);
   assert.deepEqual(coloured.got.map(g => g.c), ['white', 'brick', 'slate']);
+});
+
+test('bulletDomeProfile rises from r to a point, narrowing monotonically, fuller than a cone', () => {
+  const p = bulletDomeProfile(2, 4);
+  assert.deepEqual(p[0], [2, 0]);
+  assert.deepEqual(p[p.length - 1], [0, 4]);
+  for (let i = 1; i < p.length; i++) { assert.ok(p[i][0] <= p[i - 1][0] + 1e-12); assert.ok(p[i][1] > p[i - 1][1]); }
+  for (const [r, h] of p.slice(1, -1)) assert.ok(r > 2 * (1 - h / 4), 'outside the cone');
+});
+
+test('roundedTowerCap stacks drum, cornice, dome and ball on its axis', () => {
+  const {b, got} = collector();
+  const cap = {drumR: 2, drumH: 1.4, sides: 8, corniceR: 2.25, corniceH: 0.25, domeR: 2.1, domeH: 4.2, ballR: 0.35, spikeH: 0.5};
+  const top = roundedTowerCap(b, F, 10, -2, 30, cap, {drum: 'brick', trim: 'stone', dome: 'slate', ball: 'gold'});
+  const all = boxOf(got.map(x => x.g));
+  assert.ok(Math.abs(all.min.y - 30) < 1e-4 && Math.abs(all.max.y - top) < 1e-4);
+  assert.ok(Math.abs((all.min.x + all.max.x) / 2 - 10) < 1e-4 && Math.abs((all.min.z + all.max.z) / 2 + 2) < 1e-4, 'centred on (t, out)');
+  const dome = boxOf(got.filter(x => x.c === 'slate').map(x => x.g));
+  assert.ok(Math.abs(dome.min.y - 31.65) < 1e-4 && Math.abs(dome.max.y - 35.85) < 1e-4);
+  assert.ok(all.max.x - all.min.x <= 2 * 2.25 + 1e-4, 'nothing wider than the cornice');
 });

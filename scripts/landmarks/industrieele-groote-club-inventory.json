@@ -27,14 +27,14 @@
     {
      "id": "d-tower",
      "kind": "other",
-     "where": "corner-less tower right of the gable (s 21.7-26.5): brick shaft with three-light stone-mullioned windows on five storeys, a corbelled set-back at 24.4 m, tall louvred lights in the top and a steep cap to 42.6 m",
+     "where": "corner-less tower right of the gable (s 21.7-26.5): brick shaft with three-light stone-mullioned windows on five storeys, a corbelled set-back at 24.4 m, a brick lantern stage with tall louvred lights, a stone cornice, a short drum and a tall rounded slate dome with a gilt ball",
      "approxSizeM": [
       4.8,
       42.6
      ],
      "plan": "modelled",
      "seenIn": "TMX7316010203-002031_pano_0001_001692",
-     "how": "3DBAG LoD2.2 cap and top (brick) above 24.4 m; the shaft below drawn as a cut section with 3 x 5 cross windows, arched top row, stone bands, corbel course and dark slabs for the louvred lights"
+     "how": "the shaft below 28 m drawn as a cut section with 3 x 5 cross windows, arched top row, stone bands and corbel course; above it (3DBAG reads the top as a pyramid to 42.6 m, dropped) the lantern stage 28-34.4 m with three arched louvred lights a side, stone cornice, and venue-kit roundedTowerCap: octagonal drum, bullet dome 4.6 m tall on a 4.2 m base, gilt ball and spike"
     },
     {
      "id": "d-gable",

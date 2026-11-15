@@ -66,6 +66,16 @@
       "version": "26e3479ae1557d11",
       "dateSource": "asset-update"
     },
+    "afas-live.lod1": {
+      "updatedAt": "2026-11-15T08:01:44.704Z",
+      "version": "cb31c302cc1c23a9",
+      "dateSource": "asset-update"
+    },
+    "afas-live.lod2": {
+      "updatedAt": "2026-11-15T08:01:44.705Z",
+      "version": "649101cebc466ed3",
+      "dateSource": "asset-update"
+    },
     "afrikahuis": {
       "updatedAt": "2026-10-20T10:15:08.929Z",
       "version": "6290ec8a232cd883",
@@ -462,7 +472,7 @@
       "dateSource": "asset-update"
     },
     "asscher-diamantslijperij": {
-      "updatedAt": "2026-11-14T06:59:45.677Z",
+      "updatedAt": "2026-11-15T09:07:24.105Z",
       "version": "1bc0ef84380d9fef",
       "dateSource": "asset-update"
     },
@@ -1287,8 +1297,8 @@
       "dateSource": "asset-update"
     },
     "crea": {
-      "updatedAt": "2026-11-14T15:06:08.421Z",
-      "version": "aafa3c0e296e9ed0",
+      "updatedAt": "2026-11-15T08:30:31.115Z",
+      "version": "91fec7525e9b5de9",
       "dateSource": "asset-update"
     },
     "crea.lod1": {
@@ -1302,8 +1312,18 @@
       "dateSource": "asset-update"
     },
     "cristofori": {
-      "updatedAt": "2026-11-14T16:22:59.462Z",
+      "updatedAt": "2026-11-15T09:07:24.666Z",
       "version": "cb3733a0c3c11244",
+      "dateSource": "asset-update"
+    },
+    "cristofori.lod1": {
+      "updatedAt": "2026-11-15T08:01:44.706Z",
+      "version": "81c77fb10095811c",
+      "dateSource": "asset-update"
+    },
+    "cristofori.lod2": {
+      "updatedAt": "2026-11-15T08:01:44.706Z",
+      "version": "82ffb9bef8ddeb82",
       "dateSource": "asset-update"
     },
     "cromhouthuizen": {
@@ -1769,6 +1789,21 @@
     "delamar.lod2": {
       "updatedAt": "2026-11-14T14:28:08.630Z",
       "version": "8dec29350cde4a10",
+      "dateSource": "asset-update"
+    },
+    "diamant-museum": {
+      "updatedAt": "2026-11-15T09:11:05.533Z",
+      "version": "482d3e0478526be4",
+      "dateSource": "asset-update"
+    },
+    "diamant-museum.lod1": {
+      "updatedAt": "2026-11-15T09:10:17.364Z",
+      "version": "5c7cdf83d23e6b45",
+      "dateSource": "asset-update"
+    },
+    "diamant-museum.lod2": {
+      "updatedAt": "2026-11-15T09:10:17.364Z",
+      "version": "b5195e7c1ae72874",
       "dateSource": "asset-update"
     },
     "doelen-hotel": {
@@ -3247,8 +3282,8 @@
       "dateSource": "asset-update"
     },
     "industrieele-groote-club": {
-      "updatedAt": "2026-11-14T07:46:34.458Z",
-      "version": "8814ac9fd5b12e8a",
+      "updatedAt": "2026-11-15T08:53:49.395Z",
+      "version": "55d60746e50d2bff",
       "dateSource": "asset-update"
     },
     "industrieele-groote-club.lod1": {
@@ -4262,7 +4297,7 @@
       "dateSource": "asset-update"
     },
     "morgan-mees": {
-      "updatedAt": "2026-11-14T08:24:50.254Z",
+      "updatedAt": "2026-11-15T09:07:23.885Z",
       "version": "67fd98a5064e4938",
       "dateSource": "asset-update"
     },
@@ -5077,8 +5112,8 @@
       "dateSource": "asset-update"
     },
     "perdu": {
-      "updatedAt": "2026-11-14T15:06:08.333Z",
-      "version": "ed171ce8059179f7",
+      "updatedAt": "2026-11-15T08:54:38.063Z",
+      "version": "94166a5620444b41",
       "dateSource": "asset-update"
     },
     "perdu.lod1": {
@@ -5549,6 +5584,16 @@
     "roode-bioscoop": {
       "updatedAt": "2026-11-14T16:19:33.103Z",
       "version": "cf7510b56637c7c8",
+      "dateSource": "asset-update"
+    },
+    "roode-bioscoop.lod1": {
+      "updatedAt": "2026-11-15T08:01:44.713Z",
+      "version": "e713e9142188533c",
+      "dateSource": "asset-update"
+    },
+    "roode-bioscoop.lod2": {
+      "updatedAt": "2026-11-15T08:01:44.713Z",
+      "version": "bb061f3879d6f711",
       "dateSource": "asset-update"
     },
     "royal-theater-carre": {
@@ -7087,8 +7132,18 @@
       "dateSource": "asset-update"
     },
     "zaal-100": {
-      "updatedAt": "2026-11-14T16:53:09.022Z",
-      "version": "902e363b33b3bfa9",
+      "updatedAt": "2026-11-15T08:55:44.662Z",
+      "version": "0ae481bf5e58419a",
+      "dateSource": "asset-update"
+    },
+    "zaal-100.lod1": {
+      "updatedAt": "2026-11-15T08:01:44.724Z",
+      "version": "31f3a9a31bee5120",
+      "dateSource": "asset-update"
+    },
+    "zaal-100.lod2": {
+      "updatedAt": "2026-11-15T08:01:44.724Z",
+      "version": "fe2b35959563486d",
       "dateSource": "asset-update"
     },
     "zevenlandenhuizen": {

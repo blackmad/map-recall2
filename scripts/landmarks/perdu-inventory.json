@@ -110,14 +110,14 @@
     {
      "id": "pe-dormers",
      "kind": "other",
-     "where": "three dormers in the tiled roof: box dormers over the wings, a pointed one over the middle bay",
+     "where": "two box dormers in the tiled roof over the wings and, over the middle bay, a dormer gable on the cornice: concave sides curving in from short shoulders to a narrow neck and a point, a light stone edge, a white-framed window and a hoist beam under the point (b_20250108_1041_Track19_Sphere_00047, TMX7316010203-002999_pano_0000_000044)",
      "approxSizeM": [
       1.6,
       1.6
      ],
      "plan": "simplified",
      "seenIn": "b_20250108_1041_Track19_Sphere_00047",
-     "how": "brick box dormers with white window frames, flat tops; the middle one with a brick gable point and two roof planes"
+     "how": "brick box dormers with white window frames, flat tops; the middle gable with venue-kit concaveGable (2.6 m base, neck 0.6 m at 2.1 m, point 2.7 m, sandstone rim), its body running 2.2 m back into the roof, white window, dark hoist beam"
     },
     {
      "id": "pe-roof",

@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+## Landmarks: Diamant Museum, and four venue fixes judged blind (2026-11-15)
+
+- New: Diamant Museum, Paulus Potterstraat 8 (pand 0363100012076129, 1899): bespoke builder `scripts/landmarks/diamant-museum-*`, 15,011 tris, lod2 298. The first read flagged orange brick (#c8603e); after a fix to #8c6a5a the same reviewer passed it. The west flank is blank because hedges hide it in every panorama. The landmark factory queue had nothing else buildable; Bags and Purses (Herengracht 571–573) is three canal fronts and belongs to house rows. Lane lane/landmarks-new-20261115.
+- Venue fixes, each judged by a fresh opus reviewer on a blind shuffled pair (photo vs before/after at the same rule-10 pose). Won: Perdu concave gable with rim and hoist beam; Zaal 100 red-brick arch rings, 4th dormer, top-down banner; IGC rounded cap (lantern, drum, dome, ball) replacing the 3DBAG pyramid; CREA grey-brown brick. Lost and reverted: Cristofori white doors, Morgan & Mees cream, Asscher paler brick. DeLaMar fascia dropped (2017-only evidence). Kit: `verticalLettering(dir)`, `concaveGable`, `roundedTowerCap`. Lane lane/landmark-fixes-20261115.
+- Why blind A/B: on 2026-11-15 the integrator's own read of the belt rows sheet ("clearly better") was wrong per David; every lane now hands back only changes that win a blind pair.
+
 ## Bridges hold their level end to end: `wayEnds` (2026-11-15)
 
 - After `bankClimb`, four crossings still dipped more than 1 m. Under viaducts the elevation model is filtered over tens of metres into a gentle sag, and a 4 % bank climb never starts up it. Haarlemmer Houttuinen 7376117 also sat under the flat register footprint BRU0095, which lifts nothing.

@@ -82456,8 +82456,8 @@
   },
   "bagYear": 1965,
   "materialOverrides": {
-   "brick": "#5e4033",
-   "red": "#6a3f33",
+   "brick": "#5f4e46",
+   "red": "#63473e",
    "white": "#e9e7df",
    "stone": "#c4c0b6",
    "concrete": "#b9b6ad",
@@ -83055,7 +83055,8 @@
    "dark": "#26292c",
    "glass": "#3f4c55",
    "frame": "#e6e3da",
-   "slate": "#4b4f57"
+   "slate": "#4b4f57",
+   "red": "#a24a36"
   },
   "attribution": {
    "title": "Zaal 100, De Wittenstraat 100, Amsterdam: music and theatre venue in a brick building of 1892",
@@ -83148,6 +83149,132 @@
      [
       4.87842297,
       52.38317265
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "diamant-museum",
+  "name": "Diamant Museum Amsterdam, Paulus Potterstraat 8",
+  "landmarkId": "article_landmarks_Q1208561",
+  "modelUrl": "./models/diamant-museum.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012076129"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88243759,
+    52.35946638
+   ],
+   "headingDegrees": 157,
+   "lengthMetres": 24.5,
+   "widthMetres": 18.0
+  },
+  "surveyed": {
+   "anchor": [
+    4.88243759,
+    52.35946638
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012076129 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/diamant-museum-footprints.json, written by bag-shell-prepare.ts). The Paulus Potterstraat front, its roof and the corner turret are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0: recording_2025-07-30_09-59-09_01439, b_20241211_0838_Track09_Sphere_00069, TMX7316010203-000785_pano_0000_000060); the rear and flanks keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/diamant-museum-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 18.8,
+  "galleryView": {
+   "theta": 0.5,
+   "phi": 1.2
+  },
+  "bagYear": 1899,
+  "materialOverrides": {
+   "brick": "#8c6a5a",
+   "red": "#6e4a3c",
+   "stone": "#d6d0c3",
+   "white": "#efece4",
+   "frame": "#f2f0ea",
+   "glass": "#3a434b",
+   "dark": "#252322",
+   "slate": "#4d535a",
+   "green": "#22302a",
+   "gold": "#f4f2ec"
+  },
+  "attribution": {
+   "title": "Diamant Museum Amsterdam, Paulus Potterstraat 8: brick villa of 1899",
+   "author": "Map Recall",
+   "sourceUrl": "https://en.wikipedia.org/wiki/Diamond_Museum_Amsterdam",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell for the rear and flanks (CC BY 4.0): the steep front gable with its round-headed attic light and roundels, the white DIAMOND MUSEUM letters, the three-light French window on a corbelled stone balcony with a wrought-iron railing, the stone entrance surround lettered DIAMANT MUSEUM, segmental-headed windows, the diapered band, the cornice on its corbel table, the wall dormer, and the diagonal corner turret with its lettering and slate spire. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8824376,
+      52.3593821
+     ],
+     [
+      4.8824277,
+      52.3593664
+     ],
+     [
+      4.8824686,
+      52.3593567
+     ],
+     [
+      4.8824785,
+      52.3593723
+     ],
+     [
+      4.882599,
+      52.3594049
+     ],
+     [
+      4.8824828,
+      52.359566
+     ],
+     [
+      4.8824747,
+      52.3595638
+     ],
+     [
+      4.8824656,
+      52.3595764
+     ],
+     [
+      4.8824328,
+      52.3595675
+     ],
+     [
+      4.8824418,
+      52.359555
+     ],
+     [
+      4.882334,
+      52.3595259
+     ],
+     [
+      4.8823751,
+      52.3594687
+     ],
+     [
+      4.8823486,
+      52.3594616
+     ],
+     [
+      4.8823853,
+      52.3594106
+     ],
+     [
+      4.8824119,
+      52.3594178
+     ],
+     [
+      4.8824376,
+      52.3593821
      ]
     ]
    ]

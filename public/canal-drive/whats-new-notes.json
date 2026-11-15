@@ -3,6 +3,69 @@
   "notes": [
     {
       "date": "2026-11-15",
+      "title": "The Diamond Museum on Paulus Potterstraat",
+      "text": "The Diamant Museum at Paulus Potterstraat 8 (1899) is now modelled. It has its corner turret with the slate spire, the DIAMOND MUSEUM letters, the stone balcony with its iron railing and the lettered entrance surround.",
+      "where": [
+        4.8826,
+        52.3591
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-15-landmarks/diamant-museum.jpg",
+          "alt": "Diamant Museum: the street panorama beside the game's first-person frame from the same spot",
+          "caption": "Photo and game"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
+      "title": "Four venues closer to their photos",
+      "text": "Perdu on the Kloveniersburgwal now has its curved gable with a stone rim and hoist beam instead of a pointed dormer. Zaal 100's window arches are red brick, all four dormers are there, and its ZAAL 100 banner reads top to bottom. The Industrieele Groote Club on the Dam has a lantern and a rounded dome on its tower instead of a plain pyramid. CREA's brick is the photo's grey-brown instead of orange-red.",
+      "images": [
+        {
+          "src": "ui/2026-11-15-landmarks/igc-before.jpg",
+          "alt": "Industrieele Groote Club before: a plain pyramid over the tower",
+          "caption": "IGC before"
+        },
+        {
+          "src": "ui/2026-11-15-landmarks/igc-after.jpg",
+          "alt": "After: a lantern stage with arched lights under the cap",
+          "caption": "IGC after"
+        },
+        {
+          "src": "ui/2026-11-15-landmarks/zaal-100-before.jpg",
+          "alt": "Zaal 100 before: stone arch rings",
+          "caption": "Zaal 100 before"
+        },
+        {
+          "src": "ui/2026-11-15-landmarks/zaal-100-after.jpg",
+          "alt": "After: red brick arch rings and a top-down banner",
+          "caption": "Zaal 100 after"
+        },
+        {
+          "src": "ui/2026-11-15-landmarks/crea-before.jpg",
+          "alt": "CREA before: orange-red brick",
+          "caption": "CREA before"
+        },
+        {
+          "src": "ui/2026-11-15-landmarks/crea-after.jpg",
+          "alt": "After: grey-brown brick as in the photo",
+          "caption": "CREA after"
+        },
+        {
+          "src": "ui/2026-11-15-landmarks/perdu-before.jpg",
+          "alt": "Perdu before",
+          "caption": "Perdu before"
+        },
+        {
+          "src": "ui/2026-11-15-landmarks/perdu-after.jpg",
+          "alt": "Perdu after: curved gable on the roofline",
+          "caption": "Perdu after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
       "title": "Bridges hold their level end to end",
       "text": "Where the elevation data had smoothed a bridge into a dip, the road now holds its level from one end of the bridge to the other. Haarlemmer Houttuinen beside the railway viaduct no longer sinks to the waterline. The Amsterdamse Baan flyover crosses the polder at deck height instead of diving into it, and the Kabouterbrug on the Schinkel and Van der Madeweg ride straight across. No crossing in the city dips more than a metre any more.",
       "images": [

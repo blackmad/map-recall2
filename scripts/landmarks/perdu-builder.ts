@@ -2,7 +2,7 @@ import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
 import {setSink, slab} from './nearbar-kit';
 import {frameAt, makeFrontKit, type Chord, type FrontKit, type Sec} from './street-front-kit';
-import {cutFrontWalls, lettering, profileAlong, TriSink, type XZ} from './venue-kit';
+import {concaveGable, cutFrontWalls, lettering, profileAlong, TriSink, type XZ} from './venue-kit';
 import source from './perdu-footprints.json' with {type: 'json'};
 
 /**
@@ -18,7 +18,7 @@ import source from './perdu-footprints.json' with {type: 'json'};
  * Light-brown brick in two wings either side of a narrower middle bay, separated by brick lesenes that run up into the
  * corbelled cornice: round-arched ground-floor windows, tall first-floor windows, a brick panel band, round-arched
  * second-floor windows under light stone arch rings, brick corbel brackets under the cornice, and a dark tiled roof with
- * three dormers (box dormers over the wings, a pointed one over the middle). The middle bay has the entrance with the
+ * two box dormers over the wings and, over the middle bay, a concave-sided dormer gable with a stone edge and a hoist beam. The middle bay has the entrance with the
  * white Perdu sign board, narrow side lights and a stone tablet over it. Roofs and the other walls keep the 3DBAG
  * LoD2.2 shell (CC BY 4.0); the walls to the Binnengasthuis grounds have no usable panorama and stay plain (inferred).
  */
@@ -89,22 +89,35 @@ function front(c: Ctx) {
   profileAlong(b, f, 0.08, L - 0.08, [[-0.3, EAVES - 0.45], [0.36, EAVES - 0.45], [0.36, EAVES - 0.3], [0.48, EAVES - 0.18], [0.48, EAVES + 0.02], [-0.3, EAVES + 0.02]], 'sandstone');
 }
 
-/** Dormers in the front roof slope (3DBAG plane from the 12.1 m eaves rising inward): box dormers and a pointed one. */
+/** Box dormers in the front roof slope over the wings (3DBAG plane from the 12.1 m eaves rising inward). */
 function dormers(c: Ctx) {
-  const {b, M} = c;
-  const P3 = (s: number, y: number, o: number) => { const fr = frameAt(F, s, o); return [fr.origin[0], y, fr.origin[1]]; };
-  const out = [frameAt(F, 0, 0).n[0], 0, frameAt(F, 0, 0).n[1]];
-  for (const [s, w, pointed] of [[6.8, 1.6, false], [10.75, 1.4, true], [14.75, 1.6, false]] as const) {
-    const o0 = -0.9, o1 = -2.6, y0 = EAVES + 0.25, y1 = y0 + 1.35, f = frameAt(F, 0, o0);
-    slab(b, f, s, y0, w, y1 - y0, o1 - o0 < 0 ? o0 - o1 : 1.7, 'brick', -(o0 - o1));
+  const {b} = c;
+  for (const s of [6.8, 14.75]) {
+    const w = 1.6, o0 = -0.9, o1 = -2.6, y0 = EAVES + 0.25, y1 = y0 + 1.35, f = frameAt(F, 0, o0);
+    slab(b, f, s, y0, w, y1 - y0, o0 - o1, 'brick', -(o0 - o1));
     slab(b, f, s, y0 + 0.2, w - 0.35, y1 - y0 - 0.4, 0.06, 'white');
     slab(b, f, s, y0 + 0.28, w - 0.5, y1 - y0 - 0.56, 0.04, 'glass', 0.06);
-    if (pointed) {
-      const apex = y1 + 0.8;
-      M.tri('brick', P3(s - w / 2, y1, o0), P3(s + w / 2, y1, o0), P3(s, apex, o0), out);
-      for (const sd of [-1, 1]) M.quad('ochre', P3(s + sd * (w / 2 + 0.1), y1 - 0.05, o0 + 0.1), P3(s, apex + 0.05, o0 + 0.1), P3(s, apex + 0.05, o1), P3(s + sd * (w / 2 + 0.1), y1 - 0.05, o1), [sd * f.tangent[0] * 0.7, 0.7, sd * f.tangent[1] * 0.7]);
-    } else slab(b, f, s, y1, w + 0.2, 0.12, o0 - o1 + 0.2, 'ochre', -(o0 - o1));
+    slab(b, f, s, y1, w + 0.2, 0.12, o0 - o1 + 0.2, 'ochre', -(o0 - o1));
   }
+}
+
+/**
+ * The middle bay's dormer gable on the cornice: concave sides curving in from short shoulders to a narrow neck and a
+ * point, a light stone edge, a white-framed window and the hoist beam under the point. Read on the 50 px/m rectified
+ * crops b_20250108_1041_Track19_Sphere_00047 (2025-01-08, sunlit) and TMX7316010203-002999_pano_0000_000044 (2023):
+ * base 2.6 m wide over the cornice (s 9.35-11.95), shoulders 0.3 m, neck 0.6 m wide at 2.1 m, point at 2.7 m; window
+ * 0.9 x 0.85 m just over the base; the beam juts from the neck.
+ */
+function middleGable(c: Ctx) {
+  const {b} = c;
+  const f = frameAt(F, 0, 0.2), s = 10.65, y = EAVES + 0.02;   // its face 0.2 m out, on the cornice
+  concaveGable(b, f, s, y, {half: 1.3, shoulder: 0.3, neckHalf: 0.3, neckY: 2.1, apexY: 2.7}, {depth: 2.4, wall: 'brick', trim: 'sandstone', rim: 0.14, rimD: 0.08});
+  for (const sd of [-1, 1]) slab(b, f, s + sd * 0.48, y + 0.18, 0.1, 1.0, 0.07, 'white');   // window frame
+  for (const yy of [y + 0.18, y + 1.1]) slab(b, f, s, yy, 0.86, 0.08, 0.07, 'white');
+  slab(b, f, s, y + 0.26, 0.86, 0.84, 0.03, 'glass');
+  slab(b, f, s, y + 0.18, 0.07, 1.0, 0.11, 'white');                      // mullion
+  slab(b, f, s, y + 0.1, 1.2, 0.1, 0.14, 'sandstone');                    // sill
+  slab(b, f, s, y + 2.15, 0.16, 0.2, 0.75, 'dark');                       // hoist beam
 }
 
 export function buildPerdu(_w: number, _d: number, b: BuildingTools) {
@@ -115,6 +128,7 @@ export function buildPerdu(_w: number, _d: number, b: BuildingTools) {
     shell(c);
     front(c);
     dormers(c);
+    middleGable(c);
     K.flush();
     M.flush(b);
   } finally {
