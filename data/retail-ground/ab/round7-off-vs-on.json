@@ -1,0 +1,165 @@
+{
+ "date": "2026-11-15",
+ "method": "blind-ab.ts seed 13, likeness frames crop [0,0.3,1,0.95], fresh opus judge, one pass, no tuning; r6 = retailGround on with round 7 hosting and awnings",
+ "fronts": "scripts/retail-ground/round7-fronts.json (De Vogel skipped: no facing panorama)",
+ "tally": {
+  "bike-rental": {
+   "r6": 2,
+   "off": 0,
+   "tie": 2
+  },
+  "apotheek": {
+   "r6": 1,
+   "off": 0,
+   "tie": 1
+  },
+  "gallgall": {
+   "r6": 1,
+   "off": 0,
+   "tie": 0
+  },
+  "hairdresser": {
+   "r6": 0,
+   "off": 0,
+   "tie": 1
+  },
+  "bike-used": {
+   "r6": 2,
+   "off": 1,
+   "tie": 1
+  },
+  "bike-premium": {
+   "r6": 0,
+   "off": 0,
+   "tie": 2
+  }
+ },
+ "rows": [
+  {
+   "pair": "10",
+   "front": "bike-rental-r7-2",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "only upper floors visible"
+  },
+  {
+   "pair": "11",
+   "front": "apotheek-r7-1",
+   "A": "off",
+   "B": "r6",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "shop fascias out of frame; identical"
+  },
+  {
+   "pair": "12",
+   "front": "apotheek-r7-2",
+   "A": "off",
+   "B": "r6",
+   "verdict": "B",
+   "winner": "r6",
+   "judge": "both red against photo's black; B shows goods in window"
+  },
+  {
+   "pair": "13",
+   "front": "gallgall-1-awning",
+   "A": "r6",
+   "B": "off",
+   "verdict": "A",
+   "winner": "r6",
+   "judge": "plain dark fascia and stocked windows closer to photo"
+  },
+  {
+   "pair": "14",
+   "front": "hairdresser-3-awning",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "photo black awnings; both renders red fronts"
+  },
+  {
+   "pair": "01",
+   "front": "bike-used-1",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "photo red bo-rent fascia; both renders green with dark glass"
+  },
+  {
+   "pair": "02",
+   "front": "bike-used-2",
+   "A": "off",
+   "B": "r6",
+   "verdict": "A",
+   "winner": "off",
+   "judge": "dark-framed bike shop with bikes in window matches A"
+  },
+  {
+   "pair": "03",
+   "front": "bike-rental-1",
+   "A": "off",
+   "B": "r6",
+   "verdict": "B",
+   "winner": "r6",
+   "judge": "B adds a dark bike-shop front, close to photo's bike rental"
+  },
+  {
+   "pair": "04",
+   "front": "bike-rental-2",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "tram blocks the view"
+  },
+  {
+   "pair": "05",
+   "front": "bike-premium-1",
+   "A": "off",
+   "B": "r6",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "renders identical; Europcar green fascia missing in both"
+  },
+  {
+   "pair": "06",
+   "front": "bike-premium-2",
+   "A": "r6",
+   "B": "off",
+   "verdict": "TIE",
+   "winner": "tie",
+   "judge": "renders identical; no flags or bikes on the pavement in either"
+  },
+  {
+   "pair": "07",
+   "front": "bike-used-r7-1",
+   "A": "r6",
+   "B": "off",
+   "verdict": "A",
+   "winner": "r6",
+   "judge": "plain white-framed big windows; other adds maroon awnings"
+  },
+  {
+   "pair": "08",
+   "front": "bike-used-r7-2",
+   "A": "off",
+   "B": "r6",
+   "verdict": "B",
+   "winner": "r6",
+   "judge": "corner bike shop hinted in photo; B shows bikes"
+  },
+  {
+   "pair": "09",
+   "front": "bike-rental-r7-1",
+   "A": "off",
+   "B": "r6",
+   "verdict": "B",
+   "winner": "r6",
+   "judge": "dark Black Bikes fascia matches photo"
+  }
+ ]
+}

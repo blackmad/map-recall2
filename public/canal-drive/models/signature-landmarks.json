@@ -105406,7 +105406,13 @@
       },
       "triangles": 27443,
       "bytes": 342660,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "04f473be95f21701",
+        "buildVersion": 2,
+        "bytes": 89768,
+        "triangles": 4264
+      }
     },
     "banks-mansion": {
       "id": "banks-mansion",
@@ -105538,7 +105544,13 @@
       },
       "triangles": 16414,
       "bytes": 245668,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "d8cc19330265f9aa",
+        "buildVersion": 2,
+        "bytes": 64456,
+        "triangles": 2908
+      }
     },
     "schiller-rembrandtplein": {
       "id": "schiller-rembrandtplein",
