@@ -119,6 +119,42 @@ function drawVisible(P: ArrayLike<number>, ex: number, ey: number, ez: number, r
   return !out.some(n => n === 8);
 }
 
+/** A box against the view frustum: false when all eight corners are outside one plane. */
+function boxVisible(b: Float32Array, o: number, ex: number, ey: number, ez: number, rx: number, ry: number, rz: number, ux: number, uy: number, uz: number, fx: number, fy: number, fz: number, focal: number, cxs: number, cys: number, W: number, H: number, near: number, far: number): boolean {
+  let o0 = 0, o1 = 0, o2 = 0, o3 = 0, o4 = 0, o5 = 0;
+  for (let k = 0; k < 8; k++) {
+    const dx = b[o + (k & 1 ? 3 : 0)] - ex, dy = b[o + (k & 2 ? 4 : 1)] - ey, dz = b[o + (k & 4 ? 5 : 2)] - ez;
+    const x = (dx * rx + dy * ry + dz * rz) * focal, y = (dx * ux + dy * uy + dz * uz) * focal, z = dx * fx + dy * fy + dz * fz;
+    if (z < near) o0++; if (z > far) o1++; if (x < -cxs * z) o2++; if (x > (W - cxs) * z) o3++; if (y > cys * z) o4++; if (y < -(H - cys) * z) o5++;
+  }
+  return o0 < 8 && o1 < 8 && o2 < 8 && o3 < 8 && o4 < 8 && o5 < 8;
+}
+
+/** Triangles per culling group: a draw's triangles in index order (a building's run, mostly) share one box. */
+export const CULL_GROUP = 256;
+const groupBoxCache = new WeakMap<WorldDraw, Float32Array>();
+/** Per group of CULL_GROUP triangles, its box (min xyz, max xyz); an empty group (all dropped by `keep`) is inverted. */
+export function groupBoxes(d: WorldDraw): Float32Array {
+  let b = groupBoxCache.get(d);
+  if (b) return b;
+  const P = d.positions, I = d.indices, nt = Math.floor(I.length / 3), ng = Math.ceil(nt / CULL_GROUP);
+  b = new Float32Array(ng * 6);
+  for (let g = 0; g < ng; g++) {
+    let x0 = Infinity, y0 = Infinity, z0 = Infinity, x1 = -Infinity, y1 = -Infinity, z1 = -Infinity;
+    const end = Math.min(nt, (g + 1) * CULL_GROUP);
+    for (let t = g * CULL_GROUP; t < end; t++) {
+      if (d.keep && !d.keep(t)) continue;
+      for (let k = 0; k < 3; k++) {
+        const v = I[t * 3 + k] * 3, x = P[v], y = P[v + 1], z = P[v + 2];
+        if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; if (z < z0) z0 = z; if (z > z1) z1 = z;
+      }
+    }
+    b[g * 6] = x0; b[g * 6 + 1] = y0; b[g * 6 + 2] = z0; b[g * 6 + 3] = x1; b[g * 6 + 4] = y1; b[g * 6 + 5] = z1;
+  }
+  groupBoxCache.set(d, b);
+  return b;
+}
+
 const MSX = [0.375, 0.875, 0.125, 0.625], MSY = [0.125, 0.375, 0.625, 0.875];
 
 /** Rasterise `draws` from `camera`. */
@@ -151,7 +187,13 @@ export function rasteriseWorld(draws: readonly WorldDraw[], camera: WorldCamera,
   for (const di of order) {
     const d = draws[di], P = d.positions, I = d.indices, cull = d.cull !== 'none', nt = Math.floor(I.length / 3), keep = d.keep, cut = d.cut, offK = d.offset ?? 0;
     if (!drawVisible(P, ex, ey, ez, rx, ry, rz, ux, uy, uz, fx, fy, fz, focal, cxs, cys, W, H, near, far)) continue;
+    const boxes = nt > CULL_GROUP ? groupBoxes(d) : null;
     for (let t = 0; t < nt; t++) {
+      if (boxes && t % CULL_GROUP === 0) {
+        const g = t / CULL_GROUP, o = g * 6;
+        // An empty group (every triangle dropped) has an inverted box; a group wholly outside the frustum is skipped.
+        if (!(boxes[o] <= boxes[o + 3]) || !boxVisible(boxes, o, ex, ey, ez, rx, ry, rz, ux, uy, uz, fx, fy, fz, focal, cxs, cys, W, H, near, far)) { t += CULL_GROUP - 1; continue; }
+      }
       if (keep && !keep(t)) continue;
       let allNear = true, allFar = true;
       for (let k = 0; k < 3; k++) {
@@ -248,28 +290,46 @@ export function rasteriseWorld(draws: readonly WorldDraw[], camera: WorldCamera,
   const s: ShadeInput = { i0: 0, i1: 0, i2: 0, b0: 0, b1: 0, b2: 0, px: 0, py: 0, pz: 0, dist: 0, nx: 0, ny: 0, nz: 0, back: false, x: 0, y: 0, cosView: 1 };
   const cid = [0, 0, 0, 0], cnt = [0, 0, 0, 0];
   const pixFocal = camera.focal, pcx = camera.cx ?? width / 2, pcy = camera.cy ?? height / 2;
-  /** Cast the pixel ray onto triangle `id`; fill `s`; false when degenerate. */
-  const setup = (id: number, dX: number, dY: number, dZ: number): WorldDraw | null => {
+  // Per-triangle constants of the ray cast (plane, edges, barycentric denominators), for the last few triangles seen:
+  // neighbouring pixels mostly hit the same ones. Slot k: [ax, ay, az, e1x, e1y, e1z, e2x, e2y, e2z, nx, ny, nz, d00, d01, d11, den].
+  const TC = 8, tcId = new Int32Array(TC).fill(-1), tcDraw: (WorldDraw | null)[] = new Array(TC).fill(null), tcIdx = new Int32Array(TC * 3), tc = new Float64Array(TC * 16);
+  let tcNext = 0;
+  const triSlot = (id: number): number => {
+    for (let k = 0; k < TC; k++) if (tcId[k] === id) return k;
+    const k = tcNext; tcNext = (tcNext + 1) % TC;
     const [di, t] = locate(id), d = draws[di], P = d.positions, I = d.indices;
     const a = I[t * 3], b = I[t * 3 + 1], c = I[t * 3 + 2];
     const ax = P[a * 3], ay = P[a * 3 + 1], az = P[a * 3 + 2];
     const e1x = P[b * 3] - ax, e1y = P[b * 3 + 1] - ay, e1z = P[b * 3 + 2] - az, e2x = P[c * 3] - ax, e2y = P[c * 3 + 1] - ay, e2z = P[c * 3 + 2] - az;
     let nx = e1y * e2z - e1z * e2y, ny = e1z * e2x - e1x * e2z, nz = e1x * e2y - e1y * e2x;
     const nl = Math.hypot(nx, ny, nz);
-    if (nl === 0) return null;
-    nx /= nl; ny /= nl; nz /= nl;
+    tcId[k] = id; tcIdx[k * 3] = a; tcIdx[k * 3 + 1] = b; tcIdx[k * 3 + 2] = c;
+    const d00 = e1x * e1x + e1y * e1y + e1z * e1z, d01 = e1x * e2x + e1y * e2y + e1z * e2z, d11 = e2x * e2x + e2y * e2y + e2z * e2z;
+    const den = d00 * d11 - d01 * d01;
+    tcDraw[k] = nl === 0 || den === 0 ? null : d;
+    if (nl !== 0) { nx /= nl; ny /= nl; nz /= nl; }
+    const o = k * 16;
+    tc[o] = ax; tc[o + 1] = ay; tc[o + 2] = az; tc[o + 3] = e1x; tc[o + 4] = e1y; tc[o + 5] = e1z; tc[o + 6] = e2x; tc[o + 7] = e2y; tc[o + 8] = e2z;
+    tc[o + 9] = nx; tc[o + 10] = ny; tc[o + 11] = nz; tc[o + 12] = d00; tc[o + 13] = d01; tc[o + 14] = d11; tc[o + 15] = den;
+    return k;
+  };
+  /** Cast the pixel ray onto triangle `id`; fill `s`; null when degenerate. */
+  const setup = (id: number, dX: number, dY: number, dZ: number): WorldDraw | null => {
+    const k = triSlot(id), d = tcDraw[k];
+    if (!d) return null;
+    const o = k * 16, ax = tc[o], ay = tc[o + 1], az = tc[o + 2], e1x = tc[o + 3], e1y = tc[o + 4], e1z = tc[o + 5], e2x = tc[o + 6], e2y = tc[o + 7], e2z = tc[o + 8];
+    let nx = tc[o + 9], ny = tc[o + 10], nz = tc[o + 11];
+    const d00 = tc[o + 12], d01 = tc[o + 13], d11 = tc[o + 14], den = tc[o + 15];
     const ox = ex - ax, oy = ey - ay, oz = ez - az;
     const denom = nx * dX + ny * dY + nz * dZ;
     let tt = Math.abs(denom) > 1e-12 ? -(nx * ox + ny * oy + nz * oz) / denom : 0;
     if (!(tt > 0)) tt = 0;
     const qx = ox + dX * tt, qy = oy + dY * tt, qz = oz + dZ * tt;
     // Barycentrics of q in (a, b, c).
-    const d00 = e1x * e1x + e1y * e1y + e1z * e1z, d01 = e1x * e2x + e1y * e2y + e1z * e2z, d11 = e2x * e2x + e2y * e2y + e2z * e2z;
-    const d20 = qx * e1x + qy * e1y + qz * e1z, d21 = qx * e2x + qy * e2y + qz * e2z, den = d00 * d11 - d01 * d01;
-    if (den === 0) return null;
+    const d20 = qx * e1x + qy * e1y + qz * e1z, d21 = qx * e2x + qy * e2y + qz * e2z;
     const v = (d11 * d20 - d01 * d21) / den, w = (d00 * d21 - d01 * d20) / den;
     const back = denom > 0;
-    s.i0 = a; s.i1 = b; s.i2 = c; s.b0 = 1 - v - w; s.b1 = v; s.b2 = w;
+    s.i0 = tcIdx[k * 3]; s.i1 = tcIdx[k * 3 + 1]; s.i2 = tcIdx[k * 3 + 2]; s.b0 = 1 - v - w; s.b1 = v; s.b2 = w;
     s.px = ax + qx; s.py = ay + qy; s.pz = az + qz;
     const dl = Math.hypot(dX, dY, dZ);
     s.dist = tt * dl;

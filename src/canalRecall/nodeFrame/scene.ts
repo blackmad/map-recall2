@@ -30,6 +30,11 @@ export const SHELL_RADIUS_M = 1500;
 export const MODEL_RADIUS_M = 900;
 export const DETAIL_RADIUS_M = 700;
 
+/** Process-wide caches for batches: cell readers per extract, decoded shell cells (oldest dropped past the cap). */
+const READERS = new Map<string, unknown>();
+const SHELLS = new Map<string, unknown>();
+const SHELL_CACHE_CELLS = 48;
+
 export type NodeView = {
   /** The camera's ground point (the frame's origin). */
   lngLat: [number, number];
@@ -137,7 +142,9 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   t = performance.now();
   const fetcher = (async (url: string) => { try { return new Response(fs.readFileSync(url)); } catch { return new Response(null, { status: 404 }); } }) as unknown as typeof fetch;
   const extract = path.join(root, 'public/data/extracts/amsterdam');
-  const reader = new WorldCellReader(extract, fetcher, 64);
+  // One reader per extract for the process: a batch of frames (node-frame.ts with several poses) reuses its cells.
+  let reader = READERS.get(extract) as InstanceType<typeof WorldCellReader> | undefined;
+  if (!reader) READERS.set(extract, reader = new WorldCellReader(extract, fetcher, 64));
   const [ci, cj] = cellOf(view.lngLat[0], view.lngLat[1]);
   const span = Math.ceil(SHELL_RADIUS_M / 1000) + 1;
   const near: { key: string; d: number }[] = [];
@@ -239,10 +246,18 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   t = performance.now();
   if (opts.shells !== false) {
     for (const c of near) {
-      let sh;
-      try { sh = await reader.shell(c.key, path.join(extract, 'world-v1'), undefined, true, false); } catch { continue; }
+      // Decoded shells are kept for the process (a batch of frames near each other decodes each cell once); the
+      // positions are copied before the frame moves and lifts them.
+      const shellKey = `${extract}|${c.key}`;
+      let sh = SHELLS.get(shellKey) as Awaited<ReturnType<typeof reader.shell>> | null | undefined;
+      if (sh === undefined) {
+        try { sh = await reader.shell(c.key, path.join(extract, 'world-v1'), undefined, true, false); } catch { sh = null; }
+        SHELLS.set(shellKey, sh);
+        if (SHELLS.size > SHELL_CACHE_CELLS) SHELLS.delete(SHELLS.keys().next().value as string);
+      }
+      if (!sh) continue;
       const [ox, oy] = shellOrigin(...(c.key.split('_').map(Number) as [number, number]));
-      const P = sh.positions as Float32Array;
+      const P = new Float32Array(sh.positions as Float32Array);
       for (let k = 0; k < P.length; k += 3) { P[k] += ox; P[k + 1] += oy; }
       // Buildings outside the view wedge (beyond the shadow reach) are dropped before the lift.
       const drop = new Uint8Array(P.length / 3);
