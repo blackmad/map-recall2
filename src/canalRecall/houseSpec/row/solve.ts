@@ -115,7 +115,7 @@ const COMPAT: Record<string, string[][]> = {
   windows: [['tall-upper', 't-window', 'sash', 'sash-1-over-1'], ['casement-toplight', 'casement']],
   heads: [['block-course', 'dentil-lintel', 'jack-blocks'], ['keystone'], ['segmental-tympanum'], ['stone-lintel'], ['arch-ring'], ['none']],
   dormerKind: [['pediment', 'gabled']],
-  wallFamily: [['red-brown-brick', 'brown-brick', 'purple-brown-brick', 'orange-red-brick'], ['painted-white', 'cream-render', 'pale-grey-stucco'], ['buff-brick', 'sandstone']],
+  wallFamily: [['red-brown-brick', 'brown-brick', 'purple-brown-brick', 'orange-red-brick', 'dark-grey-brick'], ['painted-white', 'cream-render', 'pale-grey-stucco'], ['buff-brick', 'sandstone']],
 };
 export function compatible(field: string, a: unknown, b: unknown): boolean {
   const ka = classKey(field, a), kb = classKey(field, b);
