@@ -1761,12 +1761,12 @@
       "field": "wall",
       "value": {
         "material": "brick",
-        "family": "red-brown-brick",
-        "hex": "#6e4a3e"
+        "family": "brown-brick",
+        "hex": "#604a3e"
       },
-      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair); A/B 9 and 10 (today won: the red read too red); the measured re-read (OKLab L 0.41 C 0.022 h 56) is a duller brown",
       "at": "2026-11-15",
-      "note": "272: red-brown brick in the cut, not dark grey"
+      "note": "272: brown brick in the cut, duller than red-brown; the cut's outline also takes in part of its dark neighbour"
     },
     {
       "fronts": [
