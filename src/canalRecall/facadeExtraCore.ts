@@ -65,6 +65,8 @@ export type RowDressContext = {
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
   /** Upper windows' share of their axis pitch, frames included (a row type's window width). */
   windowShare?: number;
+  /** Buurt kit paired casements: the white mullion parting each window, a share of its width (row-glazing). */
+  mullionShare?: number;
   /** One stated shop opening (row-shopfront): its frame colour and the entrance's end of this wall as laid out. */
   shopFront?: { frameHex: string; doorEnd: 'start' | 'end' | 'centre' };
 };

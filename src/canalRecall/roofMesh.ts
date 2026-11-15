@@ -25,6 +25,7 @@
 import earcut from 'earcut';
 import { largeTierProperties } from './largeBuildingTier.js';
 import { RoofSink, type V2, type V3 } from './roofSink.js';
+import { buurtRoofKitOf, drawKitFront, kitDrawsFront, pitchBandM, type BuurtRoofKit } from './buurtGenerator/kit/roofKit.js';
 import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, perimeterRoofInset, rectHangM, ringAreaM2, signedArea, uncoveredShare } from './roofFootprint.js';
 import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
 import { repeatedTerraceRoofTriangles, type RepeatedTerraceRoof } from './repeatedTerraceRoof.js';
@@ -95,6 +96,8 @@ export type RoofPlan = {
   rowJoins?: { left?: boolean; right?: boolean };
   /** House rows: the street front's width (m); rowRoofBox faces the roof on the wall that width matches (a corner). */
   rowFrontM?: number;
+  /** Buurt generator kit (buurtGenerator/kit/roofKit.ts; only on a `buurtKit` record): pitch and erkers of the row roof. */
+  buurtKit?: BuurtRoofKit;
   /** Sloping perimeter and flat deck following a convex, nonrectangular wall outline. */
   perimeterInsetM?: number;
   /** Parapet height above the lid, metres (kind 'parapet'). */
@@ -108,7 +111,7 @@ type Vec2 = [number, number];
 
 /** slope/plate/dormer: textured as before; trim: flat-coloured closed solid; decal: flat-coloured one-sided paint just proud of a surface. */
 export type RoofPart = 'slope' | 'plate' | 'dormerFace' | 'dormerSide' | 'trim' | 'decal';
-export type RoofTri = { p: [V3, V3, V3]; uv: [V2, V2, V2]; part: RoofPart; n: V3; /** Flat colour for trim and decals (or a tint override). */ hex?: string; /** Shape of an explicitly admitted, exterior crown plate. */ sourceCrownShape?: GableShape; sourceCrownPairedOculi?: boolean };
+export type RoofTri = { p: [V3, V3, V3]; uv: [V2, V2, V2]; part: RoofPart; n: V3; /** Buurt generator kit: an erker on the wall, outside the roof's outline cut. */ kit?: true; /** Flat colour for trim and decals (or a tint override). */ hex?: string; /** Shape of an explicitly admitted, exterior crown plate. */ sourceCrownShape?: GableShape; sourceCrownPairedOculi?: boolean };
 
 /** The generated eave overhang (0.3 m) the hang measure allows for. */
 export const ROOF_CLIP_OVERHANG_M = 0.32;
@@ -555,6 +558,8 @@ function gableSlab(s: RoofSink, prof: readonly Vec2[], e: number, L: number, top
 type DormerSpec = { axis: 'u' | 'v'; side: number; c: number; pf: number; dw: number; hd: number; surf: (a: number) => number; band?: boolean;
   /** House rows: `pediment` a white raking pediment with a bed course over the face, `gabled` the stock cap, `plain` a flat top. */
   kind?: RowDormerKind; hoist?: boolean;
+  /** Buurt generator kit: a plain dormer's stated hoist beam is drawn too (Plan Zuid dormers). */
+  kitHoist?: boolean;
   /** House rows: a dormer the record states always stands. On a roof too low to take its back (Weteringschans' 1.3 m
    *  mansard), it stands on the front slope and rises above the roof, its back closed by its own wall (a dakkapel). */
   standing?: boolean };
@@ -620,7 +625,11 @@ function rowDormerDress(s: RoofSink, d: DormerSpec, P: (a: number, b: number, z:
     s.quad(P(a0, c0, z1), P(a1, c0, z1), P(a1, c1, z1), P(a0, c1, z1), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], hex);
     for (const [c, sg] of [[c0, -1], [c1, 1]] as const) s.quad(P(a0, c, z0), P(a1, c, z0), P(a1, c, z1), P(a0, c, z1), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', d.axis === 'v' ? [sg, 0, 0] : [0, sg, 0], hex);
   };
-  if (d.kind === 'plain') { box(d.pf - 0.1, f + o, b0 - 0.06, b1 + 0.06, zt - 0.06, zt + 0.12); return; }
+  if (d.kind === 'plain') {
+    box(d.pf - 0.1, f + o, b0 - 0.06, b1 + 0.06, zt - 0.06, zt + 0.12);
+    if (d.hoist && d.kitHoist) { box(d.pf - 0.2, f + 0.9, d.c - 0.11, d.c + 0.11, zt - 0.3, zt - 0.08, HOIST_HEX); box(f + 0.72, f + 0.86, d.c - 0.05, d.c + 0.05, zt - 0.65, zt - 0.3, HOIST_HEX); }
+    return;
+  }
   if (d.kind !== 'pediment' && d.kind !== 'ornate-pinnacle') return;
   if (d.kind === 'ornate-pinnacle') {
     // Light stone pilasters beside the light, a head course, a stepped front of three narrowing courses, a crowning
@@ -707,7 +716,7 @@ function buildMansard(s: RoofSink, plan: RoofPlan, L: number, W: number, R: numb
 function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: number): void {
   // A row's low mansard (Weteringschans: ~1.3 m) keeps its steep lower slope (about 63 degrees): the band narrows with
   // the rise. At the period rise (2.2 m) this is the stock 1.1 m band.
-  const k = plan.rowDormers ? Math.min(1.1, W * 0.17, R * 0.5) : Math.min(1.1, W * 0.17), trim = plan.trimHex ?? TRIM_WHITE, ov = 0.3, lip = -0.12;
+  const k = plan.buurtKit?.pitchDeg ? pitchBandM(R, L, plan.buurtKit.pitchDeg) : plan.rowDormers ? Math.min(1.1, W * 0.17, R * 0.5) : Math.min(1.1, W * 0.17), trim = plan.trimHex ?? TRIM_WHITE, ov = 0.3, lip = -0.12;
   // House rows: a side the mansard runs on into its neighbour's (rowJoins, left/right as seen from the street end e,
   // where right = e * v) has no hip, no eaves return and no overhang; a plate closes the profile at the party wall.
   const e = plan.streetEnds?.[1] && !plan.streetEnds?.[0] ? 1 : -1;
@@ -736,8 +745,9 @@ function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: n
     s.quad([o[i][0], o[i][1], 0], [o[j][0], o[j][1], 0], [ex[j][0], ex[j][1], lip], [ex[i][0], ex[i][1], lip], [0, 0], [1, 0], [1, 0.25], [0, 0.25], part, [out[0] * 0.05, out[1] * 0.05, 1], hex);
     if (plan.accents) fascia(s, [ex[i][0], ex[i][1], lip], [ex[j][0], ex[j][1], lip], [out[0], out[1], 0], trim, 0.26);
   }
+  if (plan.buurtKit && kitDrawsFront(plan.buurtKit)) { const from = s.out.length; drawKitFront(s, plan.buurtKit, L, W, e); for (let i = from; i < s.out.length; i++) s.out[i].kit = true; }
   if (!plan.dormers) return;
-  if (plan.rowDormers) { rowDormersOnEnds(s, plan, L, W, (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R), L / 2 - k * 0.3); return; }
+  if (plan.rowDormers) { rowDormersOnEnds(s, plan, L, W, (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R), L / 2 - k * (plan.buurtKit?.dormer?.setback ?? 0.3)); return; }
   // Dormers on the short ends (the street front of a row house); on the long sides only when they are not party walls.
   const nE = W >= 7.5 ? 2 : 1, dwE = Math.min(1.3, (W - 2 * k) / nE - 0.5);
   const surfU = (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R);
@@ -763,7 +773,8 @@ function rowDormersOnEnds(s: RoofSink, plan: RoofPlan, L: number, W: number, sur
   const dw = Math.max(0.7, Math.min(1.0, W / ds.length - 1.1));
   for (const e of ends) for (const dm of ds) {
     const ornate = dm.kind === 'ornate-pinnacle';
-    dormer(s, { axis: 'u', side: e, c: e * (dm.a - 0.5) * W, pf, dw: ornate ? Math.min(1.25, dw + 0.25) : dw, hd: ornate ? 1.45 : 1.15, surf, kind: dm.kind, hoist: dm.hoist, standing: true }, plan);
+    const kd = plan.buurtKit?.dormer;
+    dormer(s, { axis: 'u', side: e, c: e * (dm.a - 0.5) * W, pf, dw: kd ? Math.min(kd.widthM, W / ds.length - 0.6) : ornate ? Math.min(1.25, dw + 0.25) : dw, hd: kd ? kd.heightM : ornate ? 1.45 : 1.15, surf, kind: dm.kind, hoist: dm.hoist, standing: true, ...(plan.buurtKit ? { kitHoist: true } : {}) }, plan);
   }
 }
 
@@ -1202,6 +1213,9 @@ function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: num
   // A plan that was not marked for the cut but still stands past its walls (a gable box or a measured monument gable
   // over a notched or skewed block: 4.2 m over the street at the Leidsegracht, lane S3) takes the same cut. Roofs within
   // ROOF_OUTLINE_HANG_M are untouched, byte for byte.
+  // A buurt kit's erkers stand in front of the wall by design: they are kept out of the hang test and the cut.
+  const erkers = plan.buurtKit ? out.filter(t => t.kit) : [];
+  if (erkers.length) { const roof = out.filter(t => !t.kit); out.length = 0; out.push(...roof); }
   const cut = plan.clipToOutline || (measuredCut && !plan.sourceCrownFront && trianglesHangM(out, openRing(mesh)) > ROOF_OUTLINE_HANG_M);
   if (cut && !plan.sourceCrownFront) {
     // Cut the fitted box at the walls, so every eave stands on a wall top and the cut faces are closed. Fascia boards and
@@ -1210,6 +1224,7 @@ function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: num
     const clipped = sourceRoofWithinOutline(out, wallRing, h0, dims, keepRing);
     out.length = 0; out.push(...clipped);
   }
+  out.push(...erkers);
   if (plan.turret) {
     const main = mapRect(plan.pieces[0].rect), [tx, ty] = at(plan.turret.x, plan.turret.y);
     const s = new RoofSink(main, h0, dims), du = tx - main.cx, dv = ty - main.cy;
@@ -1402,7 +1417,7 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
     if (!rect || !(height - rr.riseM >= 2)) return null;
     const box: Rect = { ...rect, coverage: 1, maxDev: 0 };
     const rowPlan: RoofPlan = { kind: 'mansardHip', gable: 'plain', riseM: rr.riseM, dormers: rr.dormers.length > 0, material: rr.material === 'tile' ? 'tile' : 'slate',
-      tone: ROW_SLATE_TONE, seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.joins ? { rowJoins: rr.joins } : {}), ...(rr.frontM ? { rowFrontM: rr.frontM } : {}) };
+      tone: ROW_SLATE_TONE, seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.joins ? { rowJoins: rr.joins } : {}), ...(rr.frontM ? { rowFrontM: rr.frontM } : {}), ...(rr.kit ? { buurtKit: rr.kit } : {}) };
     return { ...rowPlan, pieces: [{ rect: box, plan: rowPlan }], keepLid: true };
   }
   // Lane 1 (houseLine/rowFront.ts sets `rowCrown` and the matching height): the measured crown, its saddle inside it,
@@ -1418,14 +1433,15 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
 /** House rows: every row mansard is the one dark slate (look/palette.ts MEASURED_SLATE[1], #606b79): one tone per
  *  series and the same across a row (blind review 2026-11-14: Weteringschans 169016 and 171218 differed). */
 export const ROW_SLATE_TONE = 0.5;
-export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number } | null {
+export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number; kit?: BuurtRoofKit } | null {
   if (!v || typeof v !== 'object') return null;
-  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown };
+  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown; kit?: unknown };
   if (!(Number(r.riseM) > 0.5) || typeof r.series !== 'string' || !Array.isArray(r.dormers)) return null;
   const dormers = (r.dormers as Array<{ a?: unknown; kind?: unknown; hoist?: unknown }>).filter(d => Number.isFinite(Number(d.a)) && (ROW_DORMER_DRAW_KINDS as readonly unknown[]).includes(d.kind))
     .map(d => ({ a: Math.max(0.05, Math.min(0.95, Number(d.a))), kind: d.kind as RowDormerKind, ...(d.hoist === true ? { hoist: true } : {}) }));
   const joins = r.joins && typeof r.joins === 'object' ? { ...(r.joins.left === true ? { left: true } : {}), ...(r.joins.right === true ? { right: true } : {}) } : null;
-  return { riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers, ...(joins && (joins.left || joins.right) ? { joins } : {}), ...(Number(r.frontM) > 1 ? { frontM: Number(r.frontM) } : {}) };
+  const kit = r.kit === undefined ? null : buurtRoofKitOf(r.kit);
+  return { riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers, ...(joins && (joins.left || joins.right) ? { joins } : {}), ...(Number(r.frontM) > 1 ? { frontM: Number(r.frontM) } : {}), ...(kit ? { kit } : {}) };
 }
 
 /**
