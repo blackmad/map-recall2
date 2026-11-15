@@ -155,6 +155,16 @@ if (fs.existsSync(PUI)) {
   const cls = [...priors.values()].reduce((m, p) => (m[p.cls] = (m[p.cls] ?? 0) + 1, m), {} as Record<string, number>);
   console.log(`street priors: ${priors.size} streets (${JSON.stringify(cls)}); ${Object.keys(prior).length} of ${plainShops.length} unmeasured plain shops take one`);
 }
+// Round 7: the awnings measured on panoramas (measure-awning.ts), for template pands.
+{
+  const AWN = 'data/retail-ground/awnings.json';
+  if (fs.existsSync(AWN)) {
+    const a = (JSON.parse(fs.readFileSync(AWN, 'utf8')) as { buildings: Record<string, { hex: string }> }).buildings;
+    const awnings = Object.fromEntries(Object.entries(a).map(([k, v]) => [`NL.IMBAG.Pand.${k}`, v.hex] as const).filter(([id]) => out.buildings[id]).sort((p, q) => p[0] < q[0] ? -1 : 1));
+    if (Object.keys(awnings).length) Object.assign(out, { awnings });
+    console.log(`awnings: ${Object.keys(awnings).length} of ${Object.keys(a).length} measured pands have a template`);
+  }
+}
 // Round 6: each bike shop's class (retailBikes.ts BIKE_RULE: used, premium or rental), which decides what stands outside
 // and in the window; the rule, the counts per class and step, and the panorama spot check go to bike-classes.json.
 {

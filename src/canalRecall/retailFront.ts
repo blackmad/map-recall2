@@ -436,6 +436,9 @@ export type RetailFrontInput = {
    *  front (used: a muted irregular row; premium: a neat clean row; rental: the fleet's identical bikes) and two to
    *  four side-on behind the glass. Absent: the template's racks and pavement discs. */
   bike?: { cls: BikeClass; fleetHex?: string };
+  /** Round 7: the awning measured on a street panorama (measure-awning.ts, staged per pand), over the window in this
+   *  colour, in place of the template's (the black awnings of Unique Eyefashion, Gall & Gall). Absent: the template's. */
+  awning?: string;
 };
 
 /** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
@@ -581,7 +584,8 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     // Transom lights carry their own glazing bars (two per pane) on cafés and small-paned fronts.
     if (hasLights && look.paneM) for (let k = 0; k < panes; k++) for (const t of [1 / 3, 2 / 3]) { const a = c0 + (k + t) * pw; b.panel(a - 0.02, a + 0.02, 0.055, head + FRONT.transomM, puiTop, frame); }
   }
-  if (look.awning) b.slope(s0, s1, 1.1, bottom - 0.05, bottom - 0.55, look.awning);
+  const awning = input.awning ?? look.awning;
+  if (awning) b.slope(s0, s1, 1.1, bottom - 0.05, bottom - 0.55, awning);
   if (look.blade) {
     const at = door && door.a0 < (s0 + s1) / 2 ? s0 + 0.3 : s1 - 0.3;
     b.box(at - 0.03, at + 0.03, 0.05, 0.9, top + 0.35, top + 0.4, '#2a2a2a', false, true);

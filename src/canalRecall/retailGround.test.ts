@@ -502,3 +502,18 @@ test("round 6b: the second logo page (McDonald's, Gall & Gall, Kruidvat), & and 
   assert.equal(templateForTags({ shop: 'alcohol', name: 'Gall & Gall' }), 'gallgall');
   assert.equal(templateForTags({ amenity: 'fast_food', name: "McDonald's" }), 'mcdonalds');
 });
+
+test('round 7: a measured awning draws in its colour, replaces the template awning, and is nothing when absent', () => {
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  // Optician / Unique Eyefashion (pair 17 of round 6): black awnings over a template with none.
+  const plain = retailFrontTris({ template: 'hairdresser', seed: 'p' }, e, 0.3, 6.3, 0, 3.6);
+  const black = retailFrontTris({ template: 'hairdresser', seed: 'p', awning: '#1f1f21' }, e, 0.3, 6.3, 0, 3.6);
+  assert.ok(black.length > plain.length && black.length - plain.length <= 12, `${black.length - plain.length} awning tris`);
+  assert.ok(black.some(t => t.hex === '#1f1f21'));
+  // A template's own awning (greengrocer green) takes the measured colour, at no extra cost.
+  const green = retailFrontTris({ template: 'greengrocer', seed: 'p' }, e, 0.3, 6.3, 0, 3.6);
+  const measured = retailFrontTris({ template: 'greengrocer', seed: 'p', awning: '#1f1f21' }, e, 0.3, 6.3, 0, 3.6);
+  assert.equal(measured.length, green.length);
+  const g = (ts: typeof green) => ts.filter(t => t.hex === TEMPLATE_LOOKS.greengrocer.awning).length; // the fascia shares the green
+  assert.ok(g(measured) < g(green) && measured.some(t => t.hex === '#1f1f21'));
+});
