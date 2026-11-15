@@ -16,7 +16,9 @@ import source from './de-jaren-footprints.json';
 export function buildDeJaren(_w: number, _d: number, b: BuildingTools) {
   const src = source as unknown as {facadeRing: number[][]; surfaces: Surface[]; nativeRing: number[][]};
   const ring = src.facadeRing;
-  addShell(b, src as never, {wall: 'brick', roof: 'dark'});
+  // the narrow gabled block on the Amstel (z > 14) is lighter brick under red tiles (w02-150, w04-145)
+  const cz = (s: Surface) => s.rings[0].reduce((a, p) => a + p[2], 0) / s.rings[0].length;
+  addShell(b, src as never, {wall: 'brick', roof: 'dark', wallFor: s => (cz(s) > 14 ? 'ochre' : 'brick'), roofFor: s => (cz(s) > 14 ? 'copper' : 'dark')});
   const sink0 = getSink();
   setSink(0.05);
   const {f, len} = ringFrame(ring, 1);
@@ -67,10 +69,15 @@ export function buildDeJaren(_w: number, _d: number, b: BuildingTools) {
   for (const [a, c] of [[5.4, 10.0], [12.2, 16.1]] as [number, number][]) {
     const w = (c - a) / 3;
     for (let k = 0; k <= 3; k++) slab(b, f, a + w * k, 1.45, 0.3, 4.0, 0.14, 'stone');
+    // three round-headed lights per group (w01-329, blind review: arcade rhythm, not plain panes)
     for (let k = 0; k < 3; k++) {
-      const t = a + w * (k + 0.5);
-      segBand(b, f, t, 5.15, w, 0.25, 0.22, 0.05, 'greyBrick');
-      win(f, t, 1.65, 5.1, w - 0.32, 1);
+      const t = a + w * (k + 0.5), wl = w - 0.32;
+      archBand(b, f, t, 1.6, wl + 0.36, 3.95, 0.18, 0.05, 'stone');
+      archSlab(b, f, t, 1.61, wl + 0.08, 3.68, 0.09, 'white');
+      archSlab(b, f, t, 1.65, wl - 0.06, 3.6, 0.13, 'glass');
+      slab(b, f, t, 1.65 + 3.6 - wl / 2 - 0.05, wl - 0.06, 0.07, 0.17, 'white');
+      slab(b, f, t, 1.65, 0.06, 3.6 - wl / 2 - 0.05, 0.17, 'white');
+      slab(b, f, t, 1.48, wl + 0.2, 0.13, 0.12, 'stone');
     }
   }
   // cafe blade sign (perpendicular to the front) on its bracket
@@ -96,8 +103,8 @@ export function buildDeJaren(_w: number, _d: number, b: BuildingTools) {
   // ---------- Amstel side: the banded brick bay (ring edge 3) ----------
   {
     const {f: g, len: L} = ringFrame(ring, 3);
-    for (let y = 0.6; y < 6.4; y += 0.7) slab(b, g, L / 2, y, L - 0.1, 0.22, 0.05, 'concrete');
-    for (const [y0, y1] of [[7.0, 9.2], [10.2, 12.2]] as [number, number][]) win(g, L / 2, y0, y1, 2.6, 3);
+    // plain lighter brick with the window grid (blind review: no banding on this block)
+    for (const [y0, y1] of [[1.2, 3.6], [4.4, 6.4], [7.0, 9.2], [10.2, 12.2]] as [number, number][]) win(g, L / 2, y0, y1, 2.6, 3);
   }
   setSink(sink0);
 }

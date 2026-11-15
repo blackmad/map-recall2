@@ -83598,6 +83598,8 @@
  },
  {
   "id": "schiller-rembrandtplein",
+  "status": "held",
+  "heldReason": "Blind review FAIL after the one fix (2026-11-15): the three oriels do not read as pale projecting bays and the brick reads saturated red against the photo's purple-brown. The GLB stays in git; un-hold after a fix round that passes a fresh review.",
   "name": "Hotel Schiller, Rembrandtplein 26",
   "modelUrl": "./models/schiller-rembrandtplein.glb",
   "suppressOsmIds": [
@@ -83986,7 +83988,9 @@
    "blue": "#34466a",
    "bronze": "#2f3234",
    "concrete": "#e4e0d6",
-   "dark": "#2b2b2b"
+   "dark": "#2b2b2b",
+   "ochre": "#8a5c4a",
+   "copper": "#8e4a36"
   },
   "attribution": {
    "title": "Grand Cafe De Jaren, Nieuwe Doelenstraat 20-22: former bank building on the Amstel, cafe since 1990",
