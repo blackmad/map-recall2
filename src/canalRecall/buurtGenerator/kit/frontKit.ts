@@ -47,6 +47,10 @@ export interface BuurtKitFront {
   sash?: 'paired-transom';
   /** The top storey is a ribbon of attic lights across the front, party wall to party wall (round 3: Maasstraat). */
   ribbon?: true;
+  /** The top storey is the attic band (round 13): `KitAttic`. Wins over `ribbon`. */
+  attic?: KitAttic;
+  /** Raised brick parts over the line (round 13): `KitRaised`. */
+  raised?: KitRaised[];
   /** The upper storeys' window rhythm (singles and the stair pair) drawn by the kit (round 4, roofKit.ts drawRhythm). */
   rhythm?: true;
   /** What stands at each party wall: a block's end pier or its middle (pair) wall (round 4). */
@@ -56,9 +60,42 @@ export interface BuurtKitFront {
   /** The member's row neighbours (left/right as seen): a flat series' coping runs on into theirs (no hip). */
   joins?: { left?: boolean; right?: boolean };
   /** A flat series' broad eaves (round 7, Apollo: the 3DBAG roof behind is not seen from the street), overhang (m). */
-  eaves?: { overhangM: number; frieze?: false };
+  eaves?: KitEaves;
   /** The member's street entrances (round 7, a row note from its photo): fraction across the front and what stands there. */
   entries?: BuurtEntry[];
+}
+/**
+ * A flat series' broad eaves. `overhangM` the slab's reach over the street; `frieze` absent the Rooseveltlaan lattice
+ * frieze under it, `false` none. Round 13 (lane R), each drawn only when stated:
+ *  - `fasciaM` the slab's fascia (m; absent 0.4): the Plan Zuid slab is thin, 0.15-0.3 m (Hunzestraat, Kuinderstraat);
+ *  - `lid` the slab is the flat roof's lid: it sits on the coping, so no brick coping shows over it (Hunzestraat: the
+ *    coping read as a pitched brown band over the eaves), and the erkers rise to its soffit.
+ */
+export interface KitEaves { overhangM: number; frieze?: false; fasciaM?: number; lid?: true }
+/** A kit's eaves, validated (null when absent or malformed); stated fields only, in a fixed order. */
+export function kitEavesOf(v: unknown): KitEaves | null {
+  const x = v as { overhangM?: unknown; frieze?: unknown; fasciaM?: unknown; lid?: unknown } | undefined;
+  const ov = Number(x?.overhangM);
+  if (!x || typeof x !== 'object' || !(ov > 0.2 && ov < 2)) return null;
+  const f = Number(x.fasciaM);
+  return { overhangM: ov, ...(x.frieze === false ? { frieze: false as const } : {}),
+    ...(f >= 0.08 && f <= 0.8 ? { fasciaM: f } : {}), ...(x.lid === true ? { lid: true as const } : {}) };
+}
+/** The attic band (round 13, lane R; Stadionkade, Europaplein): the top storey drawn as a white band under the line
+ *  with small paired lights, brick under it; `heightM` the band (m), `pitchM` the light pairs' pitch along the front. */
+export interface KitAttic { heightM?: number; pitchM?: number }
+/** A raised brick part over the series line (round 13, lane R; Pieter Lastmankade's stair blocks 0.65-1.2 m over the
+ *  parapet, Amstelkade's block parapets, Rubensstraat's and Borssenburgstraat's piers): across [a0, a1] of the front (left
+ *  to right as seen), `riseM` over the line, `outM` proud of the wall (absent: flush; a proud part runs from the pavement
+ *  and hides the windows behind it, so it is for piers and fins between windows). */
+export interface KitRaised { a0: number; a1: number; riseM: number; outM?: number }
+export const raisedOf = (v: unknown): KitRaised[] => (Array.isArray(v) ? v : []).filter((r): r is KitRaised => !!r && typeof r === 'object'
+  && [r.a0, r.a1, r.riseM].every(Number.isFinite) && r.a0 >= 0 && r.a1 <= 1 && r.a1 - r.a0 > 0.005 && r.riseM > 0.1 && r.riseM <= 6)
+  .map(r => ({ a0: r.a0, a1: r.a1, riseM: r.riseM, ...(Number.isFinite(r.outM) && r.outM! > 0 && r.outM! <= 1.5 ? { outM: r.outM } : {}) }));
+export function kitAtticOf(v: unknown): KitAttic | null {
+  if (!v || typeof v !== 'object') return null;
+  const x = v as { heightM?: unknown; pitchM?: unknown }, h = Number(x.heightM), p = Number(x.pitchM);
+  return { ...(h >= 0.5 && h <= 3 ? { heightM: h } : {}), ...(p >= 0.6 && p <= 4 ? { pitchM: p } : {}) };
 }
 /** An entrance: `door` a red door in a white frame; `canopy` that door under a white flat canopy; `gable-bay` the
  *  portiek bay: a brick strip proud of the wall from the pavement through the eaves, the stair's narrow lights up it, the
@@ -71,7 +108,7 @@ export const entriesOf = (v: unknown): BuurtEntry[] => (Array.isArray(v) ? v : [
 export const KIT_MULLION_SHARE = 0.3;
 /** A flat series draws the low coping when the kit hangs anything on its front (erkers, ribbon, rhythm, piers). */
 /** Round 10: a member carrying its series' `copingHex` draws the coping too (the series line runs through). */
-export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.rhythm || k.sides || k.loggias || k.eaves || k.entries?.length || k.copingHex);
+export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.sides || k.loggias || k.eaves || k.entries?.length || k.copingHex);
 /** A flat series with erkers draws its lid as a low coping behind the white cornice ledge (m), the erkers on it. */
 export const KIT_FLAT_RISE_M = 0.55;
 
@@ -145,11 +182,11 @@ export function buurtKitOf(v: unknown): BuurtKitFront | null {
   const rr = k.roof as { dormers?: unknown; eavesM?: unknown; eavesFrieze?: unknown } | undefined, eavesM = Number(rr?.eavesM);
   const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM), ...(hex ? { roofHex: hex } : {}),
     ...(rr?.dormers === false ? { dormers: false as const } : {}), ...(eavesM > 0.2 && eavesM < 2 ? { eavesM, ...(rr?.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } : undefined;
-  const x = v as { sash?: unknown; ribbon?: unknown; copingHex?: unknown; rhythm?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown }; eaves?: { overhangM?: unknown; frieze?: unknown }; entries?: unknown };
-  const fe = Number(x.eaves?.overhangM), flatEaves = !roof && fe > 0.2 && fe < 2 ? { overhangM: fe, ...(x.eaves?.frieze === false ? { frieze: false as const } : {}) } : null, entries = entriesOf(x.entries);
+  const x = v as { sash?: unknown; ribbon?: unknown; attic?: unknown; raised?: unknown; copingHex?: unknown; rhythm?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown }; eaves?: unknown; entries?: unknown };
+  const flatEaves = !roof ? kitEavesOf(x.eaves) : null, entries = entriesOf(x.entries), attic = kitAtticOf(x.attic), raised = raisedOf(x.raised);
   const side = (q: unknown) => q === 'pier' || q === 'pair' ? q : null, sl = side(x.sides?.left), sr = side(x.sides?.right);
   const joins = k.joins && typeof k.joins === 'object' ? { ...(k.joins.left === true ? { left: true } : {}), ...(k.joins.right === true ? { right: true } : {}) } : {};
-  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}), ...(flatEaves ? { eaves: flatEaves } : {}), ...(entries.length ? { entries } : {}) };
+  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}), ...(flatEaves ? { eaves: flatEaves } : {}), ...(entries.length ? { entries } : {}), ...(attic ? { attic } : {}), ...(raised.length ? { raised } : {}) };
 }
 
 /**

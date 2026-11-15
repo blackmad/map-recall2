@@ -307,3 +307,49 @@ test('round 12: timber erker fronts, one-storey oriels on an apron, corner oriel
   const faces = (o: typeof tim) => o.filter(t => t.part === 'plate' && t.p.some(q => q[0] > L4 / 2 + 0.1)).length;
   assert.equal(faces(draw({ erkers: [{ ...half, corner: true }] })), faces(draw({ erkers: [half] })) + 2, 'one more brick face, the closed side');
 });
+
+test('round 13: a thin eaves slab as the flat roof\'s lid; the attic band in the top storey', async () => {
+  const { ATTIC_LOOK, ERKER_LOOK, eavesSlabOf, buurtRoofKitOf } = await import('./roofKit.js');
+  const { KIT_FLAT_RISE_M, kitEavesOf, kitAtticOf, buurtKitOf } = await import('./frontKit.js');
+  const draw = (k: Partial<BuurtRoofKit>) => { const s = sink(); drawKitFront(s, kit4(k), L4, W4, 1); return s.out; };
+  // Parsing: stated fields only; old records parse as before.
+  assert.deepEqual(kitEavesOf({ overhangM: 1, frieze: false }), { overhangM: 1, frieze: false });
+  assert.deepEqual(kitEavesOf({ overhangM: 1.1, frieze: false, fasciaM: 0.2, lid: true, junk: 1 }), { overhangM: 1.1, frieze: false, fasciaM: 0.2, lid: true });
+  assert.deepEqual(kitAtticOf({ heightM: 1.1, pitchM: 9 }), { heightM: 1.1 });
+  assert.deepEqual(buurtKitOf({ frontLine: line, erkers: [], eaves: { overhangM: 1, lid: true }, attic: {} })?.attic, {});
+  assert.deepEqual(buurtRoofKitOf({ ...kit4({}), attic: { pitchM: 1.4 }, eaves: { overhangM: 1, fasciaM: 0.2 } })?.eaves, { overhangM: 1, fasciaM: 0.2 });
+  // Lid: the slab's top clears the coping, its fascia the stated thickness, nothing over it.
+  const lid = kit4({ eaves: { overhangM: 1.1, frieze: false, fasciaM: 0.2, lid: true } });
+  const slab = eavesSlabOf(lid);
+  assert.ok(slab.z1 > KIT_FLAT_RISE_M && Math.abs(slab.z1 - slab.z0 - 0.2) < 1e-9);
+  assert.deepEqual(eavesSlabOf(kit4({ eaves: { overhangM: 1, frieze: false } })), { z0: 0, z1: 0.4 }, 'absent: the slab on the line, 0.4 m');
+  const out = draw({ ...lid, erkers: [{ a0: 0.3, a1: 0.7, depthM: 0.7, faceM: 1.9 }] });
+  assert.ok(Math.abs(Math.max(...out.flatMap(t => t.p.map(q => q[2]))) - slab.z1) < 1e-6, 'the slab is the top');
+  // The erker under a lid rises to the soffit and its cap is the slab's thickness.
+  const erkTop = Math.max(...out.filter(t => t.p.some(q => q[0] > L4 / 2 + 0.5) && t.p.every(q => Math.abs(q[1]) < 2)).flatMap(t => t.p.map(q => q[2])));
+  assert.ok(erkTop <= slab.z1 + 1e-6);
+  // Attic: a white band from the line down its height, pairs of lights in it, a brick plate over the storey.
+  const at = draw({ attic: { heightM: 1.2, pitchM: 1.6 } });
+  const glass = at.filter(t => t.hex === ATTIC_LOOK.glass);
+  assert.ok(glass.length >= 2 * 3 && glass.every(t => t.p.every(q => q[2] < 0 && q[2] > -1.2)));
+  assert.ok(at.some(t => t.hex === ERKER_LOOK.white && t.p.some(q => Math.abs(q[2] + 1.2) < 1e-6)) && at.some(t => t.part === 'plate'));
+  assert.ok(kitDrawsFront(kit4({ attic: {} })) && kitWantsCoping({ erkers: [], attic: {} } as never));
+  // With a ribbon stated too, the attic draws in its place.
+  assert.equal(draw({ attic: {}, ribbon: true }).length, draw({ attic: {} }).length);
+});
+
+test('round 13: raised brick parts over the line, flush or proud from the pavement', async () => {
+  const { RAISED_LOOK } = await import('./roofKit.js');
+  const { raisedOf, buurtKitOf } = await import('./frontKit.js');
+  assert.deepEqual(raisedOf([{ a0: 0.1, a1: 0.4, riseM: 1.2 }, { a0: 0.5, a1: 0.4, riseM: 1 }, { a0: 0.6, a1: 0.7, riseM: 2, outM: 0.2 }]), [{ a0: 0.1, a1: 0.4, riseM: 1.2 }, { a0: 0.6, a1: 0.7, riseM: 2, outM: 0.2 }]);
+  const front = buurtKitOf({ frontLine: line, erkers: [], raised: [{ a0: 0.6, a1: 0.9, riseM: 1.2 }, { a0: 0, a1: 0.05, riseM: 2, outM: 0.15 }] })!;
+  assert.ok(kitWantsCoping(front));
+  const kit = buurtRoofKitFor(front, 12, 4, 3)!;
+  assert.equal(kit.footZ, -12);
+  const s = sink(); drawKitFront(s, kit, L4, W4, 1);
+  const zs = s.out.flatMap(t => t.p.map(q => q[2]));
+  assert.ok(Math.abs(Math.max(...zs) - (2 + RAISED_LOOK.copingM)) < 1e-9 && Math.abs(Math.min(...zs) + 12) < 1e-9, 'the proud pier from the pavement to 2 m over the line');
+  const flush = s.out.filter(t => t.p.every(q => q[1] >= (0.6 - 0.5) * W4 - 0.05 - 1e-9 && q[1] <= (0.9 - 0.5) * W4 + 0.05 + 1e-9));
+  assert.ok(flush.length && flush.every(t => t.p.every(q => q[2] >= -0.05 - 1e-9)), 'a flush part stands on the line');
+  assert.equal(buurtRoofKitFor({ erkers: [] }, 12, 4, 3)!.raised, undefined);
+});

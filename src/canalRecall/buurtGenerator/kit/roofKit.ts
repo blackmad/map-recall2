@@ -12,7 +12,7 @@
  *    BAG outline has it (frontKit.ts `erkersOf`), never by dice.
  */
 import type { RoofSink, V3 } from '../../roofSink.js';
-import { entriesOf, erkerRowsOf, type BuurtEntry, type BuurtErker } from './frontKit.js';
+import { entriesOf, erkerRowsOf, kitAtticOf, kitEavesOf, raisedOf, KIT_FLAT_RISE_M, type BuurtEntry, type BuurtErker, type KitAttic, type KitEaves, type KitRaised } from './frontKit.js';
 
 export interface BuurtRoofKit {
   /** Street slope pitch (degrees): the row mansard's band becomes a pitched roof face. Absent: the stock band. */
@@ -28,6 +28,10 @@ export interface BuurtRoofKit {
   dormer?: { widthM: number; heightM: number; setback: number };
   /** The top storey is a ribbon of attic lights across the front (round 3, Maasstraat): `drawRibbon`. */
   ribbon?: true;
+  /** The top storey is the attic band (round 13): `drawAttic`, in place of the ribbon. */
+  attic?: KitAttic;
+  /** Raised brick parts over the line (round 13): `drawRaised`; `footZ` the pavement under the line (m) for proud ones. */
+  raised?: KitRaised[]; footZ?: number;
   /** Joined sides (left/right as seen): the ribbon and the eaves run on through the party wall there. */
   joins?: { left?: boolean; right?: boolean };
   /** What stands at each party wall (round 4, Maasstraat): `pier` a brick pilaster rising to a chimney stack over the
@@ -38,7 +42,7 @@ export interface BuurtRoofKit {
    *  side, drawn by the kit over a brick plate (`drawRhythm`), in place of the mesher's even cells. */
   rhythm?: true;
   /** Broad flat eaves with a white soffit and fascia over the street front (round 4, Rooseveltlaan): overhang (m). */
-  eaves?: { overhangM: number; /** false: no lattice frieze, the slab sits on the line. */ frieze?: false };
+  eaves?: KitEaves;
   /** Erker windows as continuous white bands, corner to corner on every face (round 5, Rooseveltlaan). */
   erkerBands?: true;
   /** Loggias on every upper storey between the erkers (round 5, Rooseveltlaan's west end): `drawLoggias`. */
@@ -69,6 +73,18 @@ export const ENTRY_LOOK = { doorW: 1.1, doorH: 2.3, frameM: 0.12, plateW: 2.0, r
 export const LOGGIA_LOOK = { parapetM: 1.0, headM: 0.25, sideM: 0.35, minM: 1.5, dark: '#2f2b29', backInsetM: 0.3 } as const;
 /** The eaves frieze's height on a kit (0 when the eaves have none). */
 export const friezeOf = (kit: BuurtRoofKit): number => kit.eaves && kit.eaves.frieze !== false ? EAVES_LOOK.friezeM : 0;
+/** The attic band (round 13, lane R; Stadionkade 2025-07-30 at 26 px/m, Europaplein 2025-07-14 at 35 px/m): the top
+ *  storey under the eaves slab is a white band 1.3 m tall up to the line (Europaplein about 1.0, Stadionkade about 1.6),
+ *  a white sill ledge 0.12 m at its foot, brick under it; in it pairs of small lights 0.32 x 0.6 m with a 0.1 m white
+ *  mullion, a pair every 1.6 m, centred in the band, dark glass in a 0.05 m white frame. */
+export const ATTIC_LOOK = { heightM: 1.3, sillM: 0.12, lightW: 0.32, lightH: 0.6, mullionM: 0.1, pitchM: 1.6, frameM: 0.05, endM: 0.4, glass: '#3e4a52' } as const;
+/** The eaves slab's underside and top over the line (m): the lattice or attic band's top, or with `lid` the coping's top
+ *  less the fascia, so the slab caps the coping and nothing shows over it. */
+export function eavesSlabOf(kit: BuurtRoofKit): { z0: number; z1: number } {
+  const fz = friezeOf(kit), fa = kit.eaves?.fasciaM ?? EAVES_LOOK.thickM;
+  const z0 = kit.eaves?.lid ? Math.max(fz, KIT_FLAT_RISE_M + 0.03 - fa) : fz;
+  return { z0, z1: z0 + fa };
+}
 /** The kit plates over the mesher's front: brick at 0.09 m, glass 0.1 m, white frames 0.115 m proud of the wall. */
 const PLATE_O = 0.09, GLASS_O = 0.1, FRAME_O = 0.115;
 
@@ -115,11 +131,11 @@ export function buurtRoofKitOf(v: unknown): BuurtRoofKit | null {
   const sd = k.sides as { left?: unknown; right?: unknown } | undefined, side = (x: unknown): KitSide | null => x === 'pier' || x === 'pair' ? x : null;
   const sides = sd && typeof sd === 'object' ? { ...(side(sd.left) ? { left: side(sd.left)! } : {}), ...(side(sd.right) ? { right: side(sd.right)! } : {}) } : {};
   const entries = entriesOf(k.entries), gz = Number(k.groundZ);
-  const ev = k.eaves as { overhangM?: unknown; frieze?: unknown } | undefined, eaves = ev && Number(ev.overhangM) > 0.2 && Number(ev.overhangM) < 2 ? { overhangM: Number(ev.overhangM), ...(ev.frieze === false ? { frieze: false as const } : {}) } : null;
+  const eaves = kitEavesOf(k.eaves), attic = kitAtticOf(k.attic), raised = raisedOf(k.raised), fz = Number(k.footZ);
   return { ...(pitch > 10 && pitch < 80 ? { pitchDeg: pitch } : {}), ...(hex ? { roofHex: hex } : {}), ...(dormer ? { dormer } : {}), erkers, z0: Number(k.z0), storeyM: Number(k.storeyM), rows: Math.round(Number(k.rows)), capM: Number(k.capM),
     ...(joins.left || joins.right ? { joins } : {}), ...(k.ribbon === true ? { ribbon: true as const } : {}), ...(k.rhythm === true ? { rhythm: true as const } : {}),
     ...(sides.left || sides.right ? { sides } : {}), ...(eaves ? { eaves } : {}), ...(k.erkerBands === true ? { erkerBands: true as const } : {}), ...(k.loggias === true ? { loggias: true as const } : {}),
-    ...(entries.length && gz < 0 ? { entries, groundZ: gz } : {}) };
+    ...(entries.length && gz < 0 ? { entries, groundZ: gz } : {}), ...(attic ? { attic } : {}), ...(raised.length && fz < 0 ? { raised, footZ: fz } : {}) };
 }
 
 /**
@@ -128,13 +144,16 @@ export function buurtRoofKitOf(v: unknown): BuurtRoofKit | null {
  */
 export function drawErkers(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
   // Under broad eaves the erker rises through the frieze to the eaves slab, which caps it (Rooseveltlaan).
-  const Lk = ERKER_LOOK, T = TIMBER_LOOK, z0 = kit.z0, zLine = kit.eaves ? friezeOf(kit) : kit.capM;
+  // Round 13: under a lid the erker rises to the slab's soffit (Hunzestraat).
+  const Lk = ERKER_LOOK, T = TIMBER_LOOK, z0 = kit.z0, ev = kit.eaves;
+  const zLine = !ev ? kit.capM : ev.lid ? eavesSlabOf(kit).z0 : friezeOf(kit);
   // (c, o, z): c across the front left to right as seen, o out from the wall, z up from the series line.
   const P = (c: number, o: number, z: number): V3 => [e * (L / 2 + o), e * c, z];
   const H = (dc: number, doo: number, dz: number): V3 => [e * doo, e * dc, dz];
   for (const k of kit.erkers) {
     // Round 12: a bay over fewer storeys than the series stops under the next floor, with its own white cap.
-    const rows = erkerRowsOf(k, kit.rows), partial = rows < kit.rows, timber = k.front === 'timber';
+    // Round 13: under the attic band an erker without its own storeys stops under the attic storey (Europaplein).
+    const rows = erkerRowsOf(k, kit.attic && kit.rows > 1 && !k.storeys ? kit.rows - 1 : kit.rows), partial = rows < kit.rows, timber = k.front === 'timber';
     const z1 = partial ? z0 + rows * kit.storeyM - T.partialCapGapM : zLine;
     const c0 = (k.a0 - 0.5) * W, c1 = (k.a1 - 0.5) * W, cm = (c0 + c1) / 2, d = Math.min(k.depthM, 1.2);
     // BAG's span inside its cells: brick over a cell whose window the erker half covers.
@@ -186,7 +205,7 @@ export function drawErkers(s: RoofSink, kit: BuurtRoofKit, L: number, W: number,
       for (let i = 1; i < 3; i++) { s.tri(lo[0], lo[i], lo[i + 1], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, -1], Lk.white); s.tri(hi[0], hi[i], hi[i + 1], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], Lk.white); }
     };
     slab(z0 - Lk.sillM, z0);
-    slab(z1, z1 + (kit.eaves && !partial ? EAVES_LOOK.thickM : Lk.capM));
+    slab(z1, z1 + (ev && !partial ? ev.fasciaM ?? EAVES_LOOK.thickM : Lk.capM));
   }
 }
 
@@ -229,7 +248,7 @@ export const erkerCapOf = (front: { roof?: unknown }): number => front.roof ? ER
 
 /** The roof kit a member's front kit asks for: its erkers over the upper storeys (the series' ground and storey lines,
  *  rowFront.ts rowGroundM) and the series pitch. `topM` is the series line, `groundM` the ground storey's top. */
-export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg: number; riseM?: number; roofHex?: string; dormers?: false; eavesM?: number; eavesFrieze?: false }; ribbon?: true; rhythm?: true; sides?: { left?: KitSide; right?: KitSide }; copingHex?: string; erkerBands?: true; loggias?: true; joins?: { left?: boolean; right?: boolean }; eaves?: { overhangM: number; frieze?: false }; entries?: BuurtEntry[] }, topM: number, storeys: number, groundM: number): BuurtRoofKit | null {
+export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg: number; riseM?: number; roofHex?: string; dormers?: false; eavesM?: number; eavesFrieze?: false }; ribbon?: true; attic?: KitAttic; raised?: KitRaised[]; rhythm?: true; sides?: { left?: KitSide; right?: KitSide }; copingHex?: string; erkerBands?: true; loggias?: true; joins?: { left?: boolean; right?: boolean }; eaves?: KitEaves; entries?: BuurtEntry[] }, topM: number, storeys: number, groundM: number): BuurtRoofKit | null {
   const rows = Math.max(1, storeys - 1), storeyM = (topM - groundM) / rows;
   if (!(storeyM > 1.5) || !(groundM > 1.5)) return null;
   // The broad eaves: the pitched roof's (round 4), else a flat series' own (round 7).
@@ -242,21 +261,37 @@ export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg
     ...(sided && front.joins ? { joins: { ...front.joins } } : {}), ...(front.ribbon ? { ribbon: true as const } : {}), ...(front.rhythm && !front.erkers.length ? { rhythm: true as const } : {}),
     ...(front.sides && (front.ribbon || front.rhythm) ? { sides: { ...front.sides } } : {}), ...(eaves ? { eaves } : {}),
     ...(front.erkerBands && front.erkers.length ? { erkerBands: true as const } : {}), ...(front.loggias ? { loggias: true as const } : {}),
-    ...(front.entries?.length ? { entries: front.entries.map(x => ({ ...x })), groundZ: +(-topM).toFixed(3) } : {}) };
+    ...(front.entries?.length ? { entries: front.entries.map(x => ({ ...x })), groundZ: +(-topM).toFixed(3) } : {}), ...(front.attic ? { attic: { ...front.attic } } : {}),
+    ...(front.raised?.length ? { raised: front.raised.map(x => ({ ...x })), footZ: +(-topM).toFixed(3) } : {}) };
 }
 
 /** Whether the kit draws anything on the street end (the roof hook runs `drawKitFront` then). */
-export const kitDrawsFront = (k: BuurtRoofKit): boolean => !!(k.erkers.length || k.ribbon || k.rhythm || k.eaves || k.sides || k.loggias || k.entries?.length);
+export const kitDrawsFront = (k: BuurtRoofKit): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.eaves || k.sides || k.loggias || k.entries?.length);
 
 /** Everything the kit draws on the street end `e` of a row roof box (L deep, W wide), in drawing order. */
 export function drawKitFront(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
   if (kit.rhythm) drawRhythm(s, kit, L, W, e);
-  if (kit.ribbon) drawRibbon(s, kit, L, W, e);
+  if (kit.attic) drawAttic(s, kit, L, W, e);
+  else if (kit.ribbon) drawRibbon(s, kit, L, W, e);
   if (kit.sides) drawPiers(s, kit, L, W, e);
   if (kit.loggias) drawLoggias(s, kit, L, W, e);
   if (kit.eaves) drawEaves(s, kit, L, W, e);
   drawErkers(s, kit, L, W, e);
   if (kit.entries?.length) drawEntries(s, kit, L, W, e);
+  if (kit.raised?.length) drawRaised(s, kit, L, W, e);
+}
+
+/** A raised part's box behind the wall (m: it reads as a block, not a sheet, over the roof) and its coping. */
+export const RAISED_LOOK = { backM: 0.35, copingM: 0.08, copingOutM: 0.04 } as const;
+/** The raised brick parts (round 13, KitRaised): a brick box from the line (a proud one from the pavement) to its rise,
+ *  reaching back over the roof, and a thin brick coping on it. */
+export function drawRaised(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
+  const R = RAISED_LOOK;
+  for (const r of kit.raised ?? []) {
+    const c0 = (r.a0 - 0.5) * W, c1 = (r.a1 - 0.5) * W, out = r.outM ?? 0.01, foot = r.outM ? kit.footZ ?? kit.z0 : -0.05;
+    frontBox(s, L, e, c0, c1, -R.backM, out, foot, r.riseM, 'plate');
+    frontBox(s, L, e, c0 - R.copingOutM, c1 + R.copingOutM, -R.backM - R.copingOutM, out + R.copingOutM, r.riseM, r.riseM + R.copingM, 'plate');
+  }
 }
 
 /** A box in the front frame: c0..c1 across, o0..o1 out from the wall, z0..z1 up; its front, top, bottom and two cheeks. */
@@ -356,7 +391,7 @@ function light(q: ReturnType<typeof frontQuad>, c0: number, c1: number, za: numb
  * stair pair (one light and half the white panel; the neighbour draws the other half).
  */
 export function drawRhythm(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
-  const R = RHYTHM_LOOK, q = frontQuad(s, L, e), rows = kit.rows - (kit.ribbon ? 1 : 0);
+  const R = RHYTHM_LOOK, q = frontQuad(s, L, e), rows = kit.rows - (kit.ribbon || kit.attic ? 1 : 0);
   if (rows < 1) return;
   q(-W / 2, W / 2, kit.z0 + 0.05, kit.z0 + rows * kit.storeyM - 0.05, PLATE_O, 'plate');
   const pairL = kit.sides?.left === 'pair', pairR = kit.sides?.right === 'pair', reach = R.pairPanelM + R.pairLightM;
@@ -433,13 +468,37 @@ export function drawEaves(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, 
     const P = (cc: number, z: number): V3 => [e * (L / 2 + FRAME_O), e * cc, z], t = E.strutM / 2;
     for (const sg of [-1, 1] as const) s.quad(P(c - t, za), P(c + t, za), P(c + sg * h + t, zb), P(c + sg * h - t, zb), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [e, 0, 0], wh);
   }
-  const cL = -W / 2 - (kit.joins?.left ? 0 : ov), cR = W / 2 + (kit.joins?.right ? 0 : ov), zb0 = fz, zt = fz + E.thickM;
+  const cL = -W / 2 - (kit.joins?.left ? 0 : ov), cR = W / 2 + (kit.joins?.right ? 0 : ov), { z0: zb0, z1: zt } = eavesSlabOf(kit);
   const P = (c: number, o: number, z: number): V3 => [e * (L / 2 + o), e * c, z];
+  // A lid: the wall runs up to its soffit in front of the coping (Hunzestraat: brick to the slab, no roof seen).
+  if (kit.eaves!.lid && zb0 > fz) q(-W / 2, W / 2, fz - 0.02, zb0, PLATE_O, 'plate');
   s.quad(P(cL, -E.backM, zb0), P(cR, -E.backM, zb0), P(cR, ov, zb0), P(cL, ov, zb0), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, -1], wh);
   s.quad(P(cL, ov, zb0), P(cR, ov, zb0), P(cR, ov, zt), P(cL, ov, zt), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [e, 0, 0], wh);
   s.quad(P(cL, ov, zt), P(cR, ov, zt), P(cR, -E.backM, zt), P(cL, -E.backM, zt), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], wh);
   for (const [c, sg, open] of [[cL, -1, kit.joins?.left], [cR, 1, kit.joins?.right]] as const) if (!open)
     s.quad(P(c, -E.backM, zb0), P(c, ov, zb0), P(c, ov, zt), P(c, -E.backM, zt), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, e * sg, 0], wh);
+}
+
+/** The attic band (ATTIC_LOOK) in the top storey: a brick plate over the storey (the mesher's windows go), the white band
+ *  from the line down its height with the sill ledge at its foot, and pairs of small lights at the stated pitch, centred
+ *  on the member. */
+export function drawAttic(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
+  const A = ATTIC_LOOK, wh = ERKER_LOOK.white, q = frontQuad(s, L, e), pitch = kit.attic?.pitchM ?? A.pitchM;
+  const h = Math.min(kit.attic?.heightM ?? A.heightM, kit.storeyM - 0.2), zb = -h;
+  q(-W / 2, W / 2, -kit.storeyM + 0.05, -0.02, PLATE_O, 'plate');
+  q(-W / 2, W / 2, zb, 0, PLATE_O + 0.005, 'trim', wh);
+  q(-W / 2, W / 2, zb - A.sillM, zb, FRAME_O + 0.02, 'trim', wh);
+  const lh = Math.min(A.lightH, h - 0.3), za = zb + (h - lh) / 2, pw = 2 * A.lightW + A.mullionM;
+  const n = Math.max(1, Math.floor((W - 2 * A.endM + pitch - pw) / pitch));
+  if (lh < 0.25) return;
+  for (let i = 0; i < n; i++) {
+    const c = (i - (n - 1) / 2) * pitch, c0 = c - pw / 2, c1 = c + pw / 2;
+    q(c0, c1, za, za + lh, GLASS_O + 0.01, 'trim', A.glass);
+    const f = A.frameM;
+    q(c0, c0 + f, za, za + lh, FRAME_O, 'trim', wh); q(c1 - f, c1, za, za + lh, FRAME_O, 'trim', wh);
+    q(c0, c1, za, za + f, FRAME_O, 'trim', wh); q(c0, c1, za + lh - f, za + lh, FRAME_O, 'trim', wh);
+    q(c - A.mullionM / 2, c + A.mullionM / 2, za, za + lh, FRAME_O, 'trim', wh);
+  }
 }
 
 /**
