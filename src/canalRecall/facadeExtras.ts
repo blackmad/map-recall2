@@ -282,7 +282,7 @@ export const ROOF_COMPONENTS: readonly RoofComponent[] = [
  */
 /** `stoopWall`: what a spec stoop's street wall (K-stoep #360) may spend past `wall`, still inside `building`: a double
  *  flight is 15 tread/landing boxes (120 triangles) before its iron, 188 with plain rails, 212 with bars. */
-export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetReserve: 160, stoopWall: 60, rowWall: 1600 } as const;
+export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetReserve: 160, stoopWall: 60, rowWall: 1600, rowGlazing: 1600 } as const;
 
 /** Everything a wall can get: the architecture first (it is what reads from down the street), then the furniture. */
 // The budget runs out in this order, so the parts that read from down the street come first:
@@ -329,9 +329,11 @@ export function buildingWallExtras(contexts: readonly ExtraContext[], sink: Extr
   // House rows (lane R): a series member's street wall carries its stated heads and cornice (EXTRA_BUDGET.rowWall);
   // without a row dressing the building budget is unchanged.
   const rowWalls = ordered.filter(({ c }) => c.rowDress && isStreetWall(c)).length;
+  // Stated joinery (row-sash, round 5) draws every upper window's frame and bars: its walls get that much more.
+  const glazed = ordered.filter(({ c }) => c.rowDress?.glazing && isStreetWall(c)).length * EXTRA_BUDGET.rowGlazing;
   // A kinked front (Kinkerstraat 126-138: three street walls and a side street) spent the two-wall cap on its first walls,
   // and the gable axes' arch rings on its last wall never drew (round 4): the cap grows with the row walls past two.
-  if (rowWalls) sink.budget = Math.max(sink.budget, Math.min(sink.tris.length + rowWalls * EXTRA_BUDGET.rowWall, EXTRA_BUDGET.building + Math.max(2, rowWalls) * EXTRA_BUDGET.rowWall));
+  if (rowWalls) sink.budget = Math.max(sink.budget, Math.min(sink.tris.length + rowWalls * EXTRA_BUDGET.rowWall + glazed, EXTRA_BUDGET.building + Math.max(2, rowWalls) * EXTRA_BUDGET.rowWall + glazed));
   // A HouseSpec's stated parts (route A fields, houseSpec/routeAFields.ts) dress on every wall before any wall's dice trim
   // spends the building budget: Weteringschans 171192's stated bands never reached its 6.3 m front after two short street
   // walls had spent it (lane WG step 3). Absent `statedFirst`, nothing changes.
@@ -366,7 +368,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
   const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
-  const remaining = Math.max(0, (street ? (c.rowDress ? EXTRA_BUDGET.rowWall : EXTRA_BUDGET.wall) + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
+  const remaining = Math.max(0, (street ? (c.rowDress ? EXTRA_BUDGET.rowWall + (c.rowDress.glazing ? EXTRA_BUDGET.rowGlazing : 0) : EXTRA_BUDGET.wall) + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
   if(phase!=='optional'&&phase!=='stated'&&street&&c.recipe?.shopCanopy&&(!c.onlyExtras||c.onlyExtras.includes('continuous-shop-canopy'))){
     const before=sink.tris.length;

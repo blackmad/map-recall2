@@ -274,6 +274,51 @@ const ROW_GLASS = { light: '#566b79', pane: '#2c3b46' } as const;
 const ROW_TYPE_GLASS = { light: '#8d9ca5', pane: '#5f6f79', frame: 0.1, frameOut: 0.03 } as const;
 /** A single stated shopfront (row-shopfront): frame and fascia in the stated colour, a door, one wide curtained pane. */
 const ROW_SHOP = { glass: '#2f3a40', sheen: '#3b4950', panel: '#3c464b', doorHex: '#262c30', door: 1.05, post: 0.14, riser: 0.45, fascia: 0.45, side: 0.22, out: 0.03 } as const;
+/** Row joinery (row-sash): the glass a little proud of the painted cell, the frame and bars proud of the glass. */
+const ROW_SASH_OUT = { glass: 0.014, frame: 0.024 } as const;
+/** Panes per sash by window kind (RowDesign.glazing.panes overrides): 8-over-8, 12-over-12 small panes, a plain sash 1. */
+const ROW_SASH_PANES: Readonly<Record<string, number>> = { 'sash-8-over-8': 8, 'sash-small-panes': 12, sash: 1, 'small-over-one': 6, arched: 6 };
+/** A sash's panes as columns x rows: the factor pair whose panes stand closest to 1.3 tall to 1 wide (at most 4 columns). */
+export function sashGrid(n: number, w: number, h: number): [number, number] {
+  let best: [number, number] = [1, n], err = Infinity;
+  for (let cols = 1; cols <= Math.min(4, n); cols++) {
+    if (n % cols) continue;
+    const rows = n / cols, e = Math.abs(Math.log((h / rows) / (w / cols) / 1.3));
+    if (e < err - 1e-9) { err = e; best = [cols, rows]; }
+  }
+  return best;
+}
+type SashPiece = { x0: number; x1: number; z0: number; z1: number; out: number; hex: string };
+/** One window's joinery as flat pieces (wall metres): glass, the white frame ring, then the kind's bars. */
+export function rowSashPieces(g: { kind: string; frameM: number; barM: number; panes?: number }, x0: number, x1: number, z0: number, z1: number): SashPiece[] {
+  const w = x1 - x0, h = z1 - z0, F = Math.min(g.frameM, w * 0.2, h * 0.12), B = g.barM;
+  if (w < 0.3 || h < 0.4) return [];
+  const gx0 = x0 + F, gx1 = x1 - F, gz0 = z0 + F, gz1 = z1 - F, out: SashPiece[] = [];
+  const glass = (a: number, b: number, hex: string) => out.push({ x0: gx0, x1: gx1, z0: a, z1: b, out: ROW_SASH_OUT.glass, hex });
+  const piece = (a0: number, a1: number, b0: number, b1: number) => out.push({ x0: a0, x1: a1, z0: b0, z1: b1, out: ROW_SASH_OUT.frame, hex: WHITE });
+  const vbar = (x: number, b0: number, b1: number) => piece(x - B / 2, x + B / 2, b0, b1);
+  const hbar = (z: number, wide = 1) => piece(gx0, gx1, z - B * wide / 2, z + B * wide / 2);
+  const split = gz1 - (gz1 - gz0) * 0.29;
+  glass(split, gz1, ROW_GLASS.light); glass(gz0, split, ROW_GLASS.pane);
+  // The frame ring: head, sill rail, jambs.
+  piece(x0, x1, gz1, z1); piece(x0, x1, z0, gz0); piece(x0, gx0, gz0, gz1); piece(gx1, x1, gz0, gz1);
+  const gw = gx1 - gx0, gh = gz1 - gz0, mid = (gx0 + gx1) / 2;
+  if (g.kind in ROW_SASH_PANES || g.kind.startsWith('sash')) {
+    // Two sashes on a meeting rail, each its grid of panes.
+    const n = g.panes ?? ROW_SASH_PANES[g.kind] ?? 1, zm = gz0 + gh / 2;
+    hbar(zm, 1.6);
+    // Small panes over one (small-over-one): the upper sash alone is glazed in panes.
+    const lower = g.kind !== 'small-over-one', [cols, rows] = sashGrid(n, gw, gh / 2);
+    for (let i = 1; i < cols; i++) vbar(gx0 + gw * i / cols, lower ? gz0 : zm, gz1);
+    for (const base of lower ? [gz0, zm] : [zm]) for (let j = 1; j < rows; j++) hbar(base + gh / 2 * j / rows);
+  } else if (g.kind === 'casement') vbar(mid, gz0, gz1);
+  else {
+    // T-window, tall upper sash, casements under a toplight: the transom and a mullion under it.
+    const zt = g.kind === 'casement-toplight' ? gz1 - gh * 0.25 : split;
+    hbar(zt, 1.4); vbar(mid, gz0, zt);
+  }
+  return out;
+}
 /** Where a head stands: on the opening's head line, or lowered into the opening's top when it would run into the cornice
  *  (Kinkerstraat 90's top storey: the arches sit right under the corona); null when that would take half the opening. */
 function headLine(c: ExtraContext, w: RowWindow, rise: number): number | null {
@@ -291,6 +336,22 @@ function grammarHead(c: ExtraContext, s: ExtraSink, w: RowWindow, g: HeadGrammar
 
 /** House rows: a front's stated parts beyond the heads and cornice, drawn only when the series or front states them. */
 // Grey sandstone/hardstone blocks with deep sunk joints (171218's photo: grey, not the warm cream of the dressings).
+const ROW_GROUND_WALL = { out: 0.025, ledge: 0.22, ledgeOut: 0.12, scroll: 0.28, scrollH: 0.45 } as const;
+/** A faced ground storey's plate between its openings: horizontal bands cut at every opening's sill and head, each band's
+ *  pieces between the openings that cross it. */
+export function groundWallBands(holes: ReadonlyArray<readonly [number, number, number, number]>, x0: number, x1: number, z0: number, z1: number): Array<[number, number, Array<[number, number]>]> {
+  const cuts = [...new Set([z0, z1, ...holes.flatMap(h => [h[2], h[3]]).filter(z => z > z0 && z < z1)])].sort((a, b) => a - b), out: Array<[number, number, Array<[number, number]>]> = [];
+  for (let i = 0; i + 1 < cuts.length; i++) {
+    const za = cuts[i], zb = cuts[i + 1];
+    if (zb - za < 0.02) continue;
+    const cross = holes.filter(h => h[2] < zb - 1e-6 && h[3] > za + 1e-6 && h[1] > x0 && h[0] < x1).sort((a, b) => a[0] - b[0]), xs: Array<[number, number]> = [];
+    let x = x0;
+    for (const h of cross) { if (h[0] - x > 0.05) xs.push([x, h[0]]); x = Math.max(x, h[1]); }
+    if (x1 - x > 0.05) xs.push([x, x1]);
+    if (xs.length) out.push([za, zb, xs]);
+  }
+  return out;
+}
 const RUSTIC = { course: 0.34, joint: 0.06, block: 0.95, stone: '#a3a199', jointHex: '#4f4d48', out: 0.07 } as const;
 /** Row bands: speklagen as three 10 cm courses a storey at the sill, middle and head lines (the type default until the
  *  record states a count), string-courses and floor-line bands 20 cm (169016). Walls without a row record keep the
@@ -430,6 +491,41 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       s.strip(c.f, l, r, 0.02, zt - 0.03, zt + 0.03, WHITE);
       s.strip(c.f, w.x - 0.025, w.x + 0.025, 0.02, w.z0, zt - 0.03, WHITE);
     }
+  } },
+  { id: 'row-floors', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-floors', build: (c, s) => {
+    // Floor bands on the stated rows' floor lines (RowDesign.windowHeights, house rows round 5): the traced windows stand
+    // on a plain wall, so the storeys' floor lines are drawn here where the painted cells would have put them.
+    const fl = c.rowDress?.floorsM, top = c.top - (c.rowDress?.cornice ? 0.95 : 0.3);
+    if (!fl) return;
+    for (const f of fl) { const z = c.base + f; if (z > c.base + 0.5 && z + ROW_BANDS.floor < top) rowBand(c, s, [], z - ROW_BANDS.floor / 2, z + ROW_BANDS.floor / 2, ROW_BANDS.floorOut, ROW_BANDS.floorHex); }
+  } },
+  { id: 'row-ground-wall', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-ground-wall', build: (c, s) => {
+    // A ground storey faced apart from the wall above (RowDesign.groundWall, house rows round 5): Herengracht 12's white
+    // stucco under brown brick, a belt house's white pilastered plinth storey. A plate over the front's span of the ground
+    // cell, open at its windows and door, under a ledge (scrolled ends when stated).
+    const gw = c.rowDress?.groundWalls;
+    if (!gw?.length || !c.groundLevel) return;
+    const z0 = c.base, z1 = c.base + c.layout.groundM;
+    const holes = [...windowSpans(c, -1).map(w => [w.x - w.hw - 0.04, w.x + w.hw + 0.04, w.z0, w.z1] as const),
+      ...rowWindowsOf(c).filter(w => w.z0 < z1 - 0.1).map(w => [w.x0 - 0.04, w.x1 + 0.04, w.z0, w.z1] as const),
+      ...(doorSpan(c) ? [(d => [d.x - d.hw - 0.05, d.x + d.hw + 0.05, d.z0, d.z1] as const)(doorSpan(c)!)] : [])];
+    for (const g of gw) {
+      const x0 = Math.max(0, g.x0), x1 = Math.min(c.f.len, g.x1);
+      if (x1 - x0 < 0.3) continue;
+      for (const [za, zb, xs] of groundWallBands(holes, x0, x1, z0, z1)) for (const [a, b] of xs) s.strip(c.f, a, b, ROW_GROUND_WALL.out, za, zb, g.hex);
+      if (g.top === 'plain') continue;
+      // The ledge: a moulded band proud of the facing, a little wider than it; scrolled ends stand under it at both ends.
+      s.box(c.f, x0, x1, 0, ROW_GROUND_WALL.ledgeOut, z1 - ROW_GROUND_WALL.ledge, z1, g.hex, true);
+      if (g.top === 'scrolled') for (const [a, b] of [[x0, x0 + ROW_GROUND_WALL.scroll], [x1 - ROW_GROUND_WALL.scroll, x1]] as const) s.box(c.f, a, b, 0, ROW_GROUND_WALL.ledgeOut * 0.8, z1 - ROW_GROUND_WALL.ledge - ROW_GROUND_WALL.scrollH, z1 - ROW_GROUND_WALL.ledge, g.hex, true);
+    }
+  } },
+  { id: 'row-sash', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-sash', build: (c, s) => {
+    // The stated joinery (RowDesign.glazing, house rows round 5): the glass, a white frame round it and the window kind's
+    // glazing bars over every upper window, so a canal front carries its white (8-over-8 sashes, T-windows) instead of the
+    // painted cell's dark glass and thin outline.
+    const g = c.rowDress?.glazing;
+    if (!g) return;
+    for (const w of rowWindowsOf(c)) for (const p of rowSashPieces(g, w.x0, w.x1, w.z0, w.z1)) s.wallQuad(c.f, [[p.x0, p.z0], [p.x1, p.z0], [p.x1, p.z1], [p.x0, p.z1]], p.out, p.hex);
   } },
   { id: 'row-shopfront', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'shopfront', build: (c, s) => {
     // A stated single shopfront (ground.shopUnits 1; Weteringschans 168042 "a black-framed shopfront with a patterned glass

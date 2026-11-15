@@ -65,6 +65,12 @@ export type RowDressContext = {
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
   /** Upper windows' share of their axis pitch, frames included (a row type's window width). */
   windowShare?: number;
+  /** The stated window joinery (row-sash): the window kind, white frame and bar widths (m), panes per sash. */
+  glazing?: { kind: string; frameM: number; barM: number; panes?: number };
+  /** Floor lines (m over the wall's base) when the storeys follow stated window heights (row-floors). */
+  floorsM?: number[];
+  /** Ground storeys faced apart from the wall (row-ground-wall), on this wall's x: the facing's colour and its top. */
+  groundWalls?: Array<{ x0: number; x1: number; hex: string; top: 'plain' | 'ledge' | 'scrolled' }>;
   /** One stated shop opening (row-shopfront): its frame colour and the entrance's end of this wall as laid out. */
   shopFront?: { frameHex: string; doorEnd: 'start' | 'end' | 'centre' };
 };

@@ -122,7 +122,16 @@ export interface RowSeriesDraw {
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
   /** Upper windows' share of their axis pitch, frames included (the row type's window width, rowSeries.ts ROW_TYPE_LOOK). */
   windowShare?: number;
+  /** The stated window joinery (RowDesign.glazing): kind, white frame and bar widths (m), panes per sash. */
+  glazing?: RowGlazingDraw;
+  /** Floor lines over the ground (m above the street datum) when the storeys are laid out by stated window heights. */
+  floorsM?: number[];
+  /** Ground storeys faced apart from the wall (RowDesign.groundWall), per front span. */
+  groundWalls?: RowGroundWallDraw[];
 }
+export type RowGlazingDraw = { kind: string; frameM: number; barM: number; panes?: number };
+/** A front's ground-storey facing as drawn (row-ground-wall): its span as fractions of the pand front, colour and top. */
+export type RowGroundWallDraw = { a0: number; a1: number; hex: string; top: 'plain' | 'ledge' | 'scrolled' };
 
 /** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
 export interface SubFrontRecord { a0: number; a1: number; wallHex?: string; eavesM?: number | null; topM?: number | null; crown?: RowFrontRecord['crown']; fallback?: 'row-line' }
@@ -298,10 +307,10 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
 /** House rows: the wall dressing a series states (the mesher hands it to the extras as `rowDress`). */
 /** A single shopfront's frame when the record states no ground colour. */
 export const ROW_SHOP_FRAME = '#e6e1d6';
-export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
+export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
   const single = series.shop === true && series.shopUnits === 1;
-  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.windowShare ? ['row-glazing'] : []), ...(single ? ['row-shopfront'] : [])];
-  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
+  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.windowShare ? ['row-glazing'] : []), ...(series.glazing ? ['row-sash'] : []), ...(series.floorsM?.length ? ['row-floors'] : []), ...(series.groundWalls?.length ? ['row-ground-wall'] : []), ...(single ? ['row-shopfront'] : [])];
+  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(series.glazing ? { glazing: series.glazing } : {}), ...(series.floorsM?.length ? { floorsM: series.floorsM } : {}), ...(series.groundWalls?.length ? { groundWalls: series.groundWalls } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
 }
 
 /** Crown family -> the roof planner's gable profile. */

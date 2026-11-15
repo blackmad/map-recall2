@@ -11,11 +11,11 @@
  *
  * Nothing here is rolled: a field the series does not state is left out and the renderer draws no component for it.
  */
-import { frontDesign, type RowDesign, type RowFront, type RowRecord } from '../houseSpec/row/types.ts';
+import { frontDesign, type RowDesign, type RowGroundWall, type RowFront, type RowRecord } from '../houseSpec/row/types.ts';
 import { rowFrontRecords, statedGable } from '../houseSpec/row/emit.ts';
 import { headsList } from '../houseSpec/row/solve.ts';
 import { SOUTERRAIN_FACTOR } from '../houseSpec/storeyPlan.ts';
-import { ROW_FRONT_EXTRAS, ROW_RAISED_FRONT_M, rowGroundM, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
+import { ROW_FRONT_EXTRAS, ROW_RAISED_FRONT_M, rowGroundM, rowWallOnlyOf, type RowDormerDraw, type RowFrontRecord, type RowGroundWallDraw, type RowHeadsDraw, type RowSeriesDraw } from './rowFront.ts';
 
 /** Grounds that put the ground storey on a souterrain (stoop over basement windows). */
 const SOUTERRAIN_GROUNDS: ReadonlySet<string> = new Set(['souterrain', 'stoop-and-windows', 'windows']);
@@ -105,11 +105,29 @@ export const ROW_MANSARD_RISE: Readonly<Record<string, { riseM: number; ref: str
  *  paint large panes under a transom light (Weteringschans review 5: six-over-six grids read wrong); a casement is one
  *  pane; a plain `sash` keeps the preset's own. */
 export const ROW_SASH: Readonly<Record<string, 'plain' | 'transom'>> = { 't-window': 'transom', 'tall-upper': 'transom', 'casement-toplight': 'transom', casement: 'plain' };
+/** A ground-storey facing's colour by material (white stucco, a pale stone) and the named colours a reading may give. */
+export const ROW_GROUND_WALL_HEX: Readonly<Record<string, string>> = { stucco: '#e8e3d6', render: '#e2dccd', stone: '#cdc4b0', brick: '#7a4a38', white: '#ece8de', cream: '#e4dcc4', grey: '#b9b7b0', sandstone: '#cdbb98' };
+/** The stated ground-storey facing (RowDesign.groundWall) as drawn: its colour and top. Unreadable: nothing (today). */
+export function groundWallOf(g: RowGroundWall | undefined): Omit<RowGroundWallDraw, 'a0' | 'a1'> | null {
+  if (!g || !ROW_GROUND_WALL_HEX[g.material]) return null;
+  const c = typeof g.colour === 'string' ? g.colour.toLowerCase() : '';
+  const hex = /^#[0-9a-f]{6}$/.test(c) ? c : ROW_GROUND_WALL_HEX[c] ?? ROW_GROUND_WALL_HEX[g.material];
+  return { hex, top: g.top === 'plain' || g.top === 'scrolled' ? g.top : 'ledge' };
+}
+/** The stated joinery (RowDesign.glazing) as the series draws it: the window kind with its frame, bars and panes. */
+export const ROW_GLAZING = { frameM: 0.09, barM: 0.035 } as const;
+function glazingOf(d: RowDesign): { glazing?: NonNullable<RowSeriesDraw['glazing']> } {
+  const g = d.glazing?.value;
+  if (!g) return {};
+  const ok = (v: unknown, lo: number, hi: number) => typeof v === 'number' && v >= lo && v <= hi;
+  return { glazing: { kind: d.windows.value, frameM: ok(g.frameM, 0.03, 0.25) ? g.frameM! : ROW_GLAZING.frameM, barM: ok(g.barM, 0.015, 0.1) ? g.barM! : ROW_GLAZING.barM, ...(ok(g.panes, 1, 24) ? { panes: Math.round(g.panes!) } : {}) } };
+}
 /** One pand's series draw from its fronts (street order) and their designs. */
 export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDesign[], built?: number | null, rowId = '', types: readonly (string | undefined)[] = []): RowSeriesDraw {
   const d0 = designs[0];
   const heads: RowHeadsDraw[] = [];
   const dormers: RowDormerDraw[] = [];
+  const groundWalls: RowGroundWallDraw[] = [];
   let mansard: RowDesign['roofStorey']['value'] | null = null;
   // Over a souterrain the bel-etage (D's ground, storey 0) is the renderer's first upper row: stated storeys shift by one.
   const shift = fronts.some(f => SOUTERRAIN_GROUNDS.has(f.ground.basement ?? '')) ? 1 : 0;
@@ -118,6 +136,8 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     // A front may state several dressings by storey (171218: jack-blocks below, arch rings on the top storey).
     const hs = d.heads.value ? headsList(d.heads.value) : [];
     // A plain arched head (round or segmental, no dressing) still draws its arched glass (headGrammar).
+    const gw = groundWallOf(d.groundWall?.value);
+    if (gw) groundWalls.push({ a0, a1, ...gw });
     for (const h of hs) if (h && (h.dressing !== 'none' || h.shape === 'round' || h.shape === 'segmental')) heads.push({ a0, a1, shape: h.shape, dressing: h.dressing, ...(h.storeys?.length ? { storeys: h.storeys.map(k => k + shift) } : {}) });
     const rs = d.roofStorey.value;
     if (rs.kind !== 'mansard') return;
@@ -144,6 +164,8 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...groundColourOf(fronts),
     ...balconyOf(designs, shift),
     ...windowShareOf(designs, types),
+    ...glazingOf(d0),
+    ...(groundWalls.length ? { groundWalls } : {}),
     // One window preset per window kind in the row (Kinkerstraat: every series states t-windows), not per series.
     look: { bays: d0.bays.value, year: built ?? null, heightM: d0.corniceTopM.value ?? null, seed: `${rowId}:${d0.windows.value}`, whiteFrames: d0.whiteFrames.value, ...(ROW_SASH[d0.windows.value] ? { sash: ROW_SASH[d0.windows.value] } : {}) },
   };
@@ -195,7 +217,8 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     // Stated window heights per storey (RowDesign.windowHeights): the storeys share the wall by them, each window low in
     // its storey; the renderer places the windows on these rows (levels: windowBoxes).
     const rows = line !== null && line > 2 && out.storeys ? rowWindowRows(designs[0].windowHeights?.value, line, out.storeys, out.series?.souterrain ? out.series.souterrainFactor ?? SOUTERRAIN_FACTOR : null) : null;
-    if (rows) { out.rows = rows.rows; out.groundTopM = rows.groundTopM; }
+    // The floor lines between the stated rows: the series draws its floor bands on them (row-floors), not on the even grid.
+    if (rows) { out.rows = rows.rows; out.groundTopM = rows.groundTopM; if (out.series) out.series.floorsM = rows.floorsM; }
     const joins = mansardJoins(row, rec.pandId);
     if (joins && out.series?.roofStorey?.kind === 'mansard') out.series.roofStorey.joins = joins;
     // A corner member's roof faces its row's street, not the side street nearer its outline (Kinkerstraat 110).
@@ -215,7 +238,7 @@ export const ROW_WINDOW_SILL_SHARE = 0.35;
  * storeys above in proportion to their windows, each window ROW_WINDOW_SILL_SHARE of its spare height up. Null when no
  * heights are stated, their count does not match the storeys that draw windows, or a window would not fit.
  */
-export function rowWindowRows(heights: readonly number[] | undefined, line: number, storeys: number, souterrain: number | null): { rows: Array<{ sillM: number; headM: number }>; groundTopM: number } | null {
+export function rowWindowRows(heights: readonly number[] | undefined, line: number, storeys: number, souterrain: number | null): { rows: Array<{ sillM: number; headM: number }>; groundTopM: number; floorsM: number[] } | null {
   if (!heights?.length || !heights.every(h => Number.isFinite(h) && h > 0.3)) return null;
   const upper = souterrain !== null ? storeys : storeys - 1;
   if (heights.length !== upper || upper < 1) return null;
@@ -223,12 +246,14 @@ export function rowWindowRows(heights: readonly number[] | undefined, line: numb
   const sum = heights.reduce((a, b) => a + b, 0), wall = line - ground;
   if (!(sum < wall * 0.85)) return null;
   let z = ground;
+  const floorsM: number[] = [];
   const rows = heights.map(h => {
     const pitch = wall * h / sum, sill = +(z + (pitch - h) * ROW_WINDOW_SILL_SHARE).toFixed(2);
+    floorsM.push(+z.toFixed(2));
     z += pitch;
     return { sillM: sill, headM: +(sill + h).toFixed(2) };
   });
-  return { rows, groundTopM: ground };
+  return { rows, groundTopM: ground, floorsM };
 }
 
 /** Cornice lines within this step (m, street datum) read as one line: the mansard runs on across the party wall. */

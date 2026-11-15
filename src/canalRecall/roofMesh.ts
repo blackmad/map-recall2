@@ -91,6 +91,8 @@ export type RoofPlan = {
   /** House rows (lane R, houseLine/rowFront.ts `rowRoof`): the series' dormers, on the street end only, each at its stated
    *  place across the front (`a`, 0..1 left to right as seen) and of its stated kind; no dice, no side dormers. */
   rowDormers?: ReadonlyArray<{ a: number; kind: RowDormerKind; hoist?: boolean }>;
+  /** House rows: how far a stated dormer stands back from its stock place (outlineRoof: a stepped front's dormer). */
+  rowDormerBackM?: number;
   /** House rows: the mansard runs on into the neighbour's on the left / right as seen from the street (no hip there). */
   rowJoins?: { left?: boolean; right?: boolean };
   /** House rows: the street front's width (m); rowRoofBox faces the roof on the wall that width matches (a corner). */
@@ -755,6 +757,8 @@ function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: n
  * a dice-free row draws nothing it was not told). Seen from the street at end e the front runs left to right along e*v,
  * so a dormer at `a` stands at v = e * (a - 0.5) * W. Sized to its share of the front, at most 1.3 m wide.
  */
+/** Triangles of stated row dormers (rowDormersOnEnds), for the cut at the walls. */
+const ROW_DORMER_TRIS = new WeakSet<RoofTri>();
 function rowDormersOnEnds(s: RoofSink, plan: RoofPlan, L: number, W: number, surf: (a: number) => number, pf: number): void {
   const ds = plan.rowDormers ?? [];
   if (!ds.length) return;
@@ -762,8 +766,10 @@ function rowDormersOnEnds(s: RoofSink, plan: RoofPlan, L: number, W: number, sur
   // Small and set back behind the cornice (pf), as the Kinkerstraat photos show them: at most 1.0 m wide, 1.15 m high.
   const dw = Math.max(0.7, Math.min(1.0, W / ds.length - 1.1));
   for (const e of ends) for (const dm of ds) {
-    const ornate = dm.kind === 'ornate-pinnacle';
-    dormer(s, { axis: 'u', side: e, c: e * (dm.a - 0.5) * W, pf, dw: ornate ? Math.min(1.25, dw + 0.25) : dw, hd: ornate ? 1.45 : 1.15, surf, kind: dm.kind, hoist: dm.hoist, standing: true }, plan);
+    const ornate = dm.kind === 'ornate-pinnacle', from = s.out.length;
+    dormer(s, { axis: 'u', side: e, c: e * (dm.a - 0.5) * W, pf: pf - (plan.rowDormerBackM ?? 0), dw: ornate ? Math.min(1.25, dw + 0.25) : dw, hd: ornate ? 1.45 : 1.15, surf, kind: dm.kind, hoist: dm.hoist, standing: true }, plan);
+    // A stated dormer's pieces (outlineRoof stands it back when they would stand outside the walls).
+    for (let i = from; i < s.out.length; i++) ROW_DORMER_TRIS.add(s.out[i]);
   }
 }
 
@@ -1006,7 +1012,8 @@ function sourceRoofWithinOutline(triangles:RoofTri[],outline:Vec2[],h0:number,di
     for(const t of triangles){
       if(t.part==='slope')continue;
       // A vertical plate standing on one wall edge (a gable or mansard end) is cut to that edge's extent and keeps closing it.
-      const wall=Math.abs(t.n[2])<.05?ring.findIndex((r0,j)=>t.p.every(q=>near(q,r0,ring[(j+1)%ring.length]))):-1;
+      // A stated row dormer's face is never a wall plate (stood back, it can fall on a stepped front's edge: Herengracht 65).
+      const wall=Math.abs(t.n[2])<.05&&!ROW_DORMER_TRIS.has(t)?ring.findIndex((r0,j)=>t.p.every(q=>near(q,r0,ring[(j+1)%ring.length]))):-1;
       if(wall>=0){
         const r0=ring[wall],r1=ring[(wall+1)%ring.length],dx=r1[0]-r0[0],dy=r1[1]-r0[1];
         let poly:Vertex[]=half(t.p.map((p,i)=>({p,uv:t.uv[i]})),r0,[r0[0]-dy,r0[1]+dx],-1);
@@ -1167,7 +1174,15 @@ function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: num
     const rect=piece.rect;
     // House rows: the row roof's box is drawn inside the walls (a box skewed to a front stood past it and the cut closed it
     // in wall colour, a brick wedge over the cornice); the lid at the eaves closes the strip between box and walls.
-    if (piece.plan.rowDormers) { const box = rowRoofBox(mesh, facing, piece.plan.rowFrontM), inside = box ? rowBoxDepth(box, mesh) : boxInside(piece.rect, mesh); out.push(...roofTriangles(inside, withStreetEnds(piece.plan, inside, facing), h0, dims)); continue; }
+    if (piece.plan.rowDormers) {
+      const box = rowRoofBox(mesh, facing, piece.plan.rowFrontM), inside = box ? rowBoxDepth(box, mesh) : boxInside(piece.rect, mesh), rp = withStreetEnds(piece.plan, inside, facing);
+      let tris = roofTriangles(inside, rp, h0, dims);
+      // A stated dormer standing outside the walls (a front stepped back behind a part that stands forward, Herengracht 51:
+      // the box's end is the forward part's) would be cut away at the walls: it stands back by its overhang instead.
+      const keep = insetRing(openRing(mesh), -0.05) ?? openRing(mesh), hang = Math.max(0, ...tris.filter(t => ROW_DORMER_TRIS.has(t)).map(t => pointsHangM(t.p, keep)));
+      if (hang > ROOF_PART_HANG_M) tris = roofTriangles(inside, { ...rp, rowDormerBackM: +(hang + 0.2).toFixed(2) }, h0, dims);
+      out.push(...tris); continue;
+    }
     const innerPlan = plan.sourceCrownFront ? {...piece.plan, kind: piece.plan.kind === 'gable' ? 'pitched' as const : piece.plan.kind, accents:false, sourceCrownFront:undefined} : withStreetEnds(piece.plan, rect, facing);
     const triangles=roofTriangles(rect,innerPlan,h0,dims);
     out.push(...(!plan.sourceCrownFront&&['gable','pitched','halfHipped','mansard'].includes(piece.plan.kind)?gablePieceOnNativeWalls(triangles,rect,mesh,piece.plan):triangles));
