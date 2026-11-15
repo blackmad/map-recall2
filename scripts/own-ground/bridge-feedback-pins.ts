@@ -2,13 +2,14 @@
 // --bridge-feedback) and check-ground-spots, which runs in check:canal:rest so these pins gate integration.
 //
 //   node --import tsx scripts/own-ground/check-ground-cells.ts --bridge-feedback
-import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
+import { GroundStore, toLocal, waterTest } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { kitTrace, parapetTrace } from '../../src/canalRecall/ownGround/bridgeKit.ts';
 import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGround/railingRuns.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { GroundSurface, type Vec2 } from '../../src/canalRecall/ownGround/surface.ts';
 import { HOLE_CARRY_CROSS_M, holeCrossStations } from '../../src/canalRecall/ownGround/bridgeGaps.ts';
+import { crossingDips } from './crossing-dip.ts';
 
 type Read = (path: string) => Promise<Uint8Array>;
 type Check = (ok: boolean, what: string) => void;
@@ -78,6 +79,7 @@ export async function bridgeFeedbackRegressions(readExtract: Read, check: Check)
   await lelylaanRegressions(readExtract, check);
   await f1bRegressions(readExtract, check);
   await holeJunctionRegressions(readExtract, check);
+  await bankDipRegressions(readExtract, check);
 }
 
 /**
@@ -117,7 +119,8 @@ export async function lelylaanRegressions(readExtract: Read, check: Check): Prom
     const on = await notch({});
     check(on !== null && on <= reg.maxDipM, `${reg.id} (${reg.label}): deck notch ${on?.toFixed(2)} m (<= ${reg.maxDipM})`);
     if (reg.pinMinM === undefined) continue;
-    const off = await notch({ holeClimb: false });
+    // bankClimb (lane f1b-jagged) also runs the deck up that climb: off too, for the hole climb's own before.
+    const off = await notch({ holeClimb: false, bankClimb: false });
     check(off !== null && off >= reg.pinMinM, `${reg.id}: without the hole climb ${off?.toFixed(2)} m (>= ${reg.pinMinM}, the pin is live)`);
   }
 }
@@ -134,7 +137,7 @@ export async function lelylaanRegressions(readExtract: Read, check: Check): Prom
  *    7382981, 7382983) drape on the relief: none of their vertices stands more than 0.5 m over it (before: 120+, up to
  *    3.5 m, climbing to the deck edge in torn sheets).
  */
-const RINGWEG_NOORD = { id: 'OSM7376770', at: [4.899239, 52.423753] as [number, number], maxInsideM: 10, pinMinM: 40 };
+const RINGWEG_NOORD = { id: 'OSM7376770', at: [4.899239, 52.423753] as [number, number], maxMedianM: 2, maxInsideM: 15, pinMinM: 40 };
 const CAP_STEPS: readonly { id: string; at: [number, number]; pinMinM: number }[] = [
   { id: 'BRU0407', at: [4.878785, 52.35112], pinMinM: 2.5 },
   { id: 'BRU0415', at: [4.868152, 52.344118], pinMinM: 1.5 },
@@ -163,11 +166,18 @@ export async function f1bRegressions(readExtract: Read, check: Check): Promise<v
   const inside = async (opts: Record<string, boolean>) => {
     const { lines, index } = await parapetLines(readExtract, opts, RINGWEG_NOORD.at, [RINGWEG_NOORD.id]);
     const traffic = (qx: number, qy: number) => { const c = index.classAt(qx, qy, true); return c === 'carriage' || c === 'cycle'; };
-    return [...lines.values()].flatMap(l => l.pieces).reduce((a, l) => a + parapetCrossings(l, traffic).insideM, 0);
+    // The median: a parapet between deck-level carriageways (or cycle paths) on both sides (lane crossing-grade 2026-11-14:
+    // the bank climb raised this deck's hole end 0.5-0.8 m, and the hole-drop rule, decks.ts HOLE_DROP_PROBE_M, now rails
+    // 5 m of its north edge over the cycle-path underpass where the orthophoto shows the noise barrier, beside a ground-level
+    // carriageway polygon: an outer edge, not the median).
+    const deckTraffic = (qx: number, qy: number) => traffic(qx, qy) && index.onDeck(qx, qy);
+    const pieces = [...lines.values()].flatMap(l => l.pieces);
+    return { all: pieces.reduce((a, l) => a + parapetCrossings(l, traffic).insideM, 0), median: pieces.reduce((a, l) => a + parapetCrossings(l, deckTraffic).insideM, 0) };
   };
   const on = await inside({}), off = await inside({ medianEdges: false });
-  check(on < RINGWEG_NOORD.maxInsideM, `${RINGWEG_NOORD.id} (Ringweg-Noord, A10 median): ${on.toFixed(1)} m of parapet inside carriageway or cycle polygons (< ${RINGWEG_NOORD.maxInsideM})`);
-  check(off >= RINGWEG_NOORD.pinMinM, `${RINGWEG_NOORD.id}: without medianEdges ${off.toFixed(1)} m inside (>= ${RINGWEG_NOORD.pinMinM}, the pin is live)`);
+  check(on.median < RINGWEG_NOORD.maxMedianM, `${RINGWEG_NOORD.id} (Ringweg-Noord, A10 median): ${on.median.toFixed(1)} m of parapet inside deck-level carriageway or cycle polygons (< ${RINGWEG_NOORD.maxMedianM})`);
+  check(on.all < RINGWEG_NOORD.maxInsideM, `${RINGWEG_NOORD.id}: ${on.all.toFixed(1)} m of parapet inside any carriageway or cycle polygon (< ${RINGWEG_NOORD.maxInsideM})`);
+  check(off.median >= RINGWEG_NOORD.pinMinM, `${RINGWEG_NOORD.id}: without medianEdges ${off.median.toFixed(1)} m inside deck-level traffic (>= ${RINGWEG_NOORD.pinMinM}, the pin is live)`);
   // Survey-cap railing steps.
   for (const reg of CAP_STEPS) {
     const turns = async (opts: Record<string, boolean>) => {
@@ -201,9 +211,9 @@ export async function f1bRegressions(readExtract: Read, check: Check): Promise<v
     }
     return n;
   };
-  const h = await high({}), hBefore = await high({ holeStreets: false });
+  const h = await high({}), hBefore = await high({ holeStreets: false, bankClimb: false });
   check(h <= LELYLAAN_STREETS.maxHigh, `Lelylaan streets under the Ringweg-West hole ranges (07ec0473): ${h} vertices more than ${LELYLAAN_STREETS.highM} m over the relief (<= ${LELYLAAN_STREETS.maxHigh})`);
-  check(hBefore >= LELYLAAN_STREETS.pinMin, `Lelylaan: without holeStreets ${hBefore} vertices (>= ${LELYLAAN_STREETS.pinMin}, the pin is live)`);
+  check(hBefore >= LELYLAAN_STREETS.pinMin, `Lelylaan: without holeStreets (and bankClimb, which moves the deck ends) ${hBefore} vertices (>= ${LELYLAAN_STREETS.pinMin}, the pin is live)`);
 }
 
 /**
@@ -289,4 +299,46 @@ export async function holeJunctionRegressions(readExtract: Read, check: Check): 
     }
   }
 }
-
+/**
+ * Crossing dips (lanes f1b-jagged and crossing-grade 2026-11-14; the user on the Lelylaan: "these roads should probably
+ * figure out 'I don't dip down'"): a road carried across water holds its approach grade across the crossing. The
+ * elevation model is interpolated under abutments, so way decks stopped a metre onto the embankment's slope and the road
+ * came down it into the crossing and up again (wayDecks.ts BANK_CLIMB_MAX_M). Across the water the riding surface lies at
+ * most `maxDipM` under the straight line between the bank tops (crossing-dip.ts); `?bankClimb=0` (the before) dips at
+ * least `pinMinM`. City survey: probe-crossing-dips.ts.
+ */
+export const BANK_DIPS: readonly { way: number; label: string; at: [number, number]; maxDipM: number; pinMinM: number; /** The pin's before (default `{ bankClimb: false }`). */ off?: Record<string, boolean> }[] = [
+  { way: 7382983, label: 'Ringweg-West slip over the Slotervaart, Lelylaan (user 2026-11-14)', at: [4.84294, 52.35607], maxDipM: 0.3, pinMinM: 2.5 },
+  // The bundled dual carriageway beside it (wayDecks.ts groupWayDecks): it climbs its banks as one deck.
+  { way: 7382981, label: 'Ringweg-West over the Slotervaart, Lelylaan (bundle)', at: [4.84244, 52.35604], maxDipM: 0.3, pinMinM: 2 },
+  { way: 499557561, label: 'Gaasperdammerweg viaduct', at: [4.99773, 52.31769], maxDipM: 0.35, pinMinM: 2.5 },
+  { way: 7382973, label: 'Ringweg-West, the crossing south of the Lelylaan (bundle)', at: [4.84251, 52.35227], maxDipM: 0.3, pinMinM: 1.4 },
+  // Lane dips-deck-ends 2026-11-14 (wayDecks.ts WAY_END_DIP_M): the four crossings still dipping over 1 m after bankClimb.
+  // A flat register footprint (BRU0095) over 50 m of relief filtered under the viaduct: an overFlat deck to the way's ends.
+  { way: 7376117, label: 'Haarlemmer Houttuinen viaduct under BRU0095', at: [4.89017, 52.38213], maxDipM: 0.3, pinMinM: 2.5, off: { wayEnds: false } },
+  // 150 m flyovers over the polder: the dual carriageway's deck runs on to its way's end nodes.
+  { way: 424283770, label: 'Amsterdamse Baan link (bundle with 424283771)', at: [4.7565, 52.34344], maxDipM: 0.3, pinMinM: 2.3, off: { wayEnds: false } },
+  { way: 1251743255, label: 'Van der Madeweg (bundle with 1339616201)', at: [4.93744, 52.32953], maxDipM: 0.3, pinMinM: 1.2, off: { wayEnds: false } },
+  // The Kabouterbrug (BRU0360, flat): the relief over the water lies at the canal bed; the overFlat deck spans the water.
+  { way: 38282903, label: 'Schinkelhavenstraat cycleway, Kabouterbrug BRU0360', at: [4.85372, 52.35476], maxDipM: 0.45, pinMinM: 1, off: { wayEnds: false } },
+];
+async function wayDip(readExtract: Read, opts: Record<string, boolean>, reg: (typeof BANK_DIPS)[number]): Promise<number | null> {
+  const st = new GroundStore(readExtract, { roads: true, ...opts });
+  await st.init();
+  const [x, y] = toLocal(reg.at[0], reg.at[1]), key = st.cellAt(x, y);
+  const around = GroundStore.neighbours(key);
+  for (const k of around) await st.prepareCell(k);
+  let way = null;
+  for (const k of around) way ??= (await st.osmCell(k))?.ways.find(w => w.id === reg.way) ?? null;
+  if (!way) return null;
+  const wet = waterTest((await Promise.all(around.map(k => st.waterCell(k)))).flatMap(w => w?.polygons ?? []));
+  const dips = crossingDips(st, way.g.map(([lng, lat]) => toLocal(lng, lat)), wet);
+  return dips.length ? Math.max(...dips.map(d => d.dip)) : null;
+}
+export async function bankDipRegressions(readExtract: Read, check: Check): Promise<void> {
+  for (const reg of BANK_DIPS) {
+    const off = reg.off ?? { bankClimb: false }, d = await wayDip(readExtract, {}, reg), was = await wayDip(readExtract, off, reg);
+    check(d !== null && d <= reg.maxDipM, `OSM ${reg.way} (${reg.label}): the crossing dips ${d?.toFixed(2) ?? 'n/a'} m under the bank tops' line (<= ${reg.maxDipM})`);
+    check(was !== null && was >= reg.pinMinM, `OSM ${reg.way}: without ${Object.keys(off).join(', ')} ${was?.toFixed(2) ?? 'n/a'} m (>= ${reg.pinMinM}, the pin is live)`);
+  }
+}

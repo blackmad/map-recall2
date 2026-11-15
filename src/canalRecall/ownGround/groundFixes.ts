@@ -36,6 +36,10 @@ export const GROUND_FIXES = [
   'holeCarried',
   /** Lane quay-corner 2026-11-14: a shore segment crossing a bridge opening is cut at its edges, only the part inside dropped (water.ts splitAtRings), the Bilderdijkgracht at De Clercqstraat. */
   'openingShores',
+  /** Lane crossing-grade 2026-11-14 (user: "these roads should probably figure out 'I don't dip down'"): way decks that dip run on to the top of each bank's climb away from the water, so a crossing holds the grade between the bank tops (wayDecks.ts BANK_CLIMB_MAX_M), bundles too, the embankment's side falling to the relief (surface.ts BANK_SIDE_GRADE); deck-level road polygons take the nearest deck's level (roadSurfaces.ts deckLevelHeight). The Lelylaan slip 7382983. */
+  'bankClimb',
+  /** Lane dips-deck-ends 2026-11-14: a way deck whose relief sags under the line between the way's own end nodes runs on to them as hole ranges, and a flat register footprint over such a sag takes a lifting deck (wayDecks.ts WAY_END_DIP_M). Haarlemmer Houttuinen 7376117 under BRU0095, the Amsterdamse Baan links. */
+  'wayEnds',
 ] as const;
 export type GroundFix = (typeof GROUND_FIXES)[number];
 export type GroundFixFlags = Partial<Record<GroundFix, boolean>>;

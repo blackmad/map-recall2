@@ -61,12 +61,13 @@ export function puiInteriorUv(): [number, number, number, number] {
  */
 export const RETAIL_TEMPLATES = [
   'ah', 'jumbo', 'dirk', 'etos', 'hema', 'action', 'febo', 'stach', 'sla', 'bruna', 'bestseller', 'duck', 'moneyTransfer',
+  'gallgall', 'mcdonalds', 'kruidvat',
   'coffeeshop', 'smartshop', 'brownBar', 'bike', 'redLight',
-  'doner', 'toko', 'butcher', 'greengrocer', 'turkishBakery', 'bakery', 'nuts', 'frites', 'cheese', 'waffle', 'pancake',
+  'doner', 'toko', 'butcher', 'greengrocer', 'florist', 'apotheek', 'hairdresser', 'turkishBakery', 'bakery', 'nuts', 'frites', 'cheese', 'waffle', 'pancake',
   'souvenir', 'books', 'tobacco', 'phone', 'gelato', 'exchange',
 ] as const;
 export type RetailTemplate = (typeof RETAIL_TEMPLATES)[number];
-export const CHAIN_TEMPLATES: readonly RetailTemplate[] = ['ah', 'jumbo', 'dirk', 'etos', 'hema', 'action', 'febo', 'stach', 'sla', 'bruna', 'bestseller', 'duck', 'moneyTransfer'];
+export const CHAIN_TEMPLATES: readonly RetailTemplate[] = ['ah', 'jumbo', 'dirk', 'etos', 'hema', 'action', 'febo', 'stach', 'sla', 'bruna', 'bestseller', 'duck', 'moneyTransfer', 'gallgall', 'mcdonalds', 'kruidvat'];
 
 /** brand:wikidata ids (checked against the 2026-11-14 Overpass answer: brand + wikidata pairs per name). */
 const WIKIDATA: Record<string, RetailTemplate> = {
@@ -79,6 +80,7 @@ const NAMES: Array<[RegExp, RetailTemplate]> = [
   [/^etos\b/, 'etos'], [/^hema$/, 'hema'], [/^action$/, 'action'], [/^febo\b/, 'febo'], [/^stach\b/, 'stach'], [/^sla$/, 'sla'],
   [/^bruna\b/, 'bruna'], [/^bestsellers?( amsterdam)?$/, 'bestseller'], [/duck(s)? store/, 'duck'],
   [/western union|^ria\b|moneygram/, 'moneyTransfer'],
+  [/^gall ?& ?gall\b/, 'gallgall'], [/^mcdonald'?s\b/, 'mcdonalds'], [/^kruidvat\b/, 'kruidvat'],
 ];
 const has = (list: string | undefined, re: RegExp) => !!list && list.toLowerCase().split(/[;,]/).some(v => re.test(v.trim()));
 const FOOD = new Set(['fast_food', 'restaurant']);
@@ -115,6 +117,11 @@ export function templateForTags(tags: Record<string, string>): RetailTemplate | 
   if (shop === 'butcher') return 'butcher';
   if (shop === 'greengrocer') return 'greengrocer';
   if (shop === 'convenience' && (has(tags.produce, /./) || /groente|fruit|verse|agf/.test(name))) return 'greengrocer';
+  // A bloemist (round 6): shop=florist, or a named garden shop selling flowers.
+  if (shop === 'florist' || shop === 'garden_centre' && /bloem|flower|fleur|plant/.test(name)) return 'florist';
+  // Round 6b: an apotheek (amenity=pharmacy; a drugstore chain is matched above) and a kapper or barber.
+  if (amenity === 'pharmacy') return 'apotheek';
+  if (shop === 'hairdresser') return 'hairdresser';
   if (shop === 'bakery' && (has(cuisine, /^turkish$/) || /f[ıi]r[ıi]n|bakkerij (öz|oz|ay|yil|yıl|kar|ist)|turk|pide|simit|baklava/.test(name))) return 'turkishBakery';
   if (amenity && FOOD.has(amenity) && has(cuisine, /^(friture|fries|chips)$/)) return 'frites';
   if (shop === 'cheese') return 'cheese';
@@ -150,8 +157,10 @@ export type TemplateLook = {
   lit: boolean;
   /** A straight awning over the window, in this colour. */
   awning?: string;
+  /** Round 6: the pavement racks' colour (Kruidvat's red); absent: the template's blue. */
+  rack?: string;
   /** What stands on the pavement in front (crates, racks, bikes in a row). */
-  pavement?: 'crates' | 'racks' | 'bikes' | 'boards';
+  pavement?: 'crates' | 'racks' | 'bikes' | 'boards' | 'flowers';
   /** Tube light round the window (red-light rows), and the glow colour. */
   tube?: string;
   /** A hanging blade sign in this colour (brown cafes, pancake houses). */
@@ -182,6 +191,18 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   bestseller: { fascia: '#1d1d1b', letters: '#ffffff', word: 'BESTSELLER', content: 'magazines', lit: true, pavement: 'racks' },
   duck: { fascia: '#ffd400', letters: '#1d1d1b', word: 'DUCK STORE', content: 'ducks', lit: true },
   moneyTransfer: { fascia: '#ffdd00', letters: '#1d1d1b', word: 'MONEY TRANSFER', content: 'stickers', lit: true },
+  // Round 6, measured on open panoramas (data/retail-ground/template-samples.json chains): Gall & Gall, Utrechtsestraat
+  // and three more: a near-black board (#282221) and front (#140e0f) with off-white letters (#d6d4c8); one historic
+  // branch is cream (held as the exception). McDonald's: charcoal or dark burgundy bands with white letters (Damrak
+  // McCafe, Leidsestraat, Ferdinand Bolstraat); its golden M wants the second logo layer (not drawn yet).
+  // Round 6b: both draw their Commons logo from the second logo page (retailLogos.ts LOGOS_2); the glyph cell has & and '.
+  gallgall: { fascia: '#282221', letters: '#e6e3d6', word: 'GALL & GALL', content: 'shelves', lit: true, frame: '#2a2321' },
+  mcdonalds: { fascia: '#2b2422', letters: '#ffffff', word: "McDONALD'S", content: 'counter', lit: true, frame: '#3a3533' },
+  // Round 6b, from the fixed sampler's cuts (Ferdinand Bolstraat, Overtoom area, Javastraat, Bos en Lommerweg): red
+  // window frames (measured #95090d and #852629, drawn #a4201c by retailPuiPaint.ts drawnPaint), red decals, a red
+  // logo box over the door and red product racks out front. The board takes the brand red of its Commons logo
+  // (#e3061f, David 2026-11-15: a chain's sign colour may come from its logo; frames stay measured).
+  kruidvat: { fascia: '#e3061f', letters: '#ffffff', word: 'KRUIDVAT', content: 'shelves', lit: true, frame: '#a4201c', pavement: 'racks', rack: '#c8102e' },
   coffeeshop: { fascia: '#1f5a2e', letters: '#e8f0d8', word: 'name', content: 'frosted', lit: false },
   smartshop: { fascia: '#2a1640', letters: '#ff4fd8', word: 'name', content: 'neon', lit: true },
   brownBar: { fascia: '#24160e', letters: '#e2c48a', word: 'name', content: 'barGlow', lit: false, blade: '#7a1f12', frame: '#2a1a10', surround: '#2e1c12', paneM: 1.3 },
@@ -191,6 +212,19 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   toko: { fascia: '#f3e7c9', letters: '#7a1f12', word: 'name', content: 'bainMarie', lit: true },
   butcher: { fascia: '#b3121b', letters: '#ffffff', word: 'SLAGERIJ', content: 'meat', lit: true },
   greengrocer: { fascia: '#2f6b2a', letters: '#ffffff', word: 'name', content: 'produce', lit: false, awning: '#2f6b2a', pavement: 'crates' },
+  // Round 6, from open panoramas (scripts/retail-ground/front-photos.ts, data/retail-ground/template-samples.json):
+  // Het Groene Paradijs (green awnings, plant tables), Hugo's (green awnings, plant racks), Sevgi bloemhuis (green and
+  // white awning, white board, green letters, buckets out front), Arjan bloemen (dark grey awnings, a plant table and
+  // potted olives), Fleurmonde (dark board, white script). The pavement display is the signature; the awning green.
+  // Round 6b, from the fixed sampler's cuts (data/retail-ground/template-samples.json): De Ruyter Apotheek (white board,
+  // blue-grey 'apotheek', a green cross; board #909697 in shade, letters #4f5b68, cross #325649, drawn by
+  // retailPuiPaint.ts drawnPaint), Ferdinand Bol Apotheek (white board, blue letters, red doors), Transvaal Alphega
+  // (green signs, white frames). The cross hangs as a blade.
+  apotheek: { fascia: '#dfe6e7', letters: '#5c6875', word: 'APOTHEEK', content: 'shelves', lit: true, frame: '#dfe6e7', blade: '#3e6254' },
+  // Barbershop (black front, off-white letters: band #2b2825, letters #a0a59d), Hofman Kappers (black awnings, white
+  // letters), a barber's grey glass band with white letters: a dark band, pale letters; frames vary (left to the cell).
+  hairdresser: { fascia: '#403c39', letters: '#e1e6de', word: 'name', content: 'shelves', lit: false },
+  florist: { fascia: '#24382c', letters: '#f4f1ea', word: 'name', content: 'produce', lit: false, awning: '#2f5d3f', pavement: 'flowers' },
   turkishBakery: { fascia: '#f2b01e', letters: '#7a1f12', word: 'name', content: 'bread', lit: true },
   bakery: { fascia: '#f3e7c9', letters: '#6b3a1e', word: 'name', content: 'bread', lit: true },
   nuts: { fascia: '#f2b01e', letters: '#1d1d1b', word: 'name', content: 'jars', lit: true },
@@ -225,21 +259,3 @@ export function signWord(name: string): string {
   return out || (words[0] ?? '').slice(0, 14);
 }
 
-/**
- * Round 3c (lane retail-look-20261114): a pui's paint without evidence. The shop grammar's drawn paints (white, cream,
- * pale grey...) put pale frames on shops that the photos show in dark timber or anthracite, and they read as toy-like.
- * With the flag on, a guessed paint lighter than PALE_PUI_LUMA gives way to one of the dark paints, chosen per pand. A
- * measured paint (a HouseSpec shopHex, a row-front trace, a street recipe's groundWallHex) is applied after this and
- * keeps whatever colour it is.
- */
-export const PALE_PUI_LUMA = 0.45;
-export const DARK_PUI_PAINTS = ['#2b2826', '#3a2a1f', '#26302b', '#33302c'] as const;
-export function evidencelessPuiPaint(hex: string, id: string): string {
-  const m = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex);
-  if (!m) return hex;
-  const lin = (v: string) => { const c = parseInt(v, 16) / 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
-  const luma = 0.2126 * lin(m[1]) + 0.7152 * lin(m[2]) + 0.0722 * lin(m[3]);
-  if (luma <= PALE_PUI_LUMA) return hex;
-  let h = 2166136261; for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 16777619);
-  return DARK_PUI_PAINTS[(h >>> 0) % DARK_PUI_PAINTS.length];
-}

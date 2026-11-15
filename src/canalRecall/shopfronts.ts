@@ -94,19 +94,27 @@ let extract: ShopfrontExtract | null = null;
 
 /** Shopfront templates (lane retail-ground, `?retailGround=1`): pand id -> [template index, lng, lat, sign word?]. */
 /** buildings: [template index, lng, lat, word ('' none), 1 = the front goes on the node's nearest open wall, not a street wall]. */
-export type ShopTemplateExtract = { version: 1; templates: string[]; buildings: Record<string, [number, number, number, string?, 1?]> };
-let templates: ShopTemplateExtract | null = null;
+/** paint: pand id -> the pui paint measured on a street panorama (measure-pui.ts, receipts in data/retail-ground/pui-paint.json);
+ *  prior: an unmeasured plain shop -> its street's measured prior (retailPuiPaint.ts streetPriors). */
+export type ShopTemplateExtract = { version: 1; templates: string[]; buildings: Record<string, [number, number, number, string?, 1?]>; paint?: Record<string, string>; prior?: Record<string, string>; /** Round 5b: the measured pands whose reading was dark. */ dark?: string[]; /** Round 6: bike shops' class (retailBikes.ts bikeCode). */ bikes?: Record<string, string>; /** Round 7: measured awning colour per pand (measure-awning.ts). */ awnings?: Record<string, string> };
+let templates: ShopTemplateExtract | null = null, darkReads: Set<string> = new Set();
 /** Install the template extract (only the flag's loader calls this); null removes it. Absent = nothing stamped. */
 export function setShopTemplates(data: ShopTemplateExtract | null): void {
   templates = data && Array.isArray(data.templates) && data.buildings ? data : null;
+  darkReads = new Set(templates?.dark ?? []);
 }
-/** Stamp `shopTemplate` ([name, lng, lat, word?, nearest?]) on a pand the template extract lists; the same feature otherwise. */
+/**
+ * Stamp `shopTemplate` ([name, lng, lat, word?, nearest?]) on a pand the template extract lists, and `puiPaint` (a hex)
+ * on a pand whose shopfront paint was measured, or whose street's measured prior it takes; the same feature otherwise.
+ */
 export function decorateShopTemplate<T extends GeoFeature>(feature: T): T {
   if (!templates) return feature;
-  const row = templates.buildings[String(feature.properties.id ?? '')];
-  if (!row || feature.properties.shopTemplate !== undefined) return feature;
-  const name = templates.templates[row[0]];
-  return name ? { ...feature, properties: { ...feature.properties, shopTemplate: [name, row[1], row[2], ...(row[3] || row[4] ? [row[3] ?? ''] : []), ...(row[4] === 1 ? [1] : [])] } } : feature;
+  const id = String(feature.properties.id ?? ''), row = templates.buildings[id], paint = templates.paint?.[id] ?? templates.prior?.[id];
+  const name = row && feature.properties.shopTemplate === undefined ? templates.templates[row[0]] : undefined;
+  const stamp = paint && /^#[0-9a-f]{6}$/i.test(paint) && feature.properties.puiPaint === undefined;
+  const bike = name ? templates.bikes?.[id] : undefined, awning = name ? templates.awnings?.[id] : undefined;
+  if (!name && !stamp) return feature;
+  return { ...feature, properties: { ...feature.properties, ...(name ? { shopTemplate: [name, row![1], row![2], ...(row![3] || row![4] ? [row![3] ?? ''] : []), ...(row![4] === 1 ? [1] : [])] } : {}), ...(bike ? { bikeShop: bike } : {}), ...(awning ? { shopAwning: awning } : {}), ...(stamp ? { puiPaint: paint, ...(darkReads.has(id) && templates.paint?.[id] ? { puiDark: 1 } : {}) } : {}) } };
 }
 
 /** Install the published extract; null removes it (every building falls back to the old random shops). */

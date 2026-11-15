@@ -1,0 +1,417 @@
+{
+ "schemaVersion": 1,
+ "id": "diamant-museum",
+ "pand": "0363100012076129",
+ "brief": "scripts/landmarks/diamant-museum-brief.md",
+ "signature": [
+  "corner-turret",
+  "turret-spire",
+  "front-gable",
+  "gable-lettering",
+  "turret-lettering",
+  "balcony",
+  "entrance-surround"
+ ],
+ "walls": [
+  {
+   "tag": "w01-67",
+   "bearing": 67,
+   "lengthM": 19.6,
+   "centre": [
+    4.882544,
+    52.3594875
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000985_pano_0000_000048",
+   "capturedAt": "2018-06-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "flank-windows",
+     "kind": "window-shape",
+     "where": "east flank, three storeys of white-framed windows with white stone blocks in the jambs",
+     "approxSizeM": [
+      1.0,
+      2.4
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track08_Sphere_00101 (2024), oblique 36 deg",
+     "how": "six window columns on three storeys with alternating white jamb blocks; the column positions are spaced evenly (the oblique photo does not give exact centres)"
+    },
+    {
+     "id": "coster-awning",
+     "kind": "canopy",
+     "where": "east flank, round dark awning over the side door lettered ROYAL COSTER",
+     "approxSizeM": [
+      1.9,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track08_Sphere_00101 (2024)",
+     "how": "quarter-round dark hood over a dark door; its small lettering is not drawn"
+    },
+    {
+     "id": "coster-lettering",
+     "kind": "lettering",
+     "where": "east flank, ROYAL COSTER letters on the awning and the end wall",
+     "approxSizeM": [
+      1.4,
+      0.15
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241211_0838_Track08_Sphere_00101 (2024)",
+     "skip": {
+      "reason": "too-small",
+      "note": "letters about 0.15 m high on a wall seen at 36 deg"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-156",
+   "bearing": 156,
+   "lengthM": 9,
+   "centre": [
+    4.8825415,
+    52.3593905
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track09_Sphere_00069",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-turret",
+     "kind": "tower",
+     "where": "west end of the front, set diagonally on the corner, three storeys",
+     "approxSizeM": [
+      3.0,
+      13.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "note": "BAG ring edges 0-2 (2.99 x 1.86 m); windows per storey, white eaves cornice on a corbel row"
+    },
+    {
+     "id": "turret-spire",
+     "kind": "tower",
+     "where": "over the corner turret",
+     "approxSizeM": [
+      3.4,
+      5.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025); TMX7316010203-000785_pano_0000_000060 (2018)",
+     "how": "four-sided slate pyramid over the turret ring, 0.2 m overhang, apex 18 m, dark finial rod and ball; the slight flare at the foot is not drawn"
+    },
+    {
+     "id": "turret-lettering",
+     "kind": "lettering",
+     "where": "turret face toward the street, under its eaves, two lines",
+     "approxSizeM": [
+      2.3,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000785_pano_0000_000060 (2018), b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "how": "DIAMOND / MUSEUM in white block capitals (5x7 glyphs, 0.35 m)"
+    },
+    {
+     "id": "front-gable",
+     "kind": "window-shape",
+     "where": "left bay, steep front gable from the eaves (11.7 m) to the apex (15.8 m) with stone coping and a finial",
+     "approxSizeM": [
+      4.0,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)"
+    },
+    {
+     "id": "gable-attic-light",
+     "kind": "window-shape",
+     "where": "gable centre, round-headed attic light in a brick relieving arch",
+     "approxSizeM": [
+      1.05,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)"
+    },
+    {
+     "id": "gable-roundels",
+     "kind": "other",
+     "where": "either side of the attic light",
+     "approxSizeM": [
+      0.35,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "note": "stone ring with a brick centre"
+    },
+    {
+     "id": "gable-lettering",
+     "kind": "lettering",
+     "where": "left bay, under the gable, white capitals DIAMOND MUSEUM",
+     "approxSizeM": [
+      3.1,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "how": "white 5x7 block capitals; the photo's letters are a plain serif-less face"
+    },
+    {
+     "id": "balcony",
+     "kind": "balcony-ironwork",
+     "where": "left bay, first floor, stone balcony on two corbels with a wrought-iron railing",
+     "approxSizeM": [
+      3.85,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "how": "stone slab on two corbel blocks, railing as top/bottom rails with 0.11 m balusters; the scrolls of the ironwork are not drawn"
+    },
+    {
+     "id": "french-window",
+     "kind": "window-shape",
+     "where": "left bay, first floor, three-light French window with a transom under a segmental stone-and-brick head",
+     "approxSizeM": [
+      2.5,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)"
+    },
+    {
+     "id": "entrance-surround",
+     "kind": "lettering",
+     "where": "right bay, ground floor, light stone door surround lettered DIAMANT MUSEUM / AMSTERDAM",
+     "approxSizeM": [
+      2.5,
+      3.3
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "how": "stone slab with dark DIAMANT MUSEUM capitals (0.21 m); the small AMSTERDAM line below is under 0.1 m and not drawn"
+    },
+    {
+     "id": "door",
+     "kind": "other",
+     "where": "right bay, dark green panelled door",
+     "approxSizeM": [
+      1.6,
+      2.4
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "how": "flat dark green panel in the surround"
+    },
+    {
+     "id": "door-lamps",
+     "kind": "lamp",
+     "where": "either side of the entrance",
+     "approxSizeM": [
+      0.16,
+      0.3
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "how": "small dark lantern boxes"
+    },
+    {
+     "id": "diaper-band",
+     "kind": "other",
+     "where": "right bay, band of diamond-pattern brick between ground and first floor",
+     "approxSizeM": [
+      5.1,
+      0.45
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "how": "darker brick band with a row of stone lozenges"
+    },
+    {
+     "id": "segmental-heads",
+     "kind": "window-shape",
+     "where": "every window: segmental brick heads with stone springers and keystone",
+     "approxSizeM": [
+      1.8,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)"
+    },
+    {
+     "id": "window-guards",
+     "kind": "balcony-ironwork",
+     "where": "low iron guards in front of the second-floor windows and the right first-floor window",
+     "approxSizeM": [
+      1.5,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "how": "rails and plain balusters"
+    },
+    {
+     "id": "cornice",
+     "kind": "other",
+     "where": "right bay, white cornice on a corbel table at the eaves",
+     "approxSizeM": [
+      5.2,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)"
+    },
+    {
+     "id": "wall-dormer",
+     "kind": "window-shape",
+     "where": "right bay, dormer standing on the cornice with a flat white lid",
+     "approxSizeM": [
+      2.2,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)"
+    },
+    {
+     "id": "chimney",
+     "kind": "other",
+     "where": "behind the cornice, right",
+     "approxSizeM": [
+      0.6,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)"
+    },
+    {
+     "id": "banner",
+     "kind": "sign",
+     "where": "yellow DIAMOND MUSEUM banner hanging from the balcony",
+     "approxSizeM": [
+      0.6,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "skip": {
+      "reason": "temporary",
+      "note": "seasonal banner; absent in the 2018 panorama"
+     }
+    },
+    {
+     "id": "light-strings",
+     "kind": "other",
+     "where": "fairy lights in the street tree",
+     "approxSizeM": [
+      3,
+      6
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "skip": {
+      "reason": "temporary",
+      "note": "Christmas lights, December 2024 only"
+     }
+    },
+    {
+     "id": "fence",
+     "kind": "other",
+     "where": "low iron fence and hedge in front of the forecourt",
+     "approxSizeM": [
+      9,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00069 (2024-12-11); rectified alt recording_2025-07-30_09-59-09_01439 (2025)",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture on the public side, not part of the pand shell; the game's ground layer owns the forecourt"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-337",
+   "bearing": 337,
+   "lengthM": 8,
+   "centre": [
+    4.882391,
+    52.3595425
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "rear, no panorama: 3DBAG shell only (inferred)"
+  },
+  {
+   "tag": "w04-247",
+   "bearing": 247,
+   "lengthM": 6.9,
+   "centre": [
+    4.8823575,
+    52.3594995
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000785_pano_0000_000060",
+   "capturedAt": "2018-06-12",
+   "checked": true,
+   "items": [],
+   "note": "west side behind hedges and trees in every panorama; the low annex and the main body keep the 3DBAG shell (inferred)"
+  },
+  {
+   "tag": "w05-246",
+   "bearing": 246,
+   "lengthM": 6.2,
+   "centre": [
+    4.8823695,
+    52.3594385
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000785_pano_0000_000059",
+   "capturedAt": "2018-06-12",
+   "checked": true,
+   "items": [],
+   "note": "west side behind hedges and trees in every panorama; the low annex and the main body keep the 3DBAG shell (inferred)"
+  },
+  {
+   "tag": "w06-247",
+   "bearing": 247,
+   "lengthM": 4.4,
+   "centre": [
+    4.8824275,
+    52.359402
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000785_pano_0000_000060",
+   "capturedAt": "2018-06-12",
+   "checked": true,
+   "items": [],
+   "note": "west side behind hedges and trees in every panorama; the low annex and the main body keep the 3DBAG shell (inferred)"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012076129/",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012076129",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

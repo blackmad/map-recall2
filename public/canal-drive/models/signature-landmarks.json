@@ -97409,12 +97409,6 @@
         "buildVersion": 2,
         "bytes": 43796,
         "triangles": 1359
-      },
-      "lod2": {
-        "sourceHash": "67fd98a5064e4938",
-        "buildVersion": 6,
-        "bytes": 8668,
-        "triangles": 176
       }
     },
     "club-raum": {
@@ -98804,12 +98798,6 @@
         "buildVersion": 2,
         "bytes": 72476,
         "triangles": 3674
-      },
-      "lod2": {
-        "sourceHash": "1bc0ef84380d9fef",
-        "buildVersion": 6,
-        "bytes": 11024,
-        "triangles": 480
       }
     },
     "tolstraat-160-tempel": {
@@ -100994,7 +100982,7 @@
         ],
         "max": [
           27.511722564697266,
-          42.58399963378906,
+          41.83000183105469,
           17.952999114990234
         ]
       },
@@ -101010,24 +100998,24 @@
       },
       "extent": {
         "widthMetres": 41.19072246551514,
-        "heightMetres": 42.88399964570999,
+        "heightMetres": 42.13000184297562,
         "depthMetres": 34.428998947143555,
         "depthCoverage": 1.1034935559981909
       },
-      "triangles": 16737,
-      "bytes": 214668,
+      "triangles": 19185,
+      "bytes": 239124,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "8814ac9fd5b12e8a",
+        "sourceHash": "55d60746e50d2bff",
         "buildVersion": 2,
-        "bytes": 66000,
-        "triangles": 3293
+        "bytes": 71160,
+        "triangles": 3570
       },
       "lod2": {
-        "sourceHash": "8814ac9fd5b12e8a",
+        "sourceHash": "55d60746e50d2bff",
         "buildVersion": 6,
-        "bytes": 11584,
-        "triangles": 444
+        "bytes": 11360,
+        "triangles": 433
       }
     },
     "splendor": {
@@ -104039,19 +104027,19 @@
         "depthMetres": 26.9586124420166,
         "depthCoverage": 1.558301297226393
       },
-      "triangles": 6165,
-      "bytes": 96536,
+      "triangles": 6528,
+      "bytes": 101872,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "ed171ce8059179f7",
+        "sourceHash": "94166a5620444b41",
         "buildVersion": 2,
-        "bytes": 32604,
-        "triangles": 1230
+        "bytes": 33272,
+        "triangles": 1264
       },
       "lod2": {
-        "sourceHash": "ed171ce8059179f7",
+        "sourceHash": "94166a5620444b41",
         "buildVersion": 6,
-        "bytes": 6396,
+        "bytes": 6380,
         "triangles": 190
       }
     },
@@ -104090,8 +104078,8 @@
       },
       "bagYear": 1965,
       "materialOverrides": {
-        "brick": "#5e4033",
-        "red": "#6a3f33",
+        "brick": "#5f4e46",
+        "red": "#63473e",
         "white": "#e9e7df",
         "stone": "#c4c0b6",
         "concrete": "#b9b6ad",
@@ -104310,13 +104298,13 @@
       "bytes": 409688,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "aafa3c0e296e9ed0",
+        "sourceHash": "91fec7525e9b5de9",
         "buildVersion": 2,
         "bytes": 82244,
         "triangles": 4747
       },
       "lod2": {
-        "sourceHash": "aafa3c0e296e9ed0",
+        "sourceHash": "91fec7525e9b5de9",
         "buildVersion": 6,
         "bytes": 16992,
         "triangles": 1037
@@ -104657,12 +104645,6 @@
         "buildVersion": 2,
         "bytes": 27308,
         "triangles": 1081
-      },
-      "lod2": {
-        "sourceHash": "cb3733a0c3c11244",
-        "buildVersion": 6,
-        "bytes": 5808,
-        "triangles": 146
       }
     },
     "zaal-100": {
@@ -104709,7 +104691,8 @@
         "dark": "#26292c",
         "glass": "#3f4c55",
         "frame": "#e6e3da",
-        "slate": "#4b4f57"
+        "slate": "#4b4f57",
+        "red": "#a24a36"
       },
       "attribution": {
         "title": "Zaal 100, De Wittenstraat 100, Amsterdam: music and theatre venue in a brick building of 1892",
@@ -104835,20 +104818,20 @@
         "depthMetres": 37.43712329864502,
         "depthCoverage": 2.5467430815404777
       },
-      "triangles": 9657,
-      "bytes": 147504,
+      "triangles": 10197,
+      "bytes": 155548,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "902e363b33b3bfa9",
+        "sourceHash": "0ae481bf5e58419a",
         "buildVersion": 2,
-        "bytes": 48584,
-        "triangles": 2211
+        "bytes": 52748,
+        "triangles": 2390
       },
       "lod2": {
-        "sourceHash": "902e363b33b3bfa9",
+        "sourceHash": "0ae481bf5e58419a",
         "buildVersion": 6,
-        "bytes": 10112,
-        "triangles": 319
+        "bytes": 10184,
+        "triangles": 323
       }
     },
     "afas-live": {
@@ -105005,6 +104988,580 @@
         "buildVersion": 6,
         "bytes": 10940,
         "triangles": 343
+      }
+    },
+    "diamant-museum": {
+      "id": "diamant-museum",
+      "name": "Diamant Museum Amsterdam, Paulus Potterstraat 8",
+      "landmarkId": "article_landmarks_Q1208561",
+      "modelUrl": "./models/diamant-museum.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012076129"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88243759,
+          52.35946638
+        ],
+        "headingDegrees": 157,
+        "lengthMetres": 24.5,
+        "widthMetres": 18
+      },
+      "surveyed": {
+        "anchor": [
+          4.88243759,
+          52.35946638
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012076129 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/diamant-museum-footprints.json, written by bag-shell-prepare.ts). The Paulus Potterstraat front, its roof and the corner turret are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0: recording_2025-07-30_09-59-09_01439, b_20241211_0838_Track09_Sphere_00069, TMX7316010203-000785_pano_0000_000060); the rear and flanks keep the 3DBAG LoD2.2 shell (CC BY 4.0). Per wall in scripts/landmarks/diamant-museum-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 18.8,
+      "galleryView": {
+        "theta": 0.5,
+        "phi": 1.2
+      },
+      "bagYear": 1899,
+      "materialOverrides": {
+        "brick": "#8c6a5a",
+        "red": "#6e4a3c",
+        "stone": "#d6d0c3",
+        "white": "#efece4",
+        "frame": "#f2f0ea",
+        "glass": "#3a434b",
+        "dark": "#252322",
+        "slate": "#4d535a",
+        "green": "#22302a",
+        "gold": "#f4f2ec"
+      },
+      "attribution": {
+        "title": "Diamant Museum Amsterdam, Paulus Potterstraat 8: brick villa of 1899",
+        "author": "Map Recall",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Diamond_Museum_Amsterdam",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell for the rear and flanks (CC BY 4.0): the steep front gable with its round-headed attic light and roundels, the white DIAMOND MUSEUM letters, the three-light French window on a corbelled stone balcony with a wrought-iron railing, the stone entrance surround lettered DIAMANT MUSEUM, segmental-headed windows, the diapered band, the cornice on its corbel table, the wall dormer, and the diagonal corner turret with its lettering and slate spire. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8824376,
+              52.3593821
+            ],
+            [
+              4.8824277,
+              52.3593664
+            ],
+            [
+              4.8824686,
+              52.3593567
+            ],
+            [
+              4.8824785,
+              52.3593723
+            ],
+            [
+              4.882599,
+              52.3594049
+            ],
+            [
+              4.8824828,
+              52.359566
+            ],
+            [
+              4.8824747,
+              52.3595638
+            ],
+            [
+              4.8824656,
+              52.3595764
+            ],
+            [
+              4.8824328,
+              52.3595675
+            ],
+            [
+              4.8824418,
+              52.359555
+            ],
+            [
+              4.882334,
+              52.3595259
+            ],
+            [
+              4.8823751,
+              52.3594687
+            ],
+            [
+              4.8823486,
+              52.3594616
+            ],
+            [
+              4.8823853,
+              52.3594106
+            ],
+            [
+              4.8824119,
+              52.3594178
+            ],
+            [
+              4.8824376,
+              52.3593821
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -7.007999897003174,
+          0,
+          -12.211999893188477
+        ],
+        "max": [
+          11.01809310913086,
+          18.950000762939453,
+          12.420557975769043
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88243759,
+          52.35946638
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 157,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 24.63255786895752,
+        "heightMetres": 18.950000762939453,
+        "depthMetres": 18.026093006134033,
+        "depthCoverage": 1.0014496114518907
+      },
+      "triangles": 15011,
+      "bytes": 189756,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "482d3e0478526be4",
+        "buildVersion": 2,
+        "bytes": 55992,
+        "triangles": 2473
+      },
+      "lod2": {
+        "sourceHash": "482d3e0478526be4",
+        "buildVersion": 6,
+        "bytes": 9788,
+        "triangles": 298
+      }
+    },
+    "politiebureau-raampoort": {
+      "id": "politiebureau-raampoort",
+      "name": "Politiebureau Raampoort, Marnixstraat 148",
+      "modelUrl": "./models/politiebureau-raampoort.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012169781"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87594087,
+          52.37366909
+        ],
+        "headingDegrees": 11,
+        "lengthMetres": 26.2,
+        "widthMetres": 18.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.87594087,
+          52.37366909
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012169781 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/politiebureau-raampoort-footprints.json, written by bag-shell-prepare.ts). The massing is the 3DBAG LoD2.2 shell (CC BY 4.0); the clock tower, crenellations, pinnacles and every opening are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-002967_pano_0005_000107, TMX7316010203-002552_pano_0002_001693, TMX7316010203-000205_pano_0000_000212, TMX7316010203-000205_pano_0000_000213). Per wall in scripts/landmarks/politiebureau-raampoort-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 24,
+      "galleryView": {
+        "theta": 0.9,
+        "phi": 1.2
+      },
+      "bagYear": 1888,
+      "materialOverrides": {
+        "brick": "#64403a",
+        "greyBrick": "#3e3638",
+        "stone": "#cdc6b6",
+        "frame": "#ece8de",
+        "glass": "#34383c",
+        "dark": "#26292c",
+        "slate": "#4b5058",
+        "copper": "#5f8f7e",
+        "gold": "#c9a24a"
+      },
+      "attribution": {
+        "title": "Politiebureau Raampoort, Marnixstraat 148: police station of 1888 by Willem Springer",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Politiebureau_Raampoort",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell (CC BY 4.0): the square clock tower with its dial, corbel table and slate spire, the crenellated rounded corner over the Singelgracht, the octagonal corner pinnacles, the arched corbel table, the banded brick storeys, round-headed windows under dark relieving arches, paired top-floor windows, the copper coping and the dark basement out of the water. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8760623,
+              52.3736928
+            ],
+            [
+              4.8760562,
+              52.3736935
+            ],
+            [
+              4.8759756,
+              52.3737026
+            ],
+            [
+              4.8759762,
+              52.3737045
+            ],
+            [
+              4.8759197,
+              52.3737108
+            ],
+            [
+              4.8759191,
+              52.3737088
+            ],
+            [
+              4.8759143,
+              52.3737092
+            ],
+            [
+              4.8759093,
+              52.3737093
+            ],
+            [
+              4.8759044,
+              52.3737092
+            ],
+            [
+              4.8758995,
+              52.3737088
+            ],
+            [
+              4.8758947,
+              52.3737081
+            ],
+            [
+              4.87589,
+              52.3737072
+            ],
+            [
+              4.8758854,
+              52.373706
+            ],
+            [
+              4.8758811,
+              52.3737047
+            ],
+            [
+              4.8758769,
+              52.373703
+            ],
+            [
+              4.8758727,
+              52.3737011
+            ],
+            [
+              4.8758688,
+              52.3736989
+            ],
+            [
+              4.8758653,
+              52.3736966
+            ],
+            [
+              4.8758621,
+              52.373694
+            ],
+            [
+              4.8758593,
+              52.3736913
+            ],
+            [
+              4.875857,
+              52.3736884
+            ],
+            [
+              4.875855,
+              52.3736854
+            ],
+            [
+              4.8758536,
+              52.3736823
+            ],
+            [
+              4.8758504,
+              52.3736827
+            ],
+            [
+              4.8758301,
+              52.3736164
+            ],
+            [
+              4.8758364,
+              52.3736157
+            ],
+            [
+              4.8758007,
+              52.373499
+            ],
+            [
+              4.8760032,
+              52.3734757
+            ],
+            [
+              4.8760389,
+              52.3735925
+            ],
+            [
+              4.8760492,
+              52.3736236
+            ],
+            [
+              4.8760524,
+              52.3736233
+            ],
+            [
+              4.8760536,
+              52.3736272
+            ],
+            [
+              4.8760568,
+              52.3736268
+            ],
+            [
+              4.8760658,
+              52.3736562
+            ],
+            [
+              4.8760626,
+              52.3736566
+            ],
+            [
+              4.8760638,
+              52.3736605
+            ],
+            [
+              4.8760606,
+              52.3736608
+            ],
+            [
+              4.8760701,
+              52.3736919
+            ],
+            [
+              4.8760623,
+              52.3736928
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -9.894951820373535,
+          -1.1920929132713809e-8,
+          -4.849453926086426
+        ],
+        "max": [
+          9.077255249023438,
+          24.149999618530273,
+          21.581823348999023
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87594087,
+          52.37366909
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 11,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 26.43127727508545,
+        "heightMetres": 24.1499996304512,
+        "depthMetres": 18.972207069396973,
+        "depthCoverage": 1.0255247064538904
+      },
+      "triangles": 27395,
+      "bytes": 341572,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "04f473be95f21701",
+        "buildVersion": 2,
+        "bytes": 89768,
+        "triangles": 4264
+      },
+      "lod2": {
+        "sourceHash": "04f473be95f21701",
+        "buildVersion": 6,
+        "bytes": 16012,
+        "triangles": 546
+      }
+    },
+    "banks-mansion": {
+      "id": "banks-mansion",
+      "name": "Banks Mansion, Herengracht 519-525",
+      "modelUrl": "./models/banks-mansion.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012165078"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8932531,
+          52.36542579
+        ],
+        "headingDegrees": 282,
+        "lengthMetres": 27.6,
+        "widthMetres": 26.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.8932531,
+          52.36542579
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012165078 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/banks-mansion-footprints.json, written by bag-shell-prepare.ts). The massing and the mansard are the 3DBAG LoD2.2 shell (CC BY 4.0); the colonnade, balconies, windows, cornice, dormers and the corner entrance are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-002619_pano_0015_000187, TMX7316010203-000355_pano_0000_000753, recording_2025-06-16_06-42-40_01641). Per wall in scripts/landmarks/banks-mansion-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 22.5,
+      "galleryView": {
+        "theta": 3.9,
+        "phi": 1.15
+      },
+      "bagYear": 1923,
+      "materialOverrides": {
+        "sandstone": "#bdb4a2",
+        "stone": "#d8d0bd",
+        "white": "#e6e2d8",
+        "frame": "#efece4",
+        "glass": "#2c3640",
+        "dark": "#232527",
+        "slate": "#69707a",
+        "gold": "#e8d9a8",
+        "bronze": "#2a2c2e"
+      },
+      "attribution": {
+        "title": "Banks Mansion, Herengracht 519-525: former bank of 1923 on the Vijzelstraat corner",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q111410255",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell and mansard (CC BY 4.0): the rendered ground floor with engaged columns and small-paned windows, two wrought-iron balconies, architraved windows, the modillion cornice, stone dormers, the chamfered corner with its entrance, lanterns, BANKS letters and large central dormer. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.893443,
+              52.3655374
+            ],
+            [
+              4.8932822,
+              52.3655587
+            ],
+            [
+              4.8932673,
+              52.365517
+            ],
+            [
+              4.8931014,
+              52.3655391
+            ],
+            [
+              4.8930514,
+              52.3653955
+            ],
+            [
+              4.893105,
+              52.3653448
+            ],
+            [
+              4.8933175,
+              52.3653165
+            ],
+            [
+              4.8933483,
+              52.3653124
+            ],
+            [
+              4.8933619,
+              52.3653106
+            ],
+            [
+              4.893443,
+              52.3655374
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -14.41729736328125,
+          -1.1920929132713809e-8,
+          -14.78600025177002
+        ],
+        "max": [
+          13.020000457763672,
+          22.882999420166016,
+          13.519124984741211
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8932531,
+          52.36542579
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 282,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 28.30512523651123,
+        "heightMetres": 22.882999432086944,
+        "depthMetres": 27.437297821044922,
+        "depthCoverage": 1.0237797694419746
+      },
+      "triangles": 16330,
+      "bytes": 244488,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "d8cc19330265f9aa",
+        "buildVersion": 2,
+        "bytes": 64456,
+        "triangles": 2908
+      },
+      "lod2": {
+        "sourceHash": "d8cc19330265f9aa",
+        "buildVersion": 6,
+        "bytes": 9036,
+        "triangles": 325
       }
     }
   }

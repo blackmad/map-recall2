@@ -10,7 +10,7 @@ export function buurtKitEnabled(): boolean {
   if (typeof g.__canalRecallBuurtKit === 'boolean') return g.__canalRecallBuurtKit;
   try {
     const q = new URLSearchParams(g.location?.search ?? '').get('buurtKit');
-    if (q !== null) return q === '1';
+    if (q !== null) return q !== '0';
   } catch { /* no location */ }
-  return g.process?.env?.BUURT_KIT === '1';
+  return g.process?.env?.BUURT_KIT !== '0';
 }

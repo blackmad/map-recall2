@@ -2,7 +2,7 @@
 // byte-identity when off. `node --import tsx --test src/canalRecall/retailGround.test.ts`
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { DARK_PUI_PAINTS, RETAIL_TEMPLATES, TEMPLATE_LOOKS, evidencelessPuiPaint, retailGroundEnabled, signText, signWord, templateForTags } from './retailTemplates.js';
+import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, retailGroundEnabled, signText, signWord, templateForTags } from './retailTemplates.js';
 import { FRONT, LETTER_STEM, MAX_LETTER_H, MIN_LETTER_H, fitWord, glassTone, retailDoor, retailFrontTris, strokePx } from './retailFront.js';
 import { LOGOS, LOGO_GRID, glyphCellBox, glyphLayout, logoFor, retailLogoLayer } from './retailLogos.js';
 import { hostOnFront, ringEdges, segDist, steppedRun } from './retailHosting.js';
@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import { decorateShopfront, setShopfronts, setShopTemplates } from './shopfronts.js';
 import { bayTextures, type BayVariant } from './bayTextures.js';
 import { insideCentre } from './retailArea.js';
+import { PRIOR, VEHICLE_GATE, paintOverGuess, clusters, drawnPaint, labHex, oklab, paintOf, streetPriors, vehicleBand, type Lab } from './retailPuiPaint.js';
 
 const g = globalThis as { __canalRecallRetailGround?: boolean };
 
@@ -237,15 +238,17 @@ test('hosting regressions: Kinkerstraat bike shops on their street fronts, the B
     2809217417: { pand: '0363100012156816', front: 'street' },
     2809219299: { pand: '0363100012061473', front: 'street' },
     5198582619: { pand: '0363100012239989', front: 'nearest' },
+    // Round 5: Keurslagerij Pouw on the 15 m white shopfront next door (SPILL), not the 23 m2 unit its node falls in.
+    10829630288: { pand: '0363100012165106', front: 'street' },
   };
-  assert.equal(fx.cases.length, 3);
+  assert.equal(fx.cases.length, 4);
   for (const c of fx.cases) {
     const cands = c.candidates.map((k: { id: string; ring: [number, number][] }) => ({ id: k.id, ring: k.ring }));
     const read = (key: 'street' | 'open') => (cand: { id: string; ring: [number, number][] }, e: ReturnType<typeof ringEdges>[number]) => {
       const k = c.candidates.find((q: { id: string }) => q.id === cand.id);
       return k[key][ringEdges(cand.ring).findIndex(f => f.x0 === e.x0 && f.y0 === e.y0)];
     };
-    const hit = hostOnFront(cands, 0, 0, id => c.candidates.find((q: { id: string }) => q.id === id)?.uses ?? undefined, read('street'), read('open'));
+    const hit = hostOnFront(cands, 0, 0, id => c.candidates.find((q: { id: string }) => q.id === id)?.uses ?? undefined, read('street'), read('open'), true);
     assert.deepEqual(hit && { pand: hit.id, front: hit.front }, want[c.node], c.what);
   }
 });
@@ -273,7 +276,8 @@ const LOOK_PINS: Array<[string, string, string]> = [
   ['0363100012092013', 'ah', 'Albert Heijn, Kinkerstraat 89'],
   ['0363100012169187', 'ah', 'Albert Heijn, Westerstraat 79'],
   ['0363100012233666', 'hema', 'HEMA, Ferdinand Bolstraat 93A'],
-  ['0363100012176699', 'butcher', 'Keurslagerij Pouw, Haarlemmerdijk 95'],
+  // Round 5: Pouw's front is the 15 m white shopfront next door (retailHosting.ts SPILL), not its 23 m2 node unit.
+  ['0363100012165106', 'butcher', 'Keurslagerij Pouw, Haarlemmerdijk 95'],
   ['0363100012173480', 'books', 'De Kookboekhandel, Haarlemmerdijk 133'],
   ['0363100012178799', 'bakery', 'Bakkerij Verhagen, Utrechtsestraat 61'],
   ['0363100012152738', 'doner', 'Kebab House, Ferdinand Bolstraat 23'],
@@ -281,7 +285,8 @@ const LOOK_PINS: Array<[string, string, string]> = [
 ];
 
 test('retail look: the pinned shops keep their templates; the Kinkerstraat 98/104 shops draw the plain pui', () => {
-  const extract = JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/shop-templates.json', 'utf8')) as { templates: string[]; buildings: Record<string, [number, ...unknown[]]> };
+  // The staged extract (the lane's, reviewed); the published copy follows it when the integrator publishes.
+  const extract = JSON.parse(fs.readFileSync('data/retail-ground/shop-templates.json', 'utf8')) as { templates: string[]; buildings: Record<string, [number, ...unknown[]]> };
   for (const [pand, template, what] of LOOK_PINS) {
     const row = extract.buildings[`NL.IMBAG.Pand.${pand}`];
     assert.ok(row, `${what}: in the template extract`);
@@ -326,14 +331,189 @@ test('round 3c cost: panes are one interior quad of the shop cell; every templat
   const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 }, rect = [0.08, 0.155, 0.92, 0.56] as const;
   for (const t of RETAIL_TEMPLATES) {
     const tris = retailFrontTris({ template: t, seed: 'x', word: 'VERHAGEN', letters: 99, interior: { layer: 7, rect } }, e, 0.3, 6.3, 0, 3.6);
-    const props = ['bike', 'greengrocer', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t);
+    const props = ['bike', 'greengrocer', 'florist', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t);
     if (!props) assert.ok(tris.length <= 140, `${t}: ${tris.length} tris`);
+    // Round 6: the bloemist's pavement display (two tables of pots, buckets before them) stays within 320.
+    if (t === 'florist') assert.ok(tris.length <= 320, `${t}: ${tris.length} tris`);
     if (!props) assert.ok(tris.some(tri => tri.layer === 7) && !tris.some(tri => /^#7d878e$/i.test(tri.hex)), `${t}: the shop cell's interior, not flat goods`);
   }
 });
 
-test('round 3c paint: a guessed pale pui goes dark; dark and mid paints stay', () => {
-  assert.ok((DARK_PUI_PAINTS as readonly string[]).includes(evidencelessPuiPaint('#ece6e0', 'NL.IMBAG.Pand.1')));
-  for (const hex of ['#7a4a38', '#2a2a2c', '#3a3c3c', '#8a8a86', '#3a4f7a']) assert.equal(evidencelessPuiPaint(hex, 'x'), hex);
-  assert.equal(evidencelessPuiPaint('#ece6e0', 'a'), evidencelessPuiPaint('#ece6e0', 'a'));
+
+const labOf = (hex: string): Lab => oklab(parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16));
+const band = (parts: [string, number][]): Lab[] => parts.flatMap(([hex, n]) => Array.from({ length: n }, () => labOf(hex)));
+
+test('round 4 pui paint: a pale frame share reads pale, a coloured one colour, glass and dark paint dark, a muddle nothing', () => {
+  // Pouw (Westerstraat, 2025 pano): white frames in shade among dark glass.
+  assert.equal(paintOf(clusters(band([['#a8b4b8', 30], ['#1e1c1c', 50], ['#4a4644', 20]])))?.cls, 'pale');
+  assert.equal(paintOf(clusters(band([['#2e5a3c', 30], ['#1e1c1c', 60], ['#3a3634', 10]])))?.cls, 'colour');
+  assert.equal(paintOf(clusters(band([['#262221', 60], ['#1a1818', 30], ['#504a46', 10]])))?.cls, 'dark');
+  // A mid-grey wall with a bit of everything states nothing.
+  assert.equal(paintOf(clusters(band([['#7a7672', 40], ['#8a8682', 40], ['#1e1c1c', 20]]))), null);
+  assert.equal(paintOf([]), null);
+});
+
+test('round 4 pui paint: a pale reading is drawn as a lit white or cream, a dark one as read', () => {
+  const pale = labOf(drawnPaint('pale', '#9fafb4'));
+  assert.ok(pale[0] > 0.9 && Math.hypot(pale[1], pale[2]) <= 0.026, `pale ${drawnPaint('pale', '#9fafb4')}`);
+  assert.ok(Math.abs(labOf(drawnPaint('dark', '#262221'))[0] - 0.36) < 0.01, 'a dark reading is drawn as dark paint, not glass-black');
+  assert.equal(drawnPaint('dark', '#5a5048'), '#5a5048');
+  assert.ok(labOf(drawnPaint('colour', '#2e5a3c'))[0] > labOf('#2e5a3c')[0]);
+  assert.equal(labHex(labOf('#336699')), '#336699');
+});
+
+test('round 4 pui paint: the extract stamps the measured paint on template and plain shop pands, only once installed', () => {
+  const f = (id: string): { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown } => ({ type: 'Feature', properties: { id }, geometry: null });
+  setShopfronts(null);
+  setShopTemplates({ version: 1, templates: ['ah'], buildings: { 'NL.IMBAG.Pand.1': [0, 4.9, 52.37] }, paint: { 'NL.IMBAG.Pand.1': '#e8ecee', 'NL.IMBAG.Pand.2': '#262221', 'NL.IMBAG.Pand.3': 'white' }, prior: { 'NL.IMBAG.Pand.4': '#4a3f38', 'NL.IMBAG.Pand.2': '#ffffff' } });
+  const a = decorateShopfront(f('NL.IMBAG.Pand.1')).properties;
+  assert.deepEqual([a.shopTemplate, a.puiPaint], [['ah', 4.9, 52.37], '#e8ecee']);
+  const b = decorateShopfront(f('NL.IMBAG.Pand.2')).properties;
+  assert.deepEqual([b.shopTemplate, b.puiPaint], [undefined, '#262221']);
+  assert.equal(decorateShopfront(f('NL.IMBAG.Pand.4')).properties.puiPaint, '#4a3f38', 'a street prior stamps an unmeasured shop');
+  const plain = f('NL.IMBAG.Pand.3');
+  assert.equal(decorateShopfront(plain), plain);
+  setShopTemplates(null);
+  const off = f('NL.IMBAG.Pand.2');
+  assert.equal(decorateShopfront(off), off);
+});
+
+test('round 4 pui paint: a measured paint frames the template front; absent, the template frame', () => {
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1, len: 6 } as const;
+  const hexes = (paint?: string) => new Set(retailFrontTris({ template: 'butcher', seed: 'x', ...(paint ? { paint } : {}) }, e, 0, 6, 0, 3.4).map(t => t.hex));
+  assert.ok(hexes('#e8ecee').has('#e8ecee'));
+  assert.ok(!hexes().has('#e8ecee'));
+});
+
+test('round 5b street prior: a tight pale or coloured majority on a street, never a dark one', () => {
+  const r = (street: string, cls: 'pale' | 'colour' | 'dark', paint: string) => ({ street, cls, paint });
+  const p = streetPriors([
+    r('Dark', 'dark', '#3a3430'), r('Dark', 'dark', '#4a4440'), r('Dark', 'dark', '#5a5450'), r('Dark', 'dark', '#5a5450'),
+    r('White', 'pale', '#eeeeee'), r('White', 'pale', '#f0f0ec'), r('White', 'pale', '#e8eaec'), r('White', 'dark', '#3a3430'),
+    r('Loose', 'pale', '#eeeeee'), r('Loose', 'pale', '#d8c08a'), r('Loose', 'pale', '#e8eaec'),
+    r('Mixed', 'pale', '#eeeeee'), r('Mixed', 'pale', '#f0f0f0'), r('Mixed', 'colour', '#2e5a3c'), r('Mixed', 'dark', '#3a3430'),
+    r('Few', 'pale', '#eeeeee'), r('Few', 'pale', '#f0f0f0'), r('', 'pale', '#eeeeee')]);
+  assert.equal(p.get('Dark'), undefined, 'a dark majority is glass, not a paint: no prior');
+  assert.deepEqual(p.get('White'), { cls: 'pale', paint: '#eeeeee', n: 4, share: 0.75 });
+  assert.equal(p.get('Loose'), undefined, 'paints too far apart');
+  assert.equal(p.get('Mixed'), undefined, 'no 75 % majority');
+  assert.equal(p.get('Few'), undefined, `fewer than ${PRIOR.minReads} reads`);
+  assert.equal(p.size, 1);
+});
+
+test('round 5b vehicles: a flat panel across the band or an extreme sideways smear reads as a vehicle; mullions do not', () => {
+  const w = 60, h = 42, band = (f: (x: number, y: number) => number) => Array.from({ length: w * h }, (_, i) => f(i % w, Math.floor(i / w)));
+  // A shopfront: glass with goods behind it between pale mullions every 12 px.
+  assert.equal(vehicleBand(band((x, y) => (x % 12 < 2 ? 200 : 40) + ((x * 37 + y * 91) % 31)), w, h).vehicle, null);
+  // A van's side: one flat panel.
+  assert.equal(vehicleBand(band(() => 180), w, h).vehicle, 'panel');
+  // A passing tram: horizontal streaks, nothing vertical.
+  const smear = vehicleBand(band((x, y) => (y % 5 < 2 ? 210 : 60) + ((x + y) % 3)), w, h);
+  assert.ok(smear.aniso < VEHICLE_GATE.minAniso);
+  assert.equal(smear.vehicle, 'smear');
+});
+
+test('round 5b dark readings: replace a pale guess, keep a darker one; pale and coloured readings always replace', () => {
+  assert.equal(paintOverGuess('#ece6e0', '#4a3f38', true), '#4a3f38');
+  for (const guess of ['#2a4a38', '#1f2f4f', '#3a2a1f']) assert.equal(paintOverGuess(guess, '#4a3f38', true), guess);
+  assert.equal(paintOverGuess('#2a4a38', '#eef0f0', false), '#eef0f0');
+  // The stamp carries the dark flag.
+  setShopfronts(null);
+  setShopTemplates({ version: 1, templates: [], buildings: {}, paint: { 'NL.IMBAG.Pand.7': '#4a3f38', 'NL.IMBAG.Pand.8': '#eef0f0' }, dark: ['NL.IMBAG.Pand.7'] });
+  const f = (id: string) => decorateShopfront({ type: 'Feature', properties: { id }, geometry: null } as { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown }).properties;
+  assert.equal(f('NL.IMBAG.Pand.7').puiDark, 1);
+  assert.equal(f('NL.IMBAG.Pand.8').puiDark, undefined);
+  setShopTemplates(null);
+});
+
+test('round 5b board: a measured paint paints the board of a front with no chain logo, letters in contrast', () => {
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1, len: 6 } as const;
+  const tris = retailFrontTris({ template: 'butcher', seed: 'x', paint: '#e8ecee', letters: 99 }, e, 0, 6, 0, 3.4);
+  assert.ok(!tris.some(t => t.hex === TEMPLATE_LOOKS.butcher.fascia), 'no red board');
+  assert.ok(tris.filter(t => t.layer === 99).every(t => t.hex === '#2b2724'), 'dark letters on a pale board');
+  const plain = retailFrontTris({ template: 'butcher', seed: 'x' }, e, 0, 6, 0, 3.4);
+  assert.ok(plain.some(t => t.hex === TEMPLATE_LOOKS.butcher.fascia));
+});
+
+test('round 6: bike shop classes from OSM tags (the panorama spot check of 2026-11-15)', async () => {
+  const { bikeShopClass, bikeCode, bikeFromCode } = await import('./retailBikes.js');
+  const cases: Array<[Record<string, string>, string, string?]> = [
+    [{ shop: 'bicycle', name: 'Yellow Bike', 'service:bicycle:rental': 'yes' }, 'rental', '#f2c21b'],
+    [{ shop: 'bicycle', name: 'MacBike' }, 'rental', '#c8262d'],
+    [{ amenity: 'bicycle_rental', name: 'Bike City' }, 'rental'],
+    // SAM Tweewielen Service & Bike Rental, Karel Klinkenbergstraat 10: no rental row in the photo; a repair shop first.
+    [{ shop: 'bicycle', name: 'SAM Tweewielen Service & Bike Rental' }, 'used'],
+    [{ shop: 'bicycle', name: 'Gregario Cycling Services' }, 'used'],
+    [{ shop: 'bicycle', name: 'Veloretti' }, 'premium'],
+    [{ shop: 'bicycle', name: 'Maats Cycling Culture', 'service:bicycle:retail': 'yes' }, 'premium'],
+    [{ shop: 'bicycle', name: 'Fietsen Veloretti', second_hand: 'yes' }, 'used'],
+    [{ shop: 'bicycle', name: 'Rijwielhandel De Pijp' }, 'used'],
+    [{ shop: 'bicycle', name: 'Mo', 'service:bicycle:retail': 'yes', 'service:bicycle:repair': 'yes' }, 'used'],
+    [{ shop: 'bicycle' }, 'used'],
+  ];
+  for (const [tags, cls, hex] of cases) {
+    const c = bikeShopClass(tags);
+    assert.equal(c.cls, cls, tags.name);
+    assert.equal(c.fleetHex, hex, tags.name);
+    assert.deepEqual(bikeFromCode(bikeCode(c)), hex ? { cls, fleetHex: hex } : { cls });
+  }
+  assert.equal(bikeFromCode('x'), null);
+  assert.equal(bikeFromCode(undefined), null);
+});
+
+test('round 6: bikes stand on the pavement beside the door, side-on, and cost what the receipt says', async () => {
+  const { bikeQuads } = await import('./retailBikes.js');
+  assert.equal(bikeQuads().length, 29);
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  const off = retailFrontTris({ template: 'bike', seed: 'pand-1' }, e, 0.3, 6.3, 0, 3.6);
+  for (const cls of ['used', 'premium', 'rental'] as const) {
+    const input = { template: 'bike' as const, seed: 'pand-1', bike: { cls, ...(cls === 'rental' ? { fleetHex: '#f2c21b' } : {}) } };
+    const on = retailFrontTris(input, e, 0.3, 6.3, 0, 3.6), door = retailDoor(input, 0.3, 6.3)!;
+    const bikes = Math.round((on.length - off.length + 8 * 2) / 58); // the template's 4 pavement disc pairs give way (4 x 4 tris)
+    assert.ok(bikes >= 4 && bikes <= 12, `${cls}: ${bikes} bikes`);
+    for (const t of on) for (const [x, y, z] of t.p) {
+      assert.ok(-y <= 1.11 && z <= 4.6 && x >= 0.2 && x <= 6.4, `${cls}: ${x} ${y} ${z}`);
+    }
+    // Outside bikes (more than 0.25 m out) keep clear of the door and of the road side of the pavement.
+    const outside = on.filter(t => t.p.every(p => -p[1] > 0.25 && p[2] < 1.2));
+    assert.ok(outside.length >= 2 * 58, `${cls}: ${outside.length} outside tris`);
+    for (const t of outside) for (const [x, y] of t.p) {
+      assert.ok(-y <= 0.7, `${cls}: bike ${-y} m out`);
+      assert.ok(x <= door.a0 - 0.1 || x >= door.a1 + 0.1, `${cls}: bike over the door at ${x}`);
+    }
+    if (cls === 'rental') assert.ok(outside.some(t => t.hex === '#f2c21b'));
+  }
+});
+
+test("round 6b: the second logo page (McDonald's, Gall & Gall, Kruidvat), & and ' in the glyph cell", async () => {
+  const { LOGOS_2 } = await import('./retailLogos.js');
+  for (const { key } of LOGOS_2) {
+    const l = logoFor(key)!;
+    assert.equal(l.page, 1, key);
+    assert.ok(l.rect[0] >= 0 && l.rect[2] <= 1 && l.rect[1] >= 0 && l.rect[3] <= 1 && l.rect[2] > l.rect[0], key);
+  }
+  assert.equal(logoFor('ah')!.page, 0);
+  assert.equal(glyphLayout('GALL & GALL').quads.map(q => q.ch).join(''), 'GALL&GALL');
+  assert.equal(glyphLayout("McDONALD'S").quads.map(q => q.ch).join(''), "MCDONALD'S");
+  // Every glyph's rect stays inside the lettering cell.
+  const g = glyphCellBox();
+  for (const q of glyphLayout("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&'").quads) assert.ok(q.rect[0] >= g.x - 1e-9 && q.rect[2] <= g.x + g.w + 1e-9, q.ch);
+  assert.equal(templateForTags({ shop: 'chemist', name: 'Kruidvat', brand: 'Kruidvat' }), 'kruidvat');
+  assert.equal(templateForTags({ shop: 'alcohol', name: 'Gall & Gall' }), 'gallgall');
+  assert.equal(templateForTags({ amenity: 'fast_food', name: "McDonald's" }), 'mcdonalds');
+});
+
+test('round 7: a measured awning draws in its colour, replaces the template awning, and is nothing when absent', () => {
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  // Optician / Unique Eyefashion (pair 17 of round 6): black awnings over a template with none.
+  const plain = retailFrontTris({ template: 'hairdresser', seed: 'p' }, e, 0.3, 6.3, 0, 3.6);
+  const black = retailFrontTris({ template: 'hairdresser', seed: 'p', awning: '#1f1f21' }, e, 0.3, 6.3, 0, 3.6);
+  assert.ok(black.length > plain.length && black.length - plain.length <= 12, `${black.length - plain.length} awning tris`);
+  assert.ok(black.some(t => t.hex === '#1f1f21'));
+  // A template's own awning (greengrocer green) takes the measured colour, at no extra cost.
+  const green = retailFrontTris({ template: 'greengrocer', seed: 'p' }, e, 0.3, 6.3, 0, 3.6);
+  const measured = retailFrontTris({ template: 'greengrocer', seed: 'p', awning: '#1f1f21' }, e, 0.3, 6.3, 0, 3.6);
+  assert.equal(measured.length, green.length);
+  const g = (ts: typeof green) => ts.filter(t => t.hex === TEMPLATE_LOOKS.greengrocer.awning).length; // the fascia shares the green
+  assert.ok(g(measured) < g(green) && measured.some(t => t.hex === '#1f1f21'));
 });

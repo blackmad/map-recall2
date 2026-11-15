@@ -1,6 +1,37 @@
 # Canal Recall — what is built
 
+## Buurt generator: Rivierenbuurt and Apollo/Stadion published, kit on by default (2026-11-15)
 
+- David approved on #390 after held-out blind A/Bs: 7/7 on round 8's untuned streets and 7/7 on round 9's (seed r9-heldout). Published 4,167 row-front records (`scripts/buurt-generators/publish.ts`) into `public/data/front-records/row-front.json`. The buurt kit (erkers, eaves, entrances, Plan Zuid casements) is now on by default; `?buurtKit=0` / BUURT_KIT=0 turns it off.
+- Brick is measured per row from panoramas (645 of 846 rows, at least 2 capture dates each, white-balanced on the row's own trim); unmeasured rows take the district pool. Roof form is from AHN4.
+- World compile fixes needed by the kit: `scripts/world/pipeline.ts` accepts a row-front's straightened footprint as FOOT, as it already did for row-wall slabs, and `frontKit.ts` rounds the straightened ring to the cells' 1e-7 degree grid. The kit flag changes bay presets city-wide, so the whole world was recompiled (`--against=none`).
+- Direction from David the same day: cover districts with looks and kits first, and layer per-house precision on top as overrides. The canal belt moves to a belt look built the same way.
+
+## Retail look: shop templates, chain logos, second sources (2026-11-15)
+
+- Merged lane/retail-look-20261114 (0000871c9) behind `?retailGround=1`, still default off. Every template change was kept only if it won a blind, shuffled photo A/B by a fresh opus reviewer; bikes were judged on held-out fronts because the lane had tuned on the first-pass verdicts.
+- Hosting: OSM shop/amenity nodes stay the base. A node whose BAG address lies in another pand moves there (`retailAddress.ts`); horeca exploitation permits (api.data.amsterdam.nl) move or add POIs only on a BAG address match or exact normalised name, because loose name matches were wrong about 1 in 7; All the Places (CC0) needs an address match before it moves anything; Overture is report-only and sign OCR confirm-only.
+- Chain logos from web search are allowed since 2026-11-15 (David), with source URL and fetch date in provenance.json; the atlas gained a second page.
+
+## Landmarks: target list, Politiebureau Raampoort, Banks Mansion (2026-11-15)
+
+- The factory queue had no buildable rows left, so `scripts/landmarks/landmark-targets-next.ts` ranks unmodelled OSM landmarks in and just outside the belt by ride exposure (1,500 routes, walls within 60 m) × recognisability (Wikipedia 2, wikidata 1.4, monument 1.2). The top 15 with verdicts are in `docs/reports/landmark-targets-20261115.json`; canal-house fronts go to house rows.
+- Built: Politiebureau Raampoort (pand 0363100012169781, 1888, 27,395 tris) and Banks Mansion (0363100012165078, 1923, 16,330 tris; own mansard because 3DBAG reads the balconies as roofs). Each read FIX then PASS by a fresh opus reviewer on rule-10 pairs. Lane lane/landmarks-next-20261115.
+
+## Landmarks: Diamant Museum, and four venue fixes judged blind (2026-11-15)
+
+- New: Diamant Museum, Paulus Potterstraat 8 (pand 0363100012076129, 1899): bespoke builder `scripts/landmarks/diamant-museum-*`, 15,011 tris, lod2 298. The first read flagged orange brick (#c8603e); after a fix to #8c6a5a the same reviewer passed it. The west flank is blank because hedges hide it in every panorama. The landmark factory queue had nothing else buildable; Bags and Purses (Herengracht 571–573) is three canal fronts and belongs to house rows. Lane lane/landmarks-new-20261115.
+- Venue fixes, each judged by a fresh opus reviewer on a blind shuffled pair (photo vs before/after at the same rule-10 pose). Won: Perdu concave gable with rim and hoist beam; Zaal 100 red-brick arch rings, 4th dormer, top-down banner; IGC rounded cap (lantern, drum, dome, ball) replacing the 3DBAG pyramid; CREA grey-brown brick. Lost and reverted: Cristofori white doors, Morgan & Mees cream, Asscher paler brick. DeLaMar fascia dropped (2017-only evidence). Kit: `verticalLettering(dir)`, `concaveGable`, `roundedTowerCap`. Lane lane/landmark-fixes-20261115.
+- Why blind A/B: on 2026-11-15 the integrator's own read of the belt rows sheet ("clearly better") was wrong per David; every lane now hands back only changes that win a blind pair.
+
+## Bridges hold their level end to end: `wayEnds` (2026-11-15)
+
+- After `bankClimb`, four crossings still dipped more than 1 m. Under viaducts the elevation model is filtered over tens of metres into a gentle sag, and a 4 % bank climb never starts up it. Haarlemmer Houttuinen 7376117 also sat under the flat register footprint BRU0095, which lifts nothing.
+- Way decks now run on to the way's own end nodes where the relief sags more than 1 m under the line between them (`WAY_END_DIP_M`, at most 160 m past the water). That stretch is lifted whole; only OSM streets crossing under it open ±10 m hole windows. A flat-only register claim takes an `overFlat` deck that lifts the surface at the footprint's width and lets the footprint draw the bridge.
+- The rule is gated on the probe's own crossing-dip measure (`crossingDipOn`, every bundle member): the ungated cut changed 150 decks and sank road at 28 deck ends. Gated, 4 decks change. `?wayEnds=0` is the before (byte-identical).
+- Dips over 1 m: 4 → 0 (Haarlemmer Houttuinen 2.87, Amsterdamse Baan 424283770 2.51, Van der Madeweg 1251743255 1.33 → 0; Schinkelhavenstraat 38282903 1.06 → 0.36). Over 0.3 m: 19 → 16. Pinned in `BANK_DIPS` (`bridge-feedback-pins.ts`) with live before checks.
+- `probe-hole-junctions` now stops short of streets under the deck, as the pins do: its old 17 decks / 178 vertices were really 8 / 64 (Lelylaan 7382981, 7382638 and Wageningendreef were only streets under the deck). Those 8 remain; see TODO.
+- Integration note: the crossing-grade push 80663a380 carried only its notes and allow-list shrink, because the shared integrator worktree had been switched to another branch. `bankClimb` (3107a35c2) reaches main with this merge.
 
 ## 2026-11-15 — First row published; batch 1 off
 

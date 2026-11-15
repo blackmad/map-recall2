@@ -11,12 +11,24 @@
 //   4. else a node deep inside a large footprint (more than FRONT_SNAP_M from any open wall: a supermarket in a block)
 //      keeps the old rule, its pand's street wall nearest the node;
 //   5. else nothing.
+// Round 5 (lane retail-look-20261114): rule 1 yields to a much bigger shop next door (SPILL): a node inside a pand
+// whose shop space is a kiosk-sized unit, within SPILL.nearM of a neighbour's street wall whose shop space is many
+// times larger, belongs to the neighbour. Keurslagerij Pouw (Haarlemmerdijk 95, node 10829630288) sat in pand
+// 0363100012176699 (23 m2 shop over a flat, the 5.9 m awning front) while its white 15 m shopfront is 0363100012165106
+// (349 m2 shop), 2.8 m away.
 // Pure: Node build (scripts/retail-ground/build-templates.ts) and tests.
 import { bagAllowsShop, PAVEMENT_NODE_M, type PandUses } from './shopGate.js';
 
 export const FRONT_SNAP_M = 6;
 /** A street wall loses to an open wall this much nearer the node (m). */
 export const NEAREST_MARGIN_M = 2;
+/** Round 5: a kiosk-sized host (shop m2 <= hostMaxM2) yields to a neighbour within nearM whose shop m2 is >= minM2 and >= ratio x the host's. */
+export const SPILL = { hostMaxM2: 25, minM2: 150, ratio: 10, nearM: 3.5 } as const;
+/** A pand's shop space: its larger of retail (winkel) and horeca (bijeenkomst) m2, and which. */
+function shopSpace(u: PandUses | undefined): { m2: number; use: 'winkelfunctie' | 'bijeenkomstfunctie' } {
+  const w = u?.area.winkelfunctie ?? 0, b = u?.area.bijeenkomstfunctie ?? 0;
+  return w >= b ? { m2: w, use: 'winkelfunctie' } : { m2: b, use: 'bijeenkomstfunctie' };
+}
 export type FrontCandidate = { id: string; ring: [number, number][] };
 export type HostFront = { id: string; front: 'street' | 'nearest'; inside: boolean; distanceM: number };
 
@@ -49,7 +61,9 @@ export function ringEdges(ring: readonly [number, number][]): Array<{ x0: number
  */
 export function hostOnFront(candidates: readonly FrontCandidate[], x: number, y: number, uses: (id: string) => PandUses | undefined,
   streetFacing: (c: FrontCandidate, e: ReturnType<typeof ringEdges>[number]) => boolean,
-  open: (c: FrontCandidate, e: ReturnType<typeof ringEdges>[number]) => boolean = () => true): HostFront | null {
+  open: (c: FrontCandidate, e: ReturnType<typeof ringEdges>[number]) => boolean = () => true,
+  /** Round 5: whether this POI may move to a much bigger shop next door (not a red-light window: those are kiosk-sized). */
+  spill = false): HostFront | null {
   const rows = candidates.map(c => {
     let front = Infinity, any = Infinity;
     for (const e of ringEdges(c.ring)) { const d = segDist(e.x0, e.y0, e.x1, e.y1, x, y); if (d < any && open(c, e)) any = d; if (d < front && streetFacing(c, e)) front = d; }
@@ -58,7 +72,13 @@ export function hostOnFront(candidates: readonly FrontCandidate[], x: number, y:
   const best = (list: typeof rows, by: (r: (typeof rows)[number]) => number) => list.sort((p, q) => (Number(q.shop) - Number(p.shop)) || by(p) - by(q))[0];
   const inside = rows.filter(r => r.inside);
   const own = best(inside.filter(r => r.front <= FRONT_SNAP_M && r.front <= r.any + NEAREST_MARGIN_M), r => r.front);
-  if (own) return { id: own.c.id, front: 'street', inside: true, distanceM: own.front };
+  if (own) {
+    // The neighbour must hold the same kind of shop space (retail or horeca) as the host.
+    const mine = shopSpace(uses(own.c.id));
+    const next = spill && mine.m2 > 0 && mine.m2 <= SPILL.hostMaxM2 ? rows.filter(r => r !== own && r.front <= SPILL.nearM).map(r => ({ r, s: shopSpace(uses(r.c.id)) })).filter(v => v.s.use === mine.use && v.s.m2 >= Math.max(SPILL.minM2, SPILL.ratio * mine.m2)).sort((p, q) => p.r.front - q.r.front)[0]?.r : undefined;
+    if (next) return { id: next.c.id, front: 'street', inside: next.inside, distanceM: next.front };
+    return { id: own.c.id, front: 'street', inside: true, distanceM: own.front };
+  }
   const near = rows.filter(r => !r.inside && r.front <= FRONT_SNAP_M && (r.shop || r.front <= PAVEMENT_NODE_M)).sort((p, q) => p.front - q.front)[0];
   if (near) return { id: near.c.id, front: 'street', inside: near.inside, distanceM: near.front };
   const court = best(inside.filter(r => r.any <= FRONT_SNAP_M), r => r.any);

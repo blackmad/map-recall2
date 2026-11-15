@@ -7,7 +7,6 @@ import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
 import { baysFor, blockLines, generateDistrict, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, type DistrictLibrary } from './generate.js';
-import { BAY_STYLES, PLAN_ZUID_CASEMENT } from '../bayLook.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
 const LAT0 = 52.345, LNG0 = 4.9, M_LAT = 1 / 111_320, M_LNG = 1 / (111_320 * Math.cos(LAT0 * Math.PI / 180));
@@ -56,13 +55,12 @@ test('described pands never enter a row and only break it; output is determinist
   assert.equal(new Set(a.records.filter(r => a.rows[0].members.some(m => m.pandId === r.pandId)).map(r => JSON.stringify(r.series))).size, 1);
 });
 
-test('kit flag off: the school bay presets are unchanged; on: the Plan Zuid casement and its paired variant are appended', () => {
-  assert.ok(!BAY_STYLES.school.includes(PLAN_ZUID_CASEMENT));
-  const probe = `import { BAY_STYLES, PLAN_ZUID_CASEMENT } from './src/canalRecall/bayLook.ts'; console.log(JSON.stringify([BAY_STYLES.school.length, BAY_STYLES.school.at(-2) === PLAN_ZUID_CASEMENT]));`;
-  const run = (env: Record<string, string>) => JSON.parse(spawnSync('node', ['--import', 'tsx', '--input-type=module', '-e', probe], { encoding: 'utf8', env: { ...process.env, BUURT_KIT: '', ...env } }).stdout.trim());
-  const off = run({}), on = run({ BUURT_KIT: '1' });
-  assert.deepEqual(off, [BAY_STYLES.school.length, false]);
-  assert.deepEqual(on, [BAY_STYLES.school.length + 2, true]);
+test('kit flag off (BUURT_KIT=0): the school bay presets are the base set; default on: the Plan Zuid casement and its paired variant are appended', () => {
+  const probe = `import { BAY_STYLES, PLAN_ZUID_CASEMENT } from './src/canalRecall/bayLook.ts'; console.log(JSON.stringify([BAY_STYLES.school.length, BAY_STYLES.school.includes(PLAN_ZUID_CASEMENT), BAY_STYLES.school.at(-2) === PLAN_ZUID_CASEMENT]));`;
+  const run = (env: Record<string, string>) => JSON.parse(spawnSync('node', ['--import', 'tsx', '--input-type=module', '-e', probe], { encoding: 'utf8', env: { ...process.env, ...env } }).stdout.trim());
+  const off = run({ BUURT_KIT: '0' }), on = run({ BUURT_KIT: '' });
+  assert.equal(off[1], false);
+  assert.deepEqual(on, [off[0] + 2, true, true]);
 });
 
 test('the eaves roof is drawn by a street note, not the slot; the slate slot draws the dark tile look', () => {
