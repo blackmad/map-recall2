@@ -61,6 +61,10 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     concrete: {slot: 'stone', measured: '#d6d6d4', why: 'cool light-grey tiles of the set-back storey and the drum, and the white banners (w03-257, w04-245)'},
     bronze: {slot: 'accent', measured: '#b08a4a', why: 'bronze-gold HOLLAND CASINO letters on the roof edge (w03-257)'},
   },
+  'mauritskade-61': {
+    red: {slot: 'roofTile', why: 'red-brown tiled roofs over the wings and middle range (w01-59, w08-329); palette red, not brick'},
+    concrete: {slot: 'stone', why: 'cream-painted timber eave and brackets (w01-59)'},
+  },
   'port-van-cleve': {
     pink: {slot: 'accent', why: 'red neon letters of the roof sign die PORT van CLEVE (TMX7316010203-001900_pano_0006_000054)'},
     concrete: {slot: 'stone', why: 'white stone frieze panels, sign lettering and the stepped-gable house\'s white ground floor and step caps (w02-290)'},

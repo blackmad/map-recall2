@@ -7,6 +7,7 @@ import {buildPolitiebureauRaampoort} from './politiebureau-raampoort-builder';
 import {buildBanksMansion} from './banks-mansion-builder';
 import {buildSchillerRembrandtplein} from './schiller-rembrandtplein-builder';
 import {buildPortVanCleve} from './port-van-cleve-builder';
+import {buildMauritskade61} from './mauritskade-61-builder';
 import {buildReinwardtAcademie} from './reinwardt-academie-builder';
 import {buildDeJaren} from './de-jaren-builder';
 import {buildHandelsbank} from './handelsbank-singel-250-builder';
@@ -711,6 +712,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='banks-mansion')buildBanksMansion(w,d,helpers);
     else if(id==='schiller-rembrandtplein')buildSchillerRembrandtplein(w,d,helpers);
     else if(id==='port-van-cleve')buildPortVanCleve(w,d,helpers);
+    else if(id==='mauritskade-61')buildMauritskade61(w,d,helpers);
     else if(id==='reinwardt-academie')buildReinwardtAcademie(w,d,helpers);
     else if(id==='de-jaren')buildDeJaren(w,d,helpers);
     else if(id==='handelsbank-singel-250')buildHandelsbank(w,d,helpers);

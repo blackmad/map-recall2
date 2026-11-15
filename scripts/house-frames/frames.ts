@@ -728,7 +728,8 @@ async function prepareAll(args: Args): Promise<{ prepared: Prepared[]; skipped: 
     const hit = hits.get(e);
     if (hit) { prepared.push(hit); console.log(`${e.id}: cached pick, pose and photo (${hit.street} pano ${hit.pick.timestamp.slice(0, 10)}), ${hit.route}`); continue; }
     try {
-      const piece = await pieceOf(e, found.get(normId(e.id)));
+      // an OSM way id (w…) names the tile feature of a pand the BAG tiles lack (Mauritskade 61): findPands keys it bare
+      const piece = await pieceOf(e, found.get(normId(e.id)) ?? found.get(e.id));
       if (piece.part) e.part = piece.part;
       const r = await prepare(e, piece.fp, args);
       if ('skip' in r) { skipped.push(r); console.log(`${e.id}: skipped (${r.skip})`); }
