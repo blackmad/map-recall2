@@ -477,7 +477,8 @@
           "heightM": 19.03
         },
         {
-          "pandId": "0363100012168202",
+          "pandId": "0363100100091828",
+          "evidencePandId": "0363100012168202",
           "label": "2–4",
           "widthM": 8.13,
           "widthSource": "cut wall segment",
@@ -494,6 +495,7 @@
       "answers": "belt-20261114/answers-kept",
       "staged": "staged-belt-20261114",
       "wallFromCuts": true,
+      "twinNote": "Herengracht 2–4: the member is the world's pand 0363100100091828 (same footprint, taller; the world drops the D1 pand 0363100012168202); its cut and read stay filed under 0363100012168202",
       "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     },
     "herengracht-26-46": {

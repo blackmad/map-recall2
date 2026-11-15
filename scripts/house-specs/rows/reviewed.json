@@ -161,10 +161,11 @@
       "value": {
         "riseM": 2.9,
         "steps": 2,
-        "attic": 1
+        "attic": 1,
+        "shoulder": "sloped"
       },
       "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg), for lane R's gable field (b33dd7801)",
-      "note": "67: sloped shoulders, one step, then the top tread (65 has three treads a side); the sloped shoulder is a schemaLimit",
+      "note": "67: sloped shoulders up to one step, then the top tread (65 has three treads a side); lane R round 4 draws the sloped shoulder",
       "at": "2026-11-15"
     },
     {
@@ -190,6 +191,16 @@
       "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg), for lane R's gable field (b33dd7801)",
       "note": "69: a straight-sided neck gable with a small top cap, one attic door with a railing; slightly taller than 65-67",
       "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012236453#m0"
+      ],
+      "field": "corniceTopM",
+      "value": 16.3,
+      "ref": "lane D, reading of the belt D1 cuts against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/kinkerstraat-65-87.json)",
+      "at": "2026-11-15",
+      "note": "69's gable shoulders stand on the cornice line of 71-73 (their series line 16.3), not on 14.6: the D1 cuts of 67 and 69 show the foot level with 71's white cornice"
     }
   ],
   "kinkerstraat-315-359": [
@@ -334,6 +345,160 @@
       "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
       "at": "2026-11-15",
       "note": "Herengracht 69 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable plain"
+    },
+    {
+      "fronts": [
+        "0363100012168129"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "mansard",
+        "material": "slate",
+        "dormersPerFront": 1,
+        "dormerKind": "gabled",
+        "riseM": 1.4
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012168129.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "51: a slate mansard behind the cornice; only the dormer shows over the cornice from the quay (confirmed: slate, dormer only)"
+    },
+    {
+      "fronts": [
+        "0363100012168130"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "mansard",
+        "material": "slate",
+        "dormersPerFront": 1,
+        "dormerKind": "gabled",
+        "riseM": 1.4
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012168130.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "53: as 51, slate behind a plain cornice, one dormer showing"
+    },
+    {
+      "fronts": [
+        "0363100012179751"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "mansard",
+        "material": "slate",
+        "dormersPerFront": 1,
+        "dormerKind": "gabled",
+        "riseM": 1.4
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179751.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "65: as 51, a small dormer centred over the cornice"
+    },
+    {
+      "fronts": [
+        "0363100012169271",
+        "0363100012179672"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 3.2,
+        "neckWidthM": 3,
+        "neckOverM": 2.4,
+        "attic": 1,
+        "cap": "segmental"
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap"
+    },
+    {
+      "fronts": [
+        "0363100012169271",
+        "0363100012179672"
+      ],
+      "field": "windowHeights",
+      "value": [
+        1.9,
+        1.7,
+        1.45
+      ],
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "55 and 61: the upper windows shorten storey by storey"
+    },
+    {
+      "fronts": [
+        "0363100012179673"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.6,
+        "neckOverM": 1.8,
+        "attic": 1,
+        "cap": "segmental"
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179673.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "57: a short neck with a segmental cap (confirmed)"
+    },
+    {
+      "fronts": [
+        "0363100012179748"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.8,
+        "neckOverM": 2,
+        "attic": 1,
+        "cap": "segmental"
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179748.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "59: a dark neck gable with claw pieces and a segmental cap (confirmed)"
+    },
+    {
+      "fronts": [
+        "0363100012179683"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 3,
+        "neckOverM": 2.2,
+        "attic": 1,
+        "finials": true,
+        "cap": "segmental"
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179683.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "63: white claw pieces and finials on the shoulders; the cap is segmental like 55's (R's trial had none)"
+    },
+    {
+      "fronts": [
+        "0363100012179682"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.9,
+        "finials": true,
+        "attic": 1,
+        "atticHead": "round"
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179682.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "71: a spout gable with a round-headed attic light (confirmed)"
+    },
+    {
+      "fronts": [
+        "0363100012179681"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 3.3,
+        "attic": 1
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179681.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "73: a spout gable with a square attic light (confirmed)"
     }
   ],
   "herengracht-75-89": [
@@ -598,6 +763,36 @@
       "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
       "at": "2026-11-15",
       "note": "Herengracht 171: the D1 read states no crown (drawn from the period default); the register names the gable neck"
+    }
+  ],
+  "herengracht-2-24": [
+    {
+      "fronts": [
+        "0363100012179761"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.6,
+        "neckOverM": 1.8,
+        "attic": 1
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179761.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-2-24.json)",
+      "at": "2026-11-15",
+      "note": "16: a neck gable behind the tree (confirmed; its cap is not legible in the cut)"
+    },
+    {
+      "fronts": [
+        "0363100012179763"
+      ],
+      "field": "windowHeights",
+      "value": [
+        2.1,
+        1.75,
+        1.55
+      ],
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179763.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-2-24.json)",
+      "at": "2026-11-15",
+      "note": "10: three upper window storeys shortening upward (confirmed)"
     }
   ]
 }

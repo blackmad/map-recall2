@@ -3,7 +3,7 @@
 // variation, and the spec writer.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { JUDGED_FAMILIES, JUDGED_PALETTE, withoutSampledWall, describerColourWord, judgeFront, judgeRow, lchOf, variedTone, withJudgedWall, type JudgedInput } from './judgedColour.ts';
+import { JUDGED_FAMILIES, JUDGED_PALETTE, brickFromSample, withoutSampledWall, describerColourWord, judgeFront, judgeRow, lchOf, variedTone, withJudgedWall, type JudgedInput } from './judgedColour.ts';
 import { specWallColour } from './decorate.ts';
 import { specView } from './view.ts';
 import { validateSpec, type HouseSpec } from './spec.ts';
@@ -139,4 +139,13 @@ test('dark-grey-brick: Herengracht canal brick reads dark and nearly grey (55, 6
     assert.ok(t.C < 0.016, `C ${t.C}`);
     assert.ok(t.C < lchOf(variedTone('purple-brown-brick', id))!.C - 0.025);
   }
+});
+
+test('brickFromSample: dark brick bins by chroma (Herengracht 51-73 cuts)', () => {
+  // 55 #4f4c4d, 63 #4a423b, 65 #433b33: dark and nearly grey -> dark-grey-brick; dark with colour stays purple-brown.
+  assert.equal(brickFromSample({ L: 0.419, C: 0.004, h: 347 }), 'dark-grey-brick');
+  assert.equal(brickFromSample({ L: 0.385, C: 0.017, h: 64 }), 'dark-grey-brick');
+  assert.equal(brickFromSample({ L: 0.40, C: 0.03, h: 30 }), 'purple-brown-brick');
+  assert.equal(brickFromSample({ L: 0.50, C: 0.006, h: 50 }), 'brown-brick');
+  assert.equal(brickFromSample({ L: 0.48, C: 0.06, h: 35 }), 'red-brown-brick');
 });

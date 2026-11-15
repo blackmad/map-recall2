@@ -21,6 +21,11 @@ const ROWS = path.join(REPO, 'scripts/house-specs/rows/rows.json');
 interface SelectRow { pandId: string; street: string; number: number; addresses: string[]; year: number; height: number; areaM2: number; picked: boolean }
 interface CutRow { pandId: string; wallLenM?: number; wall?: { heightM: number }; skip?: string }
 
+/** Pands the world draws as a twin (same footprint, the other kept): the member is the world's pand, its evidence stays
+ *  filed under the D1 pand. Herengracht 2-4: the world holds NL.IMBAG.Pand.0363100100091828 (taller, identical footprint)
+ *  and drops 0363100012168202, so a record on the D1 pand drew nothing (integrator, 2026-11-15). */
+export const WORLD_TWINS: Readonly<Record<string, string>> = { '0363100012168202': '0363100100091828' };
+
 /** Numbers stated by a pand's addresses on the street ("Herengracht 46D" -> 46). */
 export function numbersOf(addresses: readonly string[], street: string): number[] {
   const re = new RegExp(`^${street} (\\d+)`);
@@ -40,8 +45,9 @@ export function beltMembers(rows: readonly SelectRow[], cuts: ReadonlyMap<string
       const cut = cuts.get(r.pandId);
       const w = cut?.wallLenM;
       const label = nums.length > 1 ? `${nums[0]}–${nums[nums.length - 1]}` : String(nums[0] ?? r.number);
+      const twin = WORLD_TWINS[r.pandId];
       return {
-        pandId: r.pandId, label, widthM: w ? +w.toFixed(2) : +Math.min(12, Math.max(3.5, r.areaM2 / 15)).toFixed(2),
+        pandId: twin ?? r.pandId, ...(twin ? { evidencePandId: r.pandId } : {}), label, widthM: w ? +w.toFixed(2) : +Math.min(12, Math.max(3.5, r.areaM2 / 15)).toFixed(2),
         widthSource: w ? 'cut wall segment' : 'BAG area / 15 m (no cut)', numbers: nums.length ? nums : [r.number], built: r.year,
         side: parity === 0 ? 'even' as const : 'odd' as const, ...(r.height ? { heightM: r.height } : {}),
       };
@@ -103,6 +109,7 @@ function main() {
       staged: path.relative(rowsJson.d1Root, path.join(root, 'staged-belt-20261114')),
       wallFromCuts: true,
       ...(face ? { face: face.id } : {}),
+      ...(members.some(m => m.evidencePandId) ? { twinNote: members.filter(m => m.evidencePandId).map(m => `${street} ${m.label}: the member is the world's pand ${m.pandId} (same footprint, taller; the world drops the D1 pand ${m.evidencePandId}); its cut and read stay filed under ${m.evidencePandId}`).join('; ') } : {}),
       note: face ? `canal belt as rows: the October face ${face.id} for its houses (${face.extra.map(m => m.label).join(', ') || 'all in the belt tranche'} added from it), the belt D1 tranche for the rest (belt-rows.ts)`
         : `canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)`,
     };

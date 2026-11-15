@@ -236,7 +236,9 @@ export function judgeFront(input: JudgedInput, rowMedianL: number | null = null)
  */
 export function brickFromSample(s: Lch): JudgedFamily {
   if (s.L >= 0.56 && s.C >= 0.045 && s.h >= 60) return 'buff-brick';
-  if (s.L < 0.44) return 'purple-brown-brick';
+  // Dark brick bins by chroma: nearly grey (Herengracht's overcast canal brick, C .004-.017) is dark-grey-brick; dark
+  // with colour stays purple-brown (the integrator's 2026-11-15 cutoff, C .025).
+  if (s.L < 0.44) return s.C < 0.025 ? 'dark-grey-brick' : 'purple-brown-brick';
   if (s.C >= 0.05 && s.h < 50) return 'red-brown-brick';
   return 'brown-brick';
 }

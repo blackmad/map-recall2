@@ -165,14 +165,6 @@
       "component": "ground",
       "what": "75-87 ground floors carry an entresol (a second row of shop glazing) that the kit ground storey cannot draw",
       "ref": "lane D, D1 cuts"
-    },
-    {
-      "fronts": [
-        "0363100012156997"
-      ],
-      "component": "gable",
-      "what": "67's gable has sloped shoulders up to one step and the top tread; the kit step gable draws square treads all the way",
-      "ref": "lane D, model judgement on the D1 cuts and lane R round-3 frames (2026-11-15)"
     }
   ],
   "kinkerstraat-363-371": [
@@ -266,14 +258,6 @@
     }
   ],
   "herengracht-2-24": [
-    {
-      "fronts": [
-        "0363100012168202"
-      ],
-      "component": "front",
-      "what": "Herengracht 2-4 (the Brouwersgracht corner) draws nothing in the Node preview, today or row; the read is a 3-storey cornice front with a white plastered ground storey",
-      "ref": "lane D belt sheet"
-    },
     {
       "fronts": [
         "0363100012179765"

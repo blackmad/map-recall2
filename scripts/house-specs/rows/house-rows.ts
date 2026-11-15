@@ -18,7 +18,7 @@
 import { rdToLngLat } from '../../../src/canalRecall/rdCoordinates.ts';
 import fs from 'node:fs';
 import path from 'node:path';
-import { answerFile, loadRereads, loadRowDefs, REPO, type RowDef } from './rowDefs.ts';
+import { answerFile, evidenceId, loadRereads, loadRowDefs, REPO, type RowDef } from './rowDefs.ts';
 import { validateBlockFace, type BlockFaceIntent } from '../../../src/canalRecall/blockFace/intent.ts';
 import { fromBlockFace } from '../../../src/canalRecall/houseSpec/adapters.ts';
 import { specFromFace } from '../../../src/canalRecall/houseSpec/fromFace.ts';
@@ -74,7 +74,7 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
     const bag = def.face ? readJson(path.join(REPO, 'scripts/block-face/faces', def.face, 'pands', pid, '3dbag.json')) : null;
     const attrs = bag ? (Object.values(bag.feature.CityObjects)[0] as { attributes: Record<string, number> }).attributes : null;
     const groundOffsetM = attrs && strip ? Math.round((attrs.b3_h_maaiveld - strip.groundNAP) * 100) / 100 : null;
-    const cut = cuts?.rows.find(r => r.pandId === pid);
+    const cut = cuts?.rows.find(r => r.pandId === evidenceId(pid));
     return {
       pandId: pid, label: sp?.label ?? (md.numbers?.length ? `${def.title.split(' ')[0]} ${md.label}` : `${def.title.split(' ')[0]} (pand ${md.label})`), numbers: sp?.numbers ?? md.numbers ?? [], built: sp?.buildYear ?? md.built ?? null,
       widthM: sp?.survey?.frontWidthM ?? md.widthM ?? null, groundOffsetM, eaves3dbag: md.eavesM ?? null,

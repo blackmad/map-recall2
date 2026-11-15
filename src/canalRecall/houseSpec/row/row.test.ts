@@ -312,5 +312,5 @@ test('Herengracht belt rows: the cut sample judges brick; painted stays painted;
   assert.equal(wall('0363100012175616').family, 'purple-brown-brick');
   const a = solveRow(loadRow(loadRowDefs()['herengracht-2-24'], '2026-11-15').input);
   const six = a.fronts.find(f => f.pandId === '0363100012179834')!;
-  assert.equal(frontDesign(a, six).wall.value.family, frontDesign(a, a.fronts.find(f => f.pandId === '0363100012168202')!).wall.value.family, '6 (no cut) takes its neighbour 2-4');
+  assert.equal(frontDesign(a, six).wall.value.family, frontDesign(a, a.fronts.find(f => f.pandId === '0363100100091828')!).wall.value.family, '6 (no cut) takes its neighbour 2-4');
 });
