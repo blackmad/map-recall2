@@ -515,7 +515,7 @@ function rowGroundFrame(c: ExtraContext, s: ExtraSink, d: Span, dc: { material: 
     if (opens[i].door) {
       // The door under its light, filling the cell, with two raised panels.
       s.strip(c.f, a, b, 0.05, g0, ze, leaf);
-      for (const [p, q] of [[g0 + 0.15, g0 + (ze - g0) * 0.42], [g0 + (ze - g0) * 0.5, ze - 0.15]] as const) s.strip(c.f, a + 0.1, b - 0.1, 0.06, p, q, shadeHex(leaf, dc.door === 'black' ? 1.6 : 1.12));
+      for (const [p, q] of [[g0 + 0.15, g0 + (ze - g0) * 0.42], [g0 + (ze - g0) * 0.5, ze - 0.15]] as const) s.strip(c.f, a + 0.1, b - 0.1, 0.06, p, q, shadeHex(leaf, dc.door === 'black' ? 1.1 : 1.12));
     } else {
       // The window glazed to the frame's low sill, a mullion and a transom.
       s.strip(c.f, a, b, 0.05, g0, ze - K.rail / 2, ROW_DOORCASE.glass);
