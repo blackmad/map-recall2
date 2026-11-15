@@ -252,3 +252,9 @@ test('Kinkerstraat 126-138 (round 2): a module pand splits by the face module sh
   assert.ok(w[3] < w[2] && w[3] < w[4], `module 4 narrow: ${w.join(',')}`);
   assert.ok(w[6] < w[5], `module 7 narrow: ${w.join(',')}`);
 });
+
+test('Kinkerstraat 244-248 (round 2): a face that states one front is never split by a wide reading', () => {
+  const r = solveRow(loadRow(loadRowDefs()['kinkerstraat-244-332'], '2026-11-15').input);
+  assert.deepEqual(r.fronts.filter(f => f.pandId === '0363100012233496').map(f => f.id), ['0363100012233496']);
+  assert.ok(r.series.every(s => s.type), 'every series has a face type');
+});
