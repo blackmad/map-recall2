@@ -13,9 +13,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { hostOnFront, insideRing } from '../../src/canalRecall/retailHosting.ts';
-import { compareSources, sameName, MATCH_M, type OsmRec, type SourceRec } from '../../src/canalRecall/retailSources.ts';
+import { compareSources, nameTokens, sameName, MATCH_M, type OsmRec, type SourceRec } from '../../src/canalRecall/retailSources.ts';
 import { rdToLngLat } from '../../src/canalRecall/rdCoordinates.ts';
 import { nodes, local, near, facing, open, bagUses, bagKey, type Node } from './city.ts';
+import { vbosNear } from './bag-vbo.ts';
+import { addressPand, matchAddress, parseHouseNumber } from '../../src/canalRecall/retailAddress.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const SOURCE = arg('source') ?? 'horeca', OUT = `data/retail-ground/sources/${SOURCE}.json`, HOSTS = 'data/retail-ground/source-hosts.json';
@@ -117,6 +119,40 @@ const count = verdicts.reduce((m, v) => (m[v.kind] = (m[v.kind] ?? 0) + 1, m), {
 // ATP points are often geocoded (no address on Albert Heijn's): a chain store needs a chain-sized unit there.
 const MIN_M2: Record<string, number> = { atp: 100 };
 const usable = (r: Rec) => r.inside && !!r.pand && shopSpace(r.pand) > (MIN_M2[SOURCE] ?? 0);
+// Round 7b (integrator): a name match alone moved the wrong business about 1 in 7 (Tensai Ramen / Ramen Bar). A move
+// needs the source's own address to be a BAG unit inside the target pand, or (permits) the same name exactly; an ATP
+// add needs the address too. Everything else keeps the OSM host and is listed.
+const exactName = (a: string, b: string) => { const r = (v: string) => v.toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g, ''); return r(a) === r(b); };
+async function addressIn(r: Rec): Promise<boolean> {
+  const street = r.tags['addr:street'], nr = r.tags['addr:housenumber'];
+  if (!street || !nr || !r.pand) return false;
+  const vbos = await vbosNear(r.id, r.at[0], r.at[1]); if (!vbos) return false;
+  const hits = matchAddress(street, nr, vbos); if (!hits.length) return false;
+  const [x, y] = local(r.at[0], r.at[1]);
+  const p = addressPand(hits.map(v => ({ ...v, at: local(v.at[0], v.at[1]) })), near(x, y), insideRing);
+  return !!p && bagKey(p.id) === r.pand;
+}
+// The OSM node's own address, when it has one, must not name another place: another street, or a number more than
+// ADDR_NUMBER_SLACK away (a shop over 29-33 is one place; Tensai Ramen at Reguliersdwarsstraat 49 is not the Ramen Bar
+// at Geelvinckssteeg 4).
+const ADDR_NUMBER_SLACK = 4;
+function addrConflict(v: { source: Rec; osm: OsmRec }): boolean {
+  const t = (v.osm as OsmRec & { node?: Node }).node?.tags ?? {}, a = parseHouseNumber(t['addr:housenumber']), b = parseHouseNumber(v.source.tags['addr:housenumber']);
+  if (!t['addr:street'] || !a || !v.source.tags['addr:street'] || !b) return false;
+  const st = (x: string) => nameTokens(x).join('');
+  return st(t['addr:street']) !== st(v.source.tags['addr:street']) || Math.abs(a.nr - b.nr) > ADDR_NUMBER_SLACK;
+}
+const gate: Record<string, { move: (v: { source: Rec; osm: OsmRec }) => Promise<string | null>; add: (r: Rec) => Promise<string | null> }> = {
+  horeca: { move: async v => addrConflict(v) ? null : exactName(v.source.name, v.osm.name) ? 'exact name' : await addressIn(v.source) ? 'BAG address' : null, add: async () => 'permit at a BAG horeca address' },
+  atp: { move: async v => !addrConflict(v) && await addressIn(v.source) ? 'BAG address' : null, add: async r => await addressIn(r) ? 'BAG address' : null },
+  overture: { move: async () => null, add: async () => null },
+};
+const why = new Map<string, string>();
+for (const v of verdicts) {
+  const r = v.source as Rec; if (!usable(r)) continue;
+  if (v.kind === 'move') { const g = await gate[SOURCE].move({ source: r, osm: v.osm! }); if (g) why.set(r.id, g); }
+  else if (v.kind === 'add' && !osm.some(o => o.pand === r.pand)) { const g = await gate[SOURCE].add(r); if (g) why.set(r.id, g); }
+}
 const moves = verdicts.filter(v => v.kind === 'move'), adds = verdicts.filter(v => v.kind === 'add');
 // An add on a pand some OSM node of this kind already holds is the same place under another name (a rename, a
 // second permit): it confirms the pand, not a new business.
@@ -124,9 +160,10 @@ const osmPands = new Set(osm.map(o => o.pand).filter(Boolean));
 const realAdds = adds.filter(v => !osmPands.has(v.source.pand));
 const report = {
   source: SOURCE, provenance, date: new Date().toISOString().slice(0, 10), matchM: MATCH_M,
-  counts: { records: src.length, osm: osm.length, ...count, addsOnOsmPand: adds.length - realAdds.length, addsNew: realAdds.length, osmNotListed: unmatched.length, movesApplicable: moves.filter(v => usable(v.source as Rec)).length, addsApplicable: realAdds.filter(v => usable(v.source as Rec)).length },
-  moves: moves.map(v => ({ osm: v.osm!.id, osmName: v.osm!.name, name: v.source.name, from: v.osm!.pand, to: v.source.pand, inside: (v.source as Rec).inside, shopM2: v.source.pand ? shopSpace(v.source.pand) : 0, d: +dist(v.osm!.at, v.source.at).toFixed(1), meta: (v.source as Rec).meta })),
-  adds: realAdds.map(v => ({ id: v.source.id, name: v.source.name, pand: v.source.pand, inside: (v.source as Rec).inside, shopM2: v.source.pand ? shopSpace(v.source.pand) : 0, tags: (v.source as Rec).tags, at: v.source.at })),
+  counts: { records: src.length, osm: osm.length, ...count, addsOnOsmPand: adds.length - realAdds.length, addsNew: realAdds.length, osmNotListed: unmatched.length, movesApplicable: moves.filter(v => why.has(v.source.id)).length, movesHeld: moves.filter(v => usable(v.source as Rec) && !why.has(v.source.id)).length, addsApplicable: realAdds.filter(v => why.has(v.source.id)).length },
+  moves: moves.map(v => ({ applied: why.get(v.source.id) ?? null, osm: v.osm!.id, osmName: v.osm!.name, name: v.source.name, from: v.osm!.pand, to: v.source.pand, inside: (v.source as Rec).inside, shopM2: v.source.pand ? shopSpace(v.source.pand) : 0, d: +dist(v.osm!.at, v.source.at).toFixed(1), meta: (v.source as Rec).meta })),
+  adds: realAdds.map(v => ({ applied: why.get(v.source.id) ?? null, id: v.source.id, name: v.source.name, pand: v.source.pand, inside: (v.source as Rec).inside, shopM2: v.source.pand ? shopSpace(v.source.pand) : 0, tags: (v.source as Rec).tags, at: v.source.at })),
+  /** Listed only, never removed: a source's spider can miss a store. */
   osmNotListed: unmatched.map(o => ({ id: o.id, name: o.name, pand: o.pand, amenity: (o as typeof osm[number]).node.tags?.amenity })),
 };
 if (closed.length) {
@@ -145,8 +182,8 @@ if (process.argv.includes('--apply')) {
   const cur = fs.existsSync(HOSTS) ? JSON.parse(fs.readFileSync(HOSTS, 'utf8')) : { note: 'second-sources.ts --apply: OSM node hosts moved by a second source, and businesses OSM lacks', hosts: {}, adds: [], provenance: {} };
   for (const k of Object.keys(cur.hosts)) if (cur.hosts[k].source === SOURCE) delete cur.hosts[k];
   cur.adds = cur.adds.filter((a: { source: string }) => a.source !== SOURCE);
-  for (const v of moves) if (usable(v.source as Rec)) cur.hosts[v.osm!.id] = { pand: v.source.pand, at: v.source.at, source: SOURCE, name: v.source.name, was: v.osm!.pand };
-  for (const v of realAdds) if (usable(v.source as Rec)) cur.adds.push({ id: v.source.id, lon: v.source.at[0], lat: v.source.at[1], tags: (v.source as Rec).tags, source: SOURCE });
+  for (const v of moves) if (why.has(v.source.id)) cur.hosts[v.osm!.id] = { pand: v.source.pand, at: v.source.at, source: SOURCE, name: v.source.name, was: v.osm!.pand, why: why.get(v.source.id) };
+  for (const v of realAdds) if (why.has(v.source.id)) cur.adds.push({ id: v.source.id, lon: v.source.at[0], lat: v.source.at[1], tags: (v.source as Rec).tags, source: SOURCE });
   cur.provenance[SOURCE] = provenance;
   fs.writeFileSync(HOSTS, JSON.stringify(cur, null, 1));
   console.log(`applied: ${Object.values(cur.hosts).filter((h: any) => h.source === SOURCE).length} hosts, ${cur.adds.filter((a: any) => a.source === SOURCE).length} adds -> ${HOSTS}`);

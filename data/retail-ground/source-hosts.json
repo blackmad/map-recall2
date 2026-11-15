@@ -1,16 +1,6 @@
 {
  "note": "second-sources.ts --apply: OSM node hosts moved by a second source, and businesses OSM lacks",
  "hosts": {
-  "34044760": {
-   "pand": "0363100012070707",
-   "at": [
-    4.939794,
-    52.362686
-   ],
-   "source": "atp",
-   "name": "Albert Heijn",
-   "was": "0363100012101846"
-  },
   "251165506": {
    "pand": "0363100012182303",
    "at": [
@@ -19,7 +9,8 @@
    ],
    "source": "horeca",
    "name": "Bern",
-   "was": "0363100012181818"
+   "was": "0363100012181818",
+   "why": "BAG address"
   },
   "251168511": {
    "pand": "0363100012182854",
@@ -29,7 +20,8 @@
    ],
    "source": "horeca",
    "name": "Downtown Burger American Dinner",
-   "was": "0363100012182855"
+   "was": "0363100012182855",
+   "why": "BAG address"
   },
   "412512561": {
    "pand": "0363100012124262",
@@ -39,27 +31,8 @@
    ],
    "source": "horeca",
    "name": "Nara Nara",
-   "was": "0363100012081960"
-  },
-  "428078545": {
-   "pand": "0363100012083387",
-   "at": [
-    4.855938,
-    52.381735
-   ],
-   "source": "atp",
-   "name": "Albert Heijn",
-   "was": "0363100012142181"
-  },
-  "431759749": {
-   "pand": "0363100012092403",
-   "at": [
-    4.845488,
-    52.371446
-   ],
-   "source": "atp",
-   "name": "KFC",
-   "was": "0363100012135604"
+   "was": "0363100012081960",
+   "why": "exact name"
   },
   "447815483": {
    "pand": "0363100012169653",
@@ -69,17 +42,8 @@
    ],
    "source": "horeca",
    "name": "Bollywood Indian Restaurant",
-   "was": "0363100012169655"
-  },
-  "483554621": {
-   "pand": "0363100012092363",
-   "at": [
-    4.855828,
-    52.352808
-   ],
-   "source": "atp",
-   "name": "Gall & Gall",
-   "was": "0363100012092364"
+   "was": "0363100012169655",
+   "why": "exact name"
   },
   "497171384": {
    "pand": "0363100012129283",
@@ -89,7 +53,8 @@
    ],
    "source": "horeca",
    "name": "Restaurant One Dim Sum",
-   "was": "0363100012152643"
+   "was": "0363100012152643",
+   "why": "BAG address"
   },
   "497179291": {
    "pand": "0363100012168687",
@@ -99,7 +64,8 @@
    ],
    "source": "horeca",
    "name": "The Hard Rock Café",
-   "was": "0363100012168689"
+   "was": "0363100012168689",
+   "why": "BAG address"
   },
   "571185748": {
    "pand": "0363100012124807",
@@ -109,7 +75,8 @@
    ],
    "source": "horeca",
    "name": "Chinees-Indisch Restaurant San Lok",
-   "was": "0363100012140578"
+   "was": "0363100012140578",
+   "why": "BAG address"
   },
   "595264885": {
    "pand": "0363100012074860",
@@ -119,7 +86,8 @@
    ],
    "source": "horeca",
    "name": "Café Cook - private dining",
-   "was": "0363100012142005"
+   "was": "0363100012142005",
+   "why": "BAG address"
   },
   "622472303": {
    "pand": "0363100012179573",
@@ -129,7 +97,8 @@
    ],
    "source": "horeca",
    "name": "De Belhamel",
-   "was": "0363100012179574"
+   "was": "0363100012179574",
+   "why": "exact name"
   },
   "706792079": {
    "pand": "0363100012137685",
@@ -139,27 +108,8 @@
    ],
    "source": "horeca",
    "name": "Brasserie 't Siertje",
-   "was": "0363100012132658"
-  },
-  "746906771": {
-   "pand": "0363100012083640",
-   "at": [
-    4.81087,
-    52.345961
-   ],
-   "source": "atp",
-   "name": "Bruna",
-   "was": "0363100012062300"
-  },
-  "761215756": {
-   "pand": "0363100012096779",
-   "at": [
-    4.906597,
-    52.343389
-   ],
-   "source": "atp",
-   "name": "Albert Heijn",
-   "was": "0363100012109950"
+   "was": "0363100012132658",
+   "why": "exact name"
   },
   "826146613": {
    "pand": "0363100012070334",
@@ -169,7 +119,8 @@
    ],
    "source": "horeca",
    "name": "Oslo Beers",
-   "was": "0363100012104557"
+   "was": "0363100012104557",
+   "why": "BAG address"
   },
   "850718020": {
    "pand": "0363100012241555",
@@ -179,17 +130,8 @@
    ],
    "source": "atp",
    "name": "HEMA",
-   "was": null
-  },
-  "1208516713": {
-   "pand": "0363100012236920",
-   "at": [
-    4.901064,
-    52.354556
-   ],
-   "source": "atp",
-   "name": "Ekoplaza",
-   "was": "0363100012236643"
+   "was": null,
+   "why": "BAG address"
   },
   "1310911734": {
    "pand": "0363100012174476",
@@ -199,7 +141,8 @@
    ],
    "source": "horeca",
    "name": "Eetcafé Stoop & Stoop",
-   "was": "0363100012174477"
+   "was": "0363100012174477",
+   "why": "BAG address"
   },
   "1328358034": {
    "pand": "0363100012168436",
@@ -209,7 +152,8 @@
    ],
    "source": "horeca",
    "name": "Sound Garden",
-   "was": "0363100012168432"
+   "was": "0363100012168432",
+   "why": "BAG address"
   },
   "1436379684": {
    "pand": "0363100012164880",
@@ -219,7 +163,8 @@
    ],
    "source": "horeca",
    "name": "Plan B Overtoom",
-   "was": "0363100012237372"
+   "was": "0363100012237372",
+   "why": "BAG address"
   },
   "1444572935": {
    "pand": "0363100012169639",
@@ -229,7 +174,8 @@
    ],
    "source": "horeca",
    "name": "El Rancho Argentino",
-   "was": "0363100012169653"
+   "was": "0363100012169653",
+   "why": "BAG address"
   },
   "1444572961": {
    "pand": "0363100012172373",
@@ -239,7 +185,8 @@
    ],
    "source": "horeca",
    "name": "Ristorante Peppino",
-   "was": "0363100012172374"
+   "was": "0363100012172374",
+   "why": "BAG address"
   },
   "1477529682": {
    "pand": "0363100012169558",
@@ -249,7 +196,8 @@
    ],
    "source": "horeca",
    "name": "De Gieter",
-   "was": "0363100012172249"
+   "was": "0363100012172249",
+   "why": "exact name"
   },
   "1483619826": {
    "pand": "0363100012168559",
@@ -259,7 +207,8 @@
    ],
    "source": "horeca",
    "name": "El Vino",
-   "was": "0363100012168560"
+   "was": "0363100012168560",
+   "why": "exact name"
   },
   "1486109761": {
    "pand": "0363100012173769",
@@ -269,7 +218,8 @@
    ],
    "source": "horeca",
    "name": "Bombay Inn",
-   "was": "0363100012173774"
+   "was": "0363100012173774",
+   "why": "exact name"
   },
   "1656117435": {
    "pand": "0363100012158125",
@@ -279,7 +229,8 @@
    ],
    "source": "horeca",
    "name": "Gebrouwen Door Vrouwen Bar",
-   "was": "0363100012156137"
+   "was": "0363100012156137",
+   "why": "BAG address"
   },
   "1688841879": {
    "pand": "0363100012233561",
@@ -289,7 +240,8 @@
    ],
    "source": "horeca",
    "name": "Café Parck",
-   "was": "0363100012148700"
+   "was": "0363100012148700",
+   "why": "BAG address"
   },
   "1704746489": {
    "pand": "0363100012169852",
@@ -299,7 +251,8 @@
    ],
    "source": "horeca",
    "name": "De Smoeshaan",
-   "was": "0363100012169857"
+   "was": "0363100012169857",
+   "why": "exact name"
   },
   "1783971866": {
    "pand": "0363100012169590",
@@ -309,7 +262,8 @@
    ],
    "source": "horeca",
    "name": "Toscanini",
-   "was": "0363100012169658"
+   "was": "0363100012169658",
+   "why": "BAG address"
   },
   "1803859899": {
    "pand": "0363100012169923",
@@ -319,7 +273,8 @@
    ],
    "source": "horeca",
    "name": "Bierproeflikaal \"De Zotte\"",
-   "was": "0363100012168790"
+   "was": "0363100012168790",
+   "why": "BAG address"
   },
   "2051068002": {
    "pand": "0363100012087402",
@@ -329,7 +284,8 @@
    ],
    "source": "horeca",
    "name": "Café Amore",
-   "was": "0363100012109603"
+   "was": "0363100012109603",
+   "why": "BAG address"
   },
   "2165936476": {
    "pand": "0363100012159231",
@@ -339,7 +295,8 @@
    ],
    "source": "horeca",
    "name": "Yuan's Hot Pot Amsterdam De Pijp",
-   "was": "0363100012167250"
+   "was": "0363100012167250",
+   "why": "BAG address"
   },
   "2348168280": {
    "pand": "0363100012093447",
@@ -349,7 +306,8 @@
    ],
    "source": "horeca",
    "name": "The Meets Eatery",
-   "was": "0363100012147446"
+   "was": "0363100012147446",
+   "why": "BAG address"
   },
   "2366138134": {
    "pand": "0363100012164694",
@@ -359,7 +317,8 @@
    ],
    "source": "horeca",
    "name": "Lou Lou Pizzabar",
-   "was": "0363100012157281"
+   "was": "0363100012157281",
+   "why": "exact name"
   },
   "2411543478": {
    "pand": "0363100012160030",
@@ -369,7 +328,8 @@
    ],
    "source": "horeca",
    "name": "Trattoria Toto",
-   "was": "0363100012158719"
+   "was": "0363100012158719",
+   "why": "exact name"
   },
   "2423864348": {
    "pand": "0363100012161340",
@@ -379,7 +339,8 @@
    ],
    "source": "horeca",
    "name": "Restaurant Hap-Hmm",
-   "was": "0363100012163575"
+   "was": "0363100012163575",
+   "why": "BAG address"
   },
   "2506116244": {
    "pand": "0363100012156146",
@@ -389,7 +350,8 @@
    ],
    "source": "horeca",
    "name": "Monte Verde",
-   "was": "0363100012165953"
+   "was": "0363100012165953",
+   "why": "BAG address"
   },
   "2721357738": {
    "pand": "0363100012176607",
@@ -399,27 +361,8 @@
    ],
    "source": "horeca",
    "name": "De Klepel",
-   "was": "0363100012176559"
-  },
-  "2721723328": {
-   "pand": "0363100012179187",
-   "at": [
-    4.893604,
-    52.374227
-   ],
-   "source": "horeca",
-   "name": "Coffeeshop Kadinsky",
-   "was": "0363100012179223"
-  },
-  "2721826417": {
-   "pand": "0363100012172773",
-   "at": [
-    4.882168,
-    52.373918
-   ],
-   "source": "horeca",
-   "name": "Amigo Café",
-   "was": "0363100012174004"
+   "was": "0363100012176559",
+   "why": "BAG address"
   },
   "2724000770": {
    "pand": "0363100012175469",
@@ -429,7 +372,8 @@
    ],
    "source": "horeca",
    "name": "De Pilsener Club",
-   "was": "0363100012175470"
+   "was": "0363100012175470",
+   "why": "BAG address"
   },
   "2724038569": {
    "pand": "0363100012175228",
@@ -439,7 +383,8 @@
    ],
    "source": "horeca",
    "name": "De Drie Graefjes B.V.",
-   "was": "0363100012175227"
+   "was": "0363100012175227",
+   "why": "BAG address"
   },
   "2724285108": {
    "pand": "0363100012178811",
@@ -449,7 +394,8 @@
    ],
    "source": "horeca",
    "name": "Spaans Restaurant La Paella V.O.F.",
-   "was": "0363100012178816"
+   "was": "0363100012178816",
+   "why": "BAG address"
   },
   "2725663253": {
    "pand": "0363100012171641",
@@ -459,7 +405,8 @@
    ],
    "source": "horeca",
    "name": "Wing Kee B.V.",
-   "was": "0363100012171426"
+   "was": "0363100012171426",
+   "why": "BAG address"
   },
   "2725793336": {
    "pand": "0363100012171909",
@@ -469,7 +416,8 @@
    ],
    "source": "horeca",
    "name": "Hemelse Modder B.V.",
-   "was": "0363100012171843"
+   "was": "0363100012171843",
+   "why": "BAG address"
   },
   "2725794647": {
    "pand": "0363100012183032",
@@ -479,7 +427,8 @@
    ],
    "source": "horeca",
    "name": "Captein & Co",
-   "was": "0363100012571669"
+   "was": "0363100012571669",
+   "why": "exact name"
   },
   "2725878388": {
    "pand": "0363100012177690",
@@ -489,7 +438,8 @@
    ],
    "source": "horeca",
    "name": "Restaurant Graphite",
-   "was": "0363100012177692"
+   "was": "0363100012177692",
+   "why": "BAG address"
   },
   "2725914010": {
    "pand": "0363100012175557",
@@ -499,7 +449,8 @@
    ],
    "source": "horeca",
    "name": "Restaurant Black and Blue",
-   "was": null
+   "was": null,
+   "why": "BAG address"
   },
   "2725914034": {
    "pand": "0363100012175624",
@@ -509,17 +460,8 @@
    ],
    "source": "horeca",
    "name": "Secret Garden",
-   "was": "0363100012175625"
-  },
-  "2725914141": {
-   "pand": "0363100012175629",
-   "at": [
-    4.891502,
-    52.366552
-   ],
-   "source": "horeca",
-   "name": "Ramen Bar Amsterdam",
-   "was": "0363100012175805"
+   "was": "0363100012175625",
+   "why": "exact name"
   },
   "2730033733": {
    "pand": "0363100012172376",
@@ -529,7 +471,8 @@
    ],
    "source": "horeca",
    "name": "jazz café Alto",
-   "was": "0363100012172379"
+   "was": "0363100012172379",
+   "why": "exact name"
   },
   "2737949191": {
    "pand": "0363100012180097",
@@ -539,17 +482,8 @@
    ],
    "source": "horeca",
    "name": "NK Thai Noodles B.V.",
-   "was": "0363100012168178"
-  },
-  "2746144115": {
-   "pand": "0363100012233553",
-   "at": [
-    4.931478,
-    52.357065
-   ],
-   "source": "atp",
-   "name": "Action",
-   "was": "0363100012239578"
+   "was": "0363100012168178",
+   "why": "BAG address"
   },
   "2795374703": {
    "pand": "0363100012074933",
@@ -559,7 +493,8 @@
    ],
    "source": "horeca",
    "name": "Aries Noodles",
-   "was": "w274869332"
+   "was": "w274869332",
+   "why": "exact name"
   },
   "2816521205": {
    "pand": "0363100012165798",
@@ -569,17 +504,8 @@
    ],
    "source": "horeca",
    "name": "L Entrecote Et Les Dames BV Zabar's",
-   "was": "0363100012159529"
-  },
-  "2816953161": {
-   "pand": "0363100012092153",
-   "at": [
-    4.859646,
-    52.345149
-   ],
-   "source": "horeca",
-   "name": "Swagat Oriental",
-   "was": "0363100012144814"
+   "was": "0363100012159529",
+   "why": "BAG address"
   },
   "2816953269": {
    "pand": "0363100012134703",
@@ -589,7 +515,8 @@
    ],
    "source": "horeca",
    "name": "Cucina Casalinga",
-   "was": "0363100012136842"
+   "was": "0363100012136842",
+   "why": "exact name"
   },
   "2817557735": {
    "pand": "0363100012161318",
@@ -599,17 +526,8 @@
    ],
    "source": "horeca",
    "name": "Little Collins",
-   "was": "0363100012115560"
-  },
-  "2817558767": {
-   "pand": "0363100012166771",
-   "at": [
-    4.898765,
-    52.356327
-   ],
-   "source": "horeca",
-   "name": "Restaurant Mont Blanc",
-   "was": "0363100012166374"
+   "was": "0363100012115560",
+   "why": "exact name"
   },
   "2825117539": {
    "pand": "0363100012158420",
@@ -619,27 +537,8 @@
    ],
    "source": "horeca",
    "name": "Snackbar 2002",
-   "was": "0363100012166325"
-  },
-  "2825121921": {
-   "pand": "0363100012109357",
-   "at": [
-    4.913126,
-    52.348961
-   ],
-   "source": "horeca",
-   "name": "Troef",
-   "was": "0363100012126407"
-  },
-  "2826203660": {
-   "pand": "0363100012144205",
-   "at": [
-    4.926925,
-    52.356983
-   ],
-   "source": "atp",
-   "name": "New York Pizza",
-   "was": "0363100012071071"
+   "was": "0363100012166325",
+   "why": "BAG address"
   },
   "2846850122": {
    "pand": "0363100012109461",
@@ -649,7 +548,8 @@
    ],
    "source": "horeca",
    "name": "Restaurant Eetcafé Menora",
-   "was": "0363100012105920"
+   "was": "0363100012105920",
+   "why": "BAG address"
   },
   "2847194256": {
    "pand": "0363100012064761",
@@ -659,7 +559,8 @@
    ],
    "source": "horeca",
    "name": "Royalvis & Traiteur",
-   "was": "0363100012118311"
+   "was": "0363100012118311",
+   "why": "exact name"
   },
   "2857695585": {
    "pand": "0363100012253905",
@@ -669,7 +570,8 @@
    ],
    "source": "horeca",
    "name": "Café De Doffer",
-   "was": "0363100012173561"
+   "was": "0363100012173561",
+   "why": "BAG address"
   },
   "2971360870": {
    "pand": "0363100012170282",
@@ -679,7 +581,8 @@
    ],
    "source": "horeca",
    "name": "Gollem aan het Water",
-   "was": "w269077753"
+   "was": "w269077753",
+   "why": "exact name"
   },
   "3231282371": {
    "pand": "0363100012070059",
@@ -689,7 +592,8 @@
    ],
    "source": "horeca",
    "name": "Kleine Jules B.V.",
-   "was": "0363100012164118"
+   "was": "0363100012164118",
+   "why": "BAG address"
   },
   "3400741581": {
    "pand": "0363100012169401",
@@ -699,7 +603,8 @@
    ],
    "source": "horeca",
    "name": "Rakang",
-   "was": "0363100012169358"
+   "was": "0363100012169358",
+   "why": "BAG address"
   },
   "4175408539": {
    "pand": "0363100012179221",
@@ -709,7 +614,8 @@
    ],
    "source": "horeca",
    "name": "Shiki Japans Restaurant",
-   "was": "0363100012179220"
+   "was": "0363100012179220",
+   "why": "BAG address"
   },
   "4212657887": {
    "pand": "0363100012179224",
@@ -719,7 +625,8 @@
    ],
    "source": "horeca",
    "name": "Cafe Oporto",
-   "was": "0363100012179227"
+   "was": "0363100012179227",
+   "why": "exact name"
   },
   "4212708433": {
    "pand": "0363100012180144",
@@ -729,7 +636,8 @@
    ],
    "source": "horeca",
    "name": "Coffeeshop Rick's Juice Bar BV",
-   "was": "0363100012180138"
+   "was": "0363100012180138",
+   "why": "BAG address"
   },
   "4265589726": {
    "pand": "0363100012182038",
@@ -739,17 +647,8 @@
    ],
    "source": "horeca",
    "name": "MuseumCafé Kokadorus",
-   "was": "0363100012182037"
-  },
-  "4268735847": {
-   "pand": "0363100012126595",
-   "at": [
-    4.861321,
-    52.374814
-   ],
-   "source": "atp",
-   "name": "Albert Heijn",
-   "was": "0363100012150718"
+   "was": "0363100012182037",
+   "why": "BAG address"
   },
   "12768209216": {
    "pand": "0363100012254332",
@@ -759,7 +658,8 @@
    ],
    "source": "horeca",
    "name": "The Block Coffee",
-   "was": null
+   "was": null,
+   "why": "BAG address"
   },
   "4943034928": {
    "pand": "0363100012157726",
@@ -769,7 +669,8 @@
    ],
    "source": "horeca",
    "name": "Salsa Shop Kinkerstraat BV",
-   "was": "0363100012139609"
+   "was": "0363100012139609",
+   "why": "BAG address"
   },
   "11163251069": {
    "pand": "0363100012250971",
@@ -779,7 +680,8 @@
    ],
    "source": "horeca",
    "name": "Bar Pepe",
-   "was": "w1529423741"
+   "was": "w1529423741",
+   "why": "exact name"
   },
   "4455347821": {
    "pand": "0363100012092373",
@@ -789,7 +691,8 @@
    ],
    "source": "horeca",
    "name": "Massalia",
-   "was": "0363100012124452"
+   "was": "0363100012124452",
+   "why": "exact name"
   },
   "5101769221": {
    "pand": "0363100012236271",
@@ -799,17 +702,8 @@
    ],
    "source": "horeca",
    "name": "Grillroom Fame",
-   "was": "0363100012235944"
-  },
-  "12006329289": {
-   "pand": "0363100012237340",
-   "at": [
-    4.869182,
-    52.366527
-   ],
-   "source": "horeca",
-   "name": "Meat The Balls B.V.",
-   "was": "0363100012236035"
+   "was": "0363100012235944",
+   "why": "exact name"
   },
   "13448773878": {
    "pand": "0363100012139185",
@@ -819,7 +713,8 @@
    ],
    "source": "horeca",
    "name": "Hendrik Amsterdam B.V.",
-   "was": "0363100012102526"
+   "was": "0363100012102526",
+   "why": "BAG address"
   },
   "5434162840": {
    "pand": "0363100012082569",
@@ -829,7 +724,8 @@
    ],
    "source": "horeca",
    "name": "Wijmpje Beukers",
-   "was": "0363100012132916"
+   "was": "0363100012132916",
+   "why": "exact name"
   },
   "11381162865": {
    "pand": "0363100012236474",
@@ -839,7 +735,8 @@
    ],
    "source": "horeca",
    "name": "Café Duzz Dat",
-   "was": "0363100012167243"
+   "was": "0363100012167243",
+   "why": "exact name"
   },
   "9035363787": {
    "pand": "0363100012158033",
@@ -849,7 +746,8 @@
    ],
    "source": "horeca",
    "name": "Night Kitchen Amsterdam",
-   "was": "0363100012158034"
+   "was": "0363100012158034",
+   "why": "BAG address"
   },
   "6592952185": {
    "pand": "0363100012171332",
@@ -859,17 +757,8 @@
    ],
    "source": "horeca",
    "name": "Madam Pancake",
-   "was": "0363100012178284"
-  },
-  "4971373567": {
-   "pand": "0363100012236905",
-   "at": [
-    4.888595,
-    52.354756
-   ],
-   "source": "horeca",
-   "name": "Harmani / Microroasterie de Pijp bv",
-   "was": "0363100012163659"
+   "was": "0363100012178284",
+   "why": "exact name"
   },
   "6649035186": {
    "pand": "0363100012236937",
@@ -879,7 +768,8 @@
    ],
    "source": "horeca",
    "name": "Motion Coffee",
-   "was": "0363100012122126"
+   "was": "0363100012122126",
+   "why": "exact name"
   },
   "12765936768": {
    "pand": "0363100012161402",
@@ -889,7 +779,8 @@
    ],
    "source": "horeca",
    "name": "Pazzi Westerpark BV",
-   "was": "0363100012165896"
+   "was": "0363100012165896",
+   "why": "BAG address"
   },
   "5821325963": {
    "pand": "0363100012093827",
@@ -899,7 +790,8 @@
    ],
    "source": "horeca",
    "name": "Samar",
-   "was": "0363100012094050"
+   "was": "0363100012094050",
+   "why": "exact name"
   },
   "12692932057": {
    "pand": "0363100012120784",
@@ -909,7 +801,8 @@
    ],
    "source": "horeca",
    "name": "Ocakbasi Cinar",
-   "was": "0363100012160562"
+   "was": "0363100012160562",
+   "why": "BAG address"
   },
   "9609724683": {
    "pand": "0363100012169235",
@@ -919,7 +812,8 @@
    ],
    "source": "horeca",
    "name": "Schout bij nacht",
-   "was": "0363100012169465"
+   "was": "0363100012169465",
+   "why": "exact name"
   },
   "4307362198": {
    "pand": "0363100012166111",
@@ -929,7 +823,8 @@
    ],
    "source": "horeca",
    "name": "George W B.V.",
-   "was": "0363100012166982"
+   "was": "0363100012166982",
+   "why": "BAG address"
   },
   "5101769222": {
    "pand": "0363100012136573",
@@ -939,7 +834,8 @@
    ],
    "source": "horeca",
    "name": "Parallel Amsterdam",
-   "was": "0363100012077452"
+   "was": "0363100012077452",
+   "why": "BAG address"
   },
   "9039078300": {
    "pand": "0363100012178846",
@@ -949,7 +845,8 @@
    ],
    "source": "horeca",
    "name": "Indrapura",
-   "was": "0363100012178851"
+   "was": "0363100012178851",
+   "why": "exact name"
   },
   "7235507196": {
    "pand": "0363100012161889",
@@ -959,7 +856,8 @@
    ],
    "source": "horeca",
    "name": "Amoi",
-   "was": "0363100012164246"
+   "was": "0363100012164246",
+   "why": "BAG address"
   },
   "12077123320": {
    "pand": "0363100012179724",
@@ -969,7 +867,8 @@
    ],
    "source": "horeca",
    "name": "Barney's Coffeeshop",
-   "was": "0363100012179726"
+   "was": "0363100012179726",
+   "why": "BAG address"
   },
   "13630715660": {
    "pand": "0363100012175578",
@@ -979,57 +878,8 @@
    ],
    "source": "horeca",
    "name": "Bouillon d'Amsterdam",
-   "was": "0363100012175580"
-  },
-  "13243504701": {
-   "pand": "0363100012179060",
-   "at": [
-    4.895551,
-    52.378338
-   ],
-   "source": "atp",
-   "name": "Albert Heijn",
-   "was": "0363100012170968"
-  },
-  "5198500579": {
-   "pand": "0363100012113168",
-   "at": [
-    4.893063,
-    52.417169
-   ],
-   "source": "atp",
-   "name": "Albert Heijn",
-   "was": "0363100012146525"
-  },
-  "4719456815": {
-   "pand": "0363100012081253",
-   "at": [
-    4.89525,
-    52.346068
-   ],
-   "source": "atp",
-   "name": "Albert Heijn",
-   "was": "0363100012088444"
-  },
-  "11271483598": {
-   "pand": "0363100012233537",
-   "at": [
-    4.87834,
-    52.38254
-   ],
-   "source": "atp",
-   "name": "Zeeman",
-   "was": "0363100012237192"
-  },
-  "5893114027": {
-   "pand": "0363100012108568",
-   "at": [
-    4.812335,
-    52.377405
-   ],
-   "source": "atp",
-   "name": "New York Pizza",
-   "was": "0363100012083152"
+   "was": "0363100012175580",
+   "why": "exact name"
   }
  },
  "adds": [
@@ -4850,6 +4700,18 @@
    "source": "horeca"
   },
   {
+   "id": "horeca:14770",
+   "lon": 4.897678,
+   "lat": 52.373678,
+   "tags": {
+    "amenity": "bar",
+    "name": "Coffeeshop Wilvri Coffee-Shops B.V.",
+    "addr:street": "Oudezijds Voorburgwal",
+    "addr:housenumber": "90-H"
+   },
+   "source": "horeca"
+  },
+  {
    "id": "horeca:17783",
    "lon": 4.89506,
    "lat": 52.366072,
@@ -6406,30 +6268,6 @@
    "source": "atp"
   },
   {
-   "id": "atp:gall_and_gall_nl:6436",
-   "lon": 4.855952,
-   "lat": 52.381686,
-   "tags": {
-    "shop": "alcohol",
-    "name": "BOS EN LOMMERWEG AMSTERDAM",
-    "brand": "Gall & Gall",
-    "brand:wikidata": "Q13639185"
-   },
-   "source": "atp"
-  },
-  {
-   "id": "atp:bruna_nl:2601",
-   "lon": 4.895269,
-   "lat": 52.373752,
-   "tags": {
-    "shop": "books",
-    "name": "Bruna",
-    "brand": "Bruna",
-    "brand:wikidata": "Q3317555"
-   },
-   "source": "atp"
-  },
-  {
    "id": "atp:xenos_nl:https://www.xenos.nl/winkels/amsterdam-kalverstraat-228",
    "lon": 4.89259,
    "lat": 52.3673,
@@ -6440,31 +6278,6 @@
     "brand:wikidata": "Q16547960",
     "addr:street": "Kalverstraat",
     "addr:housenumber": "228"
-   },
-   "source": "atp"
-  },
-  {
-   "id": "atp:action:https://www.action.com/nl-nl/winkels/amsterdam-marius-bauerstraat-233-b2/",
-   "lon": 4.837407,
-   "lat": 52.362534,
-   "tags": {
-    "shop": "variety_store",
-    "name": "Action",
-    "brand": "Action",
-    "brand:wikidata": "Q2634111"
-   },
-   "source": "atp"
-  },
-  {
-   "id": "atp:new_york_pizza_nl_de:nl-26",
-   "lon": 4.975738,
-   "lat": 52.295643,
-   "tags": {
-    "amenity": "fast_food",
-    "cuisine": "pizza",
-    "name": "New York Pizza",
-    "brand": "New York Pizza",
-    "brand:wikidata": "Q2639128"
    },
    "source": "atp"
   },
