@@ -48,6 +48,9 @@ test('a donor read is fitted: storeys to the eaves at the donor pitch, bays to t
   assert.equal(f.doorIndex, 2);
   assert.equal(f.pandId, '0363100012800001');
   assert.equal(d.answer.bays, 5, 'the donor is untouched');
+  // A mansard donor whose cut wall takes in the roof (2 storeys in 12.9 m) still gives a 10.8 m pand its 3-4 storeys.
+  const m = donor('0363100012169011', 'Keizersgracht', 1900, 10.35, 12.93, { crown: 'mansard', storeys: 2, bays: 4 });
+  assert.ok((fittedRead(target({ widthM: 12, eavesM: 10.8 }), m).storeys as number) >= 3);
 });
 
 // A canal-side run of five 6 m pands on a straight street (north side), one described.

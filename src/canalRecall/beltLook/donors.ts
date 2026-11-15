@@ -49,6 +49,9 @@ export const GABLE_MIN_RISE_M = 2;
 /** The nearest donors one pand chooses among. */
 export const DONOR_K = 4;
 /** The match weights: one unit is a street segment apart, 50 years, 2 m of width or 3 m of eaves. */
+/** A donor's storey pitch (cut wall height / read storeys) is held to this band: a cut whose wall takes in a mansard or roof
+ *  storey (Langestraat's donor 169011: 2 storeys in 12.9 m) would otherwise halve a pand's storeys (held-out sheet 1). */
+export const PITCH_M = { min: 2.8, max: 3.8 } as const;
 export const DONOR_WEIGHTS = { segment: 1.5, sameStreet: -0.3, yearPer: 50, widthPer: 2, eavesPer: 3, gableOnFlat: 4 } as const;
 
 /** A usable donor read: readable, one front, its crown and storeys seen. */
@@ -91,13 +94,13 @@ export function donorFor(t: BeltTarget, donors: readonly BeltDonor[]): { donor: 
 }
 
 /**
- * The donor's read fitted to the pand: its storeys to the pand's eaves at the donor's own storey pitch, its bays to the
+ * The donor's read fitted to the pand: its storeys to the pand's eaves at the donor's own storey pitch (held to PITCH_M), its bays to the
  * pand's width at the donor's own axis, the door kept inside the ground bays. Everything else is the donor's as read.
  */
 export function fittedRead(t: BeltTarget, d: BeltDonor): DescriberAnswer {
   const a = structuredClone(d.answer) as DescriberAnswer & { columns?: number[]; storeyParts?: { full?: number }; groundBays?: number; doorIndex?: number };
-  const pitch = d.heightM / (d.answer.storeys as number);
-  if (t.eavesM !== null && pitch > 2) {
+  const pitch = Math.min(PITCH_M.max, Math.max(PITCH_M.min, d.heightM / (d.answer.storeys as number)));
+  if (t.eavesM !== null) {
     const n = Math.max(1, Math.round(t.eavesM / pitch));
     if (n !== a.storeys) { a.storeys = n; if (a.storeyParts) a.storeyParts.full = n; delete a.columns; }
   }
