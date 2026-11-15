@@ -1624,5 +1624,51 @@
       "at": "2026-11-15",
       "note": "103: a small white top piece over the cornice, no slate mansard (the top piece is a kit gap)"
     }
+  ],
+  "herengracht-238-256": [
+    {
+      "fronts": [
+        "0363100012177222"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "dark-grey-brick",
+        "hex": "#5a5048"
+      },
+      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "240: dark grey-brown front in the cut, not pale grey stucco"
+    },
+    {
+      "fronts": [
+        "0363100012176852"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#6b4f42"
+      },
+      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "244: brown brick in the cut, lighter and warmer than the read dark grey"
+    }
+  ],
+  "herengracht-268-286": [
+    {
+      "fronts": [
+        "0363100012176337"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#6e4a3e"
+      },
+      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "272: red-brown brick in the cut, not dark grey"
+    }
   ]
 }

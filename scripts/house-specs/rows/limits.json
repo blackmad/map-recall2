@@ -501,5 +501,23 @@
       "what": "a frieze with balustrade over the cornice",
       "ref": "lane D belt A/B 3 (2026-11-15)"
     }
+  ],
+  "herengracht-238-256": [
+    {
+      "fronts": [
+        "0363100012177222"
+      ],
+      "component": "bay",
+      "what": "a full-height stone bay window (three lights a storey) projects from the front; the kit draws a flat front",
+      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)"
+    },
+    {
+      "fronts": [
+        "0363100012176852"
+      ],
+      "component": "cornice",
+      "what": "a white stone balustrade with a carved centre crest crowns the front; the kit draws a frieze cornice",
+      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)"
+    }
   ]
 }
