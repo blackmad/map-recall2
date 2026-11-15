@@ -691,11 +691,11 @@ r8 won 4/4. Still open on the noted streets:
 
 Sheets, A/B folders and keys: `map-recall2-worktrees/_pruned-sheets/buurt-generators-20261115/round8/`.
 
-## Round 9 (2026-11-15, partial: stopped at the 15 GB disk floor): per-row brick and roof form
+## Round 9 (2026-11-15): per-row brick and roof form, held-out 7/7, publish-ready
 
-Status: the code, the tests and the measurements taken so far are committed. Staging has not been regenerated, so the
-round 9 held-out A/B has not been run. The disk fell to 14 GB during the wall run and to 8.9 GB a few minutes later,
-mostly from other lanes. Bos en Lommer is not started.
+Status: everything is measured and both districts are regenerated. David approved both districts on #390 ("Looks good"). The
+staged output for publishing is in `data/buurt-generators/<district>/row-front.json` (see Publish below). Bos en
+Lommer is next.
 
 ### Per-row brick from panoramas
 
@@ -726,8 +726,12 @@ Order in `wallHexOf`: row note, then measured row, then family, then district po
 
 | District | Rows measured | On the pool | Note |
 |---|---|---|---|
-| Apollo/Stadion | 224 of 334 (1,109 pands) | 110 (563 pands) | resumed after the disk recovered; it stopped at the floor again at row ~290 |
-| Rivierenbuurt | 0 of 512 | 512 | not run (disk floor) |
+| Apollo/Stadion | 243 of 334 (1,192 pands) | 91 (480 pands) | 205 of them balanced on white trim; every measured row has 2+ capture dates |
+| Rivierenbuurt | 402 of 512 (1,976 pands) | 110 (519 pands) | 372 balanced on white trim |
+
+Rows left on the pool: the captures disagreed, only one read was clear, or no panorama faces the row (`wallSkipped`
+gives the reason for each). The runs stopped at the 15 GB floor three times, because other lanes' Playwright output
+filled the disk, and resumed from the saved rows each time.
 
 Downloads: 857 requests, 652 MB over two runs, purged every 20 rows. The killed run's leftovers were purged by
 timestamp window: 411 files, 451 MB, keeping the 7 held-out panoramas.
@@ -771,19 +775,47 @@ District totals:
 - Apollo: 1,175 pitched, 286 hidden, 196 flat.
 - Rivierenbuurt: 1,243 pitched, 409 hidden, 812 flat.
 
-### Held-out round 9 (drawn, not judged)
+### Held-out round 9 (blind, generator against today, no tuning)
 
 Seed `r9-heldout`. Both the library streets and the round 8 held-out streets are excluded, leaving 99 candidates;
-29 requests (16 MB) were fetched.
+29 requests (16 MB) were fetched. Sheets: `artifacts/buurt-generators/<district>/sheets/<row>/sheet.jpg`. One fresh
+opus judge per street; keys in `_pruned-sheets/buurt-generators-20261115/round9/`.
 
-| Row | District |
-|---|---|
-| hunzestraat-120343 | Rivierenbuurt |
-| lekstraat-147614 | Rivierenbuurt |
-| trompenburgstraat-097377 | Rivierenbuurt |
-| beethovenstraat-145103 | Apollo |
-| kuinderstraat-067158 | Rivierenbuurt |
-| stadionkade-063989 | Apollo |
-| vechtstraat-144142 | Rivierenbuurt |
+| Street (row) | District | Winner | Confidence | Biggest gap the judge named |
+|---|---|---|---|---|
+| Hunzestraat (120343) | Rivierenbuurt | generator | high | white wrap-around oriels drawn as dark brick bays; eaves drop on the right third |
+| Lekstraat (147614) | Rivierenbuurt | generator | high | wall grey-brown, the photo warm dark red-brown; red tile stretch at the left end |
+| Trompenburgstraat (097377) | Rivierenbuurt | generator | low | brick grey-olive, the photo warm red-brown; window grid too dense; ochre frames and balconies |
+| Beethovenstraat (145103) | Apollo | generator | high | the dark grey hipped roof shows as a thin strip; brick a little dark |
+| Kuinderstraat (067158) | Rivierenbuurt | generator | high | deep white flat eaves and angled white bays missing |
+| Stadionkade (063989) | Apollo | generator | high | flat uniform slab: oriels, arched entrance and dormers missing; brick darker and redder |
+| Vechtstraat (144142) | Rivierenbuurt | generator | high | white portiek entrance surrounds, attic dormers and brick bays missing |
 
-To finish: regenerate staging with the measured layer, cut the sheets, and run the blind A/B once with no tuning.
+The generator won 7/7, as on round 8's draw (7/7). Remaining gaps on un-noted streets:
+
+- **Bays and oriels:** white-framed bays and oriels (Hunzestraat, Kuinderstraat, Stadionkade).
+- **Entrances:** portiek entrance surrounds and arched entrances.
+- **Brick drawn grey:** the measured brick on Lekstraat and Trompenburgstraat reads grey where the photo is warm. The white
+  balance probably neutralises a warm-lit capture; check those rows' reads before the next tuning pass.
+- **Roof under-drawn:** the pitched roof is shown at the 1.3 m cap where the photo has a tall hipped roof (Beethovenstraat).
+
+### Publish (integrator; the lane does not publish)
+
+1. Merge this branch. `data/buurt-generators/{rivierenbuurt,apollo-stadion}/row-front.json` hold the reviewed records:
+   2,495 + 1,672 records with full provenance.
+2. `node --import tsx scripts/buurt-generators/publish.ts --districts=rivierenbuurt,apollo-stadion` is a dry run. It
+   re-checks what describes a pand on main and drops those pands. Then rerun it with `--write`, which merges slim
+   records into `public/data/front-records/row-front.json` (10 to 4,177 records, 3.0 MB raw, 0.16 MB gzip).
+3. Kit on: the records draw their kit (erkers, eaves, entrances, rhythm, dormers) and the Plan Zuid casement bay presets
+   only with `buurtKitEnabled()`. Flip its default in `src/canalRecall/buurtGenerator/kitFlag.ts`:
+   - the last line becomes `return g.process?.env?.BUURT_KIT !== '0';`
+   - the query test becomes `if (q !== null) return q !== '0';`
+
+   This appends two presets to `BAY_STYLES.school` everywhere, so the layer table, atlas and goldens change. Update
+   `kit.test.ts`'s `BAY_STYLES.school.length` expectation, which becomes `process.env.BUURT_KIT === '0' ? 2 : 4`.
+4. Rebuild the browser bundles: `npm run build:canal-3d`.
+5. Recompile the world with the records: `--no-policy --shell` (the pipeline reads
+   `public/data/front-records/row-front.json` by default), then install `shells/` and `far/`.
+6. Regenerate before gating: bake-frontages, `build:content-stats`, `build:buurt-pages`. Then `check:canal`.
+7. Re-run `generate.ts` (with `--stage-data`) after any HouseSpec or row publish in these districts. The generator's
+   own published records no longer count as described (`describedPands` skips `buurtKit` records).

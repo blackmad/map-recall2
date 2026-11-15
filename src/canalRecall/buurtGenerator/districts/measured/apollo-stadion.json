@@ -5276,6 +5276,453 @@
           "raw": "#58473b"
         }
       ]
+    },
+    "titiaanstraat-141525": {
+      "hex": "#766b69",
+      "n": 3,
+      "of": 3,
+      "dates": 3,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "recording_2025-07-29_12-06-07_00993",
+          "date": "2025-07-29",
+          "hex": "#7c6d67",
+          "raw": "#4c4d4a"
+        },
+        {
+          "pano": "b_20241106_0927_Track06_Sphere_00028",
+          "date": "2024-11-06",
+          "hex": "#635b58",
+          "raw": "#4d4232"
+        },
+        {
+          "pano": "TMX7316010203-002464_pano_0002_000689",
+          "date": "2022-03-22",
+          "hex": "#746b6d",
+          "raw": "#574d46"
+        }
+      ]
+    },
+    "turnerstraat-091252": {
+      "hex": "#524b3d",
+      "n": 3,
+      "of": 3,
+      "dates": 3,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "recording_2025-07-29_13-17-11_00375",
+          "date": "2025-07-29",
+          "hex": "#404240",
+          "raw": "#494b48"
+        },
+        {
+          "pano": "b_20241105_1332_Track01_Sphere_00043",
+          "date": "2024-11-05",
+          "hex": "#564a30",
+          "raw": "#605439"
+        },
+        {
+          "pano": "TMX7316010203-002460_pano_0003_000794",
+          "date": "2022-03-21",
+          "hex": "#5b4d41",
+          "raw": "#65574b"
+        }
+      ]
+    },
+    "turnerstraat-099791": {
+      "hex": "#5d4d3d",
+      "n": 2,
+      "of": 3,
+      "dates": 2,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "b_20241105_1332_Track06_Sphere_00094",
+          "date": "2024-11-05",
+          "hex": "#5b4c39",
+          "raw": "#655643"
+        },
+        {
+          "pano": "TMX7316010203-002460_pano_0003_000950",
+          "date": "2022-03-21",
+          "hex": "#604e40",
+          "raw": "#6a594a"
+        }
+      ]
+    },
+    "turnerstraat-132455": {
+      "hex": "#3c3933",
+      "n": 2,
+      "of": 4,
+      "dates": 2,
+      "balanced": false,
+      "reads": [
+        {
+          "pano": "recording_2025-07-29_13-17-11_00996",
+          "date": "2025-07-29",
+          "hex": "#30332f",
+          "raw": "#30332f"
+        },
+        {
+          "pano": "TMX7316010203-002406_pano_0000_000035",
+          "date": "2022-01-10",
+          "hex": "#494037",
+          "raw": "#494037"
+        }
+      ]
+    },
+    "van-tuyll-van-serooskerkenplein-066284": {
+      "hex": "#52443c",
+      "n": 3,
+      "of": 4,
+      "dates": 3,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "b_20241105_0934_Track18_Sphere_00151",
+          "date": "2024-11-05",
+          "hex": "#463831",
+          "raw": "#474139"
+        },
+        {
+          "pano": "TMX7316010203-002475_pano_0000_001542",
+          "date": "2022-03-24",
+          "hex": "#63534a",
+          "raw": "#6a5a50"
+        },
+        {
+          "pano": "TMX7316010203-002120_pano_0000_004222",
+          "date": "2021-04-28",
+          "hex": "#51443e",
+          "raw": "#564c46"
+        }
+      ]
+    },
+    "van-tuyll-van-serooskerkenplein-067057": {
+      "hex": "#796b6b",
+      "n": 2,
+      "of": 3,
+      "dates": 2,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "recording_2025-07-30_06-07-02_00568",
+          "date": "2025-07-30",
+          "hex": "#786b71",
+          "raw": "#657780"
+        },
+        {
+          "pano": "TMX7316010203-002475_pano_0000_001486",
+          "date": "2022-03-24",
+          "hex": "#7a6b66",
+          "raw": "#746356"
+        }
+      ]
+    },
+    "van-tuyll-van-serooskerkenplein-091609": {
+      "hex": "#a3876e",
+      "n": 3,
+      "of": 4,
+      "dates": 3,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "b_20241105_0934_Track18_Sphere_00165",
+          "date": "2024-11-05",
+          "hex": "#9f8158",
+          "raw": "#ae9266"
+        },
+        {
+          "pano": "TMX7316010203-002475_pano_0000_001617",
+          "date": "2022-03-24",
+          "hex": "#b5987f",
+          "raw": "#c8ab8f"
+        },
+        {
+          "pano": "TMX7316010203-002120_pano_0000_004236",
+          "date": "2021-04-28",
+          "hex": "#a08879",
+          "raw": "#b09986"
+        }
+      ]
+    },
+    "van-tuyll-van-serooskerkenplein-096776": {
+      "hex": "#756056",
+      "n": 2,
+      "of": 3,
+      "dates": 2,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "b_20241105_0934_Track18_Sphere_00125",
+          "date": "2024-11-05",
+          "hex": "#745c4f",
+          "raw": "#4e4b46"
+        },
+        {
+          "pano": "TMX7316010203-002475_pano_0000_001439",
+          "date": "2022-03-24",
+          "hex": "#75645c",
+          "raw": "#4f4643"
+        }
+      ]
+    },
+    "van-tuyll-van-serooskerkenplein-100193": {
+      "hex": "#7d6d68",
+      "n": 3,
+      "of": 4,
+      "dates": 3,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "b_20241105_0934_Track18_Sphere_00147",
+          "date": "2024-11-05",
+          "hex": "#6a574a",
+          "raw": "#46453f"
+        },
+        {
+          "pano": "TMX7316010203-002475_pano_0000_001539",
+          "date": "2022-03-24",
+          "hex": "#827678",
+          "raw": "#65594d"
+        },
+        {
+          "pano": "TMX7316010203-002120_pano_0000_004218",
+          "date": "2021-04-28",
+          "hex": "#7d6d68",
+          "raw": "#5e554c"
+        }
+      ]
+    },
+    "van-tuyll-van-serooskerkenweg-064383": {
+      "hex": "#57483d",
+      "n": 2,
+      "of": 3,
+      "dates": 2,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "b_20241105_0934_Track18_Sphere_00063",
+          "date": "2024-11-05",
+          "hex": "#473b33",
+          "raw": "#50443c"
+        },
+        {
+          "pano": "TMX7316010203-002475_pano_0000_001147",
+          "date": "2022-03-24",
+          "hex": "#685447",
+          "raw": "#735f52"
+        }
+      ]
+    },
+    "van-tuyll-van-serooskerkenweg-085398": {
+      "hex": "#5f5150",
+      "n": 2,
+      "of": 3,
+      "dates": 2,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "b_20241105_0934_Track18_Sphere_00107",
+          "date": "2024-11-05",
+          "hex": "#5c4c4a",
+          "raw": "#433121"
+        },
+        {
+          "pano": "TMX7316010203-002918_pano_0009_000037",
+          "date": "2023-01-05",
+          "hex": "#625557",
+          "raw": "#3f332d"
+        }
+      ]
+    },
+    "van-tuyll-van-serooskerkenweg-086660": {
+      "hex": "#726762",
+      "n": 2,
+      "of": 4,
+      "dates": 2,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "TMX7316010203-002475_pano_0000_001122",
+          "date": "2022-03-24",
+          "hex": "#776f6f",
+          "raw": "#64584b"
+        },
+        {
+          "pano": "TMX7316010203-002120_pano_0000_003985",
+          "date": "2021-04-28",
+          "hex": "#6c6056",
+          "raw": "#50483a"
+        }
+      ]
+    },
+    "verdistraat-071666": {
+      "hex": "#5d453d",
+      "n": 3,
+      "of": 3,
+      "dates": 3,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "recording_2025-07-15_11-16-59_01388",
+          "date": "2025-07-15",
+          "hex": "#796058",
+          "raw": "#7a6d64"
+        },
+        {
+          "pano": "b_20241106_0927_Track34_Sphere_00021",
+          "date": "2024-11-06",
+          "hex": "#4c3c28",
+          "raw": "#554530"
+        },
+        {
+          "pano": "TMX7316010203-002800_pano_0027_000341",
+          "date": "2022-09-06",
+          "hex": "#5d453f",
+          "raw": "#5f473d"
+        }
+      ]
+    },
+    "watteaustraat-065434": {
+      "hex": "#6e5f59",
+      "n": 3,
+      "of": 3,
+      "dates": 3,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "recording_2025-07-29_12-06-07_01581",
+          "date": "2025-07-29",
+          "hex": "#6b605a",
+          "raw": "#6e6d65"
+        },
+        {
+          "pano": "b_20241105_1055_Track24_Sphere_00068",
+          "date": "2024-11-05",
+          "hex": "#725f51",
+          "raw": "#55503e"
+        },
+        {
+          "pano": "TMX7316010203-002475_pano_0000_001790",
+          "date": "2022-03-24",
+          "hex": "#6d5d58",
+          "raw": "#554b46"
+        }
+      ]
+    },
+    "watteaustraat-069926": {
+      "hex": "#5b4a41",
+      "n": 3,
+      "of": 3,
+      "dates": 3,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "recording_2025-07-29_10-56-07_01899",
+          "date": "2025-07-29",
+          "hex": "#473f3c",
+          "raw": "#4d4744"
+        },
+        {
+          "pano": "b_20241105_1055_Track25_Sphere_00063",
+          "date": "2024-11-05",
+          "hex": "#5b4a41",
+          "raw": "#2e2f2d"
+        },
+        {
+          "pano": "TMX7316010203-002475_pano_0000_001820",
+          "date": "2022-03-24",
+          "hex": "#5f4b40",
+          "raw": "#5a463b"
+        }
+      ]
+    },
+    "watteaustraat-116602": {
+      "hex": "#776663",
+      "n": 2,
+      "of": 3,
+      "dates": 2,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "recording_2025-07-29_10-56-07_01914",
+          "date": "2025-07-29",
+          "hex": "#796159",
+          "raw": "#444241"
+        },
+        {
+          "pano": "TMX7316010203-002464_pano_0002_001123",
+          "date": "2022-03-22",
+          "hex": "#756b6d",
+          "raw": "#564c46"
+        }
+      ]
+    },
+    "watteaustraat-129221": {
+      "hex": "#735c50",
+      "n": 2,
+      "of": 3,
+      "dates": 2,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "recording_2025-07-29_10-56-07_01938",
+          "date": "2025-07-29",
+          "hex": "#786059",
+          "raw": "#51504b"
+        },
+        {
+          "pano": "b_20241105_1055_Track24_Sphere_00087",
+          "date": "2024-11-05",
+          "hex": "#6f5747",
+          "raw": "#353430"
+        }
+      ]
+    },
+    "willaertstraat-098688": {
+      "hex": "#99816f",
+      "n": 2,
+      "of": 3,
+      "dates": 2,
+      "balanced": false,
+      "reads": [
+        {
+          "pano": "recording_2025-07-30_07-40-42_00906",
+          "date": "2025-07-30",
+          "hex": "#8a776d",
+          "raw": "#5d5952"
+        },
+        {
+          "pano": "TMX7316010203-002464_pano_0001_000637",
+          "date": "2022-03-22",
+          "hex": "#a78c71",
+          "raw": "#a78c71"
+        }
+      ]
+    },
+    "wodanstraat-143784": {
+      "hex": "#b19f7a",
+      "n": 2,
+      "of": 3,
+      "dates": 2,
+      "balanced": true,
+      "reads": [
+        {
+          "pano": "b_20241105_0934_Track20_Sphere_00010",
+          "date": "2024-11-05",
+          "hex": "#b0a175",
+          "raw": "#c3b488"
+        },
+        {
+          "pano": "TMX7316010203-002475_pano_0000_002078",
+          "date": "2022-03-24",
+          "hex": "#b29c7f",
+          "raw": "#c5af90"
+        }
+      ]
     }
   },
   "wallSkipped": {
@@ -5353,7 +5800,23 @@
     "stadionweg-108954": "the 2 clear reads disagree (#3c3b3d, #b19973); recording_2025-07-29_13-17-11_00854 2025-07-29: foliage 31 %; b_20241217_0841_Track64_Sphere_00124 2024-12-17: #4b4028; b_20241105_1055_Track08_Sphere_00066 2024-11-05: #3c3b3d; TMX7316010203-002464_pano_0002_000399 2022-03-22: #b19973",
     "stadionweg-110883": "the 3 clear reads disagree (#6e7d7e, #555c59, #9e8d81); recording_2025-07-30_06-07-02_00244 2025-07-30: #6e7d7e; b_20241105_1055_Track09_Sphere_00096 2024-11-05: #555c59; TMX7316010203-002918_pano_0011_000004 2023-01-05: #9e8d81",
     "stadionweg-116969": "the 2 clear reads disagree (#b09675, #776766); recording_2025-07-30_06-07-02_00715 2025-07-30: foliage 31 %; recording_2025-07-29_13-17-11_01528 2025-07-29: foliage 45 %; b_20241105_1055_Track22_Sphere_00178 2024-11-05: #b09675; TMX7316010203-002918_pano_0003_000018 2023-01-05: #776766",
-    "theseusstraat-096413": "the 3 clear reads disagree (#b2ac9d, #393c3b, #cecdce); recording_2025-07-29_13-17-11_00020 2025-07-29: #b2ac9d; b_20241105_1332_Track11_Sphere_00037 2024-11-05: #393c3b; TMX7316010203-002460_pano_0003_001011 2022-03-21: #cecdce"
+    "theseusstraat-096413": "the 3 clear reads disagree (#b2ac9d, #393c3b, #cecdce); recording_2025-07-29_13-17-11_00020 2025-07-29: #b2ac9d; b_20241105_1332_Track11_Sphere_00037 2024-11-05: #393c3b; TMX7316010203-002460_pano_0003_001011 2022-03-21: #cecdce",
+    "turnerstraat-125618": "the 3 clear reads disagree (#95887a, #4e3f22, #bf986b); recording_2025-07-29_13-17-11_00998 2025-07-29: #95887a; b_20241105_1332_Track01_Sphere_00029 2024-11-05: #4e3f22; TMX7316010203-002460_pano_0003_001285 2022-03-21: #bf986b",
+    "turnerstraat-146067": "the 3 clear reads disagree (#929690, #5a513c, #e2c9a6); recording_2025-07-29_13-17-11_00374 2025-07-29: #929690; b_20241105_1332_Track01_Sphere_00042 2024-11-05: #5a513c; TMX7316010203-002460_pano_0003_000795 2022-03-21: #e2c9a6",
+    "van-tuyll-van-serooskerkenplein-097672": "the 2 clear reads disagree (#514736, #b59986); recording_2025-07-30_06-07-02_00587 2025-07-30: no brick cluster; b_20241105_0934_Track18_Sphere_00155 2024-11-05: #514736; TMX7316010203-002475_pano_0000_001546 2022-03-24: #8f6b67; TMX7316010203-002120_pano_0000_004226 2021-04-28: #b59986",
+    "van-tuyll-van-serooskerkenplein-108494": "the 2 clear reads disagree (#7d6d66, #966e6e); recording_2025-07-30_06-07-02_00588 2025-07-30: no brick cluster; b_20241105_0934_Track18_Sphere_00155 2024-11-05: #7d6d66; TMX7316010203-002475_pano_0000_001547 2022-03-24: #966e6e; TMX7316010203-002120_pano_0000_004227 2021-04-28: #61534c",
+    "van-tuyll-van-serooskerkenplein-119149": "the 3 clear reads disagree (#87949e, #8c795b, #c0a07f); recording_2025-07-30_06-07-02_00609 2025-07-30: #87949e; b_20241105_0934_Track19_Sphere_00002 2024-11-05: #8c795b; TMX7316010203-002475_pano_0000_001628 2022-03-24: #c0a07f",
+    "van-tuyll-van-serooskerkenplein-125135": "the 2 clear reads disagree (#6f5c50, #918789); recording_2025-07-30_06-07-02_00579 2025-07-30: no brick cluster; b_20241105_0934_Track18_Sphere_00146 2024-11-05: #6f5c50; TMX7316010203-002475_pano_0000_001539 2022-03-24: #6a5c50; TMX7316010203-002120_pano_0000_004218 2021-04-28: #918789",
+    "van-tuyll-van-serooskerkenweg-080964": "the 3 clear reads disagree (#8a9ba5, #c9a480, #a08274); recording_2025-07-30_06-07-02_00433 2025-07-30: #8a9ba5; b_20241105_1055_Track04_Sphere_00043 2024-11-05: foliage 35 %; TMX7316010203-002475_pano_0000_001212 2022-03-24: #c9a480; TMX7316010203-002120_pano_0000_003331 2021-04-28: #a08274",
+    "van-tuyll-van-serooskerkenweg-101521": "the 2 clear reads disagree (#574548, #807577); recording_2025-07-30_06-07-02_00526 2025-07-30: #574548; b_20241105_0934_Track18_Sphere_00094 2024-11-05: #50443b; TMX7316010203-002475_pano_0000_001177 2022-03-24: #807577",
+    "van-tuyll-van-serooskerkenweg-145182": "the 3 clear reads disagree (#76613f, #9e8463, #81726f); recording_2025-07-30_06-07-02_00197 2025-07-30: foliage 59 %; b_20241105_1055_Track09_Sphere_00071 2024-11-05: #76613f; TMX7316010203-002475_pano_0000_001262 2022-03-24: #9e8463; TMX7316010203-002405_pano_0004_000136 2022-01-10: #81726f",
+    "van-tuyll-van-serooskerkenweg-148531": "the 3 clear reads disagree (#604f56, #675144, #7d7374); recording_2025-07-30_06-07-02_00513 2025-07-30: #604f56; b_20241105_0934_Track18_Sphere_00081 2024-11-05: #675144; TMX7316010203-002475_pano_0000_001165 2022-03-24: #7d7374",
+    "van-tuyll-van-serooskerkenweg-149344": "the 3 clear reads disagree (#534932, #6e6467, #af8f68); recording_2025-07-30_06-07-02_00379 2025-07-30: foliage 30 %; b_20241105_0934_Track18_Sphere_00109 2024-11-05: #534932; TMX7316010203-002918_pano_0009_000035 2023-01-05: #6e6467; TMX7316010203-002475_pano_0000_001423 2022-03-24: #af8f68",
+    "watteaustraat-086767": "the 3 clear reads disagree (#454441, #755b4b, #b59575); recording_2025-07-29_10-56-07_01901 2025-07-29: #454441; b_20241105_1055_Track25_Sphere_00062 2024-11-05: #755b4b; TMX7316010203-002475_pano_0000_001819 2022-03-24: #b59575",
+    "watteaustraat-103913": "the 2 clear reads disagree (#514a36, #b58761); recording_2025-07-29_12-06-07_01579 2025-07-29: #342e2c; b_20241105_1055_Track24_Sphere_00066 2024-11-05: #514a36; TMX7316010203-002475_pano_0000_001788 2022-03-24: #b58761",
+    "willaertstraat-106628": "no panorama faces the row",
+    "willaertstraat-141901": "no panorama faces the row",
+    "willaertstraat-144324": "no panorama faces the row"
   },
   "roofSource": "AHN4 DSM/DTM 0.5 m (PDOK WCS, CC0) via scripts/buurt-generators/measure-roofs.ts",
   "roofs": {

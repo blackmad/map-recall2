@@ -2,7 +2,7 @@
  * Buurt generator, staging run (docs/handoffs/buurt-generators-20261115.md): a district's undescribed street-side rows
  * as house-rows records, from local data only. Stages; never publishes.
  *
- *   node --import tsx scripts/buurt-generators/generate.ts --district=rivierenbuurt [--out=artifacts/buurt-generators/<district>] [--specs]
+ *   node --import tsx scripts/buurt-generators/generate.ts --district=rivierenbuurt [--out=artifacts/buurt-generators/<district>] [--specs] [--check] [--stage-data]
  *
  * Reads the district library (src/canalRecall/buurtGenerator/districts/<district>.json), the buurt polygons
  * (coverage-v1/buurten.json), BAG pands with year and 3DBAG eaves/ridge (bag-tiles/14), named OSM ways
@@ -92,7 +92,8 @@ export function describedPands(): Set<string> {
     for (const id of Object.keys(json.buildings ?? {})) ids.add(norm(id));
   }
   const rf = JSON.parse(fs.readFileSync('public/data/front-records/row-front.json', 'utf8'));
-  for (const r of rf.records ?? []) ids.add(norm(String(r.pandId)));
+  // The generator's own published records (`buurtKit`) do not describe a pand: a re-run regenerates them.
+  for (const r of rf.records ?? []) if (!r.buurtKit) ids.add(norm(String(r.pandId)));
   const covers = JSON.parse(fs.readFileSync('public/canal-drive/models/covers.json', 'utf8'));
   for (const m of Object.values(covers.models ?? {}) as Array<{ p?: string[] }>) for (const id of m.p ?? []) ids.add(norm(id));
   for (const id of covers.buildingTypes ?? []) ids.add(norm(id));
@@ -109,6 +110,8 @@ async function main() {
   const res = generateDistrict(lib, pands, streets, described, at);
   fs.mkdirSync(out, { recursive: true });
   fs.writeFileSync(path.join(out, 'row-front.json'), JSON.stringify({ version: 1, district, generatedAt: at, records: res.records }));
+  // --stage-data: the reviewed copy the integrator publishes from (scripts/buurt-generators/publish.ts).
+  if (process.argv.includes('--stage-data')) { fs.mkdirSync(`data/buurt-generators/${district}`, { recursive: true }); fs.copyFileSync(path.join(out, 'row-front.json'), `data/buurt-generators/${district}/row-front.json`); }
   fs.writeFileSync(path.join(out, 'rows.json'), JSON.stringify({ district, rows: res.rows }));
   fs.writeFileSync(path.join(out, 'fronts.json'), JSON.stringify({ district, fronts: res.fronts }));
   if (process.argv.includes('--check')) {
