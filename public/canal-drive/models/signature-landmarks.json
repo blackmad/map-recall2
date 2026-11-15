@@ -105539,6 +105539,417 @@
       "triangles": 16330,
       "bytes": 244488,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "schiller-rembrandtplein": {
+      "id": "schiller-rembrandtplein",
+      "name": "Hotel Schiller, Rembrandtplein 26",
+      "modelUrl": "./models/schiller-rembrandtplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012178854"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89667409,
+          52.36557781
+        ],
+        "headingDegrees": 348,
+        "lengthMetres": 36.5,
+        "widthMetres": 40.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.89667409,
+          52.36557781
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012178854 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/schiller-rembrandtplein-footprints.json, written by bag-shell-prepare.ts). The massing and mansard are the 3DBAG LoD2.2 shell (CC BY 4.0); the oriels, the corner tower and crown, the terrace, the arched windows, the top storey and eave and the canopy are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-001900_pano_0005_000734, b_20241203_1333_Track15_Sphere_00354). Per wall in scripts/landmarks/schiller-rembrandtplein-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 28,
+      "galleryView": {
+        "theta": 0.2,
+        "phi": 1.2
+      },
+      "materialOverrides": {
+        "brick": "#7d4436",
+        "sandstone": "#b8aa8e",
+        "stone": "#c9bfa8",
+        "white": "#ece8df",
+        "frame": "#d8d4ca",
+        "glass": "#34383c",
+        "red": "#a63a36",
+        "blue": "#22304f",
+        "concrete": "#d8d0b8",
+        "ochre": "#9c9580",
+        "bronze": "#2c2e2e",
+        "slate": "#4f555c"
+      },
+      "attribution": {
+        "title": "Hotel Schiller, Rembrandtplein 26: Art Nouveau hotel front whose bar, Cafe Schiller, opened just after 1920",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Schiller_(caf%C3%A9)",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell and mansard (CC BY 4.0): three stone oriels, the stone corner tower with its curved bay and scrolled crown, the first-floor terrace with its red railing and lanterns, round-arched windows, window columns, the bracketed cornice and eave, the top storey with balconettes, the awnings and the lettered entrance canopy. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8969709,
+              52.3656195
+            ],
+            [
+              4.8969042,
+              52.3657507
+            ],
+            [
+              4.8968556,
+              52.3657443
+            ],
+            [
+              4.8965606,
+              52.3657053
+            ],
+            [
+              4.896512,
+              52.3656988
+            ],
+            [
+              4.8964525,
+              52.365691
+            ],
+            [
+              4.8964371,
+              52.3656889
+            ],
+            [
+              4.8965141,
+              52.3655346
+            ],
+            [
+              4.8964115,
+              52.3655152
+            ],
+            [
+              4.8964237,
+              52.3654911
+            ],
+            [
+              4.8964595,
+              52.3654208
+            ],
+            [
+              4.8966288,
+              52.3654521
+            ],
+            [
+              4.8966328,
+              52.3654443
+            ],
+            [
+              4.8968375,
+              52.3654823
+            ],
+            [
+              4.8969348,
+              52.3655004
+            ],
+            [
+              4.8969174,
+              52.3655334
+            ],
+            [
+              4.8970064,
+              52.3655499
+            ],
+            [
+              4.8969709,
+              52.3656195
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -17.93000030517578,
+          2.9802322831784522e-9,
+          -20.479951858520508
+        ],
+        "max": [
+          22.613000869750977,
+          29.20800018310547,
+          17.358999252319336
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89667409,
+          52.36557781
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 348,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 40.54300117492676,
+        "heightMetres": 29.208000180125236,
+        "depthMetres": 37.838951110839844,
+        "depthCoverage": 0.9342950891565394
+      },
+      "triangles": 13458,
+      "bytes": 194748,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "reinwardt-academie": {
+      "id": "reinwardt-academie",
+      "name": "Reinwardt Academie, Hortusplantsoen 2",
+      "modelUrl": "./models/reinwardt-academie.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012181859"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.90547068,
+          52.36619257
+        ],
+        "headingDegrees": 8,
+        "lengthMetres": 30.8,
+        "widthMetres": 36.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.90547068,
+          52.36619257
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012181859 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/reinwardt-academie-footprints.json, written by bag-shell-prepare.ts). The massing is the 3DBAG LoD2.2 shell (CC BY 4.0); the school windows, courses, pilasters, eave, dormers, the wing gable, the tower windows and letters and the pavilion window bands are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-002542_pano_0000_000144, TMX7316010203-002544_pano_0000_002779, recording_2025-06-19_03-28-47_02976, TMX7316010203-002544_pano_0000_002776). Per wall in scripts/landmarks/reinwardt-academie-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21.5,
+      "galleryView": {
+        "theta": 0.3,
+        "phi": 1.2
+      },
+      "bagYear": 1902,
+      "materialOverrides": {
+        "brick": "#8a4838",
+        "stone": "#c8bba0",
+        "ochre": "#a39a7e",
+        "concrete": "#e2ddcf",
+        "white": "#ece9e1",
+        "glass": "#3a4046",
+        "slate": "#55504e",
+        "red": "#8e2f33",
+        "greyBrick": "#6e4a3e",
+        "bronze": "#2a2c2c"
+      },
+      "attribution": {
+        "title": "Reinwardt Academie, Hortusplantsoen 2: double school of 1897-1902 on the former St. Antonies churchyard (municipal monument 202056)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Reinwardt_Academie",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell (CC BY 4.0): the school windows, stone courses, pilaster strips, herringbone panels, bracketed eave and pointed dormers, the wing's timber gable, the stair tower's windows, lanterns and letters, and the red pavilion's window bands. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.905788,
+              52.3662544
+            ],
+            [
+              4.9057655,
+              52.3662561
+            ],
+            [
+              4.9057651,
+              52.3662541
+            ],
+            [
+              4.9057388,
+              52.3662562
+            ],
+            [
+              4.9057392,
+              52.3662582
+            ],
+            [
+              4.9056847,
+              52.3662624
+            ],
+            [
+              4.9056843,
+              52.3662605
+            ],
+            [
+              4.9054914,
+              52.3662759
+            ],
+            [
+              4.9054917,
+              52.3662778
+            ],
+            [
+              4.9053883,
+              52.3662859
+            ],
+            [
+              4.9053879,
+              52.3662842
+            ],
+            [
+              4.9053858,
+              52.3662843
+            ],
+            [
+              4.9053563,
+              52.3662865
+            ],
+            [
+              4.9053507,
+              52.3662585
+            ],
+            [
+              4.9053816,
+              52.3662562
+            ],
+            [
+              4.9053773,
+              52.3662343
+            ],
+            [
+              4.9053737,
+              52.3662163
+            ],
+            [
+              4.9053733,
+              52.3662146
+            ],
+            [
+              4.9053806,
+              52.3662033
+            ],
+            [
+              4.9053555,
+              52.3661973
+            ],
+            [
+              4.9053492,
+              52.366207
+            ],
+            [
+              4.9052656,
+              52.3661868
+            ],
+            [
+              4.9052631,
+              52.3661905
+            ],
+            [
+              4.9052506,
+              52.3661874
+            ],
+            [
+              4.9052557,
+              52.3661798
+            ],
+            [
+              4.9052588,
+              52.3661805
+            ],
+            [
+              4.9053023,
+              52.3661152
+            ],
+            [
+              4.9053649,
+              52.3661308
+            ],
+            [
+              4.9053781,
+              52.3661111
+            ],
+            [
+              4.905393,
+              52.3661148
+            ],
+            [
+              4.9054063,
+              52.366095
+            ],
+            [
+              4.9054925,
+              52.3661166
+            ],
+            [
+              4.9055079,
+              52.3660936
+            ],
+            [
+              4.9056034,
+              52.366086
+            ],
+            [
+              4.9055898,
+              52.3660225
+            ],
+            [
+              4.9057361,
+              52.3660108
+            ],
+            [
+              4.905738,
+              52.3660195
+            ],
+            [
+              4.905788,
+              52.3662544
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -14.991000175476074,
+          -5.9604645663569045e-9,
+          -11.1454439163208
+        ],
+        "max": [
+          21.659000396728516,
+          24.5049991607666,
+          20.29199981689453
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.90547068,
+          52.36619257
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 8,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 36.65000057220459,
+        "heightMetres": 24.504999166727067,
+        "depthMetres": 31.437443733215332,
+        "depthCoverage": 0.8566060962728973
+      },
+      "triangles": 7600,
+      "bytes": 108864,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

@@ -1,0 +1,32 @@
+{
+ "id": "schiller-rembrandtplein",
+ "name": "Hotel Schiller, Rembrandtplein 26",
+ "heightMetres": 28.0,
+ "galleryView": {
+  "theta": 0.2,
+  "phi": 1.2
+ },
+ "surveyedSource": "Vertex average of the BAG 0363100012178854 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/schiller-rembrandtplein-footprints.json, written by bag-shell-prepare.ts). The massing and mansard are the 3DBAG LoD2.2 shell (CC BY 4.0); the oriels, the corner tower and crown, the terrace, the arched windows, the top storey and eave and the canopy are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-001900_pano_0005_000734, b_20241203_1333_Track15_Sphere_00354). Per wall in scripts/landmarks/schiller-rembrandtplein-inventory.json.",
+ "materialOverrides": {
+  "brick": "#7d4436",
+  "sandstone": "#b8aa8e",
+  "stone": "#c9bfa8",
+  "white": "#ece8df",
+  "frame": "#d8d4ca",
+  "glass": "#34383c",
+  "red": "#a63a36",
+  "blue": "#22304f",
+  "concrete": "#d8d0b8",
+  "ochre": "#9c9580",
+  "bronze": "#2c2e2e",
+  "slate": "#4f555c"
+ },
+ "attribution": {
+  "title": "Hotel Schiller, Rembrandtplein 26: Art Nouveau hotel front whose bar, Cafe Schiller, opened just after 1920",
+  "author": "Map Recall",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Schiller_(caf%C3%A9)",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell and mansard (CC BY 4.0): three stone oriels, the stone corner tower with its curved bay and scrolled crown, the first-floor terrace with its red railing and lanterns, round-arched windows, window columns, the bracketed cornice and eave, the top storey with balconettes, the awnings and the lettered entrance canopy. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

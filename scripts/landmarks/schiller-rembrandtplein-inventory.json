@@ -1,0 +1,266 @@
+{
+ "schemaVersion": 1,
+ "id": "schiller-rembrandtplein",
+ "pand": "0363100012178854",
+ "brief": "scripts/landmarks/schiller-rembrandtplein-brief.md",
+ "signature": [
+  "oriels",
+  "tower-crown",
+  "terrace-railing",
+  "arched-windows",
+  "canopy-lettering",
+  "deep-eave"
+ ],
+ "walls": [
+  {
+   "tag": "w01-348",
+   "bearing": 348,
+   "lengthM": 32.5,
+   "centre": [
+    4.8966735,
+    52.365722
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0005_000734",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "oriels",
+     "kind": "window-shape",
+     "where": "three stone oriels from the first-floor string course to the eave at t 5.3, 11.5, 17.6 m, windows on three faces",
+     "approxSizeM": [
+      2.5,
+      11.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "trapezoid sandstone prisms 2.5 m wide, 0.6 m deep, 10.3-21.5 m on a stone corbel; white-framed windows on the front and both angled faces per floor"
+    },
+    {
+     "id": "oriel-balconettes",
+     "kind": "balcony-ironwork",
+     "where": "red wrought-iron balconettes on the second floor of each oriel",
+     "approxSizeM": [
+      1.3,
+      0.85
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "red rails and bars every 0.12 m on a stone floor; the scrolls are drawn as straight bars"
+    },
+    {
+     "id": "tower-crown",
+     "kind": "tower",
+     "where": "stone corner tower at the west end of the hotel front with a curved bay and a scrolled Baroque crown above the roof",
+     "approxSizeM": [
+      5.6,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "sandstone tower block 7-25.5 m proud of the wall, half-octagon bay 10-21.4 m, cornice and a scrolled crown outline to 28 m with a stone cartouche"
+    },
+    {
+     "id": "terrace-railing",
+     "kind": "balcony-ironwork",
+     "where": "first-floor terrace over the shops with a continuous red iron railing",
+     "approxSizeM": [
+      24.5,
+      1.05
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "stone terrace slab 1.4 m deep, red top and bottom rails, bars every 0.15 m and posts every 3 m; ornamental panels drawn as bars"
+    },
+    {
+     "id": "terrace-lanterns",
+     "kind": "lamp",
+     "where": "pairs of black lanterns on posts at the oriel piers on the terrace",
+     "approxSizeM": [
+      0.6,
+      2.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "bronze post, crossbar and two lantern boxes at each oriel"
+    },
+    {
+     "id": "arched-windows",
+     "kind": "window-shape",
+     "where": "eight round-arched first-floor windows with alternating stone and brick voussoirs",
+     "approxSizeM": [
+      1.7,
+      2.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "sandstone voussoir band (alternation not drawn), white frame, glass, transom and mullion"
+    },
+    {
+     "id": "window-columns",
+     "kind": "window-shape",
+     "where": "tall white-framed windows with stone lintels and sills in four columns between the oriels, three floors",
+     "approxSizeM": [
+      1.45,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "win() at t 2.4/8.6/14.6/20.6 m on three floors"
+    },
+    {
+     "id": "main-cornice",
+     "kind": "other",
+     "where": "stone main cornice on brackets at the eave (21.6 m)",
+     "approxSizeM": [
+      23,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "stone slab 0.8 m deep, brackets every 1 m"
+    },
+    {
+     "id": "deep-eave",
+     "kind": "other",
+     "where": "top storey in the mansard: windows with red balconettes under a deep bracketed eave",
+     "approxSizeM": [
+      23,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "brick face 0.3-0.6 m into the 3DBAG mansard, seven windows with balconettes, stone eave 1.3 m deep on brackets every 0.9 m"
+    },
+    {
+     "id": "canopy-lettering",
+     "kind": "lettering",
+     "where": "cream entrance canopy with a segmental top lettered NH SCHILLER",
+     "approxSizeM": [
+      11.4,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "concrete-coloured box 4.3-6.7 m, 1.7 m deep, segmental front panel, NH and SCHILLER in 0.6 m block letters"
+    },
+    {
+     "id": "awnings",
+     "kind": "canopy",
+     "where": "navy awning fascias with striped roll-out awnings over the shop windows",
+     "approxSizeM": [
+      13.5,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "navy boxes 1.1 m high, 0.9 m deep; the striped arms are not drawn"
+    },
+    {
+     "id": "shopfronts",
+     "kind": "window-shape",
+     "where": "ground-floor shop and lobby glazing in a light frame",
+     "approxSizeM": [
+      32,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "glass panels between frame mullions every 2.35 m, frame head at 4 m, stone plinth"
+    },
+    {
+     "id": "west-bay",
+     "kind": "window-shape",
+     "where": "the plainer west bay of the pand (t 29-32.5) with two window columns",
+     "approxSizeM": [
+      3.5,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0005_000734",
+     "how": "plain windows with stone lintels and sills, stone cornice at 20.2 m"
+    }
+   ]
+  },
+  {
+   "tag": "w02-163",
+   "bearing": 163,
+   "lengthM": 21.6,
+   "centre": [
+    4.8967865,
+    52.3654745
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-164",
+   "bearing": 164,
+   "lengthM": 12,
+   "centre": [
+    4.8965465,
+    52.3654385
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-253",
+   "bearing": 253,
+   "lengthM": 11,
+   "centre": [
+    4.896438,
+    52.36547
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002824_pano_0018_000029",
+   "capturedAt": "2022-10-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "side-shopfront",
+     "kind": "sign",
+     "where": "Heeren van Aemstel bar front with red awnings and coloured lanterns on the Thorbeckeplein side",
+     "approxSizeM": [
+      11,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002824_pano_0018_000029",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage, awnings and party lanterns of the bar"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-164",
+   "bearing": 164,
+   "lengthM": 6.3,
+   "centre": [
+    4.8969645,
+    52.365544
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

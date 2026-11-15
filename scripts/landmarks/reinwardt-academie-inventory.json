@@ -1,0 +1,365 @@
+{
+ "schemaVersion": 1,
+ "id": "reinwardt-academie",
+ "pand": "0363100012181859",
+ "brief": "scripts/landmarks/reinwardt-academie-brief.md",
+ "signature": [
+  "school-windows",
+  "timber-gable",
+  "bracketed-eave",
+  "herringbone-panels",
+  "tower-lettering",
+  "pointed-dormers"
+ ],
+ "walls": [
+  {
+   "tag": "w01-8",
+   "bearing": 8,
+   "lengthM": 13.3,
+   "centre": [
+    4.9055905,
+    52.3662705
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002542_pano_0000_000144",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "school-windows",
+     "kind": "window-shape",
+     "where": "four bays of large white multi-pane school windows on three floors, segmental brick heads on the ground and top floors",
+     "approxSizeM": [
+      2.0,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002542_pano_0000_000144",
+     "how": "win(): white frame, glass, two lights with transom and glazing bars, stone sill; greyBrick segmental head band"
+    },
+    {
+     "id": "herringbone-panels",
+     "kind": "other",
+     "where": "yellow-grey herringbone brick spandrel panels between the first and second floor windows",
+     "approxSizeM": [
+      2.0,
+      1.25
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002542_pano_0000_000144",
+     "how": "flat ochre panels; the herringbone bond is not drawn"
+    },
+    {
+     "id": "pilaster-strips",
+     "kind": "other",
+     "where": "brick pilaster strips between the bays from the plinth course to the eave",
+     "approxSizeM": [
+      0.6,
+      12.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002542_pano_0000_000144",
+     "how": "brick slabs 0.07 m proud"
+    },
+    {
+     "id": "stone-courses",
+     "kind": "other",
+     "where": "stone courses at the raised ground floor (2.2 m), the first floor (6.3 m) and under the top floor (10.9 m)",
+     "approxSizeM": [
+      13.3,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002542_pano_0000_000144",
+     "how": "stone slabs on every school front"
+    },
+    {
+     "id": "bracketed-eave",
+     "kind": "other",
+     "where": "deep cream timber eave on brackets every 0.93 m",
+     "approxSizeM": [
+      13.3,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002542_pano_0000_000144",
+     "how": "concrete-coloured fascia slab 0.85 m deep, brackets every 0.93 m"
+    },
+    {
+     "id": "pointed-dormers",
+     "kind": "window-shape",
+     "where": "two small cream dormers with pointed gables in the roof",
+     "approxSizeM": [
+      1.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002542_pano_0000_000144",
+     "how": "dormer box, triangular gable and a glass light, set into the 3DBAG roof"
+    }
+   ]
+  },
+  {
+   "tag": "w02-188",
+   "bearing": 188,
+   "lengthM": 10,
+   "centre": [
+    4.905666,
+    52.366019
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241218_1119_Track06_Sphere_00127",
+   "capturedAt": "2024-12-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-wing",
+     "kind": "other",
+     "where": "white concrete south wing of the extension with a glazed undercroft",
+     "approxSizeM": [
+      10,
+      13
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241218_1119_Track06_Sphere_00127",
+     "how": "shell walls and roofs in concrete colour; the undercroft glazing is not drawn"
+    },
+    {
+     "id": "graffiti",
+     "kind": "sign",
+     "where": "graffiti on the undercroft walls",
+     "approxSizeM": [
+      3,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241218_1119_Track06_Sphere_00127",
+     "skip": {
+      "reason": "temporary",
+      "note": "graffiti"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-249",
+   "bearing": 249,
+   "lengthM": 7.9,
+   "centre": [
+    4.9052835,
+    52.36615
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1134_Track01_Sphere_00044",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-west",
+     "kind": "window-shape",
+     "where": "west wall of the red pavilion with its window band, the school block behind",
+     "approxSizeM": [
+      7.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1134_Track01_Sphere_00044",
+     "how": "as pavilion-band, on the 3DBAG wall 0.56 m behind the BAG ring"
+    }
+   ]
+  },
+  {
+   "tag": "w04-8",
+   "bearing": 8,
+   "lengthM": 7.1,
+   "centre": [
+    4.9054425,
+    52.366284
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002544_pano_0000_002779",
+   "capturedAt": "2022-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "timber-gable",
+     "kind": "other",
+     "where": "the west wing's big cream timber gable with bargeboards, brackets and a herringbone tympanum with a small window",
+     "approxSizeM": [
+      7.6,
+      4.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002544_pano_0000_002779",
+     "how": "inverted-V bargeboard band 0.38 m thick, 0.55 m deep, eave board and brackets; the arched inner brace is drawn as the tympanum outline"
+    },
+    {
+     "id": "wing-windows",
+     "kind": "window-shape",
+     "where": "wide five-light windows on the first and second floors, two arched windows on the ground floor",
+     "approxSizeM": [
+      4.6,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002544_pano_0000_002779",
+     "how": "win() with five lights; two-light arched windows below"
+    },
+    {
+     "id": "wing-panel",
+     "kind": "other",
+     "where": "herringbone panel between the wing windows",
+     "approxSizeM": [
+      4.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002544_pano_0000_002779",
+     "how": "flat ochre panel"
+    }
+   ]
+  },
+  {
+   "tag": "w05-278",
+   "bearing": 278,
+   "lengthM": 7.1,
+   "centre": [
+    4.9055995,
+    52.3660565
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_02972",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "undercroft-columns",
+     "kind": "colonnade",
+     "where": "white concrete columns of the undercroft under the south wing",
+     "approxSizeM": [
+      0.6,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_02972",
+     "how": "part of the concrete shell; columns not separated"
+    }
+   ]
+  },
+  {
+   "tag": "w06-188",
+   "bearing": 188,
+   "lengthM": 6.5,
+   "centre": [
+    4.9055585,
+    52.366092
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241218_1119_Track06_Sphere_00132",
+   "capturedAt": "2024-12-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "undercroft-glazing",
+     "kind": "window-shape",
+     "where": "blue-framed glazing behind the undercroft columns",
+     "approxSizeM": [
+      6.5,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241218_1119_Track06_Sphere_00132",
+     "skip": {
+      "reason": "not-visible",
+      "note": "behind the columns, under the wing, 54 degrees oblique"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-339",
+   "bearing": 339,
+   "lengthM": 6.1,
+   "centre": [
+    4.90531,
+    52.366199
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002544_pano_0000_002776",
+   "capturedAt": "2022-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-band",
+     "kind": "window-shape",
+     "where": "red-clad pavilion of the extension with a long white-framed window band",
+     "approxSizeM": [
+      6.1,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002544_pano_0000_002776",
+     "how": "red shell walls under 6.7 m, concrete plinth, glazed band with mullions every 0.9 m"
+    }
+   ]
+  },
+  {
+   "tag": "w08-277",
+   "bearing": 277,
+   "lengthM": 4.6,
+   "centre": [
+    4.90538,
+    52.3662375
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_02976",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-lettering",
+     "kind": "lettering",
+     "where": "REINWARDT ACADEMIE letters and a round logo on the brick stair tower",
+     "approxSizeM": [
+      3.7,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_02976",
+     "how": "block letters 0.034 m pixels in two words at 4.7 m; the round logo is not drawn"
+    },
+    {
+     "id": "tower-lanterns",
+     "kind": "lamp",
+     "where": "two lanterns on brackets on the tower",
+     "approxSizeM": [
+      0.3,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_02976",
+     "how": "bronze arm and lantern box"
+    },
+    {
+     "id": "tower-windows",
+     "kind": "window-shape",
+     "where": "rows of three small square windows on the tower",
+     "approxSizeM": [
+      0.6,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_02976",
+     "how": "three rows of three"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
