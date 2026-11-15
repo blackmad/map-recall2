@@ -1,4 +1,7 @@
 import { logoFor, retailLogoLayer } from './retailLogos.js';
+import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, retailRealOn } from './retailPages.js';
+import { RETAIL_CHAINS, chainOfWord } from './retailChains.js';
+import { TEMPLATE_CHAIN_LOGO, chainLogo } from './retailChainLogos.js';
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
 import { structurePriorOn, STRUCTURE_PRIOR_TABLE } from './houseSpec/structurePrior.js';
 import type { StoopIntent } from './buildingRecipe/stoop.ts';
@@ -44,7 +47,7 @@ import { periodWallList } from './look/brickLift.js';
 import { hashSeed } from './wallBays.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 import { applyGlazing, glazingOf } from './glassParts.js';
-import { RETAIL_HELD, RETAIL_TEMPLATES, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
+import { REAL_ONLY_TEMPLATES, RETAIL_HELD, RETAIL_TEMPLATES, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
 import { paintOverGuess } from './retailPuiPaint.js';
 import { bikeFromCode } from './retailBikes.js';
 
@@ -300,9 +303,14 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Lane retail-ground (`?retailGround=1`): a shopfront template stamped from the template extract (shopfronts.ts
   // decorateShopTemplate, which only runs with the extract installed, which only the flag's loader installs).
   const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?, 1?] : null;
-  if (template && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && !RETAIL_HELD.includes(template[0]) && !p.frontCarrier && cellSetOf(look) !== 'procedural') {
-    const logo = logoFor(template[0] as RetailTemplate), logoLayer = retailLogoLayer(cellSetOf(look));
-    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer + logo.page, rect: logo.rect, aspect: logo.aspect } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(puiPaint && p.puiDark !== 1 ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}), ...(typeof p.shopAwning === 'string' && /^#[0-9a-f]{6}$/i.test(p.shopAwning) ? { awning: p.shopAwning } : {}) };
+  // Lane retail-real: a chain's row carries '@<key>' as its word (retailChains.ts); its type template draws only with
+  // retailReal on, under the chain's colours and logo.
+  const chainKey = chainOfWord(template?.[3]), retailChain = chainKey && retailRealOn() ? RETAIL_CHAINS[chainKey] : undefined;
+  if (template && !(chainKey && !retailChain) && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && (!RETAIL_HELD.includes(template[0]) || retailRealOn()) && !p.frontCarrier && cellSetOf(look) !== 'procedural'
+    && (retailRealOn() || !(REAL_ONLY_TEMPLATES as readonly string[]).includes(template[0]))) {
+    const logoLayer = retailLogoLayer(cellSetOf(look)), cl = retailChain && chainKey ? chainLogo(chainKey) : retailRealOn() && TEMPLATE_CHAIN_LOGO[template[0]] ? chainLogo(TEMPLATE_CHAIN_LOGO[template[0]]) : null;
+    const logo = cl ? { rect: cl.rect, aspect: cl.aspect, page: CHAIN_LOGO_BASE + cl.page } : logoFor(template[0] as RetailTemplate);
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] && !chainKey ? { word: template[3] } : {}), ...(retailChain ? { chain: { fascia: retailChain.fascia, letters: retailChain.letters, word: retailChain.word } } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer + logo.page, rect: logo.rect, aspect: logo.aspect } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(logoLayer !== null && retailRealOn() ? { goods: logoLayer + GOODS_BASE, faces: logoLayer + TYPE_BASE } : {}), ...(puiPaint && p.puiDark !== 1 && !retailChain ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}), ...(typeof p.shopAwning === 'string' && /^#[0-9a-f]{6}$/i.test(p.shopAwning) ? { awning: p.shopAwning } : {}) };
     delete building.signature;
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);
