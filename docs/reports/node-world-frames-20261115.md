@@ -56,7 +56,61 @@ and by `node-frame.ts` on the same pose.json files. Measures from `node-frame-fi
 (`src/canalRecall/nodeFrame/compare.ts`): CIE76 dE per pixel, the sky IoU, and the Sobel edge IoU (1 px dilation).
 belt-keizersgracht's browser frame is from an older main (default-look-realism lane), so its row is indicative only.
 
-### Round 2 (this table): the city-look slot dress, the kit/front chunk and model suppression
+### Round 3 (latest): house doors and street furniture
+
+- **Doors.** The four worker inputs were tested one at a time on pand 0363100012169794 (Marnixstraat), counting the
+  mesher's `door` triangles. Neighbours (`contextFeatures`) changed nothing. Host openings and surveyed envelopes only
+  apply to configured hosts, and this house is neither. The streets were the cause. The routing extract stores
+  `[lat, lng]`, but Node read the paths as `[lng, lat]`, so no routing way survived the box filter. The door rule then
+  saw only the appearance catalogue's 153 front paths, which hold no street wall for this house, and gave it no door.
+  With the order fixed there are 12,335 segments and the house gets one street door, as in the browser. The fix also
+  moves every other street-facing choice (stoops, crowns). Regression test: `streetInputs` in `nodeFrame.test.ts`.
+- **Street furniture** (`nodeFrame/furniture.ts`). The ride's lamps, containers, bike hoops, abris and columns: the z15
+  extract tiles, `alignContainerRows` and `instancesOf`, and `rideModel` per kind. Each instance stands on the
+  gameGround `surfaceBase` + `RIDE_BASE_LIFT_M`, turned by its yaw. Slot faces take the instance colour. The material
+  is MeshStandard roughness 0.82, receives shadows and casts none. Drawn within 220 m of the rider. Turn it off with
+  `--no-furniture` or `?furniture=0`. It costs about 7 ms to build, with 24–87 instances a pose.
+
+| key | mean dE | p90 dE | >10 dE | sky IoU | edge IoU | cpu ms |
+|---|---|---|---|---|---|---|
+| 0363100012061842 | 7.36 | 13.407 | 0.247 | 0.985 | 0.752 | 10918 |
+| 0363100012080338 | 14.917 | 42.177 | 0.391 | 0.968 | 0.478 | 14851 |
+| 0363100012164843 | 9.695 | 22.913 | 0.338 | 0.984 | 0.466 | 13610 |
+| 0363100012165023 | 4.418 | 21.833 | 0.127 | 0.324 | 0.328 | 13195 |
+| 0363100012165078 | 12.397 | 38.466 | 0.374 | 0.96 | 0.51 | 14263 |
+| 0363100012167483 | 10.459 | 31.553 | 0.421 | 0.91 | 0.559 | 16465 |
+| 0363100012167627 | 8.595 | 25.299 | 0.32 | 0.979 | 0.472 | 15730 |
+| 0363100012168136 | 7.291 | 20.426 | 0.342 | 0.983 | 0.578 | 16843 |
+| 0363100012168578 | 5.652 | 18.453 | 0.167 | 0.997 | 0.652 | 16851 |
+| 0363100012169116 | 6.95 | 14.308 | 0.316 | 0.997 | 0.712 | 28564 |
+| 0363100012169781 | 7.979 | 13.167 | 0.393 | 0.987 | 0.849 | 8387 |
+| 0363100012171023 | 6.941 | 18.485 | 0.272 | 0.996 | 0.594 | 14947 |
+| 0363100012171218 | 9.615 | 30.641 | 0.278 | 0.944 | 0.653 | 43585 |
+| 0363100012173447 | 5.365 | 13.824 | 0.243 | 0.988 | 0.746 | 18948 |
+| 0363100012175318 | 6.727 | 14.07 | 0.319 | 0.993 | 0.657 | 17071 |
+| 0363100012175320 | 9.654 | 38.066 | 0.301 | 0.995 | 0.363 | 12353 |
+| 0363100012175321 | 6.714 | 14.07 | 0.325 | 0.995 | 0.699 | 13479 |
+| 0363100012175358 | 7.283 | 14.726 | 0.36 | 0.995 | 0.681 | 15517 |
+| 0363100012180413 | 15.881 | 47.871 | 0.451 | 0.876 | 0.106 | 24042 |
+| belt-keizersgracht | 5.822 | 18.326 | 0.124 | 0.944 | 0.377 | 22092 |
+
+Against round 2: 171218 went from 9.6 to 4.4 (edge IoU 0.65 to 0.93), 175320 from 9.7 to 3.2, 168578 from 5.6 to 3.3,
+and 167483 from 9.4 to 6.8. No row got worse.
+
+**Strict blind judge, round 3** (opus; doors, lamps, labels and camera all count): **13 of 20 interchangeable**,
+up from 1 of 20 in round 2. The seven it rejects:
+- **Camera shifts.** 080338, 164843, 165078, 168578 and belt-keizersgracht. 080338 is the known eye-height case. The
+  round-2 shift measurement put 168578 at (0, 0), and 164843 and 165078 at a vertical offset of 5–6 px in 225.
+  belt-keizersgracht's browser frame is from an older main.
+- **Dark ramp wedges.** On 167483 and 169116 the browser shows dark wedge faces on the quay's kerb ramps where Node
+  shows paving (`--probe`: `ground/…/klinker`). With the ground's polygon offsets off, Node shows the kerb sides, but
+  small and light. So the browser stands the paving lower against the kerb. The ground-height difference between
+  kerb and paving is open.
+- **Water tone.** It differs on most canal sheets but was rated minor. The game has no environment map, so this is a
+  tone or lighting difference; open.
+- POI labels (Hotel Banks Mansion, café names) are not drawn by Node.
+
+### Round 2: the city-look slot dress, the kit/front chunk and model suppression
 
 Three layers the first round lacked, each traced with `--probe x,y` (which draw, or `detail/<pand>`, a pixel shows):
 
