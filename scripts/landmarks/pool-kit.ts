@@ -214,7 +214,18 @@ export type SolarOptions = {
   /** Turn the row axis by this many degrees (clockwise in plan, from +x toward +z) for a field on a building that is not
    *  square to the grid (Sloterparkbad's wing runs at 309 deg). */
   angleDeg?: number;
+  /** Drop a row whose roof heights under its ends and middle differ by more than this (m): a row straddling a roof step
+   *  stood at the upper roof's height over the lower one and showed above the parapet from the street (Noorderparkbad
+   *  blind review, 2026-11-15). Unset keeps every row. */
+  maxStep?: number;
 };
+/** The base height of a solar row from its sampled roof heights, or null when the row is off the roof or straddles a step. */
+export function solarRowBase(ys: (number | null)[], maxStep = Infinity): {yb: number; yLo: number} | null {
+  if (ys.some(y => y === null)) return null;
+  const lo = Math.min(...(ys as number[])), hi = Math.max(...(ys as number[]));
+  if (hi - lo > maxStep) return null;
+  return {yb: lo - 0.05, yLo: hi + 0.2};
+}
 /**
  * Solar-panel rows over a roof field (2026-11-15, pools2 lane): pure plan layout. The field ring (native x, z) is inset, cut
  * by scanlines every `pitch` metres across the row axis, and each scanline's inside runs become one row from p0 to p1
@@ -267,8 +278,9 @@ export function solarField(b: BuildingTools, field: number[][], roofAt: (x: numb
   let n = 0;
   for (const {p0, p1} of solarRows(field, o)) {
     const ys = [p0, p1, [(p0[0] + p1[0]) / 2, (p0[1] + p1[1]) / 2]].map(p => roofAt(p[0], p[1]));
-    if (ys.some(y => y === null)) continue;
-    const yb = Math.min(...(ys as number[])) - 0.05, yLo = Math.max(...(ys as number[])) + 0.2;
+    const base = solarRowBase(ys, o.maxStep);
+    if (!base) continue;
+    const {yb, yLo} = base;
     // cross-section in (across, up), across = left of the row direction (north for an eastward row, a right-handed basis):
     // the low edge on the south/east side (-across), the high edge on the other
     const sec = new T.Shape([new T.Vector2(-run / 2, yb), new T.Vector2(run / 2, yb), new T.Vector2(run / 2, yLo + rise), new T.Vector2(-run / 2, yLo)]);

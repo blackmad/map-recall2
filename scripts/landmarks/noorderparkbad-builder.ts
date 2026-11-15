@@ -49,9 +49,10 @@ export function buildNoorderparkbad(_w: number, _d: number, b: BuildingTools) {
   setSink(sink0);
 
   // ---- solar-panel fields (PDOK luchtfoto 2025 at 12.5 cm/px: the NE upper roof and the two low south roofs; the middle roof
-  // carries round roof-lights, not panels) ----
+  // carries round roof-lights, not panels). Kept 4 m inside the wall and off roof steps: the photo shows nothing above the
+  // parapet from the street (blind review 2026-11-15 saw rows over the edge) ----
   const roofAt = (x: number, z: number) => roofHeightAt(src.surfaces, x, z);
-  for (const [x0, x1, z0, z1] of [[6.4, 19.5, -34.0, -10.3], [15.8, 45.1, -10.3, 18.4], [-30.5, -7.4, 6.0, 34.7], [-3.6, 24.5, 4.1, 22.8]]) solarField(b, [[x0, z0], [x1, z0], [x1, z1], [x0, z1]], (x, z) => (inRing(offsetRing(ring, -1.5), x, z) ? roofAt(x, z) : null), 'dark', {depth: 1.0, pitch: 1.25, tilt: 10, inset: 0.3});
+  for (const [x0, x1, z0, z1] of [[6.4, 19.5, -34.0, -10.3], [15.8, 45.1, -10.3, 18.4], [-30.5, -7.4, 6.0, 34.7], [-3.6, 24.5, 4.1, 22.8]]) solarField(b, [[x0, z0], [x1, z0], [x1, z1], [x0, z1]], (x, z) => (inRing(offsetRing(ring, -4), x, z) ? roofAt(x, z) : null), 'dark', {depth: 1.0, pitch: 1.25, tilt: 10, inset: 0.3, maxStep: 0.5});
 
   // ---- outdoor basins on their decks ----
   const B = (id: string) => src.basins.find(x => x.osm === id)!.ring;

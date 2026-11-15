@@ -111,3 +111,12 @@ test('solarRows angleDeg: rows parallel to a turned field', async () => {
   assert.ok(rows.length >= 2);
   for (const r of rows) { const d = Math.atan2(r.p1[1] - r.p0[1], r.p1[0] - r.p0[0]); assert.ok(Math.abs(Math.abs(Math.sin(d - a))) < 1e-6, `row at ${d}`); assert.ok(Math.hypot(r.p1[0] - r.p0[0], r.p1[1] - r.p0[1]) > 9); }
 });
+
+test('solarRowBase: off-roof and stepped rows are dropped, flat rows sit just above the roof', async () => {
+  const {solarRowBase} = await import('./pool-kit');
+  assert.equal(solarRowBase([10, null, 10]), null);
+  assert.equal(solarRowBase([6, 10, 6], 0.5), null);
+  assert.deepEqual(solarRowBase([6, 10, 6]), {yb: 5.95, yLo: 10.2}); // unset maxStep keeps the old behaviour
+  const flat = solarRowBase([10, 10.1, 10], 0.5);
+  assert.ok(flat && Math.abs(flat.yb - 9.95) < 1e-9 && Math.abs(flat.yLo - 10.3) < 1e-9);
+});
