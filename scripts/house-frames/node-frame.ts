@@ -4,7 +4,7 @@
  * beside the browser's files with the same pair layout (photo cut | game).
  *
  *   node --import tsx scripts/house-frames/node-frame.ts <frame dir | pose.json>... [--out <dir>] [--dpr 2]
- *        [--no-shadows] [--no-models] [--no-ground] [--no-shells] [--frame likeness|game] [--probe x,y;x,y]
+ *        [--no-shadows] [--no-models] [--no-ground] [--no-shells] [--no-furniture] [--frame likeness|game] [--probe x,y;x,y]
  *   node --import tsx scripts/house-frames/node-frame.ts --aerial <lng>,<lat>,<zoom>,<pitch>,<bearing>[,<w>,<h>] --out <dir>
  *        [--name <name>] [--dpr 1]   (an ingame-capture.ts view: jumpTo({center, zoom, pitch, bearing}), 1280 x 800)
  *
@@ -29,7 +29,7 @@ const { frameFor, fpsFor } = await import('./pose.ts');
 const args = process.argv.slice(2);
 const flag = (n: string) => args.includes(`--${n}`);
 const opt = (n: string, d: string) => { const i = args.indexOf(`--${n}`); return i >= 0 ? args[i + 1] : d; };
-const OWN_VALUE = /^--(out|dpr|frame|aerial|name|probe)$/, OWN_FLAG = /^--(no-shadows|no-models|no-ground|no-shells)$/;
+const OWN_VALUE = /^--(out|dpr|frame|aerial|name|probe)$/, OWN_FLAG = /^--(no-shadows|no-models|no-ground|no-shells|no-furniture)$/;
 let inputs = args.filter((a, i) => !a.startsWith('--') && !(i > 0 && OWN_VALUE.test(args[i - 1])));
 // Poses without a browser: any house:frames selection (--pands, --face, --buurt, --list, with its own options such as
 // --max-dist or --pano-size) runs house:frames' Node prepare step (`--likeness --prep-only`: pano pick, the likeness
@@ -63,7 +63,7 @@ if (args.includes('--aerial')) {
   const t0 = performance.now();
   const r = await renderNodeFrame({ lngLat: [lng, lat], frame, width: w, height: h, dpr: dprA, center: [lng, lat], zoom, aerial: isAerialView(zoom, pitch, lat) }, {
     root, cacheDir: path.join(root, '.cache/node-frame'), log: s => console.log(`  ${s}`),
-    shadows: !flag('no-shadows'), models: !flag('no-models'), ground: !flag('no-ground'), shells: !flag('no-shells'),
+    shadows: !flag('no-shadows'), models: !flag('no-models'), ground: !flag('no-ground'), shells: !flag('no-shells'), furniture: !flag('no-furniture'),
   });
   const png = path.join(out, 'aerial.node.png');
   await sharp(Buffer.from(r.image.rgba.buffer), { raw: { width: r.image.width, height: r.image.height, channels: 4 } }).png().toFile(png);
@@ -86,7 +86,7 @@ for (const { dir, pj } of poseInputs) {
   const t0 = performance.now();
   const r = await renderNodeFrame({ lngLat: pose.lngLat, frame, width: pose.width, height: pose.height, window: win, dpr, center: fps.center, zoom: fps.zoom }, {
     root, cacheDir: path.join(root, '.cache/node-frame'), log: s => console.log(`  ${s}`),
-    shadows: !flag('no-shadows'), models: !flag('no-models'), ground: !flag('no-ground'), shells: !flag('no-shells'),
+    shadows: !flag('no-shadows'), models: !flag('no-models'), ground: !flag('no-ground'), shells: !flag('no-shells'), furniture: !flag('no-furniture'),
   });
   const { width, height, rgba } = r.image;
   const png = path.join(out, 'likeness.node.png');

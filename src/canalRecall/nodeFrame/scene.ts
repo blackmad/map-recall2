@@ -21,6 +21,7 @@ import { geoFrame, chunkToWorld, transformPositions, worldOfLngLat, type GeoFram
 import { fogFor, type FogSetup } from './fog.ts';
 import { groundDraws, groundLook, loadGround } from './ground.ts';
 import { sceneLight } from './light.ts';
+import { furnitureDraws, furnitureInstances, furnitureOn } from './furniture.ts';
 import { gameModels, glbBounds, loadGlbFile, LOD1_M, modelDraws, modelFile, modelMatrix, type ModelSpec } from './models.ts';
 import { shadowMap } from './shadow.ts';
 import type { SurfaceEnv } from './surfaceMaterial.ts';
@@ -52,7 +53,7 @@ export type NodeView = {
   search?: string;
 };
 
-export type NodeFrameOptions = { root: string; cacheDir: string; log?: (s: string) => void; shadows?: boolean; models?: boolean; ground?: boolean; shells?: boolean };
+export type NodeFrameOptions = { root: string; cacheDir: string; log?: (s: string) => void; shadows?: boolean; models?: boolean; ground?: boolean; shells?: boolean; furniture?: boolean };
 
 export type NodeFrameResult = {
   image: WorldImage; timings: Record<string, number>; counts: Record<string, number>;
@@ -292,6 +293,23 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   }
   T.groundLook = ms(t);
 
+  // ---- street furniture (street-furniture-source.js: lamps, containers, hoops, abris, columns round the rider) ------
+  t = performance.now();
+  if (opts.furniture !== false && !view.aerial && furnitureOn(view.search ?? '')) {
+    // gameGround.ts surfaceBase: the riding surface, never below the relief; 0 off the relief survey.
+    const surfaceBase = (lng: number, lat: number): number | undefined => {
+      const [x, y] = toLocal(lng, lat);
+      if (!ground.store.reliefCovered(x, y)) return 0;
+      if (!ground.store.hasRelief(x, y)) return undefined;
+      return Math.max(ground.store.surface.ground(x, y), ground.store.surface.height(x, y));
+    };
+    const fd = furnitureDraws(furnitureInstances(root, view.lngLat), env, view.lngLat,
+      (lng, lat) => { const w = worldOfLngLat(gf, lng, lat); return [w[0], w[1]]; }, surfaceBase, (wx, wy) => inView(wx, wy, 10));
+    draws.push(...fd.draws);
+    N.furniture = fd.count;
+  }
+  T.furniture = ms(t);
+
   // ---- models -------------------------------------------------------------------------------------------------
   t = performance.now();
   if (opts.models !== false) {
@@ -357,7 +375,7 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
 }
 
 /** The chunk builder's street inputs: routing ways (roads-v2) and the street appearance catalogue, near the view. */
-async function streetInputs(root: string, at: [number, number], origin: { lng: number; lat: number }): Promise<{ streets: Float32Array; profiles: any[] }> {
+export async function streetInputs(root: string, at: [number, number], origin: { lng: number; lat: number }): Promise<{ streets: Float32Array; profiles: any[] }> {
   const { loadRoadExtract } = await import('../routing/roadExtract.ts');
   const { streetSegments, FRONT_HIGHWAYS } = await import('../streetFronts.ts');
   const { validateStreetAppearanceCatalog } = await import('../streetAppearance.ts');
@@ -366,7 +384,8 @@ async function streetInputs(root: string, at: [number, number], origin: { lng: n
   const box = 0.02;
   const ways: { highway?: string; points: [number, number][] }[] = [];
   for (const f of cache.roads.features as any[]) {
-    const pts = (f.path ?? f.paths?.[0] ?? []) as [number, number][];
+    // The routing extract stores [lat, lng] (roadExtract.ts); the street fronts take [lng, lat] like setStreets' nodes.
+    const pts = ((f.path ?? f.paths?.[0] ?? []) as [number, number][]).map(([lat, lng]) => [lng, lat] as [number, number]);
     if (!pts.length || !FRONT_HIGHWAYS.has(f.highway)) continue;
     if (!pts.some(p => Math.abs(p[0] - at[0]) < box && Math.abs(p[1] - at[1]) < box * 0.6)) continue;
     ways.push({ highway: f.highway, points: pts });

@@ -191,3 +191,31 @@ test('slotPickFor: tagged and inferred slots take the city look, textured or unl
   assert.equal(slotPickFor({ ...base, baseColorTexture: { rgba: new Uint8Array(4), width: 1, height: 1 } } as never, { colors: null } as never), null);
   assert.equal(slotPickFor({ ...base, unlit: true } as never, { colors: null } as never), null);
 });
+
+test('streetInputs: the routing ways reach the door rule (the extract stores [lat, lng]; Marnixstraat 0363100012169794)', async () => {
+  const { streetInputs } = await import('./scene.ts');
+  const { ORIGIN } = await import('../threeBuildingFeatures.ts');
+  const { streets } = await streetInputs(process.cwd(), [4.8806, 52.3712], ORIGIN);
+  const { validateStreetAppearanceCatalog } = await import('../streetAppearance.ts');
+  const fs = await import('node:fs');
+  const catalog = validateStreetAppearanceCatalog(JSON.parse(fs.readFileSync('public/data/street-appearance/profiles.json', 'utf8')));
+  // Fronts alone hold no door wall for the low house beside the politiebureau; the routing ways must be there too.
+  const frontSegs = (catalog.streetFrontPaths ?? []).reduce((n, p: { points: unknown[] }) => n + Math.max(0, p.points.length - 1), 0);
+  assert.ok(streets.length / 4 > frontSegs + 1000, `routing segments missing: ${streets.length / 4} vs fronts ${frontSegs}`);
+});
+
+test('furnitureDraws: instances stand on the surface base + the ride lift, turned by yaw, slot faces take the instance colour', async () => {
+  const { furnitureDraws } = await import('./furniture.ts');
+  const { rideModel, RIDE_BASE_LIFT_M, isSlot } = await import('../streetFurniture/models.ts');
+  const light: SceneLight = { ambient: [0.5, 0.5, 0.5], hemiSky: [0, 0, 0], hemiGround: [0, 0, 0], sun: [0.5, 0.5, 0.5], toSun: [0, 0, 1], shadowIntensity: 0 } as never;
+  const env = { light, eye: [0, 0, 2], focal: 100 };
+  const inst = { model: 'ad-column' as const, id: 'c', lng: 10, lat: 20, yaw: Math.PI / 2, scale: 1, slotHex: '#00ff00' };
+  const far = { ...inst, id: 'far', lng: 500, lat: 0 };
+  const { draws, count } = furnitureDraws([inst, far], env, [0, 0], (lng, lat) => [lng, lat], () => 1, () => true, 220);
+  assert.equal(count, 1);
+  const m = rideModel('ad-column'), p = draws[0].positions;
+  // yaw +90 deg: local +x goes to world +y.
+  assert.ok(Math.abs(p[0] - (10 - m.positions[1])) < 1e-4 && Math.abs(p[1] - (20 + m.positions[0])) < 1e-4);
+  assert.ok(Math.abs(p[2] - (1 + RIDE_BASE_LIFT_M + m.positions[2])) < 1e-4);
+  assert.ok([...Array(m.positions.length / 3).keys()].some(v => isSlot(m.colours[v * 3], m.colours[v * 3 + 1], m.colours[v * 3 + 2])), 'the column has a poster slot');
+});
