@@ -118,7 +118,9 @@ export interface RowSeriesDraw {
    *  cornice line, so every member picks the same preset whatever its own height, year or position. */
   look?: { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean; /** The record's glazing as the painter's sash. */ sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six' };
   /** A stoop up to the bel-etage street door (a souterrain front), the door on this side as seen from the street. */
-  stoop?: { side: 'left' | 'right' | 'centre'; /** false: a raised ground door with no stoop read (no steps drawn). */ steps?: false };
+  stoop?: { side: 'left' | 'right' | 'centre'; /** false: a raised ground door with no stoop read (no steps drawn). */ steps?: false;
+    /** The flight's form and an iron railing, as the ground states (RowGround.stoopForm / stoopRailing). */
+    form?: 'straight' | 'side' | 'double'; railing?: true };
   /** The basement row's share of the upper pitch, when not SOUTERRAIN_FACTOR (low basement windows). */
   souterrainFactor?: number;
   /** The street door as read (left/right/centre as seen; `index` of `bays` ground openings, left to right as seen). */

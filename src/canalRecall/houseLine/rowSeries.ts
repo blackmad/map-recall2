@@ -28,8 +28,10 @@ function stoopOf(fronts: readonly RowFront[]): { stoop: NonNullable<RowSeriesDra
   const f = fronts.find(x => x.ground.basement === 'stoop' || x.ground.basement === 'stoop-and-windows' || x.ground.basement === 'windows');
   if (!f) return null;
   const side = f.ground.doorSide === 'right' ? 'right' : f.ground.doorSide === 'centre' ? 'centre' : f.ground.doorSide === 'left' ? 'left' : null;
-  // `windows`: the door is at the raised ground, but no stoop was read, so none is drawn (steps: false).
-  return side ? { stoop: { side, ...(f.ground.basement === 'windows' ? { steps: false as const } : {}) } } : null;
+  // `windows`: the door is at the raised ground, but no stoop was read, so none is drawn (steps: false), unless the ground
+  // states the flight's form (Herengracht 148: the raised door's short flight).
+  const form = f.ground.stoopForm, extra = { ...(form ? { form } : {}), ...(f.ground.stoopRailing ? { railing: true as const } : {}) };
+  return side ? { stoop: { side, ...(f.ground.basement === 'windows' && !form ? { steps: false as const } : {}), ...extra } } : null;
 }
 /** The street door as read on the pand's first front with one (left/right/centre; index of the ground openings). */
 function doorOf(fronts: readonly RowFront[]): { door?: NonNullable<RowSeriesDraw['door']> } {

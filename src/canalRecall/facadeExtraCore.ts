@@ -63,7 +63,9 @@ export type RowDressContext = {
   stoop?: { end: 'start' | 'end' | 'centre'; /** false: the raised door only, no steps read. */ steps?: false;
     /** The read street door's place on this wall (m along x), when the record states it: the stoop stands at the bel-etage
      *  window nearest it, on this wall only (a front drawn as several walls has one stoop). */
-    at?: number; /** `at` is the read door index's place itself (the painted cells' window there), not a nearest-window hint. */ exact?: true };
+    at?: number; /** `at` is the read door index's place itself (the painted cells' window there), not a nearest-window hint. */ exact?: true;
+    /** The flight's form (absent: straight out between stone cheeks) and an iron railing (absent: none). */
+    form?: 'straight' | 'side' | 'double'; railing?: true };
   /** The stated balcony: renderer upper storeys (1 = the first upper row) and axis. */
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
   /** Upper windows' share of their axis pitch, frames included (a row type's window width). */
