@@ -143,7 +143,7 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
 /** House rows: a feature's `rowDress` (houseLine/rowFront.ts rowDressOf), validated. */
 type RowSide = 'left' | 'right' | 'centre';
 const rowSideOf = (v: unknown): RowSide | null => v === 'left' || v === 'right' || v === 'centre' ? v : null;
-function rowDressOf(v: unknown): { omitExtras?: string[]; cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false; form?: 'straight' | 'side' | 'double'; railing?: true }; door?: { side: RowSide; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; mullionShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: RowSide } } | null {
+function rowDressOf(v: unknown): { omitExtras?: string[]; cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false; form?: 'straight' | 'side' | 'double'; railing?: true; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; door?: { side: RowSide; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; mullionShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; shopFront?: { frameHex: string; side: RowSide } } | null {
   if (!v || typeof v !== 'object') return null;
   const ws = (v as { windowShare?: unknown }).windowShare, windowShare = typeof ws === 'number' && ws > 0.3 && ws < 0.95 ? { windowShare: ws } : {};
   const ms = (v as { mullionShare?: unknown }).mullionShare, mullionShare = typeof ms === 'number' && ms > 0 && ms < 0.6 ? { mullionShare: ms } : {};
@@ -160,11 +160,13 @@ function rowDressOf(v: unknown): { omitExtras?: string[]; cornice?: string; head
   // The flight's form and railing as the ground states them (house rows stoops, Herengracht 130, 148).
   const sf0 = (d.stoop as { form?: unknown; railing?: unknown } | undefined), stoopForm = sf0?.form === 'straight' || sf0?.form === 'side' || sf0?.form === 'double' ? { form: sf0.form as 'straight' | 'side' | 'double' } : {};
   const stoopRail = sf0?.railing === true ? { railing: true as const } : {};
+  const dc = (d.stoop as { doorcase?: { material?: unknown; top?: unknown; fanlight?: unknown } } | undefined)?.doorcase;
+  const doorcase = dc && (dc.material === 'stone' || dc.material === 'timber') ? { doorcase: { material: dc.material as 'stone' | 'timber', ...(dc.top === 'entablature' || dc.top === 'pediment' || dc.top === 'segmental' ? { top: dc.top as 'entablature' | 'pediment' | 'segmental' } : {}), ...(dc.fanlight === false ? { fanlight: false } : {}) } } : {};
   const side: 'left' | 'right' | 'centre' | null = d.stoop && (d.stoop.side === 'left' || d.stoop.side === 'right' || d.stoop.side === 'centre') ? d.stoop.side : null;
   const heads = Array.isArray(d.heads) ? (d.heads as RowHeadsDraw[]).filter(h => h && Number.isFinite(h.a0) && Number.isFinite(h.a1) && typeof h.dressing === 'string') : [];
   const extras = Array.isArray(d.extras) ? (d.extras as unknown[]).filter((x): x is string => typeof x === 'string') : [];
   const om = (v as { omitExtras?: unknown }).omitExtras, omitExtras = Array.isArray(om) ? om.filter((x): x is string => typeof x === 'string') : [];
-  const out = { ...(omitExtras.length ? { omitExtras } : {}), ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side, ...steps, ...stoopForm, ...stoopRail } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}), ...windowShare, ...mullionShare, ...glazing, ...floorsM, ...(groundWalls.length ? { groundWalls } : {}), ...shopFront };
+  const out = { ...(omitExtras.length ? { omitExtras } : {}), ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side, ...steps, ...stoopForm, ...stoopRail, ...doorcase } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}), ...windowShare, ...mullionShare, ...glazing, ...floorsM, ...(groundWalls.length ? { groundWalls } : {}), ...shopFront };
   return Object.keys(out).length ? out : null;
 }
 

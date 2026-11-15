@@ -279,14 +279,23 @@ function finials(s: RoofSink, c: RowCrown, prof: readonly V2[], f: number, e: nu
 
 /** The gable's stone with thickness (RowCrown.stone, or the belt dress): how far each piece stands proud of the brick,
  *  and how far behind the front it reaches (`back`: past the plate, whose depth is `plate` for a stone crown). */
-export const ROW_STONE = { plate: 0.45, back: 0.47, coping: 0.15, overhang: 0.06, copingW: 0.15, claw: 0.4, bellClaw: 0.25, clawProud: 0.1, piece: 0.12,
-  volute: 0.17, cap: 0.12, capBand: 0.3, capOver: 0.15, ledge: 0.2, band: 0.18 } as const;
+export const ROW_STONE = { plate: 0.45, back: 0.2, coping: 0.06, overhang: 0.03, copingW: 0.08, claw: 0.16, bellClaw: 0.12, clawProud: 0.04, piece: 0.06,
+  volute: 0.08, voluteK: 0.75, cap: 0.08, capBand: 0.14, capOver: 0.1, ledge: 0.1, ledgeH: 0.12, band: 0.1 } as const;
 /** The stone a crown draws: its stated stone, else the belt dress's (claws, the crest a bell or step stands under). */
 export function rowCrownStone(c: RowCrown): NonNullable<RowCrown['stone']> | undefined {
   if (c.shape === 'raised') return undefined;
   if (c.stone) return c.stone;
   if (c.dress !== 'belt') return undefined;
   return c.shape === 'bell' || c.shape === 'step' ? { crest: 'crest' } : {};
+}
+/** Weathered sandstone (coordinator 2026-11-15): the trim white mixed this far toward a warm grey-buff, and the values the
+ *  pieces walk through, so the stone reads as stone rather than one bright paint. */
+export const ROW_STONE_WEATHER = { hex: '#bfb29a', mix: 0.35, values: [1, 0.95, 1.02, 0.97, 0.93, 1.01, 0.96] } as const;
+function mixHex(a: string, b: string, t: number): string {
+  const p = (h: string) => { const n = parseInt(h.replace('#', '').slice(0, 6), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+  const [x, y] = [p(a), p(b)];
+  if (x.some(v => !Number.isFinite(v)) || y.some(v => !Number.isFinite(v))) return a;
+  return '#' + x.map((v, i) => Math.round(v + (y[i] - v) * t).toString(16).padStart(2, '0')).join('');
 }
 /** A darker stone for the scroll's coil, so the volute reads as carved. */
 function shade(hex: string, k: number): string {
@@ -379,7 +388,11 @@ function edgeAt(prof: readonly V2[], x: number): number {
  */
 function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>, prof: readonly V2[], f: number, e: number, d: ReturnType<typeof crownDims>, y0: number, trimHex: string, clear: readonly [number, number] | null): void {
   const S = ROW_STONE, { T, foot, neck } = d, bw = clamp(st.copingM ?? S.copingW, 0.1, 0.4);
-  for (const run of copingRuns(prof, foot)) stoneBand(s, run, f, e, S.overhang, bw, S.coping, S.back, trimHex);
+  // Weathered sandstone: the trim white drawn warm and a little darker, each piece its own value (a deterministic walk).
+  const base = mixHex(trimHex, ROW_STONE_WEATHER.hex, ROW_STONE_WEATHER.mix);
+  let k = 0;
+  const tone = () => shade(base, ROW_STONE_WEATHER.values[k++ % ROW_STONE_WEATHER.values.length]);
+  for (const run of copingRuns(prof, foot)) stoneBand(s, run, f, e, S.overhang, bw, S.coping, S.back, tone());
   const necked = c.shape === 'neck' || c.shape === 'bell';
   // The neck's upright sides (x = neck): their foot, and their top where the cap springs (the belt's bell steps in there).
   const upright = prof.filter(([x, y]) => Math.abs(Math.abs(x) - neck) < 0.02 && y > y0 + 0.05).map(([, y]) => y);
@@ -389,7 +402,7 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
     for (const sg of [-1, 1]) {
       // The claw: a broad band along the shoulder from the foot to the neck.
       const claw = prof.filter(([x, y]) => sg * x >= neck - 1e-3 && sg * x <= foot + 1e-6 && y <= neckFoot + 1e-3 && y > -1e-3);
-      if (claw.length >= 2) stoneBand(s, claw, f, e, 0, c.shape === 'bell' ? S.bellClaw : S.claw, S.clawProud, S.back * 0.5, trimHex);
+      if (claw.length >= 2) stoneBand(s, claw, f, e, 0, c.shape === 'bell' ? S.bellClaw : S.claw, S.clawProud, S.back * 0.5, tone());
       // The klauwstuk against a neck: a quarter round standing on the shoulder, its foot along the outline (a bell's
       // shoulders curve into its body and carry none).
       const w = clamp((foot - neck) * 0.35, 0.3, 0.75), ht = clamp((tN - neckFoot) * 0.3, 0.4, 0.9);
@@ -398,32 +411,32 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
         const under = prof.filter(([x, y]) => sg * x > neck + 1e-3 && sg * x < neck + w - 1e-3 && y > 0.01).sort((p, q) => sg * (p[0] - q[0]));
         const base = Math.max(ys, neckFoot - 0.05), arc: V2[] = [];
         for (let i = 0; i <= 8; i++) { const a = (i / 8) * Math.PI / 2; arc.push([sg * (neck + w * Math.cos(a)), base + ht * Math.sin(a)]); }
-        prism(s, [[sg * neck, neckFoot], ...under, [xs, ys], ...(base > ys + 1e-3 ? arc : arc.slice(1))], f, e, S.piece, S.back * 0.5, trimHex);
-        const rv = clamp(w * 0.28, 0.12, 0.22);
-        volute(s, f, e, xs - sg * rv * 0.4, base + rv * 0.9, rv, trimHex, S.piece + 0.03);
+        prism(s, [[sg * neck, neckFoot], ...under, [xs, ys], ...(base > ys + 1e-3 ? arc : arc.slice(1))], f, e, S.piece, S.back * 0.5, tone());
+        const rv = clamp(w * 0.28, 0.12, 0.22) * S.voluteK;
+        volute(s, f, e, xs - sg * rv * 0.4, base + rv * 0.9, rv, tone(), S.piece + 0.02);
       }
       // The claw's foot: a large volute where the shoulder meets the eaves.
-      const r = c.shape === 'bell' ? clamp((foot - neck) * 0.16, 0.16, 0.3) : clamp((foot - neck) * 0.2, 0.2, 0.42);
-      volute(s, f, e, sg * (foot - r - 0.02), y0 + r + 0.03, r, trimHex);
+      const r = (c.shape === 'bell' ? clamp((foot - neck) * 0.16, 0.16, 0.3) : clamp((foot - neck) * 0.2, 0.2, 0.42)) * S.voluteK;
+      volute(s, f, e, sg * (foot - r - 0.02), y0 + r + 0.03, r, tone());
     }
     // A stone band across the neck's foot, unless the crown's light or door stands there.
     const o = clear;
-    if (!o || neckFoot + S.band < o[0] - 0.1 || neckFoot > o[1] + 0.1) prism(s, [[-neck, neckFoot], [neck, neckFoot], [neck, neckFoot + S.band], [-neck, neckFoot + S.band]], f, e, S.clawProud, 0.02, trimHex);
+    if (!o || neckFoot + S.band < o[0] - 0.1 || neckFoot > o[1] + 0.1) prism(s, [[-neck, neckFoot], [neck, neckFoot], [neck, neckFoot + S.band], [-neck, neckFoot + S.band]], f, e, S.clawProud, 0.02, tone());
   }
   if (necked && d.cap > 0) {
     const capRim = prof.filter(([x, y]) => y >= tN - 1e-3 && Math.abs(x) <= neck + 1e-6);
     // The cap's moulding: a broad stone hood along its outline (the tympanum inside it stays brick).
-    if (capRim.length >= 2) stoneBand(s, capRim, f, e, S.overhang + 0.04, S.capBand, S.ledge, S.back, trimHex);
+    if (capRim.length >= 2) stoneBand(s, capRim, f, e, S.overhang + 0.02, S.capBand, S.ledge, S.back, tone());
     // The moulding the cap stands on: a ledge at the springing, overhanging the neck.
     const lw = neck + S.capOver;
-    prism(s, [[-lw, tN - 0.16], [lw, tN - 0.16], [lw, tN], [-lw, tN]], f, e, S.ledge, S.back, trimHex);
+    prism(s, [[-lw, tN - S.ledgeH], [lw, tN - S.ledgeH], [lw, tN], [-lw, tN]], f, e, S.ledge, S.back, tone());
   }
   // The spout's cap slab on its upright top.
   let top = Math.max(...prof.map(([, y]) => y)) + S.overhang;
   if (c.shape === 'spout') {
-    const hw = neck + S.overhang + 0.03;
-    prism(s, [[-hw, top], [hw, top], [hw, top + 0.12], [-hw, top + 0.12]], f, e, S.ledge, S.back, trimHex);
-    top += 0.12;
+    const hw = neck + S.overhang - 0.01;
+    prism(s, [[-hw, top], [hw, top], [hw, top + 0.08], [-hw, top + 0.08]], f, e, S.coping + 0.02, S.back, tone());
+    top += 0.08;
   }
   // A cap on a flat top: a pediment or a segmental arch standing on it.
   if ((c.shape === 'step' || c.shape === 'spout') && (st.crest === 'pediment' || st.crest === 'segmental')) {
@@ -431,15 +444,15 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
     if (st.crest === 'pediment') pts.push([0, top + rise]);
     else for (let i = 1; i < 12; i++) { const a = Math.PI * (1 - i / 12); pts.push([hw * Math.cos(a), top + rise * Math.sin(a)]); }
     pts.push([hw, top]);
-    prism(s, pts, f, e, S.cap, S.back, trimHex);
+    prism(s, pts, f, e, S.cap, S.back, tone());
     top += rise;
   }
   if (st.crest === 'crest') {
     // A crest over the apex: a pedestal and a stone ball (the finial on a step's top, the ornament on a bell's crest).
-    const hw = c.shape === 'step' ? 0.2 : 0.24;
-    prism(s, [[-hw, top - 0.02], [hw, top - 0.02], [hw * 0.8, top + 0.26], [-hw * 0.8, top + 0.26]], f, e, S.piece, 0.25, trimHex);
-    prism(s, disc(0, top + 0.26 + 0.18, 0.18), f, e, S.piece, 0.14, trimHex);
-    if (c.shape === 'bell') for (const sg of [-1, 1]) volute(s, f, e, sg * (hw + 0.16), top + 0.13, 0.15, trimHex, S.piece);
+    const hw = c.shape === 'step' ? 0.15 : 0.18;
+    prism(s, [[-hw, top - 0.02], [hw, top - 0.02], [hw * 0.8, top + 0.22], [-hw * 0.8, top + 0.22]], f, e, S.piece, 0.18, tone());
+    prism(s, disc(0, top + 0.22 + 0.14, 0.14), f, e, S.piece, 0.1, tone());
+    if (c.shape === 'bell') for (const sg of [-1, 1]) volute(s, f, e, sg * (hw + 0.12), top + 0.1, 0.11, tone(), S.piece);
   }
 }
 
