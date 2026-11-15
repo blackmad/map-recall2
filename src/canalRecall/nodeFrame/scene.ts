@@ -49,7 +49,11 @@ export type NodeView = {
 
 export type NodeFrameOptions = { root: string; cacheDir: string; log?: (s: string) => void; shadows?: boolean; models?: boolean; ground?: boolean; shells?: boolean };
 
-export type NodeFrameResult = { image: WorldImage; timings: Record<string, number>; counts: Record<string, number> };
+export type NodeFrameResult = {
+  image: WorldImage; timings: Record<string, number>; counts: Record<string, number>;
+  /** What is drawn at an output pixel: the draw's name (detail, shell/<cell>, model/<id>, type/<pand>, ground…) or null for sky. */
+  probe(x: number, y: number): string | null;
+};
 
 const ms = (t: number) => Math.round(performance.now() - t);
 
@@ -163,15 +167,35 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   };
   const types = opts.models !== false && fs.existsSync(typeFile) ? typeInstanceMatrices(gf, JSON.parse(fs.readFileSync(typeFile, 'utf8')), pointBase, (wx, wy) => Math.hypot(wx - eye[0], wy - eye[1]) < (view.aerial ? 1500 : 700) && inView(wx, wy, 40)) : [];
   for (const ti of types) for (const h of ti.hides) hidden.add(h);
+  // Installed models suppress their pands at load (the landmark layer's setHidden), not only through the cells' HIDE
+  // table: a model installed after the world compile (universiteitstheater at Nieuwe Doelenstraat) is in no HIDE yet.
+  const models = opts.models !== false ? await gameModels(root, view.lngLat, MODEL_RADIUS_M) : { specs: [] as ModelSpec[], held: [] as string[] };
+  for (const spec of models.specs as ModelSpec[]) {
+    const anchor = (spec.surveyed?.anchor ?? (spec as any).instance?.anchor ?? spec.footprint?.centre) as [number, number] | undefined;
+    if (!anchor || !spec.suppressOsmIds?.length) continue;
+    const [wx, wy] = worldOfLngLat(gf, anchor[0], anchor[1]);
+    if (Math.hypot(wx - eye[0], wy - eye[1]) > (view.aerial ? 2000 : MODEL_RADIUS_M)) continue;
+    for (const id of spec.suppressOsmIds) hidden.add(String(id));
+  }
   T.cells = ms(t); N.cells = cells.size; N.hidden = hidden.size; N.typeInstances = types.length;
 
   // ---- detail block -----------------------------------------------------------------------------------------------
   t = performance.now();
   const block = detailBlock(view.lngLat, fwd2, 16, null);
   const keys = new Set(block.keys);
-  const detail: any[] = [], detailIds = new Set<string>();
+  const detail: any[] = [], detailIds = new Set<string>(), kitParts: any[] = [];
+  // Landmark kits and measured fronts (landmarkKits.ts, landmarkFrontData.ts): the browser's KIT_KEY chunk, built from
+  // whichever of their parts are resident (threeBuildingsBrowser.ts buildKits); the parts a kit replaces draw nowhere else.
+  const { KIT_PART_IDS, KIT_HIDE_IDS } = await import('../landmarkKits.ts');
+  const { FRONT_PART_IDS } = await import('../landmarkFrontData.ts');
+  const kitHide = new Set(KIT_HIDE_IDS);
   for (const c of cells.values()) for (const b of c.buildings) {
     if (hidden.has(b.id)) continue;
+    if (KIT_PART_IDS.has(b.id) || FRONT_PART_IDS.has(b.id)) {
+      const r = ringOf(b.geometry as never);
+      if (view.aerial || r.some(p => { const w = worldOfLngLat(gf, p[0], p[1]); return inView(w[0], w[1], 60); })) kitParts.push(styledFeature(b, rawFeature(b)));
+    }
+    if (kitHide.has(b.id)) continue;
     const ring = ringOf(b.geometry as never);
     let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
     for (const p of ring) { x0 = Math.min(x0, p[0]); x1 = Math.max(x1, p[0]); y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); }
@@ -182,7 +206,14 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   }
   const { streets, profiles } = await streetInputs(root, view.lngLat, ORIGIN);
   const chunks = detail.length ? [buildFeatureChunk(detail, 'photo' as never, 'walls', streets, profiles), buildFeatureChunk(detail, 'photo' as never, 'extras', streets, profiles)] : [];
-  const byId = new Map(detail.map(f => [String(f.properties.id), f]));
+  if (kitParts.length) {
+    const { buildSpecialKits } = await import('../buildingSpecialChunks.ts');
+    const { BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLayer } = await import('../bayLook.ts');
+    // threeBuildingsBrowser.ts kitLayers('photo'): the bay cells, plain canal wall, flat and sloped roof layers after them.
+    chunks.push(buildSpecialKits(kitParts, 'photo' as never, { plain: bayLayer('canal', 0, 'plain'), flat: BAY_LAYER_COUNT + 3, slope: BAY_LAYER_COUNT + 1, fatihMasonry: FATIH_MASONRY_LAYER } as never) as never);
+  }
+  N.kitParts = kitParts.length;
+  const byId = new Map([...detail, ...kitParts].map(f => [String(f.properties.id), f]));
   for (const ch of chunks) {
     const ranges = new Map(ch.ranges.filter(r => r.id).map(r => [String(r.id), { start: r.start, count: r.count }]));
     liftRanges(ch.positions, ranges, [...ranges.keys()], new Map(), id => { const f = byId.get(id); return f ? baseOf(ringOf(f.geometry)) : null; }, Infinity, () => 0, 1, relief);
@@ -195,10 +226,13 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   const env: SurfaceEnv = { light, eye, focal, fog: fog.full };
   const look: ChunkLook = { atlas, light, wallGain: litFacadeWallGain(LOOK_VARIANTS.photo.litWallGain) * cityLitLevel(), cellTier: facadeTierUniform(dpr), focal, fog: fog.full };
   const draws: WorldDraw[] = [], casters: WorldDraw[] = [];
+  /** Detail draws' vertex ranges per building (the probe names the building under a pixel). */
+  const idRanges = new Map<WorldDraw, { id: string; start: number; count: number }[]>();
   for (const ch of chunks) {
     const pos = transformPositions(ch.positions, toWorld);
     const d: WorldDraw = { positions: pos, indices: ch.indices, material: chunkMaterial(look, ch, pos), cull: 'back', name: 'detail' };
     draws.push(d); casters.push(d);
+    idRanges.set(d, ch.ranges.filter(r => r.id).map(r => ({ id: String(r.id), start: r.start, count: r.count })));
   }
 
   // ---- shells -----------------------------------------------------------------------------------------------------
@@ -247,7 +281,7 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   t = performance.now();
   if (opts.models !== false) {
     const { placementFor } = await import('../landmarks/signaturePlacement.ts');
-    const { specs } = await gameModels(root, view.lngLat, MODEL_RADIUS_M);
+    const { specs } = models;
     const envL: SurfaceEnv = { ...env, fog: fog.limitOnly };
     let placed = 0;
     for (const spec of specs as ModelSpec[]) {
@@ -264,12 +298,12 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
       try { glb = await loadGlbFile(file); } catch (e) { log(`model ${spec.id}: ${(e as Error).message}`); continue; }
       const b = glbBounds(glb);
       let placement;
-      try { placement = placementFor(spec as never, { min: b.min, max: b.max }) as any; } catch { continue; }
+      try { placement = placementFor(spec as never, { min: b.min, max: b.max }) as any; } catch (e) { log(`model ${spec.id}: no placement (${(e as Error).message})`); continue; }
       const recentre: [number, number, number] = spec.surveyed ? [0, -b.min[1], 0] : [-(b.min[0] + b.max[0]) / 2, -b.min[1], -(b.min[2] + b.max[2]) / 2];
       // pointBase: the lowest relief within 3 m of the anchor (0 off the relief).
       const base = pointBase(placement.anchor);
       const M = modelMatrix(gf, placement, recentre, base);
-      for (const dr of modelDraws(glb, M, envL, `model/${spec.id}`)) { draws.push(dr); if (!dr.blend) casters.push(dr); }
+      for (const dr of modelDraws(glb, M, envL, `model/${spec.id}`, { atlas, year: typeof (spec as any).bagYear === 'number' ? (spec as any).bagYear : null, exposure: (spec as any).wallExposure ?? null })) { draws.push(dr); if (!dr.blend) casters.push(dr); }
       placed++;
     }
     N.models = placed;
@@ -277,7 +311,7 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
       const file = path.join(root, 'public/canal-drive/building-types', `${ti.inst.unit}.glb`);
       if (!fs.existsSync(file)) continue;
       const glb = await loadGlbFile(file);
-      for (const dr of modelDraws(glb, ti.M, envL, `type/${ti.inst.pand}`)) { draws.push(dr); if (!dr.blend) casters.push(dr); }
+      for (const dr of modelDraws(glb, ti.M, envL, `type/${ti.inst.pand}`, { atlas })) { draws.push(dr); if (!dr.blend) casters.push(dr); }
     }
   }
   T.models = ms(t);
@@ -296,7 +330,15 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
   const image = rasteriseWorld(draws, { eye, right: fr.right, up: fr.up, forward: fr.forward, focal, width: W, height: H, cx: W / 2, cy: (view.height / 2 - (view.window?.top ?? 0)) * dpr, glNear: Math.max(0.05, fr.distance / 120) }, { background: (_x, _y, _d, o) => { o[0] = sky[0]; o[1] = sky[1]; o[2] = sky[2]; } });
   T.raster = ms(t); T.total = ms(t0); T.cpu = Math.round((process.cpuUsage().user + process.cpuUsage().system - cpu0) / 1000);
   N.triangles = image.stats.triangles; N.drawn = image.stats.drawn; T.visibility = Math.round(image.stats.visibilityMs); T.resolve = Math.round(image.stats.resolveMs); T.blend = Math.round(image.stats.blendMs);
-  return { image, timings: T, counts: N };
+  const probe = (x: number, y: number) => {
+    const id = image.ids[Math.round(y) * image.width + Math.round(x)];
+    if (id < 0) return null;
+    const [di, tri] = image.locate(id), d = draws[di];
+    if (!d) return '?';
+    const v = d.indices[tri * 3], hit = idRanges.get(d)?.find(r => v >= r.start && v < r.start + r.count);
+    return hit ? `${d.name}/${hit.id}` : d.name ?? '?';
+  };
+  return { image, timings: T, counts: N, probe };
 }
 
 /** The chunk builder's street inputs: routing ways (roads-v2) and the street appearance catalogue, near the view. */

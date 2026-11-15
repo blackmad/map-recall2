@@ -21,6 +21,9 @@ import { texture2D, type Texture2D } from './texture.ts';
 import type { GeoFrame } from './frame.ts';
 import { worldOfLngLat } from './frame.ts';
 import type { WorldDraw } from './worldRaster.ts';
+import type { Atlas } from './atlas.ts';
+import type { WallExposure } from '../look/chunkWallExposure.ts';
+import { slotMaterial, slotPickFor } from './slotMaterial.ts';
 
 /** Earth's mean radius (maplibre's MercatorCoordinate). */
 const MEAN_RADIUS_M = 6371008.8;
@@ -94,7 +97,11 @@ export function modelMatrix(f: GeoFrame, placement: { anchor: readonly number[];
 const texCache = new WeakMap<object, Texture2D>();
 
 /** Draws of one placed GLB under the landmark look. `fog` is the landmark's (the limit ramp only, landmarkHaze). */
-export function modelDraws(g: GlbScene, M: number[], env: SurfaceEnv, name: string): WorldDraw[] {
+/** The city look on a model's slot materials (slotMaterial.ts): the facade atlas and the placement's BAG year / wall exposure. */
+export type ModelDress = { atlas: Atlas; year?: number | null; exposure?: WallExposure | null };
+
+export function modelDraws(g: GlbScene, M: number[], env: SurfaceEnv, name: string, dress?: ModelDress | null): WorldDraw[] {
+  const metres = Math.hypot(M[0], M[4], M[8]);
   const det = M[0] * (M[5] * M[10] - M[6] * M[9]) - M[1] * (M[4] * M[10] - M[6] * M[8]) + M[2] * (M[4] * M[9] - M[5] * M[8]);
   const flip = det < 0, draws: WorldDraw[] = [];
   for (const p of g.primitives) {
@@ -119,6 +126,12 @@ export function modelDraws(g: GlbScene, M: number[], env: SurfaceEnv, name: stri
     if (m.baseColorTexture) {
       map = texCache.get(m.baseColorTexture) ?? null;
       if (!map) { map = texture2D(m.baseColorTexture.rgba, m.baseColorTexture.width, m.baseColorTexture.height, false, false); texCache.set(m.baseColorTexture, map); }
+    }
+    const pick = dress ? slotPickFor(m, p, { year: dress.year, exposure: dress.exposure }) : null;
+    if (pick && dress) {
+      draws.push({ positions: pos, indices, cull: m.doubleSided ? 'none' : 'back', name,
+        material: slotMaterial(pick, dress.atlas, env, pos, nrm, p.uvs, { positions: p.positions, normals: p.normals, metres }) });
+      continue;
     }
     const glass = !m.unlit && GLASS_NAME.test(m.name);
     const spec: SurfaceSpec = {

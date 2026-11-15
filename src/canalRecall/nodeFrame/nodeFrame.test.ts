@@ -179,3 +179,15 @@ test('compareFrames: identical frames are perfect, a shifted edge still matches,
   assert.ok(recoloured.meanDE > 10);
   assert.ok(Math.abs(lab(255, 255, 255)[0] - 100) < 0.01);
 });
+
+test('slotPickFor: tagged and inferred slots take the city look, textured or unlit materials keep their own', async () => {
+  const { slotPickFor } = await import('./slotMaterial.ts');
+  const { slotLayerOf } = await import('../look/cityLook.ts');
+  const base = { name: 'wall', baseColor: [0.2, 0.1, 0.08, 1], emissive: [0, 0, 0], alphaMode: 'OPAQUE', alphaCutoff: 0.5, doubleSided: false, unlit: false, baseColorTexture: null, extras: {} } as never as Parameters<typeof slotPickFor>[0];
+  const tagged = slotPickFor({ ...base, extras: { materialSlot: 'brick', tint: '#7a3b2e' } } as never, { colors: null } as never, { year: 1700 });
+  assert.equal(tagged?.layer, slotLayerOf('brick', { year: 1700 }));
+  assert.ok(tagged && tagged.tint.every(v => v >= 0 && v <= 255));
+  assert.ok(slotPickFor({ ...base, name: 'glass' } as never, { colors: null } as never));
+  assert.equal(slotPickFor({ ...base, baseColorTexture: { rgba: new Uint8Array(4), width: 1, height: 1 } } as never, { colors: null } as never), null);
+  assert.equal(slotPickFor({ ...base, unlit: true } as never, { colors: null } as never), null);
+});

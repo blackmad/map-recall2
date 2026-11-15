@@ -4,7 +4,7 @@
  * beside the browser's files with the same pair layout (photo cut | game).
  *
  *   node --import tsx scripts/house-frames/node-frame.ts <frame dir | pose.json>... [--out <dir>] [--dpr 2]
- *        [--no-shadows] [--no-models] [--no-ground] [--no-shells] [--frame likeness|game]
+ *        [--no-shadows] [--no-models] [--no-ground] [--no-shells] [--frame likeness|game] [--probe x,y;x,y]
  *   node --import tsx scripts/house-frames/node-frame.ts --aerial <lng>,<lat>,<zoom>,<pitch>,<bearing>[,<w>,<h>] --out <dir>
  *        [--name <name>] [--dpr 1]   (an ingame-capture.ts view: jumpTo({center, zoom, pitch, bearing}), 1280 x 800)
  *
@@ -25,7 +25,7 @@ const { frameFor, fpsFor } = await import('./pose.ts');
 const args = process.argv.slice(2);
 const flag = (n: string) => args.includes(`--${n}`);
 const opt = (n: string, d: string) => { const i = args.indexOf(`--${n}`); return i >= 0 ? args[i + 1] : d; };
-const inputs = args.filter((a, i) => !a.startsWith('--') && !(i > 0 && /^--(out|dpr|frame|aerial|name)$/.test(args[i - 1])));
+const inputs = args.filter((a, i) => !a.startsWith('--') && !(i > 0 && /^--(out|dpr|frame|aerial|name|probe)$/.test(args[i - 1])));
 if (args.includes('--aerial')) {
   const { cameraFrame } = await import('../../src/canalRecall/ownMap/mapCamera.ts');
   const { isAerialView } = await import('../../src/canalRecall/rendererShared/aerialView.ts');
@@ -75,4 +75,6 @@ for (const input of inputs) {
       .composite([{ input: a.data, left: 0, top: 0 }, { input: b.data, left: a.info.width + 8, top: 0 }]).jpeg({ quality: 88 }).toFile(path.join(out, 'pair.node.jpg'));
   }
   console.log(`${key}: ${Math.round(performance.now() - t0)} ms`, JSON.stringify(r.timings), JSON.stringify(r.counts));
+  // --probe x,y[;x,y…] (output px): what each pixel shows, for tracing a difference to its layer.
+  if (args.includes('--probe')) for (const xy of opt('probe', '').split(';')) { const [x, y] = xy.split(',').map(Number); console.log(`  probe ${x},${y}: ${r.probe(x, y)}`); }
 }
