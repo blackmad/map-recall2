@@ -408,3 +408,84 @@ test('round 14: small-paned upper sashes on the stated cells, clear of the erker
   assert.equal(mullions({ panes: { cells: 3 }, attic: {} }), 3 * 3, 'not in the attic storey');
   assert.equal(mullions({ panes: { cells: 3 }, erkers: [{ a0: 0.35, a1: 0.65, depthM: 0.6, faceM: 1.6, storeys: 1 }] }), 4 * 3 - 1, 'the middle cell under a one-storey oriel');
 });
+
+// Round 15 (lane R): canted fronts. Named regressions: Europaplein 0363100012145394 and Patroclosstraat 0363100012133916,
+// corner members whose row box faced the side street (no kit on their front); Amstelkade 0363100012105304 and
+// 0363100012078745, block joints BAG draws as folds out of the front line.
+test('round 15: cantsOf reads Amstelkade\'s folds; a box erker is no cant', async () => {
+  const { cantsOf, cantsValid } = await import('./frontKit.js');
+  // 105304's profile (BAG, front 12.9 m): flat to 11.5 m, out to 0.53 m at 12.4 m, back to the line at the party wall.
+  const A = XY(12.9, 0), B = XY(0, 0), n = XY(0, 1), at = (t: number, o: number) => XY(12.9 - t, o);
+  const fold = [at(0, 0), at(11.5, 0), at(11.9, 0.2), at(12.1, 0.37), at(12.4, 0.53), at(12.6, 0.47), at(12.8, 0.3), at(12.9, 0.09), at(12.9, -0.02), at(12.7, -7.3), at(-1.9, -6.6)];
+  const [c] = cantsOf(fold, A, B, n);
+  assert.deepEqual([c.a0, c.ap, c.a1, c.outM], [+(11.5 / 12.9).toFixed(4), +(12.4 / 12.9).toFixed(4), 1, 0.53]);
+  // 078745: one cheek, rising to 0.46 m at the party wall (its neighbour carries the V on): the ridge at the end.
+  const cheek = [at(0, 0), at(5.4, 0), at(5.7, 0.2), at(6.0, 0.37), at(6.4, 0.46), at(6.4, -10.2), at(0, -10.2)].map(p => XY(p.x - 6.5, p.y));
+  const [h] = cantsOf(cheek, XY(6.4, 0), XY(0, 0), n);
+  assert.deepEqual([h.ap, h.a1, h.outM], [1, 1, 0.46]);
+  // A box erker (a face 1.3 m wide at its depth, steps at its sides) is not a cant.
+  assert.equal(cantsOf(ring, XY(8, 0), XY(0, 0), XY(0, 1)).length, 0);
+  assert.deepEqual(cantsValid([{ a0: 0.9, ap: 0.95, a1: 1, outM: 0.5, x: 1 }, { a0: 0.5, ap: 0.4, a1: 0.6, outM: 0.5 }]), [{ a0: 0.9, ap: 0.95, a1: 1, outM: 0.5 }]);
+});
+
+test('round 15: the kit draws a cant as a brick prism from the pavement to the line; the straightened wall takes its span', async () => {
+  const { buurtKitOf } = await import('./frontKit.js');
+  const front = buurtKitOf({ frontLine: line, erkers: [], cants: [{ a0: 0.8, ap: 0.9, a1: 1, outM: 0.5 }] })!;
+  assert.ok(kitWantsCoping(front));
+  const k = buurtRoofKitFor(front, 12.4, 4, 3.2)!;
+  assert.deepEqual([k.cants?.length, k.footZ], [1, -12.4]);
+  const s = sink(); drawKitFront(s, k, L4, W4, 1);
+  const zs = s.out.flatMap(t => t.p.map(q => q[2])), os = s.out.flatMap(t => t.p.map(q => q[0] - L4 / 2));
+  assert.ok(Math.abs(Math.min(...zs) + 12.4) < 1e-9 && Math.max(...zs) <= 0, 'pavement to the line');
+  assert.ok(Math.abs(Math.max(...os) - 0.5) < 1e-9, 'its ridge 0.5 m out');
+  // Its vertices in front of the line straighten as an erker's do.
+  const bump = [XY(0, -10), XY(8, -10), XY(8, 0), XY(1.6, 0), XY(0.8, 0.5), XY(0, 0)];
+  const st = straightenRing([...bump.map(ll), ll(bump[0])], line, [{ a0: 0.8, a1: 1, depthM: 0.5, faceM: 0 }]);
+  assert.equal(st.length, 5, 'one front run');
+});
+
+test('round 15: a row box squared to the kit\'s street normal when it faces a side street (corner members); otherwise untouched', async () => {
+  const { frontNormalOf } = await import('./frontKit.js');
+  process.env.ROW_FRONT = '1'; resetRowFront();
+  const g = globalThis as { __canalRecallBuurtKit?: boolean };
+  const flat = { ...series, roofStorey: { kind: 'none' as const, dormers: [] } };
+  const make = (pandId: string, pts: Array<{ x: number; y: number }>, fl: [LngLat, LngLat]) => ({
+    rec: { ...rec(pandId, { frontLine: fl, erkers: [], ribbon: true, copingHex: '#5b504a' }), series: flat } as RowFrontRecord,
+    feat: { type: 'Feature', properties: <Record<string, unknown>>{ id: `NL.IMBAG.Pand.${pandId}`, height: 16, minHeight: 0, facade: 'school', facadeStyle: 'school', constructionYear: 1929 },
+      geometry: { type: 'Polygon', coordinates: [[...pts.map(ll), ll(pts[0])].map(p => [...p])] } } });
+  // Europaplein 145394's shape: 12 m of front (y = 0, street +y), 8 m deep, so the fitted box's long axis runs along it.
+  const wide = make('0363100012145394', [XY(0, -8), XY(12, -8), XY(12, 0), XY(0, 0)], [ll(XY(12, 0)), ll(XY(0, 0))]);
+  // Patroclosstraat 133916's: a skewed quadrilateral, 9 m of front, its party walls off square, the back wider.
+  const skew = make('0363100012133916', [XY(0, 0), XY(-2.5, -11), XY(10.5, -9), XY(9, 0)], [ll(XY(9, 0)), ll(XY(0, 0))]);
+  // A deep member (6 m front, 12 deep): its box faces the street already.
+  const deep = make('0363100012000003', [XY(0, -12), XY(6, -12), XY(6, 0), XY(0, 0)], [ll(XY(6, 0)), ll(XY(0, 0))]);
+  try {
+    setRowFrontRecords([wide.rec, skew.rec, deep.rec]);
+    g.__canalRecallBuurtKit = true;
+    const dims = { bayM: 2, storeyM: 3, cellM: 1 };
+    // A corner: the side street (west, -x) is nearer than the front street (north, +y), so the facing box picks the side.
+    const corner = (w: { nx: number; ny: number }) => w.nx < -0.7 ? 2 : w.ny > 0.7 ? 5 : Infinity;
+    const frontOnly = (w: { nx: number; ny: number }) => w.ny > 0.7 ? 5 : Infinity;
+    const tris = (f: any, keepN = true, facing: typeof corner | null = corner) => {
+      const on = withRowFront(f) as any;
+      if (!keepN) delete on.properties.rowRoof.frontN;
+      const o = on.geometry.coordinates[0];
+      return roofTrianglesForOutline(o, { lng: o[0][0], lat: o[0][1] }, roofPlanForFeature(on)!, 12.4, dims, KX, facing ?? undefined);
+    };
+    const frontSide = (ts: ReturnType<typeof tris>, o: number[]) => {
+      // The kit's triangles in metres from the feature's first vertex: their mean must stand on the front (y ≈ 0).
+      const k = ts.filter(t => t.kit), ps = k.flatMap(t => t.p);
+      const y = ps.reduce((a, p) => a + p[1], 0) / ps.length + (o[1] - LAT0) * KY;
+      return { n: k.length, y };
+    };
+    assert.deepEqual(frontNormalOf([ll(XY(12, 0)), ll(XY(0, 0))]), [0, 1]);
+    for (const m of [wide, skew]) {
+      const o = (m.feat.geometry.coordinates[0][0]) as number[];
+      const turned = frontSide(tris(m.feat), o), before = frontSide(tris(m.feat, false), o);
+      assert.ok(turned.n > 0 && Math.abs(turned.y) < 1, `${m.rec.pandId}: the kit on its front (y ${turned.y.toFixed(2)})`);
+      assert.ok(Math.abs(before.y) > 1, `${m.rec.pandId}: without the normal it stood elsewhere (y ${before.y.toFixed(2)})`);
+    }
+    assert.equal(JSON.stringify(tris(deep.feat, true, frontOnly)), JSON.stringify(tris(deep.feat, false, frontOnly)), 'a box facing the street: byte-identical');
+    for (const m of [wide, skew, deep]) assert.equal(JSON.stringify(tris(m.feat, true, null)), JSON.stringify(tris(m.feat, false, null)), `${m.rec.pandId}: no street facing, byte-identical`);
+  } finally { delete g.__canalRecallBuurtKit; process.env.ROW_FRONT = '0'; resetRowFront(); setRowFrontRecords([]); }
+});

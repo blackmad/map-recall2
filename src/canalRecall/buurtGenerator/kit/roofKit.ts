@@ -12,7 +12,7 @@
  *    BAG outline has it (frontKit.ts `erkersOf`), never by dice.
  */
 import type { RoofSink, V3 } from '../../roofSink.js';
-import { balconiesOf, entriesOf, erkerRowsOf, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, KIT_FLAT_RISE_M, type BuurtEntry, type BuurtErker, type KitAttic, type KitBalcony, type KitEaves, type KitPanes, type KitRaised } from './frontKit.js';
+import { balconiesOf, cantsValid, entriesOf, erkerRowsOf, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, KIT_FLAT_RISE_M, type BuurtEntry, type BuurtErker, type KitAttic, type KitBalcony, type KitCant, type KitEaves, type KitPanes, type KitRaised } from './frontKit.js';
 
 export interface BuurtRoofKit {
   /** Street slope pitch (degrees): the row mansard's band becomes a pitched roof face. Absent: the stock band. */
@@ -53,6 +53,8 @@ export interface BuurtRoofKit {
   balconies?: KitBalcony[];
   /** Small-paned upper sashes (round 14): `drawPanes`. */
   panes?: KitPanes;
+  /** Canted folds (round 15): `drawCants`, from `footZ` (the pavement under the line). */
+  cants?: KitCant[];
 }
 export type KitSide = 'pier' | 'pair';
 
@@ -135,12 +137,12 @@ export function buurtRoofKitOf(v: unknown): BuurtRoofKit | null {
   const sd = k.sides as { left?: unknown; right?: unknown } | undefined, side = (x: unknown): KitSide | null => x === 'pier' || x === 'pair' ? x : null;
   const sides = sd && typeof sd === 'object' ? { ...(side(sd.left) ? { left: side(sd.left)! } : {}), ...(side(sd.right) ? { right: side(sd.right)! } : {}) } : {};
   const entries = entriesOf(k.entries), gz = Number(k.groundZ);
-  const eaves = kitEavesOf(k.eaves), attic = kitAtticOf(k.attic), raised = raisedOf(k.raised), fz = Number(k.footZ), balconies = balconiesOf(k.balconies), panes = kitPanesOf(k.panes);
+  const eaves = kitEavesOf(k.eaves), attic = kitAtticOf(k.attic), raised = raisedOf(k.raised), fz = Number(k.footZ), balconies = balconiesOf(k.balconies), panes = kitPanesOf(k.panes), cants = cantsValid(k.cants);
   return { ...(pitch > 10 && pitch < 80 ? { pitchDeg: pitch } : {}), ...(hex ? { roofHex: hex } : {}), ...(dormer ? { dormer } : {}), erkers, z0: Number(k.z0), storeyM: Number(k.storeyM), rows: Math.round(Number(k.rows)), capM: Number(k.capM),
     ...(joins.left || joins.right ? { joins } : {}), ...(k.ribbon === true ? { ribbon: true as const } : {}), ...(k.rhythm === true ? { rhythm: true as const } : {}),
     ...(sides.left || sides.right ? { sides } : {}), ...(eaves ? { eaves } : {}), ...(k.erkerBands === true ? { erkerBands: true as const } : {}), ...(k.loggias === true ? { loggias: true as const } : {}),
     ...(entries.length && gz < 0 ? { entries, groundZ: gz } : {}), ...(attic ? { attic } : {}), ...(raised.length && fz < 0 ? { raised, footZ: fz } : {}),
-    ...(balconies.length ? { balconies } : {}), ...(panes ? { panes } : {}) };
+    ...(balconies.length ? { balconies } : {}), ...(panes ? { panes } : {}), ...(cants.length && fz < 0 ? { cants, footZ: fz } : {}) };
 }
 
 /**
@@ -253,7 +255,7 @@ export const erkerCapOf = (front: { roof?: unknown }): number => front.roof ? ER
 
 /** The roof kit a member's front kit asks for: its erkers over the upper storeys (the series' ground and storey lines,
  *  rowFront.ts rowGroundM) and the series pitch. `topM` is the series line, `groundM` the ground storey's top. */
-export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg: number; riseM?: number; roofHex?: string; dormers?: false; eavesM?: number; eavesFrieze?: false }; ribbon?: true; attic?: KitAttic; raised?: KitRaised[]; rhythm?: true; sides?: { left?: KitSide; right?: KitSide }; copingHex?: string; erkerBands?: true; loggias?: true; joins?: { left?: boolean; right?: boolean }; eaves?: KitEaves; entries?: BuurtEntry[]; balconies?: KitBalcony[]; panes?: KitPanes }, topM: number, storeys: number, groundM: number): BuurtRoofKit | null {
+export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg: number; riseM?: number; roofHex?: string; dormers?: false; eavesM?: number; eavesFrieze?: false }; ribbon?: true; attic?: KitAttic; raised?: KitRaised[]; rhythm?: true; sides?: { left?: KitSide; right?: KitSide }; copingHex?: string; erkerBands?: true; loggias?: true; joins?: { left?: boolean; right?: boolean }; eaves?: KitEaves; entries?: BuurtEntry[]; balconies?: KitBalcony[]; panes?: KitPanes; cants?: KitCant[] }, topM: number, storeys: number, groundM: number): BuurtRoofKit | null {
   const rows = Math.max(1, storeys - 1), storeyM = (topM - groundM) / rows;
   if (!(storeyM > 1.5) || !(groundM > 1.5)) return null;
   // The broad eaves: the pitched roof's (round 4), else a flat series' own (round 7).
@@ -268,11 +270,12 @@ export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg
     ...(front.erkerBands && front.erkers.length ? { erkerBands: true as const } : {}), ...(front.loggias ? { loggias: true as const } : {}),
     ...(front.entries?.length ? { entries: front.entries.map(x => ({ ...x })), groundZ: +(-topM).toFixed(3) } : {}), ...(front.attic ? { attic: { ...front.attic } } : {}),
     ...(front.raised?.length ? { raised: front.raised.map(x => ({ ...x })), footZ: +(-topM).toFixed(3) } : {}),
-    ...(front.balconies?.length ? { balconies: front.balconies.map(x => ({ ...x })) } : {}), ...(front.panes ? { panes: { ...front.panes } } : {}) };
+    ...(front.balconies?.length ? { balconies: front.balconies.map(x => ({ ...x })) } : {}), ...(front.panes ? { panes: { ...front.panes } } : {}),
+    ...(front.cants?.length ? { cants: front.cants.map(x => ({ ...x })), footZ: +(-topM).toFixed(3) } : {}) };
 }
 
 /** Whether the kit draws anything on the street end (the roof hook runs `drawKitFront` then). */
-export const kitDrawsFront = (k: BuurtRoofKit): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.eaves || k.sides || k.loggias || k.entries?.length || k.balconies?.length || k.panes);
+export const kitDrawsFront = (k: BuurtRoofKit): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.eaves || k.sides || k.loggias || k.entries?.length || k.balconies?.length || k.panes || k.cants?.length);
 
 /** Everything the kit draws on the street end `e` of a row roof box (L deep, W wide), in drawing order. */
 export function drawKitFront(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
@@ -287,7 +290,30 @@ export function drawKitFront(s: RoofSink, kit: BuurtRoofKit, L: number, W: numbe
   if (kit.balconies?.length) drawBalconies(s, kit, L, W, e);
   if (kit.entries?.length) drawEntries(s, kit, L, W, e);
   if (kit.raised?.length) drawRaised(s, kit, L, W, e);
+  if (kit.cants?.length) drawCants(s, kit, L, W, e);
 }
+
+/** The canted folds (round 15, KitCant; Amstelkade): a brick prism from the pavement (`footZ`) to the line over each,
+ *  its cheeks from the wall to the ridge at `ap`, a top on it; a ridge at a party wall the neighbour carries on, unless
+ *  the side is free (no join), where a return closes it. */
+export function drawCants(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
+  const P = (c: number, o: number, z: number): V3 => [e * (L / 2 + o), e * c, z], z0 = kit.footZ ?? kit.z0 - 3, z1 = -0.02;
+  for (const k of kit.cants ?? []) {
+    const c0 = (k.a0 - 0.5) * W, cp = (k.ap - 0.5) * W, c1 = (k.a1 - 0.5) * W, o = k.outM, b = PLATE_O - 0.02;
+    const face = (ca: number, oa: number, cb: number, ob: number) => {
+      const l = Math.hypot(cb - ca, ob - oa);
+      if (l < 0.02) return;
+      // Its outward hint: the face's normal in the (c, o) plane, towards the street side.
+      const nc = -(ob - oa) / l, no = (cb - ca) / l;
+      s.quad(P(ca, oa, z0), P(cb, ob, z0), P(cb, ob, z1), P(ca, oa, z1), s.wallUv(0, z0), s.wallUv(l, z0), s.wallUv(l, z1), s.wallUv(0, z1), 'plate', [e * no, e * nc, 0]);
+    };
+    face(c0, b, cp, o); face(cp, o, c1, b);
+    const atL = k.ap <= 0.0001, atR = k.ap >= 0.9999;
+    if ((atL && !kit.joins?.left) || (atR && !kit.joins?.right)) face(atR ? cp : cp, atR ? o : b, atR ? cp : cp, atR ? b : o);
+    s.tri(P(c0, b, z1), P(cp, o, z1), P(c1, b, z1), [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], kit.roofHex ?? '#6b6560');
+  }
+}
+
 
 /** A raised part's box behind the wall (m: it reads as a block, not a sheet, over the roof) and its coping. */
 export const RAISED_LOOK = { backM: 0.35, copingM: 0.08, copingOutM: 0.04 } as const;

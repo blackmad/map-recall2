@@ -13,7 +13,7 @@ import { variedTone, type JudgedFamily } from '../houseSpec/judgedColour.ts';
 import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
-import { districtRows, ROW_EAVES_STEP_M, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
+import { districtRows, ROW_EAVES_STEP_M, type GenMember, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
 import { erkersOnCells, type BuurtEntry, type BuurtErker, type BuurtKitFront } from './kit/frontKit.ts';
 
 export interface DistrictDesign {
@@ -368,7 +368,9 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
     // Round 10: the flat series' coping is the series', not the member's: when any drawn member hangs something on its
     // front (ribbon, erkers, eaves, entrance), every member draws it, so the roof line runs through (David on
     // Hunzestraat: the erker members' coping stood 0.55 m over their neighbours').
-    const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || mm.front.erkers.length || note?.erkers?.[pandNumber(mm.pand.id).slice(-6)]?.length || lib.flatEaves || entryAt(r.members.indexOf(mm))));
+    // Round 15: a cant is drawn by the kit, so BAG's erker over the same run (a fold read as a bay) goes.
+    const bayErkers = (f: GenMember['front']) => f.cants ? f.erkers.filter(k => !f.cants!.some(c => k.a1 > c.a0 + 0.01 && k.a0 < c.a1 - 0.01)) : f.erkers;
+    const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || bayErkers(mm.front).length || mm.front.cants?.length || note?.erkers?.[pandNumber(mm.pand.id).slice(-6)]?.length || lib.flatEaves || entryAt(r.members.indexOf(mm))));
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
       if (!drawn.has(pid)) continue;
@@ -376,16 +378,16 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
       const r6 = (q: readonly [number, number]): [number, number] => [+q[0].toFixed(8), +q[1].toFixed(8)];
       const i = r.members.indexOf(m), joins = { ...(i > 0 && drawn.has(pandNumber(r.members[i - 1].pand.id)) ? { left: true } : {}), ...(i < r.members.length - 1 && drawn.has(pandNumber(r.members[i + 1].pand.id)) ? { right: true } : {}) };
       // Erkers on the series' cells (frontKit.ts erkersOnCells): the series draws `bays` cells on every member.
-      const erkers = erkersFor(pid, erkersOnCells(m.front.erkers, bays, m.front.lengthM, fam?.design?.windowShare ?? lib.design.windowShare));
+      const erkers = erkersFor(pid, erkersOnCells(bayErkers(m.front), bays, m.front.lengthM, fam?.design?.windowShare ?? lib.design.windowShare));
       kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers,
         ...(rise !== null && pv ? { roof: { pitchDeg: pv.pitchDeg, riseM: rise, ...(roofHex ? { roofHex } : {}), ...(pv.dormersPerFront === 0 ? { dormers: false as const } : {}), ...(pv.eavesM ? { eavesM: pv.eavesM, ...(pv.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } } : {}),
         ...(fam?.kit?.rhythm ? { rhythm: true as const } : {}),
         ...(fam?.kit?.piers && (joins.left || joins.right) ? { sides: { ...(joins.left ? { left: pierAfter(i - 1) ? 'pier' as const : 'pair' as const } : {}), ...(joins.right ? { right: pierAfter(i) ? 'pier' as const : 'pair' as const } : {}) } } : {}),
         ...(fam?.kit?.sash ? { sash: fam.kit.sash.value } : {}), ...(fam?.kit?.ribbon ? { ribbon: true as const } : {}),
-        ...((bands || whiteErker(pid)) && (m.front.erkers.length || note?.erkers?.[pid.slice(-6)]?.length) ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
+        ...((bands || whiteErker(pid)) && (bayErkers(m.front).length || note?.erkers?.[pid.slice(-6)]?.length) ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
         ...(rise === null && seriesCoping && coping ? { copingHex: coping } : {}),
         ...(rise === null && lib.flatEaves ? { eaves: { overhangM: lib.flatEaves.eavesM, ...(lib.flatEaves.frieze === false ? { frieze: false as const } : {}) } } : {}),
-        ...(entryAt(i) ? { entries: [entryAt(i)!] } : {}),
+        ...(entryAt(i) ? { entries: [entryAt(i)!] } : {}), ...(m.front.cants ? { cants: m.front.cants.map(c => ({ ...c })) } : {}),
         ...(joins.left || joins.right ? { joins } : {}) });
     }
   }
