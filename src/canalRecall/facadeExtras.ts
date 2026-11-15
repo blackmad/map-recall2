@@ -329,7 +329,9 @@ export function buildingWallExtras(contexts: readonly ExtraContext[], sink: Extr
   // House rows (lane R): a series member's street wall carries its stated heads and cornice (EXTRA_BUDGET.rowWall);
   // without a row dressing the building budget is unchanged.
   const rowWalls = ordered.filter(({ c }) => c.rowDress && isStreetWall(c)).length;
-  if (rowWalls) sink.budget = Math.max(sink.budget, Math.min(sink.tris.length + rowWalls * EXTRA_BUDGET.rowWall, EXTRA_BUDGET.building + 2 * EXTRA_BUDGET.rowWall));
+  // A kinked front (Kinkerstraat 126-138: three street walls and a side street) spent the two-wall cap on its first walls,
+  // and the gable axes' arch rings on its last wall never drew (round 4): the cap grows with the row walls past two.
+  if (rowWalls) sink.budget = Math.max(sink.budget, Math.min(sink.tris.length + rowWalls * EXTRA_BUDGET.rowWall, EXTRA_BUDGET.building + Math.max(2, rowWalls) * EXTRA_BUDGET.rowWall));
   // A HouseSpec's stated parts (route A fields, houseSpec/routeAFields.ts) dress on every wall before any wall's dice trim
   // spends the building budget: Weteringschans 171192's stated bands never reached its 6.3 m front after two short street
   // walls had spent it (lane WG step 3). Absent `statedFirst`, nothing changes.

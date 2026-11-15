@@ -610,6 +610,9 @@ export function withRowFront<T extends Feature>(feature: T): T {
     // A stated gable (house rows round 3: RowDesign.gable) is the same step on the gabled front's span.
     const raised = sr2 ? rowRaisedFronts(rec, top) ?? rowGableFront(rec, top) : null;
     if (sr2 && raised) sr2.subFronts = raised;
+    // The raised fronts and the stated heads belong to the row's own street run: a corner member (126-138, 23 m down
+    // the side street) keeps them off its other run by the member's width (runTakesTrace).
+    if (sr2 && raised && rec.spanM && !sr2.frontSpanM) sr2.frontSpanM = rec.spanM;
     const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...(rec.series.shop !== undefined ? { specShop: rec.series.shop } : {}), ...(rec.series.look ? { rowLook: rec.series.look } : {}), ...lv };
     if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
       rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}), ...(mansard.frontM ? { frontM: mansard.frontM } : {}) } });
