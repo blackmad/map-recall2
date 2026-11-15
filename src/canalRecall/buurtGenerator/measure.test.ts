@@ -2,7 +2,7 @@
 // balance on the trim, warm median, the vote across captures) and the roof form from the AHN DSM.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { isFoliage, labOf, localFront, roofFormOf, visibleAlong, voteWall, wallBrickOf, whiteRefOf, type RoofCell, type WallRead } from './measure.js';
+import { HUE_GUARD, hueGuard, isFoliage, labOf, localFront, roofFormOf, visibleAlong, voteWall, wallBrickOf, whiteRefOf, type RoofCell, type WallRead } from './measure.js';
 import { oklab } from '../retailPuiPaint.js';
 
 test('foliage: green counts, yellow brick does not', () => {
@@ -80,4 +80,23 @@ test('a bent row is read on the straight run nearest the camera, not its chord',
   assert.ok(Math.abs(lf.a.y) < 1e-9 && Math.abs(lf.b.y) < 1e-9, 'on the straight leg');
   assert.ok(Math.abs(Math.abs(lf.offM) - 15) < 1e-9, 'offset is the camera distance off the run');
   assert.equal(localFront([], { x: 0, y: 0 }), null);
+});
+
+test('hue guard: the white balance moves a read at most 12 deg toward red, and a grey raw read never lands pink-mauve', () => {
+  const at = (L: number, C: number, h: number): [number, number, number] => [L, C * Math.cos((h * Math.PI) / 180), C * Math.sin((h * Math.PI) / 180)];
+  const hueOf = (l: readonly number[]) => ((Math.atan2(l[2], l[1]) * 180) / Math.PI + 360) % 360;
+  // Within the shift: untouched.
+  assert.deepEqual(hueGuard(at(0.5, 0.03, 50), at(0.4, 0.03, 58)), { lab: at(0.5, 0.03, 50), guard: null });
+  // Toward yellow is not guarded.
+  assert.equal(hueGuard(at(0.5, 0.03, 70), at(0.4, 0.03, 40)).guard, null);
+  // A brown raw read pushed red: held at raw - 12, balanced L and C kept.
+  const g = hueGuard(at(0.5, 0.03, 30), at(0.4, 0.02, 60));
+  assert.equal(g.guard, 'raw');
+  assert.ok(Math.abs(hueOf(g.lab) - 48) < 1e-6 && g.lab[0] === 0.5 && Math.abs(Math.hypot(g.lab[1], g.lab[2]) - 0.03) < 1e-9);
+  // A grey raw read (no hue to keep) pushed to mauve: floored at 36 deg (Rubensstraat 102986: raw h197 C0.005, balanced h355).
+  const f = hueGuard(at(0.45, 0.02, 355), at(0.3, 0.005, 197));
+  assert.equal(f.guard, 'floor');
+  assert.ok(Math.abs(hueOf(f.lab) - HUE_GUARD.floorH) < 1e-6);
+  // A grey raw read pushed to a plausible brown stays.
+  assert.equal(hueGuard(at(0.45, 0.02, 50), at(0.3, 0.005, 197)).guard, null);
 });
