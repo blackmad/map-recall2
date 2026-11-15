@@ -939,3 +939,26 @@ requests (6 MB) were fetched. One fresh opus judge per street; the sheets and ke
 Round 11 wins 5/7. Most wins come from the residential ground floor, which round 9's published records drew as shop
 glazing, rather than from this round's line and hue changes. Colour is still the most-named gap: grey or grey-green
 where the photo is warm. The hue guard keeps reads out of pink-mauve but cannot recover the warmth of a grey raw read.
+
+### Round 12 (lane R round 14 fields; corner members)
+
+- **Lane R's round 14 fields, emitted from `rowNotes.members`** (per pand), validated by the kit's own readers:
+  - `balconies [{a0,a1,from?,storeys?,depthM?,rail?}]`: Achillesstraat states `rail: 'dark'` (11 balconies);
+  - `entries` with kind `porch | portiek | arched`, `widthM`, `doorHex`; `cells` defaults to the member's bays;
+  - `panes {cells, rows?, paneM?, share?, widthShare?}`: Apollo 25 members.
+  - Counts: Rivierenbuurt 4 new entries; Apollo 11 balconies, 25 panes, 11 entries. Records still 2495 / 1672.
+- **Corner members drew no kit on their front** (Europaplein 0363100012145394, Patroclosstraat 0363100012133916).
+  - Cause: the row roof box (`roofMesh.ts rowRoofBox`) faces the nearest street wall. On a corner that is the side
+    street. Every kit part draws on the box's street end, so the attic, lid, piers, entries, panes and dormer all
+    stood on the side wall. Node renders of each face confirmed it.
+  - 145394 stated no front width at all (a flat series has no mansard `frontM`). 133916 stated 9.01 m, but its 8.0 m
+    side fell inside the loose tolerance of max(1.5 m, 30 %).
+  - Fix: a kit record states its front width from its own front line (`kitFrontM`), and a kit roof box matches it
+    within 0.5 m (`ROW_FRONT_MATCH.kitM`). Mid-row members are unchanged: no other wall sees a street, so the
+    nearest box stays.
+  - Named regression: `kit.test.ts` "corner members (Europaplein 145394, Patroclosstraat 133916)". It fails without
+    the fix, because the kit lands on the 8 m side.
+  - Still open: a near-square corner (front and side within 0.5 m) cannot be told apart by width. A bearing-based
+    match would need the mesh frame's orientation.
+- **Known gap, Kuinderstraat:** the five-storey family's ribbon and piers poke over the white lid. The photo also has
+  separate top windows. Both are lane R's kit.
