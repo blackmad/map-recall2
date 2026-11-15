@@ -4,7 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { erkersOf, erkersOnCells, straightenRing, KIT_MULLION_SHARE, type BuurtKitFront, type LngLat } from './frontKit.js';
-import { buurtRoofKitFor, drawKitFront, kitDrawsFront, EAVES_LOOK, KIT_DORMER, PIER_LOOK, RIBBON_LOOK, pitchBandM, type BuurtRoofKit } from './roofKit.js';
+import { buurtRoofKitFor, drawKitFront, kitDrawsFront, EAVES_LOOK, LOGGIA_LOOK, KIT_DORMER, PIER_LOOK, RIBBON_LOOK, pitchBandM, type BuurtRoofKit } from './roofKit.js';
 import { RoofSink } from '../../roofSink.js';
 import { kitWantsCoping } from './frontKit.js';
 import { bayDoorGeometry, variantKey, type BayVariant } from '../../bayTextures.js';
@@ -91,8 +91,8 @@ test('row roof hook: the pitch sets the street band, erkers stand past the walls
 // ribbon, the paired mullion and the portiek door. Everything is behind the kit; existing variants keep their keys.
 
 test('erkersOnCells: a whole erker takes the cells it reaches into, a half one at a party wall one cell', () => {
-  // Biesboschstraat 077118: BAG's 2.1 m base at 0.47-0.73 of a 7.95 m four-cell front, 0.66 m deep, canted.
-  const [e] = erkersOnCells([{ a0: 0.47, a1: 0.73, depthM: 0.66, faceM: 1.0 }], 4, 7.95);
+  // A 2.1 m base at 0.30-0.56 of a 7.95 m four-cell front, 0.66 m deep, canted: the middle two cells.
+  const [e] = erkersOnCells([{ a0: 0.3, a1: 0.56, depthM: 0.66, faceM: 1.0 }], 4, 7.95);
   assert.equal(+(e.a1 - e.a0).toFixed(2), 0.5, 'two cells');
   assert.equal(e.faceM, 2.19, 'canted: 55 % of the 4 m base, near the photo 2.0 m');
   const [h] = erkersOnCells([{ a0: 0, a1: 0.3, depthM: 0.8, faceM: 1.4 }], 4, 8);
@@ -207,4 +207,36 @@ test('eaves: the lattice frieze on the line and the white slab over it, end caps
   assert.deepEqual([Math.min(...fy), Math.max(...fy)], [-W4 / 2 - 0.9, W4 / 2 + 0.9], 'free: returned round the ends');
   assert.equal(free.out.length - joined.out.length, 4, 'two end caps');
   assert.ok(joined.out.some(t => t.hex === EAVES_LOOK.dark), 'the frieze openings');
+});
+
+// Round 5: a whole erker the cells would carry onto a party wall keeps BAG's span, and only the cells whose window it
+// half covers are bricked; erkers under broad eaves rise to the slab; erker bands; loggias between the erkers.
+test('erkersOnCells: a whole erker next to a party wall keeps BAG span; a half-covered window is bricked over', () => {
+  // Rooseveltlaan 080196: BAG 0.64-3.59 m of a 9.38 m five-cell front; the cells would put it on the wall (a half erker).
+  const [r] = erkersOnCells([{ a0: 0.0682, a1: 0.3829, depthM: 0.72, faceM: 1.97 }], 5, 9.38);
+  assert.deepEqual([r.a0, r.a1, r.faceM], [0.0682, 0.3829, 1.97]);
+  assert.deepEqual(r.plates, [[0, 0.0682]], 'cell 0 window (0.03-0.17) is half behind the erker; cell 1 window wholly');
+  // Biesboschstraat 077118: 0.513-0.776 of four cells; both windows clear or wholly covered: no plates.
+  const [b] = erkersOnCells([{ a0: 0.513, a1: 0.776, depthM: 0.66, faceM: 1.33 }], 4, 7.95);
+  assert.deepEqual([b.a0, b.a1, b.plates], [0.513, 0.776, undefined]);
+});
+
+test('erkers under broad eaves rise to the slab; bands run corner to corner; loggias fill the runs between erkers', () => {
+  const erk = { a0: 0.07, a1: 0.38, depthM: 0.72, faceM: 1.97, plates: [[0, 0.07]] as Array<[number, number]> };
+  const plain = sink(); drawKitFront(plain, kit4({ erkers: [erk] }), L4, W4, 1);
+  const eaves = sink(); drawKitFront(eaves, kit4({ erkers: [erk], eaves: { overhangM: 0.9 }, joins: { left: true, right: true } }), L4, W4, 1);
+  const top = (o: typeof plain.out) => Math.max(...o.filter(t => t.p.some(q => q[0] > L4 / 2 + 0.5)).flatMap(t => t.p.map(q => q[2])));
+  assert.ok(top(plain.out) < 0.6 && Math.abs(top(eaves.out) - (EAVES_LOOK.friezeM + EAVES_LOOK.thickM)) < 1e-6, 'the erker cap meets the eaves slab');
+  // The plate: brick over the wall strip [0, 0.07] of the front (c from -W/2 to -W/2 + 0.07 W).
+  assert.ok(plain.out.some(t => t.part === 'plate' && t.p.every(q => q[1] <= -W4 / 2 + 0.07 * W4 + 1e-6)));
+  // Bands: glass reaches the face corners (no brick margin), so the glass covers more of each face.
+  const glass = (o: typeof plain.out) => o.filter(t => t.hex === '#4f5f69').reduce((a, t) => a + Math.abs((t.p[1][1] - t.p[0][1]) * (t.p[2][2] - t.p[0][2]) - (t.p[2][1] - t.p[0][1]) * (t.p[1][2] - t.p[0][2])) + Math.abs((t.p[1][0] - t.p[0][0]) * (t.p[2][2] - t.p[0][2]) - (t.p[2][0] - t.p[0][0]) * (t.p[1][2] - t.p[0][2])), 0);
+  const banded = sink(); drawKitFront(banded, kit4({ erkers: [erk], erkerBands: true }), L4, W4, 1);
+  assert.ok(glass(banded.out) > glass(plain.out));
+  // Loggias: dark openings on each of the 4 storeys, only right of the erker (the left strip is under 1.5 m).
+  const lg = sink(); drawKitFront(lg, kit4({ erkers: [erk], loggias: true }), L4, W4, 1);
+  const dark = lg.out.filter(t => t.hex === LOGGIA_LOOK.dark);
+  assert.equal(dark.length, 2 * 4);
+  assert.ok(dark.every(t => t.p.every(q => q[1] >= (0.38 - 0.5) * W4 + LOGGIA_LOOK.sideM - 1e-6)));
+  assert.ok(kitDrawsFront(kit4({ loggias: true })));
 });

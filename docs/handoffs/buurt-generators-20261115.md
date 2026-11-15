@@ -403,3 +403,85 @@ Remaining gaps the kit cannot say:
 - The soldier course over the ground storey.
 - The elevation sheet shows the true roof rise. From the pavement, a slope under about 40 deg is hidden behind the
   Rooseveltlaan eaves.
+
+## Round 5 (2026-11-15): colour rule, slate sample, Rooseveltlaan erkers, loggias
+
+### Wall colour rule: series photo > district pool
+
+Colour by judgement applies only where there is no evidence. When a row has its own photo, its measured brick wins
+over the district's pooled brick (`rowNotes[row].wall`, `generate.ts wallHexOf`; the order is row note, then family,
+then district).
+
+- Rooseveltlaan (`rooseveltlaan-146491`) draws `#a2694f`, an orange-red, instead of the pool's `#5b504a`.
+- The photo was taken in low sun and its white frames clip, so the sunlit front (`#eca283`) cannot give the exposure.
+- The brick was measured on the faces turned out of the sun (L 0.53-0.58, C 0.067-0.070). Those faces have the same
+  hue (44-46) and the same C/L ratio as the sunlit front.
+- It is drawn at L 0.56, C 0.085, hue 45, divided by the renderer's brick shift on this sheet (`#5b504a` drew
+  `#594c44`).
+
+### Slate-slot sample (the round-4 slate → eaves rule)
+
+Six slate-slot rows other than Rooseveltlaan have a cached panorama facing them. Each was rectified in Node
+(`artifacts/buurt-generators/tools/slate-sample.mts`; 79 cached panoramas in the district, nothing fetched). Rows
+further than 45 m from the camera were looked at and dropped, because other buildings block the view.
+
+| Row | Panorama | Distance | Eaves + frieze? | What the photo shows |
+|---|---|---|---|---|
+| Biesboschstraat 142780 (8 pands) | TMX7316010203-001034_pano_0000_001940 (2019) | 9 m | no | steep dark tiles, box dormers, white cornice, chimneys |
+| Scheldestraat 146131 (9) | TMX7316010203-001036_pano_0000_001782 (2019) | 12 m | no | steep dark roof, dormers, cornice |
+| Scheldestraat 144881 (4) | same | 18 m | no | steep dark roof, dormers, cornice |
+| Victorieplein 114412 (3) | TMX7316010203-002477_pano_0002_000187 (2022) | 31 m | no | tiled roof behind a small eaves, chimneys |
+| President Kennedylaan 066768 (4) | TMX7316010203-002473_pano_0001_000393 (2022) | 39 m | unclear | white eaves band; no frieze visible at this distance |
+| Waalstraat 122104 (2) | TMX7316010203-002408_pano_0007_000098 (2022) | 34 m | no | flat brick coping |
+
+- **Result: 0 of 6 show eaves and frieze.** The six rows are on five streets; no further street could be sampled
+  without downloading.
+- The slot now selects a **look**, not a roof: `pitched.slotLooks.slate` draws the 62 deg dormered roof in a dark
+  `#494345`. That colour is measured on the Biesboschstraat 142780 roof face (`#504643`/`#483c3a`) and divided by the
+  tile shift.
+- The eaves roof is gated by a measured street note (`streetNotes.Rooseveltlaan.eaves`).
+- Counts: eaves 102 pands (Rooseveltlaan only), dark-tile pitched 960, red-tile pitched 208, flat 1225.
+
+### Rooseveltlaan erkers (BAG)
+
+BAG gives whole canted erkers about 2.95 m wide, 0.72-1.13 m deep, with a 1.8-1.97 m face, standing 0.6 m off a
+party wall. For example, 080196 runs 0.64-3.59 m along its 9.38 m front.
+
+**The bug:** round-3 cell snapping moved such an erker onto the party wall. The kit then drew it as half of a pair,
+open on that side. This affected 782 pands district-wide, including Biesboschstraat 088307 and 077118.
+
+**The fix (`erkersOnCells`):** a whole erker that snapping would carry onto a wall keeps BAG's span and face. Only
+a cell whose window it half covers is bricked over (`plates`). The windowShare is 0.71.
+
+- On Biesboschstraat the erkers now stand whole with windows between them, as in the photo.
+- That sheet changes from round 4. Maasstraat is byte-identical.
+
+**Street note `erkerBands`:** the lights run corner to corner on every face. Under broad eaves, the erker rises
+through the frieze, and the eaves slab is its cap.
+
+### Loggias
+
+These are cheap and now in the kit (`drawLoggias`, row note `loggias` per member). On each upper storey, between
+the erkers:
+
+- a 1.0 m brick parapet;
+- a dark opening;
+- the window wall behind it, seen through the opening;
+- a white sill line;
+- all over a brick plate that hides the mesher's cells.
+
+They apply to the four west members of `rooseveltlaan-146491` (146491, 148931, 122216, 080196).
+
+### Cost and checks
+
+- Rooseveltlaan 11689 tris, 1182 KiB (round 4: 10447 tris, 1055 KiB).
+- Biesboschstraat 6275 tris, 633 KiB (round 4: 6113 tris, 616 KiB).
+- Kinkerstraat identity holds with the flag off and on.
+
+### Remaining gaps
+
+- The west end's brick reads paler and pinker in the photo than the rest of the row; the row draws one hex.
+- 146491 has no BAG erker, but the photo shows one at its right.
+- Erker glass reads darker than the photo's white bands.
+- The loggias' slab soffits are not drawn.
+- Other Rooseveltlaan rows have no row photo, so they keep the pool brick.

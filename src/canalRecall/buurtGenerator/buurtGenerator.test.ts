@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, generateDistrict, pitchedVariantOf, seriesSlot, storeysFor, type DistrictLibrary } from './generate.js';
+import { baysFor, generateDistrict, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, type DistrictLibrary } from './generate.js';
 import { BAY_STYLES, PLAN_ZUID_CASEMENT } from '../bayLook.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
@@ -65,15 +65,29 @@ test('kit flag off: the school bay presets are unchanged; on: the Plan Zuid case
   assert.deepEqual(on, [BAY_STYLES.school.length + 2, true]);
 });
 
-test('the orthophoto slot picks the pitched variant: slate the Rooseveltlaan eaves, tile or unread the Plan Zuid tiles', () => {
+test('the eaves roof is drawn by a street note, not the slot; the slate slot draws the dark tile look', () => {
   const withSlot = (slots: Array<string | null>) => districtRows(slots.map((sl, i) => ({ ...pand(i, 1929, 12.4), roofSlot: sl })), streets).rows[0].series[0];
   const slate = withSlot(['slate', 'slate', 'pantile-red']);
   assert.equal(seriesSlot(slate), 'slate');
-  assert.equal(pitchedVariantOf(lib, slate), lib.pitchedEaves);
+  // Slate alone (round 5 sample: dark tiles, dormers, cornice) is the pitched roof in the slate look, never the eaves.
+  const pv = pitchedVariantOf(lib, slate)!;
+  assert.deepEqual([pv.pitchDeg, pv.material, pv.roofHex, pv.eavesM], [lib.pitched!.pitchDeg, 'slate', lib.pitched!.slotLooks!.slate.roofHex, undefined]);
   assert.equal(pitchedVariantOf(lib, withSlot(['pantile-red', 'pantile-red', 'slate'])), lib.pitched);
   const unread = withSlot([null, null, null]);
   assert.equal(seriesSlot(unread), null);
   assert.equal(pitchedVariantOf(lib, unread), lib.pitched);
+  // A street note measuring the eaves draws them whatever the slot.
+  const noted: DistrictLibrary = { ...lib, streetNotes: { Teststraat: { eaves: true, evidence: 'test' } } };
+  assert.equal(pitchedVariantOf(noted, withSlot(['pantile-red', null, null])), lib.pitchedEaves);
+});
+
+test("wall: the row's own photo wins over the family and the district (series photo > district pool)", () => {
+  const fam = lib.families[0];
+  assert.equal(wallHexOf(lib, fam, 'rooseveltlaan-146491').hex, lib.rowNotes!['rooseveltlaan-146491'].wall!.hex);
+  assert.match(wallHexOf(lib, fam, 'rooseveltlaan-146491').evidence!, /row's own photo/);
+  assert.equal(wallHexOf(lib, fam, 'teststraat-000000').hex, fam.design?.wall?.hex ?? lib.design.wall.hex);
+  const res = generateDistrict({ ...lib, rowNotes: { 'teststraat-000000': { wall: { hex: '#a2694f', evidence: 'test' }, evidence: 'test' } } }, [0, 1, 2].map(i => pand(i, 1929, 12.4)), streets, new Set(), 'test');
+  assert.deepEqual([...new Set(res.records.map(r => (r as { wall?: { hex?: string } }).wall?.hex))], ['#a2694f']);
 });
 
 test('the front runs on to its own corner where the neighbour overlaps a strip of it (Rooseveltlaan 080196)', () => {

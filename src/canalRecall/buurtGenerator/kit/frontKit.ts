@@ -12,11 +12,18 @@
  */
 export type LngLat = readonly [number, number];
 /** One erker on a member's front: its base span (fractions of the front line, left to right as seen), depth and face width (m). */
-export interface BuurtErker { a0: number; a1: number; depthM: number; faceM: number }
+export interface BuurtErker { a0: number; a1: number; depthM: number; faceM: number;
+  /** Brick strips (front fractions) beside an erker that keeps BAG's span (round 5): where a cell's window would be half
+   *  behind the erker, the kit bricks over the rest of that cell so no window pokes out beside it. */
+  plates?: Array<[number, number]> }
 export interface BuurtKitFront {
   /** The member's front line, left to right as seen from the street (lng/lat). */
   frontLine: [LngLat, LngLat];
   erkers: BuurtErker[];
+  /** Erker windows as continuous white bands round all faces, corner to corner (round 5, Rooseveltlaan street note). */
+  erkerBands?: true;
+  /** Loggias on the upper storeys between the erkers (round 5, Rooseveltlaan's west end, a row note per member). */
+  loggias?: true;
   /** The series roof: an eaves-front pitched roof at this pitch over the 3DBAG rise (roofs from the front: the photo
    *  shows it; 3DBAG gives its height). Absent: the series' stated roof storey as the row path draws it. */
   roof?: { pitchDeg: number; riseM: number; roofHex?: string; /** false: the series shows no dormers (Rooseveltlaan). */ dormers?: false;
@@ -37,7 +44,7 @@ export interface BuurtKitFront {
 /** The paired casements' white mullion, a share of the window's width (Maasstraat: about 0.5 m on a 1.6 m opening). */
 export const KIT_MULLION_SHARE = 0.3;
 /** A flat series draws the low coping when the kit hangs anything on its front (erkers, ribbon, rhythm, piers). */
-export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.rhythm || k.sides);
+export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.rhythm || k.sides || k.loggias);
 /** A flat series with erkers draws its lid as a low coping behind the white cornice ledge (m), the erkers on it. */
 export const KIT_FLAT_RISE_M = 0.55;
 
@@ -111,10 +118,10 @@ export function buurtKitOf(v: unknown): BuurtKitFront | null {
   const rr = k.roof as { dormers?: unknown; eavesM?: unknown } | undefined, eavesM = Number(rr?.eavesM);
   const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM), ...(hex ? { roofHex: hex } : {}),
     ...(rr?.dormers === false ? { dormers: false as const } : {}), ...(eavesM > 0.2 && eavesM < 2 ? { eavesM } : {}) } : undefined;
-  const x = v as { sash?: unknown; ribbon?: unknown; copingHex?: unknown; rhythm?: unknown; sides?: { left?: unknown; right?: unknown } };
+  const x = v as { sash?: unknown; ribbon?: unknown; copingHex?: unknown; rhythm?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown } };
   const side = (q: unknown) => q === 'pier' || q === 'pair' ? q : null, sl = side(x.sides?.left), sr = side(x.sides?.right);
   const joins = k.joins && typeof k.joins === 'object' ? { ...(k.joins.left === true ? { left: true } : {}), ...(k.joins.right === true ? { right: true } : {}) } : {};
-  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}) };
+  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}) };
 }
 
 /**
@@ -124,7 +131,7 @@ export function buurtKitOf(v: unknown): BuurtKitFront | null {
  * middle two axes, a window either side). Canted: the face is the base less twice the depth, at most 55 % of the base
  * (photo: about 2.0 m on that 4 m base). A half erker at a party wall keeps that end. Overlapping results merge.
  */
-export function erkersOnCells(erkers: readonly BuurtErker[], bays: number, widthM: number): BuurtErker[] {
+export function erkersOnCells(erkers: readonly BuurtErker[], bays: number, widthM: number, windowShare = 0.71): BuurtErker[] {
   if (!(bays >= 1) || !(widthM > 0)) return [...erkers];
   const out: BuurtErker[] = [], cw = 1 / bays;
   for (const k of erkers) {
@@ -135,6 +142,22 @@ export function erkersOnCells(erkers: readonly BuurtErker[], bays: number, width
     const start = atL ? 0 : atR ? bays - n : Math.max(0, Math.min(bays - n, Math.round((k.a0 + k.a1) / 2 / cw - n / 2)));
     const a0 = +(start * cw).toFixed(4), a1 = +((start + n) * cw).toFixed(4), base = (a1 - a0) * widthM;
     const canted = k.faceM < span * widthM - 0.15, half = atL || atR;
+    // A whole erker the cells would carry onto a party wall would be drawn as half of a pair (open on that side): it
+    // keeps BAG's span and face instead, and names the cells it stands over (Rooseveltlaan 080196: BAG 0.64-3.59 m of
+    // 9.38 m, two cells from the wall; Biesboschstraat 088307: 5.09-7.47 m of 8.51 m).
+    if (!half && (a0 <= 0.005 || a1 >= 0.995)) {
+      const prevW = out[out.length - 1];
+      if (prevW && k.a0 < prevW.a1 - 1e-6) { prevW.a1 = Math.max(prevW.a1, k.a1); continue; }
+      // A cell whose window the erker covers in part: brick over the rest of that cell (its whole window goes).
+      const plates: Array<[number, number]> = [];
+      for (let c = start; c < start + n; c++) {
+        const w0 = (c + (1 - windowShare) / 2) * cw, w1 = (c + (1 + windowShare) / 2) * cw;
+        if (w0 < k.a0 && w1 > k.a0) plates.push([+(c * cw).toFixed(4), +k.a0.toFixed(4)]);
+        if (w1 > k.a1 && w0 < k.a1) plates.push([+k.a1.toFixed(4), +((c + 1) * cw).toFixed(4)]);
+      }
+      out.push({ a0: +k.a0.toFixed(4), a1: +k.a1.toFixed(4), depthM: k.depthM, faceM: +k.faceM.toFixed(2), ...(plates.length ? { plates } : {}) });
+      continue;
+    }
     const faceM = +(canted ? Math.max(0.6, Math.min(base - (half ? 1 : 2) * k.depthM, base * (half ? 0.78 : 0.55))) : base).toFixed(2);
     const prev = out[out.length - 1];
     if (prev && a0 < prev.a1 - 1e-6) { prev.a1 = Math.max(prev.a1, a1); prev.faceM = Math.max(prev.faceM, faceM); continue; }

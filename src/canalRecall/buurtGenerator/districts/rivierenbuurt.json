@@ -88,10 +88,13 @@
     "evidence": "Biesboschstraat panorama TMX7316010203-001034_pano_0000_001940 (2019-01-03): red tile roof behind the cornice, one white-topped box dormer per pand with a hoist beam; 3DBAG ridge-eaves is bimodal over the district's series (1,193 pands under 2 m, 1,243 at 3 m and over); round 3: the photo roof top edge projects at 14.34 m from the camera 10.3 m off the front at 2.44 m, which puts the 3DBAG ridge (eaves + 5.0 m, every Biesboschstraat member; the 6 m cap does not bind) about 2.65 m behind the cornice: a 62 deg street slope, not 52",
     "roofHex": "#9e5b42",
     "roofHexEvidence": "round 4: matched in the same light. A pure tile patch of the Biesboschstraat panorama TMX7316010203-001034_pano_0000_001940 (no brick, sky or sunlit edge; sheet x 2390-2500) is #a55a3a, OKLab L 0.549 C 0.109 hue 42; the round-3 hex #a15a30 rendered #a7592a (C 0.118, hue 49, more orange). #9e5b42 renders #a45b3e (L 0.550, C 0.105, hue 42)",
-    "slots": [
-      "pantile-red",
-      "pantile-dark"
-    ]
+    "slotLooks": {
+      "slate": {
+        "material": "slate",
+        "roofHex": "#494345",
+        "evidence": "round 5 slate sample: the slate-slot roofs on Biesboschstraat (142780), Scheldestraat (146131, 144881) and Victorieplein (114412) are steep dark tiles with dormers behind a cornice, not slate eaves; Biesboschstraat 142780 (TMX7316010203-001034_pano_0000_001940, overcast) measures #504643 and #483c3a on the roof face, divided by the renderer's tile shift (#9e5b42 drew #a35a3d) to #494345"
+      }
+    }
   },
   "notDrawn": [
     {
@@ -111,16 +114,33 @@
     "dormersPerFront": 0,
     "dormerKind": "plain",
     "hoist": false,
-    "slots": [
-      "slate"
-    ],
     "eavesM": 0.9,
-    "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865 (2022-03-24): a flat-looking top, broad white eaves with a soffit over the street front over a white lattice frieze 0.85 m tall (drawn by the kit eaves, roofKit.ts EAVES_LOOK) and no roof or dormer seen above them from the pavement, so the roof behind rises at most about 40 deg (the sight line over the 13.1 m eaves from the camera); the orthophoto reads slate on all 13 members (roof-facts), not the red pantiles of Biesboschstraat. Drawn at 35 deg to the 3DBAG rise."
+    "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865 (2022-03-24): a flat-looking top, broad white eaves with a soffit over a white lattice frieze 0.85 m tall (kit eaves, roofKit.ts EAVES_LOOK); no roof or dormer seen above them from the pavement, the camera 7.4 m off the front sees no slope under about 59 deg behind the 0.9 m eaves. Drawn at 35 deg to the 3DBAG rise. Round 5: gated by the street note, not the orthophoto slot: of six other slate-slot rows sampled from cached panoramas none shows eaves and frieze (plan doc, round 5)"
   },
   "rowNotes": {
     "maasstraat-129732": {
       "pierPhase": 0,
       "evidence": "Maasstraat panorama TMX7316010203-002473_pano_0000_000333 (2022-03-23): chimney piers at the party walls after members 1, 3 and 5 (129732|131549, 114621|074500, 147234|147836), the stair pairs over the portiek doors at the others"
+    },
+    "rooseveltlaan-146491": {
+      "wall": {
+        "hex": "#a2694f",
+        "evidence": "orange-red brick, TMX7316010203-002477_pano_0002_000865 (2022-03-24, low sun): hue 44-46 on the sunlit front (#eca283, OKLab L 0.77 C 0.10, its white frames clipped, so the exposure is not usable) and on the faces turned out of the sun (#9e6e5b L 0.58 C 0.070, #8e5f4e L 0.53 C 0.067); drawn at those faces' light, L 0.56 C 0.085 hue 45 (#9e6449), divided by the renderer's brick shift on this sheet (#5b504a drew #594c44)"
+      },
+      "loggias": [
+        "146491",
+        "148931",
+        "122216",
+        "080196"
+      ],
+      "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865: the four west members carry recessed loggias with brick parapets on the three upper storeys between their erkers"
+    }
+  },
+  "streetNotes": {
+    "Rooseveltlaan": {
+      "eaves": true,
+      "erkerBands": true,
+      "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865 (2022-03-24), 13 members 146491-075942: broad white eaves over a lattice frieze along the whole row; the erkers are canted bays whose white-framed lights run corner to corner on every storey, standing up to the eaves slab"
     }
   }
 }
