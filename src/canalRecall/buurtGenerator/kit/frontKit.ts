@@ -213,7 +213,8 @@ export function erkersOf(ring: readonly XY[], lineA: XY, lineB: XY, n: XY): Buur
  *  line to a point `outM` in front of it at `ap` and back, over [a0, a1] (fractions, left to right as seen); `ap` at a
  *  party wall is one cheek of a V the neighbour closes. The wall is straightened through it (one run for the mesher's
  *  cells) and the kit draws the fold as a brick prism from the pavement to the line (`drawCants`). */
-export interface KitCant { a0: number; ap: number; a1: number; outM: number }
+/** `plates` (round 16): brick over the window cells the cant half covers (cantsOnCells), as an erker's plates. */
+export interface KitCant { a0: number; ap: number; a1: number; outM: number; plates?: Array<[number, number]> }
 /** A cant is a joint's fold, gradual and small (Amstelkade's BAG: 0.38-0.53 m out over 0.7-1.4 m): its outer face (the
  *  points within CANT_FACE_TOL_M of its depth) spans under CANT_FACE_M, a cheek runs at least CANT_SLOPE times its depth
  *  along the front, it is at most CANT_MAX_M out and CANT_MAX_WIDTH_M wide. A wider or deeper pointed run is a bay
@@ -221,7 +222,26 @@ export interface KitCant { a0: number; ap: number; a1: number; outM: number }
 export const CANT_MIN_M = 0.25, CANT_MAX_M = 0.6, CANT_MAX_WIDTH_M = 1.6, CANT_FACE_M = 0.6, CANT_FACE_TOL_M = 0.1, CANT_SLOPE = 1.5;
 export const cantsValid = (v: unknown): KitCant[] => (Array.isArray(v) ? v : []).filter((c): c is KitCant => !!c && typeof c === 'object'
   && [c.a0, c.ap, c.a1, c.outM].every(Number.isFinite) && c.a0 >= 0 && c.a1 <= 1 && c.a0 <= c.ap && c.ap <= c.a1 && c.a1 - c.a0 > 0.01 && c.outM > 0.1 && c.outM <= ERKER_MAX_M)
-  .map(c => ({ a0: c.a0, ap: c.ap, a1: c.a1, outM: c.outM }));
+  .map(c => {
+    const plates = (Array.isArray(c.plates) ? c.plates : []).filter((q): q is [number, number] => Array.isArray(q) && q.length === 2 && q.every(Number.isFinite) && q[0] >= 0 && q[1] <= 1 && q[1] > q[0]).map(q => [q[0], q[1]] as [number, number]);
+    return { a0: c.a0, ap: c.ap, a1: c.a1, outM: c.outM, ...(plates.length ? { plates } : {}) };
+  });
+/** The cants on the series' window cells (round 16): a cell whose window the cant covers in part is bricked over from
+ *  the cell's edge to the cant (Amstelkade 091497, 105304: the end window stood cut by the fold), as erkersOnCells does
+ *  for an erker. A window clear of the cant, or wholly behind it, is left. */
+export function cantsOnCells(cants: readonly KitCant[], bays: number, windowShare = 0.71): KitCant[] {
+  if (!(bays >= 1)) return cants.map(c => ({ ...c }));
+  const cw = 1 / bays;
+  return cants.map(k => {
+    const plates: Array<[number, number]> = [];
+    for (let c = 0; c < bays; c++) {
+      const w0 = (c + (1 - windowShare) / 2) * cw, w1 = (c + (1 + windowShare) / 2) * cw;
+      if (w0 < k.a0 && w1 > k.a0) plates.push([+(c * cw).toFixed(4), +k.a0.toFixed(4)]);
+      if (w1 > k.a1 && w0 < k.a1) plates.push([+k.a1.toFixed(4), +((c + 1) * cw).toFixed(4)]);
+    }
+    return { a0: k.a0, ap: k.ap, a1: k.a1, outM: k.outM, ...(plates.length ? { plates } : {}) };
+  });
+}
 /**
  * The cants of one front (generator side, local metres; erkersOf's frame). A run of vertices in front of the line (more
  * than ERKER_MIN_M, at most ERKER_MAX_M) whose deepest point is a ridge rather than a face, its cheek gradual: the run's

@@ -308,6 +308,8 @@ export function drawCants(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, 
       s.quad(P(ca, oa, z0), P(cb, ob, z0), P(cb, ob, z1), P(ca, oa, z1), s.wallUv(0, z0), s.wallUv(l, z0), s.wallUv(l, z1), s.wallUv(0, z1), 'plate', [e * no, e * nc, 0]);
     };
     face(c0, b, cp, o); face(cp, o, c1, b);
+    // Round 16: brick over the cells whose window the cant half covers, pavement to the line.
+    if (k.plates) { const q = frontQuad(s, L, e); for (const [p0, p1] of k.plates) if (p1 - p0 > 0.002) q((p0 - 0.5) * W, (p1 - 0.5) * W, z0, z1, PLATE_O, 'plate'); }
     const atL = k.ap <= 0.0001, atR = k.ap >= 0.9999;
     if ((atL && !kit.joins?.left) || (atR && !kit.joins?.right)) face(atR ? cp : cp, atR ? o : b, atR ? cp : cp, atR ? b : o);
     s.tri(P(c0, b, z1), P(cp, o, z1), P(c1, b, z1), [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], kit.roofHex ?? '#6b6560');

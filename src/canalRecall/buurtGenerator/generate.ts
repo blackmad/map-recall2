@@ -14,7 +14,7 @@ import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
 import { districtRows, ROW_EAVES_STEP_M, type GenMember, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
-import { erkersOnCells, type BuurtEntry, type BuurtErker, type BuurtKitFront } from './kit/frontKit.ts';
+import { cantsOnCells, erkersOnCells, type BuurtEntry, type BuurtErker, type BuurtKitFront } from './kit/frontKit.ts';
 
 export interface DistrictDesign {
   groundM: number;
@@ -387,7 +387,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
         ...((bands || whiteErker(pid)) && (bayErkers(m.front).length || note?.erkers?.[pid.slice(-6)]?.length) ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
         ...(rise === null && seriesCoping && coping ? { copingHex: coping } : {}),
         ...(rise === null && lib.flatEaves ? { eaves: { overhangM: lib.flatEaves.eavesM, ...(lib.flatEaves.frieze === false ? { frieze: false as const } : {}) } } : {}),
-        ...(entryAt(i) ? { entries: [entryAt(i)!] } : {}), ...(m.front.cants ? { cants: m.front.cants.map(c => ({ ...c })) } : {}),
+        ...(entryAt(i) ? { entries: [entryAt(i)!] } : {}), ...(m.front.cants ? { cants: cantsOnCells(m.front.cants, bays, fam?.design?.windowShare ?? lib.design.windowShare) } : {}),
         ...(joins.left || joins.right ? { joins } : {}) });
     }
   }
