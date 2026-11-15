@@ -361,6 +361,20 @@
       "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
       "at": "2026-11-15",
       "note": "Herengracht 23 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable plain"
+    },
+    {
+      "fronts": [
+        "0363100012175410"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#7d6445"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.69 C 0.043 h 71; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "13: the read said dark-grey-brick (period-default); the cut measures warm brick"
     }
   ],
   "herengracht-25-49": [
@@ -1247,6 +1261,34 @@
       "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
       "at": "2026-11-15",
       "note": "159: a white attic and balustrade over the cornice, no slate mansard (the attic is a kit gap)"
+    },
+    {
+      "fronts": [
+        "0363100012167683"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#73503f"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.46 C 0.023 h 45; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "155: the read said dark-grey-brick (series-consensus); the cut measures warm brick; one wall for the series with its neighbour (155 #6c4839 and 157 #7b5944 measured, drawn at their mean)"
+    },
+    {
+      "fronts": [
+        "0363100012167681"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#73503f"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.52 C 0.024 h 54; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "157: the read said dark-grey-brick (series-consensus); the cut measures warm brick; one wall for the series with its neighbour (155 #6c4839 and 157 #7b5944 measured, drawn at their mean)"
     }
   ],
   "herengracht-179-215": [
@@ -1283,6 +1325,20 @@
       "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
       "at": "2026-11-15",
       "note": "209: three windows a storey in the cut"
+    },
+    {
+      "fronts": [
+        "0363100012167634"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#7c544e"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.51 C 0.031 h 29; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "203: the read said dark-grey-brick (single-read); the cut measures warm brick"
     }
   ],
   "herengracht-163-177": [
@@ -1457,6 +1513,20 @@
       "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012169270.jpg (house rows round 5)",
       "at": "2026-11-15",
       "note": "46-48: a mullion and transom cross in each upper window of the white front (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012168138"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#49331a"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.36 C 0.020 h 70; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "30: the read said dark-grey-brick (single-read); the cut measures warm brick"
     }
   ],
   "herengracht-130-148": [
@@ -1501,6 +1571,20 @@
       "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
       "at": "2026-11-15",
       "note": "132: warm grey-brown brick in the cut, not charcoal"
+    },
+    {
+      "fronts": [
+        "0363100012177210"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#4c321c"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.36 C 0.021 h 61; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "140: the read said dark-grey-brick (single-read); the cut measures warm brick"
     }
   ],
   "herengracht-150-166": [
@@ -1653,6 +1737,20 @@
       "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)",
       "at": "2026-11-15",
       "note": "244: brown brick in the cut, lighter and warmer than the read dark grey"
+    },
+    {
+      "fronts": [
+        "0363100012176863"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#765149"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.50 C 0.021 h 31; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "252: the read said dark-grey-brick (single-read); the cut measures warm brick"
     }
   ],
   "herengracht-268-286": [
@@ -1669,6 +1767,20 @@
       "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)",
       "at": "2026-11-15",
       "note": "272: red-brown brick in the cut, not dark grey"
+    },
+    {
+      "fronts": [
+        "0363100012176734"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#806248"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.64 C 0.024 h 62; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "282: the read said dark-grey-brick (single-read); the cut measures warm brick"
     }
   ],
   "herengracht-292-310": [
@@ -1685,6 +1797,34 @@
       "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)",
       "at": "2026-11-15",
       "note": "304: red-brown brick in the cut, not dark grey"
+    },
+    {
+      "fronts": [
+        "0363100012176664"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#4c301d"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.34 C 0.021 h 55; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "308: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    },
+    {
+      "fronts": [
+        "0363100012176728"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#533921"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.39 C 0.021 h 62; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "298: the read said painted-black (period-default); the cut measures warm brick"
     }
   ],
   "herengracht-219-237": [
@@ -1711,6 +1851,16 @@
       "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)",
       "at": "2026-11-15",
       "note": "237: red brick with stone bands in the cut, not dark grey"
+    },
+    {
+      "fronts": [
+        "0363100012177364"
+      ],
+      "field": "crown",
+      "value": "cornice",
+      "ref": "lane D, the cut re-read after blind A/B 7 and 9 (2026-11-15: today won both)",
+      "at": "2026-11-15",
+      "note": "235: the cut's outline sits on a narrow front under its neighbour's neck gable; its own top is the cornice line (the read's bell crown is the neighbour's gable)"
     }
   ],
   "herengracht-218-236": [
@@ -1727,6 +1877,22 @@
       "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)",
       "at": "2026-11-15",
       "note": "218-220: red brick with white stone bands in the cut; the period default drew dark grey"
+    }
+  ],
+  "herengracht-253-269": [
+    {
+      "fronts": [
+        "0363100012177176"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#62492c"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.45 C 0.022 h 69; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "255: the read said dark-grey-brick (single-read); the cut measures warm brick"
     }
   ]
 }

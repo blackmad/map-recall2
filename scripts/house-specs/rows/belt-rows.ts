@@ -59,7 +59,7 @@ export function beltMembers(rows: readonly SelectRow[], cuts: ReadonlyMap<string
  *  road, the wall the preview and the mesher draw) instead of BAG area / 15 m. The estimate made a stated gable's span
  *  differ from the drawn run by more than ROW_FRONT_SPAN_TOLERANCE, so the renderer dropped the gable (Herengracht 77:
  *  5.33 m estimated, 6.67 m wall; 2026-11-15). Unmeasurable: the estimate stays. */
-export async function streetWallWidths(members: RowMemberDef[]): Promise<RowMemberDef[]> {
+export async function streetWallWidths(members: RowMemberDef[], dropped: RowMemberDef[] = []): Promise<RowMemberDef[]> {
   const est = members.filter(m => m.widthSource === 'BAG area / 15 m (no cut)');
   if (!est.length) return members;
   const { findPands, neighbourhood } = await import('../../pand-reference/core.ts');
@@ -70,12 +70,15 @@ export async function streetWallWidths(members: RowMemberDef[]): Promise<RowMemb
     if (!fp) continue;
     const c = fp.ring.reduce((t, q) => ({ x: t.x + q.x / fp.ring.length, y: t.y + q.y / fp.ring.length }), { x: 0, y: 0 });
     const picked = await pickWall(fp, await neighbourhood(c));
+    // A pand with no exposed wall is an inner or back house behind its neighbours' fronts (Herengracht 230 behind 232,
+    // 236 behind 234, 2026-11-15): the world draws no front for it and the cutter found none, so it leaves the row.
+    if (!picked.wall) { dropped.push(m); continue; }
     // Only where the estimate would miss the drawn run (rowFront.ts runTakesTrace's tolerance): a close estimate stays,
     // so rows already under review keep their records (Herengracht 6: 4.87 m estimated, 4.85 m wall).
     const est0 = m.widthM ?? 0, tol = Math.max(0.5, 0.12 * est0);
-    if (picked.wall && picked.wall.len > 2 && Math.abs(picked.wall.len - est0) > tol) Object.assign(m, { widthM: +picked.wall.len.toFixed(2), widthSource: 'street wall (pickWall; no cut)' });
+    if (picked.wall.len > 2 && Math.abs(picked.wall.len - est0) > tol) Object.assign(m, { widthM: +picked.wall.len.toFixed(2), widthSource: 'street wall (pickWall; no cut)' });
   }
-  return members;
+  return members.filter(m => !dropped.includes(m));
 }
 
 const FACES = path.join(REPO, 'scripts/block-face/faces');
@@ -119,7 +122,9 @@ async function main() {
   const slug = street.toLowerCase().replace(/\s+/g, '-');
   const out: Record<string, unknown> = {};
   for (const [a, b] of runs) {
-    const belt = await streetWallWidths(beltMembers(sel, cuts, street, a, b));
+    const inner: RowMemberDef[] = [];
+    const belt = await streetWallWidths(beltMembers(sel, cuts, street, a, b), inner);
+    for (const m of inner) console.log(`  dropped ${m.label} ${m.pandId}: no exposed wall (an inner or back house)`);
     const face = faceForRun(street, a, b, new Set(belt.map(m => m.pandId)));
     const key = (m: RowMemberDef) => m.numbers?.[0] ?? 0;
     const members = [...belt, ...(face?.extra ?? [])].sort((x, y) => (a % 2 === 0 ? key(y) - key(x) : key(x) - key(y)));
@@ -134,6 +139,7 @@ async function main() {
       wallFromCuts: true,
       canalWindows: true,
       ...(face ? { face: face.id } : {}),
+      ...(inner.length ? { innerNote: inner.map(m => `${street} ${m.label} (${m.pandId}) has no exposed wall: an inner or back house behind its neighbours, so not a member`).join('; ') } : {}),
       ...(members.some(m => m.evidencePandId) ? { twinNote: members.filter(m => m.evidencePandId).map(m => `${street} ${m.label}: the member is the world's pand ${m.pandId} (same footprint, taller; the world drops the D1 pand ${m.evidencePandId}); its cut and read stay filed under ${m.evidencePandId}`).join('; ') } : {}),
       note: face ? `canal belt as rows: the October face ${face.id} for its houses (${face.extra.map(m => m.label).join(', ') || 'all in the belt tranche'} added from it), the belt D1 tranche for the rest (belt-rows.ts)`
         : `canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)`,

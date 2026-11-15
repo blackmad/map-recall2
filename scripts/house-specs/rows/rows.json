@@ -2262,20 +2262,8 @@
       "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     },
     "herengracht-218-236": {
-      "title": "Herengracht 218-236 (even side, 1620-1905)",
+      "title": "Herengracht 218-236 (even side, 1625-1905)",
       "members": [
-        {
-          "pandId": "0363100012177481",
-          "label": "236",
-          "widthM": 3.5,
-          "widthSource": "BAG area / 15 m (no cut)",
-          "numbers": [
-            236
-          ],
-          "built": 1770,
-          "side": "even",
-          "heightM": 13.68
-        },
         {
           "pandId": "0363100012177225",
           "label": "234",
@@ -2299,18 +2287,6 @@
           "built": 1740,
           "side": "even",
           "heightM": 14.93
-        },
-        {
-          "pandId": "0363100012177217",
-          "label": "230",
-          "widthM": 3.5,
-          "widthSource": "BAG area / 15 m (no cut)",
-          "numbers": [
-            230
-          ],
-          "built": 1620,
-          "side": "even",
-          "heightM": 15.63
         },
         {
           "pandId": "0363100012177477",
@@ -2379,6 +2355,7 @@
       "staged": "staged-belt-20261114",
       "wallFromCuts": true,
       "canalWindows": true,
+      "innerNote": "Herengracht 236 (0363100012177481) has no exposed wall: an inner or back house behind its neighbours, so not a member; Herengracht 230 (0363100012177217) has no exposed wall: an inner or back house behind its neighbours, so not a member",
       "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     },
     "herengracht-238-256": {
