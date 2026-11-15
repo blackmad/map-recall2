@@ -465,12 +465,13 @@
         "attic": 1,
         "cap": "segmental",
         "stone": {
-          "hood": "dark"
+          "hood": "dark",
+          "neck": "oculus"
         }
       },
-      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
       "at": "2026-11-15",
-      "note": "31: a neck with a curved bell-like cap and white carved shoulder pieces (D1 gap), as today draws it | Gable rise re-measured 2026-11-15 (lane D, #391): 31 1.18 storeys from the claw foot to the cap top, at 3.0 m a storey; the read was 2.8 m, which left the necks short (blind gable review). 31: a dark hood over the cap (R audit)."
+      "note": "31: a neck with a curved bell-like cap and white carved shoulder pieces (D1 gap), as today draws it | Gable rise re-measured 2026-11-15 (lane D, #391): 31 1.18 storeys from the claw foot to the cap top, at 3.0 m a storey; the read was 2.8 m, which left the necks short (blind gable review). 31: a dark hood over the cap (R audit). 31: a small neck oculus (R 569360013)."
     },
     {
       "fronts": [
@@ -697,7 +698,7 @@
           "claws": "carved"
         }
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
       "at": "2026-11-15",
       "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap | Gable rise re-measured 2026-11-15 (lane D, #391): 55 1.47 and 61 1.32 storeys from the claw foot to the cap top, about 4.4 and 4.0 m; the series takes 4.2, at 3.0 m a storey; the read was 3.2 m, which left the necks short (blind gable review). 55: carved claw pieces, no dark hood (R audit)."
     },
@@ -718,7 +719,7 @@
           "neck": "cartouche"
         }
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
       "at": "2026-11-15",
       "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap | Gable rise re-measured 2026-11-15 (lane D, #391): 55 1.47 and 61 1.32 storeys from the claw foot to the cap top, about 4.4 and 4.0 m; the series takes 4.2, at 3.0 m a storey; the read was 3.2 m, which left the necks short (blind gable review). 61: dark hood, carved claws, a cartouche on the neck (R audit)."
     },
@@ -749,12 +750,13 @@
         "cap": "segmental",
         "upperLight": true,
         "stone": {
-          "claws": "carved"
+          "claws": "carved",
+          "neck": "oculus"
         }
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179673.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179673.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
       "at": "2026-11-15",
-      "note": "57: a short neck with a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 57 1.41 storeys from the neck foot to the cap top, at 3.0 m a storey; the read was 2.6 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15). 57: carved claws, no hood (R audit)."
+      "note": "57: a short neck with a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 57 1.41 storeys from the neck foot to the cap top, at 3.0 m a storey; the read was 2.6 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15). 57: carved claws, no hood (R audit). 57: a small neck oculus (R 569360013)."
     },
     {
       "fronts": [
@@ -771,7 +773,7 @@
           "hood": "dark"
         }
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179748.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179748.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
       "at": "2026-11-15",
       "note": "59: a dark neck gable with claw pieces and a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 59 1.41 storeys from the claw foot (over the oval attic storey) to the cap top, at 3.0 m a storey; the read was 2.8 m, which left the necks short (blind gable review). 59: dark hood, carved claws (R audit)."
     },
@@ -792,7 +794,7 @@
           "neck": "cartouche"
         }
       },
-      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179683.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179683.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
       "at": "2026-11-15",
       "note": "63: white claw pieces and finials on the shoulders; the cap is segmental like 55's (R's trial had none) | Gable rise re-measured 2026-11-15 (lane D, #391): 63 1.41 storeys from the claw foot to the cap top, at 3.0 m a storey; the read was 3 m, which left the necks short (blind gable review). 63: dark hood, carved claws, a cartouche on the neck (R audit)."
     },
@@ -1719,12 +1721,13 @@
       "field": "ground.door",
       "value": {
         "doorcase": {
-          "material": "timber"
+          "material": "timber",
+          "door": "black"
         }
       },
-      "ref": "lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
+      "ref": "lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
       "at": "2026-11-15",
-      "note": "142: a painted timber doorcase round the street door."
+      "note": "142: a painted timber doorcase round a black street door."
     },
     {
       "fronts": [
@@ -1734,12 +1737,14 @@
       "value": {
         "doorSide": "right",
         "doorcase": {
-          "material": "timber"
+          "material": "timber",
+          "door": "black",
+          "fanlight": "diamond"
         }
       },
-      "ref": "lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement",
+      "ref": "lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
       "at": "2026-11-15",
-      "note": "144: a painted timber doorcase; the door is on the right and the window on the left (drawn mirrored before)."
+      "note": "144: a painted timber doorcase, a black door, a lozenge fanlight; the door is on the right and the window on the left, as the photo and the read (doorBay right, doorIndex 1 of 2) say. Drawn mirrored by the renderer, not the record: house:preview of 144 puts the door on the left whatever the record's door side or index (right, left, index 0, index 1, no index: 2026-11-15 lane D test), so flipping the stated side cannot fix it."
     }
   ],
   "herengracht-150-166": [
