@@ -193,7 +193,7 @@ export function pitchedRiseOf(lib: DistrictLibrary, s: GenSeries): number | null
   const rise = bagRiseOf(s);
   if (rise === null || rise < lib.pitched.minRiseM) return null;
   const seen = lib.streetNotes?.[s.members[0]?.front.street ?? '']?.riseM, cap = pitchedVariantOf(lib, s)?.capRiseM ?? lib.pitched.capRiseM;
-  return +Math.min(lib.pitched.maxRiseM, rise, seen ?? measuredRiseOf(lib, s) ?? cap ?? Infinity).toFixed(2);
+  return +Math.min(lib.pitched.maxRiseM, rise, seen ?? cap ?? Infinity).toFixed(2);
 }
 /**
  * Round 10: the rise AHN4 measures over a series that reads pitched (`measuredRoofOf`), the median `frontRiseM` of its
@@ -201,8 +201,9 @@ export function pitchedRiseOf(lib: DistrictLibrary, s: GenSeries): number | null
  * photo rectified onto the wall plane, and a roof leaning back from the wall is foreshortened there: 3 m of 62-degree
  * tiles behind a 14 m eaves line project to about 1 m from a camera 10 m off the front, 2 m from one 25 m off
  * (Beethovenstraat 145103, round 9 held-out: "the dark grey hipped roof shows as a thin strip"; AHN reads 4.1 m).
- * The game's camera foreshortens the true roof itself, so un-noted series draw what AHN measures; a street note's seen
- * rise still wins.
+ * Not drawn (round 10 held-out A/B): drawing it lost Olympiaplein, Apollolaan and Argonautenstraat to the capped
+ * round 9 ("a huge red tiled roof the photo does not have"), on sheets that are elevations, not the street camera; the
+ * cap stands until the roof is judged on in-game frames. Kept for that judgement and for the evidence text.
  */
 export function measuredRiseOf(lib: DistrictLibrary, s: GenSeries): number | null {
   const roofs = lib.measured?.roofs;
@@ -225,7 +226,7 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
     wall: ((w) => f({ material: d.wall.material, family: d.wall.family, hex: w.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, w.hex ? `measured brick ${w.hex} (${w.evidence ?? 'district photos'})` : ''))(wallHexOf(lib, fam, rowId)),
     roofStorey: riseM !== null && pv
       ? f<RowRoofStorey>({ kind: 'mansard', material: pv.material, dormersPerFront: pv.dormersPerFront, dormerKind: pv.dormerKind, ...(pv.hoist ? { hoist: true } : {}) },
-        `pitched roof: 3DBAG rise ${bagRiseOf(s)} m >= ${lib.pitched!.minRiseM} m, drawn at ${lib.streetNotes?.[s.members[0]?.front.street ?? '']?.riseM !== undefined ? 'the street note\'s seen rise' : measuredRiseOf(lib, s) !== null ? 'the AHN4 front rise (series median)' : 'the district\'s seen-rise cap'} ${riseM} m (${pv.evidence}); drawn as the row mansard at ${pv.pitchDeg} deg under buurtKit`)
+        `pitched roof: 3DBAG rise ${bagRiseOf(s)} m >= ${lib.pitched!.minRiseM} m, drawn at ${lib.streetNotes?.[s.members[0]?.front.street ?? '']?.riseM !== undefined ? 'the street note\'s seen rise' : 'the district\'s seen-rise cap'} ${riseM} m${measuredRiseOf(lib, s) !== null ? ` (AHN4 front rise ${measuredRiseOf(lib, s)} m)` : ''} (${pv.evidence}); drawn as the row mansard at ${pv.pitchDeg} deg under buurtKit`)
       : f(d.roofStorey),
     extras: f(d.extras),
     windowShare: f(d.windowShare),
