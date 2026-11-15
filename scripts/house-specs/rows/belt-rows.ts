@@ -23,8 +23,9 @@ interface CutRow { pandId: string; wallLenM?: number; wall?: { heightM: number }
 
 /** Pands the world draws as a twin (same footprint, the other kept): the member is the world's pand, its evidence stays
  *  filed under the D1 pand. Herengracht 2-4: the world holds NL.IMBAG.Pand.0363100100091828 (taller, identical footprint)
- *  and drops 0363100012168202, so a record on the D1 pand drew nothing (integrator, 2026-11-15). */
-export const WORLD_TWINS: Readonly<Record<string, string>> = { '0363100012168202': '0363100100091828' };
+ *  and drops 0363100012168202, so a record on the D1 pand drew nothing (integrator, 2026-11-15). Herengracht 115: the world
+ *  holds 0363100012253804 (19.2 m, the same 873 m2 footprint) and drops 0363100012169011 (12.9 m) as its lower twin. */
+export const WORLD_TWINS: Readonly<Record<string, string>> = { '0363100012168202': '0363100100091828', '0363100012169011': '0363100012253804' };
 
 /** Numbers stated by a pand's addresses on the street ("Herengracht 46D" -> 46). */
 export function numbersOf(addresses: readonly string[], street: string): number[] {
