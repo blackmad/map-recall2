@@ -78,7 +78,8 @@ export type RowHeadDressing = (typeof ROW_HEAD_DRESSINGS)[number];
 export const ROW_HEAD_SHAPES = ['flat', 'segmental', 'round', 'relieving'] as const;
 export type RowHeadShape = (typeof ROW_HEAD_SHAPES)[number];
 /** The upper window cell: tall sash/T-windows (the period default) or casements with a top light. */
-export const ROW_WINDOW_KINDS = ['tall-upper', 'sash', 't-window', 'casement-toplight', 'casement', 'sash-8-over-8', 'sash-small-panes'] as const;
+/** `cross`: a cross window (kruiskozijn), a mullion and a transom a third down (Herengracht 27). */
+export const ROW_WINDOW_KINDS = ['tall-upper', 'sash', 't-window', 'casement-toplight', 'casement', 'sash-8-over-8', 'sash-small-panes', 'cross'] as const;
 export type RowWindowKind = (typeof ROW_WINDOW_KINDS)[number];
 /** The wall material; the colour is a judged family (judgedColour.ts JUDGED_FAMILIES), never a sampled hex. */
 export const ROW_WALL_MATERIALS = ['brick', 'painted-brick', 'stucco', 'stone'] as const;
@@ -151,6 +152,13 @@ export interface RowGround {
    * door and window, Weteringschans 168042): drawn as one unit, not split by width. Absent: the renderer's own split.
    */
   shopUnits?: RowField<number>;
+  /** Ground openings with an arched head, by index of `groundBays` as seen (Herengracht 27's arched ground window): the
+   *  glass follows the arch. Over a souterrain the ground openings are the bel-etage's. Absent: none. */
+  archedOpenings?: { index: number[]; shape?: 'segmental' | 'round' };
+  /** The basement storey's front as read (Herengracht 25-29, 0363100012175402): a stone plinth facing (a named colour or
+   *  hex, absent grey) with arched doorways at these indices of `groundBays` as seen, round or segmental (absent round).
+   *  Drawn on a souterrain or basement-windows front. Absent: the basement as today. */
+  basementFront?: { plinth?: string; doors?: number[]; head?: 'round' | 'segmental' };
 }
 
 /** The design of a series (and, as `Partial`, a front's overrides). Every field is solved with a source. */
@@ -290,8 +298,11 @@ export interface RowDoorcase {
    *  storey, posts between the door and every window and an entresol rail across them with a light over each opening
    *  (0363100012176327); it replaces the door's own case. Absent: the door's own case. */
   span?: 'ground' | 'frame';
-  /** `frame`: the entresol rail's height as a share of the frame (absent 0.58). */
+  /** `frame`: the entresol rail's height as a share of the frame (absent 0.58; 0.5 with two tiers). */
   entresol?: number;
+  /** `frame`: two tall glazed tiers filling the storey up to under the next storey's sills (Herengracht 279), the rail at
+   *  mid height. Absent: the frame stops over the openings with a low entresol. */
+  tiers?: 2;
   /** The leaf's paint: `black` (near-black, the belt's usual door) or a hex. Absent: the kit's brown. */
   door?: 'black' | string;
 }
