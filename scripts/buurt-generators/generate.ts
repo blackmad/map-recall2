@@ -70,7 +70,7 @@ export function districtPands(lib: DistrictLibrary): GenPand[] {
       if (!polys.some((q: any) => cx >= q.box[0] && cx <= q.box[2] && cy >= q.box[1] && cy <= q.box[3] && inside(q.rings, cx, cy))) continue;
       const num = (v: unknown) => typeof v === 'number' && Number.isFinite(v) ? v : null;
       const fact = facts.get(id.replace(/^NL\.IMBAG\.Pand\./, '')) ?? facts.get(id);
-      out.set(id, { id, ring: ring.map(c => [c[0], c[1]] as const), year: num(p.year), eavesM: num(p.eaves), ridgeM: num(p.ridge), roofSlot: fact?.slot ?? null, roofCode: num(p.roof) });
+      out.set(id, { id, ring: ring.map(c => [c[0], c[1]] as const), year: num(p.year), eavesM: num(p.eaves), ridgeM: num(p.ridge), heightM: num(p.height), roofSlot: fact?.slot ?? null, roofCode: num(p.roof) });
     }
   }
   return [...out.values()].sort((a, b) => a.id < b.id ? -1 : 1);

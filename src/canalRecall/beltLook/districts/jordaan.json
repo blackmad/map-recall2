@@ -1,0 +1,223 @@
+{
+ "id": "jordaan",
+ "note": "Jordaan (wijk AB) district look, centrum-looks lane 2026-11-15: the belt look's donor method with the Jordaan's own reads. Measured: scripts/centrum-looks/measure-district.ts. maxYear: pands built after it (BAG year, unless the register states an earlier facade year) are left to today and the buurt generator (1915-1944 blocks, 1980s renewal); they break rows like described pands.",
+ "buurten": [
+  "AB01",
+  "AB02",
+  "AB03",
+  "AB04",
+  "AB05",
+  "AB06",
+  "AB07",
+  "AB08",
+  "AB09",
+  "AB10",
+  "AB11"
+ ],
+ "readDirs": [
+  "answers"
+ ],
+ "canals": [
+  "Prinsengracht"
+ ],
+ "pitchM": {
+  "min": 3,
+  "max": 3.8
+ },
+ "foreignDonor": 1,
+ "measured": {
+  "at": "2026-11-15",
+  "donors": 65,
+  "pitch": {
+   "n": 41,
+   "p10": 2.53,
+   "p25": 3.07,
+   "p50": 3.5,
+   "p75": 3.8,
+   "p90": 4.08,
+   "band": {
+    "min": 3,
+    "max": 3.8
+   },
+   "rule": "min p25 floor 0.1, max p75 round 0.1"
+  },
+  "readCrownByPeriod": {
+   "1700s": {
+    "cornice": 6,
+    "bell": 2,
+    "point": 1,
+    "neck": 6,
+    "mansard": 1
+   },
+   "1870-1914": {
+    "cornice": 19,
+    "bell": 2,
+    "point": 2,
+    "neck": 2,
+    "mansard": 1,
+    "step": 2,
+    "flat": 2
+   },
+   "1800-1869": {
+    "point": 1,
+    "cornice": 4,
+    "step": 1,
+    "flat": 1,
+    "mansard": 1
+   },
+   "pre1700": {
+    "neck": 2,
+    "pitched-eaves": 1,
+    "flat": 1,
+    "step": 2
+   },
+   "1980+": {
+    "cornice": 1
+   },
+   "1945-1979": {
+    "cornice": 2
+   },
+   "1915-1944": {
+    "cornice": 1,
+    "bell": 1
+   }
+  },
+  "readFinishByPeriod": {
+   "1700s": {
+    "painted-brick": 2,
+    "brick": 14
+   },
+   "1870-1914": {
+    "painted-brick": 2,
+    "brick": 26,
+    "stucco": 2
+   },
+   "1800-1869": {
+    "brick": 7,
+    "stucco": 1
+   },
+   "pre1700": {
+    "brick": 5,
+    "stucco": 1
+   },
+   "1980+": {
+    "brick": 1
+   },
+   "1945-1979": {
+    "brick": 2
+   },
+   "1915-1944": {
+    "brick": 2
+   }
+  },
+  "readGroundByPeriod": {
+   "1700s": {
+    "not-visible": 2,
+    "dwelling": 11,
+    "shopfront": 2,
+    "warehouse": 1
+   },
+   "1870-1914": {
+    "dwelling": 17,
+    "not-visible": 2,
+    "shopfront": 11
+   },
+   "1800-1869": {
+    "not-visible": 1,
+    "dwelling": 5,
+    "shopfront": 2
+   },
+   "pre1700": {
+    "shopfront": 4,
+    "dwelling": 2
+   },
+   "1980+": {
+    "shopfront": 1
+   },
+   "1945-1979": {
+    "shopfront": 2
+   },
+   "1915-1944": {
+    "shopfront": 2
+   }
+  },
+  "registerCrownByPeriod": {
+   "1800-1869": {
+    "cornice": 82,
+    "bell": 43,
+    "neck": 6,
+    "point": 4
+   },
+   "1700s": {
+    "neck": 124,
+    "point": 29,
+    "bell": 122,
+    "cornice": 53,
+    "spout": 1
+   },
+   "pre1700": {
+    "point": 19,
+    "cornice": 7,
+    "neck": 14,
+    "bell": 16,
+    "step": 15
+   },
+   "1870-1914": {
+    "cornice": 19,
+    "step": 18,
+    "neck": 1,
+    "point": 3,
+    "bell": 6
+   },
+   "1980+": {
+    "cornice": 1,
+    "flat": 1
+   },
+   "1945-1979": {
+    "point": 2,
+    "cornice": 3
+   },
+   "1915-1944": {
+    "cornice": 2
+   }
+  },
+  "readsByStreet": {
+   "Bloemgracht": 20,
+   "Bloemstraat": 2,
+   "Egelantiersgracht": 13,
+   "Prinsengracht": 7,
+   "Nieuwe Leliestraat": 5,
+   "Rozengracht": 4,
+   "Eerste Bloemdwarsstraat": 1,
+   "Tweede Egelantiersdwarsstraat": 3,
+   "Tuinstraat": 2,
+   "Tweede Tuindwarsstraat": 4,
+   "Egelantiersstraat": 1,
+   "Eerste Leliedwarsstraat": 2,
+   "Akoleienstraat": 1
+  }
+ },
+ "maxYear": 1914,
+ "flatTopNoGable": true,
+ "slopedBand": true,
+ "measuredRoofStorey": true,
+ "wallDraw": {
+  "note": "Centrum-looks round 3 (2026-11-16): walls drawn run by run, not house by house (wallDraw.ts): a run of free fronts of one period takes one family (its own cut samples' median, else its street's agreeing reads, paint included, else these period weights), each house a small tone inside it. measure: false: the Jordaan draws these judged weights, not its reads' measured ones (generate.ts reports both): its cut samples are underexposed and read absolutely give 37 % dark grey brick, the round-1 fault ('too dark and uniform'). Round 3 trims round 2's weights on the judges' word: no buff by lot (Lindengracht, Leidsekade: tan where the photo is brown or red-brown) and less orange-red (Leidsekade, Egelantiersgracht: 'too bright a red'). Paint is never drawn by lot: only where a read, the register or the street's reads say so.",
+  "before1860": {
+   "red-brown-brick": 0.45,
+   "brown-brick": 0.4,
+   "orange-red-brick": 0.15
+  },
+  "from1860": {
+   "brown-brick": 0.5,
+   "red-brown-brick": 0.35,
+   "orange-red-brick": 0.15
+  },
+  "runSamples": 2,
+  "priorN": 8,
+  "prior": "own",
+  "measure": false
+ },
+ "roofStoreyNeedsPhoto": true,
+ "gableFootSouterrainShare": 0
+}

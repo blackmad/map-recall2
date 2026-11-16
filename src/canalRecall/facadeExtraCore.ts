@@ -57,14 +57,33 @@ export type ExtraContext = {
 export type RowHeadKind = { shape?: string; dressing?: string };
 export type RowDressContext = {
   cornice?: string;
+  /** A stated timber cornice (RowDesign.corniceDress): `row-cornice` draws it in place of the kind's moulding. */
+  corniceDress?: import('./houseSpec/row/types.js').RowCorniceDress;
   windows?: Array<{ x0: number; x1: number; z0: number; z1: number; storey: number } & RowHeadKind>;
   heads?: Array<{ x0: number; x1: number; storeys?: number[] } & RowHeadKind>;
   /** A stoop up to a bel-etage street door over a souterrain, the door at this end of the wall as laid out (x grows). */
-  stoop?: { end: 'start' | 'end' | 'centre'; /** false: the raised door only, no steps read. */ steps?: false };
+  stoop?: { end: 'start' | 'end' | 'centre'; /** false: the raised door only, no steps read. */ steps?: false;
+    /** The read street door's place on this wall (m along x), when the record states it: the stoop stands at the bel-etage
+     *  window nearest it, on this wall only (a front drawn as several walls has one stoop). */
+    at?: number; /** `at` is the read door index's place itself (the painted cells' window there), not a nearest-window hint. */ exact?: true;
+    /** The flight's form (absent: straight out between stone cheeks) and an iron railing (absent: none). */
+    form?: 'straight' | 'side' | 'double'; railing?: true;
+    /** The door's stated doorcase (RowGround.doorcase): pilasters, entablature or pediment, fanlight. */
+    doorcase?: import('./houseSpec/row/types.js').RowDoorcase };
+  /** The street door's stated doorcase (RowGround.doorcase on a front without a stoop): row-doorcase draws it. */
+  doorcase?: import('./houseSpec/row/types.js').RowDoorcase;
   /** The stated balcony: renderer upper storeys (1 = the first upper row) and axis. */
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
   /** Upper windows' share of their axis pitch, frames included (a row type's window width). */
   windowShare?: number;
+  /** The stated window joinery (row-sash): the window kind, white frame and bar widths (m), panes per sash. */
+  glazing?: { kind: string; frameM: number; barM: number; panes?: number };
+  /** Floor lines (m over the wall's base) when the storeys follow stated window heights (row-floors). */
+  floorsM?: number[];
+  /** Ground storeys faced apart from the wall (row-ground-wall), on this wall's x: the facing's colour and its top. */
+  groundWalls?: Array<{ x0: number; x1: number; hex: string; top: 'plain' | 'ledge' | 'scrolled' }>;
+  /** Stated basement fronts (row-basement): a stone plinth over the souterrain with arched doorways, on this wall's x. */
+  basements?: Array<{ x0: number; x1: number; hex: string; head: 'round' | 'segmental'; doors: Array<[number, number]> }>;
   /** Buurt kit paired casements: the white mullion parting each window, a share of its width (row-glazing). */
   mullionShare?: number;
   /** One stated shop opening (row-shopfront): its frame colour and the entrance's end of this wall as laid out. */

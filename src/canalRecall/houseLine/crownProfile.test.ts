@@ -48,3 +48,28 @@ test('crown accents: HD20 167818 neck draws one centred attic light with a white
   assert.ok(Math.abs(mid) < 1e-6, 'centred');
   assert.ok(Math.max(...ys) - Math.min(...ys) < 1.55, 'inside the neck');
 });
+
+test('crown profile: Kinkerstraat 67 step gable with sloped shoulders (one step, then the top tread), symmetric', () => {
+  const W = 5, plain = rowCrownProfile({ shape: 'step', riseM: 2.9, steps: 2 }, W, 0);
+  const sloped = rowCrownProfile({ shape: 'step', riseM: 2.9, steps: 2, shoulder: 'sloped' }, W, 0);
+  // The eaves-level corners under the first risers are gone; the rest of the outline is the plain step's.
+  assert.equal(sloped.length, plain.length - 2);
+  const inner = (p: readonly (readonly [number, number])[]) => p.filter(([x, y]) => Math.abs(x) < W / 2 - 1e-6 && y < 0.1).length;
+  assert.equal(inner(sloped), inner(plain) - 2);
+  for (let i = 0; i < sloped.length; i++) {
+    const [x, y] = sloped[i], [mx, my] = sloped[sloped.length - 1 - i];
+    assert.ok(Math.abs(x + mx) < 1e-6 && Math.abs(y - my) < 1e-6, `symmetric at ${i}`);
+  }
+  assert.equal(Math.max(...sloped.map(p => p[1])), Math.max(...plain.map(p => p[1])));
+});
+
+test('spout (Herengracht 71/73, round 5): symmetric, a narrow upright top on small shoulders, not a bell or a point', () => {
+  const W = 5.6, c: RowCrown = { shape: 'spout', riseM: 3.3, attic: 1 }, p = rowCrownProfile(c, W, rowCrownRoofRise(c, W)), top = Math.max(...p.map(q => q[1]));
+  const crest = p.filter(q => Math.abs(q[1] - top) < 1e-6);
+  assert.equal(crest.length, 2);
+  const crestW = Math.abs(crest[1][0] - crest[0][0]);
+  assert.ok(crestW > 0.6 && crestW < W * 0.4, `crest ${crestW}`);
+  // Each crest corner stands on an upright side at least 0.8 m tall.
+  for (const c of crest) assert.ok(p.some(q => Math.abs(q[0] - c[0]) < 1e-6 && top - q[1] >= 0.8 - 1e-6), 'upright top');
+  for (const [x, y] of p) assert.ok(p.some(([u, v]) => Math.abs(u + x) < 1e-6 && Math.abs(v - y) < 1e-6), `asymmetric at ${x}`);
+});

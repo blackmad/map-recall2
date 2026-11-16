@@ -15,7 +15,7 @@ import { GABLE_SHAPES, roofPlanForFeature, type GableShape } from '../roofMesh.j
 import { heightAbovePandGround, type FrontRecord, type FrontRecordTable } from './frontRecord.js';
 import { hexToOklab, oklabToHex, paleWarmHeld } from '../houseSpec/wallColour.js';
 import { SOUTERRAIN_FACTOR } from '../houseSpec/storeyPlan.js';
-import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
+import { ROW_CROWN_SHAPES, ROW_GABLE_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
 import { buurtKitEnabled } from '../buurtGenerator/kitFlag.js';
 import { buurtKitOf, frontNormalOf, kitFrontM, KIT_FLAT_RISE_M, KIT_MULLION_SHARE, kitWantsCoping, straightenFeature, type BuurtKitFront } from '../buurtGenerator/kit/frontKit.js';
 import { buurtRoofKitFor, kitDrawsFront } from '../buurtGenerator/kit/roofKit.js';
@@ -33,6 +33,12 @@ export interface RowFrontRecord {
   /** Where the crown starts (m): a cornice front's top (= topM), a gable's foot. */
   eavesM: number | null;
   crown: { family: RowCrownFamily; riseM?: number; widthM?: number; neckWidthM?: number; atticWindows?: number; hoist?: boolean;
+    /** A step gable's treads up each side (house rows: RowDesign.gable.steps). */
+    steps?: number;
+    /** House rows' stated gable (RowDesign.gable): the neck's cap, finials, the neck's height over the shoulders, the attic light's head. */
+    cap?: 'pediment' | 'segmental' | 'rounded' | 'flat'; finials?: boolean; shoulder?: 'sloped'; neckOverM?: number; atticHead?: 'round' | 'segmental'; upperLight?: boolean; dress?: 'belt';
+    /** The gable's white sandstone as stated (RowDesign.gable.stone). */
+    stone?: import('../houseSpec/row/types.ts').RowGableStone;
     /** Traced attic lights in the crown, [x0, x1, z0, z1]: x from the front's centre as seen, z above the crown's foot. */
     lights?: Array<[number, number, number, number]>;
     /** A chimney stack on the crown: its top (pand datum) and width. */
@@ -81,7 +87,7 @@ export interface RowFrontRecord {
 export interface RowHeadsDraw {
   a0: number; a1: number;
   shape: 'flat' | 'segmental' | 'round' | 'relieving';
-  dressing: 'none' | 'block-course' | 'keystone' | 'segmental-tympanum' | 'dentil-lintel' | 'jack-blocks' | 'stone-lintel' | 'arch-ring' | 'block-surround';
+  dressing: 'none' | 'block-course' | 'keystone' | 'segmental-tympanum' | 'dentil-lintel' | 'jack-blocks' | 'stone-lintel' | 'arch-ring' | 'block-surround' | 'tablet' | 'arched-frame';
   /** Upper storeys (1 = first above the ground) the dressing is on; absent = every upper storey. */
   storeys?: number[];
 }
@@ -91,10 +97,16 @@ export interface RowDormerDraw { a: number; kind: 'pediment' | 'gabled' | 'plain
 export interface RowSeriesDraw {
   /** The series id: it seeds the bay preset, the extras' dice and the roof tone, so every member draws alike. */
   id: string;
+  /** Plain extras (ROW_FRONT_EXTRAS) the series leaves out (Herengracht belt rows: the wall-anchor crosses read as
+   *  crosshairs, 2026-11-15). Absent: all of them may draw. */
+  omitExtras?: string[];
   /** The cornice moulding at the wall top (`row-cornice`); none or absent: the plain band. */
   cornice?: 'none' | 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
-  /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, or a flat lid. */
-  roofStorey?: { kind: 'mansard' | 'none'; riseM?: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[];
+  /** A stated timber cornice (RowDesign.corniceDress): drawn by `row-cornice` in place of the kind's moulding. */
+  corniceDress?: import('../houseSpec/row/types.js').RowCorniceDress;
+  /** The storey behind the cornice: a slate mansard face (`riseM` over the wall top) with its dormers, a pitched (hipped)
+   *  roof with its dormers on the street slope (`pitched`), or a flat lid. */
+  roofStorey?: { kind: 'mansard' | 'pitched' | 'none'; riseM?: number; material?: 'slate' | 'tile' | 'zinc'; dormers: RowDormerDraw[];
     /** The mansard runs on into the neighbour's on this side (left/right as seen): no hip, no eaves return there. */
     joins?: { left?: boolean; right?: boolean };
     /** The member's street front width (lane D `members[].widthM`, m): which outline wall the roof faces on a corner. */
@@ -109,11 +121,13 @@ export interface RowSeriesDraw {
    *  cornice line, so every member picks the same preset whatever its own height, year or position. */
   look?: { bays: number; year?: number | null; heightM?: number | null; seed?: string; whiteFrames?: boolean; /** The record's glazing as the painter's sash. */ sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six' };
   /** A stoop up to the bel-etage street door (a souterrain front), the door on this side as seen from the street. */
-  stoop?: { side: 'left' | 'right' | 'centre'; /** false: a raised ground door with no stoop read (no steps drawn). */ steps?: false };
+  stoop?: { side: 'left' | 'right' | 'centre'; /** false: a raised ground door with no stoop read (no steps drawn). */ steps?: false;
+    /** The flight's form and an iron railing, as the ground states (RowGround.stoopForm / stoopRailing). */
+    form?: 'straight' | 'side' | 'double'; railing?: true; doorcase?: import('../houseSpec/row/types.ts').RowDoorcase };
   /** The basement row's share of the upper pitch, when not SOUTERRAIN_FACTOR (low basement windows). */
   souterrainFactor?: number;
   /** The street door as read (left/right/centre as seen; `index` of `bays` ground openings, left to right as seen). */
-  door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number };
+  door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number; /** A stated doorcase (RowGround.doorcase). */ doorcase?: import('../houseSpec/row/types.ts').RowDoorcase };
   /** The ground storey's use: a shop ground draws the shop window (specShop), a dwelling ground none. */
   shop?: boolean;
   /** The ground (shopfront) colour as the record states it (`ground.colour`), drawn as stated. */
@@ -124,7 +138,21 @@ export interface RowSeriesDraw {
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
   /** Upper windows' share of their axis pitch, frames included (the row type's window width, rowSeries.ts ROW_TYPE_LOOK). */
   windowShare?: number;
+  /** The stated window joinery (RowDesign.glazing): kind, white frame and bar widths (m), panes per sash. */
+  glazing?: RowGlazingDraw;
+  /** Floor lines over the ground (m above the street datum) when the storeys are laid out by stated window heights. */
+  floorsM?: number[];
+  /** Ground storeys faced apart from the wall (RowDesign.groundWall), per front span. */
+  groundWalls?: RowGroundWallDraw[];
+  /** Stated basement fronts (RowGround.basementFront), per front span. */
+  basements?: RowBasementDraw[];
 }
+export type RowGlazingDraw = { kind: string; frameM: number; barM: number; panes?: number };
+/** A front's ground-storey facing as drawn (row-ground-wall): its span as fractions of the pand front, colour and top. */
+export type RowGroundWallDraw = { a0: number; a1: number; hex: string; top: 'plain' | 'ledge' | 'scrolled' };
+/** A front's basement as drawn (row-basement): its span, the plinth's colour, its doorways' spans (fractions of the pand
+ *  front, as seen) and their head. */
+export type RowBasementDraw = { a0: number; a1: number; hex: string; head: 'round' | 'segmental'; doors: Array<[number, number]> };
 
 /** One sub-front of a pand (fractions of the span, left to right as seen) with its own measured top and crown. */
 export interface SubFrontRecord { a0: number; a1: number; wallHex?: string; eavesM?: number | null; topM?: number | null; crown?: RowFrontRecord['crown']; fallback?: 'row-line' }
@@ -300,10 +328,10 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
 /** House rows: the wall dressing a series states (the mesher hands it to the extras as `rowDress`). */
 /** A single shopfront's frame when the record states no ground colour. */
 export const ROW_SHOP_FRAME = '#e6e1d6';
-export function rowDressOf(series: RowSeriesDraw): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
+export function rowDressOf(series: RowSeriesDraw): { omitExtras?: string[]; cornice?: string; corniceDress?: RowSeriesDraw['corniceDress']; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; basements?: RowBasementDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
   const single = series.shop === true && series.shopUnits === 1;
-  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.windowShare ? ['row-glazing'] : []), ...(single ? ['row-shopfront'] : [])];
-  return { ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
+  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.door?.doorcase && !series.stoop ? ['row-doorcase'] : []), ...(series.windowShare ? ['row-glazing'] : []), ...(series.glazing ? ['row-sash'] : []), ...(series.floorsM?.length ? ['row-floors'] : []), ...(series.groundWalls?.length ? ['row-ground-wall'] : []), ...(single ? ['row-shopfront'] : []), ...(series.basements?.length ? ['row-basement'] : [])];
+  return { ...(series.omitExtras?.length ? { omitExtras: series.omitExtras } : {}), ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.corniceDress ? { corniceDress: series.corniceDress } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(series.glazing ? { glazing: series.glazing } : {}), ...(series.floorsM?.length ? { floorsM: series.floorsM } : {}), ...(series.groundWalls?.length ? { groundWalls: series.groundWalls } : {}), ...(series.basements?.length ? { basements: series.basements } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
 }
 
 /** Crown family -> the roof planner's gable profile. */
@@ -352,6 +380,13 @@ export function windowShare(rec: RowFrontRecord, eavesM: number): number | null 
 export const ROW_FRONT_SPAN_TOLERANCE = { m: 0.5, share: 0.12 } as const;
 export const runTakesTrace = (runM: number, spanM: number | undefined): boolean =>
   !spanM || Math.abs(runM - spanM) <= Math.max(ROW_FRONT_SPAN_TOLERANCE.m, ROW_FRONT_SPAN_TOLERANCE.share * spanM);
+/** A stated sub-front crown (a step gable) also stands on a street run shorter than the front, down to this share of it: the
+ *  outline's front breaks at a party-wall overlap or a kink, so the visible run is part of this front, never a corner
+ *  (lane D round 8: 6 of 12 belt gables in held-out rounds 5-7 were dropped, Prinsengracht 175981-175984 on 2.5-2.7 m
+ *  runs of 4.1-4.2 m fronts, 168411 4.1 of 8.8 m). */
+export const STEP_RUN_MIN_SHARE = 0.45;
+export const runTakesSteps = (runM: number, spanM: number | undefined): boolean =>
+  runTakesTrace(runM, spanM) || (!!spanM && runM < spanM && runM >= STEP_RUN_MIN_SHARE * spanM);
 
 /** Interim window width as a share of the bay (coordinator: about 60-70 %). */
 export const ROW_FRONT_WINDOW_SHARE = 0.64;
@@ -442,6 +477,67 @@ export function stepCrown(f: SubFrontRecord, widthM: number): StepCrown | null {
   return { wallTopM: f.topM ?? f.eavesM };
 }
 
+/** A sub-front this much over its member's series line draws its own raised front (m). */
+export const ROW_RAISED_FRONT_M = 0.5;
+/** The sub-fronts of a series member with their steps when any front's top stands ROW_RAISED_FRONT_M over the series
+ *  line `top`: every wall stops at the line, and a taller front carries a full-width raised front (a cornice band to
+ *  its own top, `raised` crown with the band over the whole rise) on its span. Null when none is taller, the record has
+ *  no span, or steps are off. */
+export function rowRaisedFronts(rec: RowFrontRecord, top: number): Array<SubFrontRecord & { step: StepCrown }> | null {
+  const span = rec.spanM, subs = rec.subFronts;
+  if (!rowFrontStepsOn() || !span || !subs || subs.length < 2) return null;
+  const topOf = (f: SubFrontRecord) => f.topM ?? f.eavesM ?? top;
+  // A front standing to a lower line than the pand's (rowSeries: the pand takes its tallest line) steps down to it.
+  const lowOf = (f: SubFrontRecord) => f.eavesM != null && f.eavesM < top - ROW_RAISED_FRONT_M ? f.eavesM : null;
+  if (!subs.some(f => topOf(f) > top + ROW_RAISED_FRONT_M || lowOf(f) !== null)) return null;
+  return subs.map(f => {
+    const foot = lowOf(f) ?? top, rise = +(topOf(f) - foot).toFixed(2), W = (f.a1 - f.a0) * span;
+    // A front stating its gable (step, neck, bell, point, spout with its rise) draws that outline from its line to its top.
+    const g = f.crown ? rowGableCrown(f.crown, rise) : null;
+    if (g) return { ...f, step: { wallTopM: foot, crown: g.crown, gable: g.gable, riseM: rowCrownRoofRise(g.crown, W) } };
+    if (foot < top) return { ...f, step: { wallTopM: foot } };
+    if (!(rise > ROW_RAISED_FRONT_M)) return { ...f, step: { wallTopM: top } };
+    const crown: RowCrown = { shape: 'raised', riseM: rise, bandM: rise, cap: 'flat', onWall: true };
+    return { ...f, step: { wallTopM: top, crown, gable: 'cornice' as const, riseM: rowCrownRoofRise(crown, W) } };
+  });
+}
+
+/**
+ * House rows: a stated gable crown (lane D's RowDesign.gable: the record's crown carries `riseM`) as the kit's
+ * symmetric outline, `rise` over the series line: step treads (`steps`), neck, bell or point, white coping and edge
+ * trim, the attic lights as stated (none stated: one where it fits). Null for a cornice crown or one without a rise.
+ */
+export function rowGableCrown(c: RowFrontRecord['crown'], rise: number): { crown: RowCrown; gable: GableShape } | null {
+  const gable = FAMILY_GABLE[c.family], shape = c.family as RowCrownShape;
+  if (!gable || !(ROW_GABLE_SHAPES as readonly string[]).includes(shape) || shape === 'raised' || !(typeof c.riseM === 'number' && c.riseM > 0) || !(rise > ROW_RAISED_FRONT_M)) return null;
+  const crown: RowCrown = { shape, riseM: rise };
+  if (c.steps) crown.steps = c.steps;
+  if (c.atticWindows !== undefined) crown.attic = c.atticWindows;
+  if (c.neckWidthM) crown.neckW = c.neckWidthM;
+  const necked = shape === 'neck' || shape === 'bell';
+  if (necked && c.cap) crown.cap = c.cap;
+  // The neck over the shoulders: the shoulders end that far under the top (kit crownShoulderRise, a share of the rise).
+  if (necked && c.neckOverM && c.neckOverM > 0) crown.shoulderRise = +Math.max(0.1, Math.min(0.9, 1 - c.neckOverM / rise)).toFixed(3);
+  if (c.finials) crown.finials = true;
+  if (shape === 'step' && c.shoulder === 'sloped') crown.shoulder = 'sloped';
+  if (c.atticHead) crown.atticHead = c.atticHead;
+  if (c.upperLight) crown.upperLight = true;
+  if (c.stone) crown.stone = { ...c.stone };
+  if (c.dress === 'belt') crown.dress = 'belt';
+  return { crown, gable };
+}
+/** A one-front series member stating its gable: the whole front as one stepped span, its wall at the line, the gable on it. */
+export function rowGableFront(rec: RowFrontRecord, top: number): Array<SubFrontRecord & { step: StepCrown }> | null {
+  const span = rec.spanM;
+  if (!rowFrontStepsOn() || !span || rec.subFronts?.length || rec.topM === null) return null;
+  const g = rowGableCrown(rec.crown, +(rec.topM - top).toFixed(2));
+  if (!g) return null;
+  return [{ a0: 0, a1: 1, eavesM: top, topM: rec.topM, crown: rec.crown, step: { wallTopM: top, crown: g.crown, gable: g.gable, riseM: rowCrownRoofRise(g.crown, span) } }];
+}
+/** A series member whose crown is a stated gable (house rows): drawn by the series branch, the gable on its line. */
+export const rowStatedGable = (rec: RowFrontRecord): boolean =>
+  !!rec.series && rec.eavesM !== null && rec.topM !== null && rowGableCrown(rec.crown, +(rec.topM - rec.eavesM).toFixed(2)) !== null;
+
 /** `ROW_FRONT_STEPS=0` / `?rowFrontSteps=0`: a pand with sub-fronts keeps one top and one crown (the tallest front's). */
 export function rowFrontStepsOn(search?: string): boolean {
   try {
@@ -463,6 +559,9 @@ export const ROW_GROUND_FACTOR = 1.1;
 export function rowGroundM(topM: number, storeys: number): number {
   return +(ROW_GROUND_FACTOR * topM / (storeys - 1 + ROW_GROUND_FACTOR)).toFixed(2);
 }
+/** A pitched roof storey's rise over the cornice line (m): a hipped roof behind a belt cornice, its dormers on the street
+ *  slope (lane D round 8). One rise per series, as the mansard's. */
+export const PITCHED_RISE = { period: 3.0 } as const;
 export function mansardRise(stated: number | undefined): number {
   return typeof stated === 'number' && Number.isFinite(stated) && stated > 0 ? stated : MANSARD_RISE.period;
 }
@@ -523,12 +622,12 @@ export function withRowFront<T extends Feature>(feature: T): T {
   const sr = p.specRecipe && typeof p.specRecipe === 'object' ? p.specRecipe as Record<string, unknown> : null;
   // House rows (lane R): a series member draws its series' design. A cornice front (the round-1 rows) stands to the
   // series cornice line with the series roof storey behind it; a gabled member takes the record's crown as before.
-  if (rec.series && (family === 'cornice' || family === 'raised-cornice-dormer')) {
+  if (rec.series && (family === 'cornice' || family === 'raised-cornice-dormer' || rowStatedGable(rec))) {
     // Buurt generator kit (`buurtKit`): the outline straightened onto the record's front line (one street run, so the
     // series' bays fit the whole front), the roof at the kit's rise and pitch, its erkers on the roof kit. No kit: as before.
     const kit = buurtKitEnabled() ? buurtKitOf(rec.buurtKit) : null;
     if (kit) feature = straightenFeature(feature, kit);
-    const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(kit?.roof?.riseM ?? rs.riseM) : kit && kitWantsCoping(kit) ? KIT_FLAT_RISE_M : 0;
+    const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(kit?.roof?.riseM ?? rs.riseM) : rs?.kind === 'pitched' ? (rs.riseM && rs.riseM > 0 ? rs.riseM : PITCHED_RISE.period) : kit && kitWantsCoping(kit) ? KIT_FLAT_RISE_M : 0;
     const mansard = rs && rise > 0.5 ? { ...rs, riseM: rise, ...(rs.kind !== 'mansard' && kit?.joins ? { joins: kit.joins } : {}) } : null;
     const lv = levels(sr, rec, top, true);
     // The series' souterrain reaches the storey plan (levels drops a spec's own); a lone spec read never does.
@@ -546,11 +645,26 @@ export function withRowFront<T extends Feature>(feature: T): T {
       // 104 3.78 m, so 102's first-storey windows sat lower).
       sr2.groundM = rowGroundM(top, rec.storeys);
     }
+    // Stated window rows (rowSeries.ts rowWindowRows): the ground storey, or the souterrain cell, they stand on.
+    if (sr2?.windowBoxes && rec.rows?.length && rec.groundTopM !== undefined) {
+      sr2.groundM = rec.groundTopM;
+      if (rec.series.souterrain && rec.storeys) sr2.storeys = rec.storeys + 1;
+    }
     // A stated ground colour is the shopfront's paint, drawn as stated (threeBuildingFeatures takes fasciaHex as is).
     if (sr2 && rec.series.groundHex) sr2.fasciaHex = rec.series.groundHex;
+    // A member whose fronts carry their own taller tops (Kinkerstraat 126-138: two fronts of another series to 16.45 m
+    // over 13.45 m): the wall keeps the series line and each taller front stands a raised front of its own to its top,
+    // the step mesher's crown on its span (threeBuildingMesh steps). Without one, nothing changes.
+    // A stated gable (house rows round 3: RowDesign.gable) is the same step on the gabled front's span.
+    const raised = sr2 ? rowRaisedFronts(rec, top) ?? rowGableFront(rec, top) : null;
+    if (sr2 && raised) sr2.subFronts = raised;
+    // The raised fronts and the stated heads belong to the row's own street run: a corner member (126-138, 23 m down
+    // the side street) keeps them off its other run by the member's width (runTakesTrace).
+    if (sr2 && raised && rec.spanM && !sr2.frontSpanM) sr2.frontSpanM = rec.spanM;
     const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: kit?.sash ? { ...rowDressOf(rec.series), mullionShare: KIT_MULLION_SHARE } : rowDressOf(rec.series), ...(rec.series.shop !== undefined ? { specShop: rec.series.shop } : {}), ...(rec.series.look ? { rowLook: kit?.sash ? { ...rec.series.look, sash: kit.sash } : rec.series.look } : {}), ...lv };
-    if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
-      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}), ...(kit ? { frontM: kitFrontM(kit) } : mansard.frontM ? { frontM: mansard.frontM } : {}),
+    const pitched = mansard?.kind === 'pitched';
+    if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: pitched ? 'hipped' : 'mansardHip', roofDormer: mansard.dormers.length > 0,
+      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? (pitched ? 'tile' : 'slate'), dormers: mansard.dormers, series: rec.series.id, ...(pitched ? { shape: 'hipped' } : {}), ...(mansard.joins ? { joins: mansard.joins } : {}), ...(kit ? { frontM: kitFrontM(kit) } : mansard.frontM ? { frontM: mansard.frontM } : {}),
         ...(kit && rec.storeys ? { kit: buurtRoofKitFor(kit, top, rec.storeys, Number(sr2?.groundM) || rowGroundM(top, rec.storeys)), frontN: frontNormalOf(kit.frontLine) } : {}) } });
     else Object.assign(props, { height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' });
     const slab = rec.wallOnly ? rowWallSlab(rec.wallOnly.edge, feature.geometry) : null;
