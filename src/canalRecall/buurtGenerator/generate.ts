@@ -61,7 +61,14 @@ export interface DistrictPitchedRoof { minRiseM: number; maxRiseM: number; pitch
   streetNoteOnly?: true;
   /** The drawn rise's cap (m; round 8): the roof as the street sees it over the eaves, measured on the district's photos.
    *  3DBAG's rise (ridge - eaves) only gates the roof; drawn at full height the roof stood far taller than any photo. */
-  capRiseM?: number; capRiseEvidence?: string }
+  capRiseM?: number; capRiseEvidence?: string;
+  /** De Pijp (round 14): a pitch hidden over the eaves (measure.ts `hidden-pitch`) is the roof storey behind the cornice
+   *  whose dormers the street sees, not a flat top (Quellijnstraat 162395: "a row of dormers in the roof above the
+   *  cornice"); drawn at the cap. Absent, a hidden pitch reads flat (round 9). */
+  hiddenPitch?: { draws: 'roof-storey'; evidence: string };
+  /** De Pijp (round 14): a row-end member at least `minWidthM` wide (a corner block) whose own AHN4 front does not read
+   *  pitched draws no roof storey: the flat cornice the photo shows (Eerste Jan Steenstraat 152914). */
+  cornerFlat?: { minWidthM: number; evidence: string } }
 export interface DistrictLibrary {
   district: string;
   title: string;
@@ -119,6 +126,10 @@ export interface DistrictLibrary {
 /** Round 9 measurements: `walls` per generator row id (street-firstPand), `roofs` per pand (AHN4 DSM, measure.ts roofFormOf). */
 export interface DistrictMeasured {
   walls?: Record<string, { hex: string; n: number; of: number; dates: number; reads: Array<{ pano: string; date: string; hex: string }> }>;
+  /** Round 14 (De Pijp): per row, the wall family an opus reader names on the row's panorama cut (scripts/buurt-generators/
+   *  row-cuts.ts, then scripts/centrum-looks/photo-reads.ts): `family` in the Centrum reader's words, read where the
+   *  pixel samples are shade or glare. Used at `PHOTO_WALL_MIN` confidence, over the pixel reads. */
+  photoWalls?: Record<string, { finish: string; family: string; confidence: number; pandId: string }>;
   roofs?: Record<string, { form: 'flat' | 'pitched' | 'hidden-pitch' | 'gable-street' | 'unclear'; frontRiseM: number; eavesM?: number; ridgeM?: number; why: string }>;
   rowRoofs?: Record<string, { form: string; hipped: { start: boolean; end: boolean } }>;
   /** Round 10: per row, each kit erker (`<pandId>:<index>`) and the finish its panoramas read (measure.ts erkerFinishOf,
@@ -196,11 +207,42 @@ export function streetWallOf(lib: DistrictLibrary, rowId: string): { hex: string
   const med = (i: 0 | 1 | 2) => { const v = labs.map(l => l[i]).sort((x, y) => x - y); return v[(v.length - 1) >> 1]; };
   return { hex: labHex([med(0), med(1), med(2)]), rows };
 }
-export function wallHexOf(lib: DistrictLibrary, fam: DistrictFamily | null, rowId: string): { hex?: string; evidence?: string; family?: JudgedFamily } {
+/** Round 14: the Centrum photo reader's families (scripts/centrum-looks/photo-reader-prompt.md) as the judged palette's, and
+ *  its finishes as the row's wall material; a read under `PHOTO_WALL_MIN` confidence, or `unclear`, is not used. */
+export const PHOTO_WALL_MIN = 0.7;
+export const PHOTO_WALL_FAMILY: Record<string, JudgedFamily> = {
+  'dark-grey-brick': 'dark-brown-brick', 'purple-brown-brick': 'purple-brown-brick', 'brown-brick': 'brown-brick', 'red-brown-brick': 'red-brown-brick',
+  'orange-red-brick': 'orange-red-brick', 'buff-brick': 'buff-brick', 'white-paint': 'painted-white', 'cream-paint': 'cream-render',
+  'pale-grey': 'pale-grey-stucco', 'dark-paint': 'painted-dark',
+};
+const PHOTO_WALL_MATERIAL: Record<string, RowWallMaterial> = { brick: 'brick', paint: 'painted-brick', stucco: 'stucco' };
+type PhotoWall = { family: JudgedFamily; material: RowWallMaterial; read: string };
+const photoWallOf = (r: { finish: string; family: string; confidence: number } | undefined): PhotoWall | null => {
+  const family = r && r.confidence >= PHOTO_WALL_MIN ? PHOTO_WALL_FAMILY[r.family] : undefined;
+  return family && r ? { family, material: PHOTO_WALL_MATERIAL[r.finish] ?? 'brick', read: `${r.finish} ${r.family} ${r.confidence}` } : null;
+};
+/** Round 14: the street's photo family where at least two of its rows read one family confidently and they are at least
+ *  60 % of its confident reads; null otherwise. */
+export function streetPhotoWallOf(lib: DistrictLibrary, rowId: string): (PhotoWall & { rows: string[] }) | null {
+  const reads = lib.measured?.photoWalls; if (!reads) return null;
+  const slug = streetSlugOf(rowId), got = Object.keys(reads).filter(k => streetSlugOf(k) === slug).sort().flatMap(k => { const w = photoWallOf(reads[k]); return w ? [{ k, w }] : []; });
+  const n = new Map<string, typeof got>();
+  for (const g of got) n.set(g.w.family + '|' + g.w.material, [...(n.get(g.w.family + '|' + g.w.material) ?? []), g]);
+  const [best, second] = [...n.values()].sort((a, b) => b.length - a.length || (a[0].k < b[0].k ? -1 : 1));
+  // A street's family: a 60 % majority of its confident reads (at least 2), or a clear plurality (at least 3 and
+  // twice the runner-up; Sarphatipark reads red-brown 3, purple-, brown-, buff-brick 1 each).
+  const holds = best && ((best.length >= 2 && best.length >= 0.6 * got.length) || (best.length >= 3 && best.length >= 2 * (second?.length ?? 0)));
+  return holds ? { ...best[0].w, rows: best.map(g => g.k) } : null;
+}
+export function wallHexOf(lib: DistrictLibrary, fam: DistrictFamily | null, rowId: string): { hex?: string; evidence?: string; family?: JudgedFamily; material?: RowWallMaterial } {
   const own = lib.rowNotes?.[rowId]?.wall;
   if (own) return { hex: own.hex, evidence: `the row's own photo: ${own.evidence}` };
   const stated = lib.rowNotes?.[rowId]?.wallFamily;
   if (stated) return { hex: variedTone(stated.family, `${rowId}:${stated.family}`), family: stated.family, evidence: `the row's own photo states ${stated.family}: ${stated.evidence}` };
+  const pw = photoWallOf(lib.measured?.photoWalls?.[rowId]);
+  if (pw) return { hex: variedTone(pw.family, `${rowId}:${pw.family}`), family: pw.family, material: pw.material, evidence: `the row's panorama cut (${lib.measured!.photoWalls![rowId].pandId}) read by the photo reader: ${pw.read}` };
+  const sp = streetPhotoWallOf(lib, rowId);
+  if (sp) return { hex: variedTone(sp.family, `${rowId}:${sp.family}`), family: sp.family, material: sp.material, evidence: `the street's panorama cuts read ${sp.family} by the photo reader (${sp.rows.join(', ')})` };
   const warmed = (hex: string) => { const w = warmWall(hex); return w === hex ? { hex, note: '' } : { hex: w, note: ` (warmed from ${hex}: brick is never drawn grey)` }; };
   const m = lib.measured?.walls?.[rowId];
   if (m) { const w = warmed(m.hex); return { hex: w.hex, evidence: `the row's panoramas: ${m.n} of ${m.of} reads agree (${m.dates} capture date${m.dates === 1 ? '' : 's'}; ${m.reads.map(r => `${r.pano} ${r.date} ${r.hex}`).join(', ')})${w.note}` }; }
@@ -238,7 +280,8 @@ export const ROOF_MAJORITY = 0.6;
 export function measuredRoofOf(lib: DistrictLibrary, s: GenSeries): 'pitched' | 'flat' | null {
   const roofs = lib.measured?.roofs; if (!roofs) return null;
   // A pitch hidden over the eaves (measure.ts `hidden-pitch`) is a flat top to the street.
-  const forms = s.members.map(m => { const f = roofs[pandNumber(m.pand.id)]?.form; return f === 'hidden-pitch' ? 'flat' : f; }).filter((f): f is 'pitched' | 'flat' => f === 'pitched' || f === 'flat');
+  const hidden = lib.pitched?.hiddenPitch ? 'pitched' : 'flat';
+  const forms = s.members.map(m => { const f = roofs[pandNumber(m.pand.id)]?.form; return f === 'hidden-pitch' ? hidden : f; }).filter((f): f is 'pitched' | 'flat' => f === 'pitched' || f === 'flat');
   if (!forms.length || forms.length < s.members.length / 2) return null;
   const p = forms.filter(f => f === 'pitched').length / forms.length;
   return p >= ROOF_MAJORITY ? 'pitched' : 1 - p >= ROOF_MAJORITY ? 'flat' : null;
@@ -250,7 +293,8 @@ export const bagRiseOf = (s: GenSeries): number | null => median(s.members.flatM
  *  over 3DBAG's rise or `maxRiseM`. */
 export function pitchedRiseOf(lib: DistrictLibrary, s: GenSeries): number | null {
   if (!lib.pitched || pitchGate(lib, s) !== null) return null;
-  const rise = bagRiseOf(s);
+  const ahnHidden = !!lib.pitched.hiddenPitch && measuredRoofOf(lib, s) === 'pitched';
+  const rise = ahnHidden ? Math.max(bagRiseOf(s) ?? 0, lib.pitched.minRiseM) : bagRiseOf(s);
   if (rise === null || rise < lib.pitched.minRiseM) return null;
   const seen = lib.streetNotes?.[s.members[0]?.front.street ?? '']?.riseM, cap = pitchedVariantOf(lib, s)?.capRiseM ?? lib.pitched.capRiseM;
   return +Math.min(lib.pitched.maxRiseM, rise, seen ?? cap ?? Infinity).toFixed(2);
@@ -283,7 +327,7 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
     storeys: f(fam.storeys, `${s.eavesM} m line over a ${d.groundM} m ground and ${d.storeyM} m storeys`),
     bays: f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes`),
     windows: f(d.windows), heads: f<RowHeads | RowHeads[]>(d.heads), whiteFrames: f(d.whiteFrames), sills: f(d.sills),
-    wall: ((w) => f({ material: d.wall.material, family: w.family ?? d.wall.family, hex: w.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, w.family ? `${w.family} ${w.hex} (${w.evidence})` : w.hex ? `measured brick ${w.hex} (${w.evidence ?? 'district photos'})` : ''))(wallHexOf(lib, fam, rowId)),
+    wall: ((w) => f({ material: w.material ?? d.wall.material, family: w.family ?? d.wall.family, hex: w.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, w.family ? `${w.family} ${w.hex} (${w.evidence})` : w.hex ? `measured brick ${w.hex} (${w.evidence ?? 'district photos'})` : ''))(wallHexOf(lib, fam, rowId)),
     roofStorey: riseM !== null && pv
       ? f<RowRoofStorey>({ kind: 'mansard', material: pv.material, dormersPerFront: pv.dormersPerFront, dormerKind: pv.dormerKind, ...(pv.hoist ? { hoist: true } : {}) },
         `pitched roof: 3DBAG rise ${bagRiseOf(s)} m >= ${lib.pitched!.minRiseM} m, drawn at ${lib.streetNotes?.[s.members[0]?.front.street ?? '']?.riseM !== undefined ? 'the street note\'s seen rise' : 'the district\'s seen-rise cap'} ${riseM} m${measuredRiseOf(lib, s) !== null ? ` (AHN4 front rise ${measuredRiseOf(lib, s)} m)` : ''} (${pv.evidence}); drawn as the row mansard at ${pv.pitchDeg} deg under buurtKit`)
@@ -442,7 +486,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   const fronts: GenResult['fronts'] = {};
   const kits = new Map<string, BuurtKitFront>();
   for (const r of res.rows) for (const s of r.series) {
-    const rise = pitchedRiseOf(lib, s);
+    const rise0 = pitchedRiseOf(lib, s);
     const fam = s.eavesM === null ? null : familyFor(lib, storeysFor(s.eavesM, lib.design));
     const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b), bays = baysFor(widths[widths.length >> 1], axisOf(lib, r.id));
     const pv = pitchedVariantOf(lib, s), roofHex = lib.rowNotes?.[r.id]?.roof?.hex ?? pv?.roofHex;
@@ -474,7 +518,9 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
       if (!drawn.has(pid)) continue;
       fronts[pid] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
       const r6 = (q: readonly [number, number]): [number, number] => [+q[0].toFixed(8), +q[1].toFixed(8)];
-      const i = r.members.indexOf(m), joins = { ...(i > 0 && drawn.has(pandNumber(r.members[i - 1].pand.id)) ? { left: true } : {}), ...(i < r.members.length - 1 && drawn.has(pandNumber(r.members[i + 1].pand.id)) ? { right: true } : {}) };
+      const i = r.members.indexOf(m), cf = lib.pitched?.cornerFlat, ownForm = lib.measured?.roofs?.[pid]?.form;
+      const rise = rise0 !== null && cf && (i === 0 || i === r.members.length - 1) && m.front.lengthM >= cf.minWidthM && ownForm !== 'pitched' ? null : rise0;
+      const joins = { ...(i > 0 && drawn.has(pandNumber(r.members[i - 1].pand.id)) ? { left: true } : {}), ...(i < r.members.length - 1 && drawn.has(pandNumber(r.members[i + 1].pand.id)) ? { right: true } : {}) };
       // Erkers on the series' cells (frontKit.ts erkersOnCells): the series draws `bays` cells on every member.
       const erkers = erkersFor(pid, erkersOnCells(m.front.erkers, bays, m.front.lengthM, fam?.design?.windowShare ?? lib.design.windowShare));
       kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers,
@@ -494,6 +540,10 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   }
   const families: GenResult['families'] = {};
   for (const r of rows) for (const s of r.series) { const f = families[s.type!] ??= { series: 0, pands: 0 }; f.series++; f.pands += s.fronts.length; }
-  const records = rows.flatMap(r => rowFrontsWithSeries(r)).map(rec => kits.has(rec.pandId) ? { ...rec, buurtKit: kits.get(rec.pandId)! } : rec);
+  // Round 14 (cornerFlat): a corner member the kit draws without its series' roof storey draws its own flat top: its
+  // record's series copy carries no mansard (rowFront.ts reads the roof storey off the record's series).
+  const flatCorner = (rec: RowFrontRecord) => !!lib.pitched?.cornerFlat && rec.series?.roofStorey?.kind === 'mansard' && kits.has(rec.pandId) && !kits.get(rec.pandId)!.roof;
+  const records = rows.flatMap(r => rowFrontsWithSeries(r)).map(rec => kits.has(rec.pandId) ? { ...rec, buurtKit: kits.get(rec.pandId)! } : rec)
+    .map((rec): RowFrontRecord => flatCorner(rec) ? { ...rec, series: { ...rec.series!, roofStorey: { kind: 'none' as const, dormers: [] } } } : rec);
   return { rows, records, skipped, families, fronts };
 }

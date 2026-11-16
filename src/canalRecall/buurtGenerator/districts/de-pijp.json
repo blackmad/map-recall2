@@ -79,7 +79,17 @@
     "dormersPerFront": 1,
     "dormerKind": "plain",
     "hoist": true,
-    "evidence": "the Pijp and Witsenkade types (witsen-1890-*, tex-1882-hood-bracket-mansard, pijp-1886-segmental-mansard): a slate attic behind the cornice at about 70 degrees, one dormer with a hoist beam per front; drawn where the series' 3DBAG rise is at least 2 m"
+    "evidence": "the Pijp and Witsenkade types (witsen-1890-*, tex-1882-hood-bracket-mansard, pijp-1886-segmental-mansard): a slate attic behind the cornice at about 70 degrees, one dormer with a hoist beam per front; drawn where the series' 3DBAG rise is at least 2 m",
+    "capRiseM": 1.2,
+    "capRiseEvidence": "Gerard Doustraat 152721 sheet (recording_2025-09-29_09-14-27_01006, 40 px/m): the dormers with their hoist beams stand on the cornice at 14-15.5 m and the slate between them is barely seen over the white cornice band; drawn at AHN4s 3.8-5.6 m front rise the slate face read as \"a tall slate mansard\" to the blind judge (round 14 held-out)",
+    "hiddenPitch": {
+      "draws": "roof-storey",
+      "evidence": "Quellijnstraat 162395 (all nine members hidden-pitch, AHN4 front rise 1.3-2.3 m): the blind judge names \"a row of dormers in the roof above a decorated cornice\"; Tolstraat 061589 the same (\"a regular rhythm of pointed dormer gables\"). The Pijp roof stands behind the cornice, its dormers seen from the street"
+    },
+    "cornerFlat": {
+      "minWidthM": 8,
+      "evidence": "Eerste Jan Steenstraat 152914 (13.4 m corner block, AHN4 hidden-pitch): the blind judge reads \"a flat white cornice and six narrow tall windows per floor\" where the series roof drew a slate mansard"
+    }
   },
   "notDrawn": [
     {

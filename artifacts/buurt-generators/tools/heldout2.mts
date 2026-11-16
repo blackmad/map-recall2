@@ -28,10 +28,10 @@ for (const district of (process.env.DISTRICTS ?? 'rivierenbuurt,apollo-stadion')
   const stage = `artifacts/buurt-generators/${district}`;
   const kit = new Map((JSON.parse(fs.readFileSync(`${stage}/row-front.json`, 'utf8')).records as any[]).filter(r => r.buurtKit).map(r => [r.pandId, r.buurtKit]));
   for (const row of JSON.parse(fs.readFileSync(`${stage}/rows.json`, 'utf8')).rows as any[]) {
-    if ((ONLY && !ONLY.has(row.id)) || row.members.length < 4 || EXCLUDE.has(row.street) || libText.includes(row.street) || libText.includes(row.id.split('-').slice(0, -2).join('-') + '-')) continue;
+    if ((ONLY && !ONLY.has(row.id)) || row.members.length < Number(process.env.MIN_MEMBERS ?? 4) || EXCLUDE.has(row.street) || (!ONLY && libText.includes(row.street)) || libText.includes(row.id.split('-').slice(0, -2).join('-') + '-')) continue;
     const k0 = kit.get(row.members[0].pandId), k1 = kit.get(row.members[row.members.length - 1].pandId); if (!k0 || !k1) continue;
     const A = lngLatToRd(k0.frontLine[0]), B = lngLatToRd(k1.frontLine[1]), len = Math.hypot(B.x - A.x, B.y - A.y);
-    const key = `${district}|${row.street}`, c = best.get(key);
+    const key = ONLY ? `${district}|${row.id}` : `${district}|${row.street}`, c = best.get(key);
     if (!c || row.members.length > c.row.members.length) best.set(key, { district, row, street: row.street, A, B, len, km: km.get(row.street) ?? 0 });
   }
 }
