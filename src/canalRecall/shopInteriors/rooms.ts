@@ -16,7 +16,7 @@ import { TEMPLATE_REAL, type RetailTemplate } from '../retailTemplates.js';
 /** The room kinds, in atlas order (atlas.ts paints one cell per kind). */
 export const ROOM_KINDS = [
   'supermarket', 'clothing', 'cafeBar', 'restaurant', 'bakery', 'bikeShop', 'bookshop', 'pharmacy',
-  'hairdresser', 'gallery', 'office', 'dark', 'takeaway', 'florist', 'shopGeneric',
+  'hairdresser', 'gallery', 'office', 'dark', 'takeaway', 'florist', 'shopGeneric', 'automat',
 ] as const;
 export type RoomKind = (typeof ROOM_KINDS)[number];
 
@@ -39,14 +39,16 @@ export const GOODS_ROOM: Record<GoodsKind, RoomKind | null> = {
   pizza: 'restaurant', pancakes: 'restaurant',
   cafe: 'cafeBar', brownBar: 'cafeBar',
   flowers: 'florist',
-  // Own-light windows keep their own look: FEBO's lit automatiek wall is the front's identity; red-light windows are lane R's part.
-  automatiek: null, redWindow: null,
+  // FEBO (David 2026-11-16, Korte Niezel 0363100012177996): the automat wall, a grid of small lit hatches behind the glass.
+  automatiek: 'automat',
+  // Red-light windows are lane R's part and keep their own look.
+  redWindow: null,
 };
 
 /** Templates whose room is not their goods' (a restaurant shares the café's goods cell; templates with no goods). */
 export const TEMPLATE_ROOM: Partial<Record<RetailTemplate, RoomKind | null>> = {
   restaurant: 'restaurant', cafe: 'cafeBar', brownBar: 'cafeBar', butcher: 'bakery', hairdresser: 'hairdresser',
-  moneyTransfer: 'office', exchange: 'office', pizza: 'takeaway', redLight: null,
+  moneyTransfer: 'office', exchange: 'office', pizza: 'takeaway', febo: 'automat', redLight: null,
 };
 
 export type RoomQuery = {
@@ -95,10 +97,13 @@ export function decodeVariant(v: number): { mirror: boolean; depthM: number; off
 
 /** Pane uv: u runs 0..1 across the glass, v 0..1 up it; v is lifted by this marker so the shader knows an interior. */
 export const INTERIOR_V = 4;
-/** Accent bytes: room index, variant, flags (bit 0: the template draws lit, a chain's bright interior). */
+/** Rooms that are their own light by day too (the automat's lit hatches): drawn at the dusk level, their walls dark. */
+export const OWN_LIGHT_ROOMS: readonly RoomKind[] = ['automat'];
+/** Accent bytes: room index, variant, flags (bit 0: the template draws lit, a chain's bright interior; bit 1: the room is
+ *  its own light, OWN_LIGHT_ROOMS). */
 export function interiorAccent(room: RoomKind, variant: number, lit: boolean): string {
-  const r = ROOM_KINDS.indexOf(room);
-  return '#' + [r, variant & 255, lit ? 1 : 0].map(v => v.toString(16).padStart(2, '0')).join('');
+  const r = ROOM_KINDS.indexOf(room), flags = (lit ? 1 : 0) | (OWN_LIGHT_ROOMS.includes(room) ? 2 : 0);
+  return '#' + [r, variant & 255, flags].map(v => v.toString(16).padStart(2, '0')).join('');
 }
 export function decodeAccent(hex: string): { room: RoomKind; variant: number; lit: boolean } {
   const n = parseInt(hex.slice(1), 16);

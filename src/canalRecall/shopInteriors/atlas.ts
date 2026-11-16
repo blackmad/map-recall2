@@ -12,7 +12,7 @@
 
 import { ROOM_KINDS, type RoomKind } from './rooms.js';
 
-export const CELL = 256, COLS = 5, ROWS = Math.ceil(ROOM_KINDS.length / COLS);
+export const CELL = 256, COLS = 4, ROWS = Math.ceil(ROOM_KINDS.length / COLS);
 export const ATLAS_W = CELL * COLS, ATLAS_H = CELL * ROWS;
 /** Face rects in a cell: [x, y, w, h] px. */
 export const FACE = {
@@ -259,6 +259,25 @@ const PAINTERS: Record<RoomKind, (s: Faces) => void> = {
     for (let x = 0.2; x < ROOM_W; x += 1.3 + r() * 0.3) { back.rect(x, 0.95, 0.9, 1.2, rgb('#8a857c')); back.rect(x + 0.05, 1.3, 0.8, 0.03, rgb('#6e6a62')); back.rect(x + 0.05, 1.7, 0.8, 0.03, rgb('#6e6a62')); }
     mid.rect(0.6, 0, 1.4, 0.95, rgb('#6e6a62')); mid.rect(0.55, 0.93, 1.5, 0.04, rgb('#8e8a82'));
     side.vgrad(rgb('#96928a'), rgb('#a29e96')); floorGrid(floor, rgb('#8a867e'), rgb('#7a766e'), 2); ceiling(ceil, rgb('#b8b4ac'), rgb('#e8dcc4'), 'disc');
+  },
+  automat({ back, mid, side, floor, ceil, r }) {
+    // FEBO's automatiek (Korte Niezel, David 2026-11-16): a wall of small hatches, each a lit warm cell behind a chrome
+    // frame with a dark handle, in a dark surround; the rest of the shop dark. The shader draws this room at the dusk
+    // level by day too (OWN_LIGHT_ROOMS), so the hatches glow and the dark wall stays dark.
+    back.vgrad(rgb('#1a1715'), rgb('#211d1a'));
+    const hw = 0.3, hh = 0.24, x0 = 0.1, y0 = 0.62;
+    back.rect(0, y0 - 0.08, ROOM_W, 6 * hh + 0.16, rgb('#3a3632'));
+    for (let j = 0; j < 6; j++) for (let i = 0; i * hw < ROOM_W - 0.2; i++) {
+      const x = x0 + i * hw, y = y0 + j * hh;
+      back.rect(x, y, hw - 0.03, hh - 0.03, rgb('#b8b4ac'));
+      const warm = [rgb('#ffd27a'), rgb('#ffc860'), rgb('#ffdc94')][Math.floor(r() * 3)], empty = r() < 0.18;
+      back.rect(x + 0.025, y + 0.025, hw - 0.08, hh - 0.08, empty ? rgb('#6a4a2a') : warm);
+      if (!empty) back.disc(x + hw / 2 - 0.015, y + hh / 2 - 0.02, 0.06, [rgb('#c8862e'), rgb('#a0602a'), rgb('#e0a040')][Math.floor(r() * 3)]);
+      back.rect(x + hw - 0.07, y + hh / 2 - 0.03, 0.025, 0.05, rgb('#1d1d1b'));
+    }
+    back.rect(0, y0 + 6 * hh + 0.12, ROOM_W, 0.14, rgb('#c8102e'));
+    mid.rect(0, 0, ROOM_W, 0.32, rgb('#2a2622')); mid.rect(0, 0.3, ROOM_W, 0.04, rgb('#8a8680'));
+    side.vgrad(rgb('#1c1916'), rgb('#24201c')); floorTiles(floor, rgb('#2a2622'), rgb('#3a3430'), 2); ceiling(ceil, rgb('#1e1b18'), rgb('#6a5030'), 'disc');
   },
 };
 

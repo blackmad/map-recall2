@@ -26,7 +26,7 @@ test('rooms: each shop type gets its own trade room, never a random one', () => 
     butcher: 'bakery', cheese: 'bakery', bike: 'bikeShop', books: 'bookshop', bruna: 'bookshop', hairdresser: 'hairdresser', tattoo: 'hairdresser',
     restaurant: 'restaurant', cafe: 'cafeBar', brownBar: 'cafeBar', clothes: 'clothing', doner: 'takeaway', frites: 'takeaway', snackbar: 'takeaway',
     florist: 'florist', optician: 'gallery', exchange: 'office', moneyTransfer: 'office', coffeeshop: 'dark', smartshop: 'dark',
-    febo: null, redLight: null,
+    febo: 'automat', redLight: null,
   };
   g.__canalRecallRetailReal = true;
   try {
@@ -38,6 +38,7 @@ test('rooms: each shop type gets its own trade room, never a random one', () => 
   // Every room kind except the generic/quiet ones is some trade's room.
   const used = new Set(Object.values(GOODS_ROOM));
   for (const r of ROOM_KINDS) if (r !== 'shopGeneric') assert.ok(used.has(r) || r === 'restaurant' || r === 'office', r);
+  assert.equal(roomFor({ template: 'febo' }), 'automat');
 });
 
 test('rooms: a neutral front (groundShop) is the plain generic shop, a quiet front dark, anything else none', () => {
@@ -75,7 +76,7 @@ test('atlas: deterministic, opaque faces, a mid plane with both furniture and ga
   // Pinned bytes: a painter change must be deliberate (update the hash with the reviewed atlas sheet).
   assert.equal(createHash('sha256').update(a).digest('hex').slice(0, 16), ATLAS_HASH);
 });
-const ATLAS_HASH = 'pending';
+const ATLAS_HASH = 'f15c2a49d87b4d15';
 
 test('retail fronts: flag on draws each window as one interior quad; off is byte-identical to before', () => {
   g.__canalRecallRetailReal = true;
@@ -97,8 +98,10 @@ test('retail fronts: flag on draws each window as one interior quad; off is byte
       assert.ok(on.length <= off.length, `${t}: ${on.length} tris on, ${off.length} off`);
     }
     g.__canalRecallShopInteriors = true;
-    const febo = retailFrontTris({ template: 'febo', seed: 's', goods: 300 }, e, 0.3, 6.3, 0, 3.6);
-    assert.equal(febo.filter(tri => tri.uv?.some(([, v]) => v >= INTERIOR_V)).length, 0, 'FEBO keeps its automatiek');
+    // FEBO (Korte Niezel, 0363100012177996): the automat wall, its own light by day (accent flag bit 1).
+    const febo = retailFrontTris({ template: 'febo', seed: 's', goods: 300 }, e, 0.3, 6.3, 0, 3.6).filter(tri => tri.uv?.some(([, v]) => v >= INTERIOR_V));
+    assert.ok(febo.length >= 2, 'FEBO draws the automat room');
+    for (const tri of febo) { assert.equal(decodeAccent(tri.accentHex!).room, 'automat'); assert.equal(parseInt(tri.accentHex!.slice(5), 16) & 2, 2); }
   } finally { delete g.__canalRecallRetailReal; delete g.__canalRecallShopInteriors; }
 });
 

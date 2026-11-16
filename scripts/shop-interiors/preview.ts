@@ -6,7 +6,7 @@
  */
 import sharp from 'sharp';
 import { ATLAS_W, CEIL_RISE, CEIL_TILE, FACE, FLOOR_DROP, FLOOR_TILE, MID_H, ROOM_W, paintInteriorAtlas, roomCell } from '../../src/canalRecall/shopInteriors/atlas.ts';
-import { ROOM_KINDS, decodeVariant, type RoomKind } from '../../src/canalRecall/shopInteriors/rooms.ts';
+import { OWN_LIGHT_ROOMS, ROOM_KINDS, decodeVariant, type RoomKind } from '../../src/canalRecall/shopInteriors/rooms.ts';
 import { SHOP_LOOK } from '../../src/canalRecall/shopInteriors/shader.ts';
 
 const out = process.argv[2] ?? 'artifacts/shop-interiors/preview.png';
@@ -41,7 +41,7 @@ function shade(room: RoomKind, variant: number, dusk: number, e: V, gx: number, 
     const hm: V = [o[0] + dl[0] * tm, o[1] + dl[1] * tm, zm], my = (hm[1] - yF) / MID_H;
     if (my < 1) { const [mc, ma] = tex(room, 'mid', fract((hm[0] + offset) / ROOM_W), 1 - my); const m = smooth(0.35, 0.65, ma); c = c.map((v, i) => v + (mc[i] - v) * m) as V; k += ((1 - 0.28 * zm / D) - k) * m; }
   }
-  const level = (L.dayLevel + (L.duskLevel - L.dayLevel) * dusk);
+  const level = OWN_LIGHT_ROOMS.includes(room) ? L.duskLevel : (L.dayLevel + (L.duskLevel - L.dayLevel) * dusk);
   const rc = c.map(v => v * k * level) as V;
   // Reflection: the glass normal is -z (toward the viewer); the reflected ray's y decides street or sky.
   const r: V = [d[0], d[1], -d[2]], cosv = Math.max(0, d[2]);

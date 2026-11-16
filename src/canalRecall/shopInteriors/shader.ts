@@ -59,12 +59,13 @@ bool shopInterior(vec2 uv, vec3 acc, vec3 P, out vec3 lin) {
   vec2 dsx = dFdx(st), dsy = dFdy(st);
   float det = dsx.x * dsy.y - dsx.y * dsy.x;
   float roomIx = floor(acc.r * 255.0 + 0.5), variant = floor(acc.g * 255.0 + 0.5);
-  bool litShop = acc.b > 0.002;
+  float flags = floor(acc.b * 255.0 + 0.5);
+  bool litShop = mod(flags, 2.0) > 0.5, ownLight = flags > 1.5;
   vec2 cell = vec2(mod(roomIx, ${f(COLS)}), floor(roomIx / ${f(COLS)})) * ${f(CELL)};
   float a;
   // The room's mean (the back wall's coarsest mip), for distance and degenerate frames.
   vec3 mean = shopTex(cell, ${rect('back')}, vec2(0.5), 6.0, a);
-  float level = mix(litShop ? ${f(L.dayLitLevel)} : ${f(L.dayLevel)}, ${f(L.duskLevel)}, shopDusk) * shopLevel;
+  float level = (ownLight ? ${f(L.duskLevel)} : mix(litShop ? ${f(L.dayLitLevel)} : ${f(L.dayLevel)}, ${f(L.duskLevel)}, shopDusk)) * shopLevel;
   float dist = length(P);
   vec3 d = P / dist;
   if (abs(det) < 1e-14) { lin = mean * level * 0.7; return true; }
