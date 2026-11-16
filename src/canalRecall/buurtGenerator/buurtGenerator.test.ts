@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, blockLines, generateDistrict, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
+import { baysFor, blockLines, generateDistrict, seriesBaysFor, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
 import { oklab } from '../retailPuiPaint.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
@@ -203,4 +203,34 @@ test('round 13: an unstated brick wall is never drawn grey; a warm one and a sta
   // A stated wall is drawn as stated.
   const st: DistrictLibrary = { ...lib, rowNotes: { ...lib.rowNotes, 'teststraat-000000': { wall: { hex: '#6a6362', evidence: 'test' }, evidence: 'test' } } };
   assert.equal(wallHexOf(st, null, 'teststraat-000000').hex, '#6a6362');
+});
+
+test('round 18: bays from the panorama count when enough members read and agree; else the width rule, byte for byte', async () => {
+  const { baysOfMeasure, memberBaysOf, seriesBaysOf } = await import('./baysRead.js');
+  const m = { frontClass: 'punched' as const, columns: 3, windowColumns: 3, pitchScore: 0.7, usableFraction: 0.9 };
+  assert.equal(baysOfMeasure(m), 3);
+  assert.equal(baysOfMeasure({ ...m, pitchScore: 0.4 }), null, 'an unresolved pitch');
+  assert.equal(baysOfMeasure({ ...m, windowColumns: 4 }), null, 'columns and window columns disagree');
+  assert.equal(baysOfMeasure({ ...m, frontClass: 'curtain' as never }), null, 'not a rhythmic front');
+  assert.equal(memberBaysOf([{ pano: 'a', date: 'd', cols: 3 }, { pano: 'b', date: 'e', cols: null }]), 3);
+  assert.equal(memberBaysOf([{ pano: 'a', date: 'd', cols: 3 }, { pano: 'b', date: 'e', cols: 4 }]), null, 'captures differ');
+  assert.equal(seriesBaysOf([3, null, undefined]), null, 'one member read');
+  assert.deepEqual(seriesBaysOf([3, 3, 4]), { bays: 3, read: 3, agree: 2 });
+  assert.equal(seriesBaysOf([3, 4]), null, 'half agree is not enough');
+  assert.equal(seriesBaysOf([2, 2, ...Array(12).fill(null)]), null, 'Parnassusweg 131928: 2 of 14 members read is too few');
+  assert.deepEqual(seriesBaysOf([3, 3, ...Array(5).fill(null)]), { bays: 3, read: 2, agree: 2 }, 'Agamemnonstraat 094341: 2 of 7');
+  const pands = [0, 1, 2].map(i => pand(i, 1929, 12.4));
+  const s = districtRows(pands, streets).rows[0].series[0], id = (i: number) => pands[i].id.replace(/^NL\.IMBAG\.Pand\./, '');
+  const rule = seriesBaysFor(lib, s, 'teststraat-000000');
+  assert.equal(rule.why, null); assert.equal(rule.bays, baysFor(s.members[1].front.lengthM, lib.design));
+  const read = (b: number | null) => ({ bays: b, reads: [] });
+  const got = seriesBaysFor({ ...lib, measured: { bays: { [id(0)]: read(2), [id(1)]: read(2), [id(2)]: read(null) } } }, s, 'teststraat-000000');
+  assert.equal(got.bays, 2); assert.match(got.why!, /2 of 2 members read 2/);
+  // No `bays` in the measured file: the district generates exactly as before.
+  const before = generateDistrict(lib, pands, streets, new Set(), 'test');
+  assert.deepEqual(generateDistrict({ ...lib, measured: { roofs: {} } }, pands, streets, new Set(), 'test'), before);
+  const after = generateDistrict({ ...lib, measured: { bays: { [id(0)]: read(2), [id(1)]: read(2) } } }, pands, streets, new Set(), 'test');
+  assert.equal(after.rows[0].series[0].design.bays.value, 2);
+  assert.equal(after.rows[0].series[0].design.bays.source, 'series-consensus');
+  assert.match(after.rows[0].series[0].design.bays.ref, /panorama count/);
 });

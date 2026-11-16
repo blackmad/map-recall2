@@ -14,8 +14,9 @@ import { labHex, oklab } from '../retailPuiPaint.ts';
 import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
-import { districtRows, ROW_EAVES_STEP_M, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
-import { balconiesOf, entriesOf, erkersOnCells, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, type BuurtEntry, type BuurtErker, type BuurtKitFront } from './kit/frontKit.ts';
+import { districtRows, ROW_EAVES_STEP_M, type GenMember, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
+import { balconiesOf, cantsOnCells, entriesOf, erkersOnCells, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, type BuurtEntry, type BuurtErker, type BuurtKitFront } from './kit/frontKit.ts';
+import { seriesBaysOf, type MemberBays } from './baysRead.ts';
 
 export interface DistrictDesign {
   groundM: number;
@@ -120,6 +121,8 @@ export interface DistrictMeasured {
   /** Round 10: per row, each kit erker (`<pandId>:<index>`) and the finish its panoramas read (measure.ts erkerFinishOf,
    *  then the row's consensus for unread ones): `white` is the white-framed lights running corner to corner. */
   erkers?: Record<string, Record<string, { finish: 'white' | 'brick' | null; read: boolean; reads: string[] }>>;
+  /** Round 18: per pand, its window axes counted on the panoramas (scripts/buurt-generators/measure-bays.ts, baysRead.ts). */
+  bays?: Record<string, MemberBays>;
 }
 
 /** Why a pand of the district is not drawn by the generator. */
@@ -141,6 +144,18 @@ export function storeysFor(eavesM: number, d: Pick<DistrictDesign, 'groundM' | '
 /** Window axes on a front of this width at the district's axis pitch (at least two). */
 export function baysFor(widthM: number, d: Pick<DistrictDesign, 'axisM'>): number {
   return Math.max(2, Math.round(widthM / d.axisM));
+}
+
+/**
+ * Round 18 (lane R): the series' window axes: its members' panorama count (`measured.bays`, baysRead.ts seriesBaysOf)
+ * when enough of them read and agree, else one per axis of the median front (`baysFor`). `why` names the read; null
+ * on the width rule (the record's text is then as before).
+ */
+export function seriesBaysFor(lib: DistrictLibrary, s: GenSeries, rowId: string): { bays: number; why: string | null } {
+  const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b), width = baysFor(widths[widths.length >> 1], axisOf(lib, rowId));
+  const read = lib.measured?.bays;
+  const v = read ? seriesBaysOf(s.members.map(m => read[pandNumber(m.pand.id)]?.bays)) : null;
+  return v ? { bays: v.bays, why: `panorama count: ${v.agree} of ${v.read} members read ${v.bays} window axes (baysRead.ts; the width rule said ${width})` } : { bays: width, why: null };
 }
 
 const pandNumber = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
@@ -268,7 +283,7 @@ export function measuredRiseOf(lib: DistrictLibrary, s: GenSeries): number | nul
 }
 
 /** One series' design: the family's design over the district's, every field `period-default` with its ref. */
-export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSeries, rowId: string, bays: number, riseM: number | null = pitchedRiseOf(lib, s)): RowDesign {
+export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSeries, rowId: string, bays: number, riseM: number | null = pitchedRiseOf(lib, s), baysWhy: string | null = null): RowDesign {
   const d = { ...lib.design, ...fam.design };
   const pv = pitchedVariantOf(lib, s);
   const ref = `buurt-generator ${lib.district} ${fam.id}`;
@@ -277,7 +292,7 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
     corniceTopM: f<number | null>(s.eavesM, `series line = median 3DBAG eaves of ${s.members.length} members`),
     crown: f(d.crown), cornice: f(d.cornice),
     storeys: f(fam.storeys, `${s.eavesM} m line over a ${d.groundM} m ground and ${d.storeyM} m storeys`),
-    bays: f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes`),
+    bays: baysWhy ? { value: bays, source: 'series-consensus', ref: `${ref}: ${baysWhy}` } : f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes`),
     windows: f(d.windows), heads: f<RowHeads | RowHeads[]>(d.heads), whiteFrames: f(d.whiteFrames), sills: f(d.sills),
     wall: ((w) => f({ material: d.wall.material, family: w.family ?? d.wall.family, hex: w.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, w.family ? `${w.family} ${w.hex} (${w.evidence})` : w.hex ? `measured brick ${w.hex} (${w.evidence ?? 'district photos'})` : ''))(wallHexOf(lib, fam, rowId)),
     roofStorey: riseM !== null && pv
@@ -314,10 +329,9 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
     if (!years.length || years.some(y => y < lib.years[0] || y > lib.years[1])) { off('off-years', `built ${[...new Set(years)].join('/') || '?'}`); continue; }
     const storeys = storeysFor(s.eavesM, lib.design), fam = familyFor(lib, storeys);
     if (!fam) { off('off-storeys', `${storeys} storeys at ${s.eavesM} m`); continue; }
-    const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b);
-    const bays = baysFor(widths[widths.length >> 1], axisOf(lib, row.id));
+    const { bays, why: baysWhy } = seriesBaysFor(lib, s, row.id);
     const seriesId = s.id;
-    const design = seriesDesign(lib, fam, s, row.id, bays);
+    const design = seriesDesign(lib, fam, s, row.id, bays, pitchedRiseOf(lib, s), baysWhy);
     series.push({ id: seriesId, label: `${fam.label}, built ${s.year ?? '?'}`, type: fam.id, fronts: s.members.map(m => pandNumber(m.pand.id)), design });
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
@@ -436,7 +450,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   for (const r of res.rows) for (const s of r.series) {
     const rise = pitchedRiseOf(lib, s);
     const fam = s.eavesM === null ? null : familyFor(lib, storeysFor(s.eavesM, lib.design));
-    const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b), bays = baysFor(widths[widths.length >> 1], axisOf(lib, r.id));
+    const bays = seriesBaysFor(lib, s, r.id).bays;
     const pv = pitchedVariantOf(lib, s), roofHex = lib.rowNotes?.[r.id]?.roof?.hex ?? pv?.roofHex;
     // Blocks of two pands (family kit `piers`): the pier at every other party wall, phased by the row's photo if one
     // states it, else a block starting at the row's first member.
@@ -460,7 +474,9 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
     const attic = note?.attic ? kitAtticOf(note.attic) : null, raisedFor = (pid: string) => raisedOf(note?.raised?.[pid.slice(-6)]);
     const own = (pid: string) => note?.members?.[pid.slice(-6)];
     const ownEntries = (pid: string): BuurtEntry[] | null => { const v = own(pid)?.entries; return Array.isArray(v) ? entriesOf(v.map(e => ({ cells: bays, ...e }))) : null; };
-    const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || mm.front.erkers.length || note?.erkers?.[pandNumber(mm.pand.id).slice(-6)]?.length || lib.flatEaves || noteEaves || attic || raisedFor(pandNumber(mm.pand.id)).length || entryAt(r.members.indexOf(mm))));
+    // Round 15: a cant is drawn by the kit, so BAG's erker over the same run (a fold read as a bay) goes.
+    const bayErkers = (f: GenMember['front']) => f.cants ? f.erkers.filter(k => !f.cants!.some(c => k.a1 > c.a0 + 0.01 && k.a0 < c.a1 - 0.01)) : f.erkers;
+    const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || bayErkers(mm.front).length || mm.front.cants?.length || note?.erkers?.[pandNumber(mm.pand.id).slice(-6)]?.length || lib.flatEaves || noteEaves || attic || raisedFor(pandNumber(mm.pand.id)).length || entryAt(r.members.indexOf(mm))));
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
       if (!drawn.has(pid)) continue;
@@ -468,17 +484,17 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
       const r6 = (q: readonly [number, number]): [number, number] => [+q[0].toFixed(8), +q[1].toFixed(8)];
       const i = r.members.indexOf(m), joins = { ...(i > 0 && drawn.has(pandNumber(r.members[i - 1].pand.id)) ? { left: true } : {}), ...(i < r.members.length - 1 && drawn.has(pandNumber(r.members[i + 1].pand.id)) ? { right: true } : {}) };
       // Erkers on the series' cells (frontKit.ts erkersOnCells): the series draws `bays` cells on every member.
-      const erkers = erkersFor(pid, erkersOnCells(m.front.erkers, bays, m.front.lengthM, fam?.design?.windowShare ?? lib.design.windowShare));
+      const erkers = erkersFor(pid, erkersOnCells(bayErkers(m.front), bays, m.front.lengthM, fam?.design?.windowShare ?? lib.design.windowShare));
       kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers,
         ...(rise !== null && pv ? { roof: { pitchDeg: pv.pitchDeg, riseM: rise, ...(roofHex ? { roofHex } : {}), ...(pv.dormersPerFront === 0 ? { dormers: false as const } : {}), ...(pv.eavesM ? { eavesM: pv.eavesM, ...(pv.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } } : {}),
         ...(fam?.kit?.rhythm ? { rhythm: true as const } : {}),
         ...(fam?.kit?.piers && (joins.left || joins.right) ? { sides: { ...(joins.left ? { left: pierAfter(i - 1) ? 'pier' as const : 'pair' as const } : {}), ...(joins.right ? { right: pierAfter(i) ? 'pier' as const : 'pair' as const } : {}) } } : {}),
         ...(fam?.kit?.sash ? { sash: fam.kit.sash.value } : {}), ...(fam?.kit?.ribbon && !(rise === null && attic) ? { ribbon: true as const } : {}),
         ...(rise === null && attic ? { attic } : {}), ...(rise === null && raisedFor(pid).length ? { raised: raisedFor(pid) } : {}),
-        ...((bands || whiteErker(pid)) && (m.front.erkers.length || note?.erkers?.[pid.slice(-6)]?.length) ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
+        ...((bands || whiteErker(pid)) && (bayErkers(m.front).length || note?.erkers?.[pid.slice(-6)]?.length) ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),
         ...(rise === null && seriesCoping && coping ? { copingHex: coping } : {}),
         ...(rise === null && noteEaves ? { eaves: noteEaves } : rise === null && lib.flatEaves ? { eaves: { overhangM: lib.flatEaves.eavesM, ...(lib.flatEaves.frieze === false ? { frieze: false as const } : {}) } } : {}),
-        ...(ownEntries(pid)?.length ? { entries: ownEntries(pid)! } : entryAt(i) ? { entries: [entryAt(i)!] } : {}),
+        ...(ownEntries(pid)?.length ? { entries: ownEntries(pid)! } : entryAt(i) ? { entries: [entryAt(i)!] } : {}), ...(m.front.cants ? { cants: cantsOnCells(m.front.cants, bays, fam?.design?.windowShare ?? lib.design.windowShare) } : {}),
         ...(balconiesOf(own(pid)?.balconies).length ? { balconies: balconiesOf(own(pid)?.balconies) } : {}),
         ...(kitPanesOf(own(pid)?.panes) ? { panes: kitPanesOf(own(pid)?.panes)! } : {}),
         ...(joins.left || joins.right ? { joins } : {}) });
