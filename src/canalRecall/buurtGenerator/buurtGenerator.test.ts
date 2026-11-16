@@ -187,6 +187,8 @@ test('round 18: bays from the panorama count when enough members read and agree;
   assert.equal(seriesBaysOf([3, null, undefined]), null, 'one member read');
   assert.deepEqual(seriesBaysOf([3, 3, 4]), { bays: 3, read: 3, agree: 2 });
   assert.equal(seriesBaysOf([3, 4]), null, 'half agree is not enough');
+  assert.equal(seriesBaysOf([2, 2, ...Array(12).fill(null)]), null, 'Parnassusweg 131928: 2 of 14 members read is too few');
+  assert.deepEqual(seriesBaysOf([3, 3, ...Array(5).fill(null)]), { bays: 3, read: 2, agree: 2 }, 'Agamemnonstraat 094341: 2 of 7');
   const pands = [0, 1, 2].map(i => pand(i, 1929, 12.4));
   const s = districtRows(pands, streets).rows[0].series[0], id = (i: number) => pands[i].id.replace(/^NL\.IMBAG\.Pand\./, '');
   const rule = seriesBaysFor(lib, s, 'teststraat-000000');
