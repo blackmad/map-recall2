@@ -174,6 +174,15 @@ export function corniceLine(read: { crown?: unknown; storeyParts?: { roof?: unkn
   if (roof) return +Math.max(rawEaves ?? eaves, Math.min(eaves, t.heightM - MANSARD_RISE.period)).toFixed(2);
   return t.heightM > eaves ? +t.heightM.toFixed(2) : eaves;
 }
+/**
+ * Centrum round 7 (Goudsbloemstraat 172466-172514: four storeys under a roof storey drawn at the band's 14.8 m, the photo's
+ * cornice about 12.5): under a roof storey (the register's or the photo's) the AHN band's top is the roof storey's, so a
+ * look with a measured pitch caps a cornice wall at the photo's storeys at that pitch, never under the band p50.
+ */
+export function underRoofStoreyTop(top: number | null, look: Pick<LookDistrict, 'gableFootPitchM'>, t: Pick<BeltTarget, 'roofStorey'>, sd: BeltStated | undefined, af: AhnFront | undefined): number | null {
+  if (top === null || !look.gableFootPitchM || !sd?.photoStoreys || !(t.roofStorey || sd.photoRoof) || sd.tallCornice) return top;
+  return +Math.max(af?.p50 ?? 0, Math.min(top, (sd.photoStoreys + (sd.photoSouterrain ? SOUTERRAIN_SHARE.souterrain : 0)) * look.gableFootPitchM)).toFixed(2);
+}
 /** A register-stated roof storey over a donor read with none: one plain dormer in a roof storey (the register's dakkapel). */
 export function statedDormer(a: DescriberAnswer): DescriberAnswer {
   const ar = a as { storeyParts?: { roof?: string }; dormers?: unknown; crown?: string };
@@ -261,8 +270,7 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       // Centrum round 7 (Goudsbloemstraat 172466-172514: four storeys under a roof storey drawn at the band's 14.8 m, the
       // photo's cornice about 12.5): under a roof storey (the register's or the photo's) the AHN band's top is the roof
       // storey's, so a look with a measured pitch caps the wall at the photo's storeys at that pitch, never under the band p50.
-      if (corniceTop !== null && look.gableFootPitchM && sd?.photoStoreys && (t.roofStorey || sd.photoRoof) && !sd.tallCornice)
-        corniceTop = +Math.max(af?.p50 ?? 0, Math.min(corniceTop, (sd.photoStoreys + (sd.photoSouterrain ? 0.58 : 0)) * look.gableFootPitchM)).toFixed(2);
+      corniceTop = underRoofStoreyTop(corniceTop, look, t, sd, af);
       // The photo's storey count where the register is silent, when it gives the wall (a gable's foot, else the cornice
       // top) a plausible pitch.
       // A gable's wall may stand up to its AHN apex less the minimum rise (3DBAG's eave is often a rear one: round 10,
@@ -293,7 +301,8 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     }
     const gabled = GABLED_CROWNS.has(String(read.crown));
     const tall = !gabled && TALL_CORNICES.has(String((read as { cornice?: string }).cornice)) && (own ? true : !!sd?.tallCornice);
-    const top = !gabled && (tall ? tallTop : ahnTop) !== null ? (tall ? tallTop : ahnTop) : corniceLine(read, t, eaves, m.pand.eavesM);
+    const top0 = !gabled && (tall ? tallTop : ahnTop) !== null ? (tall ? tallTop : ahnTop) : corniceLine(read, t, eaves, m.pand.eavesM);
+    const top = gabled || tall ? top0 : underRoofStoreyTop(top0, look, t, sd, af);
     // A gable's apex: the AHN front's top under the 3DBAG ridge (the ridge often belongs to the roof behind the front).
     // The minimum rise counts from 3DBAG's own eaves, not the front top lifted to the height (round 6: Keizersgracht 178869
     // and 178868, AHN front tops 15.05 and 15.5 m, drawn 16.3 m as front top 14.3 + 2).
@@ -309,7 +318,9 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       // Round 12: a souterrain under the storeys stands its share of a storey (gableFootPitch measures it so).
       // The floor is the AHN band's p50 (else 3DBAG's own eave) under `top`: a gable's frontTopM is lifted to 3DBAG's
       // height, near the apex (round 12: Keizersgracht 176021 floored at 13.01 m lifted its apex to 16.51, the photo ~15.5).
-      foot = +Math.max(Math.min(top, af ? af.p50 : m.pand.eavesM ?? top), (photoStoreys + (sd?.photoSouterrain ? SOUTERRAIN_SHARE.souterrain : 0)) * look.gableFootPitchM).toFixed(2);
+      // Centrum round 7: a look may count the souterrain otherwise (gableFootSouterrainShare; Prinsengracht 179167 and
+      // Boomstraat 172663, necks over four storeys and a souterrain, stood at 16.7 / 15.8 m with 0.58, the photos ~14.5 / ~14).
+      foot = +Math.max(Math.min(top, af ? af.p50 : m.pand.eavesM ?? top), (photoStoreys + (sd?.photoSouterrain ? look.gableFootSouterrainShare ?? SOUTERRAIN_SHARE.souterrain : 0)) * look.gableFootPitchM).toFixed(2);
       ridge = +Math.max(ridge, foot + (GABLE_RISE_FLOOR_M[String(read.crown)] ?? AHN_BOUNDS.gableMinRiseM)).toFixed(2);
     }
     members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: t.year, widthM: +m.front.lengthM.toFixed(2),

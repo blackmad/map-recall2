@@ -98,7 +98,33 @@ test('Centrum round 6 staged: gable tops at the photo storeys, measured roof sto
   const roof = (r: any) => { const s = typeof r.series === 'string' ? JSON.parse(r.series) : r.series; const k = s?.roofStorey; return k && k.kind !== 'none' ? k : null; };
   // a slate roof storey from 3DBAG's ridge alone, the photo reading a flat cornice: Kloveniersburgwal 177790, Marnixstraat 168522
   assert.equal(roof(nm.get('177790')), null);
-  assert.equal(roof(dw.get('168522')), null);
+  // Round 7: 168522's re-read on another capture sees dormers (rc 0.6): the photo now evidences its roof storey.
+  // Kloveniersburgwal 177790 stays without; its register plaster yields to two brick reads (round 7).
+  assert.notEqual(nm.get('177790').wall.finish, 'stucco');
   // the register's dakkapel still stands (Goudsbloemstraat 168668)
   assert.ok(roof(jo.get('168668')));
+});
+
+test('Centrum round 7 staged: crowns re-read on another capture, photo roofs, the wall under a roof storey', async () => {
+  const fs = await import('node:fs');
+  const load = (d: string) => {
+    const url = new URL(`../../../data/buurt-generators/${d}/row-front.json`, import.meta.url);
+    return fs.existsSync(url) ? new Map((JSON.parse(fs.readFileSync(url, 'utf8')).records as any[]).map(r => [r.pandId.slice(-6), r])) : null;
+  };
+  const dw = load('de-weteringschans'), nm = load('nieuwmarkt-lastage'), jo = load('jordaan');
+  if (!dw || !nm || !jo) return;
+  const roof = (r: any) => { const s = typeof r.series === 'string' ? JSON.parse(r.series) : r.series; const k = s?.roofStorey; return k && k.kind !== 'none' ? k : null; };
+  // gables drawn flat in round 6, read again as gables: Kalkmarkt 182745 (step), Amstel 183042 (neck), Tweede Laurierdwarsstraat 174724 (neck)
+  assert.equal(nm.get('182745').crown.family, 'step');
+  assert.equal(dw.get('183042').crown.family, 'neck');
+  assert.equal(jo.get('174724').crown.family, 'neck');
+  // the gable feet hold with lane D's round 12 rule (souterrain not counted under a Centrum gable foot)
+  assert.ok(dw.get('179167').eavesM <= 15 && dw.get('179167').topM <= 18.5, `179167 ${dw.get('179167').eavesM}/${dw.get('179167').topM}`);
+  assert.ok(jo.get('172663').topM >= 16.5 && jo.get('172663').topM <= 18);
+  // Marnixplein 168305 / 174907: the photo's pantile roof with dormers
+  for (const id of ['168305', '174907']) assert.equal(roof(jo.get(id))?.material, 'tile', id);
+  // Westeinde 178341: a mansard read keeps the mansard (no pitched hip)
+  assert.equal(roof(dw.get('178341'))?.kind, 'mansard'); assert.notEqual(roof(dw.get('178341'))?.pitched, true);
+  // Goudsbloemstraat 172514: four storeys under a roof storey, the wall at the photo's storeys (not the band's 14.8)
+  assert.ok(jo.get('172514').topM < 14.2, `172514 ${jo.get('172514').topM}`);
 });

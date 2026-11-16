@@ -75,7 +75,7 @@ export const PHOTO_DRESS_MIN = 0.7;
 /** The v3 dress words the row line can draw, in the describer's windowSurround words (row/solve.ts DRESSING_OF). */
 export const PHOTO_DRESS_SURROUND: Readonly<Record<string, string>> = { none: 'none', 'stone-lintel': 'stone-lintel', keystone: 'keystone', 'block-course': 'block-dressings' };
 /** The v3 roof field's confidence that states a roof storey (round 7). */
-export const PHOTO_ROOF_READ_MIN = 0.7;
+export const PHOTO_ROOF_READ_MIN = 0.6;
 /** The photo confidence a roof in view needs to evidence a measured roof storey (round 6). */
 export const PHOTO_ROOF_MIN = 0.6;
 /** A weak photo read (round 6): counted by a run only when WEAK_RUN_MIN of them mostly agree (wallDraw.ts run-weak). */
