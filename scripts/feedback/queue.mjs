@@ -28,6 +28,18 @@ export const transitions = {
   open: ['in-progress','deferred'], 'in-progress': ['open','resolved','deferred'],
   deferred: ['open','in-progress'], resolved: ['open'],
 };
+/** Pages a query until it runs dry or `max` documents are read. `runPage(offset, size)` returns that page's documents.
+ *  `atLimit` is true only when `max` stopped the pull with more documents possibly left, never when the queue ran dry. */
+export async function pullPages(runPage, { max = Infinity, pageSize = 300 } = {}) {
+  const docs = [];
+  for (;;) {
+    const size = Math.min(pageSize, max - docs.length);
+    if (size <= 0) return { docs, atLimit: true };
+    const page = await runPage(docs.length, size);
+    docs.push(...page);
+    if (page.length < size) return { docs, atLimit: false };
+  }
+}
 export async function main(args = process.argv.slice(2)) {
   const command = args.shift() || 'pull';
   const option = (key, fallback) => { const i=args.indexOf(key); return i<0 ? fallback : args[i+1]; };
@@ -48,14 +60,20 @@ export async function main(args = process.argv.slice(2)) {
     if(status!=='all' && !Object.hasOwn(transitions,status)) throw new Error('Invalid status');
     const category=option('--category','');
     if(category!=='' && !categories.includes(category)) throw new Error('Invalid category');
-    const max=Number(option('--limit','50'));
-    if(!Number.isInteger(max)||max<1||max>500) throw new Error('Limit must be 1–500');
+    // Pages through every matching note by default (the old fixed 50 silently dropped the rest); --limit caps it.
+    const max=args.includes('--limit') ? Number(option('--limit','')) : Infinity;
+    if(max!==Infinity && (!Number.isInteger(max)||max<1)) throw new Error('Limit must be a positive integer');
+    const pageSize=Number(option('--page-size','300'));
+    if(!Number.isInteger(pageSize)||pageSize<1||pageSize>500) throw new Error('Page size must be 1–500');
     const filters=[];
     if(status!=='all') filters.push({fieldFilter:{field:{fieldPath:'status'},op:'EQUAL',value:{stringValue:status}}});
     if(category) filters.push({fieldFilter:{field:{fieldPath:'category'},op:'EQUAL',value:{stringValue:category}}});
     const where=filters.length===0?{}:filters.length===1?{where:filters[0]}:{where:{compositeFilter:{op:'AND',filters}}};
-    const query={from:[{collectionId:'canalFeedback'}],limit:max,...where};
-    const result=await api(':runQuery','POST',{structuredQuery:query});
+    const {docs:result,atLimit}=await pullPages(async (offset,size)=>{
+      const query={from:[{collectionId:'canalFeedback'}],orderBy:[{field:{fieldPath:'__name__'},direction:'ASCENDING'}],offset,limit:size,...where};
+      return (await api(':runQuery','POST',{structuredQuery:query})).filter(r=>r.document);
+    },{max,pageSize});
+    if(atLimit) console.error(`\n*** WARNING: stopped at --limit ${max}; more ${status} notes may exist. Re-run without --limit to pull them all. ***\n`);
     await mkdir(directory,{recursive:true});
     const notes=[];
     for(const {document} of result) {
@@ -68,8 +86,8 @@ export async function main(args = process.argv.slice(2)) {
       delete note.screenshot; notes.push(note);
     }
     notes.sort((a,b)=>String(a.createdAt).localeCompare(String(b.createdAt)));
-    const file=join(directory,`queue-${status}.json`); await writeFile(file,JSON.stringify({project,pulledAt:new Date().toISOString(),status,limit:max,notes},null,2)+'\n');
-    console.log(JSON.stringify({file,count:notes.length,atLimit:notes.length===max,notes:notes.map(n=>({id:n.id,status:n.status,category:n.category,subject:n.subject,target:n.target?.label,text:n.text.slice(0,400),host:n.environment?.host,build:n.environment?.build,screenshotPath:n.screenshotPath}))},null,2));
+    const file=join(directory,`queue-${status}.json`); await writeFile(file,JSON.stringify({project,pulledAt:new Date().toISOString(),status,limit:max===Infinity?null:max,atLimit,notes},null,2)+'\n');
+    console.log(JSON.stringify({file,count:notes.length,atLimit,notes:notes.map(n=>({id:n.id,status:n.status,category:n.category,subject:n.subject,target:n.target?.label,text:n.text.slice(0,400),host:n.environment?.host,build:n.environment?.build,screenshotPath:n.screenshotPath}))},null,2));
     return;
   }
   if(command==='status') {
@@ -84,6 +102,6 @@ export async function main(args = process.argv.slice(2)) {
     const updated = await api(`/canalFeedback/${id}?updateMask.fieldPaths=status&updateMask.fieldPaths=resolution&updateMask.fieldPaths=updatedAt&currentDocument.updateTime=${encodeURIComponent(expected)}`,'PATCH', {fields:{status:encode(next),resolution:encode(message),updatedAt:{timestampValue:new Date().toISOString()}}});
     console.log(JSON.stringify({id,status:next,updateTime:updated.updateTime}));return;
   }
-  throw new Error('Commands: pull [--status open|in-progress|deferred|resolved|all] [--category bug|building|data|request|other] [--limit 50] [--out DIR]; status ID STATUS --expected UPDATE_TIME --note-file FILE');
+  throw new Error('Commands: pull [--status open|in-progress|deferred|resolved|all] [--category bug|building|data|request|other] [--limit N (default: all)] [--page-size 300] [--out DIR]; status ID STATUS --expected UPDATE_TIME --note-file FILE');
 }
 if(process.argv[1] && import.meta.url===pathToFileURL(resolve(process.argv[1])).href) main().catch(e=>{console.error(e.message);process.exitCode=1;});
