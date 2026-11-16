@@ -2,15 +2,18 @@
 // wall) and behind its glass (`inside`, 0.3-2.5 m deep), as data; and the deterministic placement per run and per bay,
 // seeded by the pand and the bay index, so no two windows repeat and the world compile stays stable.
 import { hash01, posed, type PropTri } from './kit.js';
-import { bakfiets, barberStation, bike, BIKE_HEXES, BLOOMS, bucketTier, counter, crate, plant, PRODUCE, rail, shelfUnit, washBasin, type Produce } from './props.js';
+import { bakfiets, barberStation, bikeHex, bikeRack, BLOOMS, bucketTier, counter, crate, omafiets, OMAFIETS_SIZE, plant, PRODUCE, rail, shelfUnit, washBasin, type Produce } from './props.js';
 
-export type PropKind = 'bike' | 'bakfiets' | 'crate' | 'bucketTier' | 'plant' | 'barberStation' | 'washBasin' | 'counter' | 'shelfUnit';
+export type PropKind = 'bike' | 'windowBike' | 'bakfiets' | 'crate' | 'bucketTier' | 'plant' | 'barberStation' | 'washBasin' | 'counter' | 'shelfUnit';
 
 /** A pavement row: props chosen by weight, laid along each run at about `pitchM`, `y` out from the wall (alternating by
  *  `yAlt`), turned up to `yawJitter`; `tilt` tips them towards the street; `stand` draws under or behind the row. */
 export type OutsideRow = {
   props: ReadonlyArray<{ prop: PropKind; weight: number }>; pitchM: number; y: number; yAlt?: number; z?: number;
-  yawJitter?: number; tilt?: number; stand?: 'skirt' | 'rail'; max?: number; /** Share of props turned end for end. */ mirror?: number;
+  yawJitter?: number; tilt?: number; stand?: 'skirt' | 'rail' | 'hoops'; max?: number; /** Share of props turned end for end. */ mirror?: number;
+  /** Lane shop-bikes: spread the props evenly over each whole run, about `pitchM` apart (a single prop centred), at most
+   *  `max` over the front (the pitch then widens); one kind only. */
+  even?: boolean;
 };
 /** Props behind the glass per bay: how many (at most what fits), how deep, turned how far. */
 export type InsideItem = { prop: PropKind; count: readonly [number, number]; depth: readonly [number, number]; yaw?: number; yawJitter?: number; z?: number; k?: number; widthM?: number; mirror?: number };
@@ -18,9 +21,15 @@ export type ShopPropsSpec = { outside?: readonly OutsideRow[]; inside?: readonly
 
 /** The templates' props (only those that draw any). */
 export const SHOP_PROPS: Readonly<Record<string, ShopPropsSpec>> = {
+  // Lane shop-bikes (David 2026-11-16): the baked omafiets, side-on, evenly along the whole frontage either side of the
+  // door at about 0.65 m (two staggered lines, wheels overlapping as parked), a few turned the other way, before hoop
+  // racks; behind each window one standing on the riser and, where it fits, one hung above.
   bike: {
-    outside: [{ props: [{ prop: 'bike', weight: 0.88 }, { prop: 'bakfiets', weight: 0.12 }], pitchM: 0.7, y: 0.36, yAlt: 0.16, yawJitter: 0.2, stand: 'rail', max: 7, mirror: 0.35 }],
-    inside: [{ prop: 'bike', count: [1, 2], depth: [0.4, 1.6], yawJitter: 0.45, z: 0.25, mirror: 0.5 }],
+    outside: [{ props: [{ prop: 'bike', weight: 1 }], pitchM: 0.65, y: 0.41, yAlt: 0.12, yawJitter: 0.07, stand: 'hoops', max: 8, mirror: 0.3, even: true }],
+    inside: [
+      { prop: 'windowBike', count: [1, 1], depth: [0.5, 1.4], yawJitter: 0.2, z: 0.25, mirror: 0.5 },
+      { prop: 'windowBike', count: [0, 1], depth: [0.3, 0.6], yawJitter: 0.1, z: 1.05, k: 0.9, mirror: 0.5 },
+    ],
   },
   greengrocer: {
     outside: [
@@ -39,14 +48,16 @@ export const SHOP_PROPS: Readonly<Record<string, ShopPropsSpec>> = {
 };
 
 /** What a prop takes along the wall (m). */
-const WIDTH: Record<PropKind, number> = { bike: 1.74, bakfiets: 2.3, crate: 0.5, bucketTier: 1.2, plant: 0.4, barberStation: 0.8, washBasin: 0.6, counter: 1.1, shelfUnit: 1.4 };
+const WIDTH: Record<PropKind, number> = { bike: OMAFIETS_SIZE.lengthM, windowBike: OMAFIETS_SIZE.lengthM, bakfiets: 2.3, crate: 0.5, bucketTier: 1.2, plant: 0.4, barberStation: 0.8, washBasin: 0.6, counter: 1.1, shelfUnit: 1.4 };
 const PRODUCE_ORDER = Object.keys(PRODUCE) as Produce[];
 const HAIR = ['#1d1d1b', '#7a1f2b', '#2b2b2b', '#3a2a22'] as const, PALETTE = ['#d8452f', '#f2b92e', '#3f8f4a', '#ee7f2c', '#7cb342', '#c0392b'] as const;
 
 /** One prop instance's triangles: kinds that vary (colour, produce, blooms) draw from `r`. */
 function build(kind: PropKind, r: (k: string) => number, seed: string, i: number, widthM?: number): PropTri[] {
   switch (kind) {
-    case 'bike': return bike(BIKE_HEXES[Math.floor(r(`h${i}`) * BIKE_HEXES.length)], r(`s${i}`) < 0.45);
+    // Keys vary in the middle, not the last character: FNV-1a's top bits barely move on a last-character change.
+    case 'bike': return omafiets(bikeHex(r(`${i}:hue`)));
+    case 'windowBike': return omafiets(bikeHex(r(`${i}:hue`)), 'window');
     case 'bakfiets': return bakfiets(r(`h${i}`) < 0.6 ? '#8a6a44' : '#2f4a36');
     case 'crate': {
       // Neighbours differ: a seeded start, then every third produce of the eight, so a row runs through all of them.
@@ -68,6 +79,7 @@ export function outsideProps(spec: ShopPropsSpec, runs: ReadonlyArray<readonly [
   const out: PropTri[] = [];
   (spec.outside ?? []).forEach((row, ri) => {
     const r = (k: string) => hash01(`${seed}:out${ri}:${k}`), total = row.props.reduce((t, p) => t + p.weight, 0);
+    if (row.even) { out.push(...evenRow(row, runs, seed, r)); return; }
     let n = 0;
     for (const [r0, r1] of runs) {
       let x = r0 + 0.05;
@@ -94,6 +106,35 @@ export function outsideProps(spec: ShopPropsSpec, runs: ReadonlyArray<readonly [
           { p: [[a, y, 0], [b, y, 0], [b, y, z]], n: [0, 1, 0], hex: '#3d6b35' }, { p: [[a, y, 0], [b, y, z], [a, y, z]], n: [0, 1, 0], hex: '#3d6b35' },
         ], { x: 0, y: 0, z: 0 }));
       }
+    }
+  });
+  return out;
+}
+
+/** A row spread evenly over each whole run (lane shop-bikes): as many props as fit about `pitchM` apart, first and
+ *  last at the run's ends, at most `max` over the front shared out by run length; hoops behind, one per two props. */
+function evenRow(row: OutsideRow, runs: ReadonlyArray<readonly [number, number]>, seed: string, r: (k: string) => number): PropTri[] {
+  const out: PropTri[] = [], kind = row.props[0].prop, w = WIDTH[kind];
+  const fits = runs.map(([r0, r1]) => (r1 - r0 >= w ? Math.floor((r1 - r0 - w) / row.pitchM + 1e-9) + 1 : 0));
+  // Over the cap, trim the run with the most props first, so the bikes stay spread over the whole front.
+  const want = fits.slice();
+  while (want.reduce((t, k) => t + k, 0) > (row.max ?? 99)) { const i = want.indexOf(Math.max(...want)); want[i]--; }
+  let n = 0;
+  runs.forEach(([r0, r1], ri) => {
+    const k = want[ri];
+    if (!k) return;
+    const step = k > 1 ? (r1 - r0 - w) / (k - 1) : 0, xs: number[] = [];
+    for (let j = 0; j < k; j++, n++) {
+      // Seeded: a few centimetres of slack along, the line (front or back), a little turn, and now and then end for end.
+      const slack = Math.min(0.08, Math.max(0, step - 0.5) / 2), x = k > 1 ? r0 + w / 2 + j * step + (r(`${n}:slack`) - 0.5) * 2 * slack * (j > 0 && j < k - 1 ? 1 : 0) : (r0 + r1) / 2;
+      const y = row.y + (j % 2 ? row.yAlt ?? 0 : 0), yaw = (r(`${n}:yaw`) - 0.5) * 2 * (row.yawJitter ?? 0);
+      out.push(...posed(build(kind, r, seed, n), { x, y, z: row.z ?? 0, yaw, tilt: row.tilt, mirror: r(`${n}:mirror`) < (row.mirror ?? 0) }));
+      xs.push(x);
+    }
+    if (row.stand === 'hoops') {
+      // Hoops (the street-furniture rack) behind the line, one per two bikes, evenly between the first and the last.
+      const hoops = Math.max(1, Math.ceil(k / 2)), a = xs[0], b = xs[xs.length - 1];
+      for (let h = 0; h < hoops; h++) out.push(...posed(bikeRack(), { x: hoops > 1 ? a + (b - a) * h / (hoops - 1) : (a + b) / 2, y: 0.12, z: 0 }));
     }
   });
   return out;

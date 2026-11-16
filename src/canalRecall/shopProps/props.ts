@@ -2,9 +2,22 @@
 // the street, z up, origin on the ground at the prop's centre). Each states its triangle cost (PROP_COST, tested), its
 // footprint along the wall and its depth, so a layout can fit it and a budget can be read off the table.
 import { hash01, Mesh, shade, type PropTri, type V3 } from './kit.js';
+import { BIKE_RACK, BIKE_RACK_TRIS, OMAFIETS_LOW, OMAFIETS_LOW_TRIS, OMAFIETS_WINDOW, OMAFIETS_WINDOW_TRIS } from './bikeMeshes.generated.js';
 
-/** Frame colours of parked Amsterdam bikes (black dominates; dark green, cream, red, blue). */
-export const BIKE_HEXES = ['#1a1a1a', '#1a1a1a', '#232323', '#2f4a36', '#d9cfb4', '#9c2a26', '#2b4a78', '#3a3d40'] as const;
+/** Lane shop-bikes: frame colours of Dutch city bikes, a palette with weights (black dominates; matte navy, dark green,
+ *  cream, burgundy; the occasional pastel). A rental fleet's bikes are recoloured from any of these. */
+export const BIKE_PALETTE = [
+  { hex: '#161616', w: 5 }, { hex: '#1f2a3d', w: 2.5 }, { hex: '#29402f', w: 2 }, { hex: '#d6cbae', w: 1.5 }, { hex: '#6b1e2a', w: 1.5 },
+  { hex: '#3a3d40', w: 1 }, { hex: '#a9cfc6', w: 0.5 }, { hex: '#e4b9c2', w: 0.4 }, { hex: '#b8c8e0', w: 0.4 },
+] as const;
+export const BIKE_HEXES = BIKE_PALETTE.map(c => c.hex);
+/** A frame colour from the palette for 0 <= u < 1. */
+export function bikeHex(u: number): string {
+  const total = BIKE_PALETTE.reduce((t, c) => t + c.w, 0);
+  let pick = u * total;
+  for (const c of BIKE_PALETTE) if ((pick -= c.w) < 0) return c.hex;
+  return BIKE_PALETTE[0].hex;
+}
 const TYRE = '#141414', DARK = '#202020', STEEL = '#8d9396';
 
 /** A bike side-on, rear axle at x = -L/2, front axle at +L/2: 8-sided tyres, a diamond or step-through frame, the
@@ -26,6 +39,34 @@ export function bike(frameHex: string, step = false): PropTri[] {
   m.box(x0 + 0.2, x0 + 0.42, -0.06, 0.06, 0.92, 0.97, DARK, { ends: false });
   m.strip(P(-0.08, 0.76), P(0.3, 0.8), 0.12, shade(frameHex, 0.8), [0, 0.3, 1]);
   m.strip([x0 + 0.86, -0.28, 1.02], [x0 + 0.86, 0.28, 1.02], 0.035, DARK, [0, 0, 1]);
+  return m.tris;
+}
+
+const GROUP_HEX = { dark: '#222222', saddle: '#2e241c', tyre: '#141414', chrome: '#a9b0b4' } as const;
+const fromFlat = (m: Mesh, flat: readonly number[], hex: string) => {
+  for (let i = 0; i < flat.length; i += 9) m.tri([flat[i], flat[i + 1], flat[i + 2]], [flat[i + 3], flat[i + 4], flat[i + 5]], [flat[i + 6], flat[i + 7], flat[i + 8]], hex);
+};
+
+/** Lane shop-bikes: the player's omafiets baked low (bikeMeshes.generated.ts, scripts/shop-props/bake-shop-bikes.ts),
+ *  side-on with its chain case to the street (+y), front wheel at -x; its frame and fork in `frameHex`, mudguards,
+ *  carrier, chain case and bars dark, rims and stem chrome. `window` is the outline LOD for behind the glass. */
+export function omafiets(frameHex: string, lod: 'shop' | 'window' = 'shop'): PropTri[] {
+  const m = new Mesh(), src = lod === 'shop' ? OMAFIETS_LOW : OMAFIETS_WINDOW;
+  fromFlat(m, src.frame, frameHex);
+  for (const g of ['dark', 'saddle', 'tyre', 'chrome'] as const) fromFlat(m, src[g], GROUP_HEX[g]);
+  return m.tris;
+}
+
+/** The baked omafiets's length (tyre to tyre, with its mudguards) and its bars' width across. */
+export const OMAFIETS_SIZE = (() => {
+  const all = Object.values(OMAFIETS_LOW).flatMap(a => [...a]), xs = all.filter((_, i) => i % 3 === 0), ys = all.filter((_, i) => i % 3 === 1);
+  return { lengthM: Math.max(...xs) - Math.min(...xs), widthM: Math.max(...ys) - Math.min(...ys) };
+})();
+
+/** Lane shop-bikes: the street-furniture bike rack (models/street-furniture/bike-rack.glb), an inverted U across x. */
+export function bikeRack(hex = STEEL): PropTri[] {
+  const m = new Mesh();
+  fromFlat(m, BIKE_RACK, hex);
   return m.tris;
 }
 
@@ -167,6 +208,6 @@ export function shelfUnit(w: number, palette: readonly string[], seed: string, f
 }
 
 /** Cost of each fixed-size prop (tested against its builder). */
-export const PROP_COST = { bike: 54, bakfiets: 58, rail: 6, crate: 34, crateNoCard: 32, plant: 6, plantTall: 8, barberStation: 50, washBasin: 24, counter: 14 } as const;
+export const PROP_COST = { omafiets: OMAFIETS_LOW_TRIS, omafietsWindow: OMAFIETS_WINDOW_TRIS, bikeRack: BIKE_RACK_TRIS, bike: 54, bakfiets: 58, rail: 6, crate: 34, crateNoCard: 32, plant: 6, plantTall: 8, barberStation: 50, washBasin: 24, counter: 14 } as const;
 /** A bucket tier's cost for `w`. */
 export const bucketTierCost = (w: number) => 3 * (4 + Math.max(1, Math.floor(w / 0.27)) * 8);
