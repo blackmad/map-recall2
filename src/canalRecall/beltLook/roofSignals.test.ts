@@ -64,6 +64,7 @@ test('flatTopNoGable: no register or donor gable stands on Boomstraat 172664; th
   const stated = new Map<string, BeltStated>([['0363100012172664', { crown: 'neck', year: 1762 }]]);
   assert.equal(crownOf(look, stated), 'cornice');
   assert.equal(crownOf(look, new Map()), 'cornice');
-  // without the option (BELT_LOOK, byte-identical belt output) the register's neck stands as before
-  assert.equal(crownOf(BELT_LOOK, stated), 'neck');
+  // without the option the register's neck stands as before (the belt sets it since lane D round 9: no belt front changes)
+  assert.equal(crownOf({ ...BELT_LOOK, flatTopNoGable: false }, stated), 'neck');
+  assert.equal(BELT_LOOK.flatTopNoGable, true);
 });

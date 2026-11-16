@@ -320,3 +320,16 @@ test('round 9: an attiek is no roof storey; a register-silent pand takes no dono
   const f = fittedRead(target(), donor('0363100012174842', 'Keizersgracht', 1700, 6.3, 15, { windowSurround: 'full-frame' } as never)) as unknown as { windowSurround: string };
   assert.equal(f.windowSurround, 'none');
 });
+
+test('round 9: the photo finish reader states stucco and paint only when confident; a stated paint paints a brick donor', async () => {
+  const { photoFinish } = await import('./generate.ts');
+  // Singel 167687: a confident stucco read is a plastered front (pale stucco, not the donor's brick).
+  assert.equal(photoFinish({ finish: 'stucco', confidence: 0.85, reader: 'opus (cut)' }), 'plaster');
+  assert.equal(photoFinish({ finish: 'paint', confidence: 0.75, reader: 'opus (cut)' }), 'painted');
+  assert.equal(photoFinish({ finish: 'stucco', confidence: 0.6, reader: 'opus (cut)' }), undefined);
+  assert.equal(photoFinish({ finish: 'unclear', confidence: 0.9, reader: 'opus (cut)' }), undefined);
+  const s = fittedRead(target({ finish: 'plaster' }), donor('0363100012174842', 'Keizersgracht', 1700, 6.3, 15, { finish: 'brick' } as never)) as unknown as { finish: string; pale?: boolean };
+  assert.deepEqual([s.finish, s.pale], ['stucco', true]);
+  const p = fittedRead(target({ finish: 'painted' }), donor('0363100012174842', 'Keizersgracht', 1700, 6.3, 15, { finish: 'brick' } as never)) as unknown as { finish: string };
+  assert.equal(p.finish, 'painted-brick');
+});

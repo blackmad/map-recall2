@@ -44,6 +44,19 @@ export interface BeltPhoto { hex: string; L: number; C: number; h: number; n: nu
  *  washed-out or shadowed patch (lightness band). Round 8: Keizersgracht 176392, an unreadable cut (no storeys seen) whose
  *  wall sample #4a423b is the dark brick of the photo, was drawn #6f5543 from the neighbours. */
 export const PHOTO_SAMPLE = { minN: 200, foliageHue: [95, 170] as const, foliageC: 0.025, minL: 0.2, maxL: 0.8 } as const;
+/**
+ * The photo finish reader (round 9, item 3: Singel 167687's stucco drawn as brick): a cut's wall finish read from the
+ * photo (opus on the cut, or a unanimous Node colour/texture neighbour vote for plain brick), with a confidence. It
+ * states the finish only where the register is silent and the read is confident; stucco a pale plastered front, paint a
+ * painted brick one. Calibration on 60 labelled belt cuts (20 per finish): opus 56/60, stucco 20/20 with no false stucco;
+ * haiku 25/60 (not used); the Node vote 74 % overall; a unanimous brick vote 77 of 87 (the only Node read kept).
+ */
+export interface PhotoFinish { finish: 'stucco' | 'paint' | 'brick' | 'unclear'; confidence: number; reader: string }
+export const PHOTO_FINISH_MIN = 0.7;
+export function photoFinish(p: PhotoFinish | undefined): BeltTarget['finish'] | undefined {
+  if (!p || p.confidence < PHOTO_FINISH_MIN) return undefined;
+  return p.finish === 'stucco' ? 'plaster' : p.finish === 'paint' ? 'painted' : p.finish === 'brick' ? 'brick' : undefined;
+}
 export function strongPhoto(p: BeltPhoto | undefined): p is BeltPhoto {
   if (!p || !(p.n >= PHOTO_SAMPLE.minN) || !(p.L >= PHOTO_SAMPLE.minL && p.L <= PHOTO_SAMPLE.maxL)) return false;
   return !(p.C >= PHOTO_SAMPLE.foliageC && p.h >= PHOTO_SAMPLE.foliageHue[0] && p.h <= PHOTO_SAMPLE.foliageHue[1]);

@@ -115,7 +115,10 @@ export interface LookDistrict {
   /** roofSignals.ts: a roof storey (one dormer) over a cornice front whose 3DBAG ridge stands 2 m over the front top. */
   measuredRoofStorey?: boolean;
 }
-export const BELT_LOOK: LookDistrict = { id: 'belt', canals: BELT_CANALS, pitchM: PITCH_M, foreignDonor: 0 };
+/** The belt sets flatTopNoGable (round 9: 0 belt fronts change today, a guard for Keizersgracht 171508's kind). It leaves
+ *  measuredRoofStorey off: it would add a roof storey to 160 belt cornice fronts, and an opus read of 15 of their cuts saw
+ *  a dormer on 5, a bare slope on 2 and nothing over the cornice on 8 (a ridge behind a belt cornice is not a dormer). */
+export const BELT_LOOK: LookDistrict = { id: 'belt', canals: BELT_CANALS, pitchM: PITCH_M, foreignDonor: 0, flatTopNoGable: true };
 /** A warehouse's floor pitch (m): pakhuis floors are low (2.4-3.0 m in the belt's read warehouses), so the eaves hold more storeys. */
 export const WAREHOUSE_PITCH_M = 2.7;
 /** Gap sentences naming a house's own ornament, which a donor does not lend: balconies, porches, aedicules, rustication,
@@ -267,6 +270,8 @@ export function fittedRead(t: BeltTarget, d: BeltDonor, look: LookDistrict = BEL
   if (t.finish === 'plaster') { ax.finish = 'stucco'; ax.pale = true; }
   else if (t.finish === 'stone') { ax.finish = 'stone'; ax.pale = true; }
   else if ((t.finish === 'brick' || t.finish === 'ornamentalBrick') && (ax.finish === 'stucco' || ax.finish === 'painted-brick')) { ax.finish = 'brick'; delete ax.pale; }
+  // A stated painted front (the register, or the photo finish reader) over a brick donor is painted brick.
+  else if (t.finish === 'painted' && ax.finish === 'brick') ax.finish = 'painted-brick';
   // The register silent or brick: a donor's paint or stucco is not this house's. The wall is brick, judged from the
   // neighbours (round 4: pale, cream and tan fronts drawn where the photo is dark or red-brown brick; David's colour by
   // judgement, plausible from the neighbours). Only the register (or the pand's own read) paints a front.
