@@ -55,6 +55,7 @@ import { accentGlsl, packMask } from './maskPacking.ts';
 import { CELL_DEBUG_GLSL, WINDOW_SDF_GLSL, windowSdfBandUniforms, type CellDebug } from './windowSdf.ts';
 import { FACADE_RECORD_GLSL, FACADE_RECORD_VERTEX_BODY, FACADE_RECORD_VERTEX_DECLS } from './facadeShader.ts';
 import { WALL_UV_UNIT_M } from '../world/shellMesh.ts';
+import { GLASS_FINISH_EXTRA, GLASS_REFLECT_GLSL, glassReflectEnabled, isGlassFinish, type GlassFinish } from './glassReflect.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -425,9 +426,17 @@ export type CityVariant = {
    * the text it was before F1.
    */
   records?: boolean;
+  /**
+   * Reflective glass (`?glassReflect=1`, look/glassReflect.ts): a slot mesh whose material says `glassFinish:
+   * 'reflective'` reflects the analytic sky with a Fresnel term instead of the constant sky tint. Lit slot variants
+   * only; absent, every key, define and program is the text it was before.
+   */
+  reflect?: boolean;
 };
 
-export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.farWindows && v.kind === 'chunk' ? '|fwin' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}`;
+export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.farWindows && v.kind === 'chunk' ? '|fwin' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}${reflectOn(v) ? '|grefl' : ''}`;
+/** The reflective-glass variant applies to lit slot meshes only (the unlit path is the legacy layers' baked shade). */
+export const reflectOn = (v: CityVariant): boolean => !!v.reflect && v.lit && v.kind === 'slot';
 /** The record variant applies to lit facade chunks only (the unlit path has no derivative shade yet). */
 export const recordsOn = (v: CityVariant): boolean => !!v.records && v.lit && v.kind === 'chunk';
 
@@ -443,6 +452,7 @@ export function variantDefines(v: CityVariant): Record<string, string> {
   if (v.aniso && v.kind === 'chunk') d.CELL_TIER_ANISO = '';
   if (v.taps && v.kind === 'chunk') d.CELL_TAPS = '';
   if (recordsOn(v)) d.CITY_FACADE_RECORD = '';
+  if (reflectOn(v)) d.CITY_GLASS_REFLECT = '';
   if (v.lit) {
     // Lit (the shared frame's look): box UVs and the highlight/dim state are per-material uniforms (cityVariantUniforms),
     // so the uv/box and plain/highlight/dim variants of a kind share one program (#129 P4 registry).
@@ -461,11 +471,23 @@ export function cityVariantUniforms(v: CityVariant): { cityForce: { value: numbe
 }
 
 /** The program key of a variant: lit variants differ only in uniforms beyond their kind; side is a material parameter. */
-export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.farWindows && v.kind === 'chunk' ? '|fwin' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
+export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.farWindows && v.kind === 'chunk' ? '|fwin' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}${reflectOn(v) ? '|grefl' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
 
 const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';
 const SKY_TINT = 'vec3(0.035, 0.05, 0.07)';
+/**
+ * CITY_GLASS_REFLECT (look/glassReflect.ts): in place of the constant sky tint, the analytic sky reflected with a
+ * Fresnel term; the albedo the lights then see keeps (1 - F)(1 - metalness). `normal` and `vViewPosition` are view
+ * space; viewMatrix turns them into the world (identity in the shared frame, whose world is east/north/up).
+ */
+const GLASS_REFLECT_EMISSIVE = /* glsl */ `else {
+  vec3 cityGN = normalize((vec4(normal, 0.0) * viewMatrix).xyz);
+  vec3 cityGV = normalize((vec4(vViewPosition, 0.0) * viewMatrix).xyz);
+  vec3 cityGKeep;
+  totalEmissiveRadiance += cityGlassReflect(cityGN, cityGV, diffuseColor.rgb, cityGKeep) * vSlot.w;
+  diffuseColor.rgb *= mix(vec3(1.0), cityGKeep, vSlot.w);
+}`;
 
 /**
  * The highlight keeps the light and the grain (review 2026-10-13: the first
@@ -844,7 +866,8 @@ export function createCityLookMaterial(THREE: any, variant: CityVariant, uniform
     const own = records ? { ...cityVariantUniforms(variant), ...createFacadeRecordUniforms() } : cityVariantUniforms(variant);
     if (records) recordUniforms = own as unknown as FacadeRecordUniforms;
     const vDecls = records ? RECORD_VERTEX_DECLS : VERTEX_DECLS, vBody = records ? RECORD_VERTEX_BODY : VERTEX_BODY;
-    const fDecls = records ? RECORD_FRAGMENT_DECLS : FRAGMENT_DECLS, fCell = records ? RECORD_FRAGMENT_CELL : FRAGMENT_CELL;
+    const reflect = reflectOn(variant);
+    const fDecls = (records ? RECORD_FRAGMENT_DECLS : FRAGMENT_DECLS) + (reflect ? GLASS_REFLECT_GLSL : ''), fCell = records ? RECORD_FRAGMENT_CELL : FRAGMENT_CELL;
     material.onBeforeCompile = (shader: any) => {
       for (const key of Object.keys(uniforms) as (keyof CityLookUniforms)[]) shader.uniforms[key] = uniforms[key];
       Object.assign(shader.uniforms, own);
@@ -872,7 +895,7 @@ diffuseColor.rgb *= HL_PAINT(vHighlight) ? ${HIGHLIGHT_LINEAR} * ${glslFloat(HIG
         .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
 if (HL_PAINT(vHighlight)) totalEmissiveRadiance += ${HIGHLIGHT_LINEAR} * ${glslFloat(HIGHLIGHT_GLOW)};
 #ifdef CITY_SLOT
-else totalEmissiveRadiance += ${SKY_TINT} * vSlot.w;
+${reflect ? GLASS_REFLECT_EMISSIVE : `else totalEmissiveRadiance += ${SKY_TINT} * vSlot.w;`}
 #else
 // Bay glazing (dark, untinted texels): the same constant sky tint as landmark glass, never a hotspot.
 else totalEmissiveRadiance += ${SKY_TINT} * (1.0 - smoothstep(0.06, 0.2, cityLuma)) * (1.0 - cityM.r);
@@ -908,8 +931,14 @@ export function slotIneligible(material: any): string | null {
 }
 
 /** Slot + tint a material declares, or (when `infer`) what its name and colour say. Null = leave it. */
-export function slotForMaterial(material: any, infer: boolean): { slot: MaterialSlot; tint: string; inferred: boolean; source?: TintSource; white?: string; windowGrid?: true } | null {
+export function slotForMaterial(material: any, infer: boolean, glassReflect: boolean = glassReflectEnabled()): { slot: MaterialSlot; tint: string; inferred: boolean; source?: TintSource; white?: string; windowGrid?: true; glassFinish?: GlassFinish } | null {
   const ud = material?.userData ?? {};
+  // `?glassReflect=1`: a material tagged reflective glass is glass whatever slot it falls back to without the flag
+  // (Room Mate Aitana's curtain wall is a pale `paint` panel today because flat glass read as dark cladding).
+  if (glassReflect && isGlassFinish(ud[GLASS_FINISH_EXTRA]) && isMaterialSlot(ud.materialSlot) && typeof ud.tint === 'string') {
+    const measured = ud.materialSlot === 'glass' && ud.tintSource === 'measured';
+    return { slot: 'glass', tint: ud.tint, inferred: ud.materialSlotSource === INFERRED_SLOT_SOURCE, ...(measured ? { source: 'measured' as const } : {}), glassFinish: ud[GLASS_FINISH_EXTRA] };
+  }
   if (isMaterialSlot(ud.materialSlot) && typeof ud.tint === 'string') {
     // Inferred extras written into a GLB only take part under the flag (they are, here).
     // The wall rule (wallRule.ts, `?wallRule=1`) reads a record or measured wall tint as measured.
@@ -1066,8 +1095,8 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
         }
         if (found.inferred && found.slot === 'slate' && !found.source) levelFacesAsFlatRoof(THREE, root, o, geometry, found.tint, hints);
         const previous = o.material;
-        o.material = material({ lit, kind: 'slot', uv: hasUv ? 'uv' : 'box', side: previous.side });
-        o.userData.citySlot = { slot: found.slot, tint: found.tint, ...(found.source ? { source: found.source } : {}), inferred: found.inferred, from: previous.name, layer: slotLayerOf(found.slot, hints) };
+        o.material = material({ lit, kind: 'slot', uv: hasUv ? 'uv' : 'box', side: previous.side, ...(found.glassFinish === 'reflective' && lit ? { reflect: true } : {}) });
+        o.userData.citySlot = { slot: found.slot, tint: found.tint, ...(found.source ? { source: found.source } : {}), ...(found.glassFinish ? { glassFinish: found.glassFinish } : {}), inferred: found.inferred, from: previous.name, layer: slotLayerOf(found.slot, hints) };
         if (!previous.userData?.[CITY_LOOK_SHARED]) previous.dispose();
         changed++;
       });

@@ -10,11 +10,16 @@
  *   c     *= mix(1, tint, m.r) * litGain                          (accent defaults to white on a slot mesh)
  *   out    = Lambert(c ^ 2.2) under the rig, smooth normals, cast shadow; emissive += SKY_TINT x skyTint
  *
+ * Reflective glass (`glassFinish: 'reflective'` under GLASS_REFLECT=1 / `?glassReflect=1`, look/glassReflect.ts): the
+ * emissive sky tint is replaced by F env(r) and the albedo by albedo (1 - F)(1 - metalness), the same function as the
+ * GLSL (glassReflectInto), with the view vector from env.eye.
+ *
  * Not reproduced: the shader window grid on `windowGrid` walls (cityWindowGrid), highlight and dim states.
  */
 import * as THREE from 'three';
 import { SLOT_LAYERS, WINDOW_GRID_LAYER_FLAG, slotForMaterial, slotLayerOf, slotTintBytes, type SlotVariantHints } from '../look/cityLook.ts';
 import { isWhiteWord } from '../look/materialSlotInference.ts';
+import { glassReflectInto } from '../look/glassReflect.ts';
 import type { WallExposure } from '../look/chunkWallExposure.ts';
 import { sampleAtlas, type Atlas } from './atlas.ts';
 import { lambert, linearToSrgb, pow22, sunFacing } from './light.ts';
@@ -30,7 +35,7 @@ type GlbMaterial = GlbScene['materials'][number];
 type GlbPrimitive = GlbScene['primitives'][number];
 
 /** One slot a primitive's material takes: the atlas layer and the tint bytes (0..255), as setSlotAttributes writes them. */
-export type SlotPick = { layer: number; tint: [number, number, number]; flat?: { layer: number; tint: [number, number, number] } };
+export type SlotPick = { layer: number; tint: [number, number, number]; flat?: { layer: number; tint: [number, number, number] }; reflect?: true };
 
 /** The slot a GLB material takes under the city look (dress with `infer`), or null when it keeps its own material. */
 export function slotPickFor(m: GlbMaterial, prim: Pick<GlbPrimitive, 'colors'>, context: { year?: number | null; exposure?: WallExposure | null } = {}): SlotPick | null {
@@ -47,7 +52,7 @@ export function slotPickFor(m: GlbMaterial, prim: Pick<GlbPrimitive, 'colors'>, 
   const t = slotTintBytes(found.slot, found.tint, hints.source, undefined, hints.whitePoint, hints.exposure, false, true);
   // The window-grid flag (cityWindowGrid) is not drawn here: the wall keeps its slot cell.
   const ordinal = slotLayerOf(found.slot, hints), layer = ordinal >= WINDOW_GRID_LAYER_FLAG ? ordinal - WINDOW_GRID_LAYER_FLAG : ordinal;
-  const pick: SlotPick = { layer, tint: [t[0], t[1], t[2]] };
+  const pick: SlotPick = { layer, tint: [t[0], t[1], t[2]], ...(found.glassFinish === 'reflective' ? { reflect: true as const } : {}) };
   if (found.inferred && found.slot === 'slate' && !found.source) {
     const b = slotTintBytes('bitumen', found.tint, hints.source);
     pick.flat = { layer: slotLayerOf('bitumen', hints), tint: [b[0], b[1], b[2]] };
@@ -63,6 +68,7 @@ export function slotMaterial(pick: SlotPick, atlas: Atlas, env: SurfaceEnv, posi
   uvs: ArrayLike<number> | null | undefined, local: { positions: ArrayLike<number>; normals?: ArrayLike<number> | null; metres: number }): WorldMaterial {
   const { light } = env, aniso = env.anisotropy ?? 16, size = atlas.size;
   const c = new Float64Array(3), m = new Float64Array(2), irr = new Float64Array(3), uv3 = [0, 0, 0, 0, 0, 0];
+  const rn = [0, 0, 0], rv = [0, 0, 0], ra = [0, 0, 0], radd = [0, 0, 0], rkeep = [0, 0, 0];
   let lastTri = -1, texPerM = 0, layer = 0, tint = pick.tint, tile = 1, clamp = false, gain = 1, sky = 0;
   const slotOf = (ordinal: number) => SLOT_LAYERS[Math.max(0, Math.min(SLOT_LAYERS.length - 1, ordinal))];
   /** The cell uv of vertex `i` into uv3[k * 2]. */
@@ -115,7 +121,13 @@ export function slotMaterial(pick: SlotPick, atlas: Atlas, env: SurfaceEnv, posi
       }
       const lit = !env.shadow || sunFacing(light, nx, ny, nz) <= 0 ? 1 : env.shadow(s.px, s.py, s.pz, nx, ny, nz);
       lambert(light, nx, ny, nz, lit, irr);
-      for (let k = 0; k < 3; k++) out[k] = linearToSrgb(pow22(c[k]) * irr[k] + SKY_TINT[k] * sky);
+      if (pick.reflect && sky) {
+        const ex = env.eye[0] - s.px, ey = env.eye[1] - s.py, ez = env.eye[2] - s.pz, el = Math.hypot(ex, ey, ez) || 1;
+        rn[0] = nx; rn[1] = ny; rn[2] = nz; rv[0] = ex / el; rv[1] = ey / el; rv[2] = ez / el;
+        for (let k = 0; k < 3; k++) ra[k] = pow22(c[k]);
+        glassReflectInto(rn, rv, ra, radd, rkeep, light.toSun);
+        for (let k = 0; k < 3; k++) out[k] = linearToSrgb(ra[k] * rkeep[k] * irr[k] + radd[k]);
+      } else for (let k = 0; k < 3; k++) out[k] = linearToSrgb(pow22(c[k]) * irr[k] + SKY_TINT[k] * sky);
       if (env.fog) env.fog(s.dist, out);
       out[3] = 1;
       return true;
