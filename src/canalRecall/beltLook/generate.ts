@@ -34,6 +34,8 @@ export interface BeltStated { crown?: string; year?: number; shop?: boolean; fin
   /** The pand's cut wall sample (lane W1 on the pinned capture), from any cut, readable or not. */ photo?: BeltPhoto;
   /** The photo crown reader's (round 10): a tall cornice (bracketed or heavy) read on the cut, and its full storeys. */
   tallCornice?: string; photoStoreys?: number; photoSouterrain?: boolean;
+  /** Centrum round 6: the photo reads a roof in view over the wall (a mansard or pitched eaves). */
+  photoRoof?: boolean;
   /** The photo colour reader's (round 11): the wall's colour family read on the cut, set only where the register is silent. */
   photoColour?: PhotoColour }
 /**
@@ -71,6 +73,8 @@ export function photoCrown(p: PhotoCrown | undefined): { crown?: string; tallCor
   if (p.sc >= PHOTO_CROWN_MIN && Number.isInteger(p.full) && (p.full as number) >= 1) { out.storeys = p.full as number; if (p.souterrain !== null) out.souterrain = p.souterrain; }
   return out;
 }
+/** A gable's least rise over its foot (m) where a look lifts the foot to the photo's storeys (Centrum round 6). */
+export const GABLE_RISE_FLOOR_M: Readonly<Record<string, number>> = { neck: 3.5, 'raised-neck': 3.5, bell: 3.5, step: 3.5, point: 3, spout: 3, shouldered: 3 };
 /** The storey pitch (m) a gable's foot is lifted to over a photo storey count (an old canal house's storeys, 2.8-3.2 m). */
 export const PHOTO_FOOT_PITCH_M = 2.8;
 /** The storey pitch (m) a photo storey count must give the wall (its souterrain a SOUTERRAIN_SHARE cell) to be used. */
@@ -240,7 +244,10 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       photoStoreys = ps;
       read = fittedRead({ ...t, ...(corniceTop !== null ? { eavesM: corniceTop } : {}), ...(ps ? { storeys: ps } : {}) }, d.donor, look);
       if (sd?.tallCornice && !GABLED_CROWNS.has(String(read.crown))) (read as { cornice?: string }).cornice = sd.tallCornice;
-      if (t.roofStorey || (look.measuredRoofStorey && !GABLED_CROWNS.has(String(read.crown)) && roofStoreyOverCornice(m.pand, corniceTop))) read = statedDormer(read);
+      // Centrum round 6 (Kloveniersburgwal 177790, Marnixstraat 168522: a slate roof storey from 3DBAG's ridge alone over
+      // fronts the photo shows flat-corniced): a look with roofStoreyNeedsPhoto draws the measured roof storey only where
+      // the photo reads a roof in view (photoRoof); the register's dormer (t.roofStorey) still stands.
+      if (t.roofStorey || (look.measuredRoofStorey && !GABLED_CROWNS.has(String(read.crown)) && roofStoreyOverCornice(m.pand, corniceTop) && (!look.roofStoreyNeedsPhoto || !!sd?.photoRoof))) read = statedDormer(read);
       readRef = `${BELT_LOOK_REF}: donor ${d.donor.pandId}`;
       // A stated plaster or stone front is judged pale from its finish, not the donor's brick sample.
       // A donor's sample is a brick colour only when the donor is a brick front and the sample is not a buff (tan) brick;
@@ -259,11 +266,18 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     // A gable's apex: the AHN front's top under the 3DBAG ridge (the ridge often belongs to the roof behind the front).
     // The minimum rise counts from 3DBAG's own eaves, not the front top lifted to the height (round 6: Keizersgracht 178869
     // and 178868, AHN front tops 15.05 and 15.5 m, drawn 16.3 m as front top 14.3 + 2).
-    const ridge = gabled && af ? ahnGableApex(af, m.pand.eavesM ?? top, ridge0) : ridge0;
+    let ridge = gabled && af ? ahnGableApex(af, m.pand.eavesM ?? top, ridge0) : ridge0;
     // A gable over a photo storey count stands its foot at the storeys (PHOTO_FOOT_PITCH_M each), under the apex less the
     // minimum rise; apexOnFront then trims the rise to the apex.
-    const foot = gabled && photoStoreys && ridge !== null && top !== null
+    let foot = gabled && photoStoreys && ridge !== null && top !== null
       ? +Math.max(top, Math.min(ridge - AHN_BOUNDS.gableMinRiseM, photoStoreys * PHOTO_FOOT_PITCH_M)).toFixed(2) : top;
+    // A look with a measured gable foot pitch (Centrum round 6: De Weteringschans Prinsengracht 179167, a neck over four
+    // storeys drawn 14.6 m where the photo shows about 18; AHN's 0.5 m cells and 3DBAG's ridge both miss a thin neck): the
+    // foot stands at the photo's storeys at that pitch, and the apex at least the crown's rise over it.
+    if (look.gableFootPitchM && gabled && photoStoreys && ridge !== null && top !== null) {
+      foot = +Math.max(top, photoStoreys * look.gableFootPitchM).toFixed(2);
+      ridge = +Math.max(ridge, foot + (GABLE_RISE_FLOOR_M[String(read.crown)] ?? AHN_BOUNDS.gableMinRiseM)).toFixed(2);
+    }
     members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: t.year, widthM: +m.front.lengthM.toFixed(2),
       eaves3dbag: foot, height3dbag: foot, ...(ridge !== null && (gableable(t) || (gabled && af)) ? { ridge3dbag: +ridge.toFixed(2) } : {}),
       read, readRef, ...(sample ? { wallSample: sample } : {}) });

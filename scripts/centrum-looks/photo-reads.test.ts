@@ -18,8 +18,12 @@ test('v1 red-brown against v2 brown is left unstated', () => {
 
 test('v2 stands when confident; a confident v1 fills a weak v2', () => {
   assert.equal(mergeColour(r('brown-brick', 0.75), r('red-brown-brick', 0.8)).pick!.family, 'red-brown-brick');
-  assert.equal(mergeColour(r('red-brown-brick', 0.8), r('brown-brick', 0.6)).pick!.family, 'red-brown-brick');
-  assert.equal(mergeColour(r('white-paint', 0.6), r('cream-paint', 0.65)).rule, 'below the bar');
+  assert.equal(mergeColour(r('red-brown-brick', 0.8), r('red-brown-brick', 0.6)).pick!.family, 'red-brown-brick');
+  assert.equal(mergeColour(r('red-brown-brick', 0.8), undefined).pick!.family, 'red-brown-brick');
+  // round 6: two weak readers agreeing on the coarse group state v2's family; v1's red over a weak non-red v2 does not stand
+  assert.deepEqual(mergeColour(r('dark-paint', 0.6), r('dark-grey-brick', 0.65)), { pick: r('dark-grey-brick', 0.65), rule: 'v1 and v2 agree weakly', confidence: 0.7 });
+  assert.equal(mergeColour(r('red-brown-brick', 0.8), r('purple-brown-brick', 0.6)).confidence, UNSTATED);
+  assert.equal(mergeColour(r('white-paint', 0.5), r('cream-paint', 0.5)).rule, 'below the bar');
 });
 
 test('a second capture settles a doubt only when confident', () => {
@@ -48,4 +52,17 @@ test('a brick family read stands under a register that states only brick (Linden
   assert.equal(photoFamily(red, 'painted'), undefined);
   assert.equal(photoFamily({ ...red, family: 'white-paint' }, 'brick'), undefined);
   assert.equal(photoFamily({ ...red, confidence: 0.6 }, undefined), undefined);
+});
+
+test('round 6: the draw takes the confident reads mix; the gable foot pitch is the p25 of AHN tops over photo storeys', async () => {
+  const { photoMix, gableFootPitch } = await import('./generate.ts');
+  const fb = { before1860: { 'red-brown-brick': 0.45, 'orange-red-brick': 0.15, 'brown-brick': 0.4 }, from1860: { 'brown-brick': 1 } };
+  const reads = [...Array(9)].map(() => ({ year: 1700, family: 'brown-brick' as const })).concat([{ year: 1700, family: 'purple-brown-brick' as const }, { year: 1700, family: 'painted-black' as never }]);
+  const m = photoMix(reads, fb, 10);
+  assert.deepEqual(m.before1860, { 'brown-brick': 0.9, 'purple-brown-brick': 0.1 });   // paint counted out, no orange
+  assert.equal(m.from1860, fb.from1860);                                               // no reads: the fallback
+  const ahn = new Map([...Array(40)].map((_, i) => [`p${i}`, { n: 30, p50: 13, p90: 14 + (i % 4) * 0.4, max: 15 }] as [string, any]));
+  const pr = [...ahn.keys()].map(k => [k, { crown: 'cornice', cc: 0.8, sc: 0.8, full: 4, souterrain: false }] as [string, any]);
+  assert.equal(gableFootPitch(pr, ahn)!.pitch, 3.5);
+  assert.equal(gableFootPitch(pr.slice(0, 10), ahn), null);
 });

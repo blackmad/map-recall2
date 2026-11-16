@@ -26,6 +26,11 @@
  * stucco included (drawn where it reads paint), and is drawn even when the look's record called it plaster or paint; a
  * run whose read fronts mostly agree (at least 2, a majority) gives that family to its unread fronts, before samples.
  *
+ * Round 6 (2026-11-16: round 5's losses drew red or orange where the photo is dark: DW Prinsengracht 180118, Prins
+ * Hendrikkade 181609, Raamgracht 178142): a run with no two confident reads but at least WEAK_RUN_MIN weak reads
+ * (`weakPhoto`, confidence 0.55-0.7) that mostly agree takes that family (`run-weak`), before the samples; and the
+ * caller's period weights are the district's (or the street's) confident photo-read mix, not the judged prior.
+ *
  * Pure: no fs.
  */
 import { JUDGED_PALETTE, brickFromSample, lchOf, variedTone, type JudgedFamily } from '../houseSpec/judgedColour.ts';
@@ -54,9 +59,13 @@ export interface WallDrawFront {
   streetFamily?: JudgedFamily;
   /** the photo reader's family for this front (confidence >= 0.7, register silent), and whether it read stucco */
   photo?: JudgedFamily; photoStucco?: boolean;
+  /** a weak photo read (confidence 0.55-0.7): counted only when the run has WEAK_RUN_MIN that mostly agree */
+  weakPhoto?: JudgedFamily;
 }
+/** Weak reads a run needs to take their family (round 6). */
+export const WEAK_RUN_MIN = 3;
 /** `material`: 'painted-brick' for a paint family, else 'brick'. */
-export interface WallDrawn { family: JudgedFamily; hex: string; material: 'brick' | 'painted-brick' | 'stucco'; by: 'photo' | 'run-photo' | 'run-sample' | 'street' | 'draw' | 'series'; why: string }
+export interface WallDrawn { family: JudgedFamily; hex: string; material: 'brick' | 'painted-brick' | 'stucco'; by: 'photo' | 'run-photo' | 'run-weak' | 'run-sample' | 'street' | 'draw' | 'series'; why: string }
 export const isBrickFamily = (f: JudgedFamily): boolean => f.endsWith('-brick');
 export const periodOf = (y: number | null): 'before1860' | 'from1860' => (y !== null && y >= 1860 ? 'from1860' : 'before1860');
 
@@ -92,7 +101,9 @@ export function drawRowWalls(fronts: readonly WallDrawFront[], cfg: WallDrawConf
     let fam!: Omit<WallDrawn, 'hex' | 'material'>;
     const st = fr.find(f => f.streetFamily)?.streetFamily;
     const photos = fr.flatMap(f => (f.photo ? [f.photo] : [])), pf = photos.length >= 2 ? streetFamily(photos, 2) : null;
+    const weak = fr.flatMap(f => (f.photo ? [f.photo] : f.weakPhoto ? [f.weakPhoto] : [])), wf = weak.length >= WEAK_RUN_MIN ? streetFamily(weak, WEAK_RUN_MIN) : null;
     if (pf) fam = { family: pf, by: 'run-photo', why: `${JUDGED_PALETTE[pf].label}: the run's photo reads (${photos.filter(x => x === pf).length} of ${photos.length})` };
+    else if (wf) fam = { family: wf, by: 'run-weak', why: `${JUDGED_PALETTE[wf].label}: the run's weak photo reads agree (${weak.filter(x => x === wf).length} of ${weak.length})` };
     else if (samples.length >= cfg.runSamples) {
       const s = { L: median(samples.map(x => x.L)), C: median(samples.map(x => x.C)), h: median(samples.map(x => x.h)) };
       const f = brickFromSample(s);

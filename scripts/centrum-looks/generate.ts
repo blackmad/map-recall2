@@ -25,7 +25,7 @@ import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.t
 import { toRowCheck } from '../../src/canalRecall/houseSpec/row/check.ts';
 import type { DescriberAnswer } from '../../src/canalRecall/houseSpec/describer.ts';
 import { modernBehindRegister } from '../../src/canalRecall/beltLook/roofSignals.ts';
-import { drawRowWalls, measuredWeights, streetFamily, type WallDrawConfig, type WallDrawn, type WeightEvidence } from '../../src/canalRecall/beltLook/wallDraw.ts';
+import { drawRowWalls, isBrickFamily, measuredWeights, periodOf, streetFamily, type WallDrawConfig, type WallDrawn, type WeightEvidence, type Weights } from '../../src/canalRecall/beltLook/wallDraw.ts';
 import { strongPhoto, photoFinish, photoCrown, PHOTO_FINISH_MIN, type PhotoCrown } from '../../src/canalRecall/beltLook/generate.ts';
 import { describerDarkPhrase } from '../../src/canalRecall/houseSpec/darkFinish.ts';
 import { describerColourWord, judgeFront, type JudgedFamily } from '../../src/canalRecall/houseSpec/judgedColour.ts';
@@ -68,6 +68,44 @@ export function districtReads(look: LookDistrictFile, pands: ReturnType<typeof d
 export const PHOTO_OVER_REGISTER_CC = 0.75;
 export function photoOverRegisterGable(registerCrown: string | undefined, r: Partial<PhotoCrown> | undefined): boolean {
   return !!registerCrown && GABLED_CROWNS.has(registerCrown) && !!r && typeof r.cc === 'number' && r.cc >= PHOTO_OVER_REGISTER_CC && (r.crown === 'cornice' || r.crown === 'flat');
+}
+
+/** The photo confidence a roof in view needs to evidence a measured roof storey (round 6). */
+export const PHOTO_ROOF_MIN = 0.6;
+/** A weak photo read (round 6): counted by a run only when WEAK_RUN_MIN of them mostly agree (wallDraw.ts run-weak). */
+export const WEAK_PHOTO_MIN = 0.55;
+/** Confident brick reads a street needs for its own mix (round 6), and a district period for the district mix. */
+export const STREET_MIX_MIN = 4, DISTRICT_MIX_MIN = 12;
+/**
+ * The draw's weights from the confident photo reads (round 6: round 5's fallback drew the judged prior, 45 % red-brown and
+ * 15 % orange, where the photos read brown and dark): brick families only, per period; a period with fewer than `min`
+ * reads keeps the fallback's weights.
+ */
+export function photoMix(reads: ReadonlyArray<{ year: number | null; family: JudgedFamily }>, fallback: { before1860: Weights; from1860: Weights }, min: number): { before1860: Weights; from1860: Weights; n: { before1860: number; from1860: number } } {
+  const out = { before1860: fallback.before1860, from1860: fallback.from1860, n: { before1860: 0, from1860: 0 } };
+  for (const per of ['before1860', 'from1860'] as const) {
+    const c: Weights = {};
+    for (const r of reads) if (periodOf(r.year) === per && isBrickFamily(r.family)) { c[r.family] = (c[r.family] ?? 0) + 1; out.n[per]++; }
+    if (out.n[per] >= min) out[per] = Object.fromEntries(Object.entries(c).map(([f, n]) => [f, +((n as number) / out.n[per]).toFixed(3)])) as Weights;
+  }
+  return out;
+}
+
+/**
+ * A district's gable foot pitch (round 6): the p25 of AHN cornice tops (band p90) over the photo's storeys on confident
+ * cornice and flat reads (a souterrain 0.58 of a storey). Measured 3.43 m (Jordaan), 3.28 (Nieuwmarkt), 3.61 (De
+ * Weteringschans) against the belt's 2.8; null under `min` reads.
+ */
+export function gableFootPitch(reads: Iterable<[string, Partial<PhotoCrown>]>, ahn: ReadonlyMap<string, AhnFront>, min = 30): { pitch: number; n: number } | null {
+  const ps: number[] = [];
+  for (const [pid, r] of reads) {
+    const a = ahn.get(pid);
+    if (!a || (r.crown !== 'cornice' && r.crown !== 'flat') || !((r.cc ?? 0) >= 0.7) || !((r.sc ?? 0) >= 0.7) || !r.full) continue;
+    ps.push(a.p90 / (r.full + (r.souterrain ? 0.58 : 0)));
+  }
+  if (ps.length < min) return null;
+  ps.sort((x, y) => x - y);
+  return { pitch: +ps[Math.floor(0.25 * (ps.length - 1))].toFixed(2), n: ps.length };
 }
 
 /** The photo colour reader's families (artifacts/centrum-looks/photo/reader-prompt.md) as the judged palette's. */
@@ -119,7 +157,7 @@ export function wallEvidence(look: LookDistrictFile, own: ReadonlyMap<string, Be
  * free when its read (own or donor) is unpainted brick, not pale, with no colour or dark word, and nothing states its
  * finish or colour; its sample is the pand's own (a strong W1 photo sample, else its own read's cut), never a donor's.
  */
-export function drawWalls(records: any[], prov: Record<string, any>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], stated: ReturnType<typeof statedPands>, cfg: WallDrawConfig, years: ReadonlyMap<string, number | null>, streetFamilyOf: ReadonlyMap<string, JudgedFamily> = new Map(), photo: ReadonlyMap<string, PhotoRead> = new Map(), registerFinish: ReadonlyMap<string, string> = new Map()) {
+export function drawWalls(records: any[], prov: Record<string, any>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], stated: ReturnType<typeof statedPands>, cfg: WallDrawConfig, years: ReadonlyMap<string, number | null>, streetFamilyOf: ReadonlyMap<string, JudgedFamily> = new Map(), photo: ReadonlyMap<string, PhotoRead> = new Map(), registerFinish: ReadonlyMap<string, string> = new Map(), streetOfPand: ReadonlyMap<string, string> = new Map(), streetWeights: ReadonlyMap<string, WallDrawConfig> = new Map()) {
   const donorById = new Map(donors.map(d => [d.pandId, d]));
   const byRow = new Map<string, any[]>();
   for (const r of records) { const k = String(r.series?.id ?? '').split('/')[0]; (byRow.get(k) ?? byRow.set(k, []).get(k)!).push(r); }
@@ -136,10 +174,12 @@ export function drawWalls(records: any[], prov: Record<string, any>, reads: Read
       const free = !!a && r.wall?.finish === 'brick' && ownOk && (!sd?.finish || sd.finish === 'brick') && !sd?.specHex;
       const sample = strongPhoto(sd?.photo) ? sd!.photo!.hex : reads.get(pid)?.sample;
       const st = streetFamilyOf.get(pid), pr = photo.get(pid), pf = sd?.specHex ? undefined : photoFamily(pr, registerFinish.get(pid));
+      const wk = pf || sd?.specHex || !pr || !(pr.confidence >= WEAK_PHOTO_MIN) ? undefined : photoFamily({ ...pr, confidence: PHOTO_FINISH_MIN }, registerFinish.get(pid));
       return { pandId: pid, year: sd?.year ?? years.get(pid) ?? null, free, brickOnly: ownRead, series: r.series?.id as string | undefined, ...(sample ? { sample } : {}), ...(st ? { streetFamily: st } : {}),
-        ...(pf ? { photo: pf, photoStucco: pr!.finish === 'stucco' } : {}) };
+        ...(pf ? { photo: pf, photoStucco: pr!.finish === 'stucco' } : {}), ...(wk ? { weakPhoto: wk } : {}) };
     });
-    drawRowWalls(fronts, cfg, seriesFamily).forEach((w, i) => {
+    const street = streetOfPand.get(fronts[0]?.pandId), rowCfg = (street && streetWeights.get(street)) ?? cfg;
+    drawRowWalls(fronts, rowCfg, seriesFamily).forEach((w, i) => {
       if (!w) { tally.kept = (tally.kept ?? 0) + 1; return; }
       const r = rs[i];
       r.wall = { ...r.wall, hex: w.hex, finish: w.material };
@@ -175,7 +215,9 @@ async function main() {
     // gables invented on flat-cornice rows; 43 donor fronts drawn gabled under a photo cornice, checked by eye on 8).
     if (photoOverRegisterGable(cur.crown, r as unknown as PhotoCrown)) { const { crown: _gone, ...rest } = cur; stated.set(pid, rest); registerGablesDropped.push(pid); }
     const now = stated.get(pid) ?? {};
-    if (fin || crown || pc.tallCornice || pc.storeys) stated.set(pid, { ...now, ...(fin ? { finish: fin } : {}), ...(crown ? { crown } : {}),
+    // Round 6: a roof in view on the photo (mansard or pitched eaves read at PHOTO_ROOF_MIN): the evidence a measured roof storey needs.
+    const roof = typeof (r as Partial<PhotoCrown>).cc === 'number' && (r as unknown as PhotoCrown).cc >= PHOTO_ROOF_MIN && ['mansard', 'pitched-eaves'].includes((r as unknown as PhotoCrown).crown);
+    if (fin || crown || pc.tallCornice || pc.storeys || roof) stated.set(pid, { ...now, ...(roof ? { photoRoof: true } : {}), ...(fin ? { finish: fin } : {}), ...(crown ? { crown } : {}),
       ...(pc.tallCornice ? { tallCornice: pc.tallCornice } : {}), ...(pc.storeys ? { photoStoreys: pc.storeys } : {}), ...(pc.souterrain !== undefined ? { photoSouterrain: pc.souterrain } : {}) });
   }
   // Later periods stay with today and the buurt generator: a pand built after maxYear (BAG; an earlier register facade
@@ -194,6 +236,8 @@ async function main() {
   const belt = beltReads();
   const donors = [...own.donors, ...belt.donors.map(d => ({ ...d, district: 'belt' }))];
   const reads = new Map<string, BeltRead>([...belt.reads, ...own.reads]);
+  const gfp = gableFootPitch([...photo] as [string, Partial<PhotoCrown>][], ahn);
+  if (gfp && look.gableFootPitchM === undefined) look.gableFootPitchM = gfp.pitch;
   const res = generateBelt(pands, streets, described, reads, donors, at, stated, ahn, look);
   const records = res.rows.flatMap(r => rowFrontsWithSeries(r));
   let walls: Record<string, number> | null = null, wallWeights: unknown = null;
@@ -216,8 +260,15 @@ async function main() {
     const cfg = measure ? { ...look.wallDraw, before1860: ev.weights.before1860, from1860: ev.weights.from1860 } : look.wallDraw;
     const sf = new Map<string, JudgedFamily>();
     for (const [pid, st] of streetOf) { const f = ev.streets.get(st); if (f) sf.set(pid, f); }
-    walls = drawWalls(records, res.provenance, reads, donors, stated, cfg, years, sf, photo, registerFinish);
-    wallWeights = { photoReads: photo.size, measure, prior: pId ?? 'own', reads: ev.reads, measured: ev.weights, drawn: { before1860: cfg.before1860, from1860: cfg.from1860 }, streets: Object.fromEntries([...ev.streets].sort()) };
+    // Round 6: the draw takes the confident photo reads' brick mix, the street's own where it has STREET_MIX_MIN.
+    const confident = [...photo].flatMap(([pid, r]) => { const f = photoFamily(r, registerFinish.get(pid)); return f ? [{ pid, year: years.get(pid) ?? null, family: f }] : []; });
+    const dm = photoMix(confident, cfg, DISTRICT_MIX_MIN), dcfg: WallDrawConfig = { ...cfg, before1860: dm.before1860, from1860: dm.from1860 };
+    const byStreetReads = new Map<string, typeof confident>();
+    for (const c of confident) { const st = streetOf.get(c.pid); if (st) (byStreetReads.get(st) ?? byStreetReads.set(st, []).get(st)!).push(c); }
+    const streetWeights = new Map<string, WallDrawConfig>();
+    for (const [st, rs] of byStreetReads) { const m = photoMix(rs, dm, STREET_MIX_MIN); if (m.n.before1860 >= STREET_MIX_MIN || m.n.from1860 >= STREET_MIX_MIN) streetWeights.set(st, { ...dcfg, before1860: m.before1860, from1860: m.from1860 }); }
+    walls = drawWalls(records, res.provenance, reads, donors, stated, dcfg, years, sf, photo, registerFinish, streetOf, streetWeights);
+    wallWeights = { photoReads: photo.size, measure, prior: pId ?? 'own', reads: ev.reads, measured: ev.weights, photoMix: dm, photoMixStreets: streetWeights.size, drawn: { before1860: dcfg.before1860, from1860: dcfg.from1860 }, streets: Object.fromEntries([...ev.streets].sort()) };
   }
   fs.mkdirSync(out, { recursive: true });
   fs.writeFileSync(path.join(out, 'row-front.json'), JSON.stringify({ version: 1, district: id, generatedAt: at, records }));
@@ -244,7 +295,7 @@ async function main() {
       const st = o?.storeys?.value ?? s.design.storeys?.value; storeys[st] = (storeys[st] ?? 0) + 1;
     }
   }
-  const report = { at, district: id, buurten: look.buurten, pitchM: look.pitchM, foreignDonor: look.foreignDonor, ahnFronts: ahn.size, overSpecs, photoCrowns, registerGablesDropped: registerGablesDropped.length, statedPhotoStoreys: [...stated.values()].filter(v => v.photoStoreys).length, specOnlyRedrawn: drawn.filter(p => specOnly.has(p)).length,
+  const report = { at, district: id, buurten: look.buurten, pitchM: look.pitchM, foreignDonor: look.foreignDonor, ahnFronts: ahn.size, overSpecs, photoCrowns, registerGablesDropped: registerGablesDropped.length, gableFootPitch: gfp, statedPhotoStoreys: [...stated.values()].filter(v => v.photoStoreys).length, specOnlyRedrawn: drawn.filter(p => specOnly.has(p)).length,
     pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length - laterPeriod.size, laterPeriod: laterPeriod.size, maxYear: look.maxYear ?? null, drawn: drawn.length, ownRead: ownN, donorRead: drawn.length - ownN, donorDistrict,
     ownDonors: own.donors.length, beltDonors: belt.donors.length, rows: res.rows.length, records: records.length, skipped: bySkip, bySegment: bySeg, crowns, storeys, findings,
     statedCrown: drawn.filter(p => stated.get(p)?.crown).length, modernBehindRegister: Object.keys(modern).length, walls, wallWeights, ms: Date.now() - t0 };

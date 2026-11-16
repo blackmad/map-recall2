@@ -108,10 +108,15 @@ export interface LookDistrict {
   pitchM: { readonly min: number; readonly max: number };
   /** Added to donorDistance for a donor tagged with another district (0: no cost). */
   foreignDonor: number;
+  /** Centrum round 6: a gable over a photo storey count stands its foot at this pitch (m), measured per district (the p25 of
+   *  AHN cornice tops over photo storeys); unset (the belt) keeps PHOTO_FOOT_PITCH_M under the AHN apex. */
+  gableFootPitchM?: number;
   /** roofSignals.ts: no gable (stated or a donor's) on a measured flat top. */
   flatTopNoGable?: boolean;
   /** roofSignals.ts: a cornice front whose AHN band climbs a roof slope stands at the band's p50. */
   slopedBand?: boolean;
+  /** Centrum round 6: the measured roof storey needs the photo to read a roof in view (BeltStated.photoRoof). */
+  roofStoreyNeedsPhoto?: boolean;
   /** roofSignals.ts: a roof storey (one dormer) over a cornice front whose 3DBAG ridge stands 2 m over the front top. */
   measuredRoofStorey?: boolean;
 }

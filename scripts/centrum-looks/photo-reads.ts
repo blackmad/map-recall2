@@ -60,9 +60,20 @@ const ok = (r: { confidence: number; family: string } | undefined) => !!r && r.c
 export function mergeColour<T extends { family: string; confidence: number }>(v1: T | undefined, v2: T | undefined): { pick: T | undefined; rule: string; confidence?: number } {
   if (ok(v1) && ok(v2) && v1!.family === 'red-brown-brick' && v2!.family === 'brown-brick') return { pick: v2, rule: 'v1 red-brown, v2 brown: unstated', confidence: UNSTATED };
   if (ok(v2)) return { pick: v2, rule: 'v2' };
+  // Round 6: two weak readers that agree on the coarse group (dark / brown / red / pale) state v2's family (5 of 6 right
+  // on the labels); a confident v1 red-brown over a weak v2 of another group is the v1 bias again, left unstated.
+  const g1 = v1 && v1.confidence >= WEAK_MIN ? COARSE[v1.family] : undefined, g2 = v2 && v2.confidence >= WEAK_MIN ? COARSE[v2.family] : undefined;
+  if (g1 && g1 === g2) return { pick: v2, rule: 'v1 and v2 agree weakly', confidence: 0.7 };
+  if (ok(v1) && v1!.family === 'red-brown-brick' && g2 && g2 !== 'red') return { pick: v2, rule: 'v1 red-brown, weak v2 not red: unstated', confidence: UNSTATED };
   if (ok(v1)) return { pick: v1, rule: 'v1 (v2 below the bar)' };
   return { pick: v2 ?? v1, rule: 'below the bar' };
 }
+const WEAK_MIN = 0.55;
+/** The calibration's coarse groups (artifacts/centrum-looks/photo/score.py). */
+export const COARSE: Readonly<Record<string, 'dark' | 'brown' | 'red' | 'pale'>> = {
+  'dark-grey-brick': 'dark', 'purple-brown-brick': 'dark', 'dark-paint': 'dark', 'brown-brick': 'brown', 'red-brown-brick': 'red',
+  'orange-red-brick': 'red', 'buff-brick': 'pale', 'white-paint': 'pale', 'cream-paint': 'pale', 'pale-grey': 'pale',
+};
 /**
  * A second capture's read (another date) of a front the first left in doubt: a confident second read that agrees with
  * either first reader's family settles it; else the more confident read stands, and a confident disagreement stays unstated.
@@ -97,18 +108,21 @@ function main(argv: string[]) {
   } else if (mode === 'assemble2') {
     const opt = (k: string) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : undefined; };
     const readDir = (d: string) => { const m = new Map<string, CentrumPhotoRead & CentrumCrownRead>(); for (const f of fs.readdirSync(d).filter(x => /^read-\d+\.txt$/.test(x)).sort()) for (const [k, v] of parseReads2(fs.readFileSync(path.join(d, f), 'utf8'))) m.set(k, v); return m; };
-    const v2 = readDir(a), v1f = opt('v1'), sd = opt('second');
+    const v2 = readDir(a), v1f = opt('v1');
+    // --second may repeat (round 6: a third capture, the sheet's summer recording, for weak pale reads); applied in order.
+    const sds = argv.flatMap((x, i) => (x === '--second' && argv[i + 1] ? [argv[i + 1]] : []));
     const v1 = new Map<string, CentrumPhotoRead>(v1f ? Object.entries(JSON.parse(fs.readFileSync(v1f, 'utf8')).reads) : []);
-    const second = sd ? readDir(sd) : new Map<string, CentrumPhotoRead & CentrumCrownRead>();
+    const seconds = sds.map(readDir);
     const out: Record<string, CentrumRead2> = {}, tally: Record<string, number> = {};
     for (const pid of [...new Set([...v2.keys(), ...v1.keys()])].sort()) {
       const b = v2.get(pid), o = v1.get(pid), m = mergeColour(o, b);
       if (!m.pick) continue;
       const base: CentrumRead2 = { ...(b ?? { crown: 'not-visible', cornice: 'not-visible', full: null, souterrain: null, cc: 0, sc: 0 }), finish: m.pick.finish, family: m.pick.family, confidence: m.confidence ?? m.pick.confidence, reader: m.pick.reader, rule: m.rule, ...(o ? { v1: { family: o.family, confidence: o.confidence } } : {}) };
-      const s2 = second.get(pid);
-      if (s2) {
+      for (const [k, second] of seconds.entries()) {
+        const s2 = second.get(pid);
+        if (!s2) continue;
         const r = mergeSecond({ family: base.family, confidence: base.confidence, v1Family: o?.family }, s2);
-        Object.assign(base, { family: r.family, confidence: r.confidence, rule: `${base.rule}; ${r.rule}`, second: s2 });
+        Object.assign(base, { family: r.family, confidence: r.confidence, rule: `${base.rule}; ${r.rule}`, [k ? `capture${k + 2}` : 'second']: s2 });
         if (r.family === s2.family && r.confidence >= 0.7) base.finish = s2.finish;
       }
       out[pid] = base;

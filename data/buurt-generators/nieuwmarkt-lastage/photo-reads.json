@@ -74,23 +74,23 @@
    "finish": "brick",
    "family": "red-brown-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "none",
    "full": null,
    "souterrain": null,
    "cc": 0.6,
    "sc": 0.5,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.7
    }
   },
   "0363100012164959": {
-   "finish": "paint",
-   "family": "white-paint",
-   "confidence": 0.55,
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "pitched-eaves",
    "cornice": "simple",
@@ -98,7 +98,7 @@
    "souterrain": null,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "below the bar; second below the bar; second capture only confident read",
    "v1": {
     "family": "unclear",
     "confidence": 0.3
@@ -114,6 +114,18 @@
     "souterrain": false,
     "cc": 0.55,
     "sc": 0.6
+   },
+   "capture3": {
+    "finish": "brick",
+    "family": "brown-brick",
+    "confidence": 0.7,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "cornice",
+    "cornice": "simple",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.7
    }
   },
   "0363100012164960": {
@@ -161,7 +173,7 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "below the bar; second below the bar; second below the bar",
    "v1": {
     "family": "pale-grey",
     "confidence": 0.5
@@ -169,6 +181,18 @@
    "second": {
     "finish": "stucco",
     "family": "pale-grey",
+    "confidence": 0.5,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "not-visible",
+    "cornice": "not-visible",
+    "full": null,
+    "souterrain": null,
+    "cc": 0.5,
+    "sc": 0.5
+   },
+   "capture3": {
+    "finish": "unclear",
+    "family": "unclear",
     "confidence": 0.5,
     "reader": "opus v2 (cut, contrastive colour + crown)",
     "crown": "not-visible",
@@ -216,7 +240,7 @@
   "0363100012165555": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "mansard",
    "cornice": "simple",
@@ -224,7 +248,7 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.6,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.6
@@ -250,7 +274,7 @@
   "0363100012165623": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "none",
@@ -258,7 +282,7 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.6,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.65
@@ -639,14 +663,14 @@
    "finish": "stucco",
    "family": "pale-grey",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "bracketed",
    "full": 4,
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "pale-grey",
     "confidence": 0.7
@@ -655,7 +679,7 @@
   "0363100012170453": {
    "finish": "brick",
    "family": "purple-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
    "cornice": "none",
@@ -663,7 +687,7 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.75,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "purple-brown-brick",
     "confidence": 0.6
@@ -673,14 +697,14 @@
    "finish": "brick",
    "family": "dark-grey-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
    "cornice": "none",
    "full": 4,
    "souterrain": true,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.7
@@ -689,7 +713,7 @@
   "0363100012170455": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
    "cornice": "none",
@@ -697,7 +721,7 @@
    "souterrain": true,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.6
@@ -920,7 +944,7 @@
    "souterrain": true,
    "cc": 0.5,
    "sc": 0.65,
-   "rule": "below the bar; second capture agrees",
+   "rule": "v1 and v2 agree weakly; second capture agrees",
    "v1": {
     "family": "pale-grey",
     "confidence": 0.65
@@ -958,7 +982,7 @@
   "0363100012170618": {
    "finish": "stucco",
    "family": "cream-paint",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "not-visible",
    "cornice": "not-visible",
@@ -966,7 +990,7 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "cream-paint",
     "confidence": 0.6
@@ -1003,16 +1027,16 @@
   },
   "0363100012170622": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -1072,15 +1096,15 @@
   "0363100012170629": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.85,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "bracketed",
    "full": 4,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.75,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.85
@@ -1089,15 +1113,15 @@
   "0363100012170630": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.85,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.8,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.85
@@ -1148,7 +1172,7 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar; second capture agrees",
+   "rule": "v1 and v2 agree weakly; second capture agrees",
    "v1": {
     "family": "cream-paint",
     "confidence": 0.6
@@ -1169,7 +1193,7 @@
   "0363100012170685": {
    "finish": "paint",
    "family": "dark-paint",
-   "confidence": 0.55,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "frieze",
@@ -1177,7 +1201,7 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.8,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.55
@@ -1266,15 +1290,15 @@
   "0363100012170739": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "pitched-eaves",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.75,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -1430,16 +1454,16 @@
   },
   "0363100012170912": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "bell",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -1552,7 +1576,7 @@
   "0363100012171159": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.55,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -1560,7 +1584,7 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.6
@@ -1581,7 +1605,7 @@
   "0363100012171163": {
    "finish": "brick",
    "family": "purple-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "attic-frieze",
@@ -1589,7 +1613,7 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.65,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.55
@@ -1650,14 +1674,14 @@
    "finish": "brick",
    "family": "red-brown-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 3,
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.7
@@ -1716,33 +1740,33 @@
   },
   "0363100012171318": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "heavy",
    "full": 4,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.8,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
    }
   },
   "0363100012171319": {
-   "finish": "paint",
-   "family": "dark-paint",
+   "finish": "brick",
+   "family": "dark-grey-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "none",
    "full": 4,
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.7
@@ -1882,7 +1906,7 @@
   "0363100012171400": {
    "finish": "brick",
    "family": "purple-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "bracketed",
@@ -1890,7 +1914,7 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "purple-brown-brick",
     "confidence": 0.6
@@ -1899,15 +1923,15 @@
   "0363100012171403": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -1915,16 +1939,16 @@
   },
   "0363100012171404": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "bell",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -1950,7 +1974,7 @@
   "0363100012171406": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.55,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -1958,7 +1982,7 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.55
@@ -2053,14 +2077,14 @@
    "finish": "brick",
    "family": "red-brown-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.7,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.7
@@ -2070,14 +2094,14 @@
    "finish": "brick",
    "family": "red-brown-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "mansard",
    "cornice": "heavy",
    "full": 4,
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.7
@@ -2087,14 +2111,14 @@
    "finish": "brick",
    "family": "red-brown-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.7,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.7
@@ -2222,7 +2246,7 @@
   "0363100012171688": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "flat",
    "cornice": "none",
@@ -2230,7 +2254,7 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.6
@@ -2471,16 +2495,16 @@
   },
   "0363100012171766": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "none",
    "full": 3,
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -2489,7 +2513,7 @@
   "0363100012171828": {
    "finish": "paint",
    "family": "cream-paint",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -2497,7 +2521,7 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "white-paint",
     "confidence": 0.6
@@ -2586,15 +2610,15 @@
   "0363100012171910": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": null,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -2620,7 +2644,7 @@
   "0363100012171917": {
    "finish": "brick",
    "family": "purple-brown-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
    "cornice": "simple",
@@ -2628,7 +2652,7 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "purple-brown-brick",
     "confidence": 0.65
@@ -2785,7 +2809,7 @@
   "0363100012177773": {
    "finish": "paint",
    "family": "dark-paint",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -2793,7 +2817,7 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.65,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.55
@@ -2864,16 +2888,16 @@
   },
   "0363100012177778": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -2911,7 +2935,7 @@
   "0363100012177783": {
    "finish": "brick",
    "family": "purple-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "spout",
    "cornice": "none",
@@ -2919,7 +2943,7 @@
    "souterrain": true,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.65
@@ -2936,7 +2960,7 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "below the bar; second below the bar; second below the bar",
    "v1": {
     "family": "cream-paint",
     "confidence": 0.45
@@ -2947,6 +2971,18 @@
     "confidence": 0.55,
     "reader": "opus v2 (cut, contrastive colour + crown)",
     "crown": "not-visible",
+    "cornice": "not-visible",
+    "full": null,
+    "souterrain": null,
+    "cc": 0.5,
+    "sc": 0.5
+   },
+   "capture3": {
+    "finish": "stucco",
+    "family": "white-paint",
+    "confidence": 0.55,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "mansard",
     "cornice": "not-visible",
     "full": null,
     "souterrain": null,
@@ -2974,7 +3010,7 @@
   "0363100012177786": {
    "finish": "paint",
    "family": "cream-paint",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "simple",
@@ -2982,7 +3018,7 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "cream-paint",
     "confidence": 0.55
@@ -3019,16 +3055,16 @@
   },
   "0363100012177788": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.85,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.75,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.85
@@ -3072,14 +3108,14 @@
    "finish": "brick",
    "family": "purple-brown-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "flat",
    "cornice": "none",
    "full": 6,
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "purple-brown-brick",
     "confidence": 0.7
@@ -3150,16 +3186,16 @@
   },
   "0363100012177821": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "bell",
    "cornice": "none",
    "full": 2,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -3168,7 +3204,7 @@
   "0363100012177822": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -3176,7 +3212,7 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.8,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.6
@@ -3185,7 +3221,7 @@
   "0363100012177823": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -3193,7 +3229,7 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.85,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.55
@@ -3202,7 +3238,7 @@
   "0363100012177824": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -3210,7 +3246,7 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.85,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.55
@@ -3220,14 +3256,14 @@
    "finish": "paint",
    "family": "dark-paint",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.7
@@ -3299,7 +3335,7 @@
   "0363100012178100": {
    "finish": "brick",
    "family": "brown-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "not-visible",
    "cornice": "not-visible",
@@ -3307,7 +3343,7 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.6,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "brown-brick",
     "confidence": 0.6
@@ -3333,7 +3369,7 @@
   "0363100012178111": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -3341,7 +3377,7 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.85,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.55
@@ -3361,16 +3397,16 @@
   },
   "0363100012178112": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "heavy",
    "full": 4,
    "souterrain": true,
    "cc": 0.65,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -3395,16 +3431,16 @@
   },
   "0363100012178114": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "heavy",
    "full": 4,
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.7
@@ -3482,14 +3518,14 @@
    "finish": "paint",
    "family": "white-paint",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "pitched-eaves",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "white-paint",
     "confidence": 0.7
@@ -3514,16 +3550,16 @@
   },
   "0363100012178157": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -3532,15 +3568,15 @@
   "0363100012178158": {
    "finish": "paint",
    "family": "dark-paint",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "bell",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.8
@@ -3549,7 +3585,7 @@
   "0363100012178213": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "attic-frieze",
@@ -3557,7 +3593,7 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.55
@@ -3676,7 +3712,7 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar; second capture agrees",
+   "rule": "v1 and v2 agree weakly; second capture agrees",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.65
@@ -3930,7 +3966,7 @@
   "0363100012178373": {
    "finish": "brick",
    "family": "brown-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "mansard",
    "cornice": "simple",
@@ -3938,7 +3974,7 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.7,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "brown-brick",
     "confidence": 0.6
@@ -4031,16 +4067,16 @@
   },
   "0363100012178629": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "attic-frieze",
    "full": 4,
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -4057,10 +4093,22 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.7,
-   "rule": "below the bar",
+   "rule": "below the bar; second below the bar",
    "v1": {
     "family": "buff-brick",
     "confidence": 0.55
+   },
+   "capture3": {
+    "finish": "brick",
+    "family": "buff-brick",
+    "confidence": 0.65,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "cornice",
+    "cornice": "simple",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.65,
+    "sc": 0.7
    }
   },
   "0363100012178633": {
@@ -4150,16 +4198,16 @@
   },
   "0363100012178711": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 3,
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -4185,15 +4233,15 @@
   "0363100012178713": {
    "finish": "paint",
    "family": "dark-paint",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.8
@@ -4436,16 +4484,16 @@
   },
   "0363100012181206": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -4471,7 +4519,7 @@
   "0363100012181218": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -4479,7 +4527,7 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.55,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.6
@@ -4636,9 +4684,9 @@
    }
   },
   "0363100012181301": {
-   "finish": "paint",
-   "family": "cream-paint",
-   "confidence": 0.55,
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.8,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "not-visible",
    "cornice": "not-visible",
@@ -4646,7 +4694,7 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "below the bar; second below the bar; second capture only confident read",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.6
@@ -4662,6 +4710,18 @@
     "souterrain": false,
     "cc": 0.6,
     "sc": 0.6
+   },
+   "capture3": {
+    "finish": "brick",
+    "family": "brown-brick",
+    "confidence": 0.8,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "cornice",
+    "cornice": "simple",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.65,
+    "sc": 0.75
    }
   },
   "0363100012181302": {
@@ -4844,7 +4904,7 @@
   "0363100012181529": {
    "finish": "brick",
    "family": "purple-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "frieze",
@@ -4852,7 +4912,7 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.6
@@ -4895,15 +4955,15 @@
   "0363100012181563": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "mansard",
    "cornice": "frieze",
    "full": 3,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.75,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -4911,16 +4971,16 @@
   },
   "0363100012181565": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.7
@@ -4946,7 +5006,7 @@
   "0363100012181568": {
    "finish": "brick",
    "family": "brown-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "spout",
    "cornice": "none",
@@ -4954,7 +5014,7 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "brown-brick",
     "confidence": 0.6
@@ -5185,14 +5245,14 @@
    "finish": "brick",
    "family": "red-brown-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "flat",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.5,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.7
@@ -5201,7 +5261,7 @@
   "0363100012181763": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.55,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -5209,7 +5269,7 @@
    "souterrain": null,
    "cc": 0.6,
    "sc": 0.5,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "purple-brown-brick",
     "confidence": 0.55
@@ -5326,16 +5386,16 @@
   },
   "0363100012181774": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.7,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -5343,16 +5403,16 @@
   },
   "0363100012181775": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -5360,16 +5420,16 @@
   },
   "0363100012181787": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -5825,14 +5885,14 @@
    "finish": "paint",
    "family": "dark-paint",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "not-visible",
    "cornice": "not-visible",
    "full": null,
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.5,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.7
@@ -5892,7 +5952,7 @@
   "0363100012181925": {
    "finish": "brick",
    "family": "buff-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -5900,7 +5960,7 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.7,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "buff-brick",
     "confidence": 0.6
@@ -5925,16 +5985,16 @@
   },
   "0363100012181932": {
    "finish": "brick",
-   "family": "dark-grey-brick",
+   "family": "purple-brown-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
    "cornice": "simple",
    "full": 4,
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.7,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.7
@@ -5960,7 +6020,7 @@
   "0363100012181939": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.55,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -5968,7 +6028,7 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.6
@@ -5977,7 +6037,7 @@
   "0363100012181940": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.55,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "not-visible",
    "cornice": "not-visible",
@@ -5985,7 +6045,7 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.7,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.55
@@ -6023,7 +6083,7 @@
   "0363100012181947": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.55,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -6031,7 +6091,7 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.55
@@ -6081,7 +6141,7 @@
   "0363100012181949": {
    "finish": "brick",
    "family": "brown-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -6089,7 +6149,7 @@
    "souterrain": null,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "brown-brick",
     "confidence": 0.55
@@ -6145,14 +6205,14 @@
    "finish": "brick",
    "family": "red-brown-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "attic-frieze",
    "full": 3,
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.7
@@ -6161,7 +6221,7 @@
   "0363100012181978": {
    "finish": "brick",
    "family": "purple-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
    "cornice": "simple",
@@ -6169,7 +6229,7 @@
    "souterrain": null,
    "cc": 0.75,
    "sc": 0.6,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "purple-brown-brick",
     "confidence": 0.65
@@ -6299,15 +6359,15 @@
   "0363100012182065": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -6367,7 +6427,7 @@
   "0363100012182080": {
    "finish": "paint",
    "family": "dark-paint",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "none",
@@ -6375,7 +6435,7 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.7,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.6
@@ -6421,7 +6481,7 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "below the bar; second below the bar; second below the bar",
    "v1": {
     "family": "cream-paint",
     "confidence": 0.4
@@ -6437,6 +6497,18 @@
     "souterrain": false,
     "cc": 0.55,
     "sc": 0.55
+   },
+   "capture3": {
+    "finish": "stucco",
+    "family": "cream-paint",
+    "confidence": 0.55,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "cornice",
+    "cornice": "frieze",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.7
    }
   },
   "0363100012182085": {
@@ -6459,7 +6531,7 @@
   "0363100012182087": {
    "finish": "paint",
    "family": "dark-paint",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "pitched-eaves",
    "cornice": "none",
@@ -6467,7 +6539,7 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.55
@@ -6567,16 +6639,16 @@
   },
   "0363100012182095": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -6711,7 +6783,7 @@
   "0363100012182109": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.55,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -6719,7 +6791,7 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.6
@@ -6727,16 +6799,16 @@
   },
   "0363100012182113": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "bell",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -6744,16 +6816,16 @@
   },
   "0363100012182122": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "not-visible",
    "cornice": "not-visible",
    "full": null,
    "souterrain": true,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -6779,15 +6851,15 @@
   "0363100012182151": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.85,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "mansard",
    "cornice": "bracketed",
    "full": 4,
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.7,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.85
@@ -6855,10 +6927,22 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "below the bar",
+   "rule": "below the bar; second below the bar",
    "v1": {
     "family": "buff-brick",
     "confidence": 0.45
+   },
+   "capture3": {
+    "finish": "brick",
+    "family": "orange-red-brick",
+    "confidence": 0.55,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "not-visible",
+    "cornice": "not-visible",
+    "full": null,
+    "souterrain": false,
+    "cc": 0.5,
+    "sc": 0.5
    }
   },
   "0363100012182161": {
@@ -6983,7 +7067,7 @@
   "0363100012182242": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -6991,7 +7075,7 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.6
@@ -7233,15 +7317,15 @@
   "0363100012182323": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -7381,7 +7465,7 @@
   "0363100012182348": {
    "finish": "brick",
    "family": "brown-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -7389,7 +7473,7 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.65,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "brown-brick",
     "confidence": 0.55
@@ -7466,15 +7550,15 @@
   "0363100012182360": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "simple",
    "full": 5,
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -7540,16 +7624,16 @@
   },
   "0363100012182404": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "mansard",
    "cornice": "simple",
    "full": 4,
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -7718,7 +7802,7 @@
   "0363100012182442": {
    "finish": "brick",
    "family": "purple-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "flat",
    "cornice": "simple",
@@ -7726,7 +7810,7 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.7,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "purple-brown-brick",
     "confidence": 0.6
@@ -7735,7 +7819,7 @@
   "0363100012182446": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "step",
    "cornice": "none",
@@ -7743,7 +7827,7 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.55,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.6
@@ -7786,7 +7870,7 @@
   "0363100012182473": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "pitched-eaves",
    "cornice": "simple",
@@ -7794,7 +7878,7 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.65,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.65
@@ -7838,14 +7922,14 @@
    "finish": "brick",
    "family": "purple-brown-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "bracketed",
    "full": 4,
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "purple-brown-brick",
     "confidence": 0.7
@@ -7879,7 +7963,7 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "below the bar; second below the bar; second below the bar",
    "v1": {
     "family": "cream-paint",
     "confidence": 0.5
@@ -7895,6 +7979,18 @@
     "souterrain": null,
     "cc": 0.5,
     "sc": 0.5
+   },
+   "capture3": {
+    "finish": "stucco",
+    "family": "pale-grey",
+    "confidence": 0.55,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "flat",
+    "cornice": "none",
+    "full": 9,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.5
    }
   },
   "0363100012182520": {
@@ -7908,12 +8004,24 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "below the bar; second below the bar; second below the bar",
    "v1": {
     "family": "white-paint",
     "confidence": 0.45
    },
    "second": {
+    "finish": "unclear",
+    "family": "unclear",
+    "confidence": 0.5,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "not-visible",
+    "cornice": "not-visible",
+    "full": null,
+    "souterrain": null,
+    "cc": 0.5,
+    "sc": 0.5
+   },
+   "capture3": {
     "finish": "unclear",
     "family": "unclear",
     "confidence": 0.5,
@@ -7959,14 +8067,14 @@
    "finish": "brick",
    "family": "dark-grey-brick",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "none",
    "full": 4,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.7
@@ -7974,16 +8082,16 @@
   },
   "0363100012182525": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.85,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "none",
    "full": 1,
    "souterrain": false,
    "cc": 0.85,
    "sc": 0.85,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.85
@@ -8009,7 +8117,7 @@
   "0363100012182527": {
    "finish": "brick",
    "family": "purple-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "shouldered",
    "cornice": "none",
@@ -8017,7 +8125,7 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "purple-brown-brick",
     "confidence": 0.6
@@ -8220,15 +8328,15 @@
   "0363100012182608": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.75
@@ -8457,16 +8565,16 @@
   },
   "0363100012182689": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "flat",
    "cornice": "none",
    "full": 4,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.7
@@ -8517,10 +8625,22 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "below the bar",
+   "rule": "below the bar; second below the bar",
    "v1": {
     "family": "buff-brick",
     "confidence": 0.55
+   },
+   "capture3": {
+    "finish": "brick",
+    "family": "brown-brick",
+    "confidence": 0.6,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "point",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.75,
+    "sc": 0.75
    }
   },
   "0363100012182697": {
@@ -8534,10 +8654,22 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.6,
-   "rule": "below the bar",
+   "rule": "below the bar; second below the bar",
    "v1": {
     "family": "buff-brick",
     "confidence": 0.5
+   },
+   "capture3": {
+    "finish": "brick",
+    "family": "brown-brick",
+    "confidence": 0.55,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "point",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.7,
+    "sc": 0.7
    }
   },
   "0363100012182698": {
@@ -8622,16 +8754,16 @@
   },
   "0363100012182733": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "bracketed",
    "full": 4,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.7,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -8656,16 +8788,16 @@
   },
   "0363100012182736": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "attic-frieze",
    "full": 5,
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.55,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -8762,7 +8894,7 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "below the bar; second below the bar; second below the bar",
    "v1": {
     "family": "unclear",
     "confidence": 0.2
@@ -8771,6 +8903,18 @@
     "finish": "stucco",
     "family": "pale-grey",
     "confidence": 0.6,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "not-visible",
+    "cornice": "not-visible",
+    "full": null,
+    "souterrain": null,
+    "cc": 0.5,
+    "sc": 0.5
+   },
+   "capture3": {
+    "finish": "stucco",
+    "family": "pale-grey",
+    "confidence": 0.65,
     "reader": "opus v2 (cut, contrastive colour + crown)",
     "crown": "not-visible",
     "cornice": "not-visible",
@@ -8808,7 +8952,7 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "below the bar; second below the bar; second below the bar",
    "v1": {
     "family": "unclear",
     "confidence": 0.2
@@ -8823,6 +8967,18 @@
     "full": 3,
     "souterrain": null,
     "cc": 0.55,
+    "sc": 0.5
+   },
+   "capture3": {
+    "finish": "stucco",
+    "family": "pale-grey",
+    "confidence": 0.6,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "not-visible",
+    "cornice": "not-visible",
+    "full": null,
+    "souterrain": null,
+    "cc": 0.5,
     "sc": 0.5
    }
   },
@@ -9115,15 +9271,15 @@
   "0363100012182794": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 3,
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -9191,7 +9347,7 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "below the bar; second below the bar; second below the bar",
    "v1": {
     "family": "unclear",
     "confidence": 0.3
@@ -9200,6 +9356,18 @@
     "finish": "paint",
     "family": "pale-grey",
     "confidence": 0.6,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "not-visible",
+    "cornice": "not-visible",
+    "full": null,
+    "souterrain": null,
+    "cc": 0.5,
+    "sc": 0.5
+   },
+   "capture3": {
+    "finish": "stucco",
+    "family": "pale-grey",
+    "confidence": 0.65,
     "reader": "opus v2 (cut, contrastive colour + crown)",
     "crown": "not-visible",
     "cornice": "not-visible",
@@ -9330,16 +9498,16 @@
   },
   "0363100012182873": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8
@@ -9349,14 +9517,14 @@
    "finish": "paint",
    "family": "dark-paint",
    "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "mansard",
    "cornice": "bracketed",
    "full": 4,
    "souterrain": true,
    "cc": 0.85,
    "sc": 0.8,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.7
@@ -9399,7 +9567,7 @@
   "0363100012182898": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "mansard",
    "cornice": "simple",
@@ -9407,7 +9575,7 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.7,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.6
@@ -9484,7 +9652,7 @@
   "0363100012182959": {
    "finish": "brick",
    "family": "brown-brick",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -9492,7 +9660,7 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "below the bar",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "brown-brick",
     "confidence": 0.55
@@ -9535,15 +9703,15 @@
   "0363100012182962": {
    "finish": "paint",
    "family": "dark-paint",
-   "confidence": 0.85,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "mansard",
    "cornice": "bracketed",
    "full": 4,
    "souterrain": true,
    "cc": 0.85,
    "sc": 0.8,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.85
@@ -9603,7 +9771,7 @@
   "0363100012182972": {
    "finish": "paint",
    "family": "dark-paint",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "bell",
    "cornice": "simple",
@@ -9611,7 +9779,7 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.65
@@ -9631,16 +9799,16 @@
   },
   "0363100012182973": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.7,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
    "cornice": "none",
    "full": 4,
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.7
@@ -9745,16 +9913,16 @@
   },
   "0363100012183053": {
    "finish": "paint",
-   "family": "white-paint",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "cream-paint",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "none",
    "full": 3,
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.5,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "white-paint",
     "confidence": 0.75
@@ -9762,16 +9930,16 @@
   },
   "0363100012183056": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
    "full": 3,
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.55,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -9797,15 +9965,15 @@
   "0363100012183060": {
    "finish": "brick",
    "family": "dark-grey-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "pitched-eaves",
    "cornice": "simple",
    "full": 2,
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "dark-grey-brick",
     "confidence": 0.75
@@ -9848,15 +10016,15 @@
   "0363100012183093": {
    "finish": "brick",
    "family": "purple-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "bracketed",
    "full": 4,
    "souterrain": true,
    "cc": 0.85,
    "sc": 0.85,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "purple-brown-brick",
     "confidence": 0.75
@@ -9890,7 +10058,7 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "below the bar; second below the bar; second below the bar",
    "v1": {
     "family": "pale-grey",
     "confidence": 0.4
@@ -9899,6 +10067,18 @@
     "finish": "unclear",
     "family": "unclear",
     "confidence": 0.5,
+    "reader": "opus v2 (cut, contrastive colour + crown)",
+    "crown": "not-visible",
+    "cornice": "not-visible",
+    "full": null,
+    "souterrain": null,
+    "cc": 0.5,
+    "sc": 0.5
+   },
+   "capture3": {
+    "finish": "brick",
+    "family": "brown-brick",
+    "confidence": 0.55,
     "reader": "opus v2 (cut, contrastive colour + crown)",
     "crown": "not-visible",
     "cornice": "not-visible",
@@ -9928,7 +10108,7 @@
   "0363100012186088": {
    "finish": "brick",
    "family": "purple-brown-brick",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "attic-frieze",
@@ -9936,7 +10116,7 @@
    "souterrain": true,
    "cc": 0.85,
    "sc": 0.8,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "dark-paint",
     "confidence": 0.6
@@ -10113,7 +10293,7 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar; second capture agrees",
+   "rule": "v1 and v2 agree weakly; second capture agrees",
    "v1": {
     "family": "white-paint",
     "confidence": 0.55
@@ -10151,7 +10331,7 @@
   "0363100012571641": {
    "finish": "paint",
    "family": "dark-paint",
-   "confidence": 0.6,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "simple",
@@ -10159,7 +10339,7 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.65,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "purple-brown-brick",
     "confidence": 0.6
@@ -10180,24 +10360,24 @@
   "0363100012571642": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.85,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.7,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.85
    }
   },
   "0363100012571648": {
-   "finish": "stucco",
+   "finish": "paint",
    "family": "pale-grey",
-   "confidence": 0.65,
+   "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "pitched-eaves",
    "cornice": "simple",
@@ -10205,7 +10385,7 @@
    "souterrain": null,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "below the bar; second below the bar",
+   "rule": "v1 and v2 agree weakly; second below the bar",
    "v1": {
     "family": "pale-grey",
     "confidence": 0.6
@@ -10425,15 +10605,15 @@
   "0363100012571678": {
    "finish": "brick",
    "family": "red-brown-brick",
-   "confidence": 0.75,
-   "reader": "opus (cut, colour family)",
+   "confidence": 0.7,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 and v2 agree weakly",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.75
@@ -10458,16 +10638,16 @@
   },
   "0363100012571682": {
    "finish": "brick",
-   "family": "red-brown-brick",
-   "confidence": 0.8,
-   "reader": "opus (cut, colour family)",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "spout",
    "cornice": "none",
    "full": 5,
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "v1 (v2 below the bar)",
+   "rule": "v1 red-brown, weak v2 not red: unstated",
    "v1": {
     "family": "red-brown-brick",
     "confidence": 0.8

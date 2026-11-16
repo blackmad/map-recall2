@@ -76,8 +76,29 @@ test('the staged Jordaan look: Boomstraat 172664 left to today; 172663 draws the
   const recs = new Map((JSON.parse(fs.readFileSync(url, 'utf8')).records as { pandId: string; topM: number; crown?: { family?: string } }[]).map(r => [r.pandId, r]));
   assert.equal(recs.has('0363100012172664'), false);
   // Round 5: the v2 reader reads a neck at cc 0.8 on 172663's cut (a dark-painted neck gable with a white top; the lane
-  // looked), where the register is silent. Its wall stays under the old band-p50 line; the gable rises above it.
+  // looked), where the register is silent. Round 6: the Jordaan's gable foot pitch (3.42 m) stands its foot at the photo's
+  // four storeys (13.9 m) and the neck rises 3.5 m over it.
   const r = recs.get('0363100012172663')!;
   assert.equal(r.crown?.family, 'neck', JSON.stringify(r.crown));
-  assert.ok(r.topM <= 16, `172663 top ${r.topM}`);
+  assert.ok(r.topM >= 16.5 && r.topM <= 18, `172663 top ${r.topM}`);
+});
+
+test('Centrum round 6 staged: gable tops at the photo storeys, measured roof storeys only on photo evidence', async () => {
+  const fs = await import('node:fs');
+  const load = (d: string) => {
+    const url = new URL(`../../../data/buurt-generators/${d}/row-front.json`, import.meta.url);
+    return fs.existsSync(url) ? new Map((JSON.parse(fs.readFileSync(url, 'utf8')).records as any[]).map(r => [r.pandId.slice(-6), r])) : null;
+  };
+  const dw = load('de-weteringschans'), nm = load('nieuwmarkt-lastage'), jo = load('jordaan');
+  if (!dw || !nm || !jo) return;
+  // De Weteringschans Prinsengracht 179167: a neck over four storeys (photo), drawn 14.6 m in round 5 where the photo shows ~18
+  const g = dw.get('179167');
+  assert.equal(g.crown.family, 'neck');
+  assert.ok(g.eavesM >= 14 && g.topM >= 17.5, `179167 foot ${g.eavesM} top ${g.topM}`);
+  const roof = (r: any) => { const s = typeof r.series === 'string' ? JSON.parse(r.series) : r.series; const k = s?.roofStorey; return k && k.kind !== 'none' ? k : null; };
+  // a slate roof storey from 3DBAG's ridge alone, the photo reading a flat cornice: Kloveniersburgwal 177790, Marnixstraat 168522
+  assert.equal(roof(nm.get('177790')), null);
+  assert.equal(roof(dw.get('168522')), null);
+  // the register's dakkapel still stands (Goudsbloemstraat 168668)
+  assert.ok(roof(jo.get('168668')));
 });

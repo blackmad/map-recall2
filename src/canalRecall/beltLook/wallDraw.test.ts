@@ -6,7 +6,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { drawRowWalls, isBrickFamily, measuredWeights, streetFamily, type WallDrawConfig } from './wallDraw.ts';
-import { lchOf } from '../houseSpec/judgedColour.ts';
+import { lchOf, type JudgedFamily } from '../houseSpec/judgedColour.ts';
 
 const cfg = JSON.parse(fs.readFileSync(new URL('./districts/jordaan.json', import.meta.url), 'utf8')).wallDraw as WallDrawConfig;
 const WESTERKADE = ['0363100012173518', '0363100012173519', '0363100012173520', '0363100012173521', '0363100012174936', '0363100012173525'];
@@ -126,4 +126,23 @@ test('Groenburgwal 178635 and Prins Hendrikkade 181609 (Nieuwmarkt round 2: "gre
   assert.equal(p.length, 5);
   assert.ok(new Set(p.filter(x => !ownPhoto(x.src)).map(x => familyOf(x.src))).size <= 1, 'one family along the unread fronts');
   for (const x of p) assert.ok(!['orange-red-brick', 'buff-brick'].includes(familyOf(x.src)!), `${x.id}: ${x.src}`);
+});
+
+test('round 6: a run of weak reads that mostly agree takes their family before the samples and the lot (DW Prinsengracht 168251-179166)', () => {
+  const cfg = { before1860: { 'red-brown-brick': 0.6, 'orange-red-brick': 0.4 }, from1860: { 'red-brown-brick': 1 }, runSamples: 2 } as const;
+  const f = (id: string, weakPhoto?: JudgedFamily) => ({ pandId: id, year: 1725, free: true, ...(weakPhoto ? { weakPhoto } : {}) });
+  const w = drawRowWalls([f('a', 'purple-brown-brick'), f('b', 'purple-brown-brick'), f('c', 'purple-brown-brick'), f('d')], cfg);
+  for (const x of w) assert.equal(x!.family, 'purple-brown-brick');
+  assert.equal(w[3]!.by, 'run-weak');
+  // two weak reads are not enough: the lot draws
+  assert.equal(drawRowWalls([f('a', 'purple-brown-brick'), f('b', 'purple-brown-brick'), f('d')], cfg)[2]!.by, 'draw');
+});
+
+test('round 6 staged: the losses that drew red or orange where the photo is dark (DW Prinsengracht 180118, Prins Hendrikkade 181609, Raamgracht 178142)', () => {
+  const dw = rowWalls(staged('de-weteringschans'), 'de-weteringschans-prinsengracht-180118');
+  for (const x of dw.filter(x => /(168251|179168|179167|179166)$/.test(x.id))) assert.ok(['purple-brown-brick', 'dark-grey-brick', 'painted-black'].includes(familyOf(x.src)!), `${x.id}: ${x.src}`);
+  const n = staged('nieuwmarkt-lastage');
+  for (const row of ['nieuwmarkt-lastage-prins-hendrikkade-181609', 'nieuwmarkt-lastage-raamgracht-178142'])
+    for (const x of rowWalls(n, row)) assert.ok(!['orange-red-brick', 'red-brown-brick', 'buff-brick'].includes(familyOf(x.src)!), `${row} ${x.id}: ${x.src}`);
+  assert.equal(familyOf(rowWalls(n, 'nieuwmarkt-lastage-raamgracht-178142').find(x => x.id.endsWith('178111'))!.src), 'dark-grey-brick');
 });
