@@ -2,9 +2,9 @@
 // wall) and behind its glass (`inside`, 0.3-2.5 m deep), as data; and the deterministic placement per run and per bay,
 // seeded by the pand and the bay index, so no two windows repeat and the world compile stays stable.
 import { hash01, posed, type PropTri } from './kit.js';
-import { bakfiets, barberStation, bikeHex, bikeRack, BLOOMS, bucketTier, counter, crate, omafiets, OMAFIETS_SIZE, plant, PRODUCE, rail, shelfUnit, washBasin, type Produce } from './props.js';
+import { bakfiets, barberStation, bikeHex, bikeRack, BLOOMS, bucketTier, counter, crate, omafiets, OMAFIETS_SIZE, plant, postcardSpinner, PRODUCE, rail, shelfUnit, washBasin, type Produce } from './props.js';
 
-export type PropKind = 'bike' | 'perpBike' | 'windowBike' | 'bakfiets' | 'crate' | 'bucketTier' | 'plant' | 'barberStation' | 'washBasin' | 'counter' | 'shelfUnit';
+export type PropKind = 'bike' | 'perpBike' | 'windowBike' | 'bakfiets' | 'crate' | 'bucketTier' | 'plant' | 'barberStation' | 'washBasin' | 'counter' | 'shelfUnit' | 'postcardSpinner';
 
 /** A pavement row: props chosen by weight, laid along each run at about `pitchM`, `y` out from the wall (alternating by
  *  `yAlt`), turned up to `yawJitter`; `tilt` tips them towards the street; `stand` draws under or behind the row. */
@@ -20,6 +20,9 @@ export type OutsideRow = {
   /** Lane shop-bikes-perp: bikes parked perpendicular to the wall, front wheel `wallGapM` from it (a `backedIn` share
    *  rear wheel to the wall), in a cluster about `pitchM` apart per run, kept `clearM` beyond each run's end (with the
    *  run's own 0.12 m, 0.3 m from the door), at most one bike per `perRunM` of run and `max` over the front. */
+  /** Lane postcard-spinner: one prop in each run's door-side end (a front with no door: its two ends), a run too short for
+   *  it skipped, the second sometimes left out; at most `max`; the prop `y` out from the wall. */
+  beside?: boolean;
   perp?: { wallGapM: number; backedIn: number; clearM: number; perRunM: number };
 };
 /** Props behind the glass per bay: how many (at most what fits), how deep, turned how far. */
@@ -55,13 +58,17 @@ export const SHOP_PROPS: Readonly<Record<string, ShopPropsSpec>> = {
     outside: [{ props: [{ prop: 'bucketTier', weight: 1 }], pitchM: 1.35, y: 0.55, max: 2 }],
     inside: [{ prop: 'plant', count: [3, 7], depth: [0.3, 2.2], k: 1.5, z: 0.5 }],
   },
+  // Lane postcard-spinner (David 2026-11-16: the flat postcard grid "looks bad"): a 3D postcard spinner or two beside the
+  // door, 0.5 m from the wall, on a pavement of at least 1.1 m. Souvenir shops and Bestseller.
+  souvenir: { outside: [{ props: [{ prop: 'postcardSpinner', weight: 1 }], pitchM: 1, y: 0.5, max: 2, beside: true, minDepthM: 1.1 }] },
+  bestseller: { outside: [{ props: [{ prop: 'postcardSpinner', weight: 1 }], pitchM: 1, y: 0.5, max: 2, beside: true, minDepthM: 1.1 }] },
   hairdresser: {
     inside: [{ prop: 'barberStation', count: [2, 3], depth: [1.4, 1.6], yawJitter: 0.25 }, { prop: 'washBasin', count: [0, 1], depth: [2.0, 2.2], yaw: 0.6 }, { prop: 'counter', count: [0, 1], depth: [0.6, 0.8], widthM: 1.1 }],
   },
 };
 
 /** What a prop takes along the wall (m). */
-const WIDTH: Record<PropKind, number> = { bike: OMAFIETS_SIZE.lengthM, perpBike: OMAFIETS_SIZE.widthM, windowBike: OMAFIETS_SIZE.lengthM, bakfiets: 2.3, crate: 0.5, bucketTier: 1.2, plant: 0.4, barberStation: 0.8, washBasin: 0.6, counter: 1.1, shelfUnit: 1.4 };
+const WIDTH: Record<PropKind, number> = { postcardSpinner: 0.62, bike: OMAFIETS_SIZE.lengthM, perpBike: OMAFIETS_SIZE.widthM, windowBike: OMAFIETS_SIZE.lengthM, bakfiets: 2.3, crate: 0.5, bucketTier: 1.2, plant: 0.4, barberStation: 0.8, washBasin: 0.6, counter: 1.1, shelfUnit: 1.4 };
 const PRODUCE_ORDER = Object.keys(PRODUCE) as Produce[];
 const HAIR = ['#1d1d1b', '#7a1f2b', '#2b2b2b', '#3a2a22'] as const, PALETTE = ['#d8452f', '#f2b92e', '#3f8f4a', '#ee7f2c', '#7cb342', '#c0392b'] as const;
 
@@ -82,6 +89,7 @@ function build(kind: PropKind, r: (k: string) => number, seed: string, i: number
     case 'plant': return r(`b${i}`) < 0.45 ? plant(BLOOMS[Math.floor(r(`c${i}`) * BLOOMS.length)]) : plant(['#3d6b35', '#4f7a3a', '#2f5a30', '#5f8a3a'][Math.floor(r(`l${i}`) * 4)], r(`p${i}`) < 0.5 ? '#a0522d' : '#d9d4c8', r(`t${i}`) < 0.4);
     case 'barberStation': return barberStation(HAIR[Math.floor(r(`h${i}`) * HAIR.length)]);
     case 'washBasin': return washBasin();
+    case 'postcardSpinner': return postcardSpinner(r, (r('turn') - 0.5) * 1.0);
     case 'counter': return counter(widthM ?? WIDTH.counter, r(`h${i}`) < 0.5 ? '#e8e4dc' : '#2b2724');
     case 'shelfUnit': return shelfUnit(widthM ?? WIDTH.shelfUnit, PALETTE, `${seed}:s${i}`);
   }
@@ -95,6 +103,7 @@ export function outsideProps(spec: ShopPropsSpec, runs: ReadonlyArray<readonly [
     if (depthM < (row.minDepthM ?? 0) || (row.maxDepthM !== undefined && depthM >= row.maxDepthM)) return;
     const r = (k: string) => hash01(`${seed}:out${ri}:${k}`), total = row.props.reduce((t, p) => t + p.weight, 0);
     if (row.perp) { out.push(...perpRow(row, row.perp, runs, seed, r)); return; }
+    if (row.beside) { out.push(...besideRow(row, runs, seed, r)); return; }
     if (row.even) { out.push(...evenRow(row, runs, seed, r)); return; }
     let n = 0;
     for (const [r0, r1] of runs) {
@@ -163,6 +172,27 @@ function perpRow(row: OutsideRow, perp: NonNullable<OutsideRow['perp']>, runs: R
       out.push(...posed(bikeRack(undefined, true), { x: (xs[h] + xs[h + 1]) / 2, y: 0.75, z: 0, yaw: Math.PI / 2 }));
     }
   });
+  return out;
+}
+
+/** Props beside the door (lane postcard-spinner): per run one at its door-side end (a lone run, no door: both ends if it
+ *  is long enough), the longest run always, the others with a seeded chance, at most `max`. */
+function besideRow(row: OutsideRow, runs: ReadonlyArray<readonly [number, number]>, seed: string, r: (k: string) => number): PropTri[] {
+  const out: PropTri[] = [], kind = row.props[0].prop, w = WIDTH[kind], gap = 0.1;
+  const spots: Array<{ x: number; len: number }> = [];
+  runs.forEach(([r0, r1], ri) => {
+    if (r1 - r0 < w + 2 * gap) return;
+    if (runs.length === 1) { spots.push({ x: r0 + gap + w / 2, len: r1 - r0 }); if (r1 - r0 > 2 * w + 1.2) spots.push({ x: r1 - gap - w / 2, len: r1 - r0 }); }
+    else spots.push({ x: ri < runs.length / 2 ? r1 - gap - w / 2 : r0 + gap + w / 2, len: r1 - r0 });
+  });
+  const longest = Math.max(0, ...spots.map(s => s.len));
+  let n = 0;
+  for (const s of spots) {
+    if (n >= (row.max ?? 99)) break;
+    if (s.len < longest && r(`b${n}`) > 0.6) continue;
+    out.push(...posed(build(kind, r, seed, n), { x: s.x, y: row.y + (r(`y${n}`) - 0.5) * 0.2, z: row.z ?? 0 }));
+    n++;
+  }
   return out;
 }
 

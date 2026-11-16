@@ -7,6 +7,7 @@ import { FRONT, LETTER_STEM, MAX_LETTER_H, MIN_LETTER_H, fitWord, glassTone, ret
 import { LOGOS, LOGO_GRID, glyphCellBox, glyphLayout, logoFor, retailLogoLayer } from './retailLogos.js';
 import { PARTY, hostOnFront, ringEdges, segDist, steppedRun } from './retailHosting.js';
 import fs from 'node:fs';
+import { PROP_COST } from './shopProps/props.js';
 import { decorateShopfront, setShopfronts, setShopTemplates } from './shopfronts.js';
 import { bayTextures, type BayVariant } from './bayTextures.js';
 import { insideCentre } from './retailArea.js';
@@ -337,7 +338,9 @@ test('round 3c cost: panes are one interior quad of the shop cell; every templat
     const props = ['bike', 'greengrocer', 'florist', 'hairdresser', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t);
     // Round t: a rack is a postcard stand (uprights, a bar, 18 cards), default since its blind: racks fronts within 220.
     const racks = ['racks', 'promo'].includes(TEMPLATE_LOOKS[t].pavement ?? '');
-    if (racks) assert.ok(tris.length <= 220, `${t}: ${tris.length} tris`);
+    // Lane postcard-spinner: racks fronts carry up to two 3D spinners (PROP_COST.postcardSpinner each) on a 160-tri front.
+    if (TEMPLATE_LOOKS[t].pavement === 'racks') assert.ok(tris.length <= 160 + 2 * PROP_COST.postcardSpinner, `${t}: ${tris.length} tris`);
+    else if (racks) assert.ok(tris.length <= 220, `${t}: ${tris.length} tris`);
     else if (!props) assert.ok(tris.length <= 140, `${t}: ${tris.length} tris`);
     // Lane shop-goods: two stepped stands of zinc buckets (3D blooms) and potted plants behind the glass: within 420.
     if (t === 'florist') assert.ok(tris.length <= 420, `${t}: ${tris.length} tris`);

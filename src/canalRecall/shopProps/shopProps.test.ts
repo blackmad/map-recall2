@@ -1,8 +1,9 @@
 // Shop props kit (lane shop-goods-20261116): stated costs, footprints, determinism and per-bay variety.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { bakfiets, barberStation, bike, BIKE_HEXES, bikeHex, bikeRack, bucketTier, bucketTierCost, counter, crate, omafiets, OMAFIETS_SIZE, plant, PROP_COST, rail, washBasin } from './props.js';
+import { bakfiets, barberStation, bike, BIKE_HEXES, bikeHex, bikeRack, bucketTier, bucketTierCost, counter, crate, omafiets, OMAFIETS_SIZE, plant, postcardSpinner, PROP_COST, rail, washBasin } from './props.js';
 import { insideProps, outsideProps, SHOP_PROPS } from './layout.js';
+import { hash01 } from './kit.js';
 import { goodsTileRect } from './variety.js';
 
 test('shop props: each builder costs what PROP_COST states', () => {
@@ -22,6 +23,7 @@ test('shop props: each builder costs what PROP_COST states', () => {
   assert.equal(barberStation('#7a1f2b').length, PROP_COST.barberStation);
   assert.equal(washBasin().length, PROP_COST.washBasin);
   assert.equal(counter(1.1, '#e8e4dc').length, PROP_COST.counter);
+  assert.ok(postcardSpinner(k => hash01(k), 0.1).length <= PROP_COST.postcardSpinner);
   for (const w of [0.6, 1.2]) assert.equal(bucketTier(w, 's').length, bucketTierCost(w));
 });
 
@@ -142,4 +144,36 @@ test('per-window variety: goods tiles show seeded stretches of the cell, inside 
     seen.add([a, b, c, d].map(x => x.toFixed(4)).join());
   }
   assert.equal(seen.size, 12);
+});
+
+test('shop props (lane postcard-spinner): a spinner is a 120-200 tri drum of cards, 1.6 m tall, cards only, 4-5 faces to the street', () => {
+  const r = (k: string) => hash01(`sp:${k}`);
+  for (const turn of [-0.5, 0, 0.5]) {
+    const t = postcardSpinner(r, turn), zs = t.flatMap(q => q.p.map(p => p[2])), rad = t.flatMap(q => q.p.map(p => Math.hypot(p[0], p[1])));
+    assert.ok(t.length >= 120 && t.length <= PROP_COST.postcardSpinner && PROP_COST.postcardSpinner <= 200, `${turn}: ${t.length}`);
+    assert.ok(Math.max(...zs) >= 1.6 && Math.max(...zs) <= 1.7, `${Math.max(...zs)}`);
+    assert.ok(Math.max(...rad) <= 0.3 + 1e-9, 'within the base plate');
+    // Cards lean outward-and-up: every card quad's normal has a small upward part; no triangle bigger than a card half.
+    assert.ok(t.every(q => q.hex !== '#2f6fb0'));
+    assert.ok(t.filter(q => q.hex === '#f4f1e8').length >= 4 * 5 * 2, 'white-bordered cards on 4+ faces');
+  }
+  // Seeded: two spinners with other seeds differ.
+  assert.notDeepEqual(postcardSpinner(r, 0).map(q => q.hex), postcardSpinner(k => hash01(`other:${k}`), 0).map(q => q.hex));
+});
+
+test('shop props (lane postcard-spinner): souvenir and bestseller fronts carry one or two spinners 0.4-0.6 m out beside the door; thin pavements none', () => {
+  for (const tpl of ['souvenir', 'bestseller']) {
+    const spec = SHOP_PROPS[tpl];
+    for (const seed of ['a', 'b', 'c', 'd', 'e', 'f']) {
+      const runs: Array<[number, number]> = [[0.1, 2.4], [3.6, 5.9]];
+      const t = outsideProps(spec, runs, seed, 3), per = PROP_COST.postcardSpinner;
+      assert.ok(t.length >= 120 && t.length <= 2 * per, `${tpl} ${seed}: ${t.length}`);
+      for (const q of t) for (const p of q.p) assert.ok(p[1] >= 0.05 && p[1] <= 0.95, `y ${p[1]}`);
+      // Beside the door: inside the run's door-side half.
+      const xs = t.flatMap(q => q.p.map(p => p[0]));
+      assert.ok(xs.every(x => x >= 0.1 && x <= 5.9) && xs.some(x => x > 1.6 && x < 2.45 || x > 3.55 && x < 4.4));
+      assert.deepEqual(t, outsideProps(spec, runs, seed, 3));
+    }
+    assert.equal(outsideProps(spec, [[0.1, 2.4], [3.6, 5.9]], 'a', 0.9).length, 0);
+  }
 });
