@@ -13,6 +13,10 @@
  *   node --import tsx scripts/belt-look/photo-reads.ts crowns2 <photo-reads.json> <reads.txt...> [--out <file>]
  *       round 11: a second capture's crown lines; the first read is kept as `first`, the second as `second`, and the
  *       top-level crown fields become mergeCrownReads(first, second).
+ *   node --import tsx scripts/belt-look/photo-reads.ts v3 <photo-reads.json> <out/bNN.txt...> [--out <file>]
+ *     round 15: the Centrum v3 reader's lines (finish, family, crown, roof, dress) kept whole as `v3`.
+ *   node --import tsx scripts/belt-look/photo-reads.ts ground <photo-reads.json> <out/gNN.txt...> [--out <file>]
+ *     round 15: the ground-storey facing read ("<id> <brick|white-stucco|stone|shopfront|all-painted|nv> <gc>") as `ground`.
  *   node --import tsx scripts/belt-look/photo-reads.ts colours <photo-reads.json> <read-*.txt...> [--out <file>]
  *       round 11: the Centrum lane's colour-family reader (scripts/centrum-looks/photo-reader-prompt.md, opus on the same
  *       cuts) merged as `colour` {finish, family, confidence}, a later file's read kept only when more confident; the generator draws it at PHOTO_COLOUR_MIN (photoColourWalls).
@@ -25,7 +29,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 import { mergeCrownReads, photoCrown } from '../../src/canalRecall/beltLook/generate.ts';
-import { parseReads } from '../centrum-looks/photo-reads.ts';
+import { parseReads, parseReads2 } from '../centrum-looks/photo-reads.ts';
 
 export interface WallFeatures { lapMed: number; lumMed: number; lumP75: number; satMed: number }
 const q = (a: number[], p: number) => { const s = Float64Array.from(a).sort(); return s[Math.floor(p * (s.length - 1))]; };
@@ -153,6 +157,29 @@ async function main(argv: string[]) {
     doc.colourRef = 'lane D round 11: the Centrum colour-family reader (scripts/centrum-looks/photo-reads.ts, b14c917fc) on the belt cuts';
     fs.writeFileSync(out, JSON.stringify(doc, null, 1));
     console.log('colours:', tally);
+  } else if (mode === 'v3') {
+    const [file, ...vis] = rest.filter((a, i) => !a.startsWith('--') && rest[i - 1] !== '--out'), out = opt(rest, 'out') ?? file, doc = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const tally: Record<string, number> = {};
+    for (const f of vis) for (const [id, r] of parseReads2(fs.readFileSync(f, 'utf8'))) {
+      const { reader: _r, ...v3 } = r;
+      doc.reads[id] = { ...(doc.reads[id] ?? {}), v3 };
+      const k = `dress ${(r.dc ?? 0) >= 0.7 ? '' : 'low '}${r.dress ?? '-'}`; tally[k] = (tally[k] ?? 0) + 1;
+    }
+    doc.v3Ref = 'lane D round 15: the Centrum v3 reader (prompt round 7: colour, crown, roof in view, window dress) on donor-drawn belt cuts';
+    fs.writeFileSync(out, JSON.stringify(doc, null, 1));
+    console.log('v3:', tally);
+  } else if (mode === 'ground') {
+    const [file, ...vis] = rest.filter((a, i) => !a.startsWith('--') && rest[i - 1] !== '--out'), out = opt(rest, 'out') ?? file, doc = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const tally: Record<string, number> = {};
+    for (const f of vis) for (const l of fs.readFileSync(f, 'utf8').split('\n')) {
+      const m = l.trim().match(/^(\d{16})\s+(brick|white-stucco|stone|shopfront|all-painted|nv)\s+([\d.]+)/);
+      if (!m) continue;
+      doc.reads[m[1]] = { ...(doc.reads[m[1]] ?? {}), ground: { facing: m[2], gc: +m[3] } };
+      const k = `${+m[3] >= 0.7 ? '' : 'low '}${m[2]}`; tally[k] = (tally[k] ?? 0) + 1;
+    }
+    doc.groundRef = 'lane D round 15: the ground-storey facing reader (belt-ground-r15/prompt-template.txt) on the belt cuts';
+    fs.writeFileSync(out, JSON.stringify(doc, null, 1));
+    console.log('ground:', tally);
   } else if (mode === 'dormers') {
     // Round 13: the gable-or-dormer check ("<id> <gable|dormer|other|not-visible> <y|n|nv> <conf>", belt-cuts-r13/point-prompt.txt)
     // on own-read point gables: every read is kept (`dormerCheck`), one per capture.
@@ -168,6 +195,6 @@ async function main(argv: string[]) {
     doc.dormerRef = 'lane D round 13: gable-or-dormer check on own-read point gables (belt-cuts-r13/point-prompt.txt)';
     fs.writeFileSync(out, JSON.stringify(doc, null, 1));
     console.log(`dormers: ${n} lines merged`);
-  } else { console.log('photo-reads.ts features|vote|assemble|crowns|crowns2|colours|dormers ...'); process.exit(2); }
+  } else { console.log('photo-reads.ts features|vote|assemble|crowns|crowns2|colours|dormers|v3|ground ...'); process.exit(2); }
 }
 if (process.argv[1]?.endsWith('belt-look/photo-reads.ts')) await main(process.argv.slice(2));

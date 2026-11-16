@@ -15,7 +15,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { districtPands, namedStreets, describedPands } from '../buurt-generators/generate.ts';
 import type { DistrictLibrary } from '../../src/canalRecall/buurtGenerator/generate.ts';
-import { beltRaisedDoorStoops, generateBelt, paleBlockWalls, photoCorniceOf, photoColourWalls, photoCrown, photoFinish, PHOTO_ROOF_MIN, registerRoofStorey, specPhotoDisagree, type BeltPhoto, type BeltRead, type BeltStated, type PhotoColour } from '../../src/canalRecall/beltLook/generate.ts';
+import { agreedPhotoColour, beltRaisedDoorStoops, generateBelt, photoDressOf, paleBlockWalls, photoCorniceOf, photoColourWalls, photoCrown, photoFinish, PHOTO_ROOF_MIN, registerRoofStorey, specPhotoDisagree, type BeltPhoto, type BeltRead, type BeltStated, type PhotoColour } from '../../src/canalRecall/beltLook/generate.ts';
 import type { AhnFront } from '../../src/canalRecall/beltLook/ahnFront.ts';
 import { usableDonor, segmentOf, type BeltDonor } from '../../src/canalRecall/beltLook/donors.ts';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.ts';
@@ -119,7 +119,10 @@ async function main() {
   if (photoReads && fs.existsSync(photoReads)) for (const [pid, r] of Object.entries<any>(JSON.parse(fs.readFileSync(photoReads, 'utf8')).reads ?? {})) {
     const cur = stated.get(pid) ?? {}, fin = cur.finish ? undefined : photoFinish(r.finish ? r : undefined);
     // The photo colour reader (round 11): the wall's family where the register states no finish (photoColourWalls).
-    const colour = !cur.finish && r.colour && typeof r.colour.confidence === 'number' ? r.colour as PhotoColour : undefined;
+    const colour = !cur.finish && r.colour && typeof r.colour.confidence === 'number' ? agreedPhotoColour(r.colour as PhotoColour, r.v3) : undefined;
+    // Round 15: the v3 reader's window dressing and bands, its roof in view, and the ground-storey facing read.
+    const dress = photoDressOf(r.v3), v3Roof = r.v3?.roof && typeof r.v3.rc === 'number' ? { roof: r.v3.roof, rc: r.v3.rc } : undefined;
+    const ground = r.ground && typeof r.ground.gc === 'number' ? { facing: String(r.ground.facing), gc: r.ground.gc } : undefined;
     const ph = !cur.photo && r.w1?.hex && typeof r.w1.n === 'number' ? { hex: r.w1.hex, L: r.w1.L, C: r.w1.C, h: r.w1.h, n: r.w1.n } : undefined;
     // The photo crown reader (round 10): a gabled crown where the register states none, a tall cornice, the storey count.
     const pc = photoCrown(typeof r.cc === 'number' ? r : undefined), crown = !cur.crown && pc.crown ? pc.crown : undefined;
@@ -129,7 +132,7 @@ async function main() {
     const roof = typeof r.cc === 'number' && r.cc >= PHOTO_ROOF_MIN && ['mansard', 'pitched-eaves'].includes(r.crown);
     // Round 13: the photo's cornice over an own read's gable (two captures, or the gable-or-dormer check).
     const pcor = photoCorniceOf(r);
-    if (fin || ph || crown || pc.tallCornice || pc.storeys || colour || roof || pcor) stated.set(pid, { ...cur, ...(roof ? { photoRoof: true } : {}), ...(pcor ? { photoCornice: pcor } : {}), ...(fin ? { finish: fin } : {}), ...(ph ? { photo: ph } : {}), ...(crown ? { crown } : {}), ...(colour ? { photoColour: colour } : {}),
+    if (fin || ph || crown || pc.tallCornice || pc.storeys || colour || roof || pcor || dress.photoDress || dress.photoBands || v3Roof || ground) stated.set(pid, { ...cur, ...dress, ...(v3Roof ? { v3Roof } : {}), ...(ground ? { ground } : {}), ...(roof ? { photoRoof: true } : {}), ...(pcor ? { photoCornice: pcor } : {}), ...(fin ? { finish: fin } : {}), ...(ph ? { photo: ph } : {}), ...(crown ? { crown } : {}), ...(colour ? { photoColour: colour } : {}),
       ...(pc.tallCornice ? { tallCornice: pc.tallCornice } : {}), ...(pc.storeys ? { photoStoreys: pc.storeys } : {}), ...(pc.souterrain !== undefined ? { photoSouterrain: pc.souterrain } : {}) });
   }
   // Measured AHN street fronts (scripts/belt-look/ahn-fronts.ts, staged); --no-ahn draws from 3DBAG alone.

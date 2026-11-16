@@ -551,3 +551,37 @@ test('round 13 after Centrum round 7: the belt souterrain share, the roof-storey
   assert.equal(JUDGED_PALETTE['purple-brown-brick'].h, 40);
   assert.equal(BELT_LOOK.roofStoreyCapPitchM, 3.4);
 });
+
+test('round 15: v3 dress and bands, two-reader colour, register-only dakkapels, white plinths', async () => {
+  const fs = await import('node:fs');
+  const { photoDressOf, agreedPhotoColour, REGISTER_DORMER_RISE_M, PHOTO_COLOUR_MIN } = await import('./generate.ts');
+  // Centrum round 7's mapping: block-course draws block dressings; bands are speklagen; a confident plain front draws none.
+  assert.deepEqual(photoDressOf({ dress: 'block-course', dc: 0.7 }), { photoDress: 'block-dressings' });
+  assert.deepEqual(photoDressOf({ dress: 'bands', dc: 0.75 }), { photoBands: 'speklagen' });
+  assert.deepEqual(photoDressOf({ dress: 'none', dc: 0.8 }), { photoDress: 'none', photoBands: 'none' });
+  assert.deepEqual(photoDressOf({ dress: 'keystone', dc: 0.6 }), {});
+  assert.deepEqual(photoDressOf({ dress: 'block-surround', dc: 0.9 }), {}, 'quoined surrounds: read, not drawn');
+  // Two readers naming the same brick family at 0.6 make a confident read; a paint family or a disagreement does not.
+  assert.equal(agreedPhotoColour({ finish: 'brick', family: 'brown-brick', confidence: 0.65 }, { family: 'brown-brick', confidence: 0.75 })?.confidence, PHOTO_COLOUR_MIN);
+  assert.equal(agreedPhotoColour({ finish: 'brick', family: 'brown-brick', confidence: 0.65 }, { family: 'red-brown-brick', confidence: 0.75 })?.confidence, 0.65);
+  assert.equal(agreedPhotoColour({ finish: 'paint', family: 'dark-paint', confidence: 0.6 }, { family: 'dark-paint', confidence: 0.8 })?.confidence, 0.6);
+  type Rec = { pandId: string; wall?: { hex?: string }; sources?: { wall?: string }; series?: { extras?: string[]; heads?: Array<{ dressing?: string }>; groundWalls?: unknown[]; roofStorey?: { kind?: string; riseM?: number } } };
+  const all: Rec[] = JSON.parse(fs.readFileSync('data/buurt-generators/belt/row-front.json', 'utf8')).records;
+  const recs = new Map(all.map(r => [r.pandId, r])), rec = (id: string) => recs.get(`0363100012${id}`)!;
+  // Keizersgracht 180308: the register's dakkapel, no mansard read: one dormer on a low pitched roof behind the cornice.
+  assert.equal(rec('180308').series?.roofStorey?.kind, 'pitched');
+  assert.equal(rec('180308').series?.roofStorey?.riseM, REGISTER_DORMER_RISE_M);
+  // 168192: speklagen read on the cut (v3 bands 0.7) over a white stucco ground storey (0.9).
+  assert.ok(rec('168192').series?.extras?.includes('speklagen'));
+  assert.equal(rec('168192').series?.groundWalls?.length, 1);
+  // 171611: a white stucco ground storey (0.85) under red-brown brick.
+  assert.equal(rec('171611').series?.groundWalls?.length, 1);
+  // 179466: a dotted course of pale blocks at the heads (v3 block-course 0.7).
+  assert.equal(rec('179466').series?.heads?.[0]?.dressing, 'block-course');
+  // 182502: dark grey from a dim sample before; the colour reader (0.65) and v3 (0.75) both read brown brick.
+  assert.match(rec('182502').sources?.wall ?? '', /judged brown-brick/);
+  // A plinth only where a read states it.
+  const pr = JSON.parse(fs.readFileSync('data/buurt-generators/belt/photo-reads.json', 'utf8')).reads;
+  const unread = all.filter(r => r.series?.groundWalls?.length && !['white-stucco', 'stone'].includes(pr[r.pandId]?.ground?.facing));
+  assert.ok(unread.length <= all.filter(r => r.series?.groundWalls?.length).length / 2, 'series plinths stand on reads');
+});

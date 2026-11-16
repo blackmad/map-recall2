@@ -42,7 +42,13 @@ export interface BeltStated { crown?: string; year?: number; shop?: boolean; fin
   /** Centrum round 7: the photo's upper-window dressing, in the describer's windowSurround words (stone-lintel, keystone, block-dressings, none). */
   photoDress?: string;
   /** The photo colour reader's (round 11): the wall's colour family read on the cut, set only where the register is silent. */
-  photoColour?: PhotoColour }
+  photoColour?: PhotoColour;
+  /** Round 15: the v3 reader's speklagen (continuous pale bands, `bands` at PHOTO_DRESS_MIN), or a confident plain front (`none`). */
+  photoBands?: 'speklagen' | 'none';
+  /** Round 15: the v3 reader's roof in view over the cornice (any confidence; beltRoofEvidence weighs it). */
+  v3Roof?: { roof: string; rc: number };
+  /** Round 15: the ground-storey facing reader (white stucco or stone under a brick wall, a shopfront, all one finish). */
+  ground?: { facing: string; gc: number } }
 /**
  * The photo crown reader (round 10: Singel 168333, Amstel 165494 and Prinsengracht 173558-173557, neck gables drawn as
  * flat cornices; Prinsengracht 173559 two storeys under its neck): opus on the same leaf-off cut as the finish read, the
@@ -295,6 +301,9 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       // Centrum round 7 (Nicolaas Witsenkade 179373-179376, Kromme Waal: white window dressings missing): the photo's
       // read dressing stands over the donor's (describer windowSurround vocabulary).
       if (sd?.photoDress) (read as { windowSurround?: string }).windowSurround = sd.photoDress;
+      // Round 15 (held-out round 14: speklagen and white dressings missing on donor fronts): the photo's bands stand over
+      // the donor's (describer `bands`, drawn through BAND_EXTRAS); a confident plain front draws none.
+      if (sd?.photoBands) (read as { bands?: string }).bands = sd.photoBands;
       // Centrum round 6 (Kloveniersburgwal 177790, Marnixstraat 168522: a slate roof storey from 3DBAG's ridge alone over
       // fronts the photo shows flat-corniced): a look with roofStoreyNeedsPhoto draws the measured roof storey only where
       // the photo reads a roof in view (photoRoof); the register's dormer (t.roofStorey) still stands.
@@ -377,7 +386,7 @@ export function generateBelt(pands: readonly GenPand[], streets: readonly GenStr
     const donorFilled = new Set(input.members.filter(m => 'donor' in provenance[m.pandId]).map(m => m.pandId));
     const elements = new Map(input.members.map(m => [m.pandId, stated.get(m.pandId)?.elements ?? []]));
     const dressed = dressBeltCornice(dressBeltStone(relabelDonorFields(solveRow(input), donorFilled), BELT_LOOK_REF, elements), BELT_LOOK_REF, elements);
-    rows.push(pitchedDormers(warehouseFronts(apexOnFront(measuredGables(dressed, input, donorFilled), input, ahn), stated), stated));
+    rows.push(groundFacings(registerOnlyDormers(pitchedDormers(warehouseFronts(apexOnFront(measuredGables(dressed, input, donorFilled), input, ahn), stated), stated), stated), stated));
     for (const m of r.members) fronts[pandNumber(m.pand.id)] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
   }
   return { rows, provenance, skipped, fronts, paleBlocks };
@@ -433,6 +442,62 @@ export function pitchedDormers(row: RowRecord, stated: ReadonlyMap<string, BeltS
   return row;
 }
 
+/** The window dressings the v3 reader names, in the describer's windowSurround words (Centrum round 7's PHOTO_DRESS_SURROUND,
+ *  scripts/centrum-looks/generate.ts). `block-surround` (quoined jambs) and `arch-ring` have no surround word: read, not drawn. */
+export const PHOTO_DRESS_SURROUND: Readonly<Record<string, string>> = { none: 'none', 'stone-lintel': 'stone-lintel', keystone: 'keystone', 'block-course': 'block-dressings' };
+export const PHOTO_DRESS_MIN = 0.7;
+/** A v3 read's dressing and bands as BeltStated fields (round 15), at PHOTO_DRESS_MIN. */
+export function photoDressOf(v3: { dress?: string; dc?: number } | undefined): Pick<BeltStated, 'photoDress' | 'photoBands'> {
+  if (!v3?.dress || !(typeof v3.dc === 'number' && v3.dc >= PHOTO_DRESS_MIN)) return {};
+  if (v3.dress === 'bands') return { photoBands: 'speklagen' };
+  const surround = PHOTO_DRESS_SURROUND[v3.dress];
+  return surround ? { photoDress: surround, ...(v3.dress === 'none' ? { photoBands: 'none' as const } : {}) } : {};
+}
+
+/**
+ * Round 15 (held-out round 14: Keizersgracht 180308, a register dakkapel drawn as a hipped slate mass 3 m over the cornice,
+ * judged a mansard): a pitched roof storey from the register's dakkapel stands low behind the cornice, one dormer on a
+ * shallow slope, unless the photo shows more roof: the crown reader's roof in view (photoRoof), a spec's mansard, or the
+ * v3 reader's mansard at V3_ROOF_MIN. The v3 reader's slope material (dormers or a slope in slate or pantile) is taken.
+ */
+export const REGISTER_DORMER_RISE_M = 1.8;
+export const V3_ROOF_MIN = 0.7;
+export function registerOnlyDormers(row: RowRecord, stated: ReadonlyMap<string, BeltStated>): RowRecord {
+  const low = (f: RowField<RowRoofStorey> | undefined, ids: readonly string[]) => {
+    if (!f || f.source === 'reviewed' || !f.value.pitched || f.value.riseM) return;
+    const sds = ids.map(id => stated.get(id));
+    if (!sds.some(sd => sd?.roofStorey)) return;
+    const v3 = sds.map(sd => sd?.v3Roof).filter((r): r is { roof: string; rc: number } => !!r && r.rc >= V3_ROOF_MIN);
+    const tile = v3.filter(r => r.roof.endsWith('-tile')).length, slate = v3.filter(r => r.roof.endsWith('-slate')).length;
+    if (tile > slate && f.value.material !== 'tile') f.value = { ...f.value, material: 'tile' };
+    if (sds.some(sd => sd?.photoRoof || sd?.mansard || sd?.photoCornice?.dormer) || v3.some(r => r.roof === 'mansard')) return;
+    f.value = { ...f.value, riseM: REGISTER_DORMER_RISE_M };
+    f.ref = `${f.ref}; ${BELT_LOOK_REF}: the register's dakkapel, a low pitched roof (${REGISTER_DORMER_RISE_M} m) behind the cornice`;
+  };
+  for (const s of row.series) low(s.design.roofStorey, row.fronts.filter(f => f.seriesId === s.id).map(f => f.pandId));
+  for (const f of row.fronts) low((f.overrides as { roofStorey?: RowField<RowRoofStorey> }).roofStorey, [f.pandId]);
+  return row;
+}
+
+/**
+ * Round 15 (the round-15 brief: white stucco plinths): a series whose fronts read a white stucco (or pale stone) ground
+ * storey under the wall, at GROUND_FACING_MIN, with no confident read of another facing, draws RowDesign.groundWall.
+ */
+export const GROUND_FACING_MIN = 0.7;
+export function groundFacings(row: RowRecord, stated: ReadonlyMap<string, BeltStated>): RowRecord {
+  for (const s of row.series) {
+    if (s.design.groundWall?.source === 'reviewed') continue;
+    const reads = row.fronts.filter(f => f.seriesId === s.id).map(f => [f.pandId, stated.get(f.pandId)?.ground] as const)
+      .filter(([, g]) => g && g.facing !== 'nv' && g.gc >= GROUND_FACING_MIN);
+    const pale = reads.filter(([, g]) => g!.facing === 'white-stucco' || g!.facing === 'stone');
+    if (!pale.length || pale.length < reads.length) continue;
+    const material = pale.filter(([, g]) => g!.facing === 'stone').length > pale.length / 2 ? 'stone' : 'stucco';
+    s.design.groundWall = { value: { material, colour: 'white' }, source: pale.length > 1 ? 'series-consensus' : 'single-read',
+      ref: `${BELT_LOOK_REF}: ground storey read ${pale.map(([id, g]) => `${id} ${g!.facing} ${g!.gc}`).join(', ')} (ground facing reader, round 15)` };
+  }
+  return row;
+}
+
 export function warehouseFronts(row: RowRecord, stated: ReadonlyMap<string, BeltStated>): RowRecord {
   for (const f of row.fronts) {
     const sd = stated.get(f.pandId), s = row.series.find(x => x.id === f.seriesId);
@@ -482,7 +547,7 @@ export function apexOnFront(row: RowRecord, input: RowInput, ahn: ReadonlyMap<st
 export const PHOTO_COLOUR_MIN = 0.7;
 /** A photo crown read of a roof in view (mansard or pitched eaves) at this confidence is a photoRoof (round 12; Centrum round 6's PHOTO_ROOF_MIN). */
 export const PHOTO_ROOF_MIN = 0.6;
-export interface PhotoColour { finish: string; family: string; confidence: number }
+export interface PhotoColour { finish: string; family: string; confidence: number; /** Round 15: lifted to PHOTO_COLOUR_MIN by a v3 read of the same family. */ agreed?: { first: number; v3: number } }
 /** The reader's families onto the judged palette (scripts/centrum-looks/generate.ts PHOTO_FAMILY). */
 export const PHOTO_COLOUR_FAMILY: Readonly<Record<string, JudgedFamily>> = {
   'dark-grey-brick': 'dark-grey-brick', 'purple-brown-brick': 'purple-brown-brick', 'brown-brick': 'brown-brick', 'red-brown-brick': 'red-brown-brick',
@@ -490,6 +555,18 @@ export const PHOTO_COLOUR_FAMILY: Readonly<Record<string, JudgedFamily>> = {
   'pale-grey': 'pale-grey-stucco', 'dark-paint': 'painted-black',
 };
 const BRICK_FAMILIES = new Set<JudgedFamily>(['dark-grey-brick', 'purple-brown-brick', 'brown-brick', 'red-brown-brick', 'orange-red-brick', 'buff-brick']);
+/**
+ * Round 15 (held-out rounds 13-14: brown-red rows drawn charcoal, Keizersgracht 180299, 182225): the round-11 colour read
+ * under PHOTO_COLOUR_MIN counts as confident when the v3 reader (another read of the same front, with the contrastive swatch
+ * card) names the same brick family at PHOTO_COLOUR_AGREE_MIN. Most of the belt's dark-grey walls are dim winter samples.
+ */
+export const PHOTO_COLOUR_AGREE_MIN = 0.6;
+export function agreedPhotoColour(c: PhotoColour | undefined, v3: { family?: string; confidence?: number } | undefined): PhotoColour | undefined {
+  if (!c || c.confidence >= PHOTO_COLOUR_MIN || !v3?.family || v3.family !== c.family) return c;
+  const fam = PHOTO_COLOUR_FAMILY[c.family];
+  if (!fam || !BRICK_FAMILIES.has(fam) || !(c.confidence >= PHOTO_COLOUR_AGREE_MIN) || !((v3.confidence ?? 0) >= PHOTO_COLOUR_AGREE_MIN)) return c;
+  return { ...c, confidence: PHOTO_COLOUR_MIN, agreed: { first: c.confidence, v3: v3.confidence! } } as PhotoColour;
+}
 /** A confident photo colour read's wall, or undefined (unclear, other-paint, low confidence, or a spec colour stands). */
 export function photoColourWall(sd: BeltStated | undefined): { family: JudgedFamily; finish: 'brick' | 'stucco' | 'painted-brick' } | undefined {
   const c = sd?.photoColour;
