@@ -113,6 +113,9 @@ export interface LookDistrict {
   gableFootPitchM?: number;
   /** The share of a storey a souterrain adds under a gable's foot (unset: SOUTERRAIN_SHARE.souterrain, 0.58). */
   gableFootSouterrainShare?: number;
+  /** The storey pitch (m) generate.ts underRoofStoreyTop caps a cornice wall under a roof storey at (unset: gableFootPitchM,
+   *  Centrum's cornice measure). The belt's gable-foot pitch is a gable measure, too short for its cornice walls. */
+  roofStoreyCapPitchM?: number;
   /** roofSignals.ts: no gable (stated or a donor's) on a measured flat top. */
   flatTopNoGable?: boolean;
   /** roofSignals.ts: a cornice front whose AHN band climbs a roof slope stands at the band's p50. */
@@ -133,13 +136,17 @@ export const BELT_GABLE_FOOT_PITCH_M = 3.0;
  *  at 0.30 of a storey (cornice fronts' p90: 0.25, n 63 / 160), not SOUTERRAIN_SHARE's 0.58 (the 3DBAG height fit's share).
  *  Centrum's looks set 0 (Prinsengracht 179167, Boomstraat 172663). */
 export const BELT_GABLE_FOOT_SOUTERRAIN_SHARE = 0.3;
+/** Round 14: the belt's cap on a cornice wall under a roof storey, Centrum's own cornice measure on the belt (the p25 of AHN
+ *  cornice tops over photo storeys, n 239). At the gable pitch (3.0) Keizersgracht 169362 and Kerkstraat 172215, four storeys
+ *  under a mansard (~13.5-14 m on their cuts), stood at 12.79 / 12.0 m. */
+export const BELT_ROOF_STOREY_CAP_PITCH_M = 3.4;
 /** The belt sets flatTopNoGable (round 9: 0 belt fronts change today, a guard for Keizersgracht 171508's kind). It leaves
  *  measuredRoofStorey off: it would add a roof storey to 160 belt cornice fronts, and an opus read of 15 of their cuts saw
  *  a dormer on 5, a bare slope on 2 and nothing over the cornice on 8 (a ridge behind a belt cornice is not a dormer). */
 /** Round 12 (lane D, Centrum round 6's two rules on the belt): the measured roof storey now stands only where the photo
  *  crown reader sees a roof in view (photoRoof: mansard or pitched eaves at PHOTO_ROOF_MIN), which answers the 160-front
  *  objection above; a gable over a photo storey count stands its foot at BELT_GABLE_FOOT_PITCH_M a storey. */
-export const BELT_LOOK: LookDistrict = { id: 'belt', canals: BELT_CANALS, pitchM: PITCH_M, foreignDonor: 0, flatTopNoGable: true, measuredRoofStorey: true, roofStoreyNeedsPhoto: true, gableFootPitchM: BELT_GABLE_FOOT_PITCH_M, gableFootSouterrainShare: BELT_GABLE_FOOT_SOUTERRAIN_SHARE };
+export const BELT_LOOK: LookDistrict = { id: 'belt', canals: BELT_CANALS, pitchM: PITCH_M, foreignDonor: 0, flatTopNoGable: true, measuredRoofStorey: true, roofStoreyNeedsPhoto: true, gableFootPitchM: BELT_GABLE_FOOT_PITCH_M, gableFootSouterrainShare: BELT_GABLE_FOOT_SOUTERRAIN_SHARE, roofStoreyCapPitchM: BELT_ROOF_STOREY_CAP_PITCH_M };
 /** A warehouse's floor pitch (m): pakhuis floors are low (2.4-3.0 m in the belt's read warehouses), so the eaves hold more storeys. */
 export const WAREHOUSE_PITCH_M = 2.7;
 /** Gap sentences naming a house's own ornament, which a donor does not lend: balconies, porches, aedicules, rustication,
