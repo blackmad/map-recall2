@@ -15,7 +15,7 @@
 /** Default on since 2026-11-15 (round n); `?retailGround=0` / RETAIL_GROUND=0 turn it off. */
 import type { GoodsKind } from './retailGoods.js';
 import type { TypeFace } from './retailTypeFaces.js';
-import { retailRealOn } from './retailPages.js';
+import { retailRealAllOn, retailRealOn } from './retailPages.js';
 
 export const RETAIL_GROUND_DEFAULT = true;
 export function retailGroundEnabled(search?: string | null, env?: string | null): boolean {
@@ -304,9 +304,24 @@ export const TEMPLATE_REAL: Record<RetailTemplate, Pick<TemplateLook, 'goods' | 
   telecom: { goods: 'phones' }, cosmetics: { goods: 'cosmetics' }, liquor: { goods: 'liquor' }, variety: { goods: 'aisles' },
   tattoo: { goods: 'tattoo', face: 'serif' }, snackbar: { goods: 'frites', face: 'condensed' },
 };
+/**
+ * The templates whose retail-real look won its blind photo A/B on held-out fronts (lane retail-real, 2026-11-16: r1 37
+ * fronts, r2 38; wins-losses-ties real vs round n). Every other template keeps round n's look under retailReal, and a
+ * real-only template (CHAIN_TYPE_TEMPLATES, tattoo, snackbar) not listed is not drawn. `?retailRealAll=1` lifts this for
+ * candidate frames.
+ */
+export const REAL_ACCEPTED: ReadonlySet<RetailTemplate> = new Set<RetailTemplate>([
+  'redLight', // 3-0-3, and lane R's part (2-0 in its own review)
+  'brownBar', // 5-0-2 with Hendrix (feedback 7be6c55a) a win
+  'coffeeshop', 'souvenir', 'cheese', 'smartshop', 'tobacco', 'doner', 'bakery', 'books', 'phone', 'gelato', // each a net win, no loss
+  'snackbar', // 0-2-0 with the red board, 2-0-1 with the dark one
+  'tattoo', // 2-1-2
+  'shoes', 'supermarket', 'clothes', 'cafe', 'chemist', 'cosmetics', // chain types, each a net win
+]);
+export const realAccepted = (t: string): boolean => retailRealAllOn() || REAL_ACCEPTED.has(t as RetailTemplate);
 const LOOKS_REAL = Object.fromEntries(Object.entries(LOOKS_N).map(([k, v]) => [k, { ...v, ...TEMPLATE_REAL[k as RetailTemplate] }])) as Record<RetailTemplate, TemplateLook>;
 /** The templates' looks: with retailReal (retailPages.ts) the goods and faces are added; `?retailReal=0` is round n's. */
-export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = new Proxy(LOOKS_N, { get: (_, k: string) => (retailRealOn() ? LOOKS_REAL : LOOKS_N)[k as RetailTemplate] });
+export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = new Proxy(LOOKS_N, { get: (_, k: string) => (retailRealOn() && realAccepted(k) ? LOOKS_REAL : LOOKS_N)[k as RetailTemplate] });
 
 export const TRADE_WORDS = /^(BAKKERIJ|BAKKER|WARME|BANKETBAKKERIJ|KEURSLAGERIJ|SLAGERIJ|SLAGER|GROENTE|FRUIT|GROENTEN|RESTAURANT|SNACKBAR|SIGARENMAGAZIJN|TABAK|KAAS|KAASHANDEL)$/;
 /** A name's words with trade words dropped when the business's own name remains; the trade alone otherwise. */

@@ -76,3 +76,16 @@ test('De Wallen audit (lane R, 394d2f52b): 27 measured window fronts staged with
     assert.equal(f.properties.shopTemplate[0], 'redLight'); assert.deepEqual(f.properties.shopTemplate[5], k[1][5]);
   } finally { setShopTemplates(null); }
 });
+
+test('acceptance: only blind winners take the real look; ?retailRealAll=1 lifts it for candidate frames', async () => {
+  const { REAL_ACCEPTED } = await import('./retailTemplates.js');
+  const gg = globalThis as { __canalRecallRetailReal?: boolean; __canalRecallRetailRealAll?: boolean };
+  gg.__canalRecallRetailReal = true;
+  try {
+    assert.ok(REAL_ACCEPTED.has('redLight') && REAL_ACCEPTED.has('brownBar') && !REAL_ACCEPTED.has('butcher'));
+    assert.equal(TEMPLATE_LOOKS.cheese.goods, 'cheese');
+    assert.equal(TEMPLATE_LOOKS.butcher.goods, undefined); assert.equal(TEMPLATE_LOOKS.butcher.face, undefined);
+    gg.__canalRecallRetailRealAll = true;
+    assert.equal(TEMPLATE_LOOKS.florist.goods, 'flowers');
+  } finally { delete gg.__canalRecallRetailReal; delete gg.__canalRecallRetailRealAll; }
+});

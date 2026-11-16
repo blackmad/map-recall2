@@ -35,3 +35,12 @@ export const CHAIN_LOGO_BASE = TYPE_BASE + TYPE_FACES.length;
 export function retailPageCount(real = retailRealOn()): number {
   return real ? CHAIN_LOGO_BASE + CHAIN_LOGO_PAGES : 2;
 }
+
+let cachedAll: boolean | undefined;
+/** `?retailRealAll=1` (RETAIL_REAL_ALL=1): every template takes its retail-real look, accepted or not (candidate frames for
+ *  the blind A/B). Off by default: only REAL_ACCEPTED templates (retailTemplates.ts) do. */
+export function retailRealAllOn(): boolean {
+  const g = globalThis as { __canalRecallRetailRealAll?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  if (typeof g.__canalRecallRetailRealAll === 'boolean') return g.__canalRecallRetailRealAll;
+  return (cachedAll ??= /[?&]retailRealAll=1\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_REAL_ALL === '1');
+}
