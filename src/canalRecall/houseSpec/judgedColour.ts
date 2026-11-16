@@ -54,7 +54,10 @@ export type JudgedTone = { L: number; C: number; h: number; dL: number; dC: numb
 export const JUDGED_PALETTE: Record<JudgedFamily, JudgedTone> = {
   'red-brown-brick':    { L: 0.45, C: 0.075, h: 36, dL: 0.025, dC: 0.012, dh: 4, maxL: 0.48, wallFamily: 'red-brown', pale: false, label: 'red-brown brick' },
   'brown-brick':        { L: 0.47, C: 0.038, h: 50, dL: 0.02, dC: 0.008, dh: 5, maxL: 0.49, wallFamily: 'brown', pale: false, label: 'mid (grey-)brown brick' },
-  'purple-brown-brick': { L: 0.385, C: 0.045, h: 28, dL: 0.02, dC: 0.008, dh: 5, maxL: 0.43, wallFamily: 'brown', pale: false, label: 'dark purple-brown brick' },
+  // Centrum round 7: was L .385 C .045 h 28, redder than red-brown (h 36) and judged "red-brown" beside the near-black
+  // De Weteringschans Prinsengracht 168251-179166. Measured on the photo walls of confident reads (cut wallHex, n 20 / 61 /
+  // 392): purple-brown sits at red-brown's hue (43 vs 44) with brown's chroma (.012 vs .014); drawn darker than both, its chroma brown's (.038-.04, clear of dark-grey's).
+  'purple-brown-brick': { L: 0.37, C: 0.04, h: 40, dL: 0.02, dC: 0.008, dh: 5, maxL: 0.42, wallFamily: 'brown', pale: false, label: 'dark purple-brown brick' },
   'orange-red-brick':   { L: 0.47, C: 0.105, h: 42, dL: 0.015, dC: 0.012, dh: 3, maxL: 0.485, wallFamily: 'orange', pale: false, label: 'orange-red brick' },
   'buff-brick':         { L: 0.70, C: 0.07, h: 78, dL: 0.025, dC: 0.01, dh: 4, maxL: 0.75, wallFamily: 'buff', pale: true, label: 'yellow / buff brick' },
   'painted-white':      { L: 0.905, C: 0.01, h: 90, dL: 0.012, dC: 0.004, dh: 6, maxL: 0.92, wallFamily: 'white', pale: true, label: 'painted white' },

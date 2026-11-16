@@ -111,6 +111,8 @@ export interface LookDistrict {
   /** Centrum round 6: a gable over a photo storey count stands its foot at this pitch (m), measured per district (the p25 of
    *  AHN cornice tops over photo storeys); unset (the belt) keeps PHOTO_FOOT_PITCH_M under the AHN apex. */
   gableFootPitchM?: number;
+  /** The share of a storey a souterrain adds under a gable's foot (unset: SOUTERRAIN_SHARE.souterrain, 0.58). */
+  gableFootSouterrainShare?: number;
   /** roofSignals.ts: no gable (stated or a donor's) on a measured flat top. */
   flatTopNoGable?: boolean;
   /** roofSignals.ts: a cornice front whose AHN band climbs a roof slope stands at the band's p50. */

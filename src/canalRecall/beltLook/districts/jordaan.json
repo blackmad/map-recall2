@@ -218,5 +218,6 @@
   "prior": "own",
   "measure": false
  },
- "roofStoreyNeedsPhoto": true
+ "roofStoreyNeedsPhoto": true,
+ "gableFootSouterrainShare": 0
 }

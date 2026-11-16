@@ -13,7 +13,9 @@
    "souterrain": true,
    "cc": 0.85,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6
   },
   "0363100012165040": {
    "finish": "brick",
@@ -26,7 +28,9 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6
   },
   "0363100012165041": {
    "finish": "paint",
@@ -39,7 +43,9 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.7
   },
   "0363100012165433": {
    "finish": "brick",
@@ -78,7 +84,9 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.7
   },
   "0363100012167561": {
    "finish": "brick",
@@ -89,9 +97,21 @@
    "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.55,
+   "cc": 0.7,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012167608": {
    "finish": "brick",
@@ -104,7 +124,9 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "nv",
+   "rc": 0.5
   },
   "0363100012167611": {
    "finish": "brick",
@@ -128,35 +150,73 @@
    "cornice": "simple",
    "full": 2,
    "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.7,
-   "rule": "below the bar"
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "block-course",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.8,
+    "full": 2,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012167614": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "point",
+   "crown": "neck",
    "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012168037": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.55,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "not-visible",
-   "cornice": "not-visible",
+   "crown": "cornice",
+   "cornice": "frieze",
    "full": 4,
    "souterrain": false,
-   "cc": 0.5,
+   "cc": 0.7,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "block-course",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "dormers-slate",
+    "rc": 0.6
+   }
   },
   "0363100012168038": {
    "finish": "brick",
@@ -169,7 +229,9 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5
   },
   "0363100012168039": {
    "finish": "brick",
@@ -182,7 +244,9 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "nv",
+   "rc": 0.5
   },
   "0363100012168040": {
    "finish": "brick",
@@ -195,7 +259,9 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5
   },
   "0363100012168041": {
    "finish": "brick",
@@ -258,9 +324,21 @@
    "cornice": "none",
    "full": 4,
    "souterrain": true,
-   "cc": 0.6,
+   "cc": 0.8,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012168097": {
    "finish": "brick",
@@ -271,9 +349,22 @@
    "cornice": "none",
    "full": 4,
    "souterrain": true,
-   "cc": 0.55,
+   "cc": 0.7,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012168098": {
    "finish": "brick",
@@ -299,7 +390,19 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.6,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012168102": {
    "finish": "brick",
@@ -338,7 +441,19 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "bands",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.6,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012168123": {
    "finish": "brick",
@@ -351,7 +466,9 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.85
   },
   "0363100012168124": {
    "finish": "unclear",
@@ -377,7 +494,9 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5
   },
   "0363100012168127": {
    "finish": "brick",
@@ -429,7 +548,9 @@
    "souterrain": true,
    "cc": 0.65,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.7
   },
   "0363100012168240": {
    "finish": "brick",
@@ -442,7 +563,9 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "nv",
+   "rc": 0.5
   },
   "0363100012168242": {
    "finish": "paint",
@@ -462,13 +585,26 @@
    "family": "brown-brick",
    "confidence": 0.5,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "spout",
+   "crown": "bell",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.5,
+   "cc": 0.75,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "bell",
+    "cc": 0.75,
+    "full": 2,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012168245": {
    "finish": "brick",
@@ -488,13 +624,26 @@
    "family": "dark-paint",
    "confidence": 0.8,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "bell",
-   "cornice": "simple",
+   "crown": "step",
+   "cornice": "none",
    "full": 4,
    "souterrain": true,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "step",
+    "cc": 0.65,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012168248": {
    "finish": "stucco",
@@ -543,9 +692,21 @@
    "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.65,
+   "cc": 0.7,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "bell",
+    "cc": 0.7,
+    "full": 5,
+    "sc": 0.5,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012168253": {
    "finish": "brick",
@@ -570,8 +731,20 @@
    "full": 2,
    "souterrain": false,
    "cc": 0.5,
-   "sc": 0.55,
-   "rule": "below the bar"
+   "sc": 0.75,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "arch-ring",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "flat",
+    "cc": 0.6,
+    "full": 2,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012168280": {
    "finish": "stucco",
@@ -584,7 +757,9 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6
   },
   "0363100012168282": {
    "finish": "stucco",
@@ -597,7 +772,9 @@
    "souterrain": true,
    "cc": 0.65,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6
   },
   "0363100012168283": {
    "finish": "brick",
@@ -623,7 +800,9 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.65
   },
   "0363100012168318": {
    "finish": "brick",
@@ -636,7 +815,9 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5
   },
   "0363100012168487": {
    "finish": "brick",
@@ -675,7 +856,19 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.5,
+   "dress": "block-surround",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "dormers-slate",
+    "rc": 0.5
+   }
   },
   "0363100012168490": {
    "finish": "brick",
@@ -688,7 +881,9 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55
   },
   "0363100012168491": {
    "finish": "brick",
@@ -714,7 +909,19 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "dormers-slate",
+    "rc": 0.6
+   }
   },
   "0363100012168496": {
    "finish": "brick",
@@ -727,7 +934,9 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-tile",
+   "rc": 0.6
   },
   "0363100012168497": {
    "finish": "brick",
@@ -740,7 +949,9 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55
   },
   "0363100012168498": {
    "finish": "brick",
@@ -766,7 +977,9 @@
    "souterrain": null,
    "cc": 0.6,
    "sc": 0.5,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "pitched-tile",
+   "rc": 0.75
   },
   "0363100012168512": {
    "finish": "brick",
@@ -792,7 +1005,19 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "block-surround",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.55,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012168514": {
    "finish": "brick",
@@ -831,7 +1056,9 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "nv",
+   "rc": 0.5
   },
   "0363100012168517": {
    "finish": "brick",
@@ -844,7 +1071,9 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55
   },
   "0363100012168518": {
    "finish": "brick",
@@ -907,7 +1136,7 @@
    "cornice": "simple",
    "full": 4,
    "souterrain": true,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.75,
    "rule": "below the bar; second capture agrees",
    "second": {
@@ -921,6 +1150,18 @@
     "souterrain": true,
     "cc": 0.6,
     "sc": 0.7
+   },
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.7,
+    "full": 5,
+    "sc": 0.6,
+    "roof": "dormers-slate",
+    "rc": 0.6
    }
   },
   "0363100012168523": {
@@ -934,7 +1175,19 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "block-surround",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012168524": {
    "finish": "brick",
@@ -947,7 +1200,9 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.75
   },
   "0363100012168557": {
    "finish": "brick",
@@ -960,7 +1215,9 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "nv",
+   "rc": 0.5
   },
   "0363100012168562": {
    "finish": "brick",
@@ -973,7 +1230,9 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6
   },
   "0363100012168574": {
    "finish": "brick",
@@ -1011,7 +1270,9 @@
     "souterrain": false,
     "cc": 0.6,
     "sc": 0.6
-   }
+   },
+   "roof": "dormers-slate",
+   "rc": 0.55
   },
   "0363100012168686": {
    "finish": "brick",
@@ -1024,7 +1285,9 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.5
   },
   "0363100012168737": {
    "finish": "brick",
@@ -1037,7 +1300,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.6,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.6
+   }
   },
   "0363100012168740": {
    "finish": "brick",
@@ -1063,7 +1338,9 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.8
   },
   "0363100012168744": {
    "finish": "brick",
@@ -1076,7 +1353,19 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "stone-lintel",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.7,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "dormers-slate",
+    "rc": 0.55
+   }
   },
   "0363100012168746": {
    "finish": "paint",
@@ -1102,7 +1391,19 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "block-course",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.55,
+    "roof": "dormers-slate",
+    "rc": 0.6
+   }
   },
   "0363100012169042": {
    "finish": "brick",
@@ -1128,7 +1429,9 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6
   },
   "0363100012169078": {
    "finish": "brick",
@@ -1141,7 +1444,9 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.7
   },
   "0363100012169151": {
    "finish": "brick",
@@ -1154,7 +1459,9 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.7
   },
   "0363100012169152": {
    "finish": "brick",
@@ -1167,7 +1474,19 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-slate",
+   "rc": 0.6,
+   "dress": "bands",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.8,
+    "roof": "pitched-slate",
+    "rc": 0.6
+   }
   },
   "0363100012169470": {
    "finish": "brick",
@@ -1176,11 +1495,23 @@
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
    "cornice": "heavy",
-   "full": null,
-   "souterrain": null,
+   "full": 4,
+   "souterrain": true,
    "cc": 0.6,
-   "sc": 0.5,
-   "rule": "below the bar"
+   "sc": 0.7,
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.65,
+   "dress": "block-surround",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.65,
+    "full": 4,
+    "sc": 0.7,
+    "roof": "dormers-slate",
+    "rc": 0.65
+   }
   },
   "0363100012169474": {
    "finish": "brick",
@@ -1206,7 +1537,9 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.75
   },
   "0363100012169477": {
    "finish": "brick",
@@ -1232,7 +1565,9 @@
    "souterrain": null,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6
   },
   "0363100012169479": {
    "finish": "brick",
@@ -1245,7 +1580,9 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.85
   },
   "0363100012169497": {
    "finish": "brick",
@@ -1271,7 +1608,9 @@
    "souterrain": true,
    "cc": 0.65,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.6
   },
   "0363100012169545": {
    "finish": "paint",
@@ -1284,7 +1623,9 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.65
   },
   "0363100012169547": {
    "finish": "brick",
@@ -1295,9 +1636,21 @@
    "cornice": "none",
    "full": 5,
    "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.55,
-   "rule": "v2"
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.8,
+    "full": 5,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012169553": {
    "finish": "stucco",
@@ -1310,7 +1663,9 @@
    "souterrain": null,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6
   },
   "0363100012169556": {
    "finish": "brick",
@@ -1323,7 +1678,9 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.5
   },
   "0363100012169557": {
    "finish": "brick",
@@ -1336,7 +1693,9 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55
   },
   "0363100012169559": {
    "finish": "brick",
@@ -1349,7 +1708,9 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.55
   },
   "0363100012169561": {
    "finish": "brick",
@@ -1362,7 +1723,9 @@
    "souterrain": null,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.55
   },
   "0363100012169562": {
    "finish": "brick",
@@ -1375,7 +1738,9 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.85
   },
   "0363100012169563": {
    "finish": "brick",
@@ -1388,7 +1753,9 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.8
   },
   "0363100012169566": {
    "finish": "brick",
@@ -1399,9 +1766,21 @@
    "cornice": "none",
    "full": 5,
    "souterrain": false,
-   "cc": 0.65,
+   "cc": 0.75,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.75,
+    "full": 5,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012169570": {
    "finish": "brick",
@@ -1425,9 +1804,21 @@
    "cornice": "none",
    "full": 5,
    "souterrain": false,
-   "cc": 0.55,
+   "cc": 0.75,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.75,
+    "full": 5,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012169634": {
    "finish": "brick",
@@ -1440,7 +1831,9 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.7
   },
   "0363100012169638": {
    "finish": "brick",
@@ -1453,7 +1846,19 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "flat",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012169640": {
    "finish": "brick",
@@ -1466,20 +1871,35 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6
   },
   "0363100012169641": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "bell",
+   "crown": "neck",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.55,
-   "sc": 0.7,
-   "rule": "v2"
+   "cc": 0.7,
+   "sc": 0.75,
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.65,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012169643": {
    "finish": "brick",
@@ -1526,12 +1946,24 @@
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
-   "cornice": "simple",
+   "cornice": "heavy",
    "full": 4,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.8,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.75,
+   "dress": "block-surround",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.65,
+    "roof": "dormers-slate",
+    "rc": 0.75
+   }
   },
   "0363100012169655": {
    "finish": "unclear",
@@ -1544,7 +1976,9 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5
   },
   "0363100012169854": {
    "finish": "brick",
@@ -1582,7 +2016,9 @@
     "souterrain": true,
     "cc": 0.55,
     "sc": 0.6
-   }
+   },
+   "roof": "dormers-slate",
+   "rc": 0.55
   },
   "0363100012169856": {
    "finish": "brick",
@@ -1608,7 +2044,19 @@
    "souterrain": true,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.65,
+   "dress": "bands",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "mansard",
+    "cc": 0.65,
+    "full": 4,
+    "sc": 0.65,
+    "roof": "mansard",
+    "rc": 0.65
+   }
   },
   "0363100012169862": {
    "finish": "brick",
@@ -1634,7 +2082,9 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.5
   },
   "0363100012169864": {
    "finish": "brick",
@@ -1647,7 +2097,9 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.7
   },
   "0363100012169870": {
    "finish": "brick",
@@ -1660,7 +2112,9 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.8
   },
   "0363100012169873": {
    "finish": "brick",
@@ -1707,38 +2161,76 @@
    "confidence": 0.55,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
-   "cornice": "simple",
+   "cornice": "heavy",
    "full": 3,
-   "souterrain": true,
-   "cc": 0.55,
-   "sc": 0.55,
-   "rule": "below the bar"
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "dormers-slate",
+    "rc": 0.6
+   }
   },
   "0363100012170879": {
    "finish": "paint",
    "family": "other-paint",
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "not-visible",
-   "cornice": "not-visible",
-   "full": null,
-   "souterrain": null,
-   "cc": 0.6,
-   "sc": 0.5,
-   "rule": "below the bar"
+   "crown": "cornice",
+   "cornice": "simple",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.75,
+   "sc": 0.7,
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "dormers-tile",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.75,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "dormers-tile",
+    "rc": 0.55
+   }
   },
   "0363100012170884": {
    "finish": "paint",
    "family": "dark-paint",
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "point",
-   "cornice": "simple",
+   "crown": "neck",
+   "cornice": "frieze",
    "full": 3,
    "souterrain": false,
-   "cc": 0.55,
-   "sc": 0.65,
-   "rule": "below the bar"
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012170885": {
    "finish": "brick",
@@ -1751,7 +2243,9 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-tile",
+   "rc": 0.7
   },
   "0363100012170886": {
    "finish": "paint",
@@ -1777,7 +2271,19 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "flat",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012170889": {
    "finish": "brick",
@@ -1790,7 +2296,9 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.5
   },
   "0363100012170892": {
    "finish": "brick",
@@ -1803,7 +2311,9 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.7
   },
   "0363100012170893": {
    "finish": "brick",
@@ -1816,7 +2326,9 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.8
   },
   "0363100012170895": {
    "finish": "brick",
@@ -1840,9 +2352,21 @@
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.65,
-   "sc": 0.65,
-   "rule": "below the bar"
+   "cc": 0.8,
+   "sc": 0.7,
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "dormers-slate",
+    "rc": 0.6
+   }
   },
   "0363100012170924": {
    "finish": "paint",
@@ -1868,7 +2392,9 @@
    "souterrain": null,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.6
   },
   "0363100012170926": {
    "finish": "paint",
@@ -1915,12 +2441,25 @@
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
-   "cornice": "none",
+   "cornice": "simple",
    "full": 3,
    "souterrain": true,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.65,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012171005": {
    "finish": "brick",
@@ -1933,7 +2472,19 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.55,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "dormers-slate",
+    "rc": 0.5
+   }
   },
   "0363100012171006": {
    "finish": "brick",
@@ -1972,7 +2523,9 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5
   },
   "0363100012171190": {
    "finish": "brick",
@@ -1985,7 +2538,9 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.65
   },
   "0363100012171191": {
    "finish": "brick",
@@ -2018,13 +2573,26 @@
    "family": "brown-brick",
    "confidence": 0.65,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "cornice",
-   "cornice": "attic-frieze",
+   "crown": "flat",
+   "cornice": "simple",
    "full": 3,
-   "souterrain": true,
-   "cc": 0.55,
-   "sc": 0.55,
-   "rule": "below the bar"
+   "souterrain": false,
+   "cc": 0.7,
+   "sc": 0.7,
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "bands",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "flat",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012171194": {
    "finish": "brick",
@@ -2037,7 +2605,9 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.65
   },
   "0363100012171195": {
    "finish": "brick",
@@ -2048,9 +2618,21 @@
    "cornice": "simple",
    "full": 4,
    "souterrain": null,
-   "cc": 0.65,
+   "cc": 0.75,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "mansard",
+    "cc": 0.75,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "mansard",
+    "rc": 0.75
+   }
   },
   "0363100012171196": {
    "finish": "brick",
@@ -2061,9 +2643,21 @@
    "cornice": "simple",
    "full": 3,
    "souterrain": null,
-   "cc": 0.6,
+   "cc": 0.75,
    "sc": 0.55,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "bands",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "mansard",
+    "cc": 0.75,
+    "full": 3,
+    "sc": 0.55,
+    "roof": "mansard",
+    "rc": 0.75
+   }
   },
   "0363100012171197": {
    "finish": "brick",
@@ -2089,7 +2683,9 @@
    "souterrain": null,
    "cc": 0.6,
    "sc": 0.55,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "pitched-slate",
+   "rc": 0.65
   },
   "0363100012171221": {
    "finish": "brick",
@@ -2102,7 +2698,19 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.55,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012171222": {
    "finish": "brick",
@@ -2141,7 +2749,9 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55
   },
   "0363100012171227": {
    "finish": "brick",
@@ -2180,7 +2790,19 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "dormers-slate",
+    "rc": 0.6
+   }
   },
   "0363100012171230": {
    "finish": "paint",
@@ -2193,7 +2815,9 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.7
   },
   "0363100012171231": {
    "finish": "brick",
@@ -2206,7 +2830,9 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.6
   },
   "0363100012171232": {
    "finish": "brick",
@@ -2219,7 +2845,9 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.7
   },
   "0363100012171234": {
    "finish": "unclear",
@@ -2232,7 +2860,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "bands",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.6,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012171284": {
    "finish": "paint",
@@ -2245,7 +2885,9 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.8
   },
   "0363100012171465": {
    "finish": "brick",
@@ -2258,7 +2900,9 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.75
   },
   "0363100012171466": {
    "finish": "brick",
@@ -2271,7 +2915,9 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6
   },
   "0363100012171467": {
    "finish": "brick",
@@ -2284,7 +2930,9 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.75
   },
   "0363100012171469": {
    "finish": "brick",
@@ -2297,7 +2945,11 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012171470": {
    "finish": "brick",
@@ -2321,9 +2973,21 @@
    "cornice": "bracketed",
    "full": 4,
    "souterrain": true,
-   "cc": 0.8,
+   "cc": 0.85,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "keystone",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.85,
+    "full": 4,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012171528": {
    "finish": "brick",
@@ -2336,7 +3000,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.65
   },
   "0363100012171530": {
    "finish": "brick",
@@ -2349,7 +3017,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.6,
+    "full": null,
+    "sc": 0.5,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012171531": {
    "finish": "brick",
@@ -2362,7 +3042,11 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.65,
+   "dress": "block-course",
+   "dc": 0.7
   },
   "0363100012171532": {
    "finish": "brick",
@@ -2440,7 +3124,11 @@
    "souterrain": null,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.55
   },
   "0363100012171718": {
    "finish": "paint",
@@ -2453,7 +3141,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012171719": {
    "finish": "brick",
@@ -2466,7 +3158,11 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012171720": {
    "finish": "paint",
@@ -2479,7 +3175,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012171721": {
    "finish": "brick",
@@ -2499,13 +3199,26 @@
    "family": "brown-brick",
    "confidence": 0.65,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "raised-neck",
+   "crown": "neck",
    "cornice": "simple",
    "full": 4,
    "souterrain": null,
-   "cc": 0.55,
+   "cc": 0.7,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.55,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.5,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012171723": {
    "finish": "brick",
@@ -2531,20 +3244,37 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-slate",
+   "rc": 0.7,
+   "dress": "block-surround",
+   "dc": 0.55
   },
   "0363100012171726": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "neck",
-   "cornice": "none",
-   "full": 4,
+   "crown": "point",
+   "cornice": "simple",
+   "full": 3,
    "souterrain": false,
-   "cc": 0.5,
-   "sc": 0.5,
-   "rule": "below the bar"
+   "cc": 0.8,
+   "sc": 0.8,
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "arch-ring",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.8,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012171730": {
    "finish": "brick",
@@ -2570,7 +3300,11 @@
    "souterrain": null,
    "cc": 0.7,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.6,
+   "dress": "keystone",
+   "dc": 0.6
   },
   "0363100012171770": {
    "finish": "brick",
@@ -2583,7 +3317,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012171771": {
    "finish": "paint",
@@ -2609,7 +3347,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012171774": {
    "finish": "paint",
@@ -2622,7 +3364,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012171775": {
    "finish": "brick",
@@ -2630,12 +3376,24 @@
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
-   "cornice": "none",
+   "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.55,
+   "cc": 0.8,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012171776": {
    "finish": "unclear",
@@ -2661,7 +3419,19 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.55,
+    "roof": "dormers-slate",
+    "rc": 0.55
+   }
   },
   "0363100012171778": {
    "finish": "unclear",
@@ -2687,7 +3457,11 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012171786": {
    "finish": "brick",
@@ -2738,20 +3512,37 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.65,
+   "dress": "arch-ring",
+   "dc": 0.55
   },
   "0363100012171825": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "bell",
-   "cornice": "none",
+   "crown": "neck",
+   "cornice": "simple",
    "full": 3,
    "souterrain": true,
-   "cc": 0.55,
+   "cc": 0.8,
    "sc": 0.5,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012171862": {
    "finish": "brick",
@@ -2764,7 +3555,11 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012171864": {
    "finish": "brick",
@@ -2775,9 +3570,22 @@
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.55,
+   "cc": 0.7,
    "sc": 0.85,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "bands",
+   "dc": 0.55,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.65,
+    "full": 3,
+    "sc": 0.8,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012171889": {
    "finish": "brick",
@@ -2790,7 +3598,19 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "bands",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "flat",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012171927": {
    "finish": "brick",
@@ -2816,7 +3636,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012171975": {
    "finish": "brick",
@@ -2842,7 +3666,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.85,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012171977": {
    "finish": "brick",
@@ -2855,7 +3683,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012171979": {
    "finish": "brick",
@@ -2881,7 +3713,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 2,
+    "sc": 0.6,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012171982": {
    "finish": "brick",
@@ -2894,7 +3738,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "arch-ring",
+   "dc": 0.65
   },
   "0363100012171983": {
    "finish": "brick",
@@ -2907,7 +3755,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "block-course",
+   "dc": 0.7
   },
   "0363100012171985": {
    "finish": "brick",
@@ -2920,7 +3772,11 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012171986": {
    "finish": "paint",
@@ -2945,7 +3801,11 @@
     "souterrain": true,
     "cc": 0.7,
     "sc": 0.65
-   }
+   },
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.5
   },
   "0363100012172040": {
    "finish": "brick",
@@ -2958,7 +3818,11 @@
    "souterrain": true,
    "cc": 0.65,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012172129": {
    "finish": "brick",
@@ -2997,7 +3861,19 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "bands",
+   "dc": 0.85,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "dormers-slate",
+    "rc": 0.55
+   }
   },
   "0363100012172134": {
    "finish": "brick",
@@ -3035,7 +3911,11 @@
     "souterrain": true,
     "cc": 0.55,
     "sc": 0.6
-   }
+   },
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012172139": {
    "finish": "brick",
@@ -3113,7 +3993,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012172189": {
    "finish": "brick",
@@ -3139,7 +4023,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.6,
+   "dress": "block-surround",
+   "dc": 0.6
   },
   "0363100012172191": {
    "finish": "brick",
@@ -3178,7 +4066,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.8,
+   "dress": "arch-ring",
+   "dc": 0.6
   },
   "0363100012172194": {
    "finish": "unclear",
@@ -3191,7 +4083,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012172195": {
    "finish": "brick",
@@ -3202,9 +4098,21 @@
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
-   "cc": 0.65,
+   "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.75,
+    "roof": "dormers-slate",
+    "rc": 0.5
+   }
   },
   "0363100012172196": {
    "finish": "brick",
@@ -3217,7 +4125,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.65
   },
   "0363100012172200": {
    "finish": "brick",
@@ -3282,7 +4194,19 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.55,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.5,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012172248": {
    "finish": "brick",
@@ -3290,12 +4214,24 @@
    "confidence": 0.65,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
-   "cornice": "none",
+   "cornice": "simple",
    "full": 3,
    "souterrain": true,
-   "cc": 0.55,
+   "cc": 0.8,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012172249": {
    "finish": "brick",
@@ -3308,7 +4244,19 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "flat",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "dormers-slate",
+    "rc": 0.5
+   }
   },
   "0363100012172250": {
    "finish": "brick",
@@ -3321,7 +4269,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012172252": {
    "finish": "brick",
@@ -3332,22 +4284,47 @@
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.55,
-   "sc": 0.65,
-   "rule": "below the bar"
+   "cc": 0.7,
+   "sc": 0.7,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "spout",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012172255": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "pitched-eaves",
+   "crown": "cornice",
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.65,
-   "sc": 0.65,
-   "rule": "v2"
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "v2",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "dormers-slate",
+    "rc": 0.55
+   }
   },
   "0363100012172256": {
    "finish": "brick",
@@ -3355,12 +4332,24 @@
    "confidence": 0.75,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
-   "cornice": "none",
+   "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.55,
+   "cc": 0.8,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012172257": {
    "finish": "brick",
@@ -3373,7 +4362,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012172258": {
    "finish": "brick",
@@ -3425,7 +4418,11 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012172314": {
    "finish": "brick",
@@ -3503,7 +4500,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012172327": {
    "finish": "brick",
@@ -3529,7 +4530,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012172331": {
    "finish": "brick",
@@ -3555,7 +4560,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.7,
+   "dress": "block-course",
+   "dc": 0.6
   },
   "0363100012172376": {
    "finish": "paint",
@@ -3568,7 +4577,19 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.55,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012172377": {
    "finish": "brick",
@@ -3581,7 +4602,19 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012172381": {
    "finish": "brick",
@@ -3592,9 +4625,21 @@
    "cornice": "none",
    "full": 4,
    "souterrain": true,
-   "cc": 0.55,
+   "cc": 0.8,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.5,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012172383": {
    "finish": "brick",
@@ -3605,9 +4650,21 @@
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.65,
+   "cc": 0.7,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.7,
+    "full": 2,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012172388": {
    "finish": "brick",
@@ -3633,7 +4690,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012172439": {
    "finish": "brick",
@@ -3657,9 +4718,21 @@
    "cornice": "heavy",
    "full": 2,
    "souterrain": true,
-   "cc": 0.65,
-   "sc": 0.75,
-   "rule": "below the bar"
+   "cc": 0.85,
+   "sc": 0.8,
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.85,
+   "dress": "block-surround",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "mansard",
+    "cc": 0.85,
+    "full": 2,
+    "sc": 0.8,
+    "roof": "mansard",
+    "rc": 0.85
+   }
   },
   "0363100012172714": {
    "finish": "paint",
@@ -3736,7 +4809,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012172720": {
    "finish": "brick",
@@ -3749,7 +4826,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.65,
+   "dress": "none",
+   "dc": 0.5
   },
   "0363100012172721": {
    "finish": "brick",
@@ -3930,7 +5011,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012172825": {
    "finish": "brick",
@@ -3993,9 +5078,21 @@
    "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.55,
+   "cc": 0.7,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.5,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012172908": {
    "finish": "brick",
@@ -4021,7 +5118,11 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012172911": {
    "finish": "brick",
@@ -4042,25 +5143,50 @@
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
-   "cornice": "none",
+   "cornice": "simple",
    "full": 2,
    "souterrain": null,
-   "cc": 0.5,
+   "cc": 0.8,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012172913": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.55,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "bell",
-   "cornice": "none",
+   "crown": "neck",
+   "cornice": "simple",
    "full": null,
    "souterrain": null,
-   "cc": 0.5,
+   "cc": 0.7,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012172915": {
    "finish": "paint",
@@ -4073,7 +5199,11 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.85
   },
   "0363100012172916": {
    "finish": "brick",
@@ -4093,12 +5223,12 @@
    "family": "cream-paint",
    "confidence": 0.8,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "mansard",
+   "crown": "cornice",
    "cornice": "bracketed",
    "full": 3,
-   "souterrain": null,
-   "cc": 0.6,
-   "sc": 0.7,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.75,
    "rule": "below the bar; second capture agrees",
    "second": {
     "finish": "stucco",
@@ -4111,6 +5241,19 @@
     "souterrain": true,
     "cc": 0.75,
     "sc": 0.75
+   },
+   "crownRule": "the re-read is the confident crown",
+   "roof": "dormers-slate",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "dormers-slate",
+    "rc": 0.7
    }
   },
   "0363100012173453": {
@@ -4124,7 +5267,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.65,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "step",
+    "cc": 0.65,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.65
+   }
   },
   "0363100012173454": {
    "finish": "brick",
@@ -4137,7 +5292,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.6,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012173458": {
    "finish": "brick",
@@ -4150,7 +5317,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.5
   },
   "0363100012173459": {
    "finish": "stucco",
@@ -4266,7 +5437,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "bands",
+   "dc": 0.75
   },
   "0363100012173770": {
    "finish": "brick",
@@ -4279,7 +5454,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.85,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012173771": {
    "finish": "paint",
@@ -4292,7 +5471,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012173772": {
    "finish": "brick",
@@ -4305,7 +5488,19 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.6,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012173775": {
    "finish": "stucco",
@@ -4318,7 +5513,11 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012173776": {
    "finish": "unclear",
@@ -4331,7 +5530,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012173778": {
    "finish": "paint",
@@ -4382,7 +5585,11 @@
     "souterrain": false,
     "cc": 0.7,
     "sc": 0.8
-   }
+   },
+   "roof": "dormers-slate",
+   "rc": 0.65,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012174385": {
    "finish": "paint",
@@ -4395,7 +5602,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012174392": {
    "finish": "paint",
@@ -4408,7 +5619,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012174394": {
    "finish": "unclear",
@@ -4421,7 +5636,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012174471": {
    "finish": "unclear",
@@ -4442,12 +5661,24 @@
    "confidence": 0.65,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
-   "cornice": "simple",
+   "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.85,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.85,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012174477": {
    "finish": "brick",
@@ -4458,9 +5689,22 @@
    "cornice": "simple",
    "full": 4,
    "souterrain": null,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "bell",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.5,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012174484": {
    "finish": "paint",
@@ -4473,7 +5717,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.55,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "pitched-slate",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.65
   },
   "0363100012174486": {
    "finish": "brick",
@@ -4486,7 +5734,11 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012174487": {
    "finish": "brick",
@@ -4512,7 +5764,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012174570": {
    "finish": "brick",
@@ -4536,9 +5792,21 @@
    "cornice": "heavy",
    "full": 4,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012175056": {
    "finish": "brick",
@@ -4551,7 +5819,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.85,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.65,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012175058": {
    "finish": "brick",
@@ -4564,7 +5836,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "arch-ring",
+   "dc": 0.6
   },
   "0363100012175059": {
    "finish": "brick",
@@ -4577,7 +5853,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "arch-ring",
+   "dc": 0.6
   },
   "0363100012175060": {
    "finish": "brick",
@@ -4603,7 +5883,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012175063": {
    "finish": "brick",
@@ -4616,7 +5900,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "arch-ring",
+   "dc": 0.6
   },
   "0363100012175064": {
    "finish": "brick",
@@ -4629,7 +5917,19 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.75,
+   "dress": "bands",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.8,
+    "roof": "dormers-slate",
+    "rc": 0.75
+   }
   },
   "0363100012175066": {
    "finish": "brick",
@@ -4642,7 +5942,11 @@
    "souterrain": true,
    "cc": 0.65,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012175067": {
    "finish": "brick",
@@ -4655,7 +5959,11 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012175069": {
    "finish": "brick",
@@ -4668,7 +5976,11 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012175071": {
    "finish": "brick",
@@ -4681,7 +5993,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012175074": {
    "finish": "brick",
@@ -4741,12 +6057,24 @@
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
-   "cornice": "simple",
+   "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012175098": {
    "finish": "brick",
@@ -4759,7 +6087,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-tile",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012175099": {
    "finish": "brick",
@@ -4785,7 +6117,11 @@
    "souterrain": null,
    "cc": 0.6,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012175103": {
    "finish": "brick",
@@ -4811,7 +6147,11 @@
    "souterrain": null,
    "cc": 0.7,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012175106": {
    "finish": "brick",
@@ -4824,7 +6164,11 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012175475": {
    "finish": "brick",
@@ -4837,7 +6181,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.8,
+   "dress": "arch-ring",
+   "dc": 0.7
   },
   "0363100012175476": {
    "finish": "unclear",
@@ -4850,7 +6198,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012175477": {
    "finish": "brick",
@@ -4874,9 +6234,21 @@
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.6,
+   "cc": 0.75,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.75,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012175480": {
    "finish": "brick",
@@ -4902,7 +6274,11 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012175482": {
    "finish": "brick",
@@ -4915,7 +6291,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.65
   },
   "0363100012175483": {
    "finish": "unclear",
@@ -4928,7 +6308,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "pitched-eaves",
+    "cc": 0.6,
+    "full": null,
+    "sc": 0.5,
+    "roof": "pitched-slate",
+    "rc": 0.55
+   }
   },
   "0363100012175541": {
    "finish": "brick",
@@ -4939,9 +6331,21 @@
    "cornice": "none",
    "full": null,
    "souterrain": null,
-   "cc": 0.6,
+   "cc": 0.85,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "bell",
+    "cc": 0.85,
+    "full": 2,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012175542": {
    "finish": "stucco",
@@ -4954,7 +6358,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.9,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012175545": {
    "finish": "paint",
@@ -4967,7 +6375,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.9,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012175547": {
    "finish": "paint",
@@ -4980,7 +6392,11 @@
    "souterrain": false,
    "cc": 0.85,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.9,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012175548": {
    "finish": "paint",
@@ -5006,7 +6422,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012175720": {
    "finish": "brick",
@@ -5032,7 +6452,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012175722": {
    "finish": "brick",
@@ -5045,7 +6469,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012175723": {
    "finish": "brick",
@@ -5058,7 +6486,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012175724": {
    "finish": "brick",
@@ -5071,7 +6503,11 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012175725": {
    "finish": "brick",
@@ -5084,7 +6520,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.9,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012175794": {
    "finish": "brick",
@@ -5097,7 +6537,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.5
   },
   "0363100012175795": {
    "finish": "paint",
@@ -5110,7 +6554,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.5
   },
   "0363100012175796": {
    "finish": "brick",
@@ -5123,7 +6571,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.9,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012175797": {
    "finish": "brick",
@@ -5149,7 +6601,11 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012175832": {
    "finish": "brick",
@@ -5162,7 +6618,11 @@
    "souterrain": null,
    "cc": 0.65,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012175893": {
    "finish": "brick",
@@ -5175,7 +6635,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.55
   },
   "0363100012175896": {
    "finish": "brick",
@@ -5201,7 +6665,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012175901": {
    "finish": "brick",
@@ -5214,7 +6682,11 @@
    "souterrain": true,
    "cc": 0.65,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012175911": {
    "finish": "brick",
@@ -5253,7 +6725,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012175916": {
    "finish": "brick",
@@ -5266,7 +6742,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012175969": {
    "finish": "brick",
@@ -5279,7 +6759,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012175970": {
    "finish": "brick",
@@ -5292,7 +6776,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.55
   },
   "0363100012175971": {
    "finish": "brick",
@@ -5331,7 +6819,11 @@
    "souterrain": null,
    "cc": 0.7,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012175974": {
    "finish": "brick",
@@ -5370,7 +6862,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012176043": {
    "finish": "brick",
@@ -5383,7 +6879,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012176044": {
    "finish": "brick",
@@ -5396,7 +6896,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012176045": {
    "finish": "brick",
@@ -5409,7 +6913,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012176047": {
    "finish": "brick",
@@ -5422,7 +6930,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012176048": {
    "finish": "brick",
@@ -5435,7 +6947,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012176051": {
    "finish": "brick",
@@ -5500,7 +7016,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012176209": {
    "finish": "brick",
@@ -5526,7 +7046,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.75,
+   "dress": "arch-ring",
+   "dc": 0.6
   },
   "0363100012176213": {
    "finish": "brick",
@@ -5538,8 +7062,20 @@
    "full": 4,
    "souterrain": false,
    "cc": 0.8,
-   "sc": 0.75,
-   "rule": "below the bar"
+   "sc": 0.8,
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.65,
+   "dress": "arch-ring",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.8,
+    "roof": "dormers-slate",
+    "rc": 0.65
+   }
   },
   "0363100012176214": {
    "finish": "brick",
@@ -5552,7 +7088,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "pitched-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012176215": {
    "finish": "brick",
@@ -5578,7 +7118,11 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.65,
+   "dress": "block-surround",
+   "dc": 0.8
   },
   "0363100012176217": {
    "finish": "brick",
@@ -5668,20 +7212,45 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.55,
+    "roof": "nv",
+    "rc": 0.55
+   }
   },
   "0363100012176834": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "neck",
+   "crown": "spout",
    "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.5,
-   "sc": 0.5,
-   "rule": "v2"
+   "cc": 0.75,
+   "sc": 0.7,
+   "rule": "v2",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "spout",
+    "cc": 0.75,
+    "full": 4,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012176835": {
    "finish": "unclear",
@@ -5694,7 +7263,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012176836": {
    "finish": "brick",
@@ -5744,9 +7317,21 @@
    "cornice": "simple",
    "full": 4,
    "souterrain": true,
-   "cc": 0.6,
-   "sc": 0.65,
-   "rule": "below the bar"
+   "cc": 0.8,
+   "sc": 0.7,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "stone-lintel",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012177026": {
    "finish": "paint",
@@ -5810,7 +7395,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.5
   },
   "0363100012177055": {
    "finish": "paint",
@@ -5823,7 +7412,11 @@
    "souterrain": null,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.55
   },
   "0363100012177056": {
    "finish": "brick",
@@ -5836,7 +7429,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012177076": {
    "finish": "paint",
@@ -5849,7 +7446,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012177077": {
    "finish": "unclear",
@@ -5862,7 +7463,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012177078": {
    "finish": "brick",
@@ -5875,7 +7480,19 @@
    "souterrain": true,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012177082": {
    "finish": "brick",
@@ -5901,7 +7518,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012177108": {
    "finish": "unclear",
@@ -5927,20 +7548,37 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012177110": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.65,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "spout",
+   "crown": "point",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.55,
+   "cc": 0.7,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012177111": {
    "finish": "brick",
@@ -5951,9 +7589,22 @@
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012177112": {
    "finish": "brick",
@@ -5978,7 +7629,11 @@
     "souterrain": false,
     "cc": 0.5,
     "sc": 0.55
-   }
+   },
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012177113": {
    "finish": "brick",
@@ -6004,7 +7659,19 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "flat",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.55,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012177116": {
    "finish": "brick",
@@ -6017,7 +7684,19 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.55,
+    "roof": "dormers-slate",
+    "rc": 0.55
+   }
   },
   "0363100012177118": {
    "finish": "brick",
@@ -6069,7 +7748,19 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012177132": {
    "finish": "unclear",
@@ -6082,7 +7773,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012177133": {
    "finish": "brick",
@@ -6108,7 +7811,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012177142": {
    "finish": "brick",
@@ -6121,7 +7828,11 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.55
   },
   "0363100012177159": {
    "finish": "brick",
@@ -6134,20 +7845,37 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012177160": {
    "finish": "brick",
    "family": "dark-grey-brick",
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "spout",
+   "crown": "point",
    "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.7,
-   "rule": "below the bar"
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "keystone",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012177292": {
    "finish": "brick",
@@ -6206,13 +7934,26 @@
    "family": "brown-brick",
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "spout",
+   "crown": "point",
    "cornice": "none",
    "full": 2,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.65,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012177368": {
    "finish": "paint",
@@ -6237,7 +7978,11 @@
     "souterrain": null,
     "cc": 0.5,
     "sc": 0.5
-   }
+   },
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012177369": {
    "finish": "brick",
@@ -6250,7 +7995,11 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012177370": {
    "finish": "unclear",
@@ -6263,7 +8012,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012177371": {
    "finish": "brick",
@@ -6276,7 +8029,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012177373": {
    "finish": "brick",
@@ -6315,7 +8072,11 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-tile",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.5
   },
   "0363100012177379": {
    "finish": "brick",
@@ -6325,36 +8086,74 @@
    "crown": "neck",
    "cornice": "none",
    "full": 3,
-   "souterrain": false,
-   "cc": 0.5,
-   "sc": 0.5,
-   "rule": "below the bar"
+   "souterrain": null,
+   "cc": 0.8,
+   "sc": 0.7,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012177546": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "neck",
+   "crown": "bell",
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.65,
+   "cc": 0.7,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "bell",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012177547": {
    "finish": "brick",
    "family": "purple-brown-brick",
    "confidence": 0.55,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "neck",
+   "crown": "bell",
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.65,
+   "cc": 0.8,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "bell",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012177611": {
    "finish": "brick",
@@ -6367,7 +8166,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012177612": {
    "finish": "brick",
@@ -6375,12 +8178,24 @@
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
-   "cornice": "simple",
+   "cornice": "none",
    "full": 2,
    "souterrain": true,
-   "cc": 0.65,
-   "sc": 0.65,
-   "rule": "below the bar"
+   "cc": 0.85,
+   "sc": 0.7,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.85,
+    "full": 2,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.85
+   }
   },
   "0363100012177616": {
    "finish": "brick",
@@ -6393,7 +8208,11 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "pitched-slate",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012177623": {
    "finish": "brick",
@@ -6432,7 +8251,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "bands",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "shouldered",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.5,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012177750": {
    "finish": "brick",
@@ -6471,7 +8302,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012177753": {
    "finish": "brick",
@@ -6625,9 +8468,21 @@
    "cornice": "frieze",
    "full": 3,
    "souterrain": true,
-   "cc": 0.65,
+   "cc": 0.7,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.55,
+   "dress": "block-surround",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "mansard",
+    "rc": 0.55
+   }
   },
   "0363100012177771": {
    "finish": "unclear",
@@ -6679,7 +8534,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-tile",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012177797": {
    "finish": "brick",
@@ -6687,12 +8546,24 @@
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
-   "cornice": "simple",
+   "cornice": "heavy",
    "full": 3,
    "souterrain": false,
-   "cc": 0.65,
+   "cc": 0.7,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.7,
+   "dress": "block-surround",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.7,
+    "full": 2,
+    "sc": 0.65,
+    "roof": "dormers-slate",
+    "rc": 0.7
+   }
   },
   "0363100012177798": {
    "finish": "brick",
@@ -6705,7 +8576,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012177799": {
    "finish": "brick",
@@ -6718,20 +8593,37 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "keystone",
+   "dc": 0.85
   },
   "0363100012177800": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.75,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "point",
+   "crown": "neck",
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.8,
-   "rule": "v2"
+   "cc": 0.7,
+   "sc": 0.85,
+   "rule": "v2",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "arch-ring",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.85,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012177803": {
    "finish": "brick",
@@ -6744,7 +8636,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012177804": {
    "finish": "brick",
@@ -6770,7 +8666,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "keystone",
+   "dc": 0.85
   },
   "0363100012177806": {
    "finish": "brick",
@@ -6783,7 +8683,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "keystone",
+   "dc": 0.8
   },
   "0363100012177807": {
    "finish": "brick",
@@ -6796,7 +8700,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "keystone",
+   "dc": 0.85
   },
   "0363100012177810": {
    "finish": "brick",
@@ -6809,7 +8717,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-tile",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012177812": {
    "finish": "brick",
@@ -6822,7 +8734,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012177813": {
    "finish": "brick",
@@ -6835,7 +8751,11 @@
    "souterrain": null,
    "cc": 0.6,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012177833": {
    "finish": "brick",
@@ -6848,7 +8768,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.8,
+   "dress": "stone-lintel",
+   "dc": 0.6
   },
   "0363100012177834": {
    "finish": "brick",
@@ -6874,7 +8798,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012177837": {
    "finish": "brick",
@@ -6900,7 +8828,19 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "spout",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012177843": {
    "finish": "brick",
@@ -6911,9 +8851,22 @@
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.55,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "spout",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.5,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012177844": {
    "finish": "brick",
@@ -6952,7 +8905,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012177851": {
    "finish": "paint",
@@ -6965,7 +8922,11 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012177853": {
    "finish": "paint",
@@ -6978,7 +8939,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012178179": {
    "finish": "brick",
@@ -6991,7 +8956,11 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012178180": {
    "finish": "brick",
@@ -7011,13 +8980,26 @@
    "family": "dark-grey-brick",
    "confidence": 0.55,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "not-visible",
-   "cornice": "not-visible",
+   "crown": "bell",
+   "cornice": "none",
    "full": null,
    "souterrain": false,
-   "cc": 0.5,
+   "cc": 0.7,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "bell",
+    "cc": 0.7,
+    "full": 4,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012178182": {
    "finish": "brick",
@@ -7056,7 +9038,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012178186": {
    "finish": "brick",
@@ -7067,9 +9053,21 @@
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.8,
+   "cc": 0.85,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.65,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.85,
+    "full": 3,
+    "sc": 0.85,
+    "roof": "dormers-slate",
+    "rc": 0.65
+   }
   },
   "0363100012178187": {
    "finish": "paint",
@@ -7082,7 +9080,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012178250": {
    "finish": "brick",
@@ -7095,7 +9097,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012178251": {
    "finish": "brick",
@@ -7108,7 +9114,11 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012178253": {
    "finish": "brick",
@@ -7134,7 +9144,11 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012178258": {
    "finish": "brick",
@@ -7172,7 +9186,11 @@
     "souterrain": false,
     "cc": 0.7,
     "sc": 0.65
-   }
+   },
+   "roof": "pitched-slate",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012178260": {
    "finish": "unclear",
@@ -7185,7 +9203,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-tile",
+   "rc": 0.6,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012178261": {
    "finish": "unclear",
@@ -7198,7 +9220,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-tile",
+   "rc": 0.55,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012178262": {
    "finish": "brick",
@@ -7211,7 +9237,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012178263": {
    "finish": "brick",
@@ -7237,7 +9267,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012178265": {
    "finish": "stucco",
@@ -7262,7 +9296,11 @@
     "souterrain": false,
     "cc": 0.7,
     "sc": 0.65
-   }
+   },
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012178269": {
    "finish": "brick",
@@ -7275,7 +9313,11 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.85,
+   "dress": "keystone",
+   "dc": 0.6
   },
   "0363100012178335": {
    "finish": "brick",
@@ -7288,7 +9330,11 @@
    "souterrain": false,
    "cc": 0.85,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.85,
+   "dress": "keystone",
+   "dc": 0.7
   },
   "0363100012178337": {
    "finish": "brick",
@@ -7301,7 +9347,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012178338": {
    "finish": "brick",
@@ -7314,7 +9364,11 @@
    "souterrain": null,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.8,
+   "dress": "keystone",
+   "dc": 0.7
   },
   "0363100012178339": {
    "finish": "brick",
@@ -7327,7 +9381,11 @@
    "souterrain": null,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.85,
+   "dress": "keystone",
+   "dc": 0.75
   },
   "0363100012178340": {
    "finish": "brick",
@@ -7340,7 +9398,11 @@
    "souterrain": null,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012178341": {
    "finish": "brick",
@@ -7353,7 +9415,11 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012178342": {
    "finish": "brick",
@@ -7366,7 +9432,11 @@
    "souterrain": null,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.8,
+   "dress": "keystone",
+   "dc": 0.6
   },
   "0363100012178343": {
    "finish": "brick",
@@ -7379,7 +9449,11 @@
    "souterrain": true,
    "cc": 0.85,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012178344": {
    "finish": "brick",
@@ -7392,7 +9466,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.8,
+   "dress": "keystone",
+   "dc": 0.6
   },
   "0363100012178346": {
    "finish": "brick",
@@ -7403,9 +9481,21 @@
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.7,
-   "rule": "v2"
+   "cc": 0.75,
+   "sc": 0.75,
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.75,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "dormers-slate",
+    "rc": 0.6
+   }
   },
   "0363100012178350": {
    "finish": "paint",
@@ -7418,7 +9508,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012178351": {
    "finish": "brick",
@@ -7431,7 +9525,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012178424": {
    "finish": "stucco",
@@ -7444,7 +9542,11 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012178425": {
    "finish": "brick",
@@ -7457,7 +9559,11 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012178429": {
    "finish": "brick",
@@ -7470,20 +9576,37 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012178430": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.55,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "not-visible",
-   "cornice": "not-visible",
-   "full": null,
+   "crown": "step",
+   "cornice": "none",
+   "full": 3,
    "souterrain": false,
-   "cc": 0.5,
-   "sc": 0.5,
-   "rule": "below the bar"
+   "cc": 0.85,
+   "sc": 0.8,
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.85,
+   "dress": "bands",
+   "dc": 0.85,
+   "recrown": {
+    "crown": "step",
+    "cc": 0.85,
+    "full": 3,
+    "sc": 0.8,
+    "roof": "none",
+    "rc": 0.85
+   }
   },
   "0363100012178431": {
    "finish": "unclear",
@@ -7530,12 +9653,25 @@
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
-   "cornice": "simple",
+   "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.55,
+   "cc": 0.7,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.65,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012178436": {
    "finish": "paint",
@@ -7555,13 +9691,26 @@
    "family": "brown-brick",
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "neck",
+   "crown": "step",
    "cornice": "none",
-   "full": 3,
+   "full": 2,
    "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.6,
-   "rule": "v2"
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "v2",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "bands",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "step",
+    "cc": 0.8,
+    "full": 2,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012178438": {
    "finish": "stucco",
@@ -7586,6 +9735,18 @@
     "souterrain": false,
     "cc": 0.55,
     "sc": 0.6
+   },
+   "roof": "dormers-tile",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "dormers-tile",
+    "rc": 0.55
    }
   },
   "0363100012178439": {
@@ -7612,7 +9773,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012178482": {
    "finish": "paint",
@@ -7638,7 +9803,11 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "pitched-slate",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012178508": {
    "finish": "brick",
@@ -7651,20 +9820,37 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012178511": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "neck",
+   "crown": "spout",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.55,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.65,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "spout",
+    "cc": 0.65,
+    "full": 3,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.65
+   }
   },
   "0363100012178513": {
    "finish": "brick",
@@ -7690,7 +9876,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012178515": {
    "finish": "brick",
@@ -7729,7 +9919,11 @@
    "souterrain": null,
    "cc": 0.75,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012178523": {
    "finish": "stucco",
@@ -7742,7 +9936,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.55,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012178524": {
    "finish": "brick",
@@ -7755,7 +9953,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "stone-lintel",
+   "dc": 0.55
   },
   "0363100012178528": {
    "finish": "unclear",
@@ -7768,7 +9970,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012178551": {
    "finish": "paint",
@@ -7792,9 +10006,21 @@
    "cornice": "frieze",
    "full": 3,
    "souterrain": false,
-   "cc": 0.65,
+   "cc": 0.8,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.65,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.8,
+    "roof": "dormers-slate",
+    "rc": 0.65
+   }
   },
   "0363100012178556": {
    "finish": "brick",
@@ -7818,9 +10044,22 @@
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.65,
+   "cc": 0.7,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "shouldered",
+    "cc": 0.65,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012178562": {
    "finish": "brick",
@@ -7846,7 +10085,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012178565": {
    "finish": "paint",
@@ -7872,7 +10123,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012178596": {
    "finish": "paint",
@@ -7885,7 +10140,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012178597": {
    "finish": "paint",
@@ -7898,7 +10157,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012178602": {
    "finish": "brick",
@@ -7937,7 +10200,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012178863": {
    "finish": "brick",
@@ -7963,7 +10230,11 @@
    "souterrain": null,
    "cc": 0.75,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "block-surround",
+   "dc": 0.6
   },
   "0363100012178940": {
    "finish": "unclear",
@@ -7976,7 +10247,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012179084": {
    "finish": "brick",
@@ -8078,9 +10353,21 @@
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.65,
+   "cc": 0.8,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "block-course",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "mansard",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "mansard",
+    "rc": 0.75
+   }
   },
   "0363100012179094": {
    "finish": "brick",
@@ -8119,7 +10406,19 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "block-course",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.55,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012179097": {
    "finish": "brick",
@@ -8132,7 +10431,19 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "block-course",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012179099": {
    "finish": "brick",
@@ -8158,7 +10469,11 @@
    "souterrain": true,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "block-course",
+   "dc": 0.75
   },
   "0363100012179102": {
    "finish": "brick",
@@ -8184,7 +10499,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "arch-ring",
+   "dc": 0.55
   },
   "0363100012179111": {
    "finish": "brick",
@@ -8194,10 +10513,22 @@
    "crown": "bell",
    "cornice": "none",
    "full": 3,
-   "souterrain": null,
-   "cc": 0.55,
-   "sc": 0.55,
-   "rule": "below the bar"
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.7,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "bell",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012179115": {
    "finish": "brick",
@@ -8210,20 +10541,37 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "bands",
+   "dc": 0.7
   },
   "0363100012179118": {
    "finish": "brick",
    "family": "brown-brick",
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "neck",
+   "crown": "bell",
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.65,
-   "sc": 0.6,
-   "rule": "v2"
+   "cc": 0.8,
+   "sc": 0.7,
+   "rule": "v2",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "bell",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012179120": {
    "finish": "brick",
@@ -8236,7 +10584,11 @@
    "souterrain": null,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012179121": {
    "finish": "brick",
@@ -8249,7 +10601,11 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012179151": {
    "finish": "brick",
@@ -8262,7 +10618,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012179152": {
    "finish": "brick",
@@ -8314,7 +10674,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012179165": {
    "finish": "brick",
@@ -8363,10 +10727,22 @@
    "crown": "neck",
    "cornice": "none",
    "full": 4,
-   "souterrain": true,
-   "cc": 0.65,
-   "sc": 0.7,
-   "rule": "below the bar"
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012179170": {
    "finish": "brick",
@@ -8403,9 +10779,22 @@
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.65,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012179207": {
    "finish": "brick",
@@ -8444,7 +10833,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "block-course",
+   "dc": 0.6
   },
   "0363100012179371": {
    "finish": "brick",
@@ -8457,7 +10850,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "block-course",
+   "dc": 0.6
   },
   "0363100012179372": {
    "finish": "brick",
@@ -8482,7 +10879,11 @@
     "souterrain": false,
     "cc": 0.55,
     "sc": 0.6
-   }
+   },
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012179373": {
    "finish": "brick",
@@ -8521,7 +10922,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.85,
+   "dress": "block-course",
+   "dc": 0.65
   },
   "0363100012179376": {
    "finish": "brick",
@@ -8547,7 +10952,19 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": 4,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012179433": {
    "finish": "brick",
@@ -8573,7 +10990,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "keystone",
+   "dc": 0.55
   },
   "0363100012179438": {
    "finish": "brick",
@@ -8586,7 +11007,19 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "block-course",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.75,
+    "full": 4,
+    "sc": 0.8,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012179439": {
    "finish": "brick",
@@ -8688,7 +11121,7 @@
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.65,
+   "cc": 0.8,
    "sc": 0.8,
    "rule": "below the bar; second below the bar",
    "second": {
@@ -8702,6 +11135,18 @@
     "souterrain": false,
     "cc": 0.7,
     "sc": 0.75
+   },
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "bands",
+   "dc": 0.85,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.8,
+    "roof": "none",
+    "rc": 0.8
    }
   },
   "0363100012179449": {
@@ -8715,7 +11160,11 @@
    "souterrain": null,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "block-surround",
+   "dc": 0.75
   },
   "0363100012179450": {
    "finish": "brick",
@@ -8740,6 +11189,18 @@
     "souterrain": null,
     "cc": 0.6,
     "sc": 0.5
+   },
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
    }
   },
   "0363100012179453": {
@@ -8764,9 +11225,21 @@
    "cornice": "simple",
    "full": 4,
    "souterrain": true,
-   "cc": 0.6,
+   "cc": 0.75,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.7,
+   "dress": "block-course",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.75,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "dormers-slate",
+    "rc": 0.7
+   }
   },
   "0363100012179502": {
    "finish": "brick",
@@ -8777,9 +11250,21 @@
    "cornice": "simple",
    "full": 4,
    "souterrain": true,
-   "cc": 0.6,
+   "cc": 0.75,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.7,
+   "dress": "block-course",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.75,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "dormers-slate",
+    "rc": 0.7
+   }
   },
   "0363100012179504": {
    "finish": "brick",
@@ -8816,9 +11301,21 @@
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.65,
+   "dress": "bands",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "dormers-slate",
+    "rc": 0.65
+   }
   },
   "0363100012179508": {
    "finish": "brick",
@@ -8855,9 +11352,22 @@
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.55,
+   "cc": 0.7,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "step",
+    "cc": 0.65,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012179521": {
    "finish": "brick",
@@ -8896,7 +11406,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012179525": {
    "finish": "brick",
@@ -8922,7 +11436,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "keystone",
+   "dc": 0.7
   },
   "0363100012179694": {
    "finish": "brick",
@@ -8935,7 +11453,19 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "dormers-slate",
+    "rc": 0.55
+   }
   },
   "0363100012179695": {
    "finish": "brick",
@@ -8943,12 +11473,25 @@
    "confidence": 0.65,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "point",
-   "cornice": "none",
+   "cornice": "simple",
    "full": 3,
    "souterrain": true,
-   "cc": 0.6,
-   "sc": 0.7,
-   "rule": "below the bar"
+   "cc": 0.8,
+   "sc": 0.5,
+   "rule": "below the bar",
+   "crownRule": "captures disagree (storeys)",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "bands",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012179716": {
    "finish": "brick",
@@ -8961,7 +11504,19 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.55,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012179717": {
    "finish": "brick",
@@ -9013,7 +11568,11 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "block-surround",
+   "dc": 0.6
   },
   "0363100012179739": {
    "finish": "brick",
@@ -9024,9 +11583,21 @@
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.5,
-   "sc": 0.65,
-   "rule": "v2"
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012179742": {
    "finish": "brick",
@@ -9039,7 +11610,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012179743": {
    "finish": "brick",
@@ -9065,7 +11640,11 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "keystone",
+   "dc": 0.65
   },
   "0363100012179745": {
    "finish": "paint",
@@ -9078,7 +11657,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012179747": {
    "finish": "brick",
@@ -9091,20 +11674,37 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "keystone",
+   "dc": 0.55
   },
   "0363100012179800": {
    "finish": "brick",
    "family": "purple-brown-brick",
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "mansard",
+   "crown": "cornice",
    "cornice": "bracketed",
    "full": 4,
    "souterrain": true,
-   "cc": 0.6,
-   "sc": 0.65,
-   "rule": "below the bar"
+   "cc": 0.75,
+   "sc": 0.7,
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "dormers-slate",
+   "rc": 0.7,
+   "dress": "block-surround",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.75,
+    "full": 4,
+    "sc": 0.7,
+    "roof": "dormers-slate",
+    "rc": 0.7
+   }
   },
   "0363100012179803": {
    "finish": "brick",
@@ -9117,7 +11717,19 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "bands",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "step",
+    "cc": 0.65,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012179811": {
    "finish": "brick",
@@ -9130,7 +11742,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "keystone",
+   "dc": 0.65
   },
   "0363100012179814": {
    "finish": "brick",
@@ -9143,7 +11759,11 @@
    "souterrain": false,
    "cc": 0.85,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012179819": {
    "finish": "brick",
@@ -9156,7 +11776,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "keystone",
+   "dc": 0.65
   },
   "0363100012179820": {
    "finish": "brick",
@@ -9169,7 +11793,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.5,
+   "dress": "keystone",
+   "dc": 0.6
   },
   "0363100012179821": {
    "finish": "brick",
@@ -9182,7 +11810,11 @@
    "souterrain": false,
    "cc": 0.85,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "block-surround",
+   "dc": 0.7
   },
   "0363100012179822": {
    "finish": "paint",
@@ -9195,7 +11827,19 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012179823": {
    "finish": "brick",
@@ -9232,9 +11876,21 @@
    "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.65,
+   "cc": 0.8,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012179826": {
    "finish": "brick",
@@ -9245,9 +11901,21 @@
    "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.8,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012179830": {
    "finish": "brick",
@@ -9325,7 +11993,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.85,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012179901": {
    "finish": "brick",
@@ -9336,9 +12008,21 @@
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.6,
-   "sc": 0.65,
-   "rule": "below the bar"
+   "cc": 0.8,
+   "sc": 0.7,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012179903": {
    "finish": "brick",
@@ -9351,7 +12035,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012179904": {
    "finish": "paint",
@@ -9402,7 +12090,11 @@
    "souterrain": false,
    "cc": 0.85,
    "sc": 0.9,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.85
   },
   "0363100012179912": {
    "finish": "brick",
@@ -9413,9 +12105,21 @@
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.65,
-   "sc": 0.7,
-   "rule": "below the bar"
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012179914": {
    "finish": "brick",
@@ -9439,9 +12143,21 @@
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.75,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.75,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012179916": {
    "finish": "brick",
@@ -9454,7 +12170,11 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012179978": {
    "finish": "brick",
@@ -9506,7 +12226,19 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012179983": {
    "finish": "unclear",
@@ -9519,7 +12251,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012179984": {
    "finish": "brick",
@@ -9530,9 +12266,21 @@
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.65,
+   "cc": 0.8,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012179986": {
    "finish": "brick",
@@ -9545,7 +12293,11 @@
    "souterrain": null,
    "cc": 0.7,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012179989": {
    "finish": "brick",
@@ -9621,8 +12373,8 @@
    "cornice": "simple",
    "full": 3,
    "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.7,
+   "cc": 0.8,
+   "sc": 0.8,
    "rule": "below the bar; second capture agrees",
    "second": {
     "finish": "paint",
@@ -9635,6 +12387,18 @@
     "souterrain": false,
     "cc": 0.75,
     "sc": 0.85
+   },
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.8,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.8,
+    "roof": "none",
+    "rc": 0.8
    }
   },
   "0363100012179999": {
@@ -9659,9 +12423,22 @@
    "cornice": "simple",
    "full": 3,
    "souterrain": true,
-   "cc": 0.65,
+   "cc": 0.7,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.65,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.65,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.65
+   }
   },
   "0363100012180005": {
    "finish": "brick",
@@ -9669,12 +12446,24 @@
    "confidence": 0.55,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
-   "cornice": "simple",
+   "cornice": "none",
    "full": 3,
-   "souterrain": null,
-   "cc": 0.55,
-   "sc": 0.55,
-   "rule": "below the bar"
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012180051": {
    "finish": "paint",
@@ -9713,7 +12502,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012180055": {
    "finish": "brick",
@@ -9726,7 +12519,11 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012180057": {
    "finish": "brick",
@@ -9739,7 +12536,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.55
   },
   "0363100012180058": {
    "finish": "brick",
@@ -9752,7 +12553,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.65
   },
   "0363100012180062": {
    "finish": "paint",
@@ -9765,7 +12570,11 @@
    "souterrain": true,
    "cc": 0.65,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012180065": {
    "finish": "brick",
@@ -9817,7 +12626,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.85
   },
   "0363100012180069": {
    "finish": "brick",
@@ -9850,13 +12663,26 @@
    "family": "purple-brown-brick",
    "confidence": 0.55,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "step",
+   "crown": "neck",
    "cornice": "simple",
-   "full": 3,
-   "souterrain": true,
-   "cc": 0.6,
-   "sc": 0.55,
-   "rule": "below the bar"
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.75,
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 4,
+    "sc": 0.75,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012180094": {
    "finish": "brick",
@@ -9869,7 +12695,11 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.7,
+   "dress": "bands",
+   "dc": 0.85
   },
   "0363100012180095": {
    "finish": "unclear",
@@ -9908,7 +12738,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "keystone",
+   "dc": 0.8
   },
   "0363100012180102": {
    "finish": "brick",
@@ -9934,7 +12768,19 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 2,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012180113": {
    "finish": "brick",
@@ -9947,7 +12793,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "block-course",
+   "dc": 0.75
   },
   "0363100012180114": {
    "finish": "paint",
@@ -9960,7 +12810,19 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 2,
+    "sc": 0.5,
+    "roof": "dormers-slate",
+    "rc": 0.5
+   }
   },
   "0363100012180118": {
    "finish": "brick",
@@ -9971,9 +12833,22 @@
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.6,
+    "full": null,
+    "sc": 0.5,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012180119": {
    "finish": "paint",
@@ -9986,7 +12861,11 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012180121": {
    "finish": "paint",
@@ -10012,7 +12891,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "block-surround",
+   "dc": 0.65
   },
   "0363100012180222": {
    "finish": "brick",
@@ -10077,7 +12960,11 @@
    "souterrain": null,
    "cc": 0.55,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.55,
+   "dress": "block-surround",
+   "dc": 0.7
   },
   "0363100012180228": {
    "finish": "brick",
@@ -10103,7 +12990,11 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012180253": {
    "finish": "brick",
@@ -10129,7 +13020,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012180318": {
    "finish": "paint",
@@ -10142,7 +13037,11 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.85
   },
   "0363100012180320": {
    "finish": "paint",
@@ -10155,7 +13054,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012180322": {
    "finish": "unclear",
@@ -10168,7 +13071,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012180323": {
    "finish": "paint",
@@ -10181,7 +13088,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012180324": {
    "finish": "paint",
@@ -10194,7 +13105,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012180325": {
    "finish": "paint",
@@ -10219,7 +13134,11 @@
     "souterrain": true,
     "cc": 0.75,
     "sc": 0.8
-   }
+   },
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012180328": {
    "finish": "brick",
@@ -10232,7 +13151,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012180329": {
    "finish": "brick",
@@ -10245,7 +13168,11 @@
    "souterrain": false,
    "cc": 0.65,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012180330": {
    "finish": "paint",
@@ -10335,7 +13262,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.6,
+   "dress": "bands",
+   "dc": 0.65
   },
   "0363100012180416": {
    "finish": "brick",
@@ -10344,11 +13275,23 @@
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
    "cornice": "simple",
-   "full": 4,
+   "full": 3,
    "souterrain": true,
-   "cc": 0.6,
-   "sc": 0.55,
-   "rule": "v2"
+   "cc": 0.8,
+   "sc": 0.7,
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012180419": {
    "finish": "brick",
@@ -10374,7 +13317,19 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012181799": {
    "finish": "stucco",
@@ -10399,7 +13354,11 @@
     "souterrain": true,
     "cc": 0.7,
     "sc": 0.7
-   }
+   },
+   "roof": "dormers-slate",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012182271": {
    "finish": "brick",
@@ -10412,7 +13371,11 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.65,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012182272": {
    "finish": "brick",
@@ -10425,7 +13388,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012182273": {
    "finish": "brick",
@@ -10438,7 +13405,19 @@
    "souterrain": null,
    "cc": 0.85,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.75,
+    "roof": "dormers-slate",
+    "rc": 0.6
+   }
   },
   "0363100012182276": {
    "finish": "brick",
@@ -10449,8 +13428,8 @@
    "cornice": "none",
    "full": 2,
    "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.55,
+   "cc": 0.8,
+   "sc": 0.7,
    "rule": "below the bar; second below the bar",
    "second": {
     "finish": "brick",
@@ -10463,6 +13442,18 @@
     "souterrain": null,
     "cc": 0.5,
     "sc": 0.5
+   },
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "bell",
+    "cc": 0.8,
+    "full": 2,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
    }
   },
   "0363100012182282": {
@@ -10476,7 +13467,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012182284": {
    "finish": "brick",
@@ -10489,7 +13492,19 @@
    "souterrain": true,
    "cc": 0.5,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "bands",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "step",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012182287": {
    "finish": "brick",
@@ -10502,7 +13517,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.6,
+    "full": null,
+    "sc": 0.5,
+    "roof": "none",
+    "rc": 0.5
+   }
   },
   "0363100012182288": {
    "finish": "brick",
@@ -10515,7 +13542,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.65
   },
   "0363100012182310": {
    "finish": "paint",
@@ -10528,7 +13559,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012182311": {
    "finish": "brick",
@@ -10541,7 +13576,11 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.8,
+   "dress": "keystone",
+   "dc": 0.7
   },
   "0363100012182312": {
    "finish": "brick",
@@ -10554,7 +13593,11 @@
    "souterrain": null,
    "cc": 0.8,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012182313": {
    "finish": "brick",
@@ -10567,7 +13610,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.75,
+   "dress": "keystone",
+   "dc": 0.65
   },
   "0363100012182314": {
    "finish": "paint",
@@ -10580,7 +13627,11 @@
    "souterrain": true,
    "cc": 0.8,
    "sc": 0.85,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012182315": {
    "finish": "brick",
@@ -10593,7 +13644,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "mansard",
+   "rc": 0.8,
+   "dress": "keystone",
+   "dc": 0.75
   },
   "0363100012182316": {
    "finish": "paint",
@@ -10606,7 +13661,11 @@
    "souterrain": null,
    "cc": 0.7,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012182317": {
    "finish": "stucco",
@@ -10631,6 +13690,18 @@
     "souterrain": false,
     "cc": 0.55,
     "sc": 0.65
+   },
+   "roof": "none",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.5
    }
   },
   "0363100012182335": {
@@ -10644,7 +13715,11 @@
    "souterrain": false,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.65
   },
   "0363100012182338": {
    "finish": "brick",
@@ -10657,7 +13732,19 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.6,
+    "full": 2,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012182339": {
    "finish": "brick",
@@ -10668,9 +13755,21 @@
    "cornice": "none",
    "full": 4,
    "souterrain": true,
-   "cc": 0.6,
+   "cc": 0.8,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012182342": {
    "finish": "brick",
@@ -10678,12 +13777,24 @@
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "cornice",
-   "cornice": "bracketed",
+   "cornice": "heavy",
    "full": 4,
    "souterrain": false,
-   "cc": 0.8,
-   "sc": 0.75,
-   "rule": "below the bar"
+   "cc": 0.85,
+   "sc": 0.8,
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.85,
+    "full": 4,
+    "sc": 0.8,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012182343": {
    "finish": "brick",
@@ -10703,13 +13814,26 @@
    "family": "brown-brick",
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "spout",
-   "cornice": "none",
+   "crown": "cornice",
+   "cornice": "frieze",
    "full": 3,
    "souterrain": false,
-   "cc": 0.5,
-   "sc": 0.65,
-   "rule": "v2"
+   "cc": 0.85,
+   "sc": 0.8,
+   "rule": "v2",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "dormers-slate",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.85,
+    "full": 3,
+    "sc": 0.8,
+    "roof": "dormers-slate",
+    "rc": 0.55
+   }
   },
   "0363100012182393": {
    "finish": "stucco",
@@ -10722,7 +13846,11 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012182394": {
    "finish": "brick",
@@ -10760,6 +13888,18 @@
     "souterrain": true,
     "cc": 0.8,
     "sc": 0.75
+   },
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 2,
+    "sc": 0.6,
+    "roof": "dormers-slate",
+    "rc": 0.6
    }
   },
   "0363100012182396": {
@@ -10794,12 +13934,24 @@
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
    "crown": "neck",
-   "cornice": "simple",
+   "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.55,
+   "cc": 0.7,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.7,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.75
+   }
   },
   "0363100012182418": {
    "finish": "brick",
@@ -10812,7 +13964,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.6
   },
   "0363100012182419": {
    "finish": "brick",
@@ -10825,7 +13981,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012182487": {
    "finish": "paint",
@@ -10864,7 +14032,11 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012182561": {
    "finish": "brick",
@@ -10890,7 +14062,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.65,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.55,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012182588": {
    "finish": "brick",
@@ -10929,7 +14105,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.8,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012182664": {
    "finish": "brick",
@@ -10942,7 +14122,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": 5,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012182665": {
    "finish": "brick",
@@ -10953,9 +14145,22 @@
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.6,
-   "rule": "v2"
+   "cc": 0.7,
+   "sc": 0.7,
+   "rule": "v2",
+   "crownRule": "two captures read a gable weakly",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "bands",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "step",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012182674": {
    "finish": "brick",
@@ -11096,7 +14301,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012182882": {
    "finish": "brick",
@@ -11109,7 +14326,19 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.55,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.55,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "dormers-slate",
+    "rc": 0.6
+   }
   },
   "0363100012182883": {
    "finish": "unclear",
@@ -11122,7 +14351,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012182884": {
    "finish": "stucco",
@@ -11173,7 +14406,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.5,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012182889": {
    "finish": "brick",
@@ -11186,7 +14423,11 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "mansard",
+   "rc": 0.65,
+   "dress": "bands",
+   "dc": 0.7
   },
   "0363100012182890": {
    "finish": "brick",
@@ -11212,7 +14453,11 @@
    "souterrain": true,
    "cc": 0.75,
    "sc": 0.7,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012182953": {
    "finish": "brick",
@@ -11251,7 +14496,11 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.7,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012183018": {
    "finish": "brick",
@@ -11271,13 +14520,26 @@
    "family": "dark-paint",
    "confidence": 0.75,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "raised-neck",
-   "cornice": "simple",
+   "crown": "neck",
+   "cornice": "none",
    "full": 3,
    "souterrain": null,
-   "cc": 0.5,
+   "cc": 0.7,
    "sc": 0.55,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.65,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.7,
+    "full": 4,
+    "sc": 0.55,
+    "roof": "none",
+    "rc": 0.7
+   }
   },
   "0363100012183024": {
    "finish": "brick",
@@ -11328,7 +14590,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.55,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.7,
+   "dress": "block-surround",
+   "dc": 0.75
   },
   "0363100012183035": {
    "finish": "brick",
@@ -11354,7 +14620,11 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5
   },
   "0363100012183039": {
    "finish": "paint",
@@ -11404,9 +14674,21 @@
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.55,
-   "sc": 0.6,
-   "rule": "v2"
+   "cc": 0.8,
+   "sc": 0.7,
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.8,
+   "dress": "none",
+   "dc": 0.75,
+   "recrown": {
+    "crown": "neck",
+    "cc": 0.8,
+    "full": 3,
+    "sc": 0.7,
+    "roof": "none",
+    "rc": 0.8
+   }
   },
   "0363100012183043": {
    "finish": "brick",
@@ -11419,7 +14701,11 @@
    "souterrain": true,
    "cc": 0.85,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.75,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012183044": {
    "finish": "brick",
@@ -11432,7 +14718,11 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.75
   },
   "0363100012183048": {
    "finish": "paint",
@@ -11445,7 +14735,19 @@
    "souterrain": true,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "none",
+   "rc": 0.6,
+   "dress": "none",
+   "dc": 0.7,
+   "recrown": {
+    "crown": "point",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.65,
+    "roof": "none",
+    "rc": 0.6
+   }
   },
   "0363100012183049": {
    "finish": "paint",
@@ -11458,7 +14760,19 @@
    "souterrain": true,
    "cc": 0.5,
    "sc": 0.55,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012183050": {
    "finish": "paint",
@@ -11484,7 +14798,11 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.6,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "dormers-tile",
+   "rc": 0.7,
+   "dress": "none",
+   "dc": 0.7
   },
   "0363100012249036": {
    "finish": "unclear",
@@ -11497,7 +14815,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "nv",
+   "rc": 0.5,
+   "dress": "nv",
+   "dc": 0.5,
+   "recrown": {
+    "crown": "not-visible",
+    "cc": 0.5,
+    "full": null,
+    "sc": 0.5,
+    "roof": "nv",
+    "rc": 0.5
+   }
   },
   "0363100012252762": {
    "finish": "brick",
@@ -11517,13 +14847,26 @@
    "family": "brown-brick",
    "confidence": 0.7,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "mansard",
+   "crown": "cornice",
    "cornice": "simple",
    "full": 4,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.75,
    "sc": 0.75,
-   "rule": "v2"
+   "rule": "v2",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "dormers-slate",
+   "rc": 0.7,
+   "dress": "block-surround",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.75,
+    "full": 4,
+    "sc": 0.75,
+    "roof": "dormers-slate",
+    "rc": 0.7
+   }
   },
   "0363100012253739": {
    "finish": "brick",
@@ -11536,7 +14879,11 @@
    "souterrain": false,
    "cc": 0.7,
    "sc": 0.8,
-   "rule": "v2"
+   "rule": "v2",
+   "roof": "none",
+   "rc": 0.65,
+   "dress": "none",
+   "dc": 0.8
   },
   "0363100012253805": {
    "finish": "brick",
@@ -11549,7 +14896,11 @@
    "souterrain": true,
    "cc": 0.6,
    "sc": 0.65,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-slate",
+   "rc": 0.6,
+   "dress": "block-surround",
+   "dc": 0.6
   },
   "0363100012253900": {
    "finish": "brick",
@@ -11575,7 +14926,19 @@
    "souterrain": null,
    "cc": 0.5,
    "sc": 0.5,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "roof": "dormers-tile",
+   "rc": 0.55,
+   "dress": "block-surround",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "cornice",
+    "cc": 0.6,
+    "full": 3,
+    "sc": 0.6,
+    "roof": "dormers-tile",
+    "rc": 0.55
+   }
   },
   "0363100012253929": {
    "finish": "brick",
@@ -11595,13 +14958,26 @@
    "family": "dark-grey-brick",
    "confidence": 0.6,
    "reader": "opus v2 (cut, contrastive colour + crown)",
-   "crown": "neck",
-   "cornice": "simple",
+   "crown": "step",
+   "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.85,
    "sc": 0.75,
-   "rule": "below the bar"
+   "rule": "below the bar",
+   "crownRule": "the re-read is the confident crown",
+   "roof": "none",
+   "rc": 0.85,
+   "dress": "none",
+   "dc": 0.6,
+   "recrown": {
+    "crown": "step",
+    "cc": 0.85,
+    "full": 4,
+    "sc": 0.6,
+    "roof": "none",
+    "rc": 0.85
+   }
   }
  }
 }
