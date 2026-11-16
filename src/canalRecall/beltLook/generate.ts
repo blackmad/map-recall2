@@ -180,9 +180,10 @@ export function corniceLine(read: { crown?: unknown; storeyParts?: { roof?: unkn
  * cornice about 12.5): under a roof storey (the register's or the photo's) the AHN band's top is the roof storey's, so a
  * look with a measured pitch caps a cornice wall at the photo's storeys at that pitch, never under the band p50.
  */
-export function underRoofStoreyTop(top: number | null, look: Pick<LookDistrict, 'gableFootPitchM'>, t: Pick<BeltTarget, 'roofStorey'>, sd: BeltStated | undefined, af: AhnFront | undefined): number | null {
-  if (top === null || !look.gableFootPitchM || !sd?.photoStoreys || !(t.roofStorey || sd.photoRoof) || sd.tallCornice) return top;
-  return +Math.max(af?.p50 ?? 0, Math.min(top, (sd.photoStoreys + (sd.photoSouterrain ? SOUTERRAIN_SHARE.souterrain : 0)) * look.gableFootPitchM)).toFixed(2);
+export function underRoofStoreyTop(top: number | null, look: Pick<LookDistrict, 'gableFootPitchM' | 'roofStoreyCapPitchM'>, t: Pick<BeltTarget, 'roofStorey'>, sd: BeltStated | undefined, af: AhnFront | undefined): number | null {
+  const pitch = look.roofStoreyCapPitchM ?? look.gableFootPitchM;
+  if (top === null || !pitch || !sd?.photoStoreys || !(t.roofStorey || sd.photoRoof) || sd.tallCornice) return top;
+  return +Math.max(af?.p50 ?? 0, Math.min(top, (sd.photoStoreys + (sd.photoSouterrain ? SOUTERRAIN_SHARE.souterrain : 0)) * pitch)).toFixed(2);
 }
 /** A register-stated roof storey over a donor read with none: one plain dormer in a roof storey (the register's dakkapel). */
 export function statedDormer(a: DescriberAnswer): DescriberAnswer {

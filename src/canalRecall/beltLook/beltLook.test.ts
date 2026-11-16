@@ -536,11 +536,18 @@ test('round 13 after Centrum round 7: the belt souterrain share, the roof-storey
   const recs = new Map(all.map(r => [r.pandId, r])), rec = (id: string) => recs.get(`0363100012${id}`)!;
   // Keizersgracht 171444: a neck over four storeys and a souterrain stands its foot at (4 + 0.3) x 3.0 = 12.9 m (13.74 at 0.58).
   assert.equal(rec('171444').eavesM, 12.9);
-  // Herengracht 176354: three storeys under the register's dakkapel stand at the AHN band's p50, 10.05 m (13.95 was the dormer's top).
-  assert.equal(rec('176354').eavesM, 10.05);
+  // Herengracht 176354: three storeys under the register's dakkapel, capped at 3 x 3.4 = 10.2 m (13.95 stood over the dormer's
+  // top; round 14's cut shows ground and two storeys under a cornice and balustrade, one dormer behind).
+  assert.equal(rec('176354').eavesM, 10.2);
+  // Round 14: the cap's pitch is the belt's cornice measure (3.4), not the gable foot's 3.0. Keizersgracht 169362, four storeys
+  // under a mansard (~13.5-14 m on its cut), stands at 13.6 m (12.79 at 3.0, 16.65 over the mansard before Centrum round 7);
+  // Herengracht 176428, three storeys over a souterrain under a mansard, at 12.17 m (10.74 at 3.0).
+  assert.equal(rec('169362').eavesM, 13.6);
+  assert.equal(rec('176428').eavesM, 12.17);
   // The earlier pins hold through the merge: Keizersgracht 176021 and 177196, Singel 177346 / 177518, Keizersgracht 172277.
   assert.deepEqual([rec('176021').eavesM, rec('176021').topM, rec('177196').eavesM, rec('177196').topM], [11.86, 15.36, 12, 15.5]);
   assert.deepEqual([rec('177346').eavesM, rec('177518').eavesM, rec('172277').eavesM], [17.56, 17.56, 19.31]);
   // Centrum round 7's purple-brown tone reaches the belt (h 40, L .37).
   assert.equal(JUDGED_PALETTE['purple-brown-brick'].h, 40);
+  assert.equal(BELT_LOOK.roofStoreyCapPitchM, 3.4);
 });
