@@ -185,6 +185,8 @@ test('round 18: bays from the panorama count when enough members read and agree;
   assert.equal(memberBaysOf([{ pano: 'a', date: 'd', cols: 3 }, { pano: 'b', date: 'e', cols: null }]), 3);
   assert.equal(memberBaysOf([{ pano: 'a', date: 'd', cols: 3 }, { pano: 'b', date: 'e', cols: 4 }]), null, 'captures differ');
   assert.equal(seriesBaysOf([3, null, undefined]), null, 'one member read');
+  assert.deepEqual(seriesBaysOf([3], [2]), { bays: 3, read: 1, agree: 1 }, 'round 19: a lone front two captures agree on');
+  assert.equal(seriesBaysOf([3, null, null, null, null], [2, 0, 0, 0, 0]), null, 'round 19: still a quarter of the members');
   assert.deepEqual(seriesBaysOf([3, 3, 4]), { bays: 3, read: 3, agree: 2 });
   assert.equal(seriesBaysOf([3, 4]), null, 'half agree is not enough');
   assert.equal(seriesBaysOf([2, 2, ...Array(12).fill(null)]), null, 'Parnassusweg 131928: 2 of 14 members read is too few');

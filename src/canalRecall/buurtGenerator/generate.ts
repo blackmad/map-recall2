@@ -141,7 +141,7 @@ export function baysFor(widthM: number, d: Pick<DistrictDesign, 'axisM'>): numbe
 export function seriesBaysFor(lib: DistrictLibrary, s: GenSeries, rowId: string): { bays: number; why: string | null; width: number } {
   const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b), width = baysFor(widths[widths.length >> 1], axisOf(lib, rowId));
   const read = lib.measured?.bays;
-  const v = read ? seriesBaysOf(s.members.map(m => read[pandNumber(m.pand.id)]?.bays)) : null;
+  const v = read ? seriesBaysOf(s.members.map(m => read[pandNumber(m.pand.id)]?.bays), s.members.map(m => { const r = read[pandNumber(m.pand.id)]; return r?.bays == null ? 0 : r.reads.filter(c => c.cols === r.bays).length; })) : null;
   return v ? { bays: v.bays, why: `panorama count: ${v.agree} of ${v.read} members read ${v.bays} window axes (baysRead.ts; the width rule said ${width})`, width } : { bays: width, why: null, width };
 }
 

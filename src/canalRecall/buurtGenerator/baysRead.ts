@@ -39,9 +39,12 @@ export function memberBaysOf(reads: readonly BaysCapture[]): number | null {
 
 /** A series' count from its members' counts (null: unread): the most common when at least `minMembers` (and `cover`
  *  of the members) read and `share` of the read ones agree; else null (the width rule stands). Ties: the smaller count. */
-export function seriesBaysOf(members: ReadonlyArray<number | null | undefined>): { bays: number; read: number; agree: number } | null {
-  const read = members.filter((b): b is number => typeof b === 'number');
-  if (read.length < Math.max(BAYS_READ.minMembers, Math.ceil(members.length * BAYS_READ.cover))) return null;
+export function seriesBaysOf(members: ReadonlyArray<number | null | undefined>, captures?: ReadonlyArray<number>): { bays: number; read: number; agree: number } | null {
+  const idx = members.flatMap((b, i) => typeof b === 'number' ? [i] : []), read = idx.map(i => members[i] as number);
+  // Round 19: a member two captures agree on is two observations towards `minMembers` (a lone front read twice); the
+  // `cover` floor still counts members.
+  const seen = idx.reduce((n, i) => n + Math.min(2, Math.max(1, captures?.[i] ?? 1)), 0);
+  if (seen < BAYS_READ.minMembers || read.length < Math.ceil(members.length * BAYS_READ.cover)) return null;
   const n = new Map<number, number>();
   for (const b of read) n.set(b, (n.get(b) ?? 0) + 1);
   const [bays, agree] = [...n.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0];

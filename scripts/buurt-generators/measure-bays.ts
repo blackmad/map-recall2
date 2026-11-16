@@ -54,7 +54,14 @@ for (const r of records) {
 const prior = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : {};
 const bays: Record<string, MemberBays> = { ...(prior.bays ?? {}) };
 const done = new Set<string>(prior.baysRows ?? []);
-const save = () => { const now = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : {}; fs.writeFileSync(OUT, JSON.stringify({ ...now, version: 1, district, baysSource: 'Amsterdam panoramas (data.amsterdam.nl, CC BY 4.0) via scripts/buurt-generators/measure-bays.ts', bays, baysRows: [...done].sort() }, null, 2) + '\n'); };
+const save = () => { const now = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : {}; fs.writeFileSync(OUT, measuredJson({ ...now, version: 1, district, baysSource: 'Amsterdam panoramas (data.amsterdam.nl, CC BY 4.0) via scripts/buurt-generators/measure-bays.ts', bays, baysRows: [...done].sort() })); };
+/** The measured file as before (two-space JSON), its `bays` one member a line (round 19: the raw reads tripled the file). */
+export function measuredJson(o: Record<string, unknown>): string {
+  const { bays: b, ...rest } = o, body = JSON.stringify(rest, null, 2);
+  if (!b) return body + '\n';
+  const lines = Object.entries(b as Record<string, unknown>).map(([k, v]) => `    ${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(',\n');
+  return body.replace(/\n}$/, `,\n  "bays": {\n${lines}\n  }\n}`) + '\n';
+}
 const cachedBefore = new Set(fs.existsSync(CACHE_DIR) ? fs.readdirSync(CACHE_DIR).filter(f => f.endsWith('.jpg')) : []);
 panoTracker.touched = new Set();
 const mine = new Set<string>();
