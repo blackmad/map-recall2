@@ -31,6 +31,8 @@ export type GlbPrimitive = {
   /** COLOR_0 as linear RGBA, or null. */
   colors: Float32Array | null;
   indices: Uint32Array; material: number;
+  /** glTF primitive extras when present (three's geometry.userData), e.g. a street chunk's `pandRanges`. */
+  extras?: Record<string, unknown>;
 };
 export type GlbScene = { primitives: GlbPrimitive[]; materials: GlbMaterial[]; bytes: number };
 
@@ -151,7 +153,8 @@ export async function loadGlb(bytes: Uint8Array): Promise<GlbScene> {
       }
       const idx = prim.getIndices(), n = idx ? idx.getCount() : count, indices = new Uint32Array(n - (n % 3));
       for (let i = 0; i < indices.length; i++) indices[i] = idx ? idx.getScalar(i) : i;
-      primitives.push({ positions, normals, uvs, colors, indices, material: mi < 0 ? defaultIndex : mi });
+      const px = prim.getExtras() as Record<string, unknown> | null;
+      primitives.push({ positions, normals, uvs, colors, indices, material: mi < 0 ? defaultIndex : mi, ...(px && Object.keys(px).length ? { extras: { ...px } } : {}) });
     }
   }
   if (needDefault) materials.push({ name: 'default', baseColor: [1, 1, 1, 1], baseColorTexture: null, emissive: [0, 0, 0], alphaMode: 'OPAQUE', alphaCutoff: 0.5, doubleSided: false, unlit: false, metallic: 1, roughness: 1, extras: {} });

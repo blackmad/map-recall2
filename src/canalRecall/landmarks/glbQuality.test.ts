@@ -381,3 +381,27 @@ test('material slot coverage is area-weighted; unlit decals are exempt; an empty
   assert.ok(full.coverage >= SLOT_COVERAGE_GATE);
   assert.equal(materialSlotCoverage({positions: [], indices: [], triMaterial: [], materials: []}).coverage, 1);
 });
+
+// A closed 20 x 12 x 10 m block with a raised walkway on its south side: deck 3-5.5 m off the wall at 3 m, on posts (one at each
+// end), joined to the wall by a solid stair block in the middle, open to the sky between deck and wall.
+function standoffDeck(wall = true) {
+  return [boxQuads(0, 0, 0, 20, 12, 10, wall ? [] : ['south']), boxQuads(0, 3, 13, 20, 3.3, 15.5), boxQuads(9, 0, 10, 11, 3.3, 13),
+    ...[0.15, 5, 15, 19.85].map(x => boxQuads(x - 0.15, 0, 13, x + 0.15, 3, 15.5))];
+}
+const deck = {bearing: 0, span: [[0, 10], [20, 10]] as [[number, number], [number, number]], reach: 6};
+
+test('a declared standoff deck exempts the rays under it that meet the wall behind; undeclared they fail', () => {
+  const undeclared = analyseSoup(soup(...standoffDeck()));
+  assert.ok(undeclared.seeThrough.rays > 0, JSON.stringify(undeclared.seeThrough));
+  const declared = analyseSoup(soup(...standoffDeck()), {standoffDecks: [deck]});
+  assert.equal(declared.seeThrough.rays, 0, JSON.stringify(declared.seeThrough));
+});
+
+test('a standoff deck does not exempt a missing wall behind it, rays on another bearing, or a strip elsewhere', () => {
+  const noWall = analyseSoup(soup(...standoffDeck(false)), {standoffDecks: [deck]});
+  assert.ok(noWall.seeThrough.rays > 0, JSON.stringify(noWall.seeThrough));
+  const wrongBearing = analyseSoup(soup(...standoffDeck()), {standoffDecks: [{...deck, bearing: 90}]});
+  assert.ok(wrongBearing.seeThrough.rays > 0, JSON.stringify(wrongBearing.seeThrough));
+  const elsewhere = analyseSoup(soup(...standoffDeck()), {standoffDecks: [{...deck, span: [[0, 0], [20, 0]], bearing: 180}]});
+  assert.ok(elsewhere.seeThrough.rays > 0, JSON.stringify(elsewhere.seeThrough));
+});

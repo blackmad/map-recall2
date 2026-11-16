@@ -1,0 +1,122 @@
+{
+ "schemaVersion": 1,
+ "id": "room-mate-aitana",
+ "pand": "0363100012239296",
+ "brief": "scripts/landmarks/room-mate-aitana-brief.md",
+ "signature": [
+  "curtain-grid",
+  "sloping-wing",
+  "light-strips"
+ ],
+ "walls": [
+  {
+   "tag": "w01-183",
+   "bearing": 183,
+   "lengthM": 24.9,
+   "centre": [
+    4.8944983,
+    52.3842977
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001899_pano_0000_000206",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "curtain-grid",
+     "kind": "window-shape",
+     "where": "the whole wall: dark grey transoms every 1.77 m from 8 m, main mullions every 3.1 m",
+     "approxSizeM": [
+      24.9,
+      36
+     ],
+     "plan": "modelled",
+     "how": "transom() clipped to the 3DBAG wall top, mullion() every 3.1 m",
+     "seenIn": "TMX7316010203-001899_pano_0000_000206"
+    },
+    {
+     "id": "light-strips",
+     "kind": "window-shape",
+     "where": "every second double row: a strip of opening lights with mullions at 1.5 m",
+     "approxSizeM": [
+      24.9,
+      1.77
+     ],
+     "plan": "modelled",
+     "how": "extra mullions and darker lights in rows 2, 6, 10 ...",
+     "seenIn": "TMX7316010203-001899_pano_0000_000206"
+    },
+    {
+     "id": "sloping-wing",
+     "kind": "other",
+     "where": "the lower wing whose roof slopes down towards the Westerdok (thumbnail, 3DBAG roof 15-34 m)",
+     "approxSizeM": [
+      70,
+      20
+     ],
+     "plan": "modelled",
+     "how": "the 3DBAG shell; the grid and a stepped coping follow the wall top",
+     "seenIn": "TMX7316010203-001899_pano_0000_000206"
+    },
+    {
+     "id": "curved-glass-end",
+     "kind": "other",
+     "where": "the glass end curves round the corner (aimed thumbnail)",
+     "approxSizeM": [
+      25,
+      40
+     ],
+     "plan": "simplified",
+     "how": "the 3DBAG facets, each with the same grid",
+     "seenIn": "TMX7316010203-001899_pano_0000_000206"
+    },
+    {
+     "id": "plinth-panels",
+     "kind": "other",
+     "where": "grey panelled plinth with service doors, 0-3.1 m",
+     "approxSizeM": [
+      12.3,
+      3.1
+     ],
+     "plan": "modelled",
+     "how": "grey panel slab with joints and two dark doors",
+     "seenIn": "TMX7316010203-001899_pano_0000_000206"
+    },
+    {
+     "id": "stair-hall",
+     "kind": "window-shape",
+     "where": "the glazed stair hall at the right: taller panes, the stair visible behind the glass",
+     "approxSizeM": [
+      7.5,
+      21
+     ],
+     "plan": "simplified",
+     "how": "the grid with the hall mullions at 19.9 and 22.3 m; the stair behind is not drawn",
+     "seenIn": "TMX7316010203-001899_pano_0000_000206"
+    },
+    {
+     "id": "floodlights",
+     "kind": "lamp",
+     "where": "two round floodlights on a bracket at about 18 m",
+     "approxSizeM": [
+      0.8,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001899_pano_0000_000206",
+     "skip": {
+      "reason": "too-small",
+      "note": "two 0.4 m lamps at 18 m"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

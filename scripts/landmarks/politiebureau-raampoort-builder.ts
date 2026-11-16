@@ -31,6 +31,8 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
     wall: 'brick', roof: 'slate',
     skip: s => s.rings[0].every(p => inBlob(p[0], p[2])) && s.rings[0].some(p => p[1] > 15),
     roofFor: s => (s.rings[0].every(p => Math.abs(p[1] - s.rings[0][0][1]) < 0.3) ? 'dark' : 'slate'),
+    // triangular 3DBAG wall slivers where the hips meet the flat block read as red shards above the cornice: roof colour
+    wallFor: s => (s.rings[0].length <= 4 && Math.min(...s.rings[0].map(p => p[1])) > 12.4 ? 'slate' : 'brick'),
   });
 
   // the rounded corner's 3DBAG facets stand 2-9 cm proud of the merged BAG ring (eaveOffset); its details stand on the shell
@@ -78,7 +80,7 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
     const n = Math.max(1, Math.round((t1 - t0) / 0.5));
     for (let k = 0; k < n; k++) archBand(b, f, t0 + ((k + 0.5) * (t1 - t0)) / n, y, (t1 - t0) / n, 0.42, 0.07, 0.1, 'brick', 0.0, 4);
     ledgeStrip(b, f, (t0 + t1) / 2, y + 0.42, t1 - t0, 0.12, 0.16, 'brick');
-    ledgeStrip(b, f, (t0 + t1) / 2, y + 0.6, t1 - t0, 0.25, 0.3, 'stone');
+    ledgeStrip(b, f, (t0 + t1) / 2, y + 0.6, t1 - t0, 0.25, 0.3, 'brick'); // brick, not stone: the photos show no pale cornice
   };
   /** Octagonal brick pinnacle with a stone ring and a slate cap at native point (x, z). */
   const pinnacle = (x: number, z: number, y0: number, y1: number, r = 0.34) => {
@@ -217,7 +219,9 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
     // square tower on the building axes (east front tangent), 4.1 m, centred on the blob
     const {f: e} = RF(11);
     const ax: [number, number] = [e.tangent[0], e.tangent[1]]; // north-ish
-    const cx = -1.2, cz = 5.2, H = 2.05, y0 = 9.7, y1 = 17.5; // the body runs down into the blob to the water-wing roof
+    // the body runs down into the blob to the water-wing roof and up clear of the north-east hip (3DBAG ridge 18.4 m): from across
+    // the water the shaft and clock stand above the pavilion under a short cap (TMX7316010203-000790_pano_0000_006114, blind review)
+    const cx = -1.2, cz = 5.2, H = 2.05, y0 = 9.7, y1 = 20.3;
     const faces: Frame[] = [];
     for (const [nx, nz] of [[ax[0], ax[1]], [ax[1], -ax[0]], [-ax[0], -ax[1]], [-ax[1], ax[0]]] as [number, number][]) {
       const tg: [number, number] = [nz, -nx];
@@ -229,20 +233,21 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
     body.rotateX(Math.PI / 2).translate(0, y1, 0);
     b.add(body, 'brick' as never);
     faces.forEach((f, k) => {
-      ledgeStrip(b, f, H, 15.03, 2 * H, 0.2, 0.12, 'stone');
+      ledgeStrip(b, f, H, 15.03, 2 * H, 0.2, 0.12, 'brick');
+      slab(b, f, H, 18.5, 2 * H, 0.2, 0.12, 'stone');
       corbels(f, 0.1, 2 * H - 0.1, y1 - 0.45);
       if (k === 0) { // north face: the clock (TMX7316010203-002552_pano_0002_001693)
-        disc(b, f, H, 16.05, 0.62, 0.08, 'gold');
-        disc(b, f, H, 16.05, 0.52, 0.12, 'dark');
-        slab(b, f, H, 16.05, 0.05, 0.42, 0.16, 'gold');
-        slab(b, f, H - 0.1, 16.05, 0.3, 0.05, 0.16, 'gold');
-        ringSlab(b, f, H, 16.05, 0.62, 0.74, 0.06, 'stone');
+        disc(b, f, H, 19.2, 0.62, 0.08, 'gold');
+        disc(b, f, H, 19.2, 0.52, 0.12, 'dark');
+        slab(b, f, H, 19.2, 0.05, 0.42, 0.16, 'gold');
+        slab(b, f, H - 0.1, 19.2, 0.3, 0.05, 0.16, 'gold');
+        ringSlab(b, f, H, 19.2, 0.62, 0.74, 0.06, 'stone');
       } else {
-        archSlab(b, f, H - 0.45, 15.25, 0.5, 1.2, 0.08, 'dark');
-        archSlab(b, f, H + 0.45, 15.25, 0.5, 1.2, 0.08, 'dark');
+        archSlab(b, f, H - 0.45, 18.75, 0.5, 1.0, 0.08, 'dark');
+        archSlab(b, f, H + 0.45, 18.75, 0.5, 1.0, 0.08, 'dark');
       }
     });
-    // slate spire: square pyramid with an overhang, finial and weather vane (w01 thumb: tip near 22.7 m, vane to 24)
+    // short slate cap: square pyramid with an overhang, finial and weather vane (w01 thumb: tip near 22.7 m, vane to 24)
     const top = y1 - 0.12, apex = 22.7, o = H + 0.18; // the spire's foot dips into the body so it is seated, not hovering
     const corner = (u: number, v: number) => [cx + ax[0] * u * o + ax[1] * v * o, cz + ax[1] * u * o - ax[0] * v * o];
     const base4 = [corner(1, 1), corner(1, -1), corner(-1, -1), corner(-1, 1)];

@@ -1,0 +1,1060 @@
+{
+ "receipt": {
+  "from": "lane R (lane/rows-r-buurt-erkers-20261115) commit 394d2f52b, data/buurt-generators/dewallen/audit.json, copied unchanged below on 2026-11-16 (coordinator: use as data, do not re-derive)",
+  "use": "scripts/retail-ground/build-templates.ts applyRedLightAudit"
+ },
+ "version": 1,
+ "generatedAt": "2026-11-16",
+ "source": "Lane R round 17: OSM redLight pands (data/retail-ground/shop-templates.json, De Wallen 52.370-52.377 N, east of 4.894 E) audited on open panoramas (Gemeente Amsterdam Panoramabeelden, CC BY 4.0), nearest street-side capture within 12 m",
+ "counts": {
+  "tagged": 69,
+  "viewWithin10m": 48,
+  "windowRows": 27,
+  "readNotDrawn": 3,
+  "closedOrNotWindow": 18,
+  "noView": 21
+ },
+ "fronts": [
+  {
+   "pandId": "0363100012165090",
+   "frontLine": [
+    [
+     4.898174996984302,
+     52.37469300235932
+    ],
+    [
+     4.898242996984314,
+     52.37468500235942
+    ]
+   ],
+   "lenM": 4.72,
+   "heightM": 8.85,
+   "panorama": "TMX7316010203-001177_pano_0000_000136",
+   "capturedAt": "2019-05-13",
+   "cameraM": 1.8,
+   "wall": {
+    "hex": "#423a32",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (TMX7316010203-001177_pano_0000_000136)"
+   },
+   "windowFront": {
+    "a0": 0.05,
+    "a1": 0.8,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "gathered",
+    "frameHex": "#2e2622"
+   },
+   "crown": "gable"
+  },
+  {
+   "pandId": "0363100012171853",
+   "frontLine": [
+    [
+     4.89910099701307,
+     52.37296600233704
+    ],
+    [
+     4.899127997012118,
+     52.37301700233787
+    ]
+   ],
+   "lenM": 5.97,
+   "heightM": 10.81,
+   "panorama": "TMX7316010203-000227_pano_0000_000841",
+   "capturedAt": "2017-03-29",
+   "cameraM": 2.9,
+   "wall": {
+    "hex": "#4b3e38",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (TMX7316010203-000227_pano_0000_000841)"
+   },
+   "windowFront": {
+    "a0": 0.48,
+    "a1": 0.91,
+    "doors": 2,
+    "tube": "doors",
+    "curtains": "gathered"
+   },
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012171947",
+   "frontLine": [
+    [
+     4.899127997012118,
+     52.37301700233787
+    ],
+    [
+     4.899154997011255,
+     52.373063002338625
+    ]
+   ],
+   "lenM": 5.44,
+   "heightM": 9.11,
+   "panorama": "TMX7316010203-000227_pano_0000_000844",
+   "capturedAt": "2017-03-29",
+   "cameraM": 3.9,
+   "wall": {
+    "hex": "#59544e",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (TMX7316010203-000227_pano_0000_000844)"
+   },
+   "windowFront": {
+    "a0": 0,
+    "a1": 1,
+    "doors": 5,
+    "tube": "none",
+    "curtains": "drawn"
+   },
+   "note": "red sign band over the head",
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012177702",
+   "frontLine": [
+    [
+     4.898591996999725,
+     52.37377600234724
+    ],
+    [
+     4.898556997000289,
+     52.37374800234672
+    ]
+   ],
+   "lenM": 3.92,
+   "heightM": 10.45,
+   "panorama": "b_20250114_1026_Track02_Sphere_00194",
+   "capturedAt": "2025-01-14",
+   "cameraM": 3.7,
+   "wall": {
+    "hex": "#746959",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (b_20250114_1026_Track02_Sphere_00194)"
+   },
+   "windowFront": {
+    "a0": 0,
+    "a1": 1,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "drawn",
+    "frameHex": "#26392e"
+   },
+   "note": "dark green leaves in a cream surround",
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012177728",
+   "frontLine": [
+    [
+     4.89730899698963,
+     52.37448600235353
+    ],
+    [
+     4.897340996988896,
+     52.374524002354185
+    ]
+   ],
+   "lenM": 4.76,
+   "heightM": 12.87,
+   "panorama": "TMX7316010203-001177_pano_0000_000149",
+   "capturedAt": "2019-05-13",
+   "cameraM": 5.2,
+   "wall": {
+    "hex": "#4b4535",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (TMX7316010203-001177_pano_0000_000149)"
+   },
+   "windowFront": {
+    "a0": 0,
+    "a1": 1,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "gathered",
+    "frameHex": "#3a2c22"
+   },
+   "confidence": "low",
+   "crown": "gable"
+  },
+  {
+   "pandId": "0363100012177899",
+   "frontLine": [
+    [
+     4.899184997014447,
+     52.372879002336035
+    ],
+    [
+     4.899104997014263,
+     52.37289800233606
+    ]
+   ],
+   "lenM": 5.84,
+   "heightM": 9.47,
+   "panorama": "TMX7316010203-002629_pano_0001_000970",
+   "capturedAt": "2022-06-27",
+   "cameraM": 2.6,
+   "wall": {
+    "hex": "#5a4740",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (TMX7316010203-002629_pano_0001_000970)"
+   },
+   "windowFront": {
+    "a0": 0.1,
+    "a1": 1,
+    "doors": 4,
+    "tube": "none",
+    "curtains": "drawn"
+   },
+   "note": "diamond transom lights; sign band",
+   "crown": "gable"
+  },
+  {
+   "pandId": "0363100012177913",
+   "frontLine": [
+    [
+     4.899576996997522,
+     52.373796002350666
+    ],
+    [
+     4.899539996998207,
+     52.373761002350044
+    ]
+   ],
+   "lenM": 4.64,
+   "heightM": 17.8,
+   "panorama": "recording_2025-06-30_05-16-46_01529",
+   "capturedAt": "2025-06-30",
+   "cameraM": 3,
+   "wall": {
+    "hex": "#6f6e70",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (recording_2025-06-30_05-16-46_01529)"
+   },
+   "windowFront": {
+    "a0": 0.27,
+    "a1": 0.93,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "gathered"
+   },
+   "note": "red scalloped awning (not drawn)",
+   "crown": "unread"
+  },
+  {
+   "pandId": "0363100012177915",
+   "frontLine": [
+    [
+     4.899383997000953,
+     52.37362200234751
+    ],
+    [
+     4.899350997001563,
+     52.373591002346956
+    ]
+   ],
+   "lenM": 4.12,
+   "heightM": 15.67,
+   "panorama": "recording_2025-06-30_05-16-46_01524",
+   "capturedAt": "2025-06-30",
+   "cameraM": 3.7,
+   "wall": {
+    "hex": "#785461",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (recording_2025-06-30_05-16-46_01524)"
+   },
+   "windowFront": {
+    "a0": 0.1,
+    "a1": 0.95,
+    "doors": 2,
+    "tube": "none",
+    "curtains": "drawn"
+   },
+   "note": "red scalloped awnings (not drawn)",
+   "crown": "unread"
+  },
+  {
+   "pandId": "0363100012177916",
+   "frontLine": [
+    [
+     4.899418997000341,
+     52.37365300234807
+    ],
+    [
+     4.899383997000953,
+     52.37362200234751
+    ]
+   ],
+   "lenM": 4.19,
+   "heightM": 13.5,
+   "panorama": "recording_2025-06-30_05-16-46_01525",
+   "capturedAt": "2025-06-30",
+   "cameraM": 3.4,
+   "wall": {
+    "hex": "#646863",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (recording_2025-06-30_05-16-46_01525)"
+   },
+   "windowFront": {
+    "a0": 0.48,
+    "a1": 0.95,
+    "doors": 1,
+    "tube": "none",
+    "curtains": "drawn"
+   },
+   "note": "red scalloped awning (not drawn)",
+   "crown": "gable"
+  },
+  {
+   "pandId": "0363100012177949",
+   "frontLine": [
+    [
+     4.899068997000449,
+     52.37368400234742
+    ],
+    [
+     4.899123996999463,
+     52.37373400234832
+    ]
+   ],
+   "lenM": 6.71,
+   "heightM": 16.23,
+   "panorama": "b_20250114_1026_Track06_Sphere_00025",
+   "capturedAt": "2025-01-14",
+   "cameraM": 2.2,
+   "wall": {
+    "hex": "#504532",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (b_20250114_1026_Track06_Sphere_00025)"
+   },
+   "windowFront": {
+    "a0": 0.25,
+    "a1": 0.75,
+    "doors": 2,
+    "tube": "none",
+    "curtains": "gathered"
+   },
+   "note": "alley wall",
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012177961",
+   "frontLine": [
+    [
+     4.89995199699056,
+     52.374151002357046
+    ],
+    [
+     4.899908996991328,
+     52.37411200235634
+    ]
+   ],
+   "lenM": 5.23,
+   "heightM": 14.41,
+   "panorama": "b_20250114_1026_Track06_Sphere_00158",
+   "capturedAt": "2025-01-14",
+   "cameraM": 2.9,
+   "wall": {
+    "hex": "#504533",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (b_20250114_1026_Track06_Sphere_00158)"
+   },
+   "windowFront": {
+    "a0": 0.1,
+    "a1": 0.48,
+    "doors": 1,
+    "tube": "none",
+    "curtains": "gathered"
+   },
+   "crown": "gable"
+  },
+  {
+   "pandId": "0363100012177978",
+   "frontLine": [
+    [
+     4.899718996989082,
+     52.37425900235789
+    ],
+    [
+     4.899759996988388,
+     52.37429400235853
+    ]
+   ],
+   "lenM": 4.79,
+   "heightM": 14.73,
+   "panorama": "TMX7316010203-002629_pano_0001_001028",
+   "capturedAt": "2022-06-27",
+   "cameraM": 1.7,
+   "wall": {
+    "hex": "#56514d",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (TMX7316010203-002629_pano_0001_001028)"
+   },
+   "windowFront": {
+    "a0": 0.08,
+    "a1": 0.72,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "drawn"
+   },
+   "note": "red transom lights; sign band",
+   "crown": "gable"
+  },
+  {
+   "pandId": "0363100012177979",
+   "frontLine": [
+    [
+     4.899760996988387,
+     52.37429400235853
+    ],
+    [
+     4.899797996987735,
+     52.37432700235914
+    ]
+   ],
+   "lenM": 4.45,
+   "heightM": 12.32,
+   "panorama": "TMX7316010203-002629_pano_0001_001027",
+   "capturedAt": "2022-06-27",
+   "cameraM": 1.6,
+   "wall": {
+    "hex": "#4d4c4a",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (TMX7316010203-002629_pano_0001_001027)"
+   },
+   "windowFront": {
+    "a0": 0.15,
+    "a1": 0.73,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "gathered"
+   },
+   "crown": "gable"
+  },
+  {
+   "pandId": "0363100012177984",
+   "frontLine": [
+    [
+     4.899643996990369,
+     52.3741940023567
+    ],
+    [
+     4.899680996989718,
+     52.374227002357294
+    ]
+   ],
+   "lenM": 4.45,
+   "heightM": 14.71,
+   "panorama": "b_20250114_1026_Track06_Sphere_00012",
+   "capturedAt": "2025-01-14",
+   "cameraM": 1.9,
+   "wall": {
+    "hex": "#5c4a34",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (b_20250114_1026_Track06_Sphere_00012)"
+   },
+   "windowFront": {
+    "a0": 0.05,
+    "a1": 0.65,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "drawn"
+   },
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012177985",
+   "frontLine": [
+    [
+     4.900066996988461,
+     52.37425800235898
+    ],
+    [
+     4.900041996988947,
+     52.37423300235853
+    ]
+   ],
+   "lenM": 3.26,
+   "heightM": 10.06,
+   "panorama": "recording_2025-06-30_05-16-46_01541",
+   "capturedAt": "2025-06-30",
+   "cameraM": 3.6,
+   "wall": {
+    "hex": "#6c6968",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (recording_2025-06-30_05-16-46_01541)"
+   },
+   "windowFront": {
+    "a0": 0.3,
+    "a1": 0.95,
+    "doors": 2,
+    "tube": "none",
+    "curtains": "drawn",
+    "frameHex": "#ecebe4"
+   },
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012177991",
+   "frontLine": [
+    [
+     4.900093996987952,
+     52.374284002359445
+    ],
+    [
+     4.900067996988477,
+     52.374257002358966
+    ]
+   ],
+   "lenM": 3.49,
+   "heightM": 9.33,
+   "panorama": "recording_2025-06-30_05-16-46_01542",
+   "capturedAt": "2025-06-30",
+   "cameraM": 3.4,
+   "wall": {
+    "hex": "#5d544f",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (recording_2025-06-30_05-16-46_01542)"
+   },
+   "windowFront": {
+    "a0": 0.03,
+    "a1": 1,
+    "doors": 3,
+    "tube": "run",
+    "curtains": "drawn"
+   },
+   "note": "tuned on (round 16)",
+   "tunedOn": true,
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012177992",
+   "frontLine": [
+    [
+     4.90013099698716,
+     52.37432500236016
+    ],
+    [
+     4.900093996987952,
+     52.374284002359445
+    ]
+   ],
+   "lenM": 5.21,
+   "heightM": 15.72,
+   "panorama": "b_20250114_1026_Track06_Sphere_00162",
+   "capturedAt": "2025-01-14",
+   "cameraM": 2.7,
+   "wall": {
+    "hex": "#64503e",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (b_20250114_1026_Track06_Sphere_00162)"
+   },
+   "windowFront": {
+    "a0": 0.15,
+    "a1": 0.97,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "drawn"
+   },
+   "note": "sign band",
+   "crown": "gable"
+  },
+  {
+   "pandId": "0363100012177994",
+   "frontLine": [
+    [
+     4.899372996995092,
+     52.373955002352346
+    ],
+    [
+     4.899417996994302,
+     52.37399500235307
+    ]
+   ],
+   "lenM": 5.4,
+   "heightM": 13.59,
+   "panorama": "recording_2025-06-30_05-16-46_01564",
+   "capturedAt": "2025-06-30",
+   "cameraM": 2.7,
+   "wall": {
+    "hex": "#a3a091",
+    "finish": "paint",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (recording_2025-06-30_05-16-46_01564)"
+   },
+   "windowFront": {
+    "a0": 0,
+    "a1": 0.75,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "gathered",
+    "frameHex": "#ecebe4"
+   },
+   "note": "red scalloped awning (not drawn)",
+   "crown": "unread"
+  },
+  {
+   "pandId": "0363100012177997",
+   "frontLine": [
+    [
+     4.900228996985182,
+     52.37442700236196
+    ],
+    [
+     4.900189996985977,
+     52.37438600236124
+    ]
+   ],
+   "lenM": 5.28,
+   "heightM": 13.06,
+   "panorama": "recording_2025-06-30_05-16-46_01545",
+   "capturedAt": "2025-06-30",
+   "cameraM": 2.7,
+   "wall": {
+    "hex": "#6a5a65",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (recording_2025-06-30_05-16-46_01545)"
+   },
+   "windowFront": {
+    "a0": 0.45,
+    "a1": 1,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "gathered",
+    "frameHex": "#ecebe4"
+   },
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012178274",
+   "frontLine": [
+    [
+     4.898878996985555,
+     52.37454700235943
+    ],
+    [
+     4.898918996984667,
+     52.37459300236023
+    ]
+   ],
+   "lenM": 5.8,
+   "heightM": 9.52,
+   "panorama": "b_20250114_1026_Track02_Sphere_00060",
+   "capturedAt": "2025-01-14",
+   "cameraM": 4.2,
+   "wall": {
+    "hex": "#a59394",
+    "finish": "paint",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (b_20250114_1026_Track02_Sphere_00060)"
+   },
+   "windowFront": {
+    "a0": 0.1,
+    "a1": 0.8,
+    "doors": 4,
+    "tube": "doors",
+    "curtains": "drawn",
+    "frameHex": "#1e3328"
+   },
+   "note": "two tubes, each over a pair of doors (kit: one per door)",
+   "crown": "hip"
+  },
+  {
+   "pandId": "0363100012178276",
+   "frontLine": [
+    [
+     4.898742996985121,
+     52.374586002359564
+    ],
+    [
+     4.898808996985333,
+     52.3745670023595
+    ]
+   ],
+   "lenM": 4.97,
+   "heightM": 11.74,
+   "panorama": "TMX7316010203-001177_pano_0000_000128",
+   "capturedAt": "2019-05-13",
+   "cameraM": 4.5,
+   "wall": {
+    "hex": "#74625f",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (TMX7316010203-001177_pano_0000_000128)"
+   },
+   "windowFront": {
+    "a0": 0.05,
+    "a1": 0.95,
+    "doors": 4,
+    "tube": "doors",
+    "curtains": "gathered"
+   },
+   "note": "tuned on (round 16)",
+   "tunedOn": true,
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012178278",
+   "frontLine": [
+    [
+     4.897915996984443,
+     52.37471300235879
+    ],
+    [
+     4.897989996984389,
+     52.37470800235895
+    ]
+   ],
+   "lenM": 5.07,
+   "heightM": 14.51,
+   "panorama": "b_20250114_1026_Track12_Sphere_00008",
+   "capturedAt": "2025-01-14",
+   "cameraM": 3.3,
+   "wall": {
+    "hex": "#d2ac93",
+    "finish": "paint",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (b_20250114_1026_Track12_Sphere_00008)"
+   },
+   "windowFront": {
+    "a0": 0.38,
+    "a1": 0.92,
+    "doors": 2,
+    "tube": "doors",
+    "curtains": "drawn",
+    "frameHex": "#26392e"
+   },
+   "note": "arched cream surround; orange tubes, one over each window",
+   "crown": "unread"
+  },
+  {
+   "pandId": "0363100012178293",
+   "frontLine": [
+    [
+     4.898726997006343,
+     52.37338700234199
+    ],
+    [
+     4.8987559970058285,
+     52.37341300234247
+    ]
+   ],
+   "lenM": 3.5,
+   "heightM": 14.35,
+   "panorama": "b_20250114_1026_Track06_Sphere_00034",
+   "capturedAt": "2025-01-14",
+   "cameraM": 3.5,
+   "wall": {
+    "hex": "#884b36",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (b_20250114_1026_Track06_Sphere_00034)"
+   },
+   "windowFront": {
+    "a0": 0,
+    "a1": 1,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "drawn"
+   },
+   "note": "sign band",
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012178478",
+   "frontLine": [
+    [
+     4.897603996985997,
+     52.374659002357
+    ],
+    [
+     4.897683996985524,
+     52.374677002357515
+    ]
+   ],
+   "lenM": 5.8,
+   "heightM": 11.29,
+   "panorama": "b_20250114_1026_Track12_Sphere_00012",
+   "capturedAt": "2025-01-14",
+   "cameraM": 3.3,
+   "wall": {
+    "hex": "#644d41",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (b_20250114_1026_Track12_Sphere_00012)"
+   },
+   "windowFront": {
+    "a0": 0,
+    "a1": 0.85,
+    "doors": 3,
+    "tube": "doors",
+    "curtains": "drawn",
+    "frameHex": "#1e3328"
+   },
+   "crown": "gable"
+  },
+  {
+   "pandId": "0363100012178802",
+   "frontLine": [
+    [
+     4.898383997021824,
+     52.37254800232867
+    ],
+    [
+     4.898444997022078,
+     52.37252700232855
+    ]
+   ],
+   "lenM": 4.77,
+   "heightM": 14.24,
+   "panorama": "TMX7316010203-001662_pano_0000_000276",
+   "capturedAt": "2020-04-21",
+   "cameraM": 2.4,
+   "wall": {
+    "hex": "#99937d",
+    "finish": "paint",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (TMX7316010203-001662_pano_0000_000276)"
+   },
+   "windowFront": {
+    "a0": 0,
+    "a1": 0.85,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "drawn"
+   },
+   "note": "grey scalloped awnings (not drawn)",
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012178994",
+   "frontLine": [
+    [
+     4.898011997025621,
+     52.37237400232495
+    ],
+    [
+     4.897970997026339,
+     52.3723380023243
+    ]
+   ],
+   "lenM": 4.88,
+   "heightM": 17.54,
+   "panorama": "b_20250114_1026_Track06_Sphere_00110",
+   "capturedAt": "2025-01-14",
+   "cameraM": 2.8,
+   "wall": {
+    "hex": "#55503a",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (b_20250114_1026_Track06_Sphere_00110)"
+   },
+   "windowFront": {
+    "a0": 0.05,
+    "a1": 0.95,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "drawn"
+   },
+   "note": "brown awnings (not drawn); 'In den Lichtenkooi' lettering",
+   "crown": "cornice"
+  },
+  {
+   "pandId": "0363100012182846",
+   "frontLine": [
+    [
+     4.899104997014263,
+     52.37289800233606
+    ],
+    [
+     4.899058997014086,
+     52.372913002336134
+    ]
+   ],
+   "lenM": 3.55,
+   "heightM": 8.47,
+   "panorama": "TMX7316010203-002629_pano_0001_000971",
+   "capturedAt": "2022-06-27",
+   "cameraM": 2.6,
+   "wall": {
+    "hex": "#5c4844",
+    "finish": "brick",
+    "source": "median of the wall pixels (glass, frames and openings dropped) of the rectified capture 3.4-5.0 m over the pavement (TMX7316010203-002629_pano_0001_000971)"
+   },
+   "windowFront": {
+    "a0": 0.2,
+    "a1": 0.78,
+    "doors": 3,
+    "tube": "none",
+    "curtains": "drawn"
+   },
+   "note": "diamond transom lights",
+   "crown": "gable"
+  }
+ ],
+ "readNotDrawn": [
+  {
+   "pandId": "0363100012177945",
+   "why": "window row (3 doors, a red tube run) on a one-storey annex 2.9 m tall: the kit draws on a row roof over two storeys or more"
+  },
+  {
+   "pandId": "0363100012177965",
+   "why": "window row on a raised ground storey over a basement behind a stoop: the part stands on the pavement"
+  },
+  {
+   "pandId": "0363100012178394",
+   "why": "basement window doors under raised windows: the part stands on the pavement with a 2.7 m head"
+  }
+ ],
+ "notWindow": [
+  {
+   "pandId": "0363100012171845",
+   "why": "shop (Kinky Boutique)"
+  },
+  {
+   "pandId": "0363100012171859",
+   "why": "plastered wall with a door"
+  },
+  {
+   "pandId": "0363100012171946",
+   "why": "houses: doors and net-curtained windows"
+  },
+  {
+   "pandId": "0363100012177704",
+   "why": "house with a stoop"
+  },
+  {
+   "pandId": "0363100012177920",
+   "why": "bar behind glazed doors"
+  },
+  {
+   "pandId": "0363100012177923",
+   "why": "closed: rolling shutters down"
+  },
+  {
+   "pandId": "0363100012177955",
+   "why": "closed: dark, Rooms2Rent sign"
+  },
+  {
+   "pandId": "0363100012178003",
+   "why": "cafe interior behind festoon curtains"
+  },
+  {
+   "pandId": "0363100012178007",
+   "why": "shop over a basement"
+  },
+  {
+   "pandId": "0363100012178012",
+   "why": "house over a basement (low)"
+  },
+  {
+   "pandId": "0363100012178292",
+   "why": "red windows over a basement, not a ground row"
+  },
+  {
+   "pandId": "0363100012178726",
+   "why": "cafe under an awning"
+  },
+  {
+   "pandId": "0363100012178731",
+   "why": "house"
+  },
+  {
+   "pandId": "0363100012178803",
+   "why": "tattoo shop"
+  },
+  {
+   "pandId": "0363100012178806",
+   "why": "awninged glass shop"
+  },
+  {
+   "pandId": "0363100012178927",
+   "why": "display window with a chair (low)"
+  },
+  {
+   "pandId": "0363100012179003",
+   "why": "closed: boarded, posters"
+  },
+  {
+   "pandId": "0363100012179005",
+   "why": "empty glazed shop (low)"
+  }
+ ],
+ "noView": [
+  {
+   "pandId": "0363100012165375",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012171244",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012171948",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012171949",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012172027",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012177701",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012177908",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012177917",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012177918",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012177919",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012177928",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012177930",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012177947",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012177948",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012177950",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012177988",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012178301",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012178395",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012178843",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012178910",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  },
+  {
+   "pandId": "0363100012178923",
+   "why": "no street-side panorama within 12 m of any exposed wall"
+  }
+ ]
+}

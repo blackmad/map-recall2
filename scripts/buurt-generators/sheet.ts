@@ -3,7 +3,7 @@
  * three at one scale on the row's front line, from a cached municipal panorama. Node only; nothing is fetched.
  *
  *   node --import tsx scripts/buurt-generators/sheet.ts --district=rivierenbuurt --row=<row id> \
- *        --pano=<pano id> --pano-search=<cached panorama search .json> [--ppm=40] [--out=<file.jpg>]
+ *        --pano=<pano id> --pano-search=<cached panorama search .json> [--ppm=40] [--out=<file.jpg>] [--records=<row-front.json>]
  *
  * photo   the panorama rectified onto the line from the first member's left front corner to the last member's right
  *         one (scripts/pand-reference/rectify.ts; the equirectangular_full link is dropped so only the cached medium
@@ -30,6 +30,8 @@ if (!rowId || !panoId || !search) { console.error('sheet --district=<d> --row=<r
 const ppm = Number(arg('ppm') ?? 40);
 const stage = `artifacts/buurt-generators/${district}`;
 const out = arg('out') ?? path.join(stage, 'sheets', rowId, 'sheet.jpg');
+// --records: the after band's records (a kit trial on a copy of the staged file); default the district's staged file.
+const recordsFile = arg('records') ?? path.join(stage, 'row-front.json');
 const work = path.join(path.dirname(out), 'renders');
 
 const row = (JSON.parse(fs.readFileSync(path.join(stage, 'rows.json'), 'utf8')).rows as any[]).find(r => r.id === rowId);
@@ -81,7 +83,7 @@ async function band(env: Record<string, string>, tag: string, inputs: readonly s
 const restore = Object.fromEntries(Object.keys(process.env).filter(k => /^(ROW_|BUURT_KIT|HOUSE_SPEC)/.test(k)).map(k => [k, '']));
 // `before` is the game today: keyed on the published row-front records (a proxy for a publish since the last sheet).
 const before = await band({ ...restore }, 'before', ['public/data/front-records/row-front.json']);
-const after = await band({ ...restore, ROW_FRONT: '1', ROW_FRONT_RECORDS: path.join(stage, 'row-front.json'), BUURT_KIT: '1' }, 'after', [path.join(stage, 'row-front.json')]);
+const after = await band({ ...restore, ROW_FRONT: '1', ROW_FRONT_RECORDS: recordsFile, BUURT_KIT: '1' }, 'after', [recordsFile]);
 
 // The photo is rectified member by member, each on its own front line, and set at its span on the row line (lane D round
 // 13: a bent row rectified on one chord misplaced its houses; Keizersgracht 169442, whose 55 m row turns ~20 degrees, drew

@@ -3,6 +3,9 @@
 // street wall nearest the POI. Flat-colour triangles in the sign layer (threeBuildingMesh SignTri), so no texture
 // layer is spent: the atlas has two free layers. Pure (no DOM): runs in the mesh worker and in Node tests.
 import { glyphLayout } from './retailLogos.js';
+import { goodsCell, goodsTiles } from './retailGoods.js';
+import { drawRedLightFront, type RedLightFront } from './groundParts/redLightFront.js';
+import { capShare, titleCase, typeLayout, type TypeFace } from './retailTypeFaces.js';
 import { BIKE, bikeQuads, outsideBikes, SHOW_HEXES, USED_HEXES, type BikeClass } from './retailBikes.js';
 import { signText, TEMPLATE_LOOKS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
 
@@ -116,14 +119,15 @@ class Builder {
   }
   /** The word centred on [a0, a1] at height zMid, letters at most `maxH` m tall, from the logo layer's lettering cell
    *  (retailLogos.ts glyphLayout); the shortest form that fits at legible size (fitWord), else nothing: a plain board. */
-  word(text: string, a0: number, a1: number, zMid: number, o: number, maxH: number, hex: string, board: string, lit: boolean, layer: number | undefined): void {
-    if (layer === undefined) return;
-    const fit = fitWord(text, a1 - a0, maxH);
+  word(text: string, a0: number, a1: number, zMid: number, o: number, maxH: number, hex: string, board: string, lit: boolean, layer: number | undefined, face?: { face: TypeFace; layer: number }): void {
+    if (layer === undefined && !face) return;
+    const fit = fitWord(text, a1 - a0, maxH, face?.face);
     if (!fit) return;
-    const { quads, width } = glyphLayout(fit.text), h = fit.heightM, w0 = (a0 + a1) / 2 - (width * h) / 2;
+    const { quads, width } = face ? typeLayout(face.face, fit.text) : glyphLayout(fit.text), h = fit.heightM, w0 = (a0 + a1) / 2 - (width * h) / 2;
+    if (face) layer = face.layer;
     for (const q of quads) {
       const first = this.out.length;
-      this.textured(w0 + q.a0 * h, w0 + q.a1 * h, o, zMid - h / 2, zMid + h / 2, layer, q.rect);
+      this.textured(w0 + q.a0 * h, w0 + q.a1 * h, o, zMid - h / 2, zMid + h / 2, layer!, q.rect);
       for (const t of this.out.slice(first)) { t.hex = hex; t.accentHex = board; if (!lit) delete t.lit; }
     }
   }
@@ -147,13 +151,16 @@ export const strokePx = (m: number, distM = 12, vfovDeg = 72, heightPx = 900) =>
  * The lettering a fascia `availM` wide draws: the whole text if it fits at a letter height of at least MIN_LETTER_H,
  * else the longest leading run of whole words that does, else null (a plain board: broken letters read worse than none).
  */
-export function fitWord(text: string, availM: number, maxH: number): { text: string; heightM: number; widthM: number } | null {
+export function fitWord(text: string, availM: number, maxH: number, face?: TypeFace): { text: string; heightM: number; widthM: number } | null {
   const words = text.trim().split(/\s+/).filter(Boolean);
+  // Lane retail-real: a face's quad is its whole row (ascender to descender), so its minimum keeps the same cap height
+  // as the bold sans at MIN_LETTER_H (caps 0.725 of that quad).
+  const minH = face ? MIN_LETTER_H * 0.725 / capShare(face) : MIN_LETTER_H;
   for (let k = words.length; k >= 1; k--) {
-    const t = words.slice(0, k).join(' '), { quads, width } = glyphLayout(t);
+    const t = words.slice(0, k).join(' '), { quads, width } = face ? typeLayout(face, t) : glyphLayout(t);
     if (!quads.length || width <= 0) continue;
     const heightM = Math.min(maxH, availM / width);
-    if (heightM >= MIN_LETTER_H - 1e-9) return { text: t, heightM, widthM: width * heightM };
+    if (heightM >= minH - 1e-9) return { text: t, heightM, widthM: width * heightM };
   }
   return null;
 }
@@ -439,6 +446,19 @@ export type RetailFrontInput = {
   /** Round 7: the awning measured on a street panorama (measure-awning.ts, staged per pand), over the window in this
    *  colour, in place of the template's (the black awnings of Unique Eyefashion, Gall & Gall). Absent: the template's. */
   awning?: string;
+  /** Lane retail-real: the first window-goods layer (retailPages.ts GOODS_BASE from the logo layer); with it a template
+   *  with `goods` shows its goods cell in every pane tile. Absent: round n's interior. */
+  goods?: number;
+  /** Lane retail-real: the first lettering-face layer (retailPages.ts TYPE_BASE); with it a template with `face` letters
+   *  its word in that face. Absent: the bold sans. */
+  faces?: number;
+  /** Lane retail-real: a chain's board and letter colours and its name (lettered when it has no logo). */
+  chain?: { fascia: string; letters: string; word: string };
+  /** Lane retail-real: the host front's ground-floor cells across [s0, s1] where a read or register traced them
+   *  (specRecipe.groundBoxes); a red-light front puts one door in each. Absent: doors at the measured 1.15 m pitch. */
+  bays?: number;
+  /** Lane retail-real: lane R's audited window front (doors, tube, curtains, frame) for this pand; it outranks `bays`. */
+  redLight?: RedLightFront;
 };
 
 /** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
@@ -512,10 +532,22 @@ const REFLECT = ['#7d878e', '#5f676c'] as const;
  * always in a recess; the glass reflecting the street over its upper third.
  */
 export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: number, s1: number, base: number, groundM: number): FrontTri[] {
-  const look = TEMPLATE_LOOKS[input.template];
+  // Lane retail-real: a chain (retailChains.ts) draws its type's template under its own board and letter colours.
+  const look: TemplateLook = input.chain ? { ...TEMPLATE_LOOKS[input.template], fascia: input.chain.fascia, letters: input.chain.letters, cap: undefined, word: undefined, face: undefined } : TEMPLATE_LOOKS[input.template];
   if (s1 - s0 < 1.2) return [];
   const b = new Builder(e);
   const top = base + Math.min(Math.max(2.8, groundM), 4.6) - FRONT.fasciaGapM, bottom = top - FRONT.fasciaM;
+  // Lane retail-real (coordinator 2026-11-15): a red-light front is lane R's window-front part (groundParts/
+  // redLightFront.ts: glazed doors in a cream frame, kick panels, curtains, a lit red tube on the head), with no pui
+  // fascia, riser or recessed door; `?retailReal=0` keeps round n's redGlow box.
+  if (look.content === 'redGlow' && look.goods && input.goods !== undefined) {
+    const n = Math.floor(hash01(input.seed + ":redLight") * 12);
+    // Unaudited (no usable view): the audit's majority, no tube (21 of 27) and drawn curtains (17 of 27); one pand in
+    // four gathered, so a run of windows is not uniform.
+    const spec: RedLightFront = input.redLight ?? { ...(input.bays ? { doors: input.bays } : {}), tube: 'none', curtains: n % 4 === 1 ? 'gathered' : 'drawn' };
+    drawRedLightFront(b, s0, s1, base, 0, spec);
+    return b.out;
+  }
   const frame = input.paint ?? look.frame ?? '#2b2724', head = doorHead(base, groundM), puiTop = bottom - FRONT.beadM;
   const timber = look.surround ?? frame, riser = look.surround ?? shadeHex(frame, 1.12);
   // Fascia board, a cornice cap over it (a step darker, standing further out) and a bead under it.
@@ -526,11 +558,19 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   b.slab(s0, s1, 0.01, FRONT.fasciaOutM, bottom, top, board, 'bottom', true, look.lit);
   b.slab(s0 - 0.04, s1 + 0.04, 0.01, FRONT.capOutM, top, top + FRONT.capM, cap, 'bottom');
   b.slab(s0, s1, 0.01, FRONT.fasciaOutM - 0.02, puiTop, bottom, frame, 'bottom');
-  const word = look.word === 'name' ? (input.word ? signText(input.word) : input.word) : look.word;
+  const word = input.chain ? input.chain.word : look.word === 'name' ? (input.word ? signText(input.word) : input.word) : look.word;
   if (input.logo) {
-    const hM = FRONT.fasciaM - 0.1, wM = Math.min(s1 - s0 - 0.4, hM * input.logo.aspect), mid = (s0 + s1) / 2;
-    b.textured(mid - wM / 2, mid + wM / 2, FRONT.fasciaOutM + FRONT.letterOutM, bottom + 0.05, bottom + 0.05 + (wM / input.logo.aspect), input.logo.layer, input.logo.rect);
-  } else if (word) b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, FRONT.fasciaOutM + FRONT.letterOutM, MAX_LETTER_H, ink, board, look.lit, input.letters);
+    // Lane retail-real: a square-ish mark (Lidl, Aldi, Vodafone, Burger King) is a lightbox larger than the board, as on
+    // the street (centred on it, up to 0.95 m); a wordmark keeps to the board.
+    const box = input.goods !== undefined && input.logo.aspect < 1.6;
+    const hM = box ? 0.95 : FRONT.fasciaM - 0.1, wM = Math.min(s1 - s0 - 0.4, hM * input.logo.aspect), mid = (s0 + s1) / 2;
+    const z0 = box ? (top + bottom) / 2 - wM / input.logo.aspect / 2 : bottom + 0.05;
+    b.textured(mid - wM / 2, mid + wM / 2, FRONT.fasciaOutM + FRONT.letterOutM + (box ? 0.03 : 0), z0, z0 + (wM / input.logo.aspect), input.logo.layer, input.logo.rect);
+  } else if (word) {
+    const face = look.face && input.faces !== undefined ? { face: look.face, layer: input.faces + ['serif', 'condensed', 'script'].indexOf(look.face) } : undefined;
+    // A face's quad spans its row, so it may fill the board (less a margin); the bold sans keeps MAX_LETTER_H.
+    b.word(face?.face === 'script' && look.word === 'name' ? titleCase(word) : word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, FRONT.fasciaOutM + FRONT.letterOutM, face ? FRONT.fasciaM - 0.04 : MAX_LETTER_H, ink, board, look.lit, input.letters, face);
+  }
   const windows = look.content === 'redGlow';
   // End posts: the pui's frame against the neighbours, in the timber or the frame colour.
   if (!windows) { b.fin(s0, s0 + FRONT.postM, 0, FRONT.frameOutM, base, puiTop, timber); b.fin(s1 - FRONT.postM, s1, 0, FRONT.frameOutM, base, puiTop, timber); }
@@ -564,7 +604,15 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     // pane nobody reads at ride distance).
     b.panel(c0, c1, 0.015, base, zr, riser);
     b.slab(c0 - 0.02, c1 + 0.02, 0, FRONT.sillOutM + 0.03, zr - 0.05, zr, frame, 'top');
-    if (input.interior && !OWN_LIGHT.has(look.content) && look.content !== 'barGlow') {
+    if (look.goods && input.goods !== undefined) {
+      // Lane retail-real: the pane cut into tiles of the template's goods cell (alternate tiles mirrored).
+      const cell = goodsCell(look.goods), layer = input.goods + cell.page, [u0, v0, u1, v1] = cell.rect;
+      for (let k = 0; k < panes; k++) for (const t of goodsTiles(c0 + k * pw, c0 + (k + 1) * pw)) {
+        const first = b.out.length;
+        b.textured(t.a0, t.a1, FRONT.contentOutM, zr, head, layer, t.flip ? [u1, v0, u0, v1] : [u0, v0, u1, v1]);
+        if (!look.lit) for (const tr of b.out.slice(first)) delete tr.lit;
+      }
+    } else if (input.interior && !OWN_LIGHT.has(look.content) && look.content !== 'barGlow') {
       // Round 3c (cost): each pane's interior is one quad of the building's own shop cell (bayTextures puiAt: its dark
       // interior, shelf glow and the street's reflection), in place of the flat-colour goods.
       for (let k = 0; k < panes; k++) {

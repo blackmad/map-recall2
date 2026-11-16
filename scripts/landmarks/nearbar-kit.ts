@@ -244,6 +244,36 @@ export function ringFrame(ring: number[][], i: number, off = 0, into = false): {
   if (inRingXZ(ring, (a[0] + c[0]) / 2 + n[0] * 0.4, (a[1] + c[1]) / 2 + n[1] * 0.4) !== into) { n = [tz, -tx]; tangent = [-tx, -tz]; o = c; }
   return {f: {origin: [o[0] + n[0] * off, o[1] + n[1] * off], tangent, n}, len};
 }
+/**
+ * Items laid along a ring's outside (curved-wall lettering, bays round a drum): each item `w` metres of perimeter, read left to
+ * right facing the wall from outside, the run centred on the ring vertex nearest `c`. Returns, per item, the ring edge under
+ * its centre (an index into `ordered`, the ring in the direction ringFrame reads left to right) and its offset `t` along that
+ * edge. Pure; moved here from noorderparkbad-builder.ts (2026-11-15, pools2 lane) so every curved front can use it.
+ */
+export function alongRingPlacements(ring: number[][], c: [number, number], widths: number[]): {ordered: number[][]; at: {edge: number; t: number}[]} {
+  const flipped = ringFrame(ring, 0).f.origin[0] !== ring[0][0] || ringFrame(ring, 0).f.origin[1] !== ring[0][1];
+  const ord = flipped ? [...ring].reverse() : ring;
+  const S: number[] = [0];
+  for (let i = 0; i < ord.length; i++) { const a = ord[i], q = ord[(i + 1) % ord.length]; S.push(S[i] + Math.hypot(q[0] - a[0], q[1] - a[1])); }
+  const P = S[ord.length];
+  let k0 = 0, best = Infinity;
+  ord.forEach((p, i) => { const d = Math.hypot(p[0] - c[0], p[1] - c[1]); if (d < best) { best = d; k0 = i; } });
+  const total = widths.reduce((s, w) => s + w, 0);
+  let s = S[k0] - total / 2;
+  const at: {edge: number; t: number}[] = [];
+  for (const w of widths) {
+    const m = (((s + w / 2) % P) + P) % P;
+    let j = 0; while (j < ord.length - 1 && S[j + 1] <= m) j++;
+    at.push({edge: j, t: m - S[j]});
+    s += w;
+  }
+  return {ordered: ord, at};
+}
+/** alongRingPlacements, calling `put` with the frame of the edge under each item's centre. */
+export function alongRing(ring: number[][], c: [number, number], items: {ch: string; w: number}[], put: (f: Frame, t: number, ch: string) => void) {
+  const {ordered, at} = alongRingPlacements(ring, c, items.map(it => it.w));
+  at.forEach((p, k) => put(ringFrame(ordered, p.edge).f, p.t, items[k].ch));
+}
 /** Median outward offset of the 3DBAG eave vertices along a ring edge: where the shell wall really is. */
 export function eaveOffset(ring: number[][], roofs: {rings: number[][][]}[], i: number, u0 = 0.3, u1 = Infinity, reach = 0.8) {
   const a = ring[i], c = ring[(i + 1) % ring.length], len = Math.hypot(c[0] - a[0], c[1] - a[1]);
@@ -330,4 +360,47 @@ export function sashWindows(b: BuildingTools, f: Frame, ts: number[], o: {lean?:
     if (o.sill) slab(b, g, t, o.y - 0.17, o.w + 0.5, 0.1, 0.2, o.sill);
     if (o.lintel) slab(b, g, t, o.y + o.h + 0.06, o.w + 0.4, 0.14, 0.14, o.lintel);
   }
+}
+
+/**
+ * A brick pattern panel of nested diamonds (2026-11-15, pools2 lane): Noorderparkbad's entrance piers carry a red diamond
+ * lattice laid in brick into white brick (w09-59, w10-40). It was drawn as one X glyph; a reviewer read it as "an X", not a
+ * lattice. The pattern is a grid of `cols` x `rows` brick cells: within each `period`-cell tile, a cell is on when its
+ * Manhattan distance to the tile centre is a multiple of `step` (concentric diamonds, the tiles' corners joining into the
+ * lattice between them). Pure: rows top-down of '0'/'1', like the GL glyphs.
+ */
+export function diamondLatticeRows(cols: number, rows: number, period = 10, step = 3): string[] {
+  const out: string[] = [];
+  const h = period / 2;
+  for (let j = 0; j < rows; j++) {
+    let row = '';
+    for (let i = 0; i < cols; i++) {
+      // tile coordinates centred on the panel's middle column, so the pattern is symmetric left to right
+      const u = (((i - (cols - 1) / 2) % period) + period) % period, v = (((j - (rows - 1) / 2) % period) + period) % period;
+      const du = Math.min(u, period - u), dv = Math.min(v, period - v);
+      const d = Math.round(du + dv);
+      row += d % step === 0 && d <= h * 2 ? '1' : '0';
+    }
+    out.push(row);
+  }
+  return out;
+}
+/**
+ * Draw a pattern panel: a background slab (`ground`) w x h with its back on the wall, and the '1' cells of `pattern` as
+ * merged horizontal runs standing `d` proud of it in `ink`. `pattern` rows run top-down. Returns the run count.
+ */
+export function patternPanel(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, pattern: string[], ground: Col, ink: Col, depth = 0.25, d = 0.04, out = 0) {
+  slab(b, f, t, y, w, h, depth, ground, out);
+  const rows = pattern.length, cols = pattern[0]?.length ?? 0, cw = w / cols, ch = h / rows;
+  let n = 0;
+  for (let j = 0; j < rows; j++) {
+    const row = pattern[j]; let k = 0;
+    while (k < cols) {
+      if (row[k] !== '1') { k++; continue; }
+      let e = k; while (e < cols && row[e] === '1') e++;
+      slab(b, f, t - w / 2 + ((k + e) / 2) * cw, y + (rows - 1 - j) * ch, (e - k) * cw, ch, d, ink, out + depth);
+      n++; k = e;
+    }
+  }
+  return n;
 }

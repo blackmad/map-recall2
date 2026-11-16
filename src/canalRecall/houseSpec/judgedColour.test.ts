@@ -159,3 +159,12 @@ test('judgeFront: a dark painted front with a neutral cut sample is black paint,
   assert.equal(judgeFront({ ...base, sample: '#2a3a30' }).family, 'painted-dark');
   assert.equal(judgeFront({ ...base, absolute: false, sample: '#343230' }).family, 'painted-dark');
 });
+
+test('dark-brown-brick (round 12): a dark brick at brown\'s hue, darker than brown-brick, browner than purple-brown', async () => {
+  const { JUDGED_PALETTE: P, JUDGED_FAMILIES: F, variedTone } = await import('./judgedColour.ts');
+  assert.equal(F[F.length - 1], 'dark-brown-brick', 'appended: no family moves');
+  const d = P['dark-brown-brick'];
+  // Centrum round 7 moved purple-brown to h 40, L .37 (lane D merge of main e76ba4f7b): dark-brown stays as dark, 12 degrees browner.
+  assert.ok(d.L < P['brown-brick'].L && Math.abs(d.L - P['purple-brown-brick'].L) <= 0.025 && d.h >= P['purple-brown-brick'].h + 10 && !d.pale);
+  assert.match(variedTone('dark-brown-brick', 'rubensstraat-133237'), /^#[0-9a-f]{6}$/);
+});

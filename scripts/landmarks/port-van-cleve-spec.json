@@ -1,0 +1,40 @@
+{
+ "id": "port-van-cleve",
+ "name": "Hotel Die Port van Cleve, Nieuwezijds Voorburgwal 176-180",
+ "heightMetres": 20.6,
+ "galleryView": {
+  "theta": 0.6,
+  "phi": 1.2
+ },
+ "surveyedSource": "Vertex average of the BAG 0363100012175580 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/port-van-cleve-footprints.json, written by bag-shell-prepare.ts). The massing is the 3DBAG LoD2.2 shell (CC BY 4.0); the Nieuwezijds Voorburgwal front is drawn from the rectified Gemeente Amsterdam panorama TMX7316010203-001900_pano_0006_000054 (2020, CC BY 4.0) and TMX7316010203-002623_pano_0002_000123 (2022). Per wall in scripts/landmarks/port-van-cleve-inventory.json.",
+ "materialOverrides": {
+  "brick": "#5e342b",
+  "sandstone": "#776b5e",
+  "stone": "#8c8a84",
+  "slate": "#4a4c54",
+  "red": "#a8401f",
+  "glass": "#2a2a2e",
+  "frame": "#4a3028",
+  "white": "#e2ded4",
+  "dark": "#2a2a2c",
+  "blue": "#24345a",
+  "pink": "#d0303a",
+  "concrete": "#e2ded4",
+  "greyBrick": "#7c828c",
+  "bronze": "#2a2a2c",
+  "ochre": "#4e3a34"
+ },
+ "attribution": {
+  "title": "Hotel Die Port van Cleve, Nieuwezijds Voorburgwal 176-180: hotel-restaurant by I. Gosschalk (1888), rijksmonument 5988",
+  "author": "Map Recall",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Hotel_Die_Port_van_Cleve",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell (CC BY 4.0): the four-arched stone ground floor, three-light windows under carved lunettes, the lettered frieze, balustrade and pinnacles, dormers, the central gable, the neon roof sign, and the annex with its erker and bell gable. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ },
+ "partyWallBearings": [
+  201,
+  23,
+  25
+ ]
+}

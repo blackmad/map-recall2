@@ -160,7 +160,7 @@ if (fs.existsSync(ORIGINALS)) for (const f of (JSON.parse(fs.readFileSync(ORIGIN
 for (const key of index.tileList) {
   for (const f of readTile(tilePath('bag-tiles', key)).features) {
     const id = String(f.properties.id ?? '');
-    if (seen.has(id) || id.startsWith('passage:') || id.startsWith('part:') || Number(f.properties.minHeight ?? 0) >= RIDE_UNDER_M) continue;
+    if (seen.has(id) || id.startsWith('passage:') || id.startsWith('part:') || id.startsWith('landmark-part:') || Number(f.properties.minHeight ?? 0) >= RIDE_UNDER_M) continue;
     const mp = polygonsOf(f.geometry);
     if (!mp.length) continue;
     const through = [...waysThrough(mp), ...overrideWays(id, mp)];

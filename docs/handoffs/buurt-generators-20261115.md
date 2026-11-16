@@ -819,3 +819,146 @@ The generator won 7/7, as on round 8's draw (7/7). Remaining gaps on un-noted st
 6. Regenerate before gating: bake-frontages, `build:content-stats`, `build:buurt-pages`. Then `check:canal`.
 7. Re-run `generate.ts` (with `--stage-data`) after any HouseSpec or row publish in these districts. The generator's
    own published records no longer count as described (`describedPands` skips `buurtKit` records).
+
+### Round 10: block coherence (David on Hunzestraat, #390)
+
+David: Hunzestraat 120343..111890 is "one continuous long building with consistent roof line and floors"; round 9
+split it (120343..112149 at 12 m / 4 storeys, 074339 and 111890 at 9.35 m / 3 storeys) and an erker over
+095203/108726 stood above the line.
+
+- **One line per block** (`generate.ts blockLines`): adjacent series in one street wall with the same build period
+  (within 5 years) whose 3DBAG lines step by more than `ROW_EAVES_STEP_M` (0.8 m) while AHN4 at the front wall does not
+  (each side's median front height within the step of the other's) draw one line, the chain's line nearest AHN, with
+  one storey count. Hunzestraat: AHN4 reads 12.14 / 12.17 m at 074339 / 111890, so both are now 12 m / 4 storeys.
+  Clamped members are logged in `overruled` (corniceTopM, series-consensus).
+- **Erkers stay under the line** (`roofKit erkerCapOf`): on a flat series the erker cap tops out at the line; pitched
+  series keep the Plan Zuid cap. The coping is the series' (`frontKit kitWantsCoping`, `generate seriesCoping`), so an
+  erker member no longer stands 0.55 m over its neighbours.
+- **Audit** (`scripts/buurt-generators/audit-steps.ts rivierenbuurt apollo-stadion`): same-period series steps over
+  0.8 m that AHN does not support went from 78 to 5 (Rivierenbuurt, 104 same-period steps, 96 AHN-supported) and from
+  41 to 4 (Apollo/Stadion, 89, 83 supported). The 9 left were not clamped by `blockLines`; why is not yet checked
+  (churchill-laan-120912, gaaspstraat-140068, holendrechtstraat-151757,
+  rooseveltlaan-112272, vrijheidslaan-148822, achillesstraat-131811, albrecht-d-rerstraat-091984,
+  minervalaan-099520, stadionkade-063989); left for a per-street look.
+- **Roof rise:** an AHN4-measured rise for un-noted pitched series lost 3 of 6 in the first round 10 blind A/B ("a huge
+  red tiled roof the photo does not have": Olympiaplein, Apollolaan, Argonautenstraat), so the seen-rise cap stays;
+  `measuredRiseOf` is kept for the evidence text only.
+
+### Round 11: the byte layer budget and the baked tier (round m gate)
+
+- **Layer budget.** Kit on, `BAY_LAYER_COUNT` was 195 (189 off): 64 + 195 + 1 = 260 > 256, so procedural layer
+  indices overflowed their byte. The two Plan Zuid presets now share the school presets' ground-storey cells
+  (`bayLook.ts` `KIT_GROUND_SHARED`, a redirect in `cellKey`; lane R's file, 5 lines), so the kit adds 2 layers, not 6:
+  191 on, 64 + 191 + 1 = 256. Kit off is unchanged (189). `measuredWallPool.test.ts` and
+  `contemporaryFamilyOn.test.ts` pass with the kit on and off.
+- **Why the baked tier was off.** Round m flipped `kitFlag.ts` to default-on but did not run
+  `build:canal-three-buildings`, so the browser bundles still had the kit-off bay table (layer hash `92f67375`) while
+  world-v1 was baked kit-on (`11482477`, the 195-layer table). The runtime compares `tiles.json shells.layers` with its
+  own `shellLayerHash()` (`ownWorldView.ts`) and drops the baked tier on a mismatch.
+- **Rebake for a new layer table.** Every change to the bay table (`BAY_ENTRIES` order or count, the masonry cell or
+  the roof cell count) changes `shellLayerHash()` (`src/canalRecall/world/shellLayers.ts`) and needs:
+  1. the bundles rebuilt: `npm run build:canal-three-buildings`, `build:building-gallery`, `build:landmark-gallery`,
+     `build:house-playground` (the bundles that carry `bayLook.ts`);
+  2. `npm run world:compile -- --no-policy --shell` (add `--against=none` when the decorators changed on purpose, as
+     here: the round 10 coping and erker cap change published buurt pands); about 8 min for the 295 tiles on this
+     machine at load ~35, 12 GB heap;
+  3. install: `for d in cells shells far; do rsync -a --delete artifacts/world/staging/$d/ public/data/extracts/amsterdam/world-v1/$d/; done; cp artifacts/world/staging/{index.json,tiles.json,strings.bin} public/data/extracts/amsterdam/world-v1/`,
+     then `npm run world:verify` and `npm run test:world-format`;
+  4. check that `tiles.json shells.layers` equals the runtime hash (kit on: `e6620c29`), then `test:baked-fabric`.
+
+### Blind A/B, round 10 against round 9 (Hunzestraat + 6 held-out, one shot, no tuning)
+
+Both sides were rendered on the same panorama: round 10 at the branch tip, round 9 at 8cd6b0022 (after bands only). One
+fresh opus judge per street. Sheets, bands and key: `_pruned-sheets/buurt-generators-20261115/round10/`.
+
+| Street (row) | District | Winner | Confidence | What the judge said |
+|---|---|---|---|---|
+| Hunzestraat (120343) | Rivierenbuurt | round 10 | high | one continuous 4-storey block with one eaves line; round 9 drops the right half to 3 storeys. Gap: wide white bays drawn as dark narrow shafts |
+| Patroclosstraat (084515) | Apollo | round 10 | high | residential ground floor; round 9 drew shop glazing. Gap: white small-paned frames |
+| Gerrit van der Veenstraat (078737) | Apollo | round 10 | medium | white-framed small-pane ground floor and framed entrances. Gap: balconies, upper lights |
+| Schubertstraat (134551) | Apollo | round 10 | medium | keeps the continuous eaves line; round 9 put a taller flat block mid-row. Gap: a flat stretch under the tiled roof; walls too dark |
+| Amstelkade (105304) | Rivierenbuurt | round 9 | low | the extra storey on the left. Gap in both: right block's parapet near 15 m, not 12 m |
+| Pieter Lastmankade (115143) | Apollo | round 9 | low | round 9 keeps the taller right-end block; round 10 flattens it. **A block-coherence false positive:** s1 (068475/077661) was clamped from 9.95 m to 8.7 m because AHN4 reads its front at 9.07-9.27 m, within 0.8 m of s0 |
+| Rubensstraat (133237) | Apollo | round 9 | low | brick: round 9's darker red-brown beat round 10's re-measured pinkish-mauve |
+
+Round 10 wins 4/7; all three losses are low confidence. Open: the AHN front read misses a parapet step (Pieter
+Lastmankade), and white bays and oriels are still the most-named gap.
+
+### Round 11: brick hue guard, AHN raise, real steps, lane R's round 13 fields
+
+- **Brick hue guard** (`measure.ts hueGuard`, `HUE_GUARD`). Lane R found the white balance pushes the brick red. On a
+  cyan-cast capture, removing the cast adds red, and on a dim band the cast can be larger than the brick's own
+  chroma. 77 Rivierenbuurt and 30 Apollo/Stadion measured rows drew pink-mauve (hue under 36 deg or over 300), among
+  them Rubensstraat, which lost its round 10 A/B on colour.
+  - When the raw read has real chroma (C >= 0.012), the balance may move its hue at most 12 deg toward red.
+  - When the raw read is grey, its hue means nothing; a read moved more than 12 deg into pink-mauve is set to 36 deg.
+  - `scripts/buurt-generators/revote-walls.ts` re-votes the stored reads; nothing is fetched. 447 + 238 reads were
+    guarded. Pink-mauve rows went from 77 to 27 and from 30 to 8; the rest sit at 33-36 deg or under C 0.01. 4 + 2 rows
+    went back to the pool.
+- **Stated wall family** (`rowNotes.wallFamily`). A family the row's photo states beats a measured brick that the
+  photo contradicts. Stadionkade 063989 is `dark-brown-brick` (lane R's family); the vote there read #ae9772, a light
+  tan.
+- **AHN raise** (`blockLines AHN_RAISE`). A series that AHN4 reads flat at the front, more than 1.5 m over its 3DBAG
+  line with its members within 0.8 m of each other, draws AHN's line.
+  - It applies only when the district has a family for the new storey count, so no series drops off-storeys.
+  - A raised line snaps to a same-period neighbour within 0.8 m.
+  - Across the two districts, 137 flat series agree with 3DBAG within 0.8 m and 63 read more than 2 m over it.
+  - Kuinderstraat 067158 went from 13 / 13.8 m (4 storeys) to 15.35 / 16.25 m (5 storeys); 53 + 13 series were raised.
+- **Real small steps** (`realStep`, Pieter Lastmankade). A step of at least 0.3 m in AHN that agrees in sign with
+  3DBAG's, with every read of the higher series above the lower series' median, is not clamped. Pieter Lastmankade
+  itself is now stated by its photo: a `topM` of 8.7 m plus `raised` stair towers.
+- **Block coherence reads flat fronts only.** On a pitched or mansard front, AHN's front height sits up the roof face.
+  On held-out Leonardostraat 077281, three storeys under tile at 9.9 m had been lifted to 11 m and drawn as four. The
+  audit now counts 3 + 0 unsupported steps; steps on pitched fronts stay with 3DBAG.
+- **Lane R's round 13 fields, emitted from row notes** on flat series only, validated by the kit's own readers:
+  - `eaves {overhangM, fasciaM, lid, frieze}`: Kuinderstraat (1 m, 0.25), Hunzestraat (0.5 m, 0.2), Europaplein,
+    Trompenburgstraat;
+  - `attic {heightM, pitchM}`, which replaces `ribbon`: Europaplein 1.0 m, Stadionkade 1.6 m;
+  - `raised` per member: Borssenburgstraat's fins and piers, Pieter Lastmankade's towers, and Amstelkade's block
+    parapets 2.8 m over the line;
+  - Europaplein's records equal lane R's trial records.
+  - Rubensstraat's stair tower is on a pitched series, so it is not stated (raised parts are drawn on flat series
+    only).
+
+### Held-out round 11 (blind; new seed `r11-heldout`; round 11 at 51434fe89 against round 9 at 8cd6b0022)
+
+Every street used before was excluded, along with the library's noted streets. 83 candidates remained, and 10
+requests (6 MB) were fetched. One fresh opus judge per street; the sheets and key are in
+`_pruned-sheets/buurt-generators-20261115/round11/`.
+
+| Street (row) | District | Winner | Confidence | What the judge said |
+|---|---|---|---|---|
+| Albrecht Dürerstraat (142046) | Apollo | round 11 | medium | residential ground floor. Gap: steep dark mansard, tower bay |
+| Deurloostraat (075052) | Rivierenbuurt | round 11 | medium | residential ground floor. Gap: wide white multi-pane windows |
+| Roerstraat (112650) | Rivierenbuurt | round 11 | medium | residential ground floor. Gap: wall too purple; white bays drawn dark |
+| Uithoornstraat (067867) | Rivierenbuurt | round 11 | low | ground floor, one eaves line on the left. Gap: walls grey, the photo dark brown |
+| Vrijheidslaan (148822) | Rivierenbuurt | round 11 | low | ground floor. Gap: lighter tan brick, stair-tower glazing |
+| Leonardostraat (077281) | Apollo | round 9 | medium | round 11 drew four storeys where the photo has three under tile. The block clamp read a mansard face as eaves; **fixed after judging** (flat fronts only) |
+| Amsteldijk (076326) | Rivierenbuurt | round 9 | low | round 9's warmer wall; round 11's reads grey-green |
+
+Round 11 wins 5/7. Most wins come from the residential ground floor, which round 9's published records drew as shop
+glazing, rather than from this round's line and hue changes. Colour is still the most-named gap: grey or grey-green
+where the photo is warm. The hue guard keeps reads out of pink-mauve but cannot recover the warmth of a grey raw read.
+
+### Round 12 (lane R round 14 fields; corner members)
+
+- **Lane R's round 14 fields, emitted from `rowNotes.members`** (per pand), validated by the kit's own readers:
+  - `balconies [{a0,a1,from?,storeys?,depthM?,rail?}]`: Achillesstraat states `rail: 'dark'` (11 balconies);
+  - `entries` with kind `porch | portiek | arched`, `widthM`, `doorHex`; `cells` defaults to the member's bays;
+  - `panes {cells, rows?, paneM?, share?, widthShare?}`: Apollo 25 members.
+  - Counts: Rivierenbuurt 4 new entries; Apollo 11 balconies, 25 panes, 11 entries. Records still 2495 / 1672.
+- **Corner members drew no kit on their front** (Europaplein 0363100012145394, Patroclosstraat 0363100012133916).
+  - Cause: the row roof box (`roofMesh.ts rowRoofBox`) faces the nearest street wall. On a corner that is the side
+    street. Every kit part draws on the box's street end, so the attic, lid, piers, entries, panes and dormer all
+    stood on the side wall. Node renders of each face confirmed it.
+  - 145394 stated no front width at all (a flat series has no mansard `frontM`). 133916 stated 9.01 m, but its 8.0 m
+    side fell inside the loose tolerance of max(1.5 m, 30 %).
+  - Fix: a kit record states its front width from its own front line (`kitFrontM`), and a kit roof box matches it
+    within 0.5 m (`ROW_FRONT_MATCH.kitM`). Mid-row members are unchanged: no other wall sees a street, so the
+    nearest box stays.
+  - Named regression: `kit.test.ts` "corner members (Europaplein 145394, Patroclosstraat 133916)". It fails without
+    the fix, because the kit lands on the 8 m side.
+  - Still open: a near-square corner (front and side within 0.5 m) cannot be told apart by width. A bearing-based
+    match would need the mesh frame's orientation.
+- **Known gap, Kuinderstraat:** the five-storey family's ribbon and piers poke over the white lid. The photo also has
+  separate top windows. Both are lane R's kit.

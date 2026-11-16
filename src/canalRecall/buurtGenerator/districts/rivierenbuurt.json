@@ -25,7 +25,7 @@
   ],
   "design": {
     "groundM": 3.1,
-    "storeyM": 3.0,
+    "storeyM": 3,
     "axisM": 2.03,
     "windowShare": 0.71,
     "windows": "casement-toplight",
@@ -95,7 +95,7 @@
         "evidence": "round 5 slate sample: the slate-slot roofs on Biesboschstraat (142780), Scheldestraat (146131, 144881) and Victorieplein (114412) are steep dark tiles with dormers behind a cornice, not slate eaves; Biesboschstraat 142780 (TMX7316010203-001034_pano_0000_001940, overcast) measures #504643 and #483c3a on the roof face, divided by the renderer's tile shift (#9e5b42 drew #a35a3d) to #494345"
       }
     },
-    "capRiseM": 1.0,
+    "capRiseM": 1,
     "capRiseEvidence": "Biesboschstraat sheet (TMX7316010203-001034_pano_0000_001940, 37 px/m): the red tiles rise 0.8-1.1 m over the eaves line on the rectified photo, the dormers standing above them; 3DBAG's rise there is 4-6 m. Round 8"
   },
   "notDrawn": [
@@ -138,6 +138,392 @@
         "080196"
       ],
       "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865: the four west members carry recessed loggias with brick parapets on the three upper storeys between their erkers"
+    },
+    "hunzestraat-120343": {
+      "erkerFront": "timber",
+      "erkers": {
+        "108726": [
+          {
+            "a0": 0.0871,
+            "a1": 0.543,
+            "depthM": 0.77,
+            "faceM": 1.88,
+            "plates": [
+              [
+                0,
+                0.0871
+              ],
+              [
+                0.543,
+                0.6667
+              ]
+            ],
+            "storeys": 2
+          }
+        ],
+        "095203": [
+          {
+            "a0": 0.456,
+            "a1": 0.912,
+            "depthM": 0.72,
+            "faceM": 1.88,
+            "plates": [
+              [
+                0.3333,
+                0.456
+              ],
+              [
+                0.912,
+                1
+              ]
+            ],
+            "storeys": 2
+          }
+        ],
+        "074339": [
+          {
+            "a0": 0.76,
+            "a1": 0.995,
+            "depthM": 0.64,
+            "faceM": 1.77,
+            "corner": true,
+            "plates": [
+              [
+                0.6667,
+                0.76
+              ]
+            ]
+          }
+        ]
+      },
+      "eaves": {
+        "overhangM": 0.5,
+        "fasciaM": 0.2,
+        "lid": true,
+        "frieze": false
+      },
+      "evidence": "Hunzestraat panorama recording_2025-07-14_11-01-54_02067 (2025-07-14, round 10 held-out sheet, 40 px/m), lane R round 12: every erker is a white timber front, lights corner to corner in thick white frames, brick only between storeys. The wide box pair over 095203/108726 (BAG's spans) covers the first and second floors, plain windows over it; two canted oriels at the right end rise to the line, BAG's on 111890 at 0.05-0.28 and one BAG does not draw at 41.0-43.9 m on the line (074339 0.76 to its party wall, closed there); Hunzestraat round 9 sheet (recording_2025-07-14_11-01-54_02067): a thin white slab as the flat roof lid, about 0.5 m out; no pitched edge"
+    },
+    "kuinderstraat-067158": {
+      "erkerFront": "timber",
+      "eaves": {
+        "overhangM": 1,
+        "fasciaM": 0.25,
+        "lid": true,
+        "frieze": false
+      },
+      "evidence": "Kuinderstraat panorama recording_2025-07-14_11-01-54_02163 (2025-07-14, round 9 held-out sheet, 36 px/m), lane R round 12: the canted oriels (BAG's spans) are white timber fronts, three lights a storey corner to corner with toplights, white sills, brick only between storeys; the corner member 148704's oriel the same; Kuinderstraat round 9 sheet (36 px/m): a deep white slab, about 1 m of soffit seen from below and a ~0.25 m fascia, the flat roof lid near 16.8 m over five storeys (the line from AHN4, round 11)"
+    },
+    "europaplein-137940": {
+      "eaves": {
+        "overhangM": 1,
+        "fasciaM": 0.2,
+        "lid": true,
+        "frieze": false
+      },
+      "attic": {
+        "heightM": 1,
+        "pitchM": 1.5
+      },
+      "members": {
+        "103273": {
+          "entries": [
+            {
+              "a": 0.05,
+              "kind": "portiek",
+              "widthM": 1
+            }
+          ]
+        },
+        "110992": {
+          "entries": [
+            {
+              "a": 0.03,
+              "kind": "portiek",
+              "widthM": 1
+            }
+          ]
+        },
+        "124939": {
+          "entries": [
+            {
+              "a": 0.06,
+              "kind": "portiek",
+              "widthM": 1
+            }
+          ]
+        },
+        "081476": {
+          "entries": [
+            {
+              "a": 0.08,
+              "kind": "portiek",
+              "widthM": 1
+            }
+          ]
+        }
+      },
+      "evidence": "Europaplein: thin white slab as the flat roof lid over a ~1.0 m white attic band of paired small lights (lane R round 13 trial record, blind A/B won, medium); Europaplein: portiek doorways 1.0 m wide (lane R round 14 trial patch (erk/r14), blind A/B won)"
+    },
+    "trompenburgstraat-097377": {
+      "eaves": {
+        "overhangM": 1,
+        "fasciaM": 0.2,
+        "lid": true,
+        "frieze": false
+      },
+      "evidence": "Trompenburgstraat: thin white eaves slab as the flat roof lid (lane R round 13 trial record, blind A/B won, low)"
+    },
+    "borssenburgstraat-070575": {
+      "raised": {
+        "106321": [
+          {
+            "a0": 0,
+            "a1": 0.32,
+            "riseM": 2,
+            "outM": 0.2
+          }
+        ],
+        "113738": [
+          {
+            "a0": 0,
+            "a1": 0.17,
+            "riseM": 2.5,
+            "outM": 0.4
+          }
+        ],
+        "127490": [
+          {
+            "a0": 0.04,
+            "a1": 0.2,
+            "riseM": 1.5,
+            "outM": 0.3
+          }
+        ],
+        "133955": [
+          {
+            "a0": 0.86,
+            "a1": 1,
+            "riseM": 2.5,
+            "outM": 0.4
+          }
+        ],
+        "140390": [
+          {
+            "a0": 0.72,
+            "a1": 1,
+            "riseM": 2,
+            "outM": 0.2
+          }
+        ],
+        "071895": [
+          {
+            "a0": 0.73,
+            "a1": 0.98,
+            "riseM": 1.6
+          }
+        ]
+      },
+      "evidence": "Borssenburgstraat: brick fins and piers rising over the line, a raised parapet at 071895 (lane R round 13 trial record, blind A/B won, medium)"
+    },
+    "amstelkade-105304": {
+      "raised": {
+        "104422": [
+          {
+            "a0": 0,
+            "a1": 0.95,
+            "riseM": 2.8
+          }
+        ],
+        "118793": [
+          {
+            "a0": 0,
+            "a1": 0.95,
+            "riseM": 2.8
+          }
+        ],
+        "132424": [
+          {
+            "a0": 0,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "145501": [
+          {
+            "a0": 0,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "087311": [
+          {
+            "a0": 0,
+            "a1": 0.95,
+            "riseM": 2.8
+          }
+        ],
+        "092562": [
+          {
+            "a0": 0.05,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "064359": [
+          {
+            "a0": 0.05,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "083750": [
+          {
+            "a0": 0.05,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ]
+      },
+      "evidence": "Amstelkade (recording_2025-07-15_08-32-06_03211, 31 px/m): the blocks of two pands from 132424 to 145501 carry a brick parapet to ~15.1 m, ~2.8 m over the 12.3 m line, hiding the pitched roof (AHN4 ridges 14.5 m), with V notches at the block joins; the left end is blurred and not stated"
+    },
+    "maasstraat-108230": {
+      "stairAxis": {
+        "108230": {
+          "a": 0.12,
+          "wide": 2
+        },
+        "071329": {
+          "a": 0.9,
+          "wide": 2
+        }
+      },
+      "evidence": "round 19 (lane R): panorama recording_2024-09-05_05-59-45_09869 (2024-09-05), rectified at 40 px/m: 108230 (left) and 071329 (right) each show one small square stair light per upper storey at the outer party wall (centres 0.12 and 0.90 of the front) beside two wide four-light windows; 131005 between them is the glazed stair tower with a canted bay either side (not stated: the kit has no tower)"
+    },
+    "uithoornstraat-067867": {
+      "raised": {
+        "067867": [
+          {
+            "a0": 0,
+            "a1": 0.6,
+            "riseM": 2.75,
+            "lights": 2,
+            "depthM": 4
+          },
+          {
+            "a0": 0.6,
+            "a1": 1,
+            "riseM": 3.4,
+            "depthM": 4
+          }
+        ],
+        "125303": [
+          {
+            "a0": 0,
+            "a1": 0.19,
+            "riseM": 1.8,
+            "depthM": 4
+          },
+          {
+            "a0": 0.19,
+            "a1": 0.99,
+            "riseM": 3.05,
+            "lights": 1,
+            "depthM": 4
+          }
+        ]
+      },
+      "evidence": "round 20 (lane R): panorama recording_2025-07-14_08-27-06_02540 (2025-07-14), rectified at 28 px/m against the sheet's metre lines: the corner member 067867 stands at about 15.3 m (2.75 m over the 12.55 m series line) with two small windows in its top storey, its right 0.4 a block to about 16.0 m; 125303's tower (0.19-0.99 of its front) reaches about 15.6 m with one small window in the storey over the line, its left 0.19 a lower part at about 14.4 m. The tower's stepped brick top and the triangular stair lights below it are not drawn (kit gap); depthM: the towers and wings reach back as a mass (BAG plans: corner and wing blocks 4 m or more deep; the round stair towers about 3 m)"
+    },
+    "amsteldijk-076326": {
+      "raised": {
+        "071659": [
+          {
+            "a0": 0.62,
+            "a1": 1,
+            "riseM": 2.6,
+            "faceM": 1.3,
+            "depthM": 4
+          }
+        ],
+        "101914": [
+          {
+            "a0": 0,
+            "a1": 0.38,
+            "riseM": 2.6,
+            "faceM": 1.3,
+            "depthM": 4
+          }
+        ],
+        "126133": [
+          {
+            "a0": 0.62,
+            "a1": 1,
+            "riseM": 2.6,
+            "faceM": 1.3,
+            "depthM": 4
+          }
+        ],
+        "068963": [
+          {
+            "a0": 0,
+            "a1": 0.38,
+            "riseM": 2.6,
+            "faceM": 1.3,
+            "depthM": 4
+          }
+        ],
+        "077639": [
+          {
+            "a0": 0.62,
+            "a1": 1,
+            "riseM": 2.6,
+            "faceM": 1.3,
+            "depthM": 4
+          }
+        ]
+      },
+      "evidence": "round 20 (lane R): panorama recording_2025-07-14_08-27-06_02532 (2025-07-14), rectified at 38 px/m: the court is stepped, the 1.3 m BAG wings (071659+101914, 126133+068963, 077639 with its neighbour) rise to about 12.6 m, 2.6 m over the court's line at 10 m, flat-topped with brick coping; the stepped brick corbels at the wings' edges are not drawn (kit gap); depthM: the towers and wings reach back as a mass (BAG plans: corner and wing blocks 4 m or more deep; the round stair towers about 3 m)"
+    },
+    "haringvlietstraat-062635": {
+      "raised": {
+        "062635": [
+          {
+            "a0": 0.07,
+            "a1": 0.53,
+            "riseM": 2.8,
+            "lights": 1,
+            "depthM": 4
+          }
+        ]
+      },
+      "evidence": "round 20 (lane R, untuned: stated once from the photo, judged without changes): panorama recording_2025-07-15_09-44-59_00120 (2025-07-15), rectified at 40 px/m against the sheet's metre lines: the corner member 062635's tower over its canted bays (0.07-0.53 of its front) reaches about 16.5 m, 2.8 m over the 13.7 m series line, with one light in the storey over the line; its white cap slab is not drawn (kit gap); depthM: the towers and wings reach back as a mass (BAG plans: corner and wing blocks 4 m or more deep; the round stair towers about 3 m)"
+    },
+    "vechtstraat-084587": {
+      "raised": {
+        "084587": [
+          {
+            "a0": 0,
+            "a1": 0.13,
+            "riseM": 2.5,
+            "depthM": 3
+          },
+          {
+            "a0": 0.13,
+            "a1": 1,
+            "riseM": 1.2
+          }
+        ],
+        "107886": [
+          {
+            "a0": 0.74,
+            "a1": 0.96,
+            "riseM": 2.0,
+            "depthM": 3
+          }
+        ]
+      },
+      "evidence": "round 20 (lane R, untuned: stated once from the photo, judged without changes): panorama recording_2025-07-14_08-27-06_02625 (2025-07-14), rectified at 40 px/m: 084587's round stair tower at its left end (0-0.13) reaches about 17.9 m and its block's toothed parapet about 16.6 m over the 15.4 m series line; 107886's round stair tower (0.74-0.96) about 17.4 m, the part between at the line. The towers are round and the parapet toothed; the kit draws them as flat brick boxes (kit gap); depthM: the towers and wings reach back as a mass (BAG plans: corner and wing blocks 4 m or more deep; the round stair towers about 3 m)"
     }
   },
   "streetNotes": {

@@ -110,9 +110,6 @@
   "cafe-kobalt": {
    "poke": 2
   },
-  "canals-museum": {
-   "poke": 4
-  },
   "centrale-markthal": {
    "float": 2
   },
@@ -425,9 +422,6 @@
    "float": 3,
    "poke": 7
   },
-  "kesbeke": {
-   "poke": 1
-  },
   "kesbeke-shop": {
    "poke": 4
   },
@@ -682,7 +676,7 @@
    "outside": 14
   },
   "pulitzer-amsterdam": {
-   "poke": 10,
+   "poke": 6,
    "outside": 28
   },
   "rem-eiland": {
@@ -718,7 +712,6 @@
    "outside": 8
   },
   "scheepvaarthuis": {
-   "poke": 1,
    "outside": 87
   },
   "scheepvaartmuseum": {
@@ -875,7 +868,7 @@
    "outside": 19
   },
   "wereldmuseum-amsterdam": {
-   "poke": 21,
+   "poke": 15,
    "outside": 129
   },
   "west-india-house": {

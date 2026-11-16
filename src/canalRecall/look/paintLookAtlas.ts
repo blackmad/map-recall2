@@ -10,6 +10,10 @@ import { SHOP_KINDS, bayTextures, releaseBayTextures, type Look } from '../bayTe
 import { retailGroundOn } from '../retailTemplates.js';
 import { glyphCellBox, LOGO_ATLAS_PATH, LOGO_ATLAS_2_PATH, retailLogoLayer } from '../retailLogos.js';
 import { LOOK_VARIANTS, PHOTO_WALL_CELL_MEAN } from './palette.js';
+import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, retailPageCount, retailRealOn } from '../retailPages.js';
+import { GOODS_LAYERS, paintGoodsLayer, type Ctx2D } from '../retailGoods.js';
+import { TYPE_FACES } from '../retailTypeFaces.js';
+import { CHAIN_LOGO_PAGES, chainLogoPath } from '../retailChainLogos.js';
 import { FACADE_STYLES } from '../genericFacades.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from '../streetFacadeRendering.js';
 import { SLOT_LAYER_COUNT, loadCityBrick, paintSlotLayers } from './cityLook.js';
@@ -34,7 +38,7 @@ export function lookAtlasLayers(look: 'procedural' | Look, slots: boolean): { la
   // Lane retail-ground (`?retailGround=1`): the chain-logo layers at their fixed ordinals (retailLogos.ts) after the rest:
   // the first page and (round 6) the second.
   const logo = retailGroundOn() ? retailLogoLayer(look) : null;
-  return { layers, total: logo !== null ? Math.max(total, logo + 2) : total };
+  return { layers, total: logo !== null ? Math.max(total, logo + retailPageCount()) : total };
 }
 
 /** A look's painted arrays: `colour` RGBA and `mask` RG, `total` layers of `size`², rows bottom-up. */
@@ -146,6 +150,13 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
   for (const [i, cell] of paintRoofLayers(LOOK_VARIANTS[look].cartoonRoofCells).entries()) { copyCell(cell, roofBase + i); await yieldBudget(); }
   const logoLayer = retailGroundOn() ? retailLogoLayer(look) : null;
   if (logoLayer !== null) { await paintLogoLayer(colour, mask, logoLayer, size); await paintLogoLayer(colour, mask, logoLayer + 1, size, LOGO_ATLAS_2_PATH); }
+  if (logoLayer !== null && retailRealOn()) {
+    // Lane retail-real: the window-goods layers (painted here from retailGoods.ts), the lettering faces and the chain
+    // logo pages (published PNGs).
+    for (let k = 0; k < GOODS_LAYERS; k++) { paintGoodsPage(colour, mask, logoLayer + GOODS_BASE + k, size, k); await yieldBudget(); }
+    for (const [k, face] of TYPE_FACES.entries()) await paintLogoLayer(colour, mask, logoLayer + TYPE_BASE + k, size, `materials/retail-logos/type-${face}.png`, true);
+    for (let k = 0; k < CHAIN_LOGO_PAGES; k++) await paintLogoLayer(colour, mask, logoLayer + CHAIN_LOGO_BASE + k, size, chainLogoPath(k));
+  }
   let brick: CanvasImageSource = document.createElement('canvas');
   if (look === 'photo') {
     const image = new Image(); image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
@@ -186,7 +197,20 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
  * The chain-logo layer (lane retail-ground, retailLogos.ts): the published atlas drawn to the layer, rows bottom-first,
  * mask zero (the logo's own colours, untinted). An atlas that fails to load leaves a white layer (a plain board).
  */
-async function paintLogoLayer(colour: Uint8Array, mask: Uint8Array, layer: number, size: number, path = LOGO_ATLAS_PATH): Promise<void> {
+/** Lane retail-real: one window-goods layer, painted at `size` (retailGoods.ts paintGoodsLayer), mask zero (own colours). */
+function paintGoodsPage(colour: Uint8Array, mask: Uint8Array, layer: number, size: number, page: number): void {
+  const px = size * size, canvas = document.createElement('canvas'); canvas.width = canvas.height = size;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true })!;
+  paintGoodsLayer(ctx as unknown as Ctx2D, page, size);
+  const pixels = ctx.getImageData(0, 0, size, size).data;
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+    const from = ((size - 1 - y) * size + x) * 4, at = layer * px + y * size + x;
+    colour[at * 4] = pixels[from]; colour[at * 4 + 1] = pixels[from + 1]; colour[at * 4 + 2] = pixels[from + 2]; colour[at * 4 + 3] = 255;
+    mask[at * 2] = 0; mask[at * 2 + 1] = 0;
+  }
+}
+
+async function paintLogoLayer(colour: Uint8Array, mask: Uint8Array, layer: number, size: number, path = LOGO_ATLAS_PATH, lettering = false): Promise<void> {
   const px = size * size, canvas = document.createElement('canvas'); canvas.width = canvas.height = size;
   const ctx = canvas.getContext('2d', { willReadFrequently: true })!;
   ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, size, size);
@@ -199,6 +223,17 @@ async function paintLogoLayer(colour: Uint8Array, mask: Uint8Array, layer: numbe
   // whole cell takes the board's colour, so a letter quad reads as plain board, never as a solid block.
   // Round 6: only the first page has the lettering cell.
   const glyphs = path === LOGO_ATLAS_PATH, lettered = glyphs && pixels[((gy0 + 1) * size + gx0 + 1) * 4] < 32;
+  if (lettering) {
+    // A lettering-face page (lane retail-real): every pixel is coverage, as the bold-sans cell. A page that failed to
+    // load is white, which would letter a solid block: it takes the board's colour instead.
+    const loaded = pixels[0] < 32;
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      const from = ((size - 1 - y) * size + x) * 4, at = layer * px + y * size + x, cover = loaded ? pixels[from] : 0;
+      colour[at * 4] = colour[at * 4 + 1] = colour[at * 4 + 2] = 255; colour[at * 4 + 3] = 255;
+      mask[at * 2] = cover; mask[at * 2 + 1] = 255 - cover;
+    }
+    return;
+  }
   for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
     const iy = size - 1 - y, from = (iy * size + x) * 4, at = layer * px + y * size + x;
     if (glyphs && x >= gx0 && x < gx1 && iy >= gy0 && iy < gy1) {

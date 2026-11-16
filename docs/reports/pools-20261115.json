@@ -1,0 +1,944 @@
+{
+ "generatedAt": "2026-11-15",
+ "generator": "scripts/landmarks/pools-inventory.ts",
+ "osmSource": ".cache/osm-source/Amsterdam.osm.pbf (OSM, ODbL)",
+ "completeness": {
+  "municipalPage": "https://www.amsterdam.nl/sport/zwemmen-in-amsterdam/ returned HTTP 403 to every scripted read on 2026-11-15; the list below is the brief's list checked against OSM",
+  "briefNames": {
+   "Flevoparkbad": "found (outdoor)",
+   "Brediusbad": "found (outdoor)",
+   "Noorderparkbad": "found (indoor and outdoor)",
+   "Sloterparkbad": "found (indoor and outdoor)",
+   "De Mirandabad": "found (indoor and outdoor)",
+   "Marnixbad": "found as Het Marnix; already the bespoke landmark `marnixbad`",
+   "Zuiderbad": "found; already the bespoke landmark `zuiderbad`",
+   "Het Oosterbad": "the only OSM Het Oosterbad (n1924077363, 4.7999 52.2861) is in Hoofddorp, Haarlemmermeer: outside the municipality. Amsterdam-Oost's bath is Sportfondsenbad Oost, already the bespoke landmark `sportfondsenbad-oost`",
+   "Jan van Galenbad": "no longer a separate bath: Sportplaza Mercator stands on the site and kept its outdoor basin (listed as Sportplaza Mercator)",
+   "Bijlmer Sportcentrum": "found as Zwembad Bijlmer (n13057635556)",
+   "Floriande": "Hoofddorp, Haarlemmermeer: outside the municipality"
+  },
+  "outsideMunicipality": [
+   "Het Oosterbad (Hoofddorp)",
+   "Floriande (Hoofddorp)",
+   "Amstelbad (Amstelveen)",
+   "De Meerkamp (Amstelveen)",
+   "AGO-Zwembad (Diemen)",
+   "Sportcentrum Wethouder F.B. Duran (Diemen)",
+   "Zwembad De Breek (Landsmeer)"
+  ],
+  "excluded": "open-water swimming spots (leisure=swimming_area / bathing_place: Sloterstrand, Gaasperplas, IJburg, Marineterrein, Borneokade) and wading pools (pierenbadjes) are not pools in this sense"
+ },
+ "pools": [
+  {
+   "name": "De Mirandabad",
+   "osm": [
+    "a86532432",
+    "n13392544210",
+    "n13392544211"
+   ],
+   "tags": {
+    "leisure": "swimming_pool",
+    "sport": "swimming",
+    "access": "permissive",
+    "operator": "Stadsdeel Zuid",
+    "website": "https://www.amsterdam.nl/demirandabad/",
+    "addr:street": "De Mirandalaan",
+    "addr:housenumber": "9"
+   },
+   "centre": [
+    4.90283,
+    52.338847
+   ],
+   "kind": "both",
+   "basins": [
+    {
+     "osm": "a133362918",
+     "name": null,
+     "areaM2": 176,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a133364352",
+     "name": null,
+     "areaM2": 734,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a133365162",
+     "name": null,
+     "areaM2": 1050,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a2407037198",
+     "name": null,
+     "areaM2": 109,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a2534962160",
+     "name": null,
+     "areaM2": 114,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a2534962162",
+     "name": null,
+     "areaM2": 955,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a2535316866",
+     "name": null,
+     "areaM2": 54,
+     "indoor": false,
+     "pand": null
+    }
+   ],
+   "pands": [
+    {
+     "id": "0363100012107139",
+     "year": 1979,
+     "areaM2": 4574,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012140021",
+     "year": 1932,
+     "areaM2": 200,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012208431",
+     "year": 1979,
+     "areaM2": 76,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012208430",
+     "year": 1979,
+     "areaM2": 46,
+     "modelledBy": null
+    }
+   ],
+   "modelled": null,
+   "rideExposureM": 2314,
+   "note": null,
+   "panoramas": {
+    "within60m": 5,
+    "since2020": 0,
+    "nearestIds": [
+     "TMX7316010203-001173_pano_0000_001317",
+     "TMX7316010203-001173_pano_0000_001318",
+     "TMX7316010203-001173_pano_0000_001319"
+    ]
+   },
+   "lane": {
+    "status": "built",
+    "id": "de-mirandabad"
+   }
+  },
+  {
+   "name": "Sportplaza Mercator",
+   "osm": [
+    "a147998778",
+    "a488831246"
+   ],
+   "tags": {
+    "leisure": "recreation_ground",
+    "sport": "swimming",
+    "operator": "Sportfondsen",
+    "website": "https://www.sportplazamercator.nl/",
+    "wikidata": "Q15882253"
+   },
+   "centre": [
+    4.846022,
+    52.371572
+   ],
+   "kind": "both",
+   "basins": [
+    {
+     "osm": "a147998778",
+     "name": "Sportplaza Mercator",
+     "areaM2": 914,
+     "indoor": false,
+     "pand": null
+    }
+   ],
+   "pands": [
+    {
+     "id": "0363100012092403",
+     "year": 2006,
+     "areaM2": 3359,
+     "modelledBy": null
+    }
+   ],
+   "modelled": null,
+   "rideExposureM": 1899,
+   "note": "the former Jan van Galenbad site: Sportplaza Mercator (2006) kept the outdoor basin of the Jan van Galenbad",
+   "panoramas": {
+    "within60m": 152,
+    "since2020": 118,
+    "nearestIds": [
+     "TMX7316010203-001878_pano_0005_002836",
+     "TMX7316010203-001878_pano_0005_002837",
+     "TMX7316010203-001700_pano_0003_000104"
+    ]
+   },
+   "lane": {
+    "status": "built",
+    "id": "sportplaza-mercator"
+   }
+  },
+  {
+   "name": "Flevoparkbad",
+   "osm": [
+    "a882248632"
+   ],
+   "tags": {
+    "leisure": "water_park",
+    "sport": "swimming",
+    "website": "https://www.flevoparkbad.com/",
+    "opening_hours": "Mo-Su 10:00-17:30",
+    "wikidata": "Q134139280"
+   },
+   "centre": [
+    4.952896,
+    52.365134
+   ],
+   "kind": "outdoor",
+   "basins": [
+    {
+     "osm": "a148160422",
+     "name": null,
+     "areaM2": 2714,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a148167872",
+     "name": "Peuterbad",
+     "areaM2": 156,
+     "indoor": false,
+     "pand": null
+    }
+   ],
+   "pands": [
+    {
+     "id": "0363100012186770",
+     "year": 1967,
+     "areaM2": 186,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012109701",
+     "year": 1997,
+     "areaM2": 125,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012113073",
+     "year": 1967,
+     "areaM2": 111,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012186773",
+     "year": 1967,
+     "areaM2": 109,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012186782",
+     "year": 1967,
+     "areaM2": 51,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012124231",
+     "year": 1967,
+     "areaM2": 50,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012186783",
+     "year": 1967,
+     "areaM2": 44,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012186779",
+     "year": 1967,
+     "areaM2": 44,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012186774",
+     "year": 1967,
+     "areaM2": 29,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012186772",
+     "year": 1997,
+     "areaM2": 28,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012186768",
+     "year": 1997,
+     "areaM2": 28,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012186771",
+     "year": 1967,
+     "areaM2": 28,
+     "modelledBy": null
+    },
+    {
+     "id": "0363100012186769",
+     "year": 1997,
+     "areaM2": 28,
+     "modelledBy": null
+    }
+   ],
+   "modelled": null,
+   "rideExposureM": 1745,
+   "note": null,
+   "panoramas": {
+    "within60m": 393,
+    "since2020": 254,
+    "nearestIds": [
+     "recording_2025-09-26_14-09-48_00125",
+     "recording_2024-09-16_09-29-57_02089",
+     "TMX7316010203-001209_pano_0000_003281"
+    ]
+   },
+   "lane": {
+    "status": "built",
+    "id": "flevoparkbad"
+   }
+  },
+  {
+   "name": "Het Marnix",
+   "osm": [
+    "a442116028"
+   ],
+   "tags": {
+    "leisure": "sports_centre",
+    "sport": "swimming",
+    "website": "https://www.hetmarnix.nl/",
+    "wikidata": "Q30141175"
+   },
+   "centre": [
+    4.878418,
+    52.377964
+   ],
+   "kind": "indoor",
+   "basins": [],
+   "pands": [
+    {
+     "id": "0363100012169393",
+     "year": 2006,
+     "areaM2": 1770,
+     "modelledBy": "marnixbad"
+    }
+   ],
+   "modelled": [
+    "marnixbad"
+   ],
+   "rideExposureM": 1407,
+   "note": null,
+   "panoramas": {
+    "within60m": 723,
+    "since2020": 436,
+    "nearestIds": [
+     "TMX7316010203-000076_pano_0000_007772",
+     "TMX7316010203-000076_pano_0000_007773",
+     "TMX7316010203-000703_pano_0000_003042"
+    ]
+   }
+  },
+  {
+   "name": "Brediusbad",
+   "osm": [
+    "a888589664"
+   ],
+   "tags": {
+    "leisure": "water_park",
+    "sport": "swimming",
+    "operator": "Stadsdeel West",
+    "website": "https://www.brediuszwembad.nl"
+   },
+   "centre": [
+    4.869188,
+    52.392333
+   ],
+   "kind": "outdoor",
+   "basins": [
+    {
+     "osm": "a148162370",
+     "name": null,
+     "areaM2": 908,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a148165410",
+     "name": null,
+     "areaM2": 668,
+     "indoor": false,
+     "pand": null
+    }
+   ],
+   "pands": [],
+   "modelled": null,
+   "rideExposureM": 1380,
+   "note": null,
+   "panoramas": {
+    "within60m": 0,
+    "since2020": 0,
+    "nearestIds": []
+   },
+   "lane": {
+    "status": "built",
+    "id": "brediusbad"
+   }
+  },
+  {
+   "name": "Noorderparkbad",
+   "osm": [
+    "a1061781870"
+   ],
+   "tags": {
+    "leisure": "water_park",
+    "sport": "swimming",
+    "access": "yes",
+    "operator": "Gemeente Amsterdam",
+    "website": "https://www.amsterdam.nl/noorderparkbad",
+    "wikidata": "Q41735872"
+   },
+   "centre": [
+    4.918401,
+    52.39805
+   ],
+   "kind": "both",
+   "basins": [
+    {
+     "osm": "a1009154122",
+     "name": null,
+     "areaM2": 396,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a1009154124",
+     "name": null,
+     "areaM2": 71,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a1009154126",
+     "name": null,
+     "areaM2": 219,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a1009154128",
+     "name": null,
+     "areaM2": 43,
+     "indoor": false,
+     "pand": null
+    },
+    {
+     "osm": "a1009154130",
+     "name": null,
+     "areaM2": 49,
+     "indoor": false,
+     "pand": null
+    }
+   ],
+   "pands": [
+    {
+     "id": "0363100012241531",
+     "year": 2015,
+     "areaM2": 4467,
+     "modelledBy": null
+    }
+   ],
+   "modelled": null,
+   "rideExposureM": 1083,
+   "note": null,
+   "panoramas": {
+    "within60m": 61,
+    "since2020": 49,
+    "nearestIds": [
+     "TMX7316010203-001739_pano_0000_000676",
+     "TMX7316010203-001739_pano_0000_000675",
+     "TMX7316010203-002572_pano_0000_003226"
+    ]
+   },
+   "lane": {
+    "status": "built",
+    "id": "noorderparkbad"
+   }
+  },
+  {
+   "name": "Zuiderbad",
+   "osm": [
+    "a89017642"
+   ],
+   "tags": {
+    "leisure": "swimming_pool",
+    "sport": "swimming",
+    "operator": "Stadsdeel Zuid",
+    "addr:street": "Hobbemastraat",
+    "addr:housenumber": "26",
+    "wikidata": "Q2351677"
+   },
+   "centre": [
+    4.886159,
+    52.358464
+   ],
+   "kind": "indoor",
+   "basins": [
+    {
+     "osm": "a89017642",
+     "name": "Zuiderbad",
+     "areaM2": 1797,
+     "indoor": true,
+     "pand": "0363100012233523"
+    }
+   ],
+   "pands": [
+    {
+     "id": "0363100012233523",
+     "year": 1912,
+     "areaM2": 1798,
+     "modelledBy": "zuiderbad"
+    }
+   ],
+   "modelled": [
+    "zuiderbad"
+   ],
+   "rideExposureM": 1009,
+   "note": null,
+   "panoramas": {
+    "within60m": 626,
+    "since2020": 396,
+    "nearestIds": [
+     "TMX7316060226-000012_pano_0000_004114",
+     "TMX7316010203-002225_pano_0000_000211",
+     "TMX7316010203-002455_pano_0001_000546"
+    ]
+   }
+  },
+  {
+   "name": "David Lloyd Clubs",
+   "osm": [
+    "n4060117274"
+   ],
+   "tags": {
+    "leisure": "sports_centre"
+   },
+   "centre": [
+    4.856067,
+    52.357478
+   ],
+   "kind": "members-club",
+   "basins": [],
+   "pands": [
+    {
+     "id": "0363100012236735",
+     "year": 1961,
+     "areaM2": 2937,
+     "modelledBy": "autopon"
+    }
+   ],
+   "modelled": [
+    "autopon"
+   ],
+   "rideExposureM": 917,
+   "note": "David Lloyd Amsterdam, Overtoom 557 (davidlloyd.nl club page; the only Dutch club in Amsterdam): indoor 20 m pool inside the Autopon building, which is already the bespoke landmark `autopon`",
+   "panoramas": {
+    "within60m": 821,
+    "since2020": 556,
+    "nearestIds": [
+     "TMX7316010203-002921_pano_0007_000101",
+     "TMX7316010203-002228_pano_0002_001595",
+     "TMX7316010203-002921_pano_0007_000100"
+    ]
+   }
+  },
+  {
+   "name": "Sloterparkbad",
+   "osm": [
+    "a115721216",
+    "a488807752"
+   ],
+   "tags": {
+    "leisure": "sports_centre",
+    "sport": "swimming"
+   },
+   "centre": [
+    4.817758,
+    52.370041
+   ],
+   "kind": "both",
+   "basins": [
+    {
+     "osm": "a488807746",
+     "name": null,
+     "areaM2": 362,
+     "indoor": false,
+     "pand": null
+    }
+   ],
+   "pands": [
+    {
+     "id": "0363100012084387",
+     "year": 2001,
+     "areaM2": 6908,
+     "modelledBy": null
+    }
+   ],
+   "modelled": null,
+   "rideExposureM": 884,
+   "note": null,
+   "panoramas": {
+    "within60m": 98,
+    "since2020": 98,
+    "nearestIds": [
+     "MS_26112024_845_Track13_Sphere_00021",
+     "MS_26112024_845_Track13_Sphere_00020",
+     "recording_2025-07-02_08-03-09_00026"
+    ]
+   },
+   "lane": {
+    "status": "skipped",
+    "reason": "not built this lane: 250-turn budget spent on the five higher-exposure pools (884 m ride exposure; brief and inventory skeleton written, panoramas show brick fronts and Basic-Fit signs)"
+   }
+  },
+  {
+   "name": "Swimgym",
+   "osm": [
+    "n13057635553"
+   ],
+   "tags": {
+    "leisure": "swimming_pool",
+    "sport": "swimming",
+    "access": "yes",
+    "website": "https://swimgym.nl/"
+   },
+   "centre": [
+    4.913197,
+    52.354149
+   ],
+   "kind": "indoor",
+   "basins": [],
+   "pands": [
+    {
+     "id": "0363100012110278",
+     "year": 1964,
+     "areaM2": 4945,
+     "modelledBy": null
+    }
+   ],
+   "modelled": null,
+   "rideExposureM": 732,
+   "note": "commercial swim school in the Wibauthuis block (Wibautstraat); not a municipal bath, no street identity of its own",
+   "panoramas": {
+    "within60m": 321,
+    "since2020": 127,
+    "nearestIds": [
+     "TMX7315120208-000048_pano_0000_006827",
+     "TMX7315120208-000048_pano_0000_006828",
+     "TMX7315120208-000061_pano_0001_000603"
+    ]
+   }
+  },
+  {
+   "name": "Sportfondsenbad Oost",
+   "osm": [
+    "n393135967"
+   ],
+   "tags": {
+    "leisure": "swimming_pool",
+    "sport": "swimming",
+    "access": "customers",
+    "operator": "Sportfondsen",
+    "addr:street": "Land van Cocagneplein",
+    "addr:housenumber": "44"
+   },
+   "centre": [
+    4.928696,
+    52.35678
+   ],
+   "kind": "indoor",
+   "basins": [],
+   "pands": [
+    {
+     "id": "0363100012240381",
+     "year": 2014,
+     "areaM2": 429,
+     "modelledBy": null
+    }
+   ],
+   "modelled": [
+    "sportfondsenbad-oost"
+   ],
+   "rideExposureM": 469,
+   "note": null,
+   "panoramas": {
+    "within60m": 459,
+    "since2020": 192,
+    "nearestIds": [
+     "TMX7316010203-001205_pano_0000_001589",
+     "TMX7316010203-001007_pano_0004_000860",
+     "TMX7316010203-001007_pano_0004_000859"
+    ]
+   }
+  },
+  {
+   "name": "Victoriabad",
+   "osm": [
+    "n1618233446",
+    "n2860067560"
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   },
+   "centre": [
+    5.026944,
+    52.298448
+   ],
+   "kind": "indoor",
+   "basins": [],
+   "pands": [
+    {
+     "id": "0457100000062818",
+     "year": 2005,
+     "areaM2": 2718,
+     "modelledBy": null
+    }
+   ],
+   "modelled": null,
+   "rideExposureM": 447,
+   "note": "Weesp (in the municipality since 2022)",
+   "panoramas": {
+    "within60m": 27,
+    "since2020": 13,
+    "nearestIds": [
+     "TMX7316010203-001924_pano_0000_002245",
+     "TMX7316010203-001924_pano_0000_002246",
+     "TMX7316010203-001924_pano_0000_002244"
+    ]
+   },
+   "lane": {
+    "status": "skipped",
+    "reason": "not built this lane: budget; Weesp, 447 m ride exposure"
+   }
+  },
+  {
+   "name": "(unnamed)",
+   "osm": [
+    "a97590776"
+   ],
+   "tags": {
+    "leisure": "water_park"
+   },
+   "centre": [
+    4.782396,
+    52.355263
+   ],
+   "kind": "outdoor",
+   "basins": [],
+   "pands": [],
+   "modelled": null,
+   "rideExposureM": 445,
+   "note": "unnamed wading pool (pierenbad) in a park: no building, basin under 400 m2 or not drawn in OSM; skipped",
+   "panoramas": {
+    "within60m": 613,
+    "since2020": 383,
+    "nearestIds": [
+     "b_20241016_1007_Track55_Sphere_00026",
+     "TMX7316010203-002110_pano_0000_000516",
+     "TMX7316010203-002110_pano_0000_000517"
+    ]
+   }
+  },
+  {
+   "name": "Zwembad Bijlmer",
+   "osm": [
+    "n13057635556"
+   ],
+   "tags": {
+    "leisure": "swimming_pool",
+    "sport": "swimming",
+    "access": "yes"
+   },
+   "centre": [
+    4.957908,
+    52.315481
+   ],
+   "kind": "indoor",
+   "basins": [],
+   "pands": [
+    {
+     "id": "0363100012103346",
+     "year": 2008,
+     "areaM2": 5639,
+     "modelledBy": null
+    }
+   ],
+   "modelled": null,
+   "rideExposureM": 274,
+   "note": null,
+   "panoramas": {
+    "within60m": 324,
+    "since2020": 170,
+    "nearestIds": [
+     "TMX7316010203-002612_pano_0000_000673",
+     "TMX7316010203-001253_pano_0000_000299",
+     "TMX7316010203-000853_pano_0000_000251"
+    ]
+   },
+   "lane": {
+    "status": "skipped",
+    "reason": "not built this lane: budget; 274 m ride exposure"
+   }
+  },
+  {
+   "name": "Windsurf– Sup– & Zwemvereniging Gaasperplas",
+   "osm": [
+    "a564548002"
+   ],
+   "tags": {
+    "leisure": "sports_centre"
+   },
+   "centre": [
+    4.998214,
+    52.30416
+   ],
+   "kind": "indoor",
+   "basins": [],
+   "pands": [
+    {
+     "id": "0363100012105531",
+     "year": 1985,
+     "areaM2": 158,
+     "modelledBy": null
+    }
+   ],
+   "modelled": null,
+   "rideExposureM": 49,
+   "note": "club house on the Gaasperplas (open water); not a pool",
+   "panoramas": {
+    "within60m": 129,
+    "since2020": 32,
+    "nearestIds": [
+     "TMX7316010203-000838_pano_0002_003329",
+     "TMX7316010203-001210_pano_0001_002695",
+     "TMX7315120208-000158_pano_0000_003366"
+    ]
+   }
+  },
+  {
+   "name": "(unnamed)",
+   "osm": [
+    "a67701986"
+   ],
+   "tags": {
+    "leisure": "water_park"
+   },
+   "centre": [
+    4.813837,
+    52.333389
+   ],
+   "kind": "outdoor",
+   "basins": [],
+   "pands": [],
+   "modelled": null,
+   "rideExposureM": 0,
+   "note": "unnamed wading pool (pierenbad) in a park: no building, basin under 400 m2 or not drawn in OSM; skipped",
+   "panoramas": {
+    "within60m": 4,
+    "since2020": 0,
+    "nearestIds": [
+     "TMX7316010203-000364_pano_0000_000321",
+     "TMX7316010203-000364_pano_0000_000320",
+     "TMX7316010203-000364_pano_0000_000319"
+    ]
+   }
+  },
+  {
+   "name": "Amsterdeck Nieuwe Meer",
+   "osm": [
+    "n9450045185"
+   ],
+   "tags": {
+    "leisure": "sports_centre",
+    "sport": "swimming",
+    "operator": "Waterschap Amstel, Gooi en Vecht",
+    "website": "https://amsterdecks.com/"
+   },
+   "centre": [
+    4.846578,
+    52.332927
+   ],
+   "kind": "indoor",
+   "basins": [],
+   "pands": [],
+   "modelled": null,
+   "rideExposureM": 0,
+   "note": "floating pool deck on the Nieuwe Meer, no BAG pand, no route within 60 m",
+   "panoramas": {
+    "within60m": 14,
+    "since2020": 2,
+    "nearestIds": [
+     "TMX7316010203-000364_pano_0000_002307",
+     "TMX7316010203-000364_pano_0000_002308",
+     "TMX7316010203-000364_pano_0000_002306"
+    ]
+   }
+  },
+  {
+   "name": "(unnamed)",
+   "osm": [
+    "n10005767531"
+   ],
+   "tags": {
+    "leisure": "sports_centre",
+    "sport": "swimming"
+   },
+   "centre": [
+    4.814956,
+    52.359681
+   ],
+   "kind": "indoor",
+   "basins": [],
+   "pands": [],
+   "modelled": null,
+   "rideExposureM": 0,
+   "note": "unnamed swimming point on open water; skipped",
+   "panoramas": {
+    "within60m": 44,
+    "since2020": 21,
+    "nearestIds": [
+     "TMX7316010203-001958_pano_0000_000516",
+     "TMX7316010203-001958_pano_0000_000517",
+     "TMX7316010203-001958_pano_0000_000515"
+    ]
+   }
+  }
+ ]
+}

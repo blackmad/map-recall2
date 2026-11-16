@@ -1,0 +1,42 @@
+{
+ "id": "brediusbad",
+ "name": "Brediusbad, Spaarndammerdijk",
+ "heightMetres": 3,
+ "galleryView": {
+  "theta": 0.6,
+  "phi": 0.75
+ },
+ "surveyedSource": "Native east/south metres about the centre of the OSM leisure=water_park area a888589664 (ODbL; scripts/landmarks/brediusbad-footprints.json, written by pool-site-prepare.ts --main=none, with the OSM basin outlines a148162370 and a148165410). The deck, the divider and the two pavilions are read from the PDOK luchtfoto 2025 (Beeldmateriaal Nederland, CC BY 4.0) gridded in native metres. The bath has no BAG pand. Per item in scripts/landmarks/brediusbad-inventory.json.",
+ "materialOverrides": {
+  "dark": "#2c2e30",
+  "blue": "#3cb4e0",
+  "white": "#d6eaf0",
+  "concrete": "#d8d4ca"
+ },
+ "attribution": {
+  "title": "Brediusbad, Spaarndammerdijk: outdoor bath in the Brediuspark",
+  "author": "Map Recall",
+  "sourceUrl": "https://www.openstreetmap.org/way/888589664",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry: the rounded triangular and the rectangular basin with their pale coping on one dark deck, the divider across it and two small pavilions. Basin outlines from OpenStreetMap (ODbL) checked on the PDOK luchtfoto (CC BY 4.0). No pixels or meshes imported."
+ },
+ "extraExtent": [
+  [
+   5.6,
+   -17.5
+  ],
+  [
+   60.5,
+   -8
+  ],
+  [
+   22.5,
+   50.5
+  ],
+  [
+   -12.5,
+   25.6
+  ]
+ ]
+}

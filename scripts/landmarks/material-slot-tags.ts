@@ -52,6 +52,61 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
   'joods-verzetsmonument': {
     dark: {slot: 'stone', why: 'a stele of polished black stone (builder header, Gemeente Amsterdam panoramas), not painted joinery'},
   },
+  'handelsbank-singel-250': {
+    sandstone: {slot: 'stone', measured: '#a99c86', why: 'warm grey-beige Bentheimer sandstone of the bank fronts, lit (Gemeente Amsterdam panoramas w01-10, w02-104; blind review read #a99c86 lit, #8c8170 in shade); the city look drew it cream'},
+    stone: {slot: 'stone', measured: '#7f7b74', why: 'grey granite plinth, the rustication joints and the festoon panels (w01-10, w03-103)'},
+  },
+  'holland-casino-amsterdam': {
+    ochre: {slot: 'stone', measured: '#8a5a3a', why: 'mid-brown timber of the deck, pergola rafters and lattice screens (w03-257, w07-252; blind review #8a5a3a); the look drew it pale orange'},
+    concrete: {slot: 'stone', measured: '#d6d6d4', why: 'cool light-grey tiles of the set-back storey and the drum, and the white banners (w03-257, w04-245)'},
+    bronze: {slot: 'accent', measured: '#b08a4a', why: 'bronze-gold HOLLAND CASINO letters on the roof edge (w03-257)'},
+  },
+  'mauritskade-61': {
+    red: {slot: 'roofTile', why: 'red-brown tiled roofs over the wings and middle range (w01-59, w08-329); palette red, not brick'},
+    concrete: {slot: 'stone', why: 'cream-painted timber eave and brackets (w01-59)'},
+    brick: {slot: 'brick', measured: '#5a4038', why: 'dull dark purple-brown brick (w01-59 rectified, w08-329 2025: #5e4038-#6a4a40; blind reviews 2026-11-15: the palette brick read oxblood, #6e5044 still drew orange-red lit)'},
+    sandstone: {slot: 'stone', measured: '#a8a596', why: 'light grey stone lintels, sills, string courses and reveals (w08-329 2025; blind review 2026-11-15: #c9bea4 drew cream-yellow)'},
+    dark: {slot: 'frame', measured: '#2a302a', why: 'green-black window frames, repainted for the hotel (mk61-front 2022, mk61-nw 2024)'},
+    glass: {slot: 'glass', measured: '#2e3438', why: 'dark glazing in deep reveals (mk61-nw 2024; the palette glass read pale blue)'},
+  },
+  'port-van-cleve': {
+    brick: {slot: 'brick', measured: '#5e342b', why: 'deep red-brown brick of the hotel front in shade (nzv-0, TMX7316010203-001900_pano_0006_000054; blind review 2026-11-15 read #5a3830-#6b4236; #7e4a3e and #6e3e34 still drew orange-red in the lit game frame)'},
+    sandstone: {slot: 'stone', measured: '#776b5e', why: 'weathered buff-grey sandstone bands, pediments, surrounds and pinnacles: nzv-0 reads #5a5654-#64615e overcast, a blind review #8f8170 (2026-11-15: #958a78 and #7a705f drew cream lit, the neutral #6b6560 read cool mauve-grey)'},
+    glass: {slot: 'glass', measured: '#2a2a2e', why: 'dark glazing of the hotel front (nzv-0; blind review 2026-11-15: the unmeasured glass cell drew pale periwinkle)'},
+    frame: {slot: 'frame', measured: '#4a3028', why: 'dark brown timber window frames of the hotel front (nzv-0)'},
+    ochre: {slot: 'brick', measured: '#4e3a34', why: 'palette name only: the dark purple-brown brick of the later Spuistraat hotel block (w02-290; blind re-read 2026-11-15 read #4a3a34)'},
+    stone: {slot: 'stone', measured: '#8c8a84', why: 'grey stone ground-floor arcade and plinth (nzv-0)'},
+    pink: {slot: 'accent', why: 'red neon letters of the roof sign die PORT van CLEVE (TMX7316010203-001900_pano_0006_000054)'},
+    concrete: {slot: 'stone', why: 'white stone frieze panels, sign lettering and the stepped-gable house\'s white ground floor and step caps (w02-290)'},
+    greyBrick: {slot: 'slate', why: 'lead dome over the annex erker (w04-117)'},
+    bronze: {slot: 'frame', why: 'dark letters of the frieze and the steel frame of the roof sign'},
+    blue: {slot: 'paint', why: 'dark blue entrance canopy and the De Blauwe Parade sign panel'},
+  },
+  'room-mate-aitana': {
+    glass: {slot: 'paint', why: 'curtain wall: pale reflective glazing that mirrors the sky (w01-183 #687d9c, the 2018 IJdok frame pale green-white); the glass slot drew it opaque dark slate, unrecognisable in the blind review, so it is a pale panel'},
+    dark: {slot: 'glass', why: 'darker opening lights in the window strips'},
+    frame: {slot: 'frame', why: 'dark grey aluminium transoms and mullions (w01-183 #3c4447-#545b61)'},
+    stone: {slot: 'paint', why: 'grey metal plinth panels (w01-183 #74726e at gain 1.04)'},
+  },
+  'oba-staatsliedenbuurt': {
+    brick: {slot: 'brick', measured: '#5e504b', why: 'dark purple-brown brick of the block: w02-121 (2017) #4c413d at gain 1.26 on its white frames; w01-210 (2024) #68625d at gain 0.85, green cast removed'},
+    stone: {slot: 'brick', measured: '#b3ada0', why: 'cream brick bands and the bay towers: w01-210 #d7e9dd at gain 0.85 (cast removed), w02-121 #87867c at 1.26; the 2025 Van Hallstraat frame read it yellower than the photo at #c8c2b2, so the overcast w02 value leads'},
+    greyBrick: {slot: 'brick', why: 'dark blue-grey glazed brick of the corner tower and the passage piers (w04-211, w06-211)'},
+    ochre: {slot: 'paint', why: 'pale rendered walls of the set-back top storeys (w01-210, w02-121), not ochre brick'},
+    blue: {slot: 'brick', why: 'the corner tower walls of the 3DBAG shell: dark blue-grey glazed brick (w04-211, w06-211)'},
+    pink: {slot: 'paint', why: 'the shaded back wall of the balcony bays and the passage'},
+    frame: {slot: 'frame', why: 'grey steel truss over the passage (w04-211)'},
+  },
+  wilhelminatoren: {
+    brick: {slot: 'brick', measured: '#9e8576', why: 'salmon-brown brick of the tower: w01-67T (2022) #998072-#a48f83 at gain 1.13 on its white frames, w03-338T (2021) #9f8579 at gain 0.95'},
+    greyBrick: {slot: 'brick', measured: '#6a5454', why: 'palette name only: the dark purple-brick panels between windows, w01-67T #604c4c at gain 1.13'},
+    canopyGlass: {slot: 'paint', why: 'pale see-through glazing of the escape stair (w01-67T #90989e; the 2021 WG-plein frame): the glass slot draws it near-black, so it is tagged as a pale panel'},
+    bronze: {slot: 'frame', why: 'blue-grey steel of the escape stair and the loggia rails'},
+  },
+  'schiller-rembrandtplein': {
+    brick: {slot: 'brick', measured: '#846b66', why: 'muted mauve-brown brick of the hotel front: w01-348 (TMX7316010203-001900_pano_0005_000734, 2020-08-31) brick piers of the upper floors #816a67-#85726e (trimmed median), white frames #d4d4d7 as the 215 light-trim reference (measureFacade convention, gain 1.01). Was #5a3530, a blind read that drew saturated red (gain experiment 2026-11-16: photo #79635d, drawn #4e2c29)'},
+    sandstone: {slot: 'stone', measured: '#b3a58e', why: 'pale beige-grey stone of the oriels, the corner tower and the window dressings (w01-348)'},
+  },
   kalvertoren: {
     white: {slot: 'accent', why: 'white stone bands, keystones, portals and gable dressings on the red-brick Singel range (w01-192L)'},
     red: {slot: 'roofTile', why: 'red pantile saddle roofs behind the two Singel gables (tower-singel-even-e), not brick'},
@@ -93,3 +148,15 @@ export function tagExtras<B extends {tint: string}>(base: B, tag: SlotTag): B & 
 
 /** The declared slot for a palette name in a model, if any. */
 export const slotTagFor = (id: string, materialName: string): SlotTag | undefined => MATERIAL_SLOT_TAGS[id]?.[materialName];
+
+/**
+ * A spec-stated wall colour (`materialOverrides` of the landmark's spec) drawn as stated. Unmeasured, the city look maps a
+ * brick/accent tint into the city range and paints it on a period brick cell (palette.ts `cityTint` -> `cityWallTint`), so
+ * Victoriabad's stated #5f4b41 drew orange; `tintSource: 'measured'` takes the measured path instead (`cityMeasuredWallTint`:
+ * the canal brick cell, divided by its mean). Only brick/accent slots, only when the material's colour is the stated one, and
+ * never over a tag's own measured tint. Without an override the extras come back unchanged (same object).
+ */
+export function statedOverrideExtras<B extends {materialSlot: MaterialSlot; tint: string; tintSource?: 'measured'}>(base: B, override: string | undefined, hex: string): B | (B & {tintSource: 'measured'}) {
+  if (override === undefined || override.toLowerCase() !== hex.toLowerCase() || base.tintSource !== undefined) return base;
+  return base.materialSlot === 'brick' || base.materialSlot === 'accent' ? {...base, tintSource: 'measured' as const} : base;
+}
