@@ -121,8 +121,12 @@ export function drawRowWalls(fronts: readonly WallDrawFront[], cfg: WallDrawConf
       let d: Omit<WallDrawn, 'hex' | 'material'> = f.photo ? { family: f.photo, by: 'photo', why: `${JUDGED_PALETTE[f.photo].label}: its own photo read` }
         : s ? { family: s.family, by: 'series', why: `its series' ${JUDGED_PALETTE[s.family].label}` }
         : fam.by === 'run-weak-mix' && f.weakPhoto ? { family: f.weakPhoto, by: 'weak', why: `${JUDGED_PALETTE[f.weakPhoto].label}: its own weak photo read (the run's do not agree)` } : fam;
-      if (!f.photo && f.brickOnly && !isBrickFamily(d.family)) d = { family: brickPick, by: 'draw', why: `${JUDGED_PALETTE[brickPick].label}: its own read saw brick where its run is painted` };
-      const material = isBrickFamily(d.family) ? 'brick' : f.photo && f.photoStucco ? 'stucco' : 'painted-brick';
+      // Centrum round 9 (Korte Leidsedwarsstraat 173459: its own weak read saw pale stucco on a cut half hidden by a nearer
+      // brick front; the run's brick reads drew it brick): a weak read of paint or stucco is the front's own finish, which a
+      // run of brick neighbours says nothing about.
+      if (!f.photo && !s && f.weakPhoto && !isBrickFamily(f.weakPhoto) && isBrickFamily(d.family)) d = { family: f.weakPhoto, by: 'weak', why: `${JUDGED_PALETTE[f.weakPhoto].label}: its own weak photo read of a painted or plastered front` };
+      else if (!f.photo && f.brickOnly && !isBrickFamily(d.family)) d = { family: brickPick, by: 'draw', why: `${JUDGED_PALETTE[brickPick].label}: its own read saw brick where its run is painted` };
+      const material = isBrickFamily(d.family) ? 'brick' : f.photoStucco && (f.photo || d.by === 'weak') ? 'stucco' : 'painted-brick';
       const w: WallDrawn = { ...d, hex: variedTone(d.family, f.pandId), material };
       if (f.series && !s) seriesFamily.set(f.series, w);
       out[i] = w;

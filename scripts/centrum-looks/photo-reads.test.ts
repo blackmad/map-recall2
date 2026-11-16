@@ -90,3 +90,12 @@ test('round 7: crown re-reads on another capture; v3 roof and dress fields; a br
   assert.equal(photoOverRegisterFinish('brick', kl), false);
   assert.equal(photoOverRegisterFinish('plaster', { finish: 'brick', family: 'brown-brick', confidence: 0.65 } as never), false);   // one reader only
 });
+
+test('round 9: photoRoofRead needs 0.75 for a dormers-only read, 0.6 for a pitched or mansard one', async () => {
+  const { photoRoofRead } = await import('./generate.ts');
+  assert.equal(photoRoofRead({ roof: 'dormers-slate', rc: 0.6 }), undefined);
+  assert.equal(photoRoofRead({ roof: 'dormers-slate', rc: 0.75 }), 'dormers-slate');
+  assert.equal(photoRoofRead({ roof: 'pitched-tile', rc: 0.6 }), 'pitched-tile');
+  assert.equal(photoRoofRead({ roof: 'mansard', rc: 0.55 }), undefined);
+  assert.equal(photoRoofRead({ roof: 'none' }), undefined);
+});

@@ -145,3 +145,35 @@ test('Centrum round 8 staged: tall cornices under a roof storey, a weak gable ov
   for (const id of ['171768', '178339', '178341', '178342', '178343']) assert.ok(!JSON.stringify(dw.get(id)).includes('red-brown brick'), id);
   for (const id of ['179167', '168251']) assert.ok(JSON.stringify(dw.get(id)).includes('nearly grey'), id);
 });
+
+test('Centrum round 9: photoStoreyLift stands a cornice front at its photo storeys when 3DBAG reaches it; unset, nothing changes', async () => {
+  const { photoStoreyLift } = await import('./generate.ts');
+  const sd = { photoStoreys: 4 } as BeltStated;
+  // Sleperssteeg 182788: four storeys read, drawn 7.62 m on a low 3DBAG eaves; 3DBAG height 15.2
+  assert.equal(photoStoreyLift(7.62, { photoStoreyLiftPitchM: 3.3 }, { heightM: 15.2 }, sd), 13.2);
+  assert.equal(photoStoreyLift(7.62, {}, { heightM: 15.2 }, sd), 7.62);
+  // within a storey, under a roof storey, or past 3DBAG's height: unchanged
+  assert.equal(photoStoreyLift(11, { photoStoreyLiftPitchM: 3.3 }, { heightM: 15.2 }, sd), 11);
+  assert.equal(photoStoreyLift(7.62, { photoStoreyLiftPitchM: 3.3 }, { heightM: 15.2, roofStorey: true }, sd), 7.62);
+  assert.equal(photoStoreyLift(7.62, { photoStoreyLiftPitchM: 3.3 }, { heightM: 10 }, sd), 7.62);
+});
+
+test('Centrum round 9 staged: no roof storey on a weak dormers read, Goudsbloemstraat still capped, Sleperssteeg at its storeys', async () => {
+  const fs = await import('node:fs');
+  const load = (d: string) => {
+    const url = new URL(`../../../data/buurt-generators/${d}/row-front.json`, import.meta.url);
+    return fs.existsSync(url) ? new Map((JSON.parse(fs.readFileSync(url, 'utf8')).records as any[]).map(r => [r.pandId.slice(-6), r])) : null;
+  };
+  const dw = load('de-weteringschans'), nm = load('nieuwmarkt-lastage'), jo = load('jordaan');
+  if (!dw || !nm || !jo) return;
+  const kind = (r: any) => r.series.roofStorey?.kind ?? 'none';
+  // Pieter Pauwstraat 177755-177756 and Nieuwe Herengracht 182036: dormers read at 0.6, flat cornices on the photo
+  for (const id of ['177755', '177764', '177757', '177765', '177756']) assert.equal(kind(dw.get(id)), 'none', id);
+  assert.equal(kind(nm.get('182036')), 'none');
+  // 181980's register dakkapel (RCE) still states its roof storey, as the register's dormer always has
+  assert.notEqual(kind(nm.get('181980')), 'none');
+  // a dormers read at 0.75 still draws its roof storey (Pieter Pauwstraat 178863)
+  assert.notEqual(kind(dw.get('178863')), 'none');
+  for (const id of ['172469', '172466', '172470']) assert.ok(jo.get(id).topM < 14.2, `${id} ${jo.get(id).topM}`);
+  assert.ok(nm.get('182788').topM >= 12.5, `182788 ${nm.get('182788').topM}`);
+});

@@ -78,6 +78,15 @@ export const PHOTO_DRESS_MIN = 0.7;
 export const PHOTO_DRESS_SURROUND: Readonly<Record<string, string>> = { none: 'none', 'stone-lintel': 'stone-lintel', keystone: 'keystone', 'block-course': 'block-dressings', 'block-surround': 'block-surround', 'arch-ring': 'arch-ring', bands: 'speklagen' };
 /** The v3 roof field's confidence that states a roof storey (round 7). */
 export const PHOTO_ROOF_READ_MIN = 0.6;
+/** Round 9 (blind judges, six streets: Pieter Pauwstraat 177755-177756, Nieuwe Herengracht 181980/182036, Reguliersgracht
+ *  180323/180325, Spiegelgracht 177082 drew hips with dormers where the photo shows flat cornices): a dormers-only read
+ *  (no roof slope seen) states a roof storey from this confidence; pitched and mansard reads keep PHOTO_ROOF_READ_MIN. */
+export const PHOTO_DORMERS_READ_MIN = 0.75;
+/** The v3 roof read that states a roof storey, or undefined (round 7, round 9). */
+export function photoRoofRead(r: { roof?: string; rc?: number }): string | undefined {
+  if (typeof r.rc !== 'number' || !r.roof) return undefined;
+  return r.rc >= (r.roof.startsWith('dormers') ? PHOTO_DORMERS_READ_MIN : PHOTO_ROOF_READ_MIN) ? r.roof : undefined;
+}
 /** The photo confidence a roof in view needs to evidence a measured roof storey (round 6). */
 export const PHOTO_ROOF_MIN = 0.6;
 /** A weak photo read (round 6): counted by a run only when WEAK_RUN_MIN of them mostly agree (wallDraw.ts run-weak). */
@@ -202,7 +211,7 @@ export function drawWalls(records: any[], prov: Record<string, any>, reads: Read
       const wk0 = pf || sd?.specHex || !pr || !(pr.confidence >= WEAK_PHOTO_MIN) ? undefined : photoFamily({ ...pr, confidence: PHOTO_FINISH_MIN }, registerFinish.get(pid));
       const wk = wk0 === 'purple-brown-brick' && darkNeutralCut((pr as { cutHex?: string }).cutHex) ? 'dark-grey-brick' as JudgedFamily : wk0;
       return { pandId: pid, year: sd?.year ?? years.get(pid) ?? null, free, brickOnly: ownRead, series: r.series?.id as string | undefined, ...(sample ? { sample } : {}), ...(st ? { streetFamily: st } : {}),
-        ...(pf ? { photo: pf, photoStucco: pr!.finish === 'stucco' } : {}), ...(wk ? { weakPhoto: wk } : {}) };
+        ...(pf ? { photo: pf, photoStucco: pr!.finish === 'stucco' } : {}), ...(wk ? { weakPhoto: wk, photoStucco: pr!.finish === 'stucco' } : {}) };
     });
     const street = streetOfPand.get(fronts[0]?.pandId), rowCfg = (street && streetWeights.get(street)) ?? cfg;
     drawRowWalls(fronts, rowCfg, seriesFamily).forEach((w, i) => {
@@ -258,9 +267,12 @@ async function main() {
     // Round 7: the v3 re-read's roof in view (rc >= PHOTO_ROOF_READ_MIN) states a roof storey as the register's dakkapel
     // does (Marnixplein 168300-174907, a continuous pantile roof with dormers, drawn with none); a mansard read keeps the
     // kit's mansard face over lane D's pitched hip (Westeinde 171768-178343, read mansard at 0.7-0.85, drawn as hips).
-    const rr = r as unknown as PhotoCrown & { roof?: string; rc?: number }, roofRead = typeof rr.rc === 'number' && rr.rc >= PHOTO_ROOF_READ_MIN ? rr.roof : undefined;
+    const rr = r as unknown as PhotoCrown & { roof?: string; rc?: number }, roofRead = photoRoofRead(rr);
     const gabledNow = GABLED_CROWNS.has(String(crown ?? now.crown));
     const roofInView = !gabledNow && !!roofRead && /^(dormers|pitched|mansard)/.test(roofRead);
+    // Round 9: a weaker dormers read (PHOTO_ROOF_READ_MIN up to PHOTO_DORMERS_READ_MIN) draws no roof storey but still
+    // caps the wall under one (underRoofStoreyTop: Goudsbloemstraat 172469, four storeys under its dormers, stays 13.76 m).
+    const weakRoof = !gabledNow && !roofInView && typeof rr.rc === 'number' && rr.rc >= PHOTO_ROOF_READ_MIN && /^dormers/.test(String(rr.roof));
     const mansard = !gabledNow && ((rr.crown === 'mansard' && rr.cc >= PHOTO_CROWN_MIN) || roofRead === 'mansard');
     const tile = roofInView && /-tile$/.test(roofRead!);
     if (roofInView) photoRoofStoreys++;
@@ -268,7 +280,7 @@ async function main() {
     // round 8: block-surround and arch-ring reach the row heads (row/solve.ts DRESSING_OF); bands are the row's speklagen extra (BAND_EXTRAS).
     const rd = r as unknown as { dress?: string; dc?: number }, dress = typeof rd.dc === 'number' && rd.dc >= PHOTO_DRESS_MIN && rd.dress ? PHOTO_DRESS_SURROUND[rd.dress] : undefined;
     if (rd.dress && typeof rd.dc === 'number' && rd.dc >= PHOTO_DRESS_MIN) dressTally[rd.dress] = (dressTally[rd.dress] ?? 0) + 1;
-    if (fin || crown || pc.tallCornice || pc.storeys || roof || roofInView || mansard || dress) stated.set(pid, { ...now, ...(dress ? { photoDress: dress } : {}), ...(roof || roofInView ? { photoRoof: true } : {}),
+    if (fin || crown || pc.tallCornice || pc.storeys || roof || roofInView || weakRoof || mansard || dress) stated.set(pid, { ...now, ...(dress ? { photoDress: dress } : {}), ...(weakRoof ? { roofCap: true } : {}), ...(roof || roofInView ? { photoRoof: true } : {}),
       ...(roofInView ? { roofStorey: true } : {}), ...(mansard ? { mansard: true } : {}), ...(tile ? { roofMaterial: 'tile' as const } : {}), ...(fin ? { finish: fin } : {}), ...(crown ? { crown } : {}),
       ...(pc.tallCornice ? { tallCornice: pc.tallCornice } : {}), ...(pc.storeys ? { photoStoreys: pc.storeys } : {}), ...(pc.souterrain !== undefined ? { photoSouterrain: pc.souterrain } : {}) });
   }

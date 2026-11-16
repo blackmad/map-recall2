@@ -29,7 +29,7 @@ import type { AhnFront } from './ahnFront.ts';
 
 export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: string }
 /** What a published source states for a pand (the monument register via house-specs): its crown and facade year. */
-export interface BeltStated { crown?: string; year?: number; shop?: boolean; finish?: BeltTarget['finish']; storeys?: number; stoop?: boolean; roofStorey?: boolean; warehouse?: boolean; elements?: string[]; /** A published house spec states a mansard (not the register's dakkapel). */ mansard?: boolean;
+export interface BeltStated { crown?: string; year?: number; shop?: boolean; finish?: BeltTarget['finish']; storeys?: number; stoop?: boolean; roofStorey?: boolean; warehouse?: boolean; elements?: string[]; /** A published house spec states a mansard (not the register's dakkapel). */ mansard?: boolean; /** Centrum round 9: a weak dormers read caps the wall under a roof storey (underRoofStoreyTop) without drawing one. */ roofCap?: boolean;
   /** A published house spec's measured wall colour (palette.brick). */ specHex?: string;
   /** Round 13: the photo reads a cornice where the pand's own read saw a gable (photoCrownOverOwnGable). */ photoCornice?: { cornice?: string; dormer: boolean; hoist: boolean };
   /** The pand's cut wall sample (lane W1 on the pinned capture), from any cut, readable or not. */ photo?: BeltPhoto;
@@ -181,11 +181,19 @@ export function corniceLine(read: { crown?: unknown; storeyParts?: { roof?: unkn
  * cornice about 12.5): under a roof storey (the register's or the photo's) the AHN band's top is the roof storey's, so a
  * look with a measured pitch caps a cornice wall at the photo's storeys at that pitch, never under the band p50.
  */
+/** Centrum round 9: a cornice front more than a storey under its photo storey count (look.photoStoreyLiftPitchM) stands at
+ *  that count when 3DBAG's height reaches it (Sleperssteeg 182788, 182780). Without the look's pitch, nothing changes. */
+export function photoStoreyLift(top: number | null, look: Pick<LookDistrict, 'photoStoreyLiftPitchM'>, t: Pick<BeltTarget, 'heightM' | 'roofStorey'>, sd: BeltStated | undefined): number | null {
+  const pitch = look.photoStoreyLiftPitchM;
+  if (top === null || !pitch || !sd?.photoStoreys || t.roofStorey || sd.photoRoof || sd.roofCap || t.heightM === null || t.heightM === undefined) return top;
+  const want = +(sd.photoStoreys * pitch).toFixed(2);
+  return want - top > pitch && want <= t.heightM + 0.5 ? want : top;
+}
 export function underRoofStoreyTop(top: number | null, look: Pick<LookDistrict, 'gableFootPitchM' | 'gableFootSouterrainShare' | 'roofStoreyCapPitchM'>, t: Pick<BeltTarget, 'roofStorey'>, sd: BeltStated | undefined, af: AhnFront | undefined): number | null {
   const pitch = look.roofStoreyCapPitchM ?? look.gableFootPitchM;
   // Round 8: a tall (bracketed) cornice under a roof storey too (Goudsbloemstraat 172466-172470, bracketed at 0.75: the
   // tall cornice's band top was the roof storey's, 14.8 m, the photo's cornice ~12.5).
-  if (top === null || !pitch || !sd?.photoStoreys || !(t.roofStorey || sd.photoRoof)) return top;
+  if (top === null || !pitch || !sd?.photoStoreys || !(t.roofStorey || sd.photoRoof || sd.roofCap)) return top;
   return +Math.max(af?.p50 ?? 0, Math.min(top, (sd.photoStoreys + (sd.photoSouterrain ? look.gableFootSouterrainShare ?? SOUTERRAIN_SHARE.souterrain : 0)) * pitch)).toFixed(2);
 }
 /** A register-stated roof storey over a donor read with none: one plain dormer in a roof storey (the register's dakkapel). */
@@ -318,7 +326,7 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     const gabled = GABLED_CROWNS.has(String(read.crown));
     const tall = !gabled && TALL_CORNICES.has(String((read as { cornice?: string }).cornice)) && (own ? true : !!sd?.tallCornice);
     const top0 = !gabled && (tall ? tallTop : ahnTop) !== null ? (tall ? tallTop : ahnTop) : corniceLine(read, t, eaves, m.pand.eavesM);
-    const top = gabled ? top0 : underRoofStoreyTop(top0, look, t, sd, af);
+    const top = gabled ? top0 : photoStoreyLift(underRoofStoreyTop(top0, look, t, sd, af), look, t, sd);
     // A gable's apex: the AHN front's top under the 3DBAG ridge (the ridge often belongs to the roof behind the front).
     // The minimum rise counts from 3DBAG's own eaves, not the front top lifted to the height (round 6: Keizersgracht 178869
     // and 178868, AHN front tops 15.05 and 15.5 m, drawn 16.3 m as front top 14.3 + 2).

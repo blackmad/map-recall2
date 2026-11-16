@@ -116,6 +116,10 @@ export interface LookDistrict {
   /** The storey pitch (m) generate.ts underRoofStoreyTop caps a cornice wall under a roof storey at (unset: gableFootPitchM,
    *  Centrum's cornice measure). The belt's gable-foot pitch is a gable measure, too short for its cornice walls. */
   roofStoreyCapPitchM?: number;
+  /** Centrum round 9 (Sleperssteeg 182788: four storeys read on the photo, drawn 7.6 m on a 3DBAG eaves of a low part
+   *  and an AHN band caught in a 3 m alley): a cornice front drawn more than a storey under its photo storey count at this
+   *  pitch stands at that count, when 3DBAG's height reaches it. Unset: nothing changes. */
+  photoStoreyLiftPitchM?: number;
   /** roofSignals.ts: no gable (stated or a donor's) on a measured flat top. */
   flatTopNoGable?: boolean;
   /** roofSignals.ts: a cornice front whose AHN band climbs a roof slope stands at the band's p50. */

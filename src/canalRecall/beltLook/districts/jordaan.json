@@ -219,5 +219,6 @@
   "measure": false
  },
  "roofStoreyNeedsPhoto": true,
- "gableFootSouterrainShare": 0
+ "gableFootSouterrainShare": 0,
+  "photoStoreyLiftPitchM": 3.3
 }

@@ -157,3 +157,15 @@ test('round 8: a run of weak brick reads that do not agree draws from them, each
   // under three weak reads the lot draws as before
   assert.equal(drawRowWalls([f('a', 'purple-brown-brick'), f('b', 'brown-brick'), f('e')], cfg)[2]!.by, 'draw');
 });
+
+test('round 9: a weak read of a painted or plastered front stands over its run of brick reads (Korte Leidsedwarsstraat 173459)', () => {
+  const cfg = { before1860: { 'red-brown-brick': 1 }, from1860: { 'red-brown-brick': 1 }, runSamples: 9 } as const;
+  const f = (id: string, extra: object = {}) => ({ pandId: id, year: 1700, free: true, ...extra });
+  const w = drawRowWalls([f('a', { weakPhoto: 'pale-grey-stucco', photoStucco: true }), f('b', { photo: 'brown-brick' }), f('c', { photo: 'brown-brick' }), f('d')], cfg);
+  assert.equal(w[0]!.family, 'pale-grey-stucco');
+  assert.equal(w[0]!.by, 'weak');
+  assert.equal(w[0]!.material, 'stucco');
+  assert.equal(w[3]!.family, 'brown-brick');
+  // a weak brick read still takes its run's family
+  assert.equal(drawRowWalls([f('a', { weakPhoto: 'red-brown-brick' }), f('b', { photo: 'brown-brick' }), f('c', { photo: 'brown-brick' })], cfg)[0]!.family, 'brown-brick');
+});
