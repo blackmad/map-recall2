@@ -962,3 +962,45 @@ where the photo is warm. The hue guard keeps reads out of pink-mauve but cannot 
     match would need the mesh frame's orientation.
 - **Known gap, Kuinderstraat:** the five-storey family's ribbon and piers poke over the white lid. The photo also has
   separate top windows. Both are lane R's kit.
+## Round r and De Pijp (2026-11-16)
+
+Round r (`lane/buurt-colour-20261116`): round 13's warm walls plus lane R's rounds 18 and 19 (bay counts, stair axis,
+entry ground). Records 2495 / 1672, layer hash e6620c29. Against round r before round 19, 991 Rivierenbuurt and 652
+Apollo records change bays (round 19's coverage). Blind against round 13 alone, before round 19: 2 of 4 (Agamemnonstraat,
+Olympiaplein); round 13 won Dintelstraat (paired windows counted as one column, 4 to 2) and Uiterwaardenstraat (low).
+With round 19, Agamemnonstraat draws identically to round 13.
+
+De Pijp (`districts/de-pijp.json`, KE01-KE05 and KF01-KF04, 1868-1915): 1609 records over 345 rows; families
+pijp-three/four/five; walls from 219 of 332 rows' panoramas (pool #746a65, warmed); bays for 379 of 1240 members.
+New: `design.ahnFrontForms` lets a district read hidden-pitch fronts as eaves (Eerste Jacob van Campenstraat
+157140 drew 12.1 m where the cornice stands at ~13.9 m); absent, byte-identical. Blind on 7 held-out rows against
+today: 7 of 7 (Gerard Doustraat and Quellijnstraat high; Frans Halsstraat, Tolstraat, Eerste Jan Steenstraat medium;
+Eerste van der Helststraat and Stadhouderskade low). Ride share (routable km): Amsteldijk, Stadhouderskade,
+Ceintuurbaan, Sarphatipark, Van Woustraat, Ferdinand Bolstraat lead; Ferdinand Bolstraat has only 13 drawn pands
+(shops and described pands), Eerste van der Helststraat 7.
+
+Gaps the judges name: no roof storey with dormers above the cornice (most rows show them), uniform dark brown where
+photos show plaster or light buff brick (Sarphatipark, Eerste Jacob van Campenstraat read 30-40 % grey/shadow and
+disagree), no arched or dressed window heads, no French-balcony railings, corner blocks drawn with a slate mansard.
+
+## Round 14 (2026-11-16): De Pijp roof storeys, flat corners, photo-reader walls
+
+`lane/buurt-pijp-20261116` (from round r, 12320b559; bays stay on the width rule). Records 1609 / 345 rows.
+- `pitched.hiddenPitch`: AHN hidden-pitch fronts draw the roof storey with dormers; 1200 of 1609 members roofed (436 before).
+- `pitched.cornerFlat` (min 8 m): wide end members without their own pitched AHN form draw no mansard.
+- `measured.photoWalls`: the Centrum opus photo reader (b14c917fc, not in this branch) reads one outlined cut per row
+  (`row-cuts.ts`, retry from another capture date for reads below 0.7; `photo-walls.ts` merges). 222 of 326 rows at
+  >= 0.7. Order: row read, then the street's 60 % majority or clear plurality (>= 3, twice the runner-up), then pixels.
+  892 members take their row's read, 371 their street's, 346 pixels or the pool. Sarphatipark is red-brown brick now;
+  Eerste Jacob van Campenstraat 157140 read 0.5 twice and keeps its measured #7f6c5e.
+
+Blind against today, judged on 10 clean held-out rows (never tuned on, ride-share weighted): 7 of 10. Won Ceintuurbaan
+159081, 160241, Govert Flinckstraat, Ruysdaelkade, Sint Willibrordusstraat, Tweede Jan Steenstraat (high), Amsteldijk
+(medium). Lost Stadhouderskade 158460 (medium: one black-painted house's read painted the whole row), Stadhouderskade
+166429 (medium: maroon, too low), Ceintuurbaan 153089 (low: today's dark brown nearer than our red). The 7 old rows as a
+regression check: 5 of 7 (first pass 7 of 7); lost Eerste Jan Steenstraat and Eerste van der Helststraat, both on wall
+colour (our red-brown against grey-brown and dark brown).
+
+Next: a row read stands for its row only when the finish is brick; a painted read (dark, white, cream) is that pand's,
+and the rest of the row takes the street's brick. Red-brown reads are drawn too warm against dark-brown photos.
+Kit cannot say: set-back dormers, arched or dressed window heads, French-balcony railings.
