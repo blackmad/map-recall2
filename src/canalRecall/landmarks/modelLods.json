@@ -6172,13 +6172,25 @@
   "sourceHash": "04f473be95f21701",
   "buildVersion": 2,
   "bytes": 89768,
-  "triangles": 4264
+  "triangles": 4264,
+  "lod2": {
+   "sourceHash": "04f473be95f21701",
+   "buildVersion": 6,
+   "bytes": 16012,
+   "triangles": 546
+  }
  },
  "banks-mansion": {
   "sourceHash": "d8cc19330265f9aa",
   "buildVersion": 2,
   "bytes": 64456,
-  "triangles": 2908
+  "triangles": 2908,
+  "lod2": {
+   "sourceHash": "d8cc19330265f9aa",
+   "buildVersion": 6,
+   "bytes": 9036,
+   "triangles": 325
+  }
  },
  "schiller-rembrandtplein": {
   "sourceHash": "1524c96eed5c6588",
@@ -6187,54 +6199,6 @@
   "triangles": 2614,
   "lod2": {
    "sourceHash": "1524c96eed5c6588",
-   "buildVersion": 6,
-   "bytes": 10420,
-   "triangles": 271
-  }
- },
- "wilhelminatoren": {
-  "sourceHash": "230038717fe89c74",
-  "buildVersion": 2,
-  "bytes": 59824,
-  "triangles": 2338,
-  "lod2": {
-   "sourceHash": "230038717fe89c74",
-   "buildVersion": 6,
-   "bytes": 8780,
-   "triangles": 215
-  }
- },
- "oba-staatsliedenbuurt": {
-  "sourceHash": "a9cc2695f835efd1",
-  "buildVersion": 2,
-  "bytes": 61716,
-  "triangles": 2580,
-  "lod2": {
-   "sourceHash": "a9cc2695f835efd1",
-   "buildVersion": 6,
-   "bytes": 13400,
-   "triangles": 402
-  }
- },
- "room-mate-aitana": {
-  "sourceHash": "4c7a46296c749727",
-  "buildVersion": 2,
-  "bytes": 35932,
-  "triangles": 1563,
-  "lod2": {
-   "sourceHash": "4c7a46296c749727",
-   "buildVersion": 6,
-   "bytes": 6972,
-   "triangles": 187
-  }
- },
- "schiller-rembrandtplein": {
-  "sourceHash": "21952a6e7fd5948b",
-  "buildVersion": 2,
-  "bytes": 63104,
-  "triangles": 2614,
-  "lod2": {
-   "sourceHash": "21952a6e7fd5948b",
    "buildVersion": 6,
    "bytes": 10420,
    "triangles": 271
@@ -6322,6 +6286,42 @@
    "buildVersion": 6,
    "bytes": 5360,
    "triangles": 144
+  }
+ },
+ "wilhelminatoren": {
+  "sourceHash": "323ca65272c178d6",
+  "buildVersion": 2,
+  "bytes": 68068,
+  "triangles": 2714,
+  "lod2": {
+   "sourceHash": "323ca65272c178d6",
+   "buildVersion": 6,
+   "bytes": 9596,
+   "triangles": 254
+  }
+ },
+ "oba-staatsliedenbuurt": {
+  "sourceHash": "40558159d66c65b5",
+  "buildVersion": 2,
+  "bytes": 70800,
+  "triangles": 3098,
+  "lod2": {
+   "sourceHash": "40558159d66c65b5",
+   "buildVersion": 6,
+   "bytes": 13728,
+   "triangles": 400
+  }
+ },
+ "room-mate-aitana": {
+  "sourceHash": "4c7a46296c749727",
+  "buildVersion": 2,
+  "bytes": 35932,
+  "triangles": 1563,
+  "lod2": {
+   "sourceHash": "4c7a46296c749727",
+   "buildVersion": 6,
+   "bytes": 6972,
+   "triangles": 187
   }
  }
 }
