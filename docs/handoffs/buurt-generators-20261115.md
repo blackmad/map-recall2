@@ -962,3 +962,47 @@ where the photo is warm. The hue guard keeps reads out of pink-mauve but cannot 
     match would need the mesh frame's orientation.
 - **Known gap, Kuinderstraat:** the five-storey family's ribbon and piers poke over the white lid. The photo also has
   separate top windows. Both are lane R's kit.
+
+### Round 13 (warm walls)
+
+The judges kept naming the walls grey where the photo is warm (Amsteldijk lost on colour in round 11).
+
+- **Measured:** Node frames (`scripts/house-frames/node-frame.ts`) of 26 members, 13 per district, one per street.
+  - Each frame's wall and its panorama cut were read with the same brick reader (`measure.ts brickOfPixels`). The
+    tool is `artifacts/buurt-generators/tools/measure-pairs.mts`; the data is in
+    `_pruned-sheets/buurt-generators-20261115/round13/`.
+  - Results:
+
+    | OKLab median | L | C | hue |
+    |---|---|---|---|
+    | photo | 0.454 | 0.023 | 68 |
+    | drawn | 0.430 | 0.020 | 56 |
+    | record | 0.442 | 0.021 | 51 |
+
+  - 9 of 25 members drew at chroma under 0.015, a neutral grey.
+- **Where the grey comes from:**
+  1. **The sample, mostly.** The district pools #5b504a and #5b4e47 (1032 records) were calibrated darker in
+     round 3 and sit at C 0.018-0.021. Some votes are neutral: Waalstraat #6a6362 (C 0.009), Corellistraat #484a4c
+     (C 0.004, blue-grey). Amsteldijk 071947 #948a73 is olive at h 87, where the photo reads h 72, C 0.075.
+  2. **The renderer, mildly.** Record to drawn is L x0.87, C x0.84, hue +3 deg (median of 23). That covers lighting
+     and the city look together; the landmarks lane's files were not touched.
+- **Fix** (`generate.ts warmWall`; stated walls such as `rowNotes.wall` and `wallFamily` stay byte-identical):
+  - An unstated wall keeps its lightness. Its chroma rises to at least 0.032, and its hue is held in 45-72 deg.
+    A vote under C 0.012 has no hue to keep, so it takes the band's middle.
+  - An unmeasured row now takes its street's measured rows (median) before the district pool.
+  - 2209 of 2495 Rivierenbuurt and 1374 of 1672 Apollo records change wall hex (and coping hex). No other field
+    changes.
+
+#### Held-out round 13 (blind; round 11's seven held-out rows; round 13 against round 12; salt `r13warm`)
+
+| Street (row) | Winner | Confidence | What the judge said |
+|---|---|---|---|
+| Amsteldijk (076326) | round 13 | high | warm brown against grey-green; gap: stepped massing, balconies, red plinth |
+| Uithoornstraat (067867) | round 13 | high | warm red-brown against cool grey; gap: white casements, corner tower |
+| Vrijheidslaan (148822) | round 13 | medium | mid-tone brick against dark chocolate; gap: stair glazing, a cornice the photo lacks |
+| Roerstraat (112650) | round 13 | medium | lighter warm brown against purple-brown; gap: slightly too red, bay windows |
+| Albrecht Dürerstraat (142046) | round 13 | low | near-identical, slightly warmer; gap: tower bay, mansard |
+| Deurloostraat (075052) | round 12 | low | the street median (#725f52) is lighter and redder than the photo's dull dark brown |
+| Leonardostraat (077281) | tie | - | unchanged, its wall #816857 was already warm |
+
+Round 13 wins 5 of the 6 rows that changed. What the judges now name is massing, bays and window dressing.
