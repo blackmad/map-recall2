@@ -108397,6 +108397,7 @@
         "gold": "#f0c22c",
         "red": "#b8322e"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "De Mirandabad, De Mirandalaan 9: subtropical bath of 1979 with outdoor basins",
         "author": "Map Recall",
@@ -108697,10 +108698,21 @@
         "depthMetres": 191.8248519897461,
         "depthCoverage": 1.0363309129645926
       },
-      "triangles": 11867,
-      "bytes": 122092,
+      "triangles": 11833,
+      "bytes": 121688,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "32c88595a37f3dbf",
+        "buildVersion": 2,
+        "bytes": 61368,
+        "triangles": 2602
+      },
+      "lod2": {
+        "sourceHash": "32c88595a37f3dbf",
+        "buildVersion": 6,
+        "bytes": 18196,
+        "triangles": 665
+      }
     },
     "sportplaza-mercator": {
       "id": "sportplaza-mercator",
@@ -108747,6 +108759,7 @@
         "concrete": "#cdc8bc",
         "sandstone": "#25689a"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Sportplaza Mercator, Jan van Galenstraat: planted sports bath of 2006 with the outdoor pool of the Jan van Galenbad",
         "author": "Map Recall",
@@ -109232,9 +109245,20 @@
         "depthCoverage": 1.028244362114379
       },
       "triangles": 5837,
-      "bytes": 81188,
+      "bytes": 81184,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "e5b583adec690a31",
+        "buildVersion": 2,
+        "bytes": 32644,
+        "triangles": 1141
+      },
+      "lod2": {
+        "sourceHash": "e5b583adec690a31",
+        "buildVersion": 6,
+        "bytes": 9724,
+        "triangles": 259
+      }
     },
     "flevoparkbad": {
       "id": "flevoparkbad",
@@ -109291,6 +109315,7 @@
         "copper": "#7cc3e6",
         "frame": "#e8e8e4"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Flevoparkbad, Zeeburgerdijk: outdoor bath of 1967 in the Flevopark",
         "author": "Map Recall",
@@ -109368,12 +109393,12 @@
         "depthCoverage": 0.8863324962561918
       },
       "triangles": 1097,
-      "bytes": 22672,
+      "bytes": 22696,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod2": {
-        "sourceHash": "061808599a489c69",
+        "sourceHash": "67b2b1f5ac4a8453",
         "buildVersion": 6,
-        "bytes": 8768,
+        "bytes": 8792,
         "triangles": 328
       }
     },
@@ -109596,7 +109621,13 @@
       "triangles": 404,
       "bytes": 10088,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "held": true,
+      "lod2": {
+        "sourceHash": "82231dff5ed6ebaa",
+        "buildVersion": 6,
+        "bytes": 5564,
+        "triangles": 168
+      }
     },
     "noorderparkbad": {
       "id": "noorderparkbad",
@@ -109641,6 +109672,7 @@
         "blue": "#3cb4e0",
         "dark": "#262d36"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Noorderparkbad, Noorderpark: indoor bath of 2015 with outdoor basins",
         "author": "Map Recall",
@@ -111086,18 +111118,18 @@
         "depthCoverage": 1.060372272217559
       },
       "triangles": 9233,
-      "bytes": 103116,
+      "bytes": 103164,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "1c03eae235b4582a",
+        "sourceHash": "28103a8bda6d274d",
         "buildVersion": 2,
-        "bytes": 42148,
+        "bytes": 42196,
         "triangles": 2540
       },
       "lod2": {
-        "sourceHash": "1c03eae235b4582a",
+        "sourceHash": "28103a8bda6d274d",
         "buildVersion": 6,
-        "bytes": 18448,
+        "bytes": 18472,
         "triangles": 1472
       }
     },
@@ -111146,6 +111178,7 @@
         "blue": "#3cb4e0",
         "sandstone": "#bfc3c1"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Sloterparkbad, President Allendelaan 3: swimming and sports centre of 2001 on the Sloterplas",
         "author": "Map Recall",
@@ -111510,10 +111543,21 @@
         "depthMetres": 151.9465103149414,
         "depthCoverage": 0.9996480941772461
       },
-      "triangles": 9138,
-      "bytes": 130264,
+      "triangles": 9126,
+      "bytes": 130160,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "8a03199d2f503155",
+        "buildVersion": 2,
+        "bytes": 38004,
+        "triangles": 1437
+      },
+      "lod2": {
+        "sourceHash": "8a03199d2f503155",
+        "buildVersion": 6,
+        "bytes": 9228,
+        "triangles": 273
+      }
     },
     "zwembad-bijlmer": {
       "id": "zwembad-bijlmer",
@@ -111560,6 +111604,7 @@
         "red": "#c8323a",
         "dark": "#4d5256"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Zwembad Bijlmer, Bijlmer Sportcentrum: sports and swimming hall of 2008",
         "author": "Map Recall",
@@ -111736,10 +111781,21 @@
         "depthMetres": 101.52698516845703,
         "depthCoverage": 1.0002658637286408
       },
-      "triangles": 13767,
-      "bytes": 185332,
+      "triangles": 13765,
+      "bytes": 185340,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "972ed0cfdae4e68a",
+        "buildVersion": 2,
+        "bytes": 55188,
+        "triangles": 2584
+      },
+      "lod2": {
+        "sourceHash": "972ed0cfdae4e68a",
+        "buildVersion": 6,
+        "bytes": 9236,
+        "triangles": 267
+      }
     },
     "victoriabad": {
       "id": "victoriabad",
@@ -111775,20 +111831,21 @@
       },
       "bagYear": 2005,
       "materialOverrides": {
-        "brick": "#5f4b41",
+        "brick": "#887769",
         "slate": "#45474a",
         "glass": "#33414a",
         "frame": "#2e3134",
         "dark": "#2a2c2e",
         "white": "#f2f2ee"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Victoriabad, Weesp: indoor bath of 2005",
         "author": "Map Recall",
         "sourceUrl": "https://www.openstreetmap.org/node/1618233446",
         "licence": "CC BY 4.0",
         "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the dark brick hall with its high window strip and glass slot, the entrance block's window band and projecting glass box, the east front's windows and the VICTORIABAD garden wall. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the grey-buff brick hall with its high window strip and glass slot, the entrance block's window band and projecting glass box, the east front's windows and the VICTORIABAD garden wall. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
       },
       "buildingFootprint": {
         "type": "Polygon",
@@ -112055,12 +112112,12 @@
         "depthCoverage": 1.0157582433778483
       },
       "triangles": 2045,
-      "bytes": 32388,
+      "bytes": 32408,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod2": {
-        "sourceHash": "7b02ebe0caa11377",
+        "sourceHash": "b1b2870d29f66e8d",
         "buildVersion": 6,
-        "bytes": 5336,
+        "bytes": 5360,
         "triangles": 144
       }
     }

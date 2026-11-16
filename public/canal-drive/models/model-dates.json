@@ -1637,8 +1637,8 @@
       "dateSource": "asset-update"
     },
     "de-mirandabad": {
-      "updatedAt": "2026-11-16T00:53:22.350Z",
-      "version": "037f9dfd031bdb64",
+      "updatedAt": "2026-11-16T04:16:23.402Z",
+      "version": "32c88595a37f3dbf",
       "dateSource": "asset-update"
     },
     "de-nederlandsche-bank": {
@@ -2312,8 +2312,13 @@
       "dateSource": "asset-update"
     },
     "flevoparkbad": {
-      "updatedAt": "2026-11-16T01:08:56.813Z",
-      "version": "061808599a489c69",
+      "updatedAt": "2026-11-16T04:15:55.509Z",
+      "version": "67b2b1f5ac4a8453",
+      "dateSource": "asset-update"
+    },
+    "flevoparkbad.lod2": {
+      "updatedAt": "2026-11-16T01:15:42.908Z",
+      "version": "bc19fd725abe272b",
       "dateSource": "asset-update"
     },
     "foam": {
@@ -4742,8 +4747,18 @@
       "dateSource": "asset-update"
     },
     "noorderparkbad": {
-      "updatedAt": "2026-11-16T01:08:56.959Z",
-      "version": "1c03eae235b4582a",
+      "updatedAt": "2026-11-16T04:15:55.509Z",
+      "version": "28103a8bda6d274d",
+      "dateSource": "asset-update"
+    },
+    "noorderparkbad.lod1": {
+      "updatedAt": "2026-11-16T01:15:41.571Z",
+      "version": "a62bef3e04b70709",
+      "dateSource": "asset-update"
+    },
+    "noorderparkbad.lod2": {
+      "updatedAt": "2026-11-16T01:16:01.878Z",
+      "version": "551f4251affc787e",
       "dateSource": "asset-update"
     },
     "oba-oosterdok": {
@@ -5786,6 +5801,16 @@
       "version": "21952a6e7fd5948b",
       "dateSource": "asset-update"
     },
+    "schiller-rembrandtplein.lod1": {
+      "updatedAt": "2026-11-16T01:15:41.426Z",
+      "version": "fe55f84ad621674c",
+      "dateSource": "asset-update"
+    },
+    "schiller-rembrandtplein.lod2": {
+      "updatedAt": "2026-11-16T01:15:42.248Z",
+      "version": "8747ba62ddaf4148",
+      "dateSource": "asset-update"
+    },
     "schreierstoren": {
       "updatedAt": "2026-10-20T10:13:04.917Z",
       "version": "bdfa675b2af9ea8a",
@@ -5992,8 +6017,8 @@
       "dateSource": "asset-update"
     },
     "sloterparkbad": {
-      "updatedAt": "2026-11-16T00:53:22.738Z",
-      "version": "2c0a937c10f92ce4",
+      "updatedAt": "2026-11-16T04:16:23.453Z",
+      "version": "8a03199d2f503155",
       "dateSource": "asset-update"
     },
     "social-history": {
@@ -6067,8 +6092,8 @@
       "dateSource": "asset-update"
     },
     "sportplaza-mercator": {
-      "updatedAt": "2026-11-16T00:53:22.466Z",
-      "version": "8b8c39e2c50babf1",
+      "updatedAt": "2026-11-16T04:16:23.428Z",
+      "version": "e5b583adec690a31",
       "dateSource": "asset-update"
     },
     "stadhuis": {
@@ -6607,8 +6632,13 @@
       "dateSource": "asset-update"
     },
     "victoriabad": {
-      "updatedAt": "2026-11-16T01:08:57.001Z",
-      "version": "7b02ebe0caa11377",
+      "updatedAt": "2026-11-16T04:16:23.491Z",
+      "version": "b1b2870d29f66e8d",
+      "dateSource": "asset-update"
+    },
+    "victoriabad.lod2": {
+      "updatedAt": "2026-11-16T01:16:02.456Z",
+      "version": "539fde092efa7450",
       "dateSource": "asset-update"
     },
     "vijzelbank": {
@@ -7337,8 +7367,8 @@
       "dateSource": "asset-update"
     },
     "zwembad-bijlmer": {
-      "updatedAt": "2026-11-16T00:53:23.002Z",
-      "version": "d5e4765b7064dc25",
+      "updatedAt": "2026-11-16T04:16:23.485Z",
+      "version": "972ed0cfdae4e68a",
       "dateSource": "asset-update"
     }
   }

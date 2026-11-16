@@ -33,7 +33,7 @@
      ],
      "plan": "modelled",
      "seenIn": "TMX7316010203-002508_pano_0004_000065",
-     "how": "walkway(): deck in 3 m steps along edges 65-77 (ramp on 67), balustrade panels both sides, posts every 6 m"
+     "how": "walkway(): deck in 3 m steps along edges 66-78 (ramp on 67), balustrade panels both sides, posts every 6 m; none in front of the north-east end block (edge 65), where it stood cut off 4 m further out"
     },
     {
      "id": "brick-front-windows",
@@ -45,7 +45,7 @@
      ],
      "plan": "modelled",
      "seenIn": "TMX7316010203-002508_pano_0004_000065",
-     "how": "square(): light frame, dark glass, on edges 65-77"
+     "how": "square(): light frame, dark glass, on edges 67-78 (not edge 65: the 3DBAG wall steps back 3.5 m above the 4.1 m end block, so they hung in the air)"
     },
     {
      "id": "steel-stair",
@@ -111,7 +111,7 @@
      ],
      "plan": "modelled",
      "seenIn": "TMX7316010203-002508_pano_0004_000111",
-     "how": "ledgeStrip courses every 0.75 m; orangeBand() at 1.0 and 6.2 m with BASIC FIT in white glyphs twice"
+     "how": "closed 6 cm slab courses every 0.75 m; orangeBand() at 1.0 and 6.2 m with BASIC FIT in white glyphs twice"
     },
     {
      "id": "orange-graphics",
@@ -198,7 +198,7 @@
      ],
      "plan": "simplified",
      "seenIn": "MS_26112024_845_Track13_Sphere_00042",
-     "how": "3DBAG shell in brick, ground glazing and the walkway's low start on edge 65"
+     "how": "3DBAG shell in brick and ground glazing; the walkway starts on the jog after it (edge 66)"
     }
    ]
   },

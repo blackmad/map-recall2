@@ -127,3 +127,15 @@ export function tagExtras<B extends {tint: string}>(base: B, tag: SlotTag): B & 
 
 /** The declared slot for a palette name in a model, if any. */
 export const slotTagFor = (id: string, materialName: string): SlotTag | undefined => MATERIAL_SLOT_TAGS[id]?.[materialName];
+
+/**
+ * A spec-stated wall colour (`materialOverrides` of the landmark's spec) drawn as stated. Unmeasured, the city look maps a
+ * brick/accent tint into the city range and paints it on a period brick cell (palette.ts `cityTint` -> `cityWallTint`), so
+ * Victoriabad's stated #5f4b41 drew orange; `tintSource: 'measured'` takes the measured path instead (`cityMeasuredWallTint`:
+ * the canal brick cell, divided by its mean). Only brick/accent slots, only when the material's colour is the stated one, and
+ * never over a tag's own measured tint. Without an override the extras come back unchanged (same object).
+ */
+export function statedOverrideExtras<B extends {materialSlot: MaterialSlot; tint: string; tintSource?: 'measured'}>(base: B, override: string | undefined, hex: string): B | (B & {tintSource: 'measured'}) {
+  if (override === undefined || override.toLowerCase() !== hex.toLowerCase() || base.tintSource !== undefined) return base;
+  return base.materialSlot === 'brick' || base.materialSlot === 'accent' ? {...base, tintSource: 'measured' as const} : base;
+}

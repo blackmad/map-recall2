@@ -10,6 +10,7 @@
  * eaves) is listed in `readNotDrawn`; what the kit cannot say is the library's `notDrawn`, copied into `schemaLimits`.
  */
 import { variedTone, type JudgedFamily } from '../houseSpec/judgedColour.ts';
+import { labHex, oklab } from '../retailPuiPaint.ts';
 import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
@@ -187,15 +188,47 @@ export function pitchedVariantOf(lib: DistrictLibrary, s: GenSeries): DistrictPi
 export const axisOf = (lib: DistrictLibrary, rowId: string): Pick<DistrictDesign, 'axisM'> => ({ axisM: lib.rowNotes?.[rowId]?.axisM ?? lib.design.axisM });
 /** The series wall hex: the row's own photo (row note: a hex, else a stated family), then the row's measured brick (round 9, panoramas voted across
  *  captures), over the family's and the district's pool. */
+/**
+ * Round 13 (warm walls): a brick wall the photo and the neighbours read as brick is never drawn grey. Node frames of 26
+ * members (docs/handoffs/buurt-generators-20261115.md, round 13) drew a quarter of them at chroma under 0.015 where the
+ * photo reads warm: the district pools (#5b504a, #5b4e47, calibrated darker in round 3) and the neutral votes (Waalstraat
+ * #6a6362, Corellistraat #484a4c). An unstated wall keeps its lightness; its chroma is raised to `C` and its hue held in
+ * the brick band [h0, h1] (a vote under `greyC` has no hue to keep: the band's middle). Stated walls are drawn as stated.
+ */
+export const WALL_WARM = { C: 0.032, h0: 45, h1: 72, greyC: 0.012 } as const;
+export function warmWall(hex: string): string {
+  const n = parseInt(hex.slice(1), 16), [L, a, b] = oklab(n >> 16, (n >> 8) & 255, n & 255), C = Math.hypot(a, b);
+  const h = ((Math.atan2(b, a) * 180) / Math.PI + 360) % 360;
+  const hue = C < WALL_WARM.greyC ? (WALL_WARM.h0 + WALL_WARM.h1) / 2 : h >= WALL_WARM.h0 && h <= WALL_WARM.h1 ? h : (h > WALL_WARM.h1 && h < 180 + (WALL_WARM.h0 + WALL_WARM.h1) / 2) ? WALL_WARM.h1 : WALL_WARM.h0;
+  const c = Math.max(C, WALL_WARM.C);
+  if (hue === h && c === C) return hex;
+  return labHex([L, c * Math.cos((hue * Math.PI) / 180), c * Math.sin((hue * Math.PI) / 180)]);
+}
+/** The street a row id names (`roerstraat-150901` -> `roerstraat`). */
+const streetSlugOf = (rowId: string) => rowId.replace(/(-\d{6})+$/, '');
+/** An unmeasured row's neighbours: the measured rows on its street, their median in OKLab; null when there are none. */
+export function streetWallOf(lib: DistrictLibrary, rowId: string): { hex: string; rows: string[] } | null {
+  const walls = lib.measured?.walls; if (!walls) return null;
+  const slug = streetSlugOf(rowId), rows = Object.keys(walls).filter(k => streetSlugOf(k) === slug).sort();
+  if (!rows.length) return null;
+  const labs = rows.map(k => { const n = parseInt(walls[k].hex.slice(1), 16); return oklab(n >> 16, (n >> 8) & 255, n & 255); });
+  const med = (i: 0 | 1 | 2) => { const v = labs.map(l => l[i]).sort((x, y) => x - y); return v[(v.length - 1) >> 1]; };
+  return { hex: labHex([med(0), med(1), med(2)]), rows };
+}
 export function wallHexOf(lib: DistrictLibrary, fam: DistrictFamily | null, rowId: string): { hex?: string; evidence?: string; family?: JudgedFamily } {
   const own = lib.rowNotes?.[rowId]?.wall;
   if (own) return { hex: own.hex, evidence: `the row's own photo: ${own.evidence}` };
   const stated = lib.rowNotes?.[rowId]?.wallFamily;
   if (stated) return { hex: variedTone(stated.family, `${rowId}:${stated.family}`), family: stated.family, evidence: `the row's own photo states ${stated.family}: ${stated.evidence}` };
+  const warmed = (hex: string) => { const w = warmWall(hex); return w === hex ? { hex, note: '' } : { hex: w, note: ` (warmed from ${hex}: brick is never drawn grey)` }; };
   const m = lib.measured?.walls?.[rowId];
-  if (m) return { hex: m.hex, evidence: `the row's panoramas: ${m.n} of ${m.of} reads agree (${m.dates} capture date${m.dates === 1 ? '' : 's'}; ${m.reads.map(r => `${r.pano} ${r.date} ${r.hex}`).join(', ')})` };
+  if (m) { const w = warmed(m.hex); return { hex: w.hex, evidence: `the row's panoramas: ${m.n} of ${m.of} reads agree (${m.dates} capture date${m.dates === 1 ? '' : 's'}; ${m.reads.map(r => `${r.pano} ${r.date} ${r.hex}`).join(', ')})${w.note}` }; }
+  const street = streetWallOf(lib, rowId);
+  if (street) { const w = warmed(street.hex); return { hex: w.hex, evidence: `the street's measured rows (${street.rows.join(', ')}), their median${w.note}` }; }
   const d = { ...lib.design.wall, ...fam?.design?.wall };
-  return d.hex ? { hex: d.hex, evidence: d.evidence } : {};
+  if (!d.hex) return {};
+  const w = warmed(d.hex);
+  return { hex: w.hex, evidence: `${d.evidence}${w.note}` };
 }
 /** 3DBAG's roof type of the series, its members' majority (`roofCode`: 1 flat, 2 several flats, 3 slanted); null unread. */
 export function seriesRoofCode(s: GenSeries): number | null {

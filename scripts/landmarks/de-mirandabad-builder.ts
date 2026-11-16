@@ -1,6 +1,7 @@
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
-import {eaveOffset, ledgeStrip, ringFrame, slab, setSink, getSink, type Frame} from './nearbar-kit';
+import {eaveOffset, ledgeStrip, put, ringFrame, slab, setSink, getSink, type Frame} from './nearbar-kit';
+import * as T from 'three';
 import {basin, glassDome, offsetRing, post, prismRing, spiralSlide, tubePath, type XZ} from './pool-kit';
 import source from './de-mirandabad-footprints.json';
 
@@ -46,7 +47,9 @@ export function buildDeMirandabad(_w: number, _d: number, b: BuildingTools) {
   setSink(0.05);
   // each front stands on the 3DBAG wall (median eave offset from the BAG edge), not on the BAG line
   const roofs = src.surfaces.filter(s => s.type === 'RoofSurface');
-  for (const i of [41, 42, 44, 46]) front(b, ringFrame(ring, i, Math.max(-0.5, Math.min(1.5, eaveOffset(ring, roofs, i)))));
+  // fronts 42, 44 and 46 start on the short 3DBAG walls between them (edges 41, 43 and 45): there the bands' end faces lay
+  // 1-2 cm off that wall and are dropped (bandSlab); every other end stays closed
+  for (const i of [41, 42, 44, 46]) front(b, ringFrame(ring, i, Math.max(-0.5, Math.min(1.5, eaveOffset(ring, roofs, i)))), [i === 41, true]);
   setSink(sink0);
 
   // ---- the striped glass entrance tower (ring edges 36-38: the 6 x 6 m block between the hall and the drum, 3DBAG roof
@@ -80,22 +83,39 @@ export function buildDeMirandabad(_w: number, _d: number, b: BuildingTools) {
 }
 
 /** The 1979 front: glazed ground floor behind columns, exposed-aggregate beam, block panels with tall windows, notched fascia. */
-function front(b: BuildingTools, {f, len}: {f: Frame; len: number}) {
+function front(b: BuildingTools, {f, len}: {f: Frame; len: number}, ends: readonly [boolean, boolean] = [true, true]) {
   const bay = 5.7, n = Math.max(1, Math.round(len / bay)), step = len / n;
   slab(b, f, len / 2, 0.15, len - 1.4, 3.9, 0.14, 'glass'); // ground-floor glazing (simplified: drawn on the wall plane)
   for (let k = 0; k <= n; k++) {
     const t = Math.min(len - 0.3, Math.max(0.3, k * step));
     slab(b, f, t, 0, 0.5, 4.15, 0.45, 'sandstone'); // round concrete columns, drawn square
   }
-  slab(b, f, len / 2, 4.1, len, 1.9, 0.5, 'sandstone'); // the deep beam over the ground floor
-  slab(b, f, len / 2, 6.0, len, 2.4, 0.12, 'greyBrick'); // block panels
+  bandSlab(b, f, len, 4.1, 1.9, 0.5, 'sandstone', ends); // the deep beam over the ground floor
+  bandSlab(b, f, len, 6.0, 2.4, 0.12, 'greyBrick', ends, false); // block panels
   for (let k = 0; k < n; k++) {
     const t = (k + 0.5) * step;
     slab(b, f, t, 6.15, 1.45, 2.25, 0.2, 'glass');
     slab(b, f, t, 6.1, 1.6, 0.08, 0.16, 'dark', 0.0);
   }
-  slab(b, f, len / 2, 8.4, len, 1.65, 0.45, 'sandstone'); // fascia
+  bandSlab(b, f, len, 8.4, 1.65, 0.45, 'sandstone', ends); // fascia
   for (let k = 1; k < n; k++) slab(b, f, k * step, 8.55, Math.min(3, step * 0.5), 0.55, 0.08, 'glass', 0.45); // clerestory notches over the panels, between the windows (w04 crop)
+}
+
+/**
+ * A full-length band of a 1979 front (beam, block panels, fascia): `slab` with an end face dropped where it lies on the
+ * neighbouring 3DBAG wall (ends[0] at t = 0, ends[1] at t = len; false = hidden, dropped). Those end faces stood in the plane of
+ * the next wall (audit zfight greyBrick/sandstone, 4.3 m2 in 54 patches, 2026-11-16). `caps` false drops the top and bottom too:
+ * the block panels sit between the deeper beam and fascia, so both lay hidden on them (and on the window heads at 8.4 m).
+ */
+function bandSlab(b: BuildingTools, f: Frame, len: number, y: number, h: number, d: number, colour: 'sandstone' | 'greyBrick', ends: readonly [boolean, boolean], caps = true) {
+  const k = getSink(), g = new T.BoxGeometry(len, h, d + k).translate(0, h / 2, (d + k) / 2);
+  if (!ends[0] || !ends[1] || !caps) {
+    const idx = g.getIndex()!.array as ArrayLike<number>, keep: number[] = [];
+    // BoxGeometry face order: +x (t = len), -x (t = 0), +y, -y, +z, -z
+    for (let face = 0; face < 6; face++) if ((face !== 0 || ends[1]) && (face !== 1 || ends[0]) && (caps || (face !== 2 && face !== 3))) for (let i = 0; i < 6; i++) keep.push(idx[face * 6 + i]);
+    g.setIndex(keep);
+  }
+  put(b, f, g, len / 2, y, -k, colour);
 }
 
 /** A glass tower front: full-height glass in white frames, banded with red panels every storey band (w08-5 crop). */
@@ -106,7 +126,9 @@ function stripedTower(b: BuildingTools, {f, len}: {f: Frame; len: number}) {
   ledgeStrip(b, f, len / 2, 0.1, len - 0.2, TOP - 0.45, 0.09, 'glass'); // up to the coping's underside, 5 cm behind the mullions
   for (let y = 0.9; y + 0.75 < TOP; y += 1.55) slab(b, f, len / 2, y, len - 0.3, 0.75, 0.16, 'red'); // red bands ('green' with a red override drew green in the game: the accent slot keeps its look tint, blind review 2026-11-15)
   for (let y = 0.1; y < TOP; y += 1.55) slab(b, f, len / 2, y, len - 0.5, 0.1, 0.2, 'white'); // white transoms
-  for (const t of [0.3, len / 2, len - 0.3]) slab(b, f, t, 0.1, 0.12, TOP - 0.1, 0.14, 'white'); // mullions
+  // mullions 3.5 cm proud of the glass and 3.5 cm behind the red bands: at 0.14 their fronts lay 2 cm behind every band (audit
+  // zfight red/white 3.75 m2 in 50 patches, 2026-11-16); proud of the bands they reached past the 3DBAG silhouette
+  for (const t of [0.3, len / 2, len - 0.3]) slab(b, f, t, 0.1, 0.12, TOP - 0.1, 0.125, 'white');
   ledgeStrip(b, f, len / 2, TOP - 0.35, len - 0.5, 0.35, 0.3, 'white'); // coping (front and top only: its back plane lay on the top transom's), kept under the 3DBAG roof (11.5 m)
 }
 

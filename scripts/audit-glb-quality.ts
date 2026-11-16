@@ -115,6 +115,8 @@ function modelThresholds(id: string, file?: string): Partial<Thresholds> {
     if (Array.isArray(spec.throughPassages)) out.throughPassages = spec.throughPassages;
     // Declared free-standing structures ({box: [minX, minZ, maxX, maxZ], evidence}) exempt from the far-outside check; see Thresholds.detachedStructures.
     if (Array.isArray(spec.detachedStructures)) out.detachedStructures = spec.detachedStructures;
+    // Declared decks standing off a wall ({bearing, span: [[x,z],[x,z]], reach, evidence}); see Thresholds.standoffDecks.
+    if (Array.isArray(spec.standoffDecks)) out.standoffDecks = spec.standoffDecks;
     // Declared depth below the ground plane ({belowGroundMetres: -2.2, evidence}): a memorial stepping down to the water (the
     // Homomonument, ownGround WATER_Z -1.77) carries its stones below y = 0 on purpose; nothing else may.
     if (typeof spec.belowGroundMetres === 'number' && spec.belowGroundMetres < 0) out.belowGround = spec.belowGroundMetres;
