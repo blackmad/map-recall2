@@ -22,15 +22,17 @@ const rect = (k: keyof typeof FACE) => `vec4(${FACE[k].map(f).join(', ')})`;
 /** The shader's tunables, measured against the photos' shop glass in the A/B frames. */
 export const SHOP_LOOK = {
   /** Linear radiance of a white back wall by day (unlit shop: under the street's light, glass reads dark). */
-  dayLevel: 0.42,
+  dayLevel: 0.24,
   /** A lit chain's interior (supermarket, chemist) by day. */
-  dayLitLevel: 0.62,
+  dayLitLevel: 0.36,
   /** At dusk: the room's own lamps. */
   duskLevel: 0.95,
   /** Reflection: base share by day and at dusk, and the Fresnel gain on top. */
-  reflectDay: 0.2, reflectDusk: 0.06, fresnelGain: 0.8,
+  reflectDay: 0.3, reflectDusk: 0.06, fresnelGain: 0.8,
   /** The reflected street (ground) and sky (linear). */
   street: [0.085, 0.085, 0.082], sky: [0.36, 0.40, 0.45],
+  /** Colour kept behind the glass by day (1 = the atlas's own); the photos' interiors read greyed through the glass. */
+  saturation: 0.7,
   /** The mid plane's distance behind the glass: at most this, and at most this share of the room's depth. */
   midM: 1.5, midShare: 0.38,
   /** From this distance (m) the room fades to its mean colour, gone by `fadeFar`. */
@@ -118,6 +120,7 @@ bool shopInterior(vec2 uv, vec3 acc, vec3 P, out vec3 lin) {
     }
   }
   vec3 rc = c * k * level;
+  rc = mix(vec3(dot(rc, vec3(0.2126, 0.7152, 0.0722))), rc, mix(${f(L.saturation)}, 1.0, shopDusk));
   rc = mix(rc, mean * level * 0.8, smoothstep(${f(L.fadeNear)}, ${f(L.fadeFar)}, dist));
   // The glass: the street below the horizon, the sky above it, by the reflected ray, with a Fresnel rise at grazing angles.
   vec3 r = reflect(d, N);
