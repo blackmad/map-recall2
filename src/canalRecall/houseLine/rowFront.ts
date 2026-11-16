@@ -136,6 +136,8 @@ export interface RowSeriesDraw {
   shopUnits?: number;
   /** The stated balcony: renderer upper storeys (1 = the first upper row) and axis. */
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
+  /** Stated French balconies (RowDesign.balconettes) per front span: renderer upper storeys (1 = the first upper row), axis. */
+  balconettes?: RowBalconetteDraw[];
   /** Upper windows' share of their axis pitch, frames included (the row type's window width, rowSeries.ts ROW_TYPE_LOOK). */
   windowShare?: number;
   /** The stated window joinery (RowDesign.glazing): kind, white frame and bar widths (m), panes per sash. */
@@ -148,6 +150,8 @@ export interface RowSeriesDraw {
   basements?: RowBasementDraw[];
 }
 export type RowGlazingDraw = { kind: string; frameM: number; barM: number; panes?: number };
+/** A front's French balconies as drawn (row-balconette): its span as fractions of the pand front, the storeys and axis. */
+export type RowBalconetteDraw = { a0: number; a1: number; storeys: number[]; axis: 'centre' | 'all' };
 /** A front's ground-storey facing as drawn (row-ground-wall): its span as fractions of the pand front, colour and top. */
 export type RowGroundWallDraw = { a0: number; a1: number; hex: string; top: 'plain' | 'ledge' | 'scrolled' };
 /** A front's basement as drawn (row-basement): its span, the plinth's colour, its doorways' spans (fractions of the pand
@@ -328,10 +332,10 @@ export function loadRowFrontRecords(base = '', fetchFn: typeof fetch | undefined
 /** House rows: the wall dressing a series states (the mesher hands it to the extras as `rowDress`). */
 /** A single shopfront's frame when the record states no ground colour. */
 export const ROW_SHOP_FRAME = '#e6e1d6';
-export function rowDressOf(series: RowSeriesDraw): { omitExtras?: string[]; cornice?: string; corniceDress?: RowSeriesDraw['corniceDress']; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; basements?: RowBasementDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
+export function rowDressOf(series: RowSeriesDraw): { omitExtras?: string[]; cornice?: string; corniceDress?: RowSeriesDraw['corniceDress']; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: RowSeriesDraw['stoop']; door?: RowSeriesDraw['door']; balcony?: RowSeriesDraw['balcony']; balconettes?: RowBalconetteDraw[]; windowShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; basements?: RowBasementDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } } {
   const single = series.shop === true && series.shopUnits === 1;
-  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.door?.doorcase && !series.stoop ? ['row-doorcase'] : []), ...(series.windowShare ? ['row-glazing'] : []), ...(series.glazing ? ['row-sash'] : []), ...(series.floorsM?.length ? ['row-floors'] : []), ...(series.groundWalls?.length ? ['row-ground-wall'] : []), ...(single ? ['row-shopfront'] : []), ...(series.basements?.length ? ['row-basement'] : [])];
-  return { ...(series.omitExtras?.length ? { omitExtras: series.omitExtras } : {}), ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.corniceDress ? { corniceDress: series.corniceDress } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(series.glazing ? { glazing: series.glazing } : {}), ...(series.floorsM?.length ? { floorsM: series.floorsM } : {}), ...(series.groundWalls?.length ? { groundWalls: series.groundWalls } : {}), ...(series.basements?.length ? { basements: series.basements } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
+  const extras = [...(series.extras ?? []), ...(series.stoop ? ['row-stoop'] : []), ...(series.door?.doorcase && !series.stoop ? ['row-doorcase'] : []), ...(series.windowShare ? ['row-glazing'] : []), ...(series.glazing ? ['row-sash'] : []), ...(series.floorsM?.length ? ['row-floors'] : []), ...(series.groundWalls?.length ? ['row-ground-wall'] : []), ...(series.balconettes?.length ? ['row-balconette'] : []), ...(single ? ['row-shopfront'] : []), ...(series.basements?.length ? ['row-basement'] : [])];
+  return { ...(series.omitExtras?.length ? { omitExtras: series.omitExtras } : {}), ...(series.cornice && series.cornice !== 'none' ? { cornice: series.cornice } : {}), ...(series.corniceDress ? { corniceDress: series.corniceDress } : {}), ...(series.heads?.length ? { heads: series.heads } : {}), ...(extras.length ? { extras } : {}), ...(series.stoop ? { stoop: series.stoop } : {}), ...(series.door ? { door: series.door } : {}), ...(series.balcony ? { balcony: series.balcony } : {}), ...(series.balconettes?.length ? { balconettes: series.balconettes } : {}), ...(series.windowShare ? { windowShare: series.windowShare } : {}), ...(series.glazing ? { glazing: series.glazing } : {}), ...(series.floorsM?.length ? { floorsM: series.floorsM } : {}), ...(series.groundWalls?.length ? { groundWalls: series.groundWalls } : {}), ...(series.basements?.length ? { basements: series.basements } : {}), ...(single ? { shopFront: { frameHex: series.groundHex ?? ROW_SHOP_FRAME, side: series.door?.side ?? 'left' } } : {}) };
 }
 
 /** Crown family -> the roof planner's gable profile. */
@@ -343,6 +347,15 @@ const MIN_PLANNED_M = 6.5;
 
 type Feature = { type?: string; properties: Record<string, unknown>; geometry: unknown };
 
+/** A painted-brick wall at least this light (OKLab L) is drawn smooth (white, cream, pale grey paint hides the joints);
+ *  a dark painted front keeps its brick cells (houseSpec/decorate.ts: near-black paint in plaster cells read as render). */
+export const SMOOTH_PAINT_MIN_L = 0.7;
+/** #393: the record's finish draws smooth: stucco, plaster or stone, or a pale painted brick. */
+export function recordSmoothFinish(rec: Pick<RowFrontRecord, 'wall'>): boolean {
+  const f = rec.wall?.finish, hex = rec.wall?.hex;
+  if (f === 'stucco' || f === 'plaster' || f === 'stone') return true;
+  return f === 'painted-brick' && !!hex && /^#[0-9a-f]{6}$/i.test(hex) && hexToOklab(hex)[0] >= SMOOTH_PAINT_MIN_L;
+}
 /**
  * The record's wall as measured (exposure-corrected, no display lift). A `reviewed` wall (a strip
  * measurement a read checked against the photo) skips the pale-warm guard, as `reviewedWallSource` does; a
@@ -396,6 +409,9 @@ export function levels(sr: Record<string, unknown> | null, rec: RowFrontRecord, 
   if (!sr && !measured && !wallHex) return {};
   const out: Record<string, unknown> = { ...(sr ?? {}), eavesM, ...(corniceCrown ? { corniceCrown: true } : {}) };
   if (wallHex) { out.wallHex = wallHex; delete out.heldBrick; }
+  // #393: a smooth wall finish (render, stucco, pale paint) draws the painted preset's smooth cells, not brick coursing
+  // (Eerste van der Helststraat 073807, read white stucco 0.75, drew pale brick). Brick and dark paint keep the brick cells.
+  if (wallHex && recordSmoothFinish(rec)) out.finish = 'painted';
   // The photo's fascia colour per front, muted by lane 2's trace (drawn as is: threeBuildingFeatures).
   if (rec.fasciaHex) out.fasciaHex = rec.fasciaHex;
   if (rec.subFronts) out.subFronts = rec.subFronts;

@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, blockLines, generateDistrict, measuredRoofOf, pitchGate, pitchedRiseOf, streetPhotoWallOf, paintedPandOf, parseHeadsLine, ownHeadsOf, photoGableOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary, seriesBaysFor } from './generate.js';
+import { baysFor, blockLines, generateDistrict, measuredRoofOf, pitchGate, pitchedRiseOf, streetPhotoWallOf, paintedPandOf, parseHeadsLine, parseFeaturesLine, photoBalconettesOf, headsReadOf, ownHeadsOf, photoGableOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary, seriesBaysFor } from './generate.js';
 import { oklab } from '../retailPuiPaint.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
@@ -417,4 +417,31 @@ test('De Pijp (round 17): a house that reads other heads, plain ones included, k
   const of = (rs: R[], i: number) => (rs.find(r => r.pandId === id(i))?.series?.heads ?? []).map(h => h.dressing);
   assert.deepEqual(of(recs, 0), ['keystone']); assert.deepEqual(of(recs, 3), ['keystone'], 'an unread house takes the series');
   assert.deepEqual(of(recs, 2), [], 'the plain house draws no keystones');
+});
+
+test('De Pijp (round 18, #393): the features reader parses; two agreeing reads draw a white front and a mid-row gable; a confident read states French balconies; absent, nothing changes', () => {
+  const line = '0363100012165514 heads=segmental/none/1,2+round/none/3 balconette=1,2/centre crown=point finish=brick/red-brown-brick hc=0.75 bc=0.7 cc=0.85 fc=0.8';
+  const r = parseFeaturesLine(line)!;
+  assert.deepEqual(r.heads, [{ shape: 'segmental', dressing: 'none', storeys: [1, 2] }, { shape: 'round', dressing: 'none', storeys: [3] }]);
+  assert.deepEqual(r.balconette, { storeys: [1, 2], axis: 'centre' });
+  assert.equal(parseFeaturesLine('0363100012165514 heads=flat/none/all balconette=none crown=cornice finish=brick/brown-brick hc=0.6 bc=0.5 cc=0.8 fc=0.8 note: tree')!.note, 'tree');
+  assert.equal(parseFeaturesLine('0363100012165514 heads=flat/none/all balconette=0/side crown=cornice finish=brick/brown-brick hc=0.6 bc=0.5 cc=0.8 fc=0.8'), null, 'storey 0 or an unknown axis is unparsed');
+  const feat = (o: Partial<ReturnType<typeof parseFeaturesLine> & object>) => ({ heads: [{ shape: 'flat', dressing: 'none' }], hc: 0.5, balconette: null, bc: 0.5, crown: 'cornice', cc: 0.5, finish: 'brick', family: 'brown-brick', fc: 0.5, ...o });
+  const v2 = { '0363100012159896': { finish: 'paint', family: 'white-paint', confidence: 0.55, crown: 'cornice', cc: 0.7 },
+    '0363100012160089': { finish: 'brick', family: 'brown-brick', confidence: 0.65, crown: 'neck', cc: 0.6 } };
+  const none: DistrictLibrary = { ...lib, measured: { walls: {}, photoReads: v2 } };
+  assert.equal(paintedPandOf(none, '0363100012159896'), null, 'one 0.55 white read alone stays brick');
+  assert.equal(photoGableOf(none, '0363100012160089'), null, 'one 0.6 neck read alone draws no gable');
+  assert.equal(photoBalconettesOf(none, '0363100012160089'), null);
+  const m: DistrictLibrary = { ...lib, measured: { walls: {}, photoReads: v2, photoFeatures: {
+    '0363100012159896': feat({ finish: 'paint', family: 'white-paint', fc: 0.6 }),
+    '0363100012160089': feat({ crown: 'neck', cc: 0.65, balconette: { storeys: [1, 2], axis: 'centre' }, bc: 0.75, heads: [{ shape: 'segmental', dressing: 'keystone' }], hc: 0.8 }),
+    '0363100012000001': feat({ crown: 'point', cc: 0.65, balconette: { storeys: [1], axis: 'all' }, bc: 0.6 }) } } };
+  assert.equal(paintedPandOf(m, '0363100012159896')?.family, 'painted-white');
+  assert.equal(photoGableOf(m, '0363100012160089')?.family, 'neck');
+  assert.equal(photoGableOf(m, '0363100012160089')?.agreed, true, 'an agreed gable is its own house only (never spread to the series)');
+  assert.equal(photoGableOf(m, '0363100012000001'), null, 'a single 0.65 gable read stays under the bar');
+  assert.deepEqual(photoBalconettesOf(m, '0363100012160089')?.value, { storeys: [1, 2], axis: 'centre' });
+  assert.equal(photoBalconettesOf(m, '0363100012000001'), null, 'under the balconette bar');
+  assert.equal(headsReadOf(m, '0363100012160089')?.heads[0].dressing, 'keystone');
 });

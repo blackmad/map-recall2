@@ -816,6 +816,19 @@ function rowBands(c: ExtraContext, s: ExtraSink, kind: 'speklagen' | 'string-cou
 }
 
 const BALCONY = { depth: 0.55, slab: 0.16, rail: 0.1, height: 0.95, post: 0.07, pitch: 0.16, side: 0.3 } as const;
+/** A French balcony (row-balconette): 0.12 m past each jamb, a 0.3 m stone slab 0.1 m thick, a 0.9 m iron railing whose
+ *  bars stand 0.11 m apart, 0.25 m out from the wall (Eerste van der Helststraat 165514's railings, #393). */
+export const BALCONETTE = { side: 0.12, slab: 0.1, slabOut: 0.3, height: 0.9, out: 0.25, rail: 0.05, bar: 0.025, pitch: 0.11 } as const;
+/** One French balcony before the window [x0, x1] whose sill stands at z (row-balconette). */
+export function balconette(c: ExtraContext, s: ExtraSink, x0: number, x1: number, z: number): void {
+  const a0 = x0 - BALCONETTE.side, a1 = x1 + BALCONETTE.side, B = BALCONETTE, top = z + B.height;
+  s.box(c.f, a0, a1, 0, B.slabOut, z - B.slab, z, STONE, true);
+  s.strip(c.f, a0, a1, B.out, top - B.rail, top, IRON, 0.04);
+  s.strip(c.f, a0, a1, B.out, z + 0.08, z + 0.08 + B.rail * 0.7, IRON, 0.03);
+  const n = Math.max(3, Math.round((a1 - a0) / B.pitch));
+  for (let i = 0; i <= n; i++) { const x = a0 + 0.03 + (a1 - a0 - 0.06) * i / n; s.strip(c.f, x - B.bar / 2, x + B.bar / 2, B.out, z, top, IRON, 0.03); }
+  for (const x of [a0, a1 - 0.04]) s.box(c.f, x, x + 0.04, 0, B.out, top - B.rail, top, IRON);
+}
 const PORCH = { pier: 0.22, out: 0.32, beam: 0.24, rise: 0.55 } as const;
 
 export const ROW_COMPONENTS: readonly WallComponent[] = [
@@ -860,6 +873,16 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     for (let i = 0; i <= n; i++) { const x = x0 + 0.04 + (x1 - x0 - 0.08) * i / n; s.box(c.f, x - BALCONY.post / 2, x + BALCONY.post / 2, BALCONY.depth - 0.1, BALCONY.depth - 0.03, z, top - BALCONY.rail, WHITE); }
     s.box(c.f, x0, x1, BALCONY.depth - 0.13, BALCONY.depth, top - BALCONY.rail, top, WHITE);
     for (const xe of [x0, x1 - 0.12]) s.box(c.f, xe, xe + 0.12, 0, BALCONY.depth, z, top, WHITE);
+  } },
+  { id: 'row-balconette', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'balconette', build: (c, s) => {
+    // Stated French balconies (RowDesign.balconettes, De Pijp #393): a black iron railing on a thin stone slab before the
+    // window, no floor. Per stated span, on its storeys, every window (`all`) or the one nearest the span's middle.
+    for (const b of c.rowDress?.balconettes ?? []) for (const k of b.storeys) {
+      const ws = rowWindowsOf(c).filter(w => w.storey === k && (w.x0 + w.x1) / 2 >= b.x0 - 1e-6 && (w.x0 + w.x1) / 2 <= b.x1 + 1e-6);
+      if (!ws.length) continue;
+      const mid = (b.x0 + b.x1) / 2, pick = b.axis === 'all' ? ws : [ws.reduce((a, q) => Math.abs((q.x0 + q.x1) / 2 - mid) < Math.abs((a.x0 + a.x1) / 2 - mid) ? q : a)];
+      for (const w of pick) balconette(c, s, w.x0, w.x1, w.z0);
+    }
   } },
   { id: 'row-porch', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'door-surround', build: (c, s) => {
     // A gabled entrance porch: stone piers either side of the street door, a beam and a pointed pediment over it.

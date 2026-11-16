@@ -229,3 +229,20 @@ test('row front crowns: HD26 chimney and attic light, HD8 traced light', () => {
   assert.equal(hd8.crown.lights?.length, 1);
   assert.equal(hd8.crown.chimney, undefined);
 });
+
+test('#393: a stucco or pale painted record draws smooth cells; brick and dark paint keep brick', async () => {
+  const { recordSmoothFinish } = await import('./rowFront.ts');
+  assert.equal(recordSmoothFinish({ wall: { hex: '#e6e3dc', source: 'judged', finish: 'stucco' } }), true);
+  assert.equal(recordSmoothFinish({ wall: { hex: '#ece8de', source: 'judged', finish: 'painted-brick' } }), true);
+  assert.equal(recordSmoothFinish({ wall: { hex: '#262f2b', source: 'judged', finish: 'painted-brick' } }), false);
+  assert.equal(recordSmoothFinish({ wall: { hex: '#685044', source: 'judged', finish: 'brick' } }), false);
+  assert.equal(recordSmoothFinish({ wall: { hex: '#685044', source: 'judged' } }), false);
+  assert.equal(recordSmoothFinish({}), false);
+});
+
+test('#393: levels hands the smooth finish to the spec recipe only for a smooth record', async () => {
+  const { levels } = await import('./rowFront.ts');
+  const rec = (finish: string): RowFrontRecord => ({ pandId: '0363100012073807', topM: 9.6, eavesM: 9.6, crown: { family: 'cornice' }, storeys: 3, bays: 6, confidence: 1, sources: {}, wall: { hex: '#e6e3dc', source: 'judged', finish } } as unknown as RowFrontRecord);
+  assert.equal(levels(null, rec('stucco'), 9.6, true).specRecipe?.finish, 'painted');
+  assert.equal('finish' in (levels(null, rec('brick'), 9.6, true).specRecipe ?? {}), false);
+});

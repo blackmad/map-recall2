@@ -23,7 +23,7 @@ const EXPLICIT_COMPONENTS: Partial<Record<string, NonNullable<ExtraContext['reci
 };
 // Components the dice never pick (p 0): drawn only when a register or a spec forces them (registerForce; houseSpec/routeAFields.ts), still built and checked here.
 // row-cornice, row-heads: house rows (lane R), drawn only when a row series states them (rowDress); never rolled.
-const FORCED_ONLY = new Set(['vertical-fins', 'eared-surrounds', 'speklagen', 'row-cornice', 'row-heads', 'row-rustication', 'row-balcony', 'row-porch', 'row-stoop', 'row-glazing', 'row-shopfront']);
+const FORCED_ONLY = new Set(['vertical-fins', 'eared-surrounds', 'speklagen', 'row-cornice', 'row-heads', 'row-rustication', 'row-balcony', 'row-porch', 'row-stoop', 'row-glazing', 'row-shopfront', 'row-balconette']);
 // A row series' stated dressing (houseLine/rowFront.ts RowSeriesDraw via the mesher's rowDress): the three head kinds
 // across the wall in thirds under a heavy cornice, so row-heads and row-cornice build every branch.
 const rowDressFor = (c: ExtraContext): ExtraContext => {
@@ -34,7 +34,7 @@ const rowDressFor = (c: ExtraContext): ExtraContext => {
     { x0: 2 * L / 3, x1: L, shape: 'segmental', dressing: 'segmental-tympanum' },
     { x0: 0, x1: L / 2, shape: 'flat', dressing: 'jack-blocks', storeys: [2] },
     { x0: L / 2, x1: L, shape: 'round', dressing: 'arch-ring', storeys: [2] },
-  ], stoop: { end: 'start' }, balcony: { storeys: [1], axis: 'centre' }, windowShare: 0.75, shopFront: { frameHex: '#2c2824', doorEnd: 'start' } } } as ExtraContext;
+  ], stoop: { end: 'start' }, balcony: { storeys: [1], axis: 'centre' }, balconettes: [{ x0: 0, x1: L / 2, storeys: [1, 2], axis: 'all' }, { x0: L / 2, x1: L, storeys: [1], axis: 'centre' }], windowShare: 0.75, shopFront: { frameHex: '#2c2824', doorEnd: 'start' } } } as ExtraContext;
 };
 const componentWall = (id: string, style: FacadeStyle): ExtraContext => {
   const recipe = EXPLICIT_COMPONENTS[id];

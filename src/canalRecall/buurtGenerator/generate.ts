@@ -150,6 +150,9 @@ export interface DistrictMeasured {
   /** Round 16: per pand, the window heads an opus reader names on its row's cut (scripts/buurt-generators/photo-heads.ts),
    *  `shape`/`dressing` in the reader's words (the kit's, plus `unclear` and `other`); photoHeadsOf draws them. */
   photoHeads?: Record<string, PhotoHeadsRead>;
+  /** Round 18 (#393): per pand, the features reader on the member's own cut (heads, French balconies, crown, finish);
+   *  scripts/buurt-generators/photo-features.ts. A second reading for paintedPandOf and photoGableOf. */
+  photoFeatures?: Record<string, PhotoFeaturesRead>;
   roofs?: Record<string, { form: 'flat' | 'pitched' | 'hidden-pitch' | 'gable-street' | 'unclear'; frontRiseM: number; eavesM?: number; ridgeM?: number; why: string }>;
   rowRoofs?: Record<string, { form: string; hipped: { start: boolean; end: boolean } }>;
   /** Round 10: per row, each kit erker (`<pandId>:<index>`) and the finish its panoramas read (measure.ts erkerFinishOf,
@@ -298,8 +301,63 @@ export function wallHexOf(lib: DistrictLibrary, fam: DistrictFamily | null, rowI
 }
 /** Round 15: a pand's own paint or stucco read (it colours that house only); null for brick or no confident read. */
 export function paintedPandOf(lib: DistrictLibrary, pandId: string): { pandId: string; hex: string; family: JudgedFamily; material: RowWallMaterial; read: string } | null {
-  const w = photoWallOf(lib.measured?.photoReads?.[pandId]);
+  const v = lib.measured?.photoReads?.[pandId], f = lib.measured?.photoFeatures?.[pandId];
+  // Round 18 (#393): the features reader's own cut is a second reading. Reader v2 confident wins as before; else the
+  // features read when confident; else both name one painted family at PHOTO_AGREE_MIN (two readings, Albert Cuypstraat
+  // and Daniël Stalpertstraat white fronts read 0.55-0.6 once and drew brick).
+  const fw = f ? photoWallOf({ finish: f.finish, family: f.family, confidence: f.fc }) : null;
+  let w = photoWallOf(v) ?? (fw ? { ...fw, read: `features reader ${fw.read}` } : null);
+  if (!w && v && f && v.family === f.family && v.finish !== 'brick' && f.finish !== 'brick' && PHOTO_WALL_FAMILY[f.family] && PHOTO_WALL_MATERIAL[f.finish] && Math.min(v.confidence, f.fc) >= PHOTO_AGREE_MIN)
+    w = { family: PHOTO_WALL_FAMILY[f.family], material: PHOTO_WALL_MATERIAL[f.finish], read: `two reads agree: v2 ${v.finish} ${v.family} ${v.confidence}, features ${f.finish} ${f.family} ${f.fc}` };
   return w && w.material !== 'brick' ? { pandId, hex: variedTone(w.family, `${pandId}:${w.family}`), family: w.family, material: w.material, read: w.read } : null;
+}
+/** Round 18 (#393): two independent readings (reader v2 and the features reader) that agree draw at this confidence each. */
+export const PHOTO_AGREE_MIN = 0.55;
+/** Round 18: two agreeing gable reads draw at this crown confidence each (32 gable reads at 0.6-0.74 were dropped). */
+export const PHOTO_CROWN_AGREE_MIN = 0.6;
+/** Round 18: a French balcony read draws at this confidence (single read). */
+export const PHOTO_BALCONETTE_MIN = 0.7;
+/** Round 18 (#393): the features reader's line per member cut (scripts/buurt-generators/features-reader-prompt.md). */
+export interface PhotoFeaturesRead {
+  heads: PhotoHeadsRead['heads']; hc: number;
+  balconette: { storeys: number[]; axis: 'centre' | 'all' } | null; bc: number;
+  crown: string; cc: number; finish: string; family: string; fc: number; note?: string;
+}
+/** One features line: `<pandId> heads=<s/d/st>[+...] balconette=<none|st/axis> crown=<w> finish=<f/fam> hc= bc= cc= fc= [note: ...]`. */
+export function parseFeaturesLine(line: string): (PhotoFeaturesRead & { pandId: string }) | null {
+  const m = line.trim().match(/^(\d{16})\s+(.*)$/); if (!m) return null;
+  const [body, ...note] = m[2].split(/\s*note:\s*/);
+  const kv = new Map(body.trim().split(/\s+/).map(t => { const i = t.indexOf('='); return [t.slice(0, i), t.slice(i + 1)] as const; }));
+  const num = (k: string) => { const x = Number(kv.get(k)); return Number.isFinite(x) && x >= 0 && x <= 1 ? x : null; };
+  const hc = num('hc'), bc = num('bc'), cc = num('cc'), fc = num('fc');
+  const hs = kv.get('heads'), bal = kv.get('balconette'), crown = kv.get('crown'), fin = kv.get('finish');
+  if (hc === null || bc === null || cc === null || fc === null || !hs || !bal || !crown || !fin || !fin.includes('/')) return null;
+  const heads: PhotoHeadsRead['heads'] = [];
+  for (const g of hs.split('+')) {
+    const [shape, dressing, st] = g.split('/'); if (!shape || !dressing || !st) return null;
+    const storeys = st === 'all' ? undefined : st.split(',').map(Number);
+    if (storeys && storeys.some(k => !Number.isInteger(k) || k < 1)) return null;
+    heads.push({ shape, dressing, ...(storeys ? { storeys } : {}) });
+  }
+  let balconette: PhotoFeaturesRead['balconette'] = null;
+  if (bal !== 'none') {
+    const [st, axis] = bal.split('/'), storeys = (st ?? '').split(',').map(Number);
+    if (!storeys.length || storeys.some(k => !Number.isInteger(k) || k < 1) || (axis !== 'centre' && axis !== 'all')) return null;
+    balconette = { storeys, axis };
+  }
+  const [finish, family] = fin.split('/');
+  return { pandId: m[1], heads, hc, balconette, bc, crown, cc, finish, family, fc, ...(note.length ? { note: note.join(' note: ') } : {}) };
+}
+/** Round 18: a confident features read of French balconies, as the front's stated `balconettes`; null otherwise. */
+export function photoBalconettesOf(lib: DistrictLibrary, pandId: string): RowField<{ storeys: number[]; axis: 'centre' | 'all' }> | null {
+  const f = lib.measured?.photoFeatures?.[pandId];
+  if (!f?.balconette || f.bc < PHOTO_BALCONETTE_MIN) return null;
+  return { value: f.balconette, source: 'single-read', ref: `buurt-generator ${lib.district} features reader on this house's own cut (${pandId}): balconette ${f.balconette.storeys.join(',')}/${f.balconette.axis} at ${f.bc} (scripts/buurt-generators/features-reader-prompt.md)` };
+}
+/** Round 18: a pand's heads read: the more confident of the row-cut heads reader and the features reader's member cut. */
+export function headsReadOf(lib: DistrictLibrary, pid: string): PhotoHeadsRead | undefined {
+  const h = lib.measured?.photoHeads?.[pid], f = lib.measured?.photoFeatures?.[pid];
+  return f && (!h || f.hc > h.confidence) ? { heads: f.heads, confidence: f.hc, ...(f.note ? { note: f.note } : {}) } : h;
 }
 /** Round 15: the reader's gable crowns as the row renderer's families (shouldered and the cornice/flat/mansard tops are not gables). */
 export const PHOTO_GABLES: Record<string, 'step' | 'neck' | 'bell' | 'point' | 'spout'> = { step: 'step', neck: 'neck', 'raised-neck': 'neck', bell: 'bell', point: 'point', spout: 'spout' };
@@ -307,9 +365,16 @@ export const PHOTO_GABLES: Record<string, 'step' | 'neck' | 'bell' | 'point' | '
 export const PHOTO_CROWN_MIN = 0.75;
 /** Round 15: a confident gable read on a row's cut: its pand and family; null otherwise. The gable is the read pand's
  *  series' (one design per series), and it beats the slate mansard (Eerste Jan Steenstraat 110869-159333: step, cc 0.75). */
-export function photoGableOf(lib: DistrictLibrary, pandId: string): { pandId: string; family: 'step' | 'neck' | 'bell' | 'point' | 'spout'; read: string } | null {
+export function photoGableOf(lib: DistrictLibrary, pandId: string): { pandId: string; family: 'step' | 'neck' | 'bell' | 'point' | 'spout'; read: string; agreed?: true } | null {
   const r = lib.measured?.photoReads?.[pandId], g = r?.crown ? PHOTO_GABLES[r.crown] : undefined;
-  return r && g && (r.cc ?? 0) >= PHOTO_CROWN_MIN ? { pandId, family: g, read: `${r.crown} cc ${r.cc}` } : null;
+  if (r && g && (r.cc ?? 0) >= PHOTO_CROWN_MIN) return { pandId, family: g, read: `${r.crown} cc ${r.cc}` };
+  // Round 18 (#393, "some mid-row gables missed"): the features reader's own cut, confident alone, or agreeing with v2
+  // that the front is gabled at PHOTO_CROWN_AGREE_MIN each (the more confident read names the family).
+  const f = lib.measured?.photoFeatures?.[pandId], fg = f ? PHOTO_GABLES[f.crown] : undefined;
+  if (!f || !fg) return null;
+  if (f.cc >= PHOTO_CROWN_MIN) return { pandId, family: fg, read: `features reader ${f.crown} cc ${f.cc}` };
+  if (r && g && Math.min(r.cc ?? 0, f.cc) >= PHOTO_CROWN_AGREE_MIN) return { pandId, family: f.cc >= (r.cc ?? 0) ? fg : g, read: `two reads agree on a gable: v2 ${r.crown} cc ${r.cc}, features ${f.crown} cc ${f.cc}`, agreed: true };
+  return null;
 }
 export interface PhotoHeadsRead { heads: Array<{ shape: string; dressing: string; storeys?: number[] }>; confidence: number; note?: string }
 /** Round 16: one line of the heads reader (`<pandId> <shape> <dressing> <storeys|all> [...] <cf> [note: ...]`); null unparsed. */
@@ -333,11 +398,11 @@ const headsKey = (h: RowHeads[]) => h.map(x => `${x.shape}/${x.dressing}${x.stor
  *  them and is in the kit's vocabulary; null leaves the period default. A read naming `other` or `unclear` votes and is
  *  never drawn (what the kit cannot say). */
 export function photoHeadsOf(lib: DistrictLibrary, s: GenSeries): RowField<RowHeads | RowHeads[]> | null {
-  const reads = lib.measured?.photoHeads; if (!reads) return null;
+  if (!lib.measured?.photoHeads && !lib.measured?.photoFeatures) return null;
   const votes = new Map<string, { heads: RowHeads[] | null; n: number; pands: string[] }>();
   let of = 0;
   for (const m of s.members) {
-    const pid = pandNumber(m.pand.id), r = reads[pid]; if (!r || r.confidence < PHOTO_HEADS_MIN) continue;
+    const pid = pandNumber(m.pand.id), r = headsReadOf(lib, pid); if (!r || r.confidence < PHOTO_HEADS_MIN) continue;
     of++;
     const ok = r.heads.every(h => (ROW_HEAD_SHAPES as readonly string[]).includes(h.shape) && (ROW_HEAD_DRESSINGS as readonly string[]).includes(h.dressing));
     const heads = ok ? r.heads.map(h => ({ shape: h.shape, dressing: h.dressing, ...(h.storeys ? { storeys: h.storeys } : {}) }) as RowHeads) : null;
@@ -355,7 +420,7 @@ export function photoHeadsOf(lib: DistrictLibrary, s: GenSeries): RowField<RowHe
  *  its own over the series' (Gerard Doustraat 153546, Tweede Jan Steenstraat 161634: a series dressing spread onto a
  *  neighbour with flat heads); null when it agrees, reads under the bar or names a word the kit cannot say. */
 export function ownHeadsOf(lib: DistrictLibrary, pid: string, series: RowHeads | RowHeads[] | null): RowField<RowHeads | RowHeads[]> | null {
-  const r = lib.measured?.photoHeads?.[pid]; if (!r || r.confidence < PHOTO_HEADS_MIN) return null;
+  const r = headsReadOf(lib, pid); if (!r || r.confidence < PHOTO_HEADS_MIN) return null;
   if (!r.heads.every(h => (ROW_HEAD_SHAPES as readonly string[]).includes(h.shape) && (ROW_HEAD_DRESSINGS as readonly string[]).includes(h.dressing))) return null;
   const heads = r.heads.map(h => ({ shape: h.shape, dressing: h.dressing, ...(h.storeys ? { storeys: h.storeys } : {}) }) as RowHeads);
   if (series && headsKey(heads) === headsKey(Array.isArray(series) ? series : [series])) return null;
@@ -479,7 +544,7 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
       const pid = pandNumber(m.pand.id);
       members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: m.pand.year, widthM: m.front.lengthM, fronts: [pid] });
       const ownHeads = ownHeadsOf(lib, pid, design.heads.value);
-      fronts.push({ id: pid, pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], widthM: m.front.lengthM, seriesId, ground: { use: 'other' }, overrides: ownHeads ? { heads: ownHeads } : {}, groundOffsetM: 0, topM: s.eavesM });
+      fronts.push({ id: pid, pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], widthM: m.front.lengthM, seriesId, ground: { use: 'other' }, overrides: { ...(ownHeads ? { heads: ownHeads } : {}), ...((b) => b ? { balconettes: b } : {})(photoBalconettesOf(lib, pid)) }, groundOffsetM: 0, topM: s.eavesM });
       const e = m.pand.eavesM, r = m.pand.ridgeM;
       if (s.clamped.includes(m.pand.id) && e !== null) readNotDrawn.push({ front: pid, field: '3dbag-eaves', value: e, reason: `clamped to the series line ${s.eavesM} m (row coherence: a lone step over 0.8 m)` });
       const gate = lib.pitched ? pitchGate(lib, s) : null, drawn = pitchedRiseOf(lib, s);
@@ -688,10 +753,14 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   // members with no confident crown read of their own only while none of its members reads a confident non-gable top
   // (Ceintuurbaan 159761: two gables mid-row in a corniced row).
   const ownCrown = new Map<string, NonNullable<ReturnType<typeof photoGableOf>> | 'not-gable'>(), seriesTop = new Set<string>();
-  for (const pid of Object.keys(lib.measured?.photoReads ?? {}).sort()) {
+  // Round 18: the features reader's member cuts are read pands too (a pand it alone read takes its crown and finish).
+  for (const pid of [...new Set([...Object.keys(lib.measured?.photoReads ?? {}), ...Object.keys(lib.measured?.photoFeatures ?? {})])].sort()) {
     const p = paintedPandOf(lib, pid); if (p) painted.set(pid, p);
-    const r = lib.measured!.photoReads![pid], g = photoGableOf(lib, pid), sid = seriesOfPand(raw, pid);
-    if (g) { ownCrown.set(pid, g); if (sid && !gabled.has(sid)) gabled.set(sid, g); }
+    const f = lib.measured?.photoFeatures?.[pid], v = lib.measured?.photoReads?.[pid];
+    const r = v?.crown && !['not-visible', 'shouldered'].includes(v.crown) ? v : f && !['not-visible', 'shouldered'].includes(f.crown) ? { crown: f.crown, cc: f.cc } : { crown: v?.crown, cc: v?.cc };
+    const g = photoGableOf(lib, pid), sid = seriesOfPand(raw, pid);
+    // A gable two weaker reads agree on crowns its own house only; it never spreads to unread series members.
+    if (g) { ownCrown.set(pid, g); if (sid && !gabled.has(sid) && !g.agreed) gabled.set(sid, g); }
     else if (r.crown && !['not-visible', 'shouldered'].includes(r.crown) && !PHOTO_GABLES[r.crown]) {
       // Its own top is read (a cornice, a flat lid): the series' gable never covers it (Daniël Stalpertstraat 236563,
       // round 16 blind: "repeats the single pointed gable five times"); read confidently, the series takes none.

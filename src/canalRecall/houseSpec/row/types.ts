@@ -195,6 +195,10 @@ export interface RowDesign {
   /** Where the `row-balcony` extra stands: the storeys (0 = the ground storey, which is the bel-etage over a souterrain; 1 = the
    *  first storey above it) and the axis. Absent = the renderer's default (first upper storey, centre). */
   balcony?: RowField<{ storeys: number[]; axis: 'centre' | 'all' }>;
+  /** French balconies (Frans balkon, balconettes): a black iron railing on a thin stone slab in front of a tall window, no
+   *  walkable floor (De Pijp, #393: Eerste van der Helststraat 165514 storeys 1-2, centre). Storeys as `balcony` (1 = the
+   *  first above the ground), axis `centre` (the middle window) or `all`. Drawn by `row-balconette`. Absent: none. */
+  balconettes?: RowField<{ storeys: number[]; axis: 'centre' | 'all' }>;
   /** A gabled crown's outline as read on the photo (`crown` step, neck, bell or point): its rise over the cornice line
    *  (m), the step count of a step gable, the attic lights in it and the neck (or top tread) width. Absent: the crown
    *  kind alone, which draws no gable over the row line. */

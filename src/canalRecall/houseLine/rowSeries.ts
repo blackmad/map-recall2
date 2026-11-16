@@ -94,6 +94,15 @@ function balconyOf(designs: readonly RowDesign[], shift: number): { balcony?: No
   const b = designs.find(d => d.balcony?.value)?.balcony?.value;
   return b ? { balcony: { storeys: b.storeys.map(k => k + shift), axis: b.axis } } : {};
 }
+/** Stated French balconies (RowDesign.balconettes) per front span, on the renderer's rows; none stated: nothing. */
+function balconettesOf(fronts: readonly RowFront[], designs: readonly RowDesign[], shift: number): { balconettes?: NonNullable<RowSeriesDraw['balconettes']> } {
+  const out = fronts.flatMap((f, i) => {
+    const b = designs[i]?.balconettes?.value, [a0, a1] = span(f);
+    const storeys = b?.storeys.filter(k => Number.isInteger(k) && k >= 1).map(k => k + shift) ?? [];
+    return storeys.length ? [{ a0, a1, storeys, axis: b!.axis === 'all' ? 'all' as const : 'centre' as const }] : [];
+  });
+  return out.length ? { balconettes: out } : {};
+}
 const span = (f: RowFront) => f.sub ? [f.sub.a0, f.sub.a1] as const : [0, 1] as const;
 
 /**
@@ -192,6 +201,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...(shopOf(fronts).shop ? shopUnitsOf(fronts) : {}),
     ...groundColourOf(fronts),
     ...balconyOf(designs, shift),
+    ...balconettesOf(fronts, designs, shift),
     ...windowShareOf(designs, types),
     ...glazingOf(d0),
     ...(groundWalls.length ? { groundWalls } : {}),

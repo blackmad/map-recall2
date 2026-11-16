@@ -66097,5 +66097,3622 @@
       "confidence": 0.6
     }
   },
-  "photoHeadsSource": "opus window-head reads (scripts/buurt-generators/heads-reader-prompt.md) of one rectified panorama cut per row (scripts/buurt-generators/row-cuts.ts; data.amsterdam.nl panoramas, CC BY 4.0)"
+  "photoHeadsSource": "opus window-head reads (scripts/buurt-generators/heads-reader-prompt.md) of one rectified panorama cut per row (scripts/buurt-generators/row-cuts.ts; data.amsterdam.nl panoramas, CC BY 4.0)",
+  "photoFeatures": {
+    "0363100012062412": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "all"
+      },
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "buff-brick",
+      "fc": 0.6,
+      "note": "tree covers upper storeys"
+    },
+    "0363100012069980": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "motion blur and tree cover front"
+    },
+    "0363100012072825": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "fc": 0.6,
+      "note": "tree covers upper storeys; shopfront ground floor"
+    },
+    "0363100012073807": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "flat",
+      "cc": 0.7,
+      "finish": "stucco",
+      "family": "white-paint",
+      "fc": 0.8,
+      "note": "ground floor hidden by awning"
+    },
+    "0363100012075721": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.7,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75,
+      "note": "top washed out by glare"
+    },
+    "0363100012082604": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.8,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.75
+    },
+    "0363100012082931": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.65,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8,
+      "note": "tree covers right bay"
+    },
+    "0363100012083637": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.8,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8,
+      "note": "horseshoe-arched ground floor openings"
+    },
+    "0363100012089020": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.55,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "buff-brick",
+      "fc": 0.55,
+      "note": "tree and edge of cut"
+    },
+    "0363100012096753": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8,
+      "note": "crown washed out by sky glare"
+    },
+    "0363100012098841": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.65,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.7,
+      "note": "tree covers upper storey"
+    },
+    "0363100012102930": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "corner-blocks"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.55,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.7,
+      "note": "front at pano edge, slightly distorted"
+    },
+    "0363100012103998": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": {
+        "storeys": [
+          1
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.6,
+      "note": "tree covers front"
+    },
+    "0363100012105082": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.65,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.7,
+      "note": "tree covers upper storey; balconettes on small slabs"
+    },
+    "0363100012105122": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.7,
+      "crown": "cornice",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8,
+      "note": "top washed out, tree on left"
+    },
+    "0363100012105423": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree covers front"
+    },
+    "0363100012110389": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": {
+        "storeys": [
+          1
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.6,
+      "note": "tree covers front"
+    },
+    "0363100012111119": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and van cover front"
+    },
+    "0363100012113818": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.55,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "buff-brick",
+      "fc": 0.6,
+      "note": "tree covers most of front"
+    },
+    "0363100012127834": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.5,
+      "note": "tree covers front"
+    },
+    "0363100012131814": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.8,
+      "balconette": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8,
+      "note": "dormer behind cornice"
+    },
+    "0363100012137680": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.55,
+      "note": "tree covers front"
+    },
+    "0363100012140811": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": {
+        "storeys": [
+          2
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.6,
+      "note": "tree covers front"
+    },
+    "0363100012140991": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.5,
+      "note": "tree covers front"
+    },
+    "0363100012141709": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.5,
+      "note": "tree covers front"
+    },
+    "0363100012142679": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.7,
+      "note": "tree covers upper half"
+    },
+    "0363100012148417": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "keystone",
+          "storeys": [
+            1
+          ]
+        }
+      ],
+      "hc": 0.55,
+      "balconette": null,
+      "bc": 0.55,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "purple-brown-brick",
+      "fc": 0.6,
+      "note": "tree trunk covers front"
+    },
+    "0363100012151074": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": {
+        "storeys": [
+          1
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.6,
+      "note": "tree covers front"
+    },
+    "0363100012152622": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": null,
+      "bc": 0.7,
+      "crown": "cornice",
+      "cc": 0.65,
+      "finish": "brick",
+      "family": "buff-brick",
+      "fc": 0.5,
+      "note": "overexposed"
+    },
+    "0363100012152686": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.85,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75
+    },
+    "0363100012152700": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "keystone"
+        }
+      ],
+      "hc": 0.85,
+      "balconette": null,
+      "bc": 0.9,
+      "crown": "cornice",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85,
+      "note": "small white diamond keystones; dormer behind cornice"
+    },
+    "0363100012152731": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85,
+      "note": "storey 1 has a projecting balcony on consoles"
+    },
+    "0363100012152901": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "scaffolding and wrap cover front"
+    },
+    "0363100012152952": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and motion blur"
+    },
+    "0363100012152978": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "brick-arch-ring",
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        {
+          "shape": "flat",
+          "dressing": "none",
+          "storeys": [
+            3
+          ]
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.55,
+      "crown": "cornice",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8,
+      "note": "railings only on one window of the right bay, not true centre; arched ground floor and large blind arch panel"
+    },
+    "0363100012153089": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "all"
+      },
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.7,
+      "note": "tree shade over front"
+    },
+    "0363100012153136": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "all"
+      },
+      "bc": 0.55,
+      "crown": "cornice",
+      "cc": 0.55,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.6,
+      "note": "tree covers front; railings may be shallow balconies"
+    },
+    "0363100012153326": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "buff-brick",
+      "fc": 0.5,
+      "note": "heavy blur, cut at image edge, tree"
+    },
+    "0363100012153340": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.8,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85,
+      "note": "ornate white dormer above cornice"
+    },
+    "0363100012153342": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "fc": 0.55,
+      "note": "tree trunk covers most of front"
+    },
+    "0363100012153491": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "corner-blocks"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.85,
+      "crown": "step",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75,
+      "note": "stepped gable over centre stair bay only, rest cornice"
+    },
+    "0363100012153638": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "brick-arch-ring",
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        {
+          "shape": "flat",
+          "dressing": "brick-band",
+          "storeys": [
+            3
+          ]
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.85
+    },
+    "0363100012154287": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.55,
+      "note": "tree covers front"
+    },
+    "0363100012155326": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and motion blur"
+    },
+    "0363100012155580": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.55,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.75,
+      "note": "tree over left half; raised brick top block above cornice"
+    },
+    "0363100012155761": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.65,
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "fc": 0.7,
+      "note": "hedge hides ground floor"
+    },
+    "0363100012155822": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "keystone"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.7,
+      "crown": "bell",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "orange-red-brick",
+      "fc": 0.8,
+      "note": "small projecting balconies with slabs at storeys 1-3 centre, not balconettes"
+    },
+    "0363100012155825": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75,
+      "note": "winter tree branches"
+    },
+    "0363100012155887": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "brick-arch-ring"
+        }
+      ],
+      "hc": 0.8,
+      "balconette": null,
+      "bc": 0.85,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "purple-brown-brick",
+      "fc": 0.8,
+      "note": "red brick arches with white springer blocks; white band courses; white-framed tall axis"
+    },
+    "0363100012156129": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "cornice",
+      "cc": 0.55,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.55,
+      "note": "tree covers most of front"
+    },
+    "0363100012156146": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "front washed out by glare"
+    },
+    "0363100012156210": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.7,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8,
+      "note": "front cut at left edge; balconettes on small slabs"
+    },
+    "0363100012156297": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.65,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.7,
+      "note": "glare on upper front"
+    },
+    "0363100012156495": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "brick-arch-ring"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "purple-brown-brick",
+      "fc": 0.7,
+      "note": "white band courses and white-framed axes; partly blurred"
+    },
+    "0363100012156498": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none",
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        {
+          "shape": "flat",
+          "dressing": "none",
+          "storeys": [
+            3
+          ]
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.9,
+      "finish": "paint",
+      "family": "dark-paint",
+      "fc": 0.8,
+      "note": "ornate white cornice with consoles; awnings at storey 1"
+    },
+    "0363100012156509": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85,
+      "note": "dormer behind shared cornice"
+    },
+    "0363100012156571": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "motion-blurred tree covers front"
+    },
+    "0363100012156625": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and motion blur"
+    },
+    "0363100012156636": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "fc": 0.85
+    },
+    "0363100012156688": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "arch-ring",
+          "storeys": [
+            1
+          ]
+        },
+        {
+          "shape": "round",
+          "dressing": "arch-ring",
+          "storeys": [
+            2
+          ]
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.85,
+      "crown": "cornice",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8,
+      "note": "white pilaster frames and pediment hoods over storey 2"
+    },
+    "0363100012156694": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.55,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "purple-brown-brick",
+      "fc": 0.65,
+      "note": "tree covers lower front; blurred"
+    },
+    "0363100012156741": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "motion blur and tree cover front"
+    },
+    "0363100012156789": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": null,
+      "bc": 0.55,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.65,
+      "note": "tree covers upper storeys"
+    },
+    "0363100012156891": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and motion blur"
+    },
+    "0363100012157106": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.55,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.55,
+      "note": "motion blur; white bands at heads"
+    },
+    "0363100012157170": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and motion blur cover front"
+    },
+    "0363100012157175": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "wrap and tree trunk cover front"
+    },
+    "0363100012157205": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "motion-blurred tree covers front"
+    },
+    "0363100012157211": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "keystone"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.7,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "overexposed; small ornaments over each head"
+    },
+    "0363100012157263": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "segmental-tympanum",
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        {
+          "shape": "flat",
+          "dressing": "none",
+          "storeys": [
+            3
+          ]
+        }
+      ],
+      "hc": 0.7,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.85,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "orange-red-brick",
+      "fc": 0.8,
+      "note": "dormer behind cornice"
+    },
+    "0363100012157459": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "brick-arch-ring"
+        }
+      ],
+      "hc": 0.8,
+      "balconette": null,
+      "bc": 0.85,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "purple-brown-brick",
+      "fc": 0.8,
+      "note": "red brick arches with white springer blocks; white band courses; tower-like dormer"
+    },
+    "0363100012157888": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "keystone",
+          "storeys": [
+            1
+          ]
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.6,
+      "note": "tree covers front"
+    },
+    "0363100012157900": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "blurred edge of pano, tree"
+    },
+    "0363100012158046": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "blurred edge of pano, tree"
+    },
+    "0363100012158214": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.65,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.6,
+      "note": "partly glare and tree"
+    },
+    "0363100012158221": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85,
+      "note": "storey 1 has a projecting balcony on consoles"
+    },
+    "0363100012158225": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "keystone",
+          "storeys": [
+            1
+          ]
+        },
+        {
+          "shape": "round",
+          "dressing": "arch-ring",
+          "storeys": [
+            2
+          ]
+        }
+      ],
+      "hc": 0.55,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.65,
+      "note": "sky glare washes upper storeys"
+    },
+    "0363100012158226": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.55,
+      "note": "tree covers front"
+    },
+    "0363100012158396": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.75,
+      "note": "overexposed top; light band course at heads"
+    },
+    "0363100012158457": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "paint",
+      "family": "other-paint",
+      "fc": 0.6,
+      "note": "pale blue painted front, overexposed sky"
+    },
+    "0363100012158494": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "keystone",
+          "storeys": [
+            1
+          ]
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "purple-brown-brick",
+      "fc": 0.65,
+      "note": "white stucco ground floor with pilasters; tree and glare above"
+    },
+    "0363100012158626": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "keystone"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8,
+      "note": "left half behind tree; dormer behind cornice"
+    },
+    "0363100012158785": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.8,
+      "balconette": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8,
+      "note": "dormer in roof behind cornice; shallow slab balconettes"
+    },
+    "0363100012158792": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "arch-ring",
+          "storeys": [
+            1
+          ]
+        },
+        {
+          "shape": "round",
+          "dressing": "arch-ring",
+          "storeys": [
+            2
+          ]
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.85,
+      "crown": "cornice",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8,
+      "note": "white pilaster frames and pediment hoods over storey 2; dormer behind"
+    },
+    "0363100012158804": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.75,
+      "note": "patterned brick frieze under cornice"
+    },
+    "0363100012158955": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.7,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.7
+    },
+    "0363100012158981": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and motion blur, front at cut edge"
+    },
+    "0363100012159118": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.75,
+      "note": "projecting walkable balcony at storey 3 centre; tree covers lower storeys"
+    },
+    "0363100012159416": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.65,
+      "note": "tree covers upper storeys"
+    },
+    "0363100012159661": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.8,
+      "balconette": null,
+      "bc": 0.7,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85,
+      "note": "ornate white dormer; stone-clad shop ground floor"
+    },
+    "0363100012159688": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "cornice",
+      "cc": 0.55,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.6,
+      "note": "tree covers front"
+    },
+    "0363100012159693": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.5,
+      "note": "blurred; deep stacked balconies, tree"
+    },
+    "0363100012159758": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.7,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8,
+      "note": "balconettes on the left axis only, not the middle"
+    },
+    "0363100012159761": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree covers front"
+    },
+    "0363100012159805": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.55,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.7,
+      "note": "overexposed top"
+    },
+    "0363100012159815": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "arch-ring",
+          "storeys": [
+            1
+          ]
+        },
+        {
+          "shape": "round",
+          "dressing": "arch-ring",
+          "storeys": [
+            2
+          ]
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.85,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8,
+      "note": "same row as neighbours, cut at edge"
+    },
+    "0363100012159843": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and motion blur"
+    },
+    "0363100012159855": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "cornice",
+      "cc": 0.55,
+      "finish": "brick",
+      "family": "purple-brown-brick",
+      "fc": 0.6,
+      "note": "tree covers lower front; cut at edge"
+    },
+    "0363100012159896": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "buff-brick",
+      "fc": 0.5,
+      "note": "overexposed pale wall, dormer above cornice"
+    },
+    "0363100012159976": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85,
+      "note": "dormer behind shared cornice"
+    },
+    "0363100012160089": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course",
+          "storeys": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "shape": "round",
+          "dressing": "none",
+          "storeys": [
+            4
+          ]
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.7,
+      "crown": "neck",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8,
+      "note": "neck gable with round-headed gable windows; tree over lower half"
+    },
+    "0363100012160233": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.8,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8,
+      "note": "small white dormer above cornice"
+    },
+    "0363100012160236": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "brick-arch-ring",
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        {
+          "shape": "flat",
+          "dressing": "brick-band",
+          "storeys": [
+            3
+          ]
+        }
+      ],
+      "hc": 0.65,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "all"
+      },
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85
+    },
+    "0363100012160408": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "keystone"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8,
+      "note": "awnings on storeys 1,2; dormer behind cornice"
+    },
+    "0363100012160675": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "corner-blocks"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.85,
+      "crown": "point",
+      "cc": 0.9,
+      "finish": "paint",
+      "family": "pale-grey",
+      "fc": 0.75,
+      "note": "painted brick, ground floor painted dark"
+    },
+    "0363100012160687": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "motion-blurred tree covers front"
+    },
+    "0363100012160715": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course",
+          "storeys": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "shape": "round",
+          "dressing": "none",
+          "storeys": [
+            4
+          ]
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "neck",
+      "cc": 0.65,
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "fc": 0.65
+    },
+    "0363100012160734": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "all"
+      },
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.55,
+      "note": "blurred; railings may be balconies; shop ground floor"
+    },
+    "0363100012160955": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "segmental-tympanum",
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        {
+          "shape": "flat",
+          "dressing": "none",
+          "storeys": [
+            3
+          ]
+        }
+      ],
+      "hc": 0.65,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.7,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "orange-red-brick",
+      "fc": 0.8,
+      "note": "balconettes on right axis; white ground floor shop"
+    },
+    "0363100012160959": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85
+    },
+    "0363100012161032": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "keystone"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.7,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.75,
+      "note": "left part behind tree; dormer behind cornice"
+    },
+    "0363100012161136": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": {
+        "storeys": [
+          1
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "paint",
+      "family": "dark-paint",
+      "fc": 0.85,
+      "note": "dormer above cornice; shop front"
+    },
+    "0363100012161138": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.55,
+      "crown": "cornice",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.6,
+      "note": "motion blur; white blocks at heads"
+    },
+    "0363100012161327": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.5,
+      "note": "heavy motion blur; white band courses visible"
+    },
+    "0363100012161442": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree covers front"
+    },
+    "0363100012161471": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "fc": 0.85
+    },
+    "0363100012161749": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8
+    },
+    "0363100012161835": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.55,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.6,
+      "note": "motion blur"
+    },
+    "0363100012161930": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.5,
+      "note": "tree and motion blur cover front"
+    },
+    "0363100012161961": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "buff-brick",
+      "fc": 0.5,
+      "note": "heavy motion blur and foliage"
+    },
+    "0363100012162247": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.6,
+      "note": "tree covers front"
+    },
+    "0363100012162266": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and motion blur"
+    },
+    "0363100012162281": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75
+    },
+    "0363100012162361": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.8,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85,
+      "note": "ornate white dormer above cornice"
+    },
+    "0363100012162409": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.75,
+      "note": "overexposed top"
+    },
+    "0363100012162783": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.85,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85
+    },
+    "0363100012162785": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85,
+      "note": "centre railings sit on small slabs, may be shallow walkable balconies; patterned brick frieze under cornice"
+    },
+    "0363100012162875": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "arch-ring"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.55,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8,
+      "note": "outline spans two fronts"
+    },
+    "0363100012162968": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "corner-blocks"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.85,
+      "crown": "point",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75,
+      "note": "pointed gable with oculus over centre bay only, rest cornice"
+    },
+    "0363100012162999": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "corner-blocks"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75,
+      "note": "white pilaster strips and stone bands; small gable over stair bay"
+    },
+    "0363100012163019": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "keystone",
+          "storeys": [
+            1
+          ]
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "purple-brown-brick",
+      "fc": 0.7,
+      "note": "tree covers upper storeys"
+    },
+    "0363100012163028": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and motion blur"
+    },
+    "0363100012163051": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.55,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.6,
+      "note": "overexposed and washed out"
+    },
+    "0363100012163072": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "motion-blurred tree covers front"
+    },
+    "0363100012163142": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.55,
+      "note": "tree covers front"
+    },
+    "0363100012163152": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and motion blur"
+    },
+    "0363100012163164": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.85
+    },
+    "0363100012163381": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "cornice",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.55,
+      "note": "heavy motion blur; white band courses visible"
+    },
+    "0363100012163388": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "motion-blurred tree covers front"
+    },
+    "0363100012163443": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "fc": 0.5,
+      "note": "motion blur and foliage"
+    },
+    "0363100012163475": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none",
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        {
+          "shape": "round",
+          "dressing": "none",
+          "storeys": [
+            3
+          ]
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "point",
+      "cc": 0.65,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8,
+      "note": "full-height erker with balcony on top; tall gable with arched top window"
+    },
+    "0363100012163522": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "front at pano edge, blurred"
+    },
+    "0363100012163561": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "stone-lintel"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8,
+      "note": "storey 2 has a deep projecting balcony (not balconette)"
+    },
+    "0363100012163637": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "keystone"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "overexposed, pale wall"
+    },
+    "0363100012163699": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree covers front"
+    },
+    "0363100012163714": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "motion-blurred tree covers front"
+    },
+    "0363100012163860": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.55,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75,
+      "note": "railings on right axis; dormer behind cornice; tree on right"
+    },
+    "0363100012164003": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "segmental-tympanum",
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        {
+          "shape": "flat",
+          "dressing": "none",
+          "storeys": [
+            3
+          ]
+        }
+      ],
+      "hc": 0.65,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "orange-red-brick",
+      "fc": 0.8,
+      "note": "balconettes are on left/centre axis; shop ground floor"
+    },
+    "0363100012164068": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "buff-brick",
+      "fc": 0.5,
+      "note": "overexposed, dormers above cornice"
+    },
+    "0363100012164301": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.65,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8
+    },
+    "0363100012164541": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "fc": 0.85,
+      "note": "possible low rails in window bottoms"
+    },
+    "0363100012164826": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.5,
+      "note": "tree and motion blur cover front"
+    },
+    "0363100012164875": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "corner-blocks"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.85,
+      "crown": "cornice",
+      "cc": 0.65,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75,
+      "note": "white stair-bay strip, stone bands; dormers"
+    },
+    "0363100012165234": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.55,
+      "crown": "cornice",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.6,
+      "note": "motion blur; white blocks at heads"
+    },
+    "0363100012165250": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "keystone"
+        }
+      ],
+      "hc": 0.85,
+      "balconette": null,
+      "bc": 0.9,
+      "crown": "cornice",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85,
+      "note": "dormer behind cornice"
+    },
+    "0363100012165340": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.55,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.6,
+      "note": "partly blurred, tree on lower half"
+    },
+    "0363100012165415": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.55,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.6,
+      "note": "tree and motion blur"
+    },
+    "0363100012165424": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree covers front"
+    },
+    "0363100012165514": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none",
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        {
+          "shape": "round",
+          "dressing": "none",
+          "storeys": [
+            3
+          ]
+        }
+      ],
+      "hc": 0.75,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.7,
+      "crown": "point",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8
+    },
+    "0363100012165596": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": {
+        "storeys": [
+          1
+        ],
+        "axis": "all"
+      },
+      "bc": 0.55,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.7,
+      "note": "tree covers upper front"
+    },
+    "0363100012165605": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.6,
+      "note": "tree trunk covers most of front"
+    },
+    "0363100012165672": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "keystone"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.6,
+      "note": "tree covers front"
+    },
+    "0363100012165780": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.65,
+      "note": "tree covers most of front"
+    },
+    "0363100012165953": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "front washed out by glare"
+    },
+    "0363100012166079": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "brick-arch-ring",
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        {
+          "shape": "flat",
+          "dressing": "brick-band",
+          "storeys": [
+            3
+          ]
+        }
+      ],
+      "hc": 0.65,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "all"
+      },
+      "bc": 0.55,
+      "crown": "cornice",
+      "cc": 0.85,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8,
+      "note": "low railings may be guard rails inside frames"
+    },
+    "0363100012166240": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.7,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75,
+      "note": "storey 1 railing spans several windows"
+    },
+    "0363100012166297": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": {
+        "storeys": [
+          2
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.6,
+      "note": "tree trunk and foliage; white ground floor"
+    },
+    "0363100012166360": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.85,
+      "note": "dormer behind shared cornice"
+    },
+    "0363100012166361": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.8,
+      "note": "white block courses run at heads and sills; dormers behind shared cornice; left side blurred"
+    },
+    "0363100012166440": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "keystone"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.7,
+      "crown": "cornice",
+      "cc": 0.7,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "overexposed"
+    },
+    "0363100012166517": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.55,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and glare cover front"
+    },
+    "0363100012166535": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.55,
+      "balconette": {
+        "storeys": [
+          1,
+          2
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.6,
+      "crown": "cornice",
+      "cc": 0.55,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.6,
+      "note": "railings on small slabs with white consoles; tree in front"
+    },
+    "0363100012166574": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "step",
+      "cc": 0.55,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.6,
+      "note": "tree covers most of front; step gable top glimpsed"
+    },
+    "0363100012166675": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "buff-brick",
+      "fc": 0.65,
+      "note": "strong sun may lighten the brick"
+    },
+    "0363100012166909": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": null,
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "purple-brown-brick",
+      "fc": 0.7,
+      "note": "wide block, five axes"
+    },
+    "0363100012166938": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8
+    },
+    "0363100012167090": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "block-course"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.7,
+      "crown": "point",
+      "cc": 0.7,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.8
+    },
+    "0363100012167175": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "fc": 0.75,
+      "note": "overexposed top"
+    },
+    "0363100012167189": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "corner-blocks"
+        }
+      ],
+      "hc": 0.65,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "neck",
+      "cc": 0.6,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75,
+      "note": "small neck gable over centre stair bay only, rest cornice; vine on front"
+    },
+    "0363100012167217": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.75,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75,
+      "note": "storey 1 has a wider railing over two windows"
+    },
+    "0363100012167219": {
+      "heads": [
+        {
+          "shape": "flat",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.7,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "brown-brick",
+      "fc": 0.75,
+      "note": "dappled shade and glare"
+    },
+    "0363100012167330": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "segmental-tympanum",
+          "storeys": [
+            1,
+            2
+          ]
+        },
+        {
+          "shape": "flat",
+          "dressing": "none",
+          "storeys": [
+            3
+          ]
+        }
+      ],
+      "hc": 0.65,
+      "balconette": {
+        "storeys": [
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.8,
+      "finish": "brick",
+      "family": "orange-red-brick",
+      "fc": 0.8
+    },
+    "0363100012236365": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "voussoirs"
+        }
+      ],
+      "hc": 0.6,
+      "balconette": {
+        "storeys": [
+          1,
+          2,
+          3
+        ],
+        "axis": "centre"
+      },
+      "bc": 0.75,
+      "crown": "step",
+      "cc": 0.85,
+      "finish": "paint",
+      "family": "dark-paint",
+      "fc": 0.7,
+      "note": "grey painted brick with white bands; twin step gables; balconettes on two off-centre axes"
+    },
+    "0363100012236517": {
+      "heads": [
+        {
+          "shape": "segmental",
+          "dressing": "brick-arch-ring"
+        }
+      ],
+      "hc": 0.75,
+      "balconette": null,
+      "bc": 0.8,
+      "crown": "cornice",
+      "cc": 0.75,
+      "finish": "brick",
+      "family": "purple-brown-brick",
+      "fc": 0.75,
+      "note": "white rendered ground floor on right"
+    },
+    "0363100012236563": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "motion blur and tree cover front"
+    },
+    "0363100012236857": {
+      "heads": [
+        {
+          "shape": "unclear",
+          "dressing": "none"
+        }
+      ],
+      "hc": 0.5,
+      "balconette": null,
+      "bc": 0.5,
+      "crown": "not-visible",
+      "cc": 0.5,
+      "finish": "unclear",
+      "family": "unclear",
+      "fc": 0.5,
+      "note": "tree and road sign cover front"
+    }
+  },
+  "photoFeaturesSource": "opus features reads (scripts/buurt-generators/features-reader-prompt.md: heads, French balconies, crown, finish) of each member's rectified panorama cut (scripts/buurt-generators/row-cuts.ts --members; data.amsterdam.nl panoramas, CC BY 4.0)"
 }
