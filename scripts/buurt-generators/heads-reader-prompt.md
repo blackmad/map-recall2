@@ -16,6 +16,11 @@ dressing (the white or stone work at the head; the thing that makes the row reco
 - `stone-lintel`: a plain white or stone lintel
 - `arch-ring`: a raised white arch ring with a keystone over a round or segmental head
 - `block-surround`: white blocks framing the whole window, quoins up both jambs with a keyed head
+- `voussoirs`: an arch ring of white blocks alternating with brick (wedge-shaped voussoirs) over a segmental or round head
+- `corner-blocks`: single white blocks at the two upper corners of the head only (no full lintel, no ring)
+- `moulded-hood`: a moulded white surround up the jambs and over the head, capped by a projecting cornice hood
+- `brick-band`: a patterned band of darker or burnt brick running across the front at the heads (no white stone)
+- `brick-arch-ring`: a deep decorative ring of brick and burnt brick in turn over the head (brick, not white stone)
 - `other`: something none of these says (add a short note at the end of the line, e.g. `note: pediment hoods on 1st floor`)
 
 If the storeys differ (e.g. round heads on the top storey only), give two groups; storeys are numbered 1 = first above the ground. Use `all` for every upper storey.

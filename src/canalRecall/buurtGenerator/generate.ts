@@ -351,6 +351,17 @@ export function photoHeadsOf(lib: DistrictLibrary, s: GenSeries): RowField<RowHe
     ref: `buurt-generator ${lib.district} photo heads: ${top[0]} on ${top[1].pands.join(', ')} (${top[1].n} of ${of} confident reads, scripts/buurt-generators/heads-reader-prompt.md on the row's panorama cut)`,
     ...(votes.size > 1 ? { votes: [...votes.values()].filter(v => v.heads).map(v => ({ value: v.heads!.length === 1 ? v.heads![0] : v.heads!, n: v.n })) } : {}) };
 }
+/** Round 17 (the gable rule for heads): a house whose own confident read names other heads, plain ones included, keeps
+ *  its own over the series' (Gerard Doustraat 153546, Tweede Jan Steenstraat 161634: a series dressing spread onto a
+ *  neighbour with flat heads); null when it agrees, reads under the bar or names a word the kit cannot say. */
+export function ownHeadsOf(lib: DistrictLibrary, pid: string, series: RowHeads | RowHeads[] | null): RowField<RowHeads | RowHeads[]> | null {
+  const r = lib.measured?.photoHeads?.[pid]; if (!r || r.confidence < PHOTO_HEADS_MIN) return null;
+  if (!r.heads.every(h => (ROW_HEAD_SHAPES as readonly string[]).includes(h.shape) && (ROW_HEAD_DRESSINGS as readonly string[]).includes(h.dressing))) return null;
+  const heads = r.heads.map(h => ({ shape: h.shape, dressing: h.dressing, ...(h.storeys ? { storeys: h.storeys } : {}) }) as RowHeads);
+  if (series && headsKey(heads) === headsKey(Array.isArray(series) ? series : [series])) return null;
+  return { value: heads.length === 1 ? heads[0] : heads, source: 'single-read',
+    ref: `buurt-generator ${lib.district} photo heads on this house's own cut (${pid}): ${headsKey(heads)} at ${r.confidence}; its own read beats the series' heads` };
+}
 /** 3DBAG's roof type of the series, its members' majority (`roofCode`: 1 flat, 2 several flats, 3 slanted); null unread. */
 export function seriesRoofCode(s: GenSeries): number | null {
   const n = new Map<number, number>();
@@ -467,7 +478,8 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
       members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: m.pand.year, widthM: m.front.lengthM, fronts: [pid] });
-      fronts.push({ id: pid, pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], widthM: m.front.lengthM, seriesId, ground: { use: 'other' }, overrides: {}, groundOffsetM: 0, topM: s.eavesM });
+      const ownHeads = ownHeadsOf(lib, pid, design.heads.value);
+      fronts.push({ id: pid, pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], widthM: m.front.lengthM, seriesId, ground: { use: 'other' }, overrides: ownHeads ? { heads: ownHeads } : {}, groundOffsetM: 0, topM: s.eavesM });
       const e = m.pand.eavesM, r = m.pand.ridgeM;
       if (s.clamped.includes(m.pand.id) && e !== null) readNotDrawn.push({ front: pid, field: '3dbag-eaves', value: e, reason: `clamped to the series line ${s.eavesM} m (row coherence: a lone step over 0.8 m)` });
       const gate = lib.pitched ? pitchGate(lib, s) : null, drawn = pitchedRiseOf(lib, s);

@@ -62869,7 +62869,7 @@
       "heads": [
         {
           "shape": "segmental",
-          "dressing": "other",
+          "dressing": "brick-arch-ring",
           "storeys": [
             1,
             2
@@ -62877,14 +62877,13 @@
         },
         {
           "shape": "flat",
-          "dressing": "other",
+          "dressing": "none",
           "storeys": [
             3
           ]
         }
       ],
-      "confidence": 0.6,
-      "note": "ornamental brick arch rings on 1-2, patterned brick panels over top storey"
+      "confidence": 0.65
     },
     "0363100012098429": {
       "heads": [
@@ -62957,21 +62956,20 @@
       "heads": [
         {
           "shape": "flat",
-          "dressing": "other"
+          "dressing": "corner-blocks"
         }
       ],
-      "confidence": 0.6,
-      "note": "small white blocks at head corners, low res"
+      "confidence": 0.6
     },
     "0363100012108704": {
       "heads": [
         {
           "shape": "flat",
-          "dressing": "other"
+          "dressing": "brick-band"
         }
       ],
       "confidence": 0.55,
-      "note": "patterned brick band at head level; tree"
+      "note": "tree partly over front"
     },
     "0363100012114128": {
       "heads": [
@@ -63034,11 +63032,22 @@
       "heads": [
         {
           "shape": "segmental",
-          "dressing": "other"
+          "dressing": "voussoirs",
+          "storeys": [
+            1
+          ]
+        },
+        {
+          "shape": "flat",
+          "dressing": "none",
+          "storeys": [
+            2,
+            3
+          ]
         }
       ],
-      "confidence": 0.5,
-      "note": "neo-gothic, alternating brick/stone voussoir arches; blurred"
+      "confidence": 0.55,
+      "note": "neo-gothic gabled front, side view"
     },
     "0363100012122814": {
       "heads": [
@@ -63084,11 +63093,10 @@
       "heads": [
         {
           "shape": "flat",
-          "dressing": "other"
+          "dressing": "block-course"
         }
       ],
-      "confidence": 0.55,
-      "note": "patterned brick band above heads"
+      "confidence": 0.6
     },
     "0363100012128193": {
       "heads": [
@@ -63415,11 +63423,11 @@
       "heads": [
         {
           "shape": "flat",
-          "dressing": "other"
+          "dressing": "corner-blocks"
         }
       ],
       "confidence": 0.6,
-      "note": "dark ornamented brick head hoods"
+      "note": "dark painted brick, blocks dark"
     },
     "0363100012154143": {
       "heads": [
@@ -64099,11 +64107,10 @@
       "heads": [
         {
           "shape": "flat",
-          "dressing": "other"
+          "dressing": "corner-blocks"
         }
       ],
-      "confidence": 0.55,
-      "note": "white corner and centre blocks at heads"
+      "confidence": 0.65
     },
     "0363100012158146": {
       "heads": [
@@ -64934,7 +64941,7 @@
       "heads": [
         {
           "shape": "segmental",
-          "dressing": "other",
+          "dressing": "voussoirs",
           "storeys": [
             1,
             2
@@ -64948,8 +64955,7 @@
           ]
         }
       ],
-      "confidence": 0.65,
-      "note": "alternating white voussoir blocks in segmental brick arch"
+      "confidence": 0.7
     },
     "0363100012162704": {
       "heads": [
@@ -65089,21 +65095,20 @@
       "heads": [
         {
           "shape": "segmental",
-          "dressing": "other",
+          "dressing": "brick-arch-ring",
           "storeys": [
             1
           ]
         },
         {
           "shape": "flat",
-          "dressing": "keystone",
+          "dressing": "none",
           "storeys": [
             2
           ]
         }
       ],
-      "confidence": 0.6,
-      "note": "alternating white voussoir blocks in segmental arch on 1"
+      "confidence": 0.7
     },
     "0363100012163371": {
       "heads": [
@@ -65279,11 +65284,11 @@
       "heads": [
         {
           "shape": "flat",
-          "dressing": "other"
+          "dressing": "moulded-hood"
         }
       ],
-      "confidence": 0.55,
-      "note": "white moulded surrounds with cornice hoods; trees"
+      "confidence": 0.7,
+      "note": "tree over right bay"
     },
     "0363100012164321": {
       "heads": [
@@ -65329,11 +65334,11 @@
       "heads": [
         {
           "shape": "flat",
-          "dressing": "other"
+          "dressing": "moulded-hood"
         }
       ],
-      "confidence": 0.6,
-      "note": "stucco front with moulded surrounds"
+      "confidence": 0.55,
+      "note": "stucco front, moulded flat surrounds"
     },
     "0363100012164585": {
       "heads": [
@@ -65881,8 +65886,8 @@
           "dressing": "other"
         }
       ],
-      "confidence": 0.7,
-      "note": "full-width white timber bay oriel"
+      "confidence": 0.6,
+      "note": "full-height white glazed bay, no head dressing"
     },
     "0363100012167330": {
       "heads": [

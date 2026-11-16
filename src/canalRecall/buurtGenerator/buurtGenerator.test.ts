@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, blockLines, generateDistrict, measuredRoofOf, pitchGate, pitchedRiseOf, streetPhotoWallOf, paintedPandOf, parseHeadsLine, photoGableOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary, seriesBaysFor } from './generate.js';
+import { baysFor, blockLines, generateDistrict, measuredRoofOf, pitchGate, pitchedRiseOf, streetPhotoWallOf, paintedPandOf, parseHeadsLine, ownHeadsOf, photoGableOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary, seriesBaysFor } from './generate.js';
 import { oklab } from '../retailPuiPaint.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
@@ -395,6 +395,26 @@ test('De Pijp (round 16): a family can draw the storeys the photos count (Ceintu
   const key = { heads: [{ shape: 'segmental', dressing: 'keystone' }], confidence: 0.8 };
   assert.deepEqual(heads({ [id(0)]: key, [id(3)]: key }).map(h => `${h.shape}/${h.dressing}`), ['segmental/keystone']);
   assert.equal(heads({ [id(0)]: { ...key, confidence: 0.6 } }).length, 0, 'under the bar');
-  assert.equal(heads({ [id(0)]: key, [id(3)]: { heads: [{ shape: 'flat', dressing: 'other' }], confidence: 0.8 } }).length, 0, 'split: the kit cannot say the other read');
+  // Round 17: the confident keystone read still draws on its own house (ownHeadsOf); the series takes none.
+  const split = recs({ ...lib, measured: { photoHeads: { [id(0)]: key, [id(3)]: { heads: [{ shape: 'flat', dressing: 'other' }], confidence: 0.8 } } } });
+  assert.equal(split.find(r => r.pandId === id(1))?.series?.heads?.length ?? 0, 0, 'split: the kit cannot say the other read');
   assert.deepEqual(parseHeadsLine('0363100012170177 flat stone-lintel 1,2 round arch-ring 3 0.75 note: x')?.heads, [{ shape: 'flat', dressing: 'stone-lintel', storeys: [1, 2] }, { shape: 'round', dressing: 'arch-ring', storeys: [3] }]);
+});
+
+test('De Pijp (round 17): a house that reads other heads, plain ones included, keeps its own (Gerard Doustraat 153546, Tweede Jan Steenstraat 161634)', () => {
+  const pands = [0, 1, 2, 3].map(i => pand(i, 1929, 12.4));
+  const id = (i: number) => pands[i].id.slice(-16);
+  const key = { heads: [{ shape: 'segmental', dressing: 'keystone' }], confidence: 0.8 }, plain = { heads: [{ shape: 'flat', dressing: 'none' }], confidence: 0.75 };
+  const l = { ...lib, measured: { photoHeads: { [id(0)]: key, [id(1)]: key, [id(2)]: plain } } };
+  const series = { shape: 'segmental', dressing: 'keystone' } as const;
+  assert.equal(ownHeadsOf(l, id(0), series), null, 'agrees with the series');
+  assert.deepEqual(ownHeadsOf(l, id(2), series)?.value, { shape: 'flat', dressing: 'none' });
+  assert.equal(ownHeadsOf(l, id(3), series), null, 'unread');
+  assert.equal(ownHeadsOf({ ...lib, measured: { photoHeads: { [id(2)]: { ...plain, confidence: 0.6 } } } }, id(2), series), null, 'under the bar');
+  assert.equal(ownHeadsOf({ ...lib, measured: { photoHeads: { [id(2)]: { heads: [{ shape: 'flat', dressing: 'other' }], confidence: 0.9 } } } }, id(2), series), null, 'a word the kit cannot say');
+  type R = { pandId: string; series?: { heads?: Array<{ a0: number; a1: number; dressing: string }> } };
+  const recs = generateDistrict(l, pands, streets, new Set(), 'test').records as R[];
+  const of = (rs: R[], i: number) => (rs.find(r => r.pandId === id(i))?.series?.heads ?? []).map(h => h.dressing);
+  assert.deepEqual(of(recs, 0), ['keystone']); assert.deepEqual(of(recs, 3), ['keystone'], 'an unread house takes the series');
+  assert.deepEqual(of(recs, 2), [], 'the plain house draws no keystones');
 });
