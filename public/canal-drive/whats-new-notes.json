@@ -3,6 +3,17 @@
   "notes": [
     {
       "date": "2026-11-16",
+      "title": "A browser for every shopfront",
+      "text": "The new Shopfronts page shows every shopfront the game draws on a ground floor: the generic ones (brown café, bakery, bike shop and the rest) and the chains with their own colours, logos and signs, each with how many buildings use it and a link to ride to one. Open it from the Shopfronts button on this page.",
+      "images": [
+        {
+          "src": "ui/shopfronts-page/shopfronts-desktop.jpg",
+          "alt": "The Shopfronts page: cards for the brown café, hairdresser, bike shop, bakery, souvenir shop and coffeeshop fronts as the game draws them"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
       "title": "FEBO and HEMA signs as on the street, and postcard stands",
       "text": "FEBO's red letters now sit straight on the wall with no yellow band, with the white blade sign and its red F and dark plate glass, as on Korte Niezel. HEMA's letters also stand on the wall. Other chains keep their signs until their measured styles win a side-by-side test. The blue slabs outside souvenir and book shops are now postcard stands and chalkboards.",
       "where": [
