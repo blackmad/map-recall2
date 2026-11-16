@@ -1080,3 +1080,28 @@ dark ornamented brick hoods (Tweede Jan Steenstraat 154123); white moulded surro
 Steenstraat 164311, Ferdinand Bolstraat 164454); white blocks at the head corners (Kuipersstraat 108702,
 Rustenburgerstraat 158127); a full-width white timber oriel (Ruysdaelkade 167234). The crown reader also saw narrow
 square brick towers over flat parapets (236290, 237009) with no crown word for them.
+
+## Round 17 (2026-11-16): row wall consensus, sheet fixes, head words, next district
+
+- **Sheet fixes first** (cf396e352): lane D 9c30bbb93 (per-member rectification) and lane R e540862e5 (a render taller
+  than its band is cropped, not squeezed), applied as patches to sheet.ts/sheetFit.ts. No earlier De Pijp loss reads as
+  a sheet artefact: round 14's were wall colour; Stadhouderskade 166429 was a 3 m AHN line, past the 0.6-0.75 m squeeze;
+  Ceintuurbaan 153089's storey was real.
+- **Row wall = members' brick consensus** (296f8d01a, photo-walls.ts): a painted house's read had been the row's
+  photoWall, which wallHexOf rejects, so the row fell back to its street (Saenredamstraat 153342 red-brown where its
+  members read brown). 41 of 326 rows change family. Blind on 8 fresh rows among them (one opus judge each): new 8 of 8.
+  Saenredamstraat's dark-grey section is still undrawn (its reads are under 0.7).
+- Open notes not forced: Tweede van der Helststraat 159118 neck (best 0.7, under the 0.75 crown bar); Pieter
+  Aertszstraat 111119 mansard (every member unclear or not-visible; AHN mostly flat).
+- **Lane R a8f6b53c9 merged** (fe336ece1): five head dressings. The heads prompt names them; the 12 `other` reads
+  re-read (`photo-heads.ts --reread`): 11 now name a kit word, 1 stays other (full-height white glazed bay). 3 at >= 0.7
+  draw. **ownHeadsOf**: a member whose own confident read names other heads (plain included) keeps its own.
+  - Limit: heads were read on one cut per row (339 pands), so a neighbour with no head read of its own still takes the
+    series' dressing. Gerard Doustraat 153546 blind: new wins high, but "wrongly repeats those arches on the right house,
+    which in the photo has plain brick heads". Fix: run the heads reader over the member cuts (1593, ~48 opus batches).
+- **Next district ranking** (routable km in the buurt polygons): Oud-West/Kinkerbuurt EP01-02, EQ01, ES01-03 48.7;
+  Weesperzijde/Oosterpark 44.6; Helmersbuurt + Overtoomse Sluis 29.4; Staatsliedenbuurt 29.3; Dapperbuurt 20.7
+  (De Pijp 67.8). Kinkerbuurt on the De Pijp look unchanged (ba013ae49, staged only): 859 of 2406 pands in 171 rows;
+  163 rows have a facing panorama; reader v2 read 160 (80 walls >= 0.7). Pilot blind vs today, 3 held-out rows: 2 of 3
+  (Nassaukade 159538, Bilderdijkstraat 158387 won; Ten Katestraat 162871 lost on tone: dark chocolate brick, read
+  dark-grey at 0.6, drawn the carried-over lighter brown). Next: a darker brown family for Oud-West and AHN roofs.
