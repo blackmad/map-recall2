@@ -16,13 +16,14 @@ import os from 'node:os';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import sharp from 'sharp';
-import { findPands, lngLatToRd, loadRoads, nearestOnSeg, neighbourhood, normId, pointInRing, type Footprint } from '../pand-reference/core.ts';
+import { cachedJson, findPands, lngLatToRd, loadRoads, nearestOnSeg, neighbourhood, normId, pointInRing, type Footprint } from '../pand-reference/core.ts';
 import { exposedWalls, FACADE_WINDOW, listPanos, pickWall, rankPanos, type PanoPick, type Wall } from '../pand-reference/select.ts';
 import { isLeaf } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { aimPose, fpsFor, frameFor, gridConvergenceDeg, hfovDeg, wallOutline, wallPoint, CROWN_EXTRA_M, FRAME_H, FRAME_W, type FramePose, type WallQuad } from './pose.ts';
 import { cutPerspective, loadEquirect, type PanoSize, type Rgb8 } from './photo.ts';
 import { wallChange, wallLab, WALL_SAME_PCT } from './analyse.ts';
 import { bare, edgeOffsets, engineWorld, flagsFor, WORLD_LIVE_WARNING, measureHalf, openingsNote, pickSamples, relativeColour, readPicks, skyline, skylineMedian, type EdgeRead, type Hit, type PickSample } from './analyse.ts';
+import { isPartFeatureId, PART_PREFIX } from '../../src/canalRecall/landmarks/pandParts.ts';
 import { cameraCaption, engineOf, parseRule10, worldOf, FLAGS_ONLY, type Rule10 } from './rule10.ts';
 import { asPlayedCaption, asPlayedFor, likenessCaption, likenessJobPose, pickLikeness, rule10Pins, rule10Sheets, writeLikenessPhoto, type LikenessPrep, type Rule10Job, type SheetRow } from './rule10Frames.ts';
 
@@ -145,7 +146,9 @@ run is exactly the old run. With them the wide pano-lens pairs above are still m
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
 
-export type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]]; notPanos?: string[]; maxDistM?: number; pano?: string };
+export type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]]; notPanos?: string[]; maxDistM?: number; pano?: string;
+  /** Resolved by `pieceOf`: the landmark drawing this entry's piece of a split pand (src/canalRecall/landmarks/pandParts.ts). */
+  part?: string };
 
 /** The eyeball set's pinned captures (lane PR1): one good panorama per pand, and the captures judged bad. */
 export const PINNED_POSES = 'scripts/house-line/benchmark/eyeball-poses.json';
@@ -212,7 +215,8 @@ export function specOf(pandId: string, lngLat: [number, number]): { r: string; v
   }
   return specTiles.get(key)?.buildings?.[normId(pandId)] ?? null;
 }
-export function routeOf(pandId: string, lngLat: [number, number], query: string): string {
+export function routeOf(pandId: string, lngLat: [number, number], query: string, part?: string): string {
+  if (part) return `installed ${part} (its part of the pand)`;
   const cover = coverOf(pandId);
   if (cover) return `installed ${cover}`;
   const spec = specOf(pandId, lngLat), off = /houseSpecs=0/.test(query);
@@ -221,10 +225,30 @@ export function routeOf(pandId: string, lngLat: [number, number], query: string)
   return `${spec.r === 'recipe' ? 'spec recipe' : 'generic'}${fields.length ? ` + spec (${fields.join(', ')})${off ? ' [houseSpecs=0: off]' : ''}` : ''}`;
 }
 
+/**
+ * A pand a landmark stands on only partly is two tile features: `landmark-part:<model>:<pand>` (the model's share) and
+ * the rest under the pand id (the rows line). The entry's piece is the one under its `at` or its chord's middle (inside
+ * the ring, else the nearest ring edge); without either, the rest. Returns the piece's footprint and, for the part, its model.
+ */
+export async function pieceOf(entry: Entry, fp: Footprint | undefined): Promise<{ fp: Footprint | undefined; part?: string }> {
+  if (!fp || !/^NL\.IMBAG\.Pand\.\d{16}$/.test(fp.id)) return { fp };
+  const pand16 = fp.id.slice(-16);
+  const centre = { x: fp.ring.reduce((a, p) => a + p.x, 0) / fp.ring.length, y: fp.ring.reduce((a, p) => a + p.y, 0) / fp.ring.length };
+  const parts = (await neighbourhood(centre)).filter(f => isPartFeatureId(f.id) && f.id.endsWith(`:${pand16}`));
+  const ref = entry.at ?? (entry.chord ? [(entry.chord[0][0] + entry.chord[1][0]) / 2, (entry.chord[0][1] + entry.chord[1][1]) / 2] as [number, number] : undefined);
+  if (!parts.length || !ref) return { fp };
+  const p = lngLatToRd(ref);
+  const reach = (f: Footprint) => pointInRing(p, f.ring) ? 0 : Math.min(...f.ring.map((a, i) => nearestOnSeg(p, { a, b: f.ring[(i + 1) % f.ring.length] }).d));
+  const best = [fp, ...parts].sort((a, b) => reach(a) - reach(b))[0];
+  return best === fp ? { fp } : { fp: best, part: best.id.slice(PART_PREFIX.length).split(':')[0] };
+}
+
 // ---- prepare: wall, panorama, pose, photo cut -----------------------------------------------------------------------
 type Prepared = {
   pandId: string; key: string; street: string; wall: WallQuad; wallLenM: number; pick: Omit<PanoPick, 'record'> & { url: string }; pose: FramePose; hfovDeg: number;
   samples: PickSample[]; foliage: number | null; candidates: number; route: string; why: string[];
+  /** the landmark drawing this piece of a split pand (Entry.part) */
+  part?: string;
   /** rule 10 (--likeness): the likeness capture and pose; absent on an old run */
   likeness?: LikenessPrep;
 };
@@ -339,7 +363,8 @@ export async function rankCandidates(entry: Entry, fp: Footprint | undefined, ar
   const { options } = await import('../pand-reference/select.ts');
   options.preferBearingDeg = entry.bearing ?? args.bearing;
   const centre = { x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length };
-  const near = await neighbourhood(centre);
+  // The piece itself is never its own neighbour.
+  const near = (await neighbourhood(centre)).filter(o => o.ring !== fp.ring);
   const picked = entry.chord ? wallChord(fp, entry.chord, entry.bearing) : entry.at ? wallAt(fp, near, entry.at, entry.bearing) : await pickWall(fp, near);
   const wall = picked.wall; let note = picked.note;
   if (!wall) return { pandId, key, skip: note };
@@ -450,7 +475,7 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   if (likeness) why.push(`likeness: ${likeness.note}`);
   return {
     pandId, key, street: await streetName(wall), wall: quad, wallLenM: +wall.len.toFixed(2), pick: { ...rest, url: record._links?.equirectangular_medium?.href ?? '' }, pose, hfovDeg: +hfovDeg(pose).toFixed(1),
-    samples: pickSamples(frame, pose, quad), foliage, candidates: picked.candidates, route: routeOf(pandId, ll, args.query), why, ...(likeness ? { likeness } : {}),
+    samples: pickSamples(frame, pose, quad), foliage, candidates: picked.candidates, route: routeOf(pandId, ll, args.query, entry.part), why, ...(entry.part ? { part: entry.part } : {}), ...(likeness ? { likeness } : {}),
   };
 }
 
@@ -500,7 +525,7 @@ function cachedPrep(e: Entry, args: Args): Prepared | null {
   fs.copyFileSync(c.photo, path.join(dir, 'photo.jpg'));
   if (c.likenessPhoto) { if (!fs.existsSync(c.likenessPhoto)) return null; fs.copyFileSync(c.likenessPhoto, path.join(dir, 'likeness-photo.jpg')); }
   const { photo: _photo, likenessPhoto: _lp, ...prep } = c as typeof c & { likenessPhoto?: string };
-  return { ...prep, route: routeOf(prep.pandId, prep.pose.lngLat, args.query), why: [...prep.why.filter(w => !w.startsWith('reused')), 'reused the cached pick, pose and photo cut (--reuse-photos)'] };
+  return { ...prep, route: routeOf(prep.pandId, prep.pose.lngLat, args.query, prep.part), why: [...prep.why.filter(w => !w.startsWith('reused')), 'reused the cached pick, pose and photo cut (--reuse-photos)'] };
 }
 function storePrep(e: Entry, args: Args, prep: Prepared) {
   const photo = path.join(cacheDir('photos'), `${hashOf({ pano: prep.pick.url || prep.pick.panoId, size: args.panoSize, pose: prep.pose, code: codeHash() })}.jpg`);
@@ -639,10 +664,13 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
   const frame = frameFor(prep.pose);
   const edges = { photo: edgeOffsets(photo, frame, prep.pose, prep.wall), game: edgeOffsets(game, frame, prep.pose, prep.wall) };
   // A model's hit carries landmarkId (the model key; frames from before the spec returned it name it by its keys).
-  const hits: Hit[] = (g.picks?.hits ?? []).map((h: any) => h && !h.model && String(h.keys ?? '').includes('landmarkId') ? { ...h, model: coverOf(prep.pandId) ?? 'model' } : h);
-  const picks = readPicks(prep.samples, hits, prep.pandId, coverOf(prep.pandId));
+  // A split pand's part feature (`landmark-part:<model>:<pand>`, drawn generic while its model is not placed) is the target
+  // piece when the entry targets the part: read it as the model's hit; for the rest it stays another building.
+  const partHit = (h: any) => prep.part && h && isPartFeatureId(String(h.id ?? '')) && String(h.id).startsWith(`${PART_PREFIX}${prep.part}:`);
+  const hits: Hit[] = (g.picks?.hits ?? []).map((h: any) => partHit(h) ? { ...h, model: prep.part } : h && !h.model && String(h.keys ?? '').includes('landmarkId') ? { ...h, model: (prep.part ?? coverOf(prep.pandId)) ?? 'model' } : h);
+  const picks = readPicks(prep.samples, hits, prep.pandId, (prep.part ?? coverOf(prep.pandId)));
   const cols = new Set<number>();
-  prep.samples.forEach((s, i) => { const h = hits[i]; if (s.zone === 'above' && s.v >= prep.wall.heightM + 1.2 && h && (bare(h.id) === prep.pandId || (coverOf(prep.pandId) && (h.id === coverOf(prep.pandId) || h.model === coverOf(prep.pandId))))) cols.add(Math.round(s.u * 10)); });
+  prep.samples.forEach((s, i) => { const h = hits[i]; if (s.zone === 'above' && s.v >= prep.wall.heightM + 1.2 && h && (bare(h.id) === prep.pandId || ((prep.part ?? coverOf(prep.pandId)) && (h.id === (prep.part ?? coverOf(prep.pandId)) || h.model === (prep.part ?? coverOf(prep.pandId)))))) cols.add(Math.round(s.u * 10)); });
   const measure = { photo: measureHalf(photo, frame, prep.pose, prep.wall), game: measureHalf(game, frame, prep.pose, prep.wall) };
   const sky = { photo: skyline(photo, frame, prep.pose, prep.wall), game: skyline(game, frame, prep.pose, prep.wall) };
   const skyOff = { game: skylineMedian(sky.game), photo: skylineMedian(sky.photo), crownM: prep.wall.heightM };
@@ -687,6 +715,17 @@ function rule10Job(args: Args, prepared: Prepared[]): Rule10Job {
 }
 
 /** Pick, pose and cut every entry of one input; writes <out>/prepared.json and <out>/job.json. */
+/** BAG outline (RD) and 3DBAG 70th-percentile roof height of a pand that is not in the building tiles. */
+async function bagFootprint(id: string): Promise<Footprint | null> {
+  const bag = normId(id).replace('NL.IMBAG.Pand.', '');
+  const wfs: any = await cachedJson(`https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeName=bag:pand&outputFormat=application/json&srsName=urn:ogc:def:crs:EPSG::28992&count=1&filter=${encodeURIComponent(`<Filter><PropertyIsEqualTo><PropertyName>identificatie</PropertyName><Literal>${bag}</Literal></PropertyIsEqualTo></Filter>`)}`);
+  const g = wfs?.features?.[0]?.geometry;
+  if (!g) return null;
+  const ring = (g.type === 'Polygon' ? g.coordinates[0] : g.coordinates[0][0]).map((p: number[]) => ({ x: p[0], y: p[1] }));
+  let height = 12;
+  try { const d: any = await cachedJson(`https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${bag}`); const a = d.feature.CityObjects[`NL.IMBAG.Pand.${bag}`].attributes; height = Math.max(3, a.b3_h_dak_70p - a.b3_h_maaiveld); } catch { /* keep 12 m */ }
+  return { id: normId(bag), ring, height };
+}
 async function prepareAll(args: Args): Promise<{ prepared: Prepared[]; skipped: Skipped[] }> {
   const prepared: Prepared[] = [], skipped: Skipped[] = [];
   const t0 = Date.now();
@@ -696,11 +735,17 @@ async function prepareAll(args: Args): Promise<{ prepared: Prepared[]; skipped: 
   const misses = args.pands.filter(e => !hits.has(e));
   if (misses.length) await loadRoads();
   const found = misses.length ? await findPands(misses.map(p => p.id)) : new Map();
+  // A pand missing from the building tiles (De Mirandabad's 1979 hall, 2026-11-15) is framed from its BAG outline (PDOK WFS, CC0)
+  // and its 3DBAG height (CC BY 4.0), as landmark-brief.ts does, instead of being skipped.
+  for (const e of misses) if (/^\d{16}$|^NL\.IMBAG\.Pand\.\d{16}$/.test(e.id) && !found.has(normId(e.id))) { const fp = await bagFootprint(e.id).catch(() => null); if (fp) { found.set(normId(e.id), fp); console.log(`${e.id}: not in the building tiles, BAG outline from PDOK WFS (height ${fp.height.toFixed(1)} m from 3DBAG)`); } }
   for (const e of args.pands) {
     const hit = hits.get(e);
     if (hit) { prepared.push(hit); console.log(`${e.id}: cached pick, pose and photo (${hit.street} pano ${hit.pick.timestamp.slice(0, 10)}), ${hit.route}`); continue; }
     try {
-      const r = await prepare(e, found.get(normId(e.id)), args);
+      // an OSM way id (w…) names the tile feature of a pand the BAG tiles lack (Mauritskade 61): findPands keys it bare
+      const piece = await pieceOf(e, found.get(normId(e.id)) ?? found.get(e.id));
+      if (piece.part) e.part = piece.part;
+      const r = await prepare(e, piece.fp, args);
       if ('skip' in r) { skipped.push(r); console.log(`${e.id}: skipped (${r.skip})`); }
       else { prepared.push(r); storePrep(e, args, r); console.log(`${e.id}: ${r.street} pano ${r.pick.timestamp.slice(0, 10)} ${r.pick.distM.toFixed(1)} m, heading ${r.pose.headingDeg.toFixed(0)}, look-down ${r.pose.lookDownDeg.toFixed(1)}, vfov ${r.pose.vfovDeg}${r.pose.clipped.length ? ` (clipped ${r.pose.clipped})` : ''}, ${r.route}`); }
     } catch (err) { skipped.push({ pandId: e.id, skip: `error: ${(err as Error).message}` }); console.log(`${e.id}: error ${(err as Error).message}`); }

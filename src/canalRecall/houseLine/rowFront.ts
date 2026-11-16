@@ -17,7 +17,7 @@ import { hexToOklab, oklabToHex, paleWarmHeld } from '../houseSpec/wallColour.js
 import { SOUTERRAIN_FACTOR } from '../houseSpec/storeyPlan.js';
 import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
 import { buurtKitEnabled } from '../buurtGenerator/kitFlag.js';
-import { buurtKitOf, frontNormalOf, KIT_FLAT_RISE_M, KIT_MULLION_SHARE, kitWantsCoping, straightenFeature, type BuurtKitFront } from '../buurtGenerator/kit/frontKit.js';
+import { buurtKitOf, frontNormalOf, kitFrontM, KIT_FLAT_RISE_M, KIT_MULLION_SHARE, kitWantsCoping, straightenFeature, type BuurtKitFront } from '../buurtGenerator/kit/frontKit.js';
 import { buurtRoofKitFor, kitDrawsFront } from '../buurtGenerator/kit/roofKit.js';
 
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
@@ -550,7 +550,7 @@ export function withRowFront<T extends Feature>(feature: T): T {
     if (sr2 && rec.series.groundHex) sr2.fasciaHex = rec.series.groundHex;
     const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: kit?.sash ? { ...rowDressOf(rec.series), mullionShare: KIT_MULLION_SHARE } : rowDressOf(rec.series), ...(rec.series.shop !== undefined ? { specShop: rec.series.shop } : {}), ...(rec.series.look ? { rowLook: kit?.sash ? { ...rec.series.look, sash: kit.sash } : rec.series.look } : {}), ...lv };
     if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
-      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}), ...(mansard.frontM ? { frontM: mansard.frontM } : {}),
+      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}), ...(kit ? { frontM: kitFrontM(kit) } : mansard.frontM ? { frontM: mansard.frontM } : {}),
         ...(kit && rec.storeys ? { kit: buurtRoofKitFor(kit, top, rec.storeys, Number(sr2?.groundM) || rowGroundM(top, rec.storeys)), frontN: frontNormalOf(kit.frontLine) } : {}) } });
     else Object.assign(props, { height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' });
     const slab = rec.wallOnly ? rowWallSlab(rec.wallOnly.edge, feature.geometry) : null;

@@ -1,12 +1,12 @@
 {
   "version": 1,
   "district": "apollo-stadion",
-  "wallSource": "Amsterdam panoramas (data.amsterdam.nl, CC BY 4.0) via scripts/buurt-generators/measure-walls.ts",
+  "wallSource": "Amsterdam panoramas (data.amsterdam.nl, CC BY 4.0) via scripts/buurt-generators/measure-walls.ts; round 11 hue guard (revote-walls.ts)",
   "walls": {
     "achillesstraat-074742": {
-      "hex": "#6d5f5a",
+      "hex": "#6c5f59",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -19,22 +19,22 @@
         {
           "pano": "TMX7316010203-002475_pano_0000_001679",
           "date": "2022-03-24",
-          "hex": "#765e57",
+          "hex": "#755f55",
           "raw": "#5e4c40"
         }
       ]
     },
     "achillesstraat-080167": {
-      "hex": "#6c5d51",
+      "hex": "#6b5d50",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1332_Track18_Sphere_00044",
           "date": "2024-11-05",
-          "hex": "#6c5a4f",
+          "hex": "#6b5b4d",
           "raw": "#634f34"
         },
         {
@@ -46,7 +46,7 @@
       ]
     },
     "achillesstraat-097271": {
-      "hex": "#71625d",
+      "hex": "#70625d",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -61,21 +61,21 @@
         {
           "pano": "b_20241105_1332_Track18_Sphere_00045",
           "date": "2024-11-05",
-          "hex": "#675651",
+          "hex": "#66574e",
           "raw": "#574432"
         },
         {
           "pano": "TMX7316010203-002464_pano_0002_000143",
           "date": "2022-03-22",
-          "hex": "#7a6c6a",
+          "hex": "#7a6c69",
           "raw": "#605048"
         }
       ]
     },
     "achillesstraat-102653": {
-      "hex": "#574b3e",
+      "hex": "#574a3e",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -94,7 +94,7 @@
       ]
     },
     "achillesstraat-120389": {
-      "hex": "#6b6053",
+      "hex": "#6b6054",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -121,16 +121,16 @@
       ]
     },
     "achillesstraat-139553": {
-      "hex": "#786e64",
+      "hex": "#776e63",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-29_13-17-11_00911",
           "date": "2025-07-29",
-          "hex": "#817b70",
+          "hex": "#807b70",
           "raw": "#8c8a7f"
         },
         {
@@ -142,9 +142,9 @@
       ]
     },
     "achillesstraat-147387": {
-      "hex": "#695b58",
+      "hex": "#695b54",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -157,15 +157,15 @@
         {
           "pano": "TMX7316010203-002918_pano_0009_000016",
           "date": "2023-01-05",
-          "hex": "#70686c",
+          "hex": "#716965",
           "raw": "#5b5149"
         }
       ]
     },
     "achillesstraat-154833": {
-      "hex": "#a39273",
+      "hex": "#a29273",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -184,16 +184,16 @@
       ]
     },
     "agamemnonstraat-072023": {
-      "hex": "#4b3c34",
+      "hex": "#4a3d32",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1055_Track04_Sphere_00010",
           "date": "2024-11-05",
-          "hex": "#453730",
+          "hex": "#42392d",
           "raw": "#3f3a2e"
         },
         {
@@ -205,43 +205,43 @@
       ]
     },
     "agamemnonstraat-089372": {
-      "hex": "#756a65",
+      "hex": "#756b63",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1055_Track06_Sphere_00007",
           "date": "2024-11-05",
-          "hex": "#7a6c60",
+          "hex": "#796d5f",
           "raw": "#4f483b"
         },
         {
           "pano": "TMX7316010203-002918_pano_0009_000257",
           "date": "2023-01-05",
-          "hex": "#71696a",
+          "hex": "#716a67",
           "raw": "#574d47"
         }
       ]
     },
     "agamemnonstraat-094341": {
-      "hex": "#705e57",
+      "hex": "#6b6057",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1055_Track06_Sphere_00011",
           "date": "2024-11-05",
-          "hex": "#756157",
+          "hex": "#6d6552",
           "raw": "#575548"
         },
         {
           "pano": "TMX7316010203-002918_pano_0009_000262",
           "date": "2023-01-05",
-          "hex": "#6a605f",
+          "hex": "#6a605d",
           "raw": "#5d524b"
         },
         {
@@ -253,7 +253,7 @@
       ]
     },
     "agamemnonstraat-133532": {
-      "hex": "#706f71",
+      "hex": "#70706f",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -268,13 +268,13 @@
         {
           "pano": "b_20241105_1055_Track04_Sphere_00009",
           "date": "2024-11-05",
-          "hex": "#777677",
+          "hex": "#767675",
           "raw": "#474940"
         },
         {
           "pano": "TMX7316010203-002918_pano_0009_000245",
           "date": "2023-01-05",
-          "hex": "#766d71",
+          "hex": "#776d6b",
           "raw": "#514742"
         }
       ]
@@ -282,14 +282,14 @@
     "albrecht-d-rerstraat-064556": {
       "hex": "#67524c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-29_12-06-07_00474",
           "date": "2025-07-29",
-          "hex": "#5d4843",
+          "hex": "#5d4842",
           "raw": "#47443e"
         },
         {
@@ -301,9 +301,9 @@
       ]
     },
     "albrecht-d-rerstraat-142046": {
-      "hex": "#56483f",
+      "hex": "#56493f",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -322,15 +322,15 @@
         {
           "pano": "TMX7316010203-002118_pano_0000_003762",
           "date": "2021-04-26",
-          "hex": "#5d4636",
+          "hex": "#5a4833",
           "raw": "#524b3f"
         }
       ]
     },
     "amazonenstraat-070064": {
-      "hex": "#746059",
+      "hex": "#736159",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -349,30 +349,30 @@
       ]
     },
     "amazonenstraat-075589": {
-      "hex": "#7c6f69",
+      "hex": "#797168",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-30_06-07-02_00297",
           "date": "2025-07-30",
-          "hex": "#847970",
+          "hex": "#807b6f",
           "raw": "#88867c"
         },
         {
           "pano": "TMX7316010203-002918_pano_0009_000106",
           "date": "2023-01-05",
-          "hex": "#736663",
+          "hex": "#726661",
           "raw": "#64574e"
         }
       ]
     },
     "amazonenstraat-083284": {
-      "hex": "#73655d",
+      "hex": "#73655c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -385,13 +385,13 @@
         {
           "pano": "TMX7316010203-002918_pano_0009_000098",
           "date": "2023-01-05",
-          "hex": "#786e6e",
+          "hex": "#786e6c",
           "raw": "#5d5552"
         }
       ]
     },
     "amazonenstraat-103724": {
-      "hex": "#6f5e5b",
+      "hex": "#705e58",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -400,7 +400,7 @@
         {
           "pano": "recording_2025-07-30_06-07-02_00294",
           "date": "2025-07-30",
-          "hex": "#685351",
+          "hex": "#68544e",
           "raw": "#595a5a"
         },
         {
@@ -412,7 +412,7 @@
         {
           "pano": "TMX7316010203-002918_pano_0009_000109",
           "date": "2023-01-05",
-          "hex": "#786b6e",
+          "hex": "#796b6b",
           "raw": "#5d4f4c"
         }
       ]
@@ -420,7 +420,7 @@
     "amazonenstraat-121871": {
       "hex": "#6a6364",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -433,13 +433,13 @@
         {
           "pano": "TMX7316010203-002918_pano_0009_000086",
           "date": "2023-01-05",
-          "hex": "#70615f",
+          "hex": "#70615d",
           "raw": "#61534c"
         }
       ]
     },
     "amazonenstraat-128396": {
-      "hex": "#705d58",
+      "hex": "#6f5d57",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -448,7 +448,7 @@
         {
           "pano": "recording_2025-07-30_06-07-02_00316",
           "date": "2025-07-30",
-          "hex": "#6f5a56",
+          "hex": "#6f5a55",
           "raw": "#4d4e4f"
         },
         {
@@ -460,7 +460,7 @@
         {
           "pano": "TMX7316010203-002918_pano_0009_000087",
           "date": "2023-01-05",
-          "hex": "#756463",
+          "hex": "#756462",
           "raw": "#574742"
         }
       ]
@@ -493,9 +493,9 @@
       ]
     },
     "anthonie-van-dijckstraat-096185": {
-      "hex": "#a28e7b",
+      "hex": "#a18f7b",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -516,7 +516,7 @@
     "anthonie-van-dijckstraat-140120": {
       "hex": "#756b54",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -616,9 +616,9 @@
       ]
     },
     "apollolaan-107274": {
-      "hex": "#725957",
+      "hex": "#715a51",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -631,7 +631,7 @@
         {
           "pano": "TMX7316010203-002797_pano_0000_000693",
           "date": "2022-09-05",
-          "hex": "#6b585d",
+          "hex": "#6a5a50",
           "raw": "#423120"
         }
       ]
@@ -739,22 +739,22 @@
       ]
     },
     "apollolaan-145146": {
-      "hex": "#6e625f",
+      "hex": "#6c635c",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "TMX7316010203-002918_pano_0006_000060",
           "date": "2023-01-05",
-          "hex": "#6b6262",
+          "hex": "#6a635e",
           "raw": "#3e362e"
         },
         {
           "pano": "TMX7316010203-002797_pano_0000_000733",
           "date": "2022-09-05",
-          "hex": "#71625c",
+          "hex": "#6e6459",
           "raw": "#423828"
         }
       ]
@@ -762,7 +762,7 @@
     "argonautenstraat-062661": {
       "hex": "#524432",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -783,7 +783,7 @@
     "argonautenstraat-087526": {
       "hex": "#4a524f",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -802,9 +802,9 @@
       ]
     },
     "argonautenstraat-097494": {
-      "hex": "#6a686d",
+      "hex": "#6a686a",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -817,13 +817,13 @@
         {
           "pano": "TMX7316010203-002918_pano_0009_000221",
           "date": "2023-01-05",
-          "hex": "#6d6669",
+          "hex": "#6e6764",
           "raw": "#4e4641"
         }
       ]
     },
     "argonautenstraat-114625": {
-      "hex": "#7a7170",
+      "hex": "#78716d",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -844,43 +844,22 @@
         {
           "pano": "TMX7316010203-002918_pano_0009_000166",
           "date": "2023-01-05",
-          "hex": "#7c7372",
+          "hex": "#7b746f",
           "raw": "#61584f"
         }
       ]
     },
-    "argonautenstraat-115948": {
-      "hex": "#65686f",
-      "n": 2,
-      "of": 4,
-      "dates": 2,
-      "balanced": true,
-      "reads": [
-        {
-          "pano": "recording_2025-07-30_06-07-02_01385",
-          "date": "2025-07-30",
-          "hex": "#57656d",
-          "raw": "#607179"
-        },
-        {
-          "pano": "TMX7316010203-002918_pano_0009_000205",
-          "date": "2023-01-05",
-          "hex": "#746c71",
-          "raw": "#655a51"
-        }
-      ]
-    },
     "argonautenstraat-133105": {
-      "hex": "#726763",
+      "hex": "#726862",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "TMX7316010203-002918_pano_0009_000180",
           "date": "2023-01-05",
-          "hex": "#6e6765",
+          "hex": "#6d6764",
           "raw": "#5b534c"
         },
         {
@@ -892,16 +871,16 @@
       ]
     },
     "bachstraat-066919": {
-      "hex": "#6a544c",
+      "hex": "#69544b",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-15_11-16-59_01643",
           "date": "2025-07-15",
-          "hex": "#6f5b53",
+          "hex": "#6e5c51",
           "raw": "#3d3732"
         },
         {
@@ -913,9 +892,9 @@
       ]
     },
     "bachstraat-081353": {
-      "hex": "#785b54",
+      "hex": "#785c52",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -928,15 +907,15 @@
         {
           "pano": "TMX7316010203-002228_pano_0001_000228",
           "date": "2021-07-12",
-          "hex": "#75504e",
+          "hex": "#755149",
           "raw": "#724b3a"
         }
       ]
     },
     "bachstraat-095328": {
-      "hex": "#6f6254",
+      "hex": "#6f6253",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -949,13 +928,13 @@
         {
           "pano": "TMX7316010203-002118_pano_0000_006348",
           "date": "2021-04-26",
-          "hex": "#7b6a5d",
+          "hex": "#7a6b5c",
           "raw": "#5c503e"
         }
       ]
     },
     "bachstraat-132668": {
-      "hex": "#67514a",
+      "hex": "#66514a",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -970,7 +949,7 @@
         {
           "pano": "b_20241106_0927_Track32_Sphere_00065",
           "date": "2024-11-06",
-          "hex": "#5e4942",
+          "hex": "#5d4a3f",
           "raw": "#423020"
         },
         {
@@ -982,22 +961,22 @@
       ]
     },
     "beethovenstraat-093212": {
-      "hex": "#66534c",
+      "hex": "#63554a",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241112_0936_Track03_Sphere_00045",
           "date": "2024-11-12",
-          "hex": "#65544c",
+          "hex": "#63554a",
           "raw": "#463621"
         },
         {
           "pano": "b_20241106_0927_Track04_Sphere_00418",
           "date": "2024-11-06",
-          "hex": "#644c3e",
+          "hex": "#5f4f39",
           "raw": "#3e3521"
         },
         {
@@ -1030,30 +1009,30 @@
       ]
     },
     "beethovenstraat-099398": {
-      "hex": "#443631",
+      "hex": "#43372f",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-15_11-16-59_01128",
           "date": "2025-07-15",
-          "hex": "#473b3c",
+          "hex": "#473c38",
           "raw": "#2c2f30"
         },
         {
           "pano": "b_20241112_0936_Track03_Sphere_00082",
           "date": "2024-11-12",
-          "hex": "#413126",
+          "hex": "#403225",
           "raw": "#3a2f1f"
         }
       ]
     },
     "beethovenstraat-103315": {
-      "hex": "#594b47",
+      "hex": "#5a4b44",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -1066,34 +1045,34 @@
         {
           "pano": "b_20241106_0927_Track04_Sphere_00376",
           "date": "2024-11-06",
-          "hex": "#4b3d3a",
+          "hex": "#493e36",
           "raw": "#3b2c1b"
         },
         {
           "pano": "TMX7316010203-002918_pano_0005_000196",
           "date": "2023-01-05",
-          "hex": "#594b49",
+          "hex": "#594b47",
           "raw": "#3f342e"
         }
       ]
     },
     "beethovenstraat-115027": {
-      "hex": "#817268",
+      "hex": "#7f7267",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241112_0936_Track03_Sphere_00098",
           "date": "2024-11-12",
-          "hex": "#7b6b60",
+          "hex": "#796c5e",
           "raw": "#645539"
         },
         {
           "pano": "TMX7316010203-002918_pano_0005_000159",
           "date": "2023-01-05",
-          "hex": "#877871",
+          "hex": "#867970",
           "raw": "#645546"
         }
       ]
@@ -1126,9 +1105,9 @@
       ]
     },
     "beethovenstraat-145103": {
-      "hex": "#5f4c48",
+      "hex": "#5e4d45",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -1141,21 +1120,21 @@
         {
           "pano": "recording_2025-07-15_09-44-59_02465",
           "date": "2025-07-15",
-          "hex": "#5f4c48",
+          "hex": "#5e4d45",
           "raw": "#5e5650"
         },
         {
           "pano": "b_20241105_1055_Track27_Sphere_00158",
           "date": "2024-11-05",
-          "hex": "#5d4b47",
+          "hex": "#5c4c43",
           "raw": "#46382b"
         }
       ]
     },
     "bernard-zweerskade-069053": {
-      "hex": "#665750",
+      "hex": "#655750",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -1168,7 +1147,7 @@
         {
           "pano": "TMX7316010203-002125_pano_0000_002935",
           "date": "2021-04-30",
-          "hex": "#5f4e49",
+          "hex": "#5f4e48",
           "raw": "#534035"
         }
       ]
@@ -1195,16 +1174,16 @@
       ]
     },
     "bertelmanplein-127967": {
-      "hex": "#664e3f",
+      "hex": "#63503c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-30_07-40-42_00948",
           "date": "2025-07-30",
-          "hex": "#665046",
+          "hex": "#605341",
           "raw": "#5d594f"
         },
         {
@@ -1216,28 +1195,28 @@
       ]
     },
     "bertelmanstraat-111800": {
-      "hex": "#7b6e6d",
+      "hex": "#7b6f6a",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "TMX7316010203-002464_pano_0001_000682",
           "date": "2022-03-22",
-          "hex": "#7d7374",
+          "hex": "#7d7470",
           "raw": "#544840"
         },
         {
           "pano": "TMX7316010203-002118_pano_0000_008177",
           "date": "2021-04-26",
-          "hex": "#796a66",
+          "hex": "#786b64",
           "raw": "#51463e"
         }
       ]
     },
     "bertelmanstraat-143253": {
-      "hex": "#967e75",
+      "hex": "#937f74",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -1246,27 +1225,27 @@
         {
           "pano": "recording_2025-07-30_07-40-42_00891",
           "date": "2025-07-30",
-          "hex": "#a18c82",
+          "hex": "#a18c81",
           "raw": "#a99c91"
         },
         {
           "pano": "b_20241106_1111_Track13_Sphere_00017",
           "date": "2024-11-06",
-          "hex": "#8d6f5d",
+          "hex": "#897259",
           "raw": "#524632"
         },
         {
           "pano": "TMX7316010203-002464_pano_0001_000622",
           "date": "2022-03-22",
-          "hex": "#957e79",
+          "hex": "#957e77",
           "raw": "#614b3f"
         }
       ]
     },
     "botticellistraat-065860": {
-      "hex": "#72655f",
+      "hex": "#72655e",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -1279,7 +1258,7 @@
         {
           "pano": "TMX7316010203-002918_pano_0008_000190",
           "date": "2023-01-05",
-          "hex": "#706665",
+          "hex": "#706663",
           "raw": "#514741"
         }
       ]
@@ -1294,27 +1273,27 @@
         {
           "pano": "recording_2025-07-29_12-06-07_01476",
           "date": "2025-07-29",
-          "hex": "#756f65",
+          "hex": "#737065",
           "raw": "#7b7b71"
         },
         {
           "pano": "b_20241106_0927_Track22_Sphere_00019",
           "date": "2024-11-06",
-          "hex": "#716356",
+          "hex": "#706356",
           "raw": "#5a4d37"
         },
         {
           "pano": "TMX7316010203-002918_pano_0008_000214",
           "date": "2023-01-05",
-          "hex": "#877975",
+          "hex": "#877974",
           "raw": "#69594e"
         }
       ]
     },
     "botticellistraat-089077": {
-      "hex": "#7c6055",
+      "hex": "#7c5f55",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -1339,7 +1318,7 @@
       ]
     },
     "botticellistraat-089495": {
-      "hex": "#564d47",
+      "hex": "#584d41",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -1348,7 +1327,7 @@
         {
           "pano": "recording_2025-07-29_12-06-07_01501",
           "date": "2025-07-29",
-          "hex": "#5f4e4a",
+          "hex": "#5b5044",
           "raw": "#524e47"
         },
         {
@@ -1366,9 +1345,9 @@
       ]
     },
     "brahmsstraat-080303": {
-      "hex": "#926e5f",
+      "hex": "#926f60",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -1408,7 +1387,7 @@
       ]
     },
     "breughelstraat-134767": {
-      "hex": "#6b5c54",
+      "hex": "#695c53",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -1423,13 +1402,13 @@
         {
           "pano": "b_20241106_0927_Track30_Sphere_00010",
           "date": "2024-11-06",
-          "hex": "#776b57",
+          "hex": "#766b57",
           "raw": "#5e542a"
         },
         {
           "pano": "TMX7316010203-002918_pano_0005_000289",
           "date": "2023-01-05",
-          "hex": "#675c5e",
+          "hex": "#675d5a",
           "raw": "#443a35"
         }
       ]
@@ -1437,7 +1416,7 @@
     "cliostraat-062725": {
       "hex": "#92867a",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -1450,7 +1429,7 @@
         {
           "pano": "TMX7316010203-002918_pano_0007_000032",
           "date": "2023-01-05",
-          "hex": "#988c84",
+          "hex": "#978c84",
           "raw": "#7a6c5b"
         }
       ]
@@ -1458,7 +1437,7 @@
     "cliostraat-064016": {
       "hex": "#8f8266",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -1479,7 +1458,7 @@
     "cliostraat-070640": {
       "hex": "#71645c",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -1504,9 +1483,9 @@
       ]
     },
     "corellistraat-066534": {
-      "hex": "#484a4b",
+      "hex": "#484a4c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -1552,7 +1531,7 @@
       ]
     },
     "courbetstraat-069079": {
-      "hex": "#614f49",
+      "hex": "#625049",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -1579,9 +1558,9 @@
       ]
     },
     "des-pr-sstraat-083358": {
-      "hex": "#6a5a50",
+      "hex": "#6a5950",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -1600,7 +1579,7 @@
       ]
     },
     "des-pr-sstraat-137522": {
-      "hex": "#6e594d",
+      "hex": "#6f594a",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -1621,7 +1600,7 @@
         {
           "pano": "TMX7316010203-002796_pano_0006_000022",
           "date": "2022-09-05",
-          "hex": "#684f45",
+          "hex": "#675042",
           "raw": "#5f5246"
         }
       ]
@@ -1648,9 +1627,9 @@
       ]
     },
     "gerrit-van-der-veenstraat-061807": {
-      "hex": "#3f3935",
+      "hex": "#403a35",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -1690,30 +1669,30 @@
       ]
     },
     "gerrit-van-der-veenstraat-088341": {
-      "hex": "#746c6f",
+      "hex": "#746d69",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "TMX7316010203-002918_pano_0008_000142",
           "date": "2023-01-05",
-          "hex": "#736c6f",
+          "hex": "#736d69",
           "raw": "#4d453e"
         },
         {
           "pano": "TMX7316010203-002797_pano_0000_000123",
           "date": "2022-09-05",
-          "hex": "#756d6f",
+          "hex": "#746e69",
           "raw": "#4e463c"
         }
       ]
     },
     "gerrit-van-der-veenstraat-106337": {
-      "hex": "#736764",
+      "hex": "#736760",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -1726,15 +1705,15 @@
         {
           "pano": "TMX7316010203-002118_pano_0000_004172",
           "date": "2021-04-26",
-          "hex": "#71676a",
+          "hex": "#706962",
           "raw": "#52483b"
         }
       ]
     },
     "gerrit-van-der-veenstraat-110571": {
-      "hex": "#7c6d62",
+      "hex": "#7b6e62",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -1747,7 +1726,7 @@
         {
           "pano": "TMX7316010203-002918_pano_0006_000296",
           "date": "2023-01-05",
-          "hex": "#736768",
+          "hex": "#726863",
           "raw": "#574a40"
         },
         {
@@ -1761,7 +1740,7 @@
     "gerrit-van-der-veenstraat-111100": {
       "hex": "#72625b",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -1774,76 +1753,76 @@
         {
           "pano": "TMX7316010203-002918_pano_0008_000181",
           "date": "2023-01-05",
-          "hex": "#685652",
+          "hex": "#685651",
           "raw": "#493b34"
         },
         {
           "pano": "TMX7316010203-002464_pano_0002_000842",
           "date": "2022-03-22",
-          "hex": "#82736c",
+          "hex": "#81746b",
           "raw": "#61503e"
         }
       ]
     },
     "gerrit-van-der-veenstraat-125801": {
-      "hex": "#74645d",
+      "hex": "#73655c",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "TMX7316010203-002798_pano_0001_000085",
           "date": "2022-09-05",
-          "hex": "#73625b",
+          "hex": "#72625a",
           "raw": "#4a3e34"
         },
         {
           "pano": "TMX7316010203-002118_pano_0000_003481",
           "date": "2021-04-26",
-          "hex": "#766660",
+          "hex": "#75675e",
           "raw": "#5d4f40"
         }
       ]
     },
     "gerrit-van-der-veenstraat-146550": {
-      "hex": "#665e5d",
+      "hex": "#655f5b",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241106_0927_Track24_Sphere_00029",
           "date": "2024-11-06",
-          "hex": "#5d5754",
+          "hex": "#5b5853",
           "raw": "#3e3726"
         },
         {
           "pano": "TMX7316010203-002918_pano_0006_000294",
           "date": "2023-01-05",
-          "hex": "#6f6566",
+          "hex": "#6f6563",
           "raw": "#4b413c"
         }
       ]
     },
     "gerrit-van-der-veenstraat-147241": {
-      "hex": "#5c4c45",
+      "hex": "#5b4c44",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241106_0927_Track24_Sphere_00009",
           "date": "2024-11-06",
-          "hex": "#53453a",
+          "hex": "#524539",
           "raw": "#42341f"
         },
         {
           "pano": "TMX7316010203-002918_pano_0008_000118",
           "date": "2023-01-05",
-          "hex": "#655350",
+          "hex": "#65534f",
           "raw": "#46362e"
         }
       ]
@@ -1851,7 +1830,7 @@
     "gerrit-van-der-veenstraat-150941": {
       "hex": "#ac845b",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -1870,7 +1849,7 @@
       ]
     },
     "h-ndelstraat-065455": {
-      "hex": "#6d5651",
+      "hex": "#6d564f",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -1879,25 +1858,25 @@
         {
           "pano": "recording_2025-07-15_11-16-59_01672",
           "date": "2025-07-15",
-          "hex": "#7d6661",
+          "hex": "#7d6660",
           "raw": "#484541"
         },
         {
           "pano": "b_20241106_0927_Track36_Sphere_00027",
           "date": "2024-11-06",
-          "hex": "#624a45",
+          "hex": "#614b41",
           "raw": "#462d19"
         },
         {
           "pano": "TMX7316010203-002800_pano_0027_000315",
           "date": "2022-09-06",
-          "hex": "#6d5651",
+          "hex": "#6d564f",
           "raw": "#44342b"
         }
       ]
     },
     "hectorstraat-071631": {
-      "hex": "#827470",
+      "hex": "#7f766d",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -1906,19 +1885,19 @@
         {
           "pano": "recording_2025-07-30_06-07-02_00904",
           "date": "2025-07-30",
-          "hex": "#878183",
+          "hex": "#878180",
           "raw": "#918d8a"
         },
         {
           "pano": "b_20241105_0934_Track19_Sphere_00027",
           "date": "2024-11-05",
-          "hex": "#736561",
+          "hex": "#70675d",
           "raw": "#3c372f"
         },
         {
           "pano": "TMX7316010203-002475_pano_0000_001471",
           "date": "2022-03-24",
-          "hex": "#827470",
+          "hex": "#81756d",
           "raw": "#5f5347"
         }
       ]
@@ -1926,7 +1905,7 @@
     "hectorstraat-078008": {
       "hex": "#8f7862",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -1945,16 +1924,16 @@
       ]
     },
     "hectorstraat-097788": {
-      "hex": "#635348",
+      "hex": "#615347",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1055_Track12_Sphere_00074",
           "date": "2024-11-05",
-          "hex": "#594c41",
+          "hex": "#554e3f",
           "raw": "#37352c"
         },
         {
@@ -1966,16 +1945,16 @@
       ]
     },
     "hectorstraat-108091": {
-      "hex": "#47352f",
+      "hex": "#47362d",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1055_Track12_Sphere_00076",
           "date": "2024-11-05",
-          "hex": "#43302a",
+          "hex": "#423126",
           "raw": "#3e3328"
         },
         {
@@ -1987,7 +1966,7 @@
       ]
     },
     "hectorstraat-116164": {
-      "hex": "#786760",
+      "hex": "#756860",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -2002,7 +1981,7 @@
         {
           "pano": "b_20241105_0934_Track19_Sphere_00022",
           "date": "2024-11-05",
-          "hex": "#75604d",
+          "hex": "#70634b",
           "raw": "#464338"
         },
         {
@@ -2016,7 +1995,7 @@
     "hectorstraat-120625": {
       "hex": "#a08769",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2035,16 +2014,16 @@
       ]
     },
     "hendrik-jacobszstraat-076603": {
-      "hex": "#644936",
+      "hex": "#624a33",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241112_0936_Track28_Sphere_00013",
           "date": "2024-11-12",
-          "hex": "#5a3f30",
+          "hex": "#55422b",
           "raw": "#504839"
         },
         {
@@ -2056,16 +2035,16 @@
       ]
     },
     "hendrik-jacobszstraat-120271": {
-      "hex": "#664f3d",
+      "hex": "#64503b",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241112_0936_Track28_Sphere_00010",
           "date": "2024-11-12",
-          "hex": "#644c3c",
+          "hex": "#604e38",
           "raw": "#5e5440"
         },
         {
@@ -2077,7 +2056,7 @@
       ]
     },
     "herculesstraat-078783": {
-      "hex": "#7e6656",
+      "hex": "#7e6655",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -2104,9 +2083,9 @@
       ]
     },
     "herculesstraat-130797": {
-      "hex": "#725d52",
+      "hex": "#705e51",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2119,43 +2098,43 @@
         {
           "pano": "b_20241105_1332_Track08_Sphere_00130",
           "date": "2024-11-05",
-          "hex": "#6b5445",
+          "hex": "#675642",
           "raw": "#3f382a"
         }
       ]
     },
     "herculesstraat-131422": {
-      "hex": "#504748",
+      "hex": "#504745",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "TMX7316010203-002460_pano_0003_001232",
           "date": "2022-03-21",
-          "hex": "#433d3d",
+          "hex": "#433d3c",
           "raw": "#4b4645"
         },
         {
           "pano": "TMX7316010203-002120_pano_0000_000697",
           "date": "2021-04-28",
-          "hex": "#5d5153",
+          "hex": "#5d524e",
           "raw": "#504139"
         }
       ]
     },
     "herculesstraat-141958": {
-      "hex": "#887965",
+      "hex": "#877a64",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "TMX7316010203-002460_pano_0003_000819",
           "date": "2022-03-21",
-          "hex": "#8b7a6c",
+          "hex": "#897b6b",
           "raw": "#565044"
         },
         {
@@ -2209,7 +2188,7 @@
         {
           "pano": "b_20241105_1055_Track22_Sphere_00023",
           "date": "2024-11-05",
-          "hex": "#706357",
+          "hex": "#6d6456",
           "raw": "#443f2e"
         },
         {
@@ -2248,7 +2227,7 @@
       ]
     },
     "hygi-aplein-070474": {
-      "hex": "#8c766f",
+      "hex": "#897969",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -2257,7 +2236,7 @@
         {
           "pano": "recording_2025-07-29_12-06-07_02574",
           "date": "2025-07-29",
-          "hex": "#927c75",
+          "hex": "#8b806e",
           "raw": "#7e7b72"
         },
         {
@@ -2269,7 +2248,7 @@
         {
           "pano": "TMX7316010203-002459_pano_0003_000413",
           "date": "2022-03-21",
-          "hex": "#887872",
+          "hex": "#877970",
           "raw": "#635b53"
         }
       ]
@@ -2277,14 +2256,14 @@
     "hygi-aplein-096335": {
       "hex": "#b2a28c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-29_12-06-07_02576",
           "date": "2025-07-29",
-          "hex": "#a3998a",
+          "hex": "#a2998a",
           "raw": "#b1ac9c"
         },
         {
@@ -2296,30 +2275,30 @@
       ]
     },
     "hygi-aplein-103767": {
-      "hex": "#716055",
+      "hex": "#6a6453",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1332_Track15_Sphere_00006",
           "date": "2024-11-05",
-          "hex": "#695443",
+          "hex": "#5c5a41",
           "raw": "#42443b"
         },
         {
           "pano": "TMX7316010203-002459_pano_0003_000371",
           "date": "2022-03-21",
-          "hex": "#7a6d67",
+          "hex": "#796e65",
           "raw": "#5d5245"
         }
       ]
     },
     "hygi-aplein-111970": {
-      "hex": "#716057",
+      "hex": "#716056",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2332,15 +2311,15 @@
         {
           "pano": "TMX7316010203-002459_pano_0003_000367",
           "date": "2022-03-21",
-          "hex": "#7c6c69",
+          "hex": "#7b6d66",
           "raw": "#5c5046"
         }
       ]
     },
     "hygi-aplein-125411": {
-      "hex": "#715f57",
+      "hex": "#705f56",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2353,15 +2332,15 @@
         {
           "pano": "TMX7316010203-002459_pano_0003_000368",
           "date": "2022-03-21",
-          "hex": "#7a6c68",
+          "hex": "#796d66",
           "raw": "#5c5046"
         }
       ]
     },
     "hygi-aplein-134943": {
-      "hex": "#746259",
+      "hex": "#736258",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2374,7 +2353,7 @@
         {
           "pano": "TMX7316010203-002459_pano_0003_000365",
           "date": "2022-03-21",
-          "hex": "#7e6f6a",
+          "hex": "#7c7067",
           "raw": "#50483f"
         }
       ]
@@ -2382,7 +2361,7 @@
     "jan-van-eijckstraat-067882": {
       "hex": "#423426",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2401,22 +2380,22 @@
       ]
     },
     "jan-van-eijckstraat-067964": {
-      "hex": "#68564e",
+      "hex": "#66574b",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241106_0927_Track32_Sphere_00006",
           "date": "2024-11-06",
-          "hex": "#695343",
+          "hex": "#655540",
           "raw": "#4c4432"
         },
         {
           "pano": "TMX7316010203-002918_pano_0005_000265",
           "date": "2023-01-05",
-          "hex": "#675958",
+          "hex": "#675956",
           "raw": "#42352f"
         }
       ]
@@ -2449,43 +2428,43 @@
       ]
     },
     "jasonstraat-061439": {
-      "hex": "#7f6a5f",
+      "hex": "#7b6d5c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1055_Track02_Sphere_00022",
           "date": "2024-11-05",
-          "hex": "#7a6354",
+          "hex": "#716850",
           "raw": "#3e3d35"
         },
         {
           "pano": "TMX7316010203-002475_pano_0000_002106",
           "date": "2022-03-24",
-          "hex": "#85726a",
+          "hex": "#847269",
           "raw": "#6e5d4f"
         }
       ]
     },
     "jasonstraat-086555": {
-      "hex": "#837163",
+      "hex": "#7e735f",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1055_Track10_Sphere_00007",
           "date": "2024-11-05",
-          "hex": "#725e51",
+          "hex": "#69624d",
           "raw": "#484739"
         },
         {
           "pano": "TMX7316010203-002918_pano_0009_000119",
           "date": "2023-01-05",
-          "hex": "#80716c",
+          "hex": "#7f726a",
           "raw": "#615345"
         },
         {
@@ -2497,7 +2476,7 @@
       ]
     },
     "jasonstraat-109217": {
-      "hex": "#4f4132",
+      "hex": "#4d4333",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -2512,7 +2491,7 @@
         {
           "pano": "b_20241105_1055_Track10_Sphere_00010",
           "date": "2024-11-05",
-          "hex": "#5a3d26",
+          "hex": "#524220",
           "raw": "#3f3a27"
         },
         {
@@ -2524,16 +2503,16 @@
       ]
     },
     "jasonstraat-134985": {
-      "hex": "#7c6b5a",
+      "hex": "#7a6c58",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1055_Track02_Sphere_00022",
           "date": "2024-11-05",
-          "hex": "#675545",
+          "hex": "#645743",
           "raw": "#584d30"
         },
         {
@@ -2551,16 +2530,16 @@
       ]
     },
     "leonardostraat-077281": {
-      "hex": "#83675a",
+      "hex": "#816857",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-29_12-06-07_01380",
           "date": "2025-07-29",
-          "hex": "#78615a",
+          "hex": "#766356",
           "raw": "#423b34"
         },
         {
@@ -2572,7 +2551,7 @@
       ]
     },
     "leonardostraat-143600": {
-      "hex": "#86766d",
+      "hex": "#83776b",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -2581,52 +2560,52 @@
         {
           "pano": "recording_2025-07-29_12-06-07_01376",
           "date": "2025-07-29",
-          "hex": "#84766c",
+          "hex": "#83776b",
           "raw": "#8c857a"
         },
         {
           "pano": "b_20241106_0927_Track19_Sphere_00016",
           "date": "2024-11-06",
-          "hex": "#786860",
+          "hex": "#76695e",
           "raw": "#4f4331"
         },
         {
           "pano": "TMX7316010203-002464_pano_0002_000738",
           "date": "2022-03-22",
-          "hex": "#87797b",
+          "hex": "#877a77",
           "raw": "#594a44"
         }
       ]
     },
     "marathonweg-079644": {
-      "hex": "#524641",
+      "hex": "#50473f",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1332_Track08_Sphere_00087",
           "date": "2024-11-05",
-          "hex": "#50433c",
+          "hex": "#4e443a",
           "raw": "#443d31"
         },
         {
           "pano": "TMX7316010203-002459_pano_0003_000476",
           "date": "2022-03-21",
-          "hex": "#4f4747",
+          "hex": "#4f4745",
           "raw": "#4a423d"
         },
         {
           "pano": "TMX7316010203-002120_pano_0000_000168",
           "date": "2021-04-28",
-          "hex": "#635551",
+          "hex": "#62564e",
           "raw": "#4f4439"
         }
       ]
     },
     "marathonweg-115652": {
-      "hex": "#685d54",
+      "hex": "#685c54",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -2653,16 +2632,16 @@
       ]
     },
     "marathonweg-133110": {
-      "hex": "#63574f",
+      "hex": "#62584e",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241217_0841_Track60_Sphere_00012",
           "date": "2024-12-17",
-          "hex": "#63564f",
+          "hex": "#60574d",
           "raw": "#342e22"
         },
         {
@@ -2674,9 +2653,9 @@
       ]
     },
     "marathonweg-136831": {
-      "hex": "#695a52",
+      "hex": "#685a52",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2695,7 +2674,7 @@
       ]
     },
     "marathonweg-148786": {
-      "hex": "#655751",
+      "hex": "#655750",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -2710,7 +2689,7 @@
         {
           "pano": "b_20241105_1332_Track17_Sphere_00002",
           "date": "2024-11-05",
-          "hex": "#645751",
+          "hex": "#635750",
           "raw": "#4e3f30"
         },
         {
@@ -2722,7 +2701,7 @@
       ]
     },
     "memlingstraat-148321": {
-      "hex": "#5c4b45",
+      "hex": "#5d4b41",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -2731,7 +2710,7 @@
         {
           "pano": "recording_2025-07-29_12-06-07_00508",
           "date": "2025-07-29",
-          "hex": "#5c4b45",
+          "hex": "#594d41",
           "raw": "#4b463e"
         },
         {
@@ -2743,7 +2722,7 @@
         {
           "pano": "TMX7316010203-002918_pano_0006_000243",
           "date": "2023-01-05",
-          "hex": "#675451",
+          "hex": "#67554f",
           "raw": "#4d3a2f"
         }
       ]
@@ -2751,7 +2730,7 @@
     "michelangelostraat-117261": {
       "hex": "#9a8b76",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2770,7 +2749,7 @@
       ]
     },
     "michelangelostraat-121985": {
-      "hex": "#675751",
+      "hex": "#67574e",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -2779,13 +2758,13 @@
         {
           "pano": "recording_2025-07-29_12-06-07_01325",
           "date": "2025-07-29",
-          "hex": "#675751",
+          "hex": "#65594e",
           "raw": "#66615a"
         },
         {
           "pano": "b_20241106_0927_Track08_Sphere_00048",
           "date": "2024-11-06",
-          "hex": "#503f3b",
+          "hex": "#4f4037",
           "raw": "#473422"
         },
         {
@@ -2797,9 +2776,9 @@
       ]
     },
     "michelangelostraat-126178": {
-      "hex": "#67594f",
+      "hex": "#67594e",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2818,7 +2797,7 @@
       ]
     },
     "michelangelostraat-138129": {
-      "hex": "#6d5a50",
+      "hex": "#6e5b4e",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -2833,7 +2812,7 @@
         {
           "pano": "b_20241105_1055_Track17_Sphere_00008",
           "date": "2024-11-05",
-          "hex": "#68564e",
+          "hex": "#625949",
           "raw": "#353228"
         },
         {
@@ -2845,22 +2824,22 @@
       ]
     },
     "michelangelostraat-154723": {
-      "hex": "#594a47",
+      "hex": "#584b45",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-29_12-06-07_01309",
           "date": "2025-07-29",
-          "hex": "#5b4c49",
+          "hex": "#5b4c48",
           "raw": "#56524d"
         },
         {
           "pano": "b_20241106_0927_Track08_Sphere_00031",
           "date": "2024-11-06",
-          "hex": "#564845",
+          "hex": "#544941",
           "raw": "#40311f"
         }
       ]
@@ -2868,7 +2847,7 @@
     "minervalaan-062853": {
       "hex": "#685b53",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2887,9 +2866,9 @@
       ]
     },
     "minervalaan-106732": {
-      "hex": "#625953",
+      "hex": "#635953",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2908,7 +2887,7 @@
       ]
     },
     "minervalaan-137759": {
-      "hex": "#736257",
+      "hex": "#6e6553",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -2917,27 +2896,27 @@
         {
           "pano": "recording_2025-07-29_10-56-07_02137",
           "date": "2025-07-29",
-          "hex": "#766258",
+          "hex": "#6b6854",
           "raw": "#63645b"
         },
         {
           "pano": "b_20241105_1055_Track15_Sphere_00132",
           "date": "2024-11-05",
-          "hex": "#736053",
+          "hex": "#6d6350",
           "raw": "#38362d"
         },
         {
           "pano": "TMX7316010203-002800_pano_0030_000092",
           "date": "2022-09-06",
-          "hex": "#716358",
+          "hex": "#706457",
           "raw": "#565149"
         }
       ]
     },
     "minervalaan-139096": {
-      "hex": "#806a5c",
+      "hex": "#7f6a5c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2956,16 +2935,16 @@
       ]
     },
     "minervalaan-150823": {
-      "hex": "#685b54",
+      "hex": "#665d51",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-29_12-06-07_00040",
           "date": "2025-07-29",
-          "hex": "#635450",
+          "hex": "#5f564b",
           "raw": "#423e35"
         },
         {
@@ -2979,7 +2958,7 @@
     "minervalaan-154022": {
       "hex": "#5f5048",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -2992,7 +2971,7 @@
         {
           "pano": "b_20241106_0927_Track06_Sphere_00082",
           "date": "2024-11-06",
-          "hex": "#51463e",
+          "hex": "#4f473d",
           "raw": "#443b2a"
         }
       ]
@@ -3019,9 +2998,9 @@
       ]
     },
     "murillostraat-087778": {
-      "hex": "#867a77",
+      "hex": "#867a76",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3034,16 +3013,16 @@
         {
           "pano": "TMX7316010203-002464_pano_0002_001513",
           "date": "2022-03-22",
-          "hex": "#867e80",
+          "hex": "#867e7c",
           "raw": "#534d49"
         }
       ]
     },
     "olympiakade-085455": {
-      "hex": "#6f5c59",
-      "n": 3,
+      "hex": "#6e5d59",
+      "n": 2,
       "of": 3,
-      "dates": 3,
+      "dates": 2,
       "balanced": true,
       "reads": [
         {
@@ -3051,12 +3030,6 @@
           "date": "2025-07-29",
           "hex": "#6e5e5a",
           "raw": "#5a5b59"
-        },
-        {
-          "pano": "b_20241105_1332_Track06_Sphere_00063",
-          "date": "2024-11-05",
-          "hex": "#6d5348",
-          "raw": "#393c35"
         },
         {
           "pano": "TMX7316010203-002460_pano_0003_000982",
@@ -3067,9 +3040,9 @@
       ]
     },
     "olympiakade-090404": {
-      "hex": "#5a4a3c",
+      "hex": "#5a493c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3088,7 +3061,7 @@
       ]
     },
     "olympiakade-094579": {
-      "hex": "#79675a",
+      "hex": "#7a6657",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -3109,7 +3082,7 @@
         {
           "pano": "TMX7316010203-002460_pano_0003_001069",
           "date": "2022-03-21",
-          "hex": "#78675a",
+          "hex": "#736a58",
           "raw": "#545249"
         }
       ]
@@ -3163,7 +3136,7 @@
       ]
     },
     "olympiakade-130937": {
-      "hex": "#73625d",
+      "hex": "#72625d",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -3172,7 +3145,7 @@
         {
           "pano": "recording_2025-07-29_13-17-11_00469",
           "date": "2025-07-29",
-          "hex": "#736361",
+          "hex": "#73635f",
           "raw": "#4d5251"
         },
         {
@@ -3190,22 +3163,22 @@
       ]
     },
     "olympiaplein-061386": {
-      "hex": "#695a4f",
+      "hex": "#605f4f",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-29_13-17-11_00189",
           "date": "2025-07-29",
-          "hex": "#5e5549",
+          "hex": "#52594d",
           "raw": "#515751"
         },
         {
           "pano": "b_20241105_1332_Track19_Sphere_00011",
           "date": "2024-11-05",
-          "hex": "#756055",
+          "hex": "#6e6450",
           "raw": "#4d4939"
         }
       ]
@@ -3213,7 +3186,7 @@
     "olympiaplein-071828": {
       "hex": "#9d745e",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -3265,9 +3238,9 @@
       ]
     },
     "olympiaplein-087463": {
-      "hex": "#7b6f65",
+      "hex": "#7a7064",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3280,22 +3253,22 @@
         {
           "pano": "b_20241105_1332_Track16_Sphere_00074",
           "date": "2024-11-05",
-          "hex": "#7e6f65",
+          "hex": "#7c7063",
           "raw": "#4d4536"
         }
       ]
     },
     "olympiaplein-091653": {
-      "hex": "#78695b",
+      "hex": "#766a59",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1332_Track21_Sphere_00018",
           "date": "2024-11-05",
-          "hex": "#5e4c40",
+          "hex": "#584f3d",
           "raw": "#3b392f"
         },
         {
@@ -3307,7 +3280,7 @@
         {
           "pano": "TMX7316010203-002460_pano_0003_001114",
           "date": "2022-03-21",
-          "hex": "#796c64",
+          "hex": "#776d63",
           "raw": "#534e46"
         }
       ]
@@ -3334,9 +3307,9 @@
       ]
     },
     "olympiaplein-093221": {
-      "hex": "#6f5e53",
+      "hex": "#6c5f52",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3349,15 +3322,15 @@
         {
           "pano": "b_20241105_1332_Track19_Sphere_00014",
           "date": "2024-11-05",
-          "hex": "#726054",
+          "hex": "#6c6351",
           "raw": "#4a4636"
         }
       ]
     },
     "olympiaplein-101499": {
-      "hex": "#6f544c",
+      "hex": "#6f544b",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3370,7 +3343,7 @@
         {
           "pano": "TMX7316010203-002918_pano_0004_000011",
           "date": "2023-01-05",
-          "hex": "#674c4a",
+          "hex": "#674c48",
           "raw": "#482f26"
         }
       ]
@@ -3397,7 +3370,7 @@
       ]
     },
     "olympiaplein-126816": {
-      "hex": "#69584c",
+      "hex": "#68594d",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -3426,7 +3399,7 @@
     "olympiaplein-144233": {
       "hex": "#a38a72",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3445,7 +3418,7 @@
       ]
     },
     "olympiaweg-067425": {
-      "hex": "#6e5548",
+      "hex": "#6e5544",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -3454,13 +3427,13 @@
         {
           "pano": "recording_2025-07-29_13-17-11_00352",
           "date": "2025-07-29",
-          "hex": "#71584b",
+          "hex": "#6d5a47",
           "raw": "#5a554d"
         },
         {
           "pano": "b_20241217_0841_Track66_Sphere_00013",
           "date": "2024-12-17",
-          "hex": "#6e5549",
+          "hex": "#6d5647",
           "raw": "#4d3926"
         },
         {
@@ -3520,7 +3493,7 @@
       ]
     },
     "olympiaweg-108325": {
-      "hex": "#75655a",
+      "hex": "#75655b",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -3535,7 +3508,7 @@
         {
           "pano": "b_20241217_0841_Track65_Sphere_00024",
           "date": "2024-12-17",
-          "hex": "#665a53",
+          "hex": "#655b52",
           "raw": "#3f3526"
         },
         {
@@ -3547,9 +3520,9 @@
       ]
     },
     "olympiaweg-125686": {
-      "hex": "#71615a",
+      "hex": "#6f6259",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3562,15 +3535,15 @@
         {
           "pano": "b_20241217_0841_Track66_Sphere_00044",
           "date": "2024-12-17",
-          "hex": "#665853",
+          "hex": "#645950",
           "raw": "#3d3325"
         }
       ]
     },
     "parnassusweg-131928": {
-      "hex": "#6a544c",
+      "hex": "#68554b",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3583,7 +3556,7 @@
         {
           "pano": "recording_2025-07-15_13-02-15_00946",
           "date": "2025-07-15",
-          "hex": "#67564f",
+          "hex": "#64584c",
           "raw": "#666057"
         }
       ]
@@ -3610,9 +3583,9 @@
       ]
     },
     "pieter-lastmankade-115143": {
-      "hex": "#a07f68",
+      "hex": "#9f7f67",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -3631,15 +3604,15 @@
         {
           "pano": "TMX7316010203-002120_pano_0000_005664",
           "date": "2021-04-28",
-          "hex": "#9d7e79",
+          "hex": "#9c7f74",
           "raw": "#a6856f"
         }
       ]
     },
     "pieter-lastmankade-120157": {
-      "hex": "#a99986",
+      "hex": "#aa9986",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3658,16 +3631,16 @@
       ]
     },
     "pieter-lastmankade-141344": {
-      "hex": "#786151",
+      "hex": "#776151",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241106_1111_Track16_Sphere_00027",
           "date": "2024-11-06",
-          "hex": "#624b45",
+          "hex": "#614c42",
           "raw": "#462d19"
         },
         {
@@ -3685,9 +3658,9 @@
       ]
     },
     "quinten-massijsstraat-081379": {
-      "hex": "#645949",
+      "hex": "#645948",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -3712,9 +3685,9 @@
       ]
     },
     "quinten-massijsstraat-110788": {
-      "hex": "#9f8c73",
+      "hex": "#9e8c73",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3733,9 +3706,9 @@
       ]
     },
     "rapha-lstraat-062903": {
-      "hex": "#544b3d",
+      "hex": "#544c3e",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3754,7 +3727,7 @@
       ]
     },
     "rapha-lstraat-125966": {
-      "hex": "#5a4e46",
+      "hex": "#5b4e46",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -3781,9 +3754,9 @@
       ]
     },
     "rubensstraat-065560": {
-      "hex": "#71685d",
+      "hex": "#71685e",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3823,9 +3796,9 @@
       ]
     },
     "rubensstraat-102986": {
-      "hex": "#615655",
+      "hex": "#615653",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3838,15 +3811,15 @@
         {
           "pano": "TMX7316010203-002918_pano_0007_000049",
           "date": "2023-01-05",
-          "hex": "#575153",
+          "hex": "#57514f",
           "raw": "#403833"
         }
       ]
     },
     "rubensstraat-104197": {
-      "hex": "#60554a",
+      "hex": "#60544a",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3867,14 +3840,14 @@
     "rubensstraat-115738": {
       "hex": "#857769",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "TMX7316010203-002464_pano_0002_001380",
           "date": "2022-03-22",
-          "hex": "#8a7c6f",
+          "hex": "#897c6f",
           "raw": "#998b74"
         },
         {
@@ -3886,9 +3859,9 @@
       ]
     },
     "rubensstraat-133237": {
-      "hex": "#6c5854",
+      "hex": "#6c5852",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3901,15 +3874,15 @@
         {
           "pano": "TMX7316010203-002918_pano_0007_000066",
           "date": "2023-01-05",
-          "hex": "#6b5b5c",
+          "hex": "#6b5c58",
           "raw": "#564740"
         }
       ]
     },
     "rubensstraat-145685": {
-      "hex": "#3c3d3f",
+      "hex": "#3c3d3d",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -3922,49 +3895,49 @@
         {
           "pano": "TMX7316010203-002798_pano_0001_000157",
           "date": "2022-09-05",
-          "hex": "#403e41",
+          "hex": "#423e3d",
           "raw": "#413e3b"
         }
       ]
     },
     "schubertstraat-067574": {
-      "hex": "#705a55",
+      "hex": "#6e5b52",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241106_0927_Track33_Sphere_00035",
           "date": "2024-11-06",
-          "hex": "#604e4a",
+          "hex": "#5e4f46",
           "raw": "#422f1c"
         },
         {
           "pano": "TMX7316010203-002800_pano_0027_000392",
           "date": "2022-09-06",
-          "hex": "#806761",
+          "hex": "#7f685e",
           "raw": "#7e6553"
         }
       ]
     },
     "schubertstraat-094102": {
-      "hex": "#5f4e4b",
+      "hex": "#5f4f49",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "TMX7316010203-002918_pano_0005_000064",
           "date": "2023-01-05",
-          "hex": "#635250",
+          "hex": "#63534e",
           "raw": "#473a33"
         },
         {
           "pano": "TMX7316010203-002800_pano_0029_000079",
           "date": "2022-09-06",
-          "hex": "#5c4b47",
+          "hex": "#5c4b45",
           "raw": "#4e433c"
         }
       ]
@@ -3991,9 +3964,9 @@
       ]
     },
     "schubertstraat-138875": {
-      "hex": "#3e2e21",
+      "hex": "#3e2d21",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4012,7 +3985,7 @@
       ]
     },
     "simsonstraat-138495": {
-      "hex": "#5b4e44",
+      "hex": "#594f45",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -4027,7 +4000,7 @@
         {
           "pano": "b_20241105_1332_Track06_Sphere_00127",
           "date": "2024-11-05",
-          "hex": "#5d4d43",
+          "hex": "#5a4e41",
           "raw": "#464035"
         },
         {
@@ -4066,9 +4039,9 @@
       ]
     },
     "speerstraat-096695": {
-      "hex": "#8b7763",
+      "hex": "#8b7863",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4087,7 +4060,7 @@
       ]
     },
     "speerstraat-142617": {
-      "hex": "#776966",
+      "hex": "#776965",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -4096,7 +4069,7 @@
         {
           "pano": "recording_2025-07-29_12-06-07_02918",
           "date": "2025-07-29",
-          "hex": "#776966",
+          "hex": "#776965",
           "raw": "#424344"
         },
         {
@@ -4108,15 +4081,15 @@
         {
           "pano": "TMX7316010203-002460_pano_0003_001049",
           "date": "2022-03-21",
-          "hex": "#766c6e",
+          "hex": "#766d69",
           "raw": "#5f544d"
         }
       ]
     },
     "sportstraat-066634": {
-      "hex": "#62534b",
+      "hex": "#61544a",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4129,16 +4102,16 @@
         {
           "pano": "b_20241105_1332_Track06_Sphere_00113",
           "date": "2024-11-05",
-          "hex": "#604e42",
+          "hex": "#5e4f40",
           "raw": "#453e32"
         }
       ]
     },
     "sportstraat-086819": {
-      "hex": "#76665b",
-      "n": 3,
+      "hex": "#736b66",
+      "n": 2,
       "of": 3,
-      "dates": 3,
+      "dates": 2,
       "balanced": true,
       "reads": [
         {
@@ -4146,12 +4119,6 @@
           "date": "2025-07-29",
           "hex": "#807065",
           "raw": "#414344"
-        },
-        {
-          "pano": "b_20241105_1332_Track03_Sphere_00016",
-          "date": "2024-11-05",
-          "hex": "#84614d",
-          "raw": "#514a39"
         },
         {
           "pano": "TMX7316010203-002460_pano_0003_000647",
@@ -4162,9 +4129,9 @@
       ]
     },
     "sportstraat-131922": {
-      "hex": "#6e615d",
+      "hex": "#6e605c",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -4177,21 +4144,21 @@
         {
           "pano": "TMX7316010203-002460_pano_0003_000777",
           "date": "2022-03-21",
-          "hex": "#7b6a67",
+          "hex": "#7b6a66",
           "raw": "#544e4a"
         },
         {
           "pano": "TMX7316010203-002228_pano_0002_000825",
           "date": "2021-07-12",
-          "hex": "#6b6162",
+          "hex": "#6a625e",
           "raw": "#4e4640"
         }
       ]
     },
     "sportstraat-137841": {
-      "hex": "#7a6961",
+      "hex": "#7a6a60",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4204,15 +4171,15 @@
         {
           "pano": "TMX7316010203-002460_pano_0003_000931",
           "date": "2022-03-21",
-          "hex": "#827165",
+          "hex": "#817164",
           "raw": "#8f7e69"
         }
       ]
     },
     "sportstraat-147227": {
-      "hex": "#886e5e",
+      "hex": "#876f5c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4225,7 +4192,7 @@
         {
           "pano": "TMX7316010203-002460_pano_0003_000785",
           "date": "2022-03-21",
-          "hex": "#8d7162",
+          "hex": "#8b735f",
           "raw": "#7e6e5a"
         }
       ]
@@ -4246,19 +4213,19 @@
         {
           "pano": "b_20241105_1332_Track01_Sphere_00076",
           "date": "2024-11-05",
-          "hex": "#81644f",
+          "hex": "#7f664d",
           "raw": "#5a4d39"
         },
         {
           "pano": "TMX7316010203-002460_pano_0003_000762",
           "date": "2022-03-21",
-          "hex": "#8e7f82",
+          "hex": "#8d8179",
           "raw": "#68594c"
         }
       ]
     },
     "stadionkade-063660": {
-      "hex": "#9e7863",
+      "hex": "#9e7862",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -4273,7 +4240,7 @@
         {
           "pano": "b_20241105_1055_Track15_Sphere_00090",
           "date": "2024-11-05",
-          "hex": "#a27a60",
+          "hex": "#a27a5f",
           "raw": "#9d7d5b"
         },
         {
@@ -4287,7 +4254,7 @@
     "stadionkade-063989": {
       "hex": "#ae9772",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4308,7 +4275,7 @@
     "stadionkade-070734": {
       "hex": "#c5a182",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4342,7 +4309,7 @@
         {
           "pano": "b_20241105_1055_Track15_Sphere_00083",
           "date": "2024-11-05",
-          "hex": "#ad8769",
+          "hex": "#ac8768",
           "raw": "#a78a64"
         },
         {
@@ -4354,9 +4321,9 @@
       ]
     },
     "stadionkade-096943": {
-      "hex": "#886c5a",
+      "hex": "#876d59",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4369,22 +4336,22 @@
         {
           "pano": "b_20241105_1055_Track13_Sphere_00080",
           "date": "2024-11-05",
-          "hex": "#896855",
+          "hex": "#886953",
           "raw": "#886a48"
         }
       ]
     },
     "stadionkade-109490": {
-      "hex": "#a88c79",
+      "hex": "#a78d77",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1055_Track15_Sphere_00068",
           "date": "2024-11-05",
-          "hex": "#ae917d",
+          "hex": "#ab937a",
           "raw": "#ab9064"
         },
         {
@@ -4396,9 +4363,9 @@
       ]
     },
     "stadionkade-115245": {
-      "hex": "#988269",
+      "hex": "#988369",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4417,9 +4384,9 @@
       ]
     },
     "stadionkade-129161": {
-      "hex": "#917f63",
+      "hex": "#907f64",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4438,9 +4405,9 @@
       ]
     },
     "stadionkade-132997": {
-      "hex": "#786762",
+      "hex": "#78675f",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4453,22 +4420,22 @@
         {
           "pano": "TMX7316010203-002405_pano_0007_000011",
           "date": "2022-01-10",
-          "hex": "#786d70",
+          "hex": "#786e6a",
           "raw": "#5d5049"
         }
       ]
     },
     "stadionkade-139768": {
-      "hex": "#987969",
+      "hex": "#987a68",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-29_10-56-07_01864",
           "date": "2025-07-29",
-          "hex": "#846d61",
+          "hex": "#836d60",
           "raw": "#85776a"
         },
         {
@@ -4495,7 +4462,7 @@
         {
           "pano": "b_20241105_1055_Track27_Sphere_00184",
           "date": "2024-11-05",
-          "hex": "#b49079",
+          "hex": "#b39177",
           "raw": "#b19677"
         },
         {
@@ -4506,29 +4473,8 @@
         }
       ]
     },
-    "stadionplein-116949": {
-      "hex": "#6d5c4f",
-      "n": 2,
-      "of": 3,
-      "dates": 2,
-      "balanced": true,
-      "reads": [
-        {
-          "pano": "b_20241105_0934_Track18_Sphere_00015",
-          "date": "2024-11-05",
-          "hex": "#695442",
-          "raw": "#4a4d46"
-        },
-        {
-          "pano": "TMX7316010203-002475_pano_0000_001031",
-          "date": "2022-03-24",
-          "hex": "#71645d",
-          "raw": "#5f564d"
-        }
-      ]
-    },
     "stadionweg-062773": {
-      "hex": "#66524c",
+      "hex": "#645447",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -4543,13 +4489,13 @@
         {
           "pano": "recording_2025-07-15_11-16-59_01370",
           "date": "2025-07-15",
-          "hex": "#614d47",
+          "hex": "#5f4f43",
           "raw": "#5f5850"
         },
         {
           "pano": "recording_2025-07-14_12-49-24_01207",
           "date": "2025-07-14",
-          "hex": "#68514c",
+          "hex": "#635544",
           "raw": "#524e46"
         }
       ]
@@ -4557,14 +4503,14 @@
     "stadionweg-063410": {
       "hex": "#ac916f",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1055_Track08_Sphere_00041",
           "date": "2024-11-05",
-          "hex": "#9f896c",
+          "hex": "#9d8a6b",
           "raw": "#998d6b"
         },
         {
@@ -4599,7 +4545,7 @@
     "stadionweg-084139": {
       "hex": "#74665d",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4618,16 +4564,16 @@
       ]
     },
     "stadionweg-092889": {
-      "hex": "#7c6858",
+      "hex": "#766b57",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-29_10-56-07_02460",
           "date": "2025-07-29",
-          "hex": "#736055",
+          "hex": "#666652",
           "raw": "#696c61"
         },
         {
@@ -4666,28 +4612,28 @@
       ]
     },
     "stadionweg-100658": {
-      "hex": "#655049",
+      "hex": "#645047",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_1055_Track27_Sphere_00032",
           "date": "2024-11-05",
-          "hex": "#655046",
+          "hex": "#645144",
           "raw": "#362f28"
         },
         {
           "pano": "TMX7316010203-002918_pano_0004_000028",
           "date": "2023-01-05",
-          "hex": "#654f4c",
+          "hex": "#654f4a",
           "raw": "#4a3830"
         }
       ]
     },
     "stadionweg-105613": {
-      "hex": "#6b5c50",
+      "hex": "#6a5c4f",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -4702,21 +4648,21 @@
         {
           "pano": "b_20241105_1055_Track27_Sphere_00122",
           "date": "2024-11-05",
-          "hex": "#605347",
+          "hex": "#5f5446",
           "raw": "#383329"
         },
         {
           "pano": "TMX7316010203-002464_pano_0002_001609",
           "date": "2022-03-22",
-          "hex": "#695c55",
+          "hex": "#685d54",
           "raw": "#504436"
         }
       ]
     },
     "stadionweg-120811": {
-      "hex": "#716256",
+      "hex": "#716257",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -4729,7 +4675,7 @@
         {
           "pano": "TMX7316010203-002918_pano_0004_000045",
           "date": "2023-01-05",
-          "hex": "#615354",
+          "hex": "#615450",
           "raw": "#51423b"
         },
         {
@@ -4762,7 +4708,7 @@
       ]
     },
     "stadionweg-125137": {
-      "hex": "#6e584e",
+      "hex": "#6f5849",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -4771,13 +4717,13 @@
         {
           "pano": "recording_2025-07-15_09-44-59_02376",
           "date": "2025-07-15",
-          "hex": "#766156",
+          "hex": "#756155",
           "raw": "#7c6f63"
         },
         {
           "pano": "recording_2025-07-14_12-49-24_01228",
           "date": "2025-07-14",
-          "hex": "#6f544b",
+          "hex": "#6d5646",
           "raw": "#585048"
         },
         {
@@ -4816,9 +4762,9 @@
       ]
     },
     "stadionweg-131978": {
-      "hex": "#6d5950",
+      "hex": "#6d594f",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4831,15 +4777,15 @@
         {
           "pano": "TMX7316010203-002918_pano_0004_000042",
           "date": "2023-01-05",
-          "hex": "#6e5955",
+          "hex": "#6e5953",
           "raw": "#513e34"
         }
       ]
     },
     "stadionweg-134703": {
-      "hex": "#827874",
+      "hex": "#827873",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -4852,34 +4798,34 @@
         {
           "pano": "TMX7316010203-002475_pano_0000_001293",
           "date": "2022-03-24",
-          "hex": "#847b78",
+          "hex": "#837c77",
           "raw": "#6e645a"
         }
       ]
     },
     "stadionweg-143970": {
-      "hex": "#61524a",
+      "hex": "#5f534a",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-15_09-44-59_02432",
           "date": "2025-07-15",
-          "hex": "#71635b",
+          "hex": "#70635a",
           "raw": "#787067"
         },
         {
           "pano": "b_20241106_0927_Track04_Sphere_00354",
           "date": "2024-11-06",
-          "hex": "#5e4e44",
+          "hex": "#5c4f42",
           "raw": "#483b27"
         },
         {
           "pano": "TMX7316010203-002918_pano_0005_000148",
           "date": "2023-01-05",
-          "hex": "#63514c",
+          "hex": "#63514b",
           "raw": "#524239"
         }
       ]
@@ -4906,28 +4852,28 @@
       ]
     },
     "stadionweg-147997": {
-      "hex": "#75665f",
+      "hex": "#74675c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "recording_2025-07-29_13-17-11_01102",
           "date": "2025-07-29",
-          "hex": "#756759",
+          "hex": "#736858",
           "raw": "#7a7466"
         },
         {
           "pano": "TMX7316010203-002228_pano_0002_000899",
           "date": "2021-07-12",
-          "hex": "#756565",
+          "hex": "#746660",
           "raw": "#604f42"
         }
       ]
     },
     "theseusstraat-147332": {
-      "hex": "#756258",
+      "hex": "#736358",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -4942,13 +4888,13 @@
         {
           "pano": "b_20241105_1332_Track11_Sphere_00037",
           "date": "2024-11-05",
-          "hex": "#634933",
+          "hex": "#5f4b30",
           "raw": "#49463f"
         },
         {
           "pano": "TMX7316010203-002460_pano_0003_001011",
           "date": "2022-03-21",
-          "hex": "#786868",
+          "hex": "#786964",
           "raw": "#5e4a3f"
         }
       ]
@@ -4956,14 +4902,14 @@
     "tintorettostraat-096834": {
       "hex": "#6e6254",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "TMX7316010203-002918_pano_0008_000242",
           "date": "2023-01-05",
-          "hex": "#71645f",
+          "hex": "#71645e",
           "raw": "#4e433b"
         },
         {
@@ -4975,7 +4921,7 @@
       ]
     },
     "tintorettostraat-139908": {
-      "hex": "#7b6c65",
+      "hex": "#7a6c64",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -4990,19 +4936,19 @@
         {
           "pano": "b_20241106_0927_Track23_Sphere_00004",
           "date": "2024-11-06",
-          "hex": "#66584f",
+          "hex": "#65594e",
           "raw": "#544836"
         },
         {
           "pano": "TMX7316010203-002918_pano_0008_000215",
           "date": "2023-01-05",
-          "hex": "#7a6c69",
+          "hex": "#796c67",
           "raw": "#60544c"
         }
       ]
     },
     "tintorettostraat-146836": {
-      "hex": "#726460",
+      "hex": "#73645d",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -5017,13 +4963,13 @@
         {
           "pano": "b_20241106_0927_Track16_Sphere_00020",
           "date": "2024-11-06",
-          "hex": "#60524e",
+          "hex": "#5f534b",
           "raw": "#47392a"
         },
         {
           "pano": "TMX7316010203-002918_pano_0008_000235",
           "date": "2023-01-05",
-          "hex": "#726462",
+          "hex": "#726460",
           "raw": "#584d47"
         }
       ]
@@ -5031,7 +4977,7 @@
     "titiaanstraat-073627": {
       "hex": "#b7967c",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -5050,9 +4996,9 @@
       ]
     },
     "titiaanstraat-096549": {
-      "hex": "#483828",
+      "hex": "#483928",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -5071,7 +5017,7 @@
       ]
     },
     "titiaanstraat-141525": {
-      "hex": "#786b67",
+      "hex": "#766c65",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -5086,19 +5032,19 @@
         {
           "pano": "b_20241106_0927_Track06_Sphere_00028",
           "date": "2024-11-06",
-          "hex": "#675a57",
+          "hex": "#655b54",
           "raw": "#514231"
         },
         {
           "pano": "TMX7316010203-002464_pano_0002_000689",
           "date": "2022-03-22",
-          "hex": "#746c6d",
+          "hex": "#746d6a",
           "raw": "#584e48"
         }
       ]
     },
     "turnerstraat-091252": {
-      "hex": "#524a3d",
+      "hex": "#524b3d",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -5125,9 +5071,9 @@
       ]
     },
     "turnerstraat-099791": {
-      "hex": "#5e4d3b",
+      "hex": "#5e4d3c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -5167,16 +5113,16 @@
       ]
     },
     "van-tuyll-van-serooskerkenplein-066284": {
-      "hex": "#52443c",
+      "hex": "#52443b",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_0934_Track18_Sphere_00151",
           "date": "2024-11-05",
-          "hex": "#463831",
+          "hex": "#44392f",
           "raw": "#474139"
         },
         {
@@ -5194,9 +5140,9 @@
       ]
     },
     "van-tuyll-van-serooskerkenplein-067057": {
-      "hex": "#796d70",
+      "hex": "#796e6f",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -5209,15 +5155,15 @@
         {
           "pano": "TMX7316010203-002475_pano_0000_001486",
           "date": "2022-03-24",
-          "hex": "#7f716e",
+          "hex": "#7e726b",
           "raw": "#766557"
         }
       ]
     },
     "van-tuyll-van-serooskerkenplein-091609": {
-      "hex": "#a3876e",
+      "hex": "#a3886e",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -5244,7 +5190,7 @@
     "van-tuyll-van-serooskerkenplein-096776": {
       "hex": "#756056",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -5263,9 +5209,9 @@
       ]
     },
     "van-tuyll-van-serooskerkenplein-100193": {
-      "hex": "#7d6d68",
+      "hex": "#7c6e65",
       "n": 3,
-      "of": 4,
+      "of": 3,
       "dates": 3,
       "balanced": true,
       "reads": [
@@ -5278,21 +5224,21 @@
         {
           "pano": "TMX7316010203-002475_pano_0000_001539",
           "date": "2022-03-24",
-          "hex": "#827678",
+          "hex": "#817771",
           "raw": "#65594d"
         },
         {
           "pano": "TMX7316010203-002120_pano_0000_004218",
           "date": "2021-04-28",
-          "hex": "#7d6d68",
+          "hex": "#7c6e65",
           "raw": "#5e554c"
         }
       ]
     },
     "van-tuyll-van-serooskerkenweg-064383": {
-      "hex": "#57483d",
+      "hex": "#57473d",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -5311,51 +5257,51 @@
       ]
     },
     "van-tuyll-van-serooskerkenweg-085398": {
-      "hex": "#5f5150",
+      "hex": "#5e514c",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "b_20241105_0934_Track18_Sphere_00107",
           "date": "2024-11-05",
-          "hex": "#5c4c4a",
+          "hex": "#5b4d46",
           "raw": "#433121"
         },
         {
           "pano": "TMX7316010203-002918_pano_0009_000037",
           "date": "2023-01-05",
-          "hex": "#625557",
+          "hex": "#625652",
           "raw": "#3f332d"
         }
       ]
     },
     "van-tuyll-van-serooskerkenweg-086660": {
-      "hex": "#6e615a",
+      "hex": "#6d6258",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
         {
           "pano": "TMX7316010203-002475_pano_0000_001122",
           "date": "2022-03-24",
-          "hex": "#70635f",
+          "hex": "#6f645d",
           "raw": "#5e4f40"
         },
         {
           "pano": "TMX7316010203-002120_pano_0000_003985",
           "date": "2021-04-28",
-          "hex": "#6c5f54",
+          "hex": "#6b6053",
           "raw": "#4f4739"
         }
       ]
     },
     "van-tuyll-van-serooskerkenweg-148531": {
-      "hex": "#7b6d73",
+      "hex": "#7a6d70",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -5368,13 +5314,13 @@
         {
           "pano": "TMX7316010203-002475_pano_0000_001165",
           "date": "2022-03-24",
-          "hex": "#7b7173",
+          "hex": "#7b726e",
           "raw": "#6e5d52"
         }
       ]
     },
     "verdistraat-071666": {
-      "hex": "#5d453d",
+      "hex": "#5c463c",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -5383,7 +5329,7 @@
         {
           "pano": "recording_2025-07-15_11-16-59_01388",
           "date": "2025-07-15",
-          "hex": "#796058",
+          "hex": "#786156",
           "raw": "#7a6d64"
         },
         {
@@ -5401,7 +5347,7 @@
       ]
     },
     "watteaustraat-065434": {
-      "hex": "#6b615a",
+      "hex": "#6b6159",
       "n": 3,
       "of": 3,
       "dates": 3,
@@ -5416,13 +5362,13 @@
         {
           "pano": "b_20241105_1055_Track24_Sphere_00068",
           "date": "2024-11-05",
-          "hex": "#71655a",
+          "hex": "#6f6659",
           "raw": "#59513f"
         },
         {
           "pano": "TMX7316010203-002475_pano_0000_001790",
           "date": "2022-03-24",
-          "hex": "#6e5d59",
+          "hex": "#6e5d57",
           "raw": "#564c46"
         }
       ]
@@ -5482,9 +5428,9 @@
       ]
     },
     "watteaustraat-116602": {
-      "hex": "#796560",
+      "hex": "#78655f",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -5497,7 +5443,7 @@
         {
           "pano": "TMX7316010203-002464_pano_0002_001123",
           "date": "2022-03-22",
-          "hex": "#7f6f6c",
+          "hex": "#7f6f6b",
           "raw": "#4a3c35"
         }
       ]
@@ -5505,7 +5451,7 @@
     "watteaustraat-129221": {
       "hex": "#735b4f",
       "n": 2,
-      "of": 3,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -5545,9 +5491,9 @@
       ]
     },
     "wodanstraat-143784": {
-      "hex": "#ad9c79",
+      "hex": "#ae9c79",
       "n": 2,
-      "of": 4,
+      "of": 2,
       "dates": 2,
       "balanced": true,
       "reads": [
@@ -5662,7 +5608,9 @@
     "watteaustraat-086767": "the 3 clear reads disagree (#464543, #735b4e, #ab9277); recording_2025-07-29_10-56-07_01901 2025-07-29: #464543; b_20241105_1055_Track25_Sphere_00062 2024-11-05: #735b4e; TMX7316010203-002475_pano_0000_001819 2022-03-24: #ab9277",
     "willaertstraat-106628": "no panorama faces the row",
     "willaertstraat-141901": "no panorama faces the row",
-    "willaertstraat-144324": "no panorama faces the row"
+    "willaertstraat-144324": "no panorama faces the row",
+    "argonautenstraat-115948": "hue guard: the 2 clear reads disagree (#57656d, #756d68)",
+    "stadionplein-116949": "hue guard: the 2 clear reads disagree (#585b42, #71645c)"
   },
   "roofSource": "AHN4 DSM/DTM 0.5 m (PDOK WCS, CC0) via scripts/buurt-generators/measure-roofs.ts",
   "roofs": {

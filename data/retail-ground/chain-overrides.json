@@ -1,0 +1,100 @@
+{
+ "dunkin": {
+  "noLogo": true,
+  "fascia": "#ff671f",
+  "letters": "#ffffff"
+ },
+ "the-bulldog": {
+  "noLogo": true,
+  "fascia": "#1d1d1b",
+  "letters": "#f2c230"
+ },
+ "odido": {
+  "noLogo": true,
+  "fascia": "#1d1d1b",
+  "letters": "#ffffff"
+ },
+ "albert-heijn-to-go": {
+  "fascia": "#ffffff"
+ },
+ "lidl": {
+  "fascia": "#0050aa"
+ },
+ "aldi": {
+  "fascia": "#00005f"
+ },
+ "starbucks": {
+  "fascia": "#1e3932",
+  "logoInk": "#ffffff"
+ },
+ "zara": {
+  "fascia": "#ffffff"
+ },
+ "h-and-m": {
+  "fascia": "#ffffff"
+ },
+ "vodafone": {
+  "fascia": "#ffffff"
+ },
+ "kpn": {
+  "fascia": "#ffffff"
+ },
+ "rituals": {
+  "fascia": "#1d1d1b"
+ },
+ "subway": {
+  "fascia": "#ffffff"
+ },
+ "zeeman": {
+  "fascia": "#ffffff"
+ },
+ "domino-s": {
+  "fascia": "#ffffff"
+ },
+ "burger-king": {
+  "fascia": "#502314"
+ },
+ "kfc": {
+  "fascia": "#ffffff"
+ },
+ "hunkemoller": {
+  "fascia": "#1d1d1b",
+  "logoInk": "#ffffff"
+ },
+ "douglas": {
+  "fascia": "#ffffff"
+ },
+ "hans-anders": {
+  "fascia": "#ffffff"
+ },
+ "specsavers": {
+  "fascia": "#ffffff"
+ },
+ "vomar": {
+  "fascia": "#ffffff"
+ },
+ "geldmaat": {
+  "fascia": "#ffd200"
+ },
+ "alexanderhoeve": {
+  "noLogo": true
+ },
+ "bloem": {
+  "noLogo": true
+ },
+ "leonidas": {
+  "noLogo": true
+ },
+ "smullers": {
+  "noLogo": true
+ },
+ "jd-sports": {
+  "noLogo": true
+ },
+ "wakuli": {
+  "noLogo": true
+ },
+ "febo": {
+  "noLogo": true
+ }
+}

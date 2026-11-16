@@ -13,6 +13,10 @@
 // Off: nothing here is called and every cell, layer and feature is as before.
 
 /** Default on since 2026-11-15 (round n); `?retailGround=0` / RETAIL_GROUND=0 turn it off. */
+import type { GoodsKind } from './retailGoods.js';
+import type { TypeFace } from './retailTypeFaces.js';
+import { retailRealAllOn, retailRealOn } from './retailPages.js';
+
 export const RETAIL_GROUND_DEFAULT = true;
 export function retailGroundEnabled(search?: string | null, env?: string | null): boolean {
   const q = search ? /[?&]retailGround=([01])\b/.exec(search)?.[1] : undefined;
@@ -71,7 +75,16 @@ export const RETAIL_TEMPLATES = [
   'coffeeshop', 'smartshop', 'brownBar', 'bike', 'redLight',
   'doner', 'toko', 'butcher', 'greengrocer', 'florist', 'apotheek', 'hairdresser', 'turkishBakery', 'bakery', 'nuts', 'frites', 'cheese', 'waffle', 'pancake',
   'souvenir', 'books', 'tobacco', 'phone', 'gelato', 'exchange',
+  // Lane retail-real: the shop types other chains draw under their own board (retailChains.ts); only a chain is given
+  // one, and only with retailReal on.
+  'supermarket', 'chemist', 'fastFood', 'pizza', 'restaurant', 'cafe', 'clothes', 'shoes', 'optician', 'telecom', 'cosmetics', 'liquor', 'variety',
+  // Lane retail-real (coordinator 2026-11-15, De Wallen): tattoo studios and snack bars, by type; only with retailReal on.
+  'tattoo', 'snackbar',
 ] as const;
+/** The chain-type templates (lane retail-real): drawn only for a chain, only with retailReal on. */
+export const CHAIN_TYPE_TEMPLATES: readonly RetailTemplate[] = ['supermarket', 'chemist', 'fastFood', 'pizza', 'restaurant', 'cafe', 'clothes', 'shoes', 'optician', 'telecom', 'cosmetics', 'liquor', 'variety'];
+/** Templates that exist only with retailReal on (`?retailReal=0` draws those pands as round n did: no template). */
+export const REAL_ONLY_TEMPLATES: readonly RetailTemplate[] = [...CHAIN_TYPE_TEMPLATES, 'tattoo', 'snackbar'];
 export type RetailTemplate = (typeof RETAIL_TEMPLATES)[number];
 export const CHAIN_TEMPLATES: readonly RetailTemplate[] = ['ah', 'jumbo', 'dirk', 'etos', 'hema', 'action', 'febo', 'stach', 'sla', 'bruna', 'bestseller', 'duck', 'moneyTransfer', 'gallgall', 'mcdonalds', 'kruidvat'];
 
@@ -130,6 +143,9 @@ export function templateForTags(tags: Record<string, string>): RetailTemplate | 
   if (shop === 'hairdresser') return 'hairdresser';
   if (shop === 'bakery' && (has(cuisine, /^turkish$/) || /f[ıi]r[ıi]n|bakkerij (öz|oz|ay|yil|yıl|kar|ist)|turk|pide|simit|baklava/.test(name))) return 'turkishBakery';
   if (amenity && FOOD.has(amenity) && has(cuisine, /^(friture|fries|chips)$/)) return 'frites';
+  // Lane retail-real: a snack bar (cafetaria, snackbar, frituur by name) and a tattoo studio; only with retailReal on.
+  if (retailRealOn() && amenity === 'fast_food' && /snack|cafetaria|frituur|friterie|patat|eethuis/.test(name)) return 'snackbar';
+  if (retailRealOn() && shop === 'tattoo') return 'tattoo';
   if (shop === 'cheese') return 'cheese';
   if (/waffle|wafel|nutella/.test(name)) return 'waffle';
   // A Dutch bakker or banketbakker (Bakkerij Bart, Vlaamsch Broodhuys, Le Fournil, Hartering, Hartog: name lettering).
@@ -155,6 +171,10 @@ export type Content = 'shelves' | 'barGlow' | 'menu' | 'bainMarie' | 'meat' | 'p
 /** What a template draws. Colours are house colours or measured street colours; chains with a sourced logo also draw it
  *  from the logo layer (retailLogos.ts). */
 export type TemplateLook = {
+  /** Lane retail-real: the window-goods cell its panes show (retailGoods.ts), in place of the building's shop cell. */
+  goods?: GoodsKind;
+  /** Lane retail-real: the lettering face for its word (retailTypeFaces.ts); absent: round 3c's bold sans. */
+  face?: TypeFace;
   fascia: string; letters: string;
   /** The word on the fascia; `name` uses the POI's name (staged with the extract), else no lettering. */
   word?: string | 'name';
@@ -183,7 +203,7 @@ export type TemplateLook = {
   /** Round 3: the fascia's cornice cap colour; absent: the fascia a step darker. */
   cap?: string;
 };
-export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
+const LOOKS_N: Record<RetailTemplate, TemplateLook> = {
   ah: { fascia: '#00a0e2', letters: '#ffffff', word: 'ALBERT HEIJN', content: 'shelves', lit: true },
   jumbo: { fascia: '#ffcc00', letters: '#1d1d1b', word: 'JUMBO', content: 'shelves', lit: true },
   dirk: { fascia: '#e30613', letters: '#ffffff', word: 'DIRK', content: 'shelves', lit: true },
@@ -244,7 +264,64 @@ export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = {
   phone: { fascia: '#1d1d1b', letters: '#ffdd00', word: 'PHONE', content: 'stickers', lit: true },
   gelato: { fascia: '#f6b6c8', letters: '#5a2340', word: 'GELATO', content: 'counter', lit: true },
   exchange: { fascia: '#0a3d91', letters: '#ffffff', word: 'EXCHANGE', content: 'stickers', lit: true },
+  // Lane retail-real chain types: the chain's own colours replace fascia and letters (retailFront.ts input.chain).
+  supermarket: { fascia: '#ffffff', letters: '#1d1d1b', content: 'shelves', lit: true },
+  chemist: { fascia: '#ffffff', letters: '#1d1d1b', content: 'shelves', lit: true },
+  fastFood: { fascia: '#2b2422', letters: '#ffffff', content: 'counter', lit: true },
+  pizza: { fascia: '#c4161c', letters: '#ffffff', content: 'counter', lit: true },
+  restaurant: { fascia: '#2b2422', letters: '#ffffff', content: 'counter', lit: false },
+  cafe: { fascia: '#2b2422', letters: '#ffffff', content: 'counter', lit: false },
+  clothes: { fascia: '#1d1d1b', letters: '#ffffff', content: 'shelves', lit: true },
+  shoes: { fascia: '#1d1d1b', letters: '#ffffff', content: 'shelves', lit: true },
+  optician: { fascia: '#ffffff', letters: '#1d1d1b', content: 'shelves', lit: true },
+  telecom: { fascia: '#1d1d1b', letters: '#ffffff', content: 'stickers', lit: true },
+  cosmetics: { fascia: '#1d1d1b', letters: '#ffffff', content: 'shelves', lit: true },
+  liquor: { fascia: '#282221', letters: '#ffffff', content: 'shelves', lit: true },
+  variety: { fascia: '#ffffff', letters: '#1d1d1b', content: 'shelves', lit: true },
+  tattoo: { fascia: '#1d1d1b', letters: '#e8dcc0', word: 'name', content: 'neon', lit: false },
+  snackbar: { fascia: '#1d1d1b', letters: '#f2d16b', word: 'name', content: 'counter', lit: true },
 };
+
+/** Lane retail-real (2026-11-15): what each template's window shows and the face its name is lettered in. Blind round 1
+ *  (held-out fronts, r1): butcher 0-1-0 and hairdresser 0-1-1 lost with goods (a busy display where the photo's glass is
+ *  dark), so they keep round n's shop-cell interior; snackbar 0-2-0 lost on an invented red fascia (now dark). */
+export const TEMPLATE_REAL: Record<RetailTemplate, Pick<TemplateLook, 'goods' | 'face'>> = {
+  ah: { goods: 'aisles' }, jumbo: { goods: 'aisles' }, dirk: { goods: 'aisles' }, etos: { goods: 'drugstore' }, hema: { goods: 'drugstore' },
+  action: { goods: 'aisles' }, febo: { goods: 'automatiek' }, stach: { goods: 'deli' }, sla: { goods: 'bowls' }, bruna: { goods: 'magazines' },
+  bestseller: { goods: 'magazines' }, duck: { goods: 'ducks' }, moneyTransfer: { goods: 'exchange', face: 'condensed' }, gallgall: { goods: 'liquor' },
+  mcdonalds: { goods: 'fastfood' }, kruidvat: { goods: 'drugstore' },
+  coffeeshop: { goods: 'coffeeshop', face: 'script' }, smartshop: { goods: 'smartshop', face: 'condensed' }, brownBar: { goods: 'brownBar', face: 'serif' },
+  bike: { goods: 'bikes', face: 'condensed' }, redLight: { goods: 'redWindow' },
+  doner: { goods: 'doner', face: 'condensed' }, toko: { goods: 'bainMarie', face: 'condensed' }, butcher: { face: 'serif' },
+  greengrocer: { goods: 'produce', face: 'condensed' }, florist: { goods: 'flowers', face: 'script' }, apotheek: { goods: 'pharmacy' },
+  hairdresser: { face: 'serif' }, turkishBakery: { goods: 'bread', face: 'condensed' }, bakery: { goods: 'bread', face: 'script' },
+  nuts: { goods: 'jars', face: 'script' }, frites: { goods: 'frites', face: 'condensed' }, cheese: { goods: 'cheese', face: 'serif' },
+  waffle: { goods: 'waffles', face: 'script' }, pancake: { goods: 'pancakes', face: 'serif' }, souvenir: { goods: 'souvenirs', face: 'condensed' },
+  books: { goods: 'books', face: 'serif' }, tobacco: { goods: 'tobacco', face: 'serif' }, phone: { goods: 'phones', face: 'condensed' },
+  gelato: { goods: 'gelato', face: 'script' }, exchange: { goods: 'exchange', face: 'condensed' },
+  supermarket: { goods: 'aisles' }, chemist: { goods: 'drugstore' }, fastFood: { goods: 'fastfood' }, pizza: { goods: 'pizza' },
+  restaurant: { goods: 'cafe' }, cafe: { goods: 'cafe' }, clothes: { goods: 'clothing' }, shoes: { goods: 'shoes' }, optician: { goods: 'optician' },
+  telecom: { goods: 'phones' }, cosmetics: { goods: 'cosmetics' }, liquor: { goods: 'liquor' }, variety: { goods: 'aisles' },
+  tattoo: { goods: 'tattoo', face: 'serif' }, snackbar: { goods: 'frites', face: 'condensed' },
+};
+/**
+ * The templates whose retail-real look won its blind photo A/B on held-out fronts (lane retail-real, 2026-11-16: r1 37
+ * fronts, r2 38; wins-losses-ties real vs round n). Every other template keeps round n's look under retailReal, and a
+ * real-only template (CHAIN_TYPE_TEMPLATES, tattoo, snackbar) not listed is not drawn. `?retailRealAll=1` lifts this for
+ * candidate frames.
+ */
+export const REAL_ACCEPTED: ReadonlySet<RetailTemplate> = new Set<RetailTemplate>([
+  'redLight', // 3-0-3, and lane R's part (2-0 in its own review)
+  'brownBar', // 5-0-2 with Hendrix (feedback 7be6c55a) a win
+  'coffeeshop', 'souvenir', 'cheese', 'smartshop', 'tobacco', 'doner', 'bakery', 'books', 'phone', 'gelato', // each a net win, no loss
+  'snackbar', // 0-2-0 with the red board, 2-0-1 with the dark one
+  'tattoo', // 2-1-2
+  'shoes', 'supermarket', 'clothes', 'cafe', 'chemist', 'cosmetics', // chain types, each a net win
+]);
+export const realAccepted = (t: string): boolean => retailRealAllOn() || REAL_ACCEPTED.has(t as RetailTemplate);
+const LOOKS_REAL = Object.fromEntries(Object.entries(LOOKS_N).map(([k, v]) => [k, { ...v, ...TEMPLATE_REAL[k as RetailTemplate] }])) as Record<RetailTemplate, TemplateLook>;
+/** The templates' looks: with retailReal (retailPages.ts) the goods and faces are added; `?retailReal=0` is round n's. */
+export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = new Proxy(LOOKS_N, { get: (_, k: string) => (retailRealOn() && realAccepted(k) ? LOOKS_REAL : LOOKS_N)[k as RetailTemplate] });
 
 export const TRADE_WORDS = /^(BAKKERIJ|BAKKER|WARME|BANKETBAKKERIJ|KEURSLAGERIJ|SLAGERIJ|SLAGER|GROENTE|FRUIT|GROENTEN|RESTAURANT|SNACKBAR|SIGARENMAGAZIJN|TABAK|KAAS|KAASHANDEL)$/;
 /** A name's words with trade words dropped when the business's own name remains; the trade alone otherwise. */

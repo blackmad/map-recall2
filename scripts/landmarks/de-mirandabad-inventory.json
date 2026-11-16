@@ -1,0 +1,335 @@
+{
+ "schemaVersion": 1,
+ "id": "de-mirandabad",
+ "pand": "0363100012107139",
+ "brief": "scripts/landmarks/de-mirandabad-brief.md",
+ "signature": [
+  "glass-dome",
+  "striped-glass-tower",
+  "lap-pool",
+  "hexagon-basins",
+  "spiral-slide"
+ ],
+ "walls": [
+  {
+   "tag": "w01-275",
+   "bearing": 275,
+   "lengthM": 26,
+   "centre": [
+    4.9021648,
+    52.3385819
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "continues the photographed west front (w04-275); drawn with the same front(), inferred"
+  },
+  {
+   "tag": "w02-95",
+   "bearing": 95,
+   "lengthM": 24,
+   "centre": [
+    4.9030133,
+    52.3385482
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-185",
+   "bearing": 185,
+   "lengthM": 24,
+   "centre": [
+    4.9028242,
+    52.3384487
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-275",
+   "bearing": 275,
+   "lengthM": 19.8,
+   "centre": [
+    4.9022286,
+    52.3388946
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001173_pano_0000_001323",
+   "capturedAt": "2019-05-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "glass-dome",
+     "kind": "dome",
+     "where": "behind the roof edge, centre of the building",
+     "approxSizeM": [
+      46,
+      10.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001173_pano_0000_001323 and the PDOK luchtfoto",
+     "how": "pool-kit glassDome with panes: spherical cap fitted to the 3DBAG roof vertices above 12 m and the 21.1 m NAP ridge, one flat glass pane per rib cell (domePanes, UV 0..1 per pane so each takes the game glass cell), 32 meridian ribs, 6 ring ribs, base ring beam, white hub (pools2 lane: the single shell read opaque)"
+    },
+    {
+     "id": "west-front-bays",
+     "kind": "window-shape",
+     "where": "whole front: four bays of tall windows in light block panels over a deep exposed-aggregate beam, clerestory notches in the fascia",
+     "approxSizeM": [
+      19.8,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001173_pano_0000_001323",
+     "how": "de-mirandabad-builder front(): bays of 5.7 m, columns drawn square, ground-floor glazing drawn on the wall plane (the real glazing is recessed behind the columns)"
+    },
+    {
+     "id": "ground-floor-columns",
+     "kind": "colonnade",
+     "where": "ground floor, round concrete columns carrying the beam",
+     "approxSizeM": [
+      0.5,
+      4.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001173_pano_0000_001323",
+     "how": "square slabs 0.5 m in the bay rhythm"
+    }
+   ],
+   "note": "the west front: glazed ground floor, deep beam, block panels with tall windows, notched fascia; the glass dome rises behind the roof edge"
+  },
+  {
+   "tag": "w05-95",
+   "bearing": 95,
+   "lengthM": 18,
+   "centre": [
+    4.9030608,
+    52.3387355
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-5",
+   "bearing": 5,
+   "lengthM": 18,
+   "centre": [
+    4.9027236,
+    52.3389756
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w07-185",
+   "bearing": 185,
+   "lengthM": 17.4,
+   "centre": [
+    4.9023735,
+    52.3383407
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w08-5",
+   "bearing": 5,
+   "lengthM": 13.9,
+   "centre": [
+    4.9023404,
+    52.3389786
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001173_pano_0000_001317",
+   "capturedAt": "2019-05-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-front-bays",
+     "kind": "window-shape",
+     "where": "north end, two bays of the same front",
+     "approxSizeM": [
+      13.9,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001173_pano_0000_001317",
+     "how": "front() as on the west front"
+    },
+    {
+     "id": "striped-glass-tower",
+     "kind": "other",
+     "where": "the 6 x 6 m entrance tower between the hall and the round drum (ring edges 36-38, 3DBAG roof 11.5 m): glass banded with red panels in white frames",
+     "approxSizeM": [
+      4,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001173_pano_0000_001317",
+     "how": "stripedTower(): full-height glass, red bands every 1.55 m, white transoms and mullions, coping, on edges 36-38 (pools2 lane)"
+    }
+   ],
+   "note": "north end: same front language; a red and glass entrance volume to its left (east)"
+  },
+  {
+   "tag": "w09-274",
+   "bearing": 274,
+   "lengthM": 12.1,
+   "centre": [
+    4.9021927,
+    52.3387526
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "continues the photographed west front (w04-275); drawn with the same front(), inferred"
+  },
+  {
+   "tag": "w10-275",
+   "bearing": 275,
+   "lengthM": 11.7,
+   "centre": [
+    4.902236,
+    52.3383993
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w11-185",
+   "bearing": 185,
+   "lengthM": 11.6,
+   "centre": [
+    4.9025616,
+    52.3384463
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w12-95",
+   "bearing": 95,
+   "lengthM": 11.6,
+   "centre": [
+    4.9025076,
+    52.3383865
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "site-aerial",
+   "bearing": 0,
+   "lengthM": 150,
+   "centre": [
+    4.904,
+    52.3385
+   ],
+   "evidence": "photo",
+   "panoId": "pdok-luchtfoto-Actueel_orthoHR (2025)",
+   "capturedAt": "2025",
+   "checked": true,
+   "note": "the outdoor half of the site, read from the orthophoto (artifacts/pools/ortho/de-mirandabad-overlay.jpg) with the OSM basin outlines",
+   "items": [
+    {
+     "id": "lap-pool",
+     "kind": "other",
+     "where": "north-east: 50 m outdoor lap pool with eight lanes and a paved deck",
+     "approxSizeM": [
+      25,
+      52
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK luchtfoto; OSM a133365162",
+     "how": "pool-kit basin() with 8 lane lines and a 4.5 m deck"
+    },
+    {
+     "id": "hexagon-basins",
+     "kind": "other",
+     "where": "south-east: two hexagonal basins (the east one with a channel) on one pale deck",
+     "approxSizeM": [
+      60,
+      50
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK luchtfoto; OSM a133364352, a2534962162",
+     "how": "pool-kit basin() on a convex-hull deck 6 m past the basins"
+    },
+    {
+     "id": "spiral-slide",
+     "kind": "other",
+     "where": "south of the hall: blue spiral slide tube leaving the hall wall",
+     "approxSizeM": [
+      7,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK luchtfoto",
+     "how": "pool-kit spiralSlide(): 2.25 turns, radius 2.6 m, 0.55 m tube, on four posts; height inferred (tube leaves the hall at about 7 m)"
+    },
+    {
+     "id": "yellow-chute",
+     "kind": "other",
+     "where": "hexagon deck: yellow chute from a small tower into the east basin",
+     "approxSizeM": [
+      3,
+      11
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK luchtfoto",
+     "how": "tube on a 3.9 m deck on four posts; height inferred"
+    },
+    {
+     "id": "court-circle",
+     "kind": "other",
+     "where": "north-west lawn: a painted circle on the sports court, tagged leisure=swimming_pool in OSM (a133362918, a2535316866)",
+     "approxSizeM": [
+      16,
+      15
+     ],
+     "plan": "skipped",
+     "seenIn": "PDOK luchtfoto",
+     "skip": {
+      "reason": "gone",
+      "note": "no water on the orthophoto: a painted court, not a basin; not drawn"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

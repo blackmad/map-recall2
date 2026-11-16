@@ -1187,7 +1187,7 @@ function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: num
     // House rows: the row roof's box is drawn inside the walls (a box skewed to a front stood past it and the cut closed it
     // in wall colour, a brick wedge over the cornice); the lid at the eaves closes the strip between box and walls.
     if (piece.plan.rowDormers) {
-      const box = rowRoofBox(mesh, facing, piece.plan.rowFrontM), inside = box ? rowBoxDepth(box, mesh) : boxInside(piece.rect, mesh);
+      const box = rowRoofBox(mesh, facing, piece.plan.rowFrontM, !!piece.plan.buurtKit), inside = box ? rowBoxDepth(box, mesh) : boxInside(piece.rect, mesh);
       const turned = rowBoxOnFront(mesh, box ?? inside, piece.plan.rowFrontN, !!box);
       out.push(...(turned ? roofTriangles(turned, { ...piece.plan, streetEnds: [false, true] }, h0, dims) : roofTriangles(inside, withStreetEnds(piece.plan, inside, facing), h0, dims))); continue;
     }
@@ -1311,7 +1311,7 @@ function meshPieces(plan: RoofPlan, pieces: NonNullable<RoofPlan['pieces']>, map
  * it. A box fitted to the whole plan stood skewed to a front a few degrees off square, and its mansard foot ran
  * across the cornice (a brick wedge over Kinkerstraat 104-100). No street known: null (the fitted box).
  */
-function rowRoofBox(ring: readonly Vec2[], facing: StreetFacing | undefined, frontM?: number): Rect | null {
+function rowRoofBox(ring: readonly Vec2[], facing: StreetFacing | undefined, frontM?: number, kitFront = false): Rect | null {
   if (!facing) return null;
   const pts = openRing(ring), ccw = signedArea(pts) > 0;
   let walls: Array<{ n: Vec2; d: number }> = [];
@@ -1341,7 +1341,9 @@ function rowRoofBox(ring: readonly Vec2[], facing: StreetFacing | undefined, fro
   // A corner member: the side street can stand nearer than the row's own (Kinkerstraat 110: its side wall 6.9 m from the
   // cross street, its 5.2 m front 8.0 m from Kinkerstraat), and a box faced on it ran the mansard across the plot, a
   // pyramid over a 5 m front. The member's stated front width picks the wall when the nearest one does not match it.
-  const off = (r: Rect) => Math.abs(r.wid - frontM!), tol = (m: number) => Math.max(ROW_FRONT_MATCH.m, ROW_FRONT_MATCH.share * m);
+  // A buurt kit member states its front line exactly (the straightened outline's own edge), so its width is matched
+  // tightly: Patroclosstraat 133916's 8.0 m side wall stood within the loose tolerance of its 9.01 m front.
+  const off = (r: Rect) => Math.abs(r.wid - frontM!), tol = (m: number) => kitFront ? ROW_FRONT_MATCH.kitM : Math.max(ROW_FRONT_MATCH.m, ROW_FRONT_MATCH.share * m);
   if (!frontM || off(nearest) <= tol(frontM)) return nearest;
   const matched = walls.slice(1).map(w => box(w.n)).filter(r => off(r) <= tol(frontM)).sort((a, b) => off(a) - off(b))[0];
   return matched ?? nearest;
@@ -1363,7 +1365,7 @@ function rowBoxOnFront(ring: readonly Vec2[], chosen: Rect, n: Vec2 | undefined,
 const ROW_FRONT_TURN_DEG = 45;
 
 /** How far a row roof box's front width may stand from the member's stated front before another street wall is tried. */
-const ROW_FRONT_MATCH = { m: 1.5, share: 0.3 } as const;
+const ROW_FRONT_MATCH = { m: 1.5, share: 0.3, kitM: 0.5 } as const;
 
 /** How deep behind the street front the outline's points set a row roof's width (m). */
 const ROW_FRONT_BAND_M = 1.5;

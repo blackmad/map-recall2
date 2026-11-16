@@ -48,3 +48,21 @@ test('red-light front: tube none draws no tube (round 17: a sign band or awning 
   assert.equal(out.filter(r => r.hex === RED_LIGHT_LOOK.tubeHex).length, 0);
   assert.equal(redLightFrontOf({ tube: 'none' })?.tube, 'none');
 });
+
+test('retail front: redLight under retailReal is the window-front part, no fascia; the audit or traced bays set the doors', async () => {
+  const { retailFrontTris } = await import('../retailFront.ts');
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  const g = globalThis as { __canalRecallRetailReal?: boolean };
+  g.__canalRecallRetailReal = true;
+  try {
+    // Unaudited: the audit's majority, no tube; an audited front draws its own (lit) tube and doors.
+    const tris = retailFrontTris({ template: 'redLight', seed: 'x', goods: 300 }, e, 0.3, 4.9, 0, 3.6);
+    assert.ok(!tris.some(t => t.hex === RED_LIGHT_LOOK.tubeHex));
+    const audited = retailFrontTris({ template: 'redLight', seed: 'x', goods: 300, redLight: { doors: 2, tube: 'doors' } }, e, 0.3, 4.9, 0, 3.6);
+    assert.equal(audited.filter(t => t.hex === RED_LIGHT_LOOK.tubeHex && t.lit).length / 2 >= 2, true, 'a lit tube per door');
+    assert.equal(audited.filter(t => t.hex === RED_LIGHT_LOOK.kickHex).length / 2, 2);
+    assert.ok(tris.every(t => Math.max(...t.p.map(p => p[2])) < 3.1), 'nothing over the tube: no fascia');
+    const kicks = (n?: number) => retailFrontTris({ template: 'redLight', seed: 'x', goods: 300, ...(n ? { bays: n } : {}) }, e, 0.3, 4.9, 0, 3.6).filter(t => t.hex === RED_LIGHT_LOOK.kickHex).length / 2;
+    assert.equal(kicks(), 4); assert.equal(kicks(3), 3);
+  } finally { delete g.__canalRecallRetailReal; }
+});
