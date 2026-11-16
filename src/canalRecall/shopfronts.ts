@@ -126,8 +126,9 @@ export function decorateShopTemplate<T extends GeoFeature>(feature: T): T {
   const stamp = paint && /^#[0-9a-f]{6}$/i.test(paint) && feature.properties.puiPaint === undefined;
   const bike = name ? templates.bikes?.[id] : undefined, awning = name ? templates.awnings?.[id] : undefined, front = name ? templates.fronts?.[id] : undefined;
   // Lane ground-floor (`?groundFloor=1`): the pand's ground-floor record, from the extract only the flag's loader installs.
-  const gf = name ? groundFloorFor(id) : undefined;
-  if (!name && !stamp) return feature;
+  // Not keyed on `name`: a feature that arrives with its shopTemplate already stamped still takes its record.
+  const gf = row && feature.properties.groundFloor === undefined ? groundFloorFor(id) : undefined;
+  if (!name && !stamp && !gf) return feature;
   return { ...feature, properties: { ...feature.properties, ...(gf ? { groundFloor: gf } : {}), ...(name ? { shopTemplate: row![5] ? [name, row![1], row![2], row![3] ?? '', row![4] === 1 ? 1 : 0, row![5]] : [name, row![1], row![2], ...(row![3] || row![4] ? [row![3] ?? ''] : []), ...(row![4] === 1 ? [1] : [])] } : {}), ...(bike ? { bikeShop: bike } : {}), ...(awning ? { shopAwning: awning } : {}), ...(front ? { shopFrontOverride: front } : {}), ...(stamp ? { puiPaint: paint, ...(darkReads.has(id) && templates.paint?.[id] ? { puiDark: 1 } : {}) } : {}) } };
 }
 
