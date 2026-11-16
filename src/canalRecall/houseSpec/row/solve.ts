@@ -173,6 +173,8 @@ const CROWN_OF: Record<string, RowCrownKind> = { cornice: 'cornice', flat: 'corn
 const DRESSING_OF: Record<string, RowHeadDressing> = {
   'dentil-lintel': 'dentil-lintel', 'block-dressings': 'block-course', 'jack-blocks': 'jack-blocks', keystone: 'keystone', 'eared-keystone': 'keystone',
   'stone-lintel': 'stone-lintel', 'full-frame': 'stone-lintel', sill: 'none', none: 'none',
+  // Centrum round 8: the row kinds a reading could not reach (block-surround 26, arch-ring 4 confident photo reads).
+  'block-surround': 'block-surround', 'arch-ring': 'arch-ring',
 };
 /** A reading's head row: the upper storeys' head shape and dressing; relieving or segmental heads on some upper storeys
  *  read as a segmental head with a tympanum on those storeys. */

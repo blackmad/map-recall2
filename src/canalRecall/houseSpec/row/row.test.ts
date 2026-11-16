@@ -452,3 +452,21 @@ test("lane R's ground openings (Herengracht 25-29, 27): a reviewed ground.openin
   assert.ok(limits.some(w => /archedOpenings/.test(w)) && limits.some(w => /basementFront/.test(w)), limits.join('\n'));
   assert.deepEqual(specProblems(spec).filter(p => /windows|plinth|basementDoor|schemaLimits/.test(p)), []);
 });
+
+test('Centrum round 8: a reading\'s block-surround and arch-ring surround reach the row heads; absent, the heads are as before', async () => {
+  const { readHeads } = await import('./solve.ts');
+  const { drawableDesign } = await import('../spec.ts');
+  const a = (windowSurround: string, heads: string[]) => ({ windowSurround, heads }) as never;
+  assert.deepEqual(readHeads(a('block-surround', ['flat', 'flat', 'flat'])), { shape: 'flat', dressing: 'block-surround' });
+  assert.deepEqual(readHeads(a('arch-ring', ['flat', 'round', 'round'])), { shape: 'round', dressing: 'arch-ring' });
+  // unchanged kinds
+  assert.deepEqual(readHeads(a('keystone', ['flat', 'flat'])), { shape: 'flat', dressing: 'keystone' });
+  assert.equal(readHeads(a('nv', ['flat', 'flat'])), undefined);
+  // the HouseSpec intent: block-surround drawn as jack-blocks, arch-ring held (no ring surround in the intent)
+  const d = drawableDesign({ fronts: [{ windowSurround: 'block-surround' }, { windowSurround: 'arch-ring' }, { windowSurround: 'keystone' }] } as never);
+  assert.equal((d.design as any).fronts[0].windowSurround, 'jack-blocks');
+  assert.equal((d.design as any).fronts[1].windowSurround, undefined);
+  assert.equal((d.design as any).fronts[2].windowSurround, 'keystone');
+  const plain = { fronts: [{ windowSurround: 'keystone' }] };
+  assert.equal(drawableDesign(plain as never).design, plain);   // byte-identical (the same object) when neither is read
+});

@@ -49,7 +49,10 @@ export const SPEC_HELD_READS = ['rowHeads', 'readBalconies', 'readDormers', 'rea
 export const SPEC_WALL_MATERIALS = [...WALL_MATERIALS, 'stone'] as const;
 export const SPEC_GABLES = [...GABLES, 'pitched-eaves'] as const;
 export const SPEC_WINDOW_HEADS = [...WINDOW_HEADS, 'pointed', 'mixed'] as const;
-export const SPEC_WINDOW_SURROUNDS = [...WINDOW_SURROUNDS, 'block-dressings'] as const;
+/** Centrum round 8: `block-surround` (white blocks framing the window, quoins up both jambs, a keyed head) and `arch-ring`
+ *  (a raised white ring round a round head), spec-level like block-dressings: the row line draws them (row/solve.ts
+ *  DRESSING_OF); drawableDesign draws block-surround as jack-blocks and holds arch-ring (the intent has no ring surround). */
+export const SPEC_WINDOW_SURROUNDS = [...WINDOW_SURROUNDS, 'block-dressings', 'block-surround', 'arch-ring'] as const;
 export const SPEC_CORNICES = [...CORNICES, 'attic-frieze'] as const;
 export const SPEC_ROOF_STOREYS = ['mansard', 'attic', 'none'] as const;
 export type SpecRoofStorey = typeof SPEC_ROOF_STOREYS[number];
@@ -91,7 +94,7 @@ export function drawableDesign<D extends Record<string, any> | undefined>(design
   const fronts = (design?.fronts ?? []) as Array<Record<string, any> | undefined>;
   const stone = design?.palette?.wallMaterial === 'stone';
   const touched = fronts.some(f => SPEC_HELD_READS.some(k => f?.[k] !== undefined) || f?.gable === 'pitched-eaves' || f?.windowHead?.kind === 'pointed' || f?.windowHead?.kind === 'mixed'
-    || f?.windowSurround === 'block-dressings' || f?.cornice === 'attic-frieze' || f?.roofStorey !== undefined);
+    || f?.windowSurround === 'block-dressings' || f?.windowSurround === 'block-surround' || f?.windowSurround === 'arch-ring' || f?.cornice === 'attic-frieze' || f?.roofStorey !== undefined);
   if (!stone && !touched) return { design, ignored };
   const out = structuredClone(design) as Record<string, any>;
   if (stone) { out.palette.wallMaterial = 'stucco'; ignored.push({ path: 'palette/wallMaterial', value: 'stone', drawnAs: 'stucco' }); }
@@ -104,6 +107,8 @@ export function drawableDesign<D extends Record<string, any> | undefined>(design
     }
     for (const k of SPEC_HELD_READS) if (f[k] !== undefined) { ignored.push({ path: `fronts/${i}/${k}`, value: f[k], drawnAs: null }); delete f[k]; }
     if (f.windowSurround === 'block-dressings') { f.windowSurround = 'jack-blocks'; ignored.push({ path: `fronts/${i}/windowSurround`, value: 'block-dressings', drawnAs: 'jack-blocks' }); }
+    if (f.windowSurround === 'block-surround') { f.windowSurround = 'jack-blocks'; ignored.push({ path: `fronts/${i}/windowSurround`, value: 'block-surround', drawnAs: 'jack-blocks' }); }
+    if (f.windowSurround === 'arch-ring') { delete f.windowSurround; ignored.push({ path: `fronts/${i}/windowSurround`, value: 'arch-ring', drawnAs: null }); }
     if (f.roofStorey !== undefined) { ignored.push({ path: `fronts/${i}/roofStorey`, value: f.roofStorey, drawnAs: null }); delete f.roofStorey; }
     if (f.cornice === 'attic-frieze') { f.cornice = 'frieze'; ignored.push({ path: `fronts/${i}/cornice`, value: 'attic-frieze', drawnAs: 'frieze' }); }
     const kind = f.windowHead?.kind;

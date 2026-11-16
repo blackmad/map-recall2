@@ -100,6 +100,8 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
         for (const k of ['bands', 'bandLines', 'bandHeights']) { delete fr[k]; delete spec.provenance[P + k]; }
       }
     }
+    // Centrum round 8: arch rings on every upper storey (a reading's `arch-ring` surround), as the second-group case draws them.
+    else if (h.dressing === 'arch-ring') put(P + 'windowHead', { kind: 'round', ...(h.storeys ? { storeys: h.storeys } : {}), archRing: { colour: 'stone', style: 'solid', keystone: true } }, d.heads);
     else if (h.dressing === 'jack-blocks' || h.dressing === 'dentil-lintel' || h.dressing === 'stone-lintel') put(P + 'windowSurround', h.dressing, d.heads);
     else if (h.dressing === 'tablet') {
       // HouseSpec has no tablet: the stone block on the axis is its keystone; over a relieving shape, the brick relieving

@@ -28,7 +28,7 @@ import { modernBehindRegister } from '../../src/canalRecall/beltLook/roofSignals
 import { drawRowWalls, isBrickFamily, measuredWeights, periodOf, streetFamily, type WallDrawConfig, type WallDrawn, type WeightEvidence, type Weights } from '../../src/canalRecall/beltLook/wallDraw.ts';
 import { strongPhoto, photoFinish, photoCrown, PHOTO_FINISH_MIN, PHOTO_CROWN_MIN, type PhotoCrown } from '../../src/canalRecall/beltLook/generate.ts';
 import { describerDarkPhrase } from '../../src/canalRecall/houseSpec/darkFinish.ts';
-import { describerColourWord, judgeFront, type JudgedFamily } from '../../src/canalRecall/houseSpec/judgedColour.ts';
+import { describerColourWord, judgeFront, lchOf, type JudgedFamily } from '../../src/canalRecall/houseSpec/judgedColour.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const ROWS = 'scripts/house-specs/rows/rows.json';
@@ -73,7 +73,7 @@ export function photoOverRegisterGable(registerCrown: string | undefined, r: Par
 /** The v3 dress field's confidence that states the upper windows' dressing (round 7). */
 export const PHOTO_DRESS_MIN = 0.7;
 /** The v3 dress words the row line can draw, in the describer's windowSurround words (row/solve.ts DRESSING_OF). */
-export const PHOTO_DRESS_SURROUND: Readonly<Record<string, string>> = { none: 'none', 'stone-lintel': 'stone-lintel', keystone: 'keystone', 'block-course': 'block-dressings' };
+export const PHOTO_DRESS_SURROUND: Readonly<Record<string, string>> = { none: 'none', 'stone-lintel': 'stone-lintel', keystone: 'keystone', 'block-course': 'block-dressings', 'block-surround': 'block-surround', 'arch-ring': 'arch-ring', bands: 'speklagen' };
 /** The v3 roof field's confidence that states a roof storey (round 7). */
 export const PHOTO_ROOF_READ_MIN = 0.6;
 /** The photo confidence a roof in view needs to evidence a measured roof storey (round 6). */
@@ -130,6 +130,16 @@ export function photoFamily(r: PhotoRead | undefined, registerFinish: string | u
   return PHOTO_FAMILY[r.family];
 }
 const BRICK_FINISHES: ReadonlySet<string> = new Set(['brick', 'ornamentalBrick']);
+/**
+ * Round 8 (De Weteringschans Prinsengracht 168251-179166, near-black brick drawn purple-brown and judged red-brown): a weak
+ * purple-brown read whose own cut samples dark and neutral (OKLCh C < 0.008, L < 0.37) is dark-grey brick. Measured on the
+ * cuts: that sample holds for 38 % of confident dark-grey reads, 19 % of confident purple-brown, 4 % of brown.
+ */
+export const DARK_NEUTRAL = { maxC: 0.008, maxL: 0.37 } as const;
+export function darkNeutralCut(hex: string | undefined): boolean {
+  const l = hex ? lchOf(hex) : null;
+  return !!l && l.C < DARK_NEUTRAL.maxC && l.L < DARK_NEUTRAL.maxL;
+}
 /** Round 7: two photo reads that both see bare brick (v2 at WEAK_PHOTO_MIN, and v1 or a later capture) over a register's plaster or paint. */
 export function photoOverRegisterFinish(registerFinish: string | undefined, r: PhotoRead | undefined): boolean {
   if (!registerFinish || BRICK_FINISHES.has(registerFinish) || !r) return false;
@@ -187,7 +197,8 @@ export function drawWalls(records: any[], prov: Record<string, any>, reads: Read
       const free = !!a && r.wall?.finish === 'brick' && ownOk && (!sd?.finish || sd.finish === 'brick') && !sd?.specHex;
       const sample = strongPhoto(sd?.photo) ? sd!.photo!.hex : reads.get(pid)?.sample;
       const st = streetFamilyOf.get(pid), pr = photo.get(pid), pf = sd?.specHex ? undefined : photoFamily(pr, registerFinish.get(pid));
-      const wk = pf || sd?.specHex || !pr || !(pr.confidence >= WEAK_PHOTO_MIN) ? undefined : photoFamily({ ...pr, confidence: PHOTO_FINISH_MIN }, registerFinish.get(pid));
+      const wk0 = pf || sd?.specHex || !pr || !(pr.confidence >= WEAK_PHOTO_MIN) ? undefined : photoFamily({ ...pr, confidence: PHOTO_FINISH_MIN }, registerFinish.get(pid));
+      const wk = wk0 === 'purple-brown-brick' && darkNeutralCut((pr as { cutHex?: string }).cutHex) ? 'dark-grey-brick' as JudgedFamily : wk0;
       return { pandId: pid, year: sd?.year ?? years.get(pid) ?? null, free, brickOnly: ownRead, series: r.series?.id as string | undefined, ...(sample ? { sample } : {}), ...(st ? { streetFamily: st } : {}),
         ...(pf ? { photo: pf, photoStucco: pr!.finish === 'stucco' } : {}), ...(wk ? { weakPhoto: wk } : {}) };
     });
@@ -244,7 +255,7 @@ async function main() {
     const tile = roofInView && /-tile$/.test(roofRead!);
     if (roofInView) photoRoofStoreys++;
     // Round 7: the photo's window dressing (v3 `dress`, dc >= PHOTO_DRESS_MIN) where the kit's row line can draw it;
-    // block-surround and arch-ring have row kinds the describer vocabulary cannot reach, and bands (speklagen) no row kind: read, not drawn.
+    // round 8: block-surround and arch-ring reach the row heads (row/solve.ts DRESSING_OF); bands are the row's speklagen extra (BAND_EXTRAS).
     const rd = r as unknown as { dress?: string; dc?: number }, dress = typeof rd.dc === 'number' && rd.dc >= PHOTO_DRESS_MIN && rd.dress ? PHOTO_DRESS_SURROUND[rd.dress] : undefined;
     if (rd.dress && typeof rd.dc === 'number' && rd.dc >= PHOTO_DRESS_MIN) dressTally[rd.dress] = (dressTally[rd.dress] ?? 0) + 1;
     if (fin || crown || pc.tallCornice || pc.storeys || roof || roofInView || mansard || dress) stated.set(pid, { ...now, ...(dress ? { photoDress: dress } : {}), ...(roof || roofInView ? { photoRoof: true } : {}),

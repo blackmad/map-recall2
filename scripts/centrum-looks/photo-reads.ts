@@ -42,7 +42,7 @@ export function parseReads(text: string): Map<string, CentrumPhotoRead> {
 const LINE2 = /^(\d{16})\s+(brick|paint|stucco|unclear)\s+([a-z-]+)\s+([\d.]+)\s+([a-z-]+)\s+([a-z-]+)\s+(\d+|nv)\s+(y|n|nv)\s+([\d.]+)\s+([\d.]+)(?:\s+([a-z-]+)\s+([\d.]+))?(?:\s+([a-z-]+)\s+([\d.]+))?/;
 /** v3 (round 7) adds `roof` (what of a roof is in view over the cornice) and its confidence `rc`. */
 export interface CentrumCrownRead { crown: string; cornice: string; full: number | null; souterrain: boolean | null; cc: number; sc: number; roof?: string; rc?: number; dress?: string; dc?: number }
-export type CentrumRead2 = CentrumPhotoRead & CentrumCrownRead & { recrown?: Partial<CentrumCrownRead>; v1?: { family: string; confidence: number }; second?: CentrumPhotoRead & CentrumCrownRead; rule?: string };
+export type CentrumRead2 = CentrumPhotoRead & CentrumCrownRead & { cutHex?: string; recrown?: Partial<CentrumCrownRead>; v1?: { family: string; confidence: number }; second?: CentrumPhotoRead & CentrumCrownRead; rule?: string };
 /** v2 lines (colour plus crown). */
 export function parseReads2(text: string): Map<string, CentrumPhotoRead & CentrumCrownRead> {
   const out = new Map<string, CentrumPhotoRead & CentrumCrownRead>();
@@ -136,6 +136,9 @@ function main(argv: string[]) {
     const v1 = new Map<string, CentrumPhotoRead>(v1f ? Object.entries(JSON.parse(fs.readFileSync(v1f, 'utf8')).reads) : []);
     const seconds = sds.map(readDir);
     // --crown (round 7, repeatable): crown and roof re-reads (prompt v3) merged by mergeCrown; their colour is not used.
+    const cutHex = new Map<string, string>();
+    for (const f of argv.flatMap((x, i) => (x === '--cuts' && argv[i + 1] ? [argv[i + 1]] : []))) for (const r of JSON.parse(fs.readFileSync(f, 'utf8')).rows as { pandId: string; wallHex?: string }[]) if (r.wallHex && !cutHex.has(r.pandId)) cutHex.set(r.pandId, r.wallHex);
+    const restoreys = argv.flatMap((x, i) => (x === '--storeys' && argv[i + 1] ? [argv[i + 1]] : [])).map(readDir), stally: Record<string, number> = {};
     const roofs = argv.flatMap((x, i) => (x === '--roof' && argv[i + 1] ? [argv[i + 1]] : [])).map(readDir);
     const crowns = argv.flatMap((x, i) => (x === '--crown' && argv[i + 1] ? [argv[i + 1]] : [])).map(readDir), ctally: Record<string, number> = {};
     const out: Record<string, CentrumRead2> = {}, tally: Record<string, number> = {};
@@ -163,12 +166,21 @@ function main(argv: string[]) {
         if (c?.roof && !(base.roof && (base.rc ?? 0) >= (c.rc ?? 0))) Object.assign(base, { roof: c.roof, rc: c.rc });
         if (c?.dress && !(base.dress && (base.dc ?? 0) >= (c.dc ?? 0))) Object.assign(base, { dress: c.dress, dc: c.dc });
       }
+      // --storeys (round 8, v3 with the storey count spelled out: Westeinde 178341 read 2 where the cut shows 3): a re-read
+      // of the same cut whose count is confident (sc >= 0.7) stands over the earlier count.
+      for (const rd of restoreys) {
+        const c = rd.get(pid);
+        if (c && c.full !== null && c.sc >= 0.7) { if (c.full !== base.full) stally[`${base.full}->${c.full}`] = (stally[`${base.full}->${c.full}`] ?? 0) + 1; Object.assign(base, { full: c.full, souterrain: c.souterrain, sc: c.sc }); }
+      }
+      // --cuts (round 8): the first cut's measured wall hex (describe-cut's wallHex), for the dark-grey split in generate.ts.
+      const ch = cutHex.get(pid);
+      if (ch) base.cutHex = ch;
       out[pid] = base;
       tally[base.rule!] = (tally[base.rule!] ?? 0) + 1;
     }
     fs.mkdirSync(path.dirname(b), { recursive: true });
     fs.writeFileSync(b, JSON.stringify({ at: new Date().toISOString().slice(0, 10), ref: 'centrum-looks round 5: contrastive colour + crown reader v2 over v1 (scripts/centrum-looks/photo-reads.ts assemble2)', reads: out }, null, 1) + '\n');
-    console.log(`assemble2: ${Object.keys(out).length} reads`, JSON.stringify(tally), crowns.length ? `crowns ${JSON.stringify(ctally)}` : '');
+    console.log(`assemble2: ${Object.keys(out).length} reads`, JSON.stringify(tally), crowns.length ? `crowns ${JSON.stringify(ctally)}` : '', restoreys.length ? `storeys ${JSON.stringify(stally)}` : '');
   } else { console.log('photo-reads.ts ask|assemble|assemble2 ...'); process.exit(2); }
 }
 if (process.argv[1]?.endsWith('centrum-looks/photo-reads.ts')) main(process.argv.slice(2));

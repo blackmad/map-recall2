@@ -17,7 +17,7 @@ crown (what tops this front): `spout` (narrow plain tuit), `neck` (tall narrow n
 
 cornice (the moulded line at the wall top, also the one under a gable's foot): `none`, `simple`, `bracketed`, `heavy`, `frieze`, `attic-frieze` (frieze with small attic windows), `not-visible`.
 
-full: full street-facing storeys from the pavement to the cornice line or the gable foot. The ground storey counts once however tall (a shop, a bel-etage, an entresol inside it: one storey). A souterrain (half-sunk, windows at knee height or below) does not count. Nothing in the crown or roof counts (gable windows, dormers, a mansard face, an attic frieze). Count rows of openings from the bottom. `nv` if the ground or top storey cannot be seen.
+full: full street-facing storeys from the pavement to the cornice line or the gable foot. The ground storey counts once however tall (a shop, a bel-etage, an entresol inside it: one storey). A souterrain (half-sunk, windows at knee height or below) does not count. Nothing in the crown or roof counts (gable windows, dormers, a mansard face, an attic frieze). Count rows of openings from the bottom. `nv` if the ground or top storey cannot be seen. Count every row of windows between the ground storey and the cornice: a front with a shop or door storey and two rows of windows above it has full 3, never 2; check the count against the wall's height (Amsterdam storeys are 3-4.5 m).
 
 souterrain: `y`, `n` or `nv`.
 
