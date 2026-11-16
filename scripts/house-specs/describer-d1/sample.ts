@@ -38,7 +38,10 @@ const arg = (n: string, d: string) => { const i = process.argv.indexOf(`--${n}`)
 const gitShow = (ref: string, rel: string): Buffer | null => {
   try { return execFileSync('/usr/bin/git', ['-C', SD, 'show', `${ref}:${rel}`], { maxBuffer: 64 << 20, stdio: ['ignore', 'pipe', 'ignore'] }); } catch { return null; }
 };
-const originCrops = new Set(execFileSync('/usr/bin/git', ['-C', SD, 'ls-tree', '--name-only', 'origin/main', 'pand-crops/'], { encoding: 'utf8' }).split('\n').map(s => s.split('/')[1]).filter(Boolean));
+/** Crop ids on the source-data origin; empty where there is no source-data checkout (CI), so importing this module never throws. */
+const originCrops = new Set((() => {
+  try { return execFileSync('/usr/bin/git', ['-C', SD, 'ls-tree', '--name-only', 'origin/main', 'pand-crops/'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }); } catch { return ''; }
+})().split('\n').map(s => s.split('/')[1]).filter(Boolean));
 /** The bytes of pand-crops/<id>/<file> from a local checkout, else origin/main; null when absent. */
 export function cropBytes(id: string, file: string): Buffer | null {
   for (const d of LOCAL_CROPS) { const p = path.join(d, 'pand-crops', id, file); if (fs.existsSync(p)) return fs.readFileSync(p); }
