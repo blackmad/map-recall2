@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+## Round v: shop props kit, omafiets bike shops, Kruidvat promo stands (2026-11-16)
+
+- Merged by SHA lane/shop-bikes-20261116 a8fffae34. It contains lane/shop-goods-20261116 92446e4c7 and lane/kruidvat-promo-20261116 5d9de3c54. David asked for this on 2026-11-16, from the Shopfronts page: "bikeshops look like they have crosses inside", "greengrocer could be so much better", "not repeat the exact same thing in every window", "hairdresser … barber chair & beauty station", and "a way to do some real 3d modeling inside/outside of these stores in a generic way".
+- **Shop props kit** (`src/canalRecall/shopProps/`):
+  - It is a procedural library of low-poly props. Each prop states its triangle cost, and a test checks it: bike, bakfiets, rail, tilted produce crate (34), bucket tier, plant, barber station (50), wash basin, counter with till, and shelf unit.
+  - `layout.ts` `SHOP_PROPS` is a data table. For each template it lists `outside` rows (0–1.2 m of pavement) and `inside` items (0.3–2.5 m deep). Placement is deterministic per pand and bay.
+  - `variety.ts` gives every bay its own seed, so no two windows tile the same goods. Bay 0 keeps the pand seed.
+  - Hairdresser gets a new `salon` content type.
+- **Blind A/B** (one opus judge, beside panorama crops of each template's example pand):
+  - Bike, greengrocer, florist and hairdresser: the new version won.
+  - Gelato, cheese, books and butcher: ties. The per-window variety is too subtle at thumbnail size.
+  - No template lost.
+- **Bike shops use the player's omafiets.** It is baked down from `omafiets-runtime.glb` (18,188 tris) to 220 tris by `scripts/shop-props/bake-shop-bikes.ts`, written to `bikeMeshes.generated.ts` (19 KB, no runtime GLB load).
+  - The parts are simplified separately with meshoptimizer. Tyres and rims are rebuilt as 12-sided rings, and the mudguards as arcs.
+  - Window bikes use an 87-tri outline version.
+  - The rack is `bike-rack.glb` hoops.
+  - Bikes are spread at about 0.65 m in two staggered lines, about 30 % turned the other way, at most 8 per front, in a Dutch city-bike palette.
+  - David's six downloaded CC-BY Sketchfab bikes were reference only. None was shipped, so there is no credits entry.
+- **Kruidvat:** a new `promo` pavement kind. It draws red stands with three shelves of boxed products and a header, in place of round 7's postcard stands. Bestseller and souvenir shops keep the postcard stands.
+- **Triangles per 6 m front:**
+  - bike 224 → 913–1,202 (cap 1,250);
+  - greengrocer 186 → 680 (cap 700);
+  - florist 298 → 358 (cap 420);
+  - hairdresser 168 → 272 (cap 300).
+  - The all-template total at 9 m is 15,014, under the 15,624 limit.
+  - The other templates keep their triangle counts. Their bytes change with the per-bay seeds.
+
 ## Round u: Haparandaweg block kits unheld, Shopfronts browser (2026-11-16)
 
 - Merged by SHA: lane/haparandaweg-review-20261116 8e2d15aef. Four Haparandaweg block-kit GLBs leave `held`: 65, 746-786, 788-868, 952-1002. A single fresh opus judge saw a shuffled photo | A | B sheet per pand and picked the kit over today's generic draw on all four:

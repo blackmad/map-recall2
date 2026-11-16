@@ -64,8 +64,8 @@
       "items": [
         "Shop signs read from photos; FEBO and HEMA brand styles (done 16 November)",
         "Shopfronts page with per-card feedback (16 November)",
-        "3D shop props and a different arrangement per window",
-        "Shops that fit the building's ground floor (planned)",
+        "3D shop props, omafiets bike shops and a different arrangement per window (done 16 November)",
+        "Shops that fit the building's ground floor (pilot being built)",
         "Rooms behind shop glass (switched off)"
       ]
     },
@@ -106,21 +106,6 @@
       "label": "Checks running"
     },
     {
-      "name": "Shop props: 3D bikes, produce crates, flower buckets, barber stations, and a different arrangement in each window",
-      "issue": null,
-      "label": "Ready to merge"
-    },
-    {
-      "name": "Kruidvat: red promotion stands in place of postcard stands",
-      "issue": null,
-      "label": "Ready to merge"
-    },
-    {
-      "name": "Bike shops: bikes from the game's own bike model, spaced along the front",
-      "issue": null,
-      "label": "Being built"
-    },
-    {
       "name": "Shop rooms behind the glass (switched off)",
       "issue": null,
       "label": "Being built"
@@ -136,9 +121,9 @@
       "label": "Waiting for David's sign-off"
     },
     {
-      "name": "Shops that fit the building's ground floor (arches, piers, stone, signs on the wall)",
+      "name": "Shops that fit the building's ground floor: pilot (The Sting, FEBO)",
       "issue": null,
-      "label": "Planned, waiting for go-ahead"
+      "label": "Being built"
     },
     {
       "name": "Hoofddorppleinbuurt district look (the one Zuid area with nothing drawn)",

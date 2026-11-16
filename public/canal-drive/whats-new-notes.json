@@ -1,6 +1,28 @@
 {
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
+    {
+      "date": "2026-11-16",
+      "title": "Shops get real 3D goods",
+      "text": "Shopfronts now carry real 3D props instead of flat pictures. Bike shops have proper bicycles (the same omafiets you ride, simplified) parked along the pavement in mixed city-bike colours. Greengrocers set out tilted crates of produce, florists have stepped zinc buckets of flowers, hairdressers show barber stations, and Kruidvat has its red promotion stands. Every shop window now gets its own arrangement, so the same goods no longer repeat across each pane.",
+      "images": [
+        {
+          "src": "ui/shopfronts/shop-goods-20261116/before.png",
+          "alt": "Before: eight shopfront types with flat goods, crosses for bikes and plain brown crates",
+          "caption": "Before"
+        },
+        {
+          "src": "ui/shopfronts/shop-goods-20261116/after.png",
+          "alt": "After: the same eight shopfronts with 3D bikes, crates of coloured produce, buckets of flowers and barber stations",
+          "caption": "After"
+        },
+        {
+          "src": "ui/2026-11-16-shop-props/bikes-before-after.jpg",
+          "alt": "Bike shops before and after: thin procedural bikes with octagonal wheels on the left, the baked omafiets in mixed colours along a rack on the right",
+          "caption": "Bike shops: the game's own omafiets, spread along the front"
+        }
+      ]
+    },
   {"date": "2026-11-16", "title": "Haparandaweg's new office blocks", "text": "Four buildings on Haparandaweg in Houthaven are now modelled from their photos instead of drawn as plain brick boxes: Haparandaweg 65 with its long terracotta band and window grid, the grey-framed block at 952–1002, and the blocks at 746–786 and 788–868 with their glass bays. In a blind comparison against the street photos, the new models beat the old ones on all four.", "where": [4.8771, 52.3951], "images": [{"src": "ui/2026-11-16-haparandaweg/haparandaweg-65-before.jpg", "alt": "Haparandaweg 65 before: the street photo beside a plain brown box with strip windows", "caption": "Before"}, {"src": "ui/2026-11-16-haparandaweg/haparandaweg-65-after.jpg", "alt": "Haparandaweg 65 after: the street photo beside the new model with terracotta cladding, a window grid and a glazed ground floor", "caption": "After"}]},
     {
       "date": "2026-11-16",
