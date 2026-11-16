@@ -31,7 +31,9 @@ export function buildSportplazaMercator(_w: number, _d: number, b: BuildingTools
   // glazing runs the whole north front: edges 25 and 26 (the west third, x -36..-27) carry it too (review 2026-11-15: the
   // photo's right third is glass under a low canopy, the model's was planted wall)
   glazedFront(b, fr(22), {y: 7.1, depth: 1.6, share: 0.75});
-  glazedFront(b, fr(24), {y: 6.4, depth: 2.6, share: 0.7}); // the entrance canopy over the middle of the front (w01-358)
+  // the entrance canopy over the middle of the front (w01-358): a thin plate whose underside barely shows from the street, 2.2 m
+  // deep (2.6 m read as a gap: audit see-through 7/136 rays under it at 1.5 m, 2026-11-16)
+  glazedFront(b, fr(24), {y: 6.4, depth: 2.2, share: 0.7});
   for (const i of [25, 26]) glazedFront(b, fr(i), {y: 5.0, depth: 2.0, share: 1}); // the lower canopy over the west end
   // the two strip windows of the w01 crop stand 13.0 and 23.8 m from the front's west end (x = -27.35): both on edge 24
   {

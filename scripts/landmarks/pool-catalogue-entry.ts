@@ -42,7 +42,7 @@ const entry: Record<string, unknown> = {
   groundAltitudeMetres: 0, facingOffsetDegrees: 0,
   heightMetres: spec.heightMetres, galleryView: spec.galleryView,
   ...(spec.bagYear ? {bagYear: spec.bagYear} : {}),
-  materialOverrides: spec.materialOverrides, attribution: spec.attribution,
+  materialOverrides: spec.materialOverrides, ...(spec.measuredOverrides ? {measuredOverrides: true} : {}), attribution: spec.attribution,
   buildingFootprint: {type: 'Polygon', coordinates: [ll]},
 };
 const cat = 'src/canalRecall/landmarks/manualCatalogue.json';

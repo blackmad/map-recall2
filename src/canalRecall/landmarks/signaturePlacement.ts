@@ -93,6 +93,10 @@ export interface SignatureModelSpec {
   readonly buildingFootprint?: { readonly type: 'Polygon' | 'MultiPolygon'; readonly coordinates: unknown };
   /** Source-supported per-model palette overrides; decals retain their original colors. */
   readonly materialOverrides?: Readonly<Record<string, string>>;
+  /** Build-time only (scripts/landmarks/material-slot-tags.ts statedOverrideExtras): the brick/accent `materialOverrides` were measured
+   *  from photos, so the export marks them `tintSource: 'measured'` and the city look draws them as stated instead of lifting them
+   *  onto the period brick cell. Opt-in per landmark (pools lane, 2026-11-16); absent, the export is unchanged. */
+  readonly measuredOverrides?: boolean;
   /** Human name, shown in the attribution panel. */
   readonly name: string;
   /** The landmark extract entry this model represents, so the existing card,

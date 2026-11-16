@@ -6204,31 +6204,87 @@
    "triangles": 271
   }
  },
+ "de-mirandabad": {
+  "sourceHash": "32c88595a37f3dbf",
+  "buildVersion": 2,
+  "bytes": 61368,
+  "triangles": 2602,
+  "lod2": {
+   "sourceHash": "32c88595a37f3dbf",
+   "buildVersion": 6,
+   "bytes": 18196,
+   "triangles": 665
+  }
+ },
+ "sportplaza-mercator": {
+  "sourceHash": "e5b583adec690a31",
+  "buildVersion": 2,
+  "bytes": 32644,
+  "triangles": 1141,
+  "lod2": {
+   "sourceHash": "e5b583adec690a31",
+   "buildVersion": 6,
+   "bytes": 9724,
+   "triangles": 259
+  }
+ },
  "flevoparkbad": {
   "lod2": {
-   "sourceHash": "061808599a489c69",
+   "sourceHash": "67b2b1f5ac4a8453",
    "buildVersion": 6,
-   "bytes": 8768,
+   "bytes": 8792,
    "triangles": 328
   }
  },
+ "brediusbad": {
+  "lod2": {
+   "sourceHash": "82231dff5ed6ebaa",
+   "buildVersion": 6,
+   "bytes": 5564,
+   "triangles": 168
+  }
+ },
  "noorderparkbad": {
-  "sourceHash": "1c03eae235b4582a",
+  "sourceHash": "28103a8bda6d274d",
   "buildVersion": 2,
-  "bytes": 42148,
+  "bytes": 42196,
   "triangles": 2540,
   "lod2": {
-   "sourceHash": "1c03eae235b4582a",
+   "sourceHash": "28103a8bda6d274d",
    "buildVersion": 6,
-   "bytes": 18448,
+   "bytes": 18472,
    "triangles": 1472
+  }
+ },
+ "sloterparkbad": {
+  "sourceHash": "8a03199d2f503155",
+  "buildVersion": 2,
+  "bytes": 38004,
+  "triangles": 1437,
+  "lod2": {
+   "sourceHash": "8a03199d2f503155",
+   "buildVersion": 6,
+   "bytes": 9228,
+   "triangles": 273
+  }
+ },
+ "zwembad-bijlmer": {
+  "sourceHash": "972ed0cfdae4e68a",
+  "buildVersion": 2,
+  "bytes": 55188,
+  "triangles": 2584,
+  "lod2": {
+   "sourceHash": "972ed0cfdae4e68a",
+   "buildVersion": 6,
+   "bytes": 9236,
+   "triangles": 267
   }
  },
  "victoriabad": {
   "lod2": {
-   "sourceHash": "7b02ebe0caa11377",
+   "sourceHash": "b1b2870d29f66e8d",
    "buildVersion": 6,
-   "bytes": 5336,
+   "bytes": 5360,
    "triangles": 144
   }
  }
