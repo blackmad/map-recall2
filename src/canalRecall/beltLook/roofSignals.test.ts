@@ -207,7 +207,26 @@ test('Centrum round 9: same-building candidates and one series per confirmed bui
   assert.deepEqual(out.row.series.map(x => x.id), ['s0', 's3+b0']);
   assert.equal(out.moved, 3);
   // no confirmed run in the row: the row is returned as is
-  assert.equal(oneSeriesPerBuilding(rec, [['zz', 'yy']]).row, rec);
+  assert.equal(oneSeriesPerBuilding(rec, [['zz', 'yy']]).row, rec);  // #392 Goudsbloemstraat 172514: one ground per building; the photo's no-souterrain reads win a 3/3 split, a tie draws none
+  const { oneBasement } = await import('./generate.ts');
+  const g = (id: string, basement: string) => ({ pandId: id, ground: { basement } });
+  const run = [g('1', 'stoop-and-windows'), g('2', 'stoop-and-windows'), g('3', 'stoop-and-windows'), g('4', 'none'), g('5', 'none'), g('6', 'none')];
+  assert.equal(oneBasement(run), 'none');
+  assert.equal(oneBasement(run, () => false), 'none');
+  assert.equal(oneBasement(run, () => true), 'stoop-and-windows');
+  assert.equal(oneBasement([g('1', 'windows'), g('2', 'windows'), g('3', 'none')]), 'windows');
+  const gr = { fronts: [{ ...f('1', 's2'), ground: { basement: 'stoop-and-windows' } }, { ...f('2', 's2'), ground: { basement: 'none' } }], series } as never;
+  assert.deepEqual(oneSeriesPerBuilding(gr, [['1', '2']], () => false).row.fronts.map((x: any) => x.ground.basement), ['none', 'none']);  // #392: a confirmed building under a roof storey stands at its fronts' median 3DBAG front top (Goudsbloemstraat 12.7-13.0)
+  const { sameBuildingTop } = await import('./generate.ts');
+  const gm = (id: string, e: number) => ({ pand: { id: `NL.IMBAG.Pand.${id}`, eavesM: e, heightM: 15.05, ridgeM: null } });
+  const grow = { members: ['172514', '172469', '172468', '172467', '172466', '172470'].map((id, i) => gm(`0363100012${id}`, [13, 12.9, 12.8, 12.9, 12.9, 12.7][i])) } as never;
+  const look = { sameBuildingRuns: [['0363100012172514', '0363100012172469', '0363100012172468', '0363100012172467', '0363100012172466', '0363100012172470']] };
+  const sd = { photoStoreys: 4, roofCap: true } as never;
+  const t0 = sameBuildingTop(13.76, '0363100012172514', grow, look, {}, sd);
+  assert.ok(t0 !== null && t0 < 13.2 && t0 >= 12.7, `${t0}`);
+  assert.equal(sameBuildingTop(13.76, '0363100012172514', grow, look, {}, { photoStoreys: 4 } as never), 13.76, 'no roof storey: unchanged');
+  assert.equal(sameBuildingTop(13.76, '0363100012999999', grow, look, {}, sd), 13.76, 'outside the run: unchanged');
+  assert.equal(sameBuildingTop(13.76, '0363100012172514', grow, look, {}, { photoStoreys: 5, roofCap: true } as never), 13.76, 'too low for the storeys: unchanged');
 });
 
 test('Centrum round 9 staged: Marnixplein 168305/168300/174907 one building; Kalkmarkt 182829 a souterrain the window cap reaches', async () => {

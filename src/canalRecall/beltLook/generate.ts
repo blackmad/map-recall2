@@ -200,6 +200,21 @@ export function underRoofStoreyTop(top: number | null, look: Pick<LookDistrict, 
   if (top === null || !pitch || !sd?.photoStoreys || !(t.roofStorey || sd.photoRoof || sd.roofCap)) return top;
   return +Math.max(af?.p50 ?? 0, Math.min(top, (sd.photoStoreys + (sd.photoSouterrain ? look.gableFootSouterrainShare ?? SOUTERRAIN_SHARE.souterrain : 0)) * pitch)).toFixed(2);
 }
+/** #392 (Goudsbloemstraat 172466-172514, one 1905 building of four storeys whose photo cornice stands ~12.5 m, drawn
+ *  13.76 m: the AHN band's p50 and the look's 3.43 m pitch both carry the roof storey behind the cornice; Marnixplein
+ *  168305/168300/174907, three storeys under a tiled roof, 12.51 m where 3DBAG's eaves are 11.7-12.0): a confirmed building
+ *  under a roof storey stands its cornice at its fronts' median 3DBAG front top, one line, when that is lower and still
+ *  gives the photo's storeys SAME_BUILDING_MIN_PITCH_M each. Outside a confirmed run nothing changes. */
+export const SAME_BUILDING_MIN_PITCH_M = 2.8;
+export function sameBuildingTop(top: number | null, pid: string, row: Pick<GenRow, 'members'>, look: Pick<LookDistrict, 'sameBuildingRuns'>, t: Pick<BeltTarget, 'roofStorey'>, sd: BeltStated | undefined): number | null {
+  if (top === null || !look.sameBuildingRuns || !(t.roofStorey || sd?.photoRoof || sd?.roofCap)) return top;
+  const run = look.sameBuildingRuns.find(r => r.includes(pid));
+  if (!run) return top;
+  const tops = row.members.filter(m => run.includes(pandNumber(m.pand.id))).map(m => frontTopM(m.pand.eavesM, m.pand.heightM, m.pand.ridgeM)).filter((x): x is number => x !== null).sort((a, b) => a - b);
+  if (tops.length < 2) return top;
+  const med = tops[Math.floor((tops.length - 1) / 2)];
+  return med < top && med >= (sd?.photoStoreys ?? 1) * SAME_BUILDING_MIN_PITCH_M ? +med.toFixed(2) : top;
+}
 /** A register-stated roof storey over a donor read with none: one plain dormer in a roof storey (the register's dakkapel). */
 export function statedDormer(a: DescriberAnswer): DescriberAnswer {
   const ar = a as { storeyParts?: { roof?: string }; dormers?: unknown; crown?: string };
@@ -330,7 +345,7 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     const gabled = GABLED_CROWNS.has(String(read.crown));
     const tall = !gabled && TALL_CORNICES.has(String((read as { cornice?: string }).cornice)) && (own ? true : !!sd?.tallCornice);
     const top0 = !gabled && (tall ? tallTop : ahnTop) !== null ? (tall ? tallTop : ahnTop) : corniceLine(read, t, eaves, m.pand.eavesM);
-    const top = gabled ? top0 : photoStoreyLift(underRoofStoreyTop(top0, look, t, sd, af), look, t, sd);
+    const top = gabled ? top0 : sameBuildingTop(photoStoreyLift(underRoofStoreyTop(top0, look, t, sd, af), look, t, sd), pid, row, look, t, sd);
     // A gable's apex: the AHN front's top under the 3DBAG ridge (the ridge often belongs to the roof behind the front).
     // The minimum rise counts from 3DBAG's own eaves, not the front top lifted to the height (round 6: Keizersgracht 178869
     // and 178868, AHN front tops 15.05 and 15.5 m, drawn 16.3 m as front top 14.3 + 2).
@@ -397,7 +412,7 @@ export function generateBelt(pands: readonly GenPand[], streets: readonly GenStr
     let rr = pitchedDormers(warehouseFronts(apexOnFront(measuredGables(dressed, input, donorFilled), input, ahn), stated), stated);
     if (look.sameBuildingRuns) {
       for (const c of sameBuildingCandidates(r, pid => stated.get(pid)?.year ?? null)) candidates.push(c);
-      const m = oneSeriesPerBuilding(rr, look.sameBuildingRuns); rr = m.row; merged += m.moved;
+      const m = oneSeriesPerBuilding(rr, look.sameBuildingRuns, pid => stated.get(pid)?.photoSouterrain); rr = m.row; merged += m.moved;
     }
     rows.push(rr);
     for (const m of r.members) fronts[pandNumber(m.pand.id)] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
@@ -429,7 +444,17 @@ export function sameBuildingCandidates(row: Pick<GenRow, 'members'>, statedYear:
  *  then the first); a field the base leaves plain (flat heads, no roof storey) takes another run series' stated one, and
  *  extras are their union (Marnixplein: s1 read segmental heads, s3 a tiled roof with dormers, s2 and s3 three storeys).
  *  The run draws as a new series `<base>+b<n>` so fronts outside it keep theirs. */
-export function oneSeriesPerBuilding(row: RowRecord, runs: readonly (readonly string[])[]): { row: RowRecord; moved: number } {
+/** One building has one ground: a confirmed run's fronts take one basement (#392 Goudsbloemstraat 172514: three of six
+ *  fronts drew a stoop over basement windows, read as a fifth storey, where the photo reads four and no souterrain).
+ *  Each front votes its photo souterrain read when it has one, else its own basement; a tie draws none (unstated is plain). */
+export function oneBasement(fs: ReadonlyArray<{ pandId: string; ground?: { basement?: string } }>, photoSouterrain: (pid: string) => boolean | undefined = () => undefined): string {
+  const own = fs.map(f => f.ground?.basement ?? 'none'), raised = own.find(b => b !== 'none') ?? 'stoop-and-windows';
+  const votes = new Map<string, number>();
+  fs.forEach((f, i) => { const p = photoSouterrain(f.pandId); const v = p === undefined ? own[i] : p ? (own[i] !== 'none' ? own[i] : raised) : 'none'; votes.set(v, (votes.get(v) ?? 0) + 1); });
+  const top = Math.max(...votes.values()), win = [...votes].filter(([, n]) => n === top).map(([v]) => v);
+  return win.length === 1 ? win[0] : win.includes('none') ? 'none' : win[0];
+}
+export function oneSeriesPerBuilding(row: RowRecord, runs: readonly (readonly string[])[], photoSouterrain?: (pid: string) => boolean | undefined): { row: RowRecord; moved: number } {
   let moved = 0, k = 0;
   const fronts = row.fronts.map(f => ({ ...f })), added: RowRecord['series'] = [];
   const byId = new Map(row.series.map(x => [x.id, x]));
@@ -452,7 +477,8 @@ export function oneSeriesPerBuilding(row: RowRecord, runs: readonly (readonly st
     if (extras.length && design.extras) design.extras = { ...design.extras, value: extras };
     const id = `${base.id}+b${k++}`;
     added.push({ ...base, id, label: `${base.label} (one building: ${run.join(', ')})`, design, fronts: [] });
-    for (const f of fs) { moved++; f.seriesId = id; f.overrides = {}; }
+    const basement = oneBasement(fs, photoSouterrain);
+    for (const f of fs) { moved++; f.seriesId = id; f.overrides = {}; if (f.ground && (f.ground.basement ?? 'none') !== basement) f.ground = { ...f.ground, basement: basement as typeof f.ground.basement }; }
   }
   if (!moved) return { row, moved };
   const series = [...row.series, ...added].map(x => ({ ...x, fronts: fronts.filter(f => f.seriesId === x.id).map(f => f.id) })).filter(x => x.fronts.length);
