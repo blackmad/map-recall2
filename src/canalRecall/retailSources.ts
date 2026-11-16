@@ -47,3 +47,16 @@ export function compareSources(src: readonly SourceRec[], osm: readonly OsmRec[]
   });
   return { verdicts, unmatched: osm.filter(o => !used.has(o)) };
 }
+
+// Lane retail-real round 5: a business Overture lists only as permanently closed. On 82 sampled template pands read
+// against 2025 panoramas, 5 of the 7 such were gone (vacant, another business, no shop) against 20 % for unflagged
+// ones (artifacts/retail-real/r5, audit-assignment.ts). An OSM check_date on or after CLOSED_CONFIRM keeps it, and so
+// does a brand: chain branches are the All the Places spiders' to confirm (the one sampled chain, an Etos, was open).
+export const CLOSED_CONFIRM = '2026-01-01';
+export type PlaceStatus = { name: string; status: string | null; d: number };
+/** Every same-name place within MATCH_M is permanently closed (and there is at least one), and OSM has not re-checked it since. */
+export function closedByOverture(name: string | undefined, places: readonly PlaceStatus[], checkDate?: string, brand?: string): boolean {
+  if (!name || brand || (checkDate && checkDate >= CLOSED_CONFIRM)) return false;
+  const same = places.filter(p => p.d <= MATCH_M && sameName(name, p.name));
+  return same.length > 0 && same.every(p => p.status === 'permanently_closed');
+}
