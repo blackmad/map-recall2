@@ -1004,3 +1004,23 @@ colour (our red-brown against grey-brown and dark brown).
 Next: a row read stands for its row only when the finish is brick; a painted read (dark, white, cream) is that pand's,
 and the rest of the row takes the street's brick. Red-brown reads are drawn too warm against dark-brown photos.
 Kit cannot say: set-back dormers, arched or dressed window heads, French-balcony railings.
+
+## Round 15 (2026-11-16): reader v2, painted houses, stated gables, the pitched AHN raise
+
+The Centrum reader v1+v2 files are merged from 7ce8206b6 (a6bdb645d). v2 (contrastive swatch card + lane D's crown
+vocabulary) re-read all 339 row cuts and 187 second captures; `assemble2` merges v1 (v1 red-brown against v2 brown is
+left unstated). 210 of 326 rows read at >= 0.7: brown-brick 102, red-brown 62 (round 14, v1 alone: red-brown 147).
+- `measured.photoReads`: every cut's read by pand. A paint/stucco read colours its own house only (14 houses), never
+  the row or the street.
+- A gable crown read at cc >= 0.75 crowns its series (rise 0.75 of the front, 2.5 m to the pitched cap) and takes the
+  mansard away: 8 houses (Eerste Jan Steenstraat 110869-159333 steps, Eerste van der Helststraat 165514 a point).
+- purple-brown-brick reads draw dark-brown-brick (the palette's purple-brown drew maroon).
+- `ahnFrontForms.pitchedRaiseM` 1.5: AHN's pitched eaves read a median 1.67 m under the drawn line district-wide; a
+  series where they stand 1.5 m over its 3DBAG line draws AHN's. 3 series: Stadhouderskade 166429 (11.75/13 -> 15.05/14.5
+  m; its judge saw four storeys under a cornice near 15-16 m), Tweede Jan van der Heijdenstraat 158156 (9.4 -> 12.5 m).
+
+Blind against today, 10 new clean rows (never tuned on, tuned streets excluded, ride-share weighted): 10 of 10 (7 high,
+3 medium: Ceintuurbaan 159149, 159761, 167153). The five round-14 losses: 5 of 5 (Stadhouderskade 158460 high: "keeps
+the dark painted middle house between brown brick neighbours"; the others medium). Judges' remaining notes: white
+plastered houses drawn brick where no cut read them (Eerste van der Helststraat), a storey too many on Ceintuurbaan
+153089, white arched window surrounds and keystones not drawn.
