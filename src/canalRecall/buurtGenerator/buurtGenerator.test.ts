@@ -223,3 +223,15 @@ test('round 19: a row note states the stair axis per member; the run counter bac
   assert.equal(runs.axes, 2); assert.deepEqual(runs.widthsM, [1.6, 1.6]);
   assert.deepEqual(baysOfCrop({ m, lines: [0, 3, 6], topM: 9 }), { bays: 2, src: 'runs', runs });
 });
+
+test('round 19: a panorama bay count moves the upper storeys, not the ground cells an entry redraws (Borssenburgstraat 073155)', () => {
+  const pands = [0, 1, 2].map(i => pand(i, 1929, 12.4)), id = (i: number) => pands[i].id.replace(/^NL\.IMBAG\.Pand\./, '');
+  const note = { 'teststraat-000000': { entries: [{ a: 0.5, kind: 'door' as const }], evidence: 'test' } };
+  const read = (b: number) => ({ bays: b, reads: [] });
+  const res = generateDistrict({ ...lib, rowNotes: note, measured: { bays: { [id(0)]: read(2), [id(1)]: read(2), [id(2)]: read(2) } } }, pands, streets, new Set(), 'test');
+  const plain = generateDistrict({ ...lib, rowNotes: note }, pands, streets, new Set(), 'test');
+  const cells = (g: typeof res) => (g.records[0] as { buurtKit?: { entries?: Array<{ cells?: number }> } }).buurtKit?.entries?.[0]?.cells;
+  assert.equal(res.rows[0].series[0].design.bays.value, 2);
+  assert.equal(cells(res), cells(plain), 'the ground keeps the width rule');
+  assert.notEqual(cells(res), 2);
+});

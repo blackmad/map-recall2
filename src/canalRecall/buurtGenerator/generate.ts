@@ -138,11 +138,11 @@ export function baysFor(widthM: number, d: Pick<DistrictDesign, 'axisM'>): numbe
  * when enough of them read and agree, else one per axis of the median front (`baysFor`). `why` names the read; null
  * on the width rule (the record's text is then as before).
  */
-export function seriesBaysFor(lib: DistrictLibrary, s: GenSeries, rowId: string): { bays: number; why: string | null } {
+export function seriesBaysFor(lib: DistrictLibrary, s: GenSeries, rowId: string): { bays: number; why: string | null; width: number } {
   const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b), width = baysFor(widths[widths.length >> 1], axisOf(lib, rowId));
   const read = lib.measured?.bays;
   const v = read ? seriesBaysOf(s.members.map(m => read[pandNumber(m.pand.id)]?.bays)) : null;
-  return v ? { bays: v.bays, why: `panorama count: ${v.agree} of ${v.read} members read ${v.bays} window axes (baysRead.ts; the width rule said ${width})` } : { bays: width, why: null };
+  return v ? { bays: v.bays, why: `panorama count: ${v.agree} of ${v.read} members read ${v.bays} window axes (baysRead.ts; the width rule said ${width})`, width } : { bays: width, why: null, width };
 }
 
 const pandNumber = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
@@ -367,7 +367,10 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   for (const r of res.rows) for (const s of r.series) {
     const rise = pitchedRiseOf(lib, s);
     const fam = s.eavesM === null ? null : familyFor(lib, storeysFor(s.eavesM, lib.design));
-    const bays = seriesBaysFor(lib, s, r.id).bays;
+    const sb = seriesBaysFor(lib, s, r.id), bays = sb.bays;
+    // Round 19: the panorama count reads the upper storeys; the ground storey the kit redraws (an entry's cells) has its
+    // own rhythm, so it keeps the width rule (Borssenburgstraat 073155: 2 read upstairs, about 4 openings on the ground).
+    const groundCells = sb.width;
     const pv = pitchedVariantOf(lib, s), roofHex = lib.rowNotes?.[r.id]?.roof?.hex ?? pv?.roofHex;
     // Blocks of two pands (family kit `piers`): the pier at every other party wall, phased by the row's photo if one
     // states it, else a block starting at the row's first member.
@@ -382,7 +385,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
       const own = note?.erkers?.[pid.slice(-6)], list = own ? own.map(x => ({ ...x })) : bag;
       return timber ? list.map(x => x.front ? x : { ...x, front: 'timber' as const }) : list;
     };
-    const ents = note?.entries ?? [], entryAt = (i: number): BuurtEntry | null => ents.length ? { ...ents[i % ents.length], cells: bays } : null;
+    const ents = note?.entries ?? [], entryAt = (i: number): BuurtEntry | null => ents.length ? { ...ents[i % ents.length], cells: groundCells } : null;
     // Round 10: the flat series' coping is the series', not the member's: when any drawn member hangs something on its
     // front (ribbon, erkers, eaves, entrance), every member draws it, so the roof line runs through (David on
     // Hunzestraat: the erker members' coping stood 0.55 m over their neighbours').
