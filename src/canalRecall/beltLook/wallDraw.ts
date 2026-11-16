@@ -65,7 +65,7 @@ export interface WallDrawFront {
 /** Weak reads a run needs to take their family (round 6). */
 export const WEAK_RUN_MIN = 3;
 /** `material`: 'painted-brick' for a paint family, else 'brick'. */
-export interface WallDrawn { family: JudgedFamily; hex: string; material: 'brick' | 'painted-brick' | 'stucco'; by: 'photo' | 'run-photo' | 'run-weak' | 'run-sample' | 'street' | 'draw' | 'series'; why: string }
+export interface WallDrawn { family: JudgedFamily; hex: string; material: 'brick' | 'painted-brick' | 'stucco'; by: 'photo' | 'run-photo' | 'run-weak' | 'run-weak-mix' | 'weak' | 'run-sample' | 'street' | 'draw' | 'series'; why: string }
 export const isBrickFamily = (f: JudgedFamily): boolean => f.endsWith('-brick');
 export const periodOf = (y: number | null): 'before1860' | 'from1860' => (y !== null && y >= 1860 ? 'from1860' : 'before1860');
 
@@ -109,11 +109,18 @@ export function drawRowWalls(fronts: readonly WallDrawFront[], cfg: WallDrawConf
       const f = brickFromSample(s);
       fam = { family: f, by: 'run-sample', why: `${JUDGED_PALETTE[f].label}: the run's ${samples.length} own cut samples, median L ${s.L.toFixed(2)} C ${s.C.toFixed(3)}` };
     } else if (st) fam = { family: st, by: 'street', why: `${JUDGED_PALETTE[st].label}: the street's own reads agree` };
+    else if (weak.length >= WEAK_RUN_MIN && weak.every(isBrickFamily)) {
+      // Centrum round 8 (Westeinde 171768-178343: nine weak reads, purple-brown 4, brown 3, dark-grey 2, none a majority,
+      // drawn the district's red-brown on every house): a run of weak brick reads that do not agree draws from them, not the lot.
+      const pick = weak[Math.floor(unit(`${fr[0].pandId}:weak`) * weak.length)];
+      fam = { family: pick, by: 'run-weak-mix', why: `${JUDGED_PALETTE[pick].label}: drawn from the run's ${weak.length} weak photo reads, which do not agree` };
+    }
     else fam = { family: brickPick, by: 'draw', why: `${JUDGED_PALETTE[brickPick].label} from the district's measured ${per === 'from1860' ? 'from-1860' : 'before-1860'} brick` };
     for (const i of run) {
       const f = fronts[i], s = f.series ? seriesFamily.get(f.series) : undefined;
       let d: Omit<WallDrawn, 'hex' | 'material'> = f.photo ? { family: f.photo, by: 'photo', why: `${JUDGED_PALETTE[f.photo].label}: its own photo read` }
-        : s ? { family: s.family, by: 'series', why: `its series' ${JUDGED_PALETTE[s.family].label}` } : fam;
+        : s ? { family: s.family, by: 'series', why: `its series' ${JUDGED_PALETTE[s.family].label}` }
+        : fam.by === 'run-weak-mix' && f.weakPhoto ? { family: f.weakPhoto, by: 'weak', why: `${JUDGED_PALETTE[f.weakPhoto].label}: its own weak photo read (the run's do not agree)` } : fam;
       if (!f.photo && f.brickOnly && !isBrickFamily(d.family)) d = { family: brickPick, by: 'draw', why: `${JUDGED_PALETTE[brickPick].label}: its own read saw brick where its run is painted` };
       const material = isBrickFamily(d.family) ? 'brick' : f.photo && f.photoStucco ? 'stucco' : 'painted-brick';
       const w: WallDrawn = { ...d, hex: variedTone(d.family, f.pandId), material };

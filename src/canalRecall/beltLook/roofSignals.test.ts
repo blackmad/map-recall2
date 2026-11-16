@@ -128,3 +128,20 @@ test('Centrum round 7 staged: crowns re-read on another capture, photo roofs, th
   // Goudsbloemstraat 172514: four storeys under a roof storey, the wall at the photo's storeys (not the band's 14.8)
   assert.ok(jo.get('172514').topM < 14.2, `172514 ${jo.get('172514').topM}`);
 });
+
+test('Centrum round 8 staged: tall cornices under a roof storey, a weak gable over a wide band, Westeinde and Prinsengracht walls', async () => {
+  const fs = await import('node:fs');
+  const load = (d: string) => {
+    const url = new URL(`../../../data/buurt-generators/${d}/row-front.json`, import.meta.url);
+    return fs.existsSync(url) ? new Map((JSON.parse(fs.readFileSync(url, 'utf8')).records as any[]).map(r => [r.pandId.slice(-6), r])) : null;
+  };
+  const dw = load('de-weteringschans'), nm = load('nieuwmarkt-lastage'), jo = load('jordaan');
+  if (!dw || !nm || !jo) return;
+  // Goudsbloemstraat 172466-172470: bracketed cornices under dormers, all at the photo storeys (4 x 3.44), not the band's 14.8
+  for (const id of ['172514', '172469', '172466', '172470']) assert.ok(jo.get(id).topM < 14.2, `${id} ${jo.get(id).topM}`);
+  // Kloveniersburgwal 177789: a weak step gable (third capture) over an AHN band 18.1-21.2 m: drawn gabled to ~22 m
+  assert.equal(nm.get('177789').crown.family, 'step'); assert.ok(nm.get('177789').topM >= 21);
+  // Westeinde: no red-brown; Prinsengracht 179167 and 168251 dark-grey (a weak purple-brown over a dark neutral cut)
+  for (const id of ['171768', '178339', '178341', '178342', '178343']) assert.ok(!JSON.stringify(dw.get(id)).includes('red-brown brick'), id);
+  for (const id of ['179167', '168251']) assert.ok(JSON.stringify(dw.get(id)).includes('nearly grey'), id);
+});

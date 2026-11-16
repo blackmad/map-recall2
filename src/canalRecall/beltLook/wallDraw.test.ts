@@ -146,3 +146,14 @@ test('round 6 staged: the losses that drew red or orange where the photo is dark
     for (const x of rowWalls(n, row)) assert.ok(!['orange-red-brick', 'red-brown-brick', 'buff-brick'].includes(familyOf(x.src)!), `${row} ${x.id}: ${x.src}`);
   assert.equal(familyOf(rowWalls(n, 'nieuwmarkt-lastage-raamgracht-178142').find(x => x.id.endsWith('178111'))!.src), 'dark-grey-brick');
 });
+
+test('round 8: a run of weak brick reads that do not agree draws from them, each front its own (Westeinde 171768-178343)', () => {
+  const cfg = { before1860: { 'red-brown-brick': 1 }, from1860: { 'red-brown-brick': 1 }, runSamples: 9 } as const;
+  const f = (id: string, weakPhoto?: JudgedFamily) => ({ pandId: id, year: 1885, free: true, ...(weakPhoto ? { weakPhoto } : {}) });
+  const w = drawRowWalls([f('a', 'purple-brown-brick'), f('b', 'brown-brick'), f('c', 'dark-grey-brick'), f('d', 'purple-brown-brick'), f('e')], cfg);
+  assert.deepEqual(w.slice(0, 4).map(x => x!.family), ['purple-brown-brick', 'brown-brick', 'dark-grey-brick', 'purple-brown-brick']);
+  assert.ok(['purple-brown-brick', 'brown-brick', 'dark-grey-brick'].includes(w[4]!.family));
+  assert.ok(w.every(x => x!.family !== 'red-brown-brick'));
+  // under three weak reads the lot draws as before
+  assert.equal(drawRowWalls([f('a', 'purple-brown-brick'), f('b', 'brown-brick'), f('e')], cfg)[2]!.by, 'draw');
+});
