@@ -391,7 +391,10 @@ test('round 10 pins on the staged belt (data/buurt-generators/belt/row-front.jso
   // Singel 177196 (held-out round 10, Singel 177194 house 2): a photo bell over four storeys stands its foot at 11.2 m (four
   // storeys at 2.8 m, under the AHN apex 13.43 m less 2 m), not on 3DBAG's rear eave 8.7 m with two storeys.
   assert.equal(rec('177196').storeys, 4);
-  assert.equal(rec('177196').eavesM, 11.2);
+  // Round 12: at the belt's gable foot pitch (3.0 m) the foot is 12 m and the apex 15.5 m (the 2023 pano: shoulders ~12 m,
+  // the neck's top ~16.5 m; AHN's 13.43 m misses the thin top).
+  assert.equal(rec('177196').eavesM, 12);
+  assert.ok(rec('177196').topM! >= 15);
 });
 
 test('round 11: two crown reads on different captures, and the photo colour read', async () => {
@@ -437,4 +440,45 @@ test('round 11 pins on the staged belt (data/buurt-generators/belt/row-front.jso
   // Prinsengracht 167557 (Keizersgracht side street): painted black brick drawn pale grey stucco from a colourless paint read.
   assert.match(rec('167557').sources?.wall ?? '', /^judged painted-black \(photo colour read/);
   assert.equal(rec('167557').wall?.finish, 'painted-brick');
+});
+
+test('round 12: pale blocks (adjacent stucco or stone members) are one front', async () => {
+  const { paleEvidence, paleRuns, paleBlockWalls } = await import('./generate.ts');
+  assert.equal(paleEvidence({ finish: 'plaster' }), true);
+  assert.equal(paleEvidence({ finish: 'brick', photoColour: { finish: 'stucco', family: 'pale-grey', confidence: 0.9 } }), false);
+  assert.equal(paleEvidence(undefined, { finish: 'stone' } as never), true);
+  assert.equal(paleEvidence({ photoColour: { finish: 'stucco', family: 'white-paint', confidence: 0.75 } }), true);
+  assert.equal(paleEvidence({ photoColour: { finish: 'stucco', family: 'white-paint', confidence: 0.6 } }), false);
+  assert.deepEqual(paleRuns([true, false, true, true, true, false, true]), [[2, 3, 4]]);
+  const recs = [
+    { pandId: 'a', wall: { hex: '#111111', source: 'judged', finish: 'brick' }, sources: { wall: 'judged brown-brick' } },
+    { pandId: 'b', wall: { hex: '#cccccc', source: 'judged', finish: 'stone' }, sources: { wall: 'judged grey-stone' } },
+    { pandId: 'c', wall: { hex: '#dddddd', source: 'judged', finish: 'stucco' }, sources: { wall: 'judged pale-grey-stucco (photo colour read 0.8)' } },
+  ] as never[];
+  assert.equal(paleBlockWalls(recs, [['a', 'b', 'c']]), 2);
+  assert.deepEqual((recs as { wall: { hex: string; finish: string } }[]).map(r => r.wall.hex + r.wall.finish), ['#ddddddstucco', '#ddddddstucco', '#ddddddstucco']);
+});
+
+test('round 12 pins on the staged belt: roof storeys on photo evidence, gable feet at the photo storeys, pale blocks', async () => {
+  const fs = await import('node:fs');
+  const { BELT_LOOK, BELT_GABLE_FOOT_PITCH_M } = await import('./donors.ts');
+  assert.equal(BELT_LOOK.roofStoreyNeedsPhoto, true);
+  assert.equal(BELT_LOOK.gableFootPitchM, BELT_GABLE_FOOT_PITCH_M);
+  type Rec = { crown?: { family?: string }; storeys?: number; eavesM?: number; topM?: number; wall?: { hex?: string; finish?: string }; series?: { roofStorey?: { kind?: string } } };
+  const recs = new Map<string, Rec>(JSON.parse(fs.readFileSync('data/buurt-generators/belt/row-front.json', 'utf8')).records.map((r: { pandId: string }) => [r.pandId, r]));
+  const rec = (id: string) => recs.get(`0363100012${id}`)!;
+  // Singel 177346 and 177518: one flat 17.6 m cornice in the photo; no gable, no roof storey (no photo roof read).
+  for (const id of ['177346', '177518']) {
+    assert.equal(rec(id).crown?.family, 'cornice');
+    assert.equal(rec(id).series?.roofStorey?.kind ?? 'none', 'none');
+  }
+  // Keizersgracht 176021: a neck over three storeys and a souterrain, its foot ~11.3 m and apex ~15.5 m on the 2025 pano;
+  // drawn 8.83 / 13.03 before round 12.
+  assert.ok(rec('176021').eavesM! >= 11 && rec('176021').topM! >= 15, `176021 ${rec('176021').eavesM}/${rec('176021').topM}`);
+  // Keizersgracht 169442 row: 172281 (register stone, own read stone) and 172282 (register stone, a donor) are one stone
+  // front, no donor gable; 172271 (register plaster, own read not-visible) is drawn stucco, not its neighbours' brick.
+  assert.equal(rec('172281').wall?.hex, rec('172282').wall?.hex);
+  assert.equal(rec('172282').wall?.finish, 'stone');
+  assert.equal(rec('172282').crown?.family, 'cornice');
+  assert.equal(rec('172271').wall?.finish, 'stucco');
 });

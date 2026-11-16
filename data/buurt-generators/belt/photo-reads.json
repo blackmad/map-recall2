@@ -32112,7 +32112,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.55
-   }
+   },
+   "crown": "cornice",
+   "cornice": "simple",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.55,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012179390": {
    "finish": "brick",
@@ -35747,7 +35754,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "cornice",
+   "cornice": "simple",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.55,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012178983": {
    "finish": "brick",
@@ -36767,14 +36781,28 @@
     "finish": "paint",
     "family": "white-paint",
     "confidence": 0.7
-   }
+   },
+   "crown": "flat",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.5,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012168582": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.9,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171676": {
    "colour": {
@@ -36802,7 +36830,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.7,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012168204": {
    "colour": {
@@ -36907,7 +36942,14 @@
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012178860": {
    "colour": {
@@ -36949,7 +36991,14 @@
     "finish": "stucco",
     "family": "pale-grey",
     "confidence": 0.65
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.6,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171564": {
    "colour": {
@@ -37005,7 +37054,14 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "raised-neck",
+   "cornice": "simple",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171597": {
    "colour": {
@@ -37040,7 +37096,14 @@
     "finish": "stucco",
     "family": "pale-grey",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.85,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171667": {
    "colour": {
@@ -37110,14 +37173,28 @@
     "finish": "brick",
     "family": "orange-red-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "step",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.9,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171746": {
    "colour": {
     "finish": "unclear",
     "family": "unclear",
     "confidence": 0.3
-   }
+   },
+   "crown": "not-visible",
+   "cornice": "not-visible",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.6,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171737": {
    "colour": {
@@ -37131,14 +37208,28 @@
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.5
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.7,
+   "sc": 0.85,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171744": {
    "colour": {
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.55
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.85,
+   "sc": 0.9,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171895": {
    "colour": {
@@ -37166,7 +37257,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176171": {
    "colour": {
@@ -37208,14 +37306,28 @@
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.4
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176536": {
    "colour": {
     "finish": "stucco",
     "family": "pale-grey",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "simple",
+   "full": 3,
+   "souterrain": null,
+   "cc": 0.7,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176591": {
    "colour": {
@@ -37236,14 +37348,28 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": null,
+   "cc": 0.85,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012177600": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.85,
+   "sc": 0.85,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012177601": {
    "colour": {
@@ -37292,21 +37418,42 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.9,
+   "sc": 0.85,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012179336": {
    "colour": {
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.9,
+   "sc": 0.85,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012185847": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012179628": {
    "colour": {
@@ -37334,7 +37481,14 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012179105": {
    "colour": {
@@ -37355,14 +37509,28 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.55,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012180311": {
    "colour": {
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012180310": {
    "colour": {
@@ -37404,7 +37572,14 @@
     "finish": "paint",
     "family": "other-paint",
     "confidence": 0.55
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.65,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012167962": {
    "colour": {
@@ -37502,7 +37677,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.55
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.65,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012165028": {
    "colour": {
@@ -37523,7 +37705,14 @@
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.55,
+   "sc": 0.65,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012167482": {
    "colour": {
@@ -37544,7 +37733,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.8
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.7,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012179305": {
    "colour": {
@@ -37558,14 +37754,28 @@
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.5
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.6,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012179307": {
    "colour": {
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.8
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": null,
+   "cc": 0.8,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012167486": {
    "colour": {
@@ -37579,14 +37789,28 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": null,
+   "cc": 0.8,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012167491": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012167654": {
    "colour": {
@@ -37607,7 +37831,14 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.55
-   }
+   },
+   "crown": "raised-neck",
+   "cornice": "simple",
+   "full": 2,
+   "souterrain": null,
+   "cc": 0.55,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012167652": {
    "colour": {
@@ -37656,7 +37887,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.5,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012167694": {
    "colour": {
@@ -37712,14 +37950,28 @@
     "finish": "unclear",
     "family": "unclear",
     "confidence": 0.3
-   }
+   },
+   "crown": "not-visible",
+   "cornice": "not-visible",
+   "full": null,
+   "souterrain": null,
+   "cc": 0.9,
+   "sc": 0.9,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012167742": {
    "colour": {
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.55
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": null,
+   "cc": 0.55,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012167734": {
    "colour": {
@@ -37775,14 +38027,28 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": null,
+   "cc": 0.75,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176756": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.4
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.5,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012167899": {
    "colour": {
@@ -37803,7 +38069,14 @@
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012179303": {
    "colour": {
@@ -37845,7 +38118,14 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012168067": {
    "colour": {
@@ -37873,7 +38153,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.6,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172359": {
    "colour": {
@@ -37901,21 +38188,42 @@
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.85,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169118": {
    "colour": {
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.5
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.75,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169155": {
    "colour": {
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.45
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.55,
+   "sc": 0.55,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169194": {
    "colour": {
@@ -38013,14 +38321,28 @@
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "cornice",
+   "cornice": "simple",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.55,
+   "sc": 0.85,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169294": {
    "colour": {
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169293": {
    "colour": {
@@ -38034,7 +38356,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176404": {
    "colour": {
@@ -38048,14 +38377,28 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.85,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169295": {
    "colour": {
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "step",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.85,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169306": {
    "colour": {
@@ -38069,21 +38412,42 @@
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.85,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169361": {
    "colour": {
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.7,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169359": {
    "colour": {
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169380": {
    "colour": {
@@ -38111,7 +38475,14 @@
     "finish": "paint",
     "family": "white-paint",
     "confidence": 0.85
-   }
+   },
+   "crown": "point",
+   "cornice": "none",
+   "full": 5,
+   "souterrain": false,
+   "cc": 0.85,
+   "sc": 0.65,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172277": {
    "colour": {
@@ -38125,7 +38496,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": null,
+   "cc": 0.8,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172281": {
    "colour": {
@@ -38160,21 +38538,42 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.8
-   }
+   },
+   "crown": "point",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172289": {
    "colour": {
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.65,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169513": {
    "colour": {
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.85,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169575": {
    "colour": {
@@ -38188,7 +38587,14 @@
     "finish": "stucco",
     "family": "white-paint",
     "confidence": 0.6
-   }
+   },
+   "crown": "step",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.85,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172357": {
    "colour": {
@@ -38293,14 +38699,28 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.9,
+   "sc": 0.65,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171415": {
    "colour": {
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.55
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.65,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171419": {
    "colour": {
@@ -38314,14 +38734,28 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.55
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": null,
+   "cc": 0.7,
+   "sc": 0.55,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171417": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.85,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171420": {
    "colour": {
@@ -38335,49 +38769,98 @@
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.9,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171444": {
    "colour": {
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.55
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.6,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171526": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171525": {
    "colour": {
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.7,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171508": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.9,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012182816": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.9,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012182817": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012182814": {
    "colour": {
@@ -38412,7 +38895,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100100092426": {
    "colour": {
@@ -38426,7 +38916,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.8
-   }
+   },
+   "crown": "point",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.65,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171663": {
    "colour": {
@@ -38454,7 +38951,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.8
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172154": {
    "colour": {
@@ -38468,14 +38972,28 @@
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.65
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.65,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172155": {
    "colour": {
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.65
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": null,
+   "cc": 0.75,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172156": {
    "colour": {
@@ -38503,7 +39021,14 @@
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "point",
+   "cornice": "attic-frieze",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.6,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172171": {
    "colour": {
@@ -38531,7 +39056,14 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "step",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.9,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172208": {
    "colour": {
@@ -38636,21 +39168,42 @@
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.4
-   }
+   },
+   "crown": "not-visible",
+   "cornice": "not-visible",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.6,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172290": {
    "colour": {
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.9,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012185769": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172293": {
    "colour": {
@@ -38685,7 +39238,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.7,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172353": {
    "colour": {
@@ -38720,7 +39280,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "bell",
+   "cornice": "simple",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.85,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172365": {
    "colour": {
@@ -38762,7 +39329,14 @@
     "finish": "stucco",
     "family": "white-paint",
     "confidence": 0.8
-   }
+   },
+   "crown": "neck",
+   "cornice": "simple",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.7,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172407": {
    "colour": {
@@ -38825,7 +39399,14 @@
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "point",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.85,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012174331": {
    "colour": {
@@ -38839,14 +39420,28 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.85,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012174758": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.9,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012174759": {
    "colour": {
@@ -38902,7 +39497,14 @@
     "finish": "paint",
     "family": "cream-paint",
     "confidence": 0.65
-   }
+   },
+   "crown": "point",
+   "cornice": "simple",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.6,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012174947": {
    "colour": {
@@ -38972,7 +39574,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.9,
+   "sc": 0.65,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012175953": {
    "colour": {
@@ -38993,7 +39602,14 @@
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.9,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176020": {
    "colour": {
@@ -39007,7 +39623,14 @@
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.9,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176023": {
    "colour": {
@@ -39028,7 +39651,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "point",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.75,
+   "sc": 0.65,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176027": {
    "colour": {
@@ -39063,14 +39693,28 @@
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.9,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176067": {
    "colour": {
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.85,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176162": {
    "colour": {
@@ -39119,7 +39763,14 @@
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.85,
+   "sc": 0.85,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176423": {
    "colour": {
@@ -39140,21 +39791,42 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176478": {
    "colour": {
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.7,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176483": {
    "colour": {
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176484": {
    "colour": {
@@ -39182,7 +39854,14 @@
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176746": {
    "colour": {
@@ -39196,21 +39875,42 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.65
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 5,
+   "souterrain": false,
+   "cc": 0.65,
+   "sc": 0.55,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176751": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176749": {
    "colour": {
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.55,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176758": {
    "colour": {
@@ -39238,14 +39938,28 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.55
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.75,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012177537": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "step",
+   "cornice": "simple",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.55,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012177269": {
    "colour": {
@@ -39259,14 +39973,28 @@
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.7,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012177271": {
    "colour": {
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.85,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012177273": {
    "colour": {
@@ -39378,14 +40106,28 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.55
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.5,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012177650": {
    "colour": {
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012177649": {
    "colour": {
@@ -39406,7 +40148,14 @@
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.7,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012177641": {
    "colour": {
@@ -39455,7 +40204,14 @@
     "finish": "brick",
     "family": "purple-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.65,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012178128": {
    "colour": {
@@ -39476,7 +40232,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.5
-   }
+   },
+   "crown": "point",
+   "cornice": "simple",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.55,
+   "sc": 0.55,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012178666": {
    "colour": {
@@ -39518,14 +40281,28 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.8,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012178868": {
    "colour": {
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.6
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.8,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171058": {
    "colour": {
@@ -39581,7 +40358,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.75,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012178164": {
    "colour": {
@@ -39672,14 +40456,28 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.75
-   }
+   },
+   "crown": "point",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.75,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169509": {
    "colour": {
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.8
-   }
+   },
+   "crown": "cornice",
+   "cornice": "simple",
+   "full": 5,
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012169100": {
    "colour": {
@@ -39693,21 +40491,42 @@
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "cornice",
+   "cornice": "simple",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.55,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176528": {
    "colour": {
     "finish": "stucco",
     "family": "white-paint",
     "confidence": 0.7
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.7,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176402": {
    "colour": {
     "finish": "unclear",
     "family": "unclear",
     "confidence": 0.3
-   }
+   },
+   "crown": "not-visible",
+   "cornice": "not-visible",
+   "full": null,
+   "souterrain": true,
+   "cc": 0.6,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171596": {
    "colour": {
@@ -39721,7 +40540,14 @@
     "finish": "unclear",
     "family": "unclear",
     "confidence": 0.3
-   }
+   },
+   "crown": "not-visible",
+   "cornice": "not-visible",
+   "full": null,
+   "souterrain": null,
+   "cc": 0.5,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012176395": {
    "colour": {
@@ -39749,7 +40575,14 @@
     "finish": "brick",
     "family": "red-brown-brick",
     "confidence": 0.7
-   }
+   },
+   "crown": "step",
+   "cornice": "none",
+   "full": 2,
+   "souterrain": false,
+   "cc": 0.85,
+   "sc": 0.6,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012172425": {
    "colour": {
@@ -39770,7 +40603,14 @@
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.45
-   }
+   },
+   "crown": "pitched-eaves",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.55,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171584": {
    "colour": {
@@ -39798,7 +40638,14 @@
     "finish": "brick",
     "family": "dark-grey-brick",
     "confidence": 0.5
-   }
+   },
+   "crown": "neck",
+   "cornice": "none",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.6,
+   "sc": 0.65,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012165083": {
    "colour": {
@@ -39833,21 +40680,42 @@
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.55
-   }
+   },
+   "crown": "cornice",
+   "cornice": "simple",
+   "full": 4,
+   "souterrain": true,
+   "cc": 0.85,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012178670": {
    "colour": {
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.65
-   }
+   },
+   "crown": "mansard",
+   "cornice": "attic-frieze",
+   "full": 3,
+   "souterrain": true,
+   "cc": 0.65,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012178768": {
    "colour": {
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.65
-   }
+   },
+   "crown": "cornice",
+   "cornice": "frieze",
+   "full": 4,
+   "souterrain": false,
+   "cc": 0.55,
+   "sc": 0.65,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012171024": {
    "colour": {
@@ -39868,14 +40736,28 @@
     "finish": "paint",
     "family": "dark-paint",
     "confidence": 0.75
-   }
+   },
+   "crown": "pitched-eaves",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.5,
+   "sc": 0.5,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012174855": {
    "colour": {
     "finish": "brick",
     "family": "brown-brick",
     "confidence": 0.6
-   }
+   },
+   "crown": "bell",
+   "cornice": "none",
+   "full": 3,
+   "souterrain": false,
+   "cc": 0.6,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 10)"
   },
   "0363100012174856": {
    "colour": {
@@ -39941,6 +40823,6 @@
    }
   }
  },
- "crownRef": "lane D rounds 10-11: photo crown reader on two capture dates (mergeCrownReads)",
+ "crownRef": "lane D round 10: photo crown reader (crown, cornice, full storeys; describer prompt v4.3 rules)",
  "colourRef": "lane D round 11: the Centrum colour-family reader (scripts/centrum-looks/photo-reads.ts, b14c917fc) on the belt cuts"
 }

@@ -15,7 +15,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { districtPands, namedStreets, describedPands } from '../buurt-generators/generate.ts';
 import type { DistrictLibrary } from '../../src/canalRecall/buurtGenerator/generate.ts';
-import { generateBelt, photoColourWalls, photoCrown, photoFinish, registerRoofStorey, specPhotoDisagree, type BeltPhoto, type BeltRead, type BeltStated, type PhotoColour } from '../../src/canalRecall/beltLook/generate.ts';
+import { generateBelt, paleBlockWalls, photoColourWalls, photoCrown, photoFinish, PHOTO_ROOF_MIN, registerRoofStorey, specPhotoDisagree, type BeltPhoto, type BeltRead, type BeltStated, type PhotoColour } from '../../src/canalRecall/beltLook/generate.ts';
 import type { AhnFront } from '../../src/canalRecall/beltLook/ahnFront.ts';
 import { usableDonor, segmentOf, type BeltDonor } from '../../src/canalRecall/beltLook/donors.ts';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.ts';
@@ -124,7 +124,10 @@ async function main() {
     // The photo crown reader (round 10): a gabled crown where the register states none, a tall cornice, the storey count.
     const pc = photoCrown(typeof r.cc === 'number' ? r : undefined), crown = !cur.crown && pc.crown ? pc.crown : undefined;
     if (crown) photoCrowns++;
-    if (fin || ph || crown || pc.tallCornice || pc.storeys || colour) stated.set(pid, { ...cur, ...(fin ? { finish: fin } : {}), ...(ph ? { photo: ph } : {}), ...(crown ? { crown } : {}), ...(colour ? { photoColour: colour } : {}),
+    // Round 12: a roof in view on the photo (mansard or pitched eaves at PHOTO_ROOF_MIN), the evidence BELT_LOOK's measured
+    // roof storey needs (roofStoreyNeedsPhoto).
+    const roof = typeof r.cc === 'number' && r.cc >= PHOTO_ROOF_MIN && ['mansard', 'pitched-eaves'].includes(r.crown);
+    if (fin || ph || crown || pc.tallCornice || pc.storeys || colour || roof) stated.set(pid, { ...cur, ...(roof ? { photoRoof: true } : {}), ...(fin ? { finish: fin } : {}), ...(ph ? { photo: ph } : {}), ...(crown ? { crown } : {}), ...(colour ? { photoColour: colour } : {}),
       ...(pc.tallCornice ? { tallCornice: pc.tallCornice } : {}), ...(pc.storeys ? { photoStoreys: pc.storeys } : {}), ...(pc.souterrain !== undefined ? { photoSouterrain: pc.souterrain } : {}) });
   }
   // Measured AHN street fronts (scripts/belt-look/ahn-fronts.ts, staged); --no-ahn draws from 3DBAG alone.
@@ -133,6 +136,7 @@ async function main() {
   const res = generateBelt(pands, streets, described, reads, donors, at, stated, ahn);
   const records = res.rows.flatMap(r => rowFrontsWithSeries(r));
   const photoColours = photoColourWalls(records, stated);
+  const paleBlockFronts = paleBlockWalls(records, res.paleBlocks ?? []);
   fs.mkdirSync(out, { recursive: true });
   fs.writeFileSync(path.join(out, 'row-front.json'), JSON.stringify({ version: 1, district: 'belt', generatedAt: at, records }));
   fs.writeFileSync(path.join(out, 'rows.json'), JSON.stringify({ district: 'belt', rows: res.rows }));
@@ -154,7 +158,7 @@ async function main() {
   const specColourFlags = Object.keys(res.provenance).map(id => ({ id, f: specPhotoDisagree(stated.get(id)) })).filter(x => x.f).map(x => ({ pandId: x.id, ...x.f! }));
   fs.writeFileSync(path.join(out, 'spec-colour-flags.json'), JSON.stringify(specColourFlags, null, 1));
   const report = { at, specColourFlags: specColourFlags.length, buurten: BELT_BUURTEN, ahnFronts: ahn.size, overSpecs, specOnlyRedrawn: Object.keys(res.provenance).filter(id => specOnly.has(id)).length, pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length, laneDRowPands: [...rowsD].filter(id => pands.some(p => p.id.endsWith(id))).length,
-    drawn: drawn.length, ownRead: own, donorRead: drawn.length - own, rows: res.rows.length, records: records.length, donors: donors.length, skipped: bySkip, bySegment: bySeg, crowns, findings, photoCrowns, photoColours, statedCrown: Object.keys(res.provenance).filter(id => stated.get(id)?.crown).length, ms: Date.now() - t0 };
+    drawn: drawn.length, ownRead: own, donorRead: drawn.length - own, rows: res.rows.length, records: records.length, donors: donors.length, skipped: bySkip, bySegment: bySeg, crowns, findings, photoCrowns, photoColours, paleBlocks: (res.paleBlocks ?? []).length, paleBlockFronts, photoRoofs: [...stated.values()].filter(v => v.photoRoof).length, roofStoreys: records.filter(r => r.series?.roofStorey && r.series.roofStorey.kind !== "none").length, statedCrown: Object.keys(res.provenance).filter(id => stated.get(id)?.crown).length, ms: Date.now() - t0 };
   fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify({ ...report, skippedList: res.skipped }, null, 1));
   console.log(JSON.stringify(report, null, 1));
 }

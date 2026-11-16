@@ -120,10 +120,19 @@ export interface LookDistrict {
   /** roofSignals.ts: a roof storey (one dormer) over a cornice front whose 3DBAG ridge stands 2 m over the front top. */
   measuredRoofStorey?: boolean;
 }
+/** The belt's gable foot pitch (m a storey, round 12), measured on the belt's confident photo storey reads against AHN:
+ *  gabled (neck, bell, raised-neck) fronts' band p50 over their storeys, p25 2.81 and median 3.16 (n 156; the p50 stands
+ *  a little over the foot, where the neck's cells lift it), so 3.0; Centrum's cornice measure (p25 of p90 over storeys)
+ *  gives 3.40 on the belt (n 239), too tall for a gable house's storeys (Keizersgracht 176021: four storeys under an
+ *  11.5 m foot on the 2025 pano). */
+export const BELT_GABLE_FOOT_PITCH_M = 3.0;
 /** The belt sets flatTopNoGable (round 9: 0 belt fronts change today, a guard for Keizersgracht 171508's kind). It leaves
  *  measuredRoofStorey off: it would add a roof storey to 160 belt cornice fronts, and an opus read of 15 of their cuts saw
  *  a dormer on 5, a bare slope on 2 and nothing over the cornice on 8 (a ridge behind a belt cornice is not a dormer). */
-export const BELT_LOOK: LookDistrict = { id: 'belt', canals: BELT_CANALS, pitchM: PITCH_M, foreignDonor: 0, flatTopNoGable: true };
+/** Round 12 (lane D, Centrum round 6's two rules on the belt): the measured roof storey now stands only where the photo
+ *  crown reader sees a roof in view (photoRoof: mansard or pitched eaves at PHOTO_ROOF_MIN), which answers the 160-front
+ *  objection above; a gable over a photo storey count stands its foot at BELT_GABLE_FOOT_PITCH_M a storey. */
+export const BELT_LOOK: LookDistrict = { id: 'belt', canals: BELT_CANALS, pitchM: PITCH_M, foreignDonor: 0, flatTopNoGable: true, measuredRoofStorey: true, roofStoreyNeedsPhoto: true, gableFootPitchM: BELT_GABLE_FOOT_PITCH_M };
 /** A warehouse's floor pitch (m): pakhuis floors are low (2.4-3.0 m in the belt's read warehouses), so the eaves hold more storeys. */
 export const WAREHOUSE_PITCH_M = 2.7;
 /** Gap sentences naming a house's own ornament, which a donor does not lend: balconies, porches, aedicules, rustication,

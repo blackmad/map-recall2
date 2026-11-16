@@ -126,6 +126,8 @@ export interface BeltGenResult {
   /** Per drawn pand, where its design came from. */
   provenance: Record<string, { own: true; ref: string } | { donor: string; distance: number; rank: number; of: number }>;
   skipped: Array<{ id: string; reason: 'described' | 'no-front' | 'single' | 'minor' | 'no-donor' }>;
+  /** Round 12: runs of adjacent stucco or stone members drawn as one front (paleBlockWalls). */
+  paleBlocks?: string[][];
   fronts: Record<string, { street: string; a: readonly [number, number]; b: readonly [number, number]; lengthM: number }>;
 }
 
@@ -209,8 +211,13 @@ export function ahnGableApex(a: AhnFront | undefined, foot: number | null, ridge
 /** A generator row as a row-solve input: own reads where read, donors' fitted reads elsewhere. `ahn`: measured AHN street
  *  fronts per pand (ahnFront.ts): a cornice front stands at its band's p90, a gable's apex at its band's top (held-out
  *  round 5 judges' photo heights matched AHN where 3DBAG's eaves and height did not). */
-export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, prov: BeltGenResult['provenance'], stated: ReadonlyMap<string, BeltStated> = new Map(), ahn: ReadonlyMap<string, AhnFront> = new Map(), look: LookDistrict = BELT_LOOK): RowInput | null {
+export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, prov: BeltGenResult['provenance'], stated: ReadonlyMap<string, BeltStated> = new Map(), ahn: ReadonlyMap<string, AhnFront> = new Map(), look: LookDistrict = BELT_LOOK, blocks?: string[][]): RowInput | null {
   const members: MemberInput[] = [];
+  // Round 12 (Keizersgracht 169442: a stone and stucco block drawn as brick with gables): adjacent members whose finish is
+  // read stucco or stone are one front; none takes a donor's gable.
+  const runs = paleRuns(row.members.map(m => { const pid = pandNumber(m.pand.id); return paleEvidence(stated.get(pid), reads.get(pid)?.answer); }));
+  const inBlock = new Set(runs.flatMap(r => r.map(i => pandNumber(row.members[i].pand.id))));
+  for (const r of runs) blocks?.push(r.map(i => pandNumber(row.members[i].pand.id)));
   for (const m of row.members) {
     // The front's top (frontTopM: 3DBAG's eaves is often a rear eave under the street cornice).
     const pid = pandNumber(m.pand.id), eaves = frontTopM(m.pand.eavesM, m.pand.heightM, m.pand.ridgeM), ridge0 = m.pand.ridgeM;
@@ -227,9 +234,21 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     // A pand's own read keeps an attic it saw; dormers read over a cornice are not a mansard front unless the register
     // states one (held-out round 5: Keizersgracht 176027-176028 and 165044 drew whole slate mansards from one dormer
     // each), and a read mansard stands as dormers (round 7 sample: one read mansard in five was one).
-    if (own) { read = t.roofStorey ? mansardAsDormers(structuredClone(own.answer)) : stripRoofStorey(structuredClone(own.answer), true); sample = own.sample; readRef = own.ref; prov[pid] = { own: true, ref: own.ref }; }
+    if (own) {
+      read = t.roofStorey ? mansardAsDormers(structuredClone(own.answer)) : stripRoofStorey(structuredClone(own.answer), true); sample = own.sample; readRef = own.ref; prov[pid] = { own: true, ref: own.ref };
+      // Round 12: a stated plaster or stone finish stands where the pand's own read could not see the wall (Keizersgracht
+      // 172271, register plaster, read not-visible, drawn purple-brown brick from its neighbours).
+      const rf = read as { finish?: string; pale?: boolean };
+      if ((t.finish === 'plaster' || t.finish === 'stone') && (!rf.finish || rf.finish === 'not-visible')) { rf.finish = t.finish === 'plaster' ? 'stucco' : 'stone'; rf.pale = true; }
+      // Round 12 (Keizersgracht 176021, a neck over four storeys read as three and drawn 2 m low): under a look's gable foot
+      // pitch, an own gable takes the photo crown reader's storey count (the AHN band's p50 giving it a plausible pitch).
+      if (look.gableFootPitchM && GABLED_CROWNS.has(String(read.crown)) && sd?.photoStoreys) {
+        const ps = plausiblePhotoStoreys(sd.photoStoreys, sd.photoSouterrain, af ? af.p50 : eaves);
+        if (ps) { photoStoreys = ps; (read as { storeys?: number | string }).storeys = ps; }
+      }
+    }
     else {
-      const d = donorFor(t, flatTop ? donors.filter(x => !GABLED_CROWNS.has(String(x.answer.crown))) : donors, look);
+      const d = donorFor(t, flatTop || inBlock.has(pid) ? donors.filter(x => !GABLED_CROWNS.has(String(x.answer.crown))) : donors, look);
       if (!d) return null;
       // A cornice front stands at 3DBAG's representative height (its storeys fitted to it); a gable's foot stays at the
       // front top, the gable rising to the ridge.
@@ -275,7 +294,10 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     // storeys drawn 14.6 m where the photo shows about 18; AHN's 0.5 m cells and 3DBAG's ridge both miss a thin neck): the
     // foot stands at the photo's storeys at that pitch, and the apex at least the crown's rise over it.
     if (look.gableFootPitchM && gabled && photoStoreys && ridge !== null && top !== null) {
-      foot = +Math.max(top, photoStoreys * look.gableFootPitchM).toFixed(2);
+      // Round 12: a souterrain under the storeys stands its share of a storey (gableFootPitch measures it so).
+      // The floor is the AHN band's p50 (else 3DBAG's own eave) under `top`: a gable's frontTopM is lifted to 3DBAG's
+      // height, near the apex (round 12: Keizersgracht 176021 floored at 13.01 m lifted its apex to 16.51, the photo ~15.5).
+      foot = +Math.max(Math.min(top, af ? af.p50 : m.pand.eavesM ?? top), (photoStoreys + (sd?.photoSouterrain ? SOUTERRAIN_SHARE.souterrain : 0)) * look.gableFootPitchM).toFixed(2);
       ridge = +Math.max(ridge, foot + (GABLE_RISE_FLOOR_M[String(read.crown)] ?? AHN_BOUNDS.gableMinRiseM)).toFixed(2);
     }
     members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: t.year, widthM: +m.front.lengthM.toFixed(2),
@@ -309,13 +331,13 @@ export function relabelDonorFields(row: RowRecord, donorFilled: ReadonlySet<stri
  * read); `donors` the usable reads the look draws from.
  */
 export function generateBelt(pands: readonly GenPand[], streets: readonly GenStreet[], described: ReadonlySet<string>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], at: string, stated: ReadonlyMap<string, BeltStated> = new Map(), ahn: ReadonlyMap<string, AhnFront> = new Map(), look: LookDistrict = BELT_LOOK): BeltGenResult {
-  const skipped: BeltGenResult['skipped'] = [], provenance: BeltGenResult['provenance'] = {}, fronts: BeltGenResult['fronts'] = {};
+  const skipped: BeltGenResult['skipped'] = [], provenance: BeltGenResult['provenance'] = {}, fronts: BeltGenResult['fronts'] = {}, paleBlocks: string[][] = [];
   const free = pands.filter(p => { const d = described.has(pandNumber(p.id)); if (d) skipped.push({ id: pandNumber(p.id), reason: 'described' }); return !d; });
   const res = districtRows(free, streets, { singles: true });
   for (const u of res.unplaced) skipped.push({ id: pandNumber(u.id), reason: u.reason });
   const rows: RowRecord[] = [];
   for (const r of res.rows) {
-    const input = beltRowInput(r, reads, donors, at, provenance, stated, ahn, look);
+    const input = beltRowInput(r, reads, donors, at, provenance, stated, ahn, look, paleBlocks);
     if (!input) { for (const m of r.members) skipped.push({ id: pandNumber(m.pand.id), reason: 'no-donor' }); continue; }
     const donorFilled = new Set(input.members.filter(m => 'donor' in provenance[m.pandId]).map(m => m.pandId));
     const elements = new Map(input.members.map(m => [m.pandId, stated.get(m.pandId)?.elements ?? []]));
@@ -323,7 +345,7 @@ export function generateBelt(pands: readonly GenPand[], streets: readonly GenStr
     rows.push(pitchedDormers(warehouseFronts(apexOnFront(measuredGables(dressed, input, donorFilled), input, ahn), stated), stated));
     for (const m of r.members) fronts[pandNumber(m.pand.id)] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
   }
-  return { rows, provenance, skipped, fronts };
+  return { rows, provenance, skipped, fronts, paleBlocks };
 }
 
 /** A donor-filled gable's measured rise: the 3DBAG ridge less the front top, held to this band (m). */
@@ -423,6 +445,8 @@ export function apexOnFront(row: RowRecord, input: RowInput, ahn: ReadonlyMap<st
  * where the register states no finish and no published spec states a colour draws the front in its family's tone.
  */
 export const PHOTO_COLOUR_MIN = 0.7;
+/** A photo crown read of a roof in view (mansard or pitched eaves) at this confidence is a photoRoof (round 12; Centrum round 6's PHOTO_ROOF_MIN). */
+export const PHOTO_ROOF_MIN = 0.6;
 export interface PhotoColour { finish: string; family: string; confidence: number }
 /** The reader's families onto the judged palette (scripts/centrum-looks/generate.ts PHOTO_FAMILY). */
 export const PHOTO_COLOUR_FAMILY: Readonly<Record<string, JudgedFamily>> = {
@@ -452,4 +476,55 @@ export function photoColourWalls(records: RowFrontRecord[], stated: ReadonlyMap<
     r.sources = { ...r.sources, wall: `judged ${w.family} (photo colour read ${stated.get(pid)!.photoColour!.confidence}: ${JUDGED_PALETTE[w.family].label}; ${BELT_LOOK_REF})` };
   }
   return tally;
+}
+
+/**
+ * Round 12 (held-out round 11's loss, Keizersgracht 169442: a grey stone and stucco block drawn as red and brown brick
+ * with donor gables): a member's finish is pale when the register or the photo finish reader states plaster or stone, its
+ * own read saw stucco or stone, or a confident photo colour read (PHOTO_COLOUR_MIN) names stucco or pale grey. A stated
+ * brick or painted finish is not pale, whatever the colour read.
+ */
+export function paleEvidence(sd: BeltStated | undefined, own?: DescriberAnswer): boolean {
+  if (sd?.finish === 'plaster' || sd?.finish === 'stone') return true;
+  if (sd?.finish) return false;
+  const f = (own as { finish?: string } | undefined)?.finish;
+  if (f === 'stucco' || f === 'stone') return true;
+  if (f === 'brick' || f === 'painted-brick') return false;
+  const c = sd?.photoColour;
+  return !!c && c.confidence >= PHOTO_COLOUR_MIN && (c.finish === 'stucco' || c.family === 'pale-grey');
+}
+/** The least run of adjacent pale members drawn as one front. */
+export const PALE_BLOCK_MIN = 2;
+/** Runs (member indexes) of at least PALE_BLOCK_MIN adjacent pale members. */
+export function paleRuns(pale: readonly boolean[]): number[][] {
+  const out: number[][] = [];
+  let cur: number[] = [];
+  for (let i = 0; i <= pale.length; i++) {
+    if (i < pale.length && pale[i]) { cur.push(i); continue; }
+    if (cur.length >= PALE_BLOCK_MIN) out.push(cur);
+    cur = [];
+  }
+  return out;
+}
+/**
+ * A pale block's members share one wall: the first member whose wall came from a photo read (a colour read or the cut's
+ * sample), else the block's first member that is drawn stucco or stone. Returns the number of fronts whose wall changed.
+ */
+export function paleBlockWalls(records: RowFrontRecord[], blocks: readonly (readonly string[])[]): number {
+  const byPid = new Map(records.map(r => [String(r.pandId).replace(/^NL\.IMBAG\.Pand\./, ''), r]));
+  let changed = 0;
+  for (const b of blocks) {
+    const rs = b.map(p => byPid.get(p)).filter((r): r is RowFrontRecord => !!r?.wall);
+    if (rs.length < PALE_BLOCK_MIN) continue;
+    const pale = (r: RowFrontRecord) => r.wall!.finish === 'stucco' || r.wall!.finish === 'stone';
+    const lead = rs.find(r => pale(r) && /photo/.test(r.sources?.wall ?? '')) ?? rs.find(pale);
+    if (!lead) continue;
+    for (const r of rs) {
+      if (r === lead) continue;
+      if (r.wall!.hex !== lead.wall!.hex || r.wall!.finish !== lead.wall!.finish) changed++;
+      r.wall = { ...r.wall!, hex: lead.wall!.hex, finish: lead.wall!.finish };
+      r.sources = { ...r.sources, wall: `${lead.sources?.wall ?? 'judged'}; one front with ${b.join(', ')} (pale block, round 12)` };
+    }
+  }
+  return changed;
 }
