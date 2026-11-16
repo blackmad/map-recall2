@@ -28,6 +28,7 @@ import { insideCentre, RING_KM, DAM } from '../../src/canalRecall/retailArea.ts'
 import { streetPriors, type StreetRead } from '../../src/canalRecall/retailPuiPaint.ts';
 import { bikeShopClass, bikeCode } from '../../src/canalRecall/retailBikes.ts';
 import { closedByOverture, sameName, MATCH_M } from '../../src/canalRecall/retailSources.ts';
+import { correctionFor, type SignRead } from '../../src/canalRecall/retailSignReads.ts';
 import { addressPand, atOnStreetWall, matchAddress, type Vbo } from '../../src/canalRecall/retailAddress.ts';
 
 import { CACHE, nodes, LAT0, KX, KY, local, grid, streets, walls, facing, open, near, bagUses, bagKey, namedSegs, lngLatOf, type Building, type Node } from './city.ts';
@@ -152,7 +153,32 @@ if (samples) {
     for (const [id, p] of pick) console.log(`sample ${t} ${bagKey(id)} ${p.at.join(',')} ${p.tags}`);
   }
 }
+// Lane retail-real round 6: the sign reads (retailSignReads.ts correctionFor), a correction layer over OSM read off the
+// newest facing panorama; `--no-reads` stages without it. Receipts (panorama, date, reader, confidence) stay in READS.
+const READS = 'data/retail-ground/sign-reads.json', neutral: string[] = [], quiet: string[] = [], readCount: Record<string, number> = {};
+if (!process.argv.includes('--no-reads') && fs.existsSync(READS)) {
+  const reads = (JSON.parse(fs.readFileSync(READS, 'utf8')) as { reads: Record<string, SignRead> }).reads;
+  for (const [id, p] of [...placed]) {
+    const r = reads[bagKey(id)]; if (!r || r.node !== p.node) continue;
+    const c = correctionFor(r, templateForTags);
+    readCount[c.action] = (readCount[c.action] ?? 0) + 1;
+    if (c.action === 'keep') continue;
+    if (c.action === 'template') {
+      if (c.template === p.t) { readCount.sameTemplate = (readCount.sameTemplate ?? 0) + 1; continue; }
+      const chain = chainOf(c.tags);
+      placed.set(id, { ...p, chain: chain ?? undefined, t: c.template, name: c.tags.name ?? '', tags: Object.entries(c.tags).map(([k, v]) => `${k}=${v}`).join(' ') + ' source=sign-read', bike: c.template === 'bike' ? bikeShopClass(c.tags) : undefined });
+      if (!chain) delete placed.get(id)!.chain;
+      if (c.template !== 'bike') delete placed.get(id)!.bike;
+      continue;
+    }
+    placed.delete(id);
+    (c.action === 'quiet' ? quiet : neutral).push(id);
+  }
+  console.log(`sign reads (${READS}): ${JSON.stringify(readCount)}; ${neutral.length} neutral fronts, ${quiet.length} quiet pands`);
+}
 const out = { version: 1, source: '© OpenStreetMap contributors (ODbL), Overpass ' + new Date(fs.statSync(CACHE).mtime).toISOString().slice(0, 10), templates: [...RETAIL_TEMPLATES], buildings: Object.fromEntries([...placed].sort().map(([id, p]) => [id, [RETAIL_TEMPLATES.indexOf(p.t), p.at[0], p.at[1], ...(p.chain ? [`@${p.chain}`] : TEMPLATE_LOOKS[p.t].word === 'name' && signWord(p.name) ? [signWord(p.name)] : p.front === 'nearest' ? [''] : []), ...(p.front === 'nearest' ? [1] : [])]])) };
+if (neutral.length) Object.assign(out, { neutral: neutral.sort() });
+if (quiet.length) Object.assign(out, { quiet: quiet.sort() });
 // Lane retail-real (coordinator 2026-11-16): lane R's De Wallen audit (data/retail-ground/dewallen-redlight-audit.json,
 // from 394d2f52b, used as data). The 27 window rows carry their measured window front as the row's sixth field
 // ({s: [lng0, lat0, lng1, lat1] the span on the front line, d doors, t tube, c curtains, f frame hex}); the 18 closed or
