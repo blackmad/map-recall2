@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { drawRedLightFront, redLightDoors, redLightFrontOf, RED_LIGHT_LOOK, type FrontPanelSink } from './redLightFront.ts';
+import { windowFrontsOf } from '../buurtGenerator/kit/frontKit.ts';
 
 type Rec = { kind: 'panel' | 'box'; a0: number; a1: number; z0: number; z1: number; hex: string; lit?: boolean };
 const recorder = () => {
@@ -38,6 +39,7 @@ test('red-light front: a tube per door and curtains gathered over a dark room (1
   assert.ok(curtains.every(c => c.a1 - c.a0 < 0.5), 'gathered: a third of the door');
   assert.deepEqual(redLightFrontOf({ doors: 0, tube: 'neon', frameHex: 'red', curtains: 'gathered', headM: 9 }), { curtains: 'gathered' });
   assert.equal(redLightDoors(0, 0.5).length, 0, 'too narrow: nothing');
+  assert.deepEqual(windowFrontsOf([{ a0: 0.1, a1: 0.9, doors: 3 }, { a0: 0.5, a1: 0.52 }, null, { a0: -1, a1: 1 }]), [{ a0: 0.1, a1: 0.9, doors: 3 }]);
 });
 
 test('red-light front: tube none draws no tube (round 17: a sign band or awning over the head)', () => {

@@ -10,6 +10,7 @@
  * of the line, within the member's span, move), so the front is one run, and the erker is drawn as what it is, a bay on
  * the upper storeys (roofKit.ts `drawErkers`). Pure: no fs, no DOM.
  */
+import { redLightFrontOf, type RedLightFront } from '../../groundParts/redLightFront.js';
 export type LngLat = readonly [number, number];
 /** One erker on a member's front: its base span (fractions of the front line, left to right as seen), depth and face width (m). */
 export interface BuurtErker { a0: number; a1: number; depthM: number; faceM: number;
@@ -53,6 +54,11 @@ export interface BuurtKitFront {
   raised?: KitRaised[];
   /** The upper storeys' window rhythm (singles and the stair pair) drawn by the kit (round 4, roofKit.ts drawRhythm). */
   rhythm?: true;
+  /** Round 19 (lane R): one narrow stair light per upper storey at `a` (left to right as seen) and `wide` wide windows
+   *  over the rest of the front, drawn by the kit over a brick plate (roofKit.ts drawStairAxis). */
+  stairAxis?: KitStairAxis;
+  /** Round 21: the upper storeys' windows as the photo counts them, `n` of them `widthM` wide (KitCounted). */
+  counted?: KitCounted;
   /** What stands at each party wall: a block's end pier or its middle (pair) wall (round 4). */
   sides?: { left?: 'pier' | 'pair'; right?: 'pier' | 'pair' };
   /** A flat series' low coping (erkers or ribbon on it) in the series brick, read as the parapet it is (round 3). */
@@ -67,7 +73,19 @@ export interface BuurtKitFront {
   balconies?: KitBalcony[];
   /** Small-paned upper sashes (round 14): `KitPanes`. */
   panes?: KitPanes;
+  /** Canted folds of the front (round 15): `KitCant`. */
+  cants?: KitCant[];
+  /** Ground-storey window fronts (round 16, De Wallen): `KitWindowFront`. */
+  windowFronts?: KitWindowFront[];
 }
+/** A De Wallen window front over [a0, a1] of the front (groundParts/redLightFront.ts), from the pavement. */
+export type KitWindowFront = { a0: number; a1: number } & RedLightFront;
+/** Stated window fronts from untrusted JSON: a span inside the front, unknown fields dropped. */
+export const windowFrontsOf = (v: unknown): KitWindowFront[] => (Array.isArray(v) ? v : []).flatMap(w => {
+  if (!w || typeof w !== 'object') return [];
+  const a0 = Number((w as { a0?: unknown }).a0), a1 = Number((w as { a1?: unknown }).a1), f = redLightFrontOf(w);
+  return f && Number.isFinite(a0) && Number.isFinite(a1) && a0 >= 0 && a1 <= 1 && a1 - a0 > 0.05 ? [{ a0, a1, ...f }] : [];
+});
 /**
  * A flat series' broad eaves. `overhangM` the slab's reach over the street; `frieze` absent the Rooseveltlaan lattice
  * frieze under it, `false` none. Round 13 (lane R), each drawn only when stated:
@@ -92,10 +110,37 @@ export interface KitAttic { heightM?: number; pitchM?: number }
  *  parapet, Amstelkade's block parapets, Rubensstraat's and Borssenburgstraat's piers): across [a0, a1] of the front (left
  *  to right as seen), `riseM` over the line, `outM` proud of the wall (absent: flush; a proud part runs from the pavement
  *  and hides the windows behind it, so it is for piers and fins between windows). */
-export interface KitRaised { a0: number; a1: number; riseM: number; outM?: number }
+export interface KitRaised { a0: number; a1: number; riseM: number; outM?: number;
+  /** Round 20 (lane R), Amsterdam School massing: `faceM` the part over the line stands on a projecting wing's face this
+   *  far out from the front (Amsteldijk 076326's 1.3 m wings rise over the court between them; from the line, the
+   *  windows under it stay); `lights` windows in each storey over the line (a corner tower's top storeys, Uithoornstraat
+   *  067867/125303); `depthM` how far the part reaches back over the roof (a tower's mass; absent: RAISED_LOOK.backM), and
+   *  a part stating it stands on a pitched series too, through its mansard (Haringvlietstraat 062635's corner tower). */
+  faceM?: number; lights?: number; depthM?: number }
 export const raisedOf = (v: unknown): KitRaised[] => (Array.isArray(v) ? v : []).filter((r): r is KitRaised => !!r && typeof r === 'object'
   && [r.a0, r.a1, r.riseM].every(Number.isFinite) && r.a0 >= 0 && r.a1 <= 1 && r.a1 - r.a0 > 0.005 && r.riseM > 0.1 && r.riseM <= 6)
-  .map(r => ({ a0: r.a0, a1: r.a1, riseM: r.riseM, ...(Number.isFinite(r.outM) && r.outM! > 0 && r.outM! <= 1.5 ? { outM: r.outM } : {}) }));
+  .map(r => ({ a0: r.a0, a1: r.a1, riseM: r.riseM, ...(Number.isFinite(r.outM) && r.outM! > 0 && r.outM! <= 1.5 ? { outM: r.outM } : {}),
+    ...(!r.outM && Number.isFinite(r.faceM) && r.faceM! > 0 && r.faceM! <= 3 ? { faceM: r.faceM } : {}), ...(Number.isInteger(r.lights) && r.lights! >= 1 && r.lights! <= 6 ? { lights: r.lights } : {}),
+    ...(Number.isFinite(r.depthM) && r.depthM! > 0.35 && r.depthM! <= 12 ? { depthM: r.depthM } : {}) }));
+export interface KitStairAxis { a: number; wide: number }
+/** Round 21 (lane R): the upper windows a panorama counts on the series (baysRead.ts seriesCountedOf), `n` across a
+ *  front, each `widthM` wide (the members' median measured run, frames included), evenly spaced; drawn by the kit over
+ *  a brick plate so the painted cells (still the width rule's) are hidden upstairs. Blind judges preferred the width
+ *  rule's narrow cells to fewer cells stretched to fill wider bays (round r, Olympiaplein 103838): the count changes
+ *  only with the measured width. */
+export interface KitCounted { n: number; widthM: number }
+export const KIT_COUNTED = { minWidthM: 0.6, maxWidthM: 1.9, maxN: 8 } as const;
+export function countedOf(v: unknown): KitCounted | null {
+  if (!v || typeof v !== 'object') return null;
+  const x = v as { n?: unknown; widthM?: unknown }, n = Number(x.n), w = Number(x.widthM);
+  return Number.isInteger(n) && n >= 1 && n <= KIT_COUNTED.maxN && w >= KIT_COUNTED.minWidthM && w <= KIT_COUNTED.maxWidthM ? { n, widthM: w } : null;
+}
+/** A stated stair axis, validated: `a` inside the front, 1-6 wide windows beside it. */
+export function stairAxisOf(v: unknown): KitStairAxis | null {
+  if (!v || typeof v !== 'object') return null;
+  const x = v as { a?: unknown; wide?: unknown }, a = Number(x.a), wide = Number(x.wide);
+  return a > 0 && a < 1 && Number.isInteger(wide) && wide >= 1 && wide <= 6 ? { a, wide } : null;
+}
 export function kitAtticOf(v: unknown): KitAttic | null {
   if (!v || typeof v !== 'object') return null;
   const x = v as { heightM?: unknown; pitchM?: unknown }, h = Number(x.heightM), p = Number(x.pitchM);
@@ -152,7 +197,7 @@ export const kitFrontM = (k: BuurtKitFront): number => {
 export const KIT_MULLION_SHARE = 0.3;
 /** A flat series draws the low coping when the kit hangs anything on its front (erkers, ribbon, rhythm, piers). */
 /** Round 10: a member carrying its series' `copingHex` draws the coping too (the series line runs through). */
-export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.sides || k.loggias || k.eaves || k.entries?.length || k.balconies?.length || k.panes || k.copingHex);
+export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.stairAxis || k.counted || k.sides || k.loggias || k.eaves || k.entries?.length || k.balconies?.length || k.panes || k.cants?.length || k.windowFronts?.length || k.copingHex);
 /** A flat series with erkers draws its lid as a low coping behind the white cornice ledge (m), the erkers on it. */
 export const KIT_FLAT_RISE_M = 0.55;
 
@@ -213,6 +258,80 @@ export function erkersOf(ring: readonly XY[], lineA: XY, lineB: XY, n: XY): Buur
   return found.sort((p, q) => p.a0 - q.a0);
 }
 
+/** A canted part of the front (round 15, lane R; Amstelkade's block joints): BAG draws the wall folding out of the front
+ *  line to a point `outM` in front of it at `ap` and back, over [a0, a1] (fractions, left to right as seen); `ap` at a
+ *  party wall is one cheek of a V the neighbour closes. The wall is straightened through it (one run for the mesher's
+ *  cells) and the kit draws the fold as a brick prism from the pavement to the line (`drawCants`). */
+/** `plates` (round 16): brick over the window cells the cant half covers (cantsOnCells), as an erker's plates. */
+export interface KitCant { a0: number; ap: number; a1: number; outM: number; plates?: Array<[number, number]> }
+/** A cant is a joint's fold, gradual and small (Amstelkade's BAG: 0.38-0.53 m out over 0.7-1.4 m): its outer face (the
+ *  points within CANT_FACE_TOL_M of its depth) spans under CANT_FACE_M, a cheek runs at least CANT_SLOPE times its depth
+ *  along the front, it is at most CANT_MAX_M out and CANT_MAX_WIDTH_M wide. A wider or deeper pointed run is a bay
+ *  (Lekstraat 109063: 0.87 m out over 2.4 m), left to the erkers. */
+export const CANT_MIN_M = 0.25, CANT_MAX_M = 0.6, CANT_MAX_WIDTH_M = 1.6, CANT_FACE_M = 0.6, CANT_FACE_TOL_M = 0.1, CANT_SLOPE = 1.5;
+export const cantsValid = (v: unknown): KitCant[] => (Array.isArray(v) ? v : []).filter((c): c is KitCant => !!c && typeof c === 'object'
+  && [c.a0, c.ap, c.a1, c.outM].every(Number.isFinite) && c.a0 >= 0 && c.a1 <= 1 && c.a0 <= c.ap && c.ap <= c.a1 && c.a1 - c.a0 > 0.01 && c.outM > 0.1 && c.outM <= ERKER_MAX_M)
+  .map(c => {
+    const plates = (Array.isArray(c.plates) ? c.plates : []).filter((q): q is [number, number] => Array.isArray(q) && q.length === 2 && q.every(Number.isFinite) && q[0] >= 0 && q[1] <= 1 && q[1] > q[0]).map(q => [q[0], q[1]] as [number, number]);
+    return { a0: c.a0, ap: c.ap, a1: c.a1, outM: c.outM, ...(plates.length ? { plates } : {}) };
+  });
+/** The cants on the series' window cells (round 16): a cell whose window the cant covers in part is bricked over from
+ *  the cell's edge to the cant (Amstelkade 091497, 105304: the end window stood cut by the fold), as erkersOnCells does
+ *  for an erker. A window clear of the cant, or wholly behind it, is left. */
+export function cantsOnCells(cants: readonly KitCant[], bays: number, windowShare = 0.71): KitCant[] {
+  if (!(bays >= 1)) return cants.map(c => ({ ...c }));
+  const cw = 1 / bays;
+  return cants.map(k => {
+    const plates: Array<[number, number]> = [];
+    for (let c = 0; c < bays; c++) {
+      const w0 = (c + (1 - windowShare) / 2) * cw, w1 = (c + (1 + windowShare) / 2) * cw;
+      if (w0 < k.a0 && w1 > k.a0) plates.push([+(c * cw).toFixed(4), +k.a0.toFixed(4)]);
+      if (w1 > k.a1 && w0 < k.a1) plates.push([+k.a1.toFixed(4), +((c + 1) * cw).toFixed(4)]);
+    }
+    return { a0: k.a0, ap: k.ap, a1: k.a1, outM: k.outM, ...(plates.length ? { plates } : {}) };
+  });
+}
+/**
+ * The cants of one front (generator side, local metres; erkersOf's frame). A run of vertices in front of the line (more
+ * than ERKER_MIN_M, at most ERKER_MAX_M) whose deepest point is a ridge rather than a face, its cheek gradual: the run's
+ * ends where it leaves and rejoins the line, or the front's end when the run reaches it.
+ */
+export function cantsOf(ring: readonly XY[], lineA: XY, lineB: XY, n: XY): KitCant[] {
+  const L = len(sub(lineB, lineA));
+  if (!(L > 1)) return [];
+  const u = { x: (lineB.x - lineA.x) / L, y: (lineB.y - lineA.y) / L };
+  const pts = ring.length > 1 && ring[0].x === ring[ring.length - 1].x && ring[0].y === ring[ring.length - 1].y ? ring.slice(0, -1) : ring.slice();
+  const N = pts.length, off = pts.map(p => dot(sub(p, lineA), n)), t = pts.map(p => dot(sub(p, lineA), u));
+  const inSpan = (i: number) => t[i] > -SPAN_MARGIN_M && t[i] < L + SPAN_MARGIN_M;
+  const out = (i: number) => off[i] > ERKER_MIN_M * 0.5 && off[i] <= ERKER_MAX_M && inSpan(i);
+  const near = (i: number) => Math.abs(off[i]) <= ERKER_MIN_M * 0.5 && inSpan(i);
+  const start = pts.findIndex((_, i) => near(i));
+  if (start < 0) return [];
+  const found: KitCant[] = [];
+  let run: number[] = [];
+  const END_M = 0.2, end = (tt: number) => tt < END_M ? 0 : tt > L - END_M ? L : null;
+  for (let k = 1; k <= N; k++) {
+    const i = (start + k) % N;
+    if (out(i)) { run.push(i); continue; }
+    if (run.length) {
+      const before = (run[0] - 1 + N) % N, after = i, depth = Math.max(...run.map(j => off[j]));
+      const apex = run.reduce((b, j) => off[j] > off[b] ? j : b, run[0]);
+      const ends = [near(before) ? t[before] : end(t[run[0]]), near(after) ? t[after] : end(t[run[run.length - 1]])];
+      const face = run.filter(j => off[j] >= depth - CANT_FACE_TOL_M).map(j => t[j]);
+      if (ends[0] !== null && ends[1] !== null && depth >= CANT_MIN_M && depth <= CANT_MAX_M && Math.max(...face) - Math.min(...face) < CANT_FACE_M
+        && Math.abs(ends[1] - ends[0]) <= CANT_MAX_WIDTH_M) {
+        const t0 = Math.min(ends[0], ends[1]), t1 = Math.max(ends[0], ends[1]), tp = Math.max(t0, Math.min(t1, t[apex]));
+        // At a front end the apex is the end itself (the neighbour carries on the V).
+        const ap = end(tp) ?? tp;
+        if (Math.max(ap - t0, t1 - ap) >= CANT_SLOPE * depth)
+          found.push({ a0: +Math.max(0, t0 / L).toFixed(4), ap: +(ap / L).toFixed(4), a1: +Math.min(1, t1 / L).toFixed(4), outM: +depth.toFixed(2) });
+      }
+    }
+    run = [];
+  }
+  return found.sort((p, q) => p.a0 - q.a0);
+}
+
 /** A record's `buurtKit`, validated; null when absent or malformed. */
 export function buurtKitOf(v: unknown): BuurtKitFront | null {
   if (!v || typeof v !== 'object') return null;
@@ -226,11 +345,11 @@ export function buurtKitOf(v: unknown): BuurtKitFront | null {
   const rr = k.roof as { dormers?: unknown; eavesM?: unknown; eavesFrieze?: unknown } | undefined, eavesM = Number(rr?.eavesM);
   const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM), ...(hex ? { roofHex: hex } : {}),
     ...(rr?.dormers === false ? { dormers: false as const } : {}), ...(eavesM > 0.2 && eavesM < 2 ? { eavesM, ...(rr?.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } : undefined;
-  const x = v as { sash?: unknown; ribbon?: unknown; attic?: unknown; raised?: unknown; copingHex?: unknown; rhythm?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown }; eaves?: unknown; entries?: unknown; balconies?: unknown; panes?: unknown };
-  const flatEaves = !roof ? kitEavesOf(x.eaves) : null, entries = entriesOf(x.entries), attic = kitAtticOf(x.attic), raised = raisedOf(x.raised), balconies = balconiesOf(x.balconies), panes = kitPanesOf(x.panes);
+  const x = v as { sash?: unknown; ribbon?: unknown; attic?: unknown; raised?: unknown; copingHex?: unknown; rhythm?: unknown; stairAxis?: unknown; counted?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown }; eaves?: unknown; entries?: unknown; balconies?: unknown; panes?: unknown; cants?: unknown; windowFronts?: unknown };
+  const flatEaves = !roof ? kitEavesOf(x.eaves) : null, entries = entriesOf(x.entries), attic = kitAtticOf(x.attic), raised = raisedOf(x.raised), balconies = balconiesOf(x.balconies), panes = kitPanesOf(x.panes), cants = cantsValid(x.cants), windowFronts = windowFrontsOf(x.windowFronts), stair = stairAxisOf(x.stairAxis), counted = x.rhythm === true || stair ? null : countedOf(x.counted);
   const side = (q: unknown) => q === 'pier' || q === 'pair' ? q : null, sl = side(x.sides?.left), sr = side(x.sides?.right);
   const joins = k.joins && typeof k.joins === 'object' ? { ...(k.joins.left === true ? { left: true } : {}), ...(k.joins.right === true ? { right: true } : {}) } : {};
-  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}), ...(flatEaves ? { eaves: flatEaves } : {}), ...(entries.length ? { entries } : {}), ...(attic ? { attic } : {}), ...(raised.length ? { raised } : {}), ...(balconies.length ? { balconies } : {}), ...(panes ? { panes } : {}) };
+  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(stair && x.rhythm !== true ? { stairAxis: stair } : {}), ...(counted ? { counted } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}), ...(flatEaves ? { eaves: flatEaves } : {}), ...(entries.length ? { entries } : {}), ...(attic ? { attic } : {}), ...(raised.length ? { raised } : {}), ...(balconies.length ? { balconies } : {}), ...(panes ? { panes } : {}), ...(cants.length ? { cants } : {}), ...(windowFronts.length ? { windowFronts } : {}) };
 }
 
 /**
@@ -317,12 +436,22 @@ export function straightenRing(ring: readonly LngLat[], line: readonly [LngLat, 
   return closed ? [...outRing, outRing[0]] : outRing;
 }
 
+/** The front line's outward normal in metres east/north (unit, 4 decimals): the street side of the member (round 15).
+ *  The row roof box squares to it when the street nearest the outline is not the member's own (a corner member). */
+export function frontNormalOf(line: readonly [LngLat, LngLat]): [number, number] {
+  const kx = 111_320 * Math.cos(line[0][1] * Math.PI / 180), ky = 110_540;
+  const ux = (line[1][0] - line[0][0]) * kx, uy = (line[1][1] - line[0][1]) * ky, l = Math.hypot(ux, uy) || 1;
+  return [+(uy / l).toFixed(4), +(-ux / l).toFixed(4)];
+}
+
 type Feature = { type?: string; geometry: unknown; properties: Record<string, unknown> };
 /** The feature with its outer ring straightened onto the kit's front line (Polygon or single MultiPolygon); else unchanged. */
 export function straightenFeature<T extends Feature>(feature: T, kit: BuurtKitFront): T {
   const g = feature.geometry as { type?: string; coordinates?: any } | null;
   if (!g) return feature;
-  if (g.type === 'Polygon') return { ...feature, geometry: { type: 'Polygon', coordinates: [straightenRing(g.coordinates[0], kit.frontLine, kit.erkers), ...g.coordinates.slice(1)] } };
-  if (g.type === 'MultiPolygon' && g.coordinates.length === 1) return { ...feature, geometry: { type: 'MultiPolygon', coordinates: [[straightenRing(g.coordinates[0][0], kit.frontLine, kit.erkers), ...g.coordinates[0].slice(1)]] } };
+  // A cant's span straightens as an erker's does (round 15): the kit draws the fold, the mesher one run.
+  const spans = kit.cants?.length ? [...kit.erkers, ...kit.cants.map(c => ({ a0: c.a0, a1: c.a1, depthM: c.outM, faceM: 0 }))] : kit.erkers;
+  if (g.type === 'Polygon') return { ...feature, geometry: { type: 'Polygon', coordinates: [straightenRing(g.coordinates[0], kit.frontLine, spans), ...g.coordinates.slice(1)] } };
+  if (g.type === 'MultiPolygon' && g.coordinates.length === 1) return { ...feature, geometry: { type: 'MultiPolygon', coordinates: [[straightenRing(g.coordinates[0][0], kit.frontLine, spans), ...g.coordinates[0].slice(1)]] } };
   return feature;
 }

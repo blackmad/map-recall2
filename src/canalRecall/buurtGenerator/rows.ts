@@ -13,7 +13,11 @@
  * Nothing here is hashed: the same footprints give the same rows and series, whatever order they come in.
  */
 
-import { erkersOf, type BuurtErker } from './kit/frontKit.ts';
+import { cantsOf, erkersOf, type BuurtErker, type KitCant } from './kit/frontKit.ts';
+/** Round 16: cants are not generated. They lost two blind A/Bs on Amstelkade (round 15 low on a blurred capture; round
+ *  16 medium on the sharp recording_2025-07-15_08-32-06_03197): the photo's fold bays carry corner and balcony windows
+ *  the brick cant covers, which the old glazed erker drew. The kit still draws a stated cant (roofKit.ts drawCants). */
+export const GENERATE_CANTS = false;
 
 export type LngLat = readonly [number, number];
 export interface GenPand {
@@ -68,6 +72,9 @@ export interface FrontEdge {
   lineA: LngLat; lineB: LngLat;
   /** Erkers BAG draws in front of the line (kit/frontKit.ts erkersOf). */
   erkers: BuurtErker[];
+  /** Canted folds BAG draws in front of the line (round 15, kit/frontKit.ts cantsOf); absent when none, and always
+   *  absent while GENERATE_CANTS is off. */
+  cants?: KitCant[];
 }
 export interface GenMember { pand: GenPand; front: FrontEdge }
 export interface GenSeries {
@@ -179,7 +186,8 @@ export function frontEdgeOf(pand: GenPand, ringXY: XY[], neighbours: XY[][], str
   }
   if (!best) return null;
   const { la, lb, ...e } = best.e as FrontEdge & { la: XY; lb: XY };
-  return { ...e, erkers: erkersOf(ringXY, la, lb, e.n) };
+  const cants = GENERATE_CANTS ? cantsOf(ringXY, la, lb, e.n) : [];
+  return { ...e, erkers: erkersOf(ringXY, la, lb, e.n), ...(cants.length ? { cants } : {}) };
 }
 
 const angleDeg = (u: XY, v: XY) => Math.acos(Math.max(-1, Math.min(1, dot(u, v) / (len(u) * len(v) || 1)))) * 180 / Math.PI;
