@@ -54,7 +54,7 @@
     },
     {
       "file": "public/canal-drive/models/signature-landmarks.json",
-      "sha256": "4c236f7b3ee291e0f8409742638f2f70b5fcf0a48f629e8ca0e7569b65cd9738"
+      "sha256": "63829b76312896d57a795da9240f4aff03533fcab88def9953dd7a642755e76d"
     },
     {
       "file": "scripts/street-appearance/bake-frontages.ts",
@@ -70,11 +70,11 @@
     },
     {
       "file": "src/canalRecall/threeBuildingFeatures.ts",
-      "sha256": "ea6a78ce69764acf6c79b84f07cdeebfda5ef1e4f31354886602456e0e9da812"
+      "sha256": "682dcb7cdb81d52f0861d55b99da7e69cc433606d5c253f4ca6721fa4c64a31a"
     },
     {
       "file": "src/canalRecall/threeBuildingMesh.ts",
-      "sha256": "e0a3ba0049af2ceaeccf68fedb290ede4d0a3574548efc45118da721615b2bbd"
+      "sha256": "b530f4e0e21361358f2ccc5dab80e9bc81eda9718727584e5e6ff460fb996ce0"
     },
     {
       "file": "src/canalRecall/genericFacades.ts",
@@ -94,7 +94,7 @@
     },
     {
       "file": "src/canalRecall/bayLook.ts",
-      "sha256": "bf4d8347f2ba9154384e83b0a19fbd226773972778566d68983d3ed354450d0b"
+      "sha256": "72d9f89b71647cfbd94cf80ae0ec12d042ec18b94790624702ebf17173a61bad"
     },
     {
       "file": "src/canalRecall/bayTextures.ts",
@@ -102,19 +102,19 @@
     },
     {
       "file": "src/canalRecall/facadeOrnaments.ts",
-      "sha256": "2d2d39cd98e00dbb3361059db0e642bbe2c08b26fc867de435261bb639077eea"
+      "sha256": "e743536ae90c7a1c39b97ffe2d4fd031faffc94256f1ccc9d12046d3ad108dfc"
     },
     {
       "file": "src/canalRecall/facadeExtras.ts",
-      "sha256": "765f0aaadc9994098911ed5019e2c899c6dfc7ddda7362e9cb74ee687faeb7dd"
+      "sha256": "f79653a00fc502749560686ffef4125a5caa01522b58acb2f8986490badbf294"
     },
     {
       "file": "src/canalRecall/facadeOpenings.ts",
-      "sha256": "e4d59ec138362fe2cd155f04881d61ab87e15f1135d1b96b303c2f70a7a1b3f3"
+      "sha256": "94e7af13c6dd7334bd7070af1a1e88883d7142935b642ec8b7b3266da6c9aab2"
     },
     {
       "file": "src/canalRecall/facadeExtraCore.ts",
-      "sha256": "4d683d488dc0efac4ede4ba6b9cf46bd871cc9781d22ba4b55adeb8fa5627663"
+      "sha256": "a080071375fb91de999da61d172dca23a32d5cd6811febff3d8e63ffb0df00e5"
     },
     {
       "file": "src/canalRecall/shopCanopies.ts",
@@ -126,7 +126,7 @@
     },
     {
       "file": "src/canalRecall/facadeLayout.ts",
-      "sha256": "4da5d07ef2d772a7772458fd6fc7d2d3ce18bfea7a35f9666c250ec97a2b6702"
+      "sha256": "f1920b041af8cc8411d265f3e4ca7544ec2eccb83857aacdd43c49b343f7ec33"
     },
     {
       "file": "src/canalRecall/sourceVisualRoof.ts",
@@ -134,7 +134,7 @@
     },
     {
       "file": "src/canalRecall/roofMesh.ts",
-      "sha256": "0820dc02ec9f8c8e8c561ca94ced57c3bf36665336c77c2cc1e68b934870b4f4"
+      "sha256": "c92ef2e6bc25abe1ac72438845ae1e2ebe3078ed94d4d03739c0bfda7b2f68cb"
     }
   ],
   "streetFrontPathsSha256": "8bc67d18dfd30b51e795bb7973589ca8c63d43565c9913d41723e03ec8bd7078",
