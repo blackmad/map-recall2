@@ -153,6 +153,21 @@ async function main(argv: string[]) {
     doc.colourRef = 'lane D round 11: the Centrum colour-family reader (scripts/centrum-looks/photo-reads.ts, b14c917fc) on the belt cuts';
     fs.writeFileSync(out, JSON.stringify(doc, null, 1));
     console.log('colours:', tally);
-  } else { console.log('photo-reads.ts features|vote|assemble|crowns|crowns2|colours ...'); process.exit(2); }
+  } else if (mode === 'dormers') {
+    // Round 13: the gable-or-dormer check ("<id> <gable|dormer|other|not-visible> <y|n|nv> <conf>", belt-cuts-r13/point-prompt.txt)
+    // on own-read point gables: every read is kept (`dormerCheck`), one per capture.
+    const [file, ...vis] = rest.filter((a, i) => !a.startsWith('--') && rest[i - 1] !== '--out'), out = opt(rest, 'out') ?? file, doc = JSON.parse(fs.readFileSync(file, 'utf8'));
+    let n = 0;
+    for (const f of vis) for (const l of fs.readFileSync(f, 'utf8').split('\n')) {
+      const m = l.trim().match(/^(\d{16})\s+(gable|dormer|other|not-visible)\s+(y|n|nv)\s+([\d.]+)$/);
+      if (!m) continue;
+      const cur = doc.reads[m[1]] ?? {};
+      doc.reads[m[1]] = { ...cur, dormerCheck: [...(cur.dormerCheck ?? []), { top: m[2], hoist: m[3], conf: +m[4] }] };
+      n++;
+    }
+    doc.dormerRef = 'lane D round 13: gable-or-dormer check on own-read point gables (belt-cuts-r13/point-prompt.txt)';
+    fs.writeFileSync(out, JSON.stringify(doc, null, 1));
+    console.log(`dormers: ${n} lines merged`);
+  } else { console.log('photo-reads.ts features|vote|assemble|crowns|crowns2|colours|dormers ...'); process.exit(2); }
 }
 if (process.argv[1]?.endsWith('belt-look/photo-reads.ts')) await main(process.argv.slice(2));

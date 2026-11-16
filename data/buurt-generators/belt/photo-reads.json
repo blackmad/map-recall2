@@ -36995,10 +36995,38 @@
    "crown": "bell",
    "cornice": "none",
    "full": 4,
-   "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.8,
-   "crownReader": "opus (cut, round 10)"
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.85,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "bell",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.8
+   },
+   "second": {
+    "crown": "bell",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": true,
+    "cc": 0.75,
+    "sc": 0.85
+   },
+   "dormerCheck": [
+    {
+     "top": "gable",
+     "hoist": "n",
+     "conf": 0.7
+    },
+    {
+     "top": "gable",
+     "hoist": "n",
+     "conf": 0.7
+    }
+   ]
   },
   "0363100012171564": {
    "colour": {
@@ -37678,13 +37706,29 @@
     "family": "red-brown-brick",
     "confidence": 0.55
    },
-   "crown": "bell",
+   "crown": "neck",
    "cornice": "none",
    "full": 3,
-   "souterrain": true,
-   "cc": 0.65,
-   "sc": 0.75,
-   "crownReader": "opus (cut, round 10)"
+   "souterrain": false,
+   "cc": 0.75,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "bell",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": true,
+    "cc": 0.65,
+    "sc": 0.75
+   },
+   "second": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.75,
+    "sc": 0.8
+   }
   },
   "0363100012165028": {
    "colour": {
@@ -37759,9 +37803,25 @@
    "cornice": "none",
    "full": 4,
    "souterrain": true,
-   "cc": 0.6,
-   "sc": 0.7,
-   "crownReader": "opus (cut, round 10)"
+   "cc": 0.8,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": true,
+    "cc": 0.6,
+    "sc": 0.7
+   },
+   "second": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": true,
+    "cc": 0.8,
+    "sc": 0.8
+   }
   },
   "0363100012179307": {
    "colour": {
@@ -37838,7 +37898,23 @@
    "souterrain": null,
    "cc": 0.55,
    "sc": 0.6,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "raised-neck",
+    "cornice": "simple",
+    "full": 2,
+    "souterrain": null,
+    "cc": 0.55,
+    "sc": 0.6
+   },
+   "second": {
+    "crown": "raised-neck",
+    "cornice": "bracketed",
+    "full": 2,
+    "souterrain": false,
+    "cc": 0.55,
+    "sc": 0.6
+   }
   },
   "0363100012167652": {
    "colour": {
@@ -37891,10 +37967,26 @@
    "crown": "bell",
    "cornice": "none",
    "full": 4,
-   "souterrain": true,
+   "souterrain": false,
    "cc": 0.5,
-   "sc": 0.7,
-   "crownReader": "opus (cut, round 10)"
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "bell",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": true,
+    "cc": 0.5,
+    "sc": 0.7
+   },
+   "second": {
+    "crown": "cornice",
+    "cornice": "simple",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.8
+   }
   },
   "0363100012167694": {
    "colour": {
@@ -37971,7 +38063,23 @@
    "souterrain": null,
    "cc": 0.55,
    "sc": 0.6,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": null,
+    "cc": 0.55,
+    "sc": 0.6
+   },
+   "second": {
+    "crown": "not-visible",
+    "cornice": "not-visible",
+    "full": 4,
+    "souterrain": true,
+    "cc": 0.6,
+    "sc": 0.6
+   }
   },
   "0363100012167734": {
    "colour": {
@@ -38159,8 +38267,24 @@
    "full": 3,
    "souterrain": false,
    "cc": 0.6,
-   "sc": 0.5,
-   "crownReader": "opus (cut, round 10)"
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "bell",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.5
+   },
+   "second": {
+    "crown": "bell",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.8
+   }
   },
   "0363100012172359": {
    "colour": {
@@ -38220,10 +38344,26 @@
    "crown": "neck",
    "cornice": "none",
    "full": 3,
-   "souterrain": false,
-   "cc": 0.55,
-   "sc": 0.55,
-   "crownReader": "opus (cut, round 10)"
+   "souterrain": true,
+   "cc": 0.75,
+   "sc": 0.7,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.55,
+    "sc": 0.55
+   },
+   "second": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": true,
+    "cc": 0.75,
+    "sc": 0.7
+   }
   },
   "0363100012169194": {
    "colour": {
@@ -38328,7 +38468,23 @@
    "souterrain": true,
    "cc": 0.55,
    "sc": 0.85,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "cornice",
+    "cornice": "simple",
+    "full": 4,
+    "souterrain": true,
+    "cc": 0.55,
+    "sc": 0.85
+   },
+   "second": {
+    "crown": "cornice",
+    "cornice": "simple",
+    "full": 4,
+    "souterrain": true,
+    "cc": 0.6,
+    "sc": 0.85
+   }
   },
   "0363100012169294": {
    "colour": {
@@ -38482,7 +38638,14 @@
    "souterrain": false,
    "cc": 0.85,
    "sc": 0.65,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 10)",
+   "dormerCheck": [
+    {
+     "top": "gable",
+     "hoist": "nv",
+     "conf": 0.85
+    }
+   ]
   },
   "0363100012172277": {
    "colour": {
@@ -38545,7 +38708,14 @@
    "souterrain": false,
    "cc": 0.8,
    "sc": 0.75,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 10)",
+   "dormerCheck": [
+    {
+     "top": "gable",
+     "hoist": "n",
+     "conf": 0.85
+    }
+   ]
   },
   "0363100012172289": {
    "colour": {
@@ -38556,10 +38726,26 @@
    "crown": "neck",
    "cornice": "none",
    "full": 3,
-   "souterrain": true,
-   "cc": 0.65,
-   "sc": 0.6,
-   "crownReader": "opus (cut, round 10)"
+   "souterrain": false,
+   "cc": 0.85,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": true,
+    "cc": 0.65,
+    "sc": 0.6
+   },
+   "second": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.85,
+    "sc": 0.8
+   }
   },
   "0363100012169513": {
    "colour": {
@@ -38718,9 +38904,25 @@
    "cornice": "none",
    "full": 3,
    "souterrain": true,
-   "cc": 0.65,
+   "cc": 0.7,
    "sc": 0.5,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": true,
+    "cc": 0.65,
+    "sc": 0.5
+   },
+   "second": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": true,
+    "cc": 0.7,
+    "sc": 0.65
+   }
   },
   "0363100012171419": {
    "colour": {
@@ -38787,10 +38989,26 @@
    "crown": "neck",
    "cornice": "none",
    "full": 4,
-   "souterrain": false,
+   "souterrain": true,
    "cc": 0.6,
-   "sc": 0.7,
-   "crownReader": "opus (cut, round 10)"
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.7
+   },
+   "second": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": true,
+    "cc": 0.6,
+    "sc": 0.75
+   }
   },
   "0363100012171526": {
    "colour": {
@@ -38921,9 +39139,37 @@
    "cornice": "none",
    "full": 4,
    "souterrain": false,
-   "cc": 0.65,
+   "cc": 0.75,
    "sc": 0.7,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "point",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.65,
+    "sc": 0.7
+   },
+   "second": {
+    "crown": "point",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.75,
+    "sc": 0.7
+   },
+   "dormerCheck": [
+    {
+     "top": "gable",
+     "hoist": "nv",
+     "conf": 0.75
+    },
+    {
+     "top": "gable",
+     "hoist": "y",
+     "conf": 0.7
+    }
+   ]
   },
   "0363100012171663": {
    "colour": {
@@ -38977,9 +39223,25 @@
    "cornice": "none",
    "full": 4,
    "souterrain": true,
-   "cc": 0.65,
+   "cc": 0.7,
    "sc": 0.6,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": true,
+    "cc": 0.65,
+    "sc": 0.6
+   },
+   "second": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": true,
+    "cc": 0.7,
+    "sc": 0.6
+   }
   },
   "0363100012172155": {
    "colour": {
@@ -39022,13 +39284,41 @@
     "family": "brown-brick",
     "confidence": 0.65
    },
-   "crown": "point",
+   "crown": "cornice",
    "cornice": "attic-frieze",
    "full": 4,
    "souterrain": false,
-   "cc": 0.6,
+   "cc": 0.7,
    "sc": 0.7,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "point",
+    "cornice": "attic-frieze",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.7
+   },
+   "second": {
+    "crown": "cornice",
+    "cornice": "attic-frieze",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.7,
+    "sc": 0.7
+   },
+   "dormerCheck": [
+    {
+     "top": "dormer",
+     "hoist": "n",
+     "conf": 0.75
+    },
+    {
+     "top": "dormer",
+     "hoist": "n",
+     "conf": 0.75
+    }
+   ]
   },
   "0363100012172171": {
    "colour": {
@@ -39406,7 +39696,14 @@
    "souterrain": false,
    "cc": 0.85,
    "sc": 0.8,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 10)",
+   "dormerCheck": [
+    {
+     "top": "gable",
+     "hoist": "nv",
+     "conf": 0.85
+    }
+   ]
   },
   "0363100012174331": {
    "colour": {
@@ -39504,7 +39801,35 @@
    "souterrain": false,
    "cc": 0.6,
    "sc": 0.7,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "point",
+    "cornice": "simple",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.7
+   },
+   "second": {
+    "crown": "not-visible",
+    "cornice": "not-visible",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.5
+   },
+   "dormerCheck": [
+    {
+     "top": "gable",
+     "hoist": "nv",
+     "conf": 0.6
+    },
+    {
+     "top": "gable",
+     "hoist": "nv",
+     "conf": 0.55
+    }
+   ]
   },
   "0363100012174947": {
    "colour": {
@@ -39658,7 +39983,14 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.65,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 10)",
+   "dormerCheck": [
+    {
+     "top": "gable",
+     "hoist": "nv",
+     "conf": 0.8
+    }
+   ]
   },
   "0363100012176027": {
    "colour": {
@@ -39959,7 +40291,23 @@
    "souterrain": false,
    "cc": 0.55,
    "sc": 0.7,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "step",
+    "cornice": "simple",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.55,
+    "sc": 0.7
+   },
+   "second": {
+    "crown": "not-visible",
+    "cornice": "not-visible",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.5,
+    "sc": 0.55
+   }
   },
   "0363100012177269": {
    "colour": {
@@ -40233,13 +40581,46 @@
     "family": "red-brown-brick",
     "confidence": 0.5
    },
-   "crown": "point",
-   "cornice": "simple",
+   "crown": "cornice",
+   "cornice": "bracketed",
    "full": 3,
-   "souterrain": false,
-   "cc": 0.55,
-   "sc": 0.55,
-   "crownReader": "opus (cut, round 10)"
+   "souterrain": true,
+   "cc": 0.85,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "point",
+    "cornice": "simple",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.55,
+    "sc": 0.55
+   },
+   "second": {
+    "crown": "cornice",
+    "cornice": "bracketed",
+    "full": 3,
+    "souterrain": true,
+    "cc": 0.85,
+    "sc": 0.75
+   },
+   "dormerCheck": [
+    {
+     "top": "dormer",
+     "hoist": "nv",
+     "conf": 0.55
+    },
+    {
+     "top": "not-visible",
+     "hoist": "nv",
+     "conf": 0.9
+    },
+    {
+     "top": "dormer",
+     "hoist": "y",
+     "conf": 0.9
+    }
+   ]
   },
   "0363100012178666": {
    "colour": {
@@ -40463,7 +40844,14 @@
    "souterrain": false,
    "cc": 0.75,
    "sc": 0.7,
-   "crownReader": "opus (cut, round 10)"
+   "crownReader": "opus (cut, round 10)",
+   "dormerCheck": [
+    {
+     "top": "gable",
+     "hoist": "y",
+     "conf": 0.85
+    }
+   ]
   },
   "0363100012169509": {
    "colour": {
@@ -40642,10 +41030,26 @@
    "crown": "neck",
    "cornice": "none",
    "full": 4,
-   "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.65,
-   "crownReader": "opus (cut, round 10)"
+   "souterrain": true,
+   "cc": 0.9,
+   "sc": 0.8,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.65
+   },
+   "second": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 4,
+    "souterrain": true,
+    "cc": 0.9,
+    "sc": 0.8
+   }
   },
   "0363100012165083": {
    "colour": {
@@ -40710,12 +41114,28 @@
     "confidence": 0.65
    },
    "crown": "cornice",
-   "cornice": "frieze",
+   "cornice": "attic-frieze",
    "full": 4,
    "souterrain": false,
-   "cc": 0.55,
-   "sc": 0.65,
-   "crownReader": "opus (cut, round 10)"
+   "cc": 0.8,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "cornice",
+    "cornice": "frieze",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.55,
+    "sc": 0.65
+   },
+   "second": {
+    "crown": "cornice",
+    "cornice": "attic-frieze",
+    "full": 4,
+    "souterrain": false,
+    "cc": 0.8,
+    "sc": 0.75
+   }
   },
   "0363100012171024": {
    "colour": {
@@ -40751,13 +41171,29 @@
     "family": "brown-brick",
     "confidence": 0.6
    },
-   "crown": "bell",
+   "crown": "neck",
    "cornice": "none",
    "full": 3,
    "souterrain": false,
-   "cc": 0.6,
-   "sc": 0.7,
-   "crownReader": "opus (cut, round 10)"
+   "cc": 0.7,
+   "sc": 0.75,
+   "crownReader": "opus (cut, round 11: two captures)",
+   "first": {
+    "crown": "bell",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.6,
+    "sc": 0.7
+   },
+   "second": {
+    "crown": "neck",
+    "cornice": "none",
+    "full": 3,
+    "souterrain": false,
+    "cc": 0.7,
+    "sc": 0.75
+   }
   },
   "0363100012174856": {
    "colour": {
@@ -40823,6 +41259,7 @@
    }
   }
  },
- "crownRef": "lane D round 10: photo crown reader (crown, cornice, full storeys; describer prompt v4.3 rules)",
- "colourRef": "lane D round 11: the Centrum colour-family reader (scripts/centrum-looks/photo-reads.ts, b14c917fc) on the belt cuts"
+ "crownRef": "lane D rounds 10-11: photo crown reader on two capture dates (mergeCrownReads)",
+ "colourRef": "lane D round 11: the Centrum colour-family reader (scripts/centrum-looks/photo-reads.ts, b14c917fc) on the belt cuts",
+ "dormerRef": "lane D round 13: gable-or-dormer check on own-read point gables (belt-cuts-r13/point-prompt.txt)"
 }

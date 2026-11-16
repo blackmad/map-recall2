@@ -482,3 +482,44 @@ test('round 12 pins on the staged belt: roof storeys on photo evidence, gable fe
   assert.equal(rec('172282').crown?.family, 'cornice');
   assert.equal(rec('172271').wall?.finish, 'stucco');
 });
+
+test('round 13: tight AHN bands over a low 3DBAG roof, photo cornices over own gables, raised doors on stoops', async () => {
+  const { ahnCorniceTop, photoCorniceOf, photoCorniceRead, beltRaisedDoorStoops } = await import('./generate.ts');
+  // Keizersgracht 172277: 3DBAG height 16.31 m, ridge 17.4; AHN band p50 18.72, p90 19.31 (tight): the front's top.
+  assert.equal(ahnCorniceTop({ n: 46, p50: 18.72, p90: 19.31, max: 19.33 } as never, { eavesM: 12.5, heightM: 16.31, ridgeM: 17.4 }), 19.31);
+  // A loose band over the roof (a neighbour or a tree) stays out.
+  assert.equal(ahnCorniceTop({ n: 41, p50: 8.81, p90: 15.01, max: 15.08 } as never, { eavesM: 7.2, heightM: 9.69, ridgeM: 10.3 }), null);
+  assert.deepEqual(photoCorniceOf({ crown: 'point', cc: 0.55, dormerCheck: [{ top: 'dormer', hoist: 'y', conf: 0.9 }] }), { dormer: true, hoist: true });
+  assert.equal(photoCorniceOf({ crown: 'point', cc: 0.55, dormerCheck: [{ top: 'dormer', hoist: 'y', conf: 0.9 }, { top: 'gable', hoist: 'n', conf: 0.8 }] }), undefined);
+  assert.equal(photoCorniceOf({ crown: 'cornice', cc: 0.9 }), undefined, 'one capture is not enough');
+  const a = photoCorniceRead({ crown: 'point', dormers: { kind: 'none', count: 0 } } as never, { cornice: 'bracketed', dormer: true, hoist: true }) as { crown: string; cornice: string; dormers?: unknown; gaps: Array<{ what: string }> };
+  assert.equal(a.crown, 'cornice'); assert.equal(a.cornice, 'bracketed'); assert.equal(a.dormers, undefined);
+  assert.match(a.gaps[0].what, /one gabled dormer with a hoist beam/);
+  const recs = [{ pandId: 'x', series: { stoop: { side: 'right', steps: false } }, sources: {} }] as never[];
+  assert.equal(beltRaisedDoorStoops(recs), 1);
+  assert.deepEqual((recs[0] as { series: { stoop: unknown } }).series.stoop, { side: 'right' });
+});
+
+test('round 13 pins on the staged belt', async () => {
+  const fs = await import('node:fs');
+  type Rec = { pandId: string; crown?: { family?: string }; eavesM?: number; series?: { stoop?: { steps?: boolean }; roofStorey?: { kind?: string; dormers?: Array<{ hoist?: boolean }> } } };
+  const all: Rec[] = JSON.parse(fs.readFileSync('data/buurt-generators/belt/row-front.json', 'utf8')).records;
+  const recs = new Map(all.map(r => [r.pandId, r])), rec = (id: string) => recs.get(`0363100012${id}`)!;
+  // Keizersgracht 172277: the pakhuis cornice at AHN's tight band, 19.31 m (16.31 before; the 2025 pano ~19.5 m).
+  assert.equal(rec('172277').eavesM, 19.31);
+  // Keizersgracht 178665: a bracketed cornice with a hoist dormer (the near 2023 capture), not a point gable.
+  assert.equal(rec('178665').crown?.family, 'cornice');
+  assert.equal(rec('178665').series?.roofStorey?.dormers?.[0]?.hoist, true);
+  // Keizersgracht 171415: the raised door has its stoop.
+  assert.notEqual(rec('171415').series?.stoop?.steps, false);
+  assert.equal(all.filter(r => r.series?.stoop?.steps === false).length, 0);
+  // No roof storey travels without evidence on the target: the register's dakkapel, a photo roof read, or a photo dormer.
+  const facts = JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/monument-facts.json', 'utf8')).buildings ?? {};
+  const reg = new Set(Object.entries<{ elements?: Array<{ key: string }> }>(facts).filter(([, v]) => (v.elements ?? []).some(e => e.key === 'dormer')).map(([k]) => k.replace(/^NL\.IMBAG\.Pand\./, '')));
+  const pr = JSON.parse(fs.readFileSync('data/buurt-generators/belt/photo-reads.json', 'utf8')).reads;
+  const bare = all.filter(r => (r.series?.roofStorey?.kind ?? 'none') !== 'none').filter(r => {
+    const p = pr[r.pandId] ?? {};
+    return !reg.has(r.pandId) && !(p.cc >= 0.6 && ['mansard', 'pitched-eaves'].includes(p.crown)) && !(p.dormerCheck ?? []).some((d: { top: string; conf: number }) => d.top === 'dormer' && d.conf >= 0.7);
+  });
+  assert.deepEqual(bare.map(r => r.pandId), []);
+});
