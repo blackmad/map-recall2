@@ -57,8 +57,11 @@ const byAddress = (n: Node) => {
   const [x, y] = local(a.at[0], a.at[1]), pand = near(x, y).find(c => bagKey(c.id) === a.pand);
   return pand ? hostOnFront([pand], x, y, id => bagUses[bagKey(id)], facing, open) : null;
 };
-// Lane retail-real round 5: drop a POI Overture lists only as permanently closed (retailSources.ts closedByOverture);
-// the pand falls to the next POI hosted on it, else plain. Receipts in CLOSED_DROPS.
+// Lane retail-real round 5 (`--r5`, off): drop a POI Overture lists only as permanently closed (retailSources.ts
+// closedByOverture; the pand falls to the next POI hosted on it, else plain) and host by PARTY (retailHosting.ts).
+// Held: the blind on 18 changed pands went 4 to today, 1 to the rules, 13 ties: a closed shop still leaves a
+// shopfront (a plain house door is further off), and Overture's closed flag was wrong on 2 of the 2 visible drops.
+const R5 = process.argv.includes('--r5');
 const OVERTURE = '.cache/retail-ground/overture/places-2026-10-21.0.json', CLOSED_DROPS = 'data/retail-ground/closed-drops.json';
 type Place = { id: string; name: string | null; status: string | null; lng: number; lat: number };
 const placeGrid = new Map<string, Place[]>();
@@ -66,6 +69,7 @@ if (fs.existsSync(OVERTURE)) for (const p of (JSON.parse(fs.readFileSync(OVERTUR
 const closedDrops: Array<{ node: number; name: string; overture: string[] }> = [];
 const closedNode = new Map<number, boolean>();
 const isClosed = (n: Node): boolean => {
+  if (!R5) return false;
   if (closedNode.has(n.id)) return closedNode.get(n.id)!;
   const tags = n.tags ?? {}, [x, y] = local(n.lon, n.lat), gx = Math.floor(x / 100), gy = Math.floor(y / 100), ps: (Place & { d: number })[] = [];
   for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (const p of placeGrid.get(`${gx + dx},${gy + dy}`) ?? []) { const [px, py] = local(p.lng, p.lat); ps.push({ ...p, d: Math.hypot(px - x, py - y) }); }
@@ -91,7 +95,7 @@ for (const n of allNodes) {
   if (!t) continue;
   pois[t] = (pois[t] ?? 0) + 1;
   const [x, y] = local(n.lon, n.lat);
-  const plain = hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open), moved1 = t !== 'redLight' ? hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open, true) : plain;
+  const plain = hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open), moved1 = t !== 'redLight' ? hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open, true, R5) : plain;
   const addr = byAddress(n); if (addr) addressed++;
   const hit = addr ?? (moved1 && plain && moved1.id !== plain.id && occupied.has(moved1.id) ? plain : moved1);
   records.push({ n, t, hit, plain });
@@ -245,8 +249,8 @@ if (arg('trace')) {
   console.log(`trace: ${records.length} template POIs -> ${arg('trace')}`);
 }
 console.log(`address and source hosts (${ADDRESS_HOSTS}, ${SOURCE_HOSTS}): ${addressed} POIs hosted by an address or second source; ${added} template POIs added by a second source`);
-fs.writeFileSync(CLOSED_DROPS, JSON.stringify({ rule: 'src/canalRecall/retailSources.ts closedByOverture', source: `Overture Maps places ${OVERTURE.match(/places-(.*)\.json/)?.[1]} (CDLA-Permissive-2.0)`, drops: closedDrops.filter(d => templateForTags(allNodes.find(n => n.id === d.node)?.tags ?? {})) }, null, 1));
-console.log(`closed by Overture (closedByOverture): ${closedDrops.length} template POIs dropped -> ${CLOSED_DROPS}`);
+if (R5) fs.writeFileSync(CLOSED_DROPS, JSON.stringify({ rule: 'src/canalRecall/retailSources.ts closedByOverture', source: `Overture Maps places ${OVERTURE.match(/places-(.*)\.json/)?.[1]} (CDLA-Permissive-2.0)`, drops: closedDrops.filter(d => templateForTags(allNodes.find(n => n.id === d.node)?.tags ?? {})) }, null, 1));
+if (R5) console.log(`closed by Overture (closedByOverture): ${closedDrops.length} template POIs dropped -> ${CLOSED_DROPS}`);
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, JSON.stringify(out));
 console.log(`fronts moved onto the wall facing addr:street (atOnStreetWall): ${onStreet}`);

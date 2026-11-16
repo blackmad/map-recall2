@@ -1192,5 +1192,108 @@
    "verdict": "kind",
    "seen": "Flagship Bike Tours & Rentals"
   }
- ]
+ ],
+ "blind": {
+  "date": "2026-11-16",
+  "what": "before (today) vs after (--r5: closedByOverture + PARTY) on 18 of the 20 changed pands framed (house:frames ?world=live), shuffled photo|A|B, fresh opus judge",
+  "result": {
+   "before": 4,
+   "after": 1,
+   "tie": 13
+  },
+  "ruling": "held: both rules off by default (build-templates.ts --r5)",
+  "rows": [
+   {
+    "front": "r5-closed-plain-2",
+    "pick": "tie",
+    "why": "Both keep the arched doors plain and put Seed Center and shops on the right; the differences further right are not resolvable against the photo."
+   },
+   {
+    "front": "r5-closed-plain-3",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-closed-plain-4",
+    "pick": "before",
+    "why": "The photo is a glazed shopfront; B has a shop at the centre building where A has a plain house door."
+   },
+   {
+    "front": "r5-closed-plain-5",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-closed-plain-6",
+    "pick": "tie",
+    "why": "Both have a shop in the centre house; A's phone shop and B's generic window are equally unsupported by the photo."
+   },
+   {
+    "front": "r5-closed-plain-7",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-closed-plain-8",
+    "pick": "tie",
+    "why": "Panels are effectively identical."
+   },
+   {
+    "front": "r5-closed-plain-9",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-closed-plain-10",
+    "pick": "before",
+    "why": "The photo has a signed bike rental there; A shows a signed bicycle shop, B only an unsigned shopfront."
+   },
+   {
+    "front": "r5-party-in-11",
+    "pick": "after",
+    "why": "The photo's Starbucks is on the right-hand awninged building, as in A; B puts it one building left."
+   },
+   {
+    "front": "r5-party-in-12",
+    "pick": "before",
+    "why": "The photo has plain white-framed glazing with a central door, closer to B than to A's large lit bar."
+   },
+   {
+    "front": "r5-party-in-13",
+    "pick": "tie",
+    "why": "Panels are effectively identical."
+   },
+   {
+    "front": "r5-party-in-14",
+    "pick": "tie",
+    "why": "A tram hides the photo's ground floor, so the Bloemenweelde position cannot be judged."
+   },
+   {
+    "front": "r5-party-in-15",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-party-in-16",
+    "pick": "before",
+    "why": "The photo's Pauw store is in the dark building behind the tree, where A has it; B puts it in the brick house to the left."
+   },
+   {
+    "front": "r5-party-in-17",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-changed-18",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-changed-20",
+    "pick": "tie",
+    "why": "Panels are identical."
+   }
+  ]
+ },
+ "closedDrops": "data/retail-ground/closed-drops.json is the --r5 run (2026-11-16), kept as evidence"
 }

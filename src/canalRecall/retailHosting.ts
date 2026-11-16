@@ -66,7 +66,9 @@ export function hostOnFront(candidates: readonly FrontCandidate[], x: number, y:
   streetFacing: (c: FrontCandidate, e: ReturnType<typeof ringEdges>[number]) => boolean,
   open: (c: FrontCandidate, e: ReturnType<typeof ringEdges>[number]) => boolean = () => true,
   /** Round 5: whether this POI may move to a much bigger shop next door (not a red-light window: those are kiosk-sized). */
-  spill = false): HostFront | null {
+  spill = false,
+  /** Round 5 (lane retail-real): the PARTY move. Off: it lost its blind (1 win, 2 losses, 4 ties on 7 moved pands). */
+  party = false): HostFront | null {
   const rows = candidates.map(c => {
     let front = Infinity, any = Infinity;
     for (const e of ringEdges(c.ring)) { const d = segDist(e.x0, e.y0, e.x1, e.y1, x, y); if (d < any && open(c, e)) any = d; if (d < front && streetFacing(c, e)) front = d; }
@@ -82,8 +84,8 @@ export function hostOnFront(candidates: readonly FrontCandidate[], x: number, y:
     if (next) return { id: next.c.id, front: 'street', inside: next.inside, distanceM: next.front };
     // Lane retail-real round 5 (PARTY): a node in a pand with no shop space at all, on the party wall of one that has
     // some, belongs to the neighbour (Toko Sunrise, OSM node 866385089: its node just inside the house next door).
-    const party = spill && !own.shop ? rows.filter(r => !r.inside && r.shop && r.front <= own.front + PARTY.frontM && ringEdges(r.c.ring).some(e => segDist(e.x0, e.y0, e.x1, e.y1, x, y) <= PARTY.nodeM)).sort((p, q) => p.front - q.front)[0] : undefined;
-    if (party) return { id: party.c.id, front: 'street', inside: false, distanceM: party.front };
+    const partyHost = party && spill && !own.shop ? rows.filter(r => !r.inside && r.shop && r.front <= own.front + PARTY.frontM && ringEdges(r.c.ring).some(e => segDist(e.x0, e.y0, e.x1, e.y1, x, y) <= PARTY.nodeM)).sort((p, q) => p.front - q.front)[0] : undefined;
+    if (partyHost) return { id: partyHost.c.id, front: 'street', inside: false, distanceM: partyHost.front };
     return { id: own.c.id, front: 'street', inside: true, distanceM: own.front };
   }
   const near = rows.filter(r => !r.inside && r.front <= FRONT_SNAP_M && (r.shop || r.front <= PAVEMENT_NODE_M)).sort((p, q) => p.front - q.front)[0];
