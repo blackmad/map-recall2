@@ -29,8 +29,9 @@ export interface RedLightFront {
   frameHex?: string;
   /** The curtain's colour. */
   curtainHex?: string;
-  /** The tube: one run over the frame, or one per door. */
-  tube?: 'run' | 'doors';
+  /** The tube: one run over the frame, one per door, or none (round 17: 21 of the 27 audited De Wallen fronts show none, a sign
+   *  band or an awning over the head instead). */
+  tube?: 'run' | 'doors' | 'none';
   /** Curtains drawn across the glass, or gathered to one side over a dark room. */
   curtains?: 'drawn' | 'gathered';
   /** The frame's head over the pavement (m). */
@@ -55,7 +56,7 @@ export const redLightFrontOf: RedLightFrontOf = v => {
   if (Number.isInteger(x.doors) && (x.doors as number) >= 1 && (x.doors as number) <= 12) out.doors = x.doors as number;
   if (typeof x.frameHex === 'string' && HEX.test(x.frameHex)) out.frameHex = x.frameHex;
   if (typeof x.curtainHex === 'string' && HEX.test(x.curtainHex)) out.curtainHex = x.curtainHex;
-  if (x.tube === 'run' || x.tube === 'doors') out.tube = x.tube;
+  if (x.tube === 'run' || x.tube === 'doors' || x.tube === 'none') out.tube = x.tube;
   if (x.curtains === 'drawn' || x.curtains === 'gathered') out.curtains = x.curtains;
   if (Number(x.headM) >= 2 && Number(x.headM) <= 4) out.headM = Number(x.headM);
   return out;
@@ -99,6 +100,7 @@ export function drawRedLightFront(b: FrontPanelSink, a0: number, a1: number, z0:
   b.box(a0, end, o, of + 0.02, z0, z0 + 0.06, frame);
   // The tube on the head: one run, or one per door.
   const tz0 = head + L.barM + L.tubeGapM, tz1 = tz0 + L.tubeM, to = o + L.tubeOutM;
+  if (f.tube === 'none') return;
   if (f.tube === 'doors') for (const [d0, d1] of doors) b.box(d0 + L.tubeInsetM, d1 - L.tubeInsetM, o, to, tz0, tz1, L.tubeHex, true);
   else b.box(a0 + L.tubeInsetM, end - L.tubeInsetM, o, to, tz0, tz1, L.tubeHex, true);
 }

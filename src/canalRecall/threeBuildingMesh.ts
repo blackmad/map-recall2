@@ -42,6 +42,7 @@ import type { KitPartGeometry } from './landmarkKits.js';
 import type { ChainLook } from './shopfronts.js';
 import type { RetailTemplate } from './retailTemplates.js';
 import { retailFrontTris, retailDoor, doorHead, FRONT as RETAIL_FRONT } from './retailFront.js';
+import type { RedLightFront } from './groundParts/redLightFront.js';
 import type { BikeClass } from './retailBikes.js';
 import { steppedRun } from './retailHosting.js';
 import { puiInteriorUv } from './retailTemplates.js';
@@ -116,7 +117,7 @@ export type MeshBuilding = {
   /** A supermarket chain's own shopfront (fascia, logo panel, brand word) at its OSM point; replaces the signature. */
   chain?: { at: [number, number]; look: ChainLook };
   /** A shopfront template (lane retail-ground, `?retailGround=1`, retailFront.ts) at its OSM point; replaces the chain fascia. */
-  retailFront?: { template: RetailTemplate; at: [number, number]; word?: string; /** The node's nearest open wall carries the front (no street wall near it: retailHosting.ts). */ nearest?: boolean; /** The chain's logo on the logo layer (retailLogos.ts). */ logo?: { layer: number; rect: readonly [number, number, number, number]; aspect: number }; /** The logo layer, for the lettering cell (round 3c). */ letters?: number; /** The measured pui paint (round 4). */ paint?: string; /** A bike shop's class (round 6, retailBikes.ts). */ bike?: { cls: BikeClass; fleetHex?: string }; /** Round 7: measured awning colour (measure-awning.ts). */ awning?: string; /** Lane retail-real: the first goods and face layers (retailPages.ts). */ goods?: number; faces?: number; chain?: { fascia: string; letters: string; word: string } };
+  retailFront?: { template: RetailTemplate; at: [number, number]; word?: string; /** The node's nearest open wall carries the front (no street wall near it: retailHosting.ts). */ nearest?: boolean; /** The chain's logo on the logo layer (retailLogos.ts). */ logo?: { layer: number; rect: readonly [number, number, number, number]; aspect: number }; /** The logo layer, for the lettering cell (round 3c). */ letters?: number; /** The measured pui paint (round 4). */ paint?: string; /** A bike shop's class (round 6, retailBikes.ts). */ bike?: { cls: BikeClass; fleetHex?: string }; /** Round 7: measured awning colour (measure-awning.ts). */ awning?: string; /** Lane retail-real: the first goods and face layers (retailPages.ts). */ goods?: number; faces?: number; chain?: { fascia: string; letters: string; word: string }; /** Lane retail-real: lane R's audited window front (span [lng0, lat0, lng1, lat1] on the front line). */ redLight?: { span: [number, number, number, number] } & RedLightFront };
   /** Draw the facade extras (hoist beams, stoops, balconies, bikes, roof terraces): facadeExtras.ts. */
   extras?: boolean;
   /** Texture layer for bare wall: gable faces, chimneys, cornices. */
@@ -455,7 +456,14 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   const run = steppedRun(best, ring), shift = run.parts.find(p => p.e === best)?.t0 ?? 0;
   const e = { x0: run.x0, y0: run.y0, ux: run.ux, uy: run.uy, nx: run.nx, ny: run.ny };
   const L = run.len, along = Math.max(0, Math.min(L, (px - e.x0) * e.ux + (py - e.y0) * e.uy));
-  const half = Math.min((L - 0.6) / 2, RETAIL_FRONT.maxSpanM / 2), s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half)), s1 = s0 + 2 * half;
+  const half = Math.min((L - 0.6) / 2, RETAIL_FRONT.maxSpanM / 2);
+  let s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half)), s1 = s0 + 2 * half;
+  // Lane retail-real: an audited red-light front spans its measured piece of the front line, projected on the run.
+  if (front.redLight) {
+    const [x0, y0, x1, y1] = front.redLight.span, on = (lng: number, lat: number) => Math.max(0, Math.min(L, ((lng - origin.lng) * kx - e.x0) * e.ux + ((lat - origin.lat) * M_PER_DEG_LAT - e.y0) * e.uy));
+    const a = on(x0, y0), c = on(x1, y1);
+    if (Math.abs(c - a) >= 0.8) { s0 = Math.min(a, c); s1 = Math.max(a, c); }
+  }
   // The traced door, when the trace's front is this wall (its span within a quarter of the wall's length).
   const span = b.specRecipe?.frontSpanM, boxes = b.specRecipe?.groundBoxes;
   let door: { a0: number; a1: number; depthM: number } | undefined, bays: number | undefined;
@@ -474,7 +482,7 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   // has one.
   const shopCell = b.layers && b.layers.ground < BAY_LAYER_COUNT && (SHOP_KINDS as readonly string[]).includes(BAY_ENTRIES[b.layers.ground]?.kind ?? '') ? b.layers.ground : undefined;
   const input = { template: front.template, word: front.word, seed: b.id, ...(door ? { door } : {}), ...(front.logo ? { logo: front.logo } : {}),
-    ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(bays ? { bays } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}) };
+    ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(bays ? { bays } : {}), ...(front.redLight ? { redLight: { ...front.redLight, span: undefined } } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}) };
   const tris = retailFrontTris(input, e, s0, s1, base, groundM);
   // Round 3: every template door stands in a recess (retailDoor), traced or not, so the wall is cut over each.
   const opening = retailDoor(input, s0, s1);

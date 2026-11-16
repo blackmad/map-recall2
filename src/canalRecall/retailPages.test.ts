@@ -59,3 +59,20 @@ test('chains: brand:wikidata or name picks the chain; the extract word round-tri
   assert.equal(chainOfWord('@lidl'), 'lidl'); assert.equal(chainOfWord('VERHAGEN'), null);
   assert.ok(REAL_ONLY_TEMPLATES.includes('tattoo') && REAL_ONLY_TEMPLATES.includes('snackbar'));
 });
+
+test('De Wallen audit (lane R, 394d2f52b): 27 measured window fronts staged with their span, 21 marked not drawn; the stamp carries them', async () => {
+  const fs = await import('node:fs');
+  const { decorateShopTemplate, setShopTemplates } = await import('./shopfronts.js');
+  const ex = JSON.parse(fs.readFileSync('data/retail-ground/shop-templates.json', 'utf8'));
+  const rows = Object.entries(ex.buildings) as Array<[string, unknown[]]>;
+  const audited = rows.filter(([, r]) => (r[5] as { s?: unknown } | undefined)?.s), off = rows.filter(([, r]) => (r[5] as { x?: unknown } | undefined)?.x);
+  assert.equal(audited.length, 27); assert.equal(off.length, 21);
+  // 0363100012165090: 4.72 m front, the window over 0.05-0.8 of it, three doors, no tube, curtains gathered.
+  const k = rows.find(([id]) => id.endsWith('0363100012165090'))!;
+  assert.deepEqual({ ...(k[1][5] as object), s: undefined }, { s: undefined, d: 3, t: 'none', c: 'gathered', f: '#2e2622' });
+  setShopTemplates(ex);
+  try {
+    const f = decorateShopTemplate({ type: 'Feature', properties: { id: k[0] }, geometry: null } as never) as { properties: { shopTemplate: unknown[] } };
+    assert.equal(f.properties.shopTemplate[0], 'redLight'); assert.deepEqual(f.properties.shopTemplate[5], k[1][5]);
+  } finally { setShopTemplates(null); }
+});

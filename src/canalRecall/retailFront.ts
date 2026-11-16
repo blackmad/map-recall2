@@ -4,7 +4,7 @@
 // layer is spent: the atlas has two free layers. Pure (no DOM): runs in the mesh worker and in Node tests.
 import { glyphLayout } from './retailLogos.js';
 import { goodsCell, goodsTiles } from './retailGoods.js';
-import { drawRedLightFront } from './groundParts/redLightFront.js';
+import { drawRedLightFront, type RedLightFront } from './groundParts/redLightFront.js';
 import { capShare, titleCase, typeLayout, type TypeFace } from './retailTypeFaces.js';
 import { BIKE, bikeQuads, outsideBikes, SHOW_HEXES, USED_HEXES, type BikeClass } from './retailBikes.js';
 import { signText, TEMPLATE_LOOKS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
@@ -457,6 +457,8 @@ export type RetailFrontInput = {
   /** Lane retail-real: the host front's ground-floor cells across [s0, s1] where a read or register traced them
    *  (specRecipe.groundBoxes); a red-light front puts one door in each. Absent: doors at the measured 1.15 m pitch. */
   bays?: number;
+  /** Lane retail-real: lane R's audited window front (doors, tube, curtains, frame) for this pand; it outranks `bays`. */
+  redLight?: RedLightFront;
 };
 
 /** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
@@ -540,7 +542,10 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   // fascia, riser or recessed door; `?retailReal=0` keeps round n's redGlow box.
   if (look.content === 'redGlow' && look.goods && input.goods !== undefined) {
     const n = Math.floor(hash01(input.seed + ":redLight") * 12);
-    drawRedLightFront(b, s0, s1, base, 0, { ...(input.bays ? { doors: input.bays } : {}), tube: n % 3 === 0 ? 'doors' : 'run', curtains: n % 4 === 1 ? 'gathered' : 'drawn' });
+    // Unaudited (no usable view): the audit's majority, no tube (21 of 27) and drawn curtains (17 of 27); one pand in
+    // four gathered, so a run of windows is not uniform.
+    const spec: RedLightFront = input.redLight ?? { ...(input.bays ? { doors: input.bays } : {}), tube: 'none', curtains: n % 4 === 1 ? 'gathered' : 'drawn' };
+    drawRedLightFront(b, s0, s1, base, 0, spec);
     return b.out;
   }
   const frame = input.paint ?? look.frame ?? '#2b2724', head = doorHead(base, groundM), puiTop = bottom - FRONT.beadM;

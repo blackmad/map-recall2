@@ -131,6 +131,29 @@ if (samples) {
   }
 }
 const out = { version: 1, source: '© OpenStreetMap contributors (ODbL), Overpass ' + new Date(fs.statSync(CACHE).mtime).toISOString().slice(0, 10), templates: [...RETAIL_TEMPLATES], buildings: Object.fromEntries([...placed].sort().map(([id, p]) => [id, [RETAIL_TEMPLATES.indexOf(p.t), p.at[0], p.at[1], ...(p.chain ? [`@${p.chain}`] : TEMPLATE_LOOKS[p.t].word === 'name' && signWord(p.name) ? [signWord(p.name)] : p.front === 'nearest' ? [''] : []), ...(p.front === 'nearest' ? [1] : [])]])) };
+// Lane retail-real (coordinator 2026-11-16): lane R's De Wallen audit (data/retail-ground/dewallen-redlight-audit.json,
+// from 394d2f52b, used as data). The 27 window rows carry their measured window front as the row's sixth field
+// ({s: [lng0, lat0, lng1, lat1] the span on the front line, d doors, t tube, c curtains, f frame hex}); the 18 closed or
+// not-a-window pands and the 3 read-not-drawn ones lose the redLight template under retailReal ({x: 1}); the 21 with no
+// view keep it.
+const AUDIT = 'data/retail-ground/dewallen-redlight-audit.json';
+if (fs.existsSync(AUDIT)) {
+  type WF = { a0: number; a1: number; doors?: number; tube?: string; curtains?: string; frameHex?: string };
+  const audit = JSON.parse(fs.readFileSync(AUDIT, 'utf8')) as { fronts: Array<{ pandId: string; frontLine: [[number, number], [number, number]]; windowFront: WF }>; notWindow: Array<{ pandId: string }>; readNotDrawn: Array<{ pandId: string }> };
+  const rows = out.buildings as Record<string, unknown[]>, red = RETAIL_TEMPLATES.indexOf('redLight');
+  const key = (id: string) => (rows[id] ? id : rows[`NL.IMBAG.Pand.${id}`] ? `NL.IMBAG.Pand.${id}` : null);
+  let drawn = 0, dropped = 0;
+  for (const f of audit.fronts) {
+    const k = key(f.pandId); if (!k || rows[k][0] !== red) continue;
+    const [[x0, y0], [x1, y1]] = f.frontLine, w = f.windowFront, at = (t: number) => [+(x0 + (x1 - x0) * t).toFixed(7), +(y0 + (y1 - y0) * t).toFixed(7)];
+    const [ax, ay] = at(w.a0), [bx, by] = at(w.a1), mid = at((w.a0 + w.a1) / 2);
+    rows[k] = [red, mid[0], mid[1], '', 0, { s: [ax, ay, bx, by], ...(w.doors ? { d: w.doors } : {}), ...(w.tube ? { t: w.tube } : {}), ...(w.curtains ? { c: w.curtains } : {}), ...(w.frameHex ? { f: w.frameHex } : {}) }];
+    drawn++;
+  }
+  // Marked {x: 1} rather than deleted, so `?retailReal=0` still draws round n's front there.
+  for (const f of [...audit.notWindow, ...audit.readNotDrawn]) { const k = key(f.pandId); if (k && rows[k][0] === red) { const r = rows[k]; rows[k] = [r[0], r[1], r[2], r[3] ?? '', r[4] ?? 0, { x: 1 }]; dropped++; } }
+  console.log(`De Wallen audit: ${drawn} measured window fronts, ${dropped} redLight templates dropped (closed, not a window, or read not drawn)`);
+}
 // Round 4: the pui paint measured on street panoramas (measure-pui.ts; receipts stay in its file), for any shop pand.
 const PUI = 'data/retail-ground/pui-paint.json';
 if (fs.existsSync(PUI)) {
