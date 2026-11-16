@@ -13,7 +13,7 @@ import { type PropTri } from './shopProps/kit.js';
 import { BIKE_HEXES } from './shopProps/props.js';
 import { insideProps, outsideProps, SHOP_PROPS } from './shopProps/layout.js';
 import { baySeed, goodsTileRect } from './shopProps/variety.js';
-import { signText, TEMPLATE_LOOKS, TEMPLATE_PARTS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
+import { CHAIN_TEMPLATES, signText, TEMPLATE_LOOKS, TEMPLATE_PARTS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
 import { archRiseM, type GfFinish, type GfHead, type GfOpeningKind, type GfPier, type GroundFloorDraw } from './groundFloor/types.js';
 
 export type V3 = [number, number, number];
@@ -459,6 +459,9 @@ export type RetailFrontInput = {
    *  fascia board and cap, the letters in a contrasting dark or white: the photos' independent shops (Keurslagerij Pouw)
    *  paint board and frame one colour. Absent: the template's frame and board. */
   paint?: string;
+  /** Lane ground-floor: a held or unaccepted template drawn only for its ground-floor record: a neutral fill (dark frame
+   *  and board, glass, the type's goods; no template board colours, awning or blade). */
+  neutral?: boolean;
   /** Round 6: a bike shop's class (retailBikes.ts bikeShopClass, staged per pand): side-on bikes parked against the
    *  front (used: a muted irregular row; premium: a neat clean row; rental: the fleet's identical bikes) and two to
    *  four side-on behind the glass. Absent: the template's racks and pavement discs. */
@@ -757,9 +760,11 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
 // No record: retailFrontTris, unchanged.
 
 /** The finish colours when the record states a material but no colour. */
-export const GF_FINISH_HEX: Readonly<Record<GfFinish, string>> = { stone: '#c9c1ad', stucco: '#e6e1d4', brick: '#8a4f3c', 'painted-pui': '#2b2724' };
+/** The dark of a shopfront's frame, painted pui and plain fascia (blind round 1: the photos' fronts are dark). */
+export const GF_DARK = '#2b2724';
+export const GF_FINISH_HEX: Readonly<Record<GfFinish, string>> = { stone: '#c9c1ad', stucco: '#e6e1d4', brick: '#8a4f3c', 'painted-pui': GF_DARK };
 /** How far piers stand proud of the finish, how deep openings are set in, by material (m). */
-export const GF_DEPTH = { pierOutStone: 0.08, pierOutPui: 0.04, recessMasonry: 0.25, recessPui: 0.1, courseM: 0.42, channelM: 0.035, archSegments: 10 } as const;
+export const GF_DEPTH = { pierOutStone: 0.08, pierOutPui: 0.04, recessMasonry: 0.25, recessPui: 0.2, courseM: 0.42, channelM: 0.035, archSegments: 10 } as const;
 
 function frontLook(input: RetailFrontInput): TemplateLook {
   const look0: TemplateLook = input.chain ? { ...TEMPLATE_LOOKS[input.template], fascia: input.chain.fascia, letters: input.chain.letters, cap: undefined, word: undefined, face: undefined } : TEMPLATE_LOOKS[input.template];
@@ -798,11 +803,16 @@ export function groundFloorOpenings(gf: GroundFloorDraw, s0: number, s1: number,
  */
 export function groundFloorFrontTris(input: RetailFrontInput, gf: GroundFloorDraw, e: WallFrame, s0: number, s1: number, base: number, top: number): FrontTri[] {
   if (s1 - s0 < 1.2 || !gf.openings.length) return [];
-  const look = frontLook(input), b = new Builder(e);
-  const finish = gf.groundFinish.hex ?? (gf.groundFinish.material === 'brick' && input.wallHex ? input.wallHex : gf.groundFinish.material === 'painted-pui' ? input.frameHex ?? input.paint ?? GF_FINISH_HEX['painted-pui'] : GF_FINISH_HEX[gf.groundFinish.material]);
-  const masonry = gf.groundFinish.material === 'stone' || gf.groundFinish.material === 'brick' || gf.groundFinish.material === 'stucco';
+  // Fix round (blind round 1, 5-5-3: bright painted fronts where the photos show dark recessed ones): the frame, a painted
+  // pui and the fascia are dark unless the record (a confident read: groundFloor/read.ts), a photo-read frame colour or a
+  // brand says otherwise; a template's own bright board and awning draw only for a chain or an accepted brand.
+  const brandish = !input.neutral && (!!input.chain || (CHAIN_TEMPLATES as readonly string[]).includes(input.template) || !!(input.brand && retailBrandOn() && brandAccepted(input.brand)));
+  const look0 = frontLook(input), look: TemplateLook = brandish ? look0 : { ...look0, awning: undefined, blade: undefined, lit: false }, b = new Builder(e);
+  const painted = gf.groundFinish.material === 'painted-pui';
+  const finish = gf.groundFinish.hex ?? (gf.groundFinish.material === 'brick' && input.wallHex ? input.wallHex : painted ? input.frameHex ?? GF_DARK : GF_FINISH_HEX[gf.groundFinish.material]);
+  const masonry = !painted;
   const recess = masonry ? GF_DEPTH.recessMasonry : GF_DEPTH.recessPui;
-  const frame = input.frameHex ?? (masonry ? look.frame ?? '#2b2724' : shadeHex(finish, 0.8));
+  const frame = input.frameHex ?? (painted && gf.groundFinish.hex ? shadeHex(finish, 0.8) : GF_DARK);
   const ops = groundFloorOpenings(gf, s0, s1, base, top);
   const pierHex = (m: GfPier['material']) => m === 'iron' ? '#2b2d30' : m === 'brick' ? (gf.groundFinish.material === 'brick' ? finish : input.wallHex ?? GF_FINISH_HEX.brick) : m === 'timber' && masonry ? frame : finish;
   // Piers: proud of the finish (stone) or flush pilasters (a pui); rusticated stone in courses with channels between.
@@ -848,7 +858,8 @@ export function groundFloorFrontTris(input: RetailFrontInput, gf: GroundFloorDra
   const shops = ops.map((o, i) => ({ o, i })).filter(x => x.o.kind === 'shop');
   const signIdx = gf.sign.opening !== undefined && ops[gf.sign.opening] ? gf.sign.opening : shops.slice().sort((p, q) => (q.o.a1 - q.o.a0) - (p.o.a1 - p.o.a0))[0]?.i;
   const word = input.chain ? input.chain.word : look.word === 'name' ? (input.word ? signText(input.word) : input.word) : look.word;
-  const ink = input.chain?.letters ?? look.letters, boardHex = gf.fascia.hex ?? (input.chain?.fascia ?? look.fascia);
+  const boardHex = gf.fascia.hex ?? (input.chain?.fascia ?? (brandish ? look.fascia : GF_DARK));
+  const ink = input.chain?.letters ?? (brandish || gf.fascia.hex ? look.letters : '#efe9dc');
   const inOpeningBoard = gf.sign.kind === 'board-in-opening' || (gf.sign.kind === 'fascia' && gf.fascia.inOpening);
   const hasDoorOpening = ops.some(o => o.kind === 'door');
   const lightHex = glassTone('#7f8b93', 0.5);
@@ -897,7 +908,9 @@ export function groundFloorFrontTris(input: RetailFrontInput, gf: GroundFloorDra
       // An arched head's fanlight: dark glass under the arch, a transom bar on the springing line.
       if (o.crown - o.spring > 0.05) {
         const line = archLine(o.a0, o.a1, o.spring, o.crown - o.spring), mid = (o.a0 + o.a1) / 2;
-        for (let k = 1; k < line.length; k++) bb.tri(bb.P(mid, FRONT.contentOutM, o.spring), bb.P(line[k - 1][0], FRONT.contentOutM, line[k - 1][1]), bb.P(line[k][0], FRONT.contentOutM, line[k][1]), bb.N(0, 1, 0), lightHex);
+        // Strips from the springing line up to the arch, wound like the spandrels (a fan of triangles drew half of
+        // them back-facing: the red and grey quadrants of blind round 1).
+        for (let k = 1; k < line.length; k++) { const [x0, y0] = line[k - 1], [x1, y1] = line[k]; bb.face([bb.P(x0, FRONT.contentOutM, o.spring), bb.P(x1, FRONT.contentOutM, o.spring), bb.P(x1, FRONT.contentOutM, y1), bb.P(x0, FRONT.contentOutM, y0)], bb.N(0, 1, 0), lightHex); }
         bb.slab(o.a0, o.a1, 0, FRONT.frameOutM - 0.03, o.spring - FRONT.transomM, o.spring, frame, 'bottom');
         for (const t of [1 / 3, 2 / 3]) { const ang = Math.PI * t, r = (o.a1 - o.a0) / 2; bb.face([bb.P(mid - 0.02, 0.05, o.spring), bb.P(mid + 0.02, 0.05, o.spring), bb.P(mid + r * Math.cos(ang) + 0.02, 0.05, o.spring + (o.crown - o.spring) * Math.sin(ang)), bb.P(mid + r * Math.cos(ang) - 0.02, 0.05, o.spring + (o.crown - o.spring) * Math.sin(ang))], bb.N(0, 1, 0), frame); }
       }

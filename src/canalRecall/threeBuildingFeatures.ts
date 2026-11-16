@@ -355,6 +355,14 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const gf = groundFloorOn() ? groundFloorOf(p.groundFloor) : undefined;
     if (gf && !redRow?.s) building.retailFront.groundFloor = gf;
     delete building.signature;
+  } else if (template && !redRow && !p.frontCarrier && cellSetOf(look) !== 'procedural' && retailGroundOn() && groundFloorOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0])) {
+    // Lane ground-floor fix round: a pand whose template is held or not accepted still draws its ground-floor record,
+    // with a neutral shop fill (retailFront.ts `neutral`) and its name lettered on a dark board.
+    const gf = groundFloorOf(p.groundFloor), letters = retailLogoLayer(cellSetOf(look));
+    if (gf) {
+      building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(chainRow ? { word: chainRow.word } : template[3] && !chainKey ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(letters !== null ? { letters } : {}), neutral: true, groundFloor: gf };
+      delete building.signature;
+    }
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);
   if (typeof p.facade !== 'string' || !p.facadeStyle) {

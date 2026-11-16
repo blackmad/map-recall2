@@ -82,16 +82,21 @@ export function readProblems(a: any): string[] {
 
 /** The read as a merge part at source `photo-read`; a field named in `low` keeps half the read's confidence on its own
  *  receipt, by halving the part's confidence only through `lowFields` (merge.ts). Null for an unreadable read. */
+/** The read confidence a painted pui's or fascia's colour needs to stand (else the renderer's dark). */
+export const GF_HEX_CONF = 0.7;
 export function toGroundFloorPart(a: GroundFloorRead, at: string | null = null): (GroundFloorPart & { lowFields?: string[] }) | null {
   if (!a.readable || readProblems(a).length) return null;
   const openings = a.openings.map(o => ({ a0: o.a0, a1: o.a1, sillM: o.sillM, headM: o.headM, head: o.head, kind: o.kind }));
+  // A painted pui's or a fascia's colour stands only on a confident read (GF_HEX_CONF, the field not marked low): blind
+  // round 1 lost on bright fronts the photos show dark. A masonry finish's colour stands as read.
+  const trusted = (f: string) => a.conf >= GF_HEX_CONF && !a.low?.includes(f);
   return {
     source: 'photo-read', confidence: a.conf, ref: a.image.ref, at,
     openings,
     ...(a.piers ? { piers: piersBetween(openings, a.piers.material, !!a.piers.rusticated) } : {}),
     ...(a.plinth ? { plinth: { kind: a.plinth.kind, heightM: a.plinth.kind === 'none' ? 0 : a.plinth.heightM ?? 0.45 } } : {}),
-    ...(a.groundFinish ? { groundFinish: { material: a.groundFinish.material, ...(a.groundFinish.hex ? { hex: a.groundFinish.hex.toLowerCase() } : {}) } } : {}),
-    ...(a.fascia ? { fascia: { kind: a.fascia.kind, ...(a.fascia.heightM ? { heightM: a.fascia.heightM } : {}), ...(a.fascia.inOpening ? { inOpening: true } : {}), ...(a.fascia.hex ? { hex: a.fascia.hex.toLowerCase() } : {}) } } : {}),
+    ...(a.groundFinish ? { groundFinish: { material: a.groundFinish.material, ...(a.groundFinish.hex && (a.groundFinish.material !== 'painted-pui' || trusted('groundFinish')) ? { hex: a.groundFinish.hex.toLowerCase() } : {}) } } : {}),
+    ...(a.fascia ? { fascia: { kind: a.fascia.kind, ...(a.fascia.heightM ? { heightM: a.fascia.heightM } : {}), ...(a.fascia.inOpening ? { inOpening: true } : {}), ...(a.fascia.hex && trusted('fascia') ? { hex: a.fascia.hex.toLowerCase() } : {}) } } : {}),
     ...(a.sign ? { sign: { kind: a.sign.kind, ...(a.sign.opening !== undefined ? { opening: a.sign.opening } : {}), ...(a.sign.blade ? { blade: true } : {}) } } : {}),
     ...(a.groundTopM ? { groundTopM: a.groundTopM } : {}),
     ...(typeof a.spanM === 'number' && a.spanM >= 1 && a.spanM <= 80 ? { spanM: a.spanM } : {}),

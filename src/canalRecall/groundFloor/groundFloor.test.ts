@@ -134,3 +134,32 @@ test('renderer: no record leaves the template front byte-identical', () => {
   // extraction and the inset mode must not move a byte of it.
   for (const [t, h] of Object.entries(golden)) assert.equal(hash(retailFrontTris({ template: t as never, seed: 's' + t, word: 'Shop Name' }, E, 0, 6, 0, 3.4)), h, t);
 });
+
+test('fix round: dark by default; a painted pui or fascia colour stands only on a confident read; neutral fill', async () => {
+  const { GF_DARK } = await import('../retailFront.js');
+  const { GF_HEX_CONF } = await import('./read.js');
+  const base: GroundFloorRead = { v: 1, pandId: '0363100000000001', image: { ref: 'r' }, reader: 't', prompt: 'gf-read-v1', readable: true, conf: 0.6, extent: 'single',
+    openings: [{ a0: 0.05, a1: 0.95, sillM: 0, headM: 3, head: 'flat', kind: 'shop' }], groundFinish: { material: 'painted-pui', hex: '#f4f0e8' }, fascia: { kind: 'band', hex: '#e9479a' }, sign: { kind: 'fascia' } } as GroundFloorRead;
+  const low = toGroundFloorPart(base)!, sure = toGroundFloorPart({ ...base, conf: GF_HEX_CONF })!, marked = toGroundFloorPart({ ...base, conf: 0.9, low: ['fascia'] })!;
+  assert.equal(low.groundFinish!.hex, undefined); assert.equal(low.fascia!.hex, undefined);
+  assert.equal(sure.groundFinish!.hex, '#f4f0e8'); assert.equal(sure.fascia!.hex, '#e9479a');
+  assert.equal(marked.fascia!.hex, undefined); assert.equal(marked.groundFinish!.hex, '#f4f0e8');
+  // A non-chain template with no stated colours draws a dark board; neutral drops the template's awning.
+  const gf = drawOf(mergeGroundFloor('0363100000000001', [low])!);
+  const hexes = new Set(groundFloorFrontTris({ template: 'bakery', seed: 'b', word: 'Bakker' }, gf, E, 0, 6, 0, 3.6).map(t => t.hex));
+  assert.ok(hexes.has(GF_DARK));
+  const neutral = groundFloorFrontTris({ template: 'telecom', seed: 'n', word: 'KPN', neutral: true }, gf, E, 0, 6, 0, 3.6);
+  assert.ok(neutral.length > 20 && neutral.every(t => !t.lit));
+});
+
+test('fix round: an arch fanlight faces the street (no back-facing quadrants)', () => {
+  const tris = groundFloorFrontTris({ template: 'clothes', seed: 'sting', word: 'The Sting' }, STING_GF(), E, 0, 5.9, 0, 5.6);
+  // Every face drawn in the opening's plane with a street-facing normal winds so its geometric normal faces the street.
+  for (const t of tris) {
+    if (Math.abs(t.n[1] - (-1)) > 1e-6 && Math.abs(t.n[1] - 1) > 1e-6) continue;
+    const [a, b, c] = t.p, ux = b[0] - a[0], uz = b[2] - a[2], vx = c[0] - a[0], vz = c[2] - a[2];
+    const cross = uz * vx - ux * vz; // y component of (b-a) x (c-a)
+    if (Math.abs(cross) < 1e-9) continue;
+    assert.ok(Math.sign(cross) === Math.sign(t.n[1]), `winding vs normal at ${JSON.stringify(t.p)}`);
+  }
+});
