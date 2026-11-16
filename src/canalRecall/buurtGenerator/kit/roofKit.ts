@@ -355,9 +355,23 @@ export const RAISED_LOOK = { backM: 0.35, copingM: 0.08, copingOutM: 0.04 } as c
 export function drawRaised(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
   const R = RAISED_LOOK;
   for (const r of kit.raised ?? []) {
-    const c0 = (r.a0 - 0.5) * W, c1 = (r.a1 - 0.5) * W, out = r.outM ?? 0.01, foot = r.outM ? kit.footZ ?? kit.z0 : -0.05;
+    const c0 = (r.a0 - 0.5) * W, c1 = (r.a1 - 0.5) * W, out = r.outM ?? r.faceM ?? 0.01, foot = r.outM ? kit.footZ ?? kit.z0 : -0.05;
     frontBox(s, L, e, c0, c1, -R.backM, out, foot, r.riseM, 'plate');
     frontBox(s, L, e, c0 - R.copingOutM, c1 + R.copingOutM, -R.backM - R.copingOutM, out + R.copingOutM, r.riseM, r.riseM + R.copingM, 'plate');
+    if (r.lights) raisedLights(s, kit, L, e, r, c0, c1, out);
+  }
+}
+
+/** Round 20: a raised part's storeys over the line, `lights` windows each (RAISED_LIGHT_LOOK), on its face. */
+export const RAISED_LIGHT_LOOK = { footM: 0.7, maxHeightM: 1.4, headM: 0.5, maxWidthM: 1.3, gapM: 0.45, minRiseM: 1.9 } as const;
+function raisedLights(s: RoofSink, kit: BuurtRoofKit, L: number, e: number, r: KitRaised, c0: number, c1: number, out: number): void {
+  const P = RAISED_LIGHT_LOOK, n = r.lights!, rows = r.riseM < P.minRiseM ? 0 : Math.max(1, Math.floor((r.riseM - P.headM) / kit.storeyM + 0.25));
+  const q = frontQuadAt(s, L, e, out), cw = (c1 - c0) / n, w = Math.min(P.maxWidthM, cw - P.gapM);
+  if (w < 0.4) return;
+  for (let k = 0; k < rows; k++) {
+    const za = k * kit.storeyM + P.footM, zb = Math.min(za + P.maxHeightM, Math.min((k + 1) * kit.storeyM, r.riseM) - P.headM);
+    if (zb - za < 0.5) continue;
+    for (let i = 0; i < n; i++) { const m = c0 + cw * (i + 0.5); light(q, m - w / 2, m + w / 2, za, zb, w > 1.1); }
   }
 }
 
