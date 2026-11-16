@@ -14,7 +14,7 @@ import { BASEMENTS } from '../../buildingRecipe/intent.ts';
 import { emptySpec, setSpecField, type HouseSpec, type Prov, type SpecSource } from '../spec.ts';
 import { JUDGED_PALETTE, JUDGED_RULING, type WallJudgedFact } from '../judgedColour.ts';
 import { headsList } from './solve.ts';
-import { frontDesign, type RowDesign, type RowField, type RowFieldSource, type RowRecord } from './types.ts';
+import { frontDesign, type RowDesign, type RowField, type RowFieldSource, type RowGable, type RowRecord } from './types.ts';
 
 /** Row source -> the spec receipt's source and confidence. */
 export const ROW_PROV: Readonly<Record<RowFieldSource, { source: SpecSource; confidence: number }>> = {
@@ -26,6 +26,21 @@ export const ROW_PROV: Readonly<Record<RowFieldSource, { source: SpecSource; con
 };
 const CONF: Record<RowFieldSource, number> = { reviewed: 0.9, 'face-intent': 0.9, 'series-consensus': 0.7, 'single-read': 0.5, 'period-default': 0.3 };
 
+/** A stated gable outline (RowDesign.gable) on a gabled crown; else none. */
+export function statedGable(d: RowDesign): RowGable | null {
+  const g = d.gable?.value;
+  return g && d.crown.value !== 'cornice' && Number.isFinite(g.riseM) && g.riseM > 0 ? g : null;
+}
+/** The front's crown: its family, and a stated gable's rise, steps, attic lights and neck. */
+function crownOf(d: RowDesign): RowFrontRecord['crown'] {
+  const crown: RowFrontRecord['crown'] = { family: d.crown.value === 'cornice' ? 'cornice' : d.crown.value }, g = statedGable(d);
+  if (!g) return crown;
+  return { ...crown, riseM: g.riseM, ...(g.steps ? { steps: g.steps } : {}), ...(g.attic !== undefined ? { atticWindows: g.attic } : {}), ...(g.neckWidthM ? { neckWidthM: g.neckWidthM } : {}),
+    ...(g.cap ? { cap: g.cap } : {}), ...(g.finials ? { finials: true } : {}), ...(g.shoulder === 'sloped' ? { shoulder: 'sloped' as const } : {}), ...(g.neckOverM ? { neckOverM: g.neckOverM } : {}), ...(g.atticHead ? { atticHead: g.atticHead } : {}), ...(g.upperLight ? { upperLight: true } : {}), ...(g.stone ? { stone: g.stone } : {}), ...(g.dress ? { dress: g.dress } : {}) };
+}
+/** A stated gable stands its rise over the front's cornice line (the gable's foot); else the line is the top. */
+const gableTop = (top: number | null, d: RowDesign) => { const g = statedGable(d); return g && top !== null ? +(top + g.riseM).toFixed(2) : top; };
+
 export function rowFrontRecords(row: RowRecord): RowFrontRecord[] {
   return row.members.map(m => {
     const fronts = m.fronts.map(id => row.fronts.find(f => f.id === id)!);
@@ -34,17 +49,20 @@ export function rowFrontRecords(row: RowRecord): RowFrontRecord[] {
     const sources: Record<string, string> = { record: `house-rows ${row.id} ${f0.seriesId}`, eaves: `${d.corniceTopM.source}: ${d.corniceTopM.ref}` };
     const rec: RowFrontRecord = {
       pandId: m.pandId, ...(row.face ? { face: row.face } : {}),
-      topM: f0.topM, eavesM: f0.topM, crown: { family: d.crown.value === 'cornice' ? 'cornice' : d.crown.value },
+      topM: gableTop(f0.topM, d), eavesM: f0.topM, crown: crownOf(d),
       storeys: d.storeys.value, bays: designs.reduce((n, x) => n + x.bays.value, 0),
       confidence: Math.min(CONF[d.corniceTopM.source], CONF[d.storeys.source]), sources,
     };
-    if (fronts.length > 1) rec.subFronts = fronts.map((f, i) => ({ a0: f.sub!.a0, a1: f.sub!.a1, eavesM: f.topM, topM: f.topM, crown: { family: designs[i].crown.value === 'cornice' ? 'cornice' : designs[i].crown.value } }));
+    const pc = d.crown.value === 'cornice' ? d.crownPiece?.value : undefined;
+    if (pc && f0.topM !== null && pc.riseM > 0) rec.crown = { ...rec.crown, piece: { topM: +(f0.topM + pc.riseM).toFixed(2), kind: pc.kind, ...(pc.widthM ? { widthM: pc.widthM } : {}) } };
+    if (fronts.length > 1) rec.subFronts = fronts.map((f, i) => ({ a0: f.sub!.a0, a1: f.sub!.a1, eavesM: f.topM, topM: gableTop(f.topM, designs[i]), crown: crownOf(designs[i]) }));
     return rec;
   });
 }
 
 const prov = (fl: RowField<unknown>, at: string): Prov => ({ ...ROW_PROV[fl.source], ref: `house-rows: ${fl.ref}`, at });
-const WINDOWS_DRAWN: Record<string, string> = { 'tall-upper': 't-window' };
+// `cross` (the row's kruiskozijn, Herengracht 27) is HouseSpec's cross-transom: a mullion and a transom high in the light.
+const WINDOWS_DRAWN: Record<string, string> = { 'tall-upper': 't-window', cross: 'cross-transom' };
 
 /** The pand's HouseSpec from its row. `base` is the face spec (specFromFace) or undefined. */
 export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefined, at: string): HouseSpec | null {
@@ -57,6 +75,10 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
   fronts.forEach((f, i) => {
     const d: RowDesign = frontDesign(row, f);
     const P = `fronts/${i}/`;
+    // A pand split into fronts by its reading alone (no face spec states shares): each front's share of the wall is its span
+    // (Herengracht 200-202, one pand read as two houses).
+    if (fronts.length > 1 && f.sub && typeof (spec.design.fronts?.[i] as { share?: unknown } | undefined)?.share !== 'number')
+      put(P + 'share', +(f.sub.a1 - f.sub.a0).toFixed(3), { value: null, source: 'single-read', ref: `${f.pandId}: the front's span of the pand wall (${f.sub.a0}-${f.sub.a1})` });
     put(P + 'storeys', d.storeys.value, d.storeys);
     put(P + 'bays', d.bays.value, d.bays);
     put(P + 'gable', d.crown.value, d.crown);
@@ -79,6 +101,15 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
       }
     }
     else if (h.dressing === 'jack-blocks' || h.dressing === 'dentil-lintel' || h.dressing === 'stone-lintel') put(P + 'windowSurround', h.dressing, d.heads);
+    else if (h.dressing === 'tablet') {
+      // HouseSpec has no tablet: the stone block on the axis is its keystone; over a relieving shape, the brick relieving
+      // arch (archRing in the wall colour) carries it. The block's tablet proportion is printed as a limit.
+      put(P + 'windowHead', h.shape === 'relieving'
+        ? { kind: 'relieving', ...(h.storeys ? { storeys: h.storeys } : {}), archRing: { colour: 'wall', style: 'solid', keystone: true } }
+        : { kind: h.shape === 'round' || h.shape === 'segmental' ? h.shape : 'flat', ...(h.storeys ? { storeys: h.storeys } : {}), archRing: { colour: 'stone', style: 'none', keystone: true } }, d.heads);
+      const what = `${f.id}: a light stone tablet over each window (row head 'tablet'), drawn as a keystone block`;
+      if (!(spec.schemaLimits ?? []).some(l => (l as { what?: string }).what === what)) spec.schemaLimits = [...(spec.schemaLimits ?? []), { component: 'windowHead', what }];
+    }
     if (d.sills.value && h.dressing === 'none') put(P + 'windowSurround', 'sill', d.sills);
     // Per-house ground the read states and the face does not (a souterrain with a stoop, Weteringschans).
     // Per-house ground the read states (no face spec): the door's opening index, the ground kind.
@@ -102,6 +133,19 @@ export function rowSpec(row: RowRecord, pandId: string, base: HouseSpec | undefi
       if ((BASEMENTS as readonly string[]).includes(bm)) put(P + 'basement', bm, g);
       if (bm !== 'windows') put(P + 'souterrain', true, g);
     }
+    // A stated basement front (RowGround.basementFront, Herengracht 25-29): the stone over the whole basement and its first
+    // doorway as the souterrain's street door; more doorways, a round/segmental head and a named plinth colour are limits.
+    const limit = (component: string, what: string) => { if (!(spec.schemaLimits ?? []).some(l => (l as { what?: string }).what === what)) spec.schemaLimits = [...(spec.schemaLimits ?? []), { component, what }]; };
+    const bf = f.ground.basementFront;
+    if (bf && bm && bm !== 'none') {
+      const g: RowField<unknown> = { value: bf, source: 'reviewed', ref: `${f.pandId}: the basement front as stated (row ground.basementFront)` };
+      put(P + 'plinth', 'full', g);
+      if (bf.doors?.length) put(P + 'basementDoor', bf.doors[0], g);
+      limit('basementDoor', `${f.id}: the basement's doorways ${JSON.stringify(bf.doors ?? [])} under ${bf.head ?? 'round'} heads in a ${bf.plinth ?? 'grey'} plinth (row basementFront); HouseSpec draws one square basement door in the stone colour`);
+    }
+    // Arched ground openings by bay (RowGround.archedOpenings, Herengracht 27): HouseSpec heads are per storey, not per bay.
+    const ao = f.ground.archedOpenings;
+    if (ao?.index.length) limit('windowHead', `${f.id}: ground openings ${JSON.stringify(ao.index)} of ${f.ground.groundBays ?? '?'} have ${ao.shape ?? 'segmental'} arched heads (row archedOpenings); HouseSpec arches whole storeys only`);
     const rs = d.roofStorey.value;
     put(P + 'roofStorey', rs.kind, d.roofStorey);
     if (rs.dormersPerFront > 0) {

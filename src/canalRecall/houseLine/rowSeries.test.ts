@@ -10,7 +10,8 @@ const { loadRowDefs } = await import('../../../scripts/house-specs/rows/rowDefs.
 const { loadRow } = await import('../../../scripts/house-specs/rows/house-rows.ts');
 const { solveRow } = await import('../houseSpec/row/solve.ts');
 const { rowFrontsWithSeries, seriesDraw } = await import('./rowSeries.ts');
-const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE, rowDressOf, ROW_WALL_SUFFIX, ROW_WALL_SLAB } = await import('./rowFront.ts');
+const { resetRowFront, setRowFrontRecords, withRowFront, mansardRise, MANSARD_RISE, rowDressOf, ROW_WALL_SUFFIX, ROW_WALL_SLAB, rowRaisedFronts, ROW_RAISED_FRONT_M } = await import('./rowFront.ts');
+const { rowEdgeGrid } = await import('../threeBuildingMesh.ts');
 const { roofPlanForFeature, rowRoofOf, ROW_SLATE_TONE, roofTriangles, roofTrianglesForOutline } = await import('../roofMesh.ts');
 const { specCellCount } = await import('../streetFacadeRendering.ts');
 const { isGardenShed } = await import('../gardenSheds.ts');
@@ -301,4 +302,158 @@ test('a chunk-owned corner (86-88): the row draws its stated street wall as a sl
   assert.equal(isGardenShed({ ...out, properties: { ...p, rowWallOnly: undefined } } as never, far, { lng, lat }), true, 'without the mark it would be a shed');
   // Flag off: untouched.
   assert.equal(withRowFront(f), f);
+});
+
+// Round 2 (Kinkerstraat 126-138, pand 233461): one pand, seven fronts of two series, s2's two fronts (m3, m6) to 16.45 m
+// over s1's 13.45 m line. Before: one wall to the line for all seven, and on its kinked street run (3.2 + 11.5 + 18.0 m,
+// 19 axes) the glass on the run's grid while the frames took each edge's own, half a bay apart over the middle fronts.
+test('a member whose fronts stand to two lines draws a raised front on each taller span; its kinked run paints one grid', () => {
+  const base = rec(K, '0363100012165799'), line = base.eavesM!;
+  const a = [0, 0.15, 0.3, 0.45, 0.56, 0.73, 0.89, 1], tall = new Set([3, 6]);
+  const subFronts = a.slice(0, -1).map((a0, i) => ({ a0, a1: a[i + 1], eavesM: tall.has(i) ? line + 3 : line, topM: tall.has(i) ? line + 3 : line, crown: { family: 'cornice' as const } }));
+  const r = { ...base, pandId: '0363100012233461', subFronts, spanM: 32.8 };
+  const raised = rowRaisedFronts(r, line)!;
+  assert.equal(raised.length, 7);
+  raised.forEach((f, i) => {
+    assert.equal(f.step.wallTopM, line, 'every wall stops at the series line');
+    if (tall.has(i)) { assert.equal(f.step.crown?.shape, 'raised'); assert.equal(f.step.crown?.riseM, 3); assert.equal(f.step.crown?.bandM, 3, 'a full-width front to its own top'); }
+    else assert.equal(f.step.crown, undefined);
+  });
+  const p = withFlag([r], () => withRowFront(feature(r.pandId, 16))).properties as any;
+  assert.equal(p.rowSeries, base.series!.id);
+  assert.equal(p.roofEavesHeightM, line, 'the series mansard stands on the line');
+  assert.deepEqual(p.specRecipe.subFronts.map((f: any) => f.step.crown?.riseM ?? 0), [0, 0, 0, 3, 0, 0, 3]);
+  // One line (every published round-1 member): nothing changes.
+  assert.equal(rowRaisedFronts({ ...r, subFronts: subFronts.map(f => ({ ...f, eavesM: line, topM: line + ROW_RAISED_FRONT_M })) }, line), null);
+  assert.equal(rowRaisedFronts({ ...r, spanM: undefined }, line), null, 'no width, no raised fronts');
+  const plain = withFlag([base], () => withRowFront(feature(base.pandId, 16))).properties as any;
+  assert.equal(plain.specRecipe?.subFronts, undefined);
+  // The kinked run: each edge on its own whole bays, numbered on along the run (the extras' edgeLayout grid).
+  const bw = 32.68 / 19, grid = rowEdgeGrid({ bays: 19, bayWidthM: bw, groundM: 3.6, storeys: 3, storeyM: 3.2, doorBays: [], lengthM: 32.68, edgeStartM: [0, 3.17, 14.7] }, [3.17, 11.53, 17.99]);
+  assert.deepEqual(grid, [{ u0: 0, bays: 2 }, { u0: 2, bays: 7 }, { u0: 9, bays: 10 }]);
+});
+
+test('a stated gable (RowDesign.gable) draws the kit outline on the series line; absent, the record is unchanged', async () => {
+  const { crownDims } = await import('./crownProfile.ts');
+  const row = structuredClone(solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input));
+  const m = row.members.find(x => x.fronts.length === 1 && x.widthM && !(x as { wallOnly?: unknown }).wallOnly)!;
+  const f = row.fronts.find(x => x.id === m.fronts[0])!;
+  const before = rec(K, m.pandId);
+  f.overrides = { ...f.overrides, crown: { value: 'step', source: 'reviewed', ref: 'test' }, gable: { value: { riseM: 3, steps: 3, attic: 1 }, source: 'reviewed', ref: 'test' } };
+  const r = rowFrontsWithSeries(row).find(x => x.pandId === m.pandId)!, line = before.eavesM!;
+  assert.equal(r.eavesM, line, 'the gable stands on the series line');
+  assert.equal(r.topM, +(line + 3).toFixed(2));
+  assert.deepEqual(r.crown, { family: 'step', riseM: 3, steps: 3, atticWindows: 1 });
+  assert.equal(r.spanM, m.widthM);
+  const p = withFlag([r], () => withRowFront(feature(r.pandId, 16))).properties as any;
+  assert.equal(p.rowSeries, before.series!.id, 'a gabled member keeps its series design');
+  assert.equal(p.roofEavesHeightM, line, 'the wall stops at the line');
+  assert.equal(p.specRecipe.subFronts.length, 1);
+  const st = p.specRecipe.subFronts[0].step;
+  assert.equal(st.wallTopM, line);
+  assert.equal(st.gable, 'step');
+  assert.deepEqual(st.crown, { shape: 'step', riseM: 3, steps: 3, attic: 1 });
+  assert.equal(crownDims(st.crown, m.widthM!).steps, 3, 'the stated tread count');
+  assert.equal(crownDims({ shape: 'step', riseM: 3 }, 6).steps, 4, 'unstated: one per 0.85 m as before');
+  // A raised front mid-run starts its plate at its foot (no risers down the wall under it); a whole front keeps its own.
+  const { rowCrownProfile } = await import('./crownProfile.ts');
+  assert.ok(rowCrownProfile({ shape: 'raised', riseM: 1.7, bandM: 1.7, cap: 'flat', onWall: true }, 6, 1.6).every(([, y]) => y >= 0));
+  assert.ok(rowCrownProfile({ shape: 'raised', riseM: 1.7, bandM: 0.5, cap: 'flat' }, 6, 0.4).some(([, y]) => y < 0));
+  // A pointed gable on one sub-front of a two-front pand (Kinkerstraat 369): the kit's triangle on that span only.
+  const subs = [{ a0: 0, a1: 0.53, eavesM: line, topM: line, crown: { family: 'cornice' as const } }, { a0: 0.53, a1: 1, eavesM: line, topM: line + 2.6, crown: { family: 'point' as const, riseM: 2.6, atticWindows: 1 } }];
+  const two = rowRaisedFronts({ ...before, subFronts: subs, spanM: 8.3 }, line)!;
+  assert.equal(two[0].step.crown, undefined);
+  assert.equal(two[1].step.gable, 'plain');
+  assert.deepEqual(two[1].step.crown, { shape: 'point', riseM: 2.6, attic: 1 });
+  // The crown kind alone (no gable stated): the record and the drawing are today's.
+  const row2 = structuredClone(solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input));
+  row2.fronts.find(x => x.id === m.fronts[0])!.overrides.crown = { value: 'step', source: 'reviewed', ref: 'test' };
+  const r2 = rowFrontsWithSeries(row2).find(x => x.pandId === m.pandId)!;
+  assert.equal(r2.topM, line); assert.deepEqual(r2.crown, { family: 'step' }); assert.equal(r2.spanM, before.spanM);
+});
+
+test('belt gable vocabulary (round 4): spout, neck cap and height, finials, arched attic light; absent, as before', async () => {
+  const { rowGableCrown } = await import('./rowFront.ts');
+  const { rowCrownProfile, crownDims } = await import('./crownProfile.ts');
+  const spout = rowGableCrown({ family: 'spout', riseM: 2.9, finials: true, atticWindows: 1, atticHead: 'round' }, 2.9)!;
+  assert.equal(spout.gable, 'spout');
+  assert.deepEqual(spout.crown, { shape: 'spout', riseM: 2.9, attic: 1, finials: true, atticHead: 'round' });
+  const neck = rowGableCrown({ family: 'neck', riseM: 3.2, cap: 'segmental', neckOverM: 2.4 }, 3.2)!;
+  assert.equal(neck.crown.cap, 'segmental');
+  assert.equal(neck.crown.shoulderRise, 0.25, 'the neck stands 2.4 m of the 3.2 m rise over its shoulders');
+  // Symmetric outlines; the stated cap and neck height change the neck's outline, the stock one is unchanged.
+  for (const c of [spout.crown, neck.crown]) {
+    const prof = rowCrownProfile(c, 6, 1);
+    for (const [x, y] of prof) assert.ok(prof.some(([x2, y2]) => Math.abs(x2 + x) < 1e-6 && Math.abs(y2 - y) < 1e-6), `${c.shape} mirrored at ${x}`);
+  }
+  assert.notDeepEqual(rowCrownProfile(neck.crown, 6, 1), rowCrownProfile({ shape: 'neck', riseM: 3.2 }, 6, 1));
+  assert.equal(crownDims({ shape: 'neck', riseM: 3.2, cap: 'flat' }, 6).cap, 0);
+  // Finials and an arched attic light add stone and glass to the crown plate; without them the plate is the same.
+  const tris = (c: object) => roofTriangles({ cx: 0, cy: 0, ux: 1, uy: 0, len: 0.6, wid: 6, coverage: 1, maxDev: 0 } as never, { kind: 'gable', gable: 'step', rowCrown: c, riseM: 2, gableEnds: [true, true], streetEnds: [true, false], dormers: false, material: 'slate', tone: 0.5, seed: 'x', chimney: false, accents: true, trimHex: '#ffffff' } as never, 12, { bayM: 1.5, storeyM: 3, cellM: 5 }).length;
+  const step = { shape: 'step', riseM: 3, steps: 3 };
+  assert.equal(tris({ ...step, finials: true }) - tris(step), 2 * 2 * 2 * 3, 'a post and a cap on each of the three treads a side');
+  assert.ok(tris({ ...step, atticHead: 'round' }) > tris(step));
+  // A plain arched head draws its glass; jack blocks on an arch keep the arch.
+  const { headGrammarOf } = await import('./headGrammar.ts');
+  assert.equal(headGrammarOf('jack-blocks', 'round')!.shape, 'round');
+  assert.equal(headGrammarOf('jack-blocks', 'flat')!.lintel, true);
+});
+
+test('stated window heights stack the storeys by them; a pand to two lines takes the taller and steps the lower front down', async () => {
+  const { rowWindowRows } = await import('./rowSeries.ts');
+  const { rowStepLow } = await import('../threeBuildingMesh.ts');
+  const r = rowWindowRows([2.1, 1.75, 1.55], 15.58, 4, null)!;
+  assert.equal(r.groundTopM, 4.18);
+  const h = r.rows.map(x => +(x.headM - x.sillM).toFixed(2)), pitch = r.rows.slice(1).map((x, i) => +(x.sillM - r.rows[i].sillM).toFixed(2));
+  assert.deepEqual(h, [2.1, 1.75, 1.55]);
+  assert.ok(pitch[0] > pitch[1], 'the taller window has the taller storey');
+  assert.ok(r.rows[2].headM < 15.58);
+  assert.equal(rowWindowRows([2, 1.8], 15.58, 4, null), null, 'a count that does not match the storeys draws nothing');
+  assert.equal(rowWindowRows(undefined, 15.58, 4, null), null);
+  // Through withRowFront: the rows become the window boxes on the stated ground.
+  const base = rec(K, '0363100012165799');
+  const rows = rowWindowRows([2.1, 1.75], base.eavesM!, 3, null)!;
+  const p = withFlag([{ ...base, storeys: 3, rows: rows.rows, groundTopM: rows.groundTopM }], () => withRowFront(feature(base.pandId, 16))).properties as any;
+  assert.equal(p.specRecipe.windowBoxes.length, 2 * base.bays!);
+  assert.equal(p.specRecipe.groundM, rows.groundTopM);
+  // 69-73: the pand stands to 71-73's 16.3 m; 69's neck front steps down to its 14.6 m and its gable stands there.
+  const subs = [{ a0: 0, a1: 0.3, eavesM: 14.6, topM: 17.4, crown: { family: 'neck' as const, riseM: 2.8 } }, { a0: 0.3, a1: 0.65, eavesM: 16.3, topM: 16.3, crown: { family: 'cornice' as const } }, { a0: 0.65, a1: 1, eavesM: 16.3, topM: 16.3, crown: { family: 'cornice' as const } }];
+  const st = rowRaisedFronts({ ...base, subFronts: subs, spanM: 17.4 }, 16.3)!;
+  assert.deepEqual(st.map(f => f.step.wallTopM), [14.6, 16.3, 16.3]);
+  assert.equal(st[0].step.crown?.shape, 'neck'); assert.equal(st[0].step.crown?.riseM, 2.8);
+  // A plain lower front steps down without a crown.
+  const plainLow = rowRaisedFronts({ ...base, subFronts: [{ ...subs[0], topM: 14.6, crown: { family: 'cornice' as const } }, subs[1]], spanM: 10 }, 16.3)!;
+  assert.deepEqual(plainLow.map(f => [f.step.wallTopM, f.step.crown]), [[14.6, undefined], [16.3, undefined]]);
+  // The wall extras over the lower front's own top are taken out; those under it and beside it stay.
+  const T = (x: number, z: number) => ({ p: [[x, 0.1, z], [x + 0.1, 0.1, z], [x, 0.1, z + 0.1]] });
+  const list = [T(1, 15), T(1, 14), T(5, 15)];
+  rowStepLow(list, 0, [{ x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: 1, a0: 0, a1: 3, z: 14.6 }]);
+  assert.deepEqual(list.map(t => t.p[0][0] + ':' + t.p[0][2]), ['1:14', '5:15']);
+});
+
+test('a stated pediment on the cornice (RowCorniceDress.centre) takes the centre dormer behind it; absent: the dormers as stated (Herengracht 248)', () => {
+  const d0 = solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input).series[0].design;
+  const fr = [{ id: 'x', pandId: 'x', label: '', numbers: [], widthM: 8, seriesId: 's', ground: { use: 'dwelling' as const }, overrides: {}, topM: 14 }];
+  const roof = { value: { kind: 'mansard' as const, material: 'slate' as const, dormersPerFront: 3, dormerKind: 'plain' as const }, source: 'face-intent' as const, ref: 't' };
+  const plain = seriesDraw(fr, [{ ...d0, roofStorey: roof }]);
+  assert.equal(plain.roofStorey!.dormers.length, 3);
+  const ped = seriesDraw(fr, [{ ...d0, roofStorey: roof, corniceDress: { value: { centre: 'pediment', centreShare: 0.5 }, source: 'reviewed', ref: 't' } }]);
+  assert.deepEqual(ped.roofStorey!.dormers.map(d => d.a), [0.1667, 0.8333]);
+  assert.deepEqual(ped.corniceDress, { centre: 'pediment', centreShare: 0.5 });
+});
+
+test('stated arched ground openings and a basement front (Herengracht 27, 25-29) draw only as stated', () => {
+  const d0 = solveRow(loadRow(defs['kinkerstraat-86-110'], '2026-11-14').input).series[0].design;
+  const fr = (ground: Record<string, unknown>) => [{ id: 'x', pandId: 'x', label: '', numbers: [], widthM: 5, seriesId: 's', ground: { use: 'dwelling' as const, ...ground }, overrides: {}, topM: 12 }];
+  const plain = seriesDraw(fr({ basement: 'windows', groundBays: 2 }), [d0]);
+  assert.equal(plain.basements, undefined);
+  assert.ok(!(plain.heads ?? []).some(h => h.dressing === 'arched-frame'));
+  const s = seriesDraw(fr({ basement: 'windows', groundBays: 2, archedOpenings: { index: [1] }, basementFront: { plinth: 'grey', doors: [0] } }), [d0]);
+  // Over a souterrain the ground openings are the bel-etage's: renderer storey 1.
+  assert.deepEqual(s.heads!.find(h => h.dressing === 'arched-frame'), { a0: 0.5, a1: 1, shape: 'segmental', dressing: 'arched-frame', storeys: [1] });
+  assert.deepEqual(s.basements, [{ a0: 0, a1: 1, hex: '#7d7a73', head: 'round', doors: [[0, 0.5]] }]);
+  // No souterrain: the basement front is not drawn; the arch sits on the ground storey.
+  const g = seriesDraw(fr({ groundBays: 2, archedOpenings: { index: [0], shape: 'round' }, basementFront: { doors: [0] } }), [d0]);
+  assert.equal(g.basements, undefined);
+  assert.deepEqual(g.heads!.find(h => h.dressing === 'arched-frame')!.storeys, [0]);
 });

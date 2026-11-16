@@ -1,0 +1,32 @@
+{
+ "id": "zwembad-bijlmer",
+ "name": "Zwembad Bijlmer, Bijlmer Sportcentrum",
+ "heightMetres": 13,
+ "bagYear": 2008,
+ "galleryView": {
+  "theta": 3.6,
+  "phi": 0.95
+ },
+ "surveyedSource": "Vertex average of the BAG 0363100012103346 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/zwembad-bijlmer-footprints.json, written by pool-site-prepare.ts). The shell is the 3DBAG LoD2.2 (CC BY 4.0); every front is read from Gemeente Amsterdam panoramas (CC BY 4.0), listed per wall in scripts/landmarks/zwembad-bijlmer-brief.md and per item in scripts/landmarks/zwembad-bijlmer-inventory.json.",
+ "materialOverrides": {
+  "greyBrick": "#867b6e",
+  "slate": "#4a4c4e",
+  "concrete": "#c9c7c0",
+  "glass": "#3a4a55",
+  "canopyGlass": "#8fa6b4",
+  "frame": "#d6d8d4",
+  "white": "#f2f2ee",
+  "green": "#3d9a3a",
+  "red": "#c8323a",
+  "dark": "#4d5256"
+ },
+ "measuredOverrides": true,
+ "attribution": {
+  "title": "Zwembad Bijlmer, Bijlmer Sportcentrum: sports and swimming hall of 2008",
+  "author": "Map Recall",
+  "sourceUrl": "https://www.openstreetmap.org/node/13057635556",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the glass curtain wall on the west and south, the sign band of white squares with green letters, the red BIJLMER SPORTCENTRUM lettering, the brick walls on their concrete plinth with the high strip windows and canopies. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

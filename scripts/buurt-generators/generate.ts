@@ -31,7 +31,7 @@ const STREET_CLASSES = new Set(['residential', 'tertiary', 'secondary', 'primary
 export function loadLibrary(district: string): DistrictLibrary {
   const lib: DistrictLibrary = JSON.parse(fs.readFileSync(`src/canalRecall/buurtGenerator/districts/${district}.json`, 'utf8'));
   const m = `src/canalRecall/buurtGenerator/districts/measured/${district}.json`;
-  if (process.env.BUURT_MEASURED !== '0' && fs.existsSync(m)) { const { walls, roofs, rowRoofs, photoWalls, photoReads, photoHeads } = JSON.parse(fs.readFileSync(m, 'utf8')); lib.measured = { walls, roofs, rowRoofs, ...(photoWalls ? { photoWalls } : {}), ...(photoReads ? { photoReads } : {}), ...(photoHeads ? { photoHeads } : {}) }; }
+  if (process.env.BUURT_MEASURED !== '0' && fs.existsSync(m)) { const { walls, roofs, rowRoofs, bays, photoWalls, photoReads, photoHeads } = JSON.parse(fs.readFileSync(m, 'utf8')); lib.measured = { walls, roofs, rowRoofs, ...(bays ? { bays } : {}), ...(photoWalls ? { photoWalls } : {}), ...(photoReads ? { photoReads } : {}), ...(photoHeads ? { photoHeads } : {}) }; }
   return lib;
 }
 
@@ -70,7 +70,7 @@ export function districtPands(lib: DistrictLibrary): GenPand[] {
       if (!polys.some((q: any) => cx >= q.box[0] && cx <= q.box[2] && cy >= q.box[1] && cy <= q.box[3] && inside(q.rings, cx, cy))) continue;
       const num = (v: unknown) => typeof v === 'number' && Number.isFinite(v) ? v : null;
       const fact = facts.get(id.replace(/^NL\.IMBAG\.Pand\./, '')) ?? facts.get(id);
-      out.set(id, { id, ring: ring.map(c => [c[0], c[1]] as const), year: num(p.year), eavesM: num(p.eaves), ridgeM: num(p.ridge), roofSlot: fact?.slot ?? null, roofCode: num(p.roof) });
+      out.set(id, { id, ring: ring.map(c => [c[0], c[1]] as const), year: num(p.year), eavesM: num(p.eaves), ridgeM: num(p.ridge), heightM: num(p.height), roofSlot: fact?.slot ?? null, roofCode: num(p.roof) });
     }
   }
   return [...out.values()].sort((a, b) => a.id < b.id ? -1 : 1);

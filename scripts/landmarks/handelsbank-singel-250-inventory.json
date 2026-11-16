@@ -1,0 +1,365 @@
+{
+ "schemaVersion": 1,
+ "id": "handelsbank-singel-250",
+ "pand": "0363100012167627",
+ "brief": "scripts/landmarks/handelsbank-singel-250-brief.md",
+ "signature": [
+  "n-giant-pilasters",
+  "n-rusticated-ground",
+  "n-balustrade",
+  "e-entrance",
+  "e-cellar-grilles"
+ ],
+ "walls": [
+  {
+   "tag": "w01-10",
+   "bearing": 10,
+   "lengthM": 25.7,
+   "centre": [
+    4.8882215,
+    52.3731865
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002538_pano_0000_001765",
+   "capturedAt": "2022-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-giant-pilasters",
+     "kind": "colonnade",
+     "where": "nine giant Corinthian pilasters through the two upper floors, t 0.55-23.65",
+     "approxSizeM": [
+      0.85,
+      8.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001765",
+     "how": "slab shafts with bases, capital blocks and abaci at Y 7.0-15.3"
+    },
+    {
+     "id": "n-rusticated-ground",
+     "kind": "other",
+     "where": "rusticated sandstone ground floor (blokkenpatroon) over a stone plinth",
+     "approxSizeM": [
+      25.7,
+      6.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002538_pano_0000_001765",
+     "how": "sandstone face slab with 0.55 m horizontal joint strips; vertical joints not drawn"
+    },
+    {
+     "id": "n-festoons",
+     "kind": "relief",
+     "where": "festoon panels between the first- and second-floor windows, one per bay",
+     "approxSizeM": [
+      1.4,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002538_pano_0000_001765",
+     "how": "raised panel with one stone swag polygon per bay"
+    },
+    {
+     "id": "n-entablature",
+     "kind": "other",
+     "where": "entablature, dentil cornice",
+     "approxSizeM": [
+      25.7,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001765",
+     "how": "frieze slab, cornice slabs and dentil blocks"
+    },
+    {
+     "id": "n-balustrade",
+     "kind": "other",
+     "where": "balustrade with dies over the pilasters and two urns",
+     "approxSizeM": [
+      25.7,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001765",
+     "how": "plinth, balusters, rail, dies; urns over the 3rd and 7th dies"
+    },
+    {
+     "id": "n-windows",
+     "kind": "window-shape",
+     "where": "eight windows per floor with small upper panes, window cornices on the second floor",
+     "approxSizeM": [
+      1.44,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001765",
+     "how": "frame, glass, mullion, transom and two pane bars; sills and cornices"
+    },
+    {
+     "id": "n-train-more-sign",
+     "kind": "sign",
+     "where": "tenant's TRAIN MORE letters over the first ground-floor window",
+     "approxSizeM": [
+      3.2,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002538_pano_0000_001765",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage, changes with the lease"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-104",
+   "bearing": 104,
+   "lengthM": 22.6,
+   "centre": [
+    4.88837,
+    52.373069
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002865_pano_0020_000019",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-giant-pilasters",
+     "kind": "colonnade",
+     "where": "giant pilasters with Corinthian capitals, Singel north half",
+     "approxSizeM": [
+      0.85,
+      8.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002865_pano_0020_000019",
+     "how": "as the Raadhuisstraat front, eight bays"
+    },
+    {
+     "id": "e-cellar-grilles",
+     "kind": "balcony-ironwork",
+     "where": "barred cellar lights in the plinth, one per bay",
+     "approxSizeM": [
+      1.3,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002865_pano_0020_000019",
+     "how": "dark opening with five bronze bars"
+    },
+    {
+     "id": "e-festoons",
+     "kind": "relief",
+     "where": "festoon panels between the upper windows",
+     "approxSizeM": [
+      1.4,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002865_pano_0020_000019",
+     "how": "raised panel with one swag polygon"
+    },
+    {
+     "id": "e-rusticated-ground",
+     "kind": "other",
+     "where": "rusticated ground floor with large transomed windows",
+     "approxSizeM": [
+      22.6,
+      4.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002865_pano_0020_000019",
+     "how": "face slab with joint strips, windows applied in front"
+    }
+   ]
+  },
+  {
+   "tag": "w03-103",
+   "bearing": 103,
+   "lengthM": 20.7,
+   "centre": [
+    4.888288,
+    52.3728525
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002865_pano_0020_000024",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-entrance",
+     "kind": "window-shape",
+     "where": "arched double-door entrance with a fanlight in a stone surround, at the step in the Singel front",
+     "approxSizeM": [
+      2.3,
+      5.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002865_pano_0020_000024",
+     "how": "arch band surround, dark arched leaf field, frame, fanlight glass and steps"
+    },
+    {
+     "id": "e2-giant-pilasters",
+     "kind": "colonnade",
+     "where": "giant pilasters, the 1925 extension's half of the Singel front",
+     "approxSizeM": [
+      0.85,
+      8.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002865_pano_0020_000024",
+     "how": "as the north half, seven window bays"
+    },
+    {
+     "id": "e-balustrade",
+     "kind": "other",
+     "where": "balustrade with urns over the Singel cornice",
+     "approxSizeM": [
+      20.7,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002865_pano_0020_000024",
+     "how": "plinth, balusters, rail and dies"
+    },
+    {
+     "id": "e-postboxes",
+     "kind": "other",
+     "where": "two orange PostNL boxes on the plinth",
+     "approxSizeM": [
+      0.5,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002865_pano_0020_000024",
+     "skip": {
+      "reason": "too-small",
+      "note": "street furniture under 1 m"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-189",
+   "bearing": 189,
+   "lengthM": 11.4,
+   "centre": [
+    4.887864,
+    52.372748
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002865_pano_0017_000017",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w05-10",
+   "bearing": 10,
+   "lengthM": 8.8,
+   "centre": [
+    4.8877645,
+    52.3728965
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002976_pano_0004_000206",
+   "capturedAt": "2023-02-20",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-190",
+   "bearing": 190,
+   "lengthM": 7.9,
+   "centre": [
+    4.8877615,
+    52.372812
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002976_pano_0004_000195",
+   "capturedAt": "2023-02-20",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-190",
+   "bearing": 190,
+   "lengthM": 6.2,
+   "centre": [
+    4.887803,
+    52.3729695
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002976_pano_0004_000199",
+   "capturedAt": "2023-02-20",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-275",
+   "bearing": 275,
+   "lengthM": 5.7,
+   "centre": [
+    4.887483,
+    52.3730695
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000990",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w09-280",
+   "bearing": 280,
+   "lengthM": 4.5,
+   "centre": [
+    4.8878135,
+    52.372786
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_04-42-37_01134",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-190",
+   "bearing": 190,
+   "lengthM": 4.5,
+   "centre": [
+    4.8879875,
+    52.3727655
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002865_pano_0017_000015",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w11-102",
+   "bearing": 102,
+   "lengthM": 4.1,
+   "centre": [
+    4.888243,
+    52.372729
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002865_pano_0020_000027",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

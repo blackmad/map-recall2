@@ -3,8 +3,24 @@ import {buildLofi} from './lofi-builder';
 import {buildTheOtherSide} from './the-other-side-builder';
 import {buildAsscherDiamantslijperij} from './asscher-diamantslijperij-builder';
 import {buildDiamantMuseum} from './diamant-museum-builder';
+// Pools lane 2026-11-15 (pool-kit.ts: outdoor basins, decks, slides, domes)
+import {buildDeMirandabad} from './de-mirandabad-builder';
+import {buildSportplazaMercator} from './sportplaza-mercator-builder';
+import {buildFlevoparkbad} from './flevoparkbad-builder';
+import {buildBrediusbad} from './brediusbad-builder';
+import {buildNoorderparkbad} from './noorderparkbad-builder';
+import {buildSloterparkbad} from './sloterparkbad-builder';
+import {buildZwembadBijlmer} from './zwembad-bijlmer-builder';
+import {buildVictoriabad} from './victoriabad-builder';
 import {buildPolitiebureauRaampoort} from './politiebureau-raampoort-builder';
 import {buildBanksMansion} from './banks-mansion-builder';
+import {buildSchillerRembrandtplein} from './schiller-rembrandtplein-builder';
+import {buildPortVanCleve} from './port-van-cleve-builder';
+import {buildMauritskade61} from './mauritskade-61-builder';
+import {buildReinwardtAcademie} from './reinwardt-academie-builder';
+import {buildDeJaren} from './de-jaren-builder';
+import {buildHandelsbank} from './handelsbank-singel-250-builder';
+import {buildHollandCasino} from './holland-casino-amsterdam-builder';
 import {buildTolstraat160Tempel} from './tolstraat-160-tempel-builder';
 import {buildDeNieuweLiefde} from './de-nieuwe-liefde-builder';
 import {buildRijksakademie} from './rijksakademie-builder';
@@ -17,7 +33,7 @@ import {slotExtras} from '../../src/canalRecall/landmarks/materialSlots';
 import {snapDetachedParts,snapOpenings} from '../../src/canalRecall/landmarks/snapOpenings';
 import {buildWaag} from './waag-builder';
 import {inferredSlotExtras} from '../../src/canalRecall/look/materialSlotInference';
-import {slotTagFor, tagExtras} from './material-slot-tags';
+import {slotTagFor, statedOverrideExtras, tagExtras} from './material-slot-tags';
 import {buildScheepvaartmuseum} from './scheepvaartmuseum-builder';
 import {buildOdessa} from './odessa-builder';
 import {buildHotelJakarta} from './hotel-jakarta-builder';
@@ -613,7 +629,9 @@ async function save(id:string){
   if(group.unlit)material.setExtension('KHR_materials_unlit',unlitExtension!.createUnlit());
   // Shared look (`?cityLook=1`, look/cityLook.ts): the slot follows from the palette name; audit:glb gates new exports at 100 %.
   // Builder-declared slots (material-slot-tags.ts) win over inference; absent a tag the export is unchanged.
-  else{const tag=slotTagFor(id,name);material.setExtras(tag?tagExtras(inferredSlotExtras(name,group.hex),tag):inferredSlotExtras(name,group.hex));}
+  // `measuredOverrides` specs only: a stated wall colour is drawn as stated (material-slot-tags.ts statedOverrideExtras). Without the flag: unchanged.
+  else{const tag=slotTagFor(id,name),base=tag?tagExtras(inferredSlotExtras(name,group.hex),tag):inferredSlotExtras(name,group.hex);
+   material.setExtras(statedOverrideExtras(base,spec.measuredOverrides&&!name.startsWith('decal-')?spec.materialOverrides?.[name]:undefined,group.hex));}
   if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
   const opacity=(spec as {materialOpacity?:Record<string,number>}).materialOpacity?.[group.colour];
   if(opacity!==undefined&&id!=='conservatorium'&&!name.startsWith('decal-'))material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,opacity]).setAlphaMode('BLEND');
@@ -701,8 +719,23 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='the-other-side')buildTheOtherSide(w,d,helpers);
     else if(id==='asscher-diamantslijperij')buildAsscherDiamantslijperij(w,d,helpers);
     else if(id==='diamant-museum')buildDiamantMuseum(w,d,helpers);
+    else if(id==='de-mirandabad')buildDeMirandabad(w,d,helpers);
+    else if(id==='sportplaza-mercator')buildSportplazaMercator(w,d,helpers);
+    else if(id==='flevoparkbad')buildFlevoparkbad(w,d,helpers);
+    else if(id==='brediusbad')buildBrediusbad(w,d,helpers);
+    else if(id==='noorderparkbad')buildNoorderparkbad(w,d,helpers);
+    else if(id==='sloterparkbad')buildSloterparkbad(w,d,helpers);
+    else if(id==='zwembad-bijlmer')buildZwembadBijlmer(w,d,helpers);
+    else if(id==='victoriabad')buildVictoriabad(w,d,helpers);
     else if(id==='politiebureau-raampoort')buildPolitiebureauRaampoort(w,d,helpers);
     else if(id==='banks-mansion')buildBanksMansion(w,d,helpers);
+    else if(id==='schiller-rembrandtplein')buildSchillerRembrandtplein(w,d,helpers);
+    else if(id==='port-van-cleve')buildPortVanCleve(w,d,helpers);
+    else if(id==='mauritskade-61')buildMauritskade61(w,d,helpers);
+    else if(id==='reinwardt-academie')buildReinwardtAcademie(w,d,helpers);
+    else if(id==='de-jaren')buildDeJaren(w,d,helpers);
+    else if(id==='handelsbank-singel-250')buildHandelsbank(w,d,helpers);
+    else if(id==='holland-casino-amsterdam')buildHollandCasino(w,d,helpers);
     else if(id==='tolstraat-160-tempel')buildTolstraat160Tempel(w,d,helpers);
     else if(id==='de-nieuwe-liefde')buildDeNieuweLiefde(w,d,helpers);
     else if(id==='rijksakademie')buildRijksakademie(w,d,helpers);

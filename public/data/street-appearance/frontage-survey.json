@@ -54,7 +54,7 @@
     },
     {
       "file": "public/canal-drive/models/signature-landmarks.json",
-      "sha256": "61b268e7d25c02f64ff231b30433ab730755f5b3166f1532e6ddd4f919f8a7c3"
+      "sha256": "a5bfdcb660401a4f58af3170285e36f0b9bf923d8d2a7b86543a671f7047100b"
     },
     {
       "file": "scripts/street-appearance/bake-frontages.ts",
@@ -70,11 +70,11 @@
     },
     {
       "file": "src/canalRecall/threeBuildingFeatures.ts",
-      "sha256": "0950b6388edca9d28dc3e7622937814081bc032ed56d1a1d55055d67d1f57930"
+      "sha256": "ea6a78ce69764acf6c79b84f07cdeebfda5ef1e4f31354886602456e0e9da812"
     },
     {
       "file": "src/canalRecall/threeBuildingMesh.ts",
-      "sha256": "4351df72a915202adefb84c04aa43a7dd6c28b259f0000e40e3894deb18f2bea"
+      "sha256": "e0a3ba0049af2ceaeccf68fedb290ede4d0a3574548efc45118da721615b2bbd"
     },
     {
       "file": "src/canalRecall/genericFacades.ts",
@@ -94,15 +94,15 @@
     },
     {
       "file": "src/canalRecall/bayLook.ts",
-      "sha256": "d673cd1e17efa4471f8e5de4360131bee60f94283255affd0332cc7103dd7d6c"
+      "sha256": "bf4d8347f2ba9154384e83b0a19fbd226773972778566d68983d3ed354450d0b"
     },
     {
       "file": "src/canalRecall/bayTextures.ts",
-      "sha256": "2501d5866dac022c2cdb780caa07f4d5c501abce6b887b85ac13487c21280c2a"
+      "sha256": "09d5ecf431a22a6005b1cacb04b0018831c813c52aee5c3164573a4d86750296"
     },
     {
       "file": "src/canalRecall/facadeOrnaments.ts",
-      "sha256": "4fe93a530b11299ae63c4f9485a6de4d4fd6f7bb62d31e1a52e5c624dde48f40"
+      "sha256": "2d2d39cd98e00dbb3361059db0e642bbe2c08b26fc867de435261bb639077eea"
     },
     {
       "file": "src/canalRecall/facadeExtras.ts",
@@ -114,7 +114,7 @@
     },
     {
       "file": "src/canalRecall/facadeExtraCore.ts",
-      "sha256": "b807b6631f522efc184442bf40e53b2783d6fe1217e39e8655212690eb17d156"
+      "sha256": "4d683d488dc0efac4ede4ba6b9cf46bd871cc9781d22ba4b55adeb8fa5627663"
     },
     {
       "file": "src/canalRecall/shopCanopies.ts",
@@ -134,7 +134,7 @@
     },
     {
       "file": "src/canalRecall/roofMesh.ts",
-      "sha256": "05e71632aa87c75ac00f21955415024b4b31659c3fb979ee97ed433c825990d2"
+      "sha256": "d4e0e32b05840b8a21ed74c59be6ccbdf7d99b51028ecf8f5e127269d846bc0b"
     }
   ],
   "streetFrontPathsSha256": "8bc67d18dfd30b51e795bb7973589ca8c63d43565c9913d41723e03ec8bd7078",

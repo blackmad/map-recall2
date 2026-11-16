@@ -1,0 +1,62 @@
+{
+ "v": 1,
+ "pandId": "0363100012167493",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "right",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": "not-visible",
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "doorBay",
+  "sameAs",
+  "cornice",
+  "finish"
+ ],
+ "gaps": [],
+ "notes": "The outline covers the left two bays of a wider dark painted front with a white stone attic; its street door with a carved white doorcase is right of the outline. A van, a street ornament and a tree hide much of the ground storey.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

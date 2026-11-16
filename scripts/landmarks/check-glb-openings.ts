@@ -35,7 +35,7 @@ import {loadMaterialSoup} from './material-soup';
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const ALLOW = path.join(ROOT, 'scripts/landmarks/opening-wall-allowlist.json');
 const CACHE_DIR = path.join(ROOT, '.cache/glb-openings');
-const CHECK_VERSION = 3; // bump when the measurement changes (invalidates the cache)
+const CHECK_VERSION = 7; // bump when the measurement changes (invalidates the cache)
 
 export const GATED = ['float', 'poke', 'outside'] as const;
 export type Counts = Record<(typeof GATED)[number], number>;

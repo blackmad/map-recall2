@@ -12,6 +12,8 @@
  * after   house:preview per member with ROW_FRONT=1, ROW_FRONT_RECORDS=<the district's staged row-front.json> and
  *         BUURT_KIT=1 (the generator's kit additions, bayLook.ts PLAN_ZUID_CASEMENT)
  * Each render is fitted to its member's span on the line and to its measured top, over a 3 m grid.
+ * Renders are cached per band under a key of the band's input files and options (renderCache.ts), so a regenerated
+ * row-front never reuses an older render; --fresh drops the row's cache first. Children get no stdin.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -20,6 +22,7 @@ import sharp from 'sharp';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { loadPano, rectifyWall } from '../pand-reference/rectify.ts';
 import type { PanoPick, Wall } from '../pand-reference/select.ts';
+import { renderCacheKey } from './renderCache.ts';
 import { bandFit } from './sheetFit.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -60,12 +63,14 @@ if (!crop) throw new Error('rectification failed (no camera pose)');
 const W = Math.round(len * crop.ppm), H = crop.height, s = crop.ppm;
 console.log(`photo ${crop.width}x${H} at ${s.toFixed(1)} px/m, line ${len.toFixed(1)} m, missing ${(crop.missingFraction * 100).toFixed(0)} %, ground ${crop.groundSource}`);
 
-async function band(env: Record<string, string>, tag: string): Promise<{ img: Buffer; labels: string[] }> {
+if (process.argv.includes('--fresh')) fs.rmSync(work, { recursive: true, force: true });
+async function band(env: Record<string, string>, tag: string, inputs: readonly string[]): Promise<{ img: Buffer; labels: string[] }> {
   const comps: sharp.OverlayOptions[] = [], labels: string[] = [];
+  const key = renderCacheKey(inputs, [String(Math.round(s)), JSON.stringify(Object.entries(env).sort())]);
   for (const sp of spans) {
-    const dir = path.join(work, tag, sp.id);
-    if (!fs.existsSync(path.join(dir, 'front.png'))) {
-      const r = spawnSync('node', ['--import', 'tsx', 'scripts/house-preview/preview.ts', sp.id, '--wall', `line:${lineOf(sp.id).flat().join(',')}`, '--ppm', String(Math.round(s)), '--out', dir], { encoding: 'utf8', env: { ...process.env, ...env } });
+    const dir = path.join(work, `${tag}-${key}`, sp.id);
+    if (!fs.existsSync(path.join(dir, 'front.png')) || !fs.existsSync(path.join(dir, 'measure.json'))) {
+      const r = spawnSync('node', ['--import', 'tsx', 'scripts/house-preview/preview.ts', sp.id, '--wall', `line:${lineOf(sp.id).flat().join(',')}`, '--ppm', String(Math.round(s)), '--out', dir], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, ...env } });
       if (r.status !== 0) { console.error(`${tag} ${sp.id}: preview failed\n${(r.stderr || r.stdout).slice(-600)}`); continue; }
     }
     const m = JSON.parse(fs.readFileSync(path.join(dir, 'measure.json'), 'utf8')) as { heights?: { topM: number; eavesM: number }; layout?: { storeys?: number } };
@@ -79,8 +84,9 @@ async function band(env: Record<string, string>, tag: string): Promise<{ img: Bu
   return { img: await sharp({ create: { width: W, height: H, channels: 3, background: { r: 160, g: 180, b: 200 } } }).composite(comps).png().toBuffer(), labels };
 }
 const restore = Object.fromEntries(Object.keys(process.env).filter(k => /^(ROW_|BUURT_KIT|HOUSE_SPEC)/.test(k)).map(k => [k, '']));
-const before = await band({ ...restore }, 'before');
-const after = await band({ ...restore, ROW_FRONT: '1', ROW_FRONT_RECORDS: recordsFile, BUURT_KIT: '1' }, 'after');
+// `before` is the game today: keyed on the published row-front records (a proxy for a publish since the last sheet).
+const before = await band({ ...restore }, 'before', ['public/data/front-records/row-front.json']);
+const after = await band({ ...restore, ROW_FRONT: '1', ROW_FRONT_RECORDS: recordsFile, BUURT_KIT: '1' }, 'after', [recordsFile]);
 
 // The photo is rectified member by member, each on its own front line, and set at its span on the row line (lane D round
 // 13: a bent row rectified on one chord misplaced its houses; Keizersgracht 169442, whose 55 m row turns ~20 degrees, drew

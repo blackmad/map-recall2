@@ -1,4 +1,7 @@
 import { logoFor, retailLogoLayer } from './retailLogos.js';
+import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, retailRealOn } from './retailPages.js';
+import { RETAIL_CHAINS, chainOfWord } from './retailChains.js';
+import { TEMPLATE_CHAIN_LOGO, chainLogo } from './retailChainLogos.js';
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
 import { structurePriorOn, STRUCTURE_PRIOR_TABLE } from './houseSpec/structurePrior.js';
 import type { StoopIntent } from './buildingRecipe/stoop.ts';
@@ -12,7 +15,7 @@ import { ROOF_CELL_M } from './roofCells.js';
 import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
-import { ROW_FRONT_EXTRAS, rowFrontShopHex, type RowHeadsDraw } from './houseLine/rowFront.js';
+import { ROW_FRONT_EXTRAS, rowFrontShopHex, type RowHeadsDraw, type RowGlazingDraw, type RowGroundWallDraw, type RowBasementDraw } from './houseLine/rowFront.js';
 import { wallVarietyOn } from './look/measuredWallPool.js';
 import { paletteFor } from './bayTextures.js';
 import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
@@ -29,7 +32,7 @@ import { FACADE_STYLES, footprintAreaM2, type FacadeStyle } from './genericFacad
 import { profilesNearBuilding } from './streetFacadeRendering.js';
 import { bayVariantOpenings, proceduralOpenings } from './facadeOpenings.js';
 import type { StreetAppearanceProfile } from './streetAppearance.js';
-import { SUPERMARKET_CHAINS } from './shopfronts.js';
+import { SUPERMARKET_CHAINS, type RedLightRow } from './shopfronts.js';
 import { appendAllotmentHouses, isAllotmentHouse } from './allotmentHouses.js';
 import { SHED_LID_HEX, isGardenShed, ringAreaM2, shedHeightM, shedWallHex } from './gardenSheds.js';
 import { SegmentGrid } from './streetFronts.js';
@@ -44,7 +47,7 @@ import { periodWallList } from './look/brickLift.js';
 import { hashSeed } from './wallBays.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 import { applyGlazing, glazingOf } from './glassParts.js';
-import { RETAIL_HELD, RETAIL_TEMPLATES, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
+import { REAL_ONLY_TEMPLATES, RETAIL_HELD, RETAIL_TEMPLATES, realAccepted, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
 import { paintOverGuess } from './retailPuiPaint.js';
 import { bikeFromCode } from './retailBikes.js';
 
@@ -145,20 +148,42 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
 /** House rows: a feature's `rowDress` (houseLine/rowFront.ts rowDressOf), validated. */
 type RowSide = 'left' | 'right' | 'centre';
 const rowSideOf = (v: unknown): RowSide | null => v === 'left' || v === 'right' || v === 'centre' ? v : null;
-function rowDressOf(v: unknown): { cornice?: string; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false }; door?: { side: RowSide; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; mullionShare?: number; shopFront?: { frameHex: string; side: RowSide } } | null {
+function rowDressOf(v: unknown): { omitExtras?: string[]; cornice?: string; corniceDress?: import('./houseSpec/row/types.js').RowCorniceDress; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false; form?: 'straight' | 'side' | 'double'; railing?: true; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; door?: { side: RowSide; index?: number; bays?: number; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; mullionShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; basements?: RowBasementDraw[]; shopFront?: { frameHex: string; side: RowSide } } | null {
   if (!v || typeof v !== 'object') return null;
   const ws = (v as { windowShare?: unknown }).windowShare, windowShare = typeof ws === 'number' && ws > 0.3 && ws < 0.95 ? { windowShare: ws } : {};
   const ms = (v as { mullionShare?: unknown }).mullionShare, mullionShare = typeof ms === 'number' && ms > 0 && ms < 0.6 ? { mullionShare: ms } : {};
   const d = v as { cornice?: unknown; heads?: unknown; extras?: unknown; stoop?: { side?: unknown }; door?: { side?: unknown; index?: unknown; bays?: unknown }; balcony?: { storeys?: unknown; axis?: unknown } };
-  const doorSide = rowSideOf(d.door?.side), door = doorSide ? { side: doorSide, ...(typeof d.door?.index === 'number' && typeof d.door?.bays === 'number' && d.door.bays > 0 ? { index: d.door.index, bays: d.door.bays } : {}) } : null;
+  const doorcaseOf = (dc: { material?: unknown; top?: unknown; fanlight?: unknown; door?: unknown } | undefined) => dc && (dc.material === 'stone' || dc.material === 'timber') ? { doorcase: { material: dc.material as 'stone' | 'timber', ...(dc.top === 'entablature' || dc.top === 'pediment' || dc.top === 'segmental' ? { top: dc.top as 'entablature' | 'pediment' | 'segmental' } : {}), ...(dc.fanlight === false || dc.fanlight === 'diamond' || dc.fanlight === 'oval' || dc.fanlight === 'oval-spoked' ? { fanlight: dc.fanlight as false | 'diamond' | 'oval' | 'oval-spoked' } : {}), ...((dc as { span?: unknown }).span === 'ground' || (dc as { span?: unknown }).span === 'frame' ? { span: (dc as { span: 'ground' | 'frame' }).span } : {}), ...(typeof (dc as { entresol?: unknown }).entresol === 'number' ? { entresol: (dc as { entresol: number }).entresol } : {}), ...((dc as { tiers?: unknown }).tiers === 2 ? { tiers: 2 as const } : {}), ...(dc.door === 'black' || (typeof dc.door === 'string' && /^#[0-9a-f]{6}$/i.test(dc.door)) ? { door: dc.door as string } : {}) } } : {};
+  const doorSide = rowSideOf(d.door?.side), door = doorSide ? { side: doorSide, ...(typeof d.door?.index === 'number' && typeof d.door?.bays === 'number' && d.door.bays > 0 ? { index: d.door.index, bays: d.door.bays } : {}), ...doorcaseOf((d.door as { doorcase?: { material?: unknown } } | undefined)?.doorcase) } : null;
   const balcony = d.balcony && Array.isArray(d.balcony.storeys) && d.balcony.storeys.every(k => typeof k === 'number') ? { storeys: d.balcony.storeys as number[], axis: d.balcony.axis === 'all' ? 'all' as const : 'centre' as const } : null;
   const sf = (v as { shopFront?: { frameHex?: unknown; side?: unknown } }).shopFront, sfSide = rowSideOf(sf?.side);
   const shopFront = sf && typeof sf.frameHex === 'string' && /^#[0-9a-f]{6}$/i.test(sf.frameHex) && sfSide ? { shopFront: { frameHex: sf.frameHex, side: sfSide } } : {};
+  const gz = (v as { glazing?: { kind?: unknown; frameM?: unknown; barM?: unknown; panes?: unknown } }).glazing;
+  const glazing = gz && typeof gz.kind === 'string' && typeof gz.frameM === 'number' && typeof gz.barM === 'number' ? { glazing: { kind: gz.kind, frameM: gz.frameM, barM: gz.barM, ...(typeof gz.panes === 'number' ? { panes: gz.panes } : {}) } } : {};
+  const fl = (v as { floorsM?: unknown }).floorsM, floorsM = Array.isArray(fl) && fl.length && fl.every(x => typeof x === 'number' && Number.isFinite(x)) ? { floorsM: fl as number[] } : {};
+  // Stated basement fronts (row-basement), each validated.
+  const bs = (v as { basements?: unknown }).basements, basements = Array.isArray(bs) ? (bs as RowBasementDraw[]).filter(b => b && Number.isFinite(b.a0) && Number.isFinite(b.a1) && typeof b.hex === 'string' && /^#[0-9a-f]{6}$/i.test(b.hex)).map(b => ({ a0: b.a0, a1: b.a1, hex: b.hex, head: b.head === 'segmental' ? 'segmental' as const : 'round' as const, doors: Array.isArray(b.doors) ? b.doors.filter(d => Array.isArray(d) && d.length === 2 && d.every(Number.isFinite)).map(d => [d[0], d[1]] as [number, number]) : [] })) : [];
+  const gws = (v as { groundWalls?: unknown }).groundWalls, groundWalls = Array.isArray(gws) ? (gws as RowGroundWallDraw[]).filter(g => g && Number.isFinite(g.a0) && Number.isFinite(g.a1) && typeof g.hex === 'string' && /^#[0-9a-f]{6}$/i.test(g.hex)).map(g => ({ a0: g.a0, a1: g.a1, hex: g.hex, top: g.top === 'plain' || g.top === 'scrolled' ? g.top : 'ledge' as const })) : [];
   const steps = d.stoop && (d.stoop as { steps?: unknown }).steps === false ? { steps: false as const } : {};
+  // The flight's form and railing as the ground states them (house rows stoops, Herengracht 130, 148).
+  const sf0 = (d.stoop as { form?: unknown; railing?: unknown } | undefined), stoopForm = sf0?.form === 'straight' || sf0?.form === 'side' || sf0?.form === 'double' ? { form: sf0.form as 'straight' | 'side' | 'double' } : {};
+  const stoopRail = sf0?.railing === true ? { railing: true as const } : {};
+  const dc = (d.stoop as { doorcase?: { material?: unknown; top?: unknown; fanlight?: unknown } } | undefined)?.doorcase;
+  const doorcase = doorcaseOf(dc);
   const side: 'left' | 'right' | 'centre' | null = d.stoop && (d.stoop.side === 'left' || d.stoop.side === 'right' || d.stoop.side === 'centre') ? d.stoop.side : null;
   const heads = Array.isArray(d.heads) ? (d.heads as RowHeadsDraw[]).filter(h => h && Number.isFinite(h.a0) && Number.isFinite(h.a1) && typeof h.dressing === 'string') : [];
   const extras = Array.isArray(d.extras) ? (d.extras as unknown[]).filter((x): x is string => typeof x === 'string') : [];
-  const out = { ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side, ...steps } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}), ...windowShare, ...mullionShare, ...shopFront };
+  const om = (v as { omitExtras?: unknown }).omitExtras, omitExtras = Array.isArray(om) ? om.filter((x): x is string => typeof x === 'string') : [];
+  // A stated timber cornice (RowDesign.corniceDress), its parts validated one by one.
+  const cd = (v as { corniceDress?: Record<string, unknown> }).corniceDress;
+  const corniceDress = cd && typeof cd === 'object' ? { corniceDress: {
+    ...(typeof cd.paint === 'string' && /^(#[0-9a-f]{6}|white|cream|grey)$/i.test(cd.paint) ? { paint: cd.paint } : {}),
+    ...(cd.supports === 'modillions' || cd.supports === 'consoles' || cd.supports === 'dentils' || cd.supports === 'none' ? { supports: cd.supports as 'modillions' | 'consoles' | 'dentils' | 'none' } : {}),
+    ...(cd.frieze === 'plain' || cd.frieze === 'attic-lights' || cd.frieze === 'panels' ? { frieze: cd.frieze as 'plain' | 'attic-lights' | 'panels' } : {}),
+    ...(cd.centre === 'pediment' || cd.centre === 'segmental' || cd.centre === 'balustrade' ? { centre: cd.centre as 'pediment' | 'segmental' | 'balustrade' } : {}),
+    ...(typeof cd.centreShare === 'number' && cd.centreShare > 0.1 && cd.centreShare <= 1 ? { centreShare: cd.centreShare } : {}),
+  } } : {};
+  const out = { ...(omitExtras.length ? { omitExtras } : {}), ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...corniceDress, ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side, ...steps, ...stoopForm, ...stoopRail, ...doorcase } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}), ...windowShare, ...mullionShare, ...glazing, ...floorsM, ...(groundWalls.length ? { groundWalls } : {}), ...(basements.length ? { basements } : {}), ...shopFront };
   return Object.keys(out).length ? out : null;
 }
 
@@ -177,7 +202,7 @@ function rowLookOf(p: Record<string, unknown>): { bays: number; year?: number | 
   const num = (x: unknown) => typeof x === 'number' && Number.isFinite(x) ? x : null;
   return { bays: v.bays as number, year: num(v.year), heightM: num(v.heightM), ...(typeof (v as { seed?: unknown }).seed === 'string' ? { seed: (v as { seed: string }).seed } : {}), ...(typeof (v as { whiteFrames?: unknown }).whiteFrames === 'boolean' ? { whiteFrames: (v as { whiteFrames: boolean }).whiteFrames } : {}), ...(ROW_SASHES.includes((v as { sash?: RowSash }).sash as RowSash) ? { sash: (v as { sash: RowSash }).sash } : {}) };
 }
-function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean; sash?: RowSash } | undefined {
+function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number; windowH?: number; painted?: boolean; sash?: RowSash; plainHead?: boolean } | undefined {
   const r = specRecipeOf(p), draw = fieldsDraw(fieldsOf(p));
   // Lane WC (`?wallFinish=1`): a spec'd render, painted or stone finish takes the painted preset's smooth cells (bayLook).
   const painted = r?.finish ? { painted: true } : {};
@@ -191,7 +216,10 @@ function specLookOf(p: Record<string, unknown>): { pale?: boolean; dark?: boolea
     // The series' white joinery is the light-sash trait (dark: false); unstated keeps the preset's own.
     // arch: false: the painted cells keep square heads; a stated segmental or round head draws its own glass under the
     // arch (houseLine/headGrammar.ts), so an unstated preset arch never appears (Weteringschans 168096/168042 top row).
-    return { pale: false, arch: false, ...(rl?.sash ? { sash: rl.sash } : {}), ...(rl?.whiteFrames !== undefined ? { dark: !rl.whiteFrames } : {}), ...(perFront ? { bays: perFront } : r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
+    // Stated joinery (row-sash, round 5): the record draws the window, so the preset paints no lintel blocks over it (they
+    // stood over the arched glass on Herengracht 71); a stated head dressing draws its own (row-heads).
+    const plainHead = !!(p.rowDress as { glazing?: unknown } | undefined)?.glazing;
+    return { pale: false, arch: false, ...(plainHead ? { plainHead: true } : {}), ...(rl?.sash ? { sash: rl.sash } : {}), ...(rl?.whiteFrames !== undefined ? { dark: !rl.whiteFrames } : {}), ...(perFront ? { bays: perFront } : r?.bays ? { bays: r.bays } : {}), ...(Number.isFinite(windowH) && windowH > 0 ? { windowH } : {}) };
   }
   if (typeof p.rowFront === 'string') {
     const windowH = Number((r as { windowH?: number } | undefined)?.windowH);
@@ -300,10 +328,21 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (building.shopfront && chain && SUPERMARKET_CHAINS[chain[0]] && !p.frontCarrier) building.chain = { at: [chain[1], chain[2]], look: SUPERMARKET_CHAINS[chain[0]] };
   // Lane retail-ground (`?retailGround=1`): a shopfront template stamped from the template extract (shopfronts.ts
   // decorateShopTemplate, which only runs with the extract installed, which only the flag's loader installs).
-  const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?, 1?] : null;
-  if (template && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && !RETAIL_HELD.includes(template[0]) && !p.frontCarrier && cellSetOf(look) !== 'procedural') {
-    const logo = logoFor(template[0] as RetailTemplate), logoLayer = retailLogoLayer(cellSetOf(look));
-    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer + logo.page, rect: logo.rect, aspect: logo.aspect } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(puiPaint && p.puiDark !== 1 ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}), ...(typeof p.shopAwning === 'string' && /^#[0-9a-f]{6}$/i.test(p.shopAwning) ? { awning: p.shopAwning } : {}) };
+  const template = Array.isArray(p.shopTemplate) ? p.shopTemplate as [string, number, number, string?, (0 | 1)?, RedLightRow?] : null;
+  // Lane retail-real: lane R's De Wallen audit on a red-light row (shopfronts.ts RedLightRow): closed or not a window
+  // draws no template under retailReal; a measured window front draws over its own span.
+  const redRow = retailRealOn() && template?.[0] === 'redLight' ? template[5] : undefined;
+  // Lane retail-real: a chain's row carries '@<key>' as its word (retailChains.ts); its type template draws only with
+  // retailReal on, under the chain's colours and logo.
+  const chainKey = chainOfWord(template?.[3]), chainRow = chainKey ? RETAIL_CHAINS[chainKey] : undefined;
+  // A chain under a template whose real look has not won (REAL_ACCEPTED) draws as round n would: the template with its
+  // name lettered, no chain colours or logo.
+  const retailChain = chainRow && retailRealOn() && realAccepted(template![0]) ? chainRow : undefined, chainWord = chainRow && !retailChain ? chainRow.word : undefined;
+  if (template && !redRow?.x && !(chainKey && !chainRow) && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && (!RETAIL_HELD.includes(template[0]) || (retailRealOn() && realAccepted(template[0]))) && !p.frontCarrier && cellSetOf(look) !== 'procedural'
+    && (!(REAL_ONLY_TEMPLATES as readonly string[]).includes(template[0]) || (retailRealOn() && realAccepted(template[0])))) {
+    const logoLayer = retailLogoLayer(cellSetOf(look)), cl = retailChain && chainKey ? chainLogo(chainKey) : retailRealOn() && realAccepted(template[0]) && TEMPLATE_CHAIN_LOGO[template[0]] ? chainLogo(TEMPLATE_CHAIN_LOGO[template[0]]) : null;
+    const logo = cl ? { rect: cl.rect, aspect: cl.aspect, page: CHAIN_LOGO_BASE + cl.page } : logoFor(template[0] as RetailTemplate);
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] && !chainKey ? { word: template[3] } : chainWord ? { word: chainWord } : {}), ...(retailChain ? { chain: { fascia: retailChain.fascia, letters: retailChain.letters, word: retailChain.word } } : {}), ...(redRow?.s ? { redLight: { span: redRow.s, ...(redRow.d ? { doors: redRow.d } : {}), ...(redRow.t ? { tube: redRow.t } : {}), ...(redRow.c ? { curtains: redRow.c } : {}), ...(redRow.f ? { frameHex: redRow.f } : {}) } } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer + logo.page, rect: logo.rect, aspect: logo.aspect } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(logoLayer !== null && retailRealOn() && realAccepted(template[0]) ? { goods: logoLayer + GOODS_BASE, faces: logoLayer + TYPE_BASE } : {}), ...(puiPaint && p.puiDark !== 1 && !retailChain ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}), ...(typeof p.shopAwning === 'string' && /^#[0-9a-f]{6}$/i.test(p.shopAwning) ? { awning: p.shopAwning } : {}) };
     delete building.signature;
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);
@@ -348,7 +387,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     if (plan) {
       const dims = STYLE_DIMS[layout];
       // A measured pitched slot picks the cell (pantile or slate) and the tint; other slots keep the planned tone.
-      if (measured?.cell && measured.cell !== 'flat') plan = { ...plan, material: measured.cell };
+      // A row roof (rowRoof: rowDormers set) keeps its stated material: the stamp's pantile drew Herengracht 51's slate red.
+      if (measured?.cell && measured.cell !== 'flat' && !plan.rowDormers) plan = { ...plan, material: measured.cell };
       // Where dormers are a choice (not a mansard's or a school roof's own), 3DBAG's roof parts decide, not the dice.
       if (typeof p.roofDormer === 'boolean' && (plan.kind === 'pitched' || plan.kind === 'hipped' || plan.kind === 'gable' || plan.kind === 'halfHipped')) plan = { ...plan, dormers: p.roofDormer };
       // A row roof is its series' slate (roofMesh.ts ROW_SLATE_TONE), never a per-pand measured stamp; a buurt kit row its
@@ -416,7 +456,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       building.registerForce = [...register, ...ids];
       building.specFieldsForce = ids;
       delete building.specBandM;
-      building.onlyExtras = [...ROW_FRONT_EXTRAS.filter(id => !boxed || (id !== 'window-sills' && id !== 'white-window-frames')), ...register, ...ids, ...(p.rowFrontHoist ? ['hoist-beam'] : [])];
+      building.onlyExtras = [...ROW_FRONT_EXTRAS.filter(id => (!boxed || (id !== 'window-sills' && id !== 'white-window-frames')) && !dress?.omitExtras?.includes(id)), ...register, ...ids, ...(p.rowFrontHoist ? ['hoist-beam'] : [])];
     }
     if (building.shopfront || building.shop) {
       // The photo's shopfront colour, muted (the row keeps its variety); none read: the plain dark band.

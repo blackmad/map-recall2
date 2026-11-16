@@ -22,19 +22,19 @@ import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from '.
 
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, type WallCut, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
-import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
+import { presetOpenings, recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, SPEC_SOUTERRAIN_GROUND_MIN, type FrontageBays, type StreetFacadeContext } from './streetFacadeRendering.js';
 import { storeyDraw, storeyGuardOn, storeyPlan, storeyPlanDraws, storeyPlanProbe, storeyRejectPrior } from './houseSpec/storeyPlan.js';
 import { structureGuess, structurePriorStoreys } from './houseSpec/structurePrior.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import { boxPlacementFor, groundOpeningRect } from './houseLine/boxCells.js';
 import { cellOnBox, groundSpans } from './houseLine/boxPlacement.js';
-import { runTakesTrace } from './houseLine/rowFront.js';
+import { runTakesSteps, runTakesTrace } from './houseLine/rowFront.js';
 import type { RowCrown } from './houseLine/crownProfile.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
 import { CELL_VARIANTS, CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
-import { edgeGroundPieces, edgeLayout, layoutRun, type LayoutScale } from './facadeLayout.js';
+import { edgeGroundPieces, edgeLayout, layoutRun, type LayoutScale, type RunLayout } from './facadeLayout.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetDistance } from './streetFronts.js';
 import type { StreetFacing } from './streetGableEnds.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
@@ -42,6 +42,7 @@ import type { KitPartGeometry } from './landmarkKits.js';
 import type { ChainLook } from './shopfronts.js';
 import type { RetailTemplate } from './retailTemplates.js';
 import { retailFrontTris, retailDoor, doorHead, FRONT as RETAIL_FRONT } from './retailFront.js';
+import type { RedLightFront } from './groundParts/redLightFront.js';
 import type { BikeClass } from './retailBikes.js';
 import { steppedRun } from './retailHosting.js';
 import { puiInteriorUv } from './retailTemplates.js';
@@ -93,7 +94,7 @@ export type MeshBuilding = {
   /** House rows (lane R): the series this building draws (its extras' dice are the series'), and the series' stated
    *  wall dressing (heads per front span, cornice): the extras' `row-heads` and `row-cornice` draw it on the street run. */
   rowSeries?: string;
-  rowDress?: { cornice?: string; heads?: import('./houseLine/rowFront.js').RowHeadsDraw[]; stoop?: { side: 'left' | 'right' | 'centre'; steps?: false }; door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; mullionShare?: number; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } };
+  rowDress?: { cornice?: string; corniceDress?: import('./houseSpec/row/types.js').RowCorniceDress; heads?: import('./houseLine/rowFront.js').RowHeadsDraw[]; stoop?: { side: 'left' | 'right' | 'centre'; steps?: false; form?: 'straight' | 'side' | 'double'; railing?: true; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; door?: { side: 'left' | 'right' | 'centre'; index?: number; bays?: number; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; mullionShare?: number; glazing?: import('./houseLine/rowFront.js').RowGlazingDraw; floorsM?: number[]; groundWalls?: import('./houseLine/rowFront.js').RowGroundWallDraw[]; basements?: import('./houseLine/rowFront.js').RowBasementDraw[]; shopFront?: { frameHex: string; side: 'left' | 'right' | 'centre' } };
   /** The house spec's stoop (threeBuildingFeatures from `specStoop`): facadeExtras draws it typed on the street wall. */
   stoop?: StoopIntent;
   wallHex: string;
@@ -116,7 +117,7 @@ export type MeshBuilding = {
   /** A supermarket chain's own shopfront (fascia, logo panel, brand word) at its OSM point; replaces the signature. */
   chain?: { at: [number, number]; look: ChainLook };
   /** A shopfront template (lane retail-ground, `?retailGround=1`, retailFront.ts) at its OSM point; replaces the chain fascia. */
-  retailFront?: { template: RetailTemplate; at: [number, number]; word?: string; /** The node's nearest open wall carries the front (no street wall near it: retailHosting.ts). */ nearest?: boolean; /** The chain's logo on the logo layer (retailLogos.ts). */ logo?: { layer: number; rect: readonly [number, number, number, number]; aspect: number }; /** The logo layer, for the lettering cell (round 3c). */ letters?: number; /** The measured pui paint (round 4). */ paint?: string; /** A bike shop's class (round 6, retailBikes.ts). */ bike?: { cls: BikeClass; fleetHex?: string }; /** Round 7: measured awning colour (measure-awning.ts). */ awning?: string };
+  retailFront?: { template: RetailTemplate; at: [number, number]; word?: string; /** The node's nearest open wall carries the front (no street wall near it: retailHosting.ts). */ nearest?: boolean; /** The chain's logo on the logo layer (retailLogos.ts). */ logo?: { layer: number; rect: readonly [number, number, number, number]; aspect: number }; /** The logo layer, for the lettering cell (round 3c). */ letters?: number; /** The measured pui paint (round 4). */ paint?: string; /** A bike shop's class (round 6, retailBikes.ts). */ bike?: { cls: BikeClass; fleetHex?: string }; /** Round 7: measured awning colour (measure-awning.ts). */ awning?: string; /** Lane retail-real: the first goods and face layers (retailPages.ts). */ goods?: number; faces?: number; chain?: { fascia: string; letters: string; word: string }; /** Lane retail-real: lane R's audited window front (span [lng0, lat0, lng1, lat1] on the front line). */ redLight?: { span: [number, number, number, number] } & RedLightFront };
   /** Draw the facade extras (hoist beams, stoops, balconies, bikes, roof terraces): facadeExtras.ts. */
   extras?: boolean;
   /** Texture layer for bare wall: gable faces, chimneys, cornices. */
@@ -455,22 +456,33 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   const run = steppedRun(best, ring), shift = run.parts.find(p => p.e === best)?.t0 ?? 0;
   const e = { x0: run.x0, y0: run.y0, ux: run.ux, uy: run.uy, nx: run.nx, ny: run.ny };
   const L = run.len, along = Math.max(0, Math.min(L, (px - e.x0) * e.ux + (py - e.y0) * e.uy));
-  const half = Math.min((L - 0.6) / 2, RETAIL_FRONT.maxSpanM / 2), s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half)), s1 = s0 + 2 * half;
+  const half = Math.min((L - 0.6) / 2, RETAIL_FRONT.maxSpanM / 2);
+  let s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half)), s1 = s0 + 2 * half;
+  // Lane retail-real: an audited red-light front spans its measured piece of the front line, projected on the run.
+  if (front.redLight) {
+    const [x0, y0, x1, y1] = front.redLight.span, on = (lng: number, lat: number) => Math.max(0, Math.min(L, ((lng - origin.lng) * kx - e.x0) * e.ux + ((lat - origin.lat) * M_PER_DEG_LAT - e.y0) * e.uy));
+    const a = on(x0, y0), c = on(x1, y1);
+    if (Math.abs(c - a) >= 0.8) { s0 = Math.min(a, c); s1 = Math.max(a, c); }
+  }
   // The traced door, when the trace's front is this wall (its span within a quarter of the wall's length).
   const span = b.specRecipe?.frontSpanM, boxes = b.specRecipe?.groundBoxes;
-  let door: { a0: number; a1: number; depthM: number } | undefined;
+  let door: { a0: number; a1: number; depthM: number } | undefined, bays: number | undefined;
   if (span && boxes?.length && Math.abs(span - best.len) < 0.25 * span) {
     const ltr = seenLeftToRight(best), mid = (s0 + s1) / 2;
     const doors = boxes.filter(o => o.kind === 'door').map(o => ({ a0: shift + (ltr ? o.a0 : 1 - o.a1) * best.len, a1: shift + (ltr ? o.a1 : 1 - o.a0) * best.len }))
       .filter(o => o.a0 >= s0 - 1e-6 && o.a1 <= s1 + 1e-6 && o.a1 - o.a0 >= 0.6 && o.a1 - o.a0 <= 2.2)
       .sort((p, q) => Math.abs((p.a0 + p.a1) / 2 - mid) - Math.abs((q.a0 + q.a1) / 2 - mid));
     if (doors[0]) door = { ...doors[0], depthM: RETAIL_FRONT.recessM };
+    // Lane retail-real: the traced ground cells inside the front (a red-light front puts a door in each).
+    const cells = boxes.map(o => ({ a0: shift + (ltr ? o.a0 : 1 - o.a1) * best.len, a1: shift + (ltr ? o.a1 : 1 - o.a0) * best.len }))
+      .filter(o => o.a0 >= s0 - 0.3 && o.a1 <= s1 + 0.3 && o.a1 - o.a0 >= 0.6 && o.a1 - o.a0 <= 2.2).length;
+    if (cells) bays = cells;
   }
   // Round 3c: the lettering from the logo layer; each pane's interior from the building's own shop cell (puiAt) when it
   // has one.
   const shopCell = b.layers && b.layers.ground < BAY_LAYER_COUNT && (SHOP_KINDS as readonly string[]).includes(BAY_ENTRIES[b.layers.ground]?.kind ?? '') ? b.layers.ground : undefined;
   const input = { template: front.template, word: front.word, seed: b.id, ...(door ? { door } : {}), ...(front.logo ? { logo: front.logo } : {}),
-    ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}) };
+    ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(bays ? { bays } : {}), ...(front.redLight ? { redLight: { ...front.redLight, span: undefined } } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}) };
   const tris = retailFrontTris(input, e, s0, s1, base, groundM);
   // Round 3: every template door stands in a recess (retailDoor), traced or not, so the wall is cut over each.
   const opening = retailDoor(input, s0, s1);
@@ -505,10 +517,34 @@ function subFrontSpans(subs: ReadonlyArray<{ a0: number; a1: number; wallHex?: s
 const STEP_NOTCH_M = 0.8, STEP_CROWN_DEPTH_M = 1.2;
 type StepSpan = { a0: number; a1: number; topZ: number; crown?: RowCrown; gable?: GableShape; riseM?: number };
 /** Sub-fronts with a step on the run (metres along it, the run's direction), each with its wall top in mesh z. */
+/** Each edge of a run on its own bay grid (facadeLayout edgeLayout: the grid the extras draw on), numbered on from the
+ *  run's start: u0 is the bays before it. */
+export function rowEdgeGrid(layout: RunLayout, lens: readonly number[]): { u0: number; bays: number }[] {
+  let u = 0;
+  return lens.map((len, k) => { const bays = edgeLayout(layout, k, len).bays, g = { u0: u, bays }; u += bays; return g; });
+}
+/** House rows: a series member's step crown (raised front or stated gable) wears white stone coping and trim; the
+ *  building's accent is its shopfront paint there (Kinkerstraat 65's yellow, 69's black). */
+export const ROW_CROWN_TRIM_HEX = '#f1ece2';
 function stepSpans(subs: ReadonlyArray<{ a0: number; a1: number; step?: { wallTopM: number; crown?: RowCrown; gable?: GableShape; riseM?: number } | null }>, ltr: boolean, len: number, base: number): StepSpan[] | null {
   if (subs.some(f => !f.step)) return null;
   return subs.map(f => ({ a0: (ltr ? f.a0 : 1 - f.a1) * len, a1: (ltr ? f.a1 : 1 - f.a0) * len, topZ: base + f.step!.wallTopM,
     ...(f.step!.crown ? { crown: f.step!.crown, gable: f.step!.gable, riseM: f.step!.riseM } : {}) })).sort((p, q) => p.a0 - q.a0);
+}
+/** A stepped-down span of a row member's street wall: the edge frame (mesh metres), the span along it and its own top. */
+export interface RowLowStep { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number; a0: number; a1: number; z: number }
+/** Drop the wall extras (from index `from`) standing wholly above a stepped-down front's top in front of its span: the
+ *  run's cornice, sills and frames of storeys that front does not have (Herengracht 69 under 71-73's line). */
+export function rowStepLow(tris: { p: readonly (readonly number[])[] }[], from: number, steps: readonly RowLowStep[]): void {
+  let w = from;
+  for (let i = from; i < tris.length; i++) {
+    const t = tris[i], zMin = Math.min(...t.p.map(q => q[2]));
+    const cx = t.p.reduce((a, q) => a + q[0], 0) / t.p.length, cy = t.p.reduce((a, q) => a + q[1], 0) / t.p.length;
+    const above = steps.some(st => { const dx = cx - st.x0, dy = cy - st.y0, a = dx * st.ux + dy * st.uy, o = dx * st.nx + dy * st.ny;
+      return zMin > st.z + 0.02 && a > st.a0 + 1e-3 && a < st.a1 - 1e-3 && o > -0.2 && o < 2; });
+    if (!above) tris[w++] = t as never;
+  }
+  tris.length = w;
 }
 function edgeOf(x0: number, y0: number, x1: number, y1: number): Edge {
   const dx = x1 - x0, dy = y1 - y0, len = Math.hypot(dx, dy);
@@ -551,13 +587,35 @@ function seenLeftToRight(e: Edge): boolean { return (e.x1 - e.x0) * -e.ny + (e.y
  * boxes (the box placement puts each drawn window exactly on its box), in the edge's metres and the wall's z; each
  * carries its upper storey (1 = first above the ground, by sill order) and the head dressing of its front span.
  */
-function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM: number, ltr: boolean, base: number, boxed: boolean): NonNullable<ExtraContext['rowDress']> {
+/** A row front's read street door on a wall (m along it from the wall's start): its index of the ground openings as seen,
+ *  else its side (as the ground door is placed); undefined when the record reads no door (the stoop keeps its stated end). */
+export function stoopAt(door: { side: string; index?: number; bays?: number } | undefined, ltr: boolean, runM: number, edgeStartM: number): { at: number; exact: boolean } | undefined {
+  if (!door) return undefined;
+  const exact = door.index !== undefined && !!door.bays;
+  const seen = exact ? (door.index! + 0.5) / door.bays! : door.side === 'left' ? 0.001 : door.side === 'right' ? 0.999 : 0.5;
+  return { at: (ltr ? seen : 1 - seen) * runM - edgeStartM, exact };
+}
+/** A row front's read street door on a run of `bays` layout bays: its bay, and whether that bay is drawn mirrored because
+ *  the read door sits on the other side of its bay from the preset's door axis `axis` (0-1 across the bay). Herengracht
+ *  144: a 4.3 m front is one bay, so its read right-hand door drew at the preset's left. */
+export function rowDoorBay(door: { side: string; index?: number; bays?: number }, ltr: boolean, bays: number, axis: number): { bay: number; mirror: boolean } {
+  const seen = door.index !== undefined && door.bays ? (door.index + 0.5) / door.bays : door.side === 'left' ? 0.001 : door.side === 'right' ? 0.999 : 0.5;
+  const f = ltr ? seen : 1 - seen, bay = Math.max(0, Math.min(bays - 1, Math.floor(f * bays))), local = f * bays - bay;
+  return { bay, mirror: Math.abs(1 - axis - local) + 1e-6 < Math.abs(axis - local) };
+}
+function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM: number, ltr: boolean, base: number, boxed: boolean, stoopRun = true): NonNullable<ExtraContext['rowDress']> {
   const boxes = boxed ? b.specRecipe?.windowBoxes ?? [] : [], heads = b.rowDress?.heads ?? [];
   // No boxes on this run (the record has none, or the run is not the traced front): the grid's windows, the heads by
   // the edge's place on the run (headsAt in facadeOrnaments).
   // The stoop's door side as seen from the street, on this wall's own x (seenLeftToRight: left is the start).
-  const st = b.rowDress?.stoop, stoop = { ...(st ? { stoop: { end: st.side === 'centre' ? 'centre' as const : (st.side === 'left') === ltr ? 'start' as const : 'end' as const, ...(st.steps === false ? { steps: false as const } : {}) } } : {}), ...(b.rowDress?.balcony ? { balcony: b.rowDress.balcony } : {}), ...(b.rowDress?.windowShare ? { windowShare: b.rowDress.windowShare } : {}), ...(b.rowDress?.mullionShare ? { mullionShare: b.rowDress.mullionShare } : {}), ...(b.rowDress?.shopFront ? { shopFront: { frameHex: b.rowDress.shopFront.frameHex, doorEnd: b.rowDress.shopFront.side === 'centre' ? 'centre' as const : (b.rowDress.shopFront.side === 'left') === ltr ? 'start' as const : 'end' as const } } : {}) };
-  if (!boxes.length) return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), heads: heads.map(h => ({ ...h, x0: (ltr ? h.a0 : 1 - h.a1) * runM - edgeStartM, x1: (ltr ? h.a1 : 1 - h.a0) * runM - edgeStartM })) };
+  const st = b.rowDress?.stoop, place = st ? stoopAt(b.rowDress?.door, ltr, runM, edgeStartM) : undefined;
+  // One stoop per front: on its longest street run (stoopRun), on the wall of that run its read door is on (Herengracht 132,
+  // 148: a front drawn as several walls or runs drew a stoop on each).
+  const stoopHere = st && stoopRun && (place === undefined || (place.at >= 0 && place.at <= edgeM));
+  const stoop = { ...(st && stoopHere ? { stoop: { end: st.side === 'centre' ? 'centre' as const : (st.side === 'left') === ltr ? 'start' as const : 'end' as const, ...(st.steps === false ? { steps: false as const } : {}), ...(st.form ? { form: st.form } : {}), ...(st.railing ? { railing: true as const } : {}), ...(st.doorcase ? { doorcase: st.doorcase } : {}), ...(place ? { at: +place.at.toFixed(3), ...(place.exact ? { exact: true as const } : {}) } : {}) } } : {}), ...(b.rowDress?.door?.doorcase ? { doorcase: b.rowDress.door.doorcase } : {}), ...(b.rowDress?.balcony ? { balcony: b.rowDress.balcony } : {}), ...(b.rowDress?.windowShare ? { windowShare: b.rowDress.windowShare } : {}), ...(b.rowDress?.glazing ? { glazing: b.rowDress.glazing } : {}), ...(b.rowDress?.floorsM ? { floorsM: b.rowDress.floorsM } : {}), ...(b.rowDress?.groundWalls ? { groundWalls: b.rowDress.groundWalls.map(g => ({ x0: (ltr ? g.a0 : 1 - g.a1) * runM - edgeStartM, x1: (ltr ? g.a1 : 1 - g.a0) * runM - edgeStartM, hex: g.hex, top: g.top })) } : {}), ...(b.rowDress?.mullionShare ? { mullionShare: b.rowDress.mullionShare } : {}), ...(b.rowDress?.basements ? { basements: b.rowDress.basements.map(g => { const x = (a0: number, a1: number): [number, number] => [(ltr ? a0 : 1 - a1) * runM - edgeStartM, (ltr ? a1 : 1 - a0) * runM - edgeStartM]; const [x0, x1] = x(g.a0, g.a1); return { x0, x1, hex: g.hex, head: g.head, doors: g.doors.map(([p, q]) => x(p, q)) }; }) } : {}), ...(b.rowDress?.shopFront ? { shopFront: { frameHex: b.rowDress.shopFront.frameHex, doorEnd: b.rowDress.shopFront.side === 'centre' ? 'centre' as const : (b.rowDress.shopFront.side === 'left') === ltr ? 'start' as const : 'end' as const } } : {}) };
+  // A member with raised fronts hangs its heads only on the run its fronts were measured on (rowFront.ts frontSpanM).
+  const off = !boxed && !!b.specRecipe?.subFronts?.some(f => f.step) && !!b.specRecipe.frontSpanM;
+  if (!boxes.length) return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), ...(b.rowDress?.corniceDress ? { corniceDress: b.rowDress.corniceDress } : {}), heads: (off ? [] : heads).map(h => ({ ...h, x0: (ltr ? h.a0 : 1 - h.a1) * runM - edgeStartM, x1: (ltr ? h.a1 : 1 - h.a0) * runM - edgeStartM })) };
   const sills = [...new Set(boxes.map(w => Math.round(w.sillM * 10) / 10))].sort((p, q) => p - q);
   const windows = boxes.flatMap(w => {
     const mid = (w.a0 + w.a1) / 2, storey = sills.indexOf(Math.round(w.sillM * 10) / 10) + 1;
@@ -566,7 +624,7 @@ function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM
     if (x1 <= 0.05 || x0 >= edgeM - 0.05) return [];
     return [{ x0, x1, z0: base + w.sillM, z1: base + w.headM, storey, ...(head ? { shape: head.shape, dressing: head.dressing } : {}) }];
   });
-  return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), windows };
+  return { ...stoop, ...(b.rowDress?.cornice ? { cornice: b.rowDress.cornice } : {}), ...(b.rowDress?.corniceDress ? { corniceDress: b.rowDress.corniceDress } : {}), windows };
 }
 
 export function wallRuns(rings: readonly (readonly Edge[])[], hidden: (e: Edge) => boolean): Array<Array<{ e: Edge }>> {
@@ -726,6 +784,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const wallExtraContexts: ExtraContext[] = [];
     const frontageTriangles: SignTri[] = [];
     const cornice: StreetCrownTri[] = [];
+    // Step crowns (rowFront sub-fronts): kept under a planned roof too (a row's raised fronts over its mansard).
+    const stepCrownTris: StreetCrownTri[] = [];
+    // House rows: the spans of a series member's street wall stepped down under the run's top (a lower front), where the
+    // wall extras drawn above that front's own top are taken out again (rowStepLow).
+    const lowSteps: RowLowStep[] = [];
     let extraTris = 0;
     const doorAllowed = doorWalls(bi);
     // The pavement in front of a wall, for a spec stoop (stoopExtra.ts): wall to street centreline less half a carriageway.
@@ -752,7 +815,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     let recFrontM = 0;
     /** F1: the generic layout of the longest street run (the record's priors copy it: storeys, heights, windows, door). */
     let recGeneric: FacadeGenericLayout | undefined;
-    for (const run of wallRuns(rings[bi], e => hiddenByNeighbour(e, fallbackBuilding))) {
+    const runList = wallRuns(rings[bi], e => hiddenByNeighbour(e, fallbackBuilding));
+    // House rows: a stated stoop stands on the building's longest street run only (rowDressOnEdge).
+    const runLen = (r: Array<{ e: Edge }>) => r.reduce((s, { e }) => s + e.len, 0);
+    const rowStoopRun = b.rowDress?.stoop ? runList.filter(r => r.some(({ e }) => doorAllowed.has(e))).sort((p, q) => runLen(q) - runLen(p))[0] : undefined;
+    for (const run of runList) {
       const first = run[0].e;
       const sourceSegments=run.flatMap(({e})=>sourceEdgeFor(fallbackBuilding,e)?.segments??[]);
       const top=sourceSegments.length?Math.min(...sourceSegments.flatMap(s=>[s.z0,s.z1])):buildingTop;
@@ -882,9 +949,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       if (b.rowSeries && b.rowDress?.stoop) layout.doorBays.length = 0;
       // A row front's street door where the record reads it (ground.doorSide / doorIndex of groundBays, as seen).
       else if (b.rowSeries && b.rowDress?.door && !b.shopfront && layout.doorBays.length) {
-        const d = b.rowDress.door, seen = d.index !== undefined && d.bays ? (d.index + 0.5) / d.bays : d.side === 'left' ? 0.001 : d.side === 'right' ? 0.999 : 0.5;
-        const f = seenLeftToRight(first) ? seen : 1 - seen;
-        layout.doorBays = [Math.max(0, Math.min(layout.bays - 1, Math.floor(f * layout.bays)))];
+        const look = b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo';
+        const axis = (b.recipe ? recipeBayOpenings(b.id, b.recipe, look) : units ? units.openings : b.openings ?? presetOpenings(b.id, b.style)).door.axis;
+        const placed = rowDoorBay(b.rowDress.door, seenLeftToRight(first), layout.bays, axis);
+        layout.doorBays = [placed.bay];
+        if (placed.mirror) layout.doorMirror = true;
       }
       const bw = layout.bayWidthM, groundTop = base + layout.groundM;
       const compound=b.recipe?.compoundFrontage&&b.layers&&b.plainLayer!==undefined&&base<.5
@@ -937,12 +1006,18 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         finish();
       }
       // Lane 1 (rowFront, stepped run): sub-fronts with their own wall tops and crowns (houseLine/rowFront stepCrown).
-      const steps = streetRun && traceRun && b.specRecipe?.subFronts?.some(f => f.step) ? stepSpans(b.specRecipe.subFronts, seenLeftToRight(first), layout.lengthM, base) : null;
+      const steps = streetRun && (traceRun || runTakesSteps(layout.lengthM, b.specRecipe?.frontSpanM)) && b.specRecipe?.subFronts?.some(f => f.step) ? stepSpans(b.specRecipe.subFronts, seenLeftToRight(first), layout.lengthM, base) : null;
+      // House rows: a series member's street run round a kink paints each edge's own bay grid (edgeLayout), the grid its
+      // window frames and dressings take; the run's continuous grid set the glass half a bay off the frames on the middle
+      // edges (Kinkerstraat 126-138: 3.2 + 11.5 + 18.0 m, 19 axes). Only when every edge holds a bay: a short jog (90's
+      // 0.5 m return) keeps the run's grid. Single-edge runs and every other building keep it.
+      const edgeGrid = b.rowSeries && streetRun && run.length > 1 && run.every(r => r.e.len >= bw) && !compound && !regular && !terrace ? rowEdgeGrid(layout, run.map(r => r.e.len)) : null;
+      const uOf = (k: number, s: number, len: number): [number, number] => edgeGrid ? [edgeGrid[k].u0 * cellU, (edgeGrid[k].u0 + edgeGrid[k].bays) * cellU] : units ? [s / bw * cellU, (s + len) / bw * cellU] : [s / bw, (s + len) / bw];
       run.forEach(({ e }, k) => {
         walls++;
         const q0 = quads.length;
         const s = layout.edgeStartM[k];
-        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.specBandM ? { bandM: b.specBandM } : {}), ...(b.specFieldsForce?.length ? { statedFirst: b.specFieldsForce } : {}), ...(b.onlyExtras ? { onlyExtras: b.onlyExtras } : {}), ...(b.rowSeries ? { seriesId: b.rowSeries } : {}), ...(b.rowDress && streetRun ? { rowDress: rowDressOnEdge(b, layout.lengthM, layout.edgeStartM[k], e.len, seenLeftToRight(first), base, traceRun) } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop || b.retailFront), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
+        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.specBandM ? { bandM: b.specBandM } : {}), ...(b.specFieldsForce?.length ? { statedFirst: b.specFieldsForce } : {}), ...(b.onlyExtras ? { onlyExtras: b.onlyExtras } : {}), ...(b.rowSeries ? { seriesId: b.rowSeries } : {}), ...(b.rowDress && streetRun ? { rowDress: rowDressOnEdge(b, layout.lengthM, layout.edgeStartM[k], e.len, seenLeftToRight(first), base, traceRun, !b.rowDress.stoop || run === rowStoopRun) } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop || b.retailFront), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.surveyedEnvelope && !b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
@@ -977,7 +1052,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
           for (const [w0, w1] of fit?.walls ?? []) quads.push({ kind: 'ground-wall', e, u0: a0 / 5, u1: a1 / 5, v0: w0 / 3, v1: w1 / 3, layer: b.plainLayer!, accent, z0: w0, z1: w1, tint: paint, along0, along1 });
         }else for (const piece of edgeGroundPieces(layout, k, e.len)) {
           // An axis-unit door samples the half of the door cell around the door, clear of its side window (units.doorU).
-          const pu0 = !units ? piece.a0 / bw : piece.door ? units.doorU : piece.a0 / bw * cellU, pu1 = !units ? piece.a1 / bw : piece.door ? units.doorU + cellU * (piece.a1 - piece.a0) / bw : piece.a1 / bw * cellU;
+          const qu0 = !units ? piece.a0 / bw : piece.door ? units.doorU : piece.a0 / bw * cellU, qu1 = !units ? piece.a1 / bw : piece.door ? units.doorU + cellU * (piece.a1 - piece.a0) / bw : piece.a1 / bw * cellU;
+          // A mirrored door bay (layout.doorMirror, a row front's read door): the door cell sampled right to left.
+          const [pu0, pu1] = piece.door && layout.doorMirror ? [qu1, qu0] : [qu0, qu1];
           quads.push({ kind: piece.door ? 'door' : 'ground', e, u0: pu0, u1: pu1, v1: 1, tint: (piece.door && !b.recipe?.groundWallHex) || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
         }
         if (placed) {
@@ -993,8 +1070,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
             const t = party ? [tint[0] * PARTY_BREAK_SHADE, tint[1] * PARTY_BREAK_SHADE, tint[2] * PARTY_BREAK_SHADE, tint[3]] as [number, number, number, number] : tintAt((a0 + a1) / 2);
             quads.push({ kind: 'upper-wall', e, u0: a0 / 5, u1: a1 / 5, v0: w.z0 / 3, v1: w.z1 / 3, layer: b.plainLayer!, accent, z0: w.z0, z1: w.z1, tint: t, along0: (a0 - s) / e.len, along1: (a1 - s) / e.len });
           }
-        } else if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: units ? s / bw * cellU : s / bw, u1: units ? (s + e.len) / bw * cellU : (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
-        if (parapet && b.plainLayer !== undefined) quads.push({ kind: 'parapet', e, u0: units ? s / bw * cellU : s / bw, u1: units ? (s + e.len) / bw * cellU : (s + e.len) / bw, v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
+        } else if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
+        if (parapet && b.plainLayer !== undefined) quads.push({ kind: 'parapet', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
         if (steps && b.plainLayer !== undefined) {
           // Each front's wall stops at its own top; above a lower front, a wall set STEP_NOTCH_M back up to the run's
           // top (the taller neighbour's flank closes each side), and its crown stands on its own top.
@@ -1006,6 +1083,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
             const a0 = Math.max(s, st.a0), a1 = Math.min(s + e.len, st.a1);
             if (a1 - a0 < 1e-3) continue;
             if (st.topZ < top - 0.05) {
+              if (b.rowSeries) lowSteps.push({ x0: e.x0, y0: e.y0, ux, uy, nx: e.nx, ny: e.ny, a0: a0 - s, a1: a1 - s, z: st.topZ });
               const [p0, p1] = [at(a0), at(a1)];
               const back = edgeOf(p0[0] - nx, p0[1] - ny, p1[0] - nx, p1[1] - ny);
               quads.push({ kind: 'step-notch', e: back, u0: a0 / 5, u1: a1 / 5, v0: st.topZ / 3, v1: top / 3, layer: b.plainLayer, accent, z0: st.topZ, z1: top, tint: shade(0.82), along0: 0, along1: 1 });
@@ -1016,8 +1094,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
             const mid = (st.a0 + st.a1) / 2;
             if (st.crown && mid >= s - 1e-6 && mid < s + e.len - 1e-6) {
               const W = st.a1 - st.a0, D = STEP_CROWN_DEPTH_M, [mx, my] = at(mid);
-              const plan: RoofPlan = { kind: 'gable', gable: st.gable!, rowCrown: st.crown, riseM: st.riseM!, gableEnds: [true, true], streetEnds: [true, false], dormers: false, material: 'slate', tone: 0.5, seed: `${b.id}:step:${mid.toFixed(2)}`, chimney: false, accents: true, trimHex: b.accentHex ?? '#f1ece2' };
-              cornice.push(...(roofTriangles({ cx: mx - e.nx * D / 2, cy: my - e.ny * D / 2, ux: -e.nx, uy: -e.ny, len: D, wid: W, coverage: 1, maxDev: 0 }, plan, st.topZ, { bayM: bw, storeyM: layout.storeyM, cellM: 5 }) as StreetCrownTri[]));
+              const plan: RoofPlan = { kind: 'gable', gable: st.gable!, rowCrown: st.crown, riseM: st.riseM!, gableEnds: [true, true], streetEnds: [true, false], dormers: false, material: 'slate', tone: 0.5, seed: `${b.id}:step:${mid.toFixed(2)}`, chimney: false, accents: true, trimHex: b.rowSeries ? ROW_CROWN_TRIM_HEX : b.accentHex ?? '#f1ece2' };
+              const crownTris = roofTriangles({ cx: mx - e.nx * D / 2, cy: my - e.ny * D / 2, ux: -e.nx, uy: -e.ny, len: D, wid: W, coverage: 1, maxDev: 0 }, plan, st.topZ, { bayM: bw, storeyM: layout.storeyM, cellM: 5 }) as StreetCrownTri[];
+              cornice.push(...crownTris); stepCrownTris.push(...crownTris);
             }
           }
         }
@@ -1050,6 +1129,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     }else if (b.roof) {
       roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal, !b.roof.lowPoly && (b.roof.plan.kind === 'gable' || b.roof.plan.streetRidge || b.roof.plan.rowDormers) ? crownFacing(bi) : undefined);
       if (crownFronts.length&&!b.roof.plan.repeatedTerrace&&!b.roof.lowPoly) roof = streetCrown(roof,crownFronts,b.heightM,['gable','pitched','halfHipped'].includes(b.roof.plan.kind)&&!b.roof.plan.shutters);
+      if (stepCrownTris.length) roof = [...roof, ...stepCrownTris];
     }
     const walled = mode === 'walls', shellMode = mode === 'shell';
     const lid = (walled || shellMode) && !b.surveyedEnvelope && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;
@@ -1066,7 +1146,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     if (walled && b.gardenRoom) { sign.push(...b.gardenRoom.tris); gardenTotal += b.gardenRoom.tris.length; }
     if (walled && b.industrial && b.lid) sign.push(...industrialTris({ id: b.id, spec: b.industrial, wallHex: b.wallHex, edges, street: doorAllowed, hidden: e => hiddenByNeighbour(e as Edge, b), base: b.minHeightM, top: buildingTop }));
     if (extraSink) {
+      const t0 = extraSink.tris.length;
       buildingWallExtras(wallExtraContexts, extraSink);
+      if (lowSteps.length) rowStepLow(extraSink.tris, t0, lowSteps);
       // Roof extras on a flat roof only (a pitched roof has its own chimneys and dormers).
       if (!b.surveyedEnvelope && (!b.roof || b.roof.plan.kind === 'parapet')) {
         const outer = b.polygons[0]?.[0] ?? [];

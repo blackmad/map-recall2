@@ -13,7 +13,11 @@
  * Nothing here is hashed: the same footprints give the same rows and series, whatever order they come in.
  */
 
-import { erkersOf, type BuurtErker } from './kit/frontKit.ts';
+import { cantsOf, erkersOf, type BuurtErker, type KitCant } from './kit/frontKit.ts';
+/** Round 16: cants are not generated. They lost two blind A/Bs on Amstelkade (round 15 low on a blurred capture; round
+ *  16 medium on the sharp recording_2025-07-15_08-32-06_03197): the photo's fold bays carry corner and balcony windows
+ *  the brick cant covers, which the old glazed erker drew. The kit still draws a stated cant (roofKit.ts drawCants). */
+export const GENERATE_CANTS = false;
 
 export type LngLat = readonly [number, number];
 export interface GenPand {
@@ -24,6 +28,8 @@ export interface GenPand {
   /** 3DBAG eaves and ridge above the pand's ground (m), as the base tiles carry them. */
   eavesM: number | null;
   ridgeM: number | null;
+  /** 3DBAG's representative height (the base tiles' `height`), when read: the belt look's front top (beltLook/donors.ts). */
+  heightM?: number | null;
   /** The orthophoto roof reading (roof-facts sidecar, roofs/roofSlots.ts): tile, slate, gravel, ...; null unread. */
   roofSlot?: string | null;
   /** 3DBAG's roof type as the base tiles carry it (bagTiles.ts roofCode: 0 unknown, 1 flat, 2 several flats, 3 slanted). */
@@ -68,6 +74,9 @@ export interface FrontEdge {
   lineA: LngLat; lineB: LngLat;
   /** Erkers BAG draws in front of the line (kit/frontKit.ts erkersOf). */
   erkers: BuurtErker[];
+  /** Canted folds BAG draws in front of the line (round 15, kit/frontKit.ts cantsOf); absent when none, and always
+   *  absent while GENERATE_CANTS is off. */
+  cants?: KitCant[];
 }
 export interface GenMember { pand: GenPand; front: FrontEdge }
 export interface GenSeries {
@@ -179,7 +188,8 @@ export function frontEdgeOf(pand: GenPand, ringXY: XY[], neighbours: XY[][], str
   }
   if (!best) return null;
   const { la, lb, ...e } = best.e as FrontEdge & { la: XY; lb: XY };
-  return { ...e, erkers: erkersOf(ringXY, la, lb, e.n) };
+  const cants = GENERATE_CANTS ? cantsOf(ringXY, la, lb, e.n) : [];
+  return { ...e, erkers: erkersOf(ringXY, la, lb, e.n), ...(cants.length ? { cants } : {}) };
 }
 
 const angleDeg = (u: XY, v: XY) => Math.acos(Math.max(-1, Math.min(1, dot(u, v) / (len(u) * len(v) || 1)))) * 180 / Math.PI;
@@ -221,7 +231,9 @@ export function seriesOf(rowId: string, members: GenMember[]): GenSeries[] {
  * The rows of a district: every pand with a front edge, joined into rows on one street by continuing front edges and a
  * shared party wall, ordered left to right as seen from the street. `streets` are named centre lines (lng/lat).
  */
-export function districtRows(input: readonly GenPand[], streets: readonly GenStreet[]): RowsResult {
+/** `singles`: a pand with a front but no party-wall neighbour on its street is a one-member row, not unplaced (the canal
+ *  belt look, where undescribed pands often stand alone between described ones; absent: unplaced as before). */
+export function districtRows(input: readonly GenPand[], streets: readonly GenStreet[], opts: { singles?: boolean } = {}): RowsResult {
   let pands = input;
   if (!pands.length) return { rows: [], unplaced: [] };
   const lat0 = pands[0].ring[0][1];
@@ -277,7 +289,7 @@ export function districtRows(input: readonly GenPand[], streets: readonly GenStr
     if (seen.has(id)) continue;
     const comp: string[] = [], stack = [id];
     while (stack.length) { const u = stack.pop()!; if (seen.has(u)) continue; seen.add(u); comp.push(u); for (const v of link.get(u) ?? []) if (!seen.has(v)) stack.push(v); }
-    if (comp.length < 2) { unplaced.push({ id, reason: 'single' }); continue; }
+    if (comp.length < 2 && !opts.singles) { unplaced.push({ id, reason: 'single' }); continue; }
     // Street order: project each front midpoint on the mean left-to-right direction.
     const dir = comp.reduce((t, u) => { const e = fronts.get(u)!, d = sub(e.b, e.a), l = len(d) || 1; return { x: t.x + d.x / l, y: t.y + d.y / l }; }, { x: 0, y: 0 });
     const at = (u: string) => { const e = fronts.get(u)!; return dot({ x: (e.a.x + e.b.x) / 2, y: (e.a.y + e.b.y) / 2 }, dir); };

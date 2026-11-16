@@ -28,6 +28,8 @@ export function faceHeads(f: Record<string, any>): RowHeads | undefined {
   if (wh?.kind === 'segmental' && wh.tympanum) return { shape: 'segmental', dressing: 'segmental-tympanum', ...(wh.storeys ? { storeys: wh.storeys } : {}) };
   if (wh?.archRing?.keystone) return { shape: wh.kind ?? 'flat', dressing: 'keystone', ...(wh.storeys ? { storeys: wh.storeys } : {}) };
   if (f.bands === 'painted' && (f.bandLines ?? []).includes('head')) return { shape: wh?.kind ?? 'flat', dressing: 'block-course' };
+  // Keystones on flat heads stated as a surround (Kinkerstraat 31-47: "flat heads with white keystones"; round 2).
+  if (f.windowSurround === 'keystone' || f.windowSurround === 'eared-keystone') return { shape: wh?.kind ?? 'flat', dressing: 'keystone', ...(wh?.storeys ? { storeys: wh.storeys } : {}) };
   if (f.windowSurround === 'jack-blocks') return { shape: wh?.kind ?? 'flat', dressing: 'jack-blocks' };
   if (f.windowSurround === 'dentil-lintel') return { shape: wh?.kind ?? 'flat', dressing: 'dentil-lintel' };
   if (wh?.kind === 'round' && wh.archRing) return { shape: 'round', dressing: 'arch-ring' };
@@ -61,6 +63,7 @@ export function faceFronts(face: BlockFaceIntent, pandId: string, spec: HouseSpe
     };
     const out: FaceFront = {
       type: t.type,
+      ...(fronts.length > 1 && typeof f.share === 'number' ? { share: f.share as number } : {}),
       ...(f.gable ? { crown: CROWN[f.gable] } : {}),
       ...(f.cornice ? { cornice: f.cornice as RowCorniceKind } : {}),
       ...(f.storeys ? { storeys: f.storeys } : {}),

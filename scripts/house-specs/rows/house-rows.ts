@@ -18,7 +18,7 @@
 import { rdToLngLat } from '../../../src/canalRecall/rdCoordinates.ts';
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadRereads, loadRowDefs, REPO, type RowDef } from './rowDefs.ts';
+import { answerFile, evidenceId, loadRereads, loadRowDefs, REPO, type RowDef } from './rowDefs.ts';
 import { validateBlockFace, type BlockFaceIntent } from '../../../src/canalRecall/blockFace/intent.ts';
 import { fromBlockFace } from '../../../src/canalRecall/houseSpec/adapters.ts';
 import { specFromFace } from '../../../src/canalRecall/houseSpec/fromFace.ts';
@@ -31,7 +31,7 @@ import { toRowCheck } from '../../../src/canalRecall/houseSpec/row/check.ts';
 import { rowReport } from '../../../src/canalRecall/houseSpec/row/report.ts';
 import type { RowRecord } from '../../../src/canalRecall/houseSpec/row/types.ts';
 
-const RAW = JSON.parse(fs.readFileSync(path.join(REPO, 'scripts/house-specs/rows/rows.json'), 'utf8')) as { rows: Record<string, { street?: string; face?: string }> };
+const RAW = JSON.parse(fs.readFileSync(path.join(REPO, 'scripts/house-specs/rows/rows.json'), 'utf8')) as { rows: Record<string, { street?: string; face?: string; wallFromCuts?: boolean; canalWindows?: boolean }> };
 const readJson = (f: string) => fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null;
 const rel = (f: string) => path.relative(REPO, f).startsWith('..') ? f : path.relative(REPO, f);
 
@@ -51,9 +51,10 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
     inputs.push(rel(path.join(dir, 'intent.json')), rel(path.join(dir, 'strip.json')));
   }
   if (raw.street) { const f = path.join(REPO, 'scripts/street-surveys/streets', `${raw.street}.json`); survey = readJson(f); if (survey) inputs.push(rel(f)); }
-  const cuts = readJson(path.join(def.cutsDir, 'cuts.json')) as { rows: Array<{ pandId: string; wall: { heightM: number } }> } | null;
-  if (cuts) inputs.push(rel(path.join(def.cutsDir, 'cuts.json')));
-  inputs.push(`${rel(def.answersDir)}/<pandId>.json`);
+  const cutsFiles = (def.cutsDirs ?? [def.cutsDir]).map(d => path.join(d, 'cuts.json'));
+  const cutRows = cutsFiles.flatMap(f => { const c = readJson(f) as { rows: Array<{ pandId: string; wall: { heightM: number }; wallHex?: string; w1?: { hex?: string } }> } | null; if (c) inputs.push(rel(f)); return c?.rows ?? []; });
+  const cuts = cutRows.length ? { rows: cutRows } : null;
+  for (const d of def.answersDirs ?? [def.answersDir]) inputs.push(`${rel(d)}/<pandId>.json`);
   const rereads = loadRereads();
   const wallOnlyFile = path.join(REPO, 'scripts/house-specs/rows/wall-only.json');
   const wallOnly = (readJson(wallOnlyFile) as { rows?: Record<string, Record<string, { chunk: string; edgeRD: [[number, number], [number, number]]; ref: string }>> } | null)?.rows?.[def.id] ?? {};
@@ -62,7 +63,7 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
     const pid = md.pandId;
     const sp = survey?.pands.find(p => p.pandId === pid);
     const rr = rereads[pid];
-    const answer = (rr ? readJson(path.join(REPO, rr.answer)) : readJson(path.join(def.answersDir, `${pid}.json`))) as DescriberAnswer | null;
+    const answer = (rr ? readJson(path.join(REPO, rr.answer)) : (answerFile(def, pid) ? readJson(answerFile(def, pid)!) : null)) as DescriberAnswer | null;
     if (rr) inputs.push(rr.answer);
     answers[pid] = answer;
     let fronts: ReturnType<typeof faceFronts> | undefined;
@@ -73,25 +74,26 @@ export function loadRow(def: RowDef, solvedAt = new Date().toISOString().slice(0
     const bag = def.face ? readJson(path.join(REPO, 'scripts/block-face/faces', def.face, 'pands', pid, '3dbag.json')) : null;
     const attrs = bag ? (Object.values(bag.feature.CityObjects)[0] as { attributes: Record<string, number> }).attributes : null;
     const groundOffsetM = attrs && strip ? Math.round((attrs.b3_h_maaiveld - strip.groundNAP) * 100) / 100 : null;
-    const cut = cuts?.rows.find(r => r.pandId === pid);
+    const cut = cuts?.rows.find(r => r.pandId === evidenceId(pid));
     return {
-      pandId: pid, label: sp?.label ?? `${def.title.split(' ')[0]} (pand ${md.label})`, numbers: sp?.numbers ?? [], built: sp?.buildYear ?? null,
-      widthM: sp?.survey?.frontWidthM ?? md.widthM ?? null, groundOffsetM, eaves3dbag: md.eavesM ?? null,
-      height3dbag: cut?.wall.heightM ?? (attrs ? Math.round((attrs.b3_h_dak_50p - attrs.b3_h_maaiveld) * 100) / 100 : null),
+      pandId: pid, label: sp?.label ?? (md.numbers?.length ? `${def.title.split(' ')[0]} ${md.label}` : `${def.title.split(' ')[0]} (pand ${md.label})`), numbers: sp?.numbers ?? md.numbers ?? [], built: sp?.buildYear ?? md.built ?? null,
+      widthM: sp?.survey?.frontWidthM ?? md.widthM ?? null, groundOffsetM, eaves3dbag: md.eavesM ?? null, ...(md.ridgeM ? { ridge3dbag: md.ridgeM } : {}),
+      height3dbag: cut?.wall.heightM ?? (attrs ? Math.round((attrs.b3_h_dak_50p - attrs.b3_h_maaiveld) * 100) / 100 : null) ?? md.heightM ?? null,
       ...(fronts?.length ? { face: fronts } : {}), read: answer, readRef: answer?.image?.ref,
+      ...(raw.wallFromCuts && (cut?.w1?.hex ?? cut?.wallHex) ? { wallSample: cut!.w1?.hex ?? cut!.wallHex } : {}),
       ...(rr ? { reread: { panoId: rr.panoId, captured: rr.captured, ref: rr.cut, firstRead: rr.firstRead } } : {}),
       ...(rr?.describes && fronts && fronts.length > 1 ? { readFront: rr.describes === 'left' ? 0 : fronts.length - 1 } : {}),
       ...(wallOnly[pid] ? { wallOnly: { chunk: wallOnly[pid].chunk, edge: wallOnly[pid].edgeRD.map(([x, y]) => rdToLngLat(x, y).map(v => Math.round(v * 1e8) / 1e8)) as [[number, number], [number, number]], edgeRD: wallOnly[pid].edgeRD, ref: wallOnly[pid].ref } } : {}),
     };
   });
-  const side = (survey?.pands.find(p => p.pandId === members[0]?.pandId) as { side?: 'even' | 'odd' } | undefined)?.side ?? 'mixed';
+  const side = (survey?.pands.find(p => p.pandId === members[0]?.pandId) as { side?: 'even' | 'odd' } | undefined)?.side ?? def.members[0]?.side ?? 'mixed';
   const reviewedFile = path.join(REPO, 'scripts/house-specs/rows/reviewed.json');
   const reviewed = (readJson(reviewedFile) as Record<string, RowInput['reviewed']> | null)?.[def.id];
   if (reviewed?.length) inputs.push(rel(reviewedFile));
   const limitsFile = path.join(REPO, 'scripts/house-specs/rows/limits.json');
   const limits = (readJson(limitsFile) as Record<string, RowInput['limits']> | null)?.[def.id];
   if (limits?.length) inputs.push(rel(limitsFile));
-  return { input: { id: def.id, ...(reviewed?.length ? { reviewed } : {}), ...(limits?.length ? { limits } : {}), street: face?.street ?? def.title.split(' ')[0], side, ...(def.face ? { face: def.face, faceRef: `scripts/block-face/faces/${def.face}/intent.json` } : {}), members, inputs, solvedAt }, answers, faceSpecs };
+  return { input: { id: def.id, ...(raw.canalWindows ? { canalWindows: true } : {}), ...(reviewed?.length ? { reviewed } : {}), ...(limits?.length ? { limits } : {}), street: face?.street ?? def.title.split(' ')[0], side, ...(def.face ? { face: def.face, faceRef: `scripts/block-face/faces/${def.face}/intent.json` } : {}), members, inputs, solvedAt }, answers, faceSpecs };
 }
 
 /**
