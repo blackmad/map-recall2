@@ -6,7 +6,8 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, blockLines, generateDistrict, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, type DistrictLibrary } from './generate.js';
+import { baysFor, blockLines, generateDistrict, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
+import { oklab } from '../retailPuiPaint.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
 const LAT0 = 52.345, LNG0 = 4.9, M_LAT = 1 / 111_320, M_LNG = 1 / (111_320 * Math.cos(LAT0 * Math.PI / 180));
@@ -83,7 +84,7 @@ test("wall: the row's own photo wins over the family and the district (series ph
   const fam = lib.families[0];
   assert.equal(wallHexOf(lib, fam, 'rooseveltlaan-146491').hex, lib.rowNotes!['rooseveltlaan-146491'].wall!.hex);
   assert.match(wallHexOf(lib, fam, 'rooseveltlaan-146491').evidence!, /row's own photo/);
-  assert.equal(wallHexOf(lib, fam, 'teststraat-000000').hex, fam.design?.wall?.hex ?? lib.design.wall.hex);
+  assert.equal(wallHexOf(lib, fam, 'teststraat-000000').hex, warmWall((fam.design?.wall?.hex ?? lib.design.wall.hex)!));
   const res = generateDistrict({ ...lib, rowNotes: { 'teststraat-000000': { wall: { hex: '#a2694f', evidence: 'test' }, evidence: 'test' } } }, [0, 1, 2].map(i => pand(i, 1929, 12.4)), streets, new Set(), 'test');
   assert.deepEqual([...new Set(res.records.map(r => (r as { wall?: { hex?: string } }).wall?.hex))], ['#a2694f']);
 });
@@ -143,7 +144,9 @@ test('round 9: the measured row brick sits under the row note and over the pool;
   assert.equal(wallHexOf(m, fam, 'teststraat-000000').hex, '#8a7465');
   assert.match(wallHexOf(m, fam, 'teststraat-000000').evidence!, /2 of 3 reads agree \(2 capture dates/);
   assert.equal(wallHexOf(m, fam, 'rooseveltlaan-146491').hex, lib.rowNotes!['rooseveltlaan-146491'].wall!.hex, 'the row note wins');
-  assert.equal(wallHexOf(m, fam, 'other-000000').hex, fam.design?.wall?.hex ?? lib.design.wall.hex, 'unmeasured: the pool');
+  assert.equal(wallHexOf(m, fam, 'other-000000').hex, warmWall((fam.design?.wall?.hex ?? lib.design.wall.hex)!), 'unmeasured, no measured row on its street: the pool, warmed');
+  assert.equal(wallHexOf(m, fam, 'teststraat-111111').hex, '#8a7465', 'unmeasured: its street\'s measured rows');
+  assert.match(wallHexOf(m, fam, 'teststraat-111111').evidence!, /street's measured rows \(teststraat-000000\)/);
   // Round 11: a family the row's photo states beats the measured brick (Stadionkade 063989).
   const st: DistrictLibrary = { ...m, rowNotes: { ...m.rowNotes, 'teststraat-000000': { wallFamily: { family: 'dark-brown-brick', evidence: 'test' }, evidence: 'test' } } };
   assert.equal(wallHexOf(st, fam, 'teststraat-000000').family, 'dark-brown-brick');
@@ -187,4 +190,17 @@ test('block lines: a 3DBAG step AHN does not see is one line (Hunzestraat 120343
   assert.deepEqual(blockLines({ ...lib, measured: { roofs: roofs2(i => (i < 5 ? 8.77 : i === 5 ? 8.6 : 9.4)) } }, r2).rows[0].series.map(s => s.eavesM), [8.7, 8.7]);
   // No AHN: unchanged.
   assert.deepEqual(blockLines(lib, rows).rows[0].series.map(s => s.eavesM), [12.1, 6.25]);
+});
+
+test('round 13: an unstated brick wall is never drawn grey; a warm one and a stated one are untouched', () => {
+  const lch = (hex: string) => { const n = parseInt(hex.slice(1), 16), [L, a, b] = oklab(n >> 16, (n >> 8) & 255, n & 255); return [L, Math.hypot(a, b), ((Math.atan2(b, a) * 180) / Math.PI + 360) % 360]; };
+  assert.equal(warmWall('#a2694f'), '#a2694f', 'Rooseveltlaan, warm already');
+  for (const grey of ['#5b504a', '#5b4e47', '#6a6362', '#484a4c']) {
+    const [L0] = lch(grey), [L, C, h] = lch(warmWall(grey));
+    assert.ok(Math.abs(L - L0) < 0.01, `${grey} keeps its lightness`);
+    assert.ok(C >= WALL_WARM.C - 0.002 && h >= WALL_WARM.h0 - 1 && h <= WALL_WARM.h1 + 1, `${grey} -> ${warmWall(grey)} (C ${C.toFixed(3)}, h ${h.toFixed(0)})`);
+  }
+  // A stated wall is drawn as stated.
+  const st: DistrictLibrary = { ...lib, rowNotes: { ...lib.rowNotes, 'teststraat-000000': { wall: { hex: '#6a6362', evidence: 'test' }, evidence: 'test' } } };
+  assert.equal(wallHexOf(st, null, 'teststraat-000000').hex, '#6a6362');
 });
