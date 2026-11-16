@@ -12,6 +12,8 @@ http.userAgent = 'MapRecall/1.0 (+https://github.com/blackmad/map-recall2)'; htt
 const [n, seed] = [Number(process.argv[2] ?? 7), process.argv[3] ?? 'r8-heldout'];
 // Round 9: streets already used as a held-out (round 8) are excluded too.
 const EXCLUDE = new Set((process.env.EXCLUDE ?? '').split('|').filter(Boolean));
+// Round r: ROWS_ONLY (file of row ids, |-separated) limits the pool to those rows.
+const ONLY = process.env.ROWS_ONLY ? new Set(fs.readFileSync(process.env.ROWS_ONLY, 'utf8').split('|').filter(Boolean)) : null;
 const km = new Map<string, number>();
 for (const w of JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as any[]) {
   if (!w.name) continue;
@@ -26,7 +28,7 @@ for (const district of (process.env.DISTRICTS ?? 'rivierenbuurt,apollo-stadion')
   const stage = `artifacts/buurt-generators/${district}`;
   const kit = new Map((JSON.parse(fs.readFileSync(`${stage}/row-front.json`, 'utf8')).records as any[]).filter(r => r.buurtKit).map(r => [r.pandId, r.buurtKit]));
   for (const row of JSON.parse(fs.readFileSync(`${stage}/rows.json`, 'utf8')).rows as any[]) {
-    if (row.members.length < 4 || EXCLUDE.has(row.street) || libText.includes(row.street) || libText.includes(row.id.split('-').slice(0, -2).join('-') + '-')) continue;
+    if ((ONLY && !ONLY.has(row.id)) || row.members.length < 4 || EXCLUDE.has(row.street) || libText.includes(row.street) || libText.includes(row.id.split('-').slice(0, -2).join('-') + '-')) continue;
     const k0 = kit.get(row.members[0].pandId), k1 = kit.get(row.members[row.members.length - 1].pandId); if (!k0 || !k1) continue;
     const A = lngLatToRd(k0.frontLine[0]), B = lngLatToRd(k1.frontLine[1]), len = Math.hypot(B.x - A.x, B.y - A.y);
     const key = `${district}|${row.street}`, c = best.get(key);
