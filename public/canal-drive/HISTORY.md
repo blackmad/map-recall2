@@ -1,5 +1,36 @@
 # Canal Recall — what is built
 
+## Round u: Haparandaweg block kits unheld, Shopfronts browser (2026-11-16)
+
+- Merged by SHA: lane/haparandaweg-review-20261116 8e2d15aef. Four Haparandaweg block-kit GLBs leave `held`: 65, 746-786, 788-868, 952-1002. A single fresh opus judge saw a shuffled photo | A | B sheet per pand and picked the kit over today's generic draw on all four:
+
+  | Pand | Winner | Confidence | Remaining difference |
+  |---|---|---|---|
+  | 65 (…238475) | kit | high | slightly too tall and brick-like; a roof setback the photo lacks |
+  | 746-786 (…242477) | kit | medium-high | missing vertical columns and glass rails |
+  | 788-868 (…243162) | kit | low | narrow oblique view; should be dark muted brown |
+  | 952-1002 (…244592) | kit | high | red cells too coarse; flat glass |
+
+- Colour fixes before the vote:
+  - 65: terracotta cladding widened (0–0.38 to 0–0.93 of the face), colour `#74534a` (was `#8e3f3a`). Window frames in the cladding take the terracotta slot, which cleared the z-fight: `zfight-m2` baseline 30.9 to 0.
+  - 746-786: glass, rails and recess are neutral greys (were cyan).
+  - 952-1002: building frames grey `#50565e`.
+  - 788-868: unchanged.
+- Read, not drawn:
+  - 65: the dark recessed ground floor under the terracotta overhang, irregular windows, the white Z-shaped opening on the left wing.
+  - 746-786: concrete columns and glass rails.
+  - 952-1002: the coarse grid and non-reflective glass.
+  - 788-868: main fronts unreviewed, no panorama in range.
+- Checks: `check:glb-openings` floating 0 and poke 0 on all four (788-868 has 2 small glass-rail `outside` flags, allow-listed), so the R2-C "floating windows" item closes for these kit chunks. `audit:glb` still reports open boundary loops (`holes`) on all four shells and blank NE/SW side walls on 746-786 and 952-1002. Both predate this round: the side walls are unmeasured 3DBAG walls.
+- Install: these GLBs come from `scripts/haparandaweg/build.ts`, which `build-manual-landmarks` skips as "external" without refreshing their manifest `bytes`/`triangles`. The integrator re-stamped them from the GLBs (952-1002's stale 71140 B was the `check-manual-landmarks` stop). LODs were built with `--only` for the four ids; covers and the world (one cell, -2_2) were recompiled.
+- Still open on Haparandaweg (moved to TODO): 650–706, 708–744, 870-900 NE side, 940–950 (needs another photo source) and 582–648 (after scaffolding).
+
+## Shopfronts browser (dccbcdc8e, 2026-11-16)
+
+- `public/canal-drive/shopfronts.html` lists every shopfront template the game draws on a ground floor (generic fronts and chains), with use counts and a link to ride to one. It reads `shopfronts-data/index.json`, built by `npm run shopfronts:gallery` (`scripts/retail-ground/shopfront-gallery.ts`, typed index in `src/canalRecall/shopfrontIndex.ts`; its test joins `test:shopfront-gate`). Opened from a Shopfronts button on whats-new.html; e2e `tests/e2e/shopfronts-page.spec.ts`.
+- 172 WebP thumbnails live in the screenshots repo under `ui/shopfronts/` (874f3de); page shots are in `ui/shopfronts-page/` (a4e1ef6).
+- Of 237 index entries, 65 chains are listed but not drawn: their template is not in `REAL_ACCEPTED`, so the game falls back to a generic front.
+
 ## Round t: shop signs read from photos, FEBO/HEMA brand styles, reflective glass, more buurt towers (2026-11-16)
 
 - Merged by SHA: lane/retail-real-20261115 c977c461e, lane/glass-reflect-20261116 330cc3319, lane/rows-r-round22-20261116 21bc8c1a7 (round 22 notes, sheetFit fix, lane D sheet merge, round 23 head dressings, round 24 erker). Shop interiors (lane/shop-interiors-20261116 1ec903591) not merged: blind 5 on / 4 off / 4 tie, parked behind `?shopInteriors=1` on its branch.

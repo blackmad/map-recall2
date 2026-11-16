@@ -167,6 +167,9 @@ The user: "we need to focus on buurts in the canal belt and just outside". Belt 
 
 ## Feedback 2026-11-09 follow-ups (session a1)
 
+- **Scope pilots waiting on David's token go-ahead (2026-11-16).**
+  - Zuid block types first: branch `scope/zuid-block-types-20261116` (9367f1672), `docs/reports/zuid-block-types-scope-20261116.md`. Hoofddorppleinbuurt kit-family pilot, about 1.5–3 M tokens.
+  - Houthavens next: branch `scope/houthavens-20261116` (40eacd35c), `docs/reports/houthavens-scope-20261116.md`. Narva-eiland pilot, about 10–15 M tokens. Includes the floating-window check on recipe-large-houthavenkade-26-247232 (left from R2-C).
 - **Houthaven as unique buildings (user 2026-11-10, waits for the house line).** The user wants Houthaven modelled as unique buildings, waiting for the faster render loop. Start after H2/H3, as a house-line pilot after H7's Nieuwmarkt and GG-West rows. Feedback 1c694c0d (Narva-eiland white boxes) and 75242f30 (Houthavenkade 26, a large recipe 83 % blank: its intent lists 12 of 510 surfaces) are marked in-progress in Firestore. Panorama fronts were measured in `docs/reports/newbuild-kit-20261110.md` (37 fronts: orange-red and purple-brown brick, wide pale-framed windows).
 - **Untriaged feedback (6 open in Firestore):** 6d9d7ddd bike through here, 637f346b and 4f47f105 should be able to ride here, fc427560 texture fighting, 020e2132 is there really no building here, 0773d2a5 is there really nothing here. The feedback dashboard is https://claude.ai/artifact/Y75ff7xZbiinYmSxx6trQL (a snapshot; re-pull with `node scripts/feedback/queue.mjs pull --status all` and re-upload after each triage round).
 - **Storefront gate leftovers (`docs/reports/storefront-gate-20261110.md`).**
@@ -1667,13 +1670,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   minimap/overview, dropping the live OpenFreeMap dependency. Gaps: no road
   widths/sidewalks in our extracts (centrelines only), humped bridges render
   as grey slabs, no route line/labels/HUD in the spike.
-- **Haparandaweg held/skipped**: 952-1002 rebuilt but held — grey
-  neighbour building needs its light-grey framed grid, SE/NE faces plain;
-  746-786 rebuilt, held for user review of its sheet; 870-900 NE side still
-  dark glass, unverified. Review 65 (needs the terracotta upper volume),
-  650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
-  retry 940–950 with another photo source; 582–648 after scaffolding. The
-  street sheet framing was poor (bike drawn over a roof) — reshoot.
+- **Haparandaweg still unreviewed** (65, 746-786, 788-868 and 952-1002 unheld in round u): review 650–706 (paired casements, stone bands), 708–744 and 870-900 (NE side still dark glass); retry 940–950 with another photo source; 582–648 after scaffolding. 746-786 still lacks its concrete columns and glass rails; 952-1002 its finer red grid.
 - **Audit see-through test is hull-limited**: cast rays fully through the
   bbox (or from outside the footprint) in `glbQuality.ts`; today concave
   footprints flag false holes. Madame Tussauds has small roof-junction gaps.
@@ -2030,7 +2027,6 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     - Rembrandtpark culvert hollow, OSM187078829.
     - Doelensluis (needs a panorama); De Clercqstraat seams #24.
   - **Deck ends after `wayEnds` (2026-11-15):** 8 decks / 64 vertices sink road within 12 m of the end (`probe-hole-junctions.ts`, now counting only the deck's own road). Gaasperdammerweg 409282361 (36 vertices, worst 5.3 m: BGT square/footway at ground level under the south end, relief +4.7 → −2.5 m in 14 m; likely a real square under the viaduct, needs a photo verdict); OSM1483479264 (11, < 0.95 m: the path runs along its paving polygon's outline, so point-in-polygon finds no class and `holeCarry` never starts); Huntumdreef 376167407 (6) and Kanaaldijk 7041874 (5: square/verge polygons 4–5 m inside the hole range, bank found low); Coentunnel 7377715 (2, within pin); Dwergplanetenbaan 433293249 (2); 7376770 (1, pinned); 1504537939 (1). Visual reports with no probe signal need frames: Coentunnel pale slab, 7376770 paving strips, 7376548 jagged grey fringe, and Haarlemmer Houttuinen's pale stepped facets and small sliver on the east quay beside the `overFlat` deck.
-  - **Haparandaweg floating windows** (lane R2-C): check the kit chunks and recipe-large-houthavenkade-26-247232.
   - **Pontsteiger (rebuilt 2026-11-14):** kit still lacks the pavilions' curved canopies, real loggia depth, glazed-brick texture, patterned soffit cladding; `grid()` hides panes by box bounds only (not roofs/prisms/rotated boxes).
   - **Two models on one pand (pinned open in `modelOverlap.test.ts`):** `joodse-invalide` vs `ordinary-0363100012253824`; `roeterseiland-rec-a` vs `ordinary-0363100012253754`. Ride each, then `SHADOWED_BY_LANDMARK` or hold.
   - **Roof glazing follow-ups (2026-11-14):** the baked world shells still carry the old set-back crowns until the next `world:compile` (integrator, outside a gate). Grasweg 116-124 GLB draws its terraces as blank boxes with no roof gardens (landmark-builder lane). `test:world-format` (not in check:canal) fails on main: `worldStreamer.test.ts` styled mismatch on pand 0363100012072136 in tile 8414/5384, pre-existing before the roof-glazing merge.
