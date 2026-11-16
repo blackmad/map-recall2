@@ -129,6 +129,7 @@
     <a href="manual-ordinary-buildings.html">Ordinary buildings</a>
     <a href="street-surveys.html">Kit rows</a>
     <a href="street-furniture.html">Street furniture</a>
+    <a href="shopfronts.html">Shopfronts</a>
     <a href="coverage.html">Buurt coverage</a>
     <a href="landmark-queue.html">Building queue</a>
     <a href="park-landscape.html">Park views</a>
@@ -160,6 +161,7 @@
       <button type="button" data-kind="ordinary" aria-pressed="false">Ordinary</button>
       <button type="button" data-kind="street-survey" aria-pressed="false">Kit rows</button>
       <button type="button" data-kind="street-furniture" aria-pressed="false">Street furniture</button>
+      <button type="button" data-kind="shopfronts" aria-pressed="false">Shopfronts</button>
       <button type="button" data-kind="plan" aria-pressed="false">Plan</button>
     </div>
     <label class="search"><input id="q" type="search" placeholder="Search by name" aria-label="Search by name" autocomplete="off"></label>
@@ -615,6 +617,8 @@ function setKind(kind) {
   render();
 }
 for (const b of document.querySelectorAll('.seg button')) b.addEventListener('click', () => {
+  // Shopfronts are a gallery of their own (a card per template and chain, not a dated note): the button opens it.
+  if (b.dataset.kind === 'shopfronts') { location.href = './shopfronts.html'; return; }
   // whats-new.html#plan deep-links the plan; the other tabs drop the hash.
   const want = b.dataset.kind === 'plan' ? '#plan' : '';
   if (location.hash !== want) history.replaceState(null, '', want || location.pathname + location.search);

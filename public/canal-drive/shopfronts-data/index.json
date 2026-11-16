@@ -1,0 +1,3649 @@
+{
+ "version": 1,
+ "source": "© OpenStreetMap contributors (ODbL), Overpass 2026-11-14",
+ "entries": [
+  {
+   "id": "brownBar",
+   "kind": "template",
+   "name": "Brown cafe",
+   "template": "brownBar",
+   "pands": 669,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168379",
+    "lng": 4.893854,
+    "lat": 52.370228
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-brownBar.webp",
+   "drawn": true
+  },
+  {
+   "id": "hairdresser",
+   "kind": "template",
+   "name": "Hairdresser",
+   "template": "hairdresser",
+   "pands": 375,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012179959",
+    "lng": 4.895117,
+    "lat": 52.371546
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-hairdresser.webp",
+   "drawn": true
+  },
+  {
+   "id": "bike",
+   "kind": "template",
+   "name": "Bike",
+   "template": "bike",
+   "pands": 234,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168375",
+    "lng": 4.892804,
+    "lat": 52.36973
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-bike.webp",
+   "drawn": true
+  },
+  {
+   "id": "bakery",
+   "kind": "template",
+   "name": "Bakery",
+   "template": "bakery",
+   "pands": 182,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175265",
+    "lng": 4.892976,
+    "lat": 52.369283
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-bakery.webp",
+   "drawn": true
+  },
+  {
+   "id": "souvenir",
+   "kind": "template",
+   "name": "Souvenir",
+   "template": "souvenir",
+   "pands": 166,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012177871",
+    "lng": 4.896526,
+    "lat": 52.370157
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-souvenir.webp",
+   "drawn": true
+  },
+  {
+   "id": "coffeeshop",
+   "kind": "template",
+   "name": "Coffeeshop",
+   "template": "coffeeshop",
+   "pands": 134,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012177863",
+    "lng": 4.896342,
+    "lat": 52.370049
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-coffeeshop.webp",
+   "drawn": true
+  },
+  {
+   "id": "doner",
+   "kind": "template",
+   "name": "Doner",
+   "template": "doner",
+   "pands": 126,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178452",
+    "lng": 4.897897,
+    "lat": 52.371274
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-doner.webp",
+   "drawn": true
+  },
+  {
+   "id": "ah",
+   "kind": "chain",
+   "name": "Albert Heijn",
+   "template": "ah",
+   "pands": 119,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012182858",
+    "lng": 4.89973,
+    "lat": 52.372688
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Albert_Heijn_Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-ah.webp",
+   "drawn": true
+  },
+  {
+   "id": "toko",
+   "kind": "template",
+   "name": "Toko",
+   "template": "toko",
+   "pands": 109,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012182850",
+    "lng": 4.89946,
+    "lat": 52.372319
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-toko.webp",
+   "drawn": true
+  },
+  {
+   "id": "redLight",
+   "kind": "template",
+   "name": "Red-light window",
+   "template": "redLight",
+   "pands": 95,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178927",
+    "lng": 4.897048,
+    "lat": 52.372537
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-redLight.webp",
+   "drawn": true
+  },
+  {
+   "id": "florist",
+   "kind": "template",
+   "name": "Florist",
+   "template": "florist",
+   "pands": 85,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175732",
+    "lng": 4.890902,
+    "lat": 52.368894
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-florist.webp",
+   "drawn": true
+  },
+  {
+   "id": "butcher",
+   "kind": "template",
+   "name": "Butcher",
+   "template": "butcher",
+   "pands": 73,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012170936",
+    "lng": 4.900353,
+    "lat": 52.374
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-butcher.webp",
+   "drawn": true
+  },
+  {
+   "id": "apotheek",
+   "kind": "template",
+   "name": "Apotheek",
+   "template": "apotheek",
+   "pands": 67,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012179176",
+    "lng": 4.894084,
+    "lat": 52.372371
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-apotheek.webp",
+   "drawn": true
+  },
+  {
+   "id": "books",
+   "kind": "template",
+   "name": "Books",
+   "template": "books",
+   "pands": 63,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012177878",
+    "lng": 4.897468,
+    "lat": 52.370068
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-books.webp",
+   "drawn": true
+  },
+  {
+   "id": "tobacco",
+   "kind": "template",
+   "name": "Tobacco",
+   "template": "tobacco",
+   "pands": 50,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012180384",
+    "lng": 4.895799,
+    "lat": 52.372142
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-tobacco.webp",
+   "drawn": true
+  },
+  {
+   "id": "tattoo",
+   "kind": "template",
+   "name": "Tattoo",
+   "template": "tattoo",
+   "pands": 43,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175347",
+    "lng": 4.892398,
+    "lat": 52.371786
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-tattoo.webp",
+   "drawn": true
+  },
+  {
+   "id": "kruidvat",
+   "kind": "chain",
+   "name": "Kruidvat",
+   "template": "kruidvat",
+   "pands": 38,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175221",
+    "lng": 4.892594,
+    "lat": 52.367338
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Kruidvat_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-kruidvat.webp",
+   "drawn": true
+  },
+  {
+   "id": "phone",
+   "kind": "template",
+   "name": "Phone",
+   "template": "phone",
+   "pands": 38,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012177999",
+    "lng": 4.900316,
+    "lat": 52.374177
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-phone.webp",
+   "drawn": true
+  },
+  {
+   "id": "greengrocer",
+   "kind": "template",
+   "name": "Greengrocer",
+   "template": "greengrocer",
+   "pands": 37,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012171087",
+    "lng": 4.897892,
+    "lat": 52.363978
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-greengrocer.webp",
+   "drawn": true
+  },
+  {
+   "id": "etos",
+   "kind": "chain",
+   "name": "Etos",
+   "template": "etos",
+   "pands": 35,
+   "example": {
+    "pand": "w1080954285",
+    "lng": 4.890204,
+    "lat": 52.373017
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Etos_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-etos.webp",
+   "drawn": true
+  },
+  {
+   "id": "frites",
+   "kind": "template",
+   "name": "Frites",
+   "template": "frites",
+   "pands": 34,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012167915",
+    "lng": 4.894814,
+    "lat": 52.372124
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-frites.webp",
+   "drawn": true
+  },
+  {
+   "id": "nuts",
+   "kind": "template",
+   "name": "Nuts",
+   "template": "nuts",
+   "pands": 33,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175276",
+    "lng": 4.892325,
+    "lat": 52.370474
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-nuts.webp",
+   "drawn": true
+  },
+  {
+   "id": "snackbar",
+   "kind": "template",
+   "name": "Snackbar",
+   "template": "snackbar",
+   "pands": 33,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012182326",
+    "lng": 4.900208,
+    "lat": 52.370542
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-snackbar.webp",
+   "drawn": true
+  },
+  {
+   "id": "gelato",
+   "kind": "template",
+   "name": "Gelato",
+   "template": "gelato",
+   "pands": 28,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178833",
+    "lng": 4.896467,
+    "lat": 52.371724
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-gelato.webp",
+   "drawn": true
+  },
+  {
+   "id": "jumbo",
+   "kind": "chain",
+   "name": "Jumbo",
+   "template": "jumbo",
+   "pands": 26,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178236",
+    "lng": 4.896777,
+    "lat": 52.376197
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_of_Jumbo_Supermarkten_(2010).svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-jumbo.webp",
+   "drawn": true
+  },
+  {
+   "id": "febo",
+   "kind": "chain",
+   "name": "FEBO",
+   "template": "febo",
+   "pands": 25,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012179883",
+    "lng": 4.895187,
+    "lat": 52.366368
+   },
+   "brandAccepted": true,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-febo.webp",
+   "drawn": true
+  },
+  {
+   "id": "gallgall",
+   "kind": "chain",
+   "name": "Gall & Gall",
+   "template": "gallgall",
+   "pands": 23,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178795",
+    "lng": 4.898539,
+    "lat": 52.363436
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_Gall_%26_Gall.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-gallgall.webp",
+   "drawn": true
+  },
+  {
+   "id": "mcdonalds",
+   "kind": "chain",
+   "name": "McDonald's",
+   "template": "mcdonalds",
+   "pands": 20,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165125",
+    "lng": 4.892008,
+    "lat": 52.371173
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:McDonald%27s_Golden_Arches.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-mcdonalds.webp",
+   "drawn": true
+  },
+  {
+   "id": "smartshop",
+   "kind": "template",
+   "name": "Smartshop",
+   "template": "smartshop",
+   "pands": 20,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012180145",
+    "lng": 4.895339,
+    "lat": 52.371762
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-smartshop.webp",
+   "drawn": true
+  },
+  {
+   "id": "pancake",
+   "kind": "template",
+   "name": "Pancake",
+   "template": "pancake",
+   "pands": 19,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175714",
+    "lng": 4.891087,
+    "lat": 52.370636
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-pancake.webp",
+   "drawn": true
+  },
+  {
+   "id": "primera",
+   "kind": "chain",
+   "name": "Primera",
+   "template": "tobacco",
+   "pands": 18,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012182515",
+    "lng": 4.902425,
+    "lat": 52.36844
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.primera.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-primera.webp",
+   "drawn": true
+  },
+  {
+   "id": "cheese",
+   "kind": "template",
+   "name": "Cheese",
+   "template": "cheese",
+   "pands": 17,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175464",
+    "lng": 4.891287,
+    "lat": 52.369703
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-cheese.webp",
+   "drawn": true
+  },
+  {
+   "id": "dirk",
+   "kind": "chain",
+   "name": "Dirk",
+   "template": "dirk",
+   "pands": 17,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165370",
+    "lng": 4.895339,
+    "lat": 52.373401
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_of_Dirk.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-dirk.webp",
+   "drawn": true
+  },
+  {
+   "id": "hema",
+   "kind": "chain",
+   "name": "HEMA",
+   "template": "hema",
+   "pands": 17,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165086",
+    "lng": 4.892009,
+    "lat": 52.367362
+   },
+   "brandAccepted": true,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:HEMA_Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-hema.webp",
+   "drawn": true
+  },
+  {
+   "id": "stach",
+   "kind": "chain",
+   "name": "Stach",
+   "template": "stach",
+   "pands": 17,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012182578",
+    "lng": 4.899165,
+    "lat": 52.370928
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-stach.webp",
+   "drawn": true
+  },
+  {
+   "id": "bagels-and-beans",
+   "kind": "chain",
+   "name": "Bagels & Beans",
+   "template": "cafe",
+   "pands": 15,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012176306",
+    "lng": 4.887987,
+    "lat": 52.373446
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.bagelsbeans.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-bagels-and-beans.webp",
+   "drawn": true
+  },
+  {
+   "id": "new-york-pizza",
+   "kind": "chain",
+   "name": "New York Pizza",
+   "template": "fastFood",
+   "pands": 15,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012167914",
+    "lng": 4.89473,
+    "lat": 52.372174
+   },
+   "brandAccepted": false,
+   "logoSource": "https://newyorkpizza.nl/",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "ijscuypje",
+   "kind": "chain",
+   "name": "IJscuypje",
+   "template": "gelato",
+   "pands": 14,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012176128",
+    "lng": 4.891109,
+    "lat": 52.367833
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.ijscuypje.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-ijscuypje.webp",
+   "drawn": true
+  },
+  {
+   "id": "coffee-company",
+   "kind": "chain",
+   "name": "Coffee Company",
+   "template": "cafe",
+   "pands": 13,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178831",
+    "lng": 4.896698,
+    "lat": 52.371624
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.coffeecompany.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-coffee-company.webp",
+   "drawn": true
+  },
+  {
+   "id": "action",
+   "kind": "chain",
+   "name": "Action",
+   "template": "action",
+   "pands": 12,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012233589",
+    "lng": 4.866367,
+    "lat": 52.3658
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Action_Nederland_Logo_2020.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-action.webp",
+   "drawn": true
+  },
+  {
+   "id": "benu",
+   "kind": "chain",
+   "name": "Benu",
+   "template": "apotheek",
+   "pands": 12,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168649",
+    "lng": 4.881172,
+    "lat": 52.373364
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:BENU_Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-benu.webp",
+   "drawn": true
+  },
+  {
+   "id": "het-zwarte-fietsenplan",
+   "kind": "chain",
+   "name": "Het Zwarte Fietsenplan",
+   "template": "bike",
+   "pands": 11,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012179806",
+    "lng": 4.89538,
+    "lat": 52.36653
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.hetzwartefietsenplan.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-het-zwarte-fietsenplan.webp",
+   "drawn": true
+  },
+  {
+   "id": "lidl",
+   "kind": "chain",
+   "name": "Lidl",
+   "template": "supermarket",
+   "pands": 11,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012086892",
+    "lng": 4.876657,
+    "lat": 52.364107
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Lidl-Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-lidl.webp",
+   "drawn": true
+  },
+  {
+   "id": "vomar",
+   "kind": "chain",
+   "name": "Vomar",
+   "template": "supermarket",
+   "pands": 11,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012137280",
+    "lng": 4.874468,
+    "lat": 52.368016
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_Vomar.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-vomar.webp",
+   "drawn": true
+  },
+  {
+   "id": "bruna",
+   "kind": "chain",
+   "name": "Bruna",
+   "template": "bruna",
+   "pands": 10,
+   "example": {
+    "pand": "w751235774",
+    "lng": 4.893991,
+    "lat": 52.373277
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Bruna_logo.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-bruna.webp",
+   "drawn": true
+  },
+  {
+   "id": "cigo",
+   "kind": "chain",
+   "name": "Cigo",
+   "template": "tobacco",
+   "pands": 10,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012179492",
+    "lng": 4.893664,
+    "lat": 52.379602
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_cigo_nl.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-cigo.webp",
+   "drawn": true
+  },
+  {
+   "id": "domino-s",
+   "kind": "chain",
+   "name": "Domino's",
+   "template": "fastFood",
+   "pands": 10,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012236959",
+    "lng": 4.87623,
+    "lat": 52.36284
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Domino%27s_2025.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "de-pizzabakkers",
+   "kind": "chain",
+   "name": "De Pizzabakkers",
+   "template": "restaurant",
+   "pands": 9,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012176417",
+    "lng": 4.886546,
+    "lat": 52.375354
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:De_Pizzabakkers_Logo.png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "holland-and-barrett",
+   "kind": "chain",
+   "name": "Holland & Barrett",
+   "template": "chemist",
+   "pands": 9,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165109",
+    "lng": 4.891183,
+    "lat": 52.368815
+   },
+   "brandAccepted": false,
+   "logoSource": "https://en.wikipedia.org/wiki/File:Holland_%26_Barrett_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-holland-and-barrett.webp",
+   "drawn": true
+  },
+  {
+   "id": "pearle",
+   "kind": "chain",
+   "name": "Pearle",
+   "template": "optician",
+   "pands": 9,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175223",
+    "lng": 4.891989,
+    "lat": 52.367668
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.pearle.nl/",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "subway",
+   "kind": "chain",
+   "name": "Subway",
+   "template": "fastFood",
+   "pands": 9,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175343",
+    "lng": 4.892618,
+    "lat": 52.371859
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Subway_2016_logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "bbrood",
+   "kind": "chain",
+   "name": "BBrood",
+   "template": "bakery",
+   "pands": 8,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012182378",
+    "lng": 4.900689,
+    "lat": 52.374701
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.bbrood.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-bbrood.webp",
+   "drawn": true
+  },
+  {
+   "id": "pizza-beppe",
+   "kind": "chain",
+   "name": "Pizza Beppe",
+   "template": "restaurant",
+   "pands": 8,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175495",
+    "lng": 4.890562,
+    "lat": 52.369199
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "praxis",
+   "kind": "chain",
+   "name": "Praxis",
+   "template": "variety",
+   "pands": 8,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012163759",
+    "lng": 4.900063,
+    "lat": 52.356526
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Praxis_logo_2018.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "service-apotheek",
+   "kind": "chain",
+   "name": "Service Apotheek",
+   "template": "apotheek",
+   "pands": 8,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012250965",
+    "lng": 4.899353,
+    "lat": 52.394858
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Service_Apotheek_Logo.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-service-apotheek.webp",
+   "drawn": true
+  },
+  {
+   "id": "sla",
+   "kind": "chain",
+   "name": "SLA",
+   "template": "sla",
+   "pands": 8,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178849",
+    "lng": 4.897543,
+    "lat": 52.365555
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-sla.webp",
+   "drawn": true
+  },
+  {
+   "id": "spar-city",
+   "kind": "chain",
+   "name": "SPAR city",
+   "template": "supermarket",
+   "pands": 8,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168171",
+    "lng": 4.894667,
+    "lat": 52.367975
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.spar.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-spar-city.webp",
+   "drawn": true
+  },
+  {
+   "id": "turkishBakery",
+   "kind": "template",
+   "name": "Turkish bakery",
+   "template": "turkishBakery",
+   "pands": 8,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175390",
+    "lng": 4.892568,
+    "lat": 52.373656
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-turkishBakery.webp",
+   "drawn": true
+  },
+  {
+   "id": "wakuli",
+   "kind": "chain",
+   "name": "Wakuli",
+   "template": "cafe",
+   "pands": 8,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012063571",
+    "lng": 4.892897,
+    "lat": 52.357327
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.wakuli.com/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-wakuli.webp",
+   "drawn": true
+  },
+  {
+   "id": "aldi",
+   "kind": "chain",
+   "name": "ALDI",
+   "template": "supermarket",
+   "pands": 7,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012077297",
+    "lng": 4.88876,
+    "lat": 52.349933
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:AldiNord-WorldwideLogo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-aldi.webp",
+   "drawn": true
+  },
+  {
+   "id": "cafecito",
+   "kind": "chain",
+   "name": "Cafecito",
+   "template": "cafe",
+   "pands": 7,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012161331",
+    "lng": 4.875944,
+    "lat": 52.368409
+   },
+   "brandAccepted": false,
+   "logoSource": "https://cafecito.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-cafecito.webp",
+   "drawn": true
+  },
+  {
+   "id": "ekoplaza",
+   "kind": "chain",
+   "name": "Ekoplaza",
+   "template": "supermarket",
+   "pands": 7,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168936",
+    "lng": 4.879365,
+    "lat": 52.36933
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_of_Ekoplaza.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-ekoplaza.webp",
+   "drawn": true
+  },
+  {
+   "id": "gamma",
+   "kind": "chain",
+   "name": "Gamma",
+   "template": "variety",
+   "pands": 6,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012151240",
+    "lng": 4.860807,
+    "lat": 52.380858
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Gamma_logo_2010.png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "grapedistrict",
+   "kind": "chain",
+   "name": "Grapedistrict",
+   "template": "liquor",
+   "pands": 6,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012179731",
+    "lng": 4.890593,
+    "lat": 52.380865
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "jamin",
+   "kind": "chain",
+   "name": "Jamin",
+   "template": "nuts",
+   "pands": 6,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175340",
+    "lng": 4.892064,
+    "lat": 52.371416
+   },
+   "brandAccepted": false,
+   "logoSource": "https://jamin.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-jamin.webp",
+   "drawn": true
+  },
+  {
+   "id": "odido",
+   "kind": "chain",
+   "name": "Odido",
+   "template": "telecom",
+   "pands": 6,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175274",
+    "lng": 4.892355,
+    "lat": 52.370637
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Odido_2023_Logo.png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "the-breakfast-club",
+   "kind": "chain",
+   "name": "The Breakfast Club",
+   "template": "restaurant",
+   "pands": 6,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012181191",
+    "lng": 4.910603,
+    "lat": 52.363692
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "the-bulldog",
+   "kind": "chain",
+   "name": "The Bulldog",
+   "template": "coffeeshop",
+   "pands": 6,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165372",
+    "lng": 4.896295,
+    "lat": 52.372493
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:The_Bulldog_-_Cannabis_coffee_shop_in_Amsterdam.jpg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-the-bulldog.webp",
+   "drawn": true
+  },
+  {
+   "id": "waffle",
+   "kind": "template",
+   "name": "Waffle",
+   "template": "waffle",
+   "pands": 6,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012167506",
+    "lng": 4.891634,
+    "lat": 52.367918
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-waffle.webp",
+   "drawn": true
+  },
+  {
+   "id": "zeeman",
+   "kind": "chain",
+   "name": "Zeeman",
+   "template": "clothes",
+   "pands": 6,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012237058",
+    "lng": 4.894272,
+    "lat": 52.355838
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Zeeman_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-zeeman.webp",
+   "drawn": true
+  },
+  {
+   "id": "blokker",
+   "kind": "chain",
+   "name": "Blokker",
+   "template": "variety",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012172580",
+    "lng": 4.882414,
+    "lat": 52.374002
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Blokker-Logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "ekoplaza-foodmarqt",
+   "kind": "chain",
+   "name": "Ekoplaza Foodmarqt",
+   "template": "supermarket",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012236206",
+    "lng": 4.870938,
+    "lat": 52.368674
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_of_Ekoplaza.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-ekoplaza-foodmarqt.webp",
+   "drawn": true
+  },
+  {
+   "id": "eye-wish",
+   "kind": "chain",
+   "name": "Eye Wish",
+   "template": "optician",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012171354",
+    "lng": 4.885336,
+    "lat": 52.383789
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Eye_Wish_Opticiens_Logo.png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "joe-and-the-juice",
+   "kind": "chain",
+   "name": "Joe & The Juice",
+   "template": "cafe",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012174957",
+    "lng": 4.883597,
+    "lat": 52.368856
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-joe-and-the-juice.webp",
+   "drawn": true
+  },
+  {
+   "id": "jysk",
+   "kind": "chain",
+   "name": "JYSK",
+   "template": "variety",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012110408",
+    "lng": 4.866212,
+    "lat": 52.384624
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Jysk_logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "kpn",
+   "kind": "chain",
+   "name": "KPN",
+   "template": "telecom",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175273",
+    "lng": 4.89244,
+    "lat": 52.370945
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:KPN-Logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "leen-bakker",
+   "kind": "chain",
+   "name": "Leen Bakker",
+   "template": "variety",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012158607",
+    "lng": 4.890693,
+    "lat": 52.353578
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_Leenbakker.png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "loetje",
+   "kind": "chain",
+   "name": "Loetje",
+   "template": "restaurant",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012237349",
+    "lng": 4.908308,
+    "lat": 52.357121
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.loetje.nl/",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "pauw",
+   "kind": "chain",
+   "name": "Pauw",
+   "template": "clothes",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012167167",
+    "lng": 4.878727,
+    "lat": 52.35753
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-pauw.webp",
+   "drawn": true
+  },
+  {
+   "id": "rataplan",
+   "kind": "chain",
+   "name": "RataPlan",
+   "template": "variety",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012083416",
+    "lng": 4.865419,
+    "lat": 52.383222
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "salsa-shop",
+   "kind": "chain",
+   "name": "Salsa Shop",
+   "template": "fastFood",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012182493",
+    "lng": 4.899794,
+    "lat": 52.366103
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.salsashop.nl/",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "spar-express",
+   "kind": "chain",
+   "name": "SPAR express",
+   "template": "supermarket",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012170467",
+    "lng": 4.924158,
+    "lat": 52.36681
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:SPAR_Express_%C3%96sterreich-Logo.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-spar-express.webp",
+   "drawn": true
+  },
+  {
+   "id": "starbucks",
+   "kind": "chain",
+   "name": "Starbucks",
+   "template": "cafe",
+   "pands": 5,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012571539",
+    "lng": 4.892241,
+    "lat": 52.370267
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Starbucks_coffee_wordmark.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-starbucks.webp",
+   "drawn": true
+  },
+  {
+   "id": "ace-and-tate",
+   "kind": "chain",
+   "name": "Ace & Tate",
+   "template": "optician",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012172397",
+    "lng": 4.8855,
+    "lat": 52.368883
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Ace_%26_Tate_Logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "alexanderhoeve",
+   "kind": "chain",
+   "name": "Alexanderhoeve",
+   "template": "cheese",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012125540",
+    "lng": 4.905279,
+    "lat": 52.345577
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.alexanderhoeve.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-alexanderhoeve.webp",
+   "drawn": true
+  },
+  {
+   "id": "amsterdam-cheese-company",
+   "kind": "chain",
+   "name": "Amsterdam Cheese Company",
+   "template": "cheese",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175472",
+    "lng": 4.891014,
+    "lat": 52.369471
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-amsterdam-cheese-company.webp",
+   "drawn": true
+  },
+  {
+   "id": "bestseller",
+   "kind": "chain",
+   "name": "Bestseller",
+   "template": "bestseller",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012134118",
+    "lng": 4.891382,
+    "lat": 52.352532
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-bestseller.webp",
+   "drawn": true
+  },
+  {
+   "id": "birkenstock",
+   "kind": "chain",
+   "name": "Birkenstock",
+   "template": "shoes",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012177482",
+    "lng": 4.886006,
+    "lat": 52.372367
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Birkenstock_2021_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-birkenstock.webp",
+   "drawn": true
+  },
+  {
+   "id": "bouwmaat",
+   "kind": "chain",
+   "name": "Bouwmaat",
+   "template": "variety",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012240270",
+    "lng": 4.902444,
+    "lat": 52.39221
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "burger-king",
+   "kind": "chain",
+   "name": "Burger King",
+   "template": "fastFood",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012179469",
+    "lng": 4.894281,
+    "lat": 52.366792
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Burger_King_2020.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "cafe-bonjour",
+   "kind": "chain",
+   "name": "Café Bonjour",
+   "template": "supermarket",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012068461",
+    "lng": 4.894675,
+    "lat": 52.349227
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-cafe-bonjour.webp",
+   "drawn": true
+  },
+  {
+   "id": "de-lekkere-dingen-bakker",
+   "kind": "chain",
+   "name": "De Lekkere Dingen Bakker",
+   "template": "bakery",
+   "pands": 4,
+   "example": {
+    "pand": "w1228651349",
+    "lng": 4.954917,
+    "lat": 52.392587
+   },
+   "brandAccepted": false,
+   "logoSource": "https://delekkeredingenbakker.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-de-lekkere-dingen-bakker.webp",
+   "drawn": true
+  },
+  {
+   "id": "de-stadsfiets",
+   "kind": "chain",
+   "name": "De Stadsfiets",
+   "template": "bike",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012164433",
+    "lng": 4.891539,
+    "lat": 52.356666
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-de-stadsfiets.webp",
+   "drawn": true
+  },
+  {
+   "id": "duck",
+   "kind": "chain",
+   "name": "Duck",
+   "template": "duck",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012176144",
+    "lng": 4.891218,
+    "lat": 52.372567
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-duck.webp",
+   "drawn": true
+  },
+  {
+   "id": "episode",
+   "kind": "chain",
+   "name": "Episode",
+   "template": "clothes",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012182903",
+    "lng": 4.900853,
+    "lat": 52.369102
+   },
+   "brandAccepted": false,
+   "logoSource": "https://episode.eu/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-episode.webp",
+   "drawn": true
+  },
+  {
+   "id": "exchange",
+   "kind": "template",
+   "name": "Exchange",
+   "template": "exchange",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012253914",
+    "lng": 4.893446,
+    "lat": 52.373612
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/generic-exchange.webp",
+   "drawn": true
+  },
+  {
+   "id": "gwk-travelex",
+   "kind": "chain",
+   "name": "GWK Travelex",
+   "template": "exchange",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175488",
+    "lng": 4.890956,
+    "lat": 52.369021
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Travelex_Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-gwk-travelex.webp",
+   "drawn": true
+  },
+  {
+   "id": "henri-willig",
+   "kind": "chain",
+   "name": "Henri Willig",
+   "template": "cheese",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168482",
+    "lng": 4.891919,
+    "lat": 52.366639
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-henri-willig.webp",
+   "drawn": true
+  },
+  {
+   "id": "kfc",
+   "kind": "chain",
+   "name": "KFC",
+   "template": "fastFood",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012142699",
+    "lng": 4.927642,
+    "lat": 52.362837
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Kfc_textlogo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "kinki",
+   "kind": "chain",
+   "name": "Kinki",
+   "template": "hairdresser",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012167796",
+    "lng": 4.888599,
+    "lat": 52.381791
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-kinki.webp",
+   "drawn": true
+  },
+  {
+   "id": "kwantum",
+   "kind": "chain",
+   "name": "Kwantum",
+   "template": "variety",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012091615",
+    "lng": 4.909569,
+    "lat": 52.39722
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.kwantum.nl/",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "manfield",
+   "kind": "chain",
+   "name": "Manfield",
+   "template": "shoes",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175346",
+    "lng": 4.892102,
+    "lat": 52.371965
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-manfield.webp",
+   "drawn": true
+  },
+  {
+   "id": "nelson-schoenen",
+   "kind": "chain",
+   "name": "Nelson Schoenen",
+   "template": "shoes",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175634",
+    "lng": 4.891302,
+    "lat": 52.370115
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:NELSON_LOGO_ZWART.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-nelson-schoenen.webp",
+   "drawn": true
+  },
+  {
+   "id": "odin",
+   "kind": "chain",
+   "name": "Odin",
+   "template": "supermarket",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012143235",
+    "lng": 4.870184,
+    "lat": 52.370726
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-odin.webp",
+   "drawn": true
+  },
+  {
+   "id": "pets-place",
+   "kind": "chain",
+   "name": "Pets Place",
+   "template": "variety",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012233461",
+    "lng": 4.869782,
+    "lat": 52.366717
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Pets_Place_logo_01.png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "pontmeyer",
+   "kind": "chain",
+   "name": "PontMeyer",
+   "template": "variety",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012145112",
+    "lng": 4.931346,
+    "lat": 52.366909
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "q-and-q",
+   "kind": "chain",
+   "name": "Q&Q",
+   "template": "souvenir",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178659",
+    "lng": 4.897392,
+    "lat": 52.371397
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-q-and-q.webp",
+   "drawn": true
+  },
+  {
+   "id": "simon-levelt",
+   "kind": "chain",
+   "name": "Simon Lévelt",
+   "template": "cafe",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012182905",
+    "lng": 4.901705,
+    "lat": 52.369206
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Simon_Levelt_Logo.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-simon-levelt.webp",
+   "drawn": true
+  },
+  {
+   "id": "simon-meijssen",
+   "kind": "chain",
+   "name": "Simon Meijssen",
+   "template": "bakery",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012176741",
+    "lng": 4.891217,
+    "lat": 52.359779
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-simon-meijssen.webp",
+   "drawn": true
+  },
+  {
+   "id": "sissy-boy",
+   "kind": "chain",
+   "name": "Sissy-Boy",
+   "template": "clothes",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012167578",
+    "lng": 4.890292,
+    "lat": 52.373297
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Sissy-Boy_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-sissy-boy.webp",
+   "drawn": true
+  },
+  {
+   "id": "taco-mundo",
+   "kind": "chain",
+   "name": "Taco Mundo",
+   "template": "fastFood",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012160813",
+    "lng": 4.873779,
+    "lat": 52.365362
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "technische-unie",
+   "kind": "chain",
+   "name": "Technische Unie",
+   "template": "variety",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012071396",
+    "lng": 4.935224,
+    "lat": 52.336537
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "vanharen",
+   "kind": "chain",
+   "name": "vanHaren",
+   "template": "shoes",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175469",
+    "lng": 4.891172,
+    "lat": 52.369777
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-vanharen.webp",
+   "drawn": true
+  },
+  {
+   "id": "vlaamsch-broodhuis",
+   "kind": "chain",
+   "name": "Vlaamsch Broodhuis",
+   "template": "bakery",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165079",
+    "lng": 4.892388,
+    "lat": 52.363037
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-vlaamsch-broodhuis.webp",
+   "drawn": true
+  },
+  {
+   "id": "we",
+   "kind": "chain",
+   "name": "WE",
+   "template": "clothes",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175308",
+    "lng": 4.891766,
+    "lat": 52.370751
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:WE_Fashion_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-we.webp",
+   "drawn": true
+  },
+  {
+   "id": "wok-to-walk",
+   "kind": "chain",
+   "name": "Wok to Walk",
+   "template": "fastFood",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012180213",
+    "lng": 4.895475,
+    "lat": 52.371934
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Wok_to_Walk_Logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "zuivelhoeve",
+   "kind": "chain",
+   "name": "Zuivelhoeve",
+   "template": "cheese",
+   "pands": 4,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178689",
+    "lng": 4.898721,
+    "lat": 52.362525
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-zuivelhoeve.webp",
+   "drawn": true
+  },
+  {
+   "id": "amazing-oriental",
+   "kind": "chain",
+   "name": "Amazing Oriental",
+   "template": "supermarket",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012182587",
+    "lng": 4.900195,
+    "lat": 52.371992
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_of_Amazing_Oriental.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-amazing-oriental.webp",
+   "drawn": true
+  },
+  {
+   "id": "america-today",
+   "kind": "chain",
+   "name": "America Today",
+   "template": "clothes",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175220",
+    "lng": 4.892528,
+    "lat": 52.36737
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_America_Today.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-america-today.webp",
+   "drawn": true
+  },
+  {
+   "id": "anne-and-max",
+   "kind": "chain",
+   "name": "Anne&Max",
+   "template": "cafe",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012245785",
+    "lng": 4.92204,
+    "lat": 52.368912
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-anne-and-max.webp",
+   "drawn": true
+  },
+  {
+   "id": "bakkerij-kara-firin",
+   "kind": "chain",
+   "name": "Bakkerij Kara Firin",
+   "template": "turkishBakery",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012100325",
+    "lng": 4.822811,
+    "lat": 52.381477
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-bakkerij-kara-firin.webp",
+   "drawn": true
+  },
+  {
+   "id": "beter-horen",
+   "kind": "chain",
+   "name": "Beter Horen",
+   "template": "optician",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012159739",
+    "lng": 4.87025,
+    "lat": 52.369826
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.beterhoren.nl/",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "dekamarkt",
+   "kind": "chain",
+   "name": "DekaMarkt",
+   "template": "supermarket",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012078094",
+    "lng": 4.951902,
+    "lat": 52.396862
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_of_Dekamarkt.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-dekamarkt.webp",
+   "drawn": true
+  },
+  {
+   "id": "dille-and-kamille",
+   "kind": "chain",
+   "name": "Dille & Kamille",
+   "template": "variety",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012164390",
+    "lng": 4.872762,
+    "lat": 52.36677
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Dille_%26_Kamille_Logo.png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "douglas",
+   "kind": "chain",
+   "name": "Douglas",
+   "template": "cosmetics",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175275",
+    "lng": 4.891736,
+    "lat": 52.370561
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Douglas_Logo_06.2018.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-douglas.webp",
+   "drawn": true
+  },
+  {
+   "id": "flying-tiger-copenhagen",
+   "kind": "chain",
+   "name": "Flying Tiger Copenhagen",
+   "template": "variety",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012167572",
+    "lng": 4.891931,
+    "lat": 52.371665
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Flying_Tiger_Copenhagen.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "foot-locker",
+   "kind": "chain",
+   "name": "Foot Locker",
+   "template": "shoes",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168198",
+    "lng": 4.891344,
+    "lat": 52.370227
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Foot_Locker_wordmark_1988.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-foot-locker.webp",
+   "drawn": true
+  },
+  {
+   "id": "gollem",
+   "kind": "chain",
+   "name": "Gollem",
+   "template": "brownBar",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012182755",
+    "lng": 4.899905,
+    "lat": 52.366095
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-gollem.webp",
+   "drawn": true
+  },
+  {
+   "id": "h-and-m",
+   "kind": "chain",
+   "name": "H&M",
+   "template": "clothes",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175222",
+    "lng": 4.891808,
+    "lat": 52.368006
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:H%26M-Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-h-and-m.webp",
+   "drawn": true
+  },
+  {
+   "id": "hans-anders",
+   "kind": "chain",
+   "name": "Hans Anders",
+   "template": "optician",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012215185",
+    "lng": 4.863561,
+    "lat": 52.364916
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_of_Hans_Anders.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "hermes",
+   "kind": "chain",
+   "name": "Hermès",
+   "template": "clothes",
+   "pands": 3,
+   "example": {
+    "pand": "w751128373",
+    "lng": 4.893695,
+    "lat": 52.373288
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Hermes_wordmark.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-hermes.webp",
+   "drawn": true
+  },
+  {
+   "id": "hizi-hair",
+   "kind": "chain",
+   "name": "Hizi Hair",
+   "template": "hairdresser",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012166842",
+    "lng": 4.893075,
+    "lat": 52.353191
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-hizi-hair.webp",
+   "drawn": true
+  },
+  {
+   "id": "hugo-boss",
+   "kind": "chain",
+   "name": "Hugo Boss",
+   "template": "clothes",
+   "pands": 3,
+   "example": {
+    "pand": "w751128383",
+    "lng": 4.894275,
+    "lat": 52.373747
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Hugo_Boss_logo_2021.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-hugo-boss.webp",
+   "drawn": true
+  },
+  {
+   "id": "hunkemoller",
+   "kind": "chain",
+   "name": "Hunkemöller",
+   "template": "clothes",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175633",
+    "lng": 4.891323,
+    "lat": 52.370026
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Hunkemoeller_Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-hunkemoller.webp",
+   "drawn": true
+  },
+  {
+   "id": "jd-sports",
+   "kind": "chain",
+   "name": "JD Sports",
+   "template": "clothes",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168201",
+    "lng": 4.891464,
+    "lat": 52.369989
+   },
+   "brandAccepted": false,
+   "logoSource": "https://en.wikipedia.org/wiki/File:JD_Group_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-jd-sports.webp",
+   "drawn": true
+  },
+  {
+   "id": "kadinsky",
+   "kind": "chain",
+   "name": "Kadinsky",
+   "template": "coffeeshop",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175260",
+    "lng": 4.89301,
+    "lat": 52.369328
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-kadinsky.webp",
+   "drawn": true
+  },
+  {
+   "id": "kaldi",
+   "kind": "chain",
+   "name": "Kaldi",
+   "template": "cafe",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012169024",
+    "lng": 4.886527,
+    "lat": 52.370243
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-kaldi.webp",
+   "drawn": true
+  },
+  {
+   "id": "karwei",
+   "kind": "chain",
+   "name": "Karwei",
+   "template": "variety",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012121097",
+    "lng": 4.908247,
+    "lat": 52.397679
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Karwei_logo_(2017).png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "kiehl-s",
+   "kind": "chain",
+   "name": "Kiehl's",
+   "template": "cosmetics",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175885",
+    "lng": 4.891439,
+    "lat": 52.370403
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Kiehl%27s_SVG_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-kiehl-s.webp",
+   "drawn": true
+  },
+  {
+   "id": "kinki-kappers",
+   "kind": "chain",
+   "name": "Kinki Kappers",
+   "template": "hairdresser",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178611",
+    "lng": 4.898814,
+    "lat": 52.362795
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-kinki-kappers.webp",
+   "drawn": true
+  },
+  {
+   "id": "le-pain-quotidien",
+   "kind": "chain",
+   "name": "Le Pain Quotidien",
+   "template": "cafe",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012171295",
+    "lng": 4.888896,
+    "lat": 52.370425
+   },
+   "brandAccepted": false,
+   "logoSource": "https://nl.wikipedia.org/wiki/File:LPQ_Primary_logo_Fullcolor_600x600px.jpg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-le-pain-quotidien.webp",
+   "drawn": true
+  },
+  {
+   "id": "levi-s",
+   "kind": "chain",
+   "name": "Levi's",
+   "template": "clothes",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012167505",
+    "lng": 4.891467,
+    "lat": 52.368376
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Levi%27s_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-levi-s.webp",
+   "drawn": true
+  },
+  {
+   "id": "makker",
+   "kind": "chain",
+   "name": "Makker",
+   "template": "optician",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012068916",
+    "lng": 4.869799,
+    "lat": 52.370954
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "massimo-gelato",
+   "kind": "chain",
+   "name": "Massimo Gelato",
+   "template": "gelato",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012164859",
+    "lng": 4.894689,
+    "lat": 52.352629
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-massimo-gelato.webp",
+   "drawn": true
+  },
+  {
+   "id": "menspire",
+   "kind": "chain",
+   "name": "Menspire",
+   "template": "hairdresser",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012180015",
+    "lng": 4.891292,
+    "lat": 52.380391
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-menspire.webp",
+   "drawn": true
+  },
+  {
+   "id": "multivlaai",
+   "kind": "chain",
+   "name": "MultiVlaai",
+   "template": "bakery",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012148565",
+    "lng": 4.867399,
+    "lat": 52.365814
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-multivlaai.webp",
+   "drawn": true
+  },
+  {
+   "id": "old-amsterdam-cheese-store",
+   "kind": "chain",
+   "name": "Old Amsterdam Cheese Store",
+   "template": "cheese",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012180316",
+    "lng": 4.8953,
+    "lat": 52.37232
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-old-amsterdam-cheese-store.webp",
+   "drawn": true
+  },
+  {
+   "id": "pipoos",
+   "kind": "chain",
+   "name": "pipoos",
+   "template": "variety",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012112131",
+    "lng": 4.893738,
+    "lat": 52.35298
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "plus",
+   "kind": "chain",
+   "name": "PLUS",
+   "template": "supermarket",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012246466",
+    "lng": 4.903164,
+    "lat": 52.407118
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:PLUS_supermarket_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-plus.webp",
+   "drawn": true
+  },
+  {
+   "id": "rituals",
+   "kind": "chain",
+   "name": "Rituals",
+   "template": "cosmetics",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012177450",
+    "lng": 4.887394,
+    "lat": 52.366319
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Rituals_Cosmetics_logo.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-rituals.webp",
+   "drawn": true
+  },
+  {
+   "id": "shell-select",
+   "kind": "chain",
+   "name": "Shell Select",
+   "template": "supermarket",
+   "pands": 3,
+   "example": {
+    "pand": "passage:NL.IMBAG.Pand.0363100012077195:1",
+    "lng": 4.864823,
+    "lat": 52.384089
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-shell-select.webp",
+   "drawn": true
+  },
+  {
+   "id": "specsavers",
+   "kind": "chain",
+   "name": "Specsavers",
+   "template": "optician",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012159762",
+    "lng": 4.890738,
+    "lat": 52.353334
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Specsavers_logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "the-color",
+   "kind": "chain",
+   "name": "The Color",
+   "template": "hairdresser",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012169240",
+    "lng": 4.885811,
+    "lat": 52.365994
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-the-color.webp",
+   "drawn": true
+  },
+  {
+   "id": "trekpleister",
+   "kind": "chain",
+   "name": "Trekpleister",
+   "template": "chemist",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012130580",
+    "lng": 4.892193,
+    "lat": 52.357336
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Trekpleister_logo.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-trekpleister.webp",
+   "drawn": true
+  },
+  {
+   "id": "vitaminstore",
+   "kind": "chain",
+   "name": "Vitaminstore",
+   "template": "chemist",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175413",
+    "lng": 4.892866,
+    "lat": 52.379909
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Vitaminstore_Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-vitaminstore.webp",
+   "drawn": true
+  },
+  {
+   "id": "vlaamsch-broodhuys",
+   "kind": "chain",
+   "name": "Vlaamsch Broodhuys",
+   "template": "bakery",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168929",
+    "lng": 4.87911,
+    "lat": 52.369245
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-vlaamsch-broodhuys.webp",
+   "drawn": true
+  },
+  {
+   "id": "wagamama",
+   "kind": "chain",
+   "name": "Wagamama",
+   "template": "restaurant",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012174384",
+    "lng": 4.88339,
+    "lat": 52.362742
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Wagamama-Logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "wok-to-go",
+   "kind": "chain",
+   "name": "Wok To Go",
+   "template": "fastFood",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178754",
+    "lng": 4.896261,
+    "lat": 52.371657
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Wok_To_Go_Logo_2022.png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "yoyo",
+   "kind": "chain",
+   "name": "YOYO!",
+   "template": "cafe",
+   "pands": 3,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175490",
+    "lng": 4.891562,
+    "lat": 52.369086
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-yoyo.webp",
+   "drawn": true
+  },
+  {
+   "id": "30ml",
+   "kind": "chain",
+   "name": "30ML",
+   "template": "cafe",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012099135",
+    "lng": 4.880054,
+    "lat": 52.389211
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-30ml.webp",
+   "drawn": true
+  },
+  {
+   "id": "atlas",
+   "kind": "chain",
+   "name": "Atlas",
+   "template": "butcher",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012071805",
+    "lng": 4.86575,
+    "lat": 52.368759
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-atlas.webp",
+   "drawn": true
+  },
+  {
+   "id": "beter-bed",
+   "kind": "chain",
+   "name": "Beter Bed",
+   "template": "variety",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012129527",
+    "lng": 4.910279,
+    "lat": 52.396782
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:BeterBed-logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "bever",
+   "kind": "chain",
+   "name": "Bever",
+   "template": "clothes",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012067895",
+    "lng": 4.895744,
+    "lat": 52.357653
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Bever_Logo.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-bever.webp",
+   "drawn": true
+  },
+  {
+   "id": "bloem",
+   "kind": "chain",
+   "name": "Bloem",
+   "template": "florist",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012240377",
+    "lng": 4.928046,
+    "lat": 52.356719
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.bloem.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-bloem.webp",
+   "drawn": true
+  },
+  {
+   "id": "brainwash",
+   "kind": "chain",
+   "name": "BrainWash",
+   "template": "hairdresser",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012159922",
+    "lng": 4.876184,
+    "lat": 52.363178
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:BrainWash_Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-brainwash.webp",
+   "drawn": true
+  },
+  {
+   "id": "c-and-a",
+   "kind": "chain",
+   "name": "C&A",
+   "template": "clothes",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012176767",
+    "lng": 4.891243,
+    "lat": 52.369918
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:C%26A_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-c-and-a.webp",
+   "drawn": true
+  },
+  {
+   "id": "cheese-and-more",
+   "kind": "chain",
+   "name": "Cheese & More",
+   "template": "cheese",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175389",
+    "lng": 4.892539,
+    "lat": 52.37362
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-cheese-and-more.webp",
+   "drawn": true
+  },
+  {
+   "id": "claudia-strater",
+   "kind": "chain",
+   "name": "Claudia Sträter",
+   "template": "clothes",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012235890",
+    "lng": 4.878468,
+    "lat": 52.359736
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Claudia-strater-logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-claudia-strater.webp",
+   "drawn": true
+  },
+  {
+   "id": "cotton-club",
+   "kind": "chain",
+   "name": "Cotton Club",
+   "template": "clothes",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175487",
+    "lng": 4.891109,
+    "lat": 52.369143
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Cotton_Club_Logo.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-cotton-club.webp",
+   "drawn": true
+  },
+  {
+   "id": "cut-throat",
+   "kind": "chain",
+   "name": "Cut Throat",
+   "template": "hairdresser",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165674",
+    "lng": 4.891998,
+    "lat": 52.35664
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-cut-throat.webp",
+   "drawn": true
+  },
+  {
+   "id": "de-bakkerszonen",
+   "kind": "chain",
+   "name": "De Bakkerszonen",
+   "template": "bakery",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012075206",
+    "lng": 4.917609,
+    "lat": 52.357202
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-de-bakkerszonen.webp",
+   "drawn": true
+  },
+  {
+   "id": "decathlon",
+   "kind": "chain",
+   "name": "Decathlon",
+   "template": "clothes",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012104007",
+    "lng": 4.910519,
+    "lat": 52.357771
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Decathlon_-_logo_(France,_1976-1980).svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-decathlon.webp",
+   "drawn": true
+  },
+  {
+   "id": "dunkin",
+   "kind": "chain",
+   "name": "Dunkin'",
+   "template": "fastFood",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168191",
+    "lng": 4.894541,
+    "lat": 52.366735
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Dunkin1.JPG",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "g-star-raw",
+   "kind": "chain",
+   "name": "G-Star Raw",
+   "template": "clothes",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168053",
+    "lng": 4.891572,
+    "lat": 52.368215
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:G-Star_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-g-star-raw.webp",
+   "drawn": true
+  },
+  {
+   "id": "guess",
+   "kind": "chain",
+   "name": "Guess",
+   "template": "clothes",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175339",
+    "lng": 4.892046,
+    "lat": 52.371316
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Guess_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-guess.webp",
+   "drawn": true
+  },
+  {
+   "id": "halal-fried-chicken",
+   "kind": "chain",
+   "name": "Halal Fried Chicken",
+   "template": "fastFood",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012099718",
+    "lng": 4.831802,
+    "lat": 52.379985
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "ici-paris-xl",
+   "kind": "chain",
+   "name": "ICI PARIS XL",
+   "template": "cosmetics",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012072434",
+    "lng": 4.8773,
+    "lat": 52.349376
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:ICI_Paris_XL_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-ici-paris-xl.webp",
+   "drawn": true
+  },
+  {
+   "id": "intertoys",
+   "kind": "chain",
+   "name": "Intertoys",
+   "template": "variety",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012236022",
+    "lng": 4.871553,
+    "lat": 52.36861
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.intertoys.nl/",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "johnny-s-burger-company",
+   "kind": "chain",
+   "name": "Johnny's Burger Company",
+   "template": "fastFood",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012100095",
+    "lng": 4.926821,
+    "lat": 52.386611
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "keurslager",
+   "kind": "chain",
+   "name": "Keurslager",
+   "template": "butcher",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165106",
+    "lng": 4.886267,
+    "lat": 52.383117
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Keurslager_logo.jpg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-keurslager.webp",
+   "drawn": true
+  },
+  {
+   "id": "kiko-milano",
+   "kind": "chain",
+   "name": "KIKO Milano",
+   "template": "cosmetics",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175342",
+    "lng": 4.892116,
+    "lat": 52.372019
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Kiko_Milano_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-kiko-milano.webp",
+   "drawn": true
+  },
+  {
+   "id": "kwalitaria",
+   "kind": "chain",
+   "name": "Kwalitaria",
+   "template": "fastFood",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012119049",
+    "lng": 4.938132,
+    "lat": 52.374208
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.kwalitaria.nl/",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "kwekkeboom",
+   "kind": "chain",
+   "name": "Kwekkeboom",
+   "template": "bakery",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012086323",
+    "lng": 4.891442,
+    "lat": 52.352453
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-kwekkeboom.webp",
+   "drawn": true
+  },
+  {
+   "id": "la-panetteria",
+   "kind": "chain",
+   "name": "La Panetteria",
+   "template": "bakery",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168059",
+    "lng": 4.891964,
+    "lat": 52.368667
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-la-panetteria.webp",
+   "drawn": true
+  },
+  {
+   "id": "lucardi",
+   "kind": "chain",
+   "name": "Lucardi",
+   "template": "cosmetics",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012236073",
+    "lng": 4.8909,
+    "lat": 52.353988
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Lucardi_Logo_2023.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-lucardi.webp",
+   "drawn": true
+  },
+  {
+   "id": "lush",
+   "kind": "chain",
+   "name": "Lush",
+   "template": "cosmetics",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175669",
+    "lng": 4.891074,
+    "lat": 52.369282
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Lush_(Unternehmen)_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-lush.webp",
+   "drawn": true
+  },
+  {
+   "id": "mediamarkt",
+   "kind": "chain",
+   "name": "MediaMarkt",
+   "template": "telecom",
+   "pands": 2,
+   "example": {
+    "pand": "w1487606286",
+    "lng": 4.90709,
+    "lat": 52.375956
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Media_Markt_logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "nespresso",
+   "kind": "chain",
+   "name": "Nespresso",
+   "template": "cafe",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012236038",
+    "lng": 4.878545,
+    "lat": 52.359785
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Nespresso_logo_(monogram_%2B_wordmark).svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-nespresso.webp",
+   "drawn": true
+  },
+  {
+   "id": "normal",
+   "kind": "chain",
+   "name": "Normal",
+   "template": "chemist",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012170941",
+    "lng": 4.895893,
+    "lat": 52.376308
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Normal_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-normal.webp",
+   "drawn": true
+  },
+  {
+   "id": "pandora",
+   "kind": "chain",
+   "name": "Pandora",
+   "template": "cosmetics",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012253838",
+    "lng": 4.891663,
+    "lat": 52.370506
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Pandora_Logo_2019.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-pandora.webp",
+   "drawn": true
+  },
+  {
+   "id": "papa-john-s",
+   "kind": "chain",
+   "name": "Papa John's",
+   "template": "fastFood",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012078811",
+    "lng": 4.880644,
+    "lat": 52.388128
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Papa_John%27s_Logo_2019.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "pieter-bas",
+   "kind": "chain",
+   "name": "Pieter Bas",
+   "template": "hairdresser",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012158407",
+    "lng": 4.900887,
+    "lat": 52.355016
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-pieter-bas.webp",
+   "drawn": true
+  },
+  {
+   "id": "praxis-city",
+   "kind": "chain",
+   "name": "Praxis City",
+   "template": "variety",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012157025",
+    "lng": 4.864439,
+    "lat": 52.365335
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "samsonite",
+   "kind": "chain",
+   "name": "Samsonite",
+   "template": "clothes",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012168485",
+    "lng": 4.890091,
+    "lat": 52.367498
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Samsonite_Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-samsonite.webp",
+   "drawn": true
+  },
+  {
+   "id": "siebel",
+   "kind": "chain",
+   "name": "Siebel",
+   "template": "cosmetics",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012167576",
+    "lng": 4.891938,
+    "lat": 52.372261
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-siebel.webp",
+   "drawn": true
+  },
+  {
+   "id": "swarovski",
+   "kind": "chain",
+   "name": "Swarovski",
+   "template": "cosmetics",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175632",
+    "lng": 4.891177,
+    "lat": 52.369486
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Swarovski_new_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-swarovski.webp",
+   "drawn": true
+  },
+  {
+   "id": "the-body-shop",
+   "kind": "chain",
+   "name": "The Body Shop",
+   "template": "cosmetics",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175890",
+    "lng": 4.891594,
+    "lat": 52.370608
+   },
+   "brandAccepted": false,
+   "logoSource": "https://en.wikipedia.org/wiki/File:The_Body_Shop_logo_2020.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-the-body-shop.webp",
+   "drawn": true
+  },
+  {
+   "id": "timberland",
+   "kind": "chain",
+   "name": "Timberland",
+   "template": "clothes",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175715",
+    "lng": 4.891531,
+    "lat": 52.370524
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Timberland-logo.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-timberland.webp",
+   "drawn": true
+  },
+  {
+   "id": "toolstation",
+   "kind": "chain",
+   "name": "Toolstation",
+   "template": "variety",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012092451",
+    "lng": 4.896371,
+    "lat": 52.402928
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Toolstation-Logo.png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "uniqlo",
+   "kind": "chain",
+   "name": "Uniqlo",
+   "template": "clothes",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165126",
+    "lng": 4.892114,
+    "lat": 52.372243
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:UNIQLO_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-uniqlo.webp",
+   "drawn": true
+  },
+  {
+   "id": "vodafone",
+   "kind": "chain",
+   "name": "Vodafone",
+   "template": "telecom",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175312",
+    "lng": 4.892581,
+    "lat": 52.371528
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Vodafone_logo_1997.png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "wibra",
+   "kind": "chain",
+   "name": "Wibra",
+   "template": "clothes",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012130411",
+    "lng": 4.825803,
+    "lat": 52.355761
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Wibra_Wallonie_logo.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-wibra.webp",
+   "drawn": true
+  },
+  {
+   "id": "xenos",
+   "kind": "chain",
+   "name": "Xenos",
+   "template": "variety",
+   "pands": 2,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012152566",
+    "lng": 4.872295,
+    "lat": 52.367474
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo-Xenos-Rubin-Red.png",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "bake-my-day",
+   "kind": "chain",
+   "name": "Bake my Day",
+   "template": "bakery",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175442",
+    "lng": 4.892442,
+    "lat": 52.380091
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-bake-my-day.webp",
+   "drawn": true
+  },
+  {
+   "id": "burberry",
+   "kind": "chain",
+   "name": "Burberry",
+   "template": "clothes",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012138862",
+    "lng": 4.881908,
+    "lat": 52.36066
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Burberry_Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-burberry.webp",
+   "drawn": true
+  },
+  {
+   "id": "coco",
+   "kind": "chain",
+   "name": "COCO",
+   "template": "cafe",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012173483",
+    "lng": 4.885194,
+    "lat": 52.383696
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-coco.webp",
+   "drawn": true
+  },
+  {
+   "id": "coco-and-sebas",
+   "kind": "chain",
+   "name": "Coco & Sebas",
+   "template": "nuts",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0362100005256420",
+    "lng": 4.860829,
+    "lat": 52.302975
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-coco-and-sebas.webp",
+   "drawn": true
+  },
+  {
+   "id": "dolce-and-gelato",
+   "kind": "chain",
+   "name": "Dolce & Gelato",
+   "template": "gelato",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012179457",
+    "lng": 4.89402,
+    "lat": 52.366881
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-dolce-and-gelato.webp",
+   "drawn": true
+  },
+  {
+   "id": "doppio-espresso",
+   "kind": "chain",
+   "name": "Doppio Espresso",
+   "template": "cafe",
+   "pands": 1,
+   "example": {
+    "pand": "w754852672",
+    "lng": 4.872909,
+    "lat": 52.336825
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-doppio-espresso.webp",
+   "drawn": true
+  },
+  {
+   "id": "fiets-and-service",
+   "kind": "chain",
+   "name": "Fiets & Service",
+   "template": "bike",
+   "pands": 1,
+   "example": {
+    "pand": "w1239767701",
+    "lng": 4.902518,
+    "lat": 52.377575
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-fiets-and-service.webp",
+   "drawn": true
+  },
+  {
+   "id": "keuken-kampioen",
+   "kind": "chain",
+   "name": "Keuken Kampioen",
+   "template": "variety",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0362100001056051",
+    "lng": 4.841295,
+    "lat": 52.290276
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "keukenconcurrent",
+   "kind": "chain",
+   "name": "KeukenConcurrent",
+   "template": "variety",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0362100001054150",
+    "lng": 4.841003,
+    "lat": 52.290785
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "kvik",
+   "kind": "chain",
+   "name": "Kvik",
+   "template": "variety",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0479100000001351",
+    "lng": 4.826596,
+    "lat": 52.422812
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "leonidas",
+   "kind": "chain",
+   "name": "Leonidas",
+   "template": "nuts",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012178333",
+    "lng": 4.896689,
+    "lat": 52.37683
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Leonidas_Logo.JPG",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-leonidas.webp",
+   "drawn": true
+  },
+  {
+   "id": "mac-cosmetics",
+   "kind": "chain",
+   "name": "MAC Cosmetics",
+   "template": "cosmetics",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012172443",
+    "lng": 4.884816,
+    "lat": 52.365131
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:MAC_Cosmetics_logo.png",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-mac-cosmetics.webp",
+   "drawn": true
+  },
+  {
+   "id": "mango",
+   "kind": "chain",
+   "name": "Mango",
+   "template": "clothes",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175311",
+    "lng": 4.892151,
+    "lat": 52.371534
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Mango-logo.jpg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-mango.webp",
+   "drawn": true
+  },
+  {
+   "id": "maxi-zoo",
+   "kind": "chain",
+   "name": "Maxi Zoo",
+   "template": "variety",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012064103",
+    "lng": 4.782167,
+    "lat": 52.360626
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "moneyTransfer",
+   "kind": "chain",
+   "name": "Money transfer",
+   "template": "moneyTransfer",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165323",
+    "lng": 4.861072,
+    "lat": 52.364534
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-moneyTransfer.webp",
+   "drawn": true
+  },
+  {
+   "id": "sanistunter",
+   "kind": "chain",
+   "name": "Sanistunter",
+   "template": "variety",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0479100000000033",
+    "lng": 4.82232,
+    "lat": 52.428322
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "schoonenberg",
+   "kind": "chain",
+   "name": "Schoonenberg",
+   "template": "optician",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012131797",
+    "lng": 4.937547,
+    "lat": 52.399073
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "smullers",
+   "kind": "chain",
+   "name": "Smullers",
+   "template": "fastFood",
+   "pands": 1,
+   "example": {
+    "pand": "part:NL.IMBAG.Pand.0363100012145715:2",
+    "lng": 4.918257,
+    "lat": 52.346493
+   },
+   "brandAccepted": false,
+   "logoSource": "https://www.smullers.nl/",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "the-sting",
+   "kind": "chain",
+   "name": "The Sting",
+   "template": "clothes",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012175382",
+    "lng": 4.89192,
+    "lat": 52.372512
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-the-sting.webp",
+   "drawn": true
+  },
+  {
+   "id": "thephonelab",
+   "kind": "chain",
+   "name": "ThePhoneLab",
+   "template": "phone",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012127314",
+    "lng": 4.903155,
+    "lat": 52.351243
+   },
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-thephonelab.webp",
+   "drawn": true
+  },
+  {
+   "id": "tk-maxx",
+   "kind": "chain",
+   "name": "TK Maxx",
+   "template": "variety",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165746",
+    "lng": 4.894406,
+    "lat": 52.374496
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:TK_Maxx_Logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "used-products",
+   "kind": "chain",
+   "name": "Used Products",
+   "template": "variety",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012163387",
+    "lng": 4.929853,
+    "lat": 52.354351
+   },
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "zara",
+   "kind": "chain",
+   "name": "Zara",
+   "template": "clothes",
+   "pands": 1,
+   "example": {
+    "pand": "NL.IMBAG.Pand.0363100012165121",
+    "lng": 4.891717,
+    "lat": 52.37101
+   },
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Zara_Logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-zara.webp",
+   "drawn": true
+  },
+  {
+   "id": "da",
+   "kind": "chain",
+   "name": "DA",
+   "template": "chemist",
+   "pands": 0,
+   "example": null,
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_of_Drogisten_Associatie.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-da.webp",
+   "drawn": true
+  },
+  {
+   "id": "dirck-iii",
+   "kind": "chain",
+   "name": "Dirck III",
+   "template": "liquor",
+   "pands": 0,
+   "example": null,
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "eazie",
+   "kind": "chain",
+   "name": "Eazie",
+   "template": "fastFood",
+   "pands": 0,
+   "example": null,
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Eazie_Logo.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "grandoptical",
+   "kind": "chain",
+   "name": "GrandOptical",
+   "template": "optician",
+   "pands": 0,
+   "example": null,
+   "brandAccepted": false,
+   "logoSource": "https://fr.wikipedia.org/wiki/Fichier:Logo_GrandOptical.svg",
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "hulleman",
+   "kind": "chain",
+   "name": "Hulleman",
+   "template": "bakery",
+   "pands": 0,
+   "example": null,
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-hulleman.webp",
+   "drawn": true
+  },
+  {
+   "id": "intertoys-xl",
+   "kind": "chain",
+   "name": "Intertoys XL",
+   "template": "variety",
+   "pands": 0,
+   "example": null,
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "julia-s",
+   "kind": "chain",
+   "name": "Julia's",
+   "template": "fastFood",
+   "pands": 0,
+   "example": null,
+   "brandAccepted": false,
+   "thumb": null,
+   "drawn": false
+  },
+  {
+   "id": "kik",
+   "kind": "chain",
+   "name": "KiK",
+   "template": "clothes",
+   "pands": 0,
+   "example": null,
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_KiK.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-kik.webp",
+   "drawn": true
+  },
+  {
+   "id": "norah",
+   "kind": "chain",
+   "name": "Norah",
+   "template": "clothes",
+   "pands": 0,
+   "example": null,
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-norah.webp",
+   "drawn": true
+  },
+  {
+   "id": "the-doner-company",
+   "kind": "chain",
+   "name": "The Döner Company",
+   "template": "doner",
+   "pands": 0,
+   "example": null,
+   "brandAccepted": false,
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-the-doner-company.webp",
+   "drawn": true
+  },
+  {
+   "id": "victoria-s-secret",
+   "kind": "chain",
+   "name": "Victoria's Secret",
+   "template": "clothes",
+   "pands": 0,
+   "example": null,
+   "brandAccepted": false,
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Victoria%27s_Secret_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-victoria-s-secret.webp",
+   "drawn": true
+  }
+ ]
+}
