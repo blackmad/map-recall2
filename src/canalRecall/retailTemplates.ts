@@ -213,7 +213,10 @@ export type TemplateLook = {
   window?: 'plate';
 };
 const LOOKS_N: Record<RetailTemplate, TemplateLook> = {
-  ah: { fascia: '#00a0e2', letters: '#ffffff', word: 'ALBERT HEIJN', content: 'shelves', lit: true },
+  // Lane chain-logos-20261116 (David's note and Arnhem photo; round-7 readers on two Amsterdam fronts, retailBrandStyles.gen.ts):
+  // light-blue 'Albert Heijn' with its mark on a dark grey band (was the AH blue board). Bruna: its red logo on a white
+  // board (the readers' white fascia with red lowercase letters; David: "white/blue colormatch is off").
+  ah: { fascia: '#3e434a', letters: '#3aa0e0', word: 'ALBERT HEIJN', content: 'shelves', lit: true },
   jumbo: { fascia: '#ffcc00', letters: '#1d1d1b', word: 'JUMBO', content: 'shelves', lit: true },
   dirk: { fascia: '#e30613', letters: '#ffffff', word: 'DIRK', content: 'shelves', lit: true },
   etos: { fascia: '#f4f4f4', letters: '#0b4f9c', word: 'ETOS', content: 'shelves', lit: true },
@@ -222,7 +225,7 @@ const LOOKS_N: Record<RetailTemplate, TemplateLook> = {
   febo: { fascia: '#f6d300', letters: '#d0101b', word: 'FEBO', content: 'automatiek', lit: true },
   stach: { fascia: '#f3efe6', letters: '#1d1d1b', word: 'STACH', content: 'deli', lit: true },
   sla: { fascia: '#ffffff', letters: '#2f7d32', word: 'SLA', content: 'bowls', lit: true },
-  bruna: { fascia: '#0a3d91', letters: '#ffd200', word: 'BRUNA', content: 'magazines', lit: true },
+  bruna: { fascia: '#ffffff', letters: '#f00000', word: 'BRUNA', content: 'magazines', lit: true },
   bestseller: { fascia: '#1d1d1b', letters: '#ffffff', word: 'BESTSELLER', content: 'magazines', lit: true, pavement: 'racks' },
   duck: { fascia: '#ffd400', letters: '#1d1d1b', word: 'DUCK STORE', content: 'ducks', lit: true },
   moneyTransfer: { fascia: '#ffdd00', letters: '#1d1d1b', word: 'MONEY TRANSFER', content: 'stickers', lit: true },

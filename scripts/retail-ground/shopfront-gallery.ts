@@ -22,8 +22,8 @@ const { logoFor, glyphCellBox } = await import('../../src/canalRecall/retailLogo
 const { GOODS_LAYERS, paintGoodsLayer } = await import('../../src/canalRecall/retailGoods.ts');
 const { GOODS_BASE, TYPE_BASE, CHAIN_LOGO_BASE } = await import('../../src/canalRecall/retailPages.ts');
 const { TYPE_FACES } = await import('../../src/canalRecall/retailTypeFaces.ts');
-const { CHAIN_LOGO_PAGES, chainLogo, TEMPLATE_CHAIN_LOGO } = await import('../../src/canalRecall/retailChainLogos.ts');
-const { RETAIL_CHAINS } = await import('../../src/canalRecall/retailChains.ts');
+const { CHAIN_LOGO_PAGES, chainLogo, TEMPLATE_CHAIN_LOGO, TEMPLATE_WORDMARK, templateLogoKey } = await import('../../src/canalRecall/retailChainLogos.ts');
+const { RETAIL_CHAINS, chainOwnFront } = await import('../../src/canalRecall/retailChains.ts');
 const { BRAND_STYLES, ACCEPTED_BRANDS } = await import('../../src/canalRecall/retailBrandStyles.ts');
 const { buildShopfrontIndex, thumbFile } = await import('../../src/canalRecall/shopfrontIndex.ts');
 type FrontTri = import('../../src/canalRecall/retailFront.ts').FrontTri;
@@ -73,8 +73,8 @@ const WALL = '#8a4a36';
 /** The input the game builds for a pand with this template / chain (threeBuildingFeatures.ts, retailReal and retailBrand on). */
 function inputFor(template: RetailTemplate, chainKey: string | null, seed: string) {
   const chainRow = chainKey ? RETAIL_CHAINS[chainKey] : undefined;
-  const real = realAccepted(template), retailChain = chainRow && real ? chainRow : undefined, chainWord = chainRow && !retailChain ? chainRow.word : undefined;
-  const cl = retailChain && chainKey ? chainLogo(chainKey) : real && TEMPLATE_CHAIN_LOGO[template] ? chainLogo(TEMPLATE_CHAIN_LOGO[template]) : null;
+  const real = realAccepted(template), retailChain = chainRow && (real || chainOwnFront(chainKey!)) ? chainRow : undefined, chainWord = chainRow && !retailChain ? chainRow.word : undefined;
+  const tk = templateLogoKey(template, true, real), cl = retailChain && chainKey ? chainLogo(chainKey) : tk ? chainLogo(tk) : null;
   const own = logoFor(template);
   const logo = cl ? { layer: LOGO + CHAIN_LOGO_BASE + cl.page, rect: cl.rect, aspect: cl.aspect } : own ? { layer: LOGO + own.page, rect: own.rect, aspect: own.aspect } : undefined;
   const word = chainKey ? chainWord : WORDS[template] ?? 'WINKEL';
@@ -133,7 +133,7 @@ const chainProv = JSON.parse(fs.readFileSync(path.join(dir, 'chain-provenance.js
 const tplProv = (JSON.parse(fs.readFileSync(path.join(dir, 'provenance.json'), 'utf8')) as { logos: Record<string, { page?: string }> }).logos;
 const provByWikidata = new Map(Object.values(chainProv).filter(p => p.wikidata && p.source).map(p => [p.wikidata!, p.source!]));
 const logoSource = (key: string, kind: 'chain' | 'template'): string | undefined => {
-  if (kind === 'template') return tplProv[key]?.page ?? (chainLogo(TEMPLATE_CHAIN_LOGO[key] ?? '') ? chainProv[TEMPLATE_CHAIN_LOGO[key]]?.source : undefined);
+  if (kind === 'template') return (TEMPLATE_WORDMARK[key] ? chainProv[TEMPLATE_WORDMARK[key]]?.source : undefined) ?? tplProv[key]?.page ?? (chainLogo(TEMPLATE_CHAIN_LOGO[key] ?? '') ? chainProv[TEMPLATE_CHAIN_LOGO[key]]?.source : undefined);
   const c = RETAIL_CHAINS[key];
   return chainProv[key]?.source ?? (c?.wikidata ? provByWikidata.get(c.wikidata) : undefined);
 };
