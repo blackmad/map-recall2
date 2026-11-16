@@ -70,7 +70,10 @@ export type RowDormerKind = (typeof ROW_DORMER_KINDS)[number];
  *   arch-ring           a raised white arch ring with keystone over a round head
  *   none                plain brick heads
  */
-export const ROW_HEAD_DRESSINGS = ['none', 'block-course', 'keystone', 'segmental-tympanum', 'dentil-lintel', 'jack-blocks', 'stone-lintel', 'arch-ring', 'block-surround', 'tablet'] as const;
+export const ROW_HEAD_DRESSINGS = ['none', 'block-course', 'keystone', 'segmental-tympanum', 'dentil-lintel', 'jack-blocks', 'stone-lintel', 'arch-ring', 'block-surround', 'tablet',
+  // Lane R round 23 (De Pijp heads list), appended: alternating white voussoirs, white corner blocks, a moulded white surround
+  // with a cornice hood, a patterned brick band at the heads, an ornamental brick arch ring (headGrammar.ts, facadeOrnaments brickBand).
+  'voussoirs', 'corner-blocks', 'moulded-hood', 'brick-band', 'brick-arch-ring'] as const;
 /** `tablet`: a light stone tablet in the brick over each window (Herengracht 175404); with the `relieving` shape, over a
  *  brick relieving arch. */
 /** `block-surround`: white blocks framing the whole window, alternating quoins up both jambs with a keyed head (Kinkerstraat 100, reviewed). */

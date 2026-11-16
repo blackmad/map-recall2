@@ -8,7 +8,9 @@
  */
 
 export type HeadShape = 'flat' | 'segmental' | 'round';
-export type VoussoirPattern = 'white' | 'brick' | 'white-brick';
+/** `brick-dark` (lane R round 23): an ornamental brick ring, the wall brick and a darker burnt brick in turn (De Pijp,
+ *  Ruysdaelkade 097582). */
+export type VoussoirPattern = 'white' | 'brick' | 'white-brick' | 'brick-dark';
 export interface HeadGrammar {
   shape: HeadShape;
   /** The ring over the opening: blocks fanning from the arch's centre. `count` absent: from the span (BLOCK_M). */
@@ -29,6 +31,13 @@ export interface HeadGrammar {
   tablet?: boolean;
   /** A brick relieving arch over the flat head: a shallow segmental ring of headers, its segment filled with brick. */
   relieving?: boolean;
+  /** Lane R round 23 (De Pijp heads list): a square white block at each corner of the head, at the springing of an arch
+   *  or the ends of a flat head (Kuipersstraat 108702, Rustenburgerstraat 158127). */
+  cornerBlocks?: boolean;
+  /** A moulded white surround (architrave) up both jambs and over the head, and a cornice hood over it (Tweede Jan
+   *  Steenstraat 164311, Ferdinand Bolstraat 164454). */
+  architrave?: boolean;
+  hood?: boolean;
 }
 
 export type HeadTone = 'white' | 'brick' | 'stone' | 'glass';
@@ -41,6 +50,7 @@ export interface HeadPiece { pts: [[number, number], [number, number], [number, 
 export const HEAD = { block: 0.16, minBlocks: 5, rise: 1 / 6, minRise: 0.22, keyUp: 0.07, keyDown: 0.04, keyW: 0.26, keyTopW: 0.32, keyH: 0.36, out: 0.04, keyOut: 0.07,
   quoinLong: 0.42, quoinShort: 0.24, quoinH: 0.27, quoinGap: 0.06,
   tablet: { w: 0.26, h: 0.36, gap: 0.12, out: 0.06, minH: 0.2 }, relieve: { over: 0.06, rise: 0.16, depth: 0.12, lift: 0.08 },
+  corner: { w: 0.22, h: 0.22, down: 0.08, out: 0.05 }, architrave: { w: 0.12, out: 0.03 }, hoodM: { over: 0.1, h: 0.14, gap: 0.02, out: 0.1 },
   springerW: 0.18, springerH: 0.2, lintel: 0.16, lintelOver: 0.12, jack: { end: 0.15, mid: 0.22, endW: 0.16, midW: 0.18 }, jackOut: 0.06, glassOut: 0.012, flatFan: 2.2 } as const;
 
 /**
@@ -69,6 +79,16 @@ export function headGrammarOf(dressing: string | undefined, shape: string | unde
     case 'stone-lintel': case 'dentil-lintel': return { shape: 'flat', lintel: true };
     // Block surround (Kinkerstraat 100): alternating white quoins up both jambs and a keyed flat head of white blocks.
     case 'block-surround': return { shape: arch, voussoirs: { alternate: 'white', depth: 0.2 }, keystone: 'raised', surround: 'blocks' };
+    // Lane R round 23, the De Pijp heads list's "kit cannot say" reads, each byte-identical when not stated:
+    // white blocks at the head's corners (Kuipersstraat 108702, Rustenburgerstraat 158127), the glass up into an arch;
+    case 'corner-blocks': return { shape: arch, cornerBlocks: true };
+    // a moulded white surround with a cornice hood (Tweede Jan Steenstraat 164311, Ferdinand Bolstraat 164454); over an
+    // arch the surround follows it as a slim white ring;
+    case 'moulded-hood': return arch === 'flat' ? { shape: 'flat', architrave: true, hood: true } : { shape: arch, voussoirs: { alternate: 'white', depth: HEAD.architrave.w }, architrave: true, hood: true };
+    // an ornamental brick arch ring: wall brick and a darker burnt brick in turn, deeper than a plain ring (Ruysdaelkade
+    // 097582). A flat head reads it as segmental (the reads name it on arches only).
+    case 'brick-arch-ring': return { shape: arch === 'flat' ? 'segmental' : arch, voussoirs: { alternate: 'brick-dark', depth: 0.3 } };
+    // Alternating white voussoirs (Gerard Doustraat 162701, Sint Willibrordusstraat 163362, Tweede Jan Steenstraat 121708).
     case 'voussoirs': return { shape: arch === 'flat' ? 'segmental' : arch, voussoirs: { alternate: 'white-brick', depth: 0.22 }, keystone: 'raised', springers: true };
     // A plain arched window (no dressing stated): the glass up into its arch, the brick round it.
     case 'none': return arch !== 'flat' ? { shape: arch } : null;
@@ -85,7 +105,9 @@ export function headRise(g: HeadGrammar, span: number): number {
   const key = g.keystone ? Math.max(HEAD.keyH - HEAD.keyDown - ring, g.keystone === 'plain' ? 0 : HEAD.keyUp) : 0;
   if (g.tablet) return tabletFoot(g, span) + HEAD.tablet.h;
   const crown = g.crown === 'jack-blocks' ? HEAD.jack.mid : 0, base = g.lintel && !g.voussoirs ? HEAD.lintel : arch + ring;
-  return Math.max(g.lintel ? HEAD.lintel : 0, arch + ring + key, base + crown);
+  const corner = g.cornerBlocks ? HEAD.corner.h - HEAD.corner.down : 0;
+  const hood = g.hood ? (g.shape === 'flat' ? HEAD.architrave.w : arch + ring) + HEAD.hoodM.gap + HEAD.hoodM.h : 0;
+  return Math.max(g.lintel ? HEAD.lintel : 0, arch + ring + key, base + crown, corner, hood);
 }
 
 /** A tablet's foot over the head line: clear of a relieving arch's ring. */
@@ -95,7 +117,7 @@ const tabletFoot = (g: HeadGrammar, span: number) => g.relieving ? HEAD.relieve.
 const relieveRise = (span: number) => Math.min(HEAD.relieve.rise, (span + 2 * HEAD.relieve.over) * 0.14);
 const segRise = (span: number) => Math.min(span / 2 * 0.8, Math.max(span * HEAD.rise, HEAD.minRise));
 const tone = (p: VoussoirPattern, i: number, n: number): HeadTone =>
-  p === 'white' ? 'white' : p === 'brick' ? 'brick' : (Math.abs(i - (n - 1) / 2) % 2 < 0.5 ? 'white' : 'brick');
+  p === 'white' ? 'white' : p === 'brick' ? 'brick' : p === 'brick-dark' ? (Math.abs(i - (n - 1) / 2) % 2 < 0.5 ? 'brick' : 'stone') : (Math.abs(i - (n - 1) / 2) % 2 < 0.5 ? 'white' : 'brick');
 
 /**
  * The pieces of head `g` over an opening [x0, x1] whose flat head is at z. Voussoirs fan from the arch centre (flat
@@ -173,6 +195,21 @@ export function headPieces(g: HeadGrammar, x0: number, x1: number, z: number, si
       const w = k % 2 ? HEAD.quoinShort : HEAD.quoinLong, xa = sg < 0 ? edge - w + 0.04 : edge - 0.04, xb = xa + w;
       out.push({ pts: [[xa, zz], [xb, zz], [xb, zz + HEAD.quoinH], [xa, zz + HEAD.quoinH]], tone: 'white', out: HEAD.out });
     }
+  }
+  if (g.cornerBlocks) for (const [x, s] of [[x0, -1], [x1, 1]] as const) {
+    // Square white blocks on the jambs' heads, standing a little past the opening (they frame its corners).
+    const C = HEAD.corner, xa = s < 0 ? x - C.w + 0.06 : x - 0.06;
+    out.push({ pts: [[xa, z - C.down], [xa + C.w, z - C.down], [xa + C.w, z - C.down + C.h], [xa, z - C.down + C.h]], tone: 'white', out: C.out });
+  }
+  if (g.architrave) {
+    // The surround: white bands up both jambs from the sill to the head line, across a flat head; an arch's own ring
+    // (voussoirs) is its head. The hood: a projecting white cornice slab over it, wider than the surround.
+    const A = HEAD.architrave, Hd = HEAD.hoodM;
+    if (sill !== undefined && z - sill > 0.2) for (const [a, b] of [[x0 - A.w, x0], [x1, x1 + A.w]] as const) out.push({ pts: [[a, sill], [b, sill], [b, z], [a, z]], tone: 'white', out: A.out });
+    let top = z;
+    if (g.shape === 'flat') { out.push({ pts: [[x0 - A.w, z], [x1 + A.w, z], [x1 + A.w, z + A.w], [x0 - A.w, z + A.w]], tone: 'white', out: A.out }); top = z + A.w; }
+    else top = at(0.5).p[1] + (v?.depth ?? 0);
+    if (g.hood) { const l = x0 - A.w - Hd.over, r = x1 + A.w + Hd.over, zb = top + Hd.gap; out.push({ pts: [[l, zb], [r, zb], [r, zb + Hd.h], [l, zb + Hd.h]], tone: 'white', out: Hd.out }); }
   }
   if (g.springers) for (const [p, s] of [[at(0), -1], [at(1), 1]] as const) {
     const xa = p.p[0] + (s < 0 ? -HEAD.springerW * 0.6 : -HEAD.springerW * 0.4), zb = p.p[1] - HEAD.springerH * 0.5;

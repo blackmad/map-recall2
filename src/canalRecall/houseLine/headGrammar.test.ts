@@ -108,3 +108,52 @@ test('relieving arch springs over the window frame; an arched frame is a slim wh
   assert.ok(p.some(x => x.tone === 'glass') && p.filter(x => x.tone === 'white').length >= HEAD.minBlocks);
   assert.equal(headGrammarOf('arched-frame', 'flat')!.shape, 'segmental');
 });
+
+// Lane R round 23: the De Pijp heads list's "kit cannot say" reads (buurt-generators-20261115.md round 16).
+const ys = (p: ReturnType<typeof headPieces>) => p.flatMap(x => x.pts.map(q => q[1]));
+const xs = (p: ReturnType<typeof headPieces>) => p.flatMap(x => x.pts.map(q => q[0]));
+
+test('round 23: the new dressings map; existing dressings are unchanged (byte-identical when not stated)', () => {
+  assert.deepEqual(headGrammarOf('corner-blocks', 'segmental'), { shape: 'segmental', cornerBlocks: true });
+  assert.deepEqual(headGrammarOf('moulded-hood', 'flat'), { shape: 'flat', architrave: true, hood: true });
+  assert.equal(headGrammarOf('brick-arch-ring', 'flat')!.shape, 'segmental');
+  assert.equal(headGrammarOf('voussoirs', 'segmental')!.voussoirs!.alternate, 'white-brick');
+  // A plain segmental head (no dressing): the glass up into its arch, nothing white (round 16's 26 plain reads).
+  assert.ok(headPieces(headGrammarOf('none', 'segmental')!, 0, 1.1, 10).every(p => p.tone === 'glass'));
+  for (const [d, s] of [['keystone', 'flat'], ['keystone', 'segmental'], ['jack-blocks', 'flat'], ['segmental-tympanum', 'segmental'], ['arch-ring', 'round'], ['block-surround', 'flat']] as const) {
+    const g = headGrammarOf(d, s)!;
+    assert.ok(!g.cornerBlocks && !g.architrave && !g.hood, d);
+    assert.notEqual(g.voussoirs?.alternate, 'brick-dark');
+  }
+});
+
+test('corner-blocks: a white block at each head corner, past the jambs, over the glass arch', () => {
+  const g = headGrammarOf('corner-blocks', 'segmental')!, p = headPieces(g, 0, 1.1, 10), w = p.filter(x => x.tone === 'white');
+  assert.equal(w.length, 2);
+  assert.ok(Math.min(...xs(w)) < 0 && Math.max(...xs(w)) > 1.1);
+  assert.ok(w.every(b => Math.min(...b.pts.map(q => q[1])) < 10 && Math.max(...b.pts.map(q => q[1])) > 10), 'astride the head line');
+  assert.ok(p.some(x => x.tone === 'glass'));
+  assert.ok(Math.max(...ys(p)) - 10 <= headRise(g, 1.1) + 1e-9);
+  const flat = headPieces(headGrammarOf('corner-blocks', 'flat')!, 0, 1.1, 10);
+  assert.equal(flat.length, 2);
+});
+
+test('moulded-hood: white jambs from the sill, a head band, and a wider projecting hood on top', () => {
+  const g = headGrammarOf('moulded-hood', 'flat')!, p = headPieces(g, 0, 1.1, 10, 8.2);
+  assert.ok(p.every(x => x.tone === 'white'));
+  const hood = p.reduce((a, b) => Math.max(...b.pts.map(q => q[1])) > Math.max(...a.pts.map(q => q[1])) ? b : a);
+  assert.equal(hood.out, HEAD.hoodM.out);
+  assert.ok(Math.max(...hood.pts.map(q => q[0])) - Math.min(...hood.pts.map(q => q[0])) > 1.1 + 2 * HEAD.architrave.w);
+  assert.ok(Math.abs(Math.max(...ys(p)) - 10 - headRise(g, 1.1)) < 1e-9);
+  assert.ok(Math.abs(Math.min(...ys(p)) - 8.2) < 1e-9, 'jambs from the sill');
+  // On an arch: the surround is the arch's white ring, the hood over its crown.
+  const a = headGrammarOf('moulded-hood', 'segmental')!, pa = headPieces(a, 0, 1.1, 10, 8.2);
+  assert.ok(Math.abs(Math.max(...ys(pa)) - 10 - headRise(a, 1.1)) < 1e-9);
+});
+
+test('brick-arch-ring: a deep ring of wall brick and burnt brick in turn, no white', () => {
+  const g = headGrammarOf('brick-arch-ring', 'segmental')!, p = headPieces(g, 0, 1.1, 10), ring = p.filter(x => x.tone !== 'glass');
+  assert.ok(ring.some(x => x.tone === 'brick') && ring.some(x => x.tone === 'stone'));
+  assert.ok(!p.some(x => x.tone === 'white'));
+  assert.ok(headRise(g, 1.1) > headRise({ shape: 'segmental', voussoirs: { alternate: 'brick', depth: 0.16 } }, 1.1));
+});

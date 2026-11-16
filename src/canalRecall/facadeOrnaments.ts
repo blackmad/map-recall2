@@ -213,6 +213,9 @@ export const ROW_DRESS = {
   block: { w: 0.15, tall: 0.3, short: 0.2, gap: 0.09, pier: 0.42, out: 0.05 },
   keystone: { w: 0.18, h: 0.34, arch: 0.24, out: 0.06 },
   tympanum: { rise: 0.32, ring: 0.14, out: 0.04 },
+  /** Lane R round 23: a patterned brick band at the heads (Tolstraat 108704, Pieter Aertszstraat 126746): a course of
+   *  the wall's darker brick across the front with a row of burnt-brick blocks on it, wall-family tones, never white. */
+  brickBand: { h: 0.32, out: 0.015, block: 0.12, pitch: 0.26, blockOut: 0.025, band: 0.84, dark: 0.64 },
   cornice: { h: 1.15, frieze: 0.62, console: 0.16, pitch: 0.85, corona: 0.42, out: 0.45 },
 } as const;
 
@@ -236,13 +239,14 @@ const ROW_DENTILS = { w: 0.08, h: 0.12, pitch: 0.17, bed: 0.26 } as const;
 /** The top of the highest head dressing a row wall draws (block course, keystone arch, tympanum, lintel); -inf with none. */
 function rowHeadRise(w: RowWindow): number {
   if (w.dressing === 'block-course') return ROW_DRESS.block.tall;
+  if (w.dressing === 'brick-band') return ROW_DRESS.brickBand.h;
   const g = headGrammarOf(w.dressing, w.shape);
   return g ? headRise(g, w.x1 - w.x0) : -Infinity;
 }
 function rowHeadsTop(c: ExtraContext): number {
   let top = -Infinity;
   for (const w of rowWindowsOf(c)) {
-    const rise = rowHeadRise(w), z = rise > -Infinity && w.dressing !== 'block-course' ? headLine(c, w, rise) ?? w.z1 : w.z1;
+    const rise = rowHeadRise(w), z = rise > -Infinity && w.dressing !== 'block-course' && w.dressing !== 'brick-band' ? headLine(c, w, rise) ?? w.z1 : w.z1;
     top = Math.max(top, z + rise);
   }
   return top;
@@ -265,6 +269,16 @@ function blockCourse(c: ExtraContext, s: ExtraSink, row: RowWindow[]): void {
     const n = Math.floor((g1 - g0) / B.pier);
     for (let i = 0; i < n; i++) { const a = g0 + (g1 - g0) * (i + 0.5) / n - B.w / 2; s.strip(c.f, a, a + B.w, B.out, z, Math.min(c.top, z + (i % 2 ? B.short : B.tall)), white); }
   }
+}
+
+/** One storey's patterned brick band at the heads, the front's full width: the band in the wall's darker brick and a row
+ *  of burnt-brick blocks along its middle (a band of the wall's own family, so it reads as brickwork, not trim). */
+function brickBand(c: ExtraContext, s: ExtraSink, row: RowWindow[]): void {
+  const B = ROW_DRESS.brickBand, z = Math.max(...row.map(w => w.z1)), zt = Math.min(c.top, z + B.h);
+  if (zt - z < 0.1) return;
+  s.strip(c.f, 0, c.f.len, B.out, z, zt, shadeHex(c.wallHex, B.band));
+  const n = Math.max(1, Math.floor(c.f.len / B.pitch)), zm = (z + zt) / 2;
+  for (let i = 0; i < n; i++) { const x = (i + 0.5) * c.f.len / n; s.strip(c.f, x - B.block / 2, x + B.block / 2, B.blockOut, zm - B.block / 2, zm + B.block / 2, shadeHex(c.wallHex, B.dark)); }
 }
 
 /** A window head drawn from the head grammar (houseLine/headGrammar.ts): voussoirs, keys, springers, tympana and
@@ -1074,8 +1088,9 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     const ws = rowWindowsOf(c);
     const storeys = [...new Set(ws.filter(w => w.dressing === 'block-course').map(w => w.storey))];
     for (const k of storeys) blockCourse(c, s, ws.filter(w => w.storey === k && w.dressing === 'block-course'));
+    for (const k of new Set(ws.filter(w => w.dressing === 'brick-band').map(w => w.storey))) brickBand(c, s, ws.filter(w => w.storey === k && w.dressing === 'brick-band'));
     for (const w of ws) {
-      if (w.dressing === 'block-course') continue;
+      if (w.dressing === 'block-course' || w.dressing === 'brick-band') continue;
       const g = headGrammarOf(w.dressing, w.shape);
       if (g) grammarHead(c, s, w, g);
     }
