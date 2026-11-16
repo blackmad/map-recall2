@@ -1,0 +1,2753 @@
+{
+  "version": 1,
+  "district": "kinkerbuurt",
+  "photoReads": {
+    "0363100012064327": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "point",
+      "cornice": "bracketed",
+      "cc": 0.65
+    },
+    "0363100012064672": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012066717": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012068330": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "0363100012068912": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012069039": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "point",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "0363100012069666": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.65
+    },
+    "0363100012075066": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "point",
+      "cornice": "bracketed",
+      "cc": 0.7
+    },
+    "0363100012075947": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.8
+    },
+    "0363100012077880": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.7
+    },
+    "0363100012080404": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012080836": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012081452": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012082619": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "0363100012083703": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012084449": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.7
+    },
+    "0363100012088526": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012088573": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.6
+    },
+    "0363100012089600": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "0363100012091225": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.55
+    },
+    "0363100012092172": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012093309": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "neck",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "0363100012094030": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "0363100012094592": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.7,
+      "crown": "shouldered",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012098774": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "point",
+      "cornice": "frieze",
+      "cc": 0.6
+    },
+    "0363100012099972": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.8
+    },
+    "0363100012102062": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012103660": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012103795": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "0363100012112384": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012118254": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012118921": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.5
+    },
+    "0363100012119348": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.65
+    },
+    "0363100012119510": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012122240": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012122616": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.6
+    },
+    "0363100012123120": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012125260": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "0363100012126020": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012126278": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.65
+    },
+    "0363100012126339": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.55
+    },
+    "0363100012127426": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012128480": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012129218": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012129233": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012129992": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012130701": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012132255": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012132600": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012138402": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012139620": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012140723": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012142904": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012143064": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012143088": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.55
+    },
+    "0363100012143257": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012145336": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.6
+    },
+    "0363100012147051": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012147847": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012149796": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012151039": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.8
+    },
+    "0363100012152293": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.65
+    },
+    "0363100012152418": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.8
+    },
+    "0363100012152517": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "flat",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012152661": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012152705": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012152709": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "cornice",
+      "cornice": "heavy",
+      "cc": 0.75
+    },
+    "0363100012153010": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "step",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "0363100012153029": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012153164": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012153239": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "point",
+      "cornice": "bracketed",
+      "cc": 0.55
+    },
+    "0363100012153275": {
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012153430": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "0363100012153628": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012153657": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012153701": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012154116": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "heavy",
+      "cc": 0.8
+    },
+    "0363100012154285": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "0363100012154369": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "heavy",
+      "cc": 0.7
+    },
+    "0363100012154385": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012155382": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "0363100012155451": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012155666": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.65
+    },
+    "0363100012155719": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012156007": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012156264": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012156298": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012156901": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012156988": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.7
+    },
+    "0363100012157004": {
+      "finish": "paint",
+      "family": "white-paint",
+      "confidence": 0.85,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012157054": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012157187": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "mansard",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012157274": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012157313": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.75
+    },
+    "0363100012157395": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "raised-neck",
+      "cornice": "simple",
+      "cc": 0.5
+    },
+    "0363100012157404": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012157536": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012157590": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012157749": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012158097": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012158150": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "0363100012158186": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "0363100012158303": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "point",
+      "cornice": "none",
+      "cc": 0.8
+    },
+    "0363100012158443": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.75,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012158497": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.75
+    },
+    "0363100012158742": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.8
+    },
+    "0363100012158912": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.55
+    },
+    "0363100012159457": {
+      "finish": "brick",
+      "family": "buff-brick",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.7
+    },
+    "0363100012159576": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "0363100012160351": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.75
+    },
+    "0363100012160415": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.55
+    },
+    "0363100012160456": {
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "confidence": 0.75,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "0363100012160514": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012160567": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "0363100012160598": {
+      "finish": "paint",
+      "family": "dark-paint",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.8
+    },
+    "0363100012160772": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.75
+    },
+    "0363100012160981": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012161035": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012161128": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.6,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012161143": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "flat",
+      "cornice": "frieze",
+      "cc": 0.55
+    },
+    "0363100012161369": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.6
+    },
+    "0363100012161400": {
+      "finish": "brick",
+      "family": "buff-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "heavy",
+      "cc": 0.55
+    },
+    "0363100012161568": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.8
+    },
+    "0363100012161762": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "flat",
+      "cornice": "frieze",
+      "cc": 0.55
+    },
+    "0363100012161866": {
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "0363100012161924": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "0363100012162236": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.8
+    },
+    "0363100012162280": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012162435": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012162674": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.75,
+      "crown": "step",
+      "cornice": "none",
+      "cc": 0.8
+    },
+    "0363100012162684": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012163027": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.8
+    },
+    "0363100012164129": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "neck",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012164198": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "0363100012164219": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.8
+    },
+    "0363100012164475": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012164668": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012165198": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.75
+    },
+    "0363100012165211": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.65
+    },
+    "0363100012165239": {
+      "finish": "paint",
+      "family": "dark-paint",
+      "confidence": 0.85,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "0363100012165416": {
+      "finish": "paint",
+      "family": "dark-paint",
+      "confidence": 0.85,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "0363100012165701": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "0363100012165766": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012165932": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012166164": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.55
+    },
+    "0363100012166453": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012166486": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012166587": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "step",
+      "cornice": "none",
+      "cc": 0.8
+    },
+    "0363100012167025": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "crown": "step",
+      "cornice": "none",
+      "cc": 0.6
+    },
+    "0363100012167057": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.6,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012167295": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012233527": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012236122": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.75
+    },
+    "0363100012236235": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "neck",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "0363100012236266": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "step",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "0363100012236381": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "0363100012236416": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.6,
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.6
+    },
+    "0363100012236520": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.65
+    },
+    "0363100012236719": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012236852": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "0363100012236924": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "0363100012237193": {
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "confidence": 0.85,
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.7
+    },
+    "0363100012237249": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "crown": "mansard",
+      "cornice": "simple",
+      "cc": 0.75
+    }
+  },
+  "photoWalls": {
+    "agatha-dekenstraat-084210": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012125260",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "agatha-dekenstraat-118412": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "pandId": "0363100012126339",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.55
+    },
+    "agatha-dekenstraat-163536": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012152661",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "agatha-dekenstraat-163978": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012159576",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "allard-piersonstraat-076000": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012163027",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.8
+    },
+    "allard-piersonstraat-085290": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012122240",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "allard-piersonstraat-162870": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012165198",
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.75
+    },
+    "bellamyplein-158103": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "pandId": "0363100012165766",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "bellamystraat-081532": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012075066",
+      "crown": "point",
+      "cornice": "bracketed",
+      "cc": 0.7
+    },
+    "bellamystraat-093654": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012092172",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "bellamystraat-108097": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012081452",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "bellamystraat-156322": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012158097",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "bellamystraat-156662": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012155719",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "bellamystraat-159378": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012158150",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "bellamystraat-163531": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012164198",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "bellamystraat-236899": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012156988",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.7
+    },
+    "bilderdijkkade-063298": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012102062",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "bilderdijkkade-113152": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012112384",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "bilderdijkkade-115483": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012093309",
+      "crown": "neck",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "bilderdijkkade-123007": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "pandId": "0363100012077880",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.7
+    },
+    "bilderdijkkade-131653": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "pandId": "0363100012129218",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "bilderdijkkade-132232": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012084449",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.7
+    },
+    "bilderdijkkade-152671": {
+      "finish": "paint",
+      "family": "dark-paint",
+      "confidence": 0.65,
+      "pandId": "0363100012160598",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.8
+    },
+    "bilderdijkkade-153432": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012154116",
+      "crown": "cornice",
+      "cornice": "heavy",
+      "cc": 0.8
+    },
+    "bilderdijkkade-154315": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012162684",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "bilderdijkkade-159726": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012158186",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "bilderdijkkade-164565": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012098774",
+      "crown": "point",
+      "cornice": "frieze",
+      "cc": 0.6
+    },
+    "bilderdijkkade-237082": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012068330",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "bilderdijkstraat-152485": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012161369",
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.6
+    },
+    "bilderdijkstraat-158387": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "pandId": "0363100012161568",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.8
+    },
+    "bilderdijkstraat-163541": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012160981",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "bilderdijkstraat-165507": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012160772",
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.75
+    },
+    "bilderdijkstraat-235998": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012160514",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "borgerstraat-063474": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012139620",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "borgerstraat-087400": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012142904",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "borgerstraat-095460": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "pandId": "0363100012236852",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "borgerstraat-120060": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "pandId": "0363100012083703",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "borgerstraat-233558": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012132255",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "da-costakade-102399": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012236235",
+      "crown": "neck",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "da-costakade-152724": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012167295",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "da-costakade-156054": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012152517",
+      "crown": "flat",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "da-costakade-156116": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012236381",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "da-costakade-156171": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012158443",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "da-costakade-159032": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012160415",
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.55
+    },
+    "da-costakade-159112": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012153010",
+      "crown": "step",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "da-costakade-159131": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012164129",
+      "crown": "neck",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "da-costakade-159407": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012162280",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "da-costakade-161388": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012155382",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "da-costakade-162897": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012152709",
+      "crown": "cornice",
+      "cornice": "heavy",
+      "cc": 0.75
+    },
+    "da-costakade-164290": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012165211",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.65
+    },
+    "da-costakade-164571": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012153164",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "da-costakade-165792": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012161143",
+      "crown": "flat",
+      "cornice": "frieze",
+      "cc": 0.55
+    },
+    "da-costakade-236457": {
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012160456",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "da-costakade-237141": {
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012161866",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "da-costaplein-087403": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012127426",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "da-costaplein-109707": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012128480",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "da-costaplein-158339": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "pandId": "0363100012158742",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.8
+    },
+    "da-costastraat-104946": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012157749",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "da-costastraat-154426": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012075947",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.8
+    },
+    "da-costastraat-156458": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "pandId": "0363100012166486",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "da-costastraat-156482": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012103660",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "da-costastraat-156934": {
+      "finish": "paint",
+      "family": "white-paint",
+      "confidence": 0.85,
+      "pandId": "0363100012157004",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "da-costastraat-157393": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012166587",
+      "crown": "step",
+      "cornice": "none",
+      "cc": 0.8
+    },
+    "da-costastraat-160622": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012158497",
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.75
+    },
+    "da-costastraat-161068": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012161128",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "da-costastraat-161724": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012153628",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "da-costastraat-162614": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012162435",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "da-costastraat-163403": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012164475",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "da-costastraat-165591": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012154385",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "da-costastraat-165783": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "pandId": "0363100012157590",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "da-costastraat-166000": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012155666",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.65
+    },
+    "da-costastraat-167024": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012167025",
+      "crown": "step",
+      "cornice": "none",
+      "cc": 0.6
+    },
+    "da-costastraat-236335": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012236416",
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.6
+    },
+    "da-costastraat-236993": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012129233",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "de-clercqstraat-066507": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012080836",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "de-clercqstraat-074050": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012118921",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.5
+    },
+    "de-clercqstraat-079850": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012088573",
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.6
+    },
+    "de-clercqstraat-081422": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "pandId": "0363100012068912",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "de-clercqstraat-096164": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012129992",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "de-clercqstraat-147482": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012237249",
+      "crown": "mansard",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "de-clercqstraat-148915": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012138402",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "de-clercqstraat-156157": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012162674",
+      "crown": "step",
+      "cornice": "none",
+      "cc": 0.8
+    },
+    "de-clercqstraat-162190": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012164219",
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.8
+    },
+    "de-clercqstraat-236003": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012236266",
+      "crown": "step",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "douwes-dekkerstraat-071805": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012140723",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "elisabeth-wolffstraat-085453": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012122616",
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.6
+    },
+    "elisabeth-wolffstraat-125476": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012126278",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.65
+    },
+    "elisabeth-wolffstraat-137148": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "pandId": "0363100012091225",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.55
+    },
+    "elisabeth-wolffstraat-167185": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "pandId": "0363100012157274",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "elisabeth-wolffstraat-233518": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012151039",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.8
+    },
+    "hasebroekstraat-072336": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012082619",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "hasebroekstraat-080765": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012088526",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "hasebroekstraat-082699": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012157395",
+      "crown": "raised-neck",
+      "cornice": "simple",
+      "cc": 0.5
+    },
+    "hasebroekstraat-095335": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012149796",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "hasebroekstraat-113490": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012145336",
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.6
+    },
+    "hasebroekstraat-121332": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012147051",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "hasebroekstraat-130403": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012119510",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "hasebroekstraat-136251": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012143064",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "hasebroekstraat-158839": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012155451",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "hasebroekstraat-161640": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012157313",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.75
+    },
+    "hasebroekstraat-162138": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012156007",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "hasebroekstraat-163274": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012161035",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "hugo-de-grootkade-163177": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012153239",
+      "crown": "point",
+      "cornice": "bracketed",
+      "cc": 0.55
+    },
+    "jacob-van-lennepkade-108048": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "pandId": "0363100012153701",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "jacob-van-lennepkade-156575": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012152293",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.65
+    },
+    "jacob-van-lennepkade-159399": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012152705",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "jacob-van-lennepkade-159757": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012158912",
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.55
+    },
+    "jacob-van-lennepkade-235981": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012156264",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "jacob-van-lennepstraat-074770": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012126020",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "jacob-van-lennepstraat-083040": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012161924",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "jacob-van-lennepstraat-086248": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "pandId": "0363100012236719",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "jacob-van-lennepstraat-086543": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012123120",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "jacob-van-lennepstraat-087829": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "pandId": "0363100012130701",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "jacob-van-lennepstraat-118512": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012236520",
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.65
+    },
+    "jacob-van-lennepstraat-160137": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012165701",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "jacob-van-lennepstraat-161744": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012157404",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "jacob-van-lennepstraat-163045": {
+      "finish": "paint",
+      "family": "dark-paint",
+      "confidence": 0.85,
+      "pandId": "0363100012165416",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "jacob-van-lennepstraat-163422": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "pandId": "0363100012153657",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "jacob-van-lennepstraat-233509": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "pandId": "0363100012165932",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "jacob-van-lennepstraat-237268": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.55,
+      "pandId": "0363100012162236",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.8
+    },
+    "jan-hanzenstraat-187969": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012153430",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.85
+    },
+    "jan-pieter-heijestraat-127322": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012147847",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "korte-blekersstraat-089262": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012236924",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "kwakersplein-237059": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012118254",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "kwakersstraat-157933": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012160567",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "kwakersstraat-161899": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012166164",
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.55
+    },
+    "lootsstraat-085136": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012119348",
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.65
+    },
+    "lootsstraat-160063": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012132600",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.8
+    },
+    "lootsstraat-236721": {
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "confidence": 0.85,
+      "pandId": "0363100012237193",
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.7
+    },
+    "nassaukade-152484": {
+      "finish": "brick",
+      "family": "buff-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012161400",
+      "crown": "cornice",
+      "cornice": "heavy",
+      "cc": 0.55
+    },
+    "nassaukade-157055": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012157054",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "nassaukade-158533": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012161762",
+      "crown": "flat",
+      "cornice": "frieze",
+      "cc": 0.55
+    },
+    "nassaukade-159538": {
+      "finish": "unclear",
+      "family": "unclear",
+      "confidence": 0.5,
+      "pandId": "0363100012156901",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
+    },
+    "nassaukade-164340": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012157536",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "nassaukade-166266": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012069666",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.65
+    },
+    "nassaukade-236016": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012236122",
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.75
+    },
+    "nassaukade-236458": {
+      "finish": "paint",
+      "family": "dark-paint",
+      "confidence": 0.85,
+      "pandId": "0363100012165239",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "nicolaas-beetsstraat-153206": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012153029",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "potgieterstraat-132160": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012143088",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.55
+    },
+    "potgieterstraat-153048": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012154369",
+      "crown": "cornice",
+      "cornice": "heavy",
+      "cc": 0.7
+    },
+    "potgieterstraat-158179": {
+      "finish": "brick",
+      "family": "buff-brick",
+      "confidence": 0.5,
+      "pandId": "0363100012159457",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.7
+    },
+    "potgieterstraat-164754": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012166453",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "schimmelstraat-164752": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012099972",
+      "crown": "flat",
+      "cornice": "none",
+      "cc": 0.8
+    },
+    "ten-katestraat-071572": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012233527",
+      "crown": "point",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "ten-katestraat-156336": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012154285",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
+    },
+    "ten-katestraat-162871": {
+      "finish": "brick",
+      "family": "dark-grey-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012153275",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "ter-haarstraat-159766": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012158303",
+      "crown": "point",
+      "cornice": "none",
+      "cc": 0.8
+    },
+    "tollensstraat-237340": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012156298",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "tweede-kostverlorenkade-063322": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012066717",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.6
+    },
+    "tweede-kostverlorenkade-073389": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012143257",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "tweede-kostverlorenkade-090601": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012064672",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "tweede-kostverlorenkade-095723": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.6,
+      "pandId": "0363100012080404",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.6
+    },
+    "tweede-kostverlorenkade-108609": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012089600",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "tweede-kostverlorenkade-132074": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012094030",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "tweede-kostverlorenkade-132754": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012103795",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "tweede-kostverlorenkade-141364": {
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012094592",
+      "crown": "shouldered",
+      "cornice": "simple",
+      "cc": 0.55
+    },
+    "van-alphenstraat-160333": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012152418",
+      "crown": "cornice",
+      "cornice": "bracketed",
+      "cc": 0.8
+    },
+    "van-alphenstraat-167065": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012164668",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
+    },
+    "van-effenstraat-131145": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012069039",
+      "crown": "point",
+      "cornice": "bracketed",
+      "cc": 0.6
+    },
+    "van-effenstraat-146250": {
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.65,
+      "pandId": "0363100012064327",
+      "crown": "point",
+      "cornice": "bracketed",
+      "cc": 0.65
+    }
+  },
+  "photoWallSource": "opus colour-family and crown reads (scripts/centrum-looks/photo-reader-prompt-v2.md over v1, photo-reads.ts assemble2) of one rectified panorama cut per row (scripts/buurt-generators/row-cuts.ts; data.amsterdam.nl panoramas, CC BY 4.0)"
+}
