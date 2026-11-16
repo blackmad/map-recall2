@@ -334,7 +334,7 @@ test('round 3c cost: panes are one interior quad of the shop cell; every templat
     const tris = retailFrontTris({ template: t, seed: 'x', word: 'VERHAGEN', letters: 99, interior: { layer: 7, rect } }, e, 0.3, 6.3, 0, 3.6);
     const props = ['bike', 'greengrocer', 'florist', 'hairdresser', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t);
     // Round t: a rack is a postcard stand (uprights, a bar, 18 cards), default since its blind: racks fronts within 220.
-    const racks = TEMPLATE_LOOKS[t].pavement === 'racks';
+    const racks = ['racks', 'promo'].includes(TEMPLATE_LOOKS[t].pavement ?? '');
     if (racks) assert.ok(tris.length <= 220, `${t}: ${tris.length} tris`);
     else if (!props) assert.ok(tris.length <= 140, `${t}: ${tris.length} tris`);
     // Lane shop-goods: two stepped stands of zinc buckets (3D blooms) and potted plants behind the glass: within 420.
@@ -548,4 +548,17 @@ test('round 5 (retail-real) PARTY (off by default): a node in a house on the par
   assert.equal(hostOnFront([house, shop], 5 - PARTY.nodeM - 0.5, 2, uses, street, () => true, true, true)?.id, 'house');
   // A house with shop space of its own keeps the node.
   assert.equal(hostOnFront([house, shop], 4.4, 2, id => ({ vbos: 1, area: { winkelfunctie: id === 'shop' ? 60 : 30 } }), street, () => true, true)?.id, 'house');
+});
+
+test('Kruidvat draws promotional stands (red body, product boxes, header), not the postcard stand; within 220 tris', () => {
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 }, rect = [0.08, 0.155, 0.92, 0.56] as const;
+  assert.equal(TEMPLATE_LOOKS.kruidvat.pavement, 'promo');
+  assert.ok(RETAIL_TEMPLATES.filter(t => TEMPLATE_LOOKS[t].pavement === 'racks').every(t => t !== 'kruidvat'));
+  const draw = (t: typeof RETAIL_TEMPLATES[number]) => retailFrontTris({ template: t, seed: 'x', word: 'KRUIDVAT', letters: 99, interior: { layer: 7, rect } }, e, 0.3, 6.3, 0, 3.6);
+  const tris = draw('kruidvat');
+  assert.ok(tris.length <= 220, `${tris.length} tris`);
+  const red = (TEMPLATE_LOOKS.kruidvat.rack ?? '').toLowerCase();
+  assert.ok(tris.some(t => t.hex.toLowerCase() === red), 'a stand in the rack colour');
+  // The postcard stand's dark uprights (#3a3a3a) are not drawn.
+  assert.ok(!tris.some(t => /^#3a3a3a$/i.test(t.hex)));
 });
