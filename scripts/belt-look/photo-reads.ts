@@ -8,6 +8,8 @@
  *       stands (77 of 87 on the labelled cuts, leave-one-out); every other cut goes to the vision reader (ask.txt: "<id> <jpg>").
  *   node --import tsx scripts/belt-look/photo-reads.ts assemble <vote.json> <cuts.json...> --vision <reads.txt...> --out <photo-reads.json>
  *       one record per pand: {finish, confidence, reader, w1} for scripts/belt-look/generate.ts (photoFinish).
+ *   node --import tsx scripts/belt-look/photo-reads.ts crowns <photo-reads.json> <reads.txt...> [--out <file>]
+ *       round 10: merge the crown reader's opus lines (crown, cornice, full storeys, souterrain, two confidences; photoCrown).
  *
  * Calibration (60 labelled belt cuts, 20 per finish): opus 56/60 with stucco 20/20 and no false stucco; haiku 25/60, so
  * the vision reader is opus. The Node vote alone is 74 % (stucco recall 19/83), so it only settles plain brick.
@@ -98,6 +100,20 @@ async function main(argv: string[]) {
     fs.mkdirSync(path.dirname(opt(rest, 'out')!), { recursive: true });
     fs.writeFileSync(opt(rest, 'out')!, JSON.stringify({ at: new Date().toISOString().slice(0, 10), ref: 'lane D round 9: photo finish reader (scripts/belt-look/photo-reads.ts)', reads }, null, 1));
     console.log(`assemble: ${Object.keys(reads).length} pands; stucco ${n('stucco')}, paint ${n('paint')}, brick ${n('brick')}, unclear ${n('unclear')}`);
-  } else { console.log('photo-reads.ts features|vote|assemble ...'); process.exit(2); }
+  } else if (mode === 'crowns') {
+    // Round 10: merge the crown reader's lines ("<id> <crown> <cornice> <full|nv> <y|n|nv> <cc> <sc>") into photo-reads.json.
+    const [file, ...vis] = rest.filter((a, i) => !a.startsWith('--') && rest[i - 1] !== '--out'), out = opt(rest, 'out') ?? file, doc = JSON.parse(fs.readFileSync(file, 'utf8'));
+    let n = 0;
+    for (const f of vis) for (const l of fs.readFileSync(f, 'utf8').split('\n')) {
+      const m = l.trim().match(/^(\d{16})\s+([a-z-]+)\s+([a-z-]+)\s+(\d+|nv)\s+(y|n|nv)\s+([\d.]+)\s+([\d.]+)$/);
+      if (!m) continue;
+      doc.reads[m[1]] = { ...(doc.reads[m[1]] ?? {}), crown: m[2], cornice: m[3], full: m[4] === 'nv' ? null : +m[4], souterrain: m[5] === 'nv' ? null : m[5] === 'y', cc: +m[6], sc: +m[7], crownReader: 'opus (cut, round 10)' };
+      n++;
+    }
+    doc.crownRef = 'lane D round 10: photo crown reader (crown, cornice, full storeys; describer prompt v4.3 rules)';
+    fs.writeFileSync(out, JSON.stringify(doc, null, 1));
+    const c: Record<string, number> = {}; for (const r of Object.values<any>(doc.reads)) if (r.crown) c[r.crown] = (c[r.crown] ?? 0) + 1;
+    console.log(`crowns: ${n} lines merged`, c);
+  } else { console.log('photo-reads.ts features|vote|assemble|crowns ...'); process.exit(2); }
 }
 if (process.argv[1]?.endsWith('belt-look/photo-reads.ts')) await main(process.argv.slice(2));

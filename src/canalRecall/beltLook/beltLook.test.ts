@@ -354,3 +354,38 @@ test('round 9: a row pitched roof storey runs one ridge along the row (Marnixstr
   // The dormer stands on the street slope.
   assert.ok(mid.some(t => t.part === 'dormerFace'));
 });
+
+test('round 10: the photo crown reader states a confident gable, a tall cornice and a plausible storey count', async () => {
+  const { photoCrown, plausiblePhotoStoreys, tallCorniceTop } = await import('./generate.ts');
+  // Singel 168333 / Amstel 165494 (necks drawn flat in round 9): a confident neck read states the crown; a low one does not.
+  assert.equal(photoCrown({ crown: 'neck', cornice: 'none', full: 4, souterrain: false, cc: 0.85, sc: 0.8 }).crown, 'neck');
+  assert.equal(photoCrown({ crown: 'neck', cornice: 'none', full: 4, souterrain: false, cc: 0.6, sc: 0.8 }).crown, undefined);
+  // A cornice read never states a crown (unstated is already a cornice); a bracketed one is a tall cornice.
+  assert.deepEqual(photoCrown({ crown: 'cornice', cornice: 'bracketed', full: 5, souterrain: false, cc: 0.8, sc: 0.5 }), { tallCornice: 'bracketed' });
+  assert.deepEqual(photoCrown({ crown: 'cornice', cornice: 'attic-frieze', full: 4, souterrain: true, cc: 0.75, sc: 0.6 }), { tallCornice: 'attic-frieze' });
+  // A plain cornice states nothing: the flat-cornice fronts keep the p90.
+  assert.deepEqual(photoCrown({ crown: 'cornice', cornice: 'simple', full: 4, souterrain: false, cc: 0.9, sc: 0.5 }), {});
+  // Prinsengracht 173559: three storeys over a souterrain under a neck whose foot is 9.1 m is a plausible pitch (2.53 m).
+  assert.equal(plausiblePhotoStoreys(3, true, 9.1), 3);
+  assert.equal(plausiblePhotoStoreys(6, false, 9.1), undefined);
+  assert.equal(plausiblePhotoStoreys(1, false, 9.1), undefined);
+  // Keizersgracht 172210 (photo read: attic frieze, cc 0.75): a tall cornice stands at the band's top (19.19 m), not its p90 (18.01 m).
+  const pand = { eavesM: 14.7, heightM: 18.13, ridgeM: null };
+  assert.equal(tallCorniceTop({ n: 49, p50: 13.47, p90: 18.01, max: 19.19 }, pand), 19.19);
+  // A max far over the p90 (a chimney, the roof behind) is not the cornice.
+  assert.equal(tallCorniceTop({ n: 49, p50: 13.47, p90: 16, max: 18.6 }, pand), null);
+});
+
+test('round 10 pins on the staged belt (data/buurt-generators/belt/row-front.json)', async () => {
+  const fs = await import('node:fs');
+  const recs = new Map<string, { crown?: { family?: string }; storeys?: number; topM?: number; eavesM?: number; series?: { cornice?: string } }>(
+    JSON.parse(fs.readFileSync('data/buurt-generators/belt/row-front.json', 'utf8')).records.map((r: { pandId: string }) => [r.pandId, r]));
+  const rec = (id: string) => recs.get(`0363100012${id}`)!;
+  // Necks the round-9 judges saw drawn flat: Singel 168333 house 1, Amstel 165494 (row 182625 house 2), Prinsengracht 173557.
+  for (const id of ['168333', '165494', '173557']) assert.equal(rec(id).crown?.family, 'neck', id);
+  // Prinsengracht 173559: three storeys under its neck (two in round 9).
+  assert.equal(rec('173559').storeys, 3);
+  // Keizersgracht 172210: its attic-frieze cornice at the AHN band's top, 19.19 m (18.01 m in round 9).
+  assert.equal(rec('172210').eavesM, 19.19);
+  assert.equal(rec('172210').series?.cornice, 'attic-frieze');
+});

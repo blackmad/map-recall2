@@ -15,7 +15,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { districtPands, namedStreets, describedPands } from '../buurt-generators/generate.ts';
 import type { DistrictLibrary } from '../../src/canalRecall/buurtGenerator/generate.ts';
-import { generateBelt, photoFinish, registerRoofStorey, specPhotoDisagree, type BeltPhoto, type BeltRead, type BeltStated } from '../../src/canalRecall/beltLook/generate.ts';
+import { generateBelt, photoCrown, photoFinish, registerRoofStorey, specPhotoDisagree, type BeltPhoto, type BeltRead, type BeltStated } from '../../src/canalRecall/beltLook/generate.ts';
 import type { AhnFront } from '../../src/canalRecall/beltLook/ahnFront.ts';
 import { usableDonor, segmentOf, type BeltDonor } from '../../src/canalRecall/beltLook/donors.ts';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.ts';
@@ -114,11 +114,16 @@ async function main() {
   for (const [pid, ph] of photo) stated.set(pid, { ...(stated.get(pid) ?? {}), photo: ph });
   // The photo finish reader (round 9; scripts/belt-look/photo-reads.ts): the finish where the register is silent, and the
   // wall sample of the cuts fetched for fronts the D1 tranche had none of.
+  let photoCrowns = 0;
   const photoReads = arg('photo-reads') ?? ['artifacts/buurt-generators/belt-photo/photo-reads.json', 'data/buurt-generators/belt/photo-reads.json'].find(f => fs.existsSync(f)) ?? '';
   if (photoReads && fs.existsSync(photoReads)) for (const [pid, r] of Object.entries<any>(JSON.parse(fs.readFileSync(photoReads, 'utf8')).reads ?? {})) {
     const cur = stated.get(pid) ?? {}, fin = cur.finish ? undefined : photoFinish(r.finish ? r : undefined);
     const ph = !cur.photo && r.w1?.hex && typeof r.w1.n === 'number' ? { hex: r.w1.hex, L: r.w1.L, C: r.w1.C, h: r.w1.h, n: r.w1.n } : undefined;
-    if (fin || ph) stated.set(pid, { ...cur, ...(fin ? { finish: fin } : {}), ...(ph ? { photo: ph } : {}) });
+    // The photo crown reader (round 10): a gabled crown where the register states none, a tall cornice, the storey count.
+    const pc = photoCrown(typeof r.cc === 'number' ? r : undefined), crown = !cur.crown && pc.crown ? pc.crown : undefined;
+    if (crown) photoCrowns++;
+    if (fin || ph || crown || pc.tallCornice || pc.storeys) stated.set(pid, { ...cur, ...(fin ? { finish: fin } : {}), ...(ph ? { photo: ph } : {}), ...(crown ? { crown } : {}),
+      ...(pc.tallCornice ? { tallCornice: pc.tallCornice } : {}), ...(pc.storeys ? { photoStoreys: pc.storeys } : {}), ...(pc.souterrain !== undefined ? { photoSouterrain: pc.souterrain } : {}) });
   }
   // Measured AHN street fronts (scripts/belt-look/ahn-fronts.ts, staged); --no-ahn draws from 3DBAG alone.
   const ahnFile = arg('ahn') ?? ['artifacts/buurt-generators/belt-ahn/fronts.json', 'data/buurt-generators/belt/ahn-fronts.json'].find(f => fs.existsSync(f)) ?? '';
@@ -146,7 +151,7 @@ async function main() {
   const specColourFlags = Object.keys(res.provenance).map(id => ({ id, f: specPhotoDisagree(stated.get(id)) })).filter(x => x.f).map(x => ({ pandId: x.id, ...x.f! }));
   fs.writeFileSync(path.join(out, 'spec-colour-flags.json'), JSON.stringify(specColourFlags, null, 1));
   const report = { at, specColourFlags: specColourFlags.length, buurten: BELT_BUURTEN, ahnFronts: ahn.size, overSpecs, specOnlyRedrawn: Object.keys(res.provenance).filter(id => specOnly.has(id)).length, pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length, laneDRowPands: [...rowsD].filter(id => pands.some(p => p.id.endsWith(id))).length,
-    drawn: drawn.length, ownRead: own, donorRead: drawn.length - own, rows: res.rows.length, records: records.length, donors: donors.length, skipped: bySkip, bySegment: bySeg, crowns, findings, statedCrown: Object.keys(res.provenance).filter(id => stated.get(id)?.crown).length, ms: Date.now() - t0 };
+    drawn: drawn.length, ownRead: own, donorRead: drawn.length - own, rows: res.rows.length, records: records.length, donors: donors.length, skipped: bySkip, bySegment: bySeg, crowns, findings, photoCrowns, statedCrown: Object.keys(res.provenance).filter(id => stated.get(id)?.crown).length, ms: Date.now() - t0 };
   fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify({ ...report, skippedList: res.skipped }, null, 1));
   console.log(JSON.stringify(report, null, 1));
 }

@@ -16,7 +16,7 @@ import type { DescriberAnswer } from '../houseSpec/describer.ts';
 import { solveRow, type MemberInput, type RowInput } from '../houseSpec/row/solve.ts';
 import type { RowDesign, RowField, RowRecord } from '../houseSpec/row/types.ts';
 import { districtRows, type GenPand, type GenRow, type GenStreet } from '../buurtGenerator/rows.ts';
-import { BELT_LOOK, donorDistance, donorFor, fittedRead, frontTopM, gableable, GABLED_CROWNS, mansardAsDormers, stripRoofStorey, type BeltDonor, type BeltTarget, type LookDistrict } from './donors.ts';
+import { BELT_LOOK, donorDistance, donorFor, fittedRead, frontTopM, gableable, GABLED_CROWNS, mansardAsDormers, SOUTERRAIN_SHARE, stripRoofStorey, type BeltDonor, type BeltTarget, type LookDistrict } from './donors.ts';
 import { MANSARD_RISE } from '../houseLine/rowFront.ts';
 import type { RowGable, RowRoofStorey } from '../houseSpec/row/types.ts';
 import { hexToOklab } from '../houseSpec/wallColour.ts';
@@ -30,7 +30,35 @@ export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: strin
 /** What a published source states for a pand (the monument register via house-specs): its crown and facade year. */
 export interface BeltStated { crown?: string; year?: number; shop?: boolean; finish?: BeltTarget['finish']; storeys?: number; stoop?: boolean; roofStorey?: boolean; warehouse?: boolean; elements?: string[]; /** A published house spec states a mansard (not the register's dakkapel). */ mansard?: boolean;
   /** A published house spec's measured wall colour (palette.brick). */ specHex?: string;
-  /** The pand's cut wall sample (lane W1 on the pinned capture), from any cut, readable or not. */ photo?: BeltPhoto }
+  /** The pand's cut wall sample (lane W1 on the pinned capture), from any cut, readable or not. */ photo?: BeltPhoto;
+  /** The photo crown reader's (round 10): a tall cornice (bracketed or heavy) read on the cut, and its full storeys. */
+  tallCornice?: string; photoStoreys?: number; photoSouterrain?: boolean }
+/**
+ * The photo crown reader (round 10: Singel 168333, Amstel 165494 and Prinsengracht 173558-173557, neck gables drawn as
+ * flat cornices; Prinsengracht 173559 two storeys under its neck): opus on the same leaf-off cut as the finish read, the
+ * describer's crown, cornice and storey-count rules (prompt v4.3). Each part is used only at PHOTO_CROWN_MIN: a gabled crown
+ * states the crown where the register is silent; a tall cornice (bracketed, heavy, attic frieze) stands at the band's top (tallCorniceTop);
+ * the storey count, where the register is silent, when it gives the wall a plausible pitch (PHOTO_STOREY_PITCH_M).
+ */
+export interface PhotoCrown { crown: string; cornice: string; full: number | null; souterrain: boolean | null; cc: number; sc: number }
+export const PHOTO_CROWN_MIN = 0.7;
+/** A tall cornice: on brackets, deep, or over an attic frieze (calibration: 5 of 6 confident photo reads agree with D1). */
+export const TALL_CORNICES: ReadonlySet<string> = new Set(['bracketed', 'heavy', 'attic-frieze']);
+export function photoCrown(p: PhotoCrown | undefined): { crown?: string; tallCornice?: string; storeys?: number; souterrain?: boolean } {
+  if (!p) return {};
+  const out: { crown?: string; tallCornice?: string; storeys?: number; souterrain?: boolean } = {};
+  if (p.cc >= PHOTO_CROWN_MIN && GABLED_CROWNS.has(p.crown)) out.crown = p.crown;
+  if (p.cc >= PHOTO_CROWN_MIN && (p.crown === 'cornice' || p.crown === 'mansard') && TALL_CORNICES.has(p.cornice)) out.tallCornice = p.cornice;
+  if (p.sc >= PHOTO_CROWN_MIN && Number.isInteger(p.full) && (p.full as number) >= 1) { out.storeys = p.full as number; if (p.souterrain !== null) out.souterrain = p.souterrain; }
+  return out;
+}
+/** The storey pitch (m) a photo storey count must give the wall (its souterrain a SOUTERRAIN_SHARE cell) to be used. */
+export const PHOTO_STOREY_PITCH_M = { min: 2.4, max: 5 } as const;
+export function plausiblePhotoStoreys(n: number | undefined, souterrain: boolean | undefined, wallM: number | null): number | undefined {
+  if (!n || wallM === null) return undefined;
+  const pitch = wallM / (n + (souterrain ? SOUTERRAIN_SHARE.souterrain : 0));
+  return pitch >= PHOTO_STOREY_PITCH_M.min && pitch <= PHOTO_STOREY_PITCH_M.max ? n : undefined;
+}
 /**
  * The register states a roof storey only with a dakkapel (dormer). An attiek is a raised parapet over the cornice, not a roof
  * storey (round 9: Keizersgracht 177468, register stoep + attiek, drew a hipped roof with dormers over a flat white cornice).
@@ -134,6 +162,18 @@ export function ahnCorniceTop(a: AhnFront | undefined, pand: { eavesM: number | 
   const lo = Math.min(pand.eavesM ?? Infinity, pand.heightM ?? Infinity) - AHN_BOUNDS.underEavesM, hi = Math.max(pand.ridgeM ?? -Infinity, pand.heightM ?? -Infinity) + AHN_BOUNDS.overRidgeM;
   return Number.isFinite(lo) && Number.isFinite(hi) && a.p90 >= lo && a.p90 <= hi && a.p90 >= 3 ? a.p90 : null;
 }
+/**
+ * A tall cornice's top from AHN (TALL_CORNICES): the band's max (round 10: Keizersgracht 172210, an attic frieze under a
+ * consoled cornice whose top AHN measures at 19.19 m, drawn at the band's p90 18.01 m). The cornice projects over the street in a strip a metre
+ * deep, too few band cells to reach the p90; a max more than TALL_CORNICE_MAX_OVER_P90_M over the p90 is a chimney or a
+ * roof behind, not the cornice. A plain or frieze cornice keeps the p90.
+ */
+export const TALL_CORNICE_MAX_OVER_P90_M = 1.5;
+export function tallCorniceTop(a: AhnFront | undefined, pand: { eavesM: number | null; heightM?: number | null; ridgeM: number | null }): number | null {
+  // The p90 within the pand's roof (ahnCorniceTop); the max may stand over 3DBAG's height, which is a roof percentile and
+  // under a flat roof's projecting cornice (172210: height 18.13 m, no ridge).
+  return !a || ahnCorniceTop(a, pand) === null || a.max - a.p90 > TALL_CORNICE_MAX_OVER_P90_M ? null : a.max;
+}
 /** A gabled front's apex from AHN (the band's max), capped by the 3DBAG ridge and at least the minimum rise over the foot. */
 export function ahnGableApex(a: AhnFront | undefined, foot: number | null, ridge: number | null): number | null {
   if (!a || foot === null) return ridge;
@@ -150,6 +190,8 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     // The front's top (frontTopM: 3DBAG's eaves is often a rear eave under the street cornice).
     const pid = pandNumber(m.pand.id), eaves = frontTopM(m.pand.eavesM, m.pand.heightM, m.pand.ridgeM), ridge0 = m.pand.ridgeM;
     const af = ahn.get(pid), sloped = look.slopedBand ? slopedBandTop(m.pand, af) : null, ahnTop = sloped ?? ahnCorniceTop(af, m.pand);
+    // A tall cornice (its own read's, or the photo crown reader's) stands at the band's top (tallCorniceTop).
+    const tallTop = sloped ?? tallCorniceTop(af, m.pand) ?? ahnTop;
     // roofSignals.ts: a gable never stands on a measured flat top (a register gable there describes a front that is gone).
     const flatTop = !!look.flatTopNoGable && measuredFlatTop(m.pand, af);
     const sd0 = stated.get(pid), sd: BeltStated | undefined = flatTop && sd0?.crown && GABLED_CROWNS.has(sd0.crown) ? { ...sd0, crown: undefined } : sd0;
@@ -166,8 +208,13 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       if (!d) return null;
       // A cornice front stands at 3DBAG's representative height (its storeys fitted to it); a gable's foot stays at the
       // front top, the gable rising to the ridge.
-      const corniceTop = !GABLED_CROWNS.has(String(t.statedCrown ?? d.donor.answer.crown)) && eaves !== null ? (ahnTop ?? (t.heightM != null ? corniceLine({ crown: 'cornice' }, t, eaves, m.pand.eavesM) : null)) : null;
-      read = fittedRead(corniceTop !== null ? { ...t, eavesM: corniceTop } : t, d.donor, look);
+      const dGabled = GABLED_CROWNS.has(String(t.statedCrown ?? d.donor.answer.crown));
+      const corniceTop = !dGabled && eaves !== null ? ((sd?.tallCornice ? tallTop : ahnTop) ?? (t.heightM != null ? corniceLine({ crown: 'cornice' }, t, eaves, m.pand.eavesM) : null)) : null;
+      // The photo's storey count where the register is silent, when it gives the wall (a gable's foot, else the cornice
+      // top) a plausible pitch.
+      const ps = t.storeys ? undefined : plausiblePhotoStoreys(sd?.photoStoreys, sd?.photoSouterrain, dGabled ? eaves : corniceTop);
+      read = fittedRead({ ...t, ...(corniceTop !== null ? { eavesM: corniceTop } : {}), ...(ps ? { storeys: ps } : {}) }, d.donor, look);
+      if (sd?.tallCornice && !GABLED_CROWNS.has(String(read.crown))) (read as { cornice?: string }).cornice = sd.tallCornice;
       if (t.roofStorey || (look.measuredRoofStorey && !GABLED_CROWNS.has(String(read.crown)) && roofStoreyOverCornice(m.pand, corniceTop))) read = statedDormer(read);
       readRef = `${BELT_LOOK_REF}: donor ${d.donor.pandId}`;
       // A stated plaster or stone front is judged pale from its finish, not the donor's brick sample.
@@ -182,7 +229,8 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       prov[pid] = { donor: d.donor.pandId, distance: d.distance, rank: d.rank, of: d.of };
     }
     const gabled = GABLED_CROWNS.has(String(read.crown));
-    const top = !gabled && ahnTop !== null ? ahnTop : corniceLine(read, t, eaves, m.pand.eavesM);
+    const tall = !gabled && TALL_CORNICES.has(String((read as { cornice?: string }).cornice)) && (own ? true : !!sd?.tallCornice);
+    const top = !gabled && (tall ? tallTop : ahnTop) !== null ? (tall ? tallTop : ahnTop) : corniceLine(read, t, eaves, m.pand.eavesM);
     // A gable's apex: the AHN front's top under the 3DBAG ridge (the ridge often belongs to the roof behind the front).
     // The minimum rise counts from 3DBAG's own eaves, not the front top lifted to the height (round 6: Keizersgracht 178869
     // and 178868, AHN front tops 15.05 and 15.5 m, drawn 16.3 m as front top 14.3 + 2).
