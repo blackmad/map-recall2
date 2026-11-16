@@ -1,69 +1,134 @@
 /**
- * A district's brick drawn house by house (centrum-looks round 2, 2026-11-16). The Jordaan round-1 judges called the look's
- * brick "too dark and uniform" (Westerkade 174838, Rozengracht 168914, Marnixstraat 172599, Noordermarkt 167748): its
- * cut samples are underexposed panorama captures read absolutely (judgedColour brickFromSample), so 1,638 fronts drew
- * near-black dark-grey-brick at one tone per series.
+ * A district's walls drawn run by run (centrum-looks round 3, 2026-11-16).
  *
- * Wall colour by judgement (David, 2026-11-14): a plausible brick or paint family from the neighbours, never a street
- * held on colour. A front with no stated colour (brick, not pale, no colour or dark word, no stated finish or spec hex):
- *  1. with its own photo sample and at least `minSamples` samples within `window` fronts in its row: the family from
- *     the sample's lightness against that local median (judgeFront's relative mode: darker steps to purple-brown,
- *     lighter and red to orange-red, much lighter and yellow to buff), never its absolute value;
- *  2. else the previous drawn front's family with probability `keepRun` (builders' runs of one brick), else a weighted
- *     pick from the district's period distribution (`before1860` / `from1860`), a hash of the pand id.
- * Every front then takes its own tone in the family (variedTone by pand id), so a series is not one flat tint.
+ * Round 2 drew a family per house (a weighted pick, 30 % kept from the left neighbour). The blind judges lost the look three
+ * new Jordaan streets on it: Lindengracht 168662 ("colours alternate red, orange, tan and brown where the photo shows one
+ * uniform grey-tan row"), Leidsekade 174376 (orange and tan where red-brown) and Bloemgracht 172858. Builders put up runs of
+ * one brick; a street of one period reads as one wall with small house-to-house differences.
+ *
+ * Wall colour by judgement (David, 2026-11-14): a plausible brick or paint family from the neighbours, never a street held
+ * on colour. A free front (no stated colour: see drawWalls in scripts/centrum-looks/generate.ts) takes its run's family:
+ *  - a run is the row's consecutive free fronts of one period (before / from 1860); a series (one design) keeps one family
+ *    wherever its members stand;
+ *  - the run's family, first that applies:
+ *    1. measured on the run: at least `runSamples` of its fronts carry a cut sample of their own: the family of the run's
+ *       median sample, read absolutely (judgedColour brickFromSample, as the reads' own cuts are);
+ *    2. the street's reads: the street's own D1 reads agree (`streetFamily`, measured by the caller: at least 3 reads and
+ *       a majority of one family), paint included when the street's readers saw paint;
+ *    3. the district's measured period weights (`before1860` / `from1860`, measuredWeights below), a hash of the run's
+ *       first pand. These hold brick only: paint is drawn where it is read, stated or measured, never by lot.
+ *  - each front then takes its own tone in the family (variedTone by pand id: L within about ±0.025), so a run is one wall
+ *    with small differences, not one flat tint.
+ * A front whose own read saw unpainted brick (`brickOnly`) never takes a paint family: it takes the run's brick pick.
  *
  * Pure: no fs.
  */
-import { JUDGED_PALETTE, judgeFront, lchOf, variedTone, type JudgedFamily } from '../houseSpec/judgedColour.ts';
+import { JUDGED_PALETTE, brickFromSample, lchOf, variedTone, type JudgedFamily } from '../houseSpec/judgedColour.ts';
 import { hash32 } from './donors.ts';
 
+export type Weights = Partial<Record<JudgedFamily, number>>;
 export interface WallDrawConfig {
-  before1860: Partial<Record<JudgedFamily, number>>;
-  from1860: Partial<Record<JudgedFamily, number>>;
-  keepRun: number;
-  window: number;
-  minSamples: number;
+  before1860: Weights;
+  from1860: Weights;
+  /** Fronts of a run with their own sample needed to read the run from its samples. */
+  runSamples: number;
+  /** false: draw these weights as they stand (the generator still measures and reports); default true. */
+  measure?: boolean;
+  /** measuredWeights' prior strength, in reads (read by the generator). */
+  priorN?: number;
+  /** The prior the district's reads are pooled with: 'own' (this file's weights) or another district's id (its measured weights). */
+  prior?: string;
 }
-/** `brickOnly`: the front's own read saw unpainted brick, so the draw keeps to brick families (paint goes to donor-filled fronts). */
-export interface WallDrawFront { pandId: string; year: number | null; free: boolean; sample?: string; brickOnly?: boolean }
+export interface WallDrawFront {
+  pandId: string; year: number | null; free: boolean; sample?: string;
+  /** the front's own read saw unpainted brick: never a paint family */
+  brickOnly?: boolean;
+  /** the front's series (one design): one family wherever its members stand */
+  series?: string;
+  /** the street's own reads agree on this family (streetFamily below) */
+  streetFamily?: JudgedFamily;
+}
 /** `material`: 'painted-brick' for a paint family, else 'brick'. */
-export interface WallDrawn { family: JudgedFamily; hex: string; material: 'brick' | 'painted-brick'; by: 'sample' | 'run' | 'draw'; why: string }
+export interface WallDrawn { family: JudgedFamily; hex: string; material: 'brick' | 'painted-brick'; by: 'run-sample' | 'street' | 'draw' | 'series'; why: string }
 export const isBrickFamily = (f: JudgedFamily): boolean => f.endsWith('-brick');
+export const periodOf = (y: number | null): 'before1860' | 'from1860' => (y !== null && y >= 1860 ? 'from1860' : 'before1860');
 
 const unit = (s: string) => hash32(s) / 0xffffffff;
-function weighted(dist: Partial<Record<JudgedFamily, number>>, u: number): JudgedFamily {
-  const entries = Object.entries(dist).filter(([, w]) => (w ?? 0) > 0) as [JudgedFamily, number][];
+function weighted(dist: Weights, u: number): JudgedFamily {
+  const entries = Object.entries(dist).filter(([f, w]) => (w ?? 0) > 0 && isBrickFamily(f as JudgedFamily)) as [JudgedFamily, number][];
   const total = entries.reduce((s, [, w]) => s + w, 0);
   let acc = 0;
   for (const [f, w] of entries) { acc += w / total; if (u < acc) return f; }
   return entries[entries.length - 1][0];
 }
 const median = (xs: number[]) => { const v = [...xs].sort((a, b) => a - b), m = v.length >> 1; return v.length % 2 ? v[m] : (v[m - 1] + v[m]) / 2; };
+const okSample = (s?: string) => !!s && /^#[0-9a-f]{6}$/i.test(s);
 
-/** One row's fronts in street order: a drawn wall for each free front, null for the rest (their judged wall stands). */
-export function drawRowWalls(fronts: readonly WallDrawFront[], cfg: WallDrawConfig): (WallDrawn | null)[] {
-  const L = fronts.map(f => (f.sample && /^#[0-9a-f]{6}$/i.test(f.sample) ? lchOf(f.sample).L : null));
-  const out: (WallDrawn | null)[] = [];
-  let prev: JudgedFamily | null = null;
+/**
+ * One row's fronts in street order: a drawn wall for each free front, null for the rest (their judged wall stands).
+ * `seriesFamily` carries a series' family across rows (pass one map for a whole district).
+ */
+export function drawRowWalls(fronts: readonly WallDrawFront[], cfg: WallDrawConfig, seriesFamily: Map<string, WallDrawn> = new Map()): (WallDrawn | null)[] {
+  const runs: number[][] = [];
   fronts.forEach((f, i) => {
-    if (!f.free) { out.push(null); prev = null; return; }
-    let drawn: Omit<WallDrawn, 'hex' | 'material'> | null = null;
-    if (L[i] !== null) {
-      const near = L.slice(Math.max(0, i - cfg.window), Math.min(L.length, i + cfg.window + 1)).filter((x): x is number => x !== null);
-      if (near.length >= cfg.minSamples) {
-        const j = judgeFront({ pandId: f.pandId, readable: true, finish: 'brick', pale: false, notes: null, year: f.year, sample: f.sample }, median(near));
-        drawn = { family: j.family, by: 'sample', why: j.why };
-      }
-    }
-    if (!drawn) {
-      const dist0 = f.year !== null && f.year >= 1860 ? cfg.from1860 : cfg.before1860;
-      const dist = f.brickOnly ? Object.fromEntries(Object.entries(dist0).filter(([k]) => isBrickFamily(k as JudgedFamily))) as typeof dist0 : dist0;
-      if (prev && (!f.brickOnly || isBrickFamily(prev)) && unit(`${f.pandId}:run`) < cfg.keepRun) drawn = { family: prev, by: 'run', why: `the neighbour's ${JUDGED_PALETTE[prev].label}` };
-      else { const fam = weighted(dist, unit(`${f.pandId}:draw`)); drawn = { family: fam, by: 'draw', why: `${JUDGED_PALETTE[fam].label} from the district's ${f.year !== null && f.year >= 1860 ? 'from-1860' : 'before-1860'} brick` }; }
-    }
-    prev = drawn.family;
-    out.push({ ...drawn, hex: variedTone(drawn.family, f.pandId), material: isBrickFamily(drawn.family) ? 'brick' : 'painted-brick' });
+    if (!f.free) return;
+    const last = runs[runs.length - 1], prev = fronts[i - 1];
+    if (last && last[last.length - 1] === i - 1 && periodOf(prev.year) === periodOf(f.year)) last.push(i);
+    else runs.push([i]);
   });
+  const out: (WallDrawn | null)[] = fronts.map(() => null);
+  for (const run of runs) {
+    const fr = run.map(i => fronts[i]), per = periodOf(fr[0].year);
+    const brickPick = weighted(cfg[per], unit(`${fr[0].pandId}:run`));
+    const samples = fr.filter(f => okSample(f.sample)).map(f => lchOf(f.sample!));
+    let fam: Omit<WallDrawn, 'hex' | 'material'>;
+    const st = fr.find(f => f.streetFamily)?.streetFamily;
+    if (samples.length >= cfg.runSamples) {
+      const s = { L: median(samples.map(x => x.L)), C: median(samples.map(x => x.C)), h: median(samples.map(x => x.h)) };
+      const f = brickFromSample(s);
+      fam = { family: f, by: 'run-sample', why: `${JUDGED_PALETTE[f].label}: the run's ${samples.length} own cut samples, median L ${s.L.toFixed(2)} C ${s.C.toFixed(3)}` };
+    } else if (st) fam = { family: st, by: 'street', why: `${JUDGED_PALETTE[st].label}: the street's own reads agree` };
+    else fam = { family: brickPick, by: 'draw', why: `${JUDGED_PALETTE[brickPick].label} from the district's measured ${per === 'from1860' ? 'from-1860' : 'before-1860'} brick` };
+    for (const i of run) {
+      const f = fronts[i], s = f.series ? seriesFamily.get(f.series) : undefined;
+      let d: Omit<WallDrawn, 'hex' | 'material'> = s ? { family: s.family, by: 'series', why: `its series' ${JUDGED_PALETTE[s.family].label}` } : fam;
+      if (f.brickOnly && !isBrickFamily(d.family)) d = { family: brickPick, by: 'draw', why: `${JUDGED_PALETTE[brickPick].label}: its own read saw brick where its run is painted` };
+      const w: WallDrawn = { ...d, hex: variedTone(d.family, f.pandId), material: isBrickFamily(d.family) ? 'brick' : 'painted-brick' };
+      if (f.series && !s) seriesFamily.set(f.series, w);
+      out[i] = w;
+    }
+  }
   return out;
+}
+
+/** One read's evidence for the weights: its period's year and the family its judgement says. */
+export interface WeightEvidence { year: number | null; family: JudgedFamily }
+/**
+ * The district's period weights measured from its own reads (centrum-looks round 3): the brick families its readers' cut
+ * samples say (judgeFront absolute mode: brickFromSample), pooled with a prior worth `priorN` reads. Paint families are
+ * counted out (paint is drawn only where read, stated or measured). A period with no reads takes the prior.
+ */
+export function measuredWeights(evidence: readonly WeightEvidence[], prior: { before1860: Weights; from1860: Weights }, priorN: number) {
+  const res = { before1860: {} as Weights, from1860: {} as Weights, n: { before1860: 0, from1860: 0 } };
+  for (const per of ['before1860', 'from1860'] as const) {
+    const counts: Weights = {};
+    for (const e of evidence) if (periodOf(e.year) === per && isBrickFamily(e.family)) { counts[e.family] = (counts[e.family] ?? 0) + 1; res.n[per]++; }
+    const pr = prior[per], prTotal = Object.entries(pr).filter(([f]) => isBrickFamily(f as JudgedFamily)).reduce((s, [, w]) => s + (w ?? 0), 0) || 1;
+    const fams = [...new Set([...Object.keys(counts), ...Object.keys(pr)])].filter(f => isBrickFamily(f as JudgedFamily)).sort() as JudgedFamily[];
+    const total = res.n[per] + priorN;
+    for (const f of fams) { const w = ((counts[f] ?? 0) + priorN * ((pr[f] ?? 0) / prTotal)) / total; if (w > 0) res[per][f] = +w.toFixed(3); }
+  }
+  return res;
+}
+
+/**
+ * The street's family from its own reads (centrum-looks round 3): at least `minReads` reads and one family held by more
+ * than half of them, else null. Each read's family is its judgement (judgeFront, absolute mode), paint included.
+ */
+export function streetFamily(families: readonly JudgedFamily[], minReads = 3): JudgedFamily | null {
+  if (families.length < minReads) return null;
+  const c = new Map<JudgedFamily, number>();
+  for (const f of families) c.set(f, (c.get(f) ?? 0) + 1);
+  const [f, n] = [...c].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))[0];
+  return n * 2 > families.length ? f : null;
 }

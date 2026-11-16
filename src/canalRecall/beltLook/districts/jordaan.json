@@ -202,20 +202,20 @@
  "slopedBand": true,
  "measuredRoofStorey": true,
  "wallDraw": {
-  "note": "Wall colour by judgement (David 2026-11-14), centrum-looks round 2: the Jordaan brick drawn house by house (wallDraw.ts). Period weights are a judgement of the Jordaan street fronts, not a measurement: 17th-18th-century fronts mostly red-brown and brown brick with some orange-red; the 1860-1914 rebuilds brown, red-brown and orange-red machine brick with some yellow buff. Dark purple-brown and dark grey are never drawn either (the round-1 fault was too dark): they stand only where a read, a sample against its neighbours or the register says so. Paint is never drawn: a wrongly painted front reads louder than a wrong brick (round-2 sheet: Rozengracht 168914 drew cream against the photo's red-orange brick); painted and stucco fronts stay where a read or the register states them.",
+  "note": "Centrum-looks round 3 (2026-11-16): walls drawn run by run, not house by house (wallDraw.ts): a run of free fronts of one period takes one family (its own cut samples' median, else its street's agreeing reads, paint included, else these period weights), each house a small tone inside it. measure: false: the Jordaan draws these judged weights, not its reads' measured ones (generate.ts reports both): its cut samples are underexposed and read absolutely give 37 % dark grey brick, the round-1 fault ('too dark and uniform'). Round 3 trims round 2's weights on the judges' word: no buff by lot (Lindengracht, Leidsekade: tan where the photo is brown or red-brown) and less orange-red (Leidsekade, Egelantiersgracht: 'too bright a red'). Paint is never drawn by lot: only where a read, the register or the street's reads say so.",
   "before1860": {
-   "red-brown-brick": 0.48,
-   "brown-brick": 0.32,
-   "orange-red-brick": 0.2
+   "red-brown-brick": 0.45,
+   "brown-brick": 0.4,
+   "orange-red-brick": 0.15
   },
   "from1860": {
-   "brown-brick": 0.34,
-   "red-brown-brick": 0.28,
-   "orange-red-brick": 0.24,
-   "buff-brick": 0.14
+   "brown-brick": 0.5,
+   "red-brown-brick": 0.35,
+   "orange-red-brick": 0.15
   },
-  "keepRun": 0.3,
-  "window": 4,
-  "minSamples": 3
+  "runSamples": 2,
+  "priorN": 8,
+  "prior": "own",
+  "measure": false
  }
 }
