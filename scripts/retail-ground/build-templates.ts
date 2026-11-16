@@ -17,7 +17,13 @@ import zlib from 'node:zlib';
 import { hostForPoi, type BagUsesTable } from '../../src/canalRecall/shopGate.ts';
 import { hostOnFront, ringEdges, insideRing as insideRingOf } from '../../src/canalRecall/retailHosting.ts';
 import { FRONT_HIGHWAYS, SegmentGrid, streetDistance } from '../../src/canalRecall/streetFronts.ts';
-import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, signWord, templateForTags, type RetailTemplate } from '../../src/canalRecall/retailTemplates.ts';
+import { CHAIN_TEMPLATES, RETAIL_TEMPLATES, TEMPLATE_LOOKS, signWord, templateForTags as typeForTags, type RetailTemplate } from '../../src/canalRecall/retailTemplates.ts';
+import { RETAIL_CHAINS, chainForTags } from '../../src/canalRecall/retailChains.ts';
+import { retailRealOn } from '../../src/canalRecall/retailPages.ts';
+// Lane retail-real: a chain round 6 does not template (retailChains.ts) takes its type's template and the word '@<key>';
+// RETAIL_REAL=0 stages round n's extract.
+const chainOf = (tags: Record<string, string>): string | null => { if (!retailRealOn()) return null; const t = typeForTags(tags); return t && CHAIN_TEMPLATES.includes(t) ? null : chainForTags(tags); };
+const templateForTags = (tags: Record<string, string>): RetailTemplate | null => { const c = chainOf(tags); return c ? RETAIL_CHAINS[c].template : typeForTags(tags); };
 import { insideCentre, RING_KM, DAM } from '../../src/canalRecall/retailArea.ts';
 import { streetPriors, type StreetRead } from '../../src/canalRecall/retailPuiPaint.ts';
 import { bikeShopClass, bikeCode } from '../../src/canalRecall/retailBikes.ts';
@@ -30,7 +36,7 @@ const STAGING = 'data/retail-ground/shop-templates.json', PUBLISHED = 'public/da
 
 // `--explain=<osm node id>,...`: every footprint within 30 m of the node, with its distance, BAG uses and the host picked.
 const explain = new Set((arg('explain') ?? '').split(',').filter(Boolean));
-const placed = new Map<string, { t: RetailTemplate; at: [number, number]; front: 'street' | 'nearest'; name: string; tags: string; centre: boolean; ring: boolean; bike?: ReturnType<typeof bikeShopClass> }>();
+const placed = new Map<string, { chain?: string; t: RetailTemplate; at: [number, number]; front: 'street' | 'nearest'; name: string; tags: string; centre: boolean; ring: boolean; bike?: ReturnType<typeof bikeShopClass> }>();
 const pois: Record<string, number> = {}, unhosted: Record<string, number> = {}, moved = { host: 0, nearest: 0, lost: 0, gained: 0 };
 // Round 5: the pands some template POI sits on by the plain rules; a POI moves to a bigger shop next door
 // (retailHosting.ts SPILL) only when no other POI holds it.
@@ -91,7 +97,7 @@ for (const n of allNodes) {
   let at: [number, number] = [n.lon, n.lat];
   const pand = tags['addr:street'] && hit.front === 'street' ? near(x, y).find(c => c.id === hit.id) : undefined;
   if (pand) { const p = atOnStreetWall(pand.ring, x, y, tags['addr:street'], namedSegs.filter(s => Math.abs(s.x0 - x) < 80 && Math.abs(s.y0 - y) < 80)); if (p && Math.hypot(p[0] - x, p[1] - y) > 0.5) { at = lngLatOf(p[0], p[1]); onStreet++; } }
-  placed.set(hit.id, { t, at: [Math.round(at[0] * 1e6) / 1e6, Math.round(at[1] * 1e6) / 1e6], front: hit.front, name: tags.name ?? '', tags: Object.entries(tags).filter(([k]) => /^(shop|amenity|cuisine|brand|name|addr:street|addr:housenumber|bar|origin)$/.test(k)).map(([k, v]) => `${k}=${v}`).join(' '), centre: insideCentre(n.lon, n.lat), ring, ...(t === 'bike' ? { bike: bikeShopClass(tags) } : {}) });
+  placed.set(hit.id, { ...(chainOf(tags) ? { chain: chainOf(tags)! } : {}), t, at: [Math.round(at[0] * 1e6) / 1e6, Math.round(at[1] * 1e6) / 1e6], front: hit.front, name: tags.name ?? '', tags: Object.entries(tags).filter(([k]) => /^(shop|amenity|cuisine|brand|name|addr:street|addr:housenumber|bar|origin)$/.test(k)).map(([k, v]) => `${k}=${v}`).join(' '), centre: insideCentre(n.lon, n.lat), ring, ...(t === 'bike' ? { bike: bikeShopClass(tags) } : {}) });
 }
 
 const rows = RETAIL_TEMPLATES.map(t => {
@@ -124,7 +130,30 @@ if (samples) {
     for (const [id, p] of pick) console.log(`sample ${t} ${bagKey(id)} ${p.at.join(',')} ${p.tags}`);
   }
 }
-const out = { version: 1, source: '© OpenStreetMap contributors (ODbL), Overpass ' + new Date(fs.statSync(CACHE).mtime).toISOString().slice(0, 10), templates: [...RETAIL_TEMPLATES], buildings: Object.fromEntries([...placed].sort().map(([id, p]) => [id, [RETAIL_TEMPLATES.indexOf(p.t), p.at[0], p.at[1], ...(TEMPLATE_LOOKS[p.t].word === 'name' && signWord(p.name) ? [signWord(p.name)] : p.front === 'nearest' ? [''] : []), ...(p.front === 'nearest' ? [1] : [])]])) };
+const out = { version: 1, source: '© OpenStreetMap contributors (ODbL), Overpass ' + new Date(fs.statSync(CACHE).mtime).toISOString().slice(0, 10), templates: [...RETAIL_TEMPLATES], buildings: Object.fromEntries([...placed].sort().map(([id, p]) => [id, [RETAIL_TEMPLATES.indexOf(p.t), p.at[0], p.at[1], ...(p.chain ? [`@${p.chain}`] : TEMPLATE_LOOKS[p.t].word === 'name' && signWord(p.name) ? [signWord(p.name)] : p.front === 'nearest' ? [''] : []), ...(p.front === 'nearest' ? [1] : [])]])) };
+// Lane retail-real (coordinator 2026-11-16): lane R's De Wallen audit (data/retail-ground/dewallen-redlight-audit.json,
+// from 394d2f52b, used as data). The 27 window rows carry their measured window front as the row's sixth field
+// ({s: [lng0, lat0, lng1, lat1] the span on the front line, d doors, t tube, c curtains, f frame hex}); the 18 closed or
+// not-a-window pands and the 3 read-not-drawn ones lose the redLight template under retailReal ({x: 1}); the 21 with no
+// view keep it.
+const AUDIT = 'data/retail-ground/dewallen-redlight-audit.json';
+if (fs.existsSync(AUDIT)) {
+  type WF = { a0: number; a1: number; doors?: number; tube?: string; curtains?: string; frameHex?: string };
+  const audit = JSON.parse(fs.readFileSync(AUDIT, 'utf8')) as { fronts: Array<{ pandId: string; frontLine: [[number, number], [number, number]]; windowFront: WF }>; notWindow: Array<{ pandId: string }>; readNotDrawn: Array<{ pandId: string }> };
+  const rows = out.buildings as Record<string, unknown[]>, red = RETAIL_TEMPLATES.indexOf('redLight');
+  const key = (id: string) => (rows[id] ? id : rows[`NL.IMBAG.Pand.${id}`] ? `NL.IMBAG.Pand.${id}` : null);
+  let drawn = 0, dropped = 0;
+  for (const f of audit.fronts) {
+    const k = key(f.pandId); if (!k || rows[k][0] !== red) continue;
+    const [[x0, y0], [x1, y1]] = f.frontLine, w = f.windowFront, at = (t: number) => [+(x0 + (x1 - x0) * t).toFixed(7), +(y0 + (y1 - y0) * t).toFixed(7)];
+    const [ax, ay] = at(w.a0), [bx, by] = at(w.a1), mid = at((w.a0 + w.a1) / 2);
+    rows[k] = [red, mid[0], mid[1], '', 0, { s: [ax, ay, bx, by], ...(w.doors ? { d: w.doors } : {}), ...(w.tube ? { t: w.tube } : {}), ...(w.curtains ? { c: w.curtains } : {}), ...(w.frameHex ? { f: w.frameHex } : {}) }];
+    drawn++;
+  }
+  // Marked {x: 1} rather than deleted, so `?retailReal=0` still draws round n's front there.
+  for (const f of [...audit.notWindow, ...audit.readNotDrawn]) { const k = key(f.pandId); if (k && rows[k][0] === red) { const r = rows[k]; rows[k] = [r[0], r[1], r[2], r[3] ?? '', r[4] ?? 0, { x: 1 }]; dropped++; } }
+  console.log(`De Wallen audit: ${drawn} measured window fronts, ${dropped} redLight templates dropped (closed, not a window, or read not drawn)`);
+}
 // Round 4: the pui paint measured on street panoramas (measure-pui.ts; receipts stay in its file), for any shop pand.
 const PUI = 'data/retail-ground/pui-paint.json';
 if (fs.existsSync(PUI)) {
