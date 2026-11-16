@@ -105194,7 +105194,7 @@
       },
       "bagYear": 1888,
       "materialOverrides": {
-        "brick": "#5d3e3b",
+        "brick": "#64403a",
         "greyBrick": "#3e3638",
         "stone": "#cdc6b6",
         "frame": "#ece8de",
@@ -105404,14 +105404,20 @@
         "depthMetres": 18.972207069396973,
         "depthCoverage": 1.0255247064538904
       },
-      "triangles": 27443,
-      "bytes": 342660,
+      "triangles": 27395,
+      "bytes": 341572,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "04f473be95f21701",
         "buildVersion": 2,
         "bytes": 89768,
         "triangles": 4264
+      },
+      "lod2": {
+        "sourceHash": "04f473be95f21701",
+        "buildVersion": 6,
+        "bytes": 16012,
+        "triangles": 546
       }
     },
     "banks-mansion": {
@@ -105448,7 +105454,7 @@
       },
       "bagYear": 1923,
       "materialOverrides": {
-        "sandstone": "#9e9584",
+        "sandstone": "#bdb4a2",
         "stone": "#d8d0bd",
         "white": "#e6e2d8",
         "frame": "#efece4",
@@ -105542,14 +105548,20 @@
         "depthMetres": 27.437297821044922,
         "depthCoverage": 1.0237797694419746
       },
-      "triangles": 16414,
-      "bytes": 245668,
+      "triangles": 16330,
+      "bytes": 244488,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "d8cc19330265f9aa",
         "buildVersion": 2,
         "bytes": 64456,
         "triangles": 2908
+      },
+      "lod2": {
+        "sourceHash": "d8cc19330265f9aa",
+        "buildVersion": 6,
+        "bytes": 9036,
+        "triangles": 325
       }
     },
     "schiller-rembrandtplein": {
@@ -105716,7 +105728,19 @@
       },
       "triangles": 13650,
       "bytes": 198948,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "21952a6e7fd5948b",
+        "buildVersion": 2,
+        "bytes": 63104,
+        "triangles": 2614
+      },
+      "lod2": {
+        "sourceHash": "21952a6e7fd5948b",
+        "buildVersion": 6,
+        "bytes": 10420,
+        "triangles": 271
+      }
     },
     "reinwardt-academie": {
       "id": "reinwardt-academie",
@@ -109345,7 +109369,13 @@
       },
       "triangles": 1097,
       "bytes": 22672,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod2": {
+        "sourceHash": "061808599a489c69",
+        "buildVersion": 6,
+        "bytes": 8768,
+        "triangles": 328
+      }
     },
     "brediusbad": {
       "id": "brediusbad",
@@ -111057,7 +111087,19 @@
       },
       "triangles": 9233,
       "bytes": 103116,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "1c03eae235b4582a",
+        "buildVersion": 2,
+        "bytes": 42148,
+        "triangles": 2540
+      },
+      "lod2": {
+        "sourceHash": "1c03eae235b4582a",
+        "buildVersion": 6,
+        "bytes": 18448,
+        "triangles": 1472
+      }
     },
     "sloterparkbad": {
       "id": "sloterparkbad",
@@ -112014,7 +112056,13 @@
       },
       "triangles": 2045,
       "bytes": 32388,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod2": {
+        "sourceHash": "7b02ebe0caa11377",
+        "buildVersion": 6,
+        "bytes": 5336,
+        "triangles": 144
+      }
     }
   }
 }
