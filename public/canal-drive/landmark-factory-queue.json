@@ -3106,15 +3106,19 @@
     4.910587,
     52.395441000000005
    ],
-   "status": "crops",
+   "status": "compiled",
    "house": "pand-128727",
-   "owner": "lane-recrop-20261113",
-   "claimedAt": "2026-10-23T21:10:40.691Z",
+   "owner": "lane-factory-c-20261113",
+   "claimedAt": "2026-11-13T07:15:13.941Z",
    "notes": [
     "2026-10-23T21:10 crops: 6 usable walls in 12 s",
-    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable"
+    "2026-11-13 recrop (lane-recrop-20261113): no-evidence -> buildable",
+    "2026-11-13T07:15 facts with streets Vlierweg|Papaverweg|Kropaarstraat failed (/Users/blackmad/Code/map-recall2-worktrees/landmark-factory-c-20261113/src/canalRecall/buildingRecipe/facts.ts:231 |   if (!seed) throw Error(`No footprint edge faces ${street}`); |                   ); kept the street-less facts",
+    "2026-11-13T07:15 draft: 8 groups (0 on a street), 5 panels blank",
+    "2026-11-13T07:15 measured groups 1,2,3,5 in 4 s",
+    "2026-11-13T07:15 compiled: 1372 tris, gates pass, likeness g0:NO PHOTO g1:WARN g2:FAIL g3:WARN g4:NO PHOTO g5:FAIL g6:NO PHOTO g7:NO PHOTO"
    ],
-   "updatedAt": "2026-10-23T21:10:52.724Z",
+   "updatedAt": "2026-11-13T07:15:33.567Z",
    "triage": {
     "verdict": "buildable",
     "reasons": [
@@ -3122,7 +3126,84 @@
     ],
     "gaps": [],
     "date": "2026-11-13"
-   }
+   },
+   "model": "opus",
+   "turns": 1,
+   "ms": {
+    "facts": 3919,
+    "draft": 5,
+    "measure": 3753,
+    "compile": 11937
+   },
+   "report": {
+    "triangles": 1372,
+    "bytes": 109536,
+    "gatesFailing": [],
+    "passed": true,
+    "likeness": [
+     {
+      "group": 0,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 1,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.276 < 0.45"
+      ]
+     },
+     {
+      "group": 2,
+      "verdict": "FAIL",
+      "reasons": [
+       "window shape none vs photo wide",
+       "columns none vs photo 8"
+      ]
+     },
+     {
+      "group": 3,
+      "verdict": "WARN",
+      "reasons": [
+       "mask IoU 0.166 < 0.45"
+      ]
+     },
+     {
+      "group": 4,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 5,
+      "verdict": "FAIL",
+      "reasons": [
+       "glazing storey band off by 0.46 mean 0.25 vs photo 0.69"
+      ]
+     },
+     {
+      "group": 6,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     },
+     {
+      "group": 7,
+      "verdict": "NO PHOTO",
+      "reasons": []
+     }
+    ],
+    "compiledAt": "2026-11-13T07:15"
+   },
+   "sheets": [
+    "artifacts/building-recipes/pand-128727/contact-walls-0.png",
+    "artifacts/building-recipes/pand-128727/contact-walls-1.png",
+    "artifacts/building-recipes/pand-128727/contact-walls-2.png",
+    "artifacts/building-recipes/pand-128727/contact-walls-3.png",
+    "artifacts/building-recipes/pand-128727/contact-walls-4.png",
+    "artifacts/building-recipes/pand-128727/contact-walls-5.png",
+    "artifacts/building-recipes/pand-128727/contact-walls-6.png",
+    "artifacts/building-recipes/pand-128727/contact-walls-7.png",
+    "artifacts/building-recipes/pand-128727/contact-aerial.png"
+   ]
   },
   {
    "id": "0363100012137448",
@@ -3561,7 +3642,9 @@
     ],
     "gaps": [],
     "date": "2026-11-13"
-   }
+   },
+   "model": "opus",
+   "turns": 1
   },
   {
    "id": "0363100012244662",
@@ -4026,7 +4109,9 @@
     ],
     "gaps": [],
     "date": "2026-11-13"
-   }
+   },
+   "model": "opus",
+   "turns": 1
   },
   {
    "id": "0363100012248597",
@@ -4332,7 +4417,9 @@
     ],
     "gaps": [],
     "date": "2026-11-13"
-   }
+   },
+   "model": "opus",
+   "turns": 1
   },
   {
    "id": "0363100012085366",
@@ -4435,7 +4522,9 @@
     ],
     "gaps": [],
     "date": "2026-11-13"
-   }
+   },
+   "model": "opus",
+   "turns": 1
   },
   {
    "id": "0363100012080532",
@@ -4503,7 +4592,9 @@
     ],
     "gaps": [],
     "date": "2026-11-13"
-   }
+   },
+   "model": "opus",
+   "turns": 1
   },
   {
    "id": "0363100012069991",
@@ -4771,7 +4862,9 @@
     ],
     "gaps": [],
     "date": "2026-11-13"
-   }
+   },
+   "model": "opus",
+   "turns": 1
   },
   {
    "id": "0363100012237537",
@@ -4804,7 +4897,9 @@
     ],
     "gaps": [],
     "date": "2026-11-13"
-   }
+   },
+   "model": "opus",
+   "turns": 1
   },
   {
    "id": "0363100012133123",

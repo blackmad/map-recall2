@@ -1,0 +1,96 @@
+{
+ "date": "2026-11-13",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 9,
+   "bearing": 300,
+   "widthM": 42.3,
+   "heightM": 8.8,
+   "street": null
+  },
+  {
+   "group": 1,
+   "panel": 15,
+   "bearing": 212,
+   "widthM": 39.1,
+   "heightM": 8.7,
+   "street": null
+  },
+  {
+   "group": 2,
+   "panel": 11,
+   "bearing": 33,
+   "widthM": 31.1,
+   "heightM": 8.8,
+   "street": null
+  },
+  {
+   "group": 3,
+   "panel": 12,
+   "bearing": 122,
+   "widthM": 10.4,
+   "heightM": 8.7,
+   "street": null
+  },
+  {
+   "group": 4,
+   "panel": 7,
+   "bearing": 31,
+   "widthM": 19.7,
+   "heightM": 3.6,
+   "street": null
+  },
+  {
+   "group": 5,
+   "panel": 8,
+   "bearing": 33,
+   "widthM": 8,
+   "heightM": 7.8,
+   "street": null
+  },
+  {
+   "group": 6,
+   "panel": 3,
+   "bearing": 31,
+   "widthM": 10.6,
+   "heightM": 3.5,
+   "street": null
+  },
+  {
+   "group": 7,
+   "panel": 2,
+   "bearing": 31,
+   "widthM": 8.8,
+   "heightM": 3.6,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 4,
+   "widthM": 79.1,
+   "reason": "party wall"
+  },
+  {
+   "panel": 1,
+   "widthM": 68.9,
+   "reason": "party wall"
+  },
+  {
+   "panel": 5,
+   "widthM": 40.4,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 6,
+   "widthM": 28.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 10,
+   "widthM": 27.4,
+   "reason": "under 3 m tall"
+  }
+ ]
+}
