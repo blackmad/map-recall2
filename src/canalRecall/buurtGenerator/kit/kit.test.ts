@@ -669,3 +669,53 @@ test('round 22: a raised part on a pitched member keeps its eaves, height and ro
     assert.ok(block.kitTop > plain.hi + 1, 'and the block stands over it');
   } finally { delete g.__canalRecallBuurtKit; process.env.ROW_FRONT = '0'; resetRowFront(); setRowFrontRecords([]); }
 });
+
+// Hoofddorpplein pilot (2026-11-16): the chequer frieze, a brick band on the series line under the eaves slab with the
+// attic lights in it and a two-tone pattern; stated only, absent nothing changes.
+test('chequer frieze: parses stated fields, draws its band, lights and cells under the eaves; absent, as before', async () => {
+  const { kitChequerOf, buurtKitOf } = await import('./frontKit.js');
+  const { buurtRoofKitOf, eavesSlabOf, friezeOf, CHEQUER_LOOK, ATTIC_LOOK, ERKER_LOOK } = await import('./roofKit.js');
+  const ch = { heightM: 1.05, pattern: 'chequer' as const, cellM: 0.14, rows: 3, lightHex: '#c9b37f', darkHex: '#2e2522', lights: { widthM: 0.75, heightM: 0.62, pitchM: 1.22 } };
+  // Parsing: stated fields only, malformed ones dropped, a malformed frieze is none.
+  assert.deepEqual(kitChequerOf({ ...ch, junk: 1 }), ch);
+  assert.deepEqual(kitChequerOf({ ...ch, rows: 0.5, darkHex: 'red', lights: { widthM: 0.75, heightM: 2, pitchM: 1.2 } }), { heightM: 1.05, pattern: 'chequer', cellM: 0.14, lightHex: '#c9b37f' });
+  for (const bad of [null, {}, { ...ch, pattern: 'dots' }, { ...ch, heightM: 0.1 }, { ...ch, lightHex: 'cream' }]) assert.equal(kitChequerOf(bad), null);
+  assert.deepEqual(buurtKitOf({ frontLine: line, erkers: [], chequer: ch })?.chequer, ch);
+  assert.equal(buurtKitOf({ frontLine: line, erkers: [] })!.chequer, undefined);
+  assert.deepEqual(buurtRoofKitOf({ ...kit4({}), chequer: ch })?.chequer, ch);
+  assert.ok(!('chequer' in buurtRoofKitOf(kit4({}))!), 'absent: no key');
+  const kf = buurtRoofKitFor({ erkers: [], eaves: { overhangM: 0.9 }, chequer: ch } as unknown as BuurtKitFront, 12, 4, 3.1)!;
+  assert.deepEqual(kf.chequer, ch); assert.ok(kitDrawsFront(kf) && kitWantsCoping({ erkers: [], chequer: ch } as never));
+  assert.ok(!('chequer' in buurtRoofKitFor({ erkers: [], eaves: { overhangM: 0.9 } } as unknown as BuurtKitFront, 12, 4, 3.1)!));
+  // The slab stands on the band, not on the lattice frieze; without the band the lattice is as before.
+  const eaves = { eaves: { overhangM: 0.9, frieze: false as const } };
+  assert.equal(friezeOf(kit4({ ...eaves, chequer: ch })), 1.05);
+  { const sl = eavesSlabOf(kit4({ ...eaves, chequer: ch })); assert.ok(sl.z0 === 1.05 && Math.abs(sl.z1 - 1.45) < 1e-9); }
+  assert.equal(friezeOf(kit4({ eaves: { overhangM: 0.9 } })), EAVES_LOOK.friezeM);
+  const draw = (k: Partial<BuurtRoofKit>) => { const s = sink(); drawKitFront(s, kit4(k), L4, W4, 1); return s.out; };
+  const out = draw({ ...eaves, chequer: ch });
+  for (const t of out) { assert.ok(t.p.flat().every(Number.isFinite)); assert.ok(Math.abs(Math.hypot(...t.n) - 1) < 1e-6); }
+  assert.ok(!out.some(t => t.hex === EAVES_LOOK.dark), 'no lattice openings under the band');
+  const glass = out.filter(t => t.hex === ATTIC_LOOK.glass), cells = (hex: string) => out.filter(t => t.hex === hex);
+  // Lights across the 8 m member at 1.22 m: five, centred; each one glass quad.
+  assert.equal(glass.length, 2 * Math.floor((W4 - 2 * ATTIC_LOOK.endM - 0.75) / 1.22 + 1));
+  assert.ok(glass.every(t => t.p.every(q => q[2] > 0 && q[2] < 1.05)));
+  // Cells: three courses from the band's top, the two tones, none over a light's column, all inside the band.
+  assert.ok(cells(ch.lightHex).length > 0 && cells(ch.darkHex).length > 0);
+  for (const t of [...cells(ch.lightHex), ...cells(ch.darkHex)]) assert.ok(t.p.every(q => q[2] >= 1.05 - 3 * 0.14 - 1e-6 && q[2] <= 1.05 + 1e-6 && Math.abs(q[1]) <= W4 / 2 + 1e-6));
+  const lightCols = glass.flatMap(t => t.p.map(q => q[1]));
+  for (const t of cells(ch.lightHex)) { const ys = t.p.map(q => q[1]); assert.ok(!lightCols.some(y => y > Math.min(...ys) + 0.01 && y < Math.max(...ys) - 0.01)); }
+  // An erker under the band stops at the line.
+  const erk = draw({ ...eaves, chequer: ch, erkers: [{ a0: 0.3, a1: 0.7, depthM: 0.7, faceM: 1.9 }] }).filter(t => t.p.some(q => q[0] > L4 / 2 + 0.3) && t.p.every(q => q[0] < L4 / 2 + 0.85));
+  assert.ok(erk.length && Math.max(...erk.flatMap(t => t.p.map(q => q[2]))) <= ERKER_LOOK.capM + 1e-6, 'erker capped at the line, under the band');
+  // Stripes: every other course across the band in the light tone, broken round a group of lights.
+  const st = draw({ ...eaves, chequer: { heightM: 1.2, pattern: 'stripes', cellM: 0.1, lightHex: '#b9a27e', lights: { widthM: 0.55, heightM: 0.55, pitchM: 0.8, group: 4, footM: 0.3 } } });
+  assert.equal(st.filter(t => t.hex === ATTIC_LOOK.glass).length, 2 * 4);
+  assert.ok(st.filter(t => t.hex === '#b9a27e').length >= 2 * 6);
+  // No eaves: a white cap over the band.
+  const cap = draw({ chequer: ch });
+  assert.ok(Math.abs(Math.max(...cap.flatMap(t => t.p.map(q => q[2]))) - (1.05 + CHEQUER_LOOK.capM)) < 1e-6 && cap.some(t => t.hex === ERKER_LOOK.white));
+  // Absent: the same triangles as a kit that never heard of it.
+  const base = { ...eaves, erkers: [{ a0: 0.3, a1: 0.7, depthM: 0.7, faceM: 1.9 }] };
+  assert.equal(JSON.stringify(draw(base)), JSON.stringify(draw({ ...base, chequer: undefined })));
+});

@@ -15,7 +15,7 @@ import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
 import { districtRows, ROW_EAVES_STEP_M, type GenMember, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
-import { balconiesOf, cantsOnCells, entriesOf, erkersOnCells, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, stairAxisOf, countedOf, type KitCounted, type BuurtEntry, type BuurtErker, type BuurtKitFront, type KitRaised, type KitStairAxis } from './kit/frontKit.ts';
+import { balconiesOf, cantsOnCells, kitChequerOf, type KitChequer, entriesOf, erkersOnCells, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, stairAxisOf, countedOf, type KitCounted, type BuurtEntry, type BuurtErker, type BuurtKitFront, type KitRaised, type KitStairAxis } from './kit/frontKit.ts';
 import { seriesCountedOf, type MemberBays } from './baysRead.ts';
 
 export interface DistrictDesign {
@@ -79,7 +79,8 @@ export interface DistrictLibrary {
    *  draws its erkers' windows as continuous white bands. */
   streetNotes?: Record<string, { eaves?: true; erkerBands?: true;
     /** Round 12 (lane R): the street's erkers are white-painted timber bay fronts (frontKit.ts BuurtErker.front). */ erkerFront?: 'timber'; /** The roof form the street's photos show (round 7). */ roof?: 'pitched' | 'flat';
-    /** The roof's seen rise over the eaves on the street's photo (m; round 8): the drawn rise there. */ riseM?: number; evidence: string }>;
+    /** The roof's seen rise over the eaves on the street's photo (m; round 8): the drawn rise there. */ riseM?: number;
+    /** The chequer frieze the street's photos show (frontKit.ts KitChequer), as on a row note. */ chequer?: unknown; evidence: string }>;
   /** A flat series' top (round 7, Apollo): the broad eaves slab over the street front, no frieze. */
   flatEaves?: { eavesM: number; frieze?: false; evidence: string };
   /** Per row (generator row id), what a photo of it states: `pierPhase` 0 puts the first pier after the row's first
@@ -113,6 +114,10 @@ export interface DistrictLibrary {
      *  white upper sashes (KitPanes), `balconies` stacked balconies (KitBalcony), `entries` its own doorways (porch,
      *  portiek, arched; `cells` defaults to the series' cells so the mesher's door is replaced) over the row's list. */
     members?: Record<string, { panes?: unknown; balconies?: unknown; entries?: unknown }>;
+    /** Hoofddorpplein pilot: the chequer frieze the row's photo shows (frontKit.ts KitChequer): a brick band of `heightM`
+     *  under the eaves, so the series line the storeys reach is 3DBAG's eaves less the band; a pitched series takes the
+     *  row's `eaves` too. */
+    chequer?: unknown;
     evidence: string }>;
   notDrawn: Array<{ component: string; what: string }>;
   /** Round 9: the per-row measurements (`districts/measured/<district>.json`, staged by scripts/buurt-generators/
@@ -203,6 +208,10 @@ export function warmWall(hex: string): string {
   const c = Math.max(C, WALL_WARM.C);
   if (hue === h && c === C) return hex;
   return labHex([L, c * Math.cos((hue * Math.PI) / 180), c * Math.sin((hue * Math.PI) / 180)]);
+}
+/** The chequer frieze a row states: its row note's, else its street note's; null when neither states one (validated). */
+export function chequerOf(lib: DistrictLibrary, rowId: string, street: string): KitChequer | null {
+  return kitChequerOf(lib.rowNotes?.[rowId]?.chequer) ?? kitChequerOf(lib.streetNotes?.[street]?.chequer);
 }
 /** The street a row id names (`roerstraat-150901` -> `roerstraat`). */
 const streetSlugOf = (rowId: string) => rowId.replace(/(-\d{6})+$/, '');
@@ -446,10 +455,25 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   const resD: RowsResult = districtRows(free, streets), block = blockLines(lib, resD.rows);
   const res0: RowsResult = { ...resD, rows: block.rows }, eavesOverruled = block.clamped;
   // A row whose photo measures its line (row note `topM`) draws every series at it.
-  const res: RowsResult = { ...res0, rows: res0.rows.map(r => { const t = lib.rowNotes?.[r.id]?.topM; return t ? { ...r, series: r.series.map(s => ({ ...s, eavesM: t, clamped: [] })) } : r; }) };
+  const res1: RowsResult = { ...res0, rows: res0.rows.map(r => { const t = lib.rowNotes?.[r.id]?.topM; return t ? { ...r, series: r.series.map(s => ({ ...s, eavesM: t, clamped: [] })) } : r; }) };
+  // A stated chequer frieze stands between the storeys and the eaves: the storeys reach its foot, 3DBAG's eaves less the
+  // band (a row note's topM is the photo's line already).
+  const chequerLowered = new Map<string, { read: number; drawn: number; why: string }>();
+  const res: RowsResult = { ...res1, rows: res1.rows.map(r => {
+    const ch = chequerOf(lib, r.id, r.street);
+    if (!ch || lib.rowNotes?.[r.id]?.topM) return r;
+    return { ...r, series: r.series.map(s => {
+      if (s.eavesM === null) return s;
+      const line = +(s.eavesM - ch.heightM).toFixed(2);
+      for (const m of s.members) chequerLowered.set(pandNumber(m.pand.id), { read: s.eavesM, drawn: line, why: `the chequer frieze (${ch.heightM} m band under the eaves, ${lib.rowNotes?.[r.id]?.chequer ? 'row' : 'street'} note) stands over the storeys: they reach ${line} m` });
+      return { ...s, eavesM: line };
+    }) };
+  }) };
   for (const u of res.unplaced) skipped.push({ id: pandNumber(u.id), reason: u.reason });
   const rows = res.rows.flatMap(r => rowRecordOf(lib, r, at, skipped)).map(rec => {
-    const ov: Overruled[] = rec.members.flatMap(m => { const o = eavesOverruled.get(m.pandId); return o ? [{ front: m.pandId, field: 'corniceTopM', read: o.read, drawn: o.drawn, by: 'series-consensus' as const, why: o.why }] : []; });
+    const ov: Overruled[] = rec.members.flatMap(m => { const o = eavesOverruled.get(m.pandId), c = chequerLowered.get(m.pandId);
+      return [...(o ? [{ front: m.pandId, field: 'corniceTopM', read: o.read, drawn: o.drawn, by: 'series-consensus' as const, why: o.why }] : []),
+        ...(c ? [{ front: m.pandId, field: 'corniceTopM', read: c.read, drawn: c.drawn, by: 'series-consensus' as const, why: c.why }] : [])]; });
     return ov.length ? { ...rec, overruled: [...rec.overruled, ...ov] } : rec;
   });
   const drawn = new Set(rows.flatMap(r => r.members.map(m => m.pandId)));
@@ -487,13 +511,14 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
     // front (ribbon, erkers, eaves, entrance), every member draws it, so the roof line runs through (David on
     // Hunzestraat: the erker members' coping stood 0.55 m over their neighbours').
     // Round 13: the row note's eaves slab, attic band and raised parts (lane R's kit), validated by the kit's own readers.
+    const chequer = chequerOf(lib, r.id, r.street);
     const noteEaves = note?.eaves ? kitEavesOf({ overhangM: note.eaves.overhangM ?? lib.flatEaves?.eavesM ?? 0.6, frieze: note.eaves.frieze ?? lib.flatEaves?.frieze, fasciaM: note.eaves.fasciaM, lid: note.eaves.lid }) : null;
     const attic = note?.attic ? kitAtticOf(note.attic) : null, raisedFor = (pid: string) => raisedOf(note?.raised?.[pid.slice(-6)]);
     const own = (pid: string) => note?.members?.[pid.slice(-6)];
     const ownEntries = (pid: string): BuurtEntry[] | null => { const v = own(pid)?.entries; return Array.isArray(v) ? entriesOf(v.map(e => ({ cells: bays, ...e }))) : null; };
     // Round 15: a cant is drawn by the kit, so BAG's erker over the same run (a fold read as a bay) goes.
     const bayErkers = (f: GenMember['front']) => f.cants ? f.erkers.filter(k => !f.cants!.some(c => k.a1 > c.a0 + 0.01 && k.a0 < c.a1 - 0.01)) : f.erkers;
-    const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || bayErkers(mm.front).length || mm.front.cants?.length || note?.erkers?.[pandNumber(mm.pand.id).slice(-6)]?.length || note?.stairAxis?.[pandNumber(mm.pand.id).slice(-6)] || countedFor(mm.front.lengthM) || lib.flatEaves || noteEaves || attic || raisedFor(pandNumber(mm.pand.id)).length || entryAt(r.members.indexOf(mm))));
+    const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || bayErkers(mm.front).length || mm.front.cants?.length || note?.erkers?.[pandNumber(mm.pand.id).slice(-6)]?.length || note?.stairAxis?.[pandNumber(mm.pand.id).slice(-6)] || countedFor(mm.front.lengthM) || lib.flatEaves || noteEaves || attic || raisedFor(pandNumber(mm.pand.id)).length || entryAt(r.members.indexOf(mm)) || chequer));
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
       if (!drawn.has(pid)) continue;
@@ -503,7 +528,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
       // Erkers on the series' cells (frontKit.ts erkersOnCells): the series draws `bays` cells on every member.
       const erkers = erkersFor(pid, erkersOnCells(bayErkers(m.front), bays, m.front.lengthM, fam?.design?.windowShare ?? lib.design.windowShare));
       kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers,
-        ...(rise !== null && pv ? { roof: { pitchDeg: pv.pitchDeg, riseM: rise, ...(roofHex ? { roofHex } : {}), ...(pv.dormersPerFront === 0 ? { dormers: false as const } : {}), ...(pv.eavesM ? { eavesM: pv.eavesM, ...(pv.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } } : {}),
+        ...(rise !== null && pv ? { roof: { pitchDeg: pv.pitchDeg, riseM: rise, ...(roofHex ? { roofHex } : {}), ...(pv.dormersPerFront === 0 ? { dormers: false as const } : {}), ...(pv.eavesM ? { eavesM: pv.eavesM, ...(pv.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : chequer && noteEaves ? { eavesM: noteEaves.overhangM, eavesFrieze: false as const } : {}) } } : {}),
         ...(fam?.kit?.rhythm ? { rhythm: true as const } : {}), ...(!fam?.kit?.rhythm && stairAxisOf(note?.stairAxis?.[pid.slice(-6)]) ? { stairAxis: stairAxisOf(note!.stairAxis![pid.slice(-6)])! } : {}),
         ...(countedFor(m.front.lengthM) ? { counted: countedFor(m.front.lengthM)! } : {}),
         ...(fam?.kit?.piers && (joins.left || joins.right) ? { sides: { ...(joins.left ? { left: pierAfter(i - 1) ? 'pier' as const : 'pair' as const } : {}), ...(joins.right ? { right: pierAfter(i) ? 'pier' as const : 'pair' as const } : {}) } } : {}),
@@ -516,7 +541,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
         ...(balconiesOf(own(pid)?.balconies).length ? { balconies: balconiesOf(own(pid)?.balconies) } : {}),
         ...(kitPanesOf(own(pid)?.panes) ? { panes: kitPanesOf(own(pid)?.panes)! } : {}),
         ...(m.front.cants ? { cants: cantsOnCells(m.front.cants, bays, fam?.design?.windowShare ?? lib.design.windowShare) } : {}),
-        ...(joins.left || joins.right ? { joins } : {}) });
+        ...(joins.left || joins.right ? { joins } : {}), ...(chequer ? { chequer } : {}) });
     }
   }
   const families: GenResult['families'] = {};

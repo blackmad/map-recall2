@@ -1,0 +1,68 @@
+{
+ "district": "hoofddorpplein",
+ "title": "Hoofddorppleinbuurt (Plan Zuid west: Westlandgracht-, Suriname-, Legmeerplein- and Aalsmeerwegbuurt)",
+ "buurten": [
+  "KA01",
+  "KA02",
+  "KA03",
+  "KA04",
+  "KA05",
+  "KA06"
+ ],
+ "years": [
+  1915,
+  1940
+ ],
+ "evidence": [
+  "scope report docs/reports/zuid-block-types-scope-20261116.md (9367f1672): 36 KA blocks, about 1,700 pands, 0 % drawn by a district kit; panorama read of KA05 (Aalsmeerweg 073914) and KA03 (Hoofddorpweg 095655): canted erkers, chequer frieze, overhanging eaves, attic strip"
+ ],
+ "design": {
+  "groundM": 3.1,
+  "storeyM": 3.0,
+  "axisM": 2.03,
+  "windowShare": 0.71,
+  "windows": "casement-toplight",
+  "whiteFrames": true,
+  "heads": {
+   "shape": "flat",
+   "dressing": "none"
+  },
+  "sills": false,
+  "cornice": "simple",
+  "crown": "cornice",
+  "wall": {
+   "material": "brick",
+   "family": "brown-brick",
+   "hex": "#5b4e47",
+   "evidence": "pool of the four brown-brick rows sheeted here (Achillesstraat #352d2a, Herculesstraat #665c57, Minervalaan #56443a, Sportstraat #7b6b5f, each calibrated through the renderer on its sheet), averaged; a row with its own photo draws its own (rowNotes)"
+  },
+  "roofStorey": {
+   "kind": "none",
+   "dormersPerFront": 0
+  },
+  "extras": []
+ },
+ "families": [
+  {
+   "id": "hoofddorp-three",
+   "storeys": 3,
+   "label": "three-storey row (eaves 8.4-10.6 m)"
+  },
+  {
+   "id": "hoofddorp-four",
+   "storeys": 4,
+   "label": "four-storey block (eaves 10.6-13.6 m)"
+  },
+  {
+   "id": "hoofddorp-five",
+   "storeys": 5,
+   "label": "five-storey block (eaves 13.6-16.6 m)"
+  }
+ ],
+ "notDrawn": [
+  {
+   "component": "tbd",
+   "what": "tbd"
+  }
+ ]
+}

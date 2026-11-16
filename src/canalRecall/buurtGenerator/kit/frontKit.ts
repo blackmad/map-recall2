@@ -77,6 +77,34 @@ export interface BuurtKitFront {
   cants?: KitCant[];
   /** Ground-storey window fronts (round 16, De Wallen): `KitWindowFront`. */
   windowFronts?: KitWindowFront[];
+  /** The chequer frieze (Hoofddorppleinbuurt): `KitChequer`, a brick band on the series line under the eaves. */
+  chequer?: KitChequer;
+}
+/**
+ * The chequer frieze (Hoofddorppleinbuurt pilot, 2026-11-16): the attic band of the Plan Zuid west blocks, a brick band
+ * `heightM` tall standing on the series line under the eaves slab (or a thin white cap when the series has no eaves),
+ * so the storeys keep their pitch under it. Its brick carries a two-tone pattern and, when stated, a row of small
+ * white-framed attic lights:
+ *  - `chequer`: square cells `cellM` across in `rows` courses from the band's top (absent: the whole band), alternating
+ *    `lightHex` and `darkHex` (absent: the series brick) and kept clear of the lights' columns (Aalsmeerweg 073886,
+ *    2025-07-15 at 80 px/m: cream and near-black squares about 0.14 m in three courses between the attic lights);
+ *  - `stripes`: courses `cellM` tall across the whole band, every other one `lightHex` (Legmeerplein 095655,
+ *    2025-10-01: pale and brown courses round a group of four square attic lights).
+ * `lights`: lights `widthM` x `heightM` at `pitchM` from `footM` over the line, across the member (absent `group`) or a
+ * group of `group` centred on it. Drawn only when stated (a row or street note from the photo); absent, nothing changes.
+ */
+export interface KitChequer { heightM: number; pattern: 'chequer' | 'stripes'; cellM: number; rows?: number; lightHex: string; darkHex?: string;
+  lights?: { widthM: number; heightM: number; pitchM: number; footM?: number; group?: number } }
+/** A stated chequer frieze, validated (null when absent or malformed); stated fields only, in a fixed order. */
+export function kitChequerOf(v: unknown): KitChequer | null {
+  if (!v || typeof v !== 'object') return null;
+  const x = v as Record<string, unknown>, h = Number(x.heightM), c = Number(x.cellM), rows = Number(x.rows);
+  if (!(h >= 0.3 && h <= 3) || !(c >= 0.05 && c <= 0.6) || (x.pattern !== 'chequer' && x.pattern !== 'stripes') || typeof x.lightHex !== 'string' || !HEX.test(x.lightHex)) return null;
+  const l = x.lights as Record<string, unknown> | undefined, lw = Number(l?.widthM), lh = Number(l?.heightM), lp = Number(l?.pitchM), lf = Number(l?.footM), lg = Number(l?.group);
+  const lights = l && typeof l === 'object' && lw >= 0.2 && lw <= 3 && lh >= 0.2 && lh < h && lp >= lw && lp <= 6
+    ? { widthM: lw, heightM: lh, pitchM: lp, ...(lf >= 0 && lf + lh <= h ? { footM: lf } : {}), ...(Number.isInteger(lg) && lg >= 1 && lg <= 12 ? { group: lg } : {}) } : null;
+  return { heightM: h, pattern: x.pattern, cellM: c, ...(Number.isInteger(rows) && rows >= 1 && rows <= 20 ? { rows } : {}), lightHex: x.lightHex,
+    ...(typeof x.darkHex === 'string' && HEX.test(x.darkHex) ? { darkHex: x.darkHex } : {}), ...(lights ? { lights } : {}) };
 }
 /** A De Wallen window front over [a0, a1] of the front (groundParts/redLightFront.ts), from the pavement. */
 export type KitWindowFront = { a0: number; a1: number } & RedLightFront;
@@ -202,7 +230,7 @@ export const kitFrontM = (k: BuurtKitFront): number => {
 export const KIT_MULLION_SHARE = 0.3;
 /** A flat series draws the low coping when the kit hangs anything on its front (erkers, ribbon, rhythm, piers). */
 /** Round 10: a member carrying its series' `copingHex` draws the coping too (the series line runs through). */
-export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.stairAxis || k.counted || k.sides || k.loggias || k.eaves || k.entries?.length || k.balconies?.length || k.panes || k.cants?.length || k.windowFronts?.length || k.copingHex);
+export const kitWantsCoping = (k: BuurtKitFront): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.stairAxis || k.counted || k.sides || k.loggias || k.eaves || k.entries?.length || k.balconies?.length || k.panes || k.cants?.length || k.windowFronts?.length || k.copingHex || k.chequer);
 /** A flat series with erkers draws its lid as a low coping behind the white cornice ledge (m), the erkers on it. */
 export const KIT_FLAT_RISE_M = 0.55;
 
@@ -350,11 +378,11 @@ export function buurtKitOf(v: unknown): BuurtKitFront | null {
   const rr = k.roof as { dormers?: unknown; eavesM?: unknown; eavesFrieze?: unknown } | undefined, eavesM = Number(rr?.eavesM);
   const roof = k.roof && Number(k.roof.pitchDeg) > 10 && Number(k.roof.pitchDeg) < 80 && Number(k.roof.riseM) > 0.5 ? { pitchDeg: Number(k.roof.pitchDeg), riseM: Number(k.roof.riseM), ...(hex ? { roofHex: hex } : {}),
     ...(rr?.dormers === false ? { dormers: false as const } : {}), ...(eavesM > 0.2 && eavesM < 2 ? { eavesM, ...(rr?.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } : undefined;
-  const x = v as { sash?: unknown; ribbon?: unknown; attic?: unknown; raised?: unknown; copingHex?: unknown; rhythm?: unknown; stairAxis?: unknown; counted?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown }; eaves?: unknown; entries?: unknown; balconies?: unknown; panes?: unknown; cants?: unknown; windowFronts?: unknown };
+  const x = v as { chequer?: unknown; sash?: unknown; ribbon?: unknown; attic?: unknown; raised?: unknown; copingHex?: unknown; rhythm?: unknown; stairAxis?: unknown; counted?: unknown; erkerBands?: unknown; loggias?: unknown; sides?: { left?: unknown; right?: unknown }; eaves?: unknown; entries?: unknown; balconies?: unknown; panes?: unknown; cants?: unknown; windowFronts?: unknown };
   const flatEaves = !roof ? kitEavesOf(x.eaves) : null, entries = entriesOf(x.entries), attic = kitAtticOf(x.attic), raised = raisedOf(x.raised), balconies = balconiesOf(x.balconies), panes = kitPanesOf(x.panes), cants = cantsValid(x.cants), windowFronts = windowFrontsOf(x.windowFronts), stair = stairAxisOf(x.stairAxis), counted = x.rhythm === true || stair ? null : countedOf(x.counted);
   const side = (q: unknown) => q === 'pier' || q === 'pair' ? q : null, sl = side(x.sides?.left), sr = side(x.sides?.right);
   const joins = k.joins && typeof k.joins === 'object' ? { ...(k.joins.left === true ? { left: true } : {}), ...(k.joins.right === true ? { right: true } : {}) } : {};
-  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(stair && x.rhythm !== true ? { stairAxis: stair } : {}), ...(counted ? { counted } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}), ...(flatEaves ? { eaves: flatEaves } : {}), ...(entries.length ? { entries } : {}), ...(attic ? { attic } : {}), ...(raised.length ? { raised } : {}), ...(balconies.length ? { balconies } : {}), ...(panes ? { panes } : {}), ...(cants.length ? { cants } : {}), ...(windowFronts.length ? { windowFronts } : {}) };
+  return { frontLine: [[line[0][0], line[0][1]], [line[1][0], line[1][1]]], erkers, ...(roof ? { roof } : {}), ...(x.sash === 'paired-transom' ? { sash: 'paired-transom' as const } : {}), ...(x.ribbon === true ? { ribbon: true as const } : {}), ...(typeof x.copingHex === 'string' && /^#[0-9a-f]{6}$/i.test(x.copingHex) ? { copingHex: x.copingHex } : {}), ...(x.rhythm === true ? { rhythm: true as const } : {}), ...(stair && x.rhythm !== true ? { stairAxis: stair } : {}), ...(counted ? { counted } : {}), ...(x.erkerBands === true ? { erkerBands: true as const } : {}), ...(x.loggias === true ? { loggias: true as const } : {}), ...(sl || sr ? { sides: { ...(sl ? { left: sl } : {}), ...(sr ? { right: sr } : {}) } } : {}), ...(joins.left || joins.right ? { joins } : {}), ...(flatEaves ? { eaves: flatEaves } : {}), ...(entries.length ? { entries } : {}), ...(attic ? { attic } : {}), ...(raised.length ? { raised } : {}), ...(balconies.length ? { balconies } : {}), ...(panes ? { panes } : {}), ...(cants.length ? { cants } : {}), ...(windowFronts.length ? { windowFronts } : {}), ...(kitChequerOf(x.chequer) ? { chequer: kitChequerOf(x.chequer)! } : {}) };
 }
 
 /**
