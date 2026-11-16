@@ -108669,8 +108669,6 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "audit:glb 2026-11-16: z-fighting 4.3 m² of greyBrick/sandstone patches on the 1979 fronts (down from 23.8 m²); two fixes failed and were reverted. Blind views preferred after.",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -108703,7 +108701,18 @@
       "triangles": 11833,
       "bytes": 121688,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "32c88595a37f3dbf",
+        "buildVersion": 2,
+        "bytes": 61368,
+        "triangles": 2602
+      },
+      "lod2": {
+        "sourceHash": "32c88595a37f3dbf",
+        "buildVersion": 6,
+        "bytes": 18196,
+        "triangles": 665
+      }
     },
     "sportplaza-mercator": {
       "id": "sportplaza-mercator",
@@ -109206,8 +109215,6 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "audit:glb 2026-11-16: see-through 7/136 rays along the glazed front (z~-27.5, x -23..-9). Blind views preferred after; stray KFC/Pong labels come from the label layer.",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -109240,7 +109247,18 @@
       "triangles": 5837,
       "bytes": 81184,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "e5b583adec690a31",
+        "buildVersion": 2,
+        "bytes": 32644,
+        "triangles": 1141
+      },
+      "lod2": {
+        "sourceHash": "e5b583adec690a31",
+        "buildVersion": 6,
+        "bytes": 9724,
+        "triangles": 259
+      }
     },
     "flevoparkbad": {
       "id": "flevoparkbad",
@@ -111478,8 +111496,6 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "audit:glb 2026-11-16: holes (7 open loops, largest 59.7 m at y~2.1 along x -80..-43) and see-through 40/333 rays along the 309° wing; gaps in the 3DBAG shell under the walkway and ground glass; two small boxes float at the NW front. Blind views all preferred after.",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -111512,7 +111528,18 @@
       "triangles": 9126,
       "bytes": 130160,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "8a03199d2f503155",
+        "buildVersion": 2,
+        "bytes": 38004,
+        "triangles": 1437
+      },
+      "lod2": {
+        "sourceHash": "8a03199d2f503155",
+        "buildVersion": 6,
+        "bytes": 9228,
+        "triangles": 273
+      }
     },
     "zwembad-bijlmer": {
       "id": "zwembad-bijlmer",
@@ -111707,8 +111734,6 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "audit:glb 2026-11-16: geometry-regression, 1.4 m² coplanar faces against 0.5 allowed (glass vs greyBrick 2 cm apart on the west face near (-24.25, 38.6)). Blind views preferred after.",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -111741,7 +111766,18 @@
       "triangles": 13765,
       "bytes": 185340,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "972ed0cfdae4e68a",
+        "buildVersion": 2,
+        "bytes": 55188,
+        "triangles": 2584
+      },
+      "lod2": {
+        "sourceHash": "972ed0cfdae4e68a",
+        "buildVersion": 6,
+        "bytes": 9236,
+        "triangles": 267
+      }
     },
     "victoriabad": {
       "id": "victoriabad",
@@ -112059,7 +112095,13 @@
       },
       "triangles": 2045,
       "bytes": 32408,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod2": {
+        "sourceHash": "b1b2870d29f66e8d",
+        "buildVersion": 6,
+        "bytes": 5360,
+        "triangles": 144
+      }
     }
   }
 }
