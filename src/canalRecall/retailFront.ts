@@ -8,6 +8,7 @@ import { drawRedLightFront, type RedLightFront } from './groundParts/redLightFro
 import { capShare, titleCase, typeLayout, type TypeFace } from './retailTypeFaces.js';
 import { BIKE, bikeQuads, outsideBikes, SHOW_HEXES, USED_HEXES, type BikeClass } from './retailBikes.js';
 import { signText, TEMPLATE_LOOKS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
+import { INTERIOR_V, interiorAccent, roomFor, roomVariant, shopInteriorsOn } from './shopInteriors/rooms.js';
 
 export type V3 = [number, number, number];
 export type FrontTri = { p: V3[]; hex: string; n: V3; lit?: boolean; uv?: [number, number][]; layer?: number; accentHex?: string };
@@ -594,6 +595,7 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   const segs: Array<[number, number]> = windows ? [[s0 + 0.1, s1 - 0.1]]
     : door ? [[s0 + FRONT.postM, door.a0 - FRONT.mullionM], [door.a1 + FRONT.mullionM, s1 - FRONT.postM]] : [[s0 + FRONT.postM, s1 - FRONT.postM]];
   const lightHex = glassTone('#7f8b93', 0.5);
+  const interiorRoom = shopInteriorsOn();
   if (door && puiTop - head > 0.25) b.panel(door.a0, door.a1, FRONT.contentOutM, head + FRONT.transomM, puiTop, lightHex);
   if (door && puiTop - head > 0.25) b.slab(door.a0, door.a1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame, 'bottom');
   for (const [c0, c1] of segs) {
@@ -604,7 +606,17 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     // pane nobody reads at ride distance).
     b.panel(c0, c1, 0.015, base, zr, riser);
     b.slab(c0 - 0.02, c1 + 0.02, 0, FRONT.sillOutM + 0.03, zr - 0.05, zr, frame, 'top');
-    if (look.goods && input.goods !== undefined) {
+    const room = interiorRoom ? roomFor({ template: input.template, ...(look.goods ? { goods: look.goods } : {}) }) : null;
+    if (room) {
+      // Lane shop-interiors (`?shopInteriors=1`): one quad over the whole glass, the room behind it drawn by the chunk
+      // shader's interior mapping (shopInteriors/shader.ts); uv (u, INTERIOR_V + v), the accent carries the room.
+      const first = b.out.length, accent = interiorAccent(room, roomVariant(input.seed), look.lit);
+      b.panel(c0, c1, FRONT.contentOutM, zr, head, '#ffffff', look.lit);
+      for (const t of b.out.slice(first)) {
+        t.accentHex = accent;
+        t.uv = t.p.map(q => [((q[0] - e.x0) * e.ux + (q[1] - e.y0) * e.uy - c0) / (c1 - c0), INTERIOR_V + (q[2] - zr) / (head - zr)] as [number, number]);
+      }
+    } else if (look.goods && input.goods !== undefined) {
       // Lane retail-real: the pane cut into tiles of the template's goods cell (alternate tiles mirrored).
       const cell = goodsCell(look.goods), layer = input.goods + cell.page, [u0, v0, u1, v1] = cell.rect;
       for (let k = 0; k < panes; k++) for (const t of goodsTiles(c0 + k * pw, c0 + (k + 1) * pw)) {

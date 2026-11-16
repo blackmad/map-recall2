@@ -43,6 +43,8 @@ import { LOOK_VARIANTS, PHOTO_WALL_CELL_MEAN, lookHex } from './look/palette.js'
 import { litFacadeWallGain } from './look/sunny.js';
 import { decorateShopfront, setShopfronts, setShopTemplates } from './shopfronts.js';
 import { retailGroundOn } from './retailTemplates.js';
+import { shopInteriorsOn } from './shopInteriors/rooms.js';
+import { installShopInteriors } from './shopInteriors/shader.js';
 import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
@@ -627,6 +629,8 @@ export class ThreeBuildings {
     if (!material) {
       // The lit material's onBeforeCompile does not survive clone(); city-look materials get their own uniforms.
       material = this.lit || this.cityLook ? this.newMaterial() : this.material.clone();
+      // Lane shop-interiors: a cloned raw material copied the atlas uniform; point it back at the shared one.
+      if (shopInteriorsOn()) installShopInteriors(this.THREE, material);
       this.materials.set(look, material);
     }
     const sw = this.atlasSwitches.get(set) ?? null;
@@ -2512,6 +2516,11 @@ export class ThreeBuildings {
   private tapsFor(): ReturnType<typeof cellTapsUniform> | null { return cellTapsEnabled() ? cellTapsUniform(cellTapsOptions(), this.texturePolicy().tierScale) : null; }
 
   private newMaterial(): any {
+    const material = this.newChunkMaterial();
+    // Lane shop-interiors (`?shopInteriors=1`): interior mapping on shop glass; off, the material is untouched.
+    return shopInteriorsOn() ? installShopInteriors(this.THREE, material) : material;
+  }
+  private newChunkMaterial(): any {
     const THREE = this.THREE;
     // The pantile and slate cells (the planned roofs' slope layers) coarsen with distance; every other layer is left alone.
     const roofBase = cellSetOf(this.look) === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
