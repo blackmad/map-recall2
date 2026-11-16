@@ -46,7 +46,7 @@ export function buildRoomMateAitana(_w: number, _d: number, b: BuildingTools) {
     };
   };
   /** A horizontal transom at y over t a..z, cut where the wall top drops below it (sampled every 0.5 m). */
-  const transom = (f: Frame, a: number, z: number, y: number, top: (t: number) => number, h = 0.09, d = 0.13) => {
+  const transom = (f: Frame, a: number, z: number, y: number, top: (t: number) => number, h = 0.06, d = 0.1) => {
     let s: number | null = null;
     for (let t = a; t <= z + 1e-6; t += 0.5) {
       const ok = top(Math.min(t, z - 0.01)) >= y + h + 0.15 && top(Math.max(a + 0.01, Math.min(z - 0.01, t + 0.25))) >= y + h + 0.15;
@@ -66,18 +66,19 @@ export function buildRoomMateAitana(_w: number, _d: number, b: BuildingTools) {
     const isSouth = e === 3;
     const GRID_Y0 = 8.0, P = 1.77;
     // horizontal transoms from 8.0 m, and the 5.0 m transom and 8.0 m sill below
-    for (let y = GRID_Y0; y < 46; y += P / 2) transom(f, 0.3, len - 0.3, y, top, y === GRID_Y0 ? 0.16 : 0.07); // the fine lines of w01-183: a transom every 0.885 m
+    for (let y = GRID_Y0; y < 46; y += P / 2) transom(f, 0.3, len - 0.3, y, top, y === GRID_Y0 ? 0.12 : 0.05); // the fine lines of w01-183: a transom every 0.885 m
     transom(f, 0.3, len - 0.3, 5.0, top);
     // main mullions every 3.1 m (aligned to the south end's 5.1 m)
     const t0 = isSouth ? 5.1 % 3.1 : (len % 3.1) / 2;
-    for (let t = t0; t < len - 0.3; t += 3.1) if (t > 0.3) mullion(f, t, 0, top, 0.06, 0.18);
+    for (let t = t0; t < len - 0.3; t += 3.1) if (t > 0.3) mullion(f, t, 0, top, 0.05, 0.14);
     // strips of opening lights: every second pair of rows (rows 2 and 6 above 8 m), mullions at 1.55 m between the main ones
     for (let k = 1; GRID_Y0 + P * (k + 1) < 46; k += 4) {
       const y0 = GRID_Y0 + P * k, y1 = y0 + P;
       for (let t = t0 + 1.55; t < len - 0.1; t += 3.1) {
         if (t - 1.45 < 0.5 || t > len - 0.5 || Math.min(top(t), top(t - 1.45), top(t - 0.05)) < y1 + 0.3) continue;
-        slab(b, f, t, y0 + 0.09, 0.06, P - 0.09, 0.16, 'frame');
-        slab(b, f, t - 0.75, y0 + 0.2, 1.3, P - 0.31, 0.06, 'dark');
+        // (blind review 2026-11-16: the dark opening-light panels read as ordinary windows; the lights are flush with the
+        // curtain wall in w01-183, so only their mullion is drawn, flush like the rest of the grid)
+        slab(b, f, t, y0 + 0.06, 0.04, P - 0.06, 0.14, 'frame');
       }
     }
     if (isSouth) {
