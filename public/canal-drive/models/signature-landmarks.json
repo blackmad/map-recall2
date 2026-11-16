@@ -109394,7 +109394,13 @@
       },
       "triangles": 1097,
       "bytes": 22696,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod2": {
+        "sourceHash": "67b2b1f5ac4a8453",
+        "buildVersion": 6,
+        "bytes": 8792,
+        "triangles": 328
+      }
     },
     "brediusbad": {
       "id": "brediusbad",
@@ -109615,7 +109621,13 @@
       "triangles": 404,
       "bytes": 10088,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "held": true,
+      "lod2": {
+        "sourceHash": "82231dff5ed6ebaa",
+        "buildVersion": 6,
+        "bytes": 5564,
+        "triangles": 168
+      }
     },
     "noorderparkbad": {
       "id": "noorderparkbad",
@@ -111109,10 +111121,16 @@
       "bytes": 103164,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "1c03eae235b4582a",
+        "sourceHash": "28103a8bda6d274d",
         "buildVersion": 2,
-        "bytes": 42148,
+        "bytes": 42196,
         "triangles": 2540
+      },
+      "lod2": {
+        "sourceHash": "28103a8bda6d274d",
+        "buildVersion": 6,
+        "bytes": 18472,
+        "triangles": 1472
       }
     },
     "sloterparkbad": {
