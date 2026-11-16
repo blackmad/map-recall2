@@ -23,6 +23,7 @@ import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { loadPano, rectifyWall } from '../pand-reference/rectify.ts';
 import type { PanoPick, Wall } from '../pand-reference/select.ts';
 import { renderCacheKey } from './renderCache.ts';
+import { bandFit } from './sheetFit.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const district = arg('district') ?? 'rivierenbuurt', rowId = arg('row'), panoId = arg('pano'), search = arg('pano-search');
@@ -72,8 +73,10 @@ async function band(env: Record<string, string>, tag: string, inputs: readonly s
     }
     const m = JSON.parse(fs.readFileSync(path.join(dir, 'measure.json'), 'utf8')) as { heights?: { topM: number; eavesM: number }; layout?: { storeys?: number } };
     const topM = m.heights?.topM ?? lineM;
-    const left = Math.round(Math.min(sp.x0, sp.x1) * s), w = Math.max(1, Math.round(Math.abs(sp.x1 - sp.x0) * s)), h = Math.min(H, Math.max(1, Math.round(topM * s)));
-    comps.push({ input: await sharp(path.join(dir, 'front.png')).resize(w, h, { fit: 'fill' }).png().toBuffer(), left: Math.max(0, Math.min(W - w, left)), top: H - h });
+    const left = Math.round(Math.min(sp.x0, sp.x1) * s), w = Math.max(1, Math.round(Math.abs(sp.x1 - sp.x0) * s)), { renderH, cropTop, h } = bandFit(topM, s, H);
+    // At scale, cropped at the top when taller than the band (a raised tower), never squeezed into it.
+    const fitted = await sharp(path.join(dir, 'front.png')).resize(w, renderH, { fit: 'fill' }).png().toBuffer();
+    comps.push({ input: cropTop ? await sharp(fitted).extract({ left: 0, top: cropTop, width: w, height: h }).png().toBuffer() : fitted, left: Math.max(0, Math.min(W - w, left)), top: H - h });
     labels.push(`<text x="${left + 3}" y="15" font-size="12" fill="#ddd" font-family="Helvetica">${sp.id.slice(-6)} ${m.layout?.storeys ?? '?'}st ${(m.heights?.eavesM ?? 0).toFixed(1)}m</text>`);
   }
   return { img: await sharp({ create: { width: W, height: H, channels: 3, background: { r: 160, g: 180, b: 200 } } }).composite(comps).png().toBuffer(), labels };
