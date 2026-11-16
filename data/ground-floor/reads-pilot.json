@@ -1,0 +1,2234 @@
+{
+ "schema": "gf-read-v1",
+ "source": "Amsterdam street panoramas (data.amsterdam.nl, CC BY 4.0), cut by scripts/retail-ground/front-photos.ts --whole-wall --outline --aim-height=7 --newest; FEBO Korte Niezel from house:frames prep (at the node)",
+ "date": "2026-11-16",
+ "reader": "Claude Opus (lane ground-floor-20261116), one reader, 42 fronts",
+ "reads": [
+  {
+   "v": 1,
+   "pandId": "0363100012175382",
+   "node": 2724000535,
+   "image": {
+    "ref": "cuts/2724000535-recording_2025-06-30_05-16-46_01075.jpg",
+    "pano": "recording_2025-06-30_05-16-46_01075",
+    "date": "2025-06-30"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.85,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.17,
+     "a1": 0.73,
+     "sillM": 0,
+     "headM": 4.9,
+     "head": "round",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stone",
+    "rusticated": true
+   },
+   "plinth": {
+    "kind": "rusticated",
+    "heightM": 0.6
+   },
+   "groundFinish": {
+    "material": "stone",
+    "hex": "#cbbf9f"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 0,
+    "blade": true
+   },
+   "groundTopM": 5.6,
+   "notes": "Rusticated sandstone piers and base; the arch holds a glazed fanlight over a black lettered board at the springing line; blade sign on the left pier. The left neighbour is a second (modern) The Sting front."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012177960",
+   "node": 2724366976,
+   "image": {
+    "ref": "febo-probe2/febo-at/photo.jpg",
+    "pano": "2023-02-06 Oudezijds Voorburgwal",
+    "date": "2023-02-06"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.55,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.04,
+     "a1": 0.3,
+     "sillM": 0.3,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.36,
+     "a1": 0.64,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.7,
+     "a1": 0.96,
+     "sillM": 0.3,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stone"
+   },
+   "groundFinish": {
+    "material": "stone",
+    "hex": "#d6d0c2"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 1
+   },
+   "groundTopM": 3.6,
+   "low": [
+    "sign",
+    "openings",
+    "groundTopM"
+   ],
+   "notes": "Read across the canal at 22 m (the shop-list cut aims at the Voorburgwal wall at 15 m, oblique). Pale stone piers and lintel under brick; red FEBO letters at the head of the middle opening, on a dark field (glass or a panel: cannot be told at this distance). The brief says letters straight on pale stone; this read cannot confirm it."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012167574",
+   "node": 2724000368,
+   "image": {
+    "ref": "cuts/2724000368-recording_2025-06-30_05-16-46_01071.jpg",
+    "pano": "recording_2025-06-30_05-16-46_01071",
+    "date": "2025-06-30"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.75,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.04,
+     "a1": 0.7,
+     "sillM": 0.1,
+     "headM": 3.3,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stone"
+   },
+   "groundFinish": {
+    "material": "stone",
+    "hex": "#5a5e62"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "wall-letters"
+   },
+   "groundTopM": 4.2,
+   "notes": "Dark grey stone cladding round one wide shop window; white letters on the cladding over the glass; the right fifth is a cladding pier then a beige stone strip (neighbour)."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012165126",
+   "node": 2724000395,
+   "image": {
+    "ref": "cuts/2724000395-recording_2025-06-30_05-16-46_01069.jpg",
+    "pano": "recording_2025-06-30_05-16-46_01069",
+    "date": "2025-06-30"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.55,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.02,
+     "a1": 0.98,
+     "sillM": 0,
+     "headM": 3.4,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "iron"
+   },
+   "groundFinish": {
+    "material": "stone",
+    "hex": "#6f7377"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.7
+   },
+   "sign": {
+    "kind": "lightbox"
+   },
+   "groundTopM": 4.4,
+   "low": [
+    "openings"
+   ],
+   "notes": "Modern glazed front; right half hidden by a lorry; grey band with the logo box over full-width glass."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012167576",
+   "node": 2724000407,
+   "image": {
+    "ref": "cuts/2724000407-recording_2025-06-30_05-16-46_01070.jpg",
+    "pano": "recording_2025-06-30_05-16-46_01070",
+    "date": "2025-06-30"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.8,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.08,
+     "a1": 0.82,
+     "sillM": 0.2,
+     "headM": 3.3,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stone"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#1f1f20"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.7,
+    "hex": "#1f1f20"
+   },
+   "sign": {
+    "kind": "fascia",
+    "blade": true
+   },
+   "groundTopM": 4.3,
+   "notes": "Black painted pui and fascia with white letters; roller shutter; blade sign at the left."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012167505",
+   "node": 2724038631,
+   "image": {
+    "ref": "cuts/2724038631-recording_2025-06-30_05-16-46_01287.jpg",
+    "pano": "recording_2025-06-30_05-16-46_01287",
+    "date": "2025-06-30"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.8,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.04,
+     "a1": 0.73,
+     "sillM": 0.1,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stone"
+   },
+   "groundFinish": {
+    "material": "stone",
+    "hex": "#3e4144"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "lightbox"
+   },
+   "groundTopM": 4.6,
+   "notes": "Dark grey stone cladding; the Levi's logo panel stands on the cladding over the window; glazed upper storeys above."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012168053",
+   "node": 2724038661,
+   "image": {
+    "ref": "cuts/2724038661-recording_2025-06-30_05-16-46_01283.jpg",
+    "pano": "recording_2025-06-30_05-16-46_01283",
+    "date": "2025-06-30"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.6,
+   "extent": "multi",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.42,
+     "sillM": 0.3,
+     "headM": 3.3,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.52,
+     "a1": 0.88,
+     "sillM": 0.2,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "brick"
+   },
+   "groundFinish": {
+    "material": "brick",
+    "hex": "#7a4a3a"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 0
+   },
+   "groundTopM": 3.8,
+   "low": [
+    "groundFinish"
+   ],
+   "notes": "Two fronts in one pand: G-Star (brick, letters on the glass head) and a white stucco vintage shop on the right."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012236007",
+   "node": 332661076,
+   "image": {
+    "ref": "cuts/332661076-recording_2025-09-29_09-14-27_00452.jpg",
+    "pano": "recording_2025-09-29_09-14-27_00452",
+    "date": "2025-09-29"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.6,
+   "extent": "multi",
+   "openings": [
+    {
+     "a0": 0.03,
+     "a1": 0.38,
+     "sillM": 0,
+     "headM": 3.4,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.4,
+     "a1": 0.65,
+     "sillM": 0,
+     "headM": 3.4,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.67,
+     "a1": 0.95,
+     "sillM": 0,
+     "headM": 3.4,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stone"
+   },
+   "groundFinish": {
+    "material": "stone",
+    "hex": "#4a4d50"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 0
+   },
+   "groundTopM": 3.9,
+   "notes": "1990s block: dark columns, glazed bays; FEBO and Jumbo letters in the glass heads; a tree hides the left end."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012178241",
+   "node": 2721771802,
+   "image": {
+    "ref": "cuts/2721771802-recording_2025-07-03_03-29-47_02504.jpg",
+    "pano": "recording_2025-07-03_03-29-47_02504",
+    "date": "2025-07-03"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.85,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.04,
+     "a1": 0.94,
+     "sillM": 0,
+     "headM": 3.2,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "timber"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#7a4a2a"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.6,
+    "hex": "#3d4248"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 4.1,
+   "notes": "Brown timber pui (poster panels either side of glazed double doors) under a dark grey fascia with the Jamin letters."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012179192",
+   "node": 2721723299,
+   "image": {
+    "ref": "cuts/2721723299-recording_2025-07-03_03-29-47_02562.jpg",
+    "pano": "recording_2025-07-03_03-29-47_02562",
+    "date": "2025-07-03"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.8,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.08,
+     "a1": 0.42,
+     "sillM": 0,
+     "headM": 5.0,
+     "head": "round",
+     "kind": "passage"
+    },
+    {
+     "a0": 0.52,
+     "a1": 0.58,
+     "sillM": 0.9,
+     "headM": 2.4,
+     "head": "flat",
+     "kind": "window"
+    },
+    {
+     "a0": 0.7,
+     "a1": 0.88,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "round",
+     "kind": "door"
+    }
+   ],
+   "piers": {
+    "material": "stone"
+   },
+   "plinth": {
+    "kind": "stone-band",
+    "heightM": 0.4
+   },
+   "groundFinish": {
+    "material": "stone",
+    "hex": "#a9aba8"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 0
+   },
+   "groundTopM": 6.0,
+   "notes": "Grey ashlar ground storey: a tall round arch with iron gates and gilt BANK letters in its head, an ATM window, a small round-headed door."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012175273",
+   "node": 2724001150,
+   "image": {
+    "ref": "cuts/2724001150-recording_2025-06-19_03-28-47_01381.jpg",
+    "pano": "recording_2025-06-19_03-28-47_01381",
+    "date": "2025-06-19"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.8,
+   "extent": "multi",
+   "openings": [
+    {
+     "a0": 0.04,
+     "a1": 0.26,
+     "sillM": 0.3,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.3,
+     "a1": 0.42,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.52,
+     "a1": 0.8,
+     "sillM": 0.3,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.82,
+     "a1": 0.95,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "door"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#9aa0a6"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.6,
+    "hex": "#9aa0a6"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.8,
+   "notes": "Grey painted pui under brick: KPN and a phone shop, logo on the grey band."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012167909",
+   "node": 4455025408,
+   "image": {
+    "ref": "cuts/4455025408-TMX7316010203-001547_pano_0000_001063.jpg",
+    "pano": "TMX7316010203-001547_pano_0000_001063",
+    "date": "2020-01-10"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.75,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.02,
+     "a1": 0.95,
+     "sillM": 0.3,
+     "headM": 3.5,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stone"
+   },
+   "plinth": {
+    "kind": "stone-band",
+    "heightM": 0.3
+   },
+   "groundFinish": {
+    "material": "stone",
+    "hex": "#8f8a82"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.5,
+    "inOpening": true,
+    "hex": "#2b3f6b"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 0
+   },
+   "groundTopM": 4.2,
+   "notes": "2020 dusk capture. Granite piers and lintel; a blue lettered band (BOEKEN) across the top of the opening, inside it."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012178698",
+   "node": 5071055281,
+   "image": {
+    "ref": "cuts/5071055281-recording_2025-07-14_06-43-08_01176.jpg",
+    "pano": "recording_2025-07-14_06-43-08_01176",
+    "date": "2025-07-14"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.6,
+   "extent": "multi",
+   "openings": [
+    {
+     "a0": 0.0,
+     "a1": 0.09,
+     "sillM": 0,
+     "headM": 2.4,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.15,
+     "a1": 0.38,
+     "sillM": 0.6,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.42,
+     "a1": 0.5,
+     "sillM": 0,
+     "headM": 2.4,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.56,
+     "a1": 0.95,
+     "sillM": 0.5,
+     "headM": 2.7,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "timber"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#e9e6de"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.4
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.3,
+   "notes": "Two pui in one pand: white painted (door, window, door) and a brown timber shop with a dark fascia."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012178786",
+   "node": 2737810151,
+   "image": {
+    "ref": "cuts/2737810151-recording_2025-06-19_03-28-47_02307.jpg",
+    "pano": "recording_2025-06-19_03-28-47_02307",
+    "date": "2025-06-19"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.8,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.18,
+     "sillM": 0,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.33,
+     "a1": 0.97,
+     "sillM": 0.5,
+     "headM": 2.7,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "plinth": {
+    "kind": "stone-band",
+    "heightM": 0.35
+   },
+   "groundFinish": {
+    "material": "stucco",
+    "hex": "#ece8df"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 1
+   },
+   "groundTopM": 3.4,
+   "notes": "White stucco ground storey; the window has a red patterned frame and the name on the glass."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012169290",
+   "node": 2729940478,
+   "image": {
+    "ref": "cuts/2729940478-recording_2025-06-16_06-42-40_00029.jpg",
+    "pano": "recording_2025-06-16_06-42-40_00029",
+    "date": "2025-06-16"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.85,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.08,
+     "a1": 0.95,
+     "sillM": 0.1,
+     "headM": 2.9,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#eeeeec"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.5,
+    "hex": "#eeeeec"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.6,
+   "notes": "White panel front, roller shutter, PANDORA letters on the white band; poster panels above."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012169650",
+   "node": 467095818,
+   "image": {
+    "ref": "cuts/467095818-recording_2025-07-14_05-25-22_01750.jpg",
+    "pano": "recording_2025-07-14_05-25-22_01750",
+    "date": "2025-07-14"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.85,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.1,
+     "a1": 0.38,
+     "sillM": 0.5,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.44,
+     "a1": 0.67,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.73,
+     "a1": 0.95,
+     "sillM": 0.5,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stone",
+    "rusticated": true
+   },
+   "plinth": {
+    "kind": "stone-band",
+    "heightM": 0.4
+   },
+   "groundFinish": {
+    "material": "stone",
+    "hex": "#5f5f5c"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 1
+   },
+   "groundTopM": 3.9,
+   "notes": "Rusticated dark granite piers; awnings over the side windows; the Etos logo on a dark board in the head of the middle (entrance) opening."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012169543",
+   "node": 2138577015,
+   "image": {
+    "ref": "cuts/2138577015-recording_2025-07-14_05-25-22_01744.jpg",
+    "pano": "recording_2025-07-14_05-25-22_01744",
+    "date": "2025-07-14"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.7,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.95,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#3a3d40"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.7,
+    "hex": "#3a3d40"
+   },
+   "sign": {
+    "kind": "fascia",
+    "blade": true
+   },
+   "groundTopM": 3.9,
+   "low": [
+    "openings"
+   ],
+   "notes": "38 deg oblique. Dark grey band with red FEBO letters; automatiek glass under it; red F blade."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012175144",
+   "node": 2721581317,
+   "image": {
+    "ref": "cuts/2721581317-recording_2025-06-16_03-46-32_02171.jpg",
+    "pano": "recording_2025-06-16_03-46-32_02171",
+    "date": "2025-06-16"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.9,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.08,
+     "a1": 0.68,
+     "sillM": 0.4,
+     "headM": 2.8,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.72,
+     "a1": 0.85,
+     "sillM": 0,
+     "headM": 2.8,
+     "head": "flat",
+     "kind": "door"
+    }
+   ],
+   "piers": {
+    "material": "timber"
+   },
+   "plinth": {
+    "kind": "stone-band",
+    "heightM": 0.35
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#f1efea"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.55,
+    "hex": "#f1efea"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.7,
+   "notes": "White painted timber pui: fascia under a cornice with dark letters, a row of transom lights, black riser."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012179490",
+   "node": 2721578490,
+   "image": {
+    "ref": "cuts/2721578490-recording_2025-06-16_03-46-32_02212.jpg",
+    "pano": "recording_2025-06-16_03-46-32_02212",
+    "date": "2025-06-16"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.8,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.13,
+     "sillM": 0,
+     "headM": 2.7,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.16,
+     "a1": 0.4,
+     "sillM": 0.6,
+     "headM": 2.8,
+     "head": "round",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.45,
+     "a1": 0.58,
+     "sillM": 0,
+     "headM": 2.7,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.62,
+     "a1": 0.92,
+     "sillM": 0.6,
+     "headM": 2.8,
+     "head": "round",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "plinth": {
+    "kind": "stone-band",
+    "heightM": 0.4
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#ece9e0"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 1
+   },
+   "groundTopM": 3.4,
+   "notes": "White pui with two round-headed shop windows and two doors; striped awning over all; script name on the glass; black base."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012168353",
+   "node": 2938482740,
+   "image": {
+    "ref": "cuts/2938482740-recording_2025-06-16_04-42-37_01278.jpg",
+    "pano": "recording_2025-06-16_04-42-37_01278",
+    "date": "2025-06-16"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.4,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.02,
+     "a1": 0.24,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.27,
+     "a1": 0.49,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.52,
+     "a1": 0.74,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.77,
+     "a1": 0.98,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "brick"
+   },
+   "groundFinish": {
+    "material": "brick",
+    "hex": "#8a4a3c"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "none"
+   },
+   "groundTopM": 3.6,
+   "low": [
+    "openings",
+    "sign"
+   ],
+   "notes": "A long awning with lettering covers the ground storey; openings are guessed bays between brick piers."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012178235",
+   "node": 8373482632,
+   "image": {
+    "ref": "cuts/8373482632-recording_2025-07-03_03-29-47_02783.jpg",
+    "pano": "recording_2025-07-03_03-29-47_02783",
+    "date": "2025-07-03"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.75,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.04,
+     "a1": 0.55,
+     "sillM": 0,
+     "headM": 4.2,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.6,
+     "a1": 0.79,
+     "sillM": 0.2,
+     "headM": 4.2,
+     "head": "flat",
+     "kind": "window"
+    },
+    {
+     "a0": 0.8,
+     "a1": 0.95,
+     "sillM": 0,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "door"
+    }
+   ],
+   "piers": {
+    "material": "brick"
+   },
+   "groundFinish": {
+    "material": "brick",
+    "hex": "#5a4a40"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 0
+   },
+   "groundTopM": 4.6,
+   "notes": "2010s dark brick infill with tall glazing; SPAR letters on the head of the glass."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012167807",
+   "node": 1223057252,
+   "image": {
+    "ref": "cuts/1223057252-recording_2025-07-03_06-23-16_00170.jpg",
+    "pano": "recording_2025-07-03_06-23-16_00170",
+    "date": "2025-07-03"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.75,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.03,
+     "a1": 0.15,
+     "sillM": 0,
+     "headM": 2.5,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.22,
+     "a1": 0.48,
+     "sillM": 0.3,
+     "headM": 2.7,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.5,
+     "a1": 0.8,
+     "sillM": 0,
+     "headM": 2.7,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#e4e2dc"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 1.0,
+    "hex": "#e4e2dc"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.8,
+   "notes": "1970s white panel cladding: a tall band with yellow Blokker box letters over the shop; a white end pier."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012176284",
+   "node": 1221172897,
+   "image": {
+    "ref": "cuts/1221172897-recording_2025-07-03_06-23-16_00695.jpg",
+    "pano": "recording_2025-07-03_06-23-16_00695",
+    "date": "2025-07-03"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.7,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.2,
+     "sillM": 0,
+     "headM": 3.3,
+     "head": "round",
+     "kind": "passage"
+    },
+    {
+     "a0": 0.33,
+     "a1": 0.62,
+     "sillM": 0.3,
+     "headM": 3.3,
+     "head": "round",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.7,
+     "a1": 0.9,
+     "sillM": 0.3,
+     "headM": 3.3,
+     "head": "round",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "brick"
+   },
+   "groundFinish": {
+    "material": "brick",
+    "hex": "#8a4a38"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "wall-letters"
+   },
+   "groundTopM": 3.9,
+   "low": [
+    "sign"
+   ],
+   "notes": "1980s brick: an arched passage and two round-arched shop windows; white letters on a dark band under the first floor."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012176255",
+   "node": 2725914132,
+   "image": {
+    "ref": "cuts/2725914132-recording_2025-06-19_03-28-47_01529.jpg",
+    "pano": "recording_2025-06-19_03-28-47_01529",
+    "date": "2025-06-19"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.55,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.15,
+     "a1": 0.35,
+     "sillM": 0,
+     "headM": 2.5,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.45,
+     "a1": 0.6,
+     "sillM": 0.8,
+     "headM": 2.5,
+     "head": "flat",
+     "kind": "window"
+    }
+   ],
+   "piers": {
+    "material": "timber"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#2e3333"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.35
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.0,
+   "low": [
+    "openings"
+   ],
+   "notes": "44 deg oblique. Dark painted pui, small green-lettered fascia, stoop to the right."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012169483",
+   "node": 483553144,
+   "image": {
+    "ref": "cuts/483553144-recording_2025-07-03_06-23-16_01948.jpg",
+    "pano": "recording_2025-07-03_06-23-16_01948",
+    "date": "2025-07-03"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.75,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.03,
+     "a1": 0.2,
+     "sillM": 0,
+     "headM": 2.5,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.25,
+     "a1": 0.42,
+     "sillM": 0.5,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.45,
+     "a1": 0.58,
+     "sillM": 0,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.6,
+     "a1": 0.85,
+     "sillM": 0.5,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "timber"
+   },
+   "plinth": {
+    "kind": "stone-band",
+    "heightM": 0.3
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#8a5a2c"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.4,
+    "hex": "#4a3020"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.2,
+   "notes": "Natural timber pui, dark fascia with the name in the middle."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012179469",
+   "node": 34032855,
+   "image": {
+    "ref": "cuts/34032855-recording_2025-06-19_03-28-47_01604.jpg",
+    "pano": "recording_2025-06-19_03-28-47_01604",
+    "date": "2025-06-19"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.85,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.4,
+     "sillM": 0.3,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.42,
+     "a1": 0.68,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.7,
+     "a1": 0.95,
+     "sillM": 0.3,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#3f4246"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.8,
+    "hex": "#3f4246"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 4.0,
+   "notes": "Dark grey cladding and fascia with white letters and logo; red awnings on the first floor."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012168866",
+   "node": 2722024412,
+   "image": {
+    "ref": "cuts/2722024412-recording_2025-06-16_04-42-37_02232.jpg",
+    "pano": "recording_2025-06-16_04-42-37_02232",
+    "date": "2025-06-16"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.45,
+   "extent": "multi",
+   "openings": [
+    {
+     "a0": 0.25,
+     "a1": 0.55,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.57,
+     "a1": 0.62,
+     "sillM": 0,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.7,
+     "a1": 0.9,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "timber"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#eceae4"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.4,
+    "hex": "#eceae4"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.5,
+   "low": [
+    "openings"
+   ],
+   "notes": "The left upright is out of frame; white pui with lettering on its band."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012169414",
+   "node": 1724414492,
+   "image": {
+    "ref": "cuts/1724414492-recording_2025-07-03_10-31-52_00143.jpg",
+    "pano": "recording_2025-07-03_10-31-52_00143",
+    "date": "2025-07-03"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.5,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.25,
+     "sillM": 0,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.45,
+     "a1": 0.95,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#ecebe6"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 1
+   },
+   "groundTopM": 3.4,
+   "low": [
+    "openings"
+   ],
+   "notes": "A van hides the base. White pui, the Etos board in the head of the shop opening."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012175389",
+   "node": 2721722776,
+   "image": {
+    "ref": "cuts/2721722776-b_20250120_0926_Track02_Sphere_00050.jpg",
+    "pano": "b_20250120_0926_Track02_Sphere_00050",
+    "date": "2025-01-20"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.8,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.92,
+     "sillM": 0,
+     "headM": 3.3,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "timber"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#24272a"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.6,
+    "hex": "#24272a"
+   },
+   "sign": {
+    "kind": "fascia",
+    "blade": true
+   },
+   "groundTopM": 4.2,
+   "notes": "Black painted pui, gold letters on the fascia, lit transom lights, round blade."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012168048",
+   "node": 3458361056,
+   "image": {
+    "ref": "cuts/3458361056-b_20250120_0926_Track02_Sphere_00037.jpg",
+    "pano": "b_20250120_0926_Track02_Sphere_00037",
+    "date": "2025-01-20"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.6,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.0,
+     "a1": 0.55,
+     "sillM": 0,
+     "headM": 3.4,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stone"
+   },
+   "groundFinish": {
+    "material": "stone",
+    "hex": "#6e5f58"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "wall-letters",
+    "blade": true
+   },
+   "groundTopM": 4.2,
+   "low": [
+    "openings"
+   ],
+   "notes": "48 deg oblique. Polished brown granite cladding; letters on the stone over the glass; a vertical blade on the granite pier."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012176223",
+   "node": 2722208470,
+   "image": {
+    "ref": "cuts/2722208470-recording_2025-06-16_04-42-37_01216.jpg",
+    "pano": "recording_2025-06-16_04-42-37_01216",
+    "date": "2025-06-16"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.4,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.6,
+     "sillM": 0.3,
+     "headM": 2.7,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.68,
+     "a1": 0.9,
+     "sillM": 0,
+     "headM": 2.7,
+     "head": "flat",
+     "kind": "door"
+    }
+   ],
+   "piers": {
+    "material": "brick"
+   },
+   "groundFinish": {
+    "material": "brick",
+    "hex": "#3d3633"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "none"
+   },
+   "groundTopM": 3.3,
+   "low": [
+    "openings",
+    "sign"
+   ],
+   "notes": "A tree in a tub hides most of it; a red awning strip runs over the openings."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012177446",
+   "node": 2533391366,
+   "image": {
+    "ref": "cuts/2533391366-recording_2025-06-16_06-42-40_00655.jpg",
+    "pano": "recording_2025-06-16_06-42-40_00655",
+    "date": "2025-06-16"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.45,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.1,
+     "a1": 0.9,
+     "sillM": 0,
+     "headM": 3.5,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stone"
+   },
+   "groundFinish": {
+    "material": "stone",
+    "hex": "#8d9093"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "wall-letters"
+   },
+   "groundTopM": 4.4,
+   "low": [
+    "openings",
+    "sign"
+   ],
+   "notes": "25 m, oblique: the uprights frame the HUGO front (grey stone, red letters on the stone), not BOSS."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012177482",
+   "node": 2721938467,
+   "image": {
+    "ref": "cuts/2721938467-recording_2025-06-16_04-42-37_01104.jpg",
+    "pano": "recording_2025-06-16_04-42-37_01104",
+    "date": "2025-06-16"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.8,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.22,
+     "sillM": 0.5,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.25,
+     "a1": 0.4,
+     "sillM": 0.5,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.4,
+     "a1": 0.56,
+     "sillM": 0,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.58,
+     "a1": 0.95,
+     "sillM": 0.5,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "timber"
+   },
+   "plinth": {
+    "kind": "stone-band",
+    "heightM": 0.4
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#1e2421"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 2
+   },
+   "groundTopM": 3.9,
+   "notes": "Black-green painted pui with pilasters and transom lights; the name in white on the glass over the recessed door."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012172397",
+   "node": 2721938791,
+   "image": {
+    "ref": "cuts/2721938791-recording_2025-06-16_04-42-37_01911.jpg",
+    "pano": "recording_2025-06-16_04-42-37_01911",
+    "date": "2025-06-16"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.5,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.08,
+     "a1": 0.2,
+     "sillM": 0,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.25,
+     "a1": 0.7,
+     "sillM": 0.5,
+     "headM": 2.7,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.75,
+     "a1": 0.85,
+     "sillM": 0,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "door"
+    }
+   ],
+   "piers": {
+    "material": "timber"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#ecebe6"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.35
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.4,
+   "low": [
+    "openings",
+    "plinth"
+   ],
+   "notes": "A trailer and a van hide the base."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012168179",
+   "node": 2725879476,
+   "image": {
+    "ref": "cuts/2725879476-recording_2025-06-19_03-28-47_01867.jpg",
+    "pano": "recording_2025-06-19_03-28-47_01867",
+    "date": "2025-06-19"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.45,
+   "extent": "multi",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.48,
+     "sillM": 0.3,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.55,
+     "a1": 0.95,
+     "sillM": 0.3,
+     "headM": 3.0,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "timber"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#2a2a2c"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.5,
+    "hex": "#1d1d1f"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.6,
+   "low": [
+    "openings"
+   ],
+   "notes": "A tram shelter stands in front; one black fascia spans two houses."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012178833",
+   "node": 2724369653,
+   "image": {
+    "ref": "cuts/2724369653-b_20250114_1026_Track13_Sphere_00009.jpg",
+    "pano": "b_20250114_1026_Track13_Sphere_00009",
+    "date": "2025-01-14"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.75,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.08,
+     "a1": 0.92,
+     "sillM": 0,
+     "headM": 3.2,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "groundFinish": {
+    "material": "stucco",
+    "hex": "#e6e0d2"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "board-in-opening",
+    "opening": 0,
+    "blade": true
+   },
+   "groundTopM": 3.8,
+   "notes": "Pale stucco front; a red lettered valance inside the top of the opening; round blade."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012182905",
+   "node": 5189135461,
+   "image": {
+    "ref": "cuts/5189135461-recording_2025-07-03_04-36-25_00411.jpg",
+    "pano": "recording_2025-07-03_04-36-25_00411",
+    "date": "2025-07-03"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.45,
+   "extent": "multi",
+   "openings": [
+    {
+     "a0": 0.08,
+     "a1": 0.15,
+     "sillM": 0,
+     "headM": 2.4,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.33,
+     "a1": 0.92,
+     "sillM": 0.3,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "groundFinish": {
+    "material": "stucco",
+    "hex": "#e8e6e0"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "none"
+   },
+   "groundTopM": 3.0,
+   "low": [
+    "openings",
+    "sign"
+   ],
+   "notes": "1980s block with timber bays above; a street tree hides the middle."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012168289",
+   "node": 2724000539,
+   "image": {
+    "ref": "cuts/2724000539-recording_2025-06-30_05-16-46_01310.jpg",
+    "pano": "recording_2025-06-30_05-16-46_01310",
+    "date": "2025-06-30"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.8,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.08,
+     "a1": 0.95,
+     "sillM": 0.2,
+     "headM": 3.1,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "plinth": {
+    "kind": "stone-band",
+    "heightM": 0.3
+   },
+   "groundFinish": {
+    "material": "stucco",
+    "hex": "#e9e5da"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.45,
+    "inOpening": true,
+    "hex": "#3c2a4a"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.9,
+   "notes": "White stucco piers with carved consoles at their heads; a dark purple lettered band inside the opening, between the piers; gilt timber frame."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012182858",
+   "node": 34044767,
+   "image": {
+    "ref": "cuts/34044767-recording_2025-07-03_03-29-47_02924.jpg",
+    "pano": "recording_2025-07-03_03-29-47_02924",
+    "date": "2025-07-03"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.5,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.25,
+     "a1": 0.45,
+     "sillM": 0.4,
+     "headM": 2.8,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.47,
+     "a1": 0.62,
+     "sillM": 0.4,
+     "headM": 2.8,
+     "head": "flat",
+     "kind": "shop"
+    },
+    {
+     "a0": 0.7,
+     "a1": 0.82,
+     "sillM": 0,
+     "headM": 2.6,
+     "head": "flat",
+     "kind": "door"
+    }
+   ],
+   "piers": {
+    "material": "timber"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#ecebe6"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.4,
+    "hex": "#ecebe6"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.4,
+   "low": [
+    "openings"
+   ],
+   "notes": "Poles in front; white pui with the AH letters on its band."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012177098",
+   "node": 1354632439,
+   "image": {
+    "ref": "cuts/1354632439-recording_2025-06-16_06-42-40_00235.jpg",
+    "pano": "recording_2025-06-16_06-42-40_00235",
+    "date": "2025-06-16"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.6,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.15,
+     "a1": 0.22,
+     "sillM": 0,
+     "headM": 2.5,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.27,
+     "a1": 0.38,
+     "sillM": 0.8,
+     "headM": 2.5,
+     "head": "flat",
+     "kind": "window"
+    },
+    {
+     "a0": 0.42,
+     "a1": 0.55,
+     "sillM": 0.8,
+     "headM": 2.5,
+     "head": "flat",
+     "kind": "window"
+    },
+    {
+     "a0": 0.65,
+     "a1": 0.92,
+     "sillM": 0.4,
+     "headM": 2.7,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "brick"
+   },
+   "groundFinish": {
+    "material": "brick",
+    "hex": "#2a2a2e"
+   },
+   "fascia": {
+    "kind": "none"
+   },
+   "sign": {
+    "kind": "none"
+   },
+   "groundTopM": 3.2,
+   "notes": "Corner house painted black with white trim; the shop window at the corner under a black awning with the name on it."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012165329",
+   "node": 515047742,
+   "image": {
+    "ref": "cuts/515047742-recording_2025-07-14_07-34-51_01542.jpg",
+    "pano": "recording_2025-07-14_07-34-51_01542",
+    "date": "2025-07-14"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": true,
+   "conf": 0.85,
+   "extent": "single",
+   "openings": [
+    {
+     "a0": 0.05,
+     "a1": 0.18,
+     "sillM": 0,
+     "headM": 2.4,
+     "head": "flat",
+     "kind": "door"
+    },
+    {
+     "a0": 0.25,
+     "a1": 1.0,
+     "sillM": 0.3,
+     "headM": 2.9,
+     "head": "flat",
+     "kind": "shop"
+    }
+   ],
+   "piers": {
+    "material": "stucco"
+   },
+   "groundFinish": {
+    "material": "painted-pui",
+    "hex": "#2d2f33"
+   },
+   "fascia": {
+    "kind": "band",
+    "heightM": 0.5,
+    "hex": "#d0101b"
+   },
+   "sign": {
+    "kind": "fascia"
+   },
+   "groundTopM": 3.6,
+   "notes": "De Pijp corner: dark pui, a red fascia with white FEBO letters on both faces, a canted glazed corner; a white house door at the left."
+  },
+  {
+   "v": 1,
+   "pandId": "0363100012165106",
+   "node": 10829630288,
+   "image": {
+    "ref": "cuts/10829630288-recording_2025-07-03_06-23-16_00186.jpg",
+    "pano": "recording_2025-07-03_06-23-16_00186",
+    "date": "2025-07-03"
+   },
+   "reader": "opus gf-pilot (lane ground-floor-20261116)",
+   "prompt": "gf-read-v1",
+   "readable": false,
+   "conf": 0.8,
+   "openings": [],
+   "notes": "Host error: the hosted pand 0363100012165106 is a 22.9 m wall of three fronts (Het Vachtje and neighbours); the Keurslager logo hangs on the front left of the left upright, so Pouw is the neighbouring pand. Report to the retail lane (hosting)."
+  }
+ ]
+}

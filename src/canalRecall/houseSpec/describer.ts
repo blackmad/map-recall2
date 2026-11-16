@@ -212,6 +212,12 @@ export function upperHead(heads: readonly (Head | U)[]): Head | U {
   return new Set(up).size === 1 ? up[0] : 'mixed';
 }
 
+/** The ground row's head (`heads[0]`), which `upperHead` leaves out: the ground-floor record's head for its openings
+ *  (groundFloor/sources.ts fromDescriber, lane ground-floor-20261116). Unknown when the answer has no rows. */
+export function groundHead(heads: readonly (Head | U)[]): Head | U {
+  return heads.length ? heads[0] : UNKNOWN;
+}
+
 /** The ground row of an answer's `storeys` (GROUND_KINDS), or unknown. `door-only`: not a shop and the street door is the only
  *  ground opening (groundBays 1 with the door at 0, else a ground column count of 1 with a door). */
 export function groundKindOf(a: Pick<DescriberAnswer, 'ground' | 'groundBays' | 'doorIndex' | 'doorBay' | 'columns' | 'readable'>): GroundKind | U {

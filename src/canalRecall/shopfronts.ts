@@ -89,6 +89,8 @@ export function shopKindForTags(tags: Record<string, string>): ShopKind | null {
   return 'shopWindow';
 }
 
+import { groundFloorFor } from './groundFloor/extract.js';
+
 type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 let extract: ShopfrontExtract | null = null;
 
@@ -123,8 +125,10 @@ export function decorateShopTemplate<T extends GeoFeature>(feature: T): T {
   const name = row && feature.properties.shopTemplate === undefined ? templates.templates[row[0]] : undefined;
   const stamp = paint && /^#[0-9a-f]{6}$/i.test(paint) && feature.properties.puiPaint === undefined;
   const bike = name ? templates.bikes?.[id] : undefined, awning = name ? templates.awnings?.[id] : undefined, front = name ? templates.fronts?.[id] : undefined;
+  // Lane ground-floor (`?groundFloor=1`): the pand's ground-floor record, from the extract only the flag's loader installs.
+  const gf = name ? groundFloorFor(id) : undefined;
   if (!name && !stamp) return feature;
-  return { ...feature, properties: { ...feature.properties, ...(name ? { shopTemplate: row![5] ? [name, row![1], row![2], row![3] ?? '', row![4] === 1 ? 1 : 0, row![5]] : [name, row![1], row![2], ...(row![3] || row![4] ? [row![3] ?? ''] : []), ...(row![4] === 1 ? [1] : [])] } : {}), ...(bike ? { bikeShop: bike } : {}), ...(awning ? { shopAwning: awning } : {}), ...(front ? { shopFrontOverride: front } : {}), ...(stamp ? { puiPaint: paint, ...(darkReads.has(id) && templates.paint?.[id] ? { puiDark: 1 } : {}) } : {}) } };
+  return { ...feature, properties: { ...feature.properties, ...(gf ? { groundFloor: gf } : {}), ...(name ? { shopTemplate: row![5] ? [name, row![1], row![2], row![3] ?? '', row![4] === 1 ? 1 : 0, row![5]] : [name, row![1], row![2], ...(row![3] || row![4] ? [row![3] ?? ''] : []), ...(row![4] === 1 ? [1] : [])] } : {}), ...(bike ? { bikeShop: bike } : {}), ...(awning ? { shopAwning: awning } : {}), ...(front ? { shopFrontOverride: front } : {}), ...(stamp ? { puiPaint: paint, ...(darkReads.has(id) && templates.paint?.[id] ? { puiDark: 1 } : {}) } : {}) } };
 }
 
 /** Install the published extract; null removes it (every building falls back to the old random shops). */

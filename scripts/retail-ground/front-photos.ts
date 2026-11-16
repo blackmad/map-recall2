@@ -12,7 +12,7 @@
  * skipping one whose ground band reads as a vehicle (retailPuiPaint.ts vehicleBand, as measure-pui.ts) or barely
  * covers the stretch. Panoramas this run
  * downloads are purged afterwards; the 15 GB disk floor and --max-mb stop it.
- *   node --import tsx scripts/retail-ground/front-photos.ts --nodes=<id,id> --out=<dir> [--per=1] [--max-mb=60] [--offline]
+ *   node --import tsx scripts/retail-ground/front-photos.ts --nodes=<id,id> --out=<dir> [--per=1] [--max-mb=60] [--offline] [--whole-wall] [--aim-height=<m>] [--outline]
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -20,7 +20,7 @@ import sharp from 'sharp';
 import { execSync } from 'node:child_process';
 import { CACHE_DIR, findPands, http, lngLatToRd, neighbourhood, nearestOnSeg, panoTracker, purgeFiles, type Footprint } from '../pand-reference/core.ts';
 import { listPanos, pickWall, rankPanos } from '../pand-reference/select.ts';
-import { aimPose, frameFor, gridConvergenceDeg, type WallQuad } from '../house-frames/pose.ts';
+import { aimPose, frameFor, gridConvergenceDeg, projectRd, type WallQuad } from '../house-frames/pose.ts';
 import { cutPerspective, loadEquirect, rectifyFromFrame } from '../house-frames/photo.ts';
 import { PUI_BAND, vehicleBand } from '../../src/canalRecall/retailPuiPaint.ts';
 import type { RankWindow, Wall } from '../pand-reference/select.ts';
@@ -38,6 +38,7 @@ export function shopStretch(wall: Wall, node: { x: number; y: number }): Wall {
 http.userAgent = 'MapRecall/1.0 (+https://github.com/blackmad/map-recall2)';
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 if (process.argv.includes('--offline')) http.offline = true;
+const WHOLE = process.argv.includes('--whole-wall'), OUTLINE = process.argv.includes('--outline'), AIM_H = Number(arg('aim-height') ?? AIM.heightM);
 const OUT = arg('out')!, PER = Number(arg('per') ?? 1), MAX_MB = Number(arg('max-mb') ?? 60);
 const nodes = (arg('nodes') ?? '').split(',').filter(Boolean);
 fs.mkdirSync(OUT, { recursive: true });
@@ -77,7 +78,9 @@ for (const e of want) {
   const near = walls.map(w => ({ w, d: nearestOnSeg(node, { a: w.a, b: w.b }).d })).filter(x => x.d <= 8);
   const wall = near.sort((p, q) => score(p.w, p.d) - score(q.w, q.d))[0]?.w;
   if (!wall) { receipts[e.id] = { skip: 'no exposed wall within 8 m' }; continue; }
-  const shop = shopStretch(wall, node), quad: WallQuad = { a: shop.a, b: shop.b, heightM: AIM.heightM };
+  // Lane ground-floor (`--whole-wall`, `--aim-height=<m>`): the pand's whole street wall and more of its height, for the
+  // ground-floor read (piers, arches and plinth across the front, the sign above it).
+  const shop = WHOLE ? wall : shopStretch(wall, node), quad: WallQuad = { a: shop.a, b: shop.b, heightM: AIM_H };
   let done = 0; const tried: string[] = [];
   try {
     // `--newest` (lane retail-real round 5): the latest capture first, so a shop check is not judged on a 2019 front.
@@ -98,6 +101,14 @@ for (const e of want) {
       }
       const v = vehicleBand(luma, rect.width, rows), cover = n ? valid / n : 0;
       if (v.vehicle || cover < AIM.minValid) { tried.push(`${pick.panoId}: ${v.vehicle ? `vehicle (${v.vehicle})` : `covers ${(100 * cover).toFixed(0)} %`}`); continue; }
+      // `--outline`: the wall's two ends as thin cyan uprights, so a reader can tell the pand's own front from its neighbours'.
+      if (OUTLINE) for (const end of [shop.a, shop.b]) {
+        const p0 = projectRd(frame, pose, end, 0), p1 = projectRd(frame, pose, end, AIM_H);
+        for (let y = Math.max(0, Math.round(Math.min(p0.y, p1.y))); y < Math.min(cut.height, Math.round(Math.max(p0.y, p1.y))); y++) {
+          const t = (y - p0.y) / ((p1.y - p0.y) || 1), x0 = Math.round(p0.x + (p1.x - p0.x) * t);
+          for (let x = x0 - 1; x <= x0; x++) if (x >= 0 && x < cut.width) { const q = (y * cut.width + x) * 3; cut.data[q] = 0; cut.data[q + 1] = 230; cut.data[q + 2] = 255; }
+        }
+      }
       const file = path.join(OUT, `${e.id}-${pick.panoId}.jpg`);
       await sharp(Buffer.from(cut.data), { raw: { width: cut.width, height: cut.height, channels: 3 } }).jpeg({ quality: 85 }).toFile(file);
       receipts[e.id] = { pand: id, name: e.tags?.name ?? '', pano: pick.panoId, date: String(pick.timestamp).slice(0, 10), distM: +pick.distM.toFixed(1), obliquityDeg: +pick.obliquityDeg.toFixed(1), stretchM: +shop.len.toFixed(1), cover: +cover.toFixed(2), ...(tried.length ? { skipped: tried } : {}), file };
