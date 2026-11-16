@@ -30,7 +30,7 @@ export function mergeGroundFloor(pandId: string, parts: readonly (Part | null | 
   };
   const gt = best('groundTopM');
   if (gt) receipts.groundTopM = receipt(gt, 'groundTopM');
-  const out: GroundFloor = { pandId, openings, piers, plinth: pick('plinth'), groundFinish: pick('groundFinish'), fascia: pick('fascia'), sign: pick('sign'), ...(gt ? { groundTopM: gt.groundTopM } : {}), receipts };
+  const out: GroundFloor = { pandId, openings, piers, plinth: pick('plinth'), groundFinish: pick('groundFinish'), fascia: pick('fascia'), sign: pick('sign'), ...(gt ? { groundTopM: gt.groundTopM } : {}), ...(op.spanM ? { spanM: op.spanM } : {}), receipts };
   // A sign naming an opening the winning openings do not have points at the widest shop opening instead.
   if (out.sign.opening !== undefined && !(out.sign.opening < openings.length)) out.sign = { ...out.sign, opening: undefined };
   return drawProblems(out).length ? null : out;
@@ -38,8 +38,8 @@ export function mergeGroundFloor(pandId: string, parts: readonly (Part | null | 
 
 /** The drawn part of a record (what the extract carries; receipts stay in the data file). */
 export function drawOf(g: GroundFloor): GroundFloorDraw {
-  const { openings, piers, plinth, groundFinish, fascia, sign, groundTopM } = g;
-  return { openings, piers, plinth, groundFinish, fascia, sign, ...(groundTopM !== undefined ? { groundTopM } : {}) };
+  const { openings, piers, plinth, groundFinish, fascia, sign, groundTopM, spanM } = g;
+  return { openings, piers, plinth, groundFinish, fascia, sign, ...(groundTopM !== undefined ? { groundTopM } : {}), ...(spanM !== undefined ? { spanM } : {}) };
 }
 
 export { GF_FIELDS };

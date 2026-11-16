@@ -55,6 +55,9 @@ export interface GroundFloorDraw {
   sign: GfSign;
   /** The ground storey's top over the pavement (first-floor line), when a source states it. */
   groundTopM?: number;
+  /** The wall length (m) the openings' fractions are of (the read's cut), when known: a longer mesh run draws the
+   *  front over this length around the shop's point instead of stretching it over the whole run. */
+  spanM?: number;
 }
 /** The record per pand: the drawn fields plus a receipt for each field that a source stated. */
 export interface GroundFloor extends GroundFloorDraw { pandId: string; receipts: Partial<Record<GfField, GfReceipt>> }
@@ -62,7 +65,7 @@ export interface GroundFloor extends GroundFloorDraw { pandId: string; receipts:
 /** One source's partial description, before the merge. */
 export interface GroundFloorPart {
   source: GfSource; confidence: number; ref?: string; at?: string | null;
-  openings?: GfOpening[]; piers?: GfPier[]; plinth?: GfPlinth; groundFinish?: GfGroundFinish; fascia?: GfFascia; sign?: GfSign; groundTopM?: number;
+  openings?: GfOpening[]; piers?: GfPier[]; plinth?: GfPlinth; groundFinish?: GfGroundFinish; fascia?: GfFascia; sign?: GfSign; groundTopM?: number; spanM?: number;
 }
 
 /** Plain period defaults for a field no source states (a record exists only when some source gives openings). */
@@ -105,6 +108,7 @@ export function drawProblems(d: any): string[] {
   if (!d.fascia || !(d.fascia.kind === 'none' || d.fascia.kind === 'band') || (d.fascia.hex !== undefined && !isHex(d.fascia.hex))) p.push('fascia: {kind: none|band, heightM?, inOpening?, hex?}');
   if (!d.sign || !isIn(GF_SIGNS, d.sign.kind)) p.push(`sign: {kind: ${GF_SIGNS.join('|')}, opening?, blade?}`);
   if (d.groundTopM !== undefined && !num(d.groundTopM, 2.2, 9)) p.push('groundTopM: 2.2..9');
+  if (d.spanM !== undefined && !num(d.spanM, 1, 80)) p.push('spanM: 1..80');
   return p;
 }
 

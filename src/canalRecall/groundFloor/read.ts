@@ -28,6 +28,8 @@ export interface GroundFloorRead {
   fascia?: { kind: 'none' | 'band'; heightM?: number; inOpening?: boolean; hex?: string };
   sign?: { kind: GfSignKind; opening?: number; blade?: boolean };
   groundTopM?: number;
+  /** The cut's wall length (m) between the uprights, stamped from the cut receipt (not read). */
+  spanM?: number;
   /** Fields read at low confidence (by key: openings, piers, plinth, groundFinish, fascia, sign, groundTopM). */
   low?: string[];
   notes?: string;
@@ -92,6 +94,7 @@ export function toGroundFloorPart(a: GroundFloorRead, at: string | null = null):
     ...(a.fascia ? { fascia: { kind: a.fascia.kind, ...(a.fascia.heightM ? { heightM: a.fascia.heightM } : {}), ...(a.fascia.inOpening ? { inOpening: true } : {}), ...(a.fascia.hex ? { hex: a.fascia.hex.toLowerCase() } : {}) } } : {}),
     ...(a.sign ? { sign: { kind: a.sign.kind, ...(a.sign.opening !== undefined ? { opening: a.sign.opening } : {}), ...(a.sign.blade ? { blade: true } : {}) } } : {}),
     ...(a.groundTopM ? { groundTopM: a.groundTopM } : {}),
+    ...(typeof a.spanM === 'number' && a.spanM >= 1 && a.spanM <= 80 ? { spanM: a.spanM } : {}),
     ...(a.low?.length ? { lowFields: a.low } : {}),
   };
 }

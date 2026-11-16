@@ -456,8 +456,8 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   // Round 3b: the front spans the stepped run the nearest wall belongs to (retailHosting steppedRun), on its outermost line.
   const run = steppedRun(best, ring), shift = run.parts.find(p => p.e === best)?.t0 ?? 0;
   const e = { x0: run.x0, y0: run.y0, ux: run.ux, uy: run.uy, nx: run.nx, ny: run.ny };
-  if (front.groundFloor) return groundFloorFrontOn(front, front.groundFloor, b, run, e, base, groundM);
   const L = run.len, along = Math.max(0, Math.min(L, (px - e.x0) * e.ux + (py - e.y0) * e.uy));
+  if (front.groundFloor) return groundFloorFrontOn(front, front.groundFloor, b, run, e, base, groundM, along);
   const half = Math.min((L - 0.6) / 2, RETAIL_FRONT.maxSpanM / 2);
   let s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half)), s1 = s0 + 2 * half;
   // Lane retail-real: an audited red-light front spans its measured piece of the front line, projected on the run.
@@ -501,8 +501,14 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
  * record's first-floor line when it lies within GROUND_TOP_TRUST_M of the mesher's ground storey, else the mesher's.
  */
 const GROUND_TOP_TRUST_M = 1.6;
-function groundFloorFrontOn(front: NonNullable<MeshBuilding['retailFront']>, gf: GroundFloorDraw, b: MeshBuilding, run: ReturnType<typeof steppedRun<Edge>>, e: { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number }, base: number, groundM: number): { tris: SignTri[]; cuts?: Array<{ e: Edge; cut: WallCut }> } {
-  const L = run.len, s0 = 0.02, s1 = L - 0.02;
+/** A run longer than the read's wall by this factor draws the front over the read's wall length only. */
+const GF_SPAN_SLACK = 1.25;
+function groundFloorFrontOn(front: NonNullable<MeshBuilding['retailFront']>, gf: GroundFloorDraw, b: MeshBuilding, run: ReturnType<typeof steppedRun<Edge>>, e: { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number }, base: number, groundM: number, along: number): { tris: SignTri[]; cuts?: Array<{ e: Edge; cut: WallCut }> } {
+  const L = run.len;
+  // The read's fractions are of its cut's wall (spanM); a run much longer than that (a corner block, a stepped run of
+  // several fronts) draws the front over spanM around the shop's point, not stretched over the whole run.
+  const span = gf.spanM && L > gf.spanM * GF_SPAN_SLACK + 0.5 ? gf.spanM : L - 0.04;
+  const s0 = Math.max(0.02, Math.min(L - 0.02 - span, along - span / 2)), s1 = s0 + span;
   if (s1 - s0 < 1.2) return { tris: [] };
   const topM = Math.max(2.6, Math.min(7, gf.groundTopM !== undefined && Math.abs(gf.groundTopM - groundM) <= GROUND_TOP_TRUST_M ? gf.groundTopM : groundM));
   const shopCell = b.layers && b.layers.ground < BAY_LAYER_COUNT && (SHOP_KINDS as readonly string[]).includes(BAY_ENTRIES[b.layers.ground]?.kind ?? '') ? b.layers.ground : undefined;
