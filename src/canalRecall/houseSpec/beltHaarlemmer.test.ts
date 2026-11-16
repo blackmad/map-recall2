@@ -8,6 +8,8 @@
  *  - Haarlemmerdijk 131 held for `open-edges`: three step-wall edges (5.2 m) 4-6 cm apart at the rear party wall; `roof.stepWeld` closes them.
  *  - Haarlemmerdijk 133A (0363100012173480) had no crown: the pinned gable foot 9.2 m sat under the photo's shoulders (10.0 m) and the neck
  *    crown stood a column wide; the photo's bell crown reaches 12.3 m.
+ *  131's lane spec was withdrawn by the belt batch hold (04843f800: compiled models failing their gates); its pins read the spec as it stood
+ *  before the hold (fixtures/belt-haarlemmer-0363100012173479-spec-held.json, blob fa5397eef), so the resolver and stepWeld stay gated.
  */
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -27,6 +29,8 @@ import {specView} from './view.ts';
 
 const read = <X>(p: string) => JSON.parse(fs.readFileSync(p, 'utf8')) as X;
 const spec = (id: string) => read<HouseSpec>(`scripts/house-specs/specs/${id}.json`);
+/** Haarlemmerdijk 131's spec before the belt batch hold withdrew it (04843f800). */
+const heldSpec131 = () => read<HouseSpec>('src/canalRecall/houseSpec/fixtures/belt-haarlemmer-0363100012173479-spec-held.json');
 /** facts.ts output (building-recipes/facts.ts --pand) of the pand, as the recipe route's compile reads it. */
 const facts = (id: string) => trustFactsGround(read<BuildingFacts>(`src/canalRecall/houseSpec/fixtures/belt-haarlemmer-${id}-facts.json`), sharedTerrain()); // as compileHouse reads them
 const lum = (hex: string) => { const n = parseInt(hex.slice(1), 16); return (0.2126 * (n >> 16) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255)) / 255; };
@@ -35,7 +39,7 @@ test('131: the register finish stucco does not turn the dark front white', () =>
   const register = emptySpec('0363100012173479', 'Haarlemmerdijk 131');
   register.design = {palette: {wallMaterial: 'stucco'}};
   register.provenance['palette/wallMaterial'] = {source: 'monument-text', confidence: 0.8, ref: 'rce:register', at: null};
-  const resolved = resolveSpecs([register, spec('0363100012173479')]);
+  const resolved = resolveSpecs([register, heldSpec131()]);
   assert.equal(resolved.design.palette?.wallMaterial, 'painted-brick');
   const view = specView(resolved);
   assert.equal(view.wallMaterial, 'painted-brick');
@@ -49,7 +53,7 @@ const gateTriangles = async (intent: ReturnType<typeof toRecipe> & object, f: Bu
 };
 
 test('131: roof.stepWeld closes the rear step walls (open-edges gate 5.2 m -> within 2 m), absent it changes nothing', async () => {
-  const intent = toRecipe(spec('0363100012173479'))!;
+  const intent = toRecipe(heldSpec131())!;
   assert.equal(intent.roof.stepWeld, true);
   const without = structuredClone(intent); delete without.roof.stepWeld;
   // The open-edges gate (gates.ts) allows 2 m of genuine open edge.
