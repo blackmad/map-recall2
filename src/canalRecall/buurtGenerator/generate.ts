@@ -33,6 +33,10 @@ export interface DistrictDesign {
   wall: { material: RowWallMaterial; family: JudgedFamily; hex?: string; evidence?: string };
   roofStorey: RowRoofStorey;
   extras: string[];
+  /** De Pijp (round 14): front forms whose AHN4 front height is the cornice, read by blockLines' AHN_RAISE. Absent, flat
+   *  only (round 11). A hidden pitch (a steep rise behind a gentle front, under 1.5 m per metre there) stands behind its
+   *  cornice, so its front height is the eaves; a pitched front's is up the roof face and never listed. */
+  ahnFrontForms?: { forms: Array<'flat' | 'hidden-pitch'>; evidence: string };
 }
 /** What a family's rows show that the house-rows vocabulary has no field for, drawn by the buurt kit (frontKit.ts), with the photo that states it. */
 export interface DistrictFamilyKit {
@@ -372,18 +376,22 @@ export function blockLines(lib: DistrictLibrary, rows: readonly GenRow[]): { row
   if (!roofs) return { rows: [...rows], clamped };
   // Round 11: only flat fronts' AHN heights are eaves; on a pitched or mansard front AHN's front height sits up the roof
   // face (Leonardostraat 077281: three storeys under tile at 9.9 m were lifted to AHN's 11.1 m and drawn as four).
-  const readsOf = (sr: GenSeries) => sr.members.flatMap(m => { const r = roofs[pandNumber(m.pand.id)]; return r && r.form === 'flat' && typeof r.eavesM === 'number' && r.eavesM > 2 ? [r.eavesM] : []; });
+  const frontForms: readonly string[] = lib.design.ahnFrontForms?.forms ?? ['flat'], frontForm = (f: string | undefined) => !!f && frontForms.includes(f);
+  const readsOf = (sr: GenSeries) => sr.members.flatMap(m => { const r = roofs[pandNumber(m.pand.id)]; return r && frontForm(r.form) && typeof r.eavesM === 'number' && r.eavesM > 2 ? [r.eavesM] : []; });
   const frontOf = (sr: GenSeries) => median(readsOf(sr));
   return { rows: rows.map(row => {
     // Round 11 (Kuinderstraat 067158: five storeys under a deep eaves slab at ~16 m, drawn 4 at 13 m): a series AHN4
     // reads flat at the front a storey over its 3DBAG line, its members agreeing, draws AHN's line (AHN_RAISE).
     const S0 = row.series.map(sr => {
       const v = readsOf(sr), forms = sr.members.map(m => roofs[pandNumber(m.pand.id)]?.form), h = median(v);
-      if (sr.eavesM === null || h === null || v.length < Math.max(AHN_RAISE.minReads, sr.members.length * AHN_RAISE.share) || forms.filter(f => f === 'flat').length < sr.members.length * AHN_RAISE.share) return sr;
-      if (h - sr.eavesM <= AHN_RAISE.minM || Math.max(...v) - Math.min(...v) > ROW_EAVES_STEP_M) return sr;
+      if (sr.eavesM === null || h === null || v.length < Math.max(AHN_RAISE.minReads, sr.members.length * AHN_RAISE.share) || forms.filter(frontForm).length < sr.members.length * AHN_RAISE.share) return sr;
+      // With ahnFrontForms set, the spread drops the highest and lowest of five or more reads (Eerste Jacob van
+      // Campenstraat 166055: one front read 15.34 m among seven at 13.6-14.0 m, a dormer cheek at the gutter).
+      const vs = [...v].sort((a, b) => a - b), core = lib.design.ahnFrontForms && vs.length >= 5 ? vs.slice(1, -1) : vs;
+      if (h - sr.eavesM <= AHN_RAISE.minM || core[core.length - 1] - core[0] > ROW_EAVES_STEP_M) return sr;
       const line = Math.round(h * 20) / 20;
       if (!familyFor(lib, storeysFor(line, lib.design))) return sr; // the district designs no family that tall: keep the line
-      for (const m of sr.members) clamped.set(pandNumber(m.pand.id), { read: sr.eavesM, drawn: line, why: `AHN4 reads the flat front at ${h.toFixed(2)} m on ${v.length} of ${sr.members.length} members (spread ${(Math.max(...v) - Math.min(...v)).toFixed(2)} m), ${(h - sr.eavesM).toFixed(2)} m over 3DBAG's ${sr.eavesM} m line, blockLines AHN_RAISE` });
+      for (const m of sr.members) clamped.set(pandNumber(m.pand.id), { read: sr.eavesM, drawn: line, why: `AHN4 reads the ${frontForms.join(' or ')} front at ${h.toFixed(2)} m on ${v.length} of ${sr.members.length} members (spread ${(core[core.length - 1] - core[0]).toFixed(2)} m), ${(h - sr.eavesM).toFixed(2)} m over 3DBAG's ${sr.eavesM} m line, blockLines AHN_RAISE` });
       return { ...sr, eavesM: line, clamped: sr.members.map(m => m.pand.id) };
     });
     // A raised line within the step of a same-period neighbour's (unraised) line is that line: one eaves (Hunzestraat

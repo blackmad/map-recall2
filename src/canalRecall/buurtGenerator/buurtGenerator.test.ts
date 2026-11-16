@@ -192,6 +192,19 @@ test('block lines: a 3DBAG step AHN does not see is one line (Hunzestraat 120343
   assert.deepEqual(blockLines(lib, rows).rows[0].series.map(s => s.eavesM), [12.1, 6.25]);
 });
 
+test('De Pijp (round 14): a district that lists hidden-pitch fronts lifts the line to AHN, past one outlier read (Eerste Jacob van Campenstraat 157140)', () => {
+  const pands = [0, 1, 2, 3, 4, 5, 6, 7].map(i => pand(i, 1934, 9.3));
+  const { rows } = districtRows(pands, streets);
+  const fronts = [9.3, 9.25, 9.35, 10.9, 9.3, 9.2, 9.3, 9.25];
+  const roofs = Object.fromEntries(pands.map((p, i) => [p.id.slice(-16), { form: 'hidden-pitch' as const, frontRiseM: 3, eavesM: fronts[i] + 3, why: '' }]));
+  const off = { ...lib, measured: { roofs } };
+  assert.deepEqual(blockLines(off, rows).rows[0].series.map(s => s.eavesM), [9.3], 'unlisted: hidden pitch is not a front read (round 11)');
+  const on = { ...off, design: { ...lib.design, ahnFrontForms: { forms: ['flat', 'hidden-pitch'] as Array<'flat' | 'hidden-pitch'>, evidence: 'test' } } };
+  const { rows: lifted, clamped } = blockLines(on, rows);
+  assert.deepEqual(lifted[0].series.map(s => s.eavesM), [12.3]);
+  assert.match([...clamped.values()][0].why, /flat or hidden-pitch front at 12\.30 m on 8 of 8 members \(spread 0\.10 m\)/);
+});
+
 test('round 13: an unstated brick wall is never drawn grey; a warm one and a stated one are untouched', () => {
   const lch = (hex: string) => { const n = parseInt(hex.slice(1), 16), [L, a, b] = oklab(n >> 16, (n >> 8) & 255, n & 255); return [L, Math.hypot(a, b), ((Math.atan2(b, a) * 180) / Math.PI + 360) % 360]; };
   assert.equal(warmWall('#a2694f'), '#a2694f', 'Rooseveltlaan, warm already');
