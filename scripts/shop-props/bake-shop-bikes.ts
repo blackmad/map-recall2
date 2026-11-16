@@ -24,10 +24,15 @@ const GROUP: Record<string, Group> = {
 /** Two LODs: `shop` stands on the pavement; `window` is pressed into the 2 cm relief behind the glass (retailFront.ts
  *  insideRelief), seen through tinted glass, so it keeps the outline only. Targets are triangles before the street-side
  *  cull; a part not listed is dropped (the baby seat, the front rack, the crank and the kickstand). */
-type Lod = { targets: Record<string, number>; sides: number; rims: boolean; stem: boolean };
-const LODS: Record<'shop' | 'window', Lod> = {
-  shop: { targets: { Frame: 80, Fork: 12, RearRack: 16, ChainCase: 8, LenkerBars: 24, Seat: 10, Headlamp: 4 }, sides: 12, rims: true, stem: true },
-  window: { targets: { Frame: 36, Fork: 6, RearRack: 8, ChainCase: 4, LenkerBars: 10, Seat: 6 }, sides: 10, rims: false, stem: false },
+/** `cull`: 'street' for a bike seen side-on from the street (+y): faces turned away are dropped and the flat parts drawn
+ *  once, facing +y. 'wall' for a bike parked perpendicular, nose to the wall (front wheel -x towards it): riders see
+ *  both flanks, so the flat parts (tyres, rims, mudguards) are drawn on both sides and only the faces turned to the
+ *  front (to the wall) or down are dropped. The world's chunk material is single-sided (FrontSide). */
+type Lod = { targets: Record<string, number>; sides: number; rims: boolean; stem: boolean; cull: 'street' | 'wall' };
+const LODS: Record<'perp' | 'shop' | 'window', Lod> = {
+  perp: { targets: { Frame: 64, Fork: 10, RearRack: 12, ChainCase: 6, LenkerBars: 18, Seat: 8, Headlamp: 4 }, sides: 12, rims: true, stem: true, cull: 'wall' },
+  shop: { targets: { Frame: 80, Fork: 12, RearRack: 16, ChainCase: 8, LenkerBars: 24, Seat: 10, Headlamp: 4 }, sides: 12, rims: true, stem: true, cull: 'street' },
+  window: { targets: { Frame: 36, Fork: 6, RearRack: 8, ChainCase: 4, LenkerBars: 10, Seat: 6 }, sides: 10, rims: false, stem: false, cull: 'street' },
 };
 
 const io = new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({ 'meshopt.decoder': MeshoptDecoder });
@@ -39,6 +44,8 @@ type V = [number, number, number];
 const toKit = (p: V): V => [-p[0], p[2], p[1]];
 /** The bike stands side-on to the street, which looks at its +y side: faces turned away (normal y below this) are culled. */
 const CULL_NY = -0.2;
+/** 'wall' cull: a face whose normal points this far to the front (-x, the wall) or down is never seen. */
+const keepFace = (lod: Lod, n: V) => (lod.cull === 'street' ? n[1] >= CULL_NY : n[0] >= -0.85 && n[2] >= -0.8);
 const normalOf = (t: V[]): V => {
   const u = [t[1][0] - t[0][0], t[1][1] - t[0][1], t[1][2] - t[0][2]], w = [t[2][0] - t[0][0], t[2][1] - t[0][1], t[2][2] - t[0][2]];
   const c: V = [u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]], l = Math.hypot(...c) || 1;
@@ -97,25 +104,30 @@ async function bakeOmafiets(lod: Lod): Promise<{ groups: Record<Group, number[]>
     if (!target) { report.push(`${n.getName()}: ${mesh.idx.length / 3} -> dropped`); continue; }
     const out = simplify(mesh, target), tris: V[][] = [];
     for (let i = 0; i < out.length; i += 3) tris.push([0, 1, 2].map(k => { const j = out[i + k] * 3; return [mesh.pos[j], mesh.pos[j + 1], mesh.pos[j + 2]] as V; }));
-    const kept = tris.filter(t => normalOf(t)[1] >= CULL_NY);
+    const kept = tris.filter(t => keepFace(lod, normalOf(t)));
     parts.push({ group, tris: kept });
-    report.push(`${n.getName()}: ${mesh.idx.length / 3} -> ${tris.length} -> ${kept.length} street-side`);
+    report.push(`${n.getName()}: ${mesh.idx.length / 3} -> ${tris.length} -> ${kept.length} kept`);
   }
   // Origin: the ground under the middle of the bike (tyre bottoms at z 0).
   const xs = all.map(p => p[0]), zs = all.map(p => p[2]), ox = (Math.min(...xs) + Math.max(...xs)) / 2, oz = Math.min(...zs);
-  const flat = (g: Group, t: V[]) => put(g, normalOf(t)[1] < 0 ? [t[0], t[2], t[1]] : t);
+  // A flat part faces +y; for a 'wall' bike it is drawn again facing -y, the two faces `half` either side of y 0.
+  const flat = (g: Group, t: V[], half = 0) => {
+    const f = normalOf(t)[1] < 0 ? [t[0], t[2], t[1]] : t, at = (dy: number) => f.map(p => [p[0], p[1] + dy, p[2]] as V);
+    if (lod.cull === 'street') { put(g, f); return; }
+    put(g, at(half)); const b = at(-half); put(g, [b[0], b[2], b[1]]);
+  };
   const put = (g: Group, t: V[]) => groups[g].push(...t.flatMap(p => [r3(p[0] - ox), r3(p[1]), r3(p[2] - oz)]));
   for (const p of parts) for (const t of p.tris) put(p.group, t);
   // Tyres and rims as flat rings in the bike's plane (y 0): a tyre band 4.5 cm deep and the chrome rim just inside it.
   wheels = wheels.sort((a, b) => a.c[0] - b.c[0]);
   for (const w of wheels) {
-    const ring = (r0: number, r1: number, g: Group) => {
+    const ring = (r0: number, r1: number, g: Group, half = 0.02) => {
       for (let k = 0; k < lod.sides; k++) {
         const a0 = (k / lod.sides) * Math.PI * 2, a1 = ((k + 1) / lod.sides) * Math.PI * 2, P = (a: number, r: number): V => [w.c[0] + r * Math.cos(a), w.c[1], w.c[2] + r * Math.sin(a)];
-        flat(g, [P(a0, r0), P(a1, r0), P(a1, r1)]); flat(g, [P(a0, r0), P(a1, r1), P(a0, r1)]);
+        flat(g, [P(a0, r0), P(a1, r0), P(a1, r1)], half); flat(g, [P(a0, r0), P(a1, r1), P(a0, r1)], half);
       }
     };
-    ring(w.r - 0.045, w.r, 'tyre'); if (lod.rims) ring(w.rim - 0.022, w.r - 0.045, 'chrome');
+    ring(w.r - 0.045, w.r, 'tyre'); if (lod.rims) ring(w.rim - 0.022, w.r - 0.045, 'chrome', 0.012);
     report.push(`wheel at x ${r3(w.c[0] - ox)}: tyre r ${r3(w.r)}${lod.rims ? `, rim r ${r3(w.rim)}` : ''}, ${lod.sides} sides`);
   }
   // Mudguards (thin shells the simplifier deletes) as arcs over their wheel, at the source's angular extent.
@@ -123,9 +135,9 @@ async function bakeOmafiets(lod: Lod): Promise<{ groups: Record<Group, number[]>
     const n = Math.max(2, Math.ceil((t1 - t0) / (Math.PI * 2 / lod.sides)));
     for (let k = 0; k < n; k++) {
       const a0 = t0 + (t1 - t0) * k / n, a1 = t0 + (t1 - t0) * (k + 1) / n, P = (a: number, r: number): V => [c[0] + r * Math.cos(a), c[1], c[2] + r * Math.sin(a)];
-      flat(g, [P(a0, r0), P(a1, r0), P(a1, r1)]); flat(g, [P(a0, r0), P(a1, r1), P(a0, r1)]);
+      flat(g, [P(a0, r0), P(a1, r0), P(a1, r1)], 0.025); flat(g, [P(a0, r0), P(a1, r1), P(a0, r1)], 0.025);
     }
-    return n * 2;
+    return n * (lod.cull === 'wall' ? 4 : 2);
   };
   for (const vs of fenders) {
     const mx = vs.reduce((t, p) => t + p[0], 0) / vs.length, w = wheels.slice().sort((a, b) => Math.abs(a.c[0] - mx) - Math.abs(b.c[0] - mx))[0];
@@ -144,13 +156,13 @@ async function bakeOmafiets(lod: Lod): Promise<{ groups: Record<Group, number[]>
     // Wound outward from the post's axis; only the faces the street sees.
     const out = normalOf(a), mid = [(lo[k][0] + lo[k1][0]) / 2 - sp[0], (lo[k][1] + lo[k1][1]) / 2 - sp[1]];
     const s0 = out[0] * mid[0] + out[1] * mid[1] < 0, A = s0 ? [a[0], a[2], a[1]] : a, B = s0 ? [b[0], b[2], b[1]] : b;
-    if (normalOf(A)[1] >= CULL_NY) { put('chrome', A); put('chrome', B); stem += 2; }
+    if (keepFace(lod, normalOf(A))) { put('chrome', A); put('chrome', B); stem += 2; }
   }
   report.push(`stem: ${stem} tris`);
   return { groups, report };
 }
 
-async function bakeRack(): Promise<{ tris: number[]; report: string }> {
+async function bakeRack(cull: 'street' | 'wall'): Promise<{ tris: number[]; report: string }> {
   const doc = await io.read('public/canal-drive/models/street-furniture/bike-rack.glb');
   const tris: number[] = [];
   let all = 0;
@@ -160,24 +172,33 @@ async function bakeRack(): Promise<{ tris: number[]; report: string }> {
     const at = (j: number): V => [mesh.pos[j * 3 + 1], -mesh.pos[j * 3], mesh.pos[j * 3 + 2]];
     for (let i = 0; i < mesh.idx.length; i += 3, all++) {
       const t = [at(mesh.idx[i]), at(mesh.idx[i + 1]), at(mesh.idx[i + 2])];
-      if (normalOf(t)[1] >= CULL_NY) tris.push(...t.flatMap(p => p.map(r3)));
+      const n = normalOf(t);
+      // 'wall': a hoop turned across the pavement shows both faces; only the faces turned down are dropped.
+      if (cull === 'street' ? n[1] >= CULL_NY : n[2] >= -0.8) tris.push(...t.flatMap(p => p.map(r3)));
     }
   }
-  return { tris, report: `bike-rack: ${all} -> ${tris.length / 9} street-side tris` };
+  return { tris, report: `bike-rack (${cull}): ${all} -> ${tris.length / 9} tris` };
 }
 
-const shop = await bakeOmafiets(LODS.shop), win = await bakeOmafiets(LODS.window), rack = await bakeRack();
+const perp = await bakeOmafiets(LODS.perp), shop = await bakeOmafiets(LODS.shop), win = await bakeOmafiets(LODS.window), rack = await bakeRack('street'), rackPerp = await bakeRack('wall');
 const count = (a: number[]) => a.length / 9, tot = (b: typeof shop) => Object.values(b.groups).reduce((t, g) => t + count(g), 0);
 const fmt = (a: number[]) => `[${a.join(',')}]`, groupsOf = (b: typeof shop) => (Object.keys(b.groups) as Group[]).map(g => `  ${g}: ${fmt(b.groups[g])},`).join('\n');
 fs.writeFileSync(OUT, `// GENERATED by scripts/shop-props/bake-shop-bikes.ts from public/canal-drive/omafiets-runtime.glb and
 // public/canal-drive/models/street-furniture/bike-rack.glb; do not edit. Triangles as flat xyz triples (9 numbers each)
 // in the shop-props kit frame: x along the bike (front wheel -x), y across (+y the drive side, towards the street), z up,
 // origin on the ground mid-bike; faces turned away from +y culled.
+// perp: ${perp.report.join('; ')}.
 // shop: ${shop.report.join('; ')}.
 // window: ${win.report.join('; ')}.
-// ${rack.report}.
+// ${rack.report}; ${rackPerp.report}.
 
-/** The omafiets for the pavement by colour group (${tot(shop)} tris): frame (recoloured per bike), dark (mudguards,
+/** The omafiets parked perpendicular, nose to the wall (${tot(perp)} tris): both flanks, front- and down-facing faces culled. */
+export const OMAFIETS_PERP = {
+${groupsOf(perp)}
+} as const;
+export const OMAFIETS_PERP_TRIS = ${tot(perp)};
+
+/** The omafiets side-on (a narrow pavement), by colour group (${tot(shop)} tris): frame (recoloured per bike), dark (mudguards,
  *  carrier, chain case, bars), saddle, tyre, chrome (rims, stem, lamp). */
 export const OMAFIETS_LOW = {
 ${groupsOf(shop)}
@@ -193,6 +214,9 @@ export const OMAFIETS_WINDOW_TRIS = ${tot(win)};
 /** The street-furniture bike rack (an inverted U), the hoop along x, +y towards the street, z up. */
 export const BIKE_RACK = ${fmt(rack.tris)};
 export const BIKE_RACK_TRIS = ${rack.tris.length / 9};
+/** The same hoop with both faces (turned across the pavement beside perpendicular bikes). */
+export const BIKE_RACK_PERP = ${fmt(rackPerp.tris)};
+export const BIKE_RACK_PERP_TRIS = ${rackPerp.tris.length / 9};
 `);
-for (const [k, b] of [['shop', shop], ['window', win]] as const) console.log(`omafiets ${k}: ${tot(b)} tris (${(Object.keys(b.groups) as Group[]).map(g => `${g} ${count(b.groups[g])}`).join(', ')})\n  ${b.report.join('\n  ')}`);
-console.log(`${rack.report} -> ${OUT}`);
+for (const [k, b] of [['perp', perp], ['shop', shop], ['window', win]] as const) console.log(`omafiets ${k}: ${tot(b)} tris (${(Object.keys(b.groups) as Group[]).map(g => `${g} ${count(b.groups[g])}`).join(', ')})\n  ${b.report.join('\n  ')}`);
+console.log(`${rack.report}; ${rackPerp.report} -> ${OUT}`);

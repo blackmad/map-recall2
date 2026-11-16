@@ -2,7 +2,7 @@
 // the street, z up, origin on the ground at the prop's centre). Each states its triangle cost (PROP_COST, tested), its
 // footprint along the wall and its depth, so a layout can fit it and a budget can be read off the table.
 import { hash01, Mesh, shade, type PropTri, type V3 } from './kit.js';
-import { BIKE_RACK, BIKE_RACK_TRIS, OMAFIETS_LOW, OMAFIETS_LOW_TRIS, OMAFIETS_WINDOW, OMAFIETS_WINDOW_TRIS } from './bikeMeshes.generated.js';
+import { BIKE_RACK, BIKE_RACK_PERP, BIKE_RACK_PERP_TRIS, BIKE_RACK_TRIS, OMAFIETS_LOW, OMAFIETS_LOW_TRIS, OMAFIETS_PERP, OMAFIETS_PERP_TRIS, OMAFIETS_WINDOW, OMAFIETS_WINDOW_TRIS } from './bikeMeshes.generated.js';
 
 /** Lane shop-bikes: frame colours of Dutch city bikes, a palette with weights (black dominates; matte navy, dark green,
  *  cream, burgundy; the occasional pastel). A rental fleet's bikes are recoloured from any of these. */
@@ -49,9 +49,11 @@ const fromFlat = (m: Mesh, flat: readonly number[], hex: string) => {
 
 /** Lane shop-bikes: the player's omafiets baked low (bikeMeshes.generated.ts, scripts/shop-props/bake-shop-bikes.ts),
  *  side-on with its chain case to the street (+y), front wheel at -x; its frame and fork in `frameHex`, mudguards,
- *  carrier, chain case and bars dark, rims and stem chrome. `window` is the outline LOD for behind the glass. */
-export function omafiets(frameHex: string, lod: 'shop' | 'window' = 'shop'): PropTri[] {
-  const m = new Mesh(), src = lod === 'shop' ? OMAFIETS_LOW : OMAFIETS_WINDOW;
+ *  carrier, chain case and bars dark, rims and stem chrome. `perp` (David 2026-11-16: "bikes should face perpendicular to
+ *  the storefront") is parked nose to the wall, both flanks drawn, the faces turned to the wall culled; `shop` is side-on
+ *  for a narrow pavement; `window` is the outline LOD for behind the glass. */
+export function omafiets(frameHex: string, lod: 'perp' | 'shop' | 'window' = 'shop'): PropTri[] {
+  const m = new Mesh(), src = lod === 'perp' ? OMAFIETS_PERP : lod === 'shop' ? OMAFIETS_LOW : OMAFIETS_WINDOW;
   fromFlat(m, src.frame, frameHex);
   for (const g of ['dark', 'saddle', 'tyre', 'chrome'] as const) fromFlat(m, src[g], GROUP_HEX[g]);
   return m.tris;
@@ -64,9 +66,9 @@ export const OMAFIETS_SIZE = (() => {
 })();
 
 /** Lane shop-bikes: the street-furniture bike rack (models/street-furniture/bike-rack.glb), an inverted U across x. */
-export function bikeRack(hex = STEEL): PropTri[] {
+export function bikeRack(hex = STEEL, perp = false): PropTri[] {
   const m = new Mesh();
-  fromFlat(m, BIKE_RACK, hex);
+  fromFlat(m, perp ? BIKE_RACK_PERP : BIKE_RACK, hex);
   return m.tris;
 }
 
@@ -208,6 +210,6 @@ export function shelfUnit(w: number, palette: readonly string[], seed: string, f
 }
 
 /** Cost of each fixed-size prop (tested against its builder). */
-export const PROP_COST = { omafiets: OMAFIETS_LOW_TRIS, omafietsWindow: OMAFIETS_WINDOW_TRIS, bikeRack: BIKE_RACK_TRIS, bike: 54, bakfiets: 58, rail: 6, crate: 34, crateNoCard: 32, plant: 6, plantTall: 8, barberStation: 50, washBasin: 24, counter: 14 } as const;
+export const PROP_COST = { omafietsPerp: OMAFIETS_PERP_TRIS, bikeRackPerp: BIKE_RACK_PERP_TRIS, omafiets: OMAFIETS_LOW_TRIS, omafietsWindow: OMAFIETS_WINDOW_TRIS, bikeRack: BIKE_RACK_TRIS, bike: 54, bakfiets: 58, rail: 6, crate: 34, crateNoCard: 32, plant: 6, plantTall: 8, barberStation: 50, washBasin: 24, counter: 14 } as const;
 /** A bucket tier's cost for `w`. */
 export const bucketTierCost = (w: number) => 3 * (4 + Math.max(1, Math.floor(w / 0.27)) * 8);
