@@ -66,7 +66,9 @@ test('whats-new plan view: #plan deep link, ordered phases, In progress from cov
   await expect(phases.first().locator('h3')).toHaveText(first.title);
   await expect(phases.first().locator('.pri')).toHaveText(first.priority);
   await expect(phases.first().locator('.pst')).toHaveText('In progress');
-  for (const status of ['Next', 'Ongoing', 'Later']) await expect(page.locator('#plan-phases .pst', { hasText: status }).first()).toBeVisible();
+  // Every status the plan uses shows (a plan may have no 'next' phase while that phase is in progress).
+  const STATUS_LABEL: Record<string, string> = { next: 'Next', ongoing: 'Ongoing', later: 'Later' };
+  for (const status of [...new Set(plan.phases.map((p: any) => STATUS_LABEL[p.status]).filter(Boolean))] as string[]) await expect(page.locator('#plan-phases .pst', { hasText: status }).first()).toBeVisible();
   await expect(phases.first().locator('ul li')).toHaveCount(first.items.length);
 
   // In progress now comes from coverage-plan.json, linked to GitHub issues where one exists.
