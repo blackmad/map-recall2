@@ -135,7 +135,7 @@ const KEY = '__canalRecallShopInteriorUniforms';
 export function shopInteriorUniforms(THREE: any): ShopInteriorUniforms {
   const g = globalThis as unknown as Record<string, ShopInteriorUniforms | undefined>;
   if (g[KEY]) return g[KEY]!;
-  const tex = new THREE.DataTexture(paintInteriorAtlas(), ATLAS_W, ATLAS_H, THREE.RGBAFormat, THREE.UnsignedByteType);
+  const tex = new THREE.DataTexture(new Uint8Array(paintInteriorAtlas().buffer), ATLAS_W, ATLAS_H, THREE.RGBAFormat, THREE.UnsignedByteType);
   tex.generateMipmaps = true;
   tex.minFilter = THREE.LinearMipmapLinearFilter;
   tex.magFilter = THREE.LinearFilter;
