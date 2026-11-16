@@ -51,6 +51,7 @@ def main():
         mx.eval(model.text_encoder.parameters())
         mx.clear_cache()
     import mlx.core as mx
+    mx.set_cache_limit(2 * 2**30)  # MLX's buffer cache otherwise grows to ~36 GB over a few images and swaps a shared Mac
     print(f"load {time.time() - t0:.1f} s  active {mx.get_active_memory() / 2**30:.1f} GB  peak {mx.get_peak_memory() / 2**30:.1f} GB", flush=True)
     from PIL import Image
     for j in todo:
@@ -64,6 +65,8 @@ def main():
         Path(j["output"]).parent.mkdir(parents=True, exist_ok=True)
         img.save(path=Path(j["output"]), export_json_metadata=False)
         dt = time.time() - t
+        del img
+        mx.clear_cache()
         json.dump({"seconds": round(dt, 1), "width": args.width, "height": args.height, "steps": a.steps, "lora": a.lora, "prompt": j["prompt"]},
                   open(j["output"] + ".json", "w"))
         print(f"{dt:.1f} s  {args.width}x{args.height}  {j['output']}  peak {mx.get_peak_memory() / 2**30:.1f} GB", flush=True)
