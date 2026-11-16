@@ -47,10 +47,15 @@ export interface BayVariant {
   entranceAssembly?: 'raised-pilaster' | 'raised-plain';
   trimDensity?: 'restrained' | 'ornate';
   wallMaterial?: 'brick' | 'smooth';
+  /** A paired sash's centre mullion as a share of the window's width (white frame): two casements parted by a broad
+   *  white post read as one cell (buurt kit, Plan Zuid: Maasstraat's pairs). */
+  mullionShare?: number;
+  /** The entrance: `portiek-pair` two leaves under one transom in a white frame (buurt kit, Plan Zuid portiek). */
+  door?: 'portiek-pair';
 }
 
 export const variantKey = (v: BayVariant, look: Look) =>
-  `${look}|${v.archetype}|${v.kind}|${v.windows}|${v.shape}|${v.shutters}|${v.paintedFrames}|${v.family ?? "masonry"}|${v.proportions ?? "tall"}|${v.frameTone ?? "pale"}|${v.lintel ?? "flat"}|${!!v.paleAccents}|${v.openingOccupancy ?? "legacy"}|${v.openingHeight ?? "legacy"}|${v.sash ?? "legacy"}|${v.trimDensity ?? "legacy"}|${v.wallMaterial ?? "legacy"}|${v.facadeAssembly ?? "none"}|${v.entranceAssembly ?? "none"}|${v.openingGroup ?? "none"}|${v.groundAssembly ?? "none"}`;
+  `${look}|${v.archetype}|${v.kind}|${v.windows}|${v.shape}|${v.shutters}|${v.paintedFrames}|${v.family ?? "masonry"}|${v.proportions ?? "tall"}|${v.frameTone ?? "pale"}|${v.lintel ?? "flat"}|${!!v.paleAccents}|${v.openingOccupancy ?? "legacy"}|${v.openingHeight ?? "legacy"}|${v.sash ?? "legacy"}|${v.trimDensity ?? "legacy"}|${v.wallMaterial ?? "legacy"}|${v.facadeAssembly ?? "none"}|${v.entranceAssembly ?? "none"}|${v.openingGroup ?? "none"}|${v.groundAssembly ?? "none"}${v.mullionShare ? `|m${v.mullionShare}` : ''}${v.door ? `|${v.door}` : ''}`;
 
 /** Building-level choices, derived from a seed so every wall of a building agrees. */
 export function buildingStyle(seed: string, archetype: Archetype): Omit<BayVariant, 'kind'> & { shop: boolean } {
@@ -208,7 +213,8 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
   if (v.sash === 'paired-transom') {
     const bar = p.toon ? 5 : 4;
     ctx.fillRect(x + m, y + h * .27 - bar / 2, w - 2 * m, bar);
-    ctx.fillRect(x + w / 2 - bar / 2, y + m, bar, h - 2 * m);
+    const mb = v.mullionShare ? Math.round(w * v.mullionShare) : bar;
+    ctx.fillRect(x + w / 2 - mb / 2, v.mullionShare ? y : y + m, mb, v.mullionShare ? h : h - 2 * m);
   } else if (v.sash === 'transom') {
     ctx.fillRect(x + m, y + h * .29 - 2, w - 2 * m, p.toon ? 5 : 4);
   } else if (v.sash === 'plain') {
@@ -231,6 +237,7 @@ export function canalGroundGeometry(v: Pick<BayVariant, 'windows' | 'groundAssem
 /** Shared modern/quiet entry layout; keep it clear of the adjacent window. */
 export function bayDoorGeometry(v: BayVariant) {
   const quiet = v.trimDensity === 'restrained';
+  if (v.door === 'portiek-pair') return { x: 30, width: 200, height: 236, bottom: 24, fanlight: false };
   if(v.groundAssembly) { const row = canalGroundGeometry(v); return {x:BAY_PX*(row.doorAxis-row.width/2),width:BAY_PX*row.width,height:GROUND_PX*(row.head-row.sill),bottom:GROUND_PX*row.sill,fanlight:false}; }
   if(v.entranceAssembly === 'raised-plain')return {x:BAY_PX*.71,width:BAY_PX*.18,height:222,bottom:70,fanlight:false};
   if(v.entranceAssembly === 'raised-pilaster')return {x:BAY_PX*.115,width:BAY_PX*.18,height:222,bottom:52,fanlight:true};
@@ -248,6 +255,7 @@ export function bayDoorWindowGeometry(v: BayVariant, look: Look = 'photo') {
 }
 function quietDoorAt(p: Painter, v: BayVariant, groundY: number): void {
   const { ctx } = p, g = bayDoorGeometry(v), y = GROUND_PX - g.bottom - g.height;
+  if (v.door === 'portiek-pair') { portiekPair(p, g.x, y, g.width, g.height); return; }
   p.fill('ink', p.cartoon ? '#e8e3d8' : '#c9c7be'); ctx.fillRect(g.x - 5, y - 5, g.width + 10, g.height + 5);
   p.fill(v.entranceAssembly === 'raised-plain' ? 'ink' : 'accent', v.entranceAssembly === 'raised-plain' ? '#30342f' : '#ffffff'); ctx.fillRect(g.x, y, g.width, g.height);
   // Modern communal entry has a flush rectangular glazed leaf, never a historic fanlight.
@@ -259,6 +267,25 @@ function quietDoorAt(p: Painter, v: BayVariant, groundY: number): void {
     p.shade(() => { ctx.strokeStyle = 'rgba(0,0,0,.18)'; ctx.lineWidth = 2; ctx.strokeRect(g.x + 12, y + 66, g.width - 24, g.height - 82); });
     p.fill('ink', '#b3aea0'); ctx.fillRect(g.x + g.width - 17, y + g.height * .6, 4, 13);
   }
+}
+
+/**
+ * The Plan Zuid portiek entrance (Biesboschstraat, Maasstraat panoramas): two leaves side by side under one glazed
+ * transom, in one white frame with a white centre stile; each leaf a glass panel over a closed lower panel.
+ */
+function portiekPair(p: Painter, x: number, y: number, w: number, h: number): void {
+  const { ctx } = p, white = p.cartoon ? '#f4f1ea' : '#e9e7e0', fw = 9, th = Math.round(h * 0.2);
+  p.fill('ink', white); ctx.fillRect(x - fw, y - fw, w + 2 * fw, h + fw);
+  glassRect(p, x, y, w, th - fw, 1);
+  p.fill('ink', white); ctx.fillRect(x, y + th - fw, w, fw);
+  const lw = (w - fw) / 2;
+  for (const lx of [x, x + lw + fw]) {
+    p.fill('accent', '#ffffff'); ctx.fillRect(lx, y + th, lw, h - th);
+    glassRect(p, lx + 12, y + th + 12, lw - 24, (h - th) * 0.5, 1);
+    p.shade(() => { ctx.strokeStyle = 'rgba(0,0,0,.18)'; ctx.lineWidth = 2; ctx.strokeRect(lx + 14, y + th + (h - th) * 0.62, lw - 28, (h - th) * 0.3); });
+  }
+  p.fill('ink', white); ctx.fillRect(x + lw, y + th, fw, h - th);
+  p.fill('ink', '#b3aea0'); ctx.fillRect(x + lw - 14, y + th + (h - th) * 0.55, 4, 13); ctx.fillRect(x + lw + fw + 10, y + th + (h - th) * 0.55, 4, 13);
 }
 
 function doorAt(p: Painter, x: number, groundY: number, v: BayVariant): void {

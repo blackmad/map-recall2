@@ -1,0 +1,708 @@
+{
+  "district": "apollo-stadion",
+  "title": "Apollobuurt + Stadionbuurt (Plan Zuid south: Minerva-, Beethoven-, Diepenbrock-, Bertelmanplein-, Marathon- and Van Tuyllbuurt)",
+  "buurten": [
+    "KJ02",
+    "KJ03",
+    "KJ04",
+    "KJ05",
+    "KJ06",
+    "KH01",
+    "KH03",
+    "KH04",
+    "KH05"
+  ],
+  "years": [
+    1915,
+    1940
+  ],
+  "evidence": [
+    "district survey (BAG + 3DBAG + roof-facts, 2026-11-15): 3,848 pands; 1930-34 alone 2,248, 1925-29 645, 1935-39 451; eaves modes 13 m (677), 10 m (439), 14 m (256); of pands with a 3DBAG rise >= 2.5 m the orthophoto reads slate on 1,646, pantile-red on 455",
+    "cell design carried over from the Rivierenbuurt library (the same Plan Zuid casement rows, rijn-1934-flat-three) until a sheet here measures otherwise",
+    "five sheets (round 6, artifacts/buurt-generators/apollo-stadion/sheets): Achillesstraat, Herculesstraat, Minervalaan, Quinten Massijsstraat, Sportstraat"
+  ],
+  "design": {
+    "groundM": 3.1,
+    "storeyM": 3.0,
+    "axisM": 2.03,
+    "windowShare": 0.71,
+    "windows": "casement-toplight",
+    "whiteFrames": true,
+    "heads": {
+      "shape": "flat",
+      "dressing": "none"
+    },
+    "sills": false,
+    "cornice": "simple",
+    "crown": "cornice",
+    "wall": {
+      "material": "brick",
+      "family": "brown-brick",
+      "hex": "#5b4e47",
+      "evidence": "pool of the four brown-brick rows sheeted here (Achillesstraat #352d2a, Herculesstraat #665c57, Minervalaan #56443a, Sportstraat #7b6b5f, each calibrated through the renderer on its sheet), averaged; a row with its own photo draws its own (rowNotes)"
+    },
+    "roofStorey": {
+      "kind": "none",
+      "dormersPerFront": 0
+    },
+    "extras": []
+  },
+  "families": [
+    {
+      "id": "apollo-three",
+      "storeys": 3,
+      "label": "three-storey Plan Zuid row (eaves 8.4-10.6 m)"
+    },
+    {
+      "id": "apollo-four",
+      "storeys": 4,
+      "label": "four-storey Plan Zuid block (eaves 10.6-13.6 m): the district's main family"
+    },
+    {
+      "id": "apollo-five",
+      "storeys": 5,
+      "label": "five-storey Plan Zuid block (eaves 13.6-16.6 m)"
+    }
+  ],
+  "pitched": {
+    "minRiseM": 2.5,
+    "maxRiseM": 6,
+    "pitchDeg": 62,
+    "material": "tile",
+    "dormersPerFront": 1,
+    "dormerKind": "plain",
+    "hoist": true,
+    "evidence": "red pantile roofs on both sheeted pitched rows (Herculesstraat 2022-03-21, Sportstraat 2022-03-21, hue 49 and 61 in sun), although the orthophoto reads slate on Sportstraat's six members: the slot is not used here. Pitch and dormers as Rivierenbuurt's Biesboschstraat until a sheet here measures them. Round 7: drawn only on a street whose photo shows it (streetNoteOnly): 3DBAG reads 'slanted' on all 1,602 pands whose rise carries a roof, the flat-topped blocks of Achillesstraat, Minervalaan and Quinten Massijsstraat included",
+    "roofHex": "#9e5b42",
+    "roofHexEvidence": "the Plan Zuid red pantile measured in overcast light on Biesboschstraat (Rivierenbuurt round 4, #9e5b42); the Apollo photos are sunlit, so only their hue is used",
+    "streetNoteOnly": true,
+    "capRiseM": 1.3,
+    "capRiseEvidence": "the two noted pitched streets: Herculesstraat 1.3 m and Sportstraat 1.2 m of tiles seen over the eaves on the rectified photos (39 and 40 px/m); 3DBAG's rise there is 3.5-4.9 m. Round 8"
+  },
+  "notDrawn": [
+    {
+      "component": "roof",
+      "what": "a series under the pitched rise (median 3DBAG rise < 2.5 m) draws a flat lid at the series line; its low set-back roof is not drawn"
+    },
+    {
+      "component": "toplight-panes",
+      "what": "the small-pane toplight over two casements: the painter's transom is one pane"
+    },
+    {
+      "component": "front-gardens",
+      "what": "front gardens and their low walls or hedges are not drawn"
+    }
+  ],
+  "rowNotes": {
+    "achillesstraat-074742": {
+      "wall": {
+        "hex": "#352d2a",
+        "evidence": "Achillesstraat panorama TMX7316010203-001036_pano_0003_000942 (2019-01-04, overcast): brick median #342a25 between 3.5 and 9 m over the middle of the row, divided by the renderer's own brick shift on that sheet (the pool #5b504a drew #594b41)"
+      },
+      "topM": 15.4,
+      "members": {
+        "109276": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "balconies": [
+            {
+              "a0": 0.223,
+              "a1": 1,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "115921": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.036,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0.098,
+              "a1": 0.997,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "144773": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.271,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0.643,
+              "a1": 1,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "150130": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.719,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0,
+              "a1": 0.409,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "150727": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "balconies": [
+            {
+              "a0": 0.06,
+              "a1": 0.961,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "153854": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.321,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0.486,
+              "a1": 1,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "074742": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          }
+        },
+        "077419": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.793,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0.767,
+              "a1": 1,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "094877": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.861,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0,
+              "a1": 0.587,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            },
+            {
+              "a0": 0.831,
+              "a1": 1,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "065150": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "balconies": [
+            {
+              "a0": 0,
+              "a1": 0.757,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "075392": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "entries": [
+            {
+              "a": 0.803,
+              "kind": "arched",
+              "widthM": 1.6,
+              "cells": 3
+            }
+          ],
+          "balconies": [
+            {
+              "a0": 0,
+              "a1": 0.694,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "080810": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          },
+          "balconies": [
+            {
+              "a0": 0,
+              "a1": 0.538,
+              "from": 1,
+              "storeys": 1,
+              "rail": "dark"
+            }
+          ]
+        },
+        "070947": {
+          "panes": {
+            "cells": 6,
+            "rows": 1,
+            "share": 0.33,
+            "widthShare": 0.6
+          }
+        }
+      },
+      "evidence": "the row's own cached panorama (round 6 sheet); round 7: five storeys (ground and four upper) on the photo, so the line is the five-storey line 15.4 m (3.1 m ground + 4 x 3.0 m + 0.3 m), over 3DBAG's 13.2 m eaves; 3DBAG's 70th-percentile roof height is 15.9 m; Achillesstraat: small-paned upper sashes, stacked balconies with dark rails (integrator: dark on Achillesstraat), arched doorways (lane R round 14 trial patch (erk/r14), blind A/B won)"
+    },
+    "herculesstraat-131422": {
+      "wall": {
+        "hex": "#665c57",
+        "evidence": "Herculesstraat panorama TMX7316010203-002460_pano_0003_001231 (2022-03-21, front in shade): brick median #544d48, divided by the renderer's own brick shift on that sheet (the pool #5b504a drew #4b433d)"
+      },
+      "evidence": "the row's own cached panorama (round 6 sheet); round 7: one red street door per member in a white frame, at 0.43 and 0.57 of alternate fronts (photo members 2-8: 0.54, 0.43, 0.57, 0.43, 0.59, 0.43, 0.57), no canopy (the white discs over the open stairs are street lamps)",
+      "entries": [
+        {
+          "a": 0.43,
+          "kind": "door"
+        },
+        {
+          "a": 0.57,
+          "kind": "door"
+        }
+      ]
+    },
+    "minervalaan-066413": {
+      "wall": {
+        "hex": "#56443a",
+        "evidence": "Minervalaan panorama TMX7316010203-001499_pano_0000_000616 (2019-12-09): brick median #453731, divided by the renderer's own brick shift on that sheet (the pool #5b504a drew #49413e)"
+      },
+      "evidence": "the row's own cached panorama (round 6 sheet)"
+    },
+    "quinten-massijsstraat-110788": {
+      "wall": {
+        "hex": "#b7a984",
+        "evidence": "Quinten Massijsstraat panorama TMX7316010203-002464_pano_0002_001688 (2022-03-22, sunlit): pale yellow brick, median #8d8369, divided by the renderer's own brick shift on that sheet (the pool #5b504a drew #463e3b)"
+      },
+      "evidence": "the row's own cached panorama (round 6 sheet)"
+    },
+    "sportstraat-066634": {
+      "wall": {
+        "hex": "#7b6b5f",
+        "evidence": "Sportstraat panorama TMX7316010203-002460_pano_0003_000929 (2022-03-21): brick median #544b43, divided by the renderer's own brick shift on that sheet (the pool #5b504a drew #3e3834)"
+      },
+      "evidence": "Sportstraat panorama TMX7316010203-002460_pano_0003_000929: three to four wide white casements per 14.4 m pand on each upper storey, not the 2.03 m grid; round 7: the blocks alternate member by member: a portiek bay at 0.42-0.45 (brick strip, stair lights, red door under a canopy, white gable with a diamond over the eaves) and a red door under a 5 m white canopy at 0.37-0.42",
+      "axisM": 3.6,
+      "entries": [
+        {
+          "a": 0.43,
+          "kind": "gable-bay"
+        },
+        {
+          "a": 0.4,
+          "kind": "canopy"
+        }
+      ]
+    },
+    "stadionkade-063989": {
+      "wallFamily": {
+        "family": "dark-brown-brick",
+        "evidence": "panorama recording_2025-07-30_06-07-02_01201 (2025-07-30): dark grey-brown brick over the whole block; the round 9 panorama vote read #ae9772 (light tan), which the photo contradicts"
+      },
+      "erkers": {
+        "063989": [
+          {
+            "a0": 0.5,
+            "a1": 0.995,
+            "depthM": 0.6,
+            "faceM": 2.2,
+            "corner": true
+          }
+        ],
+        "101049": [
+          {
+            "a0": 0.03,
+            "a1": 0.55,
+            "depthM": 0.6,
+            "faceM": 2.31,
+            "corner": true
+          }
+        ],
+        "117276": [
+          {
+            "a0": 0.66,
+            "a1": 0.98,
+            "depthM": 0.6,
+            "faceM": 1.42,
+            "front": "timber",
+            "storeys": 1,
+            "apron": true
+          }
+        ],
+        "085491": [
+          {
+            "a0": 0.2,
+            "a1": 0.6,
+            "depthM": 0.6,
+            "faceM": 1.78,
+            "front": "timber",
+            "storeys": 1,
+            "apron": true
+          }
+        ],
+        "149160": [
+          {
+            "a0": 0.54,
+            "a1": 0.82,
+            "depthM": 0.6,
+            "faceM": 1.24,
+            "storeys": 3
+          }
+        ],
+        "079933": [
+          {
+            "a0": 0.005,
+            "a1": 0.22,
+            "depthM": 0.6,
+            "faceM": 0.95,
+            "corner": true,
+            "storeys": 3
+          }
+        ],
+        "074162": [
+          {
+            "a0": 0.04,
+            "a1": 0.43,
+            "depthM": 0.6,
+            "faceM": 1.73,
+            "front": "timber",
+            "storeys": 1,
+            "apron": true
+          },
+          {
+            "a0": 0.46,
+            "a1": 0.82,
+            "depthM": 0.6,
+            "faceM": 1.6,
+            "front": "timber",
+            "storeys": 1,
+            "apron": true
+          }
+        ],
+        "119687": [
+          {
+            "a0": 0.29,
+            "a1": 0.63,
+            "depthM": 0.6,
+            "faceM": 1.51,
+            "storeys": 3
+          },
+          {
+            "a0": 0.65,
+            "a1": 0.94,
+            "depthM": 0.6,
+            "faceM": 1.29,
+            "storeys": 3
+          }
+        ]
+      },
+      "attic": {
+        "heightM": 1.6
+      },
+      "evidence": "Stadionkade panorama recording_2025-07-30_06-07-02_01201 (2025-07-30, round 9 held-out sheet, 26 px/m), lane R round 12; BAG draws no erkers on this row. Brick canted bay columns with white-framed lights: two at the left end (063989 0.5 to its party wall and 101049 from it, each closed there), 149160 0.54-0.82 and 079933 to 0.22 (first to third floor), 119687 0.29-0.63 and 0.65-0.94; one-storey white timber oriels on a white apron over the ground floor: 117276 0.66-0.98, 085491 0.2-0.6, 074162 0.04-0.43 and 0.46-0.82. Spans read off the rectified photo against the member lines (+-0.3 m); Stadionkade (recording_2025-07-30_06-07-02_01201): the top storey a ~1.6 m white attic frieze of paired small lights under the line"
+    },
+    "pieter-lastmankade-115143": {
+      "topM": 8.7,
+      "raised": {
+        "068475": [
+          {
+            "a0": 0,
+            "a1": 0.54,
+            "riseM": 1.2
+          }
+        ],
+        "095079": [
+          {
+            "a0": 0,
+            "a1": 0.23,
+            "riseM": 0.65
+          }
+        ]
+      },
+      "evidence": "Pieter Lastmankade (recording_2025-07-30_07-40-42_00759, 40 px/m): one parapet near 9.3 m along the row (AHN4 8.7-9.3 m), with brick stair towers over it: 068475 left half ~1.2 m, 095079 left end ~0.65 m; drawn at the row line with raised parts, not as a 9.95 m series"
+    },
+    "gerrit-van-der-veenstraat-078737": {
+      "members": {
+        "080391": {
+          "entries": [
+            {
+              "a": 0.53,
+              "kind": "porch",
+              "widthM": 4.2,
+              "cells": 6
+            }
+          ],
+          "panes": {
+            "cells": 4
+          }
+        },
+        "066529": {
+          "entries": [
+            {
+              "a": 0.54,
+              "kind": "porch",
+              "widthM": 4.2,
+              "cells": 6
+            }
+          ],
+          "panes": {
+            "cells": 4
+          }
+        },
+        "068659": {
+          "entries": [
+            {
+              "a": 0.52,
+              "kind": "porch",
+              "widthM": 4.2,
+              "cells": 6
+            }
+          ],
+          "panes": {
+            "cells": 4
+          }
+        }
+      },
+      "evidence": "Gerrit van der Veenstraat: wide porch entrances over six cells, small-paned sashes (lane R round 14 trial patch (erk/r14), blind A/B won)"
+    },
+    "patroclosstraat-084515": {
+      "members": {
+        "084515": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "088338": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "082094": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "145606": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "117088": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "097287": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "130630": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          }
+        },
+        "137581": {
+          "panes": {
+            "cells": 2,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.65
+          },
+          "entries": [
+            {
+              "a": 0.75,
+              "kind": "arched",
+              "widthM": 1.2,
+              "cells": 2
+            }
+          ]
+        },
+        "133916": {
+          "panes": {
+            "cells": 3,
+            "rows": 1,
+            "share": 0.38,
+            "widthShare": 0.6
+          }
+        }
+      },
+      "evidence": "Patroclosstraat: small-paned upper sashes, an arched doorway at 137581 (lane R round 14 trial patch (erk/r14), blind A/B won)"
+    }
+  },
+  "streetNotes": {
+    "Achillesstraat": {
+      "roof": "flat",
+      "evidence": "Achillesstraat panorama (round 6 sheet achillesstraat-074742): five brick storeys to the top of the frame, no roof slope over the front (blind A/B judge, 2026-11-15)"
+    },
+    "Minervalaan": {
+      "roof": "flat",
+      "evidence": "Minervalaan panorama TMX7316010203-001499_pano_0000_000616 (2019-12-09): a deep flat eaves over the top storey, no roof slope seen"
+    },
+    "Quinten Massijsstraat": {
+      "roof": "flat",
+      "evidence": "Quinten Massijsstraat panorama TMX7316010203-002464_pano_0002_001688 (2022-03-22): a thin white flat eaves on both blocks, no roof seen"
+    },
+    "Herculesstraat": {
+      "roof": "pitched",
+      "evidence": "Herculesstraat panorama (round 6 sheet herculesstraat-131422, 2022-03-21): one continuous red pantile roof with small dormers and chimneys over three storeys; round 8: the tiles rise 1.3 m over the eaves on the rectified photo (39 px/m)",
+      "riseM": 1.3
+    },
+    "Sportstraat": {
+      "roof": "pitched",
+      "evidence": "Sportstraat panorama (round 6 sheet sportstraat-066634, 2022-03-21): red pantile roofs over three storeys, hipped at the block ends; round 8: the tiles rise 1.2 m over the eaves on the rectified photo (40 px/m)",
+      "riseM": 1.2
+    }
+  },
+  "flatEaves": {
+    "eavesM": 1.0,
+    "frieze": false,
+    "evidence": "Minervalaan (TMX7316010203-001499_pano_0000_000616, 2019-12-09) and Quinten Massijsstraat (TMX7316010203-002464_pano_0002_001688, 2022-03-22): a broad flat eaves slab about 1 m deep over the front, no frieze, no roof seen above it; 3DBAG puts a roof 3.8-5.4 m behind it, out of sight from the street"
+  }
+}

@@ -14,6 +14,13 @@
 - Bugs found on the way: the routing extract stores [lat, lng], which Node first read reversed, so no doors were drawn. Cached ground cells skipped deck placement, which put the rider up to 0.8 m low on bridges. Street chunks stand each pand on its own footing (`pandRanges`).
 - Still open: kerb-ramp wedges (the worker's compactCell is suspected), water tone, POI labels, far prisms beyond 1.5 km, the windowGrid shader.
 
+## Buurt generator: Rivierenbuurt and Apollo/Stadion published, kit on by default (2026-11-15)
+
+- David approved on #390 after held-out blind A/Bs: 7/7 on round 8's untuned streets and 7/7 on round 9's (seed r9-heldout). Published 4,167 row-front records (`scripts/buurt-generators/publish.ts`) into `public/data/front-records/row-front.json`. The buurt kit (erkers, eaves, entrances, Plan Zuid casements) is now on by default; `?buurtKit=0` / BUURT_KIT=0 turns it off.
+- Brick is measured per row from panoramas (645 of 846 rows, at least 2 capture dates each, white-balanced on the row's own trim); unmeasured rows take the district pool. Roof form is from AHN4.
+- World compile fixes needed by the kit: `scripts/world/pipeline.ts` accepts a row-front's straightened footprint as FOOT, as it already did for row-wall slabs, and `frontKit.ts` rounds the straightened ring to the cells' 1e-7 degree grid. The kit flag changes bay presets city-wide, so the whole world was recompiled (`--against=none`).
+- Direction from David the same day: cover districts with looks and kits first, and layer per-house precision on top as overrides. The canal belt moves to a belt look built the same way.
+
 ## Retail look: shop templates, chain logos, second sources (2026-11-15)
 
 - Merged lane/retail-look-20261114 (0000871c9); default off in round m, switched on in round n the same day (David: "Why retail still off?"). One template is held: `brownBar` (pubs, brown cafés) drew café Hendrix as an opaque dark box with a row of lit dots, worse than the glazed café cell fixed on 2026-11-14, so `RETAIL_HELD`/`RETAIL_HELD_KINDS` keep those fronts on the flag-off cell until the template wins a blind photo review (frames in `artifacts/round-n/hendrix-{off,on,on2}`). Bruna's CC BY-SA 3.0 logo is credited on credits.html. Every template change was kept only if it won a blind, shuffled photo A/B by a fresh opus reviewer; bikes were judged on held-out fronts because the lane had tuned on the first-pass verdicts.

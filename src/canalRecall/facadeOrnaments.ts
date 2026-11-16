@@ -428,7 +428,10 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       s.strip(c.f, l - ROW_FRAME_M, r + ROW_FRAME_M, ROW_TYPE_GLASS.frameOut, w.z1 - fo, w.z1 + ROW_FRAME_M, WHITE);
       s.strip(c.f, l - ROW_FRAME_M, r + ROW_FRAME_M, ROW_TYPE_GLASS.frameOut, w.z0 - ROW_FRAME_M, w.z0 + fo, WHITE);
       s.strip(c.f, l, r, 0.02, zt - 0.03, zt + 0.03, WHITE);
-      s.strip(c.f, w.x - 0.025, w.x + 0.025, 0.02, w.z0, zt - 0.03, WHITE);
+      // Buurt kit paired casements (rowDress.mullionShare): a broad white post the full height parts the pair.
+      const mh = c.rowDress.mullionShare ? (r - l) * c.rowDress.mullionShare / 2 : 0;
+      if (mh) s.strip(c.f, w.x - mh, w.x + mh, 0.025, w.z0, w.z1, WHITE);
+      else s.strip(c.f, w.x - 0.025, w.x + 0.025, 0.02, w.z0, zt - 0.03, WHITE);
     }
   } },
   { id: 'row-shopfront', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'shopfront', build: (c, s) => {

@@ -1,0 +1,398 @@
+{
+  "district": "rivierenbuurt",
+  "title": "Rivierenbuurt (Plan Zuid north: Schelde-, IJsel- and Rijnbuurt)",
+  "buurten": [
+    "KK01",
+    "KK02",
+    "KK03",
+    "KK04",
+    "KK05",
+    "KL01",
+    "KL02",
+    "KM01",
+    "KM02",
+    "KM03",
+    "KM04"
+  ],
+  "years": [
+    1915,
+    1940
+  ],
+  "evidence": [
+    "scripts/block-face/types/rivierenbuurt/rijn-1934-flat-three.json: Boterdiepstraat 6-34 strip 2022-03-24 at 40 px/m (windows 1.44 m on 2.03 m axes, share 0.71; storeys 3.1/3.0/3.0/3.0 m; white frames #efeee8; brick #7a6a5f; flat top under a white trim)",
+    "17 cached municipal panoramas in KK02-04, KL01-02, KM01-03 (2019-01-03 to 2023-01-03), lane sheet artifacts/buurt-generators/rivierenbuurt/survey: four- and five-storey brown-red brick blocks, white casements with toplights, two to four per pand on every upper storey, no head or sill dressings, a flat top with a thin white trim on the side streets",
+    "Biesboschstraat sheet (lane round 2): canted erkers over the upper storeys, from the first floor to a white cap just over the cornice, white-framed lights on all three faces; placed from the BAG outline jogs (frontKit.ts erkersOf)"
+  ],
+  "design": {
+    "groundM": 3.1,
+    "storeyM": 3.0,
+    "axisM": 2.03,
+    "windowShare": 0.71,
+    "windows": "casement-toplight",
+    "whiteFrames": true,
+    "heads": {
+      "shape": "flat",
+      "dressing": "none"
+    },
+    "sills": false,
+    "cornice": "simple",
+    "crown": "cornice",
+    "wall": {
+      "material": "brick",
+      "family": "brown-brick",
+      "hex": "#5b504a",
+      "evidence": "Biesboschstraat (#534842) and Maasstraat (#48413b) panorama brick medians, each divided by the renderer's own shift on that sheet (series #70594d drew #6e5244, #71594b drew #55423b), averaged (round 3)"
+    },
+    "roofStorey": {
+      "kind": "none",
+      "dormersPerFront": 0
+    },
+    "extras": []
+  },
+  "families": [
+    {
+      "id": "rivieren-three",
+      "storeys": 3,
+      "label": "three-storey Plan Zuid row (eaves 8.4-10.6 m)"
+    },
+    {
+      "id": "rivieren-four",
+      "storeys": 4,
+      "label": "four-storey Plan Zuid block (eaves 10.6-13.6 m): the district's main family"
+    },
+    {
+      "id": "rivieren-five",
+      "storeys": 5,
+      "label": "five-storey Plan Zuid block (eaves 13.6-16.6 m; Rijnstraat, Churchilllaan)",
+      "kit": {
+        "ribbon": {
+          "evidence": "Maasstraat panorama TMX7316010203-002473_pano_0000_000333 (2022-03-23): the top storey is one white-framed band of low attic lights through the party walls, brick above and below"
+        },
+        "piers": {
+          "evidence": "Maasstraat panorama (2022-03-23): one attic ribbon per block of two pands, broken at a brick pier whose chimney stack rises over the coping at every other party wall"
+        },
+        "rhythm": {
+          "evidence": "Maasstraat panorama (2022-03-23): per block, a single two-light casement (2.2 m) near each pier and the stair's pair at the middle wall over the portiek, two 1.3 m lights either side of a white panel; about two axes a pand, not the 2.03 m axis grid"
+        }
+      }
+    }
+  ],
+  "pitched": {
+    "minRiseM": 2.5,
+    "maxRiseM": 6,
+    "pitchDeg": 62,
+    "material": "tile",
+    "dormersPerFront": 1,
+    "dormerKind": "plain",
+    "hoist": true,
+    "evidence": "Biesboschstraat panorama TMX7316010203-001034_pano_0000_001940 (2019-01-03): red tile roof behind the cornice, one white-topped box dormer per pand with a hoist beam; 3DBAG ridge-eaves is bimodal over the district's series (1,193 pands under 2 m, 1,243 at 3 m and over); round 3: the photo roof top edge projects at 14.34 m from the camera 10.3 m off the front at 2.44 m, which puts the 3DBAG ridge (eaves + 5.0 m, every Biesboschstraat member; the 6 m cap does not bind) about 2.65 m behind the cornice: a 62 deg street slope, not 52",
+    "roofHex": "#9e5b42",
+    "roofHexEvidence": "round 4: matched in the same light. A pure tile patch of the Biesboschstraat panorama TMX7316010203-001034_pano_0000_001940 (no brick, sky or sunlit edge; sheet x 2390-2500) is #a55a3a, OKLab L 0.549 C 0.109 hue 42; the round-3 hex #a15a30 rendered #a7592a (C 0.118, hue 49, more orange). #9e5b42 renders #a45b3e (L 0.550, C 0.105, hue 42)",
+    "slotLooks": {
+      "slate": {
+        "material": "slate",
+        "roofHex": "#494345",
+        "evidence": "round 5 slate sample: the slate-slot roofs on Biesboschstraat (142780), Scheldestraat (146131, 144881) and Victorieplein (114412) are steep dark tiles with dormers behind a cornice, not slate eaves; Biesboschstraat 142780 (TMX7316010203-001034_pano_0000_001940, overcast) measures #504643 and #483c3a on the roof face, divided by the renderer's tile shift (#9e5b42 drew #a35a3d) to #494345"
+      }
+    },
+    "capRiseM": 1.0,
+    "capRiseEvidence": "Biesboschstraat sheet (TMX7316010203-001034_pano_0000_001940, 37 px/m): the red tiles rise 0.8-1.1 m over the eaves line on the rectified photo, the dormers standing above them; 3DBAG's rise there is 4-6 m. Round 8"
+  },
+  "notDrawn": [
+    {
+      "component": "roof",
+      "what": "a series under the pitched rise (median 3DBAG rise < 2.5 m) draws a flat lid at the series line; its low set-back roof is not drawn"
+    },
+    {
+      "component": "toplight-panes",
+      "what": "the small-pane toplight over two casements: the painter's transom is one pane"
+    }
+  ],
+  "pitchedEaves": {
+    "minRiseM": 2.5,
+    "maxRiseM": 6,
+    "pitchDeg": 35,
+    "material": "slate",
+    "dormersPerFront": 0,
+    "dormerKind": "plain",
+    "hoist": false,
+    "eavesM": 0.9,
+    "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865 (2022-03-24): a flat-looking top, broad white eaves with a soffit over a white lattice frieze 0.85 m tall (kit eaves, roofKit.ts EAVES_LOOK); no roof or dormer seen above them from the pavement, the camera 7.4 m off the front sees no slope under about 59 deg behind the 0.9 m eaves. Drawn at 35 deg to the 3DBAG rise. Round 5: gated by the street note, not the orthophoto slot: of six other slate-slot rows sampled from cached panoramas none shows eaves and frieze (plan doc, round 5)",
+    "capRiseM": 0.6,
+    "capRiseEvidence": "Rooseveltlaan sheet (TMX7316010203-002477_pano_0002_000865, 29 px/m): no roof is seen over the eaves slab, sky directly above it; 0.6 m is the kit's least pitched roof, hidden behind the frieze and slab. Round 8"
+  },
+  "rowNotes": {
+    "maasstraat-129732": {
+      "pierPhase": 0,
+      "evidence": "Maasstraat panorama TMX7316010203-002473_pano_0000_000333 (2022-03-23): chimney piers at the party walls after members 1, 3 and 5 (129732|131549, 114621|074500, 147234|147836), the stair pairs over the portiek doors at the others"
+    },
+    "rooseveltlaan-146491": {
+      "wall": {
+        "hex": "#a2694f",
+        "evidence": "orange-red brick, TMX7316010203-002477_pano_0002_000865 (2022-03-24, low sun): hue 44-46 on the sunlit front (#eca283, OKLab L 0.77 C 0.10, its white frames clipped, so the exposure is not usable) and on the faces turned out of the sun (#9e6e5b L 0.58 C 0.070, #8e5f4e L 0.53 C 0.067); drawn at those faces' light, L 0.56 C 0.085 hue 45 (#9e6449), divided by the renderer's brick shift on this sheet (#5b504a drew #594c44)"
+      },
+      "loggias": [
+        "146491",
+        "148931",
+        "122216",
+        "080196"
+      ],
+      "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865: the four west members carry recessed loggias with brick parapets on the three upper storeys between their erkers"
+    },
+    "hunzestraat-120343": {
+      "erkerFront": "timber",
+      "erkers": {
+        "095203": [
+          {
+            "a0": 0.456,
+            "a1": 0.912,
+            "depthM": 0.72,
+            "faceM": 1.88,
+            "plates": [
+              [
+                0.3333,
+                0.456
+              ],
+              [
+                0.912,
+                1
+              ]
+            ],
+            "storeys": 2
+          }
+        ],
+        "108726": [
+          {
+            "a0": 0.0871,
+            "a1": 0.543,
+            "depthM": 0.77,
+            "faceM": 1.88,
+            "plates": [
+              [
+                0,
+                0.0871
+              ],
+              [
+                0.543,
+                0.6667
+              ]
+            ],
+            "storeys": 2
+          }
+        ],
+        "074339": [
+          {
+            "a0": 0.76,
+            "a1": 0.995,
+            "depthM": 0.64,
+            "faceM": 1.77,
+            "corner": true,
+            "plates": [
+              [
+                0.6667,
+                0.76
+              ]
+            ]
+          }
+        ]
+      },
+      "eaves": {
+        "overhangM": 0.5,
+        "fasciaM": 0.2,
+        "lid": true,
+        "frieze": false
+      },
+      "evidence": "Hunzestraat panorama recording_2025-07-14_11-01-54_02067 (2025-07-14, round 10 held-out sheet, 40 px/m), lane R round 12: every erker is a white timber front, lights corner to corner in thick white frames, brick only between storeys. The wide box pair over 095203/108726 (BAG's spans) covers the first and second floors, plain windows over it; two canted oriels at the right end rise to the line, BAG's on 111890 at 0.05-0.28 and one BAG does not draw at 41.0-43.9 m on the line (074339 0.76 to its party wall, closed there); Hunzestraat round 9 sheet (recording_2025-07-14_11-01-54_02067): a thin white slab as the flat roof lid, about 0.5 m out; no pitched edge"
+    },
+    "kuinderstraat-067158": {
+      "erkerFront": "timber",
+      "eaves": {
+        "overhangM": 1,
+        "fasciaM": 0.25,
+        "lid": true,
+        "frieze": false
+      },
+      "evidence": "Kuinderstraat panorama recording_2025-07-14_11-01-54_02163 (2025-07-14, round 9 held-out sheet, 36 px/m), lane R round 12: the canted oriels (BAG's spans) are white timber fronts, three lights a storey corner to corner with toplights, white sills, brick only between storeys; the corner member 148704's oriel the same; Kuinderstraat round 9 sheet (36 px/m): a deep white slab, about 1 m of soffit seen from below and a ~0.25 m fascia, the flat roof lid near 16.8 m over five storeys (the line from AHN4, round 11)"
+    },
+    "europaplein-137940": {
+      "eaves": {
+        "overhangM": 1,
+        "fasciaM": 0.2,
+        "lid": true,
+        "frieze": false
+      },
+      "attic": {
+        "heightM": 1,
+        "pitchM": 1.5
+      },
+      "members": {
+        "081476": {
+          "entries": [
+            {
+              "a": 0.08,
+              "kind": "portiek",
+              "widthM": 1.0
+            }
+          ]
+        },
+        "124939": {
+          "entries": [
+            {
+              "a": 0.06,
+              "kind": "portiek",
+              "widthM": 1.0
+            }
+          ]
+        },
+        "103273": {
+          "entries": [
+            {
+              "a": 0.05,
+              "kind": "portiek",
+              "widthM": 1.0
+            }
+          ]
+        },
+        "110992": {
+          "entries": [
+            {
+              "a": 0.03,
+              "kind": "portiek",
+              "widthM": 1.0
+            }
+          ]
+        }
+      },
+      "evidence": "Europaplein: thin white slab as the flat roof lid over a ~1.0 m white attic band of paired small lights (lane R round 13 trial record, blind A/B won, medium); Europaplein: portiek doorways 1.0 m wide (lane R round 14 trial patch (erk/r14), blind A/B won)"
+    },
+    "trompenburgstraat-097377": {
+      "eaves": {
+        "overhangM": 1,
+        "fasciaM": 0.2,
+        "lid": true,
+        "frieze": false
+      },
+      "evidence": "Trompenburgstraat: thin white eaves slab as the flat roof lid (lane R round 13 trial record, blind A/B won, low)"
+    },
+    "borssenburgstraat-070575": {
+      "raised": {
+        "071895": [
+          {
+            "a0": 0.73,
+            "a1": 0.98,
+            "riseM": 1.6
+          }
+        ],
+        "127490": [
+          {
+            "a0": 0.04,
+            "a1": 0.2,
+            "riseM": 1.5,
+            "outM": 0.3
+          }
+        ],
+        "133955": [
+          {
+            "a0": 0.86,
+            "a1": 1,
+            "riseM": 2.5,
+            "outM": 0.4
+          }
+        ],
+        "113738": [
+          {
+            "a0": 0,
+            "a1": 0.17,
+            "riseM": 2.5,
+            "outM": 0.4
+          }
+        ],
+        "140390": [
+          {
+            "a0": 0.72,
+            "a1": 1,
+            "riseM": 2,
+            "outM": 0.2
+          }
+        ],
+        "106321": [
+          {
+            "a0": 0,
+            "a1": 0.32,
+            "riseM": 2,
+            "outM": 0.2
+          }
+        ]
+      },
+      "evidence": "Borssenburgstraat: brick fins and piers rising over the line, a raised parapet at 071895 (lane R round 13 trial record, blind A/B won, medium)"
+    },
+    "amstelkade-105304": {
+      "raised": {
+        "132424": [
+          {
+            "a0": 0,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "087311": [
+          {
+            "a0": 0,
+            "a1": 0.95,
+            "riseM": 2.8
+          }
+        ],
+        "092562": [
+          {
+            "a0": 0.05,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "118793": [
+          {
+            "a0": 0,
+            "a1": 0.95,
+            "riseM": 2.8
+          }
+        ],
+        "064359": [
+          {
+            "a0": 0.05,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "104422": [
+          {
+            "a0": 0,
+            "a1": 0.95,
+            "riseM": 2.8
+          }
+        ],
+        "083750": [
+          {
+            "a0": 0.05,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ],
+        "145501": [
+          {
+            "a0": 0,
+            "a1": 1,
+            "riseM": 2.8
+          }
+        ]
+      },
+      "evidence": "Amstelkade (recording_2025-07-15_08-32-06_03211, 31 px/m): the blocks of two pands from 132424 to 145501 carry a brick parapet to ~15.1 m, ~2.8 m over the 12.3 m line, hiding the pitched roof (AHN4 ridges 14.5 m), with V notches at the block joins; the left end is blurred and not stated"
+    }
+  },
+  "streetNotes": {
+    "Rooseveltlaan": {
+      "eaves": true,
+      "erkerBands": true,
+      "evidence": "Rooseveltlaan panorama TMX7316010203-002477_pano_0002_000865 (2022-03-24), 13 members 146491-075942: broad white eaves over a lattice frieze along the whole row; the erkers are canted bays whose white-framed lights run corner to corner on every storey, standing up to the eaves slab"
+    }
+  }
+}

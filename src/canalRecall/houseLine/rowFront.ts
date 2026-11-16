@@ -16,6 +16,9 @@ import { heightAbovePandGround, type FrontRecord, type FrontRecordTable } from '
 import { hexToOklab, oklabToHex, paleWarmHeld } from '../houseSpec/wallColour.js';
 import { SOUTERRAIN_FACTOR } from '../houseSpec/storeyPlan.js';
 import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
+import { buurtKitEnabled } from '../buurtGenerator/kitFlag.js';
+import { buurtKitOf, kitFrontM, KIT_FLAT_RISE_M, KIT_MULLION_SHARE, kitWantsCoping, straightenFeature, type BuurtKitFront } from '../buurtGenerator/kit/frontKit.js';
+import { buurtRoofKitFor } from '../buurtGenerator/kit/roofKit.js';
 
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
 export interface RowFrontRecord {
@@ -68,6 +71,9 @@ export interface RowFrontRecord {
   /** House rows (lane R, docs/handoffs/house-rows-plan-20261114.md): the front is a member of a described series and draws
    *  its series' one design (houseLine/rowSeries.ts joins lane D's row record). Absent: the record draws as before, byte for byte. */
   series?: RowSeriesDraw;
+  /** Buurt generator kit (buurtGenerator/kit/frontKit.ts, drawn only under `buurtKit`): the measured front line, its erkers
+   *  and the series' pitched roof. Absent, or flag off: the record draws as before, byte for byte. */
+  buurtKit?: BuurtKitFront;
   sources: Record<string, string>;
 }
 
@@ -518,8 +524,12 @@ export function withRowFront<T extends Feature>(feature: T): T {
   // House rows (lane R): a series member draws its series' design. A cornice front (the round-1 rows) stands to the
   // series cornice line with the series roof storey behind it; a gabled member takes the record's crown as before.
   if (rec.series && (family === 'cornice' || family === 'raised-cornice-dormer')) {
-    const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(rs.riseM) : 0;
-    const mansard = rs && rise > 0.5 ? { ...rs, riseM: rise } : null;
+    // Buurt generator kit (`buurtKit`): the outline straightened onto the record's front line (one street run, so the
+    // series' bays fit the whole front), the roof at the kit's rise and pitch, its erkers on the roof kit. No kit: as before.
+    const kit = buurtKitEnabled() ? buurtKitOf(rec.buurtKit) : null;
+    if (kit) feature = straightenFeature(feature, kit);
+    const top = rec.eavesM, rs = rec.series.roofStorey, rise = rs?.kind === 'mansard' ? mansardRise(kit?.roof?.riseM ?? rs.riseM) : kit && kitWantsCoping(kit) ? KIT_FLAT_RISE_M : 0;
+    const mansard = rs && rise > 0.5 ? { ...rs, riseM: rise, ...(rs.kind !== 'mansard' && kit?.joins ? { joins: kit.joins } : {}) } : null;
     const lv = levels(sr, rec, top, true);
     // The series' souterrain reaches the storey plan (levels drops a spec's own); a lone spec read never does.
     // A front record's count is drawn as stated (storeyPlanDraws: advisory), so the series draws the plan's souterrain
@@ -538,9 +548,10 @@ export function withRowFront<T extends Feature>(feature: T): T {
     }
     // A stated ground colour is the shopfront's paint, drawn as stated (threeBuildingFeatures takes fasciaHex as is).
     if (sr2 && rec.series.groundHex) sr2.fasciaHex = rec.series.groundHex;
-    const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: rowDressOf(rec.series), ...(rec.series.shop !== undefined ? { specShop: rec.series.shop } : {}), ...(rec.series.look ? { rowLook: rec.series.look } : {}), ...lv };
+    const props: Record<string, unknown> = { ...rest, ...held, rowFront: family, rowSeries: rec.series.id, rowDress: kit?.sash ? { ...rowDressOf(rec.series), mullionShare: KIT_MULLION_SHARE } : rowDressOf(rec.series), ...(rec.series.shop !== undefined ? { specShop: rec.series.shop } : {}), ...(rec.series.look ? { rowLook: kit?.sash ? { ...rec.series.look, sash: kit.sash } : rec.series.look } : {}), ...lv };
     if (mansard) Object.assign(props, { height: +(top + mansard.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: mansard.dormers.length > 0,
-      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}), ...(mansard.frontM ? { frontM: mansard.frontM } : {}) } });
+      rowRoof: { riseM: mansard.riseM, material: mansard.material ?? 'slate', dormers: mansard.dormers, series: rec.series.id, ...(mansard.joins ? { joins: mansard.joins } : {}), ...(kit ? { frontM: kitFrontM(kit) } : mansard.frontM ? { frontM: mansard.frontM } : {}),
+        ...(kit && rec.storeys ? { kit: buurtRoofKitFor(kit, top, rec.storeys, Number(sr2?.groundM) || rowGroundM(top, rec.storeys)) } : {}) } });
     else Object.assign(props, { height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' });
     const slab = rec.wallOnly ? rowWallSlab(rec.wallOnly.edge, feature.geometry) : null;
     if (slab) {

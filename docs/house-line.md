@@ -907,7 +907,8 @@ Flags
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
                       normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall;
-                      "face": the frontage of the block face that lists the pand (its facts.json fronts[0], the chord over an erker)
+                      "face": the frontage of the block face that lists the pand (its facts.json fronts[0], the chord over an erker);
+                      "line:<lng,lat,lng,lat>": a stated front line, left to right as seen (buurt generator sheets)
   --set <set.json>    render every pand of a house-line set (scripts/house-specs/sets/*.json, e.g. the standing
                       easy-houses-20261110 acceptance set) in one session, each into <out>/<pand> (default
                       artifacts/house-preview/sets/<set name>/<pand>), other flags applied to each
