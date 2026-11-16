@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Round w: shop bikes park nose to the wall (2026-11-16)
+
+- Merged lane/shop-bikes-perp-20261116 3698c8550 after David asked for bikes perpendicular to the storefront. Pavement bikes stand nose-in, about 15 % backed in, at a 0.6 m pitch with ±8° yaw. A bike costs 325 tris, with both flanks drawn because the chunk material is single-sided. A 6 m front is 1,188–1,293 tris (cap 1,300); the 9 m all-template total is 14,835 of 15,624. The mesher passes `pavementM` (wall to street centreline less 1.5 m): 2.5 m or more parks perpendicular, 1–2.5 m falls back to the side-on row, under 1 m draws no pavement bikes. Window bikes stay side-on. Runtime retail only; the world is unchanged.
+
 ## Round v: shop props kit, omafiets bike shops, Kruidvat promo stands (2026-11-16)
 
 - Merged by SHA lane/shop-bikes-20261116 a8fffae34. It contains lane/shop-goods-20261116 92446e4c7 and lane/kruidvat-promo-20261116 5d9de3c54. David asked for this on 2026-11-16, from the Shopfronts page: "bikeshops look like they have crosses inside", "greengrocer could be so much better", "not repeat the exact same thing in every window", "hairdresser … barber chair & beauty station", and "a way to do some real 3d modeling inside/outside of these stores in a generic way".
