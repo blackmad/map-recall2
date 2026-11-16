@@ -1,17 +1,14 @@
 export {};
 import { worldSnapshot } from '../engine/feedbackWorldSnapshot';
+import { buildBatch, buildEnvironment, buildNote, type BatchNote, type Category, type Context, type Subject } from './note';
 /** Shared static-page feedback. Firebase loads only when a user opens the form. */
 declare const __FEEDBACK_BUILD__: { builtAt: string; sha: string; workspaceDirty: boolean };
-type Context = Record<string, unknown>;
-type Category = 'bug' | 'building' | 'data' | 'request' | 'other';
-/** The real-world object a note is about (a building, a model, an OSM element, or a map point). */
-type Subject = { kind: 'pand' | 'model' | 'osm' | 'point'; id?: string; lngLat?: [number, number] };
 type Target = { id: string; label: string; canvas?: HTMLCanvasElement; image?: HTMLImageElement; context?: () => Context; map?: any };
 /** open() accepts either a card target or a pre-filled report/request. */
 type OpenOptions = { category?: Category; subject?: Subject; id?: string; label?: string; canvas?: HTMLCanvasElement; image?: HTMLImageElement; context?: () => Context; map?: any };
 declare global {
   interface Window {
-    CanalFeedback: { attach: (container: HTMLElement, target: Target) => void; open: (options?: OpenOptions) => void };
+    CanalFeedback: { attach: (container: HTMLElement, target: Target) => void; open: (options?: OpenOptions) => void; saveMany: (notes: BatchNote[]) => Promise<{ saved: string[]; failed: { targetId: string; error: string }[] }>; signIn: () => Promise<string>; userLabel: () => Promise<string> };
   }
 }
 const w = window as any;
@@ -50,13 +47,6 @@ let saving = false;
 let buildPromise: Promise<unknown>;
 let capturePromise: Promise<void>;
 let readyCloud: typeof import('./cloud') | undefined;
-function pageUrl() {
-  const u = new URL(location.href);
-  // Do not store GPS/home query values, tokens or other arbitrary URL data.
-  for (const key of [...u.searchParams.keys()]) if (!['only','kit','look','az','el','case','queue','id'].includes(key)) u.searchParams.delete(key);
-  u.hash = '';
-  return u.href;
-}
 /** A WebGL canvas read outside its frame is fully transparent; JPEG makes it black. */
 function blank(c: HTMLCanvasElement) {
   const probe = document.createElement('canvas'); probe.width = probe.height = 24;
@@ -117,6 +107,27 @@ function gameContext(): Context {
     world: worldSnapshot(g, w),
   };
 }
+function environment(build: unknown) {
+  return buildEnvironment({ location, userAgent: navigator.userAgent, viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio }, feedbackBuild: __FEEDBACK_BUILD__, build: build || w.CanalRecallBuild || null, capturedAt: new Date().toISOString() });
+}
+/** Batch save for pages with many notes at once: one canalFeedback doc per note, no dialog, no screenshot. */
+async function saveMany(notes: BatchNote[]) {
+  const api = await cloud();
+  const build = await fetch(new URL('deployment.json', location.href), { cache: 'no-store' }).then(r => r.ok ? r.json() : null).catch(() => null);
+  const env = environment(build);
+  const saved: string[] = [], failed: { targetId: string; error: string }[] = [];
+  const queue = buildBatch(notes, env);
+  const worker = async () => {
+    for (let item = queue.shift(); item; item = queue.shift()) {
+      try { await api.save(crypto.randomUUID(), item.note); saved.push(item.targetId); }
+      catch (e) { failed.push({ targetId: item.targetId, error: (e as Error).message }); }
+    }
+  };
+  await Promise.all([worker(), worker(), worker()]);
+  return { saved, failed };
+}
+async function signInBatch() { const api = await cloud(); await api.signIn(); return api.userLabel(); }
+async function userLabelBatch() { return (await cloud()).userLabel(); }
 function open(options?: OpenOptions) {
   if (dialog.open) return;
   // `querySelector('#gameCanvas, main canvas, canvas')` returns the first match in
@@ -211,13 +222,10 @@ saveButton.addEventListener('click', async () => {
     const api = await cloud();
     const build = await buildPromise;
     await capturePromise;
-    const note: Record<string, unknown> = {
-      text: text.value.trim(), category,
-      target: { id: current.id.slice(0,2048), label: current.label.slice(0,500), imageUrl: current.image?.currentSrc?.startsWith('http') ? current.image.currentSrc.slice(0,4096) : '', anchor },
-      screenshot: captured, context: payload,
-      environment: { kind: ['localhost','127.0.0.1','[::1]'].includes(location.hostname) ? 'local-development' : /\.(web\.app|firebaseapp\.com)$/.test(location.hostname) ? 'firebase-hosting' : location.hostname.endsWith('github.io') ? 'github-pages' : 'custom-host', feedbackBuild: __FEEDBACK_BUILD__, host: location.host, origin: location.origin, page: pageUrl(), local: ['localhost','127.0.0.1','[::1]'].includes(location.hostname), userAgent: navigator.userAgent, viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio }, capturedAt: new Date().toISOString(), build: build || w.CanalRecallBuild || null },
-    };
-    if (subject) note.subject = subject;
+    const note = buildNote({
+      text: text.value, category, targetId: current.id, label: current.label, imageUrl: current.image?.currentSrc, anchor,
+      screenshot: captured, context: payload, subject, environment: await environment(build),
+    });
     await api.save(noteId, note);
     try { localStorage.removeItem(draftKey); } catch { /* optional local storage */ }
     text.value = ''; noteId = crypto.randomUUID();
@@ -242,13 +250,13 @@ function attach(container: HTMLElement, target: Target) {
   const button = document.createElement('button'); button.type = 'button'; button.className = 'cf-button cf-note'; button.textContent = 'Add note';
   button.addEventListener('click', () => open(target)); container.append(button);
 }
-window.CanalFeedback = { attach, open };
+window.CanalFeedback = { attach, open, saveMany, signIn: signInBatch, userLabel: userLabelBatch };
 const launch = document.createElement('button'); launch.type = 'button'; launch.className = 'cf-button cf-launch'; launch.textContent = 'Report a problem'; launch.addEventListener('click', () => open()); (document.getElementById('utility-buttons') || document.body).append(launch);
 // Other gallery pages opt in simply by loading this module. Dynamic cards are supported.
 function discover() {
   for (const card of document.querySelectorAll<HTMLElement>('article, .card, [data-feedback-id]')) {
     const source = card.querySelector<HTMLCanvasElement | HTMLImageElement>('canvas, img');
-    if (!source || card.querySelector(':scope > .cf-note')) continue;
+    if (!source || card.hasAttribute('data-no-note') || card.querySelector(':scope > .cf-note')) continue;
     const label = card.querySelector('h2, h3, b')?.textContent?.trim() || source.getAttribute('alt') || document.title;
     attach(card, { id: card.dataset.feedbackId || card.dataset.kit || source.id || (source instanceof HTMLImageElement ? source.currentSrc : label), label, ...(source instanceof HTMLCanvasElement ? { canvas: source } : { image: source }) });
   }
