@@ -14,7 +14,7 @@ import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
 import { districtRows, ROW_EAVES_STEP_M, type GenMember, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
-import { balconiesOf, cantsOnCells, entriesOf, erkersOnCells, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, stairAxisOf, countedOf, type KitCounted, type BuurtEntry, type BuurtErker, type BuurtKitFront, type KitStairAxis } from './kit/frontKit.ts';
+import { balconiesOf, cantsOnCells, entriesOf, erkersOnCells, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, stairAxisOf, countedOf, type KitCounted, type BuurtEntry, type BuurtErker, type BuurtKitFront, type KitRaised, type KitStairAxis } from './kit/frontKit.ts';
 import { seriesCountedOf, type MemberBays } from './baysRead.ts';
 
 export interface DistrictDesign {
@@ -106,8 +106,8 @@ export interface DistrictLibrary {
     /** Round 13: the top storey as the white attic band (frontKit KitAttic; Stadionkade, Europaplein); replaces `ribbon`. */
     attic?: { heightM?: number; pitchM?: number };
     /** Round 13: raised brick parts over the line per member (last six digits; frontKit KitRaised): towers, parapets,
-     *  piers and fins (`outM`), drawn with the series coping. */
-    raised?: Record<string, { a0: number; a1: number; riseM: number; outM?: number }[]>;
+     *  piers and fins (`outM`), drawn with the series coping; round 20: a wing's face (`faceM`), a tower's lights. */
+    raised?: Record<string, KitRaised[]>;
     /** Round 14 (lane R's kit, emitted here): per member (last six digits) what its photo shows: `panes` small-paned
      *  white upper sashes (KitPanes), `balconies` stacked balconies (KitBalcony), `entries` its own doorways (porch,
      *  portiek, arched; `cells` defaults to the series' cells so the mesher's door is replaced) over the row's list. */
