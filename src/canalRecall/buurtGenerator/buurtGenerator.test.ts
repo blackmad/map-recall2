@@ -266,3 +266,13 @@ test('round 21: counted windows leave the ground cells an entry redraws on the w
   const erk = generateDistrict({ ...lib, countedWindows: true, rowNotes: { 'teststraat-000000': { erkers: { [id(1).slice(-6)]: [{ a0: 0.3, a1: 0.6, depthM: 0.6, faceM: 1.6 }] }, evidence: 'test' } }, measured: { bays } }, pands, streets, new Set(), 'test');
   assert.ok(erk.records.every(r => !(r as { buurtKit?: { counted?: unknown } }).buurtKit?.counted), 'a series with an erker keeps its painted cells');
 });
+
+test('round 20: a row note\'s raised part (tower lights, depth) reaches its member\'s kit; the other members as before', () => {
+  const pands = [0, 1, 2].map(i => pand(i, 1929, 12.4)), six = (i: number) => pands[i].id.slice(-6), id = (i: number) => pands[i].id.replace(/^NL\.IMBAG\.Pand\./, '');
+  const kitOf = (g: ReturnType<typeof generateDistrict>, i: number) => (g.records.find(r => r.pandId === id(i)) as { buurtKit?: { raised?: unknown; roof?: unknown } }).buurtKit;
+  const notes = (raised: Record<string, unknown[]>) => ({ 'teststraat-000000': { raised, evidence: 'test' } }) as never;
+  const flat = generateDistrict({ ...lib, rowNotes: notes({ [six(0)]: [{ a0: 0, a1: 0.5, riseM: 3, lights: 1, depthM: 4 }] }) }, pands, streets, new Set(), 'test');
+  assert.deepEqual(kitOf(flat, 0)?.raised, [{ a0: 0, a1: 0.5, riseM: 3, lights: 1, depthM: 4 }]);
+  const plain = generateDistrict(lib, pands, streets, new Set(), 'test');
+  assert.deepEqual(kitOf(plain, 1), kitOf(generateDistrict({ ...lib, rowNotes: notes({ [six(0)]: [{ a0: 0, a1: 0.5, riseM: 3 }] }) }, pands, streets, new Set(), 'test'), 1) && kitOf(plain, 1), 'members without a part: as before');
+});

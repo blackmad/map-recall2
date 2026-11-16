@@ -595,3 +595,26 @@ test('corner members (Europaplein 145394, Patroclosstraat 133916): the kit draws
     assert.ok(Math.max(...xs) - Math.min(...xs) > 6, 'and spans the front, not the 8 m side');
   } finally { delete g.__canalRecallBuurtKit; process.env.ROW_FRONT = '0'; resetRowFront(); setRowFrontRecords([]); }
 });
+
+// Round 20 (lane R): Amsterdam School massing. Named regressions: Uithoornstraat 0363100012067867/0363100012125303 (the
+// corner tower flattened to the series line), Amsteldijk 0363100012101914 (the 1.3 m wings rise over the court).
+test('round 20: raised parts stand on a wing\'s face, carry a tower\'s storey lights and reach back as a mass; absent, as before', async () => {
+  const { raisedOf, buurtKitOf } = await import('./frontKit.js');
+  const { drawRaised, RAISED_LOOK, ERKER_LOOK } = await import('./roofKit.js');
+  assert.deepEqual(raisedOf([{ a0: 0.19, a1: 0.99, riseM: 3.05, lights: 1, depthM: 4 }]), [{ a0: 0.19, a1: 0.99, riseM: 3.05, lights: 1, depthM: 4 }]);
+  assert.deepEqual(raisedOf([{ a0: 0, a1: 0.4, riseM: 2.6, faceM: 1.3 }]), [{ a0: 0, a1: 0.4, riseM: 2.6, faceM: 1.3 }]);
+  assert.deepEqual(raisedOf([{ a0: 0, a1: 0.4, riseM: 2, outM: 0.4, faceM: 1.3, lights: 0, depthM: 0.2 }]), [{ a0: 0, a1: 0.4, riseM: 2, outM: 0.4 }], 'a proud pier takes no face; bad lights and depth drop');
+  const kitWith = (raised: unknown[]) => buurtRoofKitFor(buurtKitOf({ frontLine: line, erkers: [], raised })!, 12.4, 4, 3.4)!;
+  const draw = (raised: unknown[]) => { const s = sink(); drawRaised(s, kitWith(raised), 10, 8, 1); return s.out; };
+  // Absent fields: the round-13 box exactly (0.35 m back, flush).
+  const plain = draw([{ a0: 0.2, a1: 0.8, riseM: 2 }]), xs = (o: typeof plain) => o.flatMap(t => t.p.map(p => +(p[0] - 5).toFixed(3)));
+  assert.equal(Math.min(...xs(plain)), +(-RAISED_LOOK.backM - RAISED_LOOK.copingOutM).toFixed(3));
+  assert.equal(plain.filter(t => t.hex === ERKER_LOOK.glass).length, 0);
+  const deep = draw([{ a0: 0.2, a1: 0.8, riseM: 2, depthM: 4 }]);
+  assert.equal(Math.min(...xs(deep)), +(-4 - RAISED_LOOK.copingOutM).toFixed(3), 'a tower reaches back');
+  const face = draw([{ a0: 0.2, a1: 0.8, riseM: 2, faceM: 1.3 }]);
+  assert.equal(Math.max(...xs(face)), +(1.3 + RAISED_LOOK.copingOutM).toFixed(3), 'the wing\'s face');
+  // A 3.05 m tower over 3.4 m storeys: one storey of lights, one light each.
+  assert.equal(draw([{ a0: 0.19, a1: 0.99, riseM: 3.05, lights: 1 }]).filter(t => t.hex === ERKER_LOOK.glass).length, 2);
+  assert.equal(draw([{ a0: 0.19, a1: 0.99, riseM: 1.2, lights: 1 }]).filter(t => t.hex === ERKER_LOOK.glass).length, 0, 'a parapet has no storey');
+});

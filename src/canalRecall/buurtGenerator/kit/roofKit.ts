@@ -356,8 +356,9 @@ export function drawRaised(s: RoofSink, kit: BuurtRoofKit, L: number, W: number,
   const R = RAISED_LOOK;
   for (const r of kit.raised ?? []) {
     const c0 = (r.a0 - 0.5) * W, c1 = (r.a1 - 0.5) * W, out = r.outM ?? r.faceM ?? 0.01, foot = r.outM ? kit.footZ ?? kit.z0 : -0.05;
-    frontBox(s, L, e, c0, c1, -R.backM, out, foot, r.riseM, 'plate');
-    frontBox(s, L, e, c0 - R.copingOutM, c1 + R.copingOutM, -R.backM - R.copingOutM, out + R.copingOutM, r.riseM, r.riseM + R.copingM, 'plate');
+    const back = r.depthM ?? R.backM;
+    frontBox(s, L, e, c0, c1, -back, out, foot, r.riseM, 'plate');
+    frontBox(s, L, e, c0 - R.copingOutM, c1 + R.copingOutM, -back - R.copingOutM, out + R.copingOutM, r.riseM, r.riseM + R.copingM, 'plate');
     if (r.lights) raisedLights(s, kit, L, e, r, c0, c1, out);
   }
 }
