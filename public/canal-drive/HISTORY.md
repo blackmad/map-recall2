@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+## Landmark round p: Hotel Schiller and three pools (2026-11-16)
+
+- Merged lane/landmarks-next-20261115 (ca85fb4e9) and lane/landmarks-pools2-20261115 (de298f976). Shipped: Hotel Schiller on Rembrandtplein, Noorderparkbad, Flevoparkbad and Victoriabad, each preferred by fresh blind opus judges against the panorama and passing `audit:glb`, `check:glb-openings` and the inventory gate.
+- Held: Sloterparkbad, Zwembad Bijlmer, De Mirandabad and Sportplaza Mercator won every blind view but fail `audit:glb` (holes, see-through, coplanar faces; reasons in the catalogue); Brediusbad has no review yet. Port van Cleve and Mauritskade 61 stay held on their reviews. Reinwardt Academie, De Jaren, Handelsbank Singel 250 and Holland Casino passed blind review in the lane but were held out of this round by scope.
+- Why only the four GLBs changed: the lane's `geometryAudit` sparse-plane reading is used by `snapOpenings` at build time, so a full `build-manual-landmarks` rebuild moved openings on six existing models (hoofdbureau-elandsgracht, maagdenhuis, both Mercatorplein towers, roeterseiland-rec-a, tropenmuseum). Main's asset fingerprints match main's GLBs, so this is the new rule, not stale hashes. Those six, and the lane's banks-mansion and politiebureau-raampoort rebuilds, stay at main's GLBs; the four shipped GLBs rebuild byte-identically with `--only`.
+- `test:glb-quality` now runs the audit and capture-diff tests and is part of `check:canal:rest`; `pandParts.test` joins `test:landmark-kits`.
+
 ## Node world frames (2026-11-15)
 
 - Merged lane/node-world-frames-20261115 (4e6cab29a): `scripts/house-frames/node-frame.ts` renders the game's first-person frame in Node (src/canalRecall/nodeFrame), without Chromium or a dev server. Usage is in docs/house-line.md §8a. It is a first-pass tool for lanes; acceptance stays on browser house:frames pairs.

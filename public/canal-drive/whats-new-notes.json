@@ -2,6 +2,27 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-16",
+      "title": "Hotel Schiller and three swimming pools",
+      "text": "Hotel Schiller on Rembrandtplein now stands as its own model: purple-brown brick, pale stone oriels and the corner tower, and the NH Schiller entrance. Three city pools join it: Noorderparkbad with its rod screen and red-and-white brick panel, Flevoparkbad with its dark roofs, and Victoriabad. Each was kept only after a reviewer, comparing it with street photos without knowing which was new, picked it over the old block.",
+      "where": [
+        4.8967,
+        52.3656
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-16-landmarks-p/schiller-pair.jpg",
+          "alt": "Street photo of Hotel Schiller beside the game's new model from the same spot",
+          "caption": "Hotel Schiller: street photo (left) and the game (right)"
+        },
+        {
+          "src": "ui/2026-11-16-landmarks-p/noorderparkbad-pair.jpg",
+          "alt": "Street photo of Noorderparkbad's curved front beside the game's model",
+          "caption": "Noorderparkbad's entrance front"
+        }
+      ]
+    },
+    {
       "date": "2026-11-15",
       "title": "Shops look like the shops on the street",
       "text": "Shop ground floors now draw as real shopfronts: dark glass with goods in the window, a coloured fascia with the shop's name, and recognisable chain fronts like Albert Heijn, Kruidvat, Etos, HEMA, Bruna and Gall & Gall. Florists, bike shops with bikes outside, hairdressers, bakeries, butchers, greengrocers with crates, and snack bars each have their own look. Shops are placed by their registered address and the city's horeca permits, so they sit on the right building and face the right street. Each look was kept only if a reviewer, comparing against street photos, picked it over the old plain shop band.",
