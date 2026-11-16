@@ -202,6 +202,15 @@ export type TemplateLook = {
   paneM?: number;
   /** Round 3: the fascia's cornice cap colour; absent: the fascia a step darker. */
   cap?: string;
+  /** Round 7 (retailBrandStyles.ts): `wall` puts the letters straight on the building's wall, with no fascia board or
+   *  cap (FEBO's red channel letters on stone); absent: the board. */
+  mount?: 'wall';
+  /** Round 7: the blade sign's glyph (FEBO's F) and its ink, on both faces; absent: a plain box. */
+  bladeGlyph?: string;
+  bladeInk?: string;
+  /** Round 7: `plate` glazes the panes as dark reflective plate glass, with no goods (the interior is the shop-interiors
+   *  lane's); absent: goods or the template's content. */
+  window?: 'plate';
 };
 const LOOKS_N: Record<RetailTemplate, TemplateLook> = {
   ah: { fascia: '#00a0e2', letters: '#ffffff', word: 'ALBERT HEIJN', content: 'shelves', lit: true },
