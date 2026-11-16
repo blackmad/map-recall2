@@ -786,6 +786,31 @@ function rowDormersOnEnds(s: RoofSink, plan: RoofPlan, L: number, W: number, sur
   }
 }
 
+/**
+ * House rows (rowFront `pitched` roof storey, lane D round 9): a pitched roof whose ridge runs along the row behind the
+ * cornice, the street slope at 45 degrees carrying the series' dormers, the back slope running down to the back eaves.
+ * A side that runs on into a neighbour's roof storey (rowJoins) is open, closed by a plate at the party wall; a row end,
+ * or a neighbour without one, is hipped. The Centrum judges called the old per-house hip a pyramid roof on narrow fronts
+ * (Marnixstraat 172599, Willemsstraat, Bloemgracht, Groenburgwal).
+ */
+function buildRowPitched(s: RoofSink, plan: RoofPlan, L: number, W: number, R: number): void {
+  const e = plan.streetEnds?.[1] && !plan.streetEnds?.[0] ? 1 : -1, trim = plan.trimHex ?? TRIM_WHITE;
+  const open = (sv: number) => !!plan.rowJoins && (sv === e ? !!plan.rowJoins.right : !!plan.rowJoins.left);
+  // The ridge stands `d` behind the street eaves; a hipped side slopes in by the same run (45 degrees), at most to the middle.
+  const d = Math.min(R, L * 0.45), uS = e * L / 2, uR = e * (L / 2 - d), uB = -e * L / 2;
+  const hv = (sv: number) => (open(sv) ? W / 2 : Math.max(0, W / 2 - Math.min(R, W / 2)));
+  const top = (sv: number): V3 => [uR, sv * hv(sv), R];
+  s.slopePoly([[uS, -W / 2, 0], [uS, W / 2, 0], top(1), top(-1)], [e, 0, 1]);
+  s.slopePoly([[uB, -W / 2, 0], [uB, W / 2, 0], top(1), top(-1)], [-e, 0, 1]);
+  for (const sv of [-1, 1]) {
+    const a: V3 = [uS, sv * W / 2, 0], b: V3 = [uB, sv * W / 2, 0], c = top(sv);
+    if (open(sv)) s.tri(a, b, c, s.wallUv(a[0], 0), s.wallUv(b[0], 0), s.wallUv(c[0], R), 'plate', [0, sv, 0]);
+    else s.slopeTri(a, b, c, [0, sv, 1]);
+  }
+  if (plan.accents) fascia(s, [uS, -W / 2, 0], [uS, W / 2, 0], [e, 0, 0], trim);
+  if (plan.dormers) rowDormersOnEnds(s, plan, L, W, (a: number) => (a >= L / 2 - d ? R * (L / 2 - a) / d : R), L / 2 - d * 0.35);
+}
+
 /** Four slopes to a ridge (a pyramid on a square), optionally with softened corners. */
 function buildHipped(s: RoofSink, plan: RoofPlan, L: number, W: number, R: number, ov: number, rc: number): void {
   const drop = ov * (R / (W / 2)), E = W / 2 + ov, Ue = L / 2 + ov, a = Math.max(0, L / 2 - W / 2);
@@ -862,6 +887,7 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
   const { len: L, wid: W } = rect, R = plan.riseM, trim = plan.trimHex ?? TRIM_WHITE, accents = !!plan.accents;
   if (plan.kind === 'mansard') { buildMansard(s, plan, L, W, R); return s.out; }
   if (plan.kind === 'mansardHip') { buildMansardHip(s, plan, L, W, R); chimney(s, plan, L, W, R, () => R); return s.out; }
+  if (plan.kind === 'hipped' && plan.rowDormers) { buildRowPitched(s, plan, L, W, R); return s.out; }
   if (plan.kind === 'hipped') { buildHipped(s, plan, L, W, R, 0.3, 0); return s.out; }
   if (plan.kind === 'school') { buildHipped(s, plan, L, W, R, 0.45, Math.min(0.9, W * 0.12)); return s.out; }
   if (plan.kind === 'sawtooth') { buildSawtooth(s, plan, L, W, R); return s.out; }

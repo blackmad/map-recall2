@@ -175,7 +175,9 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       // otherwise the solve takes the neighbours' family (round 4: tan and pale fronts over dark brick rows).
       // A published spec's measured wall colour stands (a strong photo read that disagrees is flagged by the script); else
       // the pand's own cut sample when strong (round 8: an unreadable cut still shows the wall); else the donor's brick.
-      sample = t.finish === 'plaster' || t.finish === 'stone' ? undefined : sd?.specHex ?? (strongPhoto(sd?.photo) ? sd!.photo!.hex : brickDonorSample(d.donor));
+      // A plastered or stone front with a strong cut sample takes the photo's own colour (round 9: Singel 167687's grey
+      // stucco); without one it is judged pale.
+      sample = t.finish === 'plaster' || t.finish === 'stone' ? (strongPhoto(sd?.photo) ? sd!.photo!.hex : undefined) : sd?.specHex ?? (strongPhoto(sd?.photo) ? sd!.photo!.hex : brickDonorSample(d.donor));
       if (!sample && (read as { finish?: string }).finish === 'brick') sample = nearestBrickSample(t, donors, look)?.sample;
       prov[pid] = { donor: d.donor.pandId, distance: d.distance, rank: d.rank, of: d.of };
     }
