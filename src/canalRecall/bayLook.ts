@@ -118,11 +118,16 @@ type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[num
  * the baked shells' hash (world/shellLayers.ts) as before.
  */
 const RESTRAINED_SHOP_CELL: Record<ShopKind, ShopKind> = { groundShop: 'shopCafe', shopCafe: 'shopCafe', shopBar: 'shopBar', shopWindow: 'shopWindow', shopDeli: 'shopWindow', shopFlorist: 'shopWindow', shopBike: 'shopWindow' };
-const sharedRestrainedShops = newbuildFamilyEnabled();
+const sharedRestrainedShops = newbuildFamilyEnabled() || buurtKitEnabled();
 // Shop cells are shared by period and art direction, not every opening preset.
 // Share only cells whose painter output is identical. Upper cells do not draw
 // ground assemblies; side-entry ground and groundDoor both paint the same door.
+// The buurt kit's Plan Zuid presets (round 10 budget): their upper storeys are their own cells, their ground storeys are
+// the school's generic ground and door cells (style 0), so the kit adds 2 byte layers, not 6, and the procedural array
+// stays within 256 (64 + 191 + 1; measuredWallPool.test.ts). The kit draws its rows' entrances itself (roofKit.ts).
+const KIT_GROUND_SHARED = new Set<object>([PLAN_ZUID_CASEMENT, PLAN_ZUID_PAIRED]);
 function cellKey(archetype: Archetype, style: number, kind: BayKind, restrainedShop = false): string {
+  if ((kind === 'ground' || kind === 'groundDoor') && style !== 0 && KIT_GROUND_SHARED.has(BAY_STYLES[archetype][style])) return cellKey(archetype, 0, kind, restrainedShop);
   const variant = { ...BAY_STYLES[archetype][style] };
   if (kind === 'plain') return `${archetype}|plain|${variant.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick')}`;
   if (isShopKind(kind)) return `${archetype}|${restrainedShop && sharedRestrainedShops ? RESTRAINED_SHOP_CELL[kind as ShopKind] : kind}|${restrainedShop}`;

@@ -586,6 +586,16 @@
       "version": "d8cc19330265f9aa",
       "dateSource": "asset-update"
     },
+    "banks-mansion.lod1": {
+      "updatedAt": "2026-11-15T16:41:33.158Z",
+      "version": "7181d3d325cc22ad",
+      "dateSource": "asset-update"
+    },
+    "banks-mansion.lod2": {
+      "updatedAt": "2026-11-15T16:41:33.159Z",
+      "version": "043b839081c4f180",
+      "dateSource": "asset-update"
+    },
     "barbizon-palace": {
       "updatedAt": "2026-11-01T23:18:44.755Z",
       "version": "64ab583f1cbe374b",
@@ -919,6 +929,16 @@
     "brand-bij-ca.lod2": {
       "updatedAt": "2026-11-07T14:08:58.138Z",
       "version": "87215fcfcb72ee5b",
+      "dateSource": "asset-update"
+    },
+    "brediusbad": {
+      "updatedAt": "2026-11-15T13:16:42.388Z",
+      "version": "82231dff5ed6ebaa",
+      "dateSource": "asset-update"
+    },
+    "brediusbad.lod2": {
+      "updatedAt": "2026-11-16T04:31:17.293Z",
+      "version": "894e7074f050cde7",
       "dateSource": "asset-update"
     },
     "breitner-tower": {
@@ -1586,6 +1606,11 @@
       "version": "4e8e94b5a73992e1",
       "dateSource": "asset-update"
     },
+    "de-jaren": {
+      "updatedAt": "2026-11-15T12:49:37.286Z",
+      "version": "62e89606fb5a5146",
+      "dateSource": "asset-update"
+    },
     "de-krakeling": {
       "updatedAt": "2026-10-20T10:13:08.865Z",
       "version": "aad82236830324a4",
@@ -1614,6 +1639,21 @@
     "de-makroon.lod2": {
       "updatedAt": "2026-11-07T14:08:58.144Z",
       "version": "645d3cc2790be159",
+      "dateSource": "asset-update"
+    },
+    "de-mirandabad": {
+      "updatedAt": "2026-11-16T04:16:23.402Z",
+      "version": "32c88595a37f3dbf",
+      "dateSource": "asset-update"
+    },
+    "de-mirandabad.lod1": {
+      "updatedAt": "2026-11-16T04:16:47.979Z",
+      "version": "01ee325a64db1ef1",
+      "dateSource": "asset-update"
+    },
+    "de-mirandabad.lod2": {
+      "updatedAt": "2026-11-16T04:16:49.038Z",
+      "version": "fa98af8ff1277bda",
       "dateSource": "asset-update"
     },
     "de-nederlandsche-bank": {
@@ -2286,6 +2326,16 @@
       "version": "b0b80df2e4b6cec3",
       "dateSource": "asset-update"
     },
+    "flevoparkbad": {
+      "updatedAt": "2026-11-16T04:15:55.509Z",
+      "version": "67b2b1f5ac4a8453",
+      "dateSource": "asset-update"
+    },
+    "flevoparkbad.lod2": {
+      "updatedAt": "2026-11-16T04:31:17.236Z",
+      "version": "d10cbf0f7311f563",
+      "dateSource": "asset-update"
+    },
     "foam": {
       "updatedAt": "2026-10-20T10:12:36.596Z",
       "version": "bfe1bfae73cf795a",
@@ -2519,6 +2569,11 @@
     "haarlemmerweg-333.lod2": {
       "updatedAt": "2026-11-07T14:08:58.153Z",
       "version": "c4a500441e941173",
+      "dateSource": "asset-update"
+    },
+    "handelsbank-singel-250": {
+      "updatedAt": "2026-11-15T14:43:34.645Z",
+      "version": "78dca899a0ccfd15",
       "dateSource": "asset-update"
     },
     "hannekes-boom": {
@@ -2939,6 +2994,11 @@
     "hofkerk.lod2": {
       "updatedAt": "2026-11-07T14:08:58.157Z",
       "version": "f9240ab0b647fc0b",
+      "dateSource": "asset-update"
+    },
+    "holland-casino-amsterdam": {
+      "updatedAt": "2026-11-15T14:53:33.185Z",
+      "version": "208f869dd6af5267",
       "dateSource": "asset-update"
     },
     "hollandsche-manege": {
@@ -4111,6 +4171,11 @@
       "version": "9cd8eb4ab7f8271b",
       "dateSource": "asset-update"
     },
+    "mauritskade-61": {
+      "updatedAt": "2026-11-15T22:56:39.817Z",
+      "version": "0a28c8c3db29a13f",
+      "dateSource": "asset-update"
+    },
     "max-euwe-centrum": {
       "updatedAt": "2026-10-13T19:25:19.703Z",
       "version": "9ad6641533f310c2",
@@ -4696,6 +4761,21 @@
       "version": "f44f1804ee0a4bb6",
       "dateSource": "asset-update"
     },
+    "noorderparkbad": {
+      "updatedAt": "2026-11-16T04:15:55.509Z",
+      "version": "28103a8bda6d274d",
+      "dateSource": "asset-update"
+    },
+    "noorderparkbad.lod1": {
+      "updatedAt": "2026-11-16T04:31:17.129Z",
+      "version": "47fa939c8cbd2269",
+      "dateSource": "asset-update"
+    },
+    "noorderparkbad.lod2": {
+      "updatedAt": "2026-11-16T04:31:18.944Z",
+      "version": "8b66d6ee3fc7e6b1",
+      "dateSource": "asset-update"
+    },
     "oba-oosterdok": {
       "updatedAt": "2026-10-20T09:59:55.852Z",
       "version": "e17fa33f00b2662b",
@@ -4724,6 +4804,21 @@
     "oba-spaarndammerbuurt.lod2": {
       "updatedAt": "2026-11-14T04:50:34.649Z",
       "version": "b1a9a716b2669c15",
+      "dateSource": "asset-update"
+    },
+    "oba-staatsliedenbuurt": {
+      "updatedAt": "2026-11-16T07:47:38.508Z",
+      "version": "40558159d66c65b5",
+      "dateSource": "asset-update"
+    },
+    "oba-staatsliedenbuurt.lod1": {
+      "updatedAt": "2026-11-16T07:27:46.295Z",
+      "version": "3261759cf09ab311",
+      "dateSource": "asset-update"
+    },
+    "oba-staatsliedenbuurt.lod2": {
+      "updatedAt": "2026-11-16T07:27:46.297Z",
+      "version": "60fb0bb3c9c8c204",
       "dateSource": "asset-update"
     },
     "obrechtkerk": {
@@ -5286,6 +5381,16 @@
       "version": "04f473be95f21701",
       "dateSource": "asset-update"
     },
+    "politiebureau-raampoort.lod1": {
+      "updatedAt": "2026-11-15T16:41:33.165Z",
+      "version": "5645777ed62c3dd9",
+      "dateSource": "asset-update"
+    },
+    "politiebureau-raampoort.lod2": {
+      "updatedAt": "2026-11-15T16:41:33.167Z",
+      "version": "5c0228351d127604",
+      "dateSource": "asset-update"
+    },
     "pont-13": {
       "updatedAt": "2026-11-14T04:15:56.421Z",
       "version": "fbc030e48082fc64",
@@ -5309,6 +5414,11 @@
     "pontsteiger.lod2": {
       "updatedAt": "2026-11-14T09:36:17.183Z",
       "version": "b65c245edd4e5c90",
+      "dateSource": "asset-update"
+    },
+    "port-van-cleve": {
+      "updatedAt": "2026-11-15T22:43:12.033Z",
+      "version": "c1a5018c241c1cc9",
       "dateSource": "asset-update"
     },
     "portuguese-synagogue": {
@@ -5429,6 +5539,11 @@
     "rasphuispoort.lod2": {
       "updatedAt": "2026-11-07T14:08:58.180Z",
       "version": "2539a438b9b2ae58",
+      "dateSource": "asset-update"
+    },
+    "reinwardt-academie": {
+      "updatedAt": "2026-11-15T12:48:30.651Z",
+      "version": "a97ccea0c49756c8",
       "dateSource": "asset-update"
     },
     "rem-eiland": {
@@ -5606,6 +5721,21 @@
       "version": "bb061f3879d6f711",
       "dateSource": "asset-update"
     },
+    "room-mate-aitana": {
+      "updatedAt": "2026-11-16T02:39:54.408Z",
+      "version": "4c7a46296c749727",
+      "dateSource": "asset-update"
+    },
+    "room-mate-aitana.lod1": {
+      "updatedAt": "2026-11-16T07:27:46.303Z",
+      "version": "81706e0f97d33b78",
+      "dateSource": "asset-update"
+    },
+    "room-mate-aitana.lod2": {
+      "updatedAt": "2026-11-16T07:27:46.303Z",
+      "version": "584bb265346d11f8",
+      "dateSource": "asset-update"
+    },
     "royal-theater-carre": {
       "updatedAt": "2026-10-20T10:13:04.990Z",
       "version": "691987957fc8588b",
@@ -5709,6 +5839,21 @@
     "scheltema.lod2": {
       "updatedAt": "2026-11-07T14:08:58.182Z",
       "version": "ef8cee79e990a212",
+      "dateSource": "asset-update"
+    },
+    "schiller-rembrandtplein": {
+      "updatedAt": "2026-11-16T01:13:19.380Z",
+      "version": "1524c96eed5c6588",
+      "dateSource": "asset-update"
+    },
+    "schiller-rembrandtplein.lod1": {
+      "updatedAt": "2026-11-16T07:28:21.963Z",
+      "version": "c08d2d267415b480",
+      "dateSource": "asset-update"
+    },
+    "schiller-rembrandtplein.lod2": {
+      "updatedAt": "2026-11-16T07:28:21.964Z",
+      "version": "9edd7ec0c8f0536f",
       "dateSource": "asset-update"
     },
     "schreierstoren": {
@@ -5916,6 +6061,21 @@
       "version": "d189650fcfcbd930",
       "dateSource": "asset-update"
     },
+    "sloterparkbad": {
+      "updatedAt": "2026-11-16T04:16:23.453Z",
+      "version": "8a03199d2f503155",
+      "dateSource": "asset-update"
+    },
+    "sloterparkbad.lod1": {
+      "updatedAt": "2026-11-16T04:16:48.018Z",
+      "version": "570d23180b8cfa38",
+      "dateSource": "asset-update"
+    },
+    "sloterparkbad.lod2": {
+      "updatedAt": "2026-11-16T04:16:49.445Z",
+      "version": "42ca4762ede794ac",
+      "dateSource": "asset-update"
+    },
     "social-history": {
       "updatedAt": "2026-10-20T10:13:42.443Z",
       "version": "0d97bc6ba8d2a685",
@@ -5984,6 +6144,21 @@
     "sportfondsenbad-oost.lod2": {
       "updatedAt": "2026-11-07T14:08:58.189Z",
       "version": "9dd4ea14ac9bd115",
+      "dateSource": "asset-update"
+    },
+    "sportplaza-mercator": {
+      "updatedAt": "2026-11-16T04:16:23.428Z",
+      "version": "e5b583adec690a31",
+      "dateSource": "asset-update"
+    },
+    "sportplaza-mercator.lod1": {
+      "updatedAt": "2026-11-16T04:16:48.001Z",
+      "version": "22618bac984222eb",
+      "dateSource": "asset-update"
+    },
+    "sportplaza-mercator.lod2": {
+      "updatedAt": "2026-11-16T04:16:49.151Z",
+      "version": "907b35773402dc33",
       "dateSource": "asset-update"
     },
     "stadhuis": {
@@ -6521,6 +6696,16 @@
       "version": "54eb100d5c845b1b",
       "dateSource": "asset-update"
     },
+    "victoriabad": {
+      "updatedAt": "2026-11-16T04:16:23.491Z",
+      "version": "b1b2870d29f66e8d",
+      "dateSource": "asset-update"
+    },
+    "victoriabad.lod2": {
+      "updatedAt": "2026-11-16T04:16:49.847Z",
+      "version": "cfadb168ce6bb216",
+      "dateSource": "asset-update"
+    },
     "vijzelbank": {
       "updatedAt": "2026-11-01T22:45:28.218Z",
       "version": "1310fc65cf2a62ae",
@@ -6976,6 +7161,21 @@
       "version": "b4b4c9bbd2409442",
       "dateSource": "asset-update"
     },
+    "wilhelminatoren": {
+      "updatedAt": "2026-11-16T07:47:38.349Z",
+      "version": "323ca65272c178d6",
+      "dateSource": "asset-update"
+    },
+    "wilhelminatoren.lod1": {
+      "updatedAt": "2026-11-16T07:27:46.326Z",
+      "version": "3693b4a9be134442",
+      "dateSource": "asset-update"
+    },
+    "wilhelminatoren.lod2": {
+      "updatedAt": "2026-11-16T07:27:46.327Z",
+      "version": "ea81959bff539e83",
+      "dateSource": "asset-update"
+    },
     "willem-de-zwijgerkerk": {
       "updatedAt": "2026-10-19T19:27:00.540Z",
       "version": "39d98979ac9edafd",
@@ -7244,6 +7444,21 @@
     "zuiveringshal-west.lod2": {
       "updatedAt": "2026-11-07T14:08:58.202Z",
       "version": "17151b7ba9f6413a",
+      "dateSource": "asset-update"
+    },
+    "zwembad-bijlmer": {
+      "updatedAt": "2026-11-16T04:16:23.485Z",
+      "version": "972ed0cfdae4e68a",
+      "dateSource": "asset-update"
+    },
+    "zwembad-bijlmer.lod1": {
+      "updatedAt": "2026-11-16T04:16:48.036Z",
+      "version": "109a74eb4770b0e0",
+      "dateSource": "asset-update"
+    },
+    "zwembad-bijlmer.lod2": {
+      "updatedAt": "2026-11-16T04:16:49.812Z",
+      "version": "b159bc3f84538b1b",
       "dateSource": "asset-update"
     }
   }

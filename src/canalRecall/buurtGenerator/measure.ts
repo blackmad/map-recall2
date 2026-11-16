@@ -72,15 +72,34 @@ export function whiteRefOf(px: Lab[]): WhiteRef {
   if (L < WHITE_REF.minL || C > WHITE_REF.maxC || (C > WHITE_REF.warmC && h >= WHITE_REF.warm[0] && h <= WHITE_REF.warm[1])) return null;
   return { L, a, b };
 }
-/** The band's brick, balanced on its white trim when it has one (`balanced` true), else raw. */
-export function wallBrickOf(px: Lab[]): (BrickVerdict & { balanced: boolean; raw: string }) | null {
+/**
+ * Round 11 hue guard (lane R's finding: 69 Rivierenbuurt and 21 Apollo/Stadion rows drawn under 36 deg, pink-mauve,
+ * where the raw reads are browner; Rubensstraat lost its blind A/B on it). Removing a cyan camera cast adds red, and on
+ * a dim band the trim's cast can be larger than the brick's own chroma. So the balance may move a read's hue at most
+ * `maxRedShift` toward red: with a raw read of real chroma (`rawMinC`) the hue is held at raw - maxRedShift; a grey raw
+ * read has no hue to keep, and a read pushed over maxRedShift is only kept out of the pink-mauve band (under `floorH`
+ * or over `mauveH`), at floorH. Chroma and lightness stay the balanced ones.
+ */
+export const HUE_GUARD = { maxRedShift: 12, rawMinC: 0.012, floorH: 36, mauveH: 300 } as const;
+const hueOfLab = (l: Lab) => ((Math.atan2(l[2], l[1]) * 180) / Math.PI + 360) % 360;
+export function hueGuard(bal: Lab, raw: Lab): { lab: Lab; guard: 'raw' | 'floor' | null } {
+  const hb = hueOfLab(bal), hr = hueOfLab(raw), C = Math.hypot(bal[1], bal[2]);
+  const red = ((hr - hb + 540) % 360) - 180; // > 0: the balanced read is redder than the raw one
+  const at = (h: number): Lab => [bal[0], C * Math.cos((h * Math.PI) / 180), C * Math.sin((h * Math.PI) / 180)];
+  if (Math.hypot(raw[1], raw[2]) >= HUE_GUARD.rawMinC) return red > HUE_GUARD.maxRedShift ? { lab: at((hr - HUE_GUARD.maxRedShift + 360) % 360), guard: 'raw' } : { lab: bal, guard: null };
+  // A grey raw read's hue (and so the direction of the move) means nothing: only a large move into pink-mauve is held.
+  if (Math.abs(red) > HUE_GUARD.maxRedShift && (hb < HUE_GUARD.floorH || hb > HUE_GUARD.mauveH)) return { lab: at(HUE_GUARD.floorH), guard: 'floor' };
+  return { lab: bal, guard: null };
+}
+/** The band's brick, balanced on its white trim when it has one (`balanced` true), else raw; hue-guarded (HUE_GUARD). */
+export function wallBrickOf(px: Lab[]): (BrickVerdict & { balanced: boolean; raw: string; hueGuard?: 'raw' | 'floor' }) | null {
   const w = whiteRefOf(px);
   const v = brickOfPixels(w ? px.map(([L, a, b]) => [L, a - w.a, b - w.b] as Lab) : px);
   if (!v) return null;
-  const raw = labHex(w ? [v.lab[0], v.lab[1] + w.a, v.lab[2] + w.b] : v.lab);
+  const rawLab: Lab = w ? [v.lab[0], v.lab[1] + w.a, v.lab[2] + w.b] : v.lab, raw = labHex(rawLab);
   if (!w) return { ...v, balanced: false, raw };
-  const lab: Lab = [Math.min(WHITE_REF.maxL, (v.lab[0] / w.L) * WHITE_REF.targetL), v.lab[1], v.lab[2]];
-  return { ...v, lab, hex: labHex(lab), balanced: true, raw };
+  const g = hueGuard([Math.min(WHITE_REF.maxL, (v.lab[0] / w.L) * WHITE_REF.targetL), v.lab[1], v.lab[2]], rawLab);
+  return { ...v, lab: g.lab, hex: labHex(g.lab), balanced: true, raw, ...(g.guard ? { hueGuard: g.guard } : {}) };
 }
 export function brickOfPixels(px: Lab[]): BrickVerdict | null {
   const warm = px.filter(([L, a, b]) => { const C = Math.hypot(a, b), h = ((Math.atan2(b, a) * 180) / Math.PI + 360) % 360; return C >= WARM.C && h >= WARM.h0 && h <= WARM.h1 && L >= WARM.L0 && L <= WARM.L1; });

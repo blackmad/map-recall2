@@ -6,8 +6,8 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, generateDistrict, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, type DistrictLibrary } from './generate.js';
-import { BAY_STYLES, PLAN_ZUID_CASEMENT } from '../bayLook.js';
+import { baysFor, blockLines, generateDistrict, seriesBaysFor, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
+import { oklab } from '../retailPuiPaint.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
 const LAT0 = 52.345, LNG0 = 4.9, M_LAT = 1 / 111_320, M_LNG = 1 / (111_320 * Math.cos(LAT0 * Math.PI / 180));
@@ -56,13 +56,12 @@ test('described pands never enter a row and only break it; output is determinist
   assert.equal(new Set(a.records.filter(r => a.rows[0].members.some(m => m.pandId === r.pandId)).map(r => JSON.stringify(r.series))).size, 1);
 });
 
-test('kit flag off: the school bay presets are unchanged; on: the Plan Zuid casement and its paired variant are appended', () => {
-  assert.ok(!BAY_STYLES.school.includes(PLAN_ZUID_CASEMENT));
-  const probe = `import { BAY_STYLES, PLAN_ZUID_CASEMENT } from './src/canalRecall/bayLook.ts'; console.log(JSON.stringify([BAY_STYLES.school.length, BAY_STYLES.school.at(-2) === PLAN_ZUID_CASEMENT]));`;
-  const run = (env: Record<string, string>) => JSON.parse(spawnSync('node', ['--import', 'tsx', '--input-type=module', '-e', probe], { encoding: 'utf8', env: { ...process.env, BUURT_KIT: '', ...env } }).stdout.trim());
-  const off = run({}), on = run({ BUURT_KIT: '1' });
-  assert.deepEqual(off, [BAY_STYLES.school.length, false]);
-  assert.deepEqual(on, [BAY_STYLES.school.length + 2, true]);
+test('kit flag off (BUURT_KIT=0): the school bay presets are the base set; default on: the Plan Zuid casement and its paired variant are appended', () => {
+  const probe = `import { BAY_STYLES, PLAN_ZUID_CASEMENT } from './src/canalRecall/bayLook.ts'; console.log(JSON.stringify([BAY_STYLES.school.length, BAY_STYLES.school.includes(PLAN_ZUID_CASEMENT), BAY_STYLES.school.at(-2) === PLAN_ZUID_CASEMENT]));`;
+  const run = (env: Record<string, string>) => JSON.parse(spawnSync('node', ['--import', 'tsx', '--input-type=module', '-e', probe], { encoding: 'utf8', env: { ...process.env, ...env } }).stdout.trim());
+  const off = run({ BUURT_KIT: '0' }), on = run({ BUURT_KIT: '' });
+  assert.equal(off[1], false);
+  assert.deepEqual(on, [off[0] + 2, true, true]);
 });
 
 test('the eaves roof is drawn by a street note, not the slot; the slate slot draws the dark tile look', () => {
@@ -85,7 +84,7 @@ test("wall: the row's own photo wins over the family and the district (series ph
   const fam = lib.families[0];
   assert.equal(wallHexOf(lib, fam, 'rooseveltlaan-146491').hex, lib.rowNotes!['rooseveltlaan-146491'].wall!.hex);
   assert.match(wallHexOf(lib, fam, 'rooseveltlaan-146491').evidence!, /row's own photo/);
-  assert.equal(wallHexOf(lib, fam, 'teststraat-000000').hex, fam.design?.wall?.hex ?? lib.design.wall.hex);
+  assert.equal(wallHexOf(lib, fam, 'teststraat-000000').hex, warmWall((fam.design?.wall?.hex ?? lib.design.wall.hex)!));
   const res = generateDistrict({ ...lib, rowNotes: { 'teststraat-000000': { wall: { hex: '#a2694f', evidence: 'test' }, evidence: 'test' } } }, [0, 1, 2].map(i => pand(i, 1929, 12.4)), streets, new Set(), 'test');
   assert.deepEqual([...new Set(res.records.map(r => (r as { wall?: { hex?: string } }).wall?.hex))], ['#a2694f']);
 });
@@ -145,7 +144,13 @@ test('round 9: the measured row brick sits under the row note and over the pool;
   assert.equal(wallHexOf(m, fam, 'teststraat-000000').hex, '#8a7465');
   assert.match(wallHexOf(m, fam, 'teststraat-000000').evidence!, /2 of 3 reads agree \(2 capture dates/);
   assert.equal(wallHexOf(m, fam, 'rooseveltlaan-146491').hex, lib.rowNotes!['rooseveltlaan-146491'].wall!.hex, 'the row note wins');
-  assert.equal(wallHexOf(m, fam, 'other-000000').hex, fam.design?.wall?.hex ?? lib.design.wall.hex, 'unmeasured: the pool');
+  assert.equal(wallHexOf(m, fam, 'other-000000').hex, warmWall((fam.design?.wall?.hex ?? lib.design.wall.hex)!), 'unmeasured, no measured row on its street: the pool, warmed');
+  assert.equal(wallHexOf(m, fam, 'teststraat-111111').hex, '#8a7465', 'unmeasured: its street\'s measured rows');
+  assert.match(wallHexOf(m, fam, 'teststraat-111111').evidence!, /street's measured rows \(teststraat-000000\)/);
+  // Round 11: a family the row's photo states beats the measured brick (Stadionkade 063989).
+  const st: DistrictLibrary = { ...m, rowNotes: { ...m.rowNotes, 'teststraat-000000': { wallFamily: { family: 'dark-brown-brick', evidence: 'test' }, evidence: 'test' } } };
+  assert.equal(wallHexOf(st, fam, 'teststraat-000000').family, 'dark-brown-brick');
+  assert.notEqual(wallHexOf(st, fam, 'teststraat-000000').hex, '#8a7465');
   const pands = [0, 1, 2].map(i => ({ ...pand(i, 1929, 12.4), roofCode: 3 }));
   const s = districtRows(pands, streets).rows[0].series[0];
   const roofs = (form: 'flat' | 'pitched' | 'unclear') => Object.fromEntries(pands.map(p => [p.id.replace(/^NL\.IMBAG\.Pand\./, ''), { form, frontRiseM: 2, why: 'test' }]));
@@ -158,4 +163,132 @@ test('round 9: the measured row brick sits under the row note and over the pool;
   // The disagreement is logged (Achillesstraat: noted flat, AHN4 pitched).
   const res = generateDistrict({ ...lib, measured: { roofs: roofs('pitched') }, streetNotes: { Teststraat: { roof: 'flat', evidence: 'test' } } }, pands, streets, new Set(), 'test');
   assert.ok(res.rows[0].readNotDrawn.some(r => r.field === 'ahn-roof-form' && /street note's flat/.test(r.reason)), JSON.stringify(res.rows[0].readNotDrawn));
+});
+
+test('block lines: a 3DBAG step AHN does not see is one line (Hunzestraat 120343); a step AHN confirms stands', () => {
+  // Five pands at 12.1 m, then two whose 3DBAG eaves read 6.2 m (a low rear part); AHN reads all seven 12.1 m at the front.
+  const pands = [0, 1, 2, 3, 4].map(i => pand(i, 1934, 12.1)).concat([pand(5, 1934, 6.2), pand(6, 1934, 6.3)]);
+  const { rows } = districtRows(pands, streets);
+  assert.deepEqual(rows[0].series.map(s => s.eavesM), [12.1, 6.25], '3DBAG alone splits the block');
+  const roofs = (front: (i: number) => number) => Object.fromEntries(pands.map((p, i) => [p.id.slice(-16), { form: 'flat' as const, frontRiseM: 0, eavesM: front(i), why: '' }]));
+  const flat = { ...lib, measured: { roofs: roofs(() => 12.12) } };
+  const { rows: fixed, clamped } = blockLines(flat, rows);
+  assert.deepEqual(fixed[0].series.map(s => s.eavesM), [12.1, 12.1]);
+  assert.deepEqual([...clamped.keys()], [pands[5].id.slice(-16), pands[6].id.slice(-16)]);
+  // AHN reads a step too: it stands, at AHN's flat front (round 11 AHN_RAISE: 3DBAG's 6.25 m is a storey under it).
+  const stepped = { ...lib, measured: { roofs: roofs(i => (i < 5 ? 12.12 : 9.3)) } };
+  assert.deepEqual(blockLines(stepped, rows).rows[0].series.map(s => s.eavesM), [12.1, 9.3]);
+  // A raise to a storey count the district has no family for keeps 3DBAG's line (no series dropped off-storeys).
+  const tall = { ...lib, measured: { roofs: roofs(i => (i < 5 ? 12.12 : 30)) } };
+  assert.deepEqual(blockLines(tall, rows).rows[0].series.map(s => s.eavesM), [12.1, 6.25]);
+  // Round 11 (Pieter Lastmankade 115143): a small AHN step that agrees with 3DBAG's in sign, every read of the higher
+  // series over the lower's median, is real: no clamp. The same step with an overlapping read is clamped.
+  const two = [0, 1, 2, 3, 4].map(i => pand(i, 1922, 8.7)).concat([pand(5, 1922, 9.95), pand(6, 1922, 9.95)]);
+  const r2 = districtRows(two, streets).rows;
+  const roofs2 = (front: (i: number) => number) => Object.fromEntries(two.map((p, i) => [p.id.slice(-16), { form: 'flat' as const, frontRiseM: 0, eavesM: front(i), why: '' }]));
+  assert.deepEqual(blockLines({ ...lib, measured: { roofs: roofs2(i => (i < 5 ? 8.77 : 9.17)) } }, r2).rows[0].series.map(s => s.eavesM), [8.7, 9.95]);
+  assert.deepEqual(blockLines({ ...lib, measured: { roofs: roofs2(i => (i < 5 ? 8.77 : i === 5 ? 8.6 : 9.4)) } }, r2).rows[0].series.map(s => s.eavesM), [8.7, 8.7]);
+  // No AHN: unchanged.
+  assert.deepEqual(blockLines(lib, rows).rows[0].series.map(s => s.eavesM), [12.1, 6.25]);
+});
+
+test('round 13: an unstated brick wall is never drawn grey; a warm one and a stated one are untouched', () => {
+  const lch = (hex: string) => { const n = parseInt(hex.slice(1), 16), [L, a, b] = oklab(n >> 16, (n >> 8) & 255, n & 255); return [L, Math.hypot(a, b), ((Math.atan2(b, a) * 180) / Math.PI + 360) % 360]; };
+  assert.equal(warmWall('#a2694f'), '#a2694f', 'Rooseveltlaan, warm already');
+  for (const grey of ['#5b504a', '#5b4e47', '#6a6362', '#484a4c']) {
+    const [L0] = lch(grey), [L, C, h] = lch(warmWall(grey));
+    assert.ok(Math.abs(L - L0) < 0.01, `${grey} keeps its lightness`);
+    assert.ok(C >= WALL_WARM.C - 0.002 && h >= WALL_WARM.h0 - 1 && h <= WALL_WARM.h1 + 1, `${grey} -> ${warmWall(grey)} (C ${C.toFixed(3)}, h ${h.toFixed(0)})`);
+  }
+  // A stated wall is drawn as stated.
+  const st: DistrictLibrary = { ...lib, rowNotes: { ...lib.rowNotes, 'teststraat-000000': { wall: { hex: '#6a6362', evidence: 'test' }, evidence: 'test' } } };
+  assert.equal(wallHexOf(st, null, 'teststraat-000000').hex, '#6a6362');
+});
+
+test('round 18: bays from the panorama count when enough members read and agree; else the width rule, byte for byte', async () => {
+  const { baysOfMeasure, memberBaysOf, seriesBaysOf } = await import('./baysRead.js');
+  const m = { frontClass: 'punched' as const, columns: 3, windowColumns: 3, pitchScore: 0.7, usableFraction: 0.9 };
+  assert.equal(baysOfMeasure(m), 3);
+  assert.equal(baysOfMeasure({ ...m, pitchScore: 0.4 }), null, 'an unresolved pitch');
+  assert.equal(baysOfMeasure({ ...m, windowColumns: 4 }), null, 'columns and window columns disagree');
+  assert.equal(baysOfMeasure({ ...m, frontClass: 'curtain' as never }), null, 'not a rhythmic front');
+  assert.equal(memberBaysOf([{ pano: 'a', date: 'd', cols: 3 }, { pano: 'b', date: 'e', cols: null }]), 3);
+  assert.equal(memberBaysOf([{ pano: 'a', date: 'd', cols: 3 }, { pano: 'b', date: 'e', cols: 4 }]), null, 'captures differ');
+  assert.equal(seriesBaysOf([3, null, undefined]), null, 'one member read');
+  assert.deepEqual(seriesBaysOf([3], [2]), { bays: 3, read: 1, agree: 1 }, 'round 19: a lone front two captures agree on');
+  assert.equal(seriesBaysOf([3, null, null, null, null], [2, 0, 0, 0, 0]), null, 'round 19: still a quarter of the members');
+  assert.deepEqual(seriesBaysOf([3, 3, 4]), { bays: 3, read: 3, agree: 2 });
+  assert.equal(seriesBaysOf([3, 4]), null, 'half agree is not enough');
+  assert.equal(seriesBaysOf([2, 2, ...Array(12).fill(null)]), null, 'Parnassusweg 131928: 2 of 14 members read is too few');
+  assert.deepEqual(seriesBaysOf([3, 3, ...Array(5).fill(null)]), { bays: 3, read: 2, agree: 2 }, 'Agamemnonstraat 094341: 2 of 7');
+  const pands = [0, 1, 2].map(i => pand(i, 1929, 12.4));
+  const s = districtRows(pands, streets).rows[0].series[0], id = (i: number) => pands[i].id.replace(/^NL\.IMBAG\.Pand\./, '');
+  const rule = seriesBaysFor(lib, s, 'teststraat-000000');
+  assert.equal(rule.why, null); assert.equal(rule.bays, baysFor(s.members[1].front.lengthM, lib.design));
+  // Round 21: the read no longer moves the painted bays (round r's blind judges, 5 of 6 rows for the width rule); a
+  // read with surviving captures states the kit's counted windows instead.
+  const cap = (cols: number | null, widthsM?: number[]) => ({ pano: 'p', date: 'd', cols, ...(widthsM ? { raw: { cls: 'punched', columns: null, wcols: null, pitch: 0, usable: 1, foliage: 0, widthsM, seen: 1, spanM: 6 } } : {}) });
+  const read = (b: number | null, widthsM?: number[]) => ({ bays: b, reads: [cap(b, widthsM)] });
+  const bare = seriesBaysFor({ ...lib, measured: { bays: { [id(0)]: { bays: 2, reads: [] }, [id(1)]: { bays: 2, reads: [] } } } }, s, 'teststraat-000000');
+  assert.deepEqual([bare.bays, bare.why, bare.counted], [rule.bays, null, null], 'no runs: the width rule, nothing counted');
+  const got = seriesBaysFor({ ...lib, countedWindows: true, measured: { bays: { [id(0)]: read(2, [1.1, 1.2]), [id(1)]: read(2, [1.0, 1.2]), [id(2)]: read(null) } } }, s, 'teststraat-000000');
+  assert.equal(got.bays, rule.bays); assert.deepEqual(got.counted, { n: 2, widthM: 1.15 }); assert.match(got.why!, /2 of 2 members read 2 windows 1.15 m wide/);
+  // Parnassusweg 131928: a 9.3 m run is no window; those captures are vetoed.
+  const band = seriesBaysFor({ ...lib, countedWindows: true, measured: { bays: { [id(0)]: read(1, [9.3]), [id(1)]: read(1, [9.3]), [id(2)]: read(1, [9.2]) } } }, s, 'teststraat-000000');
+  assert.equal(band.counted, null);
+  // Olympiaplein 067881: "2" from a 2.0 m and a 0.3 m run is not two windows.
+  assert.equal(seriesBaysFor({ ...lib, countedWindows: true, measured: { bays: { [id(0)]: read(2, [2.0, 0.3]), [id(1)]: read(2, [2.0, 0.3]) } } }, s, 'teststraat-000000').counted, null);
+  // No `bays` in the measured file: the district generates exactly as before.
+  const before = generateDistrict(lib, pands, streets, new Set(), 'test');
+  assert.deepEqual(generateDistrict({ ...lib, measured: { roofs: {} } }, pands, streets, new Set(), 'test'), before);
+  const reads = { bays: { [id(0)]: read(2, [1.1, 1.1]), [id(1)]: read(2, [1.1, 1.1]) } };
+  assert.deepEqual(generateDistrict({ ...lib, measured: reads }, pands, streets, new Set(), 'test'), before, 'counted windows off unless the district states them');
+  const after = generateDistrict({ ...lib, countedWindows: true, measured: reads }, pands, streets, new Set(), 'test');
+  assert.equal(after.rows[0].series[0].design.bays.value, before.rows[0].series[0].design.bays.value);
+  assert.match(after.rows[0].series[0].design.bays.ref, /panorama count/);
+  const kit = (after.records[0] as { buurtKit?: { counted?: unknown; copingHex?: string } }).buurtKit;
+  assert.deepEqual(kit?.counted, { n: 2, widthM: 1.1 });
+});
+
+test('round 19: a row note states the stair axis per member; the run counter backs the pixel gate only when stable', async () => {
+  const pands = [0, 1, 2].map(i => pand(i, 1929, 12.4)), six = (i: number) => pands[i].id.slice(-6);
+  const res = generateDistrict({ ...lib, rowNotes: { 'teststraat-000000': { stairAxis: { [six(0)]: { a: 0.12, wide: 2 } }, evidence: 'test' } } }, pands, streets, new Set(), 'test');
+  const kitOf = (i: number) => (res.records.find(r => r.pandId === pands[i].id.replace(/^NL\.IMBAG\.Pand\./, '')) as { buurtKit?: { stairAxis?: unknown } } | undefined)?.buurtKit;
+  assert.deepEqual(kitOf(0)?.stairAxis, { a: 0.12, wide: 2 });
+  assert.equal(kitOf(1)?.stairAxis, undefined);
+  const plain = generateDistrict(lib, pands, streets, new Set(), 'test');
+  for (let i = 1; i < 3; i++) assert.deepEqual(kitOf(i) ?? null, (plain.records.find(r => r.pandId === pands[i].id.replace(/^NL\.IMBAG\.Pand\./, '')) as { buurtKit?: unknown }).buurtKit ?? null, 'members without a note: as before');
+  const { baysOfCrop, axesOfMask } = await import('./baysRead.js');
+  // A 6 m crop, 10 cm cells, two upper storeys (3-6 m, 6-9 m): openings over 1.0-2.6 m and 3.4-5.0 m (two wide windows).
+  const cols = 60, rowsN = 90, mask = new Uint8Array(cols * rowsN);
+  for (let r = 0; r < rowsN; r++) { const v = 9 - (r + 0.5) * 0.1; for (let c = 0; c < cols; c++) { const u = 0.1 + (c + 0.5) * 0.1, inStorey = (v > 3.9 && v < 5.6) || (v > 6.9 && v < 8.6);
+    if (inStorey && ((u > 1.0 && u < 2.6) || (u > 3.4 && u < 5.0))) mask[r * cols + c] = 1; } }
+  const m = { cols, rows: rowsN, cell: 0.1, box: { u0: 0.1, u1: 6.1, v0: 0, v1: 9 }, mask, frontClass: 'punched', columns: null, windowColumns: null, pitchScore: 0.2, usableFraction: 1 } as never;
+  const runs = axesOfMask(m, [0, 3, 6], 9)!;
+  assert.equal(runs.axes, 2); assert.deepEqual(runs.widthsM, [1.6, 1.6]);
+  assert.deepEqual(baysOfCrop({ m, lines: [0, 3, 6], topM: 9 }), { bays: 2, src: 'runs', runs });
+});
+
+test('round 21: counted windows leave the ground cells an entry redraws on the width rule (Borssenburgstraat 073155); none beside an erker', () => {
+  const pands = [0, 1, 2].map(i => pand(i, 1929, 12.4)), id = (i: number) => pands[i].id.replace(/^NL\.IMBAG\.Pand\./, '');
+  const note = { 'teststraat-000000': { entries: [{ a: 0.5, kind: 'door' as const }], evidence: 'test' } };
+  const read = (b: number) => ({ bays: b, reads: [{ pano: 'p', date: 'd', cols: b, raw: { cls: 'punched', columns: null, wcols: null, pitch: 0, usable: 1, foliage: 0, widthsM: [1.2, 1.2], seen: 1, spanM: 6 } }] });
+  const bays = { [id(0)]: read(2), [id(1)]: read(2), [id(2)]: read(2) };
+  const res = generateDistrict({ ...lib, countedWindows: true, rowNotes: note, measured: { bays } }, pands, streets, new Set(), 'test');
+  const plain = generateDistrict({ ...lib, rowNotes: note }, pands, streets, new Set(), 'test');
+  const kitOf = (g: typeof res) => (g.records[0] as { buurtKit?: { counted?: unknown; entries?: Array<{ cells?: number }> } }).buurtKit;
+  assert.deepEqual(kitOf(res)?.counted, { n: 2, widthM: 1.2 });
+  assert.equal(kitOf(res)?.entries?.[0]?.cells, kitOf(plain)?.entries?.[0]?.cells, 'the ground keeps the width rule');
+  const erk = generateDistrict({ ...lib, countedWindows: true, rowNotes: { 'teststraat-000000': { erkers: { [id(1).slice(-6)]: [{ a0: 0.3, a1: 0.6, depthM: 0.6, faceM: 1.6 }] }, evidence: 'test' } }, measured: { bays } }, pands, streets, new Set(), 'test');
+  assert.ok(erk.records.every(r => !(r as { buurtKit?: { counted?: unknown } }).buurtKit?.counted), 'a series with an erker keeps its painted cells');
+});
+
+test('round 20: a row note\'s raised part (tower lights, depth) reaches its member\'s kit; the other members as before', () => {
+  const pands = [0, 1, 2].map(i => pand(i, 1929, 12.4)), six = (i: number) => pands[i].id.slice(-6), id = (i: number) => pands[i].id.replace(/^NL\.IMBAG\.Pand\./, '');
+  const kitOf = (g: ReturnType<typeof generateDistrict>, i: number) => (g.records.find(r => r.pandId === id(i)) as { buurtKit?: { raised?: unknown; roof?: unknown } }).buurtKit;
+  const notes = (raised: Record<string, unknown[]>) => ({ 'teststraat-000000': { raised, evidence: 'test' } }) as never;
+  const flat = generateDistrict({ ...lib, rowNotes: notes({ [six(0)]: [{ a0: 0, a1: 0.5, riseM: 3, lights: 1, depthM: 4 }] }) }, pands, streets, new Set(), 'test');
+  assert.deepEqual(kitOf(flat, 0)?.raised, [{ a0: 0, a1: 0.5, riseM: 3, lights: 1, depthM: 4 }]);
+  const plain = generateDistrict(lib, pands, streets, new Set(), 'test');
+  assert.deepEqual(kitOf(plain, 1), kitOf(generateDistrict({ ...lib, rowNotes: notes({ [six(0)]: [{ a0: 0, a1: 0.5, riseM: 3 }] }) }, pands, streets, new Set(), 'test'), 1) && kitOf(plain, 1), 'members without a part: as before');
 });

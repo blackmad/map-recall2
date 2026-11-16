@@ -1,0 +1,37 @@
+{
+  "id": "de-mirandabad",
+  "name": "De Mirandabad, De Mirandalaan 9",
+  "heightMetres": 21,
+  "bagYear": 1979,
+  "galleryView": {
+    "theta": 0.9,
+    "phi": 0.9
+  },
+  "surveyedSource": "Vertex average of the BAG 0363100012107139 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/de-mirandabad-footprints.json, written by pool-site-prepare.ts, with the site's three further panden and the OSM basin outlines, ODbL). The glass dome is fitted to the 3DBAG LoD2.2 roof (CC BY 4.0); the west and north fronts are read from Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-001173_pano_0000_001323, TMX7316010203-001173_pano_0000_001317); the outdoor basins, decks and slides from the PDOK luchtfoto (Beeldmateriaal Nederland, CC BY 4.0). Per item in scripts/landmarks/de-mirandabad-inventory.json.",
+  "materialOverrides": {
+    "greyBrick": "#8a7e72",
+    "sandstone": "#5f5852",
+    "slate": "#3c3d3f",
+    "glass": "#38444c",
+    "canopyGlass": "#4f7f86",
+    "frame": "#eef0ec",
+    "brick": "#7b4c3c",
+    "blue": "#3cb4e0",
+    "white": "#f1f1ec",
+    "concrete": "#cdc8bc",
+    "dark": "#1f5f8e",
+    "copper": "#2f6cb8",
+    "gold": "#f0c22c",
+    "red": "#b8322e",
+    "green": "#b8322e"
+  },
+  "measuredOverrides": true,
+  "attribution": {
+    "title": "De Mirandabad, De Mirandalaan 9: subtropical bath of 1979 with outdoor basins",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.openstreetmap.org/way/43266216",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "modifications": "Original texture-free flat-colour geometry on the BAG footprints (CC0) and the 3DBAG LoD2.2 shells (CC BY 4.0): the ribbed glass dome over the tropical hall, the west and north fronts (glazed ground floor behind columns, deep concrete beam, block panels with tall windows, notched fascia), the 50 m outdoor lap pool with its lanes, the two hexagonal basins on their deck, the blue spiral slide and the yellow chute. Basin outlines from OpenStreetMap (ODbL) checked on the PDOK luchtfoto (CC BY 4.0); fronts measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  }
+}

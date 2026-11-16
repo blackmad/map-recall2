@@ -768,6 +768,17 @@
      ]
     },
     {
+     "label": "Wilhelminatoren",
+     "lat": 52.36420704,
+     "lng": 4.87205212,
+     "view": "chase",
+     "at": [
+      4.872243,
+      52.364475,
+      204
+     ]
+    },
+    {
      "label": "Eerste Helmersstraat 213 to 229 (9 houses)",
      "lat": 52.36121464537461,
      "lng": 4.866590617157692,
@@ -776,17 +787,6 @@
       4.866902,
       52.360604,
       343
-     ]
-    },
-    {
-     "label": "Eerste Helmersstraat 41 to 51 (6 houses)",
-     "lat": 52.363571740623236,
-     "lng": 4.875754816964472,
-     "view": "chase",
-     "at": [
-      4.876367,
-      52.363799,
-      239
      ]
     },
     {
@@ -2715,14 +2715,14 @@
      ]
     },
     {
-     "label": "Haarlemmerweg 105-109, Amsterdam-West (1992 housing block in buff and red-brown brick facing the Haarlemmervaart and the Westerpark; BAG pand 0363100012100677)",
-     "lat": 52.3853014,
-     "lng": 4.8740059,
+     "label": "OBA Staatsliedenbuurt block",
+     "lat": 52.37959761,
+     "lng": 4.87224989,
      "view": "chase",
      "at": [
-      4.873268,
-      52.385375,
-      99
+      4.873811,
+      52.379581,
+      271
      ]
     },
     {

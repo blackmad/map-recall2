@@ -1,0 +1,417 @@
+{
+ "schemaVersion": 1,
+ "id": "zwembad-bijlmer",
+ "pand": "0363100012103346",
+ "brief": "scripts/landmarks/zwembad-bijlmer-brief.md",
+ "signature": [
+  "glass-curtain",
+  "sign-band",
+  "red-lettering",
+  "mottled-brick"
+ ],
+ "walls": [
+  {
+   "tag": "w01-61",
+   "bearing": 61,
+   "lengthM": 76.1,
+   "centre": [
+    4.958417,
+    52.3154295
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001253_pano_0000_000303",
+   "capturedAt": "2019-06-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "mottled-brick",
+     "kind": "other",
+     "where": "long curved brick wall in mottled grey-brown brick on a light concrete plinth",
+     "approxSizeM": [
+      76,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001253_pano_0000_000303",
+     "how": "3DBAG shell in one mottled grey-brown; plinth slab 0.7 m; the mottle itself is the city brick cell"
+    },
+    {
+     "id": "high-strip-windows",
+     "kind": "window-shape",
+     "where": "a strip of windows high on the east half",
+     "approxSizeM": [
+      24,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001253_pano_0000_000303",
+     "how": "frame band with glass panes at 6.2-7.4 m on edge 4"
+    },
+    {
+     "id": "w01-canopy",
+     "kind": "canopy",
+     "where": "thin concrete canopy at about 3 m",
+     "approxSizeM": [
+      9,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001253_pano_0000_000303",
+     "how": "slab 1.6 m deep"
+    },
+    {
+     "id": "roof-grille",
+     "kind": "other",
+     "where": "white louvre box on the roof at the east end",
+     "approxSizeM": [
+      4,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001253_pano_0000_000303",
+     "skip": {
+      "reason": "too-small",
+      "note": "roof plant, seen only at the wall top"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-331",
+   "bearing": 331,
+   "lengthM": 49.2,
+   "centre": [
+    4.957511,
+    52.315873
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-13_09-27-32_04475",
+   "capturedAt": "2024-09-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "service-door",
+     "kind": "other",
+     "where": "grey service door under a canopy",
+     "approxSizeM": [
+      6,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-13_09-27-32_04475",
+     "how": "dark door slab and canopy on edge 10"
+    },
+    {
+     "id": "posters",
+     "kind": "sign",
+     "where": "two posters and two louvres on the brick",
+     "approxSizeM": [
+      3,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-13_09-27-32_04475",
+     "skip": {
+      "reason": "temporary",
+      "note": "posters change; louvres flat"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-241",
+   "bearing": 241,
+   "lengthM": 37.7,
+   "centre": [
+    4.957331,
+    52.315617
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000853_pano_0000_000287",
+   "capturedAt": "2018-07-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "plain-brick",
+     "kind": "other",
+     "where": "blank brick wall on its plinth",
+     "approxSizeM": [
+      38,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000853_pano_0000_000287",
+     "how": "3DBAG shell + plinth slab"
+    }
+   ]
+  },
+  {
+   "tag": "w04-61",
+   "bearing": 61,
+   "lengthM": 35.2,
+   "centre": [
+    4.957952,
+    52.315843
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002612_pano_0000_000666",
+   "capturedAt": "2022-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "plain-brick-e",
+     "kind": "other",
+     "where": "blank curved brick wall on its plinth",
+     "approxSizeM": [
+      35,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002612_pano_0000_000666",
+     "how": "3DBAG shell + plinth slab"
+    }
+   ]
+  },
+  {
+   "tag": "w05-160",
+   "bearing": 160,
+   "lengthM": 34.6,
+   "centre": [
+    4.9583815,
+    52.315052
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-01_11-37-05_02148",
+   "capturedAt": "2025-09-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "glass-curtain",
+     "kind": "window-shape",
+     "where": "glass curtain wall the whole height, narrow vertical panes of mixed tones",
+     "approxSizeM": [
+      35,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-01_11-37-05_02148",
+     "how": "curtain(): 1.25 m panes in light frames, two transoms, panes in two glass tones by a fixed hash"
+    },
+    {
+     "id": "bird-sculpture",
+     "kind": "sculpture",
+     "where": "a tall dark bird figure reflected/standing behind the glass",
+     "approxSizeM": [
+      2,
+      5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-09-01_11-37-05_02148",
+     "skip": {
+      "reason": "not-visible",
+      "note": "a reflection in the curtain, not a part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-264",
+   "bearing": 264,
+   "lengthM": 26.9,
+   "centre": [
+    4.9575125,
+    52.315262
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001768_pano_0000_004072",
+   "capturedAt": "2020-06-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "sign-band",
+     "kind": "lettering",
+     "where": "row of white squares at about 2.6 m with one green letter each: BIJLMER SPORTCENTRUM",
+     "approxSizeM": [
+      22,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001768_pano_0000_004072",
+     "how": "signBand(): 0.56 m white squares, green glyphs, on edges 24 and 25"
+    },
+    {
+     "id": "red-lettering",
+     "kind": "lettering",
+     "where": "BIJLMER in tall red letters top right, SPORTCENTRUM under it, three crosses to the left",
+     "approxSizeM": [
+      8,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001768_pano_0000_004072",
+     "how": "letters() in red; the crosses as three X glyphs"
+    }
+   ]
+  },
+  {
+   "tag": "w07-224",
+   "bearing": 224,
+   "lengthM": 26.7,
+   "centre": [
+    4.9580035,
+    52.3150805
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001768_pano_0000_004110",
+   "capturedAt": "2020-06-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "curtain-sw",
+     "kind": "window-shape",
+     "where": "glass curtain wall with the entrance doors",
+     "approxSizeM": [
+      27,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001768_pano_0000_004110",
+     "how": "curtain() on edge 26"
+    }
+   ]
+  },
+  {
+   "tag": "w08-174",
+   "bearing": 174,
+   "lengthM": 22.6,
+   "centre": [
+    4.9576985,
+    52.315153
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-01_11-37-05_02159",
+   "capturedAt": "2025-09-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "sign-band-s",
+     "kind": "lettering",
+     "where": "the white-square sign band continues round the south corner",
+     "approxSizeM": [
+      22,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-01_11-37-05_02159",
+     "how": "signBand() on edge 25"
+    },
+    {
+     "id": "entrance-steps",
+     "kind": "other",
+     "where": "steps and a ramp to the glazed door",
+     "approxSizeM": [
+      4,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-09-01_11-37-05_02159",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 0.6 m high, behind the planters"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-251",
+   "bearing": 251,
+   "lengthM": 9.4,
+   "centre": [
+    4.9574685,
+    52.315422
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000853_pano_0000_000283",
+   "capturedAt": "2018-07-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-entrance",
+     "kind": "window-shape",
+     "where": "glazed entrance between brick piers, steps in front",
+     "approxSizeM": [
+      9,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000853_pano_0000_000283",
+     "how": "curtain() on edge 23; the steps are not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w10-151",
+   "bearing": 151,
+   "lengthM": 5.5,
+   "centre": [
+    4.9586545,
+    52.315119
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001253_pano_0000_000331",
+   "capturedAt": "2019-06-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-tower",
+     "kind": "other",
+     "where": "brick stair tower at the south-east corner",
+     "approxSizeM": [
+      5,
+      11
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001253_pano_0000_000331",
+     "how": "3DBAG shell in the brick colour"
+    }
+   ]
+  },
+  {
+   "tag": "w11-331",
+   "bearing": 331,
+   "lengthM": 5.2,
+   "centre": [
+    4.958111,
+    52.3157165
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002612_pano_0000_000665",
+   "capturedAt": "2022-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-canopy",
+     "kind": "canopy",
+     "where": "canopy over a side door at the north-west end",
+     "approxSizeM": [
+      6,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002612_pano_0000_000665",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 5 m wall at the far end, seen at 24 m"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

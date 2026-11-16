@@ -2728,6 +2728,55 @@ Node 32 s, Chromium 8 s (most of the Node time is the ortho fronts at 1800 px).
 Not reproduced: the city-look atlas shader, anisotropic filtering, cast shadows, environment maps. The release review
 "at gallery size from all sides" can use the Node orbit (`views.ts <id> -`) for its first look; the release decision
 itself should stay on a Chromium or in-game frame until the measureFacade knife edges above are hardened (OPEN).
+### §8a World frames in Node: `node-frame.ts` (lane node-world-frames, 2026-11-15)
+
+A first pass at a house:frames likeness pair without a browser. It renders the whole game world from the pose: own
+ground, the detail ring meshed by `buildFeatureChunk`, world-v1 shells, installed GLBs under the city look, the landmark
+kit and measured-front chunk, building types, street furniture, the sun's shadow and the fog. It uses the game's own
+data and builders. It writes `likeness.node.png` and `pair.node.jpg` (photo cut | node frame) beside the browser's files.
+
+**Use it for:** a lane's own iteration loop on a house, row or street (did the change land, does the row read); a
+batch first pass before queueing a browser run; and tracing which layer draws a pixel (`--probe`).
+**Do not use it for acceptance.** Builders are still accepted on browser `house:frames` pairs (§7, rule 10), read by
+opus or a human. Note "node frame" on any sheet made from it.
+
+```
+# No browser at all: house:frames prepares poses and the photo cut (--likeness --prep-only), then Node renders them.
+# Any house:frames selection works (--pands, --face, --buurt, --list, with their options).
+node --import tsx scripts/house-frames/node-frame.ts --pands <id,id…> --out artifacts/<lane>/node-frames --dpr 1
+# Re-render an existing house:frames out dir (or a --prep-only dir with prepared.json), e.g. after a spec change
+node --import tsx scripts/house-frames/node-frame.ts artifacts/<lane>/frames/<key>... --dpr 1
+# What a pixel shows: the draw (detail/<pand>, ground/<cell>/<layer>, model/<id>, furniture/<kind>) and its corners
+node --import tsx scripts/house-frames/node-frame.ts <dir>/<key> --probe '1200,700;1500,900'
+# Node frame against the browser frame: dE, sky and edge IoU per pose, blind sheets photo | A | B + answers.json
+node --import tsx scripts/house-frames/node-frame-fidelity.ts <house:frames out dir>
+```
+
+Flags: `--dpr 1|2` (default 2, which is what house:frames captures; 1 is about 1.6x faster), `--frame game` (the 72°
+review frame instead of the likeness frame), and `--no-shadows`, `--no-models`, `--no-ground`, `--no-shells`,
+`--no-furniture` to isolate a layer. A spec change is picked up from the world cells and the staged/installed specs
+the game would load. A world recompile is still the integrator's.
+
+**Cost:** about 9 s a frame at `--dpr 1` in a batch, and 12–15 s at dpr 2 (one core, machine under load). The first
+frame near a place builds its ground cells, about 1–4 s a cell, cached in `.cache/node-frame/ground`. One Node
+process per lane is enough; it needs no browser-queue slot.
+
+**Agreement with the browser** (19 belt and landmark poses, main 85402ed99/894631990;
+`docs/reports/node-world-frames-20261115.md`): median mean dE about 5, edge IoU about 0.75. A blind opus judge rated
+20 of 20 interchangeable for the likeness verdict. A stricter judge, counting doors, lamps, labels and camera, rated
+13 of 20.
+
+**Known differences** (do not read these as findings about the house):
+- No POI labels.
+- Water is a slightly different tone.
+- The dark kerb-ramp wedges on some quays are missing in Node. At 167483 the browser's cell holds kerb faces about 2.5 cm
+  over the klinker where Node's cell has only klinker; the cause is open (the worker's compacted cell is the suspect).
+- The camera matches the browser to within one pixel. The earlier 5–7 px offsets were the rider's height on bridge
+  decks and per-pand bases in street chunks, both fixed.
+- Far prisms beyond 1.5 km are not drawn.
+- The shader window grid on `windowGrid` GLB walls is not drawn.
+- Highlight and dim states are not drawn.
+
 ## §9 Oud-West period-palette measurement and brickLift v2 (lane #373, 2026-11-10 / 2026-11-12)
 
 Question: whole 1875-1910 rows that panoramas show as dark purple-brown brick drew bright orange-red. Tools: `scripts/house-specs/oudwest-palette.ts`

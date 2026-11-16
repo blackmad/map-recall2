@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {inferredSlotExtras} from '../../src/canalRecall/look/materialSlotInference';
 import {slotTintBytes} from '../../src/canalRecall/look/cityLook';
-import {MATERIAL_SLOT_TAG, MATERIAL_SLOT_TAGS, slotTagFor, tagExtras} from './material-slot-tags';
+import {MATERIAL_SLOT_TAG, MATERIAL_SLOT_TAGS, slotTagFor, statedOverrideExtras, tagExtras} from './material-slot-tags';
 
 test('tagExtras without a measured tint is the pre-#226 tag, key for key and in order', () => {
   const base = inferredSlotExtras('slate', '#4a525d'), tag = {slot: 'roofTile' as const, why: 'test'};
@@ -31,4 +31,18 @@ test('Ziggo Dome: the white membrane roof draws its measured colour, not the gra
   assert.deepEqual(slotTintBytes('bitumen', '#6f7173'), [158, 146, 129, 255]);
   const [r, g, b] = slotTintBytes(tag.slot, tag.measured, 'measured');
   assert.deepEqual([r, g, b], [0xe8, 0xe7, 0xe3]);
+});
+
+test('a spec-stated wall override is drawn as stated; no override leaves the extras untouched', () => {
+  const brick = inferredSlotExtras('brick', '#5f4b41');
+  assert.equal(statedOverrideExtras(brick, undefined, '#5f4b41'), brick, 'no override: the same object');
+  assert.equal(statedOverrideExtras(brick, '#5F4B41', '#5f4b41').tintSource, 'measured');
+  assert.equal(JSON.stringify(statedOverrideExtras(brick, '#5f4b41', '#5f4b41')), JSON.stringify({...brick, tintSource: 'measured'}));
+  assert.equal(statedOverrideExtras(brick, '#112233', '#5f4b41'), brick, 'a colour other than the stated one is not the override');
+  const slate = inferredSlotExtras('slate', '#45474a');
+  assert.equal(statedOverrideExtras(slate, '#45474a', '#45474a'), slate, 'only brick and accent slots');
+  const tagged = tagExtras(inferredSlotExtras('slate', '#6f7173'), {slot: 'bitumen', why: 'test', measured: '#e8e7e3'});
+  assert.equal(statedOverrideExtras(tagged, '#6f7173', '#6f7173'), tagged, 'a tag keeps its own measured tint');
+  // the stated colour reaches the game: the measured path no longer lifts it into the period brick range
+  assert.notDeepEqual(slotTintBytes('brick', '#5f4b41', 'measured'), slotTintBytes('brick', '#5f4b41'));
 });

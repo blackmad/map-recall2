@@ -98,6 +98,9 @@ export type RoofPlan = {
   rowJoins?: { left?: boolean; right?: boolean };
   /** House rows: the street front's width (m); rowRoofBox faces the roof on the wall that width matches (a corner). */
   rowFrontM?: number;
+  /** Buurt kit (round 15, lane R): the member's street normal (metres east/north). A row box whose street end does not
+   *  face it (a corner member whose side street is nearer, Europaplein 145394, Patroclosstraat 133916) is squared to it. */
+  rowFrontN?: Vec2;
   /** Buurt generator kit (buurtGenerator/kit/roofKit.ts; only on a `buurtKit` record): pitch and erkers of the row roof. */
   buurtKit?: BuurtRoofKit;
   /** Sloping perimeter and flat deck following a convex, nonrectangular wall outline. */
@@ -951,6 +954,9 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
     const n = Math.min(3, Math.floor((L - 2) / 3.4));
     for (const sd of [-1, 1]) for (let i = 0; i < n; i++) dormer(s, { axis: 'v', side: sd, c: -L / 2 + ((i + 0.5) * L) / n, pf: (W / 2) * 0.72, dw: 1.05, hd: 1.35, surf: surfV }, plan);
   }
+  // Round 18 (lane R): a gabled kit record's front parts on the street end, under its crown.
+  const ke = plan.rowCrown && plan.buurtKit && plan.rowFrontN ? kitEndOf(rect, plan.rowFrontN) : null;
+  if (ke !== null && kitDrawsFront(plan.buurtKit!)) { const from = s.out.length; drawKitFront(s, plan.buurtKit!, L, W, ke); for (let i = from; i < s.out.length; i++) s.out[i].kit = true; }
   return s.out;
 }
 
@@ -959,10 +965,12 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
 export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDims): RoofTri[] {
   const triangles = buildRoofTriangles(rect, plan, h0, dims);
   if (!plan.nativeEnvelopeM || !triangles.length) return triangles;
-  const top = Math.max(...triangles.flatMap(t => t.p.map(p => p[2] - h0)));
+  const top = Math.max(...triangles.filter(t => !t.kit).flatMap(t => t.p.map(p => p[2] - h0)));
   if (top <= 0) return triangles;
   const scale = plan.nativeEnvelopeM / top;
+  // A kit's front parts stand on the wall, not in the crown's envelope: never scaled.
   return triangles.map(t => {
+    if (t.kit) return t;
     const nz = t.n[2] / scale, length = Math.hypot(t.n[0], t.n[1], nz);
     const endDot = t.n[0]*rect.ux+t.n[1]*rect.uy;
     const sourceCrownShape = plan.kind === 'gable' && t.part === 'plate' && Math.abs(endDot) > .9 && plan.gableEnds?.[endDot < 0 ? 0 : 1] !== false && plan.streetEnds?.[endDot < 0 ? 0 : 1] !== false ? plan.gable : undefined;
@@ -1220,7 +1228,10 @@ function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: num
     // House rows: the row roof's box is drawn inside the walls (a box skewed to a front stood past it and the cut closed it
     // in wall colour, a brick wedge over the cornice); the lid at the eaves closes the strip between box and walls.
     if (piece.plan.rowDormers) {
-      const box = rowRoofBox(mesh, facing, piece.plan.rowFrontM), inside = box ? rowBoxDepth(box, mesh) : boxInside(piece.rect, mesh), rp = withStreetEnds(piece.plan, inside, facing);
+      const box = rowRoofBox(mesh, facing, piece.plan.rowFrontM, !!piece.plan.buurtKit), inside = box ? rowBoxDepth(box, mesh) : boxInside(piece.rect, mesh);
+      const turned = rowBoxOnFront(mesh, box ?? inside, piece.plan.rowFrontN, !!box);
+      if (turned) { out.push(...roofTriangles(turned, { ...piece.plan, streetEnds: [false, true] }, h0, dims)); continue; }
+      const rp = withStreetEnds(piece.plan, inside, facing);
       let tris = roofTriangles(inside, rp, h0, dims);
       // A stated dormer standing outside the walls (a front stepped back behind a part that stands forward, Herengracht 51:
       // the box's end is the forward part's) would be cut away at the walls: it stands back by its overhang instead.
@@ -1228,6 +1239,10 @@ function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: num
       if (hang > ROOF_PART_HANG_M) { tris = roofTriangles(inside, { ...rp, rowDormerBackM: +(hang + 0.2).toFixed(2) }, h0, dims); for (const t of tris) if (ROW_DORMER_TRIS.has(t)) ROW_DORMER_BACK.add(t); }
       out.push(...tris); continue;
     }
+    // Round 18 (lane R): a gabled kit record's crown faces its kit's street front: a box fitted across it is rebuilt on
+    // the front normal (rowBoxOnFront), its +u end the street.
+    const kitTurn = piece.plan.rowCrown && piece.plan.buurtKit && piece.plan.rowFrontN ? rowBoxOnFront(mesh, rect, piece.plan.rowFrontN, true) : null;
+    if (kitTurn) { out.push(...roofTriangles(kitTurn, { ...piece.plan, streetEnds: [false, true] }, h0, dims)); continue; }
     const innerPlan = plan.sourceCrownFront ? {...piece.plan, kind: piece.plan.kind === 'gable' ? 'pitched' as const : piece.plan.kind, accents:false, sourceCrownFront:undefined} : withStreetEnds(piece.plan, rect, facing);
     const triangles=roofTriangles(rect,innerPlan,h0,dims);
     out.push(...(!plan.sourceCrownFront&&['gable','pitched','halfHipped','mansard'].includes(piece.plan.kind)?gablePieceOnNativeWalls(triangles,rect,mesh,piece.plan):triangles));
@@ -1344,7 +1359,7 @@ function meshPieces(plan: RoofPlan, pieces: NonNullable<RoofPlan['pieces']>, map
  * it. A box fitted to the whole plan stood skewed to a front a few degrees off square, and its mansard foot ran
  * across the cornice (a brick wedge over Kinkerstraat 104-100). No street known: null (the fitted box).
  */
-function rowRoofBox(ring: readonly Vec2[], facing: StreetFacing | undefined, frontM?: number): Rect | null {
+function rowRoofBox(ring: readonly Vec2[], facing: StreetFacing | undefined, frontM?: number, kitFront = false): Rect | null {
   if (!facing) return null;
   const pts = openRing(ring), ccw = signedArea(pts) > 0;
   let walls: Array<{ n: Vec2; d: number }> = [];
@@ -1374,14 +1389,31 @@ function rowRoofBox(ring: readonly Vec2[], facing: StreetFacing | undefined, fro
   // A corner member: the side street can stand nearer than the row's own (Kinkerstraat 110: its side wall 6.9 m from the
   // cross street, its 5.2 m front 8.0 m from Kinkerstraat), and a box faced on it ran the mansard across the plot, a
   // pyramid over a 5 m front. The member's stated front width picks the wall when the nearest one does not match it.
-  const off = (r: Rect) => Math.abs(r.wid - frontM!), tol = (m: number) => Math.max(ROW_FRONT_MATCH.m, ROW_FRONT_MATCH.share * m);
+  // A buurt kit member states its front line exactly (the straightened outline's own edge), so its width is matched
+  // tightly: Patroclosstraat 133916's 8.0 m side wall stood within the loose tolerance of its 9.01 m front.
+  const off = (r: Rect) => Math.abs(r.wid - frontM!), tol = (m: number) => kitFront ? ROW_FRONT_MATCH.kitM : Math.max(ROW_FRONT_MATCH.m, ROW_FRONT_MATCH.share * m);
   if (!frontM || off(nearest) <= tol(frontM)) return nearest;
   const matched = walls.slice(1).map(w => box(w.n)).filter(r => off(r) <= tol(frontM)).sort((a, b) => off(a) - off(b))[0];
   return matched ?? nearest;
 }
 
+/** The row box squared to a kit's street normal `n` when the chosen box does not face it (round 15): the facing box's +u
+ *  end is its street (`faced`), a fitted box's either end; more than ROW_FRONT_TURN_DEG off, the box is rebuilt on `n`
+ *  (+u the street end) as rowRoofBox builds it, then shortened from the back. Facing it: null (the box as chosen). */
+function rowBoxOnFront(ring: readonly Vec2[], chosen: Rect, n: Vec2 | undefined, faced: boolean): Rect | null {
+  if (!n || !faced) return null;
+  if (chosen.ux * n[0] + chosen.uy * n[1] >= Math.cos(ROW_FRONT_TURN_DEG * Math.PI / 180)) return null;
+  const pts = openRing(ring), [ux, uy] = n;
+  const along = pts.map(([x, y]) => x * ux + y * uy), across = pts.map(([x, y]) => -x * uy + y * ux);
+  const a0 = Math.min(...along), a1 = Math.max(...along);
+  const front = across.filter((_, i) => along[i] >= a1 - ROW_FRONT_BAND_M), b0 = Math.min(...front), b1 = Math.max(...front);
+  const ca = (a0 + a1) / 2, cb = (b0 + b1) / 2;
+  return rowBoxDepth({ cx: ca * ux - cb * uy, cy: ca * uy + cb * ux, ux, uy, len: a1 - a0, wid: b1 - b0, coverage: 1, maxDev: 0 }, ring);
+}
+const ROW_FRONT_TURN_DEG = 45;
+
 /** How far a row roof box's front width may stand from the member's stated front before another street wall is tried. */
-const ROW_FRONT_MATCH = { m: 1.5, share: 0.3 } as const;
+const ROW_FRONT_MATCH = { m: 1.5, share: 0.3, kitM: 0.5 } as const;
 
 /** How deep behind the street front the outline's points set a row roof's width (m). */
 const ROW_FRONT_BAND_M = 1.5;
@@ -1466,31 +1498,47 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
     if (!rect || !(height - rr.riseM >= 2)) return null;
     const box: Rect = { ...rect, coverage: 1, maxDev: 0 };
     const rowPlan: RoofPlan = { kind: rr.shape === 'hipped' ? 'hipped' : 'mansardHip', gable: 'plain', riseM: rr.riseM, dormers: rr.dormers.length > 0, material: rr.material === 'tile' ? 'tile' : 'slate',
-      tone: ROW_SLATE_TONE, seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.joins ? { rowJoins: rr.joins } : {}), ...(rr.frontM ? { rowFrontM: rr.frontM } : {}), ...(rr.kit ? { buurtKit: rr.kit } : {}) };
+      tone: ROW_SLATE_TONE, seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.joins ? { rowJoins: rr.joins } : {}), ...(rr.frontM ? { rowFrontM: rr.frontM } : {}), ...(rr.kit ? { buurtKit: rr.kit } : {}), ...(rr.kit && rr.frontN ? { rowFrontN: rr.frontN } : {}) };
     return { ...rowPlan, pieces: [{ rect: box, plan: rowPlan }], keepLid: true };
   }
   // Lane 1 (houseLine/rowFront.ts sets `rowCrown` and the matching height): the measured crown, its saddle inside it,
   // no chimney stub or dice dormers through it.
   if (plan && plan.kind === 'gable' && isRowCrown(p.rowCrown) && Number(p.rowCrownRoofRiseM) > 0) {
-    const crowned = (q: RoofPlan): RoofPlan => ({ ...q, rowCrown: p.rowCrown as RowCrown, riseM: Number(p.rowCrownRoofRiseM), chimney: false, dormers: false, accents: true, trimHex: q.trimHex ?? TRIM_WHITE, shutters: false });
+    // Round 18 (lane R): a kit record's front parts under its stated gable (rowFront.ts `rowKit`), on the street end.
+    const rk = rowKitOf(p.rowKit);
+    const crowned = (q: RoofPlan): RoofPlan => ({ ...q, rowCrown: p.rowCrown as RowCrown, riseM: Number(p.rowCrownRoofRiseM), chimney: false, dormers: false, accents: true, trimHex: q.trimHex ?? TRIM_WHITE, shutters: false, ...(rk ? { buurtKit: rk.kit, rowFrontN: rk.frontN } : {}) });
     return { ...crowned(plan), ...(plan.pieces ? { pieces: plan.pieces.map(pc => ({ rect: pc.rect, plan: crowned(pc.plan) })) } : {}) };
   }
   return plan;
+}
+
+/** Round 18: a gabled kit record's `rowKit` (houseLine/rowFront.ts), validated; null when absent or malformed. */
+export function rowKitOf(v: unknown): { kit: BuurtRoofKit; frontN: Vec2 } | null {
+  if (!v || typeof v !== 'object') return null;
+  const r = v as { kit?: unknown; frontN?: unknown }, kit = buurtRoofKitOf(r.kit);
+  const fn = Array.isArray(r.frontN) && r.frontN.length === 2 && r.frontN.every(Number.isFinite) && Math.abs(Math.hypot(r.frontN[0], r.frontN[1]) - 1) < 0.01 ? [Number(r.frontN[0]), Number(r.frontN[1])] as Vec2 : null;
+  return kit && fn && kitDrawsFront(kit) ? { kit, frontN: fn } : null;
+}
+/** The street end of a roof box whose u axis runs along the front normal `n` (within 45 degrees); null when it does not. */
+export function kitEndOf(rect: Pick<Rect, 'ux' | 'uy'>, n: Vec2): -1 | 1 | null {
+  const d = rect.ux * n[0] + rect.uy * n[1];
+  return Math.abs(d) < Math.SQRT1_2 ? null : d > 0 ? 1 : -1;
 }
 
 /** House rows: a feature's `rowRoof` (houseLine/rowFront.ts), validated; null when absent or malformed. */
 /** House rows: every row mansard is the one dark slate (look/palette.ts MEASURED_SLATE[1], #606b79): one tone per
  *  series and the same across a row (blind review 2026-11-14: Weteringschans 169016 and 171218 differed). */
 export const ROW_SLATE_TONE = 0.5;
-export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number; kit?: BuurtRoofKit; shape?: 'hipped' } | null {
+export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number; kit?: BuurtRoofKit; shape?: 'hipped'; frontN?: Vec2 } | null {
   if (!v || typeof v !== 'object') return null;
-  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown; kit?: unknown; shape?: unknown };
+  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown; kit?: unknown; shape?: unknown; frontN?: unknown };
   if (!(Number(r.riseM) > 0.5) || typeof r.series !== 'string' || !Array.isArray(r.dormers)) return null;
   const dormers = (r.dormers as Array<{ a?: unknown; kind?: unknown; hoist?: unknown }>).filter(d => Number.isFinite(Number(d.a)) && (ROW_DORMER_DRAW_KINDS as readonly unknown[]).includes(d.kind))
     .map(d => ({ a: Math.max(0.05, Math.min(0.95, Number(d.a))), kind: d.kind as RowDormerKind, ...(d.hoist === true ? { hoist: true } : {}) }));
   const joins = r.joins && typeof r.joins === 'object' ? { ...(r.joins.left === true ? { left: true } : {}), ...(r.joins.right === true ? { right: true } : {}) } : null;
   const kit = r.kit === undefined ? null : buurtRoofKitOf(r.kit);
-  return { riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers, ...(joins && (joins.left || joins.right) ? { joins } : {}), ...(Number(r.frontM) > 1 ? { frontM: Number(r.frontM) } : {}), ...(kit ? { kit } : {}), ...(r.shape === 'hipped' ? { shape: 'hipped' as const } : {}) };
+  const fn = Array.isArray(r.frontN) && r.frontN.length === 2 && r.frontN.every(Number.isFinite) && Math.abs(Math.hypot(r.frontN[0], r.frontN[1]) - 1) < 0.01 ? [Number(r.frontN[0]), Number(r.frontN[1])] as Vec2 : null;
+  return { ...(fn ? { frontN: fn } : {}), riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers, ...(joins && (joins.left || joins.right) ? { joins } : {}), ...(Number(r.frontM) > 1 ? { frontM: Number(r.frontM) } : {}), ...(kit ? { kit } : {}), ...(r.shape === 'hipped' ? { shape: 'hipped' as const } : {}) };
 }
 
 /**
