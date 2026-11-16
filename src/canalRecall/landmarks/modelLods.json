@@ -6191,5 +6191,45 @@
    "bytes": 9036,
    "triangles": 325
   }
+ },
+ "schiller-rembrandtplein": {
+  "sourceHash": "21952a6e7fd5948b",
+  "buildVersion": 2,
+  "bytes": 63104,
+  "triangles": 2614,
+  "lod2": {
+   "sourceHash": "21952a6e7fd5948b",
+   "buildVersion": 6,
+   "bytes": 10420,
+   "triangles": 271
+  }
+ },
+ "flevoparkbad": {
+  "lod2": {
+   "sourceHash": "061808599a489c69",
+   "buildVersion": 6,
+   "bytes": 8768,
+   "triangles": 328
+  }
+ },
+ "noorderparkbad": {
+  "sourceHash": "1c03eae235b4582a",
+  "buildVersion": 2,
+  "bytes": 42148,
+  "triangles": 2540,
+  "lod2": {
+   "sourceHash": "1c03eae235b4582a",
+   "buildVersion": 6,
+   "bytes": 18448,
+   "triangles": 1472
+  }
+ },
+ "victoriabad": {
+  "lod2": {
+   "sourceHash": "7b02ebe0caa11377",
+   "buildVersion": 6,
+   "bytes": 5336,
+   "triangles": 144
+  }
  }
 }

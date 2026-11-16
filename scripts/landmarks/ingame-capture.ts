@@ -4,7 +4,8 @@
  *   node --import tsx scripts/landmarks/ingame-capture.ts --id=de-roos --port=4484 --views=vondelpark:337,pc-hooftstraat:157
  *   ... --views=user:125:4.8796:52.3573[:zoom[:pitch]]   (a view may name its own look-at point, zoom and pitch)
  *   ... --query='buildings3d=storybook'   (appended to the game URL: a Building look, a flag A/B)
- *   ... --underlay   (also a shot of each view with the model hidden: what else draws on its footprint)
+ *   ... --underlay   (also a shot of each view with the model hidden: what else draws on its footprint; it fails when that shot
+ *                    equals the model shot, capture-diff.ts)
  *
  * Each view looks at the model's anchor along the given bearing (degrees clockwise from north; the camera stands on the
  * opposite side) at `--zoom` (18.7) and `--pitch` (68). Writes artifacts/review/<id>/ingame-<view>-<desktop|phone>.png.
@@ -15,6 +16,7 @@ import path from 'node:path';
 import {chromium, type Page} from '@playwright/test';
 import catalogue from '../../src/canalRecall/landmarks/manualCatalogue.json' with {type: 'json'};
 import {gameListsModel, routeFreshSignatureBundle, settleHeldWorld} from './fresh-signature-bundle.ts';
+import {changedShareOfFiles} from './capture-diff.ts';
 
 const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.slice(k.length + 3);
 const id = arg('id') ?? 'de-roos';
@@ -63,16 +65,31 @@ try {
       }, id, {timeout: 60000, polling: 1000});
       await settleHeldWorld(page);
       const file = path.join(out, `ingame-${v.name}-${size}.png`);
-      await page.screenshot({path: file});
+      await page.screenshot({path: file, timeout: 180000}); // a loaded machine (load 70-100) took over 30 s per frame
       console.log(file);
       if (underlay) {
-        // The model hidden, its suppression kept: whatever still draws on the footprint is a second building.
-        await page.evaluate(i => { const s = (window as any).canalRecallGame.vectorMap._signatureLandmarks; for (const e of s._entries) if (e.spec.id === i) { e.holder.visible = false; for (const b of e.batchIds ?? []) s._batch?.setVisible(b, false); } (window as any).canalRecallGame.vectorMap.map?.triggerRepaint?.(); }, id);
+        // The model hidden, its suppression kept: whatever still draws on the footprint is a second building. The layer's
+        // beforeRender sets every holder's visibility from canShowModel each frame, so hiding the holder alone was undone
+        // on the next frame (every underlay shot was the model shot, 2026-11-15): canShowModel itself says no for this id.
+        await page.evaluate(i => {
+          const s = (window as any).canalRecallGame.vectorMap._signatureLandmarks;
+          s.__canShowBeforeUnderlay = s.canShowModel;
+          s.canShowModel = (spec: {id: string}) => spec.id !== i && s.__canShowBeforeUnderlay(spec);
+          for (const e of s._entries) if (e.spec.id === i) { e.holder.visible = false; for (const b of e.batchIds ?? []) s._batch?.setVisible(b, false); }
+          const m = (window as any).canalRecallGame.vectorMap; (m.map ?? m.cameraMap)?.triggerRepaint?.();
+        }, id);
         await page.waitForTimeout(1500);
+        await settleHeldWorld(page);
         const under = path.join(out, `ingame-${v.name}-${size}-underlay.png`);
-        await page.screenshot({path: under});
-        console.log(under);
-        await page.evaluate(i => { const s = (window as any).canalRecallGame.vectorMap._signatureLandmarks; for (const e of s._entries) if (e.spec.id === i) { e.holder.visible = true; for (const b of e.batchIds ?? []) s._batch?.setVisible(b, true); } }, id);
+        await page.screenshot({path: under, timeout: 180000});
+        const share = await changedShareOfFiles(file, under);
+        console.log(under, `${(share * 100).toFixed(1)} % of pixels changed`);
+        if (share < 0.002) throw new Error(`${id} ${v.name} ${size}: the underlay shot equals the model shot (${(share * 100).toFixed(2)} % changed): the model was not hidden, or it is off screen`);
+        await page.evaluate(i => {
+          const s = (window as any).canalRecallGame.vectorMap._signatureLandmarks;
+          s.canShowModel = s.__canShowBeforeUnderlay; delete s.__canShowBeforeUnderlay;
+          for (const e of s._entries) if (e.spec.id === i) { e.holder.visible = true; for (const b of e.batchIds ?? []) s._batch?.setVisible(b, true); }
+        }, id);
       }
     }
     await page.close();

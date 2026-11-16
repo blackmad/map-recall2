@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { drawRedLightFront, redLightDoors, redLightFrontOf, RED_LIGHT_LOOK, type FrontPanelSink } from './redLightFront.ts';
-import { windowFrontsOf } from '../buurtGenerator/kit/frontKit.ts';
 
 type Rec = { kind: 'panel' | 'box'; a0: number; a1: number; z0: number; z1: number; hex: string; lit?: boolean };
 const recorder = () => {
@@ -39,7 +38,6 @@ test('red-light front: a tube per door and curtains gathered over a dark room (1
   assert.ok(curtains.every(c => c.a1 - c.a0 < 0.5), 'gathered: a third of the door');
   assert.deepEqual(redLightFrontOf({ doors: 0, tube: 'neon', frameHex: 'red', curtains: 'gathered', headM: 9 }), { curtains: 'gathered' });
   assert.equal(redLightDoors(0, 0.5).length, 0, 'too narrow: nothing');
-  assert.deepEqual(windowFrontsOf([{ a0: 0.1, a1: 0.9, doors: 3 }, { a0: 0.5, a1: 0.52 }, null, { a0: -1, a1: 1 }]), [{ a0: 0.1, a1: 0.9, doors: 3 }]);
 });
 
 test('red-light front: tube none draws no tube (round 17: a sign band or awning over the head)', () => {
@@ -47,4 +45,22 @@ test('red-light front: tube none draws no tube (round 17: a sign band or awning 
   drawRedLightFront(sink, 0, 3.2, 0, 0, { tube: 'none' });
   assert.equal(out.filter(r => r.hex === RED_LIGHT_LOOK.tubeHex).length, 0);
   assert.equal(redLightFrontOf({ tube: 'none' })?.tube, 'none');
+});
+
+test('retail front: redLight under retailReal is the window-front part, no fascia; the audit or traced bays set the doors', async () => {
+  const { retailFrontTris } = await import('../retailFront.ts');
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  const g = globalThis as { __canalRecallRetailReal?: boolean };
+  g.__canalRecallRetailReal = true;
+  try {
+    // Unaudited: the audit's majority, no tube; an audited front draws its own (lit) tube and doors.
+    const tris = retailFrontTris({ template: 'redLight', seed: 'x', goods: 300 }, e, 0.3, 4.9, 0, 3.6);
+    assert.ok(!tris.some(t => t.hex === RED_LIGHT_LOOK.tubeHex));
+    const audited = retailFrontTris({ template: 'redLight', seed: 'x', goods: 300, redLight: { doors: 2, tube: 'doors' } }, e, 0.3, 4.9, 0, 3.6);
+    assert.equal(audited.filter(t => t.hex === RED_LIGHT_LOOK.tubeHex && t.lit).length / 2 >= 2, true, 'a lit tube per door');
+    assert.equal(audited.filter(t => t.hex === RED_LIGHT_LOOK.kickHex).length / 2, 2);
+    assert.ok(tris.every(t => Math.max(...t.p.map(p => p[2])) < 3.1), 'nothing over the tube: no fascia');
+    const kicks = (n?: number) => retailFrontTris({ template: 'redLight', seed: 'x', goods: 300, ...(n ? { bays: n } : {}) }, e, 0.3, 4.9, 0, 3.6).filter(t => t.hex === RED_LIGHT_LOOK.kickHex).length / 2;
+    assert.equal(kicks(), 4); assert.equal(kicks(3), 3);
+  } finally { delete g.__canalRecallRetailReal; }
 });

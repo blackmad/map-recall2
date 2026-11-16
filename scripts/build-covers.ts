@@ -24,6 +24,7 @@ import { loadBagTiles, nearbyPands, resolveSuppressed } from './lib/bagTileIndex
 import { loadCoversReview, reviewKey } from './lib/coversReview';
 import { COVERS_VERSION, coversPand, shortPandId, type CoversEntry, type CoversFile } from '../src/canalRecall/bagTiles';
 import { ringsFootprint, unionFootprint } from '../src/canalRecall/landmarks/osmUnderModels';
+import { splitPandsOf, type PandPartsEntry } from '../src/canalRecall/landmarks/pandParts';
 
 const flag = (name: string): string | undefined => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3);
 // The published tiles first (the disk sweep removes artifacts/), as check-covers.ts reads them.
@@ -40,7 +41,10 @@ for (const spec of allSpecs()) {
   stats.models++;
   const {fp} = await footprintOf(spec);
   const suppress = spec.suppressOsmIds.map(String);
-  const resolved = resolveSuppressed(index, suppress);
+  // A pand the model stands on only in part (pandParts) is never covered whole: the model hides its landmark-part feature.
+  const split = new Set(splitPandsOf(spec as PandPartsEntry));
+  const resolvedAll = resolveSuppressed(index, suppress);
+  const resolved = split.size ? {...resolvedAll, pands: resolvedAll.pands.filter(id => !split.has(id))} : resolvedAll;
   // Footprint = model outline plus the polygons of what it already hides (as in the OSM-under audit).
   const own = resolved.pands.map(id => index.pands.get(id)!.rings);
   const parts = [...(fp ? [fp] : []), ...(own.length ? [ringsFootprint(own.flat())] : [])];
@@ -49,7 +53,7 @@ for (const spec of allSpecs()) {
     stats.withFootprint++;
     const footprint = unionFootprint(parts);
     for (const pand of nearbyPands(index, footprint.bounds)) {
-      if (covered.has(pand.id)) continue;
+      if (covered.has(pand.id) || split.has(pand.id)) continue;
       if (!coversPand(footprint, pand.rings, pand.centroid)) continue;
       // Reviewed neighbours (scripts/covers-review.json 'keep') stay drawn; undecided pands are listed, as before, for check-covers --strict.
       if (review[reviewKey(spec.id, pand.id)]?.decision === 'keep') { stats.kept++; continue; }

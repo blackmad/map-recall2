@@ -1,0 +1,416 @@
+{
+ "schemaVersion": 1,
+ "id": "holland-casino-amsterdam",
+ "pand": "0363100012173447",
+ "brief": "scripts/landmarks/holland-casino-amsterdam-brief.md",
+ "signature": [
+  "w-pergola",
+  "w-red-columns",
+  "w-sign",
+  "w-white-storey",
+  "w-flags",
+  "w-lattice"
+ ],
+ "walls": [
+  {
+   "tag": "w01-314",
+   "bearing": 314,
+   "lengthM": 29.1,
+   "centre": [
+    4.882331,
+    52.362935
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_01962",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w02-134",
+   "bearing": 134,
+   "lengthM": 21.3,
+   "centre": [
+    4.882518,
+    52.362873
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-257",
+   "bearing": 257,
+   "lengthM": 20.4,
+   "centre": [
+    4.8818175,
+    52.362595
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001967_pano_0000_000698",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-pergola",
+     "kind": "canopy",
+     "where": "sloped timber pergola from the red beam up to the white set-back storey",
+     "approxSizeM": [
+      20.4,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000698",
+     "how": "rafters every 0.9 m in a frame square to the wall, top purlin"
+    },
+    {
+     "id": "w-red-columns",
+     "kind": "colonnade",
+     "where": "red steel columns every 3.7 m on the deck",
+     "approxSizeM": [
+      0.2,
+      5.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000698",
+     "how": "slabs at 0.55 m out"
+    },
+    {
+     "id": "w-lattice",
+     "kind": "balcony-ironwork",
+     "where": "timber lattice screens between the columns, white frames",
+     "approxSizeM": [
+      3.2,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001967_pano_0000_000698",
+     "how": "timber panel with dark slats and white frame bars; the diagonal lattice is drawn as vertical slats"
+    },
+    {
+     "id": "w-yellow-glazing",
+     "kind": "window-shape",
+     "where": "yellow-framed glazing of the ground floor",
+     "approxSizeM": [
+      20.4,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000698",
+     "how": "glass band with gold mullions and rails"
+    },
+    {
+     "id": "w-sign",
+     "kind": "lettering",
+     "where": "HOLLAND CASINO letters with the logo on the roof edge",
+     "approxSizeM": [
+      11.0,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000698",
+     "how": "pixel letters in bronze, red logo polygon"
+    },
+    {
+     "id": "w-flags",
+     "kind": "other",
+     "where": "five flags on poles along the canal front",
+     "approxSizeM": [
+      0.9,
+      6.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001967_pano_0000_000698",
+     "how": "poles and flat flags with a coloured corner"
+    },
+    {
+     "id": "w-white-storey",
+     "kind": "window-shape",
+     "where": "white-tiled set-back storey with square windows and a red light trim",
+     "approxSizeM": [
+      20.4,
+      6.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000698",
+     "how": "shell wall in white, framed square windows, red ledge strip"
+    },
+    {
+     "id": "w-hearts",
+     "kind": "sign",
+     "where": "heart posters in the ground-floor windows",
+     "approxSizeM": [
+      1.0,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001967_pano_0000_000698",
+     "skip": {
+      "reason": "temporary",
+      "note": "campaign posters"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-245",
+   "bearing": 245,
+   "lengthM": 14.5,
+   "centre": [
+    4.8819885,
+    52.362394
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001968_pano_0000_000136",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-corner",
+     "kind": "canopy",
+     "where": "curved corner: the same ground floor under a flat timber canopy, white storey on the front plane",
+     "approxSizeM": [
+      14.5,
+      12.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001968_pano_0000_000136",
+     "how": "ground-floor system and a flat canopy; the curve follows the BAG facets"
+    }
+   ]
+  },
+  {
+   "tag": "w05-44",
+   "bearing": 44,
+   "lengthM": 13.9,
+   "centre": [
+    4.8825525,
+    52.3629855
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-134",
+   "bearing": 134,
+   "lengthM": 9.4,
+   "centre": [
+    4.882394,
+    52.3624035
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_02175",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-curtain-wall",
+     "kind": "window-shape",
+     "where": "blue glass curtain wall over a grey ground storey",
+     "approxSizeM": [
+      9.4,
+      15.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_02175",
+     "how": "glass with a frame grid, grey ground storey"
+    },
+    {
+     "id": "se-pizzeria-sign",
+     "kind": "sign",
+     "where": "pizzeria letters on the corner",
+     "approxSizeM": [
+      4.0,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_05-25-22_02175",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-252",
+   "bearing": 252,
+   "lengthM": 7.6,
+   "centre": [
+    4.8818695,
+    52.3624735
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001968_pano_0000_000135",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "w2-pergola",
+     "kind": "canopy",
+     "where": "the pergola, columns and screens continue round the corner",
+     "approxSizeM": [
+      7.6,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001968_pano_0000_000135",
+     "how": "same system as w03-257"
+    },
+    {
+     "id": "w2-sushisamba",
+     "kind": "sign",
+     "where": "SUSHISAMBA restaurant letters on the screens",
+     "approxSizeM": [
+      3.0,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001968_pano_0000_000135",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w08-134",
+   "bearing": 134,
+   "lengthM": 6.6,
+   "centre": [
+    4.8823425,
+    52.3623335
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_02177",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "se2-curtain-wall",
+     "kind": "window-shape",
+     "where": "glass curtain wall with dark frames",
+     "approxSizeM": [
+      6.6,
+      15.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_02177",
+     "how": "as w06-134"
+    }
+   ]
+  },
+  {
+   "tag": "w09-66",
+   "bearing": 66,
+   "lengthM": 5,
+   "centre": [
+    4.8824265,
+    52.3624545
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w10-239",
+   "bearing": 239,
+   "lengthM": 4.7,
+   "centre": [
+    4.882075,
+    52.362319
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001967_pano_0000_000694",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-entrance",
+     "kind": "window-shape",
+     "where": "glazed corner entrance with dark frames",
+     "approxSizeM": [
+      4.7,
+      6.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001967_pano_0000_000694",
+     "how": "drawn as the ground-floor glazing of the corner system"
+    }
+   ]
+  },
+  {
+   "tag": "w11-110",
+   "bearing": 110,
+   "lengthM": 4.6,
+   "centre": [
+    4.8825505,
+    52.3625695
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w12-124",
+   "bearing": 124,
+   "lengthM": 4.3,
+   "centre": [
+    4.8825215,
+    52.362534
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_02173",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "se3-souvenir-shop",
+     "kind": "sign",
+     "where": "souvenir shop front under the curtain wall",
+     "approxSizeM": [
+      4.3,
+      3.0
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_05-25-22_02173",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant shopfront"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-161",
+   "bearing": 161,
+   "lengthM": 4,
+   "centre": [
+    4.881915,
+    52.362447
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001967_pano_0000_000694",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

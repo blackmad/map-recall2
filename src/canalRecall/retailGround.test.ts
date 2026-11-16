@@ -2,7 +2,7 @@
 // byte-identity when off. `node --import tsx --test src/canalRecall/retailGround.test.ts`
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { RETAIL_TEMPLATES, TEMPLATE_LOOKS, retailGroundEnabled, signText, signWord, templateForTags } from './retailTemplates.js';
+import { REAL_ONLY_TEMPLATES, RETAIL_TEMPLATES, TEMPLATE_LOOKS, retailGroundEnabled, signText, signWord, templateForTags } from './retailTemplates.js';
 import { FRONT, LETTER_STEM, MAX_LETTER_H, MIN_LETTER_H, fitWord, glassTone, retailDoor, retailFrontTris, strokePx } from './retailFront.js';
 import { LOGOS, LOGO_GRID, glyphCellBox, glyphLayout, logoFor, retailLogoLayer } from './retailLogos.js';
 import { hostOnFront, ringEdges, segDist, steppedRun } from './retailHosting.js';
@@ -336,7 +336,8 @@ test('round 3c cost: panes are one interior quad of the shop cell; every templat
     if (!props) assert.ok(tris.length <= 140, `${t}: ${tris.length} tris`);
     // Round 6: the bloemist's pavement display (two tables of pots, buckets before them) stays within 320.
     if (t === 'florist') assert.ok(tris.length <= 320, `${t}: ${tris.length} tris`);
-    if (!props) assert.ok(tris.some(tri => tri.layer === 7) && !tris.some(tri => /^#7d878e$/i.test(tri.hex)), `${t}: the shop cell's interior, not flat goods`);
+    // Lane retail-real: tattoo and the snackbar exist only under ?retailReal (REAL_ONLY_TEMPLATES), where panes show goods.
+    if (!props && !REAL_ONLY_TEMPLATES.includes(t)) assert.ok(tris.some(tri => tri.layer === 7) && !tris.some(tri => /^#7d878e$/i.test(tri.hex)), `${t}: the shop cell's interior, not flat goods`);
   }
 });
 

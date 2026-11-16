@@ -1,0 +1,94 @@
+{
+ "schemaVersion": 1,
+ "id": "brediusbad",
+ "signature": [
+  "triangle-basin",
+  "rect-basin",
+  "dark-deck"
+ ],
+ "walls": [
+  {
+   "tag": "site-aerial",
+   "bearing": 0,
+   "lengthM": 80,
+   "centre": [
+    4.869188,
+    52.392333
+   ],
+   "evidence": "photo",
+   "panoId": "pdok-luchtfoto-Actueel_orthoHR (2025)",
+   "capturedAt": "2025",
+   "checked": true,
+   "note": "the bath read from the orthophoto gridded in native metres (artifacts/pools/ortho/brediusbad-overlay.jpg) with the OSM basin outlines; no BAG pand, so no street panorama wall",
+   "items": [
+    {
+     "id": "triangle-basin",
+     "kind": "other",
+     "where": "north-east: rounded triangular basin, pale blue coping (under a white winter cover on the 2025 photo)",
+     "approxSizeM": [
+      49,
+      31
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK luchtfoto; OSM a148162370",
+     "how": "pool-kit basin(), drawn with water"
+    },
+    {
+     "id": "rect-basin",
+     "kind": "other",
+     "where": "south-west: rectangular basin, pale blue coping",
+     "approxSizeM": [
+      37,
+      19
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK luchtfoto; OSM a148165410",
+     "how": "pool-kit basin()"
+    },
+    {
+     "id": "dark-deck",
+     "kind": "other",
+     "where": "one dark rubber/asphalt deck round both basins",
+     "approxSizeM": [
+      70,
+      65
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK luchtfoto",
+     "how": "traced deck prism 0.1 m"
+    },
+    {
+     "id": "divider",
+     "kind": "other",
+     "where": "white divider across the deck between the basins",
+     "approxSizeM": [
+      49,
+      0.2
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK luchtfoto",
+     "how": "1 m white rail; height inferred"
+    },
+    {
+     "id": "pavilions",
+     "kind": "other",
+     "where": "pale kiosk at the north-west tip, pale shelter at the south-east edge",
+     "approxSizeM": [
+      7,
+      5.5
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK luchtfoto",
+     "how": "boxes 2.6-2.7 m; heights inferred"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "PDOK luchtfoto (Beeldmateriaal Nederland)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
