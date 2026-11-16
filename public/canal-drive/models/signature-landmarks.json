@@ -105585,7 +105585,7 @@
         "phi": 1.2
       },
       "materialOverrides": {
-        "brick": "#74433f",
+        "brick": "#846b66",
         "sandstone": "#cbbb9d",
         "stone": "#c9bfa8",
         "white": "#ece8df",
@@ -105716,7 +105716,19 @@
       },
       "triangles": 13650,
       "bytes": 198948,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "1524c96eed5c6588",
+        "buildVersion": 2,
+        "bytes": 63104,
+        "triangles": 2614
+      },
+      "lod2": {
+        "sourceHash": "1524c96eed5c6588",
+        "buildVersion": 6,
+        "bytes": 10420,
+        "triangles": 271
+      }
     },
     "reinwardt-academie": {
       "id": "reinwardt-academie",
@@ -107749,7 +107761,8 @@
       },
       "triangles": 16154,
       "bytes": 211148,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "mauritskade-61": {
       "id": "mauritskade-61",

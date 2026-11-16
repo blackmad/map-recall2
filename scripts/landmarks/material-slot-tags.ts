@@ -83,7 +83,7 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     blue: {slot: 'paint', why: 'dark blue entrance canopy and the De Blauwe Parade sign panel'},
   },
   'schiller-rembrandtplein': {
-    brick: {slot: 'brick', measured: '#5a3530', why: 'purple-brown brick of the hotel front (w01-348, w04-253; blind review 2026-11-15: the palette brick read saturated red)'},
+    brick: {slot: 'brick', measured: '#846b66', why: 'muted mauve-brown brick of the hotel front: w01-348 (TMX7316010203-001900_pano_0005_000734, 2020-08-31) brick piers of the upper floors #816a67-#85726e (trimmed median), white frames #d4d4d7 as the 215 light-trim reference (measureFacade convention, gain 1.01). Was #5a3530, a blind read that drew saturated red (gain experiment 2026-11-16: photo #79635d, drawn #4e2c29)'},
     sandstone: {slot: 'stone', measured: '#b3a58e', why: 'pale beige-grey stone of the oriels, the corner tower and the window dressings (w01-348)'},
   },
   kalvertoren: {
