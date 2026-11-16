@@ -13,7 +13,7 @@
  */
 import { drawRedLightFront, RED_LIGHT_LOOK, type FrontPanelSink } from '../../groundParts/redLightFront.js';
 import type { RoofSink, V3 } from '../../roofSink.js';
-import { balconiesOf, cantsValid, entriesOf, erkerRowsOf, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, KIT_FLAT_RISE_M, type BuurtEntry, type BuurtErker, type KitAttic, type KitBalcony, type KitCant, type KitEaves, type KitWindowFront, windowFrontsOf, type KitPanes, type KitRaised, stairAxisOf, type KitStairAxis } from './frontKit.js';
+import { balconiesOf, cantsValid, entriesOf, erkerRowsOf, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, KIT_FLAT_RISE_M, type BuurtEntry, type BuurtErker, type KitAttic, type KitBalcony, type KitCant, type KitEaves, type KitWindowFront, windowFrontsOf, type KitPanes, type KitRaised, stairAxisOf, type KitStairAxis, countedOf, type KitCounted } from './frontKit.js';
 
 export interface BuurtRoofKit {
   /** Street slope pitch (degrees): the row mansard's band becomes a pitched roof face. Absent: the stock band. */
@@ -44,6 +44,7 @@ export interface BuurtRoofKit {
   rhythm?: true;
   /** Round 19: one narrow stair light per upper storey plus `wide` wide windows (frontKit.ts KitStairAxis, drawStairAxis). */
   stairAxis?: KitStairAxis;
+  counted?: KitCounted;
   /** Broad flat eaves with a white soffit and fascia over the street front (round 4, Rooseveltlaan): overhang (m). */
   eaves?: KitEaves;
   /** Erker windows as continuous white bands, corner to corner on every face (round 5, Rooseveltlaan). */
@@ -142,9 +143,9 @@ export function buurtRoofKitOf(v: unknown): BuurtRoofKit | null {
   const sd = k.sides as { left?: unknown; right?: unknown } | undefined, side = (x: unknown): KitSide | null => x === 'pier' || x === 'pair' ? x : null;
   const sides = sd && typeof sd === 'object' ? { ...(side(sd.left) ? { left: side(sd.left)! } : {}), ...(side(sd.right) ? { right: side(sd.right)! } : {}) } : {};
   const entries = entriesOf(k.entries), gz = Number(k.groundZ);
-  const stair = k.rhythm === true ? null : stairAxisOf(k.stairAxis), eaves = kitEavesOf(k.eaves), attic = kitAtticOf(k.attic), raised = raisedOf(k.raised), fz = Number(k.footZ), balconies = balconiesOf(k.balconies), panes = kitPanesOf(k.panes), cants = cantsValid(k.cants), windowFronts = windowFrontsOf(k.windowFronts);
+  const stair = k.rhythm === true ? null : stairAxisOf(k.stairAxis), counted = k.rhythm === true || stair || erkers.length ? null : countedOf(k.counted), eaves = kitEavesOf(k.eaves), attic = kitAtticOf(k.attic), raised = raisedOf(k.raised), fz = Number(k.footZ), balconies = balconiesOf(k.balconies), panes = kitPanesOf(k.panes), cants = cantsValid(k.cants), windowFronts = windowFrontsOf(k.windowFronts);
   return { ...(pitch > 10 && pitch < 80 ? { pitchDeg: pitch } : {}), ...(hex ? { roofHex: hex } : {}), ...(dormer ? { dormer } : {}), erkers, z0: Number(k.z0), storeyM: Number(k.storeyM), rows: Math.round(Number(k.rows)), capM: Number(k.capM),
-    ...(joins.left || joins.right ? { joins } : {}), ...(k.ribbon === true ? { ribbon: true as const } : {}), ...(k.rhythm === true ? { rhythm: true as const } : {}), ...(stair ? { stairAxis: stair } : {}),
+    ...(joins.left || joins.right ? { joins } : {}), ...(k.ribbon === true ? { ribbon: true as const } : {}), ...(k.rhythm === true ? { rhythm: true as const } : {}), ...(stair ? { stairAxis: stair } : {}), ...(counted ? { counted } : {}),
     ...(sides.left || sides.right ? { sides } : {}), ...(eaves ? { eaves } : {}), ...(k.erkerBands === true ? { erkerBands: true as const } : {}), ...(k.loggias === true ? { loggias: true as const } : {}),
     ...(entries.length && gz < 0 ? { entries, groundZ: gz } : {}), ...(attic ? { attic } : {}), ...(raised.length && fz < 0 ? { raised, footZ: fz } : {}),
     ...(balconies.length ? { balconies } : {}), ...(panes ? { panes } : {}), ...(cants.length && fz < 0 ? { cants, footZ: fz } : {}), ...(windowFronts.length && fz < 0 ? { windowFronts, footZ: fz } : {}) };
@@ -260,7 +261,7 @@ export const erkerCapOf = (front: { roof?: unknown }): number => front.roof ? ER
 
 /** The roof kit a member's front kit asks for: its erkers over the upper storeys (the series' ground and storey lines,
  *  rowFront.ts rowGroundM) and the series pitch. `topM` is the series line, `groundM` the ground storey's top. */
-export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg: number; riseM?: number; roofHex?: string; dormers?: false; eavesM?: number; eavesFrieze?: false }; ribbon?: true; attic?: KitAttic; raised?: KitRaised[]; rhythm?: true; stairAxis?: KitStairAxis; sides?: { left?: KitSide; right?: KitSide }; copingHex?: string; erkerBands?: true; loggias?: true; joins?: { left?: boolean; right?: boolean }; eaves?: KitEaves; entries?: BuurtEntry[]; balconies?: KitBalcony[]; panes?: KitPanes; cants?: KitCant[]; windowFronts?: KitWindowFront[] }, topM: number, storeys: number, groundM: number): BuurtRoofKit | null {
+export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg: number; riseM?: number; roofHex?: string; dormers?: false; eavesM?: number; eavesFrieze?: false }; ribbon?: true; attic?: KitAttic; raised?: KitRaised[]; rhythm?: true; stairAxis?: KitStairAxis; counted?: KitCounted; sides?: { left?: KitSide; right?: KitSide }; copingHex?: string; erkerBands?: true; loggias?: true; joins?: { left?: boolean; right?: boolean }; eaves?: KitEaves; entries?: BuurtEntry[]; balconies?: KitBalcony[]; panes?: KitPanes; cants?: KitCant[]; windowFronts?: KitWindowFront[] }, topM: number, storeys: number, groundM: number): BuurtRoofKit | null {
   const rows = Math.max(1, storeys - 1), storeyM = (topM - groundM) / rows;
   if (!(storeyM > 1.5) || !(groundM > 1.5)) return null;
   // The broad eaves: the pitched roof's (round 4), else a flat series' own (round 7).
@@ -270,7 +271,7 @@ export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg
   const dh = front.roof?.riseM ? Math.min(KIT_DORMER.heightM, Math.max(0.6, +(front.roof.riseM * 0.8).toFixed(2))) : KIT_DORMER.heightM;
   return { ...(front.roof ? { pitchDeg: front.roof.pitchDeg, ...(front.roof.dormers === false ? {} : { dormer: { ...KIT_DORMER, heightM: dh } }) } : {}), ...(front.roof?.roofHex ? { roofHex: front.roof.roofHex } : !front.roof && front.copingHex ? { roofHex: front.copingHex } : {}),
     erkers: front.erkers, z0: +(groundM - topM).toFixed(3), storeyM: +storeyM.toFixed(3), rows, capM: erkerCapOf(front),
-    ...(sided && front.joins ? { joins: { ...front.joins } } : {}), ...(front.ribbon ? { ribbon: true as const } : {}), ...(front.rhythm && !front.erkers.length ? { rhythm: true as const } : {}), ...(front.stairAxis && !front.rhythm && !front.erkers.length ? { stairAxis: { ...front.stairAxis } } : {}),
+    ...(sided && front.joins ? { joins: { ...front.joins } } : {}), ...(front.ribbon ? { ribbon: true as const } : {}), ...(front.rhythm && !front.erkers.length ? { rhythm: true as const } : {}), ...(front.stairAxis && !front.rhythm && !front.erkers.length ? { stairAxis: { ...front.stairAxis } } : {}), ...(front.counted && !front.stairAxis && !front.rhythm && !front.erkers.length && !front.panes && !front.loggias && !front.windowFronts?.length && !front.cants?.length ? { counted: { ...front.counted } } : {}),
     ...(front.sides && (front.ribbon || front.rhythm) ? { sides: { ...front.sides } } : {}), ...(eaves ? { eaves } : {}),
     ...(front.erkerBands && front.erkers.length ? { erkerBands: true as const } : {}), ...(front.loggias ? { loggias: true as const } : {}),
     ...(front.entries?.length ? { entries: front.entries.map(x => ({ ...x })), groundZ: +(-topM).toFixed(3) } : {}), ...(front.attic ? { attic: { ...front.attic } } : {}),
@@ -281,12 +282,13 @@ export function buurtRoofKitFor(front: { erkers: BuurtErker[]; roof?: { pitchDeg
 }
 
 /** Whether the kit draws anything on the street end (the roof hook runs `drawKitFront` then). */
-export const kitDrawsFront = (k: BuurtRoofKit): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.stairAxis || k.eaves || k.sides || k.loggias || k.entries?.length || k.balconies?.length || k.panes || k.cants?.length || k.windowFronts?.length);
+export const kitDrawsFront = (k: BuurtRoofKit): boolean => !!(k.erkers.length || k.ribbon || k.attic || k.raised?.length || k.rhythm || k.stairAxis || k.counted || k.eaves || k.sides || k.loggias || k.entries?.length || k.balconies?.length || k.panes || k.cants?.length || k.windowFronts?.length);
 
 /** Everything the kit draws on the street end `e` of a row roof box (L deep, W wide), in drawing order. */
 export function drawKitFront(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
   if (kit.rhythm) drawRhythm(s, kit, L, W, e);
   else if (kit.stairAxis) drawStairAxis(s, kit, L, W, e);
+  else if (kit.counted) drawCounted(s, kit, L, W, e);
   else if (kit.panes && !kit.loggias) drawPanes(s, kit, L, W, e);
   if (kit.attic) drawAttic(s, kit, L, W, e);
   else if (kit.ribbon) drawRibbon(s, kit, L, W, e);
@@ -629,6 +631,20 @@ export function drawRhythm(s: RoofSink, kit: BuurtRoofKit, L: number, W: number,
 
 /** Round 19 (lane R): the stair light (Plan Zuid portiek blocks, Maasstraat/Alblasstraat panoramas): 0.6 m wide, 0.9 m
  *  tall from 1.2 m over each floor (the landing between the flats' sills and heads); the wide windows at most 2.2 m. */
+/** Round 21: the counted windows (KitCounted) over a brick plate on the upper storeys, `n` evenly spaced cells, each light
+ *  the measured width (less the cell's gap when the cells are narrower) and the rhythm's height. */
+export const COUNTED_LOOK = { minGapM: 0.35 } as const;
+export function drawCounted(s: RoofSink, kit: BuurtRoofKit, L: number, W: number, e: number): void {
+  const R = RHYTHM_LOOK, k = kit.counted!, q = frontQuad(s, L, e), rows = kit.rows - (kit.ribbon || kit.attic ? 1 : 0);
+  if (rows < 1) return;
+  const cw = W / k.n, sw = Math.min(k.widthM, cw - COUNTED_LOOK.minGapM);
+  if (sw < 0.4) return;
+  q(-W / 2, W / 2, kit.z0 + 0.05, kit.z0 + rows * kit.storeyM - 0.05, PLATE_O, 'plate');
+  for (let r = 0; r < rows; r++) {
+    const za = kit.z0 + r * kit.storeyM + R.footM, zb = za + Math.min(R.maxHeightM, kit.storeyM - 1.2);
+    for (let i = 0; i < k.n; i++) { const m = -W / 2 + cw * (i + 0.5); light(q, m - sw / 2, m + sw / 2, za, zb, sw > 1.1); }
+  }
+}
 export const STAIR_LOOK = { lightM: 0.6, heightM: 0.9, footM: 1.2, gapM: 0.5 } as const;
 /** One narrow stair light per upper storey at the stated place and the stated wide windows beside it, over a brick
  *  plate (the mesher's even cells hidden, as `drawRhythm`): the wide ones shared between the two sides by length. */

@@ -7,7 +7,9 @@
  *   node --import tsx scripts/buurt-generators/bays-calibration.ts --crops=<dir> --key=<hand-key.json> --counts=<hand-counts.json> [--json=<out>]
  *
  * key:    { m01: { d: <district>, id: <pandId>, f: <crop file> }, ... }
- * counts: { m01: { axes: number | null, stair: number, wide: number, conf: 1-5 }, ... }
+ * counts: { m01: { axes: number | null, windows?: number | null, stair: number, wide: number, conf: 1-5 }, ... }
+ * --unit=windows scores against the window count (round 21: separate openings, a pair of narrow sashes counts 2, as the
+ * kit and the painted cells draw one window a bay); the default `axes` as round 19 did. A key's `crops` overrides --crops.
  */
 import fs from 'node:fs';
 import jpeg from 'jpeg-js';
@@ -15,7 +17,7 @@ import { measureCrop } from '../../src/canalRecall/houseSpec/writers/pixel.ts';
 import { AXES_RUN, axesOfMask, baysOfMeasure } from '../../src/canalRecall/buurtGenerator/baysRead.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
-const crops = arg('crops')!, key = JSON.parse(fs.readFileSync(arg('key')!, 'utf8')), counts = JSON.parse(fs.readFileSync(arg('counts')!, 'utf8'));
+const crops = arg('crops')!, UNIT = arg('unit') ?? 'axes', key = JSON.parse(fs.readFileSync(arg('key')!, 'utf8')), counts = JSON.parse(fs.readFileSync(arg('counts')!, 'utf8'));
 const PPM = 40;
 const lines = new Map<string, number>();
 for (const d of new Set(Object.values(key).map((k: any) => k.d as string))) {
@@ -27,11 +29,11 @@ for (const d of new Set(Object.values(key).map((k: any) => k.d as string))) {
 type Row = { n: string; hand: number; conf: number; stair: number; m: NonNullable<ReturnType<typeof measureCrop>> };
 const rows: Row[] = [];
 for (const [n, k] of Object.entries<any>(key)) {
-  const h = counts[n]; if (!h || h.axes === null || h.axes === undefined) continue;
-  const img = jpeg.decode(fs.readFileSync(`${crops}/${k.f}`), { useTArray: true }), w = img.width, H = img.height, rgb = new Uint8Array(w * H * 3);
+  const h = counts[n]; if (!h || h[UNIT] === null || h[UNIT] === undefined) continue;
+  const img = jpeg.decode(fs.readFileSync(`${k.crops ?? crops}/${k.f}`), { useTArray: true }), w = img.width, H = img.height, rgb = new Uint8Array(w * H * 3);
   for (let i = 0; i < w * H; i++) { rgb[i * 3] = img.data[i * 4]; rgb[i * 3 + 1] = img.data[i * 4 + 1]; rgb[i * 3 + 2] = img.data[i * 4 + 2]; }
   const m = measureCrop({ pandId: k.id, image: { rgb, width: w, height: H, ppm: PPM }, tier: 'good', wallTopM: lines.get(k.id) ?? H / PPM, ref: '', at: null });
-  if (m) rows.push({ n, hand: h.axes, conf: h.conf ?? 3, stair: h.stair ?? 0, m });
+  if (m) rows.push({ n, hand: h[UNIT], conf: h.conf ?? 3, stair: h.stair ?? 0, m });
 }
 type Score = { name: string; given: number; right: number; off1: number; detail: string[] };
 const score = (name: string, f: (r: Row) => number | null): Score => {
@@ -42,11 +44,31 @@ const score = (name: string, f: (r: Row) => number | null): Score => {
 const out: Score[] = [];
 out.push(score('pixel gate (round 18)', r => baysOfMeasure(r.m.m)));
 for (const p of [0.5, 0.4, 0.3]) out.push(score(`pixel gate, pitch >= ${p}`, r => { const m = r.m.m; return (m.frontClass === 'punched' || m.frontClass === 'columns') && m.usableFraction >= 0.5 && m.columns !== null && m.columns === m.windowColumns && m.pitchScore >= p && m.columns <= 8 ? m.columns : null; }));
-for (const fill of [0.2, 0.3, 0.4]) for (const storeys of [0.5, 0.67]) for (const mergeM of [0.2, 0.3, 0.45]) for (const minM of [0.3, 0.45]) {
+for (const fill of [0.2, 0.3, 0.4]) for (const storeys of [0.5, 0.67]) for (const mergeM of [0.05, 0.1, 0.15, 0.2, 0.3]) for (const minM of [0.3, 0.45]) {
   const o = { fill, storeys, mergeM, minM };
   out.push(score(`runs ${JSON.stringify(o)}`, r => { const a = axesOfMask(r.m.m, r.m.lines, r.m.topM, o); return a && a.axes >= 1 && a.axes <= 8 ? a.axes : null; }));
 }
+// The cascade (baysOfCrop's shape): stable runs (the same at fill 0.3) with and without the pixel gate first.
+for (const mergeM of [0.05, 0.1, 0.15, 0.2, 0.3]) for (const gate of [true, false]) out.push(score(`cascade${gate ? '' : ' (no pixel gate)'} mergeM ${mergeM}`, r => {
+  const px = gate ? baysOfMeasure(r.m.m) : null; if (px !== null) return px;
+  const a = axesOfMask(r.m.m, r.m.lines, r.m.topM, { mergeM }), b = a ? axesOfMask(r.m.m, r.m.lines, r.m.topM, { mergeM, fill: 0.3 }) : null;
+  return a && b && a.axes === b.axes && a.axes >= 1 && a.axes <= 8 ? a.axes : null;
+}));
+// Round 21: the same, a read vetoed when any run is wider than a window or erker can be (a dark band, foliage, a ribbon).
+for (const maxRunM of [2.0, 2.6, 3.2]) for (const gate of [true, false]) out.push(score(`cascade${gate ? '' : ' (no pixel gate)'} veto run > ${maxRunM}`, r => {
+  const a = axesOfMask(r.m.m, r.m.lines, r.m.topM), b = a ? axesOfMask(r.m.m, r.m.lines, r.m.topM, { fill: 0.3 }) : null;
+  if (a && a.widthsM.some(w => w > maxRunM)) return null;
+  const px = gate ? baysOfMeasure(r.m.m) : null; if (px !== null) return px;
+  return a && b && a.axes === b.axes && a.axes >= 1 && a.axes <= 8 ? a.axes : null;
+}));
+// Round 21: plus the run widths must agree with the count (as many window-sized runs, 0.6-1.9 m, as the count states).
+for (const lo of [0.5, 0.6]) for (const hi of [1.9, 2.6]) out.push(score(`cascade veto run > 3.2, sized runs ${lo}-${hi} = count`, r => {
+  const a = axesOfMask(r.m.m, r.m.lines, r.m.topM), b = a ? axesOfMask(r.m.m, r.m.lines, r.m.topM, { fill: 0.3 }) : null;
+  if (!a || a.widthsM.some(w => w > 3.2)) return null;
+  const px = baysOfMeasure(r.m.m), v = px !== null ? px : b && a.axes === b.axes && a.axes >= 1 && a.axes <= 8 ? a.axes : null;
+  return v !== null && a.widthsM.filter(w => w >= lo && w <= hi).length === v ? v : null;
+}));
 out.sort((a, b) => b.right - a.right || a.given - b.given);
 console.log(`${rows.length} hand-counted members measured (default runs ${JSON.stringify(AXES_RUN)})`);
-for (const s of out.slice(0, 14)) console.log(`${s.name.padEnd(70)} given ${s.given}/${rows.length} right ${s.right} (${s.given ? Math.round(100 * s.right / s.given) : 0} %) off-by-1 ${s.off1}`);
+for (const s of out.filter((x, i) => i < 14 || x.name.startsWith('cascade') || x.name.startsWith('pixel gate ('))) console.log(`${s.name.padEnd(70)} given ${s.given}/${rows.length} right ${s.right} (${s.given ? Math.round(100 * s.right / s.given) : 0} %) off-by-1 ${s.off1}`);
 const j = arg('json'); if (j) fs.writeFileSync(j, JSON.stringify(out, null, 1));

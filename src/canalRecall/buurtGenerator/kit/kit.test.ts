@@ -537,3 +537,32 @@ test('round 19: a stated stair axis draws one narrow light per upper storey besi
   const plain = buurtRoofKitFor({ erkers: [] }, 12.4, 4, 3.4)!;
   assert.equal(plain.stairAxis, undefined); assert.equal(kitDrawsFront(plain), false);
 });
+
+// Round 21 (lane R): the photo-counted windows. Named regressions: Olympiaplein 0363100012103838 (round r: the counted
+// bays stretched over wider painted cells lost blind to the width rule) and Parnassusweg 0363100012131387 (a 9.3 m run read "1").
+test('round 21: counted windows draw n lights of the measured width over a plate; absent or beside an erker, nothing changes', async () => {
+  const { countedOf, buurtKitOf } = await import('./frontKit.js');
+  const { buurtRoofKitOf, drawCounted, COUNTED_LOOK, ERKER_LOOK } = await import('./roofKit.js');
+  assert.deepEqual(countedOf({ n: 2, widthM: 1.15 }), { n: 2, widthM: 1.15 });
+  for (const bad of [{ n: 0, widthM: 1 }, { n: 2.5, widthM: 1 }, { n: 9, widthM: 1 }, { n: 2, widthM: 0.3 }, { n: 2, widthM: 2.4 }, null]) assert.equal(countedOf(bad), null);
+  const front = buurtKitOf({ frontLine: line, erkers: [], counted: { n: 2, widthM: 1.15 } })!;
+  assert.deepEqual(front.counted, { n: 2, widthM: 1.15 });
+  assert.ok(kitWantsCoping(front));
+  assert.equal(buurtKitOf({ frontLine: line, erkers: [], rhythm: true, counted: { n: 2, widthM: 1.15 } })!.counted, undefined, 'the rhythm wins');
+  const rk = buurtRoofKitFor(front, 12.4, 4, 3.4)!;
+  assert.ok(kitDrawsFront(rk) && rk.counted);
+  assert.deepEqual(buurtRoofKitOf(JSON.parse(JSON.stringify(rk))), rk, 'survives the feature properties');
+  assert.equal(buurtRoofKitFor({ ...front, erkers: [{ a0: 0.3, a1: 0.6, depthM: 0.6, faceM: 1.6 }] }, 12.4, 4, 3.4)!.counted, undefined, 'not beside an erker');
+  const s = sink(); drawCounted(s, rk, 10, 7, 1);
+  const glass = s.out.filter(t => t.part === 'trim' && t.hex === ERKER_LOOK.glass);
+  // Two lights per upper storey (3 upper storeys of 4), each 1.15 m wide, centred in 3.5 m cells.
+  assert.equal(glass.length, 2 * 3 * 2);
+  const ys = [...new Set(glass.flatMap(t => t.p.map(p => +p[1].toFixed(3))))].sort((a, b) => a - b);
+  assert.deepEqual(ys, [-1.75 - 0.575, -1.75 + 0.575, 1.75 - 0.575, 1.75 + 0.575].map(v => +v.toFixed(3)));
+  // Cells narrower than the width plus the gap: the light narrows.
+  const t = sink(); drawCounted(t, { ...rk, counted: { n: 6, widthM: 1.15 } }, 10, 7, 1);
+  const w = Math.max(...t.out.filter(x => x.part === 'trim' && x.hex === ERKER_LOOK.glass).map(x => Math.max(...x.p.map(p => p[1])) - Math.min(...x.p.map(p => p[1]))));
+  assert.ok(Math.abs(w - (7 / 6 - COUNTED_LOOK.minGapM)) < 1e-9);
+  const plain = buurtRoofKitFor({ erkers: [] }, 12.4, 4, 3.4)!;
+  assert.equal(plain.counted, undefined); assert.equal(kitDrawsFront(plain), false);
+});

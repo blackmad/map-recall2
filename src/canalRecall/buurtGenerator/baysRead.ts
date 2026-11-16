@@ -51,6 +51,37 @@ export function seriesBaysOf(members: ReadonlyArray<number | null | undefined>, 
   return agree / read.length >= BAYS_READ.share ? { bays, read: read.length, agree } : null;
 }
 
+/**
+ * Round 21 (lane R): the counted windows the kit draws (frontKit KitCounted). Round r's blind judges preferred the
+ * width rule's narrow painted cells (5 rows of 6) to the counted bays stretched over wider cells, and a fresh hand count
+ * of separate window openings on 58 member cuts (pairs counted 2) put the round-19 cascade at 27 of 41 right. A capture
+ * is now vetoed when any of its runs is wider than `maxRunM` (no window or erker is: a dark band, foliage or a ribbon;
+ * Parnassusweg's 9.3 m runs read "1"), which takes the cascade to 25 of 33 right on windows (17 of 20 on axes), and
+ * kept only when as many of its runs are window-sized (`minRunM`-`sizedM`) as it counts (Olympiaplein 067881's "2" was a
+ * 2.0 m and a 0.3 m run): 17 of 20 right on windows, 11 of 13 on axes. The width the kit draws is the agreeing members'
+ * median window-sized run (frames included); none over `maxWindowM` (a merged pair or an erker, not a window).
+ */
+export const COUNTED_READ = { maxRunM: 3.2, minRunM: 0.6, sizedM: 2.6, maxWindowM: 1.9 } as const;
+/** A member's surviving count and its runs' widths (null: no capture survives, or they differ). */
+export function memberCountedOf(m: MemberBays | null | undefined): { n: number; widths: number[]; captures: number } | null {
+  const sized = (ws: number[]) => ws.filter(w => w >= COUNTED_READ.minRunM && w <= COUNTED_READ.sizedM);
+  const ok = (m?.reads ?? []).filter(c => typeof c.cols === 'number' && Array.isArray(c.raw?.widthsM) && c.raw!.widthsM!.every(w => w <= COUNTED_READ.maxRunM) && sized(c.raw!.widthsM!).length === c.cols);
+  if (!ok.length || new Set(ok.map(c => c.cols)).size !== 1) return null;
+  return { n: ok[0].cols as number, widths: ok.flatMap(c => sized(c.raw!.widthsM!)), captures: ok.length };
+}
+/** A series' counted windows: the consensus of its members' surviving counts (seriesBaysOf's floors) and the agreeing
+ *  members' median window width; null when there is no consensus or no width. */
+export function seriesCountedOf(members: ReadonlyArray<MemberBays | null | undefined>): { n: number; widthM: number; read: number; agree: number } | null {
+  const per = members.map(memberCountedOf), v = seriesBaysOf(per.map(p => p?.n ?? null), per.map(p => p?.captures ?? 0));
+  if (!v) return null;
+  const ws = per.filter(p => p?.n === v.bays).flatMap(p => p!.widths).sort((a, b) => a - b);
+  if (!ws.length) return null;
+  // Wider than a window: merged pairs or an unlisted erker, which the kit would draw as the wide windows round r lost on.
+  const widthM = +(ws.length % 2 ? ws[ws.length >> 1] : (ws[ws.length / 2 - 1] + ws[ws.length / 2]) / 2).toFixed(2);
+  if (widthM > COUNTED_READ.maxWindowM) return null;
+  return { n: v.bays, widthM, read: v.read, agree: v.agree };
+}
+
 /** Round 19: the run counter. The pixel writer's gate needs a resolved pitch, which a front with a stair light beside
  *  wide paired windows never has (1,303 punched fronts rejected in round 18). This counts the window axes on the opening
  *  mask itself: a cell column is an axis column when openings fill at least `fill` of it in at least `storeys` of the
