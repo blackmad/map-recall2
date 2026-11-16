@@ -80,6 +80,8 @@ export const ROW_HEAD_DRESSINGS = ['none', 'block-course', 'keystone', 'segmenta
 export type RowHeadDressing = (typeof ROW_HEAD_DRESSINGS)[number];
 export const ROW_HEAD_SHAPES = ['flat', 'segmental', 'round', 'relieving'] as const;
 export type RowHeadShape = (typeof ROW_HEAD_SHAPES)[number];
+/** A stated erker: `storeys` in reader rows (ground = 0), `kind` its plan, `roofBalcony` a railing on its roof. */
+export interface RowBayWindow { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true }
 /** The upper window cell: tall sash/T-windows (the period default) or casements with a top light. */
 /** `cross`: a cross window (kruiskozijn), a mullion and a transom a third down (Herengracht 27). */
 export const ROW_WINDOW_KINDS = ['tall-upper', 'sash', 't-window', 'casement-toplight', 'casement', 'sash-8-over-8', 'sash-small-panes', 'cross'] as const;
@@ -195,6 +197,10 @@ export interface RowDesign {
   /** Where the `row-balcony` extra stands: the storeys (0 = the ground storey, which is the bel-etage over a souterrain; 1 = the
    *  first storey above it) and the axis. Absent = the renderer's default (first upper storey, centre). */
   balcony?: RowField<{ storeys: number[]; axis: 'centre' | 'all' }>;
+  /** A white timber erker (bay window) on consoles over the centre bay (lane R round 24, lane D's `bay-window` kit gap):
+   *  the storeys it covers as the reader counts rows (0 = the ground storey, 1 = the first above it), its plan (a box,
+   *  or canted sides) and a balcony railing on its roof when the reading says so. Absent: no erker. */
+  bayWindow?: RowField<RowBayWindow>;
   /** A gabled crown's outline as read on the photo (`crown` step, neck, bell or point): its rise over the cornice line
    *  (m), the step count of a step gable, the attic lights in it and the neck (or top tread) width. Absent: the crown
    *  kind alone, which draws no gable over the row line. */

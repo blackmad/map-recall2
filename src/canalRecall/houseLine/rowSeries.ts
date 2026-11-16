@@ -94,6 +94,11 @@ function balconyOf(designs: readonly RowDesign[], shift: number): { balcony?: No
   const b = designs.find(d => d.balcony?.value)?.balcony?.value;
   return b ? { balcony: { storeys: b.storeys.map(k => k + shift), axis: b.axis } } : {};
 }
+/** The stated erker (RowDesign.bayWindow: reader rows, ground = 0) on the renderer's rows. */
+function erkerOf(designs: readonly RowDesign[], shift: number): { erker?: NonNullable<RowSeriesDraw['erker']> } {
+  const b = designs.find(d => d.bayWindow?.value)?.bayWindow?.value;
+  return b ? { erker: { storeys: b.storeys.map(k => k + shift), kind: b.kind, ...(b.roofBalcony ? { roofBalcony: true as const } : {}) } } : {};
+}
 const span = (f: RowFront) => f.sub ? [f.sub.a0, f.sub.a1] as const : [0, 1] as const;
 
 /**
@@ -192,6 +197,7 @@ export function seriesDraw(fronts: readonly RowFront[], designs: readonly RowDes
     ...(shopOf(fronts).shop ? shopUnitsOf(fronts) : {}),
     ...groundColourOf(fronts),
     ...balconyOf(designs, shift),
+    ...erkerOf(designs, shift),
     ...windowShareOf(designs, types),
     ...glazingOf(d0),
     ...(groundWalls.length ? { groundWalls } : {}),

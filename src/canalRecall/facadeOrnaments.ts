@@ -373,6 +373,87 @@ function grammarHead(c: ExtraContext, s: ExtraSink, w: RowWindow, g: HeadGrammar
 
 /** A stated basement front (row-basement): stone courses and their sunk joints, the ledge on top, arched doorways. */
 const ROW_BASEMENT = { under: 0.05, out: 0.03, course: 0.32, joint: 0.025, ledge: 0.12, ledgeOut: 0.08, doorW: 1.0, doorH: 2.3, ring: 0.2, recess: '#202326' } as const;
+/** The white timber erker (lane R round 24, lane D's `bay-window` gap: Herengracht 163-177, 150-166, 238-256 and the ring
+ *  readings): a box or a canted bay on white consoles over one bay, its storeys' lights corner to corner in white posts,
+ *  a transom with toplights, a white cap, and an iron railing on its roof when read. Sizes from the kit's timber bay
+ *  (buurtGenerator/kit/roofKit.ts TIMBER_LOOK: lights 0.85 m over the floor to 0.3 m under the next, 0.07 m posts). */
+export const ROW_ERKER = { side: 0.32, minW: 1.5, depth: 0.75, cant: 0.42, foot: 0.85, head: 0.3, gap: 0.25, post: 0.08, rail: 0.09, transom: 0.68, bar: 0.06,
+  pane: 0.75, glass: '#9eabb1', glassOut: 0.012, slab: 0.16, slabOut: 0.06, cap: 0.22, capOut: 0.09, console: { w: 0.16, arm: 0.18, drop: 0.55, inset: 0.14 },
+  railH: 0.95, railPitch: 0.13, post2: 0.035 } as const;
+/** The erker's wall-frame outline: its x span at the wall, its front's x span and its depth. */
+export function erkerPlan(c: ExtraContext): { xa: number; xb: number; fa: number; fb: number; d: number; zb: number; zt: number; rows: number[] } | null {
+  const e = c.rowDress?.erker;
+  if (!e) return null;
+  const rows = e.storeys.filter(k => k >= 1 && k <= c.layout.storeys).sort((p, q) => p - q);
+  if (!rows.length) return null;
+  const E = ROW_ERKER, k0 = rows[0], k1 = rows[rows.length - 1];
+  const ws = windowSpans(c, k0 - 1);
+  const w = ws.length ? ws.reduce((a, b) => Math.abs(b.x - e.at) < Math.abs(a.x - e.at) ? b : a) : { x: e.at, hw: 0.45 };
+  const half = Math.max(E.minW / 2, w.hw + E.side), xa = Math.max(0.05, w.x - half), xb = Math.min(c.f.len - 0.05, w.x + half);
+  if (xb - xa < 1) return null;
+  const cant = e.kind === 'canted' ? Math.min(E.cant, (xb - xa) / 4) : 0;
+  const zb = storeyZ(c, k0 - 1), top = c.top - (c.rowDress?.cornice ? 0.95 : 0.35);
+  const zt = Math.min(storeyZ(c, k1) - (k1 < c.layout.storeys ? E.gap : 0), top);
+  if (zt - zb < 1.2) return null;
+  return { xa, xb, fa: xa + cant, fb: xb - cant, d: E.depth, zb, zt, rows };
+}
+function rowErker(c: ExtraContext, s: ExtraSink): void {
+  const p = erkerPlan(c), e = c.rowDress?.erker;
+  if (!p || !e) return;
+  const E = ROW_ERKER, f = c.f, { xa, xb, fa, fb, d, zb, zt } = p;
+  const P = (x: number, o: number, z: number): [number, number, number] => [f.x0 + f.ux * x + f.nx * o, f.y0 + f.uy * x + f.ny * o, z];
+  // The faces as (x, out) segments from left to right: a box's sides run straight out, a canted bay's on the diagonal.
+  const faces: Array<[[number, number], [number, number]]> = [[[xa, 0], [fa, d]], [[fa, d], [fb, d]], [[fb, d], [xb, 0]]];
+  const quadOn = (q: [[number, number], [number, number]], u0: number, u1: number, out: number, z0: number, z1: number, hex: string) => {
+    const [a, b] = q, dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1;
+    // The faces run left to right round the body, so (-dy, dx) is the outward normal in the wall frame (x along, o out).
+    const nx = -dy / l, no = dx / l;
+    const X = (u: number) => a[0] + dx * u + nx * out, O = (u: number) => a[1] + dy * u + no * out;
+    const n: [number, number, number] = [f.ux * nx + f.nx * no, f.uy * nx + f.ny * no, 0];
+    s.quad(P(X(u0), O(u0), z0), P(X(u1), O(u1), z0), P(X(u1), O(u1), z1), P(X(u0), O(u0), z1), n, hex);
+  };
+  // The body: white timber faces from the floor slab to the cap (the spandrels between storeys are white boarding).
+  for (const q of faces) if (Math.hypot(q[1][0] - q[0][0], q[1][1] - q[0][1]) > 0.05) quadOn(q, 0, 1, 0, zb, zt, WHITE);
+  // Floor slab on the consoles, and the cap over the top lights, both proud of the body.
+  s.box(f, xa - E.slabOut, xb + E.slabOut, 0, d + E.slabOut, zb - E.slab, zb, WHITE, true);
+  s.box(f, xa - E.capOut, xb + E.capOut, 0, d + E.capOut, zt, zt + E.cap, WHITE, true);
+  // Two consoles under the slab: an arm under it and a drop against the wall.
+  for (const x of [xa + E.console.inset, xb - E.console.inset]) {
+    const C = E.console, z = zb - E.slab;
+    s.box(f, x - C.w / 2, x + C.w / 2, 0, d - 0.05, z - C.arm, z, WHITE, true);
+    s.slope(f, x - C.w / 2, x + C.w / 2, 0, d - 0.05, z - C.drop, z - C.arm, WHITE);
+  }
+  // Per storey: the lights corner to corner on every face, white posts at the corners, head and sill rails, a transom
+  // with the toplights over it, casement bars below.
+  for (const k of p.rows) {
+    const zf = storeyZ(c, k - 1), za = zf + E.foot, zh = Math.min(zf + c.layout.storeyM - E.head, zt - 0.12);
+    if (zh - za < 0.6) continue;
+    const zm = za + (zh - za) * E.transom;
+    for (const q of faces) {
+      const l = Math.hypot(q[1][0] - q[0][0], q[1][1] - q[0][1]);
+      if (l < 0.2) continue;
+      const pu = E.post / l;
+      quadOn(q, pu, 1 - pu, E.glassOut, za, zh, E.glass);
+      quadOn(q, 0, 1, E.glassOut * 2, zm - E.rail / 2, zm + E.rail / 2, WHITE);
+      quadOn(q, 0, 1, E.glassOut * 2, za - 0.04, za + E.rail / 2, WHITE);
+      const n = Math.max(1, Math.round(l / E.pane));
+      for (let i = 1; i < n; i++) { const u = i / n, bu = E.bar / l / 2; quadOn(q, u - bu, u + bu, E.glassOut * 2, za, zh, WHITE); }
+    }
+  }
+  if (e.roofBalcony) {
+    // An iron railing round the erker's roof (its front and sides), a top rail on slim balusters.
+    const z0 = zt + E.cap, z1 = z0 + E.railH;
+    for (const q of faces) {
+      const l = Math.hypot(q[1][0] - q[0][0], q[1][1] - q[0][1]);
+      if (l < 0.1) continue;
+      const shifted: [[number, number], [number, number]] = [[q[0][0], Math.max(q[0][1], 0.02)], [q[1][0], Math.max(q[1][1], 0.02)]];
+      quadOn(shifted, 0, 1, 0.02, z1 - 0.05, z1, IRON);
+      const n = Math.max(2, Math.round(l / E.railPitch));
+      for (let i = 0; i <= n; i++) { const u = i / n, bu = E.post2 / l / 2; quadOn(shifted, Math.max(0, u - bu), Math.min(1, u + bu), 0.02, z0, z1 - 0.05, IRON); }
+    }
+  }
+}
+
 /** House rows: a front's stated parts beyond the heads and cornice, drawn only when the series or front states them. */
 // Grey sandstone/hardstone blocks with deep sunk joints (171218's photo: grey, not the warm cream of the dressings).
 const ROW_GROUND_WALL = { out: 0.025, ledge: 0.22, ledgeOut: 0.12, scroll: 0.28, scrollH: 0.45 } as const;
@@ -860,6 +941,10 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     for (let i = 0; i <= n; i++) { const x = x0 + 0.04 + (x1 - x0 - 0.08) * i / n; s.box(c.f, x - BALCONY.post / 2, x + BALCONY.post / 2, BALCONY.depth - 0.1, BALCONY.depth - 0.03, z, top - BALCONY.rail, WHITE); }
     s.box(c.f, x0, x1, BALCONY.depth - 0.13, BALCONY.depth, top - BALCONY.rail, top, WHITE);
     for (const xe of [x0, x1 - 0.12]) s.box(c.f, xe, xe + 0.12, 0, BALCONY.depth, z, top, WHITE);
+  } },
+  { id: 'row-erker', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-erker', build: (c, s) => {
+    // A stated white timber erker (lane R round 24, lane D's bay-window gap) over the centre bay: rowErker draws it.
+    rowErker(c, s);
   } },
   { id: 'row-porch', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'door-surround', build: (c, s) => {
     // A gabled entrance porch: stone piers either side of the street door, a beam and a pointed pediment over it.
