@@ -26,13 +26,15 @@ import { listPanos, type PanoPick, type Wall } from '../pand-reference/select.ts
 import { loadPano, rectifyWall } from '../pand-reference/rectify.ts';
 import { VIEW_GATE, localFront, visibleAlong } from '../../src/canalRecall/buurtGenerator/measure.ts';
 import { measureCrop } from '../../src/canalRecall/houseSpec/writers/pixel.ts';
-import { baysOfMeasure, memberBaysOf, type BaysCapture, type MemberBays } from '../../src/canalRecall/buurtGenerator/baysRead.ts';
+import { baysOfCrop, memberBaysOf, type BaysCapture, type MemberBays } from '../../src/canalRecall/buurtGenerator/baysRead.ts';
 
 http.userAgent = 'MapRecall/1.0 (+https://github.com/blackmad/map-recall2)'; http.minGapMs = 500;
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const district = arg('district') ?? 'rivierenbuurt', stage = `artifacts/buurt-generators/${district}`;
 const only = (arg('only') ?? '').split(',').filter(Boolean);
-const MAX_MB = Number(arg('max-mb') ?? 1500), PER_ROW = Number(arg('per-row') ?? 2), DEBUG = arg('debug');
+const MAX_MB = Number(arg('max-mb') ?? 1500), PER_ROW = Number(arg('per-row') ?? 2), DEBUG = arg('debug'), CROPS = arg('crops');
+// Round 19: a member seen over at least MIN_SEEN of its span is read (the hidden part is reported); RETRY more captures for members still unread.
+const MIN_SEEN = Number(arg('min-seen') ?? 1), RETRY = Number(arg('retry') ?? 0);
 const PPM = 40, SPAN_IN = 0.85, SIDE_M = 0.1;
 const OUT = arg('out') ?? `src/canalRecall/buurtGenerator/districts/measured/${district}.json`;
 const freeGb = () => { try { return Number(execSync("df -k / | tail -1 | awk '{print $4}'").toString().trim()) / 1048576; } catch { return 99; } };
@@ -52,7 +54,14 @@ for (const r of records) {
 const prior = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : {};
 const bays: Record<string, MemberBays> = { ...(prior.bays ?? {}) };
 const done = new Set<string>(prior.baysRows ?? []);
-const save = () => { const now = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : {}; fs.writeFileSync(OUT, JSON.stringify({ ...now, version: 1, district, baysSource: 'Amsterdam panoramas (data.amsterdam.nl, CC BY 4.0) via scripts/buurt-generators/measure-bays.ts', bays, baysRows: [...done].sort() }, null, 2) + '\n'); };
+const save = () => { const now = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : {}; fs.writeFileSync(OUT, measuredJson({ ...now, version: 1, district, baysSource: 'Amsterdam panoramas (data.amsterdam.nl, CC BY 4.0) via scripts/buurt-generators/measure-bays.ts', bays, baysRows: [...done].sort() })); };
+/** The measured file as before (two-space JSON), its `bays` one member a line (round 19: the raw reads tripled the file). */
+export function measuredJson(o: Record<string, unknown>): string {
+  const { bays: b, ...rest } = o, body = JSON.stringify(rest, null, 2);
+  if (!b) return body + '\n';
+  const lines = Object.entries(b as Record<string, unknown>).map(([k, v]) => `    ${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(',\n');
+  return body.replace(/\n}$/, `,\n  "bays": {\n${lines}\n  }\n}`) + '\n';
+}
 const cachedBefore = new Set(fs.existsSync(CACHE_DIR) ? fs.readdirSync(CACHE_DIR).filter(f => f.endsWith('.jpg')) : []);
 panoTracker.touched = new Set();
 const mine = new Set<string>();
@@ -79,8 +88,9 @@ async function readOne(p: any, local: Wall, lineM: number, members: Array<{ id: 
   for (const m of members) {
     const u0 = Math.min(along(m.seg[0]), along(m.seg[1])) + SIDE_M, u1 = Math.max(along(m.seg[0]), along(m.seg[1])) - SIDE_M;
     if (u1 - u0 < 2.4) { out.set(m.id, { pano, date, cols: null, why: `span ${(u1 - u0).toFixed(1)} m` }); continue; }
-    let all = true; for (let t = u0; t <= u1; t += VIEW_GATE.stepM) if (!seenAt(t)) { all = false; break; }
-    if (!all) { out.set(m.id, { pano, date, cols: null, why: 'not seen whole' }); continue; }
+    let n = 0, ok = 0; for (let t = u0; t <= u1; t += VIEW_GATE.stepM) { n++; if (seenAt(t)) ok++; }
+    const seen = n ? ok / n : 0;
+    if (seen < MIN_SEEN) { out.set(m.id, { pano, date, cols: null, why: seen < 1 ? `not seen whole (${Math.round(100 * seen)} %)` : 'not seen whole' }); continue; }
     const i0 = Math.max(0, Math.floor(u0 * ppm)), i1 = Math.min(W, Math.ceil(u1 * ppm)), w = i1 - i0;
     if (w < 2.4 * ppm) { out.set(m.id, { pano, date, cols: null, why: 'outside the cut' }); continue; }
     const rgb = new Uint8Array(w * H * 3); let valid = 0;
@@ -90,8 +100,10 @@ async function readOne(p: any, local: Wall, lineM: number, members: Array<{ id: 
     }
     if (valid / (w * H) < SPAN_IN) { out.set(m.id, { pano, date, cols: null, why: `${(100 * valid / (w * H)).toFixed(0)} % in the cut` }); continue; }
     const measured = measureCrop({ pandId: m.id, image: { rgb, width: w, height: H, ppm }, tier: 'good', wallTopM: lineM, ref: pano, at: date });
-    const cols = measured ? baysOfMeasure(measured.m) : null;
-    out.set(m.id, { pano, date, cols, ...(cols === null ? { why: measured ? `gate: ${measured.m.frontClass}, columns ${measured.m.columns}/${measured.m.windowColumns ?? '-'}, pitch ${measured.m.pitchScore.toFixed(2)}` : 'unmeasurable' } : {}) });
+    const got = measured ? baysOfCrop(measured) : null, cols = got?.bays ?? null, runs = got?.runs ?? null;
+    const raw = measured ? { cls: measured.m.frontClass, columns: measured.m.columns, wcols: measured.m.windowColumns ?? null, pitch: +measured.m.pitchScore.toFixed(2), usable: +measured.m.usableFraction.toFixed(2), foliage: +measured.m.foliageFraction.toFixed(2), ...(runs ? { axes: runs.axes, widthsM: runs.widthsM, centres: runs.centres, narrow: runs.narrow, storeys: runs.storeys } : {}), ...(got && got.bays !== null ? { src: got.src } : {}), seen: +seen.toFixed(2), spanM: +((i1 - i0) / ppm).toFixed(2) } : undefined;
+    if (CROPS) { fs.mkdirSync(CROPS, { recursive: true }); const px = new Uint8Array(w * H * 4); for (let k = 0; k < w * H; k++) { px[k * 4] = rgb[k * 3]; px[k * 4 + 1] = rgb[k * 3 + 1]; px[k * 4 + 2] = rgb[k * 3 + 2]; px[k * 4 + 3] = 255; } fs.writeFileSync(`${CROPS}/${m.id}__${pano}.jpg`, jpeg.encode({ data: px, width: w, height: H }, 88).data); }
+    out.set(m.id, { pano, date, cols, ...(raw ? { raw } : {}), ...(cols === null ? { why: measured ? `gate: ${measured.m.frontClass}, columns ${measured.m.columns}/${measured.m.windowColumns ?? '-'}, pitch ${measured.m.pitchScore.toFixed(2)}` : 'unmeasurable' } : {}) });
   }
   return out;
 }
@@ -129,9 +141,13 @@ for (const [id, row] of rows) {
   const byDate = new Map<string, typeof cands>();
   for (const c of cands) { const l = byDate.get(c.date) ?? []; l.push(c); byDate.set(c.date, l); }
   for (const l of byDate.values()) l.sort((a, b) => Math.abs(a.offM - 14) - Math.abs(b.offM - 14));
-  const picks = [...byDate.keys()].sort().reverse().slice(0, PER_ROW).map(d => byDate.get(d)![0]);
+  const dates = [...byDate.keys()].sort().reverse(), picks = dates.slice(0, PER_ROW).map(d => byDate.get(d)![0]);
+  // Round 19 (--retry=N): up to N more captures (other dates, then the next stand-off of a date) for members no pick counted.
+  const extra = dates.flatMap(d => byDate.get(d)!).filter(c => !picks.includes(c)).slice(0, RETRY);
   const reads = new Map<string, BaysCapture[]>();
-  for (const c of picks) {
+  const counted = (id: string) => (reads.get(id) ?? []).some(r => r.cols !== null);
+  for (const c of [...picks, ...extra]) {
+    if (extra.includes(c) && c.members.every(m => counted(m.id))) continue;
     try { for (const [m, r] of await readOne(c.p, c.local, row.lineM, c.members, occluders)) { const l = reads.get(m) ?? []; l.push(r); reads.set(m, l); } }
     catch (e) { console.log(`${id} ${c.p.pano_id}: ${(e as Error).message}`); }
   }

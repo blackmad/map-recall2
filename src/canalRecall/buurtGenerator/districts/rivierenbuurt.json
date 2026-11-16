@@ -386,6 +386,19 @@
         ]
       },
       "evidence": "Amstelkade (recording_2025-07-15_08-32-06_03211, 31 px/m): the blocks of two pands from 132424 to 145501 carry a brick parapet to ~15.1 m, ~2.8 m over the 12.3 m line, hiding the pitched roof (AHN4 ridges 14.5 m), with V notches at the block joins; the left end is blurred and not stated"
+    },
+    "maasstraat-108230": {
+      "stairAxis": {
+        "108230": {
+          "a": 0.12,
+          "wide": 2
+        },
+        "071329": {
+          "a": 0.9,
+          "wide": 2
+        }
+      },
+      "evidence": "round 19 (lane R): panorama recording_2024-09-05_05-59-45_09869 (2024-09-05), rectified at 40 px/m: 108230 (left) and 071329 (right) each show one small square stair light per upper storey at the outer party wall (centres 0.12 and 0.90 of the front) beside two wide four-light windows; 131005 between them is the glazed stair tower with a canted bay either side (not stated: the kit has no tower)"
     }
   },
   "streetNotes": {
