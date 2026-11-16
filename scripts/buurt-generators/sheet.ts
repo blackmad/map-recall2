@@ -21,6 +21,7 @@ import { spawnSync } from 'node:child_process';
 import sharp from 'sharp';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { loadPano, rectifyWall } from '../pand-reference/rectify.ts';
+import { poseCheck, poseFaults } from './sheetPose.ts';
 import type { PanoPick, Wall } from '../pand-reference/select.ts';
 import { renderCacheKey } from './renderCache.ts';
 
@@ -52,6 +53,12 @@ const len = Math.hypot(B.x - A.x, B.y - A.y), ux = (B.x - A.x) / len, uy = (B.y 
 const along = (p: { x: number; y: number }) => (p.x - A.x) * ux + (p.y - A.y) * uy;
 const spans = ids.map(id => ({ id, x0: along(lngLatToRd(lineOf(id)[0])), x1: along(lngLatToRd(lineOf(id)[1])) }));
 const lineM = Math.max(...row.series.map((s: any) => s.design.corniceTopM.value as number));
+// Round 16 (integrator, Centrum sheets): the camera must stand on the row's street side and see every front unblocked
+// (sheetPose.ts); --allow-pose draws the sheet anyway, its faults printed in the title and sheet.json.
+const segOf = (id: string, [a, b]: [[number, number], [number, number]]) => ({ id, a: lngLatToRd(a), b: lngLatToRd(b) });
+const pose = poseCheck(lngLatToRd(record.geometry.coordinates), ids.map(id => segOf(id, lineOf(id))), Object.keys(fronts).map(id => segOf(id, [fronts[id].a, fronts[id].b])));
+const faults = poseFaults(pose);
+if (faults.length) { console.error(`pose ${panoId}: ${faults.join('; ')}`); if (!process.argv.includes('--allow-pose')) process.exit(3); }
 const wall: Wall = { a: A, b: B, len, nx: uy, ny: -ux, mid: { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 }, roadDistM: 0, facing: 0 };
 const pick: PanoPick = { panoId, timestamp: record.timestamp, missionYear: Number(record.mission_year), missionType: record.mission_type ?? '', surface: record.surface_type ?? '', distM: 0, obliquityDeg: 0, relaxed: false, record };
 
@@ -109,7 +116,7 @@ const head = 26, lab = 20, gap = 6;
 const title = (t: string) => svg(W, head, `<text x="6" y="18" font-size="15" fill="#eee" font-family="Helvetica">${t.replace(/&/g, '&amp;')}</text>`);
 const series = row.series.map((x: any) => `${x.type} ${x.fronts.length} pands, line ${x.design.corniceTopM.value} m, ${x.design.storeys.value} st, ${x.design.bays.value} bays`).join('; ');
 const blocks: Array<[string, Buffer, string[]]> = [
-  [`photo: ${panoId} (${String(record.timestamp).slice(0, 10)}), rectified ${chord ? 'on the row line' : 'per member front'}, ${s.toFixed(0)} px/m`, photo, []],
+  [`photo: ${panoId} (${String(record.timestamp).slice(0, 10)}), rectified ${chord ? 'on the row line' : 'per member front'}, ${s.toFixed(0)} px/m${faults.length ? `; POSE FAULT: ${faults.join('; ')}` : ''}`, photo, []],
   ['before: the game today', before.img, before.labels],
   [`after: buurt generator ${district} (ROW_FRONT=1, BUURT_KIT=1): ${series}`, after.img, after.labels],
 ];
@@ -124,5 +131,5 @@ for (const [t, img, labels] of blocks) {
 }
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, await sharp({ create: { width: W, height: y, channels: 3, background: '#111' } }).composite(comps).jpeg({ quality: 84 }).toBuffer());
-fs.writeFileSync(out.replace(/\.jpg$/, '.json'), JSON.stringify({ district, row: rowId, street: row.street, members: ids, lineM: +len.toFixed(2), pano: panoId, timestamp: record.timestamp, ppm: +s.toFixed(2), missing: +crop.missingFraction.toFixed(3), series }, null, 1));
+fs.writeFileSync(out.replace(/\.jpg$/, '.json'), JSON.stringify({ district, row: rowId, street: row.street, members: ids, lineM: +len.toFixed(2), pano: panoId, timestamp: record.timestamp, ppm: +s.toFixed(2), missing: +crop.missingFraction.toFixed(3), series, pose, ...(faults.length ? { poseFaults: faults } : {}) }, null, 1));
 console.log(`sheet ${out}`);
