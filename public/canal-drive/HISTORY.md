@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## Round s: Wilhelminatoren, OBA Staatsliedenbuurt, Schiller's colour, buurt towers (2026-11-16)
+
+- Merged lane/landmarks-next-20261115 at 7f8e61147 (by SHA, with 84d761bbe) and lane/rows-r-massing-20261116 at 95e3ae0f8. Rebuilt only `schiller-rembrandtplein`, `wilhelminatoren`, `oba-staatsliedenbuurt` and `room-mate-aitana` with `--only=` (and their LODs); the GLBs came out byte-identical to the lane's.
+- Shipped: Wilhelminatoren (the glazed stair in depth) and the OBA Staatsliedenbuurt block (striped brick, oriel towers, balcony depth, fourth row, west front), each passed by fresh blind judges on the lane. Schiller's brick #5a3530 → #846b66 and Westerdok 186086's east front #544743 → #705e59, both measured from the photo (the change round r left out because it touches both).
+- Held: Room Mate Aitana. Its second pass (pale reflective curtain wall, transoms every 0.885 m) has not been re-judged blind, so the integrator marked it held in the catalogue.
+- Lane R round 20: corner towers and stepped wings as raised parts with lights, face and depth, read from row notes; 4/4 blind. Publishing the two districts changed 12 of 4,177 records, all in `buurtKit.raised`. Walls and bays are byte-identical to round r. The round 21 window counter is merged but off (`countedWindows` is opt-in per district and no district sets it).
+- Also on the landmark branch: the `?measuredSingleGain=1` flag (default off) and `nodeFrame/worldRaster.ts`.
+
 ## Round r: warmer buurt walls and four more pools (2026-11-16)
 
 - Buurt round 13 (lane/buurt-colour-20261116 at 12320b559, merged by SHA): unstated brick walls in Rivierenbuurt and Apollo were drawn near-neutral grey (9 of 25 measured members under C 0.015). Cause: mostly the sample (district default colours calibrated dark, neutral panorama votes), with the renderer adding about L ×0.87, C ×0.84. Fix in `generate.ts` (`warmWall`, `streetWallOf`): an unstated wall keeps its lightness, takes chroma ≥ 0.032 and a hue held at 45–72°, and a row with no vote takes its street's measured median. Stated walls are byte-identical. 3,583 of 4,167 records change wall and coping colour only. Blind on round 11's 7 held-out rows: round 13 won 5 (Amsteldijk and Uithoornstraat high), lost Deurloostraat (street median too light), 1 tie.
