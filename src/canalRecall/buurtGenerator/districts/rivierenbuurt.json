@@ -214,6 +214,72 @@
         }
       },
       "evidence": "round 19 (lane R): panorama recording_2024-09-05_05-59-45_09869 (2024-09-05), rectified at 40 px/m: 108230 (left) and 071329 (right) each show one small square stair light per upper storey at the outer party wall (centres 0.12 and 0.90 of the front) beside two wide four-light windows; 131005 between them is the glazed stair tower with a canted bay either side (not stated: the kit has no tower)"
+    },
+    "uithoornstraat-067867": {
+      "raised": {
+        "067867": [
+          {
+            "a0": 0,
+            "a1": 1,
+            "riseM": 3.0,
+            "lights": 1
+          }
+        ],
+        "125303": [
+          {
+            "a0": 0.17,
+            "a1": 0.98,
+            "riseM": 3.1,
+            "lights": 1
+          }
+        ]
+      },
+      "evidence": "round 20 (lane R): panorama recording_2025-07-14_08-27-06_02540 (2025-07-14), rectified at 28 px/m: the corner member 067867 stands about 15.5 m (3.0 m over the series line 12.55 m) with one window in its top storey; 125303 carries the tower, 0.17-0.98 of its front, to about 15.65 m with one window in the storey over the line (the today render drew both at 3DBAG height, the generator had flattened them to the line)"
+    },
+    "amsteldijk-076326": {
+      "raised": {
+        "071659": [
+          {
+            "a0": 0.62,
+            "a1": 1,
+            "riseM": 2.6,
+            "faceM": 1.3
+          }
+        ],
+        "101914": [
+          {
+            "a0": 0,
+            "a1": 0.38,
+            "riseM": 2.6,
+            "faceM": 1.3
+          }
+        ],
+        "126133": [
+          {
+            "a0": 0.62,
+            "a1": 1,
+            "riseM": 2.6,
+            "faceM": 1.3
+          }
+        ],
+        "068963": [
+          {
+            "a0": 0,
+            "a1": 0.38,
+            "riseM": 2.6,
+            "faceM": 1.3
+          }
+        ],
+        "077639": [
+          {
+            "a0": 0.62,
+            "a1": 1,
+            "riseM": 2.6,
+            "faceM": 1.3
+          }
+        ]
+      },
+      "evidence": "round 20 (lane R): panorama recording_2025-07-14_08-27-06_02532 (2025-07-14), rectified at 38 px/m: the court is stepped, the 1.3 m BAG wings (071659+101914, 126133+068963, 077639 with its neighbour) rise to about 12.6 m, 2.6 m over the court's line at 10 m, flat-topped with brick coping; the stepped brick corbels at the wings' edges are not drawn (kit gap)"
     }
   },
   "streetNotes": {
