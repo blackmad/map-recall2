@@ -251,6 +251,8 @@ export function rowFrontsWithSeries(row: RowRecord): RowFrontRecord[] {
     if (rows) { out.rows = rows.rows; out.groundTopM = rows.groundTopM; if (out.series) out.series.floorsM = rows.floorsM; }
     const joins = mansardJoins(row, rec.pandId);
     if (joins && out.series?.roofStorey?.kind === 'mansard') out.series.roofStorey.joins = joins;
+    const pj = out.series?.roofStorey?.kind === 'pitched' ? pitchedJoins(row, rec.pandId) : null;
+    if (pj && out.series?.roofStorey) out.series.roofStorey.joins = pj;
     // A corner member's roof faces its row's street, not the side street nearer its outline (Kinkerstraat 110).
     if ((out.series?.roofStorey?.kind === 'mansard' || out.series?.roofStorey?.kind === 'pitched') && member.widthM && member.widthM > 1) out.series.roofStorey.frontM = member.widthM;
     // A chunk-owned pand whose street wall the row draws (lane D states the chunk and the edge on the member).
@@ -292,6 +294,28 @@ export const ROW_LINE_STEP_M = 0.2;
  *  within ROW_LINE_STEP_M: no hip at the party wall, inside a series or across two, and also into a neighbour with no
  *  stated roof storey on the same line (Kinkerstraat 90 into 86-88: 3DBAG 16.84 / 16.62 m, both cornices at ~14.2 m on
  *  the face strip, so 86-88's top is not clearly lower). */
+/**
+ * House rows (lane D round 9): a pitched roof storey runs on into a neighbour's only where that neighbour has a roof
+ * storey too, at the same cornice line; a row end and a neighbour without one are hipped (mansardJoins closes a row end
+ * with a plate instead). The Centrum judges called a hip on every house a pyramid roof (Marnixstraat 172599).
+ */
+export function pitchedJoins(row: RowRecord, pandId: string): { left?: true; right?: true } | null {
+  const i = row.members.findIndex(m => m.pandId === pandId);
+  if (i < 0) return null;
+  const front = (m: RowRecord['members'][number], end: 'first' | 'last') => row.fronts.find(x => x.id === (end === 'first' ? m.fronts[0] : m.fronts[m.fronts.length - 1]));
+  const joined = (m: RowRecord['members'][number], n: RowRecord['members'][number] | undefined, side: 'left' | 'right') => {
+    if (!n) return false;
+    const a = front(m, side === 'left' ? 'first' : 'last'), b = front(n, side === 'left' ? 'last' : 'first');
+    if (!a || !b) return false;
+    const da = frontDesign(row, a), db = frontDesign(row, b);
+    if (db.roofStorey.value.kind !== 'mansard') return false;
+    const p = da.corniceTopM.value, q = db.corniceTopM.value;
+    return p !== null && q !== null && Math.abs(p - q) <= ROW_LINE_STEP_M + 1e-9;
+  };
+  const m = row.members[i];
+  const out = { ...(joined(m, row.members[i - 1], 'left') ? { left: true as const } : {}), ...(joined(m, row.members[i + 1], 'right') ? { right: true as const } : {}) };
+  return out.left || out.right ? out : null;
+}
 export function mansardJoins(row: RowRecord, pandId: string): { left?: true; right?: true } | null {
   const i = row.members.findIndex(m => m.pandId === pandId);
   if (i < 0) return null;

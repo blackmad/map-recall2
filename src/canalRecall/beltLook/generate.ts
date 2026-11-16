@@ -31,12 +31,32 @@ export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: strin
 export interface BeltStated { crown?: string; year?: number; shop?: boolean; finish?: BeltTarget['finish']; storeys?: number; stoop?: boolean; roofStorey?: boolean; warehouse?: boolean; elements?: string[]; /** A published house spec states a mansard (not the register's dakkapel). */ mansard?: boolean;
   /** A published house spec's measured wall colour (palette.brick). */ specHex?: string;
   /** The pand's cut wall sample (lane W1 on the pinned capture), from any cut, readable or not. */ photo?: BeltPhoto }
+/**
+ * The register states a roof storey only with a dakkapel (dormer). An attiek is a raised parapet over the cornice, not a roof
+ * storey (round 9: Keizersgracht 177468, register stoep + attiek, drew a hipped roof with dormers over a flat white cornice).
+ */
+export function registerRoofStorey(elements: readonly string[]): boolean {
+  return elements.includes('dormer');
+}
 /** A cut's wall sample: hex, OKLab lightness, chroma, hue (deg) and the sampled pixel count. */
 export interface BeltPhoto { hex: string; L: number; C: number; h: number; n: number }
 /** A photo wall sample strong enough to colour a front: enough wall pixels, and neither foliage (green hue with chroma) nor a
  *  washed-out or shadowed patch (lightness band). Round 8: Keizersgracht 176392, an unreadable cut (no storeys seen) whose
  *  wall sample #4a423b is the dark brick of the photo, was drawn #6f5543 from the neighbours. */
 export const PHOTO_SAMPLE = { minN: 200, foliageHue: [95, 170] as const, foliageC: 0.025, minL: 0.2, maxL: 0.8 } as const;
+/**
+ * The photo finish reader (round 9, item 3: Singel 167687's stucco drawn as brick): a cut's wall finish read from the
+ * photo (opus on the cut, or a unanimous Node colour/texture neighbour vote for plain brick), with a confidence. It
+ * states the finish only where the register is silent and the read is confident; stucco a pale plastered front, paint a
+ * painted brick one. Calibration on 60 labelled belt cuts (20 per finish): opus 56/60, stucco 20/20 with no false stucco;
+ * haiku 25/60 (not used); the Node vote 74 % overall; a unanimous brick vote 77 of 87 (the only Node read kept).
+ */
+export interface PhotoFinish { finish: 'stucco' | 'paint' | 'brick' | 'unclear'; confidence: number; reader: string }
+export const PHOTO_FINISH_MIN = 0.7;
+export function photoFinish(p: PhotoFinish | undefined): BeltTarget['finish'] | undefined {
+  if (!p || p.confidence < PHOTO_FINISH_MIN) return undefined;
+  return p.finish === 'stucco' ? 'plaster' : p.finish === 'paint' ? 'painted' : p.finish === 'brick' ? 'brick' : undefined;
+}
 export function strongPhoto(p: BeltPhoto | undefined): p is BeltPhoto {
   if (!p || !(p.n >= PHOTO_SAMPLE.minN) || !(p.L >= PHOTO_SAMPLE.minL && p.L <= PHOTO_SAMPLE.maxL)) return false;
   return !(p.C >= PHOTO_SAMPLE.foliageC && p.h >= PHOTO_SAMPLE.foliageHue[0] && p.h <= PHOTO_SAMPLE.foliageHue[1]);
@@ -155,7 +175,9 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       // otherwise the solve takes the neighbours' family (round 4: tan and pale fronts over dark brick rows).
       // A published spec's measured wall colour stands (a strong photo read that disagrees is flagged by the script); else
       // the pand's own cut sample when strong (round 8: an unreadable cut still shows the wall); else the donor's brick.
-      sample = t.finish === 'plaster' || t.finish === 'stone' ? undefined : sd?.specHex ?? (strongPhoto(sd?.photo) ? sd!.photo!.hex : brickDonorSample(d.donor));
+      // A plastered or stone front with a strong cut sample takes the photo's own colour (round 9: Singel 167687's grey
+      // stucco); without one it is judged pale.
+      sample = t.finish === 'plaster' || t.finish === 'stone' ? (strongPhoto(sd?.photo) ? sd!.photo!.hex : undefined) : sd?.specHex ?? (strongPhoto(sd?.photo) ? sd!.photo!.hex : brickDonorSample(d.donor));
       if (!sample && (read as { finish?: string }).finish === 'brick') sample = nearestBrickSample(t, donors, look)?.sample;
       prov[pid] = { donor: d.donor.pandId, distance: d.distance, rank: d.rank, of: d.of };
     }

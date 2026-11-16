@@ -307,3 +307,50 @@ test('round 8: pitched dormers, not a mansard; bays by width; storeys under a so
   assert.equal(runTakesSteps(1.6, 4.11), false);
   assert.equal(runTakesSteps(6.5, 4.11), false);
 });
+
+test('round 9: an attiek is no roof storey; a register-silent pand takes no donor gable; a donor full frame stays with the donor', async () => {
+  const { registerRoofStorey } = await import('./generate.ts');
+  // Keizersgracht 177468: register stoep + attiek, a flat white cornice in the photo.
+  assert.equal(registerRoofStorey(['stoop', 'attic']), false);
+  assert.equal(registerRoofStorey(['dormer']), true);
+  // Keizersgracht 171508: register silent; a donor never brings a gable (its own read's necks, seen on the 2023 cut, stay).
+  const d = donorFor(target({ pandId: '0363100012171508', eavesM: 10.91, ridgeM: 15.13, roofCode: 3 }), DONORS);
+  assert.ok(d && !['neck', 'bell', 'step', 'spout', 'point'].includes(String(d.donor.answer.crown)));
+  // Reguliersgracht 178585: a donor's full-frame surround does not travel.
+  const f = fittedRead(target(), donor('0363100012174842', 'Keizersgracht', 1700, 6.3, 15, { windowSurround: 'full-frame' } as never)) as unknown as { windowSurround: string };
+  assert.equal(f.windowSurround, 'none');
+});
+
+test('round 9: the photo finish reader states stucco and paint only when confident; a stated paint paints a brick donor', async () => {
+  const { photoFinish } = await import('./generate.ts');
+  // Singel 167687: a confident stucco read is a plastered front (pale stucco, not the donor's brick).
+  assert.equal(photoFinish({ finish: 'stucco', confidence: 0.85, reader: 'opus (cut)' }), 'plaster');
+  assert.equal(photoFinish({ finish: 'paint', confidence: 0.75, reader: 'opus (cut)' }), 'painted');
+  assert.equal(photoFinish({ finish: 'stucco', confidence: 0.6, reader: 'opus (cut)' }), undefined);
+  assert.equal(photoFinish({ finish: 'unclear', confidence: 0.9, reader: 'opus (cut)' }), undefined);
+  const s = fittedRead(target({ finish: 'plaster' }), donor('0363100012174842', 'Keizersgracht', 1700, 6.3, 15, { finish: 'brick' } as never)) as unknown as { finish: string; pale?: boolean };
+  assert.deepEqual([s.finish, s.pale], ['stucco', true]);
+  const p = fittedRead(target({ finish: 'painted' }), donor('0363100012174842', 'Keizersgracht', 1700, 6.3, 15, { finish: 'brick' } as never)) as unknown as { finish: string };
+  assert.equal(p.finish, 'painted-brick');
+});
+
+test('round 9: a row pitched roof storey runs one ridge along the row (Marnixstraat 172599: no pyramid per house); a row end is hipped', async () => {
+  const { roofTriangles } = await import('../roofMesh.ts');
+  const rect = { cx: 0, cy: 0, ux: 1, uy: 0, len: 15, wid: 5.5, coverage: 1, maxDev: 0 };
+  const plan = (joins?: { left?: boolean; right?: boolean }) => ({ kind: 'hipped', gable: 'plain', riseM: 3, dormers: true, material: 'slate', tone: 0.5, seed: 's', chimney: false, accents: true, rowDormers: [{ a: 0.5, kind: 'plain' }], ...(joins ? { rowJoins: joins } : {}) }) as never;
+  const dims = { bayM: 3, storeyM: 3, cellM: 1 };
+  const ridge = (tris: ReturnType<typeof roofTriangles>) => tris.filter(t => t.part === 'slope').flatMap(t => t.p).filter(p => Math.abs(p[2] - 13) < 1e-6).map(p => p[1]);
+  // Joined both sides (a middle member): the ridge spans the whole front, the party walls closed by plates, no hips.
+  const mid = roofTriangles(rect, plan({ left: true, right: true }), 10, dims);
+  const rm = ridge(mid);
+  assert.ok(Math.min(...rm) <= -2.74 && Math.max(...rm) >= 2.74, `ridge spans the front: ${Math.min(...rm)}..${Math.max(...rm)}`);
+  assert.equal(mid.filter(t => t.part === 'plate').length, 2);
+  // The ridge runs across the front (along the row), 3 m behind the street eaves, not down the depth of the house.
+  const us = mid.filter(t => t.part === 'slope').flatMap(t => t.p).filter(p => Math.abs(p[2] - 13) < 1e-6).map(p => p[0]);
+  assert.ok(Math.max(...us) - Math.min(...us) < 1e-6, 'one ridge line');
+  // A row end (joined on one side only): hipped on the open side, the ridge stops short of that wall.
+  const end = ridge(roofTriangles(rect, plan({ right: true }), 10, dims));
+  assert.ok(Math.max(...end) - Math.min(...end) < 5.5 - 1e-6);
+  // The dormer stands on the street slope.
+  assert.ok(mid.some(t => t.part === 'dormerFace'));
+});

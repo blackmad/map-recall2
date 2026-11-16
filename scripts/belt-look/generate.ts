@@ -15,7 +15,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { districtPands, namedStreets, describedPands } from '../buurt-generators/generate.ts';
 import type { DistrictLibrary } from '../../src/canalRecall/buurtGenerator/generate.ts';
-import { generateBelt, specPhotoDisagree, type BeltPhoto, type BeltRead, type BeltStated } from '../../src/canalRecall/beltLook/generate.ts';
+import { generateBelt, photoFinish, registerRoofStorey, specPhotoDisagree, type BeltPhoto, type BeltRead, type BeltStated } from '../../src/canalRecall/beltLook/generate.ts';
 import type { AhnFront } from '../../src/canalRecall/beltLook/ahnFront.ts';
 import { usableDonor, segmentOf, type BeltDonor } from '../../src/canalRecall/beltLook/donors.ts';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.ts';
@@ -85,7 +85,7 @@ export function statedPands(): Map<string, BeltStated> {
     const k = id.replace(/^NL\.IMBAG\.Pand\./, ''), cur = out.get(k) ?? {}, els = new Set<string>((f.elements ?? []).map((e: any) => e.key));
     const crown = cur.crown ?? CROWN[f.gable], year = cur.year ?? f.facadeDate?.from ?? f.coreDate?.from;
     out.set(k, { ...cur, ...(crown ? { crown } : {}), ...(typeof year === 'number' ? { year } : {}), ...(typeof f.finish === 'string' ? { finish: f.finish } : {}),
-      ...(Number.isInteger(f.storeys) && f.storeys > 0 ? { storeys: f.storeys } : {}), ...(els.has('stoop') ? { stoop: true } : {}), ...((f.elements ?? []).some((e: any) => e.key === 'shopfront' && SHOP_PUI.test(String(e.term ?? ''))) ? { shop: true } : {}), ...(els.has('dormer') || els.has('attic') ? { roofStorey: true } : {}),
+      ...(Number.isInteger(f.storeys) && f.storeys > 0 ? { storeys: f.storeys } : {}), ...(els.has('stoop') ? { stoop: true } : {}), ...((f.elements ?? []).some((e: any) => e.key === 'shopfront' && SHOP_PUI.test(String(e.term ?? ''))) ? { shop: true } : {}), ...(registerRoofStorey([...els]) ? { roofStorey: true } : {}),
       ...(f.type?.key === 'warehouse' ? { warehouse: true } : {}), ...(els.size ? { elements: [...els].sort() } : {}) });
   }
   // Shop ground storeys: the extract's shopfronts.json (the game's own shopfront layer).
@@ -112,6 +112,14 @@ async function main() {
   const { reads, donors, photo } = beltReads();
   const stated = statedPands();
   for (const [pid, ph] of photo) stated.set(pid, { ...(stated.get(pid) ?? {}), photo: ph });
+  // The photo finish reader (round 9; scripts/belt-look/photo-reads.ts): the finish where the register is silent, and the
+  // wall sample of the cuts fetched for fronts the D1 tranche had none of.
+  const photoReads = arg('photo-reads') ?? ['artifacts/buurt-generators/belt-photo/photo-reads.json', 'data/buurt-generators/belt/photo-reads.json'].find(f => fs.existsSync(f)) ?? '';
+  if (photoReads && fs.existsSync(photoReads)) for (const [pid, r] of Object.entries<any>(JSON.parse(fs.readFileSync(photoReads, 'utf8')).reads ?? {})) {
+    const cur = stated.get(pid) ?? {}, fin = cur.finish ? undefined : photoFinish(r.finish ? r : undefined);
+    const ph = !cur.photo && r.w1?.hex && typeof r.w1.n === 'number' ? { hex: r.w1.hex, L: r.w1.L, C: r.w1.C, h: r.w1.h, n: r.w1.n } : undefined;
+    if (fin || ph) stated.set(pid, { ...cur, ...(fin ? { finish: fin } : {}), ...(ph ? { photo: ph } : {}) });
+  }
   // Measured AHN street fronts (scripts/belt-look/ahn-fronts.ts, staged); --no-ahn draws from 3DBAG alone.
   const ahnFile = arg('ahn') ?? ['artifacts/buurt-generators/belt-ahn/fronts.json', 'data/buurt-generators/belt/ahn-fronts.json'].find(f => fs.existsSync(f)) ?? '';
   const ahn = new Map<string, AhnFront>(!process.argv.includes('--no-ahn') && fs.existsSync(ahnFile) ? Object.entries(JSON.parse(fs.readFileSync(ahnFile, 'utf8')).fronts) : []);
