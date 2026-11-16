@@ -512,3 +512,28 @@ test('round 16: a cant bricks over the window it half covers; window fronts draw
   assert.ok(Math.max(...zs) <= front.z0 + 1e-6, 'the ground storey only (its brick infill to the storey top)');
   assert.ok(s.out.some(t => t.hex === '#ff2a3a'), 'the tube');
 });
+
+test('round 19: a stated stair axis draws one narrow light per upper storey beside the wide windows; absent, nothing changes', async () => {
+  const { stairAxisOf, buurtKitOf } = await import('./frontKit.js');
+  const { buurtRoofKitOf, drawStairAxis, STAIR_LOOK, RHYTHM_LOOK } = await import('./roofKit.js');
+  assert.deepEqual(stairAxisOf({ a: 0.12, wide: 2 }), { a: 0.12, wide: 2 });
+  for (const bad of [{ a: 0, wide: 2 }, { a: 0.5, wide: 0 }, { a: 0.5, wide: 1.5 }, { a: 1.2, wide: 2 }, null]) assert.equal(stairAxisOf(bad), null);
+  const front = buurtKitOf({ frontLine: line, erkers: [], stairAxis: { a: 0.12, wide: 2 } })!;
+  assert.deepEqual(front.stairAxis, { a: 0.12, wide: 2 });
+  assert.equal(buurtKitOf({ frontLine: line, erkers: [], rhythm: true, stairAxis: { a: 0.12, wide: 2 } })!.stairAxis, undefined, 'the rhythm wins');
+  assert.equal(buurtKitOf({ frontLine: line, erkers: [] })!.stairAxis, undefined);
+  const rk = buurtRoofKitFor(front, 12.4, 4, 3.4)!;
+  assert.ok(kitDrawsFront(rk) && rk.stairAxis);
+  assert.deepEqual(buurtRoofKitOf(JSON.parse(JSON.stringify(rk))), rk, 'survives the feature properties');
+  const s = sink(); drawStairAxis(s, rk, 10, 9.8, 1);
+  const lights = s.out.filter(t => t.part !== 'plate');
+  const ws = new Set(lights.flatMap(t => t.p.map(p => +p[1].toFixed(2))));
+  assert.ok(ws.size > 0);
+  // Its lights: the stair light's edges at 0.12 of the front (left as seen) and two wide windows of at most 2.2 m.
+  const c = -9.8 / 2 + 0.12 * 9.8, half = STAIR_LOOK.lightM / 2;
+  assert.ok([...ws].some(y => Math.abs(Math.abs(y) - Math.abs(c - half)) < 0.02 || Math.abs(Math.abs(y) - Math.abs(c + half)) < 0.02), 'the stair light where stated');
+  assert.ok(RHYTHM_LOOK.singleM === 2.2);
+  // Plain kits keep drawing nothing extra.
+  const plain = buurtRoofKitFor({ erkers: [] }, 12.4, 4, 3.4)!;
+  assert.equal(plain.stairAxis, undefined); assert.equal(kitDrawsFront(plain), false);
+});

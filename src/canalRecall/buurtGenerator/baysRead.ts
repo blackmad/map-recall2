@@ -17,7 +17,9 @@ import { PIXEL_BAYS } from '../houseSpec/writers/pixel.ts';
  *  where the photo shows about 4 window groups a front. */
 export const BAYS_READ = { minMembers: 2, cover: 0.25, share: 0.6, maxBays: 8 } as const;
 
-export interface BaysCapture { pano: string; date: string; cols: number | null; why?: string }
+/** Round 19 `raw`: the measure behind a capture (re-gated offline without a download) and the run counter's read. */
+export interface BaysRaw { cls: string; columns: number | null; wcols: number | null; pitch: number; usable: number; foliage: number; axes?: number; widthsM?: number[]; centres?: number[]; narrow?: number; storeys?: number; src?: 'pixel' | 'runs'; seen: number; spanM: number }
+export interface BaysCapture { pano: string; date: string; cols: number | null; why?: string; raw?: BaysRaw }
 /** One member's reads (measured/<district>.json `bays`): `bays` its count when its captures agree, else null. */
 export interface MemberBays { bays: number | null; reads: BaysCapture[] }
 
@@ -44,4 +46,55 @@ export function seriesBaysOf(members: ReadonlyArray<number | null | undefined>):
   for (const b of read) n.set(b, (n.get(b) ?? 0) + 1);
   const [bays, agree] = [...n.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0];
   return agree / read.length >= BAYS_READ.share ? { bays, read: read.length, agree } : null;
+}
+
+/** Round 19: the run counter. The pixel writer's gate needs a resolved pitch, which a front with a stair light beside
+ *  wide paired windows never has (1,303 punched fronts rejected in round 18). This counts the window axes on the opening
+ *  mask itself: a cell column is an axis column when openings fill at least `fill` of it in at least `storeys` of the
+ *  upper storeys; axis columns closer than `mergeM` (a mullion or pier inside one window group) join; runs narrower than
+ *  `minM` are noise. `narrowM`: a run this narrow beside wide ones is a stair light. Calibrated on hand counts
+ *  (scripts/buurt-generators/bays-calibration.ts). */
+export const AXES_RUN = { fill: 0.2, storeys: 0.5, mergeM: 0.3, minM: 0.3, narrowM: 0.9, wideM: 1.3, minUsable: 0.6 } as const;
+/** The run counter's count is taken only when it holds at this stricter fill too (round 19 calibration, 30 hand-counted
+ *  members: the round-18 gate gave 8 counts, 7 right; the gate then the stable run count gave 22, 18 right). */
+export const AXES_STABLE_FILL = 0.3;
+
+/** `centres`: each run's middle as a share of the crop, left to right as seen (the stair light's place). */
+export interface AxesRead { axes: number; widthsM: number[]; centres: number[]; narrow: number; storeys: number }
+
+/** The window axes of a measured crop's upper storeys, from its opening mask; null when too little is usable. */
+export function axesOfMask(m: Pick<FacadeMeasurement, 'cols' | 'rows' | 'cell' | 'box' | 'mask'>, lines: readonly number[], topM: number, o: { [K in keyof typeof AXES_RUN]?: number } = {}): AxesRead | null {
+  const P = { ...AXES_RUN, ...o };
+  const MASK_UNUSABLE = 255, open = (v: number) => v === 1 || v === 3;
+  const vOf = (r: number) => m.box.v1 - (r + 0.5) * m.cell; // row 0 at the top
+  const bands: Array<[number, number]> = [];
+  for (let k = 1; k < lines.length; k++) { const lo = lines[k], hi = Math.min(topM, lines[k + 1] ?? topM); if (hi - lo >= 1.5) bands.push([lo, hi]); }
+  if (!bands.length) return null;
+  const hits = new Array<number>(m.cols).fill(0); let used = 0;
+  for (const [lo, hi] of bands) {
+    let usable = 0, total = 0; const colOpen = new Array<number>(m.cols).fill(0), colUse = new Array<number>(m.cols).fill(0);
+    for (let r = 0; r < m.rows; r++) { const v = vOf(r); if (v < lo || v >= hi) continue;
+      for (let c = 0; c < m.cols; c++) { const x = m.mask[r * m.cols + c]; total++; if (x === MASK_UNUSABLE) continue; usable++; colUse[c]++; if (open(x)) colOpen[c]++; } }
+    if (!total || usable / total < P.minUsable) continue;
+    used++;
+    for (let c = 0; c < m.cols; c++) if (colUse[c] && colOpen[c] / colUse[c] >= P.fill) hits[c]++;
+  }
+  if (!used) return null;
+  const need = Math.max(1, Math.ceil(used * P.storeys)), isAxis = hits.map(h => h >= need);
+  const runs: Array<[number, number]> = [];
+  for (let c = 0; c < m.cols; c++) if (isAxis[c]) { const last = runs[runs.length - 1]; if (last && (c - last[1] - 1) * m.cell <= P.mergeM) last[1] = c; else runs.push([c, c]); }
+  const kept = runs.filter(([a, b]) => (b - a + 1) * m.cell >= P.minM), span = m.cols * m.cell;
+  const widthsM = kept.map(([a, b]) => +((b - a + 1) * m.cell).toFixed(2));
+  const centres = kept.map(([a, b]) => +((m.box.u0 + (a + b + 1) / 2 * m.cell) / (m.box.u0 * 2 + span)).toFixed(3));
+  const wide = widthsM.filter(w => w >= P.wideM).length;
+  return { axes: widthsM.length, widthsM, centres, narrow: wide ? widthsM.filter(w => w < P.narrowM).length : 0, storeys: used };
+}
+
+/** A crop's count: the pixel writer's gate when it passes, else the run counter's when it is stable (the same at
+ *  `AXES_STABLE_FILL`) and 1-8; null otherwise. `src` names which. */
+export function baysOfCrop(measured: { m: FacadeMeasurement; lines: readonly number[]; topM: number }): { bays: number; src: 'pixel' | 'runs'; runs: AxesRead | null } | { bays: null; runs: AxesRead | null } {
+  const runs = axesOfMask(measured.m, measured.lines, measured.topM), px = baysOfMeasure(measured.m);
+  if (px !== null) return { bays: px, src: 'pixel', runs };
+  const strict = runs ? axesOfMask(measured.m, measured.lines, measured.topM, { fill: AXES_STABLE_FILL }) : null;
+  return runs && strict && runs.axes === strict.axes && runs.axes >= 1 && runs.axes <= BAYS_READ.maxBays ? { bays: runs.axes, src: 'runs', runs } : { bays: null, runs };
 }

@@ -14,7 +14,7 @@ import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
 import { districtRows, ROW_EAVES_STEP_M, type GenMember, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
-import { cantsOnCells, erkersOnCells, type BuurtEntry, type BuurtErker, type BuurtKitFront } from './kit/frontKit.ts';
+import { cantsOnCells, erkersOnCells, stairAxisOf, type BuurtEntry, type BuurtErker, type BuurtKitFront, type KitStairAxis } from './kit/frontKit.ts';
 import { seriesBaysOf, type MemberBays } from './baysRead.ts';
 
 export interface DistrictDesign {
@@ -90,7 +90,11 @@ export interface DistrictLibrary {
     /** Round 12 (lane R): the row's erkers are white timber fronts; `erkers` the bays the row's photo shows, per member
      *  (last six digits of the pand id), in place of BAG's (Stadionkade: BAG draws none, the photo stacked bay columns,
      *  corner oriels and one-storey white oriels). */
-    erkerFront?: 'timber'; erkers?: Record<string, BuurtErker[]>; evidence: string }>;
+    erkerFront?: 'timber'; erkers?: Record<string, BuurtErker[]>;
+    /** Round 19 (lane R): the stair light beside the wide windows, per member (last six digits of the pand id): its place
+     *  `a` (left to right as seen) and the wide windows beside it (roofKit drawStairAxis). */
+    stairAxis?: Record<string, KitStairAxis>;
+    evidence: string }>;
   notDrawn: Array<{ component: string; what: string }>;
   /** Round 9: the per-row measurements (`districts/measured/<district>.json`, staged by scripts/buurt-generators/
    *  measure-walls.ts and measure-roofs.ts), under the row and street notes and over the family and district. */
@@ -384,7 +388,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
     // Hunzestraat: the erker members' coping stood 0.55 m over their neighbours').
     // Round 15: a cant is drawn by the kit, so BAG's erker over the same run (a fold read as a bay) goes.
     const bayErkers = (f: GenMember['front']) => f.cants ? f.erkers.filter(k => !f.cants!.some(c => k.a1 > c.a0 + 0.01 && k.a0 < c.a1 - 0.01)) : f.erkers;
-    const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || bayErkers(mm.front).length || mm.front.cants?.length || note?.erkers?.[pandNumber(mm.pand.id).slice(-6)]?.length || lib.flatEaves || entryAt(r.members.indexOf(mm))));
+    const seriesCoping = s.members.some(mm => drawn.has(pandNumber(mm.pand.id)) && (fam?.kit?.ribbon || bayErkers(mm.front).length || mm.front.cants?.length || note?.erkers?.[pandNumber(mm.pand.id).slice(-6)]?.length || note?.stairAxis?.[pandNumber(mm.pand.id).slice(-6)] || lib.flatEaves || entryAt(r.members.indexOf(mm))));
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
       if (!drawn.has(pid)) continue;
@@ -395,7 +399,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
       const erkers = erkersFor(pid, erkersOnCells(bayErkers(m.front), bays, m.front.lengthM, fam?.design?.windowShare ?? lib.design.windowShare));
       kits.set(pid, { frontLine: [r6(m.front.lineA), r6(m.front.lineB)], erkers,
         ...(rise !== null && pv ? { roof: { pitchDeg: pv.pitchDeg, riseM: rise, ...(roofHex ? { roofHex } : {}), ...(pv.dormersPerFront === 0 ? { dormers: false as const } : {}), ...(pv.eavesM ? { eavesM: pv.eavesM, ...(pv.eavesFrieze === false ? { eavesFrieze: false as const } : {}) } : {}) } } : {}),
-        ...(fam?.kit?.rhythm ? { rhythm: true as const } : {}),
+        ...(fam?.kit?.rhythm ? { rhythm: true as const } : {}), ...(!fam?.kit?.rhythm && stairAxisOf(note?.stairAxis?.[pid.slice(-6)]) ? { stairAxis: stairAxisOf(note!.stairAxis![pid.slice(-6)])! } : {}),
         ...(fam?.kit?.piers && (joins.left || joins.right) ? { sides: { ...(joins.left ? { left: pierAfter(i - 1) ? 'pier' as const : 'pair' as const } : {}), ...(joins.right ? { right: pierAfter(i) ? 'pier' as const : 'pair' as const } : {}) } } : {}),
         ...(fam?.kit?.sash ? { sash: fam.kit.sash.value } : {}), ...(fam?.kit?.ribbon ? { ribbon: true as const } : {}),
         ...((bands || whiteErker(pid)) && (bayErkers(m.front).length || note?.erkers?.[pid.slice(-6)]?.length) ? { erkerBands: true as const } : {}), ...(note?.loggias?.includes(pid.slice(-6)) ? { loggias: true as const } : {}),

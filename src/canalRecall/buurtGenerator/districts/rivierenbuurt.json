@@ -201,6 +201,19 @@
     "kuinderstraat-067158": {
       "erkerFront": "timber",
       "evidence": "Kuinderstraat panorama recording_2025-07-14_11-01-54_02163 (2025-07-14, round 9 held-out sheet, 36 px/m), lane R round 12: the canted oriels (BAG's spans) are white timber fronts, three lights a storey corner to corner with toplights, white sills, brick only between storeys; the corner member 148704's oriel the same"
+    },
+    "maasstraat-108230": {
+      "stairAxis": {
+        "108230": {
+          "a": 0.12,
+          "wide": 2
+        },
+        "071329": {
+          "a": 0.9,
+          "wide": 2
+        }
+      },
+      "evidence": "round 19 (lane R): panorama recording_2024-09-05_05-59-45_09869 (2024-09-05), rectified at 40 px/m: 108230 (left) and 071329 (right) each show one small square stair light per upper storey at the outer party wall (centres 0.12 and 0.90 of the front) beside two wide four-light windows; 131005 between them is the glazed stair tower with a canted bay either side (not stated: the kit has no tower)"
     }
   },
   "streetNotes": {
