@@ -3,6 +3,49 @@
   "notes": [
     {
       "date": "2026-11-16",
+      "title": "Shop windows with real goods and logos",
+      "text": "Shopfronts in the centre now look more like the shops on the street. Cheese shops, souvenir shops, coffeeshops, bakeries, shoe shops and about twenty other kinds show their own goods in the window. 122 chains carry their real logo, and independent shops have their name lettered in a typeface that suits the trade. In De Wallen, the 27 window rows checked against street photos are drawn as glazed doors with red curtains, and buildings tagged as red-light but closed are no longer drawn that way. Every kind of shop was compared blind against the street photo, and only the kinds that won keep the new look.",
+      "where": [
+        4.8925,
+        52.3712
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-15-retail-real/street-kalverstraat-chains-accepted-pair.jpg",
+          "alt": "Kalverstraat: the street photo beside the game, with The Sting lettered over a window of clothes",
+          "caption": "Kalverstraat: photo and game"
+        },
+        {
+          "src": "ui/2026-11-15-retail-real/street-de-wallen-window-row-accepted-pair.jpg",
+          "alt": "De Wallen: the street photo beside the game, with a row of glazed doors and red curtains",
+          "caption": "De Wallen window row"
+        },
+        {
+          "src": "ui/2026-11-15-retail-real/street-damstraat-souvenirs-accepted-pair.jpg",
+          "alt": "Damstraat: a souvenir shop in the photo and in the game",
+          "caption": "Damstraat souvenirs"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "title": "Rivierenbuurt, Apollobuurt and Stadionbuurt get their own look",
+      "text": "About 4,100 houses in three districts south of the centre now draw as the long brick blocks of the 1920s and 30s that line their streets. Each block has one roof line, a regular rhythm of white-framed windows, ground-floor entrances, bays, and brick in the colour measured from street photos of that row. Before, every house was drawn on its own with a random roof. On seven streets nobody had tuned, a reviewer comparing against the photos picked the new drawing every time.",
+      "images": [
+        {
+          "src": "ui/2026-11-15-buurt/hunzestraat.jpg",
+          "alt": "Hunzestraat: the street photo, the game before, and the new block drawing",
+          "caption": "Hunzestraat: photo, before, after"
+        },
+        {
+          "src": "ui/2026-11-15-buurt/stadionkade.jpg",
+          "alt": "Stadionkade: the street photo, the game before, and the new block drawing",
+          "caption": "Stadionkade: photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
       "title": "Hotel Schiller and three swimming pools",
       "text": "Hotel Schiller on Rembrandtplein now stands as its own model: purple-brown brick, pale stone oriels and the corner tower, and the NH Schiller entrance. Three city pools join it: Noorderparkbad with its rod screen and red-and-white brick panel, Flevoparkbad with its dark roofs, and Victoriabad. Each was kept only after a reviewer, comparing it with street photos without knowing which was new, picked it over the old block.",
       "where": [
@@ -36,23 +79,6 @@
           "src": "ui/2026-11-14-retail-ground-r2/as-played-centre-v2-on.jpg",
           "alt": "A shopping street in the centre as played, with the new shopfronts",
           "caption": "In the game"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-15",
-      "title": "Rivierenbuurt, Apollobuurt and Stadionbuurt get their own look",
-      "text": "About 4,100 houses in three districts south of the centre now draw as the long brick blocks of the 1920s and 30s that line their streets. Each block has one roof line, a regular rhythm of white-framed windows, ground-floor entrances, bays, and brick in the colour measured from street photos of that row. Before, every house was drawn on its own with a random roof. On seven streets nobody had tuned, a reviewer comparing against the photos picked the new drawing every time.",
-      "images": [
-        {
-          "src": "ui/2026-11-15-buurt/hunzestraat.jpg",
-          "alt": "Hunzestraat: the street photo, the game before, and the new block drawing",
-          "caption": "Hunzestraat: photo, before, after"
-        },
-        {
-          "src": "ui/2026-11-15-buurt/stadionkade.jpg",
-          "alt": "Stadionkade: the street photo, the game before, and the new block drawing",
-          "caption": "Stadionkade: photo, before, after"
         }
       ]
     },
