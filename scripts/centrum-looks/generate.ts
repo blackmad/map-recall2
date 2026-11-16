@@ -26,7 +26,7 @@ import { toRowCheck } from '../../src/canalRecall/houseSpec/row/check.ts';
 import type { DescriberAnswer } from '../../src/canalRecall/houseSpec/describer.ts';
 import { modernBehindRegister } from '../../src/canalRecall/beltLook/roofSignals.ts';
 import { drawRowWalls, measuredWeights, streetFamily, type WallDrawConfig, type WallDrawn, type WeightEvidence } from '../../src/canalRecall/beltLook/wallDraw.ts';
-import { strongPhoto } from '../../src/canalRecall/beltLook/generate.ts';
+import { strongPhoto, photoFinish, PHOTO_FINISH_MIN } from '../../src/canalRecall/beltLook/generate.ts';
 import { describerDarkPhrase } from '../../src/canalRecall/houseSpec/darkFinish.ts';
 import { describerColourWord, judgeFront, type JudgedFamily } from '../../src/canalRecall/houseSpec/judgedColour.ts';
 
@@ -64,6 +64,23 @@ export function districtReads(look: LookDistrictFile, pands: ReturnType<typeof d
   return { reads, donors };
 }
 
+/** The photo colour reader's families (artifacts/centrum-looks/photo/reader-prompt.md) as the judged palette's. */
+export const PHOTO_FAMILY: Record<string, JudgedFamily> = {
+  'dark-grey-brick': 'dark-grey-brick', 'purple-brown-brick': 'purple-brown-brick', 'brown-brick': 'brown-brick', 'red-brown-brick': 'red-brown-brick',
+  'orange-red-brick': 'orange-red-brick', 'buff-brick': 'buff-brick', 'white-paint': 'painted-white', 'cream-paint': 'cream-render',
+  'pale-grey': 'pale-grey-stucco', 'dark-paint': 'painted-black',
+};
+export interface PhotoRead { finish: string; family: string; confidence: number; reader: string }
+/** A photo read's family when it may stand: confident, a family the palette has, and the register silent on the finish. */
+export function photoFamily(r: PhotoRead | undefined, registerFinish: string | undefined): JudgedFamily | undefined {
+  if (!r || registerFinish || !(r.confidence >= PHOTO_FINISH_MIN)) return undefined;
+  return PHOTO_FAMILY[r.family];
+}
+export const loadPhotoReads = (id: string, file?: string): Map<string, PhotoRead> => {
+  const f = file ?? [`artifacts/centrum-looks/photo/${id}-photo-reads.json`, `data/buurt-generators/${id}/photo-reads.json`].find(x => fs.existsSync(x));
+  return new Map(f && fs.existsSync(f) ? Object.entries<PhotoRead>(JSON.parse(fs.readFileSync(f, 'utf8')).reads ?? {}) : []);
+};
+
 /** A read's judged family (judgeFront, absolute mode: its own cut sample read as measured, as the belt reads are). */
 export function readFamily(pid: string, r: BeltRead, year: number | null): JudgedFamily {
   const a = r.answer as DescriberAnswer & { pale?: boolean; notes?: string };
@@ -92,7 +109,7 @@ export function wallEvidence(look: LookDistrictFile, own: ReadonlyMap<string, Be
  * free when its read (own or donor) is unpainted brick, not pale, with no colour or dark word, and nothing states its
  * finish or colour; its sample is the pand's own (a strong W1 photo sample, else its own read's cut), never a donor's.
  */
-export function drawWalls(records: any[], prov: Record<string, any>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], stated: ReturnType<typeof statedPands>, cfg: WallDrawConfig, years: ReadonlyMap<string, number | null>, streetFamilyOf: ReadonlyMap<string, JudgedFamily> = new Map()) {
+export function drawWalls(records: any[], prov: Record<string, any>, reads: ReadonlyMap<string, BeltRead>, donors: readonly BeltDonor[], stated: ReturnType<typeof statedPands>, cfg: WallDrawConfig, years: ReadonlyMap<string, number | null>, streetFamilyOf: ReadonlyMap<string, JudgedFamily> = new Map(), photo: ReadonlyMap<string, PhotoRead> = new Map(), registerFinish: ReadonlyMap<string, string> = new Map()) {
   const donorById = new Map(donors.map(d => [d.pandId, d]));
   const byRow = new Map<string, any[]>();
   for (const r of records) { const k = String(r.series?.id ?? '').split('/')[0]; (byRow.get(k) ?? byRow.set(k, []).get(k)!).push(r); }
@@ -108,8 +125,9 @@ export function drawWalls(records: any[], prov: Record<string, any>, reads: Read
       const ownOk = !ownRead || (!!a && a.finish === 'brick' && (a as { pale?: boolean }).pale !== true && !describerDarkPhrase(a as never) && !describerColourWord(a as never));
       const free = !!a && r.wall?.finish === 'brick' && ownOk && (!sd?.finish || sd.finish === 'brick') && !sd?.specHex;
       const sample = strongPhoto(sd?.photo) ? sd!.photo!.hex : reads.get(pid)?.sample;
-      const st = streetFamilyOf.get(pid);
-      return { pandId: pid, year: sd?.year ?? years.get(pid) ?? null, free, brickOnly: ownRead, series: r.series?.id as string | undefined, ...(sample ? { sample } : {}), ...(st ? { streetFamily: st } : {}) };
+      const st = streetFamilyOf.get(pid), pr = photo.get(pid), pf = sd?.specHex ? undefined : photoFamily(pr, registerFinish.get(pid));
+      return { pandId: pid, year: sd?.year ?? years.get(pid) ?? null, free, brickOnly: ownRead, series: r.series?.id as string | undefined, ...(sample ? { sample } : {}), ...(st ? { streetFamily: st } : {}),
+        ...(pf ? { photo: pf, photoStucco: pr!.finish === 'stucco' } : {}) };
     });
     drawRowWalls(fronts, cfg, seriesFamily).forEach((w, i) => {
       if (!w) { tally.kept = (tally.kept ?? 0) + 1; return; }
@@ -131,6 +149,14 @@ async function main() {
   for (const s of specOnly) described.delete(s);
   for (const s of rowsD) described.add(s);
   const stated = statedPands();
+  // The photo colour reader (round 4; scripts/centrum-looks/photo-reads.ts): as the belt's finish reader (lane D round 9),
+  // a confident read states the finish where the register is silent; its family goes to the wall draw (drawWalls).
+  const registerFinish = new Map<string, string>([...stated].flatMap(([k, v]) => (v.finish ? [[k, v.finish] as [string, string]] : [])));
+  const photo = process.argv.includes('--no-photo') ? new Map<string, PhotoRead>() : loadPhotoReads(id, arg('photo-reads'));
+  for (const [pid, r] of photo) {
+    const cur = stated.get(pid) ?? {}, fin = cur.finish ? undefined : photoFinish(r.finish === 'unclear' ? undefined : r as never);
+    if (fin) stated.set(pid, { ...cur, finish: fin });
+  }
   // Later periods stay with today and the buurt generator: a pand built after maxYear (BAG; an earlier register facade
   // year keeps it) breaks rows like a described pand.
   const laterPeriod = new Set<string>(), modern: Record<string, string> = {};
@@ -169,8 +195,8 @@ async function main() {
     const cfg = measure ? { ...look.wallDraw, before1860: ev.weights.before1860, from1860: ev.weights.from1860 } : look.wallDraw;
     const sf = new Map<string, JudgedFamily>();
     for (const [pid, st] of streetOf) { const f = ev.streets.get(st); if (f) sf.set(pid, f); }
-    walls = drawWalls(records, res.provenance, reads, donors, stated, cfg, years, sf);
-    wallWeights = { measure, prior: pId ?? 'own', reads: ev.reads, measured: ev.weights, drawn: { before1860: cfg.before1860, from1860: cfg.from1860 }, streets: Object.fromEntries([...ev.streets].sort()) };
+    walls = drawWalls(records, res.provenance, reads, donors, stated, cfg, years, sf, photo, registerFinish);
+    wallWeights = { photoReads: photo.size, measure, prior: pId ?? 'own', reads: ev.reads, measured: ev.weights, drawn: { before1860: cfg.before1860, from1860: cfg.from1860 }, streets: Object.fromEntries([...ev.streets].sort()) };
   }
   fs.mkdirSync(out, { recursive: true });
   fs.writeFileSync(path.join(out, 'row-front.json'), JSON.stringify({ version: 1, district: id, generatedAt: at, records }));

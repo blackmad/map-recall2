@@ -42,6 +42,20 @@ test("a run's own samples decide its family; the street's reads come next, paint
   assert.ok(isBrickFamily(st[2]!.family), 'its own read saw brick');
 });
 
+test("round 4: a front's photo read stands (paint and stucco included); a run's agreeing reads reach its unread fronts", () => {
+  const ids = WESTERKADE.slice(0, 4);
+  const out = drawRowWalls([
+    { pandId: ids[0], year: 1700, free: true, photo: 'painted-white' as const },
+    { pandId: ids[1], year: 1700, free: true, photo: 'painted-white' as const, photoStucco: true },
+    { pandId: ids[2], year: 1700, free: true },
+    { pandId: ids[3], year: 1700, free: false, photo: 'cream-render' as const },
+  ], cfg);
+  assert.equal(out[0]!.by, 'photo'); assert.equal(out[0]!.material, 'painted-brick');
+  assert.equal(out[1]!.material, 'stucco');
+  assert.equal(out[2]!.family, 'painted-white'); assert.equal(out[2]!.by, 'run-photo');
+  assert.equal(out[3]!.family, 'cream-render', 'a read front is drawn even where the look called it plaster');
+});
+
 test('measured weights: the reads lead, the prior fills, paint is counted out', () => {
   const ev = [...Array(6)].map(() => ({ year: 1700, family: 'dark-grey-brick' as const })).concat([{ year: 1700, family: 'painted-white' as never }]);
   const w = measuredWeights(ev, { before1860: { 'red-brown-brick': 1 }, from1860: { 'brown-brick': 1 } }, 2);
