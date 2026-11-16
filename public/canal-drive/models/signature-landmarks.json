@@ -105922,8 +105922,8 @@
         "depthMetres": 191.8248519897461,
         "depthCoverage": 1.0363309129645926
       },
-      "triangles": 11867,
-      "bytes": 122092,
+      "triangles": 11833,
+      "bytes": 121688,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "sportplaza-mercator": {
@@ -106456,7 +106456,7 @@
         "depthCoverage": 1.028244362114379
       },
       "triangles": 5837,
-      "bytes": 81188,
+      "bytes": 81184,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "flevoparkbad": {
@@ -106591,7 +106591,7 @@
         "depthCoverage": 0.8863324962561918
       },
       "triangles": 1097,
-      "bytes": 22672,
+      "bytes": 22696,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "brediusbad": {
@@ -108302,7 +108302,7 @@
         "depthCoverage": 1.060372272217559
       },
       "triangles": 9233,
-      "bytes": 103116,
+      "bytes": 103164,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "sloterparkbad": {
@@ -108714,8 +108714,8 @@
         "depthMetres": 151.9465103149414,
         "depthCoverage": 0.9996480941772461
       },
-      "triangles": 9138,
-      "bytes": 130264,
+      "triangles": 9126,
+      "bytes": 130160,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "zwembad-bijlmer": {
@@ -108939,8 +108939,8 @@
         "depthMetres": 101.52698516845703,
         "depthCoverage": 1.0002658637286408
       },
-      "triangles": 13767,
-      "bytes": 185332,
+      "triangles": 13765,
+      "bytes": 185340,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "victoriabad": {
@@ -109257,7 +109257,7 @@
         "depthCoverage": 1.0157582433778483
       },
       "triangles": 2045,
-      "bytes": 32388,
+      "bytes": 32412,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

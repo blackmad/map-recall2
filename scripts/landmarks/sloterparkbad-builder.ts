@@ -1,6 +1,6 @@
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
-import {eaveOffset, getSink, ledgeStrip, letters, ringFrame, roofHeightAt, setSink, slab, type Frame} from './nearbar-kit';
+import {eaveOffset, getSink, letters, ringFrame, roofHeightAt, setSink, slab, type Frame} from './nearbar-kit';
 import {basin, inRing, offsetRing, solarField} from './pool-kit';
 import source from './sloterparkbad-footprints.json';
 
@@ -42,11 +42,15 @@ export function buildSloterparkbad(_w: number, _d: number, b: BuildingTools) {
   for (const i of CHAIN) {
     const {f, len} = fr(i);
     if (len >= 1.5) groundGlass(b, f, len);
-    if (len >= 5) {
+    // edge 65 (the north-east end block, 4 m proud of the front) has no squares: its frame sits on the BAG line, 1-2.4 m off the
+    // 3DBAG wall, so they hung in the air (audit detached parts at 5.2 and 8.6 m, blind review 2026-11-15)
+    if (len >= 5 && i !== 65) {
       const n = Math.floor((len - 1) / 3.3);
       for (let k = 0; k < n; k++) { const t = (len - (n - 1) * 3.3) / 2 + k * 3.3; for (const y of [5.2, 8.6]) square(b, f, t, y); }
     }
-    if (len >= 0.4) walkway(b, f, len, [deckAt(s0), deckAt(s0 + len)]);
+    // no walkway piece in front of the north-east end block (edge 65, 4 m proud of the front): it stood 4 m further out than the
+    // deck along edge 67, cut off from it by 1.4 m (audit far-outside, 387 vertices); the ramp heights still count its length
+    if (len >= 0.4 && i !== 65) walkway(b, f, len, [deckAt(s0), deckAt(s0 + len)]);
     s0 += len;
   }
   {
@@ -58,7 +62,9 @@ export function buildSloterparkbad(_w: number, _d: number, b: BuildingTools) {
   // ---- the zinc wing: courses, BASIC FIT bands (w02-309 edge 6, w09-309 edges 0 and 2), strip windows (w12-219 edge 8) ----
   for (const i of [6, 0, 2]) {
     const {f, len} = fr(i);
-    for (let y = 0.6; y < 7; y += 0.75) ledgeStrip(b, f, len / 2, y, len - 0.2, 0.06, 0.06, 'greyBrick');
+    // closed courses: the front-and-top ledgeStrip left open boundary loops the length of each wall (audit holes, 7 loops up to
+    // 59.7 m, 2026-11-16)
+    for (let y = 0.6; y < 7; y += 0.75) slab(b, f, len / 2, y, len - 0.2, 0.06, 0.06, 'greyBrick');
     for (const y of [1.0, 6.2]) orangeBand(b, f, len, y, i === 6);
   }
   {

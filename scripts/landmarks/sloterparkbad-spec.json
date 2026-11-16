@@ -27,5 +27,40 @@
   "licence": "CC BY 4.0",
   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the red-brick north-west front with its rows of square windows, glazed ground floor, ramped walkway with perforated balustrades and steel stair; the zinc west wing with its orange BASIC FIT bands; the solar field on the wing roof; the outdoor basin with its lanes and deck. Basin outline from OpenStreetMap (ODbL) checked on the PDOK luchtfoto (CC BY 4.0); fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
- }
+ },
+ "detachedStructures": [
+  {
+   "box": [
+    -28,
+    52,
+    14,
+    92
+   ],
+   "evidence": "the outdoor basin with its six lanes on a 4 m deck, south of the hall on the Sloterplas side (OSM a488807746, PDOK luchtfoto 2025)"
+  }
+ ],
+ "throughPassages": [
+  {
+   "axisBearing": 128.5,
+   "corridor": [
+    [
+     40.8,
+     -76.99
+    ],
+    [
+     -17.64,
+     -3.55
+    ],
+    [
+     -22.73,
+     -7.6
+    ],
+    [
+     35.71,
+     -81.04
+    ]
+   ],
+   "evidence": "the open strip under and behind the raised walkway along the north-west front (edges 67-78): the deck stands on posts 3.2-5.6 m off the wall, open to the sky between deck and wall (panorama TMX7316010203-002508_pano_0004_000065; PDOK luchtfoto: deck about 1.5 m wide, 5-6 m off the roof edge). Street-height rays under the deck meet the ground glazing 4.6-4.8 m beyond their target (ray probe 2026-11-16); no 3DBAG wall is missing there."
+  }
+ ]
 }
