@@ -84,6 +84,20 @@ export interface Thresholds {
    * `box` ([minX, minZ, maxX, maxZ], model-local metres). Nothing is inferred; undeclared detached geometry still fails.
    */
   detachedStructures: DetachedStructure[];
+  /**
+   * Declared, evidenced decks standing off a wall (a raised walkway on posts, open to the sky between deck and wall). A missed
+   * see-through ray is exempt ONLY when its target lies inside the declared strip (the wall line `span` pushed `reach` metres out,
+   * against the ray), its direction is within 15 deg of `bearing` (the inward ray, degrees clockwise from -z), AND it meets a
+   * surface within `reach` + 1 m of its target: the wall behind the deck must be there. A gap through the building still fails.
+   */
+  standoffDecks: StandoffDeck[];
+}
+
+export interface StandoffDeck {
+  bearing: number;
+  span: [[number, number], [number, number]];
+  reach: number;
+  evidence?: string;
 }
 
 export interface DetachedStructure {
@@ -95,6 +109,13 @@ export interface ThroughPassage {
   axisBearing: number;
   corridor: [number, number][];
   evidence?: string;
+}
+
+/** A standoff deck's strip: the wall line, 0.5 m inside it, to `reach` metres out against the inward ray (`bearing`). */
+export function standoffStrip(sd: StandoffDeck): [number, number][] {
+  const r = (sd.bearing * Math.PI) / 180, ox = -Math.sin(r), oz = Math.cos(r); // outward = against the ray (dx, dz) = (sin, -cos)
+  const [[ax, az], [bx, bz]] = sd.span, at = (x: number, z: number, d: number): [number, number] => [x + ox * d, z + oz * d];
+  return [at(ax, az, -0.5), at(bx, bz, -0.5), at(bx, bz, sd.reach), at(ax, az, sd.reach)];
 }
 
 function inPolygon(x: number, z: number, poly: [number, number][]): boolean {
@@ -144,6 +165,7 @@ export const DEFAULT_THRESHOLDS: Thresholds = {
   blankWallExemptBearings: [],
   throughPassages: [],
   detachedStructures: [],
+  standoffDecks: [],
 };
 
 export interface DetachedPart {
@@ -1031,6 +1053,11 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
             const rayBearing = (Math.atan2(dx, -dz) * 180) / Math.PI;
             if (th.throughPassages.some(p => inPolygon(target[0], target[2], p.corridor)
               && Math.min(bearingDelta(p.axisBearing, rayBearing), bearingDelta(p.axisBearing + 180, rayBearing)) <= 15)) hit = 1;
+          }
+          if (hit < 0 && th.standoffDecks.length) {
+            const rayBearing = (Math.atan2(dx, -dz) * 180) / Math.PI;
+            if (th.standoffDecks.some(sd => bearingDelta(sd.bearing, rayBearing) <= 15 && inPolygon(target[0], target[2], standoffStrip(sd))
+              && firstHit(target, [dx, 0, dz], sd.reach + 1) > 0)) hit = 1;
           }
           if (hit < 0) {
             seeThrough.rays++;

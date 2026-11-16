@@ -22,7 +22,9 @@ const BRICK_EDGES = [0, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15, 28, 31];
 export function buildZwembadBijlmer(_w: number, _d: number, b: BuildingTools) {
   const src = source as unknown as Src;
   const ring = src.nativeRing;
-  addShell(b, src as never, {wall: 'greyBrick', roof: 'slate'});
+  // 3DBAG wall 69 is a 0.26 m jog 3 cm proud of the west curtain's wall line: the curtain glass stood 2 cm in front of it
+  // (audit zfight-tight 1.3 m2). The glass covers it, so the jog is cut, not the glass moved.
+  addShell(b, src as never, {wall: 'greyBrick', roof: 'slate', skip: (_s, i) => i === 69});
   const roofs = src.surfaces.filter(s => s.type === 'RoofSurface');
   const fr = (i: number) => ringFrame(ring, i, Math.max(-0.5, Math.min(1.0, eaveOffset(ring, roofs, i))));
   /** Lowest roof over the edge, sampled 0.8 m inside it: where a full-height front must stop. */

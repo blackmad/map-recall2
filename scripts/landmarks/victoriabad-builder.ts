@@ -4,15 +4,15 @@ import {eaveOffset, getSink, letters, ringFrame, setSink, slab, type Frame} from
 import source from './victoriabad-footprints.json';
 
 /**
- * VICTORIABAD, Weesp (BAG pand 0457100000062818, bouwjaar 2005): the indoor bath of Weesp, a dark brown brick hall with a
+ * VICTORIABAD, Weesp (BAG pand 0457100000062818, bouwjaar 2005): the indoor bath of Weesp, a grey-buff brick hall with a
  * gently curved roof line and a cubic two-storey entrance block, set among trees. Sources: BAG ring + 3DBAG LoD2.2 shell
  * (CC0 / CC BY 4.0) via pool-site-prepare.ts; Gemeente Amsterdam panoramas (CC BY 4.0) for the south and east fronts
  * (victoriabad-brief.md). Per item in victoriabad-inventory.json.
- *  - South front of the hall (w01-184, ring edge 32): dark brick under the curved roof line, a strip of windows high on its
+ *  - South front of the hall (w01-184, ring edge 32): grey-buff brick under the curved roof line, a strip of windows high on its
  *    east half and a full-height glass slot at its west end.
  *  - The entrance block (w16-197 edge 34, w14-108 edge 35): the dark-framed low glass box at the ground and the entrance on
  *    the east. The cube's upper window band is not drawn: its wall is set back from the BAG ring (an inner 3DBAG wall).
- *  - East front (w03-84 edge 1): dark brick with a row of windows; VICTORIABAD in white letters on the low brick garden wall
+ *  - East front (w03-84 edge 1): grey-buff brick with a row of windows; VICTORIABAD in white letters on the low brick garden wall
  *    in front of it.
  */
 type Src = {nativeRing: number[][]; surfaces: Surface[]};

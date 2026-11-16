@@ -108397,6 +108397,7 @@
         "gold": "#f0c22c",
         "red": "#b8322e"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "De Mirandabad, De Mirandalaan 9: subtropical bath of 1979 with outdoor basins",
         "author": "Map Recall",
@@ -108668,6 +108669,8 @@
           ]
         ]
       },
+      "status": "held",
+      "heldReason": "audit:glb 2026-11-16: z-fighting 4.3 m² of greyBrick/sandstone patches on the 1979 fronts (down from 23.8 m²); two fixes failed and were reverted. Blind views preferred after.",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -108697,8 +108700,8 @@
         "depthMetres": 191.8248519897461,
         "depthCoverage": 1.0363309129645926
       },
-      "triangles": 11867,
-      "bytes": 122092,
+      "triangles": 11833,
+      "bytes": 121688,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "held": true
     },
@@ -108747,6 +108750,7 @@
         "concrete": "#cdc8bc",
         "sandstone": "#25689a"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Sportplaza Mercator, Jan van Galenstraat: planted sports bath of 2006 with the outdoor pool of the Jan van Galenbad",
         "author": "Map Recall",
@@ -109202,6 +109206,8 @@
           ]
         ]
       },
+      "status": "held",
+      "heldReason": "audit:glb 2026-11-16: see-through 7/136 rays along the glazed front (z~-27.5, x -23..-9). Blind views preferred after; stray KFC/Pong labels come from the label layer.",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -109232,7 +109238,7 @@
         "depthCoverage": 1.028244362114379
       },
       "triangles": 5837,
-      "bytes": 81188,
+      "bytes": 81184,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "held": true
     },
@@ -109291,6 +109297,7 @@
         "copper": "#7cc3e6",
         "frame": "#e8e8e4"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Flevoparkbad, Zeeburgerdijk: outdoor bath of 1967 in the Flevopark",
         "author": "Map Recall",
@@ -109368,14 +109375,8 @@
         "depthCoverage": 0.8863324962561918
       },
       "triangles": 1097,
-      "bytes": 22672,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "lod2": {
-        "sourceHash": "061808599a489c69",
-        "buildVersion": 6,
-        "bytes": 8768,
-        "triangles": 328
-      }
+      "bytes": 22696,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "brediusbad": {
       "id": "brediusbad",
@@ -109641,6 +109642,7 @@
         "blue": "#3cb4e0",
         "dark": "#262d36"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Noorderparkbad, Noorderpark: indoor bath of 2015 with outdoor basins",
         "author": "Map Recall",
@@ -111086,19 +111088,13 @@
         "depthCoverage": 1.060372272217559
       },
       "triangles": 9233,
-      "bytes": 103116,
+      "bytes": 103164,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "1c03eae235b4582a",
         "buildVersion": 2,
         "bytes": 42148,
         "triangles": 2540
-      },
-      "lod2": {
-        "sourceHash": "1c03eae235b4582a",
-        "buildVersion": 6,
-        "bytes": 18448,
-        "triangles": 1472
       }
     },
     "sloterparkbad": {
@@ -111146,6 +111142,7 @@
         "blue": "#3cb4e0",
         "sandstone": "#bfc3c1"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Sloterparkbad, President Allendelaan 3: swimming and sports centre of 2001 on the Sloterplas",
         "author": "Map Recall",
@@ -111481,6 +111478,8 @@
           ]
         ]
       },
+      "status": "held",
+      "heldReason": "audit:glb 2026-11-16: holes (7 open loops, largest 59.7 m at y~2.1 along x -80..-43) and see-through 40/333 rays along the 309° wing; gaps in the 3DBAG shell under the walkway and ground glass; two small boxes float at the NW front. Blind views all preferred after.",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -111510,8 +111509,8 @@
         "depthMetres": 151.9465103149414,
         "depthCoverage": 0.9996480941772461
       },
-      "triangles": 9138,
-      "bytes": 130264,
+      "triangles": 9126,
+      "bytes": 130160,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "held": true
     },
@@ -111560,6 +111559,7 @@
         "red": "#c8323a",
         "dark": "#4d5256"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Zwembad Bijlmer, Bijlmer Sportcentrum: sports and swimming hall of 2008",
         "author": "Map Recall",
@@ -111707,6 +111707,8 @@
           ]
         ]
       },
+      "status": "held",
+      "heldReason": "audit:glb 2026-11-16: geometry-regression, 1.4 m² coplanar faces against 0.5 allowed (glass vs greyBrick 2 cm apart on the west face near (-24.25, 38.6)). Blind views preferred after.",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -111736,8 +111738,8 @@
         "depthMetres": 101.52698516845703,
         "depthCoverage": 1.0002658637286408
       },
-      "triangles": 13767,
-      "bytes": 185332,
+      "triangles": 13765,
+      "bytes": 185340,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "held": true
     },
@@ -111775,20 +111777,21 @@
       },
       "bagYear": 2005,
       "materialOverrides": {
-        "brick": "#5f4b41",
+        "brick": "#887769",
         "slate": "#45474a",
         "glass": "#33414a",
         "frame": "#2e3134",
         "dark": "#2a2c2e",
         "white": "#f2f2ee"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Victoriabad, Weesp: indoor bath of 2005",
         "author": "Map Recall",
         "sourceUrl": "https://www.openstreetmap.org/node/1618233446",
         "licence": "CC BY 4.0",
         "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the dark brick hall with its high window strip and glass slot, the entrance block's window band and projecting glass box, the east front's windows and the VICTORIABAD garden wall. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the grey-buff brick hall with its high window strip and glass slot, the entrance block's window band and projecting glass box, the east front's windows and the VICTORIABAD garden wall. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
       },
       "buildingFootprint": {
         "type": "Polygon",
@@ -112055,14 +112058,8 @@
         "depthCoverage": 1.0157582433778483
       },
       "triangles": 2045,
-      "bytes": 32388,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "lod2": {
-        "sourceHash": "7b02ebe0caa11377",
-        "buildVersion": 6,
-        "bytes": 5336,
-        "triangles": 144
-      }
+      "bytes": 32408,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
