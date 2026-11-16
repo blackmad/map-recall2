@@ -6191,5 +6191,41 @@
    "bytes": 10420,
    "triangles": 271
   }
+ },
+ "wilhelminatoren": {
+  "sourceHash": "230038717fe89c74",
+  "buildVersion": 2,
+  "bytes": 59824,
+  "triangles": 2338,
+  "lod2": {
+   "sourceHash": "230038717fe89c74",
+   "buildVersion": 6,
+   "bytes": 8780,
+   "triangles": 215
+  }
+ },
+ "oba-staatsliedenbuurt": {
+  "sourceHash": "a9cc2695f835efd1",
+  "buildVersion": 2,
+  "bytes": 61716,
+  "triangles": 2580,
+  "lod2": {
+   "sourceHash": "a9cc2695f835efd1",
+   "buildVersion": 6,
+   "bytes": 13400,
+   "triangles": 402
+  }
+ },
+ "room-mate-aitana": {
+  "sourceHash": "85c49037beb44f38",
+  "buildVersion": 2,
+  "bytes": 32360,
+  "triangles": 1372,
+  "lod2": {
+   "sourceHash": "85c49037beb44f38",
+   "buildVersion": 6,
+   "bytes": 6408,
+   "triangles": 160
+  }
  }
 }

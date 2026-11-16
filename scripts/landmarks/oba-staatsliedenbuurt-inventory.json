@@ -1,0 +1,374 @@
+{
+ "schemaVersion": 1,
+ "id": "oba-staatsliedenbuurt",
+ "pand": "0363100012069991",
+ "brief": "scripts/landmarks/oba-staatsliedenbuurt-brief.md",
+ "signature": [
+  "bay-towers",
+  "plinth-stripes",
+  "stepped-corbels",
+  "canal-bands",
+  "passage-truss"
+ ],
+ "walls": [
+  {
+   "tag": "w01-210",
+   "bearing": 210,
+   "lengthM": 29.4,
+   "centre": [
+    4.8722945,
+    52.3793415
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-11_10-02-32_00048",
+   "capturedAt": "2024-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "bay-towers",
+     "kind": "other",
+     "where": "three octagonal bay towers over the plinth, cream brick with dark bands, three storeys",
+     "approxSizeM": [
+      4.5,
+      10.5
+     ],
+     "plan": "modelled",
+     "how": "front face and 45-degree cheeks, dark bands per storey, white windows, concrete cap and rail",
+     "seenIn": "recording_2024-09-11_10-02-32_00048"
+    },
+    {
+     "id": "stepped-corbels",
+     "kind": "other",
+     "where": "stepped brick/cream corbels under each side of every bay tower",
+     "approxSizeM": [
+      1.6,
+      3.8
+     ],
+     "plan": "modelled",
+     "how": "four stepped blocks under each cheek, alternating dark and cream",
+     "seenIn": "recording_2024-09-11_10-02-32_00048"
+    },
+    {
+     "id": "plinth-stripes",
+     "kind": "other",
+     "where": "alternating dark and cream brick bands, about 1 m each, over the two-storey plinth",
+     "approxSizeM": [
+      29.4,
+      7.3
+     ],
+     "plan": "modelled",
+     "how": "cream bands 1.15-2.15, 3.35-4.35, 5.5-6.5 m on the dark shell",
+     "seenIn": "recording_2024-09-11_10-02-32_00048"
+    },
+    {
+     "id": "balcony-bays",
+     "kind": "balcony-ironwork",
+     "where": "open balcony bays between the towers: concrete slabs and posts, white rails, glass doors",
+     "approxSizeM": [
+      5.8,
+      9.3
+     ],
+     "plan": "modelled",
+     "how": "shade back plane, dark doors, concrete slab edges, white rails",
+     "seenIn": "recording_2024-09-11_10-02-32_00048"
+    },
+    {
+     "id": "plinth-windows",
+     "kind": "window-shape",
+     "where": "two-storey windows with a transom, dark frames, and the entrance",
+     "approxSizeM": [
+      1.6,
+      5.2
+     ],
+     "plan": "modelled",
+     "how": "win() with transom",
+     "seenIn": "recording_2024-09-11_10-02-32_00048"
+    },
+    {
+     "id": "top-storey-dormer",
+     "kind": "other",
+     "where": "glazed set-back top storey with a hipped roof over the right-hand tower",
+     "approxSizeM": [
+      4,
+      3.5
+     ],
+     "plan": "simplified",
+     "how": "the tower cap and rail; the extra storey reads from the 3DBAG shell",
+     "seenIn": "recording_2024-09-11_10-02-32_00048"
+    },
+    {
+     "id": "shop-signs",
+     "kind": "sign",
+     "where": "small shop lettering in the plinth windows (SPORTCITY, Circuit)",
+     "approxSizeM": [
+      1,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-11_10-02-32_00048",
+     "skip": {
+      "reason": "too-small",
+      "note": "vinyl lettering inside the glazing"
+     }
+    },
+    {
+     "id": "top-balconies",
+     "kind": "balcony-ironwork",
+     "where": "a fourth row of balconies with concrete posts and rails above the bay towers, in front of the set-back top storey",
+     "approxSizeM": [
+      29.4,
+      3.0
+     ],
+     "plan": "simplified",
+     "how": "the 3DBAG shell's set-back storey drawn pale (ochre slot, #c9c7bf); the balcony frame is not drawn",
+     "seenIn": "recording_2024-09-11_10-02-32_00048"
+    }
+   ]
+  },
+  {
+   "tag": "w02-121",
+   "bearing": 121,
+   "lengthM": 24.9,
+   "centre": [
+    4.872948,
+    52.379431
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000198_pano_0000_000631",
+   "capturedAt": "2017-03-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "canal-bands",
+     "kind": "other",
+     "where": "dark brick with thin cream bands about every metre between the windows",
+     "approxSizeM": [
+      19,
+      8
+     ],
+     "plan": "modelled",
+     "how": "0.2 m cream bands every 1.0 m from 7.6 m",
+     "seenIn": "TMX7316010203-000198_pano_0000_000631"
+    },
+    {
+     "id": "cream-top-storey",
+     "kind": "other",
+     "where": "cream top storey 15.9-19 m with white windows",
+     "approxSizeM": [
+      19,
+      3.1
+     ],
+     "plan": "modelled",
+     "how": "cream slab and windows",
+     "seenIn": "TMX7316010203-000198_pano_0000_000631"
+    },
+    {
+     "id": "loggia-bay",
+     "kind": "balcony-ironwork",
+     "where": "recessed loggia bay with concrete frame and balustrade panels",
+     "approxSizeM": [
+      6,
+      12
+     ],
+     "plan": "modelled",
+     "how": "concrete posts and slabs, dark recess, balustrade panels",
+     "seenIn": "TMX7316010203-000198_pano_0000_000631"
+    },
+    {
+     "id": "pavilion-arched",
+     "kind": "window-shape",
+     "where": "brick pavilion on the right with cream quoins and round-headed windows",
+     "approxSizeM": [
+      5.8,
+      17
+     ],
+     "plan": "simplified",
+     "how": "square-headed windows with a cream head band; quoin blocks every storey",
+     "seenIn": "TMX7316010203-000198_pano_0000_000631"
+    },
+    {
+     "id": "ground-surrounds",
+     "kind": "window-shape",
+     "where": "paired ground-floor windows in cream surrounds",
+     "approxSizeM": [
+      3.7,
+      5.3
+     ],
+     "plan": "modelled",
+     "how": "cream panel and two dark windows with transom",
+     "seenIn": "TMX7316010203-000198_pano_0000_000631"
+    }
+   ]
+  },
+  {
+   "tag": "w03-97",
+   "bearing": 97,
+   "lengthM": 18.7,
+   "centre": [
+    4.873057,
+    52.3796105
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000198_pano_0000_000628",
+   "capturedAt": "2017-03-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "canal-bands-e",
+     "kind": "other",
+     "where": "the canal system continued: dark brick, cream bands, window grid",
+     "approxSizeM": [
+      18.7,
+      16
+     ],
+     "plan": "modelled",
+     "how": "as w02",
+     "seenIn": "TMX7316010203-000198_pano_0000_000628"
+    }
+   ]
+  },
+  {
+   "tag": "w04-211",
+   "bearing": 211,
+   "lengthM": 9.2,
+   "centre": [
+    4.8725935,
+    52.379225
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000473_pano_0000_002158",
+   "capturedAt": "2019-11-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "passage-truss",
+     "kind": "other",
+     "where": "the passage under the block spanned by a steel truss, balconies above",
+     "approxSizeM": [
+      9.2,
+      7.3
+     ],
+     "plan": "modelled",
+     "how": "dark opening, chords and diagonals in grey steel, dark blue-grey brick piers with a cream band",
+     "seenIn": "TMX7316060226-000473_pano_0000_002158"
+    },
+    {
+     "id": "passage-balconies",
+     "kind": "balcony-ironwork",
+     "where": "three storeys of balconies with white rails over the passage",
+     "approxSizeM": [
+      9.2,
+      9.3
+     ],
+     "plan": "modelled",
+     "how": "concrete slabs and posts, white rails",
+     "seenIn": "TMX7316060226-000473_pano_0000_002158"
+    }
+   ]
+  },
+  {
+   "tag": "w05-121",
+   "bearing": 121,
+   "lengthM": 9.1,
+   "centre": [
+    4.872797,
+    52.379258
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000198_pano_0000_000633",
+   "capturedAt": "2017-03-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "passage-truss-canal",
+     "kind": "other",
+     "where": "the canal end of the passage with the same truss",
+     "approxSizeM": [
+      9.1,
+      7.3
+     ],
+     "plan": "modelled",
+     "how": "as w04",
+     "seenIn": "TMX7316010203-000198_pano_0000_000633"
+    }
+   ]
+  },
+  {
+   "tag": "w06-211",
+   "bearing": 211,
+   "lengthM": 4.8,
+   "centre": [
+    4.8725105,
+    52.379262
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-11_10-02-32_00539",
+   "capturedAt": "2024-09-11",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-210",
+   "bearing": 210,
+   "lengthM": 4.8,
+   "centre": [
+    4.8726885,
+    52.3791995
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002369_pano_0007_000292",
+   "capturedAt": "2021-12-30",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-120",
+   "bearing": 120,
+   "lengthM": 4.8,
+   "centre": [
+    4.8727365,
+    52.3792075
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001953_pano_0000_001076",
+   "capturedAt": "2021-01-14",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w09-120",
+   "bearing": 120,
+   "lengthM": 4.8,
+   "centre": [
+    4.8728395,
+    52.3793155
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000362_pano_0000_000073",
+   "capturedAt": "2017-07-10",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-231",
+   "bearing": 231,
+   "lengthM": 4,
+   "centre": [
+    4.8720045,
+    52.37946
+   ],
+   "evidence": "photo",
+   "panoId": "2025_10_02_06_52_49_00989",
+   "capturedAt": "2025-10-02",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -108322,6 +108322,974 @@
       "bytes": 297164,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "held": true
+    },
+    "wilhelminatoren": {
+      "id": "wilhelminatoren",
+      "name": "Wilhelminatoren",
+      "modelUrl": "./models/wilhelminatoren.glb",
+      "suppressOsmIds": [
+        "w145629045"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87205212,
+          52.36420704
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 22.4,
+        "widthMetres": 21.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.87205212,
+          52.36420704
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the OSM part w145629045 ring (building tiles, RD) of BAG pand 0363100012072252 (PDOK BAG WFS, CC0) in native east/south metres (scripts/landmarks/wilhelminatoren-footprints.json, written by bag-extrude-prepare.ts: the 3DBAG serves no shell for this pand). The ring is extruded to 41.6 m, read off the rectified Gemeente Amsterdam panorama TMX7316010203-002550_pano_0000_003503 (2022, CC BY 4.0); the north face from TMX7316010203-002060_pano_0000_003801 (2021). Per wall in scripts/landmarks/wilhelminatoren-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 42.5,
+      "galleryView": {
+        "theta": 1.2,
+        "phi": 1.15
+      },
+      "bagYear": 2001,
+      "materialOverrides": {
+        "brick": "#9e8576",
+        "greyBrick": "#6a5454",
+        "white": "#e8e8e6",
+        "glass": "#3a4046",
+        "canopyGlass": "#aeb6ba",
+        "bronze": "#5a636b",
+        "concrete": "#c9c5bd",
+        "slate": "#5a5e60",
+        "dark": "#2a3a5a"
+      },
+      "attribution": {
+        "title": "Wilhelminatoren (2001), apartment tower on the former Wilhelmina Gasthuis site, Amsterdam-West",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002550_pano_0000_003503/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the OSM building-part outline (ODbL) of BAG pand 0363100012072252 (CC0), extruded to the height read from Gemeente Amsterdam panoramas (CC BY 4.0): the convex brick front with its window rows and dark brick panels, the glazed loggias, the WILHELMINA TOREN canopy and the glazed steel escape stair. No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8718912,
+              52.3642764
+            ],
+            [
+              4.872002,
+              52.3641266
+            ],
+            [
+              4.8720576,
+              52.3641312
+            ],
+            [
+              4.8722115,
+              52.3641723
+            ],
+            [
+              4.8720983,
+              52.3643287
+            ],
+            [
+              4.8718912,
+              52.3642764
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -10.979108810424805,
+          -3.814697322468419e-7,
+          -14.749410629272461
+        ],
+        "max": [
+          10.930227279663086,
+          42.5,
+          9.005352973937988
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87205212,
+          52.36420704
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 23.75476360321045,
+        "heightMetres": 42.50000038146973,
+        "depthMetres": 21.90933609008789,
+        "depthCoverage": 1.0096468244280135
+      },
+      "triangles": 12709,
+      "bytes": 195364,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "230038717fe89c74",
+        "buildVersion": 2,
+        "bytes": 59824,
+        "triangles": 2338
+      },
+      "lod2": {
+        "sourceHash": "230038717fe89c74",
+        "buildVersion": 6,
+        "bytes": 8780,
+        "triangles": 215
+      }
+    },
+    "oba-staatsliedenbuurt": {
+      "id": "oba-staatsliedenbuurt",
+      "name": "OBA Staatsliedenbuurt block",
+      "modelUrl": "./models/oba-staatsliedenbuurt.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012069991"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87224989,
+          52.37959761
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 80.1,
+        "widthMetres": 81.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.87224989,
+          52.37959761
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012069991 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/oba-staatsliedenbuurt-footprints.json, bag-shell-prepare.ts); facades read from rectified Gemeente Amsterdam panoramas recording_2024-09-11_10-02-32_00048 (2024) and TMX7316010203-000198_pano_0000_000631 (2017), CC BY 4.0. Per wall in scripts/landmarks/oba-staatsliedenbuurt-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 24.7,
+      "galleryView": {
+        "theta": 0.9,
+        "phi": 1.2
+      },
+      "bagYear": 2005,
+      "materialOverrides": {
+        "brick": "#5e504b",
+        "greyBrick": "#454a54",
+        "white": "#e6e6e2",
+        "glass": "#3a4046",
+        "dark": "#2e3236",
+        "concrete": "#bdbcb5",
+        "slate": "#6a6c6c",
+        "stone": "#b3ada0",
+        "pink": "#3c3a37",
+        "frame": "#7d8288",
+        "blue": "#454a54",
+        "ochre": "#c9c7bf"
+      },
+      "attribution": {
+        "title": "Apartment block over the OBA Staatsliedenbuurt (2005), Van Hallstraat, Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000198_pano_0000_000631/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012069991 (CC0): the striped plinth, the three bay towers on stepped corbels, the balcony bays, the banded canal fronts and the trussed passage, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8728442,
+              52.3793217
+            ],
+            [
+              4.872854,
+              52.3793321
+            ],
+            [
+              4.8728517,
+              52.3793328
+            ],
+            [
+              4.873039,
+              52.3795245
+            ],
+            [
+              4.8730645,
+              52.3796632
+            ],
+            [
+              4.8730686,
+              52.3796868
+            ],
+            [
+              4.8730696,
+              52.3796914
+            ],
+            [
+              4.8730662,
+              52.3796918
+            ],
+            [
+              4.8730663,
+              52.3796922
+            ],
+            [
+              4.8728603,
+              52.379706
+            ],
+            [
+              4.8728647,
+              52.379731
+            ],
+            [
+              4.872863,
+              52.3797311
+            ],
+            [
+              4.8728795,
+              52.379821
+            ],
+            [
+              4.8728813,
+              52.3798209
+            ],
+            [
+              4.8728891,
+              52.379866
+            ],
+            [
+              4.8728742,
+              52.3798707
+            ],
+            [
+              4.8729047,
+              52.3799012
+            ],
+            [
+              4.8728898,
+              52.379907
+            ],
+            [
+              4.8728588,
+              52.3798768
+            ],
+            [
+              4.8728451,
+              52.3798828
+            ],
+            [
+              4.8727821,
+              52.3798588
+            ],
+            [
+              4.8727831,
+              52.3798579
+            ],
+            [
+              4.8726769,
+              52.3798177
+            ],
+            [
+              4.8726761,
+              52.3798185
+            ],
+            [
+              4.8725658,
+              52.3797764
+            ],
+            [
+              4.8724473,
+              52.3797932
+            ],
+            [
+              4.8724411,
+              52.3797767
+            ],
+            [
+              4.8723642,
+              52.3797876
+            ],
+            [
+              4.8723789,
+              52.3798263
+            ],
+            [
+              4.8722456,
+              52.3798453
+            ],
+            [
+              4.8722326,
+              52.3798399
+            ],
+            [
+              4.8722229,
+              52.3798497
+            ],
+            [
+              4.8722198,
+              52.3798486
+            ],
+            [
+              4.8722136,
+              52.3798545
+            ],
+            [
+              4.8722052,
+              52.3798628
+            ],
+            [
+              4.872202,
+              52.3798661
+            ],
+            [
+              4.8721782,
+              52.3798888
+            ],
+            [
+              4.8721727,
+              52.3798867
+            ],
+            [
+              4.8721396,
+              52.3798874
+            ],
+            [
+              4.872111,
+              52.379881
+            ],
+            [
+              4.872089,
+              52.3798683
+            ],
+            [
+              4.8720754,
+              52.3798515
+            ],
+            [
+              4.8720749,
+              52.3798496
+            ],
+            [
+              4.8719289,
+              52.3797694
+            ],
+            [
+              4.8719299,
+              52.3797607
+            ],
+            [
+              4.8719245,
+              52.3797543
+            ],
+            [
+              4.8719333,
+              52.379749
+            ],
+            [
+              4.871942,
+              52.3797436
+            ],
+            [
+              4.8719505,
+              52.3797382
+            ],
+            [
+              4.8719584,
+              52.3797331
+            ],
+            [
+              4.8719662,
+              52.3797279
+            ],
+            [
+              4.8719738,
+              52.3797226
+            ],
+            [
+              4.8719808,
+              52.3797154
+            ],
+            [
+              4.871987,
+              52.3797079
+            ],
+            [
+              4.8719922,
+              52.3797001
+            ],
+            [
+              4.8719961,
+              52.3796931
+            ],
+            [
+              4.8719992,
+              52.379686
+            ],
+            [
+              4.8720015,
+              52.3796787
+            ],
+            [
+              4.8720017,
+              52.3796782
+            ],
+            [
+              4.8720018,
+              52.3796777
+            ],
+            [
+              4.8720019,
+              52.3796772
+            ],
+            [
+              4.8720021,
+              52.3796766
+            ],
+            [
+              4.8720022,
+              52.3796761
+            ],
+            [
+              4.8720023,
+              52.3796756
+            ],
+            [
+              4.8720026,
+              52.3796741
+            ],
+            [
+              4.8720029,
+              52.3796727
+            ],
+            [
+              4.8720032,
+              52.3796712
+            ],
+            [
+              4.8720032,
+              52.3796708
+            ],
+            [
+              4.8720033,
+              52.3796704
+            ],
+            [
+              4.8720033,
+              52.3796701
+            ],
+            [
+              4.8720034,
+              52.3796693
+            ],
+            [
+              4.8720036,
+              52.3796685
+            ],
+            [
+              4.8720037,
+              52.3796677
+            ],
+            [
+              4.8720037,
+              52.3796669
+            ],
+            [
+              4.8720038,
+              52.3796661
+            ],
+            [
+              4.8720039,
+              52.3796654
+            ],
+            [
+              4.8720039,
+              52.3796647
+            ],
+            [
+              4.872004,
+              52.3796641
+            ],
+            [
+              4.872004,
+              52.3796635
+            ],
+            [
+              4.8720041,
+              52.3796628
+            ],
+            [
+              4.8720041,
+              52.3796622
+            ],
+            [
+              4.8720041,
+              52.3796616
+            ],
+            [
+              4.872004,
+              52.3796548
+            ],
+            [
+              4.8720032,
+              52.3796479
+            ],
+            [
+              4.8720017,
+              52.3796411
+            ],
+            [
+              4.8719986,
+              52.3796317
+            ],
+            [
+              4.8719942,
+              52.3796224
+            ],
+            [
+              4.8719886,
+              52.3796134
+            ],
+            [
+              4.87196,
+              52.379623
+            ],
+            [
+              4.8719158,
+              52.3796191
+            ],
+            [
+              4.8718838,
+              52.3796001
+            ],
+            [
+              4.871876,
+              52.3795735
+            ],
+            [
+              4.8718953,
+              52.3795492
+            ],
+            [
+              4.8719344,
+              52.3795364
+            ],
+            [
+              4.8719373,
+              52.3795308
+            ],
+            [
+              4.8719404,
+              52.3795252
+            ],
+            [
+              4.8719437,
+              52.3795196
+            ],
+            [
+              4.8719472,
+              52.3795141
+            ],
+            [
+              4.8719508,
+              52.3795086
+            ],
+            [
+              4.8719547,
+              52.3795032
+            ],
+            [
+              4.8719634,
+              52.3794926
+            ],
+            [
+              4.8719729,
+              52.3794823
+            ],
+            [
+              4.8719833,
+              52.3794724
+            ],
+            [
+              4.8719948,
+              52.3794625
+            ],
+            [
+              4.8720071,
+              52.3794531
+            ],
+            [
+              4.8720202,
+              52.379444
+            ],
+            [
+              4.8720219,
+              52.3794429
+            ],
+            [
+              4.8720236,
+              52.3794419
+            ],
+            [
+              4.8720252,
+              52.3794408
+            ],
+            [
+              4.8720269,
+              52.3794398
+            ],
+            [
+              4.8720286,
+              52.3794387
+            ],
+            [
+              4.8720304,
+              52.3794377
+            ],
+            [
+              4.8720321,
+              52.3794367
+            ],
+            [
+              4.8720338,
+              52.3794357
+            ],
+            [
+              4.8720356,
+              52.3794347
+            ],
+            [
+              4.8720373,
+              52.3794336
+            ],
+            [
+              4.8720391,
+              52.3794327
+            ],
+            [
+              4.8720409,
+              52.3794317
+            ],
+            [
+              4.8720474,
+              52.3794281
+            ],
+            [
+              4.872054,
+              52.3794247
+            ],
+            [
+              4.8720608,
+              52.3794214
+            ],
+            [
+              4.8720648,
+              52.3794195
+            ],
+            [
+              4.8720689,
+              52.3794176
+            ],
+            [
+              4.872073,
+              52.3794158
+            ],
+            [
+              4.8720804,
+              52.3794126
+            ],
+            [
+              4.872088,
+              52.3794095
+            ],
+            [
+              4.8720958,
+              52.3794065
+            ],
+            [
+              4.8721036,
+              52.3794036
+            ],
+            [
+              4.8721116,
+              52.3794009
+            ],
+            [
+              4.8721197,
+              52.3793982
+            ],
+            [
+              4.872212,
+              52.3793666
+            ],
+            [
+              4.872254,
+              52.3793523
+            ],
+            [
+              4.8724805,
+              52.3792748
+            ],
+            [
+              4.8724777,
+              52.379271
+            ],
+            [
+              4.8724948,
+              52.3792648
+            ],
+            [
+              4.8725243,
+              52.3792542
+            ],
+            [
+              4.8725383,
+              52.3792492
+            ],
+            [
+              4.8725325,
+              52.3792434
+            ],
+            [
+              4.8726496,
+              52.3792017
+            ],
+            [
+              4.8726556,
+              52.3792078
+            ],
+            [
+              4.8727159,
+              52.3791864
+            ],
+            [
+              4.8727277,
+              52.3791989
+            ],
+            [
+              4.872746,
+              52.3792181
+            ],
+            [
+              4.8727514,
+              52.3792238
+            ],
+            [
+              4.8727606,
+              52.3792204
+            ],
+            [
+              4.872828,
+              52.3792912
+            ],
+            [
+              4.8728189,
+              52.3792948
+            ],
+            [
+              4.8728269,
+              52.3793033
+            ],
+            [
+              4.8728442,
+              52.3793217
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -25.474000930786133,
+          -9.536743306171047e-8,
+          -28.058000564575195
+        ],
+        "max": [
+          56.0331916809082,
+          25.197999954223633,
+          45.99365234375
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87224989,
+          52.37959761
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 81.50719261169434,
+        "heightMetres": 25.198000049591066,
+        "depthMetres": 74.0516529083252,
+        "depthCoverage": 0.9097254657042406
+      },
+      "triangles": 13790,
+      "bytes": 213588,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "a9cc2695f835efd1",
+        "buildVersion": 2,
+        "bytes": 61716,
+        "triangles": 2580
+      },
+      "lod2": {
+        "sourceHash": "a9cc2695f835efd1",
+        "buildVersion": 6,
+        "bytes": 13400,
+        "triangles": 402
+      }
+    },
+    "room-mate-aitana": {
+      "id": "room-mate-aitana",
+      "name": "Room Mate Aitana",
+      "modelUrl": "./models/room-mate-aitana.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012239296",
+        "w1088833543"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89413021,
+          52.38468728
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 80.1,
+        "widthMetres": 61.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.89413021,
+          52.38468728
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012239296 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/room-mate-aitana-footprints.json, bag-shell-prepare.ts); the curtain-wall grid read from the rectified Gemeente Amsterdam panorama TMX7316010203-001899_pano_0000_000206 (2020, CC BY 4.0). Per wall in scripts/landmarks/room-mate-aitana-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 44.5,
+      "galleryView": {
+        "theta": 2.2,
+        "phi": 1.2
+      },
+      "bagYear": 2012,
+      "materialOverrides": {
+        "glass": "#7b90a6",
+        "concrete": "#9a9a96",
+        "dark": "#3c4650",
+        "frame": "#43494e",
+        "stone": "#8a8884"
+      },
+      "attribution": {
+        "title": "Room Mate Aitana hotel (2012), IJdok, Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001899_pano_0000_000206/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012239296 (CC0): the glass curtain walls with their transom and mullion grid, the strips of opening lights, the panelled plinth and the sloping wing's coping, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8937737,
+              52.3849739
+            ],
+            [
+              4.8937693,
+              52.3849724
+            ],
+            [
+              4.893825,
+              52.3848535
+            ],
+            [
+              4.8943158,
+              52.3843025
+            ],
+            [
+              4.8946808,
+              52.3842929
+            ],
+            [
+              4.8944312,
+              52.3845166
+            ],
+            [
+              4.894364,
+              52.3845769
+            ],
+            [
+              4.8938818,
+              52.3850096
+            ],
+            [
+              4.8937737,
+              52.3849739
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -24.368642807006836,
+          -9.335097956864047e-7,
+          -35.970001220703125
+        ],
+        "max": [
+          37.12099838256836,
+          43.70800018310547,
+          44.21992111206055
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89413021,
+          52.38468728
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 80.18992233276367,
+        "heightMetres": 43.708001116615264,
+        "depthMetres": 61.489641189575195,
+        "depthCoverage": 0.9998315640581332
+      },
+      "triangles": 8098,
+      "bytes": 123616,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "85c49037beb44f38",
+        "buildVersion": 2,
+        "bytes": 32360,
+        "triangles": 1372
+      },
+      "lod2": {
+        "sourceHash": "85c49037beb44f38",
+        "buildVersion": 6,
+        "bytes": 6408,
+        "triangles": 160
+      }
     }
   }
 }

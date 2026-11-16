@@ -1,5 +1,5 @@
 {
-  "toolchain": "6fd4ee773f4662dba73dc5c596da923db3ff731e2174a1aea825c264526c25dc",
+  "toolchain": "75ede9f4e00787838426c40e5c1a3d7312e6b3cbd06f5b41b8b817bfa8084488",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -328,6 +328,7 @@
     "noorderkerk": "743861a3593754629bcce0fe7ad9070a446f34be3dc57364b68fbb4e80d1f95e",
     "oba-oosterdok": "12270bc16967849c3f89ad42e7d74ecabb8e24a53a1f334543af114f6e92287b",
     "oba-spaarndammerbuurt": "632f5e64b1ee296abe0cb02ec285498589b64aa4c155ff98adf0c1e24f234950",
+    "oba-staatsliedenbuurt": "134c963fd01edaf91ae500ad09bf5e2257bbeece6268481b208a18b4939f9253",
     "obrechtkerk": "ee576772e0f02efc37aed5d162ccf9ceac7e7eadcf73fc5d7ea5e9ae5591c46b",
     "occii": "568a88cecb14aa616e02fff390e2cdab58827ad8c60cdfa13430de7aef78bdec",
     "odeon-singel": "0f672f5bbd734769c18438bc00171ab34ff708c1b54ce437550707a002958882",
@@ -391,6 +392,7 @@
     "roeterseiland-rec-a": "878188326536cc1dcfec6f2dfda9ac2d3f120ec952ca9c876d4e0c3282445188",
     "ronde-lutherse-kerk": "24e664b23d0f4261f82a215873fd0f3cb9e73f4c48a335a2218a3707272b0d1d",
     "roode-bioscoop": "1b4761fdb1657bde1e91b962118fa3fef851332d39d5ddc5637b4b16f3db1b18",
+    "room-mate-aitana": "2b37d4cc33ad16968192e99a6cc778905411ebc365c79d976fb3868ff48363de",
     "royal-theater-carre": "bf3f50a90491073c01fa29b6a49d666e675e3cc928ea5ca1ed3a59018b103e8e",
     "sameplace": "cd7b32f7cb1d48e593381e684bfe7f3a79cf771a4f6def805e552af2a5598bdc",
     "sarphati-plaza": "3b7a1782649b97a353e2aafb7111d7ccf1abb2943b5042a58e557a089f55f062",
@@ -487,6 +489,7 @@
     "westermoskee": "2b2ce23a91faae256d3395be0fe7ae9cd6a6be12ec5439268c4c9f05d95a0de1",
     "weteringschans-corner-office": "0e167291f0fa7c832af712ef539537f5f2c29d0722d0c34cb53d7b1a234eb71c",
     "wilhelmina-ruiterstandbeeld": "4af7ee85e72560c23e24f69296583a6fc8ca47656dac80c762227c90621cd5d2",
+    "wilhelminatoren": "cf30fb9b0efa00baab40551563dc8e412e1b9774551aa67c4822cc91d02c7286",
     "willem-de-zwijgerkerk": "86b51e53c04dc16c7f303ac18e23268f7077cafb0d667bce416447d40235faf3",
     "willem-de-zwijgerlaan-350": "b6f46486222d423ff46d7e56e98cb6c23deec1cc01266313ad03c9798e9a25b1",
     "willet-holthuysen": "a5e69b54311adadec3703d41f96696e1f5b8a4886eb2ce99fbf70b77f63d67d2",

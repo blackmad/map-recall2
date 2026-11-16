@@ -304,6 +304,9 @@ import hospitals from './hospital-footprints.json';
 import {ALL_MANUAL_LANDMARKS as MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
 // Landmark queue lane 5 (2026-10-13)
+import {buildRoomMateAitana} from './room-mate-aitana-builder';
+import {buildObaStaatsliedenbuurt} from './oba-staatsliedenbuurt-builder';
+import {buildWilhelminatoren} from './wilhelminatoren-builder';
 import {buildSlavernijmonument} from './slavernijmonument-builder';
 import {buildBegijnhof} from './begijnhof-builder';
 import {buildNoorderkerk} from './noorderkerk-builder';
@@ -1162,6 +1165,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='de-valerius')buildDeValerius(w,d,helpers);
     else if(id==='amsterdams-lyceum')buildAmsterdamsLyceum(w,d,helpers);
     else if(id==='pontsteiger')buildPontsteiger(w,d,helpers);
+    else if(id==='wilhelminatoren')buildWilhelminatoren(w,d,helpers);
+    else if(id==='oba-staatsliedenbuurt')buildObaStaatsliedenbuurt(w,d,helpers);
+    else if(id==='room-mate-aitana')buildRoomMateAitana(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){
