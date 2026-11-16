@@ -86964,5 +86964,260 @@
     ]
    ]
   }
+ },
+ {
+  "id": "park-centraal-stadhouderskade",
+  "name": "Park Centraal and MOMO, Stadhouderskade 25",
+  "modelUrl": "./models/park-centraal-stadhouderskade.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012233471"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88301102,
+    52.36133511
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 55.6,
+   "widthMetres": 78.7
+  },
+  "surveyed": {
+   "anchor": [
+    4.88301102,
+    52.36133511
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012233471 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/park-centraal-stadhouderskade-footprints.json, bag-shell-prepare.ts); fronts read from rectified Gemeente Amsterdam panoramas TMX7316010203-001675_pano_0000_002449 (2020, hotel), TMX7316010203-002548_pano_0000_000344 (2022) and b_20241211_0838_Track07_Sphere_00080 (2024, MOMO corner), TMX7316010203-002920_pano_0000_000143 (2023, Hobbemastraat range), CC BY 4.0. Per wall in scripts/landmarks/park-centraal-stadhouderskade-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 28.8,
+  "galleryView": {
+   "theta": -2.6,
+   "phi": 1.2
+  },
+  "bagYear": 1930,
+  "materialOverrides": {
+   "greyBrick": "#48484e",
+   "brick": "#7e5646",
+   "white": "#e6e3d6",
+   "slate": "#5f626a",
+   "copper": "#8fb3a2",
+   "concrete": "#4b4844",
+   "canopyGlass": "#8fa3a7",
+   "glass": "#4d5860",
+   "dark": "#2b2d30",
+   "frame": "#a3abad",
+   "stone": "#7d776d",
+   "red": "#504b4f",
+   "ochre": "#8e4f40",
+   "gold": "#c9a54a",
+   "sandstone": "#e3e0d3",
+   "bronze": "#2e3033"
+  },
+  "attribution": {
+   "title": "Park Centraal hotel and the MOMO corner, Stadhouderskade 25, Amsterdam",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002548_pano_0000_000344/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012233471 (CC0): the hotel's concrete balcony grid and canopy, the neo-Renaissance MOMO corner with its arched windows, white dressings, dormers and copper-domed tower, and the Hobbemastraat balcony range, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8832933,
+      52.3615823
+     ],
+     [
+      4.882898,
+      52.3615854
+     ],
+     [
+      4.8828359,
+      52.361586
+     ],
+     [
+      4.8828358,
+      52.3615797
+     ],
+     [
+      4.8825382,
+      52.3615811
+     ],
+     [
+      4.8825382,
+      52.3615774
+     ],
+     [
+      4.8825353,
+      52.3615775
+     ],
+     [
+      4.8825057,
+      52.3615877
+     ],
+     [
+      4.8824721,
+      52.3615833
+     ],
+     [
+      4.8824531,
+      52.3615659
+     ],
+     [
+      4.8824597,
+      52.3615452
+     ],
+     [
+      4.8824857,
+      52.3615342
+     ],
+     [
+      4.882488,
+      52.3615311
+     ],
+     [
+      4.8824823,
+      52.3615295
+     ],
+     [
+      4.8825846,
+      52.3613909
+     ],
+     [
+      4.8825739,
+      52.3613881
+     ],
+     [
+      4.8827906,
+      52.3610896
+     ],
+     [
+      4.8828779,
+      52.3611129
+     ],
+     [
+      4.8828829,
+      52.361106
+     ],
+     [
+      4.8829132,
+      52.3611144
+     ],
+     [
+      4.8829061,
+      52.3611243
+     ],
+     [
+      4.8829452,
+      52.361135
+     ],
+     [
+      4.8829484,
+      52.3611307
+     ],
+     [
+      4.8829653,
+      52.3611354
+     ],
+     [
+      4.8829642,
+      52.3611368
+     ],
+     [
+      4.8831201,
+      52.3611803
+     ],
+     [
+      4.8831295,
+      52.3611671
+     ],
+     [
+      4.8831567,
+      52.3611743
+     ],
+     [
+      4.8832179,
+      52.3611907
+     ],
+     [
+      4.8832209,
+      52.3611865
+     ],
+     [
+      4.8832405,
+      52.3611917
+     ],
+     [
+      4.8832425,
+      52.3611889
+     ],
+     [
+      4.8832503,
+      52.361191
+     ],
+     [
+      4.8832814,
+      52.3611994
+     ],
+     [
+      4.8833144,
+      52.3612081
+     ],
+     [
+      4.8833431,
+      52.3612157
+     ],
+     [
+      4.8834332,
+      52.3612397
+     ],
+     [
+      4.8835267,
+      52.3612646
+     ],
+     [
+      4.8836119,
+      52.3612872
+     ],
+     [
+      4.883599,
+      52.3613058
+     ],
+     [
+      4.8835741,
+      52.3613414
+     ],
+     [
+      4.8835606,
+      52.3613608
+     ],
+     [
+      4.8834864,
+      52.3613414
+     ],
+     [
+      4.8834094,
+      52.3613214
+     ],
+     [
+      4.8833124,
+      52.361466
+     ],
+     [
+      4.8833023,
+      52.3615824
+     ],
+     [
+      4.8832933,
+      52.3615823
+     ]
+    ]
+   ]
+  }
  }
 ]
