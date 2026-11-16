@@ -9,7 +9,7 @@
  },
  "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012239296 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/room-mate-aitana-footprints.json, bag-shell-prepare.ts); the curtain-wall grid read from the rectified Gemeente Amsterdam panorama TMX7316010203-001899_pano_0000_000206 (2020, CC BY 4.0). Per wall in scripts/landmarks/room-mate-aitana-inventory.json.",
  "materialOverrides": {
-  "glass": "#7b90a6",
+  "glass": "#a7b9bf",
   "concrete": "#9a9a96",
   "dark": "#3c4650",
   "frame": "#43494e",

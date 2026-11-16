@@ -83,7 +83,7 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     blue: {slot: 'paint', why: 'dark blue entrance canopy and the De Blauwe Parade sign panel'},
   },
   'room-mate-aitana': {
-    glass: {slot: 'glass', why: 'curtain wall: reflective glazing (w01-183 #687d9c sky reflection, #647387 on the thumbnail)'},
+    glass: {slot: 'paint', why: 'curtain wall: pale reflective glazing that mirrors the sky (w01-183 #687d9c, the 2018 IJdok frame pale green-white); the glass slot drew it opaque dark slate, unrecognisable in the blind review, so it is a pale panel'},
     dark: {slot: 'glass', why: 'darker opening lights in the window strips'},
     frame: {slot: 'frame', why: 'dark grey aluminium transoms and mullions (w01-183 #3c4447-#545b61)'},
     stone: {slot: 'paint', why: 'grey metal plinth panels (w01-183 #74726e at gain 1.04)'},

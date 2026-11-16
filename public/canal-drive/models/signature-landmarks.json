@@ -109189,7 +109189,7 @@
       },
       "bagYear": 2012,
       "materialOverrides": {
-        "glass": "#7b90a6",
+        "glass": "#a7b9bf",
         "concrete": "#9a9a96",
         "dark": "#3c4650",
         "frame": "#43494e",
@@ -109249,14 +109249,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -24.368642807006836,
-          -9.335097956864047e-7,
+          -24.397537231445312,
+          -8.687233048476628e-7,
           -35.970001220703125
         ],
         "max": [
-          37.12099838256836,
+          37.129520416259766,
           43.70800018310547,
-          44.21992111206055
+          44.25775146484375
         ]
       },
       "placement": {
@@ -109270,25 +109270,25 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 80.18992233276367,
-        "heightMetres": 43.708001116615264,
-        "depthMetres": 61.489641189575195,
-        "depthCoverage": 0.9998315640581332
+        "widthMetres": 80.22775268554688,
+        "heightMetres": 43.708001051828774,
+        "depthMetres": 61.52705764770508,
+        "depthCoverage": 1.000439961751302
       },
-      "triangles": 8098,
-      "bytes": 123616,
+      "triangles": 9358,
+      "bytes": 142316,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "85c49037beb44f38",
+        "sourceHash": "4c7a46296c749727",
         "buildVersion": 2,
-        "bytes": 32360,
-        "triangles": 1372
+        "bytes": 35932,
+        "triangles": 1563
       },
       "lod2": {
-        "sourceHash": "85c49037beb44f38",
+        "sourceHash": "4c7a46296c749727",
         "buildVersion": 6,
-        "bytes": 6408,
-        "triangles": 160
+        "bytes": 6972,
+        "triangles": 187
       }
     }
   }

@@ -6217,15 +6217,15 @@
   }
  },
  "room-mate-aitana": {
-  "sourceHash": "85c49037beb44f38",
+  "sourceHash": "4c7a46296c749727",
   "buildVersion": 2,
-  "bytes": 32360,
-  "triangles": 1372,
+  "bytes": 35932,
+  "triangles": 1563,
   "lod2": {
-   "sourceHash": "85c49037beb44f38",
+   "sourceHash": "4c7a46296c749727",
    "buildVersion": 6,
-   "bytes": 6408,
-   "triangles": 160
+   "bytes": 6972,
+   "triangles": 187
   }
  }
 }
