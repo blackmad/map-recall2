@@ -412,6 +412,23 @@ function pavement(b: Builder, look: TemplateLook, a0: number, a1: number, base: 
         b.panel(x, x + 0.14, 0.39, z, z + 0.16, CARDS[Math.floor(hash01(`${seed}:pc${a.toFixed(1)}:${row}:${col}`) * CARDS.length)]);
       }
     }
+  } else if (look.pavement === 'promo') {
+    // A chain's promotional stand (Kruidvat): a solid stand in the template's rack colour, 0.6 x 1.4 m, three shelves of
+    // small boxed products in mixed colours and a header panel on top. Fronts and tops only.
+    const BOXES = ['#f4efe2', '#2f6fb0', '#f2b92e', '#3f8f4a', '#f7a8c4', '#ffffff', '#8fc6e8'], red = look.rack ?? '#c8102e';
+    for (const a of [a0 + 0.4, a1 - 1.0]) if (a + 0.6 <= a1 && a >= a0) {
+      b.slab(a, a + 0.6, 0.3, 0.42, base, base + 1.2, red, 'top');
+      for (let row = 0; row < 3; row++) {
+        const z = base + 0.12 + row * 0.34;
+        b.panel(a + 0.04, a + 0.56, 0.425, z, z + 0.3, '#8c0f1d');
+        for (let col = 0; col < 3; col++) {
+          const x = a + 0.07 + col * 0.16, h = 0.16 + 0.05 * hash01(`${seed}:pm${a.toFixed(1)}:${row}:${col}`);
+          b.slab(x, x + 0.13, 0.425, 0.46, z + 0.02, z + 0.02 + h, BOXES[Math.floor(hash01(`${seed}:pb${a.toFixed(1)}:${row}:${col}`) * BOXES.length)], 'top');
+        }
+      }
+      b.box(a - 0.02, a + 0.62, 0.3, 0.44, base + 1.2, base + 1.42, red);
+      b.panel(a + 0.04, a + 0.58, 0.445, base + 1.24, base + 1.38, '#ffffff');
+    }
   } else if (look.pavement === 'boards' && retailBrandOn()) {
     // Round 7: an A-board: a timber frame round a chalkboard with a few lines of chalk on it.
     for (const a of [a0 + 0.4, a1 - 1.0]) if (a + 0.6 <= a1 && a >= a0) {

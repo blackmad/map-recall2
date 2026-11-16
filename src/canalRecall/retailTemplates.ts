@@ -186,7 +186,7 @@ export type TemplateLook = {
   /** Round 6: the pavement racks' colour (Kruidvat's red); absent: the template's blue. */
   rack?: string;
   /** What stands on the pavement in front (crates, racks, bikes in a row). */
-  pavement?: 'crates' | 'racks' | 'bikes' | 'boards' | 'flowers';
+  pavement?: 'crates' | 'racks' | 'promo' | 'bikes' | 'boards' | 'flowers';
   /** Tube light round the window (red-light rows), and the glow colour. */
   tube?: string;
   /** A hanging blade sign in this colour (brown cafes, pancake houses). */
@@ -237,7 +237,7 @@ const LOOKS_N: Record<RetailTemplate, TemplateLook> = {
   // window frames (measured #95090d and #852629, drawn #a4201c by retailPuiPaint.ts drawnPaint), red decals, a red
   // logo box over the door and red product racks out front. The board takes the brand red of its Commons logo
   // (#e3061f, David 2026-11-15: a chain's sign colour may come from its logo; frames stay measured).
-  kruidvat: { fascia: '#e3061f', letters: '#ffffff', word: 'KRUIDVAT', content: 'shelves', lit: true, frame: '#a4201c', pavement: 'racks', rack: '#c8102e' },
+  kruidvat: { fascia: '#e3061f', letters: '#ffffff', word: 'KRUIDVAT', content: 'shelves', lit: true, frame: '#a4201c', pavement: 'promo', rack: '#c8102e' },
   coffeeshop: { fascia: '#1f5a2e', letters: '#e8f0d8', word: 'name', content: 'frosted', lit: false },
   smartshop: { fascia: '#2a1640', letters: '#ff4fd8', word: 'name', content: 'neon', lit: true },
   brownBar: { fascia: '#24160e', letters: '#e2c48a', word: 'name', content: 'barGlow', lit: false, blade: '#7a1f12', frame: '#2a1a10', surround: '#2e1c12', paneM: 1.3 },
