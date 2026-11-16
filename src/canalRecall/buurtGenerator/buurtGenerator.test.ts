@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, blockLines, generateDistrict, measuredRoofOf, pitchGate, pitchedRiseOf, streetPhotoWallOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
+import { baysFor, blockLines, generateDistrict, measuredRoofOf, pitchGate, pitchedRiseOf, streetPhotoWallOf, paintedPandOf, photoGableOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
 import { oklab } from '../retailPuiPaint.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
@@ -242,12 +242,45 @@ test('De Pijp (round 14): hidden pitches draw the roof storey where the library 
 test('De Pijp (round 14): the photo reader\'s family beats the pixel samples; a street agreeing on it fills its unread rows', () => {
   const fam = lib.families[0];
   const m: DistrictLibrary = { ...lib, rowNotes: {}, measured: { walls: { 'teststraat-111111': { hex: '#2e2d2c', n: 2, of: 2, dates: 2, reads: [] } },
-    photoWalls: { 'teststraat-111111': { finish: 'stucco', family: 'cream-paint', confidence: 0.85, pandId: '0363100012111111' }, 'teststraat-222222': { finish: 'stucco', family: 'cream-paint', confidence: 0.8, pandId: '0363100012222222' }, 'teststraat-333333': { finish: 'brick', family: 'red-brown-brick', confidence: 0.5, pandId: '0363100012333333' } } } };
+    photoWalls: { 'teststraat-111111': { finish: 'brick', family: 'buff-brick', confidence: 0.85, pandId: '0363100012111111' }, 'teststraat-222222': { finish: 'brick', family: 'buff-brick', confidence: 0.8, pandId: '0363100012222222' }, 'teststraat-333333': { finish: 'brick', family: 'red-brown-brick', confidence: 0.5, pandId: '0363100012333333' } } } };
   const w = wallHexOf(m, fam, 'teststraat-111111');
-  assert.equal(w.family, 'cream-render'); assert.equal(w.material, 'stucco'); assert.match(w.evidence!, /photo reader: stucco cream-paint 0.85/);
-  assert.equal(wallHexOf(m, fam, 'teststraat-333333').family, 'cream-render', 'a low-confidence read takes the street');
+  assert.equal(w.family, 'buff-brick'); assert.equal(w.material, 'brick'); assert.match(w.evidence!, /photo reader: brick buff-brick 0.85/);
+  assert.equal(wallHexOf(m, fam, 'teststraat-333333').family, 'buff-brick', 'a low-confidence read takes the street');
   assert.deepEqual(streetPhotoWallOf(m, 'teststraat-444444')?.rows, ['teststraat-111111', 'teststraat-222222']);
   assert.equal(streetPhotoWallOf(m, 'anderestraat-111111'), null);
   // No reads: the pixel sample, warmed (round 13).
   assert.equal(wallHexOf({ ...m, measured: { walls: m.measured!.walls } }, fam, 'teststraat-111111').hex, warmWall('#2e2d2c'));
+});
+
+test('De Pijp (round 15) records: the painted house alone, the gable on its series without a mansard, the pitched AHN raise (Stadhouderskade 166429)', () => {
+  const pands = [0, 1, 2, 3].map(i => pand(i, 1929, 12.4));
+  const id = (i: number) => pands[i].id.slice(-16);
+  const on: DistrictLibrary = { ...lib, pitched: { ...lib.pitched!, capRiseM: 1.2, hiddenPitch: { draws: 'roof-storey', evidence: 'test' } },
+    measured: { roofs: Object.fromEntries(pands.map(p => [p.id.slice(-16), { form: 'hidden-pitch' as const, frontRiseM: 1.5, why: '' }])),
+      photoReads: { [id(1)]: { finish: 'paint', family: 'white-paint', confidence: 0.8 } } } };
+  type R = { pandId: string; wall: { hex: string }; crown: { family: string; riseM?: number }; topM: number; eavesM: number; series?: { roofStorey?: { kind: string } } };
+  const recs = (l: DistrictLibrary) => generateDistrict(l, pands, streets, new Set(), 'test').records as R[];
+  const a = recs(on);
+  assert.ok(a[1].wall.hex !== a[0].wall.hex && a[0].wall.hex === a[2].wall.hex, 'only the read house is painted');
+  const g = recs({ ...on, measured: { ...on.measured!, photoReads: { [id(2)]: { finish: 'brick', family: 'brown-brick', confidence: 0.8, crown: 'step', cornice: 'none', cc: 0.8 } } } });
+  assert.ok(g.every(r => r.crown.family === 'step' && r.series?.roofStorey?.kind === 'none' && r.topM > r.eavesM + 2), 'one series: every member steps');
+  // AHN reads the pitched roof's foot 2 m over the 3DBAG line: drawn there with pitchedRaiseM, not without.
+  const pitched = { roofs: Object.fromEntries(pands.map(p => [p.id.slice(-16), { form: 'pitched' as const, frontRiseM: 4, eavesM: 14.4, why: '' }])) };
+  const lo = recs({ ...lib, measured: pitched }), hi = recs({ ...lib, design: { ...lib.design, ahnFrontForms: { forms: ['flat'], evidence: 'test', pitchedRaiseM: 1.5 } }, measured: pitched });
+  assert.ok(hi[0].eavesM - lo[0].eavesM > 1.5, `${lo[0].eavesM} -> ${hi[0].eavesM}`);
+});
+
+test('De Pijp (round 15): a painted read colours its own house, not the row (Stadhouderskade 158460); purple-brown draws dark brown; a confident gable read beats the mansard', () => {
+  const fam = lib.families[0];
+  const m: DistrictLibrary = { ...lib, rowNotes: {}, measured: { walls: {},
+    photoWalls: { 'teststraat-111111': { finish: 'paint', family: 'dark-paint', confidence: 0.8, pandId: '0363100012098788' }, 'teststraat-222222': { finish: 'brick', family: 'purple-brown-brick', confidence: 0.7, pandId: '0363100012153112' } },
+    photoReads: { '0363100012098788': { finish: 'paint', family: 'dark-paint', confidence: 0.8, crown: 'cornice', cornice: 'heavy', cc: 0.8 },
+      '0363100012159333': { finish: 'brick', family: 'brown-brick', confidence: 0.7, crown: 'step', cornice: 'none', cc: 0.75 },
+      '0363100012165460': { finish: 'brick', family: 'brown-brick', confidence: 0.75, crown: 'point', cornice: 'none', cc: 0.7 } } } };
+  assert.notEqual(wallHexOf(m, fam, 'teststraat-111111').family, 'painted-dark', 'the row does not take a painted read');
+  assert.equal(paintedPandOf(m, '0363100012098788')?.family, 'painted-dark');
+  assert.equal(paintedPandOf(m, '0363100012159333'), null);
+  assert.equal(wallHexOf(m, fam, 'teststraat-222222').family, 'dark-brown-brick');
+  assert.equal(photoGableOf(m, '0363100012159333')?.family, 'step');
+  assert.equal(photoGableOf(m, '0363100012165460'), null, 'under the crown bar');
 });

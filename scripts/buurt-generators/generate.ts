@@ -31,7 +31,7 @@ const STREET_CLASSES = new Set(['residential', 'tertiary', 'secondary', 'primary
 export function loadLibrary(district: string): DistrictLibrary {
   const lib: DistrictLibrary = JSON.parse(fs.readFileSync(`src/canalRecall/buurtGenerator/districts/${district}.json`, 'utf8'));
   const m = `src/canalRecall/buurtGenerator/districts/measured/${district}.json`;
-  if (process.env.BUURT_MEASURED !== '0' && fs.existsSync(m)) { const { walls, roofs, rowRoofs, photoWalls } = JSON.parse(fs.readFileSync(m, 'utf8')); lib.measured = { walls, roofs, rowRoofs, ...(photoWalls ? { photoWalls } : {}) }; }
+  if (process.env.BUURT_MEASURED !== '0' && fs.existsSync(m)) { const { walls, roofs, rowRoofs, photoWalls, photoReads } = JSON.parse(fs.readFileSync(m, 'utf8')); lib.measured = { walls, roofs, rowRoofs, ...(photoWalls ? { photoWalls } : {}), ...(photoReads ? { photoReads } : {}) }; }
   return lib;
 }
 

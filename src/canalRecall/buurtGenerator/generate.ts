@@ -35,7 +35,12 @@ export interface DistrictDesign {
   /** De Pijp (round 14): front forms whose AHN4 front height is the cornice, read by blockLines' AHN_RAISE. Absent, flat
    *  only (round 11). A hidden pitch (a steep rise behind a gentle front, under 1.5 m per metre there) stands behind its
    *  cornice, so its front height is the eaves; a pitched front's is up the roof face and never listed. */
-  ahnFrontForms?: { forms: Array<'flat' | 'hidden-pitch'>; evidence: string };
+  ahnFrontForms?: { forms: Array<'flat' | 'hidden-pitch'>; evidence: string;
+    /** Round 15: a series whose pitched members' AHN4 eaves (the foot of the roof face, which in this district reads a
+     *  median 1.67 m under the drawn line) stand at least this far over its 3DBAG line draws AHN's eaves median: 3DBAG's
+     *  eaves are the low part of the roof (Stadhouderskade 166429: 3DBAG 11.75 / 13 m, AHN 14.9-15.6 m, the judge's
+     *  photo about 17 m). Absent: off. */
+    pitchedRaiseM?: number };
 }
 /** What a family's rows show that the house-rows vocabulary has no field for, drawn by the buurt kit (frontKit.ts), with the photo that states it. */
 export interface DistrictFamilyKit {
@@ -129,7 +134,10 @@ export interface DistrictMeasured {
   /** Round 14 (De Pijp): per row, the wall family an opus reader names on the row's panorama cut (scripts/buurt-generators/
    *  row-cuts.ts, then scripts/centrum-looks/photo-reads.ts): `family` in the Centrum reader's words, read where the
    *  pixel samples are shade or glare. Used at `PHOTO_WALL_MIN` confidence, over the pixel reads. */
-  photoWalls?: Record<string, { finish: string; family: string; confidence: number; pandId: string }>;
+  photoWalls?: Record<string, PhotoWallRead>;
+  /** Round 15: every cut's read by its pand (a generator row can hold two cuts, one per drawn run): the painted houses
+   *  and the gable crowns are the pand's and its series', not the row's. */
+  photoReads?: Record<string, Omit<PhotoWallRead, 'pandId'>>;
   roofs?: Record<string, { form: 'flat' | 'pitched' | 'hidden-pitch' | 'gable-street' | 'unclear'; frontRiseM: number; eavesM?: number; ridgeM?: number; why: string }>;
   rowRoofs?: Record<string, { form: string; hipped: { start: boolean; end: boolean } }>;
   /** Round 10: per row, each kit erker (`<pandId>:<index>`) and the finish its panoramas read (measure.ts erkerFinishOf,
@@ -207,11 +215,16 @@ export function streetWallOf(lib: DistrictLibrary, rowId: string): { hex: string
   const med = (i: 0 | 1 | 2) => { const v = labs.map(l => l[i]).sort((x, y) => x - y); return v[(v.length - 1) >> 1]; };
   return { hex: labHex([med(0), med(1), med(2)]), rows };
 }
+/** One row's photo read (round 14; round 15 adds the reader v2's crown, scripts/centrum-looks/photo-reader-prompt-v2.md):
+ *  the cut's pand, its finish and colour family, and its crown and cornice with their confidence `cc`. */
+export interface PhotoWallRead { finish: string; family: string; confidence: number; pandId: string; crown?: string; cornice?: string; cc?: number }
 /** Round 14: the Centrum photo reader's families (scripts/centrum-looks/photo-reader-prompt.md) as the judged palette's, and
  *  its finishes as the row's wall material; a read under `PHOTO_WALL_MIN` confidence, or `unclear`, is not used. */
 export const PHOTO_WALL_MIN = 0.7;
 export const PHOTO_WALL_FAMILY: Record<string, JudgedFamily> = {
-  'dark-grey-brick': 'dark-brown-brick', 'purple-brown-brick': 'purple-brown-brick', 'brown-brick': 'brown-brick', 'red-brown-brick': 'red-brown-brick',
+  // Round 15: purple-brown reads draw dark (chocolate) brown; the palette's purple-brown (hue 28) drew maroon where the
+  // photo is dark brown (Stadhouderskade 166429, round 14 blind: "maroon walls").
+  'dark-grey-brick': 'dark-brown-brick', 'purple-brown-brick': 'dark-brown-brick', 'brown-brick': 'brown-brick', 'red-brown-brick': 'red-brown-brick',
   'orange-red-brick': 'orange-red-brick', 'buff-brick': 'buff-brick', 'white-paint': 'painted-white', 'cream-paint': 'cream-render',
   'pale-grey': 'pale-grey-stucco', 'dark-paint': 'painted-dark',
 };
@@ -225,7 +238,7 @@ const photoWallOf = (r: { finish: string; family: string; confidence: number } |
  *  60 % of its confident reads; null otherwise. */
 export function streetPhotoWallOf(lib: DistrictLibrary, rowId: string): (PhotoWall & { rows: string[] }) | null {
   const reads = lib.measured?.photoWalls; if (!reads) return null;
-  const slug = streetSlugOf(rowId), got = Object.keys(reads).filter(k => streetSlugOf(k) === slug).sort().flatMap(k => { const w = photoWallOf(reads[k]); return w ? [{ k, w }] : []; });
+  const slug = streetSlugOf(rowId), got = Object.keys(reads).filter(k => streetSlugOf(k) === slug).sort().flatMap(k => { const w = photoWallOf(reads[k]); return w && w.material === 'brick' ? [{ k, w }] : []; });
   const n = new Map<string, typeof got>();
   for (const g of got) n.set(g.w.family + '|' + g.w.material, [...(n.get(g.w.family + '|' + g.w.material) ?? []), g]);
   const [best, second] = [...n.values()].sort((a, b) => b.length - a.length || (a[0].k < b[0].k ? -1 : 1));
@@ -239,8 +252,10 @@ export function wallHexOf(lib: DistrictLibrary, fam: DistrictFamily | null, rowI
   if (own) return { hex: own.hex, evidence: `the row's own photo: ${own.evidence}` };
   const stated = lib.rowNotes?.[rowId]?.wallFamily;
   if (stated) return { hex: variedTone(stated.family, `${rowId}:${stated.family}`), family: stated.family, evidence: `the row's own photo states ${stated.family}: ${stated.evidence}` };
+  // Round 15: a painted read is its own house's (paintedPandOf), not the row's: one black-painted house painted all of
+  // Stadhouderskade 158460 (round 14 blind: "near-black walls, right only for the third house").
   const pw = photoWallOf(lib.measured?.photoWalls?.[rowId]);
-  if (pw) return { hex: variedTone(pw.family, `${rowId}:${pw.family}`), family: pw.family, material: pw.material, evidence: `the row's panorama cut (${lib.measured!.photoWalls![rowId].pandId}) read by the photo reader: ${pw.read}` };
+  if (pw && pw.material === 'brick') return { hex: variedTone(pw.family, `${rowId}:${pw.family}`), family: pw.family, material: pw.material, evidence: `the row's panorama cut (${lib.measured!.photoWalls![rowId].pandId}) read by the photo reader: ${pw.read}` };
   const sp = streetPhotoWallOf(lib, rowId);
   if (sp) return { hex: variedTone(sp.family, `${rowId}:${sp.family}`), family: sp.family, material: sp.material, evidence: `the street's panorama cuts read ${sp.family} by the photo reader (${sp.rows.join(', ')})` };
   const warmed = (hex: string) => { const w = warmWall(hex); return w === hex ? { hex, note: '' } : { hex: w, note: ` (warmed from ${hex}: brick is never drawn grey)` }; };
@@ -252,6 +267,21 @@ export function wallHexOf(lib: DistrictLibrary, fam: DistrictFamily | null, rowI
   if (!d.hex) return {};
   const w = warmed(d.hex);
   return { hex: w.hex, evidence: `${d.evidence}${w.note}` };
+}
+/** Round 15: a pand's own paint or stucco read (it colours that house only); null for brick or no confident read. */
+export function paintedPandOf(lib: DistrictLibrary, pandId: string): { pandId: string; hex: string; family: JudgedFamily; material: RowWallMaterial; read: string } | null {
+  const w = photoWallOf(lib.measured?.photoReads?.[pandId]);
+  return w && w.material !== 'brick' ? { pandId, hex: variedTone(w.family, `${pandId}:${w.family}`), family: w.family, material: w.material, read: w.read } : null;
+}
+/** Round 15: the reader's gable crowns as the row renderer's families (shouldered and the cornice/flat/mansard tops are not gables). */
+export const PHOTO_GABLES: Record<string, 'step' | 'neck' | 'bell' | 'point' | 'spout'> = { step: 'step', neck: 'neck', 'raised-neck': 'neck', bell: 'bell', point: 'point', spout: 'spout' };
+/** The crown confidence a stated gable needs (the Centrum generator's photo cornice bar, 7ce8206b6). */
+export const PHOTO_CROWN_MIN = 0.75;
+/** Round 15: a confident gable read on a row's cut: its pand and family; null otherwise. The gable is the read pand's
+ *  series' (one design per series), and it beats the slate mansard (Eerste Jan Steenstraat 110869-159333: step, cc 0.75). */
+export function photoGableOf(lib: DistrictLibrary, pandId: string): { pandId: string; family: 'step' | 'neck' | 'bell' | 'point' | 'spout'; read: string } | null {
+  const r = lib.measured?.photoReads?.[pandId], g = r?.crown ? PHOTO_GABLES[r.crown] : undefined;
+  return r && g && (r.cc ?? 0) >= PHOTO_CROWN_MIN ? { pandId, family: g, read: `${r.crown} cc ${r.cc}` } : null;
 }
 /** 3DBAG's roof type of the series, its members' majority (`roofCode`: 1 flat, 2 several flats, 3 slanted); null unread. */
 export function seriesRoofCode(s: GenSeries): number | null {
@@ -412,7 +442,19 @@ export function blockLines(lib: DistrictLibrary, rows: readonly GenRow[]): { row
   return { rows: rows.map(row => {
     // Round 11 (Kuinderstraat 067158: five storeys under a deep eaves slab at ~16 m, drawn 4 at 13 m): a series AHN4
     // reads flat at the front a storey over its 3DBAG line, its members agreeing, draws AHN's line (AHN_RAISE).
-    const S0 = row.series.map(sr => {
+    const pitchedRaise = (sr: GenSeries): GenSeries => {
+      const min = lib.design.ahnFrontForms?.pitchedRaiseM;
+      if (min === undefined || sr.eavesM === null) return sr;
+      const v = sr.members.flatMap(m => { const r = roofs[pandNumber(m.pand.id)]; return r?.form === 'pitched' && typeof r.eavesM === 'number' && r.eavesM > 2 ? [r.eavesM] : []; }), h = median(v);
+      if (h === null || v.length < Math.max(2, sr.members.length * AHN_RAISE.share) || h - sr.eavesM < min) return sr;
+      const line = Math.round(h * 20) / 20;
+      if (!familyFor(lib, storeysFor(line, lib.design))) return sr;
+      for (const m of sr.members) clamped.set(pandNumber(m.pand.id), { read: sr.eavesM, drawn: line, why: `AHN4 reads the pitched roof's foot at ${h.toFixed(2)} m on ${v.length} of ${sr.members.length} members, ${(h - sr.eavesM).toFixed(2)} m over 3DBAG's ${sr.eavesM} m line (ahnFrontForms.pitchedRaiseM ${min} m)` });
+      return { ...sr, eavesM: line, clamped: sr.members.map(m => m.pand.id) };
+    };
+    const S0 = row.series.map(sr0 => {
+      const sr = pitchedRaise(sr0);
+      if (sr !== sr0) return sr;
       const v = readsOf(sr), forms = sr.members.map(m => roofs[pandNumber(m.pand.id)]?.form), h = median(v);
       if (sr.eavesM === null || h === null || v.length < Math.max(AHN_RAISE.minReads, sr.members.length * AHN_RAISE.share) || forms.filter(frontForm).length < sr.members.length * AHN_RAISE.share) return sr;
       // With ahnFrontForms set, the spread drops the highest and lowest of five or more reads (Eerste Jacob van
@@ -543,7 +585,28 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   // Round 14 (cornerFlat): a corner member the kit draws without its series' roof storey draws its own flat top: its
   // record's series copy carries no mansard (rowFront.ts reads the roof storey off the record's series).
   const flatCorner = (rec: RowFrontRecord) => !!lib.pitched?.cornerFlat && rec.series?.roofStorey?.kind === 'mansard' && kits.has(rec.pandId) && !kits.get(rec.pandId)!.roof;
-  const records = rows.flatMap(r => rowFrontsWithSeries(r)).map(rec => kits.has(rec.pandId) ? { ...rec, buurtKit: kits.get(rec.pandId)! } : rec)
+  // Round 15: a painted read colours its own house; a confident gable read crowns its series' houses with that gable
+  // (rise 0.75 of the front, 2.5 m to the district's pitched cap) and no mansard.
+  const widthOf = new Map(rows.flatMap(r => r.members.map(m => [m.pandId, m.widthM] as const)));
+  const seriesOfPand = (records: RowFrontRecord[], pid: string) => records.find(r => r.pandId === pid)?.series?.id;
+  const raw = rows.flatMap(r => rowFrontsWithSeries(r)).map(rec => kits.has(rec.pandId) ? { ...rec, buurtKit: kits.get(rec.pandId)! } : rec)
     .map((rec): RowFrontRecord => flatCorner(rec) ? { ...rec, series: { ...rec.series!, roofStorey: { kind: 'none' as const, dormers: [] } } } : rec);
+  const painted = new Map<string, NonNullable<ReturnType<typeof paintedPandOf>>>(), gabled = new Map<string, NonNullable<ReturnType<typeof photoGableOf>>>();
+  for (const pid of Object.keys(lib.measured?.photoReads ?? {}).sort()) {
+    const p = paintedPandOf(lib, pid); if (p) painted.set(pid, p);
+    const g = photoGableOf(lib, pid), sid = g && seriesOfPand(raw, pid); if (g && sid && !gabled.has(sid)) gabled.set(sid, g);
+  }
+  const records = raw.map((rec): RowFrontRecord => {
+    let out = rec;
+    const p = painted.get(rec.pandId);
+    if (p) out = { ...out, wall: { hex: p.hex, source: 'judged', finish: p.material }, sources: { ...out.sources, wall: `judged ${p.family} (photo reader on this pand's own cut: ${p.read}; a painted read is the house's, not the row's)` } };
+    const g = rec.series && gabled.get(rec.series.id);
+    if (g && typeof out.eavesM === 'number' && lib.pitched) {
+      const riseM = +Math.min(lib.pitched.maxRiseM, Math.max(2.5, 0.75 * (widthOf.get(rec.pandId) || 6))).toFixed(2);
+      out = { ...out, topM: +(out.eavesM + riseM).toFixed(2), crown: { family: g.family, riseM }, series: { ...out.series!, roofStorey: { kind: 'none' as const, dormers: [] } },
+        sources: { ...out.sources, crown: `photo reader v2 on the series' cut (${g.pandId}): ${g.read}; a stated gable beats the district's slate mansard` } };
+    }
+    return out;
+  });
   return { rows, records, skipped, families, fronts };
 }
