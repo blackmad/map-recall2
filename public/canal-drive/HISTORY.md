@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## Round t: shop signs read from photos, FEBO/HEMA brand styles, reflective glass, more buurt towers (2026-11-16)
+
+- Merged by SHA: lane/retail-real-20261115 c977c461e, lane/glass-reflect-20261116 330cc3319, lane/rows-r-round22-20261116 21bc8c1a7 (round 22 notes, sheetFit fix, lane D sheet merge, round 23 head dressings, round 24 erker). Shop interiors (lane/shop-interiors-20261116 1ec903591) not merged: blind 5 on / 4 off / 4 tie, parked behind `?shopInteriors=1` on its branch.
+- Sign reads (round 6): `build-templates.ts` now applies `data/retail-ground/sign-reads.json` by default at `READ_PUBLISH_FLOOR` 0.6 (`--no-reads` builds OSM only). Blinds (`data/retail-ground/ab/blinds-r6-r7.json`): 0.7 reads beat OSM 9-4-7 with 8 controls tied; the extra 0.6 pands beat 0.7 7-1-7 with 5 controls tied. Published extract: 19 template changes, 54 neutral (unsigned) fronts, 28 quiet pands; lane R's audited red-light rows exempt. The Korte Niezel stamps were right (FEBO is 0363100012177960).
+- Brand styles (round 7): `?retailBrand` on by default but only `ACCEPTED_BRANDS` (febo 2/2, hema) take their measured style (letters on the wall, blade glyph, plate glass); Kruidvat, Dirk and McDonald's lost and keep today's look, `?retailBrand=all` shows every measured brand, `=0` turns it off. Racks and boards draw as postcard stands and chalkboards (David: "weird blue slabs"); racks fronts budgeted at 220 tris. `retailBrandStyles` and `retailSignReads` tests joined `test:shopfront-gate`.
+- Reflective glass: `glassReflectEnabled` on by default (`?glassReflect=0` off). Analytic sky in the shader, 0 bytes, no measurable frame time on desktop or the iPhone profile; blind ING House 5/5, Aitana 3/5 for on. Only `ing-house` is rebuilt with its tag; Room Mate Aitana stays held (its mullion grid still reads as cladding).
+- Lane R round 22: 20 records (14 Rivierenbuurt, 6 Apollo) gain their raised parts; the published row-front changed only those records' `buurtKit`. Not taken: the regenerated series' new `omitExtras` (lane R's no-dice rule), which would drop sills, white frames, door surrounds, anchors, plinth and downpipes on all 4,167 buurt records without a blind; the staged data keeps main's series.
+
 ## Round s: Wilhelminatoren, OBA Staatsliedenbuurt, Schiller's colour, buurt towers (2026-11-16)
 
 - Merged lane/landmarks-next-20261115 at 7f8e61147 (by SHA, with 84d761bbe) and lane/rows-r-massing-20261116 at 95e3ae0f8. Rebuilt only `schiller-rembrandtplein`, `wilhelminatoren`, `oba-staatsliedenbuurt` and `room-mate-aitana` with `--only=` (and their LODs); the GLBs came out byte-identical to the lane's.

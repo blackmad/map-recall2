@@ -34,6 +34,7 @@ import {snapDetachedParts,snapOpenings} from '../../src/canalRecall/landmarks/sn
 import {buildWaag} from './waag-builder';
 import {inferredSlotExtras} from '../../src/canalRecall/look/materialSlotInference';
 import {slotTagFor, statedOverrideExtras, tagExtras} from './material-slot-tags';
+import {glassFinishExtras, glassFinishTagFor} from './glass-finish-tags';
 import {buildScheepvaartmuseum} from './scheepvaartmuseum-builder';
 import {buildOdessa} from './odessa-builder';
 import {buildHotelJakarta} from './hotel-jakarta-builder';
@@ -634,7 +635,8 @@ async function save(id:string){
   // Builder-declared slots (material-slot-tags.ts) win over inference; absent a tag the export is unchanged.
   // `measuredOverrides` specs only: a stated wall colour is drawn as stated (material-slot-tags.ts statedOverrideExtras). Without the flag: unchanged.
   else{const tag=slotTagFor(id,name),base=tag?tagExtras(inferredSlotExtras(name,group.hex),tag):inferredSlotExtras(name,group.hex);
-   material.setExtras(statedOverrideExtras(base,spec.measuredOverrides&&!name.startsWith('decal-')?spec.materialOverrides?.[name]:undefined,group.hex));}
+   // Reflective glass (glass-finish-tags.ts, `?glassReflect=1`): an extra on tagged materials only.
+   material.setExtras(glassFinishExtras(statedOverrideExtras(base,spec.measuredOverrides&&!name.startsWith('decal-')?spec.materialOverrides?.[name]:undefined,group.hex),glassFinishTagFor(id,name)));}
   if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
   const opacity=(spec as {materialOpacity?:Record<string,number>}).materialOpacity?.[group.colour];
   if(opacity!==undefined&&id!=='conservatorium'&&!name.startsWith('decal-'))material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,opacity]).setAlphaMode('BLEND');

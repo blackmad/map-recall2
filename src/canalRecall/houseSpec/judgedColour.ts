@@ -39,9 +39,9 @@ import type { HouseSpec, SpecFacts } from './spec.ts';
 export const JUDGED_FAMILIES = [
   'red-brown-brick', 'brown-brick', 'purple-brown-brick', 'orange-red-brick', 'buff-brick',
   'painted-white', 'cream-render', 'pale-grey-stucco', 'grey-stone', 'painted-dark', 'sandstone',
-  'dark-grey-brick', 'painted-black',
   // Round 12 (lane R): appended so no index or iteration order moves; nothing picks it yet but a stated family.
   'dark-brown-brick',
+  'dark-grey-brick', 'painted-black',
 ] as const;
 export type JudgedFamily = (typeof JUDGED_FAMILIES)[number];
 
@@ -68,15 +68,15 @@ export const JUDGED_PALETTE: Record<JudgedFamily, JudgedTone> = {
   'grey-stone':         { L: 0.63, C: 0.012, h: 85, dL: 0.02, dC: 0.004, dh: 6, maxL: 0.68, wallFamily: 'grey', pale: true, label: 'mid grey stone' },
   'painted-dark':       { L: 0.30, C: 0.012, h: 150, dL: 0.015, dC: 0.004, dh: 25, maxL: 0.33, wallFamily: 'dark', pale: false, label: 'painted black / dark green-black' },
   'sandstone':          { L: 0.76, C: 0.055, h: 76, dL: 0.02, dC: 0.008, dh: 3, maxL: 0.8, wallFamily: 'buff', pale: true, label: 'sandstone' },
+  // The dark chocolate-brown klinker of the 1920s-30s (Plan Zuid blocks, Sloterparkbad): as dark as purple-brown but at
+  // brown's hue, not its mauve; the uncalibrated panorama reads of Rubensstraat 133237 (#413b37 h 56, #564740 h 46).
+  'dark-brown-brick':   { L: 0.39, C: 0.032, h: 52, dL: 0.02, dC: 0.007, dh: 5, maxL: 0.43, wallFamily: 'brown', pale: false, label: 'dark chocolate-brown brick' },
   // Herengracht's old canal brick under overcast cuts: dark and nearly grey (55 L .41 C .004, 63 L .40 C .017, 65 L .37
   // C .015), where purple-brown (C .045) drew maroon (round 4, lane D bins by chroma). Appended: unused, nothing changes.
   'dark-grey-brick':    { L: 0.40, C: 0.010, h: 40, dL: 0.02, dC: 0.004, dh: 8, maxL: 0.44, wallFamily: 'brown', pale: false, label: 'dark, nearly grey canal brick' },
   // Herengracht's dark painted fronts measure neutral, a touch warm (53 L .32 C .005 h 68, 71 L .33 C .003, 10 L .32 C .006
   // h 56): painted-dark's green-black (h 150) drew them green (integrator, 2026-11-15). Appended: only a cut sample picks it.
   'painted-black':      { L: 0.32, C: 0.008, h: 60, dL: 0.015, dC: 0.003, dh: 12, maxL: 0.35, wallFamily: 'dark', pale: false, label: 'painted black (neutral, warm)' },
-  // The dark chocolate-brown klinker of the 1920s-30s (Plan Zuid blocks, Sloterparkbad): as dark as purple-brown but at
-  // brown's hue, not its mauve; the uncalibrated panorama reads of Rubensstraat 133237 (#413b37 h 56, #564740 h 46).
-  'dark-brown-brick':   { L: 0.39, C: 0.032, h: 52, dL: 0.02, dC: 0.007, dh: 5, maxL: 0.43, wallFamily: 'brown', pale: false, label: 'dark chocolate-brown brick' },
 };
 
 /** The decision's knobs (see the header). */

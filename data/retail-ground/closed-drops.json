@@ -1,0 +1,321 @@
+{
+ "rule": "src/canalRecall/retailSources.ts closedByOverture",
+ "source": "Overture Maps places 2026-10-21.0 (CDLA-Permissive-2.0)",
+ "drops": [
+  {
+   "node": 251127917,
+   "name": "Geheim van de Smidt",
+   "overture": [
+    "overture:a0f32f9c-ba05-4638-b079-174ef63d13b6"
+   ]
+  },
+  {
+   "node": 603155583,
+   "name": "Bloemen & Planten Sierplein",
+   "overture": [
+    "overture:387a527f-92db-4c80-99e9-455db77ac9a9"
+   ]
+  },
+  {
+   "node": 1052799818,
+   "name": "Club 8",
+   "overture": [
+    "overture:0e0b9ad7-cc88-4763-8c59-6464a8cfdb62"
+   ]
+  },
+  {
+   "node": 1223236850,
+   "name": "Daskas",
+   "overture": [
+    "overture:ccfa0cef-62ae-4b56-b801-a2a06928f49d"
+   ]
+  },
+  {
+   "node": 1427417003,
+   "name": "De Waard",
+   "overture": [
+    "overture:608923b1-1d09-49ad-b5de-52ea975b6b90"
+   ]
+  },
+  {
+   "node": 2094039527,
+   "name": "Bloemenkiosk Sierplein",
+   "overture": [
+    "overture:387a527f-92db-4c80-99e9-455db77ac9a9"
+   ]
+  },
+  {
+   "node": 2721522262,
+   "name": "Naima",
+   "overture": [
+    "overture:2aaf1474-ce43-4320-af14-cfe8253ca92f"
+   ]
+  },
+  {
+   "node": 2721722772,
+   "name": "Simit Sarayi",
+   "overture": [
+    "overture:31aa6b54-dcce-4be9-9d43-bbd0a2b57d76"
+   ]
+  },
+  {
+   "node": 2721723083,
+   "name": "De Pannenkoekerij",
+   "overture": [
+    "overture:87c140a7-a621-4152-a78f-14f6b2931bf1"
+   ]
+  },
+  {
+   "node": 2721723271,
+   "name": "Tulashi",
+   "overture": [
+    "overture:71a09d6a-0649-4811-9315-e127ea78c1c1"
+   ]
+  },
+  {
+   "node": 2721771188,
+   "name": "Tours & Tickets J. van Beek B.V.",
+   "overture": [
+    "overture:f5f74940-f557-4502-98d4-ad2f4550789d"
+   ]
+  },
+  {
+   "node": 2721771257,
+   "name": "Kebab Restaurant",
+   "overture": [
+    "overture:a9af9fc6-afe0-43cc-b657-3fda49b6187d"
+   ]
+  },
+  {
+   "node": 2724827292,
+   "name": "Damsco",
+   "overture": [
+    "overture:c7618f8f-9afb-4248-b3f5-11b1d30ed279"
+   ]
+  },
+  {
+   "node": 2737970190,
+   "name": "Cool Electric",
+   "overture": [
+    "overture:3cf73ab2-8f09-4687-b7fa-c62cfc5a6dda"
+   ]
+  },
+  {
+   "node": 2741066775,
+   "name": "De Specialist",
+   "overture": [
+    "overture:75c6c42a-c538-4c77-bb1f-8b922183a49c"
+   ]
+  },
+  {
+   "node": 2795483983,
+   "name": "The Gents Barbershop",
+   "overture": [
+    "overture:710a5a4d-bd19-4399-aeea-3626674be2bc"
+   ]
+  },
+  {
+   "node": 2797097900,
+   "name": "Bloemsierkunstflori cultura",
+   "overture": [
+    "overture:5c52e9d9-4dc5-4080-b05e-354e6b6ffd09"
+   ]
+  },
+  {
+   "node": 2807384253,
+   "name": "Trends for Friends",
+   "overture": [
+    "overture:b1729daf-75d4-4602-b560-e7629985e867"
+   ]
+  },
+  {
+   "node": 2817709982,
+   "name": "Barasti",
+   "overture": [
+    "overture:e1498fcd-7398-4e8c-af5c-32bf92c41d90"
+   ]
+  },
+  {
+   "node": 2818248578,
+   "name": "Moeder Natuur",
+   "overture": [
+    "overture:5b455c81-2c7d-4471-91a3-b96704042d2a"
+   ]
+  },
+  {
+   "node": 2818406992,
+   "name": "DrBeykOffline",
+   "overture": [
+    "overture:f55f35e4-6094-4b86-abb0-1dc88e9940bb"
+   ]
+  },
+  {
+   "node": 2818407546,
+   "name": "DrBeykOnline",
+   "overture": [
+    "overture:f55f35e4-6094-4b86-abb0-1dc88e9940bb"
+   ]
+  },
+  {
+   "node": 2826837496,
+   "name": "Gunay Lunchroom",
+   "overture": [
+    "overture:828da2ab-0245-4f5a-93b9-04327b62c7ed"
+   ]
+  },
+  {
+   "node": 2829424707,
+   "name": "Friet De Meer",
+   "overture": [
+    "overture:df01e827-20d2-40f6-80aa-1c4cf8ebdf5c"
+   ]
+  },
+  {
+   "node": 2848801574,
+   "name": "Manifacto Amsterdam",
+   "overture": [
+    "overture:dc85f6e1-83c0-4741-a726-5795113e8c16"
+   ]
+  },
+  {
+   "node": 2860109829,
+   "name": "Attema Tweewielers",
+   "overture": [
+    "overture:71686a2f-6efa-4ec4-927a-b7ce767c7615"
+   ]
+  },
+  {
+   "node": 2860110916,
+   "name": "Elite Shoarma Grillbar",
+   "overture": [
+    "overture:37e71a08-5c6e-46dd-b866-9d05dd33e8c1"
+   ]
+  },
+  {
+   "node": 2862836639,
+   "name": "Wenbo",
+   "overture": [
+    "overture:c6364c76-3359-4e1b-9f52-8b1ef0112836"
+   ]
+  },
+  {
+   "node": 3117026151,
+   "name": "Green Budget Bikes",
+   "overture": [
+    "overture:8e1a6723-0d6f-4b7a-bc60-c2d50c997e9e"
+   ]
+  },
+  {
+   "node": 4396190565,
+   "name": "Sevgi",
+   "overture": [
+    "overture:83660411-06fb-42dc-940a-4d4479ac472a"
+   ]
+  },
+  {
+   "node": 4866612487,
+   "name": "L'amor",
+   "overture": [
+    "overture:be523943-c90b-481a-a5d1-0e866d8141e0"
+   ]
+  },
+  {
+   "node": 4909397477,
+   "name": "Kapsalon Rami",
+   "overture": [
+    "overture:6941b2d5-1e64-4543-ac54-2fdd2dc040fd"
+   ]
+  },
+  {
+   "node": 4997964820,
+   "name": "Good Bicycle",
+   "overture": [
+    "overture:f3d0d699-4518-4ee5-8af3-bc0a1f3272ea"
+   ]
+  },
+  {
+   "node": 5060048556,
+   "name": "Bar Bitterbal",
+   "overture": [
+    "overture:8790fb70-a22c-4089-b83b-3d3172edb27a"
+   ]
+  },
+  {
+   "node": 5197162151,
+   "name": "Fijnkost",
+   "overture": [
+    "overture:283e05a0-9e54-44d3-a60f-021b6dfacb4d"
+   ]
+  },
+  {
+   "node": 5494117150,
+   "name": "Kenza Hair",
+   "overture": [
+    "overture:6ee00ab9-11de-4774-8434-0065a941a37b"
+   ]
+  },
+  {
+   "node": 5752399160,
+   "name": "De Nieuwe Pilserij",
+   "overture": [
+    "overture:8040bfa0-9ba4-4213-a28e-9b76685e47a3"
+   ]
+  },
+  {
+   "node": 7223550629,
+   "name": "Had je me maar",
+   "overture": [
+    "overture:f4e25ad2-1ac7-4373-b951-02ace89cc33a"
+   ]
+  },
+  {
+   "node": 7235507196,
+   "name": "Cafe Amoi",
+   "overture": [
+    "overture:918d902a-2f76-4e70-80f9-395b69b5441d"
+   ]
+  },
+  {
+   "node": 9084408159,
+   "name": "Ba2 ink",
+   "overture": [
+    "overture:eaddadf3-c849-4b3d-8543-d1f267363187"
+   ]
+  },
+  {
+   "node": 9968061831,
+   "name": "Wild Whiskers",
+   "overture": [
+    "overture:f085647c-8a71-4e6d-af14-d6159ca81528"
+   ]
+  },
+  {
+   "node": 10940724176,
+   "name": "Ron's Kringloopfietsen Bedrijf",
+   "overture": [
+    "overture:b4086a55-25e8-4f8d-8c0c-e21785b2f57c"
+   ]
+  },
+  {
+   "node": 11392507780,
+   "name": "Premsela",
+   "overture": [
+    "overture:8de09973-8042-4fa8-bebd-e655b5fc945d"
+   ]
+  },
+  {
+   "node": 12006425227,
+   "name": "Baroud",
+   "overture": [
+    "overture:831a8397-70ba-48b0-adde-ec3021080305"
+   ]
+  },
+  {
+   "node": 12080394939,
+   "name": "E.S.M. Phone House",
+   "overture": [
+    "overture:46f14a1c-d60a-4c8d-b77b-75330a4e9bd0"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1299 @@
+{
+ "what": "Lane retail-real round 5: which shop lands on which pand. Every templated pand flagged by scripts/retail-ground/audit-assignment.ts (trace from build-templates.ts --trace); 90 sampled pands cut from the newest facing panorama (front-photos.ts --hosts --newest; data.amsterdam.nl panoramas, CC BY 4.0) and read blind by fresh opus agents against the OSM claim.",
+ "date": "2026-11-16",
+ "flags": "audit-assignment.ts header",
+ "cityCounts": {
+  "unlisted": 879,
+  "homes": 218,
+  "multi": 478,
+  "clean": 1436,
+  "other": 1070,
+  "noBag": 473,
+  "noShop": 268,
+  "closed": 40,
+  "party": 138,
+  "moved": 75,
+  "noName": 195,
+  "outside": 23,
+  "level": 8
+ },
+ "centreCounts": {
+  "other": 383,
+  "multi": 133,
+  "clean": 557,
+  "noBag": 29,
+  "unlisted": 302,
+  "noShop": 113,
+  "closed": 19,
+  "moved": 23,
+  "noName": 129,
+  "party": 60,
+  "homes": 70,
+  "level": 5,
+  "outside": 7
+ },
+ "verdicts": "match | kind (same kind, name unread) | neighbour (business one front over) | other (another business) | noShop | vacant | unclear; wrong = neighbour+other+noShop+vacant; the newest clear read wins (2025 captures for 73 of 90)",
+ "perFlag": {
+  "noName": {
+   "judged": 7,
+   "wrong": 1
+  },
+  "party": {
+   "judged": 8,
+   "wrong": 3
+  },
+  "closed": {
+   "judged": 7,
+   "wrong": 5
+  },
+  "other": {
+   "judged": 25,
+   "wrong": 12
+  },
+  "multi": {
+   "judged": 13,
+   "wrong": 5
+  },
+  "clean": {
+   "judged": 15,
+   "wrong": 3
+  },
+  "noShop": {
+   "judged": 10,
+   "wrong": 2
+  },
+  "outside": {
+   "judged": 6,
+   "wrong": 1
+  },
+  "level": {
+   "judged": 3,
+   "wrong": 1
+  },
+  "moved": {
+   "judged": 8,
+   "wrong": 3
+  },
+  "unlisted": {
+   "judged": 18,
+   "wrong": 4
+  },
+  "homes": {
+   "judged": 8,
+   "wrong": 2
+  },
+  "noBag": {
+   "judged": 4,
+   "wrong": 3
+  }
+ },
+ "sample": [
+  {
+   "node": 4866626959,
+   "pand": "0363100012177728",
+   "flags": [
+    "noName",
+    "party"
+   ],
+   "template": "redLight",
+   "name": "",
+   "pano": "b_20250114_1026_Track12_Sphere_00018",
+   "verdict": "match",
+   "seen": "row of red-lit window doors (red-light windows)"
+  },
+  {
+   "node": 5494117150,
+   "pand": "0363100012170915",
+   "flags": [
+    "closed",
+    "other"
+   ],
+   "template": "hairdresser",
+   "name": "Kenza Hair",
+   "pano": "TMX7316010203-001048_pano_0000_001844",
+   "verdict": "other",
+   "seen": "De Verloren Tijd clothes/vintage shop and residential door 391"
+  },
+  {
+   "node": 3458361042,
+   "pand": "0363100012185594",
+   "flags": [
+    "closed",
+    "other",
+    "multi"
+   ],
+   "template": "etos",
+   "name": "Etos",
+   "pano": "b_20250120_0926_Track01_Sphere_00017",
+   "verdict": "kind",
+   "seen": "chemist/drugstore with Etos-like interior, name not readable"
+  },
+  {
+   "node": 2724286140,
+   "pand": "0363100012177699",
+   "flags": [
+    "multi"
+   ],
+   "template": "coffeeshop",
+   "name": "The Bulldog - Gottahaves",
+   "pano": "recording_2025-06-16_06-42-40_02071",
+   "verdict": "match",
+   "seen": "psychedelic-painted Bulldog shop with Bulldog logo sign"
+  },
+  {
+   "node": 2736376823,
+   "pand": "0363100012176072",
+   "flags": [],
+   "template": "clothes",
+   "name": "Episode",
+   "pano": "recording_2025-06-16_06-21-55_00366",
+   "verdict": "match",
+   "seen": "shop at 37 with Episode blade sign, partly behind skip"
+  },
+  {
+   "node": 1089777297,
+   "pand": "0363100012174351",
+   "flags": [
+    "noShop"
+   ],
+   "template": "butcher",
+   "name": "Siem van der Gragt",
+   "pano": "recording_2025-07-03_10-31-52_00178",
+   "verdict": "match",
+   "seen": "Siem van der Gragt butcher sign and shop"
+  },
+  {
+   "node": 4866737478,
+   "pand": "0363100012178003",
+   "flags": [
+    "noName"
+   ],
+   "template": "redLight",
+   "name": "",
+   "pano": "recording_2025-06-30_05-16-46_01543",
+   "verdict": "match",
+   "seen": "red-framed red-light window doors"
+  },
+  {
+   "node": 1824490959,
+   "pand": "0363100012174896",
+   "flags": [
+    "outside"
+   ],
+   "template": "brownBar",
+   "name": "Café Pierewaaier",
+   "pano": "recording_2025-07-03_08-35-58_01371",
+   "verdict": "kind",
+   "seen": "corner cafe/pub with bench terrace, name not readable"
+  },
+  {
+   "node": 4866737479,
+   "pand": "0363100012178012",
+   "flags": [
+    "noName"
+   ],
+   "template": "redLight",
+   "name": "",
+   "pano": "recording_2025-06-30_05-16-46_01541",
+   "verdict": "kind",
+   "seen": "red-lit basement window door; red-light windows to left"
+  },
+  {
+   "node": 2721723185,
+   "pand": "0363100012179707",
+   "flags": [],
+   "template": "cheese",
+   "name": "Old Amsterdam Cheese Store",
+   "pano": "recording_2025-07-03_03-29-47_02544",
+   "verdict": "match",
+   "seen": "Old Amsterdam Cheese Store sign"
+  },
+  {
+   "node": 11160879679,
+   "pand": "0363100012165080",
+   "flags": [
+    "level",
+    "moved"
+   ],
+   "template": "clothes",
+   "name": "Uniqlo",
+   "pano": "b_20250120_0926_Track17_Sphere_00005",
+   "verdict": "match",
+   "seen": "Uniqlo logo and clothing store"
+  },
+  {
+   "node": 2729940361,
+   "pand": "0363100012174663",
+   "flags": [
+    "noShop"
+   ],
+   "template": "brownBar",
+   "name": "Spijker Bar",
+   "pano": "recording_2025-06-16_06-42-40_00148",
+   "verdict": "kind",
+   "seen": "ground floor with rainbow flags and posters, bar-like, no name readable"
+  },
+  {
+   "node": 2730036018,
+   "pand": "0363100012172323",
+   "flags": [
+    "unlisted",
+    "other"
+   ],
+   "template": "brownBar",
+   "name": "Chupitos",
+   "pano": "recording_2025-07-14_05-25-22_01549",
+   "verdict": "match",
+   "seen": "The Chupitos Club fascia"
+  },
+  {
+   "node": 866385089,
+   "pand": "0363100012171764",
+   "flags": [
+    "other",
+    "homes",
+    "party"
+   ],
+   "template": "toko",
+   "name": "Toko Sunrise",
+   "pano": "recording_2025-07-03_04-36-25_00619",
+   "verdict": "neighbour",
+   "seen": "middle is 'coming soon' restaurant posters; Toko Sunrise next door left"
+  },
+  {
+   "node": 467095997,
+   "pand": "part:NL.IMBAG.Pand.0363100012145715:7",
+   "flags": [
+    "other",
+    "noBag",
+    "outside"
+   ],
+   "template": "etos",
+   "name": "Etos",
+   "pano": "TMX7316010203-000249_pano_0000_002891",
+   "verdict": "unclear",
+   "seen": "low brick building with blue panels across a car park, no readable sign"
+  },
+  {
+   "node": 2722209323,
+   "pand": "0363100012175748",
+   "flags": [],
+   "template": "brownBar",
+   "name": "The Minds",
+   "pano": "recording_2025-06-16_04-42-37_01303",
+   "verdict": "kind",
+   "seen": "bar with graffiti roller shutter and Budels sign, name not readable"
+  },
+  {
+   "node": 10790684133,
+   "pand": "0363100012165560",
+   "flags": [
+    "multi"
+   ],
+   "template": "brownBar",
+   "name": "Cafe Stopera",
+   "pano": "recording_2025-07-03_03-29-47_03141",
+   "verdict": "match",
+   "seen": "Cafe Stopera fascia"
+  },
+  {
+   "node": 4866706200,
+   "pand": "0363100012178916",
+   "flags": [
+    "unlisted"
+   ],
+   "template": "souvenir",
+   "name": "Bike Rental",
+   "pano": "recording_2025-06-30_05-16-46_01721",
+   "verdict": "match",
+   "seen": "Bike Rental sign on shopfront"
+  },
+  {
+   "node": 12669747930,
+   "pand": "0363100012174384",
+   "flags": [
+    "other"
+   ],
+   "template": "restaurant",
+   "name": "Wagamama",
+   "pano": "recording_2025-07-14_05-25-22_02017",
+   "verdict": "unclear",
+   "seen": "arcaded glazed fronts, interior and signs unreadable"
+  },
+  {
+   "node": 1741897815,
+   "pand": "0363100012168341",
+   "flags": [
+    "multi"
+   ],
+   "template": "brownBar",
+   "name": "BLEND XL",
+   "pano": "TMX7316010203-002542_pano_0002_000040",
+   "verdict": "kind",
+   "seen": "dark glazed bar front with rainbow flags, name not readable"
+  },
+  {
+   "node": 34044769,
+   "pand": "0363100012180191",
+   "flags": [
+    "unlisted"
+   ],
+   "template": "ah",
+   "name": "Albert Heijn",
+   "pano": "recording_2025-06-16_06-42-40_01256",
+   "verdict": "match",
+   "seen": "Albert Heijn corner store window with AH sign"
+  },
+  {
+   "node": 4866685847,
+   "pand": "0363100012177702",
+   "flags": [
+    "noName"
+   ],
+   "template": "redLight",
+   "name": "",
+   "pano": "TMX7316010203-002357_pano_0003_000056",
+   "verdict": "match",
+   "seen": "glass window-brothel doors with red curtains and red-light markers"
+  },
+  {
+   "node": 12098703101,
+   "pand": "0363100012168326",
+   "flags": [
+    "noShop"
+   ],
+   "template": "brownBar",
+   "name": "Satchmo",
+   "pano": "recording_2025-06-16_06-42-40_01754",
+   "verdict": "match",
+   "seen": "bar/restaurant terrace with Satchmo sign (blurry)"
+  },
+  {
+   "node": 2385772434,
+   "pand": "0363100012176144",
+   "flags": [],
+   "template": "duck",
+   "name": "Mama Ducks Store",
+   "pano": "recording_2025-06-16_06-42-40_02366",
+   "verdict": "match",
+   "seen": "Mama Ducks Store sign"
+  },
+  {
+   "node": 9035880876,
+   "pand": "0363100012236030",
+   "flags": [
+    "outside"
+   ],
+   "template": "frites",
+   "name": "Pietersma Snacks",
+   "pano": "TMX7316010203-002453_pano_0000_000300",
+   "verdict": "match",
+   "seen": "Pietersma Snacks fries stall"
+  },
+  {
+   "node": 432442207,
+   "pand": "0363100012181739",
+   "flags": [
+    "party"
+   ],
+   "template": "hairdresser",
+   "name": "Hairways",
+   "pano": "b_20241210_1246_Track27_Sphere_00008",
+   "verdict": "noShop",
+   "seen": "ground-floor windows with closed white blinds, no sign"
+  },
+  {
+   "node": 2720879024,
+   "pand": "0363100012172586",
+   "flags": [],
+   "template": "nuts",
+   "name": "Het Oud-Hollandsch Snoepwinkeltje",
+   "pano": "recording_2025-07-03_07-31-54_01170",
+   "verdict": "kind",
+   "seen": "corner sweet shop with jar shelves, name not readable"
+  },
+  {
+   "node": 13926740517,
+   "pand": "0363100012243136",
+   "flags": [
+    "unlisted",
+    "outside"
+   ],
+   "template": "brownBar",
+   "name": "Spritz Bar",
+   "pano": "recording_2025-07-03_10-58-37_00068",
+   "verdict": "kind",
+   "seen": "park kiosk pavilion with terrace, name not readable"
+  },
+  {
+   "node": 1552005229,
+   "pand": "0363100012178324",
+   "flags": [
+    "moved"
+   ],
+   "template": "mcdonalds",
+   "name": "McDonald's",
+   "pano": "b_20250120_0926_Track01_Sphere_00012",
+   "verdict": "match",
+   "seen": "McDonald's sign"
+  },
+  {
+   "node": 2725878856,
+   "pand": "0363100012178854",
+   "flags": [
+    "moved",
+    "multi"
+   ],
+   "template": "coffeeshop",
+   "name": "Coffeeshop Smokey",
+   "pano": "recording_2025-06-19_03-28-47_01669",
+   "verdict": "neighbour",
+   "seen": "Cafe Schiller (shuttered); cannabis-leaf neon of coffeeshop next door right"
+  },
+  {
+   "node": 2721947645,
+   "pand": "0363100012169363",
+   "flags": [
+    "noName",
+    "homes"
+   ],
+   "template": "souvenir",
+   "name": "",
+   "pano": "recording_2025-06-16_04-42-37_02911",
+   "verdict": "match",
+   "seen": "Tobacco Phone & Gift shop"
+  },
+  {
+   "node": 2737856957,
+   "pand": "0363100012171716",
+   "flags": [
+    "unlisted",
+    "outside"
+   ],
+   "template": "hairdresser",
+   "name": "Stendhal Haar & Zonnestudio",
+   "pano": "recording_2025-07-14_07-34-51_00421",
+   "verdict": "noShop",
+   "seen": "brick corner residential wall"
+  },
+  {
+   "node": 2724827292,
+   "pand": "0363100012177870",
+   "flags": [
+    "closed",
+    "other"
+   ],
+   "template": "phone",
+   "name": "Damsco",
+   "pano": "recording_2025-07-03_04-36-25_00102",
+   "verdict": "vacant",
+   "seen": "Damsco sign on papered-over, graffitied window"
+  },
+  {
+   "node": 1415725026,
+   "pand": "0363100012173771",
+   "flags": [],
+   "template": "brownBar",
+   "name": "Café Eijlders",
+   "pano": "recording_2025-07-14_05-25-22_01611",
+   "verdict": "match",
+   "seen": "Cafe Eijlders fascia"
+  },
+  {
+   "node": 2721352861,
+   "pand": "0363100012176616",
+   "flags": [],
+   "template": "souvenir",
+   "name": "studio ROOF",
+   "pano": "b_20241216_0911_Track37_Sphere_00012",
+   "verdict": "match",
+   "seen": "design gift shop with cardboard goods, studio ROOF flag"
+  },
+  {
+   "node": 1310911708,
+   "pand": "0363100012168742",
+   "flags": [
+    "unlisted",
+    "multi"
+   ],
+   "template": "coffeeshop",
+   "name": "The Bulldog Ex-Police Station",
+   "pano": "recording_2025-07-14_05-25-22_01592",
+   "verdict": "match",
+   "seen": "Bulldog logo on glass pavilion, partly behind van"
+  },
+  {
+   "node": 2729943715,
+   "pand": "0363100012172443",
+   "flags": [
+    "homes"
+   ],
+   "template": "cosmetics",
+   "name": "MAC Cosmetics",
+   "pano": "recording_2025-07-14_05-25-22_01760",
+   "verdict": "match",
+   "seen": "MAC cosmetics store"
+  },
+  {
+   "node": 2061794303,
+   "pand": "0363100012167650",
+   "flags": [],
+   "template": "books",
+   "name": "Architectura & Natura",
+   "pano": "recording_2025-06-16_03-46-32_01650",
+   "verdict": "kind",
+   "seen": "bookshop window under scaffolding, name not readable"
+  },
+  {
+   "node": 261633545,
+   "pand": "0363100012171621",
+   "flags": [
+    "party"
+   ],
+   "template": "brownBar",
+   "name": "De Magere Brug",
+   "pano": "recording_2025-06-19_03-28-47_02578",
+   "verdict": "kind",
+   "seen": "corner pub with Amstel sign and terrace, name not readable"
+  },
+  {
+   "node": 12118891419,
+   "pand": "0363100012165554",
+   "flags": [
+    "unlisted",
+    "other",
+    "moved",
+    "multi"
+   ],
+   "template": "souvenir",
+   "name": "Double M",
+   "pano": "recording_2025-06-19_03-28-47_03751",
+   "verdict": "match",
+   "seen": "Double M sign, postcard/gift shop"
+  },
+  {
+   "node": 8042384361,
+   "pand": "w1080954285",
+   "flags": [
+    "other",
+    "noBag",
+    "level",
+    "multi"
+   ],
+   "template": "etos",
+   "name": "Etos",
+   "pano": "TMX7316010203-001660_pano_0000_000203",
+   "verdict": "neighbour",
+   "seen": "tree trunk over unsigned glass bay; Etos sign one bay right, Wines & Spirits left"
+  },
+  {
+   "node": 2741064873,
+   "pand": "0363100012182903",
+   "flags": [
+    "noShop"
+   ],
+   "template": "clothes",
+   "name": "Episode",
+   "pano": "recording_2025-06-19_03-28-47_03741",
+   "verdict": "kind",
+   "seen": "clothing shop under scaffolding, name not readable"
+  },
+  {
+   "node": 5392665623,
+   "pand": "w751235775",
+   "flags": [
+    "unlisted",
+    "other",
+    "noBag",
+    "moved"
+   ],
+   "template": "cosmetics",
+   "name": "Kiehl's",
+   "pano": "b_20250108_1349_Track19_Sphere_00279",
+   "verdict": "other",
+   "seen": "windows covered with Bijenkorf beehive 'uitverkoop' sale posters"
+  },
+  {
+   "node": 5531990533,
+   "pand": "0363100012178308",
+   "flags": [
+    "unlisted"
+   ],
+   "template": "tobacco",
+   "name": "Sam Tabak & Souvenirs",
+   "pano": "recording_2025-07-03_03-29-47_02954",
+   "verdict": "kind",
+   "seen": "XXX souvenir shop with shelves of souvenirs, name not readable"
+  },
+  {
+   "node": 3458361035,
+   "pand": "0363100012180286",
+   "flags": [
+    "multi"
+   ],
+   "template": "brownBar",
+   "name": "Café \"van Beeren\"",
+   "pano": "TMX7316010203-002628_pano_0000_000439",
+   "verdict": "other",
+   "seen": "glass/gift gallery shop at no. 141"
+  },
+  {
+   "node": 2212804857,
+   "pand": "0363100012167972",
+   "flags": [],
+   "template": "clothes",
+   "name": "H&M",
+   "pano": "recording_2025-06-16_06-42-40_02324",
+   "verdict": "kind",
+   "seen": "clothing store with mannequins and racks, no sign readable"
+  },
+  {
+   "node": 1477529601,
+   "pand": "0363100012177138",
+   "flags": [
+    "outside"
+   ],
+   "template": "brownBar",
+   "name": "De Saloon",
+   "pano": "recording_2025-07-14_05-25-22_01502",
+   "verdict": "kind",
+   "seen": "white corner bar/cafe with terrace, name not readable"
+  },
+  {
+   "node": 2737805530,
+   "pand": "0363100012171061",
+   "flags": [
+    "unlisted",
+    "other",
+    "homes"
+   ],
+   "template": "souvenir",
+   "name": "Nyingma Tibetaans Boeddhistisch Meditatiecentrum",
+   "pano": "recording_2025-06-19_03-28-47_02049",
+   "verdict": "match",
+   "seen": "Nyingma Centrum sign over shop window with goods"
+  },
+  {
+   "node": 2860109829,
+   "pand": "0457100000054906",
+   "flags": [
+    "closed",
+    "other",
+    "noBag"
+   ],
+   "template": "bike",
+   "name": "Attema Tweewielers",
+   "pano": "recording_2025-09-19_11-47-49_00970",
+   "verdict": "vacant",
+   "seen": "small shopfront with window blanked out, red door"
+  },
+  {
+   "node": 2375431045,
+   "pand": "0363100012179314",
+   "flags": [
+    "noShop"
+   ],
+   "template": "bike",
+   "name": "Yellow Bike",
+   "pano": "recording_2025-06-16_06-42-40_02515",
+   "verdict": "match",
+   "seen": "Yellow Bike rentals sign"
+  },
+  {
+   "node": 4337115891,
+   "pand": "0363100012169037",
+   "flags": [
+    "other",
+    "noShop"
+   ],
+   "template": "tobacco",
+   "name": "Amsterdam Pipe Shop",
+   "pano": "recording_2025-06-16_04-42-37_02460",
+   "verdict": "match",
+   "seen": "basement shop with 'pipes' sign by the stoop"
+  },
+  {
+   "node": 5531930116,
+   "pand": "0363100012171853",
+   "flags": [
+    "noName"
+   ],
+   "template": "redLight",
+   "name": "",
+   "pano": "recording_2025-07-03_03-29-47_02912",
+   "verdict": "unclear",
+   "seen": "oblique view of dark doors, wrong wall"
+  },
+  {
+   "node": 2721472964,
+   "pand": "0363100012174406",
+   "flags": [
+    "unlisted",
+    "other"
+   ],
+   "template": "cheese",
+   "name": "Cheese Store",
+   "pano": "TMX7316010203-002960_pano_0000_000181",
+   "verdict": "noShop",
+   "seen": "Westerkerk church wall behind tree and kiosk"
+  },
+  {
+   "node": 5752286114,
+   "pand": "0363100012170944",
+   "flags": [
+    "other",
+    "noShop"
+   ],
+   "template": "brownBar",
+   "name": "House Bar",
+   "pano": "recording_2025-06-16_06-42-40_02550",
+   "verdict": "noShop",
+   "seen": "tree in front of plain brick wall and windows"
+  },
+  {
+   "node": 3087930295,
+   "pand": "0363100012168482",
+   "flags": [
+    "unlisted",
+    "other",
+    "multi"
+   ],
+   "template": "cheese",
+   "name": "Cheese & More",
+   "pano": "recording_2025-06-19_03-28-47_01501",
+   "verdict": "match",
+   "seen": "shop with round cheese sign, 'by Henri Willig' lettering"
+  },
+  {
+   "node": 11364376992,
+   "pand": "0363100012167572",
+   "flags": [],
+   "template": "variety",
+   "name": "Flying Tiger Copenhagen",
+   "pano": "TMX7316010203-001659_pano_0000_000197",
+   "verdict": "other",
+   "seen": "ICI Paris XL / Urban Decay perfumery, shuttered"
+  },
+  {
+   "node": 467095818,
+   "pand": "0363100012169650",
+   "flags": [
+    "other"
+   ],
+   "template": "etos",
+   "name": "Etos",
+   "pano": "recording_2025-07-14_05-25-22_01750",
+   "verdict": "match",
+   "seen": "Etos drugstore, sign readable"
+  },
+  {
+   "node": 251168510,
+   "pand": "0363100012182854",
+   "flags": [
+    "other"
+   ],
+   "template": "brownBar",
+   "name": "Café Del Mondo",
+   "pano": "recording_2025-07-03_03-29-47_02930",
+   "verdict": "kind",
+   "seen": "cafe with 'Cafe' sign behind closed terrace umbrellas"
+  },
+  {
+   "node": 267425357,
+   "pand": "0363100012182242",
+   "flags": [
+    "party"
+   ],
+   "template": "bike",
+   "name": "Bankras",
+   "pano": "recording_2025-07-03_03-29-47_03147",
+   "verdict": "match",
+   "seen": "Rijwielhersteller R. Bankras bike shop window"
+  },
+  {
+   "node": 10829630288,
+   "pand": "0363100012165106",
+   "flags": [
+    "other",
+    "moved"
+   ],
+   "template": "butcher",
+   "name": "Keurslagerij Pouw",
+   "pano": "recording_2025-07-03_06-23-16_00184",
+   "verdict": "other",
+   "seen": "white boutique/gift shop with mannequin and shelves"
+  },
+  {
+   "node": 2741066775,
+   "pand": "0363100012170444",
+   "flags": [
+    "closed",
+    "other",
+    "noShop"
+   ],
+   "template": "bike",
+   "name": "De Specialist",
+   "pano": "recording_2025-06-19_03-28-47_03842",
+   "verdict": "noShop",
+   "seen": "school/community building entrance behind tree"
+  },
+  {
+   "node": 2737810151,
+   "pand": "0363100012178786",
+   "flags": [
+    "homes"
+   ],
+   "template": "clothes",
+   "name": "Sissy-Boy",
+   "pano": "recording_2025-06-19_03-28-47_02307",
+   "verdict": "match",
+   "seen": "Sissy-Boy shop, sign readable"
+  },
+  {
+   "node": 2721773035,
+   "pand": "0363100012179323",
+   "flags": [
+    "unlisted",
+    "other",
+    "party"
+   ],
+   "template": "souvenir",
+   "name": "Souvenir Supermarket",
+   "pano": "recording_2025-06-16_06-42-40_02501",
+   "verdict": "kind",
+   "seen": "shop signed 'Souvenirs'"
+  },
+  {
+   "node": 5531990534,
+   "pand": "0363100012178393",
+   "flags": [
+    "noName",
+    "other",
+    "level"
+   ],
+   "template": "souvenir",
+   "name": "",
+   "pano": "TMX7316010203-001178_pano_0000_000023",
+   "verdict": "unclear",
+   "seen": "small display window with red items, kind unreadable"
+  },
+  {
+   "node": 5396153123,
+   "pand": "0363100012176693",
+   "flags": [
+    "homes"
+   ],
+   "template": "bakery",
+   "name": "Bunbun",
+   "pano": "TMX7316010203-002549_pano_0000_001817",
+   "verdict": "unclear",
+   "seen": "corner shopfront behind van, kind unreadable"
+  },
+  {
+   "node": 2399746758,
+   "pand": "0363100012171142",
+   "flags": [
+    "multi"
+   ],
+   "template": "coffeeshop",
+   "name": "Dampkring",
+   "pano": "TMX7316010203-001054_pano_0000_002339",
+   "verdict": "unclear",
+   "seen": "corner shopfront with dark glass, sign unreadable"
+  },
+  {
+   "node": 5532015169,
+   "pand": "0363100012178803",
+   "flags": [
+    "noName"
+   ],
+   "template": "redLight",
+   "name": "",
+   "pano": "recording_2025-06-30_05-16-46_01498",
+   "verdict": "other",
+   "seen": "tattoo shop with 'All Walk Ins' basement door"
+  },
+  {
+   "node": 4866728896,
+   "pand": "0363100012171790",
+   "flags": [
+    "multi"
+   ],
+   "template": "brownBar",
+   "name": "De Stoof",
+   "pano": "TMX7316010203-002031_pano_0000_000873",
+   "verdict": "match",
+   "seen": "Cafe Bar de Stoof sign"
+  },
+  {
+   "node": 2725878880,
+   "pand": "0363100012180314",
+   "flags": [
+    "homes",
+    "party"
+   ],
+   "template": "coffeeshop",
+   "name": "The Bushdocter Coffeeshop",
+   "pano": "recording_2025-06-19_03-28-47_01759",
+   "verdict": "other",
+   "seen": "bar with lit sign (Arena 52?) and terrace"
+  },
+  {
+   "node": 1223236804,
+   "pand": "0363100012176125",
+   "flags": [
+    "moved"
+   ],
+   "template": "bike",
+   "name": "Shop 30",
+   "pano": "recording_2025-06-16_03-46-32_02145",
+   "verdict": "match",
+   "seen": "shopfront with bicycle graphic and '30'"
+  },
+  {
+   "node": 2212804856,
+   "pand": "0363100012175839",
+   "flags": [],
+   "template": "brownBar",
+   "name": "Cafe Het Paleis",
+   "pano": "recording_2025-06-16_04-42-37_01188",
+   "verdict": "vacant",
+   "seen": "fenced-off boarded unit under renovation"
+  },
+  {
+   "node": 10866005301,
+   "pand": "0363100012173149",
+   "flags": [],
+   "template": "gelato",
+   "name": "Monte Pelmo Cons. IJS fabriek",
+   "pano": "recording_2025-07-03_07-31-54_01125",
+   "verdict": "noShop",
+   "seen": "brick house with residential windows and bins"
+  },
+  {
+   "node": 4866737481,
+   "pand": "0363100012177978",
+   "flags": [
+    "noName"
+   ],
+   "template": "redLight",
+   "name": "",
+   "pano": "recording_2025-06-30_05-16-46_01539",
+   "verdict": "match",
+   "seen": "red-curtained red-light window doors"
+  },
+  {
+   "node": 5927361702,
+   "pand": "0363100012167506",
+   "flags": [],
+   "template": "waffle",
+   "name": "Van Wonderen Stroopwafels",
+   "pano": "TMX7316010203-001050_pano_0000_000469",
+   "verdict": "kind",
+   "seen": "dark carved shopfront with sweets/cookie display, name unreadable"
+  },
+  {
+   "node": 3459827592,
+   "pand": "0363100012174473",
+   "flags": [
+    "unlisted",
+    "multi"
+   ],
+   "template": "phone",
+   "name": "Smoking, phone & more",
+   "pano": "recording_2025-07-14_05-25-22_01782",
+   "verdict": "neighbour",
+   "seen": "Starbucks; Smoking Phone & More sign next door right"
+  },
+  {
+   "node": 4212544091,
+   "pand": "0363100012178242",
+   "flags": [
+    "other"
+   ],
+   "template": "souvenir",
+   "name": "Holland Experience",
+   "pano": "recording_2025-07-03_03-29-47_02503",
+   "verdict": "other",
+   "seen": "The Bulldog cafe/coffeeshop"
+  },
+  {
+   "node": 2722212202,
+   "pand": "0363100012176929",
+   "flags": [
+    "unlisted"
+   ],
+   "template": "toko",
+   "name": "Seth takeout",
+   "pano": "TMX7316010203-002310_pano_0000_001181",
+   "verdict": "match",
+   "seen": "Seth takeout window at no. 371"
+  },
+  {
+   "node": 2721816027,
+   "pand": "0363100012572098",
+   "flags": [
+    "homes"
+   ],
+   "template": "books",
+   "name": "De Kinderboekwinkel",
+   "pano": "TMX7316010203-002044_pano_0000_000644",
+   "verdict": "unclear",
+   "seen": "ground floor behind recycling bins"
+  },
+  {
+   "node": 2743623471,
+   "pand": "0363100012170800",
+   "flags": [
+    "level"
+   ],
+   "template": "cheese",
+   "name": "Fromagerie Abraham Kef",
+   "pano": "b_20241216_0911_Track02_Sphere_00119",
+   "verdict": "kind",
+   "seen": "red-awning shop, 'Francais/Hollandais' cheese text"
+  },
+  {
+   "node": 2737855576,
+   "pand": "0363100012178161",
+   "flags": [
+    "unlisted",
+    "other",
+    "homes"
+   ],
+   "template": "books",
+   "name": "Zwart op Wit",
+   "pano": "recording_2025-07-14_06-43-08_01146",
+   "verdict": "match",
+   "seen": "Boekhandel no. 149, bookshop"
+  },
+  {
+   "node": 5531990528,
+   "pand": "0363100012178200",
+   "flags": [
+    "homes"
+   ],
+   "template": "tattoo",
+   "name": "Dermadonna",
+   "pano": "recording_2025-07-03_03-29-47_02956",
+   "verdict": "match",
+   "seen": "Dermadonna Custom Tattoos, sign readable"
+  },
+  {
+   "node": 2721722772,
+   "pand": "0363100012175390",
+   "flags": [
+    "closed",
+    "other",
+    "multi"
+   ],
+   "template": "turkishBakery",
+   "name": "Simit Sarayi",
+   "pano": "b_20250120_0926_Track02_Sphere_00050",
+   "verdict": "other",
+   "seen": "Asian food bar posters, dark windows (van partly occludes)"
+  },
+  {
+   "node": 2721722615,
+   "pand": "w747924624",
+   "flags": [
+    "unlisted",
+    "noBag",
+    "outside"
+   ],
+   "template": "souvenir",
+   "name": "De Drie Monnikjes",
+   "pano": "TMX7316010203-001659_pano_0000_000331",
+   "verdict": "kind",
+   "seen": "souvenir shop built against Nieuwe Kerk, name unread"
+  },
+  {
+   "node": 12118891420,
+   "pand": "0363100012182906",
+   "flags": [
+    "other"
+   ],
+   "template": "bike",
+   "name": "NIL Bike Shop",
+   "pano": "TMX7316010203-001658_pano_0000_001074",
+   "verdict": "match",
+   "seen": "NIL Bike Shop sign"
+  },
+  {
+   "node": 2721772302,
+   "pand": "0363100012178237",
+   "flags": [
+    "other"
+   ],
+   "template": "cheese",
+   "name": "Cheese Inn",
+   "pano": "TMX7316010203-001643_pano_0002_000113",
+   "verdict": "unclear",
+   "seen": "blurred people occlude, Delta Hotel nearby"
+  },
+  {
+   "node": 251168512,
+   "pand": "0363100012182850",
+   "flags": [
+    "moved",
+    "party"
+   ],
+   "template": "toko",
+   "name": "Toko Joyce",
+   "pano": "recording_2025-07-03_03-29-47_02934",
+   "verdict": "kind",
+   "seen": "small food takeaway with round logos in window"
+  },
+  {
+   "node": 1221433734,
+   "pand": "0363100012178831",
+   "flags": [],
+   "template": "cafe",
+   "name": "Coffee Company",
+   "pano": "recording_2025-06-30_05-16-46_01630",
+   "verdict": "match",
+   "seen": "Coffee Company with yellow awning"
+  },
+  {
+   "node": 1453677389,
+   "pand": "0363100012182414",
+   "flags": [
+    "unlisted",
+    "other",
+    "noShop"
+   ],
+   "template": "bike",
+   "name": "Fietsconsult",
+   "pano": "TMX7316010203-002619_pano_0008_000028",
+   "verdict": "kind",
+   "seen": "bike shop window and passage with bikes, name unread"
+  },
+  {
+   "node": 264588720,
+   "pand": "0363100012181321",
+   "flags": [],
+   "template": "brownBar",
+   "name": "Cafe Eik en Linde",
+   "pano": "recording_2025-06-19_04-38-42_01215",
+   "verdict": "match",
+   "seen": "Cafe Eik en Linde, sign readable"
+  },
+  {
+   "node": 3117026151,
+   "pand": "0363100012571550",
+   "flags": [
+    "closed",
+    "other",
+    "noShop"
+   ],
+   "template": "bike",
+   "name": "Green Budget Bikes",
+   "pano": "recording_2025-06-16_06-42-40_02465",
+   "verdict": "kind",
+   "seen": "Flagship Bike Tours & Rentals"
+  }
+ ],
+ "blind": {
+  "date": "2026-11-16",
+  "what": "before (today) vs after (--r5: closedByOverture + PARTY) on 18 of the 20 changed pands framed (house:frames ?world=live), shuffled photo|A|B, fresh opus judge",
+  "result": {
+   "before": 4,
+   "after": 1,
+   "tie": 13
+  },
+  "ruling": "held: both rules off by default (build-templates.ts --r5)",
+  "rows": [
+   {
+    "front": "r5-closed-plain-2",
+    "pick": "tie",
+    "why": "Both keep the arched doors plain and put Seed Center and shops on the right; the differences further right are not resolvable against the photo."
+   },
+   {
+    "front": "r5-closed-plain-3",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-closed-plain-4",
+    "pick": "before",
+    "why": "The photo is a glazed shopfront; B has a shop at the centre building where A has a plain house door."
+   },
+   {
+    "front": "r5-closed-plain-5",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-closed-plain-6",
+    "pick": "tie",
+    "why": "Both have a shop in the centre house; A's phone shop and B's generic window are equally unsupported by the photo."
+   },
+   {
+    "front": "r5-closed-plain-7",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-closed-plain-8",
+    "pick": "tie",
+    "why": "Panels are effectively identical."
+   },
+   {
+    "front": "r5-closed-plain-9",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-closed-plain-10",
+    "pick": "before",
+    "why": "The photo has a signed bike rental there; A shows a signed bicycle shop, B only an unsigned shopfront."
+   },
+   {
+    "front": "r5-party-in-11",
+    "pick": "after",
+    "why": "The photo's Starbucks is on the right-hand awninged building, as in A; B puts it one building left."
+   },
+   {
+    "front": "r5-party-in-12",
+    "pick": "before",
+    "why": "The photo has plain white-framed glazing with a central door, closer to B than to A's large lit bar."
+   },
+   {
+    "front": "r5-party-in-13",
+    "pick": "tie",
+    "why": "Panels are effectively identical."
+   },
+   {
+    "front": "r5-party-in-14",
+    "pick": "tie",
+    "why": "A tram hides the photo's ground floor, so the Bloemenweelde position cannot be judged."
+   },
+   {
+    "front": "r5-party-in-15",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-party-in-16",
+    "pick": "before",
+    "why": "The photo's Pauw store is in the dark building behind the tree, where A has it; B puts it in the brick house to the left."
+   },
+   {
+    "front": "r5-party-in-17",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-changed-18",
+    "pick": "tie",
+    "why": "Panels are identical."
+   },
+   {
+    "front": "r5-changed-20",
+    "pick": "tie",
+    "why": "Panels are identical."
+   }
+  ]
+ },
+ "closedDrops": "data/retail-ground/closed-drops.json is the --r5 run (2026-11-16), kept as evidence"
+}

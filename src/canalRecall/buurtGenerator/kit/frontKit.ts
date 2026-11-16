@@ -116,12 +116,17 @@ export interface KitRaised { a0: number; a1: number; riseM: number; outM?: numbe
    *  windows under it stay); `lights` windows in each storey over the line (a corner tower's top storeys, Uithoornstraat
    *  067867/125303); `depthM` how far the part reaches back over the roof (a tower's mass; absent: RAISED_LOOK.backM), and
    *  a part stating it stands on a pitched series too, through its mansard (Haringvlietstraat 062635's corner tower). */
-  faceM?: number; lights?: number; depthM?: number }
+  faceM?: number; lights?: number; depthM?: number;
+  /** Round 22 (lane R): `round` the part is a round tower, a cylinder across [a0, a1] standing on the face (Vechtstraat
+   *  084587's stair tower; absent: the box); `cap` a white slab on its top, proud all round (the Amsterdam School towers'
+   *  concrete lid; absent: the brick coping). */
+  round?: true; cap?: true }
 export const raisedOf = (v: unknown): KitRaised[] => (Array.isArray(v) ? v : []).filter((r): r is KitRaised => !!r && typeof r === 'object'
   && [r.a0, r.a1, r.riseM].every(Number.isFinite) && r.a0 >= 0 && r.a1 <= 1 && r.a1 - r.a0 > 0.005 && r.riseM > 0.1 && r.riseM <= 6)
   .map(r => ({ a0: r.a0, a1: r.a1, riseM: r.riseM, ...(Number.isFinite(r.outM) && r.outM! > 0 && r.outM! <= 1.5 ? { outM: r.outM } : {}),
     ...(!r.outM && Number.isFinite(r.faceM) && r.faceM! > 0 && r.faceM! <= 3 ? { faceM: r.faceM } : {}), ...(Number.isInteger(r.lights) && r.lights! >= 1 && r.lights! <= 6 ? { lights: r.lights } : {}),
-    ...(Number.isFinite(r.depthM) && r.depthM! > 0.35 && r.depthM! <= 12 ? { depthM: r.depthM } : {}) }));
+    ...(Number.isFinite(r.depthM) && r.depthM! > 0.35 && r.depthM! <= 12 ? { depthM: r.depthM } : {}),
+    ...(r.round === true && !r.outM ? { round: true as const } : {}), ...(r.cap === true ? { cap: true as const } : {}) }));
 export interface KitStairAxis { a: number; wide: number }
 /** Round 21 (lane R): the upper windows a panorama counts on the series (baysRead.ts seriesCountedOf), `n` across a
  *  front, each `widthM` wide (the members' median measured run, frames included), evenly spaced; drawn by the kit over

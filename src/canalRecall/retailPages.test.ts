@@ -44,7 +44,8 @@ test('goods tiles: about one per 1.15 m of pane, alternate tiles mirrored; a goo
     for (const t of RETAIL_TEMPLATES) {
       if (['bike', 'greengrocer', 'florist', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t)) continue;
       const tris = retailFrontTris({ template: t, seed: 'x', word: 'VERHAGEN', letters: 99, interior: { layer: 7, rect }, goods: 300 }, e, 0.3, 6.3, 0, 3.6);
-      assert.ok(tris.length <= 160, `${t}: ${tris.length} tris`);
+      // Round t: postcard stands (racks) are props, default since their blind: within 220.
+      assert.ok(tris.length <= (TEMPLATE_LOOKS[t].pavement === 'racks' ? 220 : 160), `${t}: ${tris.length} tris`);
       if (TEMPLATE_LOOKS[t].goods) assert.ok(tris.some(tri => (tri.layer ?? 0) >= 300), `${t}: goods tiles drawn`);
     }
   } finally { delete g.__canalRecallRetailReal; }
@@ -88,4 +89,22 @@ test('acceptance: only blind winners take the real look; ?retailRealAll=1 lifts 
     gg.__canalRecallRetailRealAll = true;
     assert.equal(TEMPLATE_LOOKS.florist.goods, 'flowers');
   } finally { delete gg.__canalRecallRetailReal; delete gg.__canalRecallRetailRealAll; }
+});
+
+test('round 4 parts: off by default (fronts unchanged); with retailParts a shutter box, a lit neon sign, and a photo frame colour', () => {
+  const gg = globalThis as { __canalRecallRetailReal?: boolean; __canalRecallRetailParts?: boolean };
+  gg.__canalRecallRetailReal = true;
+  try {
+    const input = { template: 'phone' as const, seed: 'x', word: 'BELSHOP', letters: 99, goods: 300, faces: 310 };
+    const off = retailFrontTris(input, e, 0.3, 6.3, 0, 3.6);
+    gg.__canalRecallRetailParts = false;
+    assert.deepEqual(retailFrontTris(input, e, 0.3, 6.3, 0, 3.6), off);
+    gg.__canalRecallRetailParts = true;
+    const on = retailFrontTris(input, e, 0.3, 6.3, 0, 3.6);
+    assert.ok(on.some(t => t.hex === '#8a8c8e'), 'the shutter box');
+    assert.ok(on.some(t => t.hex === '#ff4f7a' && t.lit), 'a lit OPEN sign');
+    assert.ok(on.length - off.length <= 40, `parts cost ${on.length - off.length} tris`);
+    const hendrix = retailFrontTris({ template: 'brownBar', seed: 'h', word: 'HENDRIX', letters: 99, goods: 300, faces: 310, frameHex: '#c8cbc4' }, e, 0.3, 6.3, 0, 3.6);
+    assert.ok(hendrix.filter(t => t.hex === '#c8cbc4').length >= 6, 'the white frame');
+  } finally { delete gg.__canalRecallRetailReal; delete gg.__canalRecallRetailParts; }
 });

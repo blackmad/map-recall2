@@ -569,7 +569,7 @@ function glassOver(p: P, lit: number): void {
 const LIT: Partial<Record<GoodsKind, number>> = {
   aisles: 0.9, drugstore: 0.9, pharmacy: 0.85, phones: 0.8, gelato: 0.8, waffles: 0.75, magazines: 0.8, ducks: 0.8, exchange: 0.7,
   automatiek: 1, fastfood: 0.7, bowls: 0.75, optician: 0.85, bread: 0.7, butcher: 0.8, frites: 0.75, bainMarie: 0.7, doner: 0.7,
-  coffeeshop: 0.2, smartshop: 0.35, redWindow: 1, tattoo: 0.3, brownBar: 0.25, liquor: 0.45, cosmetics: 0.5, hair: 0.45, books: 0.55, cheese: 0.6, pancakes: 0.55,
+  coffeeshop: 0.2, smartshop: 0.35, redWindow: 1, tattoo: 0.3, brownBar: 0.25, liquor: 0.45, cosmetics: 0.5, hair: 0.8, books: 0.55, cheese: 0.6, pancakes: 0.55,
 };
 
 /**

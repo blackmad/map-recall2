@@ -131,6 +131,15 @@ test('deferring to a stronger wall source drops only the sampled wall', () => {
   validateSpec(s);
 });
 
+test('dark-brown-brick (round 12): a dark brick at brown\'s hue, darker than brown-brick, browner than purple-brown', async () => {
+  const { JUDGED_PALETTE: P, JUDGED_FAMILIES: F, variedTone } = await import('./judgedColour.ts');
+  assert.equal(F.indexOf('dark-brown-brick'), F.indexOf('sandstone') + 1, 'appended after the round 11 families: no family moves');
+  const d = P['dark-brown-brick'];
+  // Lane D round 13 retuned purple-brown (L .37, h 40): dark-brown stays within its lightness and at a browner hue.
+  assert.ok(d.L < P['brown-brick'].L && Math.abs(d.L - P['purple-brown-brick'].L) <= 0.025 && d.h > P['purple-brown-brick'].h + 10 && !d.pale);
+  assert.match(variedTone('dark-brown-brick', 'rubensstraat-133237'), /^#[0-9a-f]{6}$/);
+});
+
 test('dark-grey-brick: Herengracht canal brick reads dark and nearly grey (55, 63, 65 cuts), not purple-brown maroon', () => {
   assert.ok((JUDGED_FAMILIES as readonly string[]).includes('dark-grey-brick'));
   for (const id of ['herengracht-51-73:dark-grey-brick', '0363100012168207', 'x']) {
@@ -158,13 +167,4 @@ test('judgeFront: a dark painted front with a neutral cut sample is black paint,
   assert.equal(judgeFront({ ...base, sample: '#343230' }).family, 'painted-black');
   assert.equal(judgeFront({ ...base, sample: '#2a3a30' }).family, 'painted-dark');
   assert.equal(judgeFront({ ...base, absolute: false, sample: '#343230' }).family, 'painted-dark');
-});
-
-test('dark-brown-brick (round 12): a dark brick at brown\'s hue, darker than brown-brick, browner than purple-brown', async () => {
-  const { JUDGED_PALETTE: P, JUDGED_FAMILIES: F, variedTone } = await import('./judgedColour.ts');
-  assert.equal(F[F.length - 1], 'dark-brown-brick', 'appended: no family moves');
-  const d = P['dark-brown-brick'];
-  // Centrum round 7 moved purple-brown to L .37 h 40 (measured Centrum cuts); dark-brown stays browner by >10 degrees.
-  assert.ok(d.L < P['brown-brick'].L && Math.abs(d.L - P['purple-brown-brick'].L) <= 0.025 && d.h > P['purple-brown-brick'].h + 10 && !d.pale);
-  assert.match(variedTone('dark-brown-brick', 'rubensstraat-133237'), /^#[0-9a-f]{6}$/);
 });

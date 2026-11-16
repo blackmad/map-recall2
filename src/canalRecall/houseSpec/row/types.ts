@@ -70,13 +70,19 @@ export type RowDormerKind = (typeof ROW_DORMER_KINDS)[number];
  *   arch-ring           a raised white arch ring with keystone over a round head
  *   none                plain brick heads
  */
-export const ROW_HEAD_DRESSINGS = ['none', 'block-course', 'keystone', 'segmental-tympanum', 'dentil-lintel', 'jack-blocks', 'stone-lintel', 'arch-ring', 'block-surround', 'tablet'] as const;
+export const ROW_HEAD_DRESSINGS = ['none', 'block-course', 'keystone', 'segmental-tympanum', 'dentil-lintel', 'jack-blocks', 'stone-lintel', 'arch-ring', 'block-surround', 'tablet',
+  // Lane R round 23 (De Pijp heads list), appended: alternating white voussoirs, white corner blocks, a moulded white surround
+  // with a cornice hood, a patterned brick band at the heads, an ornamental brick arch ring (headGrammar.ts, facadeOrnaments brickBand).
+  'voussoirs', 'corner-blocks', 'moulded-hood', 'brick-band', 'brick-arch-ring'] as const;
 /** `tablet`: a light stone tablet in the brick over each window (Herengracht 175404); with the `relieving` shape, over a
  *  brick relieving arch. */
 /** `block-surround`: white blocks framing the whole window, alternating quoins up both jambs with a keyed head (Kinkerstraat 100, reviewed). */
 export type RowHeadDressing = (typeof ROW_HEAD_DRESSINGS)[number];
 export const ROW_HEAD_SHAPES = ['flat', 'segmental', 'round', 'relieving'] as const;
 export type RowHeadShape = (typeof ROW_HEAD_SHAPES)[number];
+/** A stated erker: `storeys` in reader rows (ground = 0), `kind` its plan, `roofBalcony` a railing on its roof. */
+/** `width: 'full'`: across the whole front; `side`: over that side's axis as seen (absent: the centre bay). */
+export interface RowBayWindow { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true; width?: 'full'; side?: 'left' | 'right' }
 /** The upper window cell: tall sash/T-windows (the period default) or casements with a top light. */
 /** `cross`: a cross window (kruiskozijn), a mullion and a transom a third down (Herengracht 27). */
 export const ROW_WINDOW_KINDS = ['tall-upper', 'sash', 't-window', 'casement-toplight', 'casement', 'sash-8-over-8', 'sash-small-panes', 'cross'] as const;
@@ -192,6 +198,10 @@ export interface RowDesign {
   /** Where the `row-balcony` extra stands: the storeys (0 = the ground storey, which is the bel-etage over a souterrain; 1 = the
    *  first storey above it) and the axis. Absent = the renderer's default (first upper storey, centre). */
   balcony?: RowField<{ storeys: number[]; axis: 'centre' | 'all' }>;
+  /** A white timber erker (bay window) on consoles over the centre bay (lane R round 24, lane D's `bay-window` kit gap):
+   *  the storeys it covers as the reader counts rows (0 = the ground storey, 1 = the first above it), its plan (a box,
+   *  or canted sides) and a balcony railing on its roof when the reading says so. Absent: no erker. */
+  bayWindow?: RowField<RowBayWindow>;
   /** A gabled crown's outline as read on the photo (`crown` step, neck, bell or point): its rise over the cornice line
    *  (m), the step count of a step gable, the attic lights in it and the neck (or top tread) width. Absent: the crown
    *  kind alone, which draws no gable over the row line. */

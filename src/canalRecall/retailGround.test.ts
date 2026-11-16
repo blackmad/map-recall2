@@ -5,7 +5,7 @@ import { test } from 'node:test';
 import { REAL_ONLY_TEMPLATES, RETAIL_TEMPLATES, TEMPLATE_LOOKS, retailGroundEnabled, signText, signWord, templateForTags } from './retailTemplates.js';
 import { FRONT, LETTER_STEM, MAX_LETTER_H, MIN_LETTER_H, fitWord, glassTone, retailDoor, retailFrontTris, strokePx } from './retailFront.js';
 import { LOGOS, LOGO_GRID, glyphCellBox, glyphLayout, logoFor, retailLogoLayer } from './retailLogos.js';
-import { hostOnFront, ringEdges, segDist, steppedRun } from './retailHosting.js';
+import { PARTY, hostOnFront, ringEdges, segDist, steppedRun } from './retailHosting.js';
 import fs from 'node:fs';
 import { decorateShopfront, setShopfronts, setShopTemplates } from './shopfronts.js';
 import { bayTextures, type BayVariant } from './bayTextures.js';
@@ -333,7 +333,10 @@ test('round 3c cost: panes are one interior quad of the shop cell; every templat
   for (const t of RETAIL_TEMPLATES) {
     const tris = retailFrontTris({ template: t, seed: 'x', word: 'VERHAGEN', letters: 99, interior: { layer: 7, rect } }, e, 0.3, 6.3, 0, 3.6);
     const props = ['bike', 'greengrocer', 'florist', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t);
-    if (!props) assert.ok(tris.length <= 140, `${t}: ${tris.length} tris`);
+    // Round t: a rack is a postcard stand (uprights, a bar, 18 cards), default since its blind: racks fronts within 220.
+    const racks = TEMPLATE_LOOKS[t].pavement === 'racks';
+    if (racks) assert.ok(tris.length <= 220, `${t}: ${tris.length} tris`);
+    else if (!props) assert.ok(tris.length <= 140, `${t}: ${tris.length} tris`);
     // Round 6: the bloemist's pavement display (two tables of pots, buckets before them) stays within 320.
     if (t === 'florist') assert.ok(tris.length <= 320, `${t}: ${tris.length} tris`);
     // Lane retail-real: tattoo and the snackbar exist only under ?retailReal (REAL_ONLY_TEMPLATES), where panes show goods.
@@ -526,4 +529,18 @@ test('brownBar is held: its cell keeps the flag-off painter', async () => {
   const { RETAIL_HELD, RETAIL_HELD_KINDS } = await import('./retailTemplates.js');
   assert.ok(RETAIL_HELD.includes('brownBar'));
   assert.ok(RETAIL_HELD_KINDS.includes('shopBar'));
+});
+
+test('round 5 (retail-real) PARTY (off by default): a node in a house on the party wall of a shop goes to the shop; not with spill off, not 1.5 m in', () => {
+  // Two 5 m wide, 10 m deep pands on a street along y = 0 (street to the south); the house is x 0..5, the shop x 5..10.
+  const house = { id: 'house', ring: [[0, 0], [5, 0], [5, 10], [0, 10], [0, 0]] as [number, number][] };
+  const shop = { id: 'shop', ring: [[5, 0], [10, 0], [10, 10], [5, 10], [5, 0]] as [number, number][] };
+  const uses = (id: string) => id === 'shop' ? { vbos: 1, area: { winkelfunctie: 60 } } : undefined;
+  const street = (_c: unknown, e: { y0: number; y1: number }) => e.y0 === 0 && e.y1 === 0;
+  assert.equal(hostOnFront([house, shop], 4.4, 2, uses, street, () => true, true, true)?.id, 'shop');
+  assert.equal(hostOnFront([house, shop], 4.4, 2, uses, street, () => true, true)?.id, 'house');
+  assert.equal(hostOnFront([house, shop], 4.4, 2, uses, street, () => true, false, true)?.id, 'house');
+  assert.equal(hostOnFront([house, shop], 5 - PARTY.nodeM - 0.5, 2, uses, street, () => true, true, true)?.id, 'house');
+  // A house with shop space of its own keeps the node.
+  assert.equal(hostOnFront([house, shop], 4.4, 2, id => ({ vbos: 1, area: { winkelfunctie: id === 'shop' ? 60 : 30 } }), street, () => true, true)?.id, 'house');
 });

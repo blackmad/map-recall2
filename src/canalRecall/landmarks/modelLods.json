@@ -2057,14 +2057,14 @@
   }
  },
  "ing-house": {
-  "sourceHash": "2effacb22193ad48",
+  "sourceHash": "cc8c4bf51cbaa304",
   "buildVersion": 2,
-  "bytes": 42696,
+  "bytes": 42724,
   "triangles": 2100,
   "lod2": {
-   "sourceHash": "2effacb22193ad48",
+   "sourceHash": "cc8c4bf51cbaa304",
    "buildVersion": 6,
-   "bytes": 13560,
+   "bytes": 13588,
    "triangles": 527
   }
  },

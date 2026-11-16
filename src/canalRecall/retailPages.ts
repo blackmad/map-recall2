@@ -44,3 +44,30 @@ export function retailRealAllOn(): boolean {
   if (typeof g.__canalRecallRetailRealAll === 'boolean') return g.__canalRecallRetailRealAll;
   return (cachedAll ??= /[?&]retailRealAll=1\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_REAL_ALL === '1');
 }
+
+let cachedParts: boolean | undefined;
+/** `?retailParts=1` (RETAIL_PARTS=1): round 4's template parts (retailTemplates.ts TEMPLATE_PARTS: shutter boxes, neon
+ *  window signs, lettering on the glass) and per-pand front overrides. Off until they win a blind A/B. */
+export function retailPartsOn(): boolean {
+  const g = globalThis as { __canalRecallRetailParts?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  if (typeof g.__canalRecallRetailParts === 'boolean') return g.__canalRecallRetailParts;
+  return (cachedParts ??= /[?&]retailParts=1\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_PARTS === '1');
+}
+
+let cachedBrand: boolean | undefined;
+let cachedBrandAll: boolean | undefined;
+/** Round 7 (lane retail-real; default on since round t, 2026-11-16, after its blind): the brands in ACCEPTED_BRANDS
+ *  (retailBrandStyles.ts) draw their measured style (letters on the wall with no band, blade signs with their glyph,
+ *  dark plate glass), and the pavement racks and boards draw as postcard stands and chalkboards. `?retailBrand=0`
+ *  (RETAIL_BRAND=0) turns it off; `?retailBrand=all` (RETAIL_BRAND=all) applies every measured brand, for review. */
+export function retailBrandOn(): boolean {
+  const g = globalThis as { __canalRecallRetailBrand?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  if (typeof g.__canalRecallRetailBrand === 'boolean') return g.__canalRecallRetailBrand;
+  return (cachedBrand ??= !(/[?&]retailBrand=0\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_BRAND === '0'));
+}
+/** `?retailBrand=all`: every measured brand style acts, not only the accepted ones. */
+export function retailBrandAll(): boolean {
+  const g = globalThis as { __canalRecallRetailBrandAll?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  if (typeof g.__canalRecallRetailBrandAll === 'boolean') return g.__canalRecallRetailBrandAll;
+  return (cachedBrandAll ??= /[?&]retailBrand=all\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_BRAND === 'all');
+}

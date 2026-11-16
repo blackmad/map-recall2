@@ -1,5 +1,6 @@
 import { logoFor, retailLogoLayer } from './retailLogos.js';
-import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, retailRealOn } from './retailPages.js';
+import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, retailBrandOn, retailPartsOn, retailRealOn } from './retailPages.js';
+import { BRAND_STYLES } from './retailBrandStyles.js';
 import { RETAIL_CHAINS, chainOfWord } from './retailChains.js';
 import { TEMPLATE_CHAIN_LOGO, chainLogo } from './retailChainLogos.js';
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
@@ -148,13 +149,16 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
 /** House rows: a feature's `rowDress` (houseLine/rowFront.ts rowDressOf), validated. */
 type RowSide = 'left' | 'right' | 'centre';
 const rowSideOf = (v: unknown): RowSide | null => v === 'left' || v === 'right' || v === 'centre' ? v : null;
-function rowDressOf(v: unknown): { omitExtras?: string[]; cornice?: string; corniceDress?: import('./houseSpec/row/types.js').RowCorniceDress; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false; form?: 'straight' | 'side' | 'double'; railing?: true; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; door?: { side: RowSide; index?: number; bays?: number; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; windowShare?: number; mullionShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; basements?: RowBasementDraw[]; shopFront?: { frameHex: string; side: RowSide } } | null {
+function rowDressOf(v: unknown): { omitExtras?: string[]; cornice?: string; corniceDress?: import('./houseSpec/row/types.js').RowCorniceDress; heads?: RowHeadsDraw[]; extras?: string[]; stoop?: { side: RowSide; steps?: false; form?: 'straight' | 'side' | 'double'; railing?: true; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; door?: { side: RowSide; index?: number; bays?: number; doorcase?: import('./houseSpec/row/types.js').RowDoorcase }; balcony?: { storeys: number[]; axis: 'centre' | 'all' }; erker?: { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true; width?: 'full'; side?: 'left' | 'right' }; windowShare?: number; mullionShare?: number; glazing?: RowGlazingDraw; floorsM?: number[]; groundWalls?: RowGroundWallDraw[]; basements?: RowBasementDraw[]; shopFront?: { frameHex: string; side: RowSide } } | null {
   if (!v || typeof v !== 'object') return null;
   const ws = (v as { windowShare?: unknown }).windowShare, windowShare = typeof ws === 'number' && ws > 0.3 && ws < 0.95 ? { windowShare: ws } : {};
   const ms = (v as { mullionShare?: unknown }).mullionShare, mullionShare = typeof ms === 'number' && ms > 0 && ms < 0.6 ? { mullionShare: ms } : {};
   const d = v as { cornice?: unknown; heads?: unknown; extras?: unknown; stoop?: { side?: unknown }; door?: { side?: unknown; index?: unknown; bays?: unknown }; balcony?: { storeys?: unknown; axis?: unknown } };
   const doorcaseOf = (dc: { material?: unknown; top?: unknown; fanlight?: unknown; door?: unknown } | undefined) => dc && (dc.material === 'stone' || dc.material === 'timber') ? { doorcase: { material: dc.material as 'stone' | 'timber', ...(dc.top === 'entablature' || dc.top === 'pediment' || dc.top === 'segmental' ? { top: dc.top as 'entablature' | 'pediment' | 'segmental' } : {}), ...(dc.fanlight === false || dc.fanlight === 'diamond' || dc.fanlight === 'oval' || dc.fanlight === 'oval-spoked' ? { fanlight: dc.fanlight as false | 'diamond' | 'oval' | 'oval-spoked' } : {}), ...((dc as { span?: unknown }).span === 'ground' || (dc as { span?: unknown }).span === 'frame' ? { span: (dc as { span: 'ground' | 'frame' }).span } : {}), ...(typeof (dc as { entresol?: unknown }).entresol === 'number' ? { entresol: (dc as { entresol: number }).entresol } : {}), ...((dc as { tiers?: unknown }).tiers === 2 ? { tiers: 2 as const } : {}), ...(dc.door === 'black' || (typeof dc.door === 'string' && /^#[0-9a-f]{6}$/i.test(dc.door)) ? { door: dc.door as string } : {}) } } : {};
   const doorSide = rowSideOf(d.door?.side), door = doorSide ? { side: doorSide, ...(typeof d.door?.index === 'number' && typeof d.door?.bays === 'number' && d.door.bays > 0 ? { index: d.door.index, bays: d.door.bays } : {}), ...doorcaseOf((d.door as { doorcase?: { material?: unknown } } | undefined)?.doorcase) } : null;
+  // A stated erker (lane R round 24): its rows, plan and roof balcony; malformed or absent, none.
+  const er = (v as { erker?: { storeys?: unknown; kind?: unknown; roofBalcony?: unknown; width?: unknown; side?: unknown } }).erker;
+  const erker = er && Array.isArray(er.storeys) && er.storeys.length && er.storeys.every(k => Number.isInteger(k) && (k as number) >= 0) ? { storeys: er.storeys as number[], kind: er.kind === 'canted' ? 'canted' as const : 'box' as const, ...(er.roofBalcony === true ? { roofBalcony: true as const } : {}), ...(er.width === 'full' ? { width: 'full' as const } : {}), ...(er.side === 'left' || er.side === 'right' ? { side: er.side as 'left' | 'right' } : {}) } : null;
   const balcony = d.balcony && Array.isArray(d.balcony.storeys) && d.balcony.storeys.every(k => typeof k === 'number') ? { storeys: d.balcony.storeys as number[], axis: d.balcony.axis === 'all' ? 'all' as const : 'centre' as const } : null;
   const sf = (v as { shopFront?: { frameHex?: unknown; side?: unknown } }).shopFront, sfSide = rowSideOf(sf?.side);
   const shopFront = sf && typeof sf.frameHex === 'string' && /^#[0-9a-f]{6}$/i.test(sf.frameHex) && sfSide ? { shopFront: { frameHex: sf.frameHex, side: sfSide } } : {};
@@ -183,7 +187,7 @@ function rowDressOf(v: unknown): { omitExtras?: string[]; cornice?: string; corn
     ...(cd.centre === 'pediment' || cd.centre === 'segmental' || cd.centre === 'balustrade' ? { centre: cd.centre as 'pediment' | 'segmental' | 'balustrade' } : {}),
     ...(typeof cd.centreShare === 'number' && cd.centreShare > 0.1 && cd.centreShare <= 1 ? { centreShare: cd.centreShare } : {}),
   } } : {};
-  const out = { ...(omitExtras.length ? { omitExtras } : {}), ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...corniceDress, ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side, ...steps, ...stoopForm, ...stoopRail, ...doorcase } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}), ...windowShare, ...mullionShare, ...glazing, ...floorsM, ...(groundWalls.length ? { groundWalls } : {}), ...(basements.length ? { basements } : {}), ...shopFront };
+  const out = { ...(omitExtras.length ? { omitExtras } : {}), ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...corniceDress, ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side, ...steps, ...stoopForm, ...stoopRail, ...doorcase } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}), ...(erker ? { erker } : {}), ...windowShare, ...mullionShare, ...glazing, ...floorsM, ...(groundWalls.length ? { groundWalls } : {}), ...(basements.length ? { basements } : {}), ...shopFront };
   return Object.keys(out).length ? out : null;
 }
 
@@ -332,6 +336,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Lane retail-real: lane R's De Wallen audit on a red-light row (shopfronts.ts RedLightRow): closed or not a window
   // draws no template under retailReal; a measured window front draws over its own span.
   const redRow = retailRealOn() && template?.[0] === 'redLight' ? template[5] : undefined;
+  // Round 4 (`?retailParts=1`): a per-pand front colour read on a photo (shopfronts.ts fronts, front-overrides.json).
+  const ovRaw = retailPartsOn() ? p.shopFrontOverride as { frame?: string; awning?: string } | undefined : undefined, hex6 = (v: unknown) => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v);
+  const ov = ovRaw ? { ...(hex6(ovRaw.frame) ? { frame: ovRaw.frame } : {}), ...(hex6(ovRaw.awning) ? { awning: ovRaw.awning } : {}) } : undefined;
   // Lane retail-real: a chain's row carries '@<key>' as its word (retailChains.ts); its type template draws only with
   // retailReal on, under the chain's colours and logo.
   const chainKey = chainOfWord(template?.[3]), chainRow = chainKey ? RETAIL_CHAINS[chainKey] : undefined;
@@ -342,7 +349,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     && (!(REAL_ONLY_TEMPLATES as readonly string[]).includes(template[0]) || (retailRealOn() && realAccepted(template[0])))) {
     const logoLayer = retailLogoLayer(cellSetOf(look)), cl = retailChain && chainKey ? chainLogo(chainKey) : retailRealOn() && realAccepted(template[0]) && TEMPLATE_CHAIN_LOGO[template[0]] ? chainLogo(TEMPLATE_CHAIN_LOGO[template[0]]) : null;
     const logo = cl ? { rect: cl.rect, aspect: cl.aspect, page: CHAIN_LOGO_BASE + cl.page } : logoFor(template[0] as RetailTemplate);
-    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] && !chainKey ? { word: template[3] } : chainWord ? { word: chainWord } : {}), ...(retailChain ? { chain: { fascia: retailChain.fascia, letters: retailChain.letters, word: retailChain.word } } : {}), ...(redRow?.s ? { redLight: { span: redRow.s, ...(redRow.d ? { doors: redRow.d } : {}), ...(redRow.t ? { tube: redRow.t } : {}), ...(redRow.c ? { curtains: redRow.c } : {}), ...(redRow.f ? { frameHex: redRow.f } : {}) } } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer + logo.page, rect: logo.rect, aspect: logo.aspect } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(logoLayer !== null && retailRealOn() && realAccepted(template[0]) ? { goods: logoLayer + GOODS_BASE, faces: logoLayer + TYPE_BASE } : {}), ...(puiPaint && p.puiDark !== 1 && !retailChain ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}), ...(typeof p.shopAwning === 'string' && /^#[0-9a-f]{6}$/i.test(p.shopAwning) ? { awning: p.shopAwning } : {}) };
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] && !chainKey ? { word: template[3] } : chainWord ? { word: chainWord } : {}), ...(retailChain ? { chain: { fascia: retailChain.fascia, letters: retailChain.letters, word: retailChain.word } } : {}), ...(redRow?.s ? { redLight: { span: redRow.s, ...(redRow.d ? { doors: redRow.d } : {}), ...(redRow.t ? { tube: redRow.t } : {}), ...(redRow.c ? { curtains: redRow.c } : {}), ...(redRow.f ? { frameHex: redRow.f } : {}) } } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer + logo.page, rect: logo.rect, aspect: logo.aspect } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(logoLayer !== null && retailRealOn() && realAccepted(template[0]) ? { goods: logoLayer + GOODS_BASE, faces: logoLayer + TYPE_BASE } : {}), ...(puiPaint && p.puiDark !== 1 && !retailChain ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}), ...(typeof p.shopAwning === 'string' && /^#[0-9a-f]{6}$/i.test(p.shopAwning) ? { awning: p.shopAwning } : {}), ...(ov?.awning ? { awning: ov.awning } : {}), ...(ov?.frame ? { frameHex: ov.frame } : {}), ...(retailBrandOn() && (chainKey ?? template[0]) in BRAND_STYLES ? { brand: chainKey ?? template[0] } : {}) };
     delete building.signature;
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);
@@ -450,7 +457,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       // frieze sits above (Kinkerstraat 100-106: the block course ran under the consoles).
       const band = ROW_CORNICE_BAND_M[String(dress?.cornice ?? 'none')] ?? 0;
       if (band > 0) building.parapetM = band;
-      const ids = [...(dress?.heads?.length ? ['row-heads'] : []), ...(dress?.cornice ? ['row-cornice'] : []), ...(dress?.extras ?? [])];
+      const ids = [...(dress?.heads?.length ? ['row-heads'] : []), ...(dress?.cornice ? ['row-cornice'] : []), ...(dress?.extras ?? []), ...(dress?.erker ? ['row-erker'] : [])];
       const register = Array.isArray(p.registerForce) ? p.registerForce as string[] : [];
       if (dress) building.rowDress = dress;
       building.registerForce = [...register, ...ids];

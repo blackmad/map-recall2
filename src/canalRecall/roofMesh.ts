@@ -1529,9 +1529,9 @@ export function kitEndOf(rect: Pick<Rect, 'ux' | 'uy'>, n: Vec2): -1 | 1 | null 
 /** House rows: every row mansard is the one dark slate (look/palette.ts MEASURED_SLATE[1], #606b79): one tone per
  *  series and the same across a row (blind review 2026-11-14: Weteringschans 169016 and 171218 differed). */
 export const ROW_SLATE_TONE = 0.5;
-export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number; kit?: BuurtRoofKit; shape?: 'hipped'; frontN?: Vec2 } | null {
+export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number; kit?: BuurtRoofKit; frontN?: Vec2; shape?: 'hipped' } | null {
   if (!v || typeof v !== 'object') return null;
-  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown; kit?: unknown; shape?: unknown; frontN?: unknown };
+  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown; kit?: unknown; frontN?: unknown; shape?: unknown };
   if (!(Number(r.riseM) > 0.5) || typeof r.series !== 'string' || !Array.isArray(r.dormers)) return null;
   const dormers = (r.dormers as Array<{ a?: unknown; kind?: unknown; hoist?: unknown }>).filter(d => Number.isFinite(Number(d.a)) && (ROW_DORMER_DRAW_KINDS as readonly unknown[]).includes(d.kind))
     .map(d => ({ a: Math.max(0.05, Math.min(0.95, Number(d.a))), kind: d.kind as RowDormerKind, ...(d.hoist === true ? { hoist: true } : {}) }));

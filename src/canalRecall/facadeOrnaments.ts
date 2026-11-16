@@ -213,6 +213,9 @@ export const ROW_DRESS = {
   block: { w: 0.15, tall: 0.3, short: 0.2, gap: 0.09, pier: 0.42, out: 0.05 },
   keystone: { w: 0.18, h: 0.34, arch: 0.24, out: 0.06 },
   tympanum: { rise: 0.32, ring: 0.14, out: 0.04 },
+  /** Lane R round 23: a patterned brick band at the heads (Tolstraat 108704, Pieter Aertszstraat 126746): a course of
+   *  the wall's darker brick across the front with a row of burnt-brick blocks on it, wall-family tones, never white. */
+  brickBand: { h: 0.32, out: 0.015, block: 0.12, pitch: 0.26, blockOut: 0.025, band: 0.84, dark: 0.64 },
   cornice: { h: 1.15, frieze: 0.62, console: 0.16, pitch: 0.85, corona: 0.42, out: 0.45 },
 } as const;
 
@@ -236,13 +239,14 @@ const ROW_DENTILS = { w: 0.08, h: 0.12, pitch: 0.17, bed: 0.26 } as const;
 /** The top of the highest head dressing a row wall draws (block course, keystone arch, tympanum, lintel); -inf with none. */
 function rowHeadRise(w: RowWindow): number {
   if (w.dressing === 'block-course') return ROW_DRESS.block.tall;
+  if (w.dressing === 'brick-band') return ROW_DRESS.brickBand.h;
   const g = headGrammarOf(w.dressing, w.shape);
   return g ? headRise(g, w.x1 - w.x0) : -Infinity;
 }
 function rowHeadsTop(c: ExtraContext): number {
   let top = -Infinity;
   for (const w of rowWindowsOf(c)) {
-    const rise = rowHeadRise(w), z = rise > -Infinity && w.dressing !== 'block-course' ? headLine(c, w, rise) ?? w.z1 : w.z1;
+    const rise = rowHeadRise(w), z = rise > -Infinity && w.dressing !== 'block-course' && w.dressing !== 'brick-band' ? headLine(c, w, rise) ?? w.z1 : w.z1;
     top = Math.max(top, z + rise);
   }
   return top;
@@ -265,6 +269,16 @@ function blockCourse(c: ExtraContext, s: ExtraSink, row: RowWindow[]): void {
     const n = Math.floor((g1 - g0) / B.pier);
     for (let i = 0; i < n; i++) { const a = g0 + (g1 - g0) * (i + 0.5) / n - B.w / 2; s.strip(c.f, a, a + B.w, B.out, z, Math.min(c.top, z + (i % 2 ? B.short : B.tall)), white); }
   }
+}
+
+/** One storey's patterned brick band at the heads, the front's full width: the band in the wall's darker brick and a row
+ *  of burnt-brick blocks along its middle (a band of the wall's own family, so it reads as brickwork, not trim). */
+function brickBand(c: ExtraContext, s: ExtraSink, row: RowWindow[]): void {
+  const B = ROW_DRESS.brickBand, z = Math.max(...row.map(w => w.z1)), zt = Math.min(c.top, z + B.h);
+  if (zt - z < 0.1) return;
+  s.strip(c.f, 0, c.f.len, B.out, z, zt, shadeHex(c.wallHex, B.band));
+  const n = Math.max(1, Math.floor(c.f.len / B.pitch)), zm = (z + zt) / 2;
+  for (let i = 0; i < n; i++) { const x = (i + 0.5) * c.f.len / n; s.strip(c.f, x - B.block / 2, x + B.block / 2, B.blockOut, zm - B.block / 2, zm + B.block / 2, shadeHex(c.wallHex, B.dark)); }
 }
 
 /** A window head drawn from the head grammar (houseLine/headGrammar.ts): voussoirs, keys, springers, tympana and
@@ -359,6 +373,89 @@ function grammarHead(c: ExtraContext, s: ExtraSink, w: RowWindow, g: HeadGrammar
 
 /** A stated basement front (row-basement): stone courses and their sunk joints, the ledge on top, arched doorways. */
 const ROW_BASEMENT = { under: 0.05, out: 0.03, course: 0.32, joint: 0.025, ledge: 0.12, ledgeOut: 0.08, doorW: 1.0, doorH: 2.3, ring: 0.2, recess: '#202326' } as const;
+/** The white timber erker (lane R round 24, lane D's `bay-window` gap: Herengracht 163-177, 150-166, 238-256 and the ring
+ *  readings): a box or a canted bay on white consoles over one bay, its storeys' lights corner to corner in white posts,
+ *  a transom with toplights, a white cap, and an iron railing on its roof when read. Sizes from the kit's timber bay
+ *  (buurtGenerator/kit/roofKit.ts TIMBER_LOOK: lights 0.85 m over the floor to 0.3 m under the next, 0.07 m posts). */
+export const ROW_ERKER = { side: 0.32, minW: 1.5, depth: 0.75, cant: 0.42, foot: 0.85, head: 0.3, gap: 0.25, post: 0.08, rail: 0.09, transom: 0.68, bar: 0.06,
+  pane: 0.75, glass: '#9eabb1', glassOut: 0.012, slab: 0.16, slabOut: 0.06, cap: 0.22, capOut: 0.09, console: { w: 0.16, arm: 0.18, drop: 0.55, inset: 0.14 },
+  railH: 0.95, railPitch: 0.13, post2: 0.035, fullInset: 0.18 } as const;
+/** The erker's wall-frame outline: its x span at the wall, its front's x span and its depth. */
+export function erkerPlan(c: ExtraContext): { xa: number; xb: number; fa: number; fb: number; d: number; zb: number; zt: number; rows: number[] } | null {
+  const e = c.rowDress?.erker;
+  if (!e) return null;
+  const rows = e.storeys.filter(k => k >= 1 && k <= c.layout.storeys).sort((p, q) => p - q);
+  if (!rows.length) return null;
+  const E = ROW_ERKER, k0 = rows[0], k1 = rows[rows.length - 1];
+  // Its place: the whole front, or the window nearest the stated end, else the window nearest the front's centre.
+  const ws = windowSpans(c, k0 - 1), to = e.end === 'start' ? 0 : e.end === 'end' ? c.f.len : e.at;
+  const w = ws.length ? ws.reduce((a, b) => Math.abs(b.x - to) < Math.abs(a.x - to) ? b : a) : { x: e.at, hw: 0.45 };
+  const half = Math.max(E.minW / 2, w.hw + E.side);
+  const xa = e.width === 'full' ? E.fullInset : Math.max(0.05, w.x - half), xb = e.width === 'full' ? c.f.len - E.fullInset : Math.min(c.f.len - 0.05, w.x + half);
+  if (xb - xa < 1) return null;
+  const cant = e.kind === 'canted' ? Math.min(E.cant, (xb - xa) / 4) : 0;
+  const zb = storeyZ(c, k0 - 1), top = c.top - (c.rowDress?.cornice ? 0.95 : 0.35);
+  const zt = Math.min(storeyZ(c, k1) - (k1 < c.layout.storeys ? E.gap : 0), top);
+  if (zt - zb < 1.2) return null;
+  return { xa, xb, fa: xa + cant, fb: xb - cant, d: E.depth, zb, zt, rows };
+}
+function rowErker(c: ExtraContext, s: ExtraSink): void {
+  const p = erkerPlan(c), e = c.rowDress?.erker;
+  if (!p || !e) return;
+  const E = ROW_ERKER, f = c.f, { xa, xb, fa, fb, d, zb, zt } = p;
+  const P = (x: number, o: number, z: number): [number, number, number] => [f.x0 + f.ux * x + f.nx * o, f.y0 + f.uy * x + f.ny * o, z];
+  // The faces as (x, out) segments from left to right: a box's sides run straight out, a canted bay's on the diagonal.
+  const faces: Array<[[number, number], [number, number]]> = [[[xa, 0], [fa, d]], [[fa, d], [fb, d]], [[fb, d], [xb, 0]]];
+  const quadOn = (q: [[number, number], [number, number]], u0: number, u1: number, out: number, z0: number, z1: number, hex: string) => {
+    const [a, b] = q, dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1;
+    // The faces run left to right round the body, so (-dy, dx) is the outward normal in the wall frame (x along, o out).
+    const nx = -dy / l, no = dx / l;
+    const X = (u: number) => a[0] + dx * u + nx * out, O = (u: number) => a[1] + dy * u + no * out;
+    const n: [number, number, number] = [f.ux * nx + f.nx * no, f.uy * nx + f.ny * no, 0];
+    s.quad(P(X(u0), O(u0), z0), P(X(u1), O(u1), z0), P(X(u1), O(u1), z1), P(X(u0), O(u0), z1), n, hex);
+  };
+  // The body: white timber faces from the floor slab to the cap (the spandrels between storeys are white boarding).
+  for (const q of faces) if (Math.hypot(q[1][0] - q[0][0], q[1][1] - q[0][1]) > 0.05) quadOn(q, 0, 1, 0, zb, zt, WHITE);
+  // Floor slab on the consoles, and the cap over the top lights, both proud of the body.
+  s.box(f, xa - E.slabOut, xb + E.slabOut, 0, d + E.slabOut, zb - E.slab, zb, WHITE, true);
+  s.box(f, xa - E.capOut, xb + E.capOut, 0, d + E.capOut, zt, zt + E.cap, WHITE, true);
+  // Two consoles under the slab: an arm under it and a drop against the wall.
+  for (const x of [xa + E.console.inset, xb - E.console.inset]) {
+    const C = E.console, z = zb - E.slab;
+    s.box(f, x - C.w / 2, x + C.w / 2, 0, d - 0.05, z - C.arm, z, WHITE, true);
+    s.slope(f, x - C.w / 2, x + C.w / 2, 0, d - 0.05, z - C.drop, z - C.arm, WHITE);
+  }
+  // Per storey: the lights corner to corner on every face, white posts at the corners, head and sill rails, a transom
+  // with the toplights over it, casement bars below.
+  for (const k of p.rows) {
+    const zf = storeyZ(c, k - 1), za = zf + E.foot, zh = Math.min(zf + c.layout.storeyM - E.head, zt - 0.12);
+    if (zh - za < 0.6) continue;
+    const zm = za + (zh - za) * E.transom;
+    for (const q of faces) {
+      const l = Math.hypot(q[1][0] - q[0][0], q[1][1] - q[0][1]);
+      if (l < 0.2) continue;
+      const pu = E.post / l;
+      quadOn(q, pu, 1 - pu, E.glassOut, za, zh, E.glass);
+      quadOn(q, 0, 1, E.glassOut * 2, zm - E.rail / 2, zm + E.rail / 2, WHITE);
+      quadOn(q, 0, 1, E.glassOut * 2, za - 0.04, za + E.rail / 2, WHITE);
+      const n = Math.max(1, Math.round(l / E.pane));
+      for (let i = 1; i < n; i++) { const u = i / n, bu = E.bar / l / 2; quadOn(q, u - bu, u + bu, E.glassOut * 2, za, zh, WHITE); }
+    }
+  }
+  if (e.roofBalcony) {
+    // An iron railing round the erker's roof (its front and sides), a top rail on slim balusters.
+    const z0 = zt + E.cap, z1 = z0 + E.railH;
+    for (const q of faces) {
+      const l = Math.hypot(q[1][0] - q[0][0], q[1][1] - q[0][1]);
+      if (l < 0.1) continue;
+      const shifted: [[number, number], [number, number]] = [[q[0][0], Math.max(q[0][1], 0.02)], [q[1][0], Math.max(q[1][1], 0.02)]];
+      quadOn(shifted, 0, 1, 0.02, z1 - 0.05, z1, IRON);
+      const n = Math.max(2, Math.round(l / E.railPitch));
+      for (let i = 0; i <= n; i++) { const u = i / n, bu = E.post2 / l / 2; quadOn(shifted, Math.max(0, u - bu), Math.min(1, u + bu), 0.02, z0, z1 - 0.05, IRON); }
+    }
+  }
+}
+
 /** House rows: a front's stated parts beyond the heads and cornice, drawn only when the series or front states them. */
 // Grey sandstone/hardstone blocks with deep sunk joints (171218's photo: grey, not the warm cream of the dressings).
 const ROW_GROUND_WALL = { out: 0.025, ledge: 0.22, ledgeOut: 0.12, scroll: 0.28, scrollH: 0.45 } as const;
@@ -847,6 +944,10 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     s.box(c.f, x0, x1, BALCONY.depth - 0.13, BALCONY.depth, top - BALCONY.rail, top, WHITE);
     for (const xe of [x0, x1 - 0.12]) s.box(c.f, xe, xe + 0.12, 0, BALCONY.depth, z, top, WHITE);
   } },
+  { id: 'row-erker', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-erker', build: (c, s) => {
+    // A stated white timber erker (lane R round 24, lane D's bay-window gap) over the centre bay: rowErker draws it.
+    rowErker(c, s);
+  } },
   { id: 'row-porch', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'door-surround', build: (c, s) => {
     // A gabled entrance porch: stone piers either side of the street door, a beam and a pointed pediment over it.
     const d = stoopDoor(c) ?? doorSpan(c);
@@ -1074,8 +1175,9 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     const ws = rowWindowsOf(c);
     const storeys = [...new Set(ws.filter(w => w.dressing === 'block-course').map(w => w.storey))];
     for (const k of storeys) blockCourse(c, s, ws.filter(w => w.storey === k && w.dressing === 'block-course'));
+    for (const k of new Set(ws.filter(w => w.dressing === 'brick-band').map(w => w.storey))) brickBand(c, s, ws.filter(w => w.storey === k && w.dressing === 'brick-band'));
     for (const w of ws) {
-      if (w.dressing === 'block-course') continue;
+      if (w.dressing === 'block-course' || w.dressing === 'brick-band') continue;
       const g = headGrammarOf(w.dressing, w.shape);
       if (g) grammarHead(c, s, w, g);
     }

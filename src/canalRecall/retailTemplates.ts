@@ -202,6 +202,15 @@ export type TemplateLook = {
   paneM?: number;
   /** Round 3: the fascia's cornice cap colour; absent: the fascia a step darker. */
   cap?: string;
+  /** Round 7 (retailBrandStyles.ts): `wall` puts the letters straight on the building's wall, with no fascia board or
+   *  cap (FEBO's red channel letters on stone); absent: the board. */
+  mount?: 'wall';
+  /** Round 7: the blade sign's glyph (FEBO's F) and its ink, on both faces; absent: a plain box. */
+  bladeGlyph?: string;
+  bladeInk?: string;
+  /** Round 7: `plate` glazes the panes as dark reflective plate glass, with no goods (the interior is the shop-interiors
+   *  lane's); absent: goods or the template's content. */
+  window?: 'plate';
 };
 const LOOKS_N: Record<RetailTemplate, TemplateLook> = {
   ah: { fascia: '#00a0e2', letters: '#ffffff', word: 'ALBERT HEIJN', content: 'shelves', lit: true },
@@ -284,17 +293,18 @@ const LOOKS_N: Record<RetailTemplate, TemplateLook> = {
 
 /** Lane retail-real (2026-11-15): what each template's window shows and the face its name is lettered in. Blind round 1
  *  (held-out fronts, r1): butcher 0-1-0 and hairdresser 0-1-1 lost with goods (a busy display where the photo's glass is
- *  dark), so they keep round n's shop-cell interior; snackbar 0-2-0 lost on an invented red fascia (now dark). */
-export const TEMPLATE_REAL: Record<RetailTemplate, Pick<TemplateLook, 'goods' | 'face'>> = {
+ *  dark), so they are not accepted (REAL_ACCEPTED); round 4 re-judges them with a lit room (hairdresser lit). Snackbar
+ *  0-2-0 lost on an invented red fascia (now dark). */
+export const TEMPLATE_REAL: Record<RetailTemplate, Partial<Pick<TemplateLook, 'goods' | 'face' | 'lit'>>> = {
   ah: { goods: 'aisles' }, jumbo: { goods: 'aisles' }, dirk: { goods: 'aisles' }, etos: { goods: 'drugstore' }, hema: { goods: 'drugstore' },
   action: { goods: 'aisles' }, febo: { goods: 'automatiek' }, stach: { goods: 'deli' }, sla: { goods: 'bowls' }, bruna: { goods: 'magazines' },
   bestseller: { goods: 'magazines' }, duck: { goods: 'ducks' }, moneyTransfer: { goods: 'exchange', face: 'condensed' }, gallgall: { goods: 'liquor' },
   mcdonalds: { goods: 'fastfood' }, kruidvat: { goods: 'drugstore' },
   coffeeshop: { goods: 'coffeeshop', face: 'script' }, smartshop: { goods: 'smartshop', face: 'condensed' }, brownBar: { goods: 'brownBar', face: 'serif' },
   bike: { goods: 'bikes', face: 'condensed' }, redLight: { goods: 'redWindow' },
-  doner: { goods: 'doner', face: 'condensed' }, toko: { goods: 'bainMarie', face: 'condensed' }, butcher: { face: 'serif' },
+  doner: { goods: 'doner', face: 'condensed' }, toko: { goods: 'bainMarie', face: 'condensed' }, butcher: { goods: 'butcher', face: 'serif' },
   greengrocer: { goods: 'produce', face: 'condensed' }, florist: { goods: 'flowers', face: 'script' }, apotheek: { goods: 'pharmacy' },
-  hairdresser: { face: 'serif' }, turkishBakery: { goods: 'bread', face: 'condensed' }, bakery: { goods: 'bread', face: 'script' },
+  hairdresser: { goods: 'hair', face: 'serif', lit: true }, turkishBakery: { goods: 'bread', face: 'condensed' }, bakery: { goods: 'bread', face: 'script' },
   nuts: { goods: 'jars', face: 'script' }, frites: { goods: 'frites', face: 'condensed' }, cheese: { goods: 'cheese', face: 'serif' },
   waffle: { goods: 'waffles', face: 'script' }, pancake: { goods: 'pancakes', face: 'serif' }, souvenir: { goods: 'souvenirs', face: 'condensed' },
   books: { goods: 'books', face: 'serif' }, tobacco: { goods: 'tobacco', face: 'serif' }, phone: { goods: 'phones', face: 'condensed' },
@@ -318,6 +328,23 @@ export const REAL_ACCEPTED: ReadonlySet<RetailTemplate> = new Set<RetailTemplate
   'tattoo', // 2-1-2
   'shoes', 'supermarket', 'clothes', 'cafe', 'chemist', 'cosmetics', // chain types, each a net win
 ]);
+/**
+ * Round 4 (lane retail-real, after the r1/r2 judges' notes): template parts the photos show and the fronts lacked, drawn
+ * only with `?retailParts=1` (retailPages.ts) until a blind win. `shutter`: the roller-shutter box under the fascia and
+ * its guide rails (the shutter itself stays up: an open shop); `neon`: a lit sign hung in the pane by the door; `glass`:
+ * the name (or a word) lettered on the glass in white, in the template's face.
+ */
+export type TemplateParts = { shutter?: boolean; neon?: { text: string; hex: string }; glass?: 'name' | string };
+export const TEMPLATE_PARTS: Partial<Record<RetailTemplate, TemplateParts>> = {
+  phone: { shutter: true, neon: { text: 'OPEN', hex: '#ff4f7a' } }, telecom: { shutter: true },
+  tobacco: { shutter: true }, souvenir: { shutter: true }, exchange: { shutter: true, neon: { text: 'EXCHANGE', hex: '#3fe0ff' } },
+  moneyTransfer: { shutter: true }, toko: { shutter: true }, doner: { shutter: true, neon: { text: 'OPEN', hex: '#ff4f7a' } },
+  smartshop: { shutter: true, neon: { text: 'OPEN', hex: '#ff4f7a' } }, coffeeshop: { neon: { text: 'OPEN', hex: '#57ff6a' } },
+  snackbar: { neon: { text: 'OPEN', hex: '#ff4f7a' } }, tattoo: { neon: { text: 'TATTOO', hex: '#ff3b3b' } },
+  // Glass lettering only over a dark room: a letter quad is opaque (its board colour fills round the glyph), so on a
+  // lit room it reads as a dark plate (bakery, butcher, cheese tried in the Node sheet, 2026-11-16, and dropped).
+  brownBar: { neon: { text: 'HEINEKEN', hex: '#ff3b3b' }, glass: 'name' },
+};
 export const realAccepted = (t: string): boolean => retailRealAllOn() || REAL_ACCEPTED.has(t as RetailTemplate);
 const LOOKS_REAL = Object.fromEntries(Object.entries(LOOKS_N).map(([k, v]) => [k, { ...v, ...TEMPLATE_REAL[k as RetailTemplate] }])) as Record<RetailTemplate, TemplateLook>;
 /** The templates' looks: with retailReal (retailPages.ts) the goods and faces are added; `?retailReal=0` is round n's. */
