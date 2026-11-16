@@ -523,3 +523,24 @@ test('round 13 pins on the staged belt', async () => {
   });
   assert.deepEqual(bare.map(r => r.pandId), []);
 });
+
+test('round 13 after Centrum round 7: the belt souterrain share, the roof-storey cap, purple-brown', async () => {
+  const fs = await import('node:fs');
+  const { BELT_LOOK, BELT_GABLE_FOOT_SOUTERRAIN_SHARE } = await import('./donors.ts');
+  const { JUDGED_PALETTE } = await import('../houseSpec/judgedColour.ts');
+  // Measured on the belt's gabled photo reads against AHN (n 105 with a souterrain, 102 without): 0.30 of a storey, not 0.58.
+  assert.equal(BELT_LOOK.gableFootSouterrainShare, BELT_GABLE_FOOT_SOUTERRAIN_SHARE);
+  assert.equal(BELT_GABLE_FOOT_SOUTERRAIN_SHARE, 0.3);
+  type Rec = { pandId: string; crown?: { family?: string }; eavesM?: number; topM?: number; wall?: { hex?: string } };
+  const all: Rec[] = JSON.parse(fs.readFileSync('data/buurt-generators/belt/row-front.json', 'utf8')).records;
+  const recs = new Map(all.map(r => [r.pandId, r])), rec = (id: string) => recs.get(`0363100012${id}`)!;
+  // Keizersgracht 171444: a neck over four storeys and a souterrain stands its foot at (4 + 0.3) x 3.0 = 12.9 m (13.74 at 0.58).
+  assert.equal(rec('171444').eavesM, 12.9);
+  // Herengracht 176354: three storeys under the register's dakkapel stand at the AHN band's p50, 10.05 m (13.95 was the dormer's top).
+  assert.equal(rec('176354').eavesM, 10.05);
+  // The earlier pins hold through the merge: Keizersgracht 176021 and 177196, Singel 177346 / 177518, Keizersgracht 172277.
+  assert.deepEqual([rec('176021').eavesM, rec('176021').topM, rec('177196').eavesM, rec('177196').topM], [11.86, 15.36, 12, 15.5]);
+  assert.deepEqual([rec('177346').eavesM, rec('177518').eavesM, rec('172277').eavesM], [17.56, 17.56, 19.31]);
+  // Centrum round 7's purple-brown tone reaches the belt (h 40, L .37).
+  assert.equal(JUDGED_PALETTE['purple-brown-brick'].h, 40);
+});
