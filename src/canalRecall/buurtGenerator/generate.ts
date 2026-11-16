@@ -13,7 +13,7 @@ import { variedTone, type JudgedFamily } from '../houseSpec/judgedColour.ts';
 import { labHex, oklab } from '../retailPuiPaint.ts';
 import { rowFrontsWithSeries } from '../houseLine/rowSeries.ts';
 import type { RowFrontRecord } from '../houseLine/rowFront.ts';
-import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
+import { ROW_HEAD_DRESSINGS, ROW_HEAD_SHAPES, ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
 import { districtRows, ROW_EAVES_STEP_M, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
 import { balconiesOf, entriesOf, erkersOnCells, kitAtticOf, kitEavesOf, kitPanesOf, raisedOf, type BuurtEntry, type BuurtErker, type BuurtKitFront } from './kit/frontKit.ts';
 
@@ -50,7 +50,9 @@ export interface DistrictFamilyKit {
   /** The upper storeys' window rhythm, singles on the pier side and the stair pair at the middle wall (roofKit drawRhythm). */
   rhythm?: { evidence: string };
 }
-export interface DistrictFamily { id: string; storeys: number; label: string; design?: Partial<DistrictDesign>; kit?: DistrictFamilyKit }
+/** `drawsStoreys` (round 16): the storeys the family draws when the photos count otherwise than its line band
+ *  (`storeys`, which still picks the family from the line): De Pijp's lines over 15.25 m are four tall storeys. */
+export interface DistrictFamily { id: string; storeys: number; label: string; design?: Partial<DistrictDesign>; kit?: DistrictFamilyKit; drawsStoreys?: { n: number; evidence: string } }
 /** The district's pitched roof: a series whose median 3DBAG rise (ridge - eaves) is at least `minRiseM` draws it. */
 export interface DistrictPitchedRoof { minRiseM: number; maxRiseM: number; pitchDeg: number; material: 'tile' | 'slate'; dormersPerFront: number; dormerKind: 'plain' | 'gabled'; hoist: boolean; evidence: string;
   /** The tiles' tone measured on the cached panorama (round 3): the kit's roof hex. */
@@ -138,6 +140,9 @@ export interface DistrictMeasured {
   /** Round 15: every cut's read by its pand (a generator row can hold two cuts, one per drawn run): the painted houses
    *  and the gable crowns are the pand's and its series', not the row's. */
   photoReads?: Record<string, Omit<PhotoWallRead, 'pandId'>>;
+  /** Round 16: per pand, the window heads an opus reader names on its row's cut (scripts/buurt-generators/photo-heads.ts),
+   *  `shape`/`dressing` in the reader's words (the kit's, plus `unclear` and `other`); photoHeadsOf draws them. */
+  photoHeads?: Record<string, PhotoHeadsRead>;
   roofs?: Record<string, { form: 'flat' | 'pitched' | 'hidden-pitch' | 'gable-street' | 'unclear'; frontRiseM: number; eavesM?: number; ridgeM?: number; why: string }>;
   rowRoofs?: Record<string, { form: string; hipped: { start: boolean; end: boolean } }>;
   /** Round 10: per row, each kit erker (`<pandId>:<index>`) and the finish its panoramas read (measure.ts erkerFinishOf,
@@ -283,6 +288,46 @@ export function photoGableOf(lib: DistrictLibrary, pandId: string): { pandId: st
   const r = lib.measured?.photoReads?.[pandId], g = r?.crown ? PHOTO_GABLES[r.crown] : undefined;
   return r && g && (r.cc ?? 0) >= PHOTO_CROWN_MIN ? { pandId, family: g, read: `${r.crown} cc ${r.cc}` } : null;
 }
+export interface PhotoHeadsRead { heads: Array<{ shape: string; dressing: string; storeys?: number[] }>; confidence: number; note?: string }
+/** Round 16: one line of the heads reader (`<pandId> <shape> <dressing> <storeys|all> [...] <cf> [note: ...]`); null unparsed. */
+export function parseHeadsLine(line: string): (PhotoHeadsRead & { pandId: string }) | null {
+  const m = line.trim().match(/^(\d{16})\s+(.*)$/); if (!m) return null;
+  const [body, ...note] = m[2].split(/\s*note:\s*/);
+  const t = body.trim().split(/\s+/), confidence = Number(t.pop());
+  if (!Number.isFinite(confidence) || t.length === 0 || t.length % 3 !== 0) return null;
+  const heads: PhotoHeadsRead['heads'] = [];
+  for (let i = 0; i < t.length; i += 3) {
+    const storeys = t[i + 2] === 'all' ? undefined : t[i + 2].split(',').map(Number);
+    if (storeys && storeys.some(k => !Number.isInteger(k) || k < 1)) return null;
+    heads.push({ shape: t[i], dressing: t[i + 1], ...(storeys ? { storeys } : {}) });
+  }
+  return { pandId: m[1], heads, confidence, ...(note.length ? { note: note.join(' note: ') } : {}) };
+}
+/** The heads read confidence a series draws from (the reader marks trees and glare 0.5-0.65). */
+export const PHOTO_HEADS_MIN = 0.7;
+const headsKey = (h: RowHeads[]) => h.map(x => `${x.shape}/${x.dressing}${x.storeys ? `@${x.storeys.join(',')}` : ''}`).join('+');
+/** Round 16: a series' window heads from its members' confident head reads, when one reading holds a strict majority of
+ *  them and is in the kit's vocabulary; null leaves the period default. A read naming `other` or `unclear` votes and is
+ *  never drawn (what the kit cannot say). */
+export function photoHeadsOf(lib: DistrictLibrary, s: GenSeries): RowField<RowHeads | RowHeads[]> | null {
+  const reads = lib.measured?.photoHeads; if (!reads) return null;
+  const votes = new Map<string, { heads: RowHeads[] | null; n: number; pands: string[] }>();
+  let of = 0;
+  for (const m of s.members) {
+    const pid = pandNumber(m.pand.id), r = reads[pid]; if (!r || r.confidence < PHOTO_HEADS_MIN) continue;
+    of++;
+    const ok = r.heads.every(h => (ROW_HEAD_SHAPES as readonly string[]).includes(h.shape) && (ROW_HEAD_DRESSINGS as readonly string[]).includes(h.dressing));
+    const heads = ok ? r.heads.map(h => ({ shape: h.shape, dressing: h.dressing, ...(h.storeys ? { storeys: h.storeys } : {}) }) as RowHeads) : null;
+    const k = heads ? headsKey(heads) : `unsaid:${pid}`;
+    const v = votes.get(k) ?? { heads, n: 0, pands: [] }; v.n++; v.pands.push(pid); votes.set(k, v);
+  }
+  const top = [...votes.entries()].sort((a, b) => b[1].n - a[1].n || (a[0] < b[0] ? -1 : 1))[0];
+  if (!top || !top[1].heads || top[1].n * 2 <= of) return null;
+  const value = top[1].heads.length === 1 ? top[1].heads[0] : top[1].heads;
+  return { value, source: top[1].n >= 2 ? 'series-consensus' : 'single-read',
+    ref: `buurt-generator ${lib.district} photo heads: ${top[0]} on ${top[1].pands.join(', ')} (${top[1].n} of ${of} confident reads, scripts/buurt-generators/heads-reader-prompt.md on the row's panorama cut)`,
+    ...(votes.size > 1 ? { votes: [...votes.values()].filter(v => v.heads).map(v => ({ value: v.heads!.length === 1 ? v.heads![0] : v.heads!, n: v.n })) } : {}) };
+}
 /** 3DBAG's roof type of the series, its members' majority (`roofCode`: 1 flat, 2 several flats, 3 slanted); null unread. */
 export function seriesRoofCode(s: GenSeries): number | null {
   const n = new Map<number, number>();
@@ -354,9 +399,9 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
   const design: RowDesign & { windowShare: RowField<number> } = {
     corniceTopM: f<number | null>(s.eavesM, `series line = median 3DBAG eaves of ${s.members.length} members`),
     crown: f(d.crown), cornice: f(d.cornice),
-    storeys: f(fam.storeys, `${s.eavesM} m line over a ${d.groundM} m ground and ${d.storeyM} m storeys`),
+    storeys: f(fam.drawsStoreys?.n ?? fam.storeys, fam.drawsStoreys ? `${s.eavesM} m line: ${fam.drawsStoreys.n} storeys (${fam.drawsStoreys.evidence})` : `${s.eavesM} m line over a ${d.groundM} m ground and ${d.storeyM} m storeys`),
     bays: f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes`),
-    windows: f(d.windows), heads: f<RowHeads | RowHeads[]>(d.heads), whiteFrames: f(d.whiteFrames), sills: f(d.sills),
+    windows: f(d.windows), heads: photoHeadsOf(lib, s) ?? f<RowHeads | RowHeads[]>(d.heads), whiteFrames: f(d.whiteFrames), sills: f(d.sills),
     wall: ((w) => f({ material: w.material ?? d.wall.material, family: w.family ?? d.wall.family, hex: w.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, w.family ? `${w.family} ${w.hex} (${w.evidence})` : w.hex ? `measured brick ${w.hex} (${w.evidence ?? 'district photos'})` : ''))(wallHexOf(lib, fam, rowId)),
     roofStorey: riseM !== null && pv
       ? f<RowRoofStorey>({ kind: 'mansard', material: pv.material, dormersPerFront: pv.dormersPerFront, dormerKind: pv.dormerKind, ...(pv.hoist ? { hoist: true } : {}) },
@@ -592,19 +637,30 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   const raw = rows.flatMap(r => rowFrontsWithSeries(r)).map(rec => kits.has(rec.pandId) ? { ...rec, buurtKit: kits.get(rec.pandId)! } : rec)
     .map((rec): RowFrontRecord => flatCorner(rec) ? { ...rec, series: { ...rec.series!, roofStorey: { kind: 'none' as const, dormers: [] } } } : rec);
   const painted = new Map<string, NonNullable<ReturnType<typeof paintedPandOf>>>(), gabled = new Map<string, NonNullable<ReturnType<typeof photoGableOf>>>();
+  // Round 16 (members read one by one): a house's own confident crown read decides it; a series' gable reaches the
+  // members with no confident crown read of their own only while none of its members reads a confident non-gable top
+  // (Ceintuurbaan 159761: two gables mid-row in a corniced row).
+  const ownCrown = new Map<string, NonNullable<ReturnType<typeof photoGableOf>> | 'not-gable'>(), seriesTop = new Set<string>();
   for (const pid of Object.keys(lib.measured?.photoReads ?? {}).sort()) {
     const p = paintedPandOf(lib, pid); if (p) painted.set(pid, p);
-    const g = photoGableOf(lib, pid), sid = g && seriesOfPand(raw, pid); if (g && sid && !gabled.has(sid)) gabled.set(sid, g);
+    const r = lib.measured!.photoReads![pid], g = photoGableOf(lib, pid), sid = seriesOfPand(raw, pid);
+    if (g) { ownCrown.set(pid, g); if (sid && !gabled.has(sid)) gabled.set(sid, g); }
+    else if (r.crown && !['not-visible', 'shouldered'].includes(r.crown) && (r.cc ?? 0) >= PHOTO_CROWN_MIN) { ownCrown.set(pid, 'not-gable'); if (sid) seriesTop.add(sid); }
   }
+  const gableOf = (rec: RowFrontRecord) => {
+    const own = ownCrown.get(rec.pandId);
+    if (own) return own === 'not-gable' ? undefined : own;
+    return rec.series && !seriesTop.has(rec.series.id) ? gabled.get(rec.series.id) : undefined;
+  };
   const records = raw.map((rec): RowFrontRecord => {
     let out = rec;
     const p = painted.get(rec.pandId);
     if (p) out = { ...out, wall: { hex: p.hex, source: 'judged', finish: p.material }, sources: { ...out.sources, wall: `judged ${p.family} (photo reader on this pand's own cut: ${p.read}; a painted read is the house's, not the row's)` } };
-    const g = rec.series && gabled.get(rec.series.id);
+    const g = gableOf(rec);
     if (g && typeof out.eavesM === 'number' && lib.pitched) {
       const riseM = +Math.min(lib.pitched.maxRiseM, Math.max(2.5, 0.75 * (widthOf.get(rec.pandId) || 6))).toFixed(2);
       out = { ...out, topM: +(out.eavesM + riseM).toFixed(2), crown: { family: g.family, riseM }, series: { ...out.series!, roofStorey: { kind: 'none' as const, dormers: [] } },
-        sources: { ...out.sources, crown: `photo reader v2 on the series' cut (${g.pandId}): ${g.read}; a stated gable beats the district's slate mansard` } };
+        sources: { ...out.sources, crown: `photo reader v2 on ${g.pandId === rec.pandId ? 'this house\'s' : 'the series\''} cut (${g.pandId}): ${g.read}; a stated gable beats the district's slate mansard` } };
     }
     return out;
   });

@@ -69,7 +69,11 @@
     {
       "id": "pijp-five",
       "storeys": 5,
-      "label": "five-storey Pijp row (eaves over 15.5 m; pijp-1889-five-storey-banded, Nieuwe Pijp)"
+      "label": "five-storey Pijp row (eaves over 15.5 m; pijp-1889-five-storey-banded, Nieuwe Pijp)",
+      "drawsStoreys": {
+        "n": 4,
+        "evidence": "the photo reader v2 counts four full storeys on 48 of 50 confident reads (sc >= 0.75) of fronts drawn five at lines 15.3-17.9 m, none five; tall 1890s storeys over a high ground floor (Ceintuurbaan 153089, round 15 blind: 'one storey too many')"
+      }
     }
   ],
   "pitched": {

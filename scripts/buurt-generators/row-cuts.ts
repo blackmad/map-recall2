@@ -13,10 +13,13 @@
  *
  *   --retry=<photo-reads.json>  only the rows whose read is under 0.7 (trees, glare, blur), cut from another capture
  *   date, leafless months (November-March) first; the generator keeps the more confident read.
+ *   --members  (round 16) every member's cut, each outlined in turn on the row's one rectified panorama, so a painted or
+ *   plastered house among brick neighbours is read (Eerste van der Helststraat 166938: a white plastered house drawn
+ *   brick); members already read (--skip=<photo-reads.json>...) are left out. With --retry and --members, every member of
+ *   a row whose read is under 0.7 is cut from another capture date.
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
 import sharp from 'sharp';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { http, cachedBytes } from '../pand-reference/core.ts';
@@ -29,6 +32,8 @@ const district = arg('district') ?? 'de-pijp', outDir = arg('out'), minMembers =
 if (!outDir) { console.error('row-cuts --district=<d> --out=<cutDir>'); process.exit(2); }
 const stage = `artifacts/buurt-generators/${district}`;
 const retry = arg('retry') ? (JSON.parse(fs.readFileSync(arg('retry')!, 'utf8')).reads as Record<string, { confidence: number }>) : null;
+const perMember = process.argv.includes('--members');
+const skip = new Set(process.argv.filter(a => a.startsWith('--skip=')).flatMap(a => Object.keys(JSON.parse(fs.readFileSync(a.slice(7), 'utf8')).reads ?? {})));
 const kit = new Map<string, [[number, number], [number, number]]>((JSON.parse(fs.readFileSync(`${stage}/row-front.json`, 'utf8')).records as any[]).filter(r => r.buurtKit?.frontLine).map(r => [r.pandId, r.buurtKit.frontLine]));
 const rows = (JSON.parse(fs.readFileSync(`${stage}/rows.json`, 'utf8')).rows as any[]).filter(r => r.members.length >= minMembers);
 fs.mkdirSync(outDir, { recursive: true });
@@ -36,10 +41,11 @@ const index: Record<string, string> = fs.existsSync(path.join(outDir, 'rows.json
 let done = 0, none = 0, fail = 0;
 for (const row of rows) {
   const ids: string[] = row.members.map((m: any) => m.pandId), mid = ids[ids.length >> 1];
-  if (retry && !(retry[mid] && retry[mid].confidence < 0.7)) continue;
-  if (fs.existsSync(path.join(outDir, `${mid}.jpg`))) { done++; continue; }
-  const l0 = kit.get(ids[0]), l1 = kit.get(ids[ids.length - 1]), lm = kit.get(mid);
-  if (!l0 || !l1 || !lm) { fail++; continue; }
+  if (retry && !(perMember ? ids.some(i => retry[i] && retry[i].confidence < 0.7) : retry[mid] && retry[mid].confidence < 0.7)) continue;
+  const targets = perMember ? ids.filter(i => !skip.has(i) && (!retry || (!!retry[i] && retry[i].confidence < 0.7))) : [mid];
+  if (!targets.length || targets.every(i => fs.existsSync(path.join(outDir, `${i}.jpg`)))) { done += targets.length; continue; }
+  const l0 = kit.get(ids[0]), l1 = kit.get(ids[ids.length - 1]);
+  if (!l0 || !l1) { fail++; continue; }
   const A = lngLatToRd(l0[0]), B = lngLatToRd(l1[1]), len = Math.hypot(B.x - A.x, B.y - A.y);
   if (len < 4) { fail++; continue; }
   const ux = (B.x - A.x) / len, uy = (B.y - A.y) / len, nx = uy, ny = -ux;
@@ -61,13 +67,17 @@ for (const row of rows) {
   const crop = pano && rectifyWall(pano.img, pick, wall, lineM + 2, ppm);
   if (!crop) { fail++; continue; }
   const s = crop.ppm, along = (p: { x: number; y: number }) => (p.x - A.x) * ux + (p.y - A.y) * uy;
-  const x0 = Math.max(1, Math.round(Math.min(along(lngLatToRd(lm[0])), along(lngLatToRd(lm[1]))) * s)), x1 = Math.min(crop.width - 2, Math.round(Math.max(along(lngLatToRd(lm[0])), along(lngLatToRd(lm[1]))) * s));
-  const y0 = Math.max(1, Math.round(crop.height - lineM * s)), y1 = crop.height - 2;
-  const box = Buffer.from(`<svg width="${crop.width}" height="${crop.height}" xmlns="http://www.w3.org/2000/svg"><rect x="${x0}" y="${y0}" width="${Math.max(4, x1 - x0)}" height="${Math.max(4, y1 - y0)}" fill="none" stroke="#00ffff" stroke-width="3"/></svg>`);
-  await sharp(crop.jpeg).composite([{ input: box, left: 0, top: 0 }]).jpeg({ quality: 85 }).toFile(path.join(outDir, `${mid}.jpg`));
-  index[mid] = row.id; done++;
+  for (const id of targets) {
+    const lm = kit.get(id);
+    if (!lm) { fail++; continue; }
+    const x0 = Math.max(1, Math.round(Math.min(along(lngLatToRd(lm[0])), along(lngLatToRd(lm[1]))) * s)), x1 = Math.min(crop.width - 2, Math.round(Math.max(along(lngLatToRd(lm[0])), along(lngLatToRd(lm[1]))) * s));
+    const y0 = Math.max(1, Math.round(crop.height - lineM * s)), y1 = crop.height - 2;
+    const box = Buffer.from(`<svg width="${crop.width}" height="${crop.height}" xmlns="http://www.w3.org/2000/svg"><rect x="${x0}" y="${y0}" width="${Math.max(4, x1 - x0)}" height="${Math.max(4, y1 - y0)}" fill="none" stroke="#00ffff" stroke-width="3"/></svg>`);
+    await sharp(crop.jpeg).composite([{ input: box, left: 0, top: 0 }]).jpeg({ quality: 85 }).toFile(path.join(outDir, `${id}.jpg`));
+    index[id] = row.id; done++;
+  }
   if (done % 20 === 0) { fs.writeFileSync(path.join(outDir, 'rows.json'), JSON.stringify(index, null, 1)); console.log(`${done} cuts, ${none} without a facing panorama, ${fail} failed; ${http.requests} requests ${(http.bytes / 1e6).toFixed(0)} MB`); }
 }
 fs.writeFileSync(path.join(outDir, 'rows.json'), JSON.stringify(index, null, 1));
 console.log(`${district}: ${done} cuts of ${rows.length} rows, ${none} without a facing panorama, ${fail} failed; ${http.requests} requests ${(http.bytes / 1e6).toFixed(0)} MB -> ${outDir}`);
-void crypto;
+

@@ -14,9 +14,13 @@ import fs from 'node:fs';
 const district = process.argv.find(a => a.startsWith('--district='))?.slice(11) ?? 'de-pijp';
 const files = process.argv.slice(2).filter(a => !a.startsWith('--'));
 type Read = { finish: string; family: string; confidence: number; crown?: string; cornice?: string; cc?: number };
-const best = new Map<string, Read>();
-for (const f of files) for (const [pid, r] of Object.entries<Read>(JSON.parse(fs.readFileSync(f, 'utf8')).reads ?? {}))
+const best = new Map<string, Read>(), crown = new Map<string, Read>();
+for (const f of files) for (const [pid, r] of Object.entries<Read>(JSON.parse(fs.readFileSync(f, 'utf8')).reads ?? {})) {
   if (!best.has(pid) || r.confidence > best.get(pid)!.confidence) best.set(pid, r);
+  // Round 16: the crown is the most confident crown read of the pand (a second capture can see a gable the first's trees hid).
+  if (r.crown && r.crown !== 'not-visible' && (!crown.has(pid) || (r.cc ?? 0) > (crown.get(pid)!.cc ?? 0))) crown.set(pid, r);
+}
+for (const [pid, c] of crown) best.set(pid, { ...best.get(pid)!, crown: c.crown, cornice: c.cornice, cc: c.cc });
 const recs = new Map((JSON.parse(fs.readFileSync(`artifacts/buurt-generators/${district}/row-front.json`, 'utf8')).records as any[]).map(r => [r.pandId, r]));
 const out: Record<string, Read & { pandId: string }> = {};
 let unplaced = 0;

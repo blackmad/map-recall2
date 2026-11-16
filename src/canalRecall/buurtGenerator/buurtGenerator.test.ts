@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, blockLines, generateDistrict, measuredRoofOf, pitchGate, pitchedRiseOf, streetPhotoWallOf, paintedPandOf, photoGableOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
+import { baysFor, blockLines, generateDistrict, measuredRoofOf, pitchGate, pitchedRiseOf, streetPhotoWallOf, paintedPandOf, parseHeadsLine, photoGableOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
 import { oklab } from '../retailPuiPaint.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
@@ -283,4 +283,26 @@ test('De Pijp (round 15): a painted read colours its own house, not the row (Sta
   assert.equal(wallHexOf(m, fam, 'teststraat-222222').family, 'dark-brown-brick');
   assert.equal(photoGableOf(m, '0363100012159333')?.family, 'step');
   assert.equal(photoGableOf(m, '0363100012165460'), null, 'under the crown bar');
+});
+
+test('De Pijp (round 16): a family can draw the storeys the photos count (Ceintuurbaan 153089); a gable stays on its own house where the series reads a cornice; confident head reads dress the series', () => {
+  const pands = [0, 1, 2, 3].map(i => pand(i, 1929, 12.4));
+  const id = (i: number) => pands[i].id.slice(-16);
+  type R = { pandId: string; storeys?: number; crown: { family: string }; series?: { heads?: Array<{ shape: string; dressing: string }>; roofStorey?: { kind: string } } };
+  const recs = (l: DistrictLibrary) => generateDistrict(l, pands, streets, new Set(), 'test').records as R[];
+  const base = recs(lib), fams = lib.families.map(f => ({ ...f, drawsStoreys: { n: f.storeys - 1, evidence: 'test' } }));
+  const fewer = recs({ ...lib, families: fams });
+  assert.ok(base[0].storeys && fewer[0].storeys === base[0].storeys - 1, `${base[0].storeys} -> ${fewer[0].storeys}`);
+  // A step read on house 1 and a confident cornice read on house 2 of the same series: only house 1 steps.
+  const g = recs({ ...lib, measured: { photoReads: {
+    [id(1)]: { finish: 'brick', family: 'brown-brick', confidence: 0.8, crown: 'step', cornice: 'none', cc: 0.8 },
+    [id(2)]: { finish: 'brick', family: 'brown-brick', confidence: 0.8, crown: 'cornice', cornice: 'simple', cc: 0.8 } } } });
+  assert.deepEqual(g.map(r => r.crown.family === 'step'), [false, true, false, false]);
+  // Head reads: two agreeing confident reads dress the series; a lone read under the bar, or a split vote, does not.
+  const heads = (h: Record<string, { heads: Array<{ shape: string; dressing: string }>; confidence: number }>) => recs({ ...lib, measured: { photoHeads: h } })[0].series?.heads ?? [];
+  const key = { heads: [{ shape: 'segmental', dressing: 'keystone' }], confidence: 0.8 };
+  assert.deepEqual(heads({ [id(0)]: key, [id(3)]: key }).map(h => `${h.shape}/${h.dressing}`), ['segmental/keystone']);
+  assert.equal(heads({ [id(0)]: { ...key, confidence: 0.6 } }).length, 0, 'under the bar');
+  assert.equal(heads({ [id(0)]: key, [id(3)]: { heads: [{ shape: 'flat', dressing: 'other' }], confidence: 0.8 } }).length, 0, 'split: the kit cannot say the other read');
+  assert.deepEqual(parseHeadsLine('0363100012170177 flat stone-lintel 1,2 round arch-ring 3 0.75 note: x')?.heads, [{ shape: 'flat', dressing: 'stone-lintel', storeys: [1, 2] }, { shape: 'round', dressing: 'arch-ring', storeys: [3] }]);
 });
