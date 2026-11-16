@@ -298,6 +298,11 @@ test('De Pijp (round 16): a family can draw the storeys the photos count (Ceintu
     [id(1)]: { finish: 'brick', family: 'brown-brick', confidence: 0.8, crown: 'step', cornice: 'none', cc: 0.8 },
     [id(2)]: { finish: 'brick', family: 'brown-brick', confidence: 0.8, crown: 'cornice', cornice: 'simple', cc: 0.8 } } } });
   assert.deepEqual(g.map(r => r.crown.family === 'step'), [false, true, false, false]);
+  // Under the bar the cornice read keeps only its own house off the series' gable (Daniël Stalpertstraat 236563).
+  const h = recs({ ...lib, measured: { photoReads: {
+    [id(1)]: { finish: 'brick', family: 'brown-brick', confidence: 0.8, crown: 'point', cornice: 'none', cc: 0.8 },
+    [id(2)]: { finish: 'brick', family: 'brown-brick', confidence: 0.8, crown: 'cornice', cornice: 'simple', cc: 0.6 } } } });
+  assert.deepEqual(h.map(r => r.crown.family === 'point'), [true, true, false, true]);
   // Head reads: two agreeing confident reads dress the series; a lone read under the bar, or a split vote, does not.
   const heads = (h: Record<string, { heads: Array<{ shape: string; dressing: string }>; confidence: number }>) => recs({ ...lib, measured: { photoHeads: h } })[0].series?.heads ?? [];
   const key = { heads: [{ shape: 'segmental', dressing: 'keystone' }], confidence: 0.8 };

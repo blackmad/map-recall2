@@ -1024,3 +1024,59 @@ Blind against today, 10 new clean rows (never tuned on, tuned streets excluded, 
 the dark painted middle house between brown brick neighbours"; the others medium). Judges' remaining notes: white
 plastered houses drawn brick where no cut read them (Eerste van der Helststraat), a storey too many on Ceintuurbaan
 153089, white arched window surrounds and keystones not drawn.
+
+## Round 16 (2026-11-16): every member read, window heads, four storeys, own-house gables
+
+- `row-cuts.ts --members` cuts every member on its row's rectified panorama, each outlined in turn (1254 cuts past the
+  339 row cuts; `--skip` leaves read pands out), read by reader v2. `--retry` with `--members` re-cut 69 low-confidence
+  gable reads and the Ceintuurbaan 153089/159761 members from another capture; `photo-walls.ts` keeps each pand's most
+  confident crown across captures.
+- Painted and stucco houses on their own cut: 44 houses (round 15: 14), among them Eerste van der Helststraat 073807
+  (white stucco, 0.75).
+- Gables: 18 pands read a gable at cc >= 0.75 (round 15: 8; mostly `point`). A gable crowns its own house; it spreads to
+  its series only when no member reads a confident cornice or flat top, and never onto a member whose own cut reads a
+  cornice or flat top at any confidence (38 records; the second rule after the held-out Daniël Stalpertstraat 236563
+  judge: "repeats the single pointed gable five times"). Ceintuurbaan 159761: the second
+  capture still reads its mid-row tops `neck` at 0.5-0.6 behind trees and blur, so no gable is placed there (stated,
+  not guessed).
+- `pijp-five.drawsStoreys` 4: the reader counts four full storeys on 48 of 50 confident reads (sc >= 0.75) of fronts the
+  family drew five at 15.3-17.9 m (Ceintuurbaan 153089, "one storey too many").
+- Window heads: an opus heads reader (`scripts/buurt-generators/heads-reader-prompt.md`, the kit's ROW_HEAD_SHAPES and
+  ROW_HEAD_DRESSINGS plus `unclear`/`other`) on the 339 row cuts; `photo-heads.ts` writes `measured.photoHeads`;
+  `photoHeadsOf` dresses a series on a strict-majority confident read (>= 0.7) in the kit vocabulary. 106 of 339 reads
+  are confident; 111 records now carry dressed heads. `other` reads vote but never draw.
+
+Blind against today (fresh opus judge per row, 10 new clean rows by seed `r16-heldout`, ride-share weighted, every row
+used in rounds 14-15 and the tuned streets excluded): 10 of 10 (6 high, 4 medium). The three named rows: Ceintuurbaan
+153089 (medium: "dark brown brick under flat cornice lids ... A adds slate mansards"), Ceintuurbaan 159761 (medium:
+"misses the photo's few ornate central gables"), Eerste van der Helststraat 166938 (high: "gets the white-painted
+building on the right and the single pointed gable on the narrow third house"). Daniël Stalpertstraat was judged before
+the own-cornice gable rule; it is no longer clean. Remaining judge notes: Saenredamstraat 153342's dark grey and brown
+sections drawn all red; Tweede van der Helststraat 159118's mid-row neck gables and Pieter Aertszstraat 111119's mansard
+storey not drawn (their cuts read no confident crown).
+
+### Window heads for lane R's kit (heads reader, confidence >= 0.7, row cuts)
+
+Arched and keystone heads (street, pand, series, read):
+- segmental/keystone: Dusartstraat 152708; Eerste Jacob van Campenstraat 153116, 162924; Govert Flinckstraat 157898,
+  161221 (dark painted front), 162165; Sint Willibrordusstraat 161192; Stadhouderskade 153112; Van Woustraat 158382.
+- flat/keystone: Albert Cuypstraat 154117; Govert Flinckstraat 154370, 162249; Ruysdaelkade 156265; Tweede Jan van der
+  Heijdenstraat 155579, 167011.
+- round/arch-ring: Govert Flinckstraat 156688 (all storeys, white pilasters between); Amsteldijk 163738 (storey 1, stone
+  lintels on 2; stucco palazzo front).
+- segmental/segmental-tympanum: Tweede Jan Steenstraat 145716; Gerard Doustraat 164780 (storeys 1-2, block surrounds on 3).
+- segmental/block-course: Eerste Jan van der Heijdenstraat 164211; Gerard Doustraat 153039; Govert Flinckstraat 081566;
+  Hemonystraat 235973; Kuipersstraat 161329; Rustenburgerstraat 159332; Tweede Van der Helststraat 236365; Van
+  Ostadestraat 167084.
+- jack-blocks: Albert Cuypstraat 160715, Eerste Jan van der Heijdenstraat 160406 (flat); Tweede Jan Steenstraat 160623
+  (segmental). block-surround: Sarphatipark 155834, 164031.
+- Plain segmental heads (no dressing) on 26 confident reads are not drawn: the kit draws a head's shape only with a
+  dressing.
+
+What the kit cannot say (read `other`, never drawn): alternating white voussoir blocks in a segmental arch (Gerard
+Doustraat 162701, Sint Willibrordusstraat 163362, Tweede Jan Steenstraat 121708); patterned brick bands at head level
+(Tolstraat 108704, Pieter Aertszstraat 126746); ornamental brick arch rings and patterned panels (Ruysdaelkade 097582);
+dark ornamented brick hoods (Tweede Jan Steenstraat 154123); white moulded surrounds with cornice hoods (Tweede Jan
+Steenstraat 164311, Ferdinand Bolstraat 164454); white blocks at the head corners (Kuipersstraat 108702,
+Rustenburgerstraat 158127); a full-width white timber oriel (Ruysdaelkade 167234). The crown reader also saw narrow
+square brick towers over flat parapets (236290, 237009) with no crown word for them.

@@ -645,7 +645,11 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
     const p = paintedPandOf(lib, pid); if (p) painted.set(pid, p);
     const r = lib.measured!.photoReads![pid], g = photoGableOf(lib, pid), sid = seriesOfPand(raw, pid);
     if (g) { ownCrown.set(pid, g); if (sid && !gabled.has(sid)) gabled.set(sid, g); }
-    else if (r.crown && !['not-visible', 'shouldered'].includes(r.crown) && (r.cc ?? 0) >= PHOTO_CROWN_MIN) { ownCrown.set(pid, 'not-gable'); if (sid) seriesTop.add(sid); }
+    else if (r.crown && !['not-visible', 'shouldered'].includes(r.crown) && !PHOTO_GABLES[r.crown]) {
+      // Its own top is read (a cornice, a flat lid): the series' gable never covers it (Daniël Stalpertstraat 236563,
+      // round 16 blind: "repeats the single pointed gable five times"); read confidently, the series takes none.
+      ownCrown.set(pid, 'not-gable'); if (sid && (r.cc ?? 0) >= PHOTO_CROWN_MIN) seriesTop.add(sid);
+    }
   }
   const gableOf = (rec: RowFrontRecord) => {
     const own = ownCrown.get(rec.pandId);
