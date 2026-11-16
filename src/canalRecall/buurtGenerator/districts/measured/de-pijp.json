@@ -47043,10 +47043,10 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.65,
-      "pandId": "0363100012160906",
+      "pandId": "0363100012158776",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.75
+      "cc": 0.7
     },
     "albert-cuypstraat-164706": {
       "finish": "brick",
@@ -47139,13 +47139,13 @@
       "cc": 0.65
     },
     "ceintuurbaan-159081": {
-      "finish": "paint",
-      "family": "dark-paint",
+      "finish": "brick",
+      "family": "brown-brick",
       "confidence": 0.7,
-      "pandId": "0363100012156477",
+      "pandId": "0363100012158354",
       "crown": "cornice",
-      "cornice": "bracketed",
-      "cc": 0.6
+      "cornice": "simple",
+      "cc": 0.75
     },
     "ceintuurbaan-159149": {
       "finish": "brick",
@@ -47158,12 +47158,12 @@
     },
     "ceintuurbaan-159761": {
       "finish": "brick",
-      "family": "red-brown-brick",
-      "confidence": 0.8,
-      "pandId": "0363100012083637",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012160233",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.7
+      "cc": 0.75
     },
     "ceintuurbaan-160241": {
       "finish": "brick",
@@ -47223,10 +47223,10 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.7,
-      "pandId": "0363100012163860",
+      "pandId": "0363100012159758",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.7
+      "cc": 0.6
     },
     "ceintuurbaan-164295": {
       "finish": "brick",
@@ -47266,12 +47266,12 @@
     },
     "ceintuurbaan-167153": {
       "finish": "brick",
-      "family": "red-brown-brick",
+      "family": "brown-brick",
       "confidence": 0.7,
-      "pandId": "0363100012066801",
+      "pandId": "0363100012163969",
       "crown": "cornice",
-      "cornice": "heavy",
-      "cc": 0.75
+      "cornice": "bracketed",
+      "cc": 0.7
     },
     "cornelis-troostplein-153843": {
       "finish": "brick",
@@ -47301,10 +47301,10 @@
       "cc": 0.75
     },
     "dani-l-stalpertstraat-155525": {
-      "finish": "paint",
-      "family": "dark-paint",
-      "confidence": 0.85,
-      "pandId": "0363100012166204",
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012155525",
       "crown": "cornice",
       "cornice": "simple",
       "cc": 0.75
@@ -47331,7 +47331,7 @@
       "finish": "brick",
       "family": "dark-grey-brick",
       "confidence": 0.85,
-      "pandId": "0363100012236661",
+      "pandId": "0363100012161133",
       "crown": "cornice",
       "cornice": "simple",
       "cc": 0.8
@@ -47428,10 +47428,10 @@
     },
     "dusartstraat-236890": {
       "finish": "brick",
-      "family": "red-brown-brick",
+      "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012080434",
-      "crown": "cornice",
+      "pandId": "0363100012138888",
+      "crown": "step",
       "cornice": "simple",
       "cc": 0.55
     },
@@ -47475,10 +47475,10 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012163591",
+      "pandId": "0363100012154191",
       "crown": "cornice",
       "cornice": "bracketed",
-      "cc": 0.7
+      "cc": 0.6
     },
     "eerste-jan-steenstraat-152862": {
       "finish": "brick",
@@ -47592,10 +47592,10 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.8,
-      "pandId": "0363100012161454",
+      "pandId": "0363100012154182",
       "crown": "cornice",
-      "cornice": "frieze",
-      "cc": 0.75
+      "cornice": "attic-frieze",
+      "cc": 0.6
     },
     "eerste-van-der-helststraat-165460": {
       "finish": "brick",
@@ -47619,10 +47619,10 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012154150",
+      "pandId": "0363100012152738",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.65
+      "cc": 0.75
     },
     "ferdinand-bolstraat-157388": {
       "finish": "brick",
@@ -47635,12 +47635,12 @@
     },
     "ferdinand-bolstraat-159458": {
       "finish": "brick",
-      "family": "red-brown-brick",
+      "family": "brown-brick",
       "confidence": 0.6,
-      "pandId": "0363100012160758",
+      "pandId": "0363100012159458",
       "crown": "not-visible",
       "cornice": "not-visible",
-      "cc": 0.5
+      "cc": 0.6
     },
     "ferdinand-bolstraat-162087": {
       "finish": "brick",
@@ -47697,10 +47697,10 @@
       "cc": 0.6
     },
     "frans-halsstraat-161247": {
-      "finish": "paint",
-      "family": "dark-paint",
-      "confidence": 0.85,
-      "pandId": "0363100012161247",
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012166810",
       "crown": "cornice",
       "cornice": "simple",
       "cc": 0.8
@@ -47718,7 +47718,7 @@
       "finish": "brick",
       "family": "dark-grey-brick",
       "confidence": 0.8,
-      "pandId": "0363100012159685",
+      "pandId": "0363100012152922",
       "crown": "cornice",
       "cornice": "simple",
       "cc": 0.6
@@ -47772,28 +47772,28 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012153039",
+      "pandId": "0363100012151175",
       "crown": "cornice",
       "cornice": "bracketed",
-      "cc": 0.8
+      "cc": 0.75
     },
     "gerard-doustraat-152721": {
       "finish": "brick",
-      "family": "dark-grey-brick",
-      "confidence": 0.85,
-      "pandId": "0363100012158274",
-      "crown": "cornice",
-      "cornice": "simple",
-      "cc": 0.6
-    },
-    "gerard-doustraat-153390": {
-      "finish": "brick",
       "family": "brown-brick",
-      "confidence": 0.6,
-      "pandId": "0363100012157689",
+      "confidence": 0.8,
+      "pandId": "0363100012237219",
       "crown": "cornice",
       "cornice": "simple",
       "cc": 0.75
+    },
+    "gerard-doustraat-153390": {
+      "finish": "paint",
+      "family": "white-paint",
+      "confidence": 0.6,
+      "pandId": "0363100012153390",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.65
     },
     "gerard-doustraat-153546": {
       "finish": "brick",
@@ -47932,9 +47932,9 @@
     },
     "govert-flinckstraat-074800": {
       "finish": "brick",
-      "family": "red-brown-brick",
+      "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012081566",
+      "pandId": "0363100012154363",
       "crown": "cornice",
       "cornice": "simple",
       "cc": 0.75
@@ -47959,12 +47959,12 @@
     },
     "govert-flinckstraat-152886": {
       "finish": "brick",
-      "family": "pale-grey",
+      "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012118823",
-      "crown": "flat",
-      "cornice": "none",
-      "cc": 0.75
+      "pandId": "0363100012152886",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.7
     },
     "govert-flinckstraat-152899": {
       "finish": "brick",
@@ -47988,19 +47988,19 @@
       "finish": "brick",
       "family": "red-brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012160913",
+      "pandId": "0363100012159245",
       "crown": "not-visible",
       "cornice": "not-visible",
-      "cc": 0.6
+      "cc": 0.7
     },
     "govert-flinckstraat-156803": {
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.6,
-      "pandId": "0363100012164717",
+      "pandId": "0363100012156803",
       "crown": "cornice",
       "cornice": "bracketed",
-      "cc": 0.75
+      "cc": 0.65
     },
     "govert-flinckstraat-157019": {
       "finish": "brick",
@@ -48042,10 +48042,10 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.7,
-      "pandId": "0363100012163974",
-      "crown": "cornice",
+      "pandId": "0363100012160036",
+      "crown": "not-visible",
       "cornice": "bracketed",
-      "cc": 0.6
+      "cc": 0.55
     },
     "govert-flinckstraat-161086": {
       "finish": "brick",
@@ -48075,13 +48075,13 @@
       "cc": 0.6
     },
     "govert-flinckstraat-163055": {
-      "finish": "stucco",
-      "family": "white-paint",
-      "confidence": 0.85,
-      "pandId": "0363100012163055",
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012156602",
       "crown": "cornice",
-      "cornice": "heavy",
-      "cc": 0.7
+      "cornice": "simple",
+      "cc": 0.8
     },
     "govert-flinckstraat-163890": {
       "finish": "brick",
@@ -48148,21 +48148,21 @@
     },
     "govert-flinckstraat-167285": {
       "finish": "brick",
-      "family": "dark-grey-brick",
-      "confidence": 0.8,
-      "pandId": "0363100012166374",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012152670",
       "crown": "cornice",
-      "cornice": "bracketed",
-      "cc": 0.75
+      "cornice": "simple",
+      "cc": 0.8
     },
     "govert-flinckstraat-167356": {
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.8,
-      "pandId": "0363100012162378",
+      "pandId": "0363100012157225",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.75
+      "cc": 0.8
     },
     "govert-flinckstraat-236157": {
       "finish": "brick",
@@ -48192,22 +48192,22 @@
       "cc": 0.6
     },
     "hemonylaan-165787": {
-      "finish": "stucco",
-      "family": "white-paint",
+      "finish": "brick",
+      "family": "brown-brick",
       "confidence": 0.7,
-      "pandId": "0363100012165787",
-      "crown": "not-visible",
-      "cornice": "not-visible",
-      "cc": 0.5
+      "pandId": "0363100012166192",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.65
     },
     "hemonystraat-154388": {
       "finish": "brick",
-      "family": "red-brown-brick",
-      "confidence": 0.75,
-      "pandId": "0363100012164899",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012161264",
       "crown": "not-visible",
       "cornice": "not-visible",
-      "cc": 0.8
+      "cc": 0.55
     },
     "hemonystraat-156815": {
       "finish": "brick",
@@ -48220,11 +48220,11 @@
     },
     "hemonystraat-159320": {
       "finish": "brick",
-      "family": "brown-brick",
+      "family": "red-brown-brick",
       "confidence": 0.6,
-      "pandId": "0363100012235973",
-      "crown": "cornice",
-      "cornice": "heavy",
+      "pandId": "0363100012159320",
+      "crown": "not-visible",
+      "cornice": "not-visible",
       "cc": 0.6
     },
     "hemonystraat-161820": {
@@ -48247,9 +48247,9 @@
     },
     "hemonystraat-236845": {
       "finish": "brick",
-      "family": "red-brown-brick",
+      "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012153682",
+      "pandId": "0363100012153683",
       "crown": "cornice",
       "cornice": "simple",
       "cc": 0.75
@@ -48267,19 +48267,19 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012114849",
+      "pandId": "0363100012082967",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.75
+      "cc": 0.65
     },
     "kuipersstraat-068000": {
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.8,
-      "pandId": "0363100012161329",
-      "crown": "flat",
+      "pandId": "0363100012153769",
+      "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.6
+      "cc": 0.75
     },
     "kuipersstraat-076010": {
       "finish": "brick",
@@ -48292,12 +48292,12 @@
     },
     "kuipersstraat-126969": {
       "finish": "brick",
-      "family": "buff-brick",
-      "confidence": 0.85,
-      "pandId": "0363100012097210",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012074480",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.75
+      "cc": 0.6
     },
     "kuipersstraat-135562": {
       "finish": "brick",
@@ -48408,13 +48408,13 @@
       "cc": 0.6
     },
     "quellijnstraat-080102": {
-      "finish": "brick",
-      "family": "brown-brick",
+      "finish": "stucco",
+      "family": "pale-grey",
       "confidence": 0.6,
-      "pandId": "0363100012123889",
+      "pandId": "0363100012077301",
       "crown": "flat",
       "cornice": "none",
-      "cc": 0.55
+      "cc": 0.7
     },
     "quellijnstraat-155984": {
       "finish": "brick",
@@ -48634,12 +48634,12 @@
     },
     "rustenburgerstraat-157662": {
       "finish": "brick",
-      "family": "red-brown-brick",
+      "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012158053",
-      "crown": "point",
-      "cornice": "simple",
-      "cc": 0.75
+      "pandId": "0363100012162447",
+      "crown": "cornice",
+      "cornice": "frieze",
+      "cc": 0.6
     },
     "rustenburgerstraat-159041": {
       "finish": "brick",
@@ -48663,10 +48663,10 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.7,
-      "pandId": "0363100012138034",
+      "pandId": "0363100012086162",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.6
+      "cc": 0.65
     },
     "rustenburgerstraat-160267": {
       "finish": "brick",
@@ -48717,10 +48717,10 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.8,
-      "pandId": "0363100012166751",
-      "crown": "pitched-eaves",
-      "cornice": "none",
-      "cc": 0.6
+      "pandId": "0363100012163801",
+      "crown": "cornice",
+      "cornice": "simple",
+      "cc": 0.75
     },
     "rustenburgerstraat-165571": {
       "finish": "brick",
@@ -48768,13 +48768,13 @@
       "cc": 0.65
     },
     "ruysdaelkade-125391": {
-      "finish": "stucco",
-      "family": "white-paint",
-      "confidence": 0.8,
-      "pandId": "0363100012167234",
-      "crown": "flat",
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012163502",
+      "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.55
+      "cc": 0.75
     },
     "ruysdaelkade-143481": {
       "finish": "brick",
@@ -48787,12 +48787,12 @@
     },
     "ruysdaelkade-153328": {
       "finish": "brick",
-      "family": "red-brown-brick",
-      "confidence": 0.8,
-      "pandId": "0363100012155409",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012153321",
       "crown": "cornice",
       "cornice": "bracketed",
-      "cc": 0.85
+      "cc": 0.75
     },
     "ruysdaelkade-157263": {
       "finish": "brick",
@@ -48894,13 +48894,13 @@
       "cc": 0.75
     },
     "saenredamstraat-153342": {
-      "finish": "paint",
-      "family": "dark-paint",
-      "confidence": 0.85,
-      "pandId": "0363100012161471",
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012082931",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.75
+      "cc": 0.6
     },
     "saenredamstraat-155510": {
       "finish": "brick",
@@ -48913,12 +48913,12 @@
     },
     "saenredamstraat-159604": {
       "finish": "brick",
-      "family": "red-brown-brick",
+      "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012236766",
+      "pandId": "0363100012159856",
       "crown": "cornice",
-      "cornice": "bracketed",
-      "cc": 0.8
+      "cornice": "not-visible",
+      "cc": 0.6
     },
     "saenredamstraat-160198": {
       "finish": "brick",
@@ -48957,10 +48957,10 @@
       "cc": 0.8
     },
     "saenredamstraat-237155": {
-      "finish": "paint",
-      "family": "dark-paint",
-      "confidence": 0.85,
-      "pandId": "0363100012098699",
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012237155",
       "crown": "cornice",
       "cornice": "simple",
       "cc": 0.75
@@ -48984,22 +48984,22 @@
       "cc": 0.8
     },
     "sarphatipark-154139": {
-      "finish": "stucco",
-      "family": "cream-paint",
+      "finish": "brick",
+      "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012160873",
-      "crown": "cornice",
+      "pandId": "0363100012163812",
+      "crown": "mansard",
       "cornice": "heavy",
-      "cc": 0.7
+      "cc": 0.6
     },
     "sarphatipark-156615": {
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.6,
-      "pandId": "0363100012158147",
+      "pandId": "0363100012156615",
       "crown": "not-visible",
       "cornice": "not-visible",
-      "cc": 0.6
+      "cc": 0.5
     },
     "sarphatipark-158414": {
       "finish": "brick",
@@ -49014,10 +49014,10 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.6,
-      "pandId": "0363100012152806",
+      "pandId": "0363100012152399",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.6
+      "cc": 0.7
     },
     "sarphatipark-162218": {
       "finish": "brick",
@@ -49066,12 +49066,12 @@
     },
     "sarphatipark-166061": {
       "finish": "brick",
-      "family": "dark-grey-brick",
-      "confidence": 0.8,
-      "pandId": "0363100012155834",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012165912",
       "crown": "cornice",
-      "cornice": "frieze",
-      "cc": 0.75
+      "cornice": "heavy",
+      "cc": 0.65
     },
     "sarphatipark-236633": {
       "finish": "brick",
@@ -49131,19 +49131,19 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.6,
-      "pandId": "0363100012164636",
+      "pandId": "0363100012126576",
       "crown": "not-visible",
       "cornice": "not-visible",
-      "cc": 0.6
+      "cc": 0.5
     },
     "stadhouderskade-155673": {
-      "finish": "paint",
-      "family": "dark-paint",
+      "finish": "brick",
+      "family": "dark-grey-brick",
       "confidence": 0.8,
-      "pandId": "0363100012237273",
+      "pandId": "0363100012155673",
       "crown": "cornice",
       "cornice": "bracketed",
-      "cc": 0.75
+      "cc": 0.8
     },
     "stadhouderskade-155841": {
       "finish": "brick",
@@ -49155,12 +49155,12 @@
       "cc": 0.75
     },
     "stadhouderskade-158460": {
-      "finish": "paint",
-      "family": "dark-paint",
-      "confidence": 0.8,
-      "pandId": "0363100012098788",
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012157781",
       "crown": "cornice",
-      "cornice": "heavy",
+      "cornice": "frieze",
       "cc": 0.8
     },
     "stadhouderskade-159942": {
@@ -49183,12 +49183,12 @@
     },
     "stadhouderskade-166077": {
       "finish": "brick",
-      "family": "red-brown-brick",
+      "family": "brown-brick",
       "confidence": 0.8,
-      "pandId": "0363100012157632",
+      "pandId": "0363100012164554",
       "crown": "cornice",
-      "cornice": "heavy",
-      "cc": 0.75
+      "cornice": "bracketed",
+      "cc": 0.8
     },
     "stadhouderskade-166429": {
       "finish": "brick",
@@ -49200,22 +49200,22 @@
       "cc": 0.8
     },
     "stadhouderskade-167283": {
-      "finish": "stucco",
-      "family": "white-paint",
-      "confidence": 0.75,
-      "pandId": "0363100012167283",
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012165741",
       "crown": "cornice",
-      "cornice": "heavy",
-      "cc": 0.65
+      "cornice": "simple",
+      "cc": 0.6
     },
     "toldwarsstraat-078914": {
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012085646",
-      "crown": "cornice",
-      "cornice": "simple",
-      "cc": 0.75
+      "pandId": "0363100012061752",
+      "crown": "not-visible",
+      "cornice": "not-visible",
+      "cc": 0.5
     },
     "tolstraat-061589": {
       "finish": "brick",
@@ -49282,12 +49282,12 @@
     },
     "tweede-jan-steenstraat-123461": {
       "finish": "brick",
-      "family": "red-brown-brick",
-      "confidence": 0.8,
-      "pandId": "0363100012156050",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012167048",
       "crown": "cornice",
       "cornice": "bracketed",
-      "cc": 0.75
+      "cc": 0.8
     },
     "tweede-jan-steenstraat-152300": {
       "finish": "brick",
@@ -49300,30 +49300,30 @@
     },
     "tweede-jan-steenstraat-152461": {
       "finish": "brick",
-      "family": "dark-grey-brick",
-      "confidence": 0.85,
-      "pandId": "0363100012152461",
+      "family": "brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012155556",
       "crown": "cornice",
       "cornice": "frieze",
       "cc": 0.75
     },
     "tweede-jan-steenstraat-152764": {
       "finish": "brick",
-      "family": "dark-grey-brick",
-      "confidence": 0.85,
-      "pandId": "0363100012154123",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012158006",
       "crown": "cornice",
-      "cornice": "bracketed",
-      "cc": 0.8
+      "cornice": "frieze",
+      "cc": 0.75
     },
     "tweede-jan-steenstraat-152873": {
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.8,
-      "pandId": "0363100012167233",
+      "pandId": "0363100012161347",
       "crown": "cornice",
       "cornice": "attic-frieze",
-      "cc": 0.75
+      "cc": 0.7
     },
     "tweede-jan-steenstraat-153532": {
       "finish": "brick",
@@ -49354,12 +49354,12 @@
     },
     "tweede-jan-steenstraat-158075": {
       "finish": "brick",
-      "family": "red-brown-brick",
-      "confidence": 0.75,
-      "pandId": "0363100012160623",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012159026",
       "crown": "cornice",
-      "cornice": "simple",
-      "cc": 0.8
+      "cornice": "bracketed",
+      "cc": 0.75
     },
     "tweede-jan-steenstraat-158142": {
       "finish": "brick",
@@ -49392,10 +49392,10 @@
       "finish": "brick",
       "family": "purple-brown-brick",
       "confidence": 0.8,
-      "pandId": "0363100012156340",
+      "pandId": "0363100012153500",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.8
+      "cc": 0.75
     },
     "tweede-jan-steenstraat-236704": {
       "finish": "brick",
@@ -49416,13 +49416,13 @@
       "cc": 0.6
     },
     "tweede-jan-van-der-heijdenstraat-156225": {
-      "finish": "paint",
-      "family": "dark-paint",
-      "confidence": 0.75,
-      "pandId": "0363100012156225",
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012161967",
       "crown": "cornice",
-      "cornice": "heavy",
-      "cc": 0.65
+      "cornice": "frieze",
+      "cc": 0.75
     },
     "tweede-jan-van-der-heijdenstraat-158156": {
       "finish": "brick",
@@ -49462,21 +49462,21 @@
     },
     "tweede-jan-van-der-heijdenstraat-161918": {
       "finish": "brick",
-      "family": "red-brown-brick",
+      "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012159163",
+      "pandId": "0363100012155571",
       "crown": "cornice",
       "cornice": "bracketed",
-      "cc": 0.75
+      "cc": 0.7
     },
     "tweede-jan-van-der-heijdenstraat-164578": {
-      "finish": "paint",
-      "family": "white-paint",
-      "confidence": 0.85,
-      "pandId": "0363100012164585",
+      "finish": "brick",
+      "family": "brown-brick",
+      "confidence": 0.75,
+      "pandId": "0363100012161691",
       "crown": "cornice",
       "cornice": "simple",
-      "cc": 0.8
+      "cc": 0.75
     },
     "tweede-jan-van-der-heijdenstraat-165284": {
       "finish": "brick",
@@ -49560,11 +49560,11 @@
       "cc": 0.75
     },
     "tweede-van-der-helststraat-159118": {
-      "finish": "paint",
-      "family": "dark-paint",
-      "confidence": 0.85,
-      "pandId": "0363100012236365",
-      "crown": "cornice",
+      "finish": "brick",
+      "family": "red-brown-brick",
+      "confidence": 0.8,
+      "pandId": "0363100012155822",
+      "crown": "neck",
       "cornice": "simple",
       "cc": 0.7
     },
@@ -49581,7 +49581,7 @@
       "finish": "brick",
       "family": "brown-brick",
       "confidence": 0.75,
-      "pandId": "0363100012166925",
+      "pandId": "0363100012161354",
       "crown": "cornice",
       "cornice": "simple",
       "cc": 0.65
@@ -49678,12 +49678,12 @@
     },
     "van-ostadestraat-152313": {
       "finish": "paint",
-      "family": "pale-grey",
+      "family": "white-paint",
       "confidence": 0.75,
-      "pandId": "0363100012158362",
+      "pandId": "0363100012129217",
       "crown": "cornice",
-      "cornice": "simple",
-      "cc": 0.65
+      "cornice": "bracketed",
+      "cc": 0.75
     },
     "van-ostadestraat-153615": {
       "finish": "brick",
@@ -49849,12 +49849,12 @@
     },
     "van-ostadestraat-236040": {
       "finish": "brick",
-      "family": "red-brown-brick",
-      "confidence": 0.75,
-      "pandId": "0363100012158060",
-      "crown": "cornice",
+      "family": "brown-brick",
+      "confidence": 0.7,
+      "pandId": "0363100012156972",
+      "crown": "step",
       "cornice": "simple",
-      "cc": 0.7
+      "cc": 0.6
     },
     "van-ostadestraat-236726": {
       "finish": "brick",

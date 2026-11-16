@@ -24,10 +24,28 @@ for (const [pid, c] of crown) best.set(pid, { ...best.get(pid)!, crown: c.crown,
 const recs = new Map((JSON.parse(fs.readFileSync(`artifacts/buurt-generators/${district}/row-front.json`, 'utf8')).records as any[]).map(r => [r.pandId, r]));
 const out: Record<string, Read & { pandId: string }> = {};
 let unplaced = 0;
+// Round 17: the row's wall is its members' brick consensus, not its single most confident read: a painted house's read
+// (the house's own, round 15) left the row to the street's family (Saenredamstraat 153342, round 16 blind: "all red"
+// where its members read brown and dark grey). The family most confident members read (>= 0.7) wins, then the summed
+// confidence; with no confident brick read, the most confident read as before.
+const byRow = new Map<string, Array<Read & { pandId: string }>>();
 for (const [pid, r] of best) {
   const row = recs.get(pid)?.series?.id?.split(':')[0];
   if (!row) { unplaced++; continue; }
-  if (!out[row] || r.confidence > out[row].confidence) out[row] = { finish: r.finish, family: r.family, confidence: r.confidence, pandId: pid, ...(r.crown ? { crown: r.crown, cornice: r.cornice, cc: r.cc } : {}) };
+  byRow.set(row, [...(byRow.get(row) ?? []), { ...r, pandId: pid }]);
+}
+const pick = (r: Read & { pandId: string }) => ({ finish: r.finish, family: r.family, confidence: r.confidence, pandId: r.pandId, ...(r.crown ? { crown: r.crown, cornice: r.cornice, cc: r.cc } : {}) });
+for (const [row, reads] of byRow) {
+  const brick = reads.filter(r => r.finish === 'brick' && r.family !== 'unclear' && r.confidence >= 0.7);
+  const fam = new Map<string, { n: number; sum: number; top: Read & { pandId: string } }>();
+  for (const r of brick) {
+    const f = fam.get(r.family) ?? { n: 0, sum: 0, top: r };
+    f.n++; f.sum += r.confidence; if (r.confidence > f.top.confidence || (r.confidence === f.top.confidence && r.pandId < f.top.pandId)) f.top = r;
+    fam.set(r.family, f);
+  }
+  const win = [...fam.entries()].sort((a, b) => b[1].n - a[1].n || b[1].sum - a[1].sum || (a[0] < b[0] ? -1 : 1))[0];
+  const top = win ? win[1].top : [...reads].sort((a, b) => b.confidence - a.confidence || (a.pandId < b.pandId ? -1 : 1))[0];
+  out[row] = pick(top);
 }
 const file = `src/canalRecall/buurtGenerator/districts/measured/${district}.json`, m = JSON.parse(fs.readFileSync(file, 'utf8'));
 m.photoReads = Object.fromEntries([...best].filter(([pid]) => recs.has(pid)).sort(([a], [b]) => (a < b ? -1 : 1))
