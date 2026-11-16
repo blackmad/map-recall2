@@ -1,0 +1,297 @@
+{
+ "date": "2026-11-16",
+ "judge": "one fresh opus agent per blind, photo|A|B pairs, key unseen",
+ "blinds": {
+  "r6 today vs reads>=0.7": [
+   {
+    "front": "r6-template-01",
+    "winner": "before",
+    "why": "Photo is a red-lettered DONNERKEBAB front; A has the red Donnerkebab sign and kebab window, B invents a yellow 'Sweet Atelier'."
+   },
+   {
+    "front": "r6-template-02",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-template-03",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-template-04",
+    "winner": "reads07",
+    "why": "Photo is a drugstore with toiletry shelves; B's Normal drugstore front is the right kind, A's yellow Jamin sweet shop is not."
+   },
+   {
+    "front": "r6-template-06",
+    "winner": "reads07",
+    "why": "Photo reads 'Tasty Bakery' in script with a bakery window; B matches it, A shows a 'Perdu' bar."
+   },
+   {
+    "front": "r6-template-07",
+    "winner": "reads07",
+    "why": "Photo is a dark grey Dragon City front; A invents a 'DAMSTRAAT' sign, B's plain front is the safer match."
+   },
+   {
+    "front": "r6-template-08",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-quiet-10",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-quiet-11",
+    "winner": "reads07",
+    "why": "Photo has no shop there; A adds a dark shopfront at the far left, B keeps it neutral (minor difference)."
+   },
+   {
+    "front": "r6-quiet-12",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-neutral-16",
+    "winner": "before",
+    "why": "Photo's Parfois front is dark; B's dark green fascia is closer than A's red (marginal)."
+   },
+   {
+    "front": "r6-neutral-17",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-neutral-18",
+    "winner": "reads07",
+    "why": "Photo shows a grey front with no awning or pavement stands; B adds a big green 'WD Buhrs' awning and flower stalls not seen in the photo (low confidence)."
+   },
+   {
+    "front": "r6-neutral-19",
+    "winner": "before",
+    "why": "Photo's middle shop has a long dark-red fascia over packed goods; A's red Tabak Lotto front matches it better than B's plain navy."
+   },
+   {
+    "front": "r6-neutral-20",
+    "winner": "before",
+    "why": "Photo is the black Suzie Wong bar front; A names Suzie Wong on a dark board, B has a plain green fascia."
+   },
+   {
+    "front": "r6-neutral-21",
+    "winner": "reads07",
+    "why": "Photo shows a residential ground floor and a 'Hush' shop; A invents a named 'Caprice' bar, B stays plain."
+   },
+   {
+    "front": "r6-neutral-22",
+    "winner": "reads07",
+    "why": "Photo's middle unit is empty and to let; A invents a pink Gelato shop, B is plain."
+   },
+   {
+    "front": "r6-neutral-23",
+    "winner": "reads07",
+    "why": "Photo is a pancake house with a blue awning; B's red 'Old Dutch' board looks like the wrong name and colour, A stays plain."
+   },
+   {
+    "front": "r6-neutral-24",
+    "winner": "reads07",
+    "why": "Photo's right unit is an optician/retail glass front; B invents a bakery, A stays plain."
+   },
+   {
+    "front": "r6-neutral-25",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-control-26",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-control-28",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-control-29",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-control-30",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-control-31",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-control-32",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-control-33",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6-control-35",
+    "winner": "tie",
+    "why": "Same shop fronts; only a negligible fascia tint at the far edge differs."
+   }
+  ],
+  "r6b reads 0.7 vs 0.6 (extra pands)": [
+   {
+    "front": "r6b-extra-01",
+    "winner": "r07",
+    "why": "B's dark 'Dolce & Gelato' board with a gelato window matches the photo's Dolce & Gelato; A shows an invented 'CHICKEN' shop."
+   },
+   {
+    "front": "r6b-extra-02",
+    "winner": "r06",
+    "why": "The photo shows a house door with no shopfront; A keeps it plain, while B invents a green 'Barney S' shopfront."
+   },
+   {
+    "front": "r6b-extra-03",
+    "winner": "r06",
+    "why": "The photo shows only a construction container; A's plain wall beats B's invented 'Soma Mission' shop."
+   },
+   {
+    "front": "r6b-extra-04",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6b-extra-05",
+    "winner": "r06",
+    "why": "The middle house in the photo is residential; B keeps it plain, while A adds a duplicate 'ZZOGGY S' bar."
+   },
+   {
+    "front": "r6b-extra-06",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6b-extra-07",
+    "winner": "r06",
+    "why": "The photo's Pearle Studio has a black board and no awning; A's plain band is closer than B's invented blue awning and blade sign."
+   },
+   {
+    "front": "r6b-extra-08",
+    "winner": "r06",
+    "why": "The photo is a residential front with a souterrain and steps; B is a plain house, while A invents a 'FIETSENMAKERIJ' shop."
+   },
+   {
+    "front": "r6b-extra-09",
+    "winner": "tie",
+    "why": "A and B are effectively identical; the Van Oost bakery and café are the same in both."
+   },
+   {
+    "front": "r6b-extra-10",
+    "winner": "r06",
+    "why": "The photo's awning is pale grey; B's bright green awning and blade sign are invented, so A's neutral front is closer."
+   },
+   {
+    "front": "r6b-extra-11",
+    "winner": "r06",
+    "why": "The photo shows a plain dark door front with no shop sign; B invents a 'DREAM BEAUTY' shopfront."
+   },
+   {
+    "front": "r6b-extra-12",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6b-extra-13",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6b-extra-14",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6b-extra-15",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6b-control-16",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6b-control-17",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6b-control-18",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6b-control-19",
+    "winner": "tie",
+    "why": "A and B are identical."
+   },
+   {
+    "front": "r6b-control-20",
+    "winner": "tie",
+    "why": "A and B are identical."
+   }
+  ],
+  "r7 today vs ?retailBrand=1": [
+   {
+    "front": "febo-korte-niezel-shot",
+    "winner": "brand",
+    "why": "FEBO: the photo shows red letters on the wall over clear glass, which B's red letters on a plain band, dark glass and small blade sign match; A's yellow fascia and yellow automat-grid window are invented. The Souvenirs pavement board differs too (A blue, B yellow grid) but neither shows in the photo, so it was not counted."
+   },
+   {
+    "front": "febo-korte-niezel",
+    "winner": "brand",
+    "why": "FEBO decided it: A's red letters over dark glass match the photo's red letters on a dark front, while B adds a yellow fascia and automat-grid window. The Souvenirs pavement props (A colour racks, B blue boards) are both unclear against the photo and were not counted."
+   },
+   {
+    "front": "hema-r7",
+    "winner": "brand",
+    "why": "HEMA: A's red letters on a dark band match the photo's red letters mounted on a dark canopy; B's solid red fascia with tiny white letters is not in the photo. Window glass is the same in both."
+   },
+   {
+    "front": "kruidvat-r7",
+    "winner": "today",
+    "why": "Drugstore: A's true red fascia is closer to the photo's red-and-white front than B's orange-red. Neither the pavement boards (A) nor the colour racks (B) appear in the photo, so the props were neutral; the sign colour decided it."
+   },
+   {
+    "front": "bruna-r7",
+    "winner": "brand",
+    "why": "Bruna: the photo shows red letters on a dark-red window, with no blue band. B's plain white board with red letters is the more neutral sign mount; A's blue fascia is an invented colour. Weak call."
+   },
+   {
+    "front": "starbucks-r7",
+    "winner": "tie",
+    "why": "The near shops are identical in A and B; the only differences are tiny distant blade signs that cannot be compared with the photo's shops."
+   },
+   {
+    "front": "dirk-r7",
+    "winner": "today",
+    "why": "Dirk: the photo shows a dark front with 'Dirk' on the glass. A keeps the dark window frame under a red fascia, while B paints the whole frame red and adds a red blade sign the photo does not have."
+   },
+   {
+    "front": "mcdonalds-r7",
+    "winner": "today",
+    "why": "McDonald's: A's black band with the yellow M and dark frame match the photo's black sign panel; B's dark-green band and frame are the wrong colour. Window glass is the same in both."
+   },
+   {
+    "front": "vomar-r7",
+    "winner": "tie",
+    "why": "The red fascia bands, white-square sign and window glass look identical in A and B; there is no visible difference to judge."
+   }
+  ]
+ }
+}
