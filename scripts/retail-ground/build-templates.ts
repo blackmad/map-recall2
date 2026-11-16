@@ -28,7 +28,7 @@ import { insideCentre, RING_KM, DAM } from '../../src/canalRecall/retailArea.ts'
 import { streetPriors, type StreetRead } from '../../src/canalRecall/retailPuiPaint.ts';
 import { bikeShopClass, bikeCode } from '../../src/canalRecall/retailBikes.ts';
 import { closedByOverture, sameName, MATCH_M } from '../../src/canalRecall/retailSources.ts';
-import { correctionFor, type SignRead } from '../../src/canalRecall/retailSignReads.ts';
+import { READ_MIN_CONF, correctionFor, type SignRead } from '../../src/canalRecall/retailSignReads.ts';
 import { addressPand, atOnStreetWall, matchAddress, type Vbo } from '../../src/canalRecall/retailAddress.ts';
 
 import { CACHE, nodes, LAT0, KX, KY, local, grid, streets, walls, facing, open, near, bagUses, bagKey, namedSegs, lngLatOf, type Building, type Node } from './city.ts';
@@ -164,7 +164,7 @@ if (process.argv.includes('--reads') && fs.existsSync(READS)) {
   for (const [id, p] of [...placed]) {
     const r = reads[bagKey(id)]; if (!r || r.node !== p.node) continue;
     if (p.t === 'redLight' && audited.has(bagKey(id))) { readCount.audited = (readCount.audited ?? 0) + 1; continue; }
-    const c = correctionFor(r, templateForTags);
+    const c = correctionFor(r, templateForTags, Number(arg('read-floor') ?? READ_MIN_CONF));
     readCount[c.action] = (readCount[c.action] ?? 0) + 1;
     if (c.action === 'keep') continue;
     if (c.action === 'template') {

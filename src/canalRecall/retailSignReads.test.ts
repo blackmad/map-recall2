@@ -12,6 +12,7 @@ test('sign reads: below the confidence floor, a match or an occluded front keeps
   assert.deepEqual(correctionFor(read('match'), templateForTags), { action: 'keep' });
   assert.deepEqual(correctionFor(read('occluded'), templateForTags), { action: 'keep' });
   assert.deepEqual(correctionFor(undefined, templateForTags), { action: 'keep' });
+  assert.deepEqual(correctionFor(read('noShop', 0.6), templateForTags, 0.6), { action: 'quiet' });
 });
 
 test('sign reads: no shop goes quiet; vacant and unreadable take the neutral front', () => {

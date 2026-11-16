@@ -20,8 +20,8 @@ export function readTags(read: Pick<SignRead, 'tag' | 'name'>): Record<string, s
   return { ...(m ? { [m[1]]: m[2] } : {}), ...(read.name ? { name: read.name } : {}) };
 }
 
-export function correctionFor<T>(read: SignRead | undefined, templateFor: (tags: Record<string, string>) => T | null): Correction<T> {
-  if (!read || read.conf < READ_MIN_CONF) return { action: 'keep' };
+export function correctionFor<T>(read: SignRead | undefined, templateFor: (tags: Record<string, string>) => T | null, minConf = READ_MIN_CONF): Correction<T> {
+  if (!read || read.conf < minConf) return { action: 'keep' };
   switch (read.v) {
     case 'match': case 'occluded': return { action: 'keep' };
     case 'noShop': return { action: 'quiet' };
