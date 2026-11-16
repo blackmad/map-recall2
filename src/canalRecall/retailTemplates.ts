@@ -166,7 +166,7 @@ export function templateForTags(tags: Record<string, string>): RetailTemplate | 
 }
 
 /** Window content the front builder draws behind (or in front of) the glass. */
-export type Content = 'shelves' | 'barGlow' | 'menu' | 'bainMarie' | 'meat' | 'produce' | 'bread' | 'automatiek' | 'deli' | 'bowls'
+export type Content = 'shelves' | 'salon' | 'barGlow' | 'menu' | 'bainMarie' | 'meat' | 'produce' | 'bread' | 'automatiek' | 'deli' | 'bowls'
   | 'books' | 'magazines' | 'placards' | 'ducks' | 'souvenirs' | 'cheese' | 'frosted' | 'neon' | 'bikes' | 'redGlow' | 'counter' | 'stickers' | 'waffles' | 'curtains' | 'jars';
 /** What a template draws. Colours are house colours or measured street colours; chains with a sourced logo also draw it
  *  from the logo layer (retailLogos.ts). */
@@ -258,7 +258,7 @@ const LOOKS_N: Record<RetailTemplate, TemplateLook> = {
   apotheek: { fascia: '#dfe6e7', letters: '#5c6875', word: 'APOTHEEK', content: 'shelves', lit: true, frame: '#dfe6e7', blade: '#3e6254' },
   // Barbershop (black front, off-white letters: band #2b2825, letters #a0a59d), Hofman Kappers (black awnings, white
   // letters), a barber's grey glass band with white letters: a dark band, pale letters; frames vary (left to the cell).
-  hairdresser: { fascia: '#403c39', letters: '#e1e6de', word: 'name', content: 'shelves', lit: false },
+  hairdresser: { fascia: '#403c39', letters: '#e1e6de', word: 'name', content: 'salon', lit: false },
   florist: { fascia: '#24382c', letters: '#f4f1ea', word: 'name', content: 'produce', lit: false, awning: '#2f5d3f', pavement: 'flowers' },
   turkishBakery: { fascia: '#f2b01e', letters: '#7a1f12', word: 'name', content: 'bread', lit: true },
   bakery: { fascia: '#f3e7c9', letters: '#6b3a1e', word: 'name', content: 'bread', lit: true },

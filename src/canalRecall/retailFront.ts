@@ -8,7 +8,11 @@ import { drawRedLightFront, type RedLightFront } from './groundParts/redLightFro
 import { retailBrandOn, retailPartsOn } from './retailPages.js';
 import { brandAccepted, brandLook } from './retailBrandStyles.js';
 import { capShare, titleCase, typeLayout, type TypeFace } from './retailTypeFaces.js';
-import { BIKE, bikeQuads, outsideBikes, SHOW_HEXES, USED_HEXES, type BikeClass } from './retailBikes.js';
+import { type BikeClass } from './retailBikes.js';
+import { type PropTri } from './shopProps/kit.js';
+import { BIKE_HEXES } from './shopProps/props.js';
+import { insideProps, outsideProps, SHOP_PROPS } from './shopProps/layout.js';
+import { baySeed, goodsTileRect } from './shopProps/variety.js';
 import { signText, TEMPLATE_LOOKS, TEMPLATE_PARTS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
 
 export type V3 = [number, number, number];
@@ -70,6 +74,15 @@ class Builder {
     const flip = c[0] * n[0] + c[1] * n[1] + c[2] * n[2] < 0;
     const t = (p: V3[]): FrontTri => (lit ? { p, hex, n, lit } : { p, hex, n });
     this.out.push(t(flip ? [A, C, B] : [A, B, C]), t(flip ? [A, D, C] : [A, C, D]));
+  }
+  /** Lane shop-goods: a prop's triangles (shopProps/kit.ts, x along, y out, z up) placed by `at`, each wound to its normal. */
+  put(tris: readonly PropTri[], at: (p: readonly [number, number, number]) => [number, number, number], recolour?: (hex: string) => string): void {
+    for (const t of tris) {
+      const [A, B, C] = t.p.map(q => { const [a, o, z] = at(q); return this.P(a, o, z); }), n = this.N(t.n[0], t.n[1], t.n[2]);
+      const u = [B[0] - A[0], B[1] - A[1], B[2] - A[2]], w = [C[0] - A[0], C[1] - A[1], C[2] - A[2]];
+      const flip = (u[1] * w[2] - u[2] * w[1]) * n[0] + (u[2] * w[0] - u[0] * w[2]) * n[1] + (u[0] * w[1] - u[1] * w[0]) * n[2] < 0;
+      this.out.push({ p: flip ? [A, C, B] : [A, B, C], hex: recolour ? recolour(t.hex) : t.hex, n });
+    }
   }
   /** A flat panel parallel to the wall at `o` out. */
   panel(a0: number, a1: number, o: number, z0: number, z1: number, hex: string, lit?: boolean): void {
@@ -265,6 +278,8 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
     }
     case 'produce': case 'bowls': {
       b.panel(a0, a1, o, z0, z1, look.content === 'bowls' ? '#f4f6ef' : '#5a5148', lit);
+      // Lane shop-goods: a greengrocer's and a florist's window goods are props (shopProps), crates and plants.
+      if (look.content === 'produce') break;
       for (let a = a0 + 0.1, k = 0; a < a1 - 0.3; a += 0.35, k++) {
         b.panel(a, a + 0.28, o + 0.01, z0 + h * 0.25, z0 + h * 0.45, look.content === 'bowls' ? '#3f8f4a' : PRODUCT[Math.floor(r(`g${k}`) * PRODUCT.length)], lit);
         if (look.content === 'bowls') b.panel(a + 0.04, a + 0.24, o + 0.01, z0 + h * 0.6, z0 + h * 0.85, '#6aa84f', lit);
@@ -285,10 +300,9 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
       for (let a = a0 + 0.1, k = 0; a < a1 - 0.2; a += 0.22, k++) b.panel(a, a + 0.16, o + 0.008, z0 + 0.05, z0 + h * 0.2, PRODUCT[k % PRODUCT.length]);
       break;
     }
-    case 'bikes': {
-      // Racked bikes behind the glass: a darker shop, rows of frames.
-      b.panel(a0, a1, o, z0, z1, '#3b3f42');
-      for (let a = a0 + 0.2, k = 0; a < a1 - 0.5; a += 0.42, k++) { const hex = ['#1c1c1c', '#2f5d8a', '#7a1f2b', '#e8e2d2'][k % 4]; b.panel(a, a + 0.06, o + 0.01, z0 + 0.05, z0 + 0.75, hex); b.panel(a - 0.15, a + 0.25, o + 0.014, z0 + 0.62, z0 + 0.67, hex); }
+    case 'bikes': case 'salon': {
+      // Lane shop-goods: the shop's back wall only; its bikes, chairs and stations are props (shopProps), not crosses.
+      b.panel(a0, a1, o, z0, z1, look.content === 'salon' ? '#e9e4da' : '#8f8d86', lit);
       break;
     }
     case 'redGlow': {
@@ -334,60 +348,6 @@ function content(b: Builder, look: TemplateLook, a0: number, a1: number, z0: num
       for (let row = 0; row < 3; row++) for (let a = a0 + 0.1; a < a1 - 0.15; a += 0.16) b.panel(a, a + 0.11, o + 0.01, z0 + h * (0.2 + row * 0.22), z0 + h * (0.34 + row * 0.22), row === 2 ? '#7a3b1a' : r(`w${row}${a.toFixed(2)}`) < 0.5 ? '#c98a3a' : '#e85a8c', true);
       break;
     }
-  }
-}
-
-const BIKE_QUADS = bikeQuads();
-/**
- * One bike side-on to the street (round 6): BIKE_QUADS as strips in the plane `o` out from the wall, rear axle at `a`,
- * wheels on `z0`, scaled by `k`; `lean` tips the top out from the wall. The frame in `hex`, tyres, saddle and bar dark.
- */
-function bikeSide(b: Builder, a: number, o: number, z0: number, hex: string, k = 1, lean = 0, kx = k): void {
-  const n = b.N(0, 1, 0);
-  for (const q of BIKE_QUADS) {
-    const dx = (q.x1 - q.x0) * kx, dz = (q.z1 - q.z0) * k, l = Math.hypot(dx, dz) || 1, px = (-dz / l) * q.w / 2 * k / kx, pz = (dx / l) * q.w / 2;
-    const at = (x: number, z: number): V3 => b.P(a + x * kx, o + z * k * lean, z0 + z * k);
-    const tone = q.part === 'frame' ? hex : q.part === 'wheel' ? '#161616' : '#202020';
-    b.face([at(q.x0 - px, q.z0 - pz), at(q.x1 - px, q.z1 - pz), at(q.x1 + px, q.z1 + pz), at(q.x0 + px, q.z0 + pz)], n, tone);
-  }
-}
-
-/**
- * Round 6: the bike shop's row against the front, side-on, two depths alternating, either side of the door: the row is
- * laid out over both runs end to end, and a bike that would cross into the doorway moves past it.
- */
-function bikeRow(b: Builder, bike: NonNullable<RetailFrontInput['bike']>, s0: number, s1: number, door: { a0: number; a1: number } | null, base: number, seed: string): void {
-  const runs = (door ? [[s0, door.a0 - 0.12], [door.a1 + 0.12, s1]] : [[s0, s1]] as Array<[number, number]>).filter(([r0, r1]) => r1 - r0 > 0.2);
-  const rnd = (k: string) => hash01(`${seed}:bk:${k}`), len = (BIKE.wheelbase + 2 * BIKE.wheelR);
-  const row = outsideBikes(bike.cls, runs.reduce((t, [r0, r1]) => t + r1 - r0, 0), rnd, bike.fleetHex);
-  let run = 0, start = 0;
-  for (const [k, p] of row.entries()) {
-    const d = p.a - BIKE.wheelR;
-    start = k === 0 ? (runs[0]?.[0] ?? 0) + d : start + d - (row[k - 1].a - BIKE.wheelR);
-    if (run < runs.length && start + len > runs[run][1] + 1e-6) { run++; if (run < runs.length) start = runs[run][0] + row[0].a - BIKE.wheelR; }
-    if (run >= runs.length || start + len > runs[run][1] + 1e-6) break;
-    bikeSide(b, start + BIKE.wheelR, (k % 2 ? 0.52 : 0.34) + (bike.cls === 'used' ? (rnd(`o${k}`) - 0.5) * 0.08 : 0), base, p.hex, 1, p.lean);
-  }
-}
-
-/** Round 6: two to four bikes side-on behind the glass (the premium shop's clean showroom bikes, the used shop's
- *  racked ones, the rental fleet's), over the window runs `segs`, scaled to fit under the door head. */
-function windowBikes(b: Builder, bike: NonNullable<RetailFrontInput['bike']>, segs: ReadonlyArray<[number, number]>, zr: number, head: number, seed: string): void {
-  // A narrow pane takes its bikes angled (foreshortened along the street to 0.6), as a showroom stands them.
-  const k = Math.min(1, (head - zr - 0.08) / 1.08), full = (BIKE.wheelbase + 2 * BIKE.wheelR) * k;
-  const rnd = (t: string) => hash01(`${seed}:bw:${t}`);
-  const want = bike.cls === 'premium' ? 2 + Math.floor(rnd('n') * 3) : bike.cls === 'used' ? 2 + Math.floor(rnd('n') * 2) : 2;
-  let left = want, i = 0;
-  for (const [c0, c1] of segs) {
-    const kx = k * Math.max(0.6, Math.min(1, (c1 - c0 - 0.1) / full)), span = full * kx / k, step = span * 0.72;
-    if (c1 - c0 - 0.1 < span - 1e-6) continue;
-    const m = Math.min(left, Math.floor((c1 - c0 - 0.1 - span) / step) + 1);
-    for (let j = 0; j < m; j++, i++) {
-      const hex = bike.cls === 'rental' ? bike.fleetHex ?? '#2a2a2a' : bike.cls === 'premium' ? SHOW_HEXES[Math.floor(rnd(`h${i}`) * SHOW_HEXES.length)] : USED_HEXES[Math.floor(rnd(`h${i}`) * USED_HEXES.length)];
-      const a = c0 + 0.05 + BIKE.wheelR * kx + ((c1 - c0 - 0.1 - span) - (m - 1) * step) / 2 + j * step;
-      bikeSide(b, a, FRONT.contentOutM + 0.012 + (j % 2) * 0.004, zr + 0.04, hex, k, 0, kx);
-    }
-    left -= m;
   }
 }
 
@@ -564,6 +524,26 @@ function glass(b: Builder, look: TemplateLook, a0: number, a1: number, z0: numbe
 // Round 3b tone: the photos' shop glass measures darker than round 3's sky (mean ground L 0.37 against 0.43 drawn).
 const REFLECT = ['#7d878e', '#5f676c'] as const;
 
+/** Lane shop-goods: props behind the glass are drawn as a relief between the pane (contentOutM) and the glass's
+ *  reflection (contentOutM + 0.025): the wall is not cut behind a window, so a 2.5 m deep shop is pressed into 2.5 cm,
+ *  deeper props nearer the pane, a little smaller and higher (the eye looks down into the shop). They keep their 3D
+ *  normals, so they shade as solids; the shop-interiors lane's room (rooms.ts, 3.6-6 m deep) stays behind them. */
+export const INSIDE = { o0: FRONT.contentOutM + 0.002, o1: FRONT.contentOutM + 0.022, deepM: 2.5, squash: 0.012, riserOutM: FRONT.contentOutM + 0.03 } as const;
+function insideRelief(b: Builder, props: NonNullable<(typeof SHOP_PROPS)[string]>, c0: number, c1: number, base: number, head: number, seed: string, bay: number, lit: boolean): void {
+  const items = insideProps(props, c0, c1, seed, bay).sort((p, q) => q.depth - p.depth);
+  for (const { tris, depth } of items) {
+    const f = Math.min(1, depth / INSIDE.deepM), k = 1 - 0.12 * f, lift = 0.1 * f, oMid = INSIDE.o1 - (INSIDE.o1 - INSIDE.o0) * f;
+    const xs = tris.flatMap(t => t.p.map(p => p[0])), mid = (Math.min(...xs) + Math.max(...xs)) / 2;
+    const top = Math.max(...tris.flatMap(t => t.p.map(p => p[2])));
+    // Scaled about its centre along the wall; no taller than the glass; kept inside the bay.
+    const kk = Math.min(k, (head - 0.05 - base - lift) / Math.max(0.1, top));
+    const x0 = mid + (Math.min(...xs) - mid) * kk, x1 = mid + (Math.max(...xs) - mid) * kk;
+    const shift = x0 < c0 + 0.02 ? c0 + 0.02 - x0 : x1 > c1 - 0.02 ? c1 - 0.02 - x1 : 0;
+    if (x1 - x0 > c1 - c0 - 0.04) continue;
+    b.put(tris, p => [mid + (p[0] - mid) * kk + shift, Math.max(INSIDE.o0, Math.min(INSIDE.o1, oMid + p[1] * INSIDE.squash)), base + 0.02 + lift + p[2] * kk], hex => glassTone(hex, lit ? 0.22 : 0.3));
+  }
+}
+
 /**
  * The template's front on the wall `e` over [s0, s1] (metres along it), ground storey [base, base + groundM].
  * Returns flat triangles; nothing for a span under 1.2 m.
@@ -650,13 +630,17 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   const lightHex = glassTone('#7f8b93', 0.5);
   if (door && puiTop - head > 0.25) b.panel(door.a0, door.a1, FRONT.contentOutM, head + FRONT.transomM, puiTop, lightHex);
   if (door && puiTop - head > 0.25) b.slab(door.a0, door.a1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame, 'bottom');
-  for (const [c0, c1] of segs) {
+  const props = SHOP_PROPS[input.template];
+  for (const [bay, [c0, c1]] of segs.entries()) {
     if (c1 - c0 < 0.4) { if (c1 > c0) b.fin(c0, c1, 0, FRONT.frameOutM - 0.02, base, puiTop, timber); continue; }
-    if (windows) { content(b, look, c0, c1, zr, puiTop - FRONT.headGapM, input.seed); continue; }
+    // Lane shop-goods: every bay its own seed (pand and bay index), so no two windows of a front draw the same goods.
+    const seed = baySeed(input.seed, bay);
+    if (windows) { content(b, look, c0, c1, zr, puiTop - FRONT.headGapM, seed); continue; }
     const panes = Math.max(1, Math.ceil((c1 - c0) / (look.paneM ?? FRONT.paneMaxM))), pw = (c1 - c0) / panes;
     // Stall riser in the riser colour, a sill over it (round 3c: one riser panel; the per-pane sunk panels were 2 tris a
     // pane nobody reads at ride distance).
-    b.panel(c0, c1, 0.015, base, zr, riser);
+    // Lane shop-goods: with props behind the glass the riser stands on the glass line, in front of them (their feet).
+    b.panel(c0, c1, props?.inside ? INSIDE.riserOutM : 0.015, base, zr, riser);
     b.slab(c0 - 0.02, c1 + 0.02, 0, FRONT.sillOutM + 0.03, zr - 0.05, zr, frame, 'top');
     if (look.window === 'plate') {
       // Round 7: dark reflective plate glass, the sky's light in its upper part.
@@ -665,9 +649,10 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     } else if (look.goods && input.goods !== undefined) {
       // Lane retail-real: the pane cut into tiles of the template's goods cell (alternate tiles mirrored).
       const cell = goodsCell(look.goods), layer = input.goods + cell.page, [u0, v0, u1, v1] = cell.rect;
-      for (let k = 0; k < panes; k++) for (const t of goodsTiles(c0 + k * pw, c0 + (k + 1) * pw)) {
+      // Lane shop-goods: each tile a seeded stretch of the cell, mirrored or not, per bay (goodsTileRect).
+      for (let k = 0; k < panes; k++) for (const [ti, t] of goodsTiles(c0 + k * pw, c0 + (k + 1) * pw).entries()) {
         const first = b.out.length;
-        b.textured(t.a0, t.a1, FRONT.contentOutM, zr, head, layer, t.flip ? [u1, v0, u0, v1] : [u0, v0, u1, v1]);
+        b.textured(t.a0, t.a1, FRONT.contentOutM, zr, head, layer, goodsTileRect([u0, v0, u1, v1], input.seed, bay, k * 16 + ti));
         if (!look.lit) for (const tr of b.out.slice(first)) delete tr.lit;
       }
     } else if (input.interior && !OWN_LIGHT.has(look.content) && look.content !== 'barGlow') {
@@ -678,7 +663,8 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
         b.textured(c0 + k * pw, c0 + (k + 1) * pw, FRONT.contentOutM, zr, head, input.interior.layer, input.interior.rect);
         for (const t of b.out.slice(first)) delete t.lit;
       }
-    } else glass(b, look, c0, c1, zr, head, input.seed);
+    } else glass(b, look, c0, c1, zr, head, seed);
+    if (props?.inside) insideRelief(b, props, c0, c1, base, head, input.seed, bay, look.lit);
     // The transom bar at the door head, the transom lights over it (dark glass with the sky in it).
     const hasLights = puiTop - head > 0.25;
     if (hasLights) {
@@ -722,9 +708,12 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     // Round 7: the blade's glyph on both faces (FEBO's red F on white).
     if (look.bladeGlyph && input.letters !== undefined) for (const side of [1, -1] as const) b.sideGlyph(look.bladeGlyph, at + side * 0.052, side, 0.55, top + 0.075, 0.44, input.letters, look.bladeInk ?? '#d0101b', look.blade, look.lit);
   }
-  if (input.bike && look.pavement === 'bikes') {
-    if (!windows) windowBikes(b, input.bike, segs.filter(([c0, c1]) => c1 - c0 >= 0.4), zr, head, input.seed);
-    bikeRow(b, input.bike, s0, s1, door, base, input.seed);
+  if (props?.outside) {
+    // Lane shop-goods: the template's pavement props (shopProps/layout.ts) either side of the door; a rental fleet's
+    // bikes all in its colour.
+    const runs = (door ? [[s0 + 0.1, door.a0 - 0.12], [door.a1 + 0.12, s1 - 0.1]] : [[s0 + 0.1, s1 - 0.1]] as Array<[number, number]>).filter(([r0, r1]) => r1 - r0 > 0.5) as Array<[number, number]>;
+    const fleet = input.bike?.cls === 'rental' ? input.bike.fleetHex : undefined, frames = new Set<string>(BIKE_HEXES);
+    b.put(outsideProps(props, runs, input.seed), q => [q[0], q[1], base + q[2]], fleet ? hex => (frames.has(hex) ? fleet : hex) : undefined);
   } else pavement(b, look, s0, s1, base, input.seed);
   return b.out;
 }

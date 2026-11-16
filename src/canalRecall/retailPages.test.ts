@@ -42,7 +42,8 @@ test('goods tiles: about one per 1.15 m of pane, alternate tiles mirrored; a goo
   g.__canalRecallRetailReal = true;
   try {
     for (const t of RETAIL_TEMPLATES) {
-      if (['bike', 'greengrocer', 'florist', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t)) continue;
+      // Lane shop-goods: the hairdresser's salon props are budgeted with the other props (retailGround.test.ts).
+      if (['bike', 'greengrocer', 'florist', 'hairdresser', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t)) continue;
       const tris = retailFrontTris({ template: t, seed: 'x', word: 'VERHAGEN', letters: 99, interior: { layer: 7, rect }, goods: 300 }, e, 0.3, 6.3, 0, 3.6);
       // Round t: postcard stands (racks) are props, default since their blind: within 220.
       assert.ok(tris.length <= (TEMPLATE_LOOKS[t].pavement === 'racks' ? 220 : 160), `${t}: ${tris.length} tris`);
