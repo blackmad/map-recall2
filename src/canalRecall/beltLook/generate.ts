@@ -52,6 +52,8 @@ export function photoCrown(p: PhotoCrown | undefined): { crown?: string; tallCor
   if (p.sc >= PHOTO_CROWN_MIN && Number.isInteger(p.full) && (p.full as number) >= 1) { out.storeys = p.full as number; if (p.souterrain !== null) out.souterrain = p.souterrain; }
   return out;
 }
+/** The storey pitch (m) a gable's foot is lifted to over a photo storey count (an old canal house's storeys, 2.8-3.2 m). */
+export const PHOTO_FOOT_PITCH_M = 2.8;
 /** The storey pitch (m) a photo storey count must give the wall (its souterrain a SOUTERRAIN_SHARE cell) to be used. */
 export const PHOTO_STOREY_PITCH_M = { min: 2.4, max: 5 } as const;
 export function plausiblePhotoStoreys(n: number | undefined, souterrain: boolean | undefined, wallM: number | null): number | undefined {
@@ -198,7 +200,7 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     const t: BeltTarget = { pandId: pid, street: row.street, year: sd?.year ?? m.pand.year, widthM: m.front.lengthM, eavesM: eaves, ridgeM: ridge0, roofCode: m.pand.roofCode ?? null, heightM: m.pand.heightM ?? null,
       ...(sd?.crown ? { statedCrown: sd.crown } : {}), ...(sd?.shop ? { shop: true } : {}), ...(sd?.finish ? { finish: sd.finish } : {}), ...(sd?.storeys ? { storeys: sd.storeys } : {}), ...(sd?.stoop ? { stoop: true } : {}), ...(sd?.roofStorey ? { roofStorey: true } : {}), ...(sd?.warehouse ? { warehouse: true } : {}), ...(sd?.elements?.length ? { elements: sd.elements } : {}), ...(look !== BELT_LOOK ? { district: look.id } : {}) };
     const own = reads.get(pid);
-    let read: DescriberAnswer, sample: string | undefined, readRef: string;
+    let read: DescriberAnswer, sample: string | undefined, readRef: string, photoStoreys: number | undefined;
     // A pand's own read keeps an attic it saw; dormers read over a cornice are not a mansard front unless the register
     // states one (held-out round 5: Keizersgracht 176027-176028 and 165044 drew whole slate mansards from one dormer
     // each), and a read mansard stands as dormers (round 7 sample: one read mansard in five was one).
@@ -212,7 +214,11 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       const corniceTop = !dGabled && eaves !== null ? ((sd?.tallCornice ? tallTop : ahnTop) ?? (t.heightM != null ? corniceLine({ crown: 'cornice' }, t, eaves, m.pand.eavesM) : null)) : null;
       // The photo's storey count where the register is silent, when it gives the wall (a gable's foot, else the cornice
       // top) a plausible pitch.
-      const ps = t.storeys ? undefined : plausiblePhotoStoreys(sd?.photoStoreys, sd?.photoSouterrain, dGabled ? eaves : corniceTop);
+      // A gable's wall may stand up to its AHN apex less the minimum rise (3DBAG's eave is often a rear one: round 10,
+      // Singel 177196, a bell over four storeys whose 3DBAG eave is 8.7 m under an AHN apex of 13.43 m).
+      const gWall = dGabled && af && eaves !== null ? Math.max(eaves, ahnGableApex(af, m.pand.eavesM ?? eaves, ridge0)! - AHN_BOUNDS.gableMinRiseM) : eaves;
+      const ps = t.storeys ? undefined : plausiblePhotoStoreys(sd?.photoStoreys, sd?.photoSouterrain, dGabled ? gWall : corniceTop);
+      photoStoreys = ps;
       read = fittedRead({ ...t, ...(corniceTop !== null ? { eavesM: corniceTop } : {}), ...(ps ? { storeys: ps } : {}) }, d.donor, look);
       if (sd?.tallCornice && !GABLED_CROWNS.has(String(read.crown))) (read as { cornice?: string }).cornice = sd.tallCornice;
       if (t.roofStorey || (look.measuredRoofStorey && !GABLED_CROWNS.has(String(read.crown)) && roofStoreyOverCornice(m.pand, corniceTop))) read = statedDormer(read);
@@ -235,8 +241,12 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
     // The minimum rise counts from 3DBAG's own eaves, not the front top lifted to the height (round 6: Keizersgracht 178869
     // and 178868, AHN front tops 15.05 and 15.5 m, drawn 16.3 m as front top 14.3 + 2).
     const ridge = gabled && af ? ahnGableApex(af, m.pand.eavesM ?? top, ridge0) : ridge0;
+    // A gable over a photo storey count stands its foot at the storeys (PHOTO_FOOT_PITCH_M each), under the apex less the
+    // minimum rise; apexOnFront then trims the rise to the apex.
+    const foot = gabled && photoStoreys && ridge !== null && top !== null
+      ? +Math.max(top, Math.min(ridge - AHN_BOUNDS.gableMinRiseM, photoStoreys * PHOTO_FOOT_PITCH_M)).toFixed(2) : top;
     members.push({ pandId: pid, label: `${row.street} (${pid.slice(-6)})`, numbers: [], built: t.year, widthM: +m.front.lengthM.toFixed(2),
-      eaves3dbag: top, height3dbag: top, ...(ridge !== null && (gableable(t) || (gabled && af)) ? { ridge3dbag: +ridge.toFixed(2) } : {}),
+      eaves3dbag: foot, height3dbag: foot, ...(ridge !== null && (gableable(t) || (gabled && af)) ? { ridge3dbag: +ridge.toFixed(2) } : {}),
       read, readRef, ...(sample ? { wallSample: sample } : {}) });
   }
   return { id: `${look.id}-${row.id}`, canalWindows: true, street: row.street, side: 'mixed', members, inputs: [BELT_LOOK_REF, 'public/data/extracts/amsterdam/bag-tiles/14', 'public/data/extracts/amsterdam/streets-routing.json'], solvedAt: at };

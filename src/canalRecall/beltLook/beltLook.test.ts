@@ -388,4 +388,8 @@ test('round 10 pins on the staged belt (data/buurt-generators/belt/row-front.jso
   // Keizersgracht 172210: its attic-frieze cornice at the AHN band's top, 19.19 m (18.01 m in round 9).
   assert.equal(rec('172210').eavesM, 19.19);
   assert.equal(rec('172210').series?.cornice, 'attic-frieze');
+  // Singel 177196 (held-out round 10, Singel 177194 house 2): a photo bell over four storeys stands its foot at 11.2 m (four
+  // storeys at 2.8 m, under the AHN apex 13.43 m less 2 m), not on 3DBAG's rear eave 8.7 m with two storeys.
+  assert.equal(rec('177196').storeys, 4);
+  assert.equal(rec('177196').eavesM, 11.2);
 });
