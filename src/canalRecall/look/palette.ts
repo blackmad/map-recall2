@@ -1,4 +1,5 @@
 import { roofFamilyFlag, snapRoofFamily } from './calmTones';
+import { measuredSingleGainOn } from './measuredSingleGain';
 import { toonFrontsActive, TOON_ACCENTS, TOON_GROUND_PAINTS, TOON_PERIOD_WALLS, TOON_WALLS } from './toonFronts';
 /**
  * The one palette for Canal Recall's buildings (docs/LOOK.md).
@@ -647,7 +648,8 @@ export const BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
  */
 export function cityMeasuredWallTint(hex: string): string {
   const [h, s, l] = rgbToHsl(hexToRgb(hex)), [r, g, b] = hexToRgb(rgbToHex(hslToRgb([h, s, Math.max(l, MEASURED_WALL_MIN_L)])));
-  return rgbToHex([r, g, b].map(v => Math.min(255, Math.round(v / BRICK_CELL_MEAN))) as RGB);
+  const k = measuredSingleGainOn() ? 1 : BRICK_CELL_MEAN; // ?measuredSingleGain=1: the slot layer's LIFT already gains the cell
+  return rgbToHex([r, g, b].map(v => Math.min(255, Math.round(v / k))) as RGB);
 }
 /**
  * Measured glass (`tintSource: 'measured'` on a glass slot) samples its own pane cell: the stock glass pane of
@@ -703,7 +705,8 @@ export const STONE_CELL_MEAN = 228 / 255;
  * divided per channel by the stone cell mean, so cell x tint lands on it (capped at white).
  */
 export function cityMeasuredStoneTint(hex: string): string {
-  return rgbToHex(hexToRgb(hex).map(v => Math.min(255, Math.round(v / STONE_CELL_MEAN))) as RGB);
+  const k = measuredSingleGainOn() ? 1 : STONE_CELL_MEAN; // ?measuredSingleGain=1: STONE_GAIN already gains the cell
+  return rgbToHex(hexToRgb(hex).map(v => Math.min(255, Math.round(v / k))) as RGB);
 }
 /**
  * A measured flat roof (roof-facts: `roofSlotHex(slot, rgb)`, already pulled into its slot's luma band) is drawn as is,

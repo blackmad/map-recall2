@@ -52,3 +52,17 @@ export const RELIEF_STEPS: readonly ReliefStep[] = [
   { id: 'centraal-west-viaduct-west-wall', label: 'Centraal west: the passage floor 3 m inside the west abutment, against the track bed 30 m behind it', lowAt: [4.8957157, 52.3806077], highAt: [4.8952942, 52.3807559], minDropM: 4 },
   { id: 'centraal-west-viaduct-east-wall', label: 'Centraal west: the passage floor 3 m inside the east abutment, against the platforms 30 m behind it', lowAt: [4.8965009, 52.3803143], highAt: [4.896917, 52.3801605], minDropM: 4 },
 ];
+
+/**
+ * Ground above a building's base, pending a terrain lane (not yet asserted by check-ground-cells: each entry fails
+ * today). The game ground at `at` (the foot of the named front) must sit within `maxAboveBaseM` of the 3DBAG ground
+ * of pand `pandId` (`baseNap`, NAP metres), so a landmark standing on that base keeps its plinth and basement lights.
+ * `measuredAboveM` is the reading that registered the entry.
+ */
+export interface PendingBaseSpot { id: string; label: string; pandId: string; osmId?: string; at: [number, number]; baseNap: number; maxAboveBaseM: number; measuredAboveM: number; seen: string }
+
+export const PENDING_BASE_SPOTS: readonly PendingBaseSpot[] = [
+  // Lane landmarks-next 2026-11-15/16 (mauritskade-61 frames mk61-front, mk61-nw): the plinth and the basement lights
+  // of the former laboratory are buried, so the ground-floor windows read as doors.
+  { id: 'mauritskade-61-front', label: 'Mauritskade 61, the Mauritskade front of the former laboratory (game ground about 1.2 m over the 3DBAG base)', pandId: '0363100012153693', osmId: 'w278198813', at: [4.920032, 52.36219], baseNap: -0.61, maxAboveBaseM: 0.3, measuredAboveM: 1.2, seen: 'house:frames mk61-front, mk61-nw (2026-11-15)' },
+];
