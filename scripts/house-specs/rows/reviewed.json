@@ -99,5 +99,2215 @@
       "at": "2026-11-14",
       "note": "heavy white banding across the whole wall, the same speklagen as 171218; its floor cornices and string courses stay"
     }
+  ],
+  "kinkerstraat-65-87": [
+    {
+      "fronts": [
+        "0363100012155934",
+        "0363100012096181",
+        "0363100012157331",
+        "0363100012156102",
+        "0363100012162717",
+        "0363100012161747",
+        "0363100012156991"
+      ],
+      "field": "storeys",
+      "value": 4,
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg)",
+      "at": "2026-11-15",
+      "note": "75-87: three window storeys over a tall ground floor with an entresol; the face's 5 counts the entresol as a storey, D1 (6 of 6) reads 4"
+    },
+    {
+      "fronts": [
+        "0363100012155934",
+        "0363100012096181",
+        "0363100012157331",
+        "0363100012156102",
+        "0363100012162717",
+        "0363100012161747",
+        "0363100012156991"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "mansard",
+        "material": "slate",
+        "dormersPerFront": 1,
+        "dormerKind": "plain"
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg)",
+      "at": "2026-11-15",
+      "note": "75-87: the dormers are flat-topped boxes with a small triangle ornament, not pediments; D1 6 of 6 reads plain"
+    },
+    {
+      "fronts": [
+        "0363100012106015",
+        "0363100012156997"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.9,
+        "steps": 3,
+        "attic": 1
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "65 and 67 rise in step gables over the cornice line, one attic window each; rise about one storey (the attic window storey), read ±0.4 m against the storey pitch",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012156997"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.9,
+        "steps": 2,
+        "attic": 1,
+        "shoulder": "sloped"
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "67: sloped shoulders up to one step, then the top tread (65 has three treads a side); lane R round 4 draws the sloped shoulder",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012106015",
+        "0363100012156997"
+      ],
+      "field": "bays",
+      "value": 3,
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "65 and 67 both have three window axes under the gable, the attic window on the middle one; the face and D1 read 2",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012236453#m0"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 3,
+        "attic": 1
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-65-87/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "69: a straight-sided neck gable with a small top cap, one attic door with a railing; slightly taller than 65-67",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012236453#m0"
+      ],
+      "field": "corniceTopM",
+      "value": 16.3,
+      "ref": "lane D, reading of the belt D1 cuts against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/kinkerstraat-65-87.json)",
+      "at": "2026-11-15",
+      "note": "69's gable shoulders stand on the cornice line of 71-73 (their series line 16.3), not on 14.6: the D1 cuts of 67 and 69 show the foot level with 71's white cornice"
+    }
+  ],
+  "kinkerstraat-315-359": [
+    {
+      "fronts": [
+        "0363100012156907",
+        "0363100012237373#m2",
+        "0363100012153818",
+        "0363100012153447",
+        "0363100012159990",
+        "0363100012167386"
+      ],
+      "field": "crown",
+      "value": "point",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-315-359/blind/photo.jpg)",
+      "at": "2026-11-15",
+      "note": "the gables are straight-sided triangles with one round-arched attic window, not bell curves; D1 reads point 5 of 6"
+    }
+  ],
+  "kinkerstraat-363-371": [
+    {
+      "fronts": [
+        "0363100012089984#m0",
+        "0363100012089983",
+        "0363100012237269#m1"
+      ],
+      "field": "crown",
+      "value": "point",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-363-371/blind/photo.jpg)",
+      "at": "2026-11-15",
+      "note": "363, 367 and 369 rise in pointed triangular gables over the cornice line; the face's bell and D1's cornice (3 of 3) both miss them"
+    },
+    {
+      "fronts": [
+        "0363100012089984#m0",
+        "0363100012089983",
+        "0363100012237269#m1"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.1,
+        "attic": 1
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-363-371/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "pointed gables 2.2 m (363), 1.7 m (367), 2.1 m (369) over the cornice, read against the storey pitch; one attic window each",
+      "at": "2026-11-15"
+    }
+  ],
+  "herengracht-76-90": [
+    {
+      "fronts": [
+        "0363100012175784"
+      ],
+      "field": "crown",
+      "value": "bell",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 76–78 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable bell"
+    },
+    {
+      "fronts": [
+        "0363100012175703"
+      ],
+      "field": "crown",
+      "value": "cornice",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 82 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable cornice"
+    },
+    {
+      "fronts": [
+        "0363100012169010"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "none",
+        "dormersPerFront": 0
+      },
+      "ref": "lane D belt A/B 3, the cut re-read (blind review: the new drawing's slate mansard lost to today's flat top)",
+      "at": "2026-11-15",
+      "note": "88: the photo shows a fourth storey of white-banded brick and a flat cornice above the BAG outline, no roof face; the 3DBAG wall height is the cornice, not a mansard"
+    },
+    {
+      "fronts": [
+        "0363100012169010"
+      ],
+      "field": "corniceTopM",
+      "value": 12.2,
+      "ref": "lane D belt A/B 3, 3DBAG wall height median (12.2 m) read as the cornice",
+      "at": "2026-11-15",
+      "note": "88: the cornice stands a storey above the outline's 9.2 m"
+    },
+    {
+      "fronts": [
+        "0363100012169010"
+      ],
+      "field": "storeys",
+      "value": 4,
+      "ref": "lane D belt A/B 4, the cut re-read after the second blind review (2026-11-15: today still won)",
+      "at": "2026-11-15",
+      "note": "88: four storeys to the 12.2 m cornice (shop ground, two banded storeys, one over the outline); the read's 3 counted only what the outline shows"
+    },
+    {
+      "fronts": [
+        "0363100012175701"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "none",
+        "dormersPerFront": 0
+      },
+      "ref": "lane D belt follow-up, the cut re-read (d1-root/belt-20261114/cuts/0363100012175701.jpg, 2026-11-15)",
+      "at": "2026-11-15",
+      "note": "90: a white attic piece with one hoist window over the cornice, no slate roof face; the read's dormer is that attic (limits.json)"
+    },
+    {
+      "fronts": [
+        "0363100012175701"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "painted-brick",
+        "family": "brown-brick",
+        "hex": "#6d594e"
+      },
+      "ref": "lane D belt follow-up, the cut re-read (d1-root/belt-20261114/cuts/0363100012175701.jpg, 2026-11-15)",
+      "at": "2026-11-15",
+      "note": "90: a mid taupe-brown front in the cut, lighter than the read's purple-brown"
+    }
+  ],
+  "herengracht-1-23": [
+    {
+      "fronts": [
+        "0363100012175411"
+      ],
+      "field": "crown",
+      "value": "bell",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 7–9 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable bell"
+    },
+    {
+      "fronts": [
+        "0363100012175410"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 13 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable neck"
+    },
+    {
+      "fronts": [
+        "0363100012175408"
+      ],
+      "field": "crown",
+      "value": "point",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 23 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable plain"
+    },
+    {
+      "fronts": [
+        "0363100012175410"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#7d6445"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.69 C 0.043 h 71; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "13: the read said dark-grey-brick (period-default); the cut measures warm brick"
+    }
+  ],
+  "herengracht-25-49": [
+    {
+      "fronts": [
+        "0363100012168213"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168213.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "37: gridded small-pane sashes in the cut (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012168131"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168131.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "49: gridded small-pane sashes in the cut (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012168213"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168213.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "37: a white pilastered ground storey (D1 gap)"
+    },
+    {
+      "fronts": [
+        "0363100012168210"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168210.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "39: a ground storey of white pilasters round a wide loading door (D1 notes)"
+    },
+    {
+      "fronts": [
+        "0363100012175291"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012175291.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "41: two street doors between white pilasters (D1 notes)"
+    },
+    {
+      "fronts": [
+        "0363100012175402"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#6f594b"
+      },
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "25-29: warm mid-brown brick in the cut (the sun-washed sample read dark grey-brown)"
+    },
+    {
+      "fronts": [
+        "0363100012175403"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 3.5,
+        "neckOverM": 2,
+        "attic": 1,
+        "cap": "segmental",
+        "stone": {
+          "hood": "dark",
+          "neck": "oculus"
+        }
+      },
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
+      "at": "2026-11-15",
+      "note": "31: a neck with a curved bell-like cap and white carved shoulder pieces (D1 gap), as today draws it | Gable rise re-measured 2026-11-15 (lane D, #391): 31 1.18 storeys from the claw foot to the cap top, at 3.0 m a storey; the read was 2.8 m, which left the necks short (blind gable review). 31: a dark hood over the cap (R audit). 31: a small neck oculus (R 569360013)."
+    },
+    {
+      "fronts": [
+        "0363100012168213"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#79483c"
+      },
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "37: warm red-brown brick in the cut, not dark grey"
+    },
+    {
+      "fronts": [
+        "0363100012168212"
+      ],
+      "field": "split",
+      "value": {
+        "n": 2,
+        "shares": [
+          0.45,
+          0.55
+        ]
+      },
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "43-45: two point-gabled fronts in one pand, the right one wider (the D1 read, held as multi)"
+    },
+    {
+      "fronts": [
+        "0363100012168212#m0",
+        "0363100012168212#m1"
+      ],
+      "field": "crown",
+      "value": "point",
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "43-45: point gables (cut; the register agrees)"
+    },
+    {
+      "fronts": [
+        "0363100012168212#m0",
+        "0363100012168212#m1"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.7,
+        "attic": 1,
+        "upperLight": true
+      },
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "43-45: each gable rises about three metres over the eaves with an attic light | Gable rise re-measured 2026-11-15 (lane D, #391): 43-45: the left point 1.54, the right 1.6 storeys from the slope foot to the top, at 3.0 m a storey; the read was 3.4 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15)."
+    },
+    {
+      "fronts": [
+        "0363100012168212#m0",
+        "0363100012168212#m1"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#79483c"
+      },
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "43-45: red brick with white bands (the bands are a kit gap)"
+    },
+    {
+      "fronts": [
+        "0363100012168212#m0"
+      ],
+      "field": "bays",
+      "value": 2,
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "43: two bays"
+    },
+    {
+      "fronts": [
+        "0363100012168212#m1"
+      ],
+      "field": "bays",
+      "value": 3,
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "45: three bays (the D1 read of the right front)"
+    },
+    {
+      "fronts": [
+        "0363100012175291"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "none",
+        "dormersPerFront": 0
+      },
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "41: no roof face shows over the frieze cornice; the read's dormer is a small white top piece (limits.json), not a slate mansard"
+    },
+    {
+      "fronts": [
+        "0363100012175291"
+      ],
+      "field": "corniceTopM",
+      "value": 12.2,
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "41: the cut wall height (3DBAG 12.21 m); the mansard had lowered the line by 3 m"
+    },
+    {
+      "fronts": [
+        "0363100012168210"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.8,
+        "attic": 1,
+        "upperLight": true
+      },
+      "ref": "lane D gable rise re-read 2026-11-15 (#391), the D1 cut of 39",
+      "at": "2026-11-15",
+      "note": "39: a bell 1.74 storeys from the claw foot to the crest (5.2 m, stated at the belt bell's 4.8), a small opening high in the neck over the hoist lights (blind gable review 3)."
+    },
+    {
+      "fronts": [
+        "0363100012168213"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.5,
+        "attic": 1,
+        "neckWidthM": 2.4,
+        "stone": {
+          "claws": false
+        }
+      },
+      "ref": "lane R gable-stone audit (lane/rows-belt-stone-20261115 205735344), lane D statement",
+      "at": "2026-11-15",
+      "note": "37: a plain neck on small shoulders, no klauwstukken; the neck narrower than the stock share (about 0.4 of the front); 1.5 storeys from the shoulders to the cap (4.5 m)."
+    },
+    {
+      "fronts": [
+        "0363100012175404"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4,
+        "steps": 7,
+        "neckWidthM": 1.4
+      },
+      "ref": "lane R gable-stone audit (lane/rows-belt-stone-20261115 205735344), lane D statement",
+      "at": "2026-11-15",
+      "note": "27: a narrow step gable with about six to seven small steps a side up to a narrow top tread (D1 cut, glare on the left)."
+    },
+    {
+      "fronts": [
+        "0363100012175404"
+      ],
+      "field": "heads",
+      "value": {
+        "shape": "relieving",
+        "dressing": "tablet"
+      },
+      "ref": "lane D, reading of the photo in lane R's belt-gaps-1 A/B (_pruned-sheets/house-rows-r/belt-gaps-1/house3.jpg) after R's 24a406086; lane R's 4ab58606a asks (integrator message 2026-11-15), stated by lane D after the round-5 sheets",
+      "at": "2026-11-15",
+      "note": "27: a light stone tablet over each upper window, keying a brick relieving arch (R read the arch through the glare)."
+    },
+    {
+      "fronts": [
+        "0363100012175404"
+      ],
+      "field": "windows",
+      "value": "cross",
+      "ref": "lane R's 4ab58606a asks (integrator message 2026-11-15), stated by lane D after the round-5 sheets, from _pruned-sheets/house-rows-r/belt-gaps-1 and screenshots ui/2026-11-15-rows-r/",
+      "at": "2026-11-15",
+      "note": "27: cross windows (kruiskozijnen): a mullion and a transom about a third down."
+    },
+    {
+      "fronts": [
+        "0363100012175404"
+      ],
+      "field": "glazing",
+      "value": {},
+      "ref": "lane R's 4ab58606a asks (integrator message 2026-11-15), stated by lane D after the round-5 sheets, from _pruned-sheets/house-rows-r/belt-gaps-1 and screenshots ui/2026-11-15-rows-r/",
+      "at": "2026-11-15",
+      "note": "27: white frames and the cross's bars drawn at the kit widths."
+    },
+    {
+      "fronts": [
+        "0363100012175404"
+      ],
+      "field": "ground.openings",
+      "value": {
+        "groundBays": 2,
+        "archedOpenings": {
+          "index": [
+            1
+          ]
+        }
+      },
+      "ref": "lane R's 4ab58606a asks (integrator message 2026-11-15), stated by lane D after the round-5 sheets, from _pruned-sheets/house-rows-r/belt-gaps-1 and screenshots ui/2026-11-15-rows-r/",
+      "at": "2026-11-15",
+      "note": "27: two ground openings, the right one under an arch."
+    },
+    {
+      "fronts": [
+        "0363100012175402"
+      ],
+      "field": "ground.openings",
+      "value": {
+        "groundBays": 2,
+        "basementFront": {
+          "plinth": "grey",
+          "doors": [
+            0
+          ]
+        }
+      },
+      "ref": "lane R's 4ab58606a asks (integrator message 2026-11-15), stated by lane D after the round-5 sheets, from _pruned-sheets/house-rows-r/belt-gaps-1 and screenshots ui/2026-11-15-rows-r/",
+      "at": "2026-11-15",
+      "note": "25-29: two ground openings over a grey hardstone basement with an arched doorway on the left."
+    }
+  ],
+  "herengracht-51-73": [
+    {
+      "fronts": [
+        "0363100012179675"
+      ],
+      "field": "unread",
+      "value": "a steep wide-angle corner shot: the outline is distorted and the top is not seen",
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "69: the D1 read is low on storeys, roof, crown, ground and bays; the RCE register's point gable is a text, not a read of the top (limits.json)"
+    },
+    {
+      "fronts": [
+        "0363100012168129"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "none",
+        "dormersPerFront": 0
+      },
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "51: the cut shows a pale ornamented attic frieze with a carved crest over the cornice, no roof face; no roof form is drawn"
+    },
+    {
+      "fronts": [
+        "0363100012168130"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "none",
+        "dormersPerFront": 0
+      },
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "53: a pale attic frieze with a small pediment on the cornice; no roof face shows; no roof form is drawn"
+    },
+    {
+      "fronts": [
+        "0363100012179751"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "none",
+        "dormersPerFront": 0
+      },
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "65: a small pale dormer shows over the cornice, the roof face is not measured; no roof form is drawn (limits.json)"
+    },
+    {
+      "fronts": [
+        "0363100012169271"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.2,
+        "neckWidthM": 3,
+        "neckOverM": 2.4,
+        "attic": 1,
+        "cap": "segmental",
+        "stone": {
+          "claws": "carved",
+          "cap": "carved"
+        }
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
+      "at": "2026-11-15",
+      "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap | Gable rise re-measured 2026-11-15 (lane D, #391): 55 1.47 and 61 1.32 storeys from the claw foot to the cap top, about 4.4 and 4.0 m; the series takes 4.2, at 3.0 m a storey; the read was 3.2 m, which left the necks short (blind gable review). 55: carved claw pieces, no dark hood (R audit). Cap carving carved (R d6a094ae5)."
+    },
+    {
+      "fronts": [
+        "0363100012179672"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.2,
+        "neckWidthM": 3,
+        "neckOverM": 2.4,
+        "attic": 1,
+        "cap": "segmental",
+        "stone": {
+          "claws": "carved",
+          "hood": "dark",
+          "neck": "cartouche"
+        }
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
+      "at": "2026-11-15",
+      "note": "55 and 61: neck gables with a curved (segmental) cap over the neck, as their neighbours'; R's trial had no cap | Gable rise re-measured 2026-11-15 (lane D, #391): 55 1.47 and 61 1.32 storeys from the claw foot to the cap top, about 4.4 and 4.0 m; the series takes 4.2, at 3.0 m a storey; the read was 3.2 m, which left the necks short (blind gable review). 61: dark hood, carved claws, a cartouche on the neck (R audit)."
+    },
+    {
+      "fronts": [
+        "0363100012169271",
+        "0363100012179672"
+      ],
+      "field": "windowHeights",
+      "value": [
+        1.9,
+        1.7,
+        1.45
+      ],
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012169271.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "55 and 61: the upper windows shorten storey by storey"
+    },
+    {
+      "fronts": [
+        "0363100012179673"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.2,
+        "neckOverM": 1.8,
+        "attic": 1,
+        "cap": "segmental",
+        "upperLight": true,
+        "stone": {
+          "claws": "carved",
+          "neck": "oculus",
+          "cap": "shell"
+        }
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179673.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
+      "at": "2026-11-15",
+      "note": "57: a short neck with a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 57 1.41 storeys from the neck foot to the cap top, at 3.0 m a storey; the read was 2.6 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15). 57: carved claws, no hood (R audit). 57: a small neck oculus (R 569360013). Cap carving shell (R d6a094ae5)."
+    },
+    {
+      "fronts": [
+        "0363100012179748"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.2,
+        "neckOverM": 2,
+        "attic": 1,
+        "cap": "segmental",
+        "stone": {
+          "claws": "carved",
+          "hood": "dark"
+        }
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179748.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
+      "at": "2026-11-15",
+      "note": "59: a dark neck gable with claw pieces and a segmental cap (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 59 1.41 storeys from the claw foot (over the oval attic storey) to the cap top, at 3.0 m a storey; the read was 2.8 m, which left the necks short (blind gable review). 59: dark hood, carved claws (R audit)."
+    },
+    {
+      "fronts": [
+        "0363100012179683"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.2,
+        "neckOverM": 2.2,
+        "attic": 1,
+        "finials": true,
+        "cap": "segmental",
+        "stone": {
+          "claws": "carved",
+          "hood": "dark",
+          "neck": "cartouche"
+        }
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179683.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json); lane R's stone carving audit (1a6f59a8a on lane/rows-belt-stone-20261115), lane D statement; lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
+      "at": "2026-11-15",
+      "note": "63: white claw pieces and finials on the shoulders; the cap is segmental like 55's (R's trial had none) | Gable rise re-measured 2026-11-15 (lane D, #391): 63 1.41 storeys from the claw foot to the cap top, at 3.0 m a storey; the read was 3 m, which left the necks short (blind gable review). 63: dark hood, carved claws, a cartouche on the neck (R audit)."
+    },
+    {
+      "fronts": [
+        "0363100012179682"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.5,
+        "finials": true,
+        "attic": 1,
+        "atticHead": "round",
+        "upperLight": true
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179682.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "71: a spout gable with a round-headed attic light (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 71 1.55 storeys from the slope foot to the top block, at 3.0 m a storey; the read was 2.9 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15)."
+    },
+    {
+      "fronts": [
+        "0363100012179681"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.1,
+        "attic": 1,
+        "upperLight": true
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179681.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-51-73.json)",
+      "at": "2026-11-15",
+      "note": "73: a spout gable with a square attic light (confirmed) | Gable rise re-measured 2026-11-15 (lane D, #391): 73 1.4 storeys from the slope foot (over the full-width attic) to the top block, at 3.0 m a storey; the read was 3.3 m, which left the necks short (blind gable review). | A small round-headed light high in the neck over the attic light (blind gable review 3, 2026-11-15)."
+    },
+    {
+      "fronts": [
+        "0363100012169271",
+        "0363100012179672"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012169271.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "55 and 61: paned sashes, three panes across and two up a sash on the first storeys (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012169271",
+        "0363100012179672"
+      ],
+      "field": "glazing",
+      "value": {
+        "panes": 6
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012169271.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "55 and 61: six panes a sash"
+    },
+    {
+      "fronts": [
+        "0363100012179683"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179683.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "63: three panes across in every sash; six a sash, not eight (R's trial had sash-8-over-8)"
+    },
+    {
+      "fronts": [
+        "0363100012179683"
+      ],
+      "field": "glazing",
+      "value": {
+        "panes": 6
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179683.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "63: six panes a sash"
+    },
+    {
+      "fronts": [
+        "0363100012179681"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179681.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "73: the ground storey is painted white with pilasters under a ledge; the first storey is white too (a two-storey plinth), which groundWall cannot say (limit)"
+    },
+    {
+      "fronts": [
+        "0363100012179748"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179748.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "59: a tall ground storey framed by white pilasters (D1 gap)"
+    },
+    {
+      "fronts": [
+        "0363100012179683"
+      ],
+      "field": "corniceTopM",
+      "value": 12.6,
+      "ref": "lane D gable rise re-read 2026-11-15 (#391), the D1 cut of 63 beside 61's",
+      "at": "2026-11-15",
+      "note": "63: its 3DBAG top (dak_max 20.7 m, nok 20.64) is a rear block; the cut shows 63's neck level with 61's (ridge 16.82) over the same oval attic storey, so its claw foot stands on 61's, 16.8 less the 4.2 m rise."
+    }
+  ],
+  "herengracht-75-89": [
+    {
+      "fronts": [
+        "0363100012179749"
+      ],
+      "field": "crown",
+      "value": "step",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 77 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable step"
+    },
+    {
+      "fronts": [
+        "0363100012168064"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 79 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable neck"
+    },
+    {
+      "fronts": [
+        "0363100012180438"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 89 has no usable D1 read (no cut, or the read was held as outline-off); the register names the gable neck"
+    },
+    {
+      "fronts": [
+        "0363100012179665"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#7f4538"
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "81: red-brown brick with white bands in the cut, not dark grey (the bands are a kit gap)"
+    },
+    {
+      "fronts": [
+        "0363100012179665"
+      ],
+      "field": "corniceTopM",
+      "value": 9.4,
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "81: the step gable's foot is about 3 m under the 3DBAG wall height, which stands mid-gable"
+    },
+    {
+      "fronts": [
+        "0363100012179665"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.8,
+        "steps": 5
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "81: a tall step gable over two storeys, its top cut off in the capture | Gable rise re-measured 2026-11-15 (lane D, #391): 1.6 storeys from the lowest step to the top step; five steps a side, at 3.0 m a storey; the read was 4.4 m, which left the necks short (blind gable review)."
+    },
+    {
+      "fronts": [
+        "0363100012179665"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "81: white-framed small-pane windows; the read's casements drew as red frames"
+    },
+    {
+      "fronts": [
+        "0363100012179665",
+        "0363100012179601",
+        "0363100012179594"
+      ],
+      "field": "glazing",
+      "value": {
+        "frameM": 0.13,
+        "panes": 6
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "81, 85, 87: white frames with glazing bars"
+    },
+    {
+      "fronts": [
+        "0363100012179601",
+        "0363100012179594"
+      ],
+      "field": "bays",
+      "value": 2,
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "85, 87: two windows a storey in the cut (the read said 3 on a 3.2-3.6 m front)"
+    },
+    {
+      "fronts": [
+        "0363100012179601"
+      ],
+      "field": "whiteFrames",
+      "value": true,
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "85: white window frames in the cut"
+    },
+    {
+      "fronts": [
+        "0363100012179601",
+        "0363100012179594"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "85, 87: white-framed small-pane sashes"
+    },
+    {
+      "fronts": [
+        "0363100012179601"
+      ],
+      "field": "corniceTopM",
+      "value": 12.4,
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "85: the bell gable's foot under the 3DBAG wall height; its top shows 1.5 m over the outline"
+    },
+    {
+      "fronts": [
+        "0363100012179601"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 3.4,
+        "attic": 1
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "85: bell gable with one attic light"
+    },
+    {
+      "fronts": [
+        "0363100012179594"
+      ],
+      "field": "corniceTopM",
+      "value": 13.1,
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "87: the neck gable's foot under the 3DBAG wall height; its top shows 1.7 m over the outline"
+    },
+    {
+      "fronts": [
+        "0363100012179594"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.6,
+        "attic": 1
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "87: neck gable with one attic light | Gable rise re-measured 2026-11-15 (lane D, #391): 1.6 storeys from the neck foot to the cap top (tree in front; rounded down), at 3.0 m a storey; the read was 3.4 m, which left the necks short (blind gable review)."
+    }
+  ],
+  "kinkerstraat-120-138": [
+    {
+      "fronts": [
+        "0363100012233461#m0",
+        "0363100012233461#m1",
+        "0363100012233461#m2"
+      ],
+      "field": "series",
+      "value": "left-building",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "138-134 is a separate building from 132-126: a lower cornice, a lower shop band, plain flat-headed windows, one gabled dormer per front",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m0",
+        "0363100012233461#m1",
+        "0363100012233461#m2"
+      ],
+      "field": "corniceTopM",
+      "value": 12.5,
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "the left building's cornice sits about 1 m below the right building's line (13.45) at the shared party wall, 22 px at about 23 px/m",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m0",
+        "0363100012233461#m1",
+        "0363100012233461#m2"
+      ],
+      "field": "heads",
+      "value": {
+        "shape": "flat",
+        "dressing": "none"
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "plain flat heads, white frames, no dressing",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3",
+        "0363100012233461#m6"
+      ],
+      "field": "corniceTopM",
+      "value": 13.45,
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "the gable axes stand on the right building's cornice line (pand 233461's 3DBAG 16.45 less the 3 m mansard storey, the line s1 drew before the split); 16.45 was their apex",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m4",
+        "0363100012233461#m5"
+      ],
+      "field": "corniceTopM",
+      "value": 13.45,
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "130 and 128 are the right building's flat modules between the gable axes: the same 13.45 line, not the 13.27 median they take with 122 and 120 once the left building is its own series",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3",
+        "0363100012233461#m6"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "126: a neck gable with a capped top over the cornice line; one attic window",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3",
+        "0363100012233461#m6"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.9,
+        "attic": 1
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "rise about 60-75 px over the cornice at about 23 px/m; one attic window each",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3",
+        "0363100012233461#m6"
+      ],
+      "field": "heads",
+      "value": {
+        "shape": "round",
+        "dressing": "arch-ring"
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "both gable axes have round-arched windows on all three upper storeys, under brick arch rings with a pale edge; the flanking modules are flat-headed",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3"
+      ],
+      "field": "series",
+      "value": "step-gable-axis",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "132's step gable is a different crown from 126's neck: one design each (rows check one-design)",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3"
+      ],
+      "field": "crown",
+      "value": "step",
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "132: a small stepped gable, a top tread and one step a side",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012233461#m3"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.7,
+        "steps": 2,
+        "attic": 1
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-120-138/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "132 is a little lower than 126",
+      "at": "2026-11-15"
+    }
+  ],
+  "kinkerstraat-31-49": [
+    {
+      "fronts": [
+        "0363100012160646",
+        "0363100012155369",
+        "0363100012160073",
+        "0363100012160074",
+        "0363100012167106",
+        "0363100012159384",
+        "0363100012154359",
+        "0363100012161457"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "mansard",
+        "material": "slate",
+        "dormersPerFront": 1,
+        "dormerKind": "pediment"
+      },
+      "ref": "lane D, model judgement on the D1 cuts (sheet _pruned-sheets/house-rows-d/round2/kinkerstraat-31-49/blind/photo.jpg), for lane R's gable field (b33dd7801)",
+      "note": "33-47: a dark grey slate mansard behind the cornice (2016 panorama in lane R's rule-10 frame); red tile was a period default",
+      "at": "2026-11-15"
+    },
+    {
+      "fronts": [
+        "0363100012158968"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "painted-brick",
+        "family": "painted-dark",
+        "hex": "#272c25"
+      },
+      "ref": "face strip citation (scripts/block-face/faces/kinker-31-49/intent.json: \"black-painted brick\") and the 2021-03-24 panorama in lane R's rule-10 frame (_pruned-sheets/house-rows-r/round3/rule10-k31-49.jpg); 31 has no D1 cut",
+      "note": "31 is black-painted brick; the period default brown was wrong. The crown stays a cornice: the pointed piece is a corner gablet over the chamfered corner bay, not a front gable",
+      "at": "2026-11-15"
+    }
+  ],
+  "herengracht-92-120": [
+    {
+      "fronts": [
+        "0363100012169007"
+      ],
+      "field": "crown",
+      "value": "cornice",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 108 has no usable D1 read (the read was held as outline-off); the register names the gable cornice"
+    }
+  ],
+  "herengracht-125-161": [
+    {
+      "fronts": [
+        "0363100012167682"
+      ],
+      "field": "crown",
+      "value": "bell",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 131 has no usable D1 read (the read was held as outline-off); the register names the gable bell"
+    },
+    {
+      "fronts": [
+        "0363100012175037"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012175037.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "127: gridded small-pane sashes in the cut (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012167681"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012167681.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "157: a white pilastered ground-storey frame round an arched opening (D1 gap)"
+    },
+    {
+      "fronts": [
+        "0363100012167679"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stone",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012167679.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "161: a white stone ground storey with pilasters and an entablature (D1 gap)"
+    },
+    {
+      "fronts": [
+        "0363100012176003"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#70594c"
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "133: taupe-brown brick in the cut, not charcoal"
+    },
+    {
+      "fronts": [
+        "0363100012167680"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#70594c"
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "159: brown brick in the cut, not dark grey"
+    },
+    {
+      "fronts": [
+        "0363100012167680"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "none",
+        "dormersPerFront": 0
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "159: a white attic and balustrade over the cornice, no slate mansard (the attic is a kit gap)"
+    },
+    {
+      "fronts": [
+        "0363100012167683"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#73503f"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.46 C 0.023 h 45; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "155: the read said dark-grey-brick (series-consensus); the cut measures warm brick; one wall for the series with its neighbour (155 #6c4839 and 157 #7b5944 measured, drawn at their mean)"
+    },
+    {
+      "fronts": [
+        "0363100012167681"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#73503f"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.52 C 0.024 h 54; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "157: the read said dark-grey-brick (series-consensus); the cut measures warm brick; one wall for the series with its neighbour (155 #6c4839 and 157 #7b5944 measured, drawn at their mean)"
+    },
+    {
+      "fronts": [
+        "0363100012167680"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "white",
+        "frieze": "plain",
+        "centre": "balustrade"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-125-161-after.json",
+      "at": "2026-11-15",
+      "note": "159: its timber cornice as lane R read the photo's top crop"
+    },
+    {
+      "fronts": [
+        "0363100012167680"
+      ],
+      "field": "crownPiece",
+      "value": {
+        "riseM": 1.6,
+        "kind": "segmental"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-125-161-after.json",
+      "at": "2026-11-15",
+      "note": "159: a raised white centre with a segmental cap over the balustrade (rise read from R's note, about half a storey)"
+    }
+  ],
+  "herengracht-179-215": [
+    {
+      "fronts": [
+        "0363100012167636"
+      ],
+      "field": "crown",
+      "value": "cornice",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 201 has no usable D1 read (the read was held as outline-off); the register names the gable cornice"
+    },
+    {
+      "fronts": [
+        "0363100012176310"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "dark-grey-brick",
+        "hex": "#4a413f"
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "209: dark grey-brown brick in the cut, not red-brown"
+    },
+    {
+      "fronts": [
+        "0363100012176310"
+      ],
+      "field": "bays",
+      "value": 3,
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "209: three windows a storey in the cut"
+    },
+    {
+      "fronts": [
+        "0363100012167634"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#7c544e"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.51 C 0.031 h 29; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "203: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    },
+    {
+      "fronts": [
+        "0363100012176310"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "cream",
+        "frieze": "attic-lights",
+        "supports": "modillions"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-179-215-after.json",
+      "at": "2026-11-15",
+      "note": "209: its timber cornice as lane R read the photo's top crop"
+    }
+  ],
+  "herengracht-163-177": [
+    {
+      "fronts": [
+        "0363100012167668"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 163: the D1 read states no crown (drawn from the period default); the register names the gable neck"
+    },
+    {
+      "fronts": [
+        "0363100012176317"
+      ],
+      "field": "crown",
+      "value": "neck",
+      "ref": "RCE monumentenregister gable term (public/data/extracts/amsterdam/monument-gables.json, CC0); register text, not a photo read",
+      "at": "2026-11-15",
+      "note": "Herengracht 171: the D1 read states no crown (drawn from the period default); the register names the gable neck"
+    }
+  ],
+  "herengracht-2-24": [
+    {
+      "fronts": [
+        "0363100012179761"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 2.6,
+        "neckOverM": 1.8,
+        "attic": 1
+      },
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179761.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-2-24.json)",
+      "at": "2026-11-15",
+      "note": "16: a neck gable behind the tree (confirmed; its cap is not legible in the cut)"
+    },
+    {
+      "fronts": [
+        "0363100012179763"
+      ],
+      "field": "windowHeights",
+      "value": [
+        2.1,
+        1.75,
+        1.55
+      ],
+      "ref": "lane D, reading of the belt D1 cut belt-20261114/cuts/0363100012179763.jpg against lane R's round-4 trial (_pruned-sheets/house-rows-r/round4/herengracht-2-24.json)",
+      "at": "2026-11-15",
+      "note": "10: three upper window storeys shortening upward (confirmed)"
+    },
+    {
+      "fronts": [
+        "0363100012179765"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "scrolled"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012179765.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "12: a white stucco ground storey with a scrolled top under the brown brick (D1 gap; the cut)"
+    },
+    {
+      "fronts": [
+        "0363100100091828"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "stucco",
+        "colour": "white",
+        "top": "ledge"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012168202.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "2-4: white plastered piers frame the ground windows (D1 gap); its evidence is filed under 0363100012168202"
+    },
+    {
+      "fronts": [
+        "0363100012179760"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "none",
+        "dormersPerFront": 0
+      },
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "18: a steep hipped tiled roof with two roof lights rises behind the cornice; the kit has no hipped roof storey, so no roof form is drawn (limits.json), not a slate mansard"
+    },
+    {
+      "fronts": [
+        "0363100012179752",
+        "0363100100091828"
+      ],
+      "field": "whiteFrames",
+      "value": true,
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "22 (and 2-4 in its series): white-painted frames round every window in the cut (D1 read none)"
+    },
+    {
+      "fronts": [
+        "0363100012179838",
+        "0363100012179752",
+        "0363100012179753",
+        "0363100012179760",
+        "0363100012179761",
+        "0363100012179765",
+        "0363100012179763",
+        "0363100100091828"
+      ],
+      "field": "glazing",
+      "value": {
+        "frameM": 0.13
+      },
+      "ref": "lane D belt fix, the cut re-read against the integrator's review (2026-11-15: invented roofs, small panes overused)",
+      "at": "2026-11-15",
+      "note": "2-24: heavy white window frames in every cut (no lintels: the reads see no surround); frame 0.13 m, not the kit 0.09 m"
+    },
+    {
+      "fronts": [
+        "0363100012179752",
+        "0363100012179753",
+        "0363100012179763",
+        "0363100100091828"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "10, 20, 22 (and 2-4 in 22's series): white sashes with glazing bars in the cuts, not single panes under a cross bar"
+    },
+    {
+      "fronts": [
+        "0363100012179752",
+        "0363100012179753",
+        "0363100012179763",
+        "0363100100091828"
+      ],
+      "field": "glazing",
+      "value": {
+        "frameM": 0.13,
+        "panes": 6
+      },
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "six panes a sash, heavy white frames"
+    },
+    {
+      "fronts": [
+        "0363100012179760"
+      ],
+      "field": "corniceTopM",
+      "value": 12.4,
+      "ref": "lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+      "at": "2026-11-15",
+      "note": "18: the cornice stands level with 16's shoulders in the cut; the read's roof storey had lowered the 3DBAG line by 3 m"
+    }
+  ],
+  "herengracht-26-46": [
+    {
+      "fronts": [
+        "0363100012169270"
+      ],
+      "field": "windows",
+      "value": "t-window",
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012169270.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "46-48: a mullion and transom cross in each upper window of the white front (D1 read tall-upper)"
+    },
+    {
+      "fronts": [
+        "0363100012168138"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#49331a"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.36 C 0.020 h 70; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "30: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    }
+  ],
+  "herengracht-130-148": [
+    {
+      "fronts": [
+        "0363100012177020"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "render",
+        "colour": "white",
+        "top": "plain"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012177020.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "142: the ground storey is rendered white (D1 gap)"
+    },
+    {
+      "fronts": [
+        "0363100012177019"
+      ],
+      "field": "groundWall",
+      "value": {
+        "material": "render",
+        "colour": "white",
+        "top": "plain"
+      },
+      "ref": "lane D, the belt D1 cut belt-20261114/cuts/0363100012177019.jpg (house rows round 5)",
+      "at": "2026-11-15",
+      "note": "144: the ground storey is rendered white under the dark painted front (D1 gap)"
+    },
+    {
+      "fronts": [
+        "0363100012177007"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#6d594f"
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "132: warm grey-brown brick in the cut, not charcoal"
+    },
+    {
+      "fronts": [
+        "0363100012177210"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#4c321c"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.36 C 0.021 h 61; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "140: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    },
+    {
+      "fronts": [
+        "0363100012177006"
+      ],
+      "field": "ground.stoop",
+      "value": {
+        "stoopForm": "double",
+        "stoopRailing": true,
+        "doorcase": {
+          "material": "stone"
+        }
+      },
+      "ref": "lane R's stoop forms (_pruned-sheets/house-rows-r/stoop-forms/herengracht-130-148-test-record.json), lane D statement",
+      "at": "2026-11-15",
+      "note": "130: a double stoop with iron railings (the blind judge: a solid grey block where the photo shows railings). A stone doorcase round the door (lane R doorcase kit, 399aa3cfc)."
+    },
+    {
+      "fronts": [
+        "0363100012177017"
+      ],
+      "field": "ground.stoop",
+      "value": {
+        "stoopForm": "straight",
+        "stoopRailing": true
+      },
+      "ref": "lane R's stoop forms (_pruned-sheets/house-rows-r/stoop-forms/herengracht-130-148-test-record.json), lane D statement",
+      "at": "2026-11-15",
+      "note": "148: a raised door over basement windows with a straight railed flight; no stoop was read."
+    },
+    {
+      "fronts": [
+        "0363100012177020"
+      ],
+      "field": "ground.door",
+      "value": {
+        "doorcase": {
+          "material": "timber",
+          "door": "black",
+          "span": "ground"
+        }
+      },
+      "ref": "lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint; lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/",
+      "at": "2026-11-15",
+      "note": "142: one painted timber surround over the whole ground storey (door and window under one entablature), a black door."
+    },
+    {
+      "fronts": [
+        "0363100012177019"
+      ],
+      "field": "ground.door",
+      "value": {
+        "doorSide": "right",
+        "doorcase": {
+          "material": "timber",
+          "door": "black",
+          "fanlight": "diamond"
+        }
+      },
+      "ref": "lane R's 569360013 (lane/rows-belt-stone-20261115): neck oculus, doorcase tracery and paint",
+      "at": "2026-11-15",
+      "note": "144: a painted timber doorcase, a black door, a lozenge fanlight; the door is on the right and the window on the left, as the photo and the read (doorBay right, doorIndex 1 of 2) say. Drawn mirrored by the renderer, not the record: house:preview of 144 puts the door on the left whatever the record's door side or index (right, left, index 0, index 1, no index: 2026-11-15 lane D test), so flipping the stated side cannot fix it."
+    }
+  ],
+  "herengracht-150-166": [
+    {
+      "fronts": [
+        "0363100012167659"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#70584b"
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "156: brown brick in the cut, not dark grey"
+    },
+    {
+      "fronts": [
+        "0363100012167659"
+      ],
+      "field": "bays",
+      "value": 2,
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "156: two windows a storey on a 4.3 m front"
+    },
+    {
+      "fronts": [
+        "0363100012167659"
+      ],
+      "field": "whiteFrames",
+      "value": true,
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "156: white window frames"
+    },
+    {
+      "fronts": [
+        "0363100012167659"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "156: white-framed small-pane sashes"
+    },
+    {
+      "fronts": [
+        "0363100012167659"
+      ],
+      "field": "glazing",
+      "value": {
+        "frameM": 0.13,
+        "panes": 6
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "156: glazing bars"
+    },
+    {
+      "fronts": [
+        "0363100012167645"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "cream",
+        "frieze": "plain",
+        "supports": "dentils"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-150-166-after.json",
+      "at": "2026-11-15",
+      "note": "158: its timber cornice as lane R read the photo's top crop"
+    },
+    {
+      "fronts": [
+        "0363100012176358"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "grey",
+        "frieze": "panels",
+        "supports": "modillions"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-150-166-after.json",
+      "at": "2026-11-15",
+      "note": "164: its timber cornice as lane R read the photo's top crop"
+    }
+  ],
+  "herengracht-91-123": [
+    {
+      "fronts": [
+        "0363100012180437",
+        "0363100012179051"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "dark-grey-brick",
+        "hex": "#4f4846"
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "91, 103: dark grey-brown brick in the cut, not warm brown"
+    },
+    {
+      "fronts": [
+        "0363100012180437"
+      ],
+      "field": "whiteFrames",
+      "value": true,
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "91: white window frames"
+    },
+    {
+      "fronts": [
+        "0363100012180437"
+      ],
+      "field": "windows",
+      "value": "sash-small-panes",
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "91: white-framed small-pane sashes"
+    },
+    {
+      "fronts": [
+        "0363100012180437"
+      ],
+      "field": "glazing",
+      "value": {
+        "frameM": 0.13,
+        "panes": 6
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "91: glazing bars"
+    },
+    {
+      "fronts": [
+        "0363100012179051"
+      ],
+      "field": "roofStorey",
+      "value": {
+        "kind": "none",
+        "dormersPerFront": 0
+      },
+      "ref": "lane D belt A/B 3, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "103: a small white top piece over the cornice, no slate mansard (the top piece is a kit gap)"
+    }
+  ],
+  "herengracht-238-256": [
+    {
+      "fronts": [
+        "0363100012177222"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "dark-grey-brick",
+        "hex": "#5a5048"
+      },
+      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "240: dark grey-brown front in the cut, not pale grey stucco"
+    },
+    {
+      "fronts": [
+        "0363100012176852"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#6b4f42"
+      },
+      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "244: brown brick in the cut, lighter and warmer than the read dark grey"
+    },
+    {
+      "fronts": [
+        "0363100012176863"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#765149"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.50 C 0.021 h 31; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "252: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    },
+    {
+      "fronts": [
+        "0363100012176851"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "#cfcabd",
+        "frieze": "attic-lights",
+        "supports": "dentils",
+        "centre": "pediment",
+        "centreShare": 0.9
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-238-256-after.json",
+      "at": "2026-11-15",
+      "note": "248: its timber cornice as lane R read the photo's top crop"
+    },
+    {
+      "fronts": [
+        "0363100012176864"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "white",
+        "frieze": "attic-lights",
+        "supports": "consoles",
+        "centre": "balustrade",
+        "centreShare": 0.5
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-238-256-after.json",
+      "at": "2026-11-15",
+      "note": "250: its timber cornice as lane R read the photo's top crop"
+    },
+    {
+      "fronts": [
+        "0363100012176863"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "white",
+        "frieze": "attic-lights",
+        "supports": "consoles"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-238-256-after.json",
+      "at": "2026-11-15",
+      "note": "252: its timber cornice as lane R read the photo's top crop"
+    }
+  ],
+  "herengracht-268-286": [
+    {
+      "fronts": [
+        "0363100012176337"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#604a3e"
+      },
+      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair); A/B 9 and 10 (today won: the red read too red); the measured re-read (OKLab L 0.41 C 0.022 h 56) is a duller brown",
+      "at": "2026-11-15",
+      "note": "272: brown brick in the cut, duller than red-brown; the cut's outline also takes in part of its dark neighbour"
+    },
+    {
+      "fronts": [
+        "0363100012176734"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#806248"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, white-balanced on the front's trim), measured OKLab L 0.64 C 0.024 h 62; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "282: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    }
+  ],
+  "herengracht-292-310": [
+    {
+      "fronts": [
+        "0363100012176660"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#6e4a3e"
+      },
+      "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "304: red-brown brick in the cut, not dark grey"
+    },
+    {
+      "fronts": [
+        "0363100012176664"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#4c301d"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.34 C 0.021 h 55; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "308: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    },
+    {
+      "fronts": [
+        "0363100012176728"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#533921"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.39 C 0.021 h 62; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "298: the read said painted-black (period-default); the cut measures warm brick"
+    }
+  ],
+  "herengracht-219-237": [
+    {
+      "fronts": [
+        "0363100012177364"
+      ],
+      "field": "bays",
+      "value": 2,
+      "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "235: two windows a storey on a 3.1 m front"
+    },
+    {
+      "fronts": [
+        "0363100012177191"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#7a4636"
+      },
+      "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "237: red brick with stone bands in the cut, not dark grey"
+    },
+    {
+      "fronts": [
+        "0363100012177364"
+      ],
+      "field": "crown",
+      "value": "cornice",
+      "ref": "lane D, the cut re-read after blind A/B 7 and 9 (2026-11-15: today won both)",
+      "at": "2026-11-15",
+      "note": "235: the cut's outline sits on a narrow front under its neighbour's neck gable; its own top is the cornice line (the read's bell crown is the neighbour's gable)"
+    }
+  ],
+  "herengracht-218-236": [
+    {
+      "fronts": [
+        "0363100012177218"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "red-brown-brick",
+        "hex": "#7a4234"
+      },
+      "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)",
+      "at": "2026-11-15",
+      "note": "218-220: red brick with white stone bands in the cut; the period default drew dark grey"
+    }
+  ],
+  "herengracht-253-269": [
+    {
+      "fronts": [
+        "0363100012177176"
+      ],
+      "field": "wall",
+      "value": {
+        "material": "brick",
+        "family": "brown-brick",
+        "hex": "#62492c"
+      },
+      "ref": "lane D wall re-read 2026-11-15: the front's own D1 cut, buurt measure.ts wallBrickOf (foliage-gated, ground storey dropped, no white trim found, raw), measured OKLab L 0.45 C 0.022 h 69; drawn at the reviewed walls' calibration (chroma x2.46 capped at 0.055, lightness x0.95 in 0.34-0.52)",
+      "at": "2026-11-15",
+      "note": "255: the read said dark-grey-brick (single-read); the cut measures warm brick"
+    }
+  ],
+  "herengracht-168-198": [
+    {
+      "fronts": [
+        "0363100012176353"
+      ],
+      "field": "corniceDress",
+      "value": {
+        "paint": "cream",
+        "frieze": "attic-lights",
+        "supports": "modillions"
+      },
+      "ref": "lane R's d6a094ae5 (lane/rows-belt-stone-20261115) cornice test records, _pruned-sheets/house-rows-r/belt-cornice-records/herengracht-168-198-after.json",
+      "at": "2026-11-15",
+      "note": "174: its timber cornice as lane R read the photo's top crop"
+    }
+  ],
+  "herengracht-275-291": [
+    {
+      "fronts": [
+        "0363100012176326",
+        "0363100012176325"
+      ],
+      "field": "gable",
+      "value": {
+        "riseM": 4.2,
+        "attic": 1,
+        "dress": "belt",
+        "stone": {
+          "festoon": true,
+          "shoulders": "oval"
+        }
+      },
+      "ref": "lane D, reading of the photo in lane R's belt-gaps-1 A/B (_pruned-sheets/house-rows-r/belt-gaps-1/house1.jpg) after R's 24a406086",
+      "at": "2026-11-15",
+      "note": "279-281 pair (176326, 176325): both necks carry a festoon hung under the cap with drops down the neck's sides, and a framed oval cartouche on each shoulder; the attic light stands in the neck. Rise stays the belt's neck median (no rise read)."
+    },
+    {
+      "fronts": [
+        "0363100012176327"
+      ],
+      "field": "ground.door",
+      "value": {
+        "doorcase": {
+          "material": "timber",
+          "span": "frame",
+          "tiers": 2,
+          "door": "black"
+        }
+      },
+      "ref": "lane D, reading of the photo in lane R's belt-gaps-1 A/B (_pruned-sheets/house-rows-r/belt-gaps-1/house2.jpg) after R's 24a406086; lane R's 4ab58606a asks (integrator message 2026-11-15), stated by lane D after the round-5 sheets",
+      "at": "2026-11-15",
+      "note": "277: the bel-etage is one white timber frame of two tall glazed tiers up to under the first storey's sills, the rail at mid height, the door near-black."
+    },
+    {
+      "fronts": [
+        "0363100012176327"
+      ],
+      "field": "windowHeights",
+      "value": [
+        3.5,
+        1.8,
+        1.75,
+        1.5
+      ],
+      "ref": "lane D, reading of the photo in lane R's belt-gaps-1 A/B (_pruned-sheets/house-rows-r/belt-gaps-1/house2.jpg) after R's 24a406086; lane R's 4ab58606a asks (integrator message 2026-11-15), stated by lane D after the round-5 sheets",
+      "at": "2026-11-15",
+      "note": "277: the framed bel-etage is about 1.5 storeys of the photo (two tall tiers), over the souterrain; the three upper storeys diminish."
+    }
   ]
 }

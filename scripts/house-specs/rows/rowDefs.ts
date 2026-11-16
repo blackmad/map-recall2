@@ -2,11 +2,27 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export interface RowMemberDef { pandId: string; label: string; widthM: number; x0M?: number; px?: [number, number]; eavesM?: number }
-export interface RowDef { id: string; title: string; face?: string; members: RowMemberDef[]; cutsDir: string; cutsLocal?: string; answersDir: string; stagedDir: string; pixelsPerMetre?: number; note?: string }
+export interface RowMemberDef { pandId: string; label: string; widthM: number; x0M?: number; px?: [number, number]; eavesM?: number;
+  /** A row with no street survey (the canal belt, scripts/house-specs/rows/belt-rows.ts) states the house numbers, BAG year and side. */
+  numbers?: number[]; built?: number; side?: 'even' | 'odd'; widthSource?: string;
+  /** 3DBAG b3_h_dak_70p over ground (the cutter's wall height), for a member with no cut. */
+  heightM?: number;
+  /** 3DBAG b3_h_dak_max over ground: the ridge, a street gable's apex (belt-ridges.ts). */
+  ridgeM?: number;
+  /** The pand the evidence (D1 cut, answer, cuts.json row) is filed under, when the world draws the house as another pand
+   *  (Herengracht 2-4: the world keeps the taller twin NL.IMBAG.Pand.0363100100091828 over the D1 pand 0363100012168202). */
+  evidencePandId?: string }
+export interface RowDef { id: string; title: string; face?: string; members: RowMemberDef[]; cutsDir: string; cutsLocal?: string; answersDir: string; stagedDir: string; pixelsPerMetre?: number; note?: string;
+  /** Answer and cut dirs in order of preference (rows.json `answers` / `cuts` may be a list: Kinkerstraat's reads sit in the
+   *  ring tranche and the earlier street tranche). The first is `answersDir` / `cutsDir`. */
+  answersDirs?: string[]; cutsDirs?: string[]; street?: string }
 
 const HERE = path.dirname(new URL(import.meta.url).pathname);
 export const REPO = path.resolve(HERE, '../../..');
+
+/** World pand -> the pand its evidence is filed under (RowMemberDef.evidencePandId), filled by loadRowDefs. */
+const EVIDENCE = new Map<string, string>();
+export const evidenceId = (pandId: string): string => EVIDENCE.get(pandId) ?? pandId;
 
 export function loadRowDefs(): Record<string, RowDef> {
   const raw = JSON.parse(fs.readFileSync(path.join(HERE, 'rows.json'), 'utf8'));
@@ -17,12 +33,16 @@ export function loadRowDefs(): Record<string, RowDef> {
     let ppm: number | undefined;
     if (r.face) {
       const strip = JSON.parse(fs.readFileSync(path.join(REPO, 'scripts/block-face/faces', r.face, 'strip.json'), 'utf8'));
-      const survey = JSON.parse(fs.readFileSync(path.join(REPO, 'scripts/street-surveys/streets', `${r.street}.json`), 'utf8'));
+      const survey = r.members ? { pands: [] } : JSON.parse(fs.readFileSync(path.join(REPO, 'scripts/street-surveys/streets', `${r.street}.json`), 'utf8'));
       const label = new Map<string, string>(survey.pands.map((p: any) => [p.pandId, String(p.label).replace(/^.*?\s(\d[\d–-]*)$/, '$1')]));
       ppm = strip.pixelsPerMetre;
-      members = strip.spans.map((s: any) => ({ pandId: s.pandId.replace(/^NL\.IMBAG\.Pand\./, ''), label: label.get(s.pandId) ?? s.pandId.slice(-6), widthM: +(s.x1M - s.x0M).toFixed(2), x0M: s.x0M, px: s.px }));
+      // A belt row that names a face for some of its pands (Herengracht 92-96, herengracht-84-148-r1) states its own members.
+      if (!r.members) members = strip.spans.map((s: any) => ({ pandId: s.pandId.replace(/^NL\.IMBAG\.Pand\./, ''), label: label.get(s.pandId) ?? s.pandId.slice(-6), widthM: +(s.x1M - s.x0M).toFixed(2), x0M: s.x0M, px: s.px }));
     }
-    out[id] = { id, title: r.title, face: r.face, members, cutsDir: path.join(root, r.cuts), cutsLocal: r.cutsLocal ? path.join(REPO, r.cutsLocal) : undefined, answersDir: path.join(root, r.answers), stagedDir: path.join(root, r.staged), pixelsPerMetre: ppm, note: r.note };
+    for (const m of members) if (m.evidencePandId) EVIDENCE.set(m.pandId, m.evidencePandId);
+    const list = (v: string | string[]) => (Array.isArray(v) ? v : [v]).map(d => path.resolve(root, d));
+    const answersDirs = list(r.answers), cutsDirs = list(r.cuts);
+    out[id] = { id, title: r.title, face: r.face, members, cutsDir: cutsDirs[0], cutsLocal: r.cutsLocal ? path.join(REPO, r.cutsLocal) : undefined, answersDir: answersDirs[0], stagedDir: path.resolve(root, r.staged ?? 'staged-ring-20261114'), pixelsPerMetre: ppm, note: r.note, answersDirs, cutsDirs, ...(r.street ? { street: r.street } : {}) };
   }
   return out;
 }
@@ -40,4 +60,9 @@ export function loadRereads(): Record<string, Reread> {
 }
 /** The reader's cut for a pand: a re-read's capture first (the sheet shows what the read saw), then the canonical D1 dir,
  *  then the regenerated local copy. */
-export const cutPath = (def: RowDef, pandId: string): string | null => [loadRereads()[pandId] ? path.dirname(path.join(REPO, loadRereads()[pandId].cut)) : undefined, def.cutsDir, def.cutsLocal].filter(Boolean).map(d => path.join(d!, `${pandId}.jpg`)).find(f => fs.existsSync(f)) ?? null;
+export const cutPath = (def: RowDef, pandId0: string): string | null => { const pandId = evidenceId(pandId0); return [loadRereads()[pandId] ? path.dirname(path.join(REPO, loadRereads()[pandId].cut)) : undefined, ...(def.cutsDirs ?? [def.cutsDir]), def.cutsLocal].filter(Boolean).map(d => path.join(d!, `${pandId}.jpg`)).find(f => fs.existsSync(f)) ?? null; };
+
+/** The D1 answer file of a pand: the first answer dir that has it. */
+export const answerFile = (def: RowDef, pandId: string): string | null => (def.answersDirs ?? [def.answersDir]).map(d => path.join(d, `${evidenceId(pandId)}.json`)).find(f => fs.existsSync(f)) ?? null;
+/** The cut dir a pand's cut came from (its cuts.json carries the capture): the first that has the jpg. */
+export const cutsDirOf = (def: RowDef, pandId: string): string => (def.cutsDirs ?? [def.cutsDir]).find(d => fs.existsSync(path.join(d, `${evidenceId(pandId)}.jpg`))) ?? def.cutsDir;

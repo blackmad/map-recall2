@@ -70,13 +70,22 @@ export type RowDormerKind = (typeof ROW_DORMER_KINDS)[number];
  *   arch-ring           a raised white arch ring with keystone over a round head
  *   none                plain brick heads
  */
-export const ROW_HEAD_DRESSINGS = ['none', 'block-course', 'keystone', 'segmental-tympanum', 'dentil-lintel', 'jack-blocks', 'stone-lintel', 'arch-ring', 'block-surround'] as const;
+export const ROW_HEAD_DRESSINGS = ['none', 'block-course', 'keystone', 'segmental-tympanum', 'dentil-lintel', 'jack-blocks', 'stone-lintel', 'arch-ring', 'block-surround', 'tablet',
+  // Lane R round 23 (De Pijp heads list), appended: alternating white voussoirs, white corner blocks, a moulded white surround
+  // with a cornice hood, a patterned brick band at the heads, an ornamental brick arch ring (headGrammar.ts, facadeOrnaments brickBand).
+  'voussoirs', 'corner-blocks', 'moulded-hood', 'brick-band', 'brick-arch-ring'] as const;
+/** `tablet`: a light stone tablet in the brick over each window (Herengracht 175404); with the `relieving` shape, over a
+ *  brick relieving arch. */
 /** `block-surround`: white blocks framing the whole window, alternating quoins up both jambs with a keyed head (Kinkerstraat 100, reviewed). */
 export type RowHeadDressing = (typeof ROW_HEAD_DRESSINGS)[number];
 export const ROW_HEAD_SHAPES = ['flat', 'segmental', 'round', 'relieving'] as const;
 export type RowHeadShape = (typeof ROW_HEAD_SHAPES)[number];
+/** A stated erker: `storeys` in reader rows (ground = 0), `kind` its plan, `roofBalcony` a railing on its roof. */
+/** `width: 'full'`: across the whole front; `side`: over that side's axis as seen (absent: the centre bay). */
+export interface RowBayWindow { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true; width?: 'full'; side?: 'left' | 'right' }
 /** The upper window cell: tall sash/T-windows (the period default) or casements with a top light. */
-export const ROW_WINDOW_KINDS = ['tall-upper', 'sash', 't-window', 'casement-toplight', 'casement'] as const;
+/** `cross`: a cross window (kruiskozijn), a mullion and a transom a third down (Herengracht 27). */
+export const ROW_WINDOW_KINDS = ['tall-upper', 'sash', 't-window', 'casement-toplight', 'casement', 'sash-8-over-8', 'sash-small-panes', 'cross'] as const;
 export type RowWindowKind = (typeof ROW_WINDOW_KINDS)[number];
 /** The wall material; the colour is a judged family (judgedColour.ts JUDGED_FAMILIES), never a sampled hex. */
 export const ROW_WALL_MATERIALS = ['brick', 'painted-brick', 'stucco', 'stone'] as const;
@@ -102,6 +111,12 @@ export interface RowRoofStorey {
   dormerKind?: RowDormerKind;
   /** A hoist beam in the dormer (Weteringschans 169016). */
   hoist?: boolean;
+  /** The mansard's rise over the cornice line as read (m; absent: the renderer's period default). */
+  riseM?: number;
+  /** The dormers stand in a pitched (hipped) roof behind the cornice, not on a mansard face (rowFront `pitched`; lane D
+   *  round 8: a register dakkapel showed from the street as a dormer in a tiled roof in 13 of 19 belt cuts, never as a
+   *  mansard). Absent: a mansard, as before. */
+  pitched?: boolean;
 }
 export interface RowWall {
   material: RowWallMaterial;
@@ -127,6 +142,15 @@ export interface RowGround {
   /** Souterrain / stoop as read (Weteringschans). */
   /** `windows`: basement windows under a raised ground storey (no stoop read), Weteringschans 168096. */
   basement?: 'none' | 'souterrain' | 'stoop' | 'stoop-and-windows' | 'windows';
+  /** The stoop's flight as seen (house rows stoops, Herengracht 130, 148): `straight` out to the pavement, `side` one flight
+   *  along the wall, `double` two flights along the wall from a landing at the door. Stated on a `windows` basement it draws
+   *  the flight the raised door needs (148). Absent: the straight flight between stone cheeks, or none on `windows`. */
+  stoopForm?: 'straight' | 'side' | 'double';
+  /** The stoop has a black iron railing (Herengracht 130). Absent: stone cheek walls only. */
+  stoopRailing?: boolean;
+  /** The stoop door's doorcase as seen (Herengracht 130): stone or painted timber pilasters, an entablature (absent `top`)
+   *  or a pediment over it, a fanlight over the leaf (absent: true). Absent: the plain white frame. */
+  doorcase?: RowDoorcase;
   /**
    * The shopfront colour family, source `single-read`: only when a D1 reading names a colour on the shopfront, pui or
    * shutter itself (a canopy or sign colour does not count; `painted timber` names no colour). Omitted when nothing is
@@ -138,6 +162,13 @@ export interface RowGround {
    * door and window, Weteringschans 168042): drawn as one unit, not split by width. Absent: the renderer's own split.
    */
   shopUnits?: RowField<number>;
+  /** Ground openings with an arched head, by index of `groundBays` as seen (Herengracht 27's arched ground window): the
+   *  glass follows the arch. Over a souterrain the ground openings are the bel-etage's. Absent: none. */
+  archedOpenings?: { index: number[]; shape?: 'segmental' | 'round' };
+  /** The basement storey's front as read (Herengracht 25-29, 0363100012175402): a stone plinth facing (a named colour or
+   *  hex, absent grey) with arched doorways at these indices of `groundBays` as seen, round or segmental (absent round).
+   *  Drawn on a souterrain or basement-windows front. Absent: the basement as today. */
+  basementFront?: { plinth?: string; doors?: number[]; head?: 'round' | 'segmental' };
 }
 
 /** The design of a series (and, as `Partial`, a front's overrides). Every field is solved with a source. */
@@ -167,6 +198,127 @@ export interface RowDesign {
   /** Where the `row-balcony` extra stands: the storeys (0 = the ground storey, which is the bel-etage over a souterrain; 1 = the
    *  first storey above it) and the axis. Absent = the renderer's default (first upper storey, centre). */
   balcony?: RowField<{ storeys: number[]; axis: 'centre' | 'all' }>;
+  /** A white timber erker (bay window) on consoles over the centre bay (lane R round 24, lane D's `bay-window` kit gap):
+   *  the storeys it covers as the reader counts rows (0 = the ground storey, 1 = the first above it), its plan (a box,
+   *  or canted sides) and a balcony railing on its roof when the reading says so. Absent: no erker. */
+  bayWindow?: RowField<RowBayWindow>;
+  /** A gabled crown's outline as read on the photo (`crown` step, neck, bell or point): its rise over the cornice line
+   *  (m), the step count of a step gable, the attic lights in it and the neck (or top tread) width. Absent: the crown
+   *  kind alone, which draws no gable over the row line. */
+  gable?: RowField<RowGable>;
+  /** Upper windows' glass height per storey as read (m), lowest first: every storey that draws upper windows (over a
+   *  souterrain the bel-etage is the first). The storeys share the wall by these heights (tall lower storeys). Absent: one
+   *  window height on an even storey grid. */
+  windowHeights?: RowField<number[]>;
+  /** The window joinery as drawn (house rows round 5): white frames and glazing bars of the series' window kind over every
+   *  upper window. Absent: the preset's painted window (today). */
+  glazing?: RowField<RowGlazing>;
+  /** The ground storey's own facing (stucco, stone) under the wall above: a front override for one house, or the series'.
+   *  Absent: the ground storey is the wall (today). */
+  groundWall?: RowField<RowGroundWall>;
+  /** A flat-top front's timber cornice as read (Herengracht 158, 164, 174, 209, 248): its paint, what carries the corona,
+   *  its frieze, and a stated centre over it. Absent: the `cornice` kind as drawn today. */
+  corniceDress?: RowField<RowCorniceDress>;
+  /** A raised centre piece standing on a cornice front (Herengracht 159: a white attic with a segmental cap over the
+   *  balustrade): its rise over the cornice line (m), its top's kind as the crown piece draws it, and its width. Drawn
+   *  through rowFront's crown.piece. Absent: none. */
+  crownPiece?: RowField<{ riseM: number; kind: string; widthM?: number }>;
+}
+/** An 1800s timber cornice (RowDesign.corniceDress). Every part is drawn only as stated. */
+export interface RowCorniceDress {
+  /** The cornice's paint: a hex, or `white`, `cream`, `grey`; absent white. */
+  paint?: string;
+  /** Under the corona: `modillions` (small blocks at a close pitch), `consoles` (tall brackets over the piers), `dentils`,
+   *  or `none`. Absent: none. */
+  supports?: 'modillions' | 'consoles' | 'dentils' | 'none';
+  /** The frieze under it: `plain` a painted board, `attic-lights` a low light over each window axis in a painted board,
+   *  `panels` sunk panels in a painted board. Absent: the wall's brick. */
+  frieze?: 'plain' | 'attic-lights' | 'panels';
+  /** On the cornice: a `pediment` or a `segmental` cap over the centre, or a `balustrade`. Absent: none. */
+  centre?: 'pediment' | 'segmental' | 'balustrade';
+  /** The centre's width as a share of the front (absent: 0.5 for a cap, the whole front for a balustrade). */
+  centreShare?: number;
+}
+/** A canal window's joinery (RowDesign.glazing): the white frame's width round the glass, the glazing bars' width, and the
+ *  panes per sash for the sash kinds (sash-8-over-8: 8; sash-small-panes: 12; absent: the kind's own). */
+/** A ground storey faced apart from the wall above (Herengracht 12: white stucco with a scrolled top under brown brick). */
+export interface RowGroundWall {
+  material: 'stucco' | 'stone' | 'render' | 'brick';
+  /** The facing's colour: a hex, or a named colour (white, cream, grey, sandstone). Absent: the material's own. */
+  colour?: string;
+  /** Its top: a plain edge, a moulded ledge, or a ledge with scrolled ends. Absent: a ledge. */
+  top?: 'plain' | 'ledge' | 'scrolled';
+}
+
+export interface RowGlazing {
+  frameM?: number;
+  barM?: number;
+  panes?: number;
+}
+/** A gabled crown's outline (RowDesign.gable): symmetric, standing on the series line. */
+export interface RowGable {
+  riseM: number; steps?: number; attic?: number; neckWidthM?: number;
+  /** Neck or bell: the neck's cap as read (a curved pediment is `segmental`; absent: the kit's stock). */
+  cap?: 'pediment' | 'segmental' | 'rounded' | 'flat';
+  /** White stone finials on the steps' corners (step) or the shoulders' feet (neck, bell, spout). */
+  finials?: boolean;
+  /** Step gable: the lowest tread on each side is a sloped shoulder from the foot to the first riser's top (Kinkerstraat 67). */
+  shoulder?: 'sloped';
+  /** Neck or bell: the upright neck's height over the shoulders' top, cap included (m; absent: the kit's stock). */
+  neckOverM?: number;
+  /** The attic light's head (absent: square). */
+  atticHead?: 'round' | 'segmental';
+  /** A small round-headed light high in the neck over the attic light, as the photo shows one (Herengracht 39, 57, 71, 73;
+   *  not 31, 37, 59, 61, 63): stated per house, never a default (blind gable review 3, 2026-11-15). */
+  upperLight?: boolean;
+  /** The gable's white sandstone as built (house rows gable round): copings with thickness along the outline and the
+   *  treads, scrolled shoulder pieces (klauwstukken) beside a neck or bell, the cap or crest on top. Absent: today's flat
+   *  white edge. */
+  stone?: RowGableStone;
+  /** `belt`: the canal belt's gable dress (houseLine/crownProfile.ts BELT_GABLE): a tall neck on low white claw pieces with a
+   *  band at its foot and an overhanging cap moulding, a bell with a narrower moulded crest and a crest ornament, finer
+   *  step treads with a crest finial, a short capped spout top. Absent: the kit's stock outlines (byte-identical). */
+  dress?: 'belt';
+}
+export interface RowGableStone {
+  /** Coping width along the outline (m; absent 0.2). */
+  copingM?: number;
+  /** Neck or bell: scrolled shoulder pieces (klauwstukken) filling beside the neck (absent: true); `carved`: a taller carved
+   *  scroll standing above the shoulder line against the neck. */
+  claws?: boolean | 'carved';
+  /** The neck's cap as a solid hood over a cornice: `dark` (a painted dark green-grey) or a hex. Absent: a stone hood moulding. */
+  hood?: 'dark' | string;
+  /** Carving in the neck between its light and the cap: a framed panel, a cartouche, or an oeil-de-boeuf. Absent: none. */
+  neck?: 'panel' | 'cartouche' | 'oculus';
+  /** Carving in the cap's tympanum (no hood): a `shell` of fluting from the springing, or a `carved` field with a
+   *  cartouche and leaves. Absent: the tympanum stays brick. */
+  cap?: 'shell' | 'carved';
+  /** The cap on top: a pediment, a segmental hood, or a carved crest (absent: the gable's `cap`, else the kit's stock). */
+  crest?: 'pediment' | 'segmental' | 'crest';
+  /** Neck: a carved festoon hung across the neck under the cap, its ends dropping down the neck's sides (Herengracht
+   *  0363100012176326). Stated, it takes the neck's carving space (it replaces `neck`). Absent: none. */
+  festoon?: boolean;
+  /** Neck or bell: an oval cartouche in a carved frame on each shoulder, in the brick under the claws (0363100012176326).
+   *  Absent: none. */
+  shoulders?: 'oval';
+}
+export interface RowDoorcase {
+  material: 'stone' | 'timber'; top?: 'entablature' | 'pediment' | 'segmental';
+  /** The fanlight: absent or true plain bars, `diamond` a lozenge in its frame (Herengracht 144), `oval` an oval ring
+   *  with a small lozenge inside, `oval-spoked` the ring with four short spokes to the frame, false none. */
+  fanlight?: boolean | 'diamond' | 'oval' | 'oval-spoked';
+  /** `ground`: one pilastered frame over the whole ground storey, the door and the windows beside it under one
+   *  entablature (Herengracht 142's shop surround). `frame`: a white timber frame of tall openings over the whole ground
+   *  storey, posts between the door and every window and an entresol rail across them with a light over each opening
+   *  (0363100012176327); it replaces the door's own case. Absent: the door's own case. */
+  span?: 'ground' | 'frame';
+  /** `frame`: the entresol rail's height as a share of the frame (absent 0.58; 0.5 with two tiers). */
+  entresol?: number;
+  /** `frame`: two tall glazed tiers filling the storey up to under the next storey's sills (Herengracht 279), the rail at
+   *  mid height. Absent: the frame stops over the openings with a low entresol. */
+  tiers?: 2;
+  /** The leaf's paint: `black` (near-black, the belt's usual door) or a hex. Absent: the kit's brown. */
+  door?: 'black' | string;
 }
 export type RowDesignKey = keyof RowDesign;
 
@@ -193,6 +345,9 @@ export interface RowFront {
   /** Not staged (scaffold or netting over the upper storeys): the reason. The front still belongs to its series and
    *  draws the series design; nothing from its own reading is used. */
   readHeld?: string;
+  /** Its top was not read (no cut, an unreadable or held reading, or a reviewed unusable cut) in a row of measured cuts: it
+   *  draws the neighbours' series line with no roof form, and the sheet prints it as unread. The reason. */
+  topUnread?: string;
   /** The pand's read describes another of its fronts only (a multi-front capture, `MemberInput.readFront`): nothing of it is drawn here. */
   readElsewhere?: string;
 }

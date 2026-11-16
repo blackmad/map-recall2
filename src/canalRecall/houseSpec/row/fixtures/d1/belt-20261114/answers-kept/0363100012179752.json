@@ -1,0 +1,65 @@
+{
+ "v": 1,
+ "pandId": "0363100012179752",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 3,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 3,
+ "windows": "tall-upper",
+ "storeyWindows": {
+  "2": "small-over-one"
+ },
+ "heads": [
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "not-visible",
+ "doorIndex": null,
+ "ground": "dwelling",
+ "basement": "not-visible",
+ "crown": "cornice",
+ "cornice": "frieze",
+ "pale": false,
+ "finish": "brick",
+ "whiteFrames": false,
+ "sameAs": "none",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 0,
+  "kind": "none"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "ground",
+  "storeyWindows",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "window",
+   "what": "iron wall anchors in pairs between the storeys"
+  }
+ ],
+ "notes": "The outline also covers part of the tall neighbour on the right; the described front is the brick one left of it. Café umbrellas and a boat hide the foot of the ground storey.",
+ "storeys": 3,
+ "wallFamily": "not-visible"
+}

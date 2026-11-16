@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 process.env.ROW_D1_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures/d1');
 const { loadRowDefs } = await import('../../../../scripts/house-specs/rows/rowDefs.ts');
 const { loadRow } = await import('../../../../scripts/house-specs/rows/house-rows.ts');
-const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, groundColourOfRead, headsList, oneShopfront } = await import('./solve.ts');
+const { solveRow, readDormers, heldReason, compatible, ROW_EXTRAS_DEFAULT, BELT_GABLE_RISE, GABLE_ON_RIDGE, groundColourOfRead, headsList, oneShopfront } = await import('./solve.ts');
 const { rowSpec, rowFrontRecords } = await import('./emit.ts');
 const { toRowCheck } = await import('./check.ts');
 const { frontDesign } = await import('./types.ts');
@@ -226,4 +226,229 @@ test('Weteringschans 168042: one dark shopfront (a narrow door and one large win
   const sf = (W.specs['0363100012168042'].design.fronts![0] as Record<string, any>).shopfront;
   assert.deepEqual([sf.displayWindows, sf.glazing, sf.entrance], [1, 'single', 'left']);
   assert.equal(oneShopfront({ gaps: [{ component: 'shopfront', what: 'two shops side by side under one fascia' }] } as never), null);
+});
+
+test('Kinkerstraat 31-49 (round 2): a front with no head joins only a neighbour of the same type, dormers and crown', () => {
+  const r = solveRow(loadRow(loadRowDefs()['kinkerstraat-31-49'], '2026-11-15').input);
+  const series = (pid: string) => r.fronts.find(f => f.pandId === pid)!.seriesId;
+  // 31 (158968): no dormer, its own series; 49 (157926): the 1893 neo-renaissance corner, its own series; 33-47 one series.
+  assert.notEqual(series('0363100012158968'), series('0363100012160646'));
+  assert.notEqual(series('0363100012157926'), series('0363100012161457'));
+  assert.equal(new Set(['0363100012160646', '0363100012155369', '0363100012160073', '0363100012160074', '0363100012167106', '0363100012159384', '0363100012154359', '0363100012161457'].map(series)).size, 1);
+  const d31 = frontDesign(r, r.fronts.find(f => f.pandId === '0363100012158968')!);
+  assert.equal(d31.roofStorey.value.dormersPerFront, 0, '31 draws no dormer');
+  // Keystones stated as a surround (windowSurround keystone) are the series head.
+  assert.equal(headsList(d31.heads.value)[0].dressing, 'keystone');
+});
+
+test('Kinkerstraat 126-138 (round 2): a module pand splits by the face module shares, not equally', () => {
+  const r = solveRow(loadRow(loadRowDefs()['kinkerstraat-120-138'], '2026-11-15').input);
+  const subs = r.fronts.filter(f => f.pandId === '0363100012233461').map(f => f.sub!);
+  assert.equal(subs.length, 7);
+  assert.equal(subs[0].a0, 0);
+  assert.equal(subs[6].a1, 1);
+  // The two narrow round-window gable axes (modules 4 and 7, shares 0.113 and 0.109) are narrower than their neighbours.
+  const w = subs.map(s => s.a1 - s.a0);
+  assert.ok(w[3] < w[2] && w[3] < w[4], `module 4 narrow: ${w.join(',')}`);
+  assert.ok(w[6] < w[5], `module 7 narrow: ${w.join(',')}`);
+});
+
+test('Kinkerstraat 126-138 (round 3): reviewed series split the left building and 132; a reviewed cornice line moves the tops', () => {
+  const r = solveRow(loadRow(loadRowDefs()['kinkerstraat-120-138'], '2026-11-15').input);
+  const f = (n: number) => r.fronts.find(x => x.numbers.includes(n))!;
+  const s = (n: number) => r.series.find(x => x.id === f(n).seriesId)!;
+  // 138-134 are one series of their own, on a lower line; 132 and 126 are separate gabled designs on the series line.
+  assert.equal(new Set([138, 136, 134].map(n => f(n).seriesId)).size, 1);
+  assert.ok(![132, 130, 128, 126, 122, 120].some(n => f(n).seriesId === f(138).seriesId));
+  assert.equal(s(138).design.corniceTopM.value, 12.5);
+  assert.equal(f(138).topM, 12.89);
+  assert.notEqual(f(132).seriesId, f(126).seriesId);
+  assert.equal(s(132).design.crown.value, 'step');
+  assert.deepEqual(s(132).design.gable?.value, { riseM: 2.7, steps: 2, attic: 1 });
+  assert.equal(s(126).design.crown.value, 'neck');
+  for (const n of [132, 126]) {
+    assert.equal(s(n).design.corniceTopM.value, 13.45);
+    assert.equal(f(n).topM, 13.84, `${n}: the series line, not the 16.45 apex`);
+    assert.deepEqual(s(n).design.heads.value, { shape: 'round', dressing: 'arch-ring' });
+  }
+  assert.equal(f(130).topM, 13.84);
+});
+
+test('Kinkerstraat 244-248 (round 2): a face that states one front is never split by a wide reading', () => {
+  const r = solveRow(loadRow(loadRowDefs()['kinkerstraat-244-332'], '2026-11-15').input);
+  assert.deepEqual(r.fronts.filter(f => f.pandId === '0363100012233496').map(f => f.id), ['0363100012233496']);
+  assert.ok(r.series.every(s => s.type), 'every series has a face type');
+});
+
+test('Herengracht belt rows: a front with no face and no usable reading draws its own plain series', async () => {
+  const { numbersOf, beltMembers } = await import('../../../../scripts/house-specs/rows/belt-rows.ts');
+  assert.deepEqual(numbersOf(['Herengracht 46D', 'Herengracht 48', 'Herengracht 46A'], 'Herengracht'), [46, 48]);
+  const sel = [
+    { pandId: 'a', street: 'Herengracht', number: 4, addresses: ['Herengracht 4'], year: 1615, height: 12, areaM2: 90, picked: true },
+    { pandId: 'b', street: 'Herengracht', number: 3, addresses: ['Herengracht 3'], year: 1889, height: 18, areaM2: 90, picked: true },
+    { pandId: 'c', street: 'Herengracht', number: 2, addresses: ['Herengracht 2'], year: 1616, height: 12, areaM2: 300, picked: true },
+  ];
+  const ms = beltMembers(sel, new Map([['a', { pandId: 'a', wallLenM: 5.123 }]]), 'Herengracht', 2, 4);
+  // Left to right as seen from the street: the even side's numbers fall (the October strip of herengracht-84-148).
+  assert.deepEqual(ms.map(m => [m.pandId, m.widthM, m.side]), [['a', 5.12, 'even'], ['c', 12, 'even']]);
+  assert.deepEqual(beltMembers([...sel, { ...sel[1], pandId: 'd', number: 5, addresses: ['Herengracht 5'] }], new Map(), 'Herengracht', 3, 5).map(m => m.pandId), ['b', 'd']);
+  // Herengracht 82 (held read) is its own series, never 80's neck gable; the register gable is its crown.
+  const r = solveRow(loadRow(loadRowDefs()['herengracht-76-90'], '2026-11-15').input);
+  const s82 = r.fronts.find(f => f.pandId === '0363100012175703')!.seriesId;
+  assert.notEqual(s82, r.fronts.find(f => f.pandId === '0363100012175783')!.seriesId);
+  assert.equal(frontDesign(r, r.fronts.find(f => f.pandId === '0363100012175703')!).crown.value, 'cornice');
+  // 82 (1905, no cut read) sits between 84 (1615, painted dark) and 80 (1905, buff): equal distance, so the neighbour of its
+  // own era gives the wall, with its material.
+  assert.deepEqual(frontDesign(r, r.fronts.find(f => f.pandId === '0363100012175703')!).wall.value, { material: 'brick', family: 'buff-brick', hex: frontDesign(r, r.fronts.find(f => f.pandId === '0363100012175703')!).wall.value.hex });
+});
+
+test('Herengracht belt rows: the cut sample judges brick; painted stays painted; no-cut fronts take their neighbours', () => {
+  const r = solveRow(loadRow(loadRowDefs()['herengracht-56-74'], '2026-11-15').input);
+  const wall = (pid: string) => frontDesign(r, r.fronts.find(f => f.pandId === pid)!).wall.value;
+  // 58 is painted dark (its note's "red brick" is the neighbour), black paint by its colourless sample (2026-11-15: the
+  // green-black painted-dark drew Herengracht's dark fronts green); 56 brick never shares its series.
+  assert.equal(wall('0363100012167495').family, 'painted-black');
+  assert.notEqual(r.fronts.find(f => f.pandId === '0363100012167494')!.seriesId, r.fronts.find(f => f.pandId === '0363100012167495')!.seriesId);
+  // 74 (sample L 0.42) is dark purple-brown, not the era red-brown.
+  assert.equal(wall('0363100012175616').family, 'purple-brown-brick');
+  const a = solveRow(loadRow(loadRowDefs()['herengracht-2-24'], '2026-11-15').input);
+  const six = a.fronts.find(f => f.pandId === '0363100012179834')!;
+  assert.equal(frontDesign(a, six).wall.value.family, frontDesign(a, a.fronts.find(f => f.pandId === '0363100100091828')!).wall.value.family, '6 (no cut) takes its neighbour 2-4');
+});
+
+test('Canal windows (round 5): belt series with read white frames state glazing; Kinkerstraat rows do not', () => {
+  const belt = solveRow(loadRow(loadRowDefs()['herengracht-56-74'], '2026-11-15').input);
+  for (const s of belt.series) {
+    const wf = s.design.whiteFrames;
+    assert.equal(!!s.design.glazing, wf.value === true && wf.source !== 'period-default', `${s.id}: glazing follows the read white frames`);
+  }
+  assert.ok(belt.series.some(s => s.design.glazing));
+  const k = solveRow(loadRow(loadRowDefs()['kinkerstraat-86-110'], '2026-11-15').input);
+  assert.ok(k.series.every(s => !s.design.glazing));
+});
+
+test('Herengracht belt fix (2026-11-15): unread tops take the neighbours\' line, no roof form; no invented roofs; no anchor crosses', async () => {
+  const a = solveRow(loadRow(loadRowDefs()['herengracht-2-24'], '2026-11-15').input);
+  const front = (pid: string) => a.fronts.find(f => f.pandId === pid)!;
+  // 6 (no read) and 8 (a hoarding: the reader marked it unreadable) are unread: the line of 10 and 2-4, a plain lid.
+  for (const pid of ['0363100012179834', '0363100012179833']) {
+    const f = front(pid), d = frontDesign(a, f);
+    assert.ok(f.topUnread, `${pid} is unread`);
+    assert.equal(d.roofStorey.value.kind, 'none');
+    assert.equal(d.crown.value, 'cornice');
+    const line = (frontDesign(a, front('0363100012179763')).corniceTopM.value! + frontDesign(a, front('0363100100091828')).corniceTopM.value!) / 2;
+    assert.ok(Math.abs(d.corniceTopM.value! - line) < 0.01, `${pid} takes the neighbours' line ${line}`);
+  }
+  assert.ok(!front('0363100012179763').topUnread);
+  // 18's hipped tiled roof is a kit gap, not a slate mansard.
+  assert.equal(frontDesign(a, front('0363100012179760')).roofStorey.value.kind, 'none');
+  assert.ok(a.series.every(s => !s.design.extras.value.includes('wall-anchors')), 'belt rows draw no anchor crosses');
+  const { rowFrontsWithSeries } = await import('../../houseLine/rowSeries.ts');
+  assert.ok(rowFrontsWithSeries(a).every(r => r.series?.omitExtras?.includes('wall-anchors')), 'the series draw omits the anchors');
+  const b = solveRow(loadRow(loadRowDefs()['herengracht-51-73'], '2026-11-15').input);
+  for (const pid of ['0363100012168129', '0363100012168130', '0363100012179751']) assert.equal(frontDesign(b, b.fronts.find(f => f.pandId === pid)!).roofStorey.value.kind, 'none', `${pid}: no invented roof`);
+  const k = solveRow(loadRow(loadRowDefs()['kinkerstraat-86-110'], '2026-11-15').input);
+  assert.ok(k.fronts.every(f => !f.topUnread) && k.series.every(s => s.design.extras.value.includes('wall-anchors')));
+  assert.ok(rowFrontsWithSeries(k).every(r => !r.series?.omitExtras), 'Kinkerstraat omits nothing');
+});
+
+test('Herengracht belt fix 2: a reviewed split reads two gables; a reviewed top is not unread; 18 stands at 16\'s line', () => {
+  const r = solveRow(loadRow(loadRowDefs()['herengracht-25-49'], '2026-11-15').input);
+  const fs = r.fronts.filter(f => f.pandId === '0363100012168212');
+  assert.deepEqual(fs.map(f => f.id), ['0363100012168212#m0', '0363100012168212#m1']);
+  assert.ok(fs[0].widthM! < fs[1].widthM!, 'the right gable is the wider');
+  for (const f of fs) { assert.ok(!f.topUnread); assert.equal(frontDesign(r, f).crown.value, 'point'); }
+  const a = solveRow(loadRow(loadRowDefs()['herengracht-2-24'], '2026-11-15').input);
+  assert.equal(a.fronts.find(f => f.pandId === '0363100012179760')!.topM, 12.4);
+});
+
+test('Herengracht belt follow-up: a gabled crown with no read rise takes the family rise, its foot under the 3DBAG median', () => {
+  // The fixtures carry no cut samples; a sample on one member makes it a row of measured cuts, as the live belt rows are.
+  const belt = (id: string) => { const inp = loadRow(loadRowDefs()[id], '2026-11-15').input; inp.members[0].wallSample = '#6a5040'; return solveRow(inp); };
+  const r = belt('herengracht-75-89'), at = (id: string) => frontDesign(r, r.fronts.find(f => f.pandId === id)!);
+  // 79 (register neck, no read): the default neck rise; its foot (10.45 m, half the rise under the 3DBAG median) then moves
+  // onto the 3DBAG ridge (13.7 m) less the rise, so the apex stands at the ridge and not above it.
+  assert.equal(at('0363100012168064').gable?.value.riseM, BELT_GABLE_RISE.neck);
+  assert.equal(at('0363100012168064').gable?.source, 'period-default');
+  assert.equal(at('0363100012168064').gable?.value.dress, 'belt');
+  assert.equal(at('0363100012168064').corniceTopM.value, +(13.7 - BELT_GABLE_RISE.neck).toFixed(2));
+  assert.match(at('0363100012168064').corniceTopM.ref ?? '', /3DBAG ridge 13.7 m/);
+  // 85 (reviewed bell rise 3.4 at 12.4 m) keeps its own; a cornice front takes none.
+  assert.equal(at('0363100012179601').gable?.value.riseM, 3.4);
+  assert.equal(at('0363100012179601').corniceTopM.value, 12.4);
+  assert.equal(at('0363100012179680').gable, undefined);
+  // Rows without measured cuts (Kinkerstraat) are untouched.
+  const k = solveRow(loadRow(loadRowDefs()['kinkerstraat-65-87'], '2026-11-15').input);
+  assert.ok(k.series.every(x => x.design.gable?.source !== 'period-default'));
+});
+
+test('Herengracht gables: a 3DBAG ridge counts only over a nok line; moves stay within the cap', async () => {
+  // 57: dak_max 11.46 m with no nok (a flat roof behind a false front) offers no ridge and keeps its line.
+  const { ridgeOf } = await import('../../../../scripts/house-specs/rows/belt-ridges.ts');
+  const item = (a: Record<string, number>) => ({ feature: { CityObjects: { 'NL.IMBAG.Pand.1': { attributes: { b3_h_maaiveld: 0.5, ...a } } } } });
+  assert.equal(ridgeOf(item({ b3_h_dak_max: 11.96, b3_h_nok: -0.1, b3_n_nok: 0 })), null);
+  assert.equal(ridgeOf(item({ b3_h_dak_max: 17.7, b3_h_nok: 17.83, b3_n_nok: 5 })), 17.2);
+  const inp = loadRow(loadRowDefs()['herengracht-51-73'], '2026-11-15').input; inp.members[0].wallSample = '#6a5040';
+  const r = solveRow(inp), at = (id: string) => frontDesign(r, r.fronts.find(f => f.pandId === id)!);
+  assert.equal(inp.members.find(x => x.pandId === '0363100012179673')?.ridge3dbag ?? null, null, '57 has no ridge');
+  assert.ok(!/3DBAG ridge/.test(at('0363100012179673').corniceTopM.ref ?? ''), '57 keeps its line');
+  const movedFronts = r.fronts.filter(f => /3DBAG ridge/.test(frontDesign(r, f).corniceTopM.ref ?? ''));
+  assert.ok(movedFronts.length >= 3, `the row's other gables stand on their ridges (${movedFronts.length})`);
+  for (const f of movedFronts) {
+    const d = frontDesign(r, f), m = inp.members.find(x => x.pandId === f.pandId)!;
+    assert.ok(d.corniceTopM.ref!.includes(`3DBAG ridge ${m.ridge3dbag} m`), `${f.pandId} cites its own ridge`);
+    assert.ok(Math.abs(m.ridge3dbag! - d.gable!.value.riseM - d.corniceTopM.value!) <= GABLE_ON_RIDGE.maxMoveM, `${f.pandId} within the cap of its ridge`);
+  }
+  // A series moves as one (Herengracht 155/157, one design with ridges 1.24 m apart, stepped 1.24 m inside the pair):
+  // no front moved onto its ridge differs from the rest of its series.
+  for (const id of ['herengracht-51-73', 'herengracht-25-49', 'herengracht-75-89', 'herengracht-125-161']) {
+    const i = loadRow(loadRowDefs()[id], '2026-11-15').input; i.members[0].wallSample = '#6a5040';
+    const rr = solveRow(i);
+    for (const s of rr.series) {
+      const fs = rr.fronts.filter(f => f.seriesId === s.id && !f.sub), lines = fs.map(f => frontDesign(rr, f).corniceTopM);
+      if (lines.some(l => /3DBAG ridge/.test(l.ref ?? ''))) assert.equal(new Set(lines.map(l => l.value)).size, 1, `${s.id} moves as one`);
+    }
+  }
+});
+
+test('a module pand shares its read dormers out whole per front, at least one where any was read', () => {
+  // Herengracht 320-324: one dormer read over two fronts gave 0.5 a front, which the spec schema refuses.
+  for (const id of ['kinkerstraat-120-138', 'kinkerstraat-65-87', 'kinkerstraat-86-110']) {
+    const r = solveRow(loadRow(loadRowDefs()[id], '2026-11-15').input);
+    for (const s of r.series) assert.ok(Number.isInteger(s.design.roofStorey.value.dormersPerFront), `${s.id}: ${s.design.roofStorey.value.dormersPerFront}`);
+    for (const f of r.flags.filter(x => x.kind === 'class-disagreement' && x.field === 'dormers')) assert.doesNotMatch(f.detail, /consensus "\d+\.\d+"/, f.detail);
+  }
+});
+
+test('a tablet head (Herengracht 175404) emits a HouseSpec keystone head, the relieving arch in the wall colour, and a limit', () => {
+  for (const [shape, kind, colour] of [['relieving', 'relieving', 'wall'], ['flat', 'flat', 'stone']] as const) {
+    const row = structuredClone(K.row);
+    const f = row.fronts.find(x => x.id === '0363100012160809')!;
+    f.overrides.heads = { value: { shape, dressing: 'tablet' }, source: 'reviewed', ref: 'test' } as never;
+    const spec = rowSpec(row, '0363100012160809', undefined, '2026-11-15')!;
+    const head = (spec.design.fronts?.[0] as { windowHead?: { kind: string; archRing?: { colour: string; keystone?: boolean } } }).windowHead!;
+    assert.equal(head.kind, kind);
+    assert.deepEqual([head.archRing?.colour, head.archRing?.keystone], [colour, true]);
+    assert.ok((spec.schemaLimits ?? []).some(l => (l as { what?: string }).what?.includes('tablet')));
+    assert.deepEqual(specProblems(spec).filter(p => /windowHead|schemaLimits/.test(p)), []);
+  }
+});
+
+test("lane R's ground openings (Herengracht 25-29, 27): a reviewed ground.openings states the bays, the arched one and the basement front; cross windows emit cross-transom", () => {
+  const l = loadRow(defs['kinkerstraat-86-110'], '2026-11-15');
+  const id = '0363100012160809';
+  const input = { ...l.input, reviewed: [...(l.input.reviewed ?? []), { fronts: [id], field: 'ground.openings' as const, value: { groundBays: 2, archedOpenings: { index: [1] }, basementFront: { plinth: 'grey', doors: [0] } }, ref: 'test', at: '2026-11-15' }] };
+  const row = solveRow(input);
+  const f = row.fronts.find(x => x.id === id)!;
+  assert.deepEqual([f.ground.groundBays, f.ground.archedOpenings, f.ground.basementFront], [2, { index: [1] }, { plinth: 'grey', doors: [0] }]);
+  // Other fronts untouched.
+  for (const o of row.fronts.filter(x => x.id !== id)) assert.ok(!o.ground.archedOpenings && !o.ground.basementFront, o.id);
+  f.ground.basement = 'windows';
+  f.overrides.windows = { value: 'cross', source: 'reviewed', ref: 'test' } as never;
+  const spec = rowSpec(row, id, undefined, '2026-11-15')!;
+  const fr = spec.design.fronts?.[0] as Record<string, unknown>;
+  assert.deepEqual([fr.windows, fr.plinth, fr.basementDoor], ['cross-transom', 'full', 0]);
+  const limits = (spec.schemaLimits ?? []).map(x => (x as { what: string }).what);
+  assert.ok(limits.some(w => /archedOpenings/.test(w)) && limits.some(w => /basementFront/.test(w)), limits.join('\n'));
+  assert.deepEqual(specProblems(spec).filter(p => /windows|plinth|basementDoor|schemaLimits/.test(p)), []);
 });

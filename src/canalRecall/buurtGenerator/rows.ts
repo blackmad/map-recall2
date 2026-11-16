@@ -28,6 +28,8 @@ export interface GenPand {
   /** 3DBAG eaves and ridge above the pand's ground (m), as the base tiles carry them. */
   eavesM: number | null;
   ridgeM: number | null;
+  /** 3DBAG's representative height (the base tiles' `height`), when read: the belt look's front top (beltLook/donors.ts). */
+  heightM?: number | null;
   /** The orthophoto roof reading (roof-facts sidecar, roofs/roofSlots.ts): tile, slate, gravel, ...; null unread. */
   roofSlot?: string | null;
   /** 3DBAG's roof type as the base tiles carry it (bagTiles.ts roofCode: 0 unknown, 1 flat, 2 several flats, 3 slanted). */
@@ -229,7 +231,9 @@ export function seriesOf(rowId: string, members: GenMember[]): GenSeries[] {
  * The rows of a district: every pand with a front edge, joined into rows on one street by continuing front edges and a
  * shared party wall, ordered left to right as seen from the street. `streets` are named centre lines (lng/lat).
  */
-export function districtRows(input: readonly GenPand[], streets: readonly GenStreet[]): RowsResult {
+/** `singles`: a pand with a front but no party-wall neighbour on its street is a one-member row, not unplaced (the canal
+ *  belt look, where undescribed pands often stand alone between described ones; absent: unplaced as before). */
+export function districtRows(input: readonly GenPand[], streets: readonly GenStreet[], opts: { singles?: boolean } = {}): RowsResult {
   let pands = input;
   if (!pands.length) return { rows: [], unplaced: [] };
   const lat0 = pands[0].ring[0][1];
@@ -285,7 +289,7 @@ export function districtRows(input: readonly GenPand[], streets: readonly GenStr
     if (seen.has(id)) continue;
     const comp: string[] = [], stack = [id];
     while (stack.length) { const u = stack.pop()!; if (seen.has(u)) continue; seen.add(u); comp.push(u); for (const v of link.get(u) ?? []) if (!seen.has(v)) stack.push(v); }
-    if (comp.length < 2) { unplaced.push({ id, reason: 'single' }); continue; }
+    if (comp.length < 2 && !opts.singles) { unplaced.push({ id, reason: 'single' }); continue; }
     // Street order: project each front midpoint on the mean left-to-right direction.
     const dir = comp.reduce((t, u) => { const e = fronts.get(u)!, d = sub(e.b, e.a), l = len(d) || 1; return { x: t.x + d.x / l, y: t.y + d.y / l }; }, { x: 0, y: 0 });
     const at = (u: string) => { const e = fronts.get(u)!; return dot({ x: (e.a.x + e.b.x) / 2, y: (e.a.y + e.b.y) / 2 }, dir); };

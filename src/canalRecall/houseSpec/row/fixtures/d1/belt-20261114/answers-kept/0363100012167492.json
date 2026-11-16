@@ -1,0 +1,70 @@
+{
+ "v": 1,
+ "pandId": "0363100012167492",
+ "image": {
+  "ref": "artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg",
+  "kind": "pose-photo",
+  "tier": null,
+  "year": null,
+  "gate": null
+ },
+ "reader": "D1 opus v4.3 cut belt-20261114",
+ "prompt": "v4.3",
+ "readable": true,
+ "extent": "single",
+ "storeyParts": {
+  "full": 4,
+  "roof": "none",
+  "souterrain": false
+ },
+ "bays": 2,
+ "columns": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "windows": "tall-upper",
+ "heads": [
+  "flat",
+  "flat",
+  "flat",
+  "flat"
+ ],
+ "bands": "none",
+ "windowSurround": "none",
+ "sills": "stone",
+ "doorBay": "none",
+ "doorIndex": null,
+ "ground": "dwelling",
+ "basement": "stoop-and-windows",
+ "crown": "cornice",
+ "cornice": "heavy",
+ "pale": false,
+ "finish": "painted-brick",
+ "whiteFrames": true,
+ "sameAs": "left",
+ "mirrored": false,
+ "balconies": [],
+ "dormers": {
+  "count": 1,
+  "kind": "gabled"
+ },
+ "bayWindow": [],
+ "doorSurround": "not-visible",
+ "low": [
+  "doorBay",
+  "sameAs",
+  "dormers",
+  "cornice"
+ ],
+ "gaps": [
+  {
+   "component": "roof",
+   "what": "a white stone attic with a round-arched lunette window and a scrolled curved cornice rises over the centre of the wider front"
+  }
+ ],
+ "notes": "The outline covers the right two bays of a wider dark painted front whose street door, with a carved white doorcase and stoop, lies just left of the outline; parked cars hide the plinth.",
+ "storeys": 4,
+ "wallFamily": "not-visible"
+}

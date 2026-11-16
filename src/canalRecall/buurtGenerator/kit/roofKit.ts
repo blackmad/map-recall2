@@ -357,10 +357,46 @@ export function drawRaised(s: RoofSink, kit: BuurtRoofKit, L: number, W: number,
   for (const r of kit.raised ?? []) {
     const c0 = (r.a0 - 0.5) * W, c1 = (r.a1 - 0.5) * W, out = r.outM ?? r.faceM ?? 0.01, foot = r.outM ? kit.footZ ?? kit.z0 : -0.05;
     const back = r.depthM ?? R.backM;
+    if (r.round) { drawRoundRaised(s, kit, L, e, r, c0, c1, out, foot); continue; }
     frontBox(s, L, e, c0, c1, -back, out, foot, r.riseM, 'plate');
-    frontBox(s, L, e, c0 - R.copingOutM, c1 + R.copingOutM, -back - R.copingOutM, out + R.copingOutM, r.riseM, r.riseM + R.copingM, 'plate');
+    if (r.cap) { const C = RAISED_CAP_LOOK; frontBox(s, L, e, c0 - C.outM, c1 + C.outM, -back - C.outM, out + C.outM, r.riseM, r.riseM + C.heightM, 'trim', ERKER_LOOK.white); }
+    else frontBox(s, L, e, c0 - R.copingOutM, c1 + R.copingOutM, -back - R.copingOutM, out + R.copingOutM, r.riseM, r.riseM + R.copingM, 'plate');
     if (r.lights) raisedLights(s, kit, L, e, r, c0, c1, out);
   }
+}
+
+/** Round 22: a raised part's white lid (`cap`): its height and how far it stands proud all round (m). */
+export const RAISED_CAP_LOOK = { heightM: 0.18, outM: 0.15 } as const;
+/** Round 22: a round tower's facets round its circle. */
+export const ROUND_RAISED_LOOK = { segments: 16 } as const;
+/** A round raised part (`round`): a brick cylinder of diameter a0..a1 standing on the face (its centre `out` from the
+ *  wall), from its foot to the rise, a disc top, the white cap or brick coping on it, and its lights on the front. */
+function drawRoundRaised(s: RoofSink, kit: BuurtRoofKit, L: number, e: number, r: KitRaised, c0: number, c1: number, out: number, foot: number): void {
+  const P = (c: number, o: number, z: number): V3 => [e * (L / 2 + o), e * c, z];
+  const cc = (c0 + c1) / 2, rad = (c1 - c0) / 2, n = ROUND_RAISED_LOOK.segments, R = RAISED_LOOK, C = RAISED_CAP_LOOK;
+  const ring = (rr: number, z0: number, z1: number, part: 'plate' | 'trim', hex?: string) => {
+    for (let i = 0; i < n; i++) {
+      const a = (2 * Math.PI * i) / n, b = (2 * Math.PI * (i + 1)) / n, m = (a + b) / 2;
+      const ca = cc + rr * Math.cos(a), oa = out + rr * Math.sin(a), cb = cc + rr * Math.cos(b), ob = out + rr * Math.sin(b);
+      const ua = rr * a, ub = rr * b, uv = (u: number, z: number): [number, number] => part === 'plate' ? s.wallUv(u, z) : [0, 0];
+      // Wound so that the face points out from the axis (the outward hint: the facet's middle direction).
+      s.quad(P(cb, ob, z0), P(ca, oa, z0), P(ca, oa, z1), P(cb, ob, z1), uv(ub, z0), uv(ua, z0), uv(ua, z1), uv(ub, z1), part, [e * Math.sin(m), e * Math.cos(m), 0], hex);
+    }
+  };
+  const disc = (rr: number, z: number, part: 'plate' | 'trim', up: boolean, hex?: string) => {
+    for (let i = 0; i < n; i++) {
+      const a = (2 * Math.PI * i) / n, b = (2 * Math.PI * (i + 1)) / n;
+      const A = P(cc + rr * Math.cos(a), out + rr * Math.sin(a), z), B = P(cc + rr * Math.cos(b), out + rr * Math.sin(b), z), O = P(cc, out, z);
+      if (up) s.tri(O, A, B, [0, 0], [0, 0], [0, 0], part, [0, 0, 1], hex); else s.tri(O, B, A, [0, 0], [0, 0], [0, 0], part, [0, 0, -1], hex);
+    }
+  };
+  ring(rad, foot, r.riseM, 'plate');
+  const lid = r.cap ? { rr: rad + C.outM, h: C.heightM, part: 'trim' as const, hex: ERKER_LOOK.white } : { rr: rad + R.copingOutM, h: R.copingM, part: 'plate' as const, hex: undefined };
+  ring(lid.rr, r.riseM, r.riseM + lid.h, lid.part, lid.hex);
+  disc(lid.rr, r.riseM, lid.part, false, lid.hex);
+  disc(lid.rr, r.riseM + lid.h, lid.part, true, lid.hex);
+  // Its lights on the front, the cylinder's nearest point, no wider than the front third of the circle.
+  if (r.lights) raisedLights(s, kit, L, e, { ...r, lights: 1 }, cc - rad * 0.5, cc + rad * 0.5, out + rad);
 }
 
 /** Round 20: a raised part's storeys over the line, `lights` windows each (RAISED_LIGHT_LOOK), on its face. */

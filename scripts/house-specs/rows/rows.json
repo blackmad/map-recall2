@@ -1,5 +1,5 @@
 {
-  "d1Root": "/Users/blackmad/Code/map-recall2-worktrees/d1-tranche-ring-20261114/artifacts/describer-d1",
+  "d1Root": "/Users/blackmad/Code/map-recall2-worktrees/_pruned-sheets/house-rows-d/d1-root",
   "rows": {
     "kinkerstraat-86-110": {
       "title": "Kinkerstraat 86-110 (even side, 1893)",
@@ -49,6 +49,3493 @@
         "orderNote": "Street order left to right (viewer facing north, east to the right): 168096, 168042, 169016, 171218, from the cut wall midpoints in cuts-ah07/cuts.json."
       },
       "eavesNote": "eavesM: 3DBAG eaves of each pand as the game draws its wall top (threeBuildingMesh.ts wallTopHeightM on the decorated feature), read from house:row-sheet's today measure.json (heights.eavesM). The row solve takes the series median when no face measures the cornice (house:rows, lane D)."
+    },
+    "kinkerstraat-1-29": {
+      "title": "Kinkerstraat 1-29 (odd side, 1883-1900)",
+      "face": "kinker-1-29",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 7, kinker-1885-wall-dormer 3, kinker-1985-infill 1"
+    },
+    "kinkerstraat-109-161": {
+      "title": "Kinkerstraat 109-161 (odd side, 1989)",
+      "face": "kinker-109-161",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1985-infill 13"
+    },
+    "kinkerstraat-112-116": {
+      "title": "Kinkerstraat 112-116 (even side, 1895)",
+      "face": "kinker-112-116",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 2"
+    },
+    "kinkerstraat-120-138": {
+      "title": "Kinkerstraat 120-138 (even side, 1895)",
+      "face": "kinker-120-138",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 3"
+    },
+    "kinkerstraat-142-178": {
+      "title": "Kinkerstraat 142-178 (even side, 1895-1989)",
+      "face": "kinker-142-178",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1985-infill 4, kinker-1890-brick-arched 3, kinker-1890-plain-brick 3, kinker-1886-neo-renaissance 1"
+    },
+    "kinkerstraat-173-225": {
+      "title": "Kinkerstraat 173-225 (odd side, 1982)",
+      "face": "kinker-173-225",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1985-infill 10"
+    },
+    "kinkerstraat-182-184": {
+      "title": "Kinkerstraat 182-184 (even side, 1989)",
+      "face": "kinker-182-184",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1985-infill 2"
+    },
+    "kinkerstraat-186-202": {
+      "title": "Kinkerstraat 186-202 (even side, 1897-1917)",
+      "face": "kinker-186-202",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-brick-arched 5, kinker-1890-plain-brick 1"
+    },
+    "kinkerstraat-2-30": {
+      "title": "Kinkerstraat 2-30 (even side, 1886-1889)",
+      "face": "kinker-2-30",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-brick-arched 11, kinker-1890-plain-brick 3, kinker-1895-painted-band 2"
+    },
+    "kinkerstraat-206-242": {
+      "title": "Kinkerstraat 206-242 (even side, 1896-1904)",
+      "face": "kinker-206-242",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 8, kinker-1895-painted-band 5, kinker-1890-brick-arched 2"
+    },
+    "kinkerstraat-244-332": {
+      "title": "Kinkerstraat 244-332 (even side, 1897-1990)",
+      "face": "kinker-244-332",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-brick-arched 10, kinker-1890-plain-brick 10, kinker-1900-stucco-front 3, kinker-1985-infill 2, kinker-1895-painted-band 1"
+    },
+    "kinkerstraat-265-313": {
+      "title": "Kinkerstraat 265-313 (odd side, 1992)",
+      "face": "kinker-265-313",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1985-infill 3"
+    },
+    "kinkerstraat-31-49": {
+      "title": "Kinkerstraat 31-49 (odd side, 1885-1893)",
+      "face": "kinker-31-49",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 9, kinker-1886-neo-renaissance 1"
+    },
+    "kinkerstraat-315-359": {
+      "title": "Kinkerstraat 315-359 (odd side, 1903-1987)",
+      "face": "kinker-315-359",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1902-balcony-axis 18, kinker-1985-infill 1"
+    },
+    "kinkerstraat-334-374": {
+      "title": "Kinkerstraat 334-374 (even side, 1902-1915)",
+      "face": "kinker-334-374",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1902-balcony-axis 10, kinker-1890-plain-brick 6, kinker-1890-brick-arched 2"
+    },
+    "kinkerstraat-363-371": {
+      "title": "Kinkerstraat 363-371 (odd side, 1914-1916)",
+      "face": "kinker-363-371",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1902-balcony-axis 4"
+    },
+    "kinkerstraat-376-380": {
+      "title": "Kinkerstraat 376-380 (even side, 1902)",
+      "face": "kinker-376-380",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 3"
+    },
+    "kinkerstraat-386-390": {
+      "title": "Kinkerstraat 386-390 (even side, 1914)",
+      "face": "kinker-386-390",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 1, kinker-1902-balcony-axis 1"
+    },
+    "kinkerstraat-49-63": {
+      "title": "Kinkerstraat 49-63 (odd side, 1886-1892)",
+      "face": "kinker-49-63",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1886-neo-renaissance 4, kinker-1890-brick-arched 3, kinker-1890-plain-brick 2"
+    },
+    "kinkerstraat-56-84": {
+      "title": "Kinkerstraat 56-84 (even side, 1893-1979)",
+      "face": "kinker-56-84",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1886-neo-renaissance 4, kinker-1985-infill 1"
+    },
+    "kinkerstraat-65-87": {
+      "title": "Kinkerstraat 65-87 (odd side, 1893)",
+      "face": "kinker-65-87",
+      "street": "kinkerstraat",
+      "cuts": [
+        "ring-20261114/cuts",
+        "cuts"
+      ],
+      "answers": [
+        "ring-20261114/answers",
+        "answers"
+      ],
+      "staged": "staged-ring-20261114",
+      "note": "Round 2 (lane D, 2026-11-15): members in strip order; face intent of October plus the D1 answers (ring tranche, then the street tranche); no new reads. Types: kinker-1890-plain-brick 7, kinker-1893-plain-step-gable 2, kinker-1895-painted-band 1"
+    },
+    "herengracht-2-24": {
+      "title": "Herengracht 2-24 (even side, 1615-1933)",
+      "members": [
+        {
+          "pandId": "0363100012179838",
+          "label": "24",
+          "widthM": 4.76,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            24
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 13.52,
+          "ridgeM": 14.16
+        },
+        {
+          "pandId": "0363100012179752",
+          "label": "22",
+          "widthM": 8.53,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            22
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 12.92,
+          "ridgeM": 14.06
+        },
+        {
+          "pandId": "0363100012179753",
+          "label": "20",
+          "widthM": 6.78,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            20
+          ],
+          "built": 1639,
+          "side": "even",
+          "heightM": 18.95
+        },
+        {
+          "pandId": "0363100012179760",
+          "label": "18",
+          "widthM": 4.46,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            18
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 12.38
+        },
+        {
+          "pandId": "0363100012179761",
+          "label": "16",
+          "widthM": 4.53,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            16
+          ],
+          "built": 1735,
+          "side": "even",
+          "heightM": 12.39,
+          "ridgeM": 13.64
+        },
+        {
+          "pandId": "0363100012179765",
+          "label": "12",
+          "widthM": 8.66,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            12
+          ],
+          "built": 1630,
+          "side": "even",
+          "heightM": 17.4,
+          "ridgeM": 19.52
+        },
+        {
+          "pandId": "0363100012179763",
+          "label": "10",
+          "widthM": 8.64,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            10
+          ],
+          "built": 1933,
+          "side": "even",
+          "heightM": 15.58
+        },
+        {
+          "pandId": "0363100012179833",
+          "label": "8",
+          "widthM": 4.44,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            8
+          ],
+          "built": 1880,
+          "side": "even",
+          "heightM": 18.95
+        },
+        {
+          "pandId": "0363100012179834",
+          "label": "6",
+          "widthM": 4.87,
+          "widthSource": "BAG area / 15 m (no cut)",
+          "numbers": [
+            6
+          ],
+          "built": 1880,
+          "side": "even",
+          "heightM": 19.03
+        },
+        {
+          "pandId": "0363100100091828",
+          "evidencePandId": "0363100012168202",
+          "label": "2–4",
+          "widthM": 8.13,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            2,
+            4
+          ],
+          "built": 1616,
+          "side": "even",
+          "heightM": 12.75,
+          "ridgeM": 14.3
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "twinNote": "Herengracht 2–4: the member is the world's pand 0363100100091828 (same footprint, taller; the world drops the D1 pand 0363100012168202); its cut and read stay filed under 0363100012168202",
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-26-46": {
+      "title": "Herengracht 26-46 (even side, 1615-1905)",
+      "members": [
+        {
+          "pandId": "0363100012169270",
+          "label": "46–48",
+          "widthM": 8.57,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            46,
+            48
+          ],
+          "built": 1760,
+          "side": "even",
+          "heightM": 18.66,
+          "ridgeM": 20.12
+        },
+        {
+          "pandId": "0363100012179667",
+          "label": "46",
+          "widthM": 4.56,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            46
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 14.87,
+          "ridgeM": 16.49
+        },
+        {
+          "pandId": "0363100012179669",
+          "label": "44",
+          "widthM": 4.46,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            44
+          ],
+          "built": 1725,
+          "side": "even",
+          "heightM": 10.96,
+          "ridgeM": 12.4
+        },
+        {
+          "pandId": "0363100012179670",
+          "label": "42",
+          "widthM": 4.37,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            42
+          ],
+          "built": 1870,
+          "side": "even",
+          "heightM": 15.33,
+          "ridgeM": 15.71
+        },
+        {
+          "pandId": "0363100012179668",
+          "label": "40",
+          "widthM": 13.26,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            40
+          ],
+          "built": 1790,
+          "side": "even",
+          "heightM": 21.36,
+          "ridgeM": 23.4
+        },
+        {
+          "pandId": "0363100012179671",
+          "label": "38",
+          "widthM": 5.64,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            38
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 12.16,
+          "ridgeM": 13.55
+        },
+        {
+          "pandId": "0363100012179684",
+          "label": "36",
+          "widthM": 5.47,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            36
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 12.7,
+          "ridgeM": 13.25
+        },
+        {
+          "pandId": "0363100012168069",
+          "label": "32",
+          "widthM": 5.02,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            32
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 14.7,
+          "ridgeM": 15.74
+        },
+        {
+          "pandId": "0363100012168138",
+          "label": "30",
+          "widthM": 4.82,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            30
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 14.87
+        },
+        {
+          "pandId": "0363100012179837",
+          "label": "28",
+          "widthM": 6.12,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            28
+          ],
+          "built": 1712,
+          "side": "even",
+          "heightM": 13.44,
+          "ridgeM": 15.59
+        },
+        {
+          "pandId": "0363100012179836",
+          "label": "26",
+          "widthM": 6.12,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            26
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 15.45,
+          "ridgeM": 17.83
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-56-74": {
+      "title": "Herengracht 56-74 (even side, 1615-1905)",
+      "members": [
+        {
+          "pandId": "0363100012175616",
+          "label": "74",
+          "widthM": 4.4,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            74
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 13.88
+        },
+        {
+          "pandId": "0363100012175617",
+          "label": "72",
+          "widthM": 4.2,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            72
+          ],
+          "built": 1640,
+          "side": "even",
+          "heightM": 17.14,
+          "ridgeM": 20.85
+        },
+        {
+          "pandId": "0363100012175618",
+          "label": "70",
+          "widthM": 4.17,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            70
+          ],
+          "built": 1640,
+          "side": "even",
+          "heightM": 18.83,
+          "ridgeM": 20.99
+        },
+        {
+          "pandId": "0363100012175698",
+          "label": "68",
+          "widthM": 9.38,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            68
+          ],
+          "built": 1770,
+          "side": "even",
+          "heightM": 18.65,
+          "ridgeM": 20.12
+        },
+        {
+          "pandId": "0363100012168545",
+          "label": "64",
+          "widthM": 6.98,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            64
+          ],
+          "built": 1625,
+          "side": "even",
+          "heightM": 14.53,
+          "ridgeM": 17.85
+        },
+        {
+          "pandId": "0363100012167493",
+          "label": "62",
+          "widthM": 3.45,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            62
+          ],
+          "built": 1740,
+          "side": "even",
+          "heightM": 15.86,
+          "ridgeM": 17.15
+        },
+        {
+          "pandId": "0363100012167492",
+          "label": "60",
+          "widthM": 4.85,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            60
+          ],
+          "built": 1740,
+          "side": "even",
+          "heightM": 16.74,
+          "ridgeM": 18.37
+        },
+        {
+          "pandId": "0363100012167495",
+          "label": "58",
+          "widthM": 7.52,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            58
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 15.77,
+          "ridgeM": 17.61
+        },
+        {
+          "pandId": "0363100012167494",
+          "label": "56",
+          "widthM": 6.87,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            56
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 17.06,
+          "ridgeM": 18.26
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-76-90": {
+      "title": "Herengracht 76-90 (even side, 1615-1905)",
+      "members": [
+        {
+          "pandId": "0363100012175701",
+          "label": "90",
+          "widthM": 5.67,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            90
+          ],
+          "built": 1630,
+          "side": "even",
+          "heightM": 14.95,
+          "ridgeM": 17.08
+        },
+        {
+          "pandId": "0363100012169010",
+          "label": "88",
+          "widthM": 7.13,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            88
+          ],
+          "built": 1880,
+          "side": "even",
+          "heightM": 12.2,
+          "ridgeM": 17.58
+        },
+        {
+          "pandId": "0363100012175702",
+          "label": "84",
+          "widthM": 5.6,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            84
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 13.28,
+          "ridgeM": 14.59
+        },
+        {
+          "pandId": "0363100012175703",
+          "label": "82",
+          "widthM": 10.64,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            82
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 14.38,
+          "ridgeM": 15.88
+        },
+        {
+          "pandId": "0363100012175783",
+          "label": "80",
+          "widthM": 4.33,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            80
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 13.66,
+          "ridgeM": 13.8
+        },
+        {
+          "pandId": "0363100012175784",
+          "label": "76–78",
+          "widthM": 8.37,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            76,
+            78
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 9.9,
+          "ridgeM": 11.13
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-1-23": {
+      "title": "Herengracht 1-23 (odd side, 1645-1929)",
+      "members": [
+        {
+          "pandId": "0363100012175395",
+          "label": "1",
+          "widthM": 8.54,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            1
+          ],
+          "built": 1735,
+          "side": "odd",
+          "heightM": 16.44,
+          "ridgeM": 17.58
+        },
+        {
+          "pandId": "0363100012175393",
+          "label": "3",
+          "widthM": 5.96,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            3
+          ],
+          "built": 1889,
+          "side": "odd",
+          "heightM": 18.6
+        },
+        {
+          "pandId": "0363100012175377",
+          "label": "5",
+          "widthM": 5.83,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            5
+          ],
+          "built": 1645,
+          "side": "odd",
+          "heightM": 16.87,
+          "ridgeM": 18.8
+        },
+        {
+          "pandId": "0363100012175411",
+          "label": "7–9",
+          "widthM": 6.85,
+          "widthSource": "street wall (pickWall; no cut)",
+          "numbers": [
+            7,
+            9
+          ],
+          "built": 1760,
+          "side": "odd",
+          "heightM": 10.82,
+          "ridgeM": 12.36
+        },
+        {
+          "pandId": "0363100012175410",
+          "label": "13",
+          "widthM": 5.18,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            13
+          ],
+          "built": 1929,
+          "side": "odd",
+          "heightM": 13.09,
+          "ridgeM": 15.1
+        },
+        {
+          "pandId": "0363100012175397",
+          "label": "21",
+          "widthM": 4.98,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            21
+          ],
+          "built": 1690,
+          "side": "odd",
+          "heightM": 10.94,
+          "ridgeM": 12.35
+        },
+        {
+          "pandId": "0363100012175408",
+          "label": "23",
+          "widthM": 10.56,
+          "widthSource": "street wall (pickWall; no cut)",
+          "numbers": [
+            23
+          ],
+          "built": 1875,
+          "side": "odd",
+          "heightM": 11.18,
+          "ridgeM": 12.74
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-25-49": {
+      "title": "Herengracht 25-49 (odd side, 1625-1905)",
+      "members": [
+        {
+          "pandId": "0363100012175402",
+          "label": "25–29",
+          "widthM": 4.24,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            25,
+            29
+          ],
+          "built": 1896,
+          "side": "odd",
+          "heightM": 12.74,
+          "ridgeM": 14.22
+        },
+        {
+          "pandId": "0363100012175404",
+          "label": "27",
+          "widthM": 4.72,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            27
+          ],
+          "built": 1890,
+          "side": "odd",
+          "heightM": 13.44,
+          "ridgeM": 14.87
+        },
+        {
+          "pandId": "0363100012175403",
+          "label": "31",
+          "widthM": 4.72,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            31
+          ],
+          "built": 1638,
+          "side": "odd",
+          "heightM": 13.57,
+          "ridgeM": 14.66
+        },
+        {
+          "pandId": "0363100012175409",
+          "label": "33",
+          "widthM": 6.46,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            33
+          ],
+          "built": 1638,
+          "side": "odd",
+          "heightM": 13.2,
+          "ridgeM": 14.84
+        },
+        {
+          "pandId": "0363100012175407",
+          "label": "35",
+          "widthM": 9.13,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            35
+          ],
+          "built": 1720,
+          "side": "odd",
+          "heightM": 12.12,
+          "ridgeM": 13.09
+        },
+        {
+          "pandId": "0363100012168213",
+          "label": "37",
+          "widthM": 6.19,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            37
+          ],
+          "built": 1750,
+          "side": "odd",
+          "heightM": 19.06,
+          "ridgeM": 20.49
+        },
+        {
+          "pandId": "0363100012168210",
+          "label": "39",
+          "widthM": 5.9,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            39
+          ],
+          "built": 1773,
+          "side": "odd",
+          "heightM": 18.03,
+          "ridgeM": 19.28
+        },
+        {
+          "pandId": "0363100012175291",
+          "label": "41",
+          "widthM": 5.05,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            41
+          ],
+          "built": 1625,
+          "side": "odd",
+          "heightM": 12.21,
+          "ridgeM": 13.13
+        },
+        {
+          "pandId": "0363100012168212",
+          "label": "43–45",
+          "widthM": 11.83,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            43,
+            45
+          ],
+          "built": 1905,
+          "side": "odd",
+          "heightM": 12.06,
+          "ridgeM": 13.73
+        },
+        {
+          "pandId": "0363100012168211",
+          "label": "47",
+          "widthM": 5.54,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            47
+          ],
+          "built": 1875,
+          "side": "odd",
+          "heightM": 13.2,
+          "ridgeM": 13.92
+        },
+        {
+          "pandId": "0363100012168131",
+          "label": "49",
+          "widthM": 3.84,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            49
+          ],
+          "built": 1638,
+          "side": "odd",
+          "heightM": 16.89,
+          "ridgeM": 18.7
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-51-73": {
+      "title": "Herengracht 51-73 (odd side, 1632-1750)",
+      "members": [
+        {
+          "pandId": "0363100012168129",
+          "label": "51",
+          "widthM": 3.88,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            51
+          ],
+          "built": 1638,
+          "side": "odd",
+          "heightM": 16.04,
+          "ridgeM": 18.32
+        },
+        {
+          "pandId": "0363100012168130",
+          "label": "53",
+          "widthM": 3.68,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            53
+          ],
+          "built": 1663,
+          "side": "odd",
+          "heightM": 15.16,
+          "ridgeM": 17.17
+        },
+        {
+          "pandId": "0363100012169271",
+          "label": "55",
+          "widthM": 6.03,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            55
+          ],
+          "built": 1715,
+          "side": "odd",
+          "heightM": 15.46,
+          "ridgeM": 17.2
+        },
+        {
+          "pandId": "0363100012179673",
+          "label": "57",
+          "widthM": 4.46,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            57
+          ],
+          "built": 1730,
+          "side": "odd",
+          "heightM": 11.15
+        },
+        {
+          "pandId": "0363100012179748",
+          "label": "59",
+          "widthM": 3.42,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            59
+          ],
+          "built": 1659,
+          "side": "odd",
+          "heightM": 16.04,
+          "ridgeM": 17.91
+        },
+        {
+          "pandId": "0363100012179672",
+          "label": "61",
+          "widthM": 4.2,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            61
+          ],
+          "built": 1666,
+          "side": "odd",
+          "heightM": 14.87,
+          "ridgeM": 16.75
+        },
+        {
+          "pandId": "0363100012179683",
+          "label": "63",
+          "widthM": 4.24,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            63
+          ],
+          "built": 1666,
+          "side": "odd",
+          "heightM": 14.95,
+          "ridgeM": 20.7
+        },
+        {
+          "pandId": "0363100012179751",
+          "label": "65",
+          "widthM": 3.84,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            65
+          ],
+          "built": 1632,
+          "side": "odd",
+          "heightM": 15.9,
+          "ridgeM": 17.19
+        },
+        {
+          "pandId": "0363100012179750",
+          "label": "67",
+          "widthM": 3.91,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            67
+          ],
+          "built": 1632,
+          "side": "odd",
+          "heightM": 14.86,
+          "ridgeM": 15.99
+        },
+        {
+          "pandId": "0363100012179675",
+          "label": "69",
+          "widthM": 5.86,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            69
+          ],
+          "built": 1750,
+          "side": "odd",
+          "heightM": 12.53,
+          "ridgeM": 14.17
+        },
+        {
+          "pandId": "0363100012179682",
+          "label": "71",
+          "widthM": 5.57,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            71
+          ],
+          "built": 1720,
+          "side": "odd",
+          "heightM": 17.85,
+          "ridgeM": 19.3
+        },
+        {
+          "pandId": "0363100012179681",
+          "label": "73",
+          "widthM": 5.57,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            73
+          ],
+          "built": 1646,
+          "side": "odd",
+          "heightM": 19.05,
+          "ridgeM": 21.15
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-75-89": {
+      "title": "Herengracht 75-89 (odd side, 1625-1700)",
+      "members": [
+        {
+          "pandId": "0363100012179680",
+          "label": "75",
+          "widthM": 5.6,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            75
+          ],
+          "built": 1661,
+          "side": "odd",
+          "heightM": 15.4,
+          "ridgeM": 18.12
+        },
+        {
+          "pandId": "0363100012179749",
+          "label": "77",
+          "widthM": 6.7,
+          "widthSource": "street wall (pickWall; no cut)",
+          "numbers": [
+            77
+          ],
+          "built": 1630,
+          "side": "odd",
+          "heightM": 12.42,
+          "ridgeM": 13.7
+        },
+        {
+          "pandId": "0363100012168064",
+          "label": "79",
+          "widthM": 8.72,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            79
+          ],
+          "built": 1700,
+          "side": "odd",
+          "heightM": 11.9,
+          "ridgeM": 13.7
+        },
+        {
+          "pandId": "0363100012179665",
+          "label": "81",
+          "widthM": 5.73,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            81
+          ],
+          "built": 1626,
+          "side": "odd",
+          "heightM": 12.08,
+          "ridgeM": 13.65
+        },
+        {
+          "pandId": "0363100012179664",
+          "label": "83",
+          "widthM": 3.45,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            83
+          ],
+          "built": 1625,
+          "side": "odd",
+          "heightM": 13.98
+        },
+        {
+          "pandId": "0363100012179601",
+          "label": "85",
+          "widthM": 3.55,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            85
+          ],
+          "built": 1636,
+          "side": "odd",
+          "heightM": 14.11,
+          "ridgeM": 15.74
+        },
+        {
+          "pandId": "0363100012179594",
+          "label": "87",
+          "widthM": 3.19,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            87
+          ],
+          "built": 1667,
+          "side": "odd",
+          "heightM": 14.84,
+          "ridgeM": 16.86
+        },
+        {
+          "pandId": "0363100012180438",
+          "label": "89",
+          "widthM": 14.47,
+          "widthSource": "street wall (pickWall; no cut)",
+          "numbers": [
+            89
+          ],
+          "built": 1650,
+          "side": "odd",
+          "heightM": 13.88,
+          "ridgeM": 16.81
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-92-120": {
+      "title": "Herengracht 92-120 (even side, 1615-1905)",
+      "members": [
+        {
+          "pandId": "0363100012177278",
+          "label": "120",
+          "widthM": 9.28,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            120
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 16.44,
+          "ridgeM": 19.38
+        },
+        {
+          "pandId": "0363100012177280",
+          "label": "118",
+          "widthM": 5.67,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            118
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 18.49
+        },
+        {
+          "pandId": "0363100012169007",
+          "label": "108",
+          "widthM": 15.7,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            108
+          ],
+          "built": 1740,
+          "side": "even",
+          "heightM": 18.33
+        },
+        {
+          "pandId": "0363100012167711",
+          "label": "104",
+          "widthM": 8.53,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            104
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 19.98,
+          "ridgeM": 22.77
+        },
+        {
+          "pandId": "0363100012167712",
+          "label": "102",
+          "widthM": 4.59,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            102
+          ],
+          "built": 1620,
+          "side": "even",
+          "heightM": 20.45,
+          "ridgeM": 23.31
+        },
+        {
+          "pandId": "0363100012167710",
+          "label": "100",
+          "widthM": 8.5,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            100
+          ],
+          "built": 1620,
+          "side": "even",
+          "heightM": 14.69,
+          "ridgeM": 17.9
+        },
+        {
+          "pandId": "0363100012167713",
+          "label": "98",
+          "widthM": 5.64,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            98
+          ],
+          "built": 1743,
+          "side": "even",
+          "heightM": 20.84,
+          "ridgeM": 21.3
+        },
+        {
+          "pandId": "0363100012167714",
+          "label": "96B",
+          "widthM": 8.6,
+          "widthSource": "face herengracht-84-148-r1 strip span",
+          "numbers": [
+            96
+          ],
+          "built": 1660,
+          "side": "even",
+          "heightM": 18.78
+        },
+        {
+          "pandId": "0363100012175699",
+          "label": "94A",
+          "widthM": 6.6,
+          "widthSource": "face herengracht-84-148-r1 strip span",
+          "numbers": [
+            94
+          ],
+          "built": 1740,
+          "side": "even",
+          "heightM": 14.84
+        },
+        {
+          "pandId": "0363100012175700",
+          "label": "92",
+          "widthM": 6.6,
+          "widthSource": "face herengracht-84-148-r1 strip span",
+          "numbers": [
+            92
+          ],
+          "built": 1740,
+          "side": "even",
+          "heightM": 14.81,
+          "ridgeM": 17.22
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "face": "herengracht-84-148-r1",
+      "note": "canal belt as rows: the October face herengracht-84-148-r1 for its houses (96B, 94A, 92 added from it), the belt D1 tranche for the rest (belt-rows.ts)"
+    },
+    "herengracht-130-148": {
+      "title": "Herengracht 130-148 (even side, 1615-1905)",
+      "members": [
+        {
+          "pandId": "0363100012177010",
+          "label": "148",
+          "widthM": 4.33,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            148
+          ],
+          "built": 1710,
+          "side": "even",
+          "heightM": 11.64,
+          "ridgeM": 13.14
+        },
+        {
+          "pandId": "0363100012177017",
+          "label": "148",
+          "widthM": 9.28,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            148
+          ],
+          "built": 1900,
+          "side": "even",
+          "heightM": 19.21
+        },
+        {
+          "pandId": "0363100012177018",
+          "label": "146",
+          "widthM": 4.37,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            146
+          ],
+          "built": 1770,
+          "side": "even",
+          "heightM": 14.06,
+          "ridgeM": 15.36
+        },
+        {
+          "pandId": "0363100012177019",
+          "label": "144",
+          "widthM": 4.33,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            144
+          ],
+          "built": 1772,
+          "side": "even",
+          "heightM": 14.11
+        },
+        {
+          "pandId": "0363100012177020",
+          "label": "142",
+          "widthM": 4.3,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            142
+          ],
+          "built": 1710,
+          "side": "even",
+          "heightM": 16.71
+        },
+        {
+          "pandId": "0363100012177210",
+          "label": "140",
+          "widthM": 4.27,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            140
+          ],
+          "built": 1710,
+          "side": "even",
+          "heightM": 12.76,
+          "ridgeM": 13.9
+        },
+        {
+          "pandId": "0363100012570910",
+          "label": "140",
+          "widthM": 4.2,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            140
+          ],
+          "built": 1890,
+          "side": "even",
+          "heightM": 12.91,
+          "ridgeM": 15.32
+        },
+        {
+          "pandId": "0363100012177211",
+          "label": "136",
+          "widthM": 3.97,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            136
+          ],
+          "built": 1618,
+          "side": "even",
+          "heightM": 15.4,
+          "ridgeM": 17.22
+        },
+        {
+          "pandId": "0363100012176938",
+          "label": "134",
+          "widthM": 6.48,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            134
+          ],
+          "built": 1618,
+          "side": "even",
+          "heightM": 12.32,
+          "ridgeM": 17.6
+        },
+        {
+          "pandId": "0363100012177007",
+          "label": "132",
+          "widthM": 12.97,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            132
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 21.91,
+          "ridgeM": 22.19
+        },
+        {
+          "pandId": "0363100012177006",
+          "label": "130",
+          "widthM": 13.71,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            130
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 16.34,
+          "ridgeM": 17.85
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-150-166": {
+      "title": "Herengracht 150-166 (even side, 1618-1910)",
+      "members": [
+        {
+          "pandId": "0363100012176357",
+          "label": "166",
+          "widthM": 8.53,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            166
+          ],
+          "built": 1725,
+          "side": "even",
+          "heightM": 14.88,
+          "ridgeM": 17.86
+        },
+        {
+          "pandId": "0363100012176358",
+          "label": "164",
+          "widthM": 10.91,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            164
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 17.13
+        },
+        {
+          "pandId": "0363100012167646",
+          "label": "162",
+          "widthM": 7.39,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            162
+          ],
+          "built": 1765,
+          "side": "even",
+          "heightM": 16.55,
+          "ridgeM": 18.22
+        },
+        {
+          "pandId": "0363100012167645",
+          "label": "158",
+          "widthM": 8.6,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            158
+          ],
+          "built": 1618,
+          "side": "even",
+          "heightM": 14.77,
+          "ridgeM": 16.95
+        },
+        {
+          "pandId": "0363100012167659",
+          "label": "156",
+          "widthM": 4.3,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            156
+          ],
+          "built": 1618,
+          "side": "even",
+          "heightM": 17.43,
+          "ridgeM": 19.17
+        },
+        {
+          "pandId": "0363100012176313",
+          "label": "154",
+          "widthM": 4.37,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            154
+          ],
+          "built": 1910,
+          "side": "even",
+          "heightM": 14.6
+        },
+        {
+          "pandId": "0363100012176314",
+          "label": "150–152",
+          "widthM": 10.46,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            150,
+            152
+          ],
+          "built": 1750,
+          "side": "even",
+          "heightM": 12.24
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-168-198": {
+      "title": "Herengracht 168-198 (even side, 1615-1897)",
+      "members": [
+        {
+          "pandId": "0363100012177550",
+          "label": "198",
+          "widthM": 8.73,
+          "widthSource": "BAG area / 15 m (no cut)",
+          "numbers": [
+            198
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 7.74,
+          "ridgeM": 8.82
+        },
+        {
+          "pandId": "0363100012164993",
+          "label": "196–202",
+          "widthM": 16.88,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            196,
+            200,
+            202
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 15.5,
+          "ridgeM": 18.21
+        },
+        {
+          "pandId": "0363100012177484",
+          "label": "184",
+          "widthM": 8.03,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            184
+          ],
+          "built": 1897,
+          "side": "even",
+          "heightM": 21.12,
+          "ridgeM": 22.4
+        },
+        {
+          "pandId": "0363100012176353",
+          "label": "174",
+          "widthM": 8.25,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            174
+          ],
+          "built": 1800,
+          "side": "even",
+          "heightM": 16.07,
+          "ridgeM": 17.68
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-91-123": {
+      "title": "Herengracht 91-123 (odd side, 1635-1902)",
+      "members": [
+        {
+          "pandId": "0363100012180437",
+          "label": "91",
+          "widthM": 5.11,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            91
+          ],
+          "built": 1657,
+          "side": "odd",
+          "heightM": 15.8,
+          "ridgeM": 17
+        },
+        {
+          "pandId": "0363100012179049",
+          "label": "93–95",
+          "widthM": 12,
+          "widthSource": "BAG area / 15 m (no cut)",
+          "numbers": [
+            93,
+            95
+          ],
+          "built": 1750,
+          "side": "odd",
+          "heightM": 13.89,
+          "ridgeM": 17.15
+        },
+        {
+          "pandId": "0363100012179050",
+          "label": "97",
+          "widthM": 6.38,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            97
+          ],
+          "built": 1860,
+          "side": "odd",
+          "heightM": 17.1,
+          "ridgeM": 18.32
+        },
+        {
+          "pandId": "0363100012179048",
+          "label": "101",
+          "widthM": 5.31,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            101
+          ],
+          "built": 1870,
+          "side": "odd",
+          "heightM": 13.76
+        },
+        {
+          "pandId": "0363100012179051",
+          "label": "103",
+          "widthM": 3.91,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            103
+          ],
+          "built": 1870,
+          "side": "odd",
+          "heightM": 15.61,
+          "ridgeM": 16.26
+        },
+        {
+          "pandId": "0363100012168543",
+          "label": "109",
+          "widthM": 13,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            109
+          ],
+          "built": 1775,
+          "side": "odd",
+          "heightM": 12.42,
+          "ridgeM": 14.86
+        },
+        {
+          "pandId": "0363100012176272",
+          "label": "111",
+          "widthM": 11.01,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            111
+          ],
+          "built": 1635,
+          "side": "odd",
+          "heightM": 13.59,
+          "ridgeM": 15
+        },
+        {
+          "pandId": "0363100012176273",
+          "label": "113",
+          "widthM": 6.38,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            113
+          ],
+          "built": 1902,
+          "side": "odd",
+          "heightM": 17.18
+        },
+        {
+          "pandId": "0363100012253804",
+          "evidencePandId": "0363100012169011",
+          "label": "115",
+          "widthM": 10.35,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            115
+          ],
+          "built": 1890,
+          "side": "odd",
+          "heightM": 12.93
+        },
+        {
+          "pandId": "0363100012176275",
+          "label": "119",
+          "widthM": 14.79,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            119
+          ],
+          "built": 1870,
+          "side": "odd",
+          "heightM": 16.84,
+          "ridgeM": 18.68
+        },
+        {
+          "pandId": "0363100012175038",
+          "label": "121–123",
+          "widthM": 6.84,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            121,
+            123
+          ],
+          "built": 1870,
+          "side": "odd",
+          "heightM": 19.1
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "twinNote": "Herengracht 115: the member is the world's pand 0363100012253804 (same footprint, taller; the world drops the D1 pand 0363100012169011); its cut and read stay filed under 0363100012169011",
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-125-161": {
+      "title": "Herengracht 125-161 (odd side, 1635-1924)",
+      "members": [
+        {
+          "pandId": "0363100012175039",
+          "label": "125",
+          "widthM": 6.22,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            125
+          ],
+          "built": 1635,
+          "side": "odd",
+          "heightM": 14.51
+        },
+        {
+          "pandId": "0363100012175037",
+          "label": "127",
+          "widthM": 14.11,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            127
+          ],
+          "built": 1642,
+          "side": "odd",
+          "heightM": 18.04,
+          "ridgeM": 18.85
+        },
+        {
+          "pandId": "0363100012167686",
+          "label": "129",
+          "widthM": 4.98,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            129
+          ],
+          "built": 1715,
+          "side": "odd",
+          "heightM": 14.61
+        },
+        {
+          "pandId": "0363100012167682",
+          "label": "131",
+          "widthM": 9.41,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            131
+          ],
+          "built": 1760,
+          "side": "odd",
+          "heightM": 10.14,
+          "ridgeM": 11.14
+        },
+        {
+          "pandId": "0363100012176003",
+          "label": "133",
+          "widthM": 13.02,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            133
+          ],
+          "built": 1924,
+          "side": "odd",
+          "heightM": 15.42
+        },
+        {
+          "pandId": "0363100012176094",
+          "label": "135",
+          "widthM": 6.19,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            135
+          ],
+          "built": 1648,
+          "side": "odd",
+          "heightM": 15.19,
+          "ridgeM": 17.55
+        },
+        {
+          "pandId": "0363100012176005",
+          "label": "147",
+          "widthM": 4.2,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            147
+          ],
+          "built": 1644,
+          "side": "odd",
+          "heightM": 16.9
+        },
+        {
+          "pandId": "0363100012167683",
+          "label": "155",
+          "widthM": 6.48,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            155
+          ],
+          "built": 1760,
+          "side": "odd",
+          "heightM": 17.66,
+          "ridgeM": 19.15
+        },
+        {
+          "pandId": "0363100012167681",
+          "label": "157",
+          "widthM": 6.03,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            157
+          ],
+          "built": 1725,
+          "side": "odd",
+          "heightM": 16.89,
+          "ridgeM": 17.91
+        },
+        {
+          "pandId": "0363100012167680",
+          "label": "159",
+          "widthM": 5.57,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            159
+          ],
+          "built": 1645,
+          "side": "odd",
+          "heightM": 14.81,
+          "ridgeM": 15.55
+        },
+        {
+          "pandId": "0363100012167679",
+          "label": "161",
+          "widthM": 5.99,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            161
+          ],
+          "built": 1750,
+          "side": "odd",
+          "heightM": 14.79,
+          "ridgeM": 16.91
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-163-177": {
+      "title": "Herengracht 163-177 (odd side, 1620-1910)",
+      "members": [
+        {
+          "pandId": "0363100012167668",
+          "label": "163",
+          "widthM": 5.34,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            163
+          ],
+          "built": 1650,
+          "side": "odd",
+          "heightM": 11.35,
+          "ridgeM": 12.74
+        },
+        {
+          "pandId": "0363100012167660",
+          "label": "165",
+          "widthM": 5.9,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            165
+          ],
+          "built": 1760,
+          "side": "odd",
+          "heightM": 16.67,
+          "ridgeM": 18.49
+        },
+        {
+          "pandId": "0363100012176939",
+          "label": "167",
+          "widthM": 5.73,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            167
+          ],
+          "built": 1910,
+          "side": "odd",
+          "heightM": 14.02
+        },
+        {
+          "pandId": "0363100012167669",
+          "label": "169",
+          "widthM": 7.29,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            169
+          ],
+          "built": 1620,
+          "side": "odd",
+          "heightM": 14.49
+        },
+        {
+          "pandId": "0363100012176316",
+          "label": "169",
+          "widthM": 14.67,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            169
+          ],
+          "built": 1905,
+          "side": "odd",
+          "heightM": 18.06
+        },
+        {
+          "pandId": "0363100012176317",
+          "label": "171",
+          "widthM": 3.81,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            171
+          ],
+          "built": 1627,
+          "side": "odd",
+          "heightM": 15.5,
+          "ridgeM": 16.57
+        },
+        {
+          "pandId": "0363100012176937",
+          "label": "173",
+          "widthM": 3.78,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            173
+          ],
+          "built": 1627,
+          "side": "odd",
+          "heightM": 17.04,
+          "ridgeM": 18.8
+        },
+        {
+          "pandId": "0363100012176826",
+          "label": "175",
+          "widthM": 5.57,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            175
+          ],
+          "built": 1657,
+          "side": "odd",
+          "heightM": 15.47,
+          "ridgeM": 17.31
+        },
+        {
+          "pandId": "0363100012176825",
+          "label": "177",
+          "widthM": 5.38,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            177
+          ],
+          "built": 1633,
+          "side": "odd",
+          "heightM": 14.2,
+          "ridgeM": 15.8
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-179-215": {
+      "title": "Herengracht 179-215 (odd side, 1618-1917)",
+      "members": [
+        {
+          "pandId": "0363100012167636",
+          "label": "201",
+          "widthM": 16.93,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            201
+          ],
+          "built": 1917,
+          "side": "odd",
+          "heightM": 21.18,
+          "ridgeM": 23.55
+        },
+        {
+          "pandId": "0363100012167634",
+          "label": "203",
+          "widthM": 8.48,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            203
+          ],
+          "built": 1618,
+          "side": "odd",
+          "heightM": 14.64,
+          "ridgeM": 17.59
+        },
+        {
+          "pandId": "0363100012176310",
+          "label": "209",
+          "widthM": 6.03,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            209
+          ],
+          "built": 1639,
+          "side": "odd",
+          "heightM": 17.03
+        },
+        {
+          "pandId": "0363100012177523",
+          "label": "211",
+          "widthM": 5.7,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            211
+          ],
+          "built": 1700,
+          "side": "odd",
+          "heightM": 14.96,
+          "ridgeM": 16.05
+        },
+        {
+          "pandId": "0363100012177524",
+          "label": "215",
+          "widthM": 6.25,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            215
+          ],
+          "built": 1910,
+          "side": "odd",
+          "heightM": 15.76
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-218-236": {
+      "title": "Herengracht 218-236 (even side, 1625-1905)",
+      "members": [
+        {
+          "pandId": "0363100012177225",
+          "label": "234",
+          "widthM": 6.07,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            234
+          ],
+          "built": 1890,
+          "side": "even",
+          "heightM": 15.9,
+          "ridgeM": 16.29
+        },
+        {
+          "pandId": "0363100012177483",
+          "label": "232",
+          "widthM": 3.68,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            232
+          ],
+          "built": 1740,
+          "side": "even",
+          "heightM": 14.93,
+          "ridgeM": 15.74
+        },
+        {
+          "pandId": "0363100012177477",
+          "label": "228",
+          "widthM": 3.55,
+          "widthSource": "street wall (pickWall; no cut)",
+          "numbers": [
+            228
+          ],
+          "built": 1760,
+          "side": "even",
+          "heightM": 13.22,
+          "ridgeM": 15.51
+        },
+        {
+          "pandId": "0363100012177478",
+          "label": "226",
+          "widthM": 4.24,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            226
+          ],
+          "built": 1760,
+          "side": "even",
+          "heightM": 14.19,
+          "ridgeM": 15.13
+        },
+        {
+          "pandId": "0363100012177479",
+          "label": "224",
+          "widthM": 4.34,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            224
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 13.29
+        },
+        {
+          "pandId": "0363100012177480",
+          "label": "222",
+          "widthM": 4.34,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            222
+          ],
+          "built": 1680,
+          "side": "even",
+          "heightM": 12.68,
+          "ridgeM": 13.81
+        },
+        {
+          "pandId": "0363100012177218",
+          "label": "218–220",
+          "widthM": 11.05,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            218,
+            220
+          ],
+          "built": 1625,
+          "side": "even",
+          "heightM": 13.12,
+          "ridgeM": 15.63
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "innerNote": "Herengracht 236 (0363100012177481) has no exposed wall: an inner or back house behind its neighbours, so not a member; Herengracht 230 (0363100012177217) has no exposed wall: an inner or back house behind its neighbours, so not a member",
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-238-256": {
+      "title": "Herengracht 238-256 (even side, 1615-1930)",
+      "members": [
+        {
+          "pandId": "0363100012176861",
+          "label": "256",
+          "widthM": 5.45,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            256
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 18.95
+        },
+        {
+          "pandId": "0363100012177151",
+          "label": "254",
+          "widthM": 5.8,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            254
+          ],
+          "built": 1615,
+          "side": "even",
+          "heightM": 18.83,
+          "ridgeM": 21.69
+        },
+        {
+          "pandId": "0363100012176863",
+          "label": "252",
+          "widthM": 5.43,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            252
+          ],
+          "built": 1730,
+          "side": "even",
+          "heightM": 16.83
+        },
+        {
+          "pandId": "0363100012176864",
+          "label": "250",
+          "widthM": 5.73,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            250
+          ],
+          "built": 1730,
+          "side": "even",
+          "heightM": 17.7,
+          "ridgeM": 19.79
+        },
+        {
+          "pandId": "0363100012176851",
+          "label": "248",
+          "widthM": 8.58,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            248
+          ],
+          "built": 1886,
+          "side": "even",
+          "heightM": 16.61
+        },
+        {
+          "pandId": "0363100012176852",
+          "label": "244",
+          "widthM": 11.26,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            244
+          ],
+          "built": 1930,
+          "side": "even",
+          "heightM": 20.36
+        },
+        {
+          "pandId": "0363100012164991",
+          "label": "242",
+          "widthM": 5.8,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            242
+          ],
+          "built": 1770,
+          "side": "even",
+          "heightM": 11.99,
+          "ridgeM": 14.03
+        },
+        {
+          "pandId": "0363100012177222",
+          "label": "240",
+          "widthM": 4.34,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            240
+          ],
+          "built": 1914,
+          "side": "even",
+          "heightM": 12.8
+        },
+        {
+          "pandId": "0363100012177223",
+          "label": "238",
+          "widthM": 4.24,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            238
+          ],
+          "built": 1900,
+          "side": "even",
+          "heightM": 11.2
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-268-286": {
+      "title": "Herengracht 268-286 (even side, 1620-1922)",
+      "members": [
+        {
+          "pandId": "0363100012176731",
+          "label": "286",
+          "widthM": 7.58,
+          "widthSource": "street wall (pickWall; no cut)",
+          "numbers": [
+            286
+          ],
+          "built": 1922,
+          "side": "even",
+          "heightM": 20.26,
+          "ridgeM": 24.39
+        },
+        {
+          "pandId": "0363100012176734",
+          "label": "282",
+          "widthM": 8.8,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            282
+          ],
+          "built": 1620,
+          "side": "even",
+          "heightM": 16.04,
+          "ridgeM": 18.1
+        },
+        {
+          "pandId": "0363100012176846",
+          "label": "280",
+          "widthM": 5.56,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            280
+          ],
+          "built": 1720,
+          "side": "even",
+          "heightM": 17.22,
+          "ridgeM": 19.89
+        },
+        {
+          "pandId": "0363100012176736",
+          "label": "276",
+          "widthM": 5.68,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            276
+          ],
+          "built": 1725,
+          "side": "even",
+          "heightM": 15.27,
+          "ridgeM": 16.5
+        },
+        {
+          "pandId": "0363100012176674",
+          "label": "274",
+          "widthM": 5.68,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            274
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 18.72
+        },
+        {
+          "pandId": "0363100012176337",
+          "label": "272",
+          "widthM": 5.91,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            272
+          ],
+          "built": 1620,
+          "side": "even",
+          "heightM": 15.53,
+          "ridgeM": 18.14
+        },
+        {
+          "pandId": "0363100012164989",
+          "label": "270",
+          "widthM": 13.37,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            270
+          ],
+          "built": 1771,
+          "side": "even",
+          "heightM": 20.87
+        },
+        {
+          "pandId": "0363100012176862",
+          "label": "268",
+          "widthM": 5.01,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            268
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 14.83
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-292-310": {
+      "title": "Herengracht 292-310 (even side, 1620-1905)",
+      "members": [
+        {
+          "pandId": "0363100012185772",
+          "label": "310",
+          "widthM": 6.36,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            310
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 14.39,
+          "ridgeM": 15.99
+        },
+        {
+          "pandId": "0363100012176664",
+          "label": "308",
+          "widthM": 4.8,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            308
+          ],
+          "built": 1740,
+          "side": "even",
+          "heightM": 11.77,
+          "ridgeM": 13.6
+        },
+        {
+          "pandId": "0363100012176663",
+          "label": "306",
+          "widthM": 5.58,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            306
+          ],
+          "built": 1620,
+          "side": "even",
+          "heightM": 13.64,
+          "ridgeM": 15.47
+        },
+        {
+          "pandId": "0363100012176660",
+          "label": "304",
+          "widthM": 3.12,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            304
+          ],
+          "built": 1870,
+          "side": "even",
+          "heightM": 12.58
+        },
+        {
+          "pandId": "0363100012176661",
+          "label": "302",
+          "widthM": 4.01,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            302
+          ],
+          "built": 1890,
+          "side": "even",
+          "heightM": 17.71,
+          "ridgeM": 17.85
+        },
+        {
+          "pandId": "0363100012169024",
+          "label": "300",
+          "widthM": 5.32,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            300
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 11.73
+        },
+        {
+          "pandId": "0363100012176728",
+          "label": "298",
+          "widthM": 10.58,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            298
+          ],
+          "built": 1740,
+          "side": "even",
+          "heightM": 16.46,
+          "ridgeM": 16.7
+        },
+        {
+          "pandId": "0363100012176724",
+          "label": "296",
+          "widthM": 4.35,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            296
+          ],
+          "built": 1735,
+          "side": "even",
+          "heightM": 13.67,
+          "ridgeM": 14.57
+        },
+        {
+          "pandId": "0363100012176722",
+          "label": "294",
+          "widthM": 4.35,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            294
+          ],
+          "built": 1739,
+          "side": "even",
+          "heightM": 12.95,
+          "ridgeM": 14.38
+        },
+        {
+          "pandId": "0363100012176723",
+          "label": "292",
+          "widthM": 4.24,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            292
+          ],
+          "built": 1620,
+          "side": "even",
+          "heightM": 13.53
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-219-237": {
+      "title": "Herengracht 219-237 (odd side, 1619-1881)",
+      "members": [
+        {
+          "pandId": "0363100012167629",
+          "label": "219",
+          "widthM": 5.47,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            219
+          ],
+          "built": 1683,
+          "side": "odd",
+          "heightM": 13.29,
+          "ridgeM": 15.3
+        },
+        {
+          "pandId": "0363100012167628",
+          "label": "221",
+          "widthM": 5.13,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            221
+          ],
+          "built": 1619,
+          "side": "odd",
+          "heightM": 13.92,
+          "ridgeM": 15.11
+        },
+        {
+          "pandId": "0363100012177511",
+          "label": "223–225",
+          "widthM": 8.15,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            223,
+            225
+          ],
+          "built": 1620,
+          "side": "odd",
+          "heightM": 15.52
+        },
+        {
+          "pandId": "0363100012177186",
+          "label": "227",
+          "widthM": 6.03,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            227
+          ],
+          "built": 1684,
+          "side": "odd",
+          "heightM": 16.84,
+          "ridgeM": 18.38
+        },
+        {
+          "pandId": "0363100012177364",
+          "label": "235",
+          "widthM": 3.12,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            235
+          ],
+          "built": 1650,
+          "side": "odd",
+          "heightM": 14.07,
+          "ridgeM": 16.47
+        },
+        {
+          "pandId": "0363100012177191",
+          "label": "237",
+          "widthM": 11.39,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            237
+          ],
+          "built": 1881,
+          "side": "odd",
+          "heightM": 19.36,
+          "ridgeM": 20.12
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-253-269": {
+      "title": "Herengracht 253-269 (odd side, 1648-1905)",
+      "members": [
+        {
+          "pandId": "0363100012177243",
+          "label": "253",
+          "widthM": 3.02,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            253
+          ],
+          "built": 1648,
+          "side": "odd",
+          "heightM": 17.43,
+          "ridgeM": 19.15
+        },
+        {
+          "pandId": "0363100012177176",
+          "label": "255",
+          "widthM": 8.61,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            255
+          ],
+          "built": 1894,
+          "side": "odd",
+          "heightM": 18.82
+        },
+        {
+          "pandId": "0363100012177168",
+          "label": "263",
+          "widthM": 5.91,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            263
+          ],
+          "built": 1905,
+          "side": "odd",
+          "heightM": 11.5,
+          "ridgeM": 13.25
+        },
+        {
+          "pandId": "0363100012177180",
+          "label": "267",
+          "widthM": 6.37,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            267
+          ],
+          "built": 1905,
+          "side": "odd",
+          "heightM": 22.87,
+          "ridgeM": 24.71
+        },
+        {
+          "pandId": "0363100012177175",
+          "label": "269",
+          "widthM": 3.45,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            269
+          ],
+          "built": 1656,
+          "side": "odd",
+          "heightM": 14.72,
+          "ridgeM": 16.58
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-275-291": {
+      "title": "Herengracht 275-291 (odd side, 1624-1928)",
+      "members": [
+        {
+          "pandId": "0363100012177174",
+          "label": "275",
+          "widthM": 6.65,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            275
+          ],
+          "built": 1678,
+          "side": "odd",
+          "heightM": 13.3,
+          "ridgeM": 14.44
+        },
+        {
+          "pandId": "0363100012176327",
+          "label": "279",
+          "widthM": 4.9,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            279
+          ],
+          "built": 1624,
+          "side": "odd",
+          "heightM": 16.49,
+          "ridgeM": 17.69
+        },
+        {
+          "pandId": "0363100012176326",
+          "label": "281",
+          "widthM": 6.12,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            281
+          ],
+          "built": 1661,
+          "side": "odd",
+          "heightM": 16.29,
+          "ridgeM": 18.07
+        },
+        {
+          "pandId": "0363100012176325",
+          "label": "283",
+          "widthM": 6.13,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            283
+          ],
+          "built": 1905,
+          "side": "odd",
+          "heightM": 16.61,
+          "ridgeM": 18.14
+        },
+        {
+          "pandId": "0363100012176335",
+          "label": "285",
+          "widthM": 4.9,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            285
+          ],
+          "built": 1928,
+          "side": "odd",
+          "heightM": 13.38,
+          "ridgeM": 14.82
+        },
+        {
+          "pandId": "0363100012176334",
+          "label": "287",
+          "widthM": 5.57,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            287
+          ],
+          "built": 1645,
+          "side": "odd",
+          "heightM": 14.79,
+          "ridgeM": 16.29
+        },
+        {
+          "pandId": "0363100012176332",
+          "label": "289",
+          "widthM": 5.46,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            289
+          ],
+          "built": 1880,
+          "side": "odd",
+          "heightM": 16.94
+        },
+        {
+          "pandId": "0363100012176324",
+          "label": "291",
+          "widthM": 5.8,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            291
+          ],
+          "built": 1920,
+          "side": "odd",
+          "heightM": 16.31,
+          "ridgeM": 17.41
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-312-332": {
+      "title": "Herengracht 312-332 (even side, 1620-1920)",
+      "members": [
+        {
+          "pandId": "0363100012176671",
+          "label": "332–336",
+          "widthM": 17.22,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            332,
+            334,
+            336
+          ],
+          "built": 1620,
+          "side": "even",
+          "heightM": 15.47
+        },
+        {
+          "pandId": "0363100012176669",
+          "label": "328",
+          "widthM": 4.57,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            328
+          ],
+          "built": 1740,
+          "side": "even",
+          "heightM": 14.67,
+          "ridgeM": 16.57
+        },
+        {
+          "pandId": "0363100012176670",
+          "label": "326",
+          "widthM": 5.46,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            326
+          ],
+          "built": 1700,
+          "side": "even",
+          "heightM": 15.58,
+          "ridgeM": 16.82
+        },
+        {
+          "pandId": "0363100012176673",
+          "label": "320–324",
+          "widthM": 15.6,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            320,
+            324
+          ],
+          "built": 1920,
+          "side": "even",
+          "heightM": 16.88
+        },
+        {
+          "pandId": "0363100012176668",
+          "label": "318",
+          "widthM": 5.13,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            318
+          ],
+          "built": 1905,
+          "side": "even",
+          "heightM": 14.83
+        },
+        {
+          "pandId": "0363100012176667",
+          "label": "316",
+          "widthM": 5.24,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            316
+          ],
+          "built": 1760,
+          "side": "even",
+          "heightM": 14.32,
+          "ridgeM": 16.22
+        },
+        {
+          "pandId": "0363100012176666",
+          "label": "314",
+          "widthM": 6.46,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            314
+          ],
+          "built": 1725,
+          "side": "even",
+          "heightM": 14.78,
+          "ridgeM": 15.89
+        },
+        {
+          "pandId": "0363100012176672",
+          "label": "312",
+          "widthM": 6.35,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            312
+          ],
+          "built": 1785,
+          "side": "even",
+          "heightM": 17.12,
+          "ridgeM": 18.13
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-313-333": {
+      "title": "Herengracht 313-333 (odd side, 1638-1905)",
+      "members": [
+        {
+          "pandId": "0363100012172046",
+          "label": "313",
+          "widthM": 3.01,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            313
+          ],
+          "built": 1810,
+          "side": "odd",
+          "heightM": 13.47
+        },
+        {
+          "pandId": "0363100012172045",
+          "label": "315",
+          "widthM": 3.23,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            315
+          ],
+          "built": 1638,
+          "side": "odd",
+          "heightM": 13.28,
+          "ridgeM": 13.46
+        },
+        {
+          "pandId": "0363100012172044",
+          "label": "319",
+          "widthM": 3.9,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            319
+          ],
+          "built": 1889,
+          "side": "odd",
+          "heightM": 9.1,
+          "ridgeM": 12.58
+        },
+        {
+          "pandId": "0363100012171900",
+          "label": "325",
+          "widthM": 6.02,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            325
+          ],
+          "built": 1905,
+          "side": "odd",
+          "heightM": 16.39,
+          "ridgeM": 17.14
+        },
+        {
+          "pandId": "0363100012171899",
+          "label": "327",
+          "widthM": 5.36,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            327
+          ],
+          "built": 1650,
+          "side": "odd",
+          "heightM": 13.81,
+          "ridgeM": 14.78
+        },
+        {
+          "pandId": "0363100012171898",
+          "label": "329",
+          "widthM": 6.34,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            329
+          ],
+          "built": 1662,
+          "side": "odd",
+          "heightM": 14.05,
+          "ridgeM": 15.66
+        },
+        {
+          "pandId": "0363100012171897",
+          "label": "331",
+          "widthM": 6.02,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            331
+          ],
+          "built": 1750,
+          "side": "odd",
+          "heightM": 16.14,
+          "ridgeM": 17.44
+        },
+        {
+          "pandId": "0363100012171896",
+          "label": "333",
+          "widthM": 4.68,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            333
+          ],
+          "built": 1890,
+          "side": "odd",
+          "heightM": 15.03
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-335-361": {
+      "title": "Herengracht 335-361 (odd side, 1629-1910)",
+      "members": [
+        {
+          "pandId": "0363100012171894",
+          "label": "335",
+          "widthM": 8.24,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            335
+          ],
+          "built": 1648,
+          "side": "odd",
+          "heightM": 16.65
+        },
+        {
+          "pandId": "0363100012172047",
+          "label": "341",
+          "widthM": 9.69,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            341
+          ],
+          "built": 1650,
+          "side": "odd",
+          "heightM": 15.56
+        },
+        {
+          "pandId": "0363100012176602",
+          "label": "355",
+          "widthM": 5.35,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            355
+          ],
+          "built": 1629,
+          "side": "odd",
+          "heightM": 15.97,
+          "ridgeM": 17.13
+        },
+        {
+          "pandId": "0363100012171892",
+          "label": "357",
+          "widthM": 5.24,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            357
+          ],
+          "built": 1910,
+          "side": "odd",
+          "heightM": 15.84
+        },
+        {
+          "pandId": "0363100012171891",
+          "label": "359",
+          "widthM": 4.9,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            359
+          ],
+          "built": 1637,
+          "side": "odd",
+          "heightM": 15.16,
+          "ridgeM": 16.24
+        },
+        {
+          "pandId": "0363100012176590",
+          "label": "361",
+          "widthM": 5.24,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            361
+          ],
+          "built": 1655,
+          "side": "odd",
+          "heightM": 12.13,
+          "ridgeM": 13.19
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
+    },
+    "herengracht-363-377": {
+      "title": "Herengracht 363-377 (odd side, 1623-1905)",
+      "members": [
+        {
+          "pandId": "0363100012169709",
+          "label": "363",
+          "widthM": 4.68,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            363
+          ],
+          "built": 1623,
+          "side": "odd",
+          "heightM": 12.48,
+          "ridgeM": 13.51
+        },
+        {
+          "pandId": "0363100012176589",
+          "label": "365",
+          "widthM": 3.79,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            365
+          ],
+          "built": 1623,
+          "side": "odd",
+          "heightM": 10.56,
+          "ridgeM": 11.34
+        },
+        {
+          "pandId": "0363100012176598",
+          "label": "367",
+          "widthM": 4.12,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            367
+          ],
+          "built": 1641,
+          "side": "odd",
+          "heightM": 14.32,
+          "ridgeM": 15.28
+        },
+        {
+          "pandId": "0363100012176597",
+          "label": "369",
+          "widthM": 7.59,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            369
+          ],
+          "built": 1735,
+          "side": "odd",
+          "heightM": 15.03,
+          "ridgeM": 16.16
+        },
+        {
+          "pandId": "0363100012171736",
+          "label": "373",
+          "widthM": 5.57,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            373
+          ],
+          "built": 1880,
+          "side": "odd",
+          "heightM": 15.92
+        },
+        {
+          "pandId": "0363100012171735",
+          "label": "375",
+          "widthM": 5.23,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            375
+          ],
+          "built": 1880,
+          "side": "odd",
+          "heightM": 16.74
+        },
+        {
+          "pandId": "0363100012171734",
+          "label": "377",
+          "widthM": 6.68,
+          "widthSource": "cut wall segment",
+          "numbers": [
+            377
+          ],
+          "built": 1905,
+          "side": "odd",
+          "heightM": 15.76
+        }
+      ],
+      "cuts": "belt-20261114/cuts",
+      "answers": "belt-20261114/answers-kept",
+      "staged": "staged-belt-20261114",
+      "wallFromCuts": true,
+      "canalWindows": true,
+      "note": "canal belt as rows: no block-face intent; members, widths and years from the belt D1 tranche (belt-rows.ts)"
     }
-  }
+  },
+  "d1RootNote": "2026-11-15: the d1-tranche-ring worktree was pruned by the sweep. This root holds ring-20261114/answers restored from lane/d1-tranche-ring-20261114 (git), the ring cut jpgs the prune staged, staged-ring from _pruned-sheets/d1-ring-20261114, and links to the belt tranche worktree for the street, ah07 and belt dirs. The ring cuts.json (capture dates, cut wall heights) was not tracked and is lost."
 }

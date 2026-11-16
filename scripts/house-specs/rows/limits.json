@@ -93,5 +93,451 @@
       "what": "the souterrain windows are round-arched (D1 gap: 'two barred arched windows'); the record states basement windows and rustication, not their arch",
       "ref": "integrator, blind review 6 (2026-11-14)"
     }
+  ],
+  "kinkerstraat-31-49": [
+    {
+      "fronts": [
+        "0363100012160646",
+        "0363100012155369",
+        "0363100012160073",
+        "0363100012160074"
+      ],
+      "component": "roof",
+      "what": "the face reads red-tile saddle roofs hipped down behind the cornice (orthophoto); the strip shows only the tile edge, so the drawn mansard face is taller than what shows from the street",
+      "ref": "scripts/block-face/faces/kinker-31-49/intent.json roof evidence"
+    },
+    {
+      "fronts": [
+        "0363100012167106",
+        "0363100012159384",
+        "0363100012154359",
+        "0363100012161457"
+      ],
+      "component": "roof",
+      "what": "41-47 roof material is unstated; drawn slate (series default) beside red tile on 33-39",
+      "ref": "lane D round 2"
+    },
+    {
+      "fronts": [
+        "0363100012160646",
+        "0363100012155369",
+        "0363100012160073",
+        "0363100012160074",
+        "0363100012167106",
+        "0363100012159384",
+        "0363100012154359",
+        "0363100012161457"
+      ],
+      "component": "cornice",
+      "what": "D1 (7 of 7) reads a simple cornice where the face says heavy; face drawn",
+      "ref": "lane D round 2 scores"
+    },
+    {
+      "fronts": [
+        "0363100012158968"
+      ],
+      "component": "roof/attic",
+      "what": "31 is a corner house: a pointed gablet over the chamfered corner bay and a balcony on the corner axis; the kit has no corner bay or corner gablet",
+      "ref": "lane D, model judgement on the D1 cuts and lane R round-3 frames (2026-11-15)"
+    }
+  ],
+  "kinkerstraat-65-87": [
+    {
+      "fronts": [
+        "0363100012236453#m0",
+        "0363100012236453#m1",
+        "0363100012236453#m2"
+      ],
+      "component": "roof",
+      "what": "69-73: one slate roof spans the pand with three dormers; the photo shows the step gable on 69 and a flat cornice with two dormers on 71-73",
+      "ref": "lane D, row sheet round 2"
+    },
+    {
+      "fronts": [
+        "0363100012155934",
+        "0363100012096181",
+        "0363100012157331",
+        "0363100012156102",
+        "0363100012162717",
+        "0363100012161747",
+        "0363100012156991"
+      ],
+      "component": "ground",
+      "what": "75-87 ground floors carry an entresol (a second row of shop glazing) that the kit ground storey cannot draw",
+      "ref": "lane D, D1 cuts"
+    }
+  ],
+  "kinkerstraat-363-371": [
+    {
+      "fronts": [
+        "0363100012089984#m0",
+        "0363100012089984#m1",
+        "0363100012237269#m0",
+        "0363100012237269#m1"
+      ],
+      "component": "crown",
+      "what": "module crowns of 363-365 and 369 are not drawn per module: the renderer draws one roof over the pand (lane R, as on 126-138)",
+      "ref": "lane D round 2 sheet"
+    },
+    {
+      "fronts": [
+        "0363100012089984#m0",
+        "0363100012089984#m1",
+        "0363100012089983"
+      ],
+      "component": "storeys",
+      "what": "the photo shows four window rows over the ground floor on 363-367 where face and D1 both state 4 storeys (3 drawn above the ground); second look at the blind review",
+      "ref": "lane D round 2 sheet"
+    },
+    {
+      "fronts": [
+        "0363100012089984#m0",
+        "0363100012089983",
+        "0363100012237269#m1"
+      ],
+      "component": "balcony",
+      "what": "stacked iron balconies on the centre axis of every upper storey; one balcony is drawn",
+      "ref": "lane D round 2 sheet"
+    }
+  ],
+  "kinkerstraat-315-359": [
+    {
+      "fronts": [
+        "0363100012160018",
+        "0363100012165777",
+        "0363100012237373#m0"
+      ],
+      "component": "balcony",
+      "what": "French balconies on the centre axis of every upper storey (kinker-1902-balcony-axis); the kit draws one at the first storey",
+      "ref": "lane D round 2 sheet"
+    }
+  ],
+  "kinkerstraat-334-374": [
+    {
+      "fronts": [
+        "0363100012160347",
+        "0363100012155971",
+        "0363100012156317",
+        "0363100012167305"
+      ],
+      "component": "crown",
+      "what": "344-352 are under scaffolding in the D1 capture: the face's bell gables are unverified (D1 reads neck 2 of 2)",
+      "ref": "lane D round 2 sheet; 7 scaffold flags"
+    },
+    {
+      "fronts": [
+        "0363100012160344#m0",
+        "0363100012160344#m1",
+        "0363100012160344#m2",
+        "0363100012072741#m0",
+        "0363100012072741#m1"
+      ],
+      "component": "window",
+      "what": "D1 (5 of 5) reads painted block-course heads and a simple cornice where the face says keystone heads and a bracketed cornice; face drawn",
+      "ref": "lane D round 2 scores"
+    }
+  ],
+  "kinkerstraat-186-202": [
+    {
+      "fronts": [
+        "0363100012160226"
+      ],
+      "component": "crown",
+      "what": "186 has a curved (bell) gable with round attic windows over the cornice; drawn as a cornice front",
+      "ref": "lane D round 2 sheet"
+    }
+  ],
+  "kinkerstraat-244-332": [
+    {
+      "fronts": [
+        "0363100012233496"
+      ],
+      "component": "wall",
+      "what": "244-248 is dark brown brick (face measured #302d23); the face palette dark-brown-brick has no row family, so the single read's brown-brick tone is drawn",
+      "ref": "lane D round 2"
+    }
+  ],
+  "herengracht-2-24": [
+    {
+      "fronts": [
+        "0363100012179760"
+      ],
+      "component": "roof",
+      "what": "18: a steep hipped tiled roof with two small roof lights behind the cornice; the kit has no hipped roof storey (mansard, attic, none), so none is drawn",
+      "ref": "lane D belt fix (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012179763"
+      ],
+      "component": "roof",
+      "what": "10: a grey box over the cornice is the pand's own roof mass from the world chunk (3DBAG roof to 18.5 m over a 15.58 m wall), not the record; the cut does not show it",
+      "ref": "lane D belt fix 2 (2026-11-15)"
+    }
+  ],
+  "herengracht-26-46": [
+    {
+      "fronts": [
+        "0363100012179837"
+      ],
+      "component": "crown",
+      "what": "the register names 28 a cornice front; the read and the cut show a neck gable with a segmental cap: the read is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012179837.jpg against monument-gables.json"
+    }
+  ],
+  "herengracht-1-23": [
+    {
+      "fronts": [
+        "0363100012175393"
+      ],
+      "component": "crown",
+      "what": "the register names 3 a neck gable; the cut shows a cornice front with a wide central stone dormer under a pediment in a slate mansard: the read is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012175393.jpg against monument-gables.json"
+    }
+  ],
+  "herengracht-51-73": [
+    {
+      "fronts": [
+        "0363100012179682",
+        "0363100012179681"
+      ],
+      "component": "crown",
+      "what": "71 and 73 are spout gables (tuitgevels) of warehouse fronts; the preview draws a bell-like outline, and 71's round-arched loading windows with white jack-blocks draw as plain rectangles",
+      "ref": "lane D belt sheet"
+    },
+    {
+      "fronts": [
+        "0363100012168129"
+      ],
+      "component": "crown",
+      "what": "51: a pale ornamented attic frieze with a white carved crest and cartouche over the centre, red shutters at the attic window; drawn as a plain attic-frieze cornice, no roof form",
+      "ref": "lane D belt fix (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012168130"
+      ],
+      "component": "crown",
+      "what": "53: a small triangular pediment on the cornice over the centre of the white attic frieze; drawn as a plain attic-frieze cornice",
+      "ref": "lane D belt fix (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012179751"
+      ],
+      "component": "dormer",
+      "what": "65: a small pale pedimented dormer over the cornice in a dark roof face that the cut does not measure; no roof form is drawn",
+      "ref": "lane D belt fix (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012179675"
+      ],
+      "component": "crown",
+      "what": "69: the RCE register names a point gable (topgevel); the cut is an unusable corner shot, so the front is unread: series line, no roof form",
+      "ref": "lane D belt fix (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012179681"
+      ],
+      "component": "ground",
+      "what": "73 is white over two storeys (ground and first) with pilasters, near-black above; groundWall faces the ground storey only",
+      "ref": "D1 read gaps; lane D (2026-11-15)"
+    }
+  ],
+  "herengracht-92-120": [
+    {
+      "fronts": [
+        "0363100012167710"
+      ],
+      "component": "crown",
+      "what": "the register names 100 a cornice front; the cut shows a dark step gable with white trim centred in the outline: the read (step) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012167710.jpg against monument-gables.json"
+    }
+  ],
+  "herengracht-130-148": [
+    {
+      "fronts": [
+        "0363100012177017"
+      ],
+      "component": "crown",
+      "what": "the register names 148 (the 1900 pand) a neck front; the cut shows a tall red-brick 1900 front with a flat cornice top and an erker; the register term likely belongs to the 1710 pand of 148: the read (cornice) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012177017.jpg against monument-gables.json"
+    }
+  ],
+  "herengracht-150-166": [
+    {
+      "fronts": [
+        "0363100012167659"
+      ],
+      "component": "crown",
+      "what": "the register names 156 a cornice front; the cut shows a narrow neck gable rising behind the tree: the read (neck) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012167659.jpg against monument-gables.json"
+    },
+    {
+      "fronts": [
+        "0363100012176313"
+      ],
+      "component": "crown",
+      "what": "the register names 154 a neck front; the cut shows a 1910 white bay-window front with a flat top: the read (cornice) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012176313.jpg against monument-gables.json"
+    },
+    {
+      "fronts": [
+        "0363100012176314"
+      ],
+      "component": "crown",
+      "what": "the register names 150-152 a step front; the cut shows a cream rendered front with a flat top and a set-back roof storey: the read (cornice) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012176314.jpg against monument-gables.json"
+    }
+  ],
+  "herengracht-125-161": [
+    {
+      "fronts": [
+        "0363100012167679"
+      ],
+      "component": "crown",
+      "what": "the register names 161 a bell front; the cut shows a gable with scrolled shoulders at the cut resolution; bell or neck is not decidable from it: the read (neck) is drawn",
+      "ref": "lane D, cut belt-20261114/cuts/0363100012167679.jpg against monument-gables.json"
+    },
+    {
+      "fronts": [
+        "0363100012167680"
+      ],
+      "component": "cornice",
+      "what": "a white attic with balustrade panels and a raised curved centre over the cornice",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
+    }
+  ],
+  "herengracht-25-49": [
+    {
+      "fronts": [
+        "0363100012168213"
+      ],
+      "component": "shutters",
+      "what": "37: red shutters flank the central column of loading-door windows on every upper storey; the kit's shutters draw one storey in a dice colour, so none are drawn",
+      "ref": "lane D belt fix 2 (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012168212#m0",
+        "0363100012168212#m1"
+      ],
+      "component": "bands",
+      "what": "43-45: white stone bands and a central column of white panels with small-paned windows up into the gable; not drawn",
+      "ref": "lane D belt fix 2 (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012175409",
+        "0363100012175407"
+      ],
+      "component": "crown",
+      "what": "33 and 35: the register names a bell and a neck gable, but the cuts are oblique (33 top cut off, 35 its side wall): unread, series line",
+      "ref": "lane D belt fix 2 (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012175291"
+      ],
+      "component": "crown",
+      "what": "41: a small white pedimented top piece over the frieze cornice, and red brick with white bands; drawn as a plain frieze cornice",
+      "ref": "lane D belt fix 2 (2026-11-15)"
+    }
+  ],
+  "herengracht-75-89": [
+    {
+      "fronts": [
+        "0363100012179665"
+      ],
+      "component": "wall",
+      "what": "white stone bands and a tall blind centre panel across the step gable front",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
+    }
+  ],
+  "herengracht-76-90": [
+    {
+      "fronts": [
+        "0363100012169010"
+      ],
+      "component": "wall",
+      "what": "white stone banding (speklagen) at every storey",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012175701"
+      ],
+      "component": "cornice",
+      "what": "a white attic piece with a hoist window and curved top over the cornice",
+      "ref": "lane D belt follow-up (2026-11-15)"
+    }
+  ],
+  "herengracht-91-123": [
+    {
+      "fronts": [
+        "0363100012180437"
+      ],
+      "component": "gable",
+      "what": "carved claw pieces beside the neck",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
+    },
+    {
+      "fronts": [
+        "0363100012179051"
+      ],
+      "component": "roof",
+      "what": "a small white top piece over the cornice",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
+    }
+  ],
+  "herengracht-179-215": [
+    {
+      "fronts": [
+        "0363100012176310"
+      ],
+      "component": "cornice",
+      "what": "a frieze with balustrade over the cornice",
+      "ref": "lane D belt A/B 3 (2026-11-15)"
+    }
+  ],
+  "herengracht-238-256": [
+    {
+      "fronts": [
+        "0363100012177222"
+      ],
+      "component": "bay",
+      "what": "a full-height stone bay window (three lights a storey) projects from the front; the kit draws a flat front",
+      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)"
+    },
+    {
+      "fronts": [
+        "0363100012176852"
+      ],
+      "component": "cornice",
+      "what": "a white stone balustrade with a carved centre crest crowns the front; the kit draws a frieze cornice",
+      "ref": "lane D belt A/B 6, the cut re-read after the blind review (2026-11-15: today won the pair)"
+    }
+  ],
+  "herengracht-219-237": [
+    {
+      "fronts": [
+        "0363100012177191"
+      ],
+      "component": "wall",
+      "what": "neo-Renaissance front: stone bands and quoins on red brick, a first-floor balustrade, a rusticated stone ground storey and a roof balustrade; the kit draws plain brick with a cornice",
+      "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)"
+    }
+  ],
+  "herengracht-218-236": [
+    {
+      "fronts": [
+        "0363100012177218"
+      ],
+      "component": "gable",
+      "what": "Renaissance-revival front: white stone bands, relieving arches over the windows and a stepped centre gable with white trim; the kit draws plain brick with a cornice",
+      "ref": "lane D belt A/B 7, the cut re-read after the blind review (2026-11-15: today won the pair)"
+    }
   ]
 }
