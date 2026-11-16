@@ -41,7 +41,14 @@
     "curtains": "gathered",
     "frameHex": "#2e2622"
    },
-   "crown": "gable"
+   "crown": "gable",
+   "bays": 3,
+   "gable": {
+    "shape": "bell",
+    "footM": 6.6,
+    "topM": 9.9,
+    "storeys": 2
+   }
   },
   {
    "pandId": "0363100012171853",
@@ -72,7 +79,8 @@
     "tube": "doors",
     "curtains": "gathered"
    },
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 1
   },
   {
    "pandId": "0363100012171947",
@@ -104,7 +112,8 @@
     "curtains": "drawn"
    },
    "note": "red sign band over the head",
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 2
   },
   {
    "pandId": "0363100012177702",
@@ -137,7 +146,8 @@
     "frameHex": "#26392e"
    },
    "note": "dark green leaves in a cream surround",
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 2
   },
   {
    "pandId": "0363100012177728",
@@ -170,7 +180,14 @@
     "frameHex": "#3a2c22"
    },
    "confidence": "low",
-   "crown": "gable"
+   "crown": "gable",
+   "bays": 3,
+   "gable": {
+    "shape": "neck",
+    "footM": 12.3,
+    "topM": 14.1,
+    "storeys": 4
+   }
   },
   {
    "pandId": "0363100012177899",
@@ -202,7 +219,14 @@
     "curtains": "drawn"
    },
    "note": "diamond transom lights; sign band",
-   "crown": "gable"
+   "crown": "gable",
+   "bays": 2,
+   "gable": {
+    "shape": "point",
+    "footM": 7.1,
+    "topM": 9.4,
+    "storeys": 3
+   }
   },
   {
    "pandId": "0363100012177913",
@@ -234,7 +258,8 @@
     "curtains": "gathered"
    },
    "note": "red scalloped awning (not drawn)",
-   "crown": "unread"
+   "crown": "unread",
+   "bays": 2
   },
   {
    "pandId": "0363100012177915",
@@ -266,7 +291,8 @@
     "curtains": "drawn"
    },
    "note": "red scalloped awnings (not drawn)",
-   "crown": "unread"
+   "crown": "unread",
+   "bays": 2
   },
   {
    "pandId": "0363100012177916",
@@ -298,7 +324,14 @@
     "curtains": "drawn"
    },
    "note": "red scalloped awning (not drawn)",
-   "crown": "gable"
+   "crown": "gable",
+   "bays": 2,
+   "gable": {
+    "shape": "neck",
+    "footM": 12.4,
+    "topM": 14.5,
+    "storeys": 4
+   }
   },
   {
    "pandId": "0363100012177949",
@@ -330,7 +363,8 @@
     "curtains": "gathered"
    },
    "note": "alley wall",
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 3
   },
   {
    "pandId": "0363100012177961",
@@ -361,7 +395,14 @@
     "tube": "none",
     "curtains": "gathered"
    },
-   "crown": "gable"
+   "crown": "gable",
+   "bays": 3,
+   "gable": {
+    "shape": "point",
+    "footM": 12.5,
+    "topM": 15.2,
+    "storeys": 4
+   }
   },
   {
    "pandId": "0363100012177978",
@@ -393,7 +434,14 @@
     "curtains": "drawn"
    },
    "note": "red transom lights; sign band",
-   "crown": "gable"
+   "crown": "gable",
+   "bays": 3,
+   "gable": {
+    "shape": "neck",
+    "footM": 9.3,
+    "topM": 13.5,
+    "storeys": 4
+   }
   },
   {
    "pandId": "0363100012177979",
@@ -424,7 +472,14 @@
     "tube": "none",
     "curtains": "gathered"
    },
-   "crown": "gable"
+   "crown": "gable",
+   "bays": 3,
+   "gable": {
+    "shape": "neck",
+    "footM": 8.8,
+    "topM": 10.7,
+    "storeys": 4
+   }
   },
   {
    "pandId": "0363100012177984",
@@ -455,7 +510,8 @@
     "tube": "none",
     "curtains": "drawn"
    },
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 3
   },
   {
    "pandId": "0363100012177985",
@@ -487,7 +543,8 @@
     "curtains": "drawn",
     "frameHex": "#ecebe4"
    },
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 2
   },
   {
    "pandId": "0363100012177991",
@@ -520,7 +577,8 @@
    },
    "note": "tuned on (round 16)",
    "tunedOn": true,
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 2
   },
   {
    "pandId": "0363100012177992",
@@ -552,7 +610,14 @@
     "curtains": "drawn"
    },
    "note": "sign band",
-   "crown": "gable"
+   "crown": "gable",
+   "bays": 3,
+   "gable": {
+    "shape": "point",
+    "footM": 12.3,
+    "topM": 15.9,
+    "storeys": 5
+   }
   },
   {
    "pandId": "0363100012177994",
@@ -585,7 +650,8 @@
     "frameHex": "#ecebe4"
    },
    "note": "red scalloped awning (not drawn)",
-   "crown": "unread"
+   "crown": "unread",
+   "bays": 2
   },
   {
    "pandId": "0363100012177997",
@@ -617,7 +683,8 @@
     "curtains": "gathered",
     "frameHex": "#ecebe4"
    },
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 3
   },
   {
    "pandId": "0363100012178274",
@@ -650,7 +717,16 @@
     "frameHex": "#1e3328"
    },
    "note": "two tubes, each over a pair of doors (kit: one per door)",
-   "crown": "hip"
+   "crown": "hip",
+   "bays": 3,
+   "roof": {
+    "kind": "hip",
+    "eavesM": 7.4,
+    "riseM": 1.6,
+    "dormers": 1,
+    "storeys": 2,
+    "roofHex": "#9c5a44"
+   }
   },
   {
    "pandId": "0363100012178276",
@@ -683,7 +759,8 @@
    },
    "note": "tuned on (round 16)",
    "tunedOn": true,
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 3
   },
   {
    "pandId": "0363100012178278",
@@ -716,7 +793,8 @@
     "frameHex": "#26392e"
    },
    "note": "arched cream surround; orange tubes, one over each window",
-   "crown": "unread"
+   "crown": "unread",
+   "bays": 3
   },
   {
    "pandId": "0363100012178293",
@@ -748,7 +826,8 @@
     "curtains": "drawn"
    },
    "note": "sign band",
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 2
   },
   {
    "pandId": "0363100012178478",
@@ -780,7 +859,14 @@
     "curtains": "drawn",
     "frameHex": "#1e3328"
    },
-   "crown": "gable"
+   "crown": "gable",
+   "bays": 3,
+   "gable": {
+    "shape": "neck",
+    "footM": 9.6,
+    "topM": 12.6,
+    "storeys": 3
+   }
   },
   {
    "pandId": "0363100012178802",
@@ -812,7 +898,8 @@
     "curtains": "drawn"
    },
    "note": "grey scalloped awnings (not drawn)",
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 3
   },
   {
    "pandId": "0363100012178994",
@@ -844,7 +931,8 @@
     "curtains": "drawn"
    },
    "note": "brown awnings (not drawn); 'In den Lichtenkooi' lettering",
-   "crown": "cornice"
+   "crown": "cornice",
+   "bays": 2
   },
   {
    "pandId": "0363100012182846",
@@ -876,7 +964,14 @@
     "curtains": "drawn"
    },
    "note": "diamond transom lights",
-   "crown": "gable"
+   "crown": "gable",
+   "bays": 1,
+   "gable": {
+    "shape": "point",
+    "footM": 6.3,
+    "topM": 8.6,
+    "storeys": 2
+   }
   }
  ],
  "readNotDrawn": [
@@ -1052,5 +1147,6 @@
    "pandId": "0363100012178923",
    "why": "no street-side panorama within 12 m of any exposed wall"
   }
- ]
+ ],
+ "reads": "Round 18: `bays` the window axes on the first upper storey, read on the full-height near crop (60 px/m); `gable` the crown read on the same crop (shape, foot and apex in m over the pavement, storeys under the foot); `roof` a hipped roof with dormers over the cornice (178274: eaves 7.4 m, 3DBAG ridge 8.7 m, one dormer)."
 }

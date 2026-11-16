@@ -914,6 +914,9 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
     const n = Math.min(3, Math.floor((L - 2) / 3.4));
     for (const sd of [-1, 1]) for (let i = 0; i < n; i++) dormer(s, { axis: 'v', side: sd, c: -L / 2 + ((i + 0.5) * L) / n, pf: (W / 2) * 0.72, dw: 1.05, hd: 1.35, surf: surfV }, plan);
   }
+  // Round 18 (lane R): a gabled kit record's front parts on the street end, under its crown.
+  const ke = plan.rowCrown && plan.buurtKit && plan.rowFrontN ? kitEndOf(rect, plan.rowFrontN) : null;
+  if (ke !== null && kitDrawsFront(plan.buurtKit!)) { const from = s.out.length; drawKitFront(s, plan.buurtKit!, L, W, ke); for (let i = from; i < s.out.length; i++) s.out[i].kit = true; }
   return s.out;
 }
 
@@ -922,10 +925,12 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
 export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDims): RoofTri[] {
   const triangles = buildRoofTriangles(rect, plan, h0, dims);
   if (!plan.nativeEnvelopeM || !triangles.length) return triangles;
-  const top = Math.max(...triangles.flatMap(t => t.p.map(p => p[2] - h0)));
+  const top = Math.max(...triangles.filter(t => !t.kit).flatMap(t => t.p.map(p => p[2] - h0)));
   if (top <= 0) return triangles;
   const scale = plan.nativeEnvelopeM / top;
+  // A kit's front parts stand on the wall, not in the crown's envelope: never scaled.
   return triangles.map(t => {
+    if (t.kit) return t;
     const nz = t.n[2] / scale, length = Math.hypot(t.n[0], t.n[1], nz);
     const endDot = t.n[0]*rect.ux+t.n[1]*rect.uy;
     const sourceCrownShape = plan.kind === 'gable' && t.part === 'plate' && Math.abs(endDot) > .9 && plan.gableEnds?.[endDot < 0 ? 0 : 1] !== false && plan.streetEnds?.[endDot < 0 ? 0 : 1] !== false ? plan.gable : undefined;
@@ -1186,6 +1191,10 @@ function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: num
       const turned = rowBoxOnFront(mesh, box ?? inside, piece.plan.rowFrontN, !!box);
       out.push(...(turned ? roofTriangles(turned, { ...piece.plan, streetEnds: [false, true] }, h0, dims) : roofTriangles(inside, withStreetEnds(piece.plan, inside, facing), h0, dims))); continue;
     }
+    // Round 18 (lane R): a gabled kit record's crown faces its kit's street front: a box fitted across it is rebuilt on
+    // the front normal (rowBoxOnFront), its +u end the street.
+    const kitTurn = piece.plan.rowCrown && piece.plan.buurtKit && piece.plan.rowFrontN ? rowBoxOnFront(mesh, rect, piece.plan.rowFrontN, true) : null;
+    if (kitTurn) { out.push(...roofTriangles(kitTurn, { ...piece.plan, streetEnds: [false, true] }, h0, dims)); continue; }
     const innerPlan = plan.sourceCrownFront ? {...piece.plan, kind: piece.plan.kind === 'gable' ? 'pitched' as const : piece.plan.kind, accents:false, sourceCrownFront:undefined} : withStreetEnds(piece.plan, rect, facing);
     const triangles=roofTriangles(rect,innerPlan,h0,dims);
     out.push(...(!plan.sourceCrownFront&&['gable','pitched','halfHipped','mansard'].includes(piece.plan.kind)?gablePieceOnNativeWalls(triangles,rect,mesh,piece.plan):triangles));
@@ -1445,10 +1454,25 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
   // Lane 1 (houseLine/rowFront.ts sets `rowCrown` and the matching height): the measured crown, its saddle inside it,
   // no chimney stub or dice dormers through it.
   if (plan && plan.kind === 'gable' && isRowCrown(p.rowCrown) && Number(p.rowCrownRoofRiseM) > 0) {
-    const crowned = (q: RoofPlan): RoofPlan => ({ ...q, rowCrown: p.rowCrown as RowCrown, riseM: Number(p.rowCrownRoofRiseM), chimney: false, dormers: false, accents: true, trimHex: q.trimHex ?? TRIM_WHITE, shutters: false });
+    // Round 18 (lane R): a kit record's front parts under its stated gable (rowFront.ts `rowKit`), on the street end.
+    const rk = rowKitOf(p.rowKit);
+    const crowned = (q: RoofPlan): RoofPlan => ({ ...q, rowCrown: p.rowCrown as RowCrown, riseM: Number(p.rowCrownRoofRiseM), chimney: false, dormers: false, accents: true, trimHex: q.trimHex ?? TRIM_WHITE, shutters: false, ...(rk ? { buurtKit: rk.kit, rowFrontN: rk.frontN } : {}) });
     return { ...crowned(plan), ...(plan.pieces ? { pieces: plan.pieces.map(pc => ({ rect: pc.rect, plan: crowned(pc.plan) })) } : {}) };
   }
   return plan;
+}
+
+/** Round 18: a gabled kit record's `rowKit` (houseLine/rowFront.ts), validated; null when absent or malformed. */
+export function rowKitOf(v: unknown): { kit: BuurtRoofKit; frontN: Vec2 } | null {
+  if (!v || typeof v !== 'object') return null;
+  const r = v as { kit?: unknown; frontN?: unknown }, kit = buurtRoofKitOf(r.kit);
+  const fn = Array.isArray(r.frontN) && r.frontN.length === 2 && r.frontN.every(Number.isFinite) && Math.abs(Math.hypot(r.frontN[0], r.frontN[1]) - 1) < 0.01 ? [Number(r.frontN[0]), Number(r.frontN[1])] as Vec2 : null;
+  return kit && fn && kitDrawsFront(kit) ? { kit, frontN: fn } : null;
+}
+/** The street end of a roof box whose u axis runs along the front normal `n` (within 45 degrees); null when it does not. */
+export function kitEndOf(rect: Pick<Rect, 'ux' | 'uy'>, n: Vec2): -1 | 1 | null {
+  const d = rect.ux * n[0] + rect.uy * n[1];
+  return Math.abs(d) < Math.SQRT1_2 ? null : d > 0 ? 1 : -1;
 }
 
 /** House rows: a feature's `rowRoof` (houseLine/rowFront.ts), validated; null when absent or malformed. */

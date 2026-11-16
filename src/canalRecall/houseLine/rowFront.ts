@@ -18,7 +18,7 @@ import { SOUTERRAIN_FACTOR } from '../houseSpec/storeyPlan.js';
 import { ROW_CROWN_SHAPES, rowCrownRoofRise, type RowCrown, type RowCrownShape } from './crownProfile.js';
 import { buurtKitEnabled } from '../buurtGenerator/kitFlag.js';
 import { buurtKitOf, frontNormalOf, KIT_FLAT_RISE_M, KIT_MULLION_SHARE, kitWantsCoping, straightenFeature, type BuurtKitFront } from '../buurtGenerator/kit/frontKit.js';
-import { buurtRoofKitFor } from '../buurtGenerator/kit/roofKit.js';
+import { buurtRoofKitFor, kitDrawsFront } from '../buurtGenerator/kit/roofKit.js';
 
 export type RowCrownFamily = 'cornice' | 'neck' | 'bell' | 'point' | 'step' | 'spout' | 'raised-cornice-dormer';
 export interface RowFrontRecord {
@@ -591,12 +591,26 @@ export function withRowFront<T extends Feature>(feature: T): T {
         rowFront: family, ...(rec.crown.hoist ? { rowFrontHoist: true } : {}), rowCrown: crown, rowCrownRoofRiseM: R, roofDormer: false, ...levels(sr, rec, eaves, true) } };
     }
   }
-  if (!gable || rec.eavesM < MIN_PLANNED_M) {
+  // A kit record's stated gable whose apex the planner roofs keeps it on a low foot (round 18: 182846, foot 6.3 m).
+  const gk = buurtKitEnabled() ? buurtKitOf(rec.buurtKit) : null;
+  const lowKitGable = !!gk && rec.topM !== null && rec.topM - rec.eavesM > 0.5 && rec.topM >= MIN_PLANNED_M;
+  if (!gable || (rec.eavesM < MIN_PLANNED_M && !lowKitGable)) {
     // A cornice (or a fallback) front: the wall to the measured top, a flat lid there, nothing over it from the street.
     const top = rec.topM ?? rec.eavesM;
     return { ...feature, properties: { ...rest, ...held, height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat', rowFront: family,
       ...levels(sr, rec, top, true) } };
   }
+  // Round 18 (lane R): a kit record whose crown is a stated gable keeps it; the kit's front parts (window fronts, entries,
+  // cants...) stand under the crown on the street end, drawn by the gable roof's hook (`rowKit`). Absent: as before.
+  if (gk) feature = straightenFeature(feature, gk);
+  const crownKit = (lv: { specRecipe?: Record<string, unknown> }): Record<string, unknown> => {
+    if (!gk || !rec.storeys || rec.storeys < 2) return {};
+    const rk = buurtRoofKitFor(gk, rec.eavesM!, rec.storeys, Number(lv.specRecipe?.groundM) || rowGroundM(rec.eavesM!, rec.storeys));
+    if (!rk || !kitDrawsFront(rk)) return {};
+    // The coping hex is the flat series' roof; a gable keeps the planner's roof colour.
+    const { roofHex: _flatRoof, ...kit } = rk;
+    return { rowKit: { kit, frontN: frontNormalOf(gk.frontLine) } };
+  };
   const trial = (h: number) => roofPlanForFeature({ ...feature, properties: { ...rest, height: h, monumentGable: gable, roofPlanned: true } } as never);
   // Step c: a crown the record sizes (neck, bell, point, step) is drawn from its own measured profile, the saddle
   // lowered inside it (houseLine/crownProfile.ts); the chimney stub and the dice dormers go.
@@ -613,8 +627,9 @@ export function withRowFront<T extends Feature>(feature: T): T {
     if (probe && W) {
       const R = rowCrownRoofRise(crown, W), h = +(rec.eavesM + R).toFixed(3);
       const plan = trial(h);
+      const lv = levels(sr, rec, rec.eavesM, false);
       if (plan?.kind === 'gable') return { ...feature, properties: { ...rest, ...held, height: h, monumentGable: gable, roofPlanned: true, roofShape: 'gable', roofEavesHeightM: rec.eavesM,
-        rowFront: family, ...(rec.crown.hoist ? { rowFrontHoist: true } : {}), rowCrown: crown, rowCrownRoofRiseM: R, roofDormer: false, ...levels(sr, rec, rec.eavesM, false) } };
+        rowFront: family, ...(rec.crown.hoist ? { rowFrontHoist: true } : {}), rowCrown: crown, rowCrownRoofRiseM: R, roofDormer: false, ...lv, ...crownKit(lv) } };
     }
   }
   // A gabled front: the planner's saddle behind the record's gable, its eaves on the measured foot.

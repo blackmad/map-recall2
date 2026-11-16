@@ -15,6 +15,7 @@ import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import { ROW_RECORD_VERSION, type Overruled, type ReadNotDrawn, type RowCorniceKind, type RowCrownKind, type RowDesign, type RowField, type RowFront, type RowHeads, type RowLimit, type RowMember, type RowRecord, type RowRoofStorey, type RowSeries, type RowWallMaterial, type RowWindowKind } from '../houseSpec/row/types.ts';
 import { districtRows, ROW_EAVES_STEP_M, type GenMember, type GenPand, type GenRow, type GenSeries, type GenStreet, type RowsResult } from './rows.ts';
 import { cantsOnCells, erkersOnCells, type BuurtEntry, type BuurtErker, type BuurtKitFront } from './kit/frontKit.ts';
+import { seriesBaysOf, type MemberBays } from './baysRead.ts';
 
 export interface DistrictDesign {
   groundM: number;
@@ -103,6 +104,8 @@ export interface DistrictMeasured {
   /** Round 10: per row, each kit erker (`<pandId>:<index>`) and the finish its panoramas read (measure.ts erkerFinishOf,
    *  then the row's consensus for unread ones): `white` is the white-framed lights running corner to corner. */
   erkers?: Record<string, Record<string, { finish: 'white' | 'brick' | null; read: boolean; reads: string[] }>>;
+  /** Round 18: per pand, its window axes counted on the panoramas (scripts/buurt-generators/measure-bays.ts, baysRead.ts). */
+  bays?: Record<string, MemberBays>;
 }
 
 /** Why a pand of the district is not drawn by the generator. */
@@ -124,6 +127,18 @@ export function storeysFor(eavesM: number, d: Pick<DistrictDesign, 'groundM' | '
 /** Window axes on a front of this width at the district's axis pitch (at least two). */
 export function baysFor(widthM: number, d: Pick<DistrictDesign, 'axisM'>): number {
   return Math.max(2, Math.round(widthM / d.axisM));
+}
+
+/**
+ * Round 18 (lane R): the series' window axes: its members' panorama count (`measured.bays`, baysRead.ts seriesBaysOf)
+ * when enough of them read and agree, else one per axis of the median front (`baysFor`). `why` names the read; null
+ * on the width rule (the record's text is then as before).
+ */
+export function seriesBaysFor(lib: DistrictLibrary, s: GenSeries, rowId: string): { bays: number; why: string | null } {
+  const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b), width = baysFor(widths[widths.length >> 1], axisOf(lib, rowId));
+  const read = lib.measured?.bays;
+  const v = read ? seriesBaysOf(s.members.map(m => read[pandNumber(m.pand.id)]?.bays)) : null;
+  return v ? { bays: v.bays, why: `panorama count: ${v.agree} of ${v.read} members read ${v.bays} window axes (baysRead.ts; the width rule said ${width})` } : { bays: width, why: null };
 }
 
 const pandNumber = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
@@ -217,7 +232,7 @@ export function measuredRiseOf(lib: DistrictLibrary, s: GenSeries): number | nul
 }
 
 /** One series' design: the family's design over the district's, every field `period-default` with its ref. */
-export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSeries, rowId: string, bays: number, riseM: number | null = pitchedRiseOf(lib, s)): RowDesign {
+export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSeries, rowId: string, bays: number, riseM: number | null = pitchedRiseOf(lib, s), baysWhy: string | null = null): RowDesign {
   const d = { ...lib.design, ...fam.design };
   const pv = pitchedVariantOf(lib, s);
   const ref = `buurt-generator ${lib.district} ${fam.id}`;
@@ -226,7 +241,7 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
     corniceTopM: f<number | null>(s.eavesM, `series line = median 3DBAG eaves of ${s.members.length} members`),
     crown: f(d.crown), cornice: f(d.cornice),
     storeys: f(fam.storeys, `${s.eavesM} m line over a ${d.groundM} m ground and ${d.storeyM} m storeys`),
-    bays: f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes`),
+    bays: baysWhy ? { value: bays, source: 'series-consensus', ref: `${ref}: ${baysWhy}` } : f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes`),
     windows: f(d.windows), heads: f<RowHeads | RowHeads[]>(d.heads), whiteFrames: f(d.whiteFrames), sills: f(d.sills),
     wall: ((w) => f({ material: d.wall.material, family: d.wall.family, hex: w.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, w.hex ? `measured brick ${w.hex} (${w.evidence ?? 'district photos'})` : ''))(wallHexOf(lib, fam, rowId)),
     roofStorey: riseM !== null && pv
@@ -263,10 +278,9 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
     if (!years.length || years.some(y => y < lib.years[0] || y > lib.years[1])) { off('off-years', `built ${[...new Set(years)].join('/') || '?'}`); continue; }
     const storeys = storeysFor(s.eavesM, lib.design), fam = familyFor(lib, storeys);
     if (!fam) { off('off-storeys', `${storeys} storeys at ${s.eavesM} m`); continue; }
-    const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b);
-    const bays = baysFor(widths[widths.length >> 1], axisOf(lib, row.id));
+    const { bays, why: baysWhy } = seriesBaysFor(lib, s, row.id);
     const seriesId = s.id;
-    const design = seriesDesign(lib, fam, s, row.id, bays);
+    const design = seriesDesign(lib, fam, s, row.id, bays, pitchedRiseOf(lib, s), baysWhy);
     series.push({ id: seriesId, label: `${fam.label}, built ${s.year ?? '?'}`, type: fam.id, fronts: s.members.map(m => pandNumber(m.pand.id)), design });
     for (const m of s.members) {
       const pid = pandNumber(m.pand.id);
@@ -349,7 +363,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   for (const r of res.rows) for (const s of r.series) {
     const rise = pitchedRiseOf(lib, s);
     const fam = s.eavesM === null ? null : familyFor(lib, storeysFor(s.eavesM, lib.design));
-    const widths = s.members.map(m => m.front.lengthM).sort((a, b) => a - b), bays = baysFor(widths[widths.length >> 1], axisOf(lib, r.id));
+    const bays = seriesBaysFor(lib, s, r.id).bays;
     const pv = pitchedVariantOf(lib, s), roofHex = lib.rowNotes?.[r.id]?.roof?.hex ?? pv?.roofHex;
     // Blocks of two pands (family kit `piers`): the pier at every other party wall, phased by the row's photo if one
     // states it, else a block starting at the row's first member.
