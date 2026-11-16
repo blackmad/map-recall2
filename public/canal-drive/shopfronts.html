@@ -31,6 +31,18 @@ h2{margin:0;font-size:16px;overflow-wrap:anywhere}
 .go a,.src a{color:var(--accent)}
 .src{font-size:12px;color:var(--mut);overflow-wrap:anywhere}
 .empty{color:var(--mut);padding:30px 0}
+main{padding-bottom:96px}
+.fb{margin-top:8px}
+.fb textarea{width:100%;min-height:52px;resize:vertical;font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.fb textarea.has{border-color:var(--accent)}
+.fb .st{font-size:12px;margin-top:2px;min-height:0}.fb .st.err{color:#b3261e}.fb .st.good{color:#2e7d32}
+@media (prefers-color-scheme:dark){.fb .st.err{color:#ff8a80}.fb .st.good{color:#81c784}}
+#savebar{position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--card);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:center}
+#savebar button{font:inherit;font-size:14px;min-height:44px;padding:6px 16px;border-radius:999px;border:1px solid var(--accent);background:var(--card);color:var(--accent);cursor:pointer}
+#savebar #saveall{background:var(--accent);color:#fff}
+#savebar button:disabled{opacity:.5;cursor:default}
+#ready{font-size:14px}#who,#bar-msg{font-size:12.5px;color:var(--mut);overflow-wrap:anywhere}
+.cf-launch{bottom:calc(84px + env(safe-area-inset-bottom)) !important}
 </style></head><body>
 <header>
   <nav><a href="whats-new.html">What's new</a><a href="index.html">Play the game</a></nav>
@@ -43,13 +55,30 @@ h2{margin:0;font-size:16px;overflow-wrap:anywhere}
     <span id="count" role="status"></span>
   </div>
 </header>
-<main><div class="grid" id="grid" aria-live="polite"></div></main>
+<main><div class="grid" id="grid"></div></main>
+<div id="savebar"><span id="ready" role="status" aria-live="polite">0 notes ready</span><button type="button" id="saveall" disabled>Save all</button><button type="button" id="signin" hidden>Sign in with Google</button><span id="who"></span><span id="bar-msg" role="status" aria-live="polite"></span></div>
+<script src="js/feedback/browser.js"></script>
 <script>
 const fmt = n => Number(n || 0).toLocaleString('en');
 const state = { tab: 'chain', q: '', used: false, entries: [] };
 window.shopfrontsPage = { ready: false };
 const gameUrl = (lng, lat) => { const f = n => n.toFixed(4); return `./index.html?travel=car#race=${f(lat)},${f(lng)},${f(lat)},${f(lng)},${f(lat + 0.004)},${f(lng)}`; };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const DRAFT = 'shopfrontFeedback.draft:';
+const key = e => `${e.kind}:${e.id}`;
+const drafts = {}, notices = {};
+try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && k.startsWith(DRAFT)) { const v = localStorage.getItem(k); if (v) drafts[k.slice(DRAFT.length)] = v; } } } catch {}
+function noteBox(e) {
+  const k = key(e), n = notices[k], v = drafts[k] || '';
+  return `<div class="fb"><textarea data-k="${esc(k)}" maxlength="12000" rows="2" class="${v.trim() ? 'has' : ''}" aria-label="Feedback on ${esc(e.name)}" placeholder="What's wrong with this front?">${esc(v)}</textarea><div class="st${n ? (n.ok ? ' good' : ' err') : ''}">${n ? esc(n.msg) : ''}</div></div>`;
+}
+const ready = () => Object.values(drafts).filter(v => v.trim()).length;
+function updateBar() {
+  const n = ready();
+  document.getElementById('ready').textContent = `${n} ${n === 1 ? 'note' : 'notes'} ready`;
+  document.getElementById('saveall').disabled = !n || saving;
+}
+let saving = false;
 function card(e) {
   const pic = e.thumb ? `<img src="${esc(e.thumb)}" alt="${esc(e.name)} shopfront as the game draws it" loading="lazy">`
     : '<div class="none">The game draws no template for this chain yet; its shops stay the plain measured front.</div>';
@@ -57,16 +86,56 @@ function card(e) {
     .map(t => `<span class="tag${t === 'brand style on' ? ' ok' : ''}">${esc(t)}</span>`).join('');
   const go = e.example ? `<a href="${gameUrl(e.example.lng, e.example.lat)}">See it in the game</a>` : '<span class="meta">Not in the extract yet</span>';
   const src = e.logoSource ? `<div class="src">Logo: <a href="${esc(e.logoSource)}" rel="noopener">source</a></div>` : '';
-  return `<article id="${esc(e.kind)}-${esc(e.id)}">${pic}<div class="body"><h2>${esc(e.name)}</h2><div class="meta">${fmt(e.pands)} ${e.pands === 1 ? 'building' : 'buildings'}</div><div class="tags">${tags}</div>${src}<div class="go">${go}</div></div></article>`;
+  return `<article id="${esc(e.kind)}-${esc(e.id)}" data-no-note>${pic}<div class="body"><h2>${esc(e.name)}</h2><div class="meta">${fmt(e.pands)} ${e.pands === 1 ? 'building' : 'buildings'}</div><div class="tags">${tags}</div>${src}<div class="go">${go}</div>${noteBox(e)}</div></article>`;
 }
 function render() {
   const q = state.q.trim().toLowerCase();
   const list = state.entries.filter(e => e.kind === state.tab && (!state.used || e.pands > 0) && (!q || `${e.name} ${e.template} ${e.id}`.toLowerCase().includes(q)));
   document.getElementById('grid').innerHTML = list.length ? list.map(card).join('') : '<p class="empty">No shopfronts match.</p>';
+  updateBar();
   document.getElementById('count').textContent = `${fmt(list.length)} shown`;
 }
 function setTab(t) { state.tab = t; document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tab === t))); render(); }
 document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => { history.replaceState(null, '', location.pathname + (b.dataset.tab === 'template' ? '#generic' : '')); setTab(b.dataset.tab); }));
+document.getElementById('grid').addEventListener('input', ev => {
+  const t = ev.target; if (!t.matches || !t.matches('textarea[data-k]')) return;
+  const k = t.dataset.k; drafts[k] = t.value; delete notices[k]; t.classList.toggle('has', !!t.value.trim());
+  const st = t.parentNode.querySelector('.st'); st.textContent = ''; st.className = 'st';
+  try { if (t.value) localStorage.setItem(DRAFT + k, t.value); else localStorage.removeItem(DRAFT + k); } catch {}
+  updateBar();
+});
+function bar(msg) { document.getElementById('bar-msg').textContent = msg; }
+async function refreshUser() {
+  try {
+    const who = await window.CanalFeedback.userLabel();
+    document.getElementById('who').textContent = who ? `Signed in as ${who}` : '';
+    document.getElementById('signin').hidden = !!who;
+    return who;
+  } catch (err) { document.getElementById('signin').hidden = false; bar(err.message); return ''; }
+}
+document.getElementById('signin').addEventListener('click', async () => {
+  try { await window.CanalFeedback.signIn(); } catch (err) { bar(`Sign-in failed: ${err.message}`); return; }
+  bar(''); refreshUser();
+});
+const noteFor = e => ({
+  targetId: `shopfront:${e.kind}:${e.id}`, label: e.name, imageUrl: e.thumb || '', text: drafts[key(e)] || '', category: 'building',
+  ...(e.example ? { subject: { kind: 'pand', id: e.example.pand, lngLat: [e.example.lng, e.example.lat] } } : {}),
+  context: { template: e.template, chain: e.kind === 'chain' ? e.id : null, pands: e.pands, brandAccepted: !!e.brandAccepted, drawn: !!e.drawn },
+});
+document.getElementById('saveall').addEventListener('click', async () => {
+  if (saving) return;
+  const entries = state.entries.filter(e => (drafts[key(e)] || '').trim()), byId = new Map(entries.map(e => [`shopfront:${e.kind}:${e.id}`, e]));
+  if (!entries.length) return;
+  saving = true; updateBar(); bar(`Saving ${entries.length}…`);
+  let result;
+  try { result = await window.CanalFeedback.saveMany(entries.map(noteFor)); }
+  catch (err) { result = { saved: [], failed: entries.map(e => ({ targetId: `shopfront:${e.kind}:${e.id}`, error: err.message })) }; }
+  for (const id of result.saved) { const e = byId.get(id); if (!e) continue; const k = key(e); delete drafts[k]; notices[k] = { ok: true, msg: 'Saved.' }; try { localStorage.removeItem(DRAFT + k); } catch {} }
+  for (const f of result.failed) { const e = byId.get(f.targetId); if (e) notices[key(e)] = { ok: false, msg: `Not saved: ${f.error}` }; }
+  saving = false; render();
+  bar(`${result.saved.length} saved, ${result.failed.length} failed.${result.failed.length ? ' Failed notes keep their text; sign in if needed, then Save all again.' : ''}`);
+  if (result.failed.length) refreshUser();
+});
 let qTimer = 0;
 document.getElementById('q').addEventListener('input', e => { clearTimeout(qTimer); qTimer = setTimeout(() => { state.q = e.target.value; render(); }, 120); });
 document.getElementById('used').addEventListener('change', e => { state.used = e.target.checked; render(); });
@@ -77,6 +146,7 @@ fetch('./shopfronts-data/index.json').then(r => { if (!r.ok) throw new Error(r.s
   setTab(state.tab);
   if (hit) document.getElementById(hash)?.scrollIntoView();
   window.shopfrontsPage.ready = true;
+  refreshUser();
 }).catch(err => { document.getElementById('grid').innerHTML = `<p class="empty">Could not load the shopfront index (${esc(err.message)}).</p>`; });
 </script>
 </body></html>
