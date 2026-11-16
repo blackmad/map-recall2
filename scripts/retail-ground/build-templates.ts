@@ -154,12 +154,16 @@ if (samples) {
   }
 }
 // Lane retail-real round 6: the sign reads (retailSignReads.ts correctionFor), a correction layer over OSM read off the
-// newest facing panorama; `--no-reads` stages without it. Receipts (panorama, date, reader, confidence) stay in READS.
+// newest facing panorama; opt-in with `--reads` until its blind is in. Receipts (panorama, date, reader, confidence) stay in READS.
 const READS = 'data/retail-ground/sign-reads.json', neutral: string[] = [], quiet: string[] = [], readCount: Record<string, number> = {};
-if (!process.argv.includes('--no-reads') && fs.existsSync(READS)) {
+if (process.argv.includes('--reads') && fs.existsSync(READS)) {
   const reads = (JSON.parse(fs.readFileSync(READS, 'utf8')) as { reads: Record<string, SignRead> }).reads;
+  // Lane R's De Wallen audit read every red-light row on its own measured panorama: it outranks a sign read.
+  const RED_AUDIT = 'data/retail-ground/dewallen-redlight-audit.json', audited = new Set<string>();
+  if (fs.existsSync(RED_AUDIT)) { const a = JSON.parse(fs.readFileSync(RED_AUDIT, 'utf8')) as Record<string, Array<{ pandId: string }>>; for (const k of ['fronts', 'notWindow', 'readNotDrawn']) for (const f of a[k] ?? []) audited.add(bagKey(f.pandId)); }
   for (const [id, p] of [...placed]) {
     const r = reads[bagKey(id)]; if (!r || r.node !== p.node) continue;
+    if (p.t === 'redLight' && audited.has(bagKey(id))) { readCount.audited = (readCount.audited ?? 0) + 1; continue; }
     const c = correctionFor(r, templateForTags);
     readCount[c.action] = (readCount[c.action] ?? 0) + 1;
     if (c.action === 'keep') continue;
