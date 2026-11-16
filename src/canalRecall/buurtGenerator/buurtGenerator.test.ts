@@ -192,6 +192,19 @@ test('block lines: a 3DBAG step AHN does not see is one line (Hunzestraat 120343
   assert.deepEqual(blockLines(lib, rows).rows[0].series.map(s => s.eavesM), [12.1, 6.25]);
 });
 
+test('round 13: an unstated brick wall is never drawn grey; a warm one and a stated one are untouched', () => {
+  const lch = (hex: string) => { const n = parseInt(hex.slice(1), 16), [L, a, b] = oklab(n >> 16, (n >> 8) & 255, n & 255); return [L, Math.hypot(a, b), ((Math.atan2(b, a) * 180) / Math.PI + 360) % 360]; };
+  assert.equal(warmWall('#a2694f'), '#a2694f', 'Rooseveltlaan, warm already');
+  for (const grey of ['#5b504a', '#5b4e47', '#6a6362', '#484a4c']) {
+    const [L0] = lch(grey), [L, C, h] = lch(warmWall(grey));
+    assert.ok(Math.abs(L - L0) < 0.01, `${grey} keeps its lightness`);
+    assert.ok(C >= WALL_WARM.C - 0.002 && h >= WALL_WARM.h0 - 1 && h <= WALL_WARM.h1 + 1, `${grey} -> ${warmWall(grey)} (C ${C.toFixed(3)}, h ${h.toFixed(0)})`);
+  }
+  // A stated wall is drawn as stated.
+  const st: DistrictLibrary = { ...lib, rowNotes: { ...lib.rowNotes, 'teststraat-000000': { wall: { hex: '#6a6362', evidence: 'test' }, evidence: 'test' } } };
+  assert.equal(wallHexOf(st, null, 'teststraat-000000').hex, '#6a6362');
+});
+
 test('round 18: bays from the panorama count when enough members read and agree; else the width rule, byte for byte', async () => {
   const { baysOfMeasure, memberBaysOf, seriesBaysOf } = await import('./baysRead.js');
   const m = { frontClass: 'punched' as const, columns: 3, windowColumns: 3, pitchScore: 0.7, usableFraction: 0.9 };
@@ -278,17 +291,4 @@ test('round 20: a row note\'s raised part (tower lights, depth) reaches its memb
   assert.deepEqual(kitOf(flat, 0)?.raised, [{ a0: 0, a1: 0.5, riseM: 3, lights: 1, depthM: 4 }]);
   const plain = generateDistrict(lib, pands, streets, new Set(), 'test');
   assert.deepEqual(kitOf(plain, 1), kitOf(generateDistrict({ ...lib, rowNotes: notes({ [six(0)]: [{ a0: 0, a1: 0.5, riseM: 3 }] }) }, pands, streets, new Set(), 'test'), 1) && kitOf(plain, 1), 'members without a part: as before');
-});
-
-test('round 13: an unstated brick wall is never drawn grey; a warm one and a stated one are untouched', () => {
-  const lch = (hex: string) => { const n = parseInt(hex.slice(1), 16), [L, a, b] = oklab(n >> 16, (n >> 8) & 255, n & 255); return [L, Math.hypot(a, b), ((Math.atan2(b, a) * 180) / Math.PI + 360) % 360]; };
-  assert.equal(warmWall('#a2694f'), '#a2694f', 'Rooseveltlaan, warm already');
-  for (const grey of ['#5b504a', '#5b4e47', '#6a6362', '#484a4c']) {
-    const [L0] = lch(grey), [L, C, h] = lch(warmWall(grey));
-    assert.ok(Math.abs(L - L0) < 0.01, `${grey} keeps its lightness`);
-    assert.ok(C >= WALL_WARM.C - 0.002 && h >= WALL_WARM.h0 - 1 && h <= WALL_WARM.h1 + 1, `${grey} -> ${warmWall(grey)} (C ${C.toFixed(3)}, h ${h.toFixed(0)})`);
-  }
-  // A stated wall is drawn as stated.
-  const st: DistrictLibrary = { ...lib, rowNotes: { ...lib.rowNotes, 'teststraat-000000': { wall: { hex: '#6a6362', evidence: 'test' }, evidence: 'test' } } };
-  assert.equal(wallHexOf(st, null, 'teststraat-000000').hex, '#6a6362');
 });

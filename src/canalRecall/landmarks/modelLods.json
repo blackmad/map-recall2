@@ -6193,12 +6193,12 @@
   }
  },
  "schiller-rembrandtplein": {
-  "sourceHash": "21952a6e7fd5948b",
+  "sourceHash": "1524c96eed5c6588",
   "buildVersion": 2,
   "bytes": 63104,
   "triangles": 2614,
   "lod2": {
-   "sourceHash": "21952a6e7fd5948b",
+   "sourceHash": "1524c96eed5c6588",
    "buildVersion": 6,
    "bytes": 10420,
    "triangles": 271
@@ -6286,6 +6286,42 @@
    "buildVersion": 6,
    "bytes": 5360,
    "triangles": 144
+  }
+ },
+ "wilhelminatoren": {
+  "sourceHash": "323ca65272c178d6",
+  "buildVersion": 2,
+  "bytes": 68068,
+  "triangles": 2714,
+  "lod2": {
+   "sourceHash": "323ca65272c178d6",
+   "buildVersion": 6,
+   "bytes": 9596,
+   "triangles": 254
+  }
+ },
+ "oba-staatsliedenbuurt": {
+  "sourceHash": "40558159d66c65b5",
+  "buildVersion": 2,
+  "bytes": 70800,
+  "triangles": 3098,
+  "lod2": {
+   "sourceHash": "40558159d66c65b5",
+   "buildVersion": 6,
+   "bytes": 13728,
+   "triangles": 400
+  }
+ },
+ "room-mate-aitana": {
+  "sourceHash": "4c7a46296c749727",
+  "buildVersion": 2,
+  "bytes": 35932,
+  "triangles": 1563,
+  "lod2": {
+   "sourceHash": "4c7a46296c749727",
+   "buildVersion": 6,
+   "bytes": 6972,
+   "triangles": 187
   }
  }
 }
