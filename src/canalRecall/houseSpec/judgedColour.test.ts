@@ -164,6 +164,7 @@ test('dark-brown-brick (round 12): a dark brick at brown\'s hue, darker than bro
   const { JUDGED_PALETTE: P, JUDGED_FAMILIES: F, variedTone } = await import('./judgedColour.ts');
   assert.equal(F[F.length - 1], 'dark-brown-brick', 'appended: no family moves');
   const d = P['dark-brown-brick'];
-  assert.ok(d.L < P['brown-brick'].L && Math.abs(d.L - P['purple-brown-brick'].L) < 0.02 && d.h > P['purple-brown-brick'].h + 15 && !d.pale);
+  // Centrum round 7 moved purple-brown to L .37 h 40 (measured Centrum cuts); dark-brown stays browner by >10 degrees.
+  assert.ok(d.L < P['brown-brick'].L && Math.abs(d.L - P['purple-brown-brick'].L) <= 0.025 && d.h > P['purple-brown-brick'].h + 10 && !d.pale);
   assert.match(variedTone('dark-brown-brick', 'rubensstraat-133237'), /^#[0-9a-f]{6}$/);
 });
