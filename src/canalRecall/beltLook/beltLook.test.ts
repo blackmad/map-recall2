@@ -354,3 +354,87 @@ test('round 9: a row pitched roof storey runs one ridge along the row (Marnixstr
   // The dormer stands on the street slope.
   assert.ok(mid.some(t => t.part === 'dormerFace'));
 });
+
+test('round 10: the photo crown reader states a confident gable, a tall cornice and a plausible storey count', async () => {
+  const { photoCrown, plausiblePhotoStoreys, tallCorniceTop } = await import('./generate.ts');
+  // Singel 168333 / Amstel 165494 (necks drawn flat in round 9): a confident neck read states the crown; a low one does not.
+  assert.equal(photoCrown({ crown: 'neck', cornice: 'none', full: 4, souterrain: false, cc: 0.85, sc: 0.8 }).crown, 'neck');
+  assert.equal(photoCrown({ crown: 'neck', cornice: 'none', full: 4, souterrain: false, cc: 0.6, sc: 0.8 }).crown, undefined);
+  // A cornice read never states a crown (unstated is already a cornice); a bracketed one is a tall cornice.
+  assert.deepEqual(photoCrown({ crown: 'cornice', cornice: 'bracketed', full: 5, souterrain: false, cc: 0.8, sc: 0.5 }), { tallCornice: 'bracketed' });
+  assert.deepEqual(photoCrown({ crown: 'cornice', cornice: 'attic-frieze', full: 4, souterrain: true, cc: 0.75, sc: 0.6 }), { tallCornice: 'attic-frieze' });
+  // A plain cornice states nothing: the flat-cornice fronts keep the p90.
+  assert.deepEqual(photoCrown({ crown: 'cornice', cornice: 'simple', full: 4, souterrain: false, cc: 0.9, sc: 0.5 }), {});
+  // Prinsengracht 173559: three storeys over a souterrain under a neck whose foot is 9.1 m is a plausible pitch (2.53 m).
+  assert.equal(plausiblePhotoStoreys(3, true, 9.1), 3);
+  assert.equal(plausiblePhotoStoreys(6, false, 9.1), undefined);
+  assert.equal(plausiblePhotoStoreys(1, false, 9.1), undefined);
+  // Keizersgracht 172210 (photo read: attic frieze, cc 0.75): a tall cornice stands at the band's top (19.19 m), not its p90 (18.01 m).
+  const pand = { eavesM: 14.7, heightM: 18.13, ridgeM: null };
+  assert.equal(tallCorniceTop({ n: 49, p50: 13.47, p90: 18.01, max: 19.19 }, pand), 19.19);
+  // A max far over the p90 (a chimney, the roof behind) is not the cornice.
+  assert.equal(tallCorniceTop({ n: 49, p50: 13.47, p90: 16, max: 18.6 }, pand), null);
+});
+
+test('round 10 pins on the staged belt (data/buurt-generators/belt/row-front.json)', async () => {
+  const fs = await import('node:fs');
+  const recs = new Map<string, { crown?: { family?: string }; storeys?: number; topM?: number; eavesM?: number; series?: { cornice?: string } }>(
+    JSON.parse(fs.readFileSync('data/buurt-generators/belt/row-front.json', 'utf8')).records.map((r: { pandId: string }) => [r.pandId, r]));
+  const rec = (id: string) => recs.get(`0363100012${id}`)!;
+  // Necks the round-9 judges saw drawn flat: Singel 168333 house 1, Amstel 165494 (row 182625 house 2), Prinsengracht 173557.
+  for (const id of ['168333', '165494', '173557']) assert.equal(rec(id).crown?.family, 'neck', id);
+  // Prinsengracht 173559: three storeys under its neck (two in round 9).
+  assert.equal(rec('173559').storeys, 3);
+  // Keizersgracht 172210: its attic-frieze cornice at the AHN band's top, 19.19 m (18.01 m in round 9).
+  assert.equal(rec('172210').eavesM, 19.19);
+  assert.equal(rec('172210').series?.cornice, 'attic-frieze');
+  // Singel 177196 (held-out round 10, Singel 177194 house 2): a photo bell over four storeys stands its foot at 11.2 m (four
+  // storeys at 2.8 m, under the AHN apex 13.43 m less 2 m), not on 3DBAG's rear eave 8.7 m with two storeys.
+  assert.equal(rec('177196').storeys, 4);
+  assert.equal(rec('177196').eavesM, 11.2);
+});
+
+test('round 11: two crown reads on different captures, and the photo colour read', async () => {
+  const { mergeCrownReads, photoColourWall, photoColourWalls } = await import('./generate.ts');
+  const r = (crown: string, cc: number, full: number | null = 4, sc = 0.8) => ({ crown, cornice: 'none', full, souterrain: false, cc, sc });
+  // Prinsengracht 173558: a low neck read (0.55) and a confident second capture (neck 0.85, three storeys) states the neck.
+  assert.equal(mergeCrownReads(r('neck', 0.55, 4, 0.55), r('neck', 0.85, 3, 0.85)).crown, 'neck');
+  assert.equal(mergeCrownReads(r('neck', 0.55, 4, 0.55), r('neck', 0.85, 3, 0.85)).full, 3);
+  // A not-visible first read takes the second's gable; a confident first read is kept over a weaker second.
+  assert.equal(mergeCrownReads(r('not-visible', 0.8), r('step', 0.75)).crown, 'step');
+  assert.equal(mergeCrownReads(r('bell', 0.85), r('neck', 0.75)).crown, 'bell');
+  // Two confident reads that disagree on gabled against flat state no crown; on storeys, no storey count.
+  const c = mergeCrownReads(r('bell', 0.8), r('cornice', 0.8));
+  assert.ok(c.cc < 0.7 && c.conflict?.includes('crown'));
+  assert.ok(mergeCrownReads(r('bell', 0.8, 4), r('bell', 0.8, 5)).sc < 0.7);
+  // Keizersgracht 167979 (held-out round 10, Keizersgracht 167982 house 2): red-brown brick drawn buff from a washed-out
+  // sample; a confident colour read draws it red-brown. A low read, an unclear one and a published spec colour do nothing.
+  assert.deepEqual(photoColourWall({ photoColour: { finish: 'brick', family: 'red-brown-brick', confidence: 0.75 } }), { family: 'red-brown-brick', finish: 'brick' });
+  assert.equal(photoColourWall({ photoColour: { finish: 'brick', family: 'red-brown-brick', confidence: 0.6 } }), undefined);
+  assert.equal(photoColourWall({ photoColour: { finish: 'unclear', family: 'unclear', confidence: 0.9 } }), undefined);
+  assert.equal(photoColourWall({ specHex: '#6f5543', photoColour: { finish: 'brick', family: 'red-brown-brick', confidence: 0.9 } }), undefined);
+  assert.deepEqual(photoColourWall({ photoColour: { finish: 'stucco', family: 'white-paint', confidence: 0.8 } }), { family: 'painted-white', finish: 'stucco' });
+  assert.deepEqual(photoColourWall({ photoColour: { finish: 'paint', family: 'dark-paint', confidence: 0.8 } }), { family: 'painted-black', finish: 'painted-brick' });
+  const recs = [{ pandId: '0363100012167979', wall: { hex: '#b39c75', source: 'judged', finish: 'brick' }, sources: { wall: 'judged buff-brick (x)' } }] as never[];
+  const tally = photoColourWalls(recs, new Map([['0363100012167979', { photoColour: { finish: 'brick', family: 'red-brown-brick', confidence: 0.75 } }]]));
+  assert.deepEqual(tally, { 'buff-brick -> red-brown-brick': 1 });
+  assert.notEqual((recs[0] as { wall: { hex: string } }).wall.hex, '#b39c75');
+});
+
+test('round 11 pins on the staged belt (data/buurt-generators/belt/row-front.json)', async () => {
+  const fs = await import('node:fs');
+  const recs = new Map<string, { crown?: { family?: string }; storeys?: number; wall?: { finish?: string }; sources?: { wall?: string } }>(
+    JSON.parse(fs.readFileSync('data/buurt-generators/belt/row-front.json', 'utf8')).records.map((r: { pandId: string }) => [r.pandId, r]));
+  const rec = (id: string) => recs.get(`0363100012${id}`)!;
+  // Held-out round 10's "ornate flat tops drawn as gables" are gables on two capture dates: Singel 177194 a bell with a
+  // white top (2022 and 2023 cuts, cc 0.85 both), Keizersgracht 180133 (180047 house 4) a step gable (its own D1 read, and
+  // the 2023 cut at 0.75). They stay gables.
+  assert.equal(rec('177194').crown?.family, 'bell');
+  assert.equal(rec('180133').crown?.family, 'step');
+  // Prinsengracht 173558: a neck read at 0.55 on the 2023-02-27 cut, 0.85 on the 2023-02-13 cut: a neck over three storeys.
+  assert.equal(rec('173558').crown?.family, 'neck');
+  assert.equal(rec('173558').storeys, 3);
+  // Prinsengracht 167557 (Keizersgracht side street): painted black brick drawn pale grey stucco from a colourless paint read.
+  assert.match(rec('167557').sources?.wall ?? '', /^judged painted-black \(photo colour read/);
+  assert.equal(rec('167557').wall?.finish, 'painted-brick');
+});
