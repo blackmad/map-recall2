@@ -69,13 +69,15 @@ test('flatTopNoGable: no register or donor gable stands on Boomstraat 172664; th
   assert.equal(BELT_LOOK.flatTopNoGable, true);
 });
 
-test('the staged Jordaan look: Boomstraat 172664 left to today, 172663 at its band p50 with no gable', async () => {
+test('the staged Jordaan look: Boomstraat 172664 left to today; 172663 draws the neck its cut shows (Centrum round 5 crown read)', async () => {
   const fs = await import('node:fs');
   const url = new URL('../../../data/buurt-generators/jordaan/row-front.json', import.meta.url);
   if (!fs.existsSync(url)) return;
   const recs = new Map((JSON.parse(fs.readFileSync(url, 'utf8')).records as { pandId: string; topM: number; crown?: { family?: string } }[]).map(r => [r.pandId, r]));
   assert.equal(recs.has('0363100012172664'), false);
+  // Round 5: the v2 reader reads a neck at cc 0.8 on 172663's cut (a dark-painted neck gable with a white top; the lane
+  // looked), where the register is silent. Its wall stays under the old band-p50 line; the gable rises above it.
   const r = recs.get('0363100012172663')!;
-  assert.ok(r.topM <= 13.5, `172663 top ${r.topM}`);
-  assert.equal(r.crown?.family ?? 'cornice', 'cornice');
+  assert.equal(r.crown?.family, 'neck', JSON.stringify(r.crown));
+  assert.ok(r.topM <= 16, `172663 top ${r.topM}`);
 });

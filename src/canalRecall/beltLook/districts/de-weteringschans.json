@@ -1,0 +1,165 @@
+{
+ "id": "de-weteringschans",
+ "note": "De Weteringschans (wijk AH) district look, centrum-looks round 5 (2026-11-16): the belt look's donor method with the wijk's own D1 reads (the third-ranked Centrum district by local reads, 77 % of its pands built before 1915). Weteringbuurt, Leidsebuurt, Den Texbuurt, Frederikspleinbuurt and Utrechtsebuurt-Zuid: Lijnbaansgracht canal houses and 1860-1900 speculative rows. Measured: scripts/centrum-looks/measure-district.ts. maxYear 1914 as in the Jordaan (later blocks stay with today and the buurt generator). Roof signals and the run-by-run wall draw as in the Jordaan.",
+ "buurten": [
+  "AH01",
+  "AH02",
+  "AH03",
+  "AH04",
+  "AH05",
+  "AH06",
+  "AH07",
+  "AH08"
+ ],
+ "readDirs": [
+  "answers",
+  "answers-ah07",
+  "ring-20261114/answers"
+ ],
+ "canals": [
+  "Lijnbaansgracht",
+  "Prinsengracht",
+  "Spiegelgracht"
+ ],
+ "pitchM": {
+  "min": 3.9,
+  "max": 4.8
+ },
+ "foreignDonor": 1,
+ "maxYear": 1914,
+ "flatTopNoGable": true,
+ "slopedBand": true,
+ "measuredRoofStorey": true,
+ "wallDraw": {
+  "note": "Centrum-looks round 5 (2026-11-16): the Jordaan's judged weights (measure: false; cut samples read dark absolutely, as in the Jordaan). The photo colour reader draws the front where the register is silent and it reads at >= 0.7; these weights only fill runs with no read. Paint is never drawn by lot.",
+  "before1860": {
+   "red-brown-brick": 0.45,
+   "brown-brick": 0.4,
+   "orange-red-brick": 0.15
+  },
+  "from1860": {
+   "brown-brick": 0.5,
+   "red-brown-brick": 0.35,
+   "orange-red-brick": 0.15
+  },
+  "runSamples": 2,
+  "priorN": 8,
+  "prior": "own",
+  "measure": false
+ },
+ "measured": {
+  "at": "2026-11-16",
+  "donors": 137,
+  "pitch": {
+   "n": 120,
+   "p10": 3.53,
+   "p25": 3.92,
+   "p50": 4.44,
+   "p75": 4.8,
+   "p90": 5.53,
+   "band": {
+    "min": 3.9,
+    "max": 4.8
+   },
+   "rule": "min p25 floor 0.1, max p75 round 0.1"
+  },
+  "readCrownByPeriod": {
+   "1870-1914": {
+    "cornice": 59,
+    "point": 7,
+    "flat": 4,
+    "mansard": 30,
+    "step": 5,
+    "bell": 2
+   },
+   "1980+": {
+    "flat": 3,
+    "mansard": 1
+   },
+   "1800-1869": {
+    "cornice": 17,
+    "pitched-eaves": 1,
+    "mansard": 4,
+    "point": 2
+   },
+   "1915-1944": {
+    "flat": 1,
+    "point": 1
+   }
+  },
+  "readFinishByPeriod": {
+   "1870-1914": {
+    "brick": 93,
+    "stucco": 7,
+    "painted-brick": 7
+   },
+   "1980+": {
+    "brick": 3,
+    "stone": 1
+   },
+   "1800-1869": {
+    "brick": 19,
+    "painted-brick": 5
+   },
+   "1915-1944": {
+    "brick": 2
+   }
+  },
+  "readGroundByPeriod": {
+   "1870-1914": {
+    "dwelling": 85,
+    "shopfront": 14,
+    "not-visible": 8
+   },
+   "1980+": {
+    "dwelling": 2,
+    "shopfront": 2
+   },
+   "1800-1869": {
+    "shopfront": 12,
+    "dwelling": 11,
+    "warehouse": 1
+   },
+   "1915-1944": {
+    "shopfront": 1,
+    "dwelling": 1
+   }
+  },
+  "registerCrownByPeriod": {
+   "1700s": {
+    "cornice": 37,
+    "point": 14,
+    "bell": 19,
+    "neck": 82
+   },
+   "pre1700": {
+    "neck": 13,
+    "bell": 24,
+    "step": 4,
+    "cornice": 8,
+    "point": 4
+   },
+   "1870-1914": {
+    "cornice": 37,
+    "neck": 1,
+    "step": 1
+   },
+   "1800-1869": {
+    "cornice": 50,
+    "bell": 11,
+    "neck": 1,
+    "point": 1
+   }
+  },
+  "readsByStreet": {
+   "Weteringschans": 85,
+   "Den Texstraat": 30,
+   "Nicolaas Witsenkade": 9,
+   "Nicolaas Witsenstraat": 3,
+   "Reguliersgracht": 2,
+   "Nieuwe Vijzelstraat": 3,
+   "Eerste Weteringplantsoen": 4,
+   "Westeinde": 1
+  }
+ }
+}

@@ -85,21 +85,34 @@ test('Lindengracht 168662 and Leidsekade 174376 (round 2: "colours alternate"): 
   for (const row of ['jordaan-lindengracht-168662', 'jordaan-leidsekade-174376']) {
     const w = rowWalls(recs, row).filter(x => x.src.includes('wall draw'));
     assert.ok(w.length >= 8, `${row}: drawn fronts`);
-    const unread = w.filter(x => !ownPhoto(x.src));
-    assert.equal(new Set(unread.map(x => familyOf(x.src))).size, 1, `${row}: one family off the photo (${unread.map(x => familyOf(x.src))})`);
+    const unread = w.filter(x => !ownPhoto(x.src)), fams = unread.map(x => familyOf(x.src));
     assert.ok(!w.some(x => familyOf(x.src) === 'buff-brick'), `${row}: no buff`);
-    const fam = familyOf(unread[0].src), L = w.filter(x => familyOf(x.src) === fam).map(x => lchOf(x.hex).L);
+    // Round 5: the run family holds the run; a later series of the row (Leidsekade 174372-174369, 1886) may take its own.
+    const main = [...new Set(fams)].sort((a, b) => fams.filter(f => f === b).length - fams.filter(f => f === a).length)[0];
+    assert.ok(fams.filter(f => f === main).length >= 0.8 * fams.length, `${row}: one family off the photo (${fams})`);
+    const L = w.filter(x => familyOf(x.src) === main).map(x => lchOf(x.hex).L);
     assert.ok(Math.max(...L) - Math.min(...L) <= 0.06, `${row}: small tone differences within the family`);
   }
 });
 
-test("Bloemgracht 172858: fronts the photo reads draw as read (173055 is red-brown brick on its cut, 173056 white paint); the rest take the street's dark grey-brown", () => {
+test('Round 5 (grey-brown read red-brown): Lindengracht 168662, Palmstraat 168635 and Groenburgwal 178637 draw grey-brown; Lindengracht 172512 keeps its red', () => {
+  const j = staged('jordaan'), n = staged('nieuwmarkt-lastage');
+  for (const row of ['jordaan-lindengracht-168662', 'jordaan-palmstraat-168635']) {
+    const w = rowWalls(j, row).filter(x => x.id !== '0363100012172512');
+    for (const x of w) assert.equal(familyOf(x.src), 'brown-brick', `${row} ${x.id}: ${x.src}`);
+  }
+  assert.equal(familyOf(rowWalls(j, 'jordaan-lindengracht-168662').find(x => x.id === '0363100012172512')!.src), 'red-brown-brick');
+  const g3 = rowWalls(n, 'nieuwmarkt-lastage-groenburgwal-178635').find(x => x.id === '0363100012178637')!;
+  assert.ok(ownPhoto(g3.src) && familyOf(g3.src) === 'brown-brick', g3.src);
+});
+
+test("Bloemgracht 172858: fronts the photo reads draw as read (173056 white paint); the rest take the street's dark grey-brown (173055: v1 red-brown, v2 and a second capture brown, left to the street)", () => {
   const w = rowWalls(staged('jordaan'), 'jordaan-bloemgracht-172858');
   assert.equal(w.length, 8);
   const reads = JSON.parse(fs.readFileSync(new URL('../../../data/buurt-generators/jordaan/photo-reads.json', import.meta.url), 'utf8')).reads;
   for (const x of w.filter(x => ownPhoto(x.src))) assert.ok(reads[x.id]?.confidence >= 0.7, `${x.id}: a photo wall needs a read >= 0.7`);
   for (const x of w.filter(x => !byPhoto(x.src))) assert.equal(familyOf(x.src), 'dark-grey-brick', `${x.id}: ${x.src}`);
-  assert.equal(familyOf(w.find(x => x.id === '0363100012173055')!.src), 'red-brown-brick');
+  assert.ok(!ownPhoto(w.find(x => x.id === '0363100012173055')!.src));
   assert.equal(familyOf(w.find(x => x.id === '0363100012173056')!.src), 'painted-white');
 });
 

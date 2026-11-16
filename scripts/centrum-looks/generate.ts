@@ -20,13 +20,13 @@ import type { DistrictLibrary } from '../../src/canalRecall/buurtGenerator/gener
 import { districtRows } from '../../src/canalRecall/buurtGenerator/rows.ts';
 import { generateBelt, type BeltRead } from '../../src/canalRecall/beltLook/generate.ts';
 import type { AhnFront } from '../../src/canalRecall/beltLook/ahnFront.ts';
-import { frontTopM, segmentOf, usableDonor, type BeltDonor, type LookDistrict } from '../../src/canalRecall/beltLook/donors.ts';
+import { GABLED_CROWNS, frontTopM, segmentOf, usableDonor, type BeltDonor, type LookDistrict } from '../../src/canalRecall/beltLook/donors.ts';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.ts';
 import { toRowCheck } from '../../src/canalRecall/houseSpec/row/check.ts';
 import type { DescriberAnswer } from '../../src/canalRecall/houseSpec/describer.ts';
 import { modernBehindRegister } from '../../src/canalRecall/beltLook/roofSignals.ts';
 import { drawRowWalls, measuredWeights, streetFamily, type WallDrawConfig, type WallDrawn, type WeightEvidence } from '../../src/canalRecall/beltLook/wallDraw.ts';
-import { strongPhoto, photoFinish, PHOTO_FINISH_MIN } from '../../src/canalRecall/beltLook/generate.ts';
+import { strongPhoto, photoFinish, photoCrown, PHOTO_FINISH_MIN, type PhotoCrown } from '../../src/canalRecall/beltLook/generate.ts';
 import { describerDarkPhrase } from '../../src/canalRecall/houseSpec/darkFinish.ts';
 import { describerColourWord, judgeFront, type JudgedFamily } from '../../src/canalRecall/houseSpec/judgedColour.ts';
 
@@ -47,7 +47,7 @@ export function districtReads(look: LookDistrictFile, pands: ReturnType<typeof d
   const front = new Map<string, { street: string; lengthM: number }>();
   for (const r of districtRows(pands, streets, { singles: true }).rows) for (const m of r.members) front.set(m.pand.id.replace(/^NL\.IMBAG\.Pand\./, ''), { street: m.front.street, lengthM: m.front.lengthM });
   const cuts = new Map<string, any>();
-  for (const f of ['cuts/cuts.json']) if (fs.existsSync(path.join(root, f))) for (const r of JSON.parse(fs.readFileSync(path.join(root, f), 'utf8')).rows ?? []) cuts.set(r.pandId, r);
+  for (const f of ['cuts/cuts.json', 'cuts-ah07/cuts.json', 'ring-20261114/cuts/cuts.json']) if (fs.existsSync(path.join(root, f))) for (const r of JSON.parse(fs.readFileSync(path.join(root, f), 'utf8')).rows ?? []) cuts.set(r.pandId, r);
   const reads = new Map<string, BeltRead>(), donors: BeltDonor[] = [];
   for (const dir of look.readDirs) {
     const d = path.join(root, dir);
@@ -64,6 +64,12 @@ export function districtReads(look: LookDistrictFile, pands: ReturnType<typeof d
   return { reads, donors };
 }
 
+/** A photo read that overrules a register gable: a cornice or plain parapet read at PHOTO_OVER_REGISTER_CC. */
+export const PHOTO_OVER_REGISTER_CC = 0.75;
+export function photoOverRegisterGable(registerCrown: string | undefined, r: Partial<PhotoCrown> | undefined): boolean {
+  return !!registerCrown && GABLED_CROWNS.has(registerCrown) && !!r && typeof r.cc === 'number' && r.cc >= PHOTO_OVER_REGISTER_CC && (r.crown === 'cornice' || r.crown === 'flat');
+}
+
 /** The photo colour reader's families (artifacts/centrum-looks/photo/reader-prompt.md) as the judged palette's. */
 export const PHOTO_FAMILY: Record<string, JudgedFamily> = {
   'dark-grey-brick': 'dark-grey-brick', 'purple-brown-brick': 'purple-brown-brick', 'brown-brick': 'brown-brick', 'red-brown-brick': 'red-brown-brick',
@@ -73,9 +79,13 @@ export const PHOTO_FAMILY: Record<string, JudgedFamily> = {
 export interface PhotoRead { finish: string; family: string; confidence: number; reader: string }
 /** A photo read's family when it may stand: confident, a family the palette has, and the register silent on the finish. */
 export function photoFamily(r: PhotoRead | undefined, registerFinish: string | undefined): JudgedFamily | undefined {
-  if (!r || registerFinish || !(r.confidence >= PHOTO_FINISH_MIN)) return undefined;
+  if (!r || !(r.confidence >= PHOTO_FINISH_MIN)) return undefined;
+  // Round 5: a register that states brick says nothing of its colour; a brick family read on the photo stands under it
+  // (Lindengracht 172512, red brick read at 0.85, drawn the run's brown). A painted, plaster or stone register stands.
+  if (registerFinish && !(BRICK_FINISHES.has(registerFinish) && r.family.endsWith('-brick'))) return undefined;
   return PHOTO_FAMILY[r.family];
 }
+const BRICK_FINISHES: ReadonlySet<string> = new Set(['brick', 'ornamentalBrick']);
 export const loadPhotoReads = (id: string, file?: string): Map<string, PhotoRead> => {
   const f = file ?? [`artifacts/centrum-looks/photo/${id}-photo-reads.json`, `data/buurt-generators/${id}/photo-reads.json`].find(x => fs.existsSync(x));
   return new Map(f && fs.existsSync(f) ? Object.entries<PhotoRead>(JSON.parse(fs.readFileSync(f, 'utf8')).reads ?? {}) : []);
@@ -153,9 +163,20 @@ async function main() {
   // a confident read states the finish where the register is silent; its family goes to the wall draw (drawWalls).
   const registerFinish = new Map<string, string>([...stated].flatMap(([k, v]) => (v.finish ? [[k, v.finish] as [string, string]] : [])));
   const photo = process.argv.includes('--no-photo') ? new Map<string, PhotoRead>() : loadPhotoReads(id, arg('photo-reads'));
+  let photoCrowns = 0;
+  const registerGablesDropped: string[] = [];
   for (const [pid, r] of photo) {
     const cur = stated.get(pid) ?? {}, fin = cur.finish ? undefined : photoFinish(r.finish === 'unclear' ? undefined : r as never);
-    if (fin) stated.set(pid, { ...cur, finish: fin });
+    // Round 5: lane D's crown reader's fields, read by the v2 reader on the same cut (photoCrown: a gabled crown where the
+    // register is silent, a tall cornice, the storey count; each at PHOTO_CROWN_MIN).
+    const pc = photoCrown(typeof (r as Partial<PhotoCrown>).cc === 'number' ? r as unknown as PhotoCrown : undefined), crown = !cur.crown && pc.crown ? pc.crown : undefined;
+    if (crown) photoCrowns++;
+    // A register gable the photo confidently reads as a cornice or a plain parapet is a front that changed (round 4 judges:
+    // gables invented on flat-cornice rows; 43 donor fronts drawn gabled under a photo cornice, checked by eye on 8).
+    if (photoOverRegisterGable(cur.crown, r as unknown as PhotoCrown)) { const { crown: _gone, ...rest } = cur; stated.set(pid, rest); registerGablesDropped.push(pid); }
+    const now = stated.get(pid) ?? {};
+    if (fin || crown || pc.tallCornice || pc.storeys) stated.set(pid, { ...now, ...(fin ? { finish: fin } : {}), ...(crown ? { crown } : {}),
+      ...(pc.tallCornice ? { tallCornice: pc.tallCornice } : {}), ...(pc.storeys ? { photoStoreys: pc.storeys } : {}), ...(pc.souterrain !== undefined ? { photoSouterrain: pc.souterrain } : {}) });
   }
   // Later periods stay with today and the buurt generator: a pand built after maxYear (BAG; an earlier register facade
   // year keeps it) breaks rows like a described pand.
@@ -223,7 +244,7 @@ async function main() {
       const st = o?.storeys?.value ?? s.design.storeys?.value; storeys[st] = (storeys[st] ?? 0) + 1;
     }
   }
-  const report = { at, district: id, buurten: look.buurten, pitchM: look.pitchM, foreignDonor: look.foreignDonor, ahnFronts: ahn.size, overSpecs, specOnlyRedrawn: drawn.filter(p => specOnly.has(p)).length,
+  const report = { at, district: id, buurten: look.buurten, pitchM: look.pitchM, foreignDonor: look.foreignDonor, ahnFronts: ahn.size, overSpecs, photoCrowns, registerGablesDropped: registerGablesDropped.length, statedPhotoStoreys: [...stated.values()].filter(v => v.photoStoreys).length, specOnlyRedrawn: drawn.filter(p => specOnly.has(p)).length,
     pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length - laterPeriod.size, laterPeriod: laterPeriod.size, maxYear: look.maxYear ?? null, drawn: drawn.length, ownRead: ownN, donorRead: drawn.length - ownN, donorDistrict,
     ownDonors: own.donors.length, beltDonors: belt.donors.length, rows: res.rows.length, records: records.length, skipped: bySkip, bySegment: bySeg, crowns, storeys, findings,
     statedCrown: drawn.filter(p => stated.get(p)?.crown).length, modernBehindRegister: Object.keys(modern).length, walls, wallWeights, ms: Date.now() - t0 };
