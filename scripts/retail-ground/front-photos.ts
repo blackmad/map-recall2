@@ -46,8 +46,14 @@ const freeGb = () => { try { return Number(execSync("df -k / | tail -1 | awk '{p
 const ov = JSON.parse(fs.readFileSync('.cache/retail-ground/overpass.json', 'utf8')) as { elements: Array<{ id: number; lat?: number; lon?: number; tags?: Record<string, string> }> };
 const staged = JSON.parse(fs.readFileSync('data/retail-ground/shop-templates.json', 'utf8')) as { templates: string[]; buildings: Record<string, [number, number, number]> };
 const byAt = new Map(Object.entries(staged.buildings).map(([id, r]) => [`${r[1]},${r[2]}`, id]));
-const want = nodes.map(n => ov.elements.find(e => String(e.id) === n)).filter(Boolean) as Array<{ id: number; lat: number; lon: number; tags?: Record<string, string> }>;
-const ids = want.map(e => byAt.get(`${Math.round(e.lon * 1e6) / 1e6},${Math.round(e.lat * 1e6) / 1e6}`)).filter(Boolean) as string[];
+// Lane retail-real round 5 (`--hosts=<json>`): node -> { pand, at } from an assignment trace, so the cut aims at the
+// pand the extract hosts the node on (and at its staged front point) rather than the one its point falls in.
+const hosts = (arg('hosts') ? JSON.parse(fs.readFileSync(arg('hosts')!, 'utf8')) : {}) as Record<string, { pand: string; at?: [number, number] }>;
+// A node OSM lacks (a second source's add, negative id) is cut from its hosts entry's `at`.
+const byId = new Map(ov.elements.map(e => [String(e.id), e]));
+const want = nodes.map(n => byId.get(n) ?? (hosts[n]?.at ? { id: Number(n), lon: hosts[n].at![0], lat: hosts[n].at![1], tags: {} } : undefined)).filter(Boolean) as Array<{ id: number; lat: number; lon: number; tags?: Record<string, string> }>;
+const hostId = (e: { id: number }) => hosts[e.id] ? Object.keys(staged.buildings).find(k => k.endsWith(hosts[e.id].pand)) ?? `NL.IMBAG.Pand.${hosts[e.id].pand}` : undefined;
+const ids = want.map(e => hostId(e) ?? byAt.get(`${Math.round(e.lon * 1e6) / 1e6},${Math.round(e.lat * 1e6) / 1e6}`)).filter(Boolean) as string[];
 const fps = await findPands(ids);
 const before = new Set(fs.existsSync(CACHE_DIR) ? fs.readdirSync(CACHE_DIR).filter(f => f.endsWith('.jpg')) : []);
 panoTracker.touched = new Set();
@@ -55,8 +61,8 @@ const receipts: Record<string, unknown> = {};
 for (const e of want) {
   if (freeGb() < 15) { console.log('under 15 GB free: stopping'); break; }
   if (http.bytes > MAX_MB * 1024 ** 2) { console.log(`${MAX_MB} MB downloaded: stopping`); break; }
-  const node = lngLatToRd([e.lon, e.lat]);
-  let id = byAt.get(`${Math.round(e.lon * 1e6) / 1e6},${Math.round(e.lat * 1e6) / 1e6}`), fp = id ? fps.get(id) : undefined;
+  const node = lngLatToRd(hosts[e.id]?.at ?? [e.lon, e.lat]);
+  let id = hostId(e) ?? byAt.get(`${Math.round(e.lon * 1e6) / 1e6},${Math.round(e.lat * 1e6) / 1e6}`), fp = id ? fps.get(id) : undefined;
   const others: Footprint[] = await neighbourhood(node);
   if (!fp) {
     const ringDist = (f: Footprint) => inside(node, f.ring) ? 0 : Math.min(...f.ring.slice(1).map((p, i) => nearestOnSeg(node, { a: f.ring[i], b: p }).d));
@@ -74,7 +80,10 @@ for (const e of want) {
   const shop = shopStretch(wall, node), quad: WallQuad = { a: shop.a, b: shop.b, heightM: AIM.heightM };
   let done = 0; const tried: string[] = [];
   try {
-    for (const pick of rankPanos(shop, await listPanos(shop.mid, 30), AIM.window).slice(0, AIM.tries)) {
+    // `--newest` (lane retail-real round 5): the latest capture first, so a shop check is not judged on a 2019 front.
+    const ranked = rankPanos(shop, await listPanos(shop.mid, 30), AIM.window);
+    if (process.argv.includes('--newest')) ranked.sort((p, q) => String(q.timestamp).slice(0, 7).localeCompare(String(p.timestamp).slice(0, 7)));
+    for (const pick of ranked.slice(0, AIM.tries)) {
       if (done >= PER) break;
       const img = await loadEquirect(pick.record, 'small'); if (!img) continue;
       const ll: [number, number] = [pick.record.geometry.coordinates[0], pick.record.geometry.coordinates[1]], published = Number(pick.record.geometry.coordinates[2]);
@@ -97,6 +106,7 @@ for (const e of want) {
     if (!done) receipts[e.id] = { pand: id, name: e.tags?.name ?? '', skip: tried.length ? 'every candidate blocked or off the cut' : 'no panorama facing the stretch', skipped: tried };
   } catch (err) { receipts[e.id] = { skip: (err as Error).message }; }
   const mine = [...panoTracker.touched].filter(f => !before.has(path.basename(f))); panoTracker.touched.clear(); await purgeFiles(mine);
+  fs.writeFileSync(path.join(OUT, 'receipts.json'), JSON.stringify(receipts, null, 1)); // per front, so a stopped run keeps its receipts
 }
 function inside(p: { x: number; y: number }, ring: ReadonlyArray<{ x: number; y: number }>): boolean {
   let c = false;

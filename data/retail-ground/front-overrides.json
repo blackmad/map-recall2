@@ -1,0 +1,10 @@
+{
+ "note": "Lane retail-real round 4: per-pand shopfront colours read on an open panorama where the template's own colours are wrong. Drawn only with ?retailParts=1 (retailPages.ts retailPartsOn) until a blind win. frame: posts, mullions, transom and riser; awning: a straight awning over the window.",
+ "buildings": {
+  "0363100012132271": {
+   "frame": "#c8cbc4",
+   "awning": "#a4464c",
+   "receipt": "Cafe Hendrix (feedback 7be6c55a). Median pixels of the house:frames panorama cut (artifacts/round-n/hendrix-off/0363100012132271/photo.jpg, Gemeente Amsterdam Panoramabeelden, CC BY 4.0): 9 points on the window mullions and posts, 7 along the awning valance; measured 2026-11-16."
+  }
+ }
+}

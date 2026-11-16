@@ -27,6 +27,8 @@ const templateForTags = (tags: Record<string, string>): RetailTemplate | null =>
 import { insideCentre, RING_KM, DAM } from '../../src/canalRecall/retailArea.ts';
 import { streetPriors, type StreetRead } from '../../src/canalRecall/retailPuiPaint.ts';
 import { bikeShopClass, bikeCode } from '../../src/canalRecall/retailBikes.ts';
+import { closedByOverture, sameName, MATCH_M } from '../../src/canalRecall/retailSources.ts';
+import { READ_MIN_CONF, correctionFor, type SignRead } from '../../src/canalRecall/retailSignReads.ts';
 import { addressPand, atOnStreetWall, matchAddress, type Vbo } from '../../src/canalRecall/retailAddress.ts';
 
 import { CACHE, nodes, LAT0, KX, KY, local, grid, streets, walls, facing, open, near, bagUses, bagKey, namedSegs, lngLatOf, type Building, type Node } from './city.ts';
@@ -36,7 +38,7 @@ const STAGING = 'data/retail-ground/shop-templates.json', PUBLISHED = 'public/da
 
 // `--explain=<osm node id>,...`: every footprint within 30 m of the node, with its distance, BAG uses and the host picked.
 const explain = new Set((arg('explain') ?? '').split(',').filter(Boolean));
-const placed = new Map<string, { chain?: string; t: RetailTemplate; at: [number, number]; front: 'street' | 'nearest'; name: string; tags: string; centre: boolean; ring: boolean; bike?: ReturnType<typeof bikeShopClass> }>();
+const placed = new Map<string, { node: number; chain?: string; t: RetailTemplate; at: [number, number]; front: 'street' | 'nearest'; name: string; tags: string; centre: boolean; ring: boolean; bike?: ReturnType<typeof bikeShopClass> }>();
 const pois: Record<string, number> = {}, unhosted: Record<string, number> = {}, moved = { host: 0, nearest: 0, lost: 0, gained: 0 };
 // Round 5: the pands some template POI sits on by the plain rules; a POI moves to a bigger shop next door
 // (retailHosting.ts SPILL) only when no other POI holds it.
@@ -56,10 +58,31 @@ const byAddress = (n: Node) => {
   const [x, y] = local(a.at[0], a.at[1]), pand = near(x, y).find(c => bagKey(c.id) === a.pand);
   return pand ? hostOnFront([pand], x, y, id => bagUses[bagKey(id)], facing, open) : null;
 };
+// Lane retail-real round 5 (`--r5`, off): drop a POI Overture lists only as permanently closed (retailSources.ts
+// closedByOverture; the pand falls to the next POI hosted on it, else plain) and host by PARTY (retailHosting.ts).
+// Held: the blind on 18 changed pands went 4 to today, 1 to the rules, 13 ties: a closed shop still leaves a
+// shopfront (a plain house door is further off), and Overture's closed flag was wrong on 2 of the 2 visible drops.
+const R5 = process.argv.includes('--r5');
+const OVERTURE = '.cache/retail-ground/overture/places-2026-10-21.0.json', CLOSED_DROPS = 'data/retail-ground/closed-drops.json';
+type Place = { id: string; name: string | null; status: string | null; lng: number; lat: number };
+const placeGrid = new Map<string, Place[]>();
+if (fs.existsSync(OVERTURE)) for (const p of (JSON.parse(fs.readFileSync(OVERTURE, 'utf8')) as { places: Place[] }).places) { if (!p.name) continue; const [x, y] = local(p.lng, p.lat), k = `${Math.floor(x / 100)},${Math.floor(y / 100)}`; let l = placeGrid.get(k); if (!l) placeGrid.set(k, l = []); l.push(p); }
+const closedDrops: Array<{ node: number; name: string; overture: string[] }> = [];
+const closedNode = new Map<number, boolean>();
+const isClosed = (n: Node): boolean => {
+  if (!R5) return false;
+  if (closedNode.has(n.id)) return closedNode.get(n.id)!;
+  const tags = n.tags ?? {}, [x, y] = local(n.lon, n.lat), gx = Math.floor(x / 100), gy = Math.floor(y / 100), ps: (Place & { d: number })[] = [];
+  for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (const p of placeGrid.get(`${gx + dx},${gy + dy}`) ?? []) { const [px, py] = local(p.lng, p.lat); ps.push({ ...p, d: Math.hypot(px - x, py - y) }); }
+  const name = tags.name ?? tags.brand, closed = closedByOverture(name, ps.map(p => ({ name: p.name!, status: p.status, d: p.d })), tags.check_date, tags.brand ?? chainOf(tags) ?? undefined);
+  if (closed) closedDrops.push({ node: n.id, name: name!, overture: ps.filter(p => p.d <= MATCH_M && sameName(name, p.name!)).map(p => `overture:${p.id}`) });
+  closedNode.set(n.id, closed);
+  return closed;
+};
 const occupied = new Set<string>();
 for (const n of allNodes) {
   const tags = n.tags ?? {};
-  if (Number(tags.level) > 0 || !templateForTags(tags)) continue;
+  if (Number(tags.level) > 0 || !templateForTags(tags) || isClosed(n)) continue;
   const [x, y] = local(n.lon, n.lat), h = byAddress(n) ?? hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open);
   if (h) occupied.add(h.id);
 }
@@ -67,13 +90,13 @@ let spilled = 0, added = 0, onStreet = 0;
 const records: { n: Node; t: RetailTemplate; hit: ReturnType<typeof hostOnFront>; plain: ReturnType<typeof hostOnFront> }[] = [];
 for (const n of allNodes) {
   const tags = n.tags ?? {};
-  if (Number(tags.level) > 0) continue;
+  if (Number(tags.level) > 0 || isClosed(n)) continue;
   const t = templateForTags(tags);
   if (t && n.id < 0) added++;
   if (!t) continue;
   pois[t] = (pois[t] ?? 0) + 1;
   const [x, y] = local(n.lon, n.lat);
-  const plain = hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open), moved1 = t !== 'redLight' ? hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open, true) : plain;
+  const plain = hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open), moved1 = t !== 'redLight' ? hostOnFront(near(x, y), x, y, id => bagUses[bagKey(id)], facing, open, true, R5) : plain;
   const addr = byAddress(n); if (addr) addressed++;
   const hit = addr ?? (moved1 && plain && moved1.id !== plain.id && occupied.has(moved1.id) ? plain : moved1);
   records.push({ n, t, hit, plain });
@@ -97,7 +120,7 @@ for (const n of allNodes) {
   let at: [number, number] = [n.lon, n.lat];
   const pand = tags['addr:street'] && hit.front === 'street' ? near(x, y).find(c => c.id === hit.id) : undefined;
   if (pand) { const p = atOnStreetWall(pand.ring, x, y, tags['addr:street'], namedSegs.filter(s => Math.abs(s.x0 - x) < 80 && Math.abs(s.y0 - y) < 80)); if (p && Math.hypot(p[0] - x, p[1] - y) > 0.5) { at = lngLatOf(p[0], p[1]); onStreet++; } }
-  placed.set(hit.id, { ...(chainOf(tags) ? { chain: chainOf(tags)! } : {}), t, at: [Math.round(at[0] * 1e6) / 1e6, Math.round(at[1] * 1e6) / 1e6], front: hit.front, name: tags.name ?? '', tags: Object.entries(tags).filter(([k]) => /^(shop|amenity|cuisine|brand|name|addr:street|addr:housenumber|bar|origin)$/.test(k)).map(([k, v]) => `${k}=${v}`).join(' '), centre: insideCentre(n.lon, n.lat), ring, ...(t === 'bike' ? { bike: bikeShopClass(tags) } : {}) });
+  placed.set(hit.id, { node: n.id, ...(chainOf(tags) ? { chain: chainOf(tags)! } : {}), t, at: [Math.round(at[0] * 1e6) / 1e6, Math.round(at[1] * 1e6) / 1e6], front: hit.front, name: tags.name ?? '', tags: Object.entries(tags).filter(([k]) => /^(shop|amenity|cuisine|brand|name|addr:street|addr:housenumber|bar|origin)$/.test(k)).map(([k, v]) => `${k}=${v}`).join(' '), centre: insideCentre(n.lon, n.lat), ring, ...(t === 'bike' ? { bike: bikeShopClass(tags) } : {}) });
 }
 
 const rows = RETAIL_TEMPLATES.map(t => {
@@ -130,7 +153,36 @@ if (samples) {
     for (const [id, p] of pick) console.log(`sample ${t} ${bagKey(id)} ${p.at.join(',')} ${p.tags}`);
   }
 }
+// Lane retail-real round 6: the sign reads (retailSignReads.ts correctionFor), a correction layer over OSM read off the
+// newest facing panorama; opt-in with `--reads` until its blind is in. Receipts (panorama, date, reader, confidence) stay in READS.
+const READS = 'data/retail-ground/sign-reads.json', neutral: string[] = [], quiet: string[] = [], readCount: Record<string, number> = {};
+if (process.argv.includes('--reads') && fs.existsSync(READS)) {
+  const reads = (JSON.parse(fs.readFileSync(READS, 'utf8')) as { reads: Record<string, SignRead> }).reads;
+  // Lane R's De Wallen audit read every red-light row on its own measured panorama: it outranks a sign read.
+  const RED_AUDIT = 'data/retail-ground/dewallen-redlight-audit.json', audited = new Set<string>();
+  if (fs.existsSync(RED_AUDIT)) { const a = JSON.parse(fs.readFileSync(RED_AUDIT, 'utf8')) as Record<string, Array<{ pandId: string }>>; for (const k of ['fronts', 'notWindow', 'readNotDrawn']) for (const f of a[k] ?? []) audited.add(bagKey(f.pandId)); }
+  for (const [id, p] of [...placed]) {
+    const r = reads[bagKey(id)]; if (!r || r.node !== p.node) continue;
+    if (p.t === 'redLight' && audited.has(bagKey(id))) { readCount.audited = (readCount.audited ?? 0) + 1; continue; }
+    const c = correctionFor(r, templateForTags, Number(arg('read-floor') ?? READ_MIN_CONF));
+    readCount[c.action] = (readCount[c.action] ?? 0) + 1;
+    if (c.action === 'keep') continue;
+    if (c.action === 'template') {
+      if (c.template === p.t) { readCount.sameTemplate = (readCount.sameTemplate ?? 0) + 1; continue; }
+      const chain = chainOf(c.tags);
+      placed.set(id, { ...p, chain: chain ?? undefined, t: c.template, name: c.tags.name ?? '', tags: Object.entries(c.tags).map(([k, v]) => `${k}=${v}`).join(' ') + ' source=sign-read', bike: c.template === 'bike' ? bikeShopClass(c.tags) : undefined });
+      if (!chain) delete placed.get(id)!.chain;
+      if (c.template !== 'bike') delete placed.get(id)!.bike;
+      continue;
+    }
+    placed.delete(id);
+    (c.action === 'quiet' ? quiet : neutral).push(id);
+  }
+  console.log(`sign reads (${READS}): ${JSON.stringify(readCount)}; ${neutral.length} neutral fronts, ${quiet.length} quiet pands`);
+}
 const out = { version: 1, source: '© OpenStreetMap contributors (ODbL), Overpass ' + new Date(fs.statSync(CACHE).mtime).toISOString().slice(0, 10), templates: [...RETAIL_TEMPLATES], buildings: Object.fromEntries([...placed].sort().map(([id, p]) => [id, [RETAIL_TEMPLATES.indexOf(p.t), p.at[0], p.at[1], ...(p.chain ? [`@${p.chain}`] : TEMPLATE_LOOKS[p.t].word === 'name' && signWord(p.name) ? [signWord(p.name)] : p.front === 'nearest' ? [''] : []), ...(p.front === 'nearest' ? [1] : [])]])) };
+if (neutral.length) Object.assign(out, { neutral: neutral.sort() });
+if (quiet.length) Object.assign(out, { quiet: quiet.sort() });
 // Lane retail-real (coordinator 2026-11-16): lane R's De Wallen audit (data/retail-ground/dewallen-redlight-audit.json,
 // from 394d2f52b, used as data). The 27 window rows carry their measured window front as the row's sixth field
 // ({s: [lng0, lat0, lng1, lat1] the span on the front line, d doors, t tube, c curtains, f frame hex}); the 18 closed or
@@ -188,6 +240,17 @@ if (fs.existsSync(PUI)) {
   const cls = [...priors.values()].reduce((m, p) => (m[p.cls] = (m[p.cls] ?? 0) + 1, m), {} as Record<string, number>);
   console.log(`street priors: ${priors.size} streets (${JSON.stringify(cls)}); ${Object.keys(prior).length} of ${plainShops.length} unmeasured plain shops take one`);
 }
+// Lane retail-real round 4: per-pand front colours read on a photo (data/retail-ground/front-overrides.json, receipts
+// there), drawn only with ?retailParts=1.
+{
+  const OV = 'data/retail-ground/front-overrides.json';
+  if (fs.existsSync(OV)) {
+    const o = (JSON.parse(fs.readFileSync(OV, 'utf8')) as { buildings: Record<string, { frame?: string; awning?: string }> }).buildings;
+    const fronts = Object.fromEntries(Object.entries(o).map(([k, v]) => [`NL.IMBAG.Pand.${k}`, { ...(v.frame ? { frame: v.frame } : {}), ...(v.awning ? { awning: v.awning } : {}) }] as const).filter(([id]) => out.buildings[id]));
+    if (Object.keys(fronts).length) Object.assign(out, { fronts });
+    console.log(`front overrides: ${Object.keys(fronts).length} of ${Object.keys(o).length} pands have a template`);
+  }
+}
 // Round 7: the awnings measured on panoramas (measure-awning.ts), for template pands.
 {
   const AWN = 'data/retail-ground/awnings.json';
@@ -209,7 +272,15 @@ if (fs.existsSync(PUI)) {
   console.log(`bike classes: ${JSON.stringify(count(b => b.cls))} (ring ${bikes.filter(([, p]) => p.ring).length}) -> ${BIKES}`);
 }
 if (process.argv.includes('--addresses')) await auditAddresses();
+// Lane retail-real round 5 (`--trace=<file>`): every template POI's hosting, for audit-assignment.ts.
+if (arg('trace')) {
+  const inPand = (n: Node) => { const [x, y] = local(n.lon, n.lat); const c = near(x, y).find(c => insideRingOf(c.ring, x, y)); return c ? bagKey(c.id) : null; };
+  fs.writeFileSync(arg('trace')!, JSON.stringify(records.map(r => ({ node: r.n.id, t: r.t, chain: chainOf(r.n.tags ?? {}), tags: r.n.tags ?? {}, lon: r.n.lon, lat: r.n.lat, inPand: inPand(r.n), plain: r.plain ? bagKey(r.plain.id) : null, host: r.hit ? bagKey(r.hit.id) : null, front: r.hit?.front ?? null, distM: r.hit ? +r.hit.distanceM.toFixed(2) : null, won: !!r.hit && placed.get(r.hit.id)?.node === r.n.id }))));
+  console.log(`trace: ${records.length} template POIs -> ${arg('trace')}`);
+}
 console.log(`address and source hosts (${ADDRESS_HOSTS}, ${SOURCE_HOSTS}): ${addressed} POIs hosted by an address or second source; ${added} template POIs added by a second source`);
+if (R5) fs.writeFileSync(CLOSED_DROPS, JSON.stringify({ rule: 'src/canalRecall/retailSources.ts closedByOverture', source: `Overture Maps places ${OVERTURE.match(/places-(.*)\.json/)?.[1]} (CDLA-Permissive-2.0)`, drops: closedDrops.filter(d => templateForTags(allNodes.find(n => n.id === d.node)?.tags ?? {})) }, null, 1));
+if (R5) console.log(`closed by Overture (closedByOverture): ${closedDrops.length} template POIs dropped -> ${CLOSED_DROPS}`);
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, JSON.stringify(out));
 console.log(`fronts moved onto the wall facing addr:street (atOnStreetWall): ${onStreet}`);

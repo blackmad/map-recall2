@@ -29,6 +29,9 @@ function shopSpace(u: PandUses | undefined): { m2: number; use: 'winkelfunctie' 
   const w = u?.area.winkelfunctie ?? 0, b = u?.area.bijeenkomstfunctie ?? 0;
   return w >= b ? { m2: w, use: 'winkelfunctie' } : { m2: b, use: 'bijeenkomstfunctie' };
 }
+/** Round 5 (lane retail-real): a node within nodeM of a shop pand's wall, in a pand with no shop space, moves to it
+ *  when that pand's street wall is no more than frontM further from the node than its own. */
+export const PARTY = { nodeM: 1.0, frontM: 1.5 } as const;
 export type FrontCandidate = { id: string; ring: [number, number][] };
 export type HostFront = { id: string; front: 'street' | 'nearest'; inside: boolean; distanceM: number };
 
@@ -63,7 +66,9 @@ export function hostOnFront(candidates: readonly FrontCandidate[], x: number, y:
   streetFacing: (c: FrontCandidate, e: ReturnType<typeof ringEdges>[number]) => boolean,
   open: (c: FrontCandidate, e: ReturnType<typeof ringEdges>[number]) => boolean = () => true,
   /** Round 5: whether this POI may move to a much bigger shop next door (not a red-light window: those are kiosk-sized). */
-  spill = false): HostFront | null {
+  spill = false,
+  /** Round 5 (lane retail-real): the PARTY move. Off: it lost its blind (1 win, 2 losses, 4 ties on 7 moved pands). */
+  party = false): HostFront | null {
   const rows = candidates.map(c => {
     let front = Infinity, any = Infinity;
     for (const e of ringEdges(c.ring)) { const d = segDist(e.x0, e.y0, e.x1, e.y1, x, y); if (d < any && open(c, e)) any = d; if (d < front && streetFacing(c, e)) front = d; }
@@ -77,6 +82,10 @@ export function hostOnFront(candidates: readonly FrontCandidate[], x: number, y:
     const mine = shopSpace(uses(own.c.id));
     const next = spill && mine.m2 > 0 && mine.m2 <= SPILL.hostMaxM2 ? rows.filter(r => r !== own && r.front <= SPILL.nearM).map(r => ({ r, s: shopSpace(uses(r.c.id)) })).filter(v => v.s.use === mine.use && v.s.m2 >= Math.max(SPILL.minM2, SPILL.ratio * mine.m2)).sort((p, q) => p.r.front - q.r.front)[0]?.r : undefined;
     if (next) return { id: next.c.id, front: 'street', inside: next.inside, distanceM: next.front };
+    // Lane retail-real round 5 (PARTY): a node in a pand with no shop space at all, on the party wall of one that has
+    // some, belongs to the neighbour (Toko Sunrise, OSM node 866385089: its node just inside the house next door).
+    const partyHost = party && spill && !own.shop ? rows.filter(r => !r.inside && r.shop && r.front <= own.front + PARTY.frontM && ringEdges(r.c.ring).some(e => segDist(e.x0, e.y0, e.x1, e.y1, x, y) <= PARTY.nodeM)).sort((p, q) => p.front - q.front)[0] : undefined;
+    if (partyHost) return { id: partyHost.c.id, front: 'street', inside: false, distanceM: partyHost.front };
     return { id: own.c.id, front: 'street', inside: true, distanceM: own.front };
   }
   const near = rows.filter(r => !r.inside && r.front <= FRONT_SNAP_M && (r.shop || r.front <= PAVEMENT_NODE_M)).sort((p, q) => p.front - q.front)[0];

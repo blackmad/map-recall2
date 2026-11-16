@@ -1,7 +1,7 @@
 // Round 7 (lane retail-look-20261114): second-source matching. `node --import tsx --test src/canalRecall/retailSources.test.ts`
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { compareSources, sameName } from './retailSources.js';
+import { CLOSED_CONFIRM, MATCH_M, closedByOverture, compareSources, sameName } from './retailSources.js';
 
 test('business names: generic words, glued spellings, accents', () => {
   assert.ok(sameName('Café De Kroon', 'De Kroon'));
@@ -33,4 +33,16 @@ test('sign read: match within one edit, confident other word flags, nothing read
   assert.equal(signVerdict('Kruidvat', [{ text: 'KRUIDVAI', conf: 60 }]).verdict, 'match');
   assert.equal(signVerdict('Arjan bloemen', [{ text: 'Slagerij', conf: 92 }]).verdict, 'mismatch');
   assert.equal(signVerdict('Arjan bloemen', [{ text: 'xx', conf: 92 }, { text: 'Open', conf: 95 }]).verdict, 'none');
+});
+
+test('round 5 (retail-real): a business Overture lists only as permanently closed drops, unless re-checked or a brand', () => {
+  const closed = { name: 'Kenza Hair', status: 'permanently_closed', d: 4 };
+  assert.equal(closedByOverture('Kenza Hair', [closed]), true);
+  assert.equal(closedByOverture('Kenza Hair', [closed, { name: 'Kenza Hair Salon', status: 'open', d: 9 }]), false);
+  assert.equal(closedByOverture('Kenza Hair', [{ ...closed, d: MATCH_M + 1 }]), false);
+  assert.equal(closedByOverture('Kenza Hair', []), false);
+  assert.equal(closedByOverture('Kenza Hair', [closed], CLOSED_CONFIRM), false);
+  assert.equal(closedByOverture('Kenza Hair', [closed], '2023-04-24'), true);
+  assert.equal(closedByOverture('Etos', [{ name: 'Etos', status: 'permanently_closed', d: 3 }], undefined, 'Etos'), false);
+  assert.equal(closedByOverture(undefined, [closed]), false);
 });

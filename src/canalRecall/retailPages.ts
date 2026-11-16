@@ -44,3 +44,22 @@ export function retailRealAllOn(): boolean {
   if (typeof g.__canalRecallRetailRealAll === 'boolean') return g.__canalRecallRetailRealAll;
   return (cachedAll ??= /[?&]retailRealAll=1\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_REAL_ALL === '1');
 }
+
+let cachedParts: boolean | undefined;
+/** `?retailParts=1` (RETAIL_PARTS=1): round 4's template parts (retailTemplates.ts TEMPLATE_PARTS: shutter boxes, neon
+ *  window signs, lettering on the glass) and per-pand front overrides. Off until they win a blind A/B. */
+export function retailPartsOn(): boolean {
+  const g = globalThis as { __canalRecallRetailParts?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  if (typeof g.__canalRecallRetailParts === 'boolean') return g.__canalRecallRetailParts;
+  return (cachedParts ??= /[?&]retailParts=1\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_PARTS === '1');
+}
+
+let cachedBrand: boolean | undefined;
+/** `?retailBrand=1` (RETAIL_BRAND=1), round 7: chains draw their measured brand style (retailBrandStyles.ts: letters on
+ *  the wall with no band, blade signs with their glyph, dark plate glass) and the pavement racks and boards draw as
+ *  postcard stands and chalkboards. Off until it wins a blind A/B. */
+export function retailBrandOn(): boolean {
+  const g = globalThis as { __canalRecallRetailBrand?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  if (typeof g.__canalRecallRetailBrand === 'boolean') return g.__canalRecallRetailBrand;
+  return (cachedBrand ??= /[?&]retailBrand=1\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_BRAND === '1');
+}
