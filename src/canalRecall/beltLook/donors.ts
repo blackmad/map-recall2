@@ -120,6 +120,10 @@ export interface LookDistrict {
    *  and an AHN band caught in a 3 m alley): a cornice front drawn more than a storey under its photo storey count at this
    *  pitch stands at that count, when 3DBAG's height reaches it. Unset: nothing changes. */
   photoStoreyLiftPitchM?: number;
+  /** Centrum round 9 (Marnixplein 168305/168300/174907, one 1891 building across three pands drawn as three houses): runs of
+   *  adjacent pands confirmed one building (generate.ts sameBuildingCandidates, a photo read per run) draw as one series.
+   *  Unset (the belt): nothing changes. */
+  sameBuildingRuns?: readonly (readonly string[])[];
   /** roofSignals.ts: no gable (stated or a donor's) on a measured flat top. */
   flatTopNoGable?: boolean;
   /** roofSignals.ts: a cornice front whose AHN band climbs a roof slope stands at the band's p50. */

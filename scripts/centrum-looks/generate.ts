@@ -33,8 +33,50 @@ import { describerColourWord, judgeFront, lchOf, type JudgedFamily } from '../..
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const ROWS = 'scripts/house-specs/rows/rows.json';
 
-export interface LookDistrictFile extends LookDistrict { buurten: string[]; readDirs: string[]; maxYear?: number; measured?: unknown; note?: string; wallDraw?: WallDrawConfig }
+export interface LookDistrictFile extends LookDistrict { buurten: string[]; readDirs: string[]; maxYear?: number; measured?: unknown; note?: string; wallDraw?: WallDrawConfig; /** Round 9: read data/buurt-generators/<id>/same-building.json and draw its confirmed runs as one building. */ sameBuilding?: boolean }
 export const loadLookDistrict = (id: string): LookDistrictFile => JSON.parse(fs.readFileSync(`src/canalRecall/beltLook/districts/${id}.json`, 'utf8'));
+
+/** Round 9: the confirmed same-building runs of a read file ({runs: [{pids, groups?: number[][]}]}): each group of two or
+ *  more adjacent pands the read called one building (groups index pids; absent, the read's `one` says the whole run). */
+export function confirmedSameBuilding(file: string): string[][] {
+  if (!fs.existsSync(file)) return [];
+  const out: string[][] = [];
+  for (const r of JSON.parse(fs.readFileSync(file, 'utf8')).runs as Array<{ pids: string[]; one?: boolean; groups?: number[][] }>) {
+    const groups = r.groups ?? (r.one ? [r.pids.map((_, i) => i)] : []);
+    for (const g of groups) if (g.length >= 2) out.push(g.map(i => r.pids[i]));
+  }
+  return out;
+}
+/** Round 9: one corniced building draws one cornice line: its fronts stand at the run's median top (within the 0.5 m the
+ *  candidates allow; Marnixplein 12.51-12.81 m). A gabled member keeps its own. */
+export function oneLinePerBuilding(records: Array<{ pandId: string; topM: number; eavesM?: number; crown?: { family?: string } }>, runs: readonly (readonly string[])[]): number {
+  let n = 0;
+  for (const run of runs) {
+    const set = new Set(run), rs = records.filter(r => set.has(r.pandId));
+    if (rs.length < 2 || !rs.every(r => (r.crown?.family ?? 'cornice') === 'cornice' && r.eavesM === r.topM)) continue;
+    const t = [...rs.map(r => r.topM)].sort((a, b) => a - b), m = t[Math.floor((t.length - 1) / 2)];
+    for (const r of rs) if (r.topM !== m) { r.topM = m; r.eavesM = m; n++; }
+  }
+  return n;
+}
+/** Round 9: one building draws one wall: its fronts take the wall most of them drew (ties: the first front's), one tone. */
+export function oneWallPerBuilding(records: Array<{ pandId: string; wall?: unknown; sources?: Record<string, string> }>, runs: readonly (readonly string[])[]): number {
+  let n = 0;
+  for (const run of runs) {
+    const set = new Set(run), rs = records.filter(r => set.has(r.pandId) && r.wall);
+    if (rs.length < 2) continue;
+    // the family a wall was judged (wallDraw's source line "judged <family> ..."), else its hex
+    const fam = (r: { wall?: unknown; sources?: Record<string, string> }) => /^judged ([a-z-]+)/.exec(r.sources?.wall ?? '')?.[1] ?? String((r.wall as { hex?: string }).hex);
+    const c = new Map<string, number>();
+    for (const r of rs) c.set(fam(r), (c.get(fam(r)) ?? 0) + 1);
+    const top = Math.max(...c.values()), pick = rs.find(r => c.get(fam(r)) === top)!;
+    for (const r of rs) if (r !== pick && JSON.stringify(r.wall) !== JSON.stringify(pick.wall)) {
+      r.wall = structuredClone(pick.wall); n++;
+      if (r.sources && pick.sources?.wall) r.sources.wall = `${pick.sources.wall}; one building with ${pick.pandId} (centrum looks round 9, same building)`;
+    }
+  }
+  return n;
+}
 
 /**
  * The district's own D1 reads as donors: a read pand in the district, its front (length and street) from the buurt
@@ -228,6 +270,8 @@ export function drawWalls(records: any[], prov: Record<string, any>, reads: Read
 async function main() {
   const id = arg('district') ?? 'jordaan', look = loadLookDistrict(id);
   const out = arg('out') ?? `artifacts/buurt-generators/${id}`, at = new Date().toISOString().slice(0, 10), t0 = Date.now();
+  // Round 9: the same-building runs the photo read confirmed (an empty list still lists the candidates for the read).
+  if (look.sameBuilding) look.sameBuildingRuns = confirmedSameBuilding(`data/buurt-generators/${id}/same-building.json`);
   const pands = districtPands({ buurten: look.buurten } as DistrictLibrary), streets = namedStreets();
   const described = describedPands(), rowsD = laneDRowPands();
   const overSpecs = !process.argv.includes('--no-over-specs'), specOnly = overSpecs ? specOnlyPands() : new Set<string>();
@@ -334,7 +378,10 @@ async function main() {
     walls = drawWalls(records, res.provenance, reads, donors, stated, dcfg, years, sf, photo, registerFinish, streetOf, streetWeights);
     wallWeights = { photoReads: photo.size, measure, prior: pId ?? 'own', reads: ev.reads, measured: ev.weights, photoMix: dm, photoMixStreets: streetWeights.size, drawn: { before1860: dcfg.before1860, from1860: dcfg.from1860 }, streets: Object.fromEntries([...ev.streets].sort()) };
   }
+  const sameWalls = look.sameBuildingRuns ? oneWallPerBuilding(records, look.sameBuildingRuns) : 0;
+  const sameLines = look.sameBuildingRuns ? oneLinePerBuilding(records as never, look.sameBuildingRuns) : 0;
   fs.mkdirSync(out, { recursive: true });
+  if (res.sameBuildingCandidates) fs.writeFileSync(path.join(out, 'same-building-candidates.json'), JSON.stringify({ district: id, runs: res.sameBuildingCandidates }, null, 1));
   fs.writeFileSync(path.join(out, 'row-front.json'), JSON.stringify({ version: 1, district: id, generatedAt: at, records }));
   fs.writeFileSync(path.join(out, 'rows.json'), JSON.stringify({ district: id, rows: res.rows }));
   fs.writeFileSync(path.join(out, 'fronts.json'), JSON.stringify({ district: id, fronts: res.fronts }));
@@ -362,7 +409,7 @@ async function main() {
   const report = { at, district: id, buurten: look.buurten, pitchM: look.pitchM, foreignDonor: look.foreignDonor, ahnFronts: ahn.size, overSpecs, photoCrowns, gablesBySpread, photoRoofStoreys, photoDress: dressTally, registerGablesDropped: registerGablesDropped.length, registerFinishesDropped, gableFootPitch: gfp, statedPhotoStoreys: [...stated.values()].filter(v => v.photoStoreys).length, specOnlyRedrawn: drawn.filter(p => specOnly.has(p)).length,
     pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length - laterPeriod.size, laterPeriod: laterPeriod.size, maxYear: look.maxYear ?? null, drawn: drawn.length, ownRead: ownN, donorRead: drawn.length - ownN, donorDistrict,
     ownDonors: own.donors.length, beltDonors: belt.donors.length, rows: res.rows.length, records: records.length, skipped: bySkip, bySegment: bySeg, crowns, storeys, findings,
-    statedCrown: drawn.filter(p => stated.get(p)?.crown).length, modernBehindRegister: Object.keys(modern).length, walls, wallWeights, ms: Date.now() - t0 };
+    statedCrown: drawn.filter(p => stated.get(p)?.crown).length, sameBuilding: look.sameBuildingRuns ? { candidates: res.sameBuildingCandidates?.length ?? 0, confirmed: look.sameBuildingRuns.length, frontsMoved: res.sameBuildingMerged ?? 0, wallsUnified: sameWalls, linesUnified: sameLines } : null, modernBehindRegister: Object.keys(modern).length, walls, wallWeights, ms: Date.now() - t0 };
   fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify({ ...report, skippedList: res.skipped, laterPeriodList: [...laterPeriod].sort(), modernList: modern }, null, 1));
   console.log(JSON.stringify(report, null, 1));
 }

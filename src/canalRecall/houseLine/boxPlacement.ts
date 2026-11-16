@@ -151,6 +151,20 @@ export function groundSpans(openings: readonly { a0: number; a1: number; kind: G
 }
 
 /**
+ * A row souterrain's windows (Centrum round 9, Kalkmarkt 182829: drawn 1.47 m of glass from 0.4 m in a 2.4 m cell; the
+ * photo's are low, squat openings just over the pavement). Measured on rectified sheet strips of nine souterrain fronts
+ * (Kalkmarkt 182830/182748/182829, Prinsengracht 180118, Groenburgwal 178635, Frederiksplein 253805): glass 0.3-1.5 m,
+ * median about 0.9 m, sill 0.3-0.9 m. The glass is held to glassM over a sill of sillM; a window already under it stays.
+ */
+export const SOUTERRAIN_WINDOW = { sillM: 0.35, glassM: 0.85 } as const;
+/** The souterrain window box over the cell's base (m), or null when the cell's own window is no taller than glassM. */
+export function souterrainWindowBox(row: { sill: number; head: number }, groundM: number): { sillM: number; headM: number } | null {
+  if (!(groundM > 0) || (row.head - row.sill) * groundM <= SOUTERRAIN_WINDOW.glassM) return null;
+  const sillM = Math.min(SOUTERRAIN_WINDOW.sillM, row.sill * groundM), headM = Math.min(sillM + SOUTERRAIN_WINDOW.glassM, groundM - 0.2);
+  return headM - sillM > 0.2 ? { sillM: +sillM.toFixed(3), headM: +headM.toFixed(3) } : null;
+}
+
+/**
  * One cell's opening (its rect in the cell's uv, v up) put on a box: the cell runs vertically so the opening's bottom
  * and top land on the box's sill and head, cut to the region [z0, z1]; `walls` are the region's rest above and below.
  */

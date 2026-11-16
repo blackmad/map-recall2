@@ -53,6 +53,8 @@ export type ExtraContext = {
   /** House rows: the series' stated dressing on this wall (threeBuildingMesh rowDressOnEdge). `windows`: the record's
    *  boxes in this edge's metres with their storey and head; `heads`: spans (edge metres) over the grid's windows. */
   rowDress?: RowDressContext;
+  /** House rows (Centrum round 9): the ground cell is a souterrain; its windows stand on boxPlacement souterrainWindowBox. */
+  souterrainWindows?: boolean;
 };
 export type RowHeadKind = { shape?: string; dressing?: string };
 export type RowDressContext = {

@@ -177,3 +177,54 @@ test('Centrum round 9 staged: no roof storey on a weak dormers read, Goudsbloems
   for (const id of ['172469', '172466', '172470']) assert.ok(jo.get(id).topM < 14.2, `${id} ${jo.get(id).topM}`);
   assert.ok(nm.get('182788').topM >= 12.5, `182788 ${nm.get('182788').topM}`);
 });
+
+test('Centrum round 9: same-building candidates and one series per confirmed building (Marnixplein 168305/168300/174907)', async () => {
+  const { sameBuildingCandidates, oneSeriesPerBuilding } = await import('./generate.ts');
+  const m = (id: string, year: number | null, eavesM: number) => ({ pand: { id: `NL.IMBAG.Pand.${id}`, year, eavesM, heightM: eavesM + 3.5, ridgeM: null } });
+  // 1891 at 12.0, 11.8, 11.7 m: one candidate; a 1700 neighbour and a 14 m one break the run
+  const row = { members: [m('a', 1700, 12), m('168305', 1891, 12), m('168300', 1891, 11.8), m('174907', 1891, 11.7), m('b', 1892, 14)] } as never;
+  assert.deepEqual(sameBuildingCandidates(row), [['168305', '168300', '174907']]);
+  assert.deepEqual(sameBuildingCandidates({ members: [m('x', 1891, 12), m('y', 1894, 12)] } as never), []);
+  assert.deepEqual(sameBuildingCandidates({ members: [m('x', 1891, 12), m('y', 1891, 12.6)] } as never), []);
+  const f = (id: string, s: string, o = {}) => ({ id: `f${id}`, pandId: id, seriesId: s, overrides: o });
+  const v = <X>(value: X) => ({ value });
+  const design = (storeys: number, heads: object, roof: string) => ({ storeys: v(storeys), heads: v(heads), roofStorey: v({ kind: roof }), extras: v([]) });
+  const series = [
+    { id: 's0', label: 's0', fronts: [] as string[], design: design(4, { shape: 'flat', dressing: 'none' }, 'none') },
+    { id: 's1', label: 's1', fronts: [] as string[], design: design(4, { shape: 'segmental', dressing: 'none' }, 'mansard') },
+    { id: 's2', label: 's2', fronts: [] as string[], design: design(3, { shape: 'flat', dressing: 'none' }, 'none') },
+    { id: 's3', label: 's3', fronts: [] as string[], design: design(3, { shape: 'flat', dressing: 'none' }, 'mansard') },
+  ];
+  const rec = { fronts: [f('a', 's0'), f('168305', 's1', { storeys: v(4) }), f('168300', 's2'), f('174907', 's3')], series } as never;
+  const out = oneSeriesPerBuilding(rec, [['168305', '168300', '174907']]);
+  // three storeys (two of three fronts), the one with a roof storey (s3), s1's segmental heads; s0 keeps its own
+  assert.deepEqual(out.row.fronts.map(x => x.seriesId), ['s0', 's3+b0', 's3+b0', 's3+b0']);
+  const b = out.row.series.find(x => x.id === 's3+b0')!;
+  assert.equal(b.design.storeys.value, 3);
+  assert.equal((b.design.heads.value as { shape: string }).shape, 'segmental');
+  assert.equal((b.design.roofStorey.value as { kind: string }).kind, 'mansard');
+  assert.deepEqual(out.row.fronts[1].overrides, {});
+  assert.deepEqual(out.row.series.map(x => x.id), ['s0', 's3+b0']);
+  assert.equal(out.moved, 3);
+  // no confirmed run in the row: the row is returned as is
+  assert.equal(oneSeriesPerBuilding(rec, [['zz', 'yy']]).row, rec);
+});
+
+test('Centrum round 9 staged: Marnixplein 168305/168300/174907 one building; Kalkmarkt 182829 a souterrain the window cap reaches', async () => {
+  const fs = await import('node:fs');
+  const load = (d: string) => {
+    const url = new URL(`../../../data/buurt-generators/${d}/row-front.json`, import.meta.url);
+    return fs.existsSync(url) ? new Map((JSON.parse(fs.readFileSync(url, 'utf8')).records as any[]).map(r => [r.pandId.slice(-6), r])) : null;
+  };
+  const jo = load('jordaan'), nm = load('nieuwmarkt-lastage');
+  if (!jo || !nm) return;
+  const m = ['168305', '168300', '174907'].map(id => jo.get(id));
+  assert.equal(new Set(m.map(r => r.series.id)).size, 1, 'one series');
+  assert.equal(new Set(m.map(r => r.storeys)).size, 1, 'one storey count');
+  assert.equal(new Set(m.map(r => r.wall.hex)).size, 1, 'one wall');
+  assert.equal(new Set(m.map(r => r.topM)).size, 1, 'one cornice line');
+  assert.equal(m[0].storeys, 3);
+  assert.notEqual(m[0].series.roofStorey?.kind ?? 'none', 'none');
+  assert.equal(m[0].series.heads[0].shape, 'segmental');
+  assert.equal(nm.get('182829').series.souterrain, true);
+});

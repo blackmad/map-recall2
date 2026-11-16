@@ -1,0 +1,118 @@
+{
+ "note": "Centrum round 9 same-building reads: one opus read per candidate run (beltLook generate.ts sameBuildingCandidates), on the existing cuts; confirmed at confidence >= 0.6.",
+ "runs": [
+  {
+   "pids": [
+    "0363100012181922",
+    "0363100012181921"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012182829",
+    "0363100012182830"
+   ],
+   "answer": "separate",
+   "confidence": 0.85,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012165623",
+    "0363100012182609"
+   ],
+   "answer": "separate",
+   "confidence": 0.9,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012181523",
+    "0363100012181528"
+   ],
+   "answer": "separate",
+   "confidence": 0.85,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012170901",
+    "0363100012170911"
+   ],
+   "answer": "separate",
+   "confidence": 0.65,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012571642",
+    "0363100012170900"
+   ],
+   "answer": "one",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012182527",
+    "0363100012182526"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012182753",
+    "0363100012182826"
+   ],
+   "answer": "one",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012181567",
+    "0363100012181568"
+   ],
+   "answer": "separate",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012181887",
+    "0363100012181885"
+   ],
+   "answer": "one",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012178629",
+    "0363100012178631"
+   ],
+   "answer": "separate",
+   "confidence": 0.85,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  }
+ ]
+}

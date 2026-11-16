@@ -135,6 +135,10 @@ export interface BeltGenResult {
   /** Round 12: runs of adjacent stucco or stone members drawn as one front (paleBlockWalls). */
   paleBlocks?: string[][];
   fronts: Record<string, { street: string; a: readonly [number, number]; b: readonly [number, number]; lengthM: number }>;
+  /** Centrum round 9: runs of adjacent pands that could be one building (sameBuildingCandidates), for the photo read. */
+  sameBuildingCandidates?: string[][];
+  /** Confirmed runs drawn as one series (oneSeriesPerBuilding), and the fronts they moved. */
+  sameBuildingMerged?: number;
 }
 
 /** The donor's measured wall when it is a brick colour to lend: a plain brick front, its sample not a buff brick. */
@@ -382,18 +386,79 @@ export function generateBelt(pands: readonly GenPand[], streets: readonly GenStr
   const free = pands.filter(p => { const d = described.has(pandNumber(p.id)); if (d) skipped.push({ id: pandNumber(p.id), reason: 'described' }); return !d; });
   const res = districtRows(free, streets, { singles: true });
   for (const u of res.unplaced) skipped.push({ id: pandNumber(u.id), reason: u.reason });
-  const rows: RowRecord[] = [];
+  const rows: RowRecord[] = [], candidates: string[][] = [];
+  let merged = 0;
   for (const r of res.rows) {
     const input = beltRowInput(r, reads, donors, at, provenance, stated, ahn, look, paleBlocks);
     if (!input) { for (const m of r.members) skipped.push({ id: pandNumber(m.pand.id), reason: 'no-donor' }); continue; }
     const donorFilled = new Set(input.members.filter(m => 'donor' in provenance[m.pandId]).map(m => m.pandId));
     const elements = new Map(input.members.map(m => [m.pandId, stated.get(m.pandId)?.elements ?? []]));
     const dressed = dressBeltCornice(dressBeltStone(relabelDonorFields(solveRow(input), donorFilled), BELT_LOOK_REF, elements), BELT_LOOK_REF, elements);
-    rows.push(pitchedDormers(warehouseFronts(apexOnFront(measuredGables(dressed, input, donorFilled), input, ahn), stated), stated));
+    let rr = pitchedDormers(warehouseFronts(apexOnFront(measuredGables(dressed, input, donorFilled), input, ahn), stated), stated);
+    if (look.sameBuildingRuns) {
+      for (const c of sameBuildingCandidates(r, pid => stated.get(pid)?.year ?? null)) candidates.push(c);
+      const m = oneSeriesPerBuilding(rr, look.sameBuildingRuns); rr = m.row; merged += m.moved;
+    }
+    rows.push(rr);
     for (const m of r.members) fronts[pandNumber(m.pand.id)] = { street: m.front.street, a: m.front.aLngLat, b: m.front.bLngLat, lengthM: +m.front.lengthM.toFixed(2) };
   }
-  return { rows, provenance, skipped, fronts, paleBlocks };
+  return { rows, provenance, skipped, fronts, paleBlocks, ...(look.sameBuildingRuns ? { sameBuildingCandidates: candidates, sameBuildingMerged: merged } : {}) };
 }
+
+/** Same building (Centrum round 9): adjacent pands whose BAG (or register) years lie within yearSpan and whose 3DBAG front
+ *  tops lie within topSpanM may be one building across pand lines; a photo read per run settles it. */
+export const SAME_BUILDING = { yearSpan: 2, topSpanM: 0.5 } as const;
+/** Runs of two or more adjacent row members that could be one building (Marnixplein 168305/168300/174907: 1891, 11.7-12 m). */
+export function sameBuildingCandidates(row: Pick<GenRow, 'members'>, statedYear: (pid: string) => number | null = () => null): string[][] {
+  const runs: string[][] = [];
+  let cur: { pid: string; y: number; top: number }[] = [];
+  const flush = () => { if (cur.length >= 2) runs.push(cur.map(c => c.pid)); cur = []; };
+  for (const m of row.members) {
+    const pid = pandNumber(m.pand.id), y = statedYear(pid) ?? m.pand.year ?? null, top = frontTopM(m.pand.eavesM, m.pand.heightM, m.pand.ridgeM);
+    if (y === null || top === null) { flush(); continue; }
+    const c = { pid, y, top }, all = [...cur, c];
+    const fits = cur.length > 0 && Math.max(...all.map(x => x.y)) - Math.min(...all.map(x => x.y)) <= SAME_BUILDING.yearSpan
+      && Math.max(...all.map(x => x.top)) - Math.min(...all.map(x => x.top)) <= SAME_BUILDING.topSpanM;
+    if (fits) cur.push(c); else { flush(); cur = [c]; }
+  }
+  flush();
+  return runs;
+}
+/** A confirmed building's fronts take one series and drop their own overrides: one storey count, wall, heads, dressing
+ *  and roof. The base is the run's series with the storey count most of its fronts have (then one with a roof storey,
+ *  then the first); a field the base leaves plain (flat heads, no roof storey) takes another run series' stated one, and
+ *  extras are their union (Marnixplein: s1 read segmental heads, s3 a tiled roof with dormers, s2 and s3 three storeys).
+ *  The run draws as a new series `<base>+b<n>` so fronts outside it keep theirs. */
+export function oneSeriesPerBuilding(row: RowRecord, runs: readonly (readonly string[])[]): { row: RowRecord; moved: number } {
+  let moved = 0, k = 0;
+  const fronts = row.fronts.map(f => ({ ...f })), added: RowRecord['series'] = [];
+  const byId = new Map(row.series.map(x => [x.id, x]));
+  for (const run of runs) {
+    const set = new Set(run), fs = fronts.filter(f => set.has(f.pandId));
+    if (fs.length < 2) continue;
+    const ss = [...new Set(fs.map(f => f.seriesId))].map(id => byId.get(id)!).filter(Boolean);
+    if (!ss.length) continue;
+    const st = (x: RowRecord['series'][number]) => x.design.storeys?.value, roofOf = (x: RowRecord['series'][number]) => (x.design.roofStorey?.value as { kind?: string } | undefined)?.kind ?? 'none';
+    const votes = new Map<unknown, number>();
+    for (const f of fs) { const v = st(byId.get(f.seriesId)!); votes.set(v, (votes.get(v) ?? 0) + 1); }
+    const top = Math.max(...votes.values()), cands = ss.filter(x => votes.get(st(x)) === top);
+    const base = cands.find(x => roofOf(x) !== 'none') ?? cands[0];
+    const design = structuredClone(base.design) as RowDesign;
+    const plainHeads = (h: unknown) => !h || (Array.isArray(h) ? h : [h]).every(x => (x as { shape?: string }).shape === 'flat' && ((x as { dressing?: string }).dressing ?? 'none') === 'none');
+    const other = ss.filter(x => x !== base);
+    if (plainHeads(design.heads?.value)) { const o = other.find(x => !plainHeads(x.design.heads?.value)); if (o) design.heads = structuredClone(o.design.heads); }
+    if (roofOf({ design } as never) === 'none') { const o = other.find(x => roofOf(x) !== 'none'); if (o) design.roofStorey = structuredClone(o.design.roofStorey); }
+    const extras = [...new Set(ss.flatMap(x => (x.design.extras?.value as string[] | undefined) ?? []))];
+    if (extras.length && design.extras) design.extras = { ...design.extras, value: extras };
+    const id = `${base.id}+b${k++}`;
+    added.push({ ...base, id, label: `${base.label} (one building: ${run.join(', ')})`, design, fronts: [] });
+    for (const f of fs) { moved++; f.seriesId = id; f.overrides = {}; }
+  }
+  if (!moved) return { row, moved };
+  const series = [...row.series, ...added].map(x => ({ ...x, fronts: fronts.filter(f => f.seriesId === x.id).map(f => f.id) })).filter(x => x.fronts.length);
+  return { row: { ...row, fronts, series }, moved };
+}
+
 
 /** A donor-filled gable's measured rise: the 3DBAG ridge less the front top, held to this band (m). */
 export const MEASURED_GABLE_RISE = { min: 2, max: 7 } as const;

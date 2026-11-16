@@ -28,7 +28,7 @@ import { storeyDraw, storeyGuardOn, storeyPlan, storeyPlanDraws, storeyPlanProbe
 import { structureGuess, structurePriorStoreys } from './houseSpec/structurePrior.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import { boxPlacementFor, groundOpeningRect } from './houseLine/boxCells.js';
-import { cellOnBox, groundSpans } from './houseLine/boxPlacement.js';
+import { cellOnBox, groundSpans, souterrainWindowBox } from './houseLine/boxPlacement.js';
 import { runTakesSteps, runTakesTrace } from './houseLine/rowFront.js';
 import type { RowCrown } from './houseLine/crownProfile.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
@@ -956,6 +956,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         if (placed.mirror) layout.doorMirror = true;
       }
       const bw = layout.bayWidthM, groundTop = base + layout.groundM;
+      const souterrainWin = !!(b.rowSeries && b.specRecipe?.souterrain && !b.plainWalls && b.plainLayer !== undefined && !b.shopfront);
       const compound=b.recipe?.compoundFrontage&&b.layers&&b.plainLayer!==undefined&&base<.5
         &&run.every(({e})=>!e.hole&&Math.abs(e.nx-first.nx)+Math.abs(e.ny-first.ny)<1e-6)
         ?planCompoundFrontage({lengthM:layout.lengthM,baseM:base,topM:top,recipe:b.recipe.compoundFrontage,direction:compoundDirection(b,first,origin)}):undefined;
@@ -1017,7 +1018,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         walls++;
         const q0 = quads.length;
         const s = layout.edgeStartM[k];
-        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.specBandM ? { bandM: b.specBandM } : {}), ...(b.specFieldsForce?.length ? { statedFirst: b.specFieldsForce } : {}), ...(b.onlyExtras ? { onlyExtras: b.onlyExtras } : {}), ...(b.rowSeries ? { seriesId: b.rowSeries } : {}), ...(b.rowDress && streetRun ? { rowDress: rowDressOnEdge(b, layout.lengthM, layout.edgeStartM[k], e.len, seenLeftToRight(first), base, traceRun, !b.rowDress.stoop || run === rowStoopRun) } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop || b.retailFront), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
+        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.specBandM ? { bandM: b.specBandM } : {}), ...(b.specFieldsForce?.length ? { statedFirst: b.specFieldsForce } : {}), ...(b.onlyExtras ? { onlyExtras: b.onlyExtras } : {}), ...(b.rowSeries ? { seriesId: b.rowSeries } : {}), ...(souterrainWin ? { souterrainWindows: true } : {}), ...(b.rowDress && streetRun ? { rowDress: rowDressOnEdge(b, layout.lengthM, layout.edgeStartM[k], e.len, seenLeftToRight(first), base, traceRun, !b.rowDress.stoop || run === rowStoopRun) } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop || b.retailFront), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.surveyedEnvelope && !b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
@@ -1055,6 +1056,16 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
           const qu0 = !units ? piece.a0 / bw : piece.door ? units.doorU : piece.a0 / bw * cellU, qu1 = !units ? piece.a1 / bw : piece.door ? units.doorU + cellU * (piece.a1 - piece.a0) / bw : piece.a1 / bw * cellU;
           // A mirrored door bay (layout.doorMirror, a row front's read door): the door cell sampled right to left.
           const [pu0, pu1] = piece.door && layout.doorMirror ? [qu1, qu0] : [qu0, qu1];
+          // A row souterrain (Centrum round 9, Kalkmarkt 182829): the ground cell's window stands on a low box over the
+          // pavement (boxPlacement souterrainWindowBox), the cell's wall above and below it.
+          const sLayer = souterrainWin && !piece.door && b.layers ? b.layers.ground : undefined, sRect = sLayer !== undefined ? groundOpeningRect(sLayer, 'window', b.openings) : null;
+          const sBox = sRect ? souterrainWindowBox({ sill: sRect.v0, head: sRect.v1 }, layout.groundM) : null;
+          const sFit = sRect && sBox ? cellOnBox(sRect, { sillM: base + sBox.sillM, headM: base + sBox.headM }, base, groundTop) : null;
+          if (sFit) {
+            quads.push({ kind: 'ground', e, u0: pu0, u1: pu1, v0: sFit.v0, v1: sFit.v1, tint: paint, layer: sLayer!, accent, z0: sFit.z0, z1: sFit.z1, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
+            for (const [w0, w1] of sFit.walls) quads.push({ kind: 'ground-wall', e, u0: piece.a0 / 5, u1: piece.a1 / 5, v0: w0 / 3, v1: w1 / 3, layer: b.plainLayer!, accent, z0: w0, z1: w1, tint: paint, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
+            continue;
+          }
           quads.push({ kind: piece.door ? 'door' : 'ground', e, u0: pu0, u1: pu1, v1: 1, tint: (piece.door && !b.recipe?.groundWallHex) || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
         }
         if (placed) {

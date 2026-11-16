@@ -18,6 +18,7 @@ import { presetOpenings, type OpeningRow, type Openings } from './facadeOpenings
 import type { FacadeStyle } from './genericFacades.js';
 import { pilasterHex } from './look/pilasterTone.js';
 import { HEAD, headGrammarOf, headPieces, headRise, type HeadGrammar } from './houseLine/headGrammar.js';
+import { souterrainWindowBox } from './houseLine/boxPlacement.js';
 
 // --- Palette ---------------------------------------------------------------------
 export const WHITE = '#efece4', CREAM = '#e4d9bf', STONE = '#cfc6b4', SANDSTONE = '#cdbb98', BLUESTONE = '#5b6066';
@@ -55,7 +56,9 @@ export function windowSpans(c: ExtraContext, s: number): Span[] {
     // House rows: a stated window share (houseLine/rowSeries.ts ROW_TYPE_LOOK) widens the upper windows to that share of
     // their axis pitch, frames included (Kinkerstraat review: the photo's windows take ~75 % of the bay, the preset ~62 %).
     const share = s >= 0 ? c.rowDress?.windowShare : undefined;
-    for (const [index,axis] of row.axes.entries()) out.push({ x: (i + axis) * bw, hw: share ? share * bw / row.axes.length / 2 - ROW_FRAME_M : ((row.widths?.[index] ?? row.width) * bw) / 2, z0: z + row.sill * h, z1: z + row.head * h });
+    // A row souterrain (Centrum round 9): the ground windows stand on the low box the mesher draws them on.
+    const sb = s < 0 && c.souterrainWindows && !doors.has(i) ? souterrainWindowBox(row, h) : null;
+    for (const [index,axis] of row.axes.entries()) out.push({ x: (i + axis) * bw, hw: share ? share * bw / row.axes.length / 2 - ROW_FRAME_M : ((row.widths?.[index] ?? row.width) * bw) / 2, z0: sb ? z + sb.sillM : z + row.sill * h, z1: sb ? z + sb.headM : z + row.head * h });
   }
   return out;
 }

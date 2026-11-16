@@ -1,0 +1,907 @@
+{
+ "note": "Centrum round 9 same-building reads: one opus read per candidate run (beltLook generate.ts sameBuildingCandidates), on the existing cuts; confirmed at confidence >= 0.6.",
+ "runs": [
+  {
+   "pids": [
+    "0363100012170168",
+    "0363100012170170"
+   ],
+   "answer": "one",
+   "confidence": 0.75,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012170176",
+    "0363100012170177",
+    "0363100012170178"
+   ],
+   "answer": "groups",
+   "confidence": 0.55,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012174799",
+    "0363100012168234",
+    "0363100012174050"
+   ],
+   "answer": "one",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012167946",
+    "0363100012174091"
+   ],
+   "answer": "separate",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168013",
+    "0363100012168012"
+   ],
+   "answer": "one",
+   "confidence": 0.65,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012174081",
+    "0363100012174083"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012172855",
+    "0363100012172856"
+   ],
+   "answer": "separate",
+   "confidence": 0.85,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012176782",
+    "0363100012176775"
+   ],
+   "answer": "separate",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012172985",
+    "0363100012172986"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168085",
+    "0363100012174931"
+   ],
+   "answer": "separate",
+   "confidence": 0.75,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012170112",
+    "0363100012170113"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168960",
+    "0363100012168959"
+   ],
+   "answer": "separate",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012174240",
+    "0363100012174241"
+   ],
+   "answer": "separate",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168632",
+    "0363100012168622",
+    "0363100012168621"
+   ],
+   "answer": "one",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012172514",
+    "0363100012172469",
+    "0363100012172468",
+    "0363100012172467",
+    "0363100012172466",
+    "0363100012172470"
+   ],
+   "answer": "one",
+   "confidence": 0.85,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012176374",
+    "0363100012177553",
+    "0363100012177552"
+   ],
+   "answer": "one",
+   "confidence": 0.85,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012173436",
+    "0363100012173440"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168990",
+    "0363100012174886"
+   ],
+   "answer": "separate",
+   "confidence": 0.75,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012169945",
+    "0363100012169951"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012174892",
+    "0363100012174891"
+   ],
+   "answer": "one",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012174376",
+    "0363100012174458",
+    "0363100012174455"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012174375",
+    "0363100012174462"
+   ],
+   "answer": "one",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012174461",
+    "0363100012174460"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012167462",
+    "0363100012167461"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012174372",
+    "0363100012174371"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012174369",
+    "0363100012174370"
+   ],
+   "answer": "separate",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168312",
+    "0363100012168311",
+    "0363100012168301"
+   ],
+   "answer": "one",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012172071",
+    "0363100012172075",
+    "0363100012172074"
+   ],
+   "answer": "separate",
+   "confidence": 0.75,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173074",
+    "0363100012173073"
+   ],
+   "answer": "one",
+   "confidence": 0.65,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012174209",
+    "0363100012169715"
+   ],
+   "answer": "one",
+   "confidence": 0.75,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012169713",
+    "0363100012169712"
+   ],
+   "answer": "one",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012174933",
+    "0363100012168072"
+   ],
+   "answer": "one",
+   "confidence": 0.55,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168663",
+    "0363100012168666",
+    "0363100012168667",
+    "0363100012168664"
+   ],
+   "answer": "one",
+   "confidence": 0.75,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012168665",
+    "0363100012172465"
+   ],
+   "answer": "one",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012169182",
+    "0363100012169181"
+   ],
+   "answer": "separate",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173654",
+    "0363100012173655"
+   ],
+   "answer": "separate",
+   "confidence": 0.65,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168165",
+    "0363100012174195"
+   ],
+   "answer": "one",
+   "confidence": 0.75,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012174194",
+    "0363100012174193"
+   ],
+   "answer": "separate",
+   "confidence": 0.85,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012174293",
+    "0363100012174119",
+    "0363100012174118",
+    "0363100012174117",
+    "0363100012174115",
+    "0363100012174113"
+   ],
+   "answer": "separate",
+   "confidence": 0.65,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168508",
+    "0363100012168449",
+    "0363100012168450"
+   ],
+   "answer": "separate",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168682",
+    "0363100012168680",
+    "0363100012168678",
+    "0363100012168671",
+    "0363100012168674",
+    "0363100012168673",
+    "0363100012168672"
+   ],
+   "answer": "one",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012173382",
+    "0363100012173381"
+   ],
+   "answer": "one",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012173358",
+    "0363100012173357",
+    "0363100012173363",
+    "0363100012173369",
+    "0363100012173368"
+   ],
+   "answer": "one",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012173367",
+    "0363100012173366",
+    "0363100012173365",
+    "0363100012168364",
+    "0363100012168363"
+   ],
+   "answer": "one",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012168361",
+    "0363100012168358",
+    "0363100012168357",
+    "0363100012168359",
+    "0363100012168355"
+   ],
+   "answer": "one",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012173360",
+    "0363100012173359"
+   ],
+   "answer": "one",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012173371",
+    "0363100012173370",
+    "0363100012173275",
+    "0363100012168365",
+    "0363100012173257",
+    "0363100012173256",
+    "0363100012168360",
+    "0363100012168356"
+   ],
+   "answer": "one",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012173510",
+    "0363100012168307",
+    "0363100012168302"
+   ],
+   "answer": "separate",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173527",
+    "0363100012174103",
+    "0363100012174102"
+   ],
+   "answer": "separate",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012174101",
+    "0363100012173533"
+   ],
+   "answer": "separate",
+   "confidence": 0.75,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173531",
+    "0363100012173513"
+   ],
+   "answer": "separate",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173743",
+    "0363100012173742",
+    "0363100012173734",
+    "0363100012172880",
+    "0363100012173740"
+   ],
+   "answer": "one",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012173737",
+    "0363100012173736"
+   ],
+   "answer": "one",
+   "confidence": 0.65,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012168305",
+    "0363100012168300",
+    "0363100012174907"
+   ],
+   "answer": "one",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012168230",
+    "0363100012174802",
+    "0363100012174803",
+    "0363100012168229",
+    "0363100012168166",
+    "0363100012174114",
+    "0363100012174109",
+    "0363100012168216",
+    "0363100012168164"
+   ],
+   "answer": "one",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012168679",
+    "0363100012172793",
+    "0363100012172794",
+    "0363100012172790",
+    "0363100012172791",
+    "0363100012172792",
+    "0363100012172069",
+    "0363100012168681",
+    "0363100012173735",
+    "0363100012172808",
+    "0363100012172799",
+    "0363100012172800",
+    "0363100012172804"
+   ],
+   "answer": "one",
+   "confidence": 0.75,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012169777",
+    "0363100012169776"
+   ],
+   "answer": "one",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012169791",
+    "0363100012169792"
+   ],
+   "answer": "separate",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012169801",
+    "0363100012169800"
+   ],
+   "answer": "one",
+   "confidence": 0.65,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012170726",
+    "0363100012170725",
+    "0363100012168907"
+   ],
+   "answer": "one",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012170800",
+    "0363100012170806"
+   ],
+   "answer": "separate",
+   "confidence": 0.65,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012172599",
+    "0363100012172789"
+   ],
+   "answer": "separate",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012172788",
+    "0363100012172787"
+   ],
+   "answer": "separate",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173333",
+    "0363100012173332",
+    "0363100012173254",
+    "0363100012173338",
+    "0363100012173337",
+    "0363100012173336",
+    "0363100012169469",
+    "0363100012168634",
+    "0363100012168633"
+   ],
+   "answer": "separate",
+   "confidence": 0.65,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012169695",
+    "0363100012169697",
+    "0363100012173378",
+    "0363100012173377",
+    "0363100012173376",
+    "0363100012169693",
+    "0363100012173362"
+   ],
+   "answer": "separate",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173512",
+    "0363100012174066"
+   ],
+   "answer": "separate",
+   "confidence": 0.75,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173250",
+    "0363100012173247"
+   ],
+   "answer": "separate",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173039",
+    "0363100012173040"
+   ],
+   "answer": "separate",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168906",
+    "0363100012169815",
+    "0363100012169814",
+    "0363100012169812"
+   ],
+   "answer": "one",
+   "confidence": 0.55,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012174380",
+    "0363100012174379",
+    "0363100012174274",
+    "0363100012174273",
+    "0363100012174272"
+   ],
+   "answer": "separate",
+   "confidence": 0.8,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012169900",
+    "0363100012169974",
+    "0363100012169971"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012168845",
+    "0363100012168810"
+   ],
+   "answer": "separate",
+   "confidence": 0.5,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173523",
+    "0363100012168169",
+    "0363100012174108",
+    "0363100012168168",
+    "0363100012168228",
+    "0363100012174727",
+    "0363100012174804",
+    "0363100012174805",
+    "0363100012168231"
+   ],
+   "answer": "one",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012174919",
+    "0363100012174918"
+   ],
+   "answer": "separate",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173522",
+    "0363100012173519",
+    "0363100012173518"
+   ],
+   "answer": "separate",
+   "confidence": 0.7,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  },
+  {
+   "pids": [
+    "0363100012173521",
+    "0363100012174936"
+   ],
+   "answer": "one",
+   "confidence": 0.75,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012168629",
+    "0363100012168630"
+   ],
+   "answer": "one",
+   "confidence": 0.6,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16",
+   "one": true
+  },
+  {
+   "pids": [
+    "0363100012172497",
+    "0363100012172500"
+   ],
+   "answer": "separate",
+   "confidence": 0.65,
+   "reader": "opus same-building v1 (artifacts/centrum-looks/same-building-prompt.md)",
+   "at": "2026-11-16"
+  }
+ ]
+}

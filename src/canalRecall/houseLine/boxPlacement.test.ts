@@ -70,3 +70,17 @@ test('cellOnBox lands the opening on the box and leaves the rest of the storey t
   assert.ok(r.v0 >= 0 && r.v1 <= 1 + 1e-9 && r.z0 >= 0 && r.z1 <= 4.4);
   assert.ok(r.walls.length >= 1 && r.walls[0][0] === 0);
 });
+
+test('souterrainWindowBox (Centrum round 9, Kalkmarkt 182829): a souterrain window is held to 0.85 m of glass over a 0.35 m sill', async () => {
+  const { souterrainWindowBox, SOUTERRAIN_WINDOW } = await import('./boxPlacement.ts');
+  // the canal ground row (sill 0.95/3.3, head 2.85/3.3) in a 2.4 m souterrain cell drew 1.38 m of glass from 0.69 m
+  const box = souterrainWindowBox({ sill: 0.95 / 3.3, head: 2.85 / 3.3 }, 2.4)!;
+  assert.equal(box.sillM, SOUTERRAIN_WINDOW.sillM);
+  assert.equal(+(box.headM - box.sillM).toFixed(3), SOUTERRAIN_WINDOW.glassM);
+  // a window already under the cap, or a cell with no room, keeps the grid's
+  assert.equal(souterrainWindowBox({ sill: 0.3, head: 0.7 }, 1.8), null);
+  assert.equal(souterrainWindowBox({ sill: 0.1, head: 0.9 }, 0), null);
+  // a low cell keeps 0.2 m of wall under its top
+  const low = souterrainWindowBox({ sill: 0.2, head: 0.9 }, 1.3)!;
+  assert.ok(low.headM <= 1.1 + 1e-9 && low.sillM <= 0.35);
+});
