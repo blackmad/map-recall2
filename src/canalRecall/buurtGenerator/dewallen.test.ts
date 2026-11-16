@@ -20,7 +20,7 @@ test('De Wallen (round 17): every audited window front is staged and draws its w
   assert.deepEqual(staged.held, want.held);
   assert.equal(staged.records.length + staged.held.length, audit.fronts.length);
   assert.equal(staged.records.length, audit.fronts.filter(f => f.crown !== 'gable').length);
-  for (const r of staged.records) {
+  for (const r of staged.records as Array<Record<string, any>>) {
     const kit = buurtKitOf(r.buurtKit);
     assert.ok(kit?.windowFronts?.length === 1, `${r.pandId}: one window front`);
     const roof = buurtRoofKitFor(kit!, r.topM, r.storeys, 3.4)!;
