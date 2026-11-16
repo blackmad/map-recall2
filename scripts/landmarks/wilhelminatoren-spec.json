@@ -1,0 +1,30 @@
+{
+ "id": "wilhelminatoren",
+ "name": "Wilhelminatoren",
+ "heightMetres": 42.5,
+ "bagYear": 2001,
+ "galleryView": {
+  "theta": 1.2,
+  "phi": 1.15
+ },
+ "surveyedSource": "Vertex average of the OSM part w145629045 ring (building tiles, RD) of BAG pand 0363100012072252 (PDOK BAG WFS, CC0) in native east/south metres (scripts/landmarks/wilhelminatoren-footprints.json, written by bag-extrude-prepare.ts: the 3DBAG serves no shell for this pand). The ring is extruded to 41.6 m, read off the rectified Gemeente Amsterdam panorama TMX7316010203-002550_pano_0000_003503 (2022, CC BY 4.0); the north face from TMX7316010203-002060_pano_0000_003801 (2021). Per wall in scripts/landmarks/wilhelminatoren-inventory.json.",
+ "materialOverrides": {
+  "brick": "#9e8576",
+  "greyBrick": "#6a5454",
+  "white": "#e8e8e6",
+  "glass": "#3a4046",
+  "canopyGlass": "#aeb6ba",
+  "bronze": "#5a636b",
+  "concrete": "#c9c5bd",
+  "slate": "#5a5e60",
+  "dark": "#2a3a5a"
+ },
+ "attribution": {
+  "title": "Wilhelminatoren (2001), apartment tower on the former Wilhelmina Gasthuis site, Amsterdam-West",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002550_pano_0000_003503/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the OSM building-part outline (ODbL) of BAG pand 0363100012072252 (CC0), extruded to the height read from Gemeente Amsterdam panoramas (CC BY 4.0): the convex brick front with its window rows and dark brick panels, the glazed loggias, the WILHELMINA TOREN canopy and the glazed steel escape stair. No pixels or meshes imported."
+ }
+}

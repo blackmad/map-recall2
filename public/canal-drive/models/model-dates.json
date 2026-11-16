@@ -4791,6 +4791,21 @@
       "version": "b1a9a716b2669c15",
       "dateSource": "asset-update"
     },
+    "oba-staatsliedenbuurt": {
+      "updatedAt": "2026-11-16T02:36:36.010Z",
+      "version": "a9cc2695f835efd1",
+      "dateSource": "asset-update"
+    },
+    "oba-staatsliedenbuurt.lod1": {
+      "updatedAt": "2026-11-16T02:36:43.618Z",
+      "version": "1a7fc909cd828697",
+      "dateSource": "asset-update"
+    },
+    "oba-staatsliedenbuurt.lod2": {
+      "updatedAt": "2026-11-16T02:36:43.912Z",
+      "version": "41027fb410a05687",
+      "dateSource": "asset-update"
+    },
     "obrechtkerk": {
       "updatedAt": "2026-10-13T14:30:58.208Z",
       "version": "dded32773c81cdcc",
@@ -5691,6 +5706,21 @@
       "version": "bb061f3879d6f711",
       "dateSource": "asset-update"
     },
+    "room-mate-aitana": {
+      "updatedAt": "2026-11-16T02:39:54.408Z",
+      "version": "4c7a46296c749727",
+      "dateSource": "asset-update"
+    },
+    "room-mate-aitana.lod1": {
+      "updatedAt": "2026-11-16T02:39:31.972Z",
+      "version": "9aa87e285eae71e6",
+      "dateSource": "asset-update"
+    },
+    "room-mate-aitana.lod2": {
+      "updatedAt": "2026-11-16T02:39:32.099Z",
+      "version": "6d54eeb7fb0549b5",
+      "dateSource": "asset-update"
+    },
     "royal-theater-carre": {
       "updatedAt": "2026-10-20T10:13:04.990Z",
       "version": "691987957fc8588b",
@@ -5797,8 +5827,18 @@
       "dateSource": "asset-update"
     },
     "schiller-rembrandtplein": {
-      "updatedAt": "2026-11-15T15:22:40.059Z",
-      "version": "21952a6e7fd5948b",
+      "updatedAt": "2026-11-16T01:13:19.380Z",
+      "version": "1524c96eed5c6588",
+      "dateSource": "asset-update"
+    },
+    "schiller-rembrandtplein.lod1": {
+      "updatedAt": "2026-11-16T01:18:20.302Z",
+      "version": "c08d2d267415b480",
+      "dateSource": "asset-update"
+    },
+    "schiller-rembrandtplein.lod2": {
+      "updatedAt": "2026-11-16T01:18:20.784Z",
+      "version": "9edd7ec0c8f0536f",
       "dateSource": "asset-update"
     },
     "schiller-rembrandtplein.lod1": {
@@ -7094,6 +7134,21 @@
     "wilhelmina-ruiterstandbeeld.lod2": {
       "updatedAt": "2026-11-07T14:08:58.200Z",
       "version": "b4b4c9bbd2409442",
+      "dateSource": "asset-update"
+    },
+    "wilhelminatoren": {
+      "updatedAt": "2026-11-16T02:28:34.237Z",
+      "version": "230038717fe89c74",
+      "dateSource": "asset-update"
+    },
+    "wilhelminatoren.lod1": {
+      "updatedAt": "2026-11-16T02:30:05.873Z",
+      "version": "848af2cfe4e67f79",
+      "dateSource": "asset-update"
+    },
+    "wilhelminatoren.lod2": {
+      "updatedAt": "2026-11-16T02:30:06.659Z",
+      "version": "60eda5ae7660fdb6",
       "dateSource": "asset-update"
     },
     "willem-de-zwijgerkerk": {
