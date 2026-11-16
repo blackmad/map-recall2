@@ -66,3 +66,27 @@ test('round 6: the draw takes the confident reads mix; the gable foot pitch is t
   assert.equal(gableFootPitch(pr, ahn)!.pitch, 3.5);
   assert.equal(gableFootPitch(pr.slice(0, 10), ahn), null);
 });
+
+test('round 7: crown re-reads on another capture; v3 roof and dress fields; a brick photo over a plaster register', async () => {
+  const { mergeCrown, parseReads2 } = await import('./photo-reads.ts');
+  const { photoOverRegisterFinish } = await import('./generate.ts');
+  const c = (crown: string, cc: number, extra = {}) => ({ crown, cornice: 'none', full: 4, souterrain: false, cc, sc: 0.8, ...extra });
+  // Kalkmarkt 182745 (step 0.65) re-read as a step at 0.6: two weak gables state it at 0.7
+  const k = mergeCrown(c('step', 0.65), c('step', 0.6));
+  assert.equal(k.crown, 'step'); assert.equal(k.cc, 0.7); assert.equal(k.crownRule, 'two captures read a gable weakly');
+  // one weak gable against a weak cornice stays under the bar
+  assert.ok(mergeCrown(c('neck', 0.6), c('cornice', 0.6)).cc < 0.7);
+  // a confident re-read stands
+  assert.equal(mergeCrown(c('cornice', 0.6), c('neck', 0.85)).crown, 'neck');
+  // the re-read brings its roof and dress
+  const r = mergeCrown(c('cornice', 0.8), c('cornice', 0.8, { roof: 'dormers-tile', rc: 0.8, dress: 'keystone', dc: 0.75 }));
+  assert.equal(r.roof, 'dormers-tile'); assert.equal(r.dress, 'keystone');
+  const p = parseReads2('0363100012168300 brick brown-brick 0.8 cornice simple 3 n 0.8 0.8 dormers-tile 0.8 stone-lintel 0.7\n0363100012168301 brick brown-brick 0.8 cornice simple 3 n 0.8 0.8');
+  assert.equal(p.get('0363100012168300')!.roof, 'dormers-tile'); assert.equal(p.get('0363100012168300')!.dc, 0.7);
+  assert.equal(p.get('0363100012168301')!.roof, undefined);
+  // Kloveniersburgwal 177790: register plaster, v2 brown brick 0.65 and v1 red-brown 0.6
+  const kl = { finish: 'brick', family: 'brown-brick', confidence: 0.65, v1: { family: 'red-brown-brick', confidence: 0.6 } } as never;
+  assert.equal(photoOverRegisterFinish('plaster', kl), true);
+  assert.equal(photoOverRegisterFinish('brick', kl), false);
+  assert.equal(photoOverRegisterFinish('plaster', { finish: 'brick', family: 'brown-brick', confidence: 0.65 } as never), false);   // one reader only
+});

@@ -36,6 +36,10 @@ export interface BeltStated { crown?: string; year?: number; shop?: boolean; fin
   tallCornice?: string; photoStoreys?: number; photoSouterrain?: boolean;
   /** Centrum round 6: the photo reads a roof in view over the wall (a mansard or pitched eaves). */
   photoRoof?: boolean;
+  /** Centrum round 7: the photo reads the roof storey's slope as red pantile (Marnixplein 168300-174907). */
+  roofMaterial?: 'tile';
+  /** Centrum round 7: the photo's upper-window dressing, in the describer's windowSurround words (stone-lintel, keystone, block-dressings, none). */
+  photoDress?: string;
   /** The photo colour reader's (round 11): the wall's colour family read on the cut, set only where the register is silent. */
   photoColour?: PhotoColour }
 /**
@@ -234,7 +238,12 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       // A cornice front stands at 3DBAG's representative height (its storeys fitted to it); a gable's foot stays at the
       // front top, the gable rising to the ridge.
       const dGabled = GABLED_CROWNS.has(String(t.statedCrown ?? d.donor.answer.crown));
-      const corniceTop = !dGabled && eaves !== null ? ((sd?.tallCornice ? tallTop : ahnTop) ?? (t.heightM != null ? corniceLine({ crown: 'cornice' }, t, eaves, m.pand.eavesM) : null)) : null;
+      let corniceTop = !dGabled && eaves !== null ? ((sd?.tallCornice ? tallTop : ahnTop) ?? (t.heightM != null ? corniceLine({ crown: 'cornice' }, t, eaves, m.pand.eavesM) : null)) : null;
+      // Centrum round 7 (Goudsbloemstraat 172466-172514: four storeys under a roof storey drawn at the band's 14.8 m, the
+      // photo's cornice about 12.5): under a roof storey (the register's or the photo's) the AHN band's top is the roof
+      // storey's, so a look with a measured pitch caps the wall at the photo's storeys at that pitch, never under the band p50.
+      if (corniceTop !== null && look.gableFootPitchM && sd?.photoStoreys && (t.roofStorey || sd.photoRoof) && !sd.tallCornice)
+        corniceTop = +Math.max(af?.p50 ?? 0, Math.min(corniceTop, (sd.photoStoreys + (sd.photoSouterrain ? 0.58 : 0)) * look.gableFootPitchM)).toFixed(2);
       // The photo's storey count where the register is silent, when it gives the wall (a gable's foot, else the cornice
       // top) a plausible pitch.
       // A gable's wall may stand up to its AHN apex less the minimum rise (3DBAG's eave is often a rear one: round 10,
@@ -244,6 +253,9 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       photoStoreys = ps;
       read = fittedRead({ ...t, ...(corniceTop !== null ? { eavesM: corniceTop } : {}), ...(ps ? { storeys: ps } : {}) }, d.donor, look);
       if (sd?.tallCornice && !GABLED_CROWNS.has(String(read.crown))) (read as { cornice?: string }).cornice = sd.tallCornice;
+      // Centrum round 7 (Nicolaas Witsenkade 179373-179376, Kromme Waal: white window dressings missing): the photo's
+      // read dressing stands over the donor's (describer windowSurround vocabulary).
+      if (sd?.photoDress) (read as { windowSurround?: string }).windowSurround = sd.photoDress;
       // Centrum round 6 (Kloveniersburgwal 177790, Marnixstraat 168522: a slate roof storey from 3DBAG's ridge alone over
       // fronts the photo shows flat-corniced): a look with roofStoreyNeedsPhoto draws the measured roof storey only where
       // the photo reads a roof in view (photoRoof); the register's dormer (t.roofStorey) still stands.
@@ -368,7 +380,7 @@ export const WAREHOUSE_EXTRAS = ['warehouse-shutters', 'hoist-beam'] as const;
 export function pitchedDormers(row: RowRecord, stated: ReadonlyMap<string, BeltStated>): RowRecord {
   const pitch = (f: RowField<RowRoofStorey> | undefined, ids: readonly string[]) => {
     if (!f || f.source === 'reviewed' || f.value.kind !== 'mansard' || ids.some(id => stated.get(id)?.mansard)) return;
-    f.value = { ...f.value, pitched: true, material: 'slate' };
+    f.value = { ...f.value, pitched: true, material: ids.some(id => stated.get(id)?.roofMaterial === 'tile') ? 'tile' : 'slate' };
     f.ref = `${f.ref}; ${BELT_LOOK_REF}: dormers in a dark pitched roof, no mansard stated (a red tile hip read loud on the sheet, Prinsengracht 177410)`;
   };
   for (const s of row.series) pitch(s.design.roofStorey, row.fronts.filter(f => f.seriesId === s.id).map(f => f.pandId));

@@ -26,7 +26,7 @@ import { toRowCheck } from '../../src/canalRecall/houseSpec/row/check.ts';
 import type { DescriberAnswer } from '../../src/canalRecall/houseSpec/describer.ts';
 import { modernBehindRegister } from '../../src/canalRecall/beltLook/roofSignals.ts';
 import { drawRowWalls, isBrickFamily, measuredWeights, periodOf, streetFamily, type WallDrawConfig, type WallDrawn, type WeightEvidence, type Weights } from '../../src/canalRecall/beltLook/wallDraw.ts';
-import { strongPhoto, photoFinish, photoCrown, PHOTO_FINISH_MIN, type PhotoCrown } from '../../src/canalRecall/beltLook/generate.ts';
+import { strongPhoto, photoFinish, photoCrown, PHOTO_FINISH_MIN, PHOTO_CROWN_MIN, type PhotoCrown } from '../../src/canalRecall/beltLook/generate.ts';
 import { describerDarkPhrase } from '../../src/canalRecall/houseSpec/darkFinish.ts';
 import { describerColourWord, judgeFront, type JudgedFamily } from '../../src/canalRecall/houseSpec/judgedColour.ts';
 
@@ -70,6 +70,12 @@ export function photoOverRegisterGable(registerCrown: string | undefined, r: Par
   return !!registerCrown && GABLED_CROWNS.has(registerCrown) && !!r && typeof r.cc === 'number' && r.cc >= PHOTO_OVER_REGISTER_CC && (r.crown === 'cornice' || r.crown === 'flat');
 }
 
+/** The v3 dress field's confidence that states the upper windows' dressing (round 7). */
+export const PHOTO_DRESS_MIN = 0.7;
+/** The v3 dress words the row line can draw, in the describer's windowSurround words (row/solve.ts DRESSING_OF). */
+export const PHOTO_DRESS_SURROUND: Readonly<Record<string, string>> = { none: 'none', 'stone-lintel': 'stone-lintel', keystone: 'keystone', 'block-course': 'block-dressings' };
+/** The v3 roof field's confidence that states a roof storey (round 7). */
+export const PHOTO_ROOF_READ_MIN = 0.7;
 /** The photo confidence a roof in view needs to evidence a measured roof storey (round 6). */
 export const PHOTO_ROOF_MIN = 0.6;
 /** A weak photo read (round 6): counted by a run only when WEAK_RUN_MIN of them mostly agree (wallDraw.ts run-weak). */
@@ -124,6 +130,13 @@ export function photoFamily(r: PhotoRead | undefined, registerFinish: string | u
   return PHOTO_FAMILY[r.family];
 }
 const BRICK_FINISHES: ReadonlySet<string> = new Set(['brick', 'ornamentalBrick']);
+/** Round 7: two photo reads that both see bare brick (v2 at WEAK_PHOTO_MIN, and v1 or a later capture) over a register's plaster or paint. */
+export function photoOverRegisterFinish(registerFinish: string | undefined, r: PhotoRead | undefined): boolean {
+  if (!registerFinish || BRICK_FINISHES.has(registerFinish) || !r) return false;
+  const x = r as PhotoRead & { v1?: { family: string; confidence: number }; second?: PhotoRead; capture3?: PhotoRead };
+  const brick = (f: { family?: string; confidence?: number; finish?: string } | undefined) => !!f && (f.confidence ?? 0) >= WEAK_PHOTO_MIN && !!f.family?.endsWith('-brick') && (f.finish === undefined || f.finish === 'brick');
+  return brick(x) && [x.v1, x.second, x.capture3].some(brick);
+}
 export const loadPhotoReads = (id: string, file?: string): Map<string, PhotoRead> => {
   const f = file ?? [`artifacts/centrum-looks/photo/${id}-photo-reads.json`, `data/buurt-generators/${id}/photo-reads.json`].find(x => fs.existsSync(x));
   return new Map(f && fs.existsSync(f) ? Object.entries<PhotoRead>(JSON.parse(fs.readFileSync(f, 'utf8')).reads ?? {}) : []);
@@ -203,8 +216,9 @@ async function main() {
   // a confident read states the finish where the register is silent; its family goes to the wall draw (drawWalls).
   const registerFinish = new Map<string, string>([...stated].flatMap(([k, v]) => (v.finish ? [[k, v.finish] as [string, string]] : [])));
   const photo = process.argv.includes('--no-photo') ? new Map<string, PhotoRead>() : loadPhotoReads(id, arg('photo-reads'));
-  let photoCrowns = 0;
-  const registerGablesDropped: string[] = [];
+  let photoCrowns = 0, photoRoofStoreys = 0;
+  const dressTally: Record<string, number> = {};
+  const registerGablesDropped: string[] = [], registerFinishesDropped: string[] = [];
   for (const [pid, r] of photo) {
     const cur = stated.get(pid) ?? {}, fin = cur.finish ? undefined : photoFinish(r.finish === 'unclear' ? undefined : r as never);
     // Round 5: lane D's crown reader's fields, read by the v2 reader on the same cut (photoCrown: a gabled crown where the
@@ -214,10 +228,27 @@ async function main() {
     // A register gable the photo confidently reads as a cornice or a plain parapet is a front that changed (round 4 judges:
     // gables invented on flat-cornice rows; 43 donor fronts drawn gabled under a photo cornice, checked by eye on 8).
     if (photoOverRegisterGable(cur.crown, r as unknown as PhotoCrown)) { const { crown: _gone, ...rest } = cur; stated.set(pid, rest); registerGablesDropped.push(pid); }
+    // Round 7 (Kloveniersburgwal 177790: the register's 1850 plaster drawn pale grey over a brown brick front): a plaster or
+    // paint register finish yields where two photo reads (v2 and v1, or a second capture) both see bare brick (each >= WEAK_PHOTO_MIN).
+    if (photoOverRegisterFinish(stated.get(pid)?.finish, r)) { const { finish: _f, ...rest } = stated.get(pid)!; stated.set(pid, rest); registerFinish.delete(pid); registerFinishesDropped.push(pid); }
     const now = stated.get(pid) ?? {};
     // Round 6: a roof in view on the photo (mansard or pitched eaves read at PHOTO_ROOF_MIN): the evidence a measured roof storey needs.
     const roof = typeof (r as Partial<PhotoCrown>).cc === 'number' && (r as unknown as PhotoCrown).cc >= PHOTO_ROOF_MIN && ['mansard', 'pitched-eaves'].includes((r as unknown as PhotoCrown).crown);
-    if (fin || crown || pc.tallCornice || pc.storeys || roof) stated.set(pid, { ...now, ...(roof ? { photoRoof: true } : {}), ...(fin ? { finish: fin } : {}), ...(crown ? { crown } : {}),
+    // Round 7: the v3 re-read's roof in view (rc >= PHOTO_ROOF_READ_MIN) states a roof storey as the register's dakkapel
+    // does (Marnixplein 168300-174907, a continuous pantile roof with dormers, drawn with none); a mansard read keeps the
+    // kit's mansard face over lane D's pitched hip (Westeinde 171768-178343, read mansard at 0.7-0.85, drawn as hips).
+    const rr = r as unknown as PhotoCrown & { roof?: string; rc?: number }, roofRead = typeof rr.rc === 'number' && rr.rc >= PHOTO_ROOF_READ_MIN ? rr.roof : undefined;
+    const gabledNow = GABLED_CROWNS.has(String(crown ?? now.crown));
+    const roofInView = !gabledNow && !!roofRead && /^(dormers|pitched|mansard)/.test(roofRead);
+    const mansard = !gabledNow && ((rr.crown === 'mansard' && rr.cc >= PHOTO_CROWN_MIN) || roofRead === 'mansard');
+    const tile = roofInView && /-tile$/.test(roofRead!);
+    if (roofInView) photoRoofStoreys++;
+    // Round 7: the photo's window dressing (v3 `dress`, dc >= PHOTO_DRESS_MIN) where the kit's row line can draw it;
+    // block-surround and arch-ring have row kinds the describer vocabulary cannot reach, and bands (speklagen) no row kind: read, not drawn.
+    const rd = r as unknown as { dress?: string; dc?: number }, dress = typeof rd.dc === 'number' && rd.dc >= PHOTO_DRESS_MIN && rd.dress ? PHOTO_DRESS_SURROUND[rd.dress] : undefined;
+    if (rd.dress && typeof rd.dc === 'number' && rd.dc >= PHOTO_DRESS_MIN) dressTally[rd.dress] = (dressTally[rd.dress] ?? 0) + 1;
+    if (fin || crown || pc.tallCornice || pc.storeys || roof || roofInView || mansard || dress) stated.set(pid, { ...now, ...(dress ? { photoDress: dress } : {}), ...(roof || roofInView ? { photoRoof: true } : {}),
+      ...(roofInView ? { roofStorey: true } : {}), ...(mansard ? { mansard: true } : {}), ...(tile ? { roofMaterial: 'tile' as const } : {}), ...(fin ? { finish: fin } : {}), ...(crown ? { crown } : {}),
       ...(pc.tallCornice ? { tallCornice: pc.tallCornice } : {}), ...(pc.storeys ? { photoStoreys: pc.storeys } : {}), ...(pc.souterrain !== undefined ? { photoSouterrain: pc.souterrain } : {}) });
   }
   // Later periods stay with today and the buurt generator: a pand built after maxYear (BAG; an earlier register facade
@@ -295,7 +326,7 @@ async function main() {
       const st = o?.storeys?.value ?? s.design.storeys?.value; storeys[st] = (storeys[st] ?? 0) + 1;
     }
   }
-  const report = { at, district: id, buurten: look.buurten, pitchM: look.pitchM, foreignDonor: look.foreignDonor, ahnFronts: ahn.size, overSpecs, photoCrowns, registerGablesDropped: registerGablesDropped.length, gableFootPitch: gfp, statedPhotoStoreys: [...stated.values()].filter(v => v.photoStoreys).length, specOnlyRedrawn: drawn.filter(p => specOnly.has(p)).length,
+  const report = { at, district: id, buurten: look.buurten, pitchM: look.pitchM, foreignDonor: look.foreignDonor, ahnFronts: ahn.size, overSpecs, photoCrowns, photoRoofStoreys, photoDress: dressTally, registerGablesDropped: registerGablesDropped.length, registerFinishesDropped, gableFootPitch: gfp, statedPhotoStoreys: [...stated.values()].filter(v => v.photoStoreys).length, specOnlyRedrawn: drawn.filter(p => specOnly.has(p)).length,
     pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length - laterPeriod.size, laterPeriod: laterPeriod.size, maxYear: look.maxYear ?? null, drawn: drawn.length, ownRead: ownN, donorRead: drawn.length - ownN, donorDistrict,
     ownDonors: own.donors.length, beltDonors: belt.donors.length, rows: res.rows.length, records: records.length, skipped: bySkip, bySegment: bySeg, crowns, storeys, findings,
     statedCrown: drawn.filter(p => stated.get(p)?.crown).length, modernBehindRegister: Object.keys(modern).length, walls, wallWeights, ms: Date.now() - t0 };

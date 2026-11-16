@@ -28,6 +28,8 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { mergeCrownReads, type PhotoCrown } from '../../src/canalRecall/beltLook/generate.ts';
+import { GABLED_CROWNS } from '../../src/canalRecall/beltLook/donors.ts';
 
 const LINE = /^(\d{16})\s+(brick|paint|stucco|unclear)\s+([a-z-]+)\s+([\d.]+)/;
 export interface CentrumPhotoRead { finish: string; family: string; confidence: number; reader: string }
@@ -37,17 +39,37 @@ export function parseReads(text: string): Map<string, CentrumPhotoRead> {
   return out;
 }
 
-const LINE2 = /^(\d{16})\s+(brick|paint|stucco|unclear)\s+([a-z-]+)\s+([\d.]+)\s+([a-z-]+)\s+([a-z-]+)\s+(\d+|nv)\s+(y|n|nv)\s+([\d.]+)\s+([\d.]+)/;
-export interface CentrumCrownRead { crown: string; cornice: string; full: number | null; souterrain: boolean | null; cc: number; sc: number }
-export type CentrumRead2 = CentrumPhotoRead & CentrumCrownRead & { v1?: { family: string; confidence: number }; second?: CentrumPhotoRead & CentrumCrownRead; rule?: string };
+const LINE2 = /^(\d{16})\s+(brick|paint|stucco|unclear)\s+([a-z-]+)\s+([\d.]+)\s+([a-z-]+)\s+([a-z-]+)\s+(\d+|nv)\s+(y|n|nv)\s+([\d.]+)\s+([\d.]+)(?:\s+([a-z-]+)\s+([\d.]+))?(?:\s+([a-z-]+)\s+([\d.]+))?/;
+/** v3 (round 7) adds `roof` (what of a roof is in view over the cornice) and its confidence `rc`. */
+export interface CentrumCrownRead { crown: string; cornice: string; full: number | null; souterrain: boolean | null; cc: number; sc: number; roof?: string; rc?: number; dress?: string; dc?: number }
+export type CentrumRead2 = CentrumPhotoRead & CentrumCrownRead & { recrown?: Partial<CentrumCrownRead>; v1?: { family: string; confidence: number }; second?: CentrumPhotoRead & CentrumCrownRead; rule?: string };
 /** v2 lines (colour plus crown). */
 export function parseReads2(text: string): Map<string, CentrumPhotoRead & CentrumCrownRead> {
   const out = new Map<string, CentrumPhotoRead & CentrumCrownRead>();
   for (const l of text.split('\n')) {
     const m = l.trim().match(LINE2);
     if (m) out.set(m[1], { finish: m[2], family: m[3], confidence: +m[4], reader: 'opus v2 (cut, contrastive colour + crown)', crown: m[5], cornice: m[6],
-      full: m[7] === 'nv' ? null : +m[7], souterrain: m[8] === 'nv' ? null : m[8] === 'y', cc: +m[9], sc: +m[10] });
+      full: m[7] === 'nv' ? null : +m[7], souterrain: m[8] === 'nv' ? null : m[8] === 'y', cc: +m[9], sc: +m[10], ...(m[11] ? { roof: m[11], rc: +m[12] } : {}), ...(m[13] ? { dress: m[13], dc: +m[14] } : {}) });
   }
+  return out;
+}
+/** A crown read's weak floor: two captures that both read a gable at this or more state it (round 7). */
+export const WEAK_CROWN_MIN = 0.55;
+/**
+ * Round 7 (Kalkmarkt 182745 step 0.65, Amstel 183042 neck 0.55, Tweede Laurierdwarsstraat 174724 neck 0.6: gables drawn
+ * as flat cornices): a crown re-read on another capture (prompt v3, which also reads the roof in view). Lane D's
+ * mergeCrownReads takes a confident read; two weak reads that both see a gable state the more confident one at 0.7. The
+ * roof field comes from the re-read (v2 has none).
+ */
+export function mergeCrown<T extends CentrumCrownRead>(a: T, b: CentrumCrownRead): T & { crownRule?: string } {
+  const g = (r: CentrumCrownRead) => GABLED_CROWNS.has(r.crown) && r.cc >= WEAK_CROWN_MIN;
+  const m = mergeCrownReads(a as PhotoCrown, b as PhotoCrown) as PhotoCrown & { conflict?: string[] };
+  const out = { ...a, crown: m.crown, cornice: m.cornice, cc: m.cc, full: m.full, souterrain: m.souterrain, sc: m.sc } as T & { crownRule?: string };
+  if (m.conflict?.length) out.crownRule = `captures disagree (${m.conflict.join(', ')})`;
+  else if (m.cc < 0.7 && g(a) && g(b)) { const w = b.cc > a.cc ? b : a; Object.assign(out, { crown: w.crown, cornice: w.cornice, cc: 0.7 }); out.crownRule = 'two captures read a gable weakly'; }
+  else if (m.cc >= 0.7 && m.crown !== a.crown) out.crownRule = 'the re-read is the confident crown';
+  if (b.roof) Object.assign(out, { roof: b.roof, rc: b.rc });
+  if (b.dress) Object.assign(out, { dress: b.dress, dc: b.dc });
   return out;
 }
 /** Below the generator's bar (PHOTO_FINISH_MIN 0.7): a read kept for the record, not drawn. */
@@ -113,6 +135,9 @@ function main(argv: string[]) {
     const sds = argv.flatMap((x, i) => (x === '--second' && argv[i + 1] ? [argv[i + 1]] : []));
     const v1 = new Map<string, CentrumPhotoRead>(v1f ? Object.entries(JSON.parse(fs.readFileSync(v1f, 'utf8')).reads) : []);
     const seconds = sds.map(readDir);
+    // --crown (round 7, repeatable): crown and roof re-reads (prompt v3) merged by mergeCrown; their colour is not used.
+    const roofs = argv.flatMap((x, i) => (x === '--roof' && argv[i + 1] ? [argv[i + 1]] : [])).map(readDir);
+    const crowns = argv.flatMap((x, i) => (x === '--crown' && argv[i + 1] ? [argv[i + 1]] : [])).map(readDir), ctally: Record<string, number> = {};
     const out: Record<string, CentrumRead2> = {}, tally: Record<string, number> = {};
     for (const pid of [...new Set([...v2.keys(), ...v1.keys()])].sort()) {
       const b = v2.get(pid), o = v1.get(pid), m = mergeColour(o, b);
@@ -125,12 +150,25 @@ function main(argv: string[]) {
         Object.assign(base, { family: r.family, confidence: r.confidence, rule: `${base.rule}; ${r.rule}`, [k ? `capture${k + 2}` : 'second']: s2 });
         if (r.family === s2.family && r.confidence >= 0.7) base.finish = s2.finish;
       }
+      for (const cr of crowns) {
+        const c = cr.get(pid);
+        if (!c) continue;
+        const m = mergeCrown(base, c);
+        Object.assign(base, m, { recrown: { crown: c.crown, cc: c.cc, full: c.full, sc: c.sc, roof: c.roof, rc: c.rc } });
+        if (m.crownRule) ctally[m.crownRule] = (ctally[m.crownRule] ?? 0) + 1;
+      }
+      // --roof (round 7): v3 reads of the same first cut; only the roof and dress fields (a same-cut crown is not a second look).
+      for (const rd of roofs) {
+        const c = rd.get(pid);
+        if (c?.roof && !(base.roof && (base.rc ?? 0) >= (c.rc ?? 0))) Object.assign(base, { roof: c.roof, rc: c.rc });
+        if (c?.dress && !(base.dress && (base.dc ?? 0) >= (c.dc ?? 0))) Object.assign(base, { dress: c.dress, dc: c.dc });
+      }
       out[pid] = base;
       tally[base.rule!] = (tally[base.rule!] ?? 0) + 1;
     }
     fs.mkdirSync(path.dirname(b), { recursive: true });
     fs.writeFileSync(b, JSON.stringify({ at: new Date().toISOString().slice(0, 10), ref: 'centrum-looks round 5: contrastive colour + crown reader v2 over v1 (scripts/centrum-looks/photo-reads.ts assemble2)', reads: out }, null, 1) + '\n');
-    console.log(`assemble2: ${Object.keys(out).length} reads`, JSON.stringify(tally));
+    console.log(`assemble2: ${Object.keys(out).length} reads`, JSON.stringify(tally), crowns.length ? `crowns ${JSON.stringify(ctally)}` : '');
   } else { console.log('photo-reads.ts ask|assemble|assemble2 ...'); process.exit(2); }
 }
 if (process.argv[1]?.endsWith('centrum-looks/photo-reads.ts')) main(process.argv.slice(2));
