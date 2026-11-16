@@ -221,14 +221,16 @@ export function balconyOf(a: DescriberAnswer): { storeys: number[]; axis: 'centr
 /** A reading's erker (lane R round 24): the describer's `bayWindow` rows (ground = 0), its plan and roof balcony from an
  *  erker/oriel/bay gap's words ("canted", "three-sided", "splayed"; "balcony on its roof"). Unstated plan: a box. */
 export const BAY_GAP = /erker|oriel|bay[- ]?window/i;
-export function bayWindowOf(a: DescriberAnswer): { value: { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true }; what: string } | null {
+export function bayWindowOf(a: DescriberAnswer): { value: { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true; width?: 'full'; side?: 'left' | 'right' }; what: string } | null {
   const rows = Array.isArray(a.bayWindow) ? [...new Set(a.bayWindow.filter(k => Number.isInteger(k) && k >= 0))].sort((p, q) => p - q) : [];
   if (!rows.length) return null;
   const g = (a.gaps ?? []).find(x => BAY_GAP.test(x.what) || BAY_GAP.test(x.component));
   const words = g?.what ?? '';
   const kind = /cant|three[- ]sided|splay|angled|polygonal/i.test(words) ? 'canted' as const : 'box' as const;
-  const roof = /balcon[^.]*(?:on|over|atop)[^.]*(?:roof|top)|(?:roof|top)[^.]*balcon/i.test(words);
-  return { value: { storeys: rows, kind, ...(roof ? { roofBalcony: true as const } : {}) }, what: g ? `bayWindow ${JSON.stringify(rows)}; gap "${g.what}"` : `bayWindow ${JSON.stringify(rows)}` };
+  const roof = /balcon[^.]*(?:on|over|atop)[^.]*(?:roof|top)|(?:roof|top)[^.]*balcon|carr(?:y|ies|ying)[^.]*balcon/i.test(words);
+  // Its place: the whole front ("full-width", "spanning the whole width"), else a side axis, else the centre bay.
+  const full = /full[- ]width|(?:whole|entire|full) width/i.test(words), side = full ? null : /\bleft\b[^.]*\b(?:axis|bay|side)\b/i.test(words) ? 'left' as const : /\bright\b[^.]*\b(?:axis|bay|side)\b/i.test(words) ? 'right' as const : null;
+  return { value: { storeys: rows, kind, ...(roof ? { roofBalcony: true as const } : {}), ...(full ? { width: 'full' as const } : {}), ...(side ? { side } : {}) }, what: g ? `bayWindow ${JSON.stringify(rows)}; gap "${g.what}"` : `bayWindow ${JSON.stringify(rows)}` };
 }
 /** A heads value as a list (a front may state one head kind per storey group). */
 export const headsList = (v: RowHeads | RowHeads[] | null | undefined): RowHeads[] => v == null ? [] : Array.isArray(v) ? v : [v];
@@ -240,7 +242,9 @@ export const GAP_EXTRAS: ReadonlyArray<{ id: string; test: RegExp }> = [
 ];
 export function gapExtras(a: DescriberAnswer): Array<{ id: string; what: string }> {
   const out: Array<{ id: string; what: string }> = [];
-  for (const g of a.gaps ?? []) for (const x of GAP_EXTRAS) if (x.test.test(g.what) && !out.some(o => o.id === x.id)) out.push({ id: x.id, what: g.what });
+  // An erker gap's balcony is the erker's roof balcony when the reading counts the erker's rows (row-erker draws both).
+  const erker = Array.isArray(a.bayWindow) && a.bayWindow.length > 0;
+  for (const g of a.gaps ?? []) for (const x of GAP_EXTRAS) if (x.test.test(g.what) && !(erker && x.id === 'row-balcony' && (BAY_GAP.test(g.what) || BAY_GAP.test(g.component))) && !out.some(o => o.id === x.id)) out.push({ id: x.id, what: g.what });
   return out;
 }
 export interface ReadValues { [k: string]: unknown }
@@ -702,8 +706,8 @@ function notDrawnOfRead(a: DescriberAnswer, belt = false): Array<Omit<ReadNotDra
   if (a.doorSurround === true && !beltDoorcase(a, belt)) out.push({ field: 'doorSurround', value: true, reason: 'door-surround is on the allow-list; its shape is not described' });
   for (const g of a.gaps ?? []) {
     const drawnBy = GAP_EXTRAS.find(x => x.test.test(g.what));
-    const asErker = !drawnBy && bay && (BAY_GAP.test(g.what) || BAY_GAP.test(g.component));
-    out.push({ field: `gap:${g.component}`, value: g.what, reason: drawnBy ? `drawn as ${drawnBy.id} (its ornament detail is not)` : asErker ? 'drawn as row-erker from the bayWindow rows (centre bay; its joinery is the kit\'s)' : 'kit gap (the kit cannot say it)' });
+    const asErker = !!bay && (BAY_GAP.test(g.what) || BAY_GAP.test(g.component));
+    out.push({ field: `gap:${g.component}`, value: g.what, reason: asErker ? 'drawn as row-erker from the bayWindow rows (its plan, width and roof balcony from these words; its joinery is the kit\'s)' : drawnBy ? `drawn as ${drawnBy.id} (its ornament detail is not)` : 'kit gap (the kit cannot say it)' });
   }
   return out;
 }

@@ -379,7 +379,7 @@ const ROW_BASEMENT = { under: 0.05, out: 0.03, course: 0.32, joint: 0.025, ledge
  *  (buurtGenerator/kit/roofKit.ts TIMBER_LOOK: lights 0.85 m over the floor to 0.3 m under the next, 0.07 m posts). */
 export const ROW_ERKER = { side: 0.32, minW: 1.5, depth: 0.75, cant: 0.42, foot: 0.85, head: 0.3, gap: 0.25, post: 0.08, rail: 0.09, transom: 0.68, bar: 0.06,
   pane: 0.75, glass: '#9eabb1', glassOut: 0.012, slab: 0.16, slabOut: 0.06, cap: 0.22, capOut: 0.09, console: { w: 0.16, arm: 0.18, drop: 0.55, inset: 0.14 },
-  railH: 0.95, railPitch: 0.13, post2: 0.035 } as const;
+  railH: 0.95, railPitch: 0.13, post2: 0.035, fullInset: 0.18 } as const;
 /** The erker's wall-frame outline: its x span at the wall, its front's x span and its depth. */
 export function erkerPlan(c: ExtraContext): { xa: number; xb: number; fa: number; fb: number; d: number; zb: number; zt: number; rows: number[] } | null {
   const e = c.rowDress?.erker;
@@ -387,9 +387,11 @@ export function erkerPlan(c: ExtraContext): { xa: number; xb: number; fa: number
   const rows = e.storeys.filter(k => k >= 1 && k <= c.layout.storeys).sort((p, q) => p - q);
   if (!rows.length) return null;
   const E = ROW_ERKER, k0 = rows[0], k1 = rows[rows.length - 1];
-  const ws = windowSpans(c, k0 - 1);
-  const w = ws.length ? ws.reduce((a, b) => Math.abs(b.x - e.at) < Math.abs(a.x - e.at) ? b : a) : { x: e.at, hw: 0.45 };
-  const half = Math.max(E.minW / 2, w.hw + E.side), xa = Math.max(0.05, w.x - half), xb = Math.min(c.f.len - 0.05, w.x + half);
+  // Its place: the whole front, or the window nearest the stated end, else the window nearest the front's centre.
+  const ws = windowSpans(c, k0 - 1), to = e.end === 'start' ? 0 : e.end === 'end' ? c.f.len : e.at;
+  const w = ws.length ? ws.reduce((a, b) => Math.abs(b.x - to) < Math.abs(a.x - to) ? b : a) : { x: e.at, hw: 0.45 };
+  const half = Math.max(E.minW / 2, w.hw + E.side);
+  const xa = e.width === 'full' ? E.fullInset : Math.max(0.05, w.x - half), xb = e.width === 'full' ? c.f.len - E.fullInset : Math.min(c.f.len - 0.05, w.x + half);
   if (xb - xa < 1) return null;
   const cant = e.kind === 'canted' ? Math.min(E.cant, (xb - xa) / 4) : 0;
   const zb = storeyZ(c, k0 - 1), top = c.top - (c.rowDress?.cornice ? 0.95 : 0.35);

@@ -52,3 +52,23 @@ test('bayWindowOf: the describer rows and the gap words; no rows, no erker', () 
   assert.deepEqual(bayWindowOf(a({ bayWindow: [2, 1] }))!.value, { storeys: [1, 2], kind: 'box' });
   assert.deepEqual(bayWindowOf(a({ bayWindow: [1], gaps: [{ component: 'erker', what: 'a white timber canted erker on consoles with a balcony on its roof' }] } as never))!.value, { storeys: [1], kind: 'canted', roofBalcony: true });
 });
+
+test('row-erker: a full-width erker spans the front; a side erker stands over the window nearest that end', () => {
+  const full = erkerPlan(wall({ storeys: [1, 2], kind: 'box', width: 'full', at: 3.75 }))!;
+  assert.ok(Math.abs(full.xa - ROW_ERKER.fullInset) < 1e-9 && Math.abs(full.xb - (7.5 - ROW_ERKER.fullInset)) < 1e-9);
+  const left = erkerPlan(wall({ storeys: [1], kind: 'box', end: 'start', at: 3.75 }))!;
+  assert.ok((left.xa + left.xb) / 2 < 2, 'over the first bay');
+  const right = erkerPlan(wall({ storeys: [1], kind: 'box', end: 'end', at: 3.75 }))!;
+  assert.ok((right.xa + right.xb) / 2 > 5.5, 'over the last bay');
+});
+
+test('bayWindowOf: width and side from the gap; an erker gap\'s balcony is its roof balcony, not a row-balcony', async () => {
+  const { gapExtras } = await import('./houseSpec/row/solve.js');
+  const g = (what: string, rows = [1, 2]) => ({ bayWindow: rows, gaps: [{ component: 'erker', what }] }) as unknown as DescriberAnswer;
+  assert.equal(bayWindowOf(g('a full-width two-storey white bay window over storeys 1 and 2, with a solid-guard balcony on its roof'))!.value.width, 'full');
+  assert.equal(bayWindowOf(g('a shallow one-storey bay window over the left axis of storey 1, carrying a white balustraded balcony', [1]))!.value.side, 'left');
+  assert.equal(bayWindowOf(g('a shallow one-storey bay window over the left axis of storey 1, carrying a white balustraded balcony', [1]))!.value.roofBalcony, true);
+  assert.deepEqual(gapExtras(g('a bay window with a balcony on its roof')), []);
+  // Without bayWindow rows the gap's balcony stays the row-balcony it was.
+  assert.deepEqual(gapExtras({ gaps: [{ component: 'erker', what: 'a bay window with a balcony on its roof' }] } as unknown as DescriberAnswer).map(x => x.id), ['row-balcony']);
+});

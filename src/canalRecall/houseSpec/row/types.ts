@@ -81,7 +81,8 @@ export type RowHeadDressing = (typeof ROW_HEAD_DRESSINGS)[number];
 export const ROW_HEAD_SHAPES = ['flat', 'segmental', 'round', 'relieving'] as const;
 export type RowHeadShape = (typeof ROW_HEAD_SHAPES)[number];
 /** A stated erker: `storeys` in reader rows (ground = 0), `kind` its plan, `roofBalcony` a railing on its roof. */
-export interface RowBayWindow { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true }
+/** `width: 'full'`: across the whole front; `side`: over that side's axis as seen (absent: the centre bay). */
+export interface RowBayWindow { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true; width?: 'full'; side?: 'left' | 'right' }
 /** The upper window cell: tall sash/T-windows (the period default) or casements with a top light. */
 /** `cross`: a cross window (kruiskozijn), a mullion and a transom a third down (Herengracht 27). */
 export const ROW_WINDOW_KINDS = ['tall-upper', 'sash', 't-window', 'casement-toplight', 'casement', 'sash-8-over-8', 'sash-small-panes', 'cross'] as const;

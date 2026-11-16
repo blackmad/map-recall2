@@ -76,7 +76,7 @@ export type RowDressContext = {
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
   /** The stated erker (row-erker): renderer rows (0 = ground), plan, roof balcony, and its axis on this wall (m along x):
    *  the front's centre, on the wall of the run that holds it. */
-  erker?: { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true; at: number };
+  erker?: { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true; width?: 'full'; end?: 'start' | 'end'; at: number };
   /** Upper windows' share of their axis pitch, frames included (a row type's window width). */
   windowShare?: number;
   /** The stated window joinery (row-sash): the window kind, white frame and bar widths (m), panes per sash. */

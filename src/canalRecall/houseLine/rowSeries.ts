@@ -97,7 +97,7 @@ function balconyOf(designs: readonly RowDesign[], shift: number): { balcony?: No
 /** The stated erker (RowDesign.bayWindow: reader rows, ground = 0) on the renderer's rows. */
 function erkerOf(designs: readonly RowDesign[], shift: number): { erker?: NonNullable<RowSeriesDraw['erker']> } {
   const b = designs.find(d => d.bayWindow?.value)?.bayWindow?.value;
-  return b ? { erker: { storeys: b.storeys.map(k => k + shift), kind: b.kind, ...(b.roofBalcony ? { roofBalcony: true as const } : {}) } } : {};
+  return b ? { erker: { storeys: b.storeys.map(k => k + shift), kind: b.kind, ...(b.roofBalcony ? { roofBalcony: true as const } : {}), ...(b.width ? { width: b.width } : {}), ...(b.side ? { side: b.side } : {}) } } : {};
 }
 const span = (f: RowFront) => f.sub ? [f.sub.a0, f.sub.a1] as const : [0, 1] as const;
 

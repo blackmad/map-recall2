@@ -137,7 +137,7 @@ export interface RowSeriesDraw {
   /** The stated balcony: renderer upper storeys (1 = the first upper row) and axis. */
   balcony?: { storeys: number[]; axis: 'centre' | 'all' };
   /** The stated erker (lane R round 24): renderer rows (0 = ground, 1 = the first upper row), plan, roof balcony. */
-  erker?: { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true };
+  erker?: { storeys: number[]; kind: 'box' | 'canted'; roofBalcony?: true; width?: 'full'; side?: 'left' | 'right' };
   /** Upper windows' share of their axis pitch, frames included (the row type's window width, rowSeries.ts ROW_TYPE_LOOK). */
   windowShare?: number;
   /** The stated window joinery (RowDesign.glazing): kind, white frame and bar widths (m), panes per sash. */
