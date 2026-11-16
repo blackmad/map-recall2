@@ -1,0 +1,701 @@
+{
+ "schemaVersion": 1,
+ "id": "mauritskade-61",
+ "pand": "0363100012153693",
+ "brief": "scripts/landmarks/mauritskade-61-brief.md",
+ "signature": [
+  "front-gables",
+  "gable-lunette-lights",
+  "paired-windows",
+  "timber-eave",
+  "tile-roofs"
+ ],
+ "walls": [
+  {
+   "tag": "w01-59",
+   "bearing": 59,
+   "lengthM": 35.1,
+   "centre": [
+    4.9200315,
+    52.3621891
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001209_pano_0000_000078",
+   "capturedAt": "2019-06-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "front-gables",
+     "kind": "other",
+     "where": "two stepped gables with cream stone coping steps rising from the eave to a scrolled finial at about 20 m",
+     "approxSizeM": [
+      7.5,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001209_pano_0000_000078",
+     "how": "stone coping steps and apex block with a pointed finial over the 3DBAG gable walls"
+    },
+    {
+     "id": "gable-lunette-lights",
+     "kind": "window-shape",
+     "where": "four round-headed lights in each gable under a large segmental stone arch with a roundel",
+     "approxSizeM": [
+      6,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001209_pano_0000_000078",
+     "how": "stone arch band, roundel block, four arched lights with white frames"
+    },
+    {
+     "id": "paired-windows",
+     "kind": "window-shape",
+     "where": "tall paired windows with cream stone surrounds and quoined jambs on both storeys; many-paned upper sashes",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001209_pano_0000_000078",
+     "how": "opening(): stone lintel, sill and alternating quoins, white frames, transom, glazing bars"
+    },
+    {
+     "id": "wing-ground-windows",
+     "kind": "window-shape",
+     "where": "single wide ground-floor windows in the two wings",
+     "approxSizeM": [
+      1.4,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001209_pano_0000_000078",
+     "how": "opening() with one wide light"
+    },
+    {
+     "id": "timber-eave",
+     "kind": "other",
+     "where": "cream timber eave on brackets over the wings and the middle range",
+     "approxSizeM": [
+      29,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001209_pano_0000_000078",
+     "how": "cream eave board with brackets every 0.9 m"
+    },
+    {
+     "id": "pavilion-piers",
+     "kind": "other",
+     "where": "stone corner piers and a stone band between the storeys on the gabled pavilions",
+     "approxSizeM": [
+      0.45,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001209_pano_0000_000078",
+     "how": "sandstone pier strips and band"
+    },
+    {
+     "id": "tile-roofs",
+     "kind": "other",
+     "where": "red-brown tiled hipped roofs over the wings and middle",
+     "approxSizeM": [
+      35,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001209_pano_0000_000078",
+     "how": "3DBAG roof surfaces in the tile colour"
+    },
+    {
+     "id": "wing-chimneys",
+     "kind": "other",
+     "where": "brick chimney stacks and small scrolled stone dormer ends on the wing roofs",
+     "approxSizeM": [
+      0.8,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001209_pano_0000_000078",
+     "skip": {
+      "reason": "too-small",
+      "note": "small roof-line pieces above the eave, behind the wing eaves from the street"
+     }
+    },
+    {
+     "id": "downpipes",
+     "kind": "other",
+     "where": "zinc downpipes at the pavilion edges",
+     "approxSizeM": [
+      0.15,
+      13
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001209_pano_0000_000078",
+     "skip": {
+      "reason": "too-small",
+      "note": "15 cm pipes"
+     }
+    },
+    {
+     "id": "site-fence",
+     "kind": "other",
+     "where": "construction fence and banner in front",
+     "approxSizeM": [
+      30,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001209_pano_0000_000078",
+     "skip": {
+      "reason": "temporary",
+      "note": "building site, 2019"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-149",
+   "bearing": 149,
+   "lengthM": 24.5,
+   "centre": [
+    4.9196691,
+    52.3617807
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-239",
+   "bearing": 239,
+   "lengthM": 17.3,
+   "centre": [
+    4.9199629,
+    52.3620696
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-239",
+   "bearing": 239,
+   "lengthM": 13.8,
+   "centre": [
+    4.9195046,
+    52.3619964
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003567",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-windows-w04-239",
+     "kind": "window-shape",
+     "where": "paired windows with cream stone surrounds and quoined jambs, white frames, many-paned upper sashes",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001674_pano_0000_003567",
+     "how": "the front window system laid out at a 3 m pitch on the 3DBAG wall; scaffolding in the 2020 panoramas hides parts"
+    }
+   ]
+  },
+  {
+   "tag": "w05-59",
+   "bearing": 59,
+   "lengthM": 11.2,
+   "centre": [
+    4.919671,
+    52.3619927
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-329",
+   "bearing": 329,
+   "lengthM": 10.3,
+   "centre": [
+    4.9194926,
+    52.3619195
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003570",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-windows-w06-329",
+     "kind": "window-shape",
+     "where": "paired windows with cream stone surrounds and quoined jambs, white frames, many-paned upper sashes",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001674_pano_0000_003570",
+     "how": "the front window system laid out at a 3 m pitch on the 3DBAG wall; scaffolding in the 2020 panoramas hides parts"
+    }
+   ]
+  },
+  {
+   "tag": "w07-239",
+   "bearing": 239,
+   "lengthM": 10.2,
+   "centre": [
+    4.9194094,
+    52.3620872
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003566",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-windows-w07-239",
+     "kind": "window-shape",
+     "where": "paired windows with cream stone surrounds and quoined jambs, white frames, many-paned upper sashes",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001674_pano_0000_003566",
+     "how": "the front window system laid out at a 3 m pitch on the 3DBAG wall; scaffolding in the 2020 panoramas hides parts"
+    }
+   ]
+  },
+  {
+   "tag": "w08-329",
+   "bearing": 329,
+   "lengthM": 9.7,
+   "centre": [
+    4.919431,
+    52.3621492
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_10-17-35_00378",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-windows-w08",
+     "kind": "window-shape",
+     "where": "paired and single windows with stone surrounds and dark green frames on two storeys",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_10-17-35_00378",
+     "how": "the front window system at a 3 m pitch; the frames are drawn white, not dark green"
+    },
+    {
+     "id": "attic-dormer-gable",
+     "kind": "other",
+     "where": "a small stone-coped dormer gable with paired lights in the roof above",
+     "approxSizeM": [
+      3,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-19_10-17-35_00378",
+     "skip": {
+      "reason": "not-visible",
+      "note": "set back above the eave; the 3DBAG roof carries its mass and it does not show from the pavement under the trees"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-329",
+   "bearing": 329,
+   "lengthM": 9.3,
+   "centre": [
+    4.9198267,
+    52.3622994
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003578",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-windows-w09-329",
+     "kind": "window-shape",
+     "where": "paired windows with cream stone surrounds and quoined jambs, white frames, many-paned upper sashes",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001674_pano_0000_003578",
+     "how": "the front window system laid out at a 3 m pitch on the 3DBAG wall; scaffolding in the 2020 panoramas hides parts"
+    }
+   ]
+  },
+  {
+   "tag": "w10-149",
+   "bearing": 149,
+   "lengthM": 9.2,
+   "centre": [
+    4.9200989,
+    52.3620272
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001009_pano_0001_000021",
+   "capturedAt": "2018-12-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "side-gable",
+     "kind": "other",
+     "where": "the south-east wing gable: tall arched window group under a stone arch, stepped coping, louvred vent",
+     "approxSizeM": [
+      9,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001009_pano_0001_000021",
+     "how": "the window system on the wall; the gable coping and arch group are left to the 3DBAG shell"
+    }
+   ]
+  },
+  {
+   "tag": "w11-239",
+   "bearing": 239,
+   "lengthM": 8.4,
+   "centre": [
+    4.9194765,
+    52.3617569
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w12-329",
+   "bearing": 329,
+   "lengthM": 7.7,
+   "centre": [
+    4.9195415,
+    52.3621884
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002138_pano_0000_002012",
+   "capturedAt": "2021-05-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-windows-w12-329",
+     "kind": "window-shape",
+     "where": "paired windows with cream stone surrounds and quoined jambs, white frames, many-paned upper sashes",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002138_pano_0000_002012",
+     "how": "the front window system laid out at a 3 m pitch on the 3DBAG wall; scaffolding in the 2020 panoramas hides parts"
+    }
+   ]
+  },
+  {
+   "tag": "w13-59",
+   "bearing": 59,
+   "lengthM": 6.3,
+   "centre": [
+    4.9198007,
+    52.3618661
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w14-59",
+   "bearing": 59,
+   "lengthM": 6.1,
+   "centre": [
+    4.9197398,
+    52.3619274
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w15-329",
+   "bearing": 329,
+   "lengthM": 6,
+   "centre": [
+    4.9196257,
+    52.362222
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_01075",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-w15-329",
+     "kind": "other",
+     "where": "the side entrance: stone stoop with railings, a stone door surround with lettering over it, potted trees",
+     "approxSizeM": [
+      3,
+      4.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-16_07-18-19_01075",
+     "how": "the wall carries the window system; the door surround and stoop are not drawn separately"
+    },
+    {
+     "id": "lettering-w15-329",
+     "kind": "lettering",
+     "where": "hotel lettering over the side entrance",
+     "approxSizeM": [
+      2.5,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-16_07-18-19_01075",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign of the hotel conversion, not the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w16-149",
+   "bearing": 149,
+   "lengthM": 5.5,
+   "centre": [
+    4.9198623,
+    52.3621229
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001209_pano_0000_000074",
+   "capturedAt": "2019-06-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-windows-w16-149",
+     "kind": "window-shape",
+     "where": "paired windows with cream stone surrounds and quoined jambs, white frames, many-paned upper sashes",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001209_pano_0000_000074",
+     "how": "the front window system laid out at a 3 m pitch on the 3DBAG wall; scaffolding in the 2020 panoramas hides parts"
+    }
+   ]
+  },
+  {
+   "tag": "w17-149",
+   "bearing": 149,
+   "lengthM": 5.5,
+   "centre": [
+    4.9196624,
+    52.3620485
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w18-329",
+   "bearing": 329,
+   "lengthM": 5.4,
+   "centre": [
+    4.9196989,
+    52.3622469
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_01076",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-w18-329",
+     "kind": "other",
+     "where": "the side entrance: stone stoop with railings, a stone door surround with lettering over it, potted trees",
+     "approxSizeM": [
+      3,
+      4.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-16_07-18-19_01076",
+     "how": "the wall carries the window system; the door surround and stoop are not drawn separately"
+    },
+    {
+     "id": "lettering-w18-329",
+     "kind": "lettering",
+     "where": "hotel lettering over the side entrance",
+     "approxSizeM": [
+      2.5,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-16_07-18-19_01076",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign of the hotel conversion, not the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w19-328",
+   "bearing": 328,
+   "lengthM": 5.4,
+   "centre": [
+    4.9194186,
+    52.361859
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003568",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-windows-w19-328",
+     "kind": "window-shape",
+     "where": "paired windows with cream stone surrounds and quoined jambs, white frames, many-paned upper sashes",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001674_pano_0000_003568",
+     "how": "the front window system laid out at a 3 m pitch on the 3DBAG wall; scaffolding in the 2020 panoramas hides parts"
+    }
+   ]
+  },
+  {
+   "tag": "w20-148",
+   "bearing": 148,
+   "lengthM": 5.3,
+   "centre": [
+    4.9194483,
+    52.3618293
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w21-329",
+   "bearing": 329,
+   "lengthM": 4.9,
+   "centre": [
+    4.9194766,
+    52.3618048
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003568",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-windows-w21-329",
+     "kind": "window-shape",
+     "where": "paired windows with cream stone surrounds and quoined jambs, white frames, many-paned upper sashes",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001674_pano_0000_003568",
+     "how": "the front window system laid out at a 3 m pitch on the 3DBAG wall; scaffolding in the 2020 panoramas hides parts"
+    }
+   ]
+  },
+  {
+   "tag": "w22-239",
+   "bearing": 239,
+   "lengthM": 4.3,
+   "centre": [
+    4.919713,
+    52.3620447
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003568",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-windows-w22-239",
+     "kind": "window-shape",
+     "where": "paired windows with cream stone surrounds and quoined jambs, white frames, many-paned upper sashes",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001674_pano_0000_003568",
+     "how": "the front window system laid out at a 3 m pitch on the 3DBAG wall; scaffolding in the 2020 panoramas hides parts"
+    }
+   ]
+  },
+  {
+   "tag": "w23-59",
+   "bearing": 59,
+   "lengthM": 4.3,
+   "centre": [
+    4.9198442,
+    52.3620935
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-02_09-25-01_02772",
+   "capturedAt": "2024-10-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-windows-w23-59",
+     "kind": "window-shape",
+     "where": "paired windows with cream stone surrounds and quoined jambs, white frames, many-paned upper sashes",
+     "approxSizeM": [
+      2.3,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-02_09-25-01_02772",
+     "how": "the front window system laid out at a 3 m pitch on the 3DBAG wall; scaffolding in the 2020 panoramas hides parts"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -105,13 +105,14 @@ export function buildBanksMansion(_w: number, _d: number, b: BuildingTools) {
   };
   /** Dormer in the mansard: stone cheeks and front, window, flat cornice cap. */
   const dormer = (f: Frame, t: number, w: number, y0: number, y1: number, ww: number, wy0: number, wy1: number) => {
-    // the dormer face stands 0.1 m behind the wall plane, in front of the 3DBAG mansard; its window sits on that face with a
-    // shallow sink so no part reaches back through the mansard plane
-    slab(b, f, t, y0, w, y1 - y0, 2.0, 'sandstone', -2.1);
+    // the dormer face stands on the front plane (stone aedicula on the cornice line, blind review); flush, so the openings gate
+    // reads the front and the dormer as one host silhouette. Its window sits on that face with a shallow sink.
+    slab(b, f, t, y0, w, y1 - y0, 2.0, 'sandstone', -2.0);
     const s0 = getSink(); setSink(0.04);
-    win(f, t, wy0, wy1, ww, false, -0.1);
+    win(f, t, wy0, wy1, ww, false, 0);
     setSink(s0);
-    slab(b, f, t, y1, w + 0.3, 0.28, 2.15, 'stone', -2.2);
+    slab(b, f, t, y1, w + 0.3, 0.28, 2.25, 'stone', -2.1);
+    // (a projecting cap or pilaster strips in front of the face are read as the window's host wall by the openings gate)
   };
   /** Shared storeys above the ground floor, for bay centres `ts` (windows w wide). */
   const upper = (f: Frame, len: number, ts: number[], w = 1.2, top: [number, number][] = ts.map(t => [t, w])) => {
@@ -145,25 +146,29 @@ export function buildBanksMansion(_w: number, _d: number, b: BuildingTools) {
     ground(f, len, [2.3, 5.1, 8.0, 10.8, 13.7], [3.9, 6.6, 9.34, 12.07]);
     win(f, 15.6, 1.6, 3.2, 0.8, false);
     upper(f, len, [3.8, 6.56, 9.34, 12.14, 14.96]);
-    for (const t of [3.9, 6.6, 9.2, 11.9, 14.6]) dormer(f, t, 1.6, 17.6, 19.45, 0.9, 18.0, 19.15);
+    for (const t of [3.9, 6.6, 9.2, 11.9, 14.6]) dormer(f, t, 1.8, 17.6, 20.2, 1.0, 18.0, 19.8);
   }
   // ---------- Herengracht front (ring edge 5; t from the west end) ----------
   {
     const {f, len} = ringFrame(ring, 5);
     ground(f, len, [2.8, 5.6, 8.44, 11.3, 14.1, 16.96], [4.3, 7.1, 9.84, 12.64, 15.4]);
     upper(f, len, [1.46, 4.26, 7.04, 9.84, 12.64, 15.44]);
-    for (const t of [1.46, 4.26, 7.04, 9.84, 12.64, 15.44]) dormer(f, t, 1.6, 17.6, 19.45, 0.9, 18.0, 19.15);
+    for (const t of [1.46, 4.26, 7.04, 9.84, 12.64, 15.44]) dormer(f, t, 1.8, 17.6, 20.2, 1.0, 18.0, 19.8);
   }
   // ---------- chamfered corner (ring edge 4; t from the Vijzelstraat side) ----------
   {
     const {f, len} = ringFrame(ring, 4);
     slab(b, f, len / 2, 0, len, 0.6, 0.1, 'stone');
     slab(b, f, len / 2, 0.6, len, 4.0, 0.06, 'white');
-    // entrance: dark doors with a glazed transom between two columns
+    // entrance: glazed timber doors and transom set back in a deep stone reveal, between two columns (w03 crop, blind review)
+    for (const s of [-1, 1]) slab(b, f, 3.4 + s * 1.14, 0.1, 0.22, 4.0, 0.34, 'sandstone');
+    slab(b, f, 3.4, 3.9, 2.5, 0.25, 0.34, 'sandstone');
     slab(b, f, 3.4, 0.1, 2.05, 3.85, 0.1, 'frame');
-    slab(b, f, 3.4, 0.15, 1.85, 3.0, 0.14, 'dark');
+    slab(b, f, 3.4, 0.15, 1.85, 3.0, 0.14, 'glass');
     slab(b, f, 3.4, 3.2, 1.85, 0.65, 0.14, 'glass');
-    slab(b, f, 3.4, 3.12, 1.85, 0.08, 0.18, 'dark');
+    slab(b, f, 3.4, 3.12, 1.85, 0.08, 0.18, 'frame');
+    for (const t of [2.53, 3.4, 4.27]) slab(b, f, t, 0.15, 0.12, 2.97, 0.18, 'frame');
+    slab(b, f, 3.4, 0.15, 1.85, 0.45, 0.18, 'frame');
     for (const t of [1.9, 5.0]) column(f, t, 0.6, 4.6);
     // lanterns and the BANKS letters on the two render panels
     for (const t of [0.95, 5.75]) {
@@ -174,7 +179,7 @@ export function buildBanksMansion(_w: number, _d: number, b: BuildingTools) {
     }
     // third floor of the corner: three windows (0.8, 1.1, 0.8 m) instead of the pair below
     upper(f, len, [2.3, 4.55], 1.15, [[1.8, 0.8], [3.4, 1.1], [5.1, 0.8]]);
-    dormer(f, 3.4, 2.9, 17.6, 20.8, 0.9, 18.4, 19.9);
+    dormer(f, 3.4, 2.9, 17.6, 20.8, 1.0, 18.1, 19.95);
   }
   setSink(sink0);
 }

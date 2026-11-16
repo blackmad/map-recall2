@@ -1,0 +1,80 @@
+{
+ "id": "handelsbank-singel-250",
+ "name": "Former Nederlandsch-Indische Handelsbank, Singel 250",
+ "heightMetres": 24,
+ "bagYear": 1912,
+ "galleryView": {
+  "theta": 0.5,
+  "phi": 1.2
+ },
+ "pandPart": {
+  "ring": [
+   [
+    4.8880408,
+    52.3732543
+   ],
+   [
+    4.8884999,
+    52.3732181
+   ],
+   [
+    4.8883704,
+    52.3727508
+   ],
+   [
+    4.8878995,
+    52.3727965
+   ],
+   [
+    4.8879039,
+    52.3728562
+   ],
+   [
+    4.8879039,
+    52.3729603
+   ],
+   [
+    4.8878951,
+    52.3729974
+   ],
+   [
+    4.8879481,
+    52.3730028
+   ],
+   [
+    4.8879966,
+    52.373077
+   ],
+   [
+    4.8880216,
+    52.3732007
+   ]
+  ],
+  "note": "The bank's share of pand 0363100012167627, traced on the 3DBAG LoD2.2 roof faces over the PDOK 2024 orthophoto: the bank's roofs (20-26 m, slate mansard and flat tops) end on a west line from BAG edge e0 to the west wing's mansard foot (8.5-9 m west of the Singel block's inner line) and on a south line through the step at Singel 258 (BAG edge e31), parallel to the Raadhuisstraat front. The rest, the 8-19 m canal-house backs on the Herengracht and the Oude Spiegelstraat and the white house Singel 258, stays with the rows line.",
+  "rest": {
+   "height": 15.82,
+   "eaves": 4.74,
+   "ridge": 23.38
+  }
+ },
+ "surveyedSource": "Vertex average of the BAG 0363100012167627 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/handelsbank-singel-250-footprints.json, written by bag-shell-prepare.ts). The bank stands on part of the pand (pandPart). The massing is the 3DBAG LoD2.2 shell (CC BY 4.0) faces inside that part. The Raadhuisstraat and Singel fronts are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-002538_pano_0000_001765, TMX7316010203-002865_pano_0020_000019, TMX7316010203-002865_pano_0020_000024, TMX7316010203-000354_pano_0001_000138). Per wall in scripts/landmarks/handelsbank-singel-250-inventory.json.",
+ "materialOverrides": {
+  "sandstone": "#c9bfa9",
+  "stone": "#b8ad97",
+  "slate": "#5a5f66",
+  "white": "#4a2a20",
+  "frame": "#4a2a20",
+  "glass": "#363b40",
+  "dark": "#2e2a28",
+  "bronze": "#2c2e2e",
+  "brick": "#7a6a58"
+ },
+ "attribution": {
+  "title": "Former Nederlandsch-Indische Handelsbank, Singel 250 (Van Rossem & Vuyk 1910-1912, extended by A.D.N. van Gendt 1925)",
+  "author": "Map Recall",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Singel_250",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0), the bank's part of the pand only, with the 3DBAG LoD2.2 shell (CC BY 4.0): the rusticated ground floor with its cellar windows, the giant Corinthian pilasters, the festoon panels, the entablature and the balustrade with urns, the arched Singel entrance and the slate mansard. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

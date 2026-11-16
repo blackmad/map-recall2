@@ -347,6 +347,8 @@ function rasterWall(s: MaterialSoup, seg: WallSegment, hostTris: number[], cell 
 }
 
 /** Is (u, v) inside the wall's silhouette (holes ignored), within `tol` metres? */
+/** A wall plane whose faces cover under this fraction of its bounding box is sparse (scattered projecting fronts). */
+const SPARSE_PLANE = 0.08;
 function inSilhouette(w: WallRaster, u: number, v: number, tol: number): boolean {
   const r = Math.ceil(tol / w.cell), x = Math.floor((u - w.u0) / w.cell);
   for (let dx = -r; dx <= r; dx++) {
@@ -575,7 +577,13 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
     // (a window on a pilaster, a buttress or a recessed bay is still on a wall).
     // `any`: every wall plane in reach regardless of orientation (a balcony's rail returns can outweigh its front in the
     // facing-axis estimate, so the balcony rule must not depend on it); `cands`: those within 0.8 m and facing along the assembly's axis.
-    const any: {w: WallSegment; sd: number; close: boolean; axisOk: boolean}[] = [];
+    const any: {w: WallSegment; sd: number; close: boolean; axisOk: boolean; bare: boolean}[] = [];
+    /** Faces of `w` within 0.3 m of the opening's extent (u span of `us`, v from y0 to y1), on its silhouette raster. */
+    const nearFaces = (w: WallSegment, us: number[], y0: number, y1: number): boolean => {
+      const u0 = Math.min(...us), u1 = Math.max(...us), r = raster(w);
+      for (let k = 0; k <= 6; k++) for (const v of [y0, (y0 + y1) / 2, y1]) if (inSilhouette(r, u0 + ((u1 - u0) * k) / 6, v, 0.3)) return true;
+      return false;
+    };
     for (const w of walls) {
       const axisOk = !(axisStrength > 0.3 && Math.abs(w.n[0] * axis[0] + w.n[1] * axis[1]) < 0.94);
       const sds = [[bb.min[0], bb.min[2]], [bb.max[0], bb.min[2]], [bb.min[0], bb.max[2]], [bb.max[0], bb.max[2]]].map(([x, z]) => w.n[0] * x + w.n[1] * z - w.d);
@@ -584,9 +592,12 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
       if (hi < -0.8 || lo > 2 * th.balconyMax) continue;
       const us = [[bb.min[0], bb.min[2]], [bb.max[0], bb.min[2]], [bb.min[0], bb.max[2]], [bb.max[0], bb.max[2]]].map(([x, z]) => x * w.t[0] + z * w.t[1]);
       if (Math.max(...us) < w.uMin - 0.3 || Math.min(...us) > w.uMax + 0.3 || bb.max[1] < w.vMin - 0.3 || bb.min[1] > w.vMax + 0.3) continue;
+      // A sparse plane (faces on under SPARSE_PLANE of its box: the coplanar fronts of oriels, aediculae and balconettes
+      // along a facade) with no faces where the opening is: `bare`. See the second reading below.
+      const bare = w.area < SPARSE_PLANE * (w.uMax - w.uMin) * (w.vMax - w.vMin) && !nearFaces(w, us, bb.min[1], bb.max[1]);
       // Prefer a plane the opening stands on or in front of; a plane it lies wholly behind is usually the inner face of a
       // thin shell (a drum, a tower wall) and only wins when nothing better exists.
-      any.push({w, sd: Math.max(0, lo, -hi) + (hi < 0.02 ? 5 : 0), close: lo <= 0.8, axisOk});
+      any.push({w, sd: Math.max(0, lo, -hi) + (hi < 0.02 ? 5 : 0), close: lo <= 0.8, axisOk, bare});
     }
     // Planes within 2 cm of each other are a tie: the larger one is the wall (the back face of a pier or band beside a window
     // is not the wall the window is on; sweep 2026-10-13, Rode Hoed).
@@ -648,6 +659,19 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
     // Facets of a curved wall for the silhouette test: planes in reach turned less than ~37 degrees from the best one.
     const facets = best ? any.filter(c => c.close && c.w.n[0] * best.n[0] + c.w.n[1] * best.n[1] > 0.8).map(c => c.w) : [];
     if (best) ({outside, buried, clearance} = sample(best, group, 0.8, facets));
+    // Second reading without the bare sparse planes, kept when it is better (never worse): a plane made of projecting
+    // fronts elsewhere on the facade must not host or bury a window on another bay (Hotel Schiller, 2026-11-15: the
+    // corner bay's window was hosted by the plane of the oriel balconettes' backs, then read as buried behind the tower).
+    if (best && (outside > 0 || buried > 0) && cands.some(c => c.w === best || group.includes(c.w) ? c.bare : false)) {
+      const dense = cands.filter(c => !c.bare);
+      const best2 = dense[0] && (bb.min[1] > 0.02 || dense[0].sd <= 0.25) ? dense[0].w : undefined;
+      if (best2) {
+        const group2 = dense.filter(c => c.w.n[0] * best2.n[0] + c.w.n[1] * best2.n[1] > 0.94).map(c => c.w);
+        const facets2 = any.filter(c => c.close && !c.bare && c.w.n[0] * best2.n[0] + c.w.n[1] * best2.n[1] > 0.8).map(c => c.w);
+        const r = sample(best2, group2, 0.8, facets2);
+        if (r.outside + r.buried < outside + buried) ({outside, buried, clearance} = r);
+      }
+    }
 
     // Balcony: trim sitting on a small distinct horizontal slab (within 8 cm of it: rail bars stand a little proud) that sticks out from the wall past 0.8 m.
     // Only consulted where the plain rule has nothing to say or says overhang (a rail face standing in front of the wall

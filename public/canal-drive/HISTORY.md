@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Landmark round p: Hotel Schiller and three pools (2026-11-16)
+
+- Merged lane/landmarks-next-20261115 (ca85fb4e9) and lane/landmarks-pools2-20261115 (de298f976). Shipped: Hotel Schiller on Rembrandtplein, Noorderparkbad, Flevoparkbad and Victoriabad, each preferred by fresh blind opus judges against the panorama and passing `audit:glb`, `check:glb-openings` and the inventory gate.
+- Held: Sloterparkbad, Zwembad Bijlmer, De Mirandabad and Sportplaza Mercator won every blind view but fail `audit:glb` (holes, see-through, coplanar faces; reasons in the catalogue); Brediusbad has no review yet. Port van Cleve and Mauritskade 61 stay held on their reviews. Reinwardt Academie, De Jaren, Handelsbank Singel 250 and Holland Casino passed blind review in the lane but were held out of this round by scope.
+- Why only the four GLBs changed: the lane's `geometryAudit` sparse-plane reading is used by `snapOpenings` at build time, so a full `build-manual-landmarks` rebuild moved openings on six existing models (hoofdbureau-elandsgracht, maagdenhuis, both Mercatorplein towers, roeterseiland-rec-a, tropenmuseum). Main's asset fingerprints match main's GLBs, so this is the new rule, not stale hashes. Those six, and the lane's banks-mansion and politiebureau-raampoort rebuilds, stay at main's GLBs; the four shipped GLBs rebuild byte-identically with `--only`.
+- `test:glb-quality` now runs the audit and capture-diff tests and is part of `check:canal:rest`; `pandParts.test` joins `test:landmark-kits`.
+
+## Node world frames (2026-11-15)
+
+- Merged lane/node-world-frames-20261115 (4e6cab29a): `scripts/house-frames/node-frame.ts` renders the game's first-person frame in Node (src/canalRecall/nodeFrame), without Chromium or a dev server. Usage is in docs/house-line.md §8a. It is a first-pass tool for lanes; acceptance stays on browser house:frames pairs.
+- Fidelity against browser frames on 19 likeness poses: median mean ΔE about 4.4, edge IoU about 0.79. A blind opus judge rated 20/20 interchangeable on the round-1 prompt and 13/20 on a strict prompt. About 9 s a frame at dpr 1 in a batch on a quiet machine.
+- Bugs found on the way: the routing extract stores [lat, lng], which Node first read reversed, so no doors were drawn. Cached ground cells skipped deck placement, which put the rider up to 0.8 m low on bridges. Street chunks stand each pand on its own footing (`pandRanges`).
+- Still open: kerb-ramp wedges (the worker's compactCell is suspected), water tone, POI labels, far prisms beyond 1.5 km, the windowGrid shader.
+
 ## Retail look: shop templates, chain logos, second sources (2026-11-15)
 
 - Merged lane/retail-look-20261114 (0000871c9); default off in round m, switched on in round n the same day (David: "Why retail still off?"). One template is held: `brownBar` (pubs, brown cafés) drew café Hendrix as an opaque dark box with a row of lit dots, worse than the glazed café cell fixed on 2026-11-14, so `RETAIL_HELD`/`RETAIL_HELD_KINDS` keep those fronts on the flag-off cell until the template wins a blind photo review (frames in `artifacts/round-n/hendrix-{off,on,on2}`). Bruna's CC BY-SA 3.0 logo is credited on credits.html. Every template change was kept only if it won a blind, shuffled photo A/B by a fresh opus reviewer; bikes were judged on held-out fronts because the lane had tuned on the first-pass verdicts.
