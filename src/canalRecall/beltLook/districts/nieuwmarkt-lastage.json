@@ -1,0 +1,52 @@
+{
+ "id": "nieuwmarkt-lastage",
+ "note": "Nieuwmarkt/Lastage (wijk AF) district look, centrum-looks round 2 (2026-11-16): the belt look's donor method over AF01-AF09. Only 16 D1 reads stand in the wijk, so the belt's kept reads are the main donors at a small foreign cost (0.3): its grachten (Kloveniersburgwal, Oudeschans, Geldersekade, Groenburgwal, Recht Boomssloot, Zwanenburgwal) are the belt's 17th-18th-century canal-house stock. Pitch band: the belt's (too few own reads to measure). maxYear 1914 as in the Jordaan (the 1970s-80s metro-line renewal and later blocks stay with today). Roof signals and the house-by-house brick draw as in the Jordaan.",
+ "buurten": [
+  "AF01",
+  "AF02",
+  "AF03",
+  "AF04",
+  "AF05",
+  "AF06",
+  "AF07",
+  "AF08",
+  "AF09"
+ ],
+ "readDirs": [
+  "answers"
+ ],
+ "canals": [
+  "Kloveniersburgwal",
+  "Oudeschans",
+  "Geldersekade",
+  "Groenburgwal",
+  "Recht Boomssloot",
+  "Zwanenburgwal"
+ ],
+ "pitchM": {
+  "min": 3.2,
+  "max": 4.3
+ },
+ "foreignDonor": 0.3,
+ "maxYear": 1914,
+ "flatTopNoGable": true,
+ "slopedBand": true,
+ "measuredRoofStorey": true,
+ "wallDraw": {
+  "note": "Centrum-looks round 3 (2026-11-16): walls drawn run by run, not house by house (wallDraw.ts): a run of free fronts of one period takes one family (its own cut samples' median, else its street's agreeing reads, paint included, else the period weights), each house a small tone inside it. The period weights are measured at generate time from the district's own reads (judgeFront absolute mode on their cut samples; brick families only) pooled with a prior worth priorN reads: the Jordaan's measured weights (this district has 9 own reads). The weights below are the prior only; the drawn ones are in the run's report.json wallWeights. Paint is never drawn by lot: only where a read, the register or the street's reads say so.",
+  "before1860": {
+   "red-brown-brick": 0.48,
+   "brown-brick": 0.32,
+   "orange-red-brick": 0.2
+  },
+  "from1860": {
+   "brown-brick": 0.34,
+   "red-brown-brick": 0.28,
+   "orange-red-brick": 0.24,
+   "buff-brick": 0.14
+  },
+  "runSamples": 2,
+  "priorN": 8,
+  "prior": "jordaan"
+ }
+}

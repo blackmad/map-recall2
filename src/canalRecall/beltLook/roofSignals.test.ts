@@ -68,3 +68,14 @@ test('flatTopNoGable: no register or donor gable stands on Boomstraat 172664; th
   assert.equal(crownOf({ ...BELT_LOOK, flatTopNoGable: false }, stated), 'neck');
   assert.equal(BELT_LOOK.flatTopNoGable, true);
 });
+
+test('the staged Jordaan look: Boomstraat 172664 left to today, 172663 at its band p50 with no gable', async () => {
+  const fs = await import('node:fs');
+  const url = new URL('../../../data/buurt-generators/jordaan/row-front.json', import.meta.url);
+  if (!fs.existsSync(url)) return;
+  const recs = new Map((JSON.parse(fs.readFileSync(url, 'utf8')).records as { pandId: string; topM: number; crown?: { family?: string } }[]).map(r => [r.pandId, r]));
+  assert.equal(recs.has('0363100012172664'), false);
+  const r = recs.get('0363100012172663')!;
+  assert.ok(r.topM <= 13.5, `172663 top ${r.topM}`);
+  assert.equal(r.crown?.family ?? 'cornice', 'cornice');
+});

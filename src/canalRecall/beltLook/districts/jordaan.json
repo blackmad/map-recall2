@@ -197,5 +197,25 @@
    "Akoleienstraat": 1
   }
  },
- "maxYear": 1914
+ "maxYear": 1914,
+ "flatTopNoGable": true,
+ "slopedBand": true,
+ "measuredRoofStorey": true,
+ "wallDraw": {
+  "note": "Centrum-looks round 3 (2026-11-16): walls drawn run by run, not house by house (wallDraw.ts): a run of free fronts of one period takes one family (its own cut samples' median, else its street's agreeing reads, paint included, else these period weights), each house a small tone inside it. measure: false: the Jordaan draws these judged weights, not its reads' measured ones (generate.ts reports both): its cut samples are underexposed and read absolutely give 37 % dark grey brick, the round-1 fault ('too dark and uniform'). Round 3 trims round 2's weights on the judges' word: no buff by lot (Lindengracht, Leidsekade: tan where the photo is brown or red-brown) and less orange-red (Leidsekade, Egelantiersgracht: 'too bright a red'). Paint is never drawn by lot: only where a read, the register or the street's reads say so.",
+  "before1860": {
+   "red-brown-brick": 0.45,
+   "brown-brick": 0.4,
+   "orange-red-brick": 0.15
+  },
+  "from1860": {
+   "brown-brick": 0.5,
+   "red-brown-brick": 0.35,
+   "orange-red-brick": 0.15
+  },
+  "runSamples": 2,
+  "priorN": 8,
+  "prior": "own",
+  "measure": false
+ }
 }
