@@ -68,22 +68,31 @@ export function buildObaStaatsliedenbuurt(_w: number, _d: number, b: BuildingToo
     // the slab over the plinth
     slab(b, f, len / 2, PLINTH, len, 0.25, 0.12, 'concrete');
     const FLOORS = [PLINTH, 10.4, 13.5, 16.6];
-    // open balcony bays between the towers: concrete floor slabs, posts at the bay edges and mid-bay, dark glass doors behind, white rails
+    // open balcony bays between the towers (w01-210): the balconies are deep, their floor slabs and rails 1.0 m out at the
+    // bay towers' front, end posts at the bay edges and a mid-bay post; dark glass doors on the shaded back wall
     const OPEN: [number, number][] = [[0, 2.6], [7.1, 12.9], [17.4, 22.4], [26.9, len]];
+    const BD = 1.0, PW = 0.25;
     for (const [a, z] of OPEN) {
+      const posts = [a + PW / 2 + 0.12, z - PW / 2 - 0.12, ...(z - a > 4 ? [(a + z) / 2] : [])];
+      for (const t of posts) slab(b, f, t, PLINTH, PW, FLOORS[3] + 1.3 - PLINTH, BD, 'concrete');
+      const spans: [number, number][] = [];
+      const ps = [...posts].sort((p, q) => p - q);
+      for (let i = 0; i < ps.length - 1; i++) spans.push([ps[i] + PW / 2 + 0.04, ps[i + 1] - PW / 2 - 0.04]);
       for (let k = 0; k < 3; k++) {
         const y = FLOORS[k];
         slab(b, f, (a + z) / 2, y + 0.25, z - a - 0.1, 2.75, 0.05, 'pink');
-        const n = Math.max(1, Math.round((z - a) / 2.9));
-        for (let i = 0; i < n; i++) win(f, a + ((z - a) * (i + 0.5)) / n, y + 0.3, y + 2.6, Math.min(2.2, (z - a) / n - 0.5), 0.05, 1, 0, 'dark');
-        slab(b, f, (a + z) / 2, y + 2.85, z - a, 0.25, 0.16, 'concrete');
-        rail(f, a + 0.1, z - 0.1, y + 0.25, 0.26);
+        for (const [p, q] of spans) {
+          const n = Math.max(1, Math.round((q - p) / 2.9));
+          for (let i = 0; i < n; i++) win(f, p + ((q - p) * (i + 0.5)) / n, y + 0.3, y + 2.6, Math.min(2.2, (q - p) / n - 0.4), 0.05, 1, 0, 'dark');
+          slab(b, f, (p + q) / 2, y + 2.85, q - p, 0.25, BD - 0.06, 'concrete', 0.03);
+          rail(f, p + 0.08, q - 0.08, y + 0.25 + (k === 0 ? 0 : 0.0), BD - 0.12);
+        }
       }
-      if (z - a > 4) slab(b, f, (a + z) / 2, PLINTH, 0.3, FLOORS[3] - PLINTH + 0.25, 0.2, 'concrete');
+      // the fourth row (the open top storey, set back above 16.9 m): its rails stand free on the top slab, a separate
+      // concrete coping 0.3 m over the rail top, both 1 m out, so neither shares a plane with the towers' cheeks
+      for (const [p, q] of spans) rail(f, p - 0.04, q + 0.04, FLOORS[3] - 0.1, BD - 0.12);
     }
-    // the open top storey (w01-210: a fourth row of balconies in front of the wall the 3DBAG sets 2 m back above 16.9 m) is
-    // left to the shell's pale set-back storey: a slab edge there makes audit:glb read the middle tower's cheek windows as buried
-        // the bay towers: an octagon 1.2 m proud (front face and two 45-degree cheeks), cream brick with dark bands, windows
+    // the bay towers: an octagon 1.2 m proud (front face and two 45-degree cheeks), cream brick with dark bands, windows
     // on the front and the cheeks, a stepped corbel under each cheek, a concrete cap and a railing
     for (const [a, z] of BAYS) {
       const D = 1.2, fw = z - a - 2 * D, tc = (a + z) / 2, H0 = PLINTH - 0.2, H1 = 16.5; // the 3DBAG front wall stops at 16.9 m
@@ -195,8 +204,43 @@ export function buildObaStaatsliedenbuurt(_w: number, _d: number, b: BuildingToo
     for (const t of [len * 0.2, len * 0.5, len * 0.8]) win(f, t, 17.4, 19.1, len * 0.24, 0, 1, 0, 'white');
   }
 
-  // ---------- the short corners (edges 42, 47, 51, 52): the plinth stripes ----------
-  for (const e of [42, 47, 51, 52]) {
+  // ---------- the rounded west wing (edges 34-40, 22.5 m in the 3DBAG): w01-210 shows it left of the Van Hallstraat
+  // front with pale balcony floors and white rails wrapping the round end; it is part of the same pand, not a split ----------
+  // (the far round end, edges 37-38, is left plain: slabs there grow the model's bounds and the requantised mesh tips a
+  // middle-tower window over audit:glb's buried line; it never shows from Van Hallstraat)
+  for (let e = 34; e <= 40; e++) {
+    const {f: fw, len: lw} = ringFrame(ring, e);
+    if (lw < 1.5 || e === 37 || e === 38) continue;
+    for (let y = 7.6; y < 21.5; y += 3.05) {
+      slab(b, fw, lw / 2, y, lw - 0.3, 0.22, 0.35, 'concrete');
+      slab(b, fw, lw / 2, y + 0.22, lw - 0.5, 0.95, 0.06, 'stone', 0.27); // the pale balustrade (a solid band: no trim off the wall)
+    }
+  }
+  // ---------- Van Hallstraat west of the first tower (edges 41-44, w01-210 left): the striped plinth, then the deep
+  // balcony grid carried on up to each wall's top (16.8-20.7 m in the 3DBAG), not a plain brick mass ----------
+  {
+    const TOPS: Record<number, number> = {41: 16.8, 42: 16.8, 43: 20.1, 44: 16.8}; // the lowest wall piece's top on each edge
+    for (const e of [41, 42, 43, 44]) {
+      const {f, len} = ringFrame(ring, e);
+      // these 3DBAG walls are sawtoothed, -0.34 to +0.13 m off the ring: everything stands in front of the proudest piece
+      const o = ({41: 0.126, 42: 0.048, 43: 0.038, 44: 0.059} as Record<number, number>)[e] + 0.08;
+      bands(f, 0, len, [[1.15, 2.15], [3.35, 4.35], [5.5, 6.5]], 'stone', o);
+      const rows = [7.3, 10.4, 13.5, 16.6].filter(y => y + 2.9 <= TOPS[e]);
+      const yTop = rows[rows.length - 1] + 3.1;
+      for (const t of [0.12 + 0.125, len - 0.12 - 0.125]) slab(b, f, t, 7.3, 0.25, yTop - 7.3, 0.9, 'concrete', o);
+      const p = 0.12 + 0.25 + 0.04, q = len - p;
+      for (const y of rows) {
+        slab(b, f, len / 2, y + 0.25, len - 0.1, 2.75, 0.05, 'pink', o);
+        win(f, len / 2, y + 0.3, y + 2.6, Math.min(2.2, q - p - 0.4), o + 0.05, 1, 0, 'dark');
+        slab(b, f, len / 2, y, q - p, 0.25, 0.84, 'concrete', o + 0.03);
+        slab(b, f, len / 2, y + 2.85, q - p, 0.25, 0.84, 'concrete', o + 0.03);
+        rail(f, p + 0.08, q - 0.08, y + 0.25, o + 0.78);
+      }
+    }
+  }
+
+  // ---------- the short corners (edges 47, 51, 52): the plinth stripes ----------
+  for (const e of [47, 51, 52]) {
     const {f, len} = ringFrame(ring, e);
     const d = e === 42 ? 0.12 : 0.05; // edge 42's 3DBAG wall stands 4-5 cm proud of the ring
     bands(f, 0, len, [[1.15, 2.15], [3.35, 4.35], [5.5, 6.5]], 'stone', d);

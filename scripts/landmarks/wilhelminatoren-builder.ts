@@ -25,15 +25,23 @@ export function buildWilhelminatoren(_w: number, _d: number, b: BuildingTools) {
   const ring = src.facadeRing;
   const TOP = 41.6;
   // ---------- ENE front (edge 3): convex, a polygon bulge of SEG chords out to 1.2 m over t 0-15.6 ----------
-  const {f} = ringFrame(ring, 3);
+  const {f, len: L3} = ringFrame(ring, 3);
   const BULGE_T = 15.6, SAG = 0.9, SEG = 8;
   const sag = (t: number) => Math.max(0, SAG * (1 - ((2 * t) / BULGE_T - 1) ** 2));
   const P = (t: number): [number, number] => [f.origin[0] + f.tangent[0] * t + f.n[0] * sag(t), f.origin[1] + f.tangent[1] * t + f.n[1] * sag(t)];
   const TS = Array.from({length: SEG + 1}, (_, i) => (i * BULGE_T) / SEG);
   // the shell ring with the bulge points inserted on edge 3 (ringFrame's origin is ring[3] or ring[4])
   const fromStart = Math.hypot(f.origin[0] - ring[3][0], f.origin[1] - ring[3][1]) < 1e-6;
+  if (!fromStart) throw new Error('wilhelminatoren: edge 3 frame no longer starts at ring[3]; the stair notch assumes it does');
   const ins = TS.slice(1).map(P);
-  const shellRing = [...ring.slice(0, 4), ...(fromStart ? ins : ins.reverse()), ...ring.slice(4)].map(([x, z]) => [+x.toFixed(3), +z.toFixed(3)]);
+  // the escape stair stands in a notch cut out of the NE corner (ring[4]), flush with both faces: w01-67T shows it at
+  // t 15.8-19 inside the east face, w03-338T at the east end of the north face, the 2021 WG-plein frame open steel behind glass
+  const SX0 = 15.8, ND = 3.0;
+  const at = (t: number, o: number): [number, number] => [f.origin[0] + f.tangent[0] * t + f.n[0] * o, f.origin[1] + f.tangent[1] * t + f.n[1] * o];
+  const notch = [at(SX0, 0), at(SX0, -ND), at(L3, -ND)];
+  const shellRing = [...ring.slice(0, 4), ...ins, ...notch].map(([x, z]) => [+x.toFixed(3), +z.toFixed(3)]);
+  const K = ring[4];
+  const inNotch = (p: [number, number]) => Math.hypot(p[0] - K[0], p[1] - K[1]) < ND + 0.6;
   const shellSurfaces = [
     {type: 'GroundSurface', rings: [shellRing.map(([x, z]) => [x, 0, z])]},
     ...shellRing.map((p, i) => { const q = shellRing[(i + 1) % shellRing.length]; return {type: 'WallSurface', rings: [[[p[0], 0, p[1]], [q[0], 0, q[1]], [q[0], TOP, q[1]], [p[0], TOP, p[1]]]]}; }),
@@ -110,24 +118,46 @@ export function buildWilhelminatoren(_w: number, _d: number, b: BuildingTools) {
   fslab(14.0, 0, 3.1, 3.1, 0.05, 'greyBrick');
   // the canopy: one straight slab on the edge frame, its front 1.3 m before the bulge (its back runs into the wall)
   const CANOPY_FRONT = sag(6.8) + 1.3;
-  slab(b, f, 12.85, 3.15, 12.1, 0.32, CANOPY_FRONT, 'white', 0);
+  slab(b, f, 11.25, 3.15, 8.9, 0.32, CANOPY_FRONT, 'white', 0);
   letters(b, f, 'WILHELMINA TOREN', 10.2, 3.2, CANOPY_FRONT, 0.035, 0.02, 'dark');
   // coping over the bulge chords
   for (let j = 0; j < SEG; j++) { const {fr, len} = seg(j); slab(b, fr, len / 2, TOP - 0.2, len, 0.35, 0.08, 'concrete', 0); }
 
-  // ---------- the glazed steel escape stair on the NE corner (w01-67T t 15.8-19, w03-338T east end) ----------
-  // A box t 15.8-19.6 on the front frame (3.2 m wide in w01-67T, 0.6 m past the north face), 3.7 m deep and 1.3 m proud
-  // (the 2021 WG-plein frame shows it hiding the east face from the north-west): blue-grey steel posts and landing
-  // edges every half storey, pale glazing on the outer faces.
-  const SX0 = 15.8, SX1 = 19.6, SD0 = -2.4, SD1 = 1.3, STOP = TOP + 0.9;
-  for (const t of [SX0, SX1]) for (const o of [SD0, SD1]) slab(b, f, t, 0, 0.2, STOP - 0.3, 0.2, 'bronze', o - 0.1);
-  slab(b, f, (SX0 + SX1) / 2, STOP - 0.3, SX1 - SX0 + 0.3, 0.3, SD1 - SD0 + 0.3, 'bronze', SD0 - 0.15);
-  for (let y = 4.2; y < STOP - 0.5; y += 1.565) {
-    slab(b, f, (SX0 + SX1) / 2, y, SX1 - SX0, 0.14, 0.08, 'bronze', SD1 - 0.04);
-    slab(b, f, SX1, y, 0.08, 0.14, SD1 - SD0, 'bronze', SD0);
+  // ---------- the open steel escape stair: in the NE notch and standing out of it, t 15.8-19.6, out -3.0 to +1.3 ----------
+  // (w01-67T: t 15.8-19 on the east face, 1.3 m proud; the 2021 WG-plein frame: an open steel tower 0.6 m past the north
+  // face, glazed only at the top). A scissor stair: landings every half storey (1.565 m) alternately at the outer and the
+  // inner end, eight treads per flight in the two halves of the width, blue-grey posts at the free corners, mullions every
+  // 0.8 m and a transom per storey on the open faces, a glazed lantern over the top storey and 0.9 m above the roof.
+  const SX1 = 19.6, SO1 = 1.3;
+  const STOP = TOP + 0.9, T0 = SX0 + 0.05, T1 = SX1 - 0.05, TM = (SX0 + SX1) / 2, Y0 = 4.2, HALF = 1.565;
+  slab(b, f, TM, 0, SX1 - SX0 - 0.1, Y0 - 0.1, ND + SO1 - 0.1, 'greyBrick', -ND + 0.05);
+  for (const [t, o] of [[SX0 + 0.1, SO1 - 0.1], [SX1 - 0.1, SO1 - 0.1], [SX1 - 0.1, -ND + 0.12]]) slab(b, f, t, Y0 - 0.1, 0.16, STOP - Y0 - 0.2, 0.16, 'bronze', o - 0.08);
+  slab(b, f, TM, STOP - 0.3, SX1 - SX0, 0.3, ND + SO1, 'bronze', -ND);
+  const LO = SO1 - 0.85, LI = -ND + 0.05, NT = 8, GO = (LO - (LI + 0.8)) / NT, RISE = HALF / (NT + 1);
+  const nL = Math.floor((TOP - Y0) / HALF);
+  for (let k = 0; k <= nL; k++) {
+    const y = Y0 + HALF * k, outer = k % 2 === 0;
+    slab(b, f, TM, y - 0.1, T1 - T0, 0.1, 0.8, 'frame', outer ? LO : LI); // the landing, full width, 0.8 m deep
+    if (k === nL) break;
+    const [ta, tb] = outer ? [T0 + 0.06, TM - 0.04] : [TM + 0.04, T1 - 0.06];
+    for (let i = 0; i < NT; i++) {
+      const o = outer ? LO - GO * (i + 1) : LI + 0.8 + GO * i;
+      slab(b, f, (ta + tb) / 2, y + RISE * (i + 1) - 0.05, tb - ta, 0.05, GO - 0.03, 'frame', o + 0.015);
+    }
   }
-  slab(b, f, (SX0 + SX1) / 2, 4.2, SX1 - SX0 - 0.5, STOP - 4.5, 0.03, 'canopyGlass', SD1 - 0.12);
-  slab(b, f, SX1 - 0.35, 4.2, 0.03, STOP - 4.5, SD1 - SD0 - 0.6, 'canopyGlass', SD0 + 0.05);
+  // the open faces: mullions every 0.8 m and a transom per storey, on the east plane (out SO1) and the north plane (t SX1)
+  for (let t = SX0 + 0.55; t < SX1 - 0.3; t += 0.8) slab(b, f, t, Y0, 0.06, STOP - Y0 - 0.3, 0.07, 'bronze', SO1 - 0.035);
+  for (let o = SO1 - 0.55; o > -ND + 0.3; o -= 0.8) slab(b, f, SX1 - 0.035, Y0, 0.07, STOP - Y0 - 0.3, 0.06, 'bronze', o - 0.03);
+  for (let y = Y0 + 3.13; y < STOP - 0.5; y += 3.13) {
+    slab(b, f, TM, y, SX1 - SX0 - 0.6, 0.08, 0.05, 'bronze', SO1 - 0.025);
+    slab(b, f, SX1 - 0.025, y, 0.05, 0.08, ND + SO1 - 0.6, 'bronze', -ND + 0.3);
+  }
+  // the glazed lantern: the top storey and the 0.9 m over the roof, pale panes on the open faces and over the notch walls
+  const LY = TOP - 3.0, LH = STOP - 0.3 - LY;
+  slab(b, f, TM, LY, SX1 - SX0 - 0.6, LH, 0.02, 'canopyGlass', SO1 - 0.12);
+  slab(b, f, SX1 - 0.13, LY, 0.02, LH, ND + SO1 - 0.6, 'canopyGlass', -ND + 0.3);
+  slab(b, f, SX0 + 0.12, TOP + 0.05, 0.02, STOP - 0.35 - TOP - 0.05, ND - 0.6, 'canopyGlass', -ND + 0.3);
+  slab(b, f, TM, TOP + 0.05, SX1 - SX0 - 0.6, STOP - 0.35 - TOP - 0.05, 0.02, 'canopyGlass', -ND + 0.1);
 
   // ---------- north face (edge 4): the stair at its east end, three window columns ----------
   {
@@ -136,12 +166,17 @@ export function buildWilhelminatoren(_w: number, _d: number, b: BuildingTools) {
     const dark = [[1], [0, 1], [], [0], [1], [0, 1], [0], [1], [0, 1], [], [1]];
     for (let k = 0; k < ROWS; k++) {
       const top = rowTop(k);
-      for (const [a, z] of cols) win(fn, (a + z) / 2, top, z - a, 0);
-      for (const g of dark[k]) { const a = cols[g][1], z = cols[g + 1][0]; panel(fn, a, z, top, 0); }
+      const pt = (t: number): [number, number] => [fn.origin[0] + fn.tangent[0] * t, fn.origin[1] + fn.tangent[1] * t];
+      for (const [a, z] of cols) if (!inNotch(pt(a)) && !inNotch(pt(z))) win(fn, (a + z) / 2, top, z - a, 0);
+      for (const g of dark[k]) { const a = cols[g][1], z = cols[g + 1][0]; if (!inNotch(pt(a)) && !inNotch(pt(z))) panel(fn, a, z, top, 0); }
     }
-    slab(b, fn, (cols[2][0] + cols[2][1]) / 2, 0.6, cols[2][1] - cols[2][0] + 0.6, 4.6, 0.08, 'white');
-    slab(b, fn, (cols[2][0] + cols[2][1]) / 2, 0.7, cols[2][1] - cols[2][0] + 0.4, 4.4, 0.12, 'glass');
-    slab(b, fn, ln / 2, TOP - 0.2, ln, 0.35, 0.08, 'concrete');
+    // the coping and the tall ground-floor window on the part of the north wall outside the notch
+    const kT = (K[0] - fn.origin[0]) * fn.tangent[0] + (K[1] - fn.origin[1]) * fn.tangent[1];
+    const [c0, c1] = kT > ln / 2 ? [0, ln - ND] : [ND, ln];
+    slab(b, fn, (c0 + c1) / 2, TOP - 0.2, c1 - c0 - 0.05, 0.35, 0.08, 'concrete');
+    const gw = cols.find(([a, z]) => (a + z) / 2 > c0 + 0.8 && (a + z) / 2 < c1 - 0.8) ?? cols[0];
+    slab(b, fn, (gw[0] + gw[1]) / 2, 0.6, gw[1] - gw[0] + 0.6, 4.6, 0.08, 'white');
+    slab(b, fn, (gw[0] + gw[1]) / 2, 0.7, gw[1] - gw[0] + 0.4, 4.4, 0.12, 'glass');
   }
   // ---------- the other faces (edges 0-2, behind trees in w02-246T): the same rows ----------
   for (const e of [0, 1, 2]) {
