@@ -641,3 +641,31 @@ test('round 22: a round raised part is a cylinder, a capped one wears a white li
   const plain = draw([base]);
   assert.ok(plain.every(t => t.hex !== ERKER_LOOK.white) && Math.max(...xs(plain)) === +(0.01 + RAISED_LOOK.copingOutM).toFixed(3), 'absent: the box, flush');
 });
+
+// Round 22 named regression (Stadionweg 0363100012067736, Michelangelostraat 0363100012122157): a pitched member with a
+// raised block drew its eaves and windows ~0.7 m low on the sheet. The game's member is unchanged by the part (this
+// test); the sheet squeezed the taller render into its band (scripts/buurt-generators/sheetFit.ts).
+test('round 22: a raised part on a pitched member keeps its eaves, height and roof at the series line', () => {
+  process.env.ROW_FRONT = '1'; resetRowFront();
+  const g = globalThis as { __canalRecallBuurtKit?: boolean };
+  try {
+    const ring = [XY(0, 0), XY(17.5, 0), XY(17.5, 10), XY(0, 10)];
+    const front: [LngLat, LngLat] = [ll(XY(0, 0)), ll(XY(17.5, 0))];
+    const f = { ...feature('0363100012067736'), geometry: { type: 'Polygon', coordinates: [[...ring.map(ll), ll(ring[0])].map(p => [...p])] } };
+    const s = { ...series, roofStorey: { ...series.roofStorey, frontM: 17.5 } };
+    const kit = (raised?: unknown[]) => ({ frontLine: front, erkers: [], roof: { pitchDeg: 62, riseM: 1.3 }, ...(raised ? { raised } : {}) }) as BuurtKitFront;
+    g.__canalRecallBuurtKit = true;
+    const run = (raised?: unknown[]) => {
+      setRowFrontRecords([{ ...rec('0363100012067736'), series: s, buurtKit: kit(raised) }]); resetRowFront();
+      const out = withRowFront(f), p = out.properties as Record<string, unknown>;
+      const o = (out.geometry as { coordinates: number[][][] }).coordinates[0];
+      const tris = roofTrianglesForOutline(o, { lng: o[0][0], lat: o[0][1] }, roofPlanForFeature(out as never)!, 12.4, { bayM: 2, storeyM: 3, cellM: 1 }, KX, (w: { ny: number }) => w.ny < -0.9 ? 8 : Infinity);
+      const roof = tris.filter(t => !t.kit).flatMap(t => t.p.map(q => q[2]));
+      return { height: p.height, eaves: p.roofEavesHeightM, rise: (p.rowRoof as { riseM: number }).riseM, lo: Math.min(...roof), hi: Math.max(...roof), kitTop: Math.max(...tris.filter(t => t.kit).flatMap(t => t.p.map(q => q[2])), -Infinity) };
+    };
+    const plain = run(), block = run([{ a0: 0.49, a1: 1, riseM: 3.6, depthM: 8 }]);
+    assert.equal(block.eaves, plain.eaves); assert.equal(block.height, plain.height); assert.equal(block.rise, plain.rise);
+    assert.ok(Math.abs(block.lo - plain.lo) < 0.05 && Math.abs(block.hi - plain.hi) < 0.05, `the mansard stays (${plain.lo}-${plain.hi} vs ${block.lo}-${block.hi})`);
+    assert.ok(block.kitTop > plain.hi + 1, 'and the block stands over it');
+  } finally { delete g.__canalRecallBuurtKit; process.env.ROW_FRONT = '0'; resetRowFront(); setRowFrontRecords([]); }
+});
