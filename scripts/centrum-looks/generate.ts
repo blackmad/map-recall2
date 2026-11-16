@@ -70,6 +70,8 @@ export function photoOverRegisterGable(registerCrown: string | undefined, r: Par
   return !!registerCrown && GABLED_CROWNS.has(registerCrown) && !!r && typeof r.cc === 'number' && r.cc >= PHOTO_OVER_REGISTER_CC && (r.crown === 'cornice' || r.crown === 'flat');
 }
 
+/** Round 8: a weak gable read's floor, and the AHN band spread (p90 - p50, m) that lifts it to the bar. */
+export const WEAK_GABLE_MIN = 0.6, AHN_GABLE_SPREAD_M = 2.5;
 /** The v3 dress field's confidence that states the upper windows' dressing (round 7). */
 export const PHOTO_DRESS_MIN = 0.7;
 /** The v3 dress words the row line can draw, in the describer's windowSurround words (row/solve.ts DRESSING_OF). */
@@ -227,14 +229,22 @@ async function main() {
   // a confident read states the finish where the register is silent; its family goes to the wall draw (drawWalls).
   const registerFinish = new Map<string, string>([...stated].flatMap(([k, v]) => (v.finish ? [[k, v.finish] as [string, string]] : [])));
   const photo = process.argv.includes('--no-photo') ? new Map<string, PhotoRead>() : loadPhotoReads(id, arg('photo-reads'));
-  let photoCrowns = 0, photoRoofStoreys = 0;
+  let photoCrowns = 0, photoRoofStoreys = 0, gablesBySpread = 0;
+  const ahnEarlyFile = arg('ahn') ?? [`artifacts/buurt-generators/${id}-ahn/fronts.json`, `data/buurt-generators/${id}/ahn-fronts.json`].find(f => fs.existsSync(f)) ?? '';
+  const ahnEarly = new Map<string, AhnFront>(!process.argv.includes('--no-ahn') && fs.existsSync(ahnEarlyFile) ? Object.entries(JSON.parse(fs.readFileSync(ahnEarlyFile, 'utf8')).fronts) : []);
   const dressTally: Record<string, number> = {};
   const registerGablesDropped: string[] = [], registerFinishesDropped: string[] = [];
   for (const [pid, r] of photo) {
     const cur = stated.get(pid) ?? {}, fin = cur.finish ? undefined : photoFinish(r.finish === 'unclear' ? undefined : r as never);
     // Round 5: lane D's crown reader's fields, read by the v2 reader on the same cut (photoCrown: a gabled crown where the
     // register is silent, a tall cornice, the storey count; each at PHOTO_CROWN_MIN).
-    const pc = photoCrown(typeof (r as Partial<PhotoCrown>).cc === 'number' ? r as unknown as PhotoCrown : undefined), crown = !cur.crown && pc.crown ? pc.crown : undefined;
+    // Round 8 (Kloveniersburgwal 177789: a step gable read at 0.65 on a third capture, not visible on two others, over an
+    // AHN band from 18.1 to 21.2 m; drawn an 18 m cornice, the photo ~21): a weak gable (>= WEAK_GABLE_MIN) over an AHN
+    // front band spread of AHN_GABLE_SPREAD_M stands at the bar (the spread: 46 % of confident gables, 14 % of cornices).
+    const r0 = typeof (r as Partial<PhotoCrown>).cc === 'number' ? r as unknown as PhotoCrown : undefined, a0 = ahnEarly.get(pid);
+    const rc = r0 && r0.cc < PHOTO_CROWN_MIN && r0.cc >= WEAK_GABLE_MIN && GABLED_CROWNS.has(r0.crown) && a0 && a0.p90 - a0.p50 >= AHN_GABLE_SPREAD_M ? { ...r0, cc: PHOTO_CROWN_MIN } : r0;
+    if (rc !== r0) gablesBySpread++;
+    const pc = photoCrown(rc), crown = !cur.crown && pc.crown ? pc.crown : undefined;
     if (crown) photoCrowns++;
     // A register gable the photo confidently reads as a cornice or a plain parapet is a front that changed (round 4 judges:
     // gables invented on flat-cornice rows; 43 donor fronts drawn gabled under a photo cornice, checked by eye on 8).
@@ -337,7 +347,7 @@ async function main() {
       const st = o?.storeys?.value ?? s.design.storeys?.value; storeys[st] = (storeys[st] ?? 0) + 1;
     }
   }
-  const report = { at, district: id, buurten: look.buurten, pitchM: look.pitchM, foreignDonor: look.foreignDonor, ahnFronts: ahn.size, overSpecs, photoCrowns, photoRoofStoreys, photoDress: dressTally, registerGablesDropped: registerGablesDropped.length, registerFinishesDropped, gableFootPitch: gfp, statedPhotoStoreys: [...stated.values()].filter(v => v.photoStoreys).length, specOnlyRedrawn: drawn.filter(p => specOnly.has(p)).length,
+  const report = { at, district: id, buurten: look.buurten, pitchM: look.pitchM, foreignDonor: look.foreignDonor, ahnFronts: ahn.size, overSpecs, photoCrowns, gablesBySpread, photoRoofStoreys, photoDress: dressTally, registerGablesDropped: registerGablesDropped.length, registerFinishesDropped, gableFootPitch: gfp, statedPhotoStoreys: [...stated.values()].filter(v => v.photoStoreys).length, specOnlyRedrawn: drawn.filter(p => specOnly.has(p)).length,
     pands: pands.length, described: res.skipped.filter(s => s.reason === 'described').length - laterPeriod.size, laterPeriod: laterPeriod.size, maxYear: look.maxYear ?? null, drawn: drawn.length, ownRead: ownN, donorRead: drawn.length - ownN, donorDistrict,
     ownDonors: own.donors.length, beltDonors: belt.donors.length, rows: res.rows.length, records: records.length, skipped: bySkip, bySegment: bySeg, crowns, storeys, findings,
     statedCrown: drawn.filter(p => stated.get(p)?.crown).length, modernBehindRegister: Object.keys(modern).length, walls, wallWeights, ms: Date.now() - t0 };

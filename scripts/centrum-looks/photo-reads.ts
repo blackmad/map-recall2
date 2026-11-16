@@ -68,6 +68,9 @@ export function mergeCrown<T extends CentrumCrownRead>(a: T, b: CentrumCrownRead
   if (m.conflict?.length) out.crownRule = `captures disagree (${m.conflict.join(', ')})`;
   else if (m.cc < 0.7 && g(a) && g(b)) { const w = b.cc > a.cc ? b : a; Object.assign(out, { crown: w.crown, cornice: w.cornice, cc: 0.7 }); out.crownRule = 'two captures read a gable weakly'; }
   else if (m.cc >= 0.7 && m.crown !== a.crown) out.crownRule = 'the re-read is the confident crown';
+  // Round 8 (Kloveniersburgwal 177789): a front not seen on the earlier capture keeps the re-read's weak crown, still under
+  // the bar (generate.ts lifts a weak gable only over a wide AHN band).
+  else if (m.cc < 0.7 && (a.crown === 'not-visible' || a.cc < WEAK_CROWN_MIN) && b.crown !== 'not-visible' && b.cc > a.cc) { Object.assign(out, { crown: b.crown, cornice: b.cornice, cc: b.cc }); out.crownRule = 'the re-read sees the top the first did not'; }
   if (b.roof) Object.assign(out, { roof: b.roof, rc: b.rc });
   if (b.dress) Object.assign(out, { dress: b.dress, dc: b.dc });
   return out;
