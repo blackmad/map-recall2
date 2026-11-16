@@ -618,3 +618,26 @@ test('round 20: raised parts stand on a wing\'s face, carry a tower\'s storey li
   assert.equal(draw([{ a0: 0.19, a1: 0.99, riseM: 3.05, lights: 1 }]).filter(t => t.hex === ERKER_LOOK.glass).length, 2);
   assert.equal(draw([{ a0: 0.19, a1: 0.99, riseM: 1.2, lights: 1 }]).filter(t => t.hex === ERKER_LOOK.glass).length, 0, 'a parapet has no storey');
 });
+
+// Round 22 (lane R): round towers and white caps. Named regressions: Vechtstraat 0363100012084587/0363100012107886 (the
+// round stair towers drawn as boxes), Haringvlietstraat 0363100012062635 (the tower's white cap slab missing).
+test('round 22: a round raised part is a cylinder, a capped one wears a white lid; absent, the box and brick coping', async () => {
+  const { raisedOf, buurtKitOf } = await import('./frontKit.js');
+  const { drawRaised, RAISED_LOOK, RAISED_CAP_LOOK, ERKER_LOOK } = await import('./roofKit.js');
+  assert.deepEqual(raisedOf([{ a0: 0.7, a1: 0.9, riseM: 2, round: true, cap: true }]), [{ a0: 0.7, a1: 0.9, riseM: 2, round: true, cap: true }]);
+  assert.deepEqual(raisedOf([{ a0: 0.7, a1: 0.9, riseM: 2, outM: 0.3, round: true, cap: 1 }]), [{ a0: 0.7, a1: 0.9, riseM: 2, outM: 0.3 }], 'a proud pier is not round; cap must be true');
+  const kitWith = (raised: unknown[]) => buurtRoofKitFor(buurtKitOf({ frontLine: line, erkers: [], raised })!, 12.4, 4, 3.4)!;
+  const draw = (raised: unknown[]) => { const s = sink(); drawRaised(s, kitWith(raised), 10, 8, 1); return s.out; };
+  const base = { a0: 0.25, a1: 0.75, riseM: 2 }; // 4 m across: radius 2 m, centred on the wall
+  const xs = (o: ReturnType<typeof draw>) => o.flatMap(t => t.p.map(p => +(p[0] - 5).toFixed(3)));
+  const ys = (o: ReturnType<typeof draw>) => o.flatMap(t => t.p.map(p => +p[1].toFixed(3)));
+  const round = draw([{ ...base, round: true }]);
+  assert.equal(Math.max(...xs(round)), +(0.01 + 2 + RAISED_LOOK.copingOutM).toFixed(3), 'its front is the circle\'s');
+  assert.equal(Math.min(...ys(round)), +(-2 - RAISED_LOOK.copingOutM).toFixed(3));
+  assert.ok(round.every(t => t.hex !== ERKER_LOOK.white), 'brick coping without cap');
+  const cap = draw([{ ...base, cap: true }]), capped = cap.filter(t => t.hex === ERKER_LOOK.white);
+  assert.ok(capped.length >= 6, 'a white lid box');
+  assert.equal(Math.max(...capped.flatMap(t => t.p.map(p => +p[2].toFixed(3)))), +(2 + RAISED_CAP_LOOK.heightM).toFixed(3));
+  const plain = draw([base]);
+  assert.ok(plain.every(t => t.hex !== ERKER_LOOK.white) && Math.max(...xs(plain)) === +(0.01 + RAISED_LOOK.copingOutM).toFixed(3), 'absent: the box, flush');
+});
