@@ -1,0 +1,3312 @@
+{
+ "at": "2026-11-16",
+ "ref": "centrum-looks round 4: photo colour reader (scripts/centrum-looks/photo-reads.ts)",
+ "reads": {
+  "0363100012164941": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012164945": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012164946": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012164956": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012164958": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012164959": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012164960": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012164961": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012164963": {
+   "finish": "stucco",
+   "family": "pale-grey",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012165016": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012165017": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012165555": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012165559": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012165623": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012165624": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012165697": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012165698": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012169333": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012169334": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012169336": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012169337": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012169340": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170244": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170260": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170261": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170262": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170264": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170286": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170379": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170442": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170446": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170448": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170451": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170452": {
+   "finish": "stucco",
+   "family": "pale-grey",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170453": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170454": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170455": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170458": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170459": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170507": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170509": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170510": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170511": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170512": {
+   "finish": "stucco",
+   "family": "cream-paint",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170513": {
+   "finish": "stucco",
+   "family": "cream-paint",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170515": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170516": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170517": {
+   "finish": "stucco",
+   "family": "pale-grey",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170616": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170618": {
+   "finish": "stucco",
+   "family": "cream-paint",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170620": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.1,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170622": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170624": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170625": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170626": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170629": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170630": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170670": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170671": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170673": {
+   "finish": "stucco",
+   "family": "cream-paint",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170685": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170686": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170695": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170735": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170736": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170739": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170740": {
+   "finish": "brick",
+   "family": "orange-red-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170741": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170743": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170897": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170899": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.4,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170900": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170901": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170911": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170912": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170913": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012170914": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171157": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171158": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171159": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171163": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171164": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171184": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171188": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171312": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171314": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171315": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171316": {
+   "finish": "brick",
+   "family": "orange-red-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171318": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171319": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171322": {
+   "finish": "stucco",
+   "family": "white-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171377": {
+   "finish": "stucco",
+   "family": "cream-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171386": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171393": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171394": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171397": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171399": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171400": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171403": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171404": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171405": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171406": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171451": {
+   "finish": "stucco",
+   "family": "white-paint",
+   "confidence": 0.9,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171473": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171477": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171478": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171483": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171484": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171485": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171486": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171490": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171553": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171555": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171557": {
+   "finish": "paint",
+   "family": "cream-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171625": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171637": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171638": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171688": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171689": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171690": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171691": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171692": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171693": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171695": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171752": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171753": {
+   "finish": "brick",
+   "family": "buff-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171754": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171757": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171759": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171762": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171763": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171766": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171828": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171830": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171838": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171842": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171909": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171910": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171916": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171917": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171918": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171920": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012171924": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177718": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177720": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177722": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177745": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177746": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177773": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177775": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177776": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177777": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177778": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177779": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177783": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177784": {
+   "finish": "stucco",
+   "family": "cream-paint",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177785": {
+   "finish": "stucco",
+   "family": "white-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177786": {
+   "finish": "stucco",
+   "family": "cream-paint",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177787": {
+   "finish": "stucco",
+   "family": "white-paint",
+   "confidence": 0.9,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177788": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177789": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177790": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177791": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177815": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177817": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177819": {
+   "finish": "stucco",
+   "family": "white-paint",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177821": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177822": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177823": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177824": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177825": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012177857": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178096": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178099": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178100": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178102": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178111": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178112": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178113": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178114": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178116": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178142": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178143": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178147": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178151": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178155": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178157": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178158": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178213": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178214": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178215": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178216": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178218": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178219": {
+   "finish": "brick",
+   "family": "orange-red-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178221": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178222": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178223": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178224": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178225": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178226": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178304": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178359": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178360": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178361": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.9,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178362": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178363": {
+   "finish": "stucco",
+   "family": "white-paint",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178364": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178369": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178372": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178373": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178374": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178446": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178449": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178626": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178628": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178629": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178631": {
+   "finish": "brick",
+   "family": "buff-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178633": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178635": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178637": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178638": {
+   "finish": "stucco",
+   "family": "white-paint",
+   "confidence": 0.9,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178639": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178711": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178712": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178713": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178714": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178895": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178896": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178897": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178902": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178904": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178906": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178909": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178988": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012178989": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181201": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181206": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181209": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.1,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181218": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181223": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181292": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181294": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181295": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181298": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181299": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181301": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181302": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181375": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181518": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181522": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181523": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181524": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181525": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181526": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181528": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181529": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181532": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.1,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181562": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.1,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181563": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181565": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181567": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181568": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181569": {
+   "finish": "stucco",
+   "family": "white-paint",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181570": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181571": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181572": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181573": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181574": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181575": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181577": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181608": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181609": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181611": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181612": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181614": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181619": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181763": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181767": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181768": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.4,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181770": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181771": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181772": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181774": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181775": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181787": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181804": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181807": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181808": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181809": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181811": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181814": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181815": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181820": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181869": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181870": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181877": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181883": {
+   "finish": "paint",
+   "family": "other-paint",
+   "confidence": 0.4,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181884": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181885": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181886": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181887": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181907": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181908": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181909": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181910": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181916": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181917": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181918": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181920": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181921": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181923": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181925": {
+   "finish": "brick",
+   "family": "buff-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181926": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181932": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181936": {
+   "finish": "stucco",
+   "family": "cream-paint",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181939": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181940": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181946": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181947": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181948": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181949": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181952": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181953": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181960": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181978": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181979": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012181980": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182036": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182049": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182052": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182065": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182074": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182076": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182078": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182080": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182082": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182084": {
+   "finish": "stucco",
+   "family": "cream-paint",
+   "confidence": 0.4,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182085": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.1,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182087": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182088": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182091": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182092": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182094": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182095": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182096": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182101": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182102": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182103": {
+   "finish": "stucco",
+   "family": "pale-grey",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182107": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182108": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182109": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182113": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182122": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182150": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182151": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182154": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182158": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182159": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182160": {
+   "finish": "brick",
+   "family": "buff-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182161": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182162": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.4,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182163": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182188": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182189": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182190": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182192": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182242": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182246": {
+   "finish": "stucco",
+   "family": "cream-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182247": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182251": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182252": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182253": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182255": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182257": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182261": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182263": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182268": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182270": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182299": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182301": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182323": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182324": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182325": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182332": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182333": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182344": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.1,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182346": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182347": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182348": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182351": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182356": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182357": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182358": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182360": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182401": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182402": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182404": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182405": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182409": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182435": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182436": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182437": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182438": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182439": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182440": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182442": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182446": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182447": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182449": {
+   "finish": "paint",
+   "family": "pale-grey",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182473": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182503": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182504": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182509": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182517": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182519": {
+   "finish": "paint",
+   "family": "cream-paint",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182520": {
+   "finish": "stucco",
+   "family": "white-paint",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182521": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182524": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182525": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182526": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182527": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182529": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182572": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182573": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182586": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182587": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182597": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182598": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182599": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182600": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182603": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182608": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182609": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182610": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182611": {
+   "finish": "stucco",
+   "family": "pale-grey",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182612": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182642": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.1,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182643": {
+   "finish": "stucco",
+   "family": "pale-grey",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182644": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182646": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182654": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182658": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182661": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182683": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182688": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182689": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182692": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182695": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182696": {
+   "finish": "brick",
+   "family": "buff-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182697": {
+   "finish": "brick",
+   "family": "buff-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182698": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182699": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182704": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182731": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182733": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182734": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182736": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182738": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182739": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182744": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182745": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182746": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182747": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182748": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182750": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182751": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182752": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182753": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182767": {
+   "finish": "stucco",
+   "family": "other-paint",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182772": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182773": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182780": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182782": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182784": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182788": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182789": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182792": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182793": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182794": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182800": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182826": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182827": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182828": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.3,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182829": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182830": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182867": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182868": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182869": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182871": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182872": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182873": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182874": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182875": {
+   "finish": "brick",
+   "family": "buff-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182876": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182898": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182899": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182906": {
+   "finish": "stucco",
+   "family": "white-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182957": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182958": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182959": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182960": {
+   "finish": "paint",
+   "family": "cream-paint",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182961": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182962": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182964": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182970": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182971": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182972": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182973": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182980": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182984": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182985": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012182992": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012183029": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012183053": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012183056": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012183057": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012183060": {
+   "finish": "brick",
+   "family": "dark-grey-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012183063": {
+   "finish": "brick",
+   "family": "buff-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012183092": {
+   "finish": "unclear",
+   "family": "unclear",
+   "confidence": 0.2,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012183093": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012183095": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012183102": {
+   "finish": "stucco",
+   "family": "pale-grey",
+   "confidence": 0.4,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012183105": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012186088": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012253757": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012253888": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012570894": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571628": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571629": {
+   "finish": "stucco",
+   "family": "cream-paint",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571630": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571632": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571636": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571637": {
+   "finish": "paint",
+   "family": "white-paint",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571639": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571641": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571642": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.85,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571648": {
+   "finish": "paint",
+   "family": "pale-grey",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571652": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571659": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.45,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571660": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571662": {
+   "finish": "stucco",
+   "family": "white-paint",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571667": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571668": {
+   "finish": "brick",
+   "family": "purple-brown-brick",
+   "confidence": 0.55,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571670": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571672": {
+   "finish": "paint",
+   "family": "dark-paint",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571673": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.7,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571674": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.65,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571676": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.5,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571678": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.75,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571681": {
+   "finish": "brick",
+   "family": "brown-brick",
+   "confidence": 0.6,
+   "reader": "opus (cut, colour family)"
+  },
+  "0363100012571682": {
+   "finish": "brick",
+   "family": "red-brown-brick",
+   "confidence": 0.8,
+   "reader": "opus (cut, colour family)"
+  }
+ }
+}
