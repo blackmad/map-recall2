@@ -44,3 +44,12 @@ export function retailRealAllOn(): boolean {
   if (typeof g.__canalRecallRetailRealAll === 'boolean') return g.__canalRecallRetailRealAll;
   return (cachedAll ??= /[?&]retailRealAll=1\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_REAL_ALL === '1');
 }
+
+let cachedParts: boolean | undefined;
+/** `?retailParts=1` (RETAIL_PARTS=1): round 4's template parts (retailTemplates.ts TEMPLATE_PARTS: shutter boxes, neon
+ *  window signs, lettering on the glass) and per-pand front overrides. Off until they win a blind A/B. */
+export function retailPartsOn(): boolean {
+  const g = globalThis as { __canalRecallRetailParts?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  if (typeof g.__canalRecallRetailParts === 'boolean') return g.__canalRecallRetailParts;
+  return (cachedParts ??= /[?&]retailParts=1\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_PARTS === '1');
+}

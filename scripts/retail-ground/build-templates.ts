@@ -188,6 +188,17 @@ if (fs.existsSync(PUI)) {
   const cls = [...priors.values()].reduce((m, p) => (m[p.cls] = (m[p.cls] ?? 0) + 1, m), {} as Record<string, number>);
   console.log(`street priors: ${priors.size} streets (${JSON.stringify(cls)}); ${Object.keys(prior).length} of ${plainShops.length} unmeasured plain shops take one`);
 }
+// Lane retail-real round 4: per-pand front colours read on a photo (data/retail-ground/front-overrides.json, receipts
+// there), drawn only with ?retailParts=1.
+{
+  const OV = 'data/retail-ground/front-overrides.json';
+  if (fs.existsSync(OV)) {
+    const o = (JSON.parse(fs.readFileSync(OV, 'utf8')) as { buildings: Record<string, { frame?: string; awning?: string }> }).buildings;
+    const fronts = Object.fromEntries(Object.entries(o).map(([k, v]) => [`NL.IMBAG.Pand.${k}`, { ...(v.frame ? { frame: v.frame } : {}), ...(v.awning ? { awning: v.awning } : {}) }] as const).filter(([id]) => out.buildings[id]));
+    if (Object.keys(fronts).length) Object.assign(out, { fronts });
+    console.log(`front overrides: ${Object.keys(fronts).length} of ${Object.keys(o).length} pands have a template`);
+  }
+}
 // Round 7: the awnings measured on panoramas (measure-awning.ts), for template pands.
 {
   const AWN = 'data/retail-ground/awnings.json';
