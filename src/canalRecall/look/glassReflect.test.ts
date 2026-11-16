@@ -21,8 +21,8 @@ const gltfMaterial = (name: string, extras: Record<string, unknown>) => {
 };
 const aitanaGlass = { materialSlot: 'paint', tint: '#a7b9bf', materialSlotSource: 'inferred', materialSlotTag: 'builder' };
 
-test('flag: off by default; ?glassReflect=1 turns it on', () => {
-  assert.equal(glassReflectEnabled(''), false);
+test('flag: on by default since round t; ?glassReflect=0 turns it off', () => {
+  assert.equal(glassReflectEnabled(''), true);
   assert.equal(glassReflectEnabled('?glassReflect=0'), false);
   assert.equal(glassReflectEnabled('?cityLook=1&glassReflect=1'), true);
 });

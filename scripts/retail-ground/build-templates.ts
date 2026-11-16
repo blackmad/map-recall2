@@ -28,7 +28,7 @@ import { insideCentre, RING_KM, DAM } from '../../src/canalRecall/retailArea.ts'
 import { streetPriors, type StreetRead } from '../../src/canalRecall/retailPuiPaint.ts';
 import { bikeShopClass, bikeCode } from '../../src/canalRecall/retailBikes.ts';
 import { closedByOverture, sameName, MATCH_M } from '../../src/canalRecall/retailSources.ts';
-import { READ_MIN_CONF, correctionFor, type SignRead } from '../../src/canalRecall/retailSignReads.ts';
+import { READ_PUBLISH_FLOOR, correctionFor, type SignRead } from '../../src/canalRecall/retailSignReads.ts';
 import { addressPand, atOnStreetWall, matchAddress, type Vbo } from '../../src/canalRecall/retailAddress.ts';
 
 import { CACHE, nodes, LAT0, KX, KY, local, grid, streets, walls, facing, open, near, bagUses, bagKey, namedSegs, lngLatOf, type Building, type Node } from './city.ts';
@@ -154,9 +154,9 @@ if (samples) {
   }
 }
 // Lane retail-real round 6: the sign reads (retailSignReads.ts correctionFor), a correction layer over OSM read off the
-// newest facing panorama; opt-in with `--reads` until its blind is in. Receipts (panorama, date, reader, confidence) stay in READS.
+// newest facing panorama; on by default since round t at READ_PUBLISH_FLOOR (0.6) after its blind (`--no-reads` builds OSM only). Receipts (panorama, date, reader, confidence) stay in READS.
 const READS = 'data/retail-ground/sign-reads.json', neutral: string[] = [], quiet: string[] = [], readCount: Record<string, number> = {};
-if (process.argv.includes('--reads') && fs.existsSync(READS)) {
+if (!process.argv.includes('--no-reads') && fs.existsSync(READS)) {
   const reads = (JSON.parse(fs.readFileSync(READS, 'utf8')) as { reads: Record<string, SignRead> }).reads;
   // Lane R's De Wallen audit read every red-light row on its own measured panorama: it outranks a sign read.
   const RED_AUDIT = 'data/retail-ground/dewallen-redlight-audit.json', audited = new Set<string>();
@@ -164,7 +164,7 @@ if (process.argv.includes('--reads') && fs.existsSync(READS)) {
   for (const [id, p] of [...placed]) {
     const r = reads[bagKey(id)]; if (!r || r.node !== p.node) continue;
     if (p.t === 'redLight' && audited.has(bagKey(id))) { readCount.audited = (readCount.audited ?? 0) + 1; continue; }
-    const c = correctionFor(r, templateForTags, Number(arg('read-floor') ?? READ_MIN_CONF));
+    const c = correctionFor(r, templateForTags, Number(arg('read-floor') ?? READ_PUBLISH_FLOOR));
     readCount[c.action] = (readCount[c.action] ?? 0) + 1;
     if (c.action === 'keep') continue;
     if (c.action === 'template') {

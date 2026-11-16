@@ -1,19 +1,19 @@
 {
  "rule": "src/canalRecall/retailBikes.ts BIKE_RULE (header comment), first match wins",
  "classes": {
-  "used": 194,
-  "rental": 49,
+  "used": 192,
+  "rental": 47,
   "premium": 11
  },
  "steps": {
-  "4 used: repair shop": 29,
+  "4 used: repair shop": 28,
   "4 used: workshop name": 27,
-  "4 used: unbranded local shop (default)": 104,
+  "4 used: unbranded local shop (default)": 103,
   "1 rental: amenity=bicycle_rental": 21,
   "2 used: second-hand tag": 20,
   "4 used: fietsenmaker-type name": 14,
   "3 premium: brand or dealer name": 8,
-  "1 rental: rental": 13,
+  "1 rental: rental": 11,
   "3 premium: retail, no second-hand or repair": 2,
   "1 rental: Swapfiets (black, blue front tyre)": 2,
   "1 rental: Black Bikes (black)": 6,
@@ -24,8 +24,8 @@
   "1 rental: Starbikes (black)": 1
  },
  "ringByClass": {
-  "used": 103,
-  "rental": 43,
+  "used": 101,
+  "rental": 41,
   "premium": 6
  },
  "spotCheck": {

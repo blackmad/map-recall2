@@ -3,7 +3,8 @@
 // with `?retailBrand` off. `node --import tsx --test src/canalRecall/retailBrandStyles.test.ts`
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { BRAND_MIN_CONF, BRAND_STYLES, brandLook, type BrandStyle } from './retailBrandStyles.js';
+import { ACCEPTED_BRANDS, BRAND_MIN_CONF, BRAND_STYLES, brandAccepted, brandLook, type BrandStyle } from './retailBrandStyles.js';
+import { retailBrandOn } from './retailPages.js';
 import { FRONT, retailFrontTris, type RetailFrontInput } from './retailFront.js';
 
 const g = globalThis as { __canalRecallRetailBrand?: boolean };
@@ -86,4 +87,27 @@ test('racks are postcard stands and boards chalkboards, with no slab face', () =
     assert.ok(!on.some(t => t.hex === '#2f6fb0' && area(t) > 0.05));
   }
   assert.equal(FRONT.fasciaM, 0.6);
+});
+
+test('round t: only the blind-accepted brands (FEBO, HEMA) draw their style by default; the losers keep today', () => {
+  assert.deepEqual([...ACCEPTED_BRANDS].sort(), ['febo', 'hema']);
+  for (const k of ['febo', 'hema']) assert.ok(brandAccepted(k, false));
+  for (const k of ['kruidvat', 'dirk', 'mcdonalds', 'starbucks', 'ah']) {
+    assert.ok(!brandAccepted(k, false));
+    assert.ok(brandAccepted(k, true));
+  }
+  // A losing brand under the default draws exactly as with no brand at all.
+  const ga = globalThis as { __canalRecallRetailBrandAll?: boolean };
+  ga.__canalRecallRetailBrandAll = false;
+  try {
+    const input: RetailFrontInput = { template: 'kruidvat', seed: 'k', letters: 9, goods: 20, brand: 'kruidvat', wallHex: '#d9d2c3' };
+    const { brand: _b, ...plain } = input;
+    assert.deepEqual(run(input, true), run(plain, true));
+  } finally { delete ga.__canalRecallRetailBrandAll; }
+});
+
+test('round t: ?retailBrand is on by default (no query, no env)', () => {
+  const g2 = globalThis as { __canalRecallRetailBrand?: boolean };
+  delete g2.__canalRecallRetailBrand;
+  assert.equal(retailBrandOn(), process.env.RETAIL_BRAND !== '0');
 });

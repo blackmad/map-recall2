@@ -25,15 +25,16 @@ import { SUN_DIRECTION } from '../rendererShared/lightRig.ts';
 
 export const GLASS_REFLECT_PARAM = 'glassReflect';
 
-/** `?glassReflect=1`, `window.__canalRecallGlassReflect = true`, or GLASS_REFLECT=1 in Node (house frames, tests). Off by default. */
+/** On by default since round t (2026-11-16: no measurable frame or GPU cost, blind ING 5/5 and Aitana 3/5 for on);
+ *  `?glassReflect=0`, `window.__canalRecallGlassReflect = false` or GLASS_REFLECT=0 turns it off. Only tagged glass changes. */
 export function glassReflectEnabled(search?: string): boolean {
   try {
     const g = globalThis as any;
     if (search === undefined && typeof g.__canalRecallGlassReflect === 'boolean') return g.__canalRecallGlassReflect;
     const q = search ?? g.location?.search;
-    if (q !== undefined) return new URLSearchParams(q).get(GLASS_REFLECT_PARAM) === '1';
-    return g.process?.env?.GLASS_REFLECT === '1';
-  } catch { return false; }
+    if (q !== undefined) return new URLSearchParams(q).get(GLASS_REFLECT_PARAM) !== '0';
+    return g.process?.env?.GLASS_REFLECT !== '0';
+  } catch { return true; }
 }
 
 /** The glTF material extra a builder writes (glass-finish-tags.ts). */

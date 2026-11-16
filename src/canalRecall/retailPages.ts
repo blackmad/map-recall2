@@ -55,11 +55,19 @@ export function retailPartsOn(): boolean {
 }
 
 let cachedBrand: boolean | undefined;
-/** `?retailBrand=1` (RETAIL_BRAND=1), round 7: chains draw their measured brand style (retailBrandStyles.ts: letters on
- *  the wall with no band, blade signs with their glyph, dark plate glass) and the pavement racks and boards draw as
- *  postcard stands and chalkboards. Off until it wins a blind A/B. */
+let cachedBrandAll: boolean | undefined;
+/** Round 7 (lane retail-real; default on since round t, 2026-11-16, after its blind): the brands in ACCEPTED_BRANDS
+ *  (retailBrandStyles.ts) draw their measured style (letters on the wall with no band, blade signs with their glyph,
+ *  dark plate glass), and the pavement racks and boards draw as postcard stands and chalkboards. `?retailBrand=0`
+ *  (RETAIL_BRAND=0) turns it off; `?retailBrand=all` (RETAIL_BRAND=all) applies every measured brand, for review. */
 export function retailBrandOn(): boolean {
   const g = globalThis as { __canalRecallRetailBrand?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
   if (typeof g.__canalRecallRetailBrand === 'boolean') return g.__canalRecallRetailBrand;
-  return (cachedBrand ??= /[?&]retailBrand=1\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_BRAND === '1');
+  return (cachedBrand ??= !(/[?&]retailBrand=0\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_BRAND === '0'));
+}
+/** `?retailBrand=all`: every measured brand style acts, not only the accepted ones. */
+export function retailBrandAll(): boolean {
+  const g = globalThis as { __canalRecallRetailBrandAll?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  if (typeof g.__canalRecallRetailBrandAll === 'boolean') return g.__canalRecallRetailBrandAll;
+  return (cachedBrandAll ??= /[?&]retailBrand=all\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_BRAND === 'all');
 }

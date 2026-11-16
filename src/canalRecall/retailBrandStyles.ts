@@ -4,6 +4,7 @@
 // wall with no board, a blade with its glyph, dark plate glass); `?retailBrand=1` applies it (retailFront.ts).
 import { BRAND_STYLES_GEN } from './retailBrandStyles.gen.js';
 import type { TemplateLook } from './retailTemplates.js';
+import { retailBrandAll } from './retailPages.js';
 
 export type BrandStyle = {
   /** band: a full-width board; wall: letters straight on the wall; panel: a small sign board; lightbox: a lit box. */
@@ -26,6 +27,19 @@ export type BrandStyle = {
 };
 
 export const BRAND_STYLES: Readonly<Record<string, BrandStyle>> = BRAND_STYLES_GEN as Record<string, BrandStyle>;
+
+/**
+ * The brands whose measured style won its blind (round 7, `data/retail-ground/ab/blinds-r6-r7.json`): FEBO 2 of 2
+ * (red letters on the wall, the blade's F, dark plate glass), HEMA (letters on the wall). Kruidvat, Dirk and
+ * McDonald's lost (measured colours read less true than today's), Starbucks and Vomar tied, the rest were not posed:
+ * they keep today's look unless `?retailBrand=all`.
+ */
+export const ACCEPTED_BRANDS: readonly string[] = ['febo', 'hema'];
+
+/** Whether a chain's measured style draws by default (an accepted brand), or under `?retailBrand=all`. */
+export function brandAccepted(key: string, all: boolean = retailBrandAll()): boolean {
+  return all || ACCEPTED_BRANDS.includes(key);
+}
 
 /** A measurement acts only when the readers saw the chain on two fronts or more, at this confidence. */
 export const BRAND_MIN_CONF = 0.5;

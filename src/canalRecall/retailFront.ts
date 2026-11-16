@@ -6,7 +6,7 @@ import { glyphLayout } from './retailLogos.js';
 import { goodsCell, goodsTiles } from './retailGoods.js';
 import { drawRedLightFront, type RedLightFront } from './groundParts/redLightFront.js';
 import { retailBrandOn, retailPartsOn } from './retailPages.js';
-import { brandLook } from './retailBrandStyles.js';
+import { brandAccepted, brandLook } from './retailBrandStyles.js';
 import { capShare, titleCase, typeLayout, type TypeFace } from './retailTypeFaces.js';
 import { BIKE, bikeQuads, outsideBikes, SHOW_HEXES, USED_HEXES, type BikeClass } from './retailBikes.js';
 import { signText, TEMPLATE_LOOKS, TEMPLATE_PARTS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
@@ -578,7 +578,7 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   // Lane retail-real: a chain (retailChains.ts) draws its type's template under its own board and letter colours.
   const look0: TemplateLook = input.chain ? { ...TEMPLATE_LOOKS[input.template], fascia: input.chain.fascia, letters: input.chain.letters, cap: undefined, word: undefined, face: undefined } : TEMPLATE_LOOKS[input.template];
   // Round 7: the chain's measured brand style over its template (retailBrandStyles.ts).
-  const brand = input.brand && retailBrandOn() ? brandLook(input.brand) : undefined, look: TemplateLook = brand ? { ...look0, ...brand } : look0;
+  const brand = input.brand && retailBrandOn() && brandAccepted(input.brand) ? brandLook(input.brand) : undefined, look: TemplateLook = brand ? { ...look0, ...brand } : look0;
   if (s1 - s0 < 1.2) return [];
   const b = new Builder(e);
   const top = base + Math.min(Math.max(2.8, groundM), 4.6) - FRONT.fasciaGapM, bottom = top - FRONT.fasciaM;

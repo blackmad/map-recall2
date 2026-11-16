@@ -10,6 +10,9 @@
 // Pure: Node build (build-templates.ts) and tests.
 
 export const READ_MIN_CONF = 0.7;
+/** The floor the published extract is built at (round t, 2026-11-16): the round 6b blind had the extra 0.6–0.7 pands
+ *  winning 7–1 (7 ties, 5 controls tied) over 0.7, which itself beat OSM-only 9–4 (data/retail-ground/ab/blinds-r6-r7.json). */
+export const READ_PUBLISH_FLOOR = 0.6;
 export type ReadVerdict = 'match' | 'other' | 'noShop' | 'vacant' | 'unreadable' | 'occluded';
 export type SignRead = { node: number; pano: string; date: string; reader: string; v: ReadVerdict; tag?: string; name?: string; conf: number };
 export type Correction<T> = { action: 'keep' } | { action: 'template'; template: T; tags: Record<string, string> } | { action: 'neutral' } | { action: 'quiet' };

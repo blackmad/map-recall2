@@ -333,7 +333,10 @@ test('round 3c cost: panes are one interior quad of the shop cell; every templat
   for (const t of RETAIL_TEMPLATES) {
     const tris = retailFrontTris({ template: t, seed: 'x', word: 'VERHAGEN', letters: 99, interior: { layer: 7, rect } }, e, 0.3, 6.3, 0, 3.6);
     const props = ['bike', 'greengrocer', 'florist', 'tobacco', 'febo', 'smartshop', 'brownBar', 'redLight'].includes(t);
-    if (!props) assert.ok(tris.length <= 140, `${t}: ${tris.length} tris`);
+    // Round t: a rack is a postcard stand (uprights, a bar, 18 cards), default since its blind: racks fronts within 220.
+    const racks = TEMPLATE_LOOKS[t].pavement === 'racks';
+    if (racks) assert.ok(tris.length <= 220, `${t}: ${tris.length} tris`);
+    else if (!props) assert.ok(tris.length <= 140, `${t}: ${tris.length} tris`);
     // Round 6: the bloemist's pavement display (two tables of pots, buckets before them) stays within 320.
     if (t === 'florist') assert.ok(tris.length <= 320, `${t}: ${tris.length} tris`);
     // Lane retail-real: tattoo and the snackbar exist only under ?retailReal (REAL_ONLY_TEMPLATES), where panes show goods.
