@@ -83,8 +83,23 @@ const restore = Object.fromEntries(Object.keys(process.env).filter(k => /^(ROW_|
 const before = await band({ ...restore }, 'before', ['public/data/front-records/row-front.json']);
 const after = await band({ ...restore, ROW_FRONT: '1', ROW_FRONT_RECORDS: path.join(stage, 'row-front.json'), BUURT_KIT: '1' }, 'after', [path.join(stage, 'row-front.json')]);
 
-const photo = await sharp({ create: { width: W, height: H, channels: 3, background: '#333' } })
-  .composite([{ input: await sharp(crop.jpeg).extract({ left: 0, top: 0, width: Math.min(W, crop.width), height: H }).png().toBuffer(), left: 0, top: 0 }]).png().toBuffer();
+// The photo is rectified member by member, each on its own front line, and set at its span on the row line (lane D round
+// 13: a bent row rectified on one chord misplaced its houses; Keizersgracht 169442, whose 55 m row turns ~20 degrees, drew
+// its stone block a house to the right from a camera 4.4 m from the first front but 8.4 m from the chord). --chord keeps
+// the single-chord rectification.
+const chord = process.argv.includes('--chord');
+const photoComps: sharp.OverlayOptions[] = [];
+if (chord) photoComps.push({ input: await sharp(crop.jpeg).extract({ left: 0, top: 0, width: Math.min(W, crop.width), height: H }).png().toBuffer(), left: 0, top: 0 });
+else for (const sp of spans) {
+  const [a, b] = lineOf(sp.id).map(p => lngLatToRd(p)), l = Math.hypot(b.x - a.x, b.y - a.y);
+  if (l < 0.5) continue;
+  const mw: Wall = { a, b, len: l, nx: (b.y - a.y) / l, ny: -(b.x - a.x) / l, mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, roadDistM: 0, facing: 0 };
+  const mc = rectifyWall(pano.img, pick, mw, lineM + 2, s);
+  if (!mc) continue;
+  const left = Math.round(Math.min(sp.x0, sp.x1) * s), w = Math.max(1, Math.round(Math.abs(sp.x1 - sp.x0) * s));
+  photoComps.push({ input: await sharp(mc.jpeg).resize(w, H, { fit: 'fill' }).png().toBuffer(), left: Math.max(0, Math.min(W - w, left)), top: 0 });
+}
+const photo = await sharp({ create: { width: W, height: H, channels: 3, background: '#333' } }).composite(photoComps).png().toBuffer();
 const svg = (w: number, h: number, body: string) => Buffer.from(`<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">${body}</svg>`);
 const grid = svg(W, H, Array.from({ length: Math.floor(H / s / 3) }, (_, i) => { const y = H - (i + 1) * 3 * s; return `<line x1="0" x2="${W}" y1="${y}" y2="${y}" stroke="#ff3355" stroke-opacity="0.4"/><text x="2" y="${y - 2}" font-size="11" fill="#ff3355" font-family="Helvetica">${(i + 1) * 3} m</text>`; }).join('')
   + spans.map(sp => `<line x1="${Math.round(Math.min(sp.x0, sp.x1) * s)}" x2="${Math.round(Math.min(sp.x0, sp.x1) * s)}" y1="0" y2="${H}" stroke="#ffcc00" stroke-opacity="0.5"/>`).join(''));
@@ -92,7 +107,7 @@ const head = 26, lab = 20, gap = 6;
 const title = (t: string) => svg(W, head, `<text x="6" y="18" font-size="15" fill="#eee" font-family="Helvetica">${t.replace(/&/g, '&amp;')}</text>`);
 const series = row.series.map((x: any) => `${x.type} ${x.fronts.length} pands, line ${x.design.corniceTopM.value} m, ${x.design.storeys.value} st, ${x.design.bays.value} bays`).join('; ');
 const blocks: Array<[string, Buffer, string[]]> = [
-  [`photo: ${panoId} (${String(record.timestamp).slice(0, 10)}), rectified on the row line, ${s.toFixed(0)} px/m`, photo, []],
+  [`photo: ${panoId} (${String(record.timestamp).slice(0, 10)}), rectified ${chord ? 'on the row line' : 'per member front'}, ${s.toFixed(0)} px/m`, photo, []],
   ['before: the game today', before.img, before.labels],
   [`after: buurt generator ${district} (ROW_FRONT=1, BUURT_KIT=1): ${series}`, after.img, after.labels],
 ];

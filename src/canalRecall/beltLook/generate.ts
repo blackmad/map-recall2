@@ -31,6 +31,7 @@ export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: strin
 /** What a published source states for a pand (the monument register via house-specs): its crown and facade year. */
 export interface BeltStated { crown?: string; year?: number; shop?: boolean; finish?: BeltTarget['finish']; storeys?: number; stoop?: boolean; roofStorey?: boolean; warehouse?: boolean; elements?: string[]; /** A published house spec states a mansard (not the register's dakkapel). */ mansard?: boolean;
   /** A published house spec's measured wall colour (palette.brick). */ specHex?: string;
+  /** Round 13: the photo reads a cornice where the pand's own read saw a gable (photoCrownOverOwnGable). */ photoCornice?: { cornice?: string; dormer: boolean; hoist: boolean };
   /** The pand's cut wall sample (lane W1 on the pinned capture), from any cut, readable or not. */ photo?: BeltPhoto;
   /** The photo crown reader's (round 10): a tall cornice (bracketed or heavy) read on the cut, and its full storeys. */
   tallCornice?: string; photoStoreys?: number; photoSouterrain?: boolean;
@@ -203,8 +204,15 @@ export const AHN_BOUNDS = { underEavesM: 1.5, overRidgeM: 0.5, gableMinRiseM: 2 
 export function ahnCorniceTop(a: AhnFront | undefined, pand: { eavesM: number | null; heightM?: number | null; ridgeM: number | null }): number | null {
   if (!a) return null;
   const lo = Math.min(pand.eavesM ?? Infinity, pand.heightM ?? Infinity) - AHN_BOUNDS.underEavesM, hi = Math.max(pand.ridgeM ?? -Infinity, pand.heightM ?? -Infinity) + AHN_BOUNDS.overRidgeM;
-  return Number.isFinite(lo) && Number.isFinite(hi) && a.p90 >= lo && a.p90 <= hi && a.p90 >= 3 ? a.p90 : null;
+  if (!(Number.isFinite(lo) && Number.isFinite(hi) && a.p90 >= lo && a.p90 >= 3)) return null;
+  if (a.p90 <= hi) return a.p90;
+  // Round 13 (Keizersgracht 172277, a pakhuis whose cornice the photo and AHN put at 19.3 m, drawn 16.31 m on 3DBAG's
+  // 16.31 height and 17.4 ridge): a tight band (p90 within AHN_TIGHT_BAND_M of the p50, enough cells) is the front's own
+  // wall top, and 3DBAG's roof the lower one behind it; a loose band over the roof is a neighbour, a tree or a chimney.
+  return a.n >= AHN_TIGHT_BAND.minCells && a.p90 - a.p50 <= AHN_TIGHT_BAND.spreadM && a.p90 <= hi + AHN_TIGHT_BAND.maxOverRoofM ? a.p90 : null;
 }
+/** A tight AHN band (round 13): the p90 within spreadM of the p50 over at least minCells, at most maxOverRoofM over 3DBAG's roof. */
+export const AHN_TIGHT_BAND = { spreadM: 1, minCells: 20, maxOverRoofM: 4 } as const;
 /**
  * A tall cornice's top from AHN (TALL_CORNICES): the band's max (round 10: Keizersgracht 172210, an attic frieze under a
  * consoled cornice whose top AHN measures at 19.19 m, drawn at the band's p90 18.01 m). The cornice projects over the street in a strip a metre
@@ -256,6 +264,9 @@ export function beltRowInput(row: GenRow, reads: ReadonlyMap<string, BeltRead>, 
       // 172271, register plaster, read not-visible, drawn purple-brown brick from its neighbours).
       const rf = read as { finish?: string; pale?: boolean };
       if ((t.finish === 'plaster' || t.finish === 'stone') && (!rf.finish || rf.finish === 'not-visible')) { rf.finish = t.finish === 'plaster' ? 'stucco' : 'stone'; rf.pale = true; }
+      // Round 13 (Keizersgracht 178665: a hoist dormer behind a bracketed cornice, read from across the canal as a point
+      // gable): the photo's cornice over the own read's gable, with the dormer the gable was.
+      if (GABLED_CROWNS.has(String(read.crown)) && sd?.photoCornice) read = photoCorniceRead(read, sd.photoCornice);
       // Round 12 (Keizersgracht 176021, a neck over four storeys read as three and drawn 2 m low): under a look's gable foot
       // pitch, an own gable takes the photo crown reader's storey count (the AHN band's p50 giving it a plausible pitch).
       if (look.gableFootPitchM && GABLED_CROWNS.has(String(read.crown)) && sd?.photoStoreys) {
@@ -554,4 +565,48 @@ export function paleBlockWalls(records: RowFrontRecord[], blocks: readonly (read
     }
   }
   return changed;
+}
+
+/**
+ * Round 13: a pand whose own read saw a gable where the photo reads a cornice: two crown reads on two captures merged at
+ * PHOTO_CROWN_MIN (mergeCrownReads), or the gable-or-dormer check calling the peak a dormer at that confidence with no
+ * confident gable call. Three belt fronts: Keizersgracht 178665 and 172167 (point gables that are dormers), 178768.
+ */
+export function photoCorniceOf(r: { crown?: string; cornice?: string; cc?: number; first?: unknown; second?: unknown; dormerCheck?: Array<{ top: string; hoist: string; conf: number }> } | undefined): BeltStated['photoCornice'] | undefined {
+  if (!r) return undefined;
+  const dc = r.dormerCheck ?? [], dormers = dc.filter(d => d.top === 'dormer' && d.conf >= PHOTO_CROWN_MIN);
+  const dormer = dormers.length > 0 && !dc.some(d => d.top === 'gable' && d.conf >= PHOTO_CROWN_MIN);
+  const cornice = !!r.second && (r.cc ?? 0) >= PHOTO_CROWN_MIN && (r.crown === 'cornice' || r.crown === 'flat');
+  if (!dormer && !cornice) return undefined;
+  return { ...(cornice && r.cornice && r.cornice !== 'none' && r.cornice !== 'not-visible' ? { cornice: r.cornice } : {}), dormer, hoist: dormers.some(d => d.hoist === 'y') };
+}
+/** The own read with the photo's cornice for its gable, and one dormer (with its hoist) where the check read one. */
+export function photoCorniceRead(a: DescriberAnswer, pc: NonNullable<BeltStated['photoCornice']>): DescriberAnswer {
+  const ar = a as { crown?: string; cornice?: string; storeyParts?: { roof?: string }; dormers?: unknown; gaps?: Array<{ component?: string; what: string }> };
+  ar.crown = 'cornice';
+  ar.cornice = pc.cornice ?? (ar.cornice && ar.cornice !== 'none' ? ar.cornice : 'simple');
+  if (pc.dormer) {
+    // The solve reads a hoist only from a gap sentence (row/solve.ts readDormers), so the dormer is stated as one.
+    delete ar.dormers;
+    ar.gaps = [...(ar.gaps ?? []).filter(g => !/dormer/i.test(g.what)), { component: 'dormer', what: `one gabled dormer${pc.hoist ? ' with a hoist beam' : ''} behind the cornice (photo: lane D round 13)` }];
+    if (ar.storeyParts) ar.storeyParts.roof = 'dormers';
+  }
+  return a;
+}
+/**
+ * Round 13 (held-out round 12, Keizersgracht 171415 and 171417: street doors floating over the basement windows): a raised
+ * door over basement windows with no stoop read draws no steps (rowSeries stoopOf, `steps: false`, Weteringschans
+ * 168096). On the belt a raised door is reached by a stoop, so the flight is drawn. Returns the number of fronts changed.
+ */
+export function beltRaisedDoorStoops(records: RowFrontRecord[]): number {
+  let n = 0;
+  for (const r of records) {
+    const st = r.series?.stoop;
+    if (!st || st.steps !== false) continue;
+    const { steps: _none, ...rest } = st;
+    r.series = { ...r.series!, stoop: rest };
+    r.sources = { ...r.sources, stoop: `${BELT_LOOK_REF}: a raised door over basement windows is reached by a stoop (round 13)` } as typeof r.sources;
+    n++;
+  }
+  return n;
 }

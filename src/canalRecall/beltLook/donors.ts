@@ -128,13 +128,18 @@ export interface LookDistrict {
  *  gives 3.40 on the belt (n 239), too tall for a gable house's storeys (Keizersgracht 176021: four storeys under an
  *  11.5 m foot on the 2025 pano). */
 export const BELT_GABLE_FOOT_PITCH_M = 3.0;
+/** The belt's souterrain share under a gable's foot (round 13), measured as the pitch: the gabled confident photo reads' AHN
+ *  band p50 over their storeys, fronts with a souterrain (n 105) against those without (n 102, median 3.36 m a storey) match
+ *  at 0.30 of a storey (cornice fronts' p90: 0.25, n 63 / 160), not SOUTERRAIN_SHARE's 0.58 (the 3DBAG height fit's share).
+ *  Centrum's looks set 0 (Prinsengracht 179167, Boomstraat 172663). */
+export const BELT_GABLE_FOOT_SOUTERRAIN_SHARE = 0.3;
 /** The belt sets flatTopNoGable (round 9: 0 belt fronts change today, a guard for Keizersgracht 171508's kind). It leaves
  *  measuredRoofStorey off: it would add a roof storey to 160 belt cornice fronts, and an opus read of 15 of their cuts saw
  *  a dormer on 5, a bare slope on 2 and nothing over the cornice on 8 (a ridge behind a belt cornice is not a dormer). */
 /** Round 12 (lane D, Centrum round 6's two rules on the belt): the measured roof storey now stands only where the photo
  *  crown reader sees a roof in view (photoRoof: mansard or pitched eaves at PHOTO_ROOF_MIN), which answers the 160-front
  *  objection above; a gable over a photo storey count stands its foot at BELT_GABLE_FOOT_PITCH_M a storey. */
-export const BELT_LOOK: LookDistrict = { id: 'belt', canals: BELT_CANALS, pitchM: PITCH_M, foreignDonor: 0, flatTopNoGable: true, measuredRoofStorey: true, roofStoreyNeedsPhoto: true, gableFootPitchM: BELT_GABLE_FOOT_PITCH_M };
+export const BELT_LOOK: LookDistrict = { id: 'belt', canals: BELT_CANALS, pitchM: PITCH_M, foreignDonor: 0, flatTopNoGable: true, measuredRoofStorey: true, roofStoreyNeedsPhoto: true, gableFootPitchM: BELT_GABLE_FOOT_PITCH_M, gableFootSouterrainShare: BELT_GABLE_FOOT_SOUTERRAIN_SHARE };
 /** A warehouse's floor pitch (m): pakhuis floors are low (2.4-3.0 m in the belt's read warehouses), so the eaves hold more storeys. */
 export const WAREHOUSE_PITCH_M = 2.7;
 /** Gap sentences naming a house's own ornament, which a donor does not lend: balconies, porches, aedicules, rustication,
