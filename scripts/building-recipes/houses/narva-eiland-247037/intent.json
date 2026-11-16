@@ -1,0 +1,94 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "narva-eiland-247037",
+ "pandId": "0363100012247037",
+ "address": "Narva-eiland, Houthavens: 2018 block of four storeys and a set-back fifth, a row of separately designed fronts on one BAG pand (yellow brick with tall narrow windows, dark grey brick, red brick, yellow brick with wide windows; dark brick with pale bands; red brick with patterned brick panels)",
+ "sources": [
+  {
+   "id": "pano-2018-06-21-w01-320",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000802_pano_0000_000885/",
+   "image": "source-data://pand-reference-walls/0363100012247037/w01-320.jpg",
+   "sha256": "db4552164afe2876140e153fb87ff621a737caadc8643dac7605870761f8e800",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-06-21-w05-320",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000802_pano_0000_000888/",
+   "image": "source-data://pand-reference-walls/0363100012247037/w05-320.jpg",
+   "sha256": "cb390be4948d35fd269acec8212e02c2214be5102e18d1b85d3375873dc81921",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-06-21-w06-50",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000802_pano_0000_000877/",
+   "image": "source-data://pand-reference-walls/0363100012247037/w06-50.jpg",
+   "sha256": "49bfc96782f19a19f03a17b845159bb5d0315bebb4fd24d96e13be0df368fca7",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-06-21-w03-254",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000802_pano_0000_000896/",
+   "image": "source-data://pand-reference-walls/0363100012247037/w03-254.jpg",
+   "sha256": "418e0c7e0155dab67994775df8705ce5ce034d0f46893544c2c8a3cf592af6ea",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    39
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    60
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    72
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    80,
+    82
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    36
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    12,
+    22
+   ],
+   "system": "brick-bay-grid"
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#5a4a44",
+  "frame": "#d8d4c8",
+  "door": "#3a3634"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": []
+}

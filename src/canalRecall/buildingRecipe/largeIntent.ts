@@ -14,7 +14,7 @@ import {claddingProblems} from './claddingIntent.ts';
 import {wallFamilyProblems} from './wallFamily.ts';
 import {FLOOR_BAND_LIMITS} from '../blockBuilding/components.ts';
 import {blankWallsProblems} from './otherWalls.ts';
-import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, OTHER_WINDOW_GRID, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
+import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, LARGE_HOUSE_DRESS_KEYS, OTHER_WINDOW_GRID, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
 import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/systems.ts';
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
@@ -635,7 +635,13 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
         const total = hs.reduce((a, h) => a + (typeof h?.w === 'number' ? h.w : 0), 0);
         hs.forEach((h, k) => {
           const hat = `${at}.houses[${k}]`;
-          for (const key of Object.keys(h ?? {})) if (!['w', 'bays', 'storeys', 'crown', 'brick', 'windowShape', 'ownEaves'].includes(key)) problems.push(`${hat}.${key}: unknown field (w, bays, storeys, crown, brick, windowShape, ownEaves)`);
+          for (const key of Object.keys(h ?? {})) if (!['w', 'bays', 'storeys', 'crown', 'brick', 'windowShape', 'ownEaves', 'frame', 'dress'].includes(key)) problems.push(`${hat}.${key}: unknown field (w, bays, storeys, crown, brick, windowShape, ownEaves, frame, dress)`);
+          if (h?.frame !== undefined) colour(h.frame, `${hat}.frame`);
+          if (h?.dress !== undefined) {
+            const d = h.dress as Record<string, unknown>;
+            if (d && typeof d === 'object' && !Array.isArray(d)) for (const key of Object.keys(d)) if (!(LARGE_HOUSE_DRESS_KEYS as readonly string[]).includes(key)) problems.push(`${hat}.dress.${key}: not per house (one of ${LARGE_HOUSE_DRESS_KEYS.join(', ')}; quoins, oriels, voussoirs and corbels belong to the group)`);
+            problems.push(...stoneDressingsProblems(h.dress, hat, typeof h.storeys === 'number' ? h.storeys : typeof w.storeys === 'number' ? w.storeys : undefined).map(m => m.replace(`${hat}.dressings`, `${hat}.dress`)));
+          }
           if (typeof h?.w !== 'number' || !(h.w > 0) || (total > 0 && h.w / total < 0.02)) problems.push(`${hat}.w: a positive share of the panel, at least 2 % of the row`);
           if (h?.bays !== undefined) count(h.bays, `${hat}.bays`, 1, 30);
           if (h?.storeys !== undefined) count(h.storeys, `${hat}.storeys`, 1, 12);

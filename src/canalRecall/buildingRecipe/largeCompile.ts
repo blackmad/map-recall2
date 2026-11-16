@@ -180,6 +180,12 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   if (houses) for (const h of houses) {
     const outside: [number, number][] = [[p.uMin - 1, h.u0], [h.u1, p.uMax + 1]];
     if (h.crown === 'cornice' && !noBands && h.eavesM - p.vMin > 3 && drawBand(c, s.stone, h.eavesM - 0.45, h.eavesM - 0.02, CORNICE_OUT, outside)) counts.cornices++;
+    // the house's own dressings (intent `houses[].dress`), clipped to its span, under its own eaves
+    if (h.dress) {
+      const own = info.cells.filter(x => (x.u0 + x.u1) / 2 > h.u0 && (x.u0 + x.u1) / 2 < h.u1), topK = Math.min(underCornice, h.eavesM - (h.crown === 'cornice' && !noBands ? 0.45 : 0.05));
+      const k = drawDressings(c, {levels: h.lines, cells: own}, h.dress, {stone: h.dress.slot, wall: h.slot, frame: s.frame, glass: s.glass, iron: s.door}, true, topK, [h.u0, h.u1]);
+      if (k) counts.dressings = (counts.dressings ?? 0) + k;
+    }
     const gt = h.lines[1] ?? p.vMax;
     if (g.ground === 'plinth-shopfronts' && gt - p.vMin > 3 && drawBand(c, s.stone, gt - 0.62, gt - 0.12, 0.1, [...outside, ...(entrance && g.entrance!.storeys > 1 ? skip : [])])) counts.fascias++;
   }
