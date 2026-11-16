@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T17:37:18.216Z",
+ "generatedAt": "2026-11-16T01:23:41.994Z",
  "method": {
   "detect": {
    "signature": "src/canalRecall/repeatedBuildings/signature.ts: BAG ring in RD New, collinear-simplified (0.15 m), centroid + MRR long axis frame; symmetric Hausdorff over 4 poses (8 when square-ish), mirrored copies match",
@@ -28,12 +28,12 @@
  },
  "summary": {
   "candidatesInDetector": 3110,
-  "reported": 50,
-  "frontChecked": 20,
-  "exactGroups": 7,
-  "copiesFrontChecked": 322,
-  "copiesInAcceptedFamilies": 256,
-  "copiesFootprintMatchFrontDiffers": 90
+  "reported": 58,
+  "frontChecked": 30,
+  "exactGroups": 12,
+  "copiesFrontChecked": 549,
+  "copiesInFrontFamiliesExactOrNear": 473,
+  "copiesFootprintMatchFrontDiffers": 115
  },
  "groups": [
   {
@@ -3578,9 +3578,64 @@
    "names": [],
    "detectorConfidence": 0.57,
    "samplePanorama": null,
-   "frontCheck": null,
-   "verdict": null,
-   "exactFamilies": [],
+   "frontCheck": {
+    "checked": 13,
+    "read": 12,
+    "autoFamilies": [
+     2,
+     1,
+     1,
+     1,
+     1,
+     2,
+     1,
+     1,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check-priors/pre-war-house-1913-130245.jpg"
+   },
+   "verdict": {
+    "verdict": "near",
+    "confidence": "medium",
+    "why": "Spaarndammerstraat: one white-gable design repeats, the rest are related banded brick blocks with stacked balconies that vary in bays and crown.",
+    "notInDesign": [],
+    "unusable": [
+     "066154",
+     "130245"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "white-oculus-gable",
+     "front": "4-5 storeys dark brown brick, white rendered curved top gable with oculus, stacked iron balconies either side, central double door",
+     "copies": 5,
+     "autoFamiliesSpanned": 4,
+     "pands": [
+      "0363100012144503",
+      "0363100012102111",
+      "0363100012151090",
+      "0363100012090137",
+      "0363100012074397"
+     ],
+     "exposure": 6835
+    },
+    {
+     "name": "banded-balcony-block (near only)",
+     "front": "4 storeys brown/red brick with white window heads, stacked small balconies, flat cornice; bays and ground floor vary",
+     "copies": 6,
+     "autoFamiliesSpanned": 6,
+     "pands": [
+      "0363100012236935",
+      "0363100012064867",
+      "0363100012154331",
+      "0363100012107171",
+      "0363100012135409",
+      "0363100012134155"
+     ],
+     "exposure": 10065
+    }
+   ],
    "memberPands": [
     "0363100012144503",
     "0363100012090137",
@@ -3931,9 +3986,95 @@
    "names": [],
    "detectorConfidence": 0.5,
    "samplePanorama": null,
-   "frontCheck": null,
-   "verdict": null,
-   "exactFamilies": [],
+   "frontCheck": {
+    "checked": 37,
+    "read": 34,
+    "autoFamilies": [
+     6,
+     8,
+     4,
+     9,
+     3,
+     2,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check-priors/kiosk-utility-1997-176709.jpg"
+   },
+   "verdict": {
+    "verdict": "near",
+    "confidence": "high",
+    "why": "Units under the railway viaduct at Tussen de Bogen: two repeat units (brick arch, concrete bridge bay); each is exact on its own.",
+    "notInDesign": [],
+    "unusable": [
+     "173125"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "brick-viaduct-arch",
+     "front": "19th-c brick viaduct arch with decorative brick frieze and concrete parapet above, segmental arch filled with glazed shopfront",
+     "copies": 20,
+     "autoFamiliesSpanned": 6,
+     "pands": [
+      "0363100012176705",
+      "0363100012176810",
+      "0363100012176291",
+      "0363100012176800",
+      "0363100012176720",
+      "0363100012177032",
+      "0363100012176717",
+      "0363100012171447",
+      "0363100012167827",
+      "0363100012176293",
+      "0363100012176292",
+      "0363100012176287",
+      "0363100012167836",
+      "0363100012176801",
+      "0363100012176811",
+      "0363100012177033",
+      "0363100012176718",
+      "0363100012176286",
+      "0363100012176709",
+      "0363100012176802"
+     ],
+     "exposure": 9535
+    },
+    {
+     "name": "concrete-bridge-bay",
+     "front": "concrete deck band over canal, glazed unit behind steel railings with round concrete columns, concrete base at water",
+     "copies": 13,
+     "autoFamiliesSpanned": 5,
+     "pands": [
+      "0363100012167833",
+      "0363100012176707",
+      "0363100012176704",
+      "0363100012176703",
+      "0363100012176708",
+      "0363100012171356",
+      "0363100012171448",
+      "0363100012171361",
+      "0363100012176706",
+      "0363100012177028",
+      "0363100012167835",
+      "0363100012176719",
+      "0363100012177046"
+     ],
+     "exposure": 6180
+    },
+    {
+     "name": "concrete-band-land-side (near)",
+     "front": "concrete deck band over a glazed/closed unit on land",
+     "copies": 3,
+     "autoFamiliesSpanned": 2,
+     "pands": [
+      "0363100012176289",
+      "0363100012176290",
+      "0363100012176288"
+     ],
+     "exposure": 1255
+    }
+   ],
    "memberPands": [
     "0363100012167827",
     "0363100012176720",
@@ -4586,6 +4727,1308 @@
     "0362100001073470",
     "0362100001073473",
     "0362100001074212"
+   ]
+  },
+  {
+   "rank": 55,
+   "group": "pre-war-house-1902-166084",
+   "copies": 20,
+   "exposure": 15035,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1902,
+    1906
+   ],
+   "footprint": {
+    "L": 13.7,
+    "W": 6.1,
+    "height": 16.8,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.89,
+    "medianShapeM": 0.34,
+    "heightM": 1.6,
+    "years": 4,
+    "mirroredShare": 0.4,
+    "spanKm": 0.37
+   },
+   "streets": [
+    {
+     "name": "Da Costakade",
+     "n": 9
+    },
+    {
+     "name": "Da Costastraat",
+     "n": 6
+    },
+    {
+     "name": "De Clercqstraat",
+     "n": 2
+    },
+    {
+     "name": "Allard Piersonstraat",
+     "n": 1
+    },
+    {
+     "name": "Bilderdijkstraat",
+     "n": 1
+    }
+   ],
+   "architects": [
+    "J.H. Lesmeister and J.B. Sellmeijer"
+   ],
+   "names": [],
+   "detectorConfidence": 0.4,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 16,
+    "read": 16,
+    "autoFamilies": [
+     2,
+     1,
+     1,
+     3,
+     5,
+     1,
+     2,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check-priors/pre-war-house-1902-166084.jpg"
+   },
+   "verdict": {
+    "verdict": "near-or-false",
+    "confidence": "medium",
+    "why": "Da Costakade blocks share a portiek style; other streets differ.",
+    "notInDesign": [
+     "157989",
+     "166189",
+     "166551",
+     "145150",
+     "162614",
+     "156131",
+     "153436",
+     "160415",
+     "161223"
+    ],
+    "unusable": [
+     "159131",
+     "163843"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "dacosta-portiek (near)",
+     "front": "4 storeys red-brown brick, wide segmental windows, dark arched open-stair portiek entrances",
+     "copies": 5,
+     "autoFamiliesSpanned": 3,
+     "pands": [
+      "0363100012157742",
+      "0363100012166084",
+      "0363100012164129",
+      "0363100012164050",
+      "0363100012159032"
+     ],
+     "exposure": 4875
+    }
+   ],
+   "memberPands": [
+    "0363100012157989",
+    "0363100012166189",
+    "0363100012160415",
+    "0363100012157742",
+    "0363100012159032",
+    "0363100012159131",
+    "0363100012161223",
+    "0363100012163843",
+    "0363100012164050",
+    "0363100012164129",
+    "0363100012166084",
+    "0363100012153436",
+    "0363100012156131",
+    "0363100012162614",
+    "0363100012166551",
+    "0363100012145150",
+    "0363100012067323",
+    "0363100012152051",
+    "0363100012065246",
+    "0363100012129233"
+   ]
+  },
+  {
+   "rank": 58,
+   "group": "pre-war-house-1924-094642",
+   "copies": 64,
+   "exposure": 14785,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1924,
+    1926
+   ],
+   "footprint": {
+    "L": 10.1,
+    "W": 6,
+    "height": 12.6,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.29,
+    "medianShapeM": 0.12,
+    "heightM": 1.4,
+    "years": 2,
+    "mirroredShare": 0.48,
+    "spanKm": 0.33
+   },
+   "streets": [
+    {
+     "name": "Van Spilbergenstraat",
+     "n": 35
+    },
+    {
+     "name": "Hudsonstraat",
+     "n": 22
+    },
+    {
+     "name": "Magalhaensplein",
+     "n": 5
+    },
+    {
+     "name": "Cabotstraat",
+     "n": 2
+    }
+   ],
+   "architects": [
+    "G.J. Rutgers"
+   ],
+   "names": [],
+   "detectorConfidence": 0.45,
+   "samplePanorama": null,
+   "frontCheck": {
+    "checked": 40,
+    "read": 39,
+    "autoFamilies": [
+     14,
+     10,
+     5,
+     1,
+     1,
+     1,
+     2,
+     1,
+     1,
+     2,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check-priors/pre-war-house-1924-094642.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "high",
+    "why": "Van Spilbergenstraat block repeats; corner pieces have rounded balcony stacks.",
+    "notInDesign": [
+     "139999",
+     "150381",
+     "082002",
+     "077001"
+    ],
+    "unusable": [
+     "117827"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "spilbergen-portiek",
+     "front": "4 storeys brown brick, cream band at the top floor/eave, paired white small-pane windows, central portiek with canopy over double doors, flat roof",
+     "copies": 31,
+     "autoFamiliesSpanned": 10,
+     "pands": [
+      "0363100012127102",
+      "0363100012130588",
+      "0363100012122190",
+      "0363100012085240",
+      "0363100012143514",
+      "0363100012146024",
+      "0363100012068318",
+      "0363100012092719",
+      "0363100012106934",
+      "0363100012119560",
+      "0363100012123841",
+      "0363100012132328",
+      "0363100012131612",
+      "0363100012092331",
+      "0363100012067907",
+      "0363100012064600",
+      "0363100012106526",
+      "0363100012136989",
+      "0363100012127461",
+      "0363100012094642",
+      "0363100012151494",
+      "0363100012062964",
+      "0363100012116505",
+      "0363100012119673",
+      "0363100012092273",
+      "0363100012130510",
+      "0363100012101703",
+      "0363100012105626",
+      "0363100012113659",
+      "0363100012151219",
+      "0363100012078352"
+     ],
+     "exposure": 11285
+    },
+    {
+     "name": "rounded-balcony-corner (near)",
+     "front": "same block with a rounded corner balcony/erker stack",
+     "copies": 4,
+     "autoFamiliesSpanned": 2,
+     "pands": [
+      "0363100012091112",
+      "0363100012063544",
+      "0363100012143907",
+      "0363100012088918"
+     ],
+     "exposure": 1185
+    }
+   ],
+   "memberPands": [
+    "0363100012127102",
+    "0363100012130588",
+    "0363100012132328",
+    "0363100012131612",
+    "0363100012092331",
+    "0363100012094642",
+    "0363100012101703",
+    "0363100012105626",
+    "0363100012113659",
+    "0363100012116505",
+    "0363100012122190",
+    "0363100012151219",
+    "0363100012091112",
+    "0363100012067907",
+    "0363100012078352",
+    "0363100012085240",
+    "0363100012092273",
+    "0363100012143514",
+    "0363100012146024",
+    "0363100012151494",
+    "0363100012064600",
+    "0363100012068318",
+    "0363100012077001",
+    "0363100012106526",
+    "0363100012136989",
+    "0363100012062964",
+    "0363100012092719",
+    "0363100012106934",
+    "0363100012119560",
+    "0363100012119673",
+    "0363100012123841",
+    "0363100012127461",
+    "0363100012130510",
+    "0363100012088918",
+    "0363100012143907",
+    "0363100012117827",
+    "0363100012139999",
+    "0363100012063544",
+    "0363100012082002",
+    "0363100012150381",
+    "0363100012133771",
+    "0363100012073280",
+    "0363100012105695",
+    "0363100012147020",
+    "0363100012069211",
+    "0363100012084528",
+    "0363100012154875",
+    "0363100012067253",
+    "0363100012142114",
+    "0363100012073900",
+    "0363100012119691",
+    "0363100012067877",
+    "0363100012125122",
+    "0363100012127791",
+    "0363100012076090",
+    "0363100012116161",
+    "0363100012073788",
+    "0363100012062321",
+    "0363100012075918",
+    "0363100012104913",
+    "0363100012141439",
+    "0363100012096929",
+    "0363100012070213",
+    "0363100012075364"
+   ]
+  },
+  {
+   "rank": 63,
+   "group": "kiosk-utility-1989-064512",
+   "copies": 39,
+   "exposure": 14025,
+   "archetypeGuess": "kiosk / utility",
+   "years": [
+    1989,
+    1989
+   ],
+   "footprint": {
+    "L": 10.8,
+    "W": 4.5,
+    "height": 5.9,
+    "roof": 1,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.2,
+    "medianShapeM": 0.12,
+    "heightM": 0.3,
+    "years": 0,
+    "mirroredShare": 0.31,
+    "spanKm": 0.2
+   },
+   "streets": [
+    {
+     "name": "Floraweg",
+     "n": 39
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.6,
+   "frontCheck": {
+    "checked": 39,
+    "read": 33,
+    "autoFamilies": [
+     5,
+     16,
+     3,
+     1,
+     4,
+     1,
+     2,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check-priors/kiosk-utility-1989-064512.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "high",
+    "why": "Not kiosks: a 1989 terrace of 2-storey flat-roofed patio houses. All usable tiles are one design seen from three sides; gate/door colour is paint.",
+    "notInDesign": [],
+    "unusable": [
+     "129275",
+     "086977",
+     "133063"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "patio-wall-face",
+     "front": "2 storeys beige-grey brick, flat roof, ribbon of small brown-framed windows upstairs, ground floor hidden behind a full-height brick patio wall with a wooden gate",
+     "copies": 26,
+     "autoFamiliesSpanned": 6,
+     "pands": [
+      "0363100012114684",
+      "0363100012069108",
+      "0363100012078137",
+      "0363100012141736",
+      "0363100012155163",
+      "0363100012067512",
+      "0363100012075542",
+      "0363100012075544",
+      "0363100012088633",
+      "0363100012112608",
+      "0363100012117798",
+      "0363100012147185",
+      "0363100012110354",
+      "0363100012155052",
+      "0363100012084247",
+      "0363100012093143",
+      "0363100012068539",
+      "0363100012107619",
+      "0363100012142414",
+      "0363100012075516",
+      "0363100012087978",
+      "0363100012069546",
+      "0363100012079381",
+      "0363100012075812",
+      "0363100012082590",
+      "0363100012085346"
+     ],
+     "exposure": 9400
+    },
+    {
+     "name": "alley-face (same houses)",
+     "front": "same block from the footpath side: glazed ground floor with yellow frames, upper window row, beige brick",
+     "copies": 6,
+     "autoFamiliesSpanned": 4,
+     "pands": [
+      "0363100012063218",
+      "0363100012085242",
+      "0363100012124761",
+      "0363100012075674",
+      "0363100012077008",
+      "0363100012137401"
+     ],
+     "exposure": 2135
+    },
+    {
+     "name": "lawn-face (same houses)",
+     "front": "same block from the green: 2 storeys, window rows both floors behind a hedge",
+     "copies": 4,
+     "autoFamiliesSpanned": 0,
+     "pands": [
+      "0363100012064512",
+      "0363100012139318",
+      "0363100012078498",
+      "0363100012107190"
+     ],
+     "exposure": 1380
+    }
+   ],
+   "memberPands": [
+    "0363100012093143",
+    "0363100012114684",
+    "0363100012129275",
+    "0363100012068539",
+    "0363100012069108",
+    "0363100012078137",
+    "0363100012086977",
+    "0363100012087978",
+    "0363100012107619",
+    "0363100012141736",
+    "0363100012064512",
+    "0363100012085346",
+    "0363100012142414",
+    "0363100012155163",
+    "0363100012063218",
+    "0363100012067512",
+    "0363100012069546",
+    "0363100012075516",
+    "0363100012075542",
+    "0363100012075544",
+    "0363100012075674",
+    "0363100012075812",
+    "0363100012077008",
+    "0363100012079381",
+    "0363100012085242",
+    "0363100012088633",
+    "0363100012112608",
+    "0363100012117798",
+    "0363100012124761",
+    "0363100012133063",
+    "0363100012139318",
+    "0363100012147185",
+    "0363100012110354",
+    "0363100012137401",
+    "0363100012155052",
+    "0363100012084247",
+    "0363100012078498",
+    "0363100012082590",
+    "0363100012107190"
+   ]
+  },
+  {
+   "rank": 70,
+   "group": "pre-war-house-1924-143349",
+   "copies": 54,
+   "exposure": 12875,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1924,
+    1927
+   ],
+   "footprint": {
+    "L": 11.5,
+    "W": 6,
+    "height": 12.6,
+    "roof": 3,
+    "complexity": 0
+   },
+   "spread": {
+    "maxShapeM": 0.72,
+    "medianShapeM": 0.12,
+    "heightM": 0.6,
+    "years": 3,
+    "mirroredShare": 0.35,
+    "spanKm": 0.27
+   },
+   "streets": [
+    {
+     "name": "Hoofdweg",
+     "n": 51
+    },
+    {
+     "name": "Van Spilbergenstraat",
+     "n": 1
+    },
+    {
+     "name": "Hudsonstraat",
+     "n": 1
+    },
+    {
+     "name": "Magalhaensplein",
+     "n": 1
+    }
+   ],
+   "architects": [
+    "G.J. Rutgers",
+    "P.L. Kramer"
+   ],
+   "names": [
+    "Woonblokken Hoofdweg"
+   ],
+   "detectorConfidence": 0.45,
+   "frontCheck": {
+    "checked": 40,
+    "read": 31,
+    "autoFamilies": [
+     12,
+     4,
+     7,
+     1,
+     1,
+     1,
+     2,
+     1,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check-priors/pre-war-house-1924-143349.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "medium",
+    "why": "Hoofdweg block repeats; corners and shop corners differ.",
+    "notInDesign": [
+     "102897",
+     "127120"
+    ],
+    "unusable": []
+   },
+   "exactFamilies": [
+    {
+     "name": "hoofdweg-band-block",
+     "front": "4 storeys brown brick, cream/white horizontal bands linking window strips, flat roof, canopy over grouped portiek doors",
+     "copies": 32,
+     "autoFamiliesSpanned": 10,
+     "pands": [
+      "0363100012149968",
+      "0363100012152238",
+      "0363100012116031",
+      "0363100012113056",
+      "0363100012112144",
+      "0363100012151840",
+      "0363100012105796",
+      "0363100012113030",
+      "0363100012106910",
+      "0363100012068469",
+      "0363100012094853",
+      "0363100012116231",
+      "0363100012137769",
+      "0363100012140911",
+      "0363100012108929",
+      "0363100012125153",
+      "0363100012149764",
+      "0363100012103036",
+      "0363100012120972",
+      "0363100012077778",
+      "0363100012080269",
+      "0363100012118467",
+      "0363100012135918",
+      "0363100012125057",
+      "0363100012149415",
+      "0363100012079134",
+      "0363100012109115",
+      "0363100012074028",
+      "0363100012077198",
+      "0363100012105934",
+      "0363100012143551",
+      "0363100012103870"
+     ],
+     "exposure": 8385
+    },
+    {
+     "name": "rounded-corner/shop-corner (near)",
+     "front": "same block's corner with rounded balcony stack or a white shop plinth",
+     "copies": 6,
+     "autoFamiliesSpanned": 3,
+     "pands": [
+      "0363100012117153",
+      "0363100012107030",
+      "0363100012151112",
+      "0363100012131699",
+      "0363100012083895",
+      "0363100012064219"
+     ],
+     "exposure": 1710
+    }
+   ],
+   "memberPands": [
+    "0363100012117153",
+    "0363100012149415",
+    "0363100012108929",
+    "0363100012068469",
+    "0363100012079134",
+    "0363100012120972",
+    "0363100012149968",
+    "0363100012152238",
+    "0363100012131699",
+    "0363100012107030",
+    "0363100012077778",
+    "0363100012080269",
+    "0363100012103036",
+    "0363100012109115",
+    "0363100012116031",
+    "0363100012118467",
+    "0363100012125153",
+    "0363100012151112",
+    "0363100012094853",
+    "0363100012113056",
+    "0363100012064219",
+    "0363100012112144",
+    "0363100012102897",
+    "0363100012074028",
+    "0363100012116231",
+    "0363100012077198",
+    "0363100012127120",
+    "0363100012135918",
+    "0363100012137769",
+    "0363100012151840",
+    "0363100012105796",
+    "0363100012113030",
+    "0363100012125057",
+    "0363100012140911",
+    "0363100012083895",
+    "0363100012105934",
+    "0363100012106910",
+    "0363100012143551",
+    "0363100012103870",
+    "0363100012149764",
+    "0363100012106135",
+    "0363100012142382",
+    "0363100012064041",
+    "0363100012092194",
+    "0363100012106931",
+    "0363100012136256",
+    "0363100012143349",
+    "0363100012146432",
+    "0363100012079281",
+    "0363100012094970",
+    "0363100012092608",
+    "0363100012067193",
+    "0363100012127047",
+    "0363100012111509"
+   ]
+  },
+  {
+   "rank": 121,
+   "group": "pre-war-house-1927-117282",
+   "copies": 98,
+   "exposure": 10015,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1927,
+    1927
+   ],
+   "footprint": {
+    "L": 7.4,
+    "W": 4.6,
+    "height": 8,
+    "roof": 3,
+    "complexity": 0.22
+   },
+   "spread": {
+    "maxShapeM": 0.55,
+    "medianShapeM": 0.12,
+    "heightM": 0.6,
+    "years": 0,
+    "mirroredShare": 0.52,
+    "spanKm": 0.49
+   },
+   "streets": [
+    {
+     "name": "Wijdenesserstraat",
+     "n": 16
+    },
+    {
+     "name": "Avenhornstraat",
+     "n": 16
+    },
+    {
+     "name": "Edammerstraat",
+     "n": 14
+    },
+    {
+     "name": "Wognumerstraat",
+     "n": 12
+    },
+    {
+     "name": "Scharwouderstraat",
+     "n": 8
+    }
+   ],
+   "architects": [
+    "J.H. Mulder jr."
+   ],
+   "names": [],
+   "detectorConfidence": 0.7,
+   "frontCheck": {
+    "checked": 17,
+    "read": 12,
+    "autoFamilies": [
+     3,
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check-priors/pre-war-house-1927-117282.jpg"
+   },
+   "verdict": {
+    "verdict": "near",
+    "confidence": "low",
+    "why": "Garden-village houses, mostly shot too close or behind trees.",
+    "notInDesign": [
+     "089292",
+     "111781"
+    ],
+    "unusable": [
+     "132962",
+     "081783",
+     "116435",
+     "117741",
+     "124549",
+     "069288",
+     "127286",
+     "086309"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "low-eave-pantile",
+     "front": "1-2 storey red brick, low eaves under orange pantile hipped roof, white bay window, paired red doors",
+     "copies": 4,
+     "autoFamiliesSpanned": 3,
+     "pands": [
+      "0363100012129944",
+      "0363100012098956",
+      "0363100012071672",
+      "0363100012091199"
+     ],
+     "exposure": 3020
+    },
+    {
+     "name": "low-eave-close-crops (near)",
+     "front": "same low pantile eave over brick with framed windows; only the eave and ground floor are visible",
+     "copies": 3,
+     "autoFamiliesSpanned": 3,
+     "pands": [
+      "0363100012062023",
+      "0363100012063414",
+      "0363100012090515"
+     ],
+     "exposure": 1145
+    }
+   ],
+   "memberPands": [
+    "0363100012132962",
+    "0363100012129944",
+    "0363100012081783",
+    "0363100012089292",
+    "0363100012098956",
+    "0363100012071672",
+    "0363100012111781",
+    "0363100012069288",
+    "0363100012116435",
+    "0363100012062023",
+    "0363100012127286",
+    "0363100012091199",
+    "0363100012117741",
+    "0363100012063414",
+    "0363100012090515",
+    "0363100012086309",
+    "0363100012124549",
+    "0363100012085413",
+    "0363100012092887",
+    "0363100012106854",
+    "0363100012108804",
+    "0363100012117704",
+    "0363100012117720",
+    "0363100012122566",
+    "0363100012127637",
+    "0363100012138065",
+    "0363100012107294",
+    "0363100012145662",
+    "0363100012081637",
+    "0363100012083674",
+    "0363100012088143",
+    "0363100012093818",
+    "0363100012099787",
+    "0363100012102507",
+    "0363100012107885",
+    "0363100012110826",
+    "0363100012117908",
+    "0363100012125872",
+    "0363100012135425",
+    "0363100012143009",
+    "0363100012145676",
+    "0363100012068853",
+    "0363100012087064",
+    "0363100012110155",
+    "0363100012113526",
+    "0363100012114484",
+    "0363100012147333",
+    "0363100012063546",
+    "0363100012065716",
+    "0363100012066380",
+    "0363100012069788",
+    "0363100012075702",
+    "0363100012076820",
+    "0363100012079889",
+    "0363100012086314",
+    "0363100012089699",
+    "0363100012091094",
+    "0363100012091995",
+    "0363100012092685",
+    "0363100012093473",
+    "0363100012093525",
+    "0363100012096484",
+    "0363100012099175",
+    "0363100012099424",
+    "0363100012099702",
+    "0363100012105048",
+    "0363100012108462",
+    "0363100012110421",
+    "0363100012112328",
+    "0363100012112363",
+    "0363100012113135",
+    "0363100012113436",
+    "0363100012113527",
+    "0363100012114374",
+    "0363100012117203",
+    "0363100012117282",
+    "0363100012119462",
+    "0363100012119520",
+    "0363100012123511",
+    "0363100012124926",
+    "0363100012125481",
+    "0363100012126403",
+    "0363100012130699",
+    "0363100012130988",
+    "0363100012132415",
+    "0363100012133917",
+    "0363100012135968",
+    "0363100012139444",
+    "0363100012141394",
+    "0363100012144068",
+    "0363100012144601",
+    "0363100012146000",
+    "0363100012147145",
+    "0363100012149048",
+    "0363100012150027",
+    "0363100012151124",
+    "0363100012153919",
+    "0363100012154662"
+   ]
+  },
+  {
+   "rank": 131,
+   "group": "pre-war-house-1928-088374",
+   "copies": 30,
+   "exposure": 9230,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1928,
+    1929
+   ],
+   "footprint": {
+    "L": 11.8,
+    "W": 9.5,
+    "height": 15.4,
+    "roof": 3,
+    "complexity": 0.22
+   },
+   "spread": {
+    "maxShapeM": 0.91,
+    "medianShapeM": 0.11,
+    "heightM": 1.4,
+    "years": 1,
+    "mirroredShare": 0.47,
+    "spanKm": 0.5
+   },
+   "streets": [
+    {
+     "name": "Churchill-laan",
+     "n": 23
+    },
+    {
+     "name": "Scheldestraat",
+     "n": 4
+    },
+    {
+     "name": "Deurloostraat",
+     "n": 3
+    }
+   ],
+   "architects": [
+    "J.J.B. Franswa"
+   ],
+   "names": [],
+   "detectorConfidence": 0.45,
+   "frontCheck": {
+    "checked": 27,
+    "read": 25,
+    "autoFamilies": [
+     1,
+     9,
+     8,
+     1,
+     3,
+     1,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check-priors/pre-war-house-1928-088374.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "high",
+    "why": "Churchill-laan portiek blocks are one design; the Scheldestraat shop blocks differ.",
+    "notInDesign": [
+     "074221",
+     "090751",
+     "144881",
+     "087019",
+     "120912"
+    ],
+    "unusable": [
+     "142858"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "churchill-portiek",
+     "front": "4 storeys red-brown brick, flat roof, tall narrow white vertical stair-window strip, flat canopy over grouped wooden doors, white multi-light windows",
+     "copies": 21,
+     "autoFamiliesSpanned": 7,
+     "pands": [
+      "0363100012088374",
+      "0363100012109503",
+      "0363100012061272",
+      "0363100012086366",
+      "0363100012094633",
+      "0363100012122195",
+      "0363100012066246",
+      "0363100012108474",
+      "0363100012117514",
+      "0363100012129412",
+      "0363100012147391",
+      "0363100012071213",
+      "0363100012074575",
+      "0363100012139027",
+      "0363100012153948",
+      "0363100012102907",
+      "0363100012104356",
+      "0363100012106569",
+      "0363100012106811",
+      "0363100012144435",
+      "0363100012071667"
+     ],
+     "exposure": 4815
+    }
+   ],
+   "memberPands": [
+    "0363100012087019",
+    "0363100012074221",
+    "0363100012090751",
+    "0363100012144881",
+    "0363100012142858",
+    "0363100012066246",
+    "0363100012088374",
+    "0363100012108474",
+    "0363100012109503",
+    "0363100012117514",
+    "0363100012144435",
+    "0363100012061272",
+    "0363100012071667",
+    "0363100012129412",
+    "0363100012147391",
+    "0363100012153948",
+    "0363100012071213",
+    "0363100012074575",
+    "0363100012086366",
+    "0363100012094633",
+    "0363100012102907",
+    "0363100012104356",
+    "0363100012106569",
+    "0363100012106811",
+    "0363100012122195",
+    "0363100012139027",
+    "0363100012120912",
+    "0363100012128650",
+    "0363100012109948",
+    "0363100012142794"
+   ]
+  },
+  {
+   "rank": 135,
+   "group": "pre-war-house-1922-108132",
+   "copies": 29,
+   "exposure": 9060,
+   "archetypeGuess": "pre-war house",
+   "years": [
+    1922,
+    1922
+   ],
+   "footprint": {
+    "L": 10.8,
+    "W": 8.7,
+    "height": 16.4,
+    "roof": 3,
+    "complexity": 0.01
+   },
+   "spread": {
+    "maxShapeM": 0.88,
+    "medianShapeM": 0.05,
+    "heightM": 2,
+    "years": 0,
+    "mirroredShare": 0.31,
+    "spanKm": 0.35
+   },
+   "streets": [
+    {
+     "name": "Vrijheidslaan",
+     "n": 24
+    },
+    {
+     "name": "Uithoornstraat",
+     "n": 3
+    },
+    {
+     "name": "Vechtstraat",
+     "n": 1
+    },
+    {
+     "name": "Kromme-Mijdrechtstraat",
+     "n": 1
+    }
+   ],
+   "architects": [
+    "P.L. Kramer",
+    "J. Zietsma",
+    "M. de Klerk"
+   ],
+   "names": [],
+   "detectorConfidence": 0.5,
+   "frontCheck": {
+    "checked": 24,
+    "read": 18,
+    "autoFamilies": [
+     8,
+     3,
+     1,
+     1,
+     2,
+     1,
+     1,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check-priors/pre-war-house-1922-108132.jpg"
+   },
+   "verdict": {
+    "verdict": "near",
+    "confidence": "high",
+    "why": "Vrijheidslaan (Kramer): two distinct exact designs.",
+    "notInDesign": [],
+    "unusable": [
+     "076778"
+    ]
+   },
+   "exactFamilies": [
+    {
+     "name": "buff-band-block",
+     "front": "4 storeys buff/yellow-grey brick, wide white strip windows with horizontal bands, row of small attic windows, flat roof, paired wooden doors",
+     "copies": 12,
+     "autoFamiliesSpanned": 4,
+     "pands": [
+      "0363100012099935",
+      "0363100012065507",
+      "0363100012081932",
+      "0363100012094120",
+      "0363100012147128",
+      "0363100012115900",
+      "0363100012136686",
+      "0363100012122529",
+      "0363100012143925",
+      "0363100012096034",
+      "0363100012077473",
+      "0363100012108132"
+     ],
+     "exposure": 5390
+    },
+    {
+     "name": "triangle-window-block",
+     "front": "4 storeys buff brick with triangular (pointed) windows, projecting dark-brick stair/balcony bays, flat roof",
+     "copies": 11,
+     "autoFamiliesSpanned": 6,
+     "pands": [
+      "0363100012068983",
+      "0363100012122574",
+      "0363100012082915",
+      "0363100012103373",
+      "0363100012121153",
+      "0363100012116727",
+      "0363100012145719",
+      "0363100012075124",
+      "0363100012114457",
+      "0363100012135605",
+      "0363100012110738"
+     ],
+     "exposure": 3445
+    }
+   ],
+   "memberPands": [
+    "0363100012099935",
+    "0363100012122529",
+    "0363100012143925",
+    "0363100012065507",
+    "0363100012096034",
+    "0363100012081932",
+    "0363100012094120",
+    "0363100012147128",
+    "0363100012115900",
+    "0363100012077473",
+    "0363100012108132",
+    "0363100012136686",
+    "0363100012082915",
+    "0363100012121153",
+    "0363100012122574",
+    "0363100012116727",
+    "0363100012075124",
+    "0363100012114457",
+    "0363100012145719",
+    "0363100012068983",
+    "0363100012135605",
+    "0363100012103373",
+    "0363100012110738",
+    "0363100012076778",
+    "0363100012070356",
+    "0363100012074562",
+    "0363100012063788",
+    "0363100012065705",
+    "0363100012078609"
+   ]
+  },
+  {
+   "rank": 1848,
+   "group": "post-war-block-1962-107780",
+   "copies": 12,
+   "exposure": 755,
+   "archetypeGuess": "post-war block",
+   "years": [
+    1962,
+    1963
+   ],
+   "footprint": {
+    "L": 86.2,
+    "W": 14,
+    "height": 11.9,
+    "roof": 3,
+    "complexity": 1
+   },
+   "spread": {
+    "maxShapeM": 1.24,
+    "medianShapeM": 0.43,
+    "heightM": 0.3,
+    "years": 1,
+    "mirroredShare": 0.5,
+    "spanKm": 1.02
+   },
+   "streets": [
+    {
+     "name": "Oldengaarde",
+     "n": 2
+    },
+    {
+     "name": "Loevestein",
+     "n": 2
+    },
+    {
+     "name": "Valkhof",
+     "n": 2
+    },
+    {
+     "name": "Doddendaal",
+     "n": 2
+    },
+    {
+     "name": "Wijenburg",
+     "n": 2
+    }
+   ],
+   "architects": [],
+   "names": [],
+   "detectorConfidence": 0.7,
+   "frontCheck": {
+    "checked": 10,
+    "read": 7,
+    "autoFamilies": [
+     1,
+     5,
+     1
+    ],
+    "montage": "artifacts/repeated-buildings/front-check-priors/post-war-block-1962-107780.jpg"
+   },
+   "verdict": {
+    "verdict": "exact",
+    "confidence": "high",
+    "why": "Most tiles show the same rounded gable head of a gallery block; the long gallery sides (149549, 110190, 114703) are a different face of the same type.",
+    "notInDesign": [],
+    "unusable": []
+   },
+   "exactFamilies": [
+    {
+     "name": "rounded-head",
+     "front": "4-storey brown-brick rounded block head on white pilotis/columns, three white horizontal bands, one small window per floor, balcony slabs on the flanks, flat roof",
+     "copies": 7,
+     "autoFamiliesSpanned": 2,
+     "pands": [
+      "0363100012073012",
+      "0363100012116553",
+      "0363100012063694",
+      "0363100012111400",
+      "0363100012141174",
+      "0363100012112890",
+      "0363100012138570"
+     ],
+     "exposure": 535
+    },
+    {
+     "name": "gallery-side",
+     "front": "long gallery face, 4 storeys over open plinth, continuous balcony/gallery bands with cream panels",
+     "copies": 3,
+     "autoFamiliesSpanned": 1,
+     "pands": [
+      "0363100012110190",
+      "0363100012114703",
+      "0363100012149549"
+     ],
+     "exposure": 220
+    }
+   ],
+   "memberPands": [
+    "0363100012138570",
+    "0363100012149549",
+    "0363100012073012",
+    "0363100012110190",
+    "0363100012114703",
+    "0363100012116553",
+    "0363100012063694",
+    "0363100012111400",
+    "0363100012112890",
+    "0363100012141174",
+    "0363100012097040",
+    "0363100012107780"
    ]
   }
  ]

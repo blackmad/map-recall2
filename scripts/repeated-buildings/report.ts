@@ -3,7 +3,7 @@
  * (front-check.ts) and the opus front verdicts (verdicts-*.json) into the small committed report.
  *
  *   node --import tsx scripts/repeated-buildings/report.ts [--detect=artifacts/repeated-buildings/detect-v2.json] \
- *     [--fronts=artifacts/repeated-buildings/front-check/front-check.json,...] [--verdicts=scripts/repeated-buildings/verdicts-20261115.json] \
+ *     [--fronts=artifacts/repeated-buildings/front-check/front-check.json,...] [--verdicts=scripts/repeated-buildings/verdicts-20261115.json,scripts/repeated-buildings/verdicts-priors-20261116.json] \
  *     [--top=50] [--out=docs/reports/repeated-buildings-20261115.json]
  *
  * A footprint group is a candidate only; `exactFamilies` lists the pands whose fronts a reviewer accepted as one design.
@@ -53,7 +53,7 @@ const out = pick.map(g => {
     memberPands: (g.members as any[]).map(m => m.pand)};
 });
 const summary = {candidatesInDetector: groups.length, reported: out.length, frontChecked: checked, exactGroups: survived,
-  copiesFrontChecked: copiesChecked, copiesInAcceptedFamilies: copiesExact, copiesFootprintMatchFrontDiffers: footprintOnly};
+  copiesFrontChecked: copiesChecked, copiesInFrontFamiliesExactOrNear: copiesExact, copiesFootprintMatchFrontDiffers: footprintOnly};
 fs.writeFileSync(OUT, JSON.stringify({generatedAt: new Date().toISOString(), method: {detect: detect.method, rule: 'footprint group = candidate; membership decided on the front photo (opus montage review)'}, summary, groups: out}, null, 1));
 console.log(JSON.stringify(summary));
 console.log(`wrote ${OUT}`);

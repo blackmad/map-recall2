@@ -1,0 +1,491 @@
+{
+ "about": "Opus front verdicts on the priors montages (artifacts/repeated-buildings/front-check-priors/<group>.jpg): footprint groups backed by one architect or complex within a neighbourhood, 2026-11-15/16, same reviewer and rules as verdicts-20261115.json.",
+ "groups": {
+  "post-war-block-1962-107780": {
+   "verdict": "exact",
+   "confidence": "high",
+   "why": "Most tiles show the same rounded gable head of a gallery block; the long gallery sides (149549, 110190, 114703) are a different face of the same type.",
+   "families": [
+    {
+     "name": "rounded-head",
+     "front": "4-storey brown-brick rounded block head on white pilotis/columns, three white horizontal bands, one small window per floor, balcony slabs on the flanks, flat roof",
+     "pands": [
+      "073012",
+      "116553",
+      "063694",
+      "111400",
+      "141174",
+      "112890",
+      "138570"
+     ]
+    },
+    {
+     "name": "gallery-side",
+     "front": "long gallery face, 4 storeys over open plinth, continuous balcony/gallery bands with cream panels",
+     "pands": [
+      "110190",
+      "114703",
+      "149549"
+     ]
+    }
+   ],
+   "notInDesign": [],
+   "unusable": []
+  },
+  "pre-war-house-1913-130245": {
+   "verdict": "near",
+   "confidence": "medium",
+   "why": "Spaarndammerstraat: one white-gable design repeats, the rest are related banded brick blocks with stacked balconies that vary in bays and crown.",
+   "families": [
+    {
+     "name": "white-oculus-gable",
+     "front": "4-5 storeys dark brown brick, white rendered curved top gable with oculus, stacked iron balconies either side, central double door",
+     "pands": [
+      "144503",
+      "102111",
+      "151090",
+      "090137",
+      "074397"
+     ]
+    },
+    {
+     "name": "banded-balcony-block (near only)",
+     "front": "4 storeys brown/red brick with white window heads, stacked small balconies, flat cornice; bays and ground floor vary",
+     "pands": [
+      "236935",
+      "064867",
+      "154331",
+      "107171",
+      "135409",
+      "134155"
+     ]
+    }
+   ],
+   "notInDesign": [],
+   "unusable": [
+    "066154",
+    "130245"
+   ]
+  },
+  "kiosk-utility-1989-064512": {
+   "verdict": "exact",
+   "confidence": "high",
+   "why": "Not kiosks: a 1989 terrace of 2-storey flat-roofed patio houses. All usable tiles are one design seen from three sides; gate/door colour is paint.",
+   "families": [
+    {
+     "name": "patio-wall-face",
+     "front": "2 storeys beige-grey brick, flat roof, ribbon of small brown-framed windows upstairs, ground floor hidden behind a full-height brick patio wall with a wooden gate",
+     "pands": [
+      "114684",
+      "069108",
+      "078137",
+      "141736",
+      "155163",
+      "067512",
+      "075542",
+      "075544",
+      "088633",
+      "112608",
+      "117798",
+      "147185",
+      "110354",
+      "155052",
+      "084247",
+      "093143",
+      "068539",
+      "107619",
+      "142414",
+      "075516",
+      "087978",
+      "069546",
+      "079381",
+      "075812",
+      "082590",
+      "085346"
+     ]
+    },
+    {
+     "name": "alley-face (same houses)",
+     "front": "same block from the footpath side: glazed ground floor with yellow frames, upper window row, beige brick",
+     "pands": [
+      "063218",
+      "085242",
+      "124761",
+      "075674",
+      "077008",
+      "137401"
+     ]
+    },
+    {
+     "name": "lawn-face (same houses)",
+     "front": "same block from the green: 2 storeys, window rows both floors behind a hedge",
+     "pands": [
+      "064512",
+      "139318",
+      "078498",
+      "107190"
+     ]
+    }
+   ],
+   "notInDesign": [],
+   "unusable": [
+    "129275",
+    "086977",
+    "133063"
+   ]
+  },
+  "kiosk-utility-1997-176709": {
+   "verdict": "near",
+   "confidence": "high",
+   "why": "Units under the railway viaduct at Tussen de Bogen: two repeat units (brick arch, concrete bridge bay); each is exact on its own.",
+   "families": [
+    {
+     "name": "brick-viaduct-arch",
+     "front": "19th-c brick viaduct arch with decorative brick frieze and concrete parapet above, segmental arch filled with glazed shopfront",
+     "pands": [
+      "176705",
+      "176810",
+      "176291",
+      "176800",
+      "176720",
+      "177032",
+      "176717",
+      "171447",
+      "167827",
+      "176293",
+      "176292",
+      "176287",
+      "167836",
+      "176801",
+      "176811",
+      "177033",
+      "176718",
+      "176286",
+      "176709",
+      "176802"
+     ]
+    },
+    {
+     "name": "concrete-bridge-bay",
+     "front": "concrete deck band over canal, glazed unit behind steel railings with round concrete columns, concrete base at water",
+     "pands": [
+      "167833",
+      "176707",
+      "176704",
+      "176703",
+      "176708",
+      "171356",
+      "171448",
+      "171361",
+      "176706",
+      "177028",
+      "167835",
+      "176719",
+      "177046"
+     ]
+    },
+    {
+     "name": "concrete-band-land-side (near)",
+     "front": "concrete deck band over a glazed/closed unit on land",
+     "pands": [
+      "176289",
+      "176290",
+      "176288"
+     ]
+    }
+   ],
+   "notInDesign": [],
+   "unusable": [
+    "173125"
+   ]
+  },
+  "pre-war-house-1902-166084": {
+   "verdict": "near-or-false",
+   "confidence": "medium",
+   "why": "Da Costakade blocks share a portiek style; other streets differ.",
+   "families": [
+    {
+     "name": "dacosta-portiek (near)",
+     "front": "4 storeys red-brown brick, wide segmental windows, dark arched open-stair portiek entrances",
+     "pands": [
+      "157742",
+      "166084",
+      "164129",
+      "164050",
+      "159032"
+     ]
+    }
+   ],
+   "notInDesign": [
+    "157989",
+    "166189",
+    "166551",
+    "145150",
+    "162614",
+    "156131",
+    "153436",
+    "160415",
+    "161223"
+   ],
+   "unusable": [
+    "159131",
+    "163843"
+   ]
+  },
+  "pre-war-house-1922-108132": {
+   "verdict": "near",
+   "confidence": "high",
+   "why": "Vrijheidslaan (Kramer): two distinct exact designs.",
+   "families": [
+    {
+     "name": "buff-band-block",
+     "front": "4 storeys buff/yellow-grey brick, wide white strip windows with horizontal bands, row of small attic windows, flat roof, paired wooden doors",
+     "pands": [
+      "099935",
+      "065507",
+      "081932",
+      "094120",
+      "147128",
+      "115900",
+      "136686",
+      "122529",
+      "143925",
+      "096034",
+      "077473",
+      "108132"
+     ]
+    },
+    {
+     "name": "triangle-window-block",
+     "front": "4 storeys buff brick with triangular (pointed) windows, projecting dark-brick stair/balcony bays, flat roof",
+     "pands": [
+      "068983",
+      "122574",
+      "082915",
+      "103373",
+      "121153",
+      "116727",
+      "145719",
+      "075124",
+      "114457",
+      "135605",
+      "110738"
+     ]
+    }
+   ],
+   "notInDesign": [],
+   "unusable": [
+    "076778"
+   ]
+  },
+  "pre-war-house-1927-117282": {
+   "verdict": "near",
+   "confidence": "low",
+   "why": "Garden-village houses, mostly shot too close or behind trees.",
+   "families": [
+    {
+     "name": "low-eave-pantile",
+     "front": "1-2 storey red brick, low eaves under orange pantile hipped roof, white bay window, paired red doors",
+     "pands": [
+      "129944",
+      "098956",
+      "071672",
+      "091199"
+     ]
+    },
+    {
+     "name": "low-eave-close-crops (near)",
+     "front": "same low pantile eave over brick with framed windows; only the eave and ground floor are visible",
+     "pands": [
+      "062023",
+      "063414",
+      "090515"
+     ]
+    }
+   ],
+   "notInDesign": [
+    "089292",
+    "111781"
+   ],
+   "unusable": [
+    "132962",
+    "081783",
+    "116435",
+    "117741",
+    "124549",
+    "069288",
+    "127286",
+    "086309"
+   ]
+  },
+  "pre-war-house-1928-088374": {
+   "verdict": "exact",
+   "confidence": "high",
+   "why": "Churchill-laan portiek blocks are one design; the Scheldestraat shop blocks differ.",
+   "families": [
+    {
+     "name": "churchill-portiek",
+     "front": "4 storeys red-brown brick, flat roof, tall narrow white vertical stair-window strip, flat canopy over grouped wooden doors, white multi-light windows",
+     "pands": [
+      "088374",
+      "109503",
+      "061272",
+      "086366",
+      "094633",
+      "122195",
+      "066246",
+      "108474",
+      "117514",
+      "129412",
+      "147391",
+      "071213",
+      "074575",
+      "139027",
+      "153948",
+      "102907",
+      "104356",
+      "106569",
+      "106811",
+      "144435",
+      "071667"
+     ]
+    }
+   ],
+   "notInDesign": [
+    "074221",
+    "090751",
+    "144881",
+    "087019",
+    "120912"
+   ],
+   "unusable": [
+    "142858"
+   ]
+  },
+  "pre-war-house-1924-094642": {
+   "verdict": "exact",
+   "confidence": "high",
+   "why": "Van Spilbergenstraat block repeats; corner pieces have rounded balcony stacks.",
+   "families": [
+    {
+     "name": "spilbergen-portiek",
+     "front": "4 storeys brown brick, cream band at the top floor/eave, paired white small-pane windows, central portiek with canopy over double doors, flat roof",
+     "pands": [
+      "127102",
+      "130588",
+      "122190",
+      "085240",
+      "143514",
+      "146024",
+      "068318",
+      "092719",
+      "106934",
+      "119560",
+      "123841",
+      "132328",
+      "131612",
+      "092331",
+      "067907",
+      "064600",
+      "106526",
+      "136989",
+      "127461",
+      "094642",
+      "151494",
+      "062964",
+      "116505",
+      "119673",
+      "092273",
+      "130510",
+      "101703",
+      "105626",
+      "113659",
+      "151219",
+      "078352"
+     ]
+    },
+    {
+     "name": "rounded-balcony-corner (near)",
+     "front": "same block with a rounded corner balcony/erker stack",
+     "pands": [
+      "091112",
+      "063544",
+      "143907",
+      "088918"
+     ]
+    }
+   ],
+   "notInDesign": [
+    "139999",
+    "150381",
+    "082002",
+    "077001"
+   ],
+   "unusable": [
+    "117827"
+   ]
+  },
+  "pre-war-house-1924-143349": {
+   "verdict": "exact",
+   "confidence": "medium",
+   "why": "Hoofdweg block repeats; corners and shop corners differ.",
+   "families": [
+    {
+     "name": "hoofdweg-band-block",
+     "front": "4 storeys brown brick, cream/white horizontal bands linking window strips, flat roof, canopy over grouped portiek doors",
+     "pands": [
+      "149968",
+      "152238",
+      "116031",
+      "113056",
+      "112144",
+      "151840",
+      "105796",
+      "113030",
+      "106910",
+      "068469",
+      "094853",
+      "116231",
+      "137769",
+      "140911",
+      "108929",
+      "125153",
+      "149764",
+      "103036",
+      "120972",
+      "077778",
+      "080269",
+      "118467",
+      "135918",
+      "125057",
+      "149415",
+      "079134",
+      "109115",
+      "074028",
+      "077198",
+      "105934",
+      "143551",
+      "103870"
+     ]
+    },
+    {
+     "name": "rounded-corner/shop-corner (near)",
+     "front": "same block's corner with rounded balcony stack or a white shop plinth",
+     "pands": [
+      "117153",
+      "107030",
+      "151112",
+      "131699",
+      "083895",
+      "064219"
+     ]
+    }
+   ],
+   "notInDesign": [
+    "102897",
+    "127120"
+   ],
+   "unusable": []
+  }
+ }
+}
