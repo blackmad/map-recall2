@@ -83942,7 +83942,9 @@
      ]
     ]
    ]
-  }
+  },
+  "status": "held",
+  "heldReason": "Blind review passed in lane landmarks-next (2026-11-15); held out of integration round p by scope (round p ships Schiller and three pools only). Un-hold in the next landmark round."
  },
  {
   "id": "de-jaren",
@@ -84072,7 +84074,9 @@
      ]
     ]
    ]
-  }
+  },
+  "status": "held",
+  "heldReason": "Blind review passed in lane landmarks-next (2026-11-15); held out of integration round p by scope (round p ships Schiller and three pools only). Un-hold in the next landmark round."
  },
  {
   "id": "handelsbank-singel-250",
@@ -84349,7 +84353,9 @@
      ]
     ]
    ]
-  }
+  },
+  "status": "held",
+  "heldReason": "Blind review passed in lane landmarks-next (2026-11-15); held out of integration round p by scope (round p ships Schiller and three pools only). Un-hold in the next landmark round."
  },
  {
   "id": "holland-casino-amsterdam",
@@ -85330,7 +85336,9 @@
      ]
     ]
    ]
-  }
+  },
+  "status": "held",
+  "heldReason": "Blind review passed in lane landmarks-next (2026-11-15); held out of integration round p by scope (round p ships Schiller and three pools only). Un-hold in the next landmark round."
  },
  {
   "id": "port-van-cleve",
@@ -86457,7 +86465,9 @@
      ]
     ]
    ]
-  }
+  },
+  "status": "held",
+  "heldReason": "audit:glb 2026-11-16: z-fighting 4.3 m² of greyBrick/sandstone patches on the 1979 fronts (down from 23.8 m²); two fixes failed and were reverted. Blind views preferred after."
  },
  {
   "id": "sportplaza-mercator",
@@ -86958,7 +86968,9 @@
      ]
     ]
    ]
-  }
+  },
+  "status": "held",
+  "heldReason": "audit:glb 2026-11-16: see-through 7/136 rays along the glazed front (z~-27.5, x -23..-9). Blind views preferred after; stray KFC/Pong labels come from the label layer."
  },
  {
   "id": "flevoparkbad",
@@ -87249,7 +87261,9 @@
      ]
     ]
    ]
-  }
+  },
+  "status": "held",
+  "heldReason": "New in pools round 2 and not blind-reviewed yet (audit:glb passes); held until a review pair is judged."
  },
  {
   "id": "noorderparkbad",
@@ -89089,7 +89103,9 @@
      ]
     ]
    ]
-  }
+  },
+  "status": "held",
+  "heldReason": "audit:glb 2026-11-16: holes (7 open loops, largest 59.7 m at y~2.1 along x -80..-43) and see-through 40/333 rays along the 309° wing; gaps in the 3DBAG shell under the walkway and ground glass; two small boxes float at the NW front. Blind views all preferred after."
  },
  {
   "id": "zwembad-bijlmer",
@@ -89282,7 +89298,9 @@
      ]
     ]
    ]
-  }
+  },
+  "status": "held",
+  "heldReason": "audit:glb 2026-11-16: geometry-regression, 1.4 m² coplanar faces against 0.5 allowed (glass vs greyBrick 2 cm apart on the west face near (-24.25, 38.6)). Blind views preferred after."
  },
  {
   "id": "victoriabad",

@@ -931,6 +931,11 @@
       "version": "87215fcfcb72ee5b",
       "dateSource": "asset-update"
     },
+    "brediusbad": {
+      "updatedAt": "2026-11-15T13:16:42.388Z",
+      "version": "82231dff5ed6ebaa",
+      "dateSource": "asset-update"
+    },
     "breitner-tower": {
       "updatedAt": "2026-10-20T10:13:08.725Z",
       "version": "cbf28700115ee162",
@@ -1631,6 +1636,11 @@
       "version": "645d3cc2790be159",
       "dateSource": "asset-update"
     },
+    "de-mirandabad": {
+      "updatedAt": "2026-11-16T00:53:22.350Z",
+      "version": "037f9dfd031bdb64",
+      "dateSource": "asset-update"
+    },
     "de-nederlandsche-bank": {
       "updatedAt": "2026-10-20T10:16:53.609Z",
       "version": "5c4dd5b7b9966aed",
@@ -2299,6 +2309,11 @@
     "fire-station-zebra.lod2": {
       "updatedAt": "2026-11-07T14:08:58.150Z",
       "version": "b0b80df2e4b6cec3",
+      "dateSource": "asset-update"
+    },
+    "flevoparkbad": {
+      "updatedAt": "2026-11-16T01:08:56.813Z",
+      "version": "061808599a489c69",
       "dateSource": "asset-update"
     },
     "foam": {
@@ -4726,6 +4741,11 @@
       "version": "f44f1804ee0a4bb6",
       "dateSource": "asset-update"
     },
+    "noorderparkbad": {
+      "updatedAt": "2026-11-16T01:08:56.959Z",
+      "version": "1c03eae235b4582a",
+      "dateSource": "asset-update"
+    },
     "oba-oosterdok": {
       "updatedAt": "2026-10-20T09:59:55.852Z",
       "version": "e17fa33f00b2662b",
@@ -5971,6 +5991,11 @@
       "version": "d189650fcfcbd930",
       "dateSource": "asset-update"
     },
+    "sloterparkbad": {
+      "updatedAt": "2026-11-16T00:53:22.738Z",
+      "version": "2c0a937c10f92ce4",
+      "dateSource": "asset-update"
+    },
     "social-history": {
       "updatedAt": "2026-10-20T10:13:42.443Z",
       "version": "0d97bc6ba8d2a685",
@@ -6039,6 +6064,11 @@
     "sportfondsenbad-oost.lod2": {
       "updatedAt": "2026-11-07T14:08:58.189Z",
       "version": "9dd4ea14ac9bd115",
+      "dateSource": "asset-update"
+    },
+    "sportplaza-mercator": {
+      "updatedAt": "2026-11-16T00:53:22.466Z",
+      "version": "8b8c39e2c50babf1",
       "dateSource": "asset-update"
     },
     "stadhuis": {
@@ -6574,6 +6604,11 @@
     "victoria-hotel.lod2": {
       "updatedAt": "2026-11-07T14:08:58.196Z",
       "version": "54eb100d5c845b1b",
+      "dateSource": "asset-update"
+    },
+    "victoriabad": {
+      "updatedAt": "2026-11-16T01:08:57.001Z",
+      "version": "7b02ebe0caa11377",
       "dateSource": "asset-update"
     },
     "vijzelbank": {
@@ -7301,29 +7336,9 @@
       "version": "17151b7ba9f6413a",
       "dateSource": "asset-update"
     },
-    "brediusbad": {
-      "updatedAt": "2026-11-15T13:16:42.388Z",
-      "version": "82231dff5ed6ebaa",
-      "dateSource": "asset-update"
-    },
-    "de-mirandabad": {
-      "updatedAt": "2026-11-15T12:42:09.929Z",
-      "version": "dccdc80c457b3c6a",
-      "dateSource": "asset-update"
-    },
-    "flevoparkbad": {
-      "updatedAt": "2026-11-15T14:11:58.680Z",
-      "version": "3256b30b54313cee",
-      "dateSource": "asset-update"
-    },
-    "noorderparkbad": {
-      "updatedAt": "2026-11-15T13:19:48.949Z",
-      "version": "d11b4496a7f5f4ac",
-      "dateSource": "asset-update"
-    },
-    "sportplaza-mercator": {
-      "updatedAt": "2026-11-15T13:11:21.798Z",
-      "version": "34e72be3d8436137",
+    "zwembad-bijlmer": {
+      "updatedAt": "2026-11-16T00:53:23.002Z",
+      "version": "d5e4765b7064dc25",
       "dateSource": "asset-update"
     }
   }

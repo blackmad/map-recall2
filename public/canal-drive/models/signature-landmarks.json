@@ -105962,7 +105962,8 @@
       },
       "triangles": 7600,
       "bytes": 110072,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "de-jaren": {
       "id": "de-jaren",
@@ -106124,7 +106125,8 @@
       },
       "triangles": 6440,
       "bytes": 97868,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "handelsbank-singel-250": {
       "id": "handelsbank-singel-250",
@@ -106433,7 +106435,8 @@
       },
       "triangles": 16756,
       "bytes": 252360,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "holland-casino-amsterdam": {
       "id": "holland-casino-amsterdam",
@@ -107446,7 +107449,8 @@
       },
       "triangles": 6346,
       "bytes": 96044,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "port-van-cleve": {
       "id": "port-van-cleve",
@@ -107749,7 +107753,8 @@
       },
       "triangles": 16154,
       "bytes": 211148,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "mauritskade-61": {
       "id": "mauritskade-61",
@@ -108670,7 +108675,8 @@
       },
       "triangles": 11867,
       "bytes": 122092,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "sportplaza-mercator": {
       "id": "sportplaza-mercator",
@@ -109203,7 +109209,8 @@
       },
       "triangles": 5837,
       "bytes": 81188,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "flevoparkbad": {
       "id": "flevoparkbad",
@@ -109558,7 +109565,8 @@
       },
       "triangles": 404,
       "bytes": 10088,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "noorderparkbad": {
       "id": "noorderparkbad",
@@ -111462,7 +111470,8 @@
       },
       "triangles": 9138,
       "bytes": 130264,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "zwembad-bijlmer": {
       "id": "zwembad-bijlmer",
@@ -111687,7 +111696,8 @@
       },
       "triangles": 13767,
       "bytes": 185332,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "victoriabad": {
       "id": "victoriabad",
