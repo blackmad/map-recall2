@@ -589,7 +589,7 @@
     "test:analytics:emulator": "npm --prefix functions ci && npm --prefix functions run test:emulator",
     "analytics:report": "tsx scripts/analytics-report.ts",
     "feedback:queue": "node scripts/feedback/queue.mjs",
-    "test:feedback": "node --test scripts/feedback/queue.test.mjs",
+    "test:feedback": "node --import tsx --test scripts/feedback/queue.test.mjs src/canalRecall/feedback/note.test.ts",
     "test:feedback:rules": "npx --yes firebase-tools@15.28.2 emulators:exec --only firestore --project demo-canal-feedback --config firebase.feedback.json 'node scripts/feedback/rules.test.mjs'",
     "build:ordinary-buildings-gallery": "esbuild src/canalRecall/ordinaryBuildings/gallery.mjs --bundle --format=esm --outfile=public/canal-drive/js/ordinary-buildings-gallery.bundle.js --sourcemap=external --minify",
     "test:street-rendering-core": "node --import tsx --test src/canalRecall/surveyedBuildingEnvelope.test.ts src/canalRecall/surveyedEnvelopeMeshBinding.test.ts src/canalRecall/surveyedEnvelopeNative.test.ts src/canalRecall/surveyedEnvelopeTransport.test.ts src/canalRecall/compoundFrontageLayout.test.ts src/canalRecall/compoundNativeFrontage.test.ts src/canalRecall/regularCanalFrontage.test.ts src/canalRecall/regularCanalNative.test.ts src/canalRecall/repeatedTerraceFrontage.test.ts src/canalRecall/repeatedTerraceRoof.test.ts src/canalRecall/streetChunks/streetChunks.test.ts",

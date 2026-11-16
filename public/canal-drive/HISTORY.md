@@ -30,6 +30,7 @@
 - `public/canal-drive/shopfronts.html` lists every shopfront template the game draws on a ground floor (generic fronts and chains), with use counts and a link to ride to one. It reads `shopfronts-data/index.json`, built by `npm run shopfronts:gallery` (`scripts/retail-ground/shopfront-gallery.ts`, typed index in `src/canalRecall/shopfrontIndex.ts`; its test joins `test:shopfront-gate`). Opened from a Shopfronts button on whats-new.html; e2e `tests/e2e/shopfronts-page.spec.ts`.
 - 172 WebP thumbnails live in the screenshots repo under `ui/shopfronts/` (874f3de); page shots are in `ui/shopfronts-page/` (a4e1ef6).
 - Of 237 index entries, 65 chains are listed but not drawn: their template is not in `REAL_ACCEPTED`, so the game falls back to a generic front.
+- Feedback on the page (lane/shopfront-feedback-20261116 acbcd02f0, round u): every card has a note box and a sticky Save all bar sends them through `CanalFeedback.saveMany` (with `signIn`/`userLabel`). The note text comes from the shared builder `src/canalRecall/feedback/note.ts`; its test joins `test:feedback`, and the e2e is `tests/e2e/shopfronts-feedback.spec.ts`.
 
 ## Round t: shop signs read from photos, FEBO/HEMA brand styles, reflective glass, more buurt towers (2026-11-16)
 
