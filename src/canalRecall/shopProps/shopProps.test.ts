@@ -7,6 +7,8 @@ import { goodsTileRect } from './variety.js';
 
 test('shop props: each builder costs what PROP_COST states', () => {
   assert.equal(omafiets('#161616').length, PROP_COST.omafiets);
+  assert.equal(omafiets('#161616', 'perp').length, PROP_COST.omafietsPerp);
+  assert.equal(bikeRack(undefined, true).length, PROP_COST.bikeRackPerp);
   assert.equal(omafiets('#161616', 'window').length, PROP_COST.omafietsWindow);
   assert.equal(bikeRack().length, PROP_COST.bikeRack);
   assert.equal(bike('#1a1a1a').length, PROP_COST.bike);
@@ -50,10 +52,50 @@ test('shop props (lane shop-bikes): the baked omafiets is a city bike within its
   assert.ok(n('#161616') > 300 && n('#161616') < 380 && new Set(picks).size === BIKE_HEXES.length);
 });
 
-test('shop props (lane shop-bikes): a bike shop spreads its bikes evenly over the whole frontage, varied, with hoops', () => {
+test('shop props (lane shop-bikes-perp): bikes park perpendicular, nose to the wall, both runs used, the door kept clear', () => {
+  // Both flanks drawn: the perpendicular bike shows faces either way across it, none turned to the wall (-x) or down.
+  const pb = omafiets('#161616', 'perp');
+  assert.ok(pb.some(q => q.n[1] > 0.9) && pb.some(q => q.n[1] < -0.9) && pb.every(q => q.n[0] >= -0.86 && q.n[2] >= -0.81));
+  assert.ok(PROP_COST.omafietsPerp <= 340, `${PROP_COST.omafietsPerp}`);
+  let nose = 0, all = 0;
+  for (const seed of ['pand-1', 'pand-2', 'pand-3', 'pand-4', 'gallery-bike', 'x', 'y', 'z']) {
+    // Runs either side of a door at 4.0-5.2 (runs end 0.12 m short of it, as retailFront.ts cuts them).
+    const runs: Array<[number, number]> = [[0.4, 3.88], [5.32, 7.0]];
+    const t = outsideProps(SHOP_PROPS.bike, runs, seed), tyres = t.filter(q => q.hex === '#141414');
+    // Each bike's tyres (2 x 12 x 2 x 2 = 96 tris), grouped along the wall: each group long across the pavement, narrow along it.
+    const xs = tyres.map(q => (q.p[0][0] + q.p[1][0] + q.p[2][0]) / 3).sort((a, b) => a - b), groups: number[][] = [];
+    for (const x of xs) { const g = groups[groups.length - 1]; if (g && x - g[g.length - 1] < 0.25) g.push(x); else groups.push([x]); }
+    assert.equal(groups.length, tyres.length / 96, `${seed}: one tyre group per bike`);
+    // 5.1 m of runs: one bike per 1.3 m, 3; both runs get one.
+    assert.equal(groups.length, 3, seed);
+    for (const [r0, r1] of runs) assert.ok(groups.some(g => g[0] >= r0 && g[0] <= r1), `${seed}: a bike on ${r0}-${r1}`);
+    for (const g of groups) assert.ok(g[g.length - 1] - g[0] < 0.45, `${seed}: tyres within ${g[g.length - 1] - g[0]} m along the wall`);
+    const ys = tyres.flatMap(q => q.p.map(p => p[1]));
+    assert.ok(Math.min(...ys) > 0.1 && Math.min(...ys) < 0.3 && Math.max(...ys) > 2.0 && Math.max(...ys) < 2.35, `${seed}: wheel to the wall at ${Math.min(...ys)}, out to ${Math.max(...ys)}`);
+    // Every prop at least 0.3 m from the door (4.0-5.2).
+    assert.ok(t.every(q => q.p.every(p => p[0] <= 3.7 || p[0] >= 5.5)), `${seed}: door clear`);
+    // The stem (chrome reaching above 1 m) is near the wall on a bike parked nose in, out by the kerb on one backed in.
+    for (const q of t.filter(q => q.hex === '#a9b0b4' && q.p.some(p => p[2] > 1.0))) { all++; if (q.p[0][1] < 1.2) nose++; }
+    // Hoops across the pavement (long in y), between pairs.
+    const hoop = t.filter(q => q.hex === '#8d9396'), hy = hoop.flatMap(q => q.p.map(p => p[1])), hx = hoop.flatMap(q => q.p.map(p => p[0]));
+    if (hoop.length) assert.ok(Math.max(...hy) - Math.min(...hy) > 0.7 && Math.max(...hx) - Math.min(...hx) < 0.65, `${seed}: hoops across`);
+  }
+  assert.ok(nose / all > 0.7 && nose / all < 0.97, `nose in ${nose}/${all}`);
+});
+
+test('shop props (lane shop-bikes-perp): the pavement decides: perpendicular from 2.5 m, side-on from 1 m, none under', () => {
+  const runs: Array<[number, number]> = [[0.4, 4.0]], tyres = (d: number) => outsideProps(SHOP_PROPS.bike, runs, 'pand-1', d).filter(q => q.hex === '#141414');
+  assert.equal(tyres(3).length, tyres(Infinity).length);
+  assert.ok(tyres(3).length % 96 === 0 && tyres(3).length > 0);
+  const side = tyres(2);
+  assert.ok(side.length > 0 && side.length % 48 === 0 && side.every(q => q.p.every(p => p[1] < 1.0)), 'side-on within 1 m');
+  assert.equal(tyres(0.8).length, 0);
+});
+
+test('shop props (lane shop-bikes): on a narrower pavement the side-on row spreads evenly over the whole frontage, varied, with hoops', () => {
   for (const seed of ['pand-1', 'pand-2', 'gallery-bike']) {
     const runs: Array<[number, number]> = [[0.4, 4.0], [5.2, 8.6]];
-    const t = outsideProps(SHOP_PROPS.bike, runs, seed);
+    const t = outsideProps(SHOP_PROPS.bike, runs, seed, 2);
     // Each pavement bike has 2 x 12 x 2 = 48 tyre triangles.
     const per = PROP_COST.omafiets, bikes = Math.round(t.filter(q => q.hex === '#141414').length / 48);
     // 3.6 m run: (3.6 - 2.06) / 0.65 + 1 = 3 bikes; 3.4 m: 3; 6 in all, within the cap of 8.
@@ -69,7 +111,7 @@ test('shop props (lane shop-bikes): a bike shop spreads its bikes evenly over th
     assert.ok(t.length <= 6 * per + 4 * PROP_COST.bikeRack && t.some(q => q.hex === '#8d9396'), `${seed}: ${t.length} tris and hoops`);
   }
   // The cap: a 20 m frontage draws 8 bikes, shared over its runs, still reaching every run's ends.
-  const long = outsideProps(SHOP_PROPS.bike, [[0, 9], [10, 20]], 'pand-9');
+  const long = outsideProps(SHOP_PROPS.bike, [[0, 9], [10, 20]], 'pand-9', 2);
   assert.equal(Math.round(long.filter(q => q.hex === '#141414').length / 48), 8);
 });
 
@@ -80,7 +122,8 @@ test('shop props: placement is deterministic, stays in its runs and slots, and v
     assert.deepEqual(a, b, `${tpl}: stable`);
     for (const t of a) for (const [x, y, z] of t.p) {
       assert.ok(x >= 0.3 && x <= 6.3 && !(x > 4.05 && x < 5.15), `${tpl}: outside prop at ${x}`);
-      assert.ok(y >= -0.05 && y <= 1.2 && z >= -0.15, `${tpl}: outside slot y ${y} z ${z}`);
+      // Lane shop-bikes-perp: a bike shop's bikes stand across the pavement (2.25 m); every other prop within 1.2 m.
+      assert.ok(y >= -0.05 && y <= (tpl === 'bike' ? 2.3 : 1.2) && z >= -0.15, `${tpl}: outside slot y ${y} z ${z}`);
     }
     if (!spec.inside) continue;
     const bays = [0, 1, 2].map(bay => JSON.stringify(insideProps(spec, 0.2, 3.0, 'pand-1', bay)));

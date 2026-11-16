@@ -442,7 +442,7 @@ export function chainFrontTris(chain: NonNullable<MeshBuilding['chain']>, candid
  * Round 2: a traced door (lane 1's row-front ground boxes, specRecipe.groundBoxes) inside the front is drawn set back,
  * and `cut` is the wall rectangle the mesher removes for its recess. Round 3: an untraced front's door is recessed too.
  */
-function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshBuilding, candidates: readonly Edge[], ring: readonly Edge[], base: number, groundM: number, origin: Origin): { tris: SignTri[]; cut?: { e: Edge; cut: WallCut } } {
+function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshBuilding, candidates: readonly Edge[], ring: readonly Edge[], base: number, groundM: number, origin: Origin, streetM?: (e: Edge) => number): { tris: SignTri[]; cut?: { e: Edge; cut: WallCut } } {
   const kx = mPerDegLng(origin.lat), px = (front.at[0] - origin.lng) * kx, py = (front.at[1] - origin.lat) * M_PER_DEG_LAT;
   let best: Edge | null = null, bestD = Infinity;
   for (const e of candidates) {
@@ -483,7 +483,11 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   const shopCell = b.layers && b.layers.ground < BAY_LAYER_COUNT && (SHOP_KINDS as readonly string[]).includes(BAY_ENTRIES[b.layers.ground]?.kind ?? '') ? b.layers.ground : undefined;
   const input = { template: front.template, word: front.word, seed: b.id, ...(door ? { door } : {}), ...(front.logo ? { logo: front.logo } : {}),
     ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(bays ? { bays } : {}), ...(front.redLight ? { redLight: { ...front.redLight, span: undefined } } : {}), ...(front.frameHex ? { frameHex: front.frameHex } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}) };
-  const tris = retailFrontTris(front.brand ? { ...input, brand: front.brand, ...(b.wallHex ? { wallHex: b.wallHex } : {}) } : input, e, s0, s1, base, groundM);
+  // Lane shop-bikes-perp: the pavement before the front's wall (street centreline less half a carriageway, as the
+  // stoops use), so perpendicular bikes stand only where they fit.
+  const streetD = front.template === 'bike' && streetM ? streetM(best) : Infinity, pavementM = Number.isFinite(streetD) ? Math.max(0, streetD - GENERIC_STOOP.carriageHalfM) : undefined;
+  const placed = pavementM !== undefined ? { ...input, pavementM } : input;
+  const tris = retailFrontTris(front.brand ? { ...placed, brand: front.brand, ...(b.wallHex ? { wallHex: b.wallHex } : {}) } : placed, e, s0, s1, base, groundM);
   // Round 3: every template door stands in a recess (retailDoor), traced or not, so the wall is cut over each.
   const opening = retailDoor(input, s0, s1);
   // The wall is cut on the piece of the run behind the door (a piece set back further than the recess needs no cut).
@@ -1114,7 +1118,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const retail = mode === 'walls' && b.retailFront && b.lid ? (() => {
       const exposed = edges.filter(e => !e.hole && !hiddenByNeighbour(e, b));
       const street = exposed.filter(e => doorAllowed.has(e));
-      return retailFrontOn(b.retailFront!, b, street.length && !b.retailFront!.nearest ? street : exposed.length ? exposed : edges, edges.filter(e => !e.hole), b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin);
+      return retailFrontOn(b.retailFront!, b, street.length && !b.retailFront!.nearest ? street : exposed.length ? exposed : edges, edges.filter(e => !e.hole), b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin, wallStreetM);
     })() : null;
     const cutsFor = (e: Edge): readonly WallCut[] => retail?.cut?.e === e ? [...(wallCuts.get(e) ?? []), retail.cut.cut] : wallCuts.get(e) ?? [];
     // Clip conflicting wall rectangles while retaining their original UV grid.
