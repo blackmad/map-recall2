@@ -25,14 +25,14 @@
     {
      "id": "curved-hall",
      "kind": "other",
-     "where": "dark brown brick hall under a gently curved roof line",
+     "where": "grey-buff brick hall under a gently curved roof line",
      "approxSizeM": [
       36,
       9.7
      ],
      "plan": "modelled",
      "seenIn": "recording_2024-10-10_09-36-20_00737",
-     "how": "3DBAG shell (its roof carries the curve) in dark brick"
+     "how": "3DBAG shell (its roof carries the curve) in grey-buff brick"
     },
     {
      "id": "high-strip",
@@ -118,7 +118,7 @@
     {
      "id": "east-windows",
      "kind": "window-shape",
-     "where": "row of windows in the dark brick",
+     "where": "row of windows in the grey-buff brick",
      "approxSizeM": [
       15,
       1.6
@@ -265,7 +265,7 @@
     {
      "id": "ne-wall",
      "kind": "other",
-     "where": "dark brick with a glazed lower part at the north-east",
+     "where": "grey-buff brick with a glazed lower part at the north-east",
      "approxSizeM": [
       10,
       7
@@ -386,7 +386,7 @@
      ],
      "plan": "simplified",
      "seenIn": "TMX7316010203-000914_pano_0003_002752",
-     "how": "3DBAG shell only: the low box (3.4 m) and the cube behind it in dark brick. Not drawn: the box's glass front (the openings gate reads it as past the 3DBAG wall silhouette) and the cube's upper window band (its wall is set back from the BAG ring)"
+     "how": "3DBAG shell only: the low box (3.4 m) and the cube behind it in grey-buff brick. Not drawn: the box's glass front (the openings gate reads it as past the 3DBAG wall silhouette) and the cube's upper window band (its wall is set back from the BAG ring)"
     }
    ]
   },

@@ -622,9 +622,9 @@ async function save(id:string){
   if(group.unlit)material.setExtension('KHR_materials_unlit',unlitExtension!.createUnlit());
   // Shared look (`?cityLook=1`, look/cityLook.ts): the slot follows from the palette name; audit:glb gates new exports at 100 %.
   // Builder-declared slots (material-slot-tags.ts) win over inference; absent a tag the export is unchanged.
-  // A spec-stated wall colour (materialOverrides) is drawn as stated (material-slot-tags.ts statedOverrideExtras); no override: unchanged.
+  // `measuredOverrides` specs only: a stated wall colour is drawn as stated (material-slot-tags.ts statedOverrideExtras). Without the flag: unchanged.
   else{const tag=slotTagFor(id,name),base=tag?tagExtras(inferredSlotExtras(name,group.hex),tag):inferredSlotExtras(name,group.hex);
-   material.setExtras(statedOverrideExtras(base,name.startsWith('decal-')?undefined:spec.materialOverrides?.[name],group.hex));}
+   material.setExtras(statedOverrideExtras(base,spec.measuredOverrides&&!name.startsWith('decal-')?spec.materialOverrides?.[name]:undefined,group.hex));}
   if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
   const opacity=(spec as {materialOpacity?:Record<string,number>}).materialOpacity?.[group.colour];
   if(opacity!==undefined&&id!=='conservatorium'&&!name.startsWith('decal-'))material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,opacity]).setAlphaMode('BLEND');

@@ -20,6 +20,7 @@
   "blue": "#3cb4e0",
   "sandstone": "#bfc3c1"
  },
+ "measuredOverrides": true,
  "attribution": {
   "title": "Sloterparkbad, President Allendelaan 3: swimming and sports centre of 2001 on the Sloterplas",
   "author": "Map Recall",
@@ -39,28 +40,21 @@
    "evidence": "the outdoor basin with its six lanes on a 4 m deck, south of the hall on the Sloterplas side (OSM a488807746, PDOK luchtfoto 2025)"
   }
  ],
- "throughPassages": [
+ "standoffDecks": [
   {
-   "axisBearing": 128.5,
-   "corridor": [
+   "bearing": 128.5,
+   "span": [
     [
-     40.8,
-     -76.99
+     40.68,
+     -77.09
     ],
     [
-     -17.64,
-     -3.55
-    ],
-    [
-     -22.73,
-     -7.6
-    ],
-    [
-     35.71,
-     -81.04
+     -17.75,
+     -3.64
     ]
    ],
-   "evidence": "the open strip under and behind the raised walkway along the north-west front (edges 67-78): the deck stands on posts 3.2-5.6 m off the wall, open to the sky between deck and wall (panorama TMX7316010203-002508_pano_0004_000065; PDOK luchtfoto: deck about 1.5 m wide, 5-6 m off the roof edge). Street-height rays under the deck meet the ground glazing 4.6-4.8 m beyond their target (ray probe 2026-11-16); no 3DBAG wall is missing there."
+   "reach": 6,
+   "evidence": "the raised walkway along the north-west front (ring edges 67-78): a deck on posts 3.2-5.6 m off the wall, open to the sky between deck and wall, rising from 1.2 m at the north-east end to 3.8 m (panorama TMX7316010203-002508_pano_0004_000065; PDOK luchtfoto: deck about 1.5 m wide, 5-6 m off the roof edge). Street-height rays under the deck meet the ground glazing 4.6-4.8 m beyond their target (ray probe 2026-11-16); no 3DBAG wall is missing there."
   }
  ]
 }

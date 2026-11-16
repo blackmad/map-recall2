@@ -1,5 +1,5 @@
 {
-  "toolchain": "9665e5122db481474259fc77e6759475cb4718b0b98281be9563f4379f2626fc",
+  "toolchain": "63175d35e1341413a16235c490b80fd1610cd3538531cd8ff8e9a6a85eece318",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -114,7 +114,7 @@
     "de-hallen": "b8c2892e147228a3cf14ec4a422eb9c73950cbd1b01cb1033a6cbc034f6fea8d",
     "de-krakeling": "5c9402ddb4023e6a1fa2615b17f76612d16922c387fc9496c21540ed71550921",
     "de-makroon": "f1822c222b6bc40d717be659b5e8a1e818a0596e2be4ccd47073e598327c9fe0",
-    "de-mirandabad": "b6e6c271ee8b2b7398bc5f0fe3229ff5f243ff21b42b7285e2286e4addadf250",
+    "de-mirandabad": "3d84542945e10d3cab0f7ca9c7a9b473e01a960ae134871d42ea58f2081cb98d",
     "de-nederlandsche-bank": "56313a20f52e3f29a02252b021c9cc1be236805f2adff9ae0fefcef046de2f73",
     "de-nieuwe-liefde": "e5e678ae6c7c4fcb6b5da1dc8f13b32f6b7756d2591676d394d31047a626fc32",
     "de-otter": "dfee71789fc25762b3563233a24186717601c09ed005f156ff0591e00ba06de5",
@@ -162,7 +162,7 @@
     "fire-station-weesp": "2373fb4caddeec89ca4917262fb913dbc070eef57f3cdd6d39be49873f7193b1",
     "fire-station-willem": "250abee6277485e47ccb543aed76861e60d4091690f8ece0492ffbfd9bc086d7",
     "fire-station-zebra": "904df97c8a310399a6033875336b07d19d7fe74b2dc6efa5a8b397319dc08152",
-    "flevoparkbad": "dec638ad5327b07c056d9cbc554154d8330ca133f30b14024c1ece205b242cfd",
+    "flevoparkbad": "4746d30894092e78df6dbb4ecfbee9acb3d3875d9dd4cfa1b4c7f691f1660898",
     "foam": "018f77d80e934d9e0486e708fedbdae9308cdbcd9ae009f124ee6d9400ac6ca9",
     "forum-office": "0cf9e55aa476cc4b57c4d8dd3446f498d5cac1c27c69b139056d54330dc0fe04",
     "frascati": "aef4d7a3dd02a5cb48c7226c5269965e2b7bbfd90b8fdfd9d477dcccc01626b5",
@@ -325,7 +325,7 @@
     "nikolaas-myrakerk": "737295defbaf47e5dbd2371d0a1eb008589fca4ee03e96e2abccfce76724316a",
     "niod": "a4211c6ccd6658a79dbd8f98500d1a4e941d411784544161e6071a4a92452d9c",
     "noorderkerk": "743861a3593754629bcce0fe7ad9070a446f34be3dc57364b68fbb4e80d1f95e",
-    "noorderparkbad": "2228a6e8ca612635741a2701a6bcd978f394522f20b284297de3a07ae730dda7",
+    "noorderparkbad": "96ad6558b8e83eac77f754102d26b1bce6127532b2e1486f3c8232e72d48f6c3",
     "oba-oosterdok": "12270bc16967849c3f89ad42e7d74ecabb8e24a53a1f334543af114f6e92287b",
     "oba-spaarndammerbuurt": "632f5e64b1ee296abe0cb02ec285498589b64aa4c155ff98adf0c1e24f234950",
     "obrechtkerk": "ee576772e0f02efc37aed5d162ccf9ceac7e7eadcf73fc5d7ea5e9ae5591c46b",
@@ -410,13 +410,13 @@
     "skatecafe": "1aa1197bb9a9be0971e8da5c4eb486edcff15f066bb4ca57567d9f2a711189c8",
     "slavernijmonument": "e3c8f38fa885ef492f762beb86c16ac018510cef6082007aee08b62c9feb64f6",
     "sloterdijk-station": "9bc82ef221f997c21743f3554483099fa7649da4767de8f4f236644343ef3547",
-    "sloterparkbad": "1a4736049dca23462ca5a84553cc79a17af95a1b884672ef094c28fefd079103",
+    "sloterparkbad": "3c0697a910a0a54f13336c845057f07b16f50e82bf653dcb2da95cfd540e0482",
     "social-history": "17864020947311f211363753cd9b177d88c469d12f727f15b7a78aa91952d9db",
     "spanjemonument": "a1bca13aa1166c98529d7bc9bc8b43d9681f045044da862b0df5139a7f10728b",
     "spinoza-standbeeld": "10a0739a6eda22a2f829497856d5015e507aec00e04623cbd2fd8fa22cd36db3",
     "splendor": "facedb77749677394ecfff3de987488498c70480bca5d8d14207ddd3e9d41dd1",
     "sportfondsenbad-oost": "de9b8fbf0a8b4d806177b926b16b26d4a0ef2b97d7b55848220b59dccc23b5ba",
-    "sportplaza-mercator": "9ed7464681c1467332dbcb593414e98d0e9d8f08cc5199f99848f537d290089f",
+    "sportplaza-mercator": "f5b97866ddba4f1c5cc2d1fe8144565282f15b3c5ed83d203f25c81a1559cf15",
     "stadhuis": "a672d0e917232cfab98a05c6a693b880366c2f96ff5d28a836c6986570387603",
     "stadsschouwburg": "816ed2491e19d505e2d0d33a286ac226b5d73efebe31d70319331da2b53a3af0",
     "stationsplein-paviljoens": "3272cfbdcada3c9af3a4764301c1fbb65dad9082420d3a887eb6397bcee0cfaf",
@@ -454,7 +454,7 @@
     "van-gendt-hallen": "244209f42176ac954be864db6e5e2242ef8b922397c0718e6fd6de3d65f29697",
     "van-gogh-museum": "85e1c0f3a05c2c281a6439b6784987bc0ca7c98eb606541f0a1f22bf7f06eda2",
     "victoria-hotel": "56999f96fa74e0845d25f0f94387c765b8c81bcd7010d47509a4c00b40aa0ec7",
-    "victoriabad": "d6c0f00822510794b84750727859f6ae50159ce585281f25a51eb1cb00e52487",
+    "victoriabad": "9c1126b7bbda7453d29ac99a9375a18e42fa727e1ae535c494b1d25c77e2114a",
     "vijzelbank": "588f34733d749cad6f35bc16349329a57cf10e60b3bd04054358b481003a56e0",
     "vinoly": "dad1c408b5d08a9dd1fd4d9db9b49170c27ddbb7f17b78936a816b02b8c54e5c",
     "voc-kade-600": "2f9ec00825eee36a2116e5501ae2d507714d6a5e219eac8d0f9636813fc18f2e",
@@ -505,6 +505,6 @@
     "zuiderbad": "99513d5a1e2e302d557886235fdd7c74e38f2a5cf2c44ae5105465a005deb9e6",
     "zuiderkerk": "25cec372a2e9a7c37861d5b54df6621c27eb8c57e976c1f54aa01fc75dea6935",
     "zuiveringshal-west": "fb9a2b0866fcc0de1300d377507a84070b4c7bca32b627bc0e50f76570114099",
-    "zwembad-bijlmer": "fcae1b4545d67cda7bb707aaceba9b9e8f37db156d77a6afcc630e556ba46f70"
+    "zwembad-bijlmer": "a024e24338d76c328d20370719e1a5f122352d88479d4b351d00c10579d785ea"
   }
 }

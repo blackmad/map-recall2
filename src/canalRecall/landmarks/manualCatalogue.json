@@ -83654,6 +83654,7 @@
    "gold": "#f0c22c",
    "red": "#b8322e"
   },
+  "measuredOverrides": true,
   "attribution": {
    "title": "De Mirandabad, De Mirandalaan 9: subtropical bath of 1979 with outdoor basins",
    "author": "Map Recall",
@@ -83971,6 +83972,7 @@
    "concrete": "#cdc8bc",
    "sandstone": "#25689a"
   },
+  "measuredOverrides": true,
   "attribution": {
    "title": "Sportplaza Mercator, Jan van Galenstraat: planted sports bath of 2006 with the outdoor pool of the Jan van Galenbad",
    "author": "Map Recall",
@@ -84482,6 +84484,7 @@
    "copper": "#7cc3e6",
    "frame": "#e8e8e4"
   },
+  "measuredOverrides": true,
   "attribution": {
    "title": "Flevoparkbad, Zeeburgerdijk: outdoor bath of 1967 in the Flevopark",
    "author": "Map Recall",
@@ -84761,6 +84764,7 @@
    "blue": "#3cb4e0",
    "dark": "#262d36"
   },
+  "measuredOverrides": true,
   "attribution": {
    "title": "Noorderparkbad, Noorderpark: indoor bath of 2015 with outdoor basins",
    "author": "Map Recall",
@@ -86222,6 +86226,7 @@
    "blue": "#3cb4e0",
    "sandstone": "#bfc3c1"
   },
+  "measuredOverrides": true,
   "attribution": {
    "title": "Sloterparkbad, President Allendelaan 3: swimming and sports centre of 2001 on the Sloterplas",
    "author": "Map Recall",
@@ -86603,6 +86608,7 @@
    "red": "#c8323a",
    "dark": "#4d5256"
   },
+  "measuredOverrides": true,
   "attribution": {
    "title": "Zwembad Bijlmer, Bijlmer Sportcentrum: sports and swimming hall of 2008",
    "author": "Map Recall",
@@ -86785,20 +86791,21 @@
   },
   "bagYear": 2005,
   "materialOverrides": {
-   "brick": "#5f4b41",
+   "brick": "#9c8a7c",
    "slate": "#45474a",
    "glass": "#33414a",
    "frame": "#2e3134",
    "dark": "#2a2c2e",
    "white": "#f2f2ee"
   },
+  "measuredOverrides": true,
   "attribution": {
    "title": "Victoriabad, Weesp: indoor bath of 2005",
    "author": "Map Recall",
    "sourceUrl": "https://www.openstreetmap.org/node/1618233446",
    "licence": "CC BY 4.0",
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the dark brick hall with its high window strip and glass slot, the entrance block's window band and projecting glass box, the east front's windows and the VICTORIABAD garden wall. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the grey-buff brick hall with its high window strip and glass slot, the entrance block's window band and projecting glass box, the east front's windows and the VICTORIABAD garden wall. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
   },
   "buildingFootprint": {
    "type": "Polygon",

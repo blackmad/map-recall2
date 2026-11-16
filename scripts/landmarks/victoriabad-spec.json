@@ -9,7 +9,7 @@
  },
  "surveyedSource": "Vertex average of the BAG 0457100000062818 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/victoriabad-footprints.json, written by pool-site-prepare.ts). The shell is the 3DBAG LoD2.2 (CC BY 4.0); the south and east fronts are read from Gemeente Amsterdam panoramas (CC BY 4.0), listed in scripts/landmarks/victoriabad-brief.md and per item in scripts/landmarks/victoriabad-inventory.json.",
  "materialOverrides": {
-  "brick": "#5f4b41",
+  "brick": "#9c8a7c",
   "slate": "#45474a",
   "glass": "#33414a",
   "frame": "#2e3134",
@@ -17,13 +17,17 @@
   "white": "#f2f2ee",
   "greyBrick": "#34383b"
  },
+ "measuredOverrides": true,
+ "measuredOverridesEvidence": {
+  "brick": "#9c8a7c, warm grey-buff brick, measured 2026-11-16 from two Gemeente Amsterdam panoramas (CC BY 4.0) on the front's sunlit and shaded faces: recording_2024-10-10_09-36-20_00737 (overcast; the house:frames crop victoria-w01-184, wall median #727b7a over three patches, white-balanced on the white car beside it to #95827a) and TMX7316010203-000914_pano_0003_002752 (sun, 2018; crop victoria-w16-197, wall median #baa793 lit and #a79681 on the left bay, white-balanced on the clouds to a buff of hue 29 deg). Value: the overcast lightness (diffuse light, nearest the albedo) at a hue between the two readings. Replaces the dark brown #5f4b41, which the panoramas do not show."
+ },
  "attribution": {
   "title": "Victoriabad, Weesp: indoor bath of 2005",
   "author": "Map Recall",
   "sourceUrl": "https://www.openstreetmap.org/node/1618233446",
   "licence": "CC BY 4.0",
   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the dark brick hall with its high window strip and glass slot, the entrance block's window band and projecting glass box, the east front's windows and the VICTORIABAD garden wall. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and the 3DBAG LoD2.2 shell (CC BY 4.0): the grey-buff brick hall with its high window strip and glass slot, the entrance block's window band and projecting glass box, the east front's windows and the VICTORIABAD garden wall. Fronts read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
  },
  "detachedStructures": [
   {
