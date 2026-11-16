@@ -1,0 +1,96 @@
+{
+  "district": "de-pijp",
+  "title": "De Pijp (Oude and Nieuwe Pijp: 1870-1914 speculative rows)",
+  "buurten": [
+    "KE01",
+    "KE02",
+    "KE03",
+    "KE04",
+    "KE05",
+    "KF01",
+    "KF02",
+    "KF03",
+    "KF04"
+  ],
+  "years": [
+    1868,
+    1915
+  ],
+  "evidence": [
+    "scripts/block-face/types/de-pijp/*.json: ten measured Pijp house types (1875-1893), every one three axes of white T-windows on a 4.8-8 m front, a 4.1-4.7 m ground storey (shop or raised ground) under 2.7-3.3 m upper storeys, a white cornice and a slate roof behind it",
+    "pijp-1886-segmental-mansard (eaves 15.1 m), pijp-1889-five-storey-banded (15.2 m), pijp-1892-banded-keystone (14.0 m): four- and five-storey rows read 14-15.5 m to the cornice",
+    "Nicolaas Witsenkade and Den Texstraat types (witsen-1890-*, tex-188x-*): the slate attic behind the cornice rises at about 70 degrees with one dormer per front"
+  ],
+  "design": {
+    "groundM": 4,
+    "storeyM": 3.2,
+    "axisM": 2,
+    "windowShare": 0.55,
+    "windows": "t-window",
+    "whiteFrames": true,
+    "heads": {
+      "shape": "flat",
+      "dressing": "none"
+    },
+    "sills": true,
+    "cornice": "simple",
+    "crown": "cornice",
+    "wall": {
+      "material": "brick",
+      "family": "brown-brick",
+      "hex": "#746a65",
+      "evidence": "OKLab median of the 219 De Pijp rows measure-walls.ts read from panoramas (1059 pands; L 0.533, median C 0.017, 91 rows below C 0.012); the 113 unread rows take their street median or this pool, warmed like every brick wall (round 13)"
+    },
+    "roofStorey": {
+      "kind": "none",
+      "dormersPerFront": 0
+    },
+    "extras": [],
+    "ahnFrontForms": {
+      "forms": [
+        "flat",
+        "hidden-pitch"
+      ],
+      "evidence": "Eerste Jacob van Campenstraat 157140 row (8 pands, 1875): 3DBAG lines 12.1 m where AHN4 reads the fronts at 13.6-14.0 m, each a gentle front (about 1 m per metre) with the steep rise behind it; the panorama shows four storeys and a cornice at about 14 m, not 12. De Pijp hides its pitched roofs behind a cornice, so the front height is the eaves"
+    }
+  },
+  "families": [
+    {
+      "id": "pijp-three",
+      "storeys": 3,
+      "label": "three-storey early Pijp row (eaves to about 12 m; pijp-1875-shop-dormer)"
+    },
+    {
+      "id": "pijp-four",
+      "storeys": 4,
+      "label": "four-storey Pijp row (eaves 12-15.5 m): the district's main family (pijp-1882 to 1892 types)"
+    },
+    {
+      "id": "pijp-five",
+      "storeys": 5,
+      "label": "five-storey Pijp row (eaves over 15.5 m; pijp-1889-five-storey-banded, Nieuwe Pijp)"
+    }
+  ],
+  "pitched": {
+    "minRiseM": 2,
+    "maxRiseM": 6,
+    "pitchDeg": 70,
+    "material": "slate",
+    "dormersPerFront": 1,
+    "dormerKind": "plain",
+    "hoist": true,
+    "evidence": "the Pijp and Witsenkade types (witsen-1890-*, tex-1882-hood-bracket-mansard, pijp-1886-segmental-mansard): a slate attic behind the cornice at about 70 degrees, one dormer with a hoist beam per front; drawn where the series' 3DBAG rise is at least 2 m"
+  },
+  "notDrawn": [
+    {
+      "component": "shopfront",
+      "what": "the ground storey's shops are the retail look's (OSM shops); the row draws a residential ground storey"
+    },
+    {
+      "component": "head-dressing",
+      "what": "keystones, hoods and painted bands vary by builder within a street; unstated, the heads are plain (no dice)"
+    }
+  ],
+  "rowNotes": {},
+  "streetNotes": {}
+}
