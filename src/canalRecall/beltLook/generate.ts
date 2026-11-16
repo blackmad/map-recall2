@@ -23,7 +23,8 @@ import { hexToOklab } from '../houseSpec/wallColour.ts';
 import { measuredFlatTop, roofStoreyOverCornice, slopedBandTop } from './roofSignals.ts';
 import { dressBeltStone } from './stone.ts';
 import { dressBeltCornice } from './cornice.ts';
-import { brickFromSample, lchOf } from '../houseSpec/judgedColour.ts';
+import { brickFromSample, JUDGED_PALETTE, lchOf, variedTone, type JudgedFamily } from '../houseSpec/judgedColour.ts';
+import type { RowFrontRecord } from '../houseLine/rowFront.ts';
 import type { AhnFront } from './ahnFront.ts';
 
 export interface BeltRead { answer: DescriberAnswer; sample?: string; ref: string }
@@ -32,7 +33,9 @@ export interface BeltStated { crown?: string; year?: number; shop?: boolean; fin
   /** A published house spec's measured wall colour (palette.brick). */ specHex?: string;
   /** The pand's cut wall sample (lane W1 on the pinned capture), from any cut, readable or not. */ photo?: BeltPhoto;
   /** The photo crown reader's (round 10): a tall cornice (bracketed or heavy) read on the cut, and its full storeys. */
-  tallCornice?: string; photoStoreys?: number; photoSouterrain?: boolean }
+  tallCornice?: string; photoStoreys?: number; photoSouterrain?: boolean;
+  /** The photo colour reader's (round 11): the wall's colour family read on the cut, set only where the register is silent. */
+  photoColour?: PhotoColour }
 /**
  * The photo crown reader (round 10: Singel 168333, Amstel 165494 and Prinsengracht 173558-173557, neck gables drawn as
  * flat cornices; Prinsengracht 173559 two storeys under its neck): opus on the same leaf-off cut as the finish read, the
@@ -42,6 +45,22 @@ export interface BeltStated { crown?: string; year?: number; shop?: boolean; fin
  */
 export interface PhotoCrown { crown: string; cornice: string; full: number | null; souterrain: boolean | null; cc: number; sc: number }
 export const PHOTO_CROWN_MIN = 0.7;
+/**
+ * Two crown reads of one front on different capture dates (round 11: a second capture for every read under
+ * PHOTO_CROWN_MIN or not visible, and for the held-out gables Singel 177194 and Keizersgracht 180133, both re-read as
+ * gables). Each part takes the confident read; two confident reads that disagree (gabled against not, or a different
+ * storey count) leave that part unstated (its confidence dropped under PHOTO_CROWN_MIN).
+ */
+export function mergeCrownReads(a: PhotoCrown, b: PhotoCrown): PhotoCrown & { conflict?: string[] } {
+  const ok = (r: PhotoCrown) => r.cc >= PHOTO_CROWN_MIN && r.crown !== 'not-visible';
+  const out: PhotoCrown & { conflict?: string[] } = { ...a }, conflict: string[] = [];
+  if (ok(a) && ok(b) && GABLED_CROWNS.has(a.crown) !== GABLED_CROWNS.has(b.crown)) { conflict.push('crown'); out.cc = 0.5; }
+  else if (ok(b) && (!ok(a) || b.cc > a.cc)) Object.assign(out, { crown: b.crown, cornice: b.cornice, cc: b.cc });
+  const sok = (r: PhotoCrown) => r.sc >= PHOTO_CROWN_MIN && Number.isInteger(r.full);
+  if (sok(a) && sok(b) && a.full !== b.full) { conflict.push('storeys'); out.sc = 0.5; }
+  else if (sok(b) && (!sok(a) || b.sc > a.sc)) Object.assign(out, { full: b.full, souterrain: b.souterrain, sc: b.sc });
+  return conflict.length ? { ...out, conflict } : out;
+}
 /** A tall cornice: on brackets, deep, or over an attic frieze (calibration: 5 of 6 confident photo reads agree with D1). */
 export const TALL_CORNICES: ReadonlySet<string> = new Set(['bracketed', 'heavy', 'attic-frieze']);
 export function photoCrown(p: PhotoCrown | undefined): { crown?: string; tallCornice?: string; storeys?: number; souterrain?: boolean } {
@@ -380,4 +399,43 @@ export function apexOnFront(row: RowRecord, input: RowInput, ahn: ReadonlyMap<st
     f.topM = +(newFoot - (f.groundOffsetM ?? 0)).toFixed(2);
   }
   return row;
+}
+
+/**
+ * The photo colour reader (round 11; the Centrum lane's reader, scripts/centrum-looks/photo-reads.ts and
+ * photo-reader-prompt.md, opus on each front's cut): the wall's colour family as a person in the street would name it.
+ * The cut's absolute sample reads winter shade as near-black and sun glare as buff (held-out round 10: Keizersgracht
+ * 167979, red-brown brick drawn buff #b39c75 from its washed-out sample #917861). A confident read (PHOTO_COLOUR_MIN)
+ * where the register states no finish and no published spec states a colour draws the front in its family's tone.
+ */
+export const PHOTO_COLOUR_MIN = 0.7;
+export interface PhotoColour { finish: string; family: string; confidence: number }
+/** The reader's families onto the judged palette (scripts/centrum-looks/generate.ts PHOTO_FAMILY). */
+export const PHOTO_COLOUR_FAMILY: Readonly<Record<string, JudgedFamily>> = {
+  'dark-grey-brick': 'dark-grey-brick', 'purple-brown-brick': 'purple-brown-brick', 'brown-brick': 'brown-brick', 'red-brown-brick': 'red-brown-brick',
+  'orange-red-brick': 'orange-red-brick', 'buff-brick': 'buff-brick', 'white-paint': 'painted-white', 'cream-paint': 'cream-render',
+  'pale-grey': 'pale-grey-stucco', 'dark-paint': 'painted-black',
+};
+const BRICK_FAMILIES = new Set<JudgedFamily>(['dark-grey-brick', 'purple-brown-brick', 'brown-brick', 'red-brown-brick', 'orange-red-brick', 'buff-brick']);
+/** A confident photo colour read's wall, or undefined (unclear, other-paint, low confidence, or a spec colour stands). */
+export function photoColourWall(sd: BeltStated | undefined): { family: JudgedFamily; finish: 'brick' | 'stucco' | 'painted-brick' } | undefined {
+  const c = sd?.photoColour;
+  if (!c || sd!.specHex || !(c.confidence >= PHOTO_COLOUR_MIN)) return undefined;
+  const family = PHOTO_COLOUR_FAMILY[c.family];
+  if (!family) return undefined;
+  return { family, finish: BRICK_FAMILIES.has(family) ? 'brick' : c.finish === 'stucco' ? 'stucco' : 'painted-brick' };
+}
+/** Each record with a confident photo colour read takes its family's tone (variedTone); returns a tally of what changed. */
+export function photoColourWalls(records: RowFrontRecord[], stated: ReadonlyMap<string, BeltStated>): Record<string, number> {
+  const tally: Record<string, number> = {};
+  for (const r of records) {
+    const pid = String(r.pandId).replace(/^NL\.IMBAG\.Pand\./, ''), w = photoColourWall(stated.get(pid));
+    if (!w || !r.wall) continue;
+    const before = /judged ([a-z-]+)/.exec(r.sources?.wall ?? '')?.[1];
+    const key = before === w.family ? 'same family' : `${before ?? '?'} -> ${w.family}`;
+    tally[key] = (tally[key] ?? 0) + 1;
+    r.wall = { ...r.wall, hex: variedTone(w.family, pid), finish: w.finish };
+    r.sources = { ...r.sources, wall: `judged ${w.family} (photo colour read ${stated.get(pid)!.photoColour!.confidence}: ${JUDGED_PALETTE[w.family].label}; ${BELT_LOOK_REF})` };
+  }
+  return tally;
 }

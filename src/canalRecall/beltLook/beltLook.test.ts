@@ -393,3 +393,48 @@ test('round 10 pins on the staged belt (data/buurt-generators/belt/row-front.jso
   assert.equal(rec('177196').storeys, 4);
   assert.equal(rec('177196').eavesM, 11.2);
 });
+
+test('round 11: two crown reads on different captures, and the photo colour read', async () => {
+  const { mergeCrownReads, photoColourWall, photoColourWalls } = await import('./generate.ts');
+  const r = (crown: string, cc: number, full: number | null = 4, sc = 0.8) => ({ crown, cornice: 'none', full, souterrain: false, cc, sc });
+  // Prinsengracht 173558: a low neck read (0.55) and a confident second capture (neck 0.85, three storeys) states the neck.
+  assert.equal(mergeCrownReads(r('neck', 0.55, 4, 0.55), r('neck', 0.85, 3, 0.85)).crown, 'neck');
+  assert.equal(mergeCrownReads(r('neck', 0.55, 4, 0.55), r('neck', 0.85, 3, 0.85)).full, 3);
+  // A not-visible first read takes the second's gable; a confident first read is kept over a weaker second.
+  assert.equal(mergeCrownReads(r('not-visible', 0.8), r('step', 0.75)).crown, 'step');
+  assert.equal(mergeCrownReads(r('bell', 0.85), r('neck', 0.75)).crown, 'bell');
+  // Two confident reads that disagree on gabled against flat state no crown; on storeys, no storey count.
+  const c = mergeCrownReads(r('bell', 0.8), r('cornice', 0.8));
+  assert.ok(c.cc < 0.7 && c.conflict?.includes('crown'));
+  assert.ok(mergeCrownReads(r('bell', 0.8, 4), r('bell', 0.8, 5)).sc < 0.7);
+  // Keizersgracht 167979 (held-out round 10, Keizersgracht 167982 house 2): red-brown brick drawn buff from a washed-out
+  // sample; a confident colour read draws it red-brown. A low read, an unclear one and a published spec colour do nothing.
+  assert.deepEqual(photoColourWall({ photoColour: { finish: 'brick', family: 'red-brown-brick', confidence: 0.75 } }), { family: 'red-brown-brick', finish: 'brick' });
+  assert.equal(photoColourWall({ photoColour: { finish: 'brick', family: 'red-brown-brick', confidence: 0.6 } }), undefined);
+  assert.equal(photoColourWall({ photoColour: { finish: 'unclear', family: 'unclear', confidence: 0.9 } }), undefined);
+  assert.equal(photoColourWall({ specHex: '#6f5543', photoColour: { finish: 'brick', family: 'red-brown-brick', confidence: 0.9 } }), undefined);
+  assert.deepEqual(photoColourWall({ photoColour: { finish: 'stucco', family: 'white-paint', confidence: 0.8 } }), { family: 'painted-white', finish: 'stucco' });
+  assert.deepEqual(photoColourWall({ photoColour: { finish: 'paint', family: 'dark-paint', confidence: 0.8 } }), { family: 'painted-black', finish: 'painted-brick' });
+  const recs = [{ pandId: '0363100012167979', wall: { hex: '#b39c75', source: 'judged', finish: 'brick' }, sources: { wall: 'judged buff-brick (x)' } }] as never[];
+  const tally = photoColourWalls(recs, new Map([['0363100012167979', { photoColour: { finish: 'brick', family: 'red-brown-brick', confidence: 0.75 } }]]));
+  assert.deepEqual(tally, { 'buff-brick -> red-brown-brick': 1 });
+  assert.notEqual((recs[0] as { wall: { hex: string } }).wall.hex, '#b39c75');
+});
+
+test('round 11 pins on the staged belt (data/buurt-generators/belt/row-front.json)', async () => {
+  const fs = await import('node:fs');
+  const recs = new Map<string, { crown?: { family?: string }; storeys?: number; wall?: { finish?: string }; sources?: { wall?: string } }>(
+    JSON.parse(fs.readFileSync('data/buurt-generators/belt/row-front.json', 'utf8')).records.map((r: { pandId: string }) => [r.pandId, r]));
+  const rec = (id: string) => recs.get(`0363100012${id}`)!;
+  // Held-out round 10's "ornate flat tops drawn as gables" are gables on two capture dates: Singel 177194 a bell with a
+  // white top (2022 and 2023 cuts, cc 0.85 both), Keizersgracht 180133 (180047 house 4) a step gable (its own D1 read, and
+  // the 2023 cut at 0.75). They stay gables.
+  assert.equal(rec('177194').crown?.family, 'bell');
+  assert.equal(rec('180133').crown?.family, 'step');
+  // Prinsengracht 173558: a neck read at 0.55 on the 2023-02-27 cut, 0.85 on the 2023-02-13 cut: a neck over three storeys.
+  assert.equal(rec('173558').crown?.family, 'neck');
+  assert.equal(rec('173558').storeys, 3);
+  // Prinsengracht 167557 (Keizersgracht side street): painted black brick drawn pale grey stucco from a colourless paint read.
+  assert.match(rec('167557').sources?.wall ?? '', /^judged painted-black \(photo colour read/);
+  assert.equal(rec('167557').wall?.finish, 'painted-brick');
+});
