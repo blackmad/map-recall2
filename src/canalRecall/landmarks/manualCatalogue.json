@@ -87219,5 +87219,346 @@
     ]
    ]
   }
+ },
+ {
+  "id": "de-ateliers",
+  "name": "De Ateliers (former Quellinusschool), Stadhouderskade 86",
+  "modelUrl": "./models/de-ateliers.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012119240"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89466575,
+    52.35767395
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 40.6,
+   "widthMetres": 62.2
+  },
+  "surveyed": {
+   "anchor": [
+    4.89466575,
+    52.35767395
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012119240 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/de-ateliers-footprints.json, bag-shell-prepare.ts); fronts read from rectified Gemeente Amsterdam panoramas recording_2024-09-04_05-35-54_03349 (2024), recording_2025-07-14_06-43-08_00935 (2025), TMX7316010203-002548_pano_0000_000152 (2022) and TMX7316010203-001674_pano_0000_003199 (2020), CC BY 4.0. Per wall in scripts/landmarks/de-ateliers-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 20.9,
+  "galleryView": {
+   "theta": 3,
+   "phi": 1.2
+  },
+  "bagYear": 1883,
+  "materialOverrides": {
+   "brick": "#7a5f51",
+   "red": "#71574a",
+   "white": "#e9e6dc",
+   "sandstone": "#e4e1d6",
+   "stone": "#93948f",
+   "slate": "#5d6168",
+   "glass": "#4d5860",
+   "dark": "#2c3033",
+   "gold": "#c9a54a",
+   "bronze": "#2c3033"
+  },
+  "attribution": {
+   "title": "De Ateliers (former Quellinusschool, 1883), Stadhouderskade 86, Amsterdam",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-04_05-35-54_03349/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012119240 (CC0): the six tall bays with white-framed windows, relief aprons and scrolled hoods, the stone entablature, the garland frieze and cornice, the pavilions with ball finials and the entrance range, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8946492,
+      52.3577124
+     ],
+     [
+      4.8946378,
+      52.3577131
+     ],
+     [
+      4.8946383,
+      52.3577158
+     ],
+     [
+      4.8946222,
+      52.3577167
+     ],
+     [
+      4.8946218,
+      52.357714
+     ],
+     [
+      4.8945997,
+      52.3577152
+     ],
+     [
+      4.8946001,
+      52.357718
+     ],
+     [
+      4.8945825,
+      52.3577189
+     ],
+     [
+      4.8945821,
+      52.3577162
+     ],
+     [
+      4.8945775,
+      52.3577165
+     ],
+     [
+      4.8945759,
+      52.3577055
+     ],
+     [
+      4.894581,
+      52.3577052
+     ],
+     [
+      4.8945805,
+      52.3577019
+     ],
+     [
+      4.8945755,
+      52.3577022
+     ],
+     [
+      4.8945749,
+      52.3576988
+     ],
+     [
+      4.8944754,
+      52.3577045
+     ],
+     [
+      4.8944759,
+      52.357708
+     ],
+     [
+      4.8944584,
+      52.357709
+     ],
+     [
+      4.8944578,
+      52.3577055
+     ],
+     [
+      4.8943576,
+      52.3577112
+     ],
+     [
+      4.8943582,
+      52.3577148
+     ],
+     [
+      4.8943538,
+      52.357715
+     ],
+     [
+      4.8943542,
+      52.3577177
+     ],
+     [
+      4.8943366,
+      52.3577187
+     ],
+     [
+      4.8943362,
+      52.357716
+     ],
+     [
+      4.8942361,
+      52.3577217
+     ],
+     [
+      4.8942365,
+      52.3577244
+     ],
+     [
+      4.894219,
+      52.3577254
+     ],
+     [
+      4.8942186,
+      52.3577227
+     ],
+     [
+      4.894214,
+      52.357723
+     ],
+     [
+      4.8942135,
+      52.3577186
+     ],
+     [
+      4.8941886,
+      52.3575136
+     ],
+     [
+      4.8943335,
+      52.3575058
+     ],
+     [
+      4.8943176,
+      52.357395
+     ],
+     [
+      4.894907,
+      52.3573633
+     ],
+     [
+      4.894923,
+      52.3574742
+     ],
+     [
+      4.8950468,
+      52.3574675
+     ],
+     [
+      4.8950557,
+      52.3574671
+     ],
+     [
+      4.8950563,
+      52.3574696
+     ],
+     [
+      4.8951001,
+      52.3576712
+     ],
+     [
+      4.8951003,
+      52.3576723
+     ],
+     [
+      4.8950959,
+      52.3576726
+     ],
+     [
+      4.8950964,
+      52.3576752
+     ],
+     [
+      4.8950788,
+      52.3576763
+     ],
+     [
+      4.8950783,
+      52.3576731
+     ],
+     [
+      4.8949781,
+      52.3576789
+     ],
+     [
+      4.8949786,
+      52.357682
+     ],
+     [
+      4.894961,
+      52.357683
+     ],
+     [
+      4.8949605,
+      52.3576799
+     ],
+     [
+      4.8949562,
+      52.3576801
+     ],
+     [
+      4.8949557,
+      52.357677
+     ],
+     [
+      4.8948553,
+      52.3576827
+     ],
+     [
+      4.8948558,
+      52.3576859
+     ],
+     [
+      4.8948382,
+      52.3576869
+     ],
+     [
+      4.8948378,
+      52.3576837
+     ],
+     [
+      4.8947373,
+      52.3576895
+     ],
+     [
+      4.8947378,
+      52.3576929
+     ],
+     [
+      4.8947327,
+      52.3576932
+     ],
+     [
+      4.8947332,
+      52.3576965
+     ],
+     [
+      4.8947383,
+      52.3576962
+     ],
+     [
+      4.89474,
+      52.3577072
+     ],
+     [
+      4.8947356,
+      52.3577075
+     ],
+     [
+      4.894736,
+      52.3577102
+     ],
+     [
+      4.8947185,
+      52.3577112
+     ],
+     [
+      4.8947181,
+      52.3577085
+     ],
+     [
+      4.894696,
+      52.3577097
+     ],
+     [
+      4.8946964,
+      52.3577125
+     ],
+     [
+      4.8946804,
+      52.3577134
+     ],
+     [
+      4.8946799,
+      52.3577107
+     ],
+     [
+      4.8946492,
+      52.3577124
+     ]
+    ]
+   ]
+  }
  }
 ]
