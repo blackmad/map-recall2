@@ -1,0 +1,277 @@
+{
+ "key": "inner-vanhallstraat",
+ "settle": {
+  "settled": true,
+  "ground": true,
+  "city": true,
+  "buildings": true,
+  "far": true,
+  "baked": true,
+  "detail": {
+   "groundFading": 0,
+   "city": {
+    "inFlight": 0,
+    "queued": 0,
+    "styling": false
+   },
+   "buildingsPending": 0,
+   "far": {
+    "pending": 0
+   },
+   "baked": {
+    "covered": 14,
+    "cells": 14,
+    "drawn": 14,
+    "fading": 0,
+    "pending": 0
+   }
+  }
+ },
+ "picks": {
+  "fps": {
+   "center": [
+    4.874376538964398,
+    52.38207434726348
+   ],
+   "zoom": 18.756561049487114,
+   "bearing": 315.520530400876,
+   "pitch": 85,
+   "fovDeg": 120,
+   "distanceM": 27.995860319434456,
+   "eye": {
+    "lngLat": [
+     4.87466411780038,
+     52.3818955916164
+    ],
+    "heightM": 2.44
+   }
+  },
+  "engine": "own",
+  "fpsDrawn": true,
+  "rect": {
+   "w": 1440,
+   "h": 900
+  },
+  "hits": [
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9264321350176107,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9234389552904524,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9201925634038756,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9166594089913712,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9267005317837507,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9237295808807489,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9205082939580326,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9170036389159293,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9269669744371608,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9240180052487171,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9208215327384385,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9173450330951197,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9272314842538336,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.924304253321622,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9211323091412406,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.917683626441366,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9274940822022866,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9245883496522627,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.921440652102742,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.918019453297366,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9277547889488005,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.924870318425497,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9217465901076869,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9183525474467652,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9280136248628782,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9251501834654181,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9220501511986596,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012157469",
+    "kind": "",
+    "model": "",
+    "depth": 0.9186829421264545,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   }
+  ]
+ },
+ "drawn": {
+  "search": "?engine=own&cam=fps&realLook=walls",
+  "worldCells": true,
+  "found": true,
+  "constructionYear": 1906,
+  "facadeStyle": "c19",
+  "registerFinish": null,
+  "specReading": null,
+  "specRecipeWall": null,
+  "specRecipe": null,
+  "specShop": null,
+  "heldBrick": false,
+  "facadeMappedColour": null,
+  "sideColour": "#745548",
+  "sideColourSource": null,
+  "periodWallHex": null
+ },
+ "opened": 3,
+ "ms": {
+  "open": 0,
+  "settle": 6959,
+  "total": 7128
+ }
+}

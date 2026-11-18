@@ -1,0 +1,45 @@
+{
+ "key": "pijp-vdhelst",
+ "dpr": 1.51,
+ "buffer": [
+  2174,
+  2437
+ ],
+ "css": [
+  1440,
+  1614
+ ],
+ "search": "?engine=own&cam=fps&realLook=walls",
+ "viewport": [
+  1440,
+  1614
+ ],
+ "windowH": 900,
+ "settle": {
+  "settled": true,
+  "ground": true,
+  "city": true,
+  "buildings": true,
+  "far": true,
+  "baked": true,
+  "detail": {
+   "groundFading": 0,
+   "city": {
+    "inFlight": 0,
+    "queued": 0,
+    "styling": false
+   },
+   "buildingsPending": 0,
+   "far": {
+    "pending": 0
+   },
+   "baked": {
+    "covered": 10,
+    "cells": 10,
+    "drawn": 10,
+    "fading": 0,
+    "pending": 0
+   }
+  }
+ }
+}

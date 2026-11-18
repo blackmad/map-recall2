@@ -1,0 +1,50 @@
+{
+ "input": "list pose-runstraat.json",
+ "label": "run",
+ "query": "?realLook=1",
+ "pands": 1,
+ "prepared": 1,
+ "skipped": [],
+ "framed": 1,
+ "alignment": {
+  "photoEdges": 0,
+  "medianPct": null,
+  "p90Pct": null,
+  "over3": [],
+  "gameEdges": 0,
+  "gameMedianPct": null
+ },
+ "flags": {
+  "missing": [],
+  "otherBuilding": [],
+  "neighbourCovers": [],
+  "roofOffset": [],
+  "wallColour": [],
+  "sameAsBefore": []
+ },
+ "advisory": {
+  "possibleBlankWall": []
+ },
+ "colourScores": [
+  [
+   "0363100012172397",
+   0.262
+  ]
+ ],
+ "throughput": {
+  "poses": 1,
+  "wallS": 41.7,
+  "pairsPerMin": 1.44,
+  "opened": 9,
+  "settleMedianS": 28.1,
+  "batch": {
+   "poses": 34,
+   "lists": 9,
+   "wallMs": 1735313
+  }
+ },
+ "sheets": [
+  "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r3/ap-run-all/contact-1.jpg",
+  "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r3/ap-run-all/rule10-1.jpg"
+ ]
+}

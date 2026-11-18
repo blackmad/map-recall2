@@ -10,6 +10,7 @@ import {calmFoliage,treeCalmFlag} from '../../../src/canalRecall/look/calmTones.
 // `?realLook=trees` (look/realLook.ts, default off): crowns in the sampled species colour with a per-tree spread, smooth-shaded.
 import {realLookOn,realFoliageHex} from '../../../src/canalRecall/look/realLook.ts';
 import {crownLobe} from '../../../src/canalRecall/trees/crownGeometry.ts';
+import {patchCrownGaps} from '../../../src/canalRecall/trees/crownGaps.ts';
 import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/roseBeds.ts';
 import roseGardens from './rose-garden-data.js';
 // The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the CameraMap shim (#129: ~220 calls/s).
@@ -320,7 +321,7 @@ export class InventoryTrees {
         :rose?roseBushGeometry()
         :real?crownGeometryOf(detail,Number(key.split('-').pop())||0):new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0));
     const materialKey=wood?'wood':rose?'rose':'foliage';
-    if(!this.materials.has(materialKey)){const mat=rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:!(materialKey==='foliage'&&realLookOn('trees'))});this.materials.set(materialKey,this.fadeOn?patchTreeFadeMaterial(mat,this.fadeNow,TREE_FADE_MS):mat);}
+    if(!this.materials.has(materialKey)){const realCrown=materialKey==='foliage'&&realLookOn('trees');let mat=rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:!realCrown});if(realCrown)mat=patchCrownGaps(mat,THREE.DoubleSide);this.materials.set(materialKey,this.fadeOn?patchTreeFadeMaterial(mat,this.fadeNow,TREE_FADE_MS):mat);}
     const m=new THREE.InstancedMesh(this.geometries.get(geometryKey),this.materials.get(materialKey),count);
     m.userData.wood=wood;m.userData.groupKey=key;m.userData.geometryKey=geometryKey;
     fill(m);

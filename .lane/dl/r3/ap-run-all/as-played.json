@@ -1,0 +1,21 @@
+{
+ "out": "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r3/ap-run-all",
+ "lngLat": [
+  4.885752353340922,
+  52.36881137646127
+ ],
+ "headingDeg": 273.3877281070177,
+ "query": "?realLook=1",
+ "engine": "maplibre",
+ "buffer": [
+  2880,
+  1800
+ ],
+ "css": [
+  1440,
+  900
+ ],
+ "search": "?realLook=1",
+ "dpr": 2,
+ "settle": null
+}

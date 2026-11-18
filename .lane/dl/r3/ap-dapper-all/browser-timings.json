@@ -1,0 +1,19 @@
+{
+ "poses": 1,
+ "wallMs": 32909,
+ "opened": 9,
+ "timings": [
+  {
+   "key": "east-dapper",
+   "out": "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r3/ap-dapper-all",
+   "open": 6172,
+   "settle": 26351,
+   "total": 32909
+  }
+ ],
+ "batch": {
+  "poses": 34,
+  "lists": 9,
+  "wallMs": 1735313
+ }
+}

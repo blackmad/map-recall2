@@ -1,0 +1,84 @@
+{
+ "input": "list poses.json",
+ "label": "run",
+ "query": "?realLook=walls",
+ "pands": 6,
+ "prepared": 6,
+ "skipped": [],
+ "framed": 6,
+ "alignment": {
+  "photoEdges": 8,
+  "medianPct": 3.13,
+  "p90Pct": 4.79,
+  "over3": [
+   "0363100012177393 right -3.19%",
+   "0363100012127543 left 3.13%",
+   "0363100012127543 right -4.79%",
+   "0363100012162122 right -4.17%"
+  ],
+  "gameEdges": 8,
+  "gameMedianPct": 1.67
+ },
+ "flags": {
+  "missing": [],
+  "otherBuilding": [],
+  "neighbourCovers": [
+   "0363100012177393"
+  ],
+  "roofOffset": [
+   "0363100012142699"
+  ],
+  "wallColour": [
+   "0363100012127543",
+   "0363100012162122",
+   "0363100012142699"
+  ],
+  "sameAsBefore": []
+ },
+ "advisory": {
+  "possibleBlankWall": []
+ },
+ "colourScores": [
+  [
+   "0363100012172397",
+   0.095
+  ],
+  [
+   "0363100012177393",
+   0.204
+  ],
+  [
+   "0363100012127543",
+   0.936
+  ],
+  [
+   "0363100012162122",
+   0.628
+  ],
+  [
+   "0363100012157469",
+   0.01
+  ],
+  [
+   "0363100012142699",
+   -0.353
+  ]
+ ],
+ "throughput": {
+  "poses": 6,
+  "wallS": 79.9,
+  "pairsPerMin": 4.51,
+  "opened": 2,
+  "settleMedianS": 8.6,
+  "batch": {
+   "poses": 12,
+   "lists": 2,
+   "wallMs": 421239
+  }
+ },
+ "sheets": [
+  "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/on-walls/contact-1.jpg",
+  "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/on-walls/rule10-1.jpg",
+  "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/on-walls/rule10-2.jpg"
+ ]
+}

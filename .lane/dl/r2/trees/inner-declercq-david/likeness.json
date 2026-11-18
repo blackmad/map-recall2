@@ -1,0 +1,45 @@
+{
+ "key": "inner-declercq-david",
+ "dpr": 2,
+ "buffer": [
+  2880,
+  3716
+ ],
+ "css": [
+  1440,
+  1858
+ ],
+ "search": "?engine=own&cam=fps",
+ "viewport": [
+  1440,
+  1858
+ ],
+ "windowH": 900,
+ "settle": {
+  "settled": true,
+  "ground": true,
+  "city": true,
+  "buildings": true,
+  "far": true,
+  "baked": true,
+  "detail": {
+   "groundFading": 0,
+   "city": {
+    "inFlight": 0,
+    "queued": 0,
+    "styling": false
+   },
+   "buildingsPending": 0,
+   "far": {
+    "pending": 0
+   },
+   "baked": {
+    "covered": 15,
+    "cells": 15,
+    "drawn": 15,
+    "fading": 0,
+    "pending": 0
+   }
+  }
+ }
+}

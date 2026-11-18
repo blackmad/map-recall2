@@ -1,0 +1,366 @@
+{
+ "key": "belt-keizersgracht",
+ "settle": {
+  "settled": true,
+  "ground": true,
+  "city": true,
+  "buildings": true,
+  "far": true,
+  "baked": true,
+  "detail": {
+   "groundFading": 0,
+   "city": {
+    "inFlight": 0,
+    "queued": 0,
+    "styling": false
+   },
+   "buildingsPending": 0,
+   "far": {
+    "pending": 0
+   },
+   "baked": {
+    "covered": 4,
+    "cells": 4,
+    "drawn": 4,
+    "fading": 0,
+    "pending": 0
+   }
+  }
+ },
+ "picks": {
+  "fps": {
+   "center": [
+    4.8871524006435765,
+    52.36461360964913
+   ],
+   "zoom": 20.761488332535325,
+   "bearing": 201.25355258457253,
+   "pitch": 85,
+   "fovDeg": 46.7,
+   "distanceM": 27.995860319434456,
+   "eye": {
+    "lngLat": [
+     4.8873011273309,
+     52.3648471026963
+    ],
+    "heightM": 2.44
+   }
+  },
+  "engine": "own",
+  "fpsDrawn": true,
+  "rect": {
+   "w": 1440,
+   "h": 900
+  },
+  "hits": [
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9858027274655157,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9857238223664772,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9856440600471011,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9855634264619063,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.985481907256881,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177640",
+    "kind": "",
+    "model": "",
+    "depth": 0.9858477357918064,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9856961106627926,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9856160462684632,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.985535105641076,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9854532743171067,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9853705375129483,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177640",
+    "kind": "",
+    "model": "",
+    "depth": 0.98635742269714,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9855879260274003,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9855066766011233,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.985424531362642,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.985341475414721,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.985257493527965,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177640",
+    "kind": "",
+    "model": "",
+    "depth": 0.9868748252016838,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9854781387207514,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9853956777583921,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9853123008170053,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9852279925492652,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9851427372630577,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.985366712864351,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9852830130654731,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9851983765108518,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.9851127873859432,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177393",
+    "kind": "",
+    "model": "",
+    "depth": 0.985026229518208,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.9831891595561896,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.9830926177033001,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.9829949871531571,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.982896249385565,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.9827963854578609,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.9826708376941377,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.9830574171548518,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.9829593955396705,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.9828602600711639,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.9827599916551981,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.9826585707587047,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177394",
+    "kind": "",
+    "model": "",
+    "depth": 0.9825310529442799,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   }
+  ]
+ },
+ "drawn": {
+  "search": "?engine=own&cam=fps&realLook=walls",
+  "worldCells": true,
+  "found": true,
+  "constructionYear": 1765,
+  "facadeStyle": "canal",
+  "registerFinish": null,
+  "specReading": null,
+  "specRecipeWall": null,
+  "specRecipe": null,
+  "specShop": null,
+  "heldBrick": false,
+  "facadeMappedColour": null,
+  "sideColour": "#8c5b4d",
+  "sideColourSource": null,
+  "periodWallHex": null
+ },
+ "opened": 3,
+ "ms": {
+  "open": 0,
+  "settle": 3853,
+  "total": 4912
+ }
+}

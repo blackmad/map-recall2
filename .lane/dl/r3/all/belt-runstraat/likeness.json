@@ -1,0 +1,45 @@
+{
+ "key": "belt-runstraat",
+ "dpr": 2,
+ "buffer": [
+  2880,
+  5400
+ ],
+ "css": [
+  1440,
+  2700
+ ],
+ "search": "?engine=own&cam=fps&realLook=1",
+ "viewport": [
+  1440,
+  2700
+ ],
+ "windowH": 900,
+ "settle": {
+  "settled": true,
+  "ground": true,
+  "city": true,
+  "buildings": true,
+  "far": true,
+  "baked": true,
+  "detail": {
+   "groundFading": 0,
+   "city": {
+    "inFlight": 0,
+    "queued": 0,
+    "styling": false
+   },
+   "buildingsPending": 0,
+   "far": {
+    "pending": 0
+   },
+   "baked": {
+    "covered": 8,
+    "cells": 8,
+    "drawn": 8,
+    "fading": 0,
+    "pending": 0
+   }
+  }
+ }
+}

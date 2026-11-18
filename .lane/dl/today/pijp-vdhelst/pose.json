@@ -1,0 +1,390 @@
+{
+ "pandId": "0363100012127543",
+ "key": "pijp-vdhelst",
+ "street": "Albert Cuypstraat",
+ "label": "run",
+ "query": "",
+ "engineWorld": {
+  "engine": "own (fps camera; players get MapLibre)",
+  "world": "world-v1 (players' default)",
+  "live": false
+ },
+ "route": "generic",
+ "why": [
+  "longest wall on the nearest road",
+  "panorama TMX7316010203-002403_pano_0000_000109: rank 1 of 57, foliage 3%, glare 0% (pre-pass over 3; rejected 2021-04-23 washed out 51%)",
+  "likeness: stepped back 10.1 m to TMX7316010203-002470_pano_0001_000453 (21.2 m) to hold the front at 72 deg, window raised 357 px",
+  "reused the cached pick, pose and photo cut (--reuse-photos)"
+ ],
+ "wall": {
+  "a": {
+   "x": 121251.61254858601,
+   "y": 485387.0891038533
+  },
+  "b": {
+   "x": 121271.54711035383,
+   "y": 485393.07262987125
+  },
+  "heightM": 15.04
+ },
+ "wallLenM": 20.81,
+ "pick": {
+  "panoId": "TMX7316010203-002403_pano_0000_000109",
+  "timestamp": "2022-01-10T07:56:45.032720Z",
+  "missionYear": 2021,
+  "missionType": "woz",
+  "surface": "L",
+  "distM": 11.139880567279379,
+  "obliquityDeg": 0.8881077558247111,
+  "relaxed": false,
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/01/10/TMX7316010203-002403/pano_0000_000109/equirectangular/panorama_4000.jpg"
+ },
+ "pose": {
+  "rd": {
+   "x": 121264.61663971486,
+   "y": 485379.3629042485
+  },
+  "lngLat": [
+   4.89201864911298,
+   52.3552773607912
+  ],
+  "eyeHeightM": 2.44,
+  "cameraNap": 3.4658402800559998,
+  "headingDeg": 343.8270199629741,
+  "lookDownDeg": 5,
+  "vfovDeg": 117.07,
+  "width": 1440,
+  "height": 900,
+  "clipped": []
+ },
+ "hfovDeg": 138.1,
+ "fps": {
+  "center": [
+   4.891904393742474,
+   52.355517978933435
+  ],
+  "zoom": 18.841422885951836,
+  "bearing": 343.8270199629741,
+  "pitch": 85,
+  "fovDeg": 117.07,
+  "distanceM": 27.995860319434456,
+  "eye": {
+   "lngLat": [
+    4.89201864911298,
+    52.3552773607912
+   ],
+   "heightM": 2.44
+  }
+ },
+ "fpsUsed": {
+  "center": [
+   4.891904393742474,
+   52.355517978933435
+  ],
+  "zoom": 18.841422885951836,
+  "bearing": 343.8270199629741,
+  "pitch": 85,
+  "fovDeg": 117.07,
+  "distanceM": 27.995860319434456,
+  "eye": {
+   "lngLat": [
+    4.89201864911298,
+    52.3552773607912
+   ],
+   "heightM": 2.44
+  }
+ },
+ "foliage": 0.030303030303030304,
+ "candidates": 57,
+ "edges": {
+  "photo": [
+   {
+    "side": "left",
+    "offsetPx": 45,
+    "offsetPct": 3.13,
+    "contrast": 6.58,
+    "found": true
+   },
+   {
+    "side": "right",
+    "offsetPx": -69,
+    "offsetPct": -4.79,
+    "contrast": 6.42,
+    "found": true
+   },
+   {
+    "side": "crown",
+    "offsetPx": -57,
+    "offsetPct": -3.96,
+    "contrast": 6.08,
+    "found": true
+   }
+  ],
+  "game": [
+   {
+    "side": "left",
+    "offsetPx": -8,
+    "offsetPct": -0.56,
+    "contrast": 233.53,
+    "found": true
+   },
+   {
+    "side": "right",
+    "offsetPx": 3,
+    "offsetPct": 0.21,
+    "contrast": 250.83,
+    "found": true
+   },
+   {
+    "side": "crown",
+    "offsetPx": 39,
+    "offsetPct": 2.71,
+    "contrast": 178.68,
+    "found": true
+   }
+  ]
+ },
+ "skyline": {
+  "photo": [
+   {
+    "u": 2.081320101480954,
+    "topM": 16.9
+   },
+   {
+    "u": 4.856413570122226,
+    "topM": 15.66
+   },
+   {
+    "u": 7.631507038763498,
+    "topM": 17.08
+   },
+   {
+    "u": 10.406600507404772,
+    "topM": 17.24
+   },
+   {
+    "u": 13.181693976046041,
+    "topM": 17.36
+   },
+   {
+    "u": 15.956787444687313,
+    "topM": 17.46
+   },
+   {
+    "u": 18.731880913328588,
+    "topM": 16.37
+   }
+  ],
+  "game": [
+   {
+    "u": 2.081320101480954,
+    "topM": 15.29
+   },
+   {
+    "u": 4.856413570122226,
+    "topM": 15.28
+   },
+   {
+    "u": 7.631507038763498,
+    "topM": 15.3
+   },
+   {
+    "u": 10.406600507404772,
+    "topM": 15.29
+   },
+   {
+    "u": 13.181693976046041,
+    "topM": 15.31
+   },
+   {
+    "u": 15.956787444687313,
+    "topM": 15.3
+   },
+   {
+    "u": 18.731880913328588,
+    "topM": 15.32
+   }
+  ],
+  "offset": {
+   "game": {
+    "medianM": 15.3,
+    "n": 7,
+    "clipped": 0
+   },
+   "photo": {
+    "medianM": 17.08,
+    "n": 7,
+    "clipped": 0
+   },
+   "crownM": 15.04
+  }
+ },
+ "picks": {
+  "wall": {
+   "n": 35,
+   "target": 35,
+   "other": 0,
+   "none": 0,
+   "others": {}
+  },
+  "above": {
+   "n": 10,
+   "target": 0
+  },
+  "drawnBy": "generic"
+ },
+ "measure": {
+  "photo": {
+   "openings": 68,
+   "wallHex": "#6d605b",
+   "wallL": 0.392,
+   "usable": 0.99,
+   "columns": 5
+  },
+  "game": {
+   "openings": 40,
+   "wallHex": "#dfcbb8",
+   "wallL": 0.798,
+   "usable": 1,
+   "columns": 10
+  }
+ },
+ "colour": {
+  "photo": {
+   "pand": 0.299,
+   "neighbours": [
+    0.275,
+    0.298
+   ],
+   "rel": 1.044
+  },
+  "game": {
+   "pand": 0.747,
+   "neighbours": [
+    0.346,
+    0.215
+   ],
+   "rel": 2.663
+  },
+  "used": 2,
+  "ref": "both",
+  "score": 0.936
+ },
+ "lab": {
+  "photo": {
+   "L": 0.416,
+   "C": 0.01,
+   "h": 38,
+   "hex": "#514a48",
+   "n": 379
+  },
+  "game": {
+   "L": 0.439,
+   "C": 0.027,
+   "h": 234,
+   "hex": "#43555f",
+   "n": 150
+  }
+ },
+ "drawn": {
+  "search": "?engine=own&cam=fps",
+  "worldCells": true,
+  "found": true,
+  "constructionYear": 1997,
+  "facadeStyle": "modern",
+  "registerFinish": null,
+  "specReading": null,
+  "specRecipeWall": null,
+  "specRecipe": null,
+  "specShop": null,
+  "heldBrick": false,
+  "facadeMappedColour": null,
+  "sideColour": "#b59c77",
+  "sideColourSource": null,
+  "periodWallHex": null
+ },
+ "flags": {
+  "missing": false,
+  "otherBuilding": null,
+  "neighbourCovers": null,
+  "roofOffset": null,
+  "wallColour": "lighter than its neighbours in the game: rel game 2.663 vs photo 1.044, ref both"
+ },
+ "advisory": {
+  "openings": null
+ },
+ "settle": {
+  "settled": true,
+  "ground": true,
+  "city": true,
+  "buildings": true,
+  "far": true,
+  "baked": true,
+  "detail": {
+   "groundFading": 0,
+   "city": {
+    "inFlight": 0,
+    "queued": 0,
+    "styling": false
+   },
+   "buildingsPending": 0,
+   "far": {
+    "pending": 0
+   },
+   "baked": {
+    "covered": 6,
+    "cells": 6,
+    "drawn": 6,
+    "fading": 0,
+    "pending": 0
+   }
+  }
+ },
+ "ms": {
+  "open": 0,
+  "settle": 9683,
+  "total": 10575
+ },
+ "rule10": {
+  "use": "flags only, not for acceptance",
+  "likeness": {
+   "lp": {
+    "pose": {
+     "rd": {
+      "x": 121280.9956826811,
+      "y": 485381.4884866376
+     },
+     "lngLat": [
+      4.8922588476281,
+      52.3552974695411
+     ],
+     "eyeHeightM": 2.44,
+     "cameraNap": 123.191196602769,
+     "headingDeg": 293.5331333360418,
+     "lookDownDeg": 5,
+     "vfovDeg": 104.9875793610329,
+     "width": 1440,
+     "height": 1614,
+     "clipped": []
+    },
+    "window": {
+     "width": 1440,
+     "height": 900
+    },
+    "shiftPx": 357,
+    "focalPx": 619.3718642120282,
+    "clipped": []
+   },
+   "farBank": false,
+   "steppedBackM": 10.1,
+   "note": "stepped back 10.1 m to TMX7316010203-002470_pano_0001_000453 (21.2 m) to hold the front at 72 deg, window raised 357 px",
+   "pano": {
+    "panoId": "TMX7316010203-002470_pano_0001_000453",
+    "timestamp": "2022-03-23T10:17:27.224340Z",
+    "distM": 21.2,
+    "obliquityDeg": 49.4,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/23/TMX7316010203-002470/pano_0001_000453/equirectangular/panorama_8000.jpg"
+   }
+  }
+ }
+}

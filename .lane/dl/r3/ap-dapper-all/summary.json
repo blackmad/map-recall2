@@ -1,0 +1,52 @@
+{
+ "input": "list pose-dapper.json",
+ "label": "run",
+ "query": "?realLook=1",
+ "pands": 1,
+ "prepared": 1,
+ "skipped": [],
+ "framed": 1,
+ "alignment": {
+  "photoEdges": 2,
+  "medianPct": 2.29,
+  "p90Pct": 2.29,
+  "over3": [],
+  "gameEdges": 2,
+  "gameMedianPct": 3.33
+ },
+ "flags": {
+  "missing": [],
+  "otherBuilding": [],
+  "neighbourCovers": [],
+  "roofOffset": [
+   "0363100012142699"
+  ],
+  "wallColour": [],
+  "sameAsBefore": []
+ },
+ "advisory": {
+  "possibleBlankWall": []
+ },
+ "colourScores": [
+  [
+   "0363100012142699",
+   -0.136
+  ]
+ ],
+ "throughput": {
+  "poses": 1,
+  "wallS": 32.9,
+  "pairsPerMin": 1.82,
+  "opened": 9,
+  "settleMedianS": 26.4,
+  "batch": {
+   "poses": 34,
+   "lists": 9,
+   "wallMs": 1735313
+  }
+ },
+ "sheets": [
+  "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r3/ap-dapper-all/contact-1.jpg",
+  "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r3/ap-dapper-all/rule10-1.jpg"
+ ]
+}

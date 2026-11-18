@@ -1,0 +1,54 @@
+{
+ "poses": 6,
+ "wallMs": 65737,
+ "opened": 5,
+ "timings": [
+  {
+   "key": "belt-runstraat",
+   "out": "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r2/walls",
+   "open": 5003,
+   "settle": 17107,
+   "total": 22267
+  },
+  {
+   "key": "belt-keizersgracht",
+   "out": "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r2/walls",
+   "open": 0,
+   "settle": 3162,
+   "total": 3538
+  },
+  {
+   "key": "pijp-vdhelst",
+   "out": "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r2/walls",
+   "open": 0,
+   "settle": 6454,
+   "total": 6716
+  },
+  {
+   "key": "inner-declercq-david",
+   "out": "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r2/walls",
+   "open": 0,
+   "settle": 9992,
+   "total": 10220
+  },
+  {
+   "key": "inner-vanhallstraat",
+   "out": "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r2/walls",
+   "open": 0,
+   "settle": 6959,
+   "total": 7129
+  },
+  {
+   "key": "east-dapper",
+   "out": "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r2/walls",
+   "open": 0,
+   "settle": 15591,
+   "total": 15867
+  }
+ ],
+ "batch": {
+  "poses": 30,
+  "lists": 5,
+  "wallMs": 781037
+ }
+}

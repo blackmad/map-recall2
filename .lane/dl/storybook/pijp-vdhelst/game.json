@@ -1,0 +1,336 @@
+{
+ "key": "pijp-vdhelst",
+ "settle": {
+  "settled": true,
+  "ground": true,
+  "city": true,
+  "buildings": true,
+  "far": true,
+  "baked": true,
+  "detail": {
+   "groundFading": 0,
+   "city": {
+    "inFlight": 0,
+    "queued": 0,
+    "styling": false
+   },
+   "buildingsPending": 0,
+   "far": {
+    "pending": 0
+   },
+   "baked": {
+    "covered": 0,
+    "cells": 0,
+    "drawn": 0,
+    "fading": 0,
+    "pending": 0
+   }
+  }
+ },
+ "picks": {
+  "fps": {
+   "center": [
+    4.891904393742474,
+    52.355517978933435
+   ],
+   "zoom": 18.841422885951836,
+   "bearing": 343.8270199629741,
+   "pitch": 85,
+   "fovDeg": 117.07,
+   "distanceM": 27.995860319434456,
+   "eye": {
+    "lngLat": [
+     4.89201864911298,
+     52.3552773607912
+    ],
+    "heightM": 2.44
+   }
+  },
+  "engine": "own",
+  "fpsDrawn": true,
+  "rect": {
+   "w": 1440,
+   "h": 900
+  },
+  "hits": [
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9569064147405589,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9559052233604131,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9548566203911405,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9537571563822073,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9526030389445244,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9570895266648168,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9560968622280519,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9550573971207492,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9539677417052064,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9528241709099615,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9572711040923444,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9562868581678742,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9552564120347472,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9541764345762355,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9530432665502642,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9574511663097645,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9564752322989624,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.955453688307599,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9543832604814297,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.953260353958853,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.957629732281835,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9566620053797696,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9556492487086771,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9545882444506593,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9534754607138021,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   null,
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9578068206581603,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9568471978162135,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9558431156119428,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9547914110690529,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9536886138914908,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   null,
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9579824497796542,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9570308296688654,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9560353110040056,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.9549927844860957,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012127543",
+    "kind": "",
+    "model": "",
+    "depth": 0.953899840076953,
+    "keys": "id,name,height,lngLat,depth,footprint,featureTarget"
+   },
+   null,
+   null
+  ]
+ },
+ "drawn": {
+  "search": "?engine=own&cam=fps&buildings3d=storybook",
+  "worldCells": true,
+  "found": true,
+  "constructionYear": 1997,
+  "facadeStyle": "modern",
+  "registerFinish": null,
+  "specReading": null,
+  "specRecipeWall": null,
+  "specRecipe": null,
+  "specShop": null,
+  "heldBrick": false,
+  "facadeMappedColour": null,
+  "sideColour": "#b59c77",
+  "sideColourSource": null,
+  "periodWallHex": null
+ },
+ "opened": 3,
+ "ms": {
+  "open": 0,
+  "settle": 6358,
+  "total": 6781
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "out": "/Users/blackmad/Code/map-recall2-worktrees/default-look-realism-20261114/.lane/dl/r3/ap-dapper-all",
+ "lngLat": [
+  4.927469798255021,
+  52.36267032106885
+ ],
+ "headingDeg": 340.8899794451766,
+ "query": "?realLook=1",
+ "engine": "maplibre",
+ "buffer": [
+  2880,
+  1800
+ ],
+ "css": [
+  1440,
+  900
+ ],
+ "search": "?realLook=1",
+ "dpr": 2,
+ "settle": null
+}
