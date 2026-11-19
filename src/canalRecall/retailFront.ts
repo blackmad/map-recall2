@@ -13,7 +13,8 @@ import { type PropTri } from './shopProps/kit.js';
 import { BIKE_HEXES } from './shopProps/props.js';
 import { insideProps, outsideProps, SHOP_PROPS } from './shopProps/layout.js';
 import { baySeed, goodsTileRect } from './shopProps/variety.js';
-import { signText, TEMPLATE_LOOKS, TEMPLATE_PARTS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
+import { CHAIN_TEMPLATES, signText, TEMPLATE_LOOKS, TEMPLATE_PARTS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
+import { archRiseM, type GfFinish, type GfHead, type GfOpeningKind, type GfPier, type GroundFloorDraw } from './groundFloor/types.js';
 
 export type V3 = [number, number, number];
 export type FrontTri = { p: V3[]; hex: string; n: V3; lit?: boolean; uv?: [number, number][]; layer?: number; accentHex?: string };
@@ -74,6 +75,12 @@ class Builder {
     const flip = c[0] * n[0] + c[1] * n[1] + c[2] * n[2] < 0;
     const t = (p: V3[]): FrontTri => (lit ? { p, hex, n, lit } : { p, hex, n });
     this.out.push(t(flip ? [A, C, B] : [A, B, C]), t(flip ? [A, D, C] : [A, C, D]));
+  }
+  /** One triangle wound to `n` (lane ground-floor: an arch's fanlight). */
+  tri(A: V3, B: V3, C: V3, n: V3, hex: string): void {
+    const u = [B[0] - A[0], B[1] - A[1], B[2] - A[2]], w = [C[0] - A[0], C[1] - A[1], C[2] - A[2]];
+    const flip = (u[1] * w[2] - u[2] * w[1]) * n[0] + (u[2] * w[0] - u[0] * w[2]) * n[1] + (u[0] * w[1] - u[1] * w[0]) * n[2] < 0;
+    this.out.push({ p: flip ? [A, C, B] : [A, B, C], hex, n });
   }
   /** Lane shop-goods: a prop's triangles (shopProps/kit.ts, x along, y out, z up) placed by `at`, each wound to its normal. */
   put(tris: readonly PropTri[], at: (p: readonly [number, number, number]) => [number, number, number], recolour?: (hex: string) => string): void {
@@ -452,6 +459,9 @@ export type RetailFrontInput = {
    *  fascia board and cap, the letters in a contrasting dark or white: the photos' independent shops (Keurslagerij Pouw)
    *  paint board and frame one colour. Absent: the template's frame and board. */
   paint?: string;
+  /** Lane ground-floor: a held or unaccepted template drawn only for its ground-floor record: a neutral fill (dark frame
+   *  and board, glass, the type's goods; no template board colours, awning or blade). */
+  neutral?: boolean;
   /** Round 6: a bike shop's class (retailBikes.ts bikeShopClass, staged per pand): side-on bikes parked against the
    *  front (used: a muted irregular row; premium: a neat clean row; rental: the fleet's identical bikes) and two to
    *  four side-on behind the glass. Absent: the template's racks and pavement discs. */
@@ -565,6 +575,33 @@ function insideRelief(b: Builder, props: NonNullable<(typeof SHOP_PROPS)[string]
   }
 }
 
+/** The glass of one bay over [c0, c1] x [zr, head], `panes` panes `pw` wide (round 3c / lane retail-real / round 7);
+ *  shared by the template front and the ground-floor inset (groundFloorFrontTris). */
+function fillPanes(b: Builder, look: TemplateLook, input: RetailFrontInput, c0: number, c1: number, zr: number, head: number, bay: number, panes: number, pw: number, seed: string): void {
+  if (look.window === 'plate') {
+    // Round 7: dark reflective plate glass, the sky's light in its upper part.
+    b.panel(c0, c1, FRONT.contentOutM, zr, head, '#20272c');
+    b.panel(c0, c1, FRONT.contentOutM + 0.003, head - (head - zr) * 0.32, head, '#46525a');
+  } else if (look.goods && input.goods !== undefined) {
+    // Lane retail-real: the pane cut into tiles of the template's goods cell (alternate tiles mirrored).
+    const cell = goodsCell(look.goods), layer = input.goods + cell.page, [u0, v0, u1, v1] = cell.rect;
+    // Lane shop-goods: each tile a seeded stretch of the cell, mirrored or not, per bay (goodsTileRect).
+    for (let k = 0; k < panes; k++) for (const [ti, t] of goodsTiles(c0 + k * pw, c0 + (k + 1) * pw).entries()) {
+      const first = b.out.length;
+      b.textured(t.a0, t.a1, FRONT.contentOutM, zr, head, layer, goodsTileRect([u0, v0, u1, v1], input.seed, bay, k * 16 + ti));
+      if (!look.lit) for (const tr of b.out.slice(first)) delete tr.lit;
+    }
+  } else if (input.interior && !OWN_LIGHT.has(look.content) && look.content !== 'barGlow') {
+    // Round 3c (cost): each pane's interior is one quad of the building's own shop cell (bayTextures puiAt: its dark
+    // interior, shelf glow and the street's reflection), in place of the flat-colour goods.
+    for (let k = 0; k < panes; k++) {
+      const first = b.out.length;
+      b.textured(c0 + k * pw, c0 + (k + 1) * pw, FRONT.contentOutM, zr, head, input.interior.layer, input.interior.rect);
+      for (const t of b.out.slice(first)) delete t.lit;
+    }
+  } else glass(b, look, c0, c1, zr, head, seed);
+}
+
 /**
  * The template's front on the wall `e` over [s0, s1] (metres along it), ground storey [base, base + groundM].
  * Returns flat triangles; nothing for a span under 1.2 m.
@@ -663,28 +700,7 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     // Lane shop-goods: with props behind the glass the riser stands on the glass line, in front of them (their feet).
     b.panel(c0, c1, props?.inside ? INSIDE.riserOutM : 0.015, base, zr, riser);
     b.slab(c0 - 0.02, c1 + 0.02, 0, FRONT.sillOutM + 0.03, zr - 0.05, zr, frame, 'top');
-    if (look.window === 'plate') {
-      // Round 7: dark reflective plate glass, the sky's light in its upper part.
-      b.panel(c0, c1, FRONT.contentOutM, zr, head, '#20272c');
-      b.panel(c0, c1, FRONT.contentOutM + 0.003, head - (head - zr) * 0.32, head, '#46525a');
-    } else if (look.goods && input.goods !== undefined) {
-      // Lane retail-real: the pane cut into tiles of the template's goods cell (alternate tiles mirrored).
-      const cell = goodsCell(look.goods), layer = input.goods + cell.page, [u0, v0, u1, v1] = cell.rect;
-      // Lane shop-goods: each tile a seeded stretch of the cell, mirrored or not, per bay (goodsTileRect).
-      for (let k = 0; k < panes; k++) for (const [ti, t] of goodsTiles(c0 + k * pw, c0 + (k + 1) * pw).entries()) {
-        const first = b.out.length;
-        b.textured(t.a0, t.a1, FRONT.contentOutM, zr, head, layer, goodsTileRect([u0, v0, u1, v1], input.seed, bay, k * 16 + ti));
-        if (!look.lit) for (const tr of b.out.slice(first)) delete tr.lit;
-      }
-    } else if (input.interior && !OWN_LIGHT.has(look.content) && look.content !== 'barGlow') {
-      // Round 3c (cost): each pane's interior is one quad of the building's own shop cell (bayTextures puiAt: its dark
-      // interior, shelf glow and the street's reflection), in place of the flat-colour goods.
-      for (let k = 0; k < panes; k++) {
-        const first = b.out.length;
-        b.textured(c0 + k * pw, c0 + (k + 1) * pw, FRONT.contentOutM, zr, head, input.interior.layer, input.interior.rect);
-        for (const t of b.out.slice(first)) delete t.lit;
-      }
-    } else glass(b, look, c0, c1, zr, head, seed);
+    fillPanes(b, look, input, c0, c1, zr, head, bay, panes, pw, seed);
     if (props?.inside) insideRelief(b, props, c0, c1, base, head, input.seed, bay, look.lit);
     // The transom bar at the door head, the transom lights over it (dark glass with the sky in it).
     const hasLights = puiTop - head > 0.25;
@@ -737,4 +753,249 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     b.put(outsideProps(props, runs, input.seed, input.pavementM), q => [q[0], q[1], base + q[2]], fleet ? hex => (frames.has(hex) ? fleet : hex) : undefined);
   } else pavement(b, look, s0, s1, base, input.seed);
   return b.out;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Lane ground-floor-20261116 (`?groundFloor=1`): the building draws its own ground floor from its GroundFloor record
+// (groundFloor/types.ts): piers, plinth, the finish round the openings and their arched or flat heads, the reveals into
+// the wall; the shop fills each `shop` opening (inset mode: glass, goods, props and door set back in the opening) and its
+// sign goes where the record says (letters on the wall, a board in the opening, a fascia, a lightbox). The mesher cuts
+// the wall over the whole ground storey of the front (threeBuildingMesh retailFrontOn), so this covers all of it.
+// No record: retailFrontTris, unchanged.
+
+/** The finish colours when the record states a material but no colour. */
+/** The dark of a shopfront's frame, painted pui and plain fascia (blind round 1: the photos' fronts are dark). */
+export const GF_DARK = '#2b2724';
+export const GF_FINISH_HEX: Readonly<Record<GfFinish, string>> = { stone: '#c9c1ad', stucco: '#e6e1d4', brick: '#8a4f3c', 'painted-pui': GF_DARK };
+/** How far piers stand proud of the finish, how deep openings are set in, by material (m). */
+export const GF_DEPTH = { pierOutStone: 0.08, pierOutPui: 0.04, recessMasonry: 0.25, recessPui: 0.2, courseM: 0.42, channelM: 0.035, archSegments: 10 } as const;
+
+function frontLook(input: RetailFrontInput): TemplateLook {
+  const look0: TemplateLook = input.chain ? { ...TEMPLATE_LOOKS[input.template], fascia: input.chain.fascia, letters: input.chain.letters, cap: undefined, word: undefined, face: undefined } : TEMPLATE_LOOKS[input.template];
+  const brand = input.brand && retailBrandOn() && brandAccepted(input.brand) ? brandLook(input.brand) : undefined;
+  return brand ? { ...look0, ...brand } : look0;
+}
+/** The wall frame `d` metres further along its normal (negative: into the wall). */
+function shifted(e: WallFrame, d: number): WallFrame { return { ...e, x0: e.x0 + e.nx * d, y0: e.y0 + e.ny * d }; }
+/** canalhouseRecipes.archPoints (a circular arch through both springing points and the crown), right to left; copied
+ *  here because that module pulls three and the landmark tools into the mesh worker. */
+function archPoints(x: number, w: number, ys: number, rise: number, inset: number, segments: number): Array<[number, number]> {
+  const radius = w * w / (8 * rise) + rise / 2, cy = ys + rise - radius, r = radius - inset, half = w / 2 - inset, out: Array<[number, number]> = [];
+  for (let i = 0; i <= segments; i++) { const u = half - 2 * half * i / segments; out.push([x + w / 2 + u, cy + Math.sqrt(Math.max(0, r * r - u * u))]); }
+  return out;
+}
+/** The arch over [a0, a1] springing at `spring` with `rise`, as points left to right. */
+function archLine(a0: number, a1: number, spring: number, rise: number, n: number = GF_DEPTH.archSegments): Array<[number, number]> {
+  if (rise <= 1e-3) return [[a0, spring], [a1, spring]];
+  return archPoints(a0, a1 - a0, spring, rise, 0, n).reverse();
+}
+
+export type GroundFloorOpeningDrawn = { a0: number; a1: number; z0: number; spring: number; crown: number; head: GfHead; kind: GfOpeningKind };
+/** The lowest an opening's head is pressed to (m over the sill line) to make room for the sign zone over it. */
+export const GF_MIN_HEAD_M = 2.3;
+/**
+ * The band (m) the record's sign needs between the openings' heads and the storey top: a fascia's height, a line of wall
+ * letters, a lightbox; else the 0.15 m lintel. Fix round 2 (blind round 2): the openings were scaled to fill the storey
+ * to 0.15 m under its top, so where the read's heads stood near the mesher's ground storey a fascia, wall letters or a
+ * lightbox had no room and the shop lost its name (De Slegte, Burger King, Manfield, Blokker).
+ */
+export function groundFloorSignBand(gf: GroundFloorDraw): number {
+  if (gf.sign.kind === 'fascia' && !gf.fascia.inOpening) return Math.max(0.35, Math.min(gf.fascia.heightM ?? FRONT.fasciaM, 1.0)) + 0.12;
+  if (gf.sign.kind === 'wall-letters') return 0.55;
+  if (gf.sign.kind === 'lightbox') return 0.5;
+  return 0.15;
+}
+/** The record's openings in wall metres: along [s0, s1], heights over `base`, scaled down to fit under `top` with the
+ *  sign's band over the tallest head (never pressing a head under GF_MIN_HEAD_M). */
+export function groundFloorOpenings(gf: GroundFloorDraw, s0: number, s1: number, base: number, top: number): GroundFloorOpeningDrawn[] {
+  const W = s1 - s0, maxHead = Math.max(...gf.openings.map(o => o.headM)), room = top - base;
+  const k = Math.min(1, Math.max(Math.min(GF_MIN_HEAD_M, room - 0.15), room - groundFloorSignBand(gf)) / Math.max(1e-3, maxHead));
+  return gf.openings.map(o => {
+    const a0 = s0 + o.a0 * W, a1 = s0 + o.a1 * W, z0 = base + o.sillM * k, crown = base + o.headM * k;
+    const rise = Math.min(archRiseM(o.head, a1 - a0), Math.max(0, crown - z0 - 0.9));
+    return { a0, a1, z0, spring: crown - rise, crown, head: rise > 1e-3 ? o.head : 'flat', kind: o.kind };
+  });
+}
+
+/**
+ * The ground floor of `gf` on the wall `e` over [s0, s1], ground storey [base, top], with the shop `input` in its
+ * shop openings. Returns flat triangles in the sign layer, like retailFrontTris.
+ */
+export function groundFloorFrontTris(input: RetailFrontInput, gf: GroundFloorDraw, e: WallFrame, s0: number, s1: number, base: number, top: number): FrontTri[] {
+  if (s1 - s0 < 1.2 || !gf.openings.length) return [];
+  // Fix round (blind round 1, 5-5-3: bright painted fronts where the photos show dark recessed ones): the frame, a painted
+  // pui and the fascia are dark unless the record (a confident read: groundFloor/read.ts), a photo-read frame colour or a
+  // brand says otherwise; a template's own bright board and awning draw only for a chain or an accepted brand.
+  const brandish = !input.neutral && (!!input.chain || (CHAIN_TEMPLATES as readonly string[]).includes(input.template) || !!(input.brand && retailBrandOn() && brandAccepted(input.brand)));
+  const look0 = frontLook(input), look: TemplateLook = brandish ? look0 : { ...look0, awning: undefined, blade: undefined, lit: false }, b = new Builder(e);
+  const painted = gf.groundFinish.material === 'painted-pui';
+  const finish = gf.groundFinish.hex ?? (gf.groundFinish.material === 'brick' && input.wallHex ? input.wallHex : painted ? input.frameHex ?? GF_DARK : GF_FINISH_HEX[gf.groundFinish.material]);
+  const masonry = !painted;
+  const recess = masonry ? GF_DEPTH.recessMasonry : GF_DEPTH.recessPui;
+  const frame = input.frameHex ?? (painted && gf.groundFinish.hex ? shadeHex(finish, 0.8) : GF_DARK);
+  const ops = groundFloorOpenings(gf, s0, s1, base, top);
+  const pierHex = (m: GfPier['material']) => m === 'iron' ? '#2b2d30' : m === 'brick' ? (gf.groundFinish.material === 'brick' ? finish : input.wallHex ?? GF_FINISH_HEX.brick) : m === 'timber' && masonry ? frame : finish;
+  // Piers: proud of the finish (stone) or flush pilasters (a pui); rusticated stone in courses with channels between.
+  const W = s1 - s0;
+  for (const p of gf.piers) {
+    const p0 = s0 + p.a0 * W, p1 = s0 + p.a1 * W, hex = pierHex(p.material), out = p.material === 'stone' || p.material === 'brick' ? GF_DEPTH.pierOutStone : GF_DEPTH.pierOutPui;
+    if (p1 - p0 < 0.02) continue;
+    if (p.rusticated) {
+      b.panel(p0, p1, out - GF_DEPTH.channelM, base, top, shadeHex(hex, 0.78));
+      for (let z = base; z < top - 0.05; z += GF_DEPTH.courseM) b.slab(p0 + 0.015, p1 - 0.015, out - GF_DEPTH.channelM, out, z + 0.03, Math.min(top, z + GF_DEPTH.courseM) - 0.01, hex, 'top');
+      b.face([b.P(p0, 0, base), b.P(p0, out - GF_DEPTH.channelM, base), b.P(p0, out - GF_DEPTH.channelM, top), b.P(p0, 0, top)], b.N(-1, 0, 0), shadeHex(hex, 0.85));
+      b.face([b.P(p1, 0, base), b.P(p1, out - GF_DEPTH.channelM, base), b.P(p1, out - GF_DEPTH.channelM, top), b.P(p1, 0, top)], b.N(1, 0, 0), shadeHex(hex, 0.85));
+    } else b.fin(p0, p1, 0, out, base, top, hex);
+  }
+  // The finish over and under each opening: the spandrel to the storey top (following an arch), the stall under a sill.
+  for (const o of ops) {
+    const line = archLine(o.a0, o.a1, o.spring, o.crown - o.spring);
+    for (let i = 1; i < line.length; i++) {
+      const [x0, y0] = line[i - 1], [x1, y1] = line[i];
+      b.face([b.P(x0, 0, y0), b.P(x1, 0, y1), b.P(x1, 0, top), b.P(x0, 0, top)], b.N(0, 1, 0), finish);
+    }
+    if (o.z0 - base > 0.05) {
+      b.panel(o.a0, o.a1, 0, base, o.z0, gf.plinth.kind !== 'none' ? shadeHex(finish, 0.82) : finish);
+      b.slab(o.a0 - 0.03, o.a1 + 0.03, 0, FRONT.sillOutM + 0.02, o.z0 - 0.05, o.z0, masonry ? shadeHex(finish, 1.08) : frame, 'top');
+    }
+    // Reveals into the cut wall: both sides to the spring, the soffit or the arch's intrados, in the finish's shade.
+    const rev = shadeHex(finish, 0.62);
+    b.face([b.P(o.a0, -recess, o.z0), b.P(o.a0, 0, o.z0), b.P(o.a0, 0, o.spring), b.P(o.a0, -recess, o.spring)], b.N(1, 0, 0), rev);
+    b.face([b.P(o.a1, -recess, o.z0), b.P(o.a1, 0, o.z0), b.P(o.a1, 0, o.spring), b.P(o.a1, -recess, o.spring)], b.N(-1, 0, 0), rev);
+    for (let i = 1; i < line.length; i++) {
+      const [x0, y0] = line[i - 1], [x1, y1] = line[i], nx = y1 - y0, nz = -(x1 - x0), l = Math.hypot(nx, nz) || 1;
+      const n = b.N(nx / l, 0, nz / l);
+      b.face([b.P(x0, -recess, y0), b.P(x1, -recess, y1), b.P(x1, 0, y1), b.P(x0, 0, y0)], n, shadeHex(finish, 0.5));
+    }
+    // A plinth course under the opening's sill (the same course the piers carry).
+  }
+  if (gf.plinth.kind !== 'none' && gf.plinth.heightM > 0.05) {
+    const h = Math.min(gf.plinth.heightM, top - base - 1), hex = gf.plinth.kind === 'rusticated' ? shadeHex(finish, 0.88) : shadeHex(finish, 0.8);
+    for (const p of gf.piers) b.slab(s0 + p.a0 * W - 0.01, s0 + p.a1 * W + 0.01, 0, GF_DEPTH.pierOutStone + 0.03, base, base + h, hex, 'top', true);
+  }
+  // What fills each opening, set back in it.
+  const back = shifted(e, -recess), bb = new Builder(back), props = SHOP_PROPS[input.template];
+  const shops = ops.map((o, i) => ({ o, i })).filter(x => x.o.kind === 'shop');
+  const signIdx = gf.sign.opening !== undefined && ops[gf.sign.opening] ? gf.sign.opening : shops.slice().sort((p, q) => (q.o.a1 - q.o.a0) - (p.o.a1 - p.o.a0))[0]?.i;
+  const word = input.chain ? input.chain.word : look.word === 'name' ? (input.word ? signText(input.word) : input.word) : look.word;
+  const boardHex = gf.fascia.hex ?? (input.chain?.fascia ?? (brandish ? look.fascia : GF_DARK));
+  const ink = input.chain?.letters ?? (brandish || gf.fascia.hex ? look.letters : '#efe9dc');
+  // A sign outside the openings that finds no room over them (a head the storey cannot press further) goes up as a board
+  // in its opening instead, so the shop keeps its name (fix round 2); a read of no sign stays bare.
+  const sgOut = signIdx !== undefined ? ops[signIdx] : undefined, crownMax = Math.max(...ops.map(o => o.crown));
+  const outsideFits = gf.sign.kind === 'fascia' && !gf.fascia.inOpening ? top - 0.08 - Math.max(crownMax + 0.04, top - 0.08 - Math.min(gf.fascia.heightM ?? FRONT.fasciaM, 1.0)) >= 0.25
+    : gf.sign.kind === 'wall-letters' ? !!sgOut && !!word && top - 0.16 - sgOut.crown >= 0.3
+      : gf.sign.kind === 'lightbox' ? !!sgOut && Math.min(top - 0.06, sgOut.crown + 0.86) - (sgOut.crown + 0.06) >= 0.3 : false;
+  const named = !!(word || input.logo);
+  const inOpeningBoard = gf.sign.kind === 'board-in-opening' || (gf.sign.kind === 'fascia' && gf.fascia.inOpening)
+    || (named && !outsideFits && (gf.sign.kind === 'fascia' || gf.sign.kind === 'wall-letters' || gf.sign.kind === 'lightbox'));
+  const hasDoorOpening = ops.some(o => o.kind === 'door');
+  const lightHex = glassTone('#7f8b93', 0.5);
+  for (const [i, o] of ops.entries()) {
+    const w = o.a1 - o.a0;
+    if (o.kind === 'door') {
+      doorUnit(bb, o.a0 + 0.04, o.a1 - 0.04, 0, o.z0, Math.min(o.spring, o.z0 + FRONT.doorHeadM + 0.3), frame);
+      if (o.spring - (o.z0 + FRONT.doorHeadM + 0.3) > 0.2) bb.panel(o.a0, o.a1, FRONT.contentOutM, o.z0 + FRONT.doorHeadM + 0.3, o.spring, lightHex);
+    } else if (o.kind === 'passage') {
+      bb.panel(o.a0, o.a1, -1.2, o.z0, o.spring, '#26272a');
+      for (const [s, f] of [[o.a0, 1], [o.a1, -1]] as const) bb.face([bb.P(s, -1.2, o.z0), bb.P(s, 0, o.z0), bb.P(s, 0, o.spring), bb.P(s, -1.2, o.spring)], bb.N(f, 0, 0), '#3a3836');
+    } else if (o.kind === 'blank') {
+      bb.panel(o.a0, o.a1, 0, o.z0, o.spring, shadeHex(finish, 0.9));
+    } else if (o.kind === 'window') {
+      bb.panel(o.a0, o.a1, 0, o.z0, o.spring, glassTone('#5c6a73', 0.55));
+      bb.panel(o.a0, o.a1, 0.004, o.spring - 0.06, o.spring, frame);
+    } else {
+      // A shop: riser, sill, panes, props behind the glass; a door at the seeded end when the record has no door of its own.
+      const signHere = inOpeningBoard && i === signIdx;
+      const boardH = signHere ? Math.min(gf.fascia.heightM ?? 0.55, Math.max(0.3, (o.spring - o.z0) * 0.18)) : 0;
+      const glassTop = o.spring - boardH - (signHere ? 0.04 : 0);
+      const zr = o.z0 + Math.min(FRONT.riserM, Math.max(0, glassTop - o.z0 - 1.2));
+      const door = !hasDoorOpening && w >= 2.0 && look.content !== 'redGlow' ? retailDoor({ template: input.template, seed: `${input.seed}:${i}` }, o.a0 + 0.02, o.a1 - 0.02) : null;
+      const segs: Array<[number, number]> = door ? [[o.a0 + 0.04, door.a0 - FRONT.mullionM], [door.a1 + FRONT.mullionM, o.a1 - 0.04]] : [[o.a0 + 0.04, o.a1 - 0.04]];
+      if (door) {
+        const dh = Math.min(glassTop, o.z0 + FRONT.doorHeadM);
+        doorUnit(bb, door.a0, door.a1, 0, o.z0, dh, frame);
+        if (glassTop - dh > 0.2) bb.panel(door.a0, door.a1, FRONT.contentOutM, dh, glassTop, lightHex);
+      }
+      bb.fin(o.a0, o.a0 + 0.04, 0, FRONT.frameOutM, o.z0, o.spring, frame);
+      bb.fin(o.a1 - 0.04, o.a1, 0, FRONT.frameOutM, o.z0, o.spring, frame);
+      for (const [bay, [c0, c1]] of segs.entries()) {
+        if (c1 - c0 < 0.4) continue;
+        const seed = baySeed(`${input.seed}:${i}`, bay), panes = Math.max(1, Math.ceil((c1 - c0) / (look.paneM ?? FRONT.paneMaxM))), pw = (c1 - c0) / panes;
+        if (zr - o.z0 > 0.05) bb.panel(c0, c1, props?.inside ? INSIDE.riserOutM : 0.015, o.z0, zr, shadeHex(frame, 1.12));
+        if (look.content === 'redGlow') content(bb, look, c0, c1, zr, glassTop - FRONT.headGapM, seed);
+        else fillPanes(bb, look, input, c0, c1, zr, glassTop, i * 4 + bay, panes, pw, seed);
+        if (props?.inside) insideRelief(bb, props, c0, c1, o.z0, glassTop, input.seed, i * 4 + bay, look.lit);
+        for (let k = 1; k < panes; k++) { const a = c0 + k * pw; bb.panel(a - FRONT.mullionM / 2, a + FRONT.mullionM / 2, FRONT.frameOutM - 0.03, zr, glassTop, frame); }
+      }
+      if (signHere) {
+        // The board inside the opening (The Sting's black board at the arch's springing; Scheltema's blue band).
+        bb.slab(o.a0 + 0.04, o.a1 - 0.04, 0, FRONT.frameOutM, glassTop, o.spring, boardHex, 'bottom', false, look.lit);
+        letterBoard(bb, input, look, word, o.a0 + 0.04, o.a1 - 0.04, glassTop, o.spring, FRONT.frameOutM + FRONT.letterOutM, ink, boardHex);
+      }
+      // An arched head's fanlight: dark glass under the arch, a transom bar on the springing line.
+      if (o.crown - o.spring > 0.05) {
+        const line = archLine(o.a0, o.a1, o.spring, o.crown - o.spring), mid = (o.a0 + o.a1) / 2;
+        // Strips from the springing line up to the arch, wound like the spandrels (a fan of triangles drew half of
+        // them back-facing: the red and grey quadrants of blind round 1).
+        for (let k = 1; k < line.length; k++) { const [x0, y0] = line[k - 1], [x1, y1] = line[k]; bb.face([bb.P(x0, FRONT.contentOutM, o.spring), bb.P(x1, FRONT.contentOutM, o.spring), bb.P(x1, FRONT.contentOutM, y1), bb.P(x0, FRONT.contentOutM, y0)], bb.N(0, 1, 0), lightHex); }
+        bb.slab(o.a0, o.a1, 0, FRONT.frameOutM - 0.03, o.spring - FRONT.transomM, o.spring, frame, 'bottom');
+        for (const t of [1 / 3, 2 / 3]) { const ang = Math.PI * t, r = (o.a1 - o.a0) / 2; bb.face([bb.P(mid - 0.02, 0.05, o.spring), bb.P(mid + 0.02, 0.05, o.spring), bb.P(mid + r * Math.cos(ang) + 0.02, 0.05, o.spring + (o.crown - o.spring) * Math.sin(ang)), bb.P(mid + r * Math.cos(ang) - 0.02, 0.05, o.spring + (o.crown - o.spring) * Math.sin(ang))], bb.N(0, 1, 0), frame); }
+      }
+      const awning = input.awning ?? look.awning;
+      if (awning && o.head === 'flat') b.slope(o.a0, o.a1, 1.0, o.spring + 0.05, o.spring - 0.45, awning);
+    }
+  }
+  // The sign outside the openings: a fascia band over them, letters on the wall, a lightbox.
+  const sg = signIdx !== undefined ? ops[signIdx] : undefined;
+  const crownTop = Math.max(...ops.map(o => o.crown));
+  if (gf.sign.kind === 'fascia' && !gf.fascia.inOpening) {
+    const h = Math.min(gf.fascia.heightM ?? FRONT.fasciaM, 1.0), z1 = top - 0.08, z0 = Math.max(crownTop + 0.04, z1 - h);
+    if (z1 - z0 >= 0.25) {
+      b.slab(s0, s1, 0.01, FRONT.fasciaOutM, z0, z1, boardHex, 'bottom', true, look.lit);
+      letterBoard(b, input, look, word, s0 + 0.1, s1 - 0.1, z0, z1, FRONT.fasciaOutM + FRONT.letterOutM, ink, boardHex);
+    }
+  } else if (gf.sign.kind === 'wall-letters' && sg && word) {
+    const z0 = sg.crown + 0.08, z1 = top - 0.08;
+    if (z1 - z0 >= 0.3) b.word(word, sg.a0, sg.a1, (z0 + z1) / 2, FRONT.letterOutM + 0.01, Math.min(0.7, z1 - z0 - 0.04), look.letters === boardHex ? ink : look.letters, finish, look.lit, input.letters);
+  } else if (gf.sign.kind === 'lightbox' && sg) {
+    const z0 = sg.crown + 0.06, z1 = Math.min(top - 0.06, z0 + 0.8);
+    if (z1 - z0 >= 0.3) {
+      if (input.logo) {
+        const hM = z1 - z0, wM = Math.min(sg.a1 - sg.a0, hM * input.logo.aspect), mid = (sg.a0 + sg.a1) / 2;
+        b.textured(mid - wM / 2, mid + wM / 2, 0.12, z0, z0 + wM / input.logo.aspect, input.logo.layer, input.logo.rect);
+      } else {
+        const mid = (sg.a0 + sg.a1) / 2, wM = Math.min(sg.a1 - sg.a0, 3);
+        b.box(mid - wM / 2, mid + wM / 2, 0, 0.12, z0, z1, boardHex, look.lit, true);
+        letterBoard(b, input, look, word, mid - wM / 2, mid + wM / 2, z0, z1, 0.12 + FRONT.letterOutM, ink, boardHex);
+      }
+    }
+  }
+  if (gf.sign.blade || look.blade) {
+    const firstPier = gf.piers.map(p => [s0 + p.a0 * W, s0 + p.a1 * W]).find(([p0, p1]) => p1 - p0 >= 0.15) ?? [s0, s0 + 0.3];
+    const at = (firstPier[0] + firstPier[1]) / 2, z = Math.min(top - 0.3, Math.max(base + 2.6, (sg?.spring ?? base + 3) - 0.2));
+    const hex = look.blade ?? boardHex;
+    b.box(at - 0.03, at + 0.03, 0.05, 0.85, z + 0.35, z + 0.4, '#2a2a2a', false, true);
+    b.box(at - 0.05, at + 0.05, 0.25, 0.8, z - 0.25, z + 0.35, hex, look.lit, true);
+    if (look.bladeGlyph && input.letters !== undefined) for (const side of [1, -1] as const) b.sideGlyph(look.bladeGlyph, at + side * 0.052, side, 0.52, z + 0.05, 0.44, input.letters, look.bladeInk ?? '#d0101b', hex, look.lit);
+  }
+  // On the pavement: the template's props in front of each shop opening, else its pavement goods along the front.
+  if (props?.outside) {
+    const runs = shops.map(({ o }) => [o.a0 + 0.1, o.a1 - 0.1] as [number, number]).filter(([r0, r1]) => r1 - r0 > 0.5);
+    const fleet = input.bike?.cls === 'rental' ? input.bike.fleetHex : undefined, frames = new Set<string>(BIKE_HEXES);
+    b.put(outsideProps(props, runs, input.seed), q => [q[0], q[1], base + q[2]], fleet ? hex => (frames.has(hex) ? fleet : hex) : undefined);
+  } else pavement(b, look, s0, s1, base, input.seed);
+  return [...b.out, ...bb.out];
+}
+
+/** A logo or the name on a board over [a0, a1] x [z0, z1] at `o` out (the chain's logo when it has one). */
+function letterBoard(b: Builder, input: RetailFrontInput, look: TemplateLook, word: string | undefined, a0: number, a1: number, z0: number, z1: number, o: number, ink: string, board: string): void {
+  const h = z1 - z0;
+  if (input.logo) {
+    const hM = Math.min(h - 0.06, 0.9), wM = Math.min(a1 - a0 - 0.1, hM * input.logo.aspect), mid = (a0 + a1) / 2;
+    if (wM > 0.1) b.textured(mid - wM / 2, mid + wM / 2, o, (z0 + z1) / 2 - wM / input.logo.aspect / 2, (z0 + z1) / 2 + wM / input.logo.aspect / 2, input.logo.layer, input.logo.rect);
+  } else if (word) {
+    const face = look.face && input.faces !== undefined ? { face: look.face, layer: input.faces + ['serif', 'condensed', 'script'].indexOf(look.face) } : undefined;
+    b.word(face?.face === 'script' && look.word === 'name' ? titleCase(word) : word, a0 + 0.1, a1 - 0.1, (z0 + z1) / 2, o, Math.min(face ? h - 0.04 : MAX_LETTER_H, h - 0.04), ink, board, look.lit, input.letters, face);
+  }
 }
