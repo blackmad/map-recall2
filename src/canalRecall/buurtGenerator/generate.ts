@@ -58,7 +58,16 @@ export interface DistrictPitchedRoof { minRiseM: number; maxRiseM: number; pitch
   streetNoteOnly?: true;
   /** The drawn rise's cap (m; round 8): the roof as the street sees it over the eaves, measured on the district's photos.
    *  3DBAG's rise (ridge - eaves) only gates the roof; drawn at full height the roof stood far taller than any photo. */
-  capRiseM?: number; capRiseEvidence?: string }
+  capRiseM?: number; capRiseEvidence?: string;
+  /** Hoofddorpplein (#398): a hidden pitch (measure.ts) whose AHN4 front eaves stands within this of the series line (m)
+   *  is a roof the street sees from the cornice up (Heemstedestraat 129033: AHN eaves 0.4-0.8 m over 3DBAG's 13.7 m, red
+   *  tiles and dormers on the photo); further over it the pitch hides behind a wall over the line (the attic-band rows,
+   *  Legmeerplein 095655 and Aalsmeerweg 073886: 1.5-2.5 m). Absent: every hidden pitch reads flat, as before. */
+  frontEavesM?: number;
+  /** Hoofddorpplein (#398): the brick over the top storey's head under a pitched eaves (m): the storeys are counted on the
+   *  series line less it (Heemstedestraat 129033: four storeys and about 1.5 m of wall under the 13.7 m eaves, where the
+   *  flat rule counted five). Absent: counted on the line, as before. */
+  kneeM?: number }
 export interface DistrictLibrary {
   district: string;
   title: string;
@@ -154,6 +163,11 @@ export interface GenResult {
 /** The storey count a series line holds under the district's ground and upper pitch. */
 export function storeysFor(eavesM: number, d: Pick<DistrictDesign, 'groundM' | 'storeyM'>): number {
   return Math.max(1, Math.round((eavesM - d.groundM) / d.storeyM) + 1);
+}
+/** A series' storeys: on its line, or under a pitched roof with a stated knee (`kneeM`) on the line less the knee. */
+export function seriesStoreysOf(lib: DistrictLibrary, s: GenSeries & { eavesM: number }): number {
+  const knee = pitchedRiseOf(lib, s) !== null ? pitchedVariantOf(lib, s)?.kneeM ?? 0 : 0;
+  return storeysFor(s.eavesM - knee, lib.design);
 }
 /** Window axes on a front of this width at the district's axis pitch (at least two). */
 export function baysFor(widthM: number, d: Pick<DistrictDesign, 'axisM'>): number {
@@ -256,6 +270,10 @@ export function pitchGate(lib: DistrictLibrary, s: GenSeries): string | null {
   const note = lib.streetNotes?.[s.members[0]?.front.street ?? '']?.roof;
   if (note === 'flat') return 'the street note measures a flat top';
   if (note === 'pitched') return null;
+  // #398: a row or street whose photo states the attic band (chequerOf) has the band's wall over the line, the roof behind it
+  // (Aalsmeerweg 073914, the corner of the 073886 row: AHN's eaves 0.4 m over its 14.8 m line still reads the band's top).
+  const street = s.members[0]?.front.street ?? '';
+  if (lib.pitched?.frontEavesM !== undefined && chequerOf(lib, s.id.split(':')[0], street)) return 'the photo states the attic band over the line: the roof stands behind it';
   const seen = measuredRoofOf(lib, s);
   if (seen === 'flat') return 'AHN4 measures a flat top at the front';
   if (seen === 'pitched') return null;
@@ -268,8 +286,10 @@ export function pitchGate(lib: DistrictLibrary, s: GenSeries): string | null {
 export const ROOF_MAJORITY = 0.6;
 export function measuredRoofOf(lib: DistrictLibrary, s: GenSeries): 'pitched' | 'flat' | null {
   const roofs = lib.measured?.roofs; if (!roofs) return null;
-  // A pitch hidden over the eaves (measure.ts `hidden-pitch`) is a flat top to the street.
-  const forms = s.members.map(m => { const f = roofs[pandNumber(m.pand.id)]?.form; return f === 'hidden-pitch' ? 'flat' : f; }).filter((f): f is 'pitched' | 'flat' => f === 'pitched' || f === 'flat');
+  // A pitch hidden over the eaves (measure.ts `hidden-pitch`) is a flat top to the street, unless its AHN eaves stands
+  // at the series line (the district's `frontEavesM`): then the tiles start at the cornice and the street sees them.
+  const fe = lib.pitched?.frontEavesM, seen = (r: { eavesM?: number }) => fe !== undefined && s.eavesM !== null && typeof r.eavesM === 'number' && r.eavesM - s.eavesM <= fe;
+  const forms = s.members.map(m => { const r = roofs[pandNumber(m.pand.id)]; const f = r?.form; return f === 'hidden-pitch' ? (seen(r!) ? 'pitched' : 'flat') : f; }).filter((f): f is 'pitched' | 'flat' => f === 'pitched' || f === 'flat');
   if (!forms.length || forms.length < s.members.length / 2) return null;
   const p = forms.filter(f => f === 'pitched').length / forms.length;
   return p >= ROOF_MAJORITY ? 'pitched' : 1 - p >= ROOF_MAJORITY ? 'flat' : null;
@@ -311,7 +331,7 @@ export function seriesDesign(lib: DistrictLibrary, fam: DistrictFamily, s: GenSe
   const design: RowDesign & { windowShare: RowField<number> } = {
     corniceTopM: f<number | null>(s.eavesM, `series line = median 3DBAG eaves of ${s.members.length} members`),
     crown: f(d.crown), cornice: f(d.cornice),
-    storeys: f(fam.storeys, `${s.eavesM} m line over a ${d.groundM} m ground and ${d.storeyM} m storeys`),
+    storeys: f(fam.storeys, `${s.eavesM} m line over a ${d.groundM} m ground and ${d.storeyM} m storeys${riseM !== null && pitchedVariantOf(lib, s)?.kneeM ? `, less ${pitchedVariantOf(lib, s)!.kneeM} m of wall under the pitched eaves` : ''}`),
     bays: f(bays, `median front ${(s.members.map(m => m.front.lengthM).sort((a, b) => a - b)[s.members.length >> 1]).toFixed(1)} m at ${d.axisM} m axes${baysWhy ? `; ${baysWhy}` : ''}`),
     windows: f(d.windows), heads: f<RowHeads | RowHeads[]>(d.heads), whiteFrames: f(d.whiteFrames), sills: f(d.sills),
     wall: ((w) => f({ material: d.wall.material, family: w.family ?? d.wall.family, hex: w.hex ?? variedTone(d.wall.family, `${rowId}:${d.wall.family}`) }, w.family ? `${w.family} ${w.hex} (${w.evidence})` : w.hex ? `measured brick ${w.hex} (${w.evidence ?? 'district photos'})` : ''))(wallHexOf(lib, fam, rowId)),
@@ -347,7 +367,7 @@ export function rowRecordOf(lib: DistrictLibrary, row: GenRow, at: string, skipp
     const off = (reason: GenSkip, detail: string) => { flush(); for (const m of s.members) skipped.push({ id: pandNumber(m.pand.id), reason, detail }); };
     if (s.eavesM === null) { off('no-eaves', 'no 3DBAG eaves on the series'); continue; }
     if (!years.length || years.some(y => y < lib.years[0] || y > lib.years[1])) { off('off-years', `built ${[...new Set(years)].join('/') || '?'}`); continue; }
-    const storeys = storeysFor(s.eavesM, lib.design), fam = familyFor(lib, storeys);
+    const storeys = seriesStoreysOf(lib, { ...s, eavesM: s.eavesM }), fam = familyFor(lib, storeys);
     if (!fam) { off('off-storeys', `${storeys} storeys at ${s.eavesM} m`); continue; }
     const { bays, why: baysWhy } = seriesBaysFor(lib, s, row.id);
     const seriesId = s.id;
@@ -472,7 +492,7 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   const kits = new Map<string, BuurtKitFront>();
   for (const r of res.rows) for (const s of r.series) {
     const rise = pitchedRiseOf(lib, s);
-    const fam = s.eavesM === null ? null : familyFor(lib, storeysFor(s.eavesM, lib.design));
+    const fam = s.eavesM === null ? null : familyFor(lib, seriesStoreysOf(lib, { ...s, eavesM: s.eavesM }));
     const sb = seriesBaysFor(lib, s, r.id), bays = sb.bays;
     // Round 21: the counted windows, series-wide, only where the kit draws nothing else on the upper storeys of any
     // member (erkers, cants, a stair axis, rhythm, loggias, panes); each member takes the count in proportion to its front.

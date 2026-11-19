@@ -14,7 +14,8 @@
   1940
  ],
  "evidence": [
-  "scope report docs/reports/zuid-block-types-scope-20261116.md (9367f1672): 36 KA blocks, about 1,700 pands, 0 % drawn by a district kit; panorama read of KA05 (Aalsmeerweg 073914) and KA03 (Hoofddorpweg 095655): canted erkers, chequer frieze, overhanging eaves, attic strip"
+  "scope report docs/reports/zuid-block-types-scope-20261116.md (9367f1672): 36 KA blocks, about 1,700 pands, 0 % drawn by a district kit; panorama read of KA05 (Aalsmeerweg 073914) and KA03 (Hoofddorpweg 095655): canted erkers, chequer frieze, overhanging eaves, attic strip",
+  "#398 (2026-11-19): AHN4 front eaves over 3DBAG's line separates the two roof kinds 3DBAG cannot: Heemstedestraat 129033's tiles start 0.4-0.8 m over the line, the attic-band rows' wall stands 1.5-2.5 m over it (measured/hoofddorpplein.json, measure-roofs.ts)"
  ],
  "design": {
   "groundM": 3.1,
@@ -361,5 +362,24 @@
    },
    "evidence": "panorama TMX7316010203-002226_pano_0000_000738 (2021-07-09, 40 px/m, members 146451-136548; trees hide the ends): four storeys to 3DBAG's 13.0 m line; over it a brick attic band to about 15.1 m with a row of white-framed lights 0.75 x 0.62 m at 1.22 m from 13.9 m, cream and near-black squares about 0.14 m in three courses between the lights under the soffit; a thin white eaves slab; canted white-framed erkers over the three upper storeys with a white cap at about 13.6 m; narrow round-arched portieks (1.3 m) at the left of every other member. Erkers and arches outside the visible members are not stated"
   }
+ },
+ "pitched": {
+  "minRiseM": 2.5,
+  "maxRiseM": 6,
+  "pitchDeg": 55,
+  "material": "tile",
+  "dormersPerFront": 1,
+  "dormerKind": "plain",
+  "hoist": false,
+  "evidence": "Heemstedestraat 129033 panorama recording_2025-08-01_09-43-20_01419 (2025-08-01, 30 px/m): four storeys of brown brick, a white eaves cornice at about 13.6 m (3DBAG 13.7 m), red tiles over it with a white box dormer on most members. 3DBAG reads slanted with a 4.4-5.8 m rise on this row and on the attic-band rows alike (Aalsmeerweg 073886, Legmeerplein 095655), so only AHN4 decides (streetNoteOnly, frontEavesM)",
+  "roofHex": "#9e5b42",
+  "roofHexEvidence": "the Plan Zuid red pantile measured in overcast light on Biesboschstraat (Rivierenbuurt round 4); Heemstedestraat's tiles read the same red-orange hue in sun",
+  "eavesM": 0.45,
+  "eavesFrieze": false,
+  "streetNoteOnly": true,
+  "capRiseM": 2.0,
+  "capRiseEvidence": "Heemstedestraat 129033: about 2 m of tiles seen over the cornice on the rectified photo (28 px/m)",
+  "frontEavesM": 1.0,
+  "kneeM": 1.5
  }
 }

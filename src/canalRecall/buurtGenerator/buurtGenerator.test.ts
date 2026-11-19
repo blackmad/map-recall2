@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, blockLines, chequerOf, generateDistrict, seriesBaysFor, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
+import { baysFor, blockLines, chequerOf, generateDistrict, measuredRoofOf, seriesStoreysOf, seriesBaysFor, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
 import { oklab } from '../retailPuiPaint.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
@@ -302,4 +302,26 @@ test('chequerOf: row note over street note over the district band; none stated, 
   assert.equal(chequerOf(l, 'teststraat-000002', 'Teststraat')?.pattern, 'stripes');
   assert.equal(chequerOf(l, 'otherstraat-000003', 'Otherstraat')?.pattern, 'plain');
   assert.equal(chequerOf(lib, 'teststraat-000001', 'Teststraat'), null);
+});
+
+// #398 (Heemstedestraat 129033): a hidden pitch whose AHN eaves stands at the series line is a roof the street sees; one
+// standing well over it hides behind the attic band (Aalsmeerweg 073886). Under a pitched roof with a knee the storeys
+// are counted on the line less the knee. Absent both fields, as before.
+test('#398: frontEavesM reads a hidden pitch at the line as pitched; kneeM counts the storeys under it; a stated band keeps it flat', () => {
+  const pands = [0, 1, 2].map(i => ({ ...pand(i, 1929, 13.7), ridgeM: 18.4, roofCode: 3 }));
+  const s = districtRows(pands, streets).rows[0].series[0];
+  const roofs = (over: number) => Object.fromEntries(pands.map(p => [p.id.replace(/^NL\.IMBAG\.Pand\./, ''), { form: 'hidden-pitch' as const, frontRiseM: 3, eavesM: 13.7 + over, why: 'test' }]));
+  const base: DistrictLibrary = { ...lib, pitched: { ...lib.pitched!, streetNoteOnly: true, capRiseM: 2 } };
+  const fe: DistrictLibrary = { ...base, pitched: { ...base.pitched!, frontEavesM: 1, kneeM: 1.5 } };
+  assert.equal(measuredRoofOf({ ...base, measured: { roofs: roofs(0.5) } }, s), 'flat', 'absent: a hidden pitch is flat');
+  assert.equal(measuredRoofOf({ ...fe, measured: { roofs: roofs(0.5) } }, s), 'pitched', 'eaves at the line: seen');
+  assert.equal(measuredRoofOf({ ...fe, measured: { roofs: roofs(2.2) } }, s), 'flat', 'eaves 2.2 m over the line: behind the band');
+  assert.ok(pitchedRiseOf({ ...fe, measured: { roofs: roofs(0.5) } }, s) !== null);
+  const sl = { ...s, eavesM: s.eavesM! };
+  assert.equal(seriesStoreysOf({ ...fe, measured: { roofs: roofs(0.5) } }, sl), 4, 'four storeys under the 13.7 m eaves less 1.5 m');
+  assert.equal(seriesStoreysOf({ ...base, measured: { roofs: roofs(0.5) } }, sl), 5, 'absent: counted on the line');
+  assert.equal(seriesStoreysOf({ ...fe, measured: { roofs: roofs(2.2) } }, sl), 5, 'flat: no knee');
+  const band = { heightM: 2.1, pattern: 'chequer', cellM: 0.14, lightHex: '#c9b37f' };
+  assert.match(pitchGate({ ...fe, measured: { roofs: roofs(0.5) }, streetNotes: { Teststraat: { chequer: band, evidence: 'test' } } }, s)!, /attic band/);
+  assert.equal(pitchGate({ ...base, measured: { roofs: roofs(0.5) }, streetNotes: { Teststraat: { chequer: band, evidence: 'test' } } }, s), 'AHN4 measures a flat top at the front', 'absent: the band does not gate');
 });
