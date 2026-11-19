@@ -328,7 +328,7 @@ export function buildingWallExtras(contexts: readonly ExtraContext[], sink: Extr
   sink.budget = Math.max(sink.tris.length, baseline);
   // House rows (lane R): a series member's street wall carries its stated heads and cornice (EXTRA_BUDGET.rowWall);
   // without a row dressing the building budget is unchanged.
-  const rowWalls = ordered.filter(({ c }) => c.rowDress && isStreetWall(c)).length;
+  const rowWalls = ordered.filter(({ c }) => (c.rowDress || c.designMember) && isStreetWall(c)).length;
   // Stated joinery (row-sash, round 5) draws every upper window's frame and bars: its walls get that much more.
   const glazed = ordered.filter(({ c }) => c.rowDress?.glazing && isStreetWall(c)).length * EXTRA_BUDGET.rowGlazing;
   // A kinked front (Kinkerstraat 126-138: three street walls and a side street) spent the two-wall cap on its first walls,
@@ -364,11 +364,20 @@ export function registerFirst<T extends { id: string }>(components: readonly T[]
   return [...head, ...rest.filter(comp => stated.has(comp.id)), ...rest.filter(comp => !stated.has(comp.id))];
 }
 
+/**
+ * Design units: the parts a segment member's street wall may draw. Each repeats on every window, storey or plot, so with the
+ * row budget the whole segment carries one design; per-window dice parts (balconettes, flower boxes, anchors, bands,
+ * scaffolding, dishes) are dropped rather than landing on one or two windows.
+ */
+export const DESIGN_MEMBER_COMPONENTS: ReadonlySet<string> = new Set(['kroonlijst', 'console-cornice', 'corbel-roofline', 'white-fascia', 'cornice-brackets', 'gutter',
+  'door-surround', 'brick-door-arch', 'door-pediment', 'window-sills', 'white-lintels', 'stucco-hoods', 'white-window-frames', 'eared-surrounds', 'floor-cornices',
+  'string-courses', 'stone-plinth-band', 'rusticated-plinth', 'plinth', 'stoop', 'double-stoop']);
+
 function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase: 'all' | 'defining' | 'stated' | 'optional'): void {
   const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
-  const remaining = Math.max(0, (street ? (c.rowDress ? EXTRA_BUDGET.rowWall + (c.rowDress.glazing ? EXTRA_BUDGET.rowGlazing : 0) : EXTRA_BUDGET.wall) + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
+  const remaining = Math.max(0, (street ? (c.rowDress || c.designMember ? EXTRA_BUDGET.rowWall + (c.rowDress?.glazing ? EXTRA_BUDGET.rowGlazing : 0) : EXTRA_BUDGET.wall) + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
   if(phase!=='optional'&&phase!=='stated'&&street&&c.recipe?.shopCanopy&&(!c.onlyExtras||c.onlyExtras.includes('continuous-shop-canopy'))){
     const before=sink.tris.length;
@@ -403,6 +412,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     if (definingComponent && c.assemblyOwner === false) continue;
     if (c.onlyExtras && !c.onlyExtras.includes(comp.id)) continue;
     if (phase === 'defining' && !definingComponent || phase === 'optional' && definingComponent) continue;
+    if (c.designMember && !DESIGN_MEMBER_COMPONENTS.has(comp.id)) continue;
     // A spec's stated parts (`statedFirst`) dress in their own pass; a later pass never draws one twice.
     if (phase === 'stated' ? !c.statedFirst?.includes(comp.id) : c.statedFirst && used.includes(comp.id)) continue;
     // Ornaments follow the building's period; street furniture (a stoop, a hoist beam) also its

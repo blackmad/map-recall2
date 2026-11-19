@@ -86,15 +86,20 @@ export function memberDraw(segment: DrawSegment, pandId: string, exception: bool
   // The era rules (pre-1920 segments): the plot is the bay module, light frames and tall sashes unless the reads say otherwise.
   const era = typeof segment.year === 'number' && segment.year >= ERA_YEARS.from && segment.year <= ERA_YEARS.to;
   const r = segment.reads, read = r?.bays?.[pandId];
-  const look = era || r ? { tall: true, dark: r?.whiteFrames === undefined ? false : !r.whiteFrames, ...(r?.pale !== undefined ? { pale: r.pale } : {}), ...(r?.arch !== undefined ? { arch: r.arch } : {}) } : undefined;
+  // Era fronts: tall sashes under a transom light in light frames (the photographed rows; 85 % of the D1 ring reads say
+  // white frames), unless the reads say otherwise.
+  const look = era || r ? { tall: true, sash: 'transom' as const, dark: r?.whiteFrames === undefined ? false : !r.whiteFrames, ...(r?.pale !== undefined ? { pale: r.pale } : {}), ...(r?.arch !== undefined ? { arch: r.arch } : {}) } : undefined;
   // One window pitch per segment (its module split by the era count), so the columns keep their spacing across party
   // walls: a plot twice the module draws twice the windows, not wider ones.
-  const pitch = moduleM / eraWindows(moduleM);
-  const bays = typeof read === 'number' && read > 0 ? read : era ? Math.max(1, Math.round((main.toM - main.fromM) / pitch)) : undefined;
+  // A single plot (up to 1.5 modules) takes the era count for its own width (2 under 4.8 m, 3 to 7.5 m): a 4.3 m plot drew
+  // 3 columns at the segment pitch where the prior says 2. A multi-plot member keeps the segment pitch.
+  const sliceM = main.toM - main.fromM, segPitch = moduleM / eraWindows(moduleM);
+  const bays = typeof read === 'number' && read > 0 ? read : era ? (sliceM <= moduleM * 1.5 ? eraWindows(sliceM) : Math.max(1, Math.round(sliceM / segPitch))) : undefined;
+  const pitch = bays && sliceM <= moduleM * 1.5 ? sliceM / bays : segPitch;
   const bayPitchM = era && pitch > 0 ? +pitch.toFixed(3) : undefined;
   return { seed: segment.seed, segment: segment.id, eavesM: segment.eavesM, street: main.street, fromM: main.fromM, toM: main.toM, moduleM,
     k: onStreet.findIndex(s => s === main), n: onStreet.length, ...(isLngLat(segment.at) ? { at: [segment.at[0], segment.at[1]] as const } : {}), ...(exception ? { exception: true as const } : {}),
-    ...(bays ? { bays } : {}), ...(bayPitchM ? { bayPitchM } : {}), ...(look ? { look } : {}) };
+    ...(bays ? { bays } : {}), ...(bayPitchM ? { bayPitchM } : {}), ...(look ? { look } : {}), ...(typeof segment.roofRiseM === 'number' ? { roofRiseM: segment.roofRiseM } : {}) };
 }
 
 /** Step 1 (first in the chain): stamp the segment draw, the segment's line and year, and re-key the colour priors. */
@@ -124,22 +129,22 @@ export function withDesignUnits<T extends Feature>(feature: T): T {
 const hash01 = (s: string) => { let x = 2166136261; for (let i = 0; i < s.length; i++) { x ^= s.charCodeAt(i); x = Math.imul(x, 16777619); } return (x >>> 0) / 4294967296; };
 const pick = <V>(r: number, w: Array<[V, number]>): V => { const t = w.reduce((a, [, x]) => a + x, 0); let acc = 0; for (const [v, x] of w) { acc += x / t; if (r < acc) return v; } return w[w.length - 1][0]; };
 
-export type SegmentRoofKind = 'flat' | 'mansardHip' | 'pitched';
-export interface SegmentRoof { kind: SegmentRoofKind; riseM: number; material: 'tile' | 'slate'; tone: number; dormerPitchM: number | null; dormerKind: 'plain' | 'gabled' | 'pediment' }
+export type SegmentRoofKind = 'flat' | 'mansardHip';
+export interface SegmentRoof { kind: SegmentRoofKind; riseM: number; material: 'slate'; tone: number; dormerPitchM: number | null; dormerKind: 'plain' | 'gabled' | 'pediment' }
+/** AHN roof mass this far over the eaves line (m) is a roof storey; less is a flat top behind the cornice. */
+export const ROOF_STOREY_MIN_M = 1.8;
 /**
- * The segment's one roof, from its seed alone (never a member's id or rect). The odds are the 19th-century ring's: about a
- * third flat behind the cornice, a third slate mansard, a third a pitched roof with its ridge along the street. The style
- * is the members' (the facade decorator's), so a post-war segment stays flat.
+ * The segment's one roof (the De Pijp rule): a slate roof storey with dormers only where AHN shows roof mass over the eaves
+ * line (`roofRiseM` >= ROOF_STOREY_MIN_M), its rise the measured one (2.4-4 m); a flat top behind the cornice otherwise,
+ * unmeasured included. Ridge along the street, closed at the segment's ends (no hips or pyramids), one covering, a slate
+ * tone from the darker half. Post-war styles stay flat. Seed choices: tone, dormer pitch and kind only.
  */
-export function segmentRoof(seed: string, style: string): SegmentRoof {
-  const kind: SegmentRoofKind = style === 'postwar' || style === 'modern' || style === 'tower' ? 'flat'
-    : pick(hash01(`${seed}:roof`), [['flat', 0.34], ['mansardHip', 0.36], ['pitched', 0.3]] as Array<[SegmentRoofKind, number]>);
-  const riseM = kind === 'mansardHip' ? 2.6 + hash01(`${seed}:rise`) * 0.6 : kind === 'pitched' ? 2.8 + hash01(`${seed}:rise`) * 1.0 : 0;
-  // c19 Ring fronts carry slate or dark tile, never the orange pantile of the pitched-roof dice.
-  const material = kind === 'mansardHip' || style === 'c19' ? 'slate' : hash01(`${seed}:mat`) < 0.62 ? 'tile' : 'slate';
-  const dormers = kind === 'mansardHip' || (kind === 'pitched' && hash01(`${seed}:dorm`) < 0.55);
-  return { kind, riseM: +riseM.toFixed(2), material, tone: +hash01(`${seed}:tone2`).toFixed(3),
-    dormerPitchM: dormers ? +(3.4 + hash01(`${seed}:dpitch`) * 1.4).toFixed(2) : null,
+export function segmentRoof(seed: string, style: string, roofRiseM: number | null | undefined): SegmentRoof {
+  const storey = !(style === 'postwar' || style === 'modern' || style === 'tower') && typeof roofRiseM === 'number' && roofRiseM >= ROOF_STOREY_MIN_M;
+  const kind: SegmentRoofKind = storey ? 'mansardHip' : 'flat';
+  const riseM = storey ? Math.min(4, Math.max(2.4, roofRiseM!)) : 0;
+  return { kind, riseM: +riseM.toFixed(2), material: 'slate', tone: +(hash01(`${seed}:tone2`) * 0.5).toFixed(3),
+    dormerPitchM: storey ? +(3.4 + hash01(`${seed}:dpitch`) * 1.4).toFixed(2) : null,
     dormerKind: pick(hash01(`${seed}:dkind`), [['plain', 0.5], ['gabled', 0.3], ['pediment', 0.2]] as Array<[SegmentRoof['dormerKind'], number]>) };
 }
 
@@ -148,14 +153,15 @@ export function withDesignUnitRoof<T extends Feature>(feature: T): T {
   const p = feature.properties, d = designUnitOf(p);
   if (!d || d.eavesM === null || !(d.eavesM > 4) || !designUnitsOn()) return feature;
   if (!p.facade || p.rowFront || p.roofPlanned || typeof p.monumentGable === 'string' || p.kitRoof) return feature;
-  const roof = segmentRoof(d.seed, String(p.facadeStyle ?? '')), top = d.eavesM;
+  const roof = segmentRoof(d.seed, String(p.facadeStyle ?? ''), d.roofRiseM), top = d.eavesM;
   const { roofDormer: _dice, roofShapeTag: _tag, ...rest } = p;
+  // A flat top behind the cornice: the flat lid (no roof box; threeBuildingFeatures applyFlatRoof). The measured eaves keep
+  // decorateRoof off it.
   if (roof.kind === 'flat') return { ...feature, properties: { ...rest, height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' } };
   const w = d.toM - d.fromM, n = roof.dormerPitchM ? Math.max(1, Math.round(w / roof.dormerPitchM)) : 0;
   const dormers = Array.from({ length: n }, (_, i) => ({ a: +((i + 0.5) / n).toFixed(3), kind: roof.dormerKind }));
-  // Joined at the party walls inside the segment (no hip, a plate closes the profile); the segment's two ends hip.
-  const joins = { ...(d.k > 0 ? { left: true } : {}), ...(d.k < d.n - 1 ? { right: true } : {}) };
-  const pitched = roof.kind === 'pitched';
-  return { ...feature, properties: { ...rest, height: +(top + roof.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: pitched ? 'hipped' : 'mansardHip', roofDormer: n > 0,
-    rowRoof: { riseM: roof.riseM, material: roof.material, dormers, series: d.seed, tone: roof.tone, ...(joins.left || joins.right ? { joins } : {}), ...(pitched ? { shape: 'hipped' } : {}) } } };
+  // Closed at every end (a plate closes the profile): no hips or pyramids on a row segment, the ridge along the street.
+  const joins = { left: true, right: true };
+  return { ...feature, properties: { ...rest, height: +(top + roof.riseM).toFixed(3), roofEavesHeightM: top, roofPlanned: true, roofShape: 'mansardHip', roofDormer: n > 0,
+    rowRoof: { riseM: roof.riseM, material: roof.material, dormers, series: d.seed, tone: roof.tone, joins } } };
 }

@@ -25,6 +25,9 @@ const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.slic
 const layers = new Set((arg('layers') ?? 'ring').split(','));
 const also = new Set((arg('also') ?? '').split(',').filter(Boolean));
 const jobs = Number(arg('jobs') ?? 6), limit = Number(arg('limit') ?? 1e9);
+// --roof: (re)measure every member's roof mass too (p90 of all DSM cells in the footprint over the median ground), even when
+// its front is already measured.
+const roofPass = process.argv.includes('--roof');
 
 const units = (JSON.parse(fs.readFileSync(path.join(STAGING, 'design-units.json'), 'utf8')).units as DesignUnit[])
   .filter(u => u.members.length > 1 && ((u.object && layers.has(u.object.key.split(':')[0])) || u.members.some(m => also.has(m))))
@@ -40,13 +43,13 @@ for (const x of fs.readdirSync(TILES).filter(n => /^\d+$/.test(n))) for (const f
   }
 }
 const prior: Record<string, AhnFront | null> = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')).fronts ?? {} : {};
-const res: Record<string, AhnFront | null> = { ...prior };
+const res: Record<string, (AhnFront & { roofP90?: number; riseM?: number }) | null> = { ...prior };
 let done = 0, failed = 0;
 const save = () => { fs.mkdirSync(STAGING, { recursive: true }); fs.writeFileSync(OUT, JSON.stringify({ source: 'AHN4 dsm_05m/dtm_05m (PDOK WCS, CC0)', bandM: 1.5, fronts: res })); };
 async function one(u: DesignUnit) {
   const lines = new Map<string, [readonly [number, number], readonly [number, number]]>();
   for (const f of u.faces) for (const s of f.slices) if (s.line && !lines.has(s.pandId)) lines.set(s.pandId, s.line);
-  const ids = u.members.filter(id => rings.has(id) && lines.has(id) && !(id in res));
+  const ids = u.members.filter(id => rings.has(id) && lines.has(id) && (!(id in res) || (roofPass && res[id] && res[id]!.riseM === undefined)));
   if (!ids.length) return;
   try {
     const { roof, ground } = await ahnCellsForRings(u.members.filter(id => rings.has(id)).map(id => rings.get(id)! as unknown as Ring), 'ahn4');
@@ -54,7 +57,16 @@ async function one(u: DesignUnit) {
       const ring = rings.get(id)!.map(p => { const q = lngLatToRd([p[0], p[1]]); return [q.x, q.y]; }) as unknown as Ring;
       const cells = roof.filter(c => pointInRing([c[0], c[1]], ring));
       const [a, b] = lines.get(id)!, A = lngLatToRd([a[0], a[1]]), B = lngLatToRd([b[0], b[1]]);
-      res[id] = frontBandHeights(cells, ground, [A.x, A.y], [B.x, B.y]);
+      const front = frontBandHeights(cells, ground, [A.x, A.y], [B.x, B.y]);
+      const g = [...ground].sort((x, y) => x - y)[Math.floor(ground.length / 2)];
+      const zs = cells.map(c => c[2] - g).sort((x, y) => x - y);
+      // The roof mass over the front line, ground-free: p90 of every DSM cell in the footprint minus p90 of the cells within
+      // 1.5 m of the front line (absolute heights both; dense blocks have no DTM pad to stand on).
+      const ux = B.x - A.x, uy = B.y - A.y, L2 = ux * ux + uy * uy || 1;
+      const band = cells.filter(c => { const t = Math.max(0, Math.min(1, ((c[0] - A.x) * ux + (c[1] - A.y) * uy) / L2)); return Math.hypot(c[0] - A.x - t * ux, c[1] - A.y - t * uy) <= 1.5; }).map(c => c[2]).sort((x, y) => x - y);
+      const all = cells.map(c => c[2]).sort((x, y) => x - y);
+      const riseM = band.length >= 3 && all.length ? +(all[Math.floor(all.length * 0.9)] - band[Math.floor(band.length * 0.9)]).toFixed(2) : undefined;
+      res[id] = front ? { ...front, ...(zs.length && Number.isFinite(g) ? { roofP90: +zs[Math.floor(zs.length * 0.9)].toFixed(2) } : {}), ...(riseM !== undefined ? { riseM } : {}) } : front;
     }
   } catch (e) { failed++; console.error(u.id, String(e).slice(0, 160)); }
   if (++done % 100 === 0) { console.error(`${done}/${units.length} units`); save(); }

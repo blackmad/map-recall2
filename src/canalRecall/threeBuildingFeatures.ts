@@ -18,7 +18,7 @@ import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUnc
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { ROW_FRONT_EXTRAS, rowFrontShopHex, type RowHeadsDraw, type RowGlazingDraw, type RowGroundWallDraw, type RowBasementDraw } from './houseLine/rowFront.js';
-import { wallVarietyOn } from './look/measuredWallPool.js';
+import { segmentPoolDraw, wallVarietyOn } from './look/measuredWallPool.js';
 import { paletteFor } from './bayTextures.js';
 import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
 import { fieldsDraw, ownFields, specFieldsOn, type RouteAFields } from './houseSpec/routeAFields.js';
@@ -114,7 +114,8 @@ function applyFlatRoof(building: MeshBuilding, p: Record<string, unknown>, look:
   if (!flatRoofSurfaceEnabled() || LOOK_VARIANTS[look].cartoonRoofCells) return;
   const surfaceLayer = flatRoofSurfaceLayer(cells);
   if (surfaceLayer !== null) building.lid = { ...building.lid, surfaceLayer };
-  building.flatRoof = { lip: areaM2 >= LIP_MIN_M2, box: areaM2 >= BOX_MIN_M2 && !building.measuredRoof?.furniture.length, areaM2 };
+  // A design-unit member's flat top sits behind its cornice with nothing wall-coloured over the eaves line (no lip, no box).
+  building.flatRoof = { lip: areaM2 >= LIP_MIN_M2 && !designUnitOf(p), box: areaM2 >= BOX_MIN_M2 && !building.measuredRoof?.furniture.length && !designUnitOf(p), areaM2 };
 }
 
 /**
@@ -276,7 +277,11 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       lookYear !== null && lookYear >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
       design?.look || design?.bays ? { ...design.look, ...(design.bays ? { bays: design.bays } : {}), ...specLookOf(p) } : specLookOf(p), rowLook ? undefined : design ? design.at : poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
-    building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
+    // Design units: every unpainted member draws its segment's mid-range brick from the measured pool (one per segment,
+    // never the darkest tones; measuredWallPool.ts segmentPoolDraw), whatever its own profile or period wall said.
+    const segWall = design?.at && !specLookOf(p)?.painted ? segmentPoolDraw(design.at[0], design.at[1], bay.archetype, design.seed) : null;
+    if (segWall) profileWall = segWall;
+    building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: segWall ?? bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     // Lane retail-look round 3c (`?retailGround=1`): bay.groundHex here is the shop grammar's guess (no recipe is passed),
     // so a pale one goes dark; a measured paint (spec shopHex, row-front trace, a street recipe's groundWallHex) wins later.
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);

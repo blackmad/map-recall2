@@ -53,6 +53,8 @@ export interface Segment {
   year?: number | null;
   /** Members' footprint centroid [lng, lat] (one measured-wall pool draw per segment); set by build-segments. */
   at?: [number, number];
+  /** AHN roof mass behind the front over the eaves line (m, median member); null unread. Set by build-segments. */
+  roofRiseM?: number | null;
 }
 
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; };

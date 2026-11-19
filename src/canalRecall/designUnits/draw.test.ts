@@ -17,6 +17,8 @@ import { designUnitOf, segmentBayM, setDesignSegments, sliceBays, withDesignUnit
 import { gameDecorator } from '../galleryPipeline.ts';
 import { buildFeatureChunk, meshBuildingFor } from '../threeBuildingFeatures.ts';
 import { layoutProbe, type LayoutProbeRun } from '../threeBuildingMesh.ts';
+import { DESIGN_MEMBER_COMPONENTS, ExtraSink, wallExtras } from '../facadeExtras.ts';
+import type { ExtraContext } from '../facadeExtraCore.ts';
 
 const dir = path.join(import.meta.dirname, 'fixtures');
 const fx = JSON.parse(fs.readFileSync(path.join(dir, 'regression-rows.json'), 'utf8')) as { pands: UnitPand[]; objects: OrdekaartObject[]; streets: NamedStreet[] };
@@ -160,7 +162,7 @@ test('conformance: seed changes the mesh', () => {
   const s = VO();
   assert.notEqual(meshWith(s), meshWith({ ...s, seed: `${s.seed}~other` }));
 });
-test('conformance: slices change the mesh (the order joins the party walls; the module sets the bay grid; no slice, no member draw)', () => {
+test('conformance: slices change the mesh (the module sets the bay grid; no slice, no member draw)', () => {
   const s = VO(), base = meshWith(s);
   // The module: the first member keeps its own slice width, the others' slices are halved, so the segment's median width
   // (the module the bay pitch divides) halves and the first member draws two cells where it drew one.
@@ -170,8 +172,7 @@ test('conformance: slices change the mesh (the order joins the party walls; the 
   assert.notEqual(base, meshWith(narrow));
   const dropped = { ...s, slices: s.slices.filter(x => x.pandId !== s.members[0]) };
   assert.notEqual(base, meshWith(dropped));
-  const reversed = { ...s, slices: s.slices.map(x => ({ ...x, fromM: +(s.slices.reduce((m, y) => Math.max(m, y.toM), 0) - x.toM).toFixed(2), toM: +(s.slices.reduce((m, y) => Math.max(m, y.toM), 0) - x.fromM).toFixed(2) })) };
-  assert.notEqual(base, meshWith(reversed));
+  // (The order no longer changes the mesh: since 2026-11-19 every member's roof is closed at both ends, no end hips.)
 });
 test('conformance: exceptions change the mesh (a listed member far off the line is clamped; unlisted, it draws as today)', () => {
   const s = VO(), odd = s.members[1], off = (p: UnitPand) => p.id === odd ? s.eavesM! + STALE_MEMBER_M + 2 : undefined;
@@ -195,6 +196,8 @@ for (const name of ['Rustenburgerstraat', 'Van Ostadestraat'] as const) {
         assert.ok(up, `${s.id} ${m.id}: upper openings`);
         assert.equal(run.bays, d.bays, `${s.id} ${m.id}: ${run.bays} columns drawn, the plot's ${d.bays}`);
         const cellW = run.lengthM * (run.axes || 1) / run.bays, w = up!.width * cellW, h = Math.abs(up!.head - up!.sill) * run.storeyM;
+        // Check 5 (2026-11-19): the window is 55-60 % of its pitch, as photographed (Van Ostadestraat).
+        assert.ok(w / (run.lengthM / run.bays) >= 0.5, `${s.id} ${m.id}: window ${(w / (run.lengthM / run.bays)).toFixed(2)} of its pitch`);
         assert.ok(h / w >= 1.5, `${s.id} ${m.id}: window ${h.toFixed(2)} x ${w.toFixed(2)} m (h/w ${(h / w).toFixed(2)})`);
         assert.equal(d.look?.dark, false, `${s.id} ${m.id}: light frames on an era front with no read`);
         checked++;
@@ -203,3 +206,34 @@ for (const name of ['Rustenburgerstraat', 'Van Ostadestraat'] as const) {
     assert.ok(checked >= 3, `${name}: ${checked} era members checked`);
   });
 }
+
+// One design inside a segment (coordinator, 2026-11-19: Rustenburgerstraat's middle segment drew dressed heads on three
+// columns of two storeys, a balconette on one or two windows): every member's upper storeys draw one preset, one window,
+// one wall, one series seed, and its street wall dresses only parts that repeat per window, storey or plot.
+for (const name of ['Rustenburgerstraat', 'Van Ostadestraat'] as const) {
+  test(`${name}: every member of a segment draws the same upper column (preset, window, wall, series)`, () => {
+    for (const { s, members } of drawRow(name)) {
+      const one = (label: string, xs: unknown[]) => assert.equal(new Set(xs.map(x => JSON.stringify(x))).size, 1, `${s.id}: one ${label} (${xs.map(x => JSON.stringify(x)).join(' ')})`);
+      const rule = members.filter(m => !designUnitOf(m.f.properties)?.exception && !m.f.properties.painted);
+      one('upper preset', rule.map(m => m.b.layers?.upper));
+      one('upper window', rule.map(m => m.b.openings?.upper));
+      one('wall', rule.map(m => m.b.wallHex));
+      one('series seed', rule.map(m => m.b.seed));
+    }
+  });
+}
+
+test('a design member\'s street wall dresses the same per-window parts on every plot, never a one-off', () => {
+  const wall = (id: string, bays: number): ExtraContext => ({
+    id, style: 'c19', period: 'c19', wallKey: 'front', seriesId: 'du:ring:8275', designMember: true,
+    f: { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1, len: bays * 1.67 }, base: 0, top: 15,
+    layout: { bays, bayWidthM: 1.67, groundM: 3.4, storeys: 4, storeyM: 2.9, doorBays: [0] },
+    wallHex: '#73625e', accentHex: '#efe9dc', groundLevel: true, streetSide: true,
+    openings: { upper: { axes: [0.5], width: 0.55, sill: 0.15, head: 0.85 }, ground: null, doorWindow: null, door: { axis: 0.5, width: 0.5, bottom: 0, top: 0.8, fanlight: true } },
+  });
+  const narrow = wallExtras(wall('NL.IMBAG.Pand.0363100012159752', 3), new ExtraSink(5000));
+  const wide = wallExtras(wall('NL.IMBAG.Pand.0363100012236414', 6), new ExtraSink(5000));
+  for (const id of [...narrow, ...wide]) assert.ok(DESIGN_MEMBER_COMPONENTS.has(id), `${id} is not a per-window part`);
+  assert.deepEqual([...wide].sort(), [...narrow].sort(), 'both plots dress the same parts');
+  for (const id of ['iron-balconies', 'juliet-balcony', 'flower-boxes', 'wall-anchors', 'brick-bands', 'scaffolding']) assert.ok(!DESIGN_MEMBER_COMPONENTS.has(id), id);
+});

@@ -50,6 +50,9 @@ export type ExtraContext = {
   stoopReachM?: number;
   /** House rows (lane R): the series this wall's building draws; the extras' dice roll on it, so members agree. */
   seriesId?: string;
+  /** Design units (`?designUnits=1`): a segment member's street wall; it takes the row budget so a wide plot dresses every
+   *  window as its narrow neighbours do (one design per segment). */
+  designMember?: true;
   /** House rows: the series' stated dressing on this wall (threeBuildingMesh rowDressOnEdge). `windows`: the record's
    *  boxes in this edge's metres with their storey and head; `heads`: spans (edge metres) over the grid's windows. */
   rowDress?: RowDressContext;

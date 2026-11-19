@@ -1,4 +1,4 @@
-# Design units: in-flight checkpoint (2026-11-19, about 18:10)
+# Design units: in-flight checkpoint (2026-11-19, about 18:45)
 
 This is for a fresh session that has only the repo. Read it first. Then read `docs/handoffs/design-units-plan-20261119.md`, `docs/handoffs/design-units-handoff-20261119.md` and `docs/reports/design-units-phase0-20261119.md`.
 
@@ -81,7 +81,25 @@ as the prior). The iteration loop is Node only: `node --import tsx scripts/desig
 - the no-worse conformance test in `draw.test.ts` (12/12): era members draw the plot's columns and windows h/w >= 1.5, light
   frames without a read;
 - bundles rebuilt; lint, test:design-units 14/14, structure, worldV1Enabled pass.
-Still to do: the wall tone against the photo (the browser trial read L 0.50 / hue 42 against the photo's 0.59 / 47; not
+Pre-gate fix round (coordinator, 2026-11-19 evening; one round, then the gate, no further rounds before David sees it). Done:
+- one design per segment: the run seed is the segment's (`runSeed`, threeBuildingMesh.ts); a member's street wall dresses
+  only `DESIGN_MEMBER_COMPONENTS` (facadeExtras.ts: cornices, heads, frames, sills, door surrounds, string courses, plinths,
+  stoops) with the row budget, so balconettes, flower boxes, anchors, bands and scaffolding are dropped rather than landing
+  on one or two windows; conformance tests: one preset/window/wall/series per segment, and a 3-bay and a 6-bay plot dress
+  the same parts;
+- window class: era look adds `sash: 'transom'` (tall sashes under a transom light, light frames);
+- roofs: `ahn-fronts.ts --roof` measures each member's roof mass over its front band (`riseM`, ground-free);
+  build-segments gives `roofRiseM` (3,205 of 3,235 measured; 77 at 1.8 m or more). `segmentRoof`: a slate roof storey with
+  dormers only at >= 1.8 m, else a flat lid (no lip, no roof box: nothing wall-coloured over the eaves line); roofs closed
+  at both ends (no hips); slate tone from the darker half. All seven regression segments measure flat;
+- wall: `segmentPoolDraw` (measuredWallPool.ts): one brick per segment from the measured pool within 1 km, lightness
+  between its 40th and 85th percentile readings, OKLab a >= 0.015 (brick, not grey), picked by segment seed;
+- check 5: window width is 0.55 of the pitch on every member of both rows (the photo's 55-60 %, low end; unchanged, now
+  asserted >= 0.5 in the test); a single plot takes the era count for its own width (Rustenburgerstraat 119632, 4.3 m: 2
+  columns, was 3); a multi-plot member keeps the segment pitch.
+Sheets: `artifacts/design-units/rows/{van-ostadestraat,rustenburgerstraat}/sheet.jpg`. The browser pairs in
+`artifacts/design-units/frames/{vo,rb}-{before2,after2}` predate this round: reshoot at the gate.
+Earlier still-to-do (superseded by the round above): the wall tone against the photo (the browser trial read L 0.50 / hue 42 against the photo's 0.59 / 47; not
 touched yet); the planning session reviews the two row sheets; then one browser pair per row, then the gate.
 
 ## Next steps, in order

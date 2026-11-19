@@ -26,7 +26,7 @@ const layers = (arg('layers') ?? 'ring').split(',');
 
 const units = (JSON.parse(fs.readFileSync(path.join(STAGING, 'design-units.json'), 'utf8')).units as DesignUnit[])
   .filter(u => u.members.length > 1 && u.object && layers.includes(u.object.key.split(':')[0]));
-const ahn = JSON.parse(fs.readFileSync(path.join(STAGING, 'ahn-fronts.json'), 'utf8')).fronts as Record<string, { p90: number } | null>;
+const ahn = JSON.parse(fs.readFileSync(path.join(STAGING, 'ahn-fronts.json'), 'utf8')).fronts as Record<string, { p90: number; roofP90?: number; riseM?: number } | null>;
 const want = new Set(units.flatMap(u => u.members));
 const bag = new Map<string, number | null>();
 const yearOf = new Map<string, number>(), centre = new Map<string, [number, number, number]>(); // centre: sum lng, sum lat, n
@@ -71,6 +71,9 @@ for (const u of units) {
     g.year = med(g.members.map(m => yearOf.get(m)).filter((y): y is number => typeof y === 'number'));
     const c = g.members.map(m => centre.get(m)).filter((x): x is [number, number, number] => !!x);
     if (c.length) { const n = c.reduce((t, x) => t + x[2], 0); g.at = [+(c.reduce((t, x) => t + x[0], 0) / n).toFixed(7), +(c.reduce((t, x) => t + x[1], 0) / n).toFixed(7)]; }
+    // The roof mass behind the front (AHN, m over the line): the median member's roof p90 minus its front p90. Null unread.
+    const rises = g.members.map(m => ahn[m]?.riseM).filter((v): v is number => typeof v === 'number').sort((a, b) => a - b);
+    g.roofRiseM = rises.length ? +rises[Math.floor((rises.length - 1) / 2)].toFixed(2) : null;
     const r = readsOf(g.members);
     if (r) (g as Segment & { reads?: unknown }).reads = r;
   }
@@ -84,6 +87,7 @@ const stat = {
   segments: segments.length, multiPandSegments: multi.length, pandsInMultiSegments: multi.reduce((t, s) => t + s.members.length, 0),
   unitsSplit: splitUnits, singlesFromSplits: segments.filter(s => s.members.length === 1).length,
   exceptions: multi.reduce((t, s) => t + s.exceptions.length, 0),
+  roofMeasured: multi.filter(s => typeof s.roofRiseM === 'number').length, roofStoreys: multi.filter(s => (s.roofRiseM ?? 0) >= 1.8).length,
   withReads: multi.filter(s => (s as Segment & { reads?: unknown }).reads).length, readsFrom: answers.size,
   eavesSource: { ahn: multi.filter(s => s.eavesSource === 'ahn').length, '3dbag': multi.filter(s => s.eavesSource === '3dbag').length, none: multi.filter(s => s.eavesSource === 'none').length },
   // How far 3DBAG per-pand eaves sit from the segment line today (what the flag removes).

@@ -182,6 +182,29 @@ export class MeasuredWallPool {
 }
 
 let shared: MeasuredWallPool | undefined;
+
+/** Design units (`?designUnits=1`): the district pool's radius (m) and the lightness quantiles a segment draws between. */
+export const SEGMENT_POOL = { radiusM: 1000, minN: 24, from: 0.4, to: 0.85, minRedA: 0.015 } as const;
+/**
+ * A design-unit segment's wall: a brick wall from the district's measured pool (every unpainted reading within
+ * SEGMENT_POOL.radiusM, any archetype), mid range only: lightness between the pool's 40th and 85th percentile readings,
+ * so the darkest tones (the pool's 0.34 floor, a third of De Pijp's readings) never draw. Picked by the segment seed, the
+ * same rule everywhere (nothing tuned per row). Null when the pool is off or too thin (the caller keeps its own wall).
+ */
+export function segmentPoolDraw(lng: number, lat: number, archetype: string, seed: string): string | null {
+  if (!wallPoolOn() || !(POOL_ARCHETYPES as readonly string[]).includes(archetype)) return null;
+  shared ??= new MeasuredWallPool(TABLE as unknown as Table);
+  const ps = shared.near(lng, lat, SEGMENT_POOL.radiusM).filter(p => !p.painted && p.L < PAINTED_L);
+  if (ps.length < SEGMENT_POOL.minN) return null;
+  const Ls = ps.map(p => p.L).sort((a, b) => a - b), q = (f: number) => Ls[Math.floor(f * (Ls.length - 1))];
+  const lo = q(SEGMENT_POOL.from), hi = q(SEGMENT_POOL.to);
+  // Brick only: a grey or greige reading (OKLab a under minRedA) is render, stone or shade, not the district's brick.
+  const band = [...new Set(ps.filter(p => p.L >= lo && p.L <= hi && hexToOklab(p.hex)[1] >= SEGMENT_POOL.minRedA).map(p => p.hex))].sort();
+  if (!band.length) return null;
+  let h = 2166136261;
+  for (let i = 0; i < seed.length; i++) { h ^= seed.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return band[(h >>> 0) % band.length];
+}
 /**
  * The pool's draw for an unmeasured pand (flag `?wallVariety=0` falls back to the median pick, painted false), or null
  * (pool off, not a pre-1945 archetype, too few neighbours). `at` should be the footprint's centroid, as the table's are.

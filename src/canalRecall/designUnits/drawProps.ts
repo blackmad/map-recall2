@@ -29,9 +29,11 @@ export interface DesignUnitDraw {
   bays?: number;
   /** The segment's window pitch (m; module / era count): a member run that is not exactly its slice draws round(run / pitch). */
   bayPitchM?: number;
+  /** AHN roof mass over the eaves line (m): a roof storey only at ROOF_STOREY_MIN_M or more (draw.ts segmentRoof). */
+  roofRiseM?: number;
   /** The segment's look traits for the bay preset (bayLook spec): the members' read consensus, else the era prior
    *  (1860-1919 Ring fronts: light frames, tall sashes). */
-  look?: { dark?: boolean; pale?: boolean; arch?: boolean; tall?: boolean };
+  look?: { dark?: boolean; pale?: boolean; arch?: boolean; tall?: boolean; sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six' };
 }
 
 /**
