@@ -17,6 +17,7 @@ import { hash01, type ExtraContext, type ExtraSink, type WallComponent } from '.
 import { presetOpenings, type OpeningRow, type Openings } from './facadeOpenings.js';
 import type { FacadeStyle } from './genericFacades.js';
 import { pilasterHex } from './look/pilasterTone.js';
+import { fitProjectionFor } from './projectionWindowFit.js';
 import { HEAD, headGrammarOf, headPieces, headRise, type HeadGrammar } from './houseLine/headGrammar.js';
 
 // --- Palette ---------------------------------------------------------------------
@@ -1424,16 +1425,21 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     // A rounded oriel over one or two storeys: three stepped boxes read as a curve, with glass
     // bands, a stone corbel under it and a cap.
     if (c.layout.storeys < 2 || c.f.len < 5.5) return;
-    const x = c.f.len * (r < 0.5 ? 0.5 : 0.3), z0 = storeyZ(c, 0) + 0.1, z1 = storeyZ(c, Math.min(2, c.layout.storeys - 1)) - 0.1;
+    // Feedback d99e51 (Postjesweg 0363100012104321): at 0.5 / 0.3 of the wall the oriel cut half of two windows; it now
+    // stands on a window axis or pier where it covers windows whole, narrowed at most to 60 %, or is not drawn
+    // (projectionWindowFit.ts). Where nothing was cut it is as before (x and k = 1 exactly).
+    const fit = fitProjectionFor(c.id, 'oriel', c.f.len * (r < 0.5 ? 0.5 : 0.3), 1.38, [0, 1].filter(k => k < Math.min(2, c.layout.storeys - 1)).flatMap(k => windowSpans(c, k)), c.f.len);
+    if (!fit) return;
+    const x = fit.x, k = fit.scale, z0 = storeyZ(c, 0) + 0.1, z1 = storeyZ(c, Math.min(2, c.layout.storeys - 1)) - 0.1;
     const glassZ0 = z0 + 0.7, glassZ1 = z1 - 0.35, frame = c.style === 'school' ? pickOf(SCHOOL_FRAMES, r) : WHITE;
-    s.box(c.f, x - 0.75, x + 0.75, 0, 0.4, z0 - 0.4, z0, SANDSTONE, true);
+    s.box(c.f, x - 0.75 * k, x + 0.75 * k, 0, 0.4, z0 - 0.4, z0, SANDSTONE, true);
     const body = shadeHex(c.wallHex, 0.88);
     // Shallower since 2026-10-03 (0.85 m out read as a box bolted on: "awful imposing extrusions").
-    for (const [hw, o] of [[1.3, 0.2], [1.05, 0.38], [0.7, 0.5]] as const) s.box(c.f, x - hw, x + hw, 0, o, z0, z1, body, true);
+    for (const [hw, o] of [[1.3, 0.2], [1.05, 0.38], [0.7, 0.5]] as const) s.box(c.f, x - hw * k, x + hw * k, 0, o, z0, z1, body, true);
     // Glass on each step's face, where the step stands out past the next one.
-    for (const [a0, a1, o] of [[x - 1.22, x - 1.1, 0.2], [x - 0.95, x - 0.8, 0.38], [x - 0.62, x + 0.62, 0.5], [x + 0.8, x + 0.95, 0.38], [x + 1.1, x + 1.22, 0.2]] as const) s.strip(c.f, a0, a1, o + 0.01, glassZ0, glassZ1, '#8ea6b4', 0.01);
-    s.strip(c.f, x - 0.6, x + 0.6, 0.53, glassZ0 + (glassZ1 - glassZ0) * 0.68, glassZ0 + (glassZ1 - glassZ0) * 0.72, frame, 0.03);
-    s.box(c.f, x - 1.38, x + 1.38, 0, 0.56, z1, z1 + 0.14, c.style === 'school' ? '#4f7a6a' : STONE, true);
+    for (const [a0, a1, o] of [[-1.22, -1.1, 0.2], [-0.95, -0.8, 0.38], [-0.62, 0.62, 0.5], [0.8, 0.95, 0.38], [1.1, 1.22, 0.2]] as const) s.strip(c.f, x + a0 * k, x + a1 * k, o + 0.01, glassZ0, glassZ1, '#8ea6b4', 0.01);
+    s.strip(c.f, x - 0.6 * k, x + 0.6 * k, 0.53, glassZ0 + (glassZ1 - glassZ0) * 0.68, glassZ0 + (glassZ1 - glassZ0) * 0.72, frame, 0.03);
+    s.box(c.f, x - 1.38 * k, x + 1.38 * k, 0, 0.56, z1, z1 + 0.14, c.style === 'school' ? '#4f7a6a' : STONE, true);
   } },
   // --- Ground floor -------------------------------------------------------------------------
   { id: 'rusticated-plinth', styles: CANAL, p: { c19: 0.4, canal: 0.12 }, wide: true, street: true, group: 'plinth', build: (c, s) => {
