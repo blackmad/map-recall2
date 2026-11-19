@@ -453,6 +453,24 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
     if (d < bestD) { bestD = d; best = e; }
   }
   if (!best) return { tris: [] };
+  // Lane ground-floor fix round 2: a record read on a wall of spanM metres goes on the candidate wall whose run is nearest
+  // that length among the walls within GF_WALL_SLACK_M of the nearest one. The shop's point often stands nearer a short
+  // corner chamfer (Stach, Kerkstraat: 2.9 m beside its 7.6 m front) or a party wall over a lower neighbour (FEBO,
+  // Leidsestraat: the 20 m side over its neighbour's roof, 0.2 m nearer than the 6 m front), so the front went where
+  // no camera on the street sees it.
+  const spanM = front.groundFloor?.spanM;
+  if (spanM) {
+    let pick: { e: Edge; miss: number; d: number } | null = null;
+    for (const e of candidates) {
+      if (e.hole || e.len < 2.5) continue;
+      const dx = e.x1 - e.x0, dy = e.y1 - e.y0, t = Math.max(0, Math.min(1, ((px - e.x0) * dx + (py - e.y0) * dy) / (e.len * e.len)));
+      const d = Math.hypot(px - e.x0 - dx * t, py - e.y0 - dy * t);
+      if (d > bestD + GF_WALL_SLACK_M) continue;
+      const miss = Math.abs(steppedRun(e, ring).len - spanM);
+      if (!pick || miss < pick.miss - 0.3 || (Math.abs(miss - pick.miss) <= 0.3 && d < pick.d)) pick = { e, miss, d };
+    }
+    if (pick) best = pick.e;
+  }
   // Round 3b: the front spans the stepped run the nearest wall belongs to (retailHosting steppedRun), on its outermost line.
   const run = steppedRun(best, ring), shift = run.parts.find(p => p.e === best)?.t0 ?? 0;
   const e = { x0: run.x0, y0: run.y0, ux: run.ux, uy: run.uy, nx: run.nx, ny: run.ny };
@@ -508,6 +526,8 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
  * record's first-floor line when it lies within GROUND_TOP_TRUST_M of the mesher's ground storey, else the mesher's.
  */
 const GROUND_TOP_TRUST_M = 1.6;
+/** A ground-floor record's wall may stand this much further from the shop's point than the nearest wall (m). */
+export const GF_WALL_SLACK_M = 2.0;
 /** A run longer than the read's wall by this factor draws the front over the read's wall length only. */
 const GF_SPAN_SLACK = 1.25;
 function groundFloorFrontOn(front: NonNullable<MeshBuilding['retailFront']>, gf: GroundFloorDraw, b: MeshBuilding, run: ReturnType<typeof steppedRun<Edge>>, e: { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number }, base: number, groundM: number, along: number, pavementM?: number): { tris: SignTri[]; cuts?: Array<{ e: Edge; cut: WallCut }> } {

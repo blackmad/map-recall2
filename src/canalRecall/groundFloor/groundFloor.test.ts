@@ -187,3 +187,22 @@ test('fix round 2: the sign keeps its band over the openings; with no room it go
   const inOpening = (ts: ReturnType<typeof groundFloorFrontTris>) => ts.filter(t => t.hex === board && t.p.every(p => p[0] >= widest.a0 - 1e-6 && p[0] <= widest.a1 + 1e-6 && p[2] <= widest.spring + 1e-6 && p[2] >= widest.spring - 0.7));
   assert.equal(inOpening(groundFloorFrontTris({ template: 'fastFood', seed: 'bk', chain: { fascia: '#f4efe6', letters: '#d2232a', word: 'BURGER KING' }, letters: 0 }, bare, E, 0, 10, 0, 2.5)).length, 0);
 });
+
+test('fix round 2: a record goes on the wall of its read span, not a nearer chamfer (Stach, Kerkstraat 0363100012177098)', async () => {
+  const { buildChunk } = await import('../threeBuildingMesh.js');
+  const gf = drawOf(mergeGroundFloor('0363100012177098', [toGroundFloorPart(READS.reads.find(r => r.pandId === '0363100012177098')!)])!);
+  assert.equal(gf.spanM, 7.6);
+  // A 7.6 m front on y = 0 and a 2.9 m corner chamfer; the shop's point stands 0.4 m from the chamfer, 0.95 m from the front.
+  const origin = { lng: 4.85, lat: 52.37 }, kx = 111320 * Math.cos(origin.lat * Math.PI / 180);
+  const pt = (x: number, y: number): [number, number] => [origin.lng + x / kx, origin.lat + y / 110540];
+  const base = { id: 't', polygons: [[[pt(0, 0), pt(0, 8), pt(9.65, 8), pt(9.65, 2.05), pt(7.6, 0), pt(0, 0)]]], heightM: 12, minHeightM: 0, style: 'school', wallHex: '#876953', lid: { hex: '#876953', flatLayer: 0 } } as unknown as Parameters<typeof buildChunk>[0][number];
+  const streets = Float32Array.from([-20, -3, 30, -3, 12, -20, 12, 30]);
+  const keys = (c: ReturnType<typeof buildChunk>) => { const s = new Set<string>(); for (let i = 0; i < c.positions.length; i += 3) s.add([0, 1, 2].map(k => c.positions[i + k].toFixed(3)).join(',')); return s; };
+  const none = keys(buildChunk([base], origin, 'walls', streets));
+  const added = (g?: GroundFloorDraw) => [...keys(buildChunk([{ ...base, retailFront: { template: 'clothes', at: pt(7.9, 0.9), word: 'X', ...(g ? { groundFloor: g } : {}) } }], origin, 'walls', streets))].filter(k => !none.has(k)).map(k => k.split(',').map(Number));
+  const meanX = (ps: number[][]) => ps.reduce((s, p) => s + p[0], 0) / ps.length;
+  // The template (no record) keeps today's nearest-wall rule: on the chamfer; the record's front stands on the 7.6 m wall.
+  assert.ok(meanX(added()) > 7.6, 'template on the chamfer (unchanged)');
+  const gfPts = added(gf);
+  assert.ok(meanX(gfPts) < 6 && gfPts.every(p => p[0] <= 7.65 && p[1] <= 0.35), 'record on the front');
+});
