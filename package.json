@@ -252,6 +252,7 @@
     "check:canal:joins": "npm run check:rail-joins",
     "check:canal:core": "tsx scripts/check-canal.ts",
     "check:canal:rail": "npm run check:bridge-gaps && npm run check:rail-street",
+    "check:projection-windows": "node --import tsx scripts/check-projection-windows.ts",
     "check:glb-openings": "node --max-old-space-size=12288 --import tsx scripts/landmarks/check-glb-openings.ts",
     "test:glb-openings": "node --import tsx --test scripts/landmarks/check-glb-openings.test.ts",
     "check:roof-glazing": "tsx scripts/check-roof-glazing.ts",
