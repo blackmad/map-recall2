@@ -2,6 +2,20 @@
 
 This is for a fresh session that has only the repo. Read it first. Then read `docs/handoffs/design-units-plan-20261119.md`, `docs/handoffs/design-units-handoff-20261119.md` and `docs/reports/design-units-phase0-20261119.md`.
 
+## Ownership (from 2026-11-19 ~18:55)
+
+The Fable planning session stepped out on 2026-11-19 to save cost: this integrator owns design units end to end and goes
+straight to David (gate page + needs-david issue; his answers come on the issue). If the parent session closes, the
+integrator stops: resume from this file. Peer replies from map-recall2-40 reach the parent; if nobody relays them, check
+origin/main yourself before each merge and push. #397 still has its recommendation (option A, started on the Ring layer)
+awaiting David.
+
+Review bar (check sheets and pairs at full size, never from counts) before anything goes to David:
+- every column alike within a segment; neighbouring segments distinct;
+- windows tall with light frames;
+- nothing above an eaves line that is not measured; no invented hips or gables;
+- with the flag on, no front worse than today on window proportion, frame colour or storey count.
+
 ## Where things are
 
 | Where | SHA | What |
