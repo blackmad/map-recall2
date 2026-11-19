@@ -19,3 +19,8 @@ export function chainForTags(tags: Record<string, string>): string | null {
 }
 /** The chain key a staged template word names ('@lidl'), or null. */
 export const chainOfWord = (word: string | undefined): string | null => (word && word.startsWith('@') ? word.slice(1) : null);
+/** Lane chain-logos-20261116 (David 2026-11-16, "BENU has specific branding we are missing"): chains that draw their own
+ *  board, letters and logo under their type's template even where that template's real look has not won its blind
+ *  (Benu's pands are apotheek fronts, which otherwise letter APOTHEEK). Its goods still follow the template. */
+export const CHAINS_OWN_FRONT: ReadonlySet<string> = new Set(['benu']);
+export const chainOwnFront = (key: string): boolean => CHAINS_OWN_FRONT.has(key);

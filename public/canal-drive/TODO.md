@@ -15,9 +15,11 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
-## Paused lanes, 2026-11-16 evening (P0, resume first): `docs/handoffs/inflight-20261116.md`
+## Paused lanes, 2026-11-16 evening — resumed 2026-11-19 (P0): `docs/handoffs/inflight-20261116.md`
 
-Seven lanes were paused after a WIP push: feedback triage (78 ride notes: 40 fixed since, 31 still open), chain logos (David's 13 notes), #392 continuous rows, #393 De Pijp features, ground floors (blind 8-6-4), the Hoofddorpplein pilot and the Narva-eiland pilot. Branches, SHAs and next steps are in the handoff.
+Resumed on David's word (2026-11-19): ground floors, the Hoofddorpplein pilot and the Narva-eiland pilot are running from their branch heads, plus a new lane `lane/retail-pass-20261119` (a shopfront visual pass, then shop interiors starting with hair salons, behind a flag). Chain logos merged 2026-11-19 (see HISTORY); left over: The Bulldog's sign is small (1.6 m), and Bagels & Beans is plain cream capitals with no logo. #392 continuous rows and #393 De Pijp stay paused.
+
+Feedback triage finished 2026-11-19 (`docs/reports/feedback-triage-20261116.md`): 46 notes resolved, 31 still open. Proposed fix lanes, ranked, waiting on David: (1) HUD and tapping, 2 notes, small: the El Tawheed building can't be tapped (704240), and the START marker floats at Westerpark (d18eca). (2) Bridge seams, rails and water slits on 7 bridges. (3) Overlapping and floating windows, 6 notes. (4) Ground holes, plus lamp posts standing in water, 5 notes. (5) Looks and model requests, 11 notes; two are small police-station touch-ups.
 
 
 ## Street life behind flags (2026-11-14) — ride review before any default

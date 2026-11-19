@@ -99,13 +99,12 @@
   "name": "Starbucks",
   "pois": 21,
   "wikidata": "Q37158",
-  "file": "File:Starbucks coffee wordmark.png",
-  "source": "https://commons.wikimedia.org/wiki/File:Starbucks_coffee_wordmark.png",
-  "renderUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Starbucks_coffee_wordmark.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "sha1": "8f077bfd1efc2b9e015b551f8053368896a42504",
-  "licence": "Public domain",
+  "source": "https://en.wikipedia.org/wiki/File:Starbucks_Corporation_Logo_2011.svg",
+  "renderUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Starbucks_Corporation_Logo_2011.svg",
+  "licence": "trademark logo (Wikipedia non-free file); wordmark from Commons File:Starbucks_coffee_wordmark.png",
   "artist": "Unknown authorUnknown author",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-16",
+  "wordmark": "siren disc + white wordmark"
  },
  "lidl": {
   "name": "Lidl",
@@ -507,13 +506,12 @@
   "name": "The Bulldog",
   "pois": 7,
   "wikidata": "Q2466162",
-  "file": "File:The Bulldog - Cannabis coffee shop in Amsterdam.jpg",
-  "source": "https://commons.wikimedia.org/wiki/File:The_Bulldog_-_Cannabis_coffee_shop_in_Amsterdam.jpg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/The_Bulldog_-_Cannabis_coffee_shop_in_Amsterdam.jpg/960px-The_Bulldog_-_Cannabis_coffee_shop_in_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "9840d5ce2ee090d7c5d18231fa02c621e4a08ddf",
-  "licence": "CC BY-SA 3.0",
+  "source": "https://www.thebulldog.com/",
+  "renderUrl": "https://thebulldog.com/wp-content/uploads/2022/06/TB-International-Logo_horizontal_black-text.jpg",
+  "licence": "trademark logo; brand site JPG",
   "artist": "M.Minderhoud",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-16",
+  "wordmark": "badge kept, lettering re-inked yellow, white cut away"
  },
  "vodafone": {
   "name": "Vodafone",
@@ -1239,12 +1237,11 @@
   "name": "Le Pain Quotidien",
   "pois": 5,
   "wikidata": "Q2046903",
-  "file": "File:LPQ_Primary_logo_Fullcolor_600x600px.jpg",
-  "source": "https://nl.wikipedia.org/wiki/File:LPQ_Primary_logo_Fullcolor_600x600px.jpg",
+  "source": "https://www.lepainquotidien.com/nl/en",
   "article": "https://nl.wikipedia.org/wiki/Le%20Pain%20Quotidien",
-  "renderUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/LPQ_Primary_logo_Fullcolor_600x600px.jpg?utm_source=nl.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
-  "licence": "trademark logo (Wikipedia non-free or PD-textlogo file)",
-  "fetched": "2026-11-15"
+  "licence": "trademark logo; brand site header SVG",
+  "fetched": "2026-11-16",
+  "wordmark": "black wordmark on the cream board"
  },
  "jd-sports": {
   "name": "JD Sports",
@@ -1309,9 +1306,9 @@
   "name": "Bagels & Beans",
   "pois": 18,
   "source": "https://www.bagelsbeans.nl/",
-  "renderUrl": "https://www.bagelsbeans.nl/wp-content/themes/bagelsbeans/images/logo.svg",
-  "licence": "trademark logo; brand site header SVG",
-  "fetched": "2026-11-15"
+  "licence": "lettering set in Rockwell Bold after the round-7 panorama read (retailBrandStyles.gen.ts)",
+  "fetched": "2026-11-16",
+  "wordmark": "cream capitals on dark grey"
  },
  "ijscuypje": {
   "name": "IJscuypje",
@@ -1373,9 +1370,10 @@
   "name": "Wakuli",
   "pois": 8,
   "source": "https://www.wakuli.com/",
-  "renderUrl": "https://www.wakuli.com/cdn/shop/files/Wakuli-logo-PMS-base-yellow-blue_3.png?v=1666194183&width=500",
-  "licence": "trademark logo; brand site PNG 485x485 yellow/blue",
-  "fetched": "2026-11-15"
+  "renderUrl": "https://www.wakuli.com/cdn/shop/files/Wakuli-logo-RGB-base-white.png?v=1717596574&width=1000",
+  "licence": "trademark logo; brand site PNG",
+  "fetched": "2026-11-16",
+  "wordmark": "blue WAKULI wordmark on the brand yellow"
  },
  "de-lekkere-dingen-bakker": {
   "name": "De Lekkere Dingen Bakker",
@@ -1512,5 +1510,43 @@
   "renderUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/8/87/The_Body_Shop_logo_2020.svg/960px-The_Body_Shop_logo_2020.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "licence": "trademark logo; Wikipedia file",
   "fetched": "2026-11-15"
+ },
+ "ah-wordmark": {
+  "source": "https://commons.wikimedia.org/wiki/File:Albert_Heijn_Logo.svg",
+  "licence": "Commons mark (public domain) and lettering set in Arial Rounded MT Bold",
+  "wordmark": "David 2026-11-16 reference: https://thumbs.dreamstime.com/b/logo-albert-heijn-facade-arnhem-netherlands-january-largest-most-famous-dutch-supermarket-chain-173674961.jpg",
+  "fetched": "2026-11-16"
+ },
+ "jumbo-wordmark": {
+  "source": "https://commons.wikimedia.org/wiki/File:Jumbo_Logo.svg",
+  "licence": "Public domain (Commons)",
+  "wordmark": "yellow letter faces re-inked white, black shadow kept",
+  "fetched": "2026-11-16"
+ },
+ "dirk-wordmark": {
+  "source": "https://www.dirk.nl/",
+  "licence": "lettering set in Helvetica Neue Condensed Bold after the sign photo",
+  "wordmark": "white on the template red; David 2026-11-16 reference: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCyoiFr1TcTIV0-sVK2JF6gS2-jV4WY-6IwQzH16yLMvLIVeSBJjoOzv0&s=10",
+  "fetched": "2026-11-16"
+ },
+ "gallgall-wordmark": {
+  "source": "https://commons.wikimedia.org/wiki/File:Gall_logo.svg",
+  "licence": "Public domain (Commons)",
+  "wordmark": "box and tagline removed",
+  "fetched": "2026-11-16"
+ },
+ "vlaamsch-broodhuys": {
+  "source": "https://www.vlaamschbroodhuys.nl/winkels/amsterdam/eerste-constantijn-huygensstraat/",
+  "renderUrl": "https://www.vlaamschbroodhuys.nl/wp-content/uploads/2026/02/Vlaamsch-broodhuys-logo-white.svg",
+  "licence": "trademark logo; brand site SVG",
+  "wordmark": "white logo on the brand brown",
+  "fetched": "2026-11-16"
+ },
+ "vlaamsch-broodhuis": {
+  "source": "https://www.vlaamschbroodhuys.nl/winkels/amsterdam/eerste-constantijn-huygensstraat/",
+  "renderUrl": "https://www.vlaamschbroodhuys.nl/wp-content/uploads/2026/02/Vlaamsch-broodhuys-logo-white.svg",
+  "licence": "trademark logo; brand site SVG",
+  "wordmark": "white logo on the brand brown",
+  "fetched": "2026-11-16"
  }
 }
