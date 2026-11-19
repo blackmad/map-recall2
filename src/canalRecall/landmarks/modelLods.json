@@ -1277,15 +1277,15 @@
   }
  },
  "lab111": {
-  "sourceHash": "79ac4b5b88e8bc12",
+  "sourceHash": "83902baf7de6eb99",
   "buildVersion": 2,
-  "bytes": 50580,
-  "triangles": 2836,
+  "bytes": 48864,
+  "triangles": 2728,
   "lod2": {
-   "sourceHash": "79ac4b5b88e8bc12",
+   "sourceHash": "83902baf7de6eb99",
    "buildVersion": 6,
-   "bytes": 6472,
-   "triangles": 200
+   "bytes": 6352,
+   "triangles": 184
   }
  },
  "occii": {

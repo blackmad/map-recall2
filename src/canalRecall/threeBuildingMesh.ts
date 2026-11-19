@@ -21,6 +21,7 @@ import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from '.
 // Positions are metres east / north / up from a caller-supplied origin.
 
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
+import { wholeCellPieces } from './partyWallStoreys.js';
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, type WallCut, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { presetOpenings, recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, SPEC_SOUTERRAIN_GROUND_MIN, type FrontageBays, type StreetFacadeContext } from './streetFacadeRendering.js';
@@ -1172,11 +1173,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const cutsFor = (e: Edge): readonly WallCut[] => retail?.cuts?.some(c => c.e === e) ? [...(wallCuts.get(e) ?? []), ...retail.cuts.filter(c => c.e === e).map(c => c.cut)]
       : retail?.cut?.e === e ? [...(wallCuts.get(e) ?? []), retail.cut.cut] : wallCuts.get(e) ?? [];
     // Clip conflicting wall rectangles while retaining their original UV grid.
-    const visibleQuads = quads.flatMap(q => subtractWallCuts(q, cutsFor(q.e), (p, r) => {
+    // A window row cut part-way by a lower neighbour's box keeps only whole rows (partyWallStoreys.ts, feedback 18a9d3).
+    const visibleQuads = quads.flatMap(q => wholeCellPieces(q, subtractWallCuts(q, cutsFor(q.e), (p, r) => {
       const u = (a: number) => p.u0 + (p.u1 - p.u0) * (a - p.along0) / (p.along1 - p.along0);
       const v = (z: number) => (p.v0 ?? 0) + (p.v1 - (p.v0 ?? 0)) * (z - p.z0) / (p.z1 - p.z0);
       return { ...p, ...r, u0: u(r.along0), u1: u(r.along1), v0: v(r.z0), v1: v(r.z1) };
-    })).flatMap(clampToSource);
+    }), b.plainLayer, q.e.len, (wallCuts.get(q.e) ?? []).map(c => c.z1))).flatMap(clampToSource);
     let roof: StreetCrownTri[] = cornice;
     if(b.surveyedEnvelope){
       roof.push(...b.surveyedEnvelope.roofTriangles.map(t=>{const r={...t,uv:t.p.map(p=>[p[0]/5,p[1]/5])as RoofTri['uv'],part:'trim' as const,hex:'#4a525d'};surveyedRoofTris.add(r);return r;}),...b.surveyedEnvelope.closureTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[2]/3])as RoofTri['uv'],part:'plate' as const,facadeLayer:b.plainLayer})));
