@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+## START tag stops hanging in the sky; feedback check (2026-11-19, lane/fb-hud-20261119 2038fe147)
+
+Note d18eca: the START tag was drawn for the whole ride, so 200 m on it sat near the horizon at the top of the screen. A `StartTagLatch` (`vehicleScreenBox.ts`) now hides it for good 50 m from the start or at the first question. `projectWorld` now flags points behind the camera or past the far plane as `offView` and skips them, in both engines (`cameraMap.anchorInView`, `drawnProjection.groundInView`). Regression: `tests/e2e/start-tag-hides.spec.ts`. El Tawheed (704240) was already on the right pand (BAG 0363100012137097, OSM w276303116, Jan Hanzenstraat 114); this is now pinned in `surveyedFrame.test.ts`.
+
+The feedback check (`docs/reports/feedback-verify-20261119.md`) found 4 of the 31 open notes fixed on main, 3 partly fixed and 24 open. Fix lanes are running for bridges, windows, ground and models.
+
 ## Hoofddorppleinbuurt: the first attic-band rows published (2026-11-19, lane/hoofddorpplein-pilot-20261116 3b57b86ae)
 
 David approved two rows on #398 ("Legmeerplein + Aalsmeerweg good - publish"): Legmeerplein 095655 (11 members) and Aalsmeerweg 073886 (20 members), 31 records, published with the new `publish.ts --rows=` filter (`publishRows.ts`, in `test:house-spec`). They draw a chequer- or stripe-patterned attic band with a row of lights above the 3DBAG eaves, white erker caps and arched portieks. In blind comparisons the new render won 3 of 3 (round 1) and 2 of 2 (pitched round).
