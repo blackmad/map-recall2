@@ -14,7 +14,7 @@ import {claddingProblems} from './claddingIntent.ts';
 import {wallFamilyProblems} from './wallFamily.ts';
 import {FLOOR_BAND_LIMITS} from '../blockBuilding/components.ts';
 import {blankWallsProblems} from './otherWalls.ts';
-import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, OTHER_WINDOW_GRID, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
+import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, LARGE_HOUSE_DRESS_KEYS, OTHER_WINDOW_GRID, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
 import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/systems.ts';
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
@@ -22,7 +22,7 @@ import {ribbonStoreysProblems} from './ribbonStoreysIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
 const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily', 'ribbonStoreys'];
-const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'blankWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
+const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'blankWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'footprintParts', 'osmAliases', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
 export function validateLargeIntent(input: unknown): LargeBuildingIntent {
@@ -72,6 +72,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair');
   if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag', 'core'], 'footprint');
   if (intent?.groundClamp !== undefined && typeof intent.groundClamp !== 'boolean') problems.push('groundClamp: boolean');
+  if (intent?.footprintParts !== undefined && intent.footprintParts !== true) problems.push('footprintParts: true or absent');
+  if (intent?.osmAliases !== undefined && !(Array.isArray(intent.osmAliases) && intent.osmAliases.length && intent.osmAliases.every((a: unknown) => typeof a === 'string' && /^[wr]\d+$/.test(a)))) problems.push('osmAliases: a non-empty list of OSM way/relation ids (w123, r456)');
   if (intent?.crown !== undefined) {
     const c = intent.crown;
     if (!c || typeof c !== 'object') problems.push('crown: object {storeys, overhang, coffers}');
@@ -635,7 +637,13 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
         const total = hs.reduce((a, h) => a + (typeof h?.w === 'number' ? h.w : 0), 0);
         hs.forEach((h, k) => {
           const hat = `${at}.houses[${k}]`;
-          for (const key of Object.keys(h ?? {})) if (!['w', 'bays', 'storeys', 'crown', 'brick', 'windowShape', 'ownEaves'].includes(key)) problems.push(`${hat}.${key}: unknown field (w, bays, storeys, crown, brick, windowShape, ownEaves)`);
+          for (const key of Object.keys(h ?? {})) if (!['w', 'bays', 'storeys', 'crown', 'brick', 'windowShape', 'ownEaves', 'frame', 'dress'].includes(key)) problems.push(`${hat}.${key}: unknown field (w, bays, storeys, crown, brick, windowShape, ownEaves, frame, dress)`);
+          if (h?.frame !== undefined) colour(h.frame, `${hat}.frame`);
+          if (h?.dress !== undefined) {
+            const d = h.dress as Record<string, unknown>;
+            if (d && typeof d === 'object' && !Array.isArray(d)) for (const key of Object.keys(d)) if (!(LARGE_HOUSE_DRESS_KEYS as readonly string[]).includes(key)) problems.push(`${hat}.dress.${key}: not per house (one of ${LARGE_HOUSE_DRESS_KEYS.join(', ')}; quoins, oriels, voussoirs and corbels belong to the group)`);
+            problems.push(...stoneDressingsProblems(h.dress, hat, typeof h.storeys === 'number' ? h.storeys : typeof w.storeys === 'number' ? w.storeys : undefined).map(m => m.replace(`${hat}.dressings`, `${hat}.dress`)));
+          }
           if (typeof h?.w !== 'number' || !(h.w > 0) || (total > 0 && h.w / total < 0.02)) problems.push(`${hat}.w: a positive share of the panel, at least 2 % of the row`);
           if (h?.bays !== undefined) count(h.bays, `${hat}.bays`, 1, 30);
           if (h?.storeys !== undefined) count(h.storeys, `${hat}.storeys`, 1, 12);

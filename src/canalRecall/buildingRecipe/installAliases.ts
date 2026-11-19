@@ -11,9 +11,17 @@
  */
 export const towerFeatureId = (pand: string) => `tower:NL.IMBAG.Pand.${pand}`;
 
-export function installAliases(pand: string, linkedOsm: readonly string[], tileIds: Iterable<string>): string[] {
-  const tower = towerFeatureId(pand);
+export function installAliases(pand: string, linkedOsm: readonly string[], tileIds: Iterable<string>, declared: readonly string[] = []): string[] {
+  const tower = towerFeatureId(pand), seen = new Set<string>();
   let hasTower = false;
-  for (const id of tileIds) if (id === tower) { hasTower = true; break; }
-  return [...linkedOsm, ...(hasTower && !linkedOsm.includes(tower) ? [tower] : [])];
+  for (const id of tileIds) { seen.add(id); if (id === tower) hasTower = true; }
+  const out = [...linkedOsm, ...(hasTower && !linkedOsm.includes(tower) ? [tower] : [])];
+  // A third kind, last (absent: unchanged): the intent's `osmAliases`, for a pand the building tiles lack, drawn there as
+  // OSM outlines the BAG index does not link to it (Narva-eiland 252366, 2021: w725476475 and w936343679). Each must be
+  // a tile feature over the pand's footprint, so a typo or a stale id fails the install instead of hiding nothing.
+  for (const id of declared) {
+    if (!seen.has(id)) throw Error(`osmAliases: ${id} is not a building-tile feature over pand ${pand}'s footprint`);
+    if (!out.includes(id)) out.push(id);
+  }
+  return out;
 }

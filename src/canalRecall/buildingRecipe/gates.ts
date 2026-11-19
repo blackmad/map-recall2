@@ -31,6 +31,21 @@ export function footprintIoU(facts: BuildingFacts, modelRingsLocal: number[][][]
   return union ? inter / union : 0;
 }
 
+/**
+ * Share of the model plan inside the BAG outline (raster, 10 cm, as footprintIoU). `largeGates` uses it with
+ * `footprintParts`: LoD2.2 blocks on one pand whose BAG outline spans the deck between them.
+ */
+export function footprintInside(facts: BuildingFacts, modelRingsLocal: number[][][], anchorRD: [number, number]): number {
+  const model = modelRingsLocal.map(r => r.map(([x, z]) => [x + anchorRD[0], anchorRD[1] - z]));
+  const pts = model.flat();
+  if (!pts.length) return 0;
+  const [x0, x1] = [Math.min(...pts.map(p => p[0])), Math.max(...pts.map(p => p[0]))], [y0, y1] = [Math.min(...pts.map(p => p[1])), Math.max(...pts.map(p => p[1]))];
+  const inside = (rings: number[][][], p: number[]) => rings.reduce((s, r) => s + (pointInRing(p, r) ? 1 : 0), 0) % 2 === 1;
+  let m = 0, both = 0;
+  for (let x = x0 + 0.05; x < x1; x += 0.1) for (let y = y0 + 0.05; y < y1; y += 0.1) if (inside(model, [x, y])) { m++; if (inside(facts.bagFootprintRD, [x, y])) both++; }
+  return m ? both / m : 0;
+}
+
 const sub = (a: number[], b: number[]) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]], dot = (a: number[], b: number[]) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 /** Euclidean distance from a point to a triangle (Ericson, Real-Time Collision Detection 5.1.5). */
 export function pointTriangleDistance(p: number[], t: {a: number[]; b: number[]; c: number[]}): number {
