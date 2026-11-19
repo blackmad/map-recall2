@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Chain logos from David's Shopfronts notes (2026-11-19, lane/chain-logos-20261116 61129844a)
+
+David left 13 notes on the Shopfronts page. Twelve signs got real wordmarks (`scripts/retail-real/build-chain-wordmarks.ts`, a 14th logo page `chains-14.png`, so the game loads 14 chain-logo pages instead of 12): Albert Heijn (dark sign, full wordmark), Gall & Gall, Jumbo, Dirk van den Broek, Benu, Bruna (white with red), Wakuli, Starbucks, Le Pain Quotidien, Vlaamsch Broodhuis/Broodhuys and Bagels & Beans. Amazing Oriental's sign takes the awning green. Two are still weak: The Bulldog's sign is 1.6 m and hard to read at gallery size, and Bagels & Beans is a plain cream serif with no logo. The 13 notes are marked in-progress. Shopfront gate 94/94. Bundles rebuilt (three-buildings and its worker, building gallery, house playground, landmark gallery); shop fronts mesh at runtime, so no world compile.
+
 ## Postcard spinners (2026-11-16, b353d4da4)
 
 David: the flat postcard racks outside souvenir and Bestseller "look bad". They are now a 3D spinner from the shop-props kit (octagonal drum, 5 tiers of white-bordered cards, at most 184 triangles), one or two beside the door, 0.4–0.6 m out, seeded by pand. Kruidvat keeps its promo stand. Bundles rebuilt; shop fronts are meshed at runtime, so no world compile.

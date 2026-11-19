@@ -2,6 +2,18 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-19",
+      "title": "Chain shop signs read like the real ones",
+      "text": "Thirteen chain signs were redrawn from David's Shopfronts-page notes. Albert Heijn, Dirk van den Broek, Jumbo, Gall & Gall, Bruna, Benu, Starbucks, Wakuli, Le Pain Quotidien and the Vlaamsch Broodhuis now carry their own wordmarks and sign colours. Amazing Oriental's sign matches its green awning.",
+      "images": [
+        {
+          "src": "chain-logos-20261116/before-after.png",
+          "alt": "Pairs of shop fronts, before on the left and after on the right, for thirteen chains",
+          "caption": "Each pair: before, after"
+        }
+      ]
+    },
+    {
       "date": "2026-11-16",
       "title": "Real postcard spinners outside souvenir shops",
       "text": "Souvenir shops and Bestseller now have a proper turning postcard stand by the door, with a base, a pole and tiers of canal-house cards, in place of the flat coloured grids.",
@@ -47,7 +59,27 @@
         }
       ]
     },
-  {"date": "2026-11-16", "title": "Haparandaweg's new office blocks", "text": "Four buildings on Haparandaweg in Houthaven are now modelled from their photos instead of drawn as plain brick boxes: Haparandaweg 65 with its long terracotta band and window grid, the grey-framed block at 952–1002, and the blocks at 746–786 and 788–868 with their glass bays. In a blind comparison against the street photos, the new models beat the old ones on all four.", "where": [4.8771, 52.3951], "images": [{"src": "ui/2026-11-16-haparandaweg/haparandaweg-65-before.jpg", "alt": "Haparandaweg 65 before: the street photo beside a plain brown box with strip windows", "caption": "Before"}, {"src": "ui/2026-11-16-haparandaweg/haparandaweg-65-after.jpg", "alt": "Haparandaweg 65 after: the street photo beside the new model with terracotta cladding, a window grid and a glazed ground floor", "caption": "After"}]},
+    {
+      "date": "2026-11-16",
+      "title": "Haparandaweg's new office blocks",
+      "text": "Four buildings on Haparandaweg in Houthaven are now modelled from their photos instead of drawn as plain brick boxes: Haparandaweg 65 with its long terracotta band and window grid, the grey-framed block at 952–1002, and the blocks at 746–786 and 788–868 with their glass bays. In a blind comparison against the street photos, the new models beat the old ones on all four.",
+      "where": [
+        4.8771,
+        52.3951
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-16-haparandaweg/haparandaweg-65-before.jpg",
+          "alt": "Haparandaweg 65 before: the street photo beside a plain brown box with strip windows",
+          "caption": "Before"
+        },
+        {
+          "src": "ui/2026-11-16-haparandaweg/haparandaweg-65-after.jpg",
+          "alt": "Haparandaweg 65 after: the street photo beside the new model with terracotta cladding, a window grid and a glazed ground floor",
+          "caption": "After"
+        }
+      ]
+    },
     {
       "date": "2026-11-16",
       "title": "A browser for every shopfront",

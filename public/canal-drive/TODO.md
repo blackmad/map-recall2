@@ -15,9 +15,9 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
-## Paused lanes, 2026-11-16 evening (P0, resume first): `docs/handoffs/inflight-20261116.md`
+## Paused lanes, 2026-11-16 evening — resumed 2026-11-19 (P0): `docs/handoffs/inflight-20261116.md`
 
-Seven lanes were paused after a WIP push: feedback triage (78 ride notes: 40 fixed since, 31 still open), chain logos (David's 13 notes), #392 continuous rows, #393 De Pijp features, ground floors (blind 8-6-4), the Hoofddorpplein pilot and the Narva-eiland pilot. Branches, SHAs and next steps are in the handoff.
+Resumed on David's word (2026-11-19): feedback triage, ground floors, the Hoofddorpplein pilot and the Narva-eiland pilot are running from their branch heads, plus a new lane `lane/retail-pass-20261119` (a shopfront visual pass, then shop interiors starting with hair salons, behind a flag). Chain logos merged 2026-11-19 (see HISTORY); left over: The Bulldog's sign is small (1.6 m), and Bagels & Beans is plain cream capitals with no logo. #392 continuous rows and #393 De Pijp stay paused.
 
 
 ## Street life behind flags (2026-11-14) — ride review before any default
