@@ -1,0 +1,323 @@
+[
+ {
+  "key": "rustenburgerstraat",
+  "street": "Rustenburgerstraat",
+  "gebied": "De Pijp",
+  "segments": [
+   "du:ring:8276",
+   "du:ring:8275",
+   "du:ring:8274"
+  ],
+  "members": [
+   "0363100012119632",
+   "0363100012166734",
+   "0363100012157322",
+   "0363100012159752",
+   "0363100012236414",
+   "0363100012156003",
+   "0363100012157523",
+   "0363100012165571",
+   "0363100012165889"
+  ]
+ },
+ {
+  "key": "van-ostadestraat",
+  "street": "Van Ostadestraat",
+  "gebied": "De Pijp",
+  "segments": [
+   "du:ring:8815",
+   "du:ring:8794",
+   "du:ring:8792",
+   "du:ring:8793"
+  ],
+  "members": [
+   "0363100012166070",
+   "0363100012160643",
+   "0363100012159402",
+   "0363100012164736",
+   "0363100012160667",
+   "0363100012156658",
+   "0363100012153176",
+   "0363100012158962",
+   "0363100012156774",
+   "0363100012163030",
+   "0363100012153534",
+   "0363100012156780"
+  ]
+ },
+ {
+  "key": "tweede-jacob-van-campenstraat-9051-0",
+  "street": "Tweede Jacob van Campenstraat",
+  "gebied": "De Pijp, Rivierenbuurt",
+  "buurt": "Gerard Doubuurt",
+  "segments": [
+   "du:ring:9051#0"
+  ],
+  "members": [
+   "0363100012146444",
+   "0363100012153395",
+   "0363100012158441"
+  ],
+  "year": 1891,
+  "architect": null
+ },
+ {
+  "key": "ceintuurbaan-8543",
+  "street": "Ceintuurbaan",
+  "gebied": "De Pijp, Rivierenbuurt",
+  "buurt": "Sarphatiparkbuurt",
+  "segments": [
+   "du:ring:8543"
+  ],
+  "members": [
+   "0363100012160842",
+   "0363100012077688",
+   "0363100012163696"
+  ],
+  "year": 1890,
+  "architect": "Nijman, W.J."
+ },
+ {
+  "key": "tweede-jan-steenstraat-8487",
+  "street": "Tweede Jan Steenstraat",
+  "gebied": "De Pijp, Rivierenbuurt",
+  "buurt": "Hemonybuurt",
+  "segments": [
+   "du:ring:8487"
+  ],
+  "members": [
+   "0363100012160616",
+   "0363100012145716",
+   "0363100012157451"
+  ],
+  "year": 1883,
+  "architect": "Workum, P.J. van"
+ },
+ {
+  "key": "ceintuurbaan-8823",
+  "street": "Ceintuurbaan",
+  "gebied": "De Pijp, Rivierenbuurt",
+  "buurt": "Hercules Seghersbuurt",
+  "segments": [
+   "du:ring:8823"
+  ],
+  "members": [
+   "0363100012160089",
+   "0363100012083637",
+   "0363100012162247",
+   "0363100012158226",
+   "0363100012155580",
+   "0363100012162783"
+  ],
+  "year": 1899,
+  "architect": null
+ },
+ {
+  "key": "roemer-visscherstraat-16068",
+  "street": "Roemer Visscherstraat",
+  "gebied": "Oud-West, De Baarsjes",
+  "buurt": "Vondelparkbuurt-Oost",
+  "segments": [
+   "du:ring:16068"
+  ],
+  "members": [
+   "0363100012164845",
+   "0363100012156785",
+   "0363100012236479"
+  ],
+  "year": 1893,
+  "architect": "Vlieken, S.G."
+ },
+ {
+  "key": "bilderdijkstraat-15353",
+  "street": "Bilderdijkstraat",
+  "gebied": "Oud-West, De Baarsjes",
+  "buurt": "Da Costabuurt-Noord",
+  "segments": [
+   "du:ring:15353"
+  ],
+  "members": [
+   "0363100012157757",
+   "0363100012164549",
+   "0363100012236022",
+   "0363100012159868",
+   "0363100012236711",
+   "0363100012162572"
+  ],
+  "year": 1903,
+  "architect": "Lesmeister, J.H."
+ },
+ {
+  "key": "admiraal-de-ruijterweg-14817",
+  "street": "Admiraal De Ruijterweg",
+  "gebied": "Oud-West, De Baarsjes",
+  "buurt": "Trompbuurt",
+  "segments": [
+   "du:ring:14817"
+  ],
+  "members": [
+   "0363100012155846",
+   "0363100012164154",
+   "0363100012152459",
+   "0363100012157379",
+   "0363100012153312",
+   "0363100012160851"
+  ],
+  "year": 1910,
+  "architect": "Eldering, C.H."
+ },
+ {
+  "key": "bilderdijkkade-15291",
+  "street": "Bilderdijkkade",
+  "gebied": "Oud-West, De Baarsjes",
+  "buurt": "Bellamybuurt-Noord",
+  "segments": [
+   "du:ring:15291"
+  ],
+  "members": [
+   "0363100012113152",
+   "0363100012112384",
+   "0363100012136574",
+   "0363100012136575",
+   "0363100012080836",
+   "0363100012096066"
+  ],
+  "year": 1906,
+  "architect": "Tijmensen, A.J."
+ },
+ {
+  "key": "nicolaas-maesstraat-9232-0",
+  "street": "Nicolaas Maesstraat",
+  "gebied": "Oud-Zuid",
+  "buurt": "Johannes Vermeerbuurt",
+  "segments": [
+   "du:ring:9232#0"
+  ],
+  "members": [
+   "0363100012155454",
+   "0363100012161109",
+   "0363100012156833",
+   "0363100012163472"
+  ],
+  "year": 1902,
+  "architect": "Overeem, T. Jzn."
+ },
+ {
+  "key": "johannes-verhulststraat-9613",
+  "street": "Johannes Verhulststraat",
+  "gebied": "Oud-Zuid",
+  "buurt": "Cornelis Schuytbuurt",
+  "segments": [
+   "du:ring:9613"
+  ],
+  "members": [
+   "0363100012153529",
+   "0363100012162555",
+   "0363100012162414",
+   "0363100012160916"
+  ],
+  "year": 1903,
+  "architect": "Meester Wzn., J.L."
+ },
+ {
+  "key": "roelof-hartstraat-9162",
+  "street": "Roelof Hartstraat",
+  "gebied": "Oud-Zuid",
+  "buurt": "Harmoniehofbuurt",
+  "segments": [
+   "du:ring:9162"
+  ],
+  "members": [
+   "0363100012162481",
+   "0363100012156879",
+   "0363100012236703"
+  ],
+  "year": 1906,
+  "architect": "Lesmeister, J.H."
+ },
+ {
+  "key": "jan-luijkenstraat-9308",
+  "street": "Jan Luijkenstraat",
+  "gebied": "Oud-Zuid",
+  "buurt": "P.C. Hooftbuurt",
+  "segments": [
+   "du:ring:9308"
+  ],
+  "members": [
+   "0363100012160261",
+   "0363100012160504",
+   "0363100012166029",
+   "0363100012155509"
+  ],
+  "year": 1897,
+  "architect": "Beirer, L."
+ },
+ {
+  "key": "commelinstraat-12327",
+  "street": "Commelinstraat",
+  "gebied": "Oud-Oost",
+  "buurt": "Dapperbuurt-Noord",
+  "segments": [
+   "du:ring:12327"
+  ],
+  "members": [
+   "0363100012156075",
+   "0363100012163419",
+   "0363100012158379"
+  ],
+  "year": 1880,
+  "architect": "Wijnstok, J.B."
+ },
+ {
+  "key": "ruyschstraat-12494",
+  "street": "Ruyschstraat",
+  "gebied": "Oud-Oost",
+  "buurt": "Oosterparkbuurt-Noordwest",
+  "segments": [
+   "du:ring:12494"
+  ],
+  "members": [
+   "0363100012155605",
+   "0363100012162696",
+   "0363100012159606",
+   "0363100012161684",
+   "0363100012155674",
+   "0363100012156748"
+  ],
+  "year": 1900,
+  "architect": "Oostveen, P. van"
+ },
+ {
+  "key": "blasiusstraat-12604",
+  "street": "Blasiusstraat",
+  "gebied": "Oud-Oost",
+  "buurt": "Weesperzijde-Noord",
+  "segments": [
+   "du:ring:12604"
+  ],
+  "members": [
+   "0363100012167044",
+   "0363100012166893",
+   "0363100012155375"
+  ],
+  "year": 1887,
+  "architect": "Koekkoek, J.H., en Winter, G. de"
+ },
+ {
+  "key": "nassaukade-14713",
+  "street": "Nassaukade",
+  "gebied": "Westerpark",
+  "buurt": "Frederik Hendrikbuurt-Zuidoost",
+  "segments": [
+   "du:ring:14713"
+  ],
+  "members": [
+   "0363100012160823",
+   "0363100012157831",
+   "0363100012160222",
+   "0363100012161795"
+  ],
+  "year": 1881,
+  "architect": "Leguyt, H."
+ }
+]
