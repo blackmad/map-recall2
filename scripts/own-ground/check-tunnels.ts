@@ -54,6 +54,12 @@ for (const site of TUNNEL_SITES) {
     console.log(`  nearest portal ${d.toFixed(1)} m from ${e.portalNear.join(',')}`);
     if (!(d < 20)) fail(site, `no portal within 20 m of ${e.portalNear.join(',')}`);
   }
+  for (const q of e.noPortalAt ?? []) {
+    const [px, py] = toLocal(q[0], q[1]);
+    const d = Math.min(Infinity, ...s.cuts.flatMap(c => c.portals.map(p => Math.hypot(c.x[p.at] - px, c.y[p.at] - py))));
+    console.log(`  nearest portal ${d.toFixed(1)} m from ${q.join(',')} (none allowed within 5 m)`);
+    if (d < 5) fail(site, `a portal ${d.toFixed(1)} m from ${q.join(',')}, expected none within 5 m`);
+  }
   for (const q of e.groundIntact ?? []) {
     const [qx, qy] = toLocal(q[0], q[1]), g = s.ground(qx, qy), r = s.relief(qx, qy), f = s.cutFloor(qx, qy);
     console.log(`  ground over the tunnel at ${q.join(',')}: ${g.toFixed(2)} (relief ${r.toFixed(2)})`);
