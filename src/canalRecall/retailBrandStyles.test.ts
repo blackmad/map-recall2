@@ -77,12 +77,13 @@ test('FEBO on: no board, letters on the wall, a blade glyph on both faces, plate
 test('racks are postcard stands and boards chalkboards, with no slab face', () => {
   for (const tpl of ['souvenir', 'books'] as const) {
     const on = run({ template: tpl, seed: 's' }, true), off = run({ template: tpl, seed: 's' }, false);
-    assert.ok(off.some(t => t.hex === (tpl === 'souvenir' ? '#2f6fb0' : '#c9a227')));
+    // Lane postcard-spinner: a souvenir front's pavement prop is the 3D spinner (white-bordered cards) in both modes.
+    if (tpl === 'souvenir') assert.ok(on.some(t => t.hex === '#f4f1e8') && off.some(t => t.hex === '#f4f1e8'));
+    else assert.ok(off.some(t => t.hex === '#c9a227'));
     // No face out on the pavement (o > 0.3) larger than a card or the board's face.
     const area = (t: { p: number[][] }) => { const [a, b, c] = t.p, u = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], w = [c[0] - a[0], c[1] - a[1], c[2] - a[2]]; return Math.hypot(u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]) / 2; };
     const props = on.filter(t => t.p.every(p => p[1] > 0.3) && Math.abs(t.n[1]) > 0.9);
-    assert.ok(props.length > 0);
-    if (tpl === 'souvenir') assert.ok(props.every(t => area(t) < 0.03), 'cards only');
+    if (tpl === 'souvenir') assert.ok(on.filter(t => t.p.every(p => p[1] > 0.2) && t.hex !== '#2c2f33' && t.hex !== '#71767a').every(t => area(t) < 0.03), 'cards only, no flat face (the drum backing and base plate aside)');
     else assert.ok(props.some(t => t.hex === '#2b2f2c') && props.filter(t => t.hex === '#e8e4da').length >= 6);
     assert.ok(!on.some(t => t.hex === '#2f6fb0' && area(t) > 0.05));
   }

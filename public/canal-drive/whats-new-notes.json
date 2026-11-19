@@ -3,6 +3,53 @@
   "notes": [
     {
       "date": "2026-11-16",
+      "title": "Real postcard spinners outside souvenir shops",
+      "text": "Souvenir shops and Bestseller now have a proper turning postcard stand by the door, with a base, a pole and tiers of canal-house cards, in place of the flat coloured grids.",
+      "images": [
+        {
+          "src": "ui/2026-11-16-shop-props/postcard-spinner.jpg",
+          "alt": "Before: flat frames with coloured squares beside the souvenir and Bestseller windows. After: one 3D postcard spinner by each door",
+          "caption": "Left before, right after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "title": "Bikes park nose to the wall",
+      "text": "Outside bike shops, the bikes now stand the way they do in Amsterdam: front wheel to the shop wall, in a row across the pavement, with the odd one backed in. Where the pavement is too narrow they stand side-on along the wall, and on the narrowest pavements there are none.",
+      "images": [
+        {
+          "src": "ui/2026-11-16-shop-props/bikes-perpendicular.jpg",
+          "alt": "Four bike shops: on the left the bikes stand side-on along the window, on the right they park nose to the wall across the pavement",
+          "caption": "Before: side-on. After: nose to the wall."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "title": "Shops get real 3D goods",
+      "text": "Shopfronts now carry real 3D props instead of flat pictures. Bike shops have proper bicycles (the same omafiets you ride, simplified) parked along the pavement in mixed city-bike colours. Greengrocers set out tilted crates of produce, florists have stepped zinc buckets of flowers, hairdressers show barber stations, and Kruidvat has its red promotion stands. Every shop window now gets its own arrangement, so the same goods no longer repeat across each pane.",
+      "images": [
+        {
+          "src": "ui/shopfronts/shop-goods-20261116/before.png",
+          "alt": "Before: eight shopfront types with flat goods, crosses for bikes and plain brown crates",
+          "caption": "Before"
+        },
+        {
+          "src": "ui/shopfronts/shop-goods-20261116/after.png",
+          "alt": "After: the same eight shopfronts with 3D bikes, crates of coloured produce, buckets of flowers and barber stations",
+          "caption": "After"
+        },
+        {
+          "src": "ui/2026-11-16-shop-props/bikes-before-after.jpg",
+          "alt": "Bike shops before and after: thin procedural bikes with octagonal wheels on the left, the baked omafiets in mixed colours along a rack on the right",
+          "caption": "Bike shops: the game's own omafiets, spread along the front"
+        }
+      ]
+    },
+  {"date": "2026-11-16", "title": "Haparandaweg's new office blocks", "text": "Four buildings on Haparandaweg in Houthaven are now modelled from their photos instead of drawn as plain brick boxes: Haparandaweg 65 with its long terracotta band and window grid, the grey-framed block at 952–1002, and the blocks at 746–786 and 788–868 with their glass bays. In a blind comparison against the street photos, the new models beat the old ones on all four.", "where": [4.8771, 52.3951], "images": [{"src": "ui/2026-11-16-haparandaweg/haparandaweg-65-before.jpg", "alt": "Haparandaweg 65 before: the street photo beside a plain brown box with strip windows", "caption": "Before"}, {"src": "ui/2026-11-16-haparandaweg/haparandaweg-65-after.jpg", "alt": "Haparandaweg 65 after: the street photo beside the new model with terracotta cladding, a window grid and a glazed ground floor", "caption": "After"}]},
+    {
+      "date": "2026-11-16",
       "title": "A browser for every shopfront",
       "text": "The new Shopfronts page shows every shopfront the game draws on a ground floor: the generic ones (brown café, bakery, bike shop and the rest) and the chains with their own colours, logos and signs, each with how many buildings use it and a link to ride to one. Open it from the Shopfronts button on this page.",
       "images": [

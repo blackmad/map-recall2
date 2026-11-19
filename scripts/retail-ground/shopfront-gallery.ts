@@ -5,7 +5,7 @@
  * brick wall with a 3.2 m ground storey, the painter of scripts/retail-real/template-sheet.ts (Node, no browser).
  * Thumbnails go to the screenshots repository (ui/shopfronts/); only the index is generated data in this repo.
  *
- *   node --import tsx scripts/retail-ground/shopfront-gallery.ts [--thumbs=<dir>] [--only=ah,lidl] [--index=public/canal-drive/shopfronts-data/index.json]
+ *   node --import tsx scripts/retail-ground/shopfront-gallery.ts [--thumbs=<dir>] [--only=ah,lidl] [--width=480] [--index=public/canal-drive/shopfronts-data/index.json]
  *   npm script: "shopfronts:gallery": "tsx scripts/retail-ground/shopfront-gallery.ts --thumbs=$HOME/Code/map-recall2-screenshots/ui/shopfronts"
  */
 import fs from 'node:fs';
@@ -37,7 +37,7 @@ const WORDS: Partial<Record<RetailTemplate, string>> = { brownBar: 'PAPENEILAND'
 const NAMES: Record<string, string> = { ah: 'Albert Heijn', hema: 'HEMA', febo: 'FEBO', sla: 'SLA', stach: 'Stach', moneyTransfer: 'Money transfer', gallgall: 'Gall & Gall', mcdonalds: "McDonald's", brownBar: 'Brown cafe', redLight: 'Red-light window', toko: 'Toko', turkishBakery: 'Turkish bakery', smartshop: 'Smartshop', coffeeshop: 'Coffeeshop' };
 
 // The pages as the game loads them (layer -> image), at the 512 px publish.
-const SIZE = 512, LOGO = 207, SPAN = 6, GROUND = 3.2, CW = 760, CH = 470, W = 480, H = Math.round(480 * CH / CW);
+const SIZE = 512, LOGO = 207, SPAN = 6, GROUND = 3.2, CW = 760, CH = 470, W = Number(arg('width') ?? 480), H = Math.round(W * CH / CW);
 const pages = new Map<number, Image | Canvas>();
 const dir = 'public/canal-drive/materials/retail-logos';
 pages.set(LOGO, await loadImage(path.join(dir, 'atlas.png'))); pages.set(LOGO + 1, await loadImage(path.join(dir, 'atlas-2.png')));

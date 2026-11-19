@@ -15,8 +15,19 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Paused lanes, 2026-11-16 evening (P0, resume first): `docs/handoffs/inflight-20261116.md`
+
+Seven lanes were paused after a WIP push: feedback triage (78 ride notes: 40 fixed since, 31 still open), chain logos (David's 13 notes), #392 continuous rows, #393 De Pijp features, ground floors (blind 8-6-4), the Hoofddorpplein pilot and the Narva-eiland pilot. Branches, SHAs and next steps are in the handoff.
+
+
 ## Street life behind flags (2026-11-14) — ride review before any default
 
+- **Round v shop-props follow-ups (2026-11-16).**
+  - Hairdresser: the barber stations read as small dark-red blocks at gallery size. Make the chairs and mirrors bigger and clearer.
+  - Bike shops: since round w bikes park perpendicular and need about 1.3 m of run and 0.3 m of door clearance. The gallery's 0.68 m strip right of the door is still too narrow for one. The pavement width each real bike shop gets from the mesher (wall to street centreline less 1.5 m) has not been sampled; check that most centre bike shops get the perpendicular row, not the side-on fallback under 2.5 m.
+  - `shopProps` seed keys vary only in their last character, which barely moves the hash. Crates, plants and mirror flags vary less than intended. Move the varying part into the middle of the key, as the bike keys now do.
+  - Inside props are pressed into a 2 cm relief, because the wall is not cut behind the glass. **Real 3D shop interiors** (cut the ground-storey wall behind each shop window, a 2.5 m room with real props, the shader room from `lane/shop-interiors-20261116` for distant fronts) were proposed to David on 2026-11-16 and are awaiting his go.
+  - **Ground-floor pilot running:** `lane/ground-floor-20261116`. The building draws its own ground floor (piers, arches, plinth, stone) and the shop fills the openings, behind `?groundFloor=1`. It covers 40 calibration reads, including The Sting 175382 and FEBO 177960, and a blind test on 25. The 1,418-pand read batch waits for David's go. Plan: `~/.claude/plans/prancy-dreaming-swing.md`.
 - **Round t follow-ups (2026-11-16).** (1) Buurt `omitExtras`: the generator now writes it on every series (no sills/frames/anchors/plinth/downpipe unless stated); round t kept main's series, so the next Rivierenbuurt/Apollo publish needs a blind of omitExtras on vs off first. (2) Brand styles for Kruidvat (colour), Dirk (red frame and blade the photo lacks) and McDonald's (green vs black) lost; AH, Coffee Company and Domino's were never posed; re-measure before adding to `ACCEPTED_BRANDS`. (3) Shop interiors parked on lane/shop-interiors-20261116 (blind 5-4-4): washed-out glass by day, supermarket shelves read as books, FEBO test used the wrong pand. (4) Room Mate Aitana held: reflective glass helps (3/5) but the builder's heavy mullion grid must go. (5) FEBO Korte Niezel's building draws brown brick, the photo is pale stone (wall look). (6) Ground-floor plan (shops fitted into arches, piers and stone plinths, The Sting Kalverstraat) waits for David's go.
 - **Markets** `?markets=1` (Albert Cuyp tunnel canopies, Ten Kate parasols): canvas sag/seams, fuller goods, clutter between stalls; no market days (no clock).
 - **Terraces** `?terraces=1` (2,169 permit terraces, 32k units, own engine only): squares read grid-regular; Rembrandtplein tall glass screens; parasol colours from panoramas; 't Smalle deck not in the permit polygon.
@@ -167,6 +178,9 @@ The user: "we need to focus on buurts in the canal belt and just outside". Belt 
 
 ## Feedback 2026-11-09 follow-ups (session a1)
 
+- **Scope pilots waiting on David's token go-ahead (2026-11-16).**
+  - Zuid block types first: branch `scope/zuid-block-types-20261116` (9367f1672), `docs/reports/zuid-block-types-scope-20261116.md`. Hoofddorppleinbuurt kit-family pilot, about 1.5–3 M tokens.
+  - Houthavens next: branch `scope/houthavens-20261116` (40eacd35c), `docs/reports/houthavens-scope-20261116.md`. Narva-eiland pilot, about 10–15 M tokens. Includes the floating-window check on recipe-large-houthavenkade-26-247232 (left from R2-C).
 - **Houthaven as unique buildings (user 2026-11-10, waits for the house line).** The user wants Houthaven modelled as unique buildings, waiting for the faster render loop. Start after H2/H3, as a house-line pilot after H7's Nieuwmarkt and GG-West rows. Feedback 1c694c0d (Narva-eiland white boxes) and 75242f30 (Houthavenkade 26, a large recipe 83 % blank: its intent lists 12 of 510 surfaces) are marked in-progress in Firestore. Panorama fronts were measured in `docs/reports/newbuild-kit-20261110.md` (37 fronts: orange-red and purple-brown brick, wide pale-framed windows).
 - **Untriaged feedback (6 open in Firestore):** 6d9d7ddd bike through here, 637f346b and 4f47f105 should be able to ride here, fc427560 texture fighting, 020e2132 is there really no building here, 0773d2a5 is there really nothing here. The feedback dashboard is https://claude.ai/artifact/Y75ff7xZbiinYmSxx6trQL (a snapshot; re-pull with `node scripts/feedback/queue.mjs pull --status all` and re-upload after each triage round).
 - **Storefront gate leftovers (`docs/reports/storefront-gate-20261110.md`).**
@@ -1667,13 +1681,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   minimap/overview, dropping the live OpenFreeMap dependency. Gaps: no road
   widths/sidewalks in our extracts (centrelines only), humped bridges render
   as grey slabs, no route line/labels/HUD in the spike.
-- **Haparandaweg held/skipped**: 952-1002 rebuilt but held — grey
-  neighbour building needs its light-grey framed grid, SE/NE faces plain;
-  746-786 rebuilt, held for user review of its sheet; 870-900 NE side still
-  dark glass, unverified. Review 65 (needs the terracotta upper volume),
-  650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
-  retry 940–950 with another photo source; 582–648 after scaffolding. The
-  street sheet framing was poor (bike drawn over a roof) — reshoot.
+- **Haparandaweg still unreviewed** (65, 746-786, 788-868 and 952-1002 unheld in round u): review 650–706 (paired casements, stone bands), 708–744 and 870-900 (NE side still dark glass); retry 940–950 with another photo source; 582–648 after scaffolding. 746-786 still lacks its concrete columns and glass rails; 952-1002 its finer red grid.
 - **Audit see-through test is hull-limited**: cast rays fully through the
   bbox (or from outside the footprint) in `glbQuality.ts`; today concave
   footprints flag false holes. Madame Tussauds has small roof-junction gaps.
@@ -2030,7 +2038,6 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     - Rembrandtpark culvert hollow, OSM187078829.
     - Doelensluis (needs a panorama); De Clercqstraat seams #24.
   - **Deck ends after `wayEnds` (2026-11-15):** 8 decks / 64 vertices sink road within 12 m of the end (`probe-hole-junctions.ts`, now counting only the deck's own road). Gaasperdammerweg 409282361 (36 vertices, worst 5.3 m: BGT square/footway at ground level under the south end, relief +4.7 → −2.5 m in 14 m; likely a real square under the viaduct, needs a photo verdict); OSM1483479264 (11, < 0.95 m: the path runs along its paving polygon's outline, so point-in-polygon finds no class and `holeCarry` never starts); Huntumdreef 376167407 (6) and Kanaaldijk 7041874 (5: square/verge polygons 4–5 m inside the hole range, bank found low); Coentunnel 7377715 (2, within pin); Dwergplanetenbaan 433293249 (2); 7376770 (1, pinned); 1504537939 (1). Visual reports with no probe signal need frames: Coentunnel pale slab, 7376770 paving strips, 7376548 jagged grey fringe, and Haarlemmer Houttuinen's pale stepped facets and small sliver on the east quay beside the `overFlat` deck.
-  - **Haparandaweg floating windows** (lane R2-C): check the kit chunks and recipe-large-houthavenkade-26-247232.
   - **Pontsteiger (rebuilt 2026-11-14):** kit still lacks the pavilions' curved canopies, real loggia depth, glazed-brick texture, patterned soffit cladding; `grid()` hides panes by box bounds only (not roofs/prisms/rotated boxes).
   - **Two models on one pand (pinned open in `modelOverlap.test.ts`):** `joodse-invalide` vs `ordinary-0363100012253824`; `roeterseiland-rec-a` vs `ordinary-0363100012253754`. Ride each, then `SHADOWED_BY_LANDMARK` or hold.
   - **Roof glazing follow-ups (2026-11-14):** the baked world shells still carry the old set-back crowns until the next `world:compile` (integrator, outside a gate). Grasweg 116-124 GLB draws its terraces as blank boxes with no roof gardens (landmark-builder lane). `test:world-format` (not in check:canal) fails on main: `worldStreamer.test.ts` styled mismatch on pand 0363100012072136 in tile 8414/5384, pre-existing before the roof-glazing merge.

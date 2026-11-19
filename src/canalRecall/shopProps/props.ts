@@ -2,9 +2,22 @@
 // the street, z up, origin on the ground at the prop's centre). Each states its triangle cost (PROP_COST, tested), its
 // footprint along the wall and its depth, so a layout can fit it and a budget can be read off the table.
 import { hash01, Mesh, shade, type PropTri, type V3 } from './kit.js';
+import { BIKE_RACK, BIKE_RACK_PERP, BIKE_RACK_PERP_TRIS, BIKE_RACK_TRIS, OMAFIETS_LOW, OMAFIETS_LOW_TRIS, OMAFIETS_PERP, OMAFIETS_PERP_TRIS, OMAFIETS_WINDOW, OMAFIETS_WINDOW_TRIS } from './bikeMeshes.generated.js';
 
-/** Frame colours of parked Amsterdam bikes (black dominates; dark green, cream, red, blue). */
-export const BIKE_HEXES = ['#1a1a1a', '#1a1a1a', '#232323', '#2f4a36', '#d9cfb4', '#9c2a26', '#2b4a78', '#3a3d40'] as const;
+/** Lane shop-bikes: frame colours of Dutch city bikes, a palette with weights (black dominates; matte navy, dark green,
+ *  cream, burgundy; the occasional pastel). A rental fleet's bikes are recoloured from any of these. */
+export const BIKE_PALETTE = [
+  { hex: '#161616', w: 5 }, { hex: '#1f2a3d', w: 2.5 }, { hex: '#29402f', w: 2 }, { hex: '#d6cbae', w: 1.5 }, { hex: '#6b1e2a', w: 1.5 },
+  { hex: '#3a3d40', w: 1 }, { hex: '#a9cfc6', w: 0.5 }, { hex: '#e4b9c2', w: 0.4 }, { hex: '#b8c8e0', w: 0.4 },
+] as const;
+export const BIKE_HEXES = BIKE_PALETTE.map(c => c.hex);
+/** A frame colour from the palette for 0 <= u < 1. */
+export function bikeHex(u: number): string {
+  const total = BIKE_PALETTE.reduce((t, c) => t + c.w, 0);
+  let pick = u * total;
+  for (const c of BIKE_PALETTE) if ((pick -= c.w) < 0) return c.hex;
+  return BIKE_PALETTE[0].hex;
+}
 const TYRE = '#141414', DARK = '#202020', STEEL = '#8d9396';
 
 /** A bike side-on, rear axle at x = -L/2, front axle at +L/2: 8-sided tyres, a diamond or step-through frame, the
@@ -26,6 +39,36 @@ export function bike(frameHex: string, step = false): PropTri[] {
   m.box(x0 + 0.2, x0 + 0.42, -0.06, 0.06, 0.92, 0.97, DARK, { ends: false });
   m.strip(P(-0.08, 0.76), P(0.3, 0.8), 0.12, shade(frameHex, 0.8), [0, 0.3, 1]);
   m.strip([x0 + 0.86, -0.28, 1.02], [x0 + 0.86, 0.28, 1.02], 0.035, DARK, [0, 0, 1]);
+  return m.tris;
+}
+
+const GROUP_HEX = { dark: '#222222', saddle: '#2e241c', tyre: '#141414', chrome: '#a9b0b4' } as const;
+const fromFlat = (m: Mesh, flat: readonly number[], hex: string) => {
+  for (let i = 0; i < flat.length; i += 9) m.tri([flat[i], flat[i + 1], flat[i + 2]], [flat[i + 3], flat[i + 4], flat[i + 5]], [flat[i + 6], flat[i + 7], flat[i + 8]], hex);
+};
+
+/** Lane shop-bikes: the player's omafiets baked low (bikeMeshes.generated.ts, scripts/shop-props/bake-shop-bikes.ts),
+ *  side-on with its chain case to the street (+y), front wheel at -x; its frame and fork in `frameHex`, mudguards,
+ *  carrier, chain case and bars dark, rims and stem chrome. `perp` (David 2026-11-16: "bikes should face perpendicular to
+ *  the storefront") is parked nose to the wall, both flanks drawn, the faces turned to the wall culled; `shop` is side-on
+ *  for a narrow pavement; `window` is the outline LOD for behind the glass. */
+export function omafiets(frameHex: string, lod: 'perp' | 'shop' | 'window' = 'shop'): PropTri[] {
+  const m = new Mesh(), src = lod === 'perp' ? OMAFIETS_PERP : lod === 'shop' ? OMAFIETS_LOW : OMAFIETS_WINDOW;
+  fromFlat(m, src.frame, frameHex);
+  for (const g of ['dark', 'saddle', 'tyre', 'chrome'] as const) fromFlat(m, src[g], GROUP_HEX[g]);
+  return m.tris;
+}
+
+/** The baked omafiets's length (tyre to tyre, with its mudguards) and its bars' width across. */
+export const OMAFIETS_SIZE = (() => {
+  const all = Object.values(OMAFIETS_LOW).flatMap(a => [...a]), xs = all.filter((_, i) => i % 3 === 0), ys = all.filter((_, i) => i % 3 === 1);
+  return { lengthM: Math.max(...xs) - Math.min(...xs), widthM: Math.max(...ys) - Math.min(...ys) };
+})();
+
+/** Lane shop-bikes: the street-furniture bike rack (models/street-furniture/bike-rack.glb), an inverted U across x. */
+export function bikeRack(hex = STEEL, perp = false): PropTri[] {
+  const m = new Mesh();
+  fromFlat(m, perp ? BIKE_RACK_PERP : BIKE_RACK, hex);
   return m.tris;
 }
 
@@ -166,7 +209,53 @@ export function shelfUnit(w: number, palette: readonly string[], seed: string, f
   return m.tris;
 }
 
+/** Muted canal-house postcards: a sky tone over a building hue (blues, ochres, brick reds, a green, a slate). */
+const CARD_SKY = ['#bcd0e0', '#d9e2e8', '#e6dcc3', '#a9c1d6'] as const;
+const CARD_HOUSE = ['#4f739c', '#36567f', '#7d9bb8', '#c79a3f', '#b9863a', '#a8452f', '#b5562f', '#6b8a5a', '#4a5560', '#8f3b34'] as const;
+const SPIN_APOTHEM = 0.24, SPIN_TIERS = 5;
+/** Faces of the octagonal drum that face the street (cos of the angle off +y above this); the rest are never seen. */
+const spinFaces = (turn: number) => [0, 1, 2, 3, 4, 5, 6, 7].filter(k => Math.cos(turn + (k * Math.PI) / 4) > -0.2);
+
+/** A pavement postcard spinner (David 2026-11-16: the flat card grid "looks bad"): an octagonal base plate, a pole
+ *  about 1.65 m tall, an octagonal drum with five tiers of cards, each card a white border round a canal-house picture
+ *  (sky over a building hue) leaning back a little at the top. `turn` is the drum's turn about its pole; only the faces
+ *  towards the street are drawn: 22 tris (plate 8, pole 8, cap 8) + 32 per face (backing 2, five cards of 6). */export function postcardSpinner(r: (k: string) => number, turn = 0): PropTri[] {
+  const m = new Mesh(), A = SPIN_APOTHEM, Rc = A / Math.cos(Math.PI / 8), steel = '#7d8387', dark = '#2c2f33';
+  // Base plate (an octagon, seen from above) and the pole below the drum and above it.
+  for (let k = 0; k < 8; k++) {
+    const a0 = (k / 8) * Math.PI * 2, a1 = ((k + 1) / 8) * Math.PI * 2;
+    m.tri([0, 0, 0.03], [0.3 * Math.sin(a0), 0.3 * Math.cos(a0), 0.03], [0.3 * Math.sin(a1), 0.3 * Math.cos(a1), 0.03], shade(steel, 0.9), [0, 0, 1]);
+  }
+  m.strip([0, 0, 0.03], [0, 0, 0.5], 0.04, steel, [0, 1, 0]); m.strip([0, 0, 0.03], [0, 0, 0.5], 0.04, steel, [1, 0, 0]);
+  m.strip([0, 0, 1.58], [0, 0, 1.65], 0.04, steel, [0, 1, 0]); m.strip([0, 0, 1.58], [0, 0, 1.65], 0.04, steel, [1, 0, 0]);
+  // The drum's cap: an octagon seen from above.
+  const V = (k: number, z: number): V3 => { const a = turn + (k - 0.5) * (Math.PI / 4); return [Rc * Math.sin(a), Rc * Math.cos(a), z]; };
+  for (let k = 0; k < 8; k++) m.tri([0, 0, 1.58], V(k, 1.58), V(k + 1, 1.58), shade(dark, 1.4), [0, 0, 1]);
+  for (const k of spinFaces(turn)) {
+    const phi = turn + (k * Math.PI) / 4, d: [number, number] = [Math.sin(phi), Math.cos(phi)], t: [number, number] = [Math.cos(phi), -Math.sin(phi)];
+    const nrm: V3 = [d[0], d[1], 0.12];
+    // The drum's face behind the cards.
+    m.quad(V(k, 0.5), V(k + 1, 0.5), V(k + 1, 1.58), V(k, 1.58), dark, [d[0], d[1], 0]);
+    for (let i = 0; i < SPIN_TIERS; i++) {
+      const z0 = 0.56 + i * 0.2, h = 0.17, lean = 0.035, w = 0.17, wp = 0.145, hp = 0.12;
+      // A point on the card plane: `u` along the face, `v` up the card (0..h), `o` out from the drum (bottom out, top back).
+      const P = (u: number, v: number, o: number): V3 => {
+        const rad = A + 0.03 + o - lean * (v / h);
+        return [d[0] * rad + t[0] * u, d[1] * rad + t[1] * u, z0 + v];
+      };
+      m.quad(P(-w / 2, 0, 0), P(w / 2, 0, 0), P(w / 2, h, 0), P(-w / 2, h, 0), '#f4f1e8', nrm);
+      const g = (a: string) => r(`${a}${k}:${i}`), hv = CARD_HOUSE[Math.floor(g('h') * CARD_HOUSE.length)], sky = CARD_SKY[Math.floor(g('s') * CARD_SKY.length)];
+      const vb = (h - hp) / 2, vm = vb + hp * 0.42;
+      m.quad(P(-wp / 2, vb, 0.004), P(wp / 2, vb, 0.004), P(wp / 2, vm, 0.004), P(-wp / 2, vm, 0.004), hv, nrm);
+      m.quad(P(-wp / 2, vm, 0.004), P(wp / 2, vm, 0.004), P(wp / 2, vb + hp, 0.004), P(-wp / 2, vb + hp, 0.004), sky, nrm);
+    }
+  }
+  return m.tris;
+}
+/** Most the spinner costs (a turn that shows five faces); one showing four costs 32 less. */
+export const POSTCARD_SPINNER_TRIS = 24 + 5 * 32;
+
 /** Cost of each fixed-size prop (tested against its builder). */
-export const PROP_COST = { bike: 54, bakfiets: 58, rail: 6, crate: 34, crateNoCard: 32, plant: 6, plantTall: 8, barberStation: 50, washBasin: 24, counter: 14 } as const;
+export const PROP_COST = { omafietsPerp: OMAFIETS_PERP_TRIS, bikeRackPerp: BIKE_RACK_PERP_TRIS, omafiets: OMAFIETS_LOW_TRIS, omafietsWindow: OMAFIETS_WINDOW_TRIS, bikeRack: BIKE_RACK_TRIS, bike: 54, bakfiets: 58, rail: 6, crate: 34, crateNoCard: 32, plant: 6, plantTall: 8, barberStation: 50, washBasin: 24, counter: 14, postcardSpinner: POSTCARD_SPINNER_TRIS } as const;
 /** A bucket tier's cost for `w`. */
 export const bucketTierCost = (w: number) => 3 * (4 + Math.max(1, Math.floor(w / 0.27)) * 8);

@@ -26850,7 +26850,6 @@
     },
     "haparandaweg-746-786": {
       "id": "haparandaweg-746-786",
-      "held": true,
       "name": "Haparandaweg 746-786",
       "modelUrl": "./models/haparandaweg-746-786.glb",
       "suppressOsmIds": [
@@ -26997,9 +26996,9 @@
       "category": "ordinary",
       "bytes": 36840,
       "lod2": {
-        "sourceHash": "b5115ab435a0c6b2",
+        "sourceHash": "0a203537f621bc8f",
         "buildVersion": 6,
-        "bytes": 6276,
+        "bytes": 6272,
         "triangles": 170
       }
     },
@@ -27205,7 +27204,6 @@
     },
     "haparandaweg-952-1002": {
       "id": "haparandaweg-952-1002",
-      "held": true,
       "name": "Haparandaweg 952-1002",
       "modelUrl": "./models/haparandaweg-952-1002.glb",
       "suppressOsmIds": [
@@ -27382,15 +27380,15 @@
         ]
       },
       "lod1": {
-        "sourceHash": "2fba735f311e532f",
+        "sourceHash": "d0c351045d289a86",
         "buildVersion": 2,
         "bytes": 25688,
         "triangles": 1327
       },
       "category": "ordinary",
-      "bytes": 71140,
+      "bytes": 71144,
       "lod2": {
-        "sourceHash": "2fba735f311e532f",
+        "sourceHash": "d0c351045d289a86",
         "buildVersion": 6,
         "bytes": 10576,
         "triangles": 618
@@ -27584,7 +27582,6 @@
           52.3948
         ]
       },
-      "held": true,
       "category": "ordinary",
       "bytes": 53012,
       "lod2": {
@@ -27775,11 +27772,10 @@
           52.3951
         ]
       },
-      "held": true,
       "category": "ordinary",
-      "bytes": 40524,
+      "bytes": 40528,
       "lod2": {
-        "sourceHash": "16ddfc7e38b07b8c",
+        "sourceHash": "98edd4b045ac2c7e",
         "buildVersion": 6,
         "bytes": 8248,
         "triangles": 322

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12",
+  "updated": "2026-11-16",
   "intro": "How we are going to get the whole city's buildings looking right, in order. About 177,000 of Amsterdam's 193,000 buildings are still drawn from a generic recipe; Centrum has 16,300 buildings and 423 modelled. Hand-modelling every house does not scale, so the plan moves from one model per building to one renderer that draws any front from measured facts.",
   "principles": [
     "Correct before pretty: measured dark brick ships even if the city reads darker.",
@@ -59,9 +59,15 @@
       "order": 5,
       "priority": "P1",
       "title": "Ground floors and shopfronts",
-      "status": "next",
+      "status": "in-progress",
       "text": "The street-level storey becomes its own band: shop windows, fascia and colour, entrance, awnings, basements under stoops. Where shops are comes from the national building register (BAG) and OpenStreetMap.",
-      "items": []
+      "items": [
+        "Shop signs read from photos; FEBO and HEMA brand styles (done 16 November)",
+        "Shopfronts page with per-card feedback (16 November)",
+        "3D shop props, omafiets bike shops and a different arrangement per window (done 16 November)",
+        "Shops that fit the building's ground floor (pilot being built)",
+        "Rooms behind shop glass (switched off)"
+      ]
     },
     {
       "order": 6,
@@ -90,44 +96,49 @@
   ],
   "inProgress": [
     {
-      "name": "Facade benchmark and blind critic",
-      "issue": 379,
+      "name": "Haparandaweg (Houthavens): four block models installed after winning a blind test 4/4",
+      "issue": null,
+      "label": "Checks running"
+    },
+    {
+      "name": "Shopfronts page: every shop type and chain, with a note box on each card",
+      "issue": null,
+      "label": "Checks running"
+    },
+    {
+      "name": "Shop rooms behind the glass (switched off)",
+      "issue": null,
       "label": "Being built"
     },
     {
-      "name": "Shader facade build (design finished 12 November)",
-      "issue": 380,
-      "label": "Next"
+      "name": "Canal-belt and Centrum house rows: same-building rule, smaller basement windows",
+      "issue": 392,
+      "label": "Waiting for David's sign-off"
     },
     {
-      "name": "Centrum facade measurement",
-      "issue": 381,
+      "name": "De Pijp's first generated rows",
+      "issue": 393,
+      "label": "Waiting for David's sign-off"
+    },
+    {
+      "name": "Shops that fit the building's ground floor: pilot (The Sting, FEBO)",
+      "issue": null,
       "label": "Being built"
     },
     {
-      "name": "Measured front roofs for single houses",
+      "name": "Hoofddorppleinbuurt district look (the one Zuid area with nothing drawn)",
       "issue": null,
-      "label": "Ready to merge"
+      "label": "Scoped, waiting for go-ahead"
     },
     {
-      "name": "Darker measured brick in Oud-West and the 19th-century ring",
-      "issue": 373,
-      "label": "Ready to merge"
-    },
-    {
-      "name": "Canal-belt houses: Grachtengordel-West (45), Haarlemmerdijk (23), Nieuwmarkt (47), Burgwallen (66), Jordaan (24), Frederik Hendrikbuurt (26)",
+      "name": "Houthavens: Narva-eiland pilot, five new-build blocks from their photos",
       "issue": null,
-      "label": "Awaiting review"
+      "label": "Scoped, waiting for go-ahead"
     },
     {
-      "name": "Ground: crossings register, ground fixes, ground v2 bake",
-      "issue": 374,
-      "label": "Awaiting review"
-    },
-    {
-      "name": "Tree shapes measured from photos",
-      "issue": 371,
-      "label": "Ready to merge (switched off)"
+      "name": "Real 3D shop interiors near the route",
+      "issue": null,
+      "label": "Proposed"
     }
   ]
 }

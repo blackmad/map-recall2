@@ -466,6 +466,10 @@ export type RetailFrontInput = {
    *  front (used: a muted irregular row; premium: a neat clean row; rental: the fleet's identical bikes) and two to
    *  four side-on behind the glass. Absent: the template's racks and pavement discs. */
   bike?: { cls: BikeClass; fleetHex?: string };
+  /** Lane shop-bikes-perp: the pavement in front of the wall (wall to kerb, metres) where the mesher knows it
+   *  (threeBuildingMesh.ts: wall to street centreline less GENERIC_STOOP.carriageHalfM). Pavement props that need more
+   *  room give way (perpendicular bikes need 2.5 m; side-on bikes 1 m); unknown counts as wide. */
+  pavementM?: number;
   /** Round 7: the awning measured on a street panorama (measure-awning.ts, staged per pand), over the window in this
    *  colour, in place of the template's (the black awnings of Unique Eyefashion, Gall & Gall). Absent: the template's. */
   awning?: string;
@@ -746,7 +750,7 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     // bikes all in its colour.
     const runs = (door ? [[s0 + 0.1, door.a0 - 0.12], [door.a1 + 0.12, s1 - 0.1]] : [[s0 + 0.1, s1 - 0.1]] as Array<[number, number]>).filter(([r0, r1]) => r1 - r0 > 0.5) as Array<[number, number]>;
     const fleet = input.bike?.cls === 'rental' ? input.bike.fleetHex : undefined, frames = new Set<string>(BIKE_HEXES);
-    b.put(outsideProps(props, runs, input.seed), q => [q[0], q[1], base + q[2]], fleet ? hex => (frames.has(hex) ? fleet : hex) : undefined);
+    b.put(outsideProps(props, runs, input.seed, input.pavementM), q => [q[0], q[1], base + q[2]], fleet ? hex => (frames.has(hex) ? fleet : hex) : undefined);
   } else pavement(b, look, s0, s1, base, input.seed);
   return b.out;
 }

@@ -443,7 +443,7 @@ export function chainFrontTris(chain: NonNullable<MeshBuilding['chain']>, candid
  * Round 2: a traced door (lane 1's row-front ground boxes, specRecipe.groundBoxes) inside the front is drawn set back,
  * and `cut` is the wall rectangle the mesher removes for its recess. Round 3: an untraced front's door is recessed too.
  */
-function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshBuilding, candidates: readonly Edge[], ring: readonly Edge[], base: number, groundM: number, origin: Origin): { tris: SignTri[]; cut?: { e: Edge; cut: WallCut }; cuts?: Array<{ e: Edge; cut: WallCut }> } {
+function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshBuilding, candidates: readonly Edge[], ring: readonly Edge[], base: number, groundM: number, origin: Origin, streetM?: (e: Edge) => number): { tris: SignTri[]; cut?: { e: Edge; cut: WallCut }; cuts?: Array<{ e: Edge; cut: WallCut }> } {
   const kx = mPerDegLng(origin.lat), px = (front.at[0] - origin.lng) * kx, py = (front.at[1] - origin.lat) * M_PER_DEG_LAT;
   let best: Edge | null = null, bestD = Infinity;
   for (const e of candidates) {
@@ -457,7 +457,10 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   const run = steppedRun(best, ring), shift = run.parts.find(p => p.e === best)?.t0 ?? 0;
   const e = { x0: run.x0, y0: run.y0, ux: run.ux, uy: run.uy, nx: run.nx, ny: run.ny };
   const L = run.len, along = Math.max(0, Math.min(L, (px - e.x0) * e.ux + (py - e.y0) * e.uy));
-  if (front.groundFloor) return groundFloorFrontOn(front, front.groundFloor, b, run, e, base, groundM, along);
+  if (front.groundFloor) {
+    const sd = front.template === 'bike' && streetM ? streetM(best) : Infinity;
+    return groundFloorFrontOn(front, front.groundFloor, b, run, e, base, groundM, along, Number.isFinite(sd) ? Math.max(0, sd - GENERIC_STOOP.carriageHalfM) : undefined);
+  }
   const half = Math.min((L - 0.6) / 2, RETAIL_FRONT.maxSpanM / 2);
   let s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half)), s1 = s0 + 2 * half;
   // Lane retail-real: an audited red-light front spans its measured piece of the front line, projected on the run.
@@ -485,7 +488,11 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   const shopCell = b.layers && b.layers.ground < BAY_LAYER_COUNT && (SHOP_KINDS as readonly string[]).includes(BAY_ENTRIES[b.layers.ground]?.kind ?? '') ? b.layers.ground : undefined;
   const input = { template: front.template, word: front.word, seed: b.id, ...(door ? { door } : {}), ...(front.logo ? { logo: front.logo } : {}),
     ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(bays ? { bays } : {}), ...(front.redLight ? { redLight: { ...front.redLight, span: undefined } } : {}), ...(front.frameHex ? { frameHex: front.frameHex } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}) };
-  const tris = retailFrontTris(front.brand ? { ...input, brand: front.brand, ...(b.wallHex ? { wallHex: b.wallHex } : {}) } : input, e, s0, s1, base, groundM);
+  // Lane shop-bikes-perp: the pavement before the front's wall (street centreline less half a carriageway, as the
+  // stoops use), so perpendicular bikes stand only where they fit.
+  const streetD = front.template === 'bike' && streetM ? streetM(best) : Infinity, pavementM = Number.isFinite(streetD) ? Math.max(0, streetD - GENERIC_STOOP.carriageHalfM) : undefined;
+  const placed = pavementM !== undefined ? { ...input, pavementM } : input;
+  const tris = retailFrontTris(front.brand ? { ...placed, brand: front.brand, ...(b.wallHex ? { wallHex: b.wallHex } : {}) } : placed, e, s0, s1, base, groundM);
   // Round 3: every template door stands in a recess (retailDoor), traced or not, so the wall is cut over each.
   const opening = retailDoor(input, s0, s1);
   // The wall is cut on the piece of the run behind the door (a piece set back further than the recess needs no cut).
@@ -503,7 +510,7 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
 const GROUND_TOP_TRUST_M = 1.6;
 /** A run longer than the read's wall by this factor draws the front over the read's wall length only. */
 const GF_SPAN_SLACK = 1.25;
-function groundFloorFrontOn(front: NonNullable<MeshBuilding['retailFront']>, gf: GroundFloorDraw, b: MeshBuilding, run: ReturnType<typeof steppedRun<Edge>>, e: { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number }, base: number, groundM: number, along: number): { tris: SignTri[]; cuts?: Array<{ e: Edge; cut: WallCut }> } {
+function groundFloorFrontOn(front: NonNullable<MeshBuilding['retailFront']>, gf: GroundFloorDraw, b: MeshBuilding, run: ReturnType<typeof steppedRun<Edge>>, e: { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number }, base: number, groundM: number, along: number, pavementM?: number): { tris: SignTri[]; cuts?: Array<{ e: Edge; cut: WallCut }> } {
   const L = run.len;
   // The read's fractions are of its cut's wall (spanM); a run much longer than that (a corner block, a stepped run of
   // several fronts) draws the front over spanM around the shop's point, not stretched over the whole run.
@@ -512,7 +519,7 @@ function groundFloorFrontOn(front: NonNullable<MeshBuilding['retailFront']>, gf:
   if (s1 - s0 < 1.2) return { tris: [] };
   const topM = Math.max(2.6, Math.min(7, gf.groundTopM !== undefined && Math.abs(gf.groundTopM - groundM) <= GROUND_TOP_TRUST_M ? gf.groundTopM : groundM));
   const shopCell = b.layers && b.layers.ground < BAY_LAYER_COUNT && (SHOP_KINDS as readonly string[]).includes(BAY_ENTRIES[b.layers.ground]?.kind ?? '') ? b.layers.ground : undefined;
-  const input = { template: front.template, word: front.word, seed: b.id, ...(front.logo ? { logo: front.logo } : {}), ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(front.frameHex ? { frameHex: front.frameHex } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}), ...(front.brand ? { brand: front.brand } : {}), ...(b.wallHex ? { wallHex: b.wallHex } : {}), ...(front.neutral ? { neutral: true } : {}) };
+  const input = { template: front.template, word: front.word, seed: b.id, ...(front.logo ? { logo: front.logo } : {}), ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(front.frameHex ? { frameHex: front.frameHex } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}), ...(front.brand ? { brand: front.brand } : {}), ...(b.wallHex ? { wallHex: b.wallHex } : {}), ...(front.neutral ? { neutral: true } : {}), ...(pavementM !== undefined ? { pavementM } : {}) };
   const tris = groundFloorFrontTris(input, gf, e, s0, s1, base, base + topM);
   if (!tris.length) return { tris };
   const cuts = run.parts.filter(p => p.t1 - p.t0 > 0.05 && p.backM < 0.6).map(p => ({ e: p.e, cut: { a0: Math.max(0, (Math.max(s0, p.t0) - p.t0) / p.e.len), a1: Math.min(1, (Math.min(s1, p.t1) - p.t0) / p.e.len), z0: base - 1, z1: base + topM, other: `${b.id}:ground-floor` } }));
@@ -1140,7 +1147,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const retail = mode === 'walls' && b.retailFront && b.lid ? (() => {
       const exposed = edges.filter(e => !e.hole && !hiddenByNeighbour(e, b));
       const street = exposed.filter(e => doorAllowed.has(e));
-      return retailFrontOn(b.retailFront!, b, street.length && !b.retailFront!.nearest ? street : exposed.length ? exposed : edges, edges.filter(e => !e.hole), b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin);
+      return retailFrontOn(b.retailFront!, b, street.length && !b.retailFront!.nearest ? street : exposed.length ? exposed : edges, edges.filter(e => !e.hole), b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin, wallStreetM);
     })() : null;
     const cutsFor = (e: Edge): readonly WallCut[] => retail?.cuts?.some(c => c.e === e) ? [...(wallCuts.get(e) ?? []), ...retail.cuts.filter(c => c.e === e).map(c => c.cut)]
       : retail?.cut?.e === e ? [...(wallCuts.get(e) ?? []), retail.cut.cut] : wallCuts.get(e) ?? [];

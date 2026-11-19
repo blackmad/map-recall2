@@ -1,5 +1,72 @@
 # Canal Recall — what is built
 
+## Postcard spinners (2026-11-16, b353d4da4)
+
+David: the flat postcard racks outside souvenir and Bestseller "look bad". They are now a 3D spinner from the shop-props kit (octagonal drum, 5 tiers of white-bordered cards, at most 184 triangles), one or two beside the door, 0.4–0.6 m out, seeded by pand. Kruidvat keeps its promo stand. Bundles rebuilt; shop fronts are meshed at runtime, so no world compile.
+
+## Round w: shop bikes park nose to the wall (2026-11-16)
+
+- Merged lane/shop-bikes-perp-20261116 3698c8550 after David asked for bikes perpendicular to the storefront. Pavement bikes stand nose-in, about 15 % backed in, at a 0.6 m pitch with ±8° yaw. A bike costs 325 tris, with both flanks drawn because the chunk material is single-sided. A 6 m front is 1,188–1,293 tris (cap 1,300); the 9 m all-template total is 14,835 of 15,624. The mesher passes `pavementM` (wall to street centreline less 1.5 m): 2.5 m or more parks perpendicular, 1–2.5 m falls back to the side-on row, under 1 m draws no pavement bikes. Window bikes stay side-on. Runtime retail only; the world is unchanged.
+
+## Round v: shop props kit, omafiets bike shops, Kruidvat promo stands (2026-11-16)
+
+- Merged by SHA lane/shop-bikes-20261116 a8fffae34. It contains lane/shop-goods-20261116 92446e4c7 and lane/kruidvat-promo-20261116 5d9de3c54. David asked for this on 2026-11-16, from the Shopfronts page: "bikeshops look like they have crosses inside", "greengrocer could be so much better", "not repeat the exact same thing in every window", "hairdresser … barber chair & beauty station", and "a way to do some real 3d modeling inside/outside of these stores in a generic way".
+- **Shop props kit** (`src/canalRecall/shopProps/`):
+  - It is a procedural library of low-poly props. Each prop states its triangle cost, and a test checks it: bike, bakfiets, rail, tilted produce crate (34), bucket tier, plant, barber station (50), wash basin, counter with till, and shelf unit.
+  - `layout.ts` `SHOP_PROPS` is a data table. For each template it lists `outside` rows (0–1.2 m of pavement) and `inside` items (0.3–2.5 m deep). Placement is deterministic per pand and bay.
+  - `variety.ts` gives every bay its own seed, so no two windows tile the same goods. Bay 0 keeps the pand seed.
+  - Hairdresser gets a new `salon` content type.
+- **Blind A/B** (one opus judge, beside panorama crops of each template's example pand):
+  - Bike, greengrocer, florist and hairdresser: the new version won.
+  - Gelato, cheese, books and butcher: ties. The per-window variety is too subtle at thumbnail size.
+  - No template lost.
+- **Bike shops use the player's omafiets.** It is baked down from `omafiets-runtime.glb` (18,188 tris) to 220 tris by `scripts/shop-props/bake-shop-bikes.ts`, written to `bikeMeshes.generated.ts` (19 KB, no runtime GLB load).
+  - The parts are simplified separately with meshoptimizer. Tyres and rims are rebuilt as 12-sided rings, and the mudguards as arcs.
+  - Window bikes use an 87-tri outline version.
+  - The rack is `bike-rack.glb` hoops.
+  - Bikes are spread at about 0.65 m in two staggered lines, about 30 % turned the other way, at most 8 per front, in a Dutch city-bike palette.
+  - David's six downloaded CC-BY Sketchfab bikes were reference only. None was shipped, so there is no credits entry.
+- **Kruidvat:** a new `promo` pavement kind. It draws red stands with three shelves of boxed products and a header, in place of round 7's postcard stands. Bestseller and souvenir shops keep the postcard stands.
+- **Triangles per 6 m front:**
+  - bike 224 → 913–1,202 (cap 1,250);
+  - greengrocer 186 → 680 (cap 700);
+  - florist 298 → 358 (cap 420);
+  - hairdresser 168 → 272 (cap 300).
+  - The all-template total at 9 m is 15,014, under the 15,624 limit.
+  - The other templates keep their triangle counts. Their bytes change with the per-bay seeds.
+
+## Round u: Haparandaweg block kits unheld, Shopfronts browser (2026-11-16)
+
+- Merged by SHA: lane/haparandaweg-review-20261116 8e2d15aef. Four Haparandaweg block-kit GLBs leave `held`: 65, 746-786, 788-868, 952-1002. A single fresh opus judge saw a shuffled photo | A | B sheet per pand and picked the kit over today's generic draw on all four:
+
+  | Pand | Winner | Confidence | Remaining difference |
+  |---|---|---|---|
+  | 65 (…238475) | kit | high | slightly too tall and brick-like; a roof setback the photo lacks |
+  | 746-786 (…242477) | kit | medium-high | missing vertical columns and glass rails |
+  | 788-868 (…243162) | kit | low | narrow oblique view; should be dark muted brown |
+  | 952-1002 (…244592) | kit | high | red cells too coarse; flat glass |
+
+- Colour fixes before the vote:
+  - 65: terracotta cladding widened (0–0.38 to 0–0.93 of the face), colour `#74534a` (was `#8e3f3a`). Window frames in the cladding take the terracotta slot, which cleared the z-fight: `zfight-m2` baseline 30.9 to 0.
+  - 746-786: glass, rails and recess are neutral greys (were cyan).
+  - 952-1002: building frames grey `#50565e`.
+  - 788-868: unchanged.
+- Read, not drawn:
+  - 65: the dark recessed ground floor under the terracotta overhang, irregular windows, the white Z-shaped opening on the left wing.
+  - 746-786: concrete columns and glass rails.
+  - 952-1002: the coarse grid and non-reflective glass.
+  - 788-868: main fronts unreviewed, no panorama in range.
+- Checks: `check:glb-openings` floating 0 and poke 0 on all four (788-868 has 2 small glass-rail `outside` flags, allow-listed), so the R2-C "floating windows" item closes for these kit chunks. `audit:glb` still reports open boundary loops (`holes`) on all four shells and blank NE/SW side walls on 746-786 and 952-1002. Both predate this round: the side walls are unmeasured 3DBAG walls.
+- Install: these GLBs come from `scripts/haparandaweg/build.ts`, which `build-manual-landmarks` skips as "external" without refreshing their manifest `bytes`/`triangles`. The integrator re-stamped them from the GLBs (952-1002's stale 71140 B was the `check-manual-landmarks` stop). LODs were built with `--only` for the four ids; covers and the world (one cell, -2_2) were recompiled.
+- Still open on Haparandaweg (moved to TODO): 650–706, 708–744, 870-900 NE side, 940–950 (needs another photo source) and 582–648 (after scaffolding).
+
+## Shopfronts browser (dccbcdc8e, 2026-11-16)
+
+- `public/canal-drive/shopfronts.html` lists every shopfront template the game draws on a ground floor (generic fronts and chains), with use counts and a link to ride to one. It reads `shopfronts-data/index.json`, built by `npm run shopfronts:gallery` (`scripts/retail-ground/shopfront-gallery.ts`, typed index in `src/canalRecall/shopfrontIndex.ts`; its test joins `test:shopfront-gate`). Opened from a Shopfronts button on whats-new.html; e2e `tests/e2e/shopfronts-page.spec.ts`.
+- 172 WebP thumbnails live in the screenshots repo under `ui/shopfronts/` (874f3de); page shots are in `ui/shopfronts-page/` (a4e1ef6).
+- Of 237 index entries, 65 chains are listed but not drawn: their template is not in `REAL_ACCEPTED`, so the game falls back to a generic front.
+- Feedback on the page (lane/shopfront-feedback-20261116 acbcd02f0, round u): every card has a note box and a sticky Save all bar sends them through `CanalFeedback.saveMany` (with `signIn`/`userLabel`). The note text comes from the shared builder `src/canalRecall/feedback/note.ts`; its test joins `test:feedback`, and the e2e is `tests/e2e/shopfronts-feedback.spec.ts`.
+
 ## Round t: shop signs read from photos, FEBO/HEMA brand styles, reflective glass, more buurt towers (2026-11-16)
 
 - Merged by SHA: lane/retail-real-20261115 c977c461e, lane/glass-reflect-20261116 330cc3319, lane/rows-r-round22-20261116 21bc8c1a7 (round 22 notes, sheetFit fix, lane D sheet merge, round 23 head dressings, round 24 erker). Shop interiors (lane/shop-interiors-20261116 1ec903591) not merged: blind 5 on / 4 off / 4 tie, parked behind `?shopInteriors=1` on its branch.

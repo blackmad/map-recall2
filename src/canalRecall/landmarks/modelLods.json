@@ -3220,9 +3220,9 @@
  },
  "haparandaweg-746-786": {
   "lod2": {
-   "sourceHash": "b5115ab435a0c6b2",
+   "sourceHash": "0a203537f621bc8f",
    "buildVersion": 6,
-   "bytes": 6276,
+   "bytes": 6272,
    "triangles": 170
   }
  },
@@ -3239,12 +3239,12 @@
   }
  },
  "haparandaweg-952-1002": {
-  "sourceHash": "2fba735f311e532f",
+  "sourceHash": "d0c351045d289a86",
   "buildVersion": 2,
   "bytes": 25688,
   "triangles": 1327,
   "lod2": {
-   "sourceHash": "2fba735f311e532f",
+   "sourceHash": "d0c351045d289a86",
    "buildVersion": 6,
    "bytes": 10576,
    "triangles": 618
@@ -3260,7 +3260,7 @@
  },
  "haparandaweg-65": {
   "lod2": {
-   "sourceHash": "16ddfc7e38b07b8c",
+   "sourceHash": "98edd4b045ac2c7e",
    "buildVersion": 6,
    "bytes": 8248,
    "triangles": 322
