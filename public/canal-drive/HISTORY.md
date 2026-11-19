@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Ground floors that fit the building, fix round 2 (2026-11-19, lane/ground-floor-20261116 98fc17523)
+
+Behind `?groundFloor=1` only; the default and baked worlds are unchanged. Blind round 3 over 25 pands: new 14, today 9, tie 2 (round 2 was 8–6–4). Fixes:
+- Frames now face the wall the game draws the front on (`scripts/ground-floor/pose-walls.ts`). Jumbo, Hugo Boss, Henri Willig and Simon Levelt had been framing a side wall or a neighbour.
+- With a record, the front goes on the wall whose length is closest to the read's span. The nearest-wall rule had put FEBO Leidsestraat on a party wall above a neighbour's roof, and Stach on a 2.9 m corner chamfer.
+- The sign keeps its band above the openings; with no room left, a named shop gets a board inside the opening (`groundFloorSignBand`).
+
+`ground-floors.json` is published (41 pands), and `groundFloor.test.ts` is in `test:shopfront-gate`. Two goldens (ah, bruna) were re-taken after the chain-logo merge.
+
+Still losing: fascias drawn where the photo has none (Etos); light stucco finishes covering glazed openings (Simon Levelt, Sissy-Boy); and a template fascia that reads closer than a board inside the opening (Henri Willig, De Slegte, Manfield). AH Bloedstraat is an installed model that brings its own front.
+
 ## Ride-feedback triage (2026-11-19, triage/feedback-20261116 bf5b6b72d)
 
 All 78 ride notes were triaged and the full queue was pulled again (150 notes, `atLimit` false). No new ride notes had arrived; the 13 new notes were David's Shopfronts-page notes, which the chain-logos lane owns. 46 notes are resolved (40 fixed, 6 answered), 9d5ac5 is in progress, and 31 are open. Report and verdicts: `docs/reports/feedback-triage-20261116.md`.
