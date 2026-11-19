@@ -58,6 +58,8 @@ export interface FrontSlice {
   pandId: string;
   fromM: number;
   toM: number;
+  /** The member's front edge, left and right end as seen from the street (lng/lat, 7 decimals): the AHN band's line. */
+  line?: [LngLat, LngLat];
 }
 export interface UnitFace {
   street: string;

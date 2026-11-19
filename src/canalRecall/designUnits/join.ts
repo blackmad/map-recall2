@@ -205,9 +205,10 @@ export function unitFaces(members: readonly string[], fronts: ReadonlyMap<string
     let ux = 0, uy = 0;
     for (const { e } of list) { const L = Math.hypot(e.b.x - e.a.x, e.b.y - e.a.y) || 1; ux += (e.b.x - e.a.x) / L; uy += (e.b.y - e.a.y) / L; }
     const U = Math.hypot(ux, uy) || 1; ux /= U; uy /= U;
-    const proj = list.map(({ id, e }) => { const ta = e.a.x * ux + e.a.y * uy, tb = e.b.x * ux + e.b.y * uy; return { id, t0: Math.min(ta, tb), t1: Math.max(ta, tb) }; });
+    const r7 = (c: LngLat): LngLat => [+c[0].toFixed(7), +c[1].toFixed(7)];
+    const proj = list.map(({ id, e }) => { const ta = e.a.x * ux + e.a.y * uy, tb = e.b.x * ux + e.b.y * uy; return { id, t0: Math.min(ta, tb), t1: Math.max(ta, tb), line: [r7(e.aLngLat), r7(e.bLngLat)] as [LngLat, LngLat] }; });
     const origin = Math.min(...proj.map(p => p.t0));
-    const slices = proj.map(p => ({ pandId: p.id, fromM: +(p.t0 - origin).toFixed(2), toM: +(p.t1 - origin).toFixed(2) }))
+    const slices = proj.map(p => ({ pandId: p.id, fromM: +(p.t0 - origin).toFixed(2), toM: +(p.t1 - origin).toFixed(2), line: p.line }))
       .sort((a, b) => a.fromM - b.fromM || (a.pandId < b.pandId ? -1 : 1));
     faces.push({ street, lengthM: Math.max(...slices.map(s => s.toM)), slices });
   }

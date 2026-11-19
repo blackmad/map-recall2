@@ -52,6 +52,6 @@ test('unitFaces orders slices left to right along the summed front direction', (
   const e = (ax: number, bx: number): FrontEdge => ({ street: 'S', a: { x: ax, y: 0 }, b: { x: bx, y: 0 }, aLngLat: [0, 0], bLngLat: [0, 0], lengthM: bx - ax, n: { x: 0, y: -1 }, streetM: 5, lineA: [0, 0], lineB: [0, 0], erkers: [] });
   const { faces, unfronted } = unitFaces(['b', 'a', 'c'], new Map([['a', e(10, 16)], ['b', e(16, 22)]]));
   assert.deepEqual(unfronted, ['c']);
-  assert.deepEqual(faces[0].slices, [{ pandId: 'a', fromM: 0, toM: 6 }, { pandId: 'b', fromM: 6, toM: 12 }]);
+  assert.deepEqual(faces[0].slices.map(({ line: _l, ...x }) => x), [{ pandId: 'a', fromM: 0, toM: 6 }, { pandId: 'b', fromM: 6, toM: 12 }]);
   assert.equal(faces[0].lengthM, 12);
 });

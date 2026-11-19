@@ -10,6 +10,9 @@
  *     holding on both sides (each side's members agree with each other within AGREE_M), and not a lone member.
  *   - A lone member stepping out of its segment (a roof extension, common in De Pijp) is an exception on that member,
  *     clamped to the segment line as blockFace/rowCoherence.ts does; it never makes a segment of its own.
+ *   - A member a storey or more off the line (|AHN − line| >= SPLIT_STEP_M: a low shop wing, a rear annex with a street
+ *     edge, a corner tower) is not clamped: it leaves the segment as a one-pand segment and draws as today
+ *     (2026-11-19 ring run: about 230 of 13,894 members, up to 16 m below the line).
  *   - The segment's line is the median AHN p90 of its members (exceptions excluded); with fewer than two AHN reads, the
  *     median 3DBAG eaves (source `3dbag`).
  *   - Seeds: a one-pand segment keeps its pand id (byte-identical to today); otherwise `<unit id>#<k>`.
@@ -84,7 +87,17 @@ export function splitRuns(order: readonly string[], h: ReadonlyMap<string, Membe
 /** The segments of one unit. */
 export function segmentsOf(u: DesignUnit, h: ReadonlyMap<string, MemberHeights>): Segment[] {
   const order = memberOrder(u);
-  const runs = u.members.length > 1 ? splitRuns(order, h) : [order];
+  const split = u.members.length > 1 ? splitRuns(order, h) : [order];
+  // Members a storey or more off their run's AHN median leave it (drawn alone, as today).
+  const runs: string[][] = [];
+  for (const run of split) {
+    const v = run.map(p => h.get(p)?.ahnM).filter((x): x is number => typeof x === 'number');
+    const m = run.length > 2 && v.length >= 2 ? median(v)! : null;
+    const off = m === null ? [] : run.filter(p => { const a = h.get(p)?.ahnM; return typeof a === 'number' && Math.abs(a - m) >= SPLIT_STEP_M; });
+    const keep = run.filter(p => !off.includes(p));
+    if (keep.length) runs.push(keep);
+    for (const p of off) runs.push([p]);
+  }
   return runs.map((members, k) => {
     const ahn = members.map(p => h.get(p)?.ahnM).filter((v): v is number => typeof v === 'number');
     let eavesM: number | null = null, eavesSource: Segment['eavesSource'] = 'none';
