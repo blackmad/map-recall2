@@ -20,7 +20,20 @@ Review bar (check sheets and pairs at full size, never from counts) before anyth
 - nothing above an eaves line that is not measured; no invented hips or gables;
 - with the flag on, no front worse than today on window proportion, frame colour or storey count.
 
-## Gate status (22:45)
+## Done state (2026-11-20)
+
+- Main is at d10e4790d6 (fast-forward from e0c200a7e3; peer map-recall2-40 approved). The flag is off by default.
+  The gate passed: check:canal core, rail and joins, plus the structure test and pre-push smoke.
+- Gate issue #399 is filed: 88 of 88 framed on desktop and phone, with the Roemer Visscherstraat reshoot. We are waiting
+  for David's block-by-block verdict.
+- The overnight data-only work under A is done (phase 0 report, "Under option A" section):
+  - Gordel check: 27% of units with liked rows disagree with the segments.
+  - Centrum joins: 425 segments.
+  - T8 ledger: on the Ring with the flag on, tier D is 10.3%; it is 95% with the flag off.
+- Next: wait for David on #399. If he passes the Ring, turn tier C on by default there, then start Gordel and Centrum.
+  Before David's verdict, make no renderer change and start no lanes.
+
+## Gate status (22:45, superseded by Done state)
 
 - Desktop: both halves are framed, 88 of 88. Three pands show `sameAsBefore` (Ruyschstraat 161684 and 155674,
   Bilderdijkstraat 157757). They are HouseSpec-described members that keep their own description, which is expected.
@@ -205,4 +218,4 @@ Work in worktree `~/Code/map-recall2-worktrees/integrator-design-units-20261119`
   - `integrator-design-units-20261119`: locked, port 4720.
   - `design-units-render-20261119`: the lane, done; port 4723 and e2e ports 4724–4726. It can be removed once main has its commit.
   - `~/Code/map-recall2-source-data-ordekaart-20261119`: on branch `archive/ordekaart-20261119`, pushed. Its sparse cone is `datasets/ordekaart-20261119`.
-- **Tokens:** phase 0 about 298k; renderer lane about 289k; the integrator's phase 1 work is not metered separately (roughly 150–200k).
+- **Tokens:** phase 0 about 298k; renderer lane about 289k; the integrator (phase 1, gate round, overnight data work, two main merges) was not metered separately, roughly 600–700k across its contexts.
