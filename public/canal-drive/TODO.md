@@ -15,16 +15,45 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
-## Design units (P0, approved 2026-11-19): `docs/handoffs/design-units-plan-20261119.md` — stopped at the phase 0 gate, waiting on David
+## Design units (P0, approved 2026-11-19): `docs/handoffs/design-units-plan-20261119.md` — phase 1, Ring layer only, in progress
 
 The design-units plan supersedes #392 (continuous rows) and #393 (De Pijp): their staged belt, Centrum and De Pijp looks stay held and their lanes stay paused.
 
-Phase 0 is done (`docs/reports/design-units-phase0-20261119.md`). 86% of non-minor ring pands sit in an ordekaart object, the four regression rows regroup, and Basis polygons are ordinary buildings. The plan's phase 1 rule "one elevation, one eaves line, one roof per unit" fails the positive control:
+**Phase 0 (done; `docs/reports/design-units-phase0-20261119.md`, #397).** Phase 0 stopped at its gate. The planning session then chose phase 1 on the 19th-century Ring layer only, built so option A (segments inside Gordel and Centrum units) can drop in later.
 
-- Gordel objects are composed blocks with 4/5-storey accents. 39% of units holding the liked Rivierenbuurt/Apollo rows hold differently drawn designs, mostly at a measured eaves step.
-- Centrum objects can hold separate houses: 46 of 60 photo-read "separate" runs are one object.
+**Phase 1 data (done, on branch `integrate/design-units-20261119`; not yet on main).**
+- Model: unit → segments → members. A segment has one elevation, one eaves line and one roof.
+- Heights come from the AHN4 front-edge band (`scripts/design-units/ahn-fronts.ts`): 13,685 of 13,894 Ring-layer members read. 3DBAG per-pand eaves are never used to split.
+- `segments.ts` rules:
+  - split at a storey-sized step (2.5 m or more) that holds on both sides;
+  - a member 0.8–2.5 m off the line is clamped (`rowCoherence`);
+  - a member a storey or more off its run leaves the segment and draws as today.
+- Result: 3,235 multi-pand segments over 13,730 pands. In 1,941 of them, 3DBAG eaves spread more than 0.8 m today.
+- The flag-only extract is `public/data/extracts/amsterdam/design-units-v1/segments.json`.
+- Regression tests (`npm run test:design-units`):
+  - Rustenburgerstraat 3 segments, Van Ostadestraat 4;
+  - Marnixplein one segment (expectation for the Centrum layer);
+  - Goudsbloemstraat one segment: 172514 is level on AHN and in the photo; its extra 3DBAG height is a hoist dormer.
+- Archive: source-data `archive/ordekaart-20261119` (aa044df59).
 
-Options A (units as identity, elevations in segments at measured steps), B (T7 answer key first, to measure Centrum false merges) and C (Ring layer only) are on the needs-david issue. The index is staged, not published, and archived in source-data `datasets/ordekaart-20261119/`. The code is in `src/canalRecall/designUnits/` and `scripts/design-units/`. Owner: the design-units overseer session (worktree `integrator-design-units-20261119`, port 4720).
+**Phase 1 renderer (in progress).**
+- Lane branch `lane/design-units-render-20261119`, worktree `design-units-render-20261119`, port 4723.
+- Behind `?designUnits=1`, default off and byte-identical when off:
+  - seeds keyed by segment;
+  - one eaves line and one roof per segment;
+  - bay rhythm continuous along slices;
+  - exceptions clamped.
+- Gordel and Centrum pands draw as today.
+
+**Gate (David's), not yet shot.**
+- About 20 Ring-layer blocks: `artifacts/design-units/staging/gate-blocks.json`, ranked by ride metres. It includes Rustenburgerstraat and Van Ostadestraat, and spans De Pijp, Oud-West, Oud-Zuid, Oud-Oost and Westerpark.
+- Each block is shot desktop and phone, `?world=live` beside `?designUnits=1`, with each pair diffed first, then filed as a needs-david issue.
+- This tier fixes "several houses where there is one building". It does not add the detail missed on #393.
+- **Blocker:** the machine swaps under another project's image job. Wait until the disk has 15 GB or more free, load is under 30 and swap use is under 10 GB before any browser run or bundle build.
+
+**Not now:** Gordel or Centrum drawing, the T7 answer key, photo-read batches.
+
+Owner: the design-units overseer session (worktree `integrator-design-units-20261119`, port 4720).
 
 ## Paused lanes, 2026-11-16 evening — resumed 2026-11-19 (P0): `docs/handoffs/inflight-20261116.md`
 

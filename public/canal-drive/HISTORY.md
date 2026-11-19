@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Design units, phase 1 data: Ring-layer segments on the AHN front line (2026-11-19)
+
+Phase 0 showed that "one elevation per unit" fails for Gordel blocks and some Centrum objects. Phase 1 therefore runs on the 19th-century Ring layer only, with a unit → segments → members model, so Gordel and Centrum can later get segments inside their units (option A).
+
+**Why AHN and not 3DBAG.** 3DBAG per-pand eaves split identical houses:
+- Van Ostadestraat 153176/158962 read 18.2/15.4 m in 3DBAG and 17.9/17.2 m on the AHN front band.
+- Marnixplein reads 11.5–15.3 m in 3DBAG and 12.7–13.4 m on AHN.
+- Goudsbloemstraat 172514 is 3 m taller in 3DBAG but level on AHN, and its photo shows only a hoist dormer above a common cornice.
+
+So a segment's line is the median AHN front p90 of its members, and only a storey-sized step (2.5 m or more) that holds on both sides splits a unit.
+
+**The exception rule.** On the first run, 958 members fell outside their line, some by up to 16 m. Clamping a low shop wing or annex to a 15 m cornice would be wrong. The rule became:
+- 0.8–2.5 m off: clamped, as `rowCoherence` does;
+- a storey or more off: the member leaves the segment and draws as today.
+
+**Result.** 3,235 multi-pand segments over 13,730 pands. 133 units split, leaving 164 lone pands.
+
+**Not yet a visible change.** The renderer drawing these segments is behind `?designUnits=1`, default off. Acceptance is David's gate on about 20 ride-ranked blocks, shot today beside the flag. That tier fixes "several houses where there is one building"; it does not add facade detail.
+
+**CI.** Canal CI on a58f085c4 (run 44562192246) passed core, rail, joins and boot. Its `rest` job fails on the audit-frontages baseline, which was already red on 9283e62d0 (run 44551893744). That failure is not from this work.
+
 ## Design units, phase 0: the ordekaart join and its gate (2026-11-19)
 
 David approved the design-units plan (`docs/handoffs/design-units-plan-20261119.md`): one building as designed, over one or many pands, becomes the unit of identity, drawing, review and coverage. Phase 0 joined the ring's pands to the city's four ordekaart layers by area overlap (`src/canalRecall/designUnits/`, `scripts/design-units/`; layers archived in source-data `datasets/ordekaart-20261119/` with the Maps Data terms).
