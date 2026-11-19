@@ -1,0 +1,78 @@
+45abd3	open	grey/washed walls	Pale untextured glass-grey boxes in the photo look; no commit names it; not re-framed.	Riekerpolder (photo look)
+ba2f5b	open	grey/washed walls	Industrial vetoes (F2, HISTORY 2026-11-13) may have changed it; not re-framed, unverified.	Riekerpolder (photo look)
+8022e3	open	grey/washed walls	Pale flat roofs on pale paving; palette, no fix found.	Slotervaart, Lelylaan (photo look)
+ea5ae2	question	question	The game draws the BAG/3DBAG footprint as published. This is Sloterhof (J.F. Berghoef, 1955-60, rijksmonument), whose slab stands on columns over the water, so crossing the canal is real.	Sloterhof, Slotervaart
+3ca936	fixed	grey/washed walls	Sloterhof read as 100 % industry, so it drew as a grey shed. Fixed by the F2 industrial vetoes (8a8e938a8, ed679e38b; HISTORY "Feedback round 2026-11-13"). The water crossing is real; see ea5ae2.	Sloterhof, Slotervaart
+18a9d3	open	floating/overlapping windows	Window boxes of neighbouring blocks interpenetrate at the corner; no fix found.	Slotervaart (photo look)
+4b1114	open	custom-model request	Schutterstoren needs a bespoke redo; no landmark lane has it.	Schutterstoren, Nieuw-West
+e41668	open	photo-look texture repetition	A tiled photo facade repeats along a long block; no fix found.	Osdorp, long slab (photo look)
+0046bb	open	floating/overlapping windows	1955 rows in Osdorp read oddly; cause unclear; not re-framed.	Osdorp (photo look)
+ef65d8	open	custom-model request	Schiphol terminals are generic; outside the ride-priority area.	Schiphol
+935a68	open	bridge seams/rails/gaps	Bridge over the Kloveniersburgwal looks off; no named fix.	Kloveniersburgwal, Compagnietheater
+6b239d	fixed	bridge seams/rails/gaps	080c0796c: bascule leaf kerbs run along the leaf (Aluminiumbrug); HISTORY "Bridge decks ... (2026-11-13, lane F1)".	Aluminiumbrug
+4c1344	open	bridge seams/rails/gaps	TODO P1 bridge follow-ups: "Doelensluis (needs a panorama)". The re-frame did not clearly show it again.	Doelensluis
+c7a550	fixed	bridge seams/rails/gaps	ae7091931: no railing stubs on plein-sized decks (Muntplein); pinned in bridge-feedback-pins.ts.	Muntplein
+a9557a	question	question	It is correct: the Muntsluis crosses the Singel under the Muntplein (HISTORY F1). The open proposal is to ask a crossing question only when open water is visible within about 15 m.	Muntplein
+8962f0	question	question	The chase camera is capped at CAMERA_ZOOM_MAX = 1.5 (public/canal-drive/js/constants.js:95), a deliberate limit for the driving corridor. Raising it is a product call.	Vijzelstraat
+62d5a3	open	bridge seams/rails/gaps	The tram rails follow the OSM tram way, not the carriageway centre. The re-frame (Vijzelstraat) was inconclusive.	Vijzelstraat
+c16a5f	fixed	cards/landmarks	F6 landmarkFrontage (a50679880): the card fires on the facade the building fronts, not on the road snap (HISTORY "Feedback round 2026-11-13").	Krijtberg, Singel
+2ba720	fixed	floating/overlapping windows	R2-C 0aa21b0bc: De Hallen floating windows went from 42 to 0, and check-glb-openings now gates every landmark build (HISTORY "Landmark GLB openings gate").	De Hallen
+5b9e1c	fixed	grey/washed walls	This is the same grey block as 32c893 (El Tawheed, Kostverlorenvaart). The F2 industrial veto fixed it, and a re-frame on 2026-11-16 shows windows.	El Tawheed, Kostverlorenvaart
+a3d764	question	question	Yes. Destinations are fame-weighted: notability >= 8 is the known tier (69 places), and the tail weighs 2 % until 40 names are mastered nearby (pickSurpriseStart; HISTORY "Destinations: fame in every picker", 2026-11-13). prominenceScore for labels and trivia is unchanged.	NIOD, Herengracht
+e058c8	open	floating/overlapping windows	Window boxes stand proud of the 1981 red block. The re-frame was at a different distance and is inconclusive.	Kostverlorenvaart
+1a223c	open	floating/overlapping windows	Window grid on the white block reads badly; no fix found.	Kostverlorenvaart
+8b91c8	fixed	bridge seams/rails/gaps	ae7091931: no slab beside the Rijckerbrug; pinned BRU0167 / BRU0358.	Rijckerbrug
+3b8ca6	open	bridge seams/rails/gaps	TODO P1: "De Clercqstraat seams #24" are still open.	De Clercqstraat bridge
+71028a	open	bridge seams/rails/gaps	The same open De Clercqstraat / Bilderdijkgracht seams as 3b8ca6.	Bilderdijkgracht at De Clercqstraat
+ba7fc5	fixed	gable orientation	F5 ridge axes afc1856ab (Jan Hanzenstraat / Bilderdijkkade pins), on by default since round 130.	Bilderdijkkade
+106259	fixed	vertical lines/drainpipes	6459c2ae2: the random downpipe is dropped, and fins appear only when the register forces them (F3).	Jan Hanzenstraat area
+828765	fixed	vertical lines/drainpipes	6459c2ae2 (F3, downpipes removed).	Jan Hanzenstraat area
+4d7706	fixed	streaming/loading	bc3287f64: street furniture streams around the rider, not the led view centre.	Kwakersstraat
+47d096	open	building partly drawn	Only about 2/3 of a frontage is drawn; no fix found; not re-framed.	Jan Hanzenstraat / Kwakersplein
+9d5ac5	in-progress	shopfront	Shop ground floor render; routed to the retail/shopfront lane (TODO P0 "Shop ground floors look cheap").	Jan Hanzenstraat
+280381	fixed	vertical lines/drainpipes	6459c2ae2 (F3).	Jan Hanzenstraat area
+10bd9a	fixed	gable orientation	afc1856ab (F5 ridge axes).	Bilderdijkkade
+32c893	fixed	grey/washed walls	F2 industrial vetoes (8a8e938a8, ed679e38b). A re-frame on 2026-11-16 shows a windowed facade, not the grey slab.	El Tawheed, Kostverlorenvaart
+704240	open	interaction	The building cannot be tapped; cause not found (footprint taps are on by default on desktop).	El Tawheed, Kostverlorenvaart
+73d909	fixed	vertical lines/drainpipes	6459c2ae2 (F3), which cites 73d90959.	Bilderdijkkade
+c361c8	open	custom-model request	A building that stands on a bridge should render as such; no rule exists.	Kostverlorenvaart bridge
+b19fe1	fixed	buildings sinking into street	F4 frontBase 7159d7112 (Kinkerbrug/Postjesweg). The re-frame on 2026-11-16 shows the fronts on the pavement.	Postjesweg / Kinkerbrug
+d1d82d	fixed	buildings sinking into street	7159d7112 (F4 frontBase).	Postjesweg / Kinkerbrug
+8bdee4	fixed	buildings sinking into street	7159d7112 (F4), which cites 8bdee44c.	Postjesweg
+c5313f	fixed	bridge seams/rails/gaps	ae7091931: no slab beside the Machineslootbrug.	Machineslootbrug
+d99e51	open	floating/overlapping windows	A projecting part (erker/annex) cuts through the windows; no fix found.	Postjesweg
+e3838e	open	bridge seams/rails/gaps	Red cycle path breaks with a grey seam at a park bridge; no named fix.	Rembrandtpark
+f8f282	open	floating/overlapping windows	The window layout on a canal house does not match; no fix found.	Prinsengracht, Tulip Museum
+c16d34	open	bridge seams/rails/gaps	TODO P1: the Torensluis water slit is still open (not caused by WET_CLEAR_M).	Torensluis
+faa467	question	question	Did not reproduce in the players' world (F7). Only a WebGL context loss/restore gave an empty frame. Notes now carry context.world (67cb9b22e), so a repeat can be diagnosed.	Nieuwezijds Voorburgwal
+ab5045	fixed	ground holes/look	89551e276: open ground is clipped to the parks (open-ground-v2).	Rembrandtpark
+a5806a	fixed	ground holes/look	66de7d018: big asphalt squares draw asphalt. The approach grade is a normal 10 %, pinned as a ceiling.	Lelylaan A10 slip roads
+bc28e2	fixed	bridge seams/rails/gaps	b4e40f886: rail islands/abutments; the lelylaan-tram-decks pin went from 3 to 0 (check:rail-joins).	Lelylaan
+07ec04	fixed	bridge seams/rails/gaps	90c0c19fd (hole climb, notch 2.33 to 0.02 m) and 3d3061e4f (holeStreets).	Lelylaan
+deb3fc	open	cards/landmarks	The sculpture card has no photo; content gap.	Westerpark sculpture
+d18eca	open	HUD	The START marker floats in the sky; no fix found.	Westerpark / Haarlemmerweg
+3997ff	fixed	bridge seams/rails/gaps	b4e40f886: zaanstraat-rail-yard-viaduct went from 57 to 1 (allow-listed).	Zaanstraat viaduct
+174f6f	open	grey/washed walls	A re-frame on 2026-11-16 is still near-black. The OBA brick tone waits on needs-david #385.	OBA Spaarndammerbuurt
+eaf0aa	open	ground holes/look	The Spaarndammertunnel mouth looks bad; no fix found.	Spaarndammertunnel
+dd7c33	fixed	buildings sinking into street	7159d7112 (F4 frontBase). The re-frame on 2026-11-16 shows the fronts on the street.	Spaarndammerdijk
+762c6e	fixed	ground holes/look	66de7d018: open-ground sand draws as bare earth.	Houthavens building site
+88ea39	fixed	floating/overlapping windows	c2aad309c: set-back glass crowns only on evidence. The re-frame on 2026-11-16 shows no glass cap.	Houthavens, Haparandaweg
+417e54	fixed	floating/overlapping windows	c2aad309c: the same hash-drawn blue glass crown as 88ea39.	Houthavens
+7517fe	fixed	custom-model request	a5478ec19: De Bonte Zwaan is modelled. The "missing land" is a pontoon in the data, so no land was added (HISTORY "Ground look").	Haparandadam
+ee2b30	open	ground holes/look	A re-frame on 2026-11-16 still shows lamp posts standing in water off the Haparandadam pontoon.	Haparandadam
+428505	fixed	custom-model request	a5478ec19: Hotel Boat&Co (Wiborgeiland) is modelled.	Wiborgeiland
+b1e259	fixed	ground holes/look	66de7d018: bare earth, not a yellow slab.	Houthavens
+a40136	fixed	floating/overlapping windows	22ee03844, 329fd3e4e, a124748b0: the Pontsteiger was remodelled and grid() glazes overlapping boxes as one wall.	Pontsteiger
+10ada6	fixed	floating/overlapping windows	22ee03844 / a124748b0 (Pontsteiger, generic-looking windows).	Pontsteiger
+a9198f	open	look/fidelity	General "cartoon-y" read of the generic houses; this is the rows/buurt-look programme.	Westerdok
+09e7bc	fixed	floating/overlapping windows	c2aad309c: set-back crowns only on evidence.	Grasweg 116-124
+6070a7	fixed	no windows at distance	c2aad309c (cited with 09e7bc). Far windows: 61fd9ede1.	Grasweg, Overhoeks
+c57c04	open	ground holes/look	This asks for an automated broken-ground detector. Partial checks exist (check-ground-spots, probe-hole-junctions, check:rail-joins) but there is no general one.	Noord, IJ bank
+21dc1e	fixed	no windows at distance	fdaaa4ecd / 5b7ce801d: the Buitenzagerij spine is drawn from panoramas, and unphotographed walls take the window grid.	Buitenzagerij 45
+174d24	fixed	no windows at distance	fdaaa4ecd: Kromhout west walls are drawn from panoramas.	Kromhout
+9aa8d0	fixed	no windows at distance	fdaaa4ecd: Kazerne Hendrik's Singelgracht wall.	Kazerne Hendrik
+8f03bc	fixed	no windows at distance	61fd9ede1: far windows outlast the depth fade (?farWindows, on for desktop, off for touch).	IJ view from Westerdok
+748b1a	question	question	Yes, since 2e18021aa / bb03333bc (?viewPriority, on): with the camera detached, on-screen chunks load first and off-screen work is cancelled. Not measurably faster locally; production measurement pending (HISTORY).	Westerstraat
+7be6c5	fixed	ground holes/look	6fa88ec42 (quay walls cut at the bridge opening) and 0942f19cc (café Hendrix front).	Bilderdijkkade / De Clercqstraat
+13fa7f	open	custom-model request	Building page: Politiepost IJburg model has untextured parts.	Politiepost IJburg (building page)
+347e64	open	custom-model request	Building page: Politiebureau Oost Zeeburg has no rear windows.	Politiebureau Oost Zeeburg (building page)
