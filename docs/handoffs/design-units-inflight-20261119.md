@@ -1,5 +1,7 @@
 # Design units: in-flight checkpoint (2026-11-19, about 18:45)
 
+**Ring gate for David: https://github.com/blackmad/map-recall2/issues/399** (18 blocks, desktop and phone, with the Node sheets; filed 2026-11-19 night). His block-by-block verdict decides whether tier C goes on by default for the Ring.
+
 This is for a fresh session that has only the repo. Read it first. Then read `docs/handoffs/design-units-plan-20261119.md`, `docs/handoffs/design-units-handoff-20261119.md` and `docs/reports/design-units-phase0-20261119.md`.
 
 ## Ownership (from 2026-11-19 ~18:55)
