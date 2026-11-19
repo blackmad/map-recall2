@@ -7,12 +7,14 @@
  *   - the logos trimmed, each on a cell of its board colour, shelf-packed by size onto 512 px pages
  *     (data/retail-ground/chains-<n>.png; --publish copies them to public/canal-drive/materials/retail-logos/ with
  *     the provenance) and their rects into retailChainLogos.gen.ts.
- *   node --import tsx scripts/retail-real/build-chain-logos.ts [--publish]
+ *   node --import tsx scripts/retail-real/build-chain-logos.ts [--publish] [--incremental]
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import { CHAIN_TEMPLATES, templateForTags, type RetailTemplate } from '../../src/canalRecall/retailTemplates.ts';
+import { CHAIN_TEMPLATES, TEMPLATE_LOOKS, templateForTags, type RetailTemplate } from '../../src/canalRecall/retailTemplates.ts';
+import { TEMPLATE_WORDMARK } from '../../src/canalRecall/retailChainLogos.ts';
+import { CHAIN_LOGO_PACK } from '../../src/canalRecall/retailChainLogos.gen.ts';
 
 type Counted = { key: string; name: string; n: number; wikidata: string; kinds: Record<string, number>; names: Record<string, number> };
 type Override = { fascia?: string; letters?: string; template?: RetailTemplate; skip?: boolean; word?: string; noLogo?: boolean; logoInk?: string };
@@ -76,15 +78,14 @@ for (const c of counted) {
   chains[c.key] = { name: c.name, word: o.word ?? c.name, ...(c.wikidata ? { wikidata: c.wikidata } : {}), names: [...new Set([c.name, ...names])], template, fascia, letters, pois: c.n };
 }
 
-// Round-6 templates' better logos (retailChainLogos.ts TEMPLATE_CHAIN_LOGO): Albert Heijn's full lockup (its Commons
-// mark and the name, set in white as on its fascias), and any of FEBO, Stach, SLA the sources gave.
+// Round-6 templates' better logos (retailChainLogos.ts TEMPLATE_CHAIN_LOGO, TEMPLATE_WORDMARK): the wordmarks
+// build-chain-wordmarks.ts makes (Albert Heijn's lockup, plain JUMBO, Dirk van den Broek, the Gall & Gall word, Bruna's
+// own logo; lane chain-logos-20261116), each on its template's board, and any of FEBO, Stach, SLA the sources gave.
 {
-  const mark = await sharp(path.join('data/retail-ground/logos/ah.png')).trim().resize({ height: 300 }).png().toBuffer(), mw = (await sharp(mark).metadata()).width!;
-  const text = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="300"><text x="0" y="222" font-family="Helvetica Neue, Helvetica, Arial" font-weight="bold" font-size="200" fill="#ffffff">Albert Heijn</text></svg>`);
-  const tbuf = await sharp(text).trim().png().toBuffer(), tm = await sharp(tbuf).metadata();
-  const W = mw + 60 + tm.width!, lock = await sharp({ create: { width: W, height: 300, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } }).composite([{ input: mark, left: 0, top: 0 }, { input: tbuf, left: mw + 60, top: Math.round((300 - tm.height!) / 2) }]).png().toBuffer();
-  fs.writeFileSync('data/retail-ground/chain-logos/ah-wordmark.png', lock);
-  logos.push({ key: 'ah-wordmark', buf: lock, w: W, h: 300, board: '#00a0e2' });
+  for (const [template, key] of Object.entries(TEMPLATE_WORDMARK)) {
+    const l = await readLogo(path.join('data/retail-ground/chain-logos', `${key}.png`));
+    logos.push({ key, buf: l.buf, w: l.w, h: l.h, board: TEMPLATE_LOOKS[template as RetailTemplate].fascia });
+  }
   for (const [key, board] of [['febo', '#f6d300'], ['stach', '#f3efe6'], ['sla', '#ffffff']] as const) {
     const f = path.join('data/retail-ground/chain-logos', `${key}.png`);
     if (fs.existsSync(f) && prov[key] && !overrides[key]?.noLogo) { const l = await readLogo(f); logos.push({ key, buf: l.buf, w: l.w, h: l.h, board }); }
@@ -92,30 +93,59 @@ for (const c of counted) {
 }
 // Shelf-pack the logos: each at an area budget (a wide wordmark short, a square mark taller), padded on its board.
 const P = 512, PAD = 3, AREA = 14000;
-const sized = logos.map(l => { const a = l.w / l.h; let h = Math.sqrt(AREA / a), w = h * a; if (w > P - 2 * PAD - 4) { w = P - 2 * PAD - 4; h = w / a; } if (h > 140) { h = 140; w = h * a; } return { ...l, dw: Math.round(w), dh: Math.round(h) }; })
+// Lane chain-logos-20261116: a wordmark (provenance `wordmark`, build-chain-wordmarks.ts) is lettering, at least
+// WORD_H px tall where its width allows, so a long name keeps legible strokes.
+const WORD_H = 48, isWordmark = (k: string) => !!prov[k]?.wordmark;
+const sized = logos.map(l => { const a = l.w / l.h; let h = Math.sqrt(AREA / a); if (isWordmark(l.key)) h = Math.max(h, WORD_H); let w = h * a; if (w > P - 2 * PAD - 4) { w = P - 2 * PAD - 4; h = w / a; } if (h > 140) { h = 140; w = h * a; } return { ...l, dw: Math.round(w), dh: Math.round(h) }; })
   .sort((a, b) => b.dh - a.dh);
 const pages: Array<{ comps: sharp.OverlayOptions[]; rects: string[] }> = [];
 const pack: Record<string, [number, number, number, number, number]> = {};
-let page = -1, x = 0, y = 0, rowH = 0;
+const cellOf = async (l: (typeof sized)[number]) => sharp({ create: { width: l.dw + 2 * PAD, height: l.dh + 2 * PAD, channels: 4, background: l.board } })
+  .composite([{ input: await sharp(l.buf).resize(l.dw, l.dh, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer(), left: PAD, top: PAD }]).raw().toBuffer();
+// `--incremental` (lane chain-logos-20261116): the published pages stay as they are, every logo whose cell there is
+// unchanged keeps its rect, and only new or changed logos are packed onto pages appended after them. Neighbours then
+// mip-bleed exactly as before, so every other chain's front stays byte-identical; a full run repacks from scratch.
+const incremental = process.argv.includes('--incremental'), kept = incremental ? CHAIN_LOGO_PACK.pages : 0;
+let fresh = sized;
+if (incremental) {
+  fresh = [];
+  const old = await Promise.all(Array.from({ length: kept }, (_, k) => sharp(`data/retail-ground/chains-${k + 1}.png`).ensureAlpha().raw().toBuffer()));
+  for (const l of sized) {
+    const o = CHAIN_LOGO_PACK.logos[l.key];
+    if (o && o[3] === l.dw && o[4] === l.dh) {
+      const now = await cellOf(l), cw = l.dw + 2 * PAD, x0 = o[1] - PAD, y0 = o[2] - PAD;
+      let same = true;
+      for (let yy = 0; yy < l.dh + 2 * PAD && same; yy++) for (let xx = 0; xx < cw; xx++) {
+        const i = ((y0 + yy) * P + x0 + xx) * 4, j = (yy * cw + xx) * 4;
+        if (Math.abs(old[o[0]][i] - now[j]) > 1 || Math.abs(old[o[0]][i + 1] - now[j + 1]) > 1 || Math.abs(old[o[0]][i + 2] - now[j + 2]) > 1) { same = false; break; }
+      }
+      if (same) { pack[l.key] = o; continue; }
+    }
+    fresh.push(l);
+  }
+  console.log(`incremental: ${sized.length - fresh.length} logos kept on pages 1-${kept}, ${fresh.length} packed after them (${fresh.map(l => l.key).join(', ')})`);
+}
+let page = kept - 1, x = 0, y = 0, rowH = 0;
 const newPage = () => { pages.push({ comps: [], rects: [] }); page++; x = 0; y = 0; rowH = 0; };
-newPage();
-for (const l of sized) {
+if (fresh.length) newPage();
+for (const l of fresh) {
   const cw = l.dw + 2 * PAD, ch = l.dh + 2 * PAD;
   if (x + cw > P) { x = 0; y += rowH; rowH = 0; }
   if (y + ch > P) newPage();
-  pages[page].rects.push(`<rect x="${x}" y="${y}" width="${cw}" height="${ch}" fill="${l.board}"/>`);
-  pages[page].comps.push({ input: await sharp(l.buf).resize(l.dw, l.dh, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer(), left: x + PAD, top: y + PAD });
+  pages[page - kept].rects.push(`<rect x="${x}" y="${y}" width="${cw}" height="${ch}" fill="${l.board}"/>`);
+  pages[page - kept].comps.push({ input: await sharp(l.buf).resize(l.dw, l.dh, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer(), left: x + PAD, top: y + PAD });
   pack[l.key] = [page, x + PAD, y + PAD, l.dw, l.dh];
   x += cw; rowH = Math.max(rowH, ch);
 }
-for (const [k, pg] of pages.entries()) {
+for (const [k0, pg] of pages.entries()) {
+  const k = k0 + kept;
   const board = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${P}" height="${P}"><rect width="${P}" height="${P}" fill="#ffffff"/>${pg.rects.join('')}</svg>`);
   const out = `data/retail-ground/chains-${k + 1}.png`;
   await sharp(board).composite(pg.comps).png({ compressionLevel: 9, palette: false }).toFile(out);
   if (process.argv.includes('--publish')) fs.copyFileSync(out, `public/canal-drive/materials/retail-logos/chains-${k + 1}.png`);
 }
 if (process.argv.includes('--publish')) fs.copyFileSync('data/retail-ground/chain-logos/provenance.json', 'public/canal-drive/materials/retail-logos/chain-provenance.json');
-fs.writeFileSync('src/canalRecall/retailChainLogos.gen.ts', `// Generated by scripts/retail-real/build-chain-logos.ts: logo [page, x, y, w, h] px on its page.\nexport const CHAIN_LOGO_PACK: { size: number; pages: number; logos: Record<string, [number, number, number, number, number]> } = ${JSON.stringify({ size: P, pages: pages.length, logos: pack })};\n`);
+fs.writeFileSync('src/canalRecall/retailChainLogos.gen.ts', `// Generated by scripts/retail-real/build-chain-logos.ts: logo [page, x, y, w, h] px on its page.\nexport const CHAIN_LOGO_PACK: { size: number; pages: number; logos: Record<string, [number, number, number, number, number]> } = ${JSON.stringify({ size: P, pages: kept + pages.length, logos: pack })};\n`);
 fs.writeFileSync('src/canalRecall/retailChains.gen.ts', `// Generated by scripts/retail-real/build-chain-logos.ts.\nexport const RETAIL_CHAINS_GEN: Record<string, unknown> = ${JSON.stringify(chains)};\n`);
 const covered = Object.values(chains) as Array<{ pois: number }>;
-console.log(`${Object.keys(chains).length} chains tabled (${covered.reduce((t, c) => t + c.pois, 0)} POIs), ${logos.length} logos on ${pages.length} pages; ${skippedRound6} round-6 chains kept; ${noLogoNoType} without logo or type`);
+console.log(`${Object.keys(chains).length} chains tabled (${covered.reduce((t, c) => t + c.pois, 0)} POIs), ${logos.length} logos on ${kept + pages.length} pages; ${skippedRound6} round-6 chains kept; ${noLogoNoType} without logo or type`);

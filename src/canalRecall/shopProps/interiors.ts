@@ -9,9 +9,12 @@
 // lamps and mirrors and the street's reflection over the top of the pane; the room's surfaces are pulled toward the
 // glass's dark (ROOM_PULL), lamps and mirrors (lit props) keep their light.
 import { hash01, Mesh, type PropTri, type V3 } from './kit.js';
+import { shopInteriorsAllOn } from './flags.js';
 
-/** Templates that draw a room behind their glass (those whose props stand inside). */
+/** Templates that can draw a room behind their glass (those whose props stand inside). */
 export const INTERIOR_TEMPLATES: ReadonlySet<string> = new Set(['hairdresser', 'florist', 'bike', 'greengrocer']);
+/** Templates that do under the current flags: salons only (`?shopInteriors=1`), every one with `?shopInteriors=all`. */
+export const roomTemplate = (template: string): boolean => (shopInteriorsAllOn() ? INTERIOR_TEMPLATES.has(template) : template === 'hairdresser');
 
 /** The room: depth behind the wall (m), how far the props stand clear of its back wall. */
 export const ROOM = { depthM: 2.4, backClearM: 0.04, lampPitchM: 1.2 } as const;

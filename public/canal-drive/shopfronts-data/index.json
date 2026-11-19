@@ -377,7 +377,7 @@
     "lat": 52.376197
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_of_Jumbo_Supermarkten_(2010).svg",
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Jumbo_Logo.svg",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-jumbo.webp",
    "drawn": true
   },
@@ -408,7 +408,7 @@
     "lat": 52.363436
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_Gall_%26_Gall.png",
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Gall_logo.svg",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-gallgall.webp",
    "drawn": true
   },
@@ -501,7 +501,7 @@
     "lat": 52.373401
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_of_Dirk.svg",
+   "logoSource": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCyoiFr1TcTIV0-sVK2JF6gS2-jV4WY-6IwQzH16yLMvLIVeSBJjoOzv0&s=10",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-dirk.webp",
    "drawn": true
   },
@@ -1055,7 +1055,7 @@
     "lat": 52.372493
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:The_Bulldog_-_Cannabis_coffee_shop_in_Amsterdam.jpg",
+   "logoSource": "https://www.thebulldog.com/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-the-bulldog.webp",
    "drawn": true
   },
@@ -1291,7 +1291,7 @@
     "lat": 52.370267
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Starbucks_coffee_wordmark.png",
+   "logoSource": "https://en.wikipedia.org/wiki/File:Starbucks_Corporation_Logo_2011.svg",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-starbucks.webp",
    "drawn": true
   },
@@ -1770,6 +1770,7 @@
     "lat": 52.363037
    },
    "brandAccepted": false,
+   "logoSource": "https://www.vlaamschbroodhuys.nl/winkels/amsterdam/eerste-constantijn-huygensstraat/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-vlaamsch-broodhuis.webp",
    "drawn": true
   },
@@ -2193,7 +2194,7 @@
     "lat": 52.370425
    },
    "brandAccepted": false,
-   "logoSource": "https://nl.wikipedia.org/wiki/File:LPQ_Primary_logo_Fullcolor_600x600px.jpg",
+   "logoSource": "https://www.lepainquotidien.com/nl/en",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-le-pain-quotidien.webp",
    "drawn": true
   },
@@ -2425,6 +2426,7 @@
     "lat": 52.369245
    },
    "brandAccepted": false,
+   "logoSource": "https://www.vlaamschbroodhuys.nl/winkels/amsterdam/eerste-constantijn-huygensstraat/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-vlaamsch-broodhuys.webp",
    "drawn": true
   },

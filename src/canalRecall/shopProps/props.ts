@@ -1,7 +1,7 @@
 // The shop props (lane shop-goods-20261116): low-poly builders in the kit's local frame (x along the wall, y out towards
 // the street, z up, origin on the ground at the prop's centre). Each states its triangle cost (PROP_COST, tested), its
 // footprint along the wall and its depth, so a layout can fit it and a budget can be read off the table.
-import { hash01, Mesh, shade, type PropTri, type V3 } from './kit.js';
+import { hash01, K, Mesh, shade, type PropTri, type V3 } from './kit.js';
 import { BIKE_RACK, BIKE_RACK_PERP, BIKE_RACK_PERP_TRIS, BIKE_RACK_TRIS, OMAFIETS_LOW, OMAFIETS_LOW_TRIS, OMAFIETS_PERP, OMAFIETS_PERP_TRIS, OMAFIETS_WINDOW, OMAFIETS_WINDOW_TRIS } from './bikeMeshes.generated.js';
 
 /** Lane shop-bikes: frame colours of Dutch city bikes, a palette with weights (black dominates; matte navy, dark green,
@@ -135,10 +135,10 @@ export function bucketTier(w: number, seed: string): PropTri[] {
     const y = 0.32 - s * 0.26, z = 0.22 + s * 0.24;
     m.box(-w / 2, w / 2, y - 0.26, y, 0, z, s % 2 ? '#5a4632' : '#6b5238', { ends: false });
     for (let k = 0; k < per; k++) {
-      const x = -w / 2 + (k + 0.5) * (w / per) + (r(`${s}:${k}:x`) - 0.5) * 0.04, yb = y - 0.1, h = 0.18 + r(`${s}:${k}:h`) * 0.12;
+      const x = -w / 2 + (k + 0.5) * (w / per) + (r(K(`x${s}${k}`, `${s}:${k}:x`)) - 0.5) * 0.04, yb = y - 0.1, h = 0.18 + r(K(`h${s}${k}`, `${s}:${k}:h`)) * 0.12;
       m.quad([x - 0.08, yb + 0.06, z], [x + 0.08, yb + 0.06, z], [x + 0.1, yb + 0.06, z + 0.24], [x - 0.1, yb + 0.06, z + 0.24], STEEL, [0, 1, 0]);
       m.quad([x - 0.07, yb + 0.05, z + 0.24], [x + 0.07, yb + 0.05, z + 0.24], [x + 0.1, yb + 0.05, z + 0.24 + h], [x - 0.1, yb + 0.05, z + 0.24 + h], LEAF[k % LEAF.length], [0, 1, 0]);
-      const c1 = BLOOMS[Math.floor(r(`${s}:${k}:c`) * BLOOMS.length)], c2 = r(`${s}:${k}:m`) < 0.5 ? c1 : BLOOMS[Math.floor(r(`${s}:${k}:d`) * BLOOMS.length)];
+      const c1 = BLOOMS[Math.floor(r(K(`c${s}${k}`, `${s}:${k}:c`)) * BLOOMS.length)], c2 = r(K(`m${s}${k}`, `${s}:${k}:m`)) < 0.5 ? c1 : BLOOMS[Math.floor(r(K(`d${s}${k}`, `${s}:${k}:d`)) * BLOOMS.length)];
       m.bump(x - 0.13, x + 0.13, yb - 0.08, yb + 0.12, z + 0.2 + h, 0.1, c1, c2);
     }
   }
@@ -170,6 +170,32 @@ export function barberStation(chairHex: string): PropTri[] {
   m.box(-0.12, 0.12, 0.16, 0.22, 1.16, 1.32, shade(chairHex, 0.9), { ends: false });
   for (const x of [-0.29, 0.25]) m.box(x, x + 0.04, -0.22, 0.14, 0.62, 0.68, CHROME, { ends: false });
   m.strip([-0.16, -0.36, 0.18], [0.16, -0.36, 0.18], 0.06, CHROME, [0, 0, 1]);
+  return m.tris;
+}
+
+/** A rounded crown (a low-poly dome): a hexagonal waist ring at 45 % of `h`, a narrower foot ring, an apex; only the
+ *  faces turned to the street (+y) or up are drawn. 9-12 tris. */
+function dome(m: Mesh, cx: number, cy: number, z: number, r: number, h: number, hex: string, hex2: string): void {
+  const ring = (rr: number, zz: number, k: number): V3 => { const a = (k / 6) * Math.PI * 2 + Math.PI / 6; return [cx + rr * Math.cos(a), cy + rr * Math.sin(a), zz]; };
+  const top: V3 = [cx, cy, z + h];
+  for (let k = 0; k < 6; k++) {
+    const a = (k + 0.5) / 6 * Math.PI * 2 + Math.PI / 6, ny = Math.sin(a);
+    if (ny < -0.35) continue;
+    const w0 = ring(r, z + h * 0.45, k), w1 = ring(r, z + h * 0.45, k + 1), f0 = ring(r * 0.55, z, k), f1 = ring(r * 0.55, z, k + 1);
+    m.tri(w0, w1, top, k % 2 ? hex : hex2, [Math.cos(a), ny, 0.9]);
+    m.quad(f0, f1, w1, w0, shade(k % 2 ? hex2 : hex, 0.85), [Math.cos(a), ny, -0.2]);
+  }
+}
+
+/** Lane retail-pass round 3 (`?shopPass=1`; the single pyramid read as an umbrella): a potted plant with a full, rounded
+ *  crown of two tones, a smaller second crown beside it, flowering ones with blooms on top (`bloomHex`), over a pot.
+ *  4 + two domes (9-12 each) tris, at most 30 (32 `tall`, the crown lifted on a stem). */
+export function plantFull(leafHex: string, potHex = '#a0522d', tall = false, bloomHex?: string): PropTri[] {
+  const m = new Mesh(), z0 = tall ? 0.5 : 0.17;
+  m.box(-0.11, 0.11, -0.1, 0.1, 0, 0.2, potHex, { ends: false });
+  if (tall) m.strip([0, 0.04, 0.2], [0, 0.04, z0], 0.03, '#4a3a22', [0, 1, 0]);
+  dome(m, -0.04, 0, z0, 0.22, 0.38, leafHex, shade(leafHex, 1.2));
+  dome(m, 0.12, 0.06, z0 - 0.02, 0.13, 0.24, bloomHex ?? shade(leafHex, 0.85), bloomHex ? shade(bloomHex, 1.15) : leafHex);
   return m.tris;
 }
 
@@ -229,9 +255,9 @@ export function shelfUnit(w: number, palette: readonly string[], seed: string, f
     const z = 0.45 + s * 0.45;
     m.box(-w / 2, w / 2, -0.15, 0.2, z - 0.03, z, frameHex, { ends: false });
     for (let k = 0; k < items; k++) {
-      if (r(`${s}:${k}:e`) < 0.12) continue; // a gap on the shelf
-      const x = -w / 2 + (k + 0.15) * (w / items), c = palette[Math.floor(r(`${s}:${k}:c`) * palette.length)];
-      m.bump(x, x + (w / items) * 0.7, -0.1, 0.15, z, 0.12 + r(`${s}:${k}:h`) * 0.12, c, shade(c, 1.2));
+      if (r(K(`e${s}${k}`, `${s}:${k}:e`)) < 0.12) continue; // a gap on the shelf
+      const x = -w / 2 + (k + 0.15) * (w / items), c = palette[Math.floor(r(K(`c${s}${k}`, `${s}:${k}:c`)) * palette.length)];
+      m.bump(x, x + (w / items) * 0.7, -0.1, 0.15, z, 0.12 + r(K(`h${s}${k}`, `${s}:${k}:h`)) * 0.12, c, shade(c, 1.2));
     }
   }
   return m.tris;
@@ -272,7 +298,7 @@ const spinFaces = (turn: number) => [0, 1, 2, 3, 4, 5, 6, 7].filter(k => Math.co
         return [d[0] * rad + t[0] * u, d[1] * rad + t[1] * u, z0 + v];
       };
       m.quad(P(-w / 2, 0, 0), P(w / 2, 0, 0), P(w / 2, h, 0), P(-w / 2, h, 0), '#f4f1e8', nrm);
-      const g = (a: string) => r(`${k}:${i}:${a}`), hv = CARD_HOUSE[Math.floor(g('h') * CARD_HOUSE.length)], sky = CARD_SKY[Math.floor(g('s') * CARD_SKY.length)];
+      const g = (a: string) => r(K(`${a}${k}:${i}`, `${k}:${i}:${a}`)), hv = CARD_HOUSE[Math.floor(g('h') * CARD_HOUSE.length)], sky = CARD_SKY[Math.floor(g('s') * CARD_SKY.length)];
       const vb = (h - hp) / 2, vm = vb + hp * 0.42;
       m.quad(P(-wp / 2, vb, 0.004), P(wp / 2, vb, 0.004), P(wp / 2, vm, 0.004), P(-wp / 2, vm, 0.004), hv, nrm);
       m.quad(P(-wp / 2, vm, 0.004), P(wp / 2, vm, 0.004), P(wp / 2, vb + hp, 0.004), P(-wp / 2, vb + hp, 0.004), sky, nrm);
@@ -284,6 +310,6 @@ const spinFaces = (turn: number) => [0, 1, 2, 3, 4, 5, 6, 7].filter(k => Math.co
 export const POSTCARD_SPINNER_TRIS = 24 + 5 * 32;
 
 /** Cost of each fixed-size prop (tested against its builder). */
-export const PROP_COST = { omafietsPerp: OMAFIETS_PERP_TRIS, bikeRackPerp: BIKE_RACK_PERP_TRIS, omafiets: OMAFIETS_LOW_TRIS, omafietsWindow: OMAFIETS_WINDOW_TRIS, bikeRack: BIKE_RACK_TRIS, bike: 54, bakfiets: 58, rail: 6, crate: 34, crateNoCard: 32, plant: 6, plantTall: 8, barberStation: 50, washBasin: 24, counter: 14, postcardSpinner: POSTCARD_SPINNER_TRIS, stylingStation: 78 } as const;
+export const PROP_COST = { omafietsPerp: OMAFIETS_PERP_TRIS, bikeRackPerp: BIKE_RACK_PERP_TRIS, omafiets: OMAFIETS_LOW_TRIS, omafietsWindow: OMAFIETS_WINDOW_TRIS, bikeRack: BIKE_RACK_TRIS, bike: 54, bakfiets: 58, rail: 6, crate: 34, crateNoCard: 32, plant: 6, plantTall: 8, barberStation: 50, washBasin: 24, counter: 14, postcardSpinner: POSTCARD_SPINNER_TRIS, stylingStation: 78, plantFull: 30, plantFullTall: 32 } as const;
 /** A bucket tier's cost for `w`. */
 export const bucketTierCost = (w: number) => 3 * (4 + Math.max(1, Math.floor(w / 0.27)) * 8);

@@ -4,6 +4,8 @@
 // (Builder.put) into the sign layer, so a prop costs triangles and nothing else: no texture, no draw call, no GLB load.
 // Pure (no DOM): runs in the mesh worker and in Node tests.
 
+import { shopPassOn } from './flags.js';
+
 export type V3 = [number, number, number];
 /** One triangle of a prop, wound counter-clockwise seen from `n`. */
 /** `lit`: its own light (a mirror's lamp, a lit sign): drawn unshaded and never pulled toward the glass's dark. */
@@ -13,6 +15,11 @@ const sub = (a: V3, b: V3): V3 => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
 const cross = (a: V3, b: V3): V3 => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
 const dot = (a: V3, b: V3) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 export const unit = (v: V3): V3 => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
+
+/** Lane retail-pass: a seed key, the old one (its varying part last) unless `?shopPass=1`, which takes the new one (the
+ *  varying part mid-key: a last-character change moves FNV-1a's hash01 by about 1/256, so neighbours barely differed).
+ *  Flag off, every template front stays byte-identical (groundFloor template-golden.json). */
+export const K = (old: string, now: string): string => (shopPassOn() ? now : old);
 
 /** Stable 0..1 hash of a string (FNV-1a), the same as retailFront.ts's. */
 export function hash01(s: string): number {

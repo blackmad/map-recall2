@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+## Ground floors that fit the building, fix round 2 (2026-11-19, lane/ground-floor-20261116 98fc17523)
+
+Behind `?groundFloor=1` only; the default and baked worlds are unchanged. Blind round 3 over 25 pands: new 14, today 9, tie 2 (round 2 was 8–6–4). Fixes:
+- Frames now face the wall the game draws the front on (`scripts/ground-floor/pose-walls.ts`). Jumbo, Hugo Boss, Henri Willig and Simon Levelt had been framing a side wall or a neighbour.
+- With a record, the front goes on the wall whose length is closest to the read's span. The nearest-wall rule had put FEBO Leidsestraat on a party wall above a neighbour's roof, and Stach on a 2.9 m corner chamfer.
+- The sign keeps its band above the openings; with no room left, a named shop gets a board inside the opening (`groundFloorSignBand`).
+
+`ground-floors.json` is published (41 pands), and `groundFloor.test.ts` is in `test:shopfront-gate`. Two goldens (ah, bruna) were re-taken after the chain-logo merge.
+
+Still losing: fascias drawn where the photo has none (Etos); light stucco finishes covering glazed openings (Simon Levelt, Sissy-Boy); and a template fascia that reads closer than a board inside the opening (Henri Willig, De Slegte, Manfield). AH Bloedstraat is an installed model that brings its own front.
+
+## Design units, phase 0: the ordekaart join and its gate (2026-11-19)
+
+David approved the design-units plan (`docs/handoffs/design-units-plan-20261119.md`): one building as designed, over one or many pands, becomes the unit of identity, drawing, review and coverage. Phase 0 joined the ring's pands to the city's four ordekaart layers by area overlap (`src/canalRecall/designUnits/`, `scripts/design-units/`; layers archived in source-data `datasets/ordekaart-20261119/` with the Maps Data terms).
+
+- 86.0% of 49,386 non-minor ring pands fall in an object (Oud-Zuid 93.6% down to Oud-Oost 73.6%). Overlap shares are bimodal around the 50% threshold.
+- Basis polygons are ordinary buildings, not merged blocks.
+- The four regression rows (Marnixplein, Goudsbloemstraat, Rustenburgerstraat, Van Ostadestraat) pass as unit tests (`npm run test:design-units`).
+- The result is 28,376 units; 7,105 of them hold more than one pand.
+
+Why it stopped there: Gordel objects are whole composed blocks with height accents, and Centrum objects can be complexes of separate houses. "One elevation per unit" would erase what David liked on 39% of the published-row units and merge distinct old houses. The report has the numbers and three options; the index stays staged until David picks one.
+
+## Ride-feedback triage (2026-11-19, triage/feedback-20261116 bf5b6b72d)
+
+All 78 ride notes were triaged and the full queue was pulled again (150 notes, `atLimit` false). No new ride notes had arrived; the 13 new notes were David's Shopfronts-page notes, which the chain-logos lane owns. 46 notes are resolved (40 fixed, 6 answered), 9d5ac5 is in progress, and 31 are open. Report and verdicts: `docs/reports/feedback-triage-20261116.md`.
+
+## Chain logos from David's Shopfronts notes (2026-11-19, lane/chain-logos-20261116 61129844a)
+
+David left 13 notes on the Shopfronts page. Twelve signs got real wordmarks (`scripts/retail-real/build-chain-wordmarks.ts`, a 14th logo page `chains-14.png`, so the game loads 14 chain-logo pages instead of 12): Albert Heijn (dark sign, full wordmark), Gall & Gall, Jumbo, Dirk van den Broek, Benu, Bruna (white with red), Wakuli, Starbucks, Le Pain Quotidien, Vlaamsch Broodhuis/Broodhuys and Bagels & Beans. Amazing Oriental's sign takes the awning green. Two are still weak: The Bulldog's sign is 1.6 m and hard to read at gallery size, and Bagels & Beans is a plain cream serif with no logo. The 13 notes are marked in-progress. Shopfront gate 94/94. Bundles rebuilt (three-buildings and its worker, building gallery, house playground, landmark gallery); shop fronts mesh at runtime, so no world compile.
+
 ## Postcard spinners (2026-11-16, b353d4da4)
 
 David: the flat postcard racks outside souvenir and Bestseller "look bad". They are now a 3D spinner from the shop-props kit (octagonal drum, 5 tiers of white-bordered cards, at most 184 triangles), one or two beside the door, 0.4–0.6 m out, seeded by pand. Kruidvat keeps its promo stand. Bundles rebuilt; shop fronts are meshed at runtime, so no world compile.

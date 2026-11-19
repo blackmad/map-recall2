@@ -2,7 +2,7 @@
 // (`?shopInteriors=1`: rooms behind the glass at real depth).
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { PROP_COST, stylingStation } from './props.js';
+import { plantFull, PROP_COST, stylingStation } from './props.js';
 import { insideProps, outsideProps, SHOP_PROPS, SHOP_PROPS_PASS, shopPropsFor } from './layout.js';
 import { intoRoom, roomTris, ROOM, INTERIOR_TEMPLATES } from './interiors.js';
 import { retailFrontTris, retailWindowBays } from '../retailFront.js';
@@ -36,13 +36,14 @@ test('retail pass: shopPass off keeps every template as it was; on, a salon draw
 
 test('retail pass: seed keys vary in the middle, so neighbouring props differ (plants, chairs, crates)', () => {
   // Florist plants behind one bay: the old `c${i}` keys gave every plant the same bloom; now several colours.
+  // Flag off the old keys stand (groundFloor template-golden.json byte-identical); the new ones under shopPass.
   const hexes = new Set<string>();
-  for (const bay of [0, 1, 2]) for (const { tris } of insideProps(SHOP_PROPS.florist, 0, 4, 'pand-7', bay)) hexes.add(tris[tris.length - 1].hex);
+  withFlags(true, () => { for (const bay of [0, 1, 2]) for (const { tris } of insideProps(SHOP_PROPS.florist, 0, 4, 'pand-7', bay)) hexes.add(tris[tris.length - 1].hex); });
   assert.ok(hexes.size >= 4, `florist plants: ${hexes.size} top colours`);
   const chairs = new Set<string>();
   withFlags(true, () => { for (const pand of ['a', 'b', 'c', 'd', 'e', 'f']) for (const { tris } of insideProps(shopPropsFor('hairdresser')!, 0, 4, `pand-${pand}`, 0)) if (tris.length === PROP_COST.stylingStation) chairs.add(tris[36].hex); });
   assert.ok(chairs.size >= 2, `salon chairs: ${chairs.size} colours over six salons`);
-  const crates = outsideProps(SHOP_PROPS.greengrocer, [[0.2, 4]], 'pand-3').filter(t => t.p.every(p => p[2] > 0.9)).map(t => t.hex);
+  const crates = withFlags(true, () => outsideProps(SHOP_PROPS.greengrocer, [[0.2, 4]], 'pand-3')).filter(t => t.p.every(p => p[2] > 0.9)).map(t => t.hex);
   assert.ok(new Set(crates).size >= 6, 'a crate row runs through the produce');
 });
 
@@ -52,7 +53,7 @@ test('retail pass round 2: a room is a closed shallow box with lamps, its props 
   assert.equal(room.length, 12 + 2 * lamps);
   for (const t of room) for (const [x, y, z] of t.p) assert.ok(x >= 0.2 - 1e-9 && x <= 3.4 + 1e-9 && y <= 1e-9 && y >= -ROOM.depthM - 1e-9 && z >= -1e-9 && z <= 2.4 + 1e-9);
   assert.ok(room.some(t => t.lit), 'lamps are lit');
-  for (const t of INTERIOR_TEMPLATES) for (const { tris, depth } of insideProps(SHOP_PROPS_PASS[t] ?? SHOP_PROPS[t], 0.2, 3.4, 'p', 0, true)) {
+  for (const t of INTERIOR_TEMPLATES) for (const { tris, depth } of insideProps(SHOP_PROPS_PASS[t] ?? SHOP_PROPS[t], 0.2, 3.4, 'p', 0)) {
     for (const [, y, z] of intoRoom(tris, depth, 1.0).flatMap(tri => tri.p)) assert.ok(y >= -ROOM.depthM + ROOM.backClearM - 1e-6 && y <= 0.35 && z >= 1.0 - 0.05, `${t}: prop inside the room (y ${y}, z ${z})`);
   }
 });
@@ -70,4 +71,22 @@ test('retail pass round 2: rooms replace the relief only in the bays the mesher 
     assert.ok(flat.length <= 420, `salon, shopPass: ${flat.length} tris`);
     assert.ok(rooms.length <= 480, `salon, rooms: ${rooms.length} tris`);
   });
+});
+
+test('retail pass round 3: the fuller plant crown costs what PROP_COST states and stands taller than the pot', () => {
+  assert.ok(plantFull('#3d6b35').length <= PROP_COST.plantFull);
+  assert.ok(plantFull('#3d6b35', '#a0522d', true, '#e85a8c').length <= PROP_COST.plantFullTall);
+  const top = Math.max(...plantFull('#3d6b35').flatMap(t => t.p.map(p => p[2])));
+  assert.ok(top > 0.45 && top < 0.7, `crown top ${top}`);
+});
+
+test('retail pass round 3: rooms on salons only under ?shopInteriors=1, on every interior type under =all', async () => {
+  const { roomTemplate } = await import('./interiors.js');
+  const gg = globalThis as { __canalRecallShopInteriorsAll?: boolean };
+  gg.__canalRecallShopInteriorsAll = false;
+  try {
+    assert.ok(roomTemplate('hairdresser') && !roomTemplate('florist') && !roomTemplate('bike'));
+    gg.__canalRecallShopInteriorsAll = true;
+    assert.ok(roomTemplate('florist') && roomTemplate('bike') && roomTemplate('greengrocer') && !roomTemplate('bakery'));
+  } finally { delete gg.__canalRecallShopInteriorsAll; }
 });

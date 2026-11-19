@@ -16,4 +16,7 @@ function flag(global: string, query: RegExp, env: string): () => boolean {
  *  mirrors, and the other round-1 template changes in shopProps/layout.ts SHOP_PROPS_PASS). */
 export const shopPassOn = flag('__canalRecallShopPass', /[?&]shopPass=1\b/, 'SHOP_PASS');
 /** `?shopInteriors=1` (SHOP_INTERIORS=1): round 2's shallow rooms behind shop glass (shopProps/interiors.ts). */
-export const shopInteriorsOn = flag('__canalRecallShopInteriors', /[?&]shopInteriors=1\b/, 'SHOP_INTERIORS');
+export const shopInteriorsOn = flag('__canalRecallShopInteriors', /[?&]shopInteriors=(1|all)\b/, 'SHOP_INTERIORS');
+/** `?shopInteriors=all` (SHOP_INTERIORS_ALL=1): rooms on every INTERIOR_TEMPLATES type, for review; `=1` salons only
+ *  (coordinator 2026-11-19: rooms stay on salons until they win a blind elsewhere). */
+export const shopInteriorsAllOn = flag('__canalRecallShopInteriorsAll', /[?&]shopInteriors=all\b/, 'SHOP_INTERIORS_ALL');
