@@ -16,6 +16,19 @@ Review bar (check sheets and pairs at full size, never from counts) before anyth
 - nothing above an eaves line that is not measured; no invented hips or gables;
 - with the flag on, no front worse than today on window proportion, frame colour or storey count.
 
+## Merge notes for the next main merge (peer relays, 2026-11-19)
+
+- Narva landed on main (7f701ab3c9). Hoofddorpplein (3b57b86ae: generate.ts, frontKit, roofKit, generator test, district
+  files) was still pending at 18:55. Merge main only after it lands.
+- map-recall2-40 will merge `lane/fb-windows-20261119` @ 4372b392e at about 20:00. It touches:
+  - `threeBuildingMesh.ts`: one import and one call in `visibleQuads` (partyWallStoreys.ts). Our edits there are
+    `runSeed`, the `designMember` context flag and the roof-extras skip, all outside `visibleQuads`, so expect no
+    conflict or only a small one;
+  - `facadeExtras.ts`, small edits. Ours there is `DESIGN_MEMBER_COMPONENTS` plus the row budget for `designMember`;
+  - `facadeOrnaments.ts`, the new `projectionWindowFit.ts` and the LAB111 landmark.
+- After merging, rebuild the bundles and re-run the flag-off BASE hashes in `draw.test.ts`, since their baseline moves.
+  Take the new values only when the change comes from main's own commits.
+
 ## Where things are
 
 | Where | SHA | What |
