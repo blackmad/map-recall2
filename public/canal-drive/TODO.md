@@ -15,6 +15,17 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Design units (P0, approved 2026-11-19): `docs/handoffs/design-units-plan-20261119.md` — stopped at the phase 0 gate, waiting on David
+
+The design-units plan supersedes #392 (continuous rows) and #393 (De Pijp): their staged belt, Centrum and De Pijp looks stay held and their lanes stay paused.
+
+Phase 0 is done (`docs/reports/design-units-phase0-20261119.md`). 86% of non-minor ring pands sit in an ordekaart object, the four regression rows regroup, and Basis polygons are ordinary buildings. The plan's phase 1 rule "one elevation, one eaves line, one roof per unit" fails the positive control:
+
+- Gordel objects are composed blocks with 4/5-storey accents. 39% of units holding the liked Rivierenbuurt/Apollo rows hold differently drawn designs, mostly at a measured eaves step.
+- Centrum objects can hold separate houses: 46 of 60 photo-read "separate" runs are one object.
+
+Options A (units as identity, elevations in segments at measured steps), B (T7 answer key first, to measure Centrum false merges) and C (Ring layer only) are on the needs-david issue. The index is staged, not published, and archived in source-data `datasets/ordekaart-20261119/`. The code is in `src/canalRecall/designUnits/` and `scripts/design-units/`. Owner: the design-units overseer session (worktree `integrator-design-units-20261119`, port 4720).
+
 ## Paused lanes, 2026-11-16 evening — resumed 2026-11-19 (P0): `docs/handoffs/inflight-20261116.md`
 
 Resumed on David's word (2026-11-19): ground floors, the Hoofddorpplein pilot and the Narva-eiland pilot are running from their branch heads, plus a new lane `lane/retail-pass-20261119` (a shopfront visual pass, then shop interiors starting with hair salons, behind a flag). Chain logos merged 2026-11-19 (see HISTORY); left over: The Bulldog's sign is small (1.6 m), and Bagels & Beans is plain cream capitals with no logo. #392 continuous rows and #393 De Pijp stay paused.

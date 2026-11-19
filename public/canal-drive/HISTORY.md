@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Design units, phase 0: the ordekaart join and its gate (2026-11-19)
+
+David approved the design-units plan (`docs/handoffs/design-units-plan-20261119.md`): one building as designed, over one or many pands, becomes the unit of identity, drawing, review and coverage. Phase 0 joined the ring's pands to the city's four ordekaart layers by area overlap (`src/canalRecall/designUnits/`, `scripts/design-units/`; layers archived in source-data `datasets/ordekaart-20261119/` with the Maps Data terms).
+
+- 86.0% of 49,386 non-minor ring pands fall in an object (Oud-Zuid 93.6% down to Oud-Oost 73.6%). Overlap shares are bimodal around the 50% threshold.
+- Basis polygons are ordinary buildings, not merged blocks.
+- The four regression rows (Marnixplein, Goudsbloemstraat, Rustenburgerstraat, Van Ostadestraat) pass as unit tests (`npm run test:design-units`).
+- The result is 28,376 units; 7,105 of them hold more than one pand.
+
+Why it stopped there: Gordel objects are whole composed blocks with height accents, and Centrum objects can be complexes of separate houses. "One elevation per unit" would erase what David liked on 39% of the published-row units and merge distinct old houses. The report has the numbers and three options; the index stays staged until David picks one.
+
 ## Ride-feedback triage (2026-11-19, triage/feedback-20261116 bf5b6b72d)
 
 All 78 ride notes were triaged and the full queue was pulled again (150 notes, `atLimit` false). No new ride notes had arrived; the 13 new notes were David's Shopfronts-page notes, which the chain-logos lane owns. 46 notes are resolved (40 fixed, 6 answered), 9d5ac5 is in progress, and 31 are open. Report and verdicts: `docs/reports/feedback-triage-20261116.md`.
