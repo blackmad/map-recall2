@@ -40,6 +40,14 @@ export const GROUND_FIXES = [
   'bankClimb',
   /** Lane dips-deck-ends 2026-11-14: a way deck whose relief sags under the line between the way's own end nodes runs on to them as hole ranges, and a flat register footprint over such a sag takes a lifting deck (wayDecks.ts WAY_END_DIP_M). Haarlemmer Houttuinen 7376117 under BRU0095, the Amsterdamse Baan links. */
   'wayEnds',
+  /** Lane fb-bridges-20261119: the survey's deck polygons seed wetGround's narrow-polygon rounds (wetGround.ts WetGroundInput.decks): the Torensluis water slit (c16d3403), the Doelensluis notch (4c1344ce). */
+  'wetNearDecks',
+  /** Lane fb-bridges-20261119: ground polygons split across a measured deck's lateral blend (roadSurfaces.ts DeckSideFine): De Clercqstraat's deck joints (3b8ca68b). */
+  'deckSideFine',
+  /** Lane fb-bridges-20261119: tram rails centred in their carriageway within RAIL_CENTRE_TOL_M (railCentre.ts): Vijzelstraat (62d5a35f). */
+  'railCentre',
+  /** Lane fb-bridges-20261119: a covered deck's top drawn in the survey's material at its edges (groundCell coveredTopLayer): the Oost-Indische Huisbrug (935a6807). */
+  'coveredTopTone',
 ] as const;
 export type GroundFix = (typeof GROUND_FIXES)[number];
 export type GroundFixFlags = Partial<Record<GroundFix, boolean>>;

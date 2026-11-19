@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## Bridge feedback fixes; retail pass merged behind its flags (2026-11-19, #396)
+
+- **Bridges** (lane/fb-bridges-20261119 425520752d). Four new ground options, all on by default and listed in `groundFixes.ts` (`?name=0` turns each off):
+  - **Torensluis slit (c16d34):** the quay paving reaches only about 2 m over the Singel, too narrow for wetGround to treat it as ground, so the water mask cut a slit beside the deck. `wetNearDecks` lets the survey's deck polygons (h ≥ 1) seed wetGround's narrow-polygon passes. Pin `BRU0009`: 0 water samples, 16 with the option off.
+  - **Vijzelstraat rails (62d5a3):** the tram rails followed the OSM way, 0.52–0.63 m off the surveyed carriageway. `railCentre` moves rails within 1 m onto the carriageway centre (within 0.5 m where offsets are measured), tapered so that neighbouring ways meet. 441 of 1,176 rail ways moved; 0 of 694 shared nodes step more than 2 cm.
+  - **Oost-Indische Huisbrug deck (935a68):** `coveredTopTone` draws a covered deck's top in the survey's edge material (asphalt, klinker or brick only, never on viaducts). Pin `BRU0223`: 0 pale samples, 12 with the option off.
+  - **De Clercqstraat (3b8ca6), part fix:** `deckSideFine` splits ground polygons across the deck's side blend, which removes the deck-grey line (pin `BRU0108`). It skips ground within 10 m of decks with streets under them, which keeps the Lelylaan pin.
+  - Partly fixed: Doelensluis (4c1344). Not changed: the Kinkerbrug house (c361c8) is on land in the data and the panorama. Both are on the board.
+  - New tests are in `bridgeFeedback20261119.test.ts`, now part of `test:own-ground`.
+- **Retail pass** (lane/retail-pass-20261119 25a990d857), merged code only. Both flags are off by default; with them off, the template golden is byte-identical.
+  - `?shopPass=1`: fuller florist plant crowns, and dark generic shop panes with lamp pools.
+  - `?shopInteriors=1`: rooms in hair salons; `=all` adds florist, bike shop and greengrocer, for review only.
+  - `cutsFor` now joins the door cut and the room cuts on the same edge.
+  - Neither change is on by default because neither won its blind. In the generic-pane blind, today's faint shelves beat the dark panes 6–0 (3 ties): real shop windows read as warm, lit and cluttered. In the salon blind, rooms lost to the pass 3–4. The next steps are on the board.
+
 ## Design units, Ring tier C behind a flag; gate #399; A approved (2026-11-19, integrate/design-units-20261119)
 
 With `?designUnits=1`, every multi-pand Ring segment draws as one building. All of it was measured against Van Ostadestraat and Rustenburgerstraat:

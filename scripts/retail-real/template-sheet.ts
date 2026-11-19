@@ -80,6 +80,8 @@ entries.forEach((en, i) => {
   const look = logoFor(en.t), cl = en.chain ? chainLogo(en.chain) : REAL && TEMPLATE_CHAIN_LOGO[en.t] ? chainLogo(TEMPLATE_CHAIN_LOGO[en.t]) : null;
   const logo = cl ? { layer: LOGO + CHAIN_LOGO_BASE + cl.page, rect: cl.rect, aspect: cl.aspect } : look ? { layer: LOGO + look.page, rect: look.rect, aspect: look.aspect } : undefined;
   const tris: FrontTri[] = retailFrontTris({ template: en.t, word: en.word, seed: `preview-${en.label}`, door: { a0: SPAN - 1.9, a1: SPAN - 0.9, depthM: 0.5 }, letters: LOGO,
+    // Lane retail-pass round 2: SHOP_INTERIORS=1 draws both bays as rooms (the game's mesher cuts the wall behind them).
+    ...(process.env.SHOP_INTERIORS === '1' ? { rooms: [0, 1] } : {}),
     ...(logo ? { logo } : {}), ...(REAL ? { goods: LOGO + GOODS_BASE, faces: LOGO + TYPE_BASE } : {}), ...(en.chain && chains ? { chain: { fascia: chains.RETAIL_CHAINS[en.chain].fascia, letters: chains.RETAIL_CHAINS[en.chain].letters, word: chains.RETAIL_CHAINS[en.chain].word } } : {}) } as never, e, 0, SPAN, 0, GROUND);
   totalTris += tris.length;
   const wall: FrontTri[] = [], quad = (a: number[][], hex: string, n: [number, number, number]) => { wall.push({ p: [a[0], a[1], a[2]] as never, hex, n }, { p: [a[0], a[2], a[3]] as never, hex, n }); };

@@ -33,9 +33,17 @@ David chose **A** on #397 (2026-11-19): units are the identity everywhere, eleva
 
 ## Paused lanes, 2026-11-16 evening — resumed 2026-11-19 (P0): `docs/handoffs/inflight-20261116.md`
 
-Resumed on David's word (2026-11-19): ground floors, the Hoofddorpplein pilot and the Narva-eiland pilot are running from their branch heads, plus a new lane `lane/retail-pass-20261119` (a shopfront visual pass, then shop interiors starting with hair salons, behind a flag). Chain logos merged 2026-11-19 (see HISTORY); left over: The Bulldog's sign is small (1.6 m), and Bagels & Beans is plain cream capitals with no logo. #392 continuous rows and #393 De Pijp stay paused.
+Resumed on David's word (2026-11-19): ground floors, Hoofddorpplein and Narva-eiland are merged (see HISTORY). The retail pass (`lane/retail-pass-20261119`) is merged flag-only (`?shopPass=1`, `?shopInteriors=1|all`), off by default, because neither change has won a blind yet:
+- Salon rooms vs the pass lost 3–4 with 1 tie; the judge said both sides are too bright. Next: dim the lit mirror glass (`#c9d3d8`) toward dark reflective glass, keep only the lamp bar lit, and re-frame the pass side (its frames predate the dark panes).
+- Generic shop panes: today's faint shelves beat the pass's dark glass with lamp pools 6–0, 3 ties (`artifacts/retail-pass/blind-r3-gen` in the lane worktree). Real windows read as warm, lit, cluttered interiors at varied brightness, often with decals. Next: warmer and fuller interiors, never darker glass.
+- The rooms re-frame blind (`blind-r3-rf`) was 5 ties and uninformative: 4 of its 5 photo poses do not show the shop. Fix the poses before judging rooms again.
+- The florist's fuller plant crowns (`plantFull`, under shopPass) have not been judged on their own. Chain logos merged 2026-11-19 (see HISTORY); left over: The Bulldog's sign is small (1.6 m), and Bagels & Beans is plain cream capitals with no logo. #392 continuous rows and #393 De Pijp stay paused.
 
-Feedback fixes 2026-11-19 (#396): the HUD, windows, models and ground lanes are merged (see HISTORY); the bridges lane is still running, with c361c8 added to it. Still open:
+Feedback fixes 2026-11-19 (#396): all five lanes are merged (see HISTORY). Still open:
+- 4c1344 Doelensluis: the far notch is closed, but the near bridge's left abutment leaves a ragged water hole (pin `BRU0220`, 13 water samples, down from 41). Needs a photo call on that corner.
+- 3b8ca6 De Clercqstraat: the deck-side line is gone (`deckSideFine`), but the cross-road seam (dark and light-blue segments) is not in the top-layer probes; pick it in the browser.
+- c361c8 Kinkerbrug house: the data puts it on land (0 of 105 footprint samples over water, panorama agrees). It reads as over water from the pitch-60 camera and a water corner west of it. `build-pand-abutments.ts` lists three more pands for photo review: 0363100012171355, 0363100012181645, w858955798.
+- Unmeasured: how many decks city-wide `coveredTopTone` changes, and the triangle cost of `deckSideFine`.
 - 1a223c: windows split at the turns of an angled front (`threeBuildingMesh` run layout).
 - 47d096: place Bellamyplein 28 (0363100012162005) in the bellamyplein face.
 - f8f282: Prinsengracht 136 is drawn in the wrong house style (rows/HouseSpec).

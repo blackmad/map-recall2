@@ -37,8 +37,12 @@ import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
 import { OPEN_GROUND_COVERS, OPEN_GROUND_DRAPE, OPEN_GROUND_LAYER, OPEN_GROUND_LIFT, type OpenGroundCell } from './groundSurface.js';
 import { cycleThrough, meshCover, type ThroughStats } from './cycleThrough.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type SurveyGap, SURVEY_GAP_MIN_R } from './pockets.js';
-import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
+import { buildRoadSurfaces, deckLevelHeight, RoadIndex, surfaceLayer, type RoadBuildStats } from './roadSurfaces.js';
+import type { RoadClass, RoadMesh } from './roadCells.js';
+import { coveredTopLayer } from './coveredTop.js';
 import { DRY_WAY_DECK } from './wayDecks.js';
+/** deckSideFine skips ground polygons within this of a deck with hole ranges (its box), metres. */
+export const HOLE_FINE_PAD_M = 10;
 /** A road deck over land this far over the ground (metres) is one a track off the bridges passes under (groundCell railLand). */
 export const RAIL_UNDER_DECK_M = 2.5;
 import { ANCILLARY_CLASSES, type RoadCell } from './roadCells.js';
@@ -101,7 +105,7 @@ export interface BuiltCell {
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
-export interface BridgeStats { tops: number; railed: number; railingPosts: number; piers: number; arches: number; abutments: number; frames: number; decks: DeckBuildInfo[]; flat: { id: string; railingPosts: number; frames: number }[]; /** Deck ends that float (decks.ts floatingEnds; flat footprints still over water past the reach): "id:end:reason". */ floating: string[]; /** Decks whose body a bespoke landmark model draws (bespokeBridges.ts): the kit drew only their top. */ bespoke?: string[] }
+export interface BridgeStats { tops: number; railed: number; railingPosts: number; piers: number; arches: number; abutments: number; frames: number; decks: DeckBuildInfo[]; flat: { id: string; railingPosts: number; frames: number }[]; /** Deck ends that float (decks.ts floatingEnds; flat footprints still over water past the reach): "id:end:reason". */ floating: string[]; /** Decks whose body a bespoke landmark model draws (bespokeBridges.ts): the kit drew only their top. */ bespoke?: string[]; /** Covered decks whose top took the survey's edge material (coveredTop.ts): "id:layer". */ toned?: string[] }
 
 export interface CellInput {
   key: string;
@@ -122,6 +126,12 @@ export interface CellInput {
   wetGround?: readonly Vec2[][];
   /** No railing beside a surveyed surface over mapped water (lane fb-bridges 2026-11-13, the Muntplein); default on, off: `?pleinRails=0`. */
   pleinRails?: boolean;
+  /** Ground polygons split across a measured deck's lateral blend (roadSurfaces.ts DeckSideFine, lane fb-bridges-20261119, De Clercqstraat 3b8ca68b); default on, off: `?deckSideFine=0`. */
+  deckSideFine?: boolean;
+  /** Tram rails centred in their carriageway within RAIL_CENTRE_TOL_M (railCentre.ts, lane fb-bridges-20261119, Vijzelstraat 62d5a35f); default on, off: `?railCentre=0`. */
+  railCentre?: boolean;
+  /** A covered deck's top drawn in the survey's material at its edges (groundCell coveredTopLayer, lane fb-bridges-20261119, the Oost-Indische Huisbrug 935a6807); default on, off: `?coveredTopTone=0`. */
+  coveredTopTone?: boolean;
   /** Streets under a way deck's hole ranges drape on the relief (surface.ts streetHeight, lane F1b 2026-11-14, Lelylaan 07ec0473); default on, off: `?holeStreets=0`. */
   holeStreets?: boolean;
   flatDecks: readonly Vec2[][];
@@ -423,8 +433,11 @@ export function buildCell(input: CellInput): BuiltCell {
   let roads: BuiltCell['stats']['roads'] = null;
   let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set(), lowDeck: ((k: number) => boolean) | undefined;
   const canalSide = fine && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
+  // deckSideFine leaves the ground near a deck with hole ranges (a viaduct over streets) as it was: the streets under it
+  // drape on the relief (holeStreets) and a finer split there sampled the deck's lateral blend (Lelylaan 07ec0473).
+  const holeDeckBoxes = surface.decks.filter(d => d.profile.under?.length).map(d => d.profile.bbox);
   if (roadIndex && input.roads) {
-    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, ...(holeStreets ? { streetHeight: onStreet } : {}), deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, ...(input.bridgeGaps !== false && input.flatDecksAround?.length ? { onFlatDeck: flatDeckTest(input.flatDecksAround) } : {}), ...(input.bridgeGaps !== false ? { bridgeGaps: true } : {}), ...(input.bridgeGaps !== false && input.bridgeCarry !== false ? { bridgeCarry: true } : {}), ...(input.redDedupe !== false ? { redDedupe: true } : {}), canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(input.roadStrips !== false ? { roadStrips: true } : {}), ...(touch ? { detail: 'touch' as const } : {}), ...(input.drape ?? {}) });
+    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, ...(holeStreets ? { streetHeight: onStreet } : {}), deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, ...(input.deckSideFine !== false && lod === 0 ? { decksNear: (a: number, b: number, c: number, d: number) => surface.decksIn(a, b, c, d) && !holeDeckBoxes.some(q => q[0] <= c + HOLE_FINE_PAD_M && q[2] >= a - HOLE_FINE_PAD_M && q[1] <= d + HOLE_FINE_PAD_M && q[3] >= b - HOLE_FINE_PAD_M) } : {}), overWater, lod, ...(input.bridgeGaps !== false && input.flatDecksAround?.length ? { onFlatDeck: flatDeckTest(input.flatDecksAround) } : {}), ...(input.bridgeGaps !== false ? { bridgeGaps: true } : {}), ...(input.bridgeGaps !== false && input.bridgeCarry !== false ? { bridgeCarry: true } : {}), ...(input.redDedupe !== false ? { redDedupe: true } : {}), canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(input.roadStrips !== false ? { roadStrips: true } : {}), ...(touch ? { detail: 'touch' as const } : {}), ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'bgtCarriage');
     roadSkipped = built.skipped; lowDeck = built.lowDeck;
     roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, crossingStrips, greyFiets, markings: null };
@@ -615,13 +628,14 @@ export function buildCell(input: CellInput): BuiltCell {
   // roads-v1: covered ways emit no bands; paint, rails and fills are clipped by the polygons (streets.ts RoadsOption).
   const roadsOpt = roadIndex ? { index: roadIndex, covered: new Set(input.coverWays ?? []), ...(input.evidence ? { evidence: input.evidence } : {}) } : undefined;
   phase('parks');
-  const streets = buildStreets(ways, onStreet, { step: fine ? 3 : 6, only: only(false), canalSide, markings: lod === 0, roads: roadsOpt });
+  const railCentre = input.railCentre !== false;
+  const streets = buildStreets(ways, onStreet, { step: fine ? 3 : 6, only: only(false), canalSide, markings: lod === 0, roads: roadsOpt, railCentre });
   phase('streets');
   // Bridge ways follow the measured deck exactly (no land under a deck over water to poke through); 0.75 m at LOD 0:
   // on a hump a 1.5 m chord sags (~9 cm on a masonry arch, ~2 cm at 0.75 m), so the bands follow the profile closer.
   // Across, a vertex every 2 m (3 m far): a deck narrower than its mapped carriageway left the band's edges on the
   // relief beside it and the band sagged under the deck top (BRU0292 by 0.15 m; +1.8 % triangles per belt cell).
-  const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 0.75 : 3, only: only(true), acrossStep: lod === 0 ? 2 : 3, markings: lod === 0, roads: roadsOpt });
+  const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 0.75 : 3, only: only(true), acrossStep: lod === 0 ? 2 : 3, markings: lod === 0, roads: roadsOpt, railCentre });
   for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint', 'tram', 'bollard'] as const) { add(s, streets[s], 'band'); add(s, onBridges[s], 'band'); }
   phase('bridgeStreets');
   // Railway tracks on their own corridor (rail-v1, railTracks.ts; issue #124): flat with a street they cross at grade.
@@ -760,8 +774,12 @@ export function buildCell(input: CellInput): BuiltCell {
     // so the register outline's sides (BRU0236: 4 m north of the OSM/BGT bridge) never overhang the model's face.
     const covered = roadsOnDeck(deck);
     if (covered && roads) roads.decksCovered++;
-    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, bespoke ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : covered ? (deck.profile.edges ? deckWidths(deck, overWater) : capWidths(deck, { left: deck.profile.halfWidth, right: deck.profile.halfWidth })) : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);
-    if (top.indices.length) { add('deckTop', top, 'deck'); bridges.tops++; }
+    const topWidths = bespoke ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : covered ? (deck.profile.edges ? deckWidths(deck, overWater) : capWidths(deck, { left: deck.profile.halfWidth, right: deck.profile.halfWidth })) : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined;
+    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, topWidths, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);
+    // coveredTopTone (coveredTop.ts, lane fb-bridges-20261119): a covered top in the material the survey draws at the deck's
+    // edges. Not on a deck with streets under its hole ranges (a viaduct: its top in a road layer counts as a street over the relief).
+    const topLayer = covered && !bespoke && !deck.profile.under && roadIndex && topWidths && input.coveredTopTone !== false ? (coveredTopLayer(deck.profile, topWidths, roadIndex, (c, m) => surfaceLayer(c as RoadClass, m as RoadMesh)) as GroundLayer | null) : null;
+    if (top.indices.length) { add(topLayer ?? 'deckTop', topLayer ? { positions: top.positions, uvs: top.uvs, indices: top.indices } : top, 'deck'); bridges.tops++; if (topLayer) (bridges.toned ??= []).push(`${deck.profile.id}:${topLayer}`); }
   }
   for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }
   // Bridge ways near the flat footprints give their crossing axis (movable frames).

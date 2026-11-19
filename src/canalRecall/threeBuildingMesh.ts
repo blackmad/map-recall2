@@ -43,7 +43,9 @@ import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
 import type { ChainLook } from './shopfronts.js';
 import type { RetailTemplate } from './retailTemplates.js';
-import { retailFrontTris, retailDoor, doorHead, groundFloorFrontTris, FRONT as RETAIL_FRONT } from './retailFront.js';
+import { retailFrontTris, retailDoor, retailWindowBays, doorHead, groundFloorFrontTris, FRONT as RETAIL_FRONT } from './retailFront.js';
+import { shopInteriorsOn } from './shopProps/flags.js';
+import { roomTemplate } from './shopProps/interiors.js';
 import type { GroundFloorDraw } from './groundFloor/types.js';
 import type { RedLightFront } from './groundParts/redLightFront.js';
 import type { BikeClass } from './retailBikes.js';
@@ -542,15 +544,29 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   // Lane shop-bikes-perp: the pavement before the front's wall (street centreline less half a carriageway, as the
   // stoops use), so perpendicular bikes stand only where they fit.
   const streetD = front.template === 'bike' && streetM ? streetM(best) : Infinity, pavementM = Number.isFinite(streetD) ? Math.max(0, streetD - GENERIC_STOOP.carriageHalfM) : undefined;
-  const placed = pavementM !== undefined ? { ...input, pavementM } : input;
+  const placed0 = pavementM !== undefined ? { ...input, pavementM } : input;
+  // Lane retail-pass round 2 (`?shopInteriors=1`): a room behind each window bay that lies on one flush piece of the
+  // run; the wall is cut over the glass (riser top to door head) so the room shows through.
+  const roomCuts: Array<{ e: Edge; cut: WallCut }> = [], rooms: number[] = [];
+  if (shopInteriorsOn() && roomTemplate(front.template)) {
+    retailWindowBays(input, s0, s1).forEach(([c0, c1], bay) => {
+      const p = c1 - c0 >= 0.6 ? run.parts.find(q => q.t0 <= c0 + 1e-6 && q.t1 >= c1 - 1e-6 && q.backM < 0.01) : undefined;
+      if (!p) return;
+      rooms.push(bay);
+      roomCuts.push({ e: p.e, cut: { a0: (c0 - p.t0) / p.e.len, a1: (c1 - p.t0) / p.e.len, z0: base + RETAIL_FRONT.riserM, z1: doorHead(base, groundM), other: `${b.id}:retail-room${bay}` } });
+    });
+  }
+  const placed = rooms.length ? { ...placed0, rooms } : placed0;
   const tris = retailFrontTris(front.brand ? { ...placed, brand: front.brand, ...(b.wallHex ? { wallHex: b.wallHex } : {}) } : placed, e, s0, s1, base, groundM);
   // Round 3: every template door stands in a recess (retailDoor), traced or not, so the wall is cut over each.
   const opening = retailDoor(input, s0, s1);
   // The wall is cut on the piece of the run behind the door (a piece set back further than the recess needs no cut).
   const part = opening && run.parts.find(p => p.t0 <= opening.a0 + 1e-6 && p.t1 >= opening.a1 - 1e-6 && p.backM < opening.depthM);
-  if (!opening || !part || !tris.length) return { tris };
+  if (!tris.length) return { tris };
+  const roomed = roomCuts.length ? { cuts: roomCuts } : {};
+  if (!opening || !part) return { tris, ...roomed };
   const pl = part.e.len;
-  return { tris, cut: { e: part.e, cut: { a0: (opening.a0 - part.t0) / pl, a1: (opening.a1 - part.t0) / pl, z0: base - 1, z1: doorHead(base, groundM), other: `${b.id}:retail-door` } } };
+  return { tris, cut: { e: part.e, cut: { a0: (opening.a0 - part.t0) / pl, a1: (opening.a1 - part.t0) / pl, z0: base - 1, z1: doorHead(base, groundM), other: `${b.id}:retail-door` } }, ...roomed };
 }
 
 /**
@@ -1209,8 +1225,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const street = exposed.filter(e => doorAllowed.has(e));
       return retailFrontOn(b.retailFront!, b, street.length && !b.retailFront!.nearest ? street : exposed.length ? exposed : edges, edges.filter(e => !e.hole), b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin, wallStreetM);
     })() : null;
-    const cutsFor = (e: Edge): readonly WallCut[] => retail?.cuts?.some(c => c.e === e) ? [...(wallCuts.get(e) ?? []), ...retail.cuts.filter(c => c.e === e).map(c => c.cut)]
-      : retail?.cut?.e === e ? [...(wallCuts.get(e) ?? []), retail.cut.cut] : wallCuts.get(e) ?? [];
+    // The front's cuts on this edge: the door's recess (`cut`) and the ground floor's or the shop rooms' (`cuts`), together.
+    const cutsFor = (e: Edge): readonly WallCut[] => {
+      const own = [...(retail?.cut?.e === e ? [retail.cut.cut] : []), ...(retail?.cuts?.filter(c => c.e === e).map(c => c.cut) ?? [])];
+      return own.length ? [...(wallCuts.get(e) ?? []), ...own] : wallCuts.get(e) ?? [];
+    };
     // Clip conflicting wall rectangles while retaining their original UV grid.
     // A window row cut part-way by a lower neighbour's box keeps only whole rows (partyWallStoreys.ts, feedback 18a9d3).
     const visibleQuads = quads.flatMap(q => wholeCellPieces(q, subtractWallCuts(q, cutsFor(q.e), (p, r) => {
