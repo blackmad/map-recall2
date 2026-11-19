@@ -1302,7 +1302,14 @@ class VectorBasemap {
       this._rowFrontRequested = true;
       Promise.resolve(api.loadRowFrontRecords(this._extractFile('').replace(/data\/extracts\/.*$/, ''))).then((ok) => { if (ok) this._applyFeatureDecorator(); });
     }
-    const decorate = withRoofs ? (feature) => api.decorateRoof(rowFront(crown(named(Facades.decorateFacade(spec(registered(feature))))))) : (feature) => Facades.decorateFacade(spec(registered(feature)));
+    // Design units (`?designUnits=1`, designUnits/draw.ts): the segment draw first, its one roof after the row fronts; segments load once.
+    const du = api && api.designUnitsOn && api.designUnitsOn() && api.withDesignUnits ? api.withDesignUnits : (feature) => feature;
+    const duRoof = api && api.designUnitsOn && api.designUnitsOn() && api.withDesignUnitRoof ? api.withDesignUnitRoof : (feature) => feature;
+    if (api && api.loadDesignSegments && !this._designUnitsRequested) {
+      this._designUnitsRequested = true;
+      Promise.resolve(api.loadDesignSegments(this._extractFile('').replace(/data\/extracts\/.*$/, ''))).then((ok) => { if (ok) this._applyFeatureDecorator(); });
+    }
+    const decorate = withRoofs ? (feature) => api.decorateRoof(duRoof(rowFront(crown(named(Facades.decorateFacade(spec(registered(du(feature))))))))) : (feature) => Facades.decorateFacade(spec(registered(du(feature))));
     // Landmark buildings (churches, museums, Centraal…) keep their own form: no generic facade or roof.
     if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
     const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds, this._listedLandmarks) : decorate;

@@ -13,6 +13,7 @@ import type {SurveyedMeshBinding} from './surveyedEnvelopeMeshBinding.js';
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
+import { designUnitOf } from './designUnits/drawProps.js';
 import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
@@ -258,6 +259,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const heightM = wallTopHeightM(p);
   if (!polygons.length || !Number.isFinite(heightM)) return null;
   const id = String(p.id ?? '');
+  // Design units (`?designUnits=1`, designUnits/draw.ts): a segment member hashes every per-building prior on its
+  // segment's seed and lays its bays out on its slice of the segment's frontage. Absent: `sid` is the pand id.
+  const design = designUnitOf(p), sid = design ? design.seed : id;
   let building: MeshBuilding;
   let archetype: string | undefined, plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined, spandrelAccent: string | undefined, quietGround: number | undefined;
   if (cellSetOf(look) !== 'procedural') {
@@ -268,9 +272,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     // The series' look (rowLook): its year, cornice line and bays per front, and no positional pool draw.
     const rowLook = rowLookOf(p);
     const lookYear = rowLook ? rowLook.year ?? year : year;
-    const bay = bayLookFor(rowLook?.seed ?? (typeof p.rowSeries === 'string' ? p.rowSeries : id), lookYear, rowLook?.heightM ?? (Number(p.height) || heightM), look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), rowLook ? null : profile,
+    const bay = bayLookFor(rowLook?.seed ?? (typeof p.rowSeries === 'string' ? p.rowSeries : sid), lookYear, rowLook?.heightM ?? (Number(p.height) || heightM), look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), rowLook ? null : profile,
       lookYear !== null && lookYear >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
-      specLookOf(p), rowLook ? undefined : poolPointOf(polygons, at));
+      specLookOf(p), rowLook ? undefined : design ? design.at : poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     // Lane retail-look round 3c (`?retailGround=1`): bay.groundHex here is the shop grammar's guess (no recipe is passed),
@@ -286,7 +290,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
     building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : DEFAULT_FACADE_WALL_HEX, shop: layout !== 'tower' && !!shopfrontOf(p) && shopfrontOf(p) !== 'quiet' };
     building.openings = proceduralOpenings(layout);
-    plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
+    plain = cellLayer(layout, 'plain', lookVariant(sid)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
   }
   // A HouseSpec's reads (houseSpec/decorate.ts): the street run's bay count, crown and period, and a wall colour
   // measured on a street photo. Absent unless the spec extract stamped the pand (`?houseSpecs=0` = absent).
@@ -294,7 +298,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (specRecipe) building.specRecipe = specRecipe;
   // Lane PR1: a pre-war photo-look pand with no stated storeys or bays guesses its street runs' grid from the read houses
   // around it (houseSpec/structurePrior.ts; the mesher applies it per run). `?structurePrior=0`: nothing set.
-  if (structurePriorOn() && cellSetOf(look) !== 'procedural' && !specRecipe?.storeys && !specRecipe?.bays && !p.kitWall && !p.largeTier && !p.frontCarrier && !p.gardenShed) {
+  if (structurePriorOn() && !design && cellSetOf(look) !== 'procedural' && !specRecipe?.storeys && !specRecipe?.bays && !p.kitWall && !p.largeTier && !p.frontCarrier && !p.gardenShed) {
     const year = Number(p.constructionYear), at = polygons[0]?.[0];
     if (p.constructionYear !== null && p.constructionYear !== undefined && Number.isFinite(year) && year < STRUCTURE_PRIOR_TABLE.maxYear && at?.length && (building.style === 'canal' || building.style === 'c19' || building.style === 'school')) {
       building.structurePrior = { year, lng: at.reduce((s, q) => s + q[0], 0) / at.length, lat: at.reduce((s, q) => s + q[1], 0) / at.length };
@@ -317,7 +321,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     if (sourced) building.wallHex = String(sourced);
     sourcedWall = sourced ? String(sourced) : undefined;
     // A wall the pale-warm guard held keeps its period colour, in a brick family (wallColour.ts heldBrickWall, H9g).
-    if (specRecipe?.heldBrick && p.sideColourSource !== 'measured-accepted' && archetype) building.wallHex = heldBrickWall(building.wallHex, periodWallList('photo', archetype, PERIOD_WALLS.photo[archetype as keyof typeof PERIOD_WALLS.photo]), hashSeed(id) >>> 7);
+    if (specRecipe?.heldBrick && p.sideColourSource !== 'measured-accepted' && archetype) building.wallHex = heldBrickWall(building.wallHex, periodWallList('photo', archetype, PERIOD_WALLS.photo[archetype as keyof typeof PERIOD_WALLS.photo]), hashSeed(sid) >>> 7);
   }
   const front = shopfrontOf(p);
   building.shopfront = front ? front !== 'quiet' : false;
@@ -364,10 +368,10 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const mapped = typeof p.roofColour === 'string' && p.roofColour !== p.colour ? p.roofColour : null;
   // A roof read from the orthophoto (roof-facts sidecar) outranks the mapped tag and the grey prior.
   const measured = measuredRoofOf(p, look);
-  building.lid = { hex: measured?.hex ?? mapped ?? FLAT_ROOF_GREYS[lookVariant(id) % FLAT_ROOF_GREYS.length], flatLayer: roofBase + 3 };
+  building.lid = { hex: measured?.hex ?? mapped ?? FLAT_ROOF_GREYS[lookVariant(sid) % FLAT_ROOF_GREYS.length], flatLayer: roofBase + 3 };
   if (measured?.furniture) building.measuredRoof = measured.furniture;
   // A real flat roof (no planned pitched roof): lane R5-E's tone and surface (roofs/flatRoofTone.ts, flatRoofSurface.ts).
-  if ((!p.roofPlanned || p.roofShape === 'parapet') && !p.kitRoof && !p.kitWall && look !== 'untextured') applyFlatRoof(building, p, look, id, measured, !!mapped, cellSetOf(look), footprintAreaM2(feature.geometry));
+  if ((!p.roofPlanned || p.roofShape === 'parapet') && !p.kitRoof && !p.kitWall && look !== 'untextured') applyFlatRoof(building, p, look, sid, measured, !!mapped, cellSetOf(look), footprintAreaM2(feature.geometry));
   if (p.gardenShed) {
     // A back-garden shed (gardenSheds.ts): bare walls in a weathered muted colour, a tarred flat lid, nothing else.
     building.bare = true; building.wallHex = shedWallHex(id); building.lid = { hex: SHED_LID_HEX, flatLayer: roofBase + 3 };
@@ -428,6 +432,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Facade extras for every faced building; the plain and Untextured looks stay light.
   // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
   building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
+  if (design) { building.seed = design.seed; building.designSlice = { fromM: design.fromM, toM: design.toM, moduleM: design.moduleM }; }
   if (Array.isArray(p.registerForce) && p.registerForce.length && building.extras) building.registerForce = p.registerForce as string[];
   // A spec-stated stoop (houseSpec/decorate.ts specStoop, K-stoep #360): the extras draw it typed, first, on the door
   // wall nearest the street (threeBuildingMesh.ts stoopFor).

@@ -1,4 +1,5 @@
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
+import { segmentBayM, sliceBays } from './designUnits/drawProps.js';
 import type { StoopIntent } from './buildingRecipe/stoop.ts';
 import { GENERIC_WINDOWS_PER_BAY, genericBayWindow, type FacadeGenericLayout } from './look/facadeRecord.js';
 import { GENERIC_STOOP } from './stoopExtra.js';
@@ -140,6 +141,10 @@ export type MeshBuilding = {
   flatRoof?: { lip: boolean; box: boolean; /** Roof area (m²): the chunk's surface budget goes to the largest roofs first. */ areaM2?: number; /** The coarse tier (and the baked shell): no measured furniture, the coarse budget. */ coarse?: boolean };
   /** Overrides the per-building rhythm jitter (large tier: civic storeys, one entrance per run). */
   layoutScale?: LayoutScale;
+  /** Design units (`?designUnits=1`): the segment seed every per-building dice here hashes on instead of `id`, and the
+   *  member's slice of the segment frontage (m from its left end), on which its street run's bays are laid out. */
+  seed?: string;
+  designSlice?: { fromM: number; toM: number; moduleM: number };
   /** A buurt profile's storey-pitch scale (buurtProfiles/profiles.ts `storeyScaleOf`), applied on top of the per-building jitter; absent = 1. */
   storeyScale?: number;
   /** A plain band this tall between the top window row and the wall top (large tier). */
@@ -261,6 +266,15 @@ export function wallTopHeightM(p: Record<string, unknown>): number {
  * columns and storeys go through the same fit as a stated count (frontageLayoutScale, axisUnitPlan; storeys by the
  * nearest fit). Undefined without a prior, on a two-front corner, off the street or above the ground.
  */
+/** How far (m) a street run may differ from its design-unit slice and still take the segment's bay grid. */
+export const DESIGN_SLICE_TOL = { minM: 1.5, share: 0.2 } as const;
+/** The run's layout scale with its bay pitch set so layoutRun draws the slice's share of the segment grid (sliceBays). */
+export function designRunScale<S extends { bay: number }>(slice: { fromM: number; toM: number; moduleM: number }, runLenM: number, nominalBayM: number, scale: S): S {
+  const len = slice.toM - slice.fromM;
+  if (!(runLenM > 0) || Math.abs(runLenM - len) > Math.max(DESIGN_SLICE_TOL.minM, DESIGN_SLICE_TOL.share * len)) return scale;
+  const bays = sliceBays(slice.fromM, slice.toM, segmentBayM(slice.moduleM, nominalBayM * scale.bay));
+  return { ...scale, bay: runLenM / bays / nominalBayM };
+}
 function priorBays(b: MeshBuilding, streetRun: boolean, corner: boolean, base: number, exposedM: number, widthM: number): FrontageBays | undefined {
   // Off for a corner with two street fronts (a guess fitted on one-front houses), a recipe front, a back or raised run.
   if (!b.structurePrior || b.recipe || corner || !streetRun || base >= 0.5) return undefined;
@@ -777,12 +791,15 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const base = b.minHeightM;
     const wallRGB = parseHex(b.wallHex), wallAccent = parseHex(b.accentHex ?? '#ffffff');
     const groundPaint = b.groundHex && b.layers ? parseHex(b.groundHex) : null;
-    const variant = Math.floor(hash01(`${b.id}:look`) * CELL_VARIANTS);
+    // Design units: one segment, one cell variant, rhythm and tone (b.seed); absent: the pand's own, as before.
+    const sid = b.seed ?? b.id;
+    const variant = Math.floor(hash01(`${sid}:look`) * CELL_VARIANTS);
     /** F1: the photo look's bay preset this pand paints (record mode reads its windows as priors). */
     const bayPreset = recordMode && b.layers && b.layers.upper < BAY_LAYER_COUNT && BAY_ENTRIES[b.layers.upper]?.kind === 'upper' ? bayVariant(BAY_ENTRIES[b.layers.upper]) : null;
     // No two neighbours share a rhythm: bay width, storey and ground-floor height vary per building.
-    const scale = b.layoutScale ?? { bay: 0.88 + hash01(`${b.id}:bay`) * 0.3, storey: (b.storeyScale ?? 1) * (0.93 + hash01(`${b.id}:storey`) * 0.16), ground: 0.92 + hash01(`${b.id}:ground`) * 0.2 };
-    const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2;
+    // Inside a design-unit segment the rhythm is the segment's, chosen once (b.seed).
+    const scale = b.layoutScale ?? { bay: 0.88 + hash01(`${sid}:bay`) * 0.3, storey: (b.storeyScale ?? 1) * (0.93 + hash01(`${sid}:storey`) * 0.16), ground: 0.92 + hash01(`${sid}:ground`) * 0.2 };
+    const jitter = 0.9 + hash01(`${sid}:tone`) * 0.2;
     let walls = 0;
     const extraSink = mode === 'extras' && b.extras ? new ExtraSink(EXTRA_BUDGET.building) : null;
     const wallExtraContexts: ExtraContext[] = [];
@@ -875,7 +892,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const units = specBays?.bays ? axisUnitPlan(specBays, b.openings, b.style, run.reduce((sum,r)=>sum+r.e.len,0), scale) : null;
       const fitted = frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0), specBays);
       // Axis units keep the spec's storey pitch (lane H9 storeys) and ground (H11) as whole cells do.
-      const runScale = units ? { ...units.scale, storey: fitted.storey, ground: fitted.ground } : fitted;
+      const runScale0 = units ? { ...units.scale, storey: fitted.storey, ground: fitted.ground } : fitted;
+      // Design units: the segment's bay grid laid out once from its left end; this street run (when it is the member's
+      // slice, within DESIGN_SLICE_TOL) draws the bays between the grid lines nearest its ends, so columns run on across
+      // the party walls. A stated or recipe bay count wins.
+      const runScale = b.designSlice && streetRun && !b.recipe && !specBays?.bays ? designRunScale(b.designSlice, run.reduce((sum, r) => sum + r.e.len, 0), STYLE_DIMS[b.style].bay, runScale0) : runScale0;
       const cellU = units ? AXIS_UNIT_U : 1;
       const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
       const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');
@@ -1021,7 +1042,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         walls++;
         const q0 = quads.length;
         const s = layout.edgeStartM[k];
-        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.specBandM ? { bandM: b.specBandM } : {}), ...(b.specFieldsForce?.length ? { statedFirst: b.specFieldsForce } : {}), ...(b.onlyExtras ? { onlyExtras: b.onlyExtras } : {}), ...(b.rowSeries ? { seriesId: b.rowSeries } : {}), ...(b.rowDress && streetRun ? { rowDress: rowDressOnEdge(b, layout.lengthM, layout.edgeStartM[k], e.len, seenLeftToRight(first), base, traceRun, !b.rowDress.stoop || run === rowStoopRun) } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop || b.retailFront), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
+        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.specBandM ? { bandM: b.specBandM } : {}), ...(b.specFieldsForce?.length ? { statedFirst: b.specFieldsForce } : {}), ...(b.onlyExtras ? { onlyExtras: b.onlyExtras } : {}), ...(b.rowSeries ? { seriesId: b.rowSeries } : b.seed ? { seriesId: b.seed } : {}), ...(b.rowDress && streetRun ? { rowDress: rowDressOnEdge(b, layout.lengthM, layout.edgeStartM[k], e.len, seenLeftToRight(first), base, traceRun, !b.rowDress.stoop || run === rowStoopRun) } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop || b.retailFront), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.surveyedEnvelope && !b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
@@ -1162,7 +1183,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         if (b.measuredRoof && outer.length) { if (!b.flatRoof) measuredRoofFurniture(b.measuredRoof, [(outer[0][0] - origin.lng) * kxLocal, (outer[0][1] - origin.lat) * M_PER_DEG_LAT], b.heightM, rect, extraSink); }
         else if (b.flatRoof?.box) { /* the generic box is drawn with the walls */ }
         // Lane 1 step e: a front record's house (onlyExtras) draws no guessed roof furniture over its measured top line.
-        else if (!b.onlyExtras && rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: b.id, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
+        else if (!b.onlyExtras && rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: sid, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
       }
       extraTris = extraSink.tris.length;
       sign.push(...extraSink.tris);
