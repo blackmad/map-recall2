@@ -7,14 +7,32 @@ This is for a fresh session that has only the repo. Read it first. Then read `do
 The Fable planning session stepped out on 2026-11-19 to save cost: this integrator owns design units end to end and goes
 straight to David (gate page + needs-david issue; his answers come on the issue). If the parent session closes, the
 integrator stops: resume from this file. Peer replies from map-recall2-40 reach the parent; if nobody relays them, check
-origin/main yourself before each merge and push. #397 still has its recommendation (option A, started on the Ring layer)
-awaiting David.
+origin/main yourself before each merge and push. **#397 answered:** David chose A on 2026-11-19 at 17:10 ("uh, sure, A").
+Units are the identity everywhere and elevations draw in segments; Centrum plots stay separate unless something joins
+them. The work starts on the Ring layer. The answer was acknowledged and #397 closed at 22:45. Gordel and Centrum follow
+under A only after David judges the Ring gate; start no Gordel or Centrum work before then.
 
 Review bar (check sheets and pairs at full size, never from counts) before anything goes to David:
 - every column alike within a segment; neighbouring segments distinct;
 - windows tall with light frames;
 - nothing above an eaves line that is not measured; no invented hips or gables;
 - with the flag on, no front worse than today on window proportion, frame colour or storey count.
+
+## Gate status (22:45)
+
+- Desktop: both halves are framed, 88 of 88. Three pands show `sameAsBefore` (Ruyschstraat 161684 and 155674,
+  Bilderdijkstraat 157757). They are HouseSpec-described members that keep their own description, which is expected.
+- Review: one failure. Roemer Visscherstraat 164845 drew dark frames from three wrong D1 reads; the photo shows cream
+  frames. Fixed in c495de2459 (era fronts always light). Its desktop "after" is being reshot.
+- iPhone: "before" is complete. The first "after" run timed out after Commelinstraat, so 12 blocks are being re-run with
+  `--reopen-every 8`. Script: scratchpad `gate2.sh`; log `gate2.log`; marker `GATE2_DONE`.
+- Next steps:
+  1. run `gate-sheets.ts`;
+  2. upload with scratchpad `upload.sh`;
+  3. file the issue from scratchpad `issue.md`;
+  4. post on #68;
+  5. merge main (Hoofddorpplein 7af6d77c0 is in; the fb-windows lane may be too);
+  6. run the gates and push main.
 
 ## Merge notes for the next main merge (peer relays, 2026-11-19)
 
