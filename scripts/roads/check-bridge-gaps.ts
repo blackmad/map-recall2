@@ -28,7 +28,9 @@ const cached = (store: GroundStore) => {
 // BRU0007 they stood across the carriageway, and the pins' before measured part of its gap through them.
 // And without the bank climb (wayDecks.ts BANK_CLIMB_MAX_M, lane crossing-grade 2026-11-14): holding the grade to the
 // bank tops closes most of the Kraaienplein and Langbroekdreef gaps on its own, so the before is without both.
-const on = new GroundStore(read, { roads: true }), dryOn = new GroundStore(read, { roads: true, dryWayDecks: true }), off = new GroundStore(read, { roads: true, bridgeGaps: false, pleinRails: false, bankClimb: false });
+// And without the fb-bridges-20261119 options (groundFixes.ts): splitting ground across the deck side blend (deckSideFine)
+// closes part of the Nauernaseweg, Van der Madeweg and Langbroekdreef gaps on its own.
+const on = new GroundStore(read, { roads: true }), dryOn = new GroundStore(read, { roads: true, dryWayDecks: true }), off = new GroundStore(read, { roads: true, bridgeGaps: false, pleinRails: false, bankClimb: false, deckSideFine: false, wetNearDecks: false, coveredTopTone: false, railCentre: false });
 await on.init(); await dryOn.init(); await off.init();
 const cellOn = cached(on), cellDry = cached(dryOn), cellOff = cached(off);
 let failed = 0;
