@@ -30,7 +30,16 @@ Options A (units as identity, elevations in segments at measured steps), B (T7 a
 
 Resumed on David's word (2026-11-19): ground floors, the Hoofddorpplein pilot and the Narva-eiland pilot are running from their branch heads, plus a new lane `lane/retail-pass-20261119` (a shopfront visual pass, then shop interiors starting with hair salons, behind a flag). Chain logos merged 2026-11-19 (see HISTORY); left over: The Bulldog's sign is small (1.6 m), and Bagels & Beans is plain cream capitals with no logo. #392 continuous rows and #393 De Pijp stay paused.
 
-Feedback triage finished 2026-11-19 (`docs/reports/feedback-triage-20261116.md`): 46 notes resolved, 31 still open. Proposed fix lanes, ranked, waiting on David: (1) HUD and tapping, 2 notes, small: the El Tawheed building can't be tapped (704240), and the START marker floats at Westerpark (d18eca). (2) Bridge seams, rails and water slits on 7 bridges. (3) Overlapping and floating windows, 6 notes. (4) Ground holes, plus lamp posts standing in water, 5 notes. (5) Looks and model requests, 11 notes; two are small police-station touch-ups.
+Feedback fixes 2026-11-19 (#396): the HUD, windows, models and ground lanes are merged (see HISTORY); the bridges lane is still running, with c361c8 added to it. Still open:
+- 1a223c: windows split at the turns of an angled front (`threeBuildingMesh` run layout).
+- 47d096: place Bellamyplein 28 (0363100012162005) in the bellamyplein face.
+- f8f282: Prinsengracht 136 is drawn in the wrong house style (rows/HouseSpec).
+- 0046bb: Haarlemmermeer; no open panorama to judge it against.
+- e41668: the repeating facade on the De Vaart slab; it is unknown which path paints its windows.
+- 8022e3: roof edge definition (parapet line or AO).
+- Ground detector top 10 around Centraal (rail-bed and paving overlaps); the Sixhaven marina basin is missing from the water layer.
+- Review and publish the staged street-art photos (`staging/street-art-commons.json`, 69; five flagged entries).
+- 284 near-black measured modern walls to check.
 
 
 ## Street life behind flags (2026-11-14) — ride review before any default

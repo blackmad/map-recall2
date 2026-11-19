@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Feedback fix round: windows, models, ground (2026-11-19, #396)
+
+- **Windows** (lane/fb-windows-20261119 4372b392e):
+  - LAB111's frames stand 8 cm off the brick, not 29 cm, and windows are drawn only where the brick reaches (e058c8).
+  - Random oriels and bay windows move onto whole window centres, or into the gap between windows (`projectionWindowFit.ts`, d99e51). Gate: `check:projection-windows`; 5,487 of 9,703 masses had cut a window, none do now.
+  - A partial window row at a lower neighbour's roofline becomes plain wall (`partyWallStoreys.ts`, 18a9d3).
+- **Models** (lane/fb-models-20261119 a3f1497ae):
+  - The OBA Spaarndammerbuurt brick is grey (#385).
+  - The near-black block at the note's pose was Spaarndammerdijk 1-11 (0363100012095236), whose measured wall averaged in its dark loggias. It is corrected through the sourced `modern-pand-wall-corrections.json`. 284 of the 5,079 measured modern walls are near-black and may need the same check.
+  - The window grid now shows on GLBs in the galleries (IJburg, 13fa7f).
+  - Politiebureau Oost Zeeburg has rear and NE windows (347e64).
+  - New bespoke Schutterstoren (4b1114).
+  - 69 street-art photos are staged from Wikidata/Commons; not published until reviewed.
+- **Ground** (lane/fb-ground-20261119 274755643):
+  - New OSM piers extract `piers-v1`, 4,006 ways, drawn as decks so the Haparandadam lamps stand on a jetty (ee2b30).
+  - The Spaarndammertunnel no longer gets a second mouth where OSM splits the ramp (`rampContinues`, eaf0aa).
+  - A broken-ground detector (`npm run ground:detect`) ranks ground faults city-wide. Its worst hits are rail-bed and paving overlaps around Centraal (c57c04).
+  - Pale roofs on pale paving (8022e3) match the orthophoto, so they were not recoloured.
+
+Still open: 1a223c (windows split at the turns of an angled front), 47d096 (Bellamyplein 28 held from its face), f8f282 (Prinsengracht 136 drawn in the wrong house style), 0046bb (Haarlemmermeer, no panorama), e41668 (repeating slab facade; the painting path is unknown), 8022e3, and the detector's top 10.
+
 ## START tag stops hanging in the sky; feedback check (2026-11-19, lane/fb-hud-20261119 2038fe147)
 
 Note d18eca: the START tag was drawn for the whole ride, so 200 m on it sat near the horizon at the top of the screen. A `StartTagLatch` (`vehicleScreenBox.ts`) now hides it for good 50 m from the start or at the first question. `projectWorld` now flags points behind the camera or past the far plane as `offView` and skips them, in both engines (`cameraMap.anchorInView`, `drawnProjection.groundInView`). Regression: `tests/e2e/start-tag-hides.spec.ts`. El Tawheed (704240) was already on the right pand (BAG 0363100012137097, OSM w276303116, Jan Hanzenstraat 114); this is now pinned in `surveyedFrame.test.ts`.
