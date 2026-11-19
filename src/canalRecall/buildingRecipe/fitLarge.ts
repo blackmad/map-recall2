@@ -134,6 +134,8 @@ export interface LargeHouseFit {
   crown: 'cornice' | 'flat' | 'gable';
   /** the 3DBAG eaves when row coherence clamped it to the row line */
   clampedFromM?: number;
+  /** intent `houses[].dress`: the house's own dressings and their slot (drawn clipped to [u0, u1]) */
+  dress?: StoneDressings & {slot: string};
 }
 export interface LargeBuildingRecipe {
   id: string; pandId: string; anchorRD: [number, number]; set: SurfaceSet; spec: BlockSpec;
@@ -584,10 +586,16 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
         }
         const nb = houseBays[k], pk = (u1 - u0) / nb, shape = h.windowShape ?? w.windowShape, upK = stK.heights.slice(1).filter((_, q) => plinthFactor === undefined || !plinthStoreys.includes(q + 1));
         const name = `${specSystem}h${k}`;
-        systems[name] = {...largeSystem(w.system, {...sysOpts, pitchM: pk, lines: stK.lines, bays: nb,
+        // the house's own window frames (absent: the group's frame slot, byte-identical)
+        let frameSlot: string | undefined;
+        if (h.frame) { frameSlot = `frame@g${gi}h${k}`; palette[frameSlot] = swatch(h.frame); }
+        systems[name] = {...largeSystem(w.system, {...sysOpts, pitchM: pk, lines: stK.lines, bays: nb, ...(frameSlot ? {slots: {...sysOpts.slots, frame: frameSlot}} : {}),
           ...(shape ? {shape: {w: shape.w, h: shape.h, sillM: r3(shape.sill * (upK[0] ?? stK.heights[0]))}} : {})}), minWidth: 0.5, bays: {first: r3(u0 - main.uMin + pk / 2), pitch: r3(pk), count: nb}};
+        // the house's own dressings: their own colour, else the group's dressing slot, else its stone
+        let dress: LargeHouseFit['dress'];
+        if (h.dress) { const ds = h.dress.colour ? `dress@g${gi}h${k}` : dressings?.slot ?? slots.stone; if (h.dress.colour) palette[ds] = swatch(h.dress.colour); dress = {...h.dress, slot: ds}; }
         const fit: LargeHouseFit = {u0: r3(u0), u1: r3(u1), system: name, slot, eavesM: eavesK, topM: r3(topK), storeys: stK.storeys, lines: stK.lines, bays: nb, bayOffset, pitchM: r3(pk),
-          crown: h.crown ?? (w.cornice ? 'cornice' : 'flat'), ...(eavesK !== raw[k] ? {clampedFromM: raw[k]} : {})};
+          crown: h.crown ?? (w.cornice ? 'cornice' : 'flat'), ...(eavesK !== raw[k] ? {clampedFromM: raw[k]} : {}), ...(dress ? {dress} : {})};
         bayOffset += nb;
         return fit;
       });

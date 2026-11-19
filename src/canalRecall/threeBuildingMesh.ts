@@ -22,6 +22,7 @@ import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from '.
 // Positions are metres east / north / up from a caller-supplied origin.
 
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
+import { wholeCellPieces } from './partyWallStoreys.js';
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, type WallCut, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { presetOpenings, recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, SPEC_SOUTERRAIN_GROUND_MIN, type FrontageBays, type StreetFacadeContext } from './streetFacadeRendering.js';
@@ -42,7 +43,8 @@ import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
 import type { ChainLook } from './shopfronts.js';
 import type { RetailTemplate } from './retailTemplates.js';
-import { retailFrontTris, retailDoor, doorHead, FRONT as RETAIL_FRONT } from './retailFront.js';
+import { retailFrontTris, retailDoor, doorHead, groundFloorFrontTris, FRONT as RETAIL_FRONT } from './retailFront.js';
+import type { GroundFloorDraw } from './groundFloor/types.js';
 import type { RedLightFront } from './groundParts/redLightFront.js';
 import type { BikeClass } from './retailBikes.js';
 import { steppedRun } from './retailHosting.js';
@@ -118,7 +120,7 @@ export type MeshBuilding = {
   /** A supermarket chain's own shopfront (fascia, logo panel, brand word) at its OSM point; replaces the signature. */
   chain?: { at: [number, number]; look: ChainLook };
   /** A shopfront template (lane retail-ground, `?retailGround=1`, retailFront.ts) at its OSM point; replaces the chain fascia. */
-  retailFront?: { template: RetailTemplate; at: [number, number]; word?: string; /** The node's nearest open wall carries the front (no street wall near it: retailHosting.ts). */ nearest?: boolean; /** The chain's logo on the logo layer (retailLogos.ts). */ logo?: { layer: number; rect: readonly [number, number, number, number]; aspect: number }; /** The logo layer, for the lettering cell (round 3c). */ letters?: number; /** The measured pui paint (round 4). */ paint?: string; /** A bike shop's class (round 6, retailBikes.ts). */ bike?: { cls: BikeClass; fleetHex?: string }; /** Round 7: measured awning colour (measure-awning.ts). */ awning?: string; /** Lane retail-real: the first goods and face layers (retailPages.ts). */ goods?: number; faces?: number; chain?: { fascia: string; letters: string; word: string }; /** Lane retail-real: lane R's audited window front (span [lng0, lat0, lng1, lat1] on the front line). */ redLight?: { span: [number, number, number, number] } & RedLightFront; /** Round 4: a per-pand frame colour read on a photo. */ frameHex?: string; /** Round 7: the chain's key in BRAND_STYLES (`?retailBrand=1`). */ brand?: string };
+  retailFront?: { template: RetailTemplate; at: [number, number]; word?: string; /** The node's nearest open wall carries the front (no street wall near it: retailHosting.ts). */ nearest?: boolean; /** The chain's logo on the logo layer (retailLogos.ts). */ logo?: { layer: number; rect: readonly [number, number, number, number]; aspect: number }; /** The logo layer, for the lettering cell (round 3c). */ letters?: number; /** The measured pui paint (round 4). */ paint?: string; /** A bike shop's class (round 6, retailBikes.ts). */ bike?: { cls: BikeClass; fleetHex?: string }; /** Round 7: measured awning colour (measure-awning.ts). */ awning?: string; /** Lane retail-real: the first goods and face layers (retailPages.ts). */ goods?: number; faces?: number; chain?: { fascia: string; letters: string; word: string }; /** Lane retail-real: lane R's audited window front (span [lng0, lat0, lng1, lat1] on the front line). */ redLight?: { span: [number, number, number, number] } & RedLightFront; /** Round 4: a per-pand frame colour read on a photo. */ frameHex?: string; /** Round 7: the chain's key in BRAND_STYLES (`?retailBrand=1`). */ brand?: string; /** Lane ground-floor (`?groundFloor=1`): the building's ground floor; the shop fills its openings. */ groundFloor?: GroundFloorDraw; /** Lane ground-floor: a held template drawn only for its record, with a neutral fill. */ neutral?: boolean };
   /** Draw the facade extras (hoist beams, stoops, balconies, bikes, roof terraces): facadeExtras.ts. */
   extras?: boolean;
   /** Texture layer for bare wall: gable faces, chimneys, cornices. */
@@ -474,7 +476,7 @@ export function chainFrontTris(chain: NonNullable<MeshBuilding['chain']>, candid
  * Round 2: a traced door (lane 1's row-front ground boxes, specRecipe.groundBoxes) inside the front is drawn set back,
  * and `cut` is the wall rectangle the mesher removes for its recess. Round 3: an untraced front's door is recessed too.
  */
-function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshBuilding, candidates: readonly Edge[], ring: readonly Edge[], base: number, groundM: number, origin: Origin, streetM?: (e: Edge) => number): { tris: SignTri[]; cut?: { e: Edge; cut: WallCut } } {
+function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshBuilding, candidates: readonly Edge[], ring: readonly Edge[], base: number, groundM: number, origin: Origin, streetM?: (e: Edge) => number): { tris: SignTri[]; cut?: { e: Edge; cut: WallCut }; cuts?: Array<{ e: Edge; cut: WallCut }> } {
   const kx = mPerDegLng(origin.lat), px = (front.at[0] - origin.lng) * kx, py = (front.at[1] - origin.lat) * M_PER_DEG_LAT;
   let best: Edge | null = null, bestD = Infinity;
   for (const e of candidates) {
@@ -484,10 +486,32 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
     if (d < bestD) { bestD = d; best = e; }
   }
   if (!best) return { tris: [] };
+  // Lane ground-floor fix round 2: a record read on a wall of spanM metres goes on the candidate wall whose run is nearest
+  // that length among the walls within GF_WALL_SLACK_M of the nearest one. The shop's point often stands nearer a short
+  // corner chamfer (Stach, Kerkstraat: 2.9 m beside its 7.6 m front) or a party wall over a lower neighbour (FEBO,
+  // Leidsestraat: the 20 m side over its neighbour's roof, 0.2 m nearer than the 6 m front), so the front went where
+  // no camera on the street sees it.
+  const spanM = front.groundFloor?.spanM;
+  if (spanM) {
+    let pick: { e: Edge; miss: number; d: number } | null = null;
+    for (const e of candidates) {
+      if (e.hole || e.len < 2.5) continue;
+      const dx = e.x1 - e.x0, dy = e.y1 - e.y0, t = Math.max(0, Math.min(1, ((px - e.x0) * dx + (py - e.y0) * dy) / (e.len * e.len)));
+      const d = Math.hypot(px - e.x0 - dx * t, py - e.y0 - dy * t);
+      if (d > bestD + GF_WALL_SLACK_M) continue;
+      const miss = Math.abs(steppedRun(e, ring).len - spanM);
+      if (!pick || miss < pick.miss - 0.3 || (Math.abs(miss - pick.miss) <= 0.3 && d < pick.d)) pick = { e, miss, d };
+    }
+    if (pick) best = pick.e;
+  }
   // Round 3b: the front spans the stepped run the nearest wall belongs to (retailHosting steppedRun), on its outermost line.
   const run = steppedRun(best, ring), shift = run.parts.find(p => p.e === best)?.t0 ?? 0;
   const e = { x0: run.x0, y0: run.y0, ux: run.ux, uy: run.uy, nx: run.nx, ny: run.ny };
   const L = run.len, along = Math.max(0, Math.min(L, (px - e.x0) * e.ux + (py - e.y0) * e.uy));
+  if (front.groundFloor) {
+    const sd = front.template === 'bike' && streetM ? streetM(best) : Infinity;
+    return groundFloorFrontOn(front, front.groundFloor, b, run, e, base, groundM, along, Number.isFinite(sd) ? Math.max(0, sd - GENERIC_STOOP.carriageHalfM) : undefined);
+  }
   const half = Math.min((L - 0.6) / 2, RETAIL_FRONT.maxSpanM / 2);
   let s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half)), s1 = s0 + 2 * half;
   // Lane retail-real: an audited red-light front spans its measured piece of the front line, projected on the run.
@@ -527,6 +551,32 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   if (!opening || !part || !tris.length) return { tris };
   const pl = part.e.len;
   return { tris, cut: { e: part.e, cut: { a0: (opening.a0 - part.t0) / pl, a1: (opening.a1 - part.t0) / pl, z0: base - 1, z1: doorHead(base, groundM), other: `${b.id}:retail-door` } } };
+}
+
+/**
+ * Lane ground-floor (`?groundFloor=1`): the front is the whole street run, its ground storey drawn from the record
+ * (retailFront.ts groundFloorFrontTris) and the wall cut away behind it on every part of the run. The storey's top is the
+ * record's first-floor line when it lies within GROUND_TOP_TRUST_M of the mesher's ground storey, else the mesher's.
+ */
+const GROUND_TOP_TRUST_M = 1.6;
+/** A ground-floor record's wall may stand this much further from the shop's point than the nearest wall (m). */
+export const GF_WALL_SLACK_M = 2.0;
+/** A run longer than the read's wall by this factor draws the front over the read's wall length only. */
+const GF_SPAN_SLACK = 1.25;
+function groundFloorFrontOn(front: NonNullable<MeshBuilding['retailFront']>, gf: GroundFloorDraw, b: MeshBuilding, run: ReturnType<typeof steppedRun<Edge>>, e: { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number }, base: number, groundM: number, along: number, pavementM?: number): { tris: SignTri[]; cuts?: Array<{ e: Edge; cut: WallCut }> } {
+  const L = run.len;
+  // The read's fractions are of its cut's wall (spanM); a run much longer than that (a corner block, a stepped run of
+  // several fronts) draws the front over spanM around the shop's point, not stretched over the whole run.
+  const span = gf.spanM && L > gf.spanM * GF_SPAN_SLACK + 0.5 ? gf.spanM : L - 0.04;
+  const s0 = Math.max(0.02, Math.min(L - 0.02 - span, along - span / 2)), s1 = s0 + span;
+  if (s1 - s0 < 1.2) return { tris: [] };
+  const topM = Math.max(2.6, Math.min(7, gf.groundTopM !== undefined && Math.abs(gf.groundTopM - groundM) <= GROUND_TOP_TRUST_M ? gf.groundTopM : groundM));
+  const shopCell = b.layers && b.layers.ground < BAY_LAYER_COUNT && (SHOP_KINDS as readonly string[]).includes(BAY_ENTRIES[b.layers.ground]?.kind ?? '') ? b.layers.ground : undefined;
+  const input = { template: front.template, word: front.word, seed: b.id, ...(front.logo ? { logo: front.logo } : {}), ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(front.frameHex ? { frameHex: front.frameHex } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}), ...(front.brand ? { brand: front.brand } : {}), ...(b.wallHex ? { wallHex: b.wallHex } : {}), ...(front.neutral ? { neutral: true } : {}), ...(pavementM !== undefined ? { pavementM } : {}) };
+  const tris = groundFloorFrontTris(input, gf, e, s0, s1, base, base + topM);
+  if (!tris.length) return { tris };
+  const cuts = run.parts.filter(p => p.t1 - p.t0 > 0.05 && p.backM < 0.6).map(p => ({ e: p.e, cut: { a0: Math.max(0, (Math.max(s0, p.t0) - p.t0) / p.e.len), a1: Math.min(1, (Math.min(s1, p.t1) - p.t0) / p.e.len), z0: base - 1, z1: base + topM, other: `${b.id}:ground-floor` } }));
+  return { tris, cuts };
 }
 
 const edgeKey = (x: number, y: number) => `${Math.round(x * 10)},${Math.round(y * 10)}`;
@@ -1159,13 +1209,15 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const street = exposed.filter(e => doorAllowed.has(e));
       return retailFrontOn(b.retailFront!, b, street.length && !b.retailFront!.nearest ? street : exposed.length ? exposed : edges, edges.filter(e => !e.hole), b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin, wallStreetM);
     })() : null;
-    const cutsFor = (e: Edge): readonly WallCut[] => retail?.cut?.e === e ? [...(wallCuts.get(e) ?? []), retail.cut.cut] : wallCuts.get(e) ?? [];
+    const cutsFor = (e: Edge): readonly WallCut[] => retail?.cuts?.some(c => c.e === e) ? [...(wallCuts.get(e) ?? []), ...retail.cuts.filter(c => c.e === e).map(c => c.cut)]
+      : retail?.cut?.e === e ? [...(wallCuts.get(e) ?? []), retail.cut.cut] : wallCuts.get(e) ?? [];
     // Clip conflicting wall rectangles while retaining their original UV grid.
-    const visibleQuads = quads.flatMap(q => subtractWallCuts(q, cutsFor(q.e), (p, r) => {
+    // A window row cut part-way by a lower neighbour's box keeps only whole rows (partyWallStoreys.ts, feedback 18a9d3).
+    const visibleQuads = quads.flatMap(q => wholeCellPieces(q, subtractWallCuts(q, cutsFor(q.e), (p, r) => {
       const u = (a: number) => p.u0 + (p.u1 - p.u0) * (a - p.along0) / (p.along1 - p.along0);
       const v = (z: number) => (p.v0 ?? 0) + (p.v1 - (p.v0 ?? 0)) * (z - p.z0) / (p.z1 - p.z0);
       return { ...p, ...r, u0: u(r.along0), u1: u(r.along1), v0: v(r.z0), v1: v(r.z1) };
-    })).flatMap(clampToSource);
+    }), b.plainLayer, q.e.len, (wallCuts.get(q.e) ?? []).map(c => c.z1))).flatMap(clampToSource);
     let roof: StreetCrownTri[] = cornice;
     if(b.surveyedEnvelope){
       roof.push(...b.surveyedEnvelope.roofTriangles.map(t=>{const r={...t,uv:t.p.map(p=>[p[0]/5,p[1]/5])as RoofTri['uv'],part:'trim' as const,hex:'#4a525d'};surveyedRoofTris.add(r);return r;}),...b.surveyedEnvelope.closureTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[2]/3])as RoofTri['uv'],part:'plate' as const,facadeLayer:b.plainLayer})));

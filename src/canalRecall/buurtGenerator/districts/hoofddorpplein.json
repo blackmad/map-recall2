@@ -1,0 +1,385 @@
+{
+ "district": "hoofddorpplein",
+ "title": "Hoofddorppleinbuurt (Plan Zuid west: Westlandgracht-, Suriname-, Legmeerplein- and Aalsmeerwegbuurt)",
+ "buurten": [
+  "KA01",
+  "KA02",
+  "KA03",
+  "KA04",
+  "KA05",
+  "KA06"
+ ],
+ "years": [
+  1915,
+  1940
+ ],
+ "evidence": [
+  "scope report docs/reports/zuid-block-types-scope-20261116.md (9367f1672): 36 KA blocks, about 1,700 pands, 0 % drawn by a district kit; panorama read of KA05 (Aalsmeerweg 073914) and KA03 (Hoofddorpweg 095655): canted erkers, chequer frieze, overhanging eaves, attic strip",
+  "#398 (2026-11-19): AHN4 front eaves over 3DBAG's line separates the two roof kinds 3DBAG cannot: Heemstedestraat 129033's tiles start 0.4-0.8 m over the line, the attic-band rows' wall stands 1.5-2.5 m over it (measured/hoofddorpplein.json, measure-roofs.ts)"
+ ],
+ "design": {
+  "groundM": 3.1,
+  "storeyM": 3.0,
+  "axisM": 2.03,
+  "windowShare": 0.71,
+  "windows": "casement-toplight",
+  "whiteFrames": true,
+  "heads": {
+   "shape": "flat",
+   "dressing": "none"
+  },
+  "sills": false,
+  "cornice": "simple",
+  "crown": "cornice",
+  "wall": {
+   "material": "brick",
+   "family": "brown-brick",
+   "hex": "#5b4e47",
+   "evidence": "pool of the four brown-brick rows sheeted here (Achillesstraat #352d2a, Herculesstraat #665c57, Minervalaan #56443a, Sportstraat #7b6b5f, each calibrated through the renderer on its sheet), averaged; a row with its own photo draws its own (rowNotes)"
+  },
+  "roofStorey": {
+   "kind": "none",
+   "dormersPerFront": 0
+  },
+  "extras": []
+ },
+ "families": [
+  {
+   "id": "hoofddorp-three",
+   "storeys": 3,
+   "label": "three-storey row (eaves 8.4-10.6 m)"
+  },
+  {
+   "id": "hoofddorp-four",
+   "storeys": 4,
+   "label": "four-storey block (eaves 10.6-13.6 m)"
+  },
+  {
+   "id": "hoofddorp-five",
+   "storeys": 5,
+   "label": "five-storey block (eaves 13.6-16.6 m)"
+  }
+ ],
+ "notDrawn": [
+  {
+   "component": "district-attic-band",
+   "what": "a district-wide plain attic band (pattern 'plain', the kit draws it) fits Aalsmeerweg 093112, Legmeerplein 095655 and Aalsmeerweg 073886, where 3DBAG's eaves is the top storey's head, but not Heemstedestraat 129033 (recording_2025-08-01_09-43-20_01419): four storeys under a tiled pitched roof with dormers, 3DBAG's 13.7 m is the real eaves. Not stated district-wide until a reader tells the two apart (roof form and the AHN front rise); stated per row or street only. Candidate band: {\"heightM\": 2.8, \"pattern\": \"plain\", \"cellM\": 0.14, \"lightHex\": \"#c9b37f\", \"lights\": {\"widthM\": 0.7, \"heightM\": 0.7, \"pitchM\": 0.85, \"footM\": 0.65, \"group\": 2}}"
+  },
+  {
+   "component": "erker-into-band",
+   "what": "the erkers rise about 0.6 m (Aalsmeerweg, white cap) to 1.3 m (Legmeerplein, brick crown) into the attic band; the kit caps them at the series line"
+  },
+  {
+   "component": "erkers-district",
+   "what": "BAG footprints carry the canted erkers on 24 of 1,428 drawn pands; every other row draws flat fronts unless a row note states its erkers"
+  },
+  {
+   "component": "pattern-rows-stripes",
+   "what": "Legmeerplein's pale courses run over and between the lights only; the kit stripes the whole band"
+  },
+  {
+   "component": "dentil-parapet",
+   "what": "Aalsmeerweg 093112 ends in a brick dentil course with no eaves; the kit's band without eaves wears a white cap"
+  },
+  {
+   "component": "portiek-stairs",
+   "what": "the arched portieks' inner stairs and side doors are drawn as an arched opening only"
+  }
+ ],
+ "rowNotes": {
+  "legmeerplein-095655": {
+   "chequer": {
+    "heightM": 2.4,
+    "pattern": "stripes",
+    "cellM": 0.15,
+    "lightHex": "#8e7766",
+    "lights": {
+     "widthM": 0.8,
+     "heightM": 0.75,
+     "pitchM": 1.2,
+     "footM": 0.4,
+     "group": 4
+    }
+   },
+   "eaves": {
+    "overhangM": 0.6,
+    "fasciaM": 0.3,
+    "frieze": false
+   },
+   "erkers": {
+    "095655": [
+     {
+      "a0": 0.62,
+      "a1": 0.98,
+      "depthM": 0.6,
+      "faceM": 2.0
+     }
+    ],
+    "079948": [
+     {
+      "a0": 0.02,
+      "a1": 0.46,
+      "depthM": 0.6,
+      "faceM": 1.9
+     }
+    ],
+    "065521": [
+     {
+      "a0": 0.31,
+      "a1": 0.98,
+      "depthM": 0.6,
+      "faceM": 2.4
+     }
+    ],
+    "064238": [
+     {
+      "a0": 0.02,
+      "a1": 0.46,
+      "depthM": 0.6,
+      "faceM": 1.9
+     }
+    ],
+    "141345": [
+     {
+      "a0": 0.52,
+      "a1": 0.92,
+      "depthM": 0.6,
+      "faceM": 1.6
+     }
+    ],
+    "078894": [
+     {
+      "a0": 0.08,
+      "a1": 0.51,
+      "depthM": 0.6,
+      "faceM": 1.6
+     }
+    ],
+    "113656": [
+     {
+      "a0": 0.6,
+      "a1": 0.98,
+      "depthM": 0.6,
+      "faceM": 1.5
+     }
+    ],
+    "123880": [
+     {
+      "a0": 0.14,
+      "a1": 0.61,
+      "depthM": 0.6,
+      "faceM": 2.0
+     }
+    ],
+    "095743": [
+     {
+      "a0": 0.64,
+      "a1": 0.98,
+      "depthM": 0.6,
+      "faceM": 1.3
+     }
+    ],
+    "127339": [
+     {
+      "a0": 0.02,
+      "a1": 0.4,
+      "depthM": 0.6,
+      "faceM": 1.4
+     },
+     {
+      "a0": 0.45,
+      "a1": 0.88,
+      "depthM": 0.6,
+      "faceM": 1.7
+     }
+    ]
+   },
+   "members": {
+    "079948": {
+     "entries": [
+      {
+       "a": 0.78,
+       "kind": "arched",
+       "widthM": 2.6
+      }
+     ]
+    },
+    "141345": {
+     "entries": [
+      {
+       "a": 0.22,
+       "kind": "arched",
+       "widthM": 2.6
+      }
+     ]
+    },
+    "113656": {
+     "entries": [
+      {
+       "a": 0.2,
+       "kind": "arched",
+       "widthM": 2.6
+      }
+     ]
+    },
+    "095743": {
+     "entries": [
+      {
+       "a": 0.22,
+       "kind": "arched",
+       "widthM": 2.6
+      }
+     ]
+    },
+    "124302": {
+     "entries": [
+      {
+       "a": 0.25,
+       "kind": "arched",
+       "widthM": 2.6
+      }
+     ]
+    }
+   },
+   "evidence": "panorama 2025_10_01_07_20_50_00161 (2025-10-01, 30 px/m, rectified on the row line): four storeys to 3DBAG's 12.8 m line; over it a brick attic band to the eaves soffit at 15.2 m, pale and brown courses about 0.15 m, a group of four square white-framed lights 0.8 x 0.75 m at 1.2 m from 13.2 m centred on each member; a broad white eaves slab about 0.6 m out; canted white-framed erkers over the three upper storeys (positions read member by member; most pair across a party wall); round-arched open portieks about 2.6 m wide with the stair inside, at the members listed; 3DBAG reads 095655 at 15 m (five storeys) but the photo shows it at its neighbours' four storeys and line (topM 12.8)",
+   "topM": 12.8
+  },
+  "aalsmeerweg-073886": {
+   "chequer": {
+    "heightM": 2.1,
+    "pattern": "chequer",
+    "cellM": 0.14,
+    "rows": 3,
+    "lightHex": "#c9b37f",
+    "darkHex": "#2e2522",
+    "lights": {
+     "widthM": 0.75,
+     "heightM": 0.62,
+     "pitchM": 1.22,
+     "footM": 0.9
+    }
+   },
+   "eaves": {
+    "overhangM": 0.5,
+    "fasciaM": 0.3,
+    "frieze": false
+   },
+   "erkers": {
+    "146451": [
+     {
+      "a0": 0.3,
+      "a1": 0.95,
+      "depthM": 0.6,
+      "faceM": 2.3
+     }
+    ],
+    "114971": [
+     {
+      "a0": 0.53,
+      "a1": 0.98,
+      "depthM": 0.6,
+      "faceM": 1.8
+     }
+    ],
+    "075550": [
+     {
+      "a0": 0.14,
+      "a1": 0.55,
+      "depthM": 0.6,
+      "faceM": 1.6
+     }
+    ],
+    "155021": [
+     {
+      "a0": 0.57,
+      "a1": 0.98,
+      "depthM": 0.6,
+      "faceM": 1.6
+     }
+    ],
+    "104421": [
+     {
+      "a0": 0.58,
+      "a1": 0.98,
+      "depthM": 0.6,
+      "faceM": 1.6
+     }
+    ],
+    "105392": [
+     {
+      "a0": 0.06,
+      "a1": 0.6,
+      "depthM": 0.6,
+      "faceM": 2.2
+     }
+    ],
+    "136548": [
+     {
+      "a0": 0.68,
+      "a1": 0.98,
+      "depthM": 0.6,
+      "faceM": 1.0
+     }
+    ]
+   },
+   "members": {
+    "114971": {
+     "entries": [
+      {
+       "a": 0.12,
+       "kind": "arched",
+       "widthM": 1.3
+      }
+     ]
+    },
+    "155021": {
+     "entries": [
+      {
+       "a": 0.12,
+       "kind": "arched",
+       "widthM": 1.3
+      }
+     ]
+    },
+    "104421": {
+     "entries": [
+      {
+       "a": 0.12,
+       "kind": "arched",
+       "widthM": 1.3
+      }
+     ]
+    },
+    "136548": {
+     "entries": [
+      {
+       "a": 0.12,
+       "kind": "arched",
+       "widthM": 1.3
+      }
+     ]
+    }
+   },
+   "evidence": "panorama TMX7316010203-002226_pano_0000_000738 (2021-07-09, 40 px/m, members 146451-136548; trees hide the ends): four storeys to 3DBAG's 13.0 m line; over it a brick attic band to about 15.1 m with a row of white-framed lights 0.75 x 0.62 m at 1.22 m from 13.9 m, cream and near-black squares about 0.14 m in three courses between the lights under the soffit; a thin white eaves slab; canted white-framed erkers over the three upper storeys with a white cap at about 13.6 m; narrow round-arched portieks (1.3 m) at the left of every other member. Erkers and arches outside the visible members are not stated"
+  }
+ },
+ "pitched": {
+  "minRiseM": 2.5,
+  "maxRiseM": 6,
+  "pitchDeg": 55,
+  "material": "tile",
+  "dormersPerFront": 1,
+  "dormerKind": "plain",
+  "hoist": false,
+  "evidence": "Heemstedestraat 129033 panorama recording_2025-08-01_09-43-20_01419 (2025-08-01, 30 px/m): four storeys of brown brick, a white eaves cornice at about 13.6 m (3DBAG 13.7 m), red tiles over it with a white box dormer on most members. 3DBAG reads slanted with a 4.4-5.8 m rise on this row and on the attic-band rows alike (Aalsmeerweg 073886, Legmeerplein 095655), so only AHN4 decides (streetNoteOnly, frontEavesM)",
+  "roofHex": "#9e5b42",
+  "roofHexEvidence": "the Plan Zuid red pantile measured in overcast light on Biesboschstraat (Rivierenbuurt round 4); Heemstedestraat's tiles read the same red-orange hue in sun",
+  "eavesM": 0.45,
+  "eavesFrieze": false,
+  "streetNoteOnly": true,
+  "capRiseM": 2.0,
+  "capRiseEvidence": "Heemstedestraat 129033: about 2 m of tiles seen over the cornice on the rectified photo (28 px/m)",
+  "frontEavesM": 1.0,
+  "kneeM": 1.5
+ }
+}

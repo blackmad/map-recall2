@@ -22,6 +22,8 @@ export interface TunnelSite {
     floorBelowReliefM?: number;
     /** A portal stands within 20 m of this point. */
     portalNear?: LngLat;
+    /** No portal stands within 5 m of these points (a headwall over the open ramp, feedback eaf0aa). */
+    noPortalAt?: LngLat[];
     /** The ground over the tunnel stays the measured relief here (quay, water side, park, plaza). */
     groundIntact?: LngLat[];
     /** The riding height along this polyline (the routed way through, run on 10 m past each end) climbs at most this over its higher end, metres. */
@@ -110,6 +112,14 @@ export const TUNNEL_SITES: readonly TunnelSite[] = [
     label: 'Spaarndammertunnel west ramp',
     at: [4.87445, 52.39304],
     expect: { kind: 'ramp', motor: true, minWallM: 1, portalNear: [4.87517, 52.39302] },
+  },
+  {
+    // Feedback eaf0aa (2026-11-19): "tunnel entrance looks bad". OSM splits the westbound ramp (852161466 | 751641351)
+    // 15 m short of the mouth; the covered-span search drew a second headwall and lid across the open trench there.
+    id: 'spaarndammertunnel-mouth-eaf0aa',
+    label: 'Spaarndammertunnel west mouth: one headwall at the portal, none over the open ramp at the way split',
+    at: [4.87505, 52.39312],
+    expect: { kind: 'ramp', motor: true, minWallM: 1, portalNear: [4.87516, 52.39307], noPortalAt: [[4.874938, 52.393116]] },
   },
   {
     id: 'michiel-de-ruijtertunnel-west',

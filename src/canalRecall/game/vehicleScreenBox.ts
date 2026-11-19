@@ -71,3 +71,27 @@ export function startTagCentreY(centreX: number, defaultCentreY: number, pill: {
   if (!boxesIntersect(box, avoid)) return defaultCentreY;
   return Math.min(defaultCentreY, avoid.top - gap - pill.height / 2);
 }
+
+/** The START tag goes once the rider has been this far from the start (feedback d18eca). */
+export const START_TAG_HIDE_M = 50;
+
+/**
+ * Whether the START tag is still wanted (feedback d18eca, 2026-11-19). It was drawn for the whole ride, so a start
+ * far behind the rider rode along at the top edge of the screen. It now goes for good once the rider has been
+ * `START_TAG_HIDE_M` from the start or the first question has been asked, and comes back only for a new start.
+ */
+export class StartTagLatch {
+  private key = '';
+  private gone = false;
+
+  visible(start: { x: number; y: number }, rider: { x: number; y: number } | null, asked: boolean, pxPerMetre: number): boolean {
+    const key = `${start.x},${start.y}`;
+    if (key !== this.key) { this.key = key; this.gone = false; }
+    if (this.gone) return false;
+    const metres = rider && Number.isFinite(rider.x) && Number.isFinite(rider.y)
+      ? Math.hypot(rider.x - start.x, rider.y - start.y) / pxPerMetre : 0;
+    if (asked || metres > START_TAG_HIDE_M) this.gone = true;
+    return !this.gone;
+  }
+}
+

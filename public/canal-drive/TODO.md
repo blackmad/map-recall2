@@ -15,51 +15,36 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
-## Design units (P0, approved 2026-11-19): `docs/handoffs/design-units-plan-20261119.md` — phase 1, Ring layer only, in progress
+## Design units (P0): option A approved on #397 — Ring gate #399 waiting on David
 
-The design-units plan supersedes #392 (continuous rows) and #393 (De Pijp): their staged belt, Centrum and De Pijp looks stay held and their lanes stay paused.
+David chose **A** on #397 (2026-11-19): units are the identity everywhere, elevations draw in segments, and Centrum plots stay separate unless something joins them. The Ring layer comes first. The staged belt, Centrum and De Pijp looks stay held, and #392 and #393 stay paused.
 
-**Phase 0 (done; `docs/reports/design-units-phase0-20261119.md`, #397).** Phase 0 stopped at its gate. The planning session then chose phase 1 on the 19th-century Ring layer only, built so option A (segments inside Gordel and Centrum units) can drop in later.
-
-**Phase 1 data (done, on branch `integrate/design-units-20261119`; not yet on main).**
-- Model: unit → segments → members. A segment has one elevation, one eaves line and one roof.
-- Heights come from the AHN4 front-edge band (`scripts/design-units/ahn-fronts.ts`): 13,685 of 13,894 Ring-layer members read. 3DBAG per-pand eaves are never used to split.
-- `segments.ts` rules:
-  - split at a storey-sized step (2.5 m or more) that holds on both sides;
-  - a member 0.8–2.5 m off the line is clamped (`rowCoherence`);
-  - a member a storey or more off its run leaves the segment and draws as today.
-- Result: 3,235 multi-pand segments over 13,730 pands. In 1,941 of them, 3DBAG eaves spread more than 0.8 m today.
-- The flag-only extract is `public/data/extracts/amsterdam/design-units-v1/segments.json`.
-- Regression tests (`npm run test:design-units`):
-  - Rustenburgerstraat 3 segments, Van Ostadestraat 4;
-  - Marnixplein one segment (expectation for the Centrum layer);
-  - Goudsbloemstraat one segment: 172514 is level on AHN and in the photo; its extra 3DBAG height is a hoist dormer.
-- Archive: source-data `archive/ordekaart-20261119` (aa044df59).
-
-**Phase 1 renderer (in progress).**
-- Lane branch `lane/design-units-render-20261119`, worktree `design-units-render-20261119`, port 4723.
-- Behind `?designUnits=1`, default off and byte-identical when off:
-  - seeds keyed by segment;
-  - one eaves line and one roof per segment;
-  - bay rhythm continuous along slices;
-  - exceptions clamped.
-- Gordel and Centrum pands draw as today.
-
-**Gate (David's), not yet shot.**
-- About 20 Ring-layer blocks: `artifacts/design-units/staging/gate-blocks.json`, ranked by ride metres. It includes Rustenburgerstraat and Van Ostadestraat, and spans De Pijp, Oud-West, Oud-Zuid, Oud-Oost and Westerpark.
-- Each block is shot desktop and phone, `?world=live` beside `?designUnits=1`, with each pair diffed first, then filed as a needs-david issue.
-- This tier fixes "several houses where there is one building". It does not add the detail missed on #393.
-- **Blocker:** the machine swaps under another project's image job. Wait until the disk has 15 GB or more free, load is under 30 and swap use is under 10 GB before any browser run or bundle build.
-
-**Not now:** Gordel or Centrum drawing, the T7 answer key, photo-read batches.
-
-Owner: the design-units overseer session (worktree `integrator-design-units-20261119`, port 4720).
+- **Ring (tier C): on main behind `?designUnits=1`, default off.**
+  - 3,235 segments; AHN-measured eaves and roofs; one design per segment; era windows with light frames; mid-range local brick.
+  - Gate: **#399**, 18 blocks on desktop and phone with Node sheets for the two rows. It asks David block by block: better, the same or worse than today.
+  - His verdict decides whether the flag goes on by default. Do nothing more on the Ring until he answers.
+- **What the Ring tier does not draw:** bands, arched portals, stoops, French balconies, wall dormers. Wall colour is seeded where there is no photo read. These are the next kit work once #399 is answered.
+- **Under A, data only so far (staged in `artifacts/design-units/staging/`; `docs/reports/design-units-phase0-20261119.md`):**
+  - **Gordel:** with `GORDEL_RULE`, 27% of the units holding liked rows still disagree with them. Next step: let published records split segments.
+  - **Centrum joins:** 425 segments; Marnixplein and Goudsbloemstraat each come out as one segment. 18 of the 60 photo-read "separate" runs get joined; tighten the AHN-plus-year join before anything draws.
+  - **T8 ledger, Ring fronts with the flag on:** A 3%, B 2%, C 85%, D 10%.
+- **Gordel and Centrum renderer work waits for David's verdict on #399.**
+- Owner: the design-units integrator. Worktree `integrator-design-units-20261119`, port 4720. Hand-off: `docs/handoffs/design-units-inflight-20261119.md`.
 
 ## Paused lanes, 2026-11-16 evening — resumed 2026-11-19 (P0): `docs/handoffs/inflight-20261116.md`
 
 Resumed on David's word (2026-11-19): ground floors, the Hoofddorpplein pilot and the Narva-eiland pilot are running from their branch heads, plus a new lane `lane/retail-pass-20261119` (a shopfront visual pass, then shop interiors starting with hair salons, behind a flag). Chain logos merged 2026-11-19 (see HISTORY); left over: The Bulldog's sign is small (1.6 m), and Bagels & Beans is plain cream capitals with no logo. #392 continuous rows and #393 De Pijp stay paused.
 
-Feedback triage finished 2026-11-19 (`docs/reports/feedback-triage-20261116.md`): 46 notes resolved, 31 still open. Proposed fix lanes, ranked, waiting on David: (1) HUD and tapping, 2 notes, small: the El Tawheed building can't be tapped (704240), and the START marker floats at Westerpark (d18eca). (2) Bridge seams, rails and water slits on 7 bridges. (3) Overlapping and floating windows, 6 notes. (4) Ground holes, plus lamp posts standing in water, 5 notes. (5) Looks and model requests, 11 notes; two are small police-station touch-ups.
+Feedback fixes 2026-11-19 (#396): the HUD, windows, models and ground lanes are merged (see HISTORY); the bridges lane is still running, with c361c8 added to it. Still open:
+- 1a223c: windows split at the turns of an angled front (`threeBuildingMesh` run layout).
+- 47d096: place Bellamyplein 28 (0363100012162005) in the bellamyplein face.
+- f8f282: Prinsengracht 136 is drawn in the wrong house style (rows/HouseSpec).
+- 0046bb: Haarlemmermeer; no open panorama to judge it against.
+- e41668: the repeating facade on the De Vaart slab; it is unknown which path paints its windows.
+- 8022e3: roof edge definition (parapet line or AO).
+- Ground detector top 10 around Centraal (rail-bed and paving overlaps); the Sixhaven marina basin is missing from the water layer.
+- Review and publish the staged street-art photos (`staging/street-art-commons.json`, 69; five flagged entries).
+- 284 near-black measured modern walls to check.
 
 
 ## Street life behind flags (2026-11-14) — ride review before any default
@@ -69,7 +54,7 @@ Feedback triage finished 2026-11-19 (`docs/reports/feedback-triage-20261116.md`)
   - Bike shops: since round w bikes park perpendicular and need about 1.3 m of run and 0.3 m of door clearance. The gallery's 0.68 m strip right of the door is still too narrow for one. The pavement width each real bike shop gets from the mesher (wall to street centreline less 1.5 m) has not been sampled; check that most centre bike shops get the perpendicular row, not the side-on fallback under 2.5 m.
   - `shopProps` seed keys vary only in their last character, which barely moves the hash. Crates, plants and mirror flags vary less than intended. Move the varying part into the middle of the key, as the bike keys now do.
   - Inside props are pressed into a 2 cm relief, because the wall is not cut behind the glass. **Real 3D shop interiors** (cut the ground-storey wall behind each shop window, a 2.5 m room with real props, the shader room from `lane/shop-interiors-20261116` for distant fronts) were proposed to David on 2026-11-16 and are awaiting his go.
-  - **Ground-floor pilot running:** `lane/ground-floor-20261116`. The building draws its own ground floor (piers, arches, plinth, stone) and the shop fills the openings, behind `?groundFloor=1`. It covers 40 calibration reads, including The Sting 175382 and FEBO 177960, and a blind test on 25. The 1,418-pand read batch waits for David's go. Plan: `~/.claude/plans/prancy-dreaming-swing.md`.
+  - **Ground-floor pilot (`?groundFloor=1`), merged 2026-11-19, blind 14–9–2.** Next: draw glazing first when the read's finish is light but its openings are glazed; keep the template fascia when the read says fascia and the band fits. AH Bloedstraat needs ground floors at install level. Today's default world still draws template-only fronts on the nearest wall, which puts FEBO Leidsestraat on an unseen party wall; extending the span rule to the default would change the default world, so that needs a decision. The 1,418-pand batch waits for David.
 - **Round t follow-ups (2026-11-16).** (1) Buurt `omitExtras`: the generator now writes it on every series (no sills/frames/anchors/plinth/downpipe unless stated); round t kept main's series, so the next Rivierenbuurt/Apollo publish needs a blind of omitExtras on vs off first. (2) Brand styles for Kruidvat (colour), Dirk (red frame and blade the photo lacks) and McDonald's (green vs black) lost; AH, Coffee Company and Domino's were never posed; re-measure before adding to `ACCEPTED_BRANDS`. (3) Shop interiors parked on lane/shop-interiors-20261116 (blind 5-4-4): washed-out glass by day, supermarket shelves read as books, FEBO test used the wrong pand. (4) Room Mate Aitana held: reflective glass helps (3/5) but the builder's heavy mullion grid must go. (5) FEBO Korte Niezel's building draws brown brick, the photo is pale stone (wall look). (6) Ground-floor plan (shops fitted into arches, piers and stone plinths, The Sting Kalverstraat) waits for David's go.
 - **Markets** `?markets=1` (Albert Cuyp tunnel canopies, Ten Kate parasols): canvas sag/seams, fuller goods, clutter between stalls; no market days (no clock).
 - **Terraces** `?terraces=1` (2,169 permit terraces, 32k units, own engine only): squares read grid-regular; Rembrandtplein tall glass screens; parasol colours from panoramas; 't Smalle deck not in the permit polygon.

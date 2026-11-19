@@ -1208,7 +1208,21 @@ export interface LargeHouseIntent {
   windowShape?: LargeWindowShape;
   /** the photo skyline confirms this house's 3DBAG eaves off the row line: no row-coherence clamp */
   ownEaves?: boolean;
+  /** the house's window frame colour (pale frames on one house, dark on the next; default the group's frame) */
+  frame?: string;
+  /**
+   * Dressings of this house only, clipped to its span (lane narva-pilot-20261116; Narva-eiland's rows of 2018-2019
+   * fronts on one BAG pand: pale bands at the storey lines of one front, speklagen on the next, brick pilasters between
+   * the window columns of a third, pale surrounds round the tall windows of a fourth). The group's `dressings`
+   * vocabulary (blockBuilding/dressings.ts) restricted to the parts that live inside one front: `bands`, `stripes`,
+   * `surrounds`, `heads` and `piers` (pilasters at the house's own bay joints, `ends` at its two edges, in the house's
+   * wall brick unless `stone`); `colour` the dressing colour (default the group's dressing colour, else its stone).
+   * Absent: byte-identical.
+   */
+  dress?: LargeHouseDress;
 }
+export type LargeHouseDress = Pick<StoneDressings, 'colour' | 'bands' | 'stripes' | 'surrounds' | 'heads' | 'piers'>;
+export const LARGE_HOUSE_DRESS_KEYS = ['colour', 'bands', 'stripes', 'surrounds', 'heads', 'piers'] as const;
 /** One ribbon-storey entry (`LargeWallIntent.ribbonStoreys`); proportions of the storey and the bay only, never metres. */
 export interface RibbonStoreyIntent {
   storeys: number[];
@@ -1667,6 +1681,19 @@ export interface LargeBuildingIntent {
   footprint?: 'lod22' | 'bag' | 'core';
   /** Lift 3DBAG wall and roof vertices under the ground to it and drop faces left on the ground (opt-in; `largeSurfaceSet`). */
   groundClamp?: boolean;
+  /**
+   * Several LoD2.2 blocks on one BAG pand whose outline also spans the ground between them (Narva-eiland 252366, 2021:
+   * two parallel rows on one garage deck, BAG 4,832 m2 vs LoD2.2 2,967 m2; lane narva-pilot-20261116). The
+   * footprint-vs-bag gate then compares the model with the LoD2.2 survey footprint (IoU >= 0.90) and requires it to lie
+   * inside the BAG outline (>= 95 %). Absent: the BAG IoU gate, unchanged.
+   */
+  footprintParts?: boolean;
+  /**
+   * Building-tile OSM feature ids the runtime must hide with this pand when the tiles lack the pand itself and draw it as
+   * OSM outlines the BAG index does not link (Narva-eiland 252366: w725476475, w936343679). install-large checks each is
+   * a tile feature over the footprint (installAliases.ts). Absent: the catalogue entry is unchanged.
+   */
+  osmAliases?: string[];
   /**
    * Triangle budget for this house's large-tier gate, in place of the 12,000 default (the user-approved raised cap is
    * 40,000 for a tall block whose facade rhythm, loggias and crown the 12k kit cannot draw). It only raises the budget:

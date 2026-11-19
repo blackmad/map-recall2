@@ -1,5 +1,5 @@
 {
-  "toolchain": "3962b58e1918b723eeed7856fd28e3694d59b03753e655bbb1838f21dd0d8a9d",
+  "toolchain": "a087d458f7f8b49dcae4194c4af50d3716b7f07cff485196c191754a5efc220c",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -269,7 +269,7 @@
     "krasnapolsky": "b4c1c17e2c364b38affbf6f9c9a7c7e316f2ed19b30c6f506301e7ca458ca443",
     "krijtberg": "2ece64f46aba5ad5e3f67c25096c99bd7f93a082ad3a350ea2106da2d7a1e032",
     "kriterion": "e4f82ae222f519079c478d818a5ca8c6007ca57ba8b2920094e5c625f663a07e",
-    "lab111": "98692571c96dab7cb374bb6ca399eb21a4c054b1388667074737a0c8758da964",
+    "lab111": "74bb2332b0f5ab0c915a72b82903a1a481135ff568c59b103f63d71a159509b9",
     "lekstraat-synagoge": "1b38f3834add46bd7b0012679f7bd3417766e13aab534fc493ef61147aacee03",
     "lensbomen": "cc80066a6df66a292c007d8c02da17eacd203fc61b3d70c42a4630d35a05de46",
     "levend-paardenmuseum": "758031aaba39bbc01c2b7ce59ae1b2887774d34cf1632f56b95036c2cded4e01",
@@ -331,7 +331,7 @@
     "noorderkerk": "743861a3593754629bcce0fe7ad9070a446f34be3dc57364b68fbb4e80d1f95e",
     "noorderparkbad": "6b38a5a1d14116c915f47c617aa8e8de9378b58bcaa35f117be6456013c7a194",
     "oba-oosterdok": "12270bc16967849c3f89ad42e7d74ecabb8e24a53a1f334543af114f6e92287b",
-    "oba-spaarndammerbuurt": "632f5e64b1ee296abe0cb02ec285498589b64aa4c155ff98adf0c1e24f234950",
+    "oba-spaarndammerbuurt": "5bdccfe86de639ac503198e0140de1cf331b6ca74a40b3b5c06967a437483a1f",
     "oba-staatsliedenbuurt": "1f92db71c60edbf0c7962fb9c4a5248788e40aaefac57607fe5131bb34e4439a",
     "obrechtkerk": "ee576772e0f02efc37aed5d162ccf9ceac7e7eadcf73fc5d7ea5e9ae5591c46b",
     "occii": "568a88cecb14aa616e02fff390e2cdab58827ad8c60cdfa13430de7aef78bdec",
@@ -406,6 +406,7 @@
     "scheltema": "52b770af2304e59684e5b1e686604987c683508aa7c31946d9d5005127b6af0b",
     "schiller-rembrandtplein": "09426a73805893adc989b9ff5b0dc0ced8d7e4faa637a46895386b51fc7ec1b5",
     "schreierstoren": "7ff1b8d35f70c8348915d6912adf6ea13f652582f11100b8426c2d7c9cfb1b21",
+    "schutterstoren": "fe15151733d03c884968067c75f737eb4f007d11cbfa91965a37bbee0c1bae14",
     "sea-palace": "87a20060cd4b2a667c8e314d7af23ad59f291251569f8751a3ce7ea47bf6bcd9",
     "sexmuseum-venustempel": "b12c5c91f25d5b17e4aee2196c91944a0a7871349984ba073a077b450f00d8a3",
     "shell-technology-centre": "eda5a421f1176019d2b55285de17cebcc283909197cd180c885a368fe86c93a6",

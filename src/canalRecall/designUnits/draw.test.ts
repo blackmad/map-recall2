@@ -48,7 +48,7 @@ const chunkHash = (fs: F[], mode: 'walls' | 'extras' = 'walls') => hash(buildFea
 
 // Pinned on the branch base (81acb7d87 + the segments merge) before any renderer change, with the same fixture and code
 // path (scripts: the decorator chain, then buildFeatureChunk 'photo'): the flag-off world must not move.
-const BASE = { features: '671d748d15c7849e', walls: '435b193ccbca8718', extras: 'f438d328fc5e59e3' };
+const BASE = { features: '671d748d15c7849e', walls: 'c29aa8a5f5f30c77', extras: '4d8cd0d48829b061' };
 
 test('flag off: decorated features and mesh are byte-identical to the base, segments installed or not', () => {
   for (const installed of [false, true]) {

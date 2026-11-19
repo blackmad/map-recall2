@@ -818,6 +818,10 @@ export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within
       for (let m = 8; !tunnel && c.motor && m <= COVER_REACH_M; m += 4) { tunnel = tunnelAt(m); if (tunnel) coverM = m; }
       const under = crossed[at === 0 ? 0 : 1];
       if (!tunnel && !(under && c.motor)) continue;
+      // The ramp runs on past this end as another cut (OSM splits a ramp's way short of the mouth): the mouth is that
+      // cut's, not a headwall over the open trench here (eaf0aa, the Spaarndammertunnel: way 852161466 ends 15 m short
+      // of the portal and 751641351 carries the ramp on; the covered-span search put a second headwall across the trench).
+      if (!under && rampContinues(pieces.map(p => p.cut), c, at, d)) continue;
       const ahead = (m: number) => ground(c.x[at] + d[0] * m, c.y[at] + d[1] * m);
       let top = under ? Math.max(c.rimL[at], c.rimR[at]) : coverM ? NaN : median([3, 4, 5, 6].map(ahead));
       // The roof further on: a sun screen or truss over the carriageway (Piet Hein east: OSM's tunnel starts 10 m
@@ -860,6 +864,26 @@ export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within
   mergeNeighbours(cuts, ground);
   if (opts?.portalSanity) saneMouths(cuts, ways);
   return cuts;
+}
+
+/** Two cut ends this close (metres) are one ramp carried on (rampContinues). */
+export const RAMP_CHAIN_M = 1.5;
+
+/**
+ * Another cut carries the ramp on past `c`'s end `at` (direction `d`, into the tunnel): one of its ends lies within
+ * RAMP_CHAIN_M of this end and the cut runs on from there along `d` (its far end at least 2 m ahead).
+ */
+export function rampContinues(cuts: readonly Cut[], c: Cut, at: number, d: Vec2): boolean {
+  const ex = c.x[at], ey = c.y[at];
+  return cuts.some(o => {
+    if (o === c) return false;
+    const n = o.x.length;
+    for (const [e, f] of [[0, n - 1], [n - 1, 0]] as const) {
+      if (Math.hypot(o.x[e] - ex, o.y[e] - ey) > RAMP_CHAIN_M) continue;
+      if ((o.x[f] - ex) * d[0] + (o.y[f] - ey) * d[1] >= 2) return true;
+    }
+    return false;
+  });
 }
 
 /**

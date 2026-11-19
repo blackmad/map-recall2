@@ -96,19 +96,23 @@ export interface OrielSet { bays: number[]; from: number; to: number; deep?: num
   /** the bay's body in the wall brick (a brick bay stack with stone only at corbel and cap); absent = all stone */
   brick?: boolean }
 
-export function drawDressings(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, d: StoneDressings, slots: DressingSlots, main: boolean, top: number): number {
-  const p = c.p, levels = info.levels, holes = [...c.holes.values()].flat() as Hole[], base = Math.max(0, p.vMin);
+export function drawDressings(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, d: StoneDressings, slots: DressingSlots, main: boolean, top: number, clip?: [number, number]): number {
+  // `clip` (a house of a row split, `houses[].dress`): only the openings inside [u0, u1], bands and stripes cut at its
+  // edges, piers at the joints inside it and `ends` at its edges. Absent: the whole panel, byte-identical.
+  const p = c.p, levels = info.levels, base = Math.max(0, p.vMin);
+  const holes = (clip ? ([...c.holes.values()].flat() as Hole[]).filter(h => h[0] >= clip[0] - 0.01 && h[1] <= clip[1] + 0.01) : [...c.holes.values()].flat()) as Hole[];
+  const outside: [number, number][] = clip ? [[p.uMin - 1, clip[0]], [clip[1], p.uMax + 1]] : [];
   let n = 0;
   // Oriels first: what they cover gets no band, head or quoin.
   const oriels = main && d.oriels ? (Array.isArray(d.oriels) ? d.oriels : [d.oriels]).flatMap(o => drawOriels(c, info, holes, o, slots, top)) : [];
   n += oriels.length;
   const covered = (h: Hole) => oriels.some(o => h[0] >= o[0] - 0.01 && h[1] <= o[1] + 0.01 && h[2] >= o[2] - 0.01 && h[3] <= o[3] + 0.01);
   const free = holes.filter(h => !covered(h));
-  const orielSkip = (v0: number, v1: number): [number, number][] => oriels.filter(o => o[2] < v1 && o[3] > v0).map(o => [o[0] - 0.02, o[1] + 0.02]);
+  const orielSkip = (v0: number, v1: number): [number, number][] => [...oriels.filter(o => o[2] < v1 && o[3] > v0).map(o => [o[0] - 0.02, o[1] + 0.02] as [number, number]), ...outside];
   const storeys = Math.max(0, levels.length - 1);
   const pierOut = main && d.piers ? (d.piers.deep ? d.piers.deep * Math.min(...info.cells.map(x => x.u1 - x.u0)) : DRESS.pier.out) : 0;
   let pierSpans: [number, number][] = [];
-  if (main && d.piers) { const r = drawPiers(c, info, free, d.piers, slots, top); n += r.n; pierSpans = r.spans; }
+  if (main && d.piers) { const r = drawPiers(c, info, free, d.piers, slots, top, clip); n += r.n; pierSpans = r.spans; }
   if (main && d.corbels) n += drawCorbels(c, levels, free, d.corbels, slots, top, pierSpans);
 
   if (d.bands) {
@@ -186,8 +190,10 @@ export function drawDressings(c: PanelCtx, info: { levels: number[]; cells: Cell
  * opt-in: a `base` block and a `capital` (a necking ring under a wider moulded block) in the dressing stone, `flutes`
  * raised fillets up the shaft, the shaft in the dressing stone (`stone`). Returns the parts drawn and each pier's u span.
  */
-function drawPiers(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, holes: Hole[], pr: NonNullable<StoneDressings['piers']>, slots: DressingSlots, top: number): { n: number; spans: [number, number][] } {
-  const p = c.p, from = pr.from ?? 1, v0 = Math.max(p.vMin, info.levels[from] ?? p.vMax), joints = jointUs(info.cells), spans: [number, number][] = [];
+function drawPiers(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, holes: Hole[], pr: NonNullable<StoneDressings['piers']>, slots: DressingSlots, top: number, clip?: [number, number]): { n: number; spans: [number, number][] } {
+  const p = c.p, from = pr.from ?? 1, v0 = Math.max(p.vMin, info.levels[from] ?? p.vMax), spans: [number, number][] = [];
+  // a clipped house: its joints only (its own first bay's left edge is the house edge, not a joint)
+  const joints = clip ? jointUs(info.cells).filter(u => u > clip[0] + 0.3 && u < clip[1] - 0.3) : jointUs(info.cells);
   const v1 = pr.to === undefined ? top : Math.min(top, info.levels[pr.to + 1] ?? top), slot = pr.stone ? slots.stone : slots.wall;
   let n = 0;
   if (v1 - v0 < 1) return { n: 0, spans };
@@ -220,7 +226,7 @@ function drawPiers(c: PanelCtx, info: { levels: number[]; cells: Cell[] }, holes
   }
   if (pr.ends) for (const side of [0, 1]) {
     // an end pier stands inside the panel edge (the capital's overhang must stay on the wall), narrowed to clear the openings
-    const over = pr.capital ? C.over : pr.base ? B.over : 0, edge = side === 0 ? p.uMin + over + 0.02 : p.uMax - over - 0.02;
+    const over = pr.capital ? C.over : pr.base ? B.over : 0, lo = clip ? clip[0] : p.uMin, hi = clip ? clip[1] : p.uMax, edge = side === 0 ? lo + over + 0.02 : hi - over - 0.02;
     let w = (pr.w ?? DRESS.pier.w) * pitch;
     for (const h of holes) if (h[3] > v0 && h[2] < v1) w = Math.min(w, side === 0 ? h[0] - 0.04 - edge : edge - h[1] - 0.04);
     if (w < 0.2) continue;

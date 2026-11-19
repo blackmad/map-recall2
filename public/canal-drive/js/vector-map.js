@@ -3487,7 +3487,11 @@ class VectorBasemap {
       projected.y -= lift[1] / 2 * el.clientHeight;
     }
     const rect = canvas.getBoundingClientRect();
-    return { x: projected.x * CANVAS_W / rect.width, y: projected.y * CANVAS_H / rect.height };
+    const out = { x: projected.x * CANVAS_W / rect.width, y: projected.y * CANVAS_H / rect.height };
+    // Behind the camera or past the far plane the projection is mirrored into the sky: screen labels skip it (d18eca).
+    const drawn = this._drawn();
+    if (drawn.inView && !drawn.inView([lon, lat])) out.offView = true;
+    return out;
   }
 
   isWater(worldX, worldY, loader) {

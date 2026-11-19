@@ -5,6 +5,8 @@
  *
  *   node --import tsx scripts/buurt-generators/publish.ts --districts=rivierenbuurt,apollo-stadion            dry run
  *   node --import tsx scripts/buurt-generators/publish.ts --districts=rivierenbuurt,apollo-stadion --write    write it
+ *   node --import tsx scripts/buurt-generators/publish.ts --districts=hoofddorpplein --rows=legmeerplein-095655,aalsmeerweg-073886 \
+ *        --approved='David on #398, "good - publish"'    a subset: only those generator rows (publishRows.ts)
  *
  * Input: data/buurt-generators/<district>/row-front.json, the reviewed copy of the generator's staged output
  * (`scripts/buurt-generators/generate.ts --district=<d>` writes artifacts/buurt-generators/<d>/row-front.json;
@@ -25,10 +27,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describedPands } from './generate.ts';
 import { specOnlyPands } from '../belt-look/generate.ts';
+import { recordsOfRows } from './publishRows.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const districts = (arg('districts') ?? '').split(',').filter(Boolean);
 const write = process.argv.includes('--write');
+// --rows: publish only these generator rows of the (single) district; --approved: who approved it, for the source line.
+const rows = (arg('rows') ?? '').split(',').filter(Boolean), approved = arg('approved') ?? 'David on #390, "Looks good"';
+if (rows.length && districts.length !== 1) { console.error('--rows takes exactly one district'); process.exit(2); }
 if (!districts.length) { console.error('publish --districts=<d>[,<d>] [--write]'); process.exit(2); }
 const OUT = 'public/data/front-records/row-front.json';
 type Rec = { pandId: string; sources?: Record<string, string>; buurtKit?: unknown; [k: string]: unknown };
@@ -41,14 +47,15 @@ const report: string[] = [];
 for (const d of districts) {
   const file = path.join('data/buurt-generators', d, 'row-front.json');
   if (!fs.existsSync(file)) throw new Error(`${d}: not staged (${file}); run generate.ts --district=${d} --stage-data`);
-  const staged = JSON.parse(fs.readFileSync(file, 'utf8')) as { generatedAt: string; records: Rec[] };
+  const all = JSON.parse(fs.readFileSync(file, 'utf8')) as { generatedAt: string; records: Rec[] };
+  const staged = rows.length ? { ...all, records: recordsOfRows(all.records, rows) } : all;
   const ids = new Set(staged.records.map(r => r.pandId));
   const before = records.length;
   records = records.filter(r => !(r.buurtKit && ids.has(r.pandId)));
   const dropped = staged.records.filter(r => described.has(r.pandId));
   const add = staged.records.filter(r => !described.has(r.pandId)).map(r => ({ ...r, sources: { record: r.sources?.record ?? `buurt-generator ${d}` } }));
   records.push(...add);
-  sources.push(`buurt-generator ${d} (staged ${staged.generatedAt}; approved by David on #390, "Looks good")`);
+  sources.push(`buurt-generator ${d} (staged ${staged.generatedAt}${rows.length ? `; rows ${rows.join(', ')}` : ''}; approved by ${approved})`);
   report.push(`${d}: ${add.length} records (${before - (records.length - add.length)} earlier buurt records replaced), ${dropped.length} dropped as described now${dropped.length ? `: ${dropped.slice(0, 12).map(r => r.pandId).join(', ')}${dropped.length > 12 ? ', ...' : ''}` : ''}`);
 }
 const out = { schema: current.schema, source: sources, records };

@@ -1,5 +1,70 @@
 # Canal Recall — what is built
 
+## Design units, Ring tier C behind a flag; gate #399; A approved (2026-11-19, integrate/design-units-20261119)
+
+With `?designUnits=1`, every multi-pand Ring segment draws as one building. All of it was measured against Van Ostadestraat and Rustenburgerstraat:
+
+- **One design per segment.** A member's street wall dresses only parts that repeat per window, storey or plot (`DESIGN_MEMBER_COMPONENTS`). The extras budget had run out partway along wide plots, which left dressed heads on only some columns and balconettes on single windows. Members also get no guessed roof furniture.
+- **Era windows (1860–1919).**
+  - The plot is the module: 2 columns under 4.8 m, 3 up to 7.5 m.
+  - Tall sashes under a transom light, windows at 55% of the pitch.
+  - Light frames always. Roemer Visscherstraat's three dark-frame photo reads were wrong; the photo shows cream frames.
+- **Roofs from AHN.** A slate roof storey with dormers only where AHN shows roof mass 1.8 m or more above the eaves line (77 of 3,235 segments). Otherwise a flat lid with nothing above the cornice. No hips.
+- **Wall.** One brick per segment from the measured pool within 1 km: lightness between the 40th and 85th percentile, brick-red only.
+- **Gate.** Gate #399 has 18 blocks on desktop and phone. A HouseSpec-described member keeps its own description; that explains the three unchanged frames.
+
+David approved option A on #397. The Gordel, Centrum and T8 dry runs are in the phase report.
+
+**Flag off.** Output is byte-identical with and without the segments loaded. The flag-off BASE hashes were re-taken after merging main, because fb-windows (party-wall storeys and projection fit) moved walls and extras.
+
+## Feedback fix round: windows, models, ground (2026-11-19, #396)
+
+- **Windows** (lane/fb-windows-20261119 4372b392e):
+  - LAB111's frames stand 8 cm off the brick, not 29 cm, and windows are drawn only where the brick reaches (e058c8).
+  - Random oriels and bay windows move onto whole window centres, or into the gap between windows (`projectionWindowFit.ts`, d99e51). Gate: `check:projection-windows`; 5,487 of 9,703 masses had cut a window, none do now.
+  - A partial window row at a lower neighbour's roofline becomes plain wall (`partyWallStoreys.ts`, 18a9d3).
+- **Models** (lane/fb-models-20261119 a3f1497ae):
+  - The OBA Spaarndammerbuurt brick is grey (#385).
+  - The near-black block at the note's pose was Spaarndammerdijk 1-11 (0363100012095236), whose measured wall averaged in its dark loggias. It is corrected through the sourced `modern-pand-wall-corrections.json`. 284 of the 5,079 measured modern walls are near-black and may need the same check.
+  - The window grid now shows on GLBs in the galleries (IJburg, 13fa7f).
+  - Politiebureau Oost Zeeburg has rear and NE windows (347e64).
+  - New bespoke Schutterstoren (4b1114).
+  - 69 street-art photos are staged from Wikidata/Commons; not published until reviewed.
+- **Ground** (lane/fb-ground-20261119 274755643):
+  - New OSM piers extract `piers-v1`, 4,006 ways, drawn as decks so the Haparandadam lamps stand on a jetty (ee2b30).
+  - The Spaarndammertunnel no longer gets a second mouth where OSM splits the ramp (`rampContinues`, eaf0aa).
+  - A broken-ground detector (`npm run ground:detect`) ranks ground faults city-wide. Its worst hits are rail-bed and paving overlaps around Centraal (c57c04).
+  - Pale roofs on pale paving (8022e3) match the orthophoto, so they were not recoloured.
+
+Still open: 1a223c (windows split at the turns of an angled front), 47d096 (Bellamyplein 28 held from its face), f8f282 (Prinsengracht 136 drawn in the wrong house style), 0046bb (Haarlemmermeer, no panorama), e41668 (repeating slab facade; the painting path is unknown), 8022e3, and the detector's top 10.
+
+## START tag stops hanging in the sky; feedback check (2026-11-19, lane/fb-hud-20261119 2038fe147)
+
+Note d18eca: the START tag was drawn for the whole ride, so 200 m on it sat near the horizon at the top of the screen. A `StartTagLatch` (`vehicleScreenBox.ts`) now hides it for good 50 m from the start or at the first question. `projectWorld` now flags points behind the camera or past the far plane as `offView` and skips them, in both engines (`cameraMap.anchorInView`, `drawnProjection.groundInView`). Regression: `tests/e2e/start-tag-hides.spec.ts`. El Tawheed (704240) was already on the right pand (BAG 0363100012137097, OSM w276303116, Jan Hanzenstraat 114); this is now pinned in `surveyedFrame.test.ts`.
+
+The feedback check (`docs/reports/feedback-verify-20261119.md`) found 4 of the 31 open notes fixed on main, 3 partly fixed and 24 open. Fix lanes are running for bridges, windows, ground and models.
+
+## Hoofddorppleinbuurt: the first attic-band rows published (2026-11-19, lane/hoofddorpplein-pilot-20261116 3b57b86ae)
+
+David approved two rows on #398 ("Legmeerplein + Aalsmeerweg good - publish"): Legmeerplein 095655 (11 members) and Aalsmeerweg 073886 (20 members), 31 records, published with the new `publish.ts --rows=` filter (`publishRows.ts`, in `test:house-spec`). They draw a chequer- or stripe-patterned attic band with a row of lights above the 3DBAG eaves, white erker caps and arched portieks. In blind comparisons the new render won 3 of 3 (round 1) and 2 of 2 (pitched round).
+
+Heemstedestraat drew flat because the library had no pitched roof and 3DBAG reads every block in the district as slanted. The kit now separates them by AHN front eaves against the 3DBAG line (`frontEavesM`), and counts storeys under a pitched roof below a knee wall (`kneeM`). Both are optional; Rivierenbuurt is byte-identical. Heemstedestraat and the other 134 pitched rows are not published; they wait on David (#398). The kit still cannot say: erkers rising into the band, partial stripes, a dentil end without eaves, white bay windows on rows without notes, per-row roof colour, or a wall over the line under a pitched roof.
+
+## Narva-eiland pilot installed (2026-11-19, lane/narva-pilot-20261116 03c285162)
+
+Three Houthavens buildings are now kit models with separately designed fronts on one BAG pand. In a blind comparison against today at pinned poses, the new render won 5 of 5. The pands are 250155, 247037 and 252366; 252366 is a 2021 pand missing from the building tiles, installed with the OSM aliases w725476475 and w936343679. 247038 is held on an open-edge 3DBAG shell. New opt-in kit fields, each byte-identical when absent: per-house window `frame` and `dress`, `footprintParts` (one pand over several LoD2.2 blocks) and `osmAliases`. The world was recompiled (`--no-policy --shell`, world:verify clean), and the regenerated frontages fix the CI `audit-frontages` baseline that had been red since 2026-11-16. The kit still cannot say: the generic brick between measured fronts makes the row read as coloured inserts; diamond brick panels; per-house loggias; a single wide window in one house.
+
+## Ground floors that fit the building, fix round 2 (2026-11-19, lane/ground-floor-20261116 98fc17523)
+
+Behind `?groundFloor=1` only; the default and baked worlds are unchanged. Blind round 3 over 25 pands: new 14, today 9, tie 2 (round 2 was 8–6–4). Fixes:
+- Frames now face the wall the game draws the front on (`scripts/ground-floor/pose-walls.ts`). Jumbo, Hugo Boss, Henri Willig and Simon Levelt had been framing a side wall or a neighbour.
+- With a record, the front goes on the wall whose length is closest to the read's span. The nearest-wall rule had put FEBO Leidsestraat on a party wall above a neighbour's roof, and Stach on a 2.9 m corner chamfer.
+- The sign keeps its band above the openings; with no room left, a named shop gets a board inside the opening (`groundFloorSignBand`).
+
+`ground-floors.json` is published (41 pands), and `groundFloor.test.ts` is in `test:shopfront-gate`. Two goldens (ah, bruna) were re-taken after the chain-logo merge.
+
+Still losing: fascias drawn where the photo has none (Etos); light stucco finishes covering glazed openings (Simon Levelt, Sissy-Boy); and a template fascia that reads closer than a board inside the opening (Henri Willig, De Slegte, Manfield). AH Bloedstraat is an installed model that brings its own front.
+
 ## Design units, phase 1 data: Ring-layer segments on the AHN front line (2026-11-19)
 
 Phase 0 showed that "one elevation per unit" fails for Gordel blocks and some Centrum objects. Phase 1 therefore runs on the 19th-century Ring layer only, with a unit → segments → members model, so Gordel and Centrum can later get segments inside their units (option A).

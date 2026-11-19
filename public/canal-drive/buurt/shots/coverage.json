@@ -244,7 +244,7 @@
  },
  {
   "slug": "houthaven",
-  "buildings": 13,
+  "buildings": 16,
   "kits": 0,
   "facts": 8,
   "origins": 45,
@@ -442,7 +442,7 @@
  },
  {
   "slug": "narva-eiland",
-  "buildings": 0,
+  "buildings": 3,
   "kits": 0,
   "facts": 1,
   "origins": 3,
@@ -451,7 +451,6 @@
   "plan": 2,
   "lacks": [
    "photo borrowed from Houthaven",
-   "buildings",
    "bridges"
   ]
  },

@@ -1,0 +1,17 @@
+{
+ "rule": "Hand check of 10 pilot reads against their cut: each read's openings drawn as bars between the detected cyan uprights (handcheck/<id>.jpg in the lane's staging dir), then every field judged. Opening positions count correct when every edge is within 0.05 of the front's width. Same reader as the reads (no independent second reader in the pilot budget): a self-check, an upper bound on accuracy.",
+ "date": "2026-11-16",
+ "pands": ["0363100012175382", "0363100012167574", "0363100012167505", "0363100012178241", "0363100012179192", "0363100012175273", "0363100012169650", "0363100012175144", "0363100012179490", "0363100012179469"],
+ "fields": {
+  "openingCount": { "correct": 10, "of": 10 },
+  "openingPositions": { "correct": 9, "of": 10, "misses": { "0363100012179490": "Jongejans: the four openings sit 0.05-0.07 of the width left of the photo's (first window a0 0.16 read, 0.23 photo)" } },
+  "openingKind": { "correct": 10, "of": 10 },
+  "head": { "correct": 9, "of": 10, "misses": { "0363100012179490": "Jongejans: the two doors appear to carry round fanlights like the windows; read flat" } },
+  "piers": { "correct": 10, "of": 10 },
+  "plinth": { "correct": 9, "of": 10, "misses": { "0363100012175144": "Petit gateau: a black painted riser, read as a stone band" } },
+  "groundFinish": { "correct": 10, "of": 10, "note": "material only; hexes were picked by eye, not measured" },
+  "fascia": { "correct": 10, "of": 10 },
+  "sign": { "correct": 10, "of": 10, "note": "Damrak 'BANK' gilt letters in the arch head counted as board-in-opening" },
+  "groundTopM": { "correct": null, "of": 10, "note": "not checkable from one cut without a measured scale" }
+ }
+}

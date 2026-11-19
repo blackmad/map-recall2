@@ -1584,6 +1584,9 @@ export class OwnGround {
     const [x, y] = toLocal(lngLat[0], lngLat[1]);
     if (!this.store.reliefCovered(x, y)) return 0;
     if (!this.store.hasRelief(x, y)) return undefined;
+    // On a pier over the water (piers.ts, feedback ee2b30): its deck, not the relief the DTM interpolates over the water.
+    const pier = this.store.pierTopAt(x, y);
+    if (pier !== undefined) return pier;
     return Math.max(this.store.surface.ground(x, y), this.store.surface.height(x, y));
   }
 

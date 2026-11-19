@@ -2354,6 +2354,22 @@
     if (!boxesIntersect(box, avoid)) return defaultCentreY;
     return Math.min(defaultCentreY, avoid.top - gap - pill.height / 2);
   }
+  var START_TAG_HIDE_M = 50;
+  var StartTagLatch = class {
+    key = "";
+    gone = false;
+    visible(start, rider, asked, pxPerMetre) {
+      const key = `${start.x},${start.y}`;
+      if (key !== this.key) {
+        this.key = key;
+        this.gone = false;
+      }
+      if (this.gone) return false;
+      const metres = rider && Number.isFinite(rider.x) && Number.isFinite(rider.y) ? Math.hypot(rider.x - start.x, rider.y - start.y) / pxPerMetre : 0;
+      if (asked || metres > START_TAG_HIDE_M) this.gone = true;
+      return !this.gone;
+    }
+  };
 
   // src/canalRecall/game/coldOpenReview.ts
   var COLD_OPEN_ENABLED = false;
@@ -11470,6 +11486,7 @@
         vehicleBox = glyphBox(at.x, at.y, (Math.max(p.length || 30, p.width || 12) / 2 * 1.35 + 3) * (this.camera.zoom || 1));
       }
       this.track.placeStartTag = (centreX, defaultCentreY, pill) => startTagCentreY(centreX, defaultCentreY, pill, vehicleBox);
+      this.track.startTagGone = !(this._startTagLatch ||= new StartTagLatch()).visible(this.track.startPoint, player, this.quizAttempts > 0 || !!this.quizPromptName, PIXELS_PER_METER);
       const asked = this.quizPromptName || this.quizCandidateName || "";
       const withheld = withheldNames(this);
       const shownText = (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text);

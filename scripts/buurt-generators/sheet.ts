@@ -4,6 +4,7 @@
  *
  *   node --import tsx scripts/buurt-generators/sheet.ts --district=rivierenbuurt --row=<row id> \
  *        --pano=<pano id> --pano-search=<cached panorama search .json> [--ppm=40] [--out=<file.jpg>] [--records=<row-front.json>]
+ *        [--members=<from>:<to>]
  *
  * photo   the panorama rectified onto the line from the first member's left front corner to the last member's right
  *         one (scripts/pand-reference/rectify.ts; the equirectangular_full link is dropped so only the cached medium
@@ -47,7 +48,9 @@ if (!record) throw new Error(`no panorama ${panoId} in ${search}`);
 delete record._links.equirectangular_full; // read the cached medium image only: no download
 
 // The row's front line in RD, members projected onto it.
-const ids: string[] = row.members.map((m: any) => m.pandId);
+// --members=<from>:<to>: a window of the row's members (0-based, end exclusive), for a long row one panorama cannot see whole.
+const win = arg('members')?.split(':').map(Number);
+const ids: string[] = row.members.map((m: any) => m.pandId).slice(win?.[0] ?? 0, win?.[1] ?? undefined);
 const A = lngLatToRd(lineOf(ids[0])[0]), B = lngLatToRd(lineOf(ids[ids.length - 1])[1]);
 const len = Math.hypot(B.x - A.x, B.y - A.y), ux = (B.x - A.x) / len, uy = (B.y - A.y) / len;
 const along = (p: { x: number; y: number }) => (p.x - A.x) * ux + (p.y - A.y) * uy;

@@ -16,7 +16,10 @@ export function buildIndependentCinemaLandmark(id:string,_w:number,_d:number,b:B
  const body=(r:T.Vector2[],hh:number,c:C='brick',open=false)=>{if(r.length<3)return;const g=new T.ExtrudeGeometry(new T.Shape(r),{depth:hh,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,hh,0);add(open?openTop(g,hh):g,c);};
  const roof=(r:T.Vector2[],base:number,height:(x:number,z:number)=>number,c:C='slate')=>{if(r.length<3)return;const g=new T.ShapeGeometry(new T.Shape(r)),p=g.getAttribute('position');for(let i=0;i<p.count;i++){const x=p.getX(i),z=p.getY(i);p.setXYZ(i,x,base+height(x,z),z);}const idx=g.getIndex()!;for(let i=0;i<idx.count;i+=3){const n=idx.getX(i);idx.setX(i,idx.getX(i+2));idx.setX(i+2,n);}g.computeVertexNormals();add(g,c);};
  const flat=(r:T.Vector2[],y:number)=>roof(r,y,()=>0);
- const sash=(x:number,y:number,z:number,w:number,hh:number,back=false)=>{const d=back?-1:1;box(x,y,z,w+.18,hh+.16,.15,'stone');box(x,y+.08,z+d*.12,w,hh,.06,'glass');box(x,y+.08,z+d*.17,.05,hh,.05,'frame');for(let yy=y+.08+.7;yy<y+hh;yy+=.75)box(x,yy,z+d*.17,w,.045,.05,'frame');};
+ // `wall`: the brick face the window sits on. Feedback e058c8 (2026-11-13, "these sticking-out windows look weird"): the
+ // sashes stood 0.29 m proud of the brick (stone slab 15 cm deep centred 9 cm out, the bars 17 cm out). Now the stone
+ // surround sinks 2 cm into the brick and stands 8 cm proud, the glass 3.5 cm in front of it, the bars 3 cm in front of that.
+ const sash=(x:number,y:number,wall:number,w:number,hh:number,back=false)=>{const d=back?-1:1;box(x,y,wall+d*.03,w+.18,hh+.16,.1,'stone');box(x,y+.08,wall+d*.1,w,hh,.03,'glass');box(x,y+.08,wall+d*.13,.05,hh,.03,'frame');for(let yy=y+.08+.7;yy<y+hh;yy+=.75)box(x,yy,wall+d*.13,w,.045,.03,'frame');};
  const arch=(x:number,y:number,z:number,w:number,hh:number,c:C,back=false)=>{const r=w/2,sh=new T.Shape();sh.moveTo(-r,0);sh.lineTo(r,0);sh.lineTo(r,hh-r);sh.absarc(0,hh-r,r,0,Math.PI,false);sh.closePath();const g=new T.ShapeGeometry(sh);if(back)g.rotateY(Math.PI);add(g,c,x,y,z);};
  const beam=(x1:number,y1:number,z1:number,x2:number,y2:number,z2:number,w:number,c:C)=>{const p=new T.Vector3(x1,y1,z1),q=new T.Vector3(x2,y2,z2),g=new T.BoxGeometry(w,p.distanceTo(q),w),m=new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),q.clone().sub(p).normalize()));g.applyMatrix4(m);add(g,c,...p.add(q).multiplyScalar(.5).toArray() as [number,number,number]);};
  if(id==='lab111'){
@@ -25,22 +28,28 @@ export function buildIndependentCinemaLandmark(id:string,_w:number,_d:number,b:B
   const main=region(-3,29,-16,5.5);body(main,16.7,'brick',true);flat(main,16.7);
   const west=region(-29,-11,-19,19);body(west,16.0,'brick',true);flat(west,16.0);
   const tower=region(-11.2,-3.1,-3,8.1);body(tower,21.5,'brick',true);flat(tower,21.5);
-  const front=5.18;for(let x=.8;x<24;x+=3.4)for(const y of [1.0,4.7,8.4,12.1])sash(x,y,front+.1,2.35,2.65);
+  // The brick's top over a plan point (the tallest body containing it). Feedback e058c8: the rear's top row stood at 12.1-14.8 m
+  // over the 11.8 m link between the west wing and the main wing (x -11..-2.2), so those sashes hung in the air in front of the
+  // main wing's taller wall and crossed its windows where the wings meet. A sash is drawn only where the brick reaches over it.
+  const inside=(r:T.Vector2[],x:number,z:number)=>{let c=false;for(let i=0,j=r.length-1;i<r.length;j=i++){const p=r[i],q=r[j];if((p.y>z)!==(q.y>z)&&x<(q.x-p.x)*(z-p.y)/(q.y-p.y)+p.x)c=!c;}return c;};
+  const wallTopAt=(x:number,z:number)=>Math.max(...([[ring,11.8],[main,16.7],[west,16.0],[tower,21.5]] as Array<[T.Vector2[],number]>).map(([r,hh])=>r.length>=3&&inside(r,x,z)?hh:0));
+  const front=5.18;for(let x=.8;x<24;x+=3.4)for(const y of [1.0,4.7,8.4,12.1])sash(x,y,front,2.35,2.65);
   // Rear sashes follow the mapped rear wall (it steps between the wings): windows are set where the footprint really is, skipped where it is not.
   const rearAt=(x:number)=>{let z=Infinity;for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];if((p.x-x)*(q.x-x)<=0&&p.x!==q.x)z=Math.min(z,p.y+(q.y-p.y)*(x-p.x)/(q.x-p.x));}return z;};
-  for(let x=-25;x<24;x+=3.6){const z0=rearAt(x);if(!isFinite(z0)||Math.abs(rearAt(x-1.2)-z0)>.08||Math.abs(rearAt(x+1.2)-z0)>.08)continue;for(const y of [1.1,4.7,8.4,12.1])sash(x,y,z0-.09,2.4,2.55,true);}
+  for(let x=-25;x<24;x+=3.6){const z0=rearAt(x);if(!isFinite(z0)||Math.abs(rearAt(x-1.3)-z0)>.08||Math.abs(rearAt(x+1.3)-z0)>.08)continue;for(const y of [1.1,4.7,8.4,12.1])if(wallTopAt(x-1.3,z0+.3)>=y+2.9&&wallTopAt(x+1.3,z0+.3)>=y+2.9)sash(x,y,z0,2.4,2.55,true);}
   // West elevation: the wall steps (x -27.5, -24.3, -21.4 on the mapped footprint), so each bay stands on the westmost wall at its own z.
   const westAt=(z:number)=>{let x=Infinity;for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];if((p.y-z)*(q.y-z)<=0&&p.y!==q.y)x=Math.min(x,p.x+(q.x-p.x)*(z-p.y)/(q.y-p.y));}return x;};
-  for(const z of [-14,-9,-4,1,6,11,16])for(const y of [1.2,4.9,8.6,12.2]){const wx=westAt(z);if(!isFinite(wx))continue;box(wx-.03,y,z,.13,2.55,2.3,'glass');box(wx-.1,y+2.6,z,.22,.15,2.5,'stone');}
+  for(const z of [-14,-9,-4,1,6,11,16])for(const y of [1.2,4.9,8.6,12.2]){const wx=westAt(z);if(!isFinite(wx)||Math.abs(westAt(z-1.3)-wx)>.08||Math.abs(westAt(z+1.3)-wx)>.08||wallTopAt(wx+.3,z)<y+2.9)continue;box(wx-.03,y,z,.13,2.55,2.3,'glass');box(wx-.1,y+2.6,z,.22,.15,2.5,'stone');}
   // Stair/clock tower: three very tall gridded windows, decorative figures and dot clock.
   const tx=-7.15,tz=8.01;// The tower's front wall is not square to the axes (the mapped edge runs 0.1-0.5 m off tz across the three bays): each bay's windows follow the wall at their own x.
   const frontAt=(x:number)=>{let z=-Infinity;for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];if((p.x-x)*(q.x-x)<=0&&p.x!==q.x){const zz=p.y+(q.y-p.y)*(x-p.x)/(q.x-p.x);if(zz<=tz+.2)z=Math.max(z,zz);}}return isFinite(z)?z:tz;};
-  for(const x of [tx-2.1,tx,tx+2.1]){const zw=frontAt(x)-.01;sash(x,5.0,zw+.12,1.15,5.0);sash(x,11.4,zw+.12,1.15,5.3);box(x,16.9,zw+.1,.7,.95,.25,'stone');add(new T.SphereGeometry(.23,6,4),'stone',x,18.05,zw+.22);}
+  // 1.55 m pitch: at 2.1 m the east bay's surround ran 0.5 m past the tower's corner (x -4.88) once the sashes sat on the brick.
+  for(const x of [tx-1.55,tx,tx+1.55]){const zw=Math.max(frontAt(x-.6),frontAt(x),frontAt(x+.6))-.01;sash(x,5.0,zw+.01,1.15,5.0);sash(x,11.4,zw+.01,1.15,5.3);box(x,16.9,zw+.1,.7,.95,.25,'stone');add(new T.SphereGeometry(.23,6,4),'stone',x,18.05,zw+.22);}
   for(let i=0;i<12;i++){const aa=i*Math.PI/6;add(new T.CircleGeometry(.07,6),'stone',tx+Math.sin(aa)*.75,19.47+Math.cos(aa)*.75,tz+.23);}beam(tx,19.47,tz+.25,tx+.4,19.8,tz+.25,.06,'dark');beam(tx,19.47,tz+.25,tx,20.07,tz+.25,.055,'dark');
   box(tx,21.25,3.25,8.3,.65,10.3,'stone');box(tx,0,tz+.1,3.6,3.55,.15,'dark');box(tx,3.55,tz+.55,4.55,.32,1.5,'stone');for(let i=0;i<4;i++)box(tx,i*.22,tz+1.8-i*.32,4.3,.23,1.7-i*.32,'stone');sign('LAB111',tx-1.15,4.03,tz+.4,.22,'white',4.4);
   // Main wing cornices remain separate from the recessed entrance.
   box(11.5,16.42,front,29,.36,.38,'stone');box(-16.3,15.72,18.3,10.2,.32,.42,'stone');
-  for(const x of [-19,-16,-13])for(const y of [1.2,5,8.8,12.4])sash(x,y,18.52,1.65,2.45);
+  for(const x of [-19,-16,-13])for(const y of [1.2,5,8.8,12.4])sash(x,y,18.43,1.65,2.45);
   // Lower former lecture/aula wing retains its daylight roof.
   box(-16.25,16.0,-9.8,9.0,.28,11.0,'glass');for(let z=-15;z<-5;z+=1.65)box(-16.25,16.22,z,9,.07,.07,'frame');
  }else if(id==='occii'){

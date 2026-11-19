@@ -15,6 +15,22 @@
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
+   "id": "pano-2022-12-28-nw",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002899_pano_0001_000029/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-19-w04-41",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-19_07-10-09_03154/",
+   "image": "source-data://pand-reference-walls/0363100012253728/w04-41.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "sha256": "672e96808e07deb7c52b96db53aa773f8c1d16d921ec66ff34ff0f4d364a8613"
+  },
+  {
    "id": "pano-2025-09-25-se",
    "kind": "street-panorama",
    "capturedAt": "2025-09-25",
@@ -54,6 +70,56 @@
     "h": 0.9,
     "sill": 0.08
    }
+  },
+  {
+   "wallSurfaces": [
+    29,
+    34
+   ],
+   "system": "brick-bay-grid",
+   "alignWith": 0,
+   "baysPerStorey": 18,
+   "ground": "blank",
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.3,
+    "h": 0.8,
+    "sill": 0.12
+   },
+   "palette": {
+    "brick": "#665f58"
+   }
+  },
+  {
+   "wallSurfaces": [
+    23
+   ],
+   "system": "brick-bay-grid",
+   "alignWith": 0,
+   "baysPerStorey": 5,
+   "ground": "blank",
+   "windows": "plain",
+   "blankStoreys": [
+    2
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#665f58"
+   }
   }
  ],
  "otherWalls": "blank",
@@ -72,7 +138,7 @@
   "2022 police bureau, a 45 m long rounded block (3DBAG panels 14 and 27) with a recessed upper level. Only the south-east long front (panel 14, surfaces 15 and 17) is described, from the 2025-09-25 panorama (front-alt.jpg) and the 2022 panorama thumbnail: light grey-brown brick, three storeys, white string courses, an upper band of tall windows, a middle band of small windows, and POLITIE lettered in blue on the wall (gold flame emblem not modelled). The lettering sits at about 55-70 % of the front in the panorama; the kit centres wall lettering over the entrance, so in the model it is above the glazed left-hand entrance end instead (position deviation, kept so the kit is exercised on a real wall).",
   "The ground storey of this front is mostly a dark green ivy-clad wall (blank), with glazing only at the south-west curved end and tall glazed slots rising through the lower two storeys near the middle; the slots and the entrance end are not modelled (flat bay grid), so the ground is left blank.",
   "No striped band, blue lamp, canopy or garage doors are visible on this front; police components are not used.",
-  "The north-west long wall (panel 27), the curved ends and the recessed upper level (panels 9, 13) have no panorama in the cache and are left to otherWalls (blank).",
+  "Rear windows (feedback 347e64 \"Rear windows?\", lane fb-models-20261119): the north-west long wall (panel 27, surfaces 29 and 34) is described from the 2022-12-28 panorama TMX7316010203-002899_pano_0001_000029 (an oblique view from across the open plot west of the station, thumbnail heading 105): behind a dark 2.5 m fence, the same grey-brown brick with pier bays, a row of narrow windows on the first floor, four tall windows through the middle and a glazed band under the top; group 1, 18 bays, ground blank (the fence hides it; the 2017 crop w02-311 predates the building). The north-east end (panel 21, surface 23) is described from the 2024-09-19 crop w04-41: an ivy-clad ground storey, five tall windows between brick piers on the first floor and a blank brick top storey; group 2. The recessed upper level (panels 9 and 13) and the curved ends still have no panorama and stay with otherWalls (the shader window grid).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #575d65 not used (not darker than the wall #665f58 by 10 L*, or tinted): kit glass kept.",
   "roof.flatHex #5b605d: the PDOK orthophoto's reading of this pand (roof-facts 14/8418/5384: slot bitumen-dark, rgb 115/123/115, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],

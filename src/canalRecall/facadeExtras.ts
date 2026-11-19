@@ -14,6 +14,7 @@ import type { WallLayout } from './facadeLayout.js';
 import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, type RoofContext, type WallComponent } from './facadeExtraCore.js';
 import { continuousShopCanopy } from './shopCanopies.js';
 import { specStoopExtra } from './stoopExtra.js';
+import { fitProjectionFor } from './projectionWindowFit.js';
 import { ORNAMENT_COMPONENTS, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
 
 export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
@@ -184,13 +185,18 @@ const STREET_FURNITURE: readonly WallComponent[] = [
       for (const dx of [-0.5, -0.17, 0.17, 0.5]) s.strip(c.f, x + dx - 0.02, x + dx + 0.02, 0.34, z + 0.06, z + 0.9, IRON, 0.03);
     } } },
   { id: 'bay-window', group: 'oriel', styles: ['c19', 'school'], p: 0.2, build: (c, s) => {
-    if (c.layout.storeys < 1 || c.f.len < 5) return; const x = c.f.len / 2, z0 = storeyZ(c, 0), z1 = z0 + c.layout.storeyM * Math.min(2, c.layout.storeys) - 0.2;
+    if (c.layout.storeys < 1 || c.f.len < 5) return;
+    // Feedback d99e51: on the wall's middle it cut half of two windows on an even bay count; it now stands where it covers
+    // windows whole, narrowed at most to 60 %, or is not drawn (projectionWindowFit.ts). Uncut: as before (k = 1).
+    const fit = fitProjectionFor(c.id, 'bay-window', c.f.len / 2, 1.18, windowSpans(c, 0), c.f.len);
+    if (!fit) return;
+    const x = fit.x, k = fit.scale, z0 = storeyZ(c, 0), z1 = z0 + c.layout.storeyM * Math.min(2, c.layout.storeys) - 0.2;
     // A shallow oriel with light framed panes, one storey: 0.8 m deep over two storeys with a
     // single dark glass sheet read as a grey box bolted on (user 2026-10-03: "awful imposing extrusions on our canal house grammar").
     const zz1 = z0 + c.layout.storeyM - 0.25; void z1;
-    s.box(c.f, x - 1.1, x + 1.1, 0, 0.45, z0 + 0.15, zz1, c.wallHex, true);
-    for (const [a, b] of [[-0.95, -0.35], [-0.3, 0.3], [0.35, 0.95]]) s.box(c.f, x + a, x + b, 0.45, 0.47, z0 + 0.6, zz1 - 0.35, '#9fb6c4');
-    s.box(c.f, x - 1.18, x + 1.18, 0, 0.52, zz1, zz1 + 0.12, WHITE, true); } },
+    s.box(c.f, x - 1.1 * k, x + 1.1 * k, 0, 0.45, z0 + 0.15, zz1, c.wallHex, true);
+    for (const [a, b] of [[-0.95, -0.35], [-0.3, 0.3], [0.35, 0.95]]) s.box(c.f, x + a * k, x + b * k, 0.45, 0.47, z0 + 0.6, zz1 - 0.35, '#9fb6c4');
+    s.box(c.f, x - 1.18 * k, x + 1.18 * k, 0, 0.52, zz1, zz1 + 0.12, WHITE, true); } },
   { id: 'cornice-brackets', group: 'crown', styles: ['c19', 'canal'], p: 0.35, build: (c, s) => {
     const z = c.top - 0.15; s.box(c.f, 0, c.f.len, 0, 0.3, z - 0.1, z + 0.1, STONE, true);
     for (let x = 0.4; x < c.f.len - 0.2; x += 1.1) s.box(c.f, x - 0.06, x + 0.06, 0, 0.24, z - 0.42, z - 0.1, STONE); } },

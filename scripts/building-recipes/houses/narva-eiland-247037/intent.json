@@ -1,0 +1,186 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "narva-eiland-247037",
+ "pandId": "0363100012247037",
+ "address": "Narva-eiland, Houthavens: 2018 block of four storeys and a set-back fifth, a row of separately designed fronts on one BAG pand (yellow brick with tall narrow windows, dark grey brick, red brick, yellow brick with wide windows; dark brick with pale bands; red brick with patterned brick panels)",
+ "sources": [
+  {
+   "id": "pano-2018-06-21-w01-320",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000802_pano_0000_000885/",
+   "image": "source-data://pand-reference-walls/0363100012247037/w01-320.jpg",
+   "sha256": "db4552164afe2876140e153fb87ff621a737caadc8643dac7605870761f8e800",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-06-21-w05-320",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000802_pano_0000_000888/",
+   "image": "source-data://pand-reference-walls/0363100012247037/w05-320.jpg",
+   "sha256": "cb390be4948d35fd269acec8212e02c2214be5102e18d1b85d3375873dc81921",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-06-21-w06-50",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000802_pano_0000_000877/",
+   "image": "source-data://pand-reference-walls/0363100012247037/w06-50.jpg",
+   "sha256": "49bfc96782f19a19f03a17b845159bb5d0315bebb4fd24d96e13be0df368fca7",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-06-21-w03-254",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000802_pano_0000_000896/",
+   "image": "source-data://pand-reference-walls/0363100012247037/w03-254.jpg",
+   "sha256": "418e0c7e0155dab67994775df8705ce5ce034d0f46893544c2c8a3cf592af6ea",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    39
+   ],
+   "system": "brick-bay-grid",
+   "houses": [
+    {
+     "w": 0.255,
+     "bays": 3,
+     "brick": "#c8ad7c",
+     "frame": "#3c3a38",
+     "windowShape": {
+      "w": 0.45,
+      "h": 0.75,
+      "sill": 0.1
+     },
+     "dress": {
+      "colour": "#dcd9d0",
+      "surrounds": {
+       "storeys": [
+        1
+       ]
+      }
+     }
+    },
+    {
+     "w": 0.255,
+     "bays": 2,
+     "brick": "#464646",
+     "frame": "#d8d6d0",
+     "windowShape": {
+      "w": 0.6,
+      "h": 0.6,
+      "sill": 0.2
+     },
+     "dress": {
+      "colour": "#dcd9d0",
+      "bands": {
+       "at": [
+        "sill"
+       ],
+       "storeys": [
+        1
+       ]
+      }
+     }
+    },
+    {
+     "w": 0.26,
+     "bays": 3,
+     "brick": "#7a3a30",
+     "frame": "#3c3c3c",
+     "windowShape": {
+      "w": 0.7,
+      "h": 0.8,
+      "sill": 0.1
+     },
+     "dress": {
+      "piers": {
+       "ends": true,
+       "w": 0.22
+      }
+     }
+    },
+    {
+     "w": 0.23,
+     "bays": 2,
+     "brick": "#cdb27e",
+     "frame": "#3c3a38",
+     "windowShape": {
+      "w": 0.85,
+      "h": 0.5,
+      "sill": 0.25
+     }
+    }
+   ],
+   "storeys": 4
+  },
+  {
+   "wallSurfaces": [
+    60
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    72
+   ],
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#4a3a34",
+    "frame": "#6a5a4a"
+   },
+   "dressings": {
+    "colour": "#dcd9d0",
+    "bands": {
+     "at": [
+      "sill",
+      "head"
+     ],
+     "storeys": [
+      1,
+      2,
+      3
+     ]
+    }
+   },
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "storeys": 4
+  },
+  {
+   "wallSurfaces": [
+    80,
+    82
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    36
+   ],
+   "system": "brick-bay-grid"
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#5a4a44",
+  "frame": "#d8d4c8",
+  "door": "#3a3634"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Rows 2026-11-19 (lane narva-pilot-20261116): walls[0] from crop w01-320 (2018-06-21): four fronts at 5.3, 10.6 and 16.0 m of 20.8 m (yellow brick with three tall narrow windows and one pale-surround window, dark grey brick with pale frames, red brick with brick pilasters between the window columns, yellow brick with wide windows). walls[2] from w05-320: dark brown brick, brown frames, pale sill and head bands (its diamond brick panels over the doors: no kit part). walls[1] crop w04-321 (2017) shows the building under construction: nothing written.",
+  "The W wall (surfaces 12, 22) is left to otherWalls: its group read the set-back storey's 15.9 m eaves against the 12.9 m roof edge (eaves gate), and its crop w03-254 is 18 deg oblique."
+ ]
+}
