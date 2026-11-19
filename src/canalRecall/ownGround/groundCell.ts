@@ -30,6 +30,7 @@ import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, RO
 import { bandCorridor, capWidths, COVERED_TOP_SINK_M, DECK_REACH_MAX_M, deckReach, deckWidths, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, movableLeaves, pointInRing, underDeck, type DeckBuildInfo, type WaterTest } from './decks.js';
 import { crossingWays } from './railingRuns.js';
 import { inLandedPlatform } from './landedPlatforms.js';
+import { pierMesh, pierOverWater, type PlacedPier } from './piers.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, CLEARANCE_M, CLEARANCE_FAR_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
 import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
@@ -128,6 +129,8 @@ export interface CellInput {
   flatDecksAround?: readonly Vec2[][];
   /** Per flat deck (same order): register id and whether it is movable ('Beweegbare brug'). */
   flatDeckMeta?: readonly { id: string; movable: boolean }[];
+  /** OSM piers near the cell (piers.ts, game frame): drawn as low decks where they stand over the cell's water. */
+  piers?: readonly PlacedPier[];
   /** Landed platforms (landedPlatforms.ts, game frame): the quay wall leaves out shore segments inside them. */
   landedPlatforms?: readonly (readonly Vec2[])[];
   osm: OsmGroundExtract | null;
@@ -711,6 +714,11 @@ export function buildCell(input: CellInput): BuiltCell {
     // No municipal quay wall under a bridge deck (its arches) or across a landed platform (the Homomonument's steps bring their own walls).
     const underDecks = input.decks.length ? underDeck(input.decks) : undefined, onPlatform = inLandedPlatform(input.landedPlatforms ?? []);
     add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, fine ? 4 : touch ? TOUCH_QUAY_STEP_M : 8, QUAY_CAP_M, (x, y) => onPlatform(x, y) || !!underDecks?.(x, y)), 'quay');
+  }
+  // Piers and pontoons over the water (piers.ts, feedback ee2b30): only their parts over the cell's own water.
+  if (input.water && input.piers?.length) {
+    const parts = input.piers.flatMap(p => pierOverWater(p, [input.water!], CANAL_WATER_Z, input.rect).map(q => ({ ...q, floating: p.floating })));
+    if (parts.length) { const m = pierMesh(parts); add('deckTop', m.top, 'deck'); add('deckBody', m.body, 'deck'); }
   }
   const bridges: BridgeStats = { tops: 0, railed: 0, railingPosts: 0, piers: 0, arches: 0, abutments: 0, frames: 0, decks: [], flat: [], floating: [] };
   // The street bands of the bridge ways: on land the deck top stays under them (decks.ts deckWidths, ride review J6).
