@@ -224,7 +224,8 @@ export function drawErkers(s: RoofSink, kit: BuurtRoofKit, L: number, W: number,
       for (let i = 1; i < 3; i++) { s.tri(lo[0], lo[i], lo[i + 1], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, -1], Lk.white); s.tri(hi[0], hi[i], hi[i + 1], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], Lk.white); }
     };
     slab(z0 - Lk.sillM, z0);
-    slab(z1, z1 + (ev && !partial ? ev.fasciaM ?? EAVES_LOOK.thickM : Lk.capM));
+    // Under a chequer band the erker takes its own white cap at the line, not the eaves fascia (Aalsmeerweg).
+    slab(z1, z1 + (ev && !partial && !kit.chequer ? ev.fasciaM ?? EAVES_LOOK.thickM : Lk.capM));
   }
 }
 
@@ -819,7 +820,7 @@ export function drawChequer(s: RoofSink, kit: BuurtRoofKit, L: number, W: number
       if (r % 2 === 0) continue;
       for (const [r0, r1] of free(-W / 2, W / 2)) q(r0, r1, z1 - cm, z1, o, 'trim', C.lightHex);
     }
-  } else {
+  } else if (C.pattern === 'chequer') {
     const rows = Math.min(C.rows ?? Infinity, Math.floor(h / cm + 1e-6)), cols = Math.floor(W / cm + 1e-6);
     for (let r = 0; r < rows; r++) for (let i = 0; i < cols; i++) {
       const hex = (i + r) % 2 === 0 ? C.lightHex : C.darkHex;

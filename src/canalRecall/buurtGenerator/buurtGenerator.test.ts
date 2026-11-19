@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import { districtRows, type GenPand, type GenStreet } from './rows.js';
-import { baysFor, blockLines, generateDistrict, seriesBaysFor, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
+import { baysFor, blockLines, chequerOf, generateDistrict, seriesBaysFor, pitchGate, pitchedRiseOf, pitchedVariantOf, seriesSlot, storeysFor, wallHexOf, warmWall, WALL_WARM, type DistrictLibrary } from './generate.js';
 import { oklab } from '../retailPuiPaint.js';
 
 // A straight east-west street at lat 52.345; pands 7 m wide and 10 m deep on its north side, party walls touching.
@@ -291,4 +291,15 @@ test('round 20: a row note\'s raised part (tower lights, depth) reaches its memb
   assert.deepEqual(kitOf(flat, 0)?.raised, [{ a0: 0, a1: 0.5, riseM: 3, lights: 1, depthM: 4 }]);
   const plain = generateDistrict(lib, pands, streets, new Set(), 'test');
   assert.deepEqual(kitOf(plain, 1), kitOf(generateDistrict({ ...lib, rowNotes: notes({ [six(0)]: [{ a0: 0, a1: 0.5, riseM: 3 }] }) }, pands, streets, new Set(), 'test'), 1) && kitOf(plain, 1), 'members without a part: as before');
+});
+
+// Hoofddorpplein pilot: the attic band a row draws: its row note's, else its street note's, else the district's.
+test('chequerOf: row note over street note over the district band; none stated, null', () => {
+  const band = (pattern: string, heightM: number) => ({ heightM, pattern, cellM: 0.14, lightHex: '#c9b37f' });
+  const l: DistrictLibrary = { ...lib, chequer: { ...band('plain', 2.8), evidence: 'test' }, streetNotes: { Teststraat: { chequer: band('stripes', 2.4), evidence: 'test' } },
+    rowNotes: { 'teststraat-000001': { chequer: band('chequer', 2.1), evidence: 'test' } } };
+  assert.equal(chequerOf(l, 'teststraat-000001', 'Teststraat')?.pattern, 'chequer');
+  assert.equal(chequerOf(l, 'teststraat-000002', 'Teststraat')?.pattern, 'stripes');
+  assert.equal(chequerOf(l, 'otherstraat-000003', 'Otherstraat')?.pattern, 'plain');
+  assert.equal(chequerOf(lib, 'teststraat-000001', 'Teststraat'), null);
 });

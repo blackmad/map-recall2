@@ -83,6 +83,9 @@ export interface DistrictLibrary {
     /** The chequer frieze the street's photos show (frontKit.ts KitChequer), as on a row note. */ chequer?: unknown; evidence: string }>;
   /** A flat series' top (round 7, Apollo): the broad eaves slab over the street front, no frieze. */
   flatEaves?: { eavesM: number; frieze?: false; evidence: string };
+  /** Hoofddorpplein pilot: the district's attic band (frontKit.ts KitChequer), under the street and row notes' own; a
+   *  plain brick band with its lights over the series line on every generated member. Absent, nothing changes. */
+  chequer?: { evidence: string } & Record<string, unknown>;
   /** Per row (generator row id), what a photo of it states: `pierPhase` 0 puts the first pier after the row's first
    *  member, 1 (the default: a block starts at the row's first member) after its second; `wall` the row's own measured
    *  brick, which wins over the district's (series photo > district pool); `loggias` the members (last six digits of
@@ -115,8 +118,8 @@ export interface DistrictLibrary {
      *  portiek, arched; `cells` defaults to the series' cells so the mesher's door is replaced) over the row's list. */
     members?: Record<string, { panes?: unknown; balconies?: unknown; entries?: unknown }>;
     /** Hoofddorpplein pilot: the chequer frieze the row's photo shows (frontKit.ts KitChequer): a brick band of `heightM`
-     *  under the eaves, so the series line the storeys reach is 3DBAG's eaves less the band; a pitched series takes the
-     *  row's `eaves` too. */
+     *  standing on the series line (3DBAG's eaves is the top storey's head there) under the eaves slab; a pitched series
+     *  takes the row's `eaves` too. */
     chequer?: unknown;
     evidence: string }>;
   notDrawn: Array<{ component: string; what: string }>;
@@ -209,9 +212,9 @@ export function warmWall(hex: string): string {
   if (hue === h && c === C) return hex;
   return labHex([L, c * Math.cos((hue * Math.PI) / 180), c * Math.sin((hue * Math.PI) / 180)]);
 }
-/** The chequer frieze a row states: its row note's, else its street note's; null when neither states one (validated). */
+/** The chequer frieze a row states: its row note's, else its street note's, else the district's; null when none states one (validated). */
 export function chequerOf(lib: DistrictLibrary, rowId: string, street: string): KitChequer | null {
-  return kitChequerOf(lib.rowNotes?.[rowId]?.chequer) ?? kitChequerOf(lib.streetNotes?.[street]?.chequer);
+  return kitChequerOf(lib.rowNotes?.[rowId]?.chequer) ?? kitChequerOf(lib.streetNotes?.[street]?.chequer) ?? kitChequerOf(lib.chequer);
 }
 /** The street a row id names (`roerstraat-150901` -> `roerstraat`). */
 const streetSlugOf = (rowId: string) => rowId.replace(/(-\d{6})+$/, '');
@@ -455,25 +458,13 @@ export function generateDistrict(lib: DistrictLibrary, pands: readonly GenPand[]
   const resD: RowsResult = districtRows(free, streets), block = blockLines(lib, resD.rows);
   const res0: RowsResult = { ...resD, rows: block.rows }, eavesOverruled = block.clamped;
   // A row whose photo measures its line (row note `topM`) draws every series at it.
-  const res1: RowsResult = { ...res0, rows: res0.rows.map(r => { const t = lib.rowNotes?.[r.id]?.topM; return t ? { ...r, series: r.series.map(s => ({ ...s, eavesM: t, clamped: [] })) } : r; }) };
-  // A stated chequer frieze stands between the storeys and the eaves: the storeys reach its foot, 3DBAG's eaves less the
-  // band (a row note's topM is the photo's line already).
-  const chequerLowered = new Map<string, { read: number; drawn: number; why: string }>();
-  const res: RowsResult = { ...res1, rows: res1.rows.map(r => {
-    const ch = chequerOf(lib, r.id, r.street);
-    if (!ch || lib.rowNotes?.[r.id]?.topM) return r;
-    return { ...r, series: r.series.map(s => {
-      if (s.eavesM === null) return s;
-      const line = +(s.eavesM - ch.heightM).toFixed(2);
-      for (const m of s.members) chequerLowered.set(pandNumber(m.pand.id), { read: s.eavesM, drawn: line, why: `the chequer frieze (${ch.heightM} m band under the eaves, ${lib.rowNotes?.[r.id]?.chequer ? 'row' : 'street'} note) stands over the storeys: they reach ${line} m` });
-      return { ...s, eavesM: line };
-    }) };
-  }) };
+  // A row whose photo measures its line (row note `topM`) draws every series at it. A stated chequer frieze stands OVER
+  // the series line (Legmeerplein 095655, Aalsmeerweg 073886 and 093112: 3DBAG's eaves is the top storey's head, the
+  // attic band and the eaves slab stand 2.3-2.8 m over it), so it moves no line.
+  const res: RowsResult = { ...res0, rows: res0.rows.map(r => { const t = lib.rowNotes?.[r.id]?.topM; return t ? { ...r, series: r.series.map(s => ({ ...s, eavesM: t, clamped: [] })) } : r; }) };
   for (const u of res.unplaced) skipped.push({ id: pandNumber(u.id), reason: u.reason });
   const rows = res.rows.flatMap(r => rowRecordOf(lib, r, at, skipped)).map(rec => {
-    const ov: Overruled[] = rec.members.flatMap(m => { const o = eavesOverruled.get(m.pandId), c = chequerLowered.get(m.pandId);
-      return [...(o ? [{ front: m.pandId, field: 'corniceTopM', read: o.read, drawn: o.drawn, by: 'series-consensus' as const, why: o.why }] : []),
-        ...(c ? [{ front: m.pandId, field: 'corniceTopM', read: c.read, drawn: c.drawn, by: 'series-consensus' as const, why: c.why }] : [])]; });
+    const ov: Overruled[] = rec.members.flatMap(m => { const o = eavesOverruled.get(m.pandId); return o ? [{ front: m.pandId, field: 'corniceTopM', read: o.read, drawn: o.drawn, by: 'series-consensus' as const, why: o.why }] : []; });
     return ov.length ? { ...rec, overruled: [...rec.overruled, ...ov] } : rec;
   });
   const drawn = new Set(rows.flatMap(r => r.members.map(m => m.pandId)));

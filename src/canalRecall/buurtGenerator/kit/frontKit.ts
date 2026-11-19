@@ -89,17 +89,19 @@ export interface BuurtKitFront {
  *    `lightHex` and `darkHex` (absent: the series brick) and kept clear of the lights' columns (Aalsmeerweg 073886,
  *    2025-07-15 at 80 px/m: cream and near-black squares about 0.14 m in three courses between the attic lights);
  *  - `stripes`: courses `cellM` tall across the whole band, every other one `lightHex` (Legmeerplein 095655,
- *    2025-10-01: pale and brown courses round a group of four square attic lights).
+ *    2025-10-01: pale and brown courses round a group of four square attic lights);
+ *  - `plain`: the band's brick and its lights only, no pattern (`lightHex` unused; Aalsmeerweg 093112, 2025-07-15 at
+ *    30 px/m: pairs of small white-framed lights in a brick attic band 2.8 m over 3DBAG's eaves).
  * `lights`: lights `widthM` x `heightM` at `pitchM` from `footM` over the line, across the member (absent `group`) or a
  * group of `group` centred on it. Drawn only when stated (a row or street note from the photo); absent, nothing changes.
  */
-export interface KitChequer { heightM: number; pattern: 'chequer' | 'stripes'; cellM: number; rows?: number; lightHex: string; darkHex?: string;
+export interface KitChequer { heightM: number; pattern: 'chequer' | 'stripes' | 'plain'; cellM: number; rows?: number; lightHex: string; darkHex?: string;
   lights?: { widthM: number; heightM: number; pitchM: number; footM?: number; group?: number } }
 /** A stated chequer frieze, validated (null when absent or malformed); stated fields only, in a fixed order. */
 export function kitChequerOf(v: unknown): KitChequer | null {
   if (!v || typeof v !== 'object') return null;
   const x = v as Record<string, unknown>, h = Number(x.heightM), c = Number(x.cellM), rows = Number(x.rows);
-  if (!(h >= 0.3 && h <= 3) || !(c >= 0.05 && c <= 0.6) || (x.pattern !== 'chequer' && x.pattern !== 'stripes') || typeof x.lightHex !== 'string' || !HEX.test(x.lightHex)) return null;
+  if (!(h >= 0.3 && h <= 3) || !(c >= 0.05 && c <= 0.6) || (x.pattern !== 'chequer' && x.pattern !== 'stripes' && x.pattern !== 'plain') || typeof x.lightHex !== 'string' || !HEX.test(x.lightHex)) return null;
   const l = x.lights as Record<string, unknown> | undefined, lw = Number(l?.widthM), lh = Number(l?.heightM), lp = Number(l?.pitchM), lf = Number(l?.footM), lg = Number(l?.group);
   const lights = l && typeof l === 'object' && lw >= 0.2 && lw <= 3 && lh >= 0.2 && lh < h && lp >= lw && lp <= 6
     ? { widthM: lw, heightM: lh, pitchM: lp, ...(lf >= 0 && lf + lh <= h ? { footM: lf } : {}), ...(Number.isInteger(lg) && lg >= 1 && lg <= 12 ? { group: lg } : {}) } : null;

@@ -712,6 +712,11 @@ test('chequer frieze: parses stated fields, draws its band, lights and cells und
   const st = draw({ ...eaves, chequer: { heightM: 1.2, pattern: 'stripes', cellM: 0.1, lightHex: '#b9a27e', lights: { widthM: 0.55, heightM: 0.55, pitchM: 0.8, group: 4, footM: 0.3 } } });
   assert.equal(st.filter(t => t.hex === ATTIC_LOOK.glass).length, 2 * 4);
   assert.ok(st.filter(t => t.hex === '#b9a27e').length >= 2 * 6);
+  // Plain: the band's brick and its lights only, no pattern quads (Aalsmeerweg 093112).
+  const pl = { heightM: 2.8, pattern: 'plain' as const, cellM: 0.1, lightHex: '#c9b37f', lights: { widthM: 0.7, heightM: 0.7, pitchM: 0.85, group: 2, footM: 0.65 } };
+  assert.deepEqual(kitChequerOf(pl), pl);
+  { const o = draw({ chequer: pl }); assert.equal(o.filter(t => t.hex === ATTIC_LOOK.glass).length, 2 * 2); assert.ok(!o.some(t => t.hex === pl.lightHex));
+    assert.ok(o.filter(t => t.hex === ATTIC_LOOK.glass).every(t => t.p.every(q => q[2] >= 0.65 - 1e-6 && q[2] <= 1.35 + 1e-6))); }
   // No eaves: a white cap over the band.
   const cap = draw({ chequer: ch });
   assert.ok(Math.abs(Math.max(...cap.flatMap(t => t.p.map(q => q[2]))) - (1.05 + CHEQUER_LOOK.capM)) < 1e-6 && cap.some(t => t.hex === ERKER_LOOK.white));
