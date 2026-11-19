@@ -74,6 +74,14 @@ export const boundsObject = (b: ViewBounds): BoundsLike => ({
  * The camera state as MapLibre holds it (lng/lat centre), plus the derived frame. Pure maths over a viewport; the
  * page adapter `CameraMap` adds the host's events and canvas.
  */
+/**
+ * A screen label's anchor is drawable only in front of the near plane and within the far plane (the ground horizon).
+ * A point behind the camera projects mirrored, above the horizon, which put the START tag in the sky (d18eca).
+ */
+export function anchorInView(depth: number, range: { near: number; far: number }): boolean {
+  return Number.isFinite(depth) && depth > range.near && depth <= range.far;
+}
+
 export class EngineCamera {
   lng = 4.9041;
   lat = 52.3676;
@@ -176,6 +184,19 @@ export class EngineCamera {
     return { lng, lat, altitudeM: f.eye[2] };
   }
 
+  /** Near and far plane distances along the view axis, metres: `project(…).depth` outside them is not drawn. */
+  depthRange(): { near: number; far: number } {
+    const f = this.frame();
+    const half = (this.fovDeg * Math.PI) / 360;
+    const pitch = (this.pitch * Math.PI) / 180;
+    const d = f.distance;
+    const groundAngle = Math.PI / 2 + pitch;
+    const topHalf = (Math.sin(half) * d) / Math.sin(Math.max(0.01, Math.min(Math.PI - 0.01, Math.PI - groundAngle - half)));
+    const furthest = Math.cos(Math.PI / 2 - pitch) * topHalf + d;
+    const near = d / this.nearDivisor, far = Math.max(near * 2, Math.min(this.farCapM, furthest * 1.01 + Math.max(0, this.elevation)));
+    return { near, far };
+  }
+
   /**
    * clip ← Mercator ([0,1]² + Mercator-unit altitude), MapLibre's `mainMatrix` for this camera: perspective × view
    * (mapCamera's eye and basis) × (metres about the centre ← Mercator). Near and far follow MapLibre's choice
@@ -184,13 +205,8 @@ export class EngineCamera {
   clipFromMercator(): number[] {
     const f = this.frame();
     const vp = f.viewport;
-    const fov = (this.fovDeg * Math.PI) / 180, half = fov / 2;
-    const pitch = (this.pitch * Math.PI) / 180;
-    const d = f.distance;
-    const groundAngle = Math.PI / 2 + pitch;
-    const topHalf = (Math.sin(half) * d) / Math.sin(Math.max(0.01, Math.min(Math.PI - 0.01, Math.PI - groundAngle - half)));
-    const furthest = Math.cos(Math.PI / 2 - pitch) * topHalf + d;
-    const near = d / this.nearDivisor, far = Math.max(near * 2, Math.min(this.farCapM, furthest * 1.01 + Math.max(0, this.elevation)));
+    const half = (this.fovDeg * Math.PI) / 360;
+    const { near, far } = this.depthRange();
     const aspect = vp.width / Math.max(1, vp.height);
     const t = 1 / Math.tan(half);
     // Column-major perspective (GL convention, -z forward in view space).

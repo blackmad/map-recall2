@@ -38,7 +38,7 @@ import { missionBrief } from './missionBrief';
 import { introFrame, introOverview, introPlan, playerZoom } from './introFlight';
 import { introHoldCapMs, revealDissolveAlpha, startHoldCapMs, startHoldEnabled, startHoldMessageKey, startHoldTickDue, startHoldTicks } from '../engine/startHold';
 import { boatZoomScale, ferryZoomScale, transitZoomScale, vehicleZoomScale } from './vehicleZoomScale';
-import { glyphBox, startTagCentreY, type ScreenBox } from './vehicleScreenBox';
+import { glyphBox, StartTagLatch, startTagCentreY, type ScreenBox } from './vehicleScreenBox';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit, isPitchedView } from './modes';
 // Free Ride's methods ride in this bundle (they draw over this frame).
@@ -883,6 +883,8 @@ export class GamePresentationRuntime {
       vehicleBox = glyphBox(at.x, at.y, (Math.max(p.length || 30, p.width || 12) / 2 * 1.35 + 3) * (this.camera.zoom || 1));
     }
     this.track.placeStartTag = (centreX, defaultCentreY, pill) => startTagCentreY(centreX, defaultCentreY, pill, vehicleBox);
+    // The tag marks where the ride begins; once under way it only floats (d18eca).
+    this.track.startTagGone = !(this._startTagLatch ||= new StartTagLatch()).visible(this.track.startPoint, player, this.quizAttempts > 0 || !!this.quizPromptName, PIXELS_PER_METER);
 
 
     // Streets stay named on the map once you have been told the name, in the

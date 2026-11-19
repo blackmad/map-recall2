@@ -145,6 +145,8 @@ export interface Track {
   finishPoint: WorldPoint;
   /** Free Ride: no START tag among the street labels. */
   hideStartTag?: boolean;
+  /** The START tag's run is over: the rider is ~50 m on or a question was asked (StartTagLatch, d18eca). */
+  startTagGone?: boolean;
   /** Set per frame by the presentation: the START pill's centre y, kept off the vehicle (vehicleScreenBox.ts). */
   placeStartTag?: ((centreX: number, defaultCentreY: number, pill: { width: number; height: number }) => number) | null;
   /** The name of the way under a point, or '' where nothing is mapped. */

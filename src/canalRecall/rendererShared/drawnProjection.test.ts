@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import * as THREE from 'three';
-import { drawnProjector, invert4, latOf, lngOf, mercatorXOf, mercatorYOf, projectGround, unprojectGround } from './drawnProjection';
+import { drawnProjector, groundInView, invert4, latOf, lngOf, mercatorXOf, mercatorYOf, projectGround, unprojectGround } from './drawnProjection';
 
 // A chase-like camera over Prinsengracht in MapLibre's world units (mercator x worldSize, y down, z up in pixels).
 const WS = 512 * 2 ** 18, W = 390, H = 664;
@@ -62,4 +62,20 @@ test('drawnProjector follows the drawn (lifted) matrix while the deck is up, and
   const qp = drawnProjector(deck).queryPixel([drawn.x, drawn.y]) as number[];
   assert.ok(Math.hypot(qp[0] - raw.x, qp[1] - raw.y) < 1e-3, JSON.stringify([qp, raw]));
   assert.deepEqual(drawnProjector(flat).queryPixel([10, 20]), [10, 20]);
+});
+
+// Feedback d18eca (2026-11-13): the START tag, its point behind the rider, hung at the top of the screen.
+test('groundInView: a point behind the camera or past the far plane is not drawn (d18eca)', () => {
+  const vp = viewProj(0);
+  // The camera sits 600 px south of the target (y down = south), looking north.
+  assert.equal(groundInView(vp, WS, AF.lng, AF.lat), true, 'the target');
+  const behindY = latOf((mercatorYOf(AF.lat) * WS + 2000) / WS);
+  assert.equal(groundInView(vp, WS, AF.lng, behindY), false, 'south of the eye, behind the camera');
+  // projectGround agrees: nothing to draw behind.
+  assert.equal(projectGround(vp, WS, AF.lng, behindY, W, H), null);
+  const farY = latOf((mercatorYOf(AF.lat) * WS - 2e5) / WS);
+  assert.equal(groundInView(vp, WS, AF.lng, farY), false, 'past the far plane');
+  const flat = fakeMap(0, vp);
+  assert.equal(drawnProjector(flat).inView([AF.lng, behindY]), false);
+  assert.equal(drawnProjector({ ...flat, transform: {} }).inView([AF.lng, behindY]), true, 'unknown matrix: drawn as before');
 });

@@ -845,7 +845,9 @@ class RoadNetwork {
     }
 
     // Free Ride has no start or finish to tag (game/freeRideRuntime.ts).
-    if (!this.hideStartTag) this._drawScreenLabel(ctx, camera, this.startPoint, 'START', '#4CAF50', halfW, halfH);
+    // Gone once the rider is ~50 m on or the first question is up (startTagGone, vehicleScreenBox.ts, d18eca).
+    if (!this.hideStartTag && !this.startTagGone) this._drawScreenLabel(ctx, camera, this.startPoint, 'START', '#4CAF50', halfW, halfH);
+    else this._lastStartTagBox = null;
   }
 
   _drawScreenLabel(ctx, camera, point, text, color, halfW, halfH) {
@@ -853,7 +855,8 @@ class RoadNetwork {
     const screen = camera.worldToScreen(point.x, point.y);
     const screenX = screen.x;
     const screenY = screen.y;
-    if (screenX < -150 || screenX > CANVAS_W + 150 || screenY < -150 || screenY > CANVAS_H + 150) {
+    // Behind the camera or past the far plane (projectWorld's offView): the projection is meaningless there.
+    if (screen.offView || screenX < -150 || screenX > CANVAS_W + 150 || screenY < -150 || screenY > CANVAS_H + 150) {
       if (text === 'START') this._lastStartTagBox = null;
       return;
     }
