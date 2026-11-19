@@ -163,3 +163,27 @@ test('fix round: an arch fanlight faces the street (no back-facing quadrants)', 
     assert.ok(Math.sign(cross) === Math.sign(t.n[1]), `winding vs normal at ${JSON.stringify(t.p)}`);
   }
 });
+
+test('fix round 2: the sign keeps its band over the openings; with no room it goes up as a board in the opening', async () => {
+  const { groundFloorSignBand, GF_MIN_HEAD_M } = await import('../retailFront.js');
+  // Burger King, Reguliersbreestraat (0363100012179469): a 0.8 m dark fascia over 3 m heads, on the mesher's 3.2 m storey.
+  const bk = drawOf(mergeGroundFloor('0363100012179469', [toGroundFloorPart(READS.reads.find(r => r.pandId === '0363100012179469')!)])!);
+  const board = bk.fascia.hex!, band = groundFloorSignBand(bk);
+  assert.ok(band > 0.8 && band < 1.0);
+  for (const top of [3.2, 4.0]) {
+    const ops = groundFloorOpenings(bk, 0, 10, 0, top), crown = Math.max(...ops.map(o => o.crown));
+    assert.ok(crown <= top - band + 1e-6 || crown <= GF_MIN_HEAD_M + 1e-6, `top ${top}: crown ${crown}`);
+    const tris = groundFloorFrontTris({ template: 'fastFood', seed: 'bk', chain: { fascia: '#f4efe6', letters: '#d2232a', word: 'BURGER KING' }, letters: 0 }, bk, E, 0, 10, 0, top);
+    const fascia = tris.filter(t => t.hex === board && t.p.every(p => p[2] >= crown - 1e-6));
+    assert.ok(fascia.length >= 2, `top ${top}: a fascia over the heads`);
+  }
+  // A storey too low for heads at GF_MIN_HEAD_M plus the band: the board goes into the widest shop opening.
+  const tris = groundFloorFrontTris({ template: 'fastFood', seed: 'bk', chain: { fascia: '#f4efe6', letters: '#d2232a', word: 'BURGER KING' }, letters: 0 }, bk, E, 0, 10, 0, 2.5);
+  const ops = groundFloorOpenings(bk, 0, 10, 0, 2.5), widest = ops.filter(o => o.kind === 'shop').sort((p, q) => (q.a1 - q.a0) - (p.a1 - p.a0))[0];
+  const inside = tris.filter(t => t.hex === board && t.p.every(p => p[0] >= widest.a0 - 1e-6 && p[0] <= widest.a1 + 1e-6 && p[2] <= widest.spring + 1e-6 && p[2] >= widest.spring - 0.7));
+  assert.ok(inside.length >= 2, 'a board in the opening');
+  // No sign read stays bare: no board in the opening.
+  const bare = { ...bk, sign: { kind: 'none' as const } };
+  const inOpening = (ts: ReturnType<typeof groundFloorFrontTris>) => ts.filter(t => t.hex === board && t.p.every(p => p[0] >= widest.a0 - 1e-6 && p[0] <= widest.a1 + 1e-6 && p[2] <= widest.spring + 1e-6 && p[2] >= widest.spring - 0.7));
+  assert.equal(inOpening(groundFloorFrontTris({ template: 'fastFood', seed: 'bk', chain: { fascia: '#f4efe6', letters: '#d2232a', word: 'BURGER KING' }, letters: 0 }, bare, E, 0, 10, 0, 2.5)).length, 0);
+});

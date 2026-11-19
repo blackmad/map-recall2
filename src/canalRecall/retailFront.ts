@@ -791,9 +791,25 @@ function archLine(a0: number, a1: number, spring: number, rise: number, n: numbe
 }
 
 export type GroundFloorOpeningDrawn = { a0: number; a1: number; z0: number; spring: number; crown: number; head: GfHead; kind: GfOpeningKind };
-/** The record's openings in wall metres: along [s0, s1], heights over `base`, scaled down to fit under `top`. */
+/** The lowest an opening's head is pressed to (m over the sill line) to make room for the sign zone over it. */
+export const GF_MIN_HEAD_M = 2.3;
+/**
+ * The band (m) the record's sign needs between the openings' heads and the storey top: a fascia's height, a line of wall
+ * letters, a lightbox; else the 0.15 m lintel. Fix round 2 (blind round 2): the openings were scaled to fill the storey
+ * to 0.15 m under its top, so where the read's heads stood near the mesher's ground storey a fascia, wall letters or a
+ * lightbox had no room and the shop lost its name (De Slegte, Burger King, Manfield, Blokker).
+ */
+export function groundFloorSignBand(gf: GroundFloorDraw): number {
+  if (gf.sign.kind === 'fascia' && !gf.fascia.inOpening) return Math.max(0.35, Math.min(gf.fascia.heightM ?? FRONT.fasciaM, 1.0)) + 0.12;
+  if (gf.sign.kind === 'wall-letters') return 0.55;
+  if (gf.sign.kind === 'lightbox') return 0.5;
+  return 0.15;
+}
+/** The record's openings in wall metres: along [s0, s1], heights over `base`, scaled down to fit under `top` with the
+ *  sign's band over the tallest head (never pressing a head under GF_MIN_HEAD_M). */
 export function groundFloorOpenings(gf: GroundFloorDraw, s0: number, s1: number, base: number, top: number): GroundFloorOpeningDrawn[] {
-  const W = s1 - s0, maxHead = Math.max(...gf.openings.map(o => o.headM)), k = Math.min(1, (top - base - 0.15) / Math.max(1e-3, maxHead));
+  const W = s1 - s0, maxHead = Math.max(...gf.openings.map(o => o.headM)), room = top - base;
+  const k = Math.min(1, Math.max(Math.min(GF_MIN_HEAD_M, room - 0.15), room - groundFloorSignBand(gf)) / Math.max(1e-3, maxHead));
   return gf.openings.map(o => {
     const a0 = s0 + o.a0 * W, a1 = s0 + o.a1 * W, z0 = base + o.sillM * k, crown = base + o.headM * k;
     const rise = Math.min(archRiseM(o.head, a1 - a0), Math.max(0, crown - z0 - 0.9));
@@ -864,7 +880,15 @@ export function groundFloorFrontTris(input: RetailFrontInput, gf: GroundFloorDra
   const word = input.chain ? input.chain.word : look.word === 'name' ? (input.word ? signText(input.word) : input.word) : look.word;
   const boardHex = gf.fascia.hex ?? (input.chain?.fascia ?? (brandish ? look.fascia : GF_DARK));
   const ink = input.chain?.letters ?? (brandish || gf.fascia.hex ? look.letters : '#efe9dc');
-  const inOpeningBoard = gf.sign.kind === 'board-in-opening' || (gf.sign.kind === 'fascia' && gf.fascia.inOpening);
+  // A sign outside the openings that finds no room over them (a head the storey cannot press further) goes up as a board
+  // in its opening instead, so the shop keeps its name (fix round 2); a read of no sign stays bare.
+  const sgOut = signIdx !== undefined ? ops[signIdx] : undefined, crownMax = Math.max(...ops.map(o => o.crown));
+  const outsideFits = gf.sign.kind === 'fascia' && !gf.fascia.inOpening ? top - 0.08 - Math.max(crownMax + 0.04, top - 0.08 - Math.min(gf.fascia.heightM ?? FRONT.fasciaM, 1.0)) >= 0.25
+    : gf.sign.kind === 'wall-letters' ? !!sgOut && !!word && top - 0.16 - sgOut.crown >= 0.3
+      : gf.sign.kind === 'lightbox' ? !!sgOut && Math.min(top - 0.06, sgOut.crown + 0.86) - (sgOut.crown + 0.06) >= 0.3 : false;
+  const named = !!(word || input.logo);
+  const inOpeningBoard = gf.sign.kind === 'board-in-opening' || (gf.sign.kind === 'fascia' && gf.fascia.inOpening)
+    || (named && !outsideFits && (gf.sign.kind === 'fascia' || gf.sign.kind === 'wall-letters' || gf.sign.kind === 'lightbox'));
   const hasDoorOpening = ops.some(o => o.kind === 'door');
   const lightHex = glassTone('#7f8b93', 0.5);
   for (const [i, o] of ops.entries()) {
