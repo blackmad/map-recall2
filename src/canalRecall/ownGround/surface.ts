@@ -355,6 +355,14 @@ export class GroundSurface {
     return { d: off ? Infinity : Math.sqrt(best), z: lerp(deck.z), halfWidth, s, lateral: Math.sqrt(best) };
   }
 
+  /** Is any measured deck's padded box bucketed over this box (deckSideFine's gate, roadSurfaces.ts)? Reads the same buckets as deckWeight. */
+  decksIn(x0: number, y0: number, x1: number, y1: number): boolean {
+    if (!this.buckets.size) return false;
+    for (let bx = Math.floor(x0 / BUCKET_M); bx <= Math.floor(x1 / BUCKET_M); bx++)
+      for (let by = Math.floor(y0 / BUCKET_M); by <= Math.floor(y1 / BUCKET_M); by++) if (this.buckets.has(bucketKey(bx, by))) return true;
+    return false;
+  }
+
   /** Riding-surface z: relief, lifted onto any measured deck within its width (blended over DECK_BLEND_M); a tunnel cut's floor in its strip. */
   height = (x: number, y: number): number => this.lifted(x, y, false);
 

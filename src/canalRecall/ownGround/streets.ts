@@ -25,6 +25,7 @@ import { bar, blocks, crossingStation, GUESSED_PAINT, isSignalCrossing, mouthMar
 import type { RoadIndex } from './roadSurfaces.js';
 import { traceMark } from './sourceTrace.js';
 import { inRuns, stationOf, type PhotoEvidence } from './photoEvidence.js';
+import { planRailCentres, shiftedLine } from './railCentre.js';
 
 /** Height above the relief per layer (metres): later layers win the depth test. */
 /**
@@ -419,7 +420,7 @@ export function shadowedWays(ways: readonly LocalWay[]): Set<number> {
  * `only` limits which ways emit geometry while the junction graph still sees
  * all of them (the prototype builds bridge ways separately, uncut by the water mask).
  */
-export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean; canalSide?: (x: number, y: number) => boolean; acrossStep?: number; /** Junction road markings (roadMarkings.ts); off for the far ring. */ markings?: boolean; /** Prior paint (class centre/edge lines, graph mouth marks, lane-link and path-crossing blocks); default GUESSED_PAINT (off). */ guessedPaint?: boolean; /** The surveyed road partition (roads-v1): see RoadsOption. */ roads?: RoadsOption } = {}): StreetMeshes {
+export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean; canalSide?: (x: number, y: number) => boolean; acrossStep?: number; /** Junction road markings (roadMarkings.ts); off for the far ring. */ markings?: boolean; /** Prior paint (class centre/edge lines, graph mouth marks, lane-link and path-crossing blocks); default GUESSED_PAINT (off). */ guessedPaint?: boolean; /** The surveyed road partition (roads-v1): see RoadsOption. */ roads?: RoadsOption; /** Tram rails centred in the surveyed carriageway (railCentre.ts); needs `roads`. */ railCentre?: boolean } = {}): StreetMeshes {
   const step = opts.step ?? 3;
   const bgt = opts.roads ?? null;
   const guessed = opts.guessedPaint ?? GUESSED_PAINT;
@@ -430,6 +431,16 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
   const onRoadFor = (w: LocalWay): Keep | undefined => (bgt ? (x, y) => PAINT_ON_SURVEY && bgt.index.onRoad(x, y, isBridgeWay(w)) : undefined);
   const inPolygon = (p: Vec2) => !!bgt && bgt.index.find(p[0], p[1]) >= 0;
   const crossGrid = bgt ? carriageGrid(ways) : null;
+  // railCentre: one plan over every rail way the build sees, so two ways meeting at a node agree on its shift.
+  // Only the build's own rail ways and the rail ways sharing a node with one (the plan reads both ends of each).
+  const railPlan = bgt && opts.railCentre ? (() => {
+    const railWays = ways.filter(w => w.section.rails?.length), mine = railWays.filter(w => !opts.only || opts.only(w));
+    if (!mine.length) return null;
+    const ends = new Set(mine.flatMap(w => [key(w.points[0]), key(w.points[w.points.length - 1])]));
+    const seen = new Set<number>();
+    const plan = railWays.filter(w => (mine.includes(w) || ends.has(key(w.points[0])) || ends.has(key(w.points[w.points.length - 1]))) && !seen.has(w.id) && seen.add(w.id));
+    return planRailCentres(bgt.index, plan.map(w => ({ id: w.id, points: w.points, rails: w.section.rails, bridge: isBridgeWay(w), measured: !!w.tags['embedded_rails:offsets'] })));
+  })() : null;
   // Vertices across a band (bridge bands: the deck is often narrower than the mapped carriageway, so a band with
   // vertices only on its two edges spans from the relief beside the deck to the relief beside it and sags under the
   // deck top in the middle; BRU0292 Schottenburchsbrug sat 0.15 m under it).
@@ -543,10 +554,12 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     }
     // Tram rails: two per track at standard gauge, through junctions (the tracks do not stop there). roads-v1: a rail
     // is dropped where the survey has no carriageway under it (1 m stations off the rijbaan).
-    const railPieces = bgt && w.section.rails?.length ? railIntervals(w, bgt.index, isBridgeWay(w)) : null;
+    // railCentre (railCentre.ts, lane fb-bridges-20261119): the pair drawn on the way's line moved onto the surveyed carriageway's centre.
+    const railShift = railPlan?.get(w.id), rw = railShift ? { ...w, points: shiftedLine(w.points, railShift) } : w;
+    const railPieces = bgt && w.section.rails?.length ? railIntervals(rw, bgt.index, isBridgeWay(w)) : null;
     if (railPieces) clipped.rails += railPieces.dropped;
     traceMark(out.tram, 'rails');
-    for (const o of w.section.rails ?? []) for (const r of [-0.7175, 0.7175]) for (const piece of railPieces ? railPieces.pieces : [w.points]) if (piece.length >= 2) ribbon(out.tram, piece, o + r, RAIL_GROOVE_M, height, railLift, { step });
+    for (const o of w.section.rails ?? []) for (const r of [-0.7175, 0.7175]) for (const piece of railPieces ? railPieces.pieces : [rw.points]) if (piece.length >= 2) ribbon(out.tram, piece, o + r, RAIL_GROOVE_M, height, railLift, { step });
     // A separate cycle path crossing a carriageway untagged leaves a gap there (pathCuts): mark it as a cycle crossing.
     traceMark(out.cycle, 'cycleCross'); traceMark(out.paint, 'cycleCross');
     if (opts.markings !== false && !carriage && w.section.bands[0]?.kind === 'cycleway' && !isCrossing(w)) out.stats.markings.blocks += cyclePathCrossings(out, w, nodes, st, height, bgt, guessed);
