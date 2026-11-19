@@ -32,6 +32,7 @@
 // These are display priors, not evidence: the period comes from the BAG
 // construction year (via `building-facts`), the rest is invented rhythm.
 
+import { seedIdOf } from './designUnits/drawProps.js';
 import { measuredWallForYear, measuredWallsEnabled } from './look/measuredWalls.js';
 import { decodeWallRows } from './look/wallRows.js';
 import { CONTEXTUAL_BUILDING_COLOURS, FACADE_STYLE_COLOURS, PERIOD_FROM, materialWallDisplayPrior, type ContextualBuildingColour } from './look/palette.js';
@@ -172,9 +173,11 @@ export function decorateFacade<T extends Feature>(feature: T): T {
   const style = facadeStyleFor({ year, heightM, minHeightM, footprintM2: footprintAreaM2(feature.geometry) });
   if (!style) return feature;
   const colours = FACADE_STYLE_COLOURS[style];
-  let colour = mapped ?? colours[stableIndex(String(p.id ?? ''), colours.length)];
+  // Design units (`?designUnits=1`): a segment member's wall family is its segment's (designUnits/drawProps.ts).
+  const seed = seedIdOf(p);
+  let colour = mapped ?? colours[stableIndex(seed, colours.length)];
   // The monuments register states the wall (registerRecipe.ts): a plastered or painted front is not brick, a brick one is.
-  if (!mapped && (p.registerFinish === 'light' || p.registerFinish === 'brick')) colour = registerFinishColour(colour, p.registerFinish, colours, String(p.id ?? ''));
+  if (!mapped && (p.registerFinish === 'light' || p.registerFinish === 'brick')) colour = registerFinishColour(colour, p.registerFinish, colours, seed);
   const hex = CONTEXTUAL_BUILDING_COLOURS[colour];
   return { ...feature, properties: { ...p, facade: facadeKey(style, colour), facadeStyle: style, ...(explicit ? { facadeMappedColour: explicit.trim() } : materialPrior ? { facadeMaterialColourPrior: materialPrior } : {}), sideColour: mutedWallHex(hex), groundColour: mutedWallHex(hex) } };
 }

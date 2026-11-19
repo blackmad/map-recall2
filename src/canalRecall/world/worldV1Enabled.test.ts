@@ -17,3 +17,9 @@ test('worldV1Enabled: ?rowFront=1 draws from the live tiles (its records decorat
   assert.equal(worldV1Enabled('?rowFront=0&world=v1'), true);
   assert.equal(worldV1Enabled(''), true, 'no flag: the cells, rows baked in');
 });
+
+test('worldV1Enabled: ?designUnits=1 draws from the live tiles (the cells bake no segments); ?world=v1 still forces the cells', () => {
+  assert.equal(worldV1Enabled('?designUnits=1'), false);
+  assert.equal(worldV1Enabled('?designUnits=1&world=v1'), true);
+  assert.equal(worldV1Enabled('?designUnits=0'), true);
+});

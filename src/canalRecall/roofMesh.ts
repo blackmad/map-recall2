@@ -22,6 +22,7 @@
 // Convex nonrectangular footprints can slope inward from their actual perimeter
 // to a flat deck. Concave wings roof inscribed rectangles over a flat lid.
 
+import { seedIdOf } from './designUnits/drawProps.js';
 import earcut from 'earcut';
 import { largeTierProperties } from './largeBuildingTier.js';
 import { RoofSink, type V2, type V3 } from './roofSink.js';
@@ -1485,7 +1486,8 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
   const tag = typeof p.roofShapeTag === 'string' ? p.roofShapeTag : typeof p.roofShape === 'string' && !p.roofPlanned ? p.roofShape : undefined;
   const year = p.constructionYear === null || p.constructionYear === undefined ? null : Number(p.constructionYear);
   const measured = typeof p.monumentGable === 'string' && (GABLE_SHAPES as readonly string[]).includes(p.monumentGable) ? p.monumentGable as GableShape : null;
-  const plan = planBuildingRoof(String(p.id ?? ''), String(p.facadeStyle ?? ''), height, minHeight, ring, tag && honouredRoofTag(tag) ? tag : undefined, Number.isFinite(year) ? year : null, measured, Number.isFinite(Number(p.roofRidgeDeg)) && p.roofRidgeDeg !== null && p.roofRidgeDeg !== '' ? Number(p.roofRidgeDeg) : null);
+  // Design units (`?designUnits=1`): a segment member's dice are its segment's (designUnits/drawProps.ts); absent: the pand id.
+  const plan = planBuildingRoof(seedIdOf(p), String(p.facadeStyle ?? ''), height, minHeight, ring, tag && honouredRoofTag(tag) ? tag : undefined, Number.isFinite(year) ? year : null, measured, Number.isFinite(Number(p.roofRidgeDeg)) && p.roofRidgeDeg !== null && p.roofRidgeDeg !== '' ? Number(p.roofRidgeDeg) : null);
   const g = feature.geometry as { type: string; coordinates: number[][][] | number[][][][] };
   const polygon = g.type === 'Polygon' ? g.coordinates : g.coordinates[0];
   // A perimeter deck must not cover an open courtyard.
@@ -1498,7 +1500,7 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
     if (!rect || !(height - rr.riseM >= 2)) return null;
     const box: Rect = { ...rect, coverage: 1, maxDev: 0 };
     const rowPlan: RoofPlan = { kind: rr.shape === 'hipped' ? 'hipped' : 'mansardHip', gable: 'plain', riseM: rr.riseM, dormers: rr.dormers.length > 0, material: rr.material === 'tile' ? 'tile' : 'slate',
-      tone: ROW_SLATE_TONE, seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.joins ? { rowJoins: rr.joins } : {}), ...(rr.frontM ? { rowFrontM: rr.frontM } : {}), ...(rr.kit ? { buurtKit: rr.kit } : {}), ...(rr.kit && rr.frontN ? { rowFrontN: rr.frontN } : {}) };
+      tone: rr.tone ?? ROW_SLATE_TONE, seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.joins ? { rowJoins: rr.joins } : {}), ...(rr.frontM ? { rowFrontM: rr.frontM } : {}), ...(rr.kit ? { buurtKit: rr.kit } : {}), ...(rr.kit && rr.frontN ? { rowFrontN: rr.frontN } : {}) };
     return { ...rowPlan, pieces: [{ rect: box, plan: rowPlan }], keepLid: true };
   }
   // Lane 1 (houseLine/rowFront.ts sets `rowCrown` and the matching height): the measured crown, its saddle inside it,
@@ -1529,16 +1531,18 @@ export function kitEndOf(rect: Pick<Rect, 'ux' | 'uy'>, n: Vec2): -1 | 1 | null 
 /** House rows: every row mansard is the one dark slate (look/palette.ts MEASURED_SLATE[1], #606b79): one tone per
  *  series and the same across a row (blind review 2026-11-14: Weteringschans 169016 and 171218 differed). */
 export const ROW_SLATE_TONE = 0.5;
-export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number; kit?: BuurtRoofKit; frontN?: Vec2; shape?: 'hipped' } | null {
+export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; tone?: number; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number; kit?: BuurtRoofKit; frontN?: Vec2; shape?: 'hipped' } | null {
   if (!v || typeof v !== 'object') return null;
-  const r = v as { riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown; kit?: unknown; frontN?: unknown; shape?: unknown };
+  const r = v as { tone?: unknown; riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown; kit?: unknown; frontN?: unknown; shape?: unknown };
   if (!(Number(r.riseM) > 0.5) || typeof r.series !== 'string' || !Array.isArray(r.dormers)) return null;
   const dormers = (r.dormers as Array<{ a?: unknown; kind?: unknown; hoist?: unknown }>).filter(d => Number.isFinite(Number(d.a)) && (ROW_DORMER_DRAW_KINDS as readonly unknown[]).includes(d.kind))
     .map(d => ({ a: Math.max(0.05, Math.min(0.95, Number(d.a))), kind: d.kind as RowDormerKind, ...(d.hoist === true ? { hoist: true } : {}) }));
   const joins = r.joins && typeof r.joins === 'object' ? { ...(r.joins.left === true ? { left: true } : {}), ...(r.joins.right === true ? { right: true } : {}) } : null;
   const kit = r.kit === undefined ? null : buurtRoofKitOf(r.kit);
   const fn = Array.isArray(r.frontN) && r.frontN.length === 2 && r.frontN.every(Number.isFinite) && Math.abs(Math.hypot(r.frontN[0], r.frontN[1]) - 1) < 0.01 ? [Number(r.frontN[0]), Number(r.frontN[1])] as Vec2 : null;
-  return { ...(fn ? { frontN: fn } : {}), riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers, ...(joins && (joins.left || joins.right) ? { joins } : {}), ...(Number(r.frontM) > 1 ? { frontM: Number(r.frontM) } : {}), ...(kit ? { kit } : {}), ...(r.shape === 'hipped' ? { shape: 'hipped' as const } : {}) };
+  // Design units: a segment roof's tone (designUnits/draw.ts segmentRoof); absent: the row slate, as before.
+  const tone = typeof r.tone === 'number' && r.tone >= 0 && r.tone <= 1 ? r.tone : null;
+  return { ...(fn ? { frontN: fn } : {}), ...(tone !== null ? { tone } : {}), riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers, ...(joins && (joins.left || joins.right) ? { joins } : {}), ...(Number(r.frontM) > 1 ? { frontM: Number(r.frontM) } : {}), ...(kit ? { kit } : {}), ...(r.shape === 'hipped' ? { shape: 'hipped' as const } : {}) };
 }
 
 /**
@@ -1553,7 +1557,7 @@ function decoratedRoofPlan(feature: GeoFeature): Pick<RoofPlan, 'kind' | 'riseM'
   const geometry = feature.geometry;
   if (!geometry || typeof geometry !== 'object') return roofPlanForFeature(feature);
   const p = feature.properties;
-  const key = [p.id, p.facadeStyle, p.height, p.minHeight, p.roofShapeTag, p.roofShape, p.roofPlanned, p.constructionYear, p.monumentGable, p.roofRidgeDeg].map(v => typeof v === 'string' ? `s${v}` : String(v)).join('|');
+  const key = [p.id, p.facadeStyle, p.height, p.minHeight, p.roofShapeTag, p.roofShape, p.roofPlanned, p.constructionYear, p.monumentGable, p.roofRidgeDeg, p.designUnit ? seedIdOf(p) : undefined].map(v => typeof v === 'string' ? `s${v}` : String(v)).join('|');
   let byKey = decoratedPlans.get(geometry);
   if (!byKey) decoratedPlans.set(geometry, byKey = new Map());
   if (byKey.has(key)) return byKey.get(key)!;
