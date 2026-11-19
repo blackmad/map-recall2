@@ -7,7 +7,7 @@ test('audit tiles, sunk junctions and rail joins rank on one scale; nearby hits 
   const tally = (o: Partial<Record<'voidM2' | 'crackM2' | 'pokeSevereM2' | 'floatSevereM2' | 'thinM2', number>>) => ({ voidM2: 0, crackM2: 0, pokeSevereM2: 0, floatSevereM2: 0, thinM2: 0, ...o });
   const audit = auditTileHits([
     { cell: '0_1', tile: '1_1', x: 0, y: 0, tally: tally({ voidM2: 400, thinM2: 100 }) },
-    { cell: '0_1', tile: '1_2', x: 30, y: 0, tally: tally({ crackM2: 10 }) },
+    { cell: '0_1', tile: '1_2', x: 30, y: 0, tally: tally({ crackM2: 40 }) },
     { cell: '0_1', tile: '1_3', x: 5000, y: 0, tally: tally({}) },
   ], (x, y) => [4.9 + x / 68000, 52.37 + y / 111000]);
   assert.equal(audit.length, 2, 'a clean tile is no hit');
@@ -18,5 +18,5 @@ test('audit tiles, sunk junctions and rail joins rank on one scale; nearby hits 
   const rails = railJoinHits([{ id: 'j1', cls: 'join', kind: 'tram', reasons: ['step 3 m'], score: 3, detail: { lngLat: '4.85,52.35' } }]);
   const ranked = rankHits([...audit, ...holes, ...rails]);
   assert.deepEqual(ranked.map(h => h.source), ['railJoin', 'audit', 'holeJunction'], 'worst first');
-  assert.equal(ranked[1].also?.length, 1, 'the crack 30 m away folds into the void tile');
+  assert.equal(ranked[1].also?.length, 1, 'the void tile 30 m away folds into the crack');
 });
