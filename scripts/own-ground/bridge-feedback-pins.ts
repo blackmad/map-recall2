@@ -3,7 +3,10 @@
 //
 //   node --import tsx scripts/own-ground/check-ground-cells.ts --bridge-feedback
 import { GroundStore, toLocal, waterTest } from '../../src/canalRecall/ownGround/groundStore.ts';
-import { buildCell } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { buildCell, layersAt } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { prepareWays, isBridgeWay } from '../../src/canalRecall/ownGround/streets.ts';
+import { planRailCentres, shiftedLine, stationOffsets } from '../../src/canalRecall/ownGround/railCentre.ts';
+import { ringSamples } from '../../src/canalRecall/ownGround/pandAbutments.ts';
 import { kitTrace, parapetTrace } from '../../src/canalRecall/ownGround/bridgeKit.ts';
 import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGround/railingRuns.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
@@ -80,6 +83,7 @@ export async function bridgeFeedbackRegressions(readExtract: Read, check: Check)
   await f1bRegressions(readExtract, check);
   await holeJunctionRegressions(readExtract, check);
   await bankDipRegressions(readExtract, check);
+  await round396Regressions(readExtract, check);
 }
 
 /**
@@ -340,5 +344,101 @@ export async function bankDipRegressions(readExtract: Read, check: Check): Promi
     const off = reg.off ?? { bankClimb: false }, d = await wayDip(readExtract, {}, reg), was = await wayDip(readExtract, off, reg);
     check(d !== null && d <= reg.maxDipM, `OSM ${reg.way} (${reg.label}): the crossing dips ${d?.toFixed(2) ?? 'n/a'} m under the bank tops' line (<= ${reg.maxDipM})`);
     check(was !== null && was >= reg.pinMinM, `OSM ${reg.way}: without ${Object.keys(off).join(', ')} ${was?.toFixed(2) ?? 'n/a'} m (>= ${reg.pinMinM}, the pin is live)`);
+  }
+}
+/**
+ * Bridge feedback round #396 (lane fb-bridges-20261119), each with its fix's flag off as the live pin.
+ *  - Vijzelstraat (62d5a35f, "why are the rails slightly off-center?"): the tram rails drawn on the OSM way sat
+ *    0.45-0.75 m to one side of the surveyed carriageway (railCentre.ts). With the plan's moved line, the median of
+ *    (carriageway centre − rails' centre) along each named way is within `maxM`; on the way's own line it is >= `pinMinM`.
+ *  - Torensluis (c16d3403) and Doelensluis (4c1344ce): water slits beside the deck, and De Clercqstraat (3b8ca68b) and
+ *    the Oost-Indische Huisbrug (935a6807): deck grey showing through the road. Top-layer counts on a 0.5 m raster in a
+ *    small box (layersAt): the bad layer's samples <= `max`; with the flag off >= `pinMin`.
+ */
+export const RAIL_CENTRE_WAYS: readonly { way: number; label: string; at: [number, number]; maxM: number; pinMinM: number }[] = [
+  // Measured 2026-11-19: on the way's own line 0.55, 0.52, 0.63, -0.58 m; moved 0.03, -0.02, 0.00, -0.02 m.
+  { way: 862565692, label: 'Vijzelstraat at the Isa van Eeghenbrug (two tracks)', at: [4.89280, 52.36501], maxM: 0.15, pinMinM: 0.45 },
+  { way: 862565697, label: 'Vijzelstraat (two tracks)', at: [4.89280, 52.36501], maxM: 0.15, pinMinM: 0.45 },
+  { way: 988972498, label: 'Vijzelstraat (two tracks)', at: [4.89280, 52.36501], maxM: 0.15, pinMinM: 0.45 },
+  { way: 862565693, label: 'Vijzelstraat (one track)', at: [4.89280, 52.36501], maxM: 0.15, pinMinM: 0.45 },
+];
+export async function railCentreOffsets(readExtract: Read, at: [number, number], ways: readonly number[]): Promise<Map<number, { before: number; after: number }>> {
+  const st = new GroundStore(readExtract, { roads: true });
+  await st.init();
+  const [x, y] = toLocal(at[0], at[1]), key = st.cellAt(x, y);
+  await st.prepareCell(key);
+  const input = await st.cellInput(key, 0);
+  const index = new RoadIndex([input.roads, ...(input.roadsAround ?? [])]);
+  const all = prepareWays([...(input.osm?.ways ?? []), ...input.osmAround.flatMap(o => o?.ways ?? [])], input.project).filter(w => w.section.rails.length);
+  const seen = new Set<number>(), rails = all.filter(w => !seen.has(w.id) && seen.add(w.id));
+  const asIn = (w: (typeof rails)[number]) => ({ id: w.id, points: w.points, rails: w.section.rails, bridge: isBridgeWay(w), measured: !!w.tags['embedded_rails:offsets'] });
+  const plan = planRailCentres(index, rails.map(asIn));
+  const med = (xs: number[]) => { const a = [...xs].sort((p, q) => p - q); return a.length ? a[a.length >> 1] : NaN; };
+  const out = new Map<number, { before: number; after: number }>();
+  for (const id of ways) {
+    const w = rails.find(r => r.id === id);
+    if (!w) continue;
+    const sh = plan.get(id), moved = sh ? { ...asIn(w), points: shiftedLine(w.points, sh) } : asIn(w);
+    out.set(id, { before: med(stationOffsets(index, asIn(w)).at.map(a => a.off)), after: med(stationOffsets(index, moved).at.map(a => a.off)) });
+  }
+  return out;
+}
+export const TOP_LAYER_SPOTS: readonly { id: string; label: string; at: [number, number]; half: number; bad: readonly string[]; flag: string; max: number; pinMin: number }[] = [
+  // The h0 foot polygons reach ~2 m over the Singel beside the deck polygon: too narrow for the inset, now grown from the deck.
+  { id: 'BRU0009', label: 'Torensluis, the water slit east of the deck (c16d3403)', at: [4.889675, 52.374683], half: 1.5, bad: ['hole'], flag: 'wetNearDecks', max: 2, pinMin: 12 }, // measured 2026-11-19: 0 / 16
+  { id: 'BRU0220', label: 'Doelensluis, the notch at the near-left abutment (4c1344ce)', at: [4.893858, 52.367682], half: 1.5, bad: ['hole'], flag: 'wetNearDecks', max: 15, pinMin: 35 }, // measured 2026-11-19: 13 / 41
+  // The carriageway polygon crosses the deck's lateral blend; at a 3 m drape edge it lay 12-15 cm under the deck top.
+  { id: 'BRU0108', label: 'De Clercqstraat, deck grey across the road at the deck side (3b8ca68b)', at: [4.872046, 52.371377], half: 2.5, bad: ['deckTop'], flag: 'deckSideFine', max: 2, pinMin: 10 }, // measured 2026-11-19: 0 / 13
+  // Skewed asphalt deck polygon: the kit's pale top showed between it and the parapet.
+  { id: 'BRU0223', label: 'Oost-Indische Huisbrug, the pale wedge beside the asphalt (935a6807)', at: [4.897653, 52.369923], half: 5, bad: ['deckTop'], flag: 'coveredTopTone', max: 2, pinMin: 9 }, // measured 2026-11-19: 0 / 12
+];
+/**
+ * c361c8 ("the house that stands on a bridge"): the Kinkerbrug bridge-keeper's house, BAG pand 0363100012197936 (OSM
+ * w276306000). Its BAG footprint lies on the abutment's ground (0 of its 0.5 m samples over the mapped water, its north
+ * wall on the water's edge, as the 8 cm orthophoto shows); the ground under it must stay drawn.
+ */
+export const PAND_ON_ABUTMENT = { id: '0363100012197936', label: 'Kinkerbrug bridge-keeper\'s house (c361c8)', ring: [[4.860262, 52.364694], [4.860234, 52.364662], [4.8603, 52.364634], [4.860315, 52.364646], [4.860322, 52.364653], [4.860327, 52.364661], [4.860337, 52.364675]] as [number, number][], maxHoles: 0 };
+export async function pandHoles(readExtract: Read, ring: readonly [number, number][]): Promise<number> {
+  const st = new GroundStore(readExtract, { roads: true });
+  await st.init();
+  const local = ring.map(([a, b]) => toLocal(a, b));
+  const keys = new Set(local.map(([x, y]) => st.cellAt(x, y)));
+  const cells: { cell: ReturnType<typeof buildCell>; rect: readonly number[] }[] = [];
+  for (const k of keys) if (st.covers(k)) cells.push({ cell: buildCell(await st.cellInput(k, 0)), rect: st.cellRect(k) });
+  let n = 0;
+  for (const [x, y] of ringSamples(local, 0.5)) {
+    const c = cells.find(c => x >= c.rect[0] && x < c.rect[2] && y >= c.rect[1] && y < c.rect[3]);
+    if (!c || !layersAt(c.cell, x, y).top) n++;
+  }
+  return n;
+}
+export async function topLayerCount(readExtract: Read, opts: Record<string, boolean>, spot: (typeof TOP_LAYER_SPOTS)[number]): Promise<number> {
+  const st = new GroundStore(readExtract, { roads: true, ...opts });
+  await st.init();
+  const [cx, cy] = toLocal(spot.at[0], spot.at[1]), keys = new Set<string>();
+  for (const dx of [-spot.half, spot.half]) for (const dy of [-spot.half, spot.half]) keys.add(st.cellAt(cx + dx, cy + dy));
+  const cells: { cell: ReturnType<typeof buildCell>; rect: readonly number[] }[] = [];
+  for (const k of keys) if (st.covers(k)) cells.push({ cell: buildCell(await st.cellInput(k, 0)), rect: st.cellRect(k) });
+  let n = 0;
+  for (let y = cy - spot.half; y <= cy + spot.half; y += 0.5) for (let x = cx - spot.half; x <= cx + spot.half; x += 0.5) {
+    const c = cells.find(c => x >= c.rect[0] && x < c.rect[2] && y >= c.rect[1] && y < c.rect[3]);
+    // 'hole': nothing drawn over the water there (the mask cut the ground).
+    const top = c ? layersAt(c.cell, x, y).top ?? 'hole' : null;
+    if (top && spot.bad.includes(top)) n++;
+  }
+  return n;
+}
+export async function round396Regressions(readExtract: Read, check: Check): Promise<void> {
+  for (const reg of RAIL_CENTRE_WAYS) {
+    const r = (await railCentreOffsets(readExtract, reg.at, [reg.way])).get(reg.way);
+    check(!!r && Math.abs(r.after) <= reg.maxM, `OSM ${reg.way} (${reg.label}): rails ${r?.after.toFixed(2)} m off the carriageway's centre (<= ${reg.maxM})`);
+    check(!!r && Math.abs(r.before) >= reg.pinMinM, `OSM ${reg.way}: on the way's own line ${r?.before.toFixed(2)} m (>= ${reg.pinMinM}, the pin is live)`);
+  }
+  const holes = await pandHoles(readExtract, PAND_ON_ABUTMENT.ring);
+  check(holes <= PAND_ON_ABUTMENT.maxHoles, `pand ${PAND_ON_ABUTMENT.id} (${PAND_ON_ABUTMENT.label}): ${holes} footprint samples with no ground drawn (<= ${PAND_ON_ABUTMENT.maxHoles})`);
+  for (const spot of TOP_LAYER_SPOTS) {
+    const n = await topLayerCount(readExtract, {}, spot), was = await topLayerCount(readExtract, { [spot.flag]: false }, spot);
+    check(n <= spot.max, `${spot.id} (${spot.label}): ${n} samples of ${spot.bad.join('/')} on top (<= ${spot.max})`);
+    check(was >= spot.pinMin, `${spot.id}: without ${spot.flag} ${was} (>= ${spot.pinMin}, the pin is live)`);
   }
 }

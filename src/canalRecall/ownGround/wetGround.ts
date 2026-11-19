@@ -47,6 +47,14 @@ export interface WetGroundInput {
   waterBox?: readonly [number, number, number, number] | null;
   /** The relief's clearance over the water that makes a sample a deck; default WET_CLEAR_M (measuring only, lane F1b). */
   clearM?: number;
+  /**
+   * The survey's deck polygons (h ≥ 1) near the cell: they seed the narrow-polygon rounds as a found deck does (they are
+   * not returned; the mask already takes them). Lane fb-bridges-20261119 (`wetNearDecks`): at the Torensluis (c16d3403)
+   * the quay paving beside the bridge's deck polygon reaches 2 m over the Singel's mapped water, too narrow for the
+   * inset, and with no plein found first the rounds never ran: the mask cut a 1.5 m water slit through the plein. The
+   * Doelensluis (4c1344ce) kept a water notch at its east abutment the same way. Absent: as before.
+   */
+  decks?: readonly (readonly Vec2[])[];
 }
 
 /** Outer rings of the ground polygons (h = 0) that stand over water as a deck (see the header). */
@@ -74,11 +82,12 @@ export function wetGroundRings(surfaces: readonly RoadSurface[], input: WetGroun
     }
     if (n >= WET_MIN_SAMPLES) out.push(o);
   }
-  if (!out.length) return out;
+  const seeds = input.decks ?? [];
+  if (!out.length && !seeds.length) return out;
   // Then the plein's narrow polygons beside a deck found so far, repeated while it grows (a fietspad beside a kerb strip
   // beside the carriageway deck), at most WET_NEAR_ROUNDS times.
   const boxOf = (r: readonly Vec2[]) => r.reduce((b, [x, y]) => [Math.min(b[0], x), Math.min(b[1], y), Math.max(b[2], x), Math.max(b[3], y)], [Infinity, Infinity, -Infinity, -Infinity]);
-  const decks = out.map(r => ({ r, box: boxOf(r) }));
+  const decks = [...out, ...seeds].map(r => ({ r, box: boxOf(r) }));
   const nearDeck = (x: number, y: number) => decks.some(({ r, box }) => x >= box[0] - WET_NEAR_M && x <= box[2] + WET_NEAR_M && y >= box[1] - WET_NEAR_M && y <= box[3] + WET_NEAR_M
     && [[0, 0], [WET_NEAR_M, 0], [-WET_NEAR_M, 0], [0, WET_NEAR_M], [0, -WET_NEAR_M]].some(([dx, dy]) => inRing(r, x + dx, y + dy)));
   const rest = surfaces.filter(s => s.h === 0 && s.r.length).map(s => s.r.map(decodeRoadLine)).filter(rings => rings[0].length >= 3 && !out.some(f => f.length === rings[0].length && f[0][0] === rings[0][0][0] && f[0][1] === rings[0][0][1]));

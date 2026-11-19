@@ -150,6 +150,17 @@ export function setKerbShadowRoadLook(look: RoadLookId | null): void {
 let kerbShadowWidth = KERB_SHADOW_M;
 
 /**
+ * Lane fb-bridges-20261119 (`deckSideFine`, feedback 3b8ca68b "slight breaks in the bridge road", De Clercqstraat over
+ * the Da Costagracht): a ground-level (h 0) polygon running across a measured deck's lateral edge climbs the deck's
+ * DECK_BLEND_M blend (0.6 m in 0.75 m on BRU0108). Its 3 m minimum edge (DRAPE_MIN_EDGE_M) left a chord 12-15 cm under the
+ * surface there and the deck top showed through the asphalt as thin lines across the carriageway. A triangle touching
+ * that blend splits on to `minEdge` while it is off the surface by more than the tolerance.
+ */
+export interface DeckSideFine { minEdge: number; at: (x: number, y: number) => number }
+/** deckSideFine's minimum edge, metres: the chord error on the steepest blend (0.6 m over DECK_BLEND_M) stays under 2 cm. */
+export const DECK_SIDE_MIN_EDGE_M = 0.15;
+
+/**
  * Earcut triangles draped where the relief needs it: a triangle is split at its longest edge while that edge is
  * longer than `maxEdge`, or longer than `minEdge` with the surface at any edge's midpoint or the centroid more than
  * `tol` off the triangle's plane (`sagOnly`: only a surface rising over the plane counts, the land showing through;
@@ -159,8 +170,14 @@ let kerbShadowWidth = KERB_SHADOW_M;
  * left the Kinkerstraat asphalt 2.3 cm under the land at a quay mouth. A triangle under `minArea` m² splits by
  * `maxEdge` alone. Winding CCW from above, as drapeBisect.
  */
-export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, tol: number, minEdge: number, floatTol = tol, minArea = 0, gateEdge = Infinity): void {
-  const max2 = maxEdge * maxEdge, min2 = minEdge * minEdge, area2 = 2 * minArea, gate2 = gateEdge * gateEdge;
+export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, tol: number, minEdge: number, floatTol = tol, minArea = 0, gateEdge = Infinity, fine?: DeckSideFine): void {
+  const max2 = maxEdge * maxEdge, min2 = minEdge * minEdge, area2 = 2 * minArea, gate2 = gateEdge * gateEdge, fine2 = fine ? fine.minEdge * fine.minEdge : Infinity;
+  /** deckSideFine: the triangle (its corners or the longest edge's midpoint) touches a deck's lateral blend (0 < w < 1, or a corner on and a corner off). */
+  const blend = (x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, mx: number, my: number): boolean => {
+    let lo = Infinity, hi = -Infinity;
+    for (const w of [fine!.at(x1, y1), fine!.at(x2, y2), fine!.at(x3, y3), fine!.at(mx, my)]) { lo = Math.min(lo, w); hi = Math.max(hi, w); if (w > 0 && w < 1) return true; }
+    return hi > 0 && lo < 1;
+  };
   // Each corner carries its height and its emitted vertex (-1: not yet): the earcut corners are drawn once and shared
   // by every triangle on them, and every height is asked once per corner (the tested midpoint becomes the split's).
   const nv = coords.length >> 1, zs = new Float64Array(nv), ids = new Int32Array(nv).fill(-1);
@@ -184,7 +201,7 @@ export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: Ar
       // The longest edge's midpoint first: its height is the split vertex's if the triangle splits.
       const mx = edge === 1 ? (x1 + x2) / 2 : edge === 2 ? (x2 + x3) / 2 : (x3 + x1) / 2, my = edge === 1 ? (y1 + y2) / 2 : edge === 2 ? (y2 + y3) / 2 : (y3 + y1) / 2;
       let mz = NaN, split = longest > max2;
-      if (!split && longest > min2 && (!area2 || longest > gate2 || Math.abs((x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)) > area2)) {
+      if (!split && (longest > min2 ? (!area2 || longest > gate2 || Math.abs((x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)) > area2) : longest > fine2 && blend(x1, y1, x2, y2, x3, y3, mx, my))) {
         mz = height(mx, my);
         split = bad(mz - (edge === 1 ? (z1 + z2) : edge === 2 ? (z2 + z3) : (z3 + z1)) / 2)
           || (edge !== 1 && bad(height((x1 + x2) / 2, (y1 + y2) / 2) - (z1 + z2) / 2))
@@ -508,6 +525,8 @@ export interface RoadBuildInput {
   deckHeight: HeightFn;
   /** 1 on a measured deck, 0 off every deck (GroundSurface.deckWeight). */
   deckWeight: (x: number, y: number) => number;
+  /** deckSideFine (lane fb-bridges-20261119): is a measured deck near this box (GroundSurface.decksIn)? A ground polygon near one splits across the deck's lateral blend to DECK_SIDE_MIN_EDGE_M. Absent: as before (`?deckSideFine=0`). */
+  decksNear?: (x0: number, y0: number, x1: number, y1: number) => boolean;
   overWater: (x: number, y: number) => boolean;
   /** Inside an unmeasured (flat) deck footprint (bridgeGaps, issue #178): a deck polygon there drapes on the riding surface, as the footprint's top does. Absent: flat footprints carry no deck polygon (the pre-fix build). */
   onFlatDeck?: (x: number, y: number) => boolean;
@@ -737,6 +756,13 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     const redPlane = redOwn && cls === 'cycle' && index.mesh(k) === 'cycle';
     const lift = ROAD_LIFT[cls];
     traceMark(layer, cls === 'carriage' && index.mesh(k) === 'cycle' ? 'fietsstraat' : BGT_SOURCE[cls]);
+    // deckSideFine: a ground polygon near a measured deck (LOD 0 only).
+    let fine: DeckSideFine | undefined;
+    if (rec.h === 0 && !far && input.decksNear) {
+      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      for (let i = 0; i < flat.length; i += 2) { x0 = Math.min(x0, flat[i]); y0 = Math.min(y0, flat[i + 1]); x1 = Math.max(x1, flat[i]); y1 = Math.max(y1, flat[i + 1]); }
+      if (input.decksNear(x0, y0, x1, y1)) fine = { minEdge: DECK_SIDE_MIN_EDGE_M * (touch ? TOUCH_MIN_EDGE_SCALE : 1), at: input.deckWeight };
+    }
     if (rec.h >= 1) drapeAdaptive(layer, flat, tris, height, lift, far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
     else if (pieces) {
       const tol = redPlane ? RED_CYCLE_TOL : DRAPE_TOL[cls], low = isLow(cls);
@@ -745,7 +771,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
         const f = flatten(piece);
         if (f.flat.length < 6) continue;
         const step = input.dataStep?.(f.flat[0], f.flat[1]) ?? 0, coarse = step > DRAPE_MIN_EDGE_M;
-        drapeAdaptive(layer, f.flat, earcut(f.flat, f.holes), height, lift, DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0, coarse && input.roadStrips ? ROAD_STRIP_GATE_STEPS * step : Infinity);
+        drapeAdaptive(layer, f.flat, earcut(f.flat, f.holes), height, lift, DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0, coarse && input.roadStrips ? ROAD_STRIP_GATE_STEPS * step : Infinity, fine);
       }
     } else {
       const tol = redPlane ? RED_CYCLE_TOL : DRAPE_TOL[cls], low = isLow(cls);
@@ -754,7 +780,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
       const step = input.dataStep?.(flat[0], flat[1]) ?? 0, coarse = step > DRAPE_MIN_EDGE_M;
       const sagTol = ((low && input.drapeTol) || tol.sag) * tolScale;
       const floatTol = ((low && input.drapeFloatTol) || tol.float) * tolScale;
-      drapeAdaptive(layer, flat, tris, height, lift, far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, far ? Infinity : floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0, coarse && input.roadStrips ? ROAD_STRIP_GATE_STEPS * step : Infinity);
+      drapeAdaptive(layer, flat, tris, height, lift, far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, far ? Infinity : floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0, coarse && input.roadStrips ? ROAD_STRIP_GATE_STEPS * step : Infinity, fine);
     }
     stats.drawn[cls]++;
   }
