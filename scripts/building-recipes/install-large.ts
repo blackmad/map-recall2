@@ -84,7 +84,7 @@ export async function largeCatalogueEntry(id: string, catalogue: {models: any[]}
   const carried = Object.fromEntries(CARRY.filter(k => replaced?.[k] !== undefined).map(k => [k, replaced[k]]));
   const footprintLL = facts.bagFootprintRD.map(ring => ring.map(p => ll(p[0], p[1])));
   // linked OSM outlines, plus the tiles' separate tower feature of a tower-podium pand (installAliases.ts, GitHub #119)
-  const aliases = installAliases(pand, linkedOsmOutlines(pand), tileIdsOver(footprintLL));
+  const aliases = installAliases(pand, linkedOsmOutlines(pand), tileIdsOver(footprintLL), intent.osmAliases);
   const groups = built.recipe.groups.filter(g => g.system !== 'blank' || g.entrance || g.cladding);
   const entry = {
     id: entryId, category: 'ordinary' as const, buildingId: `NL.IMBAG.Pand.${pand}`, name: replaced?.name ?? intent.address,

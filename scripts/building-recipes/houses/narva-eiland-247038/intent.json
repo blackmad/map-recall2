@@ -49,19 +49,98 @@
     28,
     56
    ],
-   "system": "brick-bay-grid"
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#3d3b3a",
+    "frame": "#d4d6cc"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.8,
+    "sill": 0.12
+   },
+   "dressings": {
+    "colour": "#d4d6cc",
+    "surrounds": {
+     "storeys": [
+      1,
+      2,
+      3
+     ]
+    }
+   }
   },
   {
    "wallSurfaces": [
     96
    ],
-   "system": "brick-bay-grid"
+   "system": "brick-bay-grid",
+   "houses": [
+    {
+     "w": 0.48,
+     "bays": 1,
+     "brick": "#8a4434",
+     "frame": "#3c3a3a",
+     "windowShape": {
+      "w": 0.85,
+      "h": 0.55,
+      "sill": 0.25
+     }
+    },
+    {
+     "w": 0.52,
+     "bays": 2,
+     "brick": "#3d3b3a",
+     "frame": "#d4d6cc",
+     "windowShape": {
+      "w": 0.55,
+      "h": 0.8,
+      "sill": 0.12
+     },
+     "dress": {
+      "colour": "#d4d6cc",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      }
+     }
+    }
+   ],
+   "storeys": 4
   },
   {
    "wallSurfaces": [
     20
    ],
-   "system": "brick-bay-grid"
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#c9b07c",
+    "frame": "#3e3c3a"
+   },
+   "dressings": {
+    "colour": "#dcd9d0",
+    "bands": {
+     "at": [
+      "sill",
+      "head"
+     ],
+     "storeys": [
+      1,
+      2,
+      3
+     ]
+    }
+   },
+   "windowShape": {
+    "w": 0.85,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "baysPerStorey": 4,
+   "storeys": 4
   },
   {
    "wallSurfaces": [
@@ -86,5 +165,7 @@
  },
  "closedBands": true,
  "layeredKit": true,
- "notes": []
+ "notes": [
+  "Rows 2026-11-19 (lane narva-pilot-20261116): surface 96 from crop w03-320 (2018-06-21): two fronts at 5.2 of 10.7 m (red brick with one wide window a storey, dark brick with tall pale-framed windows). Surface 20 from w02-320: yellow brick, wide dark windows between pale sill and head bands. Surfaces 27/28/56 from w01-230: dark brick, tall pale-framed windows. Surfaces 7/53 crop w05-320 (2016) predates the building: nothing written."
+ ]
 }

@@ -1682,6 +1682,19 @@ export interface LargeBuildingIntent {
   /** Lift 3DBAG wall and roof vertices under the ground to it and drop faces left on the ground (opt-in; `largeSurfaceSet`). */
   groundClamp?: boolean;
   /**
+   * Several LoD2.2 blocks on one BAG pand whose outline also spans the ground between them (Narva-eiland 252366, 2021:
+   * two parallel rows on one garage deck, BAG 4,832 m2 vs LoD2.2 2,967 m2; lane narva-pilot-20261116). The
+   * footprint-vs-bag gate then compares the model with the LoD2.2 survey footprint (IoU >= 0.90) and requires it to lie
+   * inside the BAG outline (>= 95 %). Absent: the BAG IoU gate, unchanged.
+   */
+  footprintParts?: boolean;
+  /**
+   * Building-tile OSM feature ids the runtime must hide with this pand when the tiles lack the pand itself and draw it as
+   * OSM outlines the BAG index does not link (Narva-eiland 252366: w725476475, w936343679). install-large checks each is
+   * a tile feature over the footprint (installAliases.ts). Absent: the catalogue entry is unchanged.
+   */
+  osmAliases?: string[];
+  /**
    * Triangle budget for this house's large-tier gate, in place of the 12,000 default (the user-approved raised cap is
    * 40,000 for a tall block whose facade rhythm, loggias and crown the 12k kit cannot draw). It only raises the budget:
    * the validator accepts 12,000..40,000, and every house without the field keeps the default and byte-identical output.

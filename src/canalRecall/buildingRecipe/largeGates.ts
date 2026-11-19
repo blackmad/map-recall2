@@ -6,7 +6,7 @@
  * 5 cm of the host or a part that is).
  */
 import {modalLine} from './rowSplit.ts';
-import {footprintIoU, topology, type Gate, type Tri} from './gates.ts';
+import {footprintInside, footprintIoU, topology, type Gate, type Tri} from './gates.ts';
 import {roofHeightAt} from './facts.ts';
 import type {CompiledLargeBuilding} from './largeCompile.ts';
 
@@ -38,7 +38,12 @@ export function evaluateLargeGates(tris: Tri[], built: CompiledLargeBuilding, op
     const alt = footprintIoU({...facts, bagFootprintRD: [...facts.bagFootprintRD, ...courtyards]} as typeof facts, rings, recipe.anchorRD);
     if (alt > iou) { iou = alt; viaCourtyards = courtyards.length; }
   }
-  g('footprint-vs-bag', iou >= 0.9, viaCourtyards ? {iou: +iou.toFixed(3), courtyardsFromLod22: viaCourtyards} : blocks.length ? {iou: +iou.toFixed(3), coreIou: +footprintIoU(facts, rings, recipe.anchorRD).toFixed(3), stackedBlocks: blocks.length} : +iou.toFixed(3), 'IoU >= 0.90 against BAG LoD0');
+  if (built.footprintParts) {
+    // several LoD2.2 blocks on one pand (intent `footprintParts`): the model against the LoD2.2 parts, and inside BAG
+    const parts = facts.surveyFootprintPolygonsRD ?? [];
+    const partsIou = footprintIoU({...facts, bagFootprintRD: parts.flat()} as typeof facts, rings, recipe.anchorRD), insideBag = footprintInside(facts, rings, recipe.anchorRD);
+    g('footprint-vs-bag', partsIou >= 0.9 && insideBag >= 0.95, {iou: +iou.toFixed(3), partsIou: +partsIou.toFixed(3), insideBag: +insideBag.toFixed(3), parts: parts.length}, 'footprintParts: IoU >= 0.90 against the LoD2.2 parts, >= 95 % inside BAG LoD0');
+  } else g('footprint-vs-bag', iou >= 0.9, viaCourtyards ? {iou: +iou.toFixed(3), courtyardsFromLod22: viaCourtyards} : blocks.length ? {iou: +iou.toFixed(3), coreIou: +footprintIoU(facts, rings, recipe.anchorRD).toFixed(3), stackedBlocks: blocks.length} : +iou.toFixed(3), 'IoU >= 0.90 against BAG LoD0');
   const roofMax = Math.max(...tris.filter(t => t.surface === 'roof').flatMap(t => [t.a[1], t.b[1], t.c[1]]));
   g('ridge-vs-3dbag', Math.abs(roofMax - facts.heights.roofMaxM) <= 0.3, {modelM: +roofMax.toFixed(2), threeDBagM: +facts.heights.roofMaxM.toFixed(2)}, '|Δ| <= 0.30 m (roof max vs LoD2.2 roof max)');
   const panels = new Map<number, {o: number[]; r: number[]; n: number[]; uMin: number; uMax: number}>();

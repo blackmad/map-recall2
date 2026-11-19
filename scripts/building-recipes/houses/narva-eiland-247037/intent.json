@@ -47,7 +47,79 @@
    "wallSurfaces": [
     39
    ],
-   "system": "brick-bay-grid"
+   "system": "brick-bay-grid",
+   "houses": [
+    {
+     "w": 0.255,
+     "bays": 3,
+     "brick": "#c8ad7c",
+     "frame": "#3c3a38",
+     "windowShape": {
+      "w": 0.45,
+      "h": 0.75,
+      "sill": 0.1
+     },
+     "dress": {
+      "colour": "#dcd9d0",
+      "surrounds": {
+       "storeys": [
+        1
+       ]
+      }
+     }
+    },
+    {
+     "w": 0.255,
+     "bays": 2,
+     "brick": "#464646",
+     "frame": "#d8d6d0",
+     "windowShape": {
+      "w": 0.6,
+      "h": 0.6,
+      "sill": 0.2
+     },
+     "dress": {
+      "colour": "#dcd9d0",
+      "bands": {
+       "at": [
+        "sill"
+       ],
+       "storeys": [
+        1
+       ]
+      }
+     }
+    },
+    {
+     "w": 0.26,
+     "bays": 3,
+     "brick": "#7a3a30",
+     "frame": "#3c3c3c",
+     "windowShape": {
+      "w": 0.7,
+      "h": 0.8,
+      "sill": 0.1
+     },
+     "dress": {
+      "piers": {
+       "ends": true,
+       "w": 0.22
+      }
+     }
+    },
+    {
+     "w": 0.23,
+     "bays": 2,
+     "brick": "#cdb27e",
+     "frame": "#3c3a38",
+     "windowShape": {
+      "w": 0.85,
+      "h": 0.5,
+      "sill": 0.25
+     }
+    }
+   ],
+   "storeys": 4
   },
   {
    "wallSurfaces": [
@@ -59,7 +131,31 @@
    "wallSurfaces": [
     72
    ],
-   "system": "brick-bay-grid"
+   "system": "brick-bay-grid",
+   "palette": {
+    "brick": "#4a3a34",
+    "frame": "#6a5a4a"
+   },
+   "dressings": {
+    "colour": "#dcd9d0",
+    "bands": {
+     "at": [
+      "sill",
+      "head"
+     ],
+     "storeys": [
+      1,
+      2,
+      3
+     ]
+    }
+   },
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "storeys": 4
   },
   {
    "wallSurfaces": [
@@ -73,13 +169,6 @@
     36
    ],
    "system": "brick-bay-grid"
-  },
-  {
-   "wallSurfaces": [
-    12,
-    22
-   ],
-   "system": "brick-bay-grid"
   }
  ],
  "otherWalls": "brick-bay-grid",
@@ -90,5 +179,8 @@
  },
  "closedBands": true,
  "layeredKit": true,
- "notes": []
+ "notes": [
+  "Rows 2026-11-19 (lane narva-pilot-20261116): walls[0] from crop w01-320 (2018-06-21): four fronts at 5.3, 10.6 and 16.0 m of 20.8 m (yellow brick with three tall narrow windows and one pale-surround window, dark grey brick with pale frames, red brick with brick pilasters between the window columns, yellow brick with wide windows). walls[2] from w05-320: dark brown brick, brown frames, pale sill and head bands (its diamond brick panels over the doors: no kit part). walls[1] crop w04-321 (2017) shows the building under construction: nothing written.",
+  "The W wall (surfaces 12, 22) is left to otherWalls: its group read the set-back storey's 15.9 m eaves against the 12.9 m roof edge (eaves gate), and its crop w03-254 is 18 deg oblique."
+ ]
 }

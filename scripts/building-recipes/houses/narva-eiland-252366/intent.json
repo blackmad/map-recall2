@@ -1,0 +1,138 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "narva-eiland-252366",
+ "pandId": "0363100012252366",
+ "address": "Narva-eiland, Houthavens: 2021 perimeter block of five storeys and a set-back sixth, about fourteen separately designed fronts along a 105 m quay front on one BAG pand (grey, dark, yellow, red-brown and pale brick; pale window surrounds on one, white frames on others), missing from the building tiles, drawn there as two OSM outlines",
+ "sources": [
+  {
+   "id": "pano-2024-10-16-w01-320N",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-16_06-25-31_02849/",
+   "image": "source-data://pand-reference-walls/0363100012252366/w01-320N.jpg",
+   "sha256": "1b4d8d40ea9673309feb8d67ba85e25912814546bb15f927f4e67f98c8d11ea3",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    16,
+    20,
+    25
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "houses": [
+    {
+     "w": 0.1359,
+     "bays": 3,
+     "brick": "#85878b"
+    },
+    {
+     "w": 0.0466,
+     "bays": 1,
+     "brick": "#4a4446",
+     "frame": "#ecebe6"
+    },
+    {
+     "w": 0.0543,
+     "bays": 2,
+     "brick": "#c8b48a"
+    },
+    {
+     "w": 0.0388,
+     "bays": 2,
+     "brick": "#8a8784"
+    },
+    {
+     "w": 0.0349,
+     "bays": 2,
+     "brick": "#6a3a32"
+    },
+    {
+     "w": 0.0776,
+     "bays": 4,
+     "brick": "#b4b4b0",
+     "dress": {
+      "colour": "#ecebe6",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ]
+      }
+     }
+    },
+    {
+     "w": 0.0388,
+     "bays": 2,
+     "brick": "#9c9a98",
+     "frame": "#ecebe6"
+    },
+    {
+     "w": 0.033,
+     "bays": 2,
+     "brick": "#8c8c8c"
+    },
+    {
+     "w": 0.1417,
+     "bays": 7,
+     "brick": "#3e3c3e"
+    },
+    {
+     "w": 0.0272,
+     "bays": 2,
+     "brick": "#5a3a34"
+    },
+    {
+     "w": 0.0349,
+     "bays": 2,
+     "brick": "#c8ccc8"
+    },
+    {
+     "w": 0.0738,
+     "bays": 3,
+     "brick": "#7a4a3a"
+    },
+    {
+     "w": 0.0932,
+     "bays": 3,
+     "brick": "#8c8a88"
+    },
+    {
+     "w": 0.1693,
+     "bays": 5,
+     "brick": "#6a3632",
+     "frame": "#ecebe6"
+    }
+   ]
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#5a4a44",
+  "frame": "#3a3a3c",
+  "door": "#3a3634"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Row 2026-11-19 (lane narva-pilot-20261116) from crop w01-320N (2024-10-16, 105.5 m): fourteen fronts read at the joints of the crop (shares of 2576 display px); two of them (1710-2140 px) are half hidden by a tree, their split and colours inferred. The SE front (surfaces 5, 6, 14, 17) has a 2022 crop w02-141NB, not yet read: otherWalls. The BAG outline spans both rows and the deck between them (BAG 4,832 m2, LoD2.2 two blocks of 1,410 and 1,557 m2): footprintParts.",
+  "The building tiles lack this pand and draw two OSM outlines in its place (w725476475, w936343679), which the BAG index does not link to it: osmAliases."
+ ],
+ "budgetTriangles": 24000,
+ "footprintParts": true,
+ "osmAliases": [
+  "w725476475",
+  "w936343679"
+ ]
+}

@@ -38,6 +38,8 @@ export interface CompiledLargeBuilding {
 
   /** the triangle budget this house is gated on: `intent.budgetTriangles` (opt-in, up to 40,000), else 12,000 */
   budgetTriangles: number;
+  /** `intent.footprintParts`: the footprint gate measures against the LoD2.2 parts inside the BAG outline */
+  footprintParts?: true;
   /** block-kit wall panels (index = `recipe.panelGroup` index) */
   panels: Panel[];
 }
@@ -520,5 +522,5 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
   let crown: CrownReport | undefined;
   if (intent.crown) { crown = applyCrownCantilever(res.mesh, recipe, intent.crown, res.panels); counts.crowns = (counts.crowns ?? 0) + 1; }
   const blockGates = runGates(res.mesh, recipe.set, {budget: budgetTriangles});
-  return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, budgetTriangles, panels: res.panels, ...(crown ? {crown} : {}), ...(blockPlans.length ? {blockPlans} : {})};
+  return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, budgetTriangles, panels: res.panels, ...(crown ? {crown} : {}), ...(blockPlans.length ? {blockPlans} : {}), ...(intent.footprintParts ? {footprintParts: true as const} : {})};
 }

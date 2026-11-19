@@ -19,3 +19,12 @@ test('OSM outlines first, then the tower; never twice', () => {
   assert.deepEqual(installAliases('0363100012094874', ['w1'], tiles), ['w1', 'tower:NL.IMBAG.Pand.0363100012094874']);
   assert.deepEqual(installAliases('0363100012094874', ['tower:NL.IMBAG.Pand.0363100012094874'], tiles), ['tower:NL.IMBAG.Pand.0363100012094874']);
 });
+
+test('declared osmAliases (a pand missing from the tiles): appended last, once, and only when the tiles draw them', () => {
+  const narva = ['w725476475', 'w936343679', 'NL.IMBAG.Pand.0363100012250155'];
+  assert.deepEqual(installAliases('0363100012252366', [], narva, ['w725476475', 'w936343679']), ['w725476475', 'w936343679']);
+  assert.deepEqual(installAliases('0363100012252366', ['w725476475'], narva, ['w725476475', 'w936343679']), ['w725476475', 'w936343679']);
+  assert.throws(() => installAliases('0363100012252366', [], narva, ['w1']), /osmAliases: w1 is not a building-tile feature/);
+  // absent: byte-identical
+  assert.deepEqual(installAliases('0363100012094874', ['w1'], tiles, []), installAliases('0363100012094874', ['w1'], tiles));
+});
