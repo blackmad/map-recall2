@@ -87,8 +87,9 @@ export function memberDraw(segment: DrawSegment, pandId: string, exception: bool
   const era = typeof segment.year === 'number' && segment.year >= ERA_YEARS.from && segment.year <= ERA_YEARS.to;
   const r = segment.reads, read = r?.bays?.[pandId];
   // Era fronts: tall sashes under a transom light in light frames (the photographed rows; 85 % of the D1 ring reads say
-  // white frames), unless the reads say otherwise.
-  const look = era || r ? { tall: true, sash: 'transom' as const, dark: r?.whiteFrames === undefined ? false : !r.whiteFrames, ...(r?.pale !== undefined ? { pale: r.pale } : {}), ...(r?.arch !== undefined ? { arch: r.arch } : {}) } : undefined;
+  // white frames). An era front stays light even where the D1 reads say dark: Roemer Visscherstraat 164845's three reads
+  // said dark and the photo shows cream frames (gate, 2026-11-19); the reads still set pale and arch.
+  const look = era || r ? { tall: true, sash: 'transom' as const, dark: era ? false : r?.whiteFrames === undefined ? false : !r.whiteFrames, ...(r?.pale !== undefined ? { pale: r.pale } : {}), ...(r?.arch !== undefined ? { arch: r.arch } : {}) } : undefined;
   // One window pitch per segment (its module split by the era count), so the columns keep their spacing across party
   // walls: a plot twice the module draws twice the windows, not wider ones.
   // A single plot (up to 1.5 modules) takes the era count for its own width (2 under 4.8 m, 3 to 7.5 m): a 4.3 m plot drew
