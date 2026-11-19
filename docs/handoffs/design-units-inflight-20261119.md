@@ -51,7 +51,12 @@ Run in the integrate worktree on 1b2fac24f, then on e138de88a after the merge an
 
 **Not yet run:** `check:canal` core, rail and joins on the integrate branch. No pixels have been checked.
 
-**Background job (started 18:04).** A trial pair was running, `npm run house:frames` on 12 Van Ostadestraat pands:
+**Trial pair: done at about 18:12 (desktop, live tiles).**
+- Every one of the 12 Van Ostadestraat pands changed; none was flagged sameAsBefore. The share of target-wall pixels changed was 58–99%, with mean OKLab dE 0.09–0.19.
+- In `vo-after/0363100012153176/triple.jpg`, the row reads as one continuous brick front on one line. Before, it was houses of varied height with a dark odd one out. The wall lightness moved toward the photo: L 0.43, then 0.50, against 0.59 in the photo.
+- **A regression to look at before the gate:** the windows after are wide and squat, while the photo's are narrow and tall. The segment bay pitch (`segmentBayM`) may be too wide for these 1900s fronts. Check that before shooting the 18 blocks.
+
+(Superseded) **Background job (started 18:04).** A trial pair was running, `npm run house:frames` on 12 Van Ostadestraat pands:
 - before: `artifacts/design-units/frames/vo-before` with `?world=live`;
 - after: `vo-after` with `?world=live&designUnits=1 --before vo-before`;
 - PW_PORT 4724, through `/tmp/canal-pw.sh`;
