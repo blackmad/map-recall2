@@ -62,3 +62,5 @@ import modelLods from './modelLods.json';
  * `lod2` for those with a `<id>.lod2.glb` (lane R4-B #244; a model under the lod1 threshold has only `lod2`).
  */
 export const MODEL_LODS: Readonly<Record<string, LandmarkLodEntry>> = modelLods as Record<string, LandmarkLodEntry>;
+/** Building pages: paint the ride's shader window grid on a raw GLB's unphotographed walls (feedback 13fa7f). */
+export { applyWindowGrids } from '../look/galleryWindowGrid';

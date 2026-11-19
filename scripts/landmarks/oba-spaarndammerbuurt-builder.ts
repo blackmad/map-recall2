@@ -26,8 +26,9 @@ import raw from './oba-spaarndammerbuurt-footprints.json';
  *  - t 13.3-18.6: brick with a column of wide three-light windows (French rails on the 2nd and 3rd storey), two on the top;
  *  - ground storey: shop glazing in dark blue frames between concrete piers, a white cornice at 2.4 m, then a brick fascia
  *    carrying the red "oba" letters (t 4.4-6.0) and a projecting red blade sign (t 8.4).
- * Brick colour: the 2019 panorama reads #4f4b48 (backlit), the 2022 one #878177; the model takes #6a625d between them, which
- * is the dark-brick ruling question of 2026-11-12, left to the user (see the lane report).
+ * Brick colour: the 2019 panorama reads #4f4b48 (backlit), the 2022 one #878177. The first model took #6a625d, which read
+ * near-black in the ride (feedback 174f6f). David ruled on needs-david #385 (2026-11): "it's grey brick in the images", so
+ * the catalogue's brick takes the 2022 reading, #878177 (option 2 of #385).
  * INFERRED: the rear (garden) face's window rows and the hall's rear windows (the rear panorama crop is a close-up behind a tree).
  */
 const src = raw as unknown as ShellSource & {facadeRing: number[][]};

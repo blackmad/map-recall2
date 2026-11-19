@@ -24177,11 +24177,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012253728",
       "name": "Politiebureau Oost Zeeburg, Atje Keulen-Deelstrastraat 2, Amsterdam (IJburg/Zeeburgereiland)",
-      "hash": "f57d540c52fa846be91eec749efd5e97f4be4a68e3ac3469f58fdac91bd660e7",
-      "sha256": "f57d540c52fa846be91eec749efd5e97f4be4a68e3ac3469f58fdac91bd660e7",
-      "bytes": 157752,
-      "triangles": 2050,
-      "materials": 9,
+      "hash": "0f9d01bd4f2d0ce36e8188c93f35ab93505205e216ecb8e01727762dcbe813eb",
+      "sha256": "0f9d01bd4f2d0ce36e8188c93f35ab93505205e216ecb8e01727762dcbe813eb",
+      "bytes": 259276,
+      "triangles": 3449,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -24327,6 +24327,8 @@
         "kind": "large",
         "intentSources": [
           "source-data://pand-reference-walls/0363100012253728/w01-131.jpg",
+          "pano-2022-12-28-nw",
+          "source-data://pand-reference-walls/0363100012253728/w04-41.jpg",
           "staging/pand-reference/0363100012253728/front-alt.jpg"
         ],
         "gates": [
@@ -24337,32 +24339,40 @@
           "ridge-vs-3dbag:pass",
           "eaves-vs-3dbag/walls[0]:pass",
           "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
           "parts-attached:pass",
           "openings-within-walls:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid+entrance 3st 25b"
+          "brick-bay-grid+entrance 3st 25b",
+          "brick-bay-grid 3st 18b",
+          "brick-bay-grid 3st 5b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] likeness WARN (mask IoU 0.264 < 0.45).",
+        "walls[1] not confirmed by the photo (NO EVIDENCE (washed out 67 % > 30 %)); inferred: archived NW crop w02-311 is the 2017 building site, rear drawn from the 2022-12-28 panorama TMX7316010203-002899_pano_0001_000029 (oblique, behind a fence)",
+        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.23 mean 0.14 vs photo 0.37)); inferred: matched crop w04-41L (2022) shows scaffolding over the ivy ground storey, the 2024 crop w04-41 shows five tall first-floor windows between piers under a blank top storey",
         "2022 police bureau, a 45 m long rounded block (3DBAG panels 14 and 27) with a recessed upper level. Only the south-east long front (panel 14, surfaces 15 and 17) is described, from the 2025-09-25 panorama (front-alt.jpg) and the 2022 panorama thumbnail: light grey-brown brick, three storeys, white string courses, an upper band of tall windows, a middle band of small windows, and POLITIE lettered in blue on the wall (gold flame emblem not modelled). The lettering sits at about 55-70 % of the front in the panorama; the kit centres wall lettering over the entrance, so in the model it is above the glazed left-hand entrance end instead (position deviation, kept so the kit is exercised on a real wall).",
         "The ground storey of this front is mostly a dark green ivy-clad wall (blank), with glazing only at the south-west curved end and tall glazed slots rising through the lower two storeys near the middle; the slots and the entrance end are not modelled (flat bay grid), so the ground is left blank.",
         "No striped band, blue lamp, canopy or garage doors are visible on this front; police components are not used.",
-        "The north-west long wall (panel 27), the curved ends and the recessed upper level (panels 9, 13) have no panorama in the cache and are left to otherWalls (blank).",
+        "Rear windows (feedback 347e64 \"Rear windows?\", lane fb-models-20261119): the north-west long wall (panel 27, surfaces 29 and 34) is described from the 2022-12-28 panorama TMX7316010203-002899_pano_0001_000029 (an oblique view from across the open plot west of the station, thumbnail heading 105): behind a dark 2.5 m fence, the same grey-brown brick with pier bays, a row of narrow windows on the first floor, four tall windows through the middle and a glazed band under the top; group 1, 18 bays, ground blank (the fence hides it; the 2017 crop w02-311 predates the building). The north-east end (panel 21, surface 23) is described from the 2024-09-19 crop w04-41: an ivy-clad ground storey, five tall windows between brick piers on the first floor and a blank brick top storey; group 2. The recessed upper level (panels 9 and 13) and the curved ends still have no panorama and stay with otherWalls (the shader window grid).",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #575d65 not used (not darker than the wall #665f58 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253728",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-11-14T08:17:28.340Z",
+      "updatedAt": "2026-11-19T17:42:56.806Z",
       "bagYear": 2022,
-      "meshHash": "35fd0b3e8decf801"
+      "meshHash": "b0ae97ad371db698"
     },
     {
       "id": "ordinary-0363100012064423",

@@ -1,5 +1,5 @@
 {
-  "toolchain": "3962b58e1918b723eeed7856fd28e3694d59b03753e655bbb1838f21dd0d8a9d",
+  "toolchain": "469d585f8be7ddcda1cc0f7196fe1474208bbb2db128390a7d735bcf526f68d9",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -331,7 +331,7 @@
     "noorderkerk": "743861a3593754629bcce0fe7ad9070a446f34be3dc57364b68fbb4e80d1f95e",
     "noorderparkbad": "6b38a5a1d14116c915f47c617aa8e8de9378b58bcaa35f117be6456013c7a194",
     "oba-oosterdok": "12270bc16967849c3f89ad42e7d74ecabb8e24a53a1f334543af114f6e92287b",
-    "oba-spaarndammerbuurt": "632f5e64b1ee296abe0cb02ec285498589b64aa4c155ff98adf0c1e24f234950",
+    "oba-spaarndammerbuurt": "3fa946487e05124b49366426d301b4092fc23047a61f6f80e31422d6ad6d4cbb",
     "oba-staatsliedenbuurt": "1f92db71c60edbf0c7962fb9c4a5248788e40aaefac57607fe5131bb34e4439a",
     "obrechtkerk": "ee576772e0f02efc37aed5d162ccf9ceac7e7eadcf73fc5d7ea5e9ae5591c46b",
     "occii": "568a88cecb14aa616e02fff390e2cdab58827ad8c60cdfa13430de7aef78bdec",
@@ -406,6 +406,7 @@
     "scheltema": "52b770af2304e59684e5b1e686604987c683508aa7c31946d9d5005127b6af0b",
     "schiller-rembrandtplein": "09426a73805893adc989b9ff5b0dc0ced8d7e4faa637a46895386b51fc7ec1b5",
     "schreierstoren": "7ff1b8d35f70c8348915d6912adf6ea13f652582f11100b8426c2d7c9cfb1b21",
+    "schutterstoren": "b3bf414d47bfbf36602838543d662ddad57a20d56bc6466398788cf12aa862e7",
     "sea-palace": "87a20060cd4b2a667c8e314d7af23ad59f291251569f8751a3ce7ea47bf6bcd9",
     "sexmuseum-venustempel": "b12c5c91f25d5b17e4aee2196c91944a0a7871349984ba073a077b450f00d8a3",
     "shell-technology-centre": "eda5a421f1176019d2b55285de17cebcc283909197cd180c885a368fe86c93a6",

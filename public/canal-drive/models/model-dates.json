@@ -2647,8 +2647,8 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-65.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.154Z",
-      "version": "e666574e153f51f4",
+      "updatedAt": "2026-11-19T17:33:00.342Z",
+      "version": "91f03fdcd974b273",
       "dateSource": "asset-update"
     },
     "haparandaweg-650-706": {
@@ -2682,8 +2682,8 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-746-786.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.154Z",
-      "version": "7cdbd29449f4d881",
+      "updatedAt": "2026-11-19T17:33:00.344Z",
+      "version": "99da1b0e7235bcbf",
       "dateSource": "asset-update"
     },
     "haparandaweg-788-868": {
@@ -2752,13 +2752,13 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-952-1002.lod1": {
-      "updatedAt": "2026-10-13T21:34:52.932Z",
-      "version": "37b560a4a940b6be",
+      "updatedAt": "2026-11-19T17:33:00.350Z",
+      "version": "e37f367981592d51",
       "dateSource": "asset-update"
     },
     "haparandaweg-952-1002.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.155Z",
-      "version": "18be7d624916e9f5",
+      "updatedAt": "2026-11-19T17:33:00.350Z",
+      "version": "a294dca92b24c655",
       "dateSource": "asset-update"
     },
     "hart-museum": {
@@ -4792,8 +4792,8 @@
       "dateSource": "asset-update"
     },
     "oba-spaarndammerbuurt": {
-      "updatedAt": "2026-11-14T04:40:32.362Z",
-      "version": "3fca7f907559e184",
+      "updatedAt": "2026-11-19T17:49:36.881Z",
+      "version": "cd682a003e8dede8",
       "dateSource": "asset-update"
     },
     "oba-spaarndammerbuurt.lod1": {
@@ -5869,6 +5869,11 @@
     "schreierstoren.lod2": {
       "updatedAt": "2026-11-07T14:08:58.182Z",
       "version": "8d10c48caa05ea3f",
+      "dateSource": "asset-update"
+    },
+    "schutterstoren": {
+      "updatedAt": "2026-11-19T17:59:34.386Z",
+      "version": "a7c4ec9611797317",
       "dateSource": "asset-update"
     },
     "sea-palace": {

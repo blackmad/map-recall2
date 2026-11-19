@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "id": "schutterstoren",
+ "pand": "0363100012123932",
+ "signature": ["drum-on-stem", "conical-soffit", "fin-curtain-wall", "entrance-name"],
+ "walls": [
+  {
+   "tag": "w01-151",
+   "bearing": 151,
+   "lengthM": 45,
+   "centre": [4.807567, 52.365078],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002508_pano_0000_001214",
+   "capturedAt": "2022-04-12",
+   "checked": true,
+   "items": [
+    {"id": "drum-on-stem", "kind": "tower", "where": "the whole tower: a 28.6 m white drum on an 11.5 m fair-faced concrete stem", "approxSizeM": [28.6, 45.8], "plan": "modelled", "seenIn": "TMX7316010203-002508_pano_0000_001214", "how": "buildSchutterstoren(): stem cylinder, drum to the 3DBAG eaves 42.9 m, set-back top storey to 45.78 m"},
+    {"id": "conical-soffit", "kind": "canopy", "where": "under the drum: a shallow concrete cone from the stem out to a thin rim", "approxSizeM": [28.6, 1.4], "plan": "modelled", "seenIn": "2025_09_24_09_11_56_00883", "how": "lathe solid from the stem top (7.2 m) to the rim (7.95-8.6 m)"},
+    {"id": "entrance-name", "kind": "lettering", "where": "SCHUTTERSTOREN in small steel letters on the stem over the entrance door", "approxSizeM": [3.8, 0.3], "plan": "modelled", "seenIn": "TMX7316010203-002508_pano_0000_001214", "how": "one sign() glyph per arc position round the stem, frame grey"},
+    {"id": "entrance-door", "kind": "other", "where": "glazed door pair in the stem at deck level", "approxSizeM": [2.4, 2.5], "plan": "simplified", "seenIn": "TMX7316010203-002508_pano_0000_001214", "how": "glass panel under a steel lintel on the stem face"}
+   ],
+   "note": "Street (south-south-east) side: the entrance on the stem, behind the planted bank of the car-park deck."
+  },
+  {
+   "tag": "w02-18",
+   "bearing": 18,
+   "lengthM": 45,
+   "centre": [4.807533, 52.365314],
+   "evidence": "photo",
+   "panoId": "2025_09_24_09_11_56_00883",
+   "capturedAt": "2025-09-24",
+   "checked": true,
+   "items": [
+    {"id": "fin-curtain-wall", "kind": "window-shape", "where": "all round: one tall window per 1.23 m bay between proud white fins, some bays closed white panels in staggered columns", "approxSizeM": [1.23, 2.1], "plan": "simplified", "seenIn": "2025_09_24_09_11_56_00883", "how": "72 fins and a window per bay and storey, a mullion per window; the open/closed pattern is a deterministic hash (~22% closed), not read bay by bay"},
+    {"id": "deck-railing", "kind": "other", "where": "steel railing round the raised deck the stem rises from", "approxSizeM": [40, 1.1], "plan": "skipped", "skip": {"reason": "not-visible", "note": "it belongs to the car-park deck round the tower (ground, not this pand); the model stops at the BAG footprint"}, "seenIn": "2025_09_24_09_11_56_00883"}
+   ],
+   "note": "North side over the lawn; the same curtain wall as every side."
+  },
+  {
+   "tag": "w03-111",
+   "bearing": 111,
+   "lengthM": 45,
+   "centre": [4.807660, 52.365140],
+   "evidence": "photo",
+   "panoId": "2025_09_24_09_11_56_00868",
+   "capturedAt": "2025-09-24",
+   "checked": true,
+   "items": [],
+   "note": "East side: curtain wall as w02-18, seen through trees."
+  },
+  {
+   "tag": "w04-279",
+   "bearing": 279,
+   "lengthM": 45,
+   "centre": [4.807255, 52.365210],
+   "evidence": "photo",
+   "panoId": "2025_09_24_09_11_56_00902",
+   "capturedAt": "2025-09-24",
+   "checked": true,
+   "items": [],
+   "note": "West side: curtain wall as w02-18, mostly behind a tree."
+  }
+ ]
+}
