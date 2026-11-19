@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Narva-eiland pilot installed (2026-11-19, lane/narva-pilot-20261116 03c285162)
+
+Three Houthavens buildings are now kit models with separately designed fronts on one BAG pand. In a blind comparison against today at pinned poses, the new render won 5 of 5. The pands are 250155, 247037 and 252366; 252366 is a 2021 pand missing from the building tiles, installed with the OSM aliases w725476475 and w936343679. 247038 is held on an open-edge 3DBAG shell. New opt-in kit fields, each byte-identical when absent: per-house window `frame` and `dress`, `footprintParts` (one pand over several LoD2.2 blocks) and `osmAliases`. The world was recompiled (`--no-policy --shell`, world:verify clean), and the regenerated frontages fix the CI `audit-frontages` baseline that had been red since 2026-11-16. The kit still cannot say: the generic brick between measured fronts makes the row read as coloured inserts; diamond brick panels; per-house loggias; a single wide window in one house.
+
 ## Ground floors that fit the building, fix round 2 (2026-11-19, lane/ground-floor-20261116 98fc17523)
 
 Behind `?groundFloor=1` only; the default and baked worlds are unchanged. Blind round 3 over 25 pands: new 14, today 9, tie 2 (round 2 was 8–6–4). Fixes:
