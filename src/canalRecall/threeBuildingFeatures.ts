@@ -1,8 +1,9 @@
+import { groundFloorOf, groundFloorOn } from './groundFloor/extract.js';
 import { logoFor, retailLogoLayer } from './retailLogos.js';
 import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, retailBrandOn, retailPartsOn, retailRealOn } from './retailPages.js';
 import { BRAND_STYLES } from './retailBrandStyles.js';
-import { RETAIL_CHAINS, chainOfWord } from './retailChains.js';
-import { TEMPLATE_CHAIN_LOGO, chainLogo } from './retailChainLogos.js';
+import { RETAIL_CHAINS, chainOfWord, chainOwnFront } from './retailChains.js';
+import { templateLogoKey, chainLogo } from './retailChainLogos.js';
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
 import { structurePriorOn, STRUCTURE_PRIOR_TABLE } from './houseSpec/structurePrior.js';
 import type { StoopIntent } from './buildingRecipe/stoop.ts';
@@ -344,13 +345,24 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const chainKey = chainOfWord(template?.[3]), chainRow = chainKey ? RETAIL_CHAINS[chainKey] : undefined;
   // A chain under a template whose real look has not won (REAL_ACCEPTED) draws as round n would: the template with its
   // name lettered, no chain colours or logo.
-  const retailChain = chainRow && retailRealOn() && realAccepted(template![0]) ? chainRow : undefined, chainWord = chainRow && !retailChain ? chainRow.word : undefined;
+  const retailChain = chainRow && retailRealOn() && (realAccepted(template![0]) || chainOwnFront(chainKey!)) ? chainRow : undefined, chainWord = chainRow && !retailChain ? chainRow.word : undefined;
   if (template && !redRow?.x && !(chainKey && !chainRow) && retailGroundOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0]) && (!RETAIL_HELD.includes(template[0]) || (retailRealOn() && realAccepted(template[0]))) && !p.frontCarrier && cellSetOf(look) !== 'procedural'
     && (!(REAL_ONLY_TEMPLATES as readonly string[]).includes(template[0]) || (retailRealOn() && realAccepted(template[0])))) {
-    const logoLayer = retailLogoLayer(cellSetOf(look)), cl = retailChain && chainKey ? chainLogo(chainKey) : retailRealOn() && realAccepted(template[0]) && TEMPLATE_CHAIN_LOGO[template[0]] ? chainLogo(TEMPLATE_CHAIN_LOGO[template[0]]) : null;
+    const logoLayer = retailLogoLayer(cellSetOf(look)), tk = templateLogoKey(template[0], retailRealOn(), realAccepted(template[0])), cl = retailChain && chainKey ? chainLogo(chainKey) : tk ? chainLogo(tk) : null;
     const logo = cl ? { rect: cl.rect, aspect: cl.aspect, page: CHAIN_LOGO_BASE + cl.page } : logoFor(template[0] as RetailTemplate);
     building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] && !chainKey ? { word: template[3] } : chainWord ? { word: chainWord } : {}), ...(retailChain ? { chain: { fascia: retailChain.fascia, letters: retailChain.letters, word: retailChain.word } } : {}), ...(redRow?.s ? { redLight: { span: redRow.s, ...(redRow.d ? { doors: redRow.d } : {}), ...(redRow.t ? { tube: redRow.t } : {}), ...(redRow.c ? { curtains: redRow.c } : {}), ...(redRow.f ? { frameHex: redRow.f } : {}) } } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer + logo.page, rect: logo.rect, aspect: logo.aspect } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(logoLayer !== null && retailRealOn() && realAccepted(template[0]) ? { goods: logoLayer + GOODS_BASE, faces: logoLayer + TYPE_BASE } : {}), ...(puiPaint && p.puiDark !== 1 && !retailChain ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}), ...(typeof p.shopAwning === 'string' && /^#[0-9a-f]{6}$/i.test(p.shopAwning) ? { awning: p.shopAwning } : {}), ...(ov?.awning ? { awning: ov.awning } : {}), ...(ov?.frame ? { frameHex: ov.frame } : {}), ...(retailBrandOn() && (chainKey ?? template[0]) in BRAND_STYLES ? { brand: chainKey ?? template[0] } : {}) };
+    // Lane ground-floor (`?groundFloor=1`): the building's own ground floor, the shop in its openings.
+    const gf = groundFloorOn() ? groundFloorOf(p.groundFloor) : undefined;
+    if (gf && !redRow?.s) building.retailFront.groundFloor = gf;
     delete building.signature;
+  } else if (template && !redRow && !p.frontCarrier && cellSetOf(look) !== 'procedural' && retailGroundOn() && groundFloorOn() && (RETAIL_TEMPLATES as readonly string[]).includes(template[0])) {
+    // Lane ground-floor fix round: a pand whose template is held or not accepted still draws its ground-floor record,
+    // with a neutral shop fill (retailFront.ts `neutral`) and its name lettered on a dark board.
+    const gf = groundFloorOf(p.groundFloor), letters = retailLogoLayer(cellSetOf(look));
+    if (gf) {
+      building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(chainRow ? { word: chainRow.word } : template[3] && !chainKey ? { word: template[3] } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(letters !== null ? { letters } : {}), neutral: true, groundFloor: gf };
+      delete building.signature;
+    }
   }
   if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);
   if (typeof p.facade !== 'string' || !p.facadeStyle) {

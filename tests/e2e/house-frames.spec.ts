@@ -252,7 +252,9 @@ test('house frames', async ({ page, browser }) => {
           const p = f.properties ?? {};
           return { ...out, found: true, constructionYear: p.constructionYear ?? null, facadeStyle: p.facadeStyle ?? null, registerFinish: p.registerFinish ?? null,
             specReading: p.houseSpec?.wallHex ?? null, specRecipeWall: p.specRecipe?.wallHex ?? null, specRecipe: p.specRecipe ?? null, specShop: p.specShop ?? null, heldBrick: !!p.specRecipe?.heldBrick,
-            facadeMappedColour: p.facadeMappedColour ?? null, sideColour: p.sideColour ?? null, sideColourSource: p.sideColourSource ?? null, periodWallHex: p.periodWallHex ?? null };
+            facadeMappedColour: p.facadeMappedColour ?? null, sideColour: p.sideColour ?? null, sideColourSource: p.sideColourSource ?? null, periodWallHex: p.periodWallHex ?? null,
+            // Lane ground-floor: the shop inputs (why a ?groundFloor=1 pair can come out unchanged).
+            shopTemplate: p.shopTemplate ?? null, groundFloor: !!p.groundFloor, frontCarrier: !!p.frontCarrier, shopKind: p.shopKind ?? null, largeTier: p.largeTier ?? null, facade: typeof p.facade === 'string' ? p.facade : null };
         }, pose.pandId ?? null).catch(e => ({ error: String(e).slice(0, 200) }));
         writeFileSync(join(dir, 'game.json'), JSON.stringify({ key: pose.key, settle, picks, drawn, ...(specsDir ? { stagedSpecs: { on: specsOn, served: specsServed } } : {}), ...(worlds.length ? { world: { dir: worldDir || 'published', served: worldServed } } : {}), ...(bundles ? { bundlesDir: { dir: bundles, served: [...served].sort(), workers: [...workers].sort() } } : {}), opened, ms: { open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts } }, null, 1));
         timings.push({ key: pose.key, out: pose.out ?? job.out, open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts });

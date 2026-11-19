@@ -5,7 +5,6 @@
   "letters": "#ffffff"
  },
  "the-bulldog": {
-  "noLogo": true,
   "fascia": "#1d1d1b",
   "letters": "#f2c230"
  },
@@ -25,7 +24,7 @@
  },
  "starbucks": {
   "fascia": "#1e3932",
-  "logoInk": "#ffffff"
+  "letters": "#ffffff"
  },
  "zara": {
   "fascia": "#ffffff"
@@ -92,9 +91,30 @@
   "noLogo": true
  },
  "wakuli": {
-  "noLogo": true
+  "fascia": "#f5e938",
+  "letters": "#0062ff"
  },
  "febo": {
   "noLogo": true
+ },
+ "amazing-oriental": {
+  "fascia": "#5eb52b",
+  "letters": "#ffffff"
+ },
+ "bagels-and-beans": {
+  "fascia": "#3a3836",
+  "letters": "#efe6cf"
+ },
+ "vlaamsch-broodhuis": {
+  "fascia": "#4b392e",
+  "letters": "#ffffff"
+ },
+ "vlaamsch-broodhuys": {
+  "fascia": "#4b392e",
+  "letters": "#ffffff"
+ },
+ "le-pain-quotidien": {
+  "fascia": "#fdfcf9",
+  "letters": "#000000"
  }
 }

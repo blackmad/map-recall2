@@ -15,9 +15,22 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
-## Paused lanes, 2026-11-16 evening (P0, resume first): `docs/handoffs/inflight-20261116.md`
+## Design units (P0, approved 2026-11-19): `docs/handoffs/design-units-plan-20261119.md` — stopped at the phase 0 gate, waiting on David
 
-Seven lanes were paused after a WIP push: feedback triage (78 ride notes: 40 fixed since, 31 still open), chain logos (David's 13 notes), #392 continuous rows, #393 De Pijp features, ground floors (blind 8-6-4), the Hoofddorpplein pilot and the Narva-eiland pilot. Branches, SHAs and next steps are in the handoff.
+The design-units plan supersedes #392 (continuous rows) and #393 (De Pijp): their staged belt, Centrum and De Pijp looks stay held and their lanes stay paused.
+
+Phase 0 is done (`docs/reports/design-units-phase0-20261119.md`). 86% of non-minor ring pands sit in an ordekaart object, the four regression rows regroup, and Basis polygons are ordinary buildings. The plan's phase 1 rule "one elevation, one eaves line, one roof per unit" fails the positive control:
+
+- Gordel objects are composed blocks with 4/5-storey accents. 39% of units holding the liked Rivierenbuurt/Apollo rows hold differently drawn designs, mostly at a measured eaves step.
+- Centrum objects can hold separate houses: 46 of 60 photo-read "separate" runs are one object.
+
+Options A (units as identity, elevations in segments at measured steps), B (T7 answer key first, to measure Centrum false merges) and C (Ring layer only) are on the needs-david issue. The index is staged, not published, and archived in source-data `datasets/ordekaart-20261119/`. The code is in `src/canalRecall/designUnits/` and `scripts/design-units/`. Owner: the design-units overseer session (worktree `integrator-design-units-20261119`, port 4720).
+
+## Paused lanes, 2026-11-16 evening — resumed 2026-11-19 (P0): `docs/handoffs/inflight-20261116.md`
+
+Resumed on David's word (2026-11-19): ground floors, the Hoofddorpplein pilot and the Narva-eiland pilot are running from their branch heads, plus a new lane `lane/retail-pass-20261119` (a shopfront visual pass, then shop interiors starting with hair salons, behind a flag). Chain logos merged 2026-11-19 (see HISTORY); left over: The Bulldog's sign is small (1.6 m), and Bagels & Beans is plain cream capitals with no logo. #392 continuous rows and #393 De Pijp stay paused.
+
+Feedback triage finished 2026-11-19 (`docs/reports/feedback-triage-20261116.md`): 46 notes resolved, 31 still open. Proposed fix lanes, ranked, waiting on David: (1) HUD and tapping, 2 notes, small: the El Tawheed building can't be tapped (704240), and the START marker floats at Westerpark (d18eca). (2) Bridge seams, rails and water slits on 7 bridges. (3) Overlapping and floating windows, 6 notes. (4) Ground holes, plus lamp posts standing in water, 5 notes. (5) Looks and model requests, 11 notes; two are small police-station touch-ups.
 
 
 ## Street life behind flags (2026-11-14) — ride review before any default
@@ -27,7 +40,7 @@ Seven lanes were paused after a WIP push: feedback triage (78 ride notes: 40 fix
   - Bike shops: since round w bikes park perpendicular and need about 1.3 m of run and 0.3 m of door clearance. The gallery's 0.68 m strip right of the door is still too narrow for one. The pavement width each real bike shop gets from the mesher (wall to street centreline less 1.5 m) has not been sampled; check that most centre bike shops get the perpendicular row, not the side-on fallback under 2.5 m.
   - `shopProps` seed keys vary only in their last character, which barely moves the hash. Crates, plants and mirror flags vary less than intended. Move the varying part into the middle of the key, as the bike keys now do.
   - Inside props are pressed into a 2 cm relief, because the wall is not cut behind the glass. **Real 3D shop interiors** (cut the ground-storey wall behind each shop window, a 2.5 m room with real props, the shader room from `lane/shop-interiors-20261116` for distant fronts) were proposed to David on 2026-11-16 and are awaiting his go.
-  - **Ground-floor pilot running:** `lane/ground-floor-20261116`. The building draws its own ground floor (piers, arches, plinth, stone) and the shop fills the openings, behind `?groundFloor=1`. It covers 40 calibration reads, including The Sting 175382 and FEBO 177960, and a blind test on 25. The 1,418-pand read batch waits for David's go. Plan: `~/.claude/plans/prancy-dreaming-swing.md`.
+  - **Ground-floor pilot (`?groundFloor=1`), merged 2026-11-19, blind 14–9–2.** Next: draw glazing first when the read's finish is light but its openings are glazed; keep the template fascia when the read says fascia and the band fits. AH Bloedstraat needs ground floors at install level. Today's default world still draws template-only fronts on the nearest wall, which puts FEBO Leidsestraat on an unseen party wall; extending the span rule to the default would change the default world, so that needs a decision. The 1,418-pand batch waits for David.
 - **Round t follow-ups (2026-11-16).** (1) Buurt `omitExtras`: the generator now writes it on every series (no sills/frames/anchors/plinth/downpipe unless stated); round t kept main's series, so the next Rivierenbuurt/Apollo publish needs a blind of omitExtras on vs off first. (2) Brand styles for Kruidvat (colour), Dirk (red frame and blade the photo lacks) and McDonald's (green vs black) lost; AH, Coffee Company and Domino's were never posed; re-measure before adding to `ACCEPTED_BRANDS`. (3) Shop interiors parked on lane/shop-interiors-20261116 (blind 5-4-4): washed-out glass by day, supermarket shelves read as books, FEBO test used the wrong pand. (4) Room Mate Aitana held: reflective glass helps (3/5) but the builder's heavy mullion grid must go. (5) FEBO Korte Niezel's building draws brown brick, the photo is pale stone (wall look). (6) Ground-floor plan (shops fitted into arches, piers and stone plinths, The Sting Kalverstraat) waits for David's go.
 - **Markets** `?markets=1` (Albert Cuyp tunnel canopies, Ten Kate parasols): canvas sag/seams, fuller goods, clutter between stalls; no market days (no clock).
 - **Terraces** `?terraces=1` (2,169 permit terraces, 32k units, own engine only): squares read grid-regular; Rembrandtplein tall glass screens; parasol colours from panoramas; 't Smalle deck not in the permit polygon.
