@@ -40,7 +40,7 @@ test('retail pass: seed keys vary in the middle, so neighbouring props differ (p
   for (const bay of [0, 1, 2]) for (const { tris } of insideProps(SHOP_PROPS.florist, 0, 4, 'pand-7', bay)) hexes.add(tris[tris.length - 1].hex);
   assert.ok(hexes.size >= 4, `florist plants: ${hexes.size} top colours`);
   const chairs = new Set<string>();
-  withFlags(true, () => { for (const pand of ['a', 'b', 'c', 'd', 'e', 'f']) for (const { tris } of insideProps(shopPropsFor('hairdresser')!, 0, 4, `pand-${pand}`, 0)) if (tris.length === PROP_COST.stylingStation) chairs.add(tris[30].hex); });
+  withFlags(true, () => { for (const pand of ['a', 'b', 'c', 'd', 'e', 'f']) for (const { tris } of insideProps(shopPropsFor('hairdresser')!, 0, 4, `pand-${pand}`, 0)) if (tris.length === PROP_COST.stylingStation) chairs.add(tris[36].hex); });
   assert.ok(chairs.size >= 2, `salon chairs: ${chairs.size} colours over six salons`);
   const crates = outsideProps(SHOP_PROPS.greengrocer, [[0.2, 4]], 'pand-3').filter(t => t.p.every(p => p[2] > 0.9)).map(t => t.hex);
   assert.ok(new Set(crates).size >= 6, 'a crate row runs through the produce');

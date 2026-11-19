@@ -583,7 +583,9 @@ function insideRelief(b: Builder, props: NonNullable<(typeof SHOP_PROPS)[string]
 }
 
 /** Lane retail-pass round 2: room surfaces through the glass are pulled this far toward its dark; props less. */
-export const ROOM_PULL = 0.55, ROOM_PROP_PULL = 0.3;
+// Blind round 2 (2026-11-19): at 0.55 the rooms read as pale flat boxes against the photos' dark glass with warm
+// points of light; the surfaces now sit near the glass's dark, lamps and mirrors (lit) carry the read.
+export const ROOM_PULL = 0.75, ROOM_PROP_PULL = 0.4;
 function shopRoom(b: Builder, template: string, props: NonNullable<(typeof SHOP_PROPS)[string]>, c0: number, c1: number, base: number, head: number, seed: string, bay: number): void {
   b.put(roomTris(template, c0, c1, base, head, `${seed}:bay${bay}`), p => [p[0], p[1], p[2]], hex => glassTone(hex, ROOM_PULL));
   for (const { tris, depth } of insideProps(props, c0, c1, seed, bay, true)) b.put(intoRoom(tris, depth, base), p => [p[0], p[1], p[2]], hex => glassTone(hex, ROOM_PROP_PULL));

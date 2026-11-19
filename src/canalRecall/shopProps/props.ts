@@ -177,13 +177,15 @@ export function barberStation(chairHex: string): PropTri[] {
  *  at the size a salon has it. At the back (y -0.8) a 0.8 x 1.25 m mirror in its frame, its glass pale and its lamp bar
  *  over it lit (what the photos show through dark salon glass: the lit mirrors), a shelf under it with three bottles; the
  *  chair before it, back to the street, as big as a real hydraulic chair (0.6 m seat, back to 1.12 m, headrest to
- *  1.3 m), on a chrome column and base. `frameHex` the mirror's frame, `shelfHex` the shelf. 72 tris. */
+ *  1.3 m), on a chrome column and base. `frameHex` the mirror's frame, `shelfHex` the shelf. 78 tris. */
 export function stylingStation(chairHex: string, frameHex = '#1a1a1a', shelfHex = '#ece8e0', bottles: readonly string[] = ['#2f6fb0', '#e8e2d2', '#c0392b']): PropTri[] {
   const m = new Mesh(), CHROME = '#a9b0b4', yb = -0.8;
   // Mirror: frame, glass (lit: it shows the lit room), lamp bar over it.
-  m.quad([-0.4, yb, 0.8], [0.4, yb, 0.8], [0.4, yb, 2.05], [-0.4, yb, 2.05], frameHex, [0, 1, 0]);
-  m.quad([-0.35, yb + 0.01, 0.85], [0.35, yb + 0.01, 0.85], [0.35, yb + 0.01, 1.98], [-0.35, yb + 0.01, 1.98], '#c9d3d8', [0, 1, 0], true);
-  m.quad([-0.3, yb + 0.02, 2.06], [0.3, yb + 0.02, 2.06], [0.3, yb + 0.02, 2.12], [-0.3, yb + 0.02, 2.12], '#ffe9b8', [0, 1, 0], true);
+  // The frame as four bars round the glass, never a panel behind it: glass 1 cm before a frame panel z-fought into
+  // hatched streaks at ride distance (blind round 2), and the relief squashes depth to nothing.
+  for (const [x0, x1, z0, z1] of [[-0.4, 0.4, 0.8, 0.85], [-0.4, 0.4, 1.98, 2.05], [-0.4, -0.35, 0.85, 1.98], [0.35, 0.4, 0.85, 1.98]]) m.quad([x0, yb, z0], [x1, yb, z0], [x1, yb, z1], [x0, yb, z1], frameHex, [0, 1, 0]);
+  m.quad([-0.35, yb, 0.85], [0.35, yb, 0.85], [0.35, yb, 1.98], [-0.35, yb, 1.98], '#c9d3d8', [0, 1, 0], true);
+  m.quad([-0.3, yb, 2.06], [0.3, yb, 2.06], [0.3, yb, 2.12], [-0.3, yb, 2.12], '#ffe9b8', [0, 1, 0], true);
   // The shelf under it and three bottles on it.
   m.box(-0.42, 0.42, yb, yb + 0.2, 0.74, 0.8, shelfHex, { ends: false });
   bottles.forEach((hex, k) => m.bump(-0.3 + k * 0.12, -0.22 + k * 0.12, yb + 0.05, yb + 0.13, 0.8, 0.14 + 0.03 * (k % 2), hex, shade(hex, 1.15)));
@@ -282,6 +284,6 @@ const spinFaces = (turn: number) => [0, 1, 2, 3, 4, 5, 6, 7].filter(k => Math.co
 export const POSTCARD_SPINNER_TRIS = 24 + 5 * 32;
 
 /** Cost of each fixed-size prop (tested against its builder). */
-export const PROP_COST = { omafietsPerp: OMAFIETS_PERP_TRIS, bikeRackPerp: BIKE_RACK_PERP_TRIS, omafiets: OMAFIETS_LOW_TRIS, omafietsWindow: OMAFIETS_WINDOW_TRIS, bikeRack: BIKE_RACK_TRIS, bike: 54, bakfiets: 58, rail: 6, crate: 34, crateNoCard: 32, plant: 6, plantTall: 8, barberStation: 50, washBasin: 24, counter: 14, postcardSpinner: POSTCARD_SPINNER_TRIS, stylingStation: 72 } as const;
+export const PROP_COST = { omafietsPerp: OMAFIETS_PERP_TRIS, bikeRackPerp: BIKE_RACK_PERP_TRIS, omafiets: OMAFIETS_LOW_TRIS, omafietsWindow: OMAFIETS_WINDOW_TRIS, bikeRack: BIKE_RACK_TRIS, bike: 54, bakfiets: 58, rail: 6, crate: 34, crateNoCard: 32, plant: 6, plantTall: 8, barberStation: 50, washBasin: 24, counter: 14, postcardSpinner: POSTCARD_SPINNER_TRIS, stylingStation: 78 } as const;
 /** A bucket tier's cost for `w`. */
 export const bucketTierCost = (w: number) => 3 * (4 + Math.max(1, Math.floor(w / 0.27)) * 8);
