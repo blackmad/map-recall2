@@ -24,6 +24,16 @@ export function projectGround(vp: Mat4, worldSize: number, lng: number, lat: num
   return { x: ((cx / cw + 1) / 2) * width, y: ((1 - cy / cw) / 2) * height };
 }
 
+/**
+ * Whether the ground point (z = 0) at lng/lat is drawn at all: in front of the near plane and inside the far plane of
+ * `vp`. Behind the camera a projection lands mirrored, above the horizon, where the START tag hung in the sky (d18eca).
+ */
+export function groundInView(vp: Mat4, worldSize: number, lng: number, lat: number): boolean {
+  const X = mercatorXOf(lng) * worldSize, Y = mercatorYOf(lat) * worldSize;
+  const cz = vp[2] * X + vp[6] * Y + vp[14], cw = vp[3] * X + vp[7] * Y + vp[15];
+  return cw > 0 && Math.abs(cz) <= cw;
+}
+
 /** Column-major 4x4 inverse, or null when singular. */
 export function invert4(m: Mat4): number[] | null {
   const a = Array.from(m) as number[];
@@ -104,6 +114,15 @@ export function drawnProjector(map: MapLike) {
     if (q) { ll.lng = q.lng; ll.lat = q.lat; }
     return ll;
   };
+  /** Whether a ground point is drawn (front of the near plane, inside the far plane); true when the matrix is unknown. */
+  const inView = (lngLat: any): boolean => {
+    const t = map.transform;
+    const vp: Mat4 | undefined = t?._viewProjMatrix ?? t?.currentTransform?._viewProjMatrix;
+    const worldSize = Number(t?.worldSize ?? t?.currentTransform?.worldSize);
+    if (!vp || !Number.isFinite(worldSize)) return true;
+    const [lng, lat] = lngLatOf(lngLat);
+    return groundInView(vp, worldSize, lng, lat);
+  };
   /** The pixel to hand `queryRenderedFeatures` for a tap at `px`, so it finds what was drawn under the finger. */
   const queryPixel = (px: any) => {
     if (!lifted()) return px;
@@ -111,5 +130,5 @@ export function drawnProjector(map: MapLike) {
     const p = map.project([ll.lng, ll.lat]);
     return Array.isArray(px) ? [p.x, p.y] : p;
   };
-  return { project, unproject, queryPixel };
+  return { project, unproject, queryPixel, inView };
 }

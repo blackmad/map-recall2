@@ -34,7 +34,8 @@ import type { RenderGovernor } from '../renderGovernor';
 
 export type LngLat = { lng: number; lat: number };
 export type LngLatLike = LngLat | readonly [number, number];
-export type ScreenPoint = { x: number; y: number };
+/** `offView`: the point is behind the camera or past the far plane, so its x/y mean nothing (projectWorld, d18eca). */
+export type ScreenPoint = { x: number; y: number; offView?: boolean };
 /** Plain view box in degrees (MapLibre's `getBounds()` reduced to numbers). */
 export type ViewBounds = { west: number; south: number; east: number; north: number };
 

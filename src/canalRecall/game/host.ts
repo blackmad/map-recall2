@@ -29,6 +29,7 @@ import type { LatLon } from './recallRules';
 import type { StreetLabelAnchor, StreetLabelCandidates } from './streetLabelCandidates';
 import type { StreetLabelOcclusion } from '../labels/streetLabelOcclusion';
 import type { StreetLabelPlacement } from '../labels/labelFade';
+import type { StartTagLatch } from './vehicleScreenBox';
 
 export type { RecallFeature };
 import type { Bridge, BridgeCrossing, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
@@ -517,6 +518,8 @@ export interface PresentationHost extends GameCoreHost {
   /** Street names a building hides are not drawn (pitched views), made on first use. */
   _streetLabelOcclusion?: StreetLabelOcclusion;
   _streetLabelPlacement?: StreetLabelPlacement;
+  /** Whether the START tag's run is over (d18eca), made on first use. */
+  _startTagLatch?: StartTagLatch;
   _visitedNeighborhoods: Set<string>;
   _seenLandmarkNames: Set<string>;
 

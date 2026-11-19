@@ -31,7 +31,7 @@ import { isRideAim, poseCamera, revealLandmarkBudget, revealPose, revealSwapBudg
 import { censusGrid, startHoldEnabled, startTierCensus, type StartTierCensus, type StartTierSample } from './startHold';
 import { cellBounds, cellKeyOf, cellOf, parseCellKey } from '../world/cellGrid';
 import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_MS, StartSettleHold, startSettleCoveredFrameMs, startSettleGates, startSettleCapMs, startSettleEnabled, type StartSettleStep } from './startSettle';
-import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
+import { anchorInView, CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
 import { clearEye, coverAheadPoints, easePullIn, eyeInsideBuilding, footprintsNear, footprintTopM, nearPlaneReachM, EYE_WALL_MARGIN_M, type Eye } from './streetVisibility';
@@ -1661,12 +1661,15 @@ export class OwnWorldView implements WorldViewOracles {
   projectWorld(worldX: number, worldY: number, loader: LoaderFrame, canvas: HTMLCanvasElement): ScreenPoint {
     const lngLat = worldToLngLat(worldX, worldY, loader);
     // The engine's own camera (WorldCamera), not the MapLibre-shaped shim: the same projection (P5 B6, ~1,600 calls/s).
-    const p = this.camera.project(lngLat);
+    const p = this.cameraMap.camera.project(lngLat);
     // Pins stand on the relief/deck there (own ground), not at z = 0.
     const lift = this._ownGround?.ready ? this._ownGround.screenLift(lngLat) : null;
     if (lift) { const vp = this.host.viewport(); p.x += lift[0] / 2 * vp.width; p.y -= lift[1] / 2 * vp.height; }
     const rect = canvas.getBoundingClientRect();
-    return { x: p.x * CANVAS_W / rect.width, y: p.y * CANVAS_H / rect.height };
+    const out: ScreenPoint = { x: p.x * CANVAS_W / rect.width, y: p.y * CANVAS_H / rect.height };
+    // Behind the camera the point projects mirrored into the sky (the START tag, d18eca): screen labels skip it.
+    if (!anchorInView(p.depth, this.cameraMap.camera.depthRange())) out.offView = true;
+    return out;
   }
   screenToWorld(cssX: number, cssY: number, canvasRect: DOMRect, loader: LoaderFrame): { x: number; y: number } | null {
     if (!this.ready || !canvasRect || !loader || loader._lastCenterLat == null) return null;
