@@ -11,8 +11,10 @@ import { capShare, titleCase, typeLayout, type TypeFace } from './retailTypeFace
 import { type BikeClass } from './retailBikes.js';
 import { type PropTri } from './shopProps/kit.js';
 import { BIKE_HEXES } from './shopProps/props.js';
-import { insideProps, outsideProps, SHOP_PROPS } from './shopProps/layout.js';
+import { insideProps, outsideProps, SHOP_PROPS, shopPropsFor } from './shopProps/layout.js';
 import { baySeed, goodsTileRect } from './shopProps/variety.js';
+import { shopPassOn } from './shopProps/flags.js';
+import { intoRoom, roomTris } from './shopProps/interiors.js';
 import { signText, TEMPLATE_LOOKS, TEMPLATE_PARTS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
 
 export type V3 = [number, number, number];
@@ -81,7 +83,9 @@ class Builder {
       const [A, B, C] = t.p.map(q => { const [a, o, z] = at(q); return this.P(a, o, z); }), n = this.N(t.n[0], t.n[1], t.n[2]);
       const u = [B[0] - A[0], B[1] - A[1], B[2] - A[2]], w = [C[0] - A[0], C[1] - A[1], C[2] - A[2]];
       const flip = (u[1] * w[2] - u[2] * w[1]) * n[0] + (u[2] * w[0] - u[0] * w[2]) * n[1] + (u[0] * w[1] - u[1] * w[0]) * n[2] < 0;
-      this.out.push({ p: flip ? [A, C, B] : [A, B, C], hex: recolour ? recolour(t.hex) : t.hex, n });
+      // A prop's own light (a mirror's lamp) keeps its colour and draws lit; everything else takes the recolour.
+      if (t.lit) this.out.push({ p: flip ? [A, C, B] : [A, B, C], hex: t.hex, n, lit: true });
+      else this.out.push({ p: flip ? [A, C, B] : [A, B, C], hex: recolour ? recolour(t.hex) : t.hex, n });
     }
   }
   /** A flat panel parallel to the wall at `o` out. */
@@ -460,6 +464,9 @@ export type RetailFrontInput = {
    *  (threeBuildingMesh.ts: wall to street centreline less GENERIC_STOOP.carriageHalfM). Pavement props that need more
    *  room give way (perpendicular bikes need 2.5 m; side-on bikes 1 m); unknown counts as wide. */
   pavementM?: number;
+  /** Lane retail-pass round 2 (`?shopInteriors=1`): the window bays (indices into retailWindowBays) whose wall the mesher
+   *  cut, so they draw a room behind the glass (shopProps/interiors.ts) in place of the pane and the props' relief. */
+  rooms?: readonly number[];
   /** Round 7: the awning measured on a street panorama (measure-awning.ts, staged per pand), over the window in this
    *  colour, in place of the template's (the black awnings of Unique Eyefashion, Gall & Gall). Absent: the template's. */
   awning?: string;
@@ -486,6 +493,14 @@ export type RetailFrontInput = {
 };
 
 /** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
+/** The glass bays of a front over [s0, s1] (either side of its door, inside the end posts), as retailFrontTris lays
+ *  them out; a red-light row has one. Lane retail-pass round 2: the mesher cuts the wall behind these for rooms. */
+export function retailWindowBays(input: Pick<RetailFrontInput, 'template' | 'door' | 'seed'>, s0: number, s1: number): Array<[number, number]> {
+  const door = retailDoor(input, s0, s1);
+  if (TEMPLATE_LOOKS[input.template].content === 'redGlow') return [[s0 + 0.1, s1 - 0.1]];
+  return door ? [[s0 + FRONT.postM, door.a0 - FRONT.mullionM], [door.a1 + FRONT.mullionM, s1 - FRONT.postM]] : [[s0 + FRONT.postM, s1 - FRONT.postM]];
+}
+
 export function doorHead(base: number, groundM: number): number {
   const top = base + Math.min(Math.max(2.8, groundM), 4.6) - FRONT.fasciaGapM;
   return Math.min(base + FRONT.doorHeadM, top - FRONT.fasciaM - 0.15);
@@ -534,16 +549,18 @@ function shadeHex(hex: string, k: number): string {
  * the street's reflection over the upper part: three bands from a pale sky grey-blue down into the interior, the way
  * shop glass reads by day (the round-2 glass was one flat sheet of content and read as a painted board).
  */
-function glass(b: Builder, look: TemplateLook, a0: number, a1: number, z0: number, z1: number, seed: string): void {
+function glass(b: Builder, look: TemplateLook, a0: number, a1: number, z0: number, z1: number, seed: string, reflectShare: number = FRONT.reflectShare): void {
   const first = b.out.length;
   content(b, look, a0, a1, z0, z1, seed);
   if (!OWN_LIGHT.has(look.content)) for (const t of b.out.slice(first)) t.hex = glassTone(t.hex, look.lit ? 0.62 : 0.68);
   if (look.content === 'redGlow') return;
-  const h = (z1 - z0) * FRONT.reflectShare, o = FRONT.contentOutM + 0.025;
+  const h = (z1 - z0) * reflectShare, o = FRONT.contentOutM + 0.025;
   REFLECT.forEach((hex, k) => b.panel(a0, a1, o, z1 - h * (k + 1) / REFLECT.length, z1 - h * k / REFLECT.length, hex));
 }
 // Round 3b tone: the photos' shop glass measures darker than round 3's sky (mean ground L 0.37 against 0.43 drawn).
 const REFLECT = ['#7d878e', '#5f676c'] as const;
+/** Lane retail-pass: the reflection's share of the glass over props behind it (the props are the window's read). */
+export const PASS_REFLECT_SHARE = 0.16;
 
 /** Lane shop-goods: props behind the glass are drawn as a relief between the pane (contentOutM) and the glass's
  *  reflection (contentOutM + 0.025): the wall is not cut behind a window, so a 2.5 m deep shop is pressed into 2.5 cm,
@@ -563,6 +580,13 @@ function insideRelief(b: Builder, props: NonNullable<(typeof SHOP_PROPS)[string]
     if (x1 - x0 > c1 - c0 - 0.04) continue;
     b.put(tris, p => [mid + (p[0] - mid) * kk + shift, Math.max(INSIDE.o0, Math.min(INSIDE.o1, oMid + p[1] * INSIDE.squash)), base + 0.02 + lift + p[2] * kk], hex => glassTone(hex, lit ? 0.22 : 0.3));
   }
+}
+
+/** Lane retail-pass round 2: room surfaces through the glass are pulled this far toward its dark; props less. */
+export const ROOM_PULL = 0.55, ROOM_PROP_PULL = 0.3;
+function shopRoom(b: Builder, template: string, props: NonNullable<(typeof SHOP_PROPS)[string]>, c0: number, c1: number, base: number, head: number, seed: string, bay: number): void {
+  b.put(roomTris(template, c0, c1, base, head, `${seed}:bay${bay}`), p => [p[0], p[1], p[2]], hex => glassTone(hex, ROOM_PULL));
+  for (const { tris, depth } of insideProps(props, c0, c1, seed, bay, true)) b.put(intoRoom(tris, depth, base), p => [p[0], p[1], p[2]], hex => glassTone(hex, ROOM_PROP_PULL));
 }
 
 /**
@@ -646,12 +670,11 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   }
   // The glass either side of the door: riser, sill, glass to the transom bar, mullions, the transom lights above.
   const zr = base + FRONT.riserM;
-  const segs: Array<[number, number]> = windows ? [[s0 + 0.1, s1 - 0.1]]
-    : door ? [[s0 + FRONT.postM, door.a0 - FRONT.mullionM], [door.a1 + FRONT.mullionM, s1 - FRONT.postM]] : [[s0 + FRONT.postM, s1 - FRONT.postM]];
+  const segs = retailWindowBays(input, s0, s1);
   const lightHex = glassTone('#7f8b93', 0.5);
   if (door && puiTop - head > 0.25) b.panel(door.a0, door.a1, FRONT.contentOutM, head + FRONT.transomM, puiTop, lightHex);
   if (door && puiTop - head > 0.25) b.slab(door.a0, door.a1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame, 'bottom');
-  const props = SHOP_PROPS[input.template];
+  const props = shopPropsFor(input.template);
   for (const [bay, [c0, c1]] of segs.entries()) {
     if (c1 - c0 < 0.4) { if (c1 > c0) b.fin(c0, c1, 0, FRONT.frameOutM - 0.02, base, puiTop, timber); continue; }
     // Lane shop-goods: every bay its own seed (pand and bay index), so no two windows of a front draw the same goods.
@@ -661,9 +684,16 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     // Stall riser in the riser colour, a sill over it (round 3c: one riser panel; the per-pane sunk panels were 2 tris a
     // pane nobody reads at ride distance).
     // Lane shop-goods: with props behind the glass the riser stands on the glass line, in front of them (their feet).
-    b.panel(c0, c1, props?.inside ? INSIDE.riserOutM : 0.015, base, zr, riser);
+    const room = !!input.rooms?.includes(bay) && !!props?.inside;
+    b.panel(c0, c1, props?.inside && !room ? INSIDE.riserOutM : 0.015, base, zr, riser);
     b.slab(c0 - 0.02, c1 + 0.02, 0, FRONT.sillOutM + 0.03, zr - 0.05, zr, frame, 'top');
-    if (look.window === 'plate') {
+    if (room) {
+      // Lane retail-pass round 2: the mesher cut the wall here; a room with the props at their depth, the street's
+      // reflection over the glass's head.
+      shopRoom(b, input.template, props!, c0, c1, base, head, input.seed, bay);
+      const h = (head - zr) * PASS_REFLECT_SHARE, o = FRONT.contentOutM + 0.025;
+      REFLECT.forEach((hex, k) => b.panel(c0, c1, o, head - h * (k + 1) / REFLECT.length, head - h * k / REFLECT.length, hex));
+    } else if (look.window === 'plate') {
       // Round 7: dark reflective plate glass, the sky's light in its upper part.
       b.panel(c0, c1, FRONT.contentOutM, zr, head, '#20272c');
       b.panel(c0, c1, FRONT.contentOutM + 0.003, head - (head - zr) * 0.32, head, '#46525a');
@@ -676,7 +706,9 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
         b.textured(t.a0, t.a1, FRONT.contentOutM, zr, head, layer, goodsTileRect([u0, v0, u1, v1], input.seed, bay, k * 16 + ti));
         if (!look.lit) for (const tr of b.out.slice(first)) delete tr.lit;
       }
-    } else if (input.interior && !OWN_LIGHT.has(look.content) && look.content !== 'barGlow') {
+    } else if (input.interior && !OWN_LIGHT.has(look.content) && look.content !== 'barGlow' && !(props?.inside && shopPassOn())) {
+      // (Lane retail-pass, `?shopPass=1`: a front with props behind its glass keeps its own back wall, not the shop cell's
+      // shelves, which read as a bookshop behind a salon's chairs.)
       // Round 3c (cost): each pane's interior is one quad of the building's own shop cell (bayTextures puiAt: its dark
       // interior, shelf glow and the street's reflection), in place of the flat-colour goods.
       for (let k = 0; k < panes; k++) {
@@ -684,8 +716,10 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
         b.textured(c0 + k * pw, c0 + (k + 1) * pw, FRONT.contentOutM, zr, head, input.interior.layer, input.interior.rect);
         for (const t of b.out.slice(first)) delete t.lit;
       }
-    } else glass(b, look, c0, c1, zr, head, seed);
-    if (props?.inside) insideRelief(b, props, c0, c1, base, head, input.seed, bay, look.lit);
+    // Lane retail-pass (`?shopPass=1`): over props the reflection is a band at the glass's head (PASS_REFLECT_SHARE), so
+    // a salon's lit mirrors read through it.
+    } else glass(b, look, c0, c1, zr, head, seed, props?.inside && shopPassOn() ? PASS_REFLECT_SHARE : FRONT.reflectShare);
+    if (props?.inside && !room) insideRelief(b, props, c0, c1, base, head, input.seed, bay, look.lit);
     // The transom bar at the door head, the transom lights over it (dark glass with the sky in it).
     const hasLights = puiTop - head > 0.25;
     if (hasLights) {

@@ -6,7 +6,8 @@
 
 export type V3 = [number, number, number];
 /** One triangle of a prop, wound counter-clockwise seen from `n`. */
-export type PropTri = { p: [V3, V3, V3]; n: V3; hex: string };
+/** `lit`: its own light (a mirror's lamp, a lit sign): drawn unshaded and never pulled toward the glass's dark. */
+export type PropTri = { p: [V3, V3, V3]; n: V3; hex: string; lit?: boolean };
 
 const sub = (a: V3, b: V3): V3 => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
 const cross = (a: V3, b: V3): V3 => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
@@ -29,12 +30,14 @@ export function shade(hex: string, k: number): string {
 /** Collects triangles; every face is wound to face its stated normal. */
 export class Mesh {
   readonly tris: PropTri[] = [];
-  tri(a: V3, b: V3, c: V3, hex: string, n?: V3): void {
+  tri(a: V3, b: V3, c: V3, hex: string, n?: V3, lit?: boolean): void {
     const fn = unit(cross(sub(b, a), sub(c, a)));
     const nn = n ? unit(n) : fn;
-    this.tris.push(dot(fn, nn) < 0 ? { p: [a, c, b], n: nn, hex } : { p: [a, b, c], n: nn, hex });
+    const t: PropTri = dot(fn, nn) < 0 ? { p: [a, c, b], n: nn, hex } : { p: [a, b, c], n: nn, hex };
+    if (lit) t.lit = true;
+    this.tris.push(t);
   }
-  quad(a: V3, b: V3, c: V3, d: V3, hex: string, n?: V3): void { this.tri(a, b, c, hex, n); this.tri(a, c, d, hex, n); }
+  quad(a: V3, b: V3, c: V3, d: V3, hex: string, n?: V3, lit?: boolean): void { this.tri(a, b, c, hex, n, lit); this.tri(a, c, d, hex, n, lit); }
   /** A box's faces: front (+y), top, the two ends (+-x); `back` and `bottom` only when asked. 8 tris by default. */
   box(x0: number, x1: number, y0: number, y1: number, z0: number, z1: number, hex: string, o: { ends?: boolean; top?: boolean; back?: boolean } = {}): void {
     const { ends = true, top = true, back = false } = o;
@@ -79,5 +82,5 @@ export function posed(tris: readonly PropTri[], pose: Pose): PropTri[] {
   const mx = pose.mirror ? -1 : 1;
   const rot = (v: V3): V3 => { v = [v[0] * mx, v[1], v[2]]; const y1 = v[1] * ct - v[2] * st, z1 = v[1] * st + v[2] * ct; return [v[0] * cy - y1 * sy, v[0] * sy + y1 * cy, z1]; };
   const at = (v: V3): V3 => { const r = rot(v); return [pose.x + r[0] * k, pose.y + r[1] * k, pose.z + r[2] * k]; };
-  return tris.map(t => ({ p: [at(t.p[0]), at(t.p[1]), at(t.p[2])], n: unit(rot(t.n)), hex: t.hex }));
+  return tris.map(t => (t.lit ? { p: [at(t.p[0]), at(t.p[1]), at(t.p[2])], n: unit(rot(t.n)), hex: t.hex, lit: true } : { p: [at(t.p[0]), at(t.p[1]), at(t.p[2])], n: unit(rot(t.n)), hex: t.hex }));
 }
