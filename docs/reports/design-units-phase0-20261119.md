@@ -160,3 +160,86 @@ Measured against the liked rows, this leaves 85 of 480 units (18%) disagreeing, 
 **C. Ring layer only.** Phase 1 on the 19th-century Ring layer (13,881 pands, De Pijp and Oud-West). There the two De Pijp regression rows pass and no liked look contradicts it. Gordel and Centrum wait for A or B.
 
 T7 (the answer key) was not done in phase 0. It is photo labelling that phase 2's scorecard needs, and given the token care asked on 2026-11-16 I did not start it before the premise question was answered.
+
+## Under option A: overnight dry runs (2026-11-19, data only, staged)
+
+David chose **A** on #397. These runs are staged under `artifacts/design-units/staging/`: nothing is published, and nothing draws from them.
+
+### Gordel segments against the liked series
+
+Commands:
+- `build-segments.ts --layers=gordel --tag=gordel --rule=gordel`
+- `gordel-check.ts`
+
+**Rule.** `GORDEL_RULE` in `segments.ts`:
+- a break is a 1.5 m AHN step;
+- a member 1.5 m off its run leaves it, so a corner accent becomes its own segment instead of being clamped.
+
+The Ring rule is unchanged, and the Ring extract rebuilds byte-identical.
+
+**Result.** 129 of the 478 Gordel units holding liked records still put two differently drawn records in one segment: **27%** (1,533 of 4,069 pands). The Ring rule gives 31%. Phase 0 estimated 18%, but that estimate split at the records' own 0.8 m eaves steps. AHN does not see every step the records draw, for example a storey change at an equal front height.
+
+Worst ten, by differing pairs inside one segment:
+
+| Unit | Liked records | Differing pairs | Example |
+|---|---|---|---|
+| du:gordel:10179 | 36 | 194 | eaves 8.7/10.15 |
+| du:gordel:10194 | 46 | 151 | storeys 3/4, eaves 9.3/12.7 |
+| du:gordel:10884 | 30 | 104 | storeys 4/5 |
+| du:gordel:11141 | 17 | 60 | storeys 4/5, eaves 13.5/16.5 |
+| du:gordel:10181 | 25 | 57 | eaves 8.8/10 |
+| du:gordel:11133 | 27 | 54 | storeys 3/4 |
+| du:gordel:11083 | 14 | 45 | storeys 4/5, eaves 12.4/14.9 |
+| du:gordel:10970 | 12 | 41 | storeys 4/3 |
+| du:gordel:10835 | 13 | 36 | eaves 15.35/16.25 |
+| du:gordel:10893 | 23 | 36 | storeys 4/3, eaves 12.3/9.5 |
+
+**Reading.** On the Gordel, a segment rule built on AHN alone would still flatten about a quarter of the liked blocks. The published records already know the steps, so the next step is to let them split segments, not to draw these blocks.
+
+### Centrum joins
+
+Command: `centrum-joins.ts --same-building <the three centrum-looks files>`
+
+**Rule.** Plots stay separate unless something joins them inside one object:
+- a face intent;
+- a photo same-building "one" read;
+- AHN fronts within 0.3 m plus the same BAG year.
+
+**Result.**
+
+| | Count |
+|---|---|
+| Units | 1,977 |
+| Pands | 7,811 |
+| Joins from face intents | 16 |
+| Joins from same-building reads | 111 |
+| Joins from AHN plus year | 618 |
+| Segments | 425 |
+| Pands joined into segments | 1,170 |
+| Pands left separate | 6,641 |
+
+**Regression rows.**
+- Marnixplein comes out as one segment.
+- Goudsbloemstraat comes out as one segment.
+
+**Risk.** 18 of the 60 photo-read "separate" runs end up joined. Most of those are probably AHN-plus-year joins. Tighten that source, or require a second source, before anything draws from it.
+
+### T8 coverage ledger: Ring fronts
+
+Command: `coverage-ledger.ts`
+
+Each of the 15,408 pands in ordekaart Ring objects gets the first tier that holds:
+- **A**: a model, recipe or landmark kit;
+- **B**: a published row-front record or a non-generic HouseSpec;
+- **C**: a member of a design-unit segment;
+- **D**: per-pand dice.
+
+| | A | B | C | D |
+|---|---|---|---|---|
+| Pands | 459 | 271 | 13,085 | 1,593 |
+| Share | 3.0% | 1.8% | 84.9% | 10.3% |
+| Ride-weighted | 5.0% | 1.4% | 79.4% | 14.2% |
+
+Ride weighting uses `ride-ring-buurten-20261110`: each buurt's route metres times the Ring share of its pands.
+
+**Tier C needs the flag.** With `?designUnits=1` off (today's default), C is empty and tier D holds 14,678 pands (95%). The ledger moves when David's Ring verdict turns the flag on by default.
