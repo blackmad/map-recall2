@@ -28,6 +28,15 @@ export const AGREE_M = 0.8;
 /** A member more than this (m) off its segment line is an exception, clamped to the line (rowCoherence thresholdM). */
 export const EXCEPTION_M = 0.8;
 
+/** The split rule's thresholds (m). The Ring defaults are the constants above; a layer dry run may pass its own. */
+export interface SplitRule { stepM: number; agreeM: number; leaveM: number }
+export const RING_RULE: SplitRule = { stepM: SPLIT_STEP_M, agreeM: AGREE_M, leaveM: SPLIT_STEP_M };
+/**
+ * Gordel (1920-40) dry-run rule (option A, 2026-11-19): composed blocks step by part of a storey at their accents, so a
+ * break is 1.5 m and a member 1.5 m off its run leaves it (a corner accent draws as its own segment, never clamped).
+ */
+export const GORDEL_RULE: SplitRule = { stepM: 1.5, agreeM: AGREE_M, leaveM: 1.5 };
+
 export interface MemberHeights {
   /** AHN front band p90 over the member's front (m above ground); null unread. */
   ahnM: number | null;
@@ -69,19 +78,19 @@ export function memberOrder(u: DesignUnit): string[] {
 }
 
 /** Break the main-face order into runs at real AHN steps. Returns runs of member ids. */
-export function splitRuns(order: readonly string[], h: ReadonlyMap<string, MemberHeights>): string[][] {
+export function splitRuns(order: readonly string[], h: ReadonlyMap<string, MemberHeights>, rule: SplitRule = RING_RULE): string[][] {
   const ahn = (p: string) => h.get(p)?.ahnM ?? null;
   const cuts: number[] = [];
   for (let i = 1; i < order.length; i++) {
     const a = ahn(order[i - 1]), b = ahn(order[i]);
-    if (a === null || b === null || Math.abs(a - b) < SPLIT_STEP_M) continue;
+    if (a === null || b === null || Math.abs(a - b) < rule.stepM) continue;
     // The step must hold on both sides: the next member on each side (when there is one) agrees with its neighbour.
     const left = order[i - 2] !== undefined ? ahn(order[i - 2]) : null, right = order[i + 1] !== undefined ? ahn(order[i + 1]) : null;
-    const leftHolds = left === null ? i - 1 === 0 : Math.abs(left - a) < AGREE_M;
-    const rightHolds = right === null ? i === order.length - 1 : Math.abs(right - b) < AGREE_M;
+    const leftHolds = left === null ? i - 1 === 0 : Math.abs(left - a) < rule.agreeM;
+    const rightHolds = right === null ? i === order.length - 1 : Math.abs(right - b) < rule.agreeM;
     // A lone member (one side of the step is a single member between two steps, or at an end) is an exception, not a run.
-    const loneLeft = i - 1 === 0 || (left !== null && Math.abs(left - a) >= SPLIT_STEP_M);
-    const loneRight = i === order.length - 1 || (right !== null && Math.abs(right - b) >= SPLIT_STEP_M);
+    const loneLeft = i - 1 === 0 || (left !== null && Math.abs(left - a) >= rule.stepM);
+    const loneRight = i === order.length - 1 || (right !== null && Math.abs(right - b) >= rule.stepM);
     if (leftHolds && rightHolds && !loneLeft && !loneRight) cuts.push(i);
   }
   const runs: string[][] = [];
@@ -91,15 +100,15 @@ export function splitRuns(order: readonly string[], h: ReadonlyMap<string, Membe
 }
 
 /** The segments of one unit. */
-export function segmentsOf(u: DesignUnit, h: ReadonlyMap<string, MemberHeights>): Segment[] {
+export function segmentsOf(u: DesignUnit, h: ReadonlyMap<string, MemberHeights>, rule: SplitRule = RING_RULE): Segment[] {
   const order = memberOrder(u);
-  const split = u.members.length > 1 ? splitRuns(order, h) : [order];
+  const split = u.members.length > 1 ? splitRuns(order, h, rule) : [order];
   // Members a storey or more off their run's AHN median leave it (drawn alone, as today).
   const runs: string[][] = [];
   for (const run of split) {
     const v = run.map(p => h.get(p)?.ahnM).filter((x): x is number => typeof x === 'number');
     const m = run.length > 2 && v.length >= 2 ? median(v)! : null;
-    const off = m === null ? [] : run.filter(p => { const a = h.get(p)?.ahnM; return typeof a === 'number' && Math.abs(a - m) >= SPLIT_STEP_M; });
+    const off = m === null ? [] : run.filter(p => { const a = h.get(p)?.ahnM; return typeof a === 'number' && Math.abs(a - m) >= rule.leaveM; });
     const keep = run.filter(p => !off.includes(p));
     if (keep.length) runs.push(keep);
     for (const p of off) runs.push([p]);

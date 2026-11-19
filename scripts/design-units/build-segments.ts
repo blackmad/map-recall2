@@ -15,7 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
-import { SEGMENTS_SCHEMA, segmentsOf, type MemberHeights, type Segment, type SegmentsExtract } from '../../src/canalRecall/designUnits/segments.ts';
+import { GORDEL_RULE, RING_RULE, SEGMENTS_SCHEMA, segmentsOf, type MemberHeights, type Segment, type SegmentsExtract } from '../../src/canalRecall/designUnits/segments.ts';
 import type { DesignUnit } from '../../src/canalRecall/designUnits/types.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
@@ -23,6 +23,10 @@ const STAGING = path.join(ROOT, 'artifacts/design-units/staging');
 const PUBLISH = path.join(ROOT, 'public/data/extracts/amsterdam/design-units-v1');
 const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.slice(k.length + 3);
 const layers = (arg('layers') ?? 'ring').split(',');
+// --tag=<name>: write staging/segments-<name>.json and segment-stats-<name>.json (a layer's dry run beside the Ring extract).
+const tag = arg('tag'), sfx = tag ? `-${tag}` : '';
+// --rule=gordel: the Gordel dry-run split rule (segments.ts GORDEL_RULE); default the Ring rule.
+const rule = arg('rule') === 'gordel' ? GORDEL_RULE : RING_RULE;
 
 const units = (JSON.parse(fs.readFileSync(path.join(STAGING, 'design-units.json'), 'utf8')).units as DesignUnit[])
   .filter(u => u.members.length > 1 && u.object && layers.includes(u.object.key.split(':')[0]));
@@ -65,7 +69,7 @@ const segments: Segment[] = [];
 let splitUnits = 0;
 const med = (xs: number[]) => { const v = [...xs].sort((a, b) => a - b); return v.length ? v[Math.floor((v.length - 1) / 2)] : null; };
 for (const u of units) {
-  const s = segmentsOf(u, heights);
+  const s = segmentsOf(u, heights, rule);
   if (s.length > 1) splitUnits++;
   for (const g of s) {
     g.year = med(g.members.map(m => yearOf.get(m)).filter((y): y is number => typeof y === 'number'));
@@ -98,9 +102,10 @@ const extract: SegmentsExtract = {
   source: 'design units (ordekaart, Gemeente Amsterdam Maps Data; the original datasets are freely available from the Gemeente under its Gebruiksvoorwaarden, https://maps.amsterdam.nl/open_geodata/terms.php) split at AHN4 front-edge breaks; scripts/design-units/build-segments.ts',
   segments: multi,
 };
-fs.writeFileSync(path.join(STAGING, 'segments.json'), JSON.stringify(extract));
-fs.writeFileSync(path.join(STAGING, 'segment-stats.json'), JSON.stringify(stat, null, 1));
+fs.writeFileSync(path.join(STAGING, `segments${sfx}.json`), JSON.stringify(extract));
+fs.writeFileSync(path.join(STAGING, `segment-stats${sfx}.json`), JSON.stringify(stat, null, 1));
 console.log(JSON.stringify(stat, null, 1));
+if (process.argv.includes('--publish') && tag) throw new Error('--publish takes no --tag');
 if (process.argv.includes('--publish')) {
   fs.mkdirSync(PUBLISH, { recursive: true });
   fs.writeFileSync(path.join(PUBLISH, 'segments.json'), JSON.stringify(extract));
