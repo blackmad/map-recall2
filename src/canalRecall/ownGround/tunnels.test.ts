@@ -333,3 +333,14 @@ test('scanSide equals the bc4ad8a scan on 5,000 random relief profiles', async (
   }
   assert.ok(walls > 500, `walls found (${walls})`);
 });
+
+test('feedback eaf0aa: a ramp carried on past a way split gets no mouth at the split (rampContinues)', async () => {
+  const { rampContinues } = await import('./tunnels');
+  const cut = (id: string, x0: number, x1: number): Cut => ({ id, x: [x0, (x0 + x1) / 2, x1], y: [0, 0, 0], s: [0, Math.abs(x1 - x0) / 2, Math.abs(x1 - x0)] } as unknown as Cut);
+  // Spaarndammertunnel west: 852161466 runs east to the split, 751641351 on to the mouth 15 m further.
+  const short = cut('a', -45, 0), on = cut('b', 0, 15);
+  assert.equal(rampContinues([short, on], short, 2, [1, 0]), true, 'the split: the next cut carries on');
+  assert.equal(rampContinues([short, on], on, 2, [1, 0]), false, 'the real mouth: nothing beyond');
+  // A cut meeting this end but turning back (the other carriageway's end) does not count.
+  assert.equal(rampContinues([short, cut('c', 0, -20)], short, 2, [1, 0]), false);
+});

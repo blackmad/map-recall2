@@ -208,3 +208,16 @@ test('krul urinal placement: entry away from the street; "twee krullen" places t
   const dx = (two[1].lng - two[0].lng) * 111320 * Math.cos(52.37 * Math.PI / 180), dy = (two[1].lat - two[0].lat) * 110540;
   assert.ok(Math.abs(Math.hypot(dx, dy) - URINAL_PAIR_M) < 0.01 && Math.abs(dy) < 0.01, `${dx} ${dy}`);
 });
+
+test('feedback ee2b30: furniture over water is classified land / pier / bridge / shore / open, and only open is dropped', async () => {
+  const { classifyOverWater, dropOverWater, BRIDGE_REACH_M, SHORE_M } = await import('./overWater.ts');
+  const t = (o: { wet?: boolean; pier?: boolean; bridge?: number; shore?: number }) => ({ wet: () => !!o.wet, onPier: () => !!o.pier, bridgeDistance: () => o.bridge ?? Infinity, shoreDistance: () => o.shore ?? Infinity });
+  const r = { id: 'x', kind: 'lamp' as const, lng: 4.88, lat: 52.39 };
+  assert.equal(classifyOverWater(r, t({})), 'land');
+  assert.equal(classifyOverWater(r, t({ wet: true, pier: true })), 'pier');
+  assert.equal(classifyOverWater(r, t({ wet: true, bridge: BRIDGE_REACH_M })), 'bridge');
+  assert.equal(classifyOverWater(r, t({ wet: true, shore: SHORE_M - 0.1 })), 'shore');
+  assert.equal(classifyOverWater(r, t({ wet: true, shore: SHORE_M + 5 })), 'open');
+  const out = dropOverWater([r, { ...r, id: 'y' }], t({ wet: true }));
+  assert.deepEqual([out.kept.length, out.dropped.length, out.counts.open], [0, 2, 2]);
+});
