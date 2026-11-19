@@ -130,7 +130,7 @@ test('renderer: cost per front stays near the retailGround budget (140 tris on 6
 test('renderer: no record leaves the template front byte-identical', () => {
   const golden = JSON.parse(fs.readFileSync(new URL('./fixtures/template-golden.json', import.meta.url), 'utf8')) as Record<string, string>;
   const hash = (v: unknown) => { let h = 2166136261; const s = JSON.stringify(v); for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0).toString(16); };
-  // The golden was written from the base commit's retailFront.ts (92446e4c7) for every template; the fillPanes
+  // The golden was written from origin/main's retailFront.ts (base 92446e4c7; bestseller, bike and souvenir re-taken at the 2026-11-19 merge, where main moved them) for every template; the fillPanes
   // extraction and the inset mode must not move a byte of it.
   for (const [t, h] of Object.entries(golden)) assert.equal(hash(retailFrontTris({ template: t as never, seed: 's' + t, word: 'Shop Name' }, E, 0, 6, 0, 3.4)), h, t);
 });
