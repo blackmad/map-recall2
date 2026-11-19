@@ -6,6 +6,7 @@
  * Two looks share one layout: `photo` (CC0 ambientCG brick, shaded detail) and
  * `cartoon` (flat colour, thick outlines). Browser only.
  */
+import { shopPassOn } from './shopProps/flags.js';
 import { hashSeed } from './wallBays.js';
 import { PUI, RETAIL_HELD_KINDS, retailGroundOn } from './retailTemplates.js';
 import { LOOK_VARIANTS, OUTLINE_INK, PALETTES, periodForYear, type Period, type TexturedLook } from './look/palette.js';
@@ -520,9 +521,24 @@ function puiAt(p: Painter, w: number, h: number, kind: BayKind): void {
         const rg = ctx.createRadialGradient(cx, cy, 0, cx, cy, r); rg.addColorStop(0, 'rgba(255,176,92,0.55)'); rg.addColorStop(1, 'rgba(255,176,92,0)'); ctx.fillStyle = rg; ctx.fillRect(cx - r, cy - r, 2 * r, 2 * r); }
       return;
     }
+    const warm = kind === 'shopDeli' || kind === 'shopFlorist' || kind === 'shopCafe' || kind === 'groundShop' ? '255,196,128' : '236,214,180';
+    if (shopPassOn()) {
+      // Lane retail-pass round 3 (`?shopPass=1`): the shelves and goods read as a bookshop behind every generic shop
+      // (blind 2026-11-19). The panoramas show dark reflective glass with a hint of a lit room: two soft pools of
+      // light deep in the shop, a row of ceiling points, the street's reflection over the top and a streak.
+      for (const [cx, cy, rr, a] of [[0.3, 0.5, 0.34, 0.16], [0.72, 0.56, 0.28, 0.12]] as const) {
+        const X = x0 + gw * cx, Y = y0 + gh * cy, R = gw * rr, rg = ctx.createRadialGradient(X, Y, 0, X, Y, R);
+        rg.addColorStop(0, `rgba(${warm},${a})`); rg.addColorStop(1, `rgba(${warm},0)`); ctx.fillStyle = rg; ctx.fillRect(X - R, Y - R, 2 * R, 2 * R);
+      }
+      for (let x = x0 + gw / 8; x < x1; x += gw / 4) { ctx.fillStyle = 'rgba(255,228,184,0.45)'; ctx.fillRect(x - 4, y0 + gh * 0.33, 8, 3); }
+      const sky = ctx.createLinearGradient(0, y0, 0, y0 + gh * 0.5);
+      sky.addColorStop(0, 'rgba(150,164,174,0.40)'); sky.addColorStop(0.6, 'rgba(130,144,154,0.16)'); sky.addColorStop(1, 'rgba(140,154,164,0)');
+      ctx.fillStyle = sky; ctx.fillRect(x0, y0, gw, gh * 0.5);
+      ctx.fillStyle = 'rgba(214,222,228,0.08)'; ctx.beginPath(); ctx.moveTo(x0 + gw * 0.55, y0); ctx.lineTo(x0 + gw * 0.72, y0); ctx.lineTo(x0 + gw * 0.42, y1); ctx.lineTo(x0 + gw * 0.25, y1); ctx.closePath(); ctx.fill();
+      return;
+    }
     // The interior glow band: shelf light across the middle of the pane, soft above and below.
     const band = ctx.createLinearGradient(0, y0 + gh * 0.22, 0, y0 + gh * 0.72);
-    const warm = kind === 'shopDeli' || kind === 'shopFlorist' || kind === 'shopCafe' || kind === 'groundShop' ? '255,196,128' : '236,214,180';
     band.addColorStop(0, `rgba(${warm},0)`); band.addColorStop(0.45, `rgba(${warm},0.20)`); band.addColorStop(1, `rgba(${warm},0)`);
     ctx.fillStyle = band; ctx.fillRect(x0, y0 + gh * 0.22, gw, gh * 0.5);
     // Shelves: faint lit edges, and dim goods between them (low saturation).
