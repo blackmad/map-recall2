@@ -198,6 +198,9 @@ records.sort((a, b) => (b.sitelinks ?? 0) - (a.sitelinks ?? 0) || a.name.localeC
 await mkdir(path.dirname(outMaster), { recursive: true });
 await writeFile(outMaster, `${JSON.stringify({ version: STREET_ART_VERSION, generated: new Date().toISOString().slice(0, 10), articles: records }, null, 1)}\n`);
 
+/** Reviewed Commons / panorama photos for points without an article image, published from
+ *  staging/street-art-commons.json by the integrator (each entry keeps its file page, author and licence). */
+const extraImages = new Map<string, string>(((JSON.parse(await readFile(path.join(directory, 'street-art-commons.json'), 'utf8').catch(() => '{"images":[]}')) as { images: Array<{ id: string; thumb: string }> }).images).map(x => [x.id, x.thumb]));
 const points: StreetArtPoint[] = records.map(r => {
   const point: StreetArtPoint = { id: r.id, name: r.name, lng: Math.round(r.lng * 1e6) / 1e6, lat: Math.round(r.lat * 1e6) / 1e6, k: r.kind };
   if (r.artist) point.a = r.artist;
@@ -205,9 +208,11 @@ const points: StreetArtPoint[] = records.map(r => {
   if (r.series && r.extract) { point.s = r.series.title; point.n = r.series.n; point.m = r.series.m; point.e = r.extract; if (r.url) point.u = r.url; if (r.extractLang !== 'en') point.l = r.extractLang; if (r.imageUrl) point.i = r.imageUrl; }
   else if (r.extract && r.url) { point.t = r.title; point.u = r.url; point.e = r.extract; if (r.extractLang !== 'en') point.l = r.extractLang; if (r.imageUrl) point.i = r.imageUrl; }
   if (r.wikidata) point.q = r.wikidata;
+  // A reviewed photo for a point no article illustrates (street-art-commons-images.ts; feedback deb3fc).
+  if (!point.i && extraImages.has(r.id)) point.i = extraImages.get(r.id)!;
   return point;
 });
-const file: StreetArtFile = { version: STREET_ART_VERSION, source: '© OpenStreetMap contributors (ODbL); Wikidata (CC0); Wikipedia (CC BY-SA)', points };
+const file: StreetArtFile = { version: STREET_ART_VERSION, source: `© OpenStreetMap contributors (ODbL); Wikidata (CC0); Wikipedia (CC BY-SA)${extraImages.size ? '; Wikimedia Commons photos (see street-art-commons.json); Gemeente Amsterdam panoramas (CC BY 4.0)' : ''}`, points };
 await mkdir(outDirectory, { recursive: true });
 await writeFile(path.join(outDirectory, staging ? 'street-art.staged.json' : 'street-art.json'), JSON.stringify(file));
 const report = { series: { names: [...seriesReport.series], pieces: seriesReport.pieces, ownArticle: seriesReport.ownArticle, seriesText: seriesReport.seriesText, noSeriesArticle: seriesReport.noSeriesArticle }, generated: new Date().toISOString(), osmArt: osmArt.length, wikidataArt: artItems.length, byTag, byDistance, standalone, points: points.length, withArticle: points.filter(p => p.e).length, bySource, pendingTranslation: bySource['wikipedia-nl'], bytes: JSON.stringify(file).length };

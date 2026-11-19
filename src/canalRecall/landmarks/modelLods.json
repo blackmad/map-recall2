@@ -5845,12 +5845,12 @@
   }
  },
  "oba-spaarndammerbuurt": {
-  "sourceHash": "3fca7f907559e184",
+  "sourceHash": "cd682a003e8dede8",
   "buildVersion": 2,
   "bytes": 29160,
   "triangles": 1019,
   "lod2": {
-   "sourceHash": "3fca7f907559e184",
+   "sourceHash": "cd682a003e8dede8",
    "buildVersion": 6,
    "bytes": 6936,
    "triangles": 180
@@ -6322,6 +6322,18 @@
    "buildVersion": 6,
    "bytes": 6972,
    "triangles": 187
+  }
+ },
+ "schutterstoren": {
+  "sourceHash": "a7c4ec9611797317",
+  "buildVersion": 2,
+  "bytes": 40176,
+  "triangles": 2820,
+  "lod2": {
+   "sourceHash": "a7c4ec9611797317",
+   "buildVersion": 6,
+   "bytes": 6840,
+   "triangles": 212
   }
  }
 }

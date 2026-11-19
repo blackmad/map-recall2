@@ -44,6 +44,7 @@ import { CITY_BRICK_LIGHTNESS, CITY_ROOF, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLO
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
+import { WINDOW_GRID_GLSL } from './windowGridGlsl.ts';
 import { HIGH_ANISOTROPY, pageTextureParams } from './texturePolicy.ts';
 import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, cellTapsUniform, facadeTierAnisoUniform, roofTierUniform } from '../roofTier.ts';
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
@@ -181,29 +182,9 @@ export type SlotVariantHints = {
  * round dark glass, untinted; the wall between keeps its cell and tint. Every other slot mesh is unchanged.
  */
 export const WINDOW_GRID_LAYER_FLAG = 64;
-/** Grid pitch (m): a civic bay and storey, the window centred in each cell. */
-export const WINDOW_GRID_BAY_M = 3.0;
-export const WINDOW_GRID_STOREY_M = 3.2;
-/** Window box in the cell (fractions): left/right, sill/head, and the frame width. */
-export const WINDOW_GRID_BOX = { x0: 0.28, x1: 0.72, y0: 0.3, y1: 0.8, frame: 0.035 } as const;
-const glslF = (v: number) => (Number.isInteger(v) ? v.toFixed(1) : String(v));
-const WINDOW_GRID_GLSL = /* glsl */ `
-void cityWindowGrid(vec2 m, inout vec3 c, inout vec2 mk) {
-  vec2 cell = fract(m / vec2(${glslF(WINDOW_GRID_BAY_M)}, ${glslF(WINDOW_GRID_STOREY_M)}));
-  vec2 lo = vec2(${glslF(WINDOW_GRID_BOX.x0)}, ${glslF(WINDOW_GRID_BOX.y0)}), hi = vec2(${glslF(WINDOW_GRID_BOX.x1)}, ${glslF(WINDOW_GRID_BOX.y1)});
-  vec2 aa = max(fwidth(cell), vec2(1e-4));
-  vec2 inO = smoothstep(lo - aa, lo + aa, cell) * (1.0 - smoothstep(hi - aa, hi + aa, cell));
-  vec2 lg = lo + ${glslF(WINDOW_GRID_BOX.frame)}, hg = hi - ${glslF(WINDOW_GRID_BOX.frame)};
-  vec2 inG = smoothstep(lg - aa, lg + aa, cell) * (1.0 - smoothstep(hg - aa, hg + aa, cell));
-  float outer = inO.x * inO.y, glass = inG.x * inG.y;
-  // far away the cells shrink under a pixel: fade the grid to the wall rather than shimmer
-  float fade = 1.0 - smoothstep(0.08, 0.2, max(aa.x, aa.y));
-  vec3 win = mix(vec3(0.86, 0.85, 0.82), mix(vec3(0.17, 0.21, 0.25), vec3(0.33, 0.39, 0.44), cell.y), glass);
-  float k = outer * fade;
-  c = mix(c, win, k);
-  mk.r *= 1.0 - k;
-  mk.g *= 1.0 - k;
-}`;
+// The grid's pitch, window box and GLSL live in windowGridGlsl.ts (shared with the building-page galleries, which paint
+// the same grid on the raw GLB: feedback 13fa7f).
+export { WINDOW_GRID_BAY_M, WINDOW_GRID_STOREY_M, WINDOW_GRID_BOX } from './windowGridGlsl.ts';
 
 /** Brick from this year on samples the 20th-century brick (docs/LOOK.md "One era scheme"). */
 export const BRICK20_FROM = PERIOD_FROM.school;

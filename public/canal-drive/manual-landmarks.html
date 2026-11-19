@@ -197,6 +197,8 @@ function build(spec) {
   if (version) modelUrl.searchParams.set('asset', version);
   loader.load(modelUrl.href, (gltf) => {
     const model = gltf.scene;
+    // The ride paints windows on a large recipe's unphotographed walls (`windowGrid`); so does this page (feedback 13fa7f).
+    window.CanalRecallSignatureLandmarks?.applyWindowGrids?.(model);
     scene.add(model);
     const box = new T.Box3().setFromObject(model);
     box.getCenter(entry.target);

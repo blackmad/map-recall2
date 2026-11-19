@@ -1,0 +1,12 @@
+{
+ "schemaVersion": 1,
+ "note": "Hand corrections to modern-pand-walls.json (derive.ts output) where the panorama sample read something other than the wall. Each row cites the photo; modernPandWall() prefers a correction over the measured row, so a derive.ts re-run keeps it.",
+ "walls": {
+  "0363100012095236": {
+   "wall": "b6e4a42",
+   "measured": "b2f201c",
+   "why": "Feedback 174f6f (2026-11-13, \"way too dark for our color palette\"): Spaarndammerdijk 1-11 / Spaarndammerstraat 151 (2005, Albert Heijn) is red-brown brick piers between deep dark loggias; the per-pand sample averaged the loggia shadow into the brick. The piers read #594b49 raw on the overcast 2022 panorama thumbnail (pand-reference fbm2), a red-brown brick; drawn as #6e4a42 by judgement (wall colour by judgement, 2026-11-14).",
+   "source": "Gemeente Amsterdam panorama thumbnail via scripts/pand-reference/run.ts --ids=0363100012095236 (CC BY 4.0)"
+  }
+ }
+}
