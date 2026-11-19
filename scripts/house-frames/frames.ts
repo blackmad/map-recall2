@@ -88,6 +88,7 @@ Flags
                          same flags and the same frames/pose/photo code (a before/after re-run renders only game
                          frames). Every run writes the cache: HOUSE_FRAMES_CACHE, default the main checkout's
                          .cache/house-frames (prep/<entry hash>.json, photos/<pose hash>.jpg)
+  HOUSE_FRAMES_PROJECT=iphone (env) shoots the game half on the iPhone Playwright project (default desktop).
   --help
 
 Per pand: <out>/<pand>/{photo.jpg, game.png, pair.jpg, pose.json}; per 6 pairs: <out>/contact-N.jpg; <out>/summary.json.
@@ -761,7 +762,7 @@ async function prepareAll(args: Args): Promise<{ prepared: Prepared[]; skipped: 
 function runBrowser(jobFile: string): void {
   const port = process.env.PW_PORT ?? (fs.existsSync('.worktree-port') ? fs.readFileSync('.worktree-port', 'utf8').trim() : '');
   if (!port) { console.error('set PW_PORT (a private port): Playwright reuses whatever server holds its port'); process.exit(2); }
-  const res = spawnSync(process.env.CANAL_PW ?? '/tmp/canal-pw.sh', ['npx', 'playwright', 'test', 'tests/e2e/house-frames.spec.ts', '--project=desktop', '--reporter=line'], { stdio: 'inherit', env: { ...process.env, PW_PORT: port, HOUSE_FRAMES_JOB: path.resolve(jobFile) } });
+  const res = spawnSync(process.env.CANAL_PW ?? '/tmp/canal-pw.sh', ['npx', 'playwright', 'test', 'tests/e2e/house-frames.spec.ts', `--project=${process.env.HOUSE_FRAMES_PROJECT ?? 'desktop'}`, '--reporter=line'], { stdio: 'inherit', env: { ...process.env, PW_PORT: port, HOUSE_FRAMES_JOB: path.resolve(jobFile) } });
   if (res.status !== 0) console.error(`browser run exited ${res.status}; posting whatever frames exist`);
 }
 

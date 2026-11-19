@@ -1201,7 +1201,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         if (b.measuredRoof && outer.length) { if (!b.flatRoof) measuredRoofFurniture(b.measuredRoof, [(outer[0][0] - origin.lng) * kxLocal, (outer[0][1] - origin.lat) * M_PER_DEG_LAT], b.heightM, rect, extraSink); }
         else if (b.flatRoof?.box) { /* the generic box is drawn with the walls */ }
         // Lane 1 step e: a front record's house (onlyExtras) draws no guessed roof furniture over its measured top line.
-        else if (!b.onlyExtras && rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: sid, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
+        // A design-unit member (`?designUnits=1`) draws no guessed roof furniture either: masts and boxes on a 1900 front
+        // read as invention (coordinator, 2026-11-19); a measured set still draws above.
+        else if (!b.onlyExtras && !b.designSlice && rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: sid, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
       }
       extraTris = extraSink.tris.length;
       sign.push(...extraSink.tris);
