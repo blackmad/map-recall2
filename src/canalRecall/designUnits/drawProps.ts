@@ -24,7 +24,29 @@ export interface DesignUnitDraw {
   at?: readonly [number, number];
   /** Listed in the segment's exceptions: read off the line, drawn at it. */
   exception?: true;
+  /** The member's window columns: its own D1 read, else the era prior by plot width (eraWindows). Set only for a
+   *  pre-1920 segment; the mesher lays them out across the member's own front (the plot is the module, not the segment). */
+  bays?: number;
+  /** The segment's window pitch (m; module / era count): a member run that is not exactly its slice draws round(run / pitch). */
+  bayPitchM?: number;
+  /** The segment's look traits for the bay preset (bayLook spec): the members' read consensus, else the era prior
+   *  (1860-1919 Ring fronts: light frames, tall sashes). */
+  look?: { dark?: boolean; pale?: boolean; arch?: boolean; tall?: boolean };
 }
+
+/**
+ * Window columns of a 1860-1919 Ring front by plot width (the plot is the module): about 2 under 4.8 m, 3 from 4.8 to
+ * 7.5 m, 4 to 9.5 m, then one per 2.3 m. That puts the pitch at about 1.7-2.4 m, as the photographed rows have it.
+ */
+export function eraWindows(widthM: number): number {
+  if (!(widthM > 0)) return 1;
+  if (widthM < 4.8) return widthM < 2.6 ? 1 : 2;
+  if (widthM < 7.5) return 3;
+  if (widthM < 9.5) return 4;
+  return Math.max(4, Math.round(widthM / 2.3));
+}
+/** The design-unit tier draws its era rules for segments built in these years (the 19th-century Ring layer). */
+export const ERA_YEARS = { from: 1860, to: 1919 } as const;
 
 /** The stamped draw, validated; null when absent or malformed. */
 export function designUnitOf(p: Record<string, unknown> | null | undefined): DesignUnitDraw | null {

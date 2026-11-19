@@ -681,7 +681,9 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   const drawn = streetRun ? { storeys: streetRun.storeys + 1, upperStoreys: streetRun.storeys, groundM: +streetRun.groundM.toFixed(2), storeyM: +streetRun.storeyM.toFixed(2), columns: streetRun.bays, runM: +streetRun.lengthM.toFixed(2) } : null;
   const extras = buildFeatureChunk(features as never, look, 'extras', streets, profiles, context as never);
   const mesh = concatChunks([walls, extras]);
-  const ownRanges = mesh.ranges.filter(r => r.id === own.properties.id);
+  // PREVIEW_ROW_IDS (design-units row sheets, scripts/design-units/row-sheet.ts): draw these pands too, a whole row on one line.
+  const rowIds = new Set((process.env.PREVIEW_ROW_IDS ?? '').split(',').filter(Boolean).flatMap(id => [id, `NL.IMBAG.Pand.${id}`]));
+  const ownRanges = mesh.ranges.filter(r => r.id === own.properties.id || rowIds.has(String(r.id)));
   const inOwn = new Uint8Array(mesh.layers.length);
   for (const r of ownRanges) inOwn.fill(1, r.start, r.start + r.count);
   tm.mark('chunk');

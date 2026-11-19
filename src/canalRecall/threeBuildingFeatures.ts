@@ -274,7 +274,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const lookYear = rowLook ? rowLook.year ?? year : year;
     const bay = bayLookFor(rowLook?.seed ?? (typeof p.rowSeries === 'string' ? p.rowSeries : sid), lookYear, rowLook?.heightM ?? (Number(p.height) || heightM), look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), rowLook ? null : profile,
       lookYear !== null && lookYear >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
-      specLookOf(p), rowLook ? undefined : design ? design.at : poolPointOf(polygons, at));
+      design?.look || design?.bays ? { ...design.look, ...(design.bays ? { bays: design.bays } : {}), ...specLookOf(p) } : specLookOf(p), rowLook ? undefined : design ? design.at : poolPointOf(polygons, at));
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     // Lane retail-look round 3c (`?retailGround=1`): bay.groundHex here is the shop grammar's guess (no recipe is passed),
@@ -432,7 +432,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Facade extras for every faced building; the plain and Untextured looks stay light.
   // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
   building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
-  if (design) { building.seed = design.seed; building.designSlice = { fromM: design.fromM, toM: design.toM, moduleM: design.moduleM }; }
+  if (design) { building.seed = design.seed; building.designSlice = { fromM: design.fromM, toM: design.toM, moduleM: design.moduleM }; if (design.bays) building.designBays = design.bays; if (design.bayPitchM) building.designPitchM = design.bayPitchM; }
   if (Array.isArray(p.registerForce) && p.registerForce.length && building.extras) building.registerForce = p.registerForce as string[];
   // A spec-stated stoop (houseSpec/decorate.ts specStoop, K-stoep #360): the extras draw it typed, first, on the door
   // wall nearest the street (threeBuildingMesh.ts stoopFor).

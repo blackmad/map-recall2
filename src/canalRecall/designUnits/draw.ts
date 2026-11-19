@@ -25,9 +25,9 @@
 import { citywideBuildingRoofPrior, citywideBuildingWallPrior } from '../look/palette.js';
 import { rowFrontFor, rowFrontOn } from '../houseLine/rowFront.js';
 import { segmentLookup, SEGMENTS_SCHEMA, type Segment, type SegmentsExtract, type SegmentSlice } from './segments.js';
-import { designUnitOf, type DesignUnitDraw } from './drawProps.js';
+import { designUnitOf, eraWindows, ERA_YEARS, type DesignUnitDraw } from './drawProps.js';
 
-export { designUnitOf, seedIdOf, segmentBayM, sliceBays, type DesignUnitDraw } from './drawProps.js';
+export { designUnitOf, seedIdOf, segmentBayM, sliceBays, eraWindows, ERA_YEARS, type DesignUnitDraw } from './drawProps.js';
 
 /** The flag, read at call time (never at module load: the structure gate evaluates bundles in Node). */
 export function designUnitsOn(): boolean {
@@ -42,7 +42,9 @@ export function designUnitsOn(): boolean {
 
 /** The renderer's segment: the extract's, plus what the integrator may add: the style year (median member BAG year) and
  *  an anchor (lng, lat; the members' footprint centroid) for the measured wall pool. */
-export type DrawSegment = Segment & { year?: number | null; at?: readonly [number, number] };
+/** A segment's D1 read consensus (build-segments --reads): how many members were read, and the majority traits. */
+export interface SegmentReads { n: number; whiteFrames?: boolean; pale?: boolean; arch?: boolean; finish?: string; bays?: Record<string, number> }
+export type DrawSegment = Segment & { year?: number | null; at?: readonly [number, number]; reads?: SegmentReads };
 type Hit = { segment: DrawSegment; slices: SegmentSlice[]; exception?: Segment['exceptions'][number] };
 
 let lookup: Map<string, Hit> | null = null;
@@ -81,8 +83,18 @@ export function memberDraw(segment: DrawSegment, pandId: string, exception: bool
   const main = mine.reduce((a, b) => (b.toM - b.fromM > a.toM - a.fromM ? b : a));
   const onStreet = segment.slices.filter(s => s.street === main.street).sort((a, b) => a.fromM - b.fromM || (a.pandId < b.pandId ? -1 : 1));
   const widths = onStreet.map(s => s.toM - s.fromM).sort((a, b) => a - b), moduleM = +widths[Math.floor((widths.length - 1) / 2)].toFixed(2);
+  // The era rules (pre-1920 segments): the plot is the bay module, light frames and tall sashes unless the reads say otherwise.
+  const era = typeof segment.year === 'number' && segment.year >= ERA_YEARS.from && segment.year <= ERA_YEARS.to;
+  const r = segment.reads, read = r?.bays?.[pandId];
+  const look = era || r ? { tall: true, dark: r?.whiteFrames === undefined ? false : !r.whiteFrames, ...(r?.pale !== undefined ? { pale: r.pale } : {}), ...(r?.arch !== undefined ? { arch: r.arch } : {}) } : undefined;
+  // One window pitch per segment (its module split by the era count), so the columns keep their spacing across party
+  // walls: a plot twice the module draws twice the windows, not wider ones.
+  const pitch = moduleM / eraWindows(moduleM);
+  const bays = typeof read === 'number' && read > 0 ? read : era ? Math.max(1, Math.round((main.toM - main.fromM) / pitch)) : undefined;
+  const bayPitchM = era && pitch > 0 ? +pitch.toFixed(3) : undefined;
   return { seed: segment.seed, segment: segment.id, eavesM: segment.eavesM, street: main.street, fromM: main.fromM, toM: main.toM, moduleM,
-    k: onStreet.findIndex(s => s === main), n: onStreet.length, ...(isLngLat(segment.at) ? { at: [segment.at[0], segment.at[1]] as const } : {}), ...(exception ? { exception: true as const } : {}) };
+    k: onStreet.findIndex(s => s === main), n: onStreet.length, ...(isLngLat(segment.at) ? { at: [segment.at[0], segment.at[1]] as const } : {}), ...(exception ? { exception: true as const } : {}),
+    ...(bays ? { bays } : {}), ...(bayPitchM ? { bayPitchM } : {}), ...(look ? { look } : {}) };
 }
 
 /** Step 1 (first in the chain): stamp the segment draw, the segment's line and year, and re-key the colour priors. */
@@ -123,7 +135,8 @@ export function segmentRoof(seed: string, style: string): SegmentRoof {
   const kind: SegmentRoofKind = style === 'postwar' || style === 'modern' || style === 'tower' ? 'flat'
     : pick(hash01(`${seed}:roof`), [['flat', 0.34], ['mansardHip', 0.36], ['pitched', 0.3]] as Array<[SegmentRoofKind, number]>);
   const riseM = kind === 'mansardHip' ? 2.6 + hash01(`${seed}:rise`) * 0.6 : kind === 'pitched' ? 2.8 + hash01(`${seed}:rise`) * 1.0 : 0;
-  const material = kind === 'mansardHip' ? 'slate' : hash01(`${seed}:mat`) < 0.62 ? 'tile' : 'slate';
+  // c19 Ring fronts carry slate or dark tile, never the orange pantile of the pitched-roof dice.
+  const material = kind === 'mansardHip' || style === 'c19' ? 'slate' : hash01(`${seed}:mat`) < 0.62 ? 'tile' : 'slate';
   const dormers = kind === 'mansardHip' || (kind === 'pitched' && hash01(`${seed}:dorm`) < 0.55);
   return { kind, riseM: +riseM.toFixed(2), material, tone: +hash01(`${seed}:tone2`).toFixed(3),
     dormerPitchM: dormers ? +(3.4 + hash01(`${seed}:dpitch`) * 1.4).toFixed(2) : null,

@@ -145,6 +145,10 @@ export type MeshBuilding = {
    *  member's slice of the segment frontage (m from its left end), on which its street run's bays are laid out. */
   seed?: string;
   designSlice?: { fromM: number; toM: number; moduleM: number };
+  /** Design units: this member's window columns (era prior or read); the mesher fits them like a stated count. */
+  designBays?: number;
+  /** Design units: the segment's window pitch (m), for a member run that is not its slice. */
+  designPitchM?: number;
   /** A buurt profile's storey-pitch scale (buurtProfiles/profiles.ts `storeyScaleOf`), applied on top of the per-building jitter; absent = 1. */
   storeyScale?: number;
   /** A plain band this tall between the top window row and the wall top (large tier). */
@@ -276,6 +280,15 @@ export function designRunScale<S extends { bay: number }>(slice: { fromM: number
   return { ...scale, bay: runLenM / bays / nominalBayM };
 }
 function priorBays(b: MeshBuilding, streetRun: boolean, corner: boolean, base: number, exposedM: number, widthM: number): FrontageBays | undefined {
+  // Design units (`?designUnits=1`): a pre-1920 member's window columns (its read, else the era prior by plot width) go
+  // through the same fit as a stated count, on its own front; a run that is not the member's slice keeps the style.
+  if (b.designBays && streetRun && !b.recipe && base < 0.5) {
+    const len = b.designSlice ? b.designSlice.toM - b.designSlice.fromM : widthM;
+    const matches = Math.abs(widthM - len) <= Math.max(DESIGN_SLICE_TOL.minM, DESIGN_SLICE_TOL.share * len);
+    const bays = matches ? b.designBays : b.designPitchM ? Math.max(1, Math.round(widthM / b.designPitchM)) : 0;
+    // exact (as a house-row series' count): the 1.2 m axis floor, not MIN_COLUMN_M, so 1.7 m Ring pitches survive the fit.
+    if (bays) return { bays, exact: true, axesPerCell: b.openings?.upper?.axes.length ?? 1 };
+  }
   // Off for a corner with two street fronts (a guess fitted on one-front houses), a recipe front, a back or raised run.
   if (!b.structurePrior || b.recipe || corner || !streetRun || base >= 0.5) return undefined;
   const g = structureGuess({ ...b.structurePrior, exposedM, widthM });
@@ -896,7 +909,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // Design units: the segment's bay grid laid out once from its left end; this street run (when it is the member's
       // slice, within DESIGN_SLICE_TOL) draws the bays between the grid lines nearest its ends, so columns run on across
       // the party walls. A stated or recipe bay count wins.
-      const runScale = b.designSlice && streetRun && !b.recipe && !specBays?.bays ? designRunScale(b.designSlice, run.reduce((sum, r) => sum + r.e.len, 0), STYLE_DIMS[b.style].bay, runScale0) : runScale0;
+      const runScale = b.designSlice && !b.designBays && streetRun && !b.recipe && !specBays?.bays ? designRunScale(b.designSlice, run.reduce((sum, r) => sum + r.e.len, 0), STYLE_DIMS[b.style].bay, runScale0) : runScale0;
       const cellU = units ? AXIS_UNIT_U : 1;
       const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
       const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');

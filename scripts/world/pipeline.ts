@@ -26,6 +26,7 @@ import { houseSpecsStamp, type HouseSpecsStamp } from '../../src/canalRecall/hou
 import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
 import { isRowWallSlab, rowFrontOn, rowFrontsFromFile, setRowFrontRecords, ROW_FRONT_BROWSER_PATH } from '../../src/canalRecall/houseLine/rowFront.js';
 import { rowFrontsWithSeries } from '../../src/canalRecall/houseLine/rowSeries.js';
+import { designUnitsOn, setDesignSegments, DESIGN_UNITS_BROWSER_PATH } from '../../src/canalRecall/designUnits/draw.js';
 import { coversHides, resolveTileIds, tileCoversHash, type TileIdsCache } from '../../src/canalRecall/world/tileCovers.js';
 
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
@@ -107,6 +108,11 @@ export function gameChain(options: { registerFacts?: RegisterFactsMap | null } =
     // (signed-off rows only), so the default world-v1 cells draw them as the live tiles do. ROW_FRONT=0 compiles without.
     const file = path.join(ROOT, 'public', ROW_FRONT_BROWSER_PATH);
     if (fs.existsSync(file)) setRowFrontRecords(rowFrontsFromFile(readJson(file)));
+  }
+  // Design units (DESIGN_UNITS=1, designUnits/draw.ts): the published segments, as the browser fetches them under ?designUnits=1.
+  if (designUnitsOn()) {
+    const file = path.join(ROOT, 'public', DESIGN_UNITS_BROWSER_PATH);
+    if (fs.existsSync(file)) setDesignSegments(readJson(file));
   }
   const registerFacts = options.registerFacts === null ? undefined : options.registerFacts ?? publishedRegisterFacts();
   const gablesJson = readJson(path.join(EXTRACT, 'monument-gables.json'));

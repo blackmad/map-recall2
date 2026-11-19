@@ -64,6 +64,22 @@ Run in the integrate worktree on 1b2fac24f, then on e138de88a after the merge an
 
 If the session was closed, the job died with it. Check `bash /tmp/canal-pw.sh --status`, and kill anything left on port 4724 by PID (`kill $(lsof -t -iTCP:4724 -sTCP:LISTEN)`). Then rerun it (step 2 below).
 
+## Design-direction round (after the trial pair), in progress
+
+The planning session's direction: the plot is the module, not the segment; light frames on 1860-1919 Ring fronts;
+segments must not collapse to one wall; use the De Pijp D1 reads; a no-worse rule (window h/w at least 1.5, bays per member
+as the prior). The iteration loop is Node only: `node --import tsx scripts/design-units/row-sheet.ts <van-ostadestraat|rustenburgerstraat>
+[--photo <jpg>]` writes `artifacts/design-units/rows/<row>/sheet.jpg` (today over flag, whole row on one line;
+`PREVIEW_ROW_IDS` makes preview.ts draw every member). Done so far (committed):
+- per member window columns: the era prior by plot width (`eraWindows`), at ONE pitch per segment (module / era count),
+  laid out through the stated-count fit with `exact` (1.2 m axis floor; MIN_COLUMN_M 1.8 had turned 6 windows into 4);
+- bay-look traits for era segments: tall, light frames (dark only when the reads say so); slate on c19 segment roofs;
+- the Node `gameChain` loads the segments under DESIGN_UNITS=1 (scripts/world/pipeline.ts).
+Still to do: read consensus from `lane/buurt-pijp-20261116` `artifacts/describer-d1/ring-20261114/answers` (807 members in
+273 segments; none on the two regression rows) into `segments.json` (`reads`: whiteFrames, pale, arch, finish, bays per
+member; draw.ts already consumes `reads`); the conformance check for window proportion and bays; wall tone against the
+photo; then one browser pair per row, then the gate.
+
 ## Next steps, in order
 
 Work in worktree `~/Code/map-recall2-worktrees/integrator-design-units-20261119`. It is locked, port 4720 (e2e 4721–4726). Always call `/usr/bin/git`, because the `git` wrapper is broken. Never work in `~/Code/map-recall2`.
