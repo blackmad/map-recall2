@@ -178,3 +178,28 @@ test('conformance: exceptions change the mesh (a listed member far off the line 
   const listed = { ...s, exceptions: [{ pandId: odd, readM: s.eavesM! + STALE_MEMBER_M + 2, why: 'test' }] };
   assert.notEqual(meshWith(listed, off), meshWith({ ...s, exceptions: [] }, off));
 });
+
+// The no-worse rule (planning session, 2026-11-19): with the flag on, a pre-1920 residential front draws the era's window
+// columns per plot (the plot is the module) and tall windows: drawn height over width at least 1.5, measured on the
+// mesher's own layout (storey pitch x the preset's sill-to-head, cell width x the preset's window width).
+for (const name of ['Rustenburgerstraat', 'Van Ostadestraat'] as const) {
+  test(`${name}: era fronts draw the plot's window columns, tall (h/w >= 1.5), light frames`, () => {
+    let checked = 0;
+    for (const { s, members } of drawRow(name)) {
+      for (const m of members) {
+        const d = designUnitOf(m.f.properties);
+        if (!d?.bays) continue;
+        const len = d.toM - d.fromM, run = m.runs.find(r => r.street && r.base < 0.5 && Math.abs(r.lengthM - len) <= Math.max(1.5, 0.2 * len));
+        if (!run) continue;
+        const up = m.b.openings?.upper;
+        assert.ok(up, `${s.id} ${m.id}: upper openings`);
+        assert.equal(run.bays, d.bays, `${s.id} ${m.id}: ${run.bays} columns drawn, the plot's ${d.bays}`);
+        const cellW = run.lengthM * (run.axes || 1) / run.bays, w = up!.width * cellW, h = Math.abs(up!.head - up!.sill) * run.storeyM;
+        assert.ok(h / w >= 1.5, `${s.id} ${m.id}: window ${h.toFixed(2)} x ${w.toFixed(2)} m (h/w ${(h / w).toFixed(2)})`);
+        assert.equal(d.look?.dark, false, `${s.id} ${m.id}: light frames on an era front with no read`);
+        checked++;
+      }
+    }
+    assert.ok(checked >= 3, `${name}: ${checked} era members checked`);
+  });
+}

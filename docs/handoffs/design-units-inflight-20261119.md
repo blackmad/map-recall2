@@ -75,10 +75,14 @@ as the prior). The iteration loop is Node only: `node --import tsx scripts/desig
   laid out through the stated-count fit with `exact` (1.2 m axis floor; MIN_COLUMN_M 1.8 had turned 6 windows into 4);
 - bay-look traits for era segments: tall, light frames (dark only when the reads say so); slate on c19 segment roofs;
 - the Node `gameChain` loads the segments under DESIGN_UNITS=1 (scripts/world/pipeline.ts).
-Still to do: read consensus from `lane/buurt-pijp-20261116` `artifacts/describer-d1/ring-20261114/answers` (807 members in
-273 segments; none on the two regression rows) into `segments.json` (`reads`: whiteFrames, pale, arch, finish, bays per
-member; draw.ts already consumes `reads`); the conformance check for window proportion and bays; wall tone against the
-photo; then one browser pair per row, then the gate.
+- read consensus: `build-segments.ts --reads` (default `artifacts/design-units/staging/d1-ring-answers`, extracted with
+  `git archive lane/buurt-pijp-20261116 artifacts/describer-d1/ring-20261114/answers`): 272 segments carry `reads`
+  (whiteFrames 235 true / 21 false); the extract is republished;
+- the no-worse conformance test in `draw.test.ts` (12/12): era members draw the plot's columns and windows h/w >= 1.5, light
+  frames without a read;
+- bundles rebuilt; lint, test:design-units 14/14, structure, worldV1Enabled pass.
+Still to do: the wall tone against the photo (the browser trial read L 0.50 / hue 42 against the photo's 0.59 / 47; not
+touched yet); the planning session reviews the two row sheets; then one browser pair per row, then the gate.
 
 ## Next steps, in order
 

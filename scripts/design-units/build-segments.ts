@@ -2,7 +2,11 @@
  * Design-unit segments for the renderer (phase 1): Ring-layer multi-pand units split at real AHN breaks
  * (src/canalRecall/designUnits/segments.ts), staged with their numbers.
  *
- *   node --import tsx scripts/design-units/build-segments.ts [--layers=ring] [--publish]
+ *   node --import tsx scripts/design-units/build-segments.ts [--layers=ring] [--reads=<dir of D1 answers>] [--publish]
+ *
+ * --reads (default artifacts/design-units/staging/d1-ring-answers, the De Pijp lane's ring tranche): a segment with read
+ * members takes their consensus (`reads`: majority whiteFrames / pale / arch heads / finish, each read member's bays), which
+ * the renderer prefers over the era prior.
  *
  * Reads artifacts/design-units/staging/{design-units.json,ahn-fronts.json} and the base tiles' 3DBAG eaves. Writes
  * artifacts/design-units/staging/{segments.json,segment-stats.json}; --publish copies segments.json to
@@ -39,6 +43,24 @@ for (const x of fs.readdirSync(TILES).filter(n => /^\d+$/.test(n))) for (const f
 }
 const heights = new Map<string, MemberHeights>([...want].map(id => [id, { ahnM: ahn[id]?.p90 ?? null, bagEavesM: bag.get(id) ?? null }]));
 
+type Answer = { readable?: boolean; whiteFrames?: boolean | null; pale?: boolean | null; finish?: string; bays?: number; heads?: string[] };
+const readsDir = path.resolve(ROOT, arg('reads') ?? 'artifacts/design-units/staging/d1-ring-answers');
+const answers = new Map<string, Answer>();
+if (fs.existsSync(readsDir)) for (const f of fs.readdirSync(readsDir).filter(n => n.endsWith('.json'))) {
+  const a = JSON.parse(fs.readFileSync(path.join(readsDir, f), 'utf8')) as Answer & { pandId?: string };
+  if (a.readable !== false && a.pandId) answers.set(a.pandId, a);
+}
+const majority = <V>(xs: V[]): V | undefined => { const c = new Map<V, number>(); for (const x of xs) c.set(x, (c.get(x) ?? 0) + 1); const top = [...c].sort((a, b) => b[1] - a[1]); return top.length && (top.length === 1 || top[0][1] > top[1][1]) ? top[0][0] : undefined; };
+function readsOf(members: string[]) {
+  const rs = members.map(m => [m, answers.get(m)] as const).filter((x): x is readonly [string, Answer] => !!x[1]);
+  if (!rs.length) return undefined;
+  const bool = (k: 'whiteFrames' | 'pale') => majority(rs.map(([, a]) => a[k]).filter((v): v is boolean => typeof v === 'boolean'));
+  const arch = majority(rs.flatMap(([, a]) => (a.heads ?? []).filter(h => h !== 'mixed' && h !== 'not-visible').map(h => h === 'segmental' || h === 'round' || h === 'arch')));
+  const finish = majority(rs.map(([, a]) => a.finish).filter((f): f is string => !!f && f !== 'not-visible'));
+  const bays = Object.fromEntries(rs.filter(([, a]) => typeof a.bays === 'number' && a.bays > 0).map(([m, a]) => [m, a.bays!]));
+  return { n: rs.length, ...(bool('whiteFrames') !== undefined ? { whiteFrames: bool('whiteFrames') } : {}), ...(bool('pale') !== undefined ? { pale: bool('pale') } : {}),
+    ...(arch !== undefined ? { arch } : {}), ...(finish ? { finish } : {}), ...(Object.keys(bays).length ? { bays } : {}) };
+}
 const segments: Segment[] = [];
 let splitUnits = 0;
 const med = (xs: number[]) => { const v = [...xs].sort((a, b) => a - b); return v.length ? v[Math.floor((v.length - 1) / 2)] : null; };
@@ -49,6 +71,8 @@ for (const u of units) {
     g.year = med(g.members.map(m => yearOf.get(m)).filter((y): y is number => typeof y === 'number'));
     const c = g.members.map(m => centre.get(m)).filter((x): x is [number, number, number] => !!x);
     if (c.length) { const n = c.reduce((t, x) => t + x[2], 0); g.at = [+(c.reduce((t, x) => t + x[0], 0) / n).toFixed(7), +(c.reduce((t, x) => t + x[1], 0) / n).toFixed(7)]; }
+    const r = readsOf(g.members);
+    if (r) (g as Segment & { reads?: unknown }).reads = r;
   }
   segments.push(...s);
 }
@@ -60,6 +84,7 @@ const stat = {
   segments: segments.length, multiPandSegments: multi.length, pandsInMultiSegments: multi.reduce((t, s) => t + s.members.length, 0),
   unitsSplit: splitUnits, singlesFromSplits: segments.filter(s => s.members.length === 1).length,
   exceptions: multi.reduce((t, s) => t + s.exceptions.length, 0),
+  withReads: multi.filter(s => (s as Segment & { reads?: unknown }).reads).length, readsFrom: answers.size,
   eavesSource: { ahn: multi.filter(s => s.eavesSource === 'ahn').length, '3dbag': multi.filter(s => s.eavesSource === '3dbag').length, none: multi.filter(s => s.eavesSource === 'none').length },
   // How far 3DBAG per-pand eaves sit from the segment line today (what the flag removes).
   bagSpreadOver0_8: multi.filter(s => { const v = s.members.map(m => bag.get(m)).filter((x): x is number => typeof x === 'number'); return v.length > 1 && Math.max(...v) - Math.min(...v) > 0.8; }).length,
