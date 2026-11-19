@@ -49,6 +49,10 @@ export interface Segment {
   slices: SegmentSlice[];
   /** Members drawn at the segment line although they read otherwise. */
   exceptions: Array<{ pandId: string; readM: number; why: string }>;
+  /** Median BAG construction year of the members (the style year the renderer draws them all with); set by build-segments. */
+  year?: number | null;
+  /** Members' footprint centroid [lng, lat] (one measured-wall pool draw per segment); set by build-segments. */
+  at?: [number, number];
 }
 
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; };
