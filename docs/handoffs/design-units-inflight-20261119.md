@@ -99,6 +99,15 @@ Pre-gate fix round (coordinator, 2026-11-19 evening; one round, then the gate, n
   columns, was 3); a multi-plot member keeps the segment pitch.
 Sheets: `artifacts/design-units/rows/{van-ostadestraat,rustenburgerstraat}/sheet.jpg`. The browser pairs in
 `artifacts/design-units/frames/{vo,rb}-{before2,after2}` predate this round: reshoot at the gate.
+Coordinator passed both sheets (2026-11-19 ~18:45); guessed roof furniture dropped for members (6e5449ff0). Gate shoot
+started ~18:45: the gate script is in scratchpad `gate.sh`. It runs the 18 lists in `artifacts/design-units/gate/lists/`
+with `house:frames --lists`, desktop then iphone (`HOUSE_FRAMES_PROJECT`); before `?world=live`, after
+`?world=live&designUnits=1 --before`; out `artifacts/design-units/gate/<desktop|iphone>/<before|after>/<key>`; logs
+`artifacts/design-units/gate/<dev>-<label>.log`; PW_PORT 4724. If the session died, kill port 4724 by PID and rerun the
+missing half. Then: page into the screenshots repo; needs-david issue (flat tops from AHN: no wall dormers/set-back
+dormers; seeded wall order can be wrong, e.g. Rustenburgerstraat's palest house is the right one; no bands, arched
+portals, stoops, French balconies; the question: better/same/worse than today, block by block, decides tier C default
+on the Ring layer); Node sheets beside the in-game pairs for the two rows; comment #397; post #68.
 Earlier still-to-do (superseded by the round above): the wall tone against the photo (the browser trial read L 0.50 / hue 42 against the photo's 0.59 / 47; not
 touched yet); the planning session reviews the two row sheets; then one browser pair per row, then the gate.
 
