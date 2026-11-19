@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+## Hoofddorppleinbuurt: the first attic-band rows published (2026-11-19, lane/hoofddorpplein-pilot-20261116 3b57b86ae)
+
+David approved two rows on #398 ("Legmeerplein + Aalsmeerweg good - publish"): Legmeerplein 095655 (11 members) and Aalsmeerweg 073886 (20 members), 31 records, published with the new `publish.ts --rows=` filter (`publishRows.ts`, in `test:house-spec`). They draw a chequer- or stripe-patterned attic band with a row of lights above the 3DBAG eaves, white erker caps and arched portieks. In blind comparisons the new render won 3 of 3 (round 1) and 2 of 2 (pitched round).
+
+Heemstedestraat drew flat because the library had no pitched roof and 3DBAG reads every block in the district as slanted. The kit now separates them by AHN front eaves against the 3DBAG line (`frontEavesM`), and counts storeys under a pitched roof below a knee wall (`kneeM`). Both are optional; Rivierenbuurt is byte-identical. Heemstedestraat and the other 134 pitched rows are not published; they wait on David (#398). The kit still cannot say: erkers rising into the band, partial stripes, a dentil end without eaves, white bay windows on rows without notes, per-row roof colour, or a wall over the line under a pitched roof.
+
 ## Narva-eiland pilot installed (2026-11-19, lane/narva-pilot-20261116 03c285162)
 
 Three Houthavens buildings are now kit models with separately designed fronts on one BAG pand. In a blind comparison against today at pinned poses, the new render won 5 of 5. The pands are 250155, 247037 and 252366; 252366 is a 2021 pand missing from the building tiles, installed with the OSM aliases w725476475 and w936343679. 247038 is held on an open-edge 3DBAG shell. New opt-in kit fields, each byte-identical when absent: per-house window `frame` and `dress`, `footprintParts` (one pand over several LoD2.2 blocks) and `osmAliases`. The world was recompiled (`--no-policy --shell`, world:verify clean), and the regenerated frontages fix the CI `audit-frontages` baseline that had been red since 2026-11-16. The kit still cannot say: the generic brick between measured fronts makes the row read as coloured inserts; diamond brick panels; per-house loggias; a single wide window in one house.
