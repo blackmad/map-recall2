@@ -1,0 +1,218 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "weesperstraat-107-165490",
+ "pandId": "0363100012165490",
+ "address": "Weesperstraat 107-121 (+ Nieuwe Keizersgracht), Amsterdam-Centrum: 1990s eight-storey office in maroon-brown panels with punched window rows, a glazed plinth and glazed stair bays, a low glazed pavilion on the east, and a four-storey brick wing",
+ "sources": [
+  {
+   "id": "pano-2019-01-14-w01-251L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001051_pano_0001_000180/",
+   "image": "source-data://pand-reference-walls/0363100012165490/w01-251L.jpg",
+   "sha256": "2ab3bb8ff2c9753ad743ebd6c0288682af8bec769f554f84ddd31c8d49ea9cc8",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-25-w02-70",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0000_000035/",
+   "image": "source-data://pand-reference-walls/0363100012165490/w02-70.jpg",
+   "sha256": "f004b8503795c837ad6e5a03e5e6873268532cfdbb6ee020811ce2b227fc0822",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-07-06-w04-344",
+   "kind": "street-panorama",
+   "capturedAt": "2017-07-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0002_000141/",
+   "image": "source-data://pand-reference-walls/0363100012165490/w04-344.jpg",
+   "sha256": "871f92e34f0898b350907bafdf19a2306901c758cd2e2cccfef3bf70b1839138",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-12-10-w06-164L",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track31_Sphere_00073/",
+   "image": "source-data://pand-reference-walls/0363100012165490/w06-164L.jpg",
+   "sha256": "746adb05b2611605f341e1f8c86d38ca16446d735df014bf3eccc4e4d0756fb5",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#6b6461",
+  "frame": "#d8dad6",
+  "stone": "#8a8580",
+  "door": "#3a3a3a",
+  "glass": "#3e4a50"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "walls": [
+  {
+   "wallSurfaces": [
+    46,
+    65,
+    73
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 20,
+   "ground": "glazed",
+   "windows": "plain",
+   "stringCourses": false,
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.5,
+    "sill": 0.28
+   },
+   "palette": {
+    "brick": "#6b6461",
+    "frame": "#d8dad6",
+    "stone": "#8a8580"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ],
+   "street": "Weesperstraat"
+  },
+  {
+   "wallSurfaces": [
+    122,
+    32,
+    92,
+    8
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 18,
+   "ground": "glazed",
+   "windows": "plain",
+   "stringCourses": false,
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#6b6461",
+    "frame": "#d8dad6",
+    "stone": "#8a8580"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    57,
+    113
+   ],
+   "system": "curtain-wall",
+   "storeys": 3,
+   "palette": {
+    "glass": "#8f9896",
+    "frame": "#c9ccc8"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    45
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 6,
+   "ground": "glazed",
+   "windows": "plain",
+   "stringCourses": false,
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.5,
+    "sill": 0.28
+   },
+   "palette": {
+    "brick": "#6b6461",
+    "frame": "#d8dad6",
+    "stone": "#8a8580"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    59,
+    108,
+    30,
+    99
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "plain",
+   "stringCourses": false,
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.5,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#9c8c7c",
+    "frame": "#e8e6e0",
+    "stone": "#8a8580"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  }
+ ],
+ "measured": {
+  "date": "2022-04-25",
+  "groups": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "otherWalls": true
+ },
+ "notes": [
+  "Lane large-buildings-20261120 (2026-11-20). BAG says 1891/1964; the fronts are a 1990s office (backlog row 8). Panel brown #6b6461 sampled from w02-70 (2022-04-25, overcast) between window rows; pavilion glass from the same crop.",
+  "Groups: 0 the Weesperstraat (W) front, w01-251L 2019-01-14: eight storeys over a glazed plinth, about 20 punched windows per storey per half; 1 the E front above the pavilion, w02-70; 2 the low glazed pavilion on the E (0-10.5 m) as a curtain wall; 3 the N front, w04-344; 4 the four-storey brick wing N/S (15 m), w06-164L 2024-12-10 (washed out; brick #9c8c7c inferred).",
+  "Not modelled: the glazed stair bays with round-headed slots on the W front and the curtain-glazed stair bay on the E (the kit's brick-bay-grid cannot carry a full-height glazed bay inside one group; splitting by surface is not possible because the bays share 3DBAG surfaces), the stepped roof penthouse (window grid)."
+ ],
+ "budgetTriangles": 14000
+}
