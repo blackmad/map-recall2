@@ -2,10 +2,11 @@
 // and node frames draw fits without searching for glass (a city-look material swap or a merged street chunk hides the
 // glass material at run time). For a street chunk each opening records its pand (the GLB's pandRanges) so the fit lifts
 // with that pand. Openings are in the GLB's own frame (metres), rounded to 0.1 mm.
-//   npx tsx scripts/retail-fit/stage-openings.ts --model=<id> [--glb=<path>] [--slot=glass] [--material=<name>,...] [--dry]
+//   npx tsx scripts/retail-fit/stage-openings.ts --model=<id> [--glb=<path>] [--slot=glass] [--material=<name>,...]
+//     [--maxSill=<m>] [--maxTop=<m>] (a host whose shop glass sits on a high plinth: Magna Plaza 2.9 / 7.5) [--dry]
 import fs from 'node:fs';
 import { loadGlb } from '../../src/canalRecall/glbRaster/load.ts';
-import { glassOpenings } from '../../src/canalRecall/retailFit/openings.ts';
+import { glassOpenings, OPENING_FIND } from '../../src/canalRecall/retailFit/openings.ts';
 import type { StoredOpening } from '../../src/canalRecall/retailFit/photoRead.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -18,7 +19,8 @@ const g = await loadGlb(new Uint8Array(fs.readFileSync(file)));
 const glass = g.primitives.filter(p => { const m = g.materials[p.material]; return names ? names.includes(m.name) : m.extras?.materialSlot === slot; });
 let sx = 0, sz = 0, n = 0;
 for (const p of g.primitives) for (let i = 0; i < p.positions.length; i += 3) { sx += p.positions[i]; sz += p.positions[i + 2]; n++; }
-const ops = glassOpenings(glass.map(p => ({ positions: p.positions, indices: p.indices })), [sx / n, sz / n]);
+const find = { ...OPENING_FIND, ...(arg('maxSill') ? { maxSillM: Number(arg('maxSill')) } : {}), ...(arg('maxTop') ? { maxTopM: Number(arg('maxTop')) } : {}) };
+const ops = glassOpenings(glass.map(p => ({ positions: p.positions, indices: p.indices })), [sx / n, sz / n], find);
 
 /** The pand of the glass triangle whose centroid is nearest the opening's centre (street chunks only). */
 function pandOf(o: (typeof ops)[number]): number | undefined {

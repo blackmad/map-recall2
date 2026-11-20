@@ -1038,14 +1038,14 @@
   },
   "american-hotel": {
    "status": "published",
-   "review": "Published 2026-11-20. Blind A/B, a fresh opus judge per round: Bar Am\u00e9ricain front won (med); the Leidsekade front first LOST (curtains and lamps against the daylight photo's lowered blinds, low), the read was corrected to pale blinds and won against a new judge (med). Judge notes left: the blind's dark lower strip too even; no entrance canopy (model).",
+   "review": "Published 2026-11-20. Blind A/B, a fresh opus judge per round: Bar Américain front won (med); the Leidsekade front first LOST (curtains and lamps against the daylight photo's lowered blinds, low), the read was corrected to pale blinds and won against a new judge (med). Judge notes left: the blind's dark lower strip too even; no entrance canopy (model).",
    "fits": [
     {
      "at": [
       4.8811975,
       52.3636987
      ],
-     "tenant": "Caf\u00e9 Am\u00e9ricain (side door)",
+     "tenant": "Café Américain (side door)",
      "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
      "read": {
       "glass": "#2a2418",
@@ -1064,7 +1064,7 @@
       4.8812152,
       52.3637068
      ],
-     "tenant": "Bar Am\u00e9ricain (terrace windows)",
+     "tenant": "Bar Américain (terrace windows)",
      "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
      "read": {
       "glass": "#2a2418",
@@ -1083,7 +1083,7 @@
       4.881235,
       52.3637161
      ],
-     "tenant": "Bar Am\u00e9ricain (terrace windows)",
+     "tenant": "Bar Américain (terrace windows)",
      "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
      "read": {
       "glass": "#2a2418",
@@ -1102,7 +1102,7 @@
       4.8812549,
       52.3637254
      ],
-     "tenant": "Bar Am\u00e9ricain (terrace windows)",
+     "tenant": "Bar Américain (terrace windows)",
      "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
      "read": {
       "glass": "#2a2418",
@@ -1121,7 +1121,7 @@
       4.8812749,
       52.3637347
      ],
-     "tenant": "Bar Am\u00e9ricain (terrace windows)",
+     "tenant": "Bar Américain (terrace windows)",
      "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
      "read": {
       "glass": "#2a2418",
@@ -1140,7 +1140,7 @@
       4.8812948,
       52.3637439
      ],
-     "tenant": "Bar Am\u00e9ricain (terrace windows)",
+     "tenant": "Bar Américain (terrace windows)",
      "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
      "read": {
       "glass": "#2a2418",
@@ -2635,7 +2635,7 @@
   },
   "magna-plaza": {
    "status": "published",
-   "review": "Published 2026-11-20: blind A/B, one fresh opus judge, two 2025-01-09 panorama poses: fit won 2/2 (Spuistraat front low, Nieuwezijds Voorburgwal front med). Only 11 of 24 reads find an opening within 2.5 m: the builder spaces bays at 5.3 m, not the real window rhythm. Judge notes: too few posters, no legible MANGO lettering at that distance. Openings staged from a geometry-identical glass retag (scripts/retail-fit/magna-plaza-glass-retag.patch), so the GLB itself is unchanged.",
+   "review": "Published 2026-11-20: blind A/B, one fresh opus judge, two 2025-01-09 panorama poses: fit won 2/2. Re-staged 2026-11-21 (round 8) against the rebuilt GLB (main 9888e874ee, its own glass slot): stage-openings.ts --maxSill=2.9 --maxTop=7.5 finds 38 openings (shop panes sill 2.75 m / crown 7.4 m, pavilion arches 0.75 / 7.35 m); all 24 reads land in their own opening (the old staged openings hit 2 on the new GLB). The glassShop retag patch is dropped. Blind vs main (fresh opus judge, sides seeded, artifacts/retail-fit/blind-magna-r8): fit 2/0, both high. Judge notes: posters too small and too pink (the photo has tall SALE and red 50 panels), one invented, one missing; flat glass with no reflection; one far-right shop pane still blue.",
    "fits": [
     {
      "at": [
@@ -3019,740 +3019,878 @@
    ],
    "openings": [
     {
-     "id": "0:-14.2",
+     "id": "107:-2.8",
      "base": [
-      14.1551,
-      1.5011,
-      -17.9697
+      21.828,
+      2.7475,
+      9.6818
      ],
      "n": [
-      0,
-      -1
+      0.9555,
+      0.2949
      ],
      "t": [
-      -1,
-      0
+      0.2949,
+      -0.9555
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8513,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 0,
-     "areaM2": 8.2999
+     "bearing": 107.1527,
+     "areaM2": 7.8993
     },
     {
-     "id": "0:-19.5",
+     "id": "107:-6.4",
      "base": [
-      19.4523,
-      1.5011,
-      -17.9697
+      20.7724,
+      2.7475,
+      13.0927
      ],
      "n": [
-      0,
-      -1
+      0.9555,
+      0.2949
      ],
      "t": [
-      -1,
-      0
+      0.2949,
+      -0.9555
      ],
-     "widthM": 2.5024,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8513,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 0,
-     "areaM2": 8.3067
+     "bearing": 107.1527,
+     "areaM2": 7.8993
     },
     {
-     "id": "0:-24.8",
+     "id": "107:-20.6",
      "base": [
-      24.7545,
-      1.5011,
-      -17.9697
+      16.561,
+      2.7475,
+      26.6961
      ],
      "n": [
-      0,
-      -1
+      0.9554,
+      0.2952
      ],
      "t": [
-      -1,
-      0
+      0.2952,
+      -0.9554
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8466,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 0,
-     "areaM2": 8.3013
+     "bearing": 107.1706,
+     "areaM2": 7.1912
     },
     {
-     "id": "0:-3.6",
+     "id": "107:-9.9",
      "base": [
-      3.5532,
-      1.5011,
-      -17.9697
+      19.7105,
+      2.7475,
+      16.5225
      ],
      "n": [
-      0,
-      -1
+      0.9551,
+      0.2963
      ],
      "t": [
-      -1,
-      0
+      0.2963,
+      -0.9551
      ],
-     "widthM": 2.4963,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8528,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 0,
-     "areaM2": 8.2903
+     "bearing": 107.2329,
+     "areaM2": 7.208
     },
     {
-     "id": "0:-30.1",
+     "id": "107:33.9",
      "base": [
-      30.0542,
-      1.5011,
-      -17.9697
+      32.6814,
+      2.7475,
+      -25.3039
      ],
      "n": [
-      0,
-      -1
+      0.9549,
+      0.2969
      ],
      "t": [
-      -1,
-      0
+      0.2969,
+      -0.9549
      ],
-     "widthM": 2.4975,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
-     "head": "round",
-     "bearing": 0,
-     "areaM2": 8.2942
+     "widthM": 1.8528,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
+     "head": "flat",
+     "bearing": 107.2717,
+     "areaM2": 7.9608
     },
     {
-     "id": "0:-8.9",
+     "id": "107:-17.1",
      "base": [
-      8.8529,
-      1.5011,
-      -17.9697
+      17.5929,
+      2.7475,
+      23.3628
      ],
      "n": [
-      0,
-      -1
+      0.9547,
+      0.2974
      ],
      "t": [
-      -1,
-      0
+      0.2974,
+      -0.9547
      ],
-     "widthM": 2.5024,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8528,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 0,
-     "areaM2": 8.3047
+     "bearing": 107.3044,
+     "areaM2": 7.208
     },
     {
-     "id": "0:1.7",
+     "id": "107:0.8",
      "base": [
-      -1.7459,
-      1.5011,
-      -17.9697
+      22.8726,
+      2.7475,
+      6.3097
      ],
      "n": [
-      0,
-      -1
+      0.9547,
+      0.2975
      ],
      "t": [
-      -1,
-      0
+      0.2975,
+      -0.9547
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8481,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 0,
-     "areaM2": 8.3005
+     "bearing": 107.3046,
+     "areaM2": 8.1154
     },
     {
-     "id": "0:12.3",
+     "id": "107:44.4",
      "base": [
-      -12.3454,
-      1.5011,
-      -17.9697
+      35.8136,
+      2.7475,
+      -35.3482
      ],
      "n": [
-      0,
-      -1
+      0.9547,
+      0.2977
      ],
      "t": [
-      -1,
-      0
+      0.2977,
+      -0.9547
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
-     "head": "round",
-     "bearing": 0,
-     "areaM2": 8.3013
+     "widthM": 1.8481,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
+     "head": "flat",
+     "bearing": 107.3173,
+     "areaM2": 7.1972
     },
     {
-     "id": "0:17.6",
+     "id": "107:30.3",
      "base": [
-      -17.6469,
-      1.5011,
-      -17.9697
+      31.6258,
+      2.7475,
+      -21.9066
      ],
      "n": [
-      0,
-      -1
+      0.9547,
+      0.2977
      ],
      "t": [
-      -1,
-      0
+      0.2977,
+      -0.9547
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
-     "head": "round",
-     "bearing": 0,
-     "areaM2": 8.2999
+     "widthM": 1.8481,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
+     "head": "flat",
+     "bearing": 107.3174,
+     "areaM2": 7.2007
     },
     {
-     "id": "0:22.9",
+     "id": "107:37.5",
      "base": [
-      -22.9448,
-      1.5011,
-      -17.9697
+      33.747,
+      2.7475,
+      -28.711
      ],
      "n": [
-      0,
-      -1
+      0.9547,
+      0.2977
      ],
      "t": [
-      -1,
-      0
+      0.2977,
+      -0.9547
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
-     "head": "round",
-     "bearing": 0,
-     "areaM2": 8.301
+     "widthM": 1.8481,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
+     "head": "flat",
+     "bearing": 107.3175,
+     "areaM2": 7.2007
     },
     {
-     "id": "0:28.2",
+     "id": "107:-13.5",
      "base": [
-      -28.2464,
-      1.5011,
-      -17.9697
+      18.6337,
+      2.7475,
+      19.9996
      ],
      "n": [
-      0,
-      -1
+      0.9546,
+      0.2979
      ],
      "t": [
-      -1,
-      0
+      0.2979,
+      -0.9546
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8492,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 0,
-     "areaM2": 8.3013
+     "bearing": 107.3329,
+     "areaM2": 7.8842
     },
     {
-     "id": "0:7.0",
+     "id": "107:40.9",
      "base": [
-      -7.045,
-      1.5011,
-      -17.9697
+      34.7725,
+      2.7475,
+      -32.008
      ],
      "n": [
-      0,
-      -1
+      0.9545,
+      0.2981
      ],
      "t": [
-      -1,
-      0
+      0.2981,
+      -0.9545
      ],
-     "widthM": 2.4963,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8481,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 0,
-     "areaM2": 8.2903
+     "bearing": 107.3424,
+     "areaM2": 7.1972
     },
     {
-     "id": "90:-0.2",
+     "id": "107:23.4",
      "base": [
-      39.6403,
-      1.5011,
-      0.1873
+      29.5683,
+      2.7475,
+      -15.3091
      ],
      "n": [
-      1,
-      0
+      0.9544,
+      0.2986
      ],
      "t": [
-      0,
-      -1
+      0.2986,
+      -0.9544
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8484,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 90,
-     "areaM2": 8.3013
+     "bearing": 107.3728,
+     "areaM2": 7.4242
     },
     {
-     "id": "90:-5.5",
+     "id": "107:26.9",
      "base": [
-      39.6403,
-      1.5011,
-      5.4889
+      30.5975,
+      2.7475,
+      -18.6097
      ],
      "n": [
-      1,
-      0
+      0.9539,
+      0.3001
      ],
      "t": [
-      0,
-      -1
+      0.3001,
+      -0.9539
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8495,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 90,
-     "areaM2": 8.2999
+     "bearing": 107.4639,
+     "areaM2": 7.204
     },
     {
-     "id": "90:10.4",
+     "id": "184:9.7",
      "base": [
-      39.6403,
-      1.5011,
-      -10.4115
+      7.6047,
+      2.7475,
+      29.9643
      ],
      "n": [
-      1,
-      0
+      -0.0719,
+      0.9974
      ],
      "t": [
-      0,
-      -1
+      0.9974,
+      0.0719
      ],
-     "widthM": 2.5024,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8484,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 90,
-     "areaM2": 8.3039
+     "bearing": 184.1238,
+     "areaM2": 7.1995
     },
     {
-     "id": "90:5.1",
+     "id": "184:13.3",
      "base": [
-      39.6403,
-      1.5011,
-      -5.1118
+      11.0961,
+      2.7475,
+      30.2243
      ],
      "n": [
-      1,
-      0
+      -0.0749,
+      0.9972
      ],
      "t": [
-      0,
-      -1
+      0.9972,
+      0.0749
      ],
-     "widthM": 2.4963,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8537,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 90,
-     "areaM2": 8.2903
+     "bearing": 184.2949,
+     "areaM2": 7.9671
     },
     {
-     "id": "180:-14.2",
+     "id": "185:-9.5",
      "base": [
-      -14.1551,
-      1.5011,
-      17.9716
+      -11.7672,
+      0.7503,
+      26.594
      ],
      "n": [
-      0,
-      1
+      -0.084,
+      0.9965
      ],
      "t": [
-      1,
-      0
+      0.9965,
+      0.084
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 2.9007,
+     "sillM": 0.7503,
+     "springM": 5.8994,
+     "crownM": 7.3528,
      "head": "round",
-     "bearing": 180,
-     "areaM2": 8.2999
+     "bearing": 184.8213,
+     "areaM2": 17.4516
     },
     {
-     "id": "180:-19.5",
+     "id": "185:5.9",
      "base": [
-      -19.4523,
-      1.5011,
-      17.9716
+      3.3773,
+      2.7475,
+      29.1092
      ],
      "n": [
-      0,
-      1
+      -0.0855,
+      0.9963
      ],
      "t": [
-      1,
-      0
+      0.9963,
+      0.0855
      ],
-     "widthM": 2.5024,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8504,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 180,
-     "areaM2": 8.3067
+     "bearing": 184.9059,
+     "areaM2": 7.4389
     },
     {
-     "id": "180:-24.8",
+     "id": "185:2.3",
      "base": [
-      -24.7545,
-      1.5011,
-      17.9716
+      -0.1612,
+      2.7475,
+      28.8118
      ],
      "n": [
-      0,
-      1
+      -0.0857,
+      0.9963
      ],
      "t": [
-      1,
-      0
+      0.9963,
+      0.0857
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8504,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 180,
-     "areaM2": 8.3013
+     "bearing": 184.9187,
+     "areaM2": 8.1263
     },
     {
-     "id": "180:-3.6",
+     "id": "185:-1.2",
      "base": [
-      -3.5532,
-      1.5011,
-      17.7901
+      -3.7009,
+      2.7475,
+      28.5145
      ],
      "n": [
-      0,
-      1
+      -0.0857,
+      0.9963
      ],
      "t": [
-      1,
-      0
+      0.9963,
+      0.0857
      ],
-     "widthM": 2.4963,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8504,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 180,
-     "areaM2": 8.2903
+     "bearing": 184.9187,
+     "areaM2": 8.1263
     },
     {
-     "id": "180:-30.1",
+     "id": "229:6.7",
      "base": [
-      -30.0542,
-      1.5011,
-      17.9716
+      -17.4101,
+      0.7503,
+      23.9526
      ],
      "n": [
-      0,
-      1
+      -0.7564,
+      0.6541
      ],
      "t": [
-      1,
-      0
+      0.6541,
+      0.7564
      ],
-     "widthM": 2.4975,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
-     "head": "round",
-     "bearing": 180,
-     "areaM2": 8.2942
+     "widthM": 0.7273,
+     "sillM": 0.7503,
+     "springM": 7.1545,
+     "crownM": 7.1545,
+     "head": "flat",
+     "bearing": 229.1483,
+     "areaM2": 2.0126
     },
     {
-     "id": "180:-8.9",
+     "id": "229:7.9",
      "base": [
-      -8.8529,
-      1.5011,
-      17.9716
+      -16.7033,
+      0.7503,
+      24.7772
      ],
      "n": [
-      0,
-      1
+      -0.7592,
+      0.6508
      ],
      "t": [
-      1,
-      0
+      0.6508,
+      0.7592
      ],
-     "widthM": 2.5024,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 2.8995,
+     "sillM": 0.7503,
+     "springM": 5.8994,
+     "crownM": 7.3528,
      "head": "round",
-     "bearing": 180,
-     "areaM2": 8.3047
+     "bearing": 229.3979,
+     "areaM2": 15.9294
     },
     {
-     "id": "180:1.7",
+     "id": "275:21.3",
      "base": [
-      1.7459,
-      1.5011,
-      17.7901
+      -18.4744,
+      0.7503,
+      19.7147
      ],
      "n": [
-      0,
-      1
+      -0.9961,
+      -0.0877
      ],
      "t": [
-      1,
-      0
+      -0.0877,
+      0.9961
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 2.9015,
+     "sillM": 0.7503,
+     "springM": 5.8994,
+     "crownM": 7.3528,
      "head": "round",
-     "bearing": 180,
-     "areaM2": 8.3005
+     "bearing": 275.0325,
+     "areaM2": 17.5826
     },
     {
-     "id": "180:12.3",
+     "id": "288:-22.3",
      "base": [
-      12.3454,
-      1.5011,
-      17.9716
+      -2.1003,
+      2.7475,
+      -24.1492
      ],
      "n": [
-      0,
-      1
+      -0.9506,
+      -0.3105
      ],
      "t": [
-      1,
-      0
+      -0.3105,
+      0.9506
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8509,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 180,
-     "areaM2": 8.3013
+     "bearing": 288.0872,
+     "areaM2": 7.2059
     },
     {
-     "id": "180:17.6",
+     "id": "288:-18.5",
      "base": [
-      17.6469,
-      1.5011,
-      17.9716
+      -3.2845,
+      2.7475,
+      -20.5381
      ],
      "n": [
-      0,
-      1
+      -0.9503,
+      -0.3114
      ],
      "t": [
-      1,
-      0
+      -0.3114,
+      0.9503
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8473,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 180,
-     "areaM2": 8.2999
+     "bearing": 288.1413,
+     "areaM2": 7.2023
     },
     {
-     "id": "180:22.9",
+     "id": "288:-37.3",
      "base": [
-      22.9448,
-      1.5011,
-      17.9716
+      2.5745,
+      2.7475,
+      -38.3812
      ],
      "n": [
-      0,
-      1
+      -0.9503,
+      -0.3114
      ],
      "t": [
-      1,
-      0
+      -0.3114,
+      0.9503
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
-     "head": "round",
-     "bearing": 180,
-     "areaM2": 8.301
+     "widthM": 1.8462,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
+     "head": "flat",
+     "bearing": 288.1431,
+     "areaM2": 7.1974
     },
     {
-     "id": "180:28.2",
+     "id": "288:-9.7",
      "base": [
-      28.2464,
-      1.5011,
-      17.9716
+      -6.4377,
+      2.7475,
+      -12.3525
      ],
      "n": [
-      0,
-      1
+      -0.95,
+      -0.3124
      ],
      "t": [
-      1,
-      0
+      -0.3124,
+      0.95
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8524,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 180,
-     "areaM2": 8.3013
+     "bearing": 288.2035,
+     "areaM2": 7.4459
     },
     {
-     "id": "180:7.0",
+     "id": "288:-14.1",
      "base": [
-      7.045,
-      1.5011,
-      17.7901
+      -5.0667,
+      2.7475,
+      -16.5308
      ],
      "n": [
-      0,
-      1
+      -0.9499,
+      -0.3125
      ],
      "t": [
-      1,
-      0
+      -0.3125,
+      0.9499
      ],
-     "widthM": 2.4963,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8524,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 180,
-     "areaM2": 8.2903
+     "bearing": 288.2081,
+     "areaM2": 7.4467
     },
     {
-     "id": "270:-0.2",
+     "id": "288:-33.4",
      "base": [
-      -39.6403,
-      1.5011,
-      -0.1879
+      1.3775,
+      2.7475,
+      -34.7337
      ],
      "n": [
-      -1,
-      0
+      -0.9495,
+      -0.3137
      ],
      "t": [
-      0,
-      1
+      -0.3137,
+      0.9495
      ],
-     "widthM": 2.4963,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8477,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 270,
-     "areaM2": 8.2898
+     "bearing": 288.2807,
+     "areaM2": 7.201
     },
     {
-     "id": "270:-5.5",
+     "id": "288:5.6",
      "base": [
-      -39.6403,
-      1.5011,
-      -5.487
+      -10.8399,
+      2.7475,
+      2.3673
      ],
      "n": [
-      -1,
-      0
+      -0.9495,
+      -0.3137
      ],
      "t": [
-      0,
-      1
+      -0.3137,
+      0.9495
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8524,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 270,
-     "areaM2": 8.3013
+     "bearing": 288.2808,
+     "areaM2": 7.4467
     },
     {
-     "id": "270:10.4",
+     "id": "288:-41.0",
      "base": [
-      -39.6403,
-      1.5011,
-      10.4134
+      3.7416,
+      2.7475,
+      -41.9358
      ],
      "n": [
-      -1,
-      0
+      -0.9495,
+      -0.3138
      ],
      "t": [
-      0,
-      1
+      -0.3138,
+      0.9495
      ],
-     "widthM": 2.5024,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
-     "head": "round",
-     "bearing": 270,
-     "areaM2": 8.3053
+     "widthM": 1.8477,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
+     "head": "flat",
+     "bearing": 288.2892,
+     "areaM2": 7.2618
     },
     {
-     "id": "270:5.1",
+     "id": "288:2.1",
      "base": [
-      -39.6403,
-      1.5011,
-      5.1112
+      -9.7394,
+      2.7475,
+      -0.9567
      ],
      "n": [
-      -1,
-      0
+      -0.9495,
+      -0.3139
      ],
      "t": [
-      0,
-      1
+      -0.3139,
+      0.9495
      ],
-     "widthM": 2.5012,
-     "sillM": 1.5011,
-     "springM": 3.8503,
-     "crownM": 5.1009,
+     "widthM": 1.8477,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
      "head": "round",
-     "bearing": 270,
-     "areaM2": 8.3013
+     "bearing": 288.2928,
+     "areaM2": 8.1148
+    },
+    {
+     "id": "288:-1.4",
+     "base": [
+      -8.6247,
+      2.7475,
+      -4.317
+     ],
+     "n": [
+      -0.9494,
+      -0.314
+     ],
+     "t": [
+      -0.314,
+      0.9494
+     ],
+     "widthM": 1.8477,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
+     "head": "round",
+     "bearing": 288.3001,
+     "areaM2": 8.1731
+    },
+    {
+     "id": "288:-4.9",
+     "base": [
+      -7.525,
+      2.7475,
+      -7.6376
+     ],
+     "n": [
+      -0.9494,
+      -0.3141
+     ],
+     "t": [
+      -0.3141,
+      0.9494
+     ],
+     "widthM": 1.8477,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
+     "head": "round",
+     "bearing": 288.3037,
+     "areaM2": 7.2024
+    },
+    {
+     "id": "288:9.1",
+     "base": [
+      -11.9266,
+      2.7475,
+      5.6506
+     ],
+     "n": [
+      -0.9493,
+      -0.3145
+     ],
+     "t": [
+      -0.3145,
+      0.9493
+     ],
+     "widthM": 1.8477,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
+     "head": "round",
+     "bearing": 288.3303,
+     "areaM2": 7.4273
+    },
+    {
+     "id": "288:-26.1",
+     "base": [
+      -0.9125,
+      2.7475,
+      -27.7595
+     ],
+     "n": [
+      -0.9492,
+      -0.3146
+     ],
+     "t": [
+      -0.3146,
+      0.9492
+     ],
+     "widthM": 1.8481,
+     "sillM": 2.7475,
+     "springM": 6.4743,
+     "crownM": 7.4023,
+     "head": "round",
+     "bearing": 288.3359,
+     "areaM2": 7.2026
+    },
+    {
+     "id": "320:21.6",
+     "base": [
+      -15.8711,
+      0.7503,
+      14.6694
+     ],
+     "n": [
+      -0.637,
+      -0.7709
+     ],
+     "t": [
+      -0.7709,
+      0.637
+     ],
+     "widthM": 2.9005,
+     "sillM": 0.7503,
+     "springM": 5.8994,
+     "crownM": 7.3528,
+     "head": "round",
+     "bearing": 320.4306,
+     "areaM2": 16.4398
+    },
+    {
+     "id": "321:20.5",
+     "base": [
+      -15.0336,
+      0.7503,
+      13.9754
+     ],
+     "n": [
+      -0.6335,
+      -0.7737
+     ],
+     "t": [
+      -0.7737,
+      0.6335
+     ],
+     "widthM": 0.7253,
+     "sillM": 0.7503,
+     "springM": 7.1545,
+     "crownM": 7.1545,
+     "head": "flat",
+     "bearing": 320.6892,
+     "areaM2": 1.5105
     }
    ]
   }
