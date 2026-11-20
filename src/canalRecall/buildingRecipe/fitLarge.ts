@@ -29,6 +29,7 @@ import {wallFamilyCladding} from './wallFamily.ts';
 import {fitArcadePiers, type ArcadePiersFit} from '../blockBuilding/arcadePiers.ts';
 import {fitWindowBox, type WindowBoxFit} from '../blockBuilding/windowBox.ts';
 import type {SignBoardFit} from '../blockBuilding/signBoards.ts';
+import {TERRACE, type TerraceFit, type WallLightFit} from '../blockBuilding/wallFeatures.ts';
 import {fitGallery, type GalleryFit} from '../blockBuilding/gallery.ts';
 import {fitBoxBalconies, type BoxBalconyFit} from '../blockBuilding/boxBalcony.ts';
 import {fitBalconyBands, type BalconyBandsFit} from '../blockBuilding/balconyBands.ts';
@@ -115,6 +116,12 @@ export interface LargeGroupFit {
   windowBox?: WindowBoxFit;
   /** flat sign boards on the main panel (intent `signBoards`, blockBuilding/signBoards.ts) */
   signBoards?: SignBoardFit[];
+  /** more lettering on the main panel (intent `signs`): text, band and its `sign@g<i>k<k>` slot */
+  signs?: {text: string; along: [number, number]; up: [number, number]; slot: string}[];
+  /** framed glazed slots on the main panel (intent `wallLights`) */
+  wallLights?: WallLightFit[];
+  /** terrace floors (intent `terraces`) in `terrace@g<i>`, the rail in `rail@tg<i>` */
+  terraces?: TerraceFit;
   /** a false front over the panels whose top rises above their eaves (intent `falseFront`), in this slot */
   falseFront?: {slot: string};
   /** open galleries (verandas) over a span of bays of the main panel (intent `gallery`, blockBuilding/gallery.ts), one entry per gallery */
@@ -641,6 +648,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(houses ? {houses} : {}),
       ...(w.arcadePiers ? {arcadePiers: fitArcadePiers(w.arcadePiers, slots.stone)} : {}),
       ...(w.windowBox ? {windowBox: fitWindowBox(w.windowBox, {frame: boxFrame ?? slots.frame, glass: slots.glass, ...(boxDeck ? {deck: boxDeck} : {})}, main ? main.uMax - main.uMin : undefined, bays)} : {}),
+      ...(w.signs ? {signs: w.signs.map((s, k) => { const sl = `sign@g${gi}k${k}`; palette[sl] = swatch(s.colour ?? '#e8e8e4'); return {text: s.text, along: [s.along[0], s.along[1]] as [number, number], up: [s.up[0], s.up[1]] as [number, number], slot: sl}; })} : {}),
+      ...(w.wallLights ? {wallLights: w.wallLights.map(l => ({along: [l.along[0], l.along[1]] as [number, number], up: [l.up[0], l.up[1]] as [number, number], lights: l.lights ?? 1, rows: l.rows ?? 1}))} : {}),
+      ...(w.terraces ? {terraces: ((t) => { const sl = `terrace@g${gi}`, rl = `rail@tg${gi}`; palette[sl] = swatch(t.colour ?? '#e4e4e0'); palette[rl] = swatch(t.colour ?? '#e4e4e0'); return {storeys: [...t.storeys], deep: t.deep ?? TERRACE.deep, rail: t.rail ?? true, roof: !!t.roof, slot: sl, railSlot: rl}; })(w.terraces)} : {}),
       ...(w.signBoards ? {signBoards: w.signBoards.map((b, k) => { const sl = `signboard@g${gi}k${k}`; palette[sl] = swatch(b.colour ?? pal.door); return {along: [b.along[0], b.along[1]] as [number, number], up: [b.up[0], b.up[1]] as [number, number], slot: sl}; })} : {}),
       ...(w.falseFront ? {falseFront: {slot: cladSlot ?? slots.wall}} : {}),
       ...(w.ribbonStoreys ? {ribbonStoreys: w.ribbonStoreys.flatMap(r => r.storeys)} : {}),

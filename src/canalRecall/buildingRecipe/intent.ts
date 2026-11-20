@@ -37,6 +37,7 @@ import type {ArcadePiersIntent} from '../blockBuilding/arcadePiers.ts';
 import type {WindowBoxIntent} from '../blockBuilding/windowBox.ts';
 import type {GalleryIntent} from '../blockBuilding/gallery.ts';
 import type {SignBoardIntent} from '../blockBuilding/signBoards.ts';
+import type {WallSignIntent, WallLightIntent, TerraceIntent} from '../blockBuilding/wallFeatures.ts';
 
 /**
  * `shouldered` (Transvaalbuurt 1911-1914: Retiefstraat 71D-73A, Transvaalstraat 42-44): a low broad gable whose sides
@@ -1604,6 +1605,16 @@ export interface LargeWallIntent {
    * in `colour` (default the door colour), standing proud of the wall and any cladding. Absent = byte-identical.
    */
   signBoards?: SignBoardIntent[];
+  /** More lettering on the main panel, each in its own `along` / `up` band (blockBuilding/wallFeatures.ts; Danzigerbocht
+   *  45's FIGHT DISTRICT under the painted 45). Absent = byte-identical. */
+  signs?: WallSignIntent[];
+  /** Framed glazed slots or single windows standing on the main panel's wall, `along` / `up` fractions, with `lights`
+   *  columns and `rows` (blockBuilding/wallFeatures.ts; the black base's tall glazed slot). Absent = byte-identical. */
+  wallLights?: WallLightIntent[];
+  /** White layered terrace floors across every panel at these storeys' floor lines, `deep` m (default 1.6), open rail,
+   *  optional thin canopy roof at the top (blockBuilding/wallFeatures.ts; Danzigerbocht 45's office storeys). Absent =
+   *  byte-identical. */
+  terraces?: TerraceIntent;
   /**
    * A false front (blockBuilding/signBoards.ts): on every panel of the group whose top rises above its eaves (the gable
    * ends of a sawtooth or pitched hall roof), a flat slab from the eaves to the top in the cladding sheet's colour (else the

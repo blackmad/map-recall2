@@ -10,6 +10,7 @@ import {boxBalconyProblems} from '../blockBuilding/boxBalcony.ts';
 import {balconyBandsProblems} from '../blockBuilding/balconyBands.ts';
 import {stackedBlocksProblems} from '../blockBuilding/stackedBlocks.ts';
 import {signBoardsProblems} from '../blockBuilding/signBoards.ts';
+import {signsProblems, terracesProblems, wallLightsProblems} from '../blockBuilding/wallFeatures.ts';
 import {claddingProblems} from './claddingIntent.ts';
 import {wallFamilyProblems} from './wallFamily.ts';
 import {FLOOR_BAND_LIMITS} from '../blockBuilding/components.ts';
@@ -21,7 +22,7 @@ import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 import {ribbonStoreysProblems} from './ribbonStoreysIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily', 'ribbonStoreys'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily', 'ribbonStoreys', 'signs', 'wallLights', 'terraces'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'blankWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'footprintParts', 'osmAliases', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -183,6 +184,15 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     if (w.windowBox !== undefined) {
       problems.push(...windowBoxProblems(w.windowBox, `${at}.windowBox`, w.baysPerStorey, typeof w.storeys === 'number' ? w.storeys : undefined));
       if (w.system === 'curtain-wall' || w.system === 'glazed-hall' || w.screen) problems.push(`${at}.windowBox: on a wall with a face (not curtain-wall, glazed-hall or screen)`);
+    }
+    if (w.signs !== undefined) {
+      problems.push(...signsProblems(w.signs, `${at}.signs`));
+      for (const [k, s] of (Array.isArray(w.signs) ? w.signs : []).entries()) if (s?.colour !== undefined) colour(s.colour, `${at}.signs[${k}].colour`);
+    }
+    if (w.wallLights !== undefined) problems.push(...wallLightsProblems(w.wallLights, `${at}.wallLights`));
+    if (w.terraces !== undefined) {
+      problems.push(...terracesProblems(w.terraces, `${at}.terraces`, typeof w.storeys === 'number' ? w.storeys : 0));
+      if (w.terraces?.colour !== undefined) colour(w.terraces.colour, `${at}.terraces.colour`);
     }
     if (w.signBoards !== undefined) {
       problems.push(...signBoardsProblems(w.signBoards, `${at}.signBoards`));

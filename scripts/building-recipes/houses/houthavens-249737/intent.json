@@ -56,14 +56,40 @@
     "colour": "#b89820",
     "mount": "wall",
     "along": [
-     0.1,
-     0.75
+     0.3,
+     0.7
     ],
     "up": [
-     0.55,
-     0.75
+     0.67,
+     0.83
     ]
-   }
+   },
+   "signs": [
+    {
+     "text": "FIGHT",
+     "colour": "#d8d8d4",
+     "along": [
+      0.3,
+      0.98
+     ],
+     "up": [
+      0.52,
+      0.58
+     ]
+    },
+    {
+     "text": "DISTRICT",
+     "colour": "#d8d8d4",
+     "along": [
+      0.3,
+      0.98
+     ],
+     "up": [
+      0.45,
+      0.51
+     ]
+    }
+   ]
   },
   {
    "wallSurfaces": [
@@ -177,7 +203,32 @@
     3,
     4,
     5
-   ]
+   ],
+   "wallLights": [
+    {
+     "along": [
+      0.27,
+      0.53
+     ],
+     "up": [
+      0.0,
+      0.45
+     ],
+     "lights": 2,
+     "rows": 3
+    }
+   ],
+   "terraces": {
+    "storeys": [
+     3,
+     4,
+     5
+    ],
+    "deep": 1.4,
+    "colour": "#e4e4e0",
+    "rail": true,
+    "roof": true
+   }
   },
   {
    "wallSurfaces": [
@@ -211,7 +262,29 @@
    "glazedStoreys": [
     3,
     4
-   ]
+   ],
+   "wallLights": [
+    {
+     "along": [
+      0.35,
+      0.56
+     ],
+     "up": [
+      0.44,
+      0.5
+     ]
+    }
+   ],
+   "terraces": {
+    "storeys": [
+     3,
+     4
+    ],
+    "deep": 1.4,
+    "colour": "#e4e4e0",
+    "rail": true,
+    "roof": true
+   }
   },
   {
    "wallSurfaces": [
@@ -243,6 +316,20 @@
    },
    "glazedStoreys": [
     3
+   ],
+   "wallLights": [
+    {
+     "along": [
+      0.24,
+      0.52
+     ],
+     "up": [
+      0.03,
+      0.66
+     ],
+     "lights": 2,
+     "rows": 4
+    }
    ]
   },
   {
@@ -278,7 +365,19 @@
     4,
     5,
     6
-   ]
+   ],
+   "terraces": {
+    "storeys": [
+     3,
+     4,
+     5,
+     6
+    ],
+    "deep": 1.4,
+    "colour": "#e4e4e0",
+    "rail": true,
+    "roof": true
+   }
   },
   {
    "wallSurfaces": [
@@ -300,13 +399,25 @@
     6
    ],
    "palette": {
-    "brick": "#8a8e90",
+    "brick": "#d8dadc",
     "frame": "#c8ccd0"
    },
    "windowShape": {
     "w": 0.5,
     "h": 0.6,
     "sill": 0.2
+   },
+   "terraces": {
+    "storeys": [
+     3,
+     4,
+     5,
+     6
+    ],
+    "deep": 1.4,
+    "colour": "#e4e4e0",
+    "rail": true,
+    "roof": true
    }
   },
   {
@@ -330,13 +441,24 @@
     5
    ],
    "palette": {
-    "brick": "#8a8e90",
+    "brick": "#d8dadc",
     "frame": "#c8ccd0"
    },
    "windowShape": {
     "w": 0.5,
     "h": 0.6,
     "sill": 0.2
+   },
+   "terraces": {
+    "storeys": [
+     3,
+     4,
+     5
+    ],
+    "deep": 1.4,
+    "colour": "#e4e4e0",
+    "rail": true,
+    "roof": true
    }
   },
   {
@@ -434,7 +556,7 @@
  "shellRepair": true,
  "budgetTriangles": 24000,
  "notes": [
-  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 4): the NE front from w01-52s1 (2022-04-08) and w01-52s1L (2021-02-24): a black panelled base to 10.1 m, blank but for a tall glazed slot, painted with a yellow 45, the stencilled FIGHT DISTRICT and a DAILY PAPER logo; above it a timber-boarded box (surfaces 1, 12, 185, 186, 204, 10.1-16.1 m) with a pergola, and behind it the glazed office storeys with pale frames, balcony rails and thin canopy roofs (w01-52s2, 2021-02-24). Every 3DBAG surface that rises from the ground keeps the black base to 10.1 m and glazes the storeys above.",
-  "Not drawn: the stencilled FIGHT DISTRICT under the 45 and the DAILY PAPER logo mark (one sign per group: the 45 and the DAILY PAPER lettering are drawn, sized to the base with signage.up), the pergola, the balcony rails and canopy roofs over the glazed storeys (balconies do not combine with glazedStoreys), the tall glazed slot in the base."
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 4): the NE front from w01-52s1 (2022-04-08) and w01-52s1L (2021-02-24): a black panelled base to 10.1 m, blank but for a tall glazed slot, painted with a yellow 45, the stencilled FIGHT DISTRICT and a DAILY PAPER logo; above it a timber-boarded box (surfaces 1, 12, 185, 186, 204, 10.1-16.1 m) with a pergola, and behind it the glazed office storeys with pale frames, balcony rails and thin canopy roofs (w01-52s2, 2021-02-24). Every 3DBAG surface that rises from the ground keeps the black base to 10.1 m and glazes the storeys above. Round 5: FIGHT DISTRICT under the 45 (signs), the tall glazed slots in the NE base of 159 and 70 and the small square window on 149 (wallLights), and white terrace floors with open rails and a thin canopy roof over the glazed office storeys (terraces), measured from w01-52s1 and w01-52s2.",
+  "Not drawn: the DAILY PAPER logo mark, the pergola, the dark ribbed door panel beside the NE glazed slot, the angled struts under the canopy roofs."
  ]
 }
