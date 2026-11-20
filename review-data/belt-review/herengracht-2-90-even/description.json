@@ -1,0 +1,5974 @@
+{
+ "version": 1,
+ "faceId": "herengracht-2-90-even",
+ "street": "Herengracht",
+ "side": "even",
+ "generatedAt": "2026-11-20",
+ "about": "Belt review stage 2 (lane C): the first description per pand from the library, a source and confidence per field (sources strongest first: reviewed > face-intent > own-read > register > survey > based-on > donor > period-default); library = sources above donor, newRead = donor, period-default or absent. Built by scripts/belt-review/describe.ts.",
+ "inputs": {
+  "face": "review-data/belt-review/herengracht-2-90-even/face.json",
+  "publishedSpecs": "public/data/extracts/amsterdam/house-specs/14",
+  "d1": "/Users/blackmad/Code/map-recall2-worktrees/_pruned-sheets/d1-belt-20261114/belt-20261114 (answers named in answers-kept; answers-held not used)",
+  "photoReads": "data/buurt-generators/belt/photo-reads.json",
+  "beltLook": "data/buurt-generators/belt/row-front.json",
+  "ahn": "data/buurt-generators/belt/ahn-fronts.json",
+  "register": "public/data/extracts/amsterdam/monument-facts.json",
+  "ordekaart": "/Users/blackmad/Code/map-recall2-worktrees/belt-review-library-20261120/.cache/ordekaart-20261119/ORDE_CENTRUM_GEBOUWEN.geojson (centrum layer; a pand joins the object holding >= 0.5 of its footprint)",
+  "kitGaps": "review-data/belt-review/kit-gaps.json"
+ },
+ "counts": {
+  "pands": 42,
+  "fields": 714,
+  "library": 485,
+  "newRead": 229,
+  "bySource": {
+   "own-read": 377,
+   "missing": 225,
+   "survey": 42,
+   "register": 39,
+   "reviewed": 6,
+   "face-intent": 21,
+   "donor": 4
+  },
+  "libraryShare": 0.679,
+  "byField": {
+   "storeys": {
+    "library": 32,
+    "newRead": 10
+   },
+   "bays": {
+    "library": 33,
+    "newRead": 9
+   },
+   "crown": {
+    "library": 38,
+    "newRead": 4
+   },
+   "cornice": {
+    "library": 26,
+    "newRead": 16
+   },
+   "roofStorey": {
+    "library": 30,
+    "newRead": 12
+   },
+   "dormers": {
+    "library": 26,
+    "newRead": 16
+   },
+   "heads": {
+    "library": 32,
+    "newRead": 10
+   },
+   "windows": {
+    "library": 32,
+    "newRead": 10
+   },
+   "windowSurround": {
+    "library": 31,
+    "newRead": 11
+   },
+   "wallFinish": {
+    "library": 37,
+    "newRead": 5
+   },
+   "wallColour": {
+    "library": 5,
+    "newRead": 37
+   },
+   "whiteFrames": {
+    "library": 33,
+    "newRead": 9
+   },
+   "ground": {
+    "library": 30,
+    "newRead": 12
+   },
+   "door": {
+    "library": 19,
+    "newRead": 23
+   },
+   "stoop": {
+    "library": 13,
+    "newRead": 29
+   },
+   "eavesM": {
+    "library": 42,
+    "newRead": 0
+   },
+   "facadeYear": {
+    "library": 26,
+    "newRead": 16
+   }
+  },
+  "pandsWithKitGaps": 14,
+  "ordekaartUnits": 12,
+  "multiPandUnits": 6
+ },
+ "pands": [
+  {
+   "pandId": "0363100012175701",
+   "address": "Herengracht 90",
+   "order": 0,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "simple",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg"
+    },
+    "roofStorey": {
+     "value": "dormers",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 1,
+      "kind": "plain"
+     },
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg"
+    },
+    "windows": {
+     "value": "casement-toplight",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg"
+    },
+    "wallFinish": {
+     "value": "painted-brick",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg"
+    },
+    "ground": {
+     "value": "shopfront",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg",
+     "others": [
+      {
+       "value": "shop",
+       "source": "register",
+       "ref": "monument-facts rce:1728"
+      }
+     ]
+    },
+    "door": {
+     "value": {
+      "bay": 2
+     },
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175701.jpg"
+    },
+    "eavesM": {
+     "value": 14.95,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-76-90: the cut's wall height",
+     "others": [
+      {
+       "value": 11.3,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1762,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7141",
+     "source": "ordekaart",
+     "share": 0.59,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175701"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "dormers",
+     "value": {
+      "count": 1,
+      "kind": "plain"
+     },
+     "drawnAs": null,
+     "why": "held: no compiler draws this read yet"
+    },
+    {
+     "field": "cornice",
+     "why": "cornice: a white attic piece with a hoist window and curved top over the cornice",
+     "gapId": "cornice-4ba2d376"
+    }
+   ],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 15,
+    "newRead": 2,
+    "bySource": {
+     "own-read": 13,
+     "missing": 2,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012169010",
+   "address": "Herengracht 88",
+   "order": 1,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "reviewed",
+     "confidence": 0.95,
+     "ref": "scripts/house-specs/rows/reviewed.json: lane D belt A/B 4, the cut re-read after the second blind review (2026-11-15: today still won)",
+     "others": [
+      {
+       "value": 3,
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+      }
+     ]
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+    },
+    "cornice": {
+     "value": "frieze",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+    },
+    "roofStorey": {
+     "value": "dormers",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 1,
+      "kind": "plain"
+     },
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+    },
+    "heads": {
+     "value": "segmental",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+    },
+    "windowSurround": {
+     "value": "block-dressings",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+    },
+    "whiteFrames": {
+     "value": false,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169010.jpg"
+    },
+    "eavesM": {
+     "value": 12.2,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-76-90: the cut's wall height",
+     "others": [
+      {
+       "value": 3,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "door",
+    "stoop",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "0363100012169010",
+     "source": "single",
+     "faceMembers": [
+      "0363100012169010"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "dormers",
+     "value": {
+      "count": 1,
+      "kind": "plain"
+     },
+     "drawnAs": null,
+     "why": "held: no compiler draws this read yet"
+    },
+    {
+     "field": "windowSurround",
+     "value": "block-dressings",
+     "drawnAs": "jack-blocks",
+     "why": "drawn as \"jack-blocks\""
+    },
+    {
+     "field": "wallColour",
+     "why": "wall: white stone banding (speklagen) at every storey",
+     "gapId": "wall-f42f8803"
+    }
+   ],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 13,
+    "newRead": 4,
+    "bySource": {
+     "reviewed": 1,
+     "own-read": 11,
+     "missing": 4,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012175692",
+   "address": "Herengracht 86",
+   "order": 2,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.5,
+     "ref": "belt look belt-herenstraat-175692/s1"
+    },
+    "bays": {
+     "value": 8,
+     "source": "own-read",
+     "confidence": 0.5,
+     "ref": "belt look belt-herenstraat-175692/s1"
+    },
+    "crown": {
+     "value": "bell",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "belt photo-reads (opus (cut))",
+     "agree": [
+      "own-read",
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "belt photo-reads (opus (cut))",
+     "agree": [
+      "own-read"
+     ]
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.5,
+     "ref": "belt look belt-herenstraat-175692/s1"
+    },
+    "windows": {
+     "value": "casement-toplight",
+     "source": "own-read",
+     "confidence": 0.5,
+     "ref": "belt look belt-herenstraat-175692/s1"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.75,
+     "ref": "belt photo-reads (opus (cut))",
+     "agree": [
+      "own-read"
+     ]
+    },
+    "wallColour": {
+     "value": "red-brown-brick",
+     "source": "own-read",
+     "confidence": 0.65,
+     "ref": "belt photo-reads (opus (cut))",
+     "others": [
+      {
+       "value": "#252d2a",
+       "source": "own-read",
+       "ref": "belt look belt-herenstraat-175692/s1"
+      }
+     ]
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.5,
+     "ref": "belt look belt-herenstraat-175692/s1"
+    },
+    "eavesM": {
+     "value": 12.07,
+     "source": "survey",
+     "confidence": 0.75,
+     "ref": "AHN front band p90 (n 118)",
+     "others": [
+      {
+       "value": 8.6,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      },
+      {
+       "value": 10.94,
+       "source": "period-default",
+       "ref": "belt look belt-herenstraat-175692/s1"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1612,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "dormers",
+    "heads",
+    "windowSurround",
+    "ground",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6841",
+     "source": "ordekaart",
+     "share": 0.963,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175692",
+      "0363100012175702"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 11,
+    "newRead": 6,
+    "bySource": {
+     "own-read": 9,
+     "missing": 6,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012175702",
+   "address": "Herengracht 84",
+   "order": 3,
+   "fields": {
+    "storeys": {
+     "value": 2,
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/storeys (streetlevel-measured: house-specs extract)",
+     "agree": [
+      "own-read"
+     ]
+    },
+    "bays": {
+     "value": 3,
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/bays (streetlevel-measured: house-specs extract)",
+     "others": [
+      {
+       "value": 2,
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175702.jpg"
+      }
+     ]
+    },
+    "crown": {
+     "value": "step",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/gable (streetlevel-measured: house-specs extract)",
+     "agree": [
+      "own-read",
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "none",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/cornice (streetlevel-measured: house-specs extract)"
+    },
+    "roofStorey": {
+     "value": "gable-attic",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175702.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175702.jpg"
+    },
+    "heads": {
+     "value": "relieving",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/windowHead (streetlevel-measured: house-specs extract)",
+     "others": [
+      {
+       "value": "flat",
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175702.jpg"
+      }
+     ]
+    },
+    "windows": {
+     "value": "sash-6-over-6",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/windows (streetlevel-measured: house-specs extract)",
+     "others": [
+      {
+       "value": "sash-small-panes",
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175702.jpg"
+      }
+     ]
+    },
+    "windowSurround": {
+     "value": "sill",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/windowSurround (streetlevel-measured: house-specs extract)",
+     "others": [
+      {
+       "value": "jack-blocks",
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175702.jpg"
+      }
+     ]
+    },
+    "wallFinish": {
+     "value": "painted-brick",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175702.jpg"
+    },
+    "wallColour": {
+     "value": "#3f3a33",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec palette/brick (streetlevel-measured: house-specs extract)"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec palette/frame (streetlevel-measured: house-specs extract)",
+     "agree": [
+      "own-read"
+     ]
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175702.jpg"
+    },
+    "door": {
+     "value": 2,
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/doorBay (streetlevel-measured: house-specs extract)"
+    },
+    "stoop": {
+     "value": "stoop",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/basement (streetlevel-measured: house-specs extract)"
+    },
+    "eavesM": {
+     "value": 13.28,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-76-90: the cut's wall height",
+     "others": [
+      {
+       "value": 10.3,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1612,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6841",
+     "source": "ordekaart",
+     "share": 0.931,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175692",
+      "0363100012175702"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 17,
+    "newRead": 0,
+    "bySource": {
+     "face-intent": 11,
+     "own-read": 4,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012175703",
+   "address": "Herengracht 82",
+   "order": 4,
+   "fields": {
+    "crown": {
+     "value": "cornice",
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec fronts/0/gable (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "bracketed",
+     "source": "register",
+     "confidence": 0.6,
+     "ref": "monument-facts rce:1725"
+    },
+    "wallFinish": {
+     "value": "stucco",
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec palette/wallMaterial (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    },
+    "eavesM": {
+     "value": 14.38,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-76-90: the cut's wall height",
+     "others": [
+      {
+       "value": 11.8,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1862,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "storeys",
+    "bays",
+    "roofStorey",
+    "dormers",
+    "heads",
+    "windows",
+    "windowSurround",
+    "wallColour",
+    "whiteFrames",
+    "ground",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6396",
+     "source": "ordekaart",
+     "share": 0.952,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175703"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 5,
+    "newRead": 12,
+    "bySource": {
+     "missing": 12,
+     "register": 4,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012175783",
+   "address": "Herengracht 80",
+   "order": 5,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175783.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175783.jpg"
+    },
+    "crown": {
+     "value": "neck",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175783.jpg"
+    },
+    "roofStorey": {
+     "value": "gable-attic",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175783.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175783.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175783.jpg"
+    },
+    "windows": {
+     "value": "sash-small-panes",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175783.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175783.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175783.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175783.jpg"
+    },
+    "ground": {
+     "value": "shopfront",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175783.jpg"
+    },
+    "eavesM": {
+     "value": 13.66,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-76-90: the cut's wall height",
+     "others": [
+      {
+       "value": 11.5,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "cornice",
+    "wallColour",
+    "door",
+    "stoop",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6333",
+     "source": "ordekaart",
+     "share": 0.891,
+     "orde": "2",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175783"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 12,
+    "newRead": 5,
+    "bySource": {
+     "own-read": 11,
+     "missing": 5,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012175784",
+   "address": "Herengracht 76–78",
+   "order": 6,
+   "fields": {
+    "crown": {
+     "value": "bell",
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec fronts/0/gable (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    },
+    "eavesM": {
+     "value": 9.9,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-76-90: the cut's wall height",
+     "others": [
+      {
+       "value": 4.8,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1762,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "storeys",
+    "bays",
+    "cornice",
+    "roofStorey",
+    "dormers",
+    "heads",
+    "windows",
+    "windowSurround",
+    "wallFinish",
+    "wallColour",
+    "whiteFrames",
+    "ground",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7404",
+     "source": "ordekaart",
+     "share": 0.998,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175784",
+      "0363100012175616",
+      "0363100012175617",
+      "0363100012175618",
+      "0363100012175698",
+      "0363100012168544",
+      "0363100012168545",
+      "0363100012167493",
+      "0363100012167492",
+      "0363100012167495"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 3,
+    "newRead": 14,
+    "bySource": {
+     "missing": 14,
+     "register": 2,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012175616",
+   "address": "Herengracht 74",
+   "order": 7,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "bays": {
+     "value": 2,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "crown": {
+     "value": "bell",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "roofStorey": {
+     "value": "gable-attic",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "windows": {
+     "value": "casement-toplight",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "windowSurround": {
+     "value": "stone-lintel",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "stoop": {
+     "value": "stoop-and-windows",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175616.jpg"
+    },
+    "eavesM": {
+     "value": 13.88,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-56-74: the cut's wall height",
+     "others": [
+      {
+       "value": 10,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "cornice",
+    "wallColour",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7404",
+     "source": "ordekaart",
+     "share": 0.988,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175784",
+      "0363100012175616",
+      "0363100012175617",
+      "0363100012175618",
+      "0363100012175698",
+      "0363100012168544",
+      "0363100012168545",
+      "0363100012167493",
+      "0363100012167492",
+      "0363100012167495"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 14,
+    "newRead": 3,
+    "bySource": {
+     "own-read": 13,
+     "missing": 3,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012175617",
+   "address": "Herengracht 72",
+   "order": 8,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "bays": {
+     "value": 2,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "cornice": {
+     "value": "frieze",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg",
+     "others": [
+      {
+       "value": {
+        "count": 1,
+        "kind": "unknown",
+        "note": "register names a dormer"
+       },
+       "source": "register",
+       "ref": "monument-facts rce:1722"
+      }
+     ]
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "windowSurround": {
+     "value": "full-frame",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 1,
+      "surround": true
+     },
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "stoop": {
+     "value": "stoop-and-windows",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175617.jpg"
+    },
+    "eavesM": {
+     "value": 17.14,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-56-74: the cut's wall height",
+     "others": [
+      {
+       "value": 3.1,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7404",
+     "source": "ordekaart",
+     "share": 0.893,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175784",
+      "0363100012175616",
+      "0363100012175617",
+      "0363100012175618",
+      "0363100012175698",
+      "0363100012168544",
+      "0363100012168545",
+      "0363100012167493",
+      "0363100012167492",
+      "0363100012167495"
+     ]
+    },
+    "readSameAs": {
+     "side": "both",
+     "pandIds": [
+      "0363100012175616",
+      "0363100012175618"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 15,
+    "newRead": 2,
+    "bySource": {
+     "own-read": 14,
+     "missing": 2,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012175618",
+   "address": "Herengracht 70",
+   "order": 9,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "bays": {
+     "value": 2,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "cornice": {
+     "value": "frieze",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg",
+     "others": [
+      {
+       "value": {
+        "count": 1,
+        "kind": "unknown",
+        "note": "register names a dormer"
+       },
+       "source": "register",
+       "ref": "monument-facts rce:1721"
+      }
+     ]
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "windowSurround": {
+     "value": "full-frame",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "stoop": {
+     "value": "windows",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175618.jpg"
+    },
+    "eavesM": {
+     "value": 18.83,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-56-74: the cut's wall height",
+     "others": [
+      {
+       "value": 3.2,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "door",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7404",
+     "source": "ordekaart",
+     "share": 0.924,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175784",
+      "0363100012175616",
+      "0363100012175617",
+      "0363100012175618",
+      "0363100012175698",
+      "0363100012168544",
+      "0363100012168545",
+      "0363100012167493",
+      "0363100012167492",
+      "0363100012167495"
+     ]
+    },
+    "readSameAs": {
+     "side": "both",
+     "pandIds": [
+      "0363100012175617",
+      "0363100012175698"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 14,
+    "newRead": 3,
+    "bySource": {
+     "own-read": 13,
+     "missing": 3,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012175698",
+   "address": "Herengracht 68",
+   "order": 10,
+   "fields": {
+    "storeys": {
+     "value": 5,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg"
+    },
+    "bays": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "frieze",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg",
+     "others": [
+      {
+       "value": "bracketed",
+       "source": "register",
+       "ref": "monument-facts rce:1720"
+      }
+     ]
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg"
+    },
+    "wallFinish": {
+     "value": "painted-brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 2
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg"
+    },
+    "eavesM": {
+     "value": 18.65,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-56-74: the cut's wall height",
+     "others": [
+      {
+       "value": 9.8,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1762,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "roofStorey",
+    "dormers",
+    "wallColour",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7404",
+     "source": "ordekaart",
+     "share": 0.999,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175784",
+      "0363100012175616",
+      "0363100012175617",
+      "0363100012175618",
+      "0363100012175698",
+      "0363100012168544",
+      "0363100012168545",
+      "0363100012167493",
+      "0363100012167492",
+      "0363100012167495"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 13,
+    "newRead": 4,
+    "bySource": {
+     "own-read": 11,
+     "missing": 4,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168544",
+   "address": "Herengracht 66",
+   "order": 11,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "donor",
+     "confidence": 0.35,
+     "ref": "belt look belt-herengracht-168544/s1"
+    },
+    "bays": {
+     "value": 11,
+     "source": "donor",
+     "confidence": 0.35,
+     "ref": "belt look belt-herengracht-168544/s1"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.8,
+     "ref": "belt photo-reads (opus (cut))",
+     "agree": [
+      "register",
+      "donor"
+     ]
+    },
+    "cornice": {
+     "value": "attic-frieze",
+     "source": "own-read",
+     "confidence": 0.8,
+     "ref": "belt photo-reads (opus (cut))",
+     "agree": [
+      "donor"
+     ],
+     "others": [
+      {
+       "value": "bracketed",
+       "source": "register",
+       "ref": "monument-facts rce:1719"
+      }
+     ]
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "donor",
+     "confidence": 0.35,
+     "ref": "belt look belt-herengracht-168544/s1"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.7,
+     "ref": "belt photo-reads (opus (cut))",
+     "agree": [
+      "donor"
+     ]
+    },
+    "wallColour": {
+     "value": "purple-brown-brick",
+     "source": "own-read",
+     "confidence": 0.75,
+     "ref": "belt photo-reads (opus (cut))",
+     "others": [
+      {
+       "value": "#563e36",
+       "source": "donor",
+       "ref": "belt look belt-herengracht-168544/s1"
+      }
+     ]
+    },
+    "whiteFrames": {
+     "value": false,
+     "source": "donor",
+     "confidence": 0.35,
+     "ref": "belt look belt-herengracht-168544/s1"
+    },
+    "eavesM": {
+     "value": 15.55,
+     "source": "survey",
+     "confidence": 0.75,
+     "ref": "AHN front band p90 (n 169)",
+     "others": [
+      {
+       "value": 11.7,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      },
+      {
+       "value": 16.52,
+       "source": "period-default",
+       "ref": "belt look belt-herengracht-168544/s1"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1800,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "dormers",
+    "heads",
+    "windows",
+    "windowSurround",
+    "ground",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7404",
+     "source": "ordekaart",
+     "share": 0.989,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175784",
+      "0363100012175616",
+      "0363100012175617",
+      "0363100012175618",
+      "0363100012175698",
+      "0363100012168544",
+      "0363100012168545",
+      "0363100012167493",
+      "0363100012167492",
+      "0363100012167495"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "cornice",
+     "value": "attic-frieze",
+     "drawnAs": "frieze",
+     "why": "drawn as \"frieze\""
+    }
+   ],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 6,
+    "newRead": 11,
+    "bySource": {
+     "donor": 4,
+     "own-read": 4,
+     "missing": 7,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168545",
+   "address": "Herengracht 64",
+   "order": 12,
+   "fields": {
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg"
+    },
+    "crown": {
+     "value": "neck",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg"
+    },
+    "roofStorey": {
+     "value": "gable-attic",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168545.jpg"
+    },
+    "eavesM": {
+     "value": 14.53,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-56-74: the cut's wall height",
+     "others": [
+      {
+       "value": 7.2,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "storeys",
+    "cornice",
+    "wallColour",
+    "ground",
+    "door",
+    "stoop",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7404",
+     "source": "ordekaart",
+     "share": 0.977,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175784",
+      "0363100012175616",
+      "0363100012175617",
+      "0363100012175618",
+      "0363100012175698",
+      "0363100012168544",
+      "0363100012168545",
+      "0363100012167493",
+      "0363100012167492",
+      "0363100012167495"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 10,
+    "newRead": 7,
+    "bySource": {
+     "missing": 7,
+     "own-read": 9,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012167493",
+   "address": "Herengracht 62",
+   "order": 13,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg"
+    },
+    "bays": {
+     "value": 2,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg"
+    },
+    "cornice": {
+     "value": "heavy",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg"
+    },
+    "wallFinish": {
+     "value": "painted-brick",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167493.jpg"
+    },
+    "eavesM": {
+     "value": 15.86,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-56-74: the cut's wall height",
+     "others": [
+      {
+       "value": 11.5,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "dormers",
+    "wallColour",
+    "door",
+    "stoop",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7404",
+     "source": "ordekaart",
+     "share": 0.907,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175784",
+      "0363100012175616",
+      "0363100012175617",
+      "0363100012175618",
+      "0363100012175698",
+      "0363100012168544",
+      "0363100012168545",
+      "0363100012167493",
+      "0363100012167492",
+      "0363100012167495"
+     ]
+    },
+    "readSameAs": {
+     "side": "right",
+     "pandIds": [
+      "0363100012167492"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 12,
+    "newRead": 5,
+    "bySource": {
+     "own-read": 11,
+     "missing": 5,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012167492",
+   "address": "Herengracht 60",
+   "order": 14,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg"
+    },
+    "bays": {
+     "value": 2,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "heavy",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 1,
+      "kind": "gabled"
+     },
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg"
+    },
+    "wallFinish": {
+     "value": "painted-brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg"
+    },
+    "door": {
+     "value": {
+      "surround": true
+     },
+     "source": "register",
+     "confidence": 0.55,
+     "ref": "monument-facts rce:1716"
+    },
+    "stoop": {
+     "value": "stoop-and-windows",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167492.jpg",
+     "others": [
+      {
+       "value": "stoop",
+       "source": "register",
+       "ref": "house-spec fronts/0/basement (monument-text: house-specs extract)"
+      },
+      {
+       "value": "stoop",
+       "source": "register",
+       "ref": "monument-facts rce:1716"
+      }
+     ]
+    },
+    "eavesM": {
+     "value": 16.74,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-56-74: the cut's wall height",
+     "others": [
+      {
+       "value": 6.5,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1737,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "wallColour"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7404",
+     "source": "ordekaart",
+     "share": 0.972,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175784",
+      "0363100012175616",
+      "0363100012175617",
+      "0363100012175618",
+      "0363100012175698",
+      "0363100012168544",
+      "0363100012168545",
+      "0363100012167493",
+      "0363100012167492",
+      "0363100012167495"
+     ]
+    },
+    "readSameAs": {
+     "side": "left",
+     "pandIds": [
+      "0363100012167493"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "dormers",
+     "value": {
+      "count": 1,
+      "kind": "gabled"
+     },
+     "drawnAs": null,
+     "why": "held: no compiler draws this read yet"
+    },
+    {
+     "field": "stoop",
+     "why": "stoop: cast-iron scroll newels and urns",
+     "gapId": "stoop-scroll-newels"
+    }
+   ],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 16,
+    "newRead": 1,
+    "bySource": {
+     "own-read": 13,
+     "missing": 1,
+     "register": 2,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012167495",
+   "address": "Herengracht 58",
+   "order": 15,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "cornice": {
+     "value": "attic-frieze",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "windowSurround": {
+     "value": "block-dressings",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "wallFinish": {
+     "value": "painted-brick",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 2,
+      "surround": true
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "stoop": {
+     "value": "windows",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167495.jpg"
+    },
+    "eavesM": {
+     "value": 15.77,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-56-74: the cut's wall height",
+     "others": [
+      {
+       "value": 9.7,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7404",
+     "source": "ordekaart",
+     "share": 0.895,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012175784",
+      "0363100012175616",
+      "0363100012175617",
+      "0363100012175618",
+      "0363100012175698",
+      "0363100012168544",
+      "0363100012168545",
+      "0363100012167493",
+      "0363100012167492",
+      "0363100012167495"
+     ]
+    },
+    "readSameAs": {
+     "side": "right",
+     "pandIds": [
+      "0363100012167494"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "windowSurround",
+     "value": "block-dressings",
+     "drawnAs": "jack-blocks",
+     "why": "drawn as \"jack-blocks\""
+    },
+    {
+     "field": "cornice",
+     "value": "attic-frieze",
+     "drawnAs": "frieze",
+     "why": "drawn as \"frieze\""
+    }
+   ],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 15,
+    "newRead": 2,
+    "bySource": {
+     "own-read": 14,
+     "missing": 2,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012167494",
+   "address": "Herengracht 56",
+   "order": 16,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "cornice": {
+     "value": "attic-frieze",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg",
+     "others": [
+      {
+       "value": "bracketed",
+       "source": "register",
+       "ref": "monument-facts rce:1714"
+      }
+     ]
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "windowSurround": {
+     "value": "block-dressings",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 0,
+      "surround": true
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012167494.jpg"
+    },
+    "eavesM": {
+     "value": 17.06,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-56-74: the cut's wall height",
+     "others": [
+      {
+       "value": 7.6,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1637,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6403",
+     "source": "ordekaart",
+     "share": 0.758,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012167494"
+     ]
+    },
+    "readSameAs": {
+     "side": "left",
+     "pandIds": [
+      "0363100012167495"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "windowSurround",
+     "value": "block-dressings",
+     "drawnAs": "jack-blocks",
+     "why": "drawn as \"jack-blocks\""
+    },
+    {
+     "field": "cornice",
+     "value": "attic-frieze",
+     "drawnAs": "frieze",
+     "why": "drawn as \"frieze\""
+    }
+   ],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 15,
+    "newRead": 2,
+    "bySource": {
+     "own-read": 13,
+     "missing": 2,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012169218",
+   "address": "Herengracht 54",
+   "order": 17,
+   "fields": {
+    "crown": {
+     "value": "cornice",
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec fronts/0/gable (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    },
+    "eavesM": {
+     "value": 2.4,
+     "source": "survey",
+     "confidence": 0.2,
+     "ref": "bag-tiles 3DBAG eaves"
+    },
+    "facadeYear": {
+     "value": 1850,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "storeys",
+    "bays",
+    "cornice",
+    "roofStorey",
+    "dormers",
+    "heads",
+    "windows",
+    "windowSurround",
+    "wallFinish",
+    "wallColour",
+    "whiteFrames",
+    "ground",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "0363100012169218",
+     "source": "single",
+     "faceMembers": [
+      "0363100012169218"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 3,
+    "newRead": 14,
+    "bySource": {
+     "missing": 14,
+     "register": 2,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012169272",
+   "address": "Herengracht 50–52",
+   "order": 18,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.5,
+     "ref": "belt look belt-herengracht-169272/s1"
+    },
+    "bays": {
+     "value": 7,
+     "source": "own-read",
+     "confidence": 0.5,
+     "ref": "belt look belt-herengracht-169272/s1"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.7,
+     "ref": "belt photo-reads (opus (cut))",
+     "agree": [
+      "own-read",
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "attic-frieze",
+     "source": "own-read",
+     "confidence": 0.7,
+     "ref": "belt photo-reads (opus (cut))",
+     "agree": [
+      "own-read"
+     ]
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.5,
+     "ref": "belt look belt-herengracht-169272/s1"
+    },
+    "wallFinish": {
+     "value": "paint",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "belt photo-reads (opus (cut))",
+     "others": [
+      {
+       "value": "brick",
+       "source": "own-read",
+       "ref": "belt look belt-herengracht-169272/s1"
+      }
+     ]
+    },
+    "wallColour": {
+     "value": "purple-brown-brick",
+     "source": "own-read",
+     "confidence": 0.65,
+     "ref": "belt photo-reads (opus (cut))",
+     "others": [
+      {
+       "value": "#705a4e",
+       "source": "own-read",
+       "ref": "belt look belt-herengracht-169272/s1"
+      }
+     ]
+    },
+    "whiteFrames": {
+     "value": false,
+     "source": "own-read",
+     "confidence": 0.5,
+     "ref": "belt look belt-herengracht-169272/s1"
+    },
+    "eavesM": {
+     "value": 15.84,
+     "source": "survey",
+     "confidence": 0.75,
+     "ref": "AHN front band p90 (n 116)",
+     "agree": [
+      "period-default"
+     ],
+     "others": [
+      {
+       "value": 9.6,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1812,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "dormers",
+    "heads",
+    "windows",
+    "windowSurround",
+    "ground",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6373",
+     "source": "ordekaart",
+     "share": 0.715,
+     "orde": "1",
+     "architect": null,
+     "year": 1979,
+     "faceMembers": [
+      "0363100012169272"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "cornice",
+     "value": "attic-frieze",
+     "drawnAs": "frieze",
+     "why": "drawn as \"frieze\""
+    }
+   ],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 10,
+    "newRead": 7,
+    "bySource": {
+     "own-read": 8,
+     "missing": 7,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012169270",
+   "address": "Herengracht 48",
+   "order": 19,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "cornice": {
+     "value": "heavy",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "heads": {
+     "value": "segmental",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "windows": {
+     "value": "t-window",
+     "source": "reviewed",
+     "confidence": 0.95,
+     "ref": "scripts/house-specs/rows/reviewed.json: lane D, the belt D1 cut belt-20261114/cuts/0363100012169270.jpg (house rows round 5)",
+     "others": [
+      {
+       "value": "tall-upper",
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+      }
+     ]
+    },
+    "windowSurround": {
+     "value": "full-frame",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "wallFinish": {
+     "value": "stucco",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "whiteFrames": {
+     "value": false,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 0
+     },
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "stoop": {
+     "value": "stoop",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+    },
+    "eavesM": {
+     "value": 18.66,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-26-46: the cut's wall height",
+     "others": [
+      {
+       "value": 6.8,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6381",
+     "source": "ordekaart",
+     "share": 0.947,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012169270",
+      "0363100012179667",
+      "0363100012179669"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 15,
+    "newRead": 2,
+    "bySource": {
+     "own-read": 13,
+     "reviewed": 1,
+     "missing": 2,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179667",
+   "address": "Herengracht 46",
+   "order": 20,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
+    },
+    "crown": {
+     "value": "neck",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "roofStorey": {
+     "value": "gable-attic",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 0,
+      "surround": true
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
+    },
+    "eavesM": {
+     "value": 14.87,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-26-46: the cut's wall height",
+     "others": [
+      {
+       "value": 10.6,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1712,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "cornice",
+    "wallColour",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6381",
+     "source": "ordekaart",
+     "share": 0.976,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012169270",
+      "0363100012179667",
+      "0363100012179669"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 14,
+    "newRead": 3,
+    "bySource": {
+     "own-read": 12,
+     "missing": 3,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179669",
+   "address": "Herengracht 44",
+   "order": 21,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg"
+    },
+    "crown": {
+     "value": "neck",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "roofStorey": {
+     "value": "gable-attic",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg"
+    },
+    "wallFinish": {
+     "value": "painted-brick",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 0
+     },
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179669.jpg"
+    },
+    "eavesM": {
+     "value": 10.96,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-26-46: the cut's wall height",
+     "others": [
+      {
+       "value": 7.3,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1712,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "cornice",
+    "wallColour",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6381",
+     "source": "ordekaart",
+     "share": 0.895,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012169270",
+      "0363100012179667",
+      "0363100012179669"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 14,
+    "newRead": 3,
+    "bySource": {
+     "own-read": 12,
+     "missing": 3,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179670",
+   "address": "Herengracht 42",
+   "order": 22,
+   "fields": {
+    "storeys": {
+     "value": 5,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179670.jpg"
+    },
+    "bays": {
+     "value": 2,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179670.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec fronts/0/gable (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179670.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179670.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179670.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179670.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179670.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179670.jpg"
+    },
+    "eavesM": {
+     "value": 15.33,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-26-46: the cut's wall height",
+     "others": [
+      {
+       "value": 4.3,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1762,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "cornice",
+    "roofStorey",
+    "dormers",
+    "wallColour",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6160",
+     "source": "ordekaart",
+     "share": 0.906,
+     "orde": "2",
+     "architect": null,
+     "year": 1870,
+     "faceMembers": [
+      "0363100012179670"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 11,
+    "newRead": 6,
+    "bySource": {
+     "own-read": 8,
+     "register": 2,
+     "missing": 6,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179668",
+   "address": "Herengracht 40",
+   "order": 23,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg"
+    },
+    "bays": {
+     "value": 5,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "attic-frieze",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg",
+     "others": [
+      {
+       "value": "bracketed",
+       "source": "register",
+       "ref": "monument-facts rce:1708"
+      }
+     ]
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg"
+    },
+    "wallFinish": {
+     "value": "stucco",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg",
+     "others": [
+      {
+       "value": "stone",
+       "source": "register",
+       "ref": "monument-facts rce:1708"
+      }
+     ]
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg"
+    },
+    "eavesM": {
+     "value": 21.36,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-26-46: the cut's wall height",
+     "others": [
+      {
+       "value": 13,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1787,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "ground",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7394",
+     "source": "ordekaart",
+     "share": 0.67,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012179668",
+      "0363100012179671",
+      "0363100012179684"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "cornice",
+     "value": "attic-frieze",
+     "drawnAs": "frieze",
+     "why": "drawn as \"frieze\""
+    },
+    {
+     "field": "wallColour",
+     "why": "palette: register finish stone (no wallMaterial for a stone front)",
+     "gapId": "palette-d3118b64"
+    }
+   ],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 13,
+    "newRead": 4,
+    "bySource": {
+     "own-read": 11,
+     "missing": 4,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179671",
+   "address": "Herengracht 38",
+   "order": 24,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg"
+    },
+    "crown": {
+     "value": "step",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg"
+    },
+    "roofStorey": {
+     "value": "gable-attic",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg"
+    },
+    "heads": {
+     "value": "relieving",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179671.jpg",
+     "others": [
+      {
+       "value": "shop",
+       "source": "register",
+       "ref": "monument-facts rce:1707"
+      }
+     ]
+    },
+    "stoop": {
+     "value": "stoop",
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec fronts/0/basement (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    },
+    "eavesM": {
+     "value": 12.16,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-26-46: the cut's wall height",
+     "others": [
+      {
+       "value": 6.8,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1612,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "cornice",
+    "wallColour",
+    "door"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7394",
+     "source": "ordekaart",
+     "share": 0.988,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012179668",
+      "0363100012179671",
+      "0363100012179684"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 14,
+    "newRead": 3,
+    "bySource": {
+     "own-read": 11,
+     "missing": 3,
+     "register": 2,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179684",
+   "address": "Herengracht 36",
+   "order": 25,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/storeys (streetlevel-measured: house-specs extract)",
+     "agree": [
+      "own-read"
+     ]
+    },
+    "bays": {
+     "value": 3,
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/bays (streetlevel-measured: house-specs extract)",
+     "agree": [
+      "own-read"
+     ]
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/gable (streetlevel-measured: house-specs extract)",
+     "agree": [
+      "own-read"
+     ]
+    },
+    "cornice": {
+     "value": "frieze",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/cornice (streetlevel-measured: house-specs extract)",
+     "agree": [
+      "own-read"
+     ]
+    },
+    "roofStorey": {
+     "value": "dormers",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179684.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 1,
+      "kind": "gabled"
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179684.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179684.jpg"
+    },
+    "windows": {
+     "value": "t-window",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/windows (streetlevel-measured: house-specs extract)",
+     "others": [
+      {
+       "value": "tall-upper",
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179684.jpg"
+      }
+     ]
+    },
+    "windowSurround": {
+     "value": "sill",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/windowSurround (streetlevel-measured: house-specs extract)",
+     "others": [
+      {
+       "value": "none",
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179684.jpg"
+      }
+     ]
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179684.jpg"
+    },
+    "wallColour": {
+     "value": "#a4886f",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec palette/brick (streetlevel-measured: house-specs extract)"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec palette/frame (streetlevel-measured: house-specs extract)",
+     "agree": [
+      "own-read"
+     ]
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179684.jpg"
+    },
+    "door": {
+     "value": 0,
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/doorBay (streetlevel-measured: house-specs extract)"
+    },
+    "stoop": {
+     "value": "none",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec fronts/0/basement (streetlevel-measured: house-specs extract)"
+    },
+    "eavesM": {
+     "value": 12.7,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-26-46: the cut's wall height",
+     "others": [
+      {
+       "value": 1,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7394",
+     "source": "ordekaart",
+     "share": 0.809,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012179668",
+      "0363100012179671",
+      "0363100012179684"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "dormers",
+     "value": {
+      "count": 1,
+      "kind": "gabled"
+     },
+     "drawnAs": null,
+     "why": "held: no compiler draws this read yet"
+    }
+   ],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 16,
+    "newRead": 1,
+    "bySource": {
+     "face-intent": 10,
+     "own-read": 5,
+     "survey": 1,
+     "missing": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168139",
+   "address": "Herengracht 34",
+   "order": 26,
+   "fields": {
+    "eavesM": {
+     "value": 4.1,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "bag-tiles 3DBAG eaves"
+    },
+    "facadeYear": {
+     "value": 1812,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "storeys",
+    "bays",
+    "crown",
+    "cornice",
+    "roofStorey",
+    "dormers",
+    "heads",
+    "windows",
+    "windowSurround",
+    "wallFinish",
+    "wallColour",
+    "whiteFrames",
+    "ground",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "0363100012168139",
+     "source": "single",
+     "faceMembers": [
+      "0363100012168139"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 2,
+    "newRead": 15,
+    "bySource": {
+     "missing": 15,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168069",
+   "address": "Herengracht 32",
+   "order": 27,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "frieze",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "whiteFrames": {
+     "value": false,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 2
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
+    },
+    "eavesM": {
+     "value": 14.7,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-26-46: the cut's wall height",
+     "others": [
+      {
+       "value": 9.2,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1812,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6399",
+     "source": "ordekaart",
+     "share": 0.998,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012168069",
+      "0363100012168138",
+      "0363100012179837",
+      "0363100012179836",
+      "0363100012179838"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 15,
+    "newRead": 2,
+    "bySource": {
+     "own-read": 13,
+     "missing": 2,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168138",
+   "address": "Herengracht 30",
+   "order": 28,
+   "fields": {
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168138.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168138.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168138.jpg"
+    },
+    "eavesM": {
+     "value": 14.87,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-26-46: the cut's wall height",
+     "others": [
+      {
+       "value": 12.2,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "storeys",
+    "bays",
+    "crown",
+    "cornice",
+    "roofStorey",
+    "dormers",
+    "windows",
+    "windowSurround",
+    "wallColour",
+    "whiteFrames",
+    "door",
+    "stoop",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6399",
+     "source": "ordekaart",
+     "share": 1,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012168069",
+      "0363100012168138",
+      "0363100012179837",
+      "0363100012179836",
+      "0363100012179838"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 4,
+    "newRead": 13,
+    "bySource": {
+     "missing": 13,
+     "own-read": 3,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179837",
+   "address": "Herengracht 28",
+   "order": 29,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179837.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179837.jpg"
+    },
+    "crown": {
+     "value": "neck",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179837.jpg",
+     "others": [
+      {
+       "value": "cornice",
+       "source": "register",
+       "ref": "house-spec fronts/0/gable (monument-text: house-specs extract)"
+      },
+      {
+       "value": "cornice",
+       "source": "register",
+       "ref": "monument-facts rce:1703,1704"
+      }
+     ]
+    },
+    "cornice": {
+     "value": "bracketed",
+     "source": "register",
+     "confidence": 0.6,
+     "ref": "monument-facts rce:1703,1704"
+    },
+    "roofStorey": {
+     "value": "gable-attic",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179837.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179837.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179837.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179837.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179837.jpg"
+    },
+    "wallFinish": {
+     "value": "painted-brick",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179837.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179837.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179837.jpg"
+    },
+    "eavesM": {
+     "value": 13.44,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-26-46: the cut's wall height",
+     "others": [
+      {
+       "value": 4.6,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1737,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6399",
+     "source": "ordekaart",
+     "share": 0.923,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012168069",
+      "0363100012168138",
+      "0363100012179837",
+      "0363100012179836",
+      "0363100012179838"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "crown",
+     "why": "crown: the register names 28 a cornice front; the read and the cut show a neck gable with a segmental cap: the read is drawn",
+     "gapId": "crown-e047fa13"
+    }
+   ],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 14,
+    "newRead": 3,
+    "bySource": {
+     "own-read": 11,
+     "register": 2,
+     "missing": 3,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179836",
+   "address": "Herengracht 26",
+   "order": 30,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "cornice": {
+     "value": "attic-frieze",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 0,
+      "surround": true
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "stoop": {
+     "value": "stoop-and-windows",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
+    },
+    "eavesM": {
+     "value": 15.45,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-26-46: the cut's wall height",
+     "others": [
+      {
+       "value": 3.1,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "dormers",
+    "wallColour",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6399",
+     "source": "ordekaart",
+     "share": 0.697,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012168069",
+      "0363100012168138",
+      "0363100012179837",
+      "0363100012179836",
+      "0363100012179838"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "cornice",
+     "value": "attic-frieze",
+     "drawnAs": "frieze",
+     "why": "drawn as \"frieze\""
+    }
+   ],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 14,
+    "newRead": 3,
+    "bySource": {
+     "own-read": 13,
+     "missing": 3,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179838",
+   "address": "Herengracht 24",
+   "order": 31,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "bays": {
+     "value": 2,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "cornice": {
+     "value": "simple",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg",
+     "others": [
+      {
+       "value": "bracketed",
+       "source": "register",
+       "ref": "monument-facts rce:1702"
+      }
+     ]
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 1
+     },
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179838.jpg"
+    },
+    "eavesM": {
+     "value": 13.52,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-2-24: the cut's wall height",
+     "others": [
+      {
+       "value": 11.1,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1750,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6399",
+     "source": "ordekaart",
+     "share": 0.916,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012168069",
+      "0363100012168138",
+      "0363100012179837",
+      "0363100012179836",
+      "0363100012179838"
+     ]
+    },
+    "readSameAs": {
+     "side": "right",
+     "pandIds": [
+      "0363100012179752"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 15,
+    "newRead": 2,
+    "bySource": {
+     "own-read": 13,
+     "missing": 2,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179752",
+   "address": "Herengracht 22",
+   "order": 32,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg"
+    },
+    "cornice": {
+     "value": "frieze",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg",
+     "others": [
+      {
+       "value": "bracketed",
+       "source": "register",
+       "ref": "monument-facts rce:1701"
+      }
+     ]
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg"
+    },
+    "windows": {
+     "value": "sash-small-panes",
+     "source": "reviewed",
+     "confidence": 0.95,
+     "ref": "scripts/house-specs/rows/reviewed.json: lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+     "others": [
+      {
+       "value": "tall-upper",
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg"
+      }
+     ]
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg"
+    },
+    "whiteFrames": {
+     "value": false,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179752.jpg"
+    },
+    "eavesM": {
+     "value": 12.92,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-2-24: the cut's wall height",
+     "others": [
+      {
+       "value": 2.7,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1750,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "0363100012179752",
+     "source": "single",
+     "faceMembers": [
+      "0363100012179752"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 14,
+    "newRead": 3,
+    "bySource": {
+     "own-read": 11,
+     "reviewed": 1,
+     "missing": 3,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179753",
+   "address": "Herengracht 20",
+   "order": 33,
+   "fields": {
+    "storeys": {
+     "value": 6,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg"
+    },
+    "crown": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg"
+    },
+    "cornice": {
+     "value": "simple",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg"
+    },
+    "windows": {
+     "value": "sash-small-panes",
+     "source": "reviewed",
+     "confidence": 0.95,
+     "ref": "scripts/house-specs/rows/reviewed.json: lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+     "others": [
+      {
+       "value": "tall-upper",
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg"
+      }
+     ]
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg"
+    },
+    "ground": {
+     "value": "shop",
+     "source": "register",
+     "confidence": 0.55,
+     "ref": "monument-facts rce:1700"
+    },
+    "stoop": {
+     "value": "stoop",
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec fronts/0/basement (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    },
+    "eavesM": {
+     "value": 18.95,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-2-24: the cut's wall height",
+     "others": [
+      {
+       "value": 6,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "door",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7402",
+     "source": "ordekaart",
+     "share": 0.813,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012179753",
+      "0363100012179760",
+      "0363100012179761",
+      "0363100012179764",
+      "0363100012179765",
+      "0363100012179833",
+      "0363100012179834",
+      "0363100100091828"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 14,
+    "newRead": 3,
+    "bySource": {
+     "own-read": 10,
+     "reviewed": 1,
+     "missing": 3,
+     "register": 2,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179760",
+   "address": "Herengracht 18",
+   "order": 34,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg"
+    },
+    "bays": {
+     "value": 2,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "simple",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg",
+     "others": [
+      {
+       "value": "bracketed",
+       "source": "register",
+       "ref": "monument-facts rce:1699"
+      }
+     ]
+    },
+    "roofStorey": {
+     "value": "dormers",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 2,
+      "kind": "plain"
+     },
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg"
+    },
+    "windows": {
+     "value": "t-window",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg"
+    },
+    "wallFinish": {
+     "value": "painted-brick",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 1,
+      "surround": true
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg",
+     "others": [
+      {
+       "value": {
+        "surround": true
+       },
+       "source": "register",
+       "ref": "monument-facts rce:1699"
+      }
+     ]
+    },
+    "stoop": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179760.jpg"
+    },
+    "eavesM": {
+     "value": 12.38,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-2-24: the cut's wall height",
+     "others": [
+      {
+       "value": 7.4,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1800,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "wallColour"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7402",
+     "source": "ordekaart",
+     "share": 1,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012179753",
+      "0363100012179760",
+      "0363100012179761",
+      "0363100012179764",
+      "0363100012179765",
+      "0363100012179833",
+      "0363100012179834",
+      "0363100100091828"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "dormers",
+     "value": {
+      "count": 2,
+      "kind": "plain"
+     },
+     "drawnAs": null,
+     "why": "held: no compiler draws this read yet"
+    },
+    {
+     "field": "roofStorey",
+     "why": "roof: 18: a steep hipped tiled roof with two small roof lights behind the cornice; the kit has no hipped roof storey (mansard, attic, none), so none is drawn",
+     "gapId": "roof-d0d6abb5"
+    }
+   ],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 16,
+    "newRead": 1,
+    "bySource": {
+     "own-read": 14,
+     "missing": 1,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179761",
+   "address": "Herengracht 16",
+   "order": 35,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg"
+    },
+    "crown": {
+     "value": "neck",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "roofStorey": {
+     "value": "gable-attic",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179761.jpg"
+    },
+    "eavesM": {
+     "value": 12.39,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-2-24: the cut's wall height",
+     "others": [
+      {
+       "value": 8.7,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1737,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "cornice",
+    "wallColour",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7402",
+     "source": "ordekaart",
+     "share": 0.987,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012179753",
+      "0363100012179760",
+      "0363100012179761",
+      "0363100012179764",
+      "0363100012179765",
+      "0363100012179833",
+      "0363100012179834",
+      "0363100100091828"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 14,
+    "newRead": 3,
+    "bySource": {
+     "own-read": 12,
+     "missing": 3,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179764",
+   "address": "Herengracht 14",
+   "order": 36,
+   "fields": {
+    "crown": {
+     "value": "cornice",
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec fronts/0/gable (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    },
+    "wallFinish": {
+     "value": "stone",
+     "source": "register",
+     "confidence": 0.7,
+     "ref": "monument-facts rce:1697"
+    },
+    "eavesM": {
+     "value": 3.7,
+     "source": "survey",
+     "confidence": 0.2,
+     "ref": "bag-tiles 3DBAG eaves"
+    },
+    "facadeYear": {
+     "value": 1762,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "storeys",
+    "bays",
+    "cornice",
+    "roofStorey",
+    "dormers",
+    "heads",
+    "windows",
+    "windowSurround",
+    "wallColour",
+    "whiteFrames",
+    "ground",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7402",
+     "source": "ordekaart",
+     "share": 0.998,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012179753",
+      "0363100012179760",
+      "0363100012179761",
+      "0363100012179764",
+      "0363100012179765",
+      "0363100012179833",
+      "0363100012179834",
+      "0363100100091828"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "wallFinish",
+     "value": "stone",
+     "drawnAs": "stucco",
+     "why": "drawn as \"stucco\""
+    },
+    {
+     "field": "wallColour",
+     "why": "palette: register finish stone (no wallMaterial for a stone front)",
+     "gapId": "palette-d3118b64"
+    }
+   ],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 4,
+    "newRead": 13,
+    "bySource": {
+     "missing": 13,
+     "register": 3,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179765",
+   "address": "Herengracht 12",
+   "order": 37,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg"
+    },
+    "windows": {
+     "value": "tall-upper",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg",
+     "others": [
+      {
+       "value": "shop",
+       "source": "register",
+       "ref": "monument-facts rce:1696"
+      }
+     ]
+    },
+    "door": {
+     "value": {
+      "bay": 0
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg"
+    },
+    "stoop": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg"
+    },
+    "eavesM": {
+     "value": 17.4,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-2-24: the cut's wall height",
+     "others": [
+      {
+       "value": 5.6,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1712,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "cornice",
+    "roofStorey",
+    "dormers",
+    "wallColour"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7402",
+     "source": "ordekaart",
+     "share": 0.983,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012179753",
+      "0363100012179760",
+      "0363100012179761",
+      "0363100012179764",
+      "0363100012179765",
+      "0363100012179833",
+      "0363100012179834",
+      "0363100100091828"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 13,
+    "newRead": 4,
+    "bySource": {
+     "own-read": 11,
+     "missing": 4,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179763",
+   "address": "Herengracht 10",
+   "order": 38,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg"
+    },
+    "bays": {
+     "value": 4,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg",
+     "agree": [
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "frieze",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg"
+    },
+    "windows": {
+     "value": "sash-small-panes",
+     "source": "reviewed",
+     "confidence": 0.95,
+     "ref": "scripts/house-specs/rows/reviewed.json: lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+     "others": [
+      {
+       "value": "tall-upper",
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg"
+      }
+     ]
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg"
+    },
+    "wallFinish": {
+     "value": "painted-brick",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg"
+    },
+    "door": {
+     "value": {
+      "bay": 1,
+      "surround": true
+     },
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179763.jpg",
+     "others": [
+      {
+       "value": {
+        "surround": true
+       },
+       "source": "register",
+       "ref": "monument-facts rce:1695"
+      }
+     ]
+    },
+    "eavesM": {
+     "value": 15.58,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-2-24: the cut's wall height",
+     "others": [
+      {
+       "value": 3.2,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    },
+    "facadeYear": {
+     "value": 1762,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "0363100012179763",
+     "source": "single",
+     "faceMembers": [
+      "0363100012179763"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "roofStorey",
+     "why": "roof: 10: a grey box over the cornice is the pand's own roof mass from the world chunk (3DBAG roof to 18.5 m over a 15.58 m wall), not the record; the cut does not show it",
+     "gapId": "roof-6641b7d7"
+    }
+   ],
+   "specParts": [
+    "published"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 15,
+    "newRead": 2,
+    "bySource": {
+     "own-read": 12,
+     "reviewed": 1,
+     "missing": 2,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179833",
+   "address": "Herengracht 8",
+   "order": 39,
+   "fields": {
+    "eavesM": {
+     "value": 18.95,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-2-24: the cut's wall height",
+     "others": [
+      {
+       "value": 18.4,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "storeys",
+    "bays",
+    "crown",
+    "cornice",
+    "roofStorey",
+    "dormers",
+    "heads",
+    "windows",
+    "windowSurround",
+    "wallFinish",
+    "wallColour",
+    "whiteFrames",
+    "ground",
+    "door",
+    "stoop",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7402",
+     "source": "ordekaart",
+     "share": 0.999,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012179753",
+      "0363100012179760",
+      "0363100012179761",
+      "0363100012179764",
+      "0363100012179765",
+      "0363100012179833",
+      "0363100012179834",
+      "0363100100091828"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 1,
+    "newRead": 16,
+    "bySource": {
+     "missing": 16,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012179834",
+   "address": "Herengracht 6",
+   "order": 40,
+   "fields": {
+    "eavesM": {
+     "value": 19.03,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-2-24: the cut's wall height",
+     "others": [
+      {
+       "value": 18.3,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "storeys",
+    "bays",
+    "crown",
+    "cornice",
+    "roofStorey",
+    "dormers",
+    "heads",
+    "windows",
+    "windowSurround",
+    "wallFinish",
+    "wallColour",
+    "whiteFrames",
+    "ground",
+    "door",
+    "stoop",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7402",
+     "source": "ordekaart",
+     "share": 0.998,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012179753",
+      "0363100012179760",
+      "0363100012179761",
+      "0363100012179764",
+      "0363100012179765",
+      "0363100012179833",
+      "0363100012179834",
+      "0363100100091828"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 1,
+    "newRead": 16,
+    "bySource": {
+     "missing": 16,
+     "survey": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100100091828",
+   "address": "Herengracht 2–4",
+   "order": 41,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+    },
+    "bays": {
+     "value": 3,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+    },
+    "cornice": {
+     "value": "frieze",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+    },
+    "windows": {
+     "value": "sash-small-panes",
+     "source": "reviewed",
+     "confidence": 0.95,
+     "ref": "scripts/house-specs/rows/reviewed.json: lane D belt fix 2, the cut re-read against the integrator's 2-24 and 25-49 review (2026-11-15)",
+     "others": [
+      {
+       "value": "tall-upper",
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+      }
+     ]
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "own-read",
+     "confidence": 0.6,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+    },
+    "ground": {
+     "value": "shopfront",
+     "source": "own-read",
+     "confidence": 0.4,
+     "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168202.jpg"
+    },
+    "eavesM": {
+     "value": 12.75,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-2-24: the cut's wall height",
+     "others": [
+      {
+       "value": 9.5,
+       "source": "survey",
+       "ref": "bag-tiles 3DBAG eaves"
+      }
+     ]
+    }
+   },
+   "missing": [
+    "wallColour",
+    "door",
+    "stoop",
+    "facadeYear"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7402",
+     "source": "ordekaart",
+     "share": 0.891,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012179753",
+      "0363100012179760",
+      "0363100012179761",
+      "0363100012179764",
+      "0363100012179765",
+      "0363100012179833",
+      "0363100012179834",
+      "0363100100091828"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 13,
+    "newRead": 4,
+    "bySource": {
+     "own-read": 11,
+     "reviewed": 1,
+     "missing": 4,
+     "survey": 1
+    }
+   }
+  }
+ ]
+}

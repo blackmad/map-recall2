@@ -7,7 +7,7 @@ import { SWATCHES } from '../../src/canalRecall/buildingRecipe/intent.ts';
 import { validateBlockFace } from '../../src/canalRecall/blockFace/intent.ts';
 import { registerFactsFromExtract } from '../../src/canalRecall/facade/registerRecipe.ts';
 import { fromBlockFace, fromRecipeIntent, fromRegisterFacts } from '../../src/canalRecall/houseSpec/adapters.ts';
-import { fieldSources, resolveSpecs, strongestSource } from '../../src/canalRecall/houseSpec/resolve.ts';
+import { applyBasedOn, fieldSources, resolveSpecs, strongestSource } from '../../src/canalRecall/houseSpec/resolve.ts';
 import { frontBays, specFields, validateSpec, type HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { recipeOptIn, toRecipe, withRoute } from '../../src/canalRecall/houseSpec/toRecipe.ts';
 import { specView } from '../../src/canalRecall/houseSpec/view.ts';
@@ -120,6 +120,10 @@ const resolved = new Map<string, HouseSpec>();
 // The recipe route is opt-in (toRecipe.ts withRoute): a pand drawn by an installed house or a block face, or a spec that says
 // route recipe, keeps it; every other complete spec (the describer's, the register's) is generic and gets no per-house GLB.
 for (const [pand, list] of [...parts].sort(([a], [b]) => (a < b ? -1 : 1))) resolved.set(pand, withRoute(resolveSpecs(list), recipeOptIn(list, installedPands.has(pand))));
+// R4 (belt review lane C): a spec with `basedOn` takes its base's resolved design under its own fields (resolve.ts
+// applyBasedOn). Bases are looked up as resolved from their own parts; a cycle, a deep chain or a missing base fails the build.
+const ownResolved = new Map(resolved);
+for (const [pand, spec] of ownResolved) if (spec.basedOn) resolved.set(pand, withRoute(applyBasedOn(spec, id => ownResolved.get(id)), recipeOptIn(parts.get(pand)!, installedPands.has(pand))));
 
 const emitDir = argValue('--emit-intents');
 if (emitDir) {

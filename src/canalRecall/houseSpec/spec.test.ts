@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { SOURCE_STRENGTH, isStrongerSource } from '../facade/evidence.ts';
 import { validateIntent, type CanalHouseIntent } from '../buildingRecipe/intent.ts';
 import { drawableDesign, emptySpec, frontBays, provenanceOf, specFields, specProblems, specStrength, validateSpec, type HouseSpec, type Prov } from './spec.ts';
-import { fieldSources, resolveSpecs } from './resolve.ts';
+import { applyBasedOn, basedOnChain, fieldSources, resolveSpecs } from './resolve.ts';
 import { toRecipe, toRecipeReport, withRoute } from './toRecipe.ts';
 import { specView, specViewIgnored } from './view.ts';
 import { fromRecipeIntent } from './adapters.ts';
@@ -174,4 +174,69 @@ test('intentSources: receipts whose refs share the first 60 characters become on
   const ids = intent.sources.map(s => s.id);
   assert.equal(new Set(ids).size, ids.length, 'source ids are unique (the compiler refuses duplicate observations)');
   assert.equal(ids.length, 1);
+});
+
+// --- R4 basedOn (belt review lane C, 2026-11-20) -------------------------------------------------------------------
+const pid = (n: number) => `03631000121${String(n).padStart(5, '0')}`;
+const specOf = (id: string, fields: Record<string, unknown>, p: Prov, extra: Partial<HouseSpec> = {}): HouseSpec => ({ ...part(fields, p), pandId: id, ...extra });
+
+test('basedOn: the base design fills absent and default fields at based-on; the house keeps its own reads', () => {
+  const A = pid(1), B = pid(2);
+  const base = specOf(A, { 'fronts/0/gable': 'neck', 'fronts/0/bays': 3, 'fronts/0/storeys': 4, 'palette/brick': '#7a4a3a', 'roof/material': 'slate', 'facts/facadeYear': 1690 }, prov('streetlevel-measured', 0.85, '2023-05-01', 'faces/x/strip.json'), { schemaLimits: [{ component: 'gable', what: 'scrolls' }] });
+  const own = specOf(B, { 'fronts/0/storeys': 5, 'facts/facadeYear': 1700 }, prov('monument-text', 0.8, null, 'rce:9'));
+  own.design.fronts![0].bays = 2; own.provenance['fronts/0/bays'] = prov('default', 0.3, null, 'era');
+  own.basedOn = { pandId: A, overrides: { fronts: [{ gable: 'bell' }] }, ref: 'belt-review pin 1' };
+  assert.deepEqual(specProblems(own), []);
+  const out = applyBasedOn(own, id => (id === A ? base : undefined));
+  const f = out.design.fronts![0];
+  assert.equal(f.storeys, 5, 'own monument-text read beats the base');
+  assert.equal(f.bays, 3, 'a default field takes the base');
+  assert.equal(f.gable, 'bell', 'overrides apply over the base');
+  assert.equal(out.design.palette?.brick, '#7a4a3a');
+  assert.equal(out.facts?.facadeYear, 1700, 'facts are not lent');
+  assert.equal(fieldSources(out)['fronts/0/bays'], 'based-on');
+  assert.equal(fieldSources(out)['fronts/0/storeys'], 'monument-text');
+  assert.match(provenanceOf(out, 'fronts/0/bays')!.ref, new RegExp(`^based-on ${A}: streetlevel-measured`));
+  assert.match(provenanceOf(out, 'fronts/0/gable')!.ref, new RegExp(`based-on ${A} overrides: belt-review pin 1`));
+  assert.equal(provenanceOf(out, 'fronts/0/gable')!.confidence, 0.8);
+  assert.deepEqual(out.schemaLimits, [{ component: 'gable', what: 'scrolls' }], 'the base kit limits apply');
+  assert.deepEqual(out.basedOn, own.basedOn);
+  assert.deepEqual(specProblems(out), [], 'the merged spec validates (based-on is a spec source)');
+  assert.ok(specStrength('based-on') > specStrength('default') && specStrength('based-on') < specStrength('osm'));
+});
+
+test('basedOn: overrides merge like sameAs (object keys kept); a reviewed own field still wins', () => {
+  const A = pid(3), B = pid(4);
+  const base = specOf(A, { 'fronts/0/windowHead': { kind: 'flat', keystone: true }, 'fronts/0/gable': 'step' }, prov('reviewed', 0.9));
+  const own = specOf(B, { 'fronts/0/gable': 'spout' }, prov('reviewed', 0.9), { basedOn: { pandId: A, overrides: { fronts: [{ windowHead: { kind: 'round' } }] } } });
+  const out = applyBasedOn(own, id => (id === A ? base : undefined));
+  assert.deepEqual(out.design.fronts![0].windowHead, { kind: 'round', keystone: true });
+  assert.equal(out.design.fronts![0].gable, 'spout');
+});
+
+test('basedOn: chains resolve through the base; cycles, deep chains and missing bases are refused', () => {
+  const ids = [5, 6, 7, 8, 9, 10].map(pid);
+  const specs = new Map<string, HouseSpec>();
+  specs.set(ids[0], specOf(ids[0], { 'fronts/0/gable': 'neck' }, prov('reviewed')));
+  for (let i = 1; i < ids.length; i++) specs.set(ids[i], specOf(ids[i], {}, prov('default'), { basedOn: { pandId: ids[i - 1] } }));
+  const look = (id: string) => specs.get(id);
+  assert.equal(applyBasedOn(specs.get(ids[4])!, look).design.fronts![0].gable, 'neck', 'a chain of 4 resolves');
+  assert.deepEqual(basedOnChain(specs.get(ids[4])!, look), [ids[3], ids[2], ids[1], ids[0]]);
+  assert.throws(() => applyBasedOn(specs.get(ids[5])!, look), /deeper than 4/);
+  specs.get(ids[1])!.basedOn = { pandId: ids[3] };
+  assert.throws(() => applyBasedOn(specs.get(ids[3])!, look), /cycle/);
+  assert.throws(() => applyBasedOn(specOf(pid(11), {}, prov('default'), { basedOn: { pandId: pid(12) } }), look), /has no spec/);
+  const self = specOf(pid(13), {}, prov('default'), { basedOn: { pandId: pid(13) } });
+  assert.ok(specProblems(self).some(p => /based on itself/.test(p)));
+  const badOverride = specOf(pid(14), {}, prov('default'), { basedOn: { pandId: pid(15), overrides: { fronts: [{ gable: 'onion' as never }] } } });
+  assert.ok(specProblems(badOverride).some(p => p.startsWith('basedOn.overrides: fronts/0/gable')));
+});
+
+test('basedOn absent: applyBasedOn returns the same object and resolveSpecs output is unchanged', () => {
+  const s = part({ 'fronts/0/gable': 'bell', 'facts/facadeYear': 1750 }, prov('monument-text'));
+  assert.equal(applyBasedOn(s, () => { throw new Error('no lookup without basedOn'); }), s);
+  const out = resolveSpecs([s, part({ 'fronts/0/bays': 3 }, prov('vision-judge'))]);
+  assert.equal('basedOn' in out, false);
+  assert.equal(JSON.stringify(out), JSON.stringify(resolveSpecs([s, part({ 'fronts/0/bays': 3 }, prov('vision-judge'))])));
+  assert.deepEqual(Object.keys(out), ['schemaVersion', 'pandId', 'design', 'provenance', 'facts']);
 });
