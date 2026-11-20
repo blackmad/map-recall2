@@ -16,9 +16,9 @@
   "fascia": "#ffffff"
  },
  "lidl": {
-  "fascia": "#0050aa",
-  "letters": "#fff000",
-  "minAspect": 2
+  "fascia": "#d9dcdd",
+  "letters": "#0050aa",
+  "logoPanel": "#0050aa"
  },
  "aldi": {
   "fascia": "#00005f",

@@ -487,7 +487,10 @@ export type RetailFrontInput = {
    *  its word in that face. Absent: the bold sans. */
   faces?: number;
   /** Lane retail-real: a chain's board and letter colours and its name (lettered when it has no logo). */
-  chain?: { fascia: string; letters: string; word: string };
+  chain?: { fascia: string; letters: string; word: string;
+    /** Lane chain-logos2: the logo as a square lightbox panel of this colour at the end away from the door, its top
+     *  flush with the board's and hanging over the transom (Lidl). Absent: the logo on the board. */
+    panel?: string };
   /** Round 7 (`?retailBrand=1`): the chain's key in BRAND_STYLES (retailBrandStyles.ts), and the building's wall colour
    *  that shows behind letters on the wall. */
   brand?: string;
@@ -680,6 +683,14 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   if (onWall && word) {
     // Channel letters on the wall, standing a letter's depth proud of it, as tall as the band would have been.
     b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, 0.006 + FRONT.letterOutM, FRONT.fasciaM - 0.04, look.letters, wallHex, look.lit, input.letters);
+  } else if (input.logo && input.chain?.panel) {
+    // Lane chain-logos2 (Lidl; city panoramas recording_2025-07-14_08-27-06_00103, recording_2025-09-26_12-26-58_00326):
+    // a plain pale band, the square logo a lightbox about 1 m tall at the front's end, top flush with the board.
+    const S = Math.min(1.1, Math.max(0.8, top - doorHead(base, groundM) + 0.3)), wM = Math.min(s1 - s0 - 0.4, S * input.logo.aspect), hM = wM / input.logo.aspect;
+    const dr = retailDoor(input, s0, s1), right = !dr || dr.a0 + dr.a1 < s0 + s1;
+    const a0 = right ? s1 - 0.15 - wM : s0 + 0.15, o = FRONT.fasciaOutM + 0.14;
+    b.box(a0 - 0.02, a0 + wM + 0.02, FRONT.fasciaOutM, o, top - hM - 0.02, top, input.chain.panel, look.lit, true);
+    b.textured(a0, a0 + wM, o + 0.005, top - hM, top, input.logo.layer, input.logo.rect);
   } else if (input.logo) {
     // Lane retail-real: a square-ish mark (Lidl, Aldi, Vodafone, Burger King) is a lightbox larger than the board, as on
     // the street (centred on it, up to 0.95 m); a wordmark keeps to the board.

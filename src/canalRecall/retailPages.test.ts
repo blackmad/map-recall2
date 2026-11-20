@@ -63,7 +63,7 @@ test('chains: brand:wikidata or name picks the chain; the extract word round-tri
   assert.ok(REAL_ONLY_TEMPLATES.includes('tattoo') && REAL_ONLY_TEMPLATES.includes('snackbar'));
 });
 
-test('chain-logos2: own-front chains of a real-only type have a logo; a chain frame and awning reach the front; a widened mark fits the board', async () => {
+test('chain-logos2: own-front chains of a real-only type have a logo; a chain frame and awning reach the front; Lidl mark is a lightbox panel', async () => {
   const { CHAINS_OWN_FRONT } = await import('./retailChains.js');
   const { retailFrontTris } = await import('./retailFront.js');
   for (const k of ['new-york-pizza', 'domino-s', 'subway', 'de-pizzabakkers', 'pearle', 'odido', 'grapedistrict', 'gamma', 'blokker']) {
@@ -74,16 +74,21 @@ test('chain-logos2: own-front chains of a real-only type have a logo; a chain fr
   // Simon Meijssen's amber-glazed pilasters and brown awning (pano recording_2025-07-30_08-35-53_00865); its frieze is wide.
   const sm = RETAIL_CHAINS['simon-meijssen'];
   assert.equal(sm.frame, '#b5792c'); assert.equal(sm.awning, '#6b4636'); assert.ok(chainLogo('simon-meijssen')!.aspect > 6);
-  // Lidl's square mark is packed in a 2:1 cell, so it draws inside the 0.6 m board, not as a 0.95 m lightbox.
-  assert.ok(Math.abs(chainLogo('lidl')!.aspect - 2) < 0.05);
+  // Lidl: a plain pale band, the square mark a ~1 m lightbox at the end away from the door, top flush with the board.
+  assert.equal(RETAIL_CHAINS.lidl.logoPanel, '#0050aa'); assert.ok(Math.abs(chainLogo('lidl')!.aspect - 1) < 0.05);
   const g = globalThis as { __canalRecallRetailReal?: boolean }; g.__canalRecallRetailReal = true;
   try {
     const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: 1 }, l = chainLogo('lidl')!;
-    const base = { template: 'supermarket' as const, seed: 'lidl-fit', letters: 207, goods: 209, chain: { fascia: '#0050aa', letters: '#fff000', word: 'Lidl' } };
-    const tris = retailFrontTris({ ...base, logo: { layer: 300, rect: l.rect, aspect: l.aspect } }, e, 0, 6, 0, 3.2);
-    const logoZ = tris.filter(t => t.layer === 300).flatMap(t => t.p.map(p => p[2]));
-    const boardTop = Math.max(...tris.filter(t => t.hex === '#0050aa').flatMap(t => t.p.map(p => p[2])));
-    assert.ok(Math.max(...logoZ) <= boardTop + 1e-6, `logo top ${Math.max(...logoZ)} under the board top ${boardTop}`);
+    const base = { template: 'supermarket' as const, seed: 'lidl-fit', letters: 207, goods: 209, logo: { layer: 300, rect: l.rect, aspect: l.aspect } };
+    const tris = retailFrontTris({ ...base, chain: { fascia: '#d9dcdd', letters: '#0050aa', word: 'Lidl', panel: '#0050aa' } }, e, 0, 6, 0, 3.2);
+    const logoZ = tris.filter(t => t.layer === 300).flatMap(t => t.p.map(p => p[2])), logoA = tris.filter(t => t.layer === 300).flatMap(t => t.p.map(p => p[0]));
+    const boardTop = Math.max(...tris.filter(t => t.hex === '#d9dcdd').flatMap(t => t.p.map(p => p[2])));
+    const h = Math.max(...logoZ) - Math.min(...logoZ);
+    assert.ok(Math.abs(Math.max(...logoZ) - boardTop) < 1e-6 && h >= 0.8 && h <= 1.1, `panel ${h.toFixed(2)} m, top ${Math.max(...logoZ)} vs board ${boardTop}`);
+    assert.ok(Math.min(...logoA) >= 0 && Math.max(...logoA) <= 6, 'inside the front');
+    // Without the panel the logo stays on the board (byte-identical path).
+    const plainLogo = retailFrontTris({ ...base, chain: { fascia: '#d9dcdd', letters: '#0050aa', word: 'Lidl' } }, e, 0, 6, 0, 3.2);
+    assert.ok(!plainLogo.some(t => t.hex === '#0050aa'));
     // Absent frame / awning: unchanged; present: the awning slope and frame take the chain's colours.
     const plain = retailFrontTris({ template: 'bakery', seed: 's', letters: 207 }, e, 0, 6, 0, 3.2);
     const dressed = retailFrontTris({ template: 'bakery', seed: 's', letters: 207, awning: sm.awning, frameHex: sm.frame }, e, 0, 6, 0, 3.2);

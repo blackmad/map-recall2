@@ -12,6 +12,9 @@ export type RetailChain = {
   /** Lane chain-logos2-20261120: the chain's own pui frame and awning colours (chain-overrides.json), drawn wherever the
    *  pand has no measured frame or awning of its own (Simon Meijssen's amber-glazed pilasters and brown awning). */
   frame?: string; awning?: string;
+  /** Lane chain-logos2 (Lidl, "make sign fit"): the logo is a square lightbox panel of this colour at the front's end,
+   *  flush with the board's top and hanging over the transom (about 1 m), on a plain board, as on Lidl's fronts. */
+  logoPanel?: string;
 };
 export const RETAIL_CHAINS: Record<string, RetailChain> = RETAIL_CHAINS_GEN as Record<string, RetailChain>;
 const byWikidata = new Map<string, string>(), byName = new Map<string, string>();
