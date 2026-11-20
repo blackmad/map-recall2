@@ -1,5 +1,5 @@
 {
-  "toolchain": "74914750b61f2c79eecd1defddd0adaacd30149539aa98bae5dbc79dc8064cf5",
+  "toolchain": "07f6593f18dad4123055b139065090642f648059077d596953583f959c72995d",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -365,7 +365,6 @@
     "park-centraal-stadhouderskade": "152d10e7f87190fd0e3af2af25579cf50ccb96beb5951a793ad9fe063cf302bf",
     "pathe-city": "bd941ab137713ab148e2c687d5b8708d6ebc54126fc08e5cc3954a4fd5749086",
     "pathe-de-munt": "cbd47153c01beed970a8c47c4719f08c27ce675d636aa6b8cdea286fe1bea839",
-    "pentagon": "b921e2b5137c7fc00fb7793d93e5fe1638d33350c1e2d67b5f892f598f407468",
     "perdu": "edd8eddf80f0f5d11a9522d446e71faa61f62344b186a1239ff646519eec7e9c",
     "petrus-en-paulus-kerk": "d9f6bb27ed99b39d79076e388eed5fee5015620029cda64ec6d0a8d502e2623d",
     "petruskerk": "4285bda63cd0f099fae9278a669f27c4834a6039359c361c32fe929a6bb7d80a",
@@ -431,6 +430,7 @@
     "sloterparkbad": "c0b1ccbdb8a1265a936983ad91a73e3f70e551780ef33827a3d71e5668357e49",
     "social-history": "17864020947311f211363753cd9b177d88c469d12f727f15b7a78aa91952d9db",
     "spanjemonument": "a1bca13aa1166c98529d7bc9bc8b43d9681f045044da862b0df5139a7f10728b",
+    "spiegelhof": "63faf3b122e7f743c2c18cd9e2411da812f9aa3f4fc672fe3ff4c9a3a1b7ebb1",
     "spinoza-standbeeld": "10a0739a6eda22a2f829497856d5015e507aec00e04623cbd2fd8fa22cd36db3",
     "splendor": "facedb77749677394ecfff3de987488498c70480bca5d8d14207ddd3e9d41dd1",
     "sportfondsenbad-oost": "de9b8fbf0a8b4d806177b926b16b26d4a0ef2b97d7b55848220b59dccc23b5ba",
