@@ -27,3 +27,7 @@ node --import tsx scripts/building-recipes/install-large.ts --house=valckenierst
 # da-costakade-146-236799 (blank-walls hold, round 3; rear ranges inferred): remove the id from held-installs.json, then
 node --import tsx scripts/building-recipes/install-large.ts --house=da-costakade-146-236799 --install \
   '--allow-inferred=0:unchanged from the shipped recipe (w01-248L 2019-12-09), not refit in this lane;3:unchanged from the shipped recipe (w01-248L 2019-12-09), not refit in this lane'
+
+# funenpark-427-184743 (backlog row 1, blank-side; round 3)
+node --import tsx scripts/building-recipes/install-large.ts --house=funenpark-427-184743 --install \
+  '--allow-inferred=0:shipped south front unchanged, crop 37 % foliage;1:shipped south front unchanged, crop 38 % foliage;2:shipped south front unchanged, crop 31 % foliage;3:shipped east arc unchanged, crop foliage;4:shipped east arc unchanged, crop washed out;5:shipped west front unchanged (w03-291);6:shipped west front unchanged, crop 26 % foliage;7:shipped west front unchanged, crop 26 % foliage;8:low west ranges from w09-286 and w14-281 2020-09-07, staggered double and single windows swapped by storey, read by hand;9:tall west range over the glazed ground from w05-272 right 2020-09-07, the auto judge compares a different part of the crop;10:punched block from w05-272 left 2020-09-07, small single windows read by hand;11:east railway glass screen from w11-92L, w10-94 and w15-92, camera too close for the judge'

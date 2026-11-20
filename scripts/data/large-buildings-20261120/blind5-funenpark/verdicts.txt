@@ -1,0 +1,13 @@
+Blind round 5, 2026-11-20: Funenpark (funenpark-427-184743) today vs restaged (walls[8..11] from straight crops,
+west brick #5e5250, measured house brick), one fresh Opus judge, photo | A | B (key.json), frames-funenpark.json poses.
+Result: new preferred 5 of 5 (four high, one medium). Today: blank orange slabs on every pair.
+
+pair1 fp-w09  new wins (high); flags new: some windows skewed near the near end; ground floor not legible
+pair2 fp-w05  new wins (high); flags new: upper-right block windows skewed; a wedge piece; no diagonal glazed canopy
+pair3 fp-w14  new wins (high); flags new: many windows skewed on the upper left and right
+pair4 fp-e11  new wins (medium); flags new: mullion fragments below the glass mass; brick plinth missing; lifted
+pair5 fp-e10  new wins (high); flags new: brick plinth missing, the mass raised off the ground (both renders)
+
+NOT at the bar (skew and float flags). Traced: the skewed windows are on a block north-west of the w14 pose, not on
+walls[8..11]; drawing the large unlisted faces as geometry (tried, +7,600 tris) left them, so it was reverted. The
+east screen hangs over a road the game terrain sinks under it; today's render does the same (ground lane).
