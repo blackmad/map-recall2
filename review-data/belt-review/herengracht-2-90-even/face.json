@@ -1,0 +1,786 @@
+{
+ "faceId": "herengracht-2-90-even",
+ "street": "Herengracht",
+ "side": "even",
+ "from": 2,
+ "to": 90,
+ "orderNote": "order runs left to right as seen from the street (scripts/belt-review/faceModel.ts faceOrder)",
+ "source": "PDOK BAG OGC API v2 (verblijfsobject + pand), CC0",
+ "fetchedAt": "2026-11-20",
+ "pands": [
+  {
+   "pandId": "0363100012175701",
+   "address": "Herengracht 90",
+   "order": 0,
+   "numbers": [
+    90
+   ],
+   "letters": [
+    "90A",
+    "90B",
+    "90C",
+    "90D",
+    "90E",
+    "90F"
+   ],
+   "built": 1630,
+   "units": 6,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012169010",
+   "address": "Herengracht 88",
+   "order": 1,
+   "numbers": [
+    88
+   ],
+   "letters": [
+    "88A",
+    "88B",
+    "88C",
+    "88D",
+    "88E",
+    "88F",
+    "88G"
+   ],
+   "built": 1880,
+   "units": 7,
+   "groundUses": [
+    "kantoorfunctie",
+    "bijeenkomstfunctie",
+    "woonfunctie",
+    "industriefunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175692",
+   "address": "Herengracht 86",
+   "order": 2,
+   "numbers": [
+    86
+   ],
+   "letters": [
+    "86A",
+    "86B"
+   ],
+   "built": 1994,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175702",
+   "address": "Herengracht 84",
+   "order": 3,
+   "numbers": [
+    84
+   ],
+   "built": 1615,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175703",
+   "address": "Herengracht 82",
+   "order": 4,
+   "numbers": [
+    82
+   ],
+   "built": 1905,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175783",
+   "address": "Herengracht 80",
+   "order": 5,
+   "numbers": [
+    80
+   ],
+   "built": 1905,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175784",
+   "address": "Herengracht 76–78",
+   "order": 6,
+   "numbers": [
+    76,
+    78
+   ],
+   "built": 1905,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175616",
+   "address": "Herengracht 74",
+   "order": 7,
+   "numbers": [
+    74
+   ],
+   "built": 1905,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175617",
+   "address": "Herengracht 72",
+   "order": 8,
+   "numbers": [
+    72
+   ],
+   "built": 1640,
+   "units": 7,
+   "groundUses": [],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175618",
+   "address": "Herengracht 70",
+   "order": 9,
+   "numbers": [
+    70
+   ],
+   "letters": [
+    "70A",
+    "70B",
+    "70C",
+    "70D",
+    "70E"
+   ],
+   "built": 1640,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175698",
+   "address": "Herengracht 68",
+   "order": 10,
+   "numbers": [
+    68
+   ],
+   "letters": [
+    "68A",
+    "68B",
+    "68C",
+    "68D",
+    "68E",
+    "68F",
+    "68G"
+   ],
+   "built": 1770,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012168544",
+   "address": "Herengracht 66",
+   "order": 11,
+   "numbers": [
+    66
+   ],
+   "built": 1990,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012168545",
+   "address": "Herengracht 64",
+   "order": 12,
+   "numbers": [
+    64
+   ],
+   "built": 1625,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167493",
+   "address": "Herengracht 62",
+   "order": 13,
+   "numbers": [
+    62
+   ],
+   "built": 1740,
+   "units": 3,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167492",
+   "address": "Herengracht 60",
+   "order": 14,
+   "numbers": [
+    60
+   ],
+   "built": 1740,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167495",
+   "address": "Herengracht 58",
+   "order": 15,
+   "numbers": [
+    58
+   ],
+   "built": 1905,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167494",
+   "address": "Herengracht 56",
+   "order": 16,
+   "numbers": [
+    56
+   ],
+   "built": 1615,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012169218",
+   "address": "Herengracht 54",
+   "order": 17,
+   "numbers": [
+    54
+   ],
+   "built": 1615,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012169272",
+   "address": "Herengracht 50–52",
+   "order": 18,
+   "numbers": [
+    50,
+    52
+   ],
+   "letters": [
+    "50A",
+    "50B",
+    "50C",
+    "50D",
+    "50E",
+    "52A",
+    "52B",
+    "52C",
+    "52D",
+    "52E",
+    "52F",
+    "52G",
+    "52H",
+    "52K",
+    "52L",
+    "52M",
+    "52N",
+    "52P",
+    "52R",
+    "52S"
+   ],
+   "built": 1979,
+   "units": 20,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie",
+    "kantoorfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012169270",
+   "address": "Herengracht 48",
+   "order": 19,
+   "numbers": [
+    48
+   ],
+   "built": 1760,
+   "units": 2,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179667",
+   "address": "Herengracht 46",
+   "order": 20,
+   "numbers": [
+    46
+   ],
+   "letters": [
+    "46A",
+    "46B",
+    "46C",
+    "46D"
+   ],
+   "built": 1905,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179669",
+   "address": "Herengracht 44",
+   "order": 21,
+   "numbers": [
+    44
+   ],
+   "built": 1725,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179670",
+   "address": "Herengracht 42",
+   "order": 22,
+   "numbers": [
+    42
+   ],
+   "letters": [
+    "42A",
+    "42B",
+    "42C",
+    "42D"
+   ],
+   "built": 1870,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179668",
+   "address": "Herengracht 40",
+   "order": 23,
+   "numbers": [
+    40
+   ],
+   "letters": [
+    "40A",
+    "40B",
+    "40C",
+    "40D",
+    "40E",
+    "40F"
+   ],
+   "built": 1790,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179671",
+   "address": "Herengracht 38",
+   "order": 24,
+   "numbers": [
+    38
+   ],
+   "built": 1615,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179684",
+   "address": "Herengracht 36",
+   "order": 25,
+   "numbers": [
+    36
+   ],
+   "built": 1615,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012168139",
+   "address": "Herengracht 34",
+   "order": 26,
+   "numbers": [
+    34
+   ],
+   "built": 1968,
+   "units": 1,
+   "groundUses": [
+    "onderwijsfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012168069",
+   "address": "Herengracht 32",
+   "order": 27,
+   "numbers": [
+    32
+   ],
+   "letters": [
+    "32A",
+    "32B"
+   ],
+   "built": 1615,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012168138",
+   "address": "Herengracht 30",
+   "order": 28,
+   "numbers": [
+    30
+   ],
+   "letters": [
+    "30A"
+   ],
+   "built": 1905,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179837",
+   "address": "Herengracht 28",
+   "order": 29,
+   "numbers": [
+    28
+   ],
+   "built": 1712,
+   "units": 2,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179836",
+   "address": "Herengracht 26",
+   "order": 30,
+   "numbers": [
+    26
+   ],
+   "built": 1905,
+   "units": 7,
+   "groundUses": [],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179838",
+   "address": "Herengracht 24",
+   "order": 31,
+   "numbers": [
+    24
+   ],
+   "letters": [
+    "24A",
+    "24B"
+   ],
+   "built": 1615,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179752",
+   "address": "Herengracht 22",
+   "order": 32,
+   "numbers": [
+    22
+   ],
+   "built": 1615,
+   "units": 1,
+   "groundUses": [
+    "onderwijsfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179753",
+   "address": "Herengracht 20",
+   "order": 33,
+   "numbers": [
+    20
+   ],
+   "letters": [
+    "20A",
+    "20B",
+    "20C",
+    "20D",
+    "20E",
+    "20F",
+    "20G",
+    "20H",
+    "20K",
+    "20L",
+    "20M",
+    "20N",
+    "20P",
+    "20R"
+   ],
+   "built": 1639,
+   "units": 14,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179760",
+   "address": "Herengracht 18",
+   "order": 34,
+   "numbers": [
+    18
+   ],
+   "built": 1615,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179761",
+   "address": "Herengracht 16",
+   "order": 35,
+   "numbers": [
+    16
+   ],
+   "built": 1735,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179764",
+   "address": "Herengracht 14",
+   "order": 36,
+   "numbers": [
+    14
+   ],
+   "letters": [
+    "14A",
+    "14B",
+    "14C",
+    "14D",
+    "14E",
+    "14F",
+    "14H"
+   ],
+   "built": 1905,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179765",
+   "address": "Herengracht 12",
+   "order": 37,
+   "numbers": [
+    12
+   ],
+   "letters": [
+    "12A",
+    "12B",
+    "12C",
+    "12D",
+    "12E"
+   ],
+   "built": 1630,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179763",
+   "address": "Herengracht 10",
+   "order": 38,
+   "numbers": [
+    10
+   ],
+   "letters": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10G"
+   ],
+   "built": 1933,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179833",
+   "address": "Herengracht 8",
+   "order": 39,
+   "numbers": [
+    8
+   ],
+   "letters": [
+    "8A",
+    "8B",
+    "8C",
+    "8D"
+   ],
+   "built": 1880,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179834",
+   "address": "Herengracht 6",
+   "order": 40,
+   "numbers": [
+    6
+   ],
+   "built": 1880,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100100091828",
+   "bagPandId": "0363100012168202",
+   "address": "Herengracht 2–4",
+   "order": 41,
+   "numbers": [
+    2,
+    4
+   ],
+   "built": 1616,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  }
+ ]
+}
