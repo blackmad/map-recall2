@@ -2,7 +2,7 @@ import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
 import {archBand, archSlab, ledgeStrip, poly, ringFrame, setSink, getSink, slab, type Frame} from './nearbar-kit';
 import {inPart} from './pand-part-shell';
-import {frameCoords} from './shell-gable-fit';
+import {frameCoords, reshapeShell} from './shell-gable-fit';
 import {rowFront, storeysUnder} from './row-front';
 import {fullPand, type PandPart} from '../../src/canalRecall/landmarks/pandParts';
 import source from './handelsbank-singel-250-footprints.json';
@@ -40,7 +40,10 @@ export function buildHandelsbank(_w: number, _d: number, b: BuildingTools) {
     }
     return 'brick';
   };
-  addShell(b, {surfaces: src.surfaces, nativeRing: src.nativeRing}, {
+  // A 3DBAG shard: one vertex of the north-west house's roof at 23.4 m (x -31, z -13.1) over an 18.1 m eaves turns a 1.8 m
+  // strip into a dark spike above the roofs (coordinator, gallery round 8). Clamp it to the eaves (the sliver wall collapses).
+  const surfaces = reshapeShell(src.surfaces, {compress: [{inside: (x, z) => x < -26 && z > -13.6 && z < -12.2, y0: 18.1, s: 0}]});
+  addShell(b, {surfaces, nativeRing: src.nativeRing}, {
     wall: 'sandstone', roof: 'slate',
     wallFor: sf => (isBank(sf) ? 'sandstone' : restWall(sf)),
     roofFor: sf => (isBank(sf) && Math.min(...sf.rings[0].map(p => p[1])) > 21.8 ? 'concrete' : 'slate'),
