@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## Bent fronts keep whole windows (2026-11-20, lane/fb-facades2-20261120 57ae5e8737, feedback 1a223c)
+
+On fronts that turn every few metres, such as Jacob van Lennepkade r3674867, every 0.75–1.9 m cant or return became its own run with one squeezed bay, so window slivers sat against each turn.
+- `bentFrontFacets.ts` (called once from `threeBuildingMesh`): a facet under 2.5 m and under one cell, with exposed walls turning off it at both ends, now shows one window at its natural width, or plain wall if no window fits with 0.15 m piers.
+- Party-wall fronts, recipes, axis units, row grids, design slices, traced boxes and steps are untouched.
+- Blind, 12 random changed pands (seed 20261120, one opus judge): on won 4, off won 1, 7 ties, no cut or floating windows. The loss is the expected trade-off: a narrow facet with a real window pair now gets plain wall.
+- The note's pose: 2 of 2 wins.
+- It changes baked cells, so the world was recompiled.
+- `scripts/pand-reference/select.ts` `exposedWalls` now merges across jogs under 0.6 m, so jogged fronts such as Prinsengracht 136 (14.3 m, whose crop had picked a 6 m side wall) are cropped from the right wall.
+
 ## Street-art photos reviewed and published (2026-11-20, lane/street-art-review-20261120 cb5a3b313a)
 
 69 of the 70 staged photos are published: 65 as staged, and 4 swapped for a photo from the same Commons category that shows the work itself, not its name plaque, info sign, unveiling crowd or a road crossing. The rejected one is Cirkels in the Rembrandtpark, a speck in a meadow with no closer photo on Commons.

@@ -44,11 +44,10 @@ Feedback fixes 2026-11-19 (#396): all five lanes are merged (see HISTORY). Still
 - 3b8ca6 De Clercqstraat: the deck-side line is gone (`deckSideFine`), but the cross-road seam (dark and light-blue segments) is not in the top-layer probes; pick it in the browser.
 - c361c8 Kinkerbrug house: the data puts it on land (0 of 105 footprint samples over water, panorama agrees). It reads as over water from the pitch-60 camera and a water corner west of it. `build-pand-abutments.ts` lists three more pands for photo review: 0363100012171355, 0363100012181645, w858955798.
 - Unmeasured: how many decks city-wide `coveredTopTone` changes, and the triangle cost of `deckSideFine`.
-- 1a223c: windows split at the turns of an angled front (`threeBuildingMesh` run layout).
 - 47d096: place Bellamyplein 28 (0363100012162005) in the bellamyplein face.
-- f8f282: Prinsengracht 136 is drawn in the wrong house style (rows/HouseSpec).
+- f8f282: Prinsengracht 136 is a traditional canal front (brown brick, 8 axes of white sashes, dormers), but BAG says 1941, so it draws in the interwar style. No standalone per-pand period override exists; only HouseSpec `facts/facadeYear`, on the paused describer path. This belongs with design units. `mergeSteppedRuns` (`STEPPED_FRONTS=1`) is staged off: it lost its blind 1–2 with 5 ties, because the merge drops each plot's rhythm on multi-plot fronts.
 - 0046bb: Haarlemmermeer; no open panorama to judge it against.
-- e41668: the repeating facade on the De Vaart slab; it is unknown which path paints its windows.
+- e41668: the De Vaart slab (0363100012075926) is generic. Its passage parts repeat one 'modern' cell along 290 m, with a shop and stair-door rhythm every 4 bays. The panorama shows designed sections: dark brick with band windows, a grey panel section, balconies. That is section data for design units, not random variation.
 - 8022e3: roof edge definition (parapet line or AO).
 - Ground detector top 10 around Centraal (rail-bed and paving overlaps); the Sixhaven marina basin is missing from the water layer.
 - Street-art cards carry no per-photo credit line for the CC BY-SA photos (credit is in credits.html for now). Replace "Why not" (panorama, small figure) once Commons has a photo.
