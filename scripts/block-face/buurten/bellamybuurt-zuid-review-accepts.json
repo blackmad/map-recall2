@@ -1,0 +1,11 @@
+{
+ "note": "Lane gate floors (reviewPalettes.ts AcceptPin) after reading the strip at full size.",
+ "pins": [
+  {
+   "pandId": "0363100012162005",
+   "type": "bellamy-1904-balcony-axis",
+   "minNcc": 0.08,
+   "reason": "Bellamyplein 28 (feedback 47d096, 2026-11-13): held at edge NCC 0.082 as a three-axis balconette front; the strip shows a two-axis front with a wide balcony window, now stated by the override pin. Held, it fell to the generic renderer between runs r1 and r2, whose front and roof did not match its footprint (\"only showing like 2/3rds of its horizontal frontage\")"
+  }
+ ]
+}

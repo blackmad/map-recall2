@@ -1,3 +1,4 @@
+import { lipRoomBonus, lipStyle } from './roofs/roofEdge.js';
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
 import { segmentBayM, sliceBays } from './designUnits/drawProps.js';
 import type { StoopIntent } from './buildingRecipe/stoop.ts';
@@ -1354,7 +1355,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         measuredRoofFurniture(b.measuredRoof, outer[0], b.heightM, rect, sink);
         candidate.furniture = sink.tris;
       }
-      if (b.flatRoof.lip && !b.roof) for (const poly of local) candidate.lip.push(...parapetLipTris(poly, b.heightM, b.wallHex, { exposed }));
+      // `?roofEdge=1` (roofs/roofEdge.ts, feedback 8022e3): a dark coping, a little taller and wider; off, the wall-coloured lip.
+      const lip = lipStyle(b.wallHex);
+      if (b.flatRoof.lip && !b.roof) for (const poly of local) candidate.lip.push(...parapetLipTris(poly, b.heightM, lip.hex, { exposed, ...lip.opts }));
       // The box's rect has no vertex cap (fitRect's 40 left most large BAG footprints without one).
       const boxRect = b.flatRoof.box && !b.measuredRoof?.furniture.length ? rect ?? fitRect(outer, Infinity) : null;
       if (boxRect) {
@@ -1392,6 +1395,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     // out), then lips, each pass largest roof first, all-or-nothing a building.
     const base = quadTotal * 2 + roofTotal + lidIndices / 3 + signTotal;
     let room = Math.floor(base * (surfaceCandidates[0].coarse ? FLAT_SURFACE_BUDGET.coarse : FLAT_SURFACE_BUDGET.detail));
+    // `?roofEdge=1` (roofs/roofEdge.ts): extra room for the lip pass only, so the copings reach most flat roofs; off, 0.
+    let lipBonus = lipRoomBonus(base, surfaceCandidates[0].coarse);
     const byArea = [...surfaceCandidates].sort((a, c) => c.areaM2 - a.areaM2);
     // One box where outlines overlap: a nested or duplicate outline at the same height puts its box on the same spot
     // (coplanar box tops, coplanar-surfaces audit w1193944788/w896771286, integrator 2026-11-08). The larger roof keeps it.
@@ -1399,6 +1404,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     for (const kind of ['furniture', 'box', 'lip'] as const) for (const c of byArea) {
       // F1 record mode: furniture (flat colour) and the 0.25 m lip (trim) have no record look; the box is a roof piece.
       if (recordMode && kind !== 'box') continue;
+      if (kind === 'lip' && lipBonus) { room += lipBonus; lipBonus = 0; }
       const tris = c[kind];
       if (!tris.length) continue;
       if (kind === 'box' && c.boxAt) {

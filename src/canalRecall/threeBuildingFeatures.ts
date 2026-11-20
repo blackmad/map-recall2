@@ -15,7 +15,7 @@ import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
 import { designUnitOf } from './designUnits/drawProps.js';
-import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
+import { replanTerraceRoof, roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { ROW_FRONT_EXTRAS, rowFrontShopHex, type RowHeadsDraw, type RowGlazingDraw, type RowGroundWallDraw, type RowBasementDraw } from './houseLine/rowFront.js';
@@ -52,6 +52,8 @@ import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './i
 import { applyGlazing, glazingOf } from './glassParts.js';
 import { REAL_ONLY_TEMPLATES, RETAIL_HELD, RETAIL_TEMPLATES, realAccepted, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
 import { paintOverGuess } from './retailPuiPaint.js';
+import { terraceSeedOf, withTerraceSeeds } from './terraceRows.js';
+import { kitRoofEdge, lipMinAreaM2 } from './roofs/roofEdge.js';
 import { bikeFromCode } from './retailBikes.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
@@ -116,7 +118,7 @@ function applyFlatRoof(building: MeshBuilding, p: Record<string, unknown>, look:
   const surfaceLayer = flatRoofSurfaceLayer(cells);
   if (surfaceLayer !== null) building.lid = { ...building.lid, surfaceLayer };
   // A design-unit member's flat top sits behind its cornice with nothing wall-coloured over the eaves line (no lip, no box).
-  building.flatRoof = { lip: areaM2 >= LIP_MIN_M2 && !designUnitOf(p), box: areaM2 >= BOX_MIN_M2 && !building.measuredRoof?.furniture.length && !designUnitOf(p), areaM2 };
+  building.flatRoof = { lip: areaM2 >= lipMinAreaM2(LIP_MIN_M2) && !designUnitOf(p), box: areaM2 >= BOX_MIN_M2 && !building.measuredRoof?.furniture.length && !designUnitOf(p), areaM2 };
 }
 
 /**
@@ -263,7 +265,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const id = String(p.id ?? '');
   // Design units (`?designUnits=1`, designUnits/draw.ts): a segment member hashes every per-building prior on its
   // segment's seed and lays its bays out on its slice of the segment's frontage. Absent: `sid` is the pand id.
-  const design = designUnitOf(p), sid = design ? design.seed : id;
+  // Post-war terraces outside the profiled buurten (`?terraceRows=1`, terraceRows.ts): the row's seed. Absent: the pand id.
+  const design = designUnitOf(p), sid = design ? design.seed : terraceSeedOf(p) ?? id;
   let building: MeshBuilding;
   let archetype: string | undefined, plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined, spandrelAccent: string | undefined, quietGround: number | undefined;
   if (cellSetOf(look) !== 'procedural') {
@@ -389,6 +392,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (measured?.furniture) building.measuredRoof = measured.furniture;
   // A real flat roof (no planned pitched roof): lane R5-E's tone and surface (roofs/flatRoofTone.ts, flatRoofSurface.ts).
   if ((!p.roofPlanned || p.roofShape === 'parapet') && !p.kitRoof && !p.kitWall && look !== 'untextured') applyFlatRoof(building, p, look, sid, measured, !!mapped, cellSetOf(look), footprintAreaM2(feature.geometry));
+  // `?roofEdge=1` (roofs/roofEdge.ts): a flat kit roof (the generic school, feedback 8022e3's building) takes the edge band only.
+  else if (!building.flatRoof && look !== 'untextured' && (p.kitRoof || p.kitWall)) { const edge = kitRoofEdge(!building.roof, footprintAreaM2(feature.geometry)); if (edge) building.flatRoof = edge; }
   if (p.gardenShed) {
     // A back-garden shed (gardenSheds.ts): bare walls in a weathered muted colour, a tarred flat lid, nothing else.
     building.bare = true; building.wallHex = shedWallHex(id); building.lid = { hex: SHED_LID_HEX, flatLayer: roofBase + 3 };
@@ -620,7 +625,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
   // Garden sheds draw as low muted boxes in the near tier and not at all beyond it (gardenSheds.ts). Without the
   // chunk's streets nothing is classified, so a street kiosk is never dropped for want of a street file.
   const shedStreets = streets?.length ? new SegmentGrid(streets) : null;
-  const marked = features.filter(f => !isAllotmentHouse(f)).map(f => isGardenShed(f, shedStreets, ORIGIN) ? { ...f, properties: { ...f.properties, gardenShed: true, height: shedHeightM(f.properties), ...gardenRoomMark(f) } } : f);
+  const marked = withTerraceSeeds(features.filter(f => !isAllotmentHouse(f)).map(f => isGardenShed(f, shedStreets, ORIGIN) ? { ...f, properties: { ...f.properties, gardenShed: true, height: shedHeightM(f.properties), ...gardenRoomMark(f) } } : f), (lng, lat) => !!buurtProfileAt(lng, lat), contextFeatures, replanTerraceRoof);
   // Garden rooms need their neighbours (party walls, the main house): only built when the chunk has one.
   const roomContext = mode === 'walls' && marked.some(f => f.properties.gardenRoom) ? gardenRoomContext([...marked, ...contextFeatures]) : null;
   const chunk = buildChunk(marked.filter(f => !(mode === 'coarse' && f.properties.gardenShed)).map(f => {

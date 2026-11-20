@@ -1,12 +1,900 @@
 {
- "schemaVersion": 1,
- "note": "Hand corrections to modern-pand-walls.json (derive.ts output) where the panorama sample read something other than the wall. Each row cites the photo; modernPandWall() prefers a correction over the measured row, so a derive.ts re-run keeps it.",
- "walls": {
-  "0363100012095236": {
-   "wall": "b6e4a42",
-   "measured": "b2f201c",
-   "why": "Feedback 174f6f (2026-11-13, \"way too dark for our color palette\"): Spaarndammerdijk 1-11 / Spaarndammerstraat 151 (2005, Albert Heijn) is red-brown brick piers between deep dark loggias; the per-pand sample averaged the loggia shadow into the brick. The piers read #594b49 raw on the overcast 2022 panorama thumbnail (pand-reference fbm2), a red-brown brick; drawn as #6e4a42 by judgement (wall colour by judgement, 2026-11-14).",
-   "source": "Gemeente Amsterdam panorama thumbnail via scripts/pand-reference/run.ts --ids=0363100012095236 (CC BY 4.0)"
+  "schemaVersion": 1,
+  "note": "Hand corrections to modern-pand-walls.json (derive.ts output) where the panorama sample read something other than the wall. Each row cites the photo; modernPandWall() prefers a correction over the measured row, so a derive.ts re-run keeps it.",
+  "walls": {
+    "0363100012095236": {
+      "wall": "b6e4a42",
+      "measured": "b2f201c",
+      "why": "Feedback 174f6f (2026-11-13, \"way too dark for our color palette\"): Spaarndammerdijk 1-11 / Spaarndammerstraat 151 (2005, Albert Heijn) is red-brown brick piers between deep dark loggias; the per-pand sample averaged the loggia shadow into the brick. The piers read #594b49 raw on the overcast 2022 panorama thumbnail (pand-reference fbm2), a red-brown brick; drawn as #6e4a42 by judgement (wall colour by judgement, 2026-11-14).",
+      "source": "Gemeente Amsterdam panorama thumbnail via scripts/pand-reference/run.ts --ids=0363100012095236 (CC BY 4.0)"
+    },
+    "0363100012061397": {
+      "wall": "b412d28",
+      "measured": "b302017",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 76 % of the centre box is sky, so the facade read near-black at raw rgb(26,28,26) whatever its colour; drawn in the lower-quartile wall of the buurt's 16 other measured modern pands (1997, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_10-43-25_02288/?width=320&aspect=1&fov=33&heading=169&pitch=35 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012061476": {
+      "wall": "b847573",
+      "measured": "b2f201c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(35,36,35); the centre box without its dark pixels (82 % of it) reads rgb(123,120,127), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-26_13-32-36_00229/?width=320&aspect=1&fov=70&heading=198&pitch=45 (captured 2025-09-26, CC BY 4.0)"
+    },
+    "0363100012063684": {
+      "wall": "b3f322e",
+      "measured": "b36241a",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 88 % of the centre box is sky, so the facade read near-black at raw rgb(33,39,38) whatever its colour; drawn in the lower-quartile wall of the buurt's 16 other measured modern pands (1958, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-17_11-47-20_01915/?width=320&aspect=1&fov=70&heading=279&pitch=41 (captured 2025-07-17, CC BY 4.0)"
+    },
+    "0363100012065775": {
+      "wall": "b4c3f3b",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(32,28,30); the centre box without its dark pixels (72 % of it) reads rgb(64,66,67), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_02_08_06_04_00328/?width=320&aspect=1&fov=70&heading=93&pitch=27 (captured 2025-10-02, CC BY 4.0)"
+    },
+    "0363100012066167": {
+      "wall": "b61483e",
+      "measured": "b321f19",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 84 % of the centre box is sky, so the facade read near-black at raw rgb(39,35,30) whatever its colour; drawn in the lower-quartile wall of the buurt's 1 other measured modern pands (2001, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001082_pano_0004_000097/?width=320&aspect=1&fov=70&heading=237&pitch=18 (captured 2019-02-11, CC BY 4.0)"
+    },
+    "0363100012067304": {
+      "wall": "b84797b",
+      "measured": "b2d211d",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(22,20,23); the centre box without its dark pixels (96 % of it) reads rgb(114,121,120), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_01_11_49_16_00508/?width=320&aspect=1&fov=70&heading=263&pitch=45 (captured 2025-10-01, CC BY 4.0)"
+    },
+    "0363100012067449": {
+      "wall": "b3f332f",
+      "measured": "b332723",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 64 % of the centre box is sky, so the facade read near-black at raw rgb(42,41,44) whatever its colour; drawn in the lower-quartile wall of the buurt's 16 other measured modern pands (1989, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-30_05-16-46_00405/?width=320&aspect=1&fov=39&heading=173&pitch=43 (captured 2025-06-30, CC BY 4.0)"
+    },
+    "0363100012067630": {
+      "wall": "b74797b",
+      "measured": "b2d211d",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(26,27,30); the centre box without its dark pixels (63 % of it) reads rgb(82,88,88), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_09-52-43_00765/?width=320&aspect=1&fov=30&heading=336&pitch=22 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012068422": {
+      "wall": "b493c38",
+      "measured": "b2f201c",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 71 % of the centre box is sky, so the facade read near-black at raw rgb(33,36,37) whatever its colour; drawn in the lower-quartile wall of the buurt's 15 other measured modern pands (1989, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_09-59-55_00226/?width=320&aspect=1&fov=30&heading=99&pitch=45 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012068892": {
+      "wall": "b6d6e71",
+      "measured": "b2d211e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 66 % of the centre box is sky, so the facade read near-black at raw rgb(34,36,37) whatever its colour; drawn in the lower-quartile wall of the buurt's 3 other measured modern pands (1998, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002585_pano_0002_000890/?width=320&aspect=1&fov=36&heading=358&pitch=45 (captured 2022-05-18, CC BY 4.0)"
+    },
+    "0363100012071487": {
+      "wall": "b7b5f4e",
+      "measured": "b34211c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(41,37,33); the centre box without its dark pixels (60 % of it) reads rgb(107,101,92), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002401_pano_0003_000021/?width=320&aspect=1&fov=70&heading=128&pitch=26 (captured 2022-01-07, CC BY 4.0)"
+    },
+    "0363100012072124": {
+      "wall": "b654c44",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(18,3,2); the centre box without its dark pixels (52 % of it) reads rgb(87,81,75), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001209_pano_0001_000357/?width=320&aspect=1&fov=70&heading=335&pitch=18 (captured 2019-06-03, CC BY 4.0)"
+    },
+    "0363100012072376": {
+      "wall": "b4b3e3a",
+      "measured": "b38241e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 68 % of the centre box is sky, so the facade read near-black at raw rgb(43,42,38) whatever its colour; drawn in the lower-quartile wall of the buurt's 10 other measured modern pands (2000, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_09-52-43_01096/?width=320&aspect=1&fov=47&heading=15&pitch=8 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012072691": {
+      "wall": "bd1d8da",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(37,37,36); the centre box without its dark pixels (61 % of it) reads rgb(163,175,171), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_06-03-21_01155/?width=320&aspect=1&fov=30&heading=46&pitch=10 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012073607": {
+      "wall": "b716f71",
+      "measured": "b312522",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(40,40,40); the centre box without its dark pixels (74 % of it) reads rgb(100,102,100), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-18_07-44-47_02483/?width=320&aspect=1&fov=30&heading=131&pitch=45 (captured 2025-06-18, CC BY 4.0)"
+    },
+    "0363100012073817": {
+      "wall": "be7e8ea",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(23,18,18); the centre box without its dark pixels (70 % of it) reads rgb(243,248,241), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_01_09_07_51_00991/?width=320&aspect=1&fov=70&heading=352&pitch=9 (captured 2025-10-01, CC BY 4.0)"
+    },
+    "0363100012077647": {
+      "wall": "b807f7f",
+      "measured": "b38251f",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(44,45,42); the centre box without its dark pixels (90 % of it) reads rgb(127,133,133), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-16_11-54-38_01270/?width=320&aspect=1&fov=30&heading=116&pitch=38 (captured 2025-07-16, CC BY 4.0)"
+    },
+    "0363100012079510": {
+      "wall": "b382621",
+      "measured": "b30201b",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 78 % of the centre box is sky, so the facade read near-black at raw rgb(26,31,30) whatever its colour; drawn in the lower-quartile wall of the buurt's 4 other measured modern pands (2010, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-25_09-21-07_00390/?width=320&aspect=1&fov=70&heading=51&pitch=45 (captured 2025-09-25, CC BY 4.0)"
+    },
+    "0363100012080605": {
+      "wall": "ba5aaad",
+      "measured": "b321f1a",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(31,31,28); the centre box without its dark pixels (94 % of it) reads rgb(120,130,128), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-11_13-45-30_00338/?width=320&aspect=1&fov=70&heading=191&pitch=23 (captured 2025-09-11, CC BY 4.0)"
+    },
+    "0363100012081205": {
+      "wall": "b4f302c",
+      "measured": "b321f19",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 77 % of the centre box is sky, so the facade read near-black at raw rgb(18,14,17) whatever its colour; drawn in the lower-quartile wall of the buurt's 14 other measured modern pands (2006, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_06-58-53_01563/?width=320&aspect=1&fov=35&heading=283&pitch=13 (captured 2025-09-24, CC BY 4.0)"
+    },
+    "0363100012082159": {
+      "wall": "b5a3f33",
+      "measured": "b34221a",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(40,38,35); the centre box without its dark pixels (63 % of it) reads rgb(72,70,62), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-28_11-59-30_00113/?width=320&aspect=1&fov=33&heading=277&pitch=16 (captured 2025-07-28, CC BY 4.0)"
+    },
+    "0363100012082270": {
+      "wall": "b4d302c",
+      "measured": "b341f1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(45,33,39); the centre box without its dark pixels (65 % of it) reads rgb(66,48,57), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_10-43-25_00435/?width=320&aspect=1&fov=30&heading=243&pitch=17 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012083237": {
+      "wall": "b4c3f3b",
+      "measured": "b2f221e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(43,43,42); the centre box without its dark pixels (75 % of it) reads rgb(64,67,66), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-17_11-47-20_01797/?width=320&aspect=1&fov=30&heading=77&pitch=37 (captured 2025-07-17, CC BY 4.0)"
+    },
+    "0363100012084065": {
+      "wall": "be4e9ec",
+      "measured": "b2e211d",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(30,35,34); the centre box without its dark pixels (82 % of it) reads rgb(237,247,246), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2024-09-09_08-42-32_02633/?width=320&aspect=1&fov=70&heading=344&pitch=43 (captured 2024-09-09, CC BY 4.0)"
+    },
+    "0363100012084305": {
+      "wall": "b3e2e29",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(31,22,21); the centre box without its dark pixels (57 % of it) reads rgb(54,48,49), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002776_pano_0001_000297/?width=320&aspect=1&fov=30&heading=249&pitch=14 (captured 2022-08-31, CC BY 4.0)"
+    },
+    "0363100012084392": {
+      "wall": "b8f9699",
+      "measured": "b2f201c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(32,33,36); the centre box without its dark pixels (75 % of it) reads rgb(96,115,114), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-17_07-56-36_00541/?width=320&aspect=1&fov=30&heading=180&pitch=9 (captured 2025-07-17, CC BY 4.0)"
+    },
+    "0363100012085294": {
+      "wall": "b81888b",
+      "measured": "b352319",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(36,41,41); the centre box without its dark pixels (99 % of it) reads rgb(91,103,101), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-15_10-51-01_00010/?width=320&aspect=1&fov=30&heading=298&pitch=9 (captured 2025-09-15, CC BY 4.0)"
+    },
+    "0363100012086926": {
+      "wall": "b616263",
+      "measured": "b332119",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(41,36,32); the centre box without its dark pixels (62 % of it) reads rgb(69,71,68), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-28_11-59-30_01630/?width=320&aspect=1&fov=70&heading=167&pitch=31 (captured 2025-07-28, CC BY 4.0)"
+    },
+    "0363100012089244": {
+      "wall": "b3e322e",
+      "measured": "b321f1a",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 91 % of the centre box is sky, so the facade read near-black at raw rgb(40,41,45) whatever its colour; drawn in the lower-quartile wall of the buurt's 14 other measured modern pands (2000, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_10-53-53_02562/?width=320&aspect=1&fov=58&heading=193&pitch=40 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012089765": {
+      "wall": "b686a6c",
+      "measured": "b33241f",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 99 % of the centre box is sky, so the facade read near-black at raw rgb(40,40,44) whatever its colour; drawn in the lower-quartile wall of the buurt's 8 other measured modern pands (1992, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_10-07-36_00205/?width=320&aspect=1&fov=34&heading=124&pitch=45 (captured 2025-09-24, CC BY 4.0)"
+    },
+    "0363100012090012": {
+      "wall": "b473a36",
+      "measured": "b302421",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 77 % of the centre box is sky, so the facade read near-black at raw rgb(42,38,39) whatever its colour; drawn in the lower-quartile wall of the buurt's 10 other measured modern pands (1998, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_01676/?width=320&aspect=1&fov=70&heading=199&pitch=15 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012091669": {
+      "wall": "b656667",
+      "measured": "b34211c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(40,41,38); the centre box without its dark pixels (71 % of it) reads rgb(73,75,72), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-01_06-33-45_00973/?width=320&aspect=1&fov=30&heading=150&pitch=23 (captured 2025-09-01, CC BY 4.0)"
+    },
+    "0363100012091926": {
+      "wall": "b392d29",
+      "measured": "b2d211e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 74 % of the centre box is sky, so the facade read near-black at raw rgb(17,20,21) whatever its colour; drawn in the lower-quartile wall of the buurt's 18 other measured modern pands (1998, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_02710/?width=320&aspect=1&fov=34&heading=101&pitch=45 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012092190": {
+      "wall": "b898d90",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(39,35,34); the centre box without its dark pixels (61 % of it) reads rgb(92,107,105), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_09-52-43_01085/?width=320&aspect=1&fov=42&heading=22&pitch=12 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012092459": {
+      "wall": "b87898b",
+      "measured": "b302017",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(38,42,40); the centre box without its dark pixels (94 % of it) reads rgb(109,122,120), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-01_06-33-45_09102/?width=320&aspect=1&fov=70&heading=63&pitch=23 (captured 2025-09-01, CC BY 4.0)"
+    },
+    "0363100012093688": {
+      "wall": "be1eaed",
+      "measured": "b2d211d",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(27,31,33); the centre box without its dark pixels (97 % of it) reads rgb(224,244,243), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-01_10-32-54_02210/?width=320&aspect=1&fov=70&heading=337&pitch=23 (captured 2025-07-01, CC BY 4.0)"
+    },
+    "0363100012094498": {
+      "wall": "b6a6c6f",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(40,34,37); the centre box without its dark pixels (95 % of it) reads rgb(75,79,79), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-02_12-43-46_01973/?width=320&aspect=1&fov=47&heading=290&pitch=20 (captured 2025-07-02, CC BY 4.0)"
+    },
+    "0363100012095427": {
+      "wall": "b7e8285",
+      "measured": "b31201b",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(36,38,35); the centre box without its dark pixels (58 % of it) reads rgb(88,96,94), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-26_09-39-19_02043/?width=320&aspect=1&fov=30&heading=254&pitch=27 (captured 2025-09-26, CC BY 4.0)"
+    },
+    "0363100012098293": {
+      "wall": "b878a8a",
+      "measured": "b312522",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(40,40,39); the centre box without its dark pixels (92 % of it) reads rgb(102,108,107), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-04_06-44-53_02001/?width=320&aspect=1&fov=70&heading=129&pitch=28 (captured 2025-09-04, CC BY 4.0)"
+    },
+    "0363100012098488": {
+      "wall": "be5e8ec",
+      "measured": "b36231a",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(39,38,33); the centre box without its dark pixels (52 % of it) reads rgb(244,253,251), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-01_08-47-56_00180/?width=320&aspect=1&fov=70&heading=260&pitch=33 (captured 2025-07-01, CC BY 4.0)"
+    },
+    "0363100012099264": {
+      "wall": "b86797b",
+      "measured": "b331e1b",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(27,22,18); the centre box without its dark pixels (67 % of it) reads rgb(119,123,119), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002576_pano_0000_000079/?width=320&aspect=1&fov=43&heading=112&pitch=21 (captured 2022-05-12, CC BY 4.0)"
+    },
+    "0363100012102082": {
+      "wall": "b686a6c",
+      "measured": "b321f19",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 98 % of the centre box is sky, so the facade read near-black at raw rgb(28,27,32) whatever its colour; drawn in the lower-quartile wall of the buurt's 8 other measured modern pands (1992, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_10-07-36_00161/?width=320&aspect=1&fov=37&heading=121&pitch=45 (captured 2025-09-24, CC BY 4.0)"
+    },
+    "0363100012102084": {
+      "wall": "b6a453c",
+      "measured": "b37241e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 69 % of the centre box is sky, so the facade read near-black at raw rgb(43,46,45) whatever its colour; drawn in the lower-quartile wall of the buurt's 6 other measured modern pands (1993, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_08-46-40_02108/?width=320&aspect=1&fov=70&heading=323&pitch=45 (captured 2025-07-31, CC BY 4.0)"
+    },
+    "0363100012102283": {
+      "wall": "b453027",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(42,33,29); the centre box without its dark pixels (51 % of it) reads rgb(58,53,47), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002635_pano_0003_000014/?width=320&aspect=1&fov=37&heading=78&pitch=18 (captured 2022-06-27, CC BY 4.0)"
+    },
+    "0363100012103004": {
+      "wall": "b6f7172",
+      "measured": "b2d211e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 99 % of the centre box is sky, so the facade read near-black at raw rgb(36,36,39) whatever its colour; drawn in the lower-quartile wall of the buurt's 8 other measured modern pands (1990, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_13-13-47_00752/?width=320&aspect=1&fov=70&heading=277&pitch=11 (captured 2025-09-24, CC BY 4.0)"
+    },
+    "0363100012104502": {
+      "wall": "b4b3e3a",
+      "measured": "b36241a",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 85 % of the centre box is sky, so the facade read near-black at raw rgb(38,44,44) whatever its colour; drawn in the lower-quartile wall of the buurt's 10 other measured modern pands (2002, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_01246/?width=320&aspect=1&fov=47&heading=75&pitch=28 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012104503": {
+      "wall": "b3d2e28",
+      "measured": "b2f201c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(29,28,25); the centre box without its dark pixels (60 % of it) reads rgb(49,51,48), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_06-03-21_01149/?width=320&aspect=1&fov=30&heading=45&pitch=10 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012105631": {
+      "wall": "b493b36",
+      "measured": "b351f1d",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(45,36,40); the centre box without its dark pixels (89 % of it) reads rgb(58,64,64), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-02_11-44-00_00715/?width=320&aspect=1&fov=30&heading=170&pitch=20 (captured 2025-07-02, CC BY 4.0)"
+    },
+    "0363100012106467": {
+      "wall": "b755e57",
+      "measured": "b342420",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 98 % of the centre box is sky, so the facade read near-black at raw rgb(38,40,44) whatever its colour; drawn in the lower-quartile wall of the buurt's 15 other measured modern pands (1986, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_06-58-53_00324/?width=320&aspect=1&fov=30&heading=254&pitch=12 (captured 2025-09-24, CC BY 4.0)"
+    },
+    "0363100012108151": {
+      "wall": "bdfdbd5",
+      "measured": "b3a231e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(48,39,34); the centre box without its dark pixels (85 % of it) reads rgb(199,201,178), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-28_13-40-42_01324/?width=320&aspect=1&fov=48&heading=98&pitch=23 (captured 2025-07-28, CC BY 4.0)"
+    },
+    "0363100012108428": {
+      "wall": "b4e413d",
+      "measured": "b2d211e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 79 % of the centre box is sky, so the facade read near-black at raw rgb(18,21,23) whatever its colour; drawn in the lower-quartile wall of the buurt's 11 other measured modern pands (1969, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-28_11-59-30_00637/?width=320&aspect=1&fov=70&heading=99&pitch=45 (captured 2025-07-28, CC BY 4.0)"
+    },
+    "0363100012109109": {
+      "wall": "bd0dee0",
+      "measured": "b352319",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(32,44,42); the centre box without its dark pixels (81 % of it) reads rgb(153,177,175), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-15_12-03-14_00006/?width=320&aspect=1&fov=35&heading=142&pitch=26 (captured 2025-09-15, CC BY 4.0)"
+    },
+    "0363100012110005": {
+      "wall": "b72625d",
+      "measured": "b2e211d",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 83 % of the centre box is sky, so the facade read near-black at raw rgb(17,14,15) whatever its colour; drawn in the lower-quartile wall of the buurt's 7 other measured modern pands (2001, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316060226-000462_pano_0003_003315/?width=320&aspect=1&fov=70&heading=226&pitch=13 (captured 2019-11-06, CC BY 4.0)"
+    },
+    "0363100012110024": {
+      "wall": "b5f514d",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(38,39,40); the centre box without its dark pixels (52 % of it) reads rgb(81,83,86), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_12-01-53_00547/?width=320&aspect=1&fov=37&heading=80&pitch=35 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012110789": {
+      "wall": "b6b7073",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(43,47,47); the centre box without its dark pixels (80 % of it) reads rgb(76,81,82), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-22_11-45-45_00297/?width=320&aspect=1&fov=30&heading=125&pitch=16 (captured 2025-09-22, CC BY 4.0)"
+    },
+    "0363100012111290": {
+      "wall": "b473a36",
+      "measured": "b362622",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 70 % of the centre box is sky, so the facade read near-black at raw rgb(45,41,38) whatever its colour; drawn in the lower-quartile wall of the buurt's 10 other measured modern pands (1998, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_09-52-43_01087/?width=320&aspect=1&fov=54&heading=20&pitch=9 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012113222": {
+      "wall": "b473a36",
+      "measured": "b302521",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 76 % of the centre box is sky, so the facade read near-black at raw rgb(41,39,37) whatever its colour; drawn in the lower-quartile wall of the buurt's 10 other measured modern pands (1998, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_01678/?width=320&aspect=1&fov=50&heading=199&pitch=14 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012113917": {
+      "wall": "bac8976",
+      "measured": "b352419",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(39,40,34); the centre box without its dark pixels (69 % of it) reads rgb(165,153,133), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_08-09-45_02961/?width=320&aspect=1&fov=30&heading=223&pitch=11 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012114422": {
+      "wall": "b7d7c7e",
+      "measured": "b2d221e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(38,36,34); the centre box without its dark pixels (56 % of it) reads rgb(124,127,127), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_09-52-43_00384/?width=320&aspect=1&fov=46&heading=329&pitch=32 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012114741": {
+      "wall": "b462e22",
+      "measured": "b302017",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(39,35,27); the centre box without its dark pixels (62 % of it) reads rgb(58,54,43), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316060226-000473_pano_0007_000340/?width=320&aspect=1&fov=70&heading=192&pitch=45 (captured 2019-11-08, CC BY 4.0)"
+    },
+    "0363100012115555": {
+      "wall": "b493c38",
+      "measured": "b321f1a",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(41,44,42); the centre box without its dark pixels (58 % of it) reads rgb(59,63,62), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-30_05-16-46_00392/?width=320&aspect=1&fov=43&heading=148&pitch=45 (captured 2025-06-30, CC BY 4.0)"
+    },
+    "0363100012116142": {
+      "wall": "bd7d8db",
+      "measured": "b31221e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(33,39,39); the centre box without its dark pixels (85 % of it) reads rgb(196,218,215), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-30_13-20-52_00348/?width=320&aspect=1&fov=70&heading=4&pitch=45 (captured 2025-07-30, CC BY 4.0)"
+    },
+    "0363100012116190": {
+      "wall": "b795449",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(19,3,4); the centre box without its dark pixels (65 % of it) reads rgb(109,91,76), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001106_pano_0002_000025/?width=320&aspect=1&fov=70&heading=355&pitch=15 (captured 2019-02-18, CC BY 4.0)"
+    },
+    "0363100012116974": {
+      "wall": "be3e9ec",
+      "measured": "b302017",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(35,35,33); the centre box without its dark pixels (77 % of it) reads rgb(240,254,253), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001793_pano_0000_004237/?width=320&aspect=1&fov=49&heading=76&pitch=8 (captured 2020-07-07, CC BY 4.0)"
+    },
+    "0363100012117450": {
+      "wall": "b41322e",
+      "measured": "b352319",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(36,41,41); the centre box without its dark pixels (64 % of it) reads rgb(50,56,55), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-26_09-39-19_01656/?width=320&aspect=1&fov=70&heading=165&pitch=30 (captured 2025-09-26, CC BY 4.0)"
+    },
+    "0363100012117479": {
+      "wall": "b7c7d7e",
+      "measured": "b31221e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 72 % of the centre box is sky, so the facade read near-black at raw rgb(41,42,40) whatever its colour; drawn in the lower-quartile wall of the buurt's 15 other measured modern pands (1973, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-26_12-26-58_01014/?width=320&aspect=1&fov=30&heading=238&pitch=31 (captured 2025-09-26, CC BY 4.0)"
+    },
+    "0363100012119526": {
+      "wall": "b707376",
+      "measured": "b2f2320",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(46,46,47); the centre box without its dark pixels (81 % of it) reads rgb(80,84,85), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-10-02_10-04-24_02856/?width=320&aspect=1&fov=49&heading=120&pitch=45 (captured 2025-10-02, CC BY 4.0)"
+    },
+    "0363100012120789": {
+      "wall": "be0eaec",
+      "measured": "b2f201c",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 75 % of the centre box is sky, so the facade read near-black at raw rgb(33,34,36) whatever its colour; drawn in the lower-quartile wall of the buurt's 3 other measured modern pands (2009, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2024-09-12_06-43-09_00143/?width=320&aspect=1&fov=58&heading=5&pitch=10 (captured 2024-09-12, CC BY 4.0)"
+    },
+    "0363100012122816": {
+      "wall": "b392d29",
+      "measured": "b352319",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 98 % of the centre box is sky, so the facade read near-black at raw rgb(32,39,38) whatever its colour; drawn in the lower-quartile wall of the buurt's 18 other measured modern pands (1997, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_10-53-53_00124/?width=320&aspect=1&fov=70&heading=171&pitch=45 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012122846": {
+      "wall": "b69463a",
+      "measured": "b2d211e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 78 % of the centre box is sky, so the facade read near-black at raw rgb(23,27,27) whatever its colour; drawn in the lower-quartile wall of the buurt's 5 other measured modern pands (1988, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_08-09-45_03501/?width=320&aspect=1&fov=70&heading=239&pitch=45 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012124954": {
+      "wall": "b3b2f2b",
+      "measured": "b2f221e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 65 % of the centre box is sky, so the facade read near-black at raw rgb(38,43,41) whatever its colour; drawn in the lower-quartile wall of the buurt's 12 other measured modern pands (1984, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_10-43-25_01116/?width=320&aspect=1&fov=70&heading=87&pitch=42 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012125306": {
+      "wall": "b7e5651",
+      "measured": "b302017",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 93 % of the centre box is sky, so the facade read near-black at raw rgb(32,31,29) whatever its colour; drawn in the lower-quartile wall of the buurt's 16 other measured modern pands (1997, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-29_07-24-00_01208/?width=320&aspect=1&fov=53&heading=328&pitch=37 (captured 2025-09-29, CC BY 4.0)"
+    },
+    "0363100012125402": {
+      "wall": "b7a7e82",
+      "measured": "b302521",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(36,40,39); the centre box without its dark pixels (78 % of it) reads rgb(80,96,94), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-15_08-11-12_00392/?width=320&aspect=1&fov=35&heading=193&pitch=16 (captured 2025-09-15, CC BY 4.0)"
+    },
+    "0363100012125758": {
+      "wall": "b3b2e2a",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(35,34,33); the centre box without its dark pixels (50 % of it) reads rgb(49,50,48), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-16_11-54-38_00386/?width=320&aspect=1&fov=34&heading=268&pitch=19 (captured 2025-07-16, CC BY 4.0)"
+    },
+    "0363100012126054": {
+      "wall": "b6d6d6c",
+      "measured": "b30201b",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 85 % of the centre box is sky, so the facade read near-black at raw rgb(23,27,27) whatever its colour; drawn in the lower-quartile wall of the buurt's 11 other measured modern pands (1956, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-17_06-04-09_01893/?width=320&aspect=1&fov=70&heading=107&pitch=43 (captured 2025-07-17, CC BY 4.0)"
+    },
+    "0363100012129144": {
+      "wall": "b929699",
+      "measured": "b2e211d",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(29,32,30); the centre box without its dark pixels (60 % of it) reads rgb(104,112,111), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_02_10_23_36_00683/?width=320&aspect=1&fov=51&heading=255&pitch=39 (captured 2025-10-02, CC BY 4.0)"
+    },
+    "0363100012130316": {
+      "wall": "b55372c",
+      "measured": "b302017",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(36,33,28); the centre box without its dark pixels (52 % of it) reads rgb(71,64,53), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002576_pano_0000_000125/?width=320&aspect=1&fov=30&heading=18&pitch=15 (captured 2022-05-12, CC BY 4.0)"
+    },
+    "0363100012130981": {
+      "wall": "b423430",
+      "measured": "b2f201c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(29,26,29); the centre box without its dark pixels (82 % of it) reads rgb(55,53,59), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-08_12-51-15_01776/?width=320&aspect=1&fov=47&heading=251&pitch=25 (captured 2025-09-08, CC BY 4.0)"
+    },
+    "0363100012131294": {
+      "wall": "b41322d",
+      "measured": "b30201b",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(27,33,32); the centre box without its dark pixels (75 % of it) reads rgb(47,57,55), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_10-43-25_00108/?width=320&aspect=1&fov=30&heading=154&pitch=45 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012131467": {
+      "wall": "b7d574e",
+      "measured": "b322118",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(41,36,30); the centre box without its dark pixels (77 % of it) reads rgb(111,94,84), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-16_10-37-33_00205/?width=320&aspect=1&fov=30&heading=350&pitch=34 (captured 2025-07-16, CC BY 4.0)"
+    },
+    "0363100012131539": {
+      "wall": "b7e8082",
+      "measured": "b321f19",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(41,39,34); the centre box without its dark pixels (97 % of it) reads rgb(108,111,109), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_02_08_06_04_00354/?width=320&aspect=1&fov=70&heading=67&pitch=33 (captured 2025-10-02, CC BY 4.0)"
+    },
+    "0363100012133418": {
+      "wall": "b473a36",
+      "measured": "b2d211e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 85 % of the centre box is sky, so the facade read near-black at raw rgb(35,34,36) whatever its colour; drawn in the lower-quartile wall of the buurt's 10 other measured modern pands (1998, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_01695/?width=320&aspect=1&fov=48&heading=179&pitch=14 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012133527": {
+      "wall": "b6e7275",
+      "measured": "b352319",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(37,46,44); the centre box without its dark pixels (82 % of it) reads rgb(79,83,83), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-26_07-29-39_01931/?width=320&aspect=1&fov=49&heading=117&pitch=45 (captured 2025-09-26, CC BY 4.0)"
+    },
+    "0363100012138176": {
+      "wall": "b734c46",
+      "measured": "b302017",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 84 % of the centre box is sky, so the facade read near-black at raw rgb(30,28,23) whatever its colour; drawn in the lower-quartile wall of the buurt's 12 other measured modern pands (2002, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_06-03-21_01063/?width=320&aspect=1&fov=30&heading=132&pitch=23 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012140160": {
+      "wall": "b6f7476",
+      "measured": "b2d211e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 92 % of the centre box is sky, so the facade read near-black at raw rgb(25,27,29) whatever its colour; drawn in the lower-quartile wall of the buurt's 10 other measured modern pands (1991, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-15_06-24-20_00702/?width=320&aspect=1&fov=36&heading=340&pitch=18 (captured 2025-07-15, CC BY 4.0)"
+    },
+    "0363100012141017": {
+      "wall": "b5a3f35",
+      "measured": "b302017",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(34,30,25); the centre box without its dark pixels (71 % of it) reads rgb(74,70,63), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_01_09_07_51_00948/?width=320&aspect=1&fov=70&heading=163&pitch=45 (captured 2025-10-01, CC BY 4.0)"
+    },
+    "0363100012143269": {
+      "wall": "b412d28",
+      "measured": "b2d211e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 71 % of the centre box is sky, so the facade read near-black at raw rgb(27,30,32) whatever its colour; drawn in the lower-quartile wall of the buurt's 16 other measured modern pands (1997, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_10-43-25_02285/?width=320&aspect=1&fov=33&heading=152&pitch=35 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012144835": {
+      "wall": "b675752",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(34,31,29); the centre box without its dark pixels (66 % of it) reads rgb(92,89,86), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002576_pano_0000_000192/?width=320&aspect=1&fov=67&heading=232&pitch=45 (captured 2022-05-12, CC BY 4.0)"
+    },
+    "0363100012145624": {
+      "wall": "b878b8e",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(34,34,35); the centre box without its dark pixels (81 % of it) reads rgb(96,102,102), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-04_06-44-53_01999/?width=320&aspect=1&fov=70&heading=119&pitch=27 (captured 2025-09-04, CC BY 4.0)"
+    },
+    "0363100012148469": {
+      "wall": "beee5dc",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(10,5,2); the centre box without its dark pixels (75 % of it) reads rgb(248,229,203), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002563_pano_0002_000482/?width=320&aspect=1&fov=53&heading=353&pitch=21 (captured 2022-05-09, CC BY 4.0)"
+    },
+    "0363100012149070": {
+      "wall": "b382621",
+      "measured": "b2e211d",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 75 % of the centre box is sky, so the facade read near-black at raw rgb(23,28,28) whatever its colour; drawn in the lower-quartile wall of the buurt's 4 other measured modern pands (2010, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-25_09-21-07_00328/?width=320&aspect=1&fov=70&heading=42&pitch=45 (captured 2025-09-25, CC BY 4.0)"
+    },
+    "0363100012156758": {
+      "wall": "b49352e",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(27,27,26); the centre box without its dark pixels (55 % of it) reads rgb(59,58,52), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_08-35-58_00431/?width=320&aspect=1&fov=40&heading=359&pitch=43 (captured 2025-07-03, CC BY 4.0)"
+    },
+    "0363100012159262": {
+      "wall": "b3d2f2a",
+      "measured": "b2f2420",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(35,39,38); the centre box without its dark pixels (60 % of it) reads rgb(48,50,53), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-22_09-57-45_00956/?width=320&aspect=1&fov=70&heading=232&pitch=21 (captured 2025-09-22, CC BY 4.0)"
+    },
+    "0363100012163001": {
+      "wall": "b4d3f3c",
+      "measured": "b31211d",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(42,44,45); the centre box without its dark pixels (70 % of it) reads rgb(64,67,69), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_10-43-25_02319/?width=320&aspect=1&fov=33&heading=149&pitch=33 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012164275": {
+      "wall": "b4a3630",
+      "measured": "b322118",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 68 % of the centre box is sky, so the facade read near-black at raw rgb(42,47,47) whatever its colour; drawn in the lower-quartile wall of the buurt's 16 other measured modern pands (1992, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-18_07-44-47_03334/?width=320&aspect=1&fov=30&heading=173&pitch=32 (captured 2025-06-18, CC BY 4.0)"
+    },
+    "0363100012168777": {
+      "wall": "ba38574",
+      "measured": "b312521",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 78 % of the centre box is sky, so the facade read near-black at raw rgb(37,40,40) whatever its colour; drawn in the lower-quartile wall of the buurt's 4 other measured modern pands (1978, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-14_05-25-22_01700/?width=320&aspect=1&fov=70&heading=252&pitch=45 (captured 2025-07-14, CC BY 4.0)"
+    },
+    "0363100012169558": {
+      "wall": "b846a64",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(38,30,32); the centre box without its dark pixels (58 % of it) reads rgb(115,108,106), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-14_05-25-22_01534/?width=320&aspect=1&fov=70&heading=48&pitch=45 (captured 2025-07-14, CC BY 4.0)"
+    },
+    "0363100012169736": {
+      "wall": "b7b5651",
+      "measured": "b331e1b",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 87 % of the centre box is sky, so the facade read near-black at raw rgb(38,30,27) whatever its colour; drawn in the lower-quartile wall of the buurt's 14 other measured modern pands (2000, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_03-28-47_02552/?width=320&aspect=1&fov=70&heading=7&pitch=45 (captured 2025-06-19, CC BY 4.0)"
+    },
+    "0363100012170623": {
+      "wall": "b4c2f27",
+      "measured": "b302017",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(18,18,9); the centre box without its dark pixels (58 % of it) reads rgb(71,56,38), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/b_20250108_1041_Track13_Sphere_00017/?width=320&aspect=1&fov=70&heading=198&pitch=45 (captured 2025-01-08, CC BY 4.0)"
+    },
+    "0363100012170928": {
+      "wall": "bafb4b7",
+      "measured": "b2f2320",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(37,38,40); the centre box without its dark pixels (81 % of it) reads rgb(122,140,139), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-14_06-43-08_01306/?width=320&aspect=1&fov=70&heading=148&pitch=36 (captured 2025-07-14, CC BY 4.0)"
+    },
+    "0363100012170941": {
+      "wall": "b775646",
+      "measured": "b30201b",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(36,31,29); the centre box without its dark pixels (58 % of it) reads rgb(115,91,62), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002360_pano_0002_000028/?width=320&aspect=1&fov=70&heading=294&pitch=45 (captured 2021-12-29, CC BY 4.0)"
+    },
+    "0363100012171031": {
+      "wall": "b886355",
+      "measured": "b302017",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(21,14,2); the centre box without its dark pixels (76 % of it) reads rgb(135,106,65), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/b_20250109_1300_Track05_Sphere_00040/?width=320&aspect=1&fov=70&heading=326&pitch=45 (captured 2025-01-09, CC BY 4.0)"
+    },
+    "0363100012171549": {
+      "wall": "b5c3b30",
+      "measured": "b321f19",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 86 % of the centre box is sky, so the facade read near-black at raw rgb(35,34,37) whatever its colour; drawn in the lower-quartile wall of the buurt's 14 other measured modern pands (1973, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_03551/?width=320&aspect=1&fov=30&heading=125&pitch=24 (captured 2025-07-03, CC BY 4.0)"
+    },
+    "0363100012171833": {
+      "wall": "b442e28",
+      "measured": "b2e221f",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 78 % of the centre box is sky, so the facade read near-black at raw rgb(37,39,39) whatever its colour; drawn in the lower-quartile wall of the buurt's 15 other measured modern pands (1959, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_06-21-49_00294/?width=320&aspect=1&fov=44&heading=134&pitch=34 (captured 2025-06-19, CC BY 4.0)"
+    },
+    "0363100012173566": {
+      "wall": "b624c46",
+      "measured": "b321f19",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 94 % of the centre box is sky, so the facade read near-black at raw rgb(39,38,35) whatever its colour; drawn in the lower-quartile wall of the buurt's 15 other measured modern pands (1954, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_08-35-58_00035/?width=320&aspect=1&fov=70&heading=146&pitch=45 (captured 2025-07-03, CC BY 4.0)"
+    },
+    "0363100012174308": {
+      "wall": "b463834",
+      "measured": "b33241f",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(38,39,43); the centre box without its dark pixels (61 % of it) reads rgb(57,59,61), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_08-35-58_01279/?width=320&aspect=1&fov=70&heading=178&pitch=42 (captured 2025-07-03, CC BY 4.0)"
+    },
+    "0363100012174478": {
+      "wall": "b493c38",
+      "measured": "b2d221e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(38,40,39); the centre box without its dark pixels (76 % of it) reads rgb(60,63,62), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-14_05-25-22_01716/?width=320&aspect=1&fov=66&heading=215&pitch=45 (captured 2025-07-14, CC BY 4.0)"
+    },
+    "0363100012175085": {
+      "wall": "b7a7877",
+      "measured": "b331f1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(43,34,32); the centre box without its dark pixels (53 % of it) reads rgb(103,104,99), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001653_pano_0001_000053/?width=320&aspect=1&fov=70&heading=21&pitch=45 (captured 2020-02-18, CC BY 4.0)"
+    },
+    "0363100012175221": {
+      "wall": "b482b28",
+      "measured": "b331e1c",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 63 % of the centre box is sky, so the facade read near-black at raw rgb(29,20,20) whatever its colour; drawn in the lower-quartile wall of the buurt's 2 other measured modern pands (1977, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-30_05-16-46_01258/?width=320&aspect=1&fov=70&heading=196&pitch=45 (captured 2025-06-30, CC BY 4.0)"
+    },
+    "0363100012175442": {
+      "wall": "b766460",
+      "measured": "b33211c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(32,39,38); the centre box without its dark pixels (83 % of it) reads rgb(106,101,110), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_03-46-32_02184/?width=320&aspect=1&fov=48&heading=192&pitch=45 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012176169": {
+      "wall": "b4e3526",
+      "measured": "b331e1c",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 96 % of the centre box is sky, so the facade read near-black at raw rgb(41,29,30) whatever its colour; drawn in the lower-quartile wall of the buurt's 3 other measured modern pands (1992, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_00410/?width=320&aspect=1&fov=56&heading=306&pitch=45 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012177274": {
+      "wall": "b655551",
+      "measured": "b36211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(44,37,38); the centre box without its dark pixels (84 % of it) reads rgb(86,86,90), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_00211/?width=320&aspect=1&fov=46&heading=44&pitch=41 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012177362": {
+      "wall": "b452a26",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(41,34,37); the centre box without its dark pixels (51 % of it) reads rgb(57,46,49), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_04-42-37_01157/?width=320&aspect=1&fov=70&heading=195&pitch=45 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012177871": {
+      "wall": "b6e605c",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(40,36,41); the centre box without its dark pixels (81 % of it) reads rgb(96,98,102), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_04-36-25_00101/?width=320&aspect=1&fov=44&heading=10&pitch=40 (captured 2025-07-03, CC BY 4.0)"
+    },
+    "0363100012177940": {
+      "wall": "b7b584a",
+      "measured": "b2e211d",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 97 % of the centre box is sky, so the facade read near-black at raw rgb(24,25,27) whatever its colour; drawn in the lower-quartile wall of the buurt's 10 other measured modern pands (1988, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02872/?width=320&aspect=1&fov=45&heading=80&pitch=45 (captured 2025-07-03, CC BY 4.0)"
+    },
+    "0363100012180581": {
+      "wall": "b614133",
+      "measured": "b332218",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(43,40,35); the centre box without its dark pixels (63 % of it) reads rgb(81,72,60), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002048_pano_0000_000517/?width=320&aspect=1&fov=30&heading=319&pitch=30 (captured 2021-03-18, CC BY 4.0)"
+    },
+    "0363100012181965": {
+      "wall": "b7b5651",
+      "measured": "b32221e",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 89 % of the centre box is sky, so the facade read near-black at raw rgb(41,37,34) whatever its colour; drawn in the lower-quartile wall of the buurt's 14 other measured modern pands (2000, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_03-28-47_02555/?width=320&aspect=1&fov=43&heading=345&pitch=45 (captured 2025-06-19, CC BY 4.0)"
+    },
+    "0363100012182329": {
+      "wall": "b6a443f",
+      "measured": "b3a2320",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(47,35,36); the centre box without its dark pixels (62 % of it) reads rgb(103,66,69), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_03154/?width=320&aspect=1&fov=70&heading=36&pitch=45 (captured 2025-07-03, CC BY 4.0)"
+    },
+    "0363100012182518": {
+      "wall": "b4b3126",
+      "measured": "b311f18",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(43,33,24); the centre box without its dark pixels (51 % of it) reads rgb(63,58,45), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/b_20250108_1041_Track16_Sphere_00036/?width=320&aspect=1&fov=42&heading=208&pitch=29 (captured 2025-01-08, CC BY 4.0)"
+    },
+    "0363100012182913": {
+      "wall": "b3d2e2a",
+      "measured": "b32221e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(33,39,38); the centre box without its dark pixels (57 % of it) reads rgb(45,52,51), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-17_08-04-10_03585/?width=320&aspect=1&fov=30&heading=67&pitch=17 (captured 2025-06-17, CC BY 4.0)"
+    },
+    "0363100012186194": {
+      "wall": "b7b5651",
+      "measured": "b321f19",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 90 % of the centre box is sky, so the facade read near-black at raw rgb(38,31,29) whatever its colour; drawn in the lower-quartile wall of the buurt's 14 other measured modern pands (2000, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_03-28-47_02553/?width=320&aspect=1&fov=42&heading=340&pitch=45 (captured 2025-06-19, CC BY 4.0)"
+    },
+    "0363100012201311": {
+      "wall": "be2d9d3",
+      "measured": "b311f1a",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(29,24,21); the centre box without its dark pixels (55 % of it) reads rgb(222,200,183), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2024-12-23_09-14-39_18904/?width=320&aspect=1&fov=70&heading=17&pitch=43 (captured 2024-12-23, CC BY 4.0)"
+    },
+    "0363100012233632": {
+      "wall": "b878483",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(34,36,34); the centre box without its dark pixels (81 % of it) reads rgb(131,142,141), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-29_06-46-33_00520/?width=320&aspect=1&fov=30&heading=345&pitch=34 (captured 2025-09-29, CC BY 4.0)"
+    },
+    "0363100012237143": {
+      "wall": "b41322e",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(33,34,35); the centre box without its dark pixels (73 % of it) reads rgb(50,56,55), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-17_09-10-34_02029/?width=320&aspect=1&fov=68&heading=80&pitch=45 (captured 2025-06-17, CC BY 4.0)"
+    },
+    "0363100012239088": {
+      "wall": "be7e8ea",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(15,3,13); the centre box without its dark pixels (58 % of it) reads rgb(244,244,242), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002078_pano_0000_002297/?width=320&aspect=1&fov=66&heading=17&pitch=43 (captured 2021-04-01, CC BY 4.0)"
+    },
+    "0363100012239295": {
+      "wall": "b4a3934",
+      "measured": "b302017",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(28,35,34); the centre box without its dark pixels (75 % of it) reads rgb(54,63,61), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-23_13-57-40_00027/?width=320&aspect=1&fov=70&heading=59&pitch=45 (captured 2025-09-23, CC BY 4.0)"
+    },
+    "0363100012241314": {
+      "wall": "bdfeaed",
+      "measured": "b36241a",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(33,40,38); the centre box without its dark pixels (89 % of it) reads rgb(226,247,246), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_09-24-09_00297/?width=320&aspect=1&fov=30&heading=51&pitch=17 (captured 2025-09-24, CC BY 4.0)"
+    },
+    "0363100012241991": {
+      "wall": "b70605c",
+      "measured": "b331e1c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(45,43,42); the centre box without its dark pixels (88 % of it) reads rgb(96,97,98), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_02_10_23_36_00851/?width=320&aspect=1&fov=70&heading=331&pitch=45 (captured 2025-10-02, CC BY 4.0)"
+    },
+    "0363100012242142": {
+      "wall": "b372824",
+      "measured": "b2e211d",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 89 % of the centre box is sky, so the facade read near-black at raw rgb(31,36,37) whatever its colour; drawn in the lower-quartile wall of the buurt's 4 other measured modern pands (2017, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-30_12-53-56_00181/?width=320&aspect=1&fov=37&heading=159&pitch=14 (captured 2025-06-30, CC BY 4.0)"
+    },
+    "0363100012242144": {
+      "wall": "b372824",
+      "measured": "b33241f",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 92 % of the centre box is sky, so the facade read near-black at raw rgb(39,39,43) whatever its colour; drawn in the lower-quartile wall of the buurt's 4 other measured modern pands (2017, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-30_12-53-56_00173/?width=320&aspect=1&fov=38&heading=161&pitch=15 (captured 2025-06-30, CC BY 4.0)"
+    },
+    "0363100012243786": {
+      "wall": "b3d2f2b",
+      "measured": "b2f201c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(35,40,39); the centre box without its dark pixels (53 % of it) reads rgb(47,51,51), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-04_07-46-10_00181/?width=320&aspect=1&fov=70&heading=85&pitch=45 (captured 2025-09-04, CC BY 4.0)"
+    },
+    "0363100012245492": {
+      "wall": "b55403a",
+      "measured": "b332622",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 79 % of the centre box is sky, so the facade read near-black at raw rgb(37,42,42) whatever its colour; drawn in the lower-quartile wall of the buurt's 13 other measured modern pands (2017, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-25_12-28-12_01835/?width=320&aspect=1&fov=30&heading=229&pitch=15 (captured 2025-09-25, CC BY 4.0)"
+    },
+    "0363100012246118": {
+      "wall": "b675955",
+      "measured": "b2f2320",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 81 % of the centre box is sky, so the facade read near-black at raw rgb(37,38,40) whatever its colour; drawn in the lower-quartile wall of the buurt's 2 other measured modern pands (2018, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-30_12-53-56_00692/?width=320&aspect=1&fov=44&heading=275&pitch=45 (captured 2025-06-30, CC BY 4.0)"
+    },
+    "0363100012246848": {
+      "wall": "b4d3f3b",
+      "measured": "b35201d",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(51,43,45); the centre box without its dark pixels (58 % of it) reads rgb(67,65,70), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-20_10-43-25_00037/?width=320&aspect=1&fov=49&heading=165&pitch=33 (captured 2025-06-20, CC BY 4.0)"
+    },
+    "0363100012247030": {
+      "wall": "b40332f",
+      "measured": "b321f1a",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 82 % of the centre box is sky, so the facade read near-black at raw rgb(24,30,30) whatever its colour; drawn in the lower-quartile wall of the buurt's 12 other measured modern pands (2018, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_12-22-09_00141/?width=320&aspect=1&fov=70&heading=294&pitch=45 (captured 2025-06-16, CC BY 4.0)"
+    },
+    "0363100012249042": {
+      "wall": "b554135",
+      "measured": "b31201b",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 100 % of the centre box is sky, so the facade read near-black at raw rgb(25,28,30) whatever its colour; drawn in the lower-quartile wall of the buurt's 3 other measured modern pands (2019, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-30_12-00-21_01455/?width=320&aspect=1&fov=70&heading=31&pitch=33 (captured 2025-09-30, CC BY 4.0)"
+    },
+    "0363100012250042": {
+      "wall": "b838486",
+      "measured": "b33211b",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(35,38,36); the centre box without its dark pixels (71 % of it) reads rgb(111,121,119), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-26_09-25-50_00320/?width=320&aspect=1&fov=70&heading=33&pitch=45 (captured 2025-06-26, CC BY 4.0)"
+    },
+    "0363100012250153": {
+      "wall": "b493c37",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(35,37,35); the centre box without its dark pixels (68 % of it) reads rgb(61,63,60), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-08-01_09-43-20_01129/?width=320&aspect=1&fov=44&heading=279&pitch=45 (captured 2025-08-01, CC BY 4.0)"
+    },
+    "0363100012251630": {
+      "wall": "b73635f",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(33,30,30); the centre box without its dark pixels (79 % of it) reads rgb(100,101,105), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002215_pano_0000_004146/?width=320&aspect=1&fov=70&heading=42&pitch=14 (captured 2021-07-06, CC BY 4.0)"
+    },
+    "0363100012251787": {
+      "wall": "b66686b",
+      "measured": "b34211c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(41,40,38); the centre box without its dark pixels (86 % of it) reads rgb(73,76,75), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002442_pano_0002_000147/?width=320&aspect=1&fov=70&heading=7&pitch=45 (captured 2022-01-26, CC BY 4.0)"
+    },
+    "0363100012252772": {
+      "wall": "b4e3832",
+      "measured": "b331e1c",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 79 % of the centre box is sky, so the facade read near-black at raw rgb(33,26,22) whatever its colour; drawn in the lower-quartile wall of the buurt's 8 other measured modern pands (2020, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-25_07-52-16_00266/?width=320&aspect=1&fov=46&heading=232&pitch=44 (captured 2025-09-25, CC BY 4.0)"
+    },
+    "0363100012252823": {
+      "wall": "b483123",
+      "measured": "b302017",
+      "why": "Near-black artefact, sky-exposed (darkWallRule.ts, lane fb-placement2 2026-11-20): 66 % of the centre box is sky, so the facade read near-black at raw rgb(35,40,37) whatever its colour; drawn in the lower-quartile wall of the buurt's 10 other measured modern pands (2022, same decade where 5 or more), by the wall-colour-by-judgement ruling of 2026-11-14.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_08-46-57_00979/?width=320&aspect=1&fov=41&heading=318&pitch=39 (captured 2025-06-19, CC BY 4.0)"
+    },
+    "0363100012254038": {
+      "wall": "b73797b",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(22,24,26); the centre box without its dark pixels (68 % of it) reads rgb(76,96,94), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-16_07-19-52_00027/?width=320&aspect=1&fov=68&heading=318&pitch=40 (captured 2025-09-16, CC BY 4.0)"
+    },
+    "0363100012254787": {
+      "wall": "b6a6e71",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(33,35,36); the centre box without its dark pixels (84 % of it) reads rgb(70,80,80), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-25_07-52-16_00660/?width=320&aspect=1&fov=55&heading=68&pitch=28 (captured 2025-09-25, CC BY 4.0)"
+    },
+    "0363100012571562": {
+      "wall": "b4d2f2a",
+      "measured": "b302017",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(13,10,1); the centre box without its dark pixels (52 % of it) reads rgb(77,55,26), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/b_20250108_1349_Track14_Sphere_00022/?width=320&aspect=1&fov=42&heading=12&pitch=17 (captured 2025-01-08, CC BY 4.0)"
+    },
+    "0457100000059103": {
+      "wall": "b41332f",
+      "measured": "b2e201c",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(39,37,38); the centre box without its dark pixels (73 % of it) reads rgb(53,54,56), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-19_12-20-33_00441/?width=320&aspect=1&fov=35&heading=337&pitch=8 (captured 2025-09-19, CC BY 4.0)"
+    },
+    "0457100000061871": {
+      "wall": "b40332f",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(34,36,35); the centre box without its dark pixels (55 % of it) reads rgb(51,55,54), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-19_12-20-33_01025/?width=320&aspect=1&fov=30&heading=73&pitch=12 (captured 2025-09-19, CC BY 4.0)"
+    },
+    "0457100000066712": {
+      "wall": "b747475",
+      "measured": "b2d211e",
+      "why": "Near-black artefact (darkWallRule.ts, lane fb-placement2 2026-11-20): the warm-pixel mode read shadow/glass at raw rgb(33,33,32); the centre box without its dark pixels (62 % of it) reads rgb(86,87,81), calibrated through the 15 nearest population samples.",
+      "source": "Gemeente Amsterdam panorama thumbnail https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-18_14-49-27_00052/?width=320&aspect=1&fov=54&heading=44&pitch=21 (captured 2025-09-18, CC BY 4.0)"
+    }
   }
- }
 }

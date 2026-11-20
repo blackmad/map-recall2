@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-14T22:05:04.137Z",
+ "generatedAt": "2026-11-20T05:57:16.762Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -11769,45 +11769,55 @@
    "id": "chunk-face-bellamyplein-18-38-r1",
    "category": "street-survey",
    "name": "face-bellamyplein-18-38-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bellamyplein-18-38-r1.glb?asset=6c6596ec8dfe45be",
-   "sha256": "6c6596ec8dfe45be834ec333d9426891f9ab104abb9985f616ee5c0ec200193c",
-   "bytes": 265444,
-   "triangles": 11822,
-   "primitives": 14,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bellamyplein-18-38-r1.glb?asset=ad632dc296b0b553",
+   "sha256": "ad632dc296b0b5533abaa46d57a41a24b148a181a2f0efd8bd85893957b839b3",
+   "bytes": 537532,
+   "triangles": 24053,
+   "primitives": 39,
    "instance": {
     "anchor": [
-     4.867277049663395,
-     52.36783518070617
+     4.867200218507594,
+     52.367949679997615
     ],
-    "northOffsetDegrees": 247.6215,
+    "northOffsetDegrees": 247.7222,
     "mirror": false
    },
    "bounds": {
     "min": [
-     -13.775,
+     -27.547,
      0,
-     -15.744
+     -15.762
     ],
     "max": [
-     13.958,
-     16.081,
-     1.114
+     27.718,
+     16.464,
+     1.134
     ]
    },
-   "height": 16.081,
+   "height": 16.464,
    "suppress": [
     "NL.IMBAG.Pand.0363100012164224",
     "NL.IMBAG.Pand.0363100012163466",
     "NL.IMBAG.Pand.0363100012153217",
     "NL.IMBAG.Pand.0363100012159793",
-    "NL.IMBAG.Pand.0363100012166965"
+    "NL.IMBAG.Pand.0363100012166965",
+    "NL.IMBAG.Pand.0363100012162005",
+    "NL.IMBAG.Pand.0363100012159962",
+    "NL.IMBAG.Pand.0363100012158557",
+    "NL.IMBAG.Pand.0363100012163720",
+    "NL.IMBAG.Pand.0363100012164492"
    ],
    "replaces": [
     "ordinary-0363100012164224",
     "ordinary-0363100012163466",
     "ordinary-0363100012153217",
     "ordinary-0363100012159793",
-    "ordinary-0363100012166965"
+    "ordinary-0363100012166965",
+    "ordinary-0363100012162005",
+    "ordinary-0363100012159962",
+    "ordinary-0363100012158557",
+    "ordinary-0363100012163720",
+    "ordinary-0363100012164492"
    ],
    "footprint": {
     "type": "MultiPolygon",
@@ -11911,443 +11921,27 @@
         52.367904
        ]
       ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "bellamyplein-164224",
-     "pandId": "0363100012164224",
-     "buildingId": "NL.IMBAG.Pand.0363100012164224",
-     "address": "Bellamyplein 38",
-     "frontage": {
-      "x0": -13.775,
-      "x1": -8.274,
-      "widthM": 5.5
-     },
-     "bounds": {
-      "min": [
-       -13.775,
-       0,
-       -13.767
-      ],
-      "max": [
-       -8.084,
-       16.035,
-       1.114
+     ],
+     [
+      [
+       [
+        4.8671691,
+        52.3679956
+       ],
+       [
+        4.8669823,
+        52.3679503
+       ],
+       [
+        4.8670133,
+        52.3679041
+       ],
+       [
+        4.8672003,
+        52.3679495
+       ]
       ]
-     },
-     "triangles": 2320,
-     "ranges": [
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 116
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 168
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 1316
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 0,
-       "triangleCount": 292
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 0,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 0,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 0,
-       "triangleCount": 3
-      }
-     ]
-    },
-    {
-     "recipeId": "bellamyplein-163466",
-     "pandId": "0363100012163466",
-     "buildingId": "NL.IMBAG.Pand.0363100012163466",
-     "address": "Bellamyplein 36",
-     "frontage": {
-      "x0": -8.274,
-      "x1": -2.751,
-      "widthM": 5.523
-     },
-     "bounds": {
-      "min": [
-       -8.274,
-       0,
-       -13.757
-      ],
-      "max": [
-       -2.56,
-       16.01,
-       1.1
-      ]
-     },
-     "triangles": 2308,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 104
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 168,
-       "triangleCount": 168
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 24,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 1316,
-       "triangleCount": 1316
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 384,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 292,
-       "triangleCount": 292
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 3,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 2,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 3,
-       "triangleCount": 2
-      }
-     ]
-    },
-    {
-     "recipeId": "bellamyplein-153217",
-     "pandId": "0363100012153217",
-     "buildingId": "NL.IMBAG.Pand.0363100012153217",
-     "address": "Bellamyplein 34",
-     "frontage": {
-      "x0": -2.751,
-      "x1": 2.75,
-      "widthM": 5.501
-     },
-     "bounds": {
-      "min": [
-       -2.751,
-       0,
-       -13.747
-      ],
-      "max": [
-       2.94,
-       16.081,
-       1.092
-      ]
-     },
-     "triangles": 2422,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 205
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 336,
-       "triangleCount": 168
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 48,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 2632,
-       "triangleCount": 1316
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 768,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 584,
-       "triangleCount": 292
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 7,
-       "triangleCount": 15
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 4,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 5,
-       "triangleCount": 2
-      }
-     ]
-    },
-    {
-     "recipeId": "bellamyplein-159793",
-     "pandId": "0363100012159793",
-     "buildingId": "NL.IMBAG.Pand.0363100012159793",
-     "address": "Bellamyplein 32",
-     "frontage": {
-      "x0": 2.75,
-      "x1": 8.286,
-      "widthM": 5.536
-     },
-     "bounds": {
-      "min": [
-       2.75,
-       0,
-       -13.739
-      ],
-      "max": [
-       8.475,
-       16.044,
-       1.09
-      ]
-     },
-     "triangles": 2315,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 111
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 504,
-       "triangleCount": 168
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 72,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 36,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 3948,
-       "triangleCount": 1316
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 1152,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 876,
-       "triangleCount": 292
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 22,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 8,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 7,
-       "triangleCount": 2
-      }
-     ]
-    },
-    {
-     "recipeId": "bellamyplein-166965",
-     "pandId": "0363100012166965",
-     "buildingId": "NL.IMBAG.Pand.0363100012166965",
-     "address": "Bellamyplein 30",
-     "frontage": {
-      "x0": 8.286,
-      "x1": 13.752,
-      "widthM": 5.466
-     },
-     "bounds": {
-      "min": [
-       8.285,
-       0,
-       -15.744
-      ],
-      "max": [
-       13.958,
-       15.957,
-       1.106
-      ]
-     },
-     "triangles": 2457,
-     "ranges": [
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 228
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 672,
-       "triangleCount": 168
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 96,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 48,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 5264,
-       "triangleCount": 1316
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 1536,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 1168,
-       "triangleCount": 292
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 25,
-       "triangleCount": 26
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 11,
-       "triangleCount": 5
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 9,
-       "triangleCount": 2
-      }
-     ]
-    }
-   ],
-   "lod2": {
-    "sourceHash": "6c6596ec8dfe45be",
-    "buildVersion": 4,
-    "bytes": 36948,
-    "triangles": 1307
-   }
-  },
-  {
-   "id": "chunk-face-bellamyplein-18-38-r2",
-   "category": "street-survey",
-   "name": "face-bellamyplein-18-38-r2",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bellamyplein-18-38-r2.glb?asset=bbc61da802fe27e7",
-   "sha256": "bbc61da802fe27e7809101aeec4b8a1e2fcce665db5f9df430cc3876a97428f6",
-   "bytes": 214656,
-   "triangles": 9224,
-   "primitives": 15,
-   "instance": {
-    "anchor": [
-     4.867108062939179,
-     52.36808708052162
-    ],
-    "northOffsetDegrees": 247.8884,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -10.989,
-     0,
-     -15.287
-    ],
-    "max": [
-     11.148,
-     16.499,
-     1.111
-    ]
-   },
-   "height": 16.499,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012159962",
-    "NL.IMBAG.Pand.0363100012158557",
-    "NL.IMBAG.Pand.0363100012163720",
-    "NL.IMBAG.Pand.0363100012164492"
-   ],
-   "replaces": [
-    "ordinary-0363100012159962",
-    "ordinary-0363100012158557",
-    "ordinary-0363100012163720",
-    "ordinary-0363100012164492"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
+     ],
      [
       [
        [
@@ -12440,77 +12034,603 @@
    },
    "pands": [
     {
+     "recipeId": "bellamyplein-164224",
+     "pandId": "0363100012164224",
+     "buildingId": "NL.IMBAG.Pand.0363100012164224",
+     "address": "Bellamyplein 38",
+     "frontage": {
+      "x0": -27.547,
+      "x1": -22.047,
+      "widthM": 5.5
+     },
+     "bounds": {
+      "min": [
+       -27.547,
+       0,
+       -13.744
+      ],
+      "max": [
+       -21.881,
+       16.046,
+       1.134
+      ]
+     },
+     "triangles": 2425,
+     "ranges": [
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 155
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 0,
+       "triangleCount": 1316
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 0,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 0,
+       "triangleCount": 292
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      }
+     ]
+    },
+    {
+     "recipeId": "bellamyplein-163466",
+     "pandId": "0363100012163466",
+     "buildingId": "NL.IMBAG.Pand.0363100012163466",
+     "address": "Bellamyplein 36",
+     "frontage": {
+      "x0": -22.047,
+      "x1": -16.524,
+      "widthM": 5.523
+     },
+     "bounds": {
+      "min": [
+       -22.047,
+       0,
+       -13.743
+      ],
+      "max": [
+       -16.356,
+       16.022,
+       1.11
+      ]
+     },
+     "triangles": 2413,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 143
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 168,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 36,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 1316,
+       "triangleCount": 1316
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 384,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 292,
+       "triangleCount": 292
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 1,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 3,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "bellamyplein-153217",
+     "pandId": "0363100012153217",
+     "buildingId": "NL.IMBAG.Pand.0363100012153217",
+     "address": "Bellamyplein 34",
+     "frontage": {
+      "x0": -16.524,
+      "x1": -11.022,
+      "widthM": 5.501
+     },
+     "bounds": {
+      "min": [
+       -16.524,
+       0,
+       -13.744
+      ],
+      "max": [
+       -10.857,
+       16.093,
+       1.092
+      ]
+     },
+     "triangles": 2527,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 336,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 72,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 2632,
+       "triangleCount": 1316
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 768,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 584,
+       "triangleCount": 292
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 6,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 5,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 5,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "bellamyplein-159793",
+     "pandId": "0363100012159793",
+     "buildingId": "NL.IMBAG.Pand.0363100012159793",
+     "address": "Bellamyplein 32",
+     "frontage": {
+      "x0": -11.022,
+      "x1": -5.487,
+      "widthM": 5.536
+     },
+     "bounds": {
+      "min": [
+       -11.022,
+       0,
+       -13.744
+      ],
+      "max": [
+       -5.321,
+       16.055,
+       1.081
+      ]
+     },
+     "triangles": 2420,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 504,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 108,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 3948,
+       "triangleCount": 1316
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 1152,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 876,
+       "triangleCount": 292
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 20,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 7,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "bellamyplein-166965",
+     "pandId": "0363100012166965",
+     "buildingId": "NL.IMBAG.Pand.0363100012166965",
+     "address": "Bellamyplein 30",
+     "frontage": {
+      "x0": -5.487,
+      "x1": -0.02,
+      "widthM": 5.466
+     },
+     "bounds": {
+      "min": [
+       -5.487,
+       0,
+       -15.762
+      ],
+      "max": [
+       0.157,
+       15.967,
+       1.087
+      ]
+     },
+     "triangles": 2557,
+     "ranges": [
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 262
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 672,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 144,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 5264,
+       "triangleCount": 1316
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 1536,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 1168,
+       "triangleCount": 292
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 24,
+       "triangleCount": 27
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 12,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 9,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "bellamyplein-162005",
+     "pandId": "0363100012162005",
+     "buildingId": "NL.IMBAG.Pand.0363100012162005",
+     "address": "Bellamyplein 28",
+     "frontage": {
+      "x0": -0.02,
+      "x1": 5.537,
+      "widthM": 5.558
+     },
+     "bounds": {
+      "min": [
+       -0.02,
+       0,
+       -13.744
+      ],
+      "max": [
+       5.704,
+       16.271,
+       1.087
+      ]
+     },
+     "triangles": 2029,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 225
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 840,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 180,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 6580,
+       "triangleCount": 1028
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 1920,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 1460,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 51,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 16,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 11,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
      "recipeId": "bellamyplein-159962",
      "pandId": "0363100012159962",
      "buildingId": "NL.IMBAG.Pand.0363100012159962",
      "address": "Bellamyplein 26",
      "frontage": {
-      "x0": -10.989,
-      "x1": -5.508,
+      "x0": 5.537,
+      "x1": 11.018,
       "widthM": 5.481
      },
      "bounds": {
       "min": [
-       -10.989,
+       5.537,
        0,
-       -13.729
+       -13.744
       ],
       "max": [
-       -5.382,
-       16.078,
-       1.111
+       11.184,
+       16.043,
+       1.09
       ]
      },
-     "triangles": 2423,
+     "triangles": 2484,
      "ranges": [
       {
-       "primitive": 2,
+       "primitive": 21,
        "firstTriangle": 0,
-       "triangleCount": 206
+       "triangleCount": 30
       },
       {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 168
-      },
-      {
-       "primitive": 4,
+       "primitive": 22,
        "firstTriangle": 0,
        "triangleCount": 24
       },
       {
-       "primitive": 5,
+       "primitive": 26,
        "firstTriangle": 0,
+       "triangleCount": 206
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 924,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 216,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 72,
        "triangleCount": 12
       },
       {
-       "primitive": 6,
-       "firstTriangle": 0,
+       "primitive": 30,
+       "firstTriangle": 7608,
        "triangleCount": 1316
       },
       {
-       "primitive": 7,
-       "firstTriangle": 0,
+       "primitive": 31,
+       "firstTriangle": 2304,
        "triangleCount": 384
       },
       {
-       "primitive": 11,
-       "firstTriangle": 0,
+       "primitive": 35,
+       "firstTriangle": 1652,
        "triangleCount": 292
       },
       {
-       "primitive": 12,
-       "firstTriangle": 0,
-       "triangleCount": 15
+       "primitive": 36,
+       "firstTriangle": 59,
+       "triangleCount": 11
       },
       {
-       "primitive": 13,
-       "firstTriangle": 0,
-       "triangleCount": 4
+       "primitive": 37,
+       "firstTriangle": 20,
+       "triangleCount": 3
       },
       {
-       "primitive": 14,
-       "firstTriangle": 0,
+       "primitive": 38,
+       "firstTriangle": 13,
        "triangleCount": 2
       }
      ]
@@ -12521,72 +12641,82 @@
      "buildingId": "NL.IMBAG.Pand.0363100012158557",
      "address": "Bellamyplein 24",
      "frontage": {
-      "x0": -5.508,
-      "x1": -0.007,
+      "x0": 11.018,
+      "x1": 16.519,
       "widthM": 5.501
      },
      "bounds": {
       "min": [
-       -5.508,
+       11.018,
        0,
        -13.744
       ],
       "max": [
-       0.119,
-       15.999,
-       1.104
+       16.685,
+       15.964,
+       1.098
       ]
      },
-     "triangles": 2315,
+     "triangles": 2507,
      "ranges": [
       {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 111
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 168,
-       "triangleCount": 168
-      },
-      {
        "primitive": 4,
-       "firstTriangle": 24,
-       "triangleCount": 24
+       "firstTriangle": 0,
+       "triangleCount": 30
       },
       {
        "primitive": 5,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 1316,
-       "triangleCount": 1316
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 384,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 292,
-       "triangleCount": 292
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 15,
-       "triangleCount": 1
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 4,
-       "triangleCount": 5
+       "firstTriangle": 0,
+       "triangleCount": 24
       },
       {
        "primitive": 14,
-       "firstTriangle": 2,
+       "firstTriangle": 0,
+       "triangleCount": 229
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 1092,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 252,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 8924,
+       "triangleCount": 1316
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 2688,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 1944,
+       "triangleCount": 292
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 70,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 23,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 15,
        "triangleCount": 2
       }
      ]
@@ -12597,72 +12727,82 @@
      "buildingId": "NL.IMBAG.Pand.0363100012163720",
      "address": "Bellamyplein 22",
      "frontage": {
-      "x0": -0.007,
-      "x1": 5.506,
+      "x0": 16.519,
+      "x1": 22.032,
       "widthM": 5.513
      },
      "bounds": {
       "min": [
-       -0.007,
+       16.519,
        0,
-       -13.762
+       -13.745
       ],
       "max": [
-       5.633,
-       15.726,
-       0.172
+       22.199,
+       15.696,
+       0.175
       ]
      },
-     "triangles": 2017,
+     "triangles": 2129,
      "ranges": [
       {
-       "primitive": 0,
-       "firstTriangle": 111,
-       "triangleCount": 65
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 336,
-       "triangleCount": 168
-      },
-      {
        "primitive": 4,
-       "firstTriangle": 48,
-       "triangleCount": 24
+       "firstTriangle": 30,
+       "triangleCount": 30
       },
       {
        "primitive": 5,
        "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 2632,
-       "triangleCount": 1068
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 768,
-       "triangleCount": 372
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 584,
-       "triangleCount": 292
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 16,
-       "triangleCount": 9
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 9,
-       "triangleCount": 3
+       "triangleCount": 24
       },
       {
        "primitive": 14,
-       "firstTriangle": 4,
+       "firstTriangle": 229,
+       "triangleCount": 103
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 1260,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 288,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 96,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 10240,
+       "triangleCount": 1068
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 3072,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 2236,
+       "triangleCount": 292
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 79,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 28,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 17,
        "triangleCount": 4
       }
      ]
@@ -12673,97 +12813,107 @@
      "buildingId": "NL.IMBAG.Pand.0363100012164492",
      "address": "Bellamyplein 20",
      "frontage": {
-      "x0": 5.506,
-      "x1": 11.007,
+      "x0": 22.032,
+      "x1": 27.533,
       "widthM": 5.501
      },
      "bounds": {
       "min": [
-       5.505,
+       22.031,
        0,
-       -15.287
+       -15.252
       ],
       "max": [
-       11.148,
-       16.499,
-       1.097
+       27.718,
+       16.464,
+       1.123
       ]
      },
-     "triangles": 2469,
+     "triangles": 2562,
      "ranges": [
       {
-       "primitive": 1,
+       "primitive": 13,
        "firstTriangle": 0,
-       "triangleCount": 146
+       "triangleCount": 30
       },
       {
-       "primitive": 3,
-       "firstTriangle": 504,
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 185
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 1428,
        "triangleCount": 168
       },
       {
-       "primitive": 4,
-       "firstTriangle": 72,
-       "triangleCount": 48
+       "primitive": 28,
+       "firstTriangle": 324,
+       "triangleCount": 60
       },
       {
-       "primitive": 5,
-       "firstTriangle": 36,
+       "primitive": 29,
+       "firstTriangle": 108,
        "triangleCount": 12
       },
       {
-       "primitive": 6,
-       "firstTriangle": 3700,
+       "primitive": 30,
+       "firstTriangle": 11308,
        "triangleCount": 1172
       },
       {
-       "primitive": 7,
-       "firstTriangle": 1140,
+       "primitive": 31,
+       "firstTriangle": 3444,
        "triangleCount": 372
       },
       {
-       "primitive": 8,
+       "primitive": 32,
        "firstTriangle": 0,
-       "triangleCount": 228
+       "triangleCount": 216
       },
       {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 10,
+       "primitive": 33,
        "firstTriangle": 0,
        "triangleCount": 12
       },
       {
-       "primitive": 11,
-       "firstTriangle": 876,
+       "primitive": 34,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 2528,
        "triangleCount": 284
       },
       {
-       "primitive": 12,
-       "firstTriangle": 25,
-       "triangleCount": 9
+       "primitive": 36,
+       "firstTriangle": 97,
+       "triangleCount": 11
       },
       {
-       "primitive": 13,
-       "firstTriangle": 12,
-       "triangleCount": 4
+       "primitive": 37,
+       "firstTriangle": 30,
+       "triangleCount": 2
       },
       {
-       "primitive": 14,
-       "firstTriangle": 8,
+       "primitive": 38,
+       "firstTriangle": 21,
        "triangleCount": 2
       }
      ]
     }
    ],
    "lod2": {
-    "sourceHash": "bbc61da802fe27e7",
+    "sourceHash": "ad632dc296b0b553",
     "buildVersion": 4,
-    "bytes": 38620,
-    "triangles": 1458
+    "bytes": 40012,
+    "triangles": 1294
    }
   },
   {
