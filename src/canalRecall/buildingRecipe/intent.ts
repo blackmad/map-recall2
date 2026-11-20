@@ -1504,7 +1504,21 @@ export interface LargeWallIntent {
    */
   loggiaBands?: {storeys: [number, number]; bays: [number, number]; sill?: number; head?: number; deep?: number; lights?: number; rail?: 'glass' | 'bars' | 'solid' | 'none'; colour?: string;
     /** the back a wall in the wall's brick with rows of windows (the flats' doors and windows behind a gallery): per row, from `sill` to `sill + h` of the band's height, one window `w` wide (fraction of the run) in every run of `every` bays; absent = glazed leaves */
-    back?: {sill: number; h: number; every: number; w: number}[]}[];
+    back?: {sill: number; h: number; every: number; w: number}[];
+    /**
+     * An open, unglazed void storey (lane large-buildings-20261120, the Weesperflat's open storey under its upper block,
+     * 2019-2025 crops): no glazing, the band's back a dark sheet in `colour` (measured; default the frame colour), and
+     * `posts` columns per bay (1 = one on every bay joint, 2..4 evenly inside each bay; default none) `postW` of the bay
+     * pitch wide (0.03..0.3, default 0.1) in the wall colour, standing in the recess; with `posts` 1, `every` (1..12, default 1)
+     * puts a post on every n-th bay joint only. Not with `back`. Absent: byte-identical.
+     */
+    open?: {posts?: number; postW?: number; every?: number};
+    /**
+     * The upper block cantilevers over the band: a slab `h` of the band's last storey deep (0.05..0.6) from the band's
+     * head up, standing `out` of that storey (0.05..0.6) proud of the wall, in the wall colour, its soffit seen from the
+     * street. Absent: byte-identical.
+     */
+    lip?: {h: number; out: number}}[];
   /**
    * Dark columns in front of the ground storey (GitHub #86, the Da Vinci south wing's steel posts between brick infill
    * panels): on every `every`-th bay edge from edge `first` (0 = the panel's left end), `w` of the bay pitch wide, from the

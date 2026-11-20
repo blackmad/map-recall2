@@ -428,7 +428,26 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       else list.forEach((b, k) => {
         const at2 = `${at}.loggiaBands[${k}]`, pair = (v: unknown, key: string, max: number) => {
           if (!Array.isArray(v) || v.length !== 2 || !v.every(x => Number.isInteger(x) && x >= 0 && x <= max) || v[1] < v[0]) problems.push(`${at2}.${key}: [first, last] integers 0..${max}, first <= last`); };
-        for (const key of Object.keys(b ?? {})) if (!['storeys', 'bays', 'sill', 'head', 'deep', 'lights', 'rail', 'colour', 'back'].includes(key)) problems.push(`${at2}.${key}: unknown field (storeys, bays, sill, head, deep, lights, rail, colour, back)`);
+        for (const key of Object.keys(b ?? {})) if (!['storeys', 'bays', 'sill', 'head', 'deep', 'lights', 'rail', 'colour', 'back', 'open', 'lip'].includes(key)) problems.push(`${at2}.${key}: unknown field (storeys, bays, sill, head, deep, lights, rail, colour, back, open, lip)`);
+        if (b?.open !== undefined) {
+          const o = b.open as Record<string, unknown>;
+          if (!o || typeof o !== 'object' || Array.isArray(o)) problems.push(`${at2}.open: object {posts, postW, every}`);
+          else {
+            for (const key of Object.keys(o)) if (!['posts', 'postW', 'every'].includes(key)) problems.push(`${at2}.open.${key}: unknown field (posts, postW, every)`);
+            if (o.every !== undefined) { count(o.every, `${at2}.open.every`, 1, 12); if (o.posts !== 1) problems.push(`${at2}.open.every: only with posts 1 (posts on bay joints)`); }
+            if (o.posts !== undefined) count(o.posts, `${at2}.open.posts`, 0, 4);
+            if (o.postW !== undefined && !(typeof o.postW === 'number' && o.postW >= 0.03 && o.postW <= 0.3)) problems.push(`${at2}.open.postW: fraction 0.03..0.3 of the bay pitch`);
+            if (b.back !== undefined) problems.push(`${at2}.open: not with back (an open void has no back wall windows)`);
+          }
+        }
+        if (b?.lip !== undefined) {
+          const l = b.lip as Record<string, unknown>;
+          if (!l || typeof l !== 'object' || Array.isArray(l)) problems.push(`${at2}.lip: object {h, out}`);
+          else {
+            for (const key of Object.keys(l)) if (!['h', 'out'].includes(key)) problems.push(`${at2}.lip.${key}: unknown field (h, out)`);
+            for (const key of ['h', 'out']) if (!(typeof l[key] === 'number' && (l[key] as number) >= 0.05 && (l[key] as number) <= 0.6)) problems.push(`${at2}.lip.${key}: fraction 0.05..0.6 of the band's last storey`);
+          }
+        }
         if (b?.back !== undefined) {
           if (!Array.isArray(b.back) || !b.back.length || b.back.length > 4) problems.push(`${at2}.back: 1..4 rows {sill, h, every, w}`);
           else b.back.forEach((r, q) => {

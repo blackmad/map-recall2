@@ -1,0 +1,17 @@
+{
+ "pair1": {
+  "key": "weesperflat-w-whole",
+  "A": "round2",
+  "B": "round1"
+ },
+ "pair2": {
+  "key": "weesperflat-w-north",
+  "A": "round1",
+  "B": "round2"
+ },
+ "pair3": {
+  "key": "weesperflat-w-south",
+  "A": "round2",
+  "B": "round1"
+ }
+}

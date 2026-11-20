@@ -86,7 +86,9 @@
      "head": 0.85,
      "deep": 0.5,
      "rail": "none",
-     "colour": "#2a2c2e"
+     "colour": "#2a2c2e",
+     "open": {"posts": 1, "every": 3, "postW": 0.12},
+     "lip": {"h": 0.12, "out": 0.3}
     }
    ],
    "palette": {
