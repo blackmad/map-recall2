@@ -53,10 +53,11 @@ export const STALL_GAP_M = 0.3, PASSAGE_M = 1.6, PASSAGE_EVERY = 6;
 export const MIN_DEPTH_M = FRONT_SETBACK_M + STALL.depth;
 
 /** Canvas roof on a frame (plain or striped), or a parasol over a table stall (Ten Kate). */
-export type RoofKind = 'plain' | 'striped' | 'parasol';
+/** `open` / `open-striped` (lane market-stalls-20261120): canvas with open sides and a short valance all round. */
+export type RoofKind = 'plain' | 'striped' | 'parasol' | 'open' | 'open-striped';
 export type RoofSwatch = { hex: string; kind: RoofKind; weight: number };
-const ROOF_PART: Readonly<Record<RoofKind, MarketPartId>> = { plain: 'roof-plain', striped: 'roof-striped', parasol: 'roof-parasol' };
-export type MarketPaletteId = 'cuyp' | 'tenkate';
+const ROOF_PART: Readonly<Record<RoofKind, MarketPartId>> = { plain: 'roof-plain', striped: 'roof-striped', parasol: 'roof-parasol', open: 'roof-open', 'open-striped': 'roof-open-striped' };
+export type MarketPaletteId = 'cuyp' | 'tenkate' | 'dapper' | 'jordaan' | 'noorder' | 'linden';
 /**
  * Canvas tones and goods mix per market. Cuyp (2020-01-06, 2021-04-23, 2022-03-21 captures): mostly white and off-white
  * canvas (some 85 % in the 2020 and 2022 rows), the odd red or red-and-white, blue, yellow (the "kleinvakman" stall) or
@@ -70,7 +71,7 @@ export const MARKET_PALETTES: Readonly<Record<MarketPaletteId, { roofs: readonly
       { hex: '#c0392f', kind: 'striped', weight: 5 }, { hex: '#b8322a', kind: 'plain', weight: 4 }, { hex: '#2f5e9e', kind: 'striped', weight: 2 },
       { hex: '#e0bf2a', kind: 'plain', weight: 2 }, { hex: '#3d7a45', kind: 'striped', weight: 2 }, { hex: '#3d6b9e', kind: 'plain', weight: 1 },
     ],
-    goods: { produce: 28, fabric: 24, general: 26, fish: 5, cheese: 10, flowers: 7 },
+    goods: { produce: 28, fabric: 24, general: 26, fish: 5, cheese: 10, flowers: 7, rack: 0, bolts: 0 },
     vans: ['#e8e8e4', '#e8e8e4', '#7a5636', '#b8322a'],
   },
   tenkate: {
@@ -78,10 +79,46 @@ export const MARKET_PALETTES: Readonly<Record<MarketPaletteId, { roofs: readonly
       { hex: '#93b83e', kind: 'parasol', weight: 34 }, { hex: '#2f6b3a', kind: 'parasol', weight: 20 }, { hex: '#ebe8df', kind: 'parasol', weight: 14 },
       { hex: '#ebe8df', kind: 'plain', weight: 20 }, { hex: '#3f8a45', kind: 'striped', weight: 8 }, { hex: '#c0392f', kind: 'striped', weight: 4 },
     ],
-    goods: { produce: 45, fish: 10, flowers: 12, fabric: 13, general: 15, cheese: 5 },
+    goods: { produce: 45, fish: 10, flowers: 12, fabric: 13, general: 15, cheese: 5, rack: 0, bolts: 0 },
     vans: ['#e8e8e4', '#e2c22e'],
   },
+  // Lane market-stalls-20261120. Dapper (2022-06-13, 2024-09-17, 2025-09-26 captures): white and off-white canvas as on
+  // the Cuyp, the odd red-and-white or red awning; clothes rails and produce lead, then household goods.
+  dapper: {
+    // Open-sided canvas (the 2022-06-13 and 2025-09-26 rows show tarps over open racks, no side sheets).
+    roofs: [
+      { hex: '#efede6', kind: 'open', weight: 56 }, { hex: '#dcd7c9', kind: 'open', weight: 18 }, { hex: '#c4c7c6', kind: 'open', weight: 12 },
+      { hex: '#c0392f', kind: 'open-striped', weight: 5 }, { hex: '#b8322a', kind: 'open', weight: 4 }, { hex: '#3d7a45', kind: 'open-striped', weight: 3 },
+      { hex: '#2f5e9e', kind: 'open', weight: 2 },
+    ],
+    // Clothes rails lead (2022-06-13 13:32: dresses on rails, a red-skirted table), then produce and household goods.
+    goods: { produce: 24, fabric: 6, general: 20, fish: 3, cheese: 4, flowers: 6, rack: 30, bolts: 7 },
+    vans: ['#e8e8e4', '#e8e8e4', '#d9d9d4'],
+  },
+  // Westerstraat Monday (2019-05-13): one white canvas tunnel on the median; textiles (the lapjes) and clothes rails.
+  jordaan: {
+    roofs: [{ hex: '#efede6', kind: 'open', weight: 70 }, { hex: '#e2ded2', kind: 'open', weight: 20 }, { hex: '#c4c7c6', kind: 'open', weight: 10 }],
+    goods: { produce: 3, fabric: 10, general: 15, fish: 0, cheese: 0, flowers: 4, rack: 30, bolts: 38 },
+    vans: ['#e8e8e4'],
+  },
+  // Noordermarkt Monday (2019-05-13): beige and white canvas, the odd parasol; textiles, brocante and household goods.
+  noorder: {
+    roofs: [
+      { hex: '#d8c9a8', kind: 'plain', weight: 35 }, { hex: '#efede6', kind: 'plain', weight: 35 }, { hex: '#c9b38c', kind: 'plain', weight: 12 },
+      { hex: '#e7e2d6', kind: 'parasol', weight: 10 }, { hex: '#d9895c', kind: 'plain', weight: 8 },
+    ],
+    goods: { produce: 8, fabric: 46, general: 40, fish: 0, cheese: 3, flowers: 3, rack: 0, bolts: 0 },
+    vans: ['#e8e8e4', '#d9d9d4'],
+  },
+  // Lindengracht Saturday (no market-hours capture; the general-goods Saturday mix of the register): white canvas.
+  linden: {
+    roofs: [{ hex: '#efede6', kind: 'plain', weight: 62 }, { hex: '#dcd7c9', kind: 'plain', weight: 18 }, { hex: '#c0392f', kind: 'striped', weight: 8 }, { hex: '#3d7a45', kind: 'striped', weight: 6 }, { hex: '#c4c7c6', kind: 'plain', weight: 6 }],
+    goods: { produce: 30, fabric: 22, general: 18, fish: 8, cheese: 12, flowers: 10, rack: 0, bolts: 0 },
+    vans: ['#e8e8e4'],
+  },
 };
+
+const SKIRTS = ['#a8322c', '#23324d', '#2a2a2c', '#8a2f3c', '#3a4f6b'] as const;
 
 export function hash01(s: string): number {
   let h = 2166136261;
@@ -145,8 +182,9 @@ export const VAN_SLOT_M = VAN.length + 0.8;
  * Lay out one market: per side and run, stalls along the kerb, each facing the aisle; vans at the requested run ends.
  * Returns the draw instances (frame + roof + goods per stall, one per van) and a record per stall for reports.
  */
-export function placeMarket(m: MarketLine): { instances: MarketInstance[]; stalls: PlacedStall[] } {
+export function placeMarket(m: MarketLine, state: MarketState = 'open'): { instances: MarketInstance[]; stalls: PlacedStall[] } {
   const P = MARKET_PALETTES[m.palette], instances: MarketInstance[] = [], stalls: PlacedStall[] = [];
+  if (state === 'closed') return { instances, stalls };
   for (const side of m.sides) {
     if (side.depthM < MIN_DEPTH_M || side.kerb.length < 2) continue;
     const line = localLine(side.kerb), kx = KX(line.lat0);
@@ -179,9 +217,18 @@ export function placeMarket(m: MarketLine): { instances: MarketInstance[]; stall
         };
         prev = pick;
         const f = frameAt(s, FRONT_SETBACK_M);
+        if (state === 'setup') {
+          // Before trading the frames stand bare (stallKit.ts bareModel); the trader's choices are picked all the same so
+          // a stall keeps its id and its later canvas.
+          instances.push({ part: 'stall-bare', lng: f.lng, lat: f.lat, yaw: f.yaw, colour: null, stall: id });
+          stalls.push({ id, market: m.id, side: side.side, s, goods: pick.goods, roof: null, colour: pick.roof.hex });
+          continue;
+        }
         instances.push({ part: pick.roof.kind === 'parasol' ? 'stall-table' : 'stall-frame', lng: f.lng, lat: f.lat, yaw: f.yaw, colour: null, stall: id });
         instances.push({ part: ROOF_PART[pick.roof.kind], lng: f.lng, lat: f.lat, yaw: f.yaw, colour: pick.roof.hex, stall: id });
-        const goodsTone = pick.goods === 'general' ? ['#8a7a5c', '#2f4a6e', '#8c3a34', '#5a5560', '#3d5b4a'][Math.floor(hash01(`${id}:tone`) * 5)] : null;
+        const goodsTone = pick.goods === 'general' ? ['#8a7a5c', '#2f4a6e', '#8c3a34', '#5a5560', '#3d5b4a'][Math.floor(hash01(`${id}:tone`) * 5)]
+          // The table skirt under racks and fabric piles (2022-06-13: red; 2019-05-13: dark blue, black, red).
+          : pick.goods === 'rack' || pick.goods === 'bolts' ? SKIRTS[Math.floor(hash01(`${id}:skirt`) * SKIRTS.length)] : null;
         instances.push({ part: goodsPart(pick.goods), lng: f.lng, lat: f.lat, yaw: f.yaw, colour: goodsTone, stall: id });
         stalls.push({ id, market: m.id, side: side.side, s, goods: pick.goods, roof: pick.roof.kind, colour: pick.roof.hex });
       }
@@ -211,8 +258,43 @@ export function marketOpenAt(m: Pick<MarketLine, 'hours'>, date: Date): boolean 
   return !!h && hour >= h[0] && hour < h[1];
 }
 
-export const placeAll = (file: MarketLinesFile): { instances: MarketInstance[]; stalls: PlacedStall[] } => {
+/**
+ * What a market shows (lane market-stalls-20261120): 'open' dressed stalls; 'setup' bare frames (the Dappermarkt's
+ * 08:40 capture, an hour and more before trading); 'closed' nothing (the frames come down after trading and on
+ * non-market days).
+ */
+export type MarketState = 'open' | 'setup' | 'closed';
+/** Bare frames stand this long before opening (h): the 2022-08-31 Dappermarkt capture at 08:40-08:46 for a 9.00 start. */
+export const SETUP_HOURS = 3;
+/** A market's state on `day` at `hour` (local); no hour = the whole trading day (open when it trades that day). */
+export function marketState(m: Pick<MarketLine, 'hours'>, day: Weekday, hour?: number): MarketState {
+  const h = m.hours[day];
+  if (!h) return 'closed';
+  if (hour === undefined) return 'open';
+  if (hour >= h[0] && hour < h[1]) return 'open';
+  return hour < h[0] && hour >= h[0] - SETUP_HOURS ? 'setup' : 'closed';
+}
+
+/**
+ * The `?marketDay=` schedule: absent, every market draws open (the game has no clock: the light rig is a fixed
+ * afternoon); `Mo`..`Su` that weekday's trading markets; `Mo@8.5` that weekday at 08:30 (bare frames before opening);
+ * `now` the Amsterdam weekday and hour. Anything else: absent.
+ */
+export type MarketSchedule = { day: Weekday; hour?: number } | null;
+export function parseMarketDay(value: string | null | undefined, now: () => Date = () => new Date()): MarketSchedule {
+  if (!value) return null;
+  if (value === 'now') { const c = amsterdamClock(now()); return { day: c.day, hour: c.hour }; }
+  const m = /^(Mo|Tu|We|Th|Fr|Sa|Su)(?:@(\d{1,2}(?:\.\d+)?))?$/.exec(value);
+  if (!m) return null;
+  const hour = m[2] === undefined ? undefined : Number(m[2]);
+  return { day: m[1] as Weekday, ...(hour !== undefined && hour < 24 ? { hour } : {}) };
+}
+
+export const placeAll = (file: MarketLinesFile, schedule: MarketSchedule = null): { instances: MarketInstance[]; stalls: PlacedStall[] } => {
   const instances: MarketInstance[] = [], stalls: PlacedStall[] = [];
-  for (const m of file.markets) { const r = placeMarket(m); instances.push(...r.instances); stalls.push(...r.stalls); }
+  for (const m of file.markets) {
+    const r = placeMarket(m, schedule ? marketState(m, schedule.day, schedule.hour) : 'open');
+    instances.push(...r.instances); stalls.push(...r.stalls);
+  }
   return { instances, stalls };
 };

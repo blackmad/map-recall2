@@ -32,7 +32,7 @@ test('stall parts keep inside the frame footprint: nothing past the roof overhan
   for (const id of MARKET_PART_IDS.filter(i => i !== 'van')) {
     const p = MARKET_MODELS[id]().positions;
     // Canvas roofs span the whole frame pitch so neighbours butt into one tunnel; parasols overhang the table ends.
-    const half = id === 'roof-plain' || id === 'roof-striped' ? STALL.roofLength / 2 : id === 'roof-parasol' ? STALL.parasolW / 2 : STALL.length / 2;
+    const half = id === 'roof-plain' || id === 'roof-striped' || id === 'roof-open' || id === 'roof-open-striped' ? STALL.roofLength / 2 : id === 'roof-parasol' ? STALL.parasolW / 2 : STALL.length / 2;
     for (let i = 0; i < p.length; i += 3) {
       assert.ok(Math.abs(p[i]) <= half + 1e-6, `${id} x ${p[i]}`);
       assert.ok(p[i + 1] <= STALL.overhang + 1e-6 && p[i + 1] >= -STALL.depth - 0.1 - 1e-6, `${id} y ${p[i + 1]}`);
@@ -142,7 +142,7 @@ test('canopies: the Cuyp is a canvas tunnel (no parasols), Ten Kate mostly green
 });
 
 test('measured lines: stall counts in the register\'s range (Cuyp ~260 standplaatsen; Ten Kate a pedestrian block)', () => {
-  assert.deepEqual(file.markets.map(m => m.id), ['albert-cuyp', 'ten-kate']);
+  assert.deepEqual(file.markets.map(m => m.id), ['albert-cuyp', 'ten-kate', 'dapper', 'westerstraat', 'noordermarkt', 'lindengracht']);
   const cuyp = frames('albert-cuyp').length, kate = frames('ten-kate').length;
   assert.ok(cuyp >= 230 && cuyp <= 280, `cuyp ${cuyp}`);
   assert.ok(kate >= 45 && kate <= 75, `ten kate ${kate}`);

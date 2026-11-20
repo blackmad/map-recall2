@@ -41,13 +41,16 @@ async function setPlayer(page: Page, lngLat: [number, number], headingDeg: numbe
 const hud = `body > *:not(#vector-map) { visibility: hidden !important; } .maplibregl-control-container { display: none !important; }`;
 const debugOf = (page: Page) => page.evaluate(() => { const d = (window as any).__canalMarkets?.debug; return d ? JSON.parse(JSON.stringify(d)) : null; });
 
-for (const variant of ['today', 'markets'] as const) {
+// 'setup' (lane market-stalls-20261120) frames the poses that carry a `marketDay` (a closed / setting-up capture) with
+// ?markets=1&marketDay=…, written as that pose's markets.png; 'markets' skips those poses.
+for (const variant of ['today', 'markets', 'setup'] as const) {
+  const day = MARKET_POSES.find(p => p.marketDay)?.marketDay;
   test(`market likeness frames: ${variant}`, async ({ browser }) => {
     test.setTimeout(900_000);
     const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2 });
     const page = await ctx.newPage();
     await serveData(page);
-    await openRoute(page, { travelMode: 'car', query: `?engine=own&cam=fps&markets=${variant === 'markets' ? 1 : 0}`, abortHeavyTiles: true });
+    await openRoute(page, { travelMode: 'car', query: `?engine=own&cam=fps&markets=${variant === 'today' ? 0 : 1}${variant === 'setup' ? `&marketDay=${day}` : ''}`, abortHeavyTiles: true });
     await page.evaluate(() => {
       const g = (window as any).canalRecallGame, vm = g.vectorMap;
       g.player.handleInput = () => {};
@@ -57,23 +60,27 @@ for (const variant of ['today', 'markets'] as const) {
     await page.addStyleTag({ content: hud });
     for (const p of MARKET_POSES) {
       if (only && !only.includes(p.key)) continue;
+      if ((variant === 'setup') !== !!p.marketDay && variant !== 'today') continue;
+      if (variant === 'setup' && p.marketDay !== day) continue;
       const fps = fpsPose({ rider: p.at, bearingDeg: p.headingDeg, viewportHeightPx: H, eyeHeightM: 2.44, fovDeg: 72, lookDownDeg: p.lookDownDeg ?? 5, maxPitchDeg: 85 });
       await setPlayer(page, p.at, p.headingDeg, fps); await page.waitForTimeout(1500); await setPlayer(page, p.at, p.headingDeg, fps);
       const settle = await settleWorld(page, p.key, 90_000);
-      if (variant === 'markets') await expect.poll(() => debugOf(page).then(d => d?.instances ?? 0), { timeout: 60_000 }).toBeGreaterThan(0);
+      if (variant !== 'today') await expect.poll(() => debugOf(page).then(d => d?.instances ?? 0), { timeout: 60_000 }).toBeGreaterThan(0);
       await setPlayer(page, p.at, p.headingDeg, fps); await page.waitForTimeout(600);
       const dir = join(OUT, p.key); mkdirSync(dir, { recursive: true });
-      writeFileSync(join(dir, `${variant}.png`), await page.screenshot({ type: 'png' }));
+      const name = variant === 'setup' ? 'markets' : variant;
+      writeFileSync(join(dir, `${name}.png`), await page.screenshot({ type: 'png' }));
       const debug = await debugOf(page);
       const cam = await page.evaluate(() => { const c = (window as any).canalRecallGame?.camera ?? {}; return { viewMode: c.viewMode, zoom: c.zoom, pitch: c.pitch, northUp: c.northUp }; });
       const t = await page.evaluate(async () => { const ts: number[] = []; let last = performance.now(); for (let i = 0; i < 60; i++) { await new Promise(r => requestAnimationFrame(r)); const n = performance.now(); ts.push(n - last); last = n; } ts.sort((a, b) => a - b); return { p50: ts[30], p95: ts[57] }; });
-      writeFileSync(join(dir, `${variant}.json`), JSON.stringify({ ...p, variant, camera: 'first person', vfovDeg: 72, dpr: 2, engine: 'own', world: 'default world-v1', debug, frameMs: t, settle }, null, 1));
+      writeFileSync(join(dir, `${name}.json`), JSON.stringify({ ...p, variant, camera: 'first person', vfovDeg: 72, dpr: 2, engine: 'own', world: 'default world-v1', debug, frameMs: t, settle }, null, 1));
       console.log(JSON.stringify({ key: p.key, variant, debug, frameMs: t }));
     }
     await ctx.close();
   });
 
   test(`market as-played chase frames: ${variant}`, async ({ browser }) => {
+    test.skip(variant === 'setup', 'chase frames are open-market only');
     test.setTimeout(600_000);
     const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2 });
     const page = await ctx.newPage();
