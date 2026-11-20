@@ -349,6 +349,140 @@
     350
    ],
    "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    16,
+    218,
+    22,
+    25,
+    455,
+    35
+   ],
+   "system": "brick-bay-grid",
+   "entrance": true,
+   "stoneStoreys": [
+    0
+   ],
+   "palette": {
+    "brick": "#4f4c4d",
+    "frame": "#6a4536"
+   },
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.7,
+    "sill": 0.1
+   },
+   "baysPerStorey": 4,
+   "windows": "cross",
+   "arches": {
+    "windows": "round",
+    "band": "brick",
+    "storeys": [
+     4
+    ]
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "palette",
+    "windowShape",
+    "arches"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    83,
+    84,
+    332,
+    532
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "cross",
+   "cornice": true,
+   "sills": true,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#857869",
+    "frame": "#d8d4c8",
+    "stone": "#a8a294"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    82,
+    299,
+    522
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "cross",
+   "cornice": true,
+   "sills": true,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#393430",
+    "frame": "#d8d4c8",
+    "stone": "#a8a294"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    169,
+    368,
+    511
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "cross",
+   "cornice": true,
+   "sills": true,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#393430",
+    "frame": "#d8d4c8",
+    "stone": "#a8a294"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -367,7 +501,8 @@
   "Giant-order lane (2026-10-24, issue #35): walls[3] (no photo) is surface 503 alone: surfaces 248 (2.2 m, 10.1-13.4 m) and 497 (0.9 m, 10-16.2 m) are set-back upper pieces off the footprint edge whose 13.4 m roof failed the eaves gate (16.1 vs 13.36 m); they fall to otherWalls. walls[0] windows cross (the w01-47L crop shows mullion-and-transom sashes). A corbel table under the main block's crown was tried and left out: brick corbels on the dark brick do not read in the game's flat colour.",
   "Acceptance pass 2026-10-24 (issue #45, w01-47L 2021-01-22): walls[0] window frames reddish-brown #6a4536 (not white), round-arched heads on the tall left house top storey (arches.storeys [4]).",
   "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
-  "roof.pitchedHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
+  "roof.pitchedHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5384: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73).",
+  "Lane large-buildings-20261120 (2026-11-20): six photographed walls joined groups. 8 the three remaining Prinsengracht front sections (w08-47L 2021-01-22, w11-47/w12-48 close-ups: dark brick between pilasters over a stone ground storey with balustraded first-floor windows), in group 0's palette, four bays each; 9 the SW rear wing on the Lange Leidsedwarsstraat side (w04-227, 2021-09-09), brick #857869 sampled, three storeys under a cornice, seven bays; 10 and 11 the dark-brick SW wings (w09-229L / w10-228L, 2020-01-08), #393430 sampled, four bays. Not modelled: the pilasters and balustrades of the canal front (the kit's pilasters are per group, not between grouped houses)."
  ],
  "measured": {
   "date": "2026-10-24",
@@ -376,7 +511,10 @@
    1,
    4,
    5,
-   6
+   6,
+   9,
+   10,
+   11
   ],
   "otherWalls": true
  },
@@ -384,5 +522,6 @@
   "material": "bitumen",
   "flatHex": "#87898d",
   "pitchedHex": "#87898d"
- }
+ },
+ "budgetTriangles": 15000
 }
