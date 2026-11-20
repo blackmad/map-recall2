@@ -78,7 +78,10 @@ const lab = (hex: string) => rgbToLab([1, 3, 5].map(i => parseInt(hex.slice(i, i
 export function familyOfHex(hex: string, painted: boolean): WallFamily {
   const [L, a, b] = lab(hex);
   if (painted) return Math.hypot(a, b) > 12 ? 'render-colour' : 'render-white';
-  if (L >= 58 && b >= 15) return 'brick-buff';
+  // Buff: light and yellow, or (round 3) a yellow hue at mid lightness: the buff calibration's grey-buff (wallPatch.ts BUFF).
+  // Red and brown brick calibrate to hue <= 56 deg, so they never reach the hue test.
+  const hue = (Math.atan2(b, a) * 180 / Math.PI + 360) % 360;
+  if ((L >= 58 && b >= 15) || (L >= 40 && hue >= 70 && hue <= 110 && Math.hypot(a, b) >= 6)) return 'brick-buff';
   if (Math.hypot(a, b) < 8) return 'brick-grey';
   if (L < 36) return 'brick-dark';
   return a >= 16 ? 'brick-red' : 'brick-brown';

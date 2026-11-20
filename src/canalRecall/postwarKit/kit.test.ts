@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { CLUSTER_DISTRIBUTION, MEASURED_FRONTS, clusterFor, measuredFront, validateFronts } from './facts.js';
 import { FAMILY_SWATCHES, coarseFamily, correctedWall, familyOfHex, postwarExtraIds, postwarKitFor, styleFor, validateWalls } from './kit.js';
-import { measureWallPatch } from './wallPatch.js';
+import { calibrateThumb, isBuffRaw, measureWallPatch } from './wallPatch.js';
 import CORRECTED from './corrected-walls.json';
 import { ExtraSink } from '../facadeExtraCore.js';
 import type { ExtraContext } from '../facadeExtraCore.js';
@@ -107,4 +107,21 @@ test('components: bounded triangles, nothing without the kit context', () => {
   const bare = { ...ctx(30), postwarKit: undefined };
   assert.equal(cost(balconyBand, bare), 0);
   assert.equal(cost(arcade, bare), 0);
+});
+
+test('buff calibration (round 3): named fronts stay buff, red brick is unchanged', () => {
+  // Spitsbergenstraat 2-36 (yellow brick): raw #e9ccad, round 2 drew a pink tan #ac8976.
+  const spits = calibrateThumb('#e9ccad', false);
+  assert.equal(familyOfHex(spits, false), 'brick-buff');
+  assert.notEqual(spits, '#ac8976');
+  // Funenpark 440-463 (grey-buff brick): raw #6f685d, round 2 drew a warm brown #826250 (the blind's kit regression).
+  const funen = calibrateThumb('#6f685d', false);
+  assert.equal(familyOfHex(funen, false), 'brick-buff');
+  const [, fa, fb] = rgbToLab([1, 3, 5].map(i => parseInt(funen.slice(i, i + 2), 16)));
+  assert.ok(fa < 6 && fb > 6, `grey-buff, not red: ${funen}`);
+  // Red brick (Bloemgracht 210-286, raw #544a42) keeps the #118 path byte for byte.
+  assert.ok(!isBuffRaw(rgbToLab([0x54, 0x4a, 0x42])));
+  assert.equal(calibrateThumb('#544a42', false), '#654436');
+  // Weteringschans 159-161, red brick read at mid lightness with a yellowish cast (raw L 57, h 77): not buff.
+  assert.ok(!isBuffRaw([57, 9 * Math.cos(77 * Math.PI / 180), 9 * Math.sin(77 * Math.PI / 180)]));
 });

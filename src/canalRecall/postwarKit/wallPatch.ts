@@ -89,8 +89,28 @@ export const THUMB_EXPOSURE: ExposureModel = {
   city: { lift: 0, chroma: 5.56, dh: -18 }, sources: { thumb: { dL: 0, chroma: 1, dh: 0, n: 2697, pairs: 2697, via: 'reference' } },
 };
 export const MODERN_BRICK_CHROMA = 0.55;
+/**
+ * Buff, yellow and grey-buff brick in the thumbnail's frame (round 3): light and yellow (L* >= minL, hue >= minHue), or
+ * clearly yellow at a mid lightness (hue >= yellowHue, L* >= yellowMinL), with some chroma, hue at most maxHue. The #118
+ * brick branch caps L* at 60, rotates hue -18 deg and clamps it to 32-56 deg: built for 19th-century red brick, it drew
+ * Spitsbergenstraat 2-36's yellow brick (raw #e9ccad) a pink tan #ac8976 and Funenpark 440-463's grey-buff (raw #6f685d)
+ * a warm brown #826250, the round-2 blind's only kit regression. These keep their own lightness (to maxL), hue (clamped
+ * to the buff band) and chroma (in minC-maxC). Only the postwar path calls this; applyExposure and the buurt profiles
+ * are untouched.
+ */
+export const BUFF = { minL: 65, minHue: 65, yellowHue: 80, yellowMinL: 40, maxHue: 110, minRawC: 3, maxL: 78, minC: 8, maxC: 30, hue: [65, 90] } as const;
+const lchOf = (lab: readonly number[]) => [lab[0], Math.hypot(lab[1], lab[2]), (Math.atan2(lab[2], lab[1]) * 180 / Math.PI + 360) % 360];
+export function isBuffRaw(lab: readonly number[]): boolean {
+  const [L, C, h] = lchOf(lab);
+  return C >= BUFF.minRawC && h <= BUFF.maxHue && ((L >= BUFF.minL && h >= BUFF.minHue) || (L >= BUFF.yellowMinL && h >= BUFF.yellowHue));
+}
 export function calibrateThumb(hex: string, painted: boolean, paintCast: readonly [number, number] = [0, 0]): string {
   const [L, a, b] = rgbToLab([1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)));
+  if (!painted && isBuffRaw([L, a, b])) {
+    const [, C, h] = lchOf([L, a, b]);
+    const L2 = Math.min(BUFF.maxL, L), C2 = Math.max(BUFF.minC, Math.min(BUFF.maxC, C)), h2 = Math.max(BUFF.hue[0], Math.min(BUFF.hue[1], h)) * Math.PI / 180;
+    return `#${labToRgb([L2, C2 * Math.cos(h2), C2 * Math.sin(h2)]).map(hex2).join('')}`;
+  }
   const lab = painted ? applyExposure(THUMB_EXPOSURE, 'thumb', [L, a - paintCast[0], b - paintCast[1]], true)
     : ((l: number[]) => [l[0], l[1] * MODERN_BRICK_CHROMA, l[2] * MODERN_BRICK_CHROMA])(applyExposure(THUMB_EXPOSURE, 'thumb', [L, a, b]));
   return `#${labToRgb(lab).map(hex2).join('')}`;

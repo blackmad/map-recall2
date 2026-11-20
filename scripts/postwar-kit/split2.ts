@@ -5,7 +5,8 @@
  *   - have an accepted brick-only measurement (corrected-walls.json) and a straight capture (obliquity <= 25 deg);
  *   - the kit actually changes in the game: the probed wall moves by Delta E >= 6 (probe-all.json vs probe-all-on.json,
  *     numbers only, no frames).
- *   node --import tsx scripts/postwar-kit/split2.ts  -> artifacts/postwar-kit/blind2-ids.json, blind2-list.json
+ *   node --import tsx scripts/postwar-kit/split2.ts [--round=3]  -> artifacts/postwar-kit/blind<round>-ids.json, -list.json
+ * Round 3 salts the hash 'postwar-blind3:' and also excludes every earlier round's blind ids (blind2-ids.json, ...).
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,6 +15,7 @@ import { rgbToLab } from '../../src/canalRecall/look/brickTone.ts';
 import { measuredFront } from '../../src/canalRecall/postwarKit/facts.ts';
 import CORRECTED from '../../src/canalRecall/postwarKit/corrected-walls.json' with { type: 'json' };
 
+const ROUND = Number(process.argv.find(a => a.startsWith('--round='))?.split('=')[1] ?? 2);
 const N = 20, MIN_DE = 6, MAX_OBLIQUITY = 25;
 const OUT = path.resolve(import.meta.dirname, '../../artifacts/postwar-kit');
 const read = (f: string) => JSON.parse(fs.readFileSync(path.join(OUT, f), 'utf8'));
@@ -22,10 +24,12 @@ const off = read('probe-all.json') as Record<string, any>, on = read('probe-all-
 const lab = (hex: string) => rgbToLab([1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)));
 const dE = (p: string, q: string) => { const a = lab(p), b = lab(q); return Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]); };
 const walls = (CORRECTED as { walls: Record<string, string> }).walls;
-const h = (id: string) => createHash('sha1').update(`postwar-blind2:${id}`).digest('hex');
-const pool = Object.entries(all).filter(([id, r]) => r.photo && walls[id] && !round1[id] && !measuredFront(id) && (r.obliquityDeg ?? 90) <= MAX_OBLIQUITY
+const earlier = new Set<string>();
+for (let r = 2; r < ROUND; r++) for (const id of read(`blind${r}-ids.json`) as string[]) earlier.add(id);
+const h = (id: string) => createHash('sha1').update(`postwar-blind${ROUND}:${id}`).digest('hex');
+const pool = Object.entries(all).filter(([id, r]) => r.photo && walls[id] && !round1[id] && !earlier.has(id) && !measuredFront(id) && (r.obliquityDeg ?? 90) <= MAX_OBLIQUITY
   && off[id]?.wallHex && on[id]?.wallHex && dE(off[id].wallHex, on[id].wallHex) >= MIN_DE).map(([id]) => id);
 const ids = pool.sort((a, b) => h(a).localeCompare(h(b))).slice(0, N);
-fs.writeFileSync(path.join(OUT, 'blind2-ids.json'), JSON.stringify(ids, null, 1));
-fs.writeFileSync(path.join(OUT, 'blind2-list.json'), JSON.stringify(ids.map(id => ({ pandId: id, bearing: all[id].bearingDeg, pano: all[id].panoId, key: id })), null, 1));
+fs.writeFileSync(path.join(OUT, `blind${ROUND}-ids.json`), JSON.stringify(ids, null, 1));
+fs.writeFileSync(path.join(OUT, `blind${ROUND}-list.json`), JSON.stringify(ids.map(id => ({ pandId: id, bearing: all[id].bearingDeg, pano: all[id].panoId, key: id })), null, 1));
 console.log(`pool ${pool.length}; blind ${ids.length}`, ids.map(id => `${all[id].cluster} ${all[id].address}`));
