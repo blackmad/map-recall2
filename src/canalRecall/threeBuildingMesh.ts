@@ -64,7 +64,7 @@ import { measuredRoofFurniture } from './roofs/roofFurniture.js';
 import { BOX_H_M, BOX_HEX, BOX_L_M, BOX_W_M, FLAT_SURFACE_BUDGET, LIP_H_M, parapetLipTris, roofBoxTris, stairCorePoint } from './roofs/flatRoofSurface.js';
 import type { FurnitureItem } from './roofs/roofSlots.js';
 import type { FacadeRecordInput, FacadeSpecInput } from './look/facadeRecord.js';
-import { bentFrontFacet, facetSpan, facetU, mergeSteppedRuns, type FacetSpan } from './bentFrontFacets.js';
+import { bentFrontFacet, facetSpan, facetU, mergeSteppedRuns, steppedFrontsOn, type FacetSpan } from './bentFrontFacets.js';
 /** Door walls this much further from the street than the nearest still count as on the nearest road (stoop wall choice). */
 const STOOP_ROAD_SLACK_M = 4;
 
@@ -923,7 +923,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     let recGeneric: FacadeGenericLayout | undefined;
     const hiddenEdge = (e: Edge) => hiddenByNeighbour(e, fallbackBuilding);
     // A front stepped by sub-metre jogs is one run, its jogs plain wall (bentFrontFacets.ts mergeSteppedRuns, feedback f8f282).
-    const stepped = !b.recipe && !b.specRecipe && !b.rowSeries && !b.designSlice && b.plainLayer !== undefined ? mergeSteppedRuns(wallRuns(rings[bi], hiddenEdge), COS_RUN) : null;
+    const stepped = steppedFrontsOn() && !b.recipe && !b.specRecipe && !b.rowSeries && !b.designSlice && b.plainLayer !== undefined ? mergeSteppedRuns(wallRuns(rings[bi], hiddenEdge), COS_RUN) : null;
     const runList = stepped ? stepped.runs : wallRuns(rings[bi], hiddenEdge), stepJogs = stepped?.jogs;
     const runLengths = (run: ReadonlyArray<{ e: Edge }>) => run.map(r => stepJogs?.has(r.e) ? 0 : r.e.len);
     // House rows: a stated stoop stands on the building's longest street run only (rowDressOnEdge).

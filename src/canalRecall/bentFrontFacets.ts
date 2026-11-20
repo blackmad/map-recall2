@@ -106,3 +106,23 @@ export function mergeSteppedRuns<E extends RunEdge>(runs: ReadonlyArray<Readonly
   }
   return { runs: out, jogs };
 }
+
+/**
+ * mergeSteppedRuns is off by default: in its blind (10 frames, photo | A | B, sides randomised) it won 1 and lost 2 of
+ * the stepped fronts it changed (Rozengracht-area pands 0363100012173122, 0363100012172546: one run gets the nominal
+ * bay, so a front of several narrow plots lost its narrow paired windows and its doors). STEPPED_FRONTS=1 (node: the
+ * world compile, tests) or `?steppedFronts=1` where the mesh runs on the page turns it on for review; the browser's chunk
+ * worker sees only its own script URL, so the page query does not reach it (measured: flag on == off at ?world=live).
+ */
+let steppedNow: boolean | undefined;
+export function steppedFrontsOn(): boolean {
+  if (steppedNow !== undefined) return steppedNow;
+  const g = globalThis as { location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  try {
+    const q = new URLSearchParams(g.location?.search ?? '').get('steppedFronts');
+    steppedNow = q !== null ? q === '1' : g.process?.env?.STEPPED_FRONTS === '1';
+  } catch { steppedNow = false; }
+  return steppedNow;
+}
+/** Tests and harnesses: forget the cached flag. */
+export const resetSteppedFronts = () => { steppedNow = undefined; };
