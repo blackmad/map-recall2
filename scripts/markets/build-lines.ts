@@ -1,5 +1,6 @@
 /**
- * Measure the market lines for the Albert Cuypmarkt and the Ten Katemarkt (lane markets-20261114) and stage them.
+ * Measure the market lines (lane markets-20261114: Albert Cuypmarkt, Ten Katemarkt; lane market-stalls-20261120:
+ * Dappermarkt, Westerstraat (Lapjesmarkt), Noordermarkt, Lindenmarkt) and stage them.
  *
  *   node --import tsx scripts/markets/build-lines.ts            # staging: artifacts/markets/staging/{market-lines,report}.json
  *   node --import tsx scripts/markets/build-lines.ts --publish  # also writes scripts/data/markets/market-lines.json
@@ -19,8 +20,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
-import { MIN_DEPTH_M, placeAll, stallFootprint, type LngLat, type MarketLine, type MarketLinesFile, type MarketPaletteId, type MarketSide, type Weekday } from '../../src/canalRecall/markets/placer.ts';
+import { FRONT_SETBACK_M, MIN_DEPTH_M, ROOF_CLEAR_M, placeAll, stallFootprint, type LngLat, type MarketLine, type MarketLinesFile, type MarketPaletteId, type MarketSide, type Weekday } from '../../src/canalRecall/markets/placer.ts';
 import { STALL } from '../../src/canalRecall/markets/stallKit.ts';
+import { distToLine, routeConflicts, routedLinesNear, ROUTE_CLEAR_M, type RoutingStreet } from '../../src/canalRecall/markets/clearance.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const CACHE = path.join(ROOT, '.cache/markets');
@@ -30,30 +32,77 @@ const UA = 'map-recall2 market lines (+https://github.com/blackmad/map-recall2)'
 const OVERPASS = 'https://overpass-api.de/api/interpreter';
 const BGT = 'https://api.pdok.nl/lv/bgt/ogc/v1/collections/wegdeel/items';
 const TREES = path.join(ROOT, 'public/data/extracts/amsterdam/municipal-trees');
+const ROUTING = path.join(ROOT, 'public/data/extracts/amsterdam/streets-routing.json');
+
+/** Per market: stalls or vans within ROUTE_CLEAR_M of a routed line (the rider's graph). Expected empty. */
+function routingClearance(markets: MarketLine[]): Record<string, unknown> {
+  const streets = JSON.parse(fs.readFileSync(ROUTING, 'utf8')) as RoutingStreet[], out: Record<string, unknown> = {};
+  for (const m of markets) {
+    const { instances } = placeAll({ version: 1, sources: [], markets: [m] }), pts = m.sides.flatMap(s => s.kerb);
+    const box = [Math.min(...pts.map(p => p[0])), Math.min(...pts.map(p => p[1])), Math.max(...pts.map(p => p[0])), Math.max(...pts.map(p => p[1]))] as const;
+    const lines = routedLinesNear(streets, box), hits = routeConflicts(instances, lines);
+    out[m.id] = { clearM: ROUTE_CLEAR_M, routedLines: lines.length, conflicts: hits.length, worst: hits.sort((a, b) => a.distM - b.distM).slice(0, 8) };
+  }
+  return out;
+}
 
 type Mode =
   /** The aisle is the carriageway: the kerb is where BGT leaves the aisle classes; the strip is the next class run. */
   | { kind: 'carriageway'; aisle: string[]; strip: string[] }
   /** A pedestrian street: the aisle is a measured clear centre band; the strip runs on in the strip classes. */
-  | { kind: 'centre-aisle'; aisleHalfM: number; strip: string[] };
+  | { kind: 'centre-aisle'; aisleHalfM: number; strip: string[] }
+  /**
+   * A median between two carriageways (Westerstraat, Lindengracht): the centreline is one carriageway, the kerb is where
+   * BGT leaves the aisle classes toward the median, and the row takes half the median (to MEDIAN_GAP_M short of its
+   * middle) so the row measured from the other carriageway stands back to back with it.
+   */
+  | { kind: 'median'; aisle: string[] };
+/** Gap between back-to-back rows on a median (m). */
+const MEDIAN_GAP_M = 0.15;
 
+type Side = 'left' | 'right';
 type MarketConfig = {
   id: string; name: string; palette: MarketPaletteId; bbox: string;
-  /** OSM area: a multipolygon relation or a closed way; its extent along the centreline bounds the stalls. */
-  area: { type: 'relation' | 'way'; id: number };
+  /**
+   * The stretch that holds stalls: an OSM area (a multipolygon relation or a closed way; its extent along the
+   * centreline), or a span between two points projected onto the centreline (a market with no OSM area).
+   */
+  area: { type: 'relation' | 'way'; id: number } | { type: 'span'; from: LngLat; to: LngLat };
   /** Centreline way ids, chained in order. */
   centreline: number[];
   mode: Mode;
   maxDepthM: number;
-  vans: Record<'left' | 'right', ('start' | 'end')[]>;
+  vans: Record<Side, ('start' | 'end')[]>;
   hours: Partial<Record<Weekday, [number, number]>>;
+  /** Which sides of the centreline carry a row (default both). */
+  sides?: Side[];
+  /** Side names in the published line (default 'left' / 'right'); configs sharing an id merge their sides. */
+  sideNames?: Partial<Record<Side, string>>;
+  /**
+   * Push the kerb this far into the strip (m): the tree pits along a median's edge stand in front of the stalls, which
+   * stand behind the tree line (Westerstraat 2019-05-13 panoramas).
+   */
+  kerbExtraM?: number;
+  /** What the layout rests on (for the report): measured on market-day panoramas, or inferred. */
+  evidence: string;
+  /**
+   * The routing graph's name for the aisle street: its own routed line is held to ROUTE_CLEAR_M exactly (the Cuyp's
+   * line runs ~1.1 m from the south row's canvas at the west end, accepted 2026-11-14); every other routed line to
+   * ROUTE_CLEAR_M plus half a station and the canvas's overhang past the frame.
+   */
+  street: string;
+  /**
+   * Points the stall band must keep clear of (m), each with its reason: a crossing node a named regression pins, or
+   * where BGT's carriageway curves into a run end and the smoothed kerb lets a roof corner touch it.
+   */
+  keepClear?: { at: LngLat; m: number; why: string }[];
 };
 
 const SIX_DAYS = (open: number, close: number) => Object.fromEntries((['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'] as Weekday[]).map(d => [d, [open, close]])) as Partial<Record<Weekday, [number, number]>>;
 
 export const MARKETS: MarketConfig[] = [
   {
-    id: 'albert-cuyp', name: 'Albert Cuypmarkt', palette: 'cuyp', bbox: '4.8895,52.3545,4.9000,52.3576',
+    id: 'albert-cuyp', street: 'Albert Cuypstraat', name: 'Albert Cuypmarkt', palette: 'cuyp', bbox: '4.8895,52.3545,4.9000,52.3576',
     area: { type: 'relation', id: 7112728 }, centreline: [7371794],
     mode: { kind: 'carriageway', aisle: ['rijbaan lokale weg', 'fietspad', 'OV-baan'], strip: ['parkeervlak'] },
     maxDepthM: 4.5,
@@ -61,9 +110,10 @@ export const MARKETS: MarketConfig[] = [
     vans: { left: ['start', 'end'], right: ['start'] },
     // Register: Ma-Za 10.00-17.00 uur (OSM says Mo-Sa 09:00-17:00).
     hours: SIX_DAYS(10, 17),
+    evidence: 'measured: 2020-01-06, 2021-04-23, 2022-03-21 panoramas',
   },
   {
-    id: 'ten-kate', name: 'Ten Katemarkt', palette: 'tenkate', bbox: '4.8655,52.3650,4.8685,52.3685',
+    id: 'ten-kate', street: 'Ten Katestraat', name: 'Ten Katemarkt', palette: 'tenkate', bbox: '4.8655,52.3650,4.8685,52.3685',
     // The pedestrian block from the Bellamystraat crossing to the Kinkerstraat crossing (way 7373352). North of
     // Bellamystraat the panoramas (2016-08-09, 2025-07-31) show only stray frames; south of Kinkerstraat the street
     // carries traffic and the 2025-07-31 capture shows market vans parked there, no stalls.
@@ -71,8 +121,91 @@ export const MARKETS: MarketConfig[] = [
     // The clear centre aisle in the 2024-12-11 capture is ~4.4 m (the tactile strip runs down it).
     mode: { kind: 'centre-aisle', aisleHalfM: 2.2, strip: ['voetpad', 'voetgangersgebied'] },
     maxDepthM: 3.2,
+    // With the routed-way breaks the south run's slack moved its last stall to 3.5 m from the Kinkerstraat crossing node
+    // (2026-11-14 passed on slack alone: that run ended 2.7 m from the node).
+    keepClear: [{ at: [4.867508, 52.366011], m: 4.5, why: 'Kinkerstraat crossing node (named regression, 4 m)' }],
     vans: { left: [], right: [] },
     hours: SIX_DAYS(9, 18),
+    evidence: 'measured: 2024-12-11 and 2025-07-31 panoramas',
+  },
+  {
+    // Dapperstraat, Mauritskade to Wijttenbachstraat (OSM area way 314540466, which also loops the Dapperplein). The
+    // 2022-08-31 08:40-08:46 capture drives the whole market before trading: bare frames both sides of a ~5 m asphalt
+    // aisle, backs to the shop footways, as on the Cuyp; 2022-06-13 13:2x, 2025-09-26 12:2x and 14:3x crossings show
+    // them dressed (mostly white canvas, textiles and produce).
+    id: 'dapper', street: 'Dapperstraat', name: 'Dappermarkt', palette: 'dapper', bbox: '4.9250,52.3600,4.9295,52.3656',
+    area: { type: 'way', id: 314540466 }, centreline: [318338187, 318338188, 1292798311, 1328139574, 7045424],
+    // BGT: the aisle is 'rijbaan lokale weg' (4.5-5.5 m), the stall strip and the shop footway one 'voetpad' run.
+    mode: { kind: 'carriageway', aisle: ['rijbaan lokale weg', 'fietspad', 'OV-baan', 'rijbaan regionale weg'], strip: ['voetpad', 'voetgangersgebied'] },
+    maxDepthM: 4.2,
+    // 2022-08-31: a trader's van at the Mauritskade end of the west row.
+    vans: { left: [], right: ['start'] },
+    // Register: Ma-Za 9.00-18.00 uur.
+    hours: SIX_DAYS(9, 18),
+    evidence: 'measured: 2022-08-31 08:40-08:46 (bare frames, whole length), 2022-06-13, 2024-09-17, 2025-09-26 panoramas',
+  },
+  {
+    // Westerstraat Monday market (Lapjesmarkt): two rows back to back on the tree-lined median between the carriageways,
+    // each facing its carriageway (2019-05-13 12:31-12:35, both carriageways; 2016-08-15). South carriageway (eastbound,
+    // way 7378517): the median is on its left.
+    id: 'westerstraat', street: 'Westerstraat', name: 'Westerstraat (Lapjesmarkt)', palette: 'jordaan', bbox: '4.8790,52.3772,4.8870,52.3790',
+    area: { type: 'span', from: [4.88005, 52.37772], to: [4.88555, 52.37875] }, centreline: [7378517],
+    mode: { kind: 'median', aisle: ['rijbaan lokale weg', 'fietspad'] },
+    maxDepthM: 4.0, sides: ['left'], sideNames: { left: 'south' }, kerbExtraM: 1.2,
+    vans: { left: [], right: [] },
+    // Register: Ma 09.00-13.00 uur.
+    hours: { Mo: [9, 13] },
+    evidence: 'measured: 2019-05-13 12:31-12:35 panoramas from both carriageways',
+  },
+  {
+    // North carriageway (westbound, way 221974498): the median is on its left too.
+    id: 'westerstraat', street: 'Westerstraat', name: 'Westerstraat (Lapjesmarkt)', palette: 'jordaan', bbox: '4.8790,52.3772,4.8870,52.3790',
+    area: { type: 'span', from: [4.88005, 52.37772], to: [4.88555, 52.37875] }, centreline: [221974498],
+    mode: { kind: 'median', aisle: ['rijbaan lokale weg', 'fietspad'] },
+    maxDepthM: 4.0, sides: ['left'], sideNames: { left: 'north' }, kerbExtraM: 1.2,
+    vans: { left: [], right: [] },
+    hours: { Mo: [9, 13] },
+    evidence: 'measured: 2019-05-13 12:31-12:35 panoramas from both carriageways',
+  },
+  {
+    // Noordermarkt (Monday Noordermarkt / Saturday boerenmarkt): one row on the square between the Noorderkerk and the
+    // Prinsengracht quay road (way 231674132, run north to south; the square is on its right), facing the road, with the
+    // traders' vans in the parking strip in front (2019-05-13 11:20; OSM area way 493003731). The rows on the square
+    // south of the church are not placed (their layout is not readable from the captures).
+    id: 'noordermarkt', street: 'Prinsengracht', name: 'Noordermarkt', palette: 'noorder', bbox: '4.8855,52.3785,4.8880,52.3803',
+    area: { type: 'way', id: 493003731 }, centreline: [231674132],
+    mode: { kind: 'carriageway', aisle: ['rijbaan lokale weg', 'parkeervlak'], strip: ['voetpad'] },
+    maxDepthM: 4.0, sides: ['right'], sideNames: { right: 'square' },
+    keepClear: [{ at: [4.8866957, 52.3790807], m: 1.5, why: 'the quay carriageway curves toward the Westerstraat: a roof corner touched BGT rijbaan (2 samples)' }],
+    vans: { left: [], right: [] },
+    // Register: Ma 09.00-16.00 (algemeen), Za 09.00-16.00 (boerenmarkt).
+    hours: { Mo: [9, 16], Sa: [9, 16] },
+    evidence: 'measured: 2019-05-13 11:20 panoramas (Monday)',
+  },
+  {
+    // Lindengracht Saturday market (Lindenmarkt): the filled-in canal's central parking strip (BGT parkeervlak, ~11 m)
+    // between the carriageways. No panorama was ever taken on a Saturday during market hours, so the layout is
+    // INFERRED from the Westerstraat market one block south (same operator, same street form): two rows back to back
+    // on the median, facing the carriageways. South carriageway (eastbound way 7378519 + 560536811): median on its left.
+    id: 'lindengracht', street: 'Lindengracht', name: 'Lindenmarkt (Lindengracht)', palette: 'linden', bbox: '4.8800,52.3792,4.8882,52.3810',
+    area: { type: 'span', from: [4.88262, 52.37985], to: [4.88660, 52.38045] }, centreline: [7378519, 560536811],
+    mode: { kind: 'median', aisle: ['rijbaan lokale weg', 'fietspad'] },
+    maxDepthM: 4.0, sides: ['left'], sideNames: { left: 'south' }, kerbExtraM: 0.6,
+    vans: { left: [], right: [] },
+    // Register: Za 09.00-17.00 uur.
+    hours: { Sa: [9, 17] },
+    evidence: 'INFERRED: no Saturday market-hours panorama exists; Westerstraat convention on the BGT median',
+  },
+  {
+    // North carriageway (westbound ways 7378495 + 560536812): median on its left.
+    id: 'lindengracht', street: 'Lindengracht', name: 'Lindenmarkt (Lindengracht)', palette: 'linden', bbox: '4.8800,52.3792,4.8882,52.3810',
+    area: { type: 'span', from: [4.88262, 52.37985], to: [4.88660, 52.38045] }, centreline: [7378495, 560536812],
+    mode: { kind: 'median', aisle: ['rijbaan lokale weg', 'fietspad'] },
+    maxDepthM: 4.0, sides: ['left'], sideNames: { left: 'north' }, kerbExtraM: 0.6,
+    keepClear: [{ at: [4.8826856, 52.3799707], m: 1.5, why: 'the carriageway widens at the Tweede Lindendwarsstraat: a roof corner touched BGT rijbaan (2 samples)' }],
+    vans: { left: [], right: [] },
+    hours: { Sa: [9, 17] },
+    evidence: 'INFERRED: no Saturday market-hours panorama exists; Westerstraat convention on the BGT median',
   },
 ];
 
@@ -131,9 +264,16 @@ async function bgtWegdeel(id: string, bbox: string): Promise<Poly[]> {
 }
 
 async function osm(): Promise<any> {
-  const ids = MARKETS.flatMap(m => m.centreline).join(',');
-  const q = `[out:json][timeout:60];(relation(7112728);way(78090886);way(id:${ids}););out geom;`;
-  return cached('osm.json', () => fetchJson(OVERPASS, { method: 'POST', body: new URLSearchParams({ data: q }), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }));
+  // The Cuyp / Ten Kate query keeps its cache (osm.json, 2026-11-14); every later market adds its own.
+  const query = (cfgs: MarketConfig[]) => {
+    const rels = cfgs.flatMap(m => m.area.type === 'relation' ? [m.area.id] : []), ways = cfgs.flatMap(m => [...(m.area.type === 'way' ? [m.area.id] : []), ...m.centreline]);
+    return `[out:json][timeout:60];(${rels.map(r => `relation(${r});`).join('')}way(id:${[...new Set(ways)].join(',')}););out geom;`;
+  };
+  const post = (q: string) => () => fetchJson(OVERPASS, { method: 'POST', body: new URLSearchParams({ data: q }), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+  const first = MARKETS.filter(m => m.id === 'albert-cuyp' || m.id === 'ten-kate'), later = MARKETS.filter(m => !first.includes(m));
+  const a = await cached('osm.json', post(`[out:json][timeout:60];(relation(7112728);way(78090886);way(id:${first.flatMap(m => m.centreline).join(',')}););out geom;`));
+  const b = later.length ? await cached('osm-20261120.json', post(query(later))) : { elements: [] };
+  return { elements: [...a.elements, ...b.elements] };
 }
 
 function chain(ways: LngLat[][]): LngLat[] {
@@ -196,15 +336,22 @@ export async function measure(cfg: MarketConfig, data: any): Promise<{ line: Mar
     return bs;
   };
   // The market area's extent along the centreline: one interval per member polygon.
-  const area = byId.get(cfg.area.id);
-  const areaRings: LngLat[][] = cfg.area.type === 'way' ? [area.geometry.map((p: any) => [p.lon, p.lat])] : area.members.filter((m: any) => m.role === 'outer').map((m: any) => m.geometry.map((p: any) => [p.lon, p.lat]));
+  const A = cfg.area;
+  const areaRings: LngLat[][] = A.type === 'span' ? [[A.from, A.to]]
+    : A.type === 'way' ? [byId.get(A.id).geometry.map((p: any) => [p.lon, p.lat])]
+    : byId.get(A.id).members.filter((m: any) => m.role === 'outer').map((m: any) => m.geometry.map((p: any) => [p.lon, p.lat]));
   const areaRanges = areaRings.map(r => { const ss = r.map(project); return [Math.min(...ss), Math.max(...ss)] as [number, number]; }).sort((a, b) => a[0] - b[0]);
   const inArea = (s: number) => areaRanges.some(([a, b]) => s >= a && s <= b);
 
   const polys = await bgtWegdeel(cfg.id, cfg.bbox);
+  // Routed lines (the rider's graph) other than this market's own aisle: a side street or passage that crosses the stall
+  // strip breaks the run, so no stall stands across a way the rider can take (lane market-stalls-20261120: the
+  // Dapperstraat side streets, Ten Kate's Hasebroekstraat and Hannie Dankbaarpassage).
+  const bbN = cfg.bbox.split(',').map(Number) as [number, number, number, number];
+  const routed = routedLinesNear(JSON.parse(fs.readFileSync(ROUTING, 'utf8')) as RoutingStreet[], bbN);
   const bb = cfg.bbox.split(',').map(Number), treePts = trees(bb).map(loc);
   const sides: MarketSide[] = [], report: Record<string, unknown> = { centrelineM: +total.toFixed(1), areaRanges: areaRanges.map(r => r.map(v => +v.toFixed(1))) };
-  for (const [name, sign] of [['left', 1], ['right', -1]] as const) {
+  for (const [name, sign] of ([['left', 1], ['right', -1]] as const).filter(([n]) => !cfg.sides || cfg.sides.includes(n))) {
     // Per station: is a stall possible here, at which kerb offset, with how much depth.
     const stations: { st: Station; ok: boolean; inner: number | null; depth: number; why: string }[] = [];
     for (let s = 0; s <= total; s += STEP) {
@@ -216,7 +363,17 @@ export async function measure(cfg: MarketConfig, data: any): Promise<{ line: Mar
         else {
           let o = 0; while (o < SCAN_MAX && aisle.includes(cls(o))) o += SCAN_STEP;
           inner = o; while (o < SCAN_MAX && strip.includes(cls(o + SCAN_STEP / 2))) o += SCAN_STEP;
-          outer = o; if (outer - inner < MIN_DEPTH_M) why = 'strip broken';
+          outer = o; inner += cfg.kerbExtraM ?? 0; if (outer - inner < MIN_DEPTH_M) why = 'strip broken';
+        }
+      } else if (cfg.mode.kind === 'median') {
+        const aisle = cfg.mode.aisle;
+        if (!aisle.includes(cls(0))) why = 'centre not carriageway';
+        else {
+          let o = 0; while (o < SCAN_MAX && aisle.includes(cls(o))) o += SCAN_STEP;
+          const edge = o; while (o < SCAN_MAX + 6 && !aisle.includes(cls(o + SCAN_STEP / 2))) o += SCAN_STEP;
+          // The far carriageway must close the median, else this is a crossing or a side street, not the median.
+          if (o >= SCAN_MAX + 6) { why = 'no median'; inner = edge; outer = edge; }
+          else { inner = edge + (cfg.kerbExtraM ?? 0); outer = edge + (o - edge) / 2 - MEDIAN_GAP_M; if (outer - inner < MIN_DEPTH_M) why = 'strip broken'; }
         }
       } else {
         const strip = cfg.mode.strip;
@@ -229,10 +386,22 @@ export async function measure(cfg: MarketConfig, data: any): Promise<{ line: Mar
       if (!why && !inArea(s)) why = 'outside market area';
       const depth = inner === null ? 0 : Math.min(cfg.maxDepthM, outer - inner);
       if (!why && inner !== null) {
-        const band0 = inner - TREE_ACROSS_M, band1 = inner + MIN_DEPTH_M + TREE_ACROSS_M;
+        // A kerb pushed past the tree pits (kerbExtraM) keeps the trunks in front of the roof edge: only a trunk behind the
+        // pushed kerb breaks the run.
+        const band0 = cfg.kerbExtraM ? inner : inner - TREE_ACROSS_M, band1 = inner + MIN_DEPTH_M + TREE_ACROSS_M;
         for (const [tx, ty] of treePts) {
           const dx = tx - st.x, dy = ty - st.y, along = dx * -st.ny + dy * st.nx, across = (dx * st.nx + dy * st.ny) * sign;
           if (Math.abs(along) <= TREE_ALONG_M && across >= band0 && across <= band1) { why = 'tree'; break; }
+        }
+      }
+      if (!why && inner !== null) {
+        // From the roof's front edge to the frame's back, every 0.25 m across: a routed line within ROUTE_CLEAR_M plus
+        // half a station step (and the canvas's 0.15 m past the frame end) blocks this station.
+        const reach = ROUTE_CLEAR_M + STEP / 2 + (STALL.roofLength - STALL.length) / 2;
+        for (let o = inner + ROOF_CLEAR_M; o <= inner + FRONT_SETBACK_M + STALL.depth + 1e-9 && !why; o += 0.25) {
+          const p = geo(st.x + st.nx * o * sign, st.y + st.ny * o * sign);
+          if (routed.some(l => distToLine(p, l.line) < (l.name === cfg.street ? ROUTE_CLEAR_M : reach))) why = 'routed way';
+          else if (cfg.keepClear?.some(k => Math.hypot((p[0] - k.at[0]) * kx, (p[1] - k.at[1]) * KY) < k.m + STEP / 2)) why = 'kept clear';
         }
       }
       stations.push({ st, ok: !why, inner, depth, why });
@@ -266,26 +435,28 @@ export async function measure(cfg: MarketConfig, data: any): Promise<{ line: Mar
     depths.sort((a, b) => a - b);
     const why: Record<string, number> = {}; for (const x of stations) if (!x.ok) why[x.why] = (why[x.why] ?? 0) + STEP;
     // The kerb line runs along the street; for the left side the aisle (carriageway / centre) lies to its right.
-    sides.push({ side: name, kerb: kerbLocal.map(([x, y]) => geo(x, y).map(v => +v.toFixed(7)) as LngLat), aisle: sign === 1 ? -1 : 1, depthM: +(depths[Math.floor(depths.length * 0.05)] ?? 0).toFixed(2), runs, vans: cfg.vans[name] });
-    report[name] = { runs: runs.length, runM: +runs.reduce((a, [p, q]) => a + q - p, 0).toFixed(1), depthP05: depths[Math.floor(depths.length * 0.05)], depthMedian: depths[depths.length >> 1], kerbOffsetMedian: [...offs].sort((a, b) => a - b)[offs.length >> 1], blockedM: why };
+    sides.push({ side: cfg.sideNames?.[name] ?? name, kerb: kerbLocal.map(([x, y]) => geo(x, y).map(v => +v.toFixed(7)) as LngLat), aisle: sign === 1 ? -1 : 1, depthM: +(depths[Math.floor(depths.length * 0.05)] ?? 0).toFixed(2), runs, vans: cfg.vans[name] });
+    report[cfg.sideNames?.[name] ?? name] = { runs: runs.length, runM: +runs.reduce((a, [p, q]) => a + q - p, 0).toFixed(1), depthP05: depths[Math.floor(depths.length * 0.05)], depthMedian: depths[depths.length >> 1], kerbOffsetMedian: [...offs].sort((a, b) => a - b)[offs.length >> 1], blockedM: why };
   }
   const line: MarketLine = { id: cfg.id, name: cfg.name, hours: cfg.hours, palette: cfg.palette, sides };
   // Clearance: no stall or van footprint (roof overhang included) may touch the carriageway / bike lane.
-  const aisleClasses = cfg.mode.kind === 'carriageway' ? cfg.mode.aisle : ['rijbaan lokale weg', 'fietspad', 'OV-baan'];
+  const aisleClasses = cfg.mode.kind === 'carriageway' || cfg.mode.kind === 'median' ? cfg.mode.aisle.filter(c => c !== 'parkeervlak') : ['rijbaan lokale weg', 'fietspad', 'OV-baan'];
   const { instances, stalls } = placeAll({ version: 1, sources: [], markets: [line] });
-  let intrusions = 0;
+  let intrusions = 0; const intrudingStalls = new Set<string>();
   for (const i of instances) if (i.part === 'stall-frame') {
     const c = stallFootprint(i);
     for (let k = 0; k < 4; k++) for (let t = 0; t <= 1; t += 0.25) {
       const a = c[k], b = c[(k + 1) % 4], p: LngLat = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
-      if (aisleClasses.includes(classAt(polys, p[0], p[1]))) intrusions++;
+      if (aisleClasses.includes(classAt(polys, p[0], p[1]))) { intrusions++; intrudingStalls.add(i.stall); }
     }
   }
   report.stalls = stalls.filter(s => s.goods !== 'van').length;
   report.vans = stalls.filter(s => s.goods === 'van').length;
   report.bySide = Object.fromEntries(sides.map(s => [s.side, stalls.filter(x => x.side === s.side && x.goods !== 'van').length]));
   report.aisleIntrusionSamples = intrusions;
+  if (intrusions) report.aisleIntrusionStalls = [...intrudingStalls];
   report.trees = treePts.length;
+  report.evidence = cfg.evidence;
   return { line, report };
 }
 
@@ -294,15 +465,22 @@ async function main(): Promise<void> {
   const off = process.env.MARKETS === '0';
   const data = off ? null : await osm();
   const markets: MarketLine[] = [], report: Record<string, unknown> = {};
-  if (data) for (const cfg of MARKETS) { const r = await measure(cfg, data); markets.push(r.line); report[cfg.id] = r.report; }
+  if (data) for (const cfg of MARKETS) {
+    const r = await measure(cfg, data), same = markets.find(m => m.id === cfg.id);
+    // Configs sharing an id (a median market measured from each carriageway) merge into one line.
+    if (same) { same.sides.push(...r.line.sides); report[cfg.id] = { ...(report[cfg.id] as object), [r.line.sides.map(x => x.side).join('+')]: r.report }; }
+    else { markets.push(r.line); report[cfg.id] = cfg.sides ? { [r.line.sides.map(x => x.side).join('+')]: r.report } : r.report; }
+  }
+  // Rideable corridor: no stall footprint within ROUTE_CLEAR_M of a routing-graph edge the rider can take.
+  report.routing = routingClearance(markets);
   const file: MarketLinesFile = {
     version: 1,
     sources: [
-      'OpenStreetMap contributors (ODbL): relation 7112728, way 78090886, centreline ways',
+      'OpenStreetMap contributors (ODbL): relation 7112728, ways 78090886, 314540466, 493003731, centreline ways',
       'BGT wegdeel, PDOK OGC API (CC0)',
       'Gemeente Amsterdam municipal tree inventory (game extract municipal-trees)',
       'Gemeente Amsterdam markets register, maps.amsterdam.nl open geodata MARKTEN (hours)',
-      'Gemeente Amsterdam panoramas (CC BY 4.0): stall frame, palettes, Ten Kate aisle',
+      'Gemeente Amsterdam panoramas (CC BY 4.0): stall frame, palettes, Ten Kate aisle, Dapper / Westerstraat / Noordermarkt rows',
     ],
     markets,
   };

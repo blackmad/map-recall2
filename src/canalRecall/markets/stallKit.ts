@@ -80,8 +80,8 @@ export function shadeOf(hex: string, k: number): string {
 export type MarketPartId =
   | 'stall-frame' | 'stall-table' | 'roof-plain' | 'roof-striped' | 'roof-parasol'
   | 'goods-produce' | 'goods-fabric' | 'goods-fish' | 'goods-general' | 'goods-cheese' | 'goods-flowers'
-  | 'van';
-export const MARKET_PART_IDS: readonly MarketPartId[] = ['stall-frame', 'stall-table', 'roof-plain', 'roof-striped', 'roof-parasol', 'goods-produce', 'goods-fabric', 'goods-fish', 'goods-general', 'goods-cheese', 'goods-flowers', 'van'];
+  | 'van' | 'stall-bare';
+export const MARKET_PART_IDS: readonly MarketPartId[] = ['stall-frame', 'stall-table', 'roof-plain', 'roof-striped', 'roof-parasol', 'goods-produce', 'goods-fabric', 'goods-fish', 'goods-general', 'goods-cheese', 'goods-flowers', 'van', 'stall-bare'];
 export type GoodsKind = 'produce' | 'fabric' | 'fish' | 'general' | 'cheese' | 'flowers';
 export const GOODS_KINDS: readonly GoodsKind[] = ['produce', 'fabric', 'fish', 'general', 'cheese', 'flowers'];
 
@@ -92,9 +92,14 @@ export const GOODS_KINDS: readonly GoodsKind[] = ['produce', 'fabric', 'fish', '
 export const MARKET_TRI_CAPS: Readonly<Record<MarketPartId, number>> = {
   'stall-frame': 64, 'stall-table': 64, 'roof-plain': 40, 'roof-striped': 140, 'roof-parasol': 40,
   'goods-produce': 140, 'goods-fabric': 160, 'goods-fish': 120, 'goods-general': 140, 'goods-cheese': 140, 'goods-flowers': 140,
-  van: 160,
+  van: 160, 'stall-bare': 120,
 };
 export const STALL_TRI_CAP = 360;
+/**
+ * Per-market triangle budget (all instances of every part, before culling; lane market-stalls-20261120). The Cuyp, the
+ * longest market (~250 stalls), places ~65 k; any market over this needs fewer goods triangles, not fewer stalls.
+ */
+export const MARKET_TRI_BUDGET = 90_000;
 
 export type MarketMesh = { id: MarketPartId; positions: Float32Array; colours: Float32Array; triangles: number; heightM: number };
 
@@ -306,9 +311,35 @@ export function vanModel(): MarketMesh {
   return b.done('van');
 }
 
+/**
+ * Closed / setting-up stall (lane market-stalls-20261120): the Dappermarkt at 08:40-08:46 on Wed 2022-08-31, before
+ * trading: the four posts, the roof rails with the canvas still rolled on the back rail and a plain sheet laid flat over
+ * the rails (grey-white), the counter as bare plywood boards on the trestles, a stack of boards leaning behind. No
+ * goods, no valance, no end sheets. Drawn instead of frame + roof + goods when the market is not trading.
+ */
+export function bareModel(): MarketMesh {
+  const b = new Soup(), p = S.post / 2, T = MARKET_TONES, ply = '#b08d5e', plyDark = '#8a6c46', sheet = '#c9ccc8';
+  for (const x of [-L + p, L - p]) for (const y of [-p, -S.depth + p]) b.box(x - p, y - p, -0.2, x + p, y + p, roofZ(y), T.steel, false);
+  // Roof rails: front and back along the row, both ends front-to-back (sloped with the roof).
+  for (const y of [0, -S.depth]) b.box(-L, y - p, roofZ(y) - 0.05, L, y + p, roofZ(y), T.steel, false, true);
+  for (const x of [-L, L]) b.quad2([x, 0, roofZ(0) - 0.02], [x, -S.depth, roofZ(-S.depth) - 0.02], [x, -S.depth, roofZ(-S.depth) - 0.07], [x, 0, roofZ(0) - 0.07], T.steel);
+  // The sheet laid over the rails, short of the front by 0.3 m (it sags between them: two facets).
+  const ym = -S.depth / 2, sag = 0.06;
+  b.quad2([-L, -0.3, roofZ(-0.3) + 0.01], [L, -0.3, roofZ(-0.3) + 0.01], [L, ym, roofZ(ym) - sag], [-L, ym, roofZ(ym) - sag], sheet);
+  b.quad2([-L, ym, roofZ(ym) - sag], [L, ym, roofZ(ym) - sag], [L, -S.depth, roofZ(-S.depth) + 0.01], [-L, -S.depth, roofZ(-S.depth) + 0.01], sheet);
+  // Canvas rolled on the back rail: a square-section roll.
+  const zr = roofZ(-S.depth) + 0.02;
+  b.box(-L + 0.1, -S.depth - 0.09, zr, L - 0.1, -S.depth + 0.09, zr + 0.16, T.white, true, true);
+  // Bare boards on two trestles; a stack of boards leaning on the back posts.
+  b.box(-L + 0.08, -S.counterDepth, S.counterH - S.counterT, L - 0.08, 0.02, S.counterH, ply, true, true, ply);
+  for (const x of [-L + 0.4, L - 0.45]) b.box(x, -S.counterDepth + 0.1, 0, x + 0.05, -0.1, S.counterH - S.counterT, plyDark, false);
+  b.quad2([-L + 0.3, -S.depth + 0.6, 0], [L - 0.3, -S.depth + 0.6, 0], [L - 0.3, -S.depth + 0.12, 1.25], [-L + 0.3, -S.depth + 0.12, 1.25], plyDark);
+  return b.done('stall-bare');
+}
+
 export const MARKET_MODELS: Readonly<Record<MarketPartId, () => MarketMesh>> = {
   'stall-frame': frameModel, 'stall-table': tableModel, 'roof-plain': roofPlainModel, 'roof-striped': roofStripedModel, 'roof-parasol': parasolModel,
   'goods-produce': produceModel, 'goods-fabric': fabricModel, 'goods-fish': fishModel, 'goods-general': generalModel,
-  'goods-cheese': cheeseModel, 'goods-flowers': flowersModel, van: vanModel,
+  'goods-cheese': cheeseModel, 'goods-flowers': flowersModel, van: vanModel, 'stall-bare': bareModel,
 };
 export const goodsPart = (k: GoodsKind): MarketPartId => `goods-${k}` as MarketPartId;

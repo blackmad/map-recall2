@@ -9,10 +9,14 @@
 // Flag: `?markets=1` draws them (default off until reviewed: MARKETS_DEFAULT); `?markets=0` is the kill switch and wins
 // over the default. Off, nothing is constructed or fetched, so the ride is byte-identical.
 //
-// Day and time: the game has no clock or weekday (the light rig is a fixed afternoon), so the stalls always stand when
-// the flag is on. placer.ts marketOpenAt() reads the register's hours if a time of day ever arrives.
+// Day and time: the game has no clock or weekday (the light rig is a fixed afternoon), so by default every market stands
+// open when the flag is on. `?marketDay=Sa` (or `Mo@8.5`, `now`) applies the register's hours (placer.ts marketState):
+// a market not trading then draws nothing, one about to open draws bare frames (stallKit.ts bareModel).
+//
+// Lane market-stalls-20261120 added the Dappermarkt, the Westerstraat and Noordermarkt Monday markets and the
+// Lindenmarkt to the same lines file; nothing here changed but the schedule.
 import { InstanceCull } from '../rendererShared/instanceCull';
-import { placeAll, type MarketInstance, type MarketLinesFile } from '../markets/placer';
+import { parseMarketDay, placeAll, type MarketInstance, type MarketLinesFile } from '../markets/placer';
 import { MARKET_MODELS, MARKET_PART_IDS, type MarketPartId } from '../markets/stallKit';
 
 const W = () => globalThis as any;
@@ -74,7 +78,7 @@ export class MarketLayer {
       if (!r.ok) return;
       const file = await r.json() as MarketLinesFile;
       if (file.version !== 1 || !Array.isArray(file.markets)) throw Error('Invalid market lines');
-      this.instances = placeAll(file).instances;
+      this.instances = placeAll(file, parseMarketDay(new URLSearchParams(W().location?.search ?? '').get('marketDay'))).instances;
       this.markets = file.markets.map(m => {
         const pts = m.sides.flatMap(s => s.kerb), lng = pts.reduce((a, p) => a + p[0], 0) / pts.length, lat = pts.reduce((a, p) => a + p[1], 0) / pts.length;
         const r = Math.max(...pts.map(p => Math.hypot((p[0] - lng) * 111320 * Math.cos(lat * Math.PI / 180), (p[1] - lat) * 110540)));
@@ -144,7 +148,7 @@ export class MarketLayer {
       if (this.opts.sharedFrame) this.culls.push(new InstanceCull(THREE, mesh, { castShadow: false }));
       instances += items.length;
     }
-    this.debug.instances = instances; this.debug.stalls = this.meshes.length ? (groups.get('stall-frame')?.length ?? 0) + (groups.get('stall-table')?.length ?? 0) : 0;
+    this.debug.instances = instances; this.debug.stalls = this.meshes.length ? (groups.get('stall-frame')?.length ?? 0) + (groups.get('stall-table')?.length ?? 0) + (groups.get('stall-bare')?.length ?? 0) : 0;
     this.debug.markets = [...ids]; this.debug.buildMs = +(performance.now() - t0).toFixed(2);
     this.cameraMap.triggerRepaint?.();
   }

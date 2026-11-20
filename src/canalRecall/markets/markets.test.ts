@@ -142,7 +142,7 @@ test('canopies: the Cuyp is a canvas tunnel (no parasols), Ten Kate mostly green
 });
 
 test('measured lines: stall counts in the register\'s range (Cuyp ~260 standplaatsen; Ten Kate a pedestrian block)', () => {
-  assert.deepEqual(file.markets.map(m => m.id), ['albert-cuyp', 'ten-kate']);
+  assert.deepEqual(file.markets.map(m => m.id), ['albert-cuyp', 'ten-kate', 'dapper', 'westerstraat', 'noordermarkt', 'lindengracht']);
   const cuyp = frames('albert-cuyp').length, kate = frames('ten-kate').length;
   assert.ok(cuyp >= 230 && cuyp <= 280, `cuyp ${cuyp}`);
   assert.ok(kate >= 45 && kate <= 75, `ten kate ${kate}`);
