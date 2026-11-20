@@ -14,7 +14,7 @@
 import { hash01 } from './shopProps/kit.js';
 import type { GoodsKind } from './retailGoods.js';
 import type { FillerKind } from './retailPaneFillers.js';
-import { toneFits } from './retailRoomTone.js';
+import { toneDistance, toneFits } from './retailRoomTone.js';
 
 type G = { location?: { search?: string }; process?: { env?: Record<string, string | undefined> }; __canalRecallShopVariety?: boolean };
 /** Default on since its blind A/B (2026-11-20, one opus judge, photo | A | B at the panorama poses, sides shuffled):
@@ -137,8 +137,9 @@ export function planPanes(kind: GoodsKind, tiles: readonly PlanTile[], doors: Re
     const over = isSig.filter(Boolean).length - cap;
     for (let k = 0; k < over && k < extra.length; k++) isSig[extra[k]] = false;
   }
-  // One room per shop (retailRoomTone.ts): fillers much darker than the signature's room leave the deck; at least one stays.
-  const fits = set.fillers.filter(f => toneFits(kind, f)), fillers = fits.length ? fits : set.fillers;
+  // One room per shop (retailRoomTone.ts): fillers far from the signature's brightness leave the deck; the two nearest always stay (no repeats).
+  const fits = set.fillers.filter(f => toneFits(kind, f));
+  const fillers = fits.length >= 2 ? fits : set.fillers.slice().sort((p, q) => toneDistance(kind, p) - toneDistance(kind, q)).slice(0, 2);
   const deck: FillerKind[] = [];
   const refill = (k: number) => deck.push(...fillers.map((f, j) => ({ f, r: hash01(`${seed}:deck${k}:${j}`) })).sort((p, q) => p.r - q.r).map(x => x.f));
   const draw = (prev: FillerKind | undefined, k: number): FillerKind => {

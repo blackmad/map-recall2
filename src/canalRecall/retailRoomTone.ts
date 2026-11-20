@@ -34,19 +34,36 @@ export const FILLER_ROOM_TONE: Readonly<Record<FillerKind, string>> = {
 const rgb = (hex: string): [number, number, number] => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)) as [number, number, number];
 const lum = ([r, g, b]: readonly number[]) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
 
-/** A filler whose mean is under this share of the signature's luminance cannot be tinted to match and is left out. */
-export const TONE_MIN_LUM = 0.7;
-/** The darkest a tint channel goes (a bright filler beside a near-black signature stays legible). */
-export const TONE_MIN_CHANNEL = 0.3;
+/** A filler fits a shop when its mean luminance is within this band of the signature's: much darker cannot be
+ *  brightened to match, much brighter goes murky when darkened (blind round 1, 2026-11-20: 8-6-2, the losses a bright
+ *  room darkened to mud and a pane swapped for a brighter one). */
+export const TONE_LUM_BAND: readonly [number, number] = [0.7, 1.35];
+/** How far the tint may move hue per channel. Zero: a brightness match only (blind round 1: a full per-channel ratio
+ *  turned a pink poster cyan; round 2 at 0.12 still cast posters cyan, 4 of its 5 losses). */
+export const TONE_HUE_SLACK = 0;
+/** The darkest the brightness match goes. */
+export const TONE_MIN_SCALE = 0.62;
 
-/** Whether a filler's room can be tinted to the signature's (not much darker than it). */
+const lumRatio = (kind: GoodsKind, filler: FillerKind) => lum(rgb(GOODS_ROOM_TONE[kind])) / Math.max(1, lum(rgb(FILLER_ROOM_TONE[filler])));
+
+/** Whether a filler's room can be brought to the signature's (TONE_LUM_BAND). */
 export function toneFits(kind: GoodsKind, filler: FillerKind): boolean {
-  return lum(rgb(FILLER_ROOM_TONE[filler])) >= TONE_MIN_LUM * lum(rgb(GOODS_ROOM_TONE[kind]));
+  const r = lumRatio(kind, filler);
+  return r >= 1 / TONE_LUM_BAND[1] && r <= 1 / TONE_LUM_BAND[0];
 }
 
-/** The colour a filler tile is multiplied by so its room takes the signature's: per channel signature / filler mean,
- *  clamped to [TONE_MIN_CHANNEL, 1]. '#ffffff' when the filler is already no brighter in any channel. */
+/** How far a filler is from the band (0 inside it): picks the nearest when no filler of a set fits. */
+export function toneDistance(kind: GoodsKind, filler: FillerKind): number {
+  const r = Math.log(lumRatio(kind, filler));
+  return Math.max(0, Math.log(1 / TONE_LUM_BAND[1]) - r, r - Math.log(1 / TONE_LUM_BAND[0]));
+}
+
+/** The colour a filler tile is multiplied by so its room takes the signature's: the luminance ratio (never above 1,
+ *  never under TONE_MIN_SCALE) times each channel's chroma ratio held within 1 ± TONE_HUE_SLACK. */
 export function toneTint(kind: GoodsKind, filler: FillerKind): string {
-  const s = rgb(GOODS_ROOM_TONE[kind]), f = rgb(FILLER_ROOM_TONE[filler]);
-  return '#' + s.map((c, i) => Math.round(255 * Math.max(TONE_MIN_CHANNEL, Math.min(1, c / Math.max(1, f[i])))).toString(16).padStart(2, '0')).join('');
+  const s = rgb(GOODS_ROOM_TONE[kind]), f = rgb(FILLER_ROOM_TONE[filler]), ls = Math.max(1, lum(s)), lf = Math.max(1, lum(f));
+  const scale = Math.max(TONE_MIN_SCALE, Math.min(1, ls / lf));
+  const ch = s.map((c, i) => Math.max(1 - TONE_HUE_SLACK, Math.min(1 + TONE_HUE_SLACK, (c / ls) / (Math.max(1, f[i]) / lf))));
+  const top = Math.max(...ch.map(c => c * scale));
+  return '#' + ch.map(c => Math.round(255 * c * scale / Math.max(1, top)).toString(16).padStart(2, '0')).join('');
 }

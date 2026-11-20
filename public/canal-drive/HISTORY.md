@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+## A shop's windows look into one room (2026-11-20, round 20261120l)
+
+- David on the Shopfronts page after shop-variety: "these now look like they are different stores due to differing ambient colors" (IJscuypje, Bagels & Beans). Each goods cell and pane filler paints its own room, so a café's warm signature pane sat beside a white-tiled seating filler and a dark green blind.
+- `retailRoomTone.ts`: each cell's mean colour, measured from the painters (`scripts/retail-real/room-tones.ts --write`; the test fails on a stale table). A front keeps only fillers whose luminance is within 0.7–1.35× of its signature's (the two nearest when fewer fit, so no repeats return), and each filler tile is multiplied by a brightness-only tint (floor 0.62). The filler atlas pages now carry a full tint mask (`paintLookAtlas.ts`), and the Shopfronts gallery multiplies the same tint. Blind cloths are neutral creams only.
+- Blind judging, one opus judge per round, sides shuffled, against the published thumbnails. Round 1 used a full per-channel ratio and scored 8–6–2: the dark/white outliers were fixed, but a poster turned cyan and some panes went murky. Round 2 added the luminance band and a hue nudge capped at 12 % and scored 12–5–3 over 20 shops: all four named chains won with high confidence, and four of the losses were cyan poster casts. Round 3 used brightness only on the 8 lost or tied shops and scored 3–3–2, with no colour casts. The cost: panes are slightly greyer and lower in contrast. Amsterdam Cheese Company drew a grocery-shelf counter pane (the content mismatch of fillers vs signature, e.g. box shelves beside a bakery counter, is untouched by this fix).
+- Note for integrators: the round's first world compile ran with code changed mid-chain and was stopped and redone.
+
 ## Chain logos round 2 and today's What's New (2026-11-20, round 20261120k)
 
 - Chain logos round 2 (lane/chain-logos2-20261120 2f84287969), David's 2026-11-20 Shopfronts notes, 15 chains: own fronts for real-only type templates that drew nothing (New York Pizza, Domino's, Subway, De Pizzabakkers, Pearle, Odido, Grapedistrict, Gamma, Blokker), logos re-inked to fascia colours read on panoramas; Lidl fits its board, Cigo's band logo, ALDI's long bar, The Bulldog's full amber sign, Bagels & Beans' badge; Simon Meijssen's tile frieze plus a new kit option, a chain's own frame and awning colours where the pand has no measured one. Merge: threeBuildingFeatures keeps the shop-variety layer and adds the chain awning/frame.
