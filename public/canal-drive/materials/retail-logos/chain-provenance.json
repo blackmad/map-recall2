@@ -158,13 +158,11 @@
   "name": "Domino's",
   "pois": 17,
   "wikidata": "Q839466",
-  "file": "File:Domino's 2025.svg",
   "source": "https://commons.wikimedia.org/wiki/File:Domino%27s_2025.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Domino%27s_2025.svg/960px-Domino%27s_2025.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "f77c380fa4b3b6bf5f5a9fec9f1959592af07c58",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons)",
   "artist": "Domino's Pizza Inc.",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-20",
+  "wordmark": "round 2: tile + white word on charcoal"
  },
  "dirk": {
   "name": "Dirk",
@@ -206,13 +204,11 @@
   "name": "Subway",
   "pois": 14,
   "wikidata": "Q244457",
-  "file": "File:Subway 2016 logo.svg",
   "source": "https://commons.wikimedia.org/wiki/File:Subway_2016_logo.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Subway_2016_logo.svg/960px-Subway_2016_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "490dffdba22d3ca7992d1b9623f840eb1961a651",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons)",
   "artist": "Subway",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-20",
+  "wordmark": "round 2: yellow SUB, white WAY on dark green"
  },
  "rituals": {
   "name": "Rituals",
@@ -242,37 +238,33 @@
   "name": "Cigo",
   "pois": 11,
   "wikidata": "Q62391977",
-  "file": "File:Logo cigo nl.png",
-  "source": "https://commons.wikimedia.org/wiki/File:Logo_cigo_nl.png",
-  "renderUrl": "https://upload.wikimedia.org/wikipedia/commons/5/58/Logo_cigo_nl.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "sha1": "c14f66e7b6832ada329c54c1fa0b6848ced43816",
-  "licence": "Public domain",
+  "source": "https://www.cigo.nl/",
+  "renderUrl": "https://www.cigo.nl/wp-content/uploads/2018/06/logo-cigo-1024x200.png",
+  "licence": "trademark logo; brand site PNG",
   "artist": "Cigo",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-20",
+  "wordmark": "round 2: the wide band logo on black"
  },
  "odido": {
   "name": "Odido",
   "pois": 11,
   "wikidata": "Q28406140",
-  "file": "File:Odido 2023 Logo.png",
-  "source": "https://commons.wikimedia.org/wiki/File:Odido_2023_Logo.png",
-  "renderUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Odido_2023_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "sha1": "cb9a1ed1ed7f03dc4c808d4b90822aa919a4be4d",
-  "licence": "Public domain",
+  "source": "https://merk.odido.nl/en/logo",
+  "renderUrl": "https://cdn.jsdelivr.net/npm/simple-icons@16.38.0/icons/odido.svg",
+  "licence": "trademark logo; Simple Icons path (CC0 data)",
   "artist": "https://www.odido.nl/",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-20",
+  "wordmark": "round 2: solid white mark on black"
  },
  "de-pizzabakkers": {
   "name": "De Pizzabakkers",
   "pois": 11,
   "wikidata": "Q124218622",
-  "file": "File:De Pizzabakkers Logo.png",
   "source": "https://commons.wikimedia.org/wiki/File:De_Pizzabakkers_Logo.png",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/De_Pizzabakkers_Logo.png/960px-De_Pizzabakkers_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "b4634d7d0abd7335843ff2af43011815e49366c6",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons)",
   "artist": "De Pizzabakkers",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-20",
+  "wordmark": "round 2: the logo in white on warm grey"
  },
  "burger-king": {
   "name": "Burger King",
@@ -374,13 +366,11 @@
   "name": "ALDI",
   "pois": 8,
   "wikidata": "Q41171373",
-  "file": "File:AldiNord-WorldwideLogo.svg",
   "source": "https://commons.wikimedia.org/wiki/File:AldiNord-WorldwideLogo.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/AldiNord-WorldwideLogo.svg/960px-AldiNord-WorldwideLogo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "13682c18325db6c5cea516650180d21b2bc3b877",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons) mark; ALDI set in Helvetica Neue Bold after the panorama",
   "artist": "Adrio",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-20",
+  "wordmark": "round 2: mark + long ALDI with red bar"
  },
  "gwk-travelex": {
   "name": "GWK Travelex",
@@ -508,10 +498,10 @@
   "wikidata": "Q2466162",
   "source": "https://www.thebulldog.com/",
   "renderUrl": "https://thebulldog.com/wp-content/uploads/2022/06/TB-International-Logo_horizontal_black-text.jpg",
-  "licence": "trademark logo; brand site JPG",
+  "licence": "trademark logo (badge, brand site JPG); lettering set in DIN Condensed Bold after the city panoramas",
   "artist": "M.Minderhoud",
-  "fetched": "2026-11-16",
-  "wordmark": "badge kept, lettering re-inked yellow, white cut away"
+  "fetched": "2026-11-20",
+  "wordmark": "round 2: badge + full-height amber THE BULLDOG on the black board"
  },
  "vodafone": {
   "name": "Vodafone",
@@ -1276,7 +1266,8 @@
   "source": "https://newyorkpizza.nl/",
   "renderUrl": "https://cdn.nyp01nlprd.solutions4delivery.com/ecom-cms/ecom-cms/assets/nyp_logo_original_RGB_7a3d4b3419.svg",
   "licence": "trademark logo; brand site SVG",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-20",
+  "wordmark": "round 2: white name, red slice, box cut away, on navy"
  },
  "holland-and-barrett": {
   "name": "Holland & Barrett",
@@ -1291,8 +1282,9 @@
   "pois": 18,
   "source": "https://www.pearle.nl/",
   "renderUrl": "https://cdn.grandvision.io/binaries/_ht_1560345119103/content/gallery/nl-pearle/logos/logo.svg",
-  "licence": "trademark logo; brand site header SVG (Pearle NL)",
-  "fetched": "2026-11-15"
+  "licence": "trademark logo; brand site header SVG",
+  "fetched": "2026-11-20",
+  "wordmark": "round 2: white letters and eye, orange dots, on teal"
  },
  "coffee-company": {
   "name": "Coffee Company",
@@ -1306,9 +1298,10 @@
   "name": "Bagels & Beans",
   "pois": 18,
   "source": "https://www.bagelsbeans.nl/",
-  "licence": "lettering set in Rockwell Bold after the round-7 panorama read (retailBrandStyles.gen.ts)",
-  "fetched": "2026-11-16",
-  "wordmark": "cream capitals on dark grey"
+  "licence": "trademark logo; brand site SVG; name set in Herculanum after the badge lettering",
+  "fetched": "2026-11-20",
+  "wordmark": "round 2: badge + cream uncial name on dark grey",
+  "renderUrl": "https://www.bagelsbeans.nl/wp-content/themes/bagelsbeans/images/logo.svg"
  },
  "ijscuypje": {
   "name": "IJscuypje",
@@ -1548,5 +1541,18 @@
   "licence": "trademark logo; brand site SVG",
   "wordmark": "white logo on the brand brown",
   "fetched": "2026-11-16"
+ },
+ "grapedistrict": {
+  "source": "https://www.grapedistrict.nl/",
+  "renderUrl": "https://www.grapedistrict.nl/media/0a/03/0c/1701770140/logo_%2879%29.svg",
+  "licence": "trademark logo; brand site SVG",
+  "wordmark": "round 2: yellow wordmark on slate",
+  "fetched": "2026-11-20"
+ },
+ "simon-meijssen": {
+  "source": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-30_08-35-53_00865/",
+  "licence": "drawn after the city panorama (CC BY 4.0): tile frieze and lettering set in Futura Medium",
+  "wordmark": "round 2: green tile frieze, ochre diamonds, gold capitals",
+  "fetched": "2026-11-20"
  }
 }

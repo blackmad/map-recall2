@@ -6,21 +6,23 @@
  },
  "the-bulldog": {
   "fascia": "#1d1d1b",
-  "letters": "#f2c230"
+  "letters": "#f4ab37"
  },
  "odido": {
-  "noLogo": true,
-  "fascia": "#1d1d1b",
+  "fascia": "#111111",
   "letters": "#ffffff"
  },
  "albert-heijn-to-go": {
   "fascia": "#ffffff"
  },
  "lidl": {
-  "fascia": "#0050aa"
+  "fascia": "#0050aa",
+  "letters": "#fff000",
+  "minAspect": 2
  },
  "aldi": {
-  "fascia": "#00005f"
+  "fascia": "#00005f",
+  "letters": "#1d6fb8"
  },
  "starbucks": {
   "fascia": "#1e3932",
@@ -42,13 +44,15 @@
   "fascia": "#1d1d1b"
  },
  "subway": {
-  "fascia": "#ffffff"
+  "fascia": "#1d4d2e",
+  "letters": "#ffffff"
  },
  "zeeman": {
   "fascia": "#ffffff"
  },
  "domino-s": {
-  "fascia": "#ffffff"
+  "fascia": "#25282b",
+  "letters": "#ffffff"
  },
  "burger-king": {
   "fascia": "#502314"
@@ -116,5 +120,39 @@
  "le-pain-quotidien": {
   "fascia": "#fdfcf9",
   "letters": "#000000"
+ },
+ "new-york-pizza": {
+  "fascia": "#1c2533",
+  "letters": "#ffffff"
+ },
+ "pearle": {
+  "fascia": "#00957f",
+  "letters": "#ffffff"
+ },
+ "de-pizzabakkers": {
+  "fascia": "#5d5a55",
+  "letters": "#ffffff"
+ },
+ "grapedistrict": {
+  "fascia": "#56636b",
+  "letters": "#f4d428"
+ },
+ "cigo": {
+  "fascia": "#1d1d1b",
+  "letters": "#e2001a"
+ },
+ "gamma": {
+  "fascia": "#003878",
+  "letters": "#ffffff"
+ },
+ "blokker": {
+  "fascia": "#ffffff",
+  "letters": "#1d1d1b"
+ },
+ "simon-meijssen": {
+  "fascia": "#1f4b31",
+  "letters": "#d2ab55",
+  "frame": "#b5792c",
+  "awning": "#6b4636"
  }
 }

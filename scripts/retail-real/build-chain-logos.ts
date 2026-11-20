@@ -17,7 +17,7 @@ import { TEMPLATE_WORDMARK } from '../../src/canalRecall/retailChainLogos.ts';
 import { CHAIN_LOGO_PACK } from '../../src/canalRecall/retailChainLogos.gen.ts';
 
 type Counted = { key: string; name: string; n: number; wikidata: string; kinds: Record<string, number>; names: Record<string, number> };
-type Override = { fascia?: string; letters?: string; template?: RetailTemplate; skip?: boolean; word?: string; noLogo?: boolean; logoInk?: string };
+type Override = { fascia?: string; letters?: string; template?: RetailTemplate; skip?: boolean; word?: string; noLogo?: boolean; logoInk?: string; frame?: string; awning?: string; minAspect?: number };
 const counted = JSON.parse(fs.readFileSync('data/retail-ground/chains-counted.json', 'utf8')) as Counted[];
 const prov = JSON.parse(fs.readFileSync('data/retail-ground/chain-logos/provenance.json', 'utf8')) as Record<string, Record<string, unknown>>;
 const overrides = (fs.existsSync('data/retail-ground/chain-overrides.json') ? JSON.parse(fs.readFileSync('data/retail-ground/chain-overrides.json', 'utf8')) : {}) as Record<string, Override>;
@@ -70,12 +70,19 @@ for (const c of counted) {
     fascia ??= l.edgeFull && l.cover > 0.9 ? l.edge : (() => { const n = parseInt(l.ink.slice(1), 16), L = luma((n >> 16) & 255, (n >> 8) & 255, n & 255); return L > 0.75 ? '#1d1d1b' : '#ffffff'; })();
     letters ??= l.ink;
     // The logo cell's height share of the fascia: a short wordmark fills the width, a square mark the height.
+    // Lane chain-logos2 (Lidl, "make sign fit"): `minAspect` widens a square mark's cell with transparent margins (the
+    // board colour once packed), so the front draws it inside the board as a wordmark, not as a lightbox over it.
+    if (o.minAspect && l.w / l.h < o.minAspect) {
+      const W = Math.round(l.h * o.minAspect);
+      l.buf = await sharp({ create: { width: W, height: l.h, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } }).composite([{ input: l.buf, left: Math.round((W - l.w) / 2), top: 0 }]).png().toBuffer();
+      l.w = W;
+    }
     const buf = o.logoInk ? await sharp(l.buf).ensureAlpha().composite([{ input: { create: { width: l.w, height: l.h, channels: 4, background: o.logoInk } }, blend: 'in' }]).png().toBuffer() : l.buf;
     logos.push({ key: c.key, buf, w: l.w, h: l.h, board: fascia });
   }
   fascia ??= '#1d1d1b'; letters ??= '#ffffff';
   const names = Object.keys(c.names).filter(n => n.trim().toLowerCase() === c.name.trim().toLowerCase() || c.names[n] >= 2);
-  chains[c.key] = { name: c.name, word: o.word ?? c.name, ...(c.wikidata ? { wikidata: c.wikidata } : {}), names: [...new Set([c.name, ...names])], template, fascia, letters, pois: c.n };
+  chains[c.key] = { name: c.name, word: o.word ?? c.name, ...(c.wikidata ? { wikidata: c.wikidata } : {}), names: [...new Set([c.name, ...names])], template, fascia, letters, ...(o.frame ? { frame: o.frame } : {}), ...(o.awning ? { awning: o.awning } : {}), pois: c.n };
 }
 
 // Round-6 templates' better logos (retailChainLogos.ts TEMPLATE_CHAIN_LOGO, TEMPLATE_WORDMARK): the wordmarks
