@@ -2,6 +2,35 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-20",
+      "title": "15 more chains have their real shopfronts",
+      "text": "New York Pizza, Domino's, Subway, De Pizzabakkers, Pearle, Odido, Grapedistrict, Gamma and Blokker now show their own fascia and logo in the colours on the street, instead of a plain shop. Lidl's logo fits its board, ALDI gets its long red bar, Cigo its band logo, The Bulldog its full amber sign, Bagels & Beans its round badge, and Simon Meijssen its green tile frieze with gold letters."
+    },
+    {
+      "date": "2026-11-20",
+      "title": "Shop windows no longer repeat",
+      "text": "A shop used to fill every pane with the same display. Now its signature goods appear once and the other panes draw from that kind of shop's own set: shelves, fridges, racks, plants. A street of shops looks like a street, not a pattern. Souvenir shops lost their bottle shelves and ice-cream parlours their plants after the first reviews."
+    },
+    {
+      "date": "2026-11-20",
+      "title": "Brown cafés and old shops get their own shopfronts and hanging signs",
+      "text": "Thirteen listed cafés and small shops, among them 't Smalle, De Stoof, Leentje, Tribe, Cirkel, Het Elfde Gebod and Gabriel, draw the shopfront read from the photo instead of the dark bottle-shelf template: pilasters, panelled plinth, the real pane grid, doors and sign, and a hanging blade sign at the size and height measured from the street photos."
+    },
+    {
+      "date": "2026-11-20",
+      "title": "Post-war blocks take their real wall colour",
+      "text": "232 housing blocks built after 1965 now have the colour measured from a street photo, with buff brick, red brick and white render told apart, instead of a guessed one. 59 of them also keep their balconies, arcades and bay windows."
+    },
+    {
+      "date": "2026-11-20",
+      "title": "Magna Plaza has its towers back",
+      "text": "The old main post office on Nieuwezijds Voorburgwal was rebuilt from new photos: its entrance towers now rise through open belfries and copper lanterns to tall needle spires, the basement is rusticated stone, the brick and stone have their real colours, and its shops sit in the right windows.",
+      "where": [
+        4.8915,
+        52.3742
+      ]
+    },
+    {
       "date": "2026-11-19",
       "title": "The START flag no longer floats in the sky",
       "text": "The START label used to follow you for the whole ride and end up hanging at the top of the screen. It now disappears once you are on your way."
