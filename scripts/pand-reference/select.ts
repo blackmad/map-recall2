@@ -4,6 +4,7 @@
  *  - panorama: camera 8-25 m from the wall centre (relaxed to 5-35 m, flagged), smallest angle between the
  *    wall normal and the wall-centre->camera ray; the alternate must come from a different mission_year.
  */
+import { JOG_MAX_M } from '../../src/canalRecall/bentFrontFacets.ts';
 import { cachedJson, findPands, loadRoads, neighbourhood, nearestOnSeg, pointInRing, lngLatToRd, rdToLngLat, normId, type Footprint, type Rd } from './core.ts';
 
 export type Wall = { a: Rd; b: Rd; len: number; nx: number; ny: number; mid: Rd; roadDistM: number; facing: number };
@@ -22,13 +23,19 @@ export function exposedWalls(fp: Footprint, others: Footprint[]): Wall[] {
   const edges: E[] = [];
   for (let i = 0; i + 1 < ring.length; i++) if (Math.hypot(ring[i + 1].x - ring[i].x, ring[i + 1].y - ring[i].y) > 0.05) edges.push({ a: ring[i], b: ring[i + 1] });
   const merged: E[] = [];
-  for (const e of edges) {
-    const last = merged[merged.length - 1];
-    if (last) {
-      const d1 = Math.atan2(last.b.y - last.a.y, last.b.x - last.a.x), d2 = Math.atan2(e.b.y - e.a.y, e.b.x - e.a.x);
-      const off = Math.abs((e.b.x - last.a.x) * Math.sin(d1) - (e.b.y - last.a.y) * Math.cos(d1));
-      if (Math.abs(Math.atan2(Math.sin(d2 - d1), Math.cos(d2 - d1))) < 6 * Math.PI / 180 && off < 0.4) { last.b = e.b; continue; }
-    }
+  const continues = (last: E, e: E, offMax: number) => {
+    const d1 = Math.atan2(last.b.y - last.a.y, last.b.x - last.a.x), d2 = Math.atan2(e.b.y - e.a.y, e.b.x - e.a.x);
+    const off = Math.abs((e.b.x - last.a.x) * Math.sin(d1) - (e.b.y - last.a.y) * Math.cos(d1));
+    return Math.abs(Math.atan2(Math.sin(d2 - d1), Math.cos(d2 - d1))) < 6 * Math.PI / 180 && off < offMax;
+  };
+  for (let i = 0; i < edges.length; i++) {
+    const e = edges[i], last = merged[merged.length - 1];
+    if (last && continues(last, e, 0.4)) { last.b = e.b; continue; }
+    // A stepped front (feedback f8f282, Prinsengracht 136-138): a jog under JOG_MAX_M between two pieces of the same
+    // front is part of it, so the front reads as one wall (it was dropped as 2.7 m pieces under the 3 m rule, and the
+    // crop took a side wall).
+    const next = edges[i + 1];
+    if (last && next && Math.hypot(e.b.x - e.a.x, e.b.y - e.a.y) < JOG_MAX_M && continues(last, next, JOG_MAX_M)) { last.b = next.b; i++; continue; }
     merged.push({ ...e });
   }
   const obstacles = others.filter(o => o.id !== fp.id);
