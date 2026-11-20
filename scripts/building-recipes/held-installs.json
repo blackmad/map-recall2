@@ -31,7 +31,7 @@
     "stadsloket-west": "blank-walls 2026-11-14 hold: photo-blank: crop shows a dark blind wall where the grid goes",
     "valckenierstraat-65-170734": "blank-walls 2026-11-14 hold: scale: lab block with 4.7 m storeys; grid adds storeys",
     "warmoesstraat-garage-165687": "blank-walls 2026-11-14 hold: car park: perforated-brick screen (crop)",
-    "kattenburgerstraat-164930": "blank-walls 2026-11-14 hold: blind gables: 3,467 m2 of grid on the gallery slab's end walls; frame too small to judge",
+    "kattenburgerstraat-164930": "blank-walls 2026-11-14 hold: blind gables: 3,467 m2 of grid on the gallery slab's end walls; frame too small to judge; large-buildings 2026-11-20 round 3: gallery strips grouped (blind 7 new 4/4), still held for skewed windows on the NE building and grey tower stubs over the mosaic podium walls",
     "asterweg-19-134024": "blank-walls 2026-11-14 needs-photo: no crop; office-and-workshop with ~5.5 m storeys",
     "asterweg-19b-209785": "blank-walls 2026-11-14 needs-photo: no crop; grey exposed-aggregate block, slab end wall",
     "cygnus": "blank-walls 2026-11-14 needs-photo: no crop for the gridded long face; slab end walls of a 1956 frame slab",
@@ -39,6 +39,8 @@
     "hamerkanaal-175-112128": "blank-walls 2026-11-14 needs-photo: no crop; 1911 workshop complex with sawtooth halls",
     "oostelijke-handelskade-749-239388": "blank-walls 2026-11-14 needs-photo: no crop on the 270 side; the walls between the arcaded blocks may be blind",
     "politie-lijnbaansgracht": "blank-walls 2026-11-14 needs-photo: no crop; large side walls in a canal row, may rise over lower neighbours (not party by partyH)",
-    "politie-nieuwezijds-voorburgwal": "blank-walls 2026-11-14 needs-photo: no crop; rear walls of a city-centre corner, listed walls metal/glass"
+    "politie-nieuwezijds-voorburgwal": "blank-walls 2026-11-14 needs-photo: no crop; rear walls of a city-centre corner, listed walls metal/glass",
+    "stadhouderskade-12-090765": "large-buildings 2026-11-20 hold (round 3): new recipe not installed; blind 6 new 2/2 but skewed-window flag on the SE wall (unlisted walls in the shader window grid)",
+    "weesperstraat-107-165490": "large-buildings 2026-11-20 hold (round 3): new recipe not installed; blind 8 new 3/3 but skewed shader-grid windows on the E wing; glazed stair bays missing"
   }
 }
