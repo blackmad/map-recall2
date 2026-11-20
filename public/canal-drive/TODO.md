@@ -216,8 +216,13 @@ The user: "we need to focus on buurts in the canal belt and just outside". Belt 
 
 - **Scope pilots waiting on David's token go-ahead (2026-11-16).**
   - Zuid block types first: branch `scope/zuid-block-types-20261116` (9367f1672), `docs/reports/zuid-block-types-scope-20261116.md`. Hoofddorppleinbuurt kit-family pilot, about 1.5–3 M tokens.
-  - Houthavens next: branch `scope/houthavens-20261116` (40eacd35c), `docs/reports/houthavens-scope-20261116.md`. Narva-eiland pilot, about 10–15 M tokens. Includes the floating-window check on recipe-large-houthavenkade-26-247232 (left from R2-C).
-- **Houthaven as unique buildings (user 2026-11-10, waits for the house line).** The user wants Houthaven modelled as unique buildings, waiting for the faster render loop. Start after H2/H3, as a house-line pilot after H7's Nieuwmarkt and GG-West rows. Feedback 1c694c0d (Narva-eiland white boxes) and 75242f30 (Houthavenkade 26, a large recipe 83 % blank: its intent lists 12 of 510 surfaces) are marked in-progress in Firestore. Panorama fronts were measured in `docs/reports/newbuild-kit-20261110.md` (37 fronts: orange-red and purple-brown brick, wide pale-framed windows).
+  - Houthavens (scope `docs/reports/houthavens-scope-20261116.md` on `scope/houthavens-20261116`). Installed so far: Narva-eiland (3 pands, 2026-11-19), Memeleiland 251849 and Wiborgeiland 249707 (2026-11-20). Next:
+    - The other Wiborg pands: 247551 (1-72), 247676 (177-193), 253602 (201-281).
+    - Memel 247250, never looked at.
+    - Held for want of a usable photo: Memel 247158, 247159, 253898 (fronts only seen at 45–55° or scaffolded); 570379, 570384, 570386 (2024, still under construction in the tiles and 3DBAG). Retry when newer panoramas exist.
+    - Then Revaleiland (Revaleiland 437 still has `otherWalls: blank`), Libau/Karlskrona and the south bank; the Stettin/Reval townhouses go to the rows line.
+    - Houthavenkade 26 is held as a landmark; see the landmark bullets.
+    - Kit gaps: spout or stepped gable crowns (`gable` crown draws nothing), a white bay as one framed column, name stones, an arched ground portal, shutters, per-house loggias/balconies/arches (group-level only today), surrounds on the balcony window only, one-sided pale strips, French-balcony railings, triplet bay grouping, a taller pale-framed ground storey. The SE sides of both new pands are `otherWalls` with no photo. Bright reds render lighter than the measured hex.
 - **Untriaged feedback (6 open in Firestore):** 6d9d7ddd bike through here, 637f346b and 4f47f105 should be able to ride here, fc427560 texture fighting, 020e2132 is there really no building here, 0773d2a5 is there really nothing here. The feedback dashboard is https://claude.ai/artifact/Y75ff7xZbiinYmSxx6trQL (a snapshot; re-pull with `node scripts/feedback/queue.mjs pull --status all` and re-upload after each triage round).
 - **Storefront gate leftovers (`docs/reports/storefront-gate-20261110.md`).**
   - 354 industrie, 190 kantoor and about 1,584 housing pands keep a shopfront because an OSM POI lies within 8 m. Require the POI inside the footprint when BAG says industry or office.

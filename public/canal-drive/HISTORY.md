@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## Houthavens: Memeleiland and Wiborgeiland installed (2026-11-20, lane/houthavens-memel-wiborg-20261120 ae759b68fb)
+
+Two more Houthavens blocks are drawn from their own panorama crops as rows of separately designed fronts on one BAG pand, the same way as Narva.
+- **Memeleiland 251849:** seven fronts on its two north-west street faces: dark purple-grey brick with broad pale surrounds, red with pale strips, buff with pale pilasters, dark purple-red with surrounds. `shellRepair` closes 85 m of open 3DBAG edges. 23.8k triangles. Blind: new 3 of 3.
+- **Wiborgeiland 249707:** the 150 m street face: spout-gabled red houses, dark houses with white bays, two arched warehouse fronts with loggias, gabled houses, buff brick with pilasters. `groundClamp` fixes a 3DBAG ground 3.1 m under the garage. 27.1k triangles. Blind: 5 of 5 by a fresh judge after the ground fix, with no blank or floating flags.
+- New opt-in kit fields `dressings.surrounds.jamb`/`.head` (also per house via `houses[].dress`) set the surround widths. 170 of 172 golden meshes are unchanged.
+- `STAGED_CANAL_DIR` in the e2e helpers lets a lane frame staged installs without editing the catalogue.
+- The Haparandaweg block kits from the scope were already installed in round u.
+- Crops are archived in source-data 7acd5ed0f.
+
 ## Landmark round 6: four released, Raampoort and Banks Mansion rebuilt (2026-11-20, lane/landmarks-r6-20261120 6672a89c3d)
 
 - **Released:** Reinwardt Academie, De Jaren, Handelsbank Singel 250 and Holland Casino. They passed their blinds in landmarks-next and were held only by round scope. Each GLB rebuilt byte-identical, and audit:glb and the openings check pass. Singel 250 was already split from its canal block.
