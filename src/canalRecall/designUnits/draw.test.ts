@@ -13,7 +13,7 @@ import { joinDesignUnits, type NamedStreet } from './join.ts';
 import { REGRESSION_ROWS } from './regressionRows.ts';
 import { segmentsOf, SEGMENTS_SCHEMA, type MemberHeights, type Segment } from './segments.ts';
 import type { OrdekaartObject, UnitPand } from './types.ts';
-import { designUnitOf, memberDraw, segmentBayM, setDesignSegments, sliceBays, withDesignUnits, withDesignUnitRoof, PLOT_EAVES_M, PLOT_TONE_DL, STALE_MEMBER_M, type DrawSegment } from './draw.ts';
+import { designUnitOf, memberDraw, EVIDENCE_HOIST_RISE_M, EVIDENCE_ROOF_RISE_M, segmentBayM, setDesignSegments, sliceBays, withDesignUnits, withDesignUnitRoof, PLOT_EAVES_M, PLOT_TONE_DL, STALE_MEMBER_M, type DrawSegment } from './draw.ts';
 import { hexToOklab } from '../houseSpec/wallColour.ts';
 import { plotBreakBoxes, PIER_HALF_M } from './plotBreak.ts';
 import { plotTone } from './plotTone.ts';
@@ -290,4 +290,24 @@ test('round 2: plot tones stay inside the family brick (hue and chroma kept, L w
     assert.ok(Math.abs(a2 - a) < 0.01 && Math.abs(b2 - b) < 0.01, `${t}: hue kept`);
   }
   assert.ok(seen.size >= 4, 'plots differ');
+});
+
+test('roof evidence: a photo-seen roof storey draws inside the measured top, the cornice under it, dormers per front', () => {
+  const s = VO(), m = s.members[0];
+  const top = (ev?: DrawSegment['roofEvidence']) => {
+    setDesignSegments(extract([{ ...s, roofRiseM: 0, ...(ev ? { roofEvidence: ev } : {}) }])); flag(true);
+    try { return decorate(fx.pands.filter(p => s.members.includes(p.id)).map(p => tileFeature(p))).find(f => String(f.properties.id).endsWith(m))!.properties; } finally { flag(undefined); setDesignSegments(null); }
+  };
+  const flat = top(), hoist = top({ storey: true, dormer: 'pediment', hoist: true, source: 'test' }), mans = top({ storey: true, dormer: 'gabled', source: 'test' }), no = top({ storey: false, source: 'test' });
+  assert.equal(flat.roofShape, 'flat');
+  assert.equal(no.roofShape, 'flat', 'evidence of no roof storey keeps the flat top');
+  for (const [p, rise] of [[hoist, EVIDENCE_HOIST_RISE_M], [mans, EVIDENCE_ROOF_RISE_M]] as const) {
+    assert.equal(p.height, flat.height, 'the measured top stays the top');
+    assert.ok(Math.abs(Number(p.roofEavesHeightM) - (Number(flat.height) - rise)) < 1e-6, 'the cornice drops by the roof storey');
+    const rr = p.rowRoof as { riseM: number; dormers: Array<{ kind: string; hoist?: boolean }> };
+    assert.equal(rr.riseM, rise);
+    assert.ok(rr.dormers.length >= 1);
+  }
+  assert.equal((hoist.rowRoof as { dormers: Array<{ kind: string; hoist?: boolean }> }).dormers[0].hoist, true);
+  assert.equal((mans.rowRoof as { dormers: Array<{ kind: string }> }).dormers[0].kind, 'gabled');
 });

@@ -107,7 +107,7 @@ export function memberDraw(segment: DrawSegment, pandId: string, exception: bool
   const plotEavesM = line === null ? undefined : +(typeof own === 'number' ? Math.min(line + PLOT_EAVES_M, Math.max(line - PLOT_EAVES_M, own)) : line).toFixed(2);
   return { seed: segment.seed, plotSeed: `${segment.seed}:plot:${plot}`, plotBreak, ...(plotEavesM !== undefined ? { plotEavesM } : {}), segment: segment.id, eavesM: segment.eavesM, street: main.street, fromM: main.fromM, toM: main.toM, moduleM,
     k: onStreet.findIndex(s => s === main), n: onStreet.length, ...(isLngLat(segment.at) ? { at: [segment.at[0], segment.at[1]] as const } : {}), ...(exception ? { exception: true as const } : {}),
-    ...(bays ? { bays } : {}), ...(bayPitchM ? { bayPitchM } : {}), ...(look ? { look } : {}), ...(typeof segment.roofRiseM === 'number' ? { roofRiseM: segment.roofRiseM } : {}) };
+    ...(bays ? { bays } : {}), ...(bayPitchM ? { bayPitchM } : {}), ...(look ? { look } : {}), ...(typeof segment.roofRiseM === 'number' ? { roofRiseM: segment.roofRiseM } : {}), ...(segment.roofEvidence ? { roofEvidence: segment.roofEvidence } : {}) };
 }
 
 /** Step 1 (first in the chain): stamp the segment draw, the segment's line and year, and re-key the colour priors. */
@@ -156,6 +156,20 @@ export function segmentRoof(seed: string, style: string, roofRiseM: number | nul
     dormerKind: pick(hash01(`${seed}:dkind`), [['plain', 0.5], ['gabled', 0.3], ['pediment', 0.2]] as Array<[SegmentRoof['dormerKind'], number]>) };
 }
 
+/**
+ * A roof storey seen in photos inside the measured top (2026-11-20, David on Rustenburgerstraat: "why do r1 and r2 both
+ * lose the mansards"). AHN's DSM is flat at the eaves line from 0.5 m behind the front to the back on these rows: the
+ * front mansard and its dormers stand inside that top, so no AHN rise can see them. With photo evidence the top storey is
+ * a slate roof storey of this rise, the cornice that far under the measured top, one dormer per plot.
+ */
+export const EVIDENCE_ROOF_RISE_M = 2.6;
+/** A hoist-dormer row (Rustenburgerstraat, Blasiusstraat, Nassaukade): a short slate slope behind the cornice, the dormers
+ *  standing above the flat top (narrow enough that AHN's 0.5 m cells miss them). Photo-row registration, 2026-11-20:
+ *  the cornice stands about 1.2-1.5 m under the DSM top. */
+export const EVIDENCE_HOIST_RISE_M = 1.4;
+/** One dormer per house front: a plot wider than this many metres per dormer draws more (a 9 m pand with two doors). */
+export const DORMER_FRONT_M = 5.5;
+
 /** Step 2 (after withRowFront, before decorateRoof): the segment's one roof on this member, its front at the line. */
 export function withDesignUnitRoof<T extends Feature>(feature: T): T {
   const p = feature.properties, d = designUnitOf(p);
@@ -163,6 +177,15 @@ export function withDesignUnitRoof<T extends Feature>(feature: T): T {
   if (!p.facade || p.rowFront || p.roofPlanned || typeof p.monumentGable === 'string' || p.kitRoof) return feature;
   const roof = segmentRoof(d.seed, String(p.facadeStyle ?? ''), d.roofRiseM), top = d.plotEavesM ?? d.eavesM;
   const { roofDormer: _dice, roofShapeTag: _tag, ...rest } = p;
+  // Photo evidence of a roof storey inside the measured top (EVIDENCE_ROOF_RISE_M): the cornice drops, the top stays.
+  const ev = d.roofEvidence;
+  const rise = ev?.hoist ? EVIDENCE_HOIST_RISE_M : EVIDENCE_ROOF_RISE_M;
+  if (roof.kind === 'flat' && ev?.storey && top - rise >= 6) {
+    const n = Math.max(1, Math.round((d.toM - d.fromM) / DORMER_FRONT_M));
+    const dormers = Array.from({ length: n }, (_, i) => ({ a: +((i + 0.5) / n).toFixed(3), kind: ev.dormer ?? 'pediment', ...(ev.hoist ? { hoist: true } : {}) }));
+    return { ...feature, properties: { ...rest, height: top, roofEavesHeightM: +(top - rise).toFixed(3), roofPlanned: true, roofShape: 'mansardHip', roofDormer: true,
+      rowRoof: { riseM: rise, material: roof.material, dormers, series: d.seed, tone: roof.tone, joins: { left: true, right: true } } } };
+  }
   // A flat top behind the cornice: the flat lid (no roof box; threeBuildingFeatures applyFlatRoof). The measured eaves keep
   // decorateRoof off it.
   if (roof.kind === 'flat') return { ...feature, properties: { ...rest, height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' } };

@@ -70,6 +70,10 @@ export interface Segment {
   /** Members photo evidence says are one facade (a face intent `identical`/`sameAs`, a same-building "one" read): each
    *  group draws one continuous front, with no party-wall break inside it. Every other member is its own house. */
   plotGroups?: string[][];
+  /** A roof storey seen in photos where AHN cannot see it (2026-11-20: the Ring's front mansards and hoist dormers stand
+   *  inside the DSM's flat top, so AHN reads them as no rise). `storey`: the top storey is a slate roof storey inside the
+   *  measured top, one dormer per plot. Source: a photo-row review (staging/roof-evidence.json) or the members' D1 reads. */
+  roofEvidence?: { storey: boolean; dormer?: 'pediment' | 'gabled' | 'plain'; hoist?: boolean; source: string };
 }
 
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; };

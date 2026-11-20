@@ -23,14 +23,14 @@ const OUT = path.join(ROOT, 'artifacts/design-units/r2');
 const GATE = path.join(ROOT, 'artifacts/design-units/gate/desktop/after');
 type LngLat = [number, number];
 type Unit = { id: string; members: string[]; faces?: Array<{ street: string; slices: Array<{ pandId: string; fromM: number; toM: number; line?: [LngLat, LngLat] }> }> };
-type Block = { key: string; street: string; buurt: string; title: string; ids: string[]; line: [number, number, number, number]; order: string[]; photoKey?: string };
+type Block = { key: string; street: string; buurt: string; title: string; ids: string[]; line: [number, number, number, number]; order: string[]; spans: Record<string, [number, number]>; photoKey?: string };
 
 const units = JSON.parse(fs.readFileSync(path.join(ROOT, 'artifacts/design-units/staging/design-units.json'), 'utf8')).units as Unit[];
 const unitOfPand = new Map<string, Unit>();
 for (const u of units) for (const m of u.members) unitOfPand.set(m, u);
 
 /** The block's front line: every member slice line on the street, projected on the first slice's direction. */
-function frontLine(ids: string[], street: string): { line: [number, number, number, number]; order: string[] } | null {
+function frontLine(ids: string[], street: string): { line: [number, number, number, number]; order: string[]; spans: Record<string, [number, number]> } | null {
   const want = new Set(ids), slices: Array<{ pandId: string; line: [LngLat, LngLat] }> = [];
   const seen = new Set<string>();
   for (const id of ids) {
@@ -46,7 +46,10 @@ function frontLine(ids: string[], street: string): { line: [number, number, numb
   let lo = { t: Infinity, p: slices[0].line[0] }, hi = { t: -Infinity, p: slices[0].line[1] };
   for (const s of slices) for (const p of s.line) { const v = t(p); if (v < lo.t) lo = { t: v, p }; if (v > hi.t) hi = { t: v, p }; }
   const order = [...new Map(slices.map(s => [s.pandId, (t(s.line[0]) + t(s.line[1])) / 2])).entries()].sort((x, y) => x[1] - y[1]).map(([id]) => id);
-  return { line: [lo.p[0], lo.p[1], hi.p[0], hi.p[1]], order };
+  // Each pand's front on the block line, metres from the line's start (the drawing's left edge: preview.ts --wall line:).
+  const spans: Record<string, [number, number]> = {};
+  for (const s of slices) { const u = t(s.line[0]) - lo.t, v = t(s.line[1]) - lo.t, cur = spans[s.pandId]; spans[s.pandId] = cur ? [Math.min(cur[0], u, v), Math.max(cur[1], u, v)] : [Math.min(u, v), Math.max(u, v)]; }
+  return { line: [lo.p[0], lo.p[1], hi.p[0], hi.p[1]], order, spans };
 }
 
 function blocks(): Block[] {
@@ -108,7 +111,7 @@ if (cmd === 'render') {
     }
     // Photos: the pands on the street left to right, then any member not on the street line.
     const ids = [...b.order, ...b.ids.filter(id => !b.order.includes(id) && (JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/design-units/gate-blocks.json'), 'utf8')) as Array<{ key: string; members: string[] }>).find(g => g.key === b.key)!.members.includes(id))];
-    const photos: Array<Record<string, unknown>> = [], rowParts: Array<{ img: Buffer; w: number; h: number; ppm: number }> = [];
+    const photos: Array<Record<string, unknown>> = [];
     let n = 0;
     for (const id of ids) {
       const jpg = path.join(ARCH, id, 'front.jpg'), meta = path.join(ARCH, id, 'front.json');
@@ -121,20 +124,35 @@ if (cmd === 'render') {
         obliquityDeg: p0.obliquityDeg, cameraDistM: p0.cameraDistM, panoramas: (j.panoramas ?? []).map((p: { panoId: string; sourceUrl: string }) => ({ panoId: p.panoId, sourceUrl: p.sourceUrl })),
         nativePx: [m.width, m.height], pixelsPerMetre: j.crop?.pixelsPerMetre, foliage: j.flags?.foliage, occluderShare: j.flags?.occluderShare });
       if (!j.usable) (poor[b.key] ??= []).push(`${id.slice(-6)}: ${(j.rejectedBecause ?? []).join(', ')}`);
-      if (b.order.includes(id)) rowParts.push({ img: fs.readFileSync(jpg), w: m.width ?? 0, h: m.height ?? 0, ppm: j.crop?.pixelsPerMetre ?? 50 });
     }
-    // The row: every street pand's rectified crop side by side at one scale, bottoms on the ground line.
+    // The row, registered to the drawings (David, 2026-11-20: "why is the photo wider than the houses?"): each street
+    // pand's rectified crop (its wall span, no margin) resampled to exactly its slice of the block line at the drawings'
+    // scale (preview.ts draws PPM px per metre from the line's start; the strips are that times k), placed at its slice
+    // start, its height in the same metres, its ground line on the drawings' ground line (the strip's bottom). Unused
+    // width is the drawings' sky.
     let row: Record<string, unknown> | null = null;
-    if (rowParts.length === b.order.length && rowParts.length > 1) {
-      const ppm = Math.min(...rowParts.map(r => r.ppm)), scaled = await Promise.all(rowParts.map(async r => { const img = await sharp(r.img).resize({ width: Math.max(1, Math.round(r.w * ppm / r.ppm)) }).png().toBuffer(); const mm = await sharp(img).metadata(); return { img, w: mm.width ?? 0, h: mm.height ?? 0 }; }));
-      const RW = scaled.reduce((t, s) => t + s.w, 0), RH = Math.max(...scaled.map(s => s.h));
-      let x = 0;
-      const comp = scaled.map(s => { const o = { input: s.img, left: x, top: RH - s.h }; x += s.w; return o; });
-      const k2 = Math.max(1, 1800 / RW);
-      const stitched = await sharp({ create: { width: RW, height: RH, channels: 3, background: '#ffffff' } }).composite(comp).png().toBuffer();
-      await sharp(stitched).resize({ width: Math.round(RW * k2), kernel: 'lanczos3' }).jpeg({ quality: 88 }).toFile(path.join(dir, 'photo-row.jpg'));
+    const PPM = 50, s = PPM * k, skyPx = await sharp(path.join(OUT, b.key, 'today', 'front.png')).extract({ left: 0, top: 0, width: 1, height: 1 }).raw().toBuffer();
+    const placed: Array<{ pandId: string; x0: number; x1: number; photo: string | null }> = [], comp: sharp.OverlayOptions[] = [];
+    for (const id of b.order) {
+      const span = b.spans[id], jpg = path.join(ARCH, id, 'front.jpg'), meta = path.join(ARCH, id, 'front.json');
+      if (!span) continue;
+      const x0 = Math.max(0, Math.round(span[0] * s)), x1 = Math.round(span[1] * s), have = fs.existsSync(jpg) && fs.existsSync(meta);
+      placed.push({ pandId: id, x0, x1, photo: have ? photos.find(p => p.pandId === id)?.file as string ?? null : null });
+      if (!have || x1 - x0 < 2) continue;
+      const j = JSON.parse(fs.readFileSync(meta, 'utf8')), m = await sharp(jpg).metadata(), ppm = Number(j.crop?.pixelsPerMetre) || 50;
+      const h = Math.max(1, Math.round((m.height ?? 0) / ppm * s));
+      const img = await sharp(jpg).resize({ width: x1 - x0, height: h, fit: 'fill', kernel: 'lanczos3' }).png().toBuffer();
+      const top = H - h;
+      comp.push(top >= 0 ? { input: img, left: x0, top } : { input: await sharp(img).extract({ left: 0, top: -top, width: x1 - x0, height: H }).png().toBuffer(), left: x0, top: 0 });
+    }
+    if (comp.length) {
+      // A span past the drawn line's end (a corner pand's slice) is cut at the strip's edge.
+      const CW = Math.max(W, ...placed.map(q => q.x1)), canvas = await sharp({ create: { width: CW, height: H, channels: 3, background: { r: skyPx[0], g: skyPx[1], b: skyPx[2] } } }).composite(comp).png().toBuffer();
+      await sharp(canvas).extract({ left: 0, top: 0, width: W, height: H }).jpeg({ quality: 88 }).toFile(path.join(dir, 'photo-row.jpg'));
       const dates = [...new Set(photos.filter(p => p.file && b.order.includes(String(p.pandId))).map(p => p.date))];
-      row = { file: 'photo-row.jpg', pands: b.order, note: `each pand's own rectified crop, side by side at ${ppm} px/m, bottoms on the ground line${dates.length > 1 ? `; mixed capture dates (${dates.join(', ')})` : ''}` };
+      row = { file: 'photo-row.jpg', registeredTo: 'today.jpg / r1.jpg / r2.jpg (same width, height, scale, left edge and ground line)', pxPerMetre: +s.toFixed(3),
+        note: `each pand's rectified wall crop resampled to its slice of the block line${dates.length > 1 ? `; mixed capture dates (${dates.join(', ')})` : ''}` };
+      fs.writeFileSync(path.join(dir, 'photo-row.json'), JSON.stringify({ width: W, height: H, pxPerMetre: +s.toFixed(3), groundY: H, pands: placed }, null, 1));
     }
     fs.writeFileSync(path.join(dir, 'photos.json'), JSON.stringify({ block: b.key, street: b.street, buurt: b.buurt, title: b.title,
       layers: { today: 'today.jpg', r1: 'r1.jpg', r2: 'r2.jpg', width: W, height: H, note: 'one scale and left edge; shorter strips padded with sky at the top' },

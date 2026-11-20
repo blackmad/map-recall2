@@ -47,7 +47,7 @@ for (const x of fs.readdirSync(TILES).filter(n => /^\d+$/.test(n))) for (const f
 }
 const heights = new Map<string, MemberHeights>([...want].map(id => [id, { ahnM: ahn[id]?.p90 ?? null, bagEavesM: bag.get(id) ?? null }]));
 
-type Answer = { readable?: boolean; whiteFrames?: boolean | null; pale?: boolean | null; finish?: string; bays?: number; heads?: string[] };
+type Answer = { readable?: boolean; whiteFrames?: boolean | null; pale?: boolean | null; finish?: string; bays?: number; heads?: string[]; storeyParts?: { roof?: string }; dormers?: { count?: number; kind?: string } };
 const readsDir = path.resolve(ROOT, arg('reads') ?? 'artifacts/design-units/staging/d1-ring-answers');
 const answers = new Map<string, Answer>();
 if (fs.existsSync(readsDir)) for (const f of fs.readdirSync(readsDir).filter(n => n.endsWith('.json'))) {
@@ -97,6 +97,22 @@ function plotGroupsOf(members: string[]): string[][] {
   return [...groups.values()].filter(g => g.length > 1);
 }
 
+// Roof storeys AHN cannot see (2026-11-20): the Ring's front mansards and hoist dormers stand inside the DSM's flat top.
+// Evidence, first found wins: the photo-row review (scripts/design-units/roof-evidence.json), then the members' D1 reads
+// (majority storeyParts.roof: dormers / mansard / roof-storey is a roof storey, none is not; gable attics and unreadable
+// tops say nothing; the dormer kind is the reads' majority gabled / plain).
+const photoRoof = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/design-units/roof-evidence.json'), 'utf8')).segments as Record<string, { storey: boolean; dormer?: 'pediment' | 'gabled' | 'plain'; hoist?: boolean }>;
+function roofEvidenceOf(id: string, members: string[]): Segment['roofEvidence'] | undefined {
+  const ph = photoRoof[id];
+  if (ph) return { storey: ph.storey, ...(ph.dormer ? { dormer: ph.dormer } : {}), ...(ph.hoist ? { hoist: true } : {}), source: 'photo-row review 2026-11-20 (scripts/design-units/roof-evidence.json)' };
+  const rs = members.map(m => answers.get(m)).filter((a): a is Answer => !!a);
+  const says = rs.map(a => a.storeyParts?.roof).filter((r): r is string => r === 'dormers' || r === 'mansard' || r === 'roof-storey' || r === 'none');
+  const storey = majority(says.map(r => r !== 'none'));
+  if (storey === undefined) return undefined;
+  const kind = majority(rs.map(a => a.dormers?.kind).filter((k): k is string => k === 'gabled' || k === 'plain')) as 'gabled' | 'plain' | undefined;
+  return { storey, ...(storey ? { dormer: kind ?? 'plain' } : {}), source: `D1 reads (${says.length} of ${members.length} members)` };
+}
+
 const segments: Segment[] = [];
 let splitUnits = 0;
 const med = (xs: number[]) => { const v = [...xs].sort((a, b) => a - b); return v.length ? v[Math.floor((v.length - 1) / 2)] : null; };
@@ -112,6 +128,8 @@ for (const u of units) {
     g.roofRiseM = rises.length ? +rises[Math.floor((rises.length - 1) / 2)].toFixed(2) : null;
     const eaves = Object.fromEntries(g.members.filter(m => typeof ahn[m]?.p90 === 'number').map(m => [m, +ahn[m]!.p90.toFixed(2)]));
     if (Object.keys(eaves).length) g.plotEavesM = eaves;
+    const ev = roofEvidenceOf(g.id, g.members);
+    if (ev) g.roofEvidence = ev;
     const groups = plotGroupsOf(g.members);
     if (groups.length) g.plotGroups = groups;
     const r = readsOf(g.members);
@@ -128,6 +146,8 @@ const stat = {
   unitsSplit: splitUnits, singlesFromSplits: segments.filter(s => s.members.length === 1).length,
   exceptions: multi.reduce((t, s) => t + s.exceptions.length, 0),
   roofMeasured: multi.filter(s => typeof s.roofRiseM === 'number').length, roofStoreys: multi.filter(s => (s.roofRiseM ?? 0) >= 1.8).length,
+  roofEvidence: { photoRow: multi.filter(s => s.roofEvidence?.source.startsWith('photo')).length, reads: multi.filter(s => s.roofEvidence?.source.startsWith('D1')).length,
+    storey: multi.filter(s => s.roofEvidence?.storey).length, noStorey: multi.filter(s => s.roofEvidence && !s.roofEvidence.storey).length },
   oneFacadeEvidence: oneFacade.length, segmentsWithOneFacadeGroups: multi.filter(s => s.plotGroups?.length).length,
   pandsInOneFacadeGroups: multi.reduce((t, s) => t + (s.plotGroups ?? []).reduce((u, g) => u + g.length, 0), 0),
   withReads: multi.filter(s => (s as Segment & { reads?: unknown }).reads).length, readsFrom: answers.size,
