@@ -1,0 +1,31 @@
+{
+ "id": "pentagon",
+ "name": "Het Pentagon",
+ "heightMetres": 19.6,
+ "bagYear": 1983,
+ "galleryView": {
+  "theta": 0.55,
+  "phi": 1.05
+ },
+ "surveyedSource": "3DBAG LoD2.2 shells of BAG panden 0363100012171628 and 0363100012178153 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres from the first pand's anchor, each on its own 3DBAG ground (scripts/landmarks/pentagon-footprints.json, pentagon-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas b_20250108_1349_Track02_Sphere_00036 (2025-01-08, Sint Antoniesbreestraat), TMX7316010203-000492_pano_0000_000044 (2017), TMX7315120208-000073_pano_0003_000029 and _000042 (2016, Zuiderkerkhof), TMX7316010203-001981_pano_0000_000787 (2021, Raamgracht), TMX7316010203-002031_pano_0001_001407 (2021) and b_20250108_1041_Track20_Sphere_00018 (2025, Raamgracht), CC BY 4.0. Gemeentelijk monument 200980. Per wall in scripts/landmarks/pentagon-inventory.json.",
+ "materialOverrides": {
+  "concrete": "#cbc7bd",
+  "blue": "#b3bccd",
+  "green": "#9bb394",
+  "frame": "#e4e3dd",
+  "glass": "#8a96a1",
+  "slate": "#56585b",
+  "greyBrick": "#9d988e",
+  "red": "#b3362e",
+  "stone": "#e3e2dc",
+  "bronze": "#3c4145"
+ },
+ "attribution": {
+  "title": "Het Pentagon, Sint Antoniesbreestraat / Zwanenburgwal, Amsterdam (Theo Bosch, 1983)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250108_1349_Track02_Sphere_00036/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shells (CC BY 4.0) of BAG panden 0363100012171628 and 0363100012178153 (CC0): the exposed concrete frame with white-framed glazing and pale spandrel panels on every exposed wall, the Sint Antoniesbreestraat shop arcade with its raking white struts, clerestories, red shop frames and round columns, the curved and half-round balconies on round columns, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register text. No pixels or meshes imported."
+ }
+}

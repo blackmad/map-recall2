@@ -9,6 +9,8 @@
  * given in the spec, and `buildingFootprint` (the BAG ring in WGS84, for check:osm-under-models). Union by id, indent 1.
  * A spec with `pandPart: {ring, note}` (the model stands on part of the pand; src/canalRecall/landmarks/pandParts.ts)
  * gets `pandParts`, suppresses the `landmark-part:` feature instead of the pand, and its footprint is clipped to the ring.
+ * A model over several whole panden (footprints `extraBagIds` + `nativeRings`, one ring per pand in the anchor's frame, e.g.
+ * pentagon-prepare.ts) suppresses every pand and gets a MultiPolygon footprint; extents span all rings. Absent = unchanged.
  */
 import fs from 'node:fs';
 import {rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
@@ -23,17 +25,21 @@ const r7 = (v: number) => Math.round(v * 1e7) / 1e7;
 // A landmark on part of its pand (spec `pandPart: {ring, note}`, lng/lat): the entry declares `pandParts`, hides the
 // `landmark-part:` feature cut-landmark-parts.ts makes, and its footprint is the pand clipped to the ring.
 const part: PandPart | null = spec.pandPart ? {pand: fullPand(String(src.bagId)), ring: spec.pandPart.ring, ...(spec.pandPart.note ? {note: spec.pandPart.note} : {}), ...(spec.pandPart.rest ? {rest: spec.pandPart.rest} : {})} : null;
-const full = (src.nativeRing as number[][]).map(p => { const [lng, lat] = rdToLngLat({x: src.anchorRD[0] + p[0], y: src.anchorRD[1] - p[1]}); return [r7(lng), r7(lat)] as LngLat; });
+const toLL = (ring: number[][]) => ring.map(p => { const [lng, lat] = rdToLngLat({x: src.anchorRD[0] + p[0], y: src.anchorRD[1] - p[1]}); return [r7(lng), r7(lat)] as LngLat; });
+const full = toLL(src.nativeRing as number[][]);
+const extraIds: string[] = !spec.pandPart && Array.isArray(src.extraBagIds) ? src.extraBagIds.map(String) : [];
+const allRings: number[][][] = extraIds.length ? src.nativeRings : [src.nativeRing];
+const closeRing = (r: number[][]) => (r[0][0] !== r.at(-1)![0] || r[0][1] !== r.at(-1)![1] ? [...r, [...r[0]]] : r);
 const ll: number[][] = part ? clipToParts([full], [part])[0].map(([x, y]) => [r7(x), r7(y)]) : full;
 if (ll[0][0] !== ll.at(-1)![0] || ll[0][1] !== ll.at(-1)![1]) ll.push([...ll[0]]);
 // Extents in the native frame (x east, z south, metres from the anchor).
 const kx = 111_320 * Math.cos(src.anchor[1] * Math.PI / 180), kz = 110_540;
-const xs = part ? ll.map(p => (p[0] - src.anchor[0]) * kx) : (src.nativeRing as number[][]).map(p => p[0]);
-const zs = part ? ll.map(p => (src.anchor[1] - p[1]) * kz) : (src.nativeRing as number[][]).map(p => p[1]);
+const xs = part ? ll.map(p => (p[0] - src.anchor[0]) * kx) : allRings.flat().map(p => p[0]);
+const zs = part ? ll.map(p => (src.anchor[1] - p[1]) * kz) : allRings.flat().map(p => p[1]);
 const entry: Record<string, unknown> = {
   id, name: spec.name, ...(spec.landmarkId ? {landmarkId: spec.landmarkId} : {}),
   modelUrl: `./models/${id}.glb`,
-  suppressOsmIds: [part ? partFeatureId(id, part.pand) : `NL.IMBAG.Pand.${src.bagId}`],
+  suppressOsmIds: [part ? partFeatureId(id, part.pand) : `NL.IMBAG.Pand.${src.bagId}`, ...extraIds.map(p => `NL.IMBAG.Pand.${p}`)],
   ...(part ? {pandParts: [part]} : {}),
   spatialSuppression: false,
   footprint: {centre: src.anchor, headingDegrees: heading, lengthMetres: Math.round((Math.max(...zs) - Math.min(...zs)) * 10) / 10, widthMetres: Math.round((Math.max(...xs) - Math.min(...xs)) * 10) / 10},
@@ -42,7 +48,7 @@ const entry: Record<string, unknown> = {
   heightMetres: spec.heightMetres, galleryView: spec.galleryView,
   ...(spec.bagYear ? {bagYear: spec.bagYear} : {}),
   materialOverrides: spec.materialOverrides, attribution: spec.attribution,
-  buildingFootprint: {type: 'Polygon', coordinates: [ll]},
+  buildingFootprint: extraIds.length ? {type: 'MultiPolygon', coordinates: allRings.map(r => [closeRing(toLL(r))])} : {type: 'Polygon', coordinates: [ll]},
 };
 const cat = 'src/canalRecall/landmarks/manualCatalogue.json';
 // Textual union: the file carries Python-style floats (`8.0`) a JSON round trip would rewrite, so replace or append only this entry.
