@@ -105376,7 +105376,7 @@
       "bounds": {
         "min": [
           -9.894951820373535,
-          -1.1920929132713809e-8,
+          -2.9802322831784522e-9,
           -4.849453926086426
         ],
         "max": [
@@ -105397,12 +105397,12 @@
       },
       "extent": {
         "widthMetres": 26.43127727508545,
-        "heightMetres": 29.75000001192093,
+        "heightMetres": 29.750000002980233,
         "depthMetres": 18.972207069396973,
         "depthCoverage": 1.0255247064538904
       },
-      "triangles": 29435,
-      "bytes": 361992,
+      "triangles": 29363,
+      "bytes": 360968,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "e3ea98ba0cd335d1",
@@ -114755,7 +114755,7 @@
       },
       "bagYear": 1911,
       "materialOverrides": {
-        "brick": "#b47e58",
+        "brick": "#a66f50",
         "ochre": "#9c6646",
         "stone": "#a9a89f",
         "sandstone": "#e9e7df",
@@ -114902,9 +114902,9 @@
       },
       "bagYear": 1898,
       "materialOverrides": {
-        "sandstone": "#ece7da",
+        "sandstone": "#f4f2ec",
         "stone": "#d4cdbd",
-        "brick": "#7b4a3b",
+        "brick": "#9a6446",
         "concrete": "#6d6a67",
         "slate": "#4f555c",
         "frame": "#f2efe6",
@@ -115122,8 +115122,8 @@
         "depthMetres": 29.762999534606934,
         "depthCoverage": 0.9987583736445279
       },
-      "triangles": 10935,
-      "bytes": 146964,
+      "triangles": 10911,
+      "bytes": 146644,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

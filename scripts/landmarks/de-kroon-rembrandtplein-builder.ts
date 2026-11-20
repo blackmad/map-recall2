@@ -135,11 +135,9 @@ export function buildDeKroonRembrandtplein(_w: number, _d: number, b: BuildingTo
       slab(b, f, t, 17.1, 0.72, 1.5, 0.08, 'frame');
       slab(b, f, t, 17.15, 0.6, 1.4, 0.12, 'glass');
     }
-    // stepped crest over the tower face (simplified: two white steps and a finial in front of the slate top)
+    // crest over the tower face (simplified: one white step in front of the slate top; r7 judge: a taller crest overshot the photo)
     slab(b, f, 3.3, 21.2, 3.4, 1.25, 0.35, 'sandstone', -0.1);
-    slab(b, f, 3.3, 22.4, 1.8, 0.9, 0.3, 'sandstone', -0.1);
     slab(b, f, 3.3, 21.15, 3.6, 0.14, 0.42, 'stone', -0.1);
-    slab(b, f, 3.3, 23.28, 0.25, 0.8, 0.25, 'stone', -0.05);
     // the first-floor entrance: arched door under a dark name board
     archSlab(b, f, 3.5, 0.0, 1.5, 2.9, 0.08, 'stone');
     archSlab(b, f, 3.5, 0.05, 1.25, 2.75, 0.12, 'dark');
