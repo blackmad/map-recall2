@@ -1,0 +1,310 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "houthavens-249736",
+ "pandId": "0363100012249736",
+ "address": "Koivistokade, Houthavens: 2018 office building, a windowless black-panelled base of two tall storeys under two glazed storeys with balconies and a thin projecting roof",
+ "sources": [
+  {
+   "id": "pano-2021-02-24-w03-52s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002237/",
+   "image": "source-data://pand-reference-walls/0363100012249736/w03-52s1.jpg",
+   "sha256": "43232d9843d528fc7560417c290425138c560d9f99fcd236daa2f871a0d3dd45",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-24-w03-52s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002237/",
+   "image": "source-data://pand-reference-walls/0363100012249736/w03-52s1.jpg",
+   "sha256": "43232d9843d528fc7560417c290425138c560d9f99fcd236daa2f871a0d3dd45",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-24-w03-52s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002237/",
+   "image": "source-data://pand-reference-walls/0363100012249736/w03-52s1.jpg",
+   "sha256": "43232d9843d528fc7560417c290425138c560d9f99fcd236daa2f871a0d3dd45",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-24-w03-52s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002237/",
+   "image": "source-data://pand-reference-walls/0363100012249736/w03-52s1.jpg",
+   "sha256": "43232d9843d528fc7560417c290425138c560d9f99fcd236daa2f871a0d3dd45",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-24-w03-52s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002237/",
+   "image": "source-data://pand-reference-walls/0363100012249736/w03-52s1.jpg",
+   "sha256": "43232d9843d528fc7560417c290425138c560d9f99fcd236daa2f871a0d3dd45",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-24-w03-52s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002237/",
+   "image": "source-data://pand-reference-walls/0363100012249736/w03-52s1.jpg",
+   "sha256": "43232d9843d528fc7560417c290425138c560d9f99fcd236daa2f871a0d3dd45",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-24-w03-52s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002237/",
+   "image": "source-data://pand-reference-walls/0363100012249736/w03-52s1.jpg",
+   "sha256": "43232d9843d528fc7560417c290425138c560d9f99fcd236daa2f871a0d3dd45",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-24-w03-52s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002237/",
+   "image": "source-data://pand-reference-walls/0363100012249736/w03-52s1.jpg",
+   "sha256": "43232d9843d528fc7560417c290425138c560d9f99fcd236daa2f871a0d3dd45",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    1
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "ground": "blank",
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#b8bcc0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "blankStoreys": [
+    1
+   ],
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4,
+    "to": 0.5
+   },
+   "glazedStoreys": [
+    2,
+    3
+   ]
+  },
+  {
+   "wallSurfaces": [
+    23
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "ground": "blank",
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#b8bcc0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "blankStoreys": [
+    1
+   ],
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4,
+    "to": 0.66
+   },
+   "glazedStoreys": [
+    2
+   ],
+   "signage": {
+    "text": "41",
+    "colour": "#b89820",
+    "mount": "wall",
+    "along": [
+     0.12,
+     0.42
+    ],
+    "up": [
+     0.33,
+     0.5
+    ]
+   }
+  },
+  {
+   "wallSurfaces": [
+    3
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "ground": "blank",
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#b8bcc0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "blankStoreys": [
+    1
+   ],
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4,
+    "to": 0.5
+   },
+   "glazedStoreys": [
+    2,
+    3
+   ]
+  },
+  {
+   "wallSurfaces": [
+    20
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "ground": "blank",
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#b8bcc0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "blankStoreys": [
+    1
+   ],
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4,
+    "to": 0.5
+   },
+   "glazedStoreys": [
+    2,
+    3
+   ]
+  },
+  {
+   "wallSurfaces": [
+    17
+   ],
+   "system": "blank",
+   "storeys": 3,
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#b8bcc0"
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4
+   }
+  },
+  {
+   "wallSurfaces": [
+    29,
+    34
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "ground": "glazed",
+   "palette": {
+    "brick": "#b8bcc0",
+    "frame": "#b8bcc0"
+   }
+  },
+  {
+   "wallSurfaces": [
+    46
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "ground": "blank",
+   "blankStoreys": [
+    1
+   ],
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#b8bcc0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "glazedStoreys": [
+    2,
+    3
+   ]
+  },
+  {
+   "wallSurfaces": [
+    15
+   ],
+   "system": "blank",
+   "storeys": 2,
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#b8bcc0"
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4
+   }
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#26262a",
+  "frame": "#b8bcc0",
+  "door": "#2a2a2a"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "budgetTriangles": 20000,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 4): the NE panel (surfaces 1 and 23, 29.5 m) from w03-52s1 (2021-02-24) and w03-52s2 (2025-10-02): a black panelled base of two tall storeys, blank but for a door and one tall window, under two storeys glazed across every bay. The other fronts take the same scheme: the NW full-height surfaces 3 and 20 as the NE, the SE and SW base walls 17 and 15 blank black panels, the set-back upper walls 29, 34 and 46 glazed. Only the NE is photographed square; every group cites its crop.",
+  "The painted yellow 41 on the low NE wing (signage.up). Not drawn: the balcony rails and the thin roof canopy of the glazed storeys, the door and tall window in the base."
+ ]
+}

@@ -1271,7 +1271,11 @@ export interface LargeWallIntent {
   /** Stroke-font lettering: over the entrance (`fascia`, default; on the frieze of a portal), on the wall above the ground floor (`wall`), on the entrance-hall glass (`glazing`), the canopy edge (`canopy`) or a name band under the cornice (`cornice`, on the widest panel). */
   signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice';
     /** `wall` mount only: [from, to] fractions of the widest panel's width from the viewer's left that the lettering spans (default centred over 0.6 of the panel; Nieuwpoortkade 2's white-brick "da vinci creatieve ruimtes" runs over the left half, issue #83) */
-    along?: [number, number]};
+    along?: [number, number];
+    /** `wall` mount with `along` only: [from, to] fractions of the panel's height from its foot that the lettering
+     *  spans, letters as tall as that band (0.15..1, at least 0.05 apart): a painted house number two metres tall on a
+     *  blank base (Danzigerbocht 45, Koivistokade 41). Absent: one strip between the storeys, at most 1.1 m (byte-identical) */
+    up?: [number, number]};
   /** Recessed sectional garage doors in the ground storey, from the right end of the widest panel. */
   garageDoors?: number;
   /** Recessed sectional garage doors in exactly these ground-storey bays of the widest panel (needs `baysPerStorey`); an alternative to `garageDoors`. */

@@ -227,7 +227,13 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   // Wall lettering on a group without an entrance: centred on the widest panel, in the wall strip between the first
   // storey's window heads and the second storey's sills. With `along` (issue #83) the lettering spans that part of the
   // panel and sits one strip lower, between the ground storey's heads and the first storey's sills.
-  if (!g.entrance && g.signage?.mount === 'wall' && g.mainPanel === p.index && levels.length > 2) {
+  // With `up` the lettering fills that band of the panel's height instead (a painted number on a blank base).
+  const upSign = !g.entrance && g.signage?.mount === 'wall' && g.mainPanel === p.index && g.signage.along && g.signage.up ? g.signage : null;
+  if (upSign) {
+    const H = p.vMax - p.vMin, W = p.uMax - p.uMin, [a0, a1] = upSign.along!, [b0, b1] = upSign.up!;
+    const u0 = p.uMin + W * a0, u1 = p.uMin + W * a1, lo = p.vMin + H * b0, hi = p.vMin + H * b1;
+    if (fitsPanel(p, rectPoly(u0, u1, lo, hi))) counts.letters += drawLettering(c, upSign.text, (u0 + u1) / 2, (lo + hi) / 2, 0.012, hi - lo, u1 - u0, s.sign, (u, vv, d) => c.onWallAt(u, vv, d));
+  } else if (!g.entrance && g.signage?.mount === 'wall' && g.mainPanel === p.index && levels.length > 2) {
     const al = g.signage.along, k = al ? 1 : 2;
     const holes = [...c.holes.values()].flat(), below = Math.max(levels[k - 1], ...holes.filter(h => h[3] <= levels[k] + 0.01).map(h => h[3]));
     const above = Math.min(levels[k] + 1, lowestHoleAbove(c, levels[k])), hgt = Math.min(al ? 1.1 : 0.6, above - below - 0.2), v = (below + above) / 2, W = p.uMax - p.uMin;

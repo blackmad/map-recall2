@@ -1,0 +1,440 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "houthavens-249737",
+ "pandId": "0363100012249737",
+ "address": "Danzigerbocht 45, Houthavens: 2018 office building, a windowless black-panelled base of three storeys (painted number 45) carrying a timber-boarded box and a glazed office block with balconies and canopy roofs",
+ "sources": [
+  {
+   "id": "pano-2022-04-08-w01-52s1",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002498_pano_0000_001109/",
+   "image": "source-data://pand-reference-walls/0363100012249737/w01-52s1.jpg",
+   "sha256": "f9b4ed7e00c73c9d4fb5daed4e4134a9bc4dc98e3b2ce09402801fdaf019f945",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-24-w01-52s1L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002221/",
+   "image": "source-data://pand-reference-walls/0363100012249737/w01-52s1L.jpg",
+   "sha256": "22d5e18ca4cef478b0c1950a98123a36d25dfc9e63ed3d3b7a22c43b2673b6c9",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-24-w01-52s2",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002225/",
+   "image": "source-data://pand-reference-walls/0363100012249737/w01-52s2.jpg",
+   "sha256": "e54c1f91a2eb17311047db3c759aa12d309648f75b62d01526965ba2fc2d3883",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    150
+   ],
+   "system": "blank",
+   "storeys": 3,
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#c8ccd0"
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4
+   },
+   "signage": {
+    "text": "45",
+    "colour": "#b89820",
+    "mount": "wall",
+    "along": [
+     0.1,
+     0.75
+    ],
+    "up": [
+     0.55,
+     0.75
+    ]
+   }
+  },
+  {
+   "wallSurfaces": [
+    140
+   ],
+   "system": "blank",
+   "storeys": 3,
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#c8ccd0"
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4
+   },
+   "signage": {
+    "text": "DAILY PAPER",
+    "colour": "#d8d8d4",
+    "mount": "wall",
+    "along": [
+     0.05,
+     0.95
+    ],
+    "up": [
+     0.5,
+     0.56
+    ]
+   }
+  },
+  {
+   "wallSurfaces": [
+    24,
+    28,
+    29,
+    33,
+    36,
+    57,
+    109,
+    110,
+    151
+   ],
+   "system": "blank",
+   "storeys": 3,
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#c8ccd0"
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4
+   }
+  },
+  {
+   "wallSurfaces": [
+    53,
+    69,
+    133,
+    175,
+    177,
+    196
+   ],
+   "system": "blank",
+   "storeys": 1,
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#c8ccd0"
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4
+   }
+  },
+  {
+   "wallSurfaces": [
+    70
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#c8ccd0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2
+   ],
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4,
+    "to": 0.5
+   },
+   "glazedStoreys": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "wallSurfaces": [
+    7,
+    149
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#c8ccd0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2
+   ],
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4,
+    "to": 0.59
+   },
+   "glazedStoreys": [
+    3,
+    4
+   ]
+  },
+  {
+   "wallSurfaces": [
+    159
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#c8ccd0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2
+   ],
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4,
+    "to": 0.74
+   },
+   "glazedStoreys": [
+    3
+   ]
+  },
+  {
+   "wallSurfaces": [
+    44
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "palette": {
+    "brick": "#26262a",
+    "frame": "#c8ccd0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2
+   ],
+   "cladding": {
+    "kind": "panels",
+    "colour": "#26262a",
+    "lines": "#1a1a1c",
+    "pitch": 1.2,
+    "rowPitch": 2.4,
+    "to": 0.42
+   },
+   "glazedStoreys": [
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "wallSurfaces": [
+    56,
+    64,
+    75
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2
+   ],
+   "glazedStoreys": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "palette": {
+    "brick": "#8a8e90",
+    "frame": "#c8ccd0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   }
+  },
+  {
+   "wallSurfaces": [
+    84,
+    146,
+    156,
+    59,
+    60
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2
+   ],
+   "glazedStoreys": [
+    3,
+    4,
+    5
+   ],
+   "palette": {
+    "brick": "#8a8e90",
+    "frame": "#c8ccd0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   }
+  },
+  {
+   "wallSurfaces": [
+    1,
+    12,
+    185,
+    186,
+    204
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2,
+    4
+   ],
+   "palette": {
+    "brick": "#6e645a",
+    "frame": "#3a3a3a"
+   },
+   "windowShape": {
+    "w": 0.3,
+    "h": 0.5,
+    "sill": 0.3
+   },
+   "cladding": {
+    "kind": "boards",
+    "colour": "#6e645a",
+    "lines": "#5a5048",
+    "pitch": 0.15
+   }
+  },
+  {
+   "wallSurfaces": [
+    67,
+    170,
+    199
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2
+   ],
+   "glazedStoreys": [
+    3
+   ],
+   "palette": {
+    "brick": "#8a8e90",
+    "frame": "#c8ccd0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   }
+  },
+  {
+   "wallSurfaces": [
+    143
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2
+   ],
+   "glazedStoreys": [
+    3,
+    4
+   ],
+   "palette": {
+    "brick": "#8a8e90",
+    "frame": "#c8ccd0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   }
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#26262a",
+  "frame": "#c8ccd0",
+  "door": "#2a2a2a"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "budgetTriangles": 24000,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 4): the NE front from w01-52s1 (2022-04-08) and w01-52s1L (2021-02-24): a black panelled base to 10.1 m, blank but for a tall glazed slot, painted with a yellow 45, the stencilled FIGHT DISTRICT and a DAILY PAPER logo; above it a timber-boarded box (surfaces 1, 12, 185, 186, 204, 10.1-16.1 m) with a pergola, and behind it the glazed office storeys with pale frames, balcony rails and thin canopy roofs (w01-52s2, 2021-02-24). Every 3DBAG surface that rises from the ground keeps the black base to 10.1 m and glazes the storeys above.",
+  "Not drawn: the stencilled FIGHT DISTRICT under the 45 and the DAILY PAPER logo mark (one sign per group: the 45 and the DAILY PAPER lettering are drawn, sized to the base with signage.up), the pergola, the balcony rails and canopy roofs over the glazed storeys (balconies do not combine with glazedStoreys), the tall glazed slot in the base."
+ ]
+}
