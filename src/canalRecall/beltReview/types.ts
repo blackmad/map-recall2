@@ -294,7 +294,9 @@ export interface BlockVerdict { verdict: Verdict | null; note: string; revision:
 export interface VerdictsFile { schemaVersion: 1; roundId: string; revision: number; updatedAt: string | null; verdicts: Record<string, BlockVerdict> }
 
 export interface RoundLayer { name: string; url: string; caption?: string }
-export interface RoundBlock { key: string; title: string; street?: string; note?: string; layers: RoundLayer[]; photos: RoundLayer[] }
+/** A house's slice of the photo row, in photo-row pixels (layers share its px/m and left edge). From `photo-row.json`. */
+export interface RowBoundary { x0: number; x1: number; pandId?: string; address?: string }
+export interface RoundBlock { key: string; title: string; street?: string; note?: string; layers: RoundLayer[]; photos: RoundLayer[]; boundaries?: RowBoundary[] }
 export interface RoundBundle { token: string; id: string; title: string; root: string; exists: boolean; blocks: RoundBlock[]; verdicts: VerdictsFile }
 
 // ---------------------------------------------------------------------------------------------------------- initial docs

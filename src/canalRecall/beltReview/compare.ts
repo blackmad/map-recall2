@@ -13,7 +13,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { IMAGE_EXTENSIONS, readJson } from './store.ts';
-import type { RoundBlock, RoundLayer } from './types.ts';
+import type { RoundBlock, RoundLayer, RowBoundary } from './types.ts';
 
 const LAYER_ORDER = ['photo', 'today', 'r1', 'r2', 'r3', 'r4', 'new', 'sheet'];
 export function layerRank(name: string): number {
@@ -24,6 +24,21 @@ export const sortLayers = <T extends { name: string }>(layers: T[]): T[] => [...
 
 interface BlockMeta { id?: string; key?: string; title?: string; street?: string }
 interface PhotosJson { title?: string; layers?: { note?: string }; photos?: Array<{ file: string; pandId?: string; address?: string; date?: string; obliquityDeg?: number; usable?: boolean; rejectedBecause?: string[] }> }
+/** `photo-row.json` (the overseer): each pand's x0/x1 in photo-row pixels, as `{pands: [...]}` or a bare array. Tolerant:
+ *  entries without finite x0 < x1 are dropped; a missing or unreadable file gives no boundaries. */
+export function parseRowBoundaries(raw: unknown): RowBoundary[] {
+  const list = Array.isArray(raw) ? raw : (raw && typeof raw === 'object' && Array.isArray((raw as { pands?: unknown }).pands)) ? (raw as { pands: unknown[] }).pands : [];
+  return list.flatMap(e => {
+    const o = (e ?? {}) as Record<string, unknown>, x0 = Number(o.x0), x1 = Number(o.x1);
+    if (!Number.isFinite(x0) || !Number.isFinite(x1) || x1 <= x0) return [];
+    const r: RowBoundary = { x0, x1 };
+    if (typeof o.pandId === 'string') r.pandId = o.pandId;
+    const address = o.address ?? o.label ?? o.title;
+    if (typeof address === 'string') r.address = address;
+    return [r];
+  }).sort((a, b) => a.x0 - b.x0);
+}
+
 const isImage = (f: string) => IMAGE_EXTENSIONS.has(path.extname(f).toLowerCase());
 const dirs = async (p: string) => (await fs.readdir(p, { withFileTypes: true }).catch(() => [])).filter(d => d.isDirectory() && !d.name.startsWith('.')).map(d => d.name).sort();
 const files = async (p: string) => (await fs.readdir(p, { withFileTypes: true }).catch(() => [])).filter(d => d.isFile() && isImage(d.name)).map(d => d.name).sort();
@@ -65,6 +80,8 @@ export async function discoverRound(root: string, fileUrl: (rel: string) => stri
       const b = block(key, layers, photos);
       if (info?.title && !meta.get(key)?.title) b.title = info.title;
       if (info?.layers?.note) b.note = info.layers.note;
+      const bounds = parseRowBoundaries(await readJson<unknown>(path.join(layersDir, key, 'photo-row.json'), null));
+      if (bounds.length) b.boundaries = bounds;
       blocks.push(b);
     }
     return { exists, blocks };

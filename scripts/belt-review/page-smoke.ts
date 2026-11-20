@@ -141,8 +141,29 @@ try {
     await page.goto(`${base}?round=ring-r2`);
     await page.waitForSelector('.layers button, .empty');
     if (await page.locator('.layers button').count()) {
+      // Stack (default): every layer visible at once, at one width, fitting the viewport height on desktop.
+      await page.waitForFunction(() => [...document.querySelectorAll<HTMLImageElement>('.band img')].every(i => i.complete && i.style.width));
+      const bands = await page.locator('.band img').evaluateAll(els => els.map(e => e.getBoundingClientRect()).map(r => ({ w: r.width, bottom: r.bottom })));
+      const layers = await page.locator('.layers button[data-i]').count();
+      assert.equal(bands.length, layers, `${label}: stack shows every layer`);
+      assert.ok(Math.max(...bands.map(b => b.w)) - Math.min(...bands.map(b => b.w)) < 12, `${label}: bands differ in width`);
+      if (label === 'desktop') assert.ok(Math.max(...bands.map(b => b.bottom)) <= viewport.height + 1, 'desktop: stack does not fit the viewport');
+      const box = await page.locator('.band img').nth(1).boundingBox();
+      await page.mouse.move(box!.x + box!.width * 0.4, box!.y + box!.height / 2);
+      assert.equal(await page.locator('.band .cursor:not([hidden])').count(), layers, `${label}: cursor line on every band`);
+      await page.screenshot({ path: path.join(shots, `belt-review-compare-stack-${label}.png`) });
+      if (label === 'desktop') {
+        await page.locator('.band').nth(2).click();
+        await page.waitForFunction(() => document.querySelectorAll('.band.big').length === 2);
+        await page.screenshot({ path: path.join(shots, 'belt-review-compare-enlarged-desktop.png') });
+        await page.keyboard.press('p');
+        await page.waitForFunction(() => document.querySelectorAll('.stage.pair .band').length === 2 && [...document.querySelectorAll<HTMLImageElement>('.band img')].every(i => i.complete && i.style.width));
+        await page.screenshot({ path: path.join(shots, 'belt-review-compare-pair-desktop.png') });
+      }
+      await page.keyboard.press('s');
+      await page.waitForSelector('.stage.single');
       await page.keyboard.press('w');
-      assert.equal(await page.locator('.layers button.on').first().textContent(), 'W today');
+      assert.equal(await page.locator('.layers button[data-i].on').first().textContent(), 'W today');
       await page.keyboard.press('q');
       if (label === 'desktop') {
         await page.keyboard.press('2');
@@ -151,6 +172,12 @@ try {
         assert.equal(Object.values(v.verdicts as Record<string, { verdict: string }>)[0].verdict, 'same');
       }
       await page.waitForFunction(() => [...document.querySelectorAll<HTMLImageElement>('.stage img')].every(i => i.complete));
+      await page.keyboard.press('s');
+      await page.waitForSelector('.stage.stack');
+      await page.locator('.photos').scrollIntoViewIfNeeded();
+      // Photos are lazy and scroll sideways: only the first must have loaded.
+      await page.waitForFunction(() => { const i = document.querySelector<HTMLImageElement>('.photos img'); return !i || (i.complete && i.naturalWidth > 0); });
+      await page.screenshot({ path: path.join(shots, `belt-review-compare-photos-${label}.png`) });
     }
     assert.ok(await noOverflow(page), `${label}: compare overflows`);
     await page.screenshot({ path: path.join(shots, `belt-review-compare-${label}.png`) });
