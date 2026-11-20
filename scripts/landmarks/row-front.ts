@@ -76,7 +76,7 @@ export function rowFront(b: BuildingTools, f: Frame, s: FrontSpec) {
   const winW = s.winW ?? Math.min(1.3, ((w - 2 * (s.margin ?? 0.6)) / Math.max(1, s.bays)) * 0.58);
   const ts = bayCentres(s.t0, s.t1, s.bays, s.margin ?? 0.6);
   const stone = s.stone ?? s.plinth?.colour ?? s.frame;
-  if (s.skin) slab(b, f, mid, 0, w - 0.04, s.top - 0.05, s0, s.skin);
+  if (s.skin) slab(b, f, mid, 0, w - 0.2, s.top - 0.3, s0, s.skin);
   if (s.plinth) slab(b, f, mid, 0, w - 0.2, s.plinth.h, s0 + 0.1, s.plinth.colour);
   const doorBays = new Set((s.doors ?? []).map(d => d.bay));
   s.storeys.forEach((st, k) => {
@@ -110,8 +110,8 @@ export function rowFront(b: BuildingTools, f: Frame, s: FrontSpec) {
     const st = s.storeys[k];
     if (!st) continue;
     const bw = Math.min(w - 1, winW * 2 + 1.2);
-    slab(b, f, mid, st.y - 0.25, bw, 0.14, 0.75, stone, s0);
-    slab(b, f, mid, st.y - 0.15, bw, 0.95, 0.04, s.rail ?? s.frame, s0 + 0.68);
+    slab(b, f, mid, st.y - 0.29, bw, 0.14, 0.75, stone, s0); // top 4 cm under the sills
+    slab(b, f, mid, st.y - 0.15, bw, 0.95, 0.04, s.rail ?? s.frame, s0 + 0.62);
   }
   if (s.cornice) slab(b, f, mid, s.top - 0.5, w - 0.2, 0.32, s0 + 0.3, s.cornice);
 }
