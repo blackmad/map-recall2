@@ -69,6 +69,10 @@ Feedback fixes 2026-11-19 (#396): all five lanes are merged (see HISTORY). Still
   - The post-1965 housing clusters are with lane/postwar-housing-kit-20261120 (`?postwarKit=1`, brick tone first).
   - The ranking's weights are hand-set. The badness term barely separates generic buildings, and BAG renovation years mislead the period check.
 - **Landmarks round 9 (lane/landmarks-r9-20261120):** Oranjekerk (held: settle pantile vs slate from w13–w15, parsonage turret, octagonal porch with lantern, belfry stage with pinnacles); then Utrechtsestraat 9-17, Kadijksplein 17-18, Spiegelhof, Pentagon, Roetersstraat 11-23, Meeuwenlaan 132, Kramatplantsoen (verify the pand ids in BAG first). Kit wish: per-house gables over a shared shell in `row-front.ts`, which would also lift the Handelsbank Herengracht row. Magna Plaza: its builder spaces bays at 5.3 m, not the real window rhythm.
+- **Tooling and ground bugs found 2026-11-20:**
+  - `scripts/landmarks/abutter-photos.ts handelsbank-singel-250` crashes (`picked.get is not a function`). The Herengracht 219 abutter verdict was written from BAG only.
+  - The Houthavens pavement edges drop into a pit at the kerb, seen in the Revaleiland 253889 and 250187 blind poses, with or without the new buildings. Pin a named ground regression there.
+  - Lane blinds must compare against what the game draws: Park Centraal's 5/5 was against the generic box while a landmark already stood on the pand.
 - **Markets follow-ups:** wind-blown tarps, individual garments, traders' vans (left out because they would sit near the riding lane), Noordermarkt's square rows, a Saturday capture for the Lindenmarkt layout, and Nieuwmarkt. Ride review before any default.
 - **Terraces** `?terraces=1` (2,169 permit terraces, 32k units, own engine only): squares read grid-regular; Rembrandtplein tall glass screens; parasol colours from panoramas; 't Smalle deck not in the permit polygon.
 - **Real look** `?realLook=1`: tree crown silhouette (faceted crowns are the most toy-like thing left), keep pale painted fronts (Dapperstraat KFC turned brown), white-trim mask role; confirm whether David's screenshot was the Storybook look.

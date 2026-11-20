@@ -529,5 +529,12 @@
    "reason": "Separate BAG pand (built 1818, 5 storeys, 11.9 m) behind Arti on the Spui/Kalverstraat side, listed by the Arti lane under the model's neighbours, not its own pands; the notch is the shared party-wall shape. Drawn by the city tiles; Arti suppresses only 0363100012165109.",
    "evidence": "BAG api.data.amsterdam.nl/v1/bag/panden/0363100012175744; scripts/landmarks/arti-et-amicitiae-footprints.json neighbours; pano recording_2025-06-30_05-16-46_01304 (2025, 4 m, heading 78)"
   }
+ },
+ "handelsbank-singel-250": {
+  "NL.IMBAG.Pand.0363100012167629": {
+   "verdict": "fine",
+   "reason": "Herengracht 219: a separate 1683 canal house (BAG pand 0363100012167629, ~108 m2), outside the bank's pand 0363100012167627. The notch appeared when the Handelsbank model was extended to the whole pand (landmarks r8, 2026-11-20); the house stays drawn by the city layer as its own building.",
+   "evidence": "BAG pand/verblijfsobject lookup 2026-11-20 (PDOK); reverse geocode Herengracht 219 at 2 m. No photo sheet: scripts/landmarks/abutter-photos.ts fails ('picked.get is not a function'), filed in TODO."
+  }
  }
 }

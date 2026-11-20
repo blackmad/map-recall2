@@ -13,7 +13,7 @@
   - **Oranjekerk** is held: parsonage turret, octagonal porch, belfry stage, and a disputed roof colour.
 - **Large buildings round 2 (lane/large-buildings-20261120 6d0234a6af).**
   - Weesperflat now has an open void storey with posts and a cantilever lip: new `loggiaBands[].open` and `.lip`, byte-identical when absent. It beat round 1 3/3.
-  - Park Centraal is installed: glass balcony bands and the MOMO range with quoins, voussoirs and a mansard. Blind 5/5; its openings fault was an end-bay balcony hanging past a stepped panel.
+  - Park Centraal was re-staged (glass balcony bands, the MOMO range with quoins, voussoirs and a mansard; blind 5/5) but is **not drawn**. Its blind was against the generic box, and the gate found the bespoke `park-centraal-stadhouderskade` landmark (2026-11-15) on the same pand. That landmark has the MOMO tower's green dome, so the recipe is in `SHADOWED_BY_LANDMARK`.
   - Valckenierstraat 65's blank-walls hold is met: E and N faces drawn from the canal-side panorama.
   - New how-to: `docs/building-recipes/wall-colour-measured.md`. A hand-sampled colour must be carried as measured, or it is lifted into the city brick range.
 - **Markets, behind `?markets=1` (lane/market-stalls-20261120 a8ad09ed02).** These extend the existing module, not a second kit.
