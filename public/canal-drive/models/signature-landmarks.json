@@ -119767,6 +119767,188 @@
         "bytes": 28056,
         "triangles": 1500
       }
+    },
+    "oostenburgergracht-15": {
+      "id": "oostenburgergracht-15",
+      "name": "Former St. Willibrordusschool, Oostenburgergracht 15-17",
+      "modelUrl": "./models/oostenburgergracht-15.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012180539"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.92137885,
+          52.36921634
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 34.4,
+        "widthMetres": 23.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.92137885,
+          52.36921634
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012180539 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/oostenburgergracht-15-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas recording_2025-06-19_07-14-50_01399 (2025, Oostenburgergracht), TMX7316010203-002048_pano_0001_000860 (2021), TMX7316010203-001982_pano_0000_000811 and _000812 (2021, the chapel bay and the rear on the Wittenburgervaart) and TMX7316010203-000353_pano_0002_000430 (2017), CC BY 4.0. Gemeentelijk monument 206026. Per wall in scripts/landmarks/oostenburgergracht-15-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 19,
+      "galleryView": {
+        "theta": 5,
+        "phi": 1.05
+      },
+      "bagYear": 1919,
+      "materialOverrides": {
+        "brick": "#62473c",
+        "red": "#4f382f",
+        "stone": "#b3ada0",
+        "ochre": "#c4b394",
+        "concrete": "#9d978a",
+        "frame": "#e6e1d3",
+        "glass": "#48535b",
+        "dark": "#3a3634",
+        "white": "#e3ded0",
+        "copper": "#7f9a90",
+        "bronze": "#8a7b66"
+      },
+      "attribution": {
+        "title": "St. Willibrordusschool, Oostenburgergracht 15-17, Amsterdam (Jac. Duncker after P.J. Bekkers, 1919)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_07-14-50_01399/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012180539 (CC0): the granite plinth and portico frame, the three-light cross windows under their relieving arches on sandstone springers, the stone sills, the risalit with its spout gable and cross, the copper parapet coping, the lettered tableaux, a simplified St. Willibrord on his console, and the chapel bay and stair block toward the Wittenburgervaart, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9211439,
+              52.3691615
+            ],
+            [
+              4.9212331,
+              52.3691306
+            ],
+            [
+              4.9212323,
+              52.3691298
+            ],
+            [
+              4.921325,
+              52.3690977
+            ],
+            [
+              4.9213258,
+              52.3690985
+            ],
+            [
+              4.9214146,
+              52.3690676
+            ],
+            [
+              4.9214894,
+              52.3691484
+            ],
+            [
+              4.9214922,
+              52.3691514
+            ],
+            [
+              4.9214213,
+              52.3691769
+            ],
+            [
+              4.9214401,
+              52.3691964
+            ],
+            [
+              4.9214354,
+              52.3692074
+            ],
+            [
+              4.9214031,
+              52.369219
+            ],
+            [
+              4.9214169,
+              52.3692335
+            ],
+            [
+              4.9213613,
+              52.3692535
+            ],
+            [
+              4.9214266,
+              52.3693217
+            ],
+            [
+              4.9214395,
+              52.3693171
+            ],
+            [
+              4.9214533,
+              52.3693193
+            ],
+            [
+              4.9214651,
+              52.3693316
+            ],
+            [
+              4.9214458,
+              52.3693417
+            ],
+            [
+              4.9213502,
+              52.3693768
+            ],
+            [
+              4.921241,
+              52.3692628
+            ],
+            [
+              4.9211439,
+              52.3691615
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -16.119792938232422,
+          -1.907348590179936e-8,
+          -18.200042724609375
+        ],
+        "max": [
+          7.716151714324951,
+          19.90999984741211,
+          16.7056827545166
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.92137885,
+          52.36921634
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 34.90572547912598,
+        "heightMetres": 19.909999866485595,
+        "depthMetres": 23.835944652557373,
+        "depthCoverage": 1.0057360612893407
+      },
+      "triangles": 8841,
+      "bytes": 134968,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
