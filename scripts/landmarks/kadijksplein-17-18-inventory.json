@@ -1,0 +1,344 @@
+{
+ "schemaVersion": 1,
+ "id": "kadijksplein-17-18",
+ "pand": "0363100012164985",
+ "brief": "scripts/landmarks/kadijksplein-17-18-brief.md",
+ "signature": [
+  "nw-boards",
+  "nw-tower-arches",
+  "nw-balconies",
+  "ne-portico",
+  "nw-segment-heads",
+  "nw-entrances"
+ ],
+ "walls": [
+  {
+   "tag": "w01-31",
+   "bearing": 31,
+   "lengthM": 51.3,
+   "centre": [
+    4.9134216,
+    52.3705222
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_08-30-47_00263",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-portico",
+     "kind": "colonnade",
+     "where": "left, ground and first-floor level of the south-east tower: brick double portico of three round arches on a raised grey plinth, door under an arched fanlight and two arched windows in the loggia",
+     "approxSizeM": [
+      7.8,
+      5.9
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241210_1246_Track08_Sphere_00082",
+     "how": "portico(): concrete plinth 1.8 m x 2.0 m deep, one extruded brick arcade with three arched holes, solid side walls, brick ceiling, stone coping; door with arched fanlight and two arched windows on the wall plane. Depth 2.0 m estimated (outside the BAG ring); the side arches are drawn solid"
+    },
+    {
+     "id": "ne-se-tower",
+     "kind": "tower",
+     "where": "left: the taller south-east corner tower, five arched windows at the top, three windows on two storeys, grey concrete cap band 20.3-21.4 m",
+     "approxSizeM": [
+      7.8,
+      21.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_08-30-47_00263",
+     "how": "towerFace(cornice off) + concrete band; 3DBAG top snapped from 24.2 to 21.4 m"
+    },
+    {
+     "id": "ne-penthouse",
+     "kind": "other",
+     "where": "top of the south-east tower: glazed penthouse set back behind the cap, flat overhanging roof slab with a railing",
+     "approxSizeM": [
+      7.0,
+      2.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_08-30-47_00263",
+     "how": "concrete box set back 0.9 m on the tower, glazed all round in 1.8 m bays, overhanging concrete roof slab at 23.7 m (the 3DBAG reads 24.2 m), a light railing (top rail and five posts) on the front edge"
+    },
+    {
+     "id": "ne-axes",
+     "kind": "window-shape",
+     "where": "15 axes: ground floor windows, tall first-floor windows, two low mezzanine storeys, all white-framed rectangular, stone sills, hardstone courses at 4.4 and 10.3 m",
+     "approxSizeM": [
+      35.7,
+      18.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_08-30-47_00263",
+     "how": "central(): sashWindows lean per storey on the measured 2.39 m pitch"
+    },
+    {
+     "id": "ne-n-tower",
+     "kind": "tower",
+     "where": "right: north tower side face, three axes and five round-arched windows at the top",
+     "approxSizeM": [
+      7.8,
+      19.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_08-30-47_00263",
+     "how": "towerFace()"
+    },
+    {
+     "id": "ne-flag",
+     "kind": "other",
+     "where": "a small flag hung from one first-floor window",
+     "approxSizeM": [
+      0.3,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-19_08-30-47_00263",
+     "skip": {
+      "reason": "temporary",
+      "note": "a resident's flag"
+     }
+    }
+   ],
+   "note": "Harbour side (NE, ring edges 0 and 2). Left the 1915-1923 south-east tower, flush with the block; right the 1856 north tower. 15 axes between them. Second view b_20241210_1246_Track08_Sphere_00082 (2024, the portico close up)."
+  },
+  {
+   "tag": "w02-211",
+   "bearing": 211,
+   "lengthM": 48.7,
+   "centre": [
+    4.9131327,
+    52.3702405
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track08_Sphere_00059",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-axes",
+     "kind": "window-shape",
+     "where": "14 axes of rectangular white-framed windows on the same storey grid",
+     "approxSizeM": [
+      33.3,
+      18.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track08_Sphere_00059",
+     "how": "central() on a 2.375 m pitch"
+    },
+    {
+     "id": "sw-towers",
+     "kind": "tower",
+     "where": "west and south towers: three axes, five round-arched windows at the top",
+     "approxSizeM": [
+      7.8,
+      19.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track08_Sphere_00059",
+     "how": "towerFace() on edges 8 and 12"
+    },
+    {
+     "id": "sw-railing",
+     "kind": "balcony-ironwork",
+     "where": "iron area railing along the pavement in front of the cellar lights",
+     "approxSizeM": [
+      33.0,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241210_1246_Track08_Sphere_00059",
+     "how": "two rails and posts on a 1.2 m pitch, 1.1 m out (the arrow-head pickets are not drawn)"
+    }
+   ],
+   "note": "Hoogte Kadijk (SW, ring edges 8, 10, 12). Two towers, 14 axes between them (counted on the 2024 crop; the register says 15). Trees in front, leaf-off December 2024."
+  },
+  {
+   "tag": "w03-301",
+   "bearing": 301,
+   "lengthM": 37.1,
+   "centre": [
+    4.91296,
+    52.3704948
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track15_Sphere_00047",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-boards",
+     "kind": "lettering",
+     "where": "dark boards with gilt capitals under the arched windows: ZEEMANS-HUIS on the left tower, ANNO 1856 on the right",
+     "approxSizeM": [
+      4.4,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00047",
+     "how": "dark slab boards, letters() glyph runs in gold, 0.45 m capitals"
+    },
+    {
+     "id": "nw-balconies",
+     "kind": "canopy",
+     "where": "both towers: balcony on stone consoles with a white timber balustrade, under a white timber surround with two tall balcony doors, a centre column, frieze and water course",
+     "approxSizeM": [
+      4.7,
+      6.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001181_pano_0000_001188",
+     "how": "entranceTower(): balcony slab, rails and 15 balusters, three consoles, posts, column, glazed doors with transoms, frieze and cornice"
+    },
+    {
+     "id": "nw-entrances",
+     "kind": "other",
+     "where": "both towers: double wooden door with a fanlight with a circular glazing pattern in a sandstone block surround, flanked by small narrow windows",
+     "approxSizeM": [
+      4.0,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00047",
+     "how": "sandstone surround slab, frame, oak door leaves, fanlight with a ring, step, two narrow sashes"
+    },
+    {
+     "id": "nw-tower-arches",
+     "kind": "window-shape",
+     "where": "five round-arched windows across the top storey of each tower, stone band at the springing",
+     "approxSizeM": [
+      6.5,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00047",
+     "how": "arched() five per face, ledge band at 17.35 m"
+    },
+    {
+     "id": "nw-segment-heads",
+     "kind": "window-shape",
+     "where": "first floor of the nine central axes: tall windows under segmental heads, the brick head arches",
+     "approxSizeM": [
+      21.5,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00047",
+     "how": "segWindow(): frame and glass outlines with a 0.18 m segmental rise, bars, brick head band"
+    },
+    {
+     "id": "nw-axes",
+     "kind": "window-shape",
+     "where": "nine central axes: cellar lights in the hardstone basement, ground-floor windows, two low mezzanine storeys of wide four-pane windows, hardstone courses",
+     "approxSizeM": [
+      21.5,
+      18.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00047",
+     "how": "central()"
+    },
+    {
+     "id": "nw-railing",
+     "kind": "balcony-ironwork",
+     "where": "iron area railing with knobbed posts and arrow-head pickets in front of the basement",
+     "approxSizeM": [
+      21.0,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001181_pano_0000_001188",
+     "how": "two rails and posts on a 1.2 m pitch, 1.1 m out"
+    },
+    {
+     "id": "nw-lamps",
+     "kind": "lamp",
+     "where": "two lanterns on posts by the entrances and a street lamp",
+     "approxSizeM": [
+      0.4,
+      3.0
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00047",
+     "skip": {
+      "reason": "too-small",
+      "note": "street furniture on the pavement, not on the pand"
+     }
+    }
+   ],
+   "note": "Kadijksplein front (NW, ring edges 3, 5, 7). Read on b_20241210_1246_Track15_Sphere_00047 (2024, leaf-off) and TMX7316010203-001181_pano_0000_001188 (2019, the right tower clear). The statue Zeeman by Joost Barbiers stands on the square, not on the pand."
+  },
+  {
+   "tag": "w04-119",
+   "bearing": 119,
+   "lengthM": 8,
+   "centre": [
+    4.9134704,
+    52.3701619
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_07-14-50_00280",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-tower-back",
+     "kind": "tower",
+     "where": "south tower SE face (hidden)",
+     "approxSizeM": [
+      8.0,
+      19.4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_07-14-50_00280",
+     "how": "towerFace() as on the photographed tower faces (inferred: the neighbour hides it)"
+    }
+   ],
+   "note": "South tower back (SE, ring edge 13): the panorama sees only the modern red-brick neighbour in front of it. Tower windows inferred from the other tower faces."
+  },
+  {
+   "tag": "w05-126",
+   "bearing": 126,
+   "lengthM": 7.4,
+   "centre": [
+    4.9135504,
+    52.3702136
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002541_pano_0001_001241",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [],
+   "note": "Rear wall behind the modern neighbour on the Kadijksplein side; the panorama shows only the neighbour and a tree. Drawn as the plain 3DBAG brick wall."
+  },
+  {
+   "tag": "w06-121",
+   "bearing": 121,
+   "lengthM": 7,
+   "centre": [
+    4.9135628,
+    52.3702837
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "No panorama; rear court wall, drawn as the plain 3DBAG brick wall."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeentelijk monument 202016 (redengevende omschrijving)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/daa0fce5-9d84-444e-a90b-b86f9fee7ba6?_format=json",
+   "licence": "CC0"
+  }
+ ]
+}
