@@ -15,6 +15,14 @@
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
+   "id": "pano-2021-12-30-w02-140s2L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-30",
+   "image": "source-data://pand-reference-walls/0363100012238475/w02-140s2L.jpg",
+   "sha256": "8356f3a82ad8582cc985cffdb4dca1b7f577f20f06b4604241d7f04baa14cbfe",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
    "id": "pano-2025-09-29-w02-140s2",
    "kind": "street-panorama",
    "capturedAt": "2025-09-29",
@@ -51,7 +59,7 @@
    "storeys": 5,
    "ground": "blank",
    "palette": {
-    "brick": "#4e2e28",
+    "brick": "#6c5a54",
     "frame": "#d8d8d4"
    },
    "windowShape": {
@@ -61,7 +69,7 @@
    },
    "cladding": {
     "kind": "paint",
-    "colour": "#8a8a88",
+    "colour": "#4a4a4c",
     "to": 0.28
    },
    "baysPerStorey": 16,
@@ -74,7 +82,7 @@
    ],
    "signage": {
     "text": "57",
-    "colour": "#e8e8e4",
+    "colour": "#ecece8",
     "mount": "wall",
     "along": [
      0.01,
@@ -92,7 +100,7 @@
       0.27
      ],
      "up": [
-      0.0,
+      0,
       0.22
      ],
      "lights": 3,
@@ -104,7 +112,7 @@
       0.4
      ],
      "up": [
-      0.0,
+      0,
       0.22
      ],
      "lights": 3,
@@ -116,7 +124,7 @@
       0.53
      ],
      "up": [
-      0.0,
+      0,
       0.22
      ],
      "lights": 3,
@@ -128,7 +136,7 @@
       0.6699999999999999
      ],
      "up": [
-      0.0,
+      0,
       0.22
      ],
      "lights": 3,
@@ -140,7 +148,7 @@
       0.8
      ],
      "up": [
-      0.0,
+      0,
       0.22
      ],
      "lights": 3,
@@ -152,12 +160,31 @@
       0.9299999999999999
      ],
      "up": [
-      0.0,
+      0,
       0.22
      ],
      "lights": 3,
      "rows": 2
     }
+   ],
+   "terraces": {
+    "storeys": [
+     1
+    ],
+    "deep": 1.2,
+    "colour": "#6c5a54",
+    "rail": false
+   },
+   "hand": [
+    "houses",
+    "palette.glass",
+    "windowShape",
+    "baysPerStorey",
+    "system",
+    "windowGroup",
+    "balconyBands",
+    "glazedStoreys",
+    "wallSplit"
    ]
   },
   {
@@ -184,7 +211,8 @@
   },
   {
    "wallSurfaces": [
-    13
+    13,
+    30
    ],
    "system": "brick-bay-grid",
    "storeys": 4,
@@ -203,11 +231,32 @@
     2,
     3
    ]
+  },
+  {
+   "wallSurfaces": [
+    10,
+    15,
+    16,
+    22,
+    18
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "palette": {
+    "brick": "#a4a6a0",
+    "frame": "#d8d8d4"
+   },
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.5,
+    "sill": 0.3
+   },
+   "ground": "blank"
   }
  ],
  "otherWalls": "brick-bay-grid",
  "palette": {
-  "brick": "#4e2e28",
+  "brick": "#6a3a34",
   "frame": "#d8d8d4",
   "door": "#3a3a3a"
  },
@@ -217,6 +266,16 @@
  "budgetTriangles": 20000,
  "notes": [
   "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 5): the SE front (surface 25, 43.8 m) from w02-140s1 (2024) and w02-140s2 (2025): a tall grey ground storey (1.45 of an upper storey, a grey paint plinth) with six framed glazed entrances and shop windows (wallLights), four storeys of red-brown metal tiles (drawn as the wall colour) with small window groups, and the white cut-out 57 at the left corner (signage.up). The NE and SW flanks (w04-51, w05-230, 2021/2025, behind trees) are beige and nearly blank. The NW and the upper volumes take the red tile scheme.",
-  "Not drawn: the irregular window groups (the kit draws a regular grid of small windows), the yellow-soffit loggia band on the first floor, the sculptural depth of the 57."
- ]
+  "Not drawn: the irregular window groups (the kit draws a regular grid of small windows), the yellow-soffit loggia band on the first floor, the sculptural depth of the 57.",
+  "Round 6: the ground storey reads recessed: a dark grey plinth under a 1.2 m cantilever edge in the tile colour at the first-floor line (terraces, no rail), the white 57 at the left corner; the tile colour moved to mauve-brown #6a3a34 (the photo #453734 reads mauve; the darker red split from the adjoining wing, which is not this pand: an OSM-only building left of surface 25).",
+  "Round 6: the grey five-storey wing at the SW end: its SE front (surfaces 10, 15, 16, 22, 18) was an unlisted wall the city look painted in two colours; it is listed now in the wing grey #a4a6a0 (w02-140s1, cooler than the flanks' beige), and the SW flank holds its corner sliver 30. The judge's two-tone split was mostly the manual haparandaweg-65 model drawn through this one: see the hand-back.",
+  "Measured 2026-11-20 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] wall split #6c5a54 | #3b2b25 at 52 % (dE 18.5); walls[0] bays 25 from the likeness grid (padded measurement 7).",
+  "Round 7: palette.brick measured by measure.ts --write (w02-140s1, 2024-10-09: wall #6c5a54 light-normalised, raw #453734) and drawn as measured, the mauve-brown tile; its proposed wallSplit at 0.515 (#3b2b25) is refused by hand: the darker right half is shade under the trees, the photo shows one tile colour."
+ ],
+ "measured": {
+  "date": "2026-11-20",
+  "groups": [
+   0
+  ]
+ }
 }

@@ -65,6 +65,8 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
     // a mansard's steep face in a wall plane (`mansard`): the slate texture, lit as a wall
     case 'mansard': return {materialSlot: 'slate', surface: 'wall'};
     case 'glass': return {materialSlot: 'glass', surface: 'glass'};
+    // a clear glass balustrade (balconies.pane / terraces.glassRail "clear"): the glass cell in a pale, drawn-as-authored tint
+    case 'clearglass': return {materialSlot: 'glass', surface: 'glass'};
     case 'frame': case 'rail': return {materialSlot: 'frame', surface: 'joinery'};
     case 'door': return {materialSlot: 'door', surface: 'door'};
     case 'stone': case 'slab': case 'band': case 'crest': case 'dress': return {materialSlot: 'stone', surface: 'stone'};

@@ -7,6 +7,7 @@ import {validateLargeIntent} from '../buildingRecipe/largeIntent.ts';
 import {compileLargeBuilding} from '../buildingRecipe/largeCompile.ts';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import type {LargeBuildingIntent} from '../buildingRecipe/intent.ts';
+import * as T from 'three';
 
 const DIR = 'scripts/building-recipes/houses/houthavens-249737';
 const raw = (): LargeBuildingIntent => JSON.parse(fs.readFileSync(`${DIR}/intent.json`, 'utf8'));
@@ -31,4 +32,24 @@ test('signs / wallLights / terraces: drawn when asked; absent, none of them', ()
   assert.ok(on.components.letters > off.components.letters, 'FIGHT DISTRICT adds letters');
   assert.equal(off.components.wallLights, undefined); assert.equal(off.components.terraces, undefined);
   assert.ok(on.blockGates.floatingOk, 'no floating terrace or light parts');
+});
+
+test('terraces.wrap / glassRail: validated; wrap runs the slabs on past a panel end, glassRail puts the rail in the glass slot', () => {
+  const at = (extra: Record<string, unknown>) => { const i = strip(raw()) as LargeBuildingIntent; i.walls[4] = {...i.walls[4], terraces: {storeys: [3], ...extra}} as never; return i; };
+  assert.throws(() => validateLargeIntent(at({wrap: 'yes'})), /terraces.wrap/);
+  assert.throws(() => validateLargeIntent(at({glassRail: true, rail: false})), /terraces.glassRail/);
+  const base = compileLargeBuilding(validateLargeIntent(at({})), facts(), opts);
+  const wrap = compileLargeBuilding(validateLargeIntent(at({wrap: true})), facts(), opts);
+  const glass = compileLargeBuilding(validateLargeIntent(at({glassRail: true})), facts(), opts);
+  const size = (g: typeof base.group) => { const b = new T.Box3().setFromObject(g); return b.max.x - b.min.x + b.max.z - b.min.z; };
+  assert.ok(size(wrap.group) >= size(base.group), 'wrapped slabs reach at least as far');
+  const slots = (g: typeof base.group) => { const s = new Set<string>(); g.traverse(o => { const m = o as T.Mesh; if (m.isMesh) s.add(m.name); }); return s; };
+  assert.ok([...slots(base.group)].some(n => /rail@tg4/.test(n)), 'plain rail in its own slot');
+  assert.ok(![...slots(glass.group)].some(n => /rail@tg4/.test(n)), 'glass rail drops the rail slot');
+  assert.equal(glass.components.terraces, base.components.terraces);
+  assert.throws(() => validateLargeIntent(at({glassRail: 'clearish'})), /terraces.glassRail/);
+  const clear = compileLargeBuilding(validateLargeIntent(at({glassRail: 'clear'})), facts(), opts);
+  assert.ok([...slots(clear.group)].some(n => /clearglass@tg4/.test(n)), 'clear rail in its own slot');
+  assert.ok(clear.recipe.measuredSlots!.includes('clearglass@tg4'), 'drawn as authored');
+  assert.ok(wrap.blockGates.floatingOk && glass.blockGates.floatingOk);
 });

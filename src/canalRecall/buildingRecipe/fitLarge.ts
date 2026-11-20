@@ -42,6 +42,12 @@ import {tidyRoof, type RoofTidyReport} from './roofTidy.ts';
 import {houseCuts, rowCoherence, spanEaves, spanTop} from './rowSplit.ts';
 
 /** The kit's dark glass, when the intent has no (measured) `palette.glass`. */
+/**
+ * A clear glass balustrade (`balconies.pane: "clearGlass"`, `terraces.glassRail: "clear"`): the glass cell in this pale
+ * blue-grey, drawn as authored (a measured-glass tint), so the rail reads as light reflecting glass, not a dark window.
+ */
+export const CLEAR_GLASS = '#c6d2d6';
+
 /** The block-kit slot of a large house's unlisted walls under `otherWalls: 'window-grid'` (painted like `wall`). */
 export const WINDOW_GRID_WALL_SLOT = 'wall@grid';
 export const KIT_GLASS = '#2a3a42';
@@ -468,9 +474,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     const balconyRail = w.balconies?.colour ? `rail@bg${gi}` : undefined;
     if (balconyRail) palette[balconyRail] = swatch(w.balconies!.colour!);
     // opt-in balcony slab edge, glass pane and gallery posts in their own slots (absent: byte-identical)
-    const balconyEdge = w.balconies?.edge ? `edge@bg${gi}` : undefined, balconyPane = w.balconies?.pane ? `pane@bg${gi}` : undefined, balconyPost = w.balconies?.posts ? `post@bg${gi}` : undefined;
+    const balconyEdge = w.balconies?.edge ? `edge@bg${gi}` : undefined, balconyPane = w.balconies?.pane === 'glass' ? slots.glass : w.balconies?.pane === 'clearGlass' ? `clearglass@bg${gi}` : w.balconies?.pane ? `pane@bg${gi}` : undefined, balconyPost = w.balconies?.posts ? `post@bg${gi}` : undefined;
     if (balconyEdge) palette[balconyEdge] = swatch(w.balconies!.edge!);
-    if (balconyPane) palette[balconyPane] = swatch(w.balconies!.pane!);
+    if (balconyPane && w.balconies!.pane === 'clearGlass') { palette[balconyPane] = CLEAR_GLASS; measuredSlots.push(balconyPane); } else if (balconyPane && w.balconies!.pane !== 'glass') palette[balconyPane] = swatch(w.balconies!.pane!);
     if (balconyPost) palette[balconyPost] = swatch(w.balconies!.posts!.colour);
     // A window box in its own frame colour and its deck slab (windowBox.frame, windowBox.deck): slots of their own.
     // A side light's own frame colour (sideLight.colour, GitHub #86) and loggia-band rails in their own colour: joinery slots of their own.
@@ -606,9 +612,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
         // the house's own balconies / loggias (bays within the house) replace the group's; a brick balcony takes the house's brick
         const hb = h.balconies, hl = h.loggias, brickBalcony = !!(w.balconies?.brick && slot !== slots.wall && (hb || w.balconies));
         const houseSlots = frameSlot || brickBalcony ? {slots: {...sysOpts.slots, ...(frameSlot ? {frame: frameSlot} : {}), ...(brickBalcony ? {wall: slot} : {})}} : {};
-        const hEdge = hb?.edge ? `edge@g${gi}h${k}` : undefined, hPane = hb?.pane ? `pane@g${gi}h${k}` : undefined;
+        const hEdge = hb?.edge ? `edge@g${gi}h${k}` : undefined, hPane = hb?.pane === 'glass' ? slots.glass : hb?.pane === 'clearGlass' ? `clearglass@g${gi}h${k}` : hb?.pane ? `pane@g${gi}h${k}` : undefined;
         if (hEdge) palette[hEdge] = swatch(hb!.edge!);
-        if (hPane) palette[hPane] = swatch(hb!.pane!);
+        if (hPane && hb!.pane === 'clearGlass') { palette[hPane] = CLEAR_GLASS; measuredSlots.push(hPane); } else if (hPane && hb!.pane !== 'glass') palette[hPane] = swatch(hb!.pane!);
         const houseBalconies = hb ? {balconyStoreys: [...hb.storeys], balconyRail: hb.rail ?? w.balconies?.rail, balconyBays: hb.bays ? {bays: [...hb.bays]} : undefined,
           ...(hEdge ? {balconySlabSlot: hEdge} : {}), ...(hPane ? {balconyPaneSlot: hPane} : {})} : {};
         const houseLoggias = hl ? {loggias: {storeys: [...hl.storeys], ...(hl.bays ? {bays: [...hl.bays]} : {}), w: hl.w ?? w.loggias?.w ?? LOGGIA.w, h: hl.h ?? w.loggias?.h ?? LOGGIA.h, sill: hl.sill ?? w.loggias?.sill ?? LOGGIA.sill,
@@ -651,7 +657,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.windowBox ? {windowBox: fitWindowBox(w.windowBox, {frame: boxFrame ?? slots.frame, glass: slots.glass, ...(boxDeck ? {deck: boxDeck} : {})}, main ? main.uMax - main.uMin : undefined, bays)} : {}),
       ...(w.signs ? {signs: w.signs.map((s, k) => { const sl = `sign@g${gi}k${k}`; palette[sl] = swatch(s.colour ?? '#e8e8e4'); return {text: s.text, along: [s.along[0], s.along[1]] as [number, number], up: [s.up[0], s.up[1]] as [number, number], slot: sl}; })} : {}),
       ...(w.wallLights ? {wallLights: w.wallLights.map(l => ({along: [l.along[0], l.along[1]] as [number, number], up: [l.up[0], l.up[1]] as [number, number], lights: l.lights ?? 1, rows: l.rows ?? 1}))} : {}),
-      ...(w.terraces ? {terraces: ((t) => { const sl = `terrace@g${gi}`, rl = `rail@tg${gi}`; palette[sl] = swatch(t.colour ?? '#e4e4e0'); palette[rl] = swatch(t.colour ?? '#e4e4e0'); return {storeys: [...t.storeys], deep: t.deep ?? TERRACE.deep, rail: t.rail ?? true, roof: !!t.roof, slot: sl, railSlot: rl, ...(t.posts ? {posts: t.posts} : {})}; })(w.terraces)} : {}),
+      ...(w.terraces ? {terraces: ((t) => { const sl = `terrace@g${gi}`, rl = t.glassRail === 'clear' ? `clearglass@tg${gi}` : t.glassRail ? slots.glass : `rail@tg${gi}`; palette[sl] = swatch(t.colour ?? '#e4e4e0'); if (t.glassRail === 'clear') { palette[rl] = CLEAR_GLASS; measuredSlots.push(rl); } else if (!t.glassRail) palette[rl] = swatch(t.colour ?? '#e4e4e0'); return {storeys: [...t.storeys], deep: t.deep ?? TERRACE.deep, rail: t.rail ?? true, roof: !!t.roof, slot: sl, railSlot: rl, ...(t.posts ? {posts: t.posts} : {}), ...(t.wrap ? {wrap: true} : {})}; })(w.terraces)} : {}),
       ...(w.signBoards ? {signBoards: w.signBoards.map((b, k) => { const sl = `signboard@g${gi}k${k}`; palette[sl] = swatch(b.colour ?? pal.door); return {along: [b.along[0], b.along[1]] as [number, number], up: [b.up[0], b.up[1]] as [number, number], slot: sl}; })} : {}),
       ...(w.falseFront ? {falseFront: {slot: cladSlot ?? slots.wall}} : {}),
       ...(w.ribbonStoreys ? {ribbonStoreys: w.ribbonStoreys.flatMap(r => r.storeys)} : {}),

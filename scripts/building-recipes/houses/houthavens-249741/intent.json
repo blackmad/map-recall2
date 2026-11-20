@@ -201,8 +201,7 @@
     "deep": 1.3,
     "colour": "#5a5a5c",
     "rail": true,
-    "roof": true,
-    "posts": 6.5
+    "roof": true
    }
   },
   {
@@ -233,8 +232,7 @@
     "deep": 1.3,
     "colour": "#5a5a5c",
     "rail": true,
-    "roof": true,
-    "posts": 6.5
+    "roof": true
    }
   }
  ],
@@ -250,6 +248,7 @@
  "budgetTriangles": 20000,
  "notes": [
   "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 5): every front from w01-138s1 (SE, 2021), w02-318s2 (NW, 2021) and w03-228s1/s2 (SW, 2022/2025): a dark grey concrete frame of five storeys, glazed floor to ceiling on every storey behind projecting concrete floor galleries with mesh rails (terraces at every upper floor and a thin roof slab), concrete columns every 6-7 m (terraces.posts 6.5). The NE front is not photographed square and takes the SW scheme.",
-  "Not drawn: the entrance canopy on the NW, the flag poles."
+  "Not drawn: the entrance canopy on the NW, the flag poles.",
+  "Round 6: the 6.9 m corner returns carry no columns (a corner column read as a slanted dark strip at the right edge)."
  ]
 }

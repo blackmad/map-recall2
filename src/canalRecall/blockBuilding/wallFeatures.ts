@@ -18,10 +18,14 @@ import {intervals, type PanelCtx} from './compose.ts';
 export interface WallSignIntent { text: string; colour?: string; along: [number, number]; up: [number, number] }
 export interface WallLightIntent { along: [number, number]; up: [number, number]; lights?: number; rows?: number }
 /** `posts`: columns about every `posts` m (2..12) along each panel, from the foot to the roof line, under the slab fronts */
-export interface TerraceIntent { storeys: number[]; deep?: number; colour?: string; rail?: boolean; roof?: boolean; posts?: number }
+/** `wrap`: the slabs (not the rails or canopy) run on `deep` past each panel end, so the slabs of two fronts meet round a corner
+ *  instead of ending in two loose fins (252692) */
+/** `glassRail`: the rail sheet is the group's glazing under a slab-coloured top bar (a glass balustrade, 252692), not a sheet
+ *  in the terrace colour; `"clear"`: the pale clear-glass tint instead of the group's window glass */
+export interface TerraceIntent { storeys: number[]; deep?: number; colour?: string; rail?: boolean; roof?: boolean; posts?: number; wrap?: boolean; glassRail?: boolean | 'clear' }
 
 export interface WallLightFit { along: [number, number]; up: [number, number]; lights: number; rows: number }
-export interface TerraceFit { storeys: number[]; deep: number; rail: boolean; roof: boolean; slot: string; railSlot: string; posts?: number }
+export interface TerraceFit { storeys: number[]; deep: number; rail: boolean; roof: boolean; slot: string; railSlot: string; posts?: number; wrap?: boolean }
 
 export const WALL_LIGHT = {frame: 0.08, glass: 0.05, bar: 0.06, minM: 0.4} as const;
 export const TERRACE = {deep: 1.6, slab: 0.28, railH: 1.0, roofDeep: 2.2, roofSlab: 0.22, post: 0.35} as const;
@@ -63,11 +67,13 @@ export function wallLightsProblems(input: unknown, at: string): string[] {
 export function terracesProblems(input: unknown, at: string, storeys: number): string[] {
   if (!input || typeof input !== 'object' || Array.isArray(input)) return [`${at}: object {storeys, deep, colour, rail, roof}`];
   const out: string[] = [], r = input as Record<string, unknown>;
-  for (const key of Object.keys(r)) if (!['storeys', 'deep', 'colour', 'rail', 'roof', 'posts'].includes(key)) out.push(`${at}.${key}: unknown field (storeys, deep, colour, rail, roof, posts)`);
+  for (const key of Object.keys(r)) if (!['storeys', 'deep', 'colour', 'rail', 'roof', 'posts', 'wrap', 'glassRail'].includes(key)) out.push(`${at}.${key}: unknown field (storeys, deep, colour, rail, roof, posts, wrap, glassRail)`);
   if (r.posts !== undefined && !(typeof r.posts === 'number' && r.posts >= 2 && r.posts <= 12)) out.push(`${at}.posts: column spacing 2..12 m`);
   if (!Array.isArray(r.storeys) || !r.storeys.length || !r.storeys.every(s => intIn(s, 1, Math.max(1, storeys - 1)))) out.push(`${at}.storeys: upper storey indices 1..${storeys - 1}`);
   if (r.deep !== undefined && !(typeof r.deep === 'number' && r.deep >= 0.3 && r.deep <= 3)) out.push(`${at}.deep: 0.3..3 m`);
-  for (const b of ['rail', 'roof']) if (r[b] !== undefined && typeof r[b] !== 'boolean') out.push(`${at}.${b} must be true or false`);
+  for (const b of ['rail', 'roof', 'wrap']) if (r[b] !== undefined && typeof r[b] !== 'boolean') out.push(`${at}.${b} must be true or false`);
+  if (r.glassRail !== undefined && r.glassRail !== true && r.glassRail !== false && r.glassRail !== 'clear') out.push(`${at}.glassRail must be true, false or "clear"`);
+  if (r.glassRail && r.rail === false) out.push(`${at}.glassRail: needs the rail (rail false draws none)`);
   return out;
 }
 
@@ -93,19 +99,22 @@ export function drawWallLights(c: PanelCtx, lights: readonly WallLightFit[], slo
 /** Terrace floors at the listed storeys' floor lines (and a canopy roof at `roofM`), across the panel where it stands. */
 export function drawTerraces(c: PanelCtx, levels: readonly number[], t: TerraceFit, roofM: number): number {
   const p = c.p, {slab, railH, roofSlab} = TERRACE;
+  // `wrap`: a stretch that reaches a panel end runs on `deep` past it (the corner square of two fronts' slabs)
+  const ends = (a: number, b: number): [number, number] => t.wrap ? [a - (a - p.uMin < 0.05 ? t.deep : 0), b + (p.uMax - b < 0.05 ? t.deep : 0)] : [a, b];
   let n = 0;
   for (const st of t.storeys) {
     const v = levels[st];
     if (v === undefined || v - slab < p.vMin + 0.5 || v + railH > roofM + 0.01) continue;
-    for (const [a, b] of intervals(p, v - slab, v + railH)) {
-      if (b - a < 1) continue;
+    for (const [a0, b0] of intervals(p, v - slab, v + railH)) {
+      if (b0 - a0 < 1) continue;
+      const [a, b] = ends(a0, b0);
       let part = c.part();
       c.box(t.slot, a, b, v - slab, v, 0.01, t.deep, part);
       if (t.rail) {
         part = c.part();
         // a thin closed sheet (a single quad's edges would be open edges to the shell gate)
-        c.box(t.railSlot, a + 0.05, b - 0.05, v, v + railH - 0.05, t.deep - 0.05, t.deep - 0.03, part);
-        c.box(t.slot, a, b, v + railH - 0.05, v + railH, t.deep - 0.07, t.deep, part);
+        c.box(t.railSlot, a0 + 0.05, b0 - 0.05, v, v + railH - 0.05, t.deep - 0.05, t.deep - 0.03, part);
+        c.box(t.slot, a0, b0, v + railH - 0.05, v + railH, t.deep - 0.07, t.deep, part);
       }
       n++;
     }
@@ -123,9 +132,9 @@ export function drawTerraces(c: PanelCtx, levels: readonly number[], t: TerraceF
     }
   }
   if (t.roof && roofM - p.vMin > 3) {
-    for (const [a, b] of intervals(p, roofM - roofSlab - 0.4, roofM - 0.02)) {
-      if (b - a < 1) continue;
-      c.box(t.slot, a, b, roofM - roofSlab, roofM, 0.01, TERRACE.roofDeep, c.part());
+    for (const [a0, b0] of intervals(p, roofM - roofSlab - 0.4, roofM - 0.02)) {
+      if (b0 - a0 < 1) continue;
+      c.box(t.slot, a0, b0, roofM - roofSlab, roofM, 0.01, TERRACE.roofDeep, c.part());
       n++;
     }
   }
