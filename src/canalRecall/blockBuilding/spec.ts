@@ -103,7 +103,10 @@ export interface BalconyParams {
   /** balcony width (m), centred on the bay; default fills the cell */
   w?: number;
   slab?: { h?: number; slot?: Slot };
-  rail?: { kind?: 'glass' | 'bars' | 'rods' | 'solid'; h?: number; slot?: Slot; top?: Slot | null };
+  /** `pane` (opt-in): the infill between the cheeks in its own slot (a pale glass pane), cheeks and top keeping `slot` */
+  rail?: { kind?: 'glass' | 'bars' | 'rods' | 'solid'; h?: number; slot?: Slot; top?: Slot | null; pane?: Slot };
+  /** gallery posts (opt-in): a fin of `w` m at each end of every balcony bay, from the slab to the storey top, in `slot` */
+  posts?: { slot: Slot; w?: number };
   /** recessed glazing behind the balcony */
   back?: WinParams | null;
   /** side cheeks (m of wall each side, solid) */

@@ -5,6 +5,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {validateLargeIntent} from './largeIntent.ts';
 import {fitLarge} from './fitLarge.ts';
+import {compileLargeBuilding} from './largeCompile.ts';
+import * as T from 'three';
 import type {BuildingFacts} from './facts.ts';
 import type {LargeBuildingIntent} from './intent.ts';
 
@@ -49,4 +51,33 @@ test('balconies.brick: the slab is the wall slot; absent keeps the stone slab', 
   assert.match(bb.balcony!.slab.slot, /^wall/);
   assert.match(bb.balcony!.rail.slot, /^wall/, 'a solid rail is the brick parapet');
   assert.match((bb.balcony!.rail as unknown as {top: string}).top, /^wall/, 'with a brick coping, no pale line over it');
+});
+
+test('balconies.edge / pane / posts: own slots on the balcony row; validated; absent keeps the stone slab and rail infill', async () => {
+  assert.throws(() => validateLargeIntent(withHouse(0, {}, {balconies: {storeys: [3], edge: 'not-a-colour'}})), /balconies.edge/);
+  assert.throws(() => validateLargeIntent(withHouse(0, {}, {balconies: {storeys: [3], posts: {colour: '#c8c4bc', w: 0.9}}})), /posts.w/);
+  const fit = fitLarge(validateLargeIntent(withHouse(0, {balconies: {storeys: [2], rail: 'glass'}}, {balconies: {storeys: [3], rail: 'glass', edge: '#d8d6d0', pane: '#a8bcc0', posts: {colour: '#c8c4bc', w: 0.1}}})), facts()).recipe;
+  const b = rowsOf(fit.spec.systems[fit.groups[0].houses!.segs[0].system])['2'];
+  const bal = (kinds(b).includes('balcony') ? (b.cycle ?? [b]).find(x => x.kind === 'balcony')! : b).balcony as unknown as {slab: {slot: string}; rail: {pane?: string}; posts?: {slot: string; w: number}};
+  assert.match(bal.slab.slot, /^edge@bg0/);
+  assert.match(bal.rail.pane!, /^pane@bg0/);
+  assert.match(bal.posts!.slot, /^post@bg0/);
+  const plain = fitLarge(validateLargeIntent(withHouse(0, {balconies: {storeys: [2], rail: 'glass'}})), facts()).recipe;
+  const pb = rowsOf(plain.spec.systems[plain.groups[0].houses!.segs[0].system])['2'];
+  const pbal = (pb.cycle ?? [pb]).find(x => x.kind === 'balcony')!.balcony as unknown as {slab: {slot: string}; rail: {pane?: string}; posts?: unknown};
+  assert.match(pbal.slab.slot, /^stone/); assert.equal(pbal.rail.pane, undefined); assert.equal(pbal.posts, undefined);
+});
+
+test('balconies.posts: the fins add geometry in their own slot', () => {
+  const posts = compileLargeBuilding(validateLargeIntent(withHouse(0, {}, {balconies: {storeys: [3], rail: 'glass', posts: {colour: '#c8c4bc'}}})), facts(), {budget: 1e9});
+  let n = 0; posts.group.traverse(o => { const m = o as T.Mesh; if (m.isMesh && /post@bg0/.test(m.name)) n++; });
+  assert.ok(n > 0, 'a mesh in the post slot');
+});
+
+test('houses[].balconies.edge / pane: the house balcony in its own slots', () => {
+  const fit = fitLarge(validateLargeIntent(withHouse(0, {balconies: {storeys: [2], rail: 'glass', edge: '#d8d6d0', pane: '#a8bcc0'}})), facts()).recipe;
+  const b = rowsOf(fit.spec.systems[fit.groups[0].houses!.segs[0].system])['2'];
+  const bal = (b.cycle ?? [b]).find(x => x.kind === 'balcony')!.balcony as unknown as {slab: {slot: string}; rail: {pane?: string}};
+  assert.equal(bal.slab.slot, 'edge@g0h0'); assert.equal(bal.rail.pane, 'pane@g0h0');
+  assert.throws(() => validateLargeIntent(withHouse(0, {balconies: {storeys: [2], edge: 'not-a-colour'}})), /balconies.edge/);
 });

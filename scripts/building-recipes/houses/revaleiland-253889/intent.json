@@ -78,7 +78,8 @@
     "every": 2,
     "first": 1,
     "rail": "solid",
-    "brick": true
+    "brick": true,
+    "edge": "#c8c0b0"
    }
   },
   {
@@ -110,7 +111,8 @@
     "every": 2,
     "first": 0,
     "rail": "solid",
-    "brick": true
+    "brick": true,
+    "edge": "#c8c0b0"
    }
   },
   {
@@ -174,7 +176,8 @@
      7
     ],
     "rail": "solid",
-    "brick": true
+    "brick": true,
+    "edge": "#c8c0b0"
    }
   },
   {
@@ -201,7 +204,13 @@
      3
     ],
     "rail": "bars",
-    "colour": "#b8a078"
+    "colour": "#b8a078",
+    "edge": "#c0bcb2",
+    "posts": {
+     "colour": "#c0bcb2",
+     "w": 0.08
+    },
+    "pane": "#b8a078"
    }
   },
   {
@@ -211,6 +220,41 @@
    "system": "brick-bay-grid",
    "storeys": 5,
    "baysPerStorey": 6,
+   "palette": {
+    "brick": "#5e5a56",
+    "frame": "#3a3a3a"
+   },
+   "windowShape": {
+    "w": 0.35,
+    "h": 0.55,
+    "sill": 0.15
+   }
+  },
+  {
+   "wallSurfaces": [
+    79
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 10,
+   "palette": {
+    "brick": "#5e5a56",
+    "frame": "#3a3a3a"
+   },
+   "windowShape": {
+    "w": 0.35,
+    "h": 0.55,
+    "sill": 0.15
+   }
+  },
+  {
+   "wallSurfaces": [
+    108,
+    129
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 4,
    "palette": {
     "brick": "#5e5a56",
     "frame": "#3a3a3a"
@@ -233,7 +277,7 @@
  "shellRepair": true,
  "budgetTriangles": 30000,
  "notes": [
-  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 3): built 2023 and the 3DBAG survey is 2023, so the shell is the finished block. SE: panel 29 (47 m, eaves 13.5) from w01-140s2x/s3x (2025-09-29): a glazed ground and three storeys with brick-fronted balconies on every other bay (balconies.brick, solid parapet in the wall brick); panel 48 (18.6 m, five storeys) from w01-140s1x: wide windows and a loggia column; panel 55 (16.4 m) from w01-140s4x: small punched windows and a balcony column at its end. NE: panel 4 (30.5 m) from w03-50s2x (2024-10-16): grey brick galleries with timber frames (drawn as bar-railed balconies in a timber colour); panel 54 from w03-50s1x. The 2021-2022 SE crops are construction and are not cited. The W and NW fronts have no crop: otherWalls.",
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 3): built 2023 and the 3DBAG survey is 2023, so the shell is the finished block. SE: panel 29 (47 m, eaves 13.5) from w01-140s2x/s3x (2025-09-29): a glazed ground and three storeys with brick-fronted balconies on every other bay (balconies.brick, solid parapet in the wall brick); panel 48 (18.6 m, five storeys) from w01-140s1x: wide windows and a loggia column; panel 55 (16.4 m) from w01-140s4x: small punched windows and a balcony column at its end. NE: panel 4 (30.5 m) from w03-50s2x (2024-10-16): grey brick galleries with timber frames (drawn as bar-railed balconies in a timber colour); panel 54 from w03-50s1x. The 2021-2022 SE crops are construction and are not cited. The W and NW fronts have no crop: otherWalls. Round 4: the SE brick balcony boxes have a pale concrete slab edge; the NE galleries have concrete fins at every bay joint (balconies.posts) and pale concrete slabs. NE panels 69 and 91 (the set-back middle) in the same grey brick (round 4: the buff default read wrong against w03-50s2x).",
   "Not drawn: the timber pergola posts rising over the NE roof line, the parapet notches of the SE balcony boxes."
  ]
 }

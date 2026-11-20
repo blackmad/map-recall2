@@ -236,7 +236,15 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.balconies.bays !== undefined) { if (!Array.isArray(w.balconies.bays) || !w.balconies.bays.length) problems.push(`${at}.balconies.bays: list of bay indices`); else w.balconies.bays.forEach(b => count(b, `${at}.balconies.bays`, 0, (w.baysPerStorey ?? 80) - 1)); if (w.baysPerStorey === undefined) problems.push(`${at}.balconies.bays needs baysPerStorey`); }
       if (w.balconies.rail !== undefined) oneOf(w.balconies.rail, ['glass', 'bars', 'solid'], `${at}.balconies.rail`);
       const bk = Object.keys(w.balconies);
-      for (const k of bk) if (!['storeys', 'rail', 'every', 'first', 'bays', 'colour', 'deep', 'windows', 'run', 'brick'].includes(k)) problems.push(`${at}.balconies.${k}: unknown field (storeys, rail, every, first, bays, colour, deep, windows, run, brick)`);
+      for (const k of bk) if (!['storeys', 'rail', 'every', 'first', 'bays', 'colour', 'deep', 'windows', 'run', 'brick', 'edge', 'pane', 'posts'].includes(k)) problems.push(`${at}.balconies.${k}: unknown field (storeys, rail, every, first, bays, colour, deep, windows, run, brick, edge, pane, posts)`);
+      if (w.balconies.edge !== undefined) colour(w.balconies.edge, `${at}.balconies.edge`);
+      if (w.balconies.pane !== undefined) colour(w.balconies.pane, `${at}.balconies.pane`);
+      if (w.balconies.posts !== undefined) {
+        const ps = w.balconies.posts as {colour?: unknown; w?: unknown};
+        for (const k of Object.keys(ps ?? {})) if (!['colour', 'w'].includes(k)) problems.push(`${at}.balconies.posts.${k}: unknown field (colour, w)`);
+        colour(ps?.colour as string, `${at}.balconies.posts.colour`);
+        if (ps?.w !== undefined && !(typeof ps.w === 'number' && ps.w >= 0.04 && ps.w <= 0.3)) problems.push(`${at}.balconies.posts.w: 0.04..0.3 of the bay pitch`);
+      }
       if (w.balconies.brick !== undefined && typeof w.balconies.brick !== 'boolean') problems.push(`${at}.balconies.brick: true or false`);
       if (w.balconies.colour !== undefined) colour(w.balconies.colour, `${at}.balconies.colour`);
       if (w.balconies.deep !== undefined && !(typeof w.balconies.deep === 'number' && w.balconies.deep >= 0.08 && w.balconies.deep <= 0.45)) problems.push(`${at}.balconies.deep: fraction 0.08..0.45 of the storey height`);
@@ -643,7 +651,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
           for (const kind of ['balconies', 'loggias'] as const) {
             const b = h?.[kind] as {storeys?: unknown; bays?: unknown; rail?: unknown} | undefined;
             if (b === undefined) continue;
-            const allowed = kind === 'balconies' ? ['storeys', 'bays', 'rail'] : ['storeys', 'bays', 'w', 'h', 'sill', 'deep', 'rail', 'lights'];
+            const allowed = kind === 'balconies' ? ['storeys', 'bays', 'rail', 'edge', 'pane'] : ['storeys', 'bays', 'w', 'h', 'sill', 'deep', 'rail', 'lights'];
+            for (const ck of ['edge', 'pane'] as const) { const v = (b as Record<string, unknown>)?.[ck]; if (kind === 'balconies' && v !== undefined) colour(v, `${hat}.balconies.${ck}`); }
             for (const key of Object.keys(b ?? {})) if (!allowed.includes(key)) problems.push(`${hat}.${kind}.${key}: unknown field (${allowed.join(', ')})`);
             if (!Array.isArray(b?.storeys) || !b.storeys.length || b.storeys.some(q => !Number.isInteger(q) || q < 1 || q > 39)) problems.push(`${hat}.${kind}.storeys: list of storeys (1 = first floor)`);
             if (b?.bays !== undefined) {

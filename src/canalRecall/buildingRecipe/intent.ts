@@ -1215,7 +1215,8 @@ export interface LargeHouseIntent {
    * group's balconies in this house only, and take the group's `colour`/`deep`/`brick` (lane houthavens-memel-wiborg-20261120:
    * Wiborgeiland 1-72's quay houses each with their own balcony column). Absent: the group's, byte-identical.
    */
-  balconies?: {storeys: number[]; bays?: number[]; rail?: 'glass' | 'bars' | 'solid'};
+  balconies?: {storeys: number[]; bays?: number[]; rail?: 'glass' | 'bars' | 'solid';
+    /** the house's balcony slab edge and rail pane colours (as the group's `balconies.edge` / `pane`; absent: the group's) */ edge?: string; pane?: string};
   /** The house's own loggias, `bays` within the house (default every bay), the group loggia's proportions unless given;
    *  they replace the group's loggias in this house only. Absent: the group's, byte-identical. */
   loggias?: {storeys: number[]; bays?: number[]; w?: number; h?: number; sill?: number; deep?: number; rail?: 'glass' | 'bars' | 'solid' | 'none'; lights?: number};
@@ -1289,7 +1290,11 @@ export interface LargeWallIntent {
     /** with `windows`: the balcony runs the full bay pitch, so neighbouring bays join into one front-wide balcony in front of
      *  punched windows (Stadsloket West's continuous galleries); absent: the bay's windows plus 0.2 m, byte-identical */ run?: boolean;
     /** slab (and a `solid` rail: the parapet) in the wall's own brick instead of the stone slot (Revaleiland 437's red
-     *  brick balconies, lane houthavens-memel-wiborg-20261120); absent: stone slab, byte-identical */ brick?: boolean};
+     *  brick balconies, lane houthavens-memel-wiborg-20261120); absent: stone slab, byte-identical */ brick?: boolean;
+    /** the slab in its own colour: a pale concrete or metal fascia edge (absent: stone or brick slab, byte-identical) */ edge?: string;
+    /** the rail infill in its own colour (a pale glass pane between frame-coloured cheeks and top; absent: the rail colour) */ pane?: string;
+    /** gallery posts: a fin at every bay joint of a balcony run, slab to storey top, `w` of the bay pitch (0.04..0.3,
+     *  default 0.2 m), in `colour` (Revaleiland 253889's concrete gallery fins; absent: none) */ posts?: {colour: string; w?: number}};
   /**
    * Grouped windows (issue #35): each bay's opening (`windowShape.w` of the bay) is `count` separate windows with `gap`
    * of the bay (default 0.06) of wall between them, on the listed `storeys` (default every upper storey; 0 = ground).

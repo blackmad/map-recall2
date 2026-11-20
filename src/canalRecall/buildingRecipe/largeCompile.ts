@@ -67,6 +67,8 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
     case 'frame': case 'rail': return {materialSlot: 'frame', surface: 'joinery'};
     case 'door': return {materialSlot: 'door', surface: 'door'};
     case 'stone': case 'slab': case 'band': case 'crest': case 'dress': return {materialSlot: 'stone', surface: 'stone'};
+    // balcony slab edge, pale glass pane and gallery posts (balconies.edge / pane / posts): smooth panels in their own colour
+    case 'edge': case 'pane': case 'post': return {materialSlot: 'stone', surface: 'stone'};
     case 'police-white': case 'board': return {materialSlot: 'stucco', surface: 'sign'};
     case 'board-text': return {materialSlot: 'accent', surface: 'sign'};
     // a sign board on a shop front (blockBuilding/signBoards.ts): a flat painted panel, like a name board

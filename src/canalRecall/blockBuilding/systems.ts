@@ -56,6 +56,8 @@ export interface SystemFit {
   balconyRailSlot?: string;
   /** balcony slab (and a `solid` rail) in the wall slot: brick balconies (opt-in; absent: stone slab, byte-identical) */
   balconyBrick?: boolean;
+  /** opt-in balcony slots: the slab (a pale concrete or metal edge), the rail infill (a glass pane), gallery posts */
+  balconySlabSlot?: string; balconyPaneSlot?: string; balconyPosts?: { slot: string; w?: number };
   /** balcony projection (m) when not the default 1.2 m (a shallow iron balcony on consoles; opt-in) */
   balconyDeepM?: number;
   /** the balcony stands in front of the storey's own windows (an iron balcony on a window row) instead of a French window (opt-in) */
@@ -328,7 +330,7 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
     const railSlot = f.balconyRailSlot ?? s.frame, onWin = f.balconyOnWindows && typical.win && !typical.cycle ? typical.win : null;
     // on a window row the balcony spans the bay's windows and 0.2 m either side (the pilasters between bays stay clear)
     const onW = onWin ? (onWin.w ?? 0.5) : 0, span = onWin ? (f.balconyRun ? f.pitchM : Math.min(f.pitchM - 0.1, (onW <= 1 ? onW * f.pitchM : onW) + 0.4)) : 0;
-    const balcony: Row = { kind: 'balcony', balcony: { ...(onWin ? { w: +span.toFixed(3) } : {}), depth: f.balconyDeepM ?? 1.2, slab: { h: 0.18, slot: f.balconyBrick ? s.wall ?? 'wall' : s.stone }, rail: { kind: f.balconyRail ?? 'bars', h: 1.0, slot: f.balconyBrick && f.balconyRail === 'solid' ? s.wall ?? 'wall' : railSlot, top: f.balconyBrick && f.balconyRail === 'solid' ? s.wall ?? 'wall' : railSlot }, back: onWin ? { ...onWin, w: +(Math.min(span, onW <= 1 ? onW * f.pitchM : onW) / span).toFixed(4), sillSlot: null } : { w: 0.7, h: 0.72, sill: 0.25, frame: s.frame, glass: s.glass, mull: 1 } } };
+    const balcony: Row = { kind: 'balcony', balcony: { ...(onWin ? { w: +span.toFixed(3) } : {}), depth: f.balconyDeepM ?? 1.2, slab: { h: 0.18, slot: f.balconySlabSlot ?? (f.balconyBrick ? s.wall ?? 'wall' : s.stone) }, rail: { kind: f.balconyRail ?? 'bars', h: 1.0, slot: f.balconyBrick && f.balconyRail === 'solid' ? s.wall ?? 'wall' : railSlot, top: f.balconyBrick && f.balconyRail === 'solid' ? s.wall ?? 'wall' : railSlot, ...(f.balconyPaneSlot ? { pane: f.balconyPaneSlot } : {}) }, ...(f.balconyPosts ? { posts: f.balconyPosts } : {}), back: onWin ? { ...onWin, w: +(Math.min(span, onW <= 1 ? onW * f.pitchM : onW) / span).toFixed(4), sillSlot: null } : { w: 0.7, h: 0.72, sill: 0.25, frame: s.frame, glass: s.glass, mull: 1 } } };
     const sel = f.balconyBays, list = sel?.bays, every = list ? Math.max(1, f.bays ?? 1, ...list.map(b => b + 1)) : Math.max(1, sel?.every ?? 1), at = ((sel?.first ?? 0) % every + every) % every;
     // the storey's own row (an arched piano nobile) fills the bays without a balcony
     for (const st of f.balconyStoreys) { const under = rowOverrides[String(st)] ?? typical; rowOverrides[String(st)] = !sel ? balcony
