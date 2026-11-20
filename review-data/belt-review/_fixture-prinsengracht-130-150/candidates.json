@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "faceId": "_fixture-prinsengracht-130-150",
+  "generatedAt": "2026-11-20T08:49:43.409Z",
+  "pands": [
+    {
+      "pandId": "0363100012174415",
+      "candidates": [
+        {
+          "id": "2022-TMX7316010203-003006_pano_0002_000174",
+          "file": "pand-crops/0363100012174415/front.jpg",
+          "year": 2022,
+          "month": 3,
+          "distM": 5.2,
+          "obliquityDeg": 4.4,
+          "source": "wall",
+          "flags": [],
+          "pano": {
+            "id": "TMX7316010203-003006_pano_0002_000174",
+            "date": "2023-03-20"
+          },
+          "widthPx": 285,
+          "heightPx": 829,
+          "pxPerM": 50
+        }
+      ],
+      "autoPick": "2022-TMX7316010203-003006_pano_0002_000174"
+    },
+    {
+      "pandId": "0363100012174416",
+      "candidates": [
+        {
+          "id": "2022-TMX7316010203-003006_pano_0002_000173",
+          "file": "pand-crops/0363100012174416/front.jpg",
+          "year": 2022,
+          "month": 3,
+          "distM": 5.4,
+          "obliquityDeg": 13.6,
+          "source": "wall",
+          "flags": [],
+          "pano": {
+            "id": "TMX7316010203-003006_pano_0002_000173",
+            "date": "2023-03-20"
+          },
+          "widthPx": 296,
+          "heightPx": 902,
+          "pxPerM": 50
+        }
+      ],
+      "autoPick": "2022-TMX7316010203-003006_pano_0002_000173"
+    },
+    {
+      "pandId": "0363100012174417",
+      "candidates": [
+        {
+          "id": "2022-TMX7316010203-003006_pano_0002_000172",
+          "file": "pand-crops/0363100012174417/years/2022.jpg",
+          "year": 2022,
+          "month": 3,
+          "distM": 5.5,
+          "obliquityDeg": 19.1,
+          "source": "wall",
+          "flags": [],
+          "pano": {
+            "id": "TMX7316010203-003006_pano_0002_000172",
+            "date": "2023-03-20"
+          },
+          "widthPx": 269,
+          "heightPx": 860,
+          "pxPerM": 50
+        },
+        {
+          "id": "2017-TMX7316010203-003006_pano_0002_000172",
+          "file": "pand-crops/0363100012174417/years/2017.jpg",
+          "year": 2017,
+          "month": null,
+          "distM": null,
+          "obliquityDeg": null,
+          "source": "wall",
+          "flags": [],
+          "pano": {
+            "id": "TMX7316010203-003006_pano_0002_000172",
+            "date": "2017"
+          },
+          "widthPx": 269,
+          "heightPx": 860,
+          "pxPerM": 50
+        }
+      ],
+      "autoPick": "2022-TMX7316010203-003006_pano_0002_000172"
+    },
+    {
+      "pandId": "0363100012164999",
+      "candidates": [
+        {
+          "id": "2022-TMX7316010203-002985_pano_0022_000123",
+          "file": "pand-crops/0363100012164999/years/2022.jpg",
+          "year": 2022,
+          "month": 2,
+          "distM": 5.1,
+          "obliquityDeg": 27,
+          "source": "strip",
+          "flags": [
+            "seam"
+          ],
+          "pano": {
+            "id": "TMX7316010203-002985_pano_0022_000123",
+            "date": "2023-02-27"
+          },
+          "widthPx": 143,
+          "heightPx": 629,
+          "pxPerM": 40
+        },
+        {
+          "id": "2024-b_20241121_1354_Track03_Sphere_00091",
+          "file": "pand-crops/0363100012164999/years/2024.jpg",
+          "year": 2024,
+          "month": 11,
+          "distM": null,
+          "obliquityDeg": 48.3,
+          "source": "wall",
+          "flags": [
+            "oblique"
+          ],
+          "pano": {
+            "id": "b_20241121_1354_Track03_Sphere_00091",
+            "date": "2024-11-21"
+          },
+          "widthPx": 143,
+          "heightPx": 629,
+          "pxPerM": 40
+        },
+        {
+          "id": "2019-TMX7316010203-001543_pano_0000_001190",
+          "file": "pand-crops/0363100012164999/years/2019.jpg",
+          "year": 2019,
+          "month": 1,
+          "distM": null,
+          "obliquityDeg": 7.3,
+          "source": "strip",
+          "flags": [
+            "seam"
+          ],
+          "pano": {
+            "id": "TMX7316010203-001543_pano_0000_001190",
+            "date": "2020-01-08"
+          },
+          "widthPx": 143,
+          "heightPx": 629,
+          "pxPerM": 40
+        },
+        {
+          "id": "2018-TMX7316010203-001054_pano_0000_005050",
+          "file": "pand-crops/0363100012164999/years/2018.jpg",
+          "year": 2018,
+          "month": 1,
+          "distM": null,
+          "obliquityDeg": 17.3,
+          "source": "strip",
+          "flags": [
+            "seam"
+          ],
+          "pano": {
+            "id": "TMX7316010203-001054_pano_0000_005050",
+            "date": "2019-01-15"
+          },
+          "widthPx": 143,
+          "heightPx": 629,
+          "pxPerM": 40
+        },
+        {
+          "id": "2017-TMX7316010203-000205_pano_0000_000920",
+          "file": "pand-crops/0363100012164999/years/2017.jpg",
+          "year": 2017,
+          "month": 3,
+          "distM": null,
+          "obliquityDeg": 4.4,
+          "source": "strip",
+          "flags": [
+            "seam"
+          ],
+          "pano": {
+            "id": "TMX7316010203-000205_pano_0000_000920",
+            "date": "2017-03-13"
+          },
+          "widthPx": 143,
+          "heightPx": 629,
+          "pxPerM": 40
+        }
+      ],
+      "autoPick": "2022-TMX7316010203-002985_pano_0022_000123"
+    },
+    {
+      "pandId": "0363100012165018",
+      "candidates": [
+        {
+          "id": "2022-TMX7316010203-002549_pano_0000_003382",
+          "file": "pand-crops/0363100012165018/years/2022.jpg",
+          "year": 2022,
+          "month": 4,
+          "distM": null,
+          "obliquityDeg": 8.6,
+          "source": "wall",
+          "flags": [
+            "blocked"
+          ],
+          "pano": {
+            "id": "TMX7316010203-002549_pano_0000_003382",
+            "date": "2022-04-29"
+          },
+          "widthPx": 308,
+          "heightPx": 957,
+          "pxPerM": 50
+        },
+        {
+          "id": "2021-TMX7316010203-002043_pano_0000_003157",
+          "file": "pand-crops/0363100012165018/years/2021.jpg",
+          "year": 2021,
+          "month": 3,
+          "distM": null,
+          "obliquityDeg": 0.8,
+          "source": "wall",
+          "flags": [
+            "blocked"
+          ],
+          "pano": {
+            "id": "TMX7316010203-002043_pano_0000_003157",
+            "date": "2021-03-17"
+          },
+          "widthPx": 308,
+          "heightPx": 957,
+          "pxPerM": 50
+        },
+        {
+          "id": "2020-TMX7316010203-001674_pano_0000_000504",
+          "file": "pand-crops/0363100012165018/years/2020.jpg",
+          "year": 2020,
+          "month": 4,
+          "distM": null,
+          "obliquityDeg": 2.5,
+          "source": "wall",
+          "flags": [
+            "blocked"
+          ],
+          "pano": {
+            "id": "TMX7316010203-001674_pano_0000_000504",
+            "date": "2020-04-24"
+          },
+          "widthPx": 308,
+          "heightPx": 957,
+          "pxPerM": 50
+        },
+        {
+          "id": "2019-TMX7316010203-001541_pano_0002_000017",
+          "file": "pand-crops/0363100012165018/years/2019.jpg",
+          "year": 2019,
+          "month": 1,
+          "distM": null,
+          "obliquityDeg": 8.4,
+          "source": "wall",
+          "flags": [
+            "blocked",
+            "blank"
+          ],
+          "pano": {
+            "id": "TMX7316010203-001541_pano_0002_000017",
+            "date": "2020-01-08"
+          },
+          "widthPx": 308,
+          "heightPx": 957,
+          "pxPerM": 50
+        },
+        {
+          "id": "2018-TMX7316010203-001054_pano_0000_004365",
+          "file": "pand-crops/0363100012165018/years/2018.jpg",
+          "year": 2018,
+          "month": 1,
+          "distM": null,
+          "obliquityDeg": 10,
+          "source": "wall",
+          "flags": [
+            "blocked",
+            "blank"
+          ],
+          "pano": {
+            "id": "TMX7316010203-001054_pano_0000_004365",
+            "date": "2019-01-15"
+          },
+          "widthPx": 308,
+          "heightPx": 957,
+          "pxPerM": 50
+        }
+      ],
+      "autoPick": null
+    },
+    {
+      "pandId": "0363100012174698",
+      "candidates": [
+        {
+          "id": "2024-b_20241216_0911_Track08_Sphere_00007",
+          "file": "pand-crops/0363100012174698/years/2024.jpg",
+          "year": 2024,
+          "month": 12,
+          "distM": 5.3,
+          "obliquityDeg": 10.1,
+          "source": "wall",
+          "flags": [],
+          "pano": {
+            "id": "b_20241216_0911_Track08_Sphere_00007",
+            "date": "2024-12-16"
+          },
+          "widthPx": 344,
+          "heightPx": 877,
+          "pxPerM": 50
+        },
+        {
+          "id": "2018-b_20241216_0911_Track08_Sphere_00007",
+          "file": "pand-crops/0363100012174698/years/2018.jpg",
+          "year": 2018,
+          "month": null,
+          "distM": null,
+          "obliquityDeg": null,
+          "source": "wall",
+          "flags": [],
+          "pano": {
+            "id": "b_20241216_0911_Track08_Sphere_00007",
+            "date": "2018"
+          },
+          "widthPx": 344,
+          "heightPx": 877,
+          "pxPerM": 50
+        }
+      ],
+      "autoPick": "2024-b_20241216_0911_Track08_Sphere_00007"
+    },
+    {
+      "pandId": "0363100012173566",
+      "candidates": [
+        {
+          "id": "2024-b_20241216_0911_Track08_Sphere_00005",
+          "file": "pand-crops/0363100012173566/front.jpg",
+          "year": 2024,
+          "month": 12,
+          "distM": 5.3,
+          "obliquityDeg": 2.6,
+          "source": "wall",
+          "flags": [],
+          "pano": {
+            "id": "b_20241216_0911_Track08_Sphere_00005",
+            "date": "2024-12-16"
+          },
+          "widthPx": 761,
+          "heightPx": 865,
+          "pxPerM": 50
+        }
+      ],
+      "autoPick": "2024-b_20241216_0911_Track08_Sphere_00005"
+    }
+  ]
+}

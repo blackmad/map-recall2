@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "faceId": "_fixture-prinsengracht-130-150",
+  "street": "Prinsengracht",
+  "side": "130-150",
+  "fixture": true,
+  "pxPerM": 50,
+  "note": "Fixture from scripts/block-face/faces/prinsengracht-130-150 and the house-crops archive; not a pilot face.",
+  "pands": [
+    {
+      "pandId": "0363100012174415",
+      "address": "Prinsengracht 150",
+      "order": 0,
+      "widthM": 5.84
+    },
+    {
+      "pandId": "0363100012174416",
+      "address": "Prinsengracht 148",
+      "order": 1,
+      "widthM": 5.87
+    },
+    {
+      "pandId": "0363100012174417",
+      "address": "Prinsengracht 146",
+      "order": 2,
+      "widthM": 5.45
+    },
+    {
+      "pandId": "0363100012164999",
+      "address": "Prinsengracht 142",
+      "order": 3,
+      "widthM": 1.16
+    },
+    {
+      "pandId": "0363100012165018",
+      "address": "Prinsengracht 136",
+      "order": 4,
+      "widthM": 14.27
+    },
+    {
+      "pandId": "0363100012174698",
+      "address": "Prinsengracht 134",
+      "order": 5,
+      "widthM": 6.75
+    },
+    {
+      "pandId": "0363100012173566",
+      "address": "Prinsengracht 130",
+      "order": 6,
+      "widthM": 10.98
+    }
+  ]
+}

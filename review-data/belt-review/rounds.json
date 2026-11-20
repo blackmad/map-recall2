@@ -1,0 +1,10 @@
+{
+  "rounds": [
+    {
+      "id": "ring-r2",
+      "title": "Ring round 2: design units (photo, today, r1, r2)",
+      "root": "/Users/blackmad/Code/map-recall2-worktrees/integrator-design-units-20261119/artifacts/design-units/r2",
+      "note": "The overseer writes layers/<block-key>/{today,r1,r2}.jpg and photo-NN.jpg; until then the per-block layer folders and sheet.jpg load."
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import compression from 'compression';
 import {districtNotesRouter,facadePreviewNotesRouter} from './scripts/review/district-notes.js';
 import { reconstructionWorkbenchRouter } from './scripts/review/reconstruction-workbench-router.js';
 import { panoAnchorRouter } from './scripts/review/pano-anchor-router.js';
+import { beltReviewRouter } from './scripts/belt-review/server/router.js';
 import express from 'express';
 import { promises as fs } from 'node:fs';
 import { randomUUID } from 'node:crypto';
@@ -96,6 +97,8 @@ async function startServer() {
   app.use('/api/facade-repair/notes',facadePreviewNotesRouter());
   app.use('/api/reconstruction',reconstructionWorkbenchRouter());
   app.use('/api/pano-anchor',panoAnchorRouter());
+  // Local belt review tool (public/canal-drive/belt-review.html); state under review-data/belt-review/.
+  app.use('/api/belt-review', beltReviewRouter());
 
   // API routes
   app.get('/api/health', (_req, res) => {
