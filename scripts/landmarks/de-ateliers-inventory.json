@@ -1,0 +1,379 @@
+{
+ "schemaVersion": 1,
+ "id": "de-ateliers",
+ "pand": "0363100012119240",
+ "brief": "scripts/landmarks/de-ateliers-brief.md",
+ "signature": [
+  "upper-windows",
+  "garland-frieze",
+  "cornice",
+  "pavilion-piers",
+  "ground-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-185",
+   "bearing": 185,
+   "lengthM": 40.4,
+   "centre": [
+    4.894615,
+    52.357381
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002115_pano_0000_003570",
+   "capturedAt": "2021-04-23",
+   "checked": true,
+   "items": [],
+   "note": "The pand here is a 4.5 m courtyard/rear block behind the houses in the crop: plain shell."
+  },
+  {
+   "tag": "w02-275",
+   "bearing": 275,
+   "lengthM": 23.3,
+   "centre": [
+    4.894204,
+    52.3576205
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003199",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-side-windows",
+     "kind": "window-shape",
+     "where": "round-headed white-framed upper windows over plain ground windows on the west wing, garland frieze",
+     "approxSizeM": [
+      23,
+      16
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001674_pano_0000_003199",
+     "how": "evenly spaced at 3.9 m (count read off the oblique thumb)"
+    }
+   ],
+   "note": "The glazed office block in this crop is the neighbour in front; the west wing is the brick side at the left."
+  },
+  {
+   "tag": "w03-98",
+   "bearing": 98,
+   "lengthM": 23,
+   "centre": [
+    4.8950805,
+    52.3575715
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003222",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-side-windows",
+     "kind": "window-shape",
+     "where": "round-headed white-framed upper windows on the east wing, garland frieze",
+     "approxSizeM": [
+      23,
+      16
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001674_pano_0000_003222",
+     "how": "same system as the west wing"
+    }
+   ],
+   "note": "The houses in the front of this crop are the neighbours; the east wing shows at the right."
+  },
+  {
+   "tag": "w04-275",
+   "bearing": 275,
+   "lengthM": 12.4,
+   "centre": [
+    4.894328,
+    52.3574525
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w05-95",
+   "bearing": 95,
+   "lengthM": 12.4,
+   "centre": [
+    4.894918,
+    52.3574205
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-186",
+   "bearing": 186,
+   "lengthM": 9.9,
+   "centre": [
+    4.8942635,
+    52.357512
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-185",
+   "bearing": 185,
+   "lengthM": 9,
+   "centre": [
+    4.894992,
+    52.3574725
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-5",
+   "bearing": 5,
+   "lengthM": 6.9,
+   "centre": [
+    4.8944105,
+    52.3577105
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_00019",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [],
+   "note": "Same bay system as w10-6: modelled by the same builder loop."
+  },
+  {
+   "tag": "w09-6",
+   "bearing": 6,
+   "lengthM": 6.8,
+   "centre": [
+    4.895031,
+    52.357678
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241121_0951_Track23_Sphere_00063",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "items": [],
+   "note": "Same bay system as w10-6: modelled by the same builder loop."
+  },
+  {
+   "tag": "w10-6",
+   "bearing": 6,
+   "lengthM": 6.8,
+   "centre": [
+    4.894908,
+    52.357682
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-04_05-35-54_03349",
+   "capturedAt": "2024-09-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "upper-windows",
+     "kind": "window-shape",
+     "where": "one tall segment-headed upper window per bay in a white surround with a scrolled hood",
+     "approxSizeM": [
+      3.7,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_03349",
+     "how": "white surround, round-headed glass with bars, hood and scroll blocks (head simplified to a round arch)"
+    },
+    {
+     "id": "relief-aprons",
+     "kind": "relief",
+     "where": "white relief panels (ornament cartouche between two narrow panels) under every upper window",
+     "approxSizeM": [
+      3.6,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-04_05-35-54_03349",
+     "how": "white apron with three raised plain panels"
+    },
+    {
+     "id": "garland-frieze",
+     "kind": "relief",
+     "where": "white garland frieze between consoles under the cornice, all round",
+     "approxSizeM": [
+      6.8,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_03349",
+     "how": "hanging swags between console blocks"
+    },
+    {
+     "id": "cornice",
+     "kind": "other",
+     "where": "white cornice at the wall top",
+     "approxSizeM": [
+      6.8,
+      0.85
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_03349"
+    },
+    {
+     "id": "ground-windows",
+     "kind": "window-shape",
+     "where": "wide white-framed ground windows, three lights and a transom",
+     "approxSizeM": [
+      2.8,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_03349"
+    },
+    {
+     "id": "brick-panels",
+     "kind": "other",
+     "where": "recessed brick panels each side of the windows on both storeys",
+     "approxSizeM": [
+      1.1,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-04_05-35-54_03349",
+     "how": "darker brick panels laid on the wall"
+    },
+    {
+     "id": "stone-entablature",
+     "kind": "other",
+     "where": "grey stone entablature between the storeys with small consoles; grey stone plinth",
+     "approxSizeM": [
+      6.8,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_03349"
+    },
+    {
+     "id": "roof-skylights",
+     "kind": "other",
+     "where": "glazed roof lanterns over the studios",
+     "approxSizeM": [
+      10,
+      1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-04_05-35-54_03349",
+     "how": "the 3DBAG roof ridge carries them; drawn in slate"
+    }
+   ]
+  },
+  {
+   "tag": "w11-6",
+   "bearing": 6,
+   "lengthM": 6.8,
+   "centre": [
+    4.89479,
+    52.357689
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_06-43-08_00935",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-piers",
+     "kind": "other",
+     "where": "tall brick pilasters / pavilion piers with recessed panels and a stone base",
+     "approxSizeM": [
+      1.2,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_06-43-08_00935",
+     "how": "stone base, entablature, panels and crown on the 1.2 m shell edges"
+    },
+    {
+     "id": "ball-finials",
+     "kind": "sculpture",
+     "where": "stone ball finials on the pavilion corners above the cornice",
+     "approxSizeM": [
+      0.8,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_06-43-08_00935",
+     "how": "cylinder base and sphere"
+    }
+   ]
+  },
+  {
+   "tag": "w12-6",
+   "bearing": 6,
+   "lengthM": 6.8,
+   "centre": [
+    4.894528,
+    52.357704
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002548_pano_0000_000152",
+   "capturedAt": "2022-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-glazing",
+     "kind": "other",
+     "where": "dark modern glazed entrance range between brick piers",
+     "approxSizeM": [
+      4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002548_pano_0000_000152"
+    },
+    {
+     "id": "ateliers-sign",
+     "kind": "lettering",
+     "where": "\"de ateliers\" lettering over the entrance",
+     "approxSizeM": [
+      1.8,
+      0.25
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002548_pano_0000_000152",
+     "how": "gold 5x7 capitals DE ATELIERS (approximate: the real sign is lower-case)"
+    }
+   ]
+  },
+  {
+   "tag": "w13-6",
+   "bearing": 6,
+   "lengthM": 6.8,
+   "centre": [
+    4.894289,
+    52.357721
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002411_pano_0000_000055",
+   "capturedAt": "2022-01-11",
+   "checked": true,
+   "items": [],
+   "note": "Same bay system as w10-6: modelled by the same builder loop."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
