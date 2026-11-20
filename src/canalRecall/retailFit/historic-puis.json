@@ -25,70 +25,141 @@
    "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012169153 (all-walls.ts, square-on): red-and-white striped awnings cover the sign zone"
   },
   "0363100012171123": {
-   "status": "staged",
-   "review": "pending blind on close crops",
+   "status": "published",
+   "review": "Published 2026-11-20 (round 5): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5, sides seeded, fresh opus judge), low. judge: closer than the bottle-lit template; still all black where the crop may show a cream frame and an arched centre door (re-read the frame on a square-on Leentje crop).",
    "template": "brownBar",
    "word": "LEENTJE",
    "monument": "5715",
    "row": "",
    "source": "RCE monument register 5715: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
    "sign": "band",
-   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012171123 (all-walls.ts, square-on): CAFE LEENTJE painted on the flat frieze over the pui; script on the glass too"
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012171123 (all-walls.ts, square-on): CAFE LEENTJE painted on the flat frieze over the pui; script on the glass too",
+   "front": {
+    "frame": "#1f1d1b",
+    "plinth": "#1f1d1b",
+    "door": "#2a1f18",
+    "sign": {
+     "kind": "band",
+     "ink": "#c9a650"
+    }
+   },
+   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012171123 (round 4, square-on) and the round-4 close crops (blind-puis-r4): black pui and frieze, CAFE LEENTJE in gilt capitals on the frieze, single-sheet windows, dark timber door"
   },
   "0363100012171655": {
    "status": "staged",
-   "review": "pending blind on close crops",
+   "review": "round 5: kit pui staged; not judged (the template front is out of view at every house-frames pose tried)",
    "template": "brownBar",
    "word": "ELFDE GEBOD",
    "monument": "6502",
    "row": "",
    "source": "RCE monument register 6502: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
    "sign": "glass",
-   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012171655 (all-walls.ts, square-on): script lettering on the windows; no board"
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012171655 (all-walls.ts, square-on): script lettering on the windows; no board",
+   "front": {
+    "frame": "#ece6d6",
+    "plinth": "#3a2e26",
+    "sign": {
+     "kind": "glass",
+     "ink": "#e9dcb0",
+     "script": true
+    }
+   },
+   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012171655 (round 4, square-on) and the round-4 close crops (blind-puis-r4): cream frames and pilasters, script lettering on the windows, dark plinth"
   },
   "0363100012171790": {
-   "status": "staged",
-   "review": "pending blind on close crops",
+   "status": "published",
+   "review": "Published 2026-11-20 (round 5): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5, sides seeded, fresh opus judge), med-high. judge: cream frame, gridded panes and red script match; still a short \"Stoof\" for the long \"Cafe Bar de Stoof\", solid transom blocks.",
    "template": "brownBar",
    "word": "STOOF",
    "monument": "['106', '5685', '5686', '5687']",
    "row": "",
    "source": "RCE monument register ['106', '5685', '5686', '5687']: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
-   "sign": "band",
-   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012171790 (all-walls.ts, square-on): red script painted on the facade band (round-3 browser photo, house-frames pose 2025)"
+   "sign": "neon",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012171790 (all-walls.ts, square-on): red script painted on the facade band (round-3 browser photo, house-frames pose 2025)",
+   "front": {
+    "frame": "#e6dfcb",
+    "plinth": "#3b2c24",
+    "panes": [
+     3,
+     4
+    ],
+    "door": "#7a1f1c",
+    "sign": {
+     "kind": "neon",
+     "ink": "#d8323a",
+     "script": true
+    }
+   },
+   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012171790 (round 4, square-on) and the round-4 close crops (blind-puis-r4): cream frames with small panes (3 x 4), dark plinth, red door; \"Cafe Bar de Stoof\" a red script neon tube over the pui (sign corrected from band)"
   },
   "0363100012172030": {
    "status": "staged",
-   "review": "pending blind on close crops",
+   "review": "round 5: kit pui staged; not judged (the template front is out of view at every house-frames pose tried)",
    "template": "brownBar",
    "word": "KEFFER",
    "monument": "6294",
    "row": "",
    "source": "RCE monument register 6294: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
    "sign": "glass",
-   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012172030 (all-walls.ts, square-on): red painted pui, round logo lettered on the glass; no board"
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012172030 (all-walls.ts, square-on): red painted pui, round logo lettered on the glass; no board",
+   "front": {
+    "frame": "#7e1d1a",
+    "plinth": "#6e1a17",
+    "door": "#6e1a17",
+    "sign": {
+     "kind": "glass",
+     "ink": "#f2efe6"
+    }
+   },
+   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012172030 (round 4, square-on) and the round-4 close crops (blind-puis-r4): red painted pui with panelled red plinth and door, the name lettered on the glass"
   },
   "0363100012172035": {
-   "status": "staged",
-   "review": "pending blind on close crops",
+   "status": "published",
+   "review": "Published 2026-11-20 (round 5): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5, sides seeded, fresh opus judge), high. judge: dark glass between cream pilasters with script on the glass, no fascia, as on the photo; still one glass field without the mullion/door split.",
    "template": "brownBar",
    "word": "TRIBE",
    "monument": "['6261', '6262']",
    "row": "",
    "source": "RCE monument register ['6261', '6262']: element 'Winkelpui' (monument-facts.json); template brownBar (shop-templates.json)",
    "sign": "glass",
-   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012172035 (all-walls.ts, square-on): \"Cafe & Coffee Bar\" lettered on the glass of a black pui; no board"
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012172035 (all-walls.ts, square-on): \"Cafe & Coffee Bar\" lettered on the glass of a black pui; no board",
+   "front": {
+    "frame": "#1c1b1a",
+    "pilaster": "#e3dccb",
+    "plinth": "#1c1b1a",
+    "sign": {
+     "kind": "glass",
+     "ink": "#f2efe6",
+     "script": true
+    }
+   },
+   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012172035 (round 4, square-on) and the round-4 close crops (blind-puis-r4): black pui between cream cast-iron pilasters, \"Cafe & Coffee Bar\" etched white on the glass"
   },
   "0363100012173636": {
-   "status": "staged",
-   "review": "pending blind on close crops",
+   "status": "published",
+   "review": "Published 2026-11-20 (round 5): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5, sides seeded, fresh opus judge), low. judge: the cafe is mostly hidden on the photo; the cream frame fits the white corner better than the dark template.",
    "template": "brownBar",
    "word": "T SMALLE",
    "monument": "990",
    "row": "",
    "source": "RCE monument register 990: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
    "sign": "glass",
-   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012173636 (all-walls.ts, square-on): white pui, the name lettered small on the windows; a hanging bracket sign, no board"
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012173636 (all-walls.ts, square-on): white pui, the name lettered small on the windows; a hanging bracket sign, no board",
+   "front": {
+    "frame": "#eeebe3",
+    "plinth": "#d9d4c8",
+    "panes": [
+     2,
+     3
+    ],
+    "door": "#2f3a33",
+    "sign": {
+     "kind": "glass",
+     "ink": "#f2efe6",
+     "script": true
+    }
+   },
+   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012173636 (round 4, square-on) and the round-4 close crops (blind-puis-r4): white pui, small-paned windows (2 x 3), the name small on the glass, dark green door"
   },
   "0363100012175493": {
    "status": "staged",

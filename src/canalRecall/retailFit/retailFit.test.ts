@@ -127,31 +127,45 @@ test('Hirschgebouw: every hand fit lands in its own arch of the shipped GLB', as
   delete (globalThis as { __canalRecallRetailFit?: string }).__canalRecallRetailFit;
 });
 
-test('historic pui: staged brown bars are gated by mode; the host draws no fascia box and is byte-identical when absent', async () => {
+test('historic pui: staged hosts gated by mode and sign; the kit draws no fascia box, a sign host only its name; byte-identical when absent', async () => {
   const { STAGED_PUIS, historicPuiHost } = await import('./historicPui.ts');
   const { retailFrontTris, FRONT } = await import('../retailFront.ts');
   const ids = Object.keys(STAGED_PUIS);
   assert.ok(ids.length >= 14);
-  for (const id of ids) assert.match(STAGED_PUIS[id].source, /RCE monument register/);
   for (const id of ids) {
-    const p = STAGED_PUIS[id], want = p.sign === 'band' ? 'historic-pui' : p.sign === 'glass' ? 'historic-pui-glass' : undefined;
+    const p = STAGED_PUIS[id], drawn = (p.sign === 'band' || p.sign === 'glass' || p.sign === 'neon') && !!p.front;
+    assert.match(p.source, /RCE monument register/);
     assert.ok(p.signSource, `${id} has a sign source`);
-    assert.equal(historicPuiHost(`NL.IMBAG.Pand.${id}`, 'all'), want);
-    assert.equal(historicPuiHost(id, 'off'), undefined);
-    assert.equal(historicPuiHost(id, 'published'), p.status === 'published' ? want : undefined);
+    if (p.front) { assert.ok(p.frontSource, `${id} has a front source`); assert.equal(p.front.sign.kind, p.sign); }
+    assert.equal(!!historicPuiHost(`NL.IMBAG.Pand.${id}`, false, 'all'), drawn);
+    assert.equal(historicPuiHost(id, false, 'off'), undefined);
+    assert.equal(!!historicPuiHost(id, false, 'published'), drawn && p.status === 'published');
+    if (drawn) { assert.equal(historicPuiHost(id, false, 'all')!.mode, 'kit'); assert.equal(historicPuiHost(id, true, 'all')!.mode, 'sign'); }
   }
-  assert.equal(historicPuiHost('0000000000000000', 'all'), undefined);
+  assert.equal(historicPuiHost('0000000000000000', false, 'all'), undefined);
   const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
-  const input = { template: 'brownBar' as const, word: 'CAFE', seed: 'NL.IMBAG.Pand.x' };
+  const input = { template: 'brownBar' as const, word: 'STOOF', seed: 'NL.IMBAG.Pand.x', letters: 0, faces: 10 };
   const plain = retailFrontTris(input, e, 0, 6, 0, 3.2), again = retailFrontTris({ ...input }, e, 0, 6, 0, 3.2);
   assert.equal(JSON.stringify(plain), JSON.stringify(again));
-  const pui = retailFrontTris({ ...input, host: 'historic-pui' }, e, 0, 6, 0, 3.2);
-  // No member wider than 1 m stands out as far as the fascia board's face (FRONT.fasciaOutM) in the band over the pui
-  // (a sign bracket may).
-  const top = Math.min(Math.max(2.8, 3.2), 4.6) - FRONT.fasciaGapM, bottom = top - FRONT.fasciaM;
+  // No member wider than 1 m stands out as far as the template's fascia board (FRONT.fasciaOutM) over the pui.
+  const top = 3.2 - FRONT.fasciaGapM, bottom = top - FRONT.fasciaM;
   const proud = (tris: typeof plain) => tris.filter(t => t.p.every(p => p[2] >= bottom - 1e-6 && p[2] <= top + FRONT.capM + 1e-6) && t.p.some(p => Math.abs(p[1]) >= FRONT.fasciaOutM - 1e-6) && Math.max(...t.p.map(p => p[0])) - Math.min(...t.p.map(p => p[0])) > 1).length;
   assert.ok(proud(plain) > 0, 'the template draws a projecting board');
-  assert.equal(proud(pui), 0, 'the historic pui draws none');
-  const glass = retailFrontTris({ ...input, host: 'historic-pui-glass', letters: 0 }, e, 0, 6, 0, 3.2);
-  assert.equal(proud(glass), 0, 'nor does the glass-lettered one');
+  const stoof = STAGED_PUIS['0363100012171790'].front!;
+  for (const front of [stoof, { ...stoof, sign: { kind: 'glass' as const, ink: '#ffffff' } }, { ...stoof, panes: undefined, sign: { kind: 'band' as const, ink: '#c9a650' } }]) {
+    const kit = retailFrontTris({ ...input, host: { mode: 'kit', front } }, e, 0, 6, 0, 3.2);
+    assert.ok(kit.length > 20, 'the kit pui draws');
+    assert.equal(proud(kit), 0, 'and no fascia board');
+    // Inside the front's span, out no further than a pilaster, from the ground to the storey top.
+    for (const t of kit) for (const p of t.p) { assert.ok(p[0] >= -1e-6 && p[0] <= 6 + 1e-6); assert.ok(p[2] >= -1e-6 && p[2] <= 3.2 + 1e-6); assert.ok(p[1] <= 0.6); }
+    // The glass carries the front's own colours: its frame appears, the template's surround does not.
+    assert.ok(kit.some(t => t.hex === front.frame));
+  }
+  // Small panes: the 3 x 4 grid draws its bars; a sheet front draws none at bar depth.
+  const bars = (tris: typeof plain) => tris.filter(t => t.p.every(p => Math.abs(Math.abs(p[1]) - 0.04) < 1e-6)).length;
+  assert.ok(bars(retailFrontTris({ ...input, host: { mode: 'kit', front: stoof } }, e, 0, 6, 0, 3.2)) > bars(retailFrontTris({ ...input, host: { mode: 'kit', front: { ...stoof, panes: undefined } } }, e, 0, 6, 0, 3.2)));
+  // A pand with its own front: only the name (lettered quads), flush on the wall.
+  const sign = retailFrontTris({ ...input, host: { mode: 'sign', front: stoof } }, e, 0, 6, 0, 3.2);
+  assert.ok(sign.length > 0 && sign.every(t => t.layer !== undefined), 'only lettering');
+  assert.ok(sign.every(t => t.p.every(p => Math.abs(p[1]) <= 0.05)));
 });
