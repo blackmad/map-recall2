@@ -114967,7 +114967,19 @@
       },
       "triangles": 13413,
       "bytes": 194436,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "196a5b81db5a0303",
+        "buildVersion": 2,
+        "bytes": 66324,
+        "triangles": 2825
+      },
+      "lod2": {
+        "sourceHash": "196a5b81db5a0303",
+        "buildVersion": 6,
+        "bytes": 10360,
+        "triangles": 261
+      }
     },
     "de-kroon-rembrandtplein": {
       "id": "de-kroon-rembrandtplein",

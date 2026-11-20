@@ -6420,6 +6420,18 @@
    "triangles": 269
   }
  },
+ "roode-leeuw-damrak": {
+  "sourceHash": "196a5b81db5a0303",
+  "buildVersion": 2,
+  "bytes": 66324,
+  "triangles": 2825,
+  "lod2": {
+   "sourceHash": "196a5b81db5a0303",
+   "buildVersion": 6,
+   "bytes": 10360,
+   "triangles": 261
+  }
+ },
  "de-kroon-rembrandtplein": {
   "sourceHash": "8c01dcec9aaaa2f9",
   "buildVersion": 2,
