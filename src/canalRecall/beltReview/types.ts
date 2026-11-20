@@ -5,7 +5,7 @@
  *
  *   face.json         the block face: street, side, pands left to right                      (integrator / lane B writes)
  *   candidates.json   up to 6 rectified photo candidates per pand, plus the automatic pick    (lane B writes)
- *   description.json  per pand: the resolved HouseSpec (design + provenance per field)        (lane C writes)
+ *   description.json  per pand: readable fields (fields.ts DESC_FIELDS), a source per field    (lane C writes)
  *   picks.json        David's photo per pand, or "none usable"                               (the page writes)
  *   edits.json        per pand field patches on the description, keyed by spec field path    (page + Claude write)
  *   grouping.json     design units and sameAs / basedOn links                                (page + Claude write)
@@ -118,43 +118,58 @@ export interface CandidatesFile {
 
 // -------------------------------------------------------------------------------------------------------- description.json
 
-/** One field's receipt: the HouseSpec `Prov` shape (houseSpec/spec.ts), `source` widened to a string so lane C can name
- *  `based-on`, `face-intent`, `belt-look`, `ahn`, `ordekaart`… without a lockstep type change. */
-export interface FieldProv { source: string; confidence?: number; ref?: string; at?: string | null }
+/**
+ * The format lane C writes (scripts/belt-review/describe.ts, beltReview/description.ts on lane/belt-review-library-20261120):
+ * per pand, readable fields in the DESC_FIELDS vocabulary (fields.ts), each the winning statement with its source.
+ * Sources, strongest first: reviewed > face-intent > own-read > register > survey > based-on > donor > period-default.
+ */
+export interface DescFieldValue {
+  value: unknown;
+  source: string;
+  confidence: number;
+  ref: string;
+  /** Other sources' values that disagree with the winner. */
+  others?: Array<{ value: unknown; source: string; ref: string }>;
+  /** Sources that state the same value. */
+  agree?: string[];
+}
 
 export interface DesignUnitRef {
   id: string;
   /** `ordekaart` (city open data, one polygon per building as designed) or another grouping source. */
   source: string;
-  year?: number;
-  architect?: string;
+  share?: number;
+  orde?: string | null;
+  year?: number | null;
+  architect?: string | null;
+  /** The face's pands in the same unit. */
+  faceMembers?: string[];
 }
+
+/** A field the kit cannot draw (lane C kitCannotDraw): `gapId` points into review-data/belt-review/kit-gaps.json. */
+export interface KitCannotDraw { field: string; value?: unknown; drawnAs?: unknown; why: string; gapId?: string }
 
 export interface PandDescription {
   pandId: string;
-  /** The resolved HouseSpec (`houseSpec/spec.ts` `HouseSpec`): `design`, `facts`, `provenance` keyed by field path
-   *  (`fronts/0/gable`, `palette/wallMaterial`, `facts/facadeYear`; an ancestor key covers the fields below it). */
-  spec: {
-    schemaVersion?: 1;
-    pandId: string;
-    address?: string;
-    design: Record<string, unknown>;
-    facts?: Record<string, unknown>;
-    provenance: Record<string, FieldProv>;
-    schemaLimits?: Array<{ component: string; what: string }>;
-  };
-  /** R4: the spec is the base pand's spec plus these overrides (same meaning as a face intent's `sameAs`). */
-  basedOn?: { pandId: string; overrides?: Record<string, unknown> };
-  /** The ordekaart design unit (or other grouping) this pand belongs to, when known. */
-  designUnit?: DesignUnitRef;
-  /** Kit gaps for this pand: fields the kit cannot draw, as `drawableDesign` reports them (`path`, `value`, `drawnAs`). */
-  ignored?: Array<{ path: string; value: unknown; drawnAs: unknown }>;
+  address?: string;
+  order?: number;
+  fields: Partial<Record<string, DescFieldValue>>;
+  /** Fields no source states. */
+  missing?: string[];
+  group?: { unit?: DesignUnitRef | null; basedOn?: { pandId: string; overrides?: Record<string, unknown> } | null };
+  kitCannotDraw?: KitCannotDraw[];
+  /** Which spec parts fed the description (`published`, `face-intent`…). */
+  specParts?: string[];
+  counts?: Record<string, unknown>;
 }
 
 export interface DescriptionFile {
-  schemaVersion?: 1;
+  version?: number;
   faceId?: string;
+  street?: string;
+  side?: string;
   generatedAt?: string;
+  counts?: Record<string, unknown>;
   pands: PandDescription[];
 }
 
@@ -171,13 +186,13 @@ export interface Entry { revision: number; at: string; by: Actor }
 export interface Pick extends Entry { candidateId: string | null; /** the automatic pick when David chose (for the ledger) */ autoPick: string | null; note?: string }
 export interface PicksFile extends DocHeader { picks: Record<string, Pick> }
 
-/** edits.json: per pand, field patches keyed by spec field path (`fronts/0/gable`, `palette/wallMaterial`). A null value
- *  clears the field back to the description. */
+/** edits.json: per pand, field patches keyed by description field (`crown`, `storeys`; fields.ts DESC_FIELDS) or by a
+ *  spec path (`fronts/0/gable`) for a fix the fields do not cover. `{reset: true}` drops an edit. */
 export interface FieldEdit { value: unknown; note?: string }
 export interface PandEdits extends Entry { fields: Record<string, FieldEdit> }
 export interface EditsFile extends DocHeader { edits: Record<string, PandEdits> }
 
-/** grouping.json: design units and links. An empty `units` list means "as described" (description.json designUnit). */
+/** grouping.json: design units and links. An empty `units` list means "as described" (description.json group.unit). */
 export const GROUPING_LINK_KINDS = ['sameAs', 'basedOn'] as const;
 export type GroupingLinkKind = typeof GROUPING_LINK_KINDS[number];
 export interface GroupingUnit { id: string; pandIds: string[]; source: string; ordekaartId?: string; note?: string }

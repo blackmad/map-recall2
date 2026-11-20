@@ -8,6 +8,7 @@ import {
   type LedgerFile, type Pick as PickEntry, type PinsFile, type PicksFile, type Pin, type Stage, type StateAction, type StateFile,
   type Verdict,
 } from './types.ts';
+import { DESC_FIELDS, LIBRARY_SOURCES } from './fields.ts';
 
 export class ReviewError extends Error {
   constructor(message: string, readonly status = 400) { super(message); }
@@ -190,8 +191,6 @@ export function applyStateAction(state: StateFile, action: StateAction, stageArg
 
 // ------------------------------------------------------------------------------------------------------------ ledger
 
-/** Provenance sources that count as a new read rather than the library (published spec, based-on, face data, register…). */
-export const NEW_READ_SOURCES = new Set(['vision-judge', 'describer', 'new-read', 'belt-review-read']);
 
 export interface LedgerInputs { face: FaceFile; candidates: CandidatesFile | null; description: DescriptionFile | null; picks: PicksFile; edits: EditsFile; grouping: GroupingFile; pins: PinsFile; state: StateFile }
 
@@ -206,7 +205,8 @@ export function deriveLedger(ledger: LedgerFile, x: LedgerInputs): LedgerFile {
     noneUsable: picks.filter(p => p.candidateId === null).length,
   };
   let fromLibrary = 0, fromNewRead = 0;
-  for (const d of x.description?.pands ?? []) for (const prov of Object.values(d.spec.provenance ?? {})) (NEW_READ_SOURCES.has(prov.source) ? fromNewRead++ : fromLibrary++);
+  // Lane C's split: a field from a library source (fields.ts LIBRARY_SOURCES) against a donor, period default or absent field.
+  for (const d of x.description?.pands ?? []) for (const f of DESC_FIELDS) (d.fields?.[f] && LIBRARY_SOURCES.has(d.fields[f]!.source) ? fromLibrary++ : fromNewRead++);
   const edited = Object.values(x.edits.edits).reduce((n, e) => n + Object.keys(e.fields).length, 0);
   ledger.fields = { fromLibrary, fromNewRead, edited };
   const pins = Object.values(x.pins.pins), byTag: Record<string, number> = {}, byKind: Record<string, number> = {};
