@@ -77,6 +77,218 @@
     "system",
     "baysPerStorey"
    ]
+  },
+  {
+   "wallSurfaces": [
+    759,
+    220,
+    221,
+    857,
+    881,
+    737,
+    537,
+    736,
+    431,
+    58,
+    575,
+    826,
+    309,
+    664,
+    659,
+    884,
+    866,
+    573,
+    824,
+    728,
+    832
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "baysPerStorey": 12,
+   "deepBars": true,
+   "ground": "system",
+   "windows": "low",
+   "palette": {
+    "brick": "#4e3e32",
+    "frame": "#2f3236",
+    "stone": "#6d6258"
+   },
+   "blankStoreys": [
+    0
+   ]
+  },
+  {
+   "wallSurfaces": [
+    804,
+    404,
+    563,
+    570,
+    218,
+    377,
+    327,
+    361,
+    396,
+    592,
+    576,
+    100,
+    571,
+    928,
+    929,
+    93,
+    109,
+    807,
+    101,
+    931,
+    813,
+    94,
+    183
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "baysPerStorey": 12,
+   "deepBars": true,
+   "ground": "system",
+   "windows": "low",
+   "palette": {
+    "brick": "#4e3e32",
+    "frame": "#2f3236",
+    "stone": "#6d6258"
+   },
+   "blankStoreys": [
+    0,
+    1
+   ]
+  },
+  {
+   "wallSurfaces": [
+    381,
+    393,
+    394,
+    203,
+    868,
+    105,
+    216,
+    872,
+    875,
+    908,
+    211,
+    606,
+    878,
+    934,
+    179,
+    231,
+    594,
+    654,
+    641,
+    828,
+    896,
+    326,
+    499,
+    809,
+    658,
+    534,
+    627,
+    660,
+    661,
+    877,
+    322,
+    831
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "baysPerStorey": 8,
+   "deepBars": true,
+   "ground": "system",
+   "windows": "low",
+   "palette": {
+    "brick": "#4e3e32",
+    "frame": "#2f3236",
+    "stone": "#6d6258"
+   }
+  },
+  {
+   "wallSurfaces": [
+    61,
+    68,
+    260,
+    521,
+    164,
+    763,
+    701,
+    762,
+    42,
+    244,
+    247,
+    253,
+    268,
+    644,
+    645,
+    317,
+    801,
+    802
+   ],
+   "system": "blank",
+   "storeys": 1,
+   "palette": {
+    "brick": "#6a6b6a"
+   }
+  },
+  {
+   "wallSurfaces": [
+    429,
+    662,
+    593,
+    803,
+    825,
+    422,
+    197,
+    525
+   ],
+   "system": "blank",
+   "storeys": 1,
+   "palette": {
+    "brick": "#4e3e32"
+   }
+  },
+  {
+   "wallSurfaces": [
+    292,
+    706,
+    295,
+    296
+   ],
+   "system": "ribbon-windows",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "deepBars": true,
+   "ground": "blank",
+   "windows": "low",
+   "palette": {
+    "brick": "#4e3e32",
+    "frame": "#2f3236",
+    "stone": "#6d6258"
+   }
+  },
+  {
+   "wallSurfaces": [
+    412,
+    527,
+    538,
+    595,
+    677,
+    717
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "baysPerStorey": 12,
+   "deepBars": true,
+   "ground": "system",
+   "windows": "low",
+   "palette": {
+    "brick": "#4e3e32",
+    "frame": "#2f3236",
+    "stone": "#6d6258"
+   }
   }
  ],
  "otherWalls": "blank",
@@ -96,13 +308,16 @@
   "Modelled as ribbon-windows (windows: low, 12 bays per storey, 3.5 cm proud bars) on both long fronts; the ground storey is blank brick. Simplified: the galleries are drawn as the recessed ribbon bands, not as slabs with railings. Not modelled: the green ground-floor doors, the gallery stair cores, the wavy underside of the SE gallery slabs, shop signs on the corner units. Courtyard and gable walls have no usable photograph and stay blank.",
   "Gate note: ribbon mullions at the default 1.5 cm sit in the audit's z-fight band; this recipe uses the new `deepBars` group option (3.5 cm closed bars).",
   "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 132/132/132, confidence 0.8; roof-flat.ts), the colour the city drew it in before the install.",
-  "roof.pitchedHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 132/132/132, confidence 0.8; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
+  "roof.pitchedHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 132/132/132, confidence 0.8; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73).",
+  "Lane large-buildings-20261120 (2026-11-20): the stepped gallery fronts are separate 3DBAG strips (podium 0-3 m, maisonette bands 3.1-8.3 and 8.3-13.8 m, deck-to-roof fronts 2.9-13.8 m) that were blank red walls; they are now ribbon-window groups 2-4 in the long fronts' palette (inferred from the w02-315/w05-135 fronts). Group 5 is the lavender-grey tile mosaic on the NE/SW podium end walls, #6a6b6a sampled from w09-45 (2019-05-21, overcast). Group 6 the podium fronts in the base brick (inferred). Group 7 De Poort (w12-135, 2020-04-22): gallery storeys over the road, its open portal drawn as a blank ground storey (the kit cannot open a drive-through under a slab here). Group 8 the NW range standing on the deck at 6.4 m (inferred)."
  ],
  "measured": {
   "date": "2026-10-14",
   "groups": [
    0,
-   1
+   1,
+   5
   ]
- }
+ },
+ "budgetTriangles": 28000
 }
