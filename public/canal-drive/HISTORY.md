@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+## Landmark round 6: four released, Raampoort and Banks Mansion rebuilt (2026-11-20, lane/landmarks-r6-20261120 6672a89c3d)
+
+- **Released:** Reinwardt Academie, De Jaren, Handelsbank Singel 250 and Holland Casino. They passed their blinds in landmarks-next and were held only by round scope. Each GLB rebuilt byte-identical, and audit:glb and the openings check pass. Singel 250 was already split from its canal block.
+- **Merged from landmarks-next:** De Ateliers (Stadhouderskade 86) and Park Centraal with the MOMO corner (Stadhouderskade 25).
+- **Politiebureau Raampoort:** the tower reads as a tower from across the water. The shaft rises to 22 m, with a dial and louvred arch on every face and an octagonal slate needle to 28.3 m. Blind 4–2 for the rebuild, then 6–0 for the new tower.
+- **Banks Mansion:** brighter upper walls and bigger dormers; the corner door is dark timber again, which the judge preferred. Blind 2–1.
+- **Houthavenkade 26:** built but held after failing its photo-pair review; the gaps are on the board.
+- **LOD budget:** the lod2 budget rose from 6.5 to 6.75 MB, because the four released models took the set to 6.56 MB.
+
 ## Bent fronts keep whole windows (2026-11-20, lane/fb-facades2-20261120 57ae5e8737, feedback 1a223c)
 
 On fronts that turn every few metres, such as Jacob van Lennepkade r3674867, every 0.75–1.9 m cant or return became its own run with one squeezed bay, so window slivers sat against each turn.

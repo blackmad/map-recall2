@@ -105404,10 +105404,16 @@
       "bytes": 356128,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "04f473be95f21701",
+        "sourceHash": "e3ea98ba0cd335d1",
         "buildVersion": 2,
-        "bytes": 89768,
-        "triangles": 4264
+        "bytes": 93600,
+        "triangles": 4519
+      },
+      "lod2": {
+        "sourceHash": "e3ea98ba0cd335d1",
+        "buildVersion": 6,
+        "bytes": 16460,
+        "triangles": 568
       }
     },
     "banks-mansion": {
@@ -105542,10 +105548,16 @@
       "bytes": 244948,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "d8cc19330265f9aa",
+        "sourceHash": "7bece2342c73897d",
         "buildVersion": 2,
-        "bytes": 64456,
+        "bytes": 64360,
         "triangles": 2908
+      },
+      "lod2": {
+        "sourceHash": "7bece2342c73897d",
+        "buildVersion": 6,
+        "bytes": 8932,
+        "triangles": 326
       }
     },
     "schiller-rembrandtplein": {
@@ -105970,7 +105982,19 @@
       },
       "triangles": 7600,
       "bytes": 110072,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "a97ccea0c49756c8",
+        "buildVersion": 2,
+        "bytes": 40688,
+        "triangles": 1493
+      },
+      "lod2": {
+        "sourceHash": "a97ccea0c49756c8",
+        "buildVersion": 6,
+        "bytes": 7456,
+        "triangles": 152
+      }
     },
     "de-jaren": {
       "id": "de-jaren",
@@ -106132,7 +106156,19 @@
       },
       "triangles": 6440,
       "bytes": 97868,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "62e89606fb5a5146",
+        "buildVersion": 2,
+        "bytes": 40184,
+        "triangles": 1517
+      },
+      "lod2": {
+        "sourceHash": "62e89606fb5a5146",
+        "buildVersion": 6,
+        "bytes": 6224,
+        "triangles": 128
+      }
     },
     "handelsbank-singel-250": {
       "id": "handelsbank-singel-250",
@@ -106441,7 +106477,19 @@
       },
       "triangles": 16756,
       "bytes": 252360,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "78dca899a0ccfd15",
+        "buildVersion": 2,
+        "bytes": 60016,
+        "triangles": 2763
+      },
+      "lod2": {
+        "sourceHash": "78dca899a0ccfd15",
+        "buildVersion": 6,
+        "bytes": 10492,
+        "triangles": 331
+      }
     },
     "holland-casino-amsterdam": {
       "id": "holland-casino-amsterdam",
@@ -107454,7 +107502,19 @@
       },
       "triangles": 6346,
       "bytes": 96044,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "208f869dd6af5267",
+        "buildVersion": 2,
+        "bytes": 39408,
+        "triangles": 1437
+      },
+      "lod2": {
+        "sourceHash": "208f869dd6af5267",
+        "buildVersion": 6,
+        "bytes": 15748,
+        "triangles": 616
+      }
     },
     "port-van-cleve": {
       "id": "port-van-cleve",
@@ -113059,17 +113119,17 @@
       "bytes": 142316,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "4c7a46296c749727",
+        "sourceHash": "3d1249a24a77dfed",
         "buildVersion": 2,
-        "bytes": 35932,
-        "triangles": 1563
+        "bytes": 28564,
+        "triangles": 1182
       },
       "held": true,
       "lod2": {
-        "sourceHash": "4c7a46296c749727",
+        "sourceHash": "3d1249a24a77dfed",
         "buildVersion": 6,
-        "bytes": 6972,
-        "triangles": 187
+        "bytes": 6012,
+        "triangles": 133
       }
     },
     "schutterstoren": {
@@ -113968,7 +114028,19 @@
       "triangles": 15449,
       "bytes": 228656,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "held": true,
+      "lod1": {
+        "sourceHash": "27b870dee8dfeae6",
+        "buildVersion": 2,
+        "bytes": 67148,
+        "triangles": 2816
+      },
+      "lod2": {
+        "sourceHash": "27b870dee8dfeae6",
+        "buildVersion": 6,
+        "bytes": 17108,
+        "triangles": 585
+      }
     },
     "park-centraal-stadhouderskade": {
       "id": "park-centraal-stadhouderskade",
@@ -114255,7 +114327,19 @@
       },
       "triangles": 30272,
       "bytes": 394296,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "522dd78c0786eaae",
+        "buildVersion": 2,
+        "bytes": 121980,
+        "triangles": 6635
+      },
+      "lod2": {
+        "sourceHash": "522dd78c0786eaae",
+        "buildVersion": 6,
+        "bytes": 18684,
+        "triangles": 605
+      }
     },
     "de-ateliers": {
       "id": "de-ateliers",
@@ -114628,7 +114712,19 @@
       },
       "triangles": 12339,
       "bytes": 168048,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "d52d59fcbd4ebc2f",
+        "buildVersion": 2,
+        "bytes": 55888,
+        "triangles": 2581
+      },
+      "lod2": {
+        "sourceHash": "d52d59fcbd4ebc2f",
+        "buildVersion": 6,
+        "bytes": 9556,
+        "triangles": 269
+      }
     }
   }
 }

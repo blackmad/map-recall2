@@ -6169,27 +6169,27 @@
   }
  },
  "politiebureau-raampoort": {
-  "sourceHash": "04f473be95f21701",
+  "sourceHash": "e3ea98ba0cd335d1",
   "buildVersion": 2,
-  "bytes": 89768,
-  "triangles": 4264,
+  "bytes": 93600,
+  "triangles": 4519,
   "lod2": {
-   "sourceHash": "04f473be95f21701",
+   "sourceHash": "e3ea98ba0cd335d1",
    "buildVersion": 6,
-   "bytes": 16012,
-   "triangles": 546
+   "bytes": 16460,
+   "triangles": 568
   }
  },
  "banks-mansion": {
-  "sourceHash": "d8cc19330265f9aa",
+  "sourceHash": "7bece2342c73897d",
   "buildVersion": 2,
-  "bytes": 64456,
+  "bytes": 64360,
   "triangles": 2908,
   "lod2": {
-   "sourceHash": "d8cc19330265f9aa",
+   "sourceHash": "7bece2342c73897d",
    "buildVersion": 6,
-   "bytes": 9036,
-   "triangles": 325
+   "bytes": 8932,
+   "triangles": 326
   }
  },
  "schiller-rembrandtplein": {
@@ -6202,6 +6202,54 @@
    "buildVersion": 6,
    "bytes": 10420,
    "triangles": 271
+  }
+ },
+ "reinwardt-academie": {
+  "sourceHash": "a97ccea0c49756c8",
+  "buildVersion": 2,
+  "bytes": 40688,
+  "triangles": 1493,
+  "lod2": {
+   "sourceHash": "a97ccea0c49756c8",
+   "buildVersion": 6,
+   "bytes": 7456,
+   "triangles": 152
+  }
+ },
+ "de-jaren": {
+  "sourceHash": "62e89606fb5a5146",
+  "buildVersion": 2,
+  "bytes": 40184,
+  "triangles": 1517,
+  "lod2": {
+   "sourceHash": "62e89606fb5a5146",
+   "buildVersion": 6,
+   "bytes": 6224,
+   "triangles": 128
+  }
+ },
+ "handelsbank-singel-250": {
+  "sourceHash": "78dca899a0ccfd15",
+  "buildVersion": 2,
+  "bytes": 60016,
+  "triangles": 2763,
+  "lod2": {
+   "sourceHash": "78dca899a0ccfd15",
+   "buildVersion": 6,
+   "bytes": 10492,
+   "triangles": 331
+  }
+ },
+ "holland-casino-amsterdam": {
+  "sourceHash": "208f869dd6af5267",
+  "buildVersion": 2,
+  "bytes": 39408,
+  "triangles": 1437,
+  "lod2": {
+   "sourceHash": "208f869dd6af5267",
+   "buildVersion": 6,
+   "bytes": 15748,
+   "triangles": 616
   }
  },
  "de-mirandabad": {
@@ -6313,15 +6361,15 @@
   }
  },
  "room-mate-aitana": {
-  "sourceHash": "4c7a46296c749727",
+  "sourceHash": "3d1249a24a77dfed",
   "buildVersion": 2,
-  "bytes": 35932,
-  "triangles": 1563,
+  "bytes": 28564,
+  "triangles": 1182,
   "lod2": {
-   "sourceHash": "4c7a46296c749727",
+   "sourceHash": "3d1249a24a77dfed",
    "buildVersion": 6,
-   "bytes": 6972,
-   "triangles": 187
+   "bytes": 6012,
+   "triangles": 133
   }
  },
  "schutterstoren": {
@@ -6334,6 +6382,42 @@
    "buildVersion": 6,
    "bytes": 6840,
    "triangles": 212
+  }
+ },
+ "houthavenkade-26": {
+  "sourceHash": "27b870dee8dfeae6",
+  "buildVersion": 2,
+  "bytes": 67148,
+  "triangles": 2816,
+  "lod2": {
+   "sourceHash": "27b870dee8dfeae6",
+   "buildVersion": 6,
+   "bytes": 17108,
+   "triangles": 585
+  }
+ },
+ "park-centraal-stadhouderskade": {
+  "sourceHash": "522dd78c0786eaae",
+  "buildVersion": 2,
+  "bytes": 121980,
+  "triangles": 6635,
+  "lod2": {
+   "sourceHash": "522dd78c0786eaae",
+   "buildVersion": 6,
+   "bytes": 18684,
+   "triangles": 605
+  }
+ },
+ "de-ateliers": {
+  "sourceHash": "d52d59fcbd4ebc2f",
+  "buildVersion": 2,
+  "bytes": 55888,
+  "triangles": 2581,
+  "lod2": {
+   "sourceHash": "d52d59fcbd4ebc2f",
+   "buildVersion": 6,
+   "bytes": 9556,
+   "triangles": 269
   }
  }
 }
