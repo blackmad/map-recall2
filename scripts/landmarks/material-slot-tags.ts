@@ -85,6 +85,13 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     bronze: {slot: 'paint', why: 'black-painted ironwork: balcony railings, terrace mullions and rail, letter frame, flag poles'},
     canopyGlass: {slot: 'glass', why: 'leaded coloured upper lights of the first-floor windows (w02-134)'},
   },
+  'de-kroon-rembrandtplein': {
+    sandstone: {slot: 'stucco', why: 'white-painted render of the plein front, the pavilion and the tower (w02-176, w05-177)'},
+    concrete: {slot: 'bitumen', why: 'flat roofs of the pavilion and the blocks behind'},
+    ochre: {slot: 'door', why: 'oak side door at the west end of the arcade (w02-176)'},
+    canopyGlass: {slot: 'glass', why: 'the winter garden glazing, reflecting the sky (w02-176)'},
+    bronze: {slot: 'paint', why: 'black-painted cast iron: balcony rails, roof rail and finials, letters, the entrance name board'},
+  },
   'port-van-cleve': {
     brick: {slot: 'brick', measured: '#5e342b', why: 'deep red-brown brick of the hotel front in shade (nzv-0, TMX7316010203-001900_pano_0006_000054; blind review 2026-11-15 read #5a3830-#6b4236; #7e4a3e and #6e3e34 still drew orange-red in the lit game frame)'},
     sandstone: {slot: 'stone', measured: '#776b5e', why: 'weathered buff-grey sandstone bands, pediments, surrounds and pinnacles: nzv-0 reads #5a5654-#64615e overcast, a blind review #8f8170 (2026-11-15: #958a78 and #7a705f drew cream lit, the neutral #6b6560 read cool mauve-grey)'},
