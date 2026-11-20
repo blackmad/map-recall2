@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Flevohuis, Kramatplantsoen 203-263 (2026-11-20, round 20261120i)
+
+- The care home and slab next to Flevopoort (BAG pand 087570; lane/lm-kramatplantsoen-203-20261120 e11abdf0a9), on the 3DBAG shell: the U-shaped three-storey buff care home with piers every 6.3 m and two rows of drop-arm awnings, the 26 m slab (buff below, red brick above) with slot loggias and balcony stacks, a glazed band storey and lobby canopy, two white stair towers, the low east wing and the glass link bridge to Flevopoort. Blind 4–0 against the generic block, absolute PASS; colours toned after the blind (buff read mustard, red too orange). New kit: `landmarks/dropArmAwning.ts` (`fabricAwning`) and `slotLoggia` in modern-front-kit. Open: deeper concrete balconies, the rounded care-home corner, wide white-framed lights, stair flights behind glass, mesh railings, FLEVOHUIS letters.
+- Integrator trap: a rebuild loop of the form `for c in "cmd args"; do $c; done` ran nothing in round h (zsh does not split `$c`, every step exited 127) and the gate passed on stale bundles; the bundles were rebuilt and the gate re-run before that push.
+
 ## Magna Plaza's shops land on the rebuilt model; blade signs re-measured (2026-11-20, round 20261120h)
 
 - Retail fit round 8 (lane/retail-fit-20261120 8abfee3c9e). After the Magna Plaza rebuild only 2 of its 24 shop reads landed; `stage-openings.ts --maxSill=2.9 --maxTop=7.5` stages 38 openings on the GLB's own glass (shop panes 2.75–7.40 m, pavilion arches 0.75–7.35 m) and all 24 land (`scripts/retail-fit/match-reads.ts` counts them with the fitter's own matcher). The glass retag patch is retired. Blind against main 2–0.
