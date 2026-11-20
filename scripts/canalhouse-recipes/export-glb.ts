@@ -5,6 +5,7 @@ import * as T from 'three';
 import {Document, NodeIO} from '@gltf-transform/core';
 import {dedup, prune, weld, quantize} from '@gltf-transform/functions';
 import {KHRMeshQuantization} from '@gltf-transform/extensions';
+import {WINDOW_GRID_BAY_M} from '../../src/canalRecall/look/windowGridGlsl.ts';
 import {canalhouseRoofUvs, canalhouseRoofMaterialPresets, type CanalhouseRoofMaterialPreset} from '../../src/canalRecall/canalhouseRoofMaterials.ts';
 
 export interface CanalhouseGlbOptions {
@@ -34,6 +35,43 @@ export function metreBoxUvs(positions: ArrayLike<number>): number[] {
       if (n[1] >= n[0] && n[1] >= n[2]) uv.push(p[0], p[2]);
       else if (n[0] >= n[2]) uv.push(p[2], p[1]);
       else uv.push(p[0], p[1]);
+    }
+  }
+  return uv;
+}
+/**
+ * Wall-aligned metre UVs for the shader window grid (`windowGrid` walls; lane large-buildings-20261120, round 4).
+ * metreBoxUvs projects each triangle on its dominant world axis, so on a wall that is not axis-aligned the grid's bay
+ * pitch stretches by 1/cos of the wall's angle (3.0 m bays drawn up to 4.2 m wide), its phase is pinned to the world
+ * origin (windows straddle corners and wall ends), and a wall near 45 degrees can split between the x and z projections
+ * triangle by triangle. Here u runs along each wall plane's own horizontal tangent (left to right seen from outside),
+ * shifted so whole `bayM` bays sit centred between the plane's ends, and v is the height. Triangles that are not walls
+ * (|n.y| > 0.5) keep the box projection.
+ */
+export function wallGridUvs(positions: ArrayLike<number>, bayM: number): number[] {
+  const tris = positions.length / 9, uv = metreBoxUvs(positions);
+  const planeOf: (string | null)[] = [], tangent: [number, number][] = [], ext = new Map<string, [number, number]>();
+  for (let t = 0; t < tris; t++) {
+    const i = t * 9, ax = positions[i], ay = positions[i + 1], az = positions[i + 2];
+    const e1 = [positions[i + 3] - ax, positions[i + 4] - ay, positions[i + 5] - az], e2 = [positions[i + 6] - ax, positions[i + 7] - ay, positions[i + 8] - az];
+    const nx = e1[1] * e2[2] - e1[2] * e2[1], ny = e1[2] * e2[0] - e1[0] * e2[2], nz = e1[0] * e2[1] - e1[1] * e2[0];
+    const len = Math.hypot(nx, ny, nz), h = Math.hypot(nx, nz);
+    if (len < 1e-9 || Math.abs(ny) / len > 0.5 || h < 1e-9) { planeOf.push(null); tangent.push([0, 0]); continue; }
+    const hx = nx / h, hz = nz / h, tx = hz, tz = -hx;
+    // one plane per outward bearing (0.5 degree) and offset (5 cm)
+    const key = `${Math.round(Math.atan2(hx, hz) * 360 / Math.PI)}:${Math.round((ax * hx + az * hz) * 20)}`;
+    planeOf.push(key); tangent.push([tx, tz]);
+    const e = ext.get(key) ?? [Infinity, -Infinity];
+    for (let k = 0; k < 3; k++) { const s = positions[i + k * 3] * tx + positions[i + k * 3 + 2] * tz; e[0] = Math.min(e[0], s); e[1] = Math.max(e[1], s); }
+    ext.set(key, e);
+  }
+  for (let t = 0; t < tris; t++) {
+    const key = planeOf[t]; if (key === null) continue;
+    const [lo, hi] = ext.get(key)!, [tx, tz] = tangent[t], off = ((hi - lo) % bayM) / 2;
+    for (let k = 0; k < 3; k++) {
+      const i = t * 9 + k * 3;
+      uv[(t * 3 + k) * 2] = positions[i] * tx + positions[i + 2] * tz - lo - off;
+      uv[(t * 3 + k) * 2 + 1] = positions[i + 1];
     }
   }
   return uv;
@@ -88,6 +126,8 @@ export async function canalhouseGroupToGlb(id: string, group: T.Object3D, option
   });
   for (const [key, bucket] of buckets) {
     const c = bucket.material.color;
+    // shader window grid walls: wall-aligned, bay-centred metre UVs over the whole bucket (wallGridUvs)
+    if (options.metreUvs && bucket.material.userData?.windowGrid === true && !bucket.roofPreset && bucket.slot !== 'glass' && bucket.surface !== 'roof') bucket.uvs = wallGridUvs(bucket.positions, WINDOW_GRID_BAY_M);
     const material = doc.createMaterial(key).setExtras({canalhouseSurface: bucket.surface, ...(bucket.slot ? {materialSlot: bucket.slot, tint: '#' + c.getHexString(), ...(bucket.material.userData?.tintSource === 'measured' ? {tintSource: 'measured', ...(bucket.material.userData?.tintWhitePoint ? {tintWhitePoint: bucket.material.userData.tintWhitePoint} : {})} : {}), ...(bucket.material.userData?.windowGrid === true ? {windowGrid: true} : {})} : {})}).setBaseColorFactor([c.r, c.g, c.b, 1]).setMetallicFactor(0).setRoughnessFactor(.9);
     const primitive = doc.createPrimitive().setMaterial(material)
       .setAttribute('POSITION', doc.createAccessor().setType('VEC3').setArray(Float32Array.from(bucket.positions)).setBuffer(buffer))
