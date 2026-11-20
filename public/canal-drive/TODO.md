@@ -51,7 +51,7 @@ Feedback fixes 2026-11-19 (#396): all five lanes are merged (see HISTORY). Still
 - e41668: the repeating facade on the De Vaart slab; it is unknown which path paints its windows.
 - 8022e3: roof edge definition (parapet line or AO).
 - Ground detector top 10 around Centraal (rail-bed and paving overlaps); the Sixhaven marina basin is missing from the water layer.
-- Review and publish the staged street-art photos (`staging/street-art-commons.json`, 69; five flagged entries).
+- Street-art cards: 19 of the newly published photos sit on points with no text, artist or year, and `artHasSubstance` (`poiCardPolicy.ts`) ignores `i`, so tapping their label shows no card. Also, cards carry no per-photo credit line for the CC BY-SA photos (credit is in credits.html for now). Replace "Why not" (panorama, small figure) once Commons has a photo.
 - 284 near-black measured modern walls to check.
 
 

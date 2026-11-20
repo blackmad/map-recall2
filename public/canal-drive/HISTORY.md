@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## Street-art photos reviewed and published (2026-11-20, lane/street-art-review-20261120 cb5a3b313a)
+
+69 of the 70 staged photos are published: 65 as staged, and 4 swapped for a photo from the same Commons category that shows the work itself, not its name plaque, info sign, unveiling crowd or a road crossing. The rejected one is Cirkels in the Rembrandtpark, a speck in a meadow with no closer photo on Commons.
+- Every published photo is CC0, public domain, CC BY or CC BY-SA, with author, licence and source page.
+- `streetArtPhotoReview.ts` refuses to publish an unreviewed, double-reviewed, closed-licence or uncredited entry. `npm run publish:street-art-photos` writes the `street-art-commons.json` sidecar and fills `i` on the 69 points.
+- `check-street-art.ts` pins Troost as a named regression: the statue, not the plaque.
+- The review list is `scripts/data/street-art-photo-review.json`.
+
 ## Bridge feedback fixes; retail pass merged behind its flags (2026-11-19, #396)
 
 - **Bridges** (lane/fb-bridges-20261119 425520752d). Four new ground options, all on by default and listed in `groundFixes.ts` (`?name=0` turns each off):
