@@ -99,6 +99,11 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     slate: {slot: 'roofTile', why: 'dark grey tiled roofs (w03-21, w04-292)'},
     dark: {slot: 'door', why: 'green-black school door (w06-112)'},
   },
+  'oranjekerk-pijp': {
+    ochre: {slot: 'brick', why: 'palette name only: the redder brick of the window arches and reveals (w01-256, w07-255)'},
+    slate: {slot: 'roofTile', why: 'red-brown tiled roofs of the church, porch and tower (w06-255, w14-122)'},
+    dark: {slot: 'door', why: 'the dark church doors (w07-255, w06-255)'},
+  },
   'port-van-cleve': {
     brick: {slot: 'brick', measured: '#5e342b', why: 'deep red-brown brick of the hotel front in shade (nzv-0, TMX7316010203-001900_pano_0006_000054; blind review 2026-11-15 read #5a3830-#6b4236; #7e4a3e and #6e3e34 still drew orange-red in the lit game frame)'},
     sandstone: {slot: 'stone', measured: '#776b5e', why: 'weathered buff-grey sandstone bands, pediments, surrounds and pinnacles: nzv-0 reads #5a5654-#64615e overcast, a blind review #8f8170 (2026-11-15: #958a78 and #7a705f drew cream lit, the neutral #6b6560 read cool mauve-grey)'},
