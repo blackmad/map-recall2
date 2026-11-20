@@ -1,0 +1,31 @@
+{
+ "id": "spiegelhof",
+ "name": "Spiegelhof, Nieuwe Spiegelstraat",
+ "heightMetres": 28.0,
+ "bagYear": 1905,
+ "galleryView": {
+  "theta": 0.55,
+  "phi": 1.05
+ },
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012167897 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/spiegelhof-footprints.json, bag-shell-prepare.ts); elevations read from Gemeente Amsterdam panoramas TMX7316010203-001900_pano_0005_000035, TMX7316010203-000714_pano_0001_001799, TMX7316010203-002033_pano_0001_000308, TMX7316010203-002537_pano_0002_000703, TMX7316010203-002306_pano_0002_000533, TMX7316010203-002984_pano_0004_000035 and b_20241203_0939_Track09_Sphere_00425 (CC BY 4.0); rijksmonument 518340 register text.",
+ "materialOverrides": {
+  "brick": "#8a4c3e",
+  "ochre": "#7d5044",
+  "concrete": "#85827c",
+  "sandstone": "#cbc3b0",
+  "stone": "#d6d0c2",
+  "slate": "#4f5257",
+  "frame": "#ebe7dc",
+  "glass": "#2f363b",
+  "dark": "#26292b",
+  "bronze": "#2b2d2d"
+ },
+ "attribution": {
+  "title": "Spiegelhof, Nieuwe Spiegelstraat 3-17 / Keizersgracht 555, Amsterdam (1917-1919 office and arcade wing)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001900_pano_0005_000035/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012167897 (CC0): the stone-and-brick office at the Keizersgracht corner with its rusticated granite base, arched barred cellar lights, fluted pilasters, attic storey, mutule cornice, two pediment risalits, chamfered corner and balustrade with urns; the entrance portico with its pediment and ball finials; the Nieuwe Spiegelstraat wing with its colonnaded shop arcade, white-framed casements, cornice, the central loggia pavilion and the south pavilion under pediments, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

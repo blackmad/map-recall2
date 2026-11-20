@@ -115770,6 +115770,291 @@
       "triangles": 25375,
       "bytes": 292992,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "spiegelhof": {
+      "id": "spiegelhof",
+      "name": "Spiegelhof, Nieuwe Spiegelstraat",
+      "modelUrl": "./models/spiegelhof.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012167897"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89006357,
+          52.36469901
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 84.1,
+        "widthMetres": 49.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.89006357,
+          52.36469901
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012167897 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/spiegelhof-footprints.json, bag-shell-prepare.ts); elevations read from Gemeente Amsterdam panoramas TMX7316010203-001900_pano_0005_000035, TMX7316010203-000714_pano_0001_001799, TMX7316010203-002033_pano_0001_000308, TMX7316010203-002537_pano_0002_000703, TMX7316010203-002306_pano_0002_000533, TMX7316010203-002984_pano_0004_000035 and b_20241203_0939_Track09_Sphere_00425 (CC BY 4.0); rijksmonument 518340 register text."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 28,
+      "galleryView": {
+        "theta": 0.55,
+        "phi": 1.05
+      },
+      "bagYear": 1905,
+      "materialOverrides": {
+        "brick": "#8a4c3e",
+        "ochre": "#7d5044",
+        "concrete": "#85827c",
+        "sandstone": "#cbc3b0",
+        "stone": "#d6d0c2",
+        "slate": "#4f5257",
+        "frame": "#ebe7dc",
+        "glass": "#2f363b",
+        "dark": "#26292b",
+        "bronze": "#2b2d2d"
+      },
+      "attribution": {
+        "title": "Spiegelhof, Nieuwe Spiegelstraat 3-17 / Keizersgracht 555, Amsterdam (1917-1919 office and arcade wing)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001900_pano_0005_000035/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012167897 (CC0): the stone-and-brick office at the Keizersgracht corner with its rusticated granite base, arched barred cellar lights, fluted pilasters, attic storey, mutule cornice, two pediment risalits, chamfered corner and balustrade with urns; the entrance portico with its pediment and ball finials; the Nieuwe Spiegelstraat wing with its colonnaded shop arcade, white-framed casements, cornice, the central loggia pavilion and the south pavilion under pediments, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8904616,
+              52.36506
+            ],
+            [
+              4.8904499,
+              52.3650616
+            ],
+            [
+              4.8904576,
+              52.3650828
+            ],
+            [
+              4.8903301,
+              52.365125
+            ],
+            [
+              4.8902907,
+              52.365138
+            ],
+            [
+              4.8902885,
+              52.3651356
+            ],
+            [
+              4.8902577,
+              52.3650996
+            ],
+            [
+              4.8902401,
+              52.3650813
+            ],
+            [
+              4.8901572,
+              52.364986
+            ],
+            [
+              4.890145,
+              52.3649724
+            ],
+            [
+              4.8901173,
+              52.364942
+            ],
+            [
+              4.890095,
+              52.3649165
+            ],
+            [
+              4.8900732,
+              52.3648899
+            ],
+            [
+              4.8900609,
+              52.3648755
+            ],
+            [
+              4.8899749,
+              52.3647765
+            ],
+            [
+              4.8899585,
+              52.3647563
+            ],
+            [
+              4.8899035,
+              52.3646932
+            ],
+            [
+              4.8898992,
+              52.3646885
+            ],
+            [
+              4.8899023,
+              52.3646875
+            ],
+            [
+              4.8898719,
+              52.3646531
+            ],
+            [
+              4.8898931,
+              52.364646
+            ],
+            [
+              4.8898977,
+              52.3646445
+            ],
+            [
+              4.8898354,
+              52.3645688
+            ],
+            [
+              4.8898326,
+              52.3645697
+            ],
+            [
+              4.8897571,
+              52.3644864
+            ],
+            [
+              4.88976,
+              52.3644855
+            ],
+            [
+              4.8897386,
+              52.3644615
+            ],
+            [
+              4.8897577,
+              52.3644352
+            ],
+            [
+              4.8898017,
+              52.3644286
+            ],
+            [
+              4.889801,
+              52.3644266
+            ],
+            [
+              4.8899518,
+              52.3644062
+            ],
+            [
+              4.8899525,
+              52.3644082
+            ],
+            [
+              4.8899614,
+              52.364407
+            ],
+            [
+              4.8900024,
+              52.3644014
+            ],
+            [
+              4.8901477,
+              52.3643818
+            ],
+            [
+              4.8901842,
+              52.3644865
+            ],
+            [
+              4.8901656,
+              52.364489
+            ],
+            [
+              4.8901764,
+              52.3645198
+            ],
+            [
+              4.890195,
+              52.3645173
+            ],
+            [
+              4.8902228,
+              52.3645964
+            ],
+            [
+              4.8901437,
+              52.3646068
+            ],
+            [
+              4.890134,
+              52.3646101
+            ],
+            [
+              4.8901385,
+              52.3646156
+            ],
+            [
+              4.8901623,
+              52.3646139
+            ],
+            [
+              4.890184,
+              52.364641
+            ],
+            [
+              4.8901075,
+              52.3646667
+            ],
+            [
+              4.8901481,
+              52.3647118
+            ],
+            [
+              4.8904616,
+              52.36506
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -23.418277740478516,
+          -2.3841858265427618e-8,
+          -48.742000579833984
+        ],
+        "max": [
+          27.384000778198242,
+          28.03700065612793,
+          36.53622055053711
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89006357,
+          52.36469901
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 85.2782211303711,
+        "heightMetres": 28.037000679969786,
+        "depthMetres": 50.80227851867676,
+        "depthCoverage": 1.0221786422268966
+      },
+      "triangles": 33306,
+      "bytes": 456932,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

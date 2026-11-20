@@ -1,0 +1,409 @@
+{
+ "schemaVersion": 1,
+ "id": "spiegelhof",
+ "pand": "0363100012167897",
+ "brief": "scripts/landmarks/spiegelhof-brief.md",
+ "signature": [
+  "wing-arcade",
+  "central-loggia-pavilion",
+  "nss-pediment-risalit",
+  "entrance-portico",
+  "granite-base",
+  "balustrade-urns",
+  "kg-pediment-risalit"
+ ],
+ "walls": [
+  {
+   "tag": "w01-298",
+   "bearing": 298,
+   "lengthM": 56.6,
+   "centre": [
+    4.8900975,
+    52.3649155
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0005_000035",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-arcade",
+     "kind": "colonnade",
+     "where": "the whole Nieuwe Spiegelstraat wing at street level: round grey stone columns on base blocks before square stone piers, shops 2.2 m back, square brick piers at the pavilion lines",
+     "approxSizeM": [
+      56.0,
+      3.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0005_000035",
+     "how": "one holed-wall cut per section 2.2 m deep (zone-wall-kit), stone-coloured ceiling and reveals, glazed shopfronts with dark mullions at the back; per inner bay line a 10-sided column with base and capital blocks before a square pier; brick piers at the pavilion lines"
+    },
+    {
+     "id": "wing-entablature",
+     "kind": "other",
+     "where": "light stone entablature band over the arcade, 3.75-4.55 m",
+     "approxSizeM": [
+      56.0,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0005_000035",
+     "how": "stone band and crown slab per section"
+    },
+    {
+     "id": "wing-windows",
+     "kind": "window-shape",
+     "where": "two storeys of white-framed casements with a transom, one per bay (8 + 3 + 8 + 2 bays), stone sills",
+     "approxSizeM": [
+      1.3,
+      1.85
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000714_pano_0001_001799",
+     "how": "0.18 m deep cuts with white reveals, white border, transom and mullion bars, stone sills; the photo's 2020 vs 2018 rectifications disagree on pane splits, one transom kept"
+    },
+    {
+     "id": "wing-cornice",
+     "kind": "other",
+     "where": "stone cornice under the roof terrace at 11.6-12.25 m, running on as a band across both pavilions",
+     "approxSizeM": [
+      56.0,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0005_000035",
+     "how": "fascia and projecting crown slabs per section"
+    },
+    {
+     "id": "central-loggia-pavilion",
+     "kind": "other",
+     "where": "central pavilion (about 10 m, 3 bays) rising a storey over the cornice: three round-arched loggia openings with a light column in each, a pediment with an oculus over them",
+     "approxSizeM": [
+      10.1,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000714_pano_0001_001799",
+     "how": "the 3DBAG gable flattened at 15.8 m; three round-headed cuts 1.5 m deep (brick spandrels), a column and balustrade panel in each, crown cornice, pediment (tympanum, raking cornices, oculus panel) with a slate gable roof behind"
+    },
+    {
+     "id": "south-pavilion",
+     "kind": "other",
+     "where": "south end pavilion over two bays: a round-arched window in white frames in the top storey and a pediment",
+     "approxSizeM": [
+      4.8,
+      5.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002033_pano_0001_000308",
+     "how": "0.3 m round-headed cut glazed, white arch band, mullions and transom, crown cornice, pediment 16.0-17.4 m with a gable roof; the photo's paired small windows beside the arch are not drawn"
+    },
+    {
+     "id": "terrace-roof",
+     "kind": "other",
+     "where": "set-back roof storey behind a glass railing over the cornice",
+     "approxSizeM": [
+      40.0,
+      3.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0005_000035",
+     "how": "the 3DBAG set-back walls drawn in the roof's slate grey; the glass railing is left out"
+    },
+    {
+     "id": "spiegelhof-banners",
+     "kind": "sign",
+     "where": "hanging SPIEGELHOF / SI banners and shop signs under the entablature",
+     "approxSizeM": [
+      1.2,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001900_pano_0005_000035",
+     "skip": {
+      "reason": "temporary",
+      "note": "operator banners and shop signs change; the recipe draws no name lettering"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-119",
+   "bearing": 119,
+   "lengthM": 49.9,
+   "centre": [
+    4.890287,
+    52.3648655
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-193",
+   "bearing": 193,
+   "lengthM": 13.6,
+   "centre": [
+    4.8900525,
+    52.364397
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002984_pano_0004_000035",
+   "capturedAt": "2022",
+   "checked": true,
+   "items": [
+    {
+     "id": "kg-east-bays",
+     "kind": "other",
+     "where": "four bays east of the Keizersgracht risalit: granite base with arched barred cellar lights and tall ground windows, brick upper storeys between fluted stone pilasters, stone attic, frieze, cornice",
+     "approxSizeM": [
+      13.6,
+      19.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002984_pano_0004_000035",
+     "how": "officeFront (granite skin, rusticated courses split round the openings, segment-arched lights with bars, 18-pane sashes, pilasters with fluted feet and capitals, attic windows, relief panels on the pilaster stubs, frieze, mutule cornice) on ring edge 16, t 10.5-24.1"
+    }
+   ],
+   "note": "the 2016 main crop is aimed at Keizersgracht 565-567; the 2022 view shows this front"
+  },
+  {
+   "tag": "w04-299",
+   "bearing": 299,
+   "lengthM": 10.6,
+   "centre": [
+    4.8897975,
+    52.3645305
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002537_pano_0002_000703",
+   "capturedAt": "2022-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "nss-pediment-risalit",
+     "kind": "other",
+     "where": "Nieuwe Spiegelstraat risalit at the corner: three bays between quoins, pediment with mutule cornice over a frieze and an attic storey",
+     "approxSizeM": [
+      10.6,
+      22.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0002_000703",
+     "how": "officeFront with quoins on ring edge 10 (the scan's 1 m notch at 11.7 m filled to the eaves) and a pediment 20.05-22.7 m with raking cornices and a slate roof behind"
+    },
+    {
+     "id": "attic-reliefs",
+     "kind": "relief",
+     "where": "carved panels on the attic pilaster stubs between the top-storey windows",
+     "approxSizeM": [
+      0.5,
+      1.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002537_pano_0002_000703",
+     "how": "a lighter stone raised panel on each stub; the carving is not drawn"
+    },
+    {
+     "id": "granite-base",
+     "kind": "other",
+     "where": "two-storey rusticated grey granite base round the whole office: shallow segment-arched cellar lights with iron bars, tall ground windows in dark frames, a base cornice",
+     "approxSizeM": [
+      45.0,
+      7.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0002_000703",
+     "how": "granite skin with 0.47 m course strips split round each opening, segment-arched glass with bars and voussoir bands, dark-framed ground sashes, plinth and two-step cornice"
+    },
+    {
+     "id": "chamfered-corner",
+     "kind": "other",
+     "where": "the corner between the Nieuwe Spiegelstraat and Keizersgracht fronts, three short facets of one bay",
+     "approxSizeM": [
+      9.3,
+      20.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0002_000703",
+     "how": "officeFront per facet (ring edges 12-14), one bay each; the scan's 0.3 m ledge at 8.1 m on edge 12 brought forward to the eaves"
+    },
+    {
+     "id": "pilasters",
+     "kind": "other",
+     "where": "stone pilasters through the two brick storeys, fluted lower third, moulded capitals",
+     "approxSizeM": [
+      0.75,
+      6.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0002_000703",
+     "how": "stone slab with five shallow flute bars on its foot, a capital and abacus slab"
+    }
+   ]
+  },
+  {
+   "tag": "w05-193",
+   "bearing": 193,
+   "lengthM": 10.5,
+   "centre": [
+    4.8898795,
+    52.3644185
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002306_pano_0002_000533",
+   "capturedAt": "2021",
+   "checked": true,
+   "items": [
+    {
+     "id": "kg-pediment-risalit",
+     "kind": "other",
+     "where": "Keizersgracht risalit at the corner: three bays between quoins under a pediment",
+     "approxSizeM": [
+      10.5,
+      22.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0002_000533",
+     "how": "officeFront with quoins on ring edge 16 t 0-10.5 and a pediment 20.05-22.6 m"
+    }
+   ],
+   "note": "the 2016 main crop is aimed at the neighbouring canal houses; the 2021 view shows this front"
+  },
+  {
+   "tag": "w06-297",
+   "bearing": 297,
+   "lengthM": 9.5,
+   "centre": [
+    4.889869,
+    52.364609
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241203_0939_Track09_Sphere_00425",
+   "capturedAt": "2024-12-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "balustrade-urns",
+     "kind": "other",
+     "where": "balustrade over the cornice of the three lower bays next to the portico, dies over the pilasters carrying urns",
+     "approxSizeM": [
+      9.4,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_0939_Track09_Sphere_00425",
+     "how": "plinth, balusters every 0.3 m, rail, four dies; an urn (foot, body, lid) on the two pilaster dies"
+    },
+    {
+     "id": "nss-lower-bays",
+     "kind": "other",
+     "where": "three bays between the portico and the risalit: granite base, two brick storeys between pilasters, cornice",
+     "approxSizeM": [
+      9.4,
+      15.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_0939_Track09_Sphere_00425",
+     "how": "officeFront without attic on ring edge 8; the upper storeys on the scan's upper wall 1 m back (the shell's 7.9 m base ledge kept)"
+    }
+   ]
+  },
+  {
+   "tag": "w07-102",
+   "bearing": 102,
+   "lengthM": 9.1,
+   "centre": [
+    4.890212,
+    52.364559
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "the 2025 panorama is 35 m off and frames the neighbouring Keizersgracht house; courtyard wall"
+  },
+  {
+   "tag": "w08-29",
+   "bearing": 29,
+   "lengthM": 6,
+   "centre": [
+    4.8901485,
+    52.364656
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "both panoramas are 33 m off on the Nieuwe Spiegelstraat and frame the wing arcade, not this courtyard wall"
+  },
+  {
+   "tag": "w09-12",
+   "bearing": 12,
+   "lengthM": 5.6,
+   "centre": [
+    4.890186,
+    52.364604
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "both panoramas are 34 m off on the Nieuwe Spiegelstraat and frame the wing arcade, not this courtyard wall"
+  },
+  {
+   "tag": "w10-298",
+   "bearing": 298,
+   "lengthM": 4.4,
+   "centre": [
+    4.88989,
+    52.3646725
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002033_pano_0001_000308",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-portico",
+     "kind": "colonnade",
+     "where": "projecting stone entrance portico between the wing and the office: an open passage between two square piers with capitals, entablature, an upper storey with paired windows, cornice and a pediment with ball finials",
+     "approxSizeM": [
+      3.1,
+      7.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0001_000308",
+     "how": "holed walls on ring edges 6 and 7 (passage 2 m wide, 1.95 m deep to the doors), pier faces and capitals, entablature, window bars, cornice, pediment with a gable roof, three ball finials"
+    },
+    {
+     "id": "spaces-sign",
+     "kind": "sign",
+     "where": "SPACES letters on the portico entablature",
+     "approxSizeM": [
+      1.2,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002033_pano_0001_000308",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant name sign"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
