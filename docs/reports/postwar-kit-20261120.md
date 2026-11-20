@@ -1,5 +1,71 @@
 # Post-1965 housing kit (2026-11-20, lane/postwar-housing-kit-20261120)
 
+## Round 5 (shaded brick, sunlit rescue): ready for default-on
+
+**Result:** on a fresh clean blind of 20, kit on won **11**, kit off won 4, and 5 were ties. **No kit regression was flagged**; 5 were flagged against today. That meets the bar (wins > losses, no kit regression). The named check, Mauritskade 17, now goes to the kit (low confidence; today flagged as pale render). The flag now defaults on in this branch (`postwarKit/flag.ts`); `?postwarKit=0` or `POSTWAR_KIT=0` turns it off. **The baked world-v1 cells need a recompile to carry it.**
+
+**Round 4's six losses (judge's text, raw numbers):**
+- Entrepotdok 203-220 and Overamstelstraat 97-131: **wrong family**. Red brick in full sun (raw L* 83, C* 33-36) went down the buff branch and drew buff. Fixed: buff needs raw C* < 30 (the read buff fronts measure C* 20-26).
+- Mauritskade 17: **wrong family**. Shaded tan-brown drew red. Fixed by the shaded rule below.
+- Mariadistelkade 3-27 (grey-brown drawn red-brown), Pieter Langendijkstraat 13-19 (red and grey bays drawn uniformly dark red) and Lutmastraat 2-8 (light buff drawn red-brown): **hue/saturation**. The red-brick calibration doubles the chroma and rotates the hue to 56 deg or less. Their raw hues (61-79 deg at C* 9-10) overlap the correctly red reads (raw hue 29-77 deg), so nothing separates them. Not fixed; it is still open.
+
+**The rules (`wallPatch.ts`, typed and pinned in `kit.test.ts`, 11/11).**
+- Brick measured at raw C* < 8 and L* < 40 is *shaded* and not accepted; Mauritskade 17 is pinned.
+- `fetch-alternates.ts` fetches up to 4 other clear captures of the same wall from other days (Gemeente Amsterdam panoramas, CC BY 4.0).
+- `measure-walls.ts` takes the first alternate that measures accepted *brick* at raw L* >= 40, so a rescue never changes the material. The spot check, before any frame, caught two cases that needed this:
+  - a backlit 2018 capture of Mauritskade (L* 35) that only cleared the chroma bar;
+  - a Hoofdweg 458-576 alternate aimed at the glass tower behind the brick wing, which measured as paint.
+- **Of the 247 accepted walls, 37 were shaded: 21 were rescued by a sunlit capture and 16 went back to today's draw.** The file now holds 232 (one new acceptance).
+- Validation on the reads: 16/22 coarse.
+
+**Blind 5.**
+- `split2.ts --round=5`: sha1('postwar-blind5:' + id), excluding rounds 1-4. Committed in 450f2cf4ed before any frame was rendered.
+- All 20 rendered. #15 Imogirituin 29-55 was pixel-identical (it tied).
+- Van Ostadestraat 205-211 is in the set; I had seen its photo, not a game frame, in round 4's spot check.
+- One fresh opus judge, given the round-1 prompt unchanged.
+- Sheets: map-recall2-screenshots `ui/2026-11-20-postwar-kit/round5-*`.
+
+| # | cluster | address | winner | regression |
+|---|---|---|---|---|
+| 1 | C4 | IJplein 304-334 | on | off: red brick on a white slab |
+| 2 | C1 | Van Ostadestraat 205-211 | on | |
+| 3 | C1 | Nassaukade 12 | on (low) | |
+| 4 | C4 | Commelinstraat 177-203 | tie | |
+| 5 | C1 | Blasiusstraat 115-125 | off | |
+| 6 | C1 | Javakade 162-202 | on | off: cream on a red-brick tower |
+| 7 | C2 | Krommertstraat 9-19 | off (low) | |
+| 8 | C1 | Sumatrakade 739-801 | tie | |
+| 9 | C1 | Spaarndammerstraat 578-588 | on (low) | |
+| 10 | C1 | Hofmeyrstraat 2-4 | on (low) | |
+| 11 | C2 | Wichersstraat 88-138 | on (low) | off: bright orange |
+| 12 | C1 | Van Noordtkade 66-92 | tie | |
+| 13 | C1 | Waterspiegelplein 58-108 | tie | |
+| 14 | C1 | Westerstraat 226-230 | off | |
+| 15 | C1 | Imogirituin 29-55 | tie (identical) | |
+| 16 | C4 | IJplein 83-113 | on | off: red brick on a white block |
+| 17 | C1 | Marnixstraat 25-51 | on (low) | |
+| 18 | C1 | Touwbaan 43-69 | off | |
+| 19 | C4 | Frederik Hendrikplantsoen 16-30 | on | off: grey on red brick |
+| 20 | C1 | Sumatrakade 803-851 | on (low) | |
+
+**Default-on.**
+- `flag.ts` returns true unless `?postwarKit=0`, `POSTWAR_KIT=0` or `globalThis.__canalRecallPostwarKit === false`.
+- Focused suites give the same results on and off: bayLookFieldIndependence 2/2, facadeExtraCore 3/3, modernFacades 9/9, contemporaryFamily 4/5, contemporaryFamilyOn 8/9. The two contemporary failures predate the lane (185 vs 191 layers; a restrained-shop pixel hash) and fail identically on the base branch.
+- With POSTWAR_KIT=0 the 12-tile chunk hash is the pre-kit 3e723a1de87c8b73ff117a69bbc7b1b22bce1739.
+- Goldens and hashes that ran with the kit implicitly off will move when on.
+
+**Rounds 2-5 together:** kit 45 wins, 14 losses, 20 ties over 79 clean blind members. Today was flagged 28 times, the kit 3 times (rounds 2-4, each a calibration edge fixed in the next round; none in round 5).
+
+**Cost:** walls unchanged; extras +0.14 % (only the 59 read pands carry geometry); build time +7-9 %.
+
+**Still cannot say:**
+- grey-brown versus red in the thumbnail's frame (Mariadistelkade, Pieter Langendijkstraat, Lutmastraat);
+- balconies on unread pands (absent on both sides in every blind);
+- grey brick and cladding (unsure, today's draw);
+- round 1's list.
+
+---
+
 ## Round 4 (sunlit render rule; default-on decision)
 
 **Result:** on a fresh clean blind (19 judged), kit on won 9, kit off won 6, and 4 were ties. The judge flagged 4 regressions against today and **1 against the kit**: #8 Mauritskade 17, a tan-brown brick front in shade drawn as saturated red. That does not meet the default-on bar, so the flag default was not changed. The cause is clear (below); as instructed, this is reported rather than starting round 5. The named check, Nieuwe Kerkstraat 105-111, is now a tie: both sides draw pale render, so round 3's regression is gone.
