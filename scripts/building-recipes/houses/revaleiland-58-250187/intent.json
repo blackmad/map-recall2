@@ -59,7 +59,10 @@
      10,
      12
     ],
-    "rail": "glass"
+    "rail": "glass",
+    "pane": "glass",
+    "colour": "#4a4c4e",
+    "edge": "#bcb4a4"
    },
    "cladding": {
     "kind": "paint",
@@ -94,7 +97,10 @@
     "bays": [
      3
     ],
-    "rail": "glass"
+    "rail": "glass",
+    "pane": "glass",
+    "colour": "#4a4c4e",
+    "edge": "#bcb4a4"
    },
    "cladding": {
     "kind": "paint",
@@ -118,7 +124,8 @@
   "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 3): SE panel 59 (54 m, 4 storeys under the 14.6 m eaves) from w01-140s1/s2 (2021-02/03) and w01-140s3 (2022-12-14), balcony columns at bays 1, 4, 7, 10, 12 of 15; E panel 60 (31 m, 5 storeys) from w02-74s1 (2024-10-16). The dark plinth is the ground storey painted (cladding paint to 0.27 / 0.22 of the eaves). Other walls: the same buff grid (the SW and NW crops are 30-37 deg oblique).",
   "Not drawn: the vertical ribbed cladding of the set-back top floor (3DBAG massing in the wall buff), the red entrance doors and shop lettering.",
   "Round 5 2026-11-20: released from hold with shellClose: the one leftover after shellRepair was a 1.44 m roof edge of a warped facet ending 6.3 cm above its neighbour's corner (open-edges 2.2 m against 2 m); the sliver triangle to that corner closes it.",
-  "Round 5: the SE brick lightened to #b8946c (the photo reads buff-yellow; the likeness dL was -0.24), the NE surface 62 in the measured grey #717977 of w02-74s1L / w02-74s2."
+  "Round 5: the SE brick lightened to #b8946c (the photo reads buff-yellow; the likeness dL was -0.24), the NE surface 62 in the measured grey #717977 of w02-74s1L / w02-74s2.",
+  "Round 6: the balconies are pale concrete slabs (edge #bcb4a4) with glass balustrades (pane \"glass\") in dark metal frames (colour #4a4c4e), as the SE panorama of the round-5 pair shows; the white frame-coloured boxes read as solid."
  ],
  "groundClamp": true,
  "shellClose": true

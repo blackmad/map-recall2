@@ -81,3 +81,12 @@ test('houses[].balconies.edge / pane: the house balcony in its own slots', () =>
   assert.equal(bal.slab.slot, 'edge@g0h0'); assert.equal(bal.rail.pane, 'pane@g0h0');
   assert.throws(() => validateLargeIntent(withHouse(0, {balconies: {storeys: [2], edge: 'not-a-colour'}})), /balconies.edge/);
 });
+
+test('balconies.pane "glass": the rail infill is the group glazing (no own slot); a house balcony too', () => {
+  const fit = fitLarge(validateLargeIntent(withHouse(0, {balconies: {storeys: [2], rail: 'glass', pane: 'glass'}}, {balconies: {storeys: [3], rail: 'glass', pane: 'glass'}})), facts()).recipe;
+  const b = rowsOf(fit.spec.systems[fit.groups[0].houses!.segs[0].system])['2'];
+  const bal = (b.cycle ?? [b]).find(x => x.kind === 'balcony')!.balcony as unknown as {rail: {pane?: string}};
+  assert.match(bal.rail.pane!, /^glass/);
+  assert.ok(!Object.keys(fit.spec.palette).some(k => /^pane@/.test(k)), 'no pane slot');
+  assert.throws(() => validateLargeIntent(withHouse(0, {}, {balconies: {storeys: [3], pane: 'glas'}})), /balconies.pane/);
+});
