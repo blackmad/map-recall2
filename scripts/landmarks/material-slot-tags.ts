@@ -55,6 +55,9 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
   'handelsbank-singel-250': {
     sandstone: {slot: 'stone', measured: '#a99c86', why: 'warm grey-beige Bentheimer sandstone of the bank fronts, lit (Gemeente Amsterdam panoramas w01-10, w02-104; blind review read #a99c86 lit, #8c8170 in shade); the city look drew it cream'},
     stone: {slot: 'stone', measured: '#7f7b74', why: 'grey granite plinth, the rustication joints and the festoon panels (w01-10, w03-103)'},
+    brick: {slot: 'brick', measured: '#5e4a42', why: 'brown brick of the Herengracht houses and backs on the rest of the pand (recording_2025-06-16_04-42-37_01130, b_20241203_0939 sphere 00352)'},
+    greyBrick: {slot: 'brick', measured: '#34353a', why: 'dark grey-painted brick of the neighbouring Herengracht house (w09-280, 2025)'},
+    pink: {slot: 'stone', measured: '#e4e0d4', why: 'palette name only: the white stucco front of Singel 258 (w11-102)'},
   },
   'holland-casino-amsterdam': {
     ochre: {slot: 'stone', measured: '#8a5a3a', why: 'mid-brown timber of the deck, pergola rafters and lattice screens (w03-257, w07-252; blind review #8a5a3a); the look drew it pale orange'},

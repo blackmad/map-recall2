@@ -106163,60 +106163,7 @@
       "name": "Former Nederlandsch-Indische Handelsbank, Singel 250",
       "modelUrl": "./models/handelsbank-singel-250.glb",
       "suppressOsmIds": [
-        "landmark-part:handelsbank-singel-250:0363100012167627"
-      ],
-      "pandParts": [
-        {
-          "pand": "NL.IMBAG.Pand.0363100012167627",
-          "ring": [
-            [
-              4.8880408,
-              52.3732543
-            ],
-            [
-              4.8884999,
-              52.3732181
-            ],
-            [
-              4.8883704,
-              52.3727508
-            ],
-            [
-              4.8878995,
-              52.3727965
-            ],
-            [
-              4.8879039,
-              52.3728562
-            ],
-            [
-              4.8879039,
-              52.3729603
-            ],
-            [
-              4.8878951,
-              52.3729974
-            ],
-            [
-              4.8879481,
-              52.3730028
-            ],
-            [
-              4.8879966,
-              52.373077
-            ],
-            [
-              4.8880216,
-              52.3732007
-            ]
-          ],
-          "note": "The bank's share of pand 0363100012167627, traced on the 3DBAG LoD2.2 roof faces over the PDOK 2024 orthophoto: the bank's roofs (20-26 m, slate mansard and flat tops) end on a west line from BAG edge e0 to the west wing's mansard foot (8.5-9 m west of the Singel block's inner line) and on a south line through the step at Singel 258 (BAG edge e31), parallel to the Raadhuisstraat front. The rest, the 8-19 m canal-house backs on the Herengracht and the Oude Spiegelstraat and the white house Singel 258, stays with the rows line.",
-          "rest": {
-            "height": 15.82,
-            "eaves": 4.74,
-            "ridge": 23.38
-          }
-        }
+        "NL.IMBAG.Pand.0363100012167627"
       ],
       "spatialSuppression": false,
       "footprint": {
@@ -106224,9 +106171,9 @@
           4.8880736,
           52.37291216
         ],
-        "headingDegrees": 10,
-        "lengthMetres": 48.7,
-        "widthMetres": 34.7
+        "headingDegrees": 0,
+        "lengthMetres": 55.1,
+        "widthMetres": 63.3
       },
       "surveyed": {
         "anchor": [
@@ -106248,12 +106195,14 @@
         "sandstone": "#c9bfa9",
         "stone": "#b8ad97",
         "slate": "#5a5f66",
-        "white": "#4a2a20",
+        "white": "#ece9e0",
         "frame": "#4a2a20",
         "glass": "#363b40",
         "dark": "#2e2a28",
         "bronze": "#2c2e2e",
-        "brick": "#7a6a58"
+        "brick": "#5e4a42",
+        "greyBrick": "#34353a",
+        "pink": "#e4e0d4"
       },
       "attribution": {
         "title": "Former Nederlandsch-Indische Handelsbank, Singel 250 (Van Rossem & Vuyk 1910-1912, extended by A.D.N. van Gendt 1925)",
@@ -106268,24 +106217,164 @@
         "coordinates": [
           [
             [
-              4.8878951,
-              52.3729974
+              4.888026,
+              52.3731973
             ],
             [
-              4.8879039,
-              52.3729603
+              4.8879933,
+              52.3730751
             ],
             [
-              4.8879039,
-              52.3728562
+              4.887928,
+              52.3730817
             ],
             [
-              4.8878995,
-              52.3727965
+              4.8879267,
+              52.3730769
             ],
             [
-              4.888252,
-              52.3727623
+              4.8879193,
+              52.3730495
+            ],
+            [
+              4.8877206,
+              52.3730694
+            ],
+            [
+              4.8874831,
+              52.3730932
+            ],
+            [
+              4.8874771,
+              52.3730416
+            ],
+            [
+              4.8877667,
+              52.3730126
+            ],
+            [
+              4.8877558,
+              52.3729718
+            ],
+            [
+              4.8878452,
+              52.3729628
+            ],
+            [
+              4.8878409,
+              52.372947
+            ],
+            [
+              4.8878065,
+              52.3729504
+            ],
+            [
+              4.8878014,
+              52.3729315
+            ],
+            [
+              4.8878123,
+              52.3729121
+            ],
+            [
+              4.8878311,
+              52.3729102
+            ],
+            [
+              4.8878251,
+              52.3728877
+            ],
+            [
+              4.8876981,
+              52.3729004
+            ],
+            [
+              4.8876959,
+              52.3728922
+            ],
+            [
+              4.8876898,
+              52.3728694
+            ],
+            [
+              4.8877149,
+              52.3728668
+            ],
+            [
+              4.8877011,
+              52.3728153
+            ],
+            [
+              4.8877285,
+              52.3728125
+            ],
+            [
+              4.8878161,
+              52.3728038
+            ],
+            [
+              4.8878054,
+              52.3727638
+            ],
+            [
+              4.8877813,
+              52.3727662
+            ],
+            [
+              4.887778,
+              52.372754
+            ],
+            [
+              4.8878351,
+              52.3727482
+            ],
+            [
+              4.8879443,
+              52.3727373
+            ],
+            [
+              4.8879521,
+              52.3727667
+            ],
+            [
+              4.8880172,
+              52.3727601
+            ],
+            [
+              4.8880093,
+              52.3727307
+            ],
+            [
+              4.8882348,
+              52.3727081
+            ],
+            [
+              4.8882346,
+              52.372709
+            ],
+            [
+              4.8882408,
+              52.3727268
+            ],
+            [
+              4.8882468,
+              52.3727444
+            ],
+            [
+              4.8882652,
+              52.372742
+            ],
+            [
+              4.8882706,
+              52.3727576
+            ],
+            [
+              4.8882678,
+              52.372758
+            ],
+            [
+              4.8882512,
+              52.3727601
             ],
             [
               4.8882556,
@@ -106414,22 +106503,6 @@
             [
               4.888026,
               52.3731973
-            ],
-            [
-              4.8880052,
-              52.3731196
-            ],
-            [
-              4.8879966,
-              52.373077
-            ],
-            [
-              4.8879481,
-              52.3730028
-            ],
-            [
-              4.8878951,
-              52.3729974
             ]
           ]
         ]
@@ -106437,14 +106510,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -12.09022331237793,
+          -40.81334686279297,
           -1.6212462483622403e-8,
           -33.11532211303711
         ],
         "max": [
           23.560213088989258,
-          26.195268630981445,
-          17.471216201782227
+          26.19499969482422,
+          23.249685287475586
         ]
       },
       "placement": {
@@ -106454,29 +106527,23 @@
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 10,
+        "facadeBearingDegrees": 0,
         "scale": 1
       },
       "extent": {
-        "widthMetres": 50.586538314819336,
-        "heightMetres": 26.195268647193906,
-        "depthMetres": 35.65043640136719,
-        "depthCoverage": 1.0273900980221091
+        "widthMetres": 64.37355995178223,
+        "heightMetres": 26.19499971103668,
+        "depthMetres": 56.365007400512695,
+        "depthCoverage": 0.8904424549844028
       },
-      "triangles": 16756,
-      "bytes": 252360,
+      "triangles": 22973,
+      "bytes": 347440,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "78dca899a0ccfd15",
         "buildVersion": 2,
         "bytes": 60016,
         "triangles": 2763
-      },
-      "lod2": {
-        "sourceHash": "78dca899a0ccfd15",
-        "buildVersion": 6,
-        "bytes": 10492,
-        "triangles": 331
       }
     },
     "holland-casino-amsterdam": {
