@@ -51,12 +51,17 @@ test('fitLarge is deterministic and keeps coplanar surfaces of different wall gr
   assert.equal(balie.groups[1].storeyHeightsM[0], balie.groups[0].storeyHeightsM[0]);
 });
 
+/**
+ * Per-house exceptions to the 12k budget, each its intent's own `budgetTriangles`. 2026-11-20 (large-buildings lane,
+ * round 3): kattenburgerstraat-164930 is a whole gallery-flat block, groups 2-8, 27,378 triangles under its 28k budget.
+ */
+const BUDGET_EXCEPTIONS = new Set(['kattenburgerstraat-164930']);
+
 test('large customers pass the large-tier gates within the 12k budget', async () => {
   for (const id of LARGE) {
-    const intent = validateLargeIntent(raw(id));
-    const {gates, tris} = await gatesOf(intent, facts(id));
-    // A house's opt-in budgetTriangles (12k..40k) is its budget; 2026-11-20: Kattenburgerstraat 32-390 sets 28k.
-    assert.ok(tris.length <= (intent.budgetTriangles ?? LARGE_BUDGET_TRIANGLES), `${id}: ${tris.length}`);
+    const intent = validateLargeIntent(raw(id)), {gates, tris} = await gatesOf(intent, facts(id));
+    const budget = BUDGET_EXCEPTIONS.has(id) ? intent.budgetTriangles ?? LARGE_BUDGET_TRIANGLES : LARGE_BUDGET_TRIANGLES;
+    assert.ok(tris.length <= budget, `${id}: ${tris.length}`);
     assert.deepEqual(gates.filter(g => !g.pass).map(g => g.id), [], id);
   }
 });
