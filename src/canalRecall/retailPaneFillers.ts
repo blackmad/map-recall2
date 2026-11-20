@@ -229,7 +229,8 @@ const PAINTERS: Record<FillerKind, (p: P) => void> = {
     room(p, '#e0d2b8', '#8a7a62', '255,236,200', 2);
     shelves(p, [150], '#c8b08a'); packets(p, 0, W, 150, 14, 24, PRODUCT, 6, 12);
     person(p, 46, 200, 0.9); table(p, 60, 206, '#6a4a2e', '#2a1a10', '#3a2416');
-    const cloth = pick(p.r, ['#efe6d2', '#d8c8a0', '#a83a2a', '#2f4a3a', '#f4f1ea']);
+    // Neutral cloths only (2026-11-20): a red or green blind read as another shop's colours beside the signature.
+    const cloth = pick(p.r, ['#efe6d2', '#d8c8a0', '#e6dcc4', '#f4f1ea']);
     rect(p, 0, 0, W, 112, cloth);
     for (let x = 4; x < W; x += 10) rect(p, x, 0, 2, 112, 'rgba(0,0,0,0.08)');
     rect(p, 0, 112, W, 6, shadeDark(cloth));

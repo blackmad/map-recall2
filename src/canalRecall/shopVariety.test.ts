@@ -100,7 +100,11 @@ test('fronts: flag off byte-identical; on, the same triangles with filler tiles 
       assert.deepEqual(retailFrontTris(input, e, 0, 7, 0, 3.6), off, `${t}: on without the layer is unchanged`);
       const on = retailFrontTris({ ...input, variety: 330 }, e, 0, 7, 0, 3.6);
       assert.equal(on.length, off.length, `${t}: no extra triangles`);
-      for (const [i, tri] of on.entries()) { assert.deepEqual(tri.p, off[i].p); assert.equal(tri.hex, off[i].hex); }
+      for (const [i, tri] of on.entries()) {
+        assert.deepEqual(tri.p, off[i].p);
+        // A filler tile takes the signature's room (retailRoomTone.ts): a tint no brighter than the white it replaced.
+        if ((tri.layer ?? 0) >= 330) assert.match(tri.hex, /^#[0-9a-f]{6}$/); else assert.equal(tri.hex, off[i].hex);
+      }
       const sigPage = 300 + goodsCell(kind).page;
       const sigTiles = on.filter(tri => tri.layer === sigPage).length / 2, fillerTiles = on.filter(tri => (tri.layer ?? 0) >= 330).length / 2;
       if (PANE_SETS[kind] && off.filter(tri => tri.layer === sigPage).length / 2 >= 2) assert.ok(fillerTiles >= 1, `${t}: a filler tile`);

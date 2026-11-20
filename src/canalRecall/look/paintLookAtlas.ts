@@ -159,7 +159,7 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
     for (const [k, face] of TYPE_FACES.entries()) await paintLogoLayer(colour, mask, logoLayer + TYPE_BASE + k, size, `materials/retail-logos/type-${face}.png`, true);
     for (let k = 0; k < CHAIN_LOGO_PAGES; k++) await paintLogoLayer(colour, mask, logoLayer + CHAIN_LOGO_BASE + k, size, chainLogoPath(k));
     // Lane shop-variety (default on; `?shopVariety=0` off): the pane-filler layers after the chain logos (retailPaneFillers.ts).
-    if (shopVarietyOn()) for (let k = 0; k < FILLER_LAYERS; k++) { paintGoodsPage(colour, mask, logoLayer + VARIETY_BASE + k, size, k, paintFillerLayer); await yieldBudget(); }
+    if (shopVarietyOn()) for (let k = 0; k < FILLER_LAYERS; k++) { paintGoodsPage(colour, mask, logoLayer + VARIETY_BASE + k, size, k, paintFillerLayer, true); await yieldBudget(); }
   }
   let brick: CanvasImageSource = document.createElement('canvas');
   if (look === 'photo') {
@@ -201,8 +201,10 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
  * The chain-logo layer (lane retail-ground, retailLogos.ts): the published atlas drawn to the layer, rows bottom-first,
  * mask zero (the logo's own colours, untinted). An atlas that fails to load leaves a white layer (a plain board).
  */
-/** Lane retail-real: one window-goods layer, painted at `size` (retailGoods.ts paintGoodsLayer), mask zero (own colours). */
-function paintGoodsPage(colour: Uint8Array, mask: Uint8Array, layer: number, size: number, page: number, paint: (ctx: Ctx2D, page: number, size: number) => void = paintGoodsLayer): void {
+/** Lane retail-real: one window-goods layer, painted at `size` (retailGoods.ts paintGoodsLayer), mask zero (own colours).
+ *  `tinted` (the pane-filler pages): the tint channel full, so a filler tile takes its shop's room tone from its
+ *  triangle's colour (retailRoomTone.ts; white leaves it as painted). */
+function paintGoodsPage(colour: Uint8Array, mask: Uint8Array, layer: number, size: number, page: number, paint: (ctx: Ctx2D, page: number, size: number) => void = paintGoodsLayer, tinted = false): void {
   const px = size * size, canvas = document.createElement('canvas'); canvas.width = canvas.height = size;
   const ctx = canvas.getContext('2d', { willReadFrequently: true })!;
   paint(ctx as unknown as Ctx2D, page, size);
@@ -210,7 +212,7 @@ function paintGoodsPage(colour: Uint8Array, mask: Uint8Array, layer: number, siz
   for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
     const from = ((size - 1 - y) * size + x) * 4, at = layer * px + y * size + x;
     colour[at * 4] = pixels[from]; colour[at * 4 + 1] = pixels[from + 1]; colour[at * 4 + 2] = pixels[from + 2]; colour[at * 4 + 3] = 255;
-    mask[at * 2] = 0; mask[at * 2 + 1] = 0;
+    mask[at * 2] = tinted ? 255 : 0; mask[at * 2 + 1] = 0;
   }
 }
 

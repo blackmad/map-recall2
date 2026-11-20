@@ -6,6 +6,7 @@ import { historicPuiFront, type HistoricPuiHost } from './retailFit/historicPuiF
 import { glyphLayout } from './retailLogos.js';
 import { goodsCell, goodsTiles, type GoodsKind } from './retailGoods.js';
 import { fillerCell } from './retailPaneFillers.js';
+import { toneTint } from './retailRoomTone.js';
 import { planPanes, shopVarietyOn } from './shopVariety.js';
 import { drawRedLightFront, type RedLightFront } from './groundParts/redLightFront.js';
 import { retailBrandOn, retailPartsOn } from './retailPages.js';
@@ -625,8 +626,11 @@ function varyPanes(recs: GoodsTileRec[], doors: ReadonlyArray<readonly [number, 
     const c = plan[i];
     if (c.signature) continue;
     const cell = fillerCell(c.filler), to = goodsTileRect(cell.rect, input.seed, r.bay, r.tile), [f0, g0, f1, g1] = r.rect;
+    // One room per shop: the filler's back wall tinted to the signature's (retailRoomTone.ts).
+    const tint = toneTint(kind, c.filler);
     for (const t of r.out.slice(r.first, r.end)) {
       t.layer = input.variety + cell.page;
+      t.hex = tint;
       t.uv = t.uv!.map(([u, v]) => [to[0] + (to[2] - to[0]) * (u - f0) / (f1 - f0), to[1] + (to[3] - to[1]) * (v - g0) / (g1 - g0)] as [number, number]);
     }
   }
