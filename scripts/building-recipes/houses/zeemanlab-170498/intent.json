@@ -1,0 +1,599 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "zeemanlab-170498",
+ "pandId": "0363100012170498",
+ "address": "Zeemanlaboratorium, Plantage Muidergracht 4 / Roetersstraat (1921-1923, rijksmonument 518497): red-brick physics laboratory, two tall storeys of white-framed grouped windows over a striped (street) or stone (canal) plinth, a stone head band under a plain parapet; entrance risalit with a raised parapet and the name plaque; a modern glazed/concrete-frame infill bay at the east end",
+ "sources": [
+  {
+   "id": "pano-2019-01-14-w06-30",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001051_pano_0001_001060/",
+   "image": "source-data://pand-reference-walls/0363100012170498/w06-30.jpg",
+   "sha256": "3ee8f841c49e75f83669d407dfc41cb0e02e7c1004c527865a3c1008b6633263",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-11-21-w05-30",
+   "kind": "street-panorama",
+   "capturedAt": "2018-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000998_pano_0004_001942/",
+   "image": "source-data://pand-reference-walls/0363100012170498/w05-30.jpg",
+   "sha256": "d7f3e2216ed6914cecc67e7311a6435ec7d4c505ff79301ca4c0faabc518f362",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-06-07-w04-30",
+   "kind": "street-panorama",
+   "capturedAt": "2016-06-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000070_pano_0006_000515/",
+   "image": "source-data://pand-reference-walls/0363100012170498/w04-30.jpg",
+   "sha256": "a5cb07eefeab180aed4bb16e7deb165d35fad9e46252649a0629a414c49cb73c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-06-07-w08-30m6",
+   "kind": "street-panorama",
+   "capturedAt": "2016-06-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000070_pano_0006_000513/",
+   "image": "source-data://pand-reference-walls/0363100012170498/w08-30m6.jpg",
+   "sha256": "2bf4d6d1d87059d503faefd4a6faa8111e142f34b7e9b8499903698c0ee15427",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-22-w07-210",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_001061/",
+   "image": "source-data://pand-reference-walls/0363100012170498/w07-210.jpg",
+   "sha256": "103f45ad80c5b268d67d94c5a5810ddce625a194292036581e97238ab104ed87",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-22-w03-210",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_001060/",
+   "image": "source-data://pand-reference-walls/0363100012170498/w03-210.jpg",
+   "sha256": "dc038b99652523888314e0c8e9c8fd1329a891cd4242a581cb331634e90180d3",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-22-w02-210",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_001059/",
+   "image": "source-data://pand-reference-walls/0363100012170498/w02-210.jpg",
+   "sha256": "c241bea7c7f653203d8fd3de5c47101b0623c3eb35d37fab36454e75d0b1feb7",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-07-06-w09-210m6",
+   "kind": "street-panorama",
+   "capturedAt": "2017-07-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0002_000401/",
+   "image": "source-data://pand-reference-walls/0363100012170498/w09-210m6.jpg",
+   "sha256": "8dc8439c4306693acfbbd31877bd3751d2ee30c244c2596edb9f437523ab7754",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2023-01-02-w01-300",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002910_pano_0014_000052/",
+   "image": "source-data://pand-reference-walls/0363100012170498/w01-300.jpg",
+   "sha256": "718ed8595bea7b45cb49dd7cea0eebd5c60e5f38db1c557af8e8b3e4c4cb3730",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    6,
+    7,
+    2
+   ],
+   "street": "Roetersstraat side (NE)",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "storeyFactors": [
+    2.1,
+    3.7,
+    4.2
+   ],
+   "baysPerStorey": 1,
+   "ground": "system",
+   "blankStoreys": [
+    0
+   ],
+   "windows": "cross",
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.6,
+    "sill": 0.02
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      2
+     ],
+     "w": 0.62,
+     "h": 0.52,
+     "sill": 0.05
+    }
+   ],
+   "windowGroup": {
+    "count": 3,
+    "gap": 0.05,
+    "storeys": [
+     1,
+     2
+    ]
+   },
+   "dressings": {
+    "colour": "#c9c2b2",
+    "bands": {
+     "at": [
+      "head",
+      "sill"
+     ],
+     "storeys": [
+      2
+     ]
+    },
+    "stripes": {
+     "storeys": [
+      0
+     ],
+     "count": 3,
+     "share": 0.5
+    }
+   },
+   "hand": [
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windowShape",
+    "storeyShapes",
+    "windowGroup",
+    "dressings",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    5
+   ],
+   "street": "Roetersstraat side (NE), entrance risalit",
+   "system": "brick-bay-grid",
+   "alignWith": 0,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "cross",
+   "windowShape": {
+    "w": 0.57,
+    "h": 0.6,
+    "sill": 0.02
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      2
+     ],
+     "w": 0.57,
+     "h": 0.52,
+     "sill": 0.05
+    }
+   ],
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.0,
+       "at": 0.5,
+       "door": true,
+       "sill": 0,
+       "h": 0.8
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.57
+      },
+      {
+       "w": 0.57
+      },
+      {
+       "w": 0.42,
+       "at": 0.5,
+       "sill": 0.1,
+       "h": 0.42
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.57
+      },
+      {
+       "w": 0.57
+      }
+     ]
+    }
+   ],
+   "dressings": {
+    "colour": "#c9c2b2",
+    "bands": {
+     "at": [
+      "head",
+      "sill"
+     ],
+     "storeys": [
+      2
+     ]
+    },
+    "stripes": {
+     "storeys": [
+      0
+     ],
+     "count": 3,
+     "share": 0.5
+    }
+   },
+   "hand": [
+    "alignWith",
+    "baysPerStorey",
+    "windowShape",
+    "storeyShapes",
+    "bayWindows",
+    "dressings",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    22
+   ],
+   "street": "Roetersstraat side (NE), modern infill",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.82,
+    "sill": 0.06
+   },
+   "palette": {
+    "brick": "#b4b0a6",
+    "frame": "#3a3c3e",
+    "glass": "#3c4448"
+   },
+   "hand": [
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    10
+   ],
+   "street": "Plantage Muidergracht side (SW, canal)",
+   "system": "brick-bay-grid",
+   "alignWith": 0,
+   "baysPerStorey": 1,
+   "ground": "system",
+   "stoneStoreys": [
+    0
+   ],
+   "windows": "cross",
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.6,
+    "sill": 0.02
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      2
+     ],
+     "w": 0.62,
+     "h": 0.52,
+     "sill": 0.05
+    }
+   ],
+   "windowGroup": {
+    "count": 3,
+    "gap": 0.05,
+    "storeys": [
+     1,
+     2
+    ]
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "dressings": {
+    "colour": "#c9c2b2",
+    "bands": {
+     "at": [
+      "head",
+      "sill"
+     ],
+     "storeys": [
+      2
+     ]
+    }
+   },
+   "hand": [
+    "alignWith",
+    "baysPerStorey",
+    "windowShape",
+    "storeyShapes",
+    "windowGroup",
+    "dressings",
+    "palette",
+    "bayWindows"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    64,
+    14,
+    84
+   ],
+   "street": "Plantage Muidergracht side (SW, canal)",
+   "system": "brick-bay-grid",
+   "alignWith": 0,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "stoneStoreys": [
+    0
+   ],
+   "windows": "cross",
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.6,
+    "sill": 0.02
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0.22,
+       "sill": 0.15,
+       "h": 0.35
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.42,
+       "at": 0.13,
+       "sill": 0.02,
+       "h": 0.6
+      },
+      {
+       "w": 0.42,
+       "at": -0.13,
+       "sill": 0.02,
+       "h": 0.6
+      }
+     ]
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.42,
+       "at": 0.13,
+       "sill": 0.05,
+       "h": 0.52
+      },
+      {
+       "w": 0.42,
+       "at": -0.13,
+       "sill": 0.05,
+       "h": 0.52
+      }
+     ]
+    }
+   ],
+   "dressings": {
+    "colour": "#c9c2b2",
+    "bands": {
+     "at": [
+      "head",
+      "sill"
+     ],
+     "storeys": [
+      2
+     ]
+    }
+   },
+   "hand": [
+    "alignWith",
+    "baysPerStorey",
+    "windowShape",
+    "dressings",
+    "palette",
+    "bayWindows"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    19,
+    20
+   ],
+   "street": "Plantage Muidergracht side (SW, canal), modern infill",
+   "system": "curtain-wall",
+   "storeys": 3,
+   "baysPerStorey": 4,
+   "palette": {
+    "frame": "#2e3234",
+    "glass": "#4a5458"
+   },
+   "hand": [
+    "storeys",
+    "baysPerStorey",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    8
+   ],
+   "street": "side street (NW)",
+   "system": "brick-bay-grid",
+   "alignWith": 0,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "blankStoreys": [
+    0
+   ],
+   "windows": "cross",
+   "windowShape": {
+    "w": 0.15,
+    "h": 0.6,
+    "sill": 0.02
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.15
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.15
+      }
+     ]
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.15
+      },
+      {
+       "w": 0.3,
+       "sill": 0.05,
+       "h": 0.52
+      },
+      {
+       "w": 0.15
+      }
+     ]
+    }
+   ],
+   "dressings": {
+    "colour": "#c9c2b2",
+    "stripes": {
+     "storeys": [
+      0
+     ],
+     "count": 3,
+     "share": 0.5
+    }
+   },
+   "hand": [
+    "alignWith",
+    "baysPerStorey",
+    "windowShape",
+    "bayWindows",
+    "dressings",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#643a30",
+  "frame": "#ece9e0",
+  "stone": "#9a968c",
+  "door": "#7a4a28",
+  "glass": "#3e4a50"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "notes": [
+  "Zeemanlaboratorium (pand 0363100012170498, built 1922; rijksmonument 518497; nl:Zeemanlaboratorium). Landmark lane ruling 2026-11-15: large-recipe (punched grid front).",
+  "walls[0] NE street panels 5 and 1 (crops w06-30 2019-01-14, w04-30 2016-06-07): three white-framed cross windows grouped in the middle of each 9.5 m panel on two tall storeys; a plinth of red and cream stripes with basement grilles; a stone sill and head band at the upper windows under a plain brick parapet.",
+  "walls[1] NE entrance panel 4 (w05-30 2018-11-21): six window axes; the centre risalit with the double door in the plinth, a narrow stained-glass window and the ZEEMAN LABORATORIUM plaque above it, a pair of windows over that, raised parapet (3DBAG).",
+  "walls[2] NE east-end infill panel 19 (w08-30m6 2016-06-07): a later concrete-frame bay, three axes of dark-framed windows over dark panels, dark gates on the ground.",
+  "walls[3] SW canal panel 8 (w07-210 2021-01-22): three grouped windows per storey over a grey stone plinth.",
+  "walls[4] SW canal panels 54, 12, 71 (w03-210, w02-210 2021-01-22): two pairs of windows per panel, small basement windows in the stone plinth.",
+  "walls[5] SW canal east-end infill panel 17 (w09-210m6 2017-07-06, w09-210m6L 2021-01-22): a full-height steel-framed glass front between brick piers.",
+  "walls[6] NW side panel 6 (w01-300 2023-01-02, behind trees): striped plinth, a window column at each end, a pair in the middle of the upper storey, the wall-fountain niche below it (not drawn).",
+  "INFERRED: the roof-storey walls and the SE party/courtyard walls (otherWalls window-grid: no photo).",
+  "Colour: brick #643a30 hand-sampled between the shaded street crops (w05-30 normalised #69483b) and the overcast canal pose (2021-03-18); the sunlit canal crops (w02/w03-210) are overexposed (#f8b58b). Groups 0, 1, 3, 4, 6 and the unlisted walls carry it as measured so the look draws it as is."
+ ],
+ "shellRepair": true,
+ "closedBands": true,
+ "measured": {
+  "date": "2026-11-20",
+  "groups": [
+   0,
+   1,
+   3,
+   4,
+   6
+  ],
+  "otherWalls": true
+ }
+}
