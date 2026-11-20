@@ -141,5 +141,7 @@ test('the published index is well formed and every GLB it names exists', { skip:
     assert.ok(m.lngLat[0] > 4.7 && m.lngLat[0] < 5.1 && m.lngLat[1] > 52.27 && m.lngLat[1] < 52.45, `${m.id} is in Amsterdam`);
     assert.ok(index.buurten.some(b => b.name === m.buurt), `${m.id} buurt ${m.buurt} is listed`);
   }
-  assert.ok(readFileSync('public/data/extracts/amsterdam/explorer-index.json').length < 256 * 1024, 'index stays under 256 KB');
+  // 384 KB since 2026-11-20: the index had not been rebuilt since the explorer shipped; rebuilt, it lists 1000 models
+  // (311 KB). Only explore.html loads it, never the game.
+  assert.ok(readFileSync('public/data/extracts/amsterdam/explorer-index.json').length < 384 * 1024, 'index stays under 384 KB');
 });
