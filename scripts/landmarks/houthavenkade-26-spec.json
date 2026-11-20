@@ -1,0 +1,33 @@
+{
+ "id": "houthavenkade-26",
+ "name": "Houthavenkade 26 block, Houthavens",
+ "heightMetres": 28.8,
+ "bagYear": 2018,
+ "galleryView": {
+  "theta": 0.6,
+  "phi": 1.1
+ },
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012247232 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/houthavenkade-26-footprints.json, bag-shell-prepare.ts); fronts read from rectified Gemeente Amsterdam panoramas 2025_09_29_07_54_42_00183 (2025, Haparandaweg), recording_2024-10-22_07-40-29_00769 (2024, west front), TMX7316010203-001596_pano_0001_000109 (2020, Houthavenkade), recording_2024-10-09_07-28-34_00531 (2024) and TMX7316010203-001875_pano_0003_001677 (2020, the gate building), CC BY 4.0. Per wall in scripts/landmarks/houthavenkade-26-inventory.json.",
+ "materialOverrides": {
+  "ochre": "#b07a45",
+  "brick": "#4e3633",
+  "red": "#7a4639",
+  "greyBrick": "#5d5c60",
+  "stone": "#4a4645",
+  "concrete": "#8d8f91",
+  "sandstone": "#e6e6e2",
+  "white": "#eeeeea",
+  "frame": "#8a8c8a",
+  "glass": "#3f4a52",
+  "canopyGlass": "#9fb0b6",
+  "dark": "#26292c"
+ },
+ "attribution": {
+  "title": "Houthavenkade 26 block, Houthavens, Amsterdam (2018)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00183/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012247232 (CC0): the orange and dark brick Haparandaweg blocks with their glazed erker stacks, the west tower, the blue-grey erker range and the red brick corner block, the Houthavenkade balcony block, the grey townhouses with open sawtooth roof frames and the dark townhouses, and the gate building over its passage, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

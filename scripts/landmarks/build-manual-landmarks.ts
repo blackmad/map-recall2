@@ -315,6 +315,7 @@ import {ALL_MANUAL_LANDMARKS as MANUAL_LANDMARKS} from '../../src/canalRecall/la
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
 // Landmark queue lane 5 (2026-10-13)
 import {buildDeAteliers} from './de-ateliers-builder';
+import {buildHouthavenkade26} from './houthavenkade-26-builder';
 import {buildParkCentraalStadhouderskade} from './park-centraal-stadhouderskade-builder';
 import {buildRoomMateAitana} from './room-mate-aitana-builder';
 import {buildObaStaatsliedenbuurt} from './oba-staatsliedenbuurt-builder';
@@ -1195,6 +1196,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='room-mate-aitana')buildRoomMateAitana(w,d,helpers);
     else if(id==='park-centraal-stadhouderskade')buildParkCentraalStadhouderskade(w,d,helpers);
     else if(id==='de-ateliers')buildDeAteliers(w,d,helpers);
+    else if(id==='houthavenkade-26')buildHouthavenkade26(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

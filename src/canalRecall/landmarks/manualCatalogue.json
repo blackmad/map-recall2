@@ -91571,5 +91571,258 @@
     ]
    ]
   }
+ },
+ {
+  "id": "houthavenkade-26",
+  "status": "held",
+  "heldReason": "Blind photo-pair review 2026-11-20 (lane landmarks-r6): FAIL. The gate building (the block signature) reads as a narrow black door between glazed bays: the 3DBAG/BAG ring gives it a sawtooth plan, so the floor bands break into staggered ledges, where the photo (w06-320, w07-140) shows a flat face with continuous white bands over a full-width two-storey passage on slender columns; the shell would have to be cut for the passage. Also: the Houthavenkade townhouse roof frames are flat-topped portals with a brace, not sawtooth triangles; the Haparandaweg erker stacks read as unbroken glass strips; a stray grey fascia band on the west red block. Colour families sit in the right places.",
+  "name": "Houthavenkade 26 block, Houthavens",
+  "modelUrl": "./models/houthavenkade-26.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012247232"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.87636067,
+    52.39432846
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 70.4,
+   "widthMetres": 90.2
+  },
+  "surveyed": {
+   "anchor": [
+    4.87636067,
+    52.39432846
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012247232 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/houthavenkade-26-footprints.json, bag-shell-prepare.ts); fronts read from rectified Gemeente Amsterdam panoramas 2025_09_29_07_54_42_00183 (2025, Haparandaweg), recording_2024-10-22_07-40-29_00769 (2024, west front), TMX7316010203-001596_pano_0001_000109 (2020, Houthavenkade), recording_2024-10-09_07-28-34_00531 (2024) and TMX7316010203-001875_pano_0003_001677 (2020, the gate building), CC BY 4.0. Per wall in scripts/landmarks/houthavenkade-26-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 28.8,
+  "galleryView": {
+   "theta": 0.6,
+   "phi": 1.1
+  },
+  "bagYear": 2018,
+  "materialOverrides": {
+   "ochre": "#b07a45",
+   "brick": "#4e3633",
+   "red": "#7a4639",
+   "greyBrick": "#5d5c60",
+   "stone": "#4a4645",
+   "concrete": "#8d8f91",
+   "sandstone": "#e6e6e2",
+   "white": "#eeeeea",
+   "frame": "#8a8c8a",
+   "glass": "#3f4a52",
+   "canopyGlass": "#9fb0b6",
+   "dark": "#26292c"
+  },
+  "attribution": {
+   "title": "Houthavenkade 26 block, Houthavens, Amsterdam (2018)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00183/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012247232 (CC0): the orange and dark brick Haparandaweg blocks with their glazed erker stacks, the west tower, the blue-grey erker range and the red brick corner block, the Houthavenkade balcony block, the grey townhouses with open sawtooth roof frames and the dark townhouses, and the gate building over its passage, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8766718,
+      52.3942603
+     ],
+     [
+      4.8766141,
+      52.394302
+     ],
+     [
+      4.8766071,
+      52.394307
+     ],
+     [
+      4.8766486,
+      52.3943285
+     ],
+     [
+      4.8766348,
+      52.3943384
+     ],
+     [
+      4.8766662,
+      52.3943547
+     ],
+     [
+      4.8766799,
+      52.3943448
+     ],
+     [
+      4.8767802,
+      52.3943968
+     ],
+     [
+      4.8767665,
+      52.3944067
+     ],
+     [
+      4.8768029,
+      52.3944256
+     ],
+     [
+      4.8768167,
+      52.3944156
+     ],
+     [
+      4.8768588,
+      52.3944375
+     ],
+     [
+      4.8768548,
+      52.3944403
+     ],
+     [
+      4.8768875,
+      52.394457
+     ],
+     [
+      4.8768316,
+      52.3944968
+     ],
+     [
+      4.8767989,
+      52.3944801
+     ],
+     [
+      4.8767389,
+      52.3945235
+     ],
+     [
+      4.8766972,
+      52.3945019
+     ],
+     [
+      4.8767115,
+      52.3944916
+     ],
+     [
+      4.8766756,
+      52.394473
+     ],
+     [
+      4.8766614,
+      52.3944833
+     ],
+     [
+      4.8765606,
+      52.3944309
+     ],
+     [
+      4.8765748,
+      52.3944206
+     ],
+     [
+      4.876539,
+      52.394402
+     ],
+     [
+      4.8765247,
+      52.3944123
+     ],
+     [
+      4.8764877,
+      52.3943931
+     ],
+     [
+      4.8764851,
+      52.3943949
+     ],
+     [
+      4.8760372,
+      52.3944016
+     ],
+     [
+      4.8755883,
+      52.3944083
+     ],
+     [
+      4.8755865,
+      52.3943601
+     ],
+     [
+      4.8755882,
+      52.3943601
+     ],
+     [
+      4.8755881,
+      52.3943597
+     ],
+     [
+      4.8756265,
+      52.3943591
+     ],
+     [
+      4.8756247,
+      52.3943059
+     ],
+     [
+      4.8755864,
+      52.3943065
+     ],
+     [
+      4.8755864,
+      52.3943062
+     ],
+     [
+      4.8755846,
+      52.3943062
+     ],
+     [
+      4.8755823,
+      52.3942468
+     ],
+     [
+      4.8755776,
+      52.3941252
+     ],
+     [
+      4.8755688,
+      52.3939025
+     ],
+     [
+      4.8758993,
+      52.3938975
+     ],
+     [
+      4.8762298,
+      52.3938926
+     ],
+     [
+      4.876441,
+      52.3938896
+     ],
+     [
+      4.8768742,
+      52.3941141
+     ],
+     [
+      4.8767651,
+      52.3941929
+     ],
+     [
+      4.876679,
+      52.394255
+     ],
+     [
+      4.8766718,
+      52.3942603
+     ]
+    ]
+   ]
+  }
  }
 ]
