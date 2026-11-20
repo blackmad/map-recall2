@@ -117,6 +117,7 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     gold: {slot: 'accent', why: 'gilt letters ZEEMANS-HUIS and ANNO 1856 (w03-301, register)'},
     concrete: {slot: 'stone', why: 'grey concrete cap band, penthouse frame and its light railing on the south-east tower, the portico plinth (w01-31)'},
     bronze: {slot: 'paint', why: 'black-painted iron area railings (w03-301, register: ijzeren hekwerk)'},
+  },
   'technische-school-meeuwenlaan': {
     slate: {slot: 'roofTile', why: 'smoked (gesmoorde) Roman pantiles on the hipped roofs (register 200704; w05-280, w01-3), not slate'},
     greyBrick: {slot: 'brick', why: 'dark brick plinth under the yellow brick walls (w05-280, w01-3)'},
