@@ -64,6 +64,7 @@ import { measuredRoofFurniture } from './roofs/roofFurniture.js';
 import { BOX_H_M, BOX_HEX, BOX_L_M, BOX_W_M, FLAT_SURFACE_BUDGET, LIP_H_M, parapetLipTris, roofBoxTris, stairCorePoint } from './roofs/flatRoofSurface.js';
 import type { FurnitureItem } from './roofs/roofSlots.js';
 import type { FacadeRecordInput, FacadeSpecInput } from './look/facadeRecord.js';
+import { bentFrontFacet, facetSpan, facetU, type FacetSpan } from './bentFrontFacets.js';
 /** Door walls this much further from the street than the nearest still count as on the nearest road (stoop wall choice). */
 const STOOP_ROAD_SLACK_M = 4;
 
@@ -920,7 +921,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     let recFrontM = 0;
     /** F1: the generic layout of the longest street run (the record's priors copy it: storeys, heights, windows, door). */
     let recGeneric: FacadeGenericLayout | undefined;
-    const runList = wallRuns(rings[bi], e => hiddenByNeighbour(e, fallbackBuilding));
+    const hiddenEdge = (e: Edge) => hiddenByNeighbour(e, fallbackBuilding), runList = wallRuns(rings[bi], hiddenEdge);
     // House rows: a stated stoop stands on the building's longest street run only (rowDressOnEdge).
     const runLen = (r: Array<{ e: Edge }>) => r.reduce((s, { e }) => s + e.len, 0);
     const rowStoopRun = b.rowDress?.stoop ? runList.filter(r => r.some(({ e }) => doorAllowed.has(e))).sort((p, q) => runLen(q) - runLen(p))[0] : undefined;
@@ -1122,6 +1123,13 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // 0.5 m return) keeps the run's grid. Single-edge runs and every other building keep it.
       const edgeGrid = b.rowSeries && streetRun && run.length > 1 && run.every(r => r.e.len >= bw) && !compound && !regular && !terrace ? rowEdgeGrid(layout, run.map(r => r.e.len)) : null;
       const uOf = (k: number, s: number, len: number): [number, number] => edgeGrid ? [edgeGrid[k].u0 * cellU, (edgeGrid[k].u0 + edgeGrid[k].bays) * cellU] : units ? [s / bw * cellU, (s + len) / bw * cellU] : [s / bw, (s + len) / bw];
+      // A narrow facet of a bent front (bentFrontFacets.ts, feedback 1a223c): the cell at its natural width round one
+      // window, or plain wall, never the whole bay squeezed onto a 1-2 m cant.
+      const facetOk = !b.recipe && !units && !edgeGrid && !b.designSlice && !b.plainWalls && !placed && !groundCut && !steps && !compound && !regular && !terrace && b.plainLayer !== undefined && !layout.doorBays.length && bentFrontFacet(rings[bi], hiddenEdge, run);
+      const facetOpenings = facetOk ? b.openings ?? (b.layers ? undefined : presetOpenings(b.id, b.style)) : undefined;
+      const facetCellM = STYLE_DIMS[b.style].bay * runScale.bay;
+      const upperFacet: FacetSpan | null = facetOk ? facetSpan(layout.lengthM, facetCellM, facetOpenings?.upper) : null;
+      const groundFacet: FacetSpan | null = facetOk && !b.shop && !b.shopfront ? facetSpan(layout.lengthM, facetCellM, facetOpenings?.ground ?? undefined) : null;
       run.forEach(({ e }, k) => {
         walls++;
         const q0 = quads.length;
@@ -1159,7 +1167,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
           const u = (a: number) => c0 + (c1 - c0) * (a - piece.a0) / (piece.a1 - piece.a0);
           quads.push({ kind: door ? 'door' : 'ground', e, u0: u(a0), u1: u(a1), v0: fit?.v0, v1: fit ? fit.v1 : 1, tint: door && !b.recipe?.groundWallHex ? tint : paint, layer, accent, z0: fit ? fit.z0 : base, z1: fit ? fit.z1 : groundTop, along0, along1 });
           for (const [w0, w1] of fit?.walls ?? []) quads.push({ kind: 'ground-wall', e, u0: a0 / 5, u1: a1 / 5, v0: w0 / 3, v1: w1 / 3, layer: b.plainLayer!, accent, z0: w0, z1: w1, tint: paint, along0, along1 });
-        }else for (const piece of edgeGroundPieces(layout, k, e.len)) {
+        }else if (groundFacet === 'plain') quads.push({ kind: 'ground-wall', e, u0: s / 5, u1: (s + e.len) / 5, v0: base / 3, v1: groundTop / 3, layer: b.plainLayer!, accent, z0: base, z1: groundTop, tint: paint, along0: 0, along1: 1 });
+        else if (groundFacet) quads.push({ kind: 'ground', e, u0: facetU(groundFacet, s, layout.lengthM), u1: facetU(groundFacet, s + e.len, layout.lengthM), v1: 1, tint: paint, layer: b.layers ? b.layers.ground : cellLayer(b.style, 'ground', variant), accent, z0: base, z1: groundTop, along0: 0, along1: 1 });
+        else for (const piece of edgeGroundPieces(layout, k, e.len)) {
           // An axis-unit door samples the half of the door cell around the door, clear of its side window (units.doorU).
           const qu0 = !units ? piece.a0 / bw : piece.door ? units.doorU : piece.a0 / bw * cellU, qu1 = !units ? piece.a1 / bw : piece.door ? units.doorU + cellU * (piece.a1 - piece.a0) / bw : piece.a1 / bw * cellU;
           // A mirrored door bay (layout.doorMirror, a row front's read door): the door cell sampled right to left.
@@ -1179,7 +1189,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
             const t = party ? [tint[0] * PARTY_BREAK_SHADE, tint[1] * PARTY_BREAK_SHADE, tint[2] * PARTY_BREAK_SHADE, tint[3]] as [number, number, number, number] : tintAt((a0 + a1) / 2);
             quads.push({ kind: 'upper-wall', e, u0: a0 / 5, u1: a1 / 5, v0: w.z0 / 3, v1: w.z1 / 3, layer: b.plainLayer!, accent, z0: w.z0, z1: w.z1, tint: t, along0: (a0 - s) / e.len, along1: (a1 - s) / e.len });
           }
-        } else if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
+        } else if (upperFacet === 'plain' && layout.storeys > 0) quads.push({ kind: 'upper-wall', e, u0: s / 5, u1: (s + e.len) / 5, v0: groundTop / 3, v1: facadeTop / 3, layer: b.plainLayer!, accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
+        else if (upperFacet && upperFacet !== 'plain' && layout.storeys > 0) quads.push({ kind: 'upper', e, u0: facetU(upperFacet, s, layout.lengthM), u1: facetU(upperFacet, s + e.len, layout.lengthM), v1: layout.storeys, layer: b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
+        else if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
         if (parapet && b.plainLayer !== undefined) quads.push({ kind: 'parapet', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
         if (steps && b.plainLayer !== undefined) {
           // Each front's wall stops at its own top; above a lower front, a wall set STEP_NOTCH_M back up to the run's
