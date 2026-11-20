@@ -39,31 +39,149 @@
    "storeys": 7,
    "baysPerStorey": 8,
    "ground": "glazed",
-   "windows": "wide",
    "deepBars": true,
-   "balconies": {
+   "palette": {
+    "brick": "#4c4e54",
+    "frame": "#9aa8b0",
+    "stone": "#6a6c72"
+   },
+   "windowShape": {
+    "w": 0.86,
+    "h": 0.72,
+    "sill": 0.2
+   },
+   "balconyBands": {
     "storeys": [
-     1,
      2,
      3,
      4,
      5,
      6
     ],
-    "rail": "glass"
+    "kind": "glass"
    },
-   "palette": {
-    "brick": "#5a5c62",
-    "frame": "#9aa8b0",
-    "stone": "#6a6c72"
-   }
+   "piers": true
   },
   {
    "wallSurfaces": [
     6
    ],
    "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 6,
+   "ground": "plinth-shopfronts",
+   "windows": "cross",
+   "deepBars": true,
+   "cornice": true,
+   "arches": {
+    "windows": "round",
+    "storeys": [
+     1
+    ],
+    "band": "stone"
+   },
+   "palette": {
+    "brick": "#4a4650",
+    "frame": "#efe8d6",
+    "stone": "#e8e0cc"
+   },
+   "mansard": {
+    "storeys": [
+     3
+    ],
+    "colour": "#3e4248"
+   },
+   "dressings": {
+    "colour": "#e6e2d8",
+    "bands": {
+     "at": [
+      "sill"
+     ],
+     "storeys": [
+      1,
+      2
+     ]
+    },
+    "surrounds": {
+     "storeys": [
+      2
+     ]
+    },
+    "heads": {
+     "kind": "keystone",
+     "storeys": [
+      2
+     ]
+    },
+    "quoins": {
+     "ends": true,
+     "joints": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#8a4a3a"
+    }
+   ],
+   "balconies": {
+    "storeys": [
+     1
+    ],
+    "rail": "bars"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.22
+   }
+  },
+  {
+   "wallSurfaces": [
+    91
+   ],
+   "system": "brick-bay-grid",
    "storeys": 5,
+   "baysPerStorey": 9,
+   "ground": "plinth-shopfronts",
+   "windows": "cross",
+   "deepBars": true,
+   "cornice": true,
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "rail": "bars",
+    "bays": [
+     1,
+     3,
+     5,
+     7
+    ]
+   },
+   "palette": {
+    "brick": "#45434a",
+    "frame": "#efece4",
+    "stone": "#8a8a8c"
+   }
+  },
+  {
+   "wallSurfaces": [
+    15,
+    97
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
    "baysPerStorey": 5,
    "ground": "plinth-shopfronts",
    "windows": "cross",
@@ -77,35 +195,67 @@
     "band": "stone"
    },
    "palette": {
-    "brick": "#4a4e58",
+    "brick": "#4a4650",
     "frame": "#efe8d6",
     "stone": "#e8e0cc"
-   }
-  },
-  {
-   "wallSurfaces": [
-    91
-   ],
-   "system": "brick-bay-grid",
-   "storeys": 5,
-   "baysPerStorey": 8,
-   "ground": "plinth-shopfronts",
-   "windows": "cross",
-   "deepBars": true,
-   "cornice": true,
-   "balconies": {
+   },
+   "mansard": {
     "storeys": [
-     2,
      3
     ],
-    "rail": "bars",
-    "every": 3,
-    "first": 1
+    "colour": "#3e4248"
    },
-   "palette": {
-    "brick": "#54555a",
-    "frame": "#efece4",
-    "stone": "#8a8a8c"
+   "dressings": {
+    "colour": "#e6e2d8",
+    "bands": {
+     "at": [
+      "sill"
+     ],
+     "storeys": [
+      1,
+      2
+     ]
+    },
+    "surrounds": {
+     "storeys": [
+      2
+     ]
+    },
+    "heads": {
+     "kind": "keystone",
+     "storeys": [
+      2
+     ]
+    },
+    "quoins": {
+     "ends": true,
+     "joints": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#8a4a3a"
+    }
+   ],
+   "balconies": {
+    "storeys": [
+     1
+    ],
+    "rail": "bars"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.22
    }
   }
  ],
@@ -128,6 +278,17 @@
   "walls[1] = panel 5 (N, 20.3 m, eaves 17.8): the corner range: a brick ground with MOMO shopfronts, an arched first floor with white dressings and balcony rail, three upper storeys with white-surround windows and a cornice under dormers; drawn as 5 storeys x 5 bays, plinth-shopfront ground, round arched windows on storey 1, cornice. Simplified: the balcony rail on the arched storey (a balcony run would hide the arched heads in this kit), the stone dressings and dormers (3DBAG roof). walls[2] = surface 91 of panel 13 (SW, 31 m, eaves 17.3): dark stone block with shopfronts (PC BAGS, POV GALLERY) and balconies in every third bay on storeys 2-3; 5 storeys x 8 bays.",
   "Not drawn: the cream corner house (w05-68, NE), the courtyard and the south front.",
   "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): the 1930 stone-and-brick block's arched, richly dressed corner range (MOMO) and balconied hotel front were drawn as grey grids (every street group FAIL, dL up to 0.30), ride-visible (73 of 2,000 sampled routes). Ornamented front: uninstalled; bespoke if it returns.",
-  "roof.flatHex #817c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5385: slot slate, rgb 132/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
- ]
+  "roof.flatHex #817c80: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5385: slot slate, rgb 132/123/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
+  "Restaged 2026-11-20 (lane large-buildings-20261120 round 2): walls[0] hotel as a dark frame grid with glass balcony bands on storeys 2-6 (w02-1L); walls[1] MOMO range as 4 storeys x 6 bays, red-brick ground (brickStoreys), arched storey with bar balconies, sill bands, keystoned surrounds, quoin chains, mansard storey (w04-1); walls[2] SW range with bar balconies on storeys 1-3 in bays 1,3,5,7 of 9 (w01-246); walls[3] the MOMO range's SW return, surfaces 15 and 97 (w06-246). The old openings-within-walls fault was walls[2]'s end-bay balcony hanging past the panel's stepped outline (bay 7 of 8, about 29.6 m along the 31.4 m panel), present before the redraw. budgetTriangles 18000 (17,238). Still not said: the corner tower east of the MOMO range (stepped shell, shader window grid), the bar balconies read as cream slabs (the stone slot is lifted), the arched heads under the bar balconies read faintly, the dormers."
+ ],
+ "measured": {
+  "date": "2023-01-10",
+  "groups": [
+   0,
+   1,
+   2,
+   3
+  ]
+ },
+ "budgetTriangles": 18000
 }

@@ -1,0 +1,35 @@
+[
+ {
+  "pandId": "0363100012233471",
+  "bearing": 1,
+  "at": [
+   4.883067,
+   52.361586
+  ],
+  "key": "parkcentraal-n-hotel",
+  "maxDistM": 45,
+  "pano": "b_20241211_0838_Track01_Sphere_00260"
+ },
+ {
+  "pandId": "0363100012233471",
+  "bearing": 1,
+  "at": [
+   4.88269,
+   52.361583
+  ],
+  "key": "parkcentraal-n-momo",
+  "maxDistM": 45,
+  "pano": "TMX7316010203-002548_pano_0000_000344"
+ },
+ {
+  "pandId": "0363100012233471",
+  "bearing": 246,
+  "at": [
+   4.882685,
+   52.361241
+  ],
+  "key": "parkcentraal-sw-range",
+  "maxDistM": 45,
+  "pano": "TMX7316010203-002920_pano_0000_000143"
+ }
+]

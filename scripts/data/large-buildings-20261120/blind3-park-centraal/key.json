@@ -1,0 +1,27 @@
+{
+ "pair1": {
+  "key": "parkcentraal-n-hotel",
+  "A": "new",
+  "B": "today"
+ },
+ "pair2": {
+  "key": "parkcentraal-n-momo",
+  "A": "new",
+  "B": "today"
+ },
+ "pair3": {
+  "key": "parkcentraal-sw-range",
+  "A": "today",
+  "B": "new"
+ },
+ "pair4": {
+  "key": "parkcentraal-n-momo",
+  "A": "today",
+  "B": "new2"
+ },
+ "pair5": {
+  "key": "parkcentraal-sw-range",
+  "A": "today",
+  "B": "new2"
+ }
+}

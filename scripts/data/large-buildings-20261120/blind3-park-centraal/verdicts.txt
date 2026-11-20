@@ -1,0 +1,12 @@
+Blind round 3, 2026-11-20: Park Centraal (stadhouderskade-25-233471) today vs restaged, fresh Opus judges, pairs
+photo | A | B, sides randomised (key.json), house:frames at frames-park-centraal.json poses (staged catalogue via a
+scratch signature-placement bundle). Result: new preferred 5 of 5 (judge 1 pairs 1-3, judge 2 pairs 4-5).
+
+pair1 n-hotel    new wins (high); flags new: balcony slabs lighter than the photo's dark frame, upper storeys overhang
+pair2 n-momo     new wins (high); flags new: arched windows read as rectangles, no dormers, corner tower windows skewed
+pair3 sw-range   new wins (medium); flags new: balconies solid cream boxes, "left neighbour section tilted windows
+                 floating off the wall" -> fixed after the round: walls[3] (surfaces 15, 97, w06-246) drawn
+pair4 n-momo     (build 2) new wins (high); flags new: tower a flat slab with scattered windows, arches missing
+pair5 sw-range   (build 2) new wins (medium); flags new: cream balcony boxes, the left balcony overhangs the
+                 neighbour -> fixed after the round: 9 bays, balconies in bays 1,3,5,7 (checked in lb-pc-after3)
+Residual: the corner tower east of the MOMO range keeps the shader window grid (stepped 3DBAG shell, no clean panel).
