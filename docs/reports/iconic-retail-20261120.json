@@ -1,0 +1,2433 @@
+{
+ "generatedAt": "2026-11-20",
+ "lane": "retail-fit-20261120",
+ "method": "research list (open data, source URLs per item) joined to the game: pand under the point, covers.json model, measured fronts, shop templates, market extract, distance to the routing network; score = route weight x open x ride visibility x verification (+0.5 monument), x0.4 when a bespoke model or market kit already stands, x0.6 for a measured hand front",
+ "sources": [
+  "Overpass API https://overpass-api.de/api/interpreter (2026-11-20; marketplace + named-building queries; first attempts got 502/at capacity)",
+  "Repo cache /Users/blackmad/Code/map-recall2/.cache/retail-ground/overpass.json (+overpass-extra.json), OSM base 2026-11-14 — read only",
+  "Wikidata SPARQL https://query.wikidata.org/sparql (wikibase:box over central Amsterdam with shop/café/market/etc. classes; VALUES detail query for P625/P359/P373/P6375/P856)",
+  "Wikidata wbsearchentities API for ~40 candidate names",
+  "Commons API categoryinfo for ~90 candidate category names",
+  "nl/en Wikipedia pages (Metz & Co, Maison de Bonneterie, Hirschgebouw, Magna Plaza, V&D)",
+  "Official websites (HTTP fetch of title/content) and web search for current status",
+  "RCE register not queried directly; rijksmonument numbers come from Wikidata P359 (or OSM ref for De Gooyer)"
+ ],
+ "items": [
+  {
+   "name": "Dappermarkt",
+   "category": "market",
+   "address": "Dapperstraat",
+   "lat": 52.36315,
+   "lng": 4.92729,
+   "osm": [
+    "way 314540466"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/way/314540466"
+   ],
+   "wikidata": "Q1165557",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Daily street market",
+   "evidence": [
+    "https://www.dappermarkt.nl/",
+    "https://en.wikipedia.org/wiki/Dappermarkt",
+    "https://www.wikidata.org/wiki/Q1165557",
+    "https://www.openstreetmap.org/way/314540466"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Dapperstraat,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Stall rows down the Dapperstraat",
+   "route": "market-stall-kit",
+   "routeReason": "Linear stall rows",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012144909",
+    "monument": null,
+    "registerPui": false,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 7,
+    "visibility": "on a ride street"
+   },
+   "score": 10.8
+  },
+  {
+   "name": "Café de Sluyswacht",
+   "category": "cafe-bar",
+   "address": "Jodenbreestraat 1",
+   "lat": 52.36986,
+   "lng": 4.90168,
+   "osm": [
+    "node 858193791"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/858193791"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Café in the leaning 1695 lock-keeper's house",
+   "evidence": [
+    "https://sluyswacht.nl/",
+    "https://www.openstreetmap.org/node/858193791"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Jodenbreestraat_1,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Black leaning wooden-looking house by the Rembrandthuis",
+   "route": "bespoke-landmark",
+   "routeReason": "Free-standing leaning house, very recognisable",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012182908",
+    "monument": "2028",
+    "registerPui": false,
+    "draws": "template brownBar \"SLUYSWACHT\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 4,
+    "visibility": "on a ride street"
+   },
+   "score": 10.8
+  },
+  {
+   "name": "Lindenmarkt (Lindengracht Saturday market)",
+   "category": "market",
+   "address": "Lindengracht",
+   "lat": 52.38028,
+   "lng": 4.88512,
+   "osm": [
+    "node 5563094883",
+    "node 5040911439"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/5563094883",
+    "https://www.openstreetmap.org/node/5040911439"
+   ],
+   "wikidata": "Q2383397",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Saturday general market along the Lindengracht",
+   "evidence": [
+    "https://en.wikipedia.org/wiki/Lindengracht",
+    "https://www.wikidata.org/wiki/Q2383397",
+    "https://www.openstreetmap.org/node/5563094883"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Lindengracht,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Long double row of stalls on the filled-in canal",
+   "route": "market-stall-kit",
+   "routeReason": "Linear stall rows",
+   "verification": "partially-verified",
+   "verificationNote": "OSM marketplace nodes current; QID is the street, not the market",
+   "game": {
+    "located": true,
+    "pand": null,
+    "monument": null,
+    "registerPui": false,
+    "draws": "no building (open space)",
+    "tenantShows": "no",
+    "streetM": 6,
+    "visibility": "on a ride street"
+   },
+   "score": 9
+  },
+  {
+   "name": "Westerstraat market (Lapjesmarkt)",
+   "category": "market",
+   "address": "Westerstraat",
+   "lat": 52.37852,
+   "lng": 4.88408,
+   "osm": [
+    "node 5563094882"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/5563094882"
+   ],
+   "wikidata": "Q2365425",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Monday textile market",
+   "evidence": [
+    "https://nl.wikipedia.org/wiki/Westerstraat-markt",
+    "https://www.wikidata.org/wiki/Q2365425",
+    "https://www.openstreetmap.org/node/5563094882"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Westerstraat,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Monday stall rows along the Westerstraat",
+   "route": "market-stall-kit",
+   "routeReason": "Linear stall rows",
+   "verification": "partially-verified",
+   "verificationNote": "OSM + nl.wikipedia only",
+   "game": {
+    "located": true,
+    "pand": null,
+    "monument": null,
+    "registerPui": false,
+    "draws": "no building (open space)",
+    "tenantShows": "no",
+    "streetM": 5,
+    "visibility": "on a ride street"
+   },
+   "score": 9
+  },
+  {
+   "name": "Nieuwmarkt market",
+   "category": "market",
+   "address": "Nieuwmarkt",
+   "lat": 52.37255,
+   "lng": 4.90009,
+   "osm": [
+    "node 1503919213"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/1503919213"
+   ],
+   "wikidata": "Q1568693",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Daily/Saturday stalls around the Waag",
+   "evidence": [
+    "https://www.wikidata.org/wiki/Q1568693",
+    "https://www.openstreetmap.org/node/1503919213"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Nieuwmarkt",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Stalls around the Waag",
+   "route": "market-stall-kit",
+   "routeReason": "Square stall ring",
+   "verification": "partially-verified",
+   "verificationNote": "OSM marketplace only",
+   "game": {
+    "located": true,
+    "pand": null,
+    "monument": null,
+    "registerPui": false,
+    "draws": "no building (open space)",
+    "tenantShows": "no",
+    "streetM": 12,
+    "visibility": "on a ride street"
+   },
+   "score": 9
+  },
+  {
+   "name": "In 't Aepjen",
+   "category": "cafe-bar",
+   "address": "Zeedijk 1",
+   "lat": 52.37631,
+   "lng": 4.90015,
+   "osm": [
+    "node 251127914"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/251127914"
+   ],
+   "wikidata": "Q2190368",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Brown café in one of two surviving timber houses",
+   "evidence": [
+    "https://nl.wikipedia.org/wiki/In_%27t_Aepjen",
+    "https://www.wikidata.org/wiki/Q2190368",
+    "https://www.openstreetmap.org/node/251127914"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Zeedijk_1,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "16th-c. timber-front house with jettied wooden gable",
+   "route": "bespoke-landmark",
+   "routeReason": "One of Amsterdam's two wooden facades",
+   "verification": "partially-verified",
+   "verificationNote": "OSM pub node current; no official site reached",
+   "game": {
+    "located": true,
+    "pand": "0363100012177880",
+    "monument": "6500",
+    "registerPui": false,
+    "draws": "template brownBar \"IN T AEPJEN\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 6,
+    "visibility": "on a ride street"
+   },
+   "score": 9
+  },
+  {
+   "name": "De Drie Fleschjes",
+   "category": "cafe-bar",
+   "address": "Gravenstraat 18",
+   "lat": 52.37431,
+   "lng": 4.89231,
+   "osm": [
+    "node 1886938082"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/1886938082"
+   ],
+   "wikidata": "Q17291530",
+   "rijksmonument": "518427",
+   "status": "open-same-business",
+   "now": "Proeflokaal De Drie Fleschjes",
+   "evidence": [
+    "https://www.dedriefleschjes.nl/",
+    "https://www.wikidata.org/wiki/Q17291530",
+    "https://www.openstreetmap.org/node/1886938082"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Distilleerderij_De_Drie_Fleschjes",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Tasting room behind the Nieuwe Kerk with three-bottle sign and barrels",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Small proeflokaal front",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012175421",
+    "monument": "1230",
+    "registerPui": true,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 8,
+    "visibility": "on a ride street"
+   },
+   "score": 7.7
+  },
+  {
+   "name": "Jacob Hooy & Co",
+   "category": "historic-shop",
+   "address": "Kloveniersburgwal 12",
+   "lat": 52.37196,
+   "lng": 4.89918,
+   "osm": [
+    "node 3921013625"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/3921013625"
+   ],
+   "wikidata": "Q110061938",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Jacob Hooy & Co herbalist/drogist (since 1743)",
+   "evidence": [
+    "https://jacob-hooy.nl/",
+    "https://www.wikidata.org/wiki/Q110061938",
+    "https://www.openstreetmap.org/node/3921013625"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Kloveniersburgwal_12,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Dark green 19th-c. shopfront with gold lettering and rows of wooden drawers/jars visible inside",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Classic painted timber pui with gilt sign",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012171701",
+    "monument": "3020",
+    "registerPui": false,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 9,
+    "visibility": "on a ride street"
+   },
+   "score": 7.2
+  },
+  {
+   "name": "Vleminckx de Sausmeester",
+   "category": "food-stall",
+   "address": "Voetboogstraat 33",
+   "lat": 52.3679,
+   "lng": 4.89102,
+   "osm": [
+    "node 432862176"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/432862176"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Vleminckx fries hatch (since 1957)",
+   "evidence": [
+    "https://vleminckxdesausmeester.nl/en/",
+    "https://www.openstreetmap.org/node/432862176"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Hole-in-the-wall fries counter with queue and yellow signage",
+   "route": "ground-floor-fit",
+   "routeReason": "Tiny counter opening in an ordinary house",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012176126",
+    "monument": "5897",
+    "registerPui": false,
+    "draws": "template frites on the generated wall",
+    "tenantShows": "template",
+    "streetM": 7,
+    "visibility": "on a ride street"
+   },
+   "score": 7.2
+  },
+  {
+   "name": "Bloemenmarkt",
+   "category": "market",
+   "address": "Singel (Muntplein–Koningsplein)",
+   "lat": 52.36695,
+   "lng": 4.8914,
+   "osm": [
+    "way 145953534"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/way/145953534"
+   ],
+   "wikidata": "Q643079",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Floating flower market stalls on the Singel",
+   "evidence": [
+    "https://en.wikipedia.org/wiki/Bloemenmarkt",
+    "https://nl.wikipedia.org/wiki/Bloemenmarkt",
+    "https://www.wikidata.org/wiki/Q643079",
+    "https://www.openstreetmap.org/way/145953534"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Bloemenmarkt_(Amsterdam)",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Row of glass-roofed stall-barges along the Singel quay",
+   "route": "market-stall-kit",
+   "routeReason": "Repeating stall/greenhouse units on the water",
+   "verification": "verified",
+   "verificationNote": "Status from OSM marketplace + Wikipedia; no official site found (debloemenmarkt.nl 404)",
+   "game": {
+    "located": true,
+    "pand": null,
+    "monument": null,
+    "registerPui": false,
+    "draws": "no building (open space)",
+    "tenantShows": "no",
+    "streetM": 18,
+    "visibility": "seen from a ride street"
+   },
+   "score": 7.2
+  },
+  {
+   "name": "Noordermarkt (Saturday/Monday markets)",
+   "category": "market",
+   "address": "Noordermarkt",
+   "lat": 52.37937,
+   "lng": 4.88677,
+   "osm": [
+    "way 493003731"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/way/493003731"
+   ],
+   "wikidata": "Q2915920",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Saturday organic farmers' market, Monday textile/flea market around the Noorderkerk",
+   "evidence": [
+    "https://www.noordermarkt-amsterdam.nl/",
+    "https://en.wikipedia.org/wiki/Noordermarkt",
+    "https://www.wikidata.org/wiki/Q2915920",
+    "https://www.openstreetmap.org/way/493003731"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Noordermarkt",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Stalls ringing the Noorderkerk square",
+   "route": "market-stall-kit",
+   "routeReason": "Weekly stall ring",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": null,
+    "monument": null,
+    "registerPui": false,
+    "draws": "no building (open space)",
+    "tenantShows": "no",
+    "streetM": 16,
+    "visibility": "seen from a ride street"
+   },
+   "score": 7.2
+  },
+  {
+   "name": "Café 't Papeneiland",
+   "category": "cafe-bar",
+   "address": "Prinsengracht 2",
+   "lat": 52.38046,
+   "lng": 4.88799,
+   "osm": [
+    "node 2186331503"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2186331503"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Brown café (since 1642)",
+   "evidence": [
+    "https://www.papeneiland.nl/",
+    "https://www.openstreetmap.org/node/2186331503"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Prinsengracht_2,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Corner step-gable house at Brouwersgracht/Prinsengracht with painted café front",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Corner brown-café",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012177422",
+    "monument": null,
+    "registerPui": false,
+    "draws": "template brownBar \"T PAPENEILAND\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 5,
+    "visibility": "on a ride street"
+   },
+   "score": 7.2
+  },
+  {
+   "name": "P.G.C. Hajenius",
+   "category": "historic-shop",
+   "address": "Rokin 96",
+   "lat": 52.36965,
+   "lng": 4.89193,
+   "osm": [
+    "node 1819061235"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/1819061235"
+   ],
+   "wikidata": "Q1749140",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Hajenius cigar shop (art-deco interior 1915)",
+   "evidence": [
+    "https://www.hajenius.com/nl/",
+    "https://nl.wikipedia.org/wiki/Hajenius",
+    "https://www.wikidata.org/wiki/Q1749140",
+    "https://www.openstreetmap.org/node/1819061235"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:P._G._C._Hajenius",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Art-deco shopfront with gilt lettering on the Rokin",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Art-deco pui",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012168350",
+    "monument": [
+     "5010",
+     "518452"
+    ],
+    "registerPui": false,
+    "draws": "template tobacco on the generated wall",
+    "tenantShows": "template",
+    "streetM": 7,
+    "visibility": "on a ride street"
+   },
+   "score": 7.2
+  },
+  {
+   "name": "Concerto",
+   "category": "historic-shop",
+   "address": "Utrechtsestraat 52-60",
+   "lat": 52.36327,
+   "lng": 4.89835,
+   "osm": [
+    "node 2649956400",
+    "node 10766312969"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2649956400",
+    "https://www.openstreetmap.org/node/10766312969"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Concerto record store (since 1955) across five buildings + Concerto Koffie",
+   "evidence": [
+    "https://concerto.nl/",
+    "https://www.openstreetmap.org/node/2649956400"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Five adjoining shopfronts with Concerto lettering",
+   "route": "ground-floor-fit",
+   "routeReason": "Signage across ordinary houses",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012178875",
+    "monument": [
+     "5839",
+     "5840",
+     "5841"
+    ],
+    "registerPui": false,
+    "draws": "block-face GLB chunk-face-utrechtse-48-76",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 12,
+    "visibility": "on a ride street"
+   },
+   "score": 7.2
+  },
+  {
+   "name": "Van Stapele Koekmakerij",
+   "category": "historic-shop",
+   "address": "Rokin 17 (formerly Heisteeg 4)",
+   "lat": 52.37198,
+   "lng": 4.89337,
+   "osm": [
+    "node 2724249411"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2724249411"
+   ],
+   "wikidata": "Q126910243",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Moved from Heisteeg to Rokin 17 (shop outgrew Heisteeg after 10 years)",
+   "evidence": [
+    "https://vanstapele.com/",
+    "https://nl.wikipedia.org/wiki/Van_Stapele_Koekmakerij",
+    "https://www.wikidata.org/wiki/Q126910243",
+    "https://www.openstreetmap.org/node/2724249411"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Rokin_17,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Queue outside a single-cookie shop; Rokin canal-house ground floor",
+   "route": "ground-floor-fit",
+   "routeReason": "No longer the Heisteeg alley shop",
+   "verification": "verified",
+   "verificationNote": "SURPRISE: no longer on Heisteeg",
+   "game": {
+    "located": true,
+    "pand": "0363100012179125",
+    "monument": null,
+    "registerPui": false,
+    "draws": "template bakery \"VAN STAPELE\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 6,
+    "visibility": "on a ride street"
+   },
+   "score": 7.2
+  },
+  {
+   "name": "Puccini Bomboni",
+   "category": "historic-shop",
+   "address": "Singel 184 and Staalstraat 17",
+   "lat": 52.37455,
+   "lng": 4.88889,
+   "osm": [
+    "node 2429454123",
+    "node 2724185403"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2429454123",
+    "https://www.openstreetmap.org/node/2724185403"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Handmade bonbon shops (two locations)",
+   "evidence": [
+    "https://puccinibomboni.com/",
+    "https://www.openstreetmap.org/node/2429454123"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Small dark shopfronts with chocolate window displays",
+   "route": "ground-floor-fit",
+   "routeReason": "Modest fronts",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012175928",
+    "monument": null,
+    "registerPui": false,
+    "draws": "template nuts \"PUCCINI\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 6,
+    "visibility": "on a ride street"
+   },
+   "score": 7.2
+  },
+  {
+   "name": "Droog",
+   "category": "historic-shop",
+   "address": "Staalstraat 7B",
+   "lat": 52.36833,
+   "lng": 4.89734,
+   "osm": [
+    "node 2724186821"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2724186821"
+   ],
+   "wikidata": "Q1260224",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Droog design store/gallery and café",
+   "evidence": [
+    "https://www.droog.com/",
+    "https://www.wikidata.org/wiki/Q1260224",
+    "https://www.openstreetmap.org/node/2724186821"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Staalstraat_7,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Former 17th-c. cloth-hall complex with garden courtyard",
+   "route": "ground-floor-fit",
+   "routeReason": "Courtyard building, signage small",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012171157",
+    "monument": [
+     "1270",
+     "5672",
+     "5673"
+    ],
+    "registerPui": false,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 8,
+    "visibility": "on a ride street"
+   },
+   "score": 7.2
+  },
+  {
+   "name": "In de Wildeman",
+   "category": "cafe-bar",
+   "address": "Kolksteeg 3",
+   "lat": 52.37616,
+   "lng": 4.89516,
+   "osm": [
+    "node 359249111"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/359249111"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Beer tasting house in former distillery",
+   "evidence": [
+    "https://www.indewildeman.nl/",
+    "https://www.openstreetmap.org/node/359249111"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Former distillery tasting room with gilt sign",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Proeflokaal front",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012180168",
+    "monument": null,
+    "registerPui": false,
+    "draws": "template smartshop \"AURA\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 4,
+    "visibility": "on a ride street"
+   },
+   "score": 7.2
+  },
+  {
+   "name": "Rokin 72",
+   "category": "historic-shop",
+   "address": "Rokin 72",
+   "lat": 52.37043,
+   "lng": 4.89216,
+   "osm": [
+    "node 2724001434"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2724001434"
+   ],
+   "wikidata": "Q17291553",
+   "rijksmonument": "518449",
+   "status": "open-same-business",
+   "now": "J.M. Schmidt optician (OSM)",
+   "evidence": [
+    "https://nl.wikipedia.org/wiki/Rokin_72",
+    "https://www.wikidata.org/wiki/Q17291553",
+    "https://www.openstreetmap.org/node/2724001434"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Rokin_72,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Listed shop facade on the Rokin",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Listed pui",
+   "verification": "partially-verified",
+   "verificationNote": "OSM tenant only",
+   "game": {
+    "located": true,
+    "pand": "0363100012175309",
+    "monument": "518449",
+    "registerPui": true,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 5,
+    "visibility": "on a ride street"
+   },
+   "score": 6.5
+  },
+  {
+   "name": "Gunters & Meuser",
+   "category": "historic-shop",
+   "address": "Egelantiersgracht 2-6",
+   "lat": 52.37681,
+   "lng": 4.88449,
+   "osm": [
+    "node 6366091331"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/6366091331"
+   ],
+   "wikidata": "Q17302679",
+   "rijksmonument": "518321",
+   "status": "open-same-business",
+   "now": "Gunters en Meuser hardware/DIY shop",
+   "evidence": [
+    "https://www.wikidata.org/wiki/Q17302679",
+    "https://www.openstreetmap.org/node/6366091331"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Gunters_&_Meuser_(Amsterdam)",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Listed shop building on the Prinsengracht corner",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Listed pui",
+   "verification": "partially-verified",
+   "verificationNote": "OSM only",
+   "game": {
+    "located": true,
+    "pand": "0363100012172993",
+    "monument": "518321",
+    "registerPui": true,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 11,
+    "visibility": "on a ride street"
+   },
+   "score": 6.5
+  },
+  {
+   "name": "Waterlooplein market",
+   "category": "market",
+   "address": "Waterlooplein",
+   "lat": 52.36862,
+   "lng": 4.90119,
+   "osm": [
+    "node 1611202846"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/1611202846"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Flea market stalls",
+   "evidence": [
+    "https://waterlooplein.amsterdam/",
+    "https://www.openstreetmap.org/node/1611202846"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Waterlooplein,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Grid of flea-market stalls with tarps on the square",
+   "route": "market-stall-kit",
+   "routeReason": "Square-filling stall grid",
+   "verification": "partially-verified",
+   "verificationNote": "OSM marketplace current; official site returned a WordPress error (500) on 2026-11-20",
+   "game": {
+    "located": true,
+    "pand": "0363100012254454",
+    "monument": null,
+    "registerPui": false,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 15,
+    "visibility": "seen from a ride street"
+   },
+   "score": 6
+  },
+  {
+   "name": "Café 't Smalle",
+   "category": "cafe-bar",
+   "address": "Egelantiersgracht 12",
+   "lat": 52.37672,
+   "lng": 4.88414,
+   "osm": [
+    "node 1447362298"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/1447362298"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Brown café with canal-side terrace",
+   "evidence": [
+    "https://www.openstreetmap.org/node/1447362298"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Egelantiersgracht_12,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Narrow 18th-c. house with lamp-lit front and floating terrace on the canal",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Brown-café pui plus terrace",
+   "verification": "partially-verified",
+   "verificationNote": "OSM bar node current only",
+   "game": {
+    "located": true,
+    "pand": "0363100012173636",
+    "monument": "990",
+    "registerPui": true,
+    "draws": "template brownBar \"T SMALLE\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 6,
+    "visibility": "on a ride street"
+   },
+   "score": 6
+  },
+  {
+   "name": "Dampkring",
+   "category": "cafe-bar",
+   "address": "Handboogstraat 29",
+   "lat": 52.36773,
+   "lng": 4.89048,
+   "osm": [
+    "node 5040954429"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/5040954429"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Coffeeshop (Ocean's Twelve location)",
+   "evidence": [
+    "https://www.openstreetmap.org/node/5040954429"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Painted, decorated shopfront",
+   "route": "ground-floor-fit",
+   "routeReason": "Decorated front on ordinary house",
+   "verification": "partially-verified",
+   "verificationNote": "OSM only; a second branch at Haarlemmerstraat 44 (node 2399746758)",
+   "game": {
+    "located": true,
+    "pand": "0363100012175879",
+    "monument": null,
+    "registerPui": false,
+    "draws": "template coffeeshop \"DAMPKRING\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 4,
+    "visibility": "on a ride street"
+   },
+   "score": 6
+  },
+  {
+   "name": "Café Karpershoek",
+   "category": "cafe-bar",
+   "address": "Martelaarsgracht 2",
+   "lat": 52.37812,
+   "lng": 4.89676,
+   "osm": [
+    "node 2721521364"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2721521364"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Brown café (claims 1606)",
+   "evidence": [
+    "https://www.openstreetmap.org/node/2721521364"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Martelaarsgracht_2,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Corner brown café opposite Centraal Station",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Brown-café pui",
+   "verification": "partially-verified",
+   "verificationNote": "OSM only",
+   "game": {
+    "located": true,
+    "pand": "0363100012178492",
+    "monument": [
+     "3684",
+     "4127"
+    ],
+    "registerPui": false,
+    "draws": "template brownBar \"KARPERSHOEK\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 12,
+    "visibility": "on a ride street"
+   },
+   "score": 6
+  },
+  {
+   "name": "Café 't Mandje",
+   "category": "cafe-bar",
+   "address": "Zeedijk 63",
+   "lat": 52.37472,
+   "lng": 4.90111,
+   "osm": [
+    "node 1739766984"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/1739766984"
+   ],
+   "wikidata": "Q5017290",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Historic gay bar (1927)",
+   "evidence": [
+    "https://en.wikipedia.org/wiki/Caf%C3%A9_%27t_Mandje",
+    "https://www.wikidata.org/wiki/Q5017290",
+    "https://www.openstreetmap.org/node/1739766984"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Caf%C3%A9_'t_Mandje",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Small café front on the Zeedijk",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Small pui",
+   "verification": "partially-verified",
+   "verificationNote": "OSM pub current",
+   "game": {
+    "located": true,
+    "pand": "0363100012182372",
+    "monument": null,
+    "registerPui": false,
+    "draws": "recipe GLB ordinary-0363100012182372",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 8,
+    "visibility": "on a ride street"
+   },
+   "score": 6
+  },
+  {
+   "name": "Condomerie",
+   "category": "historic-shop",
+   "address": "Warmoesstraat 141",
+   "lat": 52.37368,
+   "lng": 4.89587,
+   "osm": [
+    "node 251150452"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/251150452"
+   ],
+   "wikidata": "Q136408263",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Condomerie (since 1987)",
+   "evidence": [
+    "https://www.wikidata.org/wiki/Q136408263",
+    "https://www.openstreetmap.org/node/251150452"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Condomerie_(Amsterdam)",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Painted shopfront with themed window displays",
+   "route": "ground-floor-fit",
+   "routeReason": "Signage on ordinary house",
+   "verification": "partially-verified",
+   "verificationNote": "OSM only",
+   "game": {
+    "located": true,
+    "pand": "0363100012171794",
+    "monument": "328916",
+    "registerPui": false,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 8,
+    "visibility": "on a ride street"
+   },
+   "score": 6
+  },
+  {
+   "name": "Patisserie Holtkamp",
+   "category": "historic-shop",
+   "address": "Vijzelgracht 15",
+   "lat": 52.36166,
+   "lng": 4.8918,
+   "osm": [
+    "node 3913078948"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/3913078948"
+   ],
+   "wikidata": "Q14052004",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Patisserie Holtkamp (tompouce, croquettes)",
+   "evidence": [
+    "https://www.patisserieholtkamp.nl/nl",
+    "https://nl.wikipedia.org/wiki/Patisserie_Holtkamp",
+    "https://www.iamsterdam.com/en/see-and-do/eating-and-drinking/best-cake-shops-in-amsterdam",
+    "https://www.wikidata.org/wiki/Q14052004",
+    "https://www.openstreetmap.org/node/3913078948"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Vijzelgracht_15,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "1928 Amsterdam-School/art-deco shopfront by Piet Kramer with gilt lettering and crown sign",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Single small pui; kit needs art-deco timber pui with gilt fascia",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012180078",
+    "monument": null,
+    "registerPui": false,
+    "draws": "template bakery \"PATISSERIE\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 15,
+    "visibility": "seen from a ride street"
+   },
+   "score": 4.8
+  },
+  {
+   "name": "Wynand Fockink",
+   "category": "cafe-bar",
+   "address": "Pijlsteeg 31",
+   "lat": 52.37232,
+   "lng": 4.8953,
+   "osm": [
+    "node 469327701"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/469327701"
+   ],
+   "wikidata": "Q1624942",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Wynand Fockink proeflokaal and liqueur distillery",
+   "evidence": [
+    "https://wynand-fockink.nl/",
+    "https://nl.wikipedia.org/wiki/Wynand_Fockink",
+    "https://www.wikidata.org/wiki/Q1624942",
+    "https://www.openstreetmap.org/node/469327701"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Pijlsteeg_31,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Tiny 17th-c. tasting room in a narrow alley behind Krasnapolsky; painted lettering",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Alley-scale proeflokaal front",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012180316",
+    "monument": "4746",
+    "registerPui": true,
+    "draws": "template cheese \"@old-amsterdam-cheese-store\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 27,
+    "visibility": "seen from a ride street"
+   },
+   "score": 4.8
+  },
+  {
+   "name": "Former Metz & Co (Rietveld cupola)",
+   "category": "department-store",
+   "address": "Keizersgracht 455 / Leidsestraat corner",
+   "lat": 52.36622,
+   "lng": 4.88659,
+   "osm": [
+    "node 2729939359",
+    "way 267556565"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2729939359",
+    "https://www.openstreetmap.org/way/267556565"
+   ],
+   "wikidata": "Q4994191",
+   "rijksmonument": null,
+   "status": "building-exists-different-tenant",
+   "now": "Metz & Co left 2012 (moved to Leidsestraat 1-3, closed March 2013); Abercrombie & Fitch occupied until end 2022; current tenant not confirmed (OSM address node has no shop tag)",
+   "evidence": [
+    "https://nl.wikipedia.org/wiki/Metz_%26_Co",
+    "https://en.wikipedia.org/wiki/Metz_%26_Co",
+    "https://www.wikidata.org/wiki/Q4994191",
+    "https://www.openstreetmap.org/node/2729939359"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Metz_&_Co",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Corner commercial block on Keizersgracht/Leidsestraat crowned by Rietveld's 1933 glass rooftop pavilion (koepel)",
+   "route": "bespoke-landmark",
+   "routeReason": "The rooftop cupola is the identifier; ground floor tenant uncertain",
+   "verification": "partially-verified",
+   "verificationNote": "Closure verified; present tenant and survival of the cupola not confirmed by a fetched source. way 267556565 is the retail way nearest the address node (inferred, check)",
+   "game": {
+    "located": true,
+    "pand": "0363100012176395",
+    "monument": "408905",
+    "registerPui": false,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 8,
+    "visibility": "on a ride street"
+   },
+   "score": 4.5
+  },
+  {
+   "name": "Ten Katemarkt",
+   "category": "market",
+   "address": "Ten Katestraat",
+   "lat": 52.36672,
+   "lng": 4.86703,
+   "osm": [
+    "way 78090886"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/way/78090886"
+   ],
+   "wikidata": "Q11319889",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Daily street market beside De Hallen",
+   "evidence": [
+    "https://www.tenkatemarkt.nl/",
+    "https://www.wikidata.org/wiki/Q11319889",
+    "https://www.openstreetmap.org/way/78090886"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Ten_Katestraat,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Stall rows on the Ten Katestraat",
+   "route": "market-stall-kit",
+   "routeReason": "Linear stall rows",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012167027",
+    "monument": null,
+    "registerPui": false,
+    "draws": "market kit (ten-kate)",
+    "tenantShows": "stalls",
+    "streetM": 1,
+    "visibility": "on a ride street"
+   },
+   "score": 4.3
+  },
+  {
+   "name": "Café De Jaren",
+   "category": "cafe-bar",
+   "address": "Nieuwe Doelenstraat 20-22",
+   "lat": 52.36806,
+   "lng": 4.89535,
+   "osm": [
+    "node 251823631"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/251823631"
+   ],
+   "wikidata": "Q28656899",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Grand café on the Amstel",
+   "evidence": [
+    "https://cafedejaren.nl/",
+    "https://nl.wikipedia.org/wiki/De_Jaren",
+    "https://www.wikidata.org/wiki/Q28656899",
+    "https://www.openstreetmap.org/node/251823631"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:De_Jaren",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Former bank building with large windows and two Amstel terraces",
+   "route": "ground-floor-fit",
+   "routeReason": "Monumental building, café in openings",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012180413",
+    "monument": "904",
+    "registerPui": false,
+    "draws": "measured front \"Café de Jaren\"",
+    "tenantShows": "no",
+    "streetM": 9,
+    "visibility": "on a ride street"
+   },
+   "score": 4.3
+  },
+  {
+   "name": "Winkel 43",
+   "category": "cafe-bar",
+   "address": "Noordermarkt 43",
+   "lat": 52.37908,
+   "lng": 4.88623,
+   "osm": [
+    "node 13404073479"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/13404073479"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Café famous for apple pie",
+   "evidence": [
+    "https://www.winkel43.nl/",
+    "https://www.openstreetmap.org/node/13404073479"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Noordermarkt_43,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Corner café with big windows and terrace on the Noordermarkt",
+   "route": "ground-floor-fit",
+   "routeReason": "Corner café in ordinary building",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012176675",
+    "monument": "3922",
+    "registerPui": false,
+    "draws": "measured front \"Winkel 43\"",
+    "tenantShows": "no",
+    "streetM": 9,
+    "visibility": "on a ride street"
+   },
+   "score": 4.3
+  },
+  {
+   "name": "Athenaeum Boekhandel",
+   "category": "historic-shop",
+   "address": "Spui 14-16",
+   "lat": 52.36891,
+   "lng": 4.88908,
+   "osm": [
+    "node 1772991830",
+    "node 3868737201"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/1772991830",
+    "https://www.openstreetmap.org/node/3868737201"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Bookshop + Nieuwscentrum",
+   "evidence": [
+    "https://www.openstreetmap.org/node/1772991830"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Art-nouveau front on the Spui with newsstand",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Art-nouveau pui",
+   "verification": "partially-verified",
+   "verificationNote": "OSM current; site behind Cloudflare",
+   "game": {
+    "located": true,
+    "pand": "0363100012175036",
+    "monument": [
+     "5617",
+     "5618",
+     "5622"
+    ],
+    "registerPui": false,
+    "draws": "bespoke GLB athenaeum",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 13,
+    "visibility": "seen from a ride street"
+   },
+   "score": 4
+  },
+  {
+   "name": "The Bulldog Palace (ex-police station)",
+   "category": "cafe-bar",
+   "address": "Leidseplein 17",
+   "lat": 52.364,
+   "lng": 4.88338,
+   "osm": [
+    "node 1310911708"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/1310911708"
+   ],
+   "wikidata": "Q2466162",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "The Bulldog coffeeshop/bar/hotel in the former police station",
+   "evidence": [
+    "https://thebulldog.com/",
+    "https://en.wikipedia.org/wiki/The_Bulldog",
+    "https://www.wikidata.org/wiki/Q2466162",
+    "https://www.openstreetmap.org/node/1310911708"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Former police-station building on Leidseplein with Bulldog signage",
+   "route": "chain-logo",
+   "routeReason": "Existing building; Bulldog branding",
+   "verification": "verified",
+   "verificationNote": "QID is the chain",
+   "game": {
+    "located": true,
+    "pand": "0363100012168742",
+    "monument": null,
+    "registerPui": false,
+    "draws": "template coffeeshop \"@the-bulldog\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 10,
+    "visibility": "on a ride street"
+   },
+   "score": 3.6
+  },
+  {
+   "name": "The Bulldog The First",
+   "category": "cafe-bar",
+   "address": "Oudezijds Voorburgwal 90",
+   "lat": 52.37366,
+   "lng": 4.8977,
+   "osm": [
+    "node 2724286155"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2724286155"
+   ],
+   "wikidata": "Q2466162",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Original 1975 Bulldog coffeeshop",
+   "evidence": [
+    "https://thebulldog.com/",
+    "https://www.wikidata.org/wiki/Q2466162",
+    "https://www.openstreetmap.org/node/2724286155"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Painted canal-house front with Bulldog sign",
+   "route": "chain-logo",
+   "routeReason": "Branding on ordinary house",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012178229",
+    "monument": null,
+    "registerPui": false,
+    "draws": "template coffeeshop \"@the-bulldog\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 7,
+    "visibility": "on a ride street"
+   },
+   "score": 3.6
+  },
+  {
+   "name": "Spui 10 (Rituals)",
+   "category": "department-store",
+   "address": "Spui 10",
+   "lat": 52.36901,
+   "lng": 4.89056,
+   "osm": [
+    "node 2724000369",
+    "node 10937944718"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2724000369",
+    "https://www.openstreetmap.org/node/10937944718"
+   ],
+   "wikidata": "Q2074435",
+   "rijksmonument": "518462",
+   "status": "building-exists-different-tenant",
+   "now": "House of Rituals + Rituals café",
+   "evidence": [
+    "https://nl.wikipedia.org/wiki/Spui_10",
+    "https://www.wikidata.org/wiki/Q2074435",
+    "https://www.openstreetmap.org/node/2724000369"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Spui_10,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Monumental former department-store building on the Spui",
+   "route": "ground-floor-fit",
+   "routeReason": "Monument front, chain inside",
+   "verification": "partially-verified",
+   "verificationNote": "OSM tenant only",
+   "game": {
+    "located": true,
+    "pand": "0363100012175489",
+    "monument": "518462",
+    "registerPui": true,
+    "draws": "template gelato on the generated wall",
+    "tenantShows": "template",
+    "streetM": 10,
+    "visibility": "on a ride street"
+   },
+   "score": 3.5
+  },
+  {
+   "name": "Magna Plaza (former Hoofdpostkantoor)",
+   "category": "arcade/mall",
+   "address": "Nieuwezijds Voorburgwal 182",
+   "lat": 52.37366,
+   "lng": 4.89024,
+   "osm": [
+    "way 57861220",
+    "node 11153530605"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/way/57861220",
+    "https://www.openstreetmap.org/node/11153530605"
+   ],
+   "wikidata": "Q1962448",
+   "rijksmonument": "5989",
+   "status": "open-same-business",
+   "now": "Shopping centre in the 1899 neo-Gothic post office; The Food Department food hall on the 2nd floor (2019)",
+   "evidence": [
+    "https://nl.wikipedia.org/wiki/Magna_Plaza",
+    "https://en.wikipedia.org/wiki/Magna_Plaza",
+    "https://www.wikidata.org/wiki/Q1962448",
+    "https://www.openstreetmap.org/way/57861220"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Nieuwezijds_Voorburgwal_182",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Neo-Gothic/Renaissance brick-and-stone palace with towers and pinnacles behind the Paleis",
+   "route": "bespoke-landmark",
+   "routeReason": "Whole-building landmark; retail is interior",
+   "verification": "verified",
+   "verificationNote": "nl.wikipedia (edited 2025-07) lists it in use as winkelcentrum; note magnaplaza.nl returned 404 on 2026-11-20 — worth watching",
+   "game": {
+    "located": true,
+    "pand": "0363100012167578",
+    "monument": "5989",
+    "registerPui": false,
+    "draws": "bespoke GLB magna-plaza",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 22,
+    "visibility": "seen from a ride street"
+   },
+   "score": 3.4
+  },
+  {
+   "name": "American Hotel / Café Américain",
+   "category": "cafe-bar",
+   "address": "Leidsekade 97 / Leidseplein 28",
+   "lat": 52.36394,
+   "lng": 4.88117,
+   "osm": [
+    "way 267565844",
+    "node 355177738",
+    "node 154798750"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/way/267565844",
+    "https://www.openstreetmap.org/node/355177738",
+    "https://www.openstreetmap.org/node/154798750"
+   ],
+   "wikidata": "Q2248135",
+   "rijksmonument": "3403",
+   "status": "open-same-business",
+   "now": "Clayton Hotel Amsterdam American; Café Américain still trading",
+   "evidence": [
+    "https://www.claytonhotels.com/amsterdam/cafe-americain",
+    "https://en.wikipedia.org/wiki/American_Hotel,_Amsterdam",
+    "https://nl.wikipedia.org/wiki/Caf%C3%A9_Am%C3%A9ricain",
+    "https://www.wikidata.org/wiki/Q2248135",
+    "https://www.openstreetmap.org/way/267565844"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:American_Hotel,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "1902 Art Nouveau hotel with tower; Café Américain's tall arched windows and terrace on Leidseplein",
+   "route": "bespoke-landmark",
+   "routeReason": "Leidseplein landmark",
+   "verification": "verified",
+   "verificationNote": "Hotel brand changed (Hard Rock → Clayton per Wikidata website/OSM)",
+   "game": {
+    "located": true,
+    "pand": "0363100012168734",
+    "monument": [
+     "3403",
+     "518484"
+    ],
+    "registerPui": false,
+    "draws": "bespoke GLB american-hotel",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 26,
+    "visibility": "seen from a ride street"
+   },
+   "score": 3.4
+  },
+  {
+   "name": "Pathé Tuschinski",
+   "category": "cinema",
+   "address": "Reguliersbreestraat 26-34",
+   "lat": 52.36651,
+   "lng": 4.89471,
+   "osm": [
+    "node 2725878867"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2725878867"
+   ],
+   "wikidata": "Q599272",
+   "rijksmonument": "4828",
+   "status": "open-same-business",
+   "now": "Pathé Tuschinski cinema",
+   "evidence": [
+    "https://nl.wikipedia.org/wiki/Koninklijk_Theater_Tuschinski",
+    "https://en.wikipedia.org/wiki/Tuschinski_Theatre",
+    "https://www.wikidata.org/wiki/Q599272",
+    "https://www.openstreetmap.org/node/2725878867"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Tuschinski_Theater",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "1921 art-deco/Amsterdam School front with twin towers, glazed tiles and illuminated canopy",
+   "route": "bespoke-landmark",
+   "routeReason": "Unique facade",
+   "verification": "verified",
+   "verificationNote": "Pathé site blocked automated fetch; OSM cinema node + Wikidata website current",
+   "game": {
+    "located": true,
+    "pand": "0363100012168188",
+    "monument": "4828",
+    "registerPui": false,
+    "draws": "bespoke GLB tuschinski",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 1,
+    "visibility": "on a ride street"
+   },
+   "score": 3.1
+  },
+  {
+   "name": "STACH",
+   "category": "other",
+   "address": "Nieuwe Spiegelstraat 52 (and many branches)",
+   "lat": 52.3635,
+   "lng": 4.88866,
+   "osm": [
+    "node 1354632439"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/1354632439"
+   ],
+   "wikidata": "Q124807442",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "STACH deli chain",
+   "evidence": [
+    "https://www.wikidata.org/wiki/Q124807442",
+    "https://www.openstreetmap.org/node/1354632439"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Modern deli fronts",
+   "route": "chain-logo",
+   "routeReason": "Chain branding, not a historic front",
+   "verification": "partially-verified",
+   "verificationNote": "OSM nodes current; stach-food.nl unreachable",
+   "game": {
+    "located": true,
+    "pand": "0363100012177098",
+    "monument": null,
+    "registerPui": false,
+    "draws": "template stach on the generated wall",
+    "tenantShows": "template",
+    "streetM": 5,
+    "visibility": "on a ride street"
+   },
+   "score": 3
+  },
+  {
+   "name": "Former Maison de Bonneterie",
+   "category": "department-store",
+   "address": "Rokin 140 / Kalverstraat 183",
+   "lat": 52.36805,
+   "lng": 4.8921,
+   "osm": [
+    "way 266907917"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/way/266907917"
+   ],
+   "wikidata": "Q17301592",
+   "rijksmonument": "5024",
+   "status": "building-exists-different-tenant",
+   "now": "H&M concept store (clothing rental, repair) since Nov 2021",
+   "evidence": [
+    "https://nl.wikipedia.org/wiki/Maison_de_Bonneterie",
+    "https://www.wikidata.org/wiki/Q17301592",
+    "https://www.openstreetmap.org/way/266907917"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Rokin_140,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "1909 department-store front on the Rokin with large arched display windows and domed glass atrium",
+   "route": "ground-floor-fit",
+   "routeReason": "Monumental front stays; model H&M in the existing openings",
+   "verification": "verified",
+   "verificationNote": "Bonneterie closed Aug/Sep 2014; H&M reopened 2021 per nl.wikipedia",
+   "game": {
+    "located": true,
+    "pand": "0363100012175222",
+    "monument": "5024",
+    "registerPui": false,
+    "draws": "template clothes \"@h-and-m\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 25,
+    "visibility": "seen from a ride street"
+   },
+   "score": 2.9
+  },
+  {
+   "name": "Café Hoppe",
+   "category": "cafe-bar",
+   "address": "Spui 18-20",
+   "lat": 52.36879,
+   "lng": 4.88858,
+   "osm": [
+    "node 725239184"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/725239184"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Café Hoppe, brown café (since 1670)",
+   "evidence": [
+    "https://cafehoppe.com/",
+    "https://www.amsterdamnow.com/en/going-out-entertainment/cafe-hoppe-on-the-spui-brown-pub-with-350-years-of-history/",
+    "https://www.openstreetmap.org/node/725239184"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Caf%C3%A9_Hoppe",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Brown-café front on the Spui with heavy curtains, painted name and summer terrace",
+   "route": "historic-shopfront-kit",
+   "routeReason": "Brown-café pui type",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012177199",
+    "monument": [
+     "5556",
+     "5557"
+    ],
+    "registerPui": false,
+    "draws": "measured front \"Café Hoppe\"",
+    "tenantShows": "template",
+    "streetM": 16,
+    "visibility": "seen from a ride street"
+   },
+   "score": 2.9
+  },
+  {
+   "name": "Albert Cuypmarkt",
+   "category": "market",
+   "address": "Albert Cuypstraat",
+   "lat": 52.35605,
+   "lng": 4.89497,
+   "osm": [
+    "relation 7112728",
+    "node 5756367437"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/relation/7112728",
+    "https://www.openstreetmap.org/node/5756367437"
+   ],
+   "wikidata": "Q2342892",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Daily street market (~260 stalls)",
+   "evidence": [
+    "https://albertcuyp-markt.amsterdam/",
+    "https://en.wikipedia.org/wiki/Albert_Cuyp_Market",
+    "https://www.wikidata.org/wiki/Q2342892",
+    "https://www.openstreetmap.org/relation/7112728"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Albert_Cuyp_markt",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Two continuous rows of striped-awning stalls down the street centre",
+   "route": "market-stall-kit",
+   "routeReason": "Biggest stall row in the city",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012158056",
+    "monument": null,
+    "registerPui": false,
+    "draws": "market kit (albert-cuyp)",
+    "tenantShows": "stalls",
+    "streetM": 19,
+    "visibility": "seen from a ride street"
+   },
+   "score": 2.9
+  },
+  {
+   "name": "Hirschgebouw",
+   "category": "department-store",
+   "address": "Leidseplein 25 (23-31)",
+   "lat": 52.3633,
+   "lng": 4.88237,
+   "osm": [
+    "way 114538347"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/way/114538347"
+   ],
+   "wikidata": "Q17291551",
+   "rijksmonument": "518447",
+   "status": "building-exists-different-tenant",
+   "now": "Apple Store Amsterdam (+ offices); Hirsch fashion house long gone",
+   "evidence": [
+    "https://www.apple.com/nl/retail/amsterdam/",
+    "https://nl.wikipedia.org/wiki/Hirschgebouw",
+    "https://www.wikidata.org/wiki/Q17291551",
+    "https://www.openstreetmap.org/way/114538347"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Hirschgebouw",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "1912 corner fashion-house block with corner tower and glazed shop base on Leidseplein",
+   "route": "ground-floor-fit",
+   "routeReason": "Monument facade; Apple glazing in existing openings",
+   "verification": "verified",
+   "verificationNote": "Albert Heijn / Rijksmuseum shop tenancy NOT confirmed by any fetched source",
+   "game": {
+    "located": true,
+    "pand": "0363100012165488",
+    "monument": "518447",
+    "registerPui": true,
+    "draws": "bespoke GLB hirschgebouw",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 28,
+    "visibility": "seen from a ride street"
+   },
+   "score": 2.9
+  },
+  {
+   "name": "Peek & Cloppenburg Dam",
+   "category": "department-store",
+   "address": "Dam 20",
+   "lat": 52.37252,
+   "lng": 4.89241,
+   "osm": [
+    "node 2089361010"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2089361010"
+   ],
+   "wikidata": "Q17291523",
+   "rijksmonument": "518421",
+   "status": "open-same-business",
+   "now": "Peek & Cloppenburg store",
+   "evidence": [
+    "https://www.wikidata.org/wiki/Q17291523",
+    "https://www.openstreetmap.org/node/2089361010"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Peek_&_Cloppenburg,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "1917 'Um 1800'-style stone department store facade on the Dam",
+   "route": "bespoke-landmark",
+   "routeReason": "Monumental Dam frontage",
+   "verification": "partially-verified",
+   "verificationNote": "OSM current; no official page fetched",
+   "game": {
+    "located": true,
+    "pand": "0363100012175378",
+    "monument": "518421",
+    "registerPui": false,
+    "draws": "bespoke GLB madame-tussauds",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 23,
+    "visibility": "seen from a ride street"
+   },
+   "score": 2.9
+  },
+  {
+   "name": "Kalverstraat 152 neo-Venetian shop",
+   "category": "historic-shop",
+   "address": "Kalverstraat 152",
+   "lat": 52.36876,
+   "lng": 4.891,
+   "osm": [
+    "node 1218638250"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/1218638250"
+   ],
+   "wikidata": "Q17289975",
+   "rijksmonument": "2166",
+   "status": "building-exists-different-tenant",
+   "now": "Waterstones bookshop",
+   "evidence": [
+    "https://www.wikidata.org/wiki/Q17289975",
+    "https://www.openstreetmap.org/node/1218638250"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Kalverstraat_152,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Neo-Venetian Renaissance shop facade with arched windows",
+   "route": "ground-floor-fit",
+   "routeReason": "Monument front, tenant in openings",
+   "verification": "partially-verified",
+   "verificationNote": "OSM tenant only",
+   "game": {
+    "located": true,
+    "pand": "0363100012176764",
+    "monument": "2166",
+    "registerPui": false,
+    "draws": "template books \"WATERSTONES\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 20,
+    "visibility": "seen from a ride street"
+   },
+   "score": 2.5
+  },
+  {
+   "name": "Gebouw Kosmos",
+   "category": "department-store",
+   "address": "Koningsplein 1",
+   "lat": 52.36694,
+   "lng": 4.88944,
+   "osm": [
+    "node 3050586622"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/3050586622"
+   ],
+   "wikidata": "Q2801828",
+   "rijksmonument": "518359",
+   "status": "building-exists-different-tenant",
+   "now": "Ground floor shops incl. Bimba y Lola (OSM)",
+   "evidence": [
+    "https://nl.wikipedia.org/wiki/Gebouw_Kosmos",
+    "https://www.wikidata.org/wiki/Q2801828",
+    "https://www.openstreetmap.org/node/3050586622"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Koningsplein_1,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Corner commercial block at Koningsplein/Singel with rounded corner",
+   "route": "ground-floor-fit",
+   "routeReason": "Monument corner block",
+   "verification": "partially-verified",
+   "verificationNote": "OSM tenant only",
+   "game": {
+    "located": true,
+    "pand": "0363100012176254",
+    "monument": [
+     "3100",
+     "3101",
+     "3102",
+     "4836",
+     "4842"
+    ],
+    "registerPui": false,
+    "draws": "template clothes \"@samsonite\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 15,
+    "visibility": "seen from a ride street"
+   },
+   "score": 2.5
+  },
+  {
+   "name": "Kalverpassage (former Kalvertoren)",
+   "category": "arcade/mall",
+   "address": "Kalverstraat 212-220 / Singel 457",
+   "lat": 52.36747,
+   "lng": 4.89156,
+   "osm": [
+    "way 266908024"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/way/266908024"
+   ],
+   "wikidata": "Q2596789",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Kalverpassage shopping centre",
+   "evidence": [
+    "https://www.kalverpassage.nl/",
+    "https://en.wikipedia.org/wiki/Kalvertoren",
+    "https://www.wikidata.org/wiki/Q2596789",
+    "https://www.openstreetmap.org/way/266908024"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Kalverpassage",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "1997 glass-and-stone mall with passage through to the Singel and rooftop café",
+   "route": "ground-floor-fit",
+   "routeReason": "Modern mall front, tenants in openings",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012165086",
+    "monument": [
+     "1482",
+     "2182",
+     "518432"
+    ],
+    "registerPui": false,
+    "draws": "bespoke GLB kalvertoren",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 40,
+    "visibility": "off the corridor"
+   },
+   "score": 2.4
+  },
+  {
+   "name": "De Negen Straatjes",
+   "category": "flagship-street",
+   "address": "Reestraat/Hartenstraat/Gasthuismolensteeg … Wolvenstraat/Runstraat/Huidenstraat",
+   "lat": 52.37,
+   "lng": 4.885833,
+   "osm": [],
+   "osmUrls": [],
+   "wikidata": "Q1980981",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Nine side streets of independent boutiques",
+   "evidence": [
+    "https://en.wikipedia.org/wiki/Negen_Straatjes",
+    "https://www.wikidata.org/wiki/Q1980981"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:De_Negen_Straatjes",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Continuous independent shopfronts in narrow canal cross-streets",
+   "route": "historic-shopfront-kit",
+   "routeReason": "District look, many small puien",
+   "verification": "verified",
+   "verificationNote": "Area item; coords are Wikidata centroid",
+   "game": {
+    "located": true,
+    "pand": "0363100012169204",
+    "monument": null,
+    "registerPui": false,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 35,
+    "visibility": "off the corridor"
+   },
+   "score": 2.4
+  },
+  {
+   "name": "Gebroeders Niemeijer",
+   "category": "historic-shop",
+   "address": "Nieuwendijk 35",
+   "lat": 52.37818,
+   "lng": 4.89565,
+   "osm": [
+    "node 2721521912"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2721521912"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "French artisanal bakery",
+   "evidence": [
+    "https://www.gebroedersniemeijer.nl/en/",
+    "https://www.openstreetmap.org/node/2721521912"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Bakery front with lettering",
+   "route": "ground-floor-fit",
+   "routeReason": "Modest front",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012179064",
+    "monument": [
+     "3753",
+     "3754"
+    ],
+    "registerPui": false,
+    "draws": "template bakery \"GEBROEDERS\" on the generated wall",
+    "tenantShows": "template",
+    "streetM": 31,
+    "visibility": "off the corridor"
+   },
+   "score": 2.4
+  },
+  {
+   "name": "Gravenstraat 15 neo-Gothic shop",
+   "category": "historic-shop",
+   "address": "Gravenstraat 15",
+   "lat": 52.37419,
+   "lng": 4.89226,
+   "osm": [
+    "node 2721722615"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2721722615"
+   ],
+   "wikidata": "Q17233385",
+   "rijksmonument": "1225",
+   "status": "building-exists-different-tenant",
+   "now": "De Drie Monnikjes gift shop (OSM)",
+   "evidence": [
+    "https://www.wikidata.org/wiki/Q17233385",
+    "https://www.openstreetmap.org/node/2721722615"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Gravenstraat_15,_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Tiny neo-Gothic shop wedged between two chapels of the Nieuwe Kerk",
+   "route": "bespoke-landmark",
+   "routeReason": "Unique miniature shop against the church",
+   "verification": "partially-verified",
+   "verificationNote": "OSM tenant only",
+   "game": {
+    "located": true,
+    "pand": "w747924625",
+    "monument": null,
+    "registerPui": false,
+    "draws": "bespoke GLB nieuwe-kerk",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 6,
+    "visibility": "on a ride street"
+   },
+   "score": 2.3
+  },
+  {
+   "name": "De Bijenkorf",
+   "category": "department-store",
+   "address": "Dam 1",
+   "lat": 52.37335,
+   "lng": 4.89394,
+   "osm": [
+    "node 4455062076",
+    "way 23582490"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/4455062076",
+    "https://www.openstreetmap.org/way/23582490"
+   ],
+   "wikidata": "Q7476165",
+   "rijksmonument": "518426",
+   "status": "open-same-business",
+   "now": "De Bijenkorf flagship department store",
+   "evidence": [
+    "https://nl.wikipedia.org/wiki/De_Bijenkorf_(Amsterdam)",
+    "https://www.wikidata.org/wiki/Q7476165",
+    "https://www.openstreetmap.org/node/4455062076"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Bijenkorf_Amsterdam",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "1913-15 brick/natural-stone corner block on the Dam with giant lettering and long display-window base",
+   "route": "bespoke-landmark",
+   "routeReason": "Dam-square anchor, whole-block distinctive mass and signage",
+   "verification": "verified",
+   "verificationNote": "OSM shop=department_store current; official site blocked automated fetch (403)",
+   "game": {
+    "located": true,
+    "pand": "w751235773",
+    "monument": null,
+    "registerPui": false,
+    "draws": "bespoke GLB de-bijenkorf",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 22,
+    "visibility": "seen from a ride street"
+   },
+   "score": 2.2
+  },
+  {
+   "name": "Brouwerij 't IJ (De Gooyer)",
+   "category": "cafe-bar",
+   "address": "Funenkade 7",
+   "lat": 52.3667,
+   "lng": 4.92635,
+   "osm": [
+    "node 332059860",
+    "node 33057057"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/332059860",
+    "https://www.openstreetmap.org/node/33057057"
+   ],
+   "wikidata": "Q3496897",
+   "rijksmonument": "1107",
+   "status": "open-same-business",
+   "now": "Brewery tap beside De Gooyer windmill",
+   "evidence": [
+    "https://www.brouwerijhetij.nl/",
+    "https://en.wikipedia.org/wiki/Brouwerij_%27t_IJ",
+    "https://www.wikidata.org/wiki/Q3496897",
+    "https://www.openstreetmap.org/node/332059860"
+   ],
+   "commonsCategory": "https://commons.wikimedia.org/wiki/Category:Brouwerij_'t_IJ",
+   "streetPhotoOnCommons": true,
+   "distinctiveFront": "Former bathhouse at the foot of the De Gooyer windmill; ostrich logo",
+   "route": "bespoke-landmark",
+   "routeReason": "Windmill (rm 1107, Q2756543) is the identifier",
+   "verification": "verified",
+   "verificationNote": "rijksmonument number is the windmill's (OSM tag), not the brewery's",
+   "game": {
+    "located": true,
+    "pand": "0363100012169757",
+    "monument": null,
+    "registerPui": false,
+    "draws": "bespoke GLB brouwerij-het-ij",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 15,
+    "visibility": "seen from a ride street"
+   },
+   "score": 2.2
+  },
+  {
+   "name": "Kramer / Pontifex (candles & doll doctor)",
+   "category": "historic-shop",
+   "address": "Reestraat 20 (per OSM)",
+   "lat": 52.37245,
+   "lng": 4.8838,
+   "osm": [
+    "node 2721938792"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/2721938792"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "unverified",
+   "now": "OSM lists 'E. Kramer' candle shop at Reestraat 20",
+   "evidence": [
+    "https://www.timeout.com/amsterdam/shops/kramer-pontifex",
+    "https://www.openstreetmap.org/node/2721938792"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Tiny shop with candles and dolls in the window",
+   "route": "ground-floor-fit",
+   "routeReason": "Small front",
+   "verification": "unverified",
+   "verificationNote": "Time Out listing undated; not confirmed whether shop is current or matches the Reguliersdwarsstraat memory",
+   "game": {
+    "located": true,
+    "pand": "0363100012173674",
+    "monument": null,
+    "registerPui": false,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 7,
+    "visibility": "on a ride street"
+   },
+   "score": 1.5
+  },
+  {
+   "name": "De Hallen / Foodhallen",
+   "category": "arcade/mall",
+   "address": "Bellamyplein 51 / Hannie Dankbaarpassage",
+   "lat": 52.36705,
+   "lng": 4.86816,
+   "osm": [
+    "way 94517266",
+    "node 9208574947"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/way/94517266",
+    "https://www.openstreetmap.org/node/9208574947"
+   ],
+   "wikidata": "Q16466032",
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Foodhallen food hall, OBA library, cinema, hotel in the former tram depot",
+   "evidence": [
+    "https://foodhallen.nl/",
+    "https://nl.wikipedia.org/wiki/De_Hallen_(Amsterdam)",
+    "https://www.wikidata.org/wiki/Q16466032",
+    "https://www.openstreetmap.org/way/94517266"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "1902 tram-depot halls with brick gables and big hall doors on the passage",
+   "route": "bespoke-landmark",
+   "routeReason": "Already staged in the repo's De Hallen lane",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012236693",
+    "monument": [
+     "524819",
+     "524820",
+     "524821",
+     "524824"
+    ],
+    "registerPui": false,
+    "draws": "bespoke GLB de-hallen",
+    "tenantShows": "no (model hides the pand; tenant invisible)",
+    "streetM": 49,
+    "visibility": "off the corridor"
+   },
+   "score": 1.4
+  },
+  {
+   "name": "Former V&D Kalverstraat",
+   "category": "department-store",
+   "address": "Kalverstraat 201-203",
+   "lat": 52.36764,
+   "lng": 4.89241,
+   "osm": [
+    "node 432862171",
+    "node 13037091771"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/432862171",
+    "https://www.openstreetmap.org/node/13037091771"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "building-exists-different-tenant",
+   "now": "La Place restaurant (alcohol licence Feb 2025) and a Zeekr car showroom (reported May 2024; OSM node present)",
+   "evidence": [
+    "https://zoek.officielebekendmakingen.nl/gmb-2025-63727.html",
+    "https://nltimes.nl/node/73102",
+    "https://construsoftbimawards.com/wp-content/uploads/2020/05/1589445345__Korte-omschrijving-voormalig-VD-1.pdf",
+    "https://www.openstreetmap.org/node/432862171"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Large inter-war department-store block on Kalverstraat, renovated by Office Winhov (IEF Capital)",
+   "route": "ground-floor-fit",
+   "routeReason": "Big glazed retail base; tenants change, keep facade",
+   "verification": "partially-verified",
+   "verificationNote": "Building footprint way not resolved; tenants from 2024/2025 sources",
+   "game": {
+    "located": true,
+    "pand": "0363100100092603",
+    "monument": null,
+    "registerPui": false,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 36,
+    "visibility": "off the corridor"
+   },
+   "score": 1
+  },
+  {
+   "name": "P.C. Hooftstraat flagships",
+   "category": "flagship-street",
+   "address": "Pieter Cornelisz. Hooftstraat",
+   "lat": null,
+   "lng": null,
+   "osm": [],
+   "osmUrls": [],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "unverified",
+   "now": "Luxury flagship street (not checked this pass)",
+   "evidence": [],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Luxury brand flagships with stone-clad fronts",
+   "route": "chain-logo",
+   "routeReason": "Brand signage on 19th-c. houses",
+   "verification": "unverified",
+   "verificationNote": "No OSM/Wikidata/Commons record retrieved; coordinates not given",
+   "game": {
+    "located": false
+   },
+   "score": 0
+  },
+  {
+   "name": "Brandmeesters",
+   "category": "cafe-bar",
+   "address": "Maasstraat 84 (moved from Van Baerlestraat 13)",
+   "lat": 52.34475,
+   "lng": 4.89488,
+   "osm": [
+    "node 4987288027"
+   ],
+   "osmUrls": [
+    "https://www.openstreetmap.org/node/4987288027"
+   ],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "open-same-business",
+   "now": "Coffee roaster/café now in Rivierenbuurt",
+   "evidence": [
+    "https://www.brandmeesters.nl/",
+    "https://www.iamsterdam.com/en/whats-on/calendar/shopping/shops/brandmeesters",
+    "https://www.openstreetmap.org/node/4987288027"
+   ],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Ordinary shopfront",
+   "route": "skip",
+   "routeReason": "Moved out of the Museumkwartier; not iconic at new address",
+   "verification": "verified",
+   "verificationNote": "",
+   "game": {
+    "located": true,
+    "pand": "0363100012112225",
+    "monument": null,
+    "registerPui": false,
+    "draws": "generic generated facade",
+    "tenantShows": "no",
+    "streetM": 5,
+    "visibility": "on a ride street"
+   },
+   "score": 0
+  },
+  {
+   "name": "Rokin 'ex-Galleries'",
+   "category": "other",
+   "address": "Rokin",
+   "lat": null,
+   "lng": null,
+   "osm": [],
+   "osmUrls": [],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "unverified",
+   "now": "Not identified",
+   "evidence": [],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "",
+   "route": "skip",
+   "routeReason": "Could not identify which building was meant",
+   "verification": "unverified",
+   "verificationNote": "",
+   "game": {
+    "located": false
+   },
+   "score": 0
+  },
+  {
+   "name": "Ome Jan / De Klomp souvenir shops",
+   "category": "other",
+   "address": "Damrak / centre",
+   "lat": null,
+   "lng": null,
+   "osm": [],
+   "osmUrls": [],
+   "wikidata": null,
+   "rijksmonument": null,
+   "status": "unverified",
+   "now": "Not checked",
+   "evidence": [],
+   "commonsCategory": null,
+   "streetPhotoOnCommons": false,
+   "distinctiveFront": "Clog-and-souvenir fronts",
+   "route": "chain-logo",
+   "routeReason": "Low iconic value",
+   "verification": "unverified",
+   "verificationNote": "",
+   "game": {
+    "located": false
+   },
+   "score": 0
+  }
+ ]
+}

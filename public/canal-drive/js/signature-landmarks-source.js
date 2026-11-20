@@ -14,6 +14,7 @@
 import { createRecipeLook, RECIPE_LOOK_SHARED } from '../../../src/canalRecall/buildingRecipe/recipeLook.ts';
 import { plainBounds, withinView } from '../../../src/canalRecall/engine/worldStreamer.ts';
 import { normaliseLandmarkMaterials } from '../../../src/canalRecall/landmarks/landmarkShading.ts';
+import { attachRetailFit } from '../../../src/canalRecall/retailFit/three.ts';
 import { depthFadeFlag, depthFadeOptOut } from '../../../src/canalRecall/look/depthFade.ts';
 import { countsAsLandmark } from '../../../src/canalRecall/buildingCategory.ts';
 import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
@@ -1316,6 +1317,11 @@ export class SignatureLandmarks {
     if (imported.userData.recipeLook) {
       enuFromWorld = new THREE.Matrix3().setFromMatrix4(transform);
       enuFromWorld.premultiply(new THREE.Matrix3().set(1, 0, 0, 0, -1, 0, 0, 0, 1)).multiplyScalar(1 / units);
+    }
+    // Lane retail-fit (`?retailFit=1`): tenants inside the model's own ground openings (retailFit/three.ts), full level only.
+    if (level === 'full') {
+      group.updateMatrix();
+      attachRetailFit(THREE, spec, imported, new THREE.Matrix4().copy(transform).multiply(group.matrix), (lng, lat) => this.maplibregl.MercatorCoordinate.fromLngLat([lng, lat], 0));
     }
     holder.matrix.copy(transform);
     holder.matrixWorldNeedsUpdate = true;
