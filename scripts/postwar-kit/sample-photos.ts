@@ -3,7 +3,10 @@
  * clusters (docs/reports/ordinary-backlog-20261120.json): C1 1985-2004 mid-rise blocks, C2 2005+ mid-rise blocks,
  * C4 1965-1984 blocks, C5 1985-2004 towers.
  *
- *   PAND_REFERENCE_CACHE=~/Code/map-recall2/.cache/pand-reference node --import tsx scripts/postwar-kit/sample-photos.ts
+ *   PAND_REFERENCE_CACHE=~/Code/map-recall2/.cache/pand-reference node --import tsx scripts/postwar-kit/sample-photos.ts [--all]
+ *
+ * `--all` (round 2): every cluster member, not the stratified quota; the rows also keep the wall's ends (lng/lat) and the
+ * thumbnail's pitch, so measure-walls.ts can project the wall into the photo.
  *
  * Per member (by payoff, core and outer top 200): the backlog's wall rule (longest road-facing wall), house:crops' ray
  * check, the best clear panorama; straight (≤ 35°) ones get an aimed thumbnail (Gemeente Amsterdam, CC BY 4.0).
@@ -21,6 +24,7 @@ const { rayBlocked } = await import('../house-crops/flags.ts');
 core.http.userAgent = 'MapRecall-PostwarKit/1.0 (+https://github.com/blackmad/map-recall2)';
 core.http.minGapMs = 400;
 
+const { rdToLngLat } = await import('../../src/canalRecall/facade/rdNew.ts');
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const OUT = path.join(ROOT, 'artifacts/postwar-kit');
 fs.mkdirSync(path.join(OUT, 'photos'), { recursive: true });
@@ -30,16 +34,17 @@ export const CLUSTERS: Record<string, string> = {
   '1965-1984 · housing · block · mid · generic': 'C4',
   '1985-2004 · housing · tower · high · generic': 'C5',
 };
-const WANT: Record<string, number> = { C1: 30, C2: 18, C4: 18, C5: 9 };
+const ALL = process.argv.includes('--all');
+const WANT: Record<string, number> = ALL ? { C1: Infinity, C2: Infinity, C4: Infinity, C5: Infinity } : { C1: 30, C2: 18, C4: 18, C5: 9 };
 const backlog = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/reports/ordinary-backlog-20261120.json'), 'utf8'));
 const members = [...backlog.core, ...backlog.outer].filter((r: any) => CLUSTERS[r.cluster]).sort((a: any, b: any) => b.payoffRaw - a.payoffRaw);
-const SAMPLE = path.join(OUT, 'sample.json');
+const SAMPLE = path.join(OUT, ALL ? 'sample-all.json' : 'sample.json');
 const out: Record<string, any> = fs.existsSync(SAMPLE) ? JSON.parse(fs.readFileSync(SAMPLE, 'utf8')) : {};
 const got: Record<string, number> = {};
 for (const r of Object.values(out)) if (r.photo) got[r.cluster] = (got[r.cluster] ?? 0) + 1;
 for (const r of members) {
   const c = CLUSTERS[r.cluster];
-  if ((got[c] ?? 0) >= WANT[c] || out[r.id]) continue;
+  if ((got[c] ?? 0) >= WANT[c] || (out[r.id] && !(ALL && out[r.id].photo && !out[r.id].wallEnds))) continue;
   try {
     const fp = (await core.findPands([r.id])).get(core.normId(r.id));
     if (!fp) { out[r.id] = { cluster: c, skip: 'not in tiles' }; continue; }
@@ -56,11 +61,14 @@ for (const r of members) {
       bearingDeg: Math.round((Math.atan2(wall.nx, wall.ny) * 180 / Math.PI + 360) % 360), wallM: Math.round(wall.len) };
     if (!pick || pick.obliquityDeg > 35) { out[r.id] = { ...base, skip: pick ? `oblique ${Math.round(pick.obliquityDeg)}` : 'no clear panorama' }; continue; }
     const thumb = await aimedThumbnail(pick, wall, r.heightM, 40);
+    const { wallHeight } = await import('../pand-reference/rectify.ts');
+    const pitchDeg = Math.round(Math.atan((wallHeight(r.heightM, 40) / 2 - 2.4) / Math.max(pick.distM, 4)) * 180 / Math.PI);
     if (!thumb) { out[r.id] = { ...base, skip: 'thumbnail failed' }; continue; }
     fs.writeFileSync(path.join(OUT, 'photos', `${r.id}.jpg`), thumb.jpeg);
     const cam = pick.record.geometry.coordinates;
     out[r.id] = { ...base, photo: `photos/${r.id}.jpg`, panoId: pick.panoId, panoDate: pick.timestamp?.slice(0, 10), obliquityDeg: Math.round(pick.obliquityDeg), distM: Math.round(pick.distM),
-      camera: [cam[0], cam[1]], headingDeg: thumb.headingDeg, fovDeg: thumb.fovDeg, wallMid: (await import('../../src/canalRecall/facade/rdNew.ts')).rdToLngLat(wall.mid) };
+      camera: [cam[0], cam[1]], headingDeg: thumb.headingDeg, fovDeg: thumb.fovDeg, pitchDeg,
+      wallEnds: [rdToLngLat(wall.a), rdToLngLat(wall.b)], wallMid: rdToLngLat(wall.mid) };
     got[c] = (got[c] ?? 0) + 1;
     console.log(`${c} ${got[c]}/${WANT[c]} ${r.id} ${r.address}`);
   } catch (e) { out[r.id] = { cluster: c, skip: String((e as Error).message).slice(0, 120) }; }

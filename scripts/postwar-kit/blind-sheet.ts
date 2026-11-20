@@ -1,7 +1,8 @@
 /**
  * Blind sheet for the post-1965 kit: per held-out pand, photo | A | B with the flag-off and flag-on game frames on a
  * side chosen by a hash (the key stays in artifacts/postwar-kit/blind-key.json, away from the judge).
- *   node --import tsx scripts/postwar-kit/blind-sheet.ts <offDir> <onDir>
+ *   node --import tsx scripts/postwar-kit/blind-sheet.ts <offDir> <onDir> [<ids.json> <name>]
+ * (round 2: the ids file and an output name, e.g. blind2 -> blind2/NN.jpg and blind2-key.json).
  * Writes artifacts/postwar-kit/blind/NN.jpg (one triple each) and blind-key.json.
  */
 import fs from 'node:fs';
@@ -9,9 +10,9 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
 const OUT = path.resolve(import.meta.dirname, '../../artifacts/postwar-kit');
-const [offDir, onDir] = process.argv.slice(2);
-const split = JSON.parse(fs.readFileSync(path.join(OUT, 'split.json'), 'utf8'));
-const dir = path.join(OUT, 'blind'); fs.mkdirSync(dir, { recursive: true });
+const [offDir, onDir, idsFile, name = 'blind'] = process.argv.slice(2);
+const split = idsFile ? { blind: JSON.parse(fs.readFileSync(idsFile, 'utf8')) } : JSON.parse(fs.readFileSync(path.join(OUT, 'split.json'), 'utf8'));
+const dir = path.join(OUT, name); fs.mkdirSync(dir, { recursive: true });
 const W = 640, H = 480, L = 36;
 const key: Array<{ n: number; id: string; A: 'off' | 'on'; B: 'off' | 'on' }> = [];
 const tile = async (file: string, label: string) => sharp({ create: { width: W, height: H + L, channels: 3, background: '#000' } }).composite([
@@ -27,5 +28,5 @@ for (const id of split.blind as string[]) {
   const tiles = [await tile(photo, `${n}. photo`), await tile(onFirst ? on : off, 'A'), await tile(onFirst ? off : on, 'B')];
   await sharp({ create: { width: 3 * W + 12, height: H + L, channels: 3, background: '#000' } }).composite(tiles.map((t, i) => ({ input: t, left: i * (W + 6), top: 0 }))).jpeg({ quality: 85 }).toFile(path.join(dir, `${String(n).padStart(2, '0')}.jpg`));
 }
-fs.writeFileSync(path.join(OUT, 'blind-key.json'), JSON.stringify(key, null, 1));
+fs.writeFileSync(path.join(OUT, `${name}-key.json`), JSON.stringify(key, null, 1));
 console.log(n, 'triples');

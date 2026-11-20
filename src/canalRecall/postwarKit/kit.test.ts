@@ -1,13 +1,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { CLUSTER_DISTRIBUTION, MEASURED_FRONTS, clusterFor, measuredFront, validateFronts } from './facts.js';
-import { FAMILY_SWATCHES, blended, familyOfHex, plausibleOwnWall, postwarExtraIds, postwarKitFor, styleFor } from './kit.js';
+import { FAMILY_SWATCHES, coarseFamily, correctedWall, familyOfHex, postwarExtraIds, postwarKitFor, styleFor, validateWalls } from './kit.js';
+import { measureWallPatch } from './wallPatch.js';
+import CORRECTED from './corrected-walls.json';
 import { ExtraSink } from '../facadeExtraCore.js';
 import type { ExtraContext } from '../facadeExtraCore.js';
 import { arcade, balconyBand, darkErkers, projectingBalconies, roundBalconies } from './components.js';
 import { rgbToLab } from '../look/brickTone.js';
-
-const NOWHERE: [number, number] = [4.70, 52.30];
 
 test('facts: 59 read fronts in the four clusters; validation rejects a bad family', () => {
   assert.equal(MEASURED_FRONTS.length, 59);
@@ -24,24 +24,18 @@ test('clusters follow the backlog: era, and towers from 24 m in 1985-2004', () =
   assert.equal(clusterFor(2010, 40), 'C2');
 });
 
-test('brick is the measured majority of 1965-2004 blocks, and the kit draws it so', () => {
+test('brick is the measured majority of 1965-2004 blocks; an unread, unmeasured pand gets no draw', () => {
   for (const c of ['C1', 'C4'] as const) {
     const w = CLUSTER_DISTRIBUTION[c].wall, n = CLUSTER_DISTRIBUTION[c].n;
     const brick = Object.entries(w).filter(([k]) => k.startsWith('brick')).reduce((s, [, v]) => s + v!, 0);
     assert.ok(brick / n >= 0.7, `${c} brick share ${brick}/${n}`);
   }
-  let brick = 0;
-  for (let i = 0; i < 400; i++) {
-    const k = postwarKitFor({ id: `NL.IMBAG.Pand.03631000129${String(i).padStart(5, '0')}`, year: 1978, heightM: 15, use: 'housing', at: NOWHERE })!;
-    if (k.family.startsWith('brick')) brick++;
-    assert.equal(k.wallSource, 'drawn');
-  }
-  assert.ok(brick / 400 > 0.75 && brick / 400 < 0.95, `drawn C4 brick share ${brick / 400}`);
+  for (let i = 0; i < 50; i++) assert.equal(postwarKitFor({ id: `NL.IMBAG.Pand.03631000199${String(i).padStart(5, '0')}`, year: 1978, heightM: 15, use: 'housing' }), null);
 });
 
 test('a read pand draws its own read; not housing, no year or pre-1965: null', () => {
   const k = postwarKitFor({ id: '0363100012171628', year: 1983, heightM: 17.7, use: 'housing' })!;
-  assert.equal(k.wallSource, 'measured');
+  assert.equal(k.wallSource, 'read');
   assert.equal(k.family, 'render-white');
   assert.equal(k.balcony, 'round');
   assert.ok(k.arcade);
@@ -53,23 +47,37 @@ test('a read pand draws its own read; not housing, no year or pre-1965: null', (
   assert.equal(postwarKitFor({ id: 'x', year: 1950, heightM: 17, use: 'housing' }), null);
 });
 
-test('own T0 walls: a plausible brick or a white paint is kept, a window-averaged grey or near-black is not', () => {
-  assert.ok(plausibleOwnWall({ hex: '#7b5c57', painted: false }));
-  assert.ok(!plausibleOwnWall({ hex: '#372622', painted: false })); // Wibautstraat 31-55 on red-brown brick
-  assert.ok(!plausibleOwnWall({ hex: '#7a7c7e', painted: true })); // Bloemgracht 210-286 on red brick
-  assert.ok(plausibleOwnWall({ hex: '#ece8de', painted: true }));
-  const kept = postwarKitFor({ id: 'own-test', year: 1990, heightM: 15, use: 'housing', at: NOWHERE, own: { hex: '#9a5240', painted: false } })!;
-  assert.equal(kept.wallSource, 'own'); assert.equal(kept.wall, '#9a5240'); assert.equal(kept.family, 'brick-red');
-  const dropped = postwarKitFor({ id: 'own-test', year: 1990, heightM: 15, use: 'housing', at: NOWHERE, own: { hex: '#372622', painted: false } })!;
-  assert.equal(dropped.wallSource, 'drawn');
-  assert.equal(familyOfHex('#e6e2d8', true), 'render-white');
+test('a measured unread pand takes its brick-only wall and nothing else; the file validates', () => {
+  assert.throws(() => validateWalls({ schemaVersion: 1, revision: 'x', walls: { '123': 'b9a5240' } }));
+  assert.throws(() => validateWalls({ schemaVersion: 1, revision: 'x', walls: { '0363100012171628': 'x9a5240' } }));
+  const id = Object.keys(CORRECTED.walls).find(k => !measuredFront(k));
+  if (!id) return;
+  const k = postwarKitFor({ id, year: 1990, heightM: 15, use: 'housing' })!;
+  assert.equal(k.wallSource, 'measured');
+  assert.equal(k.wall, correctedWall(id)!.hex);
+  assert.equal(k.style, null);
+  assert.deepEqual(postwarExtraIds(k), []);
+  assert.equal(postwarKitFor({ id, year: 1990, heightM: 15, use: 'office' }), null);
 });
 
-test('neighbours shift the draw: a read same-cluster front nearby weighs 1.5', () => {
-  const near = MEASURED_FRONTS.filter(r => r.cluster === 'C4').slice(0, 1).map(r => ({ r, w: 1.5 }));
-  const opts = blended(CLUSTER_DISTRIBUTION.C4.wall, near, r => r.wall);
-  const fam = near[0].r.wall;
-  assert.equal(opts.find(([k]) => k === fam)![1], (CLUSTER_DISTRIBUTION.C4.wall[fam] ?? 0) + 1.5);
+test('wall patch: glass, frames and loggia shadow do not pull a red brick wall grey', () => {
+  const px: number[] = [];
+  for (let i = 0; i < 3000; i++) px.push(150, 82, 64); // brick
+  for (let i = 0; i < 1800; i++) px.push(60, 64, 68); // glass and shade
+  for (let i = 0; i < 600; i++) px.push(235, 235, 232); // white frames
+  for (let i = 0; i < 900; i++) px.push(20, 18, 18); // loggia shadow
+  const m = measureWallPatch(px)!;
+  assert.equal(m.hex, '#965240');
+  assert.equal(familyOfHex(m.hex, m.painted), 'brick-red');
+  assert.ok(m.accepted);
+  const white: number[] = [];
+  for (let i = 0; i < 3000; i++) white.push(232, 230, 224);
+  for (let i = 0; i < 1000; i++) white.push(60, 64, 68);
+  const w = measureWallPatch(white)!;
+  assert.ok(w.painted);
+  assert.equal(familyOfHex(w.hex, w.painted), 'render-white');
+  assert.equal(familyOfHex('#e6e2d8', true), 'render-white');
+  assert.equal(coarseFamily('brick-dark'), 'warm');
 });
 
 test('swatches: brick within the city brightness band, render light', () => {

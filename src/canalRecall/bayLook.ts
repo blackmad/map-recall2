@@ -354,13 +354,15 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   // The contemporary family (`?newbuildFamily=1`): measured new-build walls and window shapes, every textured look.
   const contemporary: ContemporaryLook | null = modern && !recipe && archetype === 'modern' ? contemporaryLookFor({ id, year, heightM, use: modernUseFor({ id, year, heightM, ...modern }), at: modern.at }) : null;
   const vocab: ModernVocabulary | null = !contemporary && modern && !recipe && look === 'photo' && archetype === 'modern' && modernFacadesEnabled() ? modernVocabulary({ id, year, heightM, ...modern }, buurt?.eras.modern, modernPandWall(id)) : null;
-  // The post-1965 housing kit (`?postwarKit=1`, postwarKit/kit.ts): a dated 1965+ housing block's wall family and bay preset
-  // from this lane's read, a plausible own wall, or its cluster x neighbourhood draw. A contemporary area draw (measured
-  // new-build districts) keeps its wall and preset unless the lane read the pand itself. Off: null, nothing changes.
-  const postwarRead = modern && !recipe && !spec && look === 'photo' && archetype === 'modern' && postwarKitEnabled()
-    ? postwarKitFor({ id, year, heightM, use: modernUseFor({ id, year, heightM, ...modern }), at: modern.at, own: modernPandWall(id),
-      today: contemporary ? { hex: contemporary.wall, painted: contemporary.painted } : vocab ? { hex: vocab.wall, painted: vocab.family.endsWith('paint') || vocab.family === 'render' || vocab.family === 'concrete' } : null }) : null;
-  const postwar: PostwarKit | null = postwarRead && contemporary?.wallSource === 'area' && postwarRead.wallSource !== 'measured' ? null : postwarRead;
+  // The post-1965 housing kit (`?postwarKit=1`, postwarKit/kit.ts): a dated 1965+ housing block this lane read takes its
+  // read (wall, preset, features); one with a brick-only panorama measurement takes that wall colour only, in today's preset
+  // (its brick or smooth twin when the material changes). No evidence, or off: null, nothing changes.
+  const postwar: PostwarKit | null = modern && !recipe && !spec && look === 'photo' && archetype === 'modern' && postwarKitEnabled()
+    ? postwarKitFor({ id, year, heightM, use: modernUseFor({ id, year, heightM, ...modern }) }) : null;
+  const postwarRead = postwar?.wallSource === 'read';
+  const todayStyle = contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : null;
+  const todayPainted = contemporary ? contemporary.painted : vocab ? vocab.family.endsWith('paint') || vocab.family === 'render' || vocab.family === 'concrete' : null;
+  const postwarStyle = (k: PostwarKit) => k.style ? postwarStyleIndex(k.style) : todayStyle !== null && todayPainted === k.painted ? todayStyle : postwarStyleIndex(k.painted ? 'smooth' : 'brick');
   const era = vocab || contemporary ? undefined : buurt?.eras[archetype], drawn = era ? profileTraits(id, era) : null;
   const stated = !recipe && !vocab && !contemporary && spec && (spec.pale !== undefined || spec.dark !== undefined || spec.arch !== undefined || spec.tall !== undefined);
   // A stated trait replaces only itself (lane WG step 3, field independence): every trait the spec leaves unstated keeps
@@ -376,7 +378,7 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   // realLook walls (look/realLook.ts, default off): beyond the pool's 600 m, the same draw over the nearest measured walls out to 3 km.
   const draw = at && look === 'photo' && !recipe && !vocab && !contemporary && !postwar ? (measuredPoolDraw(at[0], at[1], archetype, h >>> 7) ?? (realLookOn('walls') ? measuredPoolDrawWide(at[0], at[1], archetype, h >>> 7) : null)) : null;
   // Lane WC (`?wallFinish=1`): a spec'd render, painted or stone front (spec.painted) takes the same smooth cells.
-  const ownStyle = () => postwar ? postwarStyleIndex(postwar.style) : contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : keepLadder ? ladderStyle : ladder ? nearestStyle(archetype, traits!, ladderStyle, spec!.bays) : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
+  const ownStyle = () => postwar ? postwarStyle(postwar) : contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : keepLadder ? ladderStyle : ladder ? nearestStyle(archetype, traits!, ladderStyle, spec!.bays) : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
   // The smooth cells exist for one plain style only (PAINTED_BASE_STYLE): a spec'd front whose own style carries white
   // accents or arched heads keeps its brick cells rather than lose the accents (kit gap: no smooth cells with accents).
   const specSmooth = spec?.painted && !recipe && !vocab && !contemporary && !((s: BayVariant | undefined) => s?.paleAccents || s?.lintel === 'arch')(BAY_STYLES[archetype][ownStyle()] as BayVariant | undefined);
@@ -403,13 +405,14 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   if (vocab) { palette.wall = vocab.wall; if (vocab.accent) palette.accent = vocab.accent; }
   if (contemporary) palette.wall = lookHex(contemporary.wall, look);
   // A kit ribbon front takes a pale spandrel (modernFacades.ts SPANDREL_ACCENTS), never the period's red or teal accent.
-  if (postwar) { palette.wall = postwar.wall; palette.accent = postwar.style === 'ribbon' ? SPANDREL_ACCENTS[1] : paletteFor(id, archetype, look).accent; }
+  if (postwar) palette.wall = postwar.wall;
+  if (postwarRead) palette.accent = postwar!.style === 'ribbon' ? SPANDREL_ACCENTS[1] : paletteFor(id, archetype, look).accent;
   if (periodWall && look === 'photo') palette.wall = periodWall;
   if (recipe?.wallHex) palette.wall = lookHex(recipe.wallHex, look);
   // A shop's ground floor is painted, and the paint is its own colour, not the brick's.
   const paints = GROUND_PAINTS[look];
   return {
-    archetype, style, ...(vocab && !postwar ? { modern: vocab } : {}), ...(postwar ? { postwar } : {}), ...(contemporary ? { contemporary } : {}), variant: { archetype, ...BAY_STYLES[archetype][style] }, ...((poolWall ?? traits?.wall) && !periodWall && !recipe?.wallHex ? { profileWall: (poolWall ?? traits!.wall)! } : {}), layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: recipe?.openingGroup ? lookHex(recipe.frameHex ?? '#f1ede2', look) : palette.accent,
+    archetype, style, ...(vocab && !postwarRead ? { modern: vocab } : {}), ...(postwar ? { postwar } : {}), ...(contemporary ? { contemporary } : {}), variant: { archetype, ...BAY_STYLES[archetype][style] }, ...((poolWall ?? traits?.wall) && !periodWall && !recipe?.wallHex ? { profileWall: (poolWall ?? traits!.wall)! } : {}), layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: recipe?.openingGroup ? lookHex(recipe.frameHex ?? '#f1ede2', look) : palette.accent,
     groundHex: recipe?.groundWallHex ? lookHex(recipe.groundWallHex, look) : shop ? (shopfront && shopfront !== 'quiet' && shopGrammarEnabled() ? shopGroundHex(id, look) : paints[(h >>> 21) % paints.length]) : undefined,
     layers: painted
       ? { upper: painted.upper, ground: shop ? bayLayer(archetype, style, shopKind) : painted.ground, door: painted.groundDoor }
