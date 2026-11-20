@@ -23,3 +23,7 @@ node --import tsx scripts/building-recipes/install-large.ts --house=weesperflat-
 # valckenierstraat-65-170734 (blank-walls hold, round 2): remove the id from scripts/building-recipes/held-installs.json, then
 node --import tsx scripts/building-recipes/install-large.ts --house=valckenierstraat-65-170734 --install \
   '--allow-inferred=0:unchanged from the shipped recipe, judged FAIL on 2026-10-29 for tone and window shape, not refit in this lane;1:set-back top floor, no crop reaches it, unchanged from the shipped recipe;2:unchanged from the shipped recipe, judged FAIL on 2026-10-29 for column count, not refit in this lane;3:north steel-window wing unchanged, w04-343L 2021-01-22 confirms the two ribbon storeys;4:E lab faces seen across the canal from the w08-73 pano 2021-01-22, four ribbon storeys in brick, no straight crop;5:N face behind the wing, its top seen over the wing in w04-343L 2021-01-22, ribbon storeys as the S and W fronts'
+
+# da-costakade-146-236799 (blank-walls hold, round 3; rear ranges inferred): remove the id from held-installs.json, then
+node --import tsx scripts/building-recipes/install-large.ts --house=da-costakade-146-236799 --install \
+  '--allow-inferred=0:unchanged from the shipped recipe (w01-248L 2019-12-09), not refit in this lane;3:unchanged from the shipped recipe (w01-248L 2019-12-09), not refit in this lane'
