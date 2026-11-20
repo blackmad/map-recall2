@@ -1,0 +1,261 @@
+{
+ "schemaVersion": 1,
+ "id": "school-marnixstraat-2",
+ "pand": "0363100012168723",
+ "brief": "scripts/landmarks/school-marnixstraat-2-brief.md",
+ "signature": [
+  "pavilion-gables",
+  "banded-brick",
+  "arched-windows",
+  "console-frieze"
+ ],
+ "walls": [
+  {
+   "tag": "w01-201",
+   "bearing": 201,
+   "lengthM": 23.7,
+   "centre": [
+    4.8820285,
+    52.383583
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002861_pano_0001_000094",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "w01-back",
+     "kind": "window-shape",
+     "where": "the back over the yard: plain windows under low eaves, largely hidden by a fence and trees",
+     "approxSizeM": [
+      23.7,
+      10.5
+     ],
+     "plan": "simplified",
+     "how": "nine plain bays on the 2.33 m pitch of the front, segment heads, cornice only (inferred: the photo shows the corner bays only)",
+     "seenIn": "TMX7316010203-002861_pano_0001_000094"
+    }
+   ]
+  },
+  {
+   "tag": "w02-112",
+   "bearing": 112,
+   "lengthM": 19.1,
+   "centre": [
+    4.882256,
+    52.383678
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000703_pano_0000_002894",
+   "capturedAt": "2018-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-gables",
+     "kind": "other",
+     "where": "pointed topgevel over the north pavilion bay (and the same gable on every pavilion face): brick, stone copings, pinnacles on the feet, a finial and an oculus",
+     "approxSizeM": [
+      2.9,
+      3.8
+     ],
+     "plan": "simplified",
+     "how": "shell-gable-fit pointedGable (brick wall, sandstone copings, foot pinnacles, finial) over the shell clamped to the eaves where the 3DBAG face is lopsided; oculus as two discs; the carved corbel under the finial and the pinnacle mouldings are not drawn",
+     "seenIn": "TMX7316010203-000703_pano_0000_002894"
+    },
+    {
+     "id": "banded-brick",
+     "kind": "other",
+     "where": "dark purple-brown brick with a red course at the first-floor line, a stone sill band and plinth",
+     "approxSizeM": [
+      19.1,
+      11.6
+     ],
+     "plan": "modelled",
+     "how": "palette brick #4f3a36 on the shell, red and stone slabs; the thin dark brick bands within the storeys are not drawn",
+     "seenIn": "TMX7316010203-000703_pano_0000_002894"
+    },
+    {
+     "id": "arched-windows",
+     "kind": "window-shape",
+     "where": "first-floor windows under round brick arches with patterned buff tympana; ground-floor windows under red segment heads; white frames with mullion and transom",
+     "approxSizeM": [
+      1.4,
+      3.4
+     ],
+     "plan": "simplified",
+     "how": "frame/glass/mullion/transom slabs, ochre archSlab tympanum in a red archBand, red segBand heads below; the tympanum pattern and the small fleur ornaments between arches are flat colour",
+     "seenIn": "TMX7316010203-000703_pano_0000_002894"
+    },
+    {
+     "id": "console-frieze",
+     "kind": "other",
+     "where": "patterned buff frieze with white consoles every 1.2 m under a white cornice",
+     "approxSizeM": [
+      19.1,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "ochre band, sandstone console slabs every 1.17 m, sandstone cornice slab",
+     "seenIn": "TMX7316010203-000703_pano_0000_002894"
+    }
+   ]
+  },
+  {
+   "tag": "w03-21",
+   "bearing": 21,
+   "lengthM": 18.7,
+   "centre": [
+    4.8819645,
+    52.383686
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001068_pano_0004_000016",
+   "capturedAt": "2019-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "w03-front",
+     "kind": "window-shape",
+     "where": "playground front: a louvred pair at the east end, five arched first-floor bays and the corner pavilion gable at the west end; the lower storey is behind the playground wall",
+     "approxSizeM": [
+      18.7,
+      11.6
+     ],
+     "plan": "simplified",
+     "how": "same window, frieze and gable kit as w02; the louvres drawn as a narrower window; the playground wall and its gate pavilion stand outside the pand and are not part of this model",
+     "seenIn": "TMX7316010203-001068_pano_0004_000016"
+    },
+    {
+     "id": "w03-dormer",
+     "kind": "other",
+     "where": "small pointed dormer in the middle of the roof",
+     "approxSizeM": [
+      1.2,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001068_pano_0004_000016",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 1.2 m roof dormer, seen only above the playground wall"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-292",
+   "bearing": 292,
+   "lengthM": 15.9,
+   "centre": [
+    4.882135,
+    52.3837225
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241216_0911_Track55_Sphere_00019",
+   "capturedAt": "2024-12-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "w04-front",
+     "kind": "window-shape",
+     "where": "playground side: the north pavilion gable at the left, three wide-spaced arched bays, chimneys on the ridge",
+     "approxSizeM": [
+      15.9,
+      11.6
+     ],
+     "plan": "simplified",
+     "how": "same kit; chimneys are not drawn (the 3DBAG roof carries none)",
+     "seenIn": "b_20241216_0911_Track55_Sphere_00019"
+    }
+   ]
+  },
+  {
+   "tag": "w05-22",
+   "bearing": 22,
+   "lengthM": 9.5,
+   "centre": [
+    4.882242,
+    52.3837735
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000703_pano_0000_002836",
+   "capturedAt": "2018-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "w05-front",
+     "kind": "window-shape",
+     "where": "north pavilion front: gable over the middle bay, windows either side",
+     "approxSizeM": [
+      9.5,
+      11.2
+     ],
+     "plan": "simplified",
+     "how": "same kit; the 3DBAG half-gable is clamped to the eaves and the symmetric gable drawn",
+     "seenIn": "TMX7316010203-000703_pano_0000_002836"
+    }
+   ]
+  },
+  {
+   "tag": "w06-112",
+   "bearing": 112,
+   "lengthM": 5.8,
+   "centre": [
+    4.8822065,
+    52.3835695
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241216_0911_Track46_Sphere_00148",
+   "capturedAt": "2024-12-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "w06-gable-face",
+     "kind": "window-shape",
+     "where": "south pavilion gable face: a wide window over the door, narrow side windows, gable with oculus and finial chimney",
+     "approxSizeM": [
+      5.8,
+      14.9
+     ],
+     "plan": "simplified",
+     "how": "same kit with a door and narrow windows; the finial chimney is the gable finial",
+     "seenIn": "b_20241216_0911_Track46_Sphere_00148"
+    }
+   ]
+  },
+  {
+   "tag": "w07-292",
+   "bearing": 292,
+   "lengthM": 4.9,
+   "centre": [
+    4.881814,
+    52.3836875
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000703_pano_0000_002825",
+   "capturedAt": "2018-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-face",
+     "kind": "window-shape",
+     "where": "corner pavilion west face: one bay under a pointed gable",
+     "approxSizeM": [
+      4.9,
+      16.0
+     ],
+     "plan": "simplified",
+     "how": "same kit; the 3DBAG corner peak (18.7 m) is clamped to the eaves under the symmetric gable",
+     "seenIn": "TMX7316010203-000703_pano_0000_002825"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

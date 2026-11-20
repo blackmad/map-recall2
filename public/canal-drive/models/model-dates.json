@@ -1652,8 +1652,8 @@
       "dateSource": "asset-update"
     },
     "de-kroon-rembrandtplein": {
-      "updatedAt": "2026-11-20T07:58:49.758Z",
-      "version": "14b7adaf60709d8a",
+      "updatedAt": "2026-11-20T08:11:52.605Z",
+      "version": "8c01dcec9aaaa2f9",
       "dateSource": "asset-update"
     },
     "de-makroon": {
@@ -2602,8 +2602,8 @@
       "dateSource": "asset-update"
     },
     "handelsbank-singel-250": {
-      "updatedAt": "2026-11-15T14:43:34.645Z",
-      "version": "78dca899a0ccfd15",
+      "updatedAt": "2026-11-20T09:29:45.955Z",
+      "version": "035277b8c4379f91",
       "dateSource": "asset-update"
     },
     "handelsbank-singel-250.lod1": {
@@ -3037,8 +3037,8 @@
       "dateSource": "asset-update"
     },
     "holland-casino-amsterdam": {
-      "updatedAt": "2026-11-15T14:53:33.185Z",
-      "version": "208f869dd6af5267",
+      "updatedAt": "2026-11-20T09:22:34.145Z",
+      "version": "1c5162cc03c5ffd9",
       "dateSource": "asset-update"
     },
     "holland-casino-amsterdam.lod1": {
@@ -5091,6 +5091,11 @@
       "version": "581cf92e8e42aa8b",
       "dateSource": "asset-update"
     },
+    "oranjekerk-pijp": {
+      "updatedAt": "2026-11-20T08:41:29.015Z",
+      "version": "3a8fe1e2627b0fe1",
+      "dateSource": "asset-update"
+    },
     "orgelpark": {
       "updatedAt": "2026-10-13T19:11:35.156Z",
       "version": "8e9f88f612f12ed9",
@@ -5457,8 +5462,8 @@
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort": {
-      "updatedAt": "2026-11-20T08:00:38.979Z",
-      "version": "27f09a4cd394e11c",
+      "updatedAt": "2026-11-20T08:11:20.022Z",
+      "version": "a214b6ca04899764",
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort.lod1": {
@@ -5949,6 +5954,11 @@
     "schiller-rembrandtplein.lod2": {
       "updatedAt": "2026-11-16T07:28:21.964Z",
       "version": "9edd7ec0c8f0536f",
+      "dateSource": "asset-update"
+    },
+    "school-marnixstraat-2": {
+      "updatedAt": "2026-11-20T08:29:15.868Z",
+      "version": "fec1afd13482856d",
       "dateSource": "asset-update"
     },
     "schreierstoren": {
@@ -6817,8 +6827,8 @@
       "dateSource": "asset-update"
     },
     "vijzelbank": {
-      "updatedAt": "2026-11-01T22:45:28.218Z",
-      "version": "1310fc65cf2a62ae",
+      "updatedAt": "2026-11-20T08:32:11.281Z",
+      "version": "bed01e5fc3ba70d1",
       "dateSource": "asset-update"
     },
     "vijzelbank.lod1": {

@@ -317,6 +317,8 @@ import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signat
 import {buildDeAteliers} from './de-ateliers-builder';
 import {buildHouthavenkade26} from './houthavenkade-26-builder';
 import {buildRoodeLeeuwDamrak} from './roode-leeuw-damrak-builder';
+import {buildSchoolMarnixstraat2} from './school-marnixstraat-2-builder';
+import {buildOranjekerkPijp} from './oranjekerk-pijp-builder';
 import {buildDeKroonRembrandtplein} from './de-kroon-rembrandtplein-builder';
 import {buildParkCentraalStadhouderskade} from './park-centraal-stadhouderskade-builder';
 import {buildRoomMateAitana} from './room-mate-aitana-builder';
@@ -1200,6 +1202,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='de-ateliers')buildDeAteliers(w,d,helpers);
     else if(id==='houthavenkade-26')buildHouthavenkade26(w,d,helpers);
     else if(id==='roode-leeuw-damrak')buildRoodeLeeuwDamrak(w,d,helpers);
+    else if(id==='school-marnixstraat-2')buildSchoolMarnixstraat2(w,d,helpers);
+    else if(id==='oranjekerk-pijp')buildOranjekerkPijp(w,d,helpers);
     else if(id==='de-kroon-rembrandtplein')buildDeKroonRembrandtplein(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }

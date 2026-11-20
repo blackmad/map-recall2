@@ -1,16 +1,19 @@
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
 import {letters, poly, ringFrame, setSink, getSink, slab, type Frame} from './nearbar-kit';
-import {clipShell} from './pand-part-shell';
+import {inPart} from './pand-part-shell';
+import {rowFront, storeysUnder} from './row-front';
 import {fullPand, type PandPart} from '../../src/canalRecall/landmarks/pandParts';
 import source from './holland-casino-amsterdam-footprints.json';
 import spec from './holland-casino-amsterdam-spec.json';
 
 /**
  * HOLLAND CASINO AMSTERDAM, Max Euweplein 62 (1991; nl.wikipedia Holland Casino Amsterdam, CC BY-SA 4.0). The casino
- * stands on part of BAG pand 0363100012173447: the pand also holds the north-east arm on the Leidsekade, which stays
- * with the rows line (spec `pandPart`, src/canalRecall/landmarks/pandParts.ts). Massing: the 3DBAG LoD2.2 shell clipped
- * to the part, closed by a party wall across the arm's root. Read from rectified Gemeente Amsterdam panoramas
+ * stands on part of BAG pand 0363100012173447: the pand also holds the north-east arm, the 1890s houses on the
+ * Weteringschans side of the Max Euweplein (brick with cream stucco dressings, balconies, shopfronts) and its courtyard
+ * walls. Since 2026-11-20 (landmarks r8 lane) the model draws the WHOLE pand: the full 3DBAG LoD2.2 shell, the casino's
+ * faces as before and the arm in brick, its front laid out by row-front.ts from recording_2025-07-14_05-25-22_01977 and
+ * _01963 (2025). Read from rectified Gemeente Amsterdam panoramas
  * (CC BY 4.0, 50 px/m), with heights from the 3DBAG shell (canal block 5.9 m, set-back storey 12.2 m, 3.7 m back):
  * - the Singelgracht front (ring edges 37 and 38; w03-257, w07-252): yellow-framed glazing on the deck, red steel columns,
  *   timber lattice screens, a red beam and the sloped timber pergola up to the white-tiled set-back storey;
@@ -20,12 +23,13 @@ import spec from './holland-casino-amsterdam-spec.json';
  */
 export function buildHollandCasino(_w: number, _d: number, b: BuildingTools) {
   const src = source as unknown as {facadeRing: number[][]; surfaces: Surface[]; nativeRing: number[][]; anchorRD: [number, number]; bagId: string};
-  const part: PandPart = {pand: fullPand(String(src.bagId)), ring: (spec as {pandPart: {ring: [number, number][]}}).pandPart.ring};
+  const part: PandPart = {pand: fullPand(String(src.bagId)), ring: (spec as {landmarkShare: {ring: [number, number][]}}).landmarkShare.ring};
   const ring = src.facadeRing;
   // Walls above the canal block are the white-tiled storey and the drum; below, dark glazing bands. The hall's radial roof is light grey.
-  addShell(b, {surfaces: clipShell(src, part), nativeRing: src.nativeRing}, {
+  const isCasino = inPart(src, part);
+  addShell(b, {surfaces: src.surfaces, nativeRing: src.nativeRing}, {
     wall: 'stone', roof: 'slate',
-    wallFor: s => (Math.max(...s.rings[0].map(p => p[1])) > 6.5 ? 'concrete' : 'stone'),
+    wallFor: s => (!isCasino(s) ? 'brick' : Math.max(...s.rings[0].map(p => p[1])) > 6.5 ? 'concrete' : 'stone'),
     roofFor: s => (Math.min(...s.rings[0].map(p => p[1])) > 18 ? 'concrete' : 'slate'),
   });
   const sink0 = getSink();
@@ -49,8 +53,10 @@ export function buildHollandCasino(_w: number, _d: number, b: BuildingTools) {
     for (let k = 0; k < n; k++) {
       const t = (k + 0.5) * step, w = step - 0.45;
       slab(b, f, t, 3.2, w, 1.6, 0.05, 'ochre', 0.6); // timber lattice screen
-      for (let q = 1; q < 8; q++) slab(b, f, t - w / 2 + (w * q) / 8, 3.2, 0.04, 1.6, 0.04, 'dark', 0.66);
-      slab(b, f, t, 3.95, w, 0.04, 0.04, 'dark', 0.66);
+      // lattice slats: dark timber, not an opening colour (as 'dark' the openings audit hung them on whichever wall plane its
+      // greedy clustering found nearest, and the arm's fronts moved that choice)
+      for (let q = 1; q < 8; q++) slab(b, f, t - w / 2 + (w * q) / 8, 3.2, 0.04, 1.6, 0.04, 'green', 0.66);
+      slab(b, f, t, 3.95, w, 0.04, 0.04, 'green', 0.66);
       slab(b, f, t, 3.15, w + 0.1, 0.08, 0.1, 'concrete', 0.58); // white frame of the screen
       slab(b, f, t, 4.82, w + 0.1, 0.08, 0.1, 'concrete', 0.58);
     }
@@ -129,5 +135,37 @@ export function buildHollandCasino(_w: number, _d: number, b: BuildingTools) {
     for (let t = 0.15; t <= len; t += (len - 0.3) / Math.round(len / 1.6)) slab(b, f, t, 3.4, 0.1, 12.0, 0.05, 'frame', 0.16);
     for (let y = 3.4; y <= 15.5; y += 3.0) slab(b, f, len / 2, y, len - 0.2, 0.1, 0.05, 'frame', 0.21);
   }
+  restArm(b, ring);
   setSink(sink0);
+}
+
+/**
+ * The north-east arm (the rest of the pand), t from the viewer's left. Edge 6 (28.3 m, facing the Weteringschans side of
+ * the plein; recording_2025-07-14_05-25-22_01977 from 68 m, _01963 close up): from the north-east end a grey stone
+ * building with a big arched entrance, then a brick house with cream stucco dressings and iron balconies, then a banded
+ * brick corner house with round-arched windows over a shopfront. Edges 4 and 5 face the courtyard (no panorama): plain
+ * brick with dark windows. Edges 2 and 3 are the high party walls against the casino drum.
+ */
+function restArm(b: BuildingTools, ring: number[][]) {
+  setSink(0.12, true);
+  const st = storeysUnder(20.9, {ground: 0.4, floor: 3.6, winH: 2.4, attic: 2.2});
+  const base = {frame: 'dark', glass: 'glass', sill: 'sandstone', door: 'dark', stone: 'greyBrick', rail: 'dark', cornice: 'sandstone'} as const;
+  {
+    const {f} = ringFrame(ring, 6);
+    // two brick houses over a grey rusticated stone basement, raised ground floors reached by stoops, cream stucco bands and
+    // rusticated cream pilasters, an iron balcony over each porch (_01963, review sheet 2025 pano)
+    for (const [t0, t1] of [[0.0, 12.0], [12.0, 24.3]]) {
+      rowFront(b, f, {...base, t0, t1, top: 20.5, bays: 4, winW: 1.55, storeys: storeysUnder(20.5, {ground: 1.5, floor: 3.6, winH: 2.9, attic: 1.8}), plinth: {h: 1.5, colour: 'greyBrick'}, bands: 'sandstone', balconies: [1], doors: [{bay: 0, stoop: 1.5}]});
+    }
+    for (const t of [0.5, 12.0, 23.8]) slab(b, f, t, 1.5, 0.9, 17.4, 0.3, 'sandstone');
+    // the cream-tiled gateway into the courtyard at the south-west end, in a granite frame (_01963: "max inrijhoogte")
+    const g0 = 24.3, g1 = 28.3, gm = (g0 + g1) / 2;
+    slab(b, f, gm, 0, 3.3, 3.7, 0.12, 'greyBrick', 0.06);
+    slab(b, f, gm, 0, 2.9, 3.5, 0.1, 'dark', 0.12);
+    rowFront(b, f, {...base, t0: g0, t1: g1, top: 20.2, bays: 1, skin: 'pink', storeys: storeysUnder(20.2, {ground: 1.5, floor: 3.5, winH: 2.2, attic: 2.0}).slice(1).map(x => ({...x})), balconies: [0, 1], margin: 0.8, winW: 1.6, cornice: 'sandstone', frame: 'dark'});
+  }
+  for (const [e, bays] of [[4, 7], [5, 4]] as const) {
+    const {f, len} = ringFrame(ring, e);
+    rowFront(b, f, {...base, t0: 0.3, t1: len - 0.3, top: 20.4, bays, storeys: storeysUnder(20.4, {ground: 0.3, floor: 3.4, winH: 2.0, attic: 1.5}), cornice: undefined, sill: undefined});
+  }
 }

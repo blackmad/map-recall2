@@ -24,7 +24,71 @@
    "panoId": "recording_2025-07-14_05-25-22_01962",
    "capturedAt": "2025-07-14",
    "checked": true,
-   "items": []
+   "items": [
+    {
+     "id": "arm-houses",
+     "kind": "window-shape",
+     "where": "two 1890s brick houses on the pand's north-east arm: grey rusticated stone basement, raised ground floor, cream stucco bands, four bays",
+     "approxSizeM": [
+      24.3,
+      20.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-14_05-25-22_01962",
+     "how": "row-front.ts: greyBrick plinth 1.5 m, dark-framed windows on four bays per house, cream bands and sills, cornice"
+    },
+    {
+     "id": "arm-pilasters",
+     "kind": "colonnade",
+     "where": "rusticated cream pilasters with carved blocks between and at the ends of the houses",
+     "approxSizeM": [
+      0.6,
+      17.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-14_05-25-22_01962",
+     "how": "plain cream slabs 0.6 m wide; the fluting and carved blocks are not drawn"
+    },
+    {
+     "id": "arm-porches",
+     "kind": "other",
+     "where": "arched porches with stoops, a balustraded balcony on top",
+     "approxSizeM": [
+      3.5,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-14_05-25-22_01962",
+     "how": "door over a 1.5 m stone stoop, an iron-railed balcony on the first floor; the arches and balusters are not drawn"
+    },
+    {
+     "id": "arm-gateway",
+     "kind": "other",
+     "where": "cream-tiled gateway bay into the courtyard in a granite frame, balconies above",
+     "approxSizeM": [
+      4.0,
+      20.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_01962",
+     "how": "cream skin, granite frame, dark passage 3.5 m high, two balconies"
+    },
+    {
+     "id": "arm-stained-glass",
+     "kind": "window-shape",
+     "where": "stained-glass transoms over the ground-floor windows",
+     "approxSizeM": [
+      1.4,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_05-25-22_01962",
+     "skip": {
+      "reason": "too-small",
+      "note": "leaded transoms read as dark glass at gallery size"
+     }
+    }
+   ]
   },
   {
    "tag": "w02-134",

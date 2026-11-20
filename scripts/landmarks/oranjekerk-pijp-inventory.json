@@ -1,0 +1,429 @@
+{
+ "schemaVersion": 1,
+ "id": "oranjekerk-pijp",
+ "pand": "0363100012237071",
+ "brief": "scripts/landmarks/oranjekerk-pijp-brief.md",
+ "signature": [
+  "west-window",
+  "tower",
+  "west-side-windows",
+  "tower-door"
+ ],
+ "walls": [
+  {
+   "tag": "w01-256",
+   "bearing": 256,
+   "lengthM": 15.3,
+   "centre": [
+    4.8949437,
+    52.3528174
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001169_pano_0000_001325",
+   "capturedAt": "2019-05-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-window",
+     "kind": "window-shape",
+     "where": "the big round-arched traceried window in the west gable: six lights under a head of circles round a rose",
+     "approxSizeM": [
+      4.6,
+      8.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001169_pano_0000_001325",
+     "how": "archSlab frame and glass, five mullions and a transom, the head tracery as a rose ring and seven circle rings; the leading is not drawn"
+    },
+    {
+     "id": "west-side-windows",
+     "kind": "window-shape",
+     "where": "round-arched three-light side windows with circle tracery either side of the gable, five round-arched windows below, stone sills, side cornices",
+     "approxSizeM": [
+      2.4,
+      5.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001169_pano_0000_001325",
+     "how": "same arch helper (redder brick reveal arches, frame, glass, mullions, sill), tracery rings; cornices as stone slabs"
+    }
+   ]
+  },
+  {
+   "tag": "w02-345",
+   "bearing": 345,
+   "lengthM": 9.6,
+   "centre": [
+    4.8954222,
+    52.3529619
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-165",
+   "bearing": 165,
+   "lengthM": 9.2,
+   "centre": [
+    4.8955187,
+    52.3527518
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001532_pano_0000_000907",
+   "capturedAt": "2020-01-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "parsonage",
+     "kind": "window-shape",
+     "where": "three-storey parsonage: paired ground-floor windows over a stone band, two rows of tall windows, a pointed dormer",
+     "approxSizeM": [
+      9.2,
+      16
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001532_pano_0000_000907",
+     "how": "three bays of paired lights, two rows of framed windows with transoms and stone sills; the dormer is not drawn (the 3DBAG roof stops lower)"
+    }
+   ]
+  },
+  {
+   "tag": "w04-164",
+   "bearing": 164,
+   "lengthM": 8.1,
+   "centre": [
+    4.8952639,
+    52.3527151
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002912_pano_0010_000232",
+   "capturedAt": "2023-01-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-front",
+     "kind": "window-shape",
+     "where": "south front: three tall round-arched windows over three lower ones",
+     "approxSizeM": [
+      8.1,
+      13
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002912_pano_0010_000232",
+     "how": "arch helper, two lights above, one below, a stone band"
+    }
+   ]
+  },
+  {
+   "tag": "w05-345",
+   "bearing": 345,
+   "lengthM": 8.1,
+   "centre": [
+    4.8951414,
+    52.3529942
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_13-20-52_00062",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "w05-345-plain",
+     "kind": "window-shape",
+     "where": "minor face: brick, arched windows (seen obliquely or not photographed)",
+     "approxSizeM": [
+      8.1,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-30_13-20-52_00062",
+     "skip": {
+      "reason": "not-visible",
+      "note": "not photographed square-on (or occluded by the neighbour, w05); drawn as the 3DBAG brick face"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-255",
+   "bearing": 255,
+   "lengthM": 6.1,
+   "centre": [
+    4.8949154,
+    52.3529126
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001793_pano_0000_004619",
+   "capturedAt": "2020-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "porch",
+     "kind": "other",
+     "where": "the octagonal entrance porch with a tiled roof and a wide entrance",
+     "approxSizeM": [
+      6.1,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001793_pano_0000_004619",
+     "how": "3DBAG porch mass with a dark entrance opening, stone lintel and a small arched window"
+    }
+   ]
+  },
+  {
+   "tag": "w07-255",
+   "bearing": 255,
+   "lengthM": 5.7,
+   "centre": [
+    4.8949657,
+    52.3527228
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001533_pano_0001_001636",
+   "capturedAt": "2020-01-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-door",
+     "kind": "other",
+     "where": "the arched west door of the tower under a deep brick arch, with a fanlight",
+     "approxSizeM": [
+      3.4,
+      5.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001533_pano_0001_001636",
+     "how": "brick archBand, frame archSlab, dark door leaves and glass fanlight"
+    },
+    {
+     "id": "tower",
+     "kind": "tower",
+     "where": "the tall west tower: a band of four small arched windows, a string course, two tall slit windows; gabled top and spire",
+     "approxSizeM": [
+      5.7,
+      33
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001533_pano_0001_001636",
+     "how": "3DBAG tower mass (to 32.9 m gables, its top compressed into the slate needle) with the window band, courses and slits; r8: paired arched belfry openings on both exposed faces at 23.5-27.5 m and a slender slate spire (9.5 m, octagonal) with an iron finial over the 3DBAG top; the corner pinnacles and the belfry louvres are not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w08-165",
+   "bearing": 165,
+   "lengthM": 5.5,
+   "centre": [
+    4.8950158,
+    52.3527046
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000011_pano_0000_005222",
+   "capturedAt": "2016-08-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-south",
+     "kind": "window-shape",
+     "where": "tower south face: four small arched windows and two lower windows",
+     "approxSizeM": [
+      5.5,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000011_pano_0000_005222",
+     "how": "same small-window band, two arched windows below, string course"
+    }
+   ]
+  },
+  {
+   "tag": "w09-75",
+   "bearing": 75,
+   "lengthM": 5,
+   "centre": [
+    4.8953446,
+    52.3529723
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-209",
+   "bearing": 209,
+   "lengthM": 5,
+   "centre": [
+    4.8951747,
+    52.3527157
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_07-24-00_01473",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "w10-209-plain",
+     "kind": "window-shape",
+     "where": "minor face: brick, arched windows (seen obliquely or not photographed)",
+     "approxSizeM": [
+      5,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-09-29_07-24-00_01473",
+     "skip": {
+      "reason": "not-visible",
+      "note": "not photographed square-on (or occluded by the neighbour, w05); drawn as the 3DBAG brick face"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w11-165",
+   "bearing": 165,
+   "lengthM": 4.8,
+   "centre": [
+    4.8950974,
+    52.3527187
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000782_pano_0000_001802",
+   "capturedAt": "2018-06-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "w11-165-plain",
+     "kind": "window-shape",
+     "where": "minor face: brick, arched windows (seen obliquely or not photographed)",
+     "approxSizeM": [
+      4.8,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000782_pano_0000_001802",
+     "skip": {
+      "reason": "not-visible",
+      "note": "not photographed square-on (or occluded by the neighbour, w05); drawn as the 3DBAG brick face"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w12-30",
+   "bearing": 30,
+   "lengthM": 4.8,
+   "centre": [
+    4.8952291,
+    52.3529934
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w13-300",
+   "bearing": 300,
+   "lengthM": 4.7,
+   "centre": [
+    4.8950672,
+    52.3529662
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000011_pano_0000_005234",
+   "capturedAt": "2016-08-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "w13-300-plain",
+     "kind": "window-shape",
+     "where": "minor face: brick, arched windows (seen obliquely or not photographed)",
+     "approxSizeM": [
+      4.7,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316060226-000011_pano_0000_005234",
+     "skip": {
+      "reason": "not-visible",
+      "note": "not photographed square-on (or occluded by the neighbour, w05); drawn as the 3DBAG brick face"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w14-122",
+   "bearing": 122,
+   "lengthM": 4.5,
+   "centre": [
+    4.8953382,
+    52.3527425
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002912_pano_0010_000229",
+   "capturedAt": "2023-01-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "w14-122-plain",
+     "kind": "window-shape",
+     "where": "minor face: brick, arched windows (seen obliquely or not photographed)",
+     "approxSizeM": [
+      4.5,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002912_pano_0010_000229",
+     "skip": {
+      "reason": "not-visible",
+      "note": "not photographed square-on (or occluded by the neighbour, w05); drawn as the 3DBAG brick face"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w15-345",
+   "bearing": 345,
+   "lengthM": 4,
+   "centre": [
+    4.8950099,
+    52.3529396
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001533_pano_0001_001628",
+   "capturedAt": "2020-01-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "w15-345-plain",
+     "kind": "window-shape",
+     "where": "minor face: brick, arched windows (seen obliquely or not photographed)",
+     "approxSizeM": [
+      4,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001533_pano_0001_001628",
+     "skip": {
+      "reason": "not-visible",
+      "note": "not photographed square-on (or occluded by the neighbour, w05); drawn as the 3DBAG brick face"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -254,7 +254,32 @@
    "panoId": "TMX7316010203-002865_pano_0017_000017",
    "capturedAt": "2022-12-15",
    "checked": true,
-   "items": []
+   "items": [
+    {
+     "id": "w04-189-rest-houses",
+     "kind": "window-shape",
+     "where": "the Herengracht houses on the rest of the pand (edges 18, 22, 24, 26): brown and dark-painted brick, tall white sashes on a bay grid, raised stone basements, doors over stone stoops",
+     "approxSizeM": [
+      35.0,
+      13.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002865_pano_0017_000017",
+     "how": "row-front.ts per edge: plinth, white sash windows (frame, glass, bars, sill), doors with fanlights and stoops, white cornice; per-house brick colour on the shell"
+    },
+    {
+     "id": "w04-189-rest-door-surrounds",
+     "kind": "other",
+     "where": "cream door surrounds with carved consoles and fanlight tracery (no. 233)",
+     "approxSizeM": [
+      1.6,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002865_pano_0017_000017",
+     "how": "plain white door frame and fanlight; the console carving and tracery are not drawn"
+    }
+   ]
   },
   {
    "tag": "w05-10",
@@ -268,7 +293,20 @@
    "panoId": "TMX7316010203-002976_pano_0004_000206",
    "capturedAt": "2023-02-20",
    "checked": true,
-   "items": []
+   "items": [
+    {
+     "id": "rest-north-front",
+     "kind": "window-shape",
+     "where": "low brown brick side with tiled panels and a shop window",
+     "approxSizeM": [
+      8.8,
+      5.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002976_pano_0004_000206",
+     "how": "brick, three windows; the tiled panels and the shop window are simplified to sashes"
+    }
+   ]
   },
   {
    "tag": "w06-190",
@@ -282,7 +320,32 @@
    "panoId": "TMX7316010203-002976_pano_0004_000195",
    "capturedAt": "2023-02-20",
    "checked": true,
-   "items": []
+   "items": [
+    {
+     "id": "w06-190-rest-houses",
+     "kind": "window-shape",
+     "where": "the Herengracht houses on the rest of the pand (edges 18, 22, 24, 26): brown and dark-painted brick, tall white sashes on a bay grid, raised stone basements, doors over stone stoops",
+     "approxSizeM": [
+      35.0,
+      13.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002976_pano_0004_000195",
+     "how": "row-front.ts per edge: plinth, white sash windows (frame, glass, bars, sill), doors with fanlights and stoops, white cornice; per-house brick colour on the shell"
+    },
+    {
+     "id": "w06-190-rest-door-surrounds",
+     "kind": "other",
+     "where": "cream door surrounds with carved consoles and fanlight tracery (no. 233)",
+     "approxSizeM": [
+      1.6,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002976_pano_0004_000195",
+     "how": "plain white door frame and fanlight; the console carving and tracery are not drawn"
+    }
+   ]
   },
   {
    "tag": "w07-190",
@@ -296,7 +359,32 @@
    "panoId": "TMX7316010203-002976_pano_0004_000199",
    "capturedAt": "2023-02-20",
    "checked": true,
-   "items": []
+   "items": [
+    {
+     "id": "w07-190-rest-houses",
+     "kind": "window-shape",
+     "where": "the Herengracht houses on the rest of the pand (edges 18, 22, 24, 26): brown and dark-painted brick, tall white sashes on a bay grid, raised stone basements, doors over stone stoops",
+     "approxSizeM": [
+      35.0,
+      13.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002976_pano_0004_000199",
+     "how": "row-front.ts per edge: plinth, white sash windows (frame, glass, bars, sill), doors with fanlights and stoops, white cornice; per-house brick colour on the shell"
+    },
+    {
+     "id": "w07-190-rest-door-surrounds",
+     "kind": "other",
+     "where": "cream door surrounds with carved consoles and fanlight tracery (no. 233)",
+     "approxSizeM": [
+      1.6,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002976_pano_0004_000199",
+     "how": "plain white door frame and fanlight; the console carving and tracery are not drawn"
+    }
+   ]
   },
   {
    "tag": "w08-275",
@@ -310,7 +398,20 @@
    "panoId": "TMX7316010203-000355_pano_0000_000990",
    "capturedAt": "2017-07-07",
    "checked": true,
-   "items": []
+   "items": [
+    {
+     "id": "w08-275-herengracht",
+     "kind": "window-shape",
+     "where": "the Herengracht side over the water: brown brick houses, white sashes, a neck gable (the gable belongs to the neighbour)",
+     "approxSizeM": [
+      5.8,
+      18.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000355_pano_0000_000990",
+     "how": "row-front.ts on edge 4: plinth, two bays of white sashes, cornice"
+    }
+   ]
   },
   {
    "tag": "w09-280",
@@ -324,7 +425,20 @@
    "panoId": "recording_2025-06-16_04-42-37_01134",
    "capturedAt": "2025-06-16",
    "checked": true,
-   "items": []
+   "items": [
+    {
+     "id": "w09-280-dark-brick",
+     "kind": "window-shape",
+     "where": "dark grey-painted brick with large white-framed windows (2025)",
+     "approxSizeM": [
+      4.5,
+      12.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_04-42-37_01134",
+     "how": "greyBrick wall colour on the shell, two bays of white sashes (edge 17)"
+    }
+   ]
   },
   {
    "tag": "w10-190",
@@ -338,7 +452,32 @@
    "panoId": "TMX7316010203-002865_pano_0017_000015",
    "capturedAt": "2022-12-15",
    "checked": true,
-   "items": []
+   "items": [
+    {
+     "id": "w10-190-rest-houses",
+     "kind": "window-shape",
+     "where": "the Herengracht houses on the rest of the pand (edges 18, 22, 24, 26): brown and dark-painted brick, tall white sashes on a bay grid, raised stone basements, doors over stone stoops",
+     "approxSizeM": [
+      35.0,
+      13.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002865_pano_0017_000015",
+     "how": "row-front.ts per edge: plinth, white sash windows (frame, glass, bars, sill), doors with fanlights and stoops, white cornice; per-house brick colour on the shell"
+    },
+    {
+     "id": "w10-190-rest-door-surrounds",
+     "kind": "other",
+     "where": "cream door surrounds with carved consoles and fanlight tracery (no. 233)",
+     "approxSizeM": [
+      1.6,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002865_pano_0017_000015",
+     "how": "plain white door frame and fanlight; the console carving and tracery are not drawn"
+    }
+   ]
   },
   {
    "tag": "w11-102",
@@ -352,7 +491,20 @@
    "panoId": "TMX7316010203-002865_pano_0020_000027",
    "capturedAt": "2022-12-15",
    "checked": true,
-   "items": []
+   "items": [
+    {
+     "id": "singel-258",
+     "kind": "window-shape",
+     "where": "white stucco house Singel 258: one bay of windows over the door with an octagonal fanlight, festoons",
+     "approxSizeM": [
+      4.1,
+      13.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002865_pano_0020_000027",
+     "how": "stucco wall colour, one bay of white sashes, door and stoop; festoons and the octagonal fanlight not drawn"
+    }
+   ]
   }
  ],
  "sources": [

@@ -109,7 +109,7 @@
       1.3
      ],
      "plan": "modelled",
-     "how": "white slab on the 3DBAG balcony roof, four brackets, posts and rail",
+     "how": "r8: white slab over the three middle second-floor windows only (photo w02-176: 3.96-11.44 m on the pavilion plane), four brackets, posts and rail",
      "seenIn": "TMX7316010203-001664_pano_0000_001931"
     },
     {
@@ -202,7 +202,7 @@
       6.7
      ],
      "plan": "modelled",
-     "how": "stone base slab, archSlab frames and glass, a transom bar",
+     "how": "r8 (w04-354 crop): stone base 0-7.1 m with a plain band 6.1-7.1 m, five archSlab windows on a 1.91 m pitch about t 5.5, transom at 3.4 m",
      "seenIn": "TMX7316010203-000717_pano_0000_000150"
     },
     {
@@ -214,7 +214,7 @@
       1.6
      ],
      "plan": "simplified",
-     "how": "three rows of four windows (two in the gable row)",
+     "how": "r8: two brick storeys of five segment-headed windows (7.25-9.5, 10.7-12.9 m) with stone sills and segBand heads; tiled frieze as a stone band under the 14.3 m eaves; the shell is reshaped (shell-gable-fit reshapeShell) to that single eaves line and a 17.4 m ridge, and a symmetric pointed topgevel (pointedGable: brick wall, stone copings, foot pinnacles, finial, 18.1 m apex) with a three-light window replaces the lopsided 3DBAG lump; corner pinnacles at both ends. The brick/stone bicolour voussoirs are drawn as plain stone heads",
      "seenIn": "TMX7316010203-000717_pano_0000_000150"
     }
    ]
@@ -241,7 +241,7 @@
       22
      ],
      "plan": "modelled",
-     "how": "3DBAG LoD2.2 tower mass kept, white, slate top; its plein face detailed below",
+     "how": "3DBAG LoD2.2 tower mass kept, white, its roof compressed above 19 m (25.2 -> 22.1 m peak, reshapeShell) and slate; its plein face detailed below",
      "seenIn": "TMX7316010203-001177_pano_0000_000661"
     },
     {
@@ -313,7 +313,7 @@
       3
      ],
      "plan": "simplified",
-     "how": "one white step over the face top (21.2-22.45 m) with a stone coping in front of the 3DBAG slate top; the curved gable outline, its windows and pinnacles are not drawn (the 3DBAG tower top already stands higher than the photo)",
+     "how": "r8: curved crest (bellCrestOutline: concave shoulders into a neck and a half-round head, 20.05-22.05 m, 3.6 m wide) on a stone coping course over the compressed face top, with a finial; the crest's own small windows and carved ornament are not drawn",
      "seenIn": "TMX7316010203-001177_pano_0000_000661"
     }
    ]

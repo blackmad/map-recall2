@@ -40,11 +40,5 @@
   },
   "olvg-oost": {
     "NL.IMBAG.Pand.0363100012243155": "reviewed: 69% under the model, 7.44m, 224 m2; annex/neighbour only partly under the model, left drawn"
-  },
-  "handelsbank-singel-250": {
-    "NL.IMBAG.Pand.0363100012167627": "pandParts split (landmarks r6, 2026-11-20): the model draws the bank's share of this pand only; the rest of the pand stays drawn by the city layer (catalogue pandParts ring, scripts/landmarks/handelsbank-singel-250-spec.json)."
-  },
-  "holland-casino-amsterdam": {
-    "NL.IMBAG.Pand.0363100012173447": "pandParts split (landmarks r6, 2026-11-20): the model draws the 1991 casino's share of this pand only; the rest of the pand stays drawn by the city layer (catalogue pandParts ring, scripts/landmarks/holland-casino-amsterdam-spec.json)."
   }
 }
