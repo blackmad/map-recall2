@@ -141,6 +141,7 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     bronze: {slot: 'glass', why: 'attic pavilion glazing behind the Utrechtsestraat cornice (w01-257), drawn on the shell walls'},
     greyBrick: {slot: 'frame', why: 'light metal roof railing on the Rembrandtplein front (2025 panorama), not brick'},
     blue: {slot: 'paint', why: 'teal clock dials of the tower (tower-top.jpg)'},
+  },
   'pentagon': {
     concrete: {slot: 'stone', why: 'exposed light grey-beige concrete frame: columns, slab edges, copings and balcony slabs (w01-71, w08-318)'},
     slate: {slot: 'bitumen', why: 'low-pitch dark grey roofs of the housing block (PDOK orthophoto), not slate'},

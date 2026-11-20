@@ -5321,11 +5321,6 @@
       "version": "ba5562b87eac40c2",
       "dateSource": "asset-update"
     },
-    "pentagon": {
-      "updatedAt": "2026-11-20T11:08:43.683Z",
-      "version": "5f982c7292f3b9bb",
-      "dateSource": "asset-update"
-    },
     "perdu": {
       "updatedAt": "2026-11-15T08:54:38.063Z",
       "version": "94166a5620444b41",
@@ -6274,11 +6269,6 @@
     "spanjemonument.lod2": {
       "updatedAt": "2026-11-07T14:08:58.188Z",
       "version": "6e459cea8902cf30",
-      "dateSource": "asset-update"
-    },
-    "spiegelhof": {
-      "updatedAt": "2026-11-20T11:10:54.017Z",
-      "version": "ccedd30f5c5527af",
       "dateSource": "asset-update"
     },
     "spinoza-standbeeld": {
@@ -7639,6 +7629,16 @@
     "zwembad-bijlmer.lod2": {
       "updatedAt": "2026-11-16T04:16:49.812Z",
       "version": "b159bc3f84538b1b",
+      "dateSource": "asset-update"
+    },
+    "pentagon": {
+      "updatedAt": "2026-11-20T11:08:43.683Z",
+      "version": "5f982c7292f3b9bb",
+      "dateSource": "asset-update"
+    },
+    "spiegelhof": {
+      "updatedAt": "2026-11-20T11:10:54.017Z",
+      "version": "ccedd30f5c5527af",
       "dateSource": "asset-update"
     }
   }

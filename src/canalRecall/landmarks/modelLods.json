@@ -4259,14 +4259,14 @@
   }
  },
  "roeterseiland-rec-a": {
-  "sourceHash": "0d7b1c43143a48cd",
+  "sourceHash": "1165b3419b281bcf",
   "buildVersion": 2,
-  "bytes": 102052,
-  "triangles": 6491,
+  "bytes": 100728,
+  "triangles": 6119,
   "lod2": {
-   "sourceHash": "0d7b1c43143a48cd",
+   "sourceHash": "1165b3419b281bcf",
    "buildVersion": 6,
-   "bytes": 29500,
+   "bytes": 30228,
    "triangles": 1500
   }
  },
@@ -6468,28 +6468,28 @@
    "triangles": 503
   }
  },
- "kadijksplein-17-18": {
-  "sourceHash": "5aef5291c712d334",
+ "spiegelhof": {
+  "sourceHash": "ccedd30f5c5527af",
   "buildVersion": 2,
-  "bytes": 56984,
-  "triangles": 2559,
+  "bytes": 100620,
+  "triangles": 5328,
   "lod2": {
-   "sourceHash": "5aef5291c712d334",
+   "sourceHash": "ccedd30f5c5527af",
    "buildVersion": 6,
-   "bytes": 10344,
-   "triangles": 323
+   "bytes": 17756,
+   "triangles": 664
   }
  },
- "utrechtsestraat-9-17": {
-  "sourceHash": "b5bf4561fd9b629d",
+ "pentagon": {
+  "sourceHash": "7bbb05864cf01f4d",
   "buildVersion": 2,
-  "bytes": 90180,
-  "triangles": 4793,
+  "bytes": 86672,
+  "triangles": 4919,
   "lod2": {
-   "sourceHash": "b5bf4561fd9b629d",
+   "sourceHash": "7bbb05864cf01f4d",
    "buildVersion": 6,
-   "bytes": 16412,
-   "triangles": 609
+   "bytes": 21068,
+   "triangles": 877
   }
  }
 }
