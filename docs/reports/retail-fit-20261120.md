@@ -311,6 +311,70 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
 | Little Souvenirs | neon script | kit | low-med |
 | New Times | neon script | kit | med |
 
+## 9. Round 6
+
+### Kit changes (`historicPuiFront.ts`, typed, tested, byte-identical without a host)
+- **(a) Glazing bars.** Bars are now at least 7 cm wide (`barM` 0.07). A pane grid too fine for its bay keeps only the columns and rows that leave each pane at least `minPaneM` 0.3 m, so no bar thinner than about a pixel aliases into a dashed line at ride distance.
+- **(b) Top lights** are glass with the sky's reflection, in two tones (`SKY` mixed in at 0.35 and 0.55), not a dark slab.
+- **Doors read per pand:** `front.doors: [{at, w?}]` gives each door's centre as a share of the pui and its width.
+  - The doors stand flush on the pui line, and windows fill the spans between them (`puiDoors`).
+  - The mesher cuts no template recess for a pand with read doors (`threeBuildingMesh.ts`).
+- **One sheet under a transom:** `front.sheet` gives one glass sheet per window span, with no bay mullions. The top-light posts sit over the door edges.
+- **Two-line signs:** `sign.above` puts a smaller sans line over the name, and the frieze grows by 0.4 m. A read `name` keeps its own case in script ("New Times", "Little Souvenirs").
+- **`sign: 'none'`:** the photo's pui carries no lettering. The kit front draws with no name.
+
+### Reads
+- **Doors on the published nine** (same crops):
+  - centre: Leentje, 't Smalle, New Times, Little Souvenirs;
+  - left: Stoof, Tribe, Legends;
+  - left of centre: Haircuts;
+  - two doors right of a window: Bike Rental.
+- Legends is now one sheet under a transom. New Times gets COFFEESHOP over its script, and Leentje gets cream pilasters.
+- **The 5 unread pands, posed at the shop template's node (`at`) with `--prefer-obliquity 30`** (`scripts/retail-fit/poses-puis-r6.json`):
+  - Cirkel: white pui, a sheet under a transom, black door; no lettering.
+  - Gabriel: white pui, door at the left, a sheet window; only a small blade sign.
+  - Souvenir 5575 (2023-01-13): dark pui, cream small-pane frames, door in the centre; no sign.
+  - Popeye: the pose is blocked by a traffic sign, so it stays unread.
+  - Prix d'Ami: no panorama within 35 m at under 55 degrees of the template wall (a narrow street).
+- **The 4 unjudged pands:**
+  - Elfde Gebod: the template pose shows the front, with two red doors at the left. Read and judged.
+  - Keffer and Bird Hotel: no panorama in range (narrow streets).
+  - Bulldog: the only square capture is from 2016-06-09 and shows an older tenant (Holland Experience), so no fair blind.
+
+### Round 6 blinds (fresh opus judge per batch, sides seeded, close browser crops)
+- **Round 6 kit vs round 5 kit, on the 9 published pands** (same poses; the round 5 bundles were built from e48ee86ac6): 8 wins, 0 losses, 1 tie.
+  - 't Smalle tied (the shop is hidden on the photo). Its door read is dropped, so it stays as round 5 apart from the code fixes.
+  - A first round 6 render dropped Stoof's whole pane grid once the door took its share. It was fixed (fewer columns, never none) and re-shot before this blind.
+- **New pands, kit vs template, on the final frames:** 4/0. Cirkel, Elfde Gebod, Gabriel and souvenir 5575 are all published.
+
+| Pand | Comparison | Verdict | Confidence |
+|---|---|---|---|
+| Bike Rental | r6 vs r5 | r6 | med |
+| Haircuts | r6 vs r5 | r6 | low |
+| Leentje | r6 vs r5 | r6 | high |
+| Legends | r6 vs r5 | r6 | med |
+| Little Souvenirs | r6 vs r5 | r6 | med-high |
+| New Times | r6 vs r5 | r6 | med |
+| Stoof | r6 vs r5 | r6 | high |
+| 't Smalle | r6 vs r5 | tie | low |
+| Tribe | r6 vs r5 | r6 | med |
+| Cirkel | kit vs template | kit | high |
+| Elfde Gebod | kit vs template | kit | high |
+| Gabriel | kit vs template | kit | high |
+| Souvenir 5575 | kit vs template | kit | high |
+
+- **Published: 13 of 27.**
+- **What the kit still cannot say**, per the judges:
+  - blade (projecting) signs;
+  - stoops, steps and basement windows;
+  - vent grilles in transoms and a diamond-pane transom;
+  - white 6-over-6 sashes as their own frames (the kit draws one dark grid in the pui's frame colour);
+  - a round logo on the glass;
+  - glazed bays between pilasters in place of a dark infill.
+  - Read doors that do not fit beside the windows are dropped: Bike Rental shows one door where the photo has two.
+- **Not the kit's:** the blue banners on souvenir 5575 and the window-box blocks on Tribe are drawn by other layers.
+- Dashed lines remain on balcony rails, sills and transom edges in both renders. They come from other geometry, not from the kit's bars.
+
 ## Wiring (for the integrator)
 
 - Add `src/canalRecall/retailFit/retailFit.test.ts` to `test:shopfront-gate` in package.json.
@@ -323,3 +387,4 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
 - Round 3, Magna Plaza (optional, for the game's own glass search and so other consumers see glass): `git apply scripts/retail-fit/magna-plaza-glass-retag.patch`, then `node --import tsx scripts/landmarks/build-manual-landmarks.ts --only=magna-plaza`, then LODs for magna-plaza, then build covers, then `check:covers` and `check:manual-landmarks`. Then rebuild the signature-landmarks bundle. The fits work without it, from the staged openings.
 - Round 4: `src/canalRecall/engine/workerPool.ts` adds `'retailFit'` to `withWorkerFlags`, so `?retailFit=0|1` reaches the mesh workers. Rebuild the pool bundles (`build:canal-three-buildings`, the engine bundle and own-ground-game) together.
 - Round 5: `retailFront.ts` (import line 5, the `host?` field at the end of `RetailFrontInput`, an early branch after `new Builder(e)`) and `threeBuildingMesh.ts` (the `historicPuiInput(b.id, !!(b.recipe || b.specRecipe))` spread, `&& !input.host` on rooms, the sign-mode `opening` guard) feed the mesh pool. Rebuild the pool bundles together: `build:canal-three-buildings` (browser and worker), the engine bundle (`scripts/build-canal-engine.mjs`) and own-ground-game (`scripts/build-3d-bundles.mjs --only=own-ground-game`). The Utrechtsestraat chunk GLB, its lod2 record and the roof golden are already committed (above).
+- Round 6: `threeBuildingMesh.ts` changes one line (`opening` is null when the host has read doors); otherwise the work is `retailFit/historicPuiFront.ts`, `historicPui.ts` and `historic-puis.json`. Rebuild the same pool bundles as round 5.

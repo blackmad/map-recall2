@@ -561,7 +561,8 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   const tris = retailFrontTris(front.brand ? { ...placed, brand: front.brand, ...(b.wallHex ? { wallHex: b.wallHex } : {}) } : placed, e, s0, s1, base, groundM);
   // Round 3: every template door stands in a recess (retailDoor), traced or not, so the wall is cut over each.
   // Lane retail-fit round 5: a historic pui on the pand's own front ('sign') adds only its name: nothing is cut.
-  const opening = input.host?.mode === 'sign' ? null : retailDoor(input, s0, s1);
+  // Round 6: a kit pui with read doors draws them flush where the photo shows them: no recess either.
+  const opening = input.host && (input.host.mode === 'sign' || input.host.front.doors?.length) ? null : retailDoor(input, s0, s1);
   // The wall is cut on the piece of the run behind the door (a piece set back further than the recess needs no cut).
   const part = opening && run.parts.find(p => p.t0 <= opening.a0 + 1e-6 && p.t1 >= opening.a1 - 1e-6 && p.backM < opening.depthM);
   if (!tris.length) return { tris };

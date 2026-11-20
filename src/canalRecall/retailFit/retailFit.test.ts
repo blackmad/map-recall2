@@ -133,7 +133,7 @@ test('historic pui: staged hosts gated by mode and sign; the kit draws no fascia
   const ids = Object.keys(STAGED_PUIS);
   assert.ok(ids.length >= 14);
   for (const id of ids) {
-    const p = STAGED_PUIS[id], drawn = (p.sign === 'band' || p.sign === 'glass' || p.sign === 'neon') && !!p.front;
+    const p = STAGED_PUIS[id], drawn = (p.sign === 'band' || p.sign === 'glass' || p.sign === 'neon' || p.sign === 'none') && !!p.front;
     assert.match(p.source, /RCE monument register/);
     assert.ok(p.signSource, `${id} has a sign source`);
     if (p.front) { assert.ok(p.frontSource, `${id} has a front source`); assert.equal(p.front.sign.kind, p.sign); }
@@ -168,4 +168,44 @@ test('historic pui: staged hosts gated by mode and sign; the kit draws no fascia
   const sign = retailFrontTris({ ...input, host: { mode: 'sign', front: stoof } }, e, 0, 6, 0, 3.2);
   assert.ok(sign.length > 0 && sign.every(t => t.layer !== undefined), 'only lettering');
   assert.ok(sign.every(t => t.p.every(p => Math.abs(p[1]) <= 0.05)));
+});
+
+test('historic pui round 6: read doors, sheet glass, two-line signs, legible bars, lit top lights', async () => {
+  const { STAGED_PUIS } = await import('./historicPui.ts');
+  const { retailFrontTris } = await import('../retailFront.ts');
+  const { puiDoors, PUI_KIT } = await import('./historicPuiFront.ts');
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  const input = { template: 'brownBar' as const, word: 'STOOF', seed: 'NL.IMBAG.Pand.x', letters: 0, faces: 10 };
+  const stoof = STAGED_PUIS['0363100012171790'].front!;
+  const kit = (front: typeof stoof, w = 6, h = 3.6) => retailFrontTris({ ...input, host: { mode: 'kit', front } }, e, 0, w, 0, h);
+  // Doors: clamped inside, sorted, apart by a mullion; a side door hugs its pilaster.
+  assert.deepEqual(puiDoors([{ at: 0 }], 0, 5), [[0, PUI_KIT.doorM]]);
+  const two = puiDoors([{ at: 0.6 }, { at: 0.5 }], 0, 5);
+  assert.equal(two.length, 2); assert.ok(two[1][0] >= two[0][1] + PUI_KIT.mullionM - 1e-9);
+  assert.ok(puiDoors([{ at: 0.5, w: 9 }], 0, 5).every(([a, b]) => a >= 0 && b <= 5));
+  // A read door stands flush (leaf at glass depth, nothing behind the wall line) where the photo has it.
+  const side = kit({ ...stoof, doors: [{ at: 0 }] }), leaf = stoof.door!;
+  const leaves = side.filter(t => t.hex === leaf);
+  assert.ok(leaves.length > 0 && leaves.every(t => t.p.every(p => p[1] <= 0 + 1e-9 && p[0] <= 0.2 + PUI_KIT.doorM + 1e-6)));
+  // Sheet glass: fewer mullions than the bay grid.
+  const posts = (tris: typeof side, hex: string) => tris.filter(t => t.hex === hex && Math.max(...t.p.map(p => p[0])) - Math.min(...t.p.map(p => p[0])) <= PUI_KIT.mullionM + 1e-6).length;
+  const plain = { ...stoof, panes: undefined };
+  assert.ok(posts(kit({ ...plain, sheet: true }, 8), stoof.frame) < posts(kit(plain, 8), stoof.frame));
+  // Two-line sign: more lettering than the name alone.
+  const lettered = (tris: typeof side) => tris.filter(t => t.layer !== undefined).length;
+  assert.ok(lettered(kit({ ...stoof, sign: { ...stoof.sign, above: 'COFFEESHOP' } })) > lettered(kit(stoof)));
+  // 'none': the kit front, no lettering at all.
+  assert.equal(lettered(kit({ ...stoof, sign: { kind: 'none', ink: '#000000' } })), 0);
+  assert.ok(kit({ ...stoof, sign: { kind: 'none', ink: '#000000' } }).length > 20);
+  // Bars: never thinner than 6 cm; none when panes would be smaller than minPaneM.
+  const barTris = (tris: typeof side) => tris.filter(t => t.hex === stoof.frame && t.p.every(p => Math.abs(Math.abs(p[1]) - PUI_KIT.barOutM) < 1e-6));
+  for (const t of barTris(kit(stoof))) { const xs = t.p.map(p => p[0]), zs = t.p.map(p => p[2]); assert.ok(Math.min(Math.max(...xs) - Math.min(...xs), Math.max(...zs) - Math.min(...zs)) >= 0.06 - 1e-6); }
+  // A grid too fine for its bay keeps as many panes as fit at minPaneM, never none.
+  const fine = barTris(kit({ ...stoof, panes: [12, 12] }));
+  assert.ok(fine.length > 0 && fine.length < barTris(kit({ ...stoof, panes: [40, 40] })).length + 1);
+  for (const t of fine) { const zs = t.p.map(p => p[2]), xs = t.p.map(p => p[0]); assert.ok(Math.max(...zs) - Math.min(...zs) < 0.1 || Math.max(...xs) - Math.min(...xs) < 0.1); }
+  // Top lights: lighter than the glass under them (no black slab).
+  const lum = (h: string) => [1, 3, 5].reduce((s, i) => s + parseInt(h.slice(i, i + 2), 16), 0);
+  const tl = kit(stoof).filter(t => t.p.every(p => p[2] > 2.3 + PUI_KIT.transomM - 1e-6) && t.p.every(p => Math.abs(Math.abs(p[1]) - PUI_KIT.glassOutM) < 1e-6));
+  assert.ok(tl.length > 0 && tl.every(t => lum(t.hex) > lum('#2a2420')));
 });

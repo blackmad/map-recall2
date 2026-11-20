@@ -10,7 +10,8 @@ import staged from './historic-puis.json';
 import { retailFitMode, type RetailFitMode } from './flag.js';
 import type { HistoricPuiHost, PuiFrontSpec } from './historicPuiFront.js';
 
-export type PuiSign = 'band' | 'glass' | 'neon' | 'board' | 'unread';
+// Round 6: 'none': the photo shows the pui with no lettering on it (the kit front draws, without a name).
+export type PuiSign = 'band' | 'glass' | 'neon' | 'none' | 'board' | 'unread';
 export type StagedPui = { status: 'published' | 'staged'; review: string; template: string; word?: string; monument: string; sign: PuiSign; signSource?: string; front?: PuiFrontSpec; frontSource?: string; source: string };
 export const STAGED_PUIS: Readonly<Record<string, StagedPui>> = ((staged as unknown as { puis?: Record<string, StagedPui> }).puis) ?? {};
 
@@ -20,7 +21,7 @@ const key = (id: string) => (id.startsWith('NL.IMBAG.Pand.') ? id.slice(14) : id
 export function historicPuiHost(id: string, own = false, mode: RetailFitMode = retailFitMode()): HistoricPuiHost | undefined {
   const p = STAGED_PUIS[key(id)];
   if (!p || !p.front || mode === 'off' || (mode !== 'all' && p.status !== 'published')) return undefined;
-  if (p.sign !== 'band' && p.sign !== 'glass' && p.sign !== 'neon') return undefined;
+  if (p.sign !== 'band' && p.sign !== 'glass' && p.sign !== 'neon' && p.sign !== 'none') return undefined;
   return { mode: own ? 'sign' : 'kit', front: p.front };
 }
 /** The spread for a RetailFrontInput: `{ host }` for a historic pui, else nothing. */
