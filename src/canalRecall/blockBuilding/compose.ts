@@ -830,7 +830,13 @@ function drawBalconyRuns(c: Ctx) {
       // gallery posts (opt-in): a fin at every bay joint of the run, slab to storey top, proud of the slab front
       if (b.posts) {
         const pw = b.posts.w ?? 0.2, joints = [a0, ...run.slice(1).map(x => x.a0), a1];
-        for (const u of joints) { const lo = Math.max(a0, u - pw / 2), hi = Math.min(a1, u + pw / 2), top = postTop(c.p, lo, hi, rv0, cell.v1); if (top > rv0) F(b.posts.slot, lo, hi, rv0, top, depth - 0.2, depth + SHEET_PITCH, 'fktblr'); }
+        // a post runs to the storey top only under another gallery; on the top gallery it ends at the rail's top
+        const above = byFloor.get(floor + 1) ?? [];
+        for (const u of joints) {
+          const lo = Math.max(a0, u - pw / 2), hi = Math.min(a1, u + pw / 2), carried = above.some(x => x.a0 <= u + 1e-6 && x.a1 >= u - 1e-6);
+          const top = carried ? postTop(c.p, lo, hi, rv0, cell.v1) : rv0 + rh;
+          if (top > rv0) F(b.posts.slot, lo, hi, rv0, top, depth - 0.2, depth + SHEET_PITCH, 'fktblr');
+        }
       }
     }
   }
