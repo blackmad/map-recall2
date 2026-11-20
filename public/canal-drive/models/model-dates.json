@@ -3556,16 +3556,6 @@
       "version": "5aef5291c712d334",
       "dateSource": "asset-update"
     },
-    "kadijksplein-17-18.lod1": {
-      "updatedAt": "2026-11-20T11:48:03.023Z",
-      "version": "3a62a91f228e35a4",
-      "dateSource": "asset-update"
-    },
-    "kadijksplein-17-18.lod2": {
-      "updatedAt": "2026-11-20T11:48:03.023Z",
-      "version": "bec7d2a36a340c09",
-      "dateSource": "asset-update"
-    },
     "kalvertoren": {
       "updatedAt": "2026-10-31T14:29:00.129Z",
       "version": "2a2010e69de4af5e",
@@ -5122,13 +5112,13 @@
       "dateSource": "asset-update"
     },
     "oranjekerk-pijp.lod1": {
-      "updatedAt": "2026-11-20T11:48:03.090Z",
-      "version": "93a452be951bbf16",
+      "updatedAt": "2026-11-20T09:39:07.832Z",
+      "version": "cf12d6ffdcb9a9bc",
       "dateSource": "asset-update"
     },
     "oranjekerk-pijp.lod2": {
-      "updatedAt": "2026-11-20T11:48:03.091Z",
-      "version": "8b8a8f26593db0ce",
+      "updatedAt": "2026-11-20T09:39:11.402Z",
+      "version": "1d04e347ccf05096",
       "dateSource": "asset-update"
     },
     "orgelpark": {
@@ -6821,16 +6811,6 @@
       "version": "b5bf4561fd9b629d",
       "dateSource": "asset-update"
     },
-    "utrechtsestraat-9-17.lod1": {
-      "updatedAt": "2026-11-20T11:48:03.531Z",
-      "version": "ca9b5ccbcfce9b25",
-      "dateSource": "asset-update"
-    },
-    "utrechtsestraat-9-17.lod2": {
-      "updatedAt": "2026-11-20T11:48:03.531Z",
-      "version": "623fc49c98c09c1d",
-      "dateSource": "asset-update"
-    },
     "valley": {
       "updatedAt": "2026-10-24T18:32:39.332Z",
       "version": "b0fd184920c6d816",
@@ -7669,6 +7649,11 @@
     "kramatplantsoen": {
       "updatedAt": "2026-11-20T11:58:18.112Z",
       "version": "2734f3776f370264",
+      "dateSource": "asset-update"
+    },
+    "nieuwe-achtergracht-129": {
+      "updatedAt": "2026-11-20T12:33:44.060Z",
+      "version": "52b31c7c8d50836c",
       "dateSource": "asset-update"
     }
   }
