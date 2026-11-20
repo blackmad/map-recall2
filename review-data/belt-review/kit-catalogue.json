@@ -1,0 +1,1139 @@
+{
+ "version": 1,
+ "about": "Belt review R5 data: per kit enum value, the canal-belt houses that use it (published specs of belt-buurt pands, belt review descriptions; examples strongest source first). Rendering waits for the R2 render service. Built by scripts/belt-review/kit-catalogue.ts.",
+ "inputs": {
+  "beltPands": 3529,
+  "specPands": 1783,
+  "descPands": 42
+ },
+ "enums": {
+  "gable": {
+   "values": {
+    "spout": {
+     "houses": 5,
+     "examples": [
+      {
+       "pandId": "0363100012169579",
+       "source": "register",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012171079",
+       "source": "register",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012171133",
+       "source": "register",
+       "from": "published spec"
+      }
+     ]
+    },
+    "neck": {
+     "houses": 386,
+     "examples": [
+      {
+       "pandId": "0363100012168136",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169006",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169390",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "raised-neck": {
+     "houses": 0,
+     "examples": []
+    },
+    "bell": {
+     "houses": 230,
+     "examples": [
+      {
+       "pandId": "0363100012171304",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169207",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012176393",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "step": {
+     "houses": 23,
+     "examples": [
+      {
+       "pandId": "0363100012175702",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012179665",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012179671",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    },
+    "point": {
+     "houses": 84,
+     "examples": [
+      {
+       "pandId": "0363100012171023",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012178784",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012164993",
+       "source": "register",
+       "from": "published spec"
+      }
+     ]
+    },
+    "cornice": {
+     "houses": 843,
+     "examples": [
+      {
+       "pandId": "0363100012167644",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167688",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167689",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "flat": {
+     "houses": 4,
+     "examples": [
+      {
+       "pandId": "0363100012176346",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012172459",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012178865",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "shouldered": {
+     "houses": 0,
+     "examples": []
+    }
+   },
+   "unused": [
+    "raised-neck",
+    "shouldered"
+   ],
+   "outsideKit": {}
+  },
+  "cornice": {
+   "values": {
+    "none": {
+     "houses": 17,
+     "examples": [
+      {
+       "pandId": "0363100012169006",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169390",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012171304",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "simple": {
+     "houses": 21,
+     "examples": [
+      {
+       "pandId": "0363100012167688",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167689",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169115",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "bracketed": {
+     "houses": 5,
+     "examples": [
+      {
+       "pandId": "0363100012176601",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012178705",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012178874",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "heavy": {
+     "houses": 15,
+     "examples": [
+      {
+       "pandId": "0363100012167644",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169387",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012176490",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "frieze": {
+     "houses": 20,
+     "examples": [
+      {
+       "pandId": "0363100012167709",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167714",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169008",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    }
+   },
+   "unused": [],
+   "outsideKit": {
+    "attic-frieze": {
+     "houses": 6,
+     "examples": [
+      {
+       "pandId": "0363100012167494",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012167495",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012168544",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    }
+   }
+  },
+  "windowHead": {
+   "values": {
+    "flat": {
+     "houses": 28,
+     "examples": [
+      {
+       "pandId": "0363100012167492",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012167493",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012167494",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    },
+    "segmental": {
+     "houses": 4,
+     "examples": [
+      {
+       "pandId": "0363100012176393",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012176601",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169010",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    },
+    "round": {
+     "houses": 0,
+     "examples": []
+    },
+    "relieving": {
+     "houses": 3,
+     "examples": [
+      {
+       "pandId": "0363100012175702",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012179665",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012179671",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    }
+   },
+   "unused": [
+    "round"
+   ],
+   "outsideKit": {}
+  },
+  "windowSurround": {
+   "values": {
+    "none": {
+     "houses": 22,
+     "examples": [
+      {
+       "pandId": "0363100012167492",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012167493",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012168069",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    },
+    "stone-lintel": {
+     "houses": 1,
+     "examples": [
+      {
+       "pandId": "0363100012175616",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    },
+    "full-frame": {
+     "houses": 26,
+     "examples": [
+      {
+       "pandId": "0363100012167644",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167688",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167689",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "keystone": {
+     "houses": 0,
+     "examples": []
+    },
+    "sill": {
+     "houses": 25,
+     "examples": [
+      {
+       "pandId": "0363100012167709",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167714",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169006",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "eared-keystone": {
+     "houses": 0,
+     "examples": []
+    },
+    "dentil-lintel": {
+     "houses": 0,
+     "examples": []
+    },
+    "jack-blocks": {
+     "houses": 0,
+     "examples": []
+    }
+   },
+   "unused": [
+    "keystone",
+    "eared-keystone",
+    "dentil-lintel",
+    "jack-blocks"
+   ],
+   "outsideKit": {
+    "block-dressings": {
+     "houses": 3,
+     "examples": [
+      {
+       "pandId": "0363100012167494",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012167495",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012169010",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    }
+   }
+  },
+  "windows": {
+   "values": {
+    "sash": {
+     "houses": 36,
+     "examples": [
+      {
+       "pandId": "0363100012167644",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167688",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167709",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "sash-small-panes": {
+     "houses": 9,
+     "examples": [
+      {
+       "pandId": "0363100012169008",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012176490",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012176545",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "cross": {
+     "houses": 2,
+     "examples": [
+      {
+       "pandId": "0363100012167896",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012178865",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "plain": {
+     "houses": 2,
+     "examples": [
+      {
+       "pandId": "0363100012172459",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012178704",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "arched": {
+     "houses": 2,
+     "examples": [
+      {
+       "pandId": "0363100012176752",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012178705",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "shop": {
+     "houses": 0,
+     "examples": []
+    },
+    "two-light": {
+     "houses": 0,
+     "examples": []
+    },
+    "ladder": {
+     "houses": 0,
+     "examples": []
+    },
+    "sash-6-over-6": {
+     "houses": 5,
+     "examples": [
+      {
+       "pandId": "0363100012171052",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012175655",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012175702",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "sash-8-over-8": {
+     "houses": 0,
+     "examples": []
+    },
+    "sash-9-over-9": {
+     "houses": 3,
+     "examples": [
+      {
+       "pandId": "0363100012167689",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169444",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012177430",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "six-pane": {
+     "houses": 2,
+     "examples": [
+      {
+       "pandId": "0363100012169108",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169380",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "t-window": {
+     "houses": 4,
+     "examples": [
+      {
+       "pandId": "0363100012169270",
+       "source": "reviewed",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012176601",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012179684",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "small-over-one": {
+     "houses": 0,
+     "examples": []
+    },
+    "cross-transom": {
+     "houses": 1,
+     "examples": [
+      {
+       "pandId": "0363100012179665",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "casement-toplight": {
+     "houses": 3,
+     "examples": [
+      {
+       "pandId": "0363100012175616",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012175692",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012175701",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    },
+    "casement-transom": {
+     "houses": 0,
+     "examples": []
+    },
+    "casement-gridded-toplight": {
+     "houses": 0,
+     "examples": []
+    },
+    "casement-triple": {
+     "houses": 0,
+     "examples": []
+    },
+    "casement-toplight-double": {
+     "houses": 0,
+     "examples": []
+    },
+    "casement-gridded-toplight-double": {
+     "houses": 0,
+     "examples": []
+    },
+    "casement-pair": {
+     "houses": 0,
+     "examples": []
+    },
+    "casement-small-panes": {
+     "houses": 0,
+     "examples": []
+    },
+    "casement-sidelights-toplight": {
+     "houses": 0,
+     "examples": []
+    },
+    "sash-4-over-4": {
+     "houses": 1,
+     "examples": [
+      {
+       "pandId": "0363100012175654",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "sash-1-over-1": {
+     "houses": 0,
+     "examples": []
+    }
+   },
+   "unused": [
+    "shop",
+    "two-light",
+    "ladder",
+    "sash-8-over-8",
+    "small-over-one",
+    "casement-transom",
+    "casement-gridded-toplight",
+    "casement-triple",
+    "casement-toplight-double",
+    "casement-gridded-toplight-double",
+    "casement-pair",
+    "casement-small-panes",
+    "casement-sidelights-toplight",
+    "sash-1-over-1"
+   ],
+   "outsideKit": {
+    "tall-upper": {
+     "houses": 20,
+     "examples": [
+      {
+       "pandId": "0363100012167492",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012167493",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      },
+      {
+       "pandId": "0363100012167494",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    }
+   }
+  },
+  "dormerStyle": {
+   "values": {
+    "plain": {
+     "houses": 0,
+     "examples": []
+    },
+    "pediment": {
+     "houses": 0,
+     "examples": []
+    },
+    "pointed": {
+     "houses": 0,
+     "examples": []
+    },
+    "box": {
+     "houses": 0,
+     "examples": []
+    },
+    "flat": {
+     "houses": 1,
+     "examples": [
+      {
+       "pandId": "0363100012167714",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "arched": {
+     "houses": 0,
+     "examples": []
+    }
+   },
+   "unused": [
+    "plain",
+    "pediment",
+    "pointed",
+    "box",
+    "arched"
+   ],
+   "outsideKit": {}
+  },
+  "balconyStyle": {
+   "values": {
+    "guard": {
+     "houses": 0,
+     "examples": []
+    },
+    "timber-bracketed": {
+     "houses": 0,
+     "examples": []
+    },
+    "slab-hood": {
+     "houses": 0,
+     "examples": []
+    }
+   },
+   "unused": [
+    "guard",
+    "timber-bracketed",
+    "slab-hood"
+   ],
+   "outsideKit": {}
+  },
+  "basement": {
+   "values": {
+    "none": {
+     "houses": 50,
+     "examples": [
+      {
+       "pandId": "0363100012167644",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167688",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167689",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "windows": {
+     "houses": 8,
+     "examples": [
+      {
+       "pandId": "0363100012171052",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012175654",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012175655",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "stoop": {
+     "houses": 188,
+     "examples": [
+      {
+       "pandId": "0363100012175702",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012176393",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169270",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    },
+    "stoop-and-windows": {
+     "houses": 8,
+     "examples": [
+      {
+       "pandId": "0363100012175699",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167896",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012175700",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    }
+   },
+   "unused": [],
+   "outsideKit": {}
+  },
+  "stoopFlight": {
+   "values": {
+    "front": {
+     "houses": 0,
+     "examples": []
+    },
+    "side-left": {
+     "houses": 0,
+     "examples": []
+    },
+    "side-right": {
+     "houses": 0,
+     "examples": []
+    },
+    "double": {
+     "houses": 0,
+     "examples": []
+    }
+   },
+   "unused": [
+    "front",
+    "side-left",
+    "side-right",
+    "double"
+   ],
+   "outsideKit": {}
+  },
+  "roofMaterial": {
+   "values": {
+    "slate": {
+     "houses": 4,
+     "examples": [
+      {
+       "pandId": "0363100012176752",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012178704",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012178705",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "black-tile": {
+     "houses": 11,
+     "examples": [
+      {
+       "pandId": "0363100012169207",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012171052",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012175702",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "red-tile": {
+     "houses": 43,
+     "examples": [
+      {
+       "pandId": "0363100012167644",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167688",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167689",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "bitumen": {
+     "houses": 2,
+     "examples": [
+      {
+       "pandId": "0363100012169208",
+       "source": "face-intent",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012172459",
+       "source": "face-intent",
+       "from": "published spec"
+      }
+     ]
+    },
+    "zinc": {
+     "houses": 0,
+     "examples": []
+    },
+    "copper": {
+     "houses": 0,
+     "examples": []
+    }
+   },
+   "unused": [
+    "zinc",
+    "copper"
+   ],
+   "outsideKit": {}
+  },
+  "wallMaterial": {
+   "values": {
+    "brick": {
+     "houses": 59,
+     "examples": [
+      {
+       "pandId": "0363100012168578",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012169116",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012171023",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "stucco": {
+     "houses": 71,
+     "examples": [
+      {
+       "pandId": "0363100012167644",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167688",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167689",
+       "source": "reviewed",
+       "from": "published spec"
+      }
+     ]
+    },
+    "painted-brick": {
+     "houses": 12,
+     "examples": [
+      {
+       "pandId": "0363100012167483",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012175321",
+       "source": "reviewed",
+       "from": "published spec"
+      },
+      {
+       "pandId": "0363100012167492",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    }
+   },
+   "unused": [],
+   "outsideKit": {
+    "paint": {
+     "houses": 1,
+     "examples": [
+      {
+       "pandId": "0363100012169272",
+       "source": "own-read",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    },
+    "stone": {
+     "houses": 1,
+     "examples": [
+      {
+       "pandId": "0363100012179764",
+       "source": "register",
+       "from": "description herengracht-2-90-even"
+      }
+     ]
+    }
+   }
+  }
+ }
+}
