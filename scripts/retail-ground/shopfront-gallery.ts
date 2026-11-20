@@ -20,7 +20,10 @@ const { retailFrontTris } = await import('../../src/canalRecall/retailFront.ts')
 const { RETAIL_TEMPLATES, CHAIN_TEMPLATES, CHAIN_TYPE_TEMPLATES, REAL_ONLY_TEMPLATES, realAccepted, TEMPLATE_LOOKS } = await import('../../src/canalRecall/retailTemplates.ts');
 const { logoFor, glyphCellBox } = await import('../../src/canalRecall/retailLogos.ts');
 const { GOODS_LAYERS, paintGoodsLayer } = await import('../../src/canalRecall/retailGoods.ts');
-const { GOODS_BASE, TYPE_BASE, CHAIN_LOGO_BASE } = await import('../../src/canalRecall/retailPages.ts');
+const { GOODS_BASE, TYPE_BASE, CHAIN_LOGO_BASE, VARIETY_BASE } = await import('../../src/canalRecall/retailPages.ts');
+// Lane shop-variety: the pane fillers (retailPaneFillers.ts) as the game draws them (default on; SHOP_VARIETY=0 off).
+const { FILLER_LAYERS, paintFillerLayer } = await import('../../src/canalRecall/retailPaneFillers.ts');
+const VARIETY = (await import('../../src/canalRecall/shopVariety.ts')).shopVarietyOn();
 const { TYPE_FACES } = await import('../../src/canalRecall/retailTypeFaces.ts');
 const { CHAIN_LOGO_PAGES, chainLogo, TEMPLATE_CHAIN_LOGO, TEMPLATE_WORDMARK, templateLogoKey } = await import('../../src/canalRecall/retailChainLogos.ts');
 const { RETAIL_CHAINS, chainOwnFront } = await import('../../src/canalRecall/retailChains.ts');
@@ -44,6 +47,7 @@ pages.set(LOGO, await loadImage(path.join(dir, 'atlas.png'))); pages.set(LOGO + 
 for (let k = 0; k < GOODS_LAYERS; k++) { const c = createCanvas(SIZE, SIZE); paintGoodsLayer(c.getContext('2d') as never, k, SIZE); pages.set(LOGO + GOODS_BASE + k, c); }
 for (const [k, f] of TYPE_FACES.entries()) if (fs.existsSync(path.join(dir, `type-${f}.png`))) pages.set(LOGO + TYPE_BASE + k, await loadImage(path.join(dir, `type-${f}.png`)));
 for (let k = 0; k < CHAIN_LOGO_PAGES; k++) pages.set(LOGO + CHAIN_LOGO_BASE + k, await loadImage(path.join(dir, `chains-${k + 1}.png`)));
+if (VARIETY) for (let k = 0; k < FILLER_LAYERS; k++) { const c = createCanvas(SIZE, SIZE); paintFillerLayer(c.getContext('2d') as never, k, SIZE); pages.set(LOGO + VARIETY_BASE + k, c); }
 const isLettering = (layer: number, uv: [number, number][]) => {
   if (layer >= LOGO + TYPE_BASE && layer < LOGO + TYPE_BASE + TYPE_FACES.length) return true;
   if (layer !== LOGO) return false;
@@ -81,7 +85,7 @@ function inputFor(template: RetailTemplate, chainKey: string | null, seed: strin
   const brandKey = chainKey ?? template;
   return {
     template, seed, door: { a0: SPAN - 1.9, a1: SPAN - 0.9, depthM: 0.5 }, letters: LOGO, ...(word ? { word } : {}), ...(logo ? { logo } : {}),
-    ...(real ? { goods: LOGO + GOODS_BASE, faces: LOGO + TYPE_BASE } : {}),
+    ...(real ? { goods: LOGO + GOODS_BASE, faces: LOGO + TYPE_BASE, ...(VARIETY ? { variety: LOGO + VARIETY_BASE } : {}) } : {}),
     ...(retailChain ? { chain: { fascia: retailChain.fascia, letters: retailChain.letters, word: retailChain.word } } : {}),
     ...(brandKey in BRAND_STYLES ? { brand: brandKey, wallHex: WALL } : {}),
   };

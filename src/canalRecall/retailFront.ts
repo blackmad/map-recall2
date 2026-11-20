@@ -3,7 +3,9 @@
 // street wall nearest the POI. Flat-colour triangles in the sign layer (threeBuildingMesh SignTri), so no texture
 // layer is spent: the atlas has two free layers. Pure (no DOM): runs in the mesh worker and in Node tests.
 import { glyphLayout } from './retailLogos.js';
-import { goodsCell, goodsTiles } from './retailGoods.js';
+import { goodsCell, goodsTiles, type GoodsKind } from './retailGoods.js';
+import { fillerCell } from './retailPaneFillers.js';
+import { planPanes, shopVarietyOn } from './shopVariety.js';
 import { drawRedLightFront, type RedLightFront } from './groundParts/redLightFront.js';
 import { retailBrandOn, retailPartsOn } from './retailPages.js';
 import { brandAccepted, brandLook } from './retailBrandStyles.js';
@@ -483,6 +485,10 @@ export type RetailFrontInput = {
   /** Lane retail-real: the first window-goods layer (retailPages.ts GOODS_BASE from the logo layer); with it a template
    *  with `goods` shows its goods cell in every pane tile. Absent: round n's interior. */
   goods?: number;
+  /** Lane shop-variety (default on; `?shopVariety=0` off): the first pane-filler layer (retailPages.ts VARIETY_BASE); with it and
+   *  `goods` the signature goods show in the window they belong in and the other panes take the kind's pane set
+   *  (shopVariety.ts). Absent: the goods cell in every pane tile. */
+  variety?: number;
   /** Lane retail-real: the first lettering-face layer (retailPages.ts TYPE_BASE); with it a template with `face` letters
    *  its word in that face. Absent: the bold sans. */
   faces?: number;
@@ -601,9 +607,30 @@ function shopRoom(b: Builder, template: string, props: NonNullable<(typeof SHOP_
   for (const { tris, depth } of insideProps(props, c0, c1, seed, bay)) b.put(intoRoom(tris, depth, base), p => [p[0], p[1], p[2]], hex => glassTone(hex, ROOM_PROP_PULL));
 }
 
+/** Lane shop-variety: a goods tile as drawn (its triangles in `out`, its span, bay, tile index and uv rect), for
+ *  varyPanes to swap once the whole front's tiles and doors are known. */
+type GoodsTileRec = { out: FrontTri[]; first: number; end: number; a0: number; a1: number; bay: number; tile: number; rect: [number, number, number, number] };
+
+/** Lane shop-variety (default on; `?shopVariety=0` off): the front's goods tiles planned together (shopVariety.ts planPanes); a filler
+ *  tile keeps its two triangles and takes the filler cell's layer and a seeded stretch of it (goodsTileRect). */
+function varyPanes(recs: GoodsTileRec[], doors: ReadonlyArray<readonly [number, number]>, kind: GoodsKind, input: RetailFrontInput): void {
+  if (input.variety === undefined || recs.length < 2) return;
+  const sorted = recs.slice().sort((p, q) => p.a0 - q.a0), plan = planPanes(kind, sorted, doors, input.seed);
+  for (const [i, r] of sorted.entries()) {
+    const c = plan[i];
+    if (c.signature) continue;
+    const cell = fillerCell(c.filler), to = goodsTileRect(cell.rect, input.seed, r.bay, r.tile), [f0, g0, f1, g1] = r.rect;
+    for (const t of r.out.slice(r.first, r.end)) {
+      t.layer = input.variety + cell.page;
+      t.uv = t.uv!.map(([u, v]) => [to[0] + (to[2] - to[0]) * (u - f0) / (f1 - f0), to[1] + (to[3] - to[1]) * (v - g0) / (g1 - g0)] as [number, number]);
+    }
+  }
+}
+
 /** The glass of one bay over [c0, c1] x [zr, head], `panes` panes `pw` wide (round 3c / lane retail-real / round 7);
- *  shared by the template front and the ground-floor inset (groundFloorFrontTris). */
-function fillPanes(b: Builder, look: TemplateLook, input: RetailFrontInput, c0: number, c1: number, zr: number, head: number, bay: number, panes: number, pw: number, seed: string): void {
+ *  shared by the template front and the ground-floor inset (groundFloorFrontTris). With `recs` (lane shop-variety) its
+ *  goods tiles are recorded for varyPanes. */
+function fillPanes(b: Builder, look: TemplateLook, input: RetailFrontInput, c0: number, c1: number, zr: number, head: number, bay: number, panes: number, pw: number, seed: string, recs?: GoodsTileRec[]): void {
   // Lane retail-pass (`?shopPass=1`): a front with props behind its glass keeps its own back wall, not the shop cell's
   // shelves (they read as a bookshop behind a salon's chairs), and its reflection shrinks to the glass's head.
   const passProps = shopPassOn() && !!shopPropsFor(input.template)?.inside;
@@ -616,9 +643,10 @@ function fillPanes(b: Builder, look: TemplateLook, input: RetailFrontInput, c0: 
     const cell = goodsCell(look.goods), layer = input.goods + cell.page, [u0, v0, u1, v1] = cell.rect;
     // Lane shop-goods: each tile a seeded stretch of the cell, mirrored or not, per bay (goodsTileRect).
     for (let k = 0; k < panes; k++) for (const [ti, t] of goodsTiles(c0 + k * pw, c0 + (k + 1) * pw).entries()) {
-      const first = b.out.length;
-      b.textured(t.a0, t.a1, FRONT.contentOutM, zr, head, layer, goodsTileRect([u0, v0, u1, v1], input.seed, bay, k * 16 + ti));
+      const first = b.out.length, rect = goodsTileRect([u0, v0, u1, v1], input.seed, bay, k * 16 + ti);
+      b.textured(t.a0, t.a1, FRONT.contentOutM, zr, head, layer, rect);
       if (!look.lit) for (const tr of b.out.slice(first)) delete tr.lit;
+      recs?.push({ out: b.out, first, end: b.out.length, a0: t.a0, a1: t.a1, bay, tile: k * 16 + ti, rect });
     }
   } else if (input.interior && !OWN_LIGHT.has(look.content) && look.content !== 'barGlow' && !passProps) {
     // Round 3c (cost): each pane's interior is one quad of the building's own shop cell (bayTextures puiAt: its dark
@@ -717,6 +745,7 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   if (door && puiTop - head > 0.25) b.panel(door.a0, door.a1, FRONT.contentOutM, head + FRONT.transomM, puiTop, lightHex);
   if (door && puiTop - head > 0.25) b.slab(door.a0, door.a1, 0, FRONT.frameOutM - 0.03, head, head + FRONT.transomM, frame, 'bottom');
   const props = shopPropsFor(input.template);
+  const recs: GoodsTileRec[] | undefined = look.goods && input.variety !== undefined && shopVarietyOn() ? [] : undefined;
   for (const [bay, [c0, c1]] of segs.entries()) {
     if (c1 - c0 < 0.4) { if (c1 > c0) b.fin(c0, c1, 0, FRONT.frameOutM - 0.02, base, puiTop, timber); continue; }
     // Lane shop-goods: every bay its own seed (pand and bay index), so no two windows of a front draw the same goods.
@@ -735,7 +764,7 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
       shopRoom(b, input.template, props!, c0, c1, base, head, input.seed, bay);
       const h = (head - zr) * PASS_REFLECT_SHARE, o = FRONT.contentOutM + 0.025;
       REFLECT.forEach((hex, k) => b.panel(c0, c1, o, head - h * (k + 1) / REFLECT.length, head - h * k / REFLECT.length, hex));
-    } else fillPanes(b, look, input, c0, c1, zr, head, bay, panes, pw, seed);
+    } else fillPanes(b, look, input, c0, c1, zr, head, bay, panes, pw, seed, recs);
     if (props?.inside && !room) insideRelief(b, props, c0, c1, base, head, input.seed, bay, look.lit);
     // The transom bar at the door head, the transom lights over it (dark glass with the sky in it).
     const hasLights = puiTop - head > 0.25;
@@ -748,6 +777,7 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     // Transom lights carry their own glazing bars (two per pane) on cafés and small-paned fronts.
     if (hasLights && look.paneM) for (let k = 0; k < panes; k++) for (const t of [1 / 3, 2 / 3]) { const a = c0 + (k + t) * pw; b.panel(a - 0.02, a + 0.02, 0.055, head + FRONT.transomM, puiTop, frame); }
   }
+  if (recs && look.goods) varyPanes(recs, door ? [[door.a0, door.a1]] : [], look.goods, input);
   // Round 4 (`?retailParts=1`): the template's parts (retailTemplates.ts TEMPLATE_PARTS).
   const parts = retailPartsOn() && input.goods !== undefined ? TEMPLATE_PARTS[input.template] : undefined;
   if (parts && !windows) {
@@ -926,6 +956,9 @@ export function groundFloorFrontTris(input: RetailFrontInput, gf: GroundFloorDra
     || (named && !outsideFits && (gf.sign.kind === 'fascia' || gf.sign.kind === 'wall-letters' || gf.sign.kind === 'lightbox'));
   const hasDoorOpening = ops.some(o => o.kind === 'door');
   const lightHex = glassTone('#7f8b93', 0.5);
+  // Lane shop-variety: the goods tiles of every shop opening, planned together with the front's doors.
+  const recs: GoodsTileRec[] | undefined = look.goods && input.variety !== undefined && shopVarietyOn() ? [] : undefined;
+  const doors: Array<[number, number]> = ops.filter(o => o.kind === 'door').map(o => [o.a0, o.a1]);
   for (const [i, o] of ops.entries()) {
     const w = o.a1 - o.a0;
     if (o.kind === 'door') {
@@ -948,6 +981,7 @@ export function groundFloorFrontTris(input: RetailFrontInput, gf: GroundFloorDra
       const door = !hasDoorOpening && w >= 2.0 && look.content !== 'redGlow' ? retailDoor({ template: input.template, seed: `${input.seed}:${i}` }, o.a0 + 0.02, o.a1 - 0.02) : null;
       const segs: Array<[number, number]> = door ? [[o.a0 + 0.04, door.a0 - FRONT.mullionM], [door.a1 + FRONT.mullionM, o.a1 - 0.04]] : [[o.a0 + 0.04, o.a1 - 0.04]];
       if (door) {
+        doors.push([door.a0, door.a1]);
         const dh = Math.min(glassTop, o.z0 + FRONT.doorHeadM);
         doorUnit(bb, door.a0, door.a1, 0, o.z0, dh, frame);
         if (glassTop - dh > 0.2) bb.panel(door.a0, door.a1, FRONT.contentOutM, dh, glassTop, lightHex);
@@ -959,7 +993,7 @@ export function groundFloorFrontTris(input: RetailFrontInput, gf: GroundFloorDra
         const seed = baySeed(`${input.seed}:${i}`, bay), panes = Math.max(1, Math.ceil((c1 - c0) / (look.paneM ?? FRONT.paneMaxM))), pw = (c1 - c0) / panes;
         if (zr - o.z0 > 0.05) bb.panel(c0, c1, props?.inside ? INSIDE.riserOutM : 0.015, o.z0, zr, shadeHex(frame, 1.12));
         if (look.content === 'redGlow') content(bb, look, c0, c1, zr, glassTop - FRONT.headGapM, seed);
-        else fillPanes(bb, look, input, c0, c1, zr, glassTop, i * 4 + bay, panes, pw, seed);
+        else fillPanes(bb, look, input, c0, c1, zr, glassTop, i * 4 + bay, panes, pw, seed, recs);
         if (props?.inside) insideRelief(bb, props, c0, c1, o.z0, glassTop, input.seed, i * 4 + bay, look.lit);
         for (let k = 1; k < panes; k++) { const a = c0 + k * pw; bb.panel(a - FRONT.mullionM / 2, a + FRONT.mullionM / 2, FRONT.frameOutM - 0.03, zr, glassTop, frame); }
       }
@@ -981,6 +1015,7 @@ export function groundFloorFrontTris(input: RetailFrontInput, gf: GroundFloorDra
       if (awning && o.head === 'flat') b.slope(o.a0, o.a1, 1.0, o.spring + 0.05, o.spring - 0.45, awning);
     }
   }
+  if (recs && look.goods) varyPanes(recs, doors, look.goods, input);
   // The sign outside the openings: a fascia band over them, letters on the wall, a lightbox.
   const sg = signIdx !== undefined ? ops[signIdx] : undefined;
   const crownTop = Math.max(...ops.map(o => o.crown));
