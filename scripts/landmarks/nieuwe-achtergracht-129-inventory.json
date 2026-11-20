@@ -1,0 +1,504 @@
+{
+ "schemaVersion": 1,
+ "id": "nieuwe-achtergracht-129",
+ "pand": "0363100012253754",
+ "brief": "scripts/landmarks/nieuwe-achtergracht-129-brief.md",
+ "signature": [
+  "ne-chimney-tower",
+  "s-oriel-strips",
+  "s-entrance-tower",
+  "ne-glazed-stair",
+  "s-dormers",
+  "s-eaves-board"
+ ],
+ "walls": [
+  {
+   "tag": "w02-163",
+   "bearing": 163,
+   "lengthM": 55.6,
+   "centre": [
+    4.9127288,
+    52.3636423
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000883",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-oriel-strips",
+     "kind": "window-shape",
+     "where": "Nieuwe Achtergracht front: twelve axes of white-framed oriel windows (2.0 x 2.3 m) on three storeys at a 3.09 m pitch, brick piers between, a strip of small panes at the foot and head of every light (2021: red roller blinds down)",
+     "approxSizeM": [
+      37,
+      10.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "white frame boxes 0.22 m proud with the pane, two transoms and four bars in the foot strip, grey sills; brick piers 0.12 m proud"
+    },
+    {
+     "id": "s-souterrain",
+     "kind": "window-shape",
+     "where": "high souterrain: a low window under every axis (1.6 x 0.8 m) between short piers, the plinth band and a grey water table at 2.5 m",
+     "approxSizeM": [
+      50,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "plinth slab, grey water-table slab, framed low windows"
+    },
+    {
+     "id": "s-eaves-board",
+     "kind": "other",
+     "where": "overhanging light eaves board at 14.5-15 m over the whole front (register: overstekende daklijst)",
+     "approxSizeM": [
+      50,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "light concrete-coloured slab 0.85 m deep"
+    },
+    {
+     "id": "s-dormers",
+     "kind": "window-shape",
+     "where": "fourteen small white gabled dormers on the hipped roof, original glazing bars (register)",
+     "approxSizeM": [
+      0.9,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "white body on the 3DBAG roof plane, pane with a cross bar, gabled tile roof"
+    },
+    {
+     "id": "s-entrance-tower",
+     "kind": "tower",
+     "where": "entrance tower at the west end (0-5.4 m), rising to 22.4 m above the eaves, with the glass-block stair strip (vliesgevel) and two small windows; cantilevered over the stoop and door (register)",
+     "approxSizeM": [
+      5.4,
+      22.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "3DBAG tower volume; glass-block strip with a white grid, two framed small windows, canopy slab, dark door and stoop"
+    },
+    {
+     "id": "s-balcony-box",
+     "kind": "balcony-ironwork",
+     "where": "stacked balcony box at 43.3-47.9 m: two balconies with brick parapets under a flat canopy, glazed doors behind",
+     "approxSizeM": [
+      4.6,
+      8.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "two brick parapet slabs 1.45 m proud, side cheeks, canopy slab, framed doors behind; the thin steel posts are not drawn"
+    },
+    {
+     "id": "s-slits-ribbon",
+     "kind": "window-shape",
+     "where": "east end: five slit windows on two storeys and a three-part ribbon window over the souterrain",
+     "approxSizeM": [
+      7,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "framed slits 0.32 m wide and three ribbon lights"
+    },
+    {
+     "id": "s-chimneys",
+     "kind": "other",
+     "where": "two brick chimney stacks on the ridge",
+     "approxSizeM": [
+      2,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "in the 3DBAG shell"
+    },
+    {
+     "id": "s-downpipes",
+     "kind": "other",
+     "where": "zinc downpipes between the axes (register: detonerende hemelwaterafvoer)",
+     "approxSizeM": [
+      0.12,
+      15
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "skip": {
+      "reason": "too-small",
+      "note": "12 cm pipes"
+     }
+    },
+    {
+     "id": "s-red-blinds",
+     "kind": "other",
+     "where": "red roller blinds pulled down over most windows (2021); open in the 2019 view",
+     "approxSizeM": [
+      2,
+      2.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "skip": {
+      "reason": "temporary",
+      "note": "blinds up in TMX7316010203-001644_pano_0002_000065 (2019)"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-30",
+   "bearing": 30,
+   "lengthM": 52.9,
+   "centre": [
+    4.9128425,
+    52.3641954
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001010",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-chimney-tower",
+     "kind": "tower",
+     "where": "stepped brick chimney tower at 36.4-39.3 m: a strip down the front, the shaft through the roof to about 21 m, a narrower top to about 24.3 m with a lightning rod (2021 thumbnail, heading 234, pitch 22)",
+     "approxSizeM": [
+      2.9,
+      24.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010",
+     "how": "brick slabs: the front strip, the 2.9 m shaft, a ledge, the 2.0 m top and its cap; the rod is not drawn (too small)"
+    },
+    {
+     "id": "ne-oriel-strips",
+     "kind": "window-shape",
+     "where": "thirteen oriel axes on three storeys at a 2.63 m pitch, as on the Nieuwe Achtergracht",
+     "approxSizeM": [
+      36,
+      10.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010",
+     "how": "as s-oriel-strips"
+    },
+    {
+     "id": "ne-souterrain",
+     "kind": "window-shape",
+     "where": "souterrain windows and plinth",
+     "approxSizeM": [
+      37,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010",
+     "how": "as s-souterrain"
+    },
+    {
+     "id": "ne-eaves-dormers",
+     "kind": "window-shape",
+     "where": "eaves board and eleven white dormers on the hipped roof",
+     "approxSizeM": [
+      36,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010",
+     "how": "as s-eaves-board and s-dormers"
+    },
+    {
+     "id": "ne-square-windows",
+     "kind": "window-shape",
+     "where": "block left of the stair (39.3-46.5 m) with twelve small square windows (four by three) and a flat roof just over the eaves",
+     "approxSizeM": [
+      6.5,
+      16.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010",
+     "how": "framed 0.62 m squares, a coping 5 cm over the 3DBAG roof"
+    },
+    {
+     "id": "ne-glazed-stair",
+     "kind": "colonnade",
+     "where": "projecting glazed stair (vliesgevel) over the Nieuwe Prinsengracht entrance, 46.9-52.4 m, 3.9-14.2 m, a white grid of glass blocks, a flat cap (register: uitkragende en als vliesgevel uitgevoerde bouwmassa, een luifel)",
+     "approxSizeM": [
+      5.5,
+      10.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010",
+     "how": "glass box 0.9 m proud with ten mullions and transoms every 0.6 m, a cap and a base ledge"
+    },
+    {
+     "id": "ne-krop-figure",
+     "kind": "sculpture",
+     "where": "Hildo Krop figure in French limestone on a brick pier in front of the glazed stair (about 1.2 m figure on a 6.4 m pier)",
+     "approxSizeM": [
+      1.3,
+      7.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010",
+     "how": "brick pier, stone plinth slab, a standing block figure with a head block; the carving is not drawn"
+    },
+    {
+     "id": "ne-entrance-canopy",
+     "kind": "canopy",
+     "where": "canopy over the entrance in the recess beside the glazed stair, door and stoop (register: luifel, stoep)",
+     "approxSizeM": [
+      5,
+      0.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010",
+     "how": "canopy slab 2.4 m deep, dark door, stoop slab; the recess itself is in the 3DBAG shell"
+    },
+    {
+     "id": "ne-flue",
+     "kind": "other",
+     "where": "small steel flue on the roof",
+     "approxSizeM": [
+      0.3,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.3 m pipe"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w11-300",
+   "bearing": 300,
+   "lengthM": 25,
+   "centre": [
+    4.9122935,
+    52.3640885
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (west side toward the REC buildings or the courtyard): plain window rows on the west faces (ring edges 8, 9, 12, 20, 24), inferred from the register (\"vensterreeksen\"); courtyard walls left as the 3DBAG shell"
+  },
+  {
+   "tag": "w12-253",
+   "bearing": 253,
+   "lengthM": 25,
+   "centre": [
+    4.9122481,
+    52.3638211
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (west side toward the REC buildings or the courtyard): plain window rows on the west faces (ring edges 8, 9, 12, 20, 24), inferred from the register (\"vensterreeksen\"); courtyard walls left as the 3DBAG shell"
+  },
+  {
+   "tag": "w14-343",
+   "bearing": 343,
+   "lengthM": 20.8,
+   "centre": [
+    4.9120915,
+    52.3643207
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001003",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-oriel-strips",
+     "kind": "window-shape",
+     "where": "north front of the NW wing: eight oriel axes on three storeys at a 2.62 m pitch, the souterrain row, eaves board, six dormers; the curved corner to the glazed stair continues the axes",
+     "approxSizeM": [
+      20.8,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001003",
+     "how": "as s-oriel-strips; the curve (ring edges 3-6) gets two axes on its longest facet; the 2.9 m facets keep the plinth and eaves only (a light there overhangs the scanned facet)"
+    },
+    {
+     "id": "n-street-sign",
+     "kind": "sign",
+     "where": "street-name plate on the plinth",
+     "approxSizeM": [
+      0.5,
+      0.15
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_001003",
+     "skip": {
+      "reason": "too-small",
+      "note": "name plate"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w18-163",
+   "bearing": 163,
+   "lengthM": 18.2,
+   "centre": [
+    4.9121335,
+    52.3641964
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (west side toward the REC buildings or the courtyard): plain window rows on the west faces (ring edges 8, 9, 12, 20, 24), inferred from the register (\"vensterreeksen\"); courtyard walls left as the 3DBAG shell"
+  },
+  {
+   "tag": "w21-120",
+   "bearing": 120,
+   "lengthM": 17.4,
+   "centre": [
+    4.9131173,
+    52.3640104
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000878",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "e40-axes",
+     "kind": "window-shape",
+     "where": "six oriel axes on three storeys over the souterrain, eaves board, hipped end with dormers",
+     "approxSizeM": [
+      17.4,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000878",
+     "how": "as s-oriel-strips with 1.7 m lights at a 2.6 m pitch and the eaves board; the hip dormers are left out (on the 3DBAG hip planes they pierce the neighbouring plane)"
+    }
+   ],
+   "note": "oblique east end on the square at the head of the island (ring edge 40); not in the brief, found with the panorama near= search and a thumbnail aimed at it (artifacts/lm-na/east.jpg)"
+  },
+  {
+   "tag": "w22-72",
+   "bearing": 72,
+   "lengthM": 17.4,
+   "centre": [
+    4.9130795,
+    52.3637907
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001027",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "e34-axes",
+     "kind": "window-shape",
+     "where": "six oriel axes on three storeys over the souterrain, eaves board, hipped end with dormers",
+     "approxSizeM": [
+      17.4,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001027",
+     "how": "as s-oriel-strips with 1.7 m lights at a 2.6 m pitch and the eaves board; the hip dormers are left out (on the 3DBAG hip planes they pierce the neighbouring plane)"
+    }
+   ],
+   "note": "oblique east end on the square at the head of the island (ring edge 34); not in the brief, found with the panorama near= search and a thumbnail aimed at it (artifacts/lm-na/east.jpg)"
+  },
+  {
+   "tag": "w23-344",
+   "bearing": 344,
+   "lengthM": 16.9,
+   "centre": [
+    4.912093,
+    52.3636652
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (west side toward the REC buildings or the courtyard): plain window rows on the west faces (ring edges 8, 9, 12, 20, 24), inferred from the register (\"vensterreeksen\"); courtyard walls left as the 3DBAG shell"
+  },
+  {
+   "tag": "w26-73",
+   "bearing": 73,
+   "lengthM": 15.7,
+   "centre": [
+    4.911865,
+    52.3638336
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (west side toward the REC buildings or the courtyard): plain window rows on the west faces (ring edges 8, 9, 12, 20, 24), inferred from the register (\"vensterreeksen\"); courtyard walls left as the 3DBAG shell"
+  },
+  {
+   "tag": "w29-253",
+   "bearing": 253,
+   "lengthM": 14.1,
+   "centre": [
+    4.9119757,
+    52.3642331
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (west side toward the REC buildings or the courtyard): plain window rows on the west faces (ring edges 8, 9, 12, 20, 24), inferred from the register (\"vensterreeksen\"); courtyard walls left as the 3DBAG shell"
+  },
+  {
+   "tag": "w30-161",
+   "bearing": 161,
+   "lengthM": 13.9,
+   "centre": [
+    4.9121476,
+    52.3636033
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000887",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [],
+   "note": "the view runs past the west side of the entrance tower to the REC glass bridge (part of roeterseiland-rec-a); nothing of this pand beyond its brick tower side"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeentelijk monument 209057",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/9b9e4448-fb11-4cb3-b2d8-4b366885b8b5?_format=json",
+   "licence": "CC0"
+  },
+  {
+   "name": "BAG pand 0363100012253754 (PDOK OGC API)",
+   "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012253754",
+   "licence": "CC0"
+  }
+ ],
+ "note": "The brief tool listed 30 walls round the shared REC outline (pands 185420/253754 share one outline in the tile extract); the 18 walls of other REC buildings (roeterseiland-rec-a) are dropped here. BAG pand checked on PDOK 2026-11-20: bouwjaar 1932, onderwijsfunctie, Pand in gebruik, VBO Nieuwe Achtergracht 129."
+}

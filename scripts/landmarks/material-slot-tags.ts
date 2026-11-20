@@ -127,6 +127,12 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     concrete: {slot: 'paint', why: 'palette name only: the grey painted eaves fascia of the porch (w06-255)'},
     dark: {slot: 'door', why: 'the dark church doors (w07-255, w06-255)'},
   },
+  'nieuwe-achtergracht-129': {
+    slate: {slot: 'roofTile', why: 'grey tiled hipped roofs (register: schilddaken; w02-163 2019, w03-30), not slate'},
+    dark: {slot: 'bitumen', why: 'flat roofs of the towers, the small-window block and the stair; also the doors'},
+    concrete: {slot: 'paint', why: 'light painted overhanging eaves board, canopies and dormer cheeks (w02-163, w03-30), not concrete'},
+    greyBrick: {slot: 'stone', why: 'grey sills and the water table over the souterrain (w02-163)'},
+  },
   'utrechtsestraat-9-17': {
     sandstone: {slot: 'stone', why: 'palette name only: grey granite base, portals, copings and the Amsterdam arms (w04-258, w06-274)'},
     slate: {slot: 'bitumen', why: 'flat roofs of the office block and its setbacks, not slate'},

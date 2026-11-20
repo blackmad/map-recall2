@@ -71,7 +71,7 @@ test('every SHADOWED_BY_LANDMARK pair is real: the install is catalogued, its la
 // SHADOWED_BY_LANDMARK or a hold. A new pair fails here.
 const OPEN_COVER_OVERLAPS: Record<string, string> = {
   'joodse-invalide + ordinary-0363100012253824': 'pands 170299 / 253824 share one outline; the install plan lies ~12 m into the landmark',
-  'ordinary-0363100012253754 + roeterseiland-rec-a': 'pands 185420 / 253754 share one outline; the REC A plan and the 1932 wing overlap ~70 x 70 m',
+  'nieuwe-achtergracht-129 + roeterseiland-rec-a': 'pands 185420 / 253754 share one outline; the REC A plan and the 1932 wing (bespoke since 2026-11-20, was the install ordinary-0363100012253754) overlap ~70 x 70 m; the REC A model draws none of the 1932 wing',
 };
 
 test('no two drawn models stand on one pand of covers.json (the hide join), beyond the open pairs', () => {

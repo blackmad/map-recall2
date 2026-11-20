@@ -116361,6 +116361,389 @@
         "bytes": 16412,
         "triangles": 609
       }
+    },
+    "nieuwe-achtergracht-129": {
+      "id": "nieuwe-achtergracht-129",
+      "name": "Former Geological Institute and Chemistry Laboratory, Nieuwe Achtergracht 129",
+      "modelUrl": "./models/nieuwe-achtergracht-129.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012253754"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.91248347,
+          52.3639517
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 86.9,
+        "widthMetres": 84
+      },
+      "surveyed": {
+        "anchor": [
+          4.91248347,
+          52.3639517
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012253754 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/nieuwe-achtergracht-129-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001975_pano_0000_000883 (2021, Nieuwe Achtergracht), TMX7316010203-001644_pano_0002_000065 (2019), TMX7316010203-001975_pano_0000_001010 (2021, Nieuwe Prinsengracht and the chimney tower), TMX7316010203-000354_pano_0002_000098 (2017), TMX7316010203-001975_pano_0000_001003 (2021, north wing), TMX7316010203-001975_pano_0000_000878 and _001027 (2021, east ends), CC BY 4.0. Gemeentelijk monument 209057. Per wall in scripts/landmarks/nieuwe-achtergracht-129-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 25,
+      "galleryView": {
+        "theta": 0.55,
+        "phi": 1.05
+      },
+      "bagYear": 1932,
+      "materialOverrides": {
+        "brick": "#6a5a4d",
+        "slate": "#5c5d60",
+        "dark": "#353536",
+        "frame": "#e8e6de",
+        "glass": "#3e4852",
+        "concrete": "#d6d2c6",
+        "stone": "#cbc2ab",
+        "greyBrick": "#75716a"
+      },
+      "attribution": {
+        "title": "Nieuwe Achtergracht 129 / Nieuwe Prinsengracht 130, Amsterdam (1930-1932)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_001010/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012253754 (CC0): the white oriel window strips with their small-pane divisions, the souterrain, the overhanging eaves board and the dormers on every street front, the entrance tower with its glass-block stair, the stepped chimney tower, the small-window block, the projecting glazed stair and a simplified Hildo Krop figure, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9125041,
+              52.364312
+            ],
+            [
+              4.9125009,
+              52.3643086
+            ],
+            [
+              4.9124868,
+              52.3642932
+            ],
+            [
+              4.9124455,
+              52.3643075
+            ],
+            [
+              4.9124225,
+              52.3643154
+            ],
+            [
+              4.9124243,
+              52.3643174
+            ],
+            [
+              4.9124229,
+              52.3643179
+            ],
+            [
+              4.9123611,
+              52.3643358
+            ],
+            [
+              4.9123419,
+              52.3643411
+            ],
+            [
+              4.912322,
+              52.3643451
+            ],
+            [
+              4.9123015,
+              52.3643477
+            ],
+            [
+              4.9122806,
+              52.364349
+            ],
+            [
+              4.9122596,
+              52.364349
+            ],
+            [
+              4.9122372,
+              52.3643474
+            ],
+            [
+              4.9119456,
+              52.3642931
+            ],
+            [
+              4.9119746,
+              52.3642346
+            ],
+            [
+              4.9119827,
+              52.3642183
+            ],
+            [
+              4.9120056,
+              52.3641722
+            ],
+            [
+              4.9121621,
+              52.3642013
+            ],
+            [
+              4.9122612,
+              52.3642198
+            ],
+            [
+              4.9122929,
+              52.3642173
+            ],
+            [
+              4.9123616,
+              52.3641937
+            ],
+            [
+              4.9123835,
+              52.3641862
+            ],
+            [
+              4.9122332,
+              52.3640225
+            ],
+            [
+              4.9122186,
+              52.3640066
+            ],
+            [
+              4.9122033,
+              52.36399
+            ],
+            [
+              4.9122157,
+              52.3639857
+            ],
+            [
+              4.9121941,
+              52.3639622
+            ],
+            [
+              4.9121912,
+              52.3639624
+            ],
+            [
+              4.9121905,
+              52.3639566
+            ],
+            [
+              4.9121934,
+              52.3639565
+            ],
+            [
+              4.9122065,
+              52.3639306
+            ],
+            [
+              4.9121937,
+              52.3639282
+            ],
+            [
+              4.9123022,
+              52.3637132
+            ],
+            [
+              4.9122165,
+              52.363697
+            ],
+            [
+              4.9122126,
+              52.3637046
+            ],
+            [
+              4.9122037,
+              52.363703
+            ],
+            [
+              4.9122203,
+              52.3636701
+            ],
+            [
+              4.912235,
+              52.3636411
+            ],
+            [
+              4.9122574,
+              52.3635966
+            ],
+            [
+              4.9122667,
+              52.3635984
+            ],
+            [
+              4.912273,
+              52.3635859
+            ],
+            [
+              4.9122631,
+              52.3635841
+            ],
+            [
+              4.9122644,
+              52.3635814
+            ],
+            [
+              4.9122663,
+              52.3635775
+            ],
+            [
+              4.91231,
+              52.3635858
+            ],
+            [
+              4.9123486,
+              52.3635931
+            ],
+            [
+              4.9123552,
+              52.36358
+            ],
+            [
+              4.9123345,
+              52.3635761
+            ],
+            [
+              4.912335,
+              52.3635751
+            ],
+            [
+              4.9123363,
+              52.3635725
+            ],
+            [
+              4.9123386,
+              52.3635678
+            ],
+            [
+              4.9124459,
+              52.3635881
+            ],
+            [
+              4.913001,
+              52.3636932
+            ],
+            [
+              4.9130008,
+              52.3636936
+            ],
+            [
+              4.9131187,
+              52.3637158
+            ],
+            [
+              4.9131148,
+              52.3637237
+            ],
+            [
+              4.9131126,
+              52.3637233
+            ],
+            [
+              4.9130401,
+              52.3638647
+            ],
+            [
+              4.9130228,
+              52.3638615
+            ],
+            [
+              4.913006,
+              52.3638584
+            ],
+            [
+              4.9129935,
+              52.3638831
+            ],
+            [
+              4.9129925,
+              52.3638852
+            ],
+            [
+              4.9129922,
+              52.363887
+            ],
+            [
+              4.9129999,
+              52.3639278
+            ],
+            [
+              4.9130227,
+              52.3639527
+            ],
+            [
+              4.9130537,
+              52.3639421
+            ],
+            [
+              4.9131721,
+              52.3640712
+            ],
+            [
+              4.9131737,
+              52.3640706
+            ],
+            [
+              4.9131806,
+              52.3640778
+            ],
+            [
+              4.9131527,
+              52.3640874
+            ],
+            [
+              4.9131532,
+              52.3640879
+            ],
+            [
+              4.9125041,
+              52.364312
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -37.202842712402344,
+          -4.7683716530855236e-8,
+          -45.15146255493164
+        ],
+        "max": [
+          48.309043884277344,
+          24.969999313354492,
+          43.8922119140625
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91248347,
+          52.3639517
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 89.04367446899414,
+        "heightMetres": 24.96999936103821,
+        "depthMetres": 85.51188659667969,
+        "depthCoverage": 1.0179986499604725
+      },
+      "triangles": 27495,
+      "bytes": 402012,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
