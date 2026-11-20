@@ -1,0 +1,178 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "wiborgeiland-247676",
+ "pandId": "0363100012247676",
+ "address": "Wiborgeiland 177-193, Houthavens: 2018 block of four storeys and a set-back fifth, dark solar-panel cladding in vertical fields between white-framed windows over a buff brick plinth, cantilevered glass-railed balconies at the corners; the west end in dark brown brick",
+ "sources": [
+  {
+   "id": "pano-2024-10-16-w01-254",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-16_06-25-31_02761/",
+   "image": "source-data://pand-reference-walls/0363100012247676/w01-254.jpg",
+   "sha256": "24a274a38cdaf09628e3b27f39de48a8f9fc7d379419700fa183057e24ce0204",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-19-w03-50",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002051_pano_0000_000543/",
+   "image": "source-data://pand-reference-walls/0363100012247676/w03-50.jpg",
+   "sha256": "c2c50385ef7d54d4d00fca30fd6b556b4dd904f2c8b081949fe258b41323fa31",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-19-w04-320",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002051_pano_0000_000511/",
+   "image": "source-data://pand-reference-walls/0363100012247676/w04-320.jpg",
+   "sha256": "619321c8217b7633e48f02ea0d582efacb93bc43ab7d3550dc7f2e36da0a827f",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-19-w02-140",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002051_pano_0000_000549/",
+   "image": "source-data://pand-reference-walls/0363100012247676/w02-140.jpg",
+   "sha256": "c7c7b0e66dfca3af2cf1701cc06a0ff249ccf760a116bdb1065eef3e490170ed",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    1,
+    3
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 7,
+   "palette": {
+    "brick": "#5a4840",
+    "frame": "#2e2c2c"
+   },
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.7,
+    "sill": 0.12
+   }
+  },
+  {
+   "wallSurfaces": [
+    5,
+    7
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 7,
+   "palette": {
+    "brick": "#c0aa88",
+    "frame": "#e8e6e0"
+   },
+   "windowShape": {
+    "w": 0.3,
+    "h": 0.75,
+    "sill": 0.08
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#1e2230",
+    "lines": "#2c3242",
+    "pitch": 1.0,
+    "rowPitch": 1.6,
+    "from": 0.2
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "bays": [
+     1,
+     5
+    ],
+    "rail": "glass"
+   }
+  },
+  {
+   "wallSurfaces": [
+    4
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "palette": {
+    "brick": "#c0aa88",
+    "frame": "#e8e6e0"
+   },
+   "windowShape": {
+    "w": 0.3,
+    "h": 0.75,
+    "sill": 0.08
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#1e2230",
+    "lines": "#2c3242",
+    "pitch": 1.0,
+    "rowPitch": 1.6,
+    "from": 0.2
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "bays": [
+     1,
+     3
+    ],
+    "rail": "glass"
+   }
+  },
+  {
+   "wallSurfaces": [
+    6
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 7,
+   "palette": {
+    "brick": "#c0aa88",
+    "frame": "#e8e6e0"
+   },
+   "windowShape": {
+    "w": 0.3,
+    "h": 0.75,
+    "sill": 0.08
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#1e2230",
+    "lines": "#2c3242",
+    "pitch": 1.0,
+    "rowPitch": 1.6,
+    "from": 0.2
+   }
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#c0aa88",
+  "frame": "#e8e6e0",
+  "door": "#6a4a2a"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "groundClamp": true,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120): W panel 0 from w01-254 (2024-10-16), NE panel 3 from w03-50 and NW panel 2 from w04-320 (2021-03-19), SE panel 4 from w02-140 (46 deg oblique). The solar cladding fills vertical fields between the window columns; the kit cladding covers the wall and the windows are cut through it, so the buff brick frames round the window columns are not drawn."
+ ]
+}

@@ -236,7 +236,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.balconies.bays !== undefined) { if (!Array.isArray(w.balconies.bays) || !w.balconies.bays.length) problems.push(`${at}.balconies.bays: list of bay indices`); else w.balconies.bays.forEach(b => count(b, `${at}.balconies.bays`, 0, (w.baysPerStorey ?? 80) - 1)); if (w.baysPerStorey === undefined) problems.push(`${at}.balconies.bays needs baysPerStorey`); }
       if (w.balconies.rail !== undefined) oneOf(w.balconies.rail, ['glass', 'bars', 'solid'], `${at}.balconies.rail`);
       const bk = Object.keys(w.balconies);
-      for (const k of bk) if (!['storeys', 'rail', 'every', 'first', 'bays', 'colour', 'deep', 'windows', 'run'].includes(k)) problems.push(`${at}.balconies.${k}: unknown field (storeys, rail, every, first, bays, colour, deep, windows, run)`);
+      for (const k of bk) if (!['storeys', 'rail', 'every', 'first', 'bays', 'colour', 'deep', 'windows', 'run', 'brick'].includes(k)) problems.push(`${at}.balconies.${k}: unknown field (storeys, rail, every, first, bays, colour, deep, windows, run, brick)`);
+      if (w.balconies.brick !== undefined && typeof w.balconies.brick !== 'boolean') problems.push(`${at}.balconies.brick: true or false`);
       if (w.balconies.colour !== undefined) colour(w.balconies.colour, `${at}.balconies.colour`);
       if (w.balconies.deep !== undefined && !(typeof w.balconies.deep === 'number' && w.balconies.deep >= 0.08 && w.balconies.deep <= 0.45)) problems.push(`${at}.balconies.deep: fraction 0.08..0.45 of the storey height`);
       bool(w.balconies.windows, `${at}.balconies.windows`);
@@ -637,7 +638,20 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
         const total = hs.reduce((a, h) => a + (typeof h?.w === 'number' ? h.w : 0), 0);
         hs.forEach((h, k) => {
           const hat = `${at}.houses[${k}]`;
-          for (const key of Object.keys(h ?? {})) if (!['w', 'bays', 'storeys', 'crown', 'brick', 'windowShape', 'ownEaves', 'frame', 'dress'].includes(key)) problems.push(`${hat}.${key}: unknown field (w, bays, storeys, crown, brick, windowShape, ownEaves, frame, dress)`);
+          for (const key of Object.keys(h ?? {})) if (!['w', 'bays', 'storeys', 'crown', 'brick', 'windowShape', 'ownEaves', 'frame', 'dress', 'balconies', 'loggias'].includes(key)) problems.push(`${hat}.${key}: unknown field (w, bays, storeys, crown, brick, windowShape, ownEaves, frame, dress, balconies, loggias)`);
+          // the house's own balconies / loggias: storeys from 1, bays within the house (needs the house's `bays`)
+          for (const kind of ['balconies', 'loggias'] as const) {
+            const b = h?.[kind] as {storeys?: unknown; bays?: unknown; rail?: unknown} | undefined;
+            if (b === undefined) continue;
+            const allowed = kind === 'balconies' ? ['storeys', 'bays', 'rail'] : ['storeys', 'bays', 'w', 'h', 'sill', 'deep', 'rail', 'lights'];
+            for (const key of Object.keys(b ?? {})) if (!allowed.includes(key)) problems.push(`${hat}.${kind}.${key}: unknown field (${allowed.join(', ')})`);
+            if (!Array.isArray(b?.storeys) || !b.storeys.length || b.storeys.some(q => !Number.isInteger(q) || q < 1 || q > 39)) problems.push(`${hat}.${kind}.storeys: list of storeys (1 = first floor)`);
+            if (b?.bays !== undefined) {
+              if (h.bays === undefined) problems.push(`${hat}.${kind}.bays needs the house's bays`);
+              else if (!Array.isArray(b.bays) || !b.bays.length || b.bays.some(q => !Number.isInteger(q) || q < 0 || q >= h.bays!)) problems.push(`${hat}.${kind}.bays: bay indices within the house (0..${h.bays - 1})`);
+            }
+            if (b?.rail !== undefined) oneOf(b.rail, kind === 'balconies' ? ['glass', 'bars', 'solid'] : ['glass', 'bars', 'solid', 'none'], `${hat}.${kind}.rail`);
+          }
           if (h?.frame !== undefined) colour(h.frame, `${hat}.frame`);
           if (h?.dress !== undefined) {
             const d = h.dress as Record<string, unknown>;

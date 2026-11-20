@@ -46,6 +46,13 @@ export interface StoneDressings {
    * fronts (0.13 m both when absent: byte-identical).
    */
   surrounds?: { storeys?: number[]; eared?: boolean; jamb?: number; head?: number };
+  /**
+   * Shutters (opt-in, lane houthavens-memel-wiborg-20261120): a flat leaf in the dressing colour on both sides of every
+   * square-headed window of the listed storeys (default 1 up), each `w` of the opening's width (0.3..0.7, default 0.5),
+   * as tall as the opening: the orange panels beside the centre column of the 2018 Wiborgeiland fronts. Split a front into
+   * houses to put them on one column only. Absent: byte-identical.
+   */
+  shutters?: { storeys?: number[]; w?: number };
   quoins?: { ends?: boolean; joints?: number[] };
   /** one oriel set, or a list of sets with their own storey spans (a one-storey bay beside a two-storey one) */
   oriels?: OrielSet | OrielSet[];
@@ -61,6 +68,8 @@ export const DRESS = {
   lintel: { h: 0.22, over: 0.1, out: 0.06 },
   keystone: { w: 0.24, h: 0.34, out: 0.1 },
   surround: { t: 0.13, out: 0.05, ear: 0.12, earH: 0.14, earOut: 0.07 },
+  /** shutter leaf: default width as a share of the opening, projection */
+  shutter: { w: 0.5, out: 0.05 },
   quoin: { course: 0.32, joint: 0.04, long: 0.62, short: 0.36, out: 0.05 },
   chain: { w: 0.24, h: 0.15, pitch: 0.36, out: 0.05 },
   /** oriel: `deep` x the oriel's width out (default), window margin, corbel and cap heights, window frame width */
@@ -171,6 +180,17 @@ export function drawDressings(c: PanelCtx, info: { levels: number[]; cells: Cell
       c.box(slots.stone, u1 - 0.0, u1 + jt, v0, v1 + 0.02, 0, S.out, part);
       c.box(slots.stone, u0 - jt - ear, u1 + jt + ear, v1, v1 + ht, 0, S.out + 0.01, part);
       if (ear) { c.box(slots.stone, u0 - jt - ear, u0 - jt + 0.02, v1 - S.earH, v1 + 0.02, 0, S.earOut, part); c.box(slots.stone, u1 + jt - 0.02, u1 + jt + ear, v1 - S.earH, v1 + 0.02, 0, S.earOut, part); }
+      n++;
+    }
+  }
+  if (d.shutters) {
+    const share = d.shutters.w ?? DRESS.shutter.w;
+    for (const h of square(d.shutters.storeys)) {
+      const [u0, u1, v0, v1] = h, w = share * (u1 - u0);
+      if (!fitsPanel(p, rectPoly(u0 - w, u1 + w, v0, v1)) || free.some(o => o !== h && overlaps(o, u0 - w, u1 + w, v0, v1, 0.02))) continue;
+      const part = c.part();
+      c.box(slots.stone, u0 - w, u0 + 0.0, v0, v1, 0, DRESS.shutter.out, part);
+      c.box(slots.stone, u1 - 0.0, u1 + w, v0, v1, 0, DRESS.shutter.out, part);
       n++;
     }
   }

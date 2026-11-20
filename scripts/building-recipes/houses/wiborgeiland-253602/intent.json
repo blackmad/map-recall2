@@ -1,0 +1,213 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "wiborgeiland-253602",
+ "pandId": "0363100012253602",
+ "address": "Wiborgeiland, Houthavens: 2021 row of five dark brick spout-gabled houses on one BAG pand (three with small windows, pale sill bands and a blind arch in the gable, two with a large four-light window per storey)",
+ "sources": [
+  {
+   "id": "pano-2021-12-30-w02-320",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0004_000526/",
+   "image": "source-data://pand-reference-walls/0363100012253602/w02-320.jpg",
+   "sha256": "ca070493d1fdb0c9853fbf7fc6fb9b6e0154e392c16437db43dcc0f6fafd9f1c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-30-w02-320",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0004_000526/",
+   "image": "source-data://pand-reference-walls/0363100012253602/w02-320.jpg",
+   "sha256": "ca070493d1fdb0c9853fbf7fc6fb9b6e0154e392c16437db43dcc0f6fafd9f1c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-30-w07-320",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0004_000522/",
+   "image": "source-data://pand-reference-walls/0363100012253602/w07-320.jpg",
+   "sha256": "0c182e0c3de568ed9bb3d00390d2031d0a7bc79d80f7efb4d1d09ca12ae14da2",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-30-w06-320",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0004_000521/",
+   "image": "source-data://pand-reference-walls/0363100012253602/w06-320.jpg",
+   "sha256": "574a57dfb161ce213880447b2d08421c8f585f630a2b5715f922d3625335729c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-30-w08-320",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0004_000519/",
+   "image": "source-data://pand-reference-walls/0363100012253602/w08-320.jpg",
+   "sha256": "451c0fc0dd037d7ebbb62d78dced10728342586b09bd7670301c27577f04e913",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    74,
+    77,
+    85
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 4,
+   "palette": {
+    "brick": "#363335",
+    "frame": "#b4b4b0"
+   },
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "dressings": {
+    "colour": "#8a8884",
+    "bands": {
+     "at": [
+      "sill"
+     ],
+     "storeys": [
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   }
+  },
+  {
+   "wallSurfaces": [
+    78,
+    86,
+    87
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 4,
+   "palette": {
+    "brick": "#363335",
+    "frame": "#b4b4b0"
+   },
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "dressings": {
+    "colour": "#8a8884",
+    "bands": {
+     "at": [
+      "sill"
+     ],
+     "storeys": [
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   }
+  },
+  {
+   "wallSurfaces": [
+    70,
+    76,
+    80
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 4,
+   "palette": {
+    "brick": "#363335",
+    "frame": "#b4b4b0"
+   },
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "dressings": {
+    "colour": "#8a8884",
+    "bands": {
+     "at": [
+      "sill"
+     ],
+     "storeys": [
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   }
+  },
+  {
+   "wallSurfaces": [
+    61,
+    72
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 3,
+   "palette": {
+    "brick": "#363335",
+    "frame": "#b4b4b0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.2
+   }
+  },
+  {
+   "wallSurfaces": [
+    64,
+    65,
+    131
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 3,
+   "palette": {
+    "brick": "#363335",
+    "frame": "#b4b4b0"
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.2
+   }
+  },
+  {
+   "wallSurfaces": [
+    19
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#363335",
+  "frame": "#b4b4b0",
+  "door": "#2e2a28"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120): each NW gabled house is one LoD2.2 panel (8.3 m, eaves 19.5 m, gable to 23.0 m in 3DBAG): panels 69 and 71 from w02-320, 67 from w07-320, 60 from w06-320, 63 from w08-320 (all 2021-12-30). The SE side and the lower NW corner (panel 77) are left to otherWalls (no square crop).",
+  "Not drawn: the blind arch and brick relief in the gables; the large four-light window beside two small ones (drawn as three equal bays)."
+ ],
+ "shellRepair": true,
+ "budgetTriangles": 16000
+}

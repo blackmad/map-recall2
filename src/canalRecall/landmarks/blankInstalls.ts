@@ -27,9 +27,8 @@ export const BLANK_INSTALLS: Readonly<Record<string, number>> = {
   // Balboaplein 48, Bos en Lommer (2004 perimeter block): the audit ride (2026-11-09) shows one flat orange-red box with
   // no window grid from the air, where the generic facade draws its brick grid; 451 m2 of glass on 9,097 m2 of wall.
   'ordinary-0363100012147097': 0.047,
-  // Revaleiland 437, Java-eiland (courtyard block): the audit ride shows a flat red box, generic draws the brick grid;
-  // 497 m2 of glass on 8,239 m2 of wall.
-  'ordinary-0363100012250186': 0.057,
+  // (Revaleiland 437, Java-eiland 0363100012250186, left this list on 2026-11-20: lane houthavens-memel-wiborg-20261120
+  // rebuilt the recipe from 2021+ crops with all four outer fronts glazed; a blind judge preferred it to the generic grid.)
 };
 
 /** `?bareFronts=0` (or window.__canalRecallBareFronts = false) restores today's draw. Off outside a browser: Node scripts

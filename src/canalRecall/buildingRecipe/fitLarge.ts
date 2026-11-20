@@ -547,7 +547,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.windowPattern ? {windowPattern: [...w.windowPattern]} : {}),
       ...(w.storeyShapes ? {storeyShapes: w.storeyShapes.flatMap(e => e.storeys.filter(q => q < st.heights.length).map(q => ({storey: q, w: e.w, h: e.h, sillM: r3(e.sill * st.heights[q])})))} : {}),
       ...(w.windowGroup ? {windowGroup: {count: w.windowGroup.count, gapM: r3((w.windowGroup.gap ?? 0.06) * pitchM), ...(w.windowGroup.storeys ? {storeys: [...w.windowGroup.storeys]} : {})}} : {}),
-      ...(balconyRail ? {balconyRailSlot: balconyRail} : {}), ...(w.balconies?.deep !== undefined ? {balconyDeepM: r3(w.balconies.deep * (uppers[0] ?? st.heights[0]))} : {}), ...(w.balconies?.windows ? {balconyOnWindows: true} : {}), ...(w.balconies?.run ? {balconyRun: true} : {}),
+      ...(balconyRail ? {balconyRailSlot: balconyRail} : {}), ...(w.balconies?.deep !== undefined ? {balconyDeepM: r3(w.balconies.deep * (uppers[0] ?? st.heights[0]))} : {}), ...(w.balconies?.windows ? {balconyOnWindows: true} : {}), ...(w.balconies?.run ? {balconyRun: true} : {}), ...(w.balconies?.brick ? {balconyBrick: true} : {}),
       ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
       ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {}), ...(w.openBays ? {openBays: w.openBays, bays} : {}),
       ...(w.plinth ? {plinth: {storeys: [...plinthStoreys], ...(w.plinth.bays ? {bays: [...w.plinth.bays]} : {}), lights: w.plinth.lights, sill: w.plinth.sill ?? PLINTH.sill, h: w.plinth.h ?? PLINTH.h, pier: w.plinth.pier ?? PLINTH.pier, transom: w.plinth.transom ?? PLINTH.transom}, bays} : {}),
@@ -589,7 +589,13 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
         // the house's own window frames (absent: the group's frame slot, byte-identical)
         let frameSlot: string | undefined;
         if (h.frame) { frameSlot = `frame@g${gi}h${k}`; palette[frameSlot] = swatch(h.frame); }
-        systems[name] = {...largeSystem(w.system, {...sysOpts, pitchM: pk, lines: stK.lines, bays: nb, ...(frameSlot ? {slots: {...sysOpts.slots, frame: frameSlot}} : {}),
+        // the house's own balconies / loggias (bays within the house) replace the group's; a brick balcony takes the house's brick
+        const hb = h.balconies, hl = h.loggias, brickBalcony = !!(w.balconies?.brick && slot !== slots.wall && (hb || w.balconies));
+        const houseSlots = frameSlot || brickBalcony ? {slots: {...sysOpts.slots, ...(frameSlot ? {frame: frameSlot} : {}), ...(brickBalcony ? {wall: slot} : {})}} : {};
+        const houseBalconies = hb ? {balconyStoreys: [...hb.storeys], balconyRail: hb.rail ?? w.balconies?.rail, balconyBays: hb.bays ? {bays: [...hb.bays]} : undefined} : {};
+        const houseLoggias = hl ? {loggias: {storeys: [...hl.storeys], ...(hl.bays ? {bays: [...hl.bays]} : {}), w: hl.w ?? w.loggias?.w ?? LOGGIA.w, h: hl.h ?? w.loggias?.h ?? LOGGIA.h, sill: hl.sill ?? w.loggias?.sill ?? LOGGIA.sill,
+          deep: hl.deep ?? w.loggias?.deep ?? LOGGIA.deep, rail: hl.rail ?? w.loggias?.rail ?? LOGGIA.rail, lights: hl.lights ?? w.loggias?.lights ?? LOGGIA.lights, railSlot: railSlot ?? slots.frame}} : {};
+        systems[name] = {...largeSystem(w.system, {...sysOpts, pitchM: pk, lines: stK.lines, bays: nb, ...houseSlots, ...houseBalconies, ...houseLoggias,
           ...(shape ? {shape: {w: shape.w, h: shape.h, sillM: r3(shape.sill * (upK[0] ?? stK.heights[0]))}} : {})}), minWidth: 0.5, bays: {first: r3(u0 - main.uMin + pk / 2), pitch: r3(pk), count: nb}};
         // the house's own dressings: their own colour, else the group's dressing slot, else its stone
         let dress: LargeHouseFit['dress'];
