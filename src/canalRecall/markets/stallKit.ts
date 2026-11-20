@@ -80,10 +80,11 @@ export function shadeOf(hex: string, k: number): string {
 export type MarketPartId =
   | 'stall-frame' | 'stall-table' | 'roof-plain' | 'roof-striped' | 'roof-parasol'
   | 'goods-produce' | 'goods-fabric' | 'goods-fish' | 'goods-general' | 'goods-cheese' | 'goods-flowers'
-  | 'van' | 'stall-bare';
-export const MARKET_PART_IDS: readonly MarketPartId[] = ['stall-frame', 'stall-table', 'roof-plain', 'roof-striped', 'roof-parasol', 'goods-produce', 'goods-fabric', 'goods-fish', 'goods-general', 'goods-cheese', 'goods-flowers', 'van', 'stall-bare'];
-export type GoodsKind = 'produce' | 'fabric' | 'fish' | 'general' | 'cheese' | 'flowers';
-export const GOODS_KINDS: readonly GoodsKind[] = ['produce', 'fabric', 'fish', 'general', 'cheese', 'flowers'];
+  | 'van' | 'stall-bare' | 'roof-open' | 'roof-open-striped' | 'goods-rack' | 'goods-bolts';
+export const MARKET_PART_IDS: readonly MarketPartId[] = ['stall-frame', 'stall-table', 'roof-plain', 'roof-striped', 'roof-parasol', 'goods-produce', 'goods-fabric', 'goods-fish', 'goods-general', 'goods-cheese', 'goods-flowers', 'van', 'stall-bare', 'roof-open', 'roof-open-striped', 'goods-rack', 'goods-bolts'];
+/** `rack` and `bolts` (lane market-stalls-20261120): the Dappermarkt's clothes rails and the Westerstraat's fabric piles. */
+export type GoodsKind = 'produce' | 'fabric' | 'fish' | 'general' | 'cheese' | 'flowers' | 'rack' | 'bolts';
+export const GOODS_KINDS: readonly GoodsKind[] = ['produce', 'fabric', 'fish', 'general', 'cheese', 'flowers', 'rack', 'bolts'];
 
 /**
  * Per-part triangle caps (the street-furniture rule: one instanced draw per part, so a part's triangles multiply by
@@ -92,7 +93,7 @@ export const GOODS_KINDS: readonly GoodsKind[] = ['produce', 'fabric', 'fish', '
 export const MARKET_TRI_CAPS: Readonly<Record<MarketPartId, number>> = {
   'stall-frame': 64, 'stall-table': 64, 'roof-plain': 40, 'roof-striped': 140, 'roof-parasol': 40,
   'goods-produce': 140, 'goods-fabric': 160, 'goods-fish': 120, 'goods-general': 140, 'goods-cheese': 140, 'goods-flowers': 140,
-  van: 160, 'stall-bare': 120,
+  van: 160, 'stall-bare': 120, 'roof-open': 40, 'roof-open-striped': 140, 'goods-rack': 160, 'goods-bolts': 140,
 };
 export const STALL_TRI_CAP = 360;
 /**
@@ -179,6 +180,25 @@ function roof(stripes: number): MarketMesh {
   for (const x of [-L, L]) b.quad2([x, -S.depth, S.backSheetBottom], [x, -S.counterDepth, S.backSheetBottom], [x, -S.counterDepth, roofZ(-S.counterDepth)], [x, -S.depth, z1], SLOT);
   return b.done(n > 1 ? 'roof-striped' : 'roof-plain');
 }
+/**
+ * Open-sided canvas (lane market-stalls-20261120; Dappermarkt 2022-06-13 and 2025-09-26, Westerstraat 2019-05-13): the
+ * same slab and street valance, but no back or end sheets, only a short valance all round: the sides stay open to the
+ * racks and skirted tables. A closed end seen from the next stall read as a billboard.
+ */
+function openRoof(stripes: number): MarketMesh {
+  const b = new Soup(), y0 = S.overhang, y1 = -S.depth - 0.05, z0 = roofZ(y0), z1 = roofZ(y1), R = S.roofLength / 2, v = S.valance;
+  const n = Math.max(1, stripes), w = S.roofLength / n;
+  for (let i = 0; i < n; i++) {
+    const hex = n > 1 && i % 2 === 1 ? MARKET_TONES.white : SLOT, xa = -R + i * w, xb = xa + w;
+    b.quad2([xa, y1, z1], [xb, y1, z1], [xb, y0, z0], [xa, y0, z0], hex);
+    b.quad2([xa, y0, z0], [xb, y0, z0], [xb, y0, z0 - v], [xa, y0, z0 - v], hex);
+  }
+  b.quad2([-R, y1, z1 - v * 0.7], [R, y1, z1 - v * 0.7], [R, y1, z1], [-R, y1, z1], SLOT);
+  for (const x of [-R, R]) b.quad2([x, y1, z1 - v * 0.7], [x, y0, z0 - v * 0.7], [x, y0, z0], [x, y1, z1], SLOT);
+  return b.done(n > 1 ? 'roof-open-striped' : 'roof-open');
+}
+export const roofOpenModel = (): MarketMesh => openRoof(1);
+export const roofOpenStripedModel = (): MarketMesh => openRoof(8);
 export const roofPlainModel = (): MarketMesh => roof(1);
 /** Eight stripes across the roof, as on the Cuyp's red-and-white and green-and-white awnings. */
 export const STRIPES = 8;
@@ -311,6 +331,56 @@ export function vanModel(): MarketMesh {
   return b.done('van');
 }
 
+/** A cloth skirt from the counter top to the ground on the aisle side, in the instance colour (red, blue, black). */
+function skirt(b: Soup): void {
+  b.quad([-L + 0.08, 0.05, 0.02], [L - 0.08, 0.05, 0.02], [L - 0.08, 0.05, S.counterH - 0.01], [-L + 0.08, 0.05, S.counterH - 0.01], SLOT);
+  for (const x of [-L + 0.08, L - 0.08]) b.quad2([x, 0.05, 0.02], [x, -S.counterDepth, 0.02], [x, -S.counterDepth, S.counterH - 0.01], [x, 0.05, S.counterH - 0.01], SLOT);
+}
+
+/**
+ * Clothes rails (Dappermarkt 2022-06-13 13:32, Westerstraat 2019-05-13): a rail at the counter's aisle end of each side,
+ * running front to back, hung with garments from ~1.85 m down to 0.6-1.1 m, plus a rail across the back; a skirted table
+ * with folded piles between. The racks stand open to the aisle: the stall reads as clothes, not as a wall.
+ */
+export function rackModel(): MarketMesh {
+  const b = new Soup(), T = MARKET_TONES, top = 1.85;
+  skirt(b);
+  for (let i = 0; i < 3; i++) {
+    const xa = gx0 + 0.6 + i * (gx1 - gx0 - 1.2) / 3 + 0.04, xb = xa + (gx1 - gx0 - 1.2) / 3 - 0.08;
+    b.box(xa, gy0 + 0.1, S.counterH, xb, gy1 - 0.1, S.counterH + 0.1 + (i % 2) * 0.06, FABRIC[(i * 4 + 1) % FABRIC.length], true, false);
+  }
+  // Side rails along y (front to back) at each end, and one across the back.
+  for (const [k, x] of [[0, -L + 0.18], [1, L - 0.18]] as const) {
+    b.box(x - 0.02, -S.counterDepth - 0.4, top, x + 0.02, 0.15, top + 0.04, T.rack, true, true);
+    for (let i = 0; i < 3; i++) {
+      const ya = 0.12 - i * 0.46, yb = ya - 0.4, hex = FABRIC[(i * 3 + k * 5 + 2) % FABRIC.length], z0 = 0.6 + ((i + k) % 3) * 0.22;
+      b.box(x - 0.16, yb, z0, x + 0.16, ya, top - 0.03, hex, false, false);
+    }
+  }
+  b.box(-L + 0.3, -S.depth + 0.33, top + 0.1, L - 0.3, -S.depth + 0.37, top + 0.14, T.rack, true, true);
+  for (let i = 0; i < 4; i++) {
+    const xa = -L + 0.35 + i * 0.85, xb = xa + 0.77;
+    b.box(xa, -S.depth + 0.2, 0.9 + (i % 2) * 0.2, xb, -S.depth + 0.5, top + 0.07, FABRIC[(i * 7 + 3) % FABRIC.length], false, false);
+  }
+  return b.done('goods-rack');
+}
+
+/** Fabric piles (the Westerstraat lapjes, 2019-05-13): bolts laid front to back on a skirted table, a second layer on top, rolls stood up behind. */
+export function boltsModel(): MarketMesh {
+  const b = new Soup(), n = 6, w = (gx1 - gx0) / n;
+  skirt(b);
+  for (let i = 0; i < n; i++) {
+    const xa = gx0 + i * w + 0.01, xb = xa + w - 0.03;
+    b.box(xa, gy0, S.counterH, xb, gy1, S.counterH + 0.13, FABRIC[(i * 3 + 1) % FABRIC.length], true, false);
+    if (i % 2 === 0) b.box(xa + 0.04, gy0 + 0.1, S.counterH + 0.13, xb + w * 0.5, gy1 - 0.15, S.counterH + 0.24, FABRIC[(i * 5 + 4) % FABRIC.length], true, false);
+  }
+  for (let i = 0; i < 4; i++) {
+    const xa = -L + 0.4 + i * 0.85;
+    b.box(xa, -S.depth + 0.25, 0, xa + 0.22, -S.depth + 0.47, 1.35 + (i % 3) * 0.12, FABRIC[(i * 2 + 6) % FABRIC.length], true, false);
+  }
+  return b.done('goods-bolts');
+}
+
 /**
  * Closed / setting-up stall (lane market-stalls-20261120): the Dappermarkt at 08:40-08:46 on Wed 2022-08-31, before
  * trading: the four posts, the roof rails with the canvas still rolled on the back rail and a plain sheet laid flat over
@@ -341,5 +411,6 @@ export const MARKET_MODELS: Readonly<Record<MarketPartId, () => MarketMesh>> = {
   'stall-frame': frameModel, 'stall-table': tableModel, 'roof-plain': roofPlainModel, 'roof-striped': roofStripedModel, 'roof-parasol': parasolModel,
   'goods-produce': produceModel, 'goods-fabric': fabricModel, 'goods-fish': fishModel, 'goods-general': generalModel,
   'goods-cheese': cheeseModel, 'goods-flowers': flowersModel, van: vanModel, 'stall-bare': bareModel,
+  'roof-open': roofOpenModel, 'roof-open-striped': roofOpenStripedModel, 'goods-rack': rackModel, 'goods-bolts': boltsModel,
 };
 export const goodsPart = (k: GoodsKind): MarketPartId => `goods-${k}` as MarketPartId;
