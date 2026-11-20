@@ -1,0 +1,573 @@
+{
+ "schemaVersion": 1,
+ "id": "magna-plaza",
+ "pand": "0363100012167578",
+ "brief": "scripts/landmarks/magna-plaza-brief.md",
+ "signature": [
+  "entrance-towers",
+  "pavilion-crown",
+  "nzv-s-banding",
+  "central-gable",
+  "nzv-s-basement",
+  "nzv-s-dormers",
+  "se-turret"
+ ],
+ "walls": [
+  {
+   "tag": "w01-107",
+   "bearing": 107,
+   "lengthM": 27.5,
+   "centre": [
+    4.8903995,
+    52.3734145
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track02_Sphere_00170",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "nzv-s-banding",
+     "kind": "other",
+     "where": "whole NZV south wing: alternating sandstone and brick bands on piers and spandrels, striped voussoirs",
+     "approxSizeM": [
+      27.5,
+      20
+     ],
+     "plan": "modelled",
+     "how": "stripes() + voussoirs() in front() in magna-plaza-builder.ts",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00170"
+    },
+    {
+     "id": "nzv-s-basement",
+     "kind": "window-shape",
+     "where": "street storey: rusticated granite basement with paired small arched cellar lights under tall round-arched shop windows",
+     "approxSizeM": [
+      27.5,
+      7.4
+     ],
+     "plan": "modelled",
+     "how": "granite basement as rusticatedBase() blocks (0.5 m courses, 1.25 m running bond, 5 cm proud, 2.5 cm V-joints) round paired dark cellar arches; groundArch() shop windows tagged glass",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00170"
+    },
+    {
+     "id": "nzv-s-dormers",
+     "kind": "window-shape",
+     "where": "roof line: stepped stone-trimmed dormers with arched lights on every bay",
+     "approxSizeM": [
+      2.2,
+      3.6
+     ],
+     "plan": "simplified",
+     "how": "dormer(): brick body, stone arch, pointed gable; pane drawn as bronze not glass",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00170"
+    },
+    {
+     "id": "nzv-s-balustrade",
+     "kind": "other",
+     "where": "eaves: corbelled cornice with a stone balustrade",
+     "approxSizeM": [
+      27.5,
+      1.4
+     ],
+     "plan": "modelled",
+     "how": "corbels every 1.75 m, balustrade() balusters every 0.38 m",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00170"
+    },
+    {
+     "id": "se-turret",
+     "kind": "tower",
+     "where": "SE corner (NZV / Raadhuisstraat side): corbelled octagonal turret with pear cap and spire",
+     "approxSizeM": [
+      4.1,
+      27
+     ],
+     "plan": "simplified",
+     "how": "octagonal prism on a corbel from 6.6 m, banded, windows on 3 faces, lathe pear + spire",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00170"
+    },
+    {
+     "id": "nzv-s-anchors",
+     "kind": "other",
+     "where": "iron wall anchors on the piers",
+     "approxSizeM": [
+      0.4,
+      0.6
+     ],
+     "plan": "simplified",
+     "how": "small dark slabs on the piers",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00170"
+    },
+    {
+     "id": "nzv-s-shopsigns",
+     "kind": "sign",
+     "where": "shop fascia signs and window decals",
+     "approxSizeM": [
+      3,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage changes with the shops"
+     },
+     "seenIn": "b_20250109_1300_Track02_Sphere_00170"
+    }
+   ]
+  },
+  {
+   "tag": "w02-107",
+   "bearing": 107,
+   "lengthM": 26.4,
+   "centre": [
+    4.8905905,
+    52.3738025
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002033_pano_0000_000376",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "nzv-n-banding",
+     "kind": "other",
+     "where": "NZV north wing: same banding, voussoirs and balconettes as the south wing",
+     "approxSizeM": [
+      26.4,
+      20
+     ],
+     "plan": "modelled",
+     "how": "front() with seven bays",
+     "seenIn": "TMX7316010203-002033_pano_0000_000376"
+    },
+    {
+     "id": "nzv-n-dormers",
+     "kind": "window-shape",
+     "where": "dormers on six bays",
+     "approxSizeM": [
+      2.2,
+      3.6
+     ],
+     "plan": "simplified",
+     "how": "dormer() as on the south wing",
+     "seenIn": "TMX7316010203-002033_pano_0000_000376"
+    },
+    {
+     "id": "nzv-n-balconettes",
+     "kind": "balcony-ironwork",
+     "where": "small balconettes on the first floor",
+     "approxSizeM": [
+      1.8,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "balconette(): stone slab with dark rail",
+     "seenIn": "TMX7316010203-002033_pano_0000_000376"
+    }
+   ]
+  },
+  {
+   "tag": "w03-186",
+   "bearing": 186,
+   "lengthM": 24.8,
+   "centre": [
+    4.890157,
+    52.3733055
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_00697",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-cartouche",
+     "kind": "relief",
+     "where": "south front, bay 1: oval window in a carved stone cartouche",
+     "approxSizeM": [
+      1.6,
+      2.2
+     ],
+     "plan": "simplified",
+     "how": "stone polygon frame with a dark oval disc",
+     "seenIn": "recording_2025-06-16_03-46-32_00697"
+    },
+    {
+     "id": "south-gable",
+     "kind": "other",
+     "where": "south risalit: pointed gable with chimney stack",
+     "approxSizeM": [
+      9.9,
+      10
+     ],
+     "plan": "modelled",
+     "how": "pointedGable() apex 31.3 m, stack to 33.25 m",
+     "seenIn": "recording_2025-06-16_03-46-32_00697"
+    },
+    {
+     "id": "south-banding",
+     "kind": "other",
+     "where": "south front banding, arches and balustrade",
+     "approxSizeM": [
+      24.8,
+      20
+     ],
+     "plan": "modelled",
+     "how": "front() in magna-plaza-builder.ts",
+     "seenIn": "recording_2025-06-16_03-46-32_00697"
+    }
+   ]
+  },
+  {
+   "tag": "w04-289",
+   "bearing": 289,
+   "lengthM": 23.2,
+   "centre": [
+    4.8900605,
+    52.3737515
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0002_000409",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "spui-pinnacles",
+     "kind": "other",
+     "where": "Spuistraat eaves: small stone pinnacles in place of a balustrade",
+     "approxSizeM": [
+      0.3,
+      1.2
+     ],
+     "plan": "modelled",
+     "how": "pinnacle() every 1.75 m",
+     "seenIn": "TMX7316010203-001900_pano_0002_000409"
+    },
+    {
+     "id": "spui-front",
+     "kind": "other",
+     "where": "Spuistraat front: banding, arched windows, ground-floor shop arches",
+     "approxSizeM": [
+      23.2,
+      20
+     ],
+     "plan": "modelled",
+     "how": "front() in magna-plaza-builder.ts",
+     "seenIn": "TMX7316010203-001900_pano_0002_000409"
+    },
+    {
+     "id": "spui-dormers",
+     "kind": "window-shape",
+     "where": "Spuistraat dormers",
+     "approxSizeM": [
+      2.2,
+      3.6
+     ],
+     "plan": "simplified",
+     "how": "dormer()",
+     "seenIn": "TMX7316010203-001900_pano_0002_000409"
+    }
+   ]
+  },
+  {
+   "tag": "w05-289",
+   "bearing": 289,
+   "lengthM": 19,
+   "centre": [
+    4.889967,
+    52.373571
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0002_000413",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "spui-risalit",
+     "kind": "other",
+     "where": "Spuistraat risalit with pointed gable and two ground-floor arches",
+     "approxSizeM": [
+      10.4,
+      31
+     ],
+     "plan": "modelled",
+     "how": "edge 18 front with winW 1.5 and pointedGable() to 31.1 m",
+     "seenIn": "TMX7316010203-001900_pano_0002_000413"
+    }
+   ]
+  },
+  {
+   "tag": "w06-105",
+   "bearing": 105,
+   "lengthM": 13.1,
+   "centre": [
+    4.890519,
+    52.37363
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track02_Sphere_00175",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-towers",
+     "kind": "tower",
+     "where": "two square entrance towers with belfry stage, octagonal pear-shaped slate crowns and needle spires",
+     "approxSizeM": [
+      4.9,
+      50
+     ],
+     "plan": "modelled",
+     "how": "towerFace() + towerTop(): square banded stage with lancets, gallery with openworkParapet and crocketedSpire corner pinnacles, octagonal open belfry (openworkLantern), second gallery, copper openworkLantern with dome, crocketedSpire needle and finial to 50.2 m (gothic-tower-kit.ts)",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00175"
+    },
+    {
+     "id": "central-gable",
+     "kind": "other",
+     "where": "pointed central gable between the towers, striped, with three arched lights and a finial",
+     "approxSizeM": [
+      8.2,
+      8
+     ],
+     "plan": "modelled",
+     "how": "pointedGable() with gable windows and stone stripes",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00175"
+    },
+    {
+     "id": "entrance-arch",
+     "kind": "window-shape",
+     "where": "large round-arched main entrance in a stone surround",
+     "approxSizeM": [
+      3.4,
+      7
+     ],
+     "plan": "modelled",
+     "how": "archSlab surround, dark door flat set back 0.2 m",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00175"
+    },
+    {
+     "id": "entrance-canopy",
+     "kind": "canopy",
+     "where": "metal and glass canopy over the main entrance on two posts",
+     "approxSizeM": [
+      8,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "bronze slab 1.4 m deep on two posts",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00175"
+    },
+    {
+     "id": "magna-plaza-letters",
+     "kind": "lettering",
+     "where": "MAGNA PLAZA lettering and banners over the entrance",
+     "approxSizeM": [
+      6,
+      0.8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant lettering and seasonal banners"
+     },
+     "seenIn": "b_20250109_1300_Track02_Sphere_00175"
+    }
+   ]
+  },
+  {
+   "tag": "w07-287",
+   "bearing": 287,
+   "lengthM": 13,
+   "centre": [
+    4.89015,
+    52.37392
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0000_001065",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "spui-n-front",
+     "kind": "other",
+     "where": "north Spuistraat stretch, five bays",
+     "approxSizeM": [
+      18,
+      20
+     ],
+     "plan": "modelled",
+     "how": "front() in magna-plaza-builder.ts",
+     "seenIn": "TMX7316010203-001178_pano_0000_001065"
+    },
+    {
+     "id": "spui-n-drainpipes",
+     "kind": "other",
+     "where": "rainwater pipes",
+     "approxSizeM": [
+      0.15,
+      20
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 20 cm wide"
+     },
+     "seenIn": "TMX7316010203-001178_pano_0000_001065"
+    }
+   ]
+  },
+  {
+   "tag": "w08-108",
+   "bearing": 108,
+   "lengthM": 4.9,
+   "centre": [
+    4.890477,
+    52.373552
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002357_pano_0008_000153",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-tower-face",
+     "kind": "tower",
+     "where": "north entrance tower face: plinth door, lancet tiers",
+     "approxSizeM": [
+      4.9,
+      27
+     ],
+     "plan": "modelled",
+     "how": "towerFace() on edge 58",
+     "seenIn": "TMX7316010203-002357_pano_0008_000153"
+    }
+   ]
+  },
+  {
+   "tag": "w09-319",
+   "bearing": 319,
+   "lengthM": 4.1,
+   "centre": [
+    4.8898825,
+    52.373434
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0002_000415",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-w09",
+     "kind": "window-shape",
+     "where": "corner pavilion face: tall glazed shop arch under banded arched windows",
+     "approxSizeM": [
+      4,
+      22
+     ],
+     "plan": "modelled",
+     "how": "pavilion faces 30/35/40/46: glass shop arch 2.9 x 6.6 m, balconette, F1/F2 windows",
+     "seenIn": "TMX7316010203-001900_pano_0002_000415"
+    }
+   ]
+  },
+  {
+   "tag": "w10-184",
+   "bearing": 184,
+   "lengthM": 4,
+   "centre": [
+    4.8899425,
+    52.373329
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241216_0911_Track30_Sphere_00079",
+   "capturedAt": "2024-12-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-w10",
+     "kind": "window-shape",
+     "where": "corner pavilion face: tall glazed shop arch under banded arched windows",
+     "approxSizeM": [
+      4,
+      22
+     ],
+     "plan": "modelled",
+     "how": "pavilion faces 30/35/40/46: glass shop arch 2.9 x 6.6 m, balconette, F1/F2 windows",
+     "seenIn": "b_20241216_0911_Track30_Sphere_00079"
+    }
+   ]
+  },
+  {
+   "tag": "w11-275",
+   "bearing": 275,
+   "lengthM": 4,
+   "centre": [
+    4.8898455,
+    52.373389
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0002_000418",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-w11",
+     "kind": "window-shape",
+     "where": "corner pavilion face: tall glazed shop arch under banded arched windows",
+     "approxSizeM": [
+      4,
+      22
+     ],
+     "plan": "modelled",
+     "how": "pavilion faces 30/35/40/46: glass shop arch 2.9 x 6.6 m, balconette, F1/F2 windows",
+     "seenIn": "TMX7316010203-001900_pano_0002_000418"
+    }
+   ]
+  },
+  {
+   "tag": "w12-229",
+   "bearing": 229,
+   "lengthM": 4,
+   "centre": [
+    4.8898715,
+    52.3733445
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002045_pano_0001_003127",
+   "capturedAt": "2021-03-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-w12",
+     "kind": "window-shape",
+     "where": "corner pavilion face: tall glazed shop arch under banded arched windows",
+     "approxSizeM": [
+      4,
+      22
+     ],
+     "plan": "modelled",
+     "how": "pavilion faces 30/35/40/46: glass shop arch 2.9 x 6.6 m, balconette, F1/F2 windows",
+     "seenIn": "TMX7316010203-002045_pano_0001_003127"
+    },
+    {
+     "id": "pavilion-crown",
+     "kind": "dome",
+     "where": "SW corner pavilion: slate octagonal roof, brick lantern with openings, pear cap and spire to 53.8 m",
+     "approxSizeM": [
+      13,
+      30
+     ],
+     "plan": "modelled",
+     "how": "octagonal frustum 24-36 m, lantern 36-43.6 m, pear 44.1-50.6 m, spire",
+     "seenIn": "TMX7316010203-002045_pano_0001_003127"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
