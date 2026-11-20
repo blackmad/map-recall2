@@ -83,6 +83,67 @@ if (cmd === 'render') {
     console.log(`${b.key} ${cond} ${r.status === 0 ? 'ok' : 'FAILED'} ${((Date.now() - t0) / 1000).toFixed(1)}s`);
     if (r.status !== 0) console.error((r.stderr || r.stdout).slice(-2000));
   }
+} else if (cmd === 'layers') {
+  // Review layers (coordinator, 2026-11-20; read by the local review tool as a compare round): per block
+  // layers/<key>/{today,r1,r2}.jpg at one scale and left edge, padded with sky at the top to one height (the ground line
+  // stays put when flipping), at least 1800 px wide; photo-NN.jpg per pand left to right from the rectified wall crops
+  // (scripts/house-crops/crops.ts, run into r2/crops-archive), at least 1200 px wide; photo-row.jpg when every pand on
+  // the street has a crop; photos.json with each photo's source and flags.
+  const ARCH = path.join(OUT, 'crops-archive/pand-crops'), LAYERS = path.join(OUT, 'layers');
+  const poor: Record<string, string[]> = {};
+  for (const b of todo.filter(x => !x.key.startsWith('regression-'))) {
+    const dir = path.join(LAYERS, b.key);
+    fs.mkdirSync(dir, { recursive: true });
+    const conds = [['today', 'today'], ['r1', 'r1'], ['new', 'r2']] as const;
+    const metas = await Promise.all(conds.map(([c]) => sharp(path.join(OUT, b.key, c, 'front.png')).metadata()));
+    const w0 = Math.max(...metas.map(m => m.width ?? 0)), h0 = Math.max(...metas.map(m => m.height ?? 0)), k = Math.max(1, 1800 / w0);
+    const W = Math.round(w0 * k), H = Math.round(h0 * k);
+    for (let i = 0; i < conds.length; i++) {
+      const src = path.join(OUT, b.key, conds[i][0], 'front.png'), m = metas[i];
+      const img = await sharp(src).resize({ width: Math.round((m.width ?? w0) * k), kernel: 'lanczos3' }).png().toBuffer(), ih = (await sharp(img).metadata()).height ?? H;
+      // Sky colour from the source's top-left pixel, so the padding reads as more sky.
+      const { data } = await sharp(src).extract({ left: 0, top: 0, width: 1, height: 1 }).raw().toBuffer({ resolveWithObject: true });
+      await sharp({ create: { width: W, height: H, channels: 3, background: { r: data[0], g: data[1], b: data[2] } } })
+        .composite([{ input: img, left: 0, top: H - ih }]).jpeg({ quality: 88 }).toFile(path.join(dir, `${conds[i][1]}.jpg`));
+    }
+    // Photos: the pands on the street left to right, then any member not on the street line.
+    const ids = [...b.order, ...b.ids.filter(id => !b.order.includes(id) && (JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/design-units/gate-blocks.json'), 'utf8')) as Array<{ key: string; members: string[] }>).find(g => g.key === b.key)!.members.includes(id))];
+    const photos: Array<Record<string, unknown>> = [], rowParts: Array<{ img: Buffer; w: number; h: number; ppm: number }> = [];
+    let n = 0;
+    for (const id of ids) {
+      const jpg = path.join(ARCH, id, 'front.jpg'), meta = path.join(ARCH, id, 'front.json');
+      if (!fs.existsSync(jpg) || !fs.existsSync(meta)) { photos.push({ pandId: id, file: null, why: 'no rectified crop (house:crops found no usable panorama)' }); (poor[b.key] ??= []).push(`${id.slice(-6)}: no crop`); continue; }
+      const j = JSON.parse(fs.readFileSync(jpg.replace(/front\.jpg$/, 'front.json'), 'utf8'));
+      const file = `photo-${String(++n).padStart(2, '0')}.jpg`, m = await sharp(jpg).metadata();
+      await sharp(jpg).resize({ width: Math.max(1200, m.width ?? 0), kernel: 'lanczos3' }).jpeg({ quality: 90 }).toFile(path.join(dir, file));
+      const p0 = j.panoramas?.[0] ?? {}, month = Number(String(p0.timestamp ?? '').slice(5, 7));
+      photos.push({ pandId: id, file, method: j.method, usable: j.usable, rejectedBecause: j.rejectedBecause, date: j.missionDate, leafOff: month <= 4 || month >= 11,
+        obliquityDeg: p0.obliquityDeg, cameraDistM: p0.cameraDistM, panoramas: (j.panoramas ?? []).map((p: { panoId: string; sourceUrl: string }) => ({ panoId: p.panoId, sourceUrl: p.sourceUrl })),
+        nativePx: [m.width, m.height], pixelsPerMetre: j.crop?.pixelsPerMetre, foliage: j.flags?.foliage, occluderShare: j.flags?.occluderShare });
+      if (!j.usable) (poor[b.key] ??= []).push(`${id.slice(-6)}: ${(j.rejectedBecause ?? []).join(', ')}`);
+      if (b.order.includes(id)) rowParts.push({ img: fs.readFileSync(jpg), w: m.width ?? 0, h: m.height ?? 0, ppm: j.crop?.pixelsPerMetre ?? 50 });
+    }
+    // The row: every street pand's rectified crop side by side at one scale, bottoms on the ground line.
+    let row: Record<string, unknown> | null = null;
+    if (rowParts.length === b.order.length && rowParts.length > 1) {
+      const ppm = Math.min(...rowParts.map(r => r.ppm)), scaled = await Promise.all(rowParts.map(async r => { const img = await sharp(r.img).resize({ width: Math.max(1, Math.round(r.w * ppm / r.ppm)) }).png().toBuffer(); const mm = await sharp(img).metadata(); return { img, w: mm.width ?? 0, h: mm.height ?? 0 }; }));
+      const RW = scaled.reduce((t, s) => t + s.w, 0), RH = Math.max(...scaled.map(s => s.h));
+      let x = 0;
+      const comp = scaled.map(s => { const o = { input: s.img, left: x, top: RH - s.h }; x += s.w; return o; });
+      const k2 = Math.max(1, 1800 / RW);
+      const stitched = await sharp({ create: { width: RW, height: RH, channels: 3, background: '#ffffff' } }).composite(comp).png().toBuffer();
+      await sharp(stitched).resize({ width: Math.round(RW * k2), kernel: 'lanczos3' }).jpeg({ quality: 88 }).toFile(path.join(dir, 'photo-row.jpg'));
+      const dates = [...new Set(photos.filter(p => p.file && b.order.includes(String(p.pandId))).map(p => p.date))];
+      row = { file: 'photo-row.jpg', pands: b.order, note: `each pand's own rectified crop, side by side at ${ppm} px/m, bottoms on the ground line${dates.length > 1 ? `; mixed capture dates (${dates.join(', ')})` : ''}` };
+    }
+    fs.writeFileSync(path.join(dir, 'photos.json'), JSON.stringify({ block: b.key, street: b.street, buurt: b.buurt, title: b.title,
+      layers: { today: 'today.jpg', r1: 'r1.jpg', r2: 'r2.jpg', width: W, height: H, note: 'one scale and left edge; shorter strips padded with sky at the top' },
+      photos, row, attribution: 'Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)',
+      source: 'rectified wall crops, scripts/house-crops/crops.ts (rankPanos, yearCandidates: clear straight views, then leaf-off, then newer years)' }, null, 1));
+    console.log(`${b.key}: ${W}x${H} strips, ${n}/${ids.length} photos${row ? ', row' : ''}`);
+  }
+  fs.writeFileSync(path.join(LAYERS, 'poor.json'), JSON.stringify(poor, null, 1));
+  console.log(JSON.stringify(poor, null, 1));
 } else if (cmd === 'sheets') {
   const label = (text: string, w: number) => Buffer.from(`<svg width="${w}" height="34"><rect width="100%" height="100%" fill="#222"/><text x="10" y="23" font-family="Helvetica" font-size="18" fill="#eee">${text.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</text></svg>`);
   const index: Array<{ id: string; street: string; buurt: string; title: string; sheet: string; photo: boolean }> = [];

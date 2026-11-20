@@ -17,7 +17,9 @@
 - **Sheets:** `artifacts/design-units/r2/sheets/node-<key>.jpg`, 20 of them (the 18 gate blocks plus Marnixplein and Goudsbloemstraat). Each stacks photo cuts, today, round 1 and round 2, all Node renders (`scripts/design-units/review-sheets.ts render <cond>` / `sheets`).
   - The two Centrum rows are byte-identical in all three conditions, because they are not in the Ring extract.
   - The planning session loads the sheets into the review page https://claude.ai/artifact/6v5cxnHZAMQ5fvKV4dqdWM. No needs-david issue this round; GitHub issues are retired for verdicts.
-- **Next:** wait for David's verdict on the page. No browser runs or lanes before it.
+- **Review layers (2026-11-20):** `artifacts/design-units/r2/layers/<key>/` holds `{today,r1,r2}.jpg`, which share one scale and left edge, with shorter strips padded with sky. It also holds a `photo-NN.jpg` per pand, rectified wall crops from `house:crops` run into `r2/crops-archive` (manifests are in `r2/crops-manifests`, never the committed ones), plus `photo-row.jpg` and `photos.json`. Make them with `review-sheets.ts layers`. The local review tool (lane `belt-review-tool-20261120`) loads the folder as a compare round.
+- **Found in the photo rows:** many Ring rows have a mansard with dormers on every plot, even though the AHN rise is under 1.8 m: Rustenburgerstraat, Blasiusstraat, Van Ostadestraat, Ruyschstraat and Commelinstraat. The flat-top rule drops these, and the roof rule should be revisited after the verdict.
+- **Next:** wait for David's verdict. No browser runs or lanes before it.
 
 This is for a fresh session that has only the repo. Read it first. Then read `docs/handoffs/design-units-plan-20261119.md`, `docs/handoffs/design-units-handoff-20261119.md` and `docs/reports/design-units-phase0-20261119.md`.
 
