@@ -354,7 +354,7 @@ export function shellOfWalls(walls: readonly {surface?: number}[]): number[] {
 /** The facts the fit works on: the shell-repaired facts when the intent opts in (shellRepair.ts), else the input. */
 export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFacts): {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport; roofTidy?: RoofTidyReport} {
   const shelled: {facts: BuildingFacts; shell?: ShellRepairReport} = !intent.shellRepair && (intent.footprint ?? 'lod22') === 'lod22' ? {facts}
-    : (r => ({facts: r.facts, shell: r.report}))(prepareShell(facts, {repair: !!intent.shellRepair, footprint: intent.footprint ?? 'lod22'}));
+    : (r => ({facts: r.facts, shell: r.report}))(prepareShell(facts, {repair: !!intent.shellRepair, footprint: intent.footprint ?? 'lod22', ...(intent.shellClose ? {close: true} : {})}));
   let out: {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport; roofTidy?: RoofTidyReport} = shelled;
   if (intent.roof?.levelRooftop) {
     // roof.levelRooftop (roofLevel.ts): the rooftop above the photographed fronts becomes one flat level, after any shell repair
@@ -650,7 +650,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.windowBox ? {windowBox: fitWindowBox(w.windowBox, {frame: boxFrame ?? slots.frame, glass: slots.glass, ...(boxDeck ? {deck: boxDeck} : {})}, main ? main.uMax - main.uMin : undefined, bays)} : {}),
       ...(w.signs ? {signs: w.signs.map((s, k) => { const sl = `sign@g${gi}k${k}`; palette[sl] = swatch(s.colour ?? '#e8e8e4'); return {text: s.text, along: [s.along[0], s.along[1]] as [number, number], up: [s.up[0], s.up[1]] as [number, number], slot: sl}; })} : {}),
       ...(w.wallLights ? {wallLights: w.wallLights.map(l => ({along: [l.along[0], l.along[1]] as [number, number], up: [l.up[0], l.up[1]] as [number, number], lights: l.lights ?? 1, rows: l.rows ?? 1}))} : {}),
-      ...(w.terraces ? {terraces: ((t) => { const sl = `terrace@g${gi}`, rl = `rail@tg${gi}`; palette[sl] = swatch(t.colour ?? '#e4e4e0'); palette[rl] = swatch(t.colour ?? '#e4e4e0'); return {storeys: [...t.storeys], deep: t.deep ?? TERRACE.deep, rail: t.rail ?? true, roof: !!t.roof, slot: sl, railSlot: rl}; })(w.terraces)} : {}),
+      ...(w.terraces ? {terraces: ((t) => { const sl = `terrace@g${gi}`, rl = `rail@tg${gi}`; palette[sl] = swatch(t.colour ?? '#e4e4e0'); palette[rl] = swatch(t.colour ?? '#e4e4e0'); return {storeys: [...t.storeys], deep: t.deep ?? TERRACE.deep, rail: t.rail ?? true, roof: !!t.roof, slot: sl, railSlot: rl, ...(t.posts ? {posts: t.posts} : {})}; })(w.terraces)} : {}),
       ...(w.signBoards ? {signBoards: w.signBoards.map((b, k) => { const sl = `signboard@g${gi}k${k}`; palette[sl] = swatch(b.colour ?? pal.door); return {along: [b.along[0], b.along[1]] as [number, number], up: [b.up[0], b.up[1]] as [number, number], slot: sl}; })} : {}),
       ...(w.falseFront ? {falseFront: {slot: cladSlot ?? slots.wall}} : {}),
       ...(w.ribbonStoreys ? {ribbonStoreys: w.ribbonStoreys.flatMap(r => r.storeys)} : {}),

@@ -40,6 +40,12 @@ const PAIR_PLAN_M = 0.3, PAIR_DEG = 5;
 const SEAM_M = 0.6;
 /** Planar loop: every vertex within this of the loop's plane. */
 const PLANAR_M = 0.05;
+/**
+ * A small closed loop that is not planar (a warped 3DBAG roof facet's edge: Revaleiland 58's 1.44 m leftover) is capped
+ * with a fan from its centroid when its open edges total at most `FAN_MAX_M` and it departs from its best plane by at
+ * most `FAN_PLANAR_M`; a larger or more warped loop is left open as before.
+ */
+export const FAN_MAX_M = 3, FAN_PLANAR_M = 0.6;
 /** footprint "bag": an uncovered part whose centroid lies this close to a LoD2.2 roof takes that roof's plane. */
 export const FILL_NEAREST_M = 1.5;
 
@@ -155,7 +161,12 @@ function triangulateLoop(loop: V3[]): [V3, V3, V3][] {
   return T.ShapeUtils.triangulateShape(loop.map(p => new T.Vector2(p[i], p[j])), []).map(f => [loop[f[0]], loop[f[1]], loop[f[2]]] as [V3, V3, V3]);
 }
 
-interface Patch { kind: PatchKind; target: 'wall' | 'roof'; ring: V3[]; edgeM: number }
+interface Patch { kind: PatchKind; target: 'wall' | 'roof'; ring: V3[]; edgeM: number; fan?: true }
+/** A fan from the loop's centroid: closes a small warped loop whose dominant-plane earcut would fold. */
+function fanLoop(loop: V3[]): [V3, V3, V3][] {
+  const c: V3 = [0, 1, 2].map(k => loop.reduce((s, p) => s + p[k], 0) / loop.length) as V3;
+  return loop.map((p, i) => [c, p, loop[(i + 1) % loop.length]] as [V3, V3, V3]);
+}
 
 /** Max height of the roof-like triangles over a plan point, below `under` (null = none). */
 function roofBelow(tris: HostTri[], p: [number, number], under: number): number | null {
@@ -242,13 +253,13 @@ export function stripRegion(P: OpenPiece, tris: HostTri[], up = false): V3[][] {
 }
 
 /** One pass: caps on planar loops, strips under roof edges (highest first), seams between vertical slits. */
-function repairPass(tris: HostTri[], patches: Patch[]): number {
+function repairPass(tris: HostTri[], patches: Patch[], close = false): number {
   const before = patches.length;
   const index = new TriIndex(tris);
   const pieces = openPieces(tris, index);
   const addPatch = (p: Patch) => {
     patches.push(p);
-    for (const [a, b, c] of triangulateLoop(p.ring)) { const t = {a, b, c, roofLike: p.target === 'roof'}; tris.push(t); index.add(t, tris.length - 1); }
+    for (const [a, b, c] of p.fan ? fanLoop(p.ring) : triangulateLoop(p.ring)) { const t = {a, b, c, roofLike: p.target === 'roof'}; tris.push(t); index.add(t, tris.length - 1); }
   };
   // 1. planar loops of open pieces (undirected chaining at 1 cm).
   const key = (p: V3) => p.map(v => Math.round(v * 100)).join(',');
@@ -273,14 +284,16 @@ function repairPass(tris: HostTri[], patches: Patch[]): number {
     const n = newell(ring), nl = len3(n);
     if (nl < 1e-6) continue;
     const un: V3 = [n[0] / nl, n[1] / nl, n[2] / nl], d0 = ring[0][0] * un[0] + ring[0][1] * un[1] + ring[0][2] * un[2];
-    if (ring.some(p => Math.abs(p[0] * un[0] + p[1] * un[1] + p[2] * un[2] - d0) > PLANAR_M)) continue;
+    const dev = Math.max(...ring.map(p => Math.abs(p[0] * un[0] + p[1] * un[1] + p[2] * un[2] - d0)));
+    const loopM = used.reduce((s, i) => s + len3(sub3(pieces[i].b, pieces[i].a)), 0), fan = dev > PLANAR_M;
+    if (fan && (!close || dev > FAN_PLANAR_M || loopM > FAN_MAX_M)) continue;
     // a loop round a surface that is already there (a roof sheet with no walls) is that surface's edge, not a hole
-    const capTris = triangulateLoop(ring), capArea = capTris.reduce((s2, [a, b, c]) => s2 + triArea(a, b, c), 0);
+    const capTris = fan ? fanLoop(ring) : triangulateLoop(ring), capArea = capTris.reduce((s2, [a, b, c]) => s2 + triArea(a, b, c), 0);
     const coveredArea = capTris.reduce((s2, [a, b, c]) => s2 + (index.covered([(a[0] + b[0] + c[0]) / 3, (a[1] + b[1] + c[1]) / 3, (a[2] + b[2] + c[2]) / 3], -1) ? triArea(a, b, c) : 0), 0);
     if (capArea < 1e-4 || coveredArea > 0.5 * capArea) continue;
     used.forEach(i => inLoop.add(i));
     const vertical = Math.abs(un[1]) <= 0.25, edgeM = used.reduce((s, i) => s + len3(sub3(pieces[i].b, pieces[i].a)), 0);
-    addPatch({kind: 'cap', target: vertical ? 'wall' : 'roof', ring: vertical ? orientOutward(ring, tris) : ring, edgeM});
+    addPatch({kind: 'cap', target: vertical ? 'wall' : 'roof', ring: vertical ? orientOutward(ring, tris) : ring, edgeM, ...(fan ? {fan: true} : {})});
   }
   // 2. strips under spanning pieces whose owner lies at or above them, highest first: the region between the edge and
   // whatever lies below it (a lower roof, else the ground), minus the walls already standing in that plane.
@@ -332,6 +345,34 @@ function repairPass(tris: HostTri[], patches: Patch[]): number {
   return patches.length - before;
 }
 
+/**
+ * Slivers: an open piece left after the passes whose one end stands within `SLIVER_CLOSE_M` of a host vertex off its line
+ * (3DBAG's warped roof facet ends 6 cm above its neighbour's corner: Revaleiland 58's 1.44 m leftover) is closed by the
+ * thin triangle between the piece and that vertex. Only leftovers get one, so a shell the passes closed is unchanged.
+ */
+export const SLIVER_CLOSE_M = 0.1;
+function closeSlivers(tris: HostTri[], patches: Patch[]) {
+  const verts = tris.flatMap(t => [t.a, t.b, t.c]);
+  for (const pc of openPieces(tris)) {
+    const d = sub3(pc.b, pc.a), L = len3(d);
+    if (L < 0.05) continue;
+    let best: V3 | null = null, bd = SLIVER_CLOSE_M;
+    for (const v of verts) {
+      const da = len3(sub3(v, pc.a)), db = len3(sub3(v, pc.b));
+      if (da < 1e-3 || db < 1e-3) continue;
+      const w = sub3(v, pc.a), t = (w[0] * d[0] + w[1] * d[1] + w[2] * d[2]) / (L * L);
+      if (t > 0.02 && t < 0.98) continue;
+      const m = Math.min(da, db);
+      if (m < bd) { bd = m; best = v; }
+    }
+    if (!best) continue;
+    const ring: V3[] = [pc.a, pc.b, best];
+    if (triArea(pc.a, pc.b, best) < 1e-5) continue;
+    patches.push({kind: 'cap', target: 'roof', ring, edgeM: L});
+    tris.push({a: pc.a, b: pc.b, c: best, roofLike: true});
+  }
+}
+
 /** Gate-rule open length (the `topology()` measure) of a triangle soup. */
 function gateOpen(tris: {a: V3; b: V3; c: V3}[]) {
   return topology(tris.map(t => ({a: t.a, b: t.b, c: t.c, surface: 'host', metallic: 0}) as Tri)).openEdgeLengthM;
@@ -339,9 +380,10 @@ function gateOpen(tris: {a: V3; b: V3; c: V3}[]) {
 
 export interface RepairResult { tris: HostTri[]; patches: Patch[]; openBeforeM: number; openAfterM: number; leftover: ShellRepairReport['leftover'] }
 /** Repair a host triangle soup in local metres (pure; unit-tested on synthetic shells). */
-export function repairHost(host: HostTri[], passes = 3): RepairResult {
+export function repairHost(host: HostTri[], passes = 3, close = false): RepairResult {
   const tris = host.map(t => ({...t})), patches: Patch[] = [], openBeforeM = gateOpen(tris);
-  for (let k = 0; k < passes; k++) if (!repairPass(tris, patches)) break;
+  for (let k = 0; k < passes; k++) if (!repairPass(tris, patches, close)) break;
+  if (close) closeSlivers(tris, patches);
   const leftover = openPieces(tris).map(pc => ({mid: lerp3(pc.a, pc.b, 0.5).map(v => +v.toFixed(2)), lengthM: +len3(sub3(pc.b, pc.a)).toFixed(2)})).sort((a, b) => b.lengthM - a.lengthM).slice(0, 12);
   return {tris, patches, openBeforeM, openAfterM: gateOpen(tris), leftover};
 }
@@ -576,7 +618,8 @@ function wallFacts(surface: number, ringRD: number[][], groundNAP: number, onFoo
   return {surface, ringsRD: [ringRD], onFootprintEdge, areaM2: +(Math.hypot(nx, ny, nz) / 2).toFixed(3), bearingDeg: +((Math.atan2(nx, ny) * 180 / Math.PI + 360) % 360).toFixed(2), bottomM: +Math.min(...zs).toFixed(3), topM: +Math.max(...zs).toFixed(3)};
 }
 
-export interface ShellOptions { repair: boolean; footprint: 'lod22' | 'bag' | 'core' }
+/** `close` (opt-in, intent `shellClose`): fan caps for small warped loops and sliver triangles for lone leftover pieces */
+export interface ShellOptions { repair: boolean; footprint: 'lod22' | 'bag' | 'core'; close?: boolean }
 
 /**
  * The fitted pre-step: facts with the repaired shell (extra wall surfaces from `REPAIR_SURFACE_BASE`, extra roof
@@ -656,7 +699,7 @@ export function prepareShell(facts: BuildingFacts, opts: ShellOptions): {facts: 
     core = {...c.report, coreWalls: outerWalls.map(w => w.surface), keptWalls: keptWalls.map(w => w.surface), droppedRoofM2: +droppedRoofM2.toFixed(1), mainRoofM: +(mainLow - g).toFixed(2)};
     host = hostTriangles(wallsRD.map(w => w.ringsRD.map(r => r.map(p => toLocal(f, p)))), roofsRD.map(rr => rr.ringsRD.map(r => r.map(p => toLocal(f, p)))));
   }
-  const res = opts.repair || onBag ? repairHost(host) : {tris: host, patches: [] as Patch[], openBeforeM: gateOpen(host), openAfterM: gateOpen(host), leftover: []};
+  const res = opts.repair || onBag ? repairHost(host, 3, !!opts.close) : {tris: host, patches: [] as Patch[], openBeforeM: gateOpen(host), openAfterM: gateOpen(host), leftover: []};
   res.patches = [...preset, ...res.patches];
   const newWalls: WallSurfaceFacts[] = [], newRoofs: BuildingFacts['roofsRD'] = [];
   res.patches.forEach((p, i) => {

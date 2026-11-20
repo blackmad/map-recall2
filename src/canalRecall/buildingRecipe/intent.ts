@@ -1703,6 +1703,13 @@ export interface LargeBuildingIntent {
    */
   shellRepair?: boolean;
   /**
+   * With `shellRepair`: also close what the passes leave (shellRepair.ts `close`): a small warped loop (open edges at most
+   * 3 m, at most 0.6 m off its plane) gets a fan cap, and a lone leftover piece whose end stands within 0.1 m of a host
+   * vertex gets the sliver triangle to it (Revaleiland 58: a warped roof facet ending 6 cm above its neighbour's corner).
+   * Absent: byte-identical.
+   */
+  shellClose?: boolean;
+  /**
    * `bag`: build the massing on the BAG LoD0 outline (LoD2.2 roof planes clipped to it, walls from the repair strips)
    * when the LoD2.2 ground has drifted from it (IoU < 0.90). `core` (coreFootprint.ts, Blend 2026-10-29): the same on
    * the BAG outline with its shallow outward steps (<= 2.5 m) retracted, for a tower whose stacked offset blocks BAG

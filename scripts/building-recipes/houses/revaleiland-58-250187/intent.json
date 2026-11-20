@@ -1,0 +1,125 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "revaleiland-58-250187",
+ "pandId": "0363100012250187",
+ "address": "Revaleiland 58, Houthavens: 2019 block of buff brick over a dark brick shop plinth, white-framed windows, stacked glass-railed balconies cantilevered from the front, a set-back top floor in vertical ribbed cladding",
+ "sources": [
+  {
+   "id": "pano-2021-02-24-w01-140s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002914/",
+   "image": "source-data://pand-reference-walls/0363100012250187/w01-140s1.jpg",
+   "sha256": "b1005f8fabb6b687e764d12e27730319254396f72b6457a876afad5dca85ea9b",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-16-w02-74s1",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-16_06-25-31_02648/",
+   "image": "source-data://pand-reference-walls/0363100012250187/w02-74s1.jpg",
+   "sha256": "fb9f756b64d46d01d12bdb829902e0e0cedcf8a91bd86c313649d5adf7b91b66",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    61,
+    79,
+    80,
+    107,
+    110,
+    132
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 15,
+   "palette": {
+    "brick": "#b8946c",
+    "frame": "#e8e6e0"
+   },
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.55,
+    "sill": 0.15
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "bays": [
+     1,
+     4,
+     7,
+     10,
+     12
+    ],
+    "rail": "glass"
+   },
+   "cladding": {
+    "kind": "paint",
+    "colour": "#3a3230",
+    "from": 0,
+    "to": 0.27
+   }
+  },
+  {
+   "wallSurfaces": [
+    62
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 9,
+   "palette": {
+    "brick": "#6e7674",
+    "frame": "#e8e6e0"
+   },
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.12
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "bays": [
+     3
+    ],
+    "rail": "glass"
+   },
+   "cladding": {
+    "kind": "paint",
+    "colour": "#3a3230",
+    "from": 0,
+    "to": 0.22
+   }
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#9c8064",
+  "frame": "#e8e6e0",
+  "door": "#a82a1a"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 3): SE panel 59 (54 m, 4 storeys under the 14.6 m eaves) from w01-140s1/s2 (2021-02/03) and w01-140s3 (2022-12-14), balcony columns at bays 1, 4, 7, 10, 12 of 15; E panel 60 (31 m, 5 storeys) from w02-74s1 (2024-10-16). The dark plinth is the ground storey painted (cladding paint to 0.27 / 0.22 of the eaves). Other walls: the same buff grid (the SW and NW crops are 30-37 deg oblique).",
+  "Not drawn: the vertical ribbed cladding of the set-back top floor (3DBAG massing in the wall buff), the red entrance doors and shop lettering.",
+  "Round 5 2026-11-20: released from hold with shellClose: the one leftover after shellRepair was a 1.44 m roof edge of a warped facet ending 6.3 cm above its neighbour's corner (open-edges 2.2 m against 2 m); the sliver triangle to that corner closes it.",
+  "Round 5: the SE brick lightened to #b8946c (the photo reads buff-yellow; the likeness dL was -0.24), the NE surface 62 in the measured grey #717977 of w02-74s1L / w02-74s2."
+ ],
+ "groundClamp": true,
+ "shellClose": true
+}

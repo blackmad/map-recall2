@@ -1,0 +1,182 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "houthavens-252692",
+ "pandId": "0363100012252692",
+ "address": "Houthavens, 2022 office building: six storeys of full-height curtain-wall glazing between dark floor-slab bands with glass and bar rails, a dark projecting roof canopy and a set-back top storey",
+ "sources": [
+  {
+   "id": "pano-2025-09-29-w01-323s1",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00447/",
+   "image": "source-data://pand-reference-walls/0363100012252692/w01-323s1.jpg",
+   "sha256": "225732d3ff7b40636d7618b6cbaad570b9a8e65b768b518551b160baf94d5e3c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-24-w01-323s2",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002545/",
+   "image": "source-data://pand-reference-walls/0363100012252692/w01-323s2.jpg",
+   "sha256": "d3c2dc98822e0f2444bd07c8d7dbb2f18d45f59d8242eeee7f2e66f434d02870",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-w02-143s1",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00250/",
+   "image": "source-data://pand-reference-walls/0363100012252692/w02-143s1.jpg",
+   "sha256": "f66288da49ea7a7ab6dc2a98c683f4a0e66daae7d0d87d76c8591667cd5d96d6",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-w03-233",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00432/",
+   "image": "source-data://pand-reference-walls/0363100012252692/w03-233.jpg",
+   "sha256": "4612b890c56bb5ac682ce6de8f4632bdaae5d72dcfcda0941d10925775150a8e",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    6,
+    15
+   ],
+   "system": "curtain-wall",
+   "storeys": 6,
+   "palette": {
+    "brick": "#2a2c30",
+    "frame": "#3a3c40"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "deep": 0.9,
+    "colour": "#2a2c30",
+    "rail": true,
+    "roof": true
+   }
+  },
+  {
+   "wallSurfaces": [
+    11
+   ],
+   "system": "curtain-wall",
+   "storeys": 6,
+   "palette": {
+    "brick": "#2a2c30",
+    "frame": "#3a3c40"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "deep": 0.9,
+    "colour": "#2a2c30",
+    "rail": true,
+    "roof": true
+   }
+  },
+  {
+   "wallSurfaces": [
+    5
+   ],
+   "system": "curtain-wall",
+   "storeys": 6,
+   "palette": {
+    "brick": "#2a2c30",
+    "frame": "#3a3c40"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "deep": 0.9,
+    "colour": "#2a2c30",
+    "rail": true,
+    "roof": true
+   }
+  },
+  {
+   "wallSurfaces": [
+    8
+   ],
+   "system": "curtain-wall",
+   "storeys": 6,
+   "palette": {
+    "brick": "#2a2c30",
+    "frame": "#3a3c40"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "deep": 0.9,
+    "colour": "#2a2c30",
+    "rail": true,
+    "roof": true
+   }
+  },
+  {
+   "wallSurfaces": [
+    59
+   ],
+   "system": "curtain-wall",
+   "storeys": 6,
+   "palette": {
+    "brick": "#2a2c30",
+    "frame": "#3a3c40"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "deep": 0.9,
+    "colour": "#2a2c30",
+    "rail": true,
+    "roof": true
+   }
+  }
+ ],
+ "otherWalls": "curtain-wall",
+ "palette": {
+  "brick": "#2a2c30",
+  "frame": "#3a3c40",
+  "door": "#2a2a2a"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "budgetTriangles": 24000,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 5): every front from w01-323s1/s2 (NW, 2025/2021), w02-143s1 (SE, 2025) and w03-233 (SW, 2025): curtain-wall glazing floor to ceiling on six storeys, a dark slab band with a rail at every upper floor line (terraces, 0.9 m deep) and a dark projecting roof canopy (terraces.roof). The set-back top storey and the low SE wing take the curtain-wall scheme as otherWalls.",
+  "Not drawn: the lettering 62 82 and UNITS AVAILABLE in the ground-floor glazing, the planters on the terraces, the deeper balcony on the fourth floor."
+ ]
+}

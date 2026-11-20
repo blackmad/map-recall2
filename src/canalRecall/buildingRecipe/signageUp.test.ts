@@ -13,7 +13,7 @@ const DIR = 'scripts/building-recipes/houses/houthavens-249737';
 const raw = (): LargeBuildingIntent => JSON.parse(fs.readFileSync(`${DIR}/intent.json`, 'utf8'));
 const facts = (): BuildingFacts => JSON.parse(fs.readFileSync(`${DIR}/facts.json`, 'utf8'));
 // the sign under test is the only one on the building (walls[0], the panel with the 45)
-const withSign = (sign: Record<string, unknown>) => { const i = raw(); i.walls = i.walls.map((w, k) => { const {signage: _, ...rest} = w; return k === 0 ? {...rest, signage: sign as never} : rest; }); return i; };
+const withSign = (sign: Record<string, unknown>) => { const i = raw(); i.walls = i.walls.map((w, k) => { const {signage: _, signs: _s, ...rest} = w; return k === 0 ? {...rest, signage: sign as never} : rest; }); return i; };
 
 test('signage.up: validated, only with along, 0.05..0.6 of the height', () => {
   assert.doesNotThrow(() => validateLargeIntent(withSign({text: '45', colour: '#c8a830', mount: 'wall', along: [0.1, 0.5], up: [0.5, 0.75]})));

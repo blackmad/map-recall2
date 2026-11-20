@@ -17,13 +17,14 @@ import {intervals, type PanelCtx} from './compose.ts';
 
 export interface WallSignIntent { text: string; colour?: string; along: [number, number]; up: [number, number] }
 export interface WallLightIntent { along: [number, number]; up: [number, number]; lights?: number; rows?: number }
-export interface TerraceIntent { storeys: number[]; deep?: number; colour?: string; rail?: boolean; roof?: boolean }
+/** `posts`: columns about every `posts` m (2..12) along each panel, from the foot to the roof line, under the slab fronts */
+export interface TerraceIntent { storeys: number[]; deep?: number; colour?: string; rail?: boolean; roof?: boolean; posts?: number }
 
 export interface WallLightFit { along: [number, number]; up: [number, number]; lights: number; rows: number }
-export interface TerraceFit { storeys: number[]; deep: number; rail: boolean; roof: boolean; slot: string; railSlot: string }
+export interface TerraceFit { storeys: number[]; deep: number; rail: boolean; roof: boolean; slot: string; railSlot: string; posts?: number }
 
 export const WALL_LIGHT = {frame: 0.08, glass: 0.05, bar: 0.06, minM: 0.4} as const;
-export const TERRACE = {deep: 1.6, slab: 0.28, railH: 1.0, roofDeep: 2.2, roofSlab: 0.22} as const;
+export const TERRACE = {deep: 1.6, slab: 0.28, railH: 1.0, roofDeep: 2.2, roofSlab: 0.22, post: 0.35} as const;
 
 const frac = (a: unknown, gap: number) => Array.isArray(a) && a.length === 2 && a.every(x => typeof x === 'number' && x >= 0 && x <= 1) && (a[1] as number) - (a[0] as number) >= gap;
 const intIn = (x: unknown, lo: number, hi: number) => Number.isInteger(x) && (x as number) >= lo && (x as number) <= hi;
@@ -62,7 +63,8 @@ export function wallLightsProblems(input: unknown, at: string): string[] {
 export function terracesProblems(input: unknown, at: string, storeys: number): string[] {
   if (!input || typeof input !== 'object' || Array.isArray(input)) return [`${at}: object {storeys, deep, colour, rail, roof}`];
   const out: string[] = [], r = input as Record<string, unknown>;
-  for (const key of Object.keys(r)) if (!['storeys', 'deep', 'colour', 'rail', 'roof'].includes(key)) out.push(`${at}.${key}: unknown field (storeys, deep, colour, rail, roof)`);
+  for (const key of Object.keys(r)) if (!['storeys', 'deep', 'colour', 'rail', 'roof', 'posts'].includes(key)) out.push(`${at}.${key}: unknown field (storeys, deep, colour, rail, roof, posts)`);
+  if (r.posts !== undefined && !(typeof r.posts === 'number' && r.posts >= 2 && r.posts <= 12)) out.push(`${at}.posts: column spacing 2..12 m`);
   if (!Array.isArray(r.storeys) || !r.storeys.length || !r.storeys.every(s => intIn(s, 1, Math.max(1, storeys - 1)))) out.push(`${at}.storeys: upper storey indices 1..${storeys - 1}`);
   if (r.deep !== undefined && !(typeof r.deep === 'number' && r.deep >= 0.3 && r.deep <= 3)) out.push(`${at}.deep: 0.3..3 m`);
   for (const b of ['rail', 'roof']) if (r[b] !== undefined && typeof r[b] !== 'boolean') out.push(`${at}.${b} must be true or false`);
@@ -106,6 +108,18 @@ export function drawTerraces(c: PanelCtx, levels: readonly number[], t: TerraceF
         c.box(t.slot, a, b, v + railH - 0.05, v + railH, t.deep - 0.07, t.deep, part);
       }
       n++;
+    }
+  }
+  if (t.posts) {
+    // columns at the slab front, evenly spaced about every `posts` m across each stretch of wall that stands foot to roof
+    const lo = Math.max(p.vMin, 0), w = TERRACE.post;
+    for (const [a, b] of intervals(p, lo + 0.05, roofM - 0.05)) {
+      if (b - a < 2) continue;
+      const n = Math.max(1, Math.round((b - a) / t.posts));
+      for (let k = 0; k <= n; k++) {
+        const u = Math.min(b - w / 2, Math.max(a + w / 2, a + (b - a) * k / n));
+        c.box(t.slot, u - w / 2, u + w / 2, lo, roofM, t.deep - w - 0.05, t.deep - 0.05, c.part());
+      }
     }
   }
   if (t.roof && roofM - p.vMin > 3) {
