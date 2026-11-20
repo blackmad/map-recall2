@@ -252,6 +252,65 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
 | Brown bars, close crops | Stoof | host | low (near tie) |
 | Brown bars, close crops | Tribe (glass) | host | med |
 
+## 8. Round 5
+
+### Historic-pui front host (kit addition)
+- `src/canalRecall/retailFit/historicPuiFront.ts` is new: typed, unit-tested, and byte-identical when absent (`retailFit.test.ts`).
+  - **Kit mode, for a generic pand.** It draws in place of the template pui:
+    - pilasters, a low panelled plinth under a sill, and glass in bays;
+    - the read pane grid (`panes: [cols, rows]`) with glazing bars, plus a grey reflection band over the glass head;
+    - a transom with top lights, the door in the template's own recess, and a flush frieze;
+    - the read sign: a painted band, letters on the glass, or neon script.
+  - **Sign mode, for a pand with its own front** (a recipe or house spec). Only the name is drawn, and the mesher cuts no door and no room.
+  - Per-pand fronts are read on the square-on crops and live in `historic-puis.json` (`front`, `frontSource`).
+  - A `name` field overrides the template word when the photo shows a new tenant.
+- `retailFront.ts`: the round 3/4 band/glass lines are reverted. A new `host?: HistoricPuiHost` field leads to an early branch after `new Builder(e)`. `Builder` is now exported.
+- `threeBuildingMesh.ts`: spreads `historicPuiInput(id, hasOwnFront)`. Rooms are skipped when there is a host, and in sign mode the door cut is skipped.
+- Letters keep `fitWord`'s legibility minimum (script needs about 0.45 m), so the frieze is 0.48 m deep.
+- **Blind**, on close browser crops: scratch `BUNDLES_DIR`, sides seeded, one fresh opus judge per batch.
+  - Brown bars: the kit won 4/0. Leentje low, Stoof med-high, 't Smalle low, Tribe high.
+    - Keffer and Elfde Gebod: no change in view at any pose tried, so they stay staged.
+  - Then hairdresser, coffeeshop and souvenir: 13 register-pui pands, 7 read.
+    - The kit won 5/0. Bike Rental high, Haircuts high, Legends med, Little Souvenirs low-med, New Times med.
+    - Bulldog and Bird Hotel: no change in view, so they stay staged.
+    - Unread, so the template stays: Cirkel, Popeye, souvenir 5575, Gabriel and Prix d'Ami. Raymond's name is a poster panel (a board), so its template stays too.
+- **Published: 9 pands**, with the default mode. 6 are staged.
+- **What the kit still cannot say**, per the judges:
+  - door positions (side doors, a centre door, two doors beside a window): the kit puts one door in the template recess, which is often out of crop;
+  - a transom over one big pane: the bay grid invents mullions on Legends;
+  - barred or leaded small panes;
+  - a two-line sign ("COFFEESHOP" over a script name);
+  - the long full name: "Cafe Bar de Stoof" is shortened by `fitWord`;
+  - cream cast-iron pilasters with an arched centre door (Leentje).
+- **Byte identity:** with no host, `retailFrontTris` is unchanged (unit test). Node frames never install the shop templates. `?retailFit=0` returns no host.
+
+### WIJNHANDEL → WE ARE LABELS OUTLET (commit e4f3dd8d8f)
+- `scripts/block-face/faces/utrechtse-48-76/intent.json` lines 99–103:
+  - sign text "WE ARE LABELS OUTLET";
+  - groundFloor name and category (shop=clothes);
+  - the source note: panorama b_20250120_0926_Track30_Sphere_00286/00287, 2025-01-20.
+- Bake commands:
+  1. `node --import tsx scripts/block-face/compile.ts --face=utrechtse-48-76 --install --force-install`
+     - `--force-install` is needed because the audit FAILs (holes, opening-outside, zfight, geometry-regression) are identical before and after the edit.
+  2. `node --import tsx scripts/landmarks/build-landmark-lods.ts --chunks --only=chunk-face-utrechtse-48-76`
+     - The install drops the row's lod2. The lod2 GLB bytes are unchanged.
+  3. `node --import tsx scripts/block-face/roof-golden.ts --write --face=utrechtse-48-76 --allow=utrechtse-48-76`
+     - Only the intent hash changes.
+- Results: +88 triangles on pand 178874; `test:block-face` 406/406.
+
+### Round 5 blind table
+| Pand | Kind | Verdict | Confidence |
+|---|---|---|---|
+| Leentje | band | kit | low |
+| Stoof | neon script | kit | med-high |
+| 't Smalle | glass | kit | low |
+| Tribe | glass script | kit | high |
+| Bike Rental (souvenir template) | band | kit | high |
+| Haircuts (CUT CRAP template) | band | kit | high |
+| Legends | glass | kit | med |
+| Little Souvenirs | neon script | kit | low-med |
+| New Times | neon script | kit | med |
+
 ## Wiring (for the integrator)
 
 - Add `src/canalRecall/retailFit/retailFit.test.ts` to `test:shopfront-gate` in package.json.
@@ -263,3 +322,4 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
 - Round 3: rebuild the building bundle as well as signature-landmarks, because `threeBuildingMesh.ts` now imports `retailFit/historicPui.ts` (with `historic-puis.json`, a few KB) and `retailFront.ts` gained the `host` branch.
 - Round 3, Magna Plaza (optional, for the game's own glass search and so other consumers see glass): `git apply scripts/retail-fit/magna-plaza-glass-retag.patch`, then `node --import tsx scripts/landmarks/build-manual-landmarks.ts --only=magna-plaza`, then LODs for magna-plaza, then build covers, then `check:covers` and `check:manual-landmarks`. Then rebuild the signature-landmarks bundle. The fits work without it, from the staged openings.
 - Round 4: `src/canalRecall/engine/workerPool.ts` adds `'retailFit'` to `withWorkerFlags`, so `?retailFit=0|1` reaches the mesh workers. Rebuild the pool bundles (`build:canal-three-buildings`, the engine bundle and own-ground-game) together.
+- Round 5: `retailFront.ts` (import line 5, the `host?` field at the end of `RetailFrontInput`, an early branch after `new Builder(e)`) and `threeBuildingMesh.ts` (the `historicPuiInput(b.id, !!(b.recipe || b.specRecipe))` spread, `&& !input.host` on rooms, the sign-mode `opening` guard) feed the mesh pool. Rebuild the pool bundles together: `build:canal-three-buildings` (browser and worker), the engine bundle (`scripts/build-canal-engine.mjs`) and own-ground-game (`scripts/build-3d-bundles.mjs --only=own-ground-game`). The Utrechtsestraat chunk GLB, its lod2 record and the roof golden are already committed (above).

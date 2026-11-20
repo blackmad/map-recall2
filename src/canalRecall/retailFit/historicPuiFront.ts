@@ -31,6 +31,8 @@ export type PuiFrontSpec = {
   sign: { kind: PuiSignKind; ink: string; script?: boolean };
   /** Glass tone behind the panes (the photos' dark warm interiors). */
   glass?: string;
+  /** The name as the photo shows it, when it differs from the template's word (a new tenant). */
+  name?: string;
 };
 export type HistoricPuiHost = { mode: 'kit' | 'sign'; front: PuiFrontSpec };
 
@@ -75,7 +77,7 @@ export function puiBays(a0: number, a1: number): Array<[number, number]> {
  * `base` to `top`. `door`: the template's recess (retailDoor), so the mesher's wall cut is filled by this door.
  */
 export function historicPuiFront(b: Builder, host: HistoricPuiHost, input: Pick<RetailFrontInput, 'word' | 'letters' | 'faces'>, s0: number, s1: number, base: number, top: number, door: { a0: number; a1: number; depthM: number } | null): void {
-  const K = PUI_KIT, f = host.front, word = input.word ? input.word.toUpperCase() : undefined;
+  const K = PUI_KIT, f = host.front, w0 = f.name ?? input.word, word = w0 ? w0.toUpperCase() : undefined;
   const frieze0 = top - K.friezeM, script = f.sign.script && input.faces !== undefined ? { face: 'script' as const, layer: input.faces + 2 } : undefined;
   const text = word && script ? word.charAt(0) + word.slice(1).toLowerCase() : word;
   const letters = (a0: number, a1: number, zMid: number, o: number, maxH: number, bg: string, lit: boolean) => {
