@@ -1,5 +1,64 @@
 # Post-1965 housing kit (2026-11-20, lane/postwar-housing-kit-20261120)
 
+## Round 4 (sunlit render rule; default-on decision)
+
+**Result:** on a fresh clean blind (19 judged), kit on won 9, kit off won 6, and 4 were ties. The judge flagged 4 regressions against today and **1 against the kit**: #8 Mauritskade 17, a tan-brown brick front in shade drawn as saturated red. That does not meet the default-on bar, so the flag default was not changed. The cause is clear (below); as instructed, this is reported rather than starting round 5. The named check, Nieuwe Kerkstraat 105-111, is now a tie: both sides draw pale render, so round 3's regression is gone.
+
+**The rule (`wallPatch.ts` BRIGHT).**
+- A bright, low-chroma cluster (L* >= 85, C* < 10, share >= 20 %) wins over the warm pick when that pick is mid-lightness (L* 45-65) and low in red (a* < 12).
+- The a* guard came from the requested spot check, before any round-4 frame: without it Sarphatistraat 62 (sunlit red brick under many white frames and sky, warm a* 18) flipped to paint.
+- Pinned in `kit.test.ts` (10/10 pass):
+  - Nieuwe Kerkstraat's shares read as paint;
+  - dark brick with white frames stays brick;
+  - sunlit red brick stays brick.
+- **2 of the 247 accepted pands change, both brick to paint:**
+  - Nieuwe Kerkstraat 105-111 (the target);
+  - Van Ostadestraat 205-211, which its thumbnail shows is a pale cream rendered front, so the flip is right.
+- No read pand changes, and validation is unchanged at 22/28.
+
+**Blind 4.**
+- `split2.ts --round=4`: sha1('postwar-blind4:' + id), excluding rounds 1-3. Committed in 937a19509b before any frame was rendered.
+- Van Noordtkade 38-64 was selected but skipped by house:frames on both runs (no panorama 5-35 m away), leaving 19.
+- Sarphatistraat 62 is in the set; I had seen its photo, not a game frame, in the spot check.
+- One fresh opus judge, given the round-1 prompt unchanged.
+- Sheets: map-recall2-screenshots `ui/2026-11-20-postwar-kit/round4-*`.
+
+| # | cluster | address | winner | regression |
+|---|---|---|---|---|
+| 1 | C4 | Baarsjesweg 269-273 | on | off: grey render on red-orange brick |
+| 2 | C1 | Entrepotdok 203-220 | off | |
+| 3 | C1 | Overamstelstraat 97-131 | off (low) | |
+| 4 | C4 | Eerste Jan Steenstraat 35-43 | tie | |
+| 5 | C1 | Sarphatistraat 62 | on (low) | |
+| 6 | C1 | Sumatrakade 53-93 | on | |
+| 7 | C1 | Daniel Stalpertstraat 127-153 | on | off: white/grey on orange-red brick |
+| 8 | C1 | **Mauritskade 17** | **off** | **on: saturated red on buff/tan brick** |
+| 9 | C1 | Ketelhuisplein 2-64 | on (low) | |
+| 10 | C1 | Javakade 364-398 | on | |
+| 11 | C1 | Javakade 580-618 | tie | |
+| 12 | C2 | Albert Molhof 1-71 | on | off: dark brown on buff tower |
+| 13 | C2 | Mariadistelkade 3-27 | off | |
+| 14 | C1 | Amstelveenseweg 92-104 | tie | |
+| 15 | C1 | Pieter Langendijkstraat 13-19 | off (low) | |
+| 16 | C1 | Lutmastraat 2-8 | off (low) | |
+| 17 | C1 | Joan Melchior Kemperstraat 57 | on | off: dark grey on white/light brick |
+| 18 | C4 | Wagenaarstraat 314-348 | tie | |
+| 19 | C4 | Ruyschstraat 49-55 | on (low) | |
+
+**Why #8 failed.**
+- Mauritskade 17 is tan-brown brick in full shade. Its raw measurement (#5d504c: L* 35, a* 5, b* 5, hue 45) is the same signature as shaded red brick (Bloemgracht: L* 35, hue 63).
+- The buff branch needs light or yellow input, so this front falls to the #118 red-brick calibration. That roughly triples the chroma and rotates the hue to red, giving #704944.
+- Today's draw there is pale (#e8dbcf), which the judge found closer.
+- The thumbnail alone cannot separate shaded buff from shaded red. Likely fixes:
+  - **(a)** mark low-chroma shaded brick (raw C* < 8 and L* < 40) 'unsure' and keep today's draw. This would also drop many correct shaded red fronts;
+  - **(b)** measure from a second, sunlit capture when one exists.
+
+**Across rounds 2-4:** kit 34 wins, 10 losses, 15 ties on 59 clean blind members. Today was flagged 23 times, the kit 3 times (one per round, each a different calibration edge).
+
+**Cost:** unchanged from round 3. Walls are unchanged; extras +0.14 %.
+
+---
+
 ## Round 3 (buff calibration)
 
 **Result:** on a fresh clean blind of 20, kit on won **15**, kit off won 1, and 4 were ties. The judge flagged 10 regressions against today and **1 against the kit**: #15 Nieuwe Kerkstraat 105-111, a white render front drawn as red-brown brick. That clears the wins bar but not "no kit regression flagged". The two named fronts re-judged separately both go to the kit, and the judge flags today's draw as wrong on both. Nothing was tuned after the frames were seen.
