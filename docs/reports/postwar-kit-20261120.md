@@ -1,5 +1,70 @@
 # Post-1965 housing kit (2026-11-20, lane/postwar-housing-kit-20261120)
 
+## Round 2 (colour only, from a corrected source)
+
+**Result:** on a clean blind of 20, kit on won 10, kit off won 3, and 7 were ties. The judge flagged 1 regression against the kit (#5 Funenpark 440-463: orange-red brick on a grey/buff front) and 9 against today. That clears the wins bar but not "no regressions flagged". Do not flip it. Nothing was tuned after the frames were seen.
+
+**Source fix.** The T0 modern walls (`buurtProfiles/modern-pand-walls.json`) took one tone mode over a 320 px centre box, so glass, frames and loggia shadow were averaged into the wall. The new measurement is `scripts/postwar-kit/measure-walls.ts` and `src/canalRecall/postwarKit/wallPatch.ts`:
+- `sample-photos.ts --all` takes one aimed Gemeente Amsterdam panorama thumbnail (CC BY 4.0) per cluster member with a straight, clear capture: 438 of the 541 C1/C2/C4/C5 members in the backlog.
+- The wall's upper storeys (4.2 m to 0.8 m under the top, 8 % in from each end) are projected into the photo. The service's effective pitch is 0.5x the requested one: at 1x the outline sat a storey and a half low on Bloemgracht 210-286.
+- Pixels darker than L* 22, leaf and sky-blue pixels are dropped. The rest are split into 5 Lab k-means clusters. The pick is a light low-chroma cluster holding 35 % or more (paint), else the most chromatic warm cluster holding 15 % or more (brick), else *unsure*. Unsure rows are never accepted: grey brick, cladding and shaded render all land there.
+- The colour is calibrated into the frame of the walls it replaces: derive.ts #118 (thumb is the reference; C x5.56, h -18), modern brick x0.55, paint with the cast removed and half its tint.
+- Validation on the eye reads: on the 28 reads with an accepted measurement, 22 agree at coarse family (warm brick / buff / grey / paint). T0's own walls agree on 5 of the 10 reads they cover.
+- The published file is `src/canalRecall/postwarKit/corrected-walls.json`: **247 pands**. Of the 91 that also have a T0 own wall, 63 change family and 42 change coarse family.
+- In the game probe of the 438 photographed members, **271 change wall colour with the flag on** (254 by Delta E >= 6; 135 change coarse family). 241 are corrected-wall pands and 30 are reads without an accepted measurement. Every other pand is byte-identical: the off chunk hash is still 3e723a1de87c8b73ff117a69bbc7b1b22bce1739.
+
+**Kit (`kit.ts`, round 2):**
+- No cluster draws and no neighbour draws.
+- A read pand (59) keeps its read, and features (balconies, arcade, erkers) appear only there. Its wall is the measured colour when that agrees with the read's family, else the family swatch.
+- An unread pand with an accepted measurement takes that colour only, in today's bay preset (its brick or smooth twin when the material flips).
+- Everything else returns null: today's draw.
+
+**Blind.**
+- `split2.ts` fixed 20 members by sha1('postwar-blind2:' + id), committed in 14904dc75a before any frame was rendered.
+- Eligibility: not read; not in round 1's 75; accepted measurement; obliquity 25 deg or less; and the probed wall moves by Delta E >= 6.
+- Frames: `house:frames ?world=live&workerPool=0` with scratch three-buildings bundles. One fresh opus judge, given the round-1 prompt unchanged. Sides are hashed in `blind2-key.json`.
+- Sheets: map-recall2-screenshots `ui/2026-11-20-postwar-kit/round2-blind-1..4.jpg` and `round2-blind-key.json` (5567e77).
+
+| # | cluster | address | winner | regression |
+|---|---|---|---|---|
+| 1 | C1 | Pieter Cornelisz. Hooftstraat 169-177 | on | |
+| 2 | C2 | Lia Doranastraat 69-151 | off | |
+| 3 | C4 | Planciusstraat 19-21 | tie | |
+| 4 | C4 | Oudekerksplein 40-46 | on | off: light grey on brick |
+| 5 | C2 | Funenpark 440-463 | off | **on: warm red brick on grey/buff brick** |
+| 6 | C4 | Frans Halsstraat 45-47 | tie | |
+| 7 | C1 | Tugelaweg 12-16 | tie | |
+| 8 | C4 | Touwbaan 44-70 | tie | |
+| 9 | C2 | Borgerstraat 223-225 | tie (scaffolded) | |
+| 10 | C1 | Rustenburgerstraat 282-290 | on | off: grey render on brick |
+| 11 | C1 | Tweede Boerhaavestraat 55-59 | on | off: grey on brick |
+| 12 | C1 | Van Reigersbergenstraat 624-686 | on | off: dark red on pale buff |
+| 13 | C1 | Arie Biemondstraat 3-61 | on | off: pink render on brick |
+| 14 | C2 | Tweede Sweelinckstraat 3-5 | on | off: cream on red brick |
+| 15 | C1 | Conradstraat 78-88 | on | off: grey brick on red brick |
+| 16 | C1 | Reguliersdwarsstraat 44-46 | on | off: pale grey on brick |
+| 17 | C1 | Spitsbergenstraat 2-36 | tie (both wrong: buff read pink-red) | |
+| 18 | C1 | Oetewalerstraat 77-111 | on | off: red brick on white render |
+| 19 | C4 | Lijnbaansgracht 150-152 | off (low) | |
+| 20 | C1 | Da Costakade 139-155 | tie (low) | |
+
+**Judge's notes:**
+- Every difference was wall colour.
+- 7 pairs looked identical to the judge despite a Delta E >= 6 move in the probe, because the lit and tone-mapped frame compresses small brick shifts.
+- About 10 of the 20 photos show balconies that neither side draws.
+
+**Cost, 6 tiles (`cost.ts`):** walls are unchanged at 3,213,156 triangles; extras are +8,928 (+0.14 %, the 7 read pands with geometry there); build time +9 % (19.8 s against 18.1 s, one run).
+
+**Still cannot say:**
+- **Grey brick, cladding and shaded render** are 'unsure' and keep today's draw.
+- **Buff brick** often calibrates to brown, because the #118 brick clamps (L* 60 or less, hue 32-56) pull it warm. Funenpark's regression is that case, and so is Spitsbergenstraat's pink-red.
+- **Balconies on unread pands.** Half the blind photos have them, and the kit now never guesses.
+- Everything listed under round 1's "cannot say" below still holds.
+
+---
+
+## Round 1 (parked)
+
 The kit is behind `?postwarKit=1` and is off by default. **It did not pass its blind:** kit on 4 wins, kit off 5 wins, 6 ties, with 2 regressions flagged against the kit. Do not flip it.
 
 ## 1. Measured fronts
