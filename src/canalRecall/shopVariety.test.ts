@@ -17,8 +17,9 @@ const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
 /** n tiles 1.15 m wide in bays of two, from 0.3 m. */
 const row = (n: number): PlanTile[] => Array.from({ length: n }, (_, i) => ({ a0: 0.3 + i * 1.15, a1: 0.3 + (i + 1) * 1.15, bay: Math.floor(i / 2) }));
 
-test('flag: default off; ?shopVariety=1 and SHOP_VARIETY=1 turn it on, =0 off', () => {
-  assert.equal(shopVarietyEnabled(null, null), false);
+test('flag: default on (blind 2026-11-20); ?shopVariety=0 and SHOP_VARIETY=0 turn it off', () => {
+  assert.equal(shopVarietyEnabled(null, null), true);
+  assert.equal(shopVarietyEnabled(null, '0'), false);
   assert.equal(shopVarietyEnabled('?a=1&shopVariety=1', null), true);
   assert.equal(shopVarietyEnabled('?shopVariety=0', '1'), false);
   assert.equal(shopVarietyEnabled(null, '1'), true);

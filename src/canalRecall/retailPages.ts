@@ -33,8 +33,8 @@ export function retailRealOn(): boolean {
 export const GOODS_BASE = 2;
 export const TYPE_BASE = GOODS_BASE + GOODS_LAYERS;
 export const CHAIN_LOGO_BASE = TYPE_BASE + TYPE_FACES.length;
-/** Lane shop-variety-20261120: the pane-filler layers (retailPaneFillers.ts) after the chain-logo pages, only with
- *  `?shopVariety=1`, so every layer before them keeps its index with the flag off or on. */
+/** Lane shop-variety-20261120: the pane-filler layers (retailPaneFillers.ts) after the chain-logo pages (default on;
+ *  not with `?shopVariety=0`), so every layer before them keeps its index with the flag off or on. */
 export const VARIETY_BASE = CHAIN_LOGO_BASE + CHAIN_LOGO_PAGES;
 /** Layers the retail look takes from the first logo layer: 2 without retailReal. */
 export function retailPageCount(real = retailRealOn(), variety = shopVarietyOn()): number {

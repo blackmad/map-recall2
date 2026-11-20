@@ -16,8 +16,11 @@ import type { GoodsKind } from './retailGoods.js';
 import type { FillerKind } from './retailPaneFillers.js';
 
 type G = { location?: { search?: string }; process?: { env?: Record<string, string | undefined> }; __canalRecallShopVariety?: boolean };
-/** Default off until its blind A/B (see the lane's report); `?shopVariety=1` (SHOP_VARIETY=1) turns it on, `=0` off. */
-export const SHOP_VARIETY_DEFAULT = false;
+/** Default on since its blind A/B (2026-11-20, one opus judge, photo | A | B at the panorama poses, sides shuffled):
+ *  round 1 15-0 with two regressions flagged (a bottle-wall fridge in doner windows, gelato diluted), fixed; round 2
+ *  15-2, both losses the bottle shelving in souvenir windows, fixed; round 3 on the re-framed gelato and souvenir fronts
+ *  6-0, no regression flagged. `?shopVariety=0` (SHOP_VARIETY=0) turns it off. */
+export const SHOP_VARIETY_DEFAULT = true;
 export function shopVarietyEnabled(search?: string | null, env?: string | null): boolean {
   const q = search ? /[?&]shopVariety=([01])\b/.exec(search)?.[1] : undefined;
   const v = q ?? (env === '0' || env === '1' ? env : undefined);

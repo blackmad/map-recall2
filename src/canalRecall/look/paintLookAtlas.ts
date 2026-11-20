@@ -158,7 +158,7 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
     for (let k = 0; k < GOODS_LAYERS; k++) { paintGoodsPage(colour, mask, logoLayer + GOODS_BASE + k, size, k); await yieldBudget(); }
     for (const [k, face] of TYPE_FACES.entries()) await paintLogoLayer(colour, mask, logoLayer + TYPE_BASE + k, size, `materials/retail-logos/type-${face}.png`, true);
     for (let k = 0; k < CHAIN_LOGO_PAGES; k++) await paintLogoLayer(colour, mask, logoLayer + CHAIN_LOGO_BASE + k, size, chainLogoPath(k));
-    // Lane shop-variety (`?shopVariety=1`): the pane-filler layers after the chain logos (retailPaneFillers.ts).
+    // Lane shop-variety (default on; `?shopVariety=0` off): the pane-filler layers after the chain logos (retailPaneFillers.ts).
     if (shopVarietyOn()) for (let k = 0; k < FILLER_LAYERS; k++) { paintGoodsPage(colour, mask, logoLayer + VARIETY_BASE + k, size, k, paintFillerLayer); await yieldBudget(); }
   }
   let brick: CanvasImageSource = document.createElement('canvas');

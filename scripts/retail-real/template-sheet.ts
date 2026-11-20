@@ -21,7 +21,7 @@ const { RETAIL_TEMPLATES } = await import('../../src/canalRecall/retailTemplates
 const { logoFor, glyphCellBox } = await import('../../src/canalRecall/retailLogos.ts');
 const { GOODS_LAYERS, paintGoodsLayer } = await import('../../src/canalRecall/retailGoods.ts');
 const { GOODS_BASE, TYPE_BASE, CHAIN_LOGO_BASE, VARIETY_BASE } = await import('../../src/canalRecall/retailPages.ts');
-// Lane shop-variety: SHOP_VARIETY=1 draws the pane fillers (retailPaneFillers.ts) as the game does with ?shopVariety=1.
+// Lane shop-variety: the pane fillers (retailPaneFillers.ts) as the game draws them (default on; SHOP_VARIETY=0 off).
 const { FILLER_LAYERS, paintFillerLayer } = await import('../../src/canalRecall/retailPaneFillers.ts');
 const VARIETY = (await import('../../src/canalRecall/shopVariety.ts')).shopVarietyOn();
 const { TYPE_FACES } = await import('../../src/canalRecall/retailTypeFaces.ts');

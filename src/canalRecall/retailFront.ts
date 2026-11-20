@@ -485,7 +485,7 @@ export type RetailFrontInput = {
   /** Lane retail-real: the first window-goods layer (retailPages.ts GOODS_BASE from the logo layer); with it a template
    *  with `goods` shows its goods cell in every pane tile. Absent: round n's interior. */
   goods?: number;
-  /** Lane shop-variety (`?shopVariety=1`): the first pane-filler layer (retailPages.ts VARIETY_BASE); with it and
+  /** Lane shop-variety (default on; `?shopVariety=0` off): the first pane-filler layer (retailPages.ts VARIETY_BASE); with it and
    *  `goods` the signature goods show in the window they belong in and the other panes take the kind's pane set
    *  (shopVariety.ts). Absent: the goods cell in every pane tile. */
   variety?: number;
@@ -611,7 +611,7 @@ function shopRoom(b: Builder, template: string, props: NonNullable<(typeof SHOP_
  *  varyPanes to swap once the whole front's tiles and doors are known. */
 type GoodsTileRec = { out: FrontTri[]; first: number; end: number; a0: number; a1: number; bay: number; tile: number; rect: [number, number, number, number] };
 
-/** Lane shop-variety (`?shopVariety=1`): the front's goods tiles planned together (shopVariety.ts planPanes); a filler
+/** Lane shop-variety (default on; `?shopVariety=0` off): the front's goods tiles planned together (shopVariety.ts planPanes); a filler
  *  tile keeps its two triangles and takes the filler cell's layer and a seeded stretch of it (goodsTileRect). */
 function varyPanes(recs: GoodsTileRec[], doors: ReadonlyArray<readonly [number, number]>, kind: GoodsKind, input: RetailFrontInput): void {
   if (input.variety === undefined || recs.length < 2) return;
