@@ -2082,7 +2082,7 @@
 
   // src/canalRecall/poiCardPolicy.ts
   var isLabelOnly = (row) => !row[6] && !row[7] && !row[8];
-  var artHasSubstance = (art) => !!art && !!(art.e || art.a || art.y || art.s);
+  var artHasSubstance = (art) => !!art && !!(art.e || art.a || art.y || art.s || art.i);
   var hasCardSubstance = (row, art) => !isLabelOnly(row) || row[4] === "art" && artHasSubstance(art);
   var CATEGORY_CHIP = {
     art: "artwork",

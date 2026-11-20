@@ -7,6 +7,7 @@
 - `streetArtPhotoReview.ts` refuses to publish an unreviewed, double-reviewed, closed-licence or uncredited entry. `npm run publish:street-art-photos` writes the `street-art-commons.json` sidecar and fills `i` on the 69 points.
 - `check-street-art.ts` pins Troost as a named regression: the statue, not the plaque.
 - The review list is `scripts/data/street-art-photo-review.json`.
+- A reviewed photo now counts as card substance (`artHasSubstance` reads `i`), so the 19 photo-only points open a card when their label is tapped. `check-click-poi-placeholders` allows a plain kind line on those cards.
 
 ## Bridge feedback fixes; retail pass merged behind its flags (2026-11-19, #396)
 

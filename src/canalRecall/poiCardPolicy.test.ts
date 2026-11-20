@@ -24,6 +24,7 @@ test('an artwork needs street-art substance to earn a card', () => {
   assert.equal(hasCardSubstance(art, { id: 'x', name: 'x', lng: 0, lat: 0, k: 'artwork' }), false);
   assert.equal(hasCardSubstance(art, series), true);
   assert.equal(artHasSubstance({ id: 'x', name: 'x', lng: 0, lat: 0, k: 'artwork', y: '1997' }), true);
+  assert.equal(artHasSubstance({ id: 'x', name: 'x', lng: 0, lat: 0, k: 'artwork', i: 'https://upload.wikimedia.org/x.jpg' }), true);
 });
 
 test('the series piece card says its part, artist, series text and carries the Wikipedia link', () => {

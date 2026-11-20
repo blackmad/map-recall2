@@ -16,7 +16,7 @@ export const isLabelOnly = (row: Readonly<ClickPoiRow>): boolean => !row[6] && !
 
 /** A street-art record that says something beyond the mapped name and kind. */
 export const artHasSubstance = (art: Readonly<StreetArtPoint> | null | undefined): boolean =>
-  !!art && !!(art.e || art.a || art.y || art.s);
+  !!art && !!(art.e || art.a || art.y || art.s || art.i); // a reviewed photo (art.i) is a card on its own
 
 /** The row has something to put on a card, on its own or through street art. */
 export const hasCardSubstance = (row: Readonly<ClickPoiRow>, art?: Readonly<StreetArtPoint> | null): boolean =>
