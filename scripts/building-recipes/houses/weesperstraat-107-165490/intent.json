@@ -141,9 +141,16 @@
    "wallSurfaces": [
     45
    ],
-   "system": "brick-bay-grid",
+   "system": "glazed-columns",
    "storeys": 8,
    "baysPerStorey": 6,
+   "columns": {
+    "bays": [
+     5
+    ],
+    "share": 0.9,
+    "from": 1
+   },
    "ground": "glazed",
    "windows": "plain",
    "stringCourses": false,
@@ -163,7 +170,8 @@
     "storeys",
     "baysPerStorey",
     "windowShape",
-    "palette"
+    "palette",
+    "columns"
    ]
   },
   {
