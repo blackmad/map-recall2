@@ -91825,5 +91825,120 @@
     ]
    ]
   }
+ },
+ {
+  "id": "roode-leeuw-damrak",
+  "name": "Hotel De Roode Leeuw, Damrak",
+  "modelUrl": "./models/roode-leeuw-damrak.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012168115"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89352073,
+    52.37372477
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 23.9,
+   "widthMetres": 27.8
+  },
+  "surveyed": {
+   "anchor": [
+    4.89352073,
+    52.37372477
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012168115 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/roode-leeuw-damrak-footprints.json, bag-shell-prepare.ts); the Damrak front and the 1935 terrace read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002031_pano_0003_000033 (2021) and TMX7316010203-001658_pano_0000_001902 (2020), CC BY 4.0; the Damraksteeg corner from TMX7316010203-001658_pano_0000_002098 (2020). Gemeentelijk monument 210017 (api.data.amsterdam.nl). Per wall in scripts/landmarks/roode-leeuw-damrak-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 21.6,
+  "galleryView": {
+   "theta": 0.8,
+   "phi": 1.1
+  },
+  "bagYear": 1911,
+  "materialOverrides": {
+   "brick": "#b47e58",
+   "ochre": "#9c6646",
+   "stone": "#a9a89f",
+   "sandstone": "#e9e7df",
+   "slate": "#5e4a42",
+   "frame": "#d6d3c8",
+   "glass": "#30363a",
+   "canopyGlass": "#5a5640",
+   "dark": "#24272a",
+   "bronze": "#2a2c2c",
+   "red": "#c4352c",
+   "gold": "#d1a640"
+  },
+  "attribution": {
+   "title": "Hotel De Roode Leeuw, Damrak 93-94, Amsterdam (1911, Foeke Kuipers)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002031_pano_0003_000033/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012168115 (CC0): the five-bay buff brick Damrak front with its pilasters, heraldic shields, round-arched second floor with bowed iron balconies, paired third-floor windows and railed fourth floor, the roof letters, and the 1935 covered terrace with its sign band, white clerestory and name-board balcony rail, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8937006,
+      52.3737717
+     ],
+     [
+      4.8934058,
+      52.3738653
+     ],
+     [
+      4.8934041,
+      52.3738629
+     ],
+     [
+      4.8933228,
+      52.3737504
+     ],
+     [
+      4.8934961,
+      52.3736815
+     ],
+     [
+      4.8934972,
+      52.3736825
+     ],
+     [
+      4.8935242,
+      52.3736717
+     ],
+     [
+      4.8935232,
+      52.3736707
+     ],
+     [
+      4.8935352,
+      52.3736659
+     ],
+     [
+      4.8935399,
+      52.3736689
+     ],
+     [
+      4.8935694,
+      52.3736516
+     ],
+     [
+      4.8937303,
+      52.3737543
+     ],
+     [
+      4.8937006,
+      52.3737717
+     ]
+    ]
+   ]
+  }
  }
 ]

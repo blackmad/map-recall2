@@ -78,6 +78,13 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
   'politiebureau-raampoort': {
     concrete: {slot: 'brick', measured: '#5e6670', why: 'palette name only: the blue-grey brick water plinth on the Singelgracht (TMX7316010203-000205_pano_0000_000212/213)'},
   },
+  'roode-leeuw-damrak': {
+    ochre: {slot: 'brick', why: 'palette name only: the darker brick of the relieving arches over the second-floor windows (w02-134)'},
+    slate: {slot: 'roofTile', measured: '#5e4a42', why: 'red-brown tiles of the schilddak (w02-134)'},
+    sandstone: {slot: 'stucco', why: 'white-painted clerestory and fascia of the 1935 terrace (w02-134)'},
+    bronze: {slot: 'paint', why: 'black-painted ironwork: balcony railings, terrace mullions and rail, letter frame, flag poles'},
+    canopyGlass: {slot: 'glass', why: 'leaded coloured upper lights of the first-floor windows (w02-134)'},
+  },
   'port-van-cleve': {
     brick: {slot: 'brick', measured: '#5e342b', why: 'deep red-brown brick of the hotel front in shade (nzv-0, TMX7316010203-001900_pano_0006_000054; blind review 2026-11-15 read #5a3830-#6b4236; #7e4a3e and #6e3e34 still drew orange-red in the lit game frame)'},
     sandstone: {slot: 'stone', measured: '#776b5e', why: 'weathered buff-grey sandstone bands, pediments, surrounds and pinnacles: nzv-0 reads #5a5654-#64615e overcast, a blind review #8f8170 (2026-11-15: #958a78 and #7a705f drew cream lit, the neutral #6b6560 read cool mauve-grey)'},
