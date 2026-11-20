@@ -1,0 +1,465 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "valkenburgerstraat-69-185504",
+ "pandId": "0363100012185504",
+ "address": "Valkenburgerstraat 69-165 (+3 streets), Amsterdam-Centrum: 1998 courtyard housing block of several fronts, dark grey, mauve-grey, red-brown and white-rendered parts over shopfronts",
+ "sources": [
+  {
+   "id": "pano-2021-03-08-w02-329L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002031_pano_0002_000075/",
+   "image": "source-data://pand-reference-walls/0363100012185504/w02-329L.jpg",
+   "sha256": "670c25eb25527ac0e4874652b31d9e2488935d5d694905a40221b8a855232f73",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-18-w04-328",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002048_pano_0000_000007/",
+   "image": "source-data://pand-reference-walls/0363100012185504/w04-328.jpg",
+   "sha256": "f8c3b5452de47920c883515778882cea78176b377d083d9f2a4088de677d33aa",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-05-08-w03-57",
+   "kind": "street-panorama",
+   "capturedAt": "2018-05-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000711_pano_0000_003407/",
+   "image": "source-data://pand-reference-walls/0363100012185504/w03-57.jpg",
+   "sha256": "e1e9e79b592f57010eba6b1f43a57524aae3357cf41c3a6229b1aa78f48c8abb",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-31-w07-149",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-31",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002370_pano_0000_000074/",
+   "image": "source-data://pand-reference-walls/0363100012185504/w07-149.jpg",
+   "sha256": "b5a476e0794f8e40663112a05d9dd8cef861b2ffdc797f34f99bfda7c35528e3",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2023-01-13-w06-149",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-13",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002933_pano_0011_000040/",
+   "image": "source-data://pand-reference-walls/0363100012185504/w06-149.jpg",
+   "sha256": "b69dbded8156826b0d7c1f9c0f37411b23cfe88349b44db257fbad184ccb7c4b",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-12-10-w08-153",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track20_Sphere_00245/",
+   "image": "source-data://pand-reference-walls/0363100012185504/w08-153.jpg",
+   "sha256": "1029720048f3fa03064183c1498493d949be157a75378f22d6ff63a35cc405a6",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#66605c",
+  "frame": "#e4e2dc",
+  "stone": "#b8b4ac",
+  "door": "#3a3a3a"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "walls": [
+  {
+   "wallSurfaces": [
+    54,
+    62,
+    83,
+    242,
+    254
+   ],
+   "street": "Valkenburgerstraat",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 12,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.5,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#66605c",
+    "frame": "#e4e2dc"
+   },
+   "houses": [
+    {
+     "w": 0.28,
+     "bays": 5,
+     "brick": "#4b4a4e",
+     "windowShape": {
+      "w": 0.92,
+      "h": 0.42,
+      "sill": 0.38
+     }
+    },
+    {
+     "w": 0.09,
+     "bays": 1,
+     "brick": "#a9a49c",
+     "windowShape": {
+      "w": 0.92,
+      "h": 0.72,
+      "sill": 0.18
+     }
+    },
+    {
+     "w": 0.066,
+     "bays": 1,
+     "brick": "#7b4c43",
+     "windowShape": {
+      "w": 0.55,
+      "h": 0.55,
+      "sill": 0.3
+     }
+    },
+    {
+     "w": 0.31,
+     "bays": 3,
+     "brick": "#66605c",
+     "windowShape": {
+      "w": 0.6,
+      "h": 0.55,
+      "sill": 0.3
+     }
+    },
+    {
+     "w": 0.254,
+     "bays": 2,
+     "brick": "#66605c",
+     "windowShape": {
+      "w": 0.65,
+      "h": 0.55,
+      "sill": 0.3
+     }
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial",
+    "houses"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    126,
+    182,
+    209,
+    210,
+    233
+   ],
+   "street": "Valkenburgerstraat",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 6,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "sills": false,
+   "stringCourses": true,
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.58,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#6e5048",
+    "frame": "#e4e2dc",
+    "stone": "#c9c4bb"
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "bays": [
+     1,
+     5
+    ],
+    "rail": "bars",
+    "colour": "#b8b8b4"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial",
+    "houses"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    68,
+    102
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#e6e6e2",
+    "frame": "#4a5a62"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0,
+      1
+     ],
+     "brick": "#5c4a44"
+    }
+   ],
+   "bayWindows": [
+    {
+     "storeys": [
+      2,
+      3,
+      4
+     ],
+     "pattern": [
+      {
+       "w": 0.55,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0.5,
+       "h": 0.12,
+       "sill": 0.62
+      },
+      {
+       "w": 0.5,
+       "h": 0.12,
+       "sill": 0.35
+      },
+      {
+       "w": 0.55,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.55,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0.5,
+       "h": 0.12,
+       "sill": 0.35
+      },
+      {
+       "w": 0.5,
+       "h": 0.12,
+       "sill": 0.62
+      },
+      {
+       "w": 0.55,
+       "h": 0.5,
+       "sill": 0.25
+      }
+     ]
+    }
+   ],
+   "loggiaBands": [
+    {
+     "storeys": [
+      2,
+      2
+     ],
+     "bays": [
+      4,
+      5
+     ]
+    },
+    {
+     "storeys": [
+      3,
+      4
+     ],
+     "bays": [
+      4,
+      5
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial",
+    "houses",
+    "bayWindows",
+    "loggiaBands",
+    "brickStoreys"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    17,
+    25
+   ],
+   "system": "glazed-columns",
+   "storeys": 5,
+   "baysPerStorey": 2,
+   "ground": "system",
+   "windows": "plain",
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "sills": false,
+   "palette": {
+    "brick": "#a07c78",
+    "frame": "#d8d6d0"
+   },
+   "columns": {
+    "bays": [
+     0,
+     1
+    ],
+    "share": 0.75,
+    "from": 1
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial",
+    "houses",
+    "columns"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    29,
+    21,
+    27,
+    23
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "plain",
+   "windowShape": {
+    "w": 0.65,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "sills": false,
+   "palette": {
+    "brick": "#5a3e38",
+    "frame": "#e4e2dc"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial",
+    "houses"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    10,
+    12,
+    15
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.4,
+    "sill": 0.3
+   },
+   "sills": false,
+   "palette": {
+    "brick": "#e2e0da",
+    "frame": "#d8d6d0"
+   },
+   "balconies": {
+    "storeys": [
+     2,
+     3
+    ],
+    "bays": [
+     1
+    ],
+    "rail": "bars",
+    "colour": "#c8c8c4"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#8a4a3c"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial",
+    "houses",
+    "brickStoreys"
+   ]
+  }
+ ],
+ "notes": [
+  "Experiment lane kit-vs-hand-valkenburger-20261120 (2026-11-20): the kit route for the 1985-2004 housing-block cluster.",
+  "Groups: 0 the NW Valkenburgerstraat front (w02-329L 2021-03-08) as five fronts in a row (dark grey, white bay stack, red, mauve-grey x2); 1 the NW red-brown balcony front (w04-328 2021-03-18); 2 the NE white-render front over a two-storey brown-brick maisonette base with the central loggia (w03-57 2018-05-08); 3 the SE mauve render panels with their two-storey glazed bays (w07-149 2021-12-31); 4 the SE red-brown punched front and stair strips (w06-149 2023-01-13); 5 the SE white render balcony module (w08-153 2024-12-10, washed out).",
+  "The SW front (w01-237, 49 m) has no panorama within 35 m and stays in the window grid; the set-back top storey panels stay in the window grid."
+ ]
+}
