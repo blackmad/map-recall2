@@ -176,7 +176,8 @@ test('historic pui round 6: read doors, sheet glass, two-line signs, legible bar
   const { puiDoors, PUI_KIT } = await import('./historicPuiFront.ts');
   const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
   const input = { template: 'brownBar' as const, word: 'STOOF', seed: 'NL.IMBAG.Pand.x', letters: 0, faces: 10 };
-  const stoof = STAGED_PUIS['0363100012171790'].front!;
+  // The fixture: Stoof's read without its round 7 sash (the sash has its own checks).
+  const stoof = { ...STAGED_PUIS['0363100012171790'].front!, sash: undefined as string | undefined };
   const kit = (front: typeof stoof, w = 6, h = 3.6) => retailFrontTris({ ...input, host: { mode: 'kit', front } }, e, 0, w, 0, h);
   // Doors: clamped inside, sorted, apart by a mullion; a side door hugs its pilaster.
   assert.deepEqual(puiDoors([{ at: 0 }], 0, 5), [[0, PUI_KIT.doorM]]);
@@ -208,4 +209,41 @@ test('historic pui round 6: read doors, sheet glass, two-line signs, legible bar
   const lum = (h: string) => [1, 3, 5].reduce((s, i) => s + parseInt(h.slice(i, i + 2), 16), 0);
   const tl = kit(stoof).filter(t => t.p.every(p => p[2] > 2.3 + PUI_KIT.transomM - 1e-6) && t.p.every(p => Math.abs(Math.abs(p[1]) - PUI_KIT.glassOutM) < 1e-6));
   assert.ok(tl.length > 0 && tl.every(t => lum(t.hex) > lum('#2a2420')));
+});
+
+test('historic pui round 7: blade signs, white sashes, crowded doors push the windows aside', async () => {
+  const { STAGED_PUIS } = await import('./historicPui.ts');
+  const { retailFrontTris } = await import('../retailFront.ts');
+  const { puiDoors, PUI_KIT } = await import('./historicPuiFront.ts');
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  const input = { template: 'brownBar' as const, word: 'STOOF', seed: 'NL.IMBAG.Pand.x', letters: 0, faces: 10 };
+  // The fixture: Stoof's read without its round 7 sash (the sash has its own checks).
+  const stoof = { ...STAGED_PUIS['0363100012171790'].front!, sash: undefined as string | undefined };
+  const kit = (front: typeof stoof) => retailFrontTris({ ...input, host: { mode: 'kit', front } }, e, 0, 6, 0, 3.6);
+  const base = kit(stoof);
+  // Absent: byte-identical.
+  assert.equal(JSON.stringify(kit({ ...stoof, blade: undefined, sash: undefined })), JSON.stringify(base));
+  // A blade: a bracket and a board, a handful of triangles, perpendicular to the front, out from the wall.
+  for (const [shape, most] of [['rect', 14], ['shield', 16], ['round', 22]] as const) {
+    const blade = { at: 0.9, z: 3.1, w: 0.6, h: 0.5, shape, board: '#3a2a1a' };
+    const withBlade = kit({ ...stoof, blade }), added = withBlade.slice(base.length);
+    assert.equal(JSON.stringify(withBlade.slice(0, base.length)), JSON.stringify(base));
+    assert.ok(added.length > 0 && added.length <= most, `${shape}: ${added.length} triangles`);
+    const board = added.filter(t => t.hex === '#3a2a1a');
+    assert.ok(board.length >= 4);
+    for (const t of board) for (const p of t.p) { assert.ok(p[1] <= -PUI_KIT.bladeGapM + 1e-6, 'off the wall'); assert.ok(p[2] <= 3.1 + 1e-6); }
+    // The board's faces lie across the wall (their normal along the front).
+    for (const t of board.filter(t => Math.abs(t.p[0][0] - t.p[1][0]) < 1e-9 && Math.abs(t.p[0][0] - t.p[2][0]) < 1e-9)) assert.ok(Math.abs(t.n[0]) > 0.99);
+  }
+  // A blade in sign mode too (the pand's own front keeps its blade).
+  assert.ok(retailFrontTris({ ...input, host: { mode: 'sign', front: { ...stoof, blade: { at: 0.1, z: 3, w: 0.5, h: 0.5, shape: 'rect', board: '#123456' } } } }, e, 0, 6, 0, 3.6).some(t => t.hex === '#123456'));
+  // White sashes: a rim per bay and the bars in the sash colour, over the pui's frame.
+  const sashed = kit({ ...stoof, sash: '#f4f2ec' });
+  assert.ok(sashed.filter(t => t.hex === '#f4f2ec').length > 8);
+  // Two crowded doors both stand (Bike Rental), in order, a mullion apart, inside the pui.
+  const two = puiDoors([{ at: 0.55 }, { at: 0.85 }], 0, 3.2);
+  assert.equal(two.length, 2);
+  assert.ok(two[0][0] >= 0 && two[1][1] <= 3.2 + 1e-9 && two[1][0] >= two[0][1] + PUI_KIT.mullionM - 1e-9);
+  // Only when the doors outrun the whole pui is one dropped.
+  assert.equal(puiDoors([{ at: 0.2 }, { at: 0.5 }, { at: 0.8 }], 0, 2.2).length, 2);
 });

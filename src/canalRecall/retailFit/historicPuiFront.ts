@@ -36,10 +36,22 @@ export type PuiFrontSpec = {
   doors?: Array<{ at: number; w?: number }>;
   /** Round 6: each window one sheet of glass under the transom (no bay mullions), instead of the bay grid. */
   sheet?: boolean;
+  /** Round 7: white (or other) sashes as their own frames: a rim round each bay's glass and its glazing bars in this
+   *  colour, over the pui's darker frame. */
+  sash?: string;
+  /** Round 7: the blade sign (uithangbord) the photo shows, perpendicular to the front. */
+  blade?: PuiBlade;
   /** Glass tone behind the panes (the photos' dark warm interiors). */
   glass?: string;
   /** The name as the photo shows it, when it differs from the template's word (a new tenant). */
   name?: string;
+};
+/** Round 7: a blade sign on its iron bracket. `at`: the bracket's place along the front (share, 0 left to 1 right, seen
+ *  from the street); `z`: the bracket's height over the pavement (m); the board hangs under it, `w` out from the wall by
+ *  `h` tall; `glyph`: one legible letter or mark lettered on both faces (the logo layer's glyphs), else a plain board. */
+export type PuiBlade = {
+  at: number; z: number; w: number; h: number; shape: 'rect' | 'round' | 'shield';
+  board: string; iron?: string; glyph?: string; ink?: string;
 };
 export type HistoricPuiHost = { mode: 'kit' | 'sign'; front: PuiFrontSpec };
 
@@ -64,6 +76,9 @@ export const PUI_KIT = {
   /** Round 6: a pane grid keeps every pane at least this big, dropping columns or rows (thinner panes alias to dashes
    *  at ride distance). */
   minPaneM: 0.3,
+  /** Round 7: a sash's rim; a blade's bracket bar (square section), its reach past the board, the board's gap from the
+   *  wall and the board's half thickness. */
+  sashM: 0.07, bracketM: 0.04, bracketReachM: 0.12, bladeGapM: 0.08, bladeHalfM: 0.012,
   /** Letters (at most; fitWord keeps them legible, MIN_LETTER_H, or draws none): on the frieze, on the glass at this
    *  share of its height, neon over the frieze. */
   bandLetterM: 0.44, glassLetterM: 0.45, glassAt: 0.6, neonLetterM: 0.5, letterOutM: 0.02,
@@ -100,6 +115,7 @@ export function historicPuiFront(b: Builder, host: HistoricPuiHost, input: Pick<
     // The building's own front stands; the name only, flush on the wall or on the glass line.
     if (f.sign.kind === 'glass') letters(s0 + 0.3, s1 - 0.3, base + K.plinthM + (frieze0 - K.plinthM - base) * K.glassAt, K.glassOutM + K.letterOutM, K.glassLetterM, DEFAULT_GLASS, false);
     else letters(s0 + 0.2, s1 - 0.2, f.sign.kind === 'neon' ? top - K.neonLetterM / 2 - 0.02 : frieze0 + K.friezeM / 2, K.letterOutM, f.sign.kind === 'neon' ? K.neonLetterM : K.bandLetterM, f.frame, f.sign.kind === 'neon');
+    if (f.blade) puiBlade(b, f.blade, s0, s1, base, input.letters);
     return;
   }
   const frame = f.frame, plinth = f.plinth ?? shade(frame, 0.8), pil = f.pilaster ?? frame, glass = f.glass ?? DEFAULT_GLASS, leaf = f.door ?? shade(frame, 0.7);
@@ -166,8 +182,14 @@ export function historicPuiFront(b: Builder, host: HistoricPuiHost, input: Pick<
       if (!widest || a1 - a0 > widest[1] - widest[0]) widest = [a0, a1];
       let [cols, rows] = f.panes ?? [1, 1];
       cols = Math.max(1, Math.min(cols, Math.floor((a1 - a0) / K.minPaneM))); rows = Math.max(1, Math.min(rows, Math.floor((glassTop - sill) / K.minPaneM)));
-      for (let c = 1; c < cols; c++) { const a = a0 + (a1 - a0) * c / cols; b.panel(a - K.barM / 2, a + K.barM / 2, K.barOutM, sill, glassTop, frame); }
-      for (let r = 1; r < rows; r++) { const z = sill + (glassTop - sill) * r / rows; b.panel(a0, a1, K.barOutM, z - K.barM / 2, z + K.barM / 2, frame); }
+      const bar = f.sash ?? frame;
+      if (f.sash) {
+        const m = K.sashM;
+        b.panel(a0, a1, K.barOutM, sill, sill + m, bar); b.panel(a0, a1, K.barOutM, glassTop - m, glassTop, bar);
+        b.panel(a0, a0 + m, K.barOutM, sill + m, glassTop - m, bar); b.panel(a1 - m, a1, K.barOutM, sill + m, glassTop - m, bar);
+      }
+      for (let c = 1; c < cols; c++) { const a = a0 + (a1 - a0) * c / cols; b.panel(a - K.barM / 2, a + K.barM / 2, K.barOutM, sill, glassTop, bar); }
+      for (let r = 1; r < rows; r++) { const z = sill + (glassTop - sill) * r / rows; b.panel(a0, a1, K.barOutM, z - K.barM / 2, z + K.barM / 2, bar); }
     }
     for (const [a] of bays.slice(1)) b.panel(a - K.mullionM / 2, a + K.mullionM / 2, K.frameOutM, base, glassTop, frame);
   }
@@ -178,18 +200,37 @@ export function historicPuiFront(b: Builder, host: HistoricPuiHost, input: Pick<
     letters(s0 + 0.25, s1 - 0.25, f.sign.kind === 'neon' ? nameTop - K.neonLetterM / 2 - 0.02 : frieze0 + K.friezeM / 2, K.friezeOutM + K.letterOutM, f.sign.kind === 'neon' ? K.neonLetterM : K.bandLetterM, frame, f.sign.kind === 'neon');
     if (above) b.word(above.toUpperCase(), s0 + 0.25, s1 - 0.25, top - K.aboveM / 2, K.friezeOutM + K.letterOutM, K.aboveLetterM, f.sign.ink, frame, f.sign.kind === 'neon', input.letters);
   }
+  if (f.blade) puiBlade(b, f.blade, s0, s1, base, input.letters);
+}
+
+/** Round 7: the blade sign: a square iron bar out from the wall (its underside, ends and top faces: 10 triangles) and a
+ *  thin board hanging under it, both faces (rect 4 triangles, shield 6, round 12), plus the glyph on each face. */
+export function puiBlade(b: Builder, bl: PuiBlade, s0: number, s1: number, base: number, layer: number | undefined): void {
+  const K = PUI_KIT, a = s0 + 0.08 + (s1 - s0 - 0.16) * Math.max(0, Math.min(1, bl.at)), zb = base + bl.z, t = K.bracketM / 2;
+  const reach = K.bladeGapM + bl.w + K.bracketReachM;
+  b.box(a - t, a + t, 0, reach, zb - t, zb + t, bl.iron ?? '#1c1b1a', false, true);
+  const o0 = K.bladeGapM, o1 = o0 + bl.w, z1 = zb - t, z0 = z1 - bl.h, om = (o0 + o1) / 2, zm = (z0 + z1) / 2;
+  const outline: Array<[number, number]> = bl.shape === 'rect' ? [[o0, z0], [o1, z0], [o1, z1], [o0, z1]]
+    : bl.shape === 'shield' ? [[o0, z1], [o0, z0 + bl.h * 0.4], [om, z0], [o1, z0 + bl.h * 0.4], [o1, z1]]
+    : Array.from({ length: 8 }, (_, i) => [om + Math.cos(i * Math.PI / 4) * bl.w / 2, zm + Math.sin(i * Math.PI / 4) * bl.h / 2] as [number, number]);
+  for (const side of [1, -1] as const) {
+    const n = b.N(side, 0, 0), p = outline.map(([o, z]) => b.P(a + side * K.bladeHalfM, o, z));
+    for (let i = 1; i + 1 < p.length; i++) b.tri(p[0], p[i], p[i + 1], n, bl.board);
+    if (bl.glyph && layer !== undefined) b.sideGlyph(bl.glyph, a + side * (K.bladeHalfM + 0.004), side, om, zm, Math.min(bl.w, bl.h) * 0.6, layer, bl.ink ?? '#e8e2d2', bl.board, false);
+  }
 }
 
 /** Round 6: read doors (centre share, width) laid on [g0, g1], clamped inside it, sorted, never overlapping. */
 export function puiDoors(doors: ReadonlyArray<{ at: number; w?: number }>, g0: number, g1: number): Array<[number, number]> {
-  const out: Array<[number, number]> = [];
-  for (const d of [...doors].sort((x, y) => x.at - y.at)) {
-    const w = Math.min(d.w ?? PUI_KIT.doorM, g1 - g0), c = g0 + (g1 - g0) * Math.max(0, Math.min(1, d.at));
-    let a0 = Math.max(g0, Math.min(g1 - w, c - w / 2));
-    const prev = out[out.length - 1];
-    if (prev && a0 < prev[1] + PUI_KIT.mullionM) a0 = prev[1] + PUI_KIT.mullionM;
-    if (a0 + w > g1 + 1e-9) continue;
-    out.push([a0, a0 + w]);
+  // Round 7: doors that crowd each other push the windows aside (a forward pass, then a backward pass from the right
+  // pilaster); a door is dropped only when the doors and their mullions outrun the whole pui.
+  const m = PUI_KIT.mullionM, ds = [...doors].sort((x, y) => x.at - y.at).map(d => ({ c: g0 + (g1 - g0) * Math.max(0, Math.min(1, d.at)), w: Math.min(d.w ?? PUI_KIT.doorM, g1 - g0) }));
+  while (ds.length && ds.reduce((s, d) => s + d.w, 0) + m * (ds.length - 1) > g1 - g0 + 1e-9) ds.pop();
+  const out: Array<[number, number]> = ds.map(d => { const a0 = Math.max(g0, Math.min(g1 - d.w, d.c - d.w / 2)); return [a0, a0 + d.w]; });
+  for (let i = 1; i < out.length; i++) if (out[i][0] < out[i - 1][1] + m) { const w = out[i][1] - out[i][0]; out[i] = [out[i - 1][1] + m, out[i - 1][1] + m + w]; }
+  for (let i = out.length - 1; i >= 0; i--) {
+    const lim = i === out.length - 1 ? g1 : out[i + 1][0] - m;
+    if (out[i][1] > lim + 1e-9) { const w = out[i][1] - out[i][0]; out[i] = [lim - w, lim]; }
   }
   return out;
 }

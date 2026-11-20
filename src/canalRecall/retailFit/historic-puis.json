@@ -53,7 +53,7 @@
   },
   "0363100012171655": {
    "status": "published",
-   "review": "round 5: kit pui staged; not judged (the template front is out of view at every house-frames pose tried) Published 2026-11-20 (round 6): kit pui won the blind vs the template at the template pose (artifacts/retail-fit/blind-puis-r6n2, final code, fresh opus judge), high.",
+   "review": "round 5: kit pui staged; not judged (the template front is out of view at every house-frames pose tried) Published 2026-11-20 (round 6): kit pui won the blind vs the template at the template pose (artifacts/retail-fit/blind-puis-r6n2, final code, fresh opus judge), high. Round 7 (blade or sash) beat round 6 in a blind (artifacts/retail-fit/blind-puis-r7, fresh opus judge), med: the black board on its bracket at the right (the photo's hangs higher, larger).",
    "template": "brownBar",
    "word": "ELFDE GEBOD",
    "monument": "6502",
@@ -79,13 +79,22 @@
       "w": 0.9
      }
     ],
-    "door": "#7a1f1c"
+    "door": "#7a1f1c",
+    "blade": {
+     "at": 0.75,
+     "z": 3.9,
+     "w": 0.5,
+     "h": 0.7,
+     "shape": "rect",
+     "board": "#1c1b1a",
+     "iron": "#1c1b1a"
+    }
    },
-   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012171655 (round 4, square-on) and the round-4 close crops (blind-puis-r4): cream frames and pilasters, script lettering on the windows, dark plinth; round 6, at the template pose (TMX7316010203-001547_pano_0000_000514): two red doors at the left, the lettered window at the right"
+   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012171655 (round 4, square-on) and the round-4 close crops (blind-puis-r4): cream frames and pilasters, script lettering on the windows, dark plinth; round 6, at the template pose (TMX7316010203-001547_pano_0000_000514): two red doors at the left, the lettered window at the right; round 7 blade at the published pose: a black board with gilt lettering (not legible) on a scrolled iron bracket over the window, at the first-floor sill"
   },
   "0363100012171790": {
    "status": "published",
-   "review": "Published 2026-11-20 (round 5): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5, sides seeded, fresh opus judge), med-high. judge: cream frame, gridded panes and red script match; still a short \"Stoof\" for the long \"Cafe Bar de Stoof\", solid transom blocks. Round 6 (doors, bars, top lights) beat round 5 in a blind (artifacts/retail-fit/blind-puis-r6p, fresh opus judge), high: the red door at the left, a solid pane grid; the photo has white 6-over-6 sashes and a diamond transom.",
+   "review": "Published 2026-11-20 (round 5): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5, sides seeded, fresh opus judge), med-high. judge: cream frame, gridded panes and red script match; still a short \"Stoof\" for the long \"Cafe Bar de Stoof\", solid transom blocks. Round 6 (doors, bars, top lights) beat round 5 in a blind (artifacts/retail-fit/blind-puis-r6p, fresh opus judge), high: the red door at the left, a solid pane grid; the photo has white 6-over-6 sashes and a diamond transom. Round 7: a brown pui with white sashes lost to round 6 in the blind (the judge read the front as cream-framed), so it is not kept.",
    "template": "brownBar",
    "word": "STOOF",
    "monument": "['106', '5685', '5686', '5687']",
@@ -137,7 +146,7 @@
   },
   "0363100012172035": {
    "status": "published",
-   "review": "Published 2026-11-20 (round 5): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5, sides seeded, fresh opus judge), high. judge: dark glass between cream pilasters with script on the glass, no fascia, as on the photo; still one glass field without the mullion/door split. Round 6 (doors, bars, top lights) beat round 5 in a blind (artifacts/retail-fit/blind-puis-r6p, fresh opus judge), med: the door at the left and separate bays; the cream pilasters and dark stall panels missing.",
+   "review": "Published 2026-11-20 (round 5): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5, sides seeded, fresh opus judge), high. judge: dark glass between cream pilasters with script on the glass, no fascia, as on the photo; still one glass field without the mullion/door split. Round 6 (doors, bars, top lights) beat round 5 in a blind (artifacts/retail-fit/blind-puis-r6p, fresh opus judge), med: the door at the left and separate bays; the cream pilasters and dark stall panels missing. Round 7 (blade or sash) beat round 6 in a blind (artifacts/retail-fit/blind-puis-r7, fresh opus judge), med: the round white T blade (the photo's larger, higher).",
    "template": "brownBar",
    "word": "TRIBE",
    "monument": "['6261', '6262']",
@@ -158,9 +167,20 @@
      {
       "at": 0.0
      }
-    ]
+    ],
+    "blade": {
+     "at": 0.35,
+     "z": 3.6,
+     "w": 0.55,
+     "h": 0.55,
+     "shape": "round",
+     "board": "#efece4",
+     "iron": "#1c1b1a",
+     "glyph": "T",
+     "ink": "#1c1b1a"
+    }
    },
-   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012172035 (round 4, square-on) and the round-4 close crops (blind-puis-r4): black pui between cream cast-iron pilasters, \"Cafe & Coffee Bar\" etched white on the glass; round 6 doors/glass on the same crops: the \"Entrance\" door at the left end, then the glazed windows"
+   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012172035 (round 4, square-on) and the round-4 close crops (blind-puis-r4): black pui between cream cast-iron pilasters, \"Cafe & Coffee Bar\" etched white on the glass; round 6 doors/glass on the same crops: the \"Entrance\" door at the left end, then the glazed windows; round 7 blade at the published pose: a round white disc with the Tribe logo on an iron bracket at the storey line, over the pilaster right of the door"
   },
   "0363100012173636": {
    "status": "published",
@@ -262,7 +282,7 @@
    "source": "RCE monument register 952: element 'pui' (monument-facts.json); template hairdresser (shop-templates.json)",
    "sign": "none",
    "signSource": "Read on the Gemeente Amsterdam panorama at the template pose (artifacts/retail-fit/frames-puis-r6/off/pui-cirkel/photo.jpg, TMX7316010203-001054_pano_0000_004147), round 6: white pui, one large sheet window under a transom at the left, the black door right of centre, a narrow light at the right; no lettering on the pui",
-   "review": "Published 2026-11-20 (round 6): kit pui won the blind vs the template at the template pose (artifacts/retail-fit/blind-puis-r6n2, final code, fresh opus judge), high.",
+   "review": "Published 2026-11-20 (round 6): kit pui won the blind vs the template at the template pose (artifacts/retail-fit/blind-puis-r6n2, final code, fresh opus judge), high. Round 7 (blade or sash) beat round 6 in a blind (artifacts/retail-fit/blind-puis-r7, fresh opus judge), med: the round disc on the left (the photo's larger, dark-rimmed).",
    "front": {
     "frame": "#e8e4da",
     "plinth": "#1f1d1b",
@@ -277,9 +297,18 @@
     "sign": {
      "kind": "none",
      "ink": "#1f1d1b"
+    },
+    "blade": {
+     "at": 0.0,
+     "z": 3.3,
+     "w": 0.7,
+     "h": 0.7,
+     "shape": "round",
+     "board": "#e6e4de",
+     "iron": "#1c1b1a"
     }
    },
-   "frontSource": "Read on the Gemeente Amsterdam panorama at the template pose (artifacts/retail-fit/frames-puis-r6/off/pui-cirkel/photo.jpg, TMX7316010203-001054_pano_0000_004147), round 6: white pui, one large sheet window under a transom at the left, the black door right of centre, a narrow light at the right; no lettering on the pui"
+   "frontSource": "Read on the Gemeente Amsterdam panorama at the template pose (artifacts/retail-fit/frames-puis-r6/off/pui-cirkel/photo.jpg, TMX7316010203-001054_pano_0000_004147), round 6: white pui, one large sheet window under a transom at the left, the black door right of centre, a narrow light at the right; no lettering on the pui; round 7 blade at the published pose: a large round disc on the left pilaster at the storey line"
   },
   "0363100012175048": {
    "status": "published",
@@ -301,10 +330,19 @@
       "at": 0.0
      }
     ],
-    "sheet": true
+    "sheet": true,
+    "blade": {
+     "at": 0.1,
+     "z": 3.0,
+     "w": 0.45,
+     "h": 0.4,
+     "shape": "rect",
+     "board": "#e8e6e0",
+     "iron": "#1c1b1a"
+    }
    },
-   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012175048 (round 5, square-on): cream-painted pui, one large window with the barber logo on the glass, a small box sign; no fascia; round 6 doors/glass on the same crops: door at the left (barber pole), one large pane under a transom to its right",
-   "review": "Published 2026-11-20 (round 5b): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5b, sides seeded, fresh opus judge), med. judge: cream frame, no fascia board; the kit bay grid invents mullions where the photo has one big pane under a transom. Round 6 (doors, bars, top lights) beat round 5 in a blind (artifacts/retail-fit/blind-puis-r6p, fresh opus judge), med: a left door and one big pane under top lights; LEGENDS lettering invented (the photo has a round logo)."
+   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012175048 (round 5, square-on): cream-painted pui, one large window with the barber logo on the glass, a small box sign; no fascia; round 6 doors/glass on the same crops: door at the left (barber pole), one large pane under a transom to its right; round 7 blade at the published pose: a small white box sign with the logo over the door (and a barber pole and flag, which the kit cannot say)",
+   "review": "Published 2026-11-20 (round 5b): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5b, sides seeded, fresh opus judge), med. judge: cream frame, no fascia board; the kit bay grid invents mullions where the photo has one big pane under a transom. Round 6 (doors, bars, top lights) beat round 5 in a blind (artifacts/retail-fit/blind-puis-r6p, fresh opus judge), med: a left door and one big pane under top lights; LEGENDS lettering invented (the photo has a round logo). Round 7 (blade or sash) beat round 6 in a blind (artifacts/retail-fit/blind-puis-r7, fresh opus judge), med: the small white box sign at the top left (no barber pole)."
   },
   "0363100012175133": {
    "status": "staged",
@@ -421,7 +459,7 @@
    "source": "RCE monument register 5675: element 'pui' (monument-facts.json); template hairdresser (shop-templates.json)",
    "sign": "none",
    "signSource": "Read on the Gemeente Amsterdam panorama at the template pose (artifacts/retail-fit/frames-puis-r6/off/pui-gabriel/photo.jpg, TMX7316010203-001187_pano_0000_000240), round 6: white pui, a door with a transom at the left, one large sheet window over a dark panel at the right; only a small projecting blade sign (the kit cannot say it), no lettering on the pui",
-   "review": "Published 2026-11-20 (round 6): kit pui won the blind vs the template at the template pose (artifacts/retail-fit/blind-puis-r6n2, final code, fresh opus judge), high.",
+   "review": "Published 2026-11-20 (round 6): kit pui won the blind vs the template at the template pose (artifacts/retail-fit/blind-puis-r6n2, final code, fresh opus judge), high. Round 7 (blade or sash) beat round 6 in a blind (artifacts/retail-fit/blind-puis-r7, fresh opus judge), low-med: the small white G board near the transom.",
    "front": {
     "frame": "#ece8de",
     "plinth": "#1f1d1b",
@@ -436,9 +474,20 @@
     "sign": {
      "kind": "none",
      "ink": "#1f1d1b"
+    },
+    "blade": {
+     "at": 0.45,
+     "z": 2.9,
+     "w": 0.4,
+     "h": 0.4,
+     "shape": "rect",
+     "board": "#ece8de",
+     "iron": "#1c1b1a",
+     "glyph": "G",
+     "ink": "#3a3a3a"
     }
    },
-   "frontSource": "Read on the Gemeente Amsterdam panorama at the template pose (artifacts/retail-fit/frames-puis-r6/off/pui-gabriel/photo.jpg, TMX7316010203-001187_pano_0000_000240), round 6: white pui, a door with a transom at the left, one large sheet window over a dark panel at the right; only a small projecting blade sign (the kit cannot say it), no lettering on the pui"
+   "frontSource": "Read on the Gemeente Amsterdam panorama at the template pose (artifacts/retail-fit/frames-puis-r6/off/pui-gabriel/photo.jpg, TMX7316010203-001187_pano_0000_000240), round 6: white pui, a door with a transom at the left, one large sheet window over a dark panel at the right; only a small projecting blade sign (the kit cannot say it), no lettering on the pui; round 7 blade at the published pose: a small white board with a script name between the door and the window"
   },
   "0363100012178242": {
    "status": "staged",
@@ -495,10 +544,19 @@
      {
       "at": 0.85
      }
-    ]
+    ],
+    "blade": {
+     "at": 0.05,
+     "z": 3.0,
+     "w": 0.45,
+     "h": 0.6,
+     "shape": "rect",
+     "board": "#2e7d3a",
+     "iron": "#1c1b1a"
+    }
    },
-   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012178916 (round 5, square-on): white pui, \"Bike Rental\" in green on the frieze (the template is a nameless souvenir), dark green door; round 6 doors/glass on the same crops: a window at the left, then the green door and a dark door",
-   "review": "Published 2026-11-20 (round 5b): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5b, sides seeded, fresh opus judge), high. judge: right name and white frame; still one window where the photo has two doors beside a smaller window. Round 6 (doors, bars, top lights) beat round 5 in a blind (artifacts/retail-fit/blind-puis-r6p, fresh opus judge), med: a door in the front where round 5 had none; the photo has two black doors further right (the kit drew one: the second did not fit beside the window)."
+   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012178916 (round 5, square-on): white pui, \"Bike Rental\" in green on the frieze (the template is a nameless souvenir), dark green door; round 6 doors/glass on the same crops: a window at the left, then the green door and a dark door; round 7 blade at the published pose: a green board at the left end, under the Bike Rental lettering",
+   "review": "Published 2026-11-20 (round 5b): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5b, sides seeded, fresh opus judge), high. judge: right name and white frame; still one window where the photo has two doors beside a smaller window. Round 6 (doors, bars, top lights) beat round 5 in a blind (artifacts/retail-fit/blind-puis-r6p, fresh opus judge), med: a door in the front where round 5 had none; the photo has two black doors further right (the kit drew one: the second did not fit beside the window). Round 7 (blade or sash) beat round 6 in a blind (artifacts/retail-fit/blind-puis-r7, fresh opus judge), med: the green blade at the left end (the photo's is boxier, yellow and white panels)."
   },
   "0363100012180407": {
    "status": "staged",
@@ -542,10 +600,15 @@
      {
       "at": 0.5
      }
+    ],
+    "sash": "#e8e4da",
+    "panes": [
+     2,
+     3
     ]
    },
-   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012182602 (round 5, square-on): dark frieze over white pilasters and plinth, \"Little Souvenirs\" in red script neon; round 6 doors/glass on the same crops: central door between barred windows",
-   "review": "Published 2026-11-20 (round 5b): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5b, sides seeded, fresh opus judge), low-med. judge: red script over a light frame; the photo is dark, the name hard to confirm, the barred panes and centre door missing. Round 6 (doors, bars, top lights) beat round 5 in a blind (artifacts/retail-fit/blind-puis-r6p, fresh opus judge), med-high: the central door; the side windows lack their grid."
+   "frontSource": "Read on the Gemeente Amsterdam panorama crops artifacts/retail-fit/photos/puis/0363100012182602 (round 5, square-on): dark frieze over white pilasters and plinth, \"Little Souvenirs\" in red script neon; round 6 doors/glass on the same crops: central door between barred windows; round 7 at the published pose: white-framed barred windows either side of the door",
+   "review": "Published 2026-11-20 (round 5b): kit pui won the blind on close browser crops (artifacts/retail-fit/blind-puis-r5b, sides seeded, fresh opus judge), low-med. judge: red script over a light frame; the photo is dark, the name hard to confirm, the barred panes and centre door missing. Round 6 (doors, bars, top lights) beat round 5 in a blind (artifacts/retail-fit/blind-puis-r6p, fresh opus judge), med-high: the central door; the side windows lack their grid. Round 7 (blade or sash) beat round 6 in a blind (artifacts/retail-fit/blind-puis-r7, fresh opus judge), med: the white-sashed grid windows (the photo's bars finer and lighter)."
   }
  }
 }

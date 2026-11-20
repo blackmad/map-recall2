@@ -375,6 +375,51 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
 - **Not the kit's:** the blue banners on souvenir 5575 and the window-box blocks on Tribe are drawn by other layers.
 - Dashed lines remain on balcony rails, sills and transom edges in both renders. They come from other geometry, not from the kit's bars.
 
+## 10. Round 7
+
+### Kit additions (`historicPuiFront.ts`, typed, tested, byte-identical when absent)
+- **Blade signs (`front.blade`):**
+  - The read fields: bracket place `at` (share along the front), bracket height `z`, board `w` × `h`, `shape` (rect / round / shield), `board`, `iron`, and an optional legible `glyph` with its `ink`.
+  - The drawing: a square iron bar out from the wall and a thin two-faced board hanging under it, perpendicular to the front, with the glyph on both faces (`sideGlyph`).
+  - Blades are also drawn in sign mode.
+  - **Cost (measured):** a rect blade is 14 triangles (bracket 10, board 4), a shield 16, a round blade 22, and a glyph adds 4 (Tribe 26, Gabriel 18).
+- **White sashes (`front.sash`):** a 7 cm rim round each bay's glass, with the glazing bars in the sash colour, over the pui's frame. It costs +24 to +32 triangles (rims, and Little Souvenirs' new pane grid).
+- **Crowded doors:** `puiDoors` packs the doors forward, then back from the right pilaster, so the windows shrink. A door is dropped only when the doors and their mullions outrun the whole pui. Bike Rental now has both doors.
+
+### Reads (at the published poses)
+- **Blades:**
+  - Tribe: a round white disc with a T at the storey line, right of the door.
+  - Bike Rental: a green board at the left end.
+  - Legends: a small white box sign over the door.
+  - Cirkel: a large round disc on the left pilaster.
+  - Elfde Gebod: a black board on its bracket over the window.
+  - Gabriel: a small white board with a G between the door and the window.
+- **No blade at the pose:** Leentje (the pose frames The Bolster), Stoof, 't Smalle (hidden), Haircuts (its disc is a traffic sign), Little Souvenirs, New Times and souvenir 5575 (the yellow disc is on the neighbour).
+- **Sashes:** Stoof (white sashes in a brown pui) and Little Souvenirs (white-framed barred windows, panes 2 × 3).
+
+### Round 7 blind (vs round 6, same poses, fresh opus judge, sides seeded): 7 wins, 1 loss
+| Pand | Change | Verdict | Confidence |
+|---|---|---|---|
+| Bike Rental | blade, two doors | r7 | med |
+| Cirkel | blade | r7 | med |
+| Elfde Gebod | blade | r7 | med |
+| Gabriel | blade | r7 | low-med |
+| Legends | blade | r7 | med |
+| Little Souvenirs | sash, pane grid | r7 | med |
+| Stoof | brown pui, white sashes | r6 | med |
+| Tribe | blade | r7 | med |
+
+- Stoof's round 7 read lost (the judge read the photo's front as cream-framed), so it is reverted to round 6. All 13 stay published.
+- **What the kit still can't say:**
+  - Blades come out smaller and lower than the photos'. The reads are conservative, so this is a read issue rather than a kit one.
+  - A dark rim on a round blade; boxy two-colour blade signs (Bike Rental's yellow and white panels).
+  - Text on a blade: one glyph only.
+  - A plaque that projects versus sits flat: at Gabriel's size the judge saw the board as flat.
+  - Barber poles and flags.
+  - Fine, light glazing bars: the sash bars are 7 cm so they don't alias, and read heavy.
+  - Pilastered separate bays.
+- **Not the kit's:** the window-box slabs on Tribe and Bike Rental come from another layer.
+
 ## Wiring (for the integrator)
 
 - Add `src/canalRecall/retailFit/retailFit.test.ts` to `test:shopfront-gate` in package.json.
@@ -388,3 +433,4 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
 - Round 4: `src/canalRecall/engine/workerPool.ts` adds `'retailFit'` to `withWorkerFlags`, so `?retailFit=0|1` reaches the mesh workers. Rebuild the pool bundles (`build:canal-three-buildings`, the engine bundle and own-ground-game) together.
 - Round 5: `retailFront.ts` (import line 5, the `host?` field at the end of `RetailFrontInput`, an early branch after `new Builder(e)`) and `threeBuildingMesh.ts` (the `historicPuiInput(b.id, !!(b.recipe || b.specRecipe))` spread, `&& !input.host` on rooms, the sign-mode `opening` guard) feed the mesh pool. Rebuild the pool bundles together: `build:canal-three-buildings` (browser and worker), the engine bundle (`scripts/build-canal-engine.mjs`) and own-ground-game (`scripts/build-3d-bundles.mjs --only=own-ground-game`). The Utrechtsestraat chunk GLB, its lod2 record and the roof golden are already committed (above).
 - Round 6: `threeBuildingMesh.ts` changes one line (`opening` is null when the host has read doors); otherwise the work is `retailFit/historicPuiFront.ts`, `historicPui.ts` and `historic-puis.json`. Rebuild the same pool bundles as round 5.
+- Round 7: only `retailFit/historicPuiFront.ts`, `historic-puis.json` and the test change, so there are no new lines in the shared files. Rebuild the same pool bundles.
