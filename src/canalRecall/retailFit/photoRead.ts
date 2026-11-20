@@ -2,7 +2,12 @@
 // modelled host on a dated city panorama, and the in-opening layers it becomes. Reads are staged in retail-fits.json,
 // one record per opening, with the panorama it was read on; a model's reads draw by default only once its blind A/B
 // has been won (`status: 'published'`), staged reads draw under `?retailFit=1` for review.
-import type { FitLayer } from './types.js';
+import type { FitLayer, HostOpening } from './types.js';
+
+/** A measured opening staged with its model (stage-openings.ts, from the GLB): the runtime draws in it without finding
+ *  glass, so a city-look material swap or a merged chunk cannot hide it. `pand`: a street chunk's pand index (its range in
+ *  the GLB's pandRanges), so the fit lifts with that pand's own ground base. */
+export type StoredOpening = HostOpening & { pand?: number };
 
 export type ReadLetters =
   /** Letters in the arch head (lunette), optional dark ground behind them. */
@@ -17,7 +22,7 @@ export interface OpeningRead {
   glass: string;
   /** Only part of the height reads as that tone (metres above the sill). */
   glassV?: [number, number];
-  goods?: { kind: 'tables' | 'shelves' | 'rails' | 'seats' | 'curtains'; hexes: string[] };
+  goods?: { kind: 'tables' | 'shelves' | 'rails' | 'seats' | 'curtains' | 'sleeves'; hexes: string[] };
   lamps?: { hex: string; n?: number };
   vinyl?: Omit<Extract<FitLayer, { k: 'vinyl' }>, 'k'>;
   posters?: { hex: string; n: number };
@@ -30,6 +35,8 @@ export interface OpeningRead {
 export interface StagedFit {
   /** The opening's point on the facade line (lng, lat): the fit claims the nearest found opening within 2.5 m. */
   at: [number, number];
+  /** Or a staged opening's id (a street chunk has no surveyed frame: its fits name the opening directly). */
+  opening?: string;
   tenant: string;
   /** OSM node and the panorama(s) it was read on. */
   source: string;
@@ -42,6 +49,8 @@ export interface StagedModel {
   /** The blind A/B that published it (date, tally, judge), or why it is held. */
   review: string;
   fits: StagedFit[];
+  /** Openings measured offline from the GLB (GLB frame, metres); absent = found on the model's glass at run time. */
+  openings?: StoredOpening[];
 }
 
 /** The layers of one read, in drawing order (back to front). */
@@ -79,7 +88,8 @@ export function checkStaged(models: Record<string, StagedModel>): string[] {
     if (!m.review) bad.push(`${id}: no review note`);
     m.fits.forEach((f, i) => {
       const p = `${id}[${i}] ${f.tenant}`;
-      if (!(f.at[0] > 4.7 && f.at[0] < 5.1 && f.at[1] > 52.27 && f.at[1] < 52.45)) bad.push(`${p}: point outside Amsterdam`);
+      if (f.opening) { if (!m.openings?.some(o => o.id === f.opening)) bad.push(`${p}: no staged opening ${f.opening}`); }
+      else if (!(f.at[0] > 4.7 && f.at[0] < 5.1 && f.at[1] > 52.27 && f.at[1] < 52.45)) bad.push(`${p}: point outside Amsterdam`);
       if (!f.source) bad.push(`${p}: no source`);
       if (!HEX.test(f.read.glass)) bad.push(`${p}: glass tone`);
       hexes(f.read, p);

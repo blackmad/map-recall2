@@ -125,6 +125,15 @@ export function drawLayers(b: FitBuilder, layers: readonly FitLayer[], seed = 0)
           b.quad(-W * 0.4, 1.6, W * 0.4, 1.64, out, hx(0));
           const n = Math.max(4, Math.round(W / 0.12));
           for (let i = 0; i < n; i++) { const ua = -W * 0.38 + W * 0.76 * i / n; b.quad(ua, 0.75 + hash(seed, i) * 0.2, ua + 0.08, 1.6, out, hx(1 + (i % (L.hexes.length - 1 || 1)))); }
+        } else if (L.kind === 'sleeves') {
+          // Record sleeves faced out in the display (Concerto, Utrechtsestraat): rows of 0.3 m squares on low racks, a few
+          // gaps, up to 1.7 m or under the head.
+          const top = Math.min(1.75, S - 0.25), cell = 0.3, gap = 0.04;
+          for (let v = 0.12, r = 0; v + cell < top; v += cell + gap, r++) for (let u = -W / 2 + 0.1, c = 0; u + cell < W / 2 - 0.1; u += cell + gap, c++) {
+            const h0 = hash(seed + r * 13, c);
+            if (h0 < 0.12) continue;
+            b.quad(u, v, u + cell, v + cell, out, hx(Math.floor(hash(c + 7, seed + r) * L.hexes.length)));
+          }
         } else if (L.kind === 'curtains') {
           // Drawn-back curtains at both jambs (a hotel or café window: the American Hotel's Leidsekade front), folds as
           // alternating tones, from just under the head to the sill; hexes = [cloth, fold].

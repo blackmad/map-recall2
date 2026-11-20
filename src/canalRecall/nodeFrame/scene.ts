@@ -328,7 +328,7 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
       const lod1 = file.replace(/\.glb$/, '.lod1.glb');
       if (d > LOD1_M && fs.existsSync(lod1)) file = lod1;
       if (!fs.existsSync(file)) continue;
-      let glb;
+      let glb: import('../glbRaster/load.ts').GlbScene;
       try { glb = await loadGlbFile(file); } catch (e) { log(`model ${spec.id}: ${(e as Error).message}`); continue; }
       const b = glbBounds(glb);
       let placement;
@@ -338,18 +338,24 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
       const base = pointBase(placement.anchor);
       // A street chunk (spec.chunkPands): every pand on its own base, the holder at street level
       // (signature-landmarks-source.js _applyChunkPandBases); other models on the anchor's base.
-      const chunk = (spec as any).chunkPands ? await separateChunkPands(glb) : null;
-      const M = modelMatrix(gf, placement, recentre, chunk ? 0 : base);
-      const md = modelDraws(chunk ? chunk.scene : glb, M, envL, `model/${spec.id}`, { atlas, year: typeof (spec as any).bagYear === 'number' ? (spec as any).bagYear : null, exposure: (spec as any).wallExposure ?? null });
-      // Lane retail-fit (`?retailFit=1`, env RETAIL_FIT=1): tenants inside the model's own ground openings (full level only).
-      if (!chunk && !file.endsWith('.lod1.glb')) {
+      const isChunk = !!(spec as any).chunkPands;
+      const M = modelMatrix(gf, placement, recentre, isChunk ? 0 : base);
+      // Lane retail-fit (default: published reads; `?retailFit=0` / env RETAIL_FIT=0 off): tenants inside the model's own
+      // ground openings, full level only. In a street chunk the fit joins the GLB before the pand split, so its pand
+      // ranges lift it with its own pand.
+      let fitScene: import('../glbRaster/load.ts').GlbScene | null = null;
+      if (!file.endsWith('.lod1.glb')) {
         const { retailFitOn } = await import('../retailFit/flag.ts');
         if (retailFitOn()) {
           const { retailFitScene } = await import('../retailFit/nodeAdapter.ts');
           const fit = retailFitScene(spec.id, glb, M, (lng, lat) => { const w = worldOfLngLat(gf, lng, lat); return [w[0], w[1]]; });
-          if (fit) { md.push(...modelDraws(fit.scene, M, envL, `retail-fit/${spec.id}`)); N.retailFit = (N.retailFit ?? 0) + fit.triangles; }
+          if (fit) { fitScene = fit.scene; N.retailFit = (N.retailFit ?? 0) + fit.triangles; N.retailFitPlaced = (N.retailFitPlaced ?? 0) + fit.placed.length; }
         }
       }
+      if (isChunk && fitScene) glb = { ...glb, materials: [...glb.materials, ...fitScene.materials], primitives: [...glb.primitives, ...fitScene.primitives.map(p => ({ ...p, material: p.material + glb.materials.length }))] };
+      const chunk = isChunk ? await separateChunkPands(glb) : null;
+      const md = modelDraws(chunk ? chunk.scene : glb, M, envL, `model/${spec.id}`, { atlas, year: typeof (spec as any).bagYear === 'number' ? (spec as any).bagYear : null, exposure: (spec as any).wallExposure ?? null });
+      if (!isChunk && fitScene) md.push(...modelDraws(fitScene, M, envL, `retail-fit/${spec.id}`));
       if (chunk) {
         const lifted = await liftChunkPands(md, chunk.owners, (x, y) => {
           const [lng, lat] = lngLatOfWorld(gf, x, y), [lx, ly] = toLocal(lng, lat);

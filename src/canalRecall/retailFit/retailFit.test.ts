@@ -63,7 +63,7 @@ test('openings: one outward round arch per glass slab, its head read off the out
 
 const ROUND: HostOpening = { id: 't', base: [0, 0, 0], n: [0, -1], t: [-1, 0], widthM: 3.3, sillM: 0, springM: 3.35, crownM: 5, head: 'round', bearing: 0, areaM2: 15 };
 const EVERY: FitLayer[] = [
-  { k: 'interior', hex: '#999999' }, { k: 'goods', kind: 'shelves', hexes: ['#ff0000', '#00ff00'] }, { k: 'goods', kind: 'tables', hexes: ['#c8a678', '#6b5a45', '#dfe8f0'] }, { k: 'goods', kind: 'curtains', hexes: ['#d9d6cc', '#bdb9ae'] },
+  { k: 'interior', hex: '#999999' }, { k: 'goods', kind: 'shelves', hexes: ['#ff0000', '#00ff00'] }, { k: 'goods', kind: 'tables', hexes: ['#c8a678', '#6b5a45', '#dfe8f0'] }, { k: 'goods', kind: 'curtains', hexes: ['#d9d6cc', '#bdb9ae'] }, { k: 'goods', kind: 'sleeves', hexes: ['#c9c2b0', '#3c5a8a'] },
   { k: 'lamps', hex: '#ffffff' }, { k: 'vinyl', base: '#dfe6ef', ink: '#2b4a8f', pattern: 'delft', window: [0.3, 0.7, 0.8, 2.3] }, { k: 'vinyl', base: '#cdd9e6', ink: '#24427f', pattern: 'landscape', window: [0.36, 0.66, 0.55, 1.35], windowGoods: ['#d9506a'] }, { k: 'posters', hex: '#00a0e2', n: 2 },
   { k: 'panel', hex: '#d3d0c8', atms: 3, text: 'GELDMAAT' }, { k: 'band', hex: '#1d2c5a', v0: 0.15, v1: 0.72, text: 'RIJKS MUSEUM' },
   { k: 'head-letters', text: 'ALBERT HEIJN', ink: '#7cc6ee', bg: '#22313d' }, { k: 'glass-letters', text: 'ABN AMRO', ink: '#fff', v: 3, mark: '#00857a' },

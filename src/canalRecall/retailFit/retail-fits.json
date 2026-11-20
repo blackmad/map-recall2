@@ -348,10 +348,10 @@
       52.363413
      ],
      "tenant": "Geldmaat",
-     "source": "Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "source": "Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*); panel tone re-measured on the hirsch-abn pose: photo #7a8888 vs render #acada9 (round 2 judge: too white)",
      "read": {
       "panel": {
-       "hex": "#d3d0c8",
+       "hex": "#97a6a6",
        "atms": 3,
        "text": "GELDMAAT",
        "ink": "#59626b"
@@ -359,7 +359,7 @@
       "frame": {
        "hex": "#6b6e70"
       },
-      "glass": "#d3d0c8"
+      "glass": "#97a6a6"
      }
     },
     {
@@ -456,6 +456,583 @@
      "read": {
       "glass": "#454b48"
      }
+    }
+   ],
+   "openings": [
+    {
+     "id": "4:0.5",
+     "base": [
+      1.1967,
+      0.0008,
+      -23.6211
+     ],
+     "n": [
+      0.07,
+      -0.9975
+     ],
+     "t": [
+      -0.9975,
+      -0.07
+     ],
+     "widthM": 1.032,
+     "sillM": 0.0008,
+     "springM": 5.1991,
+     "crownM": 5.1991,
+     "head": "flat",
+     "bearing": 4.0141,
+     "areaM2": 5.2711
+    },
+    {
+     "id": "11:2.4",
+     "base": [
+      2.2261,
+      0.0008,
+      -23.4829
+     ],
+     "n": [
+      0.197,
+      -0.9804
+     ],
+     "t": [
+      -0.9804,
+      -0.197
+     ],
+     "widthM": 1.0316,
+     "sillM": 0.0008,
+     "springM": 5.1991,
+     "crownM": 5.1991,
+     "head": "flat",
+     "bearing": 11.3617,
+     "areaM2": 5.2692
+    },
+    {
+     "id": "19:4.5",
+     "base": [
+      3.2285,
+      0.0008,
+      -23.21
+     ],
+     "n": [
+      0.3252,
+      -0.9456
+     ],
+     "t": [
+      -0.9456,
+      -0.3252
+     ],
+     "widthM": 1.031,
+     "sillM": 0.0008,
+     "springM": 4.9237,
+     "crownM": 4.9237,
+     "head": "flat",
+     "bearing": 18.9786,
+     "areaM2": 4.0777
+    },
+    {
+     "id": "53:-25.3",
+     "base": [
+      29.2211,
+      0.0008,
+      9.4791
+     ],
+     "n": [
+      0.7948,
+      -0.6069
+     ],
+     "t": [
+      -0.6069,
+      -0.7948
+     ],
+     "widthM": 3.0317,
+     "sillM": 0.0008,
+     "springM": 4.1877,
+     "crownM": 5.0005,
+     "head": "segmental",
+     "bearing": 52.6334,
+     "areaM2": 14.7092
+    },
+    {
+     "id": "53:4.1",
+     "base": [
+      11.466,
+      0.0008,
+      -13.8331
+     ],
+     "n": [
+      0.7953,
+      -0.6062
+     ],
+     "t": [
+      -0.6062,
+      -0.7953
+     ],
+     "widthM": 3.2963,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 52.6828,
+     "areaM2": 15.1267
+    },
+    {
+     "id": "53:-1.7",
+     "base": [
+      15.7517,
+      0.0008,
+      -9.9089
+     ],
+     "n": [
+      0.7955,
+      -0.6059
+     ],
+     "t": [
+      -0.6059,
+      -0.7955
+     ],
+     "widthM": 3.2963,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 52.7052,
+     "areaM2": 15.1495
+    },
+    {
+     "id": "53:9.9",
+     "base": [
+      7.9122,
+      0.0008,
+      -18.5007
+     ],
+     "n": [
+      0.7958,
+      -0.6056
+     ],
+     "t": [
+      -0.6056,
+      -0.7958
+     ],
+     "widthM": 3.2999,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 52.7272,
+     "areaM2": 15.0697
+    },
+    {
+     "id": "53:-13.2",
+     "base": [
+      21.9455,
+      0.0008,
+      -0.0759
+     ],
+     "n": [
+      0.7958,
+      -0.6056
+     ],
+     "t": [
+      -0.6056,
+      -0.7958
+     ],
+     "widthM": 3.3033,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 52.731,
+     "areaM2": 14.6149
+    },
+    {
+     "id": "53:-7.4",
+     "base": [
+      19.2043,
+      0.0008,
+      -5.3726
+     ],
+     "n": [
+      0.7959,
+      -0.6055
+     ],
+     "t": [
+      -0.6055,
+      -0.7959
+     ],
+     "widthM": 3.3026,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 52.7384,
+     "areaM2": 14.6135
+    },
+    {
+     "id": "53:-19.3",
+     "base": [
+      25.6121,
+      0.0008,
+      4.739
+     ],
+     "n": [
+      0.7959,
+      -0.6055
+     ],
+     "t": [
+      -0.6055,
+      -0.7959
+     ],
+     "widthM": 3.3026,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 52.7384,
+     "areaM2": 14.6135
+    },
+    {
+     "id": "143:-9.6",
+     "base": [
+      9.8517,
+      0.0008,
+      28.7076
+     ],
+     "n": [
+      0.6059,
+      0.7955
+     ],
+     "t": [
+      0.7955,
+      -0.6059
+     ],
+     "widthM": 3.2963,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 142.7057,
+     "areaM2": 15.0551
+    },
+    {
+     "id": "143:-3.7",
+     "base": [
+      14.5028,
+      0.0008,
+      25.1672
+     ],
+     "n": [
+      0.6058,
+      0.7956
+     ],
+     "t": [
+      0.7956,
+      -0.6058
+     ],
+     "widthM": 3.2972,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 142.7166,
+     "areaM2": 15.0835
+    },
+    {
+     "id": "143:-15.4",
+     "base": [
+      5.2018,
+      0.0008,
+      32.2501
+     ],
+     "n": [
+      0.6057,
+      0.7957
+     ],
+     "t": [
+      0.7957,
+      -0.6057
+     ],
+     "widthM": 3.3035,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 142.7206,
+     "areaM2": 14.9412
+    },
+    {
+     "id": "143:2.2",
+     "base": [
+      19.1887,
+      0.0008,
+      21.5981
+     ],
+     "n": [
+      0.6057,
+      0.7957
+     ],
+     "t": [
+      0.7957,
+      -0.6057
+     ],
+     "widthM": 3.3033,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 142.7233,
+     "areaM2": 14.8247
+    },
+    {
+     "id": "143:14.1",
+     "base": [
+      28.6492,
+      0.0008,
+      14.3951
+     ],
+     "n": [
+      0.6054,
+      0.7959
+     ],
+     "t": [
+      0.7959,
+      -0.6054
+     ],
+     "widthM": 3.3026,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 142.741,
+     "areaM2": 14.9123
+    },
+    {
+     "id": "143:8.1",
+     "base": [
+      23.844,
+      0.0008,
+      18.0545
+     ],
+     "n": [
+      0.6052,
+      0.796
+     ],
+     "t": [
+      0.796,
+      -0.6052
+     ],
+     "widthM": 3.2611,
+     "sillM": 0.0008,
+     "springM": 3.3704,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 142.7544,
+     "areaM2": 14.907
+    },
+    {
+     "id": "323:21.3",
+     "base": [
+      -28.7452,
+      0.0008,
+      -2.6164
+     ],
+     "n": [
+      -0.6066,
+      -0.795
+     ],
+     "t": [
+      -0.795,
+      0.6066
+     ],
+     "widthM": 3.299,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 322.6579,
+     "areaM2": 14.8815
+    },
+    {
+     "id": "323:-2.1",
+     "base": [
+      -10.1616,
+      0.0008,
+      -16.7774
+     ],
+     "n": [
+      -0.6064,
+      -0.7952
+     ],
+     "t": [
+      -0.7952,
+      0.6064
+     ],
+     "widthM": 3.2997,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 322.6704,
+     "areaM2": 15.1351
+    },
+    {
+     "id": "323:15.4",
+     "base": [
+      -24.0978,
+      0.0008,
+      -6.1563
+     ],
+     "n": [
+      -0.6062,
+      -0.7953
+     ],
+     "t": [
+      -0.7953,
+      0.6062
+     ],
+     "widthM": 3.3006,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 322.684,
+     "areaM2": 14.4242
+    },
+    {
+     "id": "323:33.0",
+     "base": [
+      -38.0925,
+      0.0008,
+      4.5063
+     ],
+     "n": [
+      -0.6062,
+      -0.7953
+     ],
+     "t": [
+      -0.7953,
+      0.6062
+     ],
+     "widthM": 3.299,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 322.685,
+     "areaM2": 14.3977
+    },
+    {
+     "id": "323:-7.9",
+     "base": [
+      -5.5155,
+      0.0008,
+      -20.3183
+     ],
+     "n": [
+      -0.6061,
+      -0.7954
+     ],
+     "t": [
+      -0.7954,
+      0.6061
+     ],
+     "widthM": 3.299,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 322.6891,
+     "areaM2": 14.6228
+    },
+    {
+     "id": "323:3.8",
+     "base": [
+      -14.8083,
+      0.0008,
+      -13.2366
+     ],
+     "n": [
+      -0.6059,
+      -0.7955
+     ],
+     "t": [
+      -0.7955,
+      0.6059
+     ],
+     "widthM": 3.2999,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 322.7066,
+     "areaM2": 15.0858
+    },
+    {
+     "id": "323:27.0",
+     "base": [
+      -33.3017,
+      0.0008,
+      0.8561
+     ],
+     "n": [
+      -0.6058,
+      -0.7956
+     ],
+     "t": [
+      -0.7956,
+      0.6058
+     ],
+     "widthM": 3.0813,
+     "sillM": 0.0008,
+     "springM": 4.1741,
+     "crownM": 5.0005,
+     "head": "segmental",
+     "bearing": 322.7108,
+     "areaM2": 14.709
+    },
+    {
+     "id": "323:9.6",
+     "base": [
+      -19.4534,
+      0.0008,
+      -9.6972
+     ],
+     "n": [
+      -0.6054,
+      -0.7959
+     ],
+     "t": [
+      -0.7959,
+      0.6054
+     ],
+     "widthM": 3.3026,
+     "sillM": 0.0008,
+     "springM": 3.3523,
+     "crownM": 5.0005,
+     "head": "round",
+     "bearing": 322.741,
+     "areaM2": 14.9123
+    },
+    {
+     "id": "356:-1.6",
+     "base": [
+      0.1582,
+      0.0008,
+      -23.6253
+     ],
+     "n": [
+      -0.0614,
+      -0.9981
+     ],
+     "t": [
+      -0.9981,
+      0.0614
+     ],
+     "widthM": 1.0314,
+     "sillM": 0.0008,
+     "springM": 4.9237,
+     "crownM": 4.9237,
+     "head": "flat",
+     "bearing": 356.4801,
+     "areaM2": 4.41
     }
    ]
   },
@@ -706,6 +1283,2476 @@
        "transom": true
       }
      }
+    }
+   ],
+   "openings": [
+    {
+     "id": "143:-12.6",
+     "base": [
+      -2.626,
+      0.9017,
+      17.3463
+     ],
+     "n": [
+      0.607,
+      0.7947
+     ],
+     "t": [
+      0.7947,
+      -0.607
+     ],
+     "widthM": 1.3009,
+     "sillM": 0.9017,
+     "springM": 2.0003,
+     "crownM": 2.0003,
+     "head": "flat",
+     "bearing": 142.626,
+     "areaM2": 1.4293
+    },
+    {
+     "id": "143:-14.3",
+     "base": [
+      -3.9764,
+      0.9017,
+      18.3763
+     ],
+     "n": [
+      0.607,
+      0.7947
+     ],
+     "t": [
+      0.7947,
+      -0.607
+     ],
+     "widthM": 1.3009,
+     "sillM": 0.9017,
+     "springM": 2.0003,
+     "crownM": 2.0003,
+     "head": "flat",
+     "bearing": 142.626,
+     "areaM2": 1.4293
+    },
+    {
+     "id": "143:-7.5",
+     "base": [
+      1.4302,
+      0.9017,
+      14.2515
+     ],
+     "n": [
+      0.607,
+      0.7947
+     ],
+     "t": [
+      0.7947,
+      -0.607
+     ],
+     "widthM": 1.3009,
+     "sillM": 0.9017,
+     "springM": 2.0003,
+     "crownM": 2.0003,
+     "head": "flat",
+     "bearing": 142.626,
+     "areaM2": 1.4293
+    },
+    {
+     "id": "143:-16.0",
+     "base": [
+      -5.3307,
+      0.9017,
+      19.4064
+     ],
+     "n": [
+      0.607,
+      0.7947
+     ],
+     "t": [
+      0.7947,
+      -0.607
+     ],
+     "widthM": 1.3009,
+     "sillM": 0.9017,
+     "springM": 2.0003,
+     "crownM": 2.0003,
+     "head": "flat",
+     "bearing": 142.626,
+     "areaM2": 1.4293
+    },
+    {
+     "id": "143:-10.9",
+     "base": [
+      -1.2755,
+      0.9017,
+      16.3139
+     ],
+     "n": [
+      0.6056,
+      0.7958
+     ],
+     "t": [
+      0.7958,
+      -0.6056
+     ],
+     "widthM": 1.2992,
+     "sillM": 0.9017,
+     "springM": 2.0003,
+     "crownM": 2.0003,
+     "head": "flat",
+     "bearing": 142.7263,
+     "areaM2": 1.4274
+    },
+    {
+     "id": "143:-9.2",
+     "base": [
+      0.0793,
+      0.9017,
+      15.2834
+     ],
+     "n": [
+      0.6048,
+      0.7964
+     ],
+     "t": [
+      0.7964,
+      -0.6048
+     ],
+     "widthM": 1.2994,
+     "sillM": 0.9017,
+     "springM": 2.0003,
+     "crownM": 2.0003,
+     "head": "flat",
+     "bearing": 142.7852,
+     "areaM2": 1.4276
+    },
+    {
+     "id": "232:-1.4",
+     "base": [
+      -16.6351,
+      1.2984,
+      11.295
+     ],
+     "n": [
+      -0.7861,
+      0.6182
+     ],
+     "t": [
+      0.6182,
+      0.7861
+     ],
+     "widthM": 1.4996,
+     "sillM": 1.2984,
+     "springM": 4.3017,
+     "crownM": 4.3017,
+     "head": "flat",
+     "bearing": 231.8182,
+     "areaM2": 4.5038
+    },
+    {
+     "id": "232:2.7",
+     "base": [
+      -14.1583,
+      1.2984,
+      14.5643
+     ],
+     "n": [
+      -0.7861,
+      0.6182
+     ],
+     "t": [
+      0.6182,
+      0.7861
+     ],
+     "widthM": 1.4996,
+     "sillM": 1.2984,
+     "springM": 4.3017,
+     "crownM": 4.3017,
+     "head": "flat",
+     "bearing": 231.8182,
+     "areaM2": 4.5038
+    },
+    {
+     "id": "232:-3.5",
+     "base": [
+      -17.894,
+      1.2984,
+      9.6775
+     ],
+     "n": [
+      -0.7861,
+      0.6182
+     ],
+     "t": [
+      0.6182,
+      0.7861
+     ],
+     "widthM": 1.4996,
+     "sillM": 1.2984,
+     "springM": 4.3017,
+     "crownM": 4.3017,
+     "head": "flat",
+     "bearing": 231.8182,
+     "areaM2": 4.5038
+    },
+    {
+     "id": "232:0.7",
+     "base": [
+      -15.3948,
+      1.2984,
+      12.9297
+     ],
+     "n": [
+      -0.7867,
+      0.6173
+     ],
+     "t": [
+      0.6173,
+      0.7867
+     ],
+     "widthM": 1.5032,
+     "sillM": 1.2984,
+     "springM": 4.3017,
+     "crownM": 4.3017,
+     "head": "flat",
+     "bearing": 231.8795,
+     "areaM2": 4.5146
+    },
+    {
+     "id": "232:-5.4",
+     "base": [
+      -19.1796,
+      1.2984,
+      8.1454
+     ],
+     "n": [
+      -0.7873,
+      0.6166
+     ],
+     "t": [
+      0.6166,
+      0.7873
+     ],
+     "widthM": 1.5034,
+     "sillM": 1.2984,
+     "springM": 4.3017,
+     "crownM": 4.3017,
+     "head": "flat",
+     "bearing": 231.9306,
+     "areaM2": 4.515
+    }
+   ]
+  },
+  "chunk-face-utrechtse-48-76": {
+   "status": "published",
+   "review": "Published 2026-11-20: blind A/B, one fresh opus judge, photo | A | B at two 2025-01-20 panorama poses: fit won 2/2 (med, med). Judge notes left: sleeves too saturated (the photo is mostly pale and monochrome with a black-and-white poster); a second CONCERTO on a narrow window unconfirmed; the corner shop template says WIJNHANDEL where the photo shows WE ARE LABELS OUTLET (not this lane).",
+   "fits": [
+    {
+     "at": [
+      0,
+      0
+     ],
+     "opening": "180:4.8",
+     "tenant": "Concerto (Utrechtsestraat 54-60)",
+     "source": "Gemeente Amsterdam panoramas b_20250120_0926_Track30_Sphere_00286/00287 (2025-01-20), walls w01-77r/w01-78r; 2016 TMX7316060226-000020_pano_0003_000423 cross-check; OSM n2649956400, n10766312969; glass tone region-tone.ts #2a1d10",
+     "read": {
+      "glass": "#2a1d10",
+      "goods": {
+       "kind": "sleeves",
+       "hexes": [
+        "#c9c2b0",
+        "#3c5a8a",
+        "#a63a2c",
+        "#d8b04a",
+        "#2f2f2f",
+        "#e6e1d6",
+        "#6b8f5a",
+        "#8a5a8c"
+       ]
+      },
+      "frame": {
+       "hex": "#5a1a17",
+       "transom": true
+      },
+      "letters": [
+       {
+        "where": "glass",
+        "text": "CONCERTO",
+        "ink": "#f2efe6",
+        "v": 1.95,
+        "heightM": 0.26
+       }
+      ]
+     }
+    },
+    {
+     "at": [
+      0,
+      0
+     ],
+     "opening": "180:11.1",
+     "tenant": "Concerto (Utrechtsestraat 54-60)",
+     "source": "Gemeente Amsterdam panoramas b_20250120_0926_Track30_Sphere_00286/00287 (2025-01-20), walls w01-77r/w01-78r; 2016 TMX7316060226-000020_pano_0003_000423 cross-check; OSM n2649956400, n10766312969; glass tone region-tone.ts #2a1d10",
+     "read": {
+      "glass": "#2a1d10",
+      "goods": {
+       "kind": "sleeves",
+       "hexes": [
+        "#c9c2b0",
+        "#3c5a8a",
+        "#a63a2c",
+        "#d8b04a",
+        "#2f2f2f",
+        "#e6e1d6",
+        "#6b8f5a",
+        "#8a5a8c"
+       ]
+      },
+      "frame": {
+       "hex": "#5a1a17",
+       "transom": true
+      },
+      "letters": [
+       {
+        "where": "glass",
+        "text": "CONCERTO",
+        "ink": "#f2efe6",
+        "v": 1.95,
+        "heightM": 0.26
+       }
+      ]
+     }
+    },
+    {
+     "at": [
+      0,
+      0
+     ],
+     "opening": "180:15.3",
+     "tenant": "Concerto (Utrechtsestraat 54-60)",
+     "source": "Gemeente Amsterdam panoramas b_20250120_0926_Track30_Sphere_00286/00287 (2025-01-20), walls w01-77r/w01-78r; 2016 TMX7316060226-000020_pano_0003_000423 cross-check; OSM n2649956400, n10766312969; glass tone region-tone.ts #2a1d10",
+     "read": {
+      "glass": "#2a1d10",
+      "goods": {
+       "kind": "sleeves",
+       "hexes": [
+        "#c9c2b0",
+        "#3c5a8a",
+        "#a63a2c",
+        "#d8b04a",
+        "#2f2f2f",
+        "#e6e1d6",
+        "#6b8f5a",
+        "#8a5a8c"
+       ]
+      },
+      "frame": {
+       "hex": "#5a1a17",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      0,
+      0
+     ],
+     "opening": "181:21.7",
+     "tenant": "Concerto (Utrechtsestraat 54-60)",
+     "source": "Gemeente Amsterdam panoramas b_20250120_0926_Track30_Sphere_00286/00287 (2025-01-20), walls w01-77r/w01-78r; 2016 TMX7316060226-000020_pano_0003_000423 cross-check; OSM n2649956400, n10766312969; glass tone region-tone.ts #2a1d10",
+     "read": {
+      "glass": "#2a1d10",
+      "goods": {
+       "kind": "sleeves",
+       "hexes": [
+        "#c9c2b0",
+        "#3c5a8a",
+        "#a63a2c",
+        "#d8b04a",
+        "#2f2f2f",
+        "#e6e1d6",
+        "#6b8f5a",
+        "#8a5a8c"
+       ]
+      },
+      "frame": {
+       "hex": "#5a1a17",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      0,
+      0
+     ],
+     "opening": "180:25.4",
+     "tenant": "Concerto Koffie (Utrechtsestraat 52)",
+     "source": "Gemeente Amsterdam panoramas b_20250120_0926_Track30_Sphere_00286/00287 (2025-01-20), walls w01-77r/w01-78r; 2016 TMX7316060226-000020_pano_0003_000423 cross-check; OSM n2649956400, n10766312969; glass tone region-tone.ts #2a1d10",
+     "read": {
+      "glass": "#2a1d10",
+      "goods": {
+       "kind": "sleeves",
+       "hexes": [
+        "#c9c2b0",
+        "#3c5a8a",
+        "#a63a2c",
+        "#d8b04a",
+        "#2f2f2f",
+        "#e6e1d6",
+        "#6b8f5a",
+        "#8a5a8c"
+       ]
+      },
+      "frame": {
+       "hex": "#5a1a17",
+       "transom": true
+      },
+      "letters": [
+       {
+        "where": "glass",
+        "text": "CONCERTO KOFFIE",
+        "ink": "#f2efe6",
+        "v": 1.95,
+        "heightM": 0.26
+       }
+      ]
+     }
+    }
+   ],
+   "openings": [
+    {
+     "id": "1:-11.0",
+     "base": [
+      11.1418,
+      0.8998,
+      -20.3526
+     ],
+     "n": [
+      0.0088,
+      -1
+     ],
+     "t": [
+      -1,
+      -0.0088
+     ],
+     "widthM": 1.0503,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 0.5026,
+     "areaM2": 1.8904,
+     "pand": 6
+    },
+    {
+     "id": "1:-13.7",
+     "base": [
+      13.9148,
+      0.8998,
+      -20.3273
+     ],
+     "n": [
+      0.0088,
+      -1
+     ],
+     "t": [
+      -1,
+      -0.0088
+     ],
+     "widthM": 1.0503,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 0.5026,
+     "areaM2": 1.8904,
+     "pand": 6
+    },
+    {
+     "id": "1:-16.5",
+     "base": [
+      16.6878,
+      0.8998,
+      -20.302
+     ],
+     "n": [
+      0.0088,
+      -1
+     ],
+     "t": [
+      -1,
+      -0.0088
+     ],
+     "widthM": 1.0503,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 0.5026,
+     "areaM2": 1.8904,
+     "pand": 6
+    },
+    {
+     "id": "1:-19.3",
+     "base": [
+      19.4609,
+      0.8998,
+      -20.2766
+     ],
+     "n": [
+      0.0088,
+      -1
+     ],
+     "t": [
+      -1,
+      -0.0088
+     ],
+     "widthM": 1.0503,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 0.5026,
+     "areaM2": 1.8904,
+     "pand": 6
+    },
+    {
+     "id": "1:-22.1",
+     "base": [
+      22.2339,
+      0.8998,
+      -20.2513
+     ],
+     "n": [
+      0.0088,
+      -1
+     ],
+     "t": [
+      -1,
+      -0.0088
+     ],
+     "widthM": 1.0503,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 0.5026,
+     "areaM2": 1.8904,
+     "pand": 6
+    },
+    {
+     "id": "1:-29.4",
+     "base": [
+      29.543,
+      0.8998,
+      -20.1834
+     ],
+     "n": [
+      0.0088,
+      -1
+     ],
+     "t": [
+      -1,
+      -0.0088
+     ],
+     "widthM": 1.0503,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 0.5026,
+     "areaM2": 1.8904,
+     "pand": 8
+    },
+    {
+     "id": "1:-32.0",
+     "base": [
+      32.1836,
+      0.8998,
+      -20.1592
+     ],
+     "n": [
+      0.0088,
+      -1
+     ],
+     "t": [
+      -1,
+      -0.0088
+     ],
+     "widthM": 1.0503,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 0.5026,
+     "areaM2": 1.8904,
+     "pand": 8
+    },
+    {
+     "id": "1:-8.5",
+     "base": [
+      8.7327,
+      0.8998,
+      -20.3751
+     ],
+     "n": [
+      0.0099,
+      -1
+     ],
+     "t": [
+      -1,
+      -0.0099
+     ],
+     "widthM": 1.0503,
+     "sillM": 0.8998,
+     "springM": 2.1999,
+     "crownM": 2.1999,
+     "head": "flat",
+     "bearing": 0.5654,
+     "areaM2": 1.3655,
+     "pand": 6
+    },
+    {
+     "id": "1:10.6",
+     "base": [
+      -10.299,
+      0.8998,
+      -14.1859
+     ],
+     "n": [
+      0.0241,
+      -0.9997
+     ],
+     "t": [
+      -0.9997,
+      -0.0241
+     ],
+     "widthM": 1.0494,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 1.3834,
+     "areaM2": 1.8888,
+     "pand": 4
+    },
+    {
+     "id": "1:9.1",
+     "base": [
+      -8.7893,
+      0.8998,
+      -14.1502
+     ],
+     "n": [
+      0.0241,
+      -0.9997
+     ],
+     "t": [
+      -0.9997,
+      -0.0241
+     ],
+     "widthM": 1.0494,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 1.3834,
+     "areaM2": 1.8888,
+     "pand": 4
+    },
+    {
+     "id": "2:17.9",
+     "base": [
+      -17.1095,
+      0.8998,
+      -20.8778
+     ],
+     "n": [
+      0.0373,
+      -0.9993
+     ],
+     "t": [
+      -0.9993,
+      -0.0373
+     ],
+     "widthM": 1.0498,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 2.1374,
+     "areaM2": 1.8896,
+     "pand": 2
+    },
+    {
+     "id": "2:13.7",
+     "base": [
+      -13.2759,
+      0.8998,
+      -11.5493
+     ],
+     "n": [
+      0.0406,
+      -0.9992
+     ],
+     "t": [
+      -0.9992,
+      -0.0406
+     ],
+     "widthM": 1.05,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 2.3257,
+     "areaM2": 1.8899,
+     "pand": 3
+    },
+    {
+     "id": "2:15.6",
+     "base": [
+      -15.1553,
+      0.8998,
+      -11.6265
+     ],
+     "n": [
+      0.0406,
+      -0.9992
+     ],
+     "t": [
+      -0.9992,
+      -0.0406
+     ],
+     "widthM": 1.05,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 2.3258,
+     "areaM2": 1.8899,
+     "pand": 3
+    },
+    {
+     "id": "179:37.8",
+     "base": [
+      37.7556,
+      0.6303,
+      0.054
+     ],
+     "n": [
+      0.0092,
+      1
+     ],
+     "t": [
+      1,
+      -0.0092
+     ],
+     "widthM": 2.8733,
+     "sillM": 0.6303,
+     "springM": 3.7811,
+     "crownM": 3.7811,
+     "head": "flat",
+     "bearing": 179.4718,
+     "areaM2": 9.0531,
+     "pand": 9
+    },
+    {
+     "id": "180:-32.2",
+     "base": [
+      -32.1515,
+      0.6303,
+      0.042
+     ],
+     "n": [
+      0.0074,
+      1
+     ],
+     "t": [
+      1,
+      -0.0074
+     ],
+     "widthM": 5.6072,
+     "sillM": 0.6303,
+     "springM": 4.3972,
+     "crownM": 4.3972,
+     "head": "flat",
+     "bearing": 179.5764,
+     "areaM2": 21.1215,
+     "pand": 0
+    },
+    {
+     "id": "180:25.4",
+     "base": [
+      25.4347,
+      0.6303,
+      0.1387
+     ],
+     "n": [
+      0.0063,
+      1
+     ],
+     "t": [
+      1,
+      -0.0063
+     ],
+     "widthM": 2.9262,
+     "sillM": 0.6303,
+     "springM": 3.3008,
+     "crownM": 3.3008,
+     "head": "flat",
+     "bearing": 179.6392,
+     "areaM2": 7.8146,
+     "pand": 7
+    },
+    {
+     "id": "180:30.6",
+     "base": [
+      30.5679,
+      0.6303,
+      0.1139
+     ],
+     "n": [
+      0.0056,
+      1
+     ],
+     "t": [
+      1,
+      -0.0056
+     ],
+     "widthM": 3.0656,
+     "sillM": 0.6303,
+     "springM": 3.6855,
+     "crownM": 3.6855,
+     "head": "flat",
+     "bearing": 179.6771,
+     "areaM2": 9.3658,
+     "pand": 8
+    },
+    {
+     "id": "180:0.1",
+     "base": [
+      0.0825,
+      0.3804,
+      0.0834
+     ],
+     "n": [
+      0.0051,
+      1
+     ],
+     "t": [
+      1,
+      -0.0051
+     ],
+     "widthM": 4.0341,
+     "sillM": 0.3804,
+     "springM": 4.5123,
+     "crownM": 4.5123,
+     "head": "flat",
+     "bearing": 179.7056,
+     "areaM2": 16.6683,
+     "pand": 5
+    },
+    {
+     "id": "180:-5.7",
+     "base": [
+      -5.7111,
+      0.3804,
+      0.1134
+     ],
+     "n": [
+      0.0051,
+      1
+     ],
+     "t": [
+      1,
+      -0.0051
+     ],
+     "widthM": 4.0341,
+     "sillM": 0.3804,
+     "springM": 4.5123,
+     "crownM": 4.5123,
+     "head": "flat",
+     "bearing": 179.7056,
+     "areaM2": 16.6683,
+     "pand": 5
+    },
+    {
+     "id": "180:-21.5",
+     "base": [
+      -21.4671,
+      0.6303,
+      0.0575
+     ],
+     "n": [
+      0.0042,
+      1
+     ],
+     "t": [
+      1,
+      -0.0042
+     ],
+     "widthM": 5.7131,
+     "sillM": 0.6303,
+     "springM": 4.6424,
+     "crownM": 4.6424,
+     "head": "flat",
+     "bearing": 179.7575,
+     "areaM2": 22.9216,
+     "pand": 2
+    },
+    {
+     "id": "180:11.1",
+     "base": [
+      11.0883,
+      0.6303,
+      0.061
+     ],
+     "n": [
+      0.0015,
+      1
+     ],
+     "t": [
+      1,
+      -0.0015
+     ],
+     "widthM": 3.8083,
+     "sillM": 0.6303,
+     "springM": 5.0363,
+     "crownM": 5.0363,
+     "head": "flat",
+     "bearing": 179.9134,
+     "areaM2": 16.7793,
+     "pand": 6
+    },
+    {
+     "id": "180:15.3",
+     "base": [
+      15.2645,
+      0.6303,
+      0.1277
+     ],
+     "n": [
+      0.0012,
+      1
+     ],
+     "t": [
+      1,
+      -0.0012
+     ],
+     "widthM": 2.9458,
+     "sillM": 0.6303,
+     "springM": 2.7343,
+     "crownM": 2.7343,
+     "head": "flat",
+     "bearing": 179.9328,
+     "areaM2": 6.1977,
+     "pand": 6
+    },
+    {
+     "id": "180:4.8",
+     "base": [
+      4.777,
+      0.6303,
+      0.069
+     ],
+     "n": [
+      0.0009,
+      1
+     ],
+     "t": [
+      1,
+      -0.0009
+     ],
+     "widthM": 3.7542,
+     "sillM": 0.6303,
+     "springM": 3.4195,
+     "crownM": 3.4195,
+     "head": "flat",
+     "bearing": 179.9473,
+     "areaM2": 10.4709,
+     "pand": 6
+    },
+    {
+     "id": "180:-15.2",
+     "base": [
+      -15.1558,
+      0.6303,
+      0.0466
+     ],
+     "n": [
+      -0.0083,
+      1
+     ],
+     "t": [
+      1,
+      0.0083
+     ],
+     "widthM": 1.6745,
+     "sillM": 0.6303,
+     "springM": 3.6521,
+     "crownM": 3.6521,
+     "head": "flat",
+     "bearing": 180.4729,
+     "areaM2": 5.0598,
+     "pand": 3
+    },
+    {
+     "id": "181:-9.6",
+     "base": [
+      -9.5574,
+      0.6303,
+      0.1082
+     ],
+     "n": [
+      -0.0129,
+      0.9999
+     ],
+     "t": [
+      0.9999,
+      0.0129
+     ],
+     "widthM": 2.0558,
+     "sillM": 0.6303,
+     "springM": 3.2133,
+     "crownM": 3.2133,
+     "head": "flat",
+     "bearing": 180.7382,
+     "areaM2": 5.31,
+     "pand": 4
+    },
+    {
+     "id": "181:-25.7",
+     "base": [
+      -25.6531,
+      0.3804,
+      0.0592
+     ],
+     "n": [
+      -0.0131,
+      0.9999
+     ],
+     "t": [
+      0.9999,
+      0.0131
+     ],
+     "widthM": 1.0584,
+     "sillM": 0.3804,
+     "springM": 3.0164,
+     "crownM": 3.0164,
+     "head": "flat",
+     "bearing": 180.7481,
+     "areaM2": 2.7899,
+     "pand": 1
+    },
+    {
+     "id": "181:-28.0",
+     "base": [
+      -28.0202,
+      0.3804,
+      0.0293
+     ],
+     "n": [
+      -0.0131,
+      0.9999
+     ],
+     "t": [
+      0.9999,
+      0.0131
+     ],
+     "widthM": 1.0572,
+     "sillM": 0.3804,
+     "springM": 3.0164,
+     "crownM": 3.0164,
+     "head": "flat",
+     "bearing": 180.7489,
+     "areaM2": 2.7869,
+     "pand": 1
+    },
+    {
+     "id": "181:21.7",
+     "base": [
+      21.6984,
+      0.6303,
+      0.1335
+     ],
+     "n": [
+      -0.0192,
+      0.9998
+     ],
+     "t": [
+      0.9998,
+      0.0192
+     ],
+     "widthM": 2.944,
+     "sillM": 0.6303,
+     "springM": 3.7074,
+     "crownM": 3.7074,
+     "head": "flat",
+     "bearing": 181.0983,
+     "areaM2": 9.0588,
+     "pand": 6
+    },
+    {
+     "id": "356:21.3",
+     "base": [
+      -23.1271,
+      0.8998,
+      -26.3501
+     ],
+     "n": [
+      -0.068,
+      -0.9977
+     ],
+     "t": [
+      -0.9977,
+      0.068
+     ],
+     "widthM": 1.0504,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 356.1024,
+     "areaM2": 1.8906,
+     "pand": 2
+    },
+    {
+     "id": "356:18.8",
+     "base": [
+      -20.6011,
+      0.8998,
+      -26.5211
+     ],
+     "n": [
+      -0.067,
+      -0.9978
+     ],
+     "t": [
+      -0.9978,
+      0.067
+     ],
+     "widthM": 1.0491,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 356.1609,
+     "areaM2": 1.8884,
+     "pand": 2
+    },
+    {
+     "id": "358:-35.1",
+     "base": [
+      34.8075,
+      0.8998,
+      -8.6502
+     ],
+     "n": [
+      -0.0329,
+      -0.9995
+     ],
+     "t": [
+      -0.9995,
+      0.0329
+     ],
+     "widthM": 1.0497,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 358.1139,
+     "areaM2": 1.8893,
+     "pand": 9
+    },
+    {
+     "id": "358:-27.9",
+     "base": [
+      27.4132,
+      0.8998,
+      -15.7607
+     ],
+     "n": [
+      -0.0318,
+      -0.9995
+     ],
+     "t": [
+      -0.9995,
+      0.0318
+     ],
+     "widthM": 1.0496,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 358.1767,
+     "areaM2": 1.8893,
+     "pand": 7
+    },
+    {
+     "id": "358:-37.1",
+     "base": [
+      36.8349,
+      0.8998,
+      -8.7164
+     ],
+     "n": [
+      -0.0318,
+      -0.9995
+     ],
+     "t": [
+      -0.9995,
+      0.0318
+     ],
+     "widthM": 1.0508,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 358.1787,
+     "areaM2": 1.8913,
+     "pand": 9
+    },
+    {
+     "id": "359:-3.7",
+     "base": [
+      3.3732,
+      0.8998,
+      -18.589
+     ],
+     "n": [
+      -0.0186,
+      -0.9998
+     ],
+     "t": [
+      -0.9998,
+      0.0186
+     ],
+     "widthM": 1.0504,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 358.9321,
+     "areaM2": 1.8907,
+     "pand": 6
+    },
+    {
+     "id": "359:-6.5",
+     "base": [
+      6.1255,
+      0.8998,
+      -18.6379
+     ],
+     "n": [
+      -0.0175,
+      -0.9998
+     ],
+     "t": [
+      -0.9998,
+      0.0175
+     ],
+     "widthM": 1.0504,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 358.9949,
+     "areaM2": 1.8907,
+     "pand": 6
+    },
+    {
+     "id": "359:34.5",
+     "base": [
+      -34.6079,
+      0.8998,
+      -11.6467
+     ],
+     "n": [
+      -0.011,
+      -0.9999
+     ],
+     "t": [
+      -0.9999,
+      0.011
+     ],
+     "widthM": 1.0492,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 359.3711,
+     "areaM2": 1.8884,
+     "pand": 0
+    },
+    {
+     "id": "359:29.8",
+     "base": [
+      -29.9687,
+      0.8998,
+      -11.695
+     ],
+     "n": [
+      -0.011,
+      -0.9999
+     ],
+     "t": [
+      -0.9999,
+      0.011
+     ],
+     "widthM": 1.0503,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 359.3718,
+     "areaM2": 1.8905,
+     "pand": 0
+    },
+    {
+     "id": "359:32.3",
+     "base": [
+      -32.44,
+      0.8998,
+      -11.6691
+     ],
+     "n": [
+      -0.0099,
+      -1
+     ],
+     "t": [
+      -1,
+      0.0099
+     ],
+     "widthM": 1.0503,
+     "sillM": 0.8998,
+     "springM": 2.6997,
+     "crownM": 2.6997,
+     "head": "flat",
+     "bearing": 359.4346,
+     "areaM2": 1.8905,
+     "pand": 0
+    }
+   ]
+  },
+  "magna-plaza": {
+   "status": "published",
+   "review": "Published 2026-11-20: blind A/B, one fresh opus judge, two 2025-01-09 panorama poses: fit won 2/2 (Spuistraat front low, Nieuwezijds Voorburgwal front med). Only 11 of 24 reads find an opening within 2.5 m: the builder spaces bays at 5.3 m, not the real window rhythm. Judge notes: too few posters, no legible MANGO lettering at that distance. Openings staged from a geometry-identical glass retag (scripts/retail-fit/magna-plaza-glass-retag.patch), so the GLB itself is unchanged.",
+   "fits": [
+    {
+     "at": [
+      4.890098,
+      52.3738162
+     ],
+     "tenant": "Mango (Magna Plaza)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00103/00101 (2025-01-09), Spuistraat walls w05/w06-288b; tones wall-points.ts; MANGO lettering and SALE posters read on the panorama",
+     "read": {
+      "glass": "#38321b",
+      "frame": {
+       "hex": "#3a2a20"
+      },
+      "posters": {
+       "hex": "#e7a8b4",
+       "n": 1
+      },
+      "letters": [
+       {
+        "where": "glass",
+        "text": "MANGO",
+        "ink": "#f2efe6",
+        "v": 2.4,
+        "heightM": 0.3
+       }
+      ]
+     }
+    },
+    {
+     "at": [
+      4.8900815,
+      52.3737851
+     ],
+     "tenant": "Mango (Magna Plaza)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00103/00101 (2025-01-09), Spuistraat walls w05/w06-288b; tones wall-points.ts; MANGO lettering and SALE posters read on the panorama",
+     "read": {
+      "glass": "#3d2a16",
+      "frame": {
+       "hex": "#3a2a20"
+      },
+      "posters": {
+       "hex": "#e7a8b4",
+       "n": 1
+      }
+     }
+    },
+    {
+     "at": [
+      4.8900633,
+      52.3737509
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00103/00101 (2025-01-09), Spuistraat walls w05/w06-288b; tones wall-points.ts",
+     "read": {
+      "glass": "#312c16",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8901653,
+      52.3739445
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00103/00101 (2025-01-09), Spuistraat walls w05/w06-288b; tones wall-points.ts",
+     "read": {
+      "glass": "#1c1e0f",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8901482,
+      52.373912
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00103/00101 (2025-01-09), Spuistraat walls w05/w06-288b; tones wall-points.ts",
+     "read": {
+      "glass": "#2f220d",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8901316,
+      52.3738803
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00103/00101 (2025-01-09), Spuistraat walls w05/w06-288b; tones wall-points.ts",
+     "read": {
+      "glass": "#3a3823",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8900039,
+      52.3736366
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama TMX7316010203-002932_pano_0001_000121 (2023-01-13), wall w03-288b; tones wall-points.ts",
+     "read": {
+      "glass": "#211c19",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8899879,
+      52.3736067
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama TMX7316010203-002932_pano_0001_000121 (2023-01-13), wall w03-288b; tones wall-points.ts",
+     "read": {
+      "glass": "#221d19",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.889972,
+      52.3735768
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama TMX7316010203-002932_pano_0001_000121 (2023-01-13), wall w03-288b; tones wall-points.ts",
+     "read": {
+      "glass": "#2a231b",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8899561,
+      52.3735469
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama TMX7316010203-002932_pano_0001_000121 (2023-01-13), wall w03-288b; tones wall-points.ts",
+     "read": {
+      "glass": "#25211e",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8899406,
+      52.3735178
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama TMX7316010203-002932_pano_0001_000121 (2023-01-13), wall w03-288b; tones wall-points.ts",
+     "read": {
+      "glass": "#25211d",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8905447,
+      52.3737105
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track05_Sphere_00113 (2025-01-09), Nieuwezijds Voorburgwal wall w02-107b; tones wall-points.ts",
+     "read": {
+      "glass": "#1b1907",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8905592,
+      52.3737398
+     ],
+     "tenant": "Mango (Magna Plaza)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track05_Sphere_00113 (2025-01-09), Nieuwezijds Voorburgwal wall w02-107b; tones wall-points.ts; MANGO lettering and SALE posters read on the panorama",
+     "read": {
+      "glass": "#231e10",
+      "frame": {
+       "hex": "#3a2a20"
+      },
+      "posters": {
+       "hex": "#e7a8b4",
+       "n": 1
+      }
+     }
+    },
+    {
+     "at": [
+      4.8905729,
+      52.3737673
+     ],
+     "tenant": "Mango (Magna Plaza)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track05_Sphere_00113 (2025-01-09), Nieuwezijds Voorburgwal wall w02-107b; tones wall-points.ts; MANGO lettering and SALE posters read on the panorama",
+     "read": {
+      "glass": "#28180c",
+      "frame": {
+       "hex": "#3a2a20"
+      },
+      "goods": {
+       "kind": "rails",
+       "hexes": [
+        "#2b2b2b",
+        "#8a7a6a",
+        "#c9c2b4",
+        "#5a4a40"
+       ]
+      }
+     }
+    },
+    {
+     "at": [
+      4.8905871,
+      52.3737956
+     ],
+     "tenant": "Mango (Magna Plaza)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track05_Sphere_00113 (2025-01-09), Nieuwezijds Voorburgwal wall w02-107b; tones wall-points.ts; MANGO lettering and SALE posters read on the panorama",
+     "read": {
+      "glass": "#231b10",
+      "frame": {
+       "hex": "#3a2a20"
+      },
+      "posters": {
+       "hex": "#e7a8b4",
+       "n": 1
+      }
+     }
+    },
+    {
+     "at": [
+      4.8906012,
+      52.373824
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track05_Sphere_00113 (2025-01-09), Nieuwezijds Voorburgwal wall w02-107b; tones wall-points.ts",
+     "read": {
+      "glass": "#40361f",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.890614,
+      52.3738498
+     ],
+     "tenant": "Mango (Magna Plaza)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track05_Sphere_00113 (2025-01-09), Nieuwezijds Voorburgwal wall w02-107b; tones wall-points.ts; MANGO lettering and SALE posters read on the panorama",
+     "read": {
+      "glass": "#281f0d",
+      "frame": {
+       "hex": "#3a2a20"
+      },
+      "letters": [
+       {
+        "where": "glass",
+        "text": "MANGO",
+        "ink": "#f2efe6",
+        "v": 2.4,
+        "heightM": 0.3
+       }
+      ]
+     }
+    },
+    {
+     "at": [
+      4.8903554,
+      52.3733253
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00170 (2025-01-09), Nieuwezijds Voorburgwal wall w01-107b; tones wall-points.ts",
+     "read": {
+      "glass": "#15190e",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8903686,
+      52.3733519
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00170 (2025-01-09), Nieuwezijds Voorburgwal wall w01-107b; tones wall-points.ts",
+     "read": {
+      "glass": "#0f1209",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8903826,
+      52.3733803
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00170 (2025-01-09), Nieuwezijds Voorburgwal wall w01-107b; tones wall-points.ts",
+     "read": {
+      "glass": "#0d1108",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8903958,
+      52.373407
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00170 (2025-01-09), Nieuwezijds Voorburgwal wall w01-107b; tones wall-points.ts",
+     "read": {
+      "glass": "#13160b",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8904098,
+      52.3734354
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00170 (2025-01-09), Nieuwezijds Voorburgwal wall w01-107b; tones wall-points.ts",
+     "read": {
+      "glass": "#121409",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8904243,
+      52.3734646
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00170 (2025-01-09), Nieuwezijds Voorburgwal wall w01-107b; tones wall-points.ts",
+     "read": {
+      "glass": "#241709",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    },
+    {
+     "at": [
+      4.8904374,
+      52.3734913
+     ],
+     "tenant": "Magna Plaza (shop window, dark)",
+     "source": "Gemeente Amsterdam panorama b_20250109_1300_Track02_Sphere_00170 (2025-01-09), Nieuwezijds Voorburgwal wall w01-107b; tones wall-points.ts",
+     "read": {
+      "glass": "#2c1d0d",
+      "frame": {
+       "hex": "#3a2a20"
+      }
+     }
+    }
+   ],
+   "openings": [
+    {
+     "id": "0:-14.2",
+     "base": [
+      14.1551,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.2999
+    },
+    {
+     "id": "0:-19.5",
+     "base": [
+      19.4523,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.5024,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.3067
+    },
+    {
+     "id": "0:-24.8",
+     "base": [
+      24.7545,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.3013
+    },
+    {
+     "id": "0:-3.6",
+     "base": [
+      3.5532,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.4963,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.2903
+    },
+    {
+     "id": "0:-30.1",
+     "base": [
+      30.0542,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.4975,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.2942
+    },
+    {
+     "id": "0:-8.9",
+     "base": [
+      8.8529,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.5024,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.3047
+    },
+    {
+     "id": "0:1.7",
+     "base": [
+      -1.7459,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.3005
+    },
+    {
+     "id": "0:12.3",
+     "base": [
+      -12.3454,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.3013
+    },
+    {
+     "id": "0:17.6",
+     "base": [
+      -17.6469,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.2999
+    },
+    {
+     "id": "0:22.9",
+     "base": [
+      -22.9448,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.301
+    },
+    {
+     "id": "0:28.2",
+     "base": [
+      -28.2464,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.3013
+    },
+    {
+     "id": "0:7.0",
+     "base": [
+      -7.045,
+      1.5011,
+      -17.9697
+     ],
+     "n": [
+      0,
+      -1
+     ],
+     "t": [
+      -1,
+      0
+     ],
+     "widthM": 2.4963,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 0,
+     "areaM2": 8.2903
+    },
+    {
+     "id": "90:-0.2",
+     "base": [
+      39.6403,
+      1.5011,
+      0.1873
+     ],
+     "n": [
+      1,
+      0
+     ],
+     "t": [
+      0,
+      -1
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 90,
+     "areaM2": 8.3013
+    },
+    {
+     "id": "90:-5.5",
+     "base": [
+      39.6403,
+      1.5011,
+      5.4889
+     ],
+     "n": [
+      1,
+      0
+     ],
+     "t": [
+      0,
+      -1
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 90,
+     "areaM2": 8.2999
+    },
+    {
+     "id": "90:10.4",
+     "base": [
+      39.6403,
+      1.5011,
+      -10.4115
+     ],
+     "n": [
+      1,
+      0
+     ],
+     "t": [
+      0,
+      -1
+     ],
+     "widthM": 2.5024,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 90,
+     "areaM2": 8.3039
+    },
+    {
+     "id": "90:5.1",
+     "base": [
+      39.6403,
+      1.5011,
+      -5.1118
+     ],
+     "n": [
+      1,
+      0
+     ],
+     "t": [
+      0,
+      -1
+     ],
+     "widthM": 2.4963,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 90,
+     "areaM2": 8.2903
+    },
+    {
+     "id": "180:-14.2",
+     "base": [
+      -14.1551,
+      1.5011,
+      17.9716
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.2999
+    },
+    {
+     "id": "180:-19.5",
+     "base": [
+      -19.4523,
+      1.5011,
+      17.9716
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.5024,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.3067
+    },
+    {
+     "id": "180:-24.8",
+     "base": [
+      -24.7545,
+      1.5011,
+      17.9716
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.3013
+    },
+    {
+     "id": "180:-3.6",
+     "base": [
+      -3.5532,
+      1.5011,
+      17.7901
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.4963,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.2903
+    },
+    {
+     "id": "180:-30.1",
+     "base": [
+      -30.0542,
+      1.5011,
+      17.9716
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.4975,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.2942
+    },
+    {
+     "id": "180:-8.9",
+     "base": [
+      -8.8529,
+      1.5011,
+      17.9716
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.5024,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.3047
+    },
+    {
+     "id": "180:1.7",
+     "base": [
+      1.7459,
+      1.5011,
+      17.7901
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.3005
+    },
+    {
+     "id": "180:12.3",
+     "base": [
+      12.3454,
+      1.5011,
+      17.9716
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.3013
+    },
+    {
+     "id": "180:17.6",
+     "base": [
+      17.6469,
+      1.5011,
+      17.9716
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.2999
+    },
+    {
+     "id": "180:22.9",
+     "base": [
+      22.9448,
+      1.5011,
+      17.9716
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.301
+    },
+    {
+     "id": "180:28.2",
+     "base": [
+      28.2464,
+      1.5011,
+      17.9716
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.3013
+    },
+    {
+     "id": "180:7.0",
+     "base": [
+      7.045,
+      1.5011,
+      17.7901
+     ],
+     "n": [
+      0,
+      1
+     ],
+     "t": [
+      1,
+      0
+     ],
+     "widthM": 2.4963,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 180,
+     "areaM2": 8.2903
+    },
+    {
+     "id": "270:-0.2",
+     "base": [
+      -39.6403,
+      1.5011,
+      -0.1879
+     ],
+     "n": [
+      -1,
+      0
+     ],
+     "t": [
+      0,
+      1
+     ],
+     "widthM": 2.4963,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 270,
+     "areaM2": 8.2898
+    },
+    {
+     "id": "270:-5.5",
+     "base": [
+      -39.6403,
+      1.5011,
+      -5.487
+     ],
+     "n": [
+      -1,
+      0
+     ],
+     "t": [
+      0,
+      1
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 270,
+     "areaM2": 8.3013
+    },
+    {
+     "id": "270:10.4",
+     "base": [
+      -39.6403,
+      1.5011,
+      10.4134
+     ],
+     "n": [
+      -1,
+      0
+     ],
+     "t": [
+      0,
+      1
+     ],
+     "widthM": 2.5024,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 270,
+     "areaM2": 8.3053
+    },
+    {
+     "id": "270:5.1",
+     "base": [
+      -39.6403,
+      1.5011,
+      5.1112
+     ],
+     "n": [
+      -1,
+      0
+     ],
+     "t": [
+      0,
+      1
+     ],
+     "widthM": 2.5012,
+     "sillM": 1.5011,
+     "springM": 3.8503,
+     "crownM": 5.1009,
+     "head": "round",
+     "bearing": 270,
+     "areaM2": 8.3013
     }
    ]
   }

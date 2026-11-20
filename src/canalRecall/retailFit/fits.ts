@@ -14,7 +14,7 @@ export const STAGED_MODELS = (staged as unknown as { models: Record<string, Stag
 
 /** Every staged read as a fit (both statuses); `fitsForModel` filters by the mode. */
 export const HAND_FITS: readonly (TenantFit & { status: StagedModel['status'] })[] = Object.entries(STAGED_MODELS).flatMap(([model, m]) =>
-  m.fits.map(f => ({ model, at: f.at, tenant: f.tenant, source: f.source, layers: layersOfRead(f.read), status: m.status })));
+  m.fits.map(f => ({ model, at: f.at, ...(f.opening ? { opening: f.opening } : {}), tenant: f.tenant, source: f.source, layers: layersOfRead(f.read), status: m.status })));
 
 /** Does `model` draw a fit in this mode? */
 export const modelDraws = (model: string, mode: RetailFitMode): boolean =>
@@ -56,7 +56,8 @@ export function fitsForModel(model: string, openings: readonly HostOpening[], to
   const taken = new Set<string>();
   for (const f of HAND_FITS) {
     if (f.model !== model || !modelDraws(model, mode)) continue;
-    const [x, z] = toNative(f.at[0], f.at[1]), op = openingAt(openings.filter(o => !taken.has(o.id)), x, z, 2.5);
+    const free = openings.filter(o => !taken.has(o.id));
+    const op = f.opening ? free.find(o => o.id === f.opening) ?? null : (() => { const [x, z] = toNative(f.at[0], f.at[1]); return openingAt(free, x, z, 2.5); })();
     if (!op) continue;
     taken.add(op.id); out.push({ op, tenant: f.tenant, layers: f.layers, source: f.source });
   }

@@ -47,7 +47,7 @@ export type FitLayer =
   /** The lit room behind clear glass: a flat colour over the opening (`v0`/`v1` metres above the sill, default all). */
   | { k: 'interior'; hex: string; v0?: number; v1?: number }
   /** Goods seen through the glass: shop tables (Apple), shelving rows (a supermarket), clothes rails, seats. */
-  | { k: 'goods'; kind: 'tables' | 'shelves' | 'rails' | 'seats' | 'curtains'; hexes: string[] }
+  | { k: 'goods'; kind: 'tables' | 'shelves' | 'rails' | 'seats' | 'curtains' | 'sleeves'; hexes: string[] }
   /** Pendant lamps hanging in the opening's upper glass. */
   | { k: 'lamps'; hex: string; n?: number }
   /** Window vinyl over the glass: a solid colour or a printed pattern (Delft blue on white), with an optional clear
@@ -74,6 +74,8 @@ export interface TenantFit {
   model: string;
   /** The opening: the point (lng, lat) nearest its centre, from an OSM entrance/shop node or a panorama read. */
   at: [number, number];
+  /** Or the id of a staged opening (retail-fits.json `openings`), matched exactly. */
+  opening?: string;
   tenant: string;
   layers: FitLayer[];
   /** Evidence: an OSM element, a panorama id + date, a URL. */
