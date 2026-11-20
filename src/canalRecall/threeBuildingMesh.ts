@@ -64,7 +64,7 @@ import { measuredRoofFurniture } from './roofs/roofFurniture.js';
 import { BOX_H_M, BOX_HEX, BOX_L_M, BOX_W_M, FLAT_SURFACE_BUDGET, LIP_H_M, parapetLipTris, roofBoxTris, stairCorePoint } from './roofs/flatRoofSurface.js';
 import type { FurnitureItem } from './roofs/roofSlots.js';
 import type { FacadeRecordInput, FacadeSpecInput } from './look/facadeRecord.js';
-import { bentFrontFacet, facetSpan, facetU, type FacetSpan } from './bentFrontFacets.js';
+import { bentFrontFacet, facetSpan, facetU, mergeSteppedRuns, type FacetSpan } from './bentFrontFacets.js';
 /** Door walls this much further from the street than the nearest still count as on the nearest road (stoop wall choice). */
 const STOOP_ROAD_SLACK_M = 4;
 
@@ -921,7 +921,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     let recFrontM = 0;
     /** F1: the generic layout of the longest street run (the record's priors copy it: storeys, heights, windows, door). */
     let recGeneric: FacadeGenericLayout | undefined;
-    const hiddenEdge = (e: Edge) => hiddenByNeighbour(e, fallbackBuilding), runList = wallRuns(rings[bi], hiddenEdge);
+    const hiddenEdge = (e: Edge) => hiddenByNeighbour(e, fallbackBuilding);
+    // A front stepped by sub-metre jogs is one run, its jogs plain wall (bentFrontFacets.ts mergeSteppedRuns, feedback f8f282).
+    const stepped = !b.recipe && !b.specRecipe && !b.rowSeries && !b.designSlice && b.plainLayer !== undefined ? mergeSteppedRuns(wallRuns(rings[bi], hiddenEdge), COS_RUN) : null;
+    const runList = stepped ? stepped.runs : wallRuns(rings[bi], hiddenEdge), stepJogs = stepped?.jogs;
+    const runLengths = (run: ReadonlyArray<{ e: Edge }>) => run.map(r => stepJogs?.has(r.e) ? 0 : r.e.len);
     // House rows: a stated stoop stands on the building's longest street run only (rowDressOnEdge).
     const runLen = (r: Array<{ e: Edge }>) => r.reduce((s, { e }) => s + e.len, 0);
     const rowStoopRun = b.rowDress?.stoop ? runList.filter(r => r.some(({ e }) => doorAllowed.has(e))).sort((p, q) => runLen(q) - runLen(p))[0] : undefined;
@@ -999,7 +1003,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         // F1: one quad per wall plane, base to top, u in metres along the run (bays carry on round a kink), v from the base.
         const runLen = run.reduce((sum, r) => sum + r.e.len, 0), street = run.some(({ e }) => doorAllowed.has(e));
         if (street && runLen > recFrontM) {
-          const g = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, runSeed(b, first, streetRun), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
+          const g = b.bare ? null : layoutRun(b.style, runLengths(run), facadeTop - base, runSeed(b, first, streetRun), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
           // One cell per layout bay (cellU 1): the photo look's preset paints its own window count in it (S6c: F4 round 1 read
           // one wide window where the game drew two, "window kind" 14 -> 25).
           const per = bayPreset && b.openings?.upper.axes.length ? b.openings.upper.axes.length : GENERIC_WINDOWS_PER_BAY[b.style] ?? 1;
@@ -1030,7 +1034,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         }
         continue;
       }
-      const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, runSeed(b, first, streetRun), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
+      const layout = b.bare ? null : layoutRun(b.style, runLengths(run), facadeTop - base, runSeed(b, first, streetRun), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
       if (layoutProbe.sink && layout) layoutProbe.sink(b.id, { storeys: layout.storeys, groundM: layout.groundM, storeyM: layout.storeyM, bays: units ? layout.bays : layout.bays * (b.openings?.upper?.axes.length ?? 1), street: run.some(({ e }) => doorAllowed.has(e)), lengthM: layout.lengthM, base, style: b.style, axes: b.openings?.upper?.axes.length ?? 1, recipe: !!b.recipe, fit: specBays ? (b.specRecipe?.bays || b.specRecipe?.storeys ? 'spec' : 'prior') : null, exposedM: facadeTop - base });
       if(layout&&b.recipe?.facadeAssembly==='stacked-open-balcony'&&base<.5){
         const center=(layout.bays-1)/2;
@@ -1132,6 +1136,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const groundFacet: FacetSpan | null = facetOk && !b.shop && !b.shopfront ? facetSpan(layout.lengthM, facetCellM, facetOpenings?.ground ?? undefined) : null;
       run.forEach(({ e }, k) => {
         walls++;
+        if (stepJogs?.has(e)) {
+          // A jog of a stepped front: plain wall from the base to the top, no bay of its own.
+          if (top > base + 0.01) quads.push({ kind: 'wall-plain', e, u0: 0, u1: Math.max(0.05, e.len / 5), v1: 1, layer: b.plainLayer!, accent, z0: base, z1: top, tint: [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255], along0: 0, along1: 1 });
+          return;
+        }
         const q0 = quads.length;
         const s = layout.edgeStartM[k];
         if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.specBandM ? { bandM: b.specBandM } : {}), ...(b.specFieldsForce?.length ? { statedFirst: b.specFieldsForce } : {}), ...(b.onlyExtras ? { onlyExtras: b.onlyExtras } : {}), ...(b.rowSeries ? { seriesId: b.rowSeries } : b.seed ? { seriesId: b.seed } : {}), ...(b.designSlice && streetRun ? { designMember: true as const } : {}), ...(b.rowDress && streetRun ? { rowDress: rowDressOnEdge(b, layout.lengthM, layout.edgeStartM[k], e.len, seenLeftToRight(first), base, traceRun, !b.rowDress.stoop || run === rowStoopRun) } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop || b.retailFront), roofKind: b.roof ? b.roof.plan.kind : 'flat' });

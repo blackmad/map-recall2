@@ -72,3 +72,37 @@ export function facetSpan(lenM: number, cellM: number, row: OpeningRow | undefin
 export function facetU(span: { u0: number; u1: number }, m: number, lenM: number): number {
   return span.u0 + (span.u1 - span.u0) * Math.max(0, Math.min(1, m / lenM));
 }
+
+/**
+ * Stepped fronts (feedback f8f282, Prinsengracht 136-138, pand 0363100012165018): BAG draws one street front as parallel
+ * pieces offset by sub-metre jogs (0.1-0.5 m) where the old plots met. Every jog turns 90 deg, so each 1-3 m piece was a
+ * run of its own and drew a whole bay squeezed onto it: narrow paired windows between stripes. Runs that continue a
+ * front across a single jog shorter than JOG_MAX_M (parallel within the run turn) are one run; the jog itself is listed
+ * so it draws as plain wall and takes no length in the bay layout.
+ */
+export const JOG_MAX_M = 0.6;
+
+type RunEdge = RingEdge & { len: number };
+
+export function mergeSteppedRuns<E extends RunEdge>(runs: ReadonlyArray<ReadonlyArray<{ e: E }>>, cosTurn: number): { runs: Array<Array<{ e: E }>>; jogs: Set<E> } {
+  const out: Array<Array<{ e: E }>> = [], jogs = new Set<E>();
+  const meets = (a: RingEdge, b: RingEdge) => Math.hypot(a.x1 - b.x0, a.y1 - b.y0) < 0.05;
+  const parallel = (a: RunEdge, b: RunEdge) => ((a.x1 - a.x0) * (b.x1 - b.x0) + (a.y1 - a.y0) * (b.y1 - b.y0)) / (a.len * b.len) >= cosTurn;
+  let i = 0;
+  while (i < runs.length) {
+    const cur = [...runs[i]];
+    let j = i + 1;
+    while (j + 1 < runs.length) {
+      const jog = runs[j], next = runs[j + 1], last = cur[cur.length - 1].e;
+      if (jog.length !== 1 || !(jog[0].e.len < JOG_MAX_M) || !meets(last, jog[0].e) || !meets(jog[0].e, next[0].e) || !parallel(last, next[0].e)) break;
+      // A jog is a step across the front, not a piece of it: it must turn off both sides.
+      if (parallel(last, jog[0].e) || parallel(jog[0].e, next[0].e)) break;
+      jogs.add(jog[0].e);
+      cur.push(jog[0], ...next);
+      j += 2;
+    }
+    out.push(cur);
+    i = j;
+  }
+  return { runs: out, jogs };
+}

@@ -3,7 +3,7 @@
 // natural width, or plain wall.
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { bentFrontFacet, facetSpan, facetU, FACET_MAX_M, FACET_PIER_M } from './bentFrontFacets.js';
+import { bentFrontFacet, facetSpan, facetU, mergeSteppedRuns, FACET_MAX_M, FACET_PIER_M } from './bentFrontFacets.js';
 import { wallRuns } from './threeBuildingMesh.js';
 import { presetOpenings } from './facadeOpenings.js';
 import { STYLE_DIMS } from './facadeCells.js';
@@ -57,4 +57,31 @@ test('facetU maps metres along the facet onto its span, shared by the facet\'s w
   assert.equal(facetU({ u0: 0.1, u1: 0.5 }, 0, 2), 0.1);
   assert.ok(Math.abs(facetU({ u0: 0.1, u1: 0.5 }, 1, 2) - 0.3) < 1e-12);
   assert.equal(facetU({ u0: 0.1, u1: 0.5 }, 2, 2), 0.5);
+});
+
+// Feedback f8f282, Prinsengracht 136-138 (pand 0363100012165018), its BAG ring in metres: the canal front (edges 10-24)
+// is 1-3 m pieces offset by 0.1-0.5 m jogs, each of which ended a run, so each piece drew a squeezed bay.
+const prinsengracht136 = ring([[0, 0], [-8.56, 4.86], [-11.21, 3.98], [-10.67, 2.32], [-8.97, 1.44], [-10.06, -0.44], [-9.72, -0.55], [-11.08, -2.98], [-11.42, -2.76], [-14.48, -8.07], [-7.0, -12.38], [-6.66, -11.72], [-6.73, -11.61], [-5.44, -9.29], [-5.3, -9.29], [-3.94, -6.96], [-4.21, -6.52], [-3.67, -5.53], [-3.13, -5.53], [-2.99, -5.31], [-2.92, -5.2], [-1.83, -3.32], [-1.97, -3.21], [-0.61, -0.77], [-0.48, -0.88]]);
+
+test('mergeSteppedRuns: a front stepped by sub-metre jogs is one run, the jogs listed (Prinsengracht 136-138)', () => {
+  const runs = wallRuns([prinsengracht136], () => false);
+  const front = (rs: ReadonlyArray<ReadonlyArray<{ e: E }>>) => rs.find(r => r.some(x => x.e === prinsengracht136[12]))!;
+  assert.ok(front(runs).length <= 2, 'before: the front is cut at every jog');
+  const { runs: merged, jogs } = mergeSteppedRuns(runs, Math.cos(25 * Math.PI / 180));
+  const f = front(merged);
+  for (const k of [10, 12, 14, 16, 18, 20, 22, 24]) assert.ok(f.some(x => x.e === prinsengracht136[k]), `edge ${k} on the front`);
+  for (const k of [11, 13, 15, 17, 21, 23]) assert.ok(jogs.has(prinsengracht136[k]), `edge ${k} is a jog`);
+  const laid = f.filter(x => !jogs.has(x.e)).reduce((s, x) => s + x.e.len, 0);
+  assert.ok(laid > 12 && laid < 14, String(laid));
+  // Every edge is still drawn exactly once.
+  assert.equal(merged.flat().length, runs.flat().length);
+  // A real corner (the 2.8 m and 1.7 m returns at the back) is never a jog.
+  assert.ok(!jogs.has(prinsengracht136[1]) && !jogs.has(prinsengracht136[2]));
+});
+
+test('mergeSteppedRuns leaves fronts without jogs as they are', () => {
+  const runs = wallRuns([oriel], () => false);
+  const { runs: merged, jogs } = mergeSteppedRuns(runs, Math.cos(25 * Math.PI / 180));
+  assert.equal(jogs.size, 0);
+  assert.deepEqual(merged, runs);
 });
