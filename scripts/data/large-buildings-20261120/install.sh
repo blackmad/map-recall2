@@ -17,5 +17,5 @@ node --import tsx scripts/building-recipes/install-large.ts --house=weesperflat-
 #   npx tsx scripts/build-covers.ts && cp artifacts/bag-tiles/covers.json public/canal-drive/models/covers.json && npm run -s check:covers
 #   npm run -s build:canal-signature-landmarks && npm run -s check:signature-bundle
 #   npm run -s build:landmark-lods && npm run -s check:landmark-lods
-#   npm run -s test:fit-golden -- --write && node --import tsx scripts/building-recipes/large-mesh-hashes.ts --write   # new houses only: zeemanlab-170498, weesperflat-169740
+#   npm run -s test:fit-golden -- --write && node --import tsx scripts/building-recipes/large-mesh-hashes.ts --write --allow=zeemanlab-170498,weesperflat-169740
 #   npm run -s check:stale-installs && npm run -s check:canal
