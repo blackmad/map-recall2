@@ -105192,6 +105192,7 @@
       "materialOverrides": {
         "brick": "#5d3e3b",
         "greyBrick": "#3e3638",
+        "concrete": "#5e6670",
         "stone": "#cdc6b6",
         "frame": "#ece8de",
         "glass": "#34383c",
@@ -105400,20 +105401,14 @@
         "depthMetres": 18.972207069396973,
         "depthCoverage": 1.0255247064538904
       },
-      "triangles": 29007,
-      "bytes": 356128,
+      "triangles": 29435,
+      "bytes": 361992,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "e3ea98ba0cd335d1",
         "buildVersion": 2,
         "bytes": 93600,
         "triangles": 4519
-      },
-      "lod2": {
-        "sourceHash": "e3ea98ba0cd335d1",
-        "buildVersion": 6,
-        "bytes": 16460,
-        "triangles": 568
       }
     },
     "banks-mansion": {

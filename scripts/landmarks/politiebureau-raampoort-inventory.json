@@ -113,13 +113,25 @@
     {
      "id": "ne-pinnacles",
      "kind": "tower",
-     "where": "octagonal brick corner pinnacles with stone caps rising above the cornice of the north-east block",
+     "where": "round pepperpot turrets on corbelled bases flanking the crenellated centre bay of the Marnixstraat front, with a stone plaque between them; octagonal pinnacles on the north front corners",
      "approxSizeM": [
-      0.7,
-      2.5
+      0.9,
+      3.4
      ],
-     "plan": "simplified",
-     "how": "octagonal brick cylinder 11.6-13.7 m, stone ring and an 8-sided slate cap; four of them at the block corners",
+     "plan": "modelled",
+     "how": "r7: turret() - corbelled round brick drum 11.4-14.1 m, two stone rings, a crown of six merlons, at t 12.65/16.55 on ring edge 11; crenel() parapet 12.9-14.6 m and a stone plaque between them; pinnacle() keeps the octagonal brick shafts with slate caps on the north front",
+     "seenIn": "TMX7316010203-002967_pano_0005_000107"
+    },
+    {
+     "id": "ne-arched-door",
+     "kind": "other",
+     "where": "arched street door of the north-east block: stone surround with a keystone, dark double door, radial fanlight",
+     "approxSizeM": [
+      1.95,
+      3.75
+     ],
+     "plan": "modelled",
+     "how": "r7: archDoor() on ring edge 15 - stone arch surround, white frame, glass fanlight with three radial bars over a transom, dark leaves; seen square-on in the wall 102 pano",
      "seenIn": "TMX7316010203-002967_pano_0005_000107"
     }
    ]
@@ -227,13 +239,13 @@
     {
      "id": "w-basement",
      "kind": "other",
-     "where": "dark brick basement rising out of the Singelgracht with small windows",
+     "where": "blue-grey brick water plinth rising out of the Singelgracht with small windows",
      "approxSizeM": [
       7.5,
       3
      ],
      "plan": "modelled",
-     "how": "greyBrick slab 0-0.85 m above the 3DBAG ground with a stone ledge; the part below the ground line and its basement windows are not drawn (below-ground gate)",
+     "how": "r7: 'concrete' palette slot (#5e6670, tagged brick) 0-0.85 m above the 3DBAG ground with a stone ledge; the part below the ground line and its basement windows are not drawn (below-ground gate)",
      "seenIn": "TMX7316010203-000205_pano_0000_000212"
     }
    ]

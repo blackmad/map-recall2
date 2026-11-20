@@ -88,15 +88,38 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
     b.add(new T.CylinderGeometry(r + 0.07, r + 0.07, 0.16, 8).translate(x, y1 + 0.08, z), 'stone' as never);
     b.add(new T.ConeGeometry(r + 0.04, 0.75, 8).translate(x, y1 + 0.16 + 0.375, z), 'slate' as never);
   };
+  /** Round pepperpot turret (r7, wall 101 pano TMX7316010203-002967_pano_0005_000107): a corbelled round brick drum on the
+   *  pilaster from the top-floor sill line, two stone rings, and a crenellated crown of six merlons; no slate cap. */
+  const turret = (x: number, z: number, y0: number, y1: number, r = 0.46) => {
+    b.add(new T.ConeGeometry(r, 0.7, 16, 1, true).rotateX(Math.PI).translate(x, y0 - 0.35, z), 'brick' as never);
+    b.add(new T.CylinderGeometry(r, r, y1 - y0, 16).translate(x, (y0 + y1) / 2, z), 'brick' as never);
+    for (const y of [y0 + 0.9, y1 - 0.25]) b.add(new T.CylinderGeometry(r + 0.05, r + 0.05, 0.14, 16).translate(x, y, z), 'stone' as never);
+    for (let k = 0; k < 6; k++) {
+      const a = (k / 6) * Math.PI * 2;
+      b.add(new T.BoxGeometry(0.26, 0.42, 0.16).rotateY(-a).translate(x + Math.cos(a) * (r - 0.08), y1 + 0.21, z + Math.sin(a) * (r - 0.08)), 'brick' as never);
+    }
+  };
+  /** Arched street door (r7, wall 102 pano): stone surround with a keyed arch, a dark double door and a radial fanlight. */
+  const archDoor = (f: Frame, t: number) => {
+    archSlab(b, f, t, 0.35, 1.95, 3.75, 0.09, 'stone');
+    archSlab(b, f, t, 0.4, 1.45, 3.4, 0.13, 'frame');
+    archSlab(b, f, t, 0.45, 1.3, 3.25, 0.17, 'glass');
+    slab(b, f, t, 0.47, 1.22, 2.5, 0.21, 'dark');
+    slab(b, f, t, 0.47, 0.04, 2.5, 0.25, 'frame');
+    slab(b, f, t, 2.97, 1.24, 0.09, 0.25, 'frame');
+    for (const a of [-0.6, 0, 0.6]) slab(b, f, t + Math.sin(a) * 0.3, 3.06, 0.04, 0.55, 0.21, 'frame');
+    slab(b, f, t, 3.95, 0.3, 0.3, 0.17, 'stone');
+  };
   /** The three-storey bay rhythm of the Marnixstraat block: round-headed ground and first floor windows, top-floor pair. */
-  const bay = (f: Frame, t: number, door = false) => {
-    if (door) {
+  const bay = (f: Frame, t: number, door = false, arched = false) => {
+    if (arched) archDoor(f, t);
+    else if (door) {
       archSlab(b, f, t, 0.35, 1.36, 3.05, 0.13, 'frame');
       archSlab(b, f, t, 0.4, 1.2, 2.95, 0.17, 'glass');
       slab(b, f, t, 0.4, 1.14, 2.3, 0.21, 'dark');
       slab(b, f, t, 0.4, 0.04, 2.3, 0.25, 'frame');
     } else rwin(f, t, 1.2, 3.4, 1.4, 2, 2);
-    relieve(f, t, 2.7, 1.4);
+    if (!arched) relieve(f, t, 2.7, 1.4);
     rwin(f, t, 5.5, 8.3, 1.4, 2, 3);
     relieve(f, t, 7.6, 1.4);
     for (const s of [-1, 1]) {
@@ -129,16 +152,19 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
     // hipped north-east block: pilasters, arched corbel table, cornice, pinnacles
     for (const t of [12.65, 16.55]) slab(b, f, t, 0.4, 0.5, 12.0, 0.16, 'brick');
     corbels(f, 12.9, 16.3, 12.0);
+    // r7: the centre bay rises as a crenellated parapet with a stone plaque between round pepperpot turrets (wall 101 pano;
+    // the r6 photo-pair judge: "crenellated centre bay with pepperpot turrets")
+    crenel(f, 13.0, 16.2, 13.0); // wall face 6 cm proud of the front: the plaque below sinks into it
     for (const t of [12.65, 16.55]) {
-      const x = f.origin[0] + f.tangent[0] * t + f.n[0] * 0.05, z = f.origin[1] + f.tangent[1] * t + f.n[1] * 0.05;
-      pinnacle(x, z, 11.6, 13.7);
+      const x = f.origin[0] + f.tangent[0] * t + f.n[0] * 0.12, z = f.origin[1] + f.tangent[1] * t + f.n[1] * 0.12;
+      turret(x, z, 11.4, 14.1);
     }
   }
   // north-east block, east faces (ring edges 15, 19; one bay each, seen obliquely in TMX7316010203-002552_pano_0002_001693)
   for (const i of [15, 19]) {
     const {f, len} = RF(i);
     courses(f, 0, len);
-    bay(f, len / 2);
+    bay(f, len / 2, false, i === 15); // r7: edge 15 holds the arched street door with its fanlight (wall 102 pano, left)
     corbels(f, 0.2, len - 0.2, 12.0);
   }
   // ---------- north front (ring edge 0; t from the east corner) ----------
@@ -167,7 +193,8 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
    *  above the ground), banded storey to 5.0, cornice band. */
   const waterBase = (f: Frame, t0: number, t1: number) => {
     t0 += 0.05; t1 -= 0.05;
-    slab(b, f, (t0 + t1) / 2, 0, t1 - t0, 0.85, 0.05, 'greyBrick');
+    // r7: the water plinth is blue-grey brick (2017 Singelgracht panos), not the dark band brick
+    slab(b, f, (t0 + t1) / 2, 0, t1 - t0, 0.85, 0.05, 'concrete');
     ledgeStrip(b, f, (t0 + t1) / 2, 0.82, t1 - t0, 0.08, 0.1, 'stone');
     bands(f, t0, t1, 1.2, 4.6, 0.8, 0.26);
     ledgeStrip(b, f, (t0 + t1) / 2, 4.95, t1 - t0, 0.4, 0.12, 'greyBrick');
@@ -260,5 +287,7 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
     b.add(new T.SphereGeometry(0.11, 8, 6).translate(cx, apex + 0.35, cz), 'gold' as never);
     b.add(new T.BoxGeometry(0.6, 0.22, 0.03).translate(cx + 0.2, apex + 1.2, cz), 'dark' as never);
   }
+  // r7: the stone plaque on the Marnixstraat centre parapet, added last so the staggered sinks of every earlier solid stay put
+  slab(b, RF(11).f, 14.6, 13.05, 0.8, 0.7, 0.1, 'stone', 0.0);
   setSink(sink0);
 }
