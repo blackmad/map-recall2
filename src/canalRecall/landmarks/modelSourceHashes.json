@@ -1,5 +1,5 @@
 {
-  "toolchain": "22cff40781022d164d40ddbf333ca4ea0986407fd34e1fbfb00fad08070f8b40",
+  "toolchain": "a7363ce6d712c08611f469c9c05d3ef296f6860d22ba6603c494f387533e4d7d",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -270,7 +270,6 @@
     "koningskerk": "271c0cfdf7c76f5dbb56bd6b2deea62146b850381045b68588622882162631bb",
     "kpn-teleport": "2f3709264f199423e09ec9e4174e47557d4f0854e5ba82085dd98649787d743d",
     "kraanspoor": "5578224a46c027f8aa784f1b440b8e50d068d51a2f9085b7ab10d07d879c9f00",
-    "kramatplantsoen": "ba0c434833035becfd050f348ff8cc0e05f607c19202116da81548e2e9908296",
     "krasnapolsky": "b4c1c17e2c364b38affbf6f9c9a7c7e316f2ed19b30c6f506301e7ca458ca443",
     "krijtberg": "2ece64f46aba5ad5e3f67c25096c99bd7f93a082ad3a350ea2106da2d7a1e032",
     "kriterion": "e4f82ae222f519079c478d818a5ca8c6007ca57ba8b2920094e5c625f663a07e",
@@ -528,6 +527,8 @@
     "zuiveringshal-west": "fb9a2b0866fcc0de1300d377507a84070b4c7bca32b627bc0e50f76570114099",
     "zwembad-bijlmer": "6d153ef542bc75c1fa1ef8c7e5a7730d36ce9d005d2f577e759c2c05ba6fa4ad",
     "pentagon": "b921e2b5137c7fc00fb7793d93e5fe1638d33350c1e2d67b5f892f598f407468",
-    "spiegelhof": "63faf3b122e7f743c2c18cd9e2411da812f9aa3f4fc672fe3ff4c9a3a1b7ebb1"
+    "spiegelhof": "63faf3b122e7f743c2c18cd9e2411da812f9aa3f4fc672fe3ff4c9a3a1b7ebb1",
+    "technische-school-meeuwenlaan": "bfbae8ace034ef7d3a4aed91368987689094b6a9679ea226b4120722f4257f2b",
+    "kramatplantsoen": "ba0c434833035becfd050f348ff8cc0e05f607c19202116da81548e2e9908296"
   }
 }

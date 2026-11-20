@@ -118246,6 +118246,320 @@
       "triangles": 11570,
       "bytes": 158272,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kramatplantsoen": {
+      "id": "kramatplantsoen",
+      "name": "Flevopoort, Kramatplantsoen",
+      "modelUrl": "./models/kramatplantsoen.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012098925"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.94666295,
+          52.36550949
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 119.6,
+        "widthMetres": 60.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.94666295,
+          52.36550949
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012098925 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/kramatplantsoen-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas recording_2024-09-16_07-18-19_03199 and _01916 (2024), TMX7316010203-000243_pano_0001_000380 and _001680 (2017), TMX7316010203-002140_pano_0001_001516 (2021), recording_2025-06-16_08-26-12_00956 (2025), CC BY 4.0. The 2024 state: the 2025 panoramas show the west slab wrapped for the Ymere facade renovation. Per wall in scripts/landmarks/kramatplantsoen-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 40.9,
+      "galleryView": {
+        "theta": 0.55,
+        "phi": 1.05
+      },
+      "bagYear": 1998,
+      "materialOverrides": {
+        "sandstone": "#ead4a6",
+        "stone": "#d2c9ab",
+        "brick": "#8e5646",
+        "concrete": "#e2e0d8",
+        "frame": "#e6e5df",
+        "glass": "#8d9ca6",
+        "dark": "#41474b",
+        "bronze": "#7a8083",
+        "greyBrick": "#4a4c4f",
+        "slate": "#5d6062",
+        "blue": "#a7b5b3"
+      },
+      "attribution": {
+        "title": "Flevopoort, Kramatplantsoen 1-201 / Zeeburgerdijk, Amsterdam (1998)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-16_07-18-19_03199/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012098925 (CC0): render slabs with window pairs and French windows, brick shafts, lobby strips, the north flue shaft, the glazed plinth with canopy and clerestory, the ribbed north wing with its FLEVOPOORT letters, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9462912,
+              52.3660397
+            ],
+            [
+              4.9462921,
+              52.3659694
+            ],
+            [
+              4.9462945,
+              52.3657971
+            ],
+            [
+              4.9462955,
+              52.3657234
+            ],
+            [
+              4.9462959,
+              52.3656988
+            ],
+            [
+              4.9462964,
+              52.3656594
+            ],
+            [
+              4.9462982,
+              52.3656594
+            ],
+            [
+              4.9462987,
+              52.3656191
+            ],
+            [
+              4.946439,
+              52.3656198
+            ],
+            [
+              4.946439,
+              52.3656192
+            ],
+            [
+              4.9464469,
+              52.3656192
+            ],
+            [
+              4.9464472,
+              52.3655919
+            ],
+            [
+              4.9464473,
+              52.3655852
+            ],
+            [
+              4.9464645,
+              52.3655749
+            ],
+            [
+              4.9465303,
+              52.3655752
+            ],
+            [
+              4.9465501,
+              52.3655753
+            ],
+            [
+              4.9465657,
+              52.3655754
+            ],
+            [
+              4.9465658,
+              52.3655647
+            ],
+            [
+              4.9465503,
+              52.3655646
+            ],
+            [
+              4.9465511,
+              52.3655039
+            ],
+            [
+              4.9465667,
+              52.365504
+            ],
+            [
+              4.9465668,
+              52.3654933
+            ],
+            [
+              4.9465513,
+              52.3654932
+            ],
+            [
+              4.9465536,
+              52.365323
+            ],
+            [
+              4.9466009,
+              52.3653232
+            ],
+            [
+              4.9466014,
+              52.3652886
+            ],
+            [
+              4.9466175,
+              52.3652789
+            ],
+            [
+              4.9466841,
+              52.3652793
+            ],
+            [
+              4.946704,
+              52.3652794
+            ],
+            [
+              4.9467196,
+              52.3652794
+            ],
+            [
+              4.9467197,
+              52.3652688
+            ],
+            [
+              4.9467041,
+              52.3652686
+            ],
+            [
+              4.9467049,
+              52.3652129
+            ],
+            [
+              4.9467051,
+              52.3651951
+            ],
+            [
+              4.9467074,
+              52.3650274
+            ],
+            [
+              4.9467322,
+              52.3650276
+            ],
+            [
+              4.9467439,
+              52.3650276
+            ],
+            [
+              4.946744,
+              52.3649683
+            ],
+            [
+              4.9469617,
+              52.3649696
+            ],
+            [
+              4.9469612,
+              52.3650295
+            ],
+            [
+              4.9469725,
+              52.3650296
+            ],
+            [
+              4.9470936,
+              52.3650303
+            ],
+            [
+              4.9470871,
+              52.3655064
+            ],
+            [
+              4.9470863,
+              52.3655661
+            ],
+            [
+              4.9470896,
+              52.3655659
+            ],
+            [
+              4.9471805,
+              52.3655663
+            ],
+            [
+              4.9471767,
+              52.3658656
+            ],
+            [
+              4.9470845,
+              52.3658652
+            ],
+            [
+              4.9470813,
+              52.365865
+            ],
+            [
+              4.9470805,
+              52.3659265
+            ],
+            [
+              4.9467897,
+              52.3659251
+            ],
+            [
+              4.9467878,
+              52.3660423
+            ],
+            [
+              4.9467878,
+              52.3660437
+            ],
+            [
+              4.9462912,
+              52.3660409
+            ],
+            [
+              4.9462912,
+              52.3660397
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -25.67963981628418,
+          0.0010000000474974513,
+          -59.47524642944336
+        ],
+        "max": [
+          36.042724609375,
+          40.93299865722656,
+          60.29800033569336
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.94666295,
+          52.36550949
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 119.77324676513672,
+        "heightMetres": 40.931998657179065,
+        "depthMetres": 61.72236442565918,
+        "depthCoverage": 1.0235881330955088
+      },
+      "triangles": 34476,
+      "bytes": 468580,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

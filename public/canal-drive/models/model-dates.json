@@ -3926,11 +3926,6 @@
       "version": "d0a785b921aea4b1",
       "dateSource": "asset-update"
     },
-    "kramatplantsoen": {
-      "updatedAt": "2026-11-20T11:58:18.112Z",
-      "version": "2734f3776f370264",
-      "dateSource": "asset-update"
-    },
     "krasnapolsky": {
       "updatedAt": "2026-10-13T14:30:49.774Z",
       "version": "ae8f0cf664772dbe",
@@ -7644,6 +7639,16 @@
     "spiegelhof": {
       "updatedAt": "2026-11-20T11:10:54.017Z",
       "version": "ccedd30f5c5527af",
+      "dateSource": "asset-update"
+    },
+    "technische-school-meeuwenlaan": {
+      "updatedAt": "2026-11-20T11:45:45.314Z",
+      "version": "80a2019dd0d4c8ac",
+      "dateSource": "asset-update"
+    },
+    "kramatplantsoen": {
+      "updatedAt": "2026-11-20T11:58:18.112Z",
+      "version": "2734f3776f370264",
       "dateSource": "asset-update"
     }
   }
