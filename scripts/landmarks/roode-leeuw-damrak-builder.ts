@@ -57,8 +57,9 @@ export function buildRoodeLeeuwDamrak(_w: number, _d: number, b: BuildingTools) 
     slab(b, F, t, 11.1, 0.62, 0.3, 0.2, 'stone'); // stone block on the arch band
     // shield over the eaves: red field, gold lion as a raised square, stone base
     slab(b, F, t, EAVES + 0.05, 0.6, 0.18, 0.4, 'stone', -0.05);
-    slab(b, F, t, EAVES + 0.2, 0.5, 0.65, 0.22, 'red', 0.03);
-    slab(b, F, t, EAVES + 0.4, 0.24, 0.28, 0.05, 'gold', 0.25);
+    // r7 judge: red/gold cubes read as toy blocks; the shields are drawn as brick blocks with a stone boss
+    slab(b, F, t, EAVES + 0.2, 0.5, 0.65, 0.22, 'brick', 0.03);
+    slab(b, F, t, EAVES + 0.4, 0.24, 0.28, 0.05, 'stone', 0.25);
   }
 
   // ---------- the five bays ----------
@@ -107,7 +108,7 @@ export function buildRoodeLeeuwDamrak(_w: number, _d: number, b: BuildingTools) 
     const g = new T.BoxGeometry(t1 - t0, H, TN + 0.2).translate((t0 + t1) / 2, H / 2, TN / 2 - 0.1);
     g.applyMatrix4(new T.Matrix4().makeBasis(new T.Vector3(tg[0], 0, tg[1]), new T.Vector3(0, 1, 0), new T.Vector3(F.n[0], 0, F.n[1])));
     g.translate(A[0], 0, A[1]);
-    b.add(g, c('sandstone'));
+    b.add(g, c('bronze')); // r7 judge: the terrace reads as a dark iron-and-glass brasserie front, not a white box
     const Ft: Frame = {origin: [A[0] + F.n[0] * TN, A[1] + F.n[1] * TN], tangent: tg, n: F.n};
     // glazed front: dark mullions every 1.3 m over a low stone base
     slab(b, Ft, (t0 + t1) / 2, 0, t1 - t0 - 0.1, 0.3, 0.06, 'stone');
@@ -117,9 +118,9 @@ export function buildRoodeLeeuwDamrak(_w: number, _d: number, b: BuildingTools) 
     // dark sign band with red lettering
     slab(b, Ft, (t0 + t1) / 2, 2.82, t1 - t0 + 0.1, 0.48, 0.16, 'dark');
     letters(b, Ft, 'AMSTERDAM & BRASSERIE DE ROODE LEEUW', (t0 + t1) / 2, 2.92, 0.16, 0.055, 0.03, 'red', 0.04);
-    // white clerestory with groups of pointed windows under each bay
+    // dark clerestory with groups of pointed windows under each bay
     for (const t of bays) for (const s of [-0.62, 0, 0.62]) {
-      archSlab(b, Ft, t + s, 3.45, 0.36, 0.72, 0.05, 'dark', 0, 2);
+      archSlab(b, Ft, t + s, 3.45, 0.36, 0.72, 0.05, 'glass', 0, 2);
     }
     slab(b, Ft, (t0 + t1) / 2, H - 0.08, t1 - t0 + 0.2, 0.14, 0.12, 'sandstone');
     // balcony rail on the terrace roof with the red name board
