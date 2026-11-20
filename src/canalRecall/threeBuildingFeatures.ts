@@ -56,6 +56,7 @@ import { paintOverGuess } from './retailPuiPaint.js';
 import { terraceSeedOf, withTerraceSeeds } from './terraceRows.js';
 import { kitRoofEdge, lipMinAreaM2 } from './roofs/roofEdge.js';
 import { bikeFromCode } from './retailBikes.js';
+import { postwarExtraIds, type PostwarKit } from './postwarKit/kit.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -269,7 +270,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Post-war terraces outside the profiled buurten (`?terraceRows=1`, terraceRows.ts): the row's seed. Absent: the pand id.
   const design = designUnitOf(p), sid = design ? design.seed : terraceSeedOf(p) ?? id;
   let building: MeshBuilding;
-  let archetype: string | undefined, plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined, spandrelAccent: string | undefined, quietGround: number | undefined;
+  let archetype: string | undefined, plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined, spandrelAccent: string | undefined, quietGround: number | undefined, postwar: PostwarKit | undefined;
   if (cellSetOf(look) !== 'procedural') {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const at = polygons[0]?.[0]?.[0];
@@ -281,7 +282,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const bay = bayLookFor(rowLook?.seed ?? (typeof p.rowSeries === 'string' ? p.rowSeries : sid), lookYear, rowLook?.heightM ?? (Number(p.height) || heightM), look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), rowLook ? null : profile,
       lookYear !== null && lookYear >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
       design?.look || design?.bays ? { ...design.look, ...(design.bays ? { bays: design.bays } : {}), ...specLookOf(p) } : specLookOf(p), rowLook ? undefined : design ? design.at : poolPointOf(polygons, at));
-    archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
+    archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent; postwar = bay.postwar;
     // Design units: every unpainted member draws its segment's mid-range brick from the measured pool (one per segment,
     // never the darkest tones; measuredWallPool.ts segmentPoolDraw), whatever its own profile or period wall said.
     const segWall = design?.at && !specLookOf(p)?.painted ? segmentPoolDraw(design.at[0], design.at[1], bay.archetype, design.seed) : null;
@@ -455,6 +456,15 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Facade extras for every faced building; the plain and Untextured looks stay light.
   // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
   building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
+  // The post-1965 housing kit (`?postwarKit=1`, postwarKit/kit.ts): the read's balconies, arcade and erkers on the street
+  // walls, forced like register parts. Never on a spec'd, row, design-unit, kit or glazed pand. Off: postwar is undefined.
+  if (postwar && building.extras && !specRecipe && !design && typeof p.rowFront !== 'string' && !p.frontCarrier && !industrial) {
+    const ids = postwarExtraIds(postwar);
+    if (ids.length) {
+      building.registerForce = [...(building.registerForce ?? []), ...ids];
+      building.postwarKit = { balconyHex: postwar.balconyHex, pierHex: postwar.painted ? '#e4e0d6' : levelWallHex(building.wallHex) };
+    }
+  }
   if (design) { building.seed = design.seed; building.designSlice = { fromM: design.fromM, toM: design.toM, moduleM: design.moduleM }; if (design.bays) building.designBays = design.bays; if (design.bayPitchM) building.designPitchM = design.bayPitchM; }
   if (Array.isArray(p.registerForce) && p.registerForce.length && building.extras) building.registerForce = p.registerForce as string[];
   // A spec-stated stoop (houseSpec/decorate.ts specStoop, K-stoep #360): the extras draw it typed, first, on the door
