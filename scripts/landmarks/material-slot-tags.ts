@@ -161,6 +161,12 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     blue: {slot: 'glass', why: 'pale frit-glass clerestory panels over the plinth canopy (w01-90, w07-270)'},
     dark: {slot: 'frame', why: 'dark grey panels of the glazed lobby strips beside the shafts and the FLEVOPOORT letters (w01-90 2017, w14-179, w03-0)'},
   },
+  'nieuwe-achtergracht-129': {
+    slate: {slot: 'roofTile', why: 'grey tiled hipped roofs (register: schilddaken; w02-163 2019, w03-30), not slate'},
+    dark: {slot: 'bitumen', why: 'flat roofs of the towers, the small-window block and the stair; also the doors'},
+    concrete: {slot: 'paint', why: 'light painted overhanging eaves board, canopies and dormer cheeks (w02-163, w03-30), not concrete'},
+    greyBrick: {slot: 'stone', why: 'grey sills and the water table over the souterrain (w02-163)'},
+  },
   'utrechtsestraat-9-17': {
     sandstone: {slot: 'stone', why: 'palette name only: grey granite base, portals, copings and the Amsterdam arms (w04-258, w06-274)'},
     slate: {slot: 'bitumen', why: 'flat roofs of the office block and its setbacks, not slate'},
