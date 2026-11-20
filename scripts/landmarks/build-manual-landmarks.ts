@@ -321,6 +321,7 @@ import {buildSchoolMarnixstraat2} from './school-marnixstraat-2-builder';
 import {buildKadijksplein1718} from './kadijksplein-17-18-builder';
 import {buildOranjekerkPijp} from './oranjekerk-pijp-builder';
 import {buildUtrechtsestraat917} from './utrechtsestraat-9-17-builder';
+import {buildMagnaPlaza} from './magna-plaza-builder';
 import {buildDeKroonRembrandtplein} from './de-kroon-rembrandtplein-builder';
 import {buildParkCentraalStadhouderskade} from './park-centraal-stadhouderskade-builder';
 import {buildRoomMateAitana} from './room-mate-aitana-builder';
@@ -582,7 +583,7 @@ const SNAP_OPTS=new Map<string,{embed?:number;maxBuried?:number;maxFloat?:number
   // default 2 cm they sat 2.1-2.8 cm off it after quantisation, 221 m2 of tight-band z-fight (2026-10-24, audit-regen review; the
   // accepted 2026-10-13 export audits 1.9 m2, this one 1.9).
   ['allard-pierson',{embed:-.055}]]); // per-model snapOpenings overrides
-const SNAP_OPENING_IDS=new Set(['hoofdbureau-elandsgracht','hotel-de-l-europe','max-euwe-centrum','academie-theater-dans','de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds','stadhuis','heineken-experience-amsterdam','nieuwe-kerk','jewish-museum','dutch-resistance-museum','allard-pierson','cinecenter','straat-museum','haparandaweg-2-4','fire-station-hendrik','fire-station-zebra','this-is-holland','posthoornkerk','petrus-en-paulus-kerk','oudemanhuispoort','american-hotel','krasnapolsky','hilton-amsterdam','booking-hq','scheepvaartmuseum','waag']);
+const SNAP_OPENING_IDS=new Set(['hoofdbureau-elandsgracht','hotel-de-l-europe','max-euwe-centrum','academie-theater-dans','de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','madame-tussauds','stadhuis','heineken-experience-amsterdam','nieuwe-kerk','jewish-museum','dutch-resistance-museum','allard-pierson','cinecenter','straat-museum','haparandaweg-2-4','fire-station-hendrik','fire-station-zebra','this-is-holland','posthoornkerk','petrus-en-paulus-kerk','oudemanhuispoort','american-hotel','krasnapolsky','hilton-amsterdam','booking-hq','scheepvaartmuseum','waag']);
 function snapPartOpenings(id:string){
  if(!SNAP_OPENING_IDS.has(id)||process.env.SNAP_SKIP===id)return;
  const positions:number[]=[],indices:number[]=[],triMaterial:number[]=[],names:string[]=[],spans:{g:T.BufferGeometry;from:number}[]=[];
@@ -672,7 +673,7 @@ async function save(id:string){
 }
 const manifest=JSON.parse(fs.readFileSync(path.join(out,'signature-landmarks.json'),'utf8'));
 const helpers={add,box,prism,gableRoof,hip,window,clock,sign};
-const venueIds=new Set(['embassy-free-mind','the-movies','magna-plaza']);
+const venueIds=new Set(['embassy-free-mind','the-movies']);
 const theaterIds=new Set(['felix-meritis','kleine-komedie','de-balie']);
 const houseMuseumIds=new Set(['anne-frank-house','rembrandt-house','moco-museum','museum-van-loon']);
 const civicIds=new Set(['amstelkerk','he-hua-temple','haarlemmerpoort']);
@@ -1208,6 +1209,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='kadijksplein-17-18')buildKadijksplein1718(w,d,helpers);
     else if(id==='oranjekerk-pijp')buildOranjekerkPijp(w,d,helpers);
     else if(id==='utrechtsestraat-9-17')buildUtrechtsestraat917(w,d,helpers);
+    else if(id==='magna-plaza')buildMagnaPlaza(w,d,helpers);
     else if(id==='de-kroon-rembrandtplein')buildDeKroonRembrandtplein(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
