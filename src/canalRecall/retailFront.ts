@@ -501,8 +501,9 @@ export type RetailFrontInput = {
    *  its receipt): the posts, mullions, transom and riser in place of the template's surround; the board keeps its own. */
   frameHex?: string;
   /** Lane retail-fit (item 4): the host's ground storey is a register-named historic pui (retailFit/historicPui.ts): the
-   *  template draws no fascia box; its name goes on the pui's own flush sign band. Absent: unchanged. */
-  host?: 'historic-pui';
+   *  template draws no fascia box; its name goes on the pui's own flush sign band ('historic-pui') or on the glass of its
+   *  widest window ('historic-pui-glass', the band left plain), as the pand's photo shows. Absent: unchanged. */
+  host?: 'historic-pui' | 'historic-pui-glass';
 };
 
 /** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
@@ -672,7 +673,7 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   const ink = input.paint && !input.logo ? (hexLuma(input.paint) > 0.35 ? '#2b2724' : '#f4f1ea') : look.letters;
   // Lane retail-fit (item 4): a register-pui monument (input.host) keeps its pui: no projecting board or cap, the name on
   // the pui's own flush sign band painted in its frame colour (retailFit/historicPui.ts; hosts.ts 'historic-pui').
-  const pui = input.host === 'historic-pui', onWall = look.mount === 'wall' || pui, wallHex = pui ? frame : input.wallHex ?? '#cfc6b4';
+  const pui = !!input.host, onGlass = input.host === 'historic-pui-glass', onWall = look.mount === 'wall' || pui, wallHex = pui ? frame : input.wallHex ?? '#cfc6b4';
   if (onWall) {
     // Round 7: no board; the wall itself (its colour over whatever the ground cell painted there) carries the letters.
     b.panel(s0, s1, 0.006, bottom, top, wallHex);
@@ -682,7 +683,7 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   }
   b.slab(s0, s1, 0.01, FRONT.fasciaOutM - 0.02, puiTop, bottom, frame, 'bottom');
   const word = input.chain ? input.chain.word : look.word === 'name' ? (input.word ? signText(input.word) : input.word) : look.word;
-  if (onWall && word) {
+  if (onWall && word && !onGlass) {
     // Channel letters on the wall, standing a letter's depth proud of it, as tall as the band would have been.
     b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, 0.006 + FRONT.letterOutM, FRONT.fasciaM - 0.04, look.letters, wallHex, look.lit, input.letters);
   } else if (input.logo) {
@@ -753,6 +754,10 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     // Transom lights carry their own glazing bars (two per pane) on cafés and small-paned fronts.
     if (hasLights && look.paneM) for (let k = 0; k < panes; k++) for (const t of [1 / 3, 2 / 3]) { const a = c0 + (k + t) * pw; b.panel(a - 0.02, a + 0.02, 0.055, head + FRONT.transomM, puiTop, frame); }
   }
+  // Lane retail-fit round 4: a historic pui lettered on its glass carries the name on its widest window, cream on the
+  // glass at about 0.6 of the glass's height (Keffer, Tribe, Elfde Gebod: the photos' painted window lettering).
+  const wide = onGlass && word ? segs.reduce((m, q) => (q[1] - q[0] > m[1] - m[0] ? q : m), [0, 0] as [number, number]) : undefined;
+  if (wide && wide[1] - wide[0] >= 0.9) b.word(word!, wide[0] + 0.1, wide[1] - 0.1, zr + (head - zr) * 0.62, FRONT.contentOutM + 0.035, 0.3, '#f2efe6', '#2a2622', false, input.letters);
   // Round 4 (`?retailParts=1`): the template's parts (retailTemplates.ts TEMPLATE_PARTS).
   const parts = retailPartsOn() && input.goods !== undefined ? TEMPLATE_PARTS[input.template] : undefined;
   if (parts && !windows) {

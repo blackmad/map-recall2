@@ -133,11 +133,14 @@ test('historic pui: staged brown bars are gated by mode; the host draws no fasci
   const ids = Object.keys(STAGED_PUIS);
   assert.ok(ids.length >= 14);
   for (const id of ids) assert.match(STAGED_PUIS[id].source, /RCE monument register/);
-  const one = ids[0], st = STAGED_PUIS[one].status;
-  assert.equal(historicPuiHost(`NL.IMBAG.Pand.${one}`, 'all'), true);
-  assert.equal(historicPuiHost(one, 'off'), false);
-  assert.equal(historicPuiHost(one, 'published'), st === 'published');
-  assert.equal(historicPuiHost('0000000000000000', 'all'), false);
+  for (const id of ids) {
+    const p = STAGED_PUIS[id], want = p.sign === 'band' ? 'historic-pui' : p.sign === 'glass' ? 'historic-pui-glass' : undefined;
+    assert.ok(p.signSource, `${id} has a sign source`);
+    assert.equal(historicPuiHost(`NL.IMBAG.Pand.${id}`, 'all'), want);
+    assert.equal(historicPuiHost(id, 'off'), undefined);
+    assert.equal(historicPuiHost(id, 'published'), p.status === 'published' ? want : undefined);
+  }
+  assert.equal(historicPuiHost('0000000000000000', 'all'), undefined);
   const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
   const input = { template: 'brownBar' as const, word: 'CAFE', seed: 'NL.IMBAG.Pand.x' };
   const plain = retailFrontTris(input, e, 0, 6, 0, 3.2), again = retailFrontTris({ ...input }, e, 0, 6, 0, 3.2);
@@ -149,4 +152,6 @@ test('historic pui: staged brown bars are gated by mode; the host draws no fasci
   const proud = (tris: typeof plain) => tris.filter(t => t.p.every(p => p[2] >= bottom - 1e-6 && p[2] <= top + FRONT.capM + 1e-6) && t.p.some(p => Math.abs(p[1]) >= FRONT.fasciaOutM - 1e-6) && Math.max(...t.p.map(p => p[0])) - Math.min(...t.p.map(p => p[0])) > 1).length;
   assert.ok(proud(plain) > 0, 'the template draws a projecting board');
   assert.equal(proud(pui), 0, 'the historic pui draws none');
+  const glass = retailFrontTris({ ...input, host: 'historic-pui-glass', letters: 0 }, e, 0, 6, 0, 3.2);
+  assert.equal(proud(glass), 0, 'nor does the glass-lettered one');
 });

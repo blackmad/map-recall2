@@ -4,129 +4,157 @@
  "puis": {
   "0363100012168323": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "not drawn: the template stays (unread)",
    "template": "brownBar",
    "word": "BAR DU",
    "monument": "['3737', '4993']",
    "row": "",
-   "source": "RCE monument register ['3737', '4993']: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register ['3737', '4993']: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "unread",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012168323 (all-walls.ts, square-on): no crop shows the pui (walls 186/279 frame neighbours)"
   },
   "0363100012169153": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "not drawn: the template stays (unread)",
    "template": "brownBar",
    "word": "MARCELLA",
    "monument": "273",
    "row": "",
-   "source": "RCE monument register 273: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register 273: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "unread",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012169153 (all-walls.ts, square-on): red-and-white striped awnings cover the sign zone"
   },
   "0363100012171123": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "pending blind on close crops",
    "template": "brownBar",
    "word": "LEENTJE",
    "monument": "5715",
    "row": "",
-   "source": "RCE monument register 5715: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register 5715: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "band",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012171123 (all-walls.ts, square-on): CAFE LEENTJE painted on the flat frieze over the pui; script on the glass too"
   },
   "0363100012171655": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "pending blind on close crops",
    "template": "brownBar",
    "word": "ELFDE GEBOD",
    "monument": "6502",
    "row": "",
-   "source": "RCE monument register 6502: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register 6502: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "glass",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012171655 (all-walls.ts, square-on): script lettering on the windows; no board"
   },
   "0363100012171790": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "pending blind on close crops",
    "template": "brownBar",
    "word": "STOOF",
    "monument": "['106', '5685', '5686', '5687']",
    "row": "",
-   "source": "RCE monument register ['106', '5685', '5686', '5687']: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register ['106', '5685', '5686', '5687']: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "band",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012171790 (all-walls.ts, square-on): red script painted on the facade band (round-3 browser photo, house-frames pose 2025)"
   },
   "0363100012172030": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "pending blind on close crops",
    "template": "brownBar",
    "word": "KEFFER",
    "monument": "6294",
    "row": "",
-   "source": "RCE monument register 6294: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register 6294: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "glass",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012172030 (all-walls.ts, square-on): red painted pui, round logo lettered on the glass; no board"
   },
   "0363100012172035": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "pending blind on close crops",
    "template": "brownBar",
    "word": "TRIBE",
    "monument": "['6261', '6262']",
    "row": "",
-   "source": "RCE monument register ['6261', '6262']: element 'Winkelpui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register ['6261', '6262']: element 'Winkelpui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "glass",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012172035 (all-walls.ts, square-on): \"Cafe & Coffee Bar\" lettered on the glass of a black pui; no board"
   },
   "0363100012173636": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "pending blind on close crops",
    "template": "brownBar",
    "word": "T SMALLE",
    "monument": "990",
    "row": "",
-   "source": "RCE monument register 990: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register 990: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "glass",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012173636 (all-walls.ts, square-on): white pui, the name lettered small on the windows; a hanging bracket sign, no board"
   },
   "0363100012175493": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "not drawn: the template stays (unread)",
    "template": "brownBar",
    "word": "DOKTER",
    "monument": "5050",
    "row": "",
-   "source": "RCE monument register 5050: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register 5050: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "unread",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012175493 (all-walls.ts, square-on): the pose frames the Kalverstraat shop next door, not the cafe"
   },
   "0363100012175559": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "not drawn: the template stays (unread)",
    "template": "brownBar",
    "word": "BAR BLEND",
    "monument": "['4844', '4845']",
    "row": "",
-   "source": "RCE monument register ['4844', '4845']: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register ['4844', '4845']: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "unread",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012175559 (all-walls.ts, square-on): crops show brick and one window only"
   },
   "0363100012175623": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "not drawn: the template stays (board)",
    "template": "brownBar",
    "word": "SOHO",
    "monument": "4861",
    "row": "",
-   "source": "RCE monument register 4861: element 'Pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register 4861: element 'Pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "board",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012175623 (all-walls.ts, square-on): SOHO on a black projecting board/canopy over the doors"
   },
   "0363100012175701": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "not drawn: the template stays (board)",
    "template": "brownBar",
    "word": "ARENDSNEST",
    "monument": "1728",
    "row": "",
-   "source": "RCE monument register 1728: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register 1728: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "board",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012175701 (all-walls.ts, square-on): dark red awnings with the name over the windows"
   },
   "0363100012182544": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "not drawn: the template stays (board)",
    "template": "brownBar",
    "word": "CASABLANCA",
    "monument": "6550",
    "row": "",
-   "source": "RCE monument register 6550: element 'Pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register 6550: element 'Pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "board",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012182544 (all-walls.ts, square-on): yellow CASABLANCA board over the door"
   },
   "0363100012182724": {
    "status": "staged",
-   "review": "pending blind A/B by row",
+   "review": "not drawn: the template stays (unread)",
    "template": "brownBar",
    "word": "RODE LAARS",
    "monument": "6505",
    "row": "",
-   "source": "RCE monument register 6505: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+   "source": "RCE monument register 6505: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)",
+   "sign": "unread",
+   "signSource": "Gemeente Amsterdam panorama crop, artifacts/retail-fit/photos/puis/0363100012182724 (all-walls.ts, square-on): crops show brick and a shutter only"
   }
  }
 }

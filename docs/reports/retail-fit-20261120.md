@@ -206,6 +206,52 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
 | Magna Plaza | Nieuwezijds Voorburgwal (107) | fit | med |
 | Brown bars, register pui (7 visible) | browser rows | 1 pui / 2 template / 4 tie | all low; stays staged |
 
+## 7. Round 4
+
+### Brown bars: sign kind per pand
+- Square-on crops (`all-walls.ts`, `artifacts/retail-fit/photos/puis/`) give each of the 14 pands a `sign` in `historic-puis.json`, with a `signSource`:
+  - painted band: Leentje and Stoof;
+  - letters on the glass: Elfde Gebod, Keffer, Tribe and 't Smalle;
+  - board or awning, so the template stays: Soho, Arendsnest and Casablanca;
+  - unread (no usable crop): Bar Du, Marcella (awnings), Dokter (the pose frames the next shop), Bar Blend and Rode Laars.
+- `retailFront.ts` `host` is now `'historic-pui' | 'historic-pui-glass'`. The glass mode draws no word on the band and puts the name in cream on the widest window at about 0.6 of the glass height. `historicPuiHost` maps band to `historic-pui` and glass to `historic-pui-glass`; board and unread map to nothing.
+- **Round 3's browser pui frames tested nothing.** The browser serves the committed `three-buildings*.bundle.js`, which did not hold the host branch, and the mesh worker never received `retailFit` (it is not on `engine/workerPool.ts` `withWorkerFlags`; added this round). Round 4 shoots with all four pool bundles built into a scratch `BUNDLES_DIR`. `game.json` confirms `three-buildings-worker.bundle.js?retailFit=1`.
+- **What changes.** With the right code, the host moves at most 0.11 % of each frame (Leentje, Stoof, Tribe). Keffer, Elfde Gebod and 't Smalle show no change in view. `retailGround=0` vs `1` on the same poses changes 5–31 %, so fronts are drawn in view.
+  - On a close crop (Stoof), the brownBar template already draws a near-flush dark band. Dropping the "board" changes little more than the lettering face.
+  - The visible gap is the whole template pui: a dark glazed front with bottle shelves, where the photo has the building's own white small-paned sash windows and the name painted in script on the band.
+  - The useful next step for register-pui bars is a host that draws no template pui at all: the building's own windows stand, and only the painted name goes on the band. That is a larger change than a sign swap.
+- Close-crop blind, cropped to the changed pixels (`scripts/retail-fit/diff-crop.mts`), one fresh opus judge: the host won 3/3. Leentje low (its photo crop frames The Bolster next door), Stoof low (near a tie), Tribe med (glass mode: no fascia, as on the photo).
+- The judge's shared verdict: both renders put a dark fascia and plate over a dark glazed bar front with bottle shelves. Neither can say red script neon on the brick, gilt letters on the upper front, etched letters on cream cast-iron glazing, or the cream small-paned windows these fronts have.
+- All 14 stay staged.
+
+### American Hotel corner and byte identity
+- Re-blind with the current openings, one fresh opus judge: Bar Américain fit (low), Leidsekade fit (med).
+- `RETAIL_FIT=0` node frames are byte-identical to round 2 for all 7 Hirschgebouw, Kinkerstraat, Damrak and Nieuw-Engeland poses.
+- The two American Hotel off frames differ by 0.13–0.21 %. That is exactly the published Hirschgebouw fits across Leidseplein (round 2's off frames were shot at the default mode: `retailFit` 2,776 triangles in their counts, none now). Not a regression.
+
+### Concerto
+- Sleeves desaturated to the photo's pale, near-monochrome display. Re-blind: concerto fit (med), concerto-koffie fit (med-high). The judge still saw a uniform grey grid.
+- After that blind: each sleeve now sits a little high or low on its rack, and now and then a print two sleeves wide stands in the row (unblinded, minor).
+- WIJNHANDEL is not retail-ground's. It is the block-face lane's intent for Utrechtsestraat 50 (pand 0363100012178874), in `scripts/block-face/faces/utrechtse-48-76/intent.json`:
+  - line 99 holds the sign text;
+  - lines 101–103 hold the groundFloor name ("Wijnhandel Neleman", from a stale OSM node), the note and the signage.
+  - The 2025-01-20 panorama (b_20250120_0926_Track30_Sphere_00286/00287) shows WE ARE LABELS OUTLET on that grey front.
+  - Fixing it means a block-face edit and a re-bake of the chunk GLB, so it is not done here.
+
+### Magna Plaza bay rhythm
+- Written up for the landmark lane in `docs/reports/magna-plaza-bay-rhythm-20261120.md`. Retail-fit stops there.
+
+### Round 4 blind table
+| Host | Pose | Verdict | Confidence |
+|---|---|---|---|
+| American Hotel | Bar Américain | fit | low |
+| American Hotel | Leidsekade | fit | med |
+| Concerto (desaturated) | concerto | fit | med |
+| Concerto (desaturated) | concerto-koffie | fit | med-high |
+| Brown bars, close crops | Leentje | host | low |
+| Brown bars, close crops | Stoof | host | low (near tie) |
+| Brown bars, close crops | Tribe (glass) | host | med |
+
 ## Wiring (for the integrator)
 
 - Add `src/canalRecall/retailFit/retailFit.test.ts` to `test:shopfront-gate` in package.json.
@@ -216,3 +262,4 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
 - Tools: `scripts/retail-fit/{census,bay-strip,blind,iconic,glass-tone,region-tone,openings-probe}.ts`, poses in `scripts/retail-fit/poses*.json`, and node-frame with `RETAIL_FIT=0|1`.
 - Round 3: rebuild the building bundle as well as signature-landmarks, because `threeBuildingMesh.ts` now imports `retailFit/historicPui.ts` (with `historic-puis.json`, a few KB) and `retailFront.ts` gained the `host` branch.
 - Round 3, Magna Plaza (optional, for the game's own glass search and so other consumers see glass): `git apply scripts/retail-fit/magna-plaza-glass-retag.patch`, then `node --import tsx scripts/landmarks/build-manual-landmarks.ts --only=magna-plaza`, then LODs for magna-plaza, then build covers, then `check:covers` and `check:manual-landmarks`. Then rebuild the signature-landmarks bundle. The fits work without it, from the staged openings.
+- Round 4: `src/canalRecall/engine/workerPool.ts` adds `'retailFit'` to `withWorkerFlags`, so `?retailFit=0|1` reaches the mesh workers. Rebuild the pool bundles (`build:canal-three-buildings`, the engine bundle and own-ground-game) together.
