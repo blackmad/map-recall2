@@ -32,6 +32,8 @@ self.onmessage = (event: MessageEvent<Job | WorldRequest | ReliefRequest | Stand
   // The engine's overview geometry (ownMap/overviewPool.ts, #129: 184 ms of the own boot on the main thread).
   if (isOverviewRequest(event.data)) { void answerOverview(event.data, (reply, transfer) => (self as unknown as Worker).postMessage(reply, transfer)); return; }
   const job = event.data;
+  // `?terraceRows=1` (terraceRows.ts): the page's flag rides on the job; absent, the worker's own default (off).
+  if ((job as { terraceRows?: boolean }).terraceRows === true) (globalThis as { __canalRecallTerraceRows?: boolean }).__canalRecallTerraceRows = true;
   if (job.facadeRecord && !job.special) {
     // The resolved specs first (fetched once per tile and kept); a failed read packs priors, as for an unspec'd pand.
     const t0 = performance.now(), base = job.facadeRecord.specBase;

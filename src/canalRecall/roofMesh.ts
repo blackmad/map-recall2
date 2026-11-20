@@ -35,6 +35,7 @@ import { turnRect, turnRidgeToAxis, turnRidgeToStreet, TURN_MAX_FRONT_M } from '
 import { gableEndWalls } from './streetGableEnds.js';
 import { axisGapDeg } from './roofs/ridgeAxis.js';
 import { zeroArea } from './roofOverhang.js';
+import { terraceSeedOf } from './terraceRows.js';
 import { isRowCrown, ROW_STONE, rowCrownAccents, rowCrownProfile, rowCrownStone, type RowCrown } from './houseLine/crownProfile.js';
 
 /** House rows: the dormer kinds a row roof draws. `ornate-pinnacle`: a tall light-stone dormer, stepped, with a crowned top and
@@ -1486,8 +1487,9 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
   const tag = typeof p.roofShapeTag === 'string' ? p.roofShapeTag : typeof p.roofShape === 'string' && !p.roofPlanned ? p.roofShape : undefined;
   const year = p.constructionYear === null || p.constructionYear === undefined ? null : Number(p.constructionYear);
   const measured = typeof p.monumentGable === 'string' && (GABLE_SHAPES as readonly string[]).includes(p.monumentGable) ? p.monumentGable as GableShape : null;
-  // Design units (`?designUnits=1`): a segment member's dice are its segment's (designUnits/drawProps.ts); absent: the pand id.
-  const plan = planBuildingRoof(seedIdOf(p), String(p.facadeStyle ?? ''), height, minHeight, ring, tag && honouredRoofTag(tag) ? tag : undefined, Number.isFinite(year) ? year : null, measured, Number.isFinite(Number(p.roofRidgeDeg)) && p.roofRidgeDeg !== null && p.roofRidgeDeg !== '' ? Number(p.roofRidgeDeg) : null);
+  // Design units (`?designUnits=1`): a segment member's dice are its segment's (designUnits/drawProps.ts); a post-war
+  // terrace member's (`?terraceRows=1`, terraceRows.ts) its row's; absent: the pand id.
+  const plan = planBuildingRoof(terraceSeedOf(p) ?? seedIdOf(p), String(p.facadeStyle ?? ''), height, minHeight, ring, tag && honouredRoofTag(tag) ? tag : undefined, Number.isFinite(year) ? year : null, measured, Number.isFinite(Number(p.roofRidgeDeg)) && p.roofRidgeDeg !== null && p.roofRidgeDeg !== '' ? Number(p.roofRidgeDeg) : null);
   const g = feature.geometry as { type: string; coordinates: number[][][] | number[][][][] };
   const polygon = g.type === 'Polygon' ? g.coordinates : g.coordinates[0];
   // A perimeter deck must not cover an open courtyard.
@@ -1557,7 +1559,7 @@ function decoratedRoofPlan(feature: GeoFeature): Pick<RoofPlan, 'kind' | 'riseM'
   const geometry = feature.geometry;
   if (!geometry || typeof geometry !== 'object') return roofPlanForFeature(feature);
   const p = feature.properties;
-  const key = [p.id, p.facadeStyle, p.height, p.minHeight, p.roofShapeTag, p.roofShape, p.roofPlanned, p.constructionYear, p.monumentGable, p.roofRidgeDeg, p.designUnit ? seedIdOf(p) : undefined].map(v => typeof v === 'string' ? `s${v}` : String(v)).join('|');
+  const key = [p.id, p.facadeStyle, p.height, p.minHeight, p.roofShapeTag, p.roofShape, p.roofPlanned, p.constructionYear, p.monumentGable, p.roofRidgeDeg, p.designUnit ? seedIdOf(p) : terraceSeedOf(p) ?? undefined].map(v => typeof v === 'string' ? `s${v}` : String(v)).join('|');
   let byKey = decoratedPlans.get(geometry);
   if (!byKey) decoratedPlans.set(geometry, byKey = new Map());
   if (byKey.has(key)) return byKey.get(key)!;
@@ -1565,6 +1567,19 @@ function decoratedRoofPlan(feature: GeoFeature): Pick<RoofPlan, 'kind' | 'riseM'
   const kept = plan ? { kind: plan.kind, riseM: plan.riseM } : null;
   byKey.set(key, kept);
   return kept;
+}
+
+/**
+ * A post-war terrace member (`?terraceRows=1`, terraceRows.ts) re-planned on its row's seed after the tile decorator
+ * planned it on its own id: the row's one roof kind, and the wall lowered to that kind's eaves. A pand the decorator
+ * left unplanned (no facade, measured eaves, an unhonoured tag) is left alone.
+ */
+export function replanTerraceRoof<T extends GeoFeature>(feature: T): T {
+  const p = feature.properties;
+  if (!p.roofPlanned || !terraceSeedOf(p)) return feature;
+  const plan = decoratedRoofPlan(feature);
+  if (!plan) return feature;
+  return { ...feature, properties: { ...p, roofShape: plan.kind, roofEavesHeightM: Number(p.height) - plan.riseM } as T['properties'] };
 }
 
 /**

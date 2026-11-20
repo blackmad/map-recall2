@@ -15,7 +15,7 @@ import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
 import { designUnitOf } from './designUnits/drawProps.js';
-import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
+import { replanTerraceRoof, roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { ROW_FRONT_EXTRAS, rowFrontShopHex, type RowHeadsDraw, type RowGlazingDraw, type RowGroundWallDraw, type RowBasementDraw } from './houseLine/rowFront.js';
@@ -52,6 +52,7 @@ import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './i
 import { applyGlazing, glazingOf } from './glassParts.js';
 import { REAL_ONLY_TEMPLATES, RETAIL_HELD, RETAIL_TEMPLATES, realAccepted, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
 import { paintOverGuess } from './retailPuiPaint.js';
+import { terraceSeedOf, withTerraceSeeds } from './terraceRows.js';
 import { bikeFromCode } from './retailBikes.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
@@ -263,7 +264,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const id = String(p.id ?? '');
   // Design units (`?designUnits=1`, designUnits/draw.ts): a segment member hashes every per-building prior on its
   // segment's seed and lays its bays out on its slice of the segment's frontage. Absent: `sid` is the pand id.
-  const design = designUnitOf(p), sid = design ? design.seed : id;
+  // Post-war terraces outside the profiled buurten (`?terraceRows=1`, terraceRows.ts): the row's seed. Absent: the pand id.
+  const design = designUnitOf(p), sid = design ? design.seed : terraceSeedOf(p) ?? id;
   let building: MeshBuilding;
   let archetype: string | undefined, plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined, spandrelAccent: string | undefined, quietGround: number | undefined;
   if (cellSetOf(look) !== 'procedural') {
@@ -620,7 +622,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
   // Garden sheds draw as low muted boxes in the near tier and not at all beyond it (gardenSheds.ts). Without the
   // chunk's streets nothing is classified, so a street kiosk is never dropped for want of a street file.
   const shedStreets = streets?.length ? new SegmentGrid(streets) : null;
-  const marked = features.filter(f => !isAllotmentHouse(f)).map(f => isGardenShed(f, shedStreets, ORIGIN) ? { ...f, properties: { ...f.properties, gardenShed: true, height: shedHeightM(f.properties), ...gardenRoomMark(f) } } : f);
+  const marked = withTerraceSeeds(features.filter(f => !isAllotmentHouse(f)).map(f => isGardenShed(f, shedStreets, ORIGIN) ? { ...f, properties: { ...f.properties, gardenShed: true, height: shedHeightM(f.properties), ...gardenRoomMark(f) } } : f), (lng, lat) => !!buurtProfileAt(lng, lat), contextFeatures, replanTerraceRoof);
   // Garden rooms need their neighbours (party walls, the main house): only built when the chunk has one.
   const roomContext = mode === 'walls' && marked.some(f => f.properties.gardenRoom) ? gardenRoomContext([...marked, ...contextFeatures]) : null;
   const chunk = buildChunk(marked.filter(f => !(mode === 'coarse' && f.properties.gardenShed)).map(f => {

@@ -33,6 +33,7 @@ import { withRegisterFacts, registerFactsEnabled, registerFactsFromExtract } fro
 import { withHouseSpec, withHouseSpecCrown, houseSpecsEnabled, houseSpecEnricher } from './houseSpec/decorate.js';
 import { withRowFront, rowFrontOn, loadRowFrontRecords } from './houseLine/rowFront.js';
 import { withDesignUnits, withDesignUnitRoof, designUnitsOn, loadDesignSegments } from './designUnits/draw.js';
+import { terraceRowsOn } from './terraceRows.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { paintGlassBlockCell } from './glassBlockTexture.js';
@@ -1799,7 +1800,8 @@ export class ThreeBuildings {
       this.inflightOptions.set(key, options);
       this.busy.set(w, key);
       const mode = this.modeFor(key), special = key === KIT_KEY || key.startsWith(BOAT_PREFIX);
-      pool.post(w, { key, gen, ...options, features: source, mode, ...(SHELL_ROOFS ? { shellRoofs: true } : {}),
+      // `?terraceRows=1` (terraceRows.ts): the worker cannot read the page's query, so the job carries the flag.
+      pool.post(w, { key, gen, ...options, features: source, mode, ...(SHELL_ROOFS ? { shellRoofs: true } : {}), ...(terraceRowsOn() ? { terraceRows: true } : {}),
         ...(mode === 'walls' && !special && this.recordChunks() ? { facadeRecord: { specBase: houseSpecsBase() } } : {}),
         special: key === KIT_KEY ? 'kits' : key.startsWith(BOAT_PREFIX) ? 'boats' : undefined,
         boats: key.startsWith(BOAT_PREFIX) ? this.boatTiles.get(key.slice(BOAT_PREFIX.length)) ?? [] : undefined,
