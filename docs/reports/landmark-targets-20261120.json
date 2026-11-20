@@ -22,7 +22,8 @@
    "rawRank": 44,
    "monument": null,
    "wikidata": "Q110061713",
-   "wikipedia": "nl:De Roode Leeuw (Amsterdam)"
+   "wikipedia": "nl:De Roode Leeuw (Amsterdam)",
+   "status": "built in r7 (roode-leeuw-damrak)"
   },
   {
    "rank": 2,
@@ -39,7 +40,8 @@
    "rawRank": 10,
    "monument": "198",
    "wikidata": null,
-   "wikipedia": null
+   "wikipedia": null,
+   "status": "built in r7 (de-kroon-rembrandtplein)"
   },
   {
    "rank": 3,
@@ -56,7 +58,8 @@
    "rawRank": 47,
    "monument": "518500",
    "wikidata": null,
-   "wikipedia": null
+   "wikipedia": null,
+   "status": "next: brief and crops ready (artifacts/landmark-briefs/school-marnixstraat-2/); the pand takes in the walled playground and its gate pavilion, so the 3DBAG shell needs the wall split from the school body"
   },
   {
    "rank": 4,
@@ -73,7 +76,8 @@
    "rawRank": 59,
    "monument": null,
    "wikidata": null,
-   "wikipedia": null
+   "wikipedia": null,
+   "status": "next"
   },
   {
    "rank": 5,
@@ -90,7 +94,8 @@
    "rawRank": 1,
    "monument": "518340",
    "wikidata": "Q17302708",
-   "wikipedia": null
+   "wikipedia": null,
+   "status": "next"
   },
   {
    "rank": 6,
