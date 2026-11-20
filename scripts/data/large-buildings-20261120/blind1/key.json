@@ -1,0 +1,32 @@
+{
+ "pair1": {
+  "key": "zeemanlab-ne-entrance",
+  "A": "new",
+  "B": "today"
+ },
+ "pair2": {
+  "key": "zeemanlab-sw-canal",
+  "A": "today",
+  "B": "new"
+ },
+ "pair3": {
+  "key": "zeemanlab-nw-side",
+  "A": "new",
+  "B": "today"
+ },
+ "pair4": {
+  "key": "weesperflat-w-whole",
+  "A": "new",
+  "B": "today"
+ },
+ "pair5": {
+  "key": "weesperflat-w-north",
+  "A": "new",
+  "B": "today"
+ },
+ "pair6": {
+  "key": "weesperflat-w-south",
+  "A": "new",
+  "B": "today"
+ }
+}
