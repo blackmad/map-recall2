@@ -1,0 +1,34 @@
+{
+ "id": "kramatplantsoen-203",
+ "name": "Flevohuis, Kramatplantsoen 203-263",
+ "heightMetres": 30.7,
+ "bagYear": 1997,
+ "galleryView": {
+  "theta": 2.2,
+  "phi": 1.05
+ },
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012087570 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/kramatplantsoen-203-footprints.json, bag-shell-prepare.ts), its rectangular walls rebuilt as cut faces; the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001207_pano_0000_001993 (2019), TMX7316010203-002909_pano_0005_000012 (2022), TMX7316010203-001008_pano_0012_000136 (2018), recording_2025-09-26_07-29-39_00889 (2025), TMX7315120208-000047_pano_0000_003462 (2016), TMX7316010203-002778_pano_0002_000051 (2022), recording_2025-09-26_13-53-26_00269 (2025), recording_2024-09-16_07-18-19_01886, _01884, _02298 and _02353 (2024), TMX7316010203-002778_pano_0002_000035 (2022), recording_2025-06-16_08-26-12_00968 (2025), TMX7316010203-002136_pano_0000_004459 (2021), TMX7316010203-002140_pano_0001_001524 (2021), CC BY 4.0. Per wall in scripts/landmarks/kramatplantsoen-203-inventory.json.",
+ "materialOverrides": {
+  "sandstone": "#d2bea6",
+  "brick": "#9c5a4a",
+  "red": "#7c4537",
+  "stone": "#e9e7e0",
+  "concrete": "#bdbcb5",
+  "frame": "#eeeee8",
+  "glass": "#6a7a83",
+  "dark": "#575b5f",
+  "greyBrick": "#dfe1de",
+  "blue": "#9aa1a5",
+  "bronze": "#80878b",
+  "pink": "#ece6d4",
+  "slate": "#5a5d5f"
+ },
+ "attribution": {
+  "title": "Flevohuis, Kramatplantsoen 203-263, Amsterdam (1997)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001008_pano_0012_000136/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012087570 (CC0): the buff-brick care home with its piers, window pairs and drop-arm awnings, the red-brick slab with window pairs, slot loggias and balcony stacks, the white stair towers, the plant room, roof terrace, entrance canopy and glazed link, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

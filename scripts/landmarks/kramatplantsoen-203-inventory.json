@@ -1,0 +1,783 @@
+{
+ "schemaVersion": 1,
+ "id": "kramatplantsoen-203",
+ "pand": "0363100012087570",
+ "brief": "scripts/landmarks/kramatplantsoen-203-brief.md",
+ "signature": [
+  "e-slot-loggias",
+  "e-two-tone",
+  "s-awnings",
+  "w-piers",
+  "n-stair-tower",
+  "e-window-pairs",
+  "e-ribbon"
+ ],
+ "walls": [
+  {
+   "tag": "w01-193",
+   "bearing": 193,
+   "lengthM": 66.8,
+   "centre": [
+    4.9453134,
+    52.3653951
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001207_pano_0000_001993",
+   "capturedAt": "2019-05-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-awnings",
+     "kind": "canopy",
+     "where": "Kramatplantsoen south front: a cream drop-arm awning over every ground-floor light and every first-floor window, side arms to a front bar with a valance",
+     "approxSizeM": [
+      1,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001207_pano_0000_001993",
+     "how": "fabricAwning() (new kit part, modern-front-kit.ts over src/canalRecall/landmarks/dropArmAwning.ts) per window: cloth, valance and arms"
+    },
+    {
+     "id": "s-spandrel-windows",
+     "kind": "window-shape",
+     "where": "ground floor: two-light windows with dark grey spandrel panels under the glass, in groups of two between brick piers; window pairs over them",
+     "approxSizeM": [
+      5,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002909_pano_0005_000012",
+     "how": "cut openings with a transom, a dark spandrel panel inside each reveal; 6.4 m bays from the west end"
+    },
+    {
+     "id": "s-plinth",
+     "kind": "other",
+     "where": "dark red-brown brick plinth about 0.8 m high under the buff brick",
+     "approxSizeM": [
+      41.8,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001207_pano_0000_001993",
+     "how": "plinth colour band of the rebuilt face"
+    },
+    {
+     "id": "s-west-end-blank",
+     "kind": "window-shape",
+     "where": "west end of the front (the west wing's end): three storeys high but windows in the lower two only, the top storey blank brick",
+     "approxSizeM": [
+      17.5,
+      11.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002909_pano_0005_000012",
+     "how": "two rows of windows and awnings, blank top storey"
+    },
+    {
+     "id": "s-street-sign",
+     "kind": "sign",
+     "where": "parking and street signs on poles in front",
+     "approxSizeM": [
+      0.6,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001207_pano_0000_001993",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-283",
+   "bearing": 283,
+   "lengthM": 64,
+   "centre": [
+    4.9449331,
+    52.3657393
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001008_pano_0012_000136",
+   "capturedAt": "2018-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-piers",
+     "kind": "colonnade",
+     "where": "Kramatplantsoen front: buff brick piers about 1 m wide every 6.3 m through the two lower storeys, a grey concrete ledge over them, the top storey flush above",
+     "approxSizeM": [
+      63.5,
+      6.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001008_pano_0012_000136",
+     "how": "pier slabs 0.25 m proud at the measured axes and a ledge band at 6.35-6.6 m"
+    },
+    {
+     "id": "w-window-pairs",
+     "kind": "window-shape",
+     "where": "a pair of white-framed windows (about 1.9 x 1.8 m, transom near the head) in every bay on all three storeys",
+     "approxSizeM": [
+      4.7,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001008_pano_0012_000136",
+     "how": "cut openings, two lights per bay centred in the bay"
+    },
+    {
+     "id": "w-entrance",
+     "kind": "other",
+     "where": "recessed entrance hall in the fifth bay from the north: glass doors set deep behind the pier line",
+     "approxSizeM": [
+      5.1,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-26_07-29-39_00889",
+     "how": "1.8 m deep cut opening with a three-light glass back"
+    },
+    {
+     "id": "w-common-rooms",
+     "kind": "window-shape",
+     "where": "three bays south of the entrance: full-width ground-floor glazing of the common rooms, set back",
+     "approxSizeM": [
+      18,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001008_pano_0012_000136",
+     "how": "0.9 m deep four-light openings"
+    },
+    {
+     "id": "w-street-sign",
+     "kind": "sign",
+     "where": "small blue street-name plates on the brick",
+     "approxSizeM": [
+      0.6,
+      0.15
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001008_pano_0012_000136",
+     "skip": {
+      "reason": "too-small",
+      "note": "name plates under a pixel at gallery size"
+     }
+    },
+    {
+     "id": "w-fence",
+     "kind": "other",
+     "where": "low dark railing along the pavement in front of the entrance bays",
+     "approxSizeM": [
+      20,
+      0.9
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-09-26_07-29-39_00889",
+     "skip": {
+      "reason": "not-visible",
+      "note": "site railing on the pavement, not part of the pand"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-90",
+   "bearing": 90,
+   "lengthM": 48.4,
+   "centre": [
+    4.9459374,
+    52.3655295
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000047_pano_0000_003462",
+   "capturedAt": "2016-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-slot-loggias",
+     "kind": "balcony-ironwork",
+     "where": "east face of the slab: four recessed slot loggias, pale grey back walls with white-framed glazing, each with a stack of five concrete balconies with grey mesh panels standing out over the brick beside the slot, the lowest wider",
+     "approxSizeM": [
+      6.6,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002778_pano_0002_000051",
+     "how": "slotLoggia() (new kit part, modern-front-kit.ts): 1.5 m deep slot cut into the red-brick face, back face with a window band per floor, slab edges, balconies from the slot back 1.4 m proud"
+    },
+    {
+     "id": "e-window-pairs",
+     "kind": "window-shape",
+     "where": "pairs of square white-framed windows (about 1.4 m) between the loggias on the five red-brick storeys, a white bar low in each",
+     "approxSizeM": [
+      3.8,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002778_pano_0002_000051",
+     "how": "cut openings with a low transom bar"
+    },
+    {
+     "id": "e-ribbon",
+     "kind": "window-shape",
+     "where": "third storey: a continuous window ribbon with white frames between two grey concrete ledges, the line between buff and red brick",
+     "approxSizeM": [
+      48,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000047_pano_0000_003462",
+     "how": "ribbon cut in pieces of at most 6 m, ledge bands at 6.3 and 9.2 m"
+    },
+    {
+     "id": "e-two-tone",
+     "kind": "other",
+     "where": "buff brick for the three lower storeys, red brick above the ledge at about 9.4 m",
+     "approxSizeM": [
+      48,
+      26
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000047_pano_0000_003462",
+     "how": "rebuilt face split into plinth, buff and red bands"
+    },
+    {
+     "id": "e-piers",
+     "kind": "colonnade",
+     "where": "buff brick piers between the ground- and first-floor window groups",
+     "approxSizeM": [
+      0.7,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002778_pano_0002_000051",
+     "how": "pier slabs 0.2 m proud"
+    },
+    {
+     "id": "e-canopy",
+     "kind": "canopy",
+     "where": "curved glass entrance canopy on two slim posts in front of the main entrance",
+     "approxSizeM": [
+      7.4,
+      3.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002778_pano_0002_000051",
+     "how": "shallow barrel of glass quads on two posts; the canopy's arched ribs left out"
+    },
+    {
+     "id": "e-lamp",
+     "kind": "lamp",
+     "where": "mushroom lamp post in the garden in front",
+     "approxSizeM": [
+      0.9,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7315120208-000047_pano_0000_003462",
+     "skip": {
+      "reason": "not-visible",
+      "note": "garden furniture, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-270",
+   "bearing": 270,
+   "lengthM": 26.3,
+   "centre": [
+    4.9456081,
+    52.3659184
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_13-53-26_00269",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "wn-slot-loggias",
+     "kind": "balcony-ironwork",
+     "where": "west face of the north part: two slot loggias with grey back walls and balcony stacks on their left halves standing out from the slot",
+     "approxSizeM": [
+      5.6,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-26_13-53-26_00269",
+     "how": "slotLoggia(), slots at t 6.2-11.8 and 19.0-24.4 from the north end"
+    },
+    {
+     "id": "wn-window-pairs",
+     "kind": "window-shape",
+     "where": "pairs of white-framed windows in the red brick between and beside the loggias",
+     "approxSizeM": [
+      3.8,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-26_13-53-26_00269",
+     "how": "cut openings"
+    }
+   ]
+  },
+  {
+   "tag": "w05-13",
+   "bearing": 13,
+   "lengthM": 25.4,
+   "centre": [
+    4.9461139,
+    52.3657486
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "north side of the glazed link to Flevopoort: no panorama; drawn like its south side (w06-192)"
+  },
+  {
+   "tag": "w06-192",
+   "bearing": 192,
+   "lengthM": 25.3,
+   "centre": [
+    4.9461144,
+    52.365723
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002140_pano_0001_001524",
+   "capturedAt": "2021-05-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "link-glazing",
+     "kind": "window-shape",
+     "where": "glazed one-storey link to the Flevopoort block: glass bays on slim grey mullions under a grey fascia",
+     "approxSizeM": [
+      24.8,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002140_pano_0001_001524",
+     "how": "linkWall(): 1.6 m cut glass bays with a transom, grey fascia and coping"
+    }
+   ]
+  },
+  {
+   "tag": "w07-0",
+   "bearing": 0,
+   "lengthM": 22.4,
+   "centre": [
+    4.9454464,
+    52.3657987
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_01875",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-garden-cladding",
+     "kind": "other",
+     "where": "garden side of the north wing behind a reed fence: grey horizontal cladding with glazed bands",
+     "approxSizeM": [
+      22,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-16_07-18-19_01875",
+     "how": "grey face with a cut glazed band per storey and thin horizontal ribs; mostly hidden by trees in every panorama"
+    }
+   ]
+  },
+  {
+   "tag": "w08-103",
+   "bearing": 103,
+   "lengthM": 19.2,
+   "centre": [
+    4.9453118,
+    52.3658818
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "garden side of the north wing's slanted strip: no panorama; drawn like w07-0"
+  },
+  {
+   "tag": "w09-90",
+   "bearing": 90,
+   "lengthM": 19,
+   "centre": [
+    4.9459303,
+    52.3658587
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_01886",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-lobby-strip",
+     "kind": "window-shape",
+     "where": "dark glazed lobby strip at the junction of the slab's two east faces, full height",
+     "approxSizeM": [
+      1.6,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01886",
+     "how": "0.35 m deep dark-framed opening with a bar per storey"
+    },
+    {
+     "id": "ne-roof-terrace",
+     "kind": "canopy",
+     "where": "roof terrace on the two-storey east wing: grey railing along its edge and a flat dark canopy on posts against the slab",
+     "approxSizeM": [
+      6,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-16_07-18-19_01886",
+     "how": "railing panels along the street and north edges, canopy slab on two posts"
+    },
+    {
+     "id": "ne-plant-room",
+     "kind": "other",
+     "where": "grey ribbed metal plant room on the slab roof",
+     "approxSizeM": [
+      8,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01886",
+     "how": "3DBAG roof box drawn grey with vertical ribs every 0.6 m"
+    },
+    {
+     "id": "ne-name",
+     "kind": "lettering",
+     "where": "small FLEVOHUIS letters over a first-floor window of the east wing",
+     "approxSizeM": [
+      1.6,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-16_07-18-19_01886",
+     "skip": {
+      "reason": "too-small",
+      "note": "letters about 0.2 m tall, under a pixel at gallery size; the map label names the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w10-0",
+   "bearing": 0,
+   "lengthM": 7.4,
+   "centre": [
+    4.9450867,
+    52.3660205
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001524_pano_0000_001544",
+   "capturedAt": "2019-12-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-end-windows",
+     "kind": "window-shape",
+     "where": "north end of the west wing: buff brick end wall with one window per storey and thin grey storey lines",
+     "approxSizeM": [
+      1.7,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001524_pano_0000_001544",
+     "how": "one cut window per storey, ledge strips"
+    }
+   ]
+  },
+  {
+   "tag": "w11-90",
+   "bearing": 90,
+   "lengthM": 7.3,
+   "centre": [
+    4.9458576,
+    52.3659851
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_01884",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-loggia",
+     "kind": "balcony-ironwork",
+     "where": "north-east loggia face: a slot loggia across nearly the whole face, white-panelled back wall, five balconies on its left half and a wide first one",
+     "approxSizeM": [
+      6.4,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01884",
+     "how": "slotLoggia() with wideFirst"
+    }
+   ]
+  },
+  {
+   "tag": "w12-192",
+   "bearing": 192,
+   "lengthM": 7.3,
+   "centre": [
+    4.9458897,
+    52.365319
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002778_pano_0002_000035",
+   "capturedAt": "2022-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-slot-windows",
+     "kind": "window-shape",
+     "where": "south end of the slab: one horizontal slot window per storey in the red brick, centred, a slot under the ledge and two narrow windows in the buff brick",
+     "approxSizeM": [
+      2,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002778_pano_0002_000035",
+     "how": "cut slot openings"
+    },
+    {
+     "id": "se-stair-tower",
+     "kind": "tower",
+     "where": "white rendered stair tower at the south end, its sides glazed",
+     "approxSizeM": [
+      3,
+      26
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001207_pano_0000_002001",
+     "how": "white render faces, glazed side faces with a frame bar per half landing, cap over the parapet"
+    },
+    {
+     "id": "se-gas-pipes",
+     "kind": "other",
+     "where": "gas pipes looping over the buff brick",
+     "approxSizeM": [
+      3.5,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002778_pano_0002_000035",
+     "skip": {
+      "reason": "too-small",
+      "note": "pipes a few centimetres thick"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-0",
+   "bearing": 0,
+   "lengthM": 7.1,
+   "centre": [
+    4.9456576,
+    52.3660372
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_00968",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "nn-slot-windows",
+     "kind": "window-shape",
+     "where": "north end of the slab: one horizontal slot window per storey in the red brick, one window per storey in the buff brick",
+     "approxSizeM": [
+      2,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_08-26-12_00968",
+     "how": "cut slot openings"
+    }
+   ]
+  },
+  {
+   "tag": "w14-0",
+   "bearing": 0,
+   "lengthM": 7,
+   "centre": [
+    4.9452379,
+    52.3660213
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_02353",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-render-panel",
+     "kind": "tower",
+     "where": "white rendered stair panel between the two buff end walls of the west wing, lower than them, with a dark base",
+     "approxSizeM": [
+      3.1,
+      10.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_02353",
+     "how": "3DBAG bump drawn in white render with coping"
+    },
+    {
+     "id": "nw-mural",
+     "kind": "other",
+     "where": "painted shark mural on the white panel",
+     "approxSizeM": [
+      2,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-16_07-18-19_02353",
+     "skip": {
+      "reason": "temporary",
+      "note": "street art, changes"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w15-0",
+   "bearing": 0,
+   "lengthM": 6.9,
+   "centre": [
+    4.945806,
+    52.3660176
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_02298",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-stair-tower",
+     "kind": "tower",
+     "where": "white rendered stair tower on the slab's north end, standing proud of the brick and about 0.9 m over the parapet with a grey coping, its east side glazed with the stair flights behind",
+     "approxSizeM": [
+      3,
+      27
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_02298",
+     "how": "whiteTower(): white faces, glazed side with frame bars, towerCaps()"
+    },
+    {
+     "id": "n-square-windows",
+     "kind": "window-shape",
+     "where": "one square window per storey in the red brick beside the tower",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_02298",
+     "how": "cut openings"
+    }
+   ]
+  },
+  {
+   "tag": "w16-103",
+   "bearing": 103,
+   "lengthM": 6.4,
+   "centre": [
+    4.9452791,
+    52.3659936
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_01877",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-garden-end",
+     "kind": "window-shape",
+     "where": "east side of the west wing's north end: buff brick with one window per storey",
+     "approxSizeM": [
+      1.7,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01877",
+     "how": "as the end walls"
+    }
+   ]
+  },
+  {
+   "tag": "w17-0",
+   "bearing": 0,
+   "lengthM": 4.9,
+   "centre": [
+    4.9453054,
+    52.3659659
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_13-53-26_00270",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-end-windows-2",
+     "kind": "window-shape",
+     "where": "buff brick end wall with a window per storey",
+     "approxSizeM": [
+      1.7,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-26_13-53-26_00270",
+     "how": "as the end walls"
+    }
+   ]
+  },
+  {
+   "tag": "w18-11",
+   "bearing": 11,
+   "lengthM": 4.9,
+   "centre": [
+    4.9458934,
+    52.3659481
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002136_pano_0000_004459",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-wing-end",
+     "kind": "window-shape",
+     "where": "north end of the two-storey east wing: buff brick with windows, the slab's white-framed glazing behind",
+     "approxSizeM": [
+      1.7,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002136_pano_0000_004459",
+     "how": "as the end walls"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

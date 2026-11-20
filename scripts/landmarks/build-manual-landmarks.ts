@@ -323,6 +323,7 @@ import {buildOranjekerkPijp} from './oranjekerk-pijp-builder';
 import {buildUtrechtsestraat917} from './utrechtsestraat-9-17-builder';
 import {buildPentagon} from './pentagon-builder';
 import {buildKramatplantsoen} from './kramatplantsoen-builder';
+import {buildKramatplantsoen203} from './kramatplantsoen-203-builder';
 import {buildDeKroonRembrandtplein} from './de-kroon-rembrandtplein-builder';
 import {buildSpiegelhof} from './spiegelhof-builder';
 import {buildTechnischeSchoolMeeuwenlaan} from './technische-school-meeuwenlaan-builder';
@@ -1214,6 +1215,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='utrechtsestraat-9-17')buildUtrechtsestraat917(w,d,helpers);
     else if(id==='pentagon')buildPentagon(w,d,helpers);
     else if(id==='kramatplantsoen')buildKramatplantsoen(w,d,helpers);
+    else if(id==='kramatplantsoen-203')buildKramatplantsoen203(w,d,helpers);
     else if(id==='de-kroon-rembrandtplein')buildDeKroonRembrandtplein(w,d,helpers);
     else if(id==='spiegelhof')buildSpiegelhof(w,d,helpers);
     else if(id==='technische-school-meeuwenlaan')buildTechnischeSchoolMeeuwenlaan(w,d,helpers);

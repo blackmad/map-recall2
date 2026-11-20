@@ -13,6 +13,7 @@ import {ledgeStrip, slab, type Frame} from './nearbar-kit';
 import {upwardRoofPlane} from './house-geometry';
 import {holedWall, type HoledOpening, type WallQuad} from '../../src/canalRecall/landmarks/holedWall';
 import {roundedBalcony, type BalconyOpts} from '../../src/canalRecall/landmarks/roundedBalcony';
+import {dropArmAwning, type DropArmOpts} from '../../src/canalRecall/landmarks/dropArmAwning';
 
 export type P2 = [number, number];
 export type Col = Parameters<BuildingTools['add']>[1];
@@ -148,6 +149,63 @@ export function strut(b: BuildingTools, a: [number, number, number], c: [number,
   g.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 1, 0), dir.normalize()));
   g.translate((a[0] + c[0]) / 2, (a[1] + c[1]) / 2, (a[2] + c[2]) / 2);
   b.add(g, col);
+}
+
+/**
+ * Drop-arm fabric awning (dropArmAwning.ts) on face F from t0, w wide: cloth from the head rail at yTop to the front bar
+ * `proj` out and `drop` lower, valance and side arms. Added 2026-11-20 for the Flevohuis front (kramatplantsoen-203).
+ */
+export function fabricAwning(b: BuildingTools, F: FR, t0: number, w: number, yTop: number, proj: number, drop: number, cloth: Col, arm: Col, o: DropArmOpts = {}) {
+  const a = dropArmAwning(w, yTop, proj, drop, o);
+  const at = (q: {pts: [number, number, number][]}) => ({pts: q.pts.map(([t, y, oo]) => [t0 + t, y, oo] as [number, number, number])});
+  addPolys(b, F.f, [...a.cloth, ...a.valance].map(at), cloth);
+  addPolys(b, F.f, a.arms.map(at), arm);
+}
+
+export type SlotLoggiaOpts = {
+  /** The slot along the face (t) and its height (y), cut `depth` into the wall. */
+  slot: [number, number]; y: [number, number]; depth: number;
+  /** Colour of the slot's back wall. */
+  back: Col;
+  /** Balcony slab tops (the storey floors inside the slot). */
+  floors: number[];
+  /** Balcony span along the face (it may start on the solid wall beside the slot) and how far it stands proud of the face. */
+  balcony: [number, number]; out: number;
+  /** The lowest balcony spans the whole of balcony and slot (a wider first terrace). */
+  wideFirst?: boolean;
+  /** Per floor in the back wall: a glazed door (w, h, centre t within the slot) and a window (sill, head above the floor, t span within the slot). */
+  door?: {w: number; h: number; at: number}; window?: {sill: number; head: number; t: [number, number]};
+  /** Slab-edge band on the back wall at every floor, and the balcony slab, railing colours and railing height. */
+  edge?: Col; slab?: Col; rail?: Col; railH?: number;
+};
+/**
+ * Recessed slot loggia with a stack of cantilevered balconies standing on its floors and straddling its edge (a balcony that
+ * starts on the solid wall beside the slot, its inner part buried in the wall): the 1990s housing-slab motif of Flevohuis
+ * (w04-270, w11-90, w03-90 of kramatplantsoen-203-brief.md), which kinkerstraat-89-builder.ts drew by hand as `loggiaBay`.
+ * Cuts the slot into F, makes its back a face with doors and windows per floor, and draws the balconies with `balcony`
+ * (square corners, solid railing panel: a mesh balustrade at gallery size). Returns the back face.
+ */
+export function slotLoggia(b: BuildingTools, F: Face, o: SlotLoggiaOpts): Face {
+  const [s0, s1] = o.slot, [y0, y1] = o.y, d = o.depth;
+  if (!(s1 > s0 && y1 > y0 && d > 0)) throw Error('slotLoggia: empty slot');
+  F.holes.push({t0: s0, t1: s1, y0, y1, depth: d, back: null});
+  const S = sub(F, s0, s1 - s0, -d), back = face(S, y0, y1, o.back);
+  for (const fl of o.floors) {
+    if (o.door && fl + o.door.h < y1 - 0.1) opening(b, back, o.door.at, fl + 0.05, o.door.w, o.door.h, {depth: 0.1, edge: 0.05, bars: [o.door.h - 0.5]});
+    if (o.window && fl + o.window.head < y1 - 0.05) {
+      const [a, c] = o.window.t;
+      opening(b, back, (a + c) / 2, fl + o.window.sill, c - a, o.window.head - o.window.sill, {depth: 0.1, edge: 0.05, cols: Math.max(1, Math.round((c - a) / 1.2))});
+    }
+    if (o.edge && fl - 0.3 > y0) ledgeStrip(b, S.f, (s1 - s0) / 2, fl - 0.3, s1 - s0, 0.3, 0.05, o.edge);
+  }
+  // a balcony side railing on a slot edge would be coplanar with the slot's reveal: keep the span 6 cm inside it
+  const off = (v: number) => (Math.abs(v - s0) < 0.06 ? s0 + 0.06 : Math.abs(v - s1) < 0.06 ? s1 - 0.06 : v);
+  const [b0, b1] = o.balcony.map(off);
+  o.floors.forEach((fl, i) => {
+    const wide = i === 0 && o.wideFirst, t0 = wide ? Math.min(b0, s0 + 0.06) : b0, t1 = wide ? Math.max(b1, s1 - 0.06) : b1;
+    balcony(b, F, t0, t1 - t0, d + o.out, fl, {o0: -d, slabT: 0.2, railH: o.railH ?? 1.0, slab: o.slab ?? 'concrete', parapet: o.rail ?? 'bronze'});
+  });
+  return back;
 }
 
 /** Downpipe from y0 to y1, 12 cm square, 6 cm off the wall. */

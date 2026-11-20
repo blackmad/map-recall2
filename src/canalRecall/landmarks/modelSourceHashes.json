@@ -1,5 +1,5 @@
 {
-  "toolchain": "a7363ce6d712c08611f469c9c05d3ef296f6860d22ba6603c494f387533e4d7d",
+  "toolchain": "0f7ccd23a77276cfa27f09936f3ebb416ae37f15b55bfb8d3342bdff308aa414",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -529,6 +529,7 @@
     "pentagon": "b921e2b5137c7fc00fb7793d93e5fe1638d33350c1e2d67b5f892f598f407468",
     "spiegelhof": "63faf3b122e7f743c2c18cd9e2411da812f9aa3f4fc672fe3ff4c9a3a1b7ebb1",
     "technische-school-meeuwenlaan": "bfbae8ace034ef7d3a4aed91368987689094b6a9679ea226b4120722f4257f2b",
-    "kramatplantsoen": "ba0c434833035becfd050f348ff8cc0e05f607c19202116da81548e2e9908296"
+    "kramatplantsoen": "ba0c434833035becfd050f348ff8cc0e05f607c19202116da81548e2e9908296",
+    "kramatplantsoen-203": "b6ea92c8974a28ea861e047c70f9b9e8110dde8c6cc729c9832d5bd50e34a666"
   }
 }
