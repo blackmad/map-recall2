@@ -107,7 +107,7 @@
  },
  {
   "slug": "de-pijp",
-  "buildings": 41,
+  "buildings": 42,
   "kits": 0,
   "facts": 38,
   "origins": 94,
@@ -194,7 +194,7 @@
  },
  {
   "slug": "grachtengordel",
-  "buildings": 99,
+  "buildings": 100,
   "kits": 0,
   "facts": 151,
   "origins": 91,
@@ -244,7 +244,7 @@
  },
  {
   "slug": "houthaven",
-  "buildings": 22,
+  "buildings": 23,
   "kits": 0,
   "facts": 8,
   "origins": 45,
@@ -303,7 +303,7 @@
  },
  {
   "slug": "kadijken",
-  "buildings": 3,
+  "buildings": 4,
   "kits": 0,
   "facts": 34,
   "origins": 27,
@@ -455,7 +455,7 @@
  },
  {
   "slug": "nieuwe-pijp",
-  "buildings": 5,
+  "buildings": 6,
   "kits": 0,
   "facts": 16,
   "origins": 36,
@@ -615,13 +615,13 @@
  },
  {
   "slug": "revaleiland",
-  "buildings": 3,
+  "buildings": 4,
   "kits": 0,
   "facts": 5,
   "origins": 5,
   "bridges": 0,
   "shots": 3,
-  "plan": 3,
+  "plan": 4,
   "lacks": [
    "photo borrowed from Houthaven",
    "bridges"

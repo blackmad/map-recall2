@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+## Utrechtsestraat 9-17, the Zeemanshuis and the Oranjekerk; Houthavens south bank (2026-11-20, round 20261120d)
+
+- **Utrechtsestraat 9-17 / Rembrandtplein (1932; lane/lm-utrechtsestraat-20261120 ad0f689850).** Brown-brick office block with the clock tower, copper loggia band and granite plinth; the Utrechtsestraat range is a holed zone-wall-kit wall so the shops and 2.2 m loggias are real recesses. Blind: new closer on all 5 walls. Replaces the large recipe `utrechtsestraat-15-169214` (now in `SHADOWED_BY_LANDMARK`). The Booking.com letters are gone in the 2025 panorama, so not drawn.
+- **Former Zeemanshuis, Kadijksplein 17-18 (Godefroy 1856, Baanders 1915-23; lane/lm-kadijksplein-20261120 a76a18aa4e).** Dark-brick fronts, corner towers with arched top windows, the arched brick portico. Three judges said FIX; the fourth passed it in all four images (today's generic white grid: FAIL). The 3DBAG stair houses at 21.5 m, seen only from the air, are drawn at the 19.4 m tower line.
+- **Oranjekerk released** (lane/landmarks-r9-20261120 db2f142d68): the parsonage turret, the octagonal porch and the belfry stage that held it in round 8.
+- **Houthavens rounds 4–5 (lane/houthavens-memel-wiborg-20261120 ff0301081b).** Installed: the south-bank offices 249736, 249737 (Danzigerbocht 45: FIGHT DISTRICT lettering, glazed slots, white terraces), 249741, 250251 (SALT), 252692, 252532 (Student Hotel) and Revaleiland 58 (250187); 247551 and 253889 re-installed. Blind round 5: new 6 of 7; school 238475 lost and is held. New kit fields, byte-identical when absent: wall `signs`, `wallLights`, `terraces` (with `posts`), and opt-in `shellClose` (fan cap for small warped loops, sliver for a lone leftover edge; regression pinned on 250187). Gallery posts end below the wall top and at the rail on the top gallery.
+
 ## Whole-building Handelsbank and Holland Casino, De Kroon released, four new markets, Park Centraal (2026-11-20, round 20261120c)
 
 - **Landmarks round 8 (lane/landmarks-r6-20261120 1283ecb55d).**
