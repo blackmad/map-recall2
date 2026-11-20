@@ -1,0 +1,13 @@
+Blind round 1, 2026-11-20: one fresh Opus judge, pairs photo | A | B, sides randomised (key.json), house:frames at
+pinned panorama poses (frames-zeemanlab.json, frames-weesperflat.json; default engine, world-v1, staged catalogue
+via a scratch signature-placement bundle). Result: new preferred 6 of 6 (Zeemanlab 3/3, Weesperflat 3/3).
+
+pair1 zeemanlab-ne-entrance  new wins; flags new: none
+pair2 zeemanlab-sw-canal     new wins; flags new: roof (3DBAG hip) reads too dominant
+pair3 zeemanlab-nw-side      new wins (low confidence, backlit photo); flags new: "large near-blank wall areas"
+                             (the NW end photo w01-300 shows the same sparse openings: a window column at each end,
+                             a pair in the upper middle, the wall-fountain niche below; waiver needed or a closer crop)
+pair4 weesperflat-w-whole    new wins; flags new: no cantilevered upper block / open pilotis read, arched arcade heads
+                             (fixed after the round: arcade rise 0, chamfer 0)
+pair5 weesperflat-w-north    new wins; flags new: none
+pair6 weesperflat-w-south    new wins; flags new: gallery recesses read flat

@@ -1,0 +1,34 @@
+[
+ {
+  "pandId": "0363100012169740",
+  "bearing": 248,
+  "at": [
+   4.905436,
+   52.365757
+  ],
+  "key": "weesperflat-w-whole",
+  "maxDistM": 45
+ },
+ {
+  "pandId": "0363100012169740",
+  "bearing": 248,
+  "at": [
+   4.905295,
+   52.365969
+  ],
+  "key": "weesperflat-w-north",
+  "pano": "b_20250109_1300_Track12_Sphere_00110",
+  "maxDistM": 45
+ },
+ {
+  "pandId": "0363100012169740",
+  "bearing": 248,
+  "at": [
+   4.905578,
+   52.365545
+  ],
+  "key": "weesperflat-w-south",
+  "pano": "b_20241210_1134_Track01_Sphere_00058",
+  "maxDistM": 45
+ }
+]
