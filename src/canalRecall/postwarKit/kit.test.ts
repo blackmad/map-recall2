@@ -125,3 +125,24 @@ test('buff calibration (round 3): named fronts stay buff, red brick is unchanged
   // Weteringschans 159-161, red brick read at mid lightness with a yellowish cast (raw L 57, h 77): not buff.
   assert.ok(!isBuffRaw([57, 9 * Math.cos(77 * Math.PI / 180), 9 * Math.sin(77 * Math.PI / 180)]));
 });
+
+test('sunlit white render broken by glazing reads as paint (round 4: Nieuwe Kerkstraat 105-111)', () => {
+  // Cluster shares as measured: white 22 %, sun-warmed render and curtains 22 % (L* 52), glazing and shade the rest.
+  const px: number[] = [];
+  const add = (n: number, r: number, g: number, b: number) => { for (let i = 0; i < n; i++) px.push(r, g, b); };
+  add(2200, 247, 245, 240); add(2200, 150, 120, 95); add(2500, 85, 80, 74); add(2000, 125, 123, 120); add(1100, 185, 180, 168);
+  const m = measureWallPatch(px)!;
+  assert.equal(m.kind, 'paint');
+  assert.ok(m.painted);
+  // Dark red brick with white frames keeps its brick.
+  const brick: number[] = [];
+  const addB = (n: number, r: number, g: number, b: number) => { for (let i = 0; i < n; i++) brick.push(r, g, b); };
+  addB(3000, 120, 80, 66); addB(2200, 247, 245, 240); addB(2000, 60, 62, 64);
+  const k = measureWallPatch(brick)!;
+  assert.equal(k.kind, 'brick');
+  // Sunlit red brick under many white frames and sky (Sarphatistraat 62: warm L* 62, a* 18) keeps its brick.
+  const sun: number[] = [];
+  const addS = (n: number, r: number, g: number, b: number) => { for (let i = 0; i < n; i++) sun.push(r, g, b); };
+  addS(3200, 190, 128, 100); addS(2700, 247, 245, 240); addS(1500, 215, 210, 195); addS(1100, 120, 100, 80);
+  assert.equal(measureWallPatch(sun)!.kind, 'brick');
+});

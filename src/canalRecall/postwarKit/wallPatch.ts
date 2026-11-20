@@ -21,6 +21,7 @@ export const MIN_L = 22;
 export const WALL_CLUSTERS = 5;
 export const WARM_YIELD = 0.15;
 export const PAINT_SHARE = 0.35;
+export const BRIGHT = { minL: 85, maxC: 10, share: 0.2, warmL: [45, 65], warmMaxA: 12 } as const;
 /** A cluster this chromatic (in the thumbnail's frame) with a warm hue is brick, not glass or shade. */
 export const WARM_CHROMA = 3.5;
 /** Accept a measurement only with this share for its cluster, this many kept pixels and at most this leaf share. */
@@ -67,13 +68,20 @@ export function measureWallPatch(rgb: ArrayLike<number>): WallPatch | null {
   // Else (grey brick, cladding): the largest.
   const paint = order.find(k => centres[k][0] >= 72 && chroma(k) < 14 && shareOf(k) >= PAINT_SHARE);
   const warm = order.filter(k => centres[k][1] >= 1.5 && centres[k][2] >= 2 && chroma(k) >= WARM_CHROMA && shareOf(k) >= WARM_YIELD).sort((p, q) => chroma(q) - chroma(p))[0];
-  const pick = paint ?? warm ?? order[0];
+  // Round 4: sunlit white render broken up by glazing (Nieuwe Kerkstraat 105-111: white 22 %, a sun-warmed L* 52 warm
+  // cluster 22 %) reads as paint when a bright low-chroma cluster holds BRIGHT.share and the warm pick is mid-lightness.
+  // Dark red brick (L* < BRIGHT.warmL[0]) with white frames and light buff brick (L* >= BRIGHT.warmL[1]) keep their brick,
+  // and so does sunlit red brick (a* >= BRIGHT.warmMaxA: Sarphatistraat 62, a* 18 under white frames and sky; the
+  // sun-warmed render and curtains at Nieuwe Kerkstraat measure a* 7).
+  const bright = order.find(k => centres[k][0] >= BRIGHT.minL && chroma(k) < BRIGHT.maxC && shareOf(k) >= BRIGHT.share);
+  const sunlitRender = paint === undefined && warm !== undefined && bright !== undefined && centres[warm][0] >= BRIGHT.warmL[0] && centres[warm][0] < BRIGHT.warmL[1] && centres[warm][1] < BRIGHT.warmMaxA;
+  const pick = paint ?? (sunlitRender ? bright : undefined) ?? warm ?? order[0];
   const members = keep.filter((_, i) => assign[i] === pick);
   const r = median(members.map(m => m.rgb[0])), g = median(members.map(m => m.rgb[1])), b = median(members.map(m => m.rgb[2]));
   const [L, A, B] = rgbToLab([r, g, b]);
   const share = members.length / keep.length;
-  const painted = pick === paint;
-  const kind = paint !== undefined ? 'paint' : warm !== undefined ? 'brick' : 'unsure';
+  const painted = pick === paint || (sunlitRender && pick === bright);
+  const kind = painted ? 'paint' : warm !== undefined ? 'brick' : 'unsure';
   const clusters = order.map(k => [Math.round(centres[k][0]), Math.round(centres[k][1]), Math.round(centres[k][2]), +shareOf(k).toFixed(2)] as [number, number, number, number]);
   return { kind, clusters, hex: `#${hex2(r)}${hex2(g)}${hex2(b)}`, painted, share: +share.toFixed(3), kept: keep.length, leafShare: +leafShare.toFixed(3), L: Math.round(L), a: Math.round(A), b: Math.round(B),
     accepted: kind !== 'unsure' && share >= ACCEPT.share && keep.length >= ACCEPT.pixels && leafShare <= ACCEPT.leaf };
