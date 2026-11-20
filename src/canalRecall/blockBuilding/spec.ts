@@ -61,7 +61,13 @@ export interface WinParams {
      * height, a window `winW` m wide centred in every `pitch` m (opt-in, GitHub #86: the GWL gallery storeys, whose
      * photo shows the flats' doors and windows in a brick back wall behind the rail, not a glass wall)
      */
-    back?: { rows: { lo: number; hi: number; pitch: number; winW: number }[] } };
+    back?: { rows: { lo: number; hi: number; pitch: number; winW: number }[] };
+    /**
+     * an open, unglazed void (opt-in, lane large-buildings-20261120: the Weesperflat's open storey under its upper
+     * block): no frame or glazing, the back one dark sheet in `slot`, and `posts` columns (centres as fractions of the
+     * opening width, `w` m wide, in the wall slot) standing in the recess 5 cm behind the wall face. Absent: byte-identical.
+     */
+    open?: { slot: Slot; posts?: { at: number[]; w: number } } };
   /**
    * recess mode, a side light in its own frame colour (opt-in, GitHub #86: the Da Vinci building's white-framed transom
    * windows each hold a blue-framed opening sash in their left third): a glazing bar (the window's frame slot) at `w` of
@@ -194,7 +200,9 @@ export interface System {
   groundPiers?: GroundPiers;
 }
 
-export interface RecessBand { floors: [number, number]; bays: [number, number]; sill: number; head: number; inset: number; win: WinParams }
+export interface RecessBand { floors: [number, number]; bays: [number, number]; sill: number; head: number; inset: number; win: WinParams;
+  /** a slab over the band standing `out` m proud of the wall, `h` m deep from the band's head up, in the cut wall's slot: the edge and soffit of a cantilevered upper block (opt-in; absent: byte-identical) */
+  lip?: { h: number; out: number } }
 
 export interface Rule { at?: [number, number]; r?: number; bearing?: [number, number]; system: string; maxWidth?: number; minWidth?: number }
 export interface Sign { text: string; at: [number, number]; /** baseline height (m) */ v: number; height: number; slot: Slot; /** fraction of panel width used */ span?: number; /** horizontal stretch of each glyph */ stretch?: number; offset?: number; letterSpacing?: number; font?: string }

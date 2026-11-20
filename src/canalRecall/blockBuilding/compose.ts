@@ -432,7 +432,15 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
     back = 0.015;
   }
   const g = (a: number, b: number, lo: number, hi: number, slot: string, d: number, pt = part) => c.mesh.quad(slot, Q(a, lo, d), Q(b, lo, d), Q(b, hi, d), Q(a, hi, d), pt, n);
-  if (w.paneSplit) {
+  if (w.loggia?.open) {
+    // an open void: one dark sheet at the back, no frame or glass; posts stand in the recess clear of the wall face
+    g(u0, u1, v0, v1, w.loggia.open.slot, 0);
+    const posts = w.loggia.open.posts;
+    if (posts && corners) {
+      const pp = c.part(), half = posts.w / 2;
+      for (const f of posts.at) { const u = u0 + (u1 - u0) * f; if (u - half > u0 + 0.05 && u + half < u1 - 0.05) c.box(c.wallSlot, u - half, u + half, v0, v1, back, -0.05, pp); }
+    }
+  } else if (w.paneSplit) {
     // one frame sheet at the back, the panes in front of it: ring and bars are the sheet between the panes
     g(u0, u1, v0, v1, frameSlot, 0);
     const mulls = w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1));
@@ -986,6 +994,8 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
       if (a > first.u0 + rb.inset) a += 0.05;
       if (b < last.u1 - rb.inset) b -= 0.05;
       drawOpening(c, a, b, lo, hi, rb.win, p.index * 31 + 7);
+      // the cantilevered block's slab edge over the band, proud of the wall, its soffit seen from the street
+      if (rb.lip) c.box(c.wallSlot, a - rb.inset, b + rb.inset, hi, hi + rb.lip.h, 0, rb.lip.out, c.part());
     }
     if (c.layered) drawBalconyRuns(c);
     if (sys.cladding) for (const [a0, b0] of intervals(p, sys.cladding.from, p.vMax - 0.35)) for (const [a, b] of [[Math.max(a0, p.uMin + W * (sys.cladding.u?.[0] ?? 0)), Math.min(b0, p.uMin + W * (sys.cladding.u?.[1] ?? 1))]]) if (b - a > 0.3) { const part = c.part(); c.quad(sys.cladding.slot, a, sys.cladding.from, b, p.vMax - 0.35, 0.012, part); }

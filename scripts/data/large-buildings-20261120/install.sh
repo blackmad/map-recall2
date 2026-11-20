@@ -11,7 +11,7 @@ node --import tsx scripts/building-recipes/install-large.ts --house=zeemanlab-17
 
 # Weesperflat, Weesperstraat (pand 0363100012169740)
 node --import tsx scripts/building-recipes/install-large.ts --house=weesperflat-169740 --install \
-  '--allow-inferred=0:blind1 new preferred, the photo wall cluster lands on the dark window bands and the recessed storey (wall family unresolved), concrete tone hand-sampled from the sunlit 2025-01-09 segment;1:south end below the slab, same concrete and balcony bands as walls[0], read from w01-248s3h40L 2024-12-10'
+  '--allow-inferred=0:blind1 new preferred 3/3 and blind2 open void + lip preferred 3/3, the photo wall cluster lands on the dark window bands and the recessed storey (wall family unresolved), concrete tone hand-sampled from the sunlit 2025-01-09 segment;1:south end below the slab, same concrete and balcony bands as walls[0], read from w01-248s3h40L 2024-12-10'
 
 # Then (integrator): covers, LODs, goldens, gates
 #   npx tsx scripts/build-covers.ts && cp artifacts/bag-tiles/covers.json public/canal-drive/models/covers.json && npm run -s check:covers

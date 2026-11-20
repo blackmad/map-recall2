@@ -557,7 +557,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.loggiaBands ? {loggiaBands: w.loggiaBands.filter(b => b.storeys[1] < st.heights.length).map((b, k) => {
         const n = (b.bays[1] - b.bays[0] + 1) * pitchM, h0 = st.heights[b.storeys[0]], h1 = st.heights[b.storeys[1]];
         return {storeys: [b.storeys[0], b.storeys[1]] as [number, number], bays: [b.bays[0], b.bays[1]] as [number, number], sillM: r3((b.sill ?? LOGGIA_BAND.sill) * h0), headM: r3((b.head ?? LOGGIA_BAND.head) * h1),
-          deepM: r3((b.deep ?? LOGGIA_BAND.deep) * h0), lights: b.lights ?? Math.max(1, Math.round(n / LOGGIA_BAND.lightM)), rail: b.rail ?? 'glass', railSlot: bandRail(k), ...(b.back ? {back: b.back.map(r => ({...r}))} : {})};
+          deepM: r3((b.deep ?? LOGGIA_BAND.deep) * h0), lights: b.lights ?? Math.max(1, Math.round(n / LOGGIA_BAND.lightM)), rail: b.rail ?? 'glass', railSlot: bandRail(k), ...(b.back ? {back: b.back.map(r => ({...r}))} : {}),
+          ...(b.open ? {open: {posts: b.open.posts ?? 0, postW: r3((b.open.postW ?? 0.1) * pitchM), ...(b.open.every ? {every: b.open.every} : {})}} : {}), ...(b.lip ? {lip: {h: r3(b.lip.h * h1), out: r3(b.lip.out * h1)}} : {})};
       })} : {}),
       ...(w.groundPiers ? {groundPiers: {every: w.groundPiers.every, first: w.groundPiers.first ?? 0, w: r3(w.groundPiers.w * pitchM), out: 0.12, top: r3(st.heights[0]), slot: gpSlot!,
         ...(gpPlinth ? {plinth: {h: r3(w.groundPiers.plinth!.h * st.heights[0]), slot: gpPlinth}} : {})}} : {}),

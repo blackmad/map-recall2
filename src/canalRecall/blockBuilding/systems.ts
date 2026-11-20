@@ -141,7 +141,19 @@ export interface SideLightFit { side: 'left' | 'right'; w: number; low: number; 
 export interface BayWindowsFit { storeys: number[]; pattern: { w: number; at?: number; h?: number; sillM?: number; light?: number; door?: boolean }[] }
 /** A loggia band (compose `RecessBand`): bays and storeys inclusive, sill / head in m over their floor lines, depth in m. */
 export interface LoggiaBandFit { storeys: [number, number]; bays: [number, number]; sillM: number; headM: number; deepM: number; lights: number; rail: 'glass' | 'bars' | 'solid' | 'none'; railSlot: string;
-  /** the back a wall with rows of windows: per row from `sill` to `sill + h` of the band, one window `w` of `every` bays wide in each run of `every` bays */ back?: { sill: number; h: number; every: number; w: number }[] }
+  /** the back a wall with rows of windows: per row from `sill` to `sill + h` of the band, one window `w` of `every` bays wide in each run of `every` bays */ back?: { sill: number; h: number; every: number; w: number }[];
+  /** an open unglazed void: the back a dark sheet in `railSlot`, `posts` columns per bay (`postW` m wide) in the recess; absent: glazed */ open?: { posts: number; postW: number; every?: number };
+  /** the cantilevered upper block's slab over the band: `h` m deep from the band's head, `out` m proud, in the wall slot */ lip?: { h: number; out: number } }
+/**
+ * Post centres for an open loggia band (`LoggiaBandFit.open`) across `bays` bays with `perBay` posts each, as fractions
+ * of the band width: one post on every `every`-th bay joint (`perBay` 1), or `perBay` evenly inside each bay; never on the band's ends.
+ */
+export function openPostsAt(bays: number, perBay: number, every = 1): number[] {
+  const out: number[] = [];
+  if (perBay === 1) for (let k = every; k < bays; k += every) out.push(+(k / bays).toFixed(4));
+  else for (let k = 0; k < bays; k++) for (let j = 1; j <= perBay; j++) out.push(+((k + j / (perBay + 1)) / bays).toFixed(4));
+  return out;
+}
 /** Loggia band defaults: a 3 cm kerb, the head at 0.85 of the top storey, 0.5 of the storey deep, a light per ~1.2 m, a 4 cm inset from the bay edges. */
 export const LOGGIA_BAND = { sill: 0.03, head: 0.85, deep: 0.5, lightM: 1.2, insetM: 0.04 };
 
@@ -515,7 +527,9 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
     return { floors: [L.storeys[0], L.storeys[1]], bays: [L.bays[0], L.bays[1]], sill: L.sillM, head: L.headM, inset: LOGGIA_BAND.insetM,
       win: { w: width, h: 0.9, sill: 0, ...(n > 1 ? { mullAt: Array.from({ length: n - 1 }, (_, k) => +((k + 1) / n).toFixed(4)) } : {}), frame: s.frame, glass: s.glass, sillSlot: null,
         frameW: f.frames === false ? 0 : 0.06, ...(f.deepBars ? { barD: 0.035 } : {}), loggia: { depth: L.deepM, ...rail,
-          ...(L.back ? { back: { rows: L.back.map(r => ({ lo: r.sill, hi: +(r.sill + r.h).toFixed(3), pitch: +(r.every * f.pitchM).toFixed(3), winW: +(r.w * r.every * f.pitchM).toFixed(3) })) } } : {}) } } };
+          ...(L.back ? { back: { rows: L.back.map(r => ({ lo: r.sill, hi: +(r.sill + r.h).toFixed(3), pitch: +(r.every * f.pitchM).toFixed(3), winW: +(r.w * r.every * f.pitchM).toFixed(3) })) } } : {}),
+          ...(L.open ? { open: { slot: L.railSlot, ...(L.open.posts ? { posts: { at: openPostsAt(L.bays[1] - L.bays[0] + 1, L.open.posts, L.open.every ?? 1), w: L.open.postW } } : {}) } } : {}) } },
+      ...(L.lip ? { lip: { h: L.lip.h, out: L.lip.out } } : {}) };
   });
   return { pitch: f.pitchM, lines: f.lines, ground, typical, bands, piers, ...(Object.keys(rowOverrides).length ? { rowOverrides } : {}), ...(recessBands.length ? { recessBands } : {}), ...(f.groundPiers ? { groundPiers: f.groundPiers } : {}) };
 }
