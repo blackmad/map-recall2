@@ -1,0 +1,464 @@
+{
+ "schemaVersion": 1,
+ "id": "utrechtsestraat-9-17",
+ "pand": "0363100012169214",
+ "brief": "scripts/landmarks/utrechtsestraat-9-17-brief.md",
+ "signature": [
+  "clock-tower",
+  "loggia-gallery",
+  "triple-windows-pilasters",
+  "granite-base",
+  "arms-relief",
+  "attic-pavilions"
+ ],
+ "walls": [
+  {
+   "tag": "w01-257",
+   "bearing": 257,
+   "lengthM": 57.5,
+   "centre": [
+    4.897756,
+    52.3656065
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241203_1333_Track01_Sphere_00298",
+   "capturedAt": "2024-12-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "loggia-gallery",
+     "kind": "colonnade",
+     "where": "first storey of the projecting Utrechtsestraat range: nine loggias 4.3 m wide, 3.6-7.05 m, about 2 m deep, light plastered reveals, glazed back wall, green copper parapet band and trim",
+     "approxSizeM": [
+      57.5,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_1333_Track01_Sphere_00298",
+     "how": "holed wall (zone-wall-kit) cut 2.2 m deep with stone reveals and a brick back, glazed doors on the back wall, copper parapet slab and trims"
+    },
+    {
+     "id": "triple-windows-pilasters",
+     "kind": "window-shape",
+     "where": "three storeys of triple steel windows (lights 1.2 m, 0.35 m brick mullions) in nine 6.4 m bays between brick pilasters with stepped capitals",
+     "approxSizeM": [
+      57.5,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_1333_Track01_Sphere_00298",
+     "how": "0.2 m deep cuts with glass backs, transom and two glazing bars per light, sills; pilaster slabs with two-step capitals"
+    },
+    {
+     "id": "granite-base",
+     "kind": "other",
+     "where": "rusticated granite ground storey 0-3.6 m: piers at the pilasters, a recessed shop under every bay",
+     "approxSizeM": [
+      57.5,
+      3.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241203_1333_Track01_Sphere_00298",
+     "how": "granite face material with 0.45 m deep shop cuts and glazing bars; the rustication joints are not drawn"
+    },
+    {
+     "id": "attic-pavilions",
+     "kind": "other",
+     "where": "glazed attic pavilions behind the cornice with green copper posts and a projecting copper roof edge",
+     "approxSizeM": [
+      55,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241203_1333_Track01_Sphere_00298",
+     "how": "the 3DBAG attic walls drawn in glass, copper posts every 2.2 m, a copper fascia and a transom line"
+    },
+    {
+     "id": "w01-cornice",
+     "kind": "other",
+     "where": "brick cornice at 23-24 m with a green copper cap",
+     "approxSizeM": [
+      57.5,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_1333_Track01_Sphere_00298",
+     "how": "brick and copper slabs"
+    },
+    {
+     "id": "w01-lanterns",
+     "kind": "lamp",
+     "where": "small hanging lanterns and blade signs on the piers between the loggias",
+     "approxSizeM": [
+      0.4,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241203_1333_Track01_Sphere_00298",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m lanterns and tenant blade signs"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-163",
+   "bearing": 163,
+   "lengthM": 39.5,
+   "centre": [
+    4.8981305,
+    52.365408
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002865_pano_0005_000005",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "w02-windows",
+     "kind": "window-shape",
+     "where": "Herengracht front: two-, three-light and single windows on four storeys, three triple bays over the entrance",
+     "approxSizeM": [
+      39,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000624",
+     "how": "proud light slabs per column along the jogged front, sills, pilasters"
+    },
+    {
+     "id": "w02-reliefs",
+     "kind": "relief",
+     "where": "six carved granite panels between the low windows over the entrance",
+     "approxSizeM": [
+      0.8,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000624",
+     "how": "two stacked granite slabs per panel; the carving is not drawn"
+    },
+    {
+     "id": "w02-entrance",
+     "kind": "other",
+     "where": "recessed entrance with three doors in the granite base",
+     "approxSizeM": [
+      9.6,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000624",
+     "how": "granite surround slab and three dark door slabs"
+    },
+    {
+     "id": "w02-grilles",
+     "kind": "window-shape",
+     "where": "grilled basement windows under the east columns",
+     "approxSizeM": [
+      1,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000624",
+     "how": "dark slabs; the bars are not drawn"
+    },
+    {
+     "id": "roof-frames",
+     "kind": "other",
+     "where": "open green steel frames on the roof terrace over the Herengracht end",
+     "approxSizeM": [
+      20,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_000624",
+     "skip": {
+      "reason": "not-visible",
+      "note": "set back over the 24 m cornice; seen only from the far bank and end-on (w02 view)"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-3",
+   "bearing": 3,
+   "lengthM": 34.9,
+   "centre": [
+    4.897944,
+    52.366184
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002031_pano_0001_001992",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "w03-windows",
+     "kind": "window-shape",
+     "where": "triple and double windows on four storeys between pilasters, cornice at 22.5 m",
+     "approxSizeM": [
+      27,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_001992",
+     "how": "proud light slabs, sills, pilasters, brick cornice"
+    },
+    {
+     "id": "w03-granite-shops",
+     "kind": "other",
+     "where": "granite base to 4.1 m with five shop openings",
+     "approxSizeM": [
+      27,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_001992",
+     "how": "granite skin and string course, framed dark shop glazing"
+    },
+    {
+     "id": "corner-portal",
+     "kind": "other",
+     "where": "tall granite portal of the corner block, 3.7 x 7 m glazed entrance with two dark posts",
+     "approxSizeM": [
+      4.1,
+      7.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0001_001992",
+     "how": "granite surround slab, dark glazing, transom and two posts"
+    },
+    {
+     "id": "shop-signs",
+     "kind": "sign",
+     "where": "Vapiano and Shiso tenant signs",
+     "approxSizeM": [
+      3,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002031_pano_0001_001992",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signs that change"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-258",
+   "bearing": 258,
+   "lengthM": 26.3,
+   "centre": [
+    4.8976765,
+    52.3659825
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001664_pano_0000_001944",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "arms-relief",
+     "kind": "crest",
+     "where": "stone Amsterdam arms (shield with the pale and three saltires, two lion supporters, crown) on the granite base at the foot of the tower, about 2.5 x 3.3 m",
+     "approxSizeM": [
+      2.5,
+      3.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001664_pano_0000_001944",
+     "how": "pedestal, back panel, shield outline with the pale and three saltires as crossed bars, lions as extruded side profiles, a crown of three blocks"
+    },
+    {
+     "id": "w04-windows",
+     "kind": "window-shape",
+     "where": "four bays of triple windows on four storeys between pilasters with capitals",
+     "approxSizeM": [
+      24,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001664_pano_0000_001944",
+     "how": "proud frame, glass, transom and glazing-bar slabs, sills, pilasters"
+    },
+    {
+     "id": "w04-granite-shops",
+     "kind": "other",
+     "where": "granite base to 4.1 m with four shop windows",
+     "approxSizeM": [
+      24,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001664_pano_0000_001944",
+     "how": "granite skin and string course, framed dark shop glazing"
+    },
+    {
+     "id": "w04-attic-ribbons",
+     "kind": "window-shape",
+     "where": "two attic ribbon-window rows over the cornice, 23.9-25.1 and 27.0-28.4 m, with slim mullions",
+     "approxSizeM": [
+      24,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001664_pano_0000_001944",
+     "how": "glass bands with frame mullions every 1.3 m and brick sill bands"
+    },
+    {
+     "id": "booking-lettering",
+     "kind": "lettering",
+     "where": "Booking.com letters between the attic rows (2020, 2022)",
+     "approxSizeM": [
+      8.5,
+      1.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001664_pano_0000_001944",
+     "skip": {
+      "reason": "gone",
+      "note": "tenant sign; the 2025-06-19 panorama recording_2025-06-19_03-28-47_01649 shows the attic without it"
+     }
+    },
+    {
+     "id": "roof-railing",
+     "kind": "balcony-ironwork",
+     "where": "light railing along the 30.5 m roof edge",
+     "approxSizeM": [
+      24,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01649",
+     "how": "top rail on posts every 2.5 m"
+    },
+    {
+     "id": "street-lamp",
+     "kind": "lamp",
+     "where": "historic cast-iron street lamp in front of the base",
+     "approxSizeM": [
+      0.5,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001664_pano_0000_001944",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture on the pavement, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-77",
+   "bearing": 77,
+   "lengthM": 23.3,
+   "centre": [
+    4.8982105,
+    52.3658165
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "courtyard/party side, no panorama within 35 m: left as the 3DBAG shell wall"
+  },
+  {
+   "tag": "w06-274",
+   "bearing": 274,
+   "lengthM": 8.2,
+   "centre": [
+    4.8976725,
+    52.366148
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_01649",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "clock-tower",
+     "kind": "tower",
+     "where": "slender square brick tower at the Rembrandtplein corner, stepped corner piers with stone weatherings, a grilled window, a clock stage with a teal dial and gilt ring on each face, stone coping, about 40.5 m",
+     "approxSizeM": [
+      3.6,
+      40.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01649",
+     "how": "own box over the 3DBAG tower (which is dropped): shaft, two set-back stages, corner piers, weatherings, grilled window, four clocks with hands, coping",
+     "skip": {
+      "reason": "t",
+      "note": "o"
+     }
+    },
+    {
+     "id": "w06-portal",
+     "kind": "other",
+     "where": "tall granite entrance portal with a glazed opening and two dark posts on the corner block",
+     "approxSizeM": [
+      5.8,
+      7.65
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01649",
+     "how": "granite surround, dark glazing, posts"
+    },
+    {
+     "id": "w06-windows",
+     "kind": "window-shape",
+     "where": "four rows of four lights in a brick frame band",
+     "approxSizeM": [
+      6,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01649",
+     "how": "proud light slabs, sills, frame band"
+    }
+   ]
+  },
+  {
+   "tag": "w07-347",
+   "bearing": 347,
+   "lengthM": 4.3,
+   "centre": [
+    4.8976885,
+    52.3658625
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_0926_Track30_Sphere_00347",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-singles",
+     "kind": "window-shape",
+     "where": "a column of single windows on the 4 m return of the Utrechtsestraat range",
+     "approxSizeM": [
+      1.2,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track30_Sphere_00347",
+     "how": "proud light slabs and sills over a granite base"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeentelijk monument 200500",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/defd2dc1-be43-4fce-bc66-bb98ad891449?_format=json",
+   "licence": "CC0"
+  }
+ ]
+}

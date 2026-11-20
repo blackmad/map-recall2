@@ -117,6 +117,13 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     concrete: {slot: 'paint', why: 'palette name only: the grey painted eaves fascia of the porch (w06-255)'},
     dark: {slot: 'door', why: 'the dark church doors (w07-255, w06-255)'},
   },
+  'utrechtsestraat-9-17': {
+    sandstone: {slot: 'stone', why: 'palette name only: grey granite base, portals, copings and the Amsterdam arms (w04-258, w06-274)'},
+    slate: {slot: 'bitumen', why: 'flat roofs of the office block and its setbacks, not slate'},
+    bronze: {slot: 'glass', why: 'attic pavilion glazing behind the Utrechtsestraat cornice (w01-257), drawn on the shell walls'},
+    greyBrick: {slot: 'frame', why: 'light metal roof railing on the Rembrandtplein front (2025 panorama), not brick'},
+    blue: {slot: 'paint', why: 'teal clock dials of the tower (tower-top.jpg)'},
+  },
   'port-van-cleve': {
     brick: {slot: 'brick', measured: '#5e342b', why: 'deep red-brown brick of the hotel front in shade (nzv-0, TMX7316010203-001900_pano_0006_000054; blind review 2026-11-15 read #5a3830-#6b4236; #7e4a3e and #6e3e34 still drew orange-red in the lit game frame)'},
     sandstone: {slot: 'stone', measured: '#776b5e', why: 'weathered buff-grey sandstone bands, pediments, surrounds and pinnacles: nzv-0 reads #5a5654-#64615e overcast, a blind review #8f8170 (2026-11-15: #958a78 and #7a705f drew cream lit, the neutral #6b6560 read cool mauve-grey)'},

@@ -115770,6 +115770,238 @@
       "triangles": 25375,
       "bytes": 292992,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "utrechtsestraat-9-17": {
+      "id": "utrechtsestraat-9-17",
+      "name": "Utrechtsestraat 9-17, Rembrandtplein",
+      "modelUrl": "./models/utrechtsestraat-9-17.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012169214"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89804507,
+          52.36571306
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 93.2,
+        "widthMetres": 52.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.89804507,
+          52.36571306
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012169214 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/utrechtsestraat-9-17-footprints.json, bag-shell-prepare.ts), the rooftop volume snapped flat; the fronts read from the rectified Gemeente Amsterdam panoramas b_20241203_1333_Track01_Sphere_00298 (2024), TMX7316010203-001664_pano_0000_001944 (2020), TMX7316010203-002031_pano_0001_001992 (2021), TMX7316010203-001975_pano_0000_000624 (2021), recording_2025-06-19_03-28-47_01649 (2025, the clock tower) and b_20250120_0926_Track30_Sphere_00347 (2025), CC BY 4.0. Gemeentelijk monument 200500. Per wall in scripts/landmarks/utrechtsestraat-9-17-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 40.5,
+      "galleryView": {
+        "theta": 0.55,
+        "phi": 1.05
+      },
+      "bagYear": 1932,
+      "materialOverrides": {
+        "brick": "#655343",
+        "sandstone": "#7b756c",
+        "stone": "#b9ae94",
+        "copper": "#5f9c86",
+        "frame": "#3f4441",
+        "glass": "#4a5560",
+        "dark": "#2b2f30",
+        "slate": "#5d5f60",
+        "concrete": "#7c8084",
+        "gold": "#b89a52",
+        "blue": "#5fa3ad",
+        "bronze": "#6f8088",
+        "greyBrick": "#b9bab6"
+      },
+      "attribution": {
+        "title": "Utrechtsestraat 9-17 / Rembrandtplein, Amsterdam (1932)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_1333_Track01_Sphere_00298/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012169214 (CC0): the Utrechtsestraat loggia range rebuilt as a holed wall, the granite base, triple steel windows, pilasters and cornices on every street front, the attic pavilions and ribbons, the clock tower and the Amsterdam arms, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8977122,
+              52.3658649
+            ],
+            [
+              4.8976556,
+              52.3658562
+            ],
+            [
+              4.8978513,
+              52.3653528
+            ],
+            [
+              4.8979172,
+              52.3653652
+            ],
+            [
+              4.8979162,
+              52.3653671
+            ],
+            [
+              4.8979196,
+              52.3653677
+            ],
+            [
+              4.8980171,
+              52.3653863
+            ],
+            [
+              4.8980183,
+              52.365384
+            ],
+            [
+              4.8980542,
+              52.3653907
+            ],
+            [
+              4.898053,
+              52.3653931
+            ],
+            [
+              4.8981952,
+              52.36542
+            ],
+            [
+              4.8981964,
+              52.3654176
+            ],
+            [
+              4.8982323,
+              52.3654244
+            ],
+            [
+              4.8982311,
+              52.3654268
+            ],
+            [
+              4.8984031,
+              52.3654586
+            ],
+            [
+              4.8984045,
+              52.3654589
+            ],
+            [
+              4.8984041,
+              52.3654597
+            ],
+            [
+              4.8984073,
+              52.3654603
+            ],
+            [
+              4.8982777,
+              52.3657177
+            ],
+            [
+              4.8982479,
+              52.3657132
+            ],
+            [
+              4.8981675,
+              52.3659157
+            ],
+            [
+              4.898207,
+              52.3659214
+            ],
+            [
+              4.8982127,
+              52.3659602
+            ],
+            [
+              4.8981821,
+              52.3660076
+            ],
+            [
+              4.898195,
+              52.3661461
+            ],
+            [
+              4.8981975,
+              52.3661729
+            ],
+            [
+              4.8981976,
+              52.3661737
+            ],
+            [
+              4.8976853,
+              52.3661898
+            ],
+            [
+              4.8976732,
+              52.3661833
+            ],
+            [
+              4.8976667,
+              52.3661086
+            ],
+            [
+              4.8976404,
+              52.3661047
+            ],
+            [
+              4.8976317,
+              52.3660963
+            ],
+            [
+              4.8977162,
+              52.3658654
+            ],
+            [
+              4.8977122,
+              52.3658649
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -28.922422409057617,
+          -9.536743306171047e-8,
+          -53.459476470947266
+        ],
+        "max": [
+          24.67709732055664,
+          40.5,
+          40.48522186279297
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89804507,
+          52.36571306
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 93.94469833374023,
+        "heightMetres": 40.50000009536743,
+        "depthMetres": 53.59951972961426,
+        "depthCoverage": 1.022891597893402
+      },
+      "triangles": 25689,
+      "bytes": 361888,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

@@ -78,6 +78,9 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   // Rijksakademie, Sarphatistraat 470 (large recipe: an even round-arch grid on two ranges, no pavilion pediment, plaque or
   // gateway; the bespoke model (venues-ring lane, 2026-11-14) draws the Sarphatistraat ranges, the pavilion and the NE gable).
   'ordinary-0363100012165748': 'rijksakademie',
+  // Utrechtsestraat 9-17 / Rembrandtplein (2026-10-14 large recipe utrechtsestraat-15-169214): brick bay grids without the
+  // loggia gallery, the clock tower, the arms or the attic pavilions; the bespoke model (landmarks r9, 2026-11-20) draws them.
+  'ordinary-0363100012169214': 'utrechtsestraat-9-17',
 };
 /** Every catalogue model (both categories) that no landmark shadows and no hold (ordinaryHolds.ts, held.json) keeps out: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id] && !isHeldOrdinary(m.id)).map(ordinarySpecFor);
