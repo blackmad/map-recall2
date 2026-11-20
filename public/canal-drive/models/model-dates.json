@@ -1656,6 +1656,16 @@
       "version": "8c01dcec9aaaa2f9",
       "dateSource": "asset-update"
     },
+    "de-kroon-rembrandtplein.lod1": {
+      "updatedAt": "2026-11-20T08:51:00.328Z",
+      "version": "1c20b73db2e9ed14",
+      "dateSource": "asset-update"
+    },
+    "de-kroon-rembrandtplein.lod2": {
+      "updatedAt": "2026-11-20T08:51:01.262Z",
+      "version": "277813bc566342b2",
+      "dateSource": "asset-update"
+    },
     "de-makroon": {
       "updatedAt": "2026-11-02T03:19:12.523Z",
       "version": "dec21658543084fe",
@@ -5467,13 +5477,13 @@
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort.lod1": {
-      "updatedAt": "2026-11-20T06:57:15.650Z",
-      "version": "8218536aac4e78ab",
+      "updatedAt": "2026-11-20T08:51:00.277Z",
+      "version": "4225a3ea3faace4c",
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort.lod2": {
-      "updatedAt": "2026-11-20T06:57:15.651Z",
-      "version": "46ce1726b2671c91",
+      "updatedAt": "2026-11-20T08:51:00.899Z",
+      "version": "4d41e4f6e5ef00c5",
       "dateSource": "asset-update"
     },
     "pont-13": {
@@ -5819,6 +5829,16 @@
     "roode-leeuw-damrak": {
       "updatedAt": "2026-11-20T08:01:19.151Z",
       "version": "196a5b81db5a0303",
+      "dateSource": "asset-update"
+    },
+    "roode-leeuw-damrak.lod1": {
+      "updatedAt": "2026-11-20T08:51:00.308Z",
+      "version": "ecb691a6bd6f5784",
+      "dateSource": "asset-update"
+    },
+    "roode-leeuw-damrak.lod2": {
+      "updatedAt": "2026-11-20T08:51:01.083Z",
+      "version": "11f5f7b5fcd90a5f",
       "dateSource": "asset-update"
     },
     "room-mate-aitana": {

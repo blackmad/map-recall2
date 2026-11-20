@@ -4811,12 +4811,12 @@
   }
  },
  "vijzelbank": {
-  "sourceHash": "1310fc65cf2a62ae",
+  "sourceHash": "bed01e5fc3ba70d1",
   "buildVersion": 2,
   "bytes": 78468,
   "triangles": 4147,
   "lod2": {
-   "sourceHash": "1310fc65cf2a62ae",
+   "sourceHash": "bed01e5fc3ba70d1",
    "buildVersion": 6,
    "bytes": 22840,
    "triangles": 1316
@@ -6169,12 +6169,12 @@
   }
  },
  "politiebureau-raampoort": {
-  "sourceHash": "27f09a4cd394e11c",
+  "sourceHash": "a214b6ca04899764",
   "buildVersion": 2,
-  "bytes": 96080,
+  "bytes": 96076,
   "triangles": 4584,
   "lod2": {
-   "sourceHash": "27f09a4cd394e11c",
+   "sourceHash": "a214b6ca04899764",
    "buildVersion": 6,
    "bytes": 17184,
    "triangles": 582
@@ -6229,27 +6229,27 @@
   }
  },
  "handelsbank-singel-250": {
-  "sourceHash": "78dca899a0ccfd15",
+  "sourceHash": "035277b8c4379f91",
   "buildVersion": 2,
-  "bytes": 60016,
-  "triangles": 2763,
+  "bytes": 84244,
+  "triangles": 3736,
   "lod2": {
-   "sourceHash": "78dca899a0ccfd15",
+   "sourceHash": "035277b8c4379f91",
    "buildVersion": 6,
-   "bytes": 10492,
-   "triangles": 331
+   "bytes": 15268,
+   "triangles": 442
   }
  },
  "holland-casino-amsterdam": {
-  "sourceHash": "208f869dd6af5267",
+  "sourceHash": "1c5162cc03c5ffd9",
   "buildVersion": 2,
-  "bytes": 39408,
-  "triangles": 1437,
+  "bytes": 63240,
+  "triangles": 2405,
   "lod2": {
-   "sourceHash": "208f869dd6af5267",
+   "sourceHash": "1c5162cc03c5ffd9",
    "buildVersion": 6,
-   "bytes": 15748,
-   "triangles": 616
+   "bytes": 25928,
+   "triangles": 1013
   }
  },
  "de-mirandabad": {
@@ -6420,28 +6420,40 @@
    "triangles": 269
   }
  },
- "roode-leeuw-damrak": {
-  "sourceHash": "196a5b81db5a0303",
+ "de-kroon-rembrandtplein": {
+  "sourceHash": "8c01dcec9aaaa2f9",
   "buildVersion": 2,
-  "bytes": 66324,
-  "triangles": 2825,
+  "bytes": 49948,
+  "triangles": 2087,
   "lod2": {
-   "sourceHash": "196a5b81db5a0303",
+   "sourceHash": "8c01dcec9aaaa2f9",
    "buildVersion": 6,
-   "bytes": 10360,
-   "triangles": 261
+   "bytes": 9660,
+   "triangles": 243
   }
  },
- "de-kroon-rembrandtplein": {
-  "sourceHash": "14b7adaf60709d8a",
+ "school-marnixstraat-2": {
+  "sourceHash": "fec1afd13482856d",
   "buildVersion": 2,
-  "bytes": 47220,
-  "triangles": 1899,
+  "bytes": 61504,
+  "triangles": 2742,
   "lod2": {
-   "sourceHash": "14b7adaf60709d8a",
+   "sourceHash": "fec1afd13482856d",
    "buildVersion": 6,
-   "bytes": 9260,
-   "triangles": 218
+   "bytes": 10368,
+   "triangles": 335
+  }
+ },
+ "oranjekerk-pijp": {
+  "sourceHash": "3a8fe1e2627b0fe1",
+  "buildVersion": 2,
+  "bytes": 67104,
+  "triangles": 3072,
+  "lod2": {
+   "sourceHash": "3a8fe1e2627b0fe1",
+   "buildVersion": 6,
+   "bytes": 11644,
+   "triangles": 338
   }
  }
 }

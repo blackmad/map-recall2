@@ -43033,11 +43033,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012170734",
       "name": "Valckenierstraat 65, Amsterdam-Centrum (Roeterseiland): 1963 university laboratory block, four storeys of brick ribbon windows with cream bands over a dark plinth, a two-storey steel-window canal wing and a brick tower with a chimney stack",
-      "hash": "18fbf368dc2e07bb854bc9a778d19c17c8035a54f5471d8f3e7451ab89110640",
-      "sha256": "33a718e75a6937e7d8b061158eafb6431080084a3dfe42c05cabdaaba5e63647",
-      "bytes": 296688,
-      "triangles": 11908,
-      "materials": 14,
+      "hash": "903f65115529dacd068a5631b6ca926d7bc732732ac1ebeeadacd5becde45d6e",
+      "sha256": "903f65115529dacd068a5631b6ca926d7bc732732ac1ebeeadacd5becde45d6e",
+      "bytes": 1258264,
+      "triangles": 17371,
+      "materials": 15,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -43150,33 +43150,43 @@
           "storey-height/walls[2]:pass",
           "eaves-vs-3dbag/walls[3]:pass",
           "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "eaves-vs-3dbag/walls[5]:pass",
+          "storey-height/walls[5]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
-          "parts-attached:pass"
+          "parts-attached:pass",
+          "openings-within-walls:pass"
         ],
         "wallGroups": [
           "brick-bay-grid 4st 14b",
           "ribbon-windows 1st 25b",
           "brick-bay-grid 4st 11b",
-          "ribbon-windows 2st 14b"
+          "ribbon-windows 2st 14b",
+          "ribbon-windows 4st 22b",
+          "ribbon-windows 4st 14b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] likeness WARN (mask IoU 0.307 < 0.45).",
-        "walls[1] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches this panel, kept as fitted, not confirmed by a photo",
-        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.16)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.16) is a measurement limit (frames read as trim, storey bands, mullion counts)",
-        "walls[3] not confirmed by the photo (FAIL (glazing storey band off by 0.18 mean 0.48 vs photo 0.81)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.18 mean 0.48 vs photo 0.81) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.27; window shape wide vs photo square)); inferred: unchanged from the shipped recipe, judged FAIL on 2026-10-29 for tone and window shape, not refit in this lane",
+        "walls[1] not confirmed by the photo (NO PHOTO); inferred: set-back top floor, no crop reaches it, unchanged from the shipped recipe",
+        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.24 mean 0.39 vs photo 0.22; columns 11 vs photo 19)); inferred: unchanged from the shipped recipe, judged FAIL on 2026-10-29 for column count, not refit in this lane",
+        "walls[3] not confirmed by the photo (FAIL (glazing  mean 0.48 vs photo 0.70)); inferred: north steel-window wing unchanged, w04-343L 2021-01-22 confirms the two ribbon storeys",
+        "walls[4] not confirmed by the photo (NO PHOTO); inferred: E lab faces seen across the canal from the w08-73 pano 2021-01-22, four ribbon storeys in brick, no straight crop",
+        "walls[5] not confirmed by the photo (NO PHOTO); inferred: N face behind the wing, its top seen over the wing in w04-343L 2021-01-22, ribbon storeys as the S and W fronts",
         "Simplified: the brick plinth is the ground storey of the same brick, the stone bands are string courses, window groups are evenly spaced bays; the chimney tower and the two stair towers are the 3DBAG mass in brick colour (the second chimney stack and the roof plant are not modelled). Not drawn: the east front, the courtyard walls and the tower faces, which stay blank wall (no panorama within 35 m).",
-        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #544f3e not used (not darker than the wall #765e52 by 10 L*, or tinted): kit glass kept; walls[3] glass #444946 not used (not darker than the wall #4e4740 by 10 L*, or tinted): kit glass kept."
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #544f3e not used (not darker than the wall #765e52 by 10 L*, or tinted): kit glass kept; walls[3] glass #444946 not used (not darker than the wall #4e4740 by 10 L*, or tinted): kit glass kept.",
+        "2026-11-20 (lane large-buildings-20261120): the blank-walls hold (the shader grid's 3.2 m storeys added storeys to a block of 4 m lab storeys) is met by drawing the large unlisted lab faces as ribbon-window storeys like the photographed S and W fronts (w01-163L, w03-253: continuous ribbons of narrow panes in brick): walls[4] = panels 8 and 21 (E, 58 m and 21.7 m, eaves 16.1; seen across the Nieuwe Herengracht from the w08-73 panorama TMX7316010203-001975_pano_0000_000868 2021-01-22: four ribbon storeys in brick) and walls[5] = panel 34 (N, 37 m behind the two-storey wing, its top seen over the wing in w04-343L 2021-01-22). Still on the grid: the set-back top floor faces and the chimney tower's upper panels. budgetTriangles 17500: the shipped recipe was already 11,908 of the 12,000 default; the two inferred faces add about 5,500 (17,371)."
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170734",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T11:35:42.092Z",
-      "meshHash": "77e483d9057689d1"
+      "updatedAt": "2026-11-20T09:38:44.848Z",
+      "meshHash": "02ef83757d735afc"
     },
     {
       "id": "ordinary-0363100012247232",
@@ -74981,24 +74991,24 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170498",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-11-20T08:49:53.687Z"
+      "updatedAt": "2026-11-20T09:38:24.241Z"
     },
     {
       "id": "ordinary-0363100012169740",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169740",
       "name": "Weesperflat, Weesperstraat 1966 (Herman Hertzberger; rijksmonument 2764/2765): a 76 m concrete student slab on pilotis, shops recessed between the columns, three storeys of continuous balcony bands, a recessed open storey under a heavy slab, three more balcony storeys",
-      "hash": "75ffbaf1e62f0f2e51c50a0af4c5e24ba4e89eebcca0b07e9f17d4967295f68c",
-      "sha256": "75ffbaf1e62f0f2e51c50a0af4c5e24ba4e89eebcca0b07e9f17d4967295f68c",
-      "meshHash": "6e4104017fe782cf",
-      "bytes": 575680,
-      "triangles": 7760,
-      "materials": 11,
+      "hash": "0ab882340e8df616db309b920fc7cca04ffc807fb26884e7b573d20b7898f6d7",
+      "sha256": "0ab882340e8df616db309b920fc7cca04ffc807fb26884e7b573d20b7898f6d7",
+      "meshHash": "7e6d9eec9011f8ae",
+      "bytes": 544080,
+      "triangles": 7296,
+      "materials": 12,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
-          -21.116,
+          -21.117,
           -0.001,
           -27.429
         ],
@@ -75112,7 +75122,7 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (wall dL +0.20; glazing storey band off by 0.83 mean 0.51 vs photo 0.04; wall family unresolved (#878781 is dark and neutral, brick courses not resolved): lightness and hue judged only)); inferred: blind1 new preferred, the photo wall cluster lands on the dark window bands and the recessed storey (wall family unresolved), concrete tone hand-sampled from the sunlit 2025-01-09 segment",
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.20; glazing storey band off by 0.81 mean 0.51 vs photo 0.04; wall family unresolved (#878781 is dark and neutral, brick courses not resolved): lightness and hue judged only)); inferred: blind1 new preferred 3/3 and blind2 open void + lip preferred 3/3, the photo wall cluster lands on the dark window bands and the recessed storey (wall family unresolved), concrete tone hand-sampled from the sunlit 2025-01-09 segment",
         "walls[1] not confirmed by the photo (FAIL (wall family stone vs photo brick; glazing storey band off by 0.27 mean 0.39 vs photo 0.68; window shape wide vs photo square)); inferred: south end below the slab, same concrete and balcony bands as walls[0], read from w01-248s3h40L 2024-12-10"
       ],
       "reviewState": "large-recipe-likeness-inferred",
@@ -75120,7 +75130,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169740",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-11-20T08:49:57.825Z"
+      "updatedAt": "2026-11-20T09:38:34.967Z"
     },
     {
       "id": "ordinary-0363100012247551",
@@ -76281,6 +76291,238 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-11-20T08:50:44.913Z"
+    },
+    {
+      "id": "ordinary-0363100012233471",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012233471",
+      "name": "Stadhouderskade 25 (Park Centraal Amsterdam hotel and the MOMO corner), Amsterdam-Zuid: 1930 block with a stone-and-brick arched corner range on Stadhouderskade, a dark stone balcony range and a bowed hotel front with continuous glazed balconies",
+      "hash": "b23d47a794b5d6229f56e968b02ef32e9138a2c4012f21ca4f71ea69ac41f194",
+      "sha256": "b23d47a794b5d6229f56e968b02ef32e9138a2c4012f21ca4f71ea69ac41f194",
+      "meshHash": "b99ddf346495eb7a",
+      "bytes": 1252356,
+      "triangles": 17238,
+      "materials": 18,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -30.552,
+          0.001,
+          -27.093
+        ],
+        "max": [
+          48.166,
+          29.635,
+          29.346
+        ]
+      },
+      "anchor": [
+        4.8829041,
+        52.3613528
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8832933,
+              52.3615822
+            ],
+            [
+              4.8828359,
+              52.3615859
+            ],
+            [
+              4.8828358,
+              52.3615796
+            ],
+            [
+              4.8825382,
+              52.3615811
+            ],
+            [
+              4.8825382,
+              52.3615774
+            ],
+            [
+              4.8825353,
+              52.3615774
+            ],
+            [
+              4.8825057,
+              52.3615876
+            ],
+            [
+              4.8824721,
+              52.3615833
+            ],
+            [
+              4.8824531,
+              52.3615658
+            ],
+            [
+              4.8824597,
+              52.3615451
+            ],
+            [
+              4.8824857,
+              52.3615342
+            ],
+            [
+              4.882488,
+              52.3615311
+            ],
+            [
+              4.8824823,
+              52.3615295
+            ],
+            [
+              4.8825846,
+              52.3613909
+            ],
+            [
+              4.8825739,
+              52.3613881
+            ],
+            [
+              4.8827906,
+              52.3610895
+            ],
+            [
+              4.8828779,
+              52.3611129
+            ],
+            [
+              4.8828829,
+              52.3611059
+            ],
+            [
+              4.8829133,
+              52.3611144
+            ],
+            [
+              4.8829061,
+              52.3611242
+            ],
+            [
+              4.8829453,
+              52.361135
+            ],
+            [
+              4.8829484,
+              52.3611307
+            ],
+            [
+              4.8829653,
+              52.3611353
+            ],
+            [
+              4.8829642,
+              52.3611368
+            ],
+            [
+              4.8831201,
+              52.3611803
+            ],
+            [
+              4.8831296,
+              52.361167
+            ],
+            [
+              4.8832179,
+              52.3611906
+            ],
+            [
+              4.883221,
+              52.3611865
+            ],
+            [
+              4.8832405,
+              52.3611917
+            ],
+            [
+              4.8832425,
+              52.3611889
+            ],
+            [
+              4.8836119,
+              52.3612872
+            ],
+            [
+              4.8835606,
+              52.3613607
+            ],
+            [
+              4.8834095,
+              52.3613213
+            ],
+            [
+              4.8833124,
+              52.361466
+            ],
+            [
+              4.8833023,
+              52.3615823
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 29.64,
+      "height": 29.64,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-stadhouderskade-25-233471.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012233471"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "stadhouderskade-25-233471",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012233471/w02-1.jpg",
+          "staging/pand-reference-walls/0363100012233471/w04-1.jpg",
+          "staging/pand-reference-walls/0363100012233471/w01-246.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass",
+          "openings-within-walls:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 7st 8b",
+          "brick-bay-grid 4st 6b",
+          "brick-bay-grid 5st 9b",
+          "brick-bay-grid 4st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] not confirmed by the photo (FAIL (wall family paint vs photo brick; glazing storey band off by 0.46 mean 0.54 vs photo 0.30; window shape wide vs photo square)); inferred: hotel front is a dark concrete frame grid, not brick, with glass balcony rails on storeys 2-6 read from w02-1L 2024-12-11, the glazing band reads the pale rail panels",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.30; wall family unresolved (#4d4c57 is dark and neutral, brick courses not resolved): lightness and hue judged only)); inferred: MOMO range from w04-1 2022-04-26, red-brick ground, arched storey with bars, one dressed storey, mansard with dormers, dark paint read by hand",
+        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.22 mean 0.40 vs photo 0.54; wall family unresolved (#413f3f is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 9 vs photo 31)); inferred: SW range from w01-246 2023-01-10, stone ground, balconies on storeys 1-3 every second bay, the photo column count reads the single windows between the balcony pairs",
+        "walls[3] not confirmed by the photo (NO EVIDENCE (foliage 35 % > 25 %)); inferred: SW return of the MOMO range from w06-246 2024-12-11, same arched storey, dressings and mansard as walls[1]",
+        "Stadhouderskade 25 (BAG, built 1930; Park Centraal Amsterdam hotel sign on the north front, MOMO restaurant on the corner range) is a block on the Stadhouderskade with a bowed seven-storey hotel front with continuous glazed balcony runs, an older dark-stone corner range with white dressings and arched first-floor windows, and a dark stone balcony range on the south-west. 240 3DBAG wall surfaces; three fronts are drawn (w02-1, w04-1, w01-246), w03-157, w05-68 and w06-246 are close views of the same ranges and of the cream corner house; everything else stays blank."
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233471",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-11-20T09:38:53.441Z"
     }
   ]
 }
