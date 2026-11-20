@@ -119948,7 +119948,19 @@
       },
       "triangles": 8841,
       "bytes": 134968,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "dc3409caebec9f02",
+        "buildVersion": 2,
+        "bytes": 43188,
+        "triangles": 1710
+      },
+      "lod2": {
+        "sourceHash": "dc3409caebec9f02",
+        "buildVersion": 6,
+        "bytes": 7156,
+        "triangles": 175
+      }
     }
   }
 }

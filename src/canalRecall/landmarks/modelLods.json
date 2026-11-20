@@ -6563,5 +6563,17 @@
    "bytes": 28056,
    "triangles": 1500
   }
+ },
+ "oostenburgergracht-15": {
+  "sourceHash": "dc3409caebec9f02",
+  "buildVersion": 2,
+  "bytes": 43188,
+  "triangles": 1710,
+  "lod2": {
+   "sourceHash": "dc3409caebec9f02",
+   "buildVersion": 6,
+   "bytes": 7156,
+   "triangles": 175
+  }
  }
 }

@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## St. Willibrordusschool, Oostenburgergracht 15-17 (2026-11-20, round 20261120j)
+
+- Gemeentelijk monument 206026, the former St. Willibrordusschool (P.J. Bekkers 1915, built 1919; lane/lm-oostenburgergracht-15-20261120 41a3d45f31). Today's game drew a generic dark block. The model: granite plinth and portico frames with recessed doors, cross windows in three-light groups, segmental relieving arches on sandstone springers (the register's "only decoration"), the risalit with its flat spout gable and cross, the copper-green coping, two tableaux and St. Willibrord on his console; at the rear on the Wittenburgervaart, the canted chapel bay (re-measured from a level panorama cut: 10.3 m in front of the 12.3 m wing) and the stair block. 8.8k triangles. Blind 4–0 against today, absolute PASS. New kit: `landmarks/relievingArches.ts` (tested) with its builder adapter. Open: tableau lettering, a reusable figure part, the bay's exact NW cant, brick reads a little orange in game.
+
 ## Flevohuis, Kramatplantsoen 203-263 (2026-11-20, round 20261120i)
 
 - The care home and slab next to Flevopoort (BAG pand 087570; lane/lm-kramatplantsoen-203-20261120 e11abdf0a9), on the 3DBAG shell: the U-shaped three-storey buff care home with piers every 6.3 m and two rows of drop-arm awnings, the 26 m slab (buff below, red brick above) with slot loggias and balcony stacks, a glazed band storey and lobby canopy, two white stair towers, the low east wing and the glass link bridge to Flevopoort. Blind 4–0 against the generic block, absolute PASS; colours toned after the blind (buff read mustard, red too orange). New kit: `landmarks/dropArmAwning.ts` (`fabricAwning`) and `slotLoggia` in modern-front-kit. Open: deeper concrete balconies, the rounded care-home corner, wide white-framed lights, stair flights behind glass, mesh railings, FLEVOHUIS letters.
