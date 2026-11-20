@@ -1,0 +1,341 @@
+{
+ "schemaVersion": 1,
+ "id": "oostenburgergracht-15",
+ "pand": "0363100012180539",
+ "brief": "scripts/landmarks/oostenburgergracht-15-brief.md",
+ "signature": [
+  "s-cross-windows",
+  "s-relieving-arches",
+  "s-risalit-gable",
+  "s-willibrord-statue",
+  "s-granite-plinth",
+  "s-tableaux",
+  "s-porticoes",
+  "n-chapel-bay"
+ ],
+ "walls": [
+  {
+   "tag": "w01-301",
+   "bearing": 301,
+   "lengthM": 27.7,
+   "centre": [
+    4.92125,
+    52.3692715
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000056_pano_0000_000606",
+   "capturedAt": "2016-05-24",
+   "checked": true,
+   "items": [],
+   "note": "NW party wall: the aimed panorama shows the neighbours Oostenburgergracht 7-13, which stand against this wall to about 12-14 m; above them and along the chapel wing (r430 2017, TMX7316010203-000353_pano_0002_000430) it is plain brick with a downpipe. Left as the 3DBAG shell."
+  },
+  {
+   "tag": "w02-210",
+   "bearing": 210,
+   "lengthM": 21.2,
+   "centre": [
+    4.921282,
+    52.369117
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_07-14-50_01399",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-relieving-arches",
+     "kind": "window-shape",
+     "where": "over every classroom window light: a shallow segmental rowlock arch, the arches of a three-light group meeting on light sandstone springer blocks (register: zandstenen aanzetstukken van de drie licht getoogde ontlastingsbogen)",
+     "approxSizeM": [
+      5.9,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002048_pano_0001_000860",
+     "how": "relievingArchRow (new kit part src/canalRecall/landmarks/relievingArches.ts): segBand arches on shared pentagonal ochre springers"
+    },
+    {
+     "id": "s-cross-windows",
+     "kind": "window-shape",
+     "where": "three storeys of three-light groups in the wings (and the two upper storeys of the risalit): cream cross windows (kruiskozijnen), four-pane fanlight over six-pane lower lights, 1.54 x 3.27 m at a 1.9 m pitch",
+     "approxSizeM": [
+      1.54,
+      3.27
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002048_pano_0001_000860",
+     "how": "frame, pane and a 4 x 5 paneGrid with the heavy transom over the third row and a heavy mullion"
+    },
+    {
+     "id": "s-granite-plinth",
+     "kind": "other",
+     "where": "the high plinth of light grey Bavarian granite to the ground-floor sills (1.84 m), with low basement grilles under the wing windows",
+     "approxSizeM": [
+      21.2,
+      1.84
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002048_pano_0001_000860",
+     "how": "stone slab with dark grille panels"
+    },
+    {
+     "id": "s-risalit-gable",
+     "kind": "other",
+     "where": "the middle risalit, barely proud, crowned by a very flat spout gable (17.98 m at the sides to 18.89 m) carrying a cross (register; the cross seen from the water in TMX7316010203-001982_pano_0000_000812)",
+     "approxSizeM": [
+      7.5,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002048_pano_0001_000860",
+     "how": "brick slab 0.1 m proud, a triangular gable with copper coping and a stone cross"
+    },
+    {
+     "id": "s-porticoes",
+     "kind": "canopy",
+     "where": "the two porticoes in the risalit ground floor, framed in granite to 3.46 m, the doors up a few steps, a fanlight over each door under a relieving arch, a low three-light window between them",
+     "approxSizeM": [
+      6.5,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002048_pano_0001_000860",
+     "how": "granite jambs, pier and lintels 0.3 m proud, dark door leaves in the recess on three stone steps, fanlights with arches; the left portico mirrored about the statue axis (the tree hides it in both views)"
+    },
+    {
+     "id": "s-willibrord-statue",
+     "kind": "sculpture",
+     "where": "St. Willibrord on a console between the porticoes on the middle axis, about 0.6 x 2.6 m with a pointed canopy, 3.5-6.3 m",
+     "approxSizeM": [
+      0.6,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_07-14-50_01399",
+     "how": "stone console, a lathed robed figure, head, mitre and crozier, a back plate and a four-sided pointed hood"
+    },
+    {
+     "id": "s-tableaux",
+     "kind": "lettering",
+     "where": "the two light lettered tableaux between the ground and first floor of the wings, \"ST CANISIUS-PATRONAAT\" left and \"ST VINCENTIUSSCHOOL L.C.\" right, 3.9 x 0.53 m at 5.96 m",
+     "approxSizeM": [
+      3.9,
+      0.53
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002048_pano_0001_000860",
+     "how": "light panel with one darker strip standing for its line of capitals; the letters are 0.2 m pixel glyphs that would cost ~3,000 triangles each and are unreadable at gallery size"
+    },
+    {
+     "id": "s-sills",
+     "kind": "window-shape",
+     "where": "natural stone sills under the first and second-floor groups",
+     "approxSizeM": [
+      5.6,
+      0.14
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002048_pano_0001_000860",
+     "how": "one grey slab under each group"
+    },
+    {
+     "id": "s-parapet-coping",
+     "kind": "other",
+     "where": "the green-grey (copper/zinc patina) coping along the straight parapet of both wings and the gable",
+     "approxSizeM": [
+      21.2,
+      0.25
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002048_pano_0001_000860",
+     "how": "copper slabs on the parapet and along the gable slopes"
+    },
+    {
+     "id": "s-statue-flank",
+     "kind": "window-shape",
+     "where": "two narrow lights either side of the statue under a sandstone lintel band at 5.1-5.5 m",
+     "approxSizeM": [
+      2,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002048_pano_0001_000860",
+     "how": "two 0.42 m windows and an ochre band"
+    },
+    {
+     "id": "s-signs",
+     "kind": "sign",
+     "where": "the physiotherapy banner on the left plinth and a beach flag at the door",
+     "approxSizeM": [
+      3.6,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-19_07-14-50_01399",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant banner and flag, not architecture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-121",
+   "bearing": 121,
+   "lengthM": 8.8,
+   "centre": [
+    4.9213965,
+    52.36929
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000056_pano_0000_000597",
+   "capturedAt": "2016-05-24",
+   "checked": true,
+   "items": [],
+   "note": "courtyard wall of the chapel wing facing the neighbours' yards (ring edge 8); the aimed panorama shows Oostenburgergracht 23-25 on the street instead, so no photo of this wall exists. Left as the 3DBAG shell."
+  },
+  {
+   "tag": "w04-31",
+   "bearing": 31,
+   "lengthM": 7.6,
+   "centre": [
+    4.921401,
+    52.3693615
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001982_pano_0000_000811",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-chapel-bay",
+     "kind": "window-shape",
+     "where": "the canted chapel bay on the Wittenburgervaart: a row of five tall white windows (the outer two on the cants) at 5.6-8.3 m, over them two small squares flanking two tall slits at 9.5-11.6 m",
+     "approxSizeM": [
+      7.6,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001982_pano_0000_000811",
+     "how": "framed windows on edges 13 and 12 with stone sills; the NW cant is not in the BAG ring, so its window stands on the front"
+    },
+    {
+     "id": "n-coping-band",
+     "kind": "other",
+     "where": "the white coping band round the top of the bay at 12.0-12.3 m",
+     "approxSizeM": [
+      10.9,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001982_pano_0000_000811",
+     "how": "white slab along edges 11-13"
+    },
+    {
+     "id": "n-basement-hood",
+     "kind": "canopy",
+     "where": "the dark cantilevered hood on three brackets over two basement windows at the quay, 3.6 m",
+     "approxSizeM": [
+      6,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0002_000430",
+     "how": "dark slab 0.62 m deep, bracket wedges, two three-light windows"
+    },
+    {
+     "id": "n-quay-plinth",
+     "kind": "other",
+     "where": "grey plinth from the water to about 2.8 m",
+     "approxSizeM": [
+      7.6,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0002_000430",
+     "how": "concrete slab"
+    },
+    {
+     "id": "n-stair-block",
+     "kind": "tower",
+     "where": "behind the bay, the 16 m stair and corridor block: rows of small windows on its NE wall, a canted stair tower with one big window per storey, a recessed bay with a balcony and white railing, white copings (seen from the water)",
+     "approxSizeM": [
+      12,
+      16
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001982_pano_0000_000812",
+     "how": "small windows on edge 2, big windows on edge 5, the balcony and windows on edge 7, white copings on edges 2-7; the 3DBAG shell carries the canted tower"
+    },
+    {
+     "id": "n-downpipes",
+     "kind": "other",
+     "where": "two grey downpipes down the bay corners",
+     "approxSizeM": [
+      0.1,
+      12
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001982_pano_0000_000811",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.1 m pipes"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-30",
+   "bearing": 30,
+   "lengthM": 5.6,
+   "centre": [
+    4.9214595,
+    52.3691665
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "short NE face of the stair block (ring edge 7); seen at an angle in TMX7316010203-001982_pano_0000_000812 (2021) with the balcony, modelled under w04-31 n-stair-block"
+  },
+  {
+   "tag": "w06-31",
+   "bearing": 31,
+   "lengthM": 4.4,
+   "centre": [
+    4.921392,
+    52.369246
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001982_pano_0000_000811",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [],
+   "note": "NE end of the corridor block beside the bay (ring edges 9-11): a tall window over a white ledge, seen at 33 m; the ledge and the bay coping are in w04-31; the rest is the 3DBAG shell"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeentelijk monument 206026 (St. Willibrordusschool)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/715eae8d-ff71-4e21-929c-068e67f7f6e2?_format=json",
+   "licence": "CC0"
+  },
+  {
+   "name": "BAG pand 0363100012180539 (PDOK)",
+   "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012180539",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012180539",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012180539",
+   "licence": "CC BY 4.0"
+  }
+ ],
+ "note": "Identity: gemeentelijk monument 206026, St. Willibrordusschool (P.J. Bekkers 1915 design, built by Jac. Duncker 1919), the only monument record carrying BAG pand 0363100012180539; BAG bouwjaar 1919. The brief's Wikipedia hits (Sarphatistraat, tram 13, the ASM) are about other subjects and are not used. The only street front is the SW Oostenburgergracht facade; the NE end is the chapel bay on the Wittenburgervaart, seen only from the water."
+}

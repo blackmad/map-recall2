@@ -1,0 +1,33 @@
+{
+ "id": "oostenburgergracht-15",
+ "name": "Former St. Willibrordusschool, Oostenburgergracht 15-17",
+ "heightMetres": 19,
+ "bagYear": 1919,
+ "galleryView": {
+  "theta": 5.0,
+  "phi": 1.05
+ },
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012180539 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/oostenburgergracht-15-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas recording_2025-06-19_07-14-50_01399 (2025, Oostenburgergracht), TMX7316010203-002048_pano_0001_000860 (2021), TMX7316010203-001982_pano_0000_000811 and _000812 (2021, the chapel bay and the rear on the Wittenburgervaart) and TMX7316010203-000353_pano_0002_000430 (2017), CC BY 4.0. Gemeentelijk monument 206026. Per wall in scripts/landmarks/oostenburgergracht-15-inventory.json.",
+ "materialOverrides": {
+  "brick": "#62473c",
+  "red": "#4f382f",
+  "stone": "#b3ada0",
+  "ochre": "#c4b394",
+  "concrete": "#9d978a",
+  "frame": "#e6e1d3",
+  "glass": "#48535b",
+  "dark": "#3a3634",
+  "white": "#e3ded0",
+  "copper": "#7f9a90",
+  "bronze": "#8a7b66"
+ },
+ "attribution": {
+  "title": "St. Willibrordusschool, Oostenburgergracht 15-17, Amsterdam (Jac. Duncker after P.J. Bekkers, 1919)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_07-14-50_01399/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012180539 (CC0): the granite plinth and portico frame, the three-light cross windows under their relieving arches on sandstone springers, the stone sills, the risalit with its spout gable and cross, the copper parapet coping, the lettered tableaux, a simplified St. Willibrord on his console, and the chapel bay and stair block toward the Wittenburgervaart, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ },
+ "partyWallBearings": [301, 120, 121]
+}
