@@ -102,3 +102,13 @@ test('surrounds.jamb / head: validated as shares; widen the jambs and raise the 
   const broad = compileLargeBuilding(validateLargeIntent(withHouse(0, {dress: {colour: '#e6e2da', surrounds: {storeys: [1], jamb: 0.25, head: 0.3}}})), facts(), {budget: 1e9});
   assert.ok(area(broad) >= area(thin), 'broad surround extent at least the thin one');
 });
+
+test('shutters: validated; a leaf each side of the windows of the house; absent draws none', async () => {
+  assert.doesNotThrow(() => validateLargeIntent(withHouse(0, {dress: {colour: '#c4602a', shutters: {storeys: [1, 2], w: 0.45}}})));
+  assert.throws(() => validateLargeIntent(withHouse(0, {dress: {shutters: {w: 0.9}}})), /shutters.w/);
+  assert.throws(() => validateLargeIntent(withHouse(0, {dress: {shutters: {flaps: 2}}})), /shutters/);
+  const dressMeshes = (b: ReturnType<typeof compileLargeBuilding>) => { let n = 0; b.group.traverse(o => { const m = o as T.Mesh; if (m.isMesh && /dress@g0h0/.test(m.name)) n += (m.geometry.index?.count ?? m.geometry.attributes.position.count); }); return n; };
+  const none = compileLargeBuilding(validateLargeIntent(withHouse(0, {dress: {colour: '#c4602a', bands: {at: ['sill'], storeys: [1]}}})), facts(), {budget: 1e9});
+  const withS = compileLargeBuilding(validateLargeIntent(withHouse(0, {dress: {colour: '#c4602a', bands: {at: ['sill'], storeys: [1]}, shutters: {storeys: [1]}}})), facts(), {budget: 1e9});
+  assert.ok(dressMeshes(withS) > dressMeshes(none), 'shutters add dressing geometry');
+});

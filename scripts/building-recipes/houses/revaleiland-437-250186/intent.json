@@ -6,21 +6,57 @@
  "address": "Revaleiland 437, Amsterdam-Centrum (Java-eiland / Revaleiland): 2020 apartment block round a courtyard, five storeys of red brick with cream-framed windows, stacked glass-railed balconies in recesses, a dark brick plinth and a set-back top floor with slot windows",
  "sources": [
   {
-   "id": "pano-2020-01-29-w04-230L",
+   "id": "pano-2022-06-22-w05-230n",
    "kind": "street-panorama",
-   "capturedAt": "2020-01-29",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001596_pano_0001_000238/",
-   "image": "source-data://pand-reference-walls/0363100012250186/w04-230L.jpg",
-   "sha256": "d875c59b0548d6f1ae9950bfc363122aa550dcdb60b25552b0dbe9be8f640d30",
+   "capturedAt": "2022-06-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002621_pano_0006_000090/",
+   "image": "source-data://pand-reference-walls/0363100012250186/w05-230n.jpg",
+   "sha256": "bf5f63cdd75f394b7b1e02e9dd90d3a5e034460dd3fefe8568f45436c87bbf38",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2020-01-29-w02-140",
+   "id": "pano-2021-12-30-w02-140s2n",
    "kind": "street-panorama",
-   "capturedAt": "2020-01-29",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001596_pano_0000_000074/",
-   "image": "source-data://pand-reference-walls/0363100012250186/w02-140.jpg",
-   "sha256": "cf2f51b1e283cd614052c3ce56236fcadb657c1a2b0bb9b72199e39a5d10decc",
+   "capturedAt": "2021-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0004_000098/",
+   "image": "source-data://pand-reference-walls/0363100012250186/w02-140s2n.jpg",
+   "sha256": "1ac9c9728dc5c8183fd3d4ee1596e69c0d704082cad36f91d93449a821868fe9",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-16-w01-320s1n",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-16_06-25-31_02823/",
+   "image": "source-data://pand-reference-walls/0363100012250186/w01-320s1n.jpg",
+   "sha256": "1fab8a9c4fbbdfae3ee19d70ac664d891d8570330eac31bd197257454fecfb01",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-30-w06-320n",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0004_000117/",
+   "image": "source-data://pand-reference-walls/0363100012250186/w06-320n.jpg",
+   "sha256": "e22b672932f5c434ed7cbd803a93fcc552e6f0bb311d8af3114986d015d75984",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-06-22-w07-50n",
+   "kind": "street-panorama",
+   "capturedAt": "2022-06-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002621_pano_0006_000045/",
+   "image": "source-data://pand-reference-walls/0363100012250186/w07-50n.jpg",
+   "sha256": "6898fcaeb18c33b799bdd962e4d78779790477250d5f6fcb7ca84f775b39de9f",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-24-w08-50n",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002026_pano_0000_002978/",
+   "image": "source-data://pand-reference-walls/0363100012250186/w08-50n.jpg",
+   "sha256": "890cf2e9ba161af321775b370835e38adf4fbb0ec525cb0ff21a49caa05bc96e",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -55,18 +91,20 @@
     ]
    },
    "palette": {
-    "brick": "#6b3e33",
+    "brick": "#4e2c26",
     "frame": "#e8e6d8",
-    "stone": "#a08a78"
+    "stone": "#4a2a24"
    },
    "hand": [
+    "baysPerStorey",
+    "palette",
     "system",
-    "baysPerStorey"
+    "windowShape"
    ],
    "windowShape": {
-    "w": 0.25,
+    "w": 0.5,
     "h": 0.55,
-    "sill": 0.05
+    "sill": 0.1
    }
   },
   {
@@ -97,32 +135,184 @@
     ]
    },
    "palette": {
-    "brick": "#5f3c30",
-    "frame": "#e0ddd0",
-    "stone": "#a08a78"
+    "brick": "#4e2c26",
+    "frame": "#e8e6d8",
+    "stone": "#4a2a24"
    },
    "hand": [
+    "baysPerStorey",
+    "palette",
     "system",
-    "baysPerStorey"
-   ]
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.1
+   }
+  },
+  {
+   "wallSurfaces": [
+    217,
+    226,
+    300
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "ground": "system",
+   "windows": "wide",
+   "stringCourses": true,
+   "deepBars": true,
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "rail": "glass",
+    "bays": [
+     3,
+     4
+    ]
+   },
+   "palette": {
+    "brick": "#4e2c26",
+    "frame": "#e8e6d8",
+    "stone": "#4a2a24"
+   },
+   "hand": [
+    "baysPerStorey",
+    "palette",
+    "system",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.1
+   }
+  },
+  {
+   "wallSurfaces": [
+    34,
+    54,
+    216
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "wide",
+   "stringCourses": true,
+   "deepBars": true,
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "rail": "glass",
+    "bays": [
+     3,
+     4
+    ]
+   },
+   "palette": {
+    "brick": "#4e2c26",
+    "frame": "#e8e6d8",
+    "stone": "#4a2a24"
+   },
+   "hand": [
+    "baysPerStorey",
+    "palette",
+    "system",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.1
+   }
+  },
+  {
+   "wallSurfaces": [
+    125,
+    204,
+    275
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "wide",
+   "stringCourses": true,
+   "deepBars": true,
+   "palette": {
+    "brick": "#4e2c26",
+    "frame": "#e8e6d8",
+    "stone": "#4a2a24"
+   },
+   "hand": [
+    "baysPerStorey",
+    "palette",
+    "system",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.1
+   }
+  },
+  {
+   "wallSurfaces": [
+    21,
+    224,
+    339
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "wide",
+   "stringCourses": true,
+   "deepBars": true,
+   "palette": {
+    "brick": "#4e2c26",
+    "frame": "#e8e6d8",
+    "stone": "#4a2a24"
+   },
+   "hand": [
+    "baysPerStorey",
+    "palette",
+    "system",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.1
+   }
   }
  ],
- "otherWalls": "blank",
+ "otherWalls": "brick-bay-grid",
  "roof": {
   "material": "bitumen",
   "flatHex": "#74767a",
   "pitchedHex": "#74767a"
  },
  "palette": {
-  "brick": "#8a3a2c",
+  "brick": "#4e2c26",
   "frame": "#e8e6d8",
   "door": "#a82a1a",
-  "stone": "#b0a08c"
+  "stone": "#4a2a24"
  },
  "closedBands": true,
  "layeredKit": true,
  "notes": [
   "Revaleiland 437 (BAG pand 0363100012250186, built 2020, 372 3DBAG wall surfaces, roof max 19.7 m): a large perimeter block on the Revaleiland in the Java-eiland / Eastern Docklands, about 75 m square with a courtyard of lower inner blocks. Photographed (finished): the south-west front (w04-230 2020-05-15, w05-230 2022-06-22: red brick, cream-framed windows in pairs and triples, a stack of three glass-railed balconies in a recess, red and orange entrance doors, a white shopfront at the south-east end, a set-back top floor with slot windows and a curved parapet). The south-east front is seen in construction (w02-140, w03-140 2020-01-29: same brick, same balcony stack with the glass still missing). The north-west and north-east fronts have only 2017 site photographs and a 2019 scaffold (w01-320, w06-320, w07-50, w08-50), so those two stay blank.",
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120): the north-west and north-east fronts now have finished crops (2021-2024, --date=2021..): walls[2] NW panel 188 from w01-320s1n (2024-10-16) and w01-320s2n, two balcony stacks mid-front (the s1n crop ends on them, s2n begins on them); walls[3] NW panel 32 from w06-320n (2021-12-30), two stacks mid-front; walls[4] NE panel 112 from w07-50n (2022-06-22, 41 deg) and walls[5] NE panel 20 from w08-50n (2021-02-24); otherWalls is the same brick grid instead of blank. Groups 0 and 1 cite the finished 2021-2022 crops (w05-230n, w02-140s2n) instead of the 2020 construction views. Not drawn: the brick balcony parapets (glass rails), the curved parapet and slot windows of the set-back top blocks. All six groups: brick #4e2c26 (the game lifts reds; the frames read L 0.43 against the photo 0.32 at #6b3e33), stone (string courses, balcony slabs) in a darker brick, wide windows 0.5 of the bay as the paired and tripled windows of the 2021+ crops.",
   "walls[0] = SW panels 129 and 68 (26.7 m and 25.2 m, eaves 16.2): 5 storeys x 7 bays with string courses and one glass-railed balcony stack on storeys 1-3 in bay 2 (a 6-bay rhythm left a 4.8 m2 flush-window overlap). walls[1] = SE panels 36 and 80 (29 m and 28 m): 5 storeys x 5 bays (budget), same balcony stack (construction view). Simplified: the plinth is the ground storey of the same brick (the photographed one is darker), window pairs and triples are evenly spaced wide windows, the red entrance doors and the white shopfront are plain bays. Not drawn: the north-west and north-east outer fronts (no finished photograph; an inferred copy of the other fronts cost 24k triangles and was dropped), the set-back top-floor blocks with slot windows and the curved parapet (3DBAG massing in brick colour), the courtyard walls and the inner blocks, which stay blank brick.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4f4f4e not used (not darker than the wall #6b3e33 by 10 L*, or tinted): kit glass kept; walls[1] glass #3f3834 not used (not darker than the wall #5f3c30 by 10 L*, or tinted): kit glass kept.",
   "roof.flatHex #74767a: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5382: slot slate, rgb 115/115/115, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install.",
@@ -134,5 +324,6 @@
    0,
    1
   ]
- }
+ },
+ "budgetTriangles": 40000
 }

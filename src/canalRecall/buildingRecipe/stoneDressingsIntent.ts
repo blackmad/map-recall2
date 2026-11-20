@@ -6,9 +6,9 @@
 import {DRESSING_BAND_AT, DRESSING_HEADS, type StoneDressings} from '../blockBuilding/dressings.ts';
 
 const HEX = /^#[0-9a-f]{6}$/i;
-const KEYS = ['colour', 'bands', 'stripes', 'heads', 'surrounds', 'quoins', 'oriels', 'voussoirs', 'piers', 'corbels'];
+const KEYS = ['colour', 'bands', 'stripes', 'heads', 'surrounds', 'shutters', 'quoins', 'oriels', 'voussoirs', 'piers', 'corbels'];
 const SUB: Record<string, string[]> = {
-  bands: ['at', 'storeys', 'double'], stripes: ['storeys', 'count', 'share'], heads: ['kind', 'storeys'], surrounds: ['storeys', 'eared', 'jamb', 'head'],
+  bands: ['at', 'storeys', 'double'], stripes: ['storeys', 'count', 'share'], heads: ['kind', 'storeys'], surrounds: ['storeys', 'eared', 'jamb', 'head'], shutters: ['storeys', 'w'],
   quoins: ['ends', 'joints'], oriels: ['bays', 'from', 'to', 'deep', 'canted', 'rail', 'brick'], voussoirs: ['storeys', 'jambs'], piers: ['w', 'from', 'to', 'deep', 'capital', 'base', 'flutes', 'stone', 'ends'], corbels: ['storey', 'count', 'stone', 'drop', 'foot'],
 };
 
@@ -54,6 +54,11 @@ export function stoneDressingsProblems(input: unknown, at: string, storeys?: num
     if (sr.storeys !== undefined) storeyList(sr.storeys, `${at}.dressings.surrounds.storeys`); bool(sr.eared, `${at}.dressings.surrounds.eared`);
     if (sr.jamb !== undefined && !(typeof sr.jamb === 'number' && sr.jamb >= 0.05 && sr.jamb <= 0.4)) p.push(`${at}.dressings.surrounds.jamb: 0.05..0.4 of the opening's width`);
     if (sr.head !== undefined && !(typeof sr.head === 'number' && sr.head >= 0.05 && sr.head <= 0.5)) p.push(`${at}.dressings.surrounds.head: 0.05..0.5 of the opening's height`);
+  }
+  const sh = obj('shutters');
+  if (sh) {
+    if (sh.storeys !== undefined) storeyList(sh.storeys, `${at}.dressings.shutters.storeys`);
+    if (sh.w !== undefined && !(typeof sh.w === 'number' && sh.w >= 0.3 && sh.w <= 0.7)) p.push(`${at}.dressings.shutters.w: 0.3..0.7 of the opening's width`);
   }
   if (h && sr && h.kind !== 'keystone') p.push(`${at}.dressings.heads: only "keystone" together with surrounds (the surround has its own head)`);
   const q = obj('quoins');

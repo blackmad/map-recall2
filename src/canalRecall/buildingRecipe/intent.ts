@@ -1215,14 +1215,14 @@ export interface LargeHouseIntent {
    * fronts on one BAG pand: pale bands at the storey lines of one front, speklagen on the next, brick pilasters between
    * the window columns of a third, pale surrounds round the tall windows of a fourth). The group's `dressings`
    * vocabulary (blockBuilding/dressings.ts) restricted to the parts that live inside one front: `bands`, `stripes`,
-   * `surrounds`, `heads` and `piers` (pilasters at the house's own bay joints, `ends` at its two edges, in the house's
+   * `surrounds`, `heads`, `shutters` and `piers` (pilasters at the house's own bay joints, `ends` at its two edges, in the house's
    * wall brick unless `stone`); `colour` the dressing colour (default the group's dressing colour, else its stone).
    * Absent: byte-identical.
    */
   dress?: LargeHouseDress;
 }
-export type LargeHouseDress = Pick<StoneDressings, 'colour' | 'bands' | 'stripes' | 'surrounds' | 'heads' | 'piers'>;
-export const LARGE_HOUSE_DRESS_KEYS = ['colour', 'bands', 'stripes', 'surrounds', 'heads', 'piers'] as const;
+export type LargeHouseDress = Pick<StoneDressings, 'colour' | 'bands' | 'stripes' | 'surrounds' | 'heads' | 'piers' | 'shutters'>;
+export const LARGE_HOUSE_DRESS_KEYS = ['colour', 'bands', 'stripes', 'surrounds', 'heads', 'piers', 'shutters'] as const;
 /** One ribbon-storey entry (`LargeWallIntent.ribbonStoreys`); proportions of the storey and the bay only, never metres. */
 export interface RibbonStoreyIntent {
   storeys: number[];
