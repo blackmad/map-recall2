@@ -105405,10 +105405,16 @@
       "bytes": 360968,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e3ea98ba0cd335d1",
+        "sourceHash": "27f09a4cd394e11c",
         "buildVersion": 2,
-        "bytes": 93600,
-        "triangles": 4519
+        "bytes": 96080,
+        "triangles": 4584
+      },
+      "lod2": {
+        "sourceHash": "27f09a4cd394e11c",
+        "buildVersion": 6,
+        "bytes": 17184,
+        "triangles": 582
       }
     },
     "banks-mansion": {
@@ -114866,10 +114872,24 @@
       },
       "triangles": 13413,
       "bytes": 194436,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "196a5b81db5a0303",
+        "buildVersion": 2,
+        "bytes": 66324,
+        "triangles": 2825
+      },
+      "lod2": {
+        "sourceHash": "196a5b81db5a0303",
+        "buildVersion": 6,
+        "bytes": 10360,
+        "triangles": 261
+      }
     },
     "de-kroon-rembrandtplein": {
       "id": "de-kroon-rembrandtplein",
+      "status": "held",
+      "heldReason": "Integrator review 2026-11-20 (landmarks r7): the front and arcade read well, but the 3DBAG tower top is taller and boxier than the photo, the Amstel gable is lopsided where the photo shows a symmetric neck/step gable, the balcony spans too many bays and the Amstel back is a jumble of 3DBAG blocks. Round 8 fixes these.",
       "name": "Café-Restaurant De Kroon, Rembrandtplein",
       "modelUrl": "./models/de-kroon-rembrandtplein.glb",
       "suppressOsmIds": [
@@ -115124,7 +115144,20 @@
       },
       "triangles": 10911,
       "bytes": 146644,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true,
+      "lod1": {
+        "sourceHash": "14b7adaf60709d8a",
+        "buildVersion": 2,
+        "bytes": 47220,
+        "triangles": 1899
+      },
+      "lod2": {
+        "sourceHash": "14b7adaf60709d8a",
+        "buildVersion": 6,
+        "bytes": 9260,
+        "triangles": 218
+      }
     }
   }
 }

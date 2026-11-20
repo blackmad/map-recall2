@@ -1,5 +1,5 @@
 {
-  "toolchain": "f38266472ad38e897e7c66ae4a5f82f2c62ca387780eed37ec3f96aba599d20a",
+  "toolchain": "a0adf77660913d5819eb48615048e283bb61f57519b1fc940405f8d8102bce8f",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -115,7 +115,7 @@
     "de-hallen": "b8c2892e147228a3cf14ec4a422eb9c73950cbd1b01cb1033a6cbc034f6fea8d",
     "de-jaren": "97afbf2f31dcd1a11ffe94f573aee07e5cc53522fb04f857115723164cca954c",
     "de-krakeling": "5c9402ddb4023e6a1fa2615b17f76612d16922c387fc9496c21540ed71550921",
-    "de-kroon-rembrandtplein": "3ad1e604c23fa3ebacd050307d5a859060afd45b0c1ff13971f6d5349d8d732d",
+    "de-kroon-rembrandtplein": "6046f23cac5581959083402c121f6976831dc036f9988c58311d1e0a474891d5",
     "de-makroon": "f1822c222b6bc40d717be659b5e8a1e818a0596e2be4ccd47073e598327c9fe0",
     "de-mirandabad": "9a981c756ccfaaf384e9ee0e62068106c5b4abbb2ed40efb0e7b23a56be3424d",
     "de-nederlandsche-bank": "56313a20f52e3f29a02252b021c9cc1be236805f2adff9ae0fefcef046de2f73",
@@ -375,7 +375,7 @@
     "politie-nieuwezijds-voorburgwal": "401c5fba4e5a25765ae67aaab4d15cfa336001f6d76f10f61250a5658c886b91",
     "politie-oost-watergraafsmeer": "ae93efa603729f4d1f51b477e58dfdffdc6cb549e1d4390a1c9a8b938a0d48e5",
     "politiebureau-postjesweg": "c9839d84bbe8114f49b69147d2046861d43b2b5f1dd4065682bf520b7e3ebd2d",
-    "politiebureau-raampoort": "fd468c13004695e792fd0efa10272fca05438163b1f2236bc06ea99d0172c85c",
+    "politiebureau-raampoort": "961a16f71578214b574cea8e66dcef2cfe9475a30e229e02888efe7260452970",
     "pont-13": "dd1d35fa1dc8cbd46037d4788f6911e0e7225697da2033ba20a9470a2d88d3ce",
     "pontsteiger": "f8bdeaf00137ff2ab747c3f2115e2dc39389f0b07233096a44200df8ba1c66b6",
     "port-van-cleve": "05b7bc3211c763b965679679965d93aa31f9f1d9dba8982eeb2f7d60cc9ede0f",
@@ -400,7 +400,7 @@
     "roeterseiland-rec-a": "878188326536cc1dcfec6f2dfda9ac2d3f120ec952ca9c876d4e0c3282445188",
     "ronde-lutherse-kerk": "24e664b23d0f4261f82a215873fd0f3cb9e73f4c48a335a2218a3707272b0d1d",
     "roode-bioscoop": "1b4761fdb1657bde1e91b962118fa3fef851332d39d5ddc5637b4b16f3db1b18",
-    "roode-leeuw-damrak": "a5784918bfa5f1225bcbd87f7940ffedb0f11473f63ab1755d73dc25ad082a33",
+    "roode-leeuw-damrak": "ed20d6227ad4def45b2afb8d45433403ab294fd2fef18801339e8436bbe3709c",
     "room-mate-aitana": "15e9b7979123176a9a7cccbfeacee1a55bb39bf7682a459f427e4d9d3d23bd55",
     "royal-theater-carre": "bf3f50a90491073c01fa29b6a49d666e675e3cc928ea5ca1ed3a59018b103e8e",
     "sameplace": "cd7b32f7cb1d48e593381e684bfe7f3a79cf771a4f6def805e552af2a5598bdc",
