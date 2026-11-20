@@ -1211,18 +1211,27 @@ export interface LargeHouseIntent {
   /** the house's window frame colour (pale frames on one house, dark on the next; default the group's frame) */
   frame?: string;
   /**
+   * The house's own balconies, `bays` counted within the house (0 = its left bay; default every bay); they replace the
+   * group's balconies in this house only, and take the group's `colour`/`deep`/`brick` (lane houthavens-memel-wiborg-20261120:
+   * Wiborgeiland 1-72's quay houses each with their own balcony column). Absent: the group's, byte-identical.
+   */
+  balconies?: {storeys: number[]; bays?: number[]; rail?: 'glass' | 'bars' | 'solid'};
+  /** The house's own loggias, `bays` within the house (default every bay), the group loggia's proportions unless given;
+   *  they replace the group's loggias in this house only. Absent: the group's, byte-identical. */
+  loggias?: {storeys: number[]; bays?: number[]; w?: number; h?: number; sill?: number; deep?: number; rail?: 'glass' | 'bars' | 'solid' | 'none'; lights?: number};
+  /**
    * Dressings of this house only, clipped to its span (lane narva-pilot-20261116; Narva-eiland's rows of 2018-2019
    * fronts on one BAG pand: pale bands at the storey lines of one front, speklagen on the next, brick pilasters between
    * the window columns of a third, pale surrounds round the tall windows of a fourth). The group's `dressings`
    * vocabulary (blockBuilding/dressings.ts) restricted to the parts that live inside one front: `bands`, `stripes`,
-   * `surrounds`, `heads` and `piers` (pilasters at the house's own bay joints, `ends` at its two edges, in the house's
+   * `surrounds`, `heads`, `shutters` and `piers` (pilasters at the house's own bay joints, `ends` at its two edges, in the house's
    * wall brick unless `stone`); `colour` the dressing colour (default the group's dressing colour, else its stone).
    * Absent: byte-identical.
    */
   dress?: LargeHouseDress;
 }
-export type LargeHouseDress = Pick<StoneDressings, 'colour' | 'bands' | 'stripes' | 'surrounds' | 'heads' | 'piers'>;
-export const LARGE_HOUSE_DRESS_KEYS = ['colour', 'bands', 'stripes', 'surrounds', 'heads', 'piers'] as const;
+export type LargeHouseDress = Pick<StoneDressings, 'colour' | 'bands' | 'stripes' | 'surrounds' | 'heads' | 'piers' | 'shutters'>;
+export const LARGE_HOUSE_DRESS_KEYS = ['colour', 'bands', 'stripes', 'surrounds', 'heads', 'piers', 'shutters'] as const;
 /** One ribbon-storey entry (`LargeWallIntent.ribbonStoreys`); proportions of the storey and the bay only, never metres. */
 export interface RibbonStoreyIntent {
   storeys: number[];
@@ -1278,7 +1287,9 @@ export interface LargeWallIntent {
     /** projection as a fraction of the storey height (0.08..0.45; default 1.2 m): a shallow balcony on consoles */ deep?: number;
     /** stand in front of the storey's own windows (an iron balcony on a window row) instead of one French window */ windows?: boolean;
     /** with `windows`: the balcony runs the full bay pitch, so neighbouring bays join into one front-wide balcony in front of
-     *  punched windows (Stadsloket West's continuous galleries); absent: the bay's windows plus 0.2 m, byte-identical */ run?: boolean};
+     *  punched windows (Stadsloket West's continuous galleries); absent: the bay's windows plus 0.2 m, byte-identical */ run?: boolean;
+    /** slab (and a `solid` rail: the parapet) in the wall's own brick instead of the stone slot (Revaleiland 437's red
+     *  brick balconies, lane houthavens-memel-wiborg-20261120); absent: stone slab, byte-identical */ brick?: boolean};
   /**
    * Grouped windows (issue #35): each bay's opening (`windowShape.w` of the bay) is `count` separate windows with `gap`
    * of the bay (default 0.06) of wall between them, on the listed `storeys` (default every upper storey; 0 = ground).

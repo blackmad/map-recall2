@@ -244,7 +244,7 @@
  },
  {
   "slug": "houthaven",
-  "buildings": 18,
+  "buildings": 22,
   "kits": 0,
   "facts": 8,
   "origins": 45,
@@ -582,7 +582,7 @@
  },
  {
   "slug": "plantage",
-  "buildings": 13,
+  "buildings": 14,
   "kits": 0,
   "facts": 50,
   "origins": 18,
@@ -615,7 +615,7 @@
  },
  {
   "slug": "revaleiland",
-  "buildings": 2,
+  "buildings": 3,
   "kits": 0,
   "facts": 5,
   "origins": 5,
@@ -883,7 +883,7 @@
  },
  {
   "slug": "weesperbuurt",
-  "buildings": 19,
+  "buildings": 20,
   "kits": 0,
   "facts": 63,
   "origins": 42,
@@ -911,13 +911,13 @@
  },
  {
   "slug": "wiborgeiland",
-  "buildings": 1,
+  "buildings": 4,
   "kits": 0,
   "facts": 1,
   "origins": 4,
   "bridges": 0,
   "shots": 2,
-  "plan": 2,
+  "plan": 3,
   "lacks": [
    "photo borrowed from Houthaven",
    "bridges"

@@ -1,0 +1,713 @@
+{
+ "version": 1,
+ "about": "Staged per-opening photo reads (photoRead.ts). One record per opening of a modelled host, read on a dated Gemeente Amsterdam panorama (CC BY 4.0). status published = drawn by default after a won blind A/B; staged = only with ?retailFit=1. Lane retail-fit-20261120.",
+ "models": {
+  "hirschgebouw": {
+   "status": "published",
+   "review": "Published 2026-11-20 after two blind A/B rounds (one fresh opus judge each, photo | A | B at the panorama poses, sides seeded): round 1 4/4, round 2 (interiors darkened to the measured glass tone, Rijksmuseum poster) 4/4. Judge notes left: Geldmaat panel too white, AH lettering at the far right not legible in every photo.",
+   "fits": [
+    {
+     "at": [
+      4.882457,
+      52.363596
+     ],
+     "tenant": "Apple Store (door)",
+     "source": "OSM n1660329431; Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#4c5450",
+      "frame": {
+       "hex": "#1e2124",
+       "transom": true
+      },
+      "door": {
+       "hex": "#1e2124",
+       "leaves": 2
+      }
+     }
+    },
+    {
+     "at": [
+      4.882388,
+      52.363564
+     ],
+     "tenant": "Apple Store",
+     "source": "OSM n1660329431; Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#454b48",
+      "goods": {
+       "kind": "tables",
+       "hexes": [
+        "#8a7356",
+        "#4a3f33",
+        "#8d969c"
+       ]
+      },
+      "lamps": {
+       "hex": "#d9d4c6"
+      },
+      "frame": {
+       "hex": "#1e2124",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      4.88232,
+      52.363532
+     ],
+     "tenant": "Apple Store",
+     "source": "OSM n1660329431; Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#454b48",
+      "goods": {
+       "kind": "tables",
+       "hexes": [
+        "#8a7356",
+        "#4a3f33",
+        "#8d969c"
+       ]
+      },
+      "lamps": {
+       "hex": "#d9d4c6"
+      },
+      "frame": {
+       "hex": "#1e2124",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      4.882252,
+      52.3635
+     ],
+     "tenant": "Shop at Rijksmuseum",
+     "source": "Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*); David's photo 2025-08 (no OSM node yet)",
+     "read": {
+      "glass": "#3b4144",
+      "vinyl": {
+       "base": "#cdd9e6",
+       "ink": "#24427f",
+       "light": "#6f8cc4",
+       "pattern": "landscape",
+       "window": [
+        0.36,
+        0.66,
+        0.55,
+        1.35
+       ],
+       "windowHex": "#6b6458",
+       "windowGoods": [
+        "#d9506a",
+        "#e7c64a",
+        "#f0e6dc",
+        "#7aa04f",
+        "#c2386b"
+       ]
+      },
+      "frame": {
+       "hex": "#1e2124"
+      },
+      "letters": [
+       {
+        "where": "band",
+        "hex": "#1d2c5a",
+        "v0": 0.15,
+        "v1": 0.72,
+        "text": "RIJKS MUSEUM",
+        "ink": "#ffffff"
+       }
+      ]
+     }
+    },
+    {
+     "at": [
+      4.882183,
+      52.363467
+     ],
+     "tenant": "entrance (glass doors)",
+     "source": "Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#3b4144",
+      "frame": {
+       "hex": "#1e2124",
+       "transom": true
+      },
+      "door": {
+       "hex": "#1e2124",
+       "leaves": 2
+      }
+     }
+    },
+    {
+     "at": [
+      4.882115,
+      52.363435
+     ],
+     "tenant": "Albert Heijn (door)",
+     "source": "OSM n2730036379; Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#303c41",
+      "goods": {
+       "kind": "shelves",
+       "hexes": [
+        "#8c897f",
+        "#43607a",
+        "#7a4c45",
+        "#857a50",
+        "#566d4b",
+        "#7f7b74",
+        "#5f6265"
+       ]
+      },
+      "frame": {
+       "hex": "#1e2124",
+       "transom": true
+      },
+      "door": {
+       "hex": "#1e2124",
+       "leaves": 2
+      }
+     }
+    },
+    {
+     "at": [
+      4.882047,
+      52.363403
+     ],
+     "tenant": "Albert Heijn",
+     "source": "OSM n2730036379; Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#303c41",
+      "goods": {
+       "kind": "shelves",
+       "hexes": [
+        "#8c897f",
+        "#43607a",
+        "#7a4c45",
+        "#857a50",
+        "#566d4b",
+        "#7f7b74",
+        "#5f6265"
+       ]
+      },
+      "posters": {
+       "hex": "#00a0e2",
+       "n": 1
+      },
+      "frame": {
+       "hex": "#1e2124",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      4.881977,
+      52.363371
+     ],
+     "tenant": "Albert Heijn (entrance)",
+     "source": "OSM n2730036379; b_20250129_0912_Track04_Sphere_00044",
+     "read": {
+      "glass": "#303c41",
+      "goods": {
+       "kind": "shelves",
+       "hexes": [
+        "#8c897f",
+        "#43607a",
+        "#7a4c45",
+        "#857a50",
+        "#566d4b",
+        "#7f7b74",
+        "#5f6265"
+       ]
+      },
+      "posters": {
+       "hex": "#00a0e2",
+       "n": 2
+      },
+      "frame": {
+       "hex": "#1e2124",
+       "transom": true
+      },
+      "door": {
+       "hex": "#1e2124",
+       "leaves": 2
+      },
+      "letters": [
+       {
+        "where": "head",
+        "text": "ALBERT HEIJN",
+        "ink": "#7cc6ee",
+        "bg": "#22313d"
+       }
+      ]
+     }
+    },
+    {
+     "at": [
+      4.882653,
+      52.363579
+     ],
+     "tenant": "Apple Store (door)",
+     "source": "Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#4c5450",
+      "frame": {
+       "hex": "#1e2124",
+       "transom": true
+      },
+      "door": {
+       "hex": "#1e2124",
+       "leaves": 2
+      }
+     }
+    },
+    {
+     "at": [
+      4.882705,
+      52.363537
+     ],
+     "tenant": "Apple Store",
+     "source": "Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#454b48",
+      "goods": {
+       "kind": "tables",
+       "hexes": [
+        "#8a7356",
+        "#4a3f33",
+        "#8d969c"
+       ]
+      },
+      "lamps": {
+       "hex": "#d9d4c6"
+      },
+      "frame": {
+       "hex": "#1e2124",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      4.882756,
+      52.363496
+     ],
+     "tenant": "Apple Store",
+     "source": "TMX7316010203-001900_pano_0004_000052 (2020) and 2025-07-14 w02-52",
+     "read": {
+      "glass": "#454b48",
+      "goods": {
+       "kind": "tables",
+       "hexes": [
+        "#8a7356",
+        "#4a3f33",
+        "#8d969c"
+       ]
+      },
+      "lamps": {
+       "hex": "#d9d4c6"
+      },
+      "frame": {
+       "hex": "#1e2124",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      4.882807,
+      52.363455
+     ],
+     "tenant": "Apple Store (inferred: occluded)",
+     "source": "inferred from the risalit pair",
+     "read": {
+      "glass": "#454b48",
+      "goods": {
+       "kind": "tables",
+       "hexes": [
+        "#8a7356",
+        "#4a3f33",
+        "#8d969c"
+       ]
+      },
+      "lamps": {
+       "hex": "#d9d4c6"
+      },
+      "frame": {
+       "hex": "#1e2124",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      4.882859,
+      52.363413
+     ],
+     "tenant": "Geldmaat",
+     "source": "Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "panel": {
+       "hex": "#d3d0c8",
+       "atms": 3,
+       "text": "GELDMAAT",
+       "ink": "#59626b"
+      },
+      "frame": {
+       "hex": "#6b6e70"
+      },
+      "glass": "#d3d0c8"
+     }
+    },
+    {
+     "at": [
+      4.882913,
+      52.363369
+     ],
+     "tenant": "ABN AMRO (door)",
+     "source": "OSM n2730036232; Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#74847b",
+      "frame": {
+       "hex": "#55595b",
+       "transom": true
+      },
+      "door": {
+       "hex": "#55595b",
+       "leaves": 2
+      }
+     }
+    },
+    {
+     "at": [
+      4.882965,
+      52.363327
+     ],
+     "tenant": "ABN AMRO",
+     "source": "OSM n2730036232; Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#4b534d",
+      "goods": {
+       "kind": "seats",
+       "hexes": [
+        "#3d6f72",
+        "#2f5a5d"
+       ]
+      },
+      "frame": {
+       "hex": "#55595b",
+       "transom": true
+      },
+      "letters": [
+       {
+        "where": "glass",
+        "text": "ABN AMRO",
+        "ink": "#ffffff",
+        "v": 3.35,
+        "heightM": 0.3,
+        "mark": "#00857a"
+       }
+      ]
+     }
+    },
+    {
+     "at": [
+      4.88254,
+      52.363626
+     ],
+     "tenant": "Apple Store (corner)",
+     "source": "Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#454b48"
+     }
+    },
+    {
+     "at": [
+      4.882555,
+      52.363626
+     ],
+     "tenant": "Apple Store (corner)",
+     "source": "Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#454b48"
+     }
+    },
+    {
+     "at": [
+      4.882569,
+      52.363625
+     ],
+     "tenant": "Apple Store (corner)",
+     "source": "Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#454b48"
+     }
+    },
+    {
+     "at": [
+      4.882584,
+      52.363622
+     ],
+     "tenant": "Apple Store (corner)",
+     "source": "Gemeente Amsterdam panoramas 2025-07-14 (recording_2025-07-14_05-25-22_*) and 2025-01-29 (b_20250129_0912_Track04_*)",
+     "read": {
+      "glass": "#454b48"
+     }
+    }
+   ]
+  },
+  "american-hotel": {
+   "status": "published",
+   "review": "Published 2026-11-20. Blind A/B, a fresh opus judge per round: Bar Am\u00e9ricain front won (med); the Leidsekade front first LOST (curtains and lamps against the daylight photo's lowered blinds, low), the read was corrected to pale blinds and won against a new judge (med). Judge notes left: the blind's dark lower strip too even; no entrance canopy (model).",
+   "fits": [
+    {
+     "at": [
+      4.8811975,
+      52.3636987
+     ],
+     "tenant": "Caf\u00e9 Am\u00e9ricain (side door)",
+     "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
+     "read": {
+      "glass": "#2a2418",
+      "frame": {
+       "hex": "#e9e4d6",
+       "transom": true
+      },
+      "door": {
+       "hex": "#2b2117",
+       "leaves": 2
+      }
+     }
+    },
+    {
+     "at": [
+      4.8812152,
+      52.3637068
+     ],
+     "tenant": "Bar Am\u00e9ricain (terrace windows)",
+     "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
+     "read": {
+      "glass": "#2a2418",
+      "lamps": {
+       "hex": "#e8b860",
+       "n": 2
+      },
+      "frame": {
+       "hex": "#e9e4d6",
+       "transom": false
+      }
+     }
+    },
+    {
+     "at": [
+      4.881235,
+      52.3637161
+     ],
+     "tenant": "Bar Am\u00e9ricain (terrace windows)",
+     "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
+     "read": {
+      "glass": "#2a2418",
+      "lamps": {
+       "hex": "#e8b860",
+       "n": 2
+      },
+      "frame": {
+       "hex": "#e9e4d6",
+       "transom": false
+      }
+     }
+    },
+    {
+     "at": [
+      4.8812549,
+      52.3637254
+     ],
+     "tenant": "Bar Am\u00e9ricain (terrace windows)",
+     "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
+     "read": {
+      "glass": "#2a2418",
+      "lamps": {
+       "hex": "#e8b860",
+       "n": 2
+      },
+      "frame": {
+       "hex": "#e9e4d6",
+       "transom": false
+      }
+     }
+    },
+    {
+     "at": [
+      4.8812749,
+      52.3637347
+     ],
+     "tenant": "Bar Am\u00e9ricain (terrace windows)",
+     "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
+     "read": {
+      "glass": "#2a2418",
+      "lamps": {
+       "hex": "#e8b860",
+       "n": 2
+      },
+      "frame": {
+       "hex": "#e9e4d6",
+       "transom": false
+      }
+     }
+    },
+    {
+     "at": [
+      4.8812948,
+      52.3637439
+     ],
+     "tenant": "Bar Am\u00e9ricain (terrace windows)",
+     "source": "Gemeente Amsterdam panorama b_20241217_0841_Track34_Sphere_00056 (2024-12-17), wall w01-143s1; tones by region-tone.ts",
+     "read": {
+      "glass": "#2a2418",
+      "lamps": {
+       "hex": "#e8b860",
+       "n": 2
+      },
+      "frame": {
+       "hex": "#e9e4d6",
+       "transom": false
+      }
+     }
+    },
+    {
+     "at": [
+      4.8809912,
+      52.3637989
+     ],
+     "tenant": "American Hotel (Leidsekade windows; Hard Rock flag on the 2023 panorama)",
+     "source": "Gemeente Amsterdam panorama TMX7316010203-002979_pano_0000_000041 (2023-02-20), wall w03-220; tones by region-tone.ts (dark #4a4136, curtains #a6a196); blind A/B 2026-11-20 round 1 rejected curtains and lamps: the daylight photo shows lowered pale blinds",
+     "read": {
+      "glass": "#4a4136",
+      "vinyl": {
+       "base": "#d6d0c0",
+       "pattern": "solid",
+       "window": [
+        0.04,
+        0.96,
+        0.04,
+        0.7
+       ],
+       "windowHex": "#4a4136"
+      },
+      "frame": {
+       "hex": "#e9e4d6",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      4.8810102,
+      52.3637851
+     ],
+     "tenant": "American Hotel (Leidsekade windows; Hard Rock flag on the 2023 panorama)",
+     "source": "Gemeente Amsterdam panorama TMX7316010203-002979_pano_0000_000041 (2023-02-20), wall w03-220; tones by region-tone.ts (dark #4a4136, curtains #a6a196); blind A/B 2026-11-20 round 1 rejected curtains and lamps: the daylight photo shows lowered pale blinds",
+     "read": {
+      "glass": "#4a4136",
+      "vinyl": {
+       "base": "#d6d0c0",
+       "pattern": "solid",
+       "window": [
+        0.04,
+        0.96,
+        0.04,
+        0.7
+       ],
+       "windowHex": "#4a4136"
+      },
+      "frame": {
+       "hex": "#e9e4d6",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      4.8810287,
+      52.3637705
+     ],
+     "tenant": "American Hotel (Leidsekade windows; Hard Rock flag on the 2023 panorama)",
+     "source": "Gemeente Amsterdam panorama TMX7316010203-002979_pano_0000_000041 (2023-02-20), wall w03-220; tones by region-tone.ts (dark #4a4136, curtains #a6a196); blind A/B 2026-11-20 round 1 rejected curtains and lamps: the daylight photo shows lowered pale blinds",
+     "read": {
+      "glass": "#4a4136",
+      "vinyl": {
+       "base": "#d6d0c0",
+       "pattern": "solid",
+       "window": [
+        0.04,
+        0.96,
+        0.04,
+        0.7
+       ],
+       "windowHex": "#4a4136"
+      },
+      "frame": {
+       "hex": "#e9e4d6",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      4.881047,
+      52.3637558
+     ],
+     "tenant": "American Hotel (Leidsekade windows; Hard Rock flag on the 2023 panorama)",
+     "source": "Gemeente Amsterdam panorama TMX7316010203-002979_pano_0000_000041 (2023-02-20), wall w03-220; tones by region-tone.ts (dark #4a4136, curtains #a6a196); blind A/B 2026-11-20 round 1 rejected curtains and lamps: the daylight photo shows lowered pale blinds",
+     "read": {
+      "glass": "#4a4136",
+      "vinyl": {
+       "base": "#d6d0c0",
+       "pattern": "solid",
+       "window": [
+        0.04,
+        0.96,
+        0.04,
+        0.7
+       ],
+       "windowHex": "#4a4136"
+      },
+      "frame": {
+       "hex": "#e9e4d6",
+       "transom": true
+      }
+     }
+    },
+    {
+     "at": [
+      4.8810652,
+      52.3637411
+     ],
+     "tenant": "American Hotel (Leidsekade windows; Hard Rock flag on the 2023 panorama)",
+     "source": "Gemeente Amsterdam panorama TMX7316010203-002979_pano_0000_000041 (2023-02-20), wall w03-220; tones by region-tone.ts (dark #4a4136, curtains #a6a196); blind A/B 2026-11-20 round 1 rejected curtains and lamps: the daylight photo shows lowered pale blinds",
+     "read": {
+      "glass": "#4a4136",
+      "vinyl": {
+       "base": "#d6d0c0",
+       "pattern": "solid",
+       "window": [
+        0.04,
+        0.96,
+        0.04,
+        0.7
+       ],
+       "windowHex": "#4a4136"
+      },
+      "frame": {
+       "hex": "#e9e4d6",
+       "transom": true
+      }
+     }
+    }
+   ]
+  }
+ }
+}

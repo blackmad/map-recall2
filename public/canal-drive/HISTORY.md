@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## Shop windows vary, tenants fit the Hirschgebouw arches, seven large buildings installed, ordinary-building backlog (2026-11-20, round 20261120b)
+
+- **Shop variety, default on (`?shopVariety=0` off; lane/shop-variety-20261120 587616ea08).** David: "this place wouldn't have four doners, this wouldn't have gelato in every window."
+  - A front's goods tiles are planned together (`shopVariety.ts` `planPanes`). `once` kinds show their signature display in one pane, beside the door three times in four. `most` kinds show it on the door pane and about their `share` of the rest; gelato is capped at half. Other panes draw from the kind's filler set (13 new cells in `retailPaneFillers.ts`), seeded by pand, with no repeat on neighbouring panes.
+  - Blind (one opus judge per round): 15–0, 15–2, then 6–0 after fixes. It adds 0 triangles and 4 atlas layers (about 2 MB). The mesher was dropping the `variety` field; fixed. `template-golden.json` is unchanged.
+- **Retail fit inside model openings (lane/retail-fit-20261120 3e47112af5).** A designed ground storey never takes a fascia box; the tenant draws inside the model's own openings (`retailFit/`). Openings are read from the GLB glass; reads are typed per opening in `retail-fits.json` and stay staged until a blind is won.
+  - Published, default on (`?retailFit=0` off): the Hirschgebouw (Albert Heijn letters in the arch head, Apple, Rijksmuseum shop, ABN AMRO, Geldmaat), 4 of 4 twice; the American Hotel, which won after its Leidsekade read was corrected to lowered blinds.
+  - Fills placed from OSM nodes alone lost 0–3 (too bright, signs not in the photos) and are off.
+  - Blocked: Tuschinski (no ground-storey glass), Magna Plaza (windows not tagged glass), Concerto (block-face chunk, needs an adapter), De Hallen (no usable photo).
+  - The census: 566 shop tenants are hidden by models; 64 register-pui monuments still draw a template fascia. The iconic-retail list is in `docs/reports/iconic-retail-20261120.json`.
+- **Large buildings installed:** Zeemanlaboratorium (blind 3/3; the NW end's blank-wall flag was waived because the photo's end wall is near-blank too) and Weesperflat round 1 (3/3).
+- **Houthavens rounds 2 and 3 installed:** Wiborgeiland 247551, 247676 and 253602, and Revaleiland 437 and 253889. Kit additions: per-house balconies and loggias in a row split, and brick balconies. Blind 6/6, then 7/7 twice. Revaleiland 250187/250188 are held on shell faults.
+- **Landmarks round 7:** De Roode Leeuw (Damrak) is new; Raampoort has its turret bay and plinth follow-ups. De Kroon is built but held (tower crest, Amstel gable, balcony span, back masses). The new ranked target list is in `docs/reports/landmark-targets-20261120.json`.
+- **Ordinary-building backlog (lane/ordinary-backlog-20261120 a57495027a; `npm run ordinary:backlog`).** It covers pands of 300 m² and more within 3 km of the Dam, plus the 3–5 km ring, drawn by an ordinary path. Payoff is ride visibility × wall area × badness, gated on a usable panorama, and each row gets a route.
+  - 2,396 core candidates; top rows Funenpark, Meeuwenlaan 132 and Utrechtsestraat 9-17.
+  - 122 clusters. Post-1965 generic housing (C1, C2, C4) is the largest payoff; the first lever there is brick tone.
+- The explorer index is now rebuilt with the other regen outputs: it had been stale since the explorer shipped and named the deleted Bellamyplein r2 chunk. Its budget is 384 KB.
+
 ## Doelensluis and De Clercqstraat fixed; the ground detector stops flagging rail viaducts (2026-11-20, lane/fb-ground2-20261120 5ffa883692, #396)
 
 Three new ground options, each on by default with a `?name=0` off switch:

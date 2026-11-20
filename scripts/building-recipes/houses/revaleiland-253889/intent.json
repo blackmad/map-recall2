@@ -1,0 +1,239 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "revaleiland-253889",
+ "pandId": "0363100012253889",
+ "address": "Revaleiland, Houthavens: 2023 perimeter block, buff brick on the SE quay with a glazed shop ground floor and projecting brick-fronted balconies, grey brick on the NE with timber-framed galleries",
+ "sources": [
+  {
+   "id": "pano-2025-09-29-w01-140s2x",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00068/",
+   "image": "source-data://pand-reference-walls/0363100012253889/w01-140s2x.jpg",
+   "sha256": "c265025dc58040f0b0712511b9ce0fd707b17b9d1e67ff58b869062408c6b0e0",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-w01-140s1x",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00074/",
+   "image": "source-data://pand-reference-walls/0363100012253889/w01-140s1x.jpg",
+   "sha256": "bf465f057be7076328fb767d020acc188e6e0915429510f3775c229d692805ee",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-w01-140s4x",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00060/",
+   "image": "source-data://pand-reference-walls/0363100012253889/w01-140s4x.jpg",
+   "sha256": "13c8de9dd145255ce9cfd0197650e171e23892c3d36d18475cd8eb5c59b5ce9a",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-16-w03-50s2x",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-16_06-25-31_02868/",
+   "image": "source-data://pand-reference-walls/0363100012253889/w03-50s2x.jpg",
+   "sha256": "96b053caeb131481a7f5b9095cc7b08b5315320e25f82f662d870709d4fd0f42",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-16-w03-50s1x",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-16_06-25-31_02863/",
+   "image": "source-data://pand-reference-walls/0363100012253889/w03-50s1x.jpg",
+   "sha256": "1e4e9a8a88991e6184ccec53e5b930a2a40ec86349eca64586170a64b8e7eda1",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    141
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "palette": {
+    "brick": "#7a604a",
+    "frame": "#6a5440"
+   },
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "every": 2,
+    "first": 1,
+    "rail": "solid",
+    "brick": true
+   }
+  },
+  {
+   "wallSurfaces": [
+    41,
+    53,
+    102,
+    156
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 4,
+   "ground": "glazed",
+   "palette": {
+    "brick": "#7a604a",
+    "frame": "#6a5440"
+   },
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "every": 2,
+    "first": 0,
+    "rail": "solid",
+    "brick": true
+   }
+  },
+  {
+   "wallSurfaces": [
+    51,
+    52,
+    56,
+    103
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "ground": "glazed",
+   "palette": {
+    "brick": "#7a604a",
+    "frame": "#6a5440"
+   },
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.6,
+    "sill": 0.15
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "bays": [
+     0
+    ]
+   }
+  },
+  {
+   "wallSurfaces": [
+    63,
+    83
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "palette": {
+    "brick": "#846a54",
+    "frame": "#6a5440"
+   },
+   "windowShape": {
+    "w": 0.35,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "bays": [
+     7
+    ],
+    "rail": "solid",
+    "brick": true
+   }
+  },
+  {
+   "wallSurfaces": [
+    5,
+    107
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 10,
+   "palette": {
+    "brick": "#5e5a56",
+    "frame": "#3a3a3a"
+   },
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.6,
+    "sill": 0.15
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "rail": "bars",
+    "colour": "#b8a078"
+   }
+  },
+  {
+   "wallSurfaces": [
+    62
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 6,
+   "palette": {
+    "brick": "#5e5a56",
+    "frame": "#3a3a3a"
+   },
+   "windowShape": {
+    "w": 0.35,
+    "h": 0.55,
+    "sill": 0.15
+   }
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#7a604a",
+  "frame": "#6a5440",
+  "door": "#4a3a2a"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 3): built 2023 and the 3DBAG survey is 2023, so the shell is the finished block. SE: panel 29 (47 m, eaves 13.5) from w01-140s2x/s3x (2025-09-29): a glazed ground and three storeys with brick-fronted balconies on every other bay (balconies.brick, solid parapet in the wall brick); panel 48 (18.6 m, five storeys) from w01-140s1x: wide windows and a loggia column; panel 55 (16.4 m) from w01-140s4x: small punched windows and a balcony column at its end. NE: panel 4 (30.5 m) from w03-50s2x (2024-10-16): grey brick galleries with timber frames (drawn as bar-railed balconies in a timber colour); panel 54 from w03-50s1x. The 2021-2022 SE crops are construction and are not cited. The W and NW fronts have no crop: otherWalls.",
+  "Not drawn: the timber pergola posts rising over the NE roof line, the parapet notches of the SE balcony boxes."
+ ]
+}

@@ -1,0 +1,165 @@
+{
+ "generated": "2026-11-20",
+ "generatedBy": "scripts/landmarks/landmark-targets-next.ts --kit-open --monument-types=church,school,almshouse,mansion,warehouse,workshop,coachHouse --exclude=docs/reports/landmark-targets-20261115.json (raw list docs/reports/landmark-targets-20261120-raw.json), BAG addresses, landmark-brief contact sheets read by hand (artifacts/landmark-briefs/<id>/contact.jpg)",
+ "method": "Candidates: OSM buildings and POIs with wikidata/wikipedia/historic/tourism/civic, religious and cultural amenity or building tags, plus register pands (monument-facts.json) of the types church, school, almshouse, mansion, warehouse, workshop and coachHouse. Pands under a bespoke model, a covers.json bespoke install, a catalogue suppress entry or a 20261115 verdict are out; ordinary/chunk/recipe kit installs stay in, as drawnAs=kit. Score = ride exposure (ride-visibility/v1) x recognisability (Wikipedia 2, wikidata 1.4, monument 1.2) x misrepresentation (generic 1.0, kit 0.7), within 2.6 km of the Dam. The curated order then reads the photos: civic, religious and cultural buildings first, then buildings that a generic block misrepresents badly, then evidence (a clear, square panorama of the main front).",
+ "ride": "ride-visibility/v1: teachable destinations ≤ 6 km of the Dam, seeded pairs 1–6 km, bike graph shortest paths, 5 m samples, walls ≥ 2 m within 60 m on their outer side with a 2D footprint sightline; score = Σ sample m × passes × visible facing-wall m",
+ "routes": 1500,
+ "candidates": 1077,
+ "open": 578,
+ "targets": [
+  {
+   "rank": 1,
+   "id": "roode-leeuw-damrak",
+   "name": "Hotel De Roode Leeuw (Damrak 93-94, 1911, Foeke Kuipers)",
+   "verdict": "build",
+   "reason": "On the Damrak, the busiest ride in the game, 70 m from the Dam. Gemeentelijk monument 210017 and a Wikipedia article. Five-bay hotel front with a big arched first-floor arcade, balconies, a dormer roof and the 1935 covered terrace; a generic block misses all of it. Clear, square 2021 pano of the Damrak front (w02-134).",
+   "pand": "0363100012168115",
+   "address": "Damrak 93",
+   "drawnAs": "generic",
+   "exposure": 62785,
+   "routeMetres": 4005,
+   "damKm": 0.07,
+   "rawRank": 44,
+   "monument": null,
+   "wikidata": "Q110061713",
+   "wikipedia": "nl:De Roode Leeuw (Amsterdam)",
+   "status": "built in r7 (roode-leeuw-damrak)"
+  },
+  {
+   "rank": 2,
+   "id": "de-kroon-rembrandtplein",
+   "name": "Café-Restaurant De Kroon (Rembrandtplein 17, 1898, G. van Arkel)",
+   "verdict": "build",
+   "reason": "Rembrandtplein north wall, central ride. Gemeentelijk monument 209036: white Jugendstil front with an asymmetric corner tower, glazed first-floor winter garden and balcony, lettered parapet. Drawn today as a generic brick block. Square 2020 pano of the plein front (w02-176) and a 2019 corner view (w05-177).",
+   "pand": "0363100012171127",
+   "address": "Rembrandtplein 17",
+   "drawnAs": "generic",
+   "exposure": 239883,
+   "routeMetres": 14920,
+   "damKm": 0.75,
+   "rawRank": 10,
+   "monument": "198",
+   "wikidata": null,
+   "wikipedia": null,
+   "status": "built in r7 (de-kroon-rembrandtplein)"
+  },
+  {
+   "rank": 3,
+   "id": "school-marnixstraat-2",
+   "name": "School, Marnixstraat 2 (1883; rijksmonument 518500)",
+   "verdict": "build",
+   "reason": "Corner of the Marnixstraat and the Haarlemmerplein side, inner ring. A banded-brick neo-Renaissance school with pointed gabled pavilions, finials and a walled playground with a gate pavilion; generic draws a plain box. Seven usable walls (2018-2024), all fronts clear.",
+   "pand": "0363100012168723",
+   "address": "Marnixstraat 2",
+   "drawnAs": "generic",
+   "exposure": 100007,
+   "routeMetres": 4225,
+   "damKm": 1.4,
+   "rawRank": 47,
+   "monument": "518500",
+   "wikidata": null,
+   "wikipedia": null,
+   "status": "next: brief and crops ready (artifacts/landmark-briefs/school-marnixstraat-2/); the pand takes in the walled playground and its gate pavilion, so the 3DBAG shell needs the wall split from the school body"
+  },
+  {
+   "rank": 4,
+   "id": "oranjekerk-pijp",
+   "name": "Oranjekerk (Van Ostadestraat 149, 1903; gemeentelijk monument 200431)",
+   "verdict": "build-if-time",
+   "reason": "De Pijp, inner ring (2.3 km). Brick church with a big traceried west window, a tower, an octagonal entrance porch and a parsonage corner; a generic block misrepresents it badly. Very good evidence: 15 walls, most of them clear.",
+   "pand": "0363100012237071",
+   "address": "Van Ostadestraat 149",
+   "drawnAs": "generic",
+   "exposure": 97081,
+   "routeMetres": 3560,
+   "damKm": 2.26,
+   "rawRank": 59,
+   "monument": null,
+   "wikidata": null,
+   "wikipedia": null,
+   "status": "next"
+  },
+  {
+   "rank": 5,
+   "id": "nieuwe-spiegelstraat-3",
+   "name": "Spiegelhof (Nieuwe Spiegelstraat / Herengracht corner, 1905-1917)",
+   "verdict": "later",
+   "reason": "High exposure (rank 1 raw, 0.95 km); drawn by the ordinary kit. Stone colonnade along the Nieuwe Spiegelstraat, a curved rusticated stone corner on the Herengracht, a pedimented stone porch. 1507 m2 with several blocks: a large recipe, but evidence is good (10 walls). Next round.",
+   "pand": "0363100012167897",
+   "address": "Nieuwe Spiegelstraat 3A",
+   "drawnAs": "kit",
+   "exposure": 680707,
+   "routeMetres": 13090,
+   "damKm": 0.95,
+   "rawRank": 1,
+   "monument": "518340",
+   "wikidata": "Q17302708",
+   "wikipedia": null,
+   "status": "next"
+  },
+  {
+   "rank": 6,
+   "id": "sarphatihuis",
+   "name": "Sarphatihuis (Roetersstraat 2, 1779; rijksmonument 4983)",
+   "verdict": "large-recipe",
+   "reason": "Former Oudemannenhuis on the Nieuwe Herengracht: a 5415 m2 courtyard block with curved wings, a pedimented front and a stone gate. Good evidence, but the size puts it in the large-recipe class.",
+   "pand": "0363100012164938",
+   "address": "Roetersstraat 2",
+   "drawnAs": "kit",
+   "exposure": 258087,
+   "routeMetres": 3750,
+   "damKm": 1.48,
+   "rawRank": 15,
+   "monument": "4983",
+   "wikidata": "Q2067098",
+   "wikipedia": null
+  }
+ ],
+ "ruledOut": [
+  {
+   "pand": "0363100012168159",
+   "name": "Church, Bloemgracht 98 (rijksmonument 518325)",
+   "why": "no-evidence: the only crop is a shopfront at the corner; the church stands behind the street wall"
+  },
+  {
+   "pand": "0363100012157857",
+   "name": "Teekenschool (Museumstraat 1, 1890)",
+   "why": "no-evidence: every front is behind the Museumtuin trees and railings"
+  },
+  {
+   "pand": "0363100012169587",
+   "name": "Westermarkt 18 (Anne Frank House extension)",
+   "why": "part of the anne-frank-house complex; belongs with that model"
+  },
+  {
+   "pand": "0363100012168239",
+   "name": "Nieuwe Doelenstraat 10 (rijksmonument 901)",
+   "why": "Hotel de l'Europe annex row, plain canal fronts; better served by the kit"
+  },
+  {
+   "pand": "0363100012168113",
+   "name": "Swissôtel (Damrak 96)",
+   "why": "1971 hotel; plain brick front, kit material"
+  },
+  {
+   "pand": "0363100012237263",
+   "name": "Stadhouderskade 85",
+   "why": "the pand is the 1961 curved glass office; plain"
+  },
+  {
+   "pand": "0363100012169023",
+   "name": "Wolvenstraat 32",
+   "why": "1956 office front, ordinary"
+  },
+  {
+   "pand": "0363100012181611",
+   "name": "Pakhuizen Prins Hendrikkade 176",
+   "why": "ordinary warehouse fronts; the only clear crop shows the neighbours"
+  },
+  {
+   "pand": "0363100012177995",
+   "name": "He Hua Tempel",
+   "why": "already modelled as he-hua-temple (catalogue footprint 30 m off; the pand is not in its suppress list)"
+  }
+ ]
+}

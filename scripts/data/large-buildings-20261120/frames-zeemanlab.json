@@ -1,0 +1,33 @@
+[
+ {
+  "pandId": "0363100012170498",
+  "bearing": 30,
+  "at": [
+   4.90964,
+   52.3659
+  ],
+  "key": "zeemanlab-ne-entrance",
+  "pano": "TMX7316010203-000998_pano_0004_001942",
+  "maxDistM": 35
+ },
+ {
+  "pandId": "0363100012170498",
+  "bearing": 210,
+  "at": [
+   4.90955,
+   52.36573
+  ],
+  "key": "zeemanlab-sw-canal",
+  "maxDistM": 60
+ },
+ {
+  "pandId": "0363100012170498",
+  "bearing": 300,
+  "at": [
+   4.9094,
+   52.36589
+  ],
+  "key": "zeemanlab-nw-side",
+  "maxDistM": 35
+ }
+]

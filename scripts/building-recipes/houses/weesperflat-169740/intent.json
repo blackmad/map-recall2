@@ -1,0 +1,188 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "weesperflat-169740",
+ "pandId": "0363100012169740",
+ "address": "Weesperflat, Weesperstraat 1966 (Herman Hertzberger; rijksmonument 2764/2765): a 76 m concrete student slab on pilotis, shops recessed between the columns, three storeys of continuous balcony bands, a recessed open storey under a heavy slab, three more balcony storeys",
+ "sources": [
+  {
+   "id": "pano-2025-01-09-w01-248s1h40",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-09",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250109_1300_Track12_Sphere_00110/",
+   "image": "source-data://pand-reference-walls/0363100012169740/w01-248s1h40.jpg",
+   "sha256": "31b14185d11afd1379d6a9c1f1688199ef737242bd6b4079dac61923746223c2",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-10-07-w01-248s2h40",
+   "kind": "street-panorama",
+   "capturedAt": "2022-10-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002825_pano_0003_001251/",
+   "image": "source-data://pand-reference-walls/0363100012169740/w01-248s2h40.jpg",
+   "sha256": "79b7227cd8d23864cb8bad61ed814d4c5c7ebeb7f05a1565df2721dd4adf02f6",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-12-10-w01-248s3h40L",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1134_Track01_Sphere_00058/",
+   "image": "source-data://pand-reference-walls/0363100012169740/w01-248s3h40L.jpg",
+   "sha256": "c59e1b083efad2eac95057c7a7c8a2641d4765ed0e7fcc59d13783d28b449163",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    37
+   ],
+   "street": "Weesperstraat (W)",
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 21,
+   "ground": "arcade",
+   "arcade": {
+    "pier": 0.14,
+    "walk": 0.45,
+    "head": 0.92,
+    "storeyFactor": 1.35,
+    "rise": 0,
+    "chamfer": 0
+   },
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.92,
+    "h": 0.5,
+    "sill": 0.38
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     5,
+     6,
+     7
+    ],
+    "deep": 0.3,
+    "rail": 0.3,
+    "kind": "solid",
+    "colour": "#b4b0a6"
+   },
+   "loggiaBands": [
+    {
+     "storeys": [
+      4,
+      4
+     ],
+     "bays": [
+      0,
+      20
+     ],
+     "sill": 0.0,
+     "head": 0.85,
+     "deep": 0.5,
+     "rail": "none",
+     "colour": "#2a2c2e"
+    }
+   ],
+   "palette": {
+    "brick": "#a29e94",
+    "frame": "#e6e4de",
+    "glass": "#3a4046"
+   },
+   "hand": [
+    "storeys",
+    "baysPerStorey",
+    "ground",
+    "arcade",
+    "windowShape",
+    "balconyBands",
+    "loggiaBands",
+    "palette",
+    "wallMaterial",
+    "system"
+   ],
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    14
+   ],
+   "street": "Weesperstraat (W), the low south end",
+   "system": "brick-bay-grid",
+   "ground": "arcade",
+   "arcade": {
+    "pier": 0.14,
+    "walk": 0.45,
+    "head": 0.92,
+    "storeyFactor": 1.35,
+    "rise": 0,
+    "chamfer": 0
+   },
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.92,
+    "h": 0.5,
+    "sill": 0.38
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "deep": 0.3,
+    "rail": 0.3,
+    "kind": "solid",
+    "colour": "#b4b0a6"
+   },
+   "palette": {
+    "brick": "#a29e94",
+    "frame": "#e6e4de",
+    "glass": "#3a4046"
+   },
+   "hand": [
+    "ground",
+    "arcade",
+    "windowShape",
+    "balconyBands",
+    "palette",
+    "wallMaterial",
+    "system",
+    "alignWith"
+   ],
+   "sills": false,
+   "alignWith": 0
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#a29e94",
+  "frame": "#e6e4de",
+  "door": "#3a3c3e",
+  "stone": "#d2cdc2",
+  "glass": "#3a4046"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "measured": {
+  "date": "2026-11-20",
+  "groups": [
+   0,
+   1
+  ],
+  "otherWalls": true
+ },
+ "notes": [
+  "Weesperflat (pand 0363100012169740, built 1966; nl:Weesperflat). Landmark lane ruling 2026-11-15: large-recipe (modern slab of repeated balconies).",
+  "walls[0] the 76 m Weesperstraat face (3DBAG panel 13: surface 37 the 26 m slab, surface 14 the 15 m south end, walls[1]), read from three 25 m segment crops (w01-248s1h40 2025-01-09, w01-248s2h40 2022-10-07, w01-248s3h40L 2024-12-10): pilotis with recessed shopfronts, three storeys of pale solid balcony parapets in front of white-framed window bands, a recessed dark open storey under a deep slab, three more balcony storeys, a plain parapet.",
+  "Colour: concrete #a29e94 hand-sampled between the sunlit 2025-01-09 segment and the overcast 2019-12-20 pose (the first install read lighter than the neighbours where the photo reads darker); balcony parapets #b4b0a6; carried as measured.",
+  "INFERRED: the east, south and north faces and the roof structures (otherWalls window-grid): the east crops show the neighbouring school, the south crop is 39 % washed out."
+ ]
+}

@@ -83876,6 +83876,7 @@
   "materialOverrides": {
    "brick": "#5d3e3b",
    "greyBrick": "#3e3638",
+   "concrete": "#5e6670",
    "stone": "#cdc6b6",
    "frame": "#ece8de",
    "glass": "#34383c",
@@ -91820,6 +91821,349 @@
      [
       4.8766718,
       52.3942603
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "roode-leeuw-damrak",
+  "name": "Hotel De Roode Leeuw, Damrak",
+  "modelUrl": "./models/roode-leeuw-damrak.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012168115"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89352073,
+    52.37372477
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 23.9,
+   "widthMetres": 27.8
+  },
+  "surveyed": {
+   "anchor": [
+    4.89352073,
+    52.37372477
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012168115 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/roode-leeuw-damrak-footprints.json, bag-shell-prepare.ts); the Damrak front and the 1935 terrace read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002031_pano_0003_000033 (2021) and TMX7316010203-001658_pano_0000_001902 (2020), CC BY 4.0; the Damraksteeg corner from TMX7316010203-001658_pano_0000_002098 (2020). Gemeentelijk monument 210017 (api.data.amsterdam.nl). Per wall in scripts/landmarks/roode-leeuw-damrak-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 21.6,
+  "galleryView": {
+   "theta": 0.8,
+   "phi": 1.1
+  },
+  "bagYear": 1911,
+  "materialOverrides": {
+   "brick": "#a66f50",
+   "ochre": "#9c6646",
+   "stone": "#a9a89f",
+   "sandstone": "#e9e7df",
+   "slate": "#5e4a42",
+   "frame": "#d6d3c8",
+   "glass": "#30363a",
+   "canopyGlass": "#5a5640",
+   "dark": "#24272a",
+   "bronze": "#2a2c2c",
+   "red": "#c4352c",
+   "gold": "#d1a640"
+  },
+  "attribution": {
+   "title": "Hotel De Roode Leeuw, Damrak 93-94, Amsterdam (1911, Foeke Kuipers)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002031_pano_0003_000033/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012168115 (CC0): the five-bay buff brick Damrak front with its pilasters, heraldic shields, round-arched second floor with bowed iron balconies, paired third-floor windows and railed fourth floor, the roof letters, and the 1935 covered terrace with its sign band, white clerestory and name-board balcony rail, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8937006,
+      52.3737717
+     ],
+     [
+      4.8934058,
+      52.3738653
+     ],
+     [
+      4.8934041,
+      52.3738629
+     ],
+     [
+      4.8933228,
+      52.3737504
+     ],
+     [
+      4.8934961,
+      52.3736815
+     ],
+     [
+      4.8934972,
+      52.3736825
+     ],
+     [
+      4.8935242,
+      52.3736717
+     ],
+     [
+      4.8935232,
+      52.3736707
+     ],
+     [
+      4.8935352,
+      52.3736659
+     ],
+     [
+      4.8935399,
+      52.3736689
+     ],
+     [
+      4.8935694,
+      52.3736516
+     ],
+     [
+      4.8937303,
+      52.3737543
+     ],
+     [
+      4.8937006,
+      52.3737717
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "de-kroon-rembrandtplein",
+  "status": "held",
+  "heldReason": "Integrator review 2026-11-20 (landmarks r7): the front and arcade read well, but the 3DBAG tower top is taller and boxier than the photo, the Amstel gable is lopsided where the photo shows a symmetric neck/step gable, the balcony spans too many bays and the Amstel back is a jumble of 3DBAG blocks. Round 8 fixes these.",
+  "name": "Café-Restaurant De Kroon, Rembrandtplein",
+  "modelUrl": "./models/de-kroon-rembrandtplein.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012171127"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89674832,
+    52.3665498
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 68.2,
+   "widthMetres": 29.8
+  },
+  "surveyed": {
+   "anchor": [
+    4.89674832,
+    52.3665498
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012171127 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/de-kroon-rembrandtplein-footprints.json, bag-shell-prepare.ts); the Rembrandtplein front from the rectified Gemeente Amsterdam panoramas TMX7316010203-001664_pano_0000_001931 (2020) and TMX7316010203-002865_pano_0002_000132 (2022), the corner tower from TMX7316010203-001177_pano_0000_000661 (2019), the Amstel front from TMX7316010203-000717_pano_0000_000150 (2018), CC BY 4.0. Gemeentelijk monument 209036 (api.data.amsterdam.nl). Per wall in scripts/landmarks/de-kroon-rembrandtplein-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 25.2,
+  "galleryView": {
+   "theta": 0.1,
+   "phi": 1.1
+  },
+  "bagYear": 1898,
+  "materialOverrides": {
+   "sandstone": "#f4f2ec",
+   "stone": "#d4cdbd",
+   "brick": "#9a6446",
+   "concrete": "#6d6a67",
+   "slate": "#4f555c",
+   "frame": "#f2efe6",
+   "glass": "#2f363b",
+   "dark": "#26292b",
+   "bronze": "#2b2d2d",
+   "ochre": "#8a4f2c",
+   "canopyGlass": "#7c8c93"
+  },
+  "attribution": {
+   "title": "Café-Restaurant De Kroon, Rembrandtplein 17, Amsterdam (1898, G. van Arkel)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001664_pano_0000_001931/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012171127 (CC0): the white Rembrandtplein front with its arcade, glazed winter garden, cast-iron balcony rails, hooded second-floor windows, central balcony, dentil cornice and the roof rail with the CAFE DE KROON board; the corner tower with its domed tourelle, balustraded balcony and arched windows; the Amstel front's arched stone base, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8966416,
+      52.3664013
+     ],
+     [
+      4.8966462,
+      52.3663649
+     ],
+     [
+      4.8968808,
+      52.3663753
+     ],
+     [
+      4.8968762,
+      52.3664112
+     ],
+     [
+      4.8968827,
+      52.3664115
+     ],
+     [
+      4.8968842,
+      52.3664118
+     ],
+     [
+      4.8968856,
+      52.3664123
+     ],
+     [
+      4.8968869,
+      52.3664128
+     ],
+     [
+      4.8968881,
+      52.3664133
+     ],
+     [
+      4.8968893,
+      52.3664139
+     ],
+     [
+      4.8968903,
+      52.3664146
+     ],
+     [
+      4.8968913,
+      52.3664154
+     ],
+     [
+      4.8968921,
+      52.3664162
+     ],
+     [
+      4.8968928,
+      52.366417
+     ],
+     [
+      4.8968933,
+      52.3664178
+     ],
+     [
+      4.8968938,
+      52.3664187
+     ],
+     [
+      4.8968941,
+      52.3664196
+     ],
+     [
+      4.8968943,
+      52.3664205
+     ],
+     [
+      4.8968943,
+      52.3664214
+     ],
+     [
+      4.8968942,
+      52.3664223
+     ],
+     [
+      4.896894,
+      52.3664232
+     ],
+     [
+      4.8968879,
+      52.3665048
+     ],
+     [
+      4.89685,
+      52.3666544
+     ],
+     [
+      4.8968462,
+      52.3666693
+     ],
+     [
+      4.8967404,
+      52.3666628
+     ],
+     [
+      4.8966573,
+      52.3666586
+     ],
+     [
+      4.8966462,
+      52.3667238
+     ],
+     [
+      4.8966242,
+      52.3668531
+     ],
+     [
+      4.8966031,
+      52.366977
+     ],
+     [
+      4.8966031,
+      52.3669774
+     ],
+     [
+      4.8964512,
+      52.3669681
+     ],
+     [
+      4.8964522,
+      52.3669619
+     ],
+     [
+      4.8964937,
+      52.3666964
+     ],
+     [
+      4.8965025,
+      52.3666439
+     ],
+     [
+      4.8965647,
+      52.3666472
+     ],
+     [
+      4.896569,
+      52.3666173
+     ],
+     [
+      4.8965879,
+      52.3666069
+     ],
+     [
+      4.8965943,
+      52.3665704
+     ],
+     [
+      4.8965185,
+      52.3665658
+     ],
+     [
+      4.8965542,
+      52.3663976
+     ],
+     [
+      4.8966416,
+      52.3664013
      ]
     ]
    ]

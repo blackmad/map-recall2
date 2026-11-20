@@ -6169,15 +6169,15 @@
   }
  },
  "politiebureau-raampoort": {
-  "sourceHash": "e3ea98ba0cd335d1",
+  "sourceHash": "27f09a4cd394e11c",
   "buildVersion": 2,
-  "bytes": 93600,
-  "triangles": 4519,
+  "bytes": 96080,
+  "triangles": 4584,
   "lod2": {
-   "sourceHash": "e3ea98ba0cd335d1",
+   "sourceHash": "27f09a4cd394e11c",
    "buildVersion": 6,
-   "bytes": 16460,
-   "triangles": 568
+   "bytes": 17184,
+   "triangles": 582
   }
  },
  "banks-mansion": {
@@ -6418,6 +6418,30 @@
    "buildVersion": 6,
    "bytes": 9556,
    "triangles": 269
+  }
+ },
+ "roode-leeuw-damrak": {
+  "sourceHash": "196a5b81db5a0303",
+  "buildVersion": 2,
+  "bytes": 66324,
+  "triangles": 2825,
+  "lod2": {
+   "sourceHash": "196a5b81db5a0303",
+   "buildVersion": 6,
+   "bytes": 10360,
+   "triangles": 261
+  }
+ },
+ "de-kroon-rembrandtplein": {
+  "sourceHash": "14b7adaf60709d8a",
+  "buildVersion": 2,
+  "bytes": 47220,
+  "triangles": 1899,
+  "lod2": {
+   "sourceHash": "14b7adaf60709d8a",
+   "buildVersion": 6,
+   "bytes": 9260,
+   "triangles": 218
   }
  }
 }

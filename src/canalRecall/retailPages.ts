@@ -12,6 +12,8 @@
 import { GOODS_LAYERS } from './retailGoods.js';
 import { TYPE_FACES } from './retailTypeFaces.js';
 import { CHAIN_LOGO_PAGES } from './retailChainLogos.js';
+import { FILLER_LAYERS } from './retailPaneFillers.js';
+import { shopVarietyOn } from './shopVariety.js';
 
 export const RETAIL_REAL_DEFAULT = true;
 export function retailRealEnabled(search?: string | null, env?: string | null): boolean {
@@ -31,9 +33,12 @@ export function retailRealOn(): boolean {
 export const GOODS_BASE = 2;
 export const TYPE_BASE = GOODS_BASE + GOODS_LAYERS;
 export const CHAIN_LOGO_BASE = TYPE_BASE + TYPE_FACES.length;
+/** Lane shop-variety-20261120: the pane-filler layers (retailPaneFillers.ts) after the chain-logo pages (default on;
+ *  not with `?shopVariety=0`), so every layer before them keeps its index with the flag off or on. */
+export const VARIETY_BASE = CHAIN_LOGO_BASE + CHAIN_LOGO_PAGES;
 /** Layers the retail look takes from the first logo layer: 2 without retailReal. */
-export function retailPageCount(real = retailRealOn()): number {
-  return real ? CHAIN_LOGO_BASE + CHAIN_LOGO_PAGES : 2;
+export function retailPageCount(real = retailRealOn(), variety = shopVarietyOn()): number {
+  return real ? VARIETY_BASE + (variety ? FILLER_LAYERS : 0) : 2;
 }
 
 let cachedAll: boolean | undefined;
