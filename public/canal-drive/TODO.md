@@ -44,14 +44,13 @@ Feedback fixes 2026-11-19 (#396): all five lanes are merged (see HISTORY). Still
 - 3b8ca6 De Clercqstraat: the deck-side line is gone (`deckSideFine`), but the cross-road seam (dark and light-blue segments) is not in the top-layer probes; pick it in the browser.
 - c361c8 Kinkerbrug house: the data puts it on land (0 of 105 footprint samples over water, panorama agrees). It reads as over water from the pitch-60 camera and a water corner west of it. `build-pand-abutments.ts` lists three more pands for photo review: 0363100012171355, 0363100012181645, w858955798.
 - Unmeasured: how many decks city-wide `coveredTopTone` changes, and the triangle cost of `deckSideFine`.
-- 47d096: place Bellamyplein 28 (0363100012162005) in the bellamyplein face.
 - f8f282: Prinsengracht 136 is a traditional canal front (brown brick, 8 axes of white sashes, dormers), but BAG says 1941, so it draws in the interwar style. No standalone per-pand period override exists; only HouseSpec `facts/facadeYear`, on the paused describer path. This belongs with design units. `mergeSteppedRuns` (`STEPPED_FRONTS=1`) is staged off: it lost its blind 1–2 with 5 ties, because the merge drops each plot's rhythm on multi-plot fronts.
-- 0046bb: Haarlemmermeer; no open panorama to judge it against.
+- 0046bb Haarlemmermeer terrace (pand 0394100000219929, a 1955 row under one pantile saddle roof): `?terraceRows=1` (`terraceRows.ts`) gives a post-war terrace one wall and roof seed, which unifies the walls and makes most roofs pitched. Before default-on, three things are still wrong: one narrow member still gets a street-facing gable, the end boxes stay flat, and the roof planner ignores the measured roof slot and ridge.
 - e41668: the De Vaart slab (0363100012075926) is generic. Its passage parts repeat one 'modern' cell along 290 m, with a shop and stair-door rhythm every 4 bays. The panorama shows designed sections: dark brick with band windows, a grey panel section, balconies. That is section data for design units, not random variation.
-- 8022e3: roof edge definition (parapet line or AO).
+- 8022e3 pale roofs on pale paving: `?roofEdge=1` (`roofs/roofEdge.ts`) adds a dark 0.9 m top band on flat roofs ≥ 60 m², a dark parapet coping and 25% more lip budget. Blind: roofs separate from the ground on 4 of 5 views at two wide views, overall look on 3 of 5, and no difference at a third. Off by default because it costs about 38% more chunk vertices on dense tiles (desktop perf first). Before default-on: a cheaper form (shader edge darkening, or only roofs seen from above), and a distance fade for the 1–2 px band.
 - Ground detector top 10 around Centraal (rail-bed and paving overlaps); the Sixhaven marina basin is missing from the water layer.
 - Street-art cards carry no per-photo credit line for the CC BY-SA photos (credit is in credits.html for now). Replace "Why not" (panorama, small figure) once Commons has a photo.
-- 284 near-black measured modern walls to check.
+- Near-black modern walls: 140 remain (L* < 17). 87 are truly dark; 52 have no cached panorama sample. About 7 of the 53 sky-exposure corrections were really dark cladding, and some grey metal halls read brownish.
 
 
 ## Street life behind flags (2026-11-14) — ride review before any default

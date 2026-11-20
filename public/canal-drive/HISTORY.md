@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Placement and wall colour fixes (2026-11-20, lane/fb-placement2-20261120 e524e596ab, #396)
+
+- **Bellamyplein 28 (47d096), fixed:** the likeness gate had held it out of the Bellamyplein 18-38 face, so it drew as a generic block between two runs. A reviewer override (2 bays, casement-sidelights-toplight window read from the strip) and an accept pin place it in one run (20-38, NCC 0.195), which replaces the old r2 run. Test: `bellamyplein28.test.ts`.
+- **Dark modern walls, 148 corrected:** `brickTone.ts` reads a wall from the luma mode of warm pixels. On grey, pale or glazed fronts that mode lands on window reveals, loggia shadow and glass, and sky-heavy thumbnails darken the whole front. `darkWallRule.ts` sorts the 289 walls under L* 17:
+  - 96 artefacts: re-read without dark pixels and calibrated by neighbours;
+  - 53 sky-exposed: take the buurt's lower-quartile wall of the same decade;
+  - 87 truly dark: kept.
+  The 148 corrections are in `modern-pand-wall-corrections.json`, each citing its panorama thumbnail.
+- **Behind flags:** `?terraceRows=1` (Haarlemmermeer, 0046bb) and `?roofEdge=1` (8022e3). Their open points are on the board.
+- `bakedCoarse.ts` skips the baked coarse shells when `roofEdge` is on, so the flag can be seen at the note's own view.
+
 ## Houthavens: Memeleiland and Wiborgeiland installed (2026-11-20, lane/houthavens-memel-wiborg-20261120 ae759b68fb)
 
 Two more Houthavens blocks are drawn from their own panorama crops as rows of separately designed fronts on one BAG pand, the same way as Narva.
