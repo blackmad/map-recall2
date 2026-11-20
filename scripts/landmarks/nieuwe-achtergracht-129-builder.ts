@@ -74,12 +74,14 @@ function bar(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: num
  * 0.22 m proud, the pane, and the original division the photos show: a strip of small panes along the foot and the head.
  */
 function oriel(b: BuildingTools, f: Frame, t: number, [y0, y1]: [number, number], w: number) {
-  slab(b, f, t, y0 - 0.06, w + 0.12, y1 - y0 + 0.12, 0.22, 'frame');
-  slab(b, f, t, y0 + 0.06, w - 0.12, y1 - y0 - 0.12, 0.06, 'glass', 0.22);
-  const iw = w - 0.12, foot = y0 + 0.42, head = y1 - 0.4;
-  bar(b, f, t, foot, iw, 0.06, 0.28);
-  bar(b, f, t, head, iw, 0.06, 0.28);
-  for (let k = 1; k < 5; k++) bar(b, f, t - iw / 2 + (iw * k) / 5, y0 + 0.06, 0.05, foot - y0 - 0.06, 0.28);
+  // bold white border (w02-163 at 39.75 px/m, 2x zoom: the frame and the bay cheeks read 0.15-0.2 m wide)
+  slab(b, f, t, y0 - 0.08, w + 0.16, y1 - y0 + 0.16, 0.22, 'frame');
+  slab(b, f, t, y0 + 0.1, w - 0.2, y1 - y0 - 0.2, 0.06, 'glass', 0.22);
+  const iw = w - 0.2, foot = y0 + 0.45, head = y1 - 0.42;
+  bar(b, f, t, foot, iw, 0.09, 0.28);
+  bar(b, f, t, head, iw, 0.09, 0.28);
+  for (let k = 1; k < 5; k++) bar(b, f, t - iw / 2 + (iw * k) / 5, y0 + 0.1, 0.07, foot - y0 - 0.1, 0.28);
+  for (let k = 1; k < 4; k++) bar(b, f, t - iw / 2 + (iw * k) / 4, head, 0.07, y1 - 0.1 - head, 0.28);
   slab(b, f, t, y0 - 0.2, w + 0.3, 0.14, 0.34, 'greyBrick');
 }
 
@@ -104,7 +106,7 @@ function axes(b: BuildingTools, f: Frame, ts: number[], w: number, o: {t0: numbe
   }
   if (o.piers !== false) for (let k = 0; k + 1 < ts.length; k++) {
     const gap = ts[k + 1] - ts[k] - w - 0.36;
-    if (gap > 0.3) slab(b, f, (ts[k] + ts[k + 1]) / 2, 2.61, gap, EAVE - 2.61, 0.12, 'brick');
+    if (gap > 0.3) slab(b, f, (ts[k] + ts[k + 1]) / 2, 2.61, gap, EAVE - 2.61, 0.18, 'brick');
   }
   if (o.eaves !== false) eaves(b, f, o.t0, o.t1);
 }
@@ -148,13 +150,22 @@ function achtergrachtFront(b: BuildingTools) {
   slab(b, f, 2.7, 3.35, 5.4, 0.3, 1.3, 'concrete');
   slab(b, f, 3.4, 0.5, 1.6, 2.6, 0.06, 'dark');
   slab(b, f, 3.4, 0, 3.0, 0.5, 1.2, 'greyBrick');
-  // stacked balcony box (two balconies under a flat canopy, glazed doors behind)
-  const bx = 45.6, bw = 4.6;
-  for (const [y0, y1] of [[5.85, 7.6], [9.95, 11.75]]) slab(b, f, bx, y0, bw, y1 - y0, 1.45, 'brick');
-  slab(b, f, bx, 13.95, bw + 0.2, 0.3, 1.6, 'concrete');
-  for (const s of [-1, 1]) slab(b, f, bx + s * (bw / 2 + 0.06), 7.6, 0.12, 6.35, 1.4, 'brick');
-  for (const [y0, y1] of [[7.75, 9.8], [11.85, 13.85]]) plain(b, f, bx, y0, y1, 2.6, false);
-  plain(b, f, bx, ROWS[0][0], ROWS[0][1], 1.9);
+  // the cantilevered balcony stack (w02-163 2021, 1720-1910 px): two brick parapet boxes with light slab soffits
+  // (6.16-8.05 m, 10.2-12.45 m), open sides on thin steel posts, a flat canopy 13.5-13.75 m, glazed doors behind,
+  // and under it the white-framed bay window 3.65-6.0 m
+  const bx = 45.6, bw = 4.6, bd = 1.5;
+  for (const [y0, y1] of [[6.3, 9.7], [10.35, 13.3]]) plain(b, f, bx, y0, y1, 2.4, false);
+  for (const [y0, y1] of [[6.16, 8.05], [10.2, 12.45]]) {
+    slab(b, f, bx, y0 + 0.16, bw, y1 - y0 - 0.16, bd, 'brick');
+    slab(b, f, bx, y0, bw + 0.1, 0.16, bd + 0.06, 'concrete');
+  }
+  slab(b, f, bx, 13.5, bw + 0.3, 0.25, bd + 0.2, 'concrete');
+  for (const [y0, y1] of [[8.05, 10.2], [12.45, 13.5]]) for (const s of [-1, 1]) slab(b, f, bx + s * (bw / 2 - 0.12), y0, 0.08, y1 - y0, 0.06, 'dark', bd - 0.14);
+  slab(b, f, bx, 3.55, 2.3, 2.5, 0.6, 'frame');
+  slab(b, f, bx, 3.7, 2.0, 2.2, 0.05, 'glass', 0.6);
+  bar(b, f, bx, 4.15, 2.0, 0.08, 0.65);
+  for (let k = 1; k < 5; k++) bar(b, f, bx - 1 + 0.4 * k, 3.7, 0.06, 0.45, 0.65);
+  slab(b, f, bx, 3.4, 2.5, 0.15, 0.75, 'greyBrick');
   slab(b, f, 43.7, 0.4, 1.1, 2.2, 0.06, 'dark', 0.1);
   // east end: slit windows and the ribbon over the souterrain
   for (const t of [48.6, 49.7, 50.8, 51.9, 53.0]) for (const y of [7.3, 11.3]) plain(b, f, t, y, y + 1.25, 0.32, false);
