@@ -101,3 +101,18 @@ test('face order runs left to right as seen from the street, along the mean norm
   assert.deepEqual(faceOrder(items), ['east', 'mid', 'west']);
   assert.deepEqual(faceOrder(items.map(i => ({ ...i, normal: undefined }))), ['west', 'mid', 'east'], 'no walls: house-number order');
 });
+
+test('forced front edge: the longest footprint edge facing the face bearing', async () => {
+  const { frontEdge, displayPpm } = await import('./prepare.ts');
+  // A 5 x 15 m plot, front on the south (bearing 180), a 1 m jog in the back.
+  const ring = [{ x: 0, y: 0 }, { x: 5, y: 0 }, { x: 5, y: 15 }, { x: 0, y: 15 }, { x: 0, y: 0 }];
+  const w = frontEdge(ring, 180)!;
+  assert.equal(Math.round(w.len), 5);
+  assert.ok(Math.abs(w.ny + 1) < 1e-9, 'outward normal points south');
+  assert.equal(frontEdge(ring, 135), null, 'no edge within 30 degrees');
+  assert.equal(frontEdge([...ring].reverse(), 180)!.len, 5, 'winding does not matter');
+  // Display scale: a close camera is capped at 100 px/m, a far one floored at 50 px/m with its native resolution reported.
+  assert.equal(displayPpm(8000, 6, 16).ppm, 100);
+  const far = displayPpm(8000, 30, 16);
+  assert.equal(far.ppm, 50); assert.ok(far.native < 50);
+});
