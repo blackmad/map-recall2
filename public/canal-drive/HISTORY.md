@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## Doelensluis and De Clercqstraat fixed; the ground detector stops flagging rail viaducts (2026-11-20, lane/fb-ground2-20261120 5ffa883692, #396)
+
+Three new ground options, each on by default with a `?name=0` off switch:
+- **Doelensluis (4c1344):** the land mask still cut the canal through the square's wet-ground polygons and the slivers between them, and the square's real edge over the Amstel had no quay face.
+  - `wetHoles` (`wetGroundEdges.ts`) lifts land inside the rings and across gaps that have surveyed ground on both sides within 2 m at street height.
+  - `wetFaces` adds a quay face where a ring meets open water.
+  - BRU0220 hole samples: 41 → 12 → 5, and the 5 are real water. The terrace edge has no face at 2 of 15 points, against 34 of 34 before.
+- **De Clercqstraat (3b8ca6):** BRU0108's survey edge drops from 20.7 m to 6.3 m within one metre, which left a 0.24 m faceless step across the carriageway: the dark and light-blue crack. `edgeTaper` tapers the ride edges at 0.5 m per m (`DeckProfile.rideEdges`, read only by `GroundSurface.locate`, so kits and bodies keep the survey edges). The step is now 0.011 m.
+- **Detector (c57c04):** `groundAudit.ts` counts ballast and track on a deck top as raised, not poke (`railOnDeck`). Poke over 5 cm at Centraal went from 34,884 to 31,423 m²; the false top tile left the list.
+- Pins in `bridge-feedback-pins.ts` each fail with their fix off; spots gain an `alsoOff` field so older pins stay live.
+- Tests are in `test:own-ground`.
+
 ## Placement and wall colour fixes (2026-11-20, lane/fb-placement2-20261120 e524e596ab, #396)
 
 - **Bellamyplein 28 (47d096), fixed:** the likeness gate had held it out of the Bellamyplein 18-38 face, so it drew as a generic block between two runs. A reviewer override (2 bays, casement-sidelights-toplight window read from the strip) and an accept pin place it in one run (20-38, NCC 0.195), which replaces the old r2 run. Test: `bellamyplein28.test.ts`.

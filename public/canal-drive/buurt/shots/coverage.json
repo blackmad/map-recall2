@@ -107,7 +107,7 @@
  },
  {
   "slug": "de-pijp",
-  "buildings": 40,
+  "buildings": 41,
   "kits": 0,
   "facts": 38,
   "origins": 94,
@@ -194,7 +194,7 @@
  },
  {
   "slug": "grachtengordel",
-  "buildings": 97,
+  "buildings": 98,
   "kits": 0,
   "facts": 151,
   "origins": 91,
@@ -244,7 +244,7 @@
  },
  {
   "slug": "houthaven",
-  "buildings": 16,
+  "buildings": 18,
   "kits": 0,
   "facts": 8,
   "origins": 45,
@@ -340,7 +340,7 @@
  },
  {
   "slug": "kinkerbuurt",
-  "buildings": 19,
+  "buildings": 18,
   "kits": 0,
   "facts": 22,
   "origins": 30,
@@ -403,7 +403,7 @@
  },
  {
   "slug": "memeleiland",
-  "buildings": 0,
+  "buildings": 1,
   "kits": 0,
   "facts": 5,
   "origins": 4,
@@ -411,7 +411,6 @@
   "shots": 2,
   "plan": 2,
   "lacks": [
-   "buildings",
    "bridges"
   ]
  },
@@ -431,7 +430,7 @@
  },
  {
   "slug": "museumkwartier",
-  "buildings": 38,
+  "buildings": 39,
   "kits": 0,
   "facts": 69,
   "origins": 84,
@@ -537,7 +536,7 @@
  },
  {
   "slug": "oud-zuid",
-  "buildings": 59,
+  "buildings": 60,
   "kits": 0,
   "facts": 158,
   "origins": 286,
@@ -548,7 +547,7 @@
  },
  {
   "slug": "oude-pijp",
-  "buildings": 31,
+  "buildings": 32,
   "kits": 0,
   "facts": 26,
   "origins": 33,
@@ -884,7 +883,7 @@
  },
  {
   "slug": "weesperbuurt",
-  "buildings": 18,
+  "buildings": 19,
   "kits": 0,
   "facts": 63,
   "origins": 42,
@@ -912,7 +911,7 @@
  },
  {
   "slug": "wiborgeiland",
-  "buildings": 0,
+  "buildings": 1,
   "kits": 0,
   "facts": 1,
   "origins": 4,
@@ -921,7 +920,6 @@
   "plan": 2,
   "lacks": [
    "photo borrowed from Houthaven",
-   "buildings",
    "bridges"
   ]
  },
