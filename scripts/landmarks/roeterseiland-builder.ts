@@ -3,12 +3,12 @@ import type {BuildingTools} from './cultural-builders';
 import {compileLargeBuilding, type LargeCompileHooks} from '../../src/canalRecall/buildingRecipe/largeCompile';
 import {validateLargeIntent} from '../../src/canalRecall/buildingRecipe/largeIntent';
 import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts';
-import {drawOpening, type PanelCtx} from '../../src/canalRecall/blockBuilding/compose';
+import {drawOpening, solid, type PanelCtx} from '../../src/canalRecall/blockBuilding/compose';
 import {letteringGeometry} from '../../src/canalRecall/buildingRecipe/signage';
 import {pt, type Panel} from '../../src/canalRecall/blockBuilding/panels';
 import {drawCurtainGrid, drawLettering} from '../../src/canalRecall/blockBuilding/components';
 import {fitsPanel, rectPoly} from '../../src/canalRecall/blockBuilding/panels';
-import {panelEaves} from '../../src/canalRecall/buildingRecipe/fitLarge';
+import {bearingOfNormal, panelEaves} from '../../src/canalRecall/buildingRecipe/fitLarge';
 import type {WinParams} from '../../src/canalRecall/blockBuilding/spec';
 import {BAR} from './tropenmuseum-kit';
 import {buildIntent, CITY_ROOM_STOREYS, STYLES} from './roeterseiland-groups';
@@ -33,6 +33,9 @@ const PART_NAMES: Partial<Record<PartId, {wall: string; frame: string}>> = {
   tower: {wall: 'slate', frame: 'dark'}, podium: {wall: 'glass', frame: 'frame'}, bridge: {wall: 'greyBrick', frame: 'dark'}, 'se-tall-block': {wall: 'greyBrick', frame: 'dark'},
   'se-brick-wing': {wall: 'brick', frame: 'dark'}, 'west-beige': {wall: 'ochre', frame: 'dark'}, 'north-grey': {wall: 'concrete', frame: 'dark'}, 'north-mid': {wall: 'concrete', frame: 'dark'},
 };
+/** The Roetersstraat block's own slots (drawWestFront): the glass-block stair window and the dark overhanging roof edge. */
+const GLASS_BLOCK = 'glass@block', EAVE = 'slab@eave';
+const OWN_SLOTS: Record<string, string> = {[GLASS_BLOCK]: 'canopyGlass', [EAVE]: 'slate'};
 const BASE: Record<string, string> = {wall: 'greyBrick', frame: 'dark', stone: 'stone', glass: 'glass', door: 'dark', curtain: 'frame', sign: 'white', plant: 'concrete', board: 'white', 'board-text': 'dark', arch: 'greyBrick', band: 'stone', crest: 'stone', 'police-blue': 'blue', 'police-white': 'white', cross: 'dark', slab: 'stone', rail: 'dark'};
 
 /**
@@ -50,7 +53,105 @@ function sheetWindow(c: PanelCtx, slots: {frame: string; glass: string}, u0: num
 /** Narrow stepped panels (under 6 m) get no hand-drawn windows: the audit reads the sheets on 3DBAG's skewed slivers as off the wall. */
 const MIN_FLUSH_PANEL_M = 6;
 
-export interface RoeterseilandStats {openings: number; failed: number; tower: number; cityRoom: number; clerestory: number}
+export interface RoeterseilandStats {openings: number; failed: number; tower: number; cityRoom: number; clerestory: number; west: number}
+type Slots = {frame: string; glass: string};
+
+/** A window sheet inside the panel (skipped, and counted failed, when it would leave the wall). */
+function sheetIn(c: PanelCtx, s: Slots, stats: RoeterseilandStats, u0: number, u1: number, v0: number, v1: number, fw: number, mull = 0, transom = 0) {
+  if (!fitsPanel(c.p, rectPoly(u0 - 0.05, u1 + 0.05, v0 - 0.05, v1 + 0.05), 0.02)) { stats.failed++; return false; }
+  sheetWindow(c, s, u0, u1, v0, v1, fw, mull, transom); stats.west++; return true;
+}
+/**
+ * A glazed run with mullions about `pitch` apart (ribbon windows, the glazed top storey), laid as sheets of at most three lights 4 cm apart:
+ * one 60 m sheet is one open boundary loop of 130 m, which audit-glb-quality fails (holes over 30 m).
+ */
+function ribbon(c: PanelCtx, s: Slots, stats: RoeterseilandStats, u0: number, u1: number, v0: number, v1: number, pitch: number, transom = 0) {
+  const lights = Math.max(1, Math.round((u1 - u0) / pitch)), w = (u1 - u0) / lights;
+  for (let k = 0; k < lights; k += 3) {
+    const n = Math.min(3, lights - k);
+    sheetIn(c, s, stats, u0 + k * w + (k ? 0.02 : 0), u0 + (k + n) * w - (k + n < lights ? 0.02 : 0), v0, v1, 0.05, n - 1, transom);
+  }
+}
+
+/**
+ * The beige Roetersstraat block (Roetersstraat 11-23, panel 407, w01-280: panorama TMX7316010203-001681_pano_0000_003275, 2020-04-29;
+ * cross-checked on TMX7316010203-000221_pano_0000_001150, 2017). Measured on the rectified crop at 29.4 px/m (u = (x - 20 px) x 0.0345 m from
+ * the north end, v from the pavement at y = 918 px):
+ *  - north part: five bays of large steel windows 3.1 m wide (the first 4.1 m) on three storeys (v 0-2.65, 3.4-6.05, 6.87-9.52), two
+ *    mullions and a transom each; a 6.5 m glass-block stair window across the upper two storeys; three more bays south of it;
+ *  - the entrance (u 25.3-28.0) and a glazed door under the glass block; a thin shop canopy ledge at 2.8 m over the north shops;
+ *  - south part (u 44.6-63.6): a ribbon window per storey (v 0-2.25, 4.1-5.65, 7.5-9.05) with a plain brick pier (u 40-44.6) between;
+ *  - brick to 11.7 m, then the glazed top storey under the dark overhanging roof edge (fascia and soffit 13.0-15.2 m on the crop).
+ */
+function drawRoetersstraatFront(c: PanelCtx, s: Slots, stats: RoeterseilandStats) {
+  const U = (x: number) => (x - 20) * 0.0345;
+  const lower: [number, number][] = [[30, 147], [172, 262], [290, 378], [400, 490], [515, 605]];
+  const upper: [number, number][] = [...lower, [858, 948], [972, 1062], [1086, 1176]];
+  for (const [a, b] of upper) {
+    for (const [v0, v1] of [[3.4, 6.05], [6.87, 9.52]]) sheetIn(c, s, stats, U(a), U(b), v0, v1, 0.06, 2, 0.62);
+  }
+  // ground storey: shop windows in the same bays (north), glazed door, entrance, then the three south bays
+  for (const [a, b] of [...lower, [880, 948], [972, 1062], [1086, 1176]] as [number, number][]) sheetIn(c, s, stats, U(a), U(b), 0.05, 2.65, 0.06, 1, 0.78);
+  sheetIn(c, s, stats, U(630), U(720), 0.05, 2.65, 0.06, 1, 0.8);
+  sheetIn(c, {frame: s.frame, glass: 'door'}, stats, U(752), U(830), 0.05, 2.7, 0.08, 1, 0.82);
+  // shop canopy ledge over the north shops (a thin pale band on the crop, y 828-835)
+  if (fitsPanel(c.p, rectPoly(U(155), U(720), 2.8, 2.98), 0.02)) closedBox(c, 'stone', U(155), U(720), 2.8, 2.98, 0, 0.25);
+  // glass-block stair window over the entrance: pale blocks on a 1.1 m grid of steel bars
+  const g0 = U(630), g1 = U(820), b0 = 3.4, b1 = 9.52;
+  if (fitsPanel(c.p, rectPoly(g0 - 0.05, g1 + 0.05, b0 - 0.05, b1 + 0.05), 0.02)) {
+    c.quad(s.frame, g0, b0, g1, b1, 0.02, c.part());
+    c.quad(GLASS_BLOCK, g0 + 0.07, b0 + 0.07, g1 - 0.07, b1 - 0.07, 0.035, c.part());
+    const bars = c.part(), nu = Math.round((g1 - g0) / 1.1), nv = Math.round((b1 - b0) / 1.1);
+    for (let k = 1; k < nu; k++) { const u = g0 + (g1 - g0) * k / nu; c.quad(s.frame, u - 0.03, b0 + 0.07, u + 0.03, b1 - 0.07, 0.05, bars); }
+    for (let k = 1; k < nv; k++) { const v = b0 + (b1 - b0) * k / nv; c.quad(s.frame, g0 + 0.07, v - 0.03, g1 - 0.07, v + 0.03, 0.05, bars); }
+    stats.west++;
+  }
+  // south part: one ribbon per storey
+  const r0 = U(1313), r1 = Math.min(U(1870), c.p.uMax - 0.3);
+  ribbon(c, s, stats, r0, r1, 0.05, 2.25, 1.6, 0.8);
+  ribbon(c, s, stats, r0, r1, 4.1, 5.65, 1.6);
+  ribbon(c, s, stats, r0, r1, 7.5, 9.05, 1.6);
+  topStorey(c, s, stats, 11.7);
+}
+
+/** A closed box on the wall (six faces; the kit's wall boxes leave the back open, which the audit reads as a hole the size of the box). */
+function closedBox(c: PanelCtx, slot: string, u0: number, u1: number, v0: number, v1: number, d0: number, d1: number) {
+  solid(c, slot, (i, j, k) => c.P(i ? u1 : u0, j ? v1 : v0, k ? d1 : d0), c.part());
+}
+
+/**
+ * The glazed top storey (brick top to 13.3 m) and the dark overhanging roof edge over it, its top 5 cm over the 3DBAG roof at 15.2 m: on the
+ * crop the glazing shows from 11.7 to 13.0 m and the dark fascia and soffit from 13.0 to 15.0 m, overhanging both ends of the block.
+ */
+function topStorey(c: PanelCtx, s: Slots, stats: RoeterseilandStats, from: number) {
+  const u0 = c.p.uMin + 0.3, u1 = c.p.uMax - 0.3;
+  ribbon(c, s, stats, u0, u1, from, 13.3, 1.5);
+  if (fitsPanel(c.p, rectPoly(c.p.uMin + 0.05, c.p.uMax - 0.05, 13.3, 15.1), 0.02)) closedBox(c, EAVE, c.p.uMin + 0.05, c.p.uMax - 0.05, 13.3, 15.25, 0, 1.1);
+}
+
+/**
+ * The beige block's canal front (panel 284, w10-167: panorama TMX7316010203-001975_pano_0000_000892, 2021-01-22), on the rectified crop at
+ * 45 px/m from its west corner, v from the 15.2 m roof down (the quay steps hide the foot): two long ribbon windows (v 3.7-5.2 and 8.4-10.0,
+ * u 0.55-20.4) on pale sills and heads, and three small square windows in the top storey (v 12.1-13.3); the rest plain brick.
+ */
+function drawCanalFront(c: PanelCtx, s: Slots, stats: RoeterseilandStats) {
+  const U = (x: number) => x / 45.1;
+  for (const [v0, v1] of [[3.7, 5.2], [8.4, 10.0]]) {
+    const a = U(25), b = U(920);
+    ribbon(c, s, stats, a, b, v0, v1, 1.55, 0.5);
+    if (fitsPanel(c.p, rectPoly(a - 0.1, b + 0.1, v0 - 0.14, v1 + 0.14), 0.02)) {
+      closedBox(c, 'stone', a - 0.1, b + 0.1, v0 - 0.14, v0 - 0.02, 0, 0.1);
+      closedBox(c, 'stone', a - 0.1, b + 0.1, v1 + 0.02, v1 + 0.14, 0, 0.1);
+    }
+  }
+  for (const x of [135, 418, 705]) sheetIn(c, s, stats, U(x), U(x + 53), 12.1, 13.3, 0.06);
+}
+
+/** Hand-drawn fronts of the beige Roetersstraat block by panel index (the passage-opened 3DBAG shell), with the bearing they face. */
+const WEST_FRONTS: Record<number, {bearing: number; draw: (c: PanelCtx, s: Slots, st: RoeterseilandStats) => void}> = {
+  407: {bearing: 280, draw: drawRoetersstraatFront},
+  284: {bearing: 167, draw: drawCanalFront},
+};
 const partOfGroup = (index: number | undefined): PartId | undefined => (index === undefined ? undefined : BUILT.groupParts[index]);
 const win = (frame: string, glass: string, extra: Partial<WinParams> = {}): WinParams => ({frame, glass, frameW: 0.04, mull: 0, ...extra});
 
@@ -58,7 +159,11 @@ export function roeterseilandHooks(stats: RoeterseilandStats): LargeCompileHooks
   return {
     budget: 40000,
     barOffsetM: BAR,
-    afterCompose: mesh => addPassage(mesh, PASSAGE),
+    afterCompose: (mesh, recipe) => {
+      addPassage(mesh, PASSAGE);
+      // compile-time swatches for the Roetersstraat block's own slots (the landmark colours come from BASE: canopyGlass, slate)
+      Object.assign(recipe.spec.palette, {[GLASS_BLOCK]: '#a9b3ad', [EAVE]: '#3a3d40'});
+    },
     panelHook: (c: PanelCtx, info, g) => {
       const part = partOfGroup(g?.index);
       if (!g || !part) return;
@@ -81,6 +186,10 @@ export function roeterseilandHooks(stats: RoeterseilandStats): LargeCompileHooks
       }
       const style = STYLES[part];
       const cityRoom = part === 'bridge' || part === 'se-tall-block';
+      if (part === 'west-beige' && WEST_FRONTS[c.p.index] && Math.abs(bearingOfNormal(c.p.n) - WEST_FRONTS[c.p.index].bearing) < 4) {
+        WEST_FRONTS[c.p.index].draw(c, g.slots, stats);
+        return;
+      }
       if (style?.flush && W >= MIN_FLUSH_PANEL_M) {
         const fl = style.flush;
         for (const cell of info.cells) {
@@ -111,7 +220,7 @@ export function roeterseilandHooks(stats: RoeterseilandStats): LargeCompileHooks
 
 export function compileRoeterseiland() {
   const intent = validateLargeIntent(BUILT.intent);
-  const stats: RoeterseilandStats = {openings: 0, failed: 0, tower: 0, cityRoom: 0, clerestory: 0};
+  const stats: RoeterseilandStats = {openings: 0, failed: 0, tower: 0, cityRoom: 0, clerestory: 0, west: 0};
   const built = compileLargeBuilding(intent, FACTS, roeterseilandHooks(stats));
   return {built, stats};
 }
@@ -120,6 +229,7 @@ export function compileRoeterseiland() {
 function colourName(meshName: string, materialSlot: string): string {
   const slot = meshName.split('/')[1] ?? meshName, [base, grp] = slot.split('@'), gi = grp ? Number(grp.slice(1)) : undefined;
   if (meshName.startsWith('roof/')) return 'sandstone';
+  if (OWN_SLOTS[slot]) return OWN_SLOTS[slot];
   const names = PART_NAMES[partOfGroup(gi) as PartId];
   if (names && (base === 'wall' || base === 'arch')) return names.wall;
   if (names && (base === 'frame' || base === 'curtain' || base === 'sign' || base === 'rail')) return names.frame;

@@ -55017,7 +55017,7 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -43.4922981262207,
+          -44.54397964477539,
           -1.9073486612342094e-7,
           -78.16899871826172
         ],
@@ -55040,23 +55040,17 @@
       "extent": {
         "widthMetres": 210.25589752197266,
         "heightMetres": 59.23199863433838,
-        "depthMetres": 143.17629623413086,
-        "depthCoverage": 1.100509579047893
+        "depthMetres": 144.22797775268555,
+        "depthCoverage": 1.1085932186985823
       },
-      "triangles": 28314,
-      "bytes": 353992,
+      "triangles": 28220,
+      "bytes": 352244,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "0d7b1c43143a48cd",
         "buildVersion": 2,
         "bytes": 102052,
         "triangles": 6491
-      },
-      "lod2": {
-        "sourceHash": "0d7b1c43143a48cd",
-        "buildVersion": 6,
-        "bytes": 29500,
-        "triangles": 1500
       }
     },
     "johnny-jordaan-groep": {
