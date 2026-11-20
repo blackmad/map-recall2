@@ -53,6 +53,11 @@ export type ExtraContext = {
   /** Design units (`?designUnits=1`): a segment member's street wall; it takes the row budget so a wide plot dresses every
    *  window as its narrow neighbours do (one design per segment). */
   designMember?: true;
+  /** Design units round 2 (#399): the plot's own series. Window heads, door dressing and balconies roll on it (each house
+   *  its own pick from the family's components); everything else rolls on `seriesId`, the family's. */
+  plotSeriesId?: string;
+  /** Design units round 2: a party-wall break (pier, cornice end block) at this wall's start / end (designUnits/plotBreak.ts). */
+  plotBreak?: { start: boolean; end: boolean };
   /** House rows: the series' stated dressing on this wall (threeBuildingMesh rowDressOnEdge). `windows`: the record's
    *  boxes in this edge's metres with their storey and head; `heads`: spans (edge metres) over the grid's windows. */
   rowDress?: RowDressContext;

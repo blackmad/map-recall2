@@ -65,6 +65,38 @@ function readsOf(members: string[]) {
   return { n: rs.length, ...(bool('whiteFrames') !== undefined ? { whiteFrames: bool('whiteFrames') } : {}), ...(bool('pale') !== undefined ? { pale: bool('pale') } : {}),
     ...(arch !== undefined ? { arch } : {}), ...(finish ? { finish } : {}), ...(Object.keys(bays).length ? { bays } : {}) };
 }
+// Round 2 (#399): plots are separate houses unless photo evidence says one facade. Evidence: a block-face intent's
+// `identical` group or a house's `sameAs`, or a same-building run read "one" (confidence >= 0.6). Cornice groups do not
+// count (a shared cornice line is the family, not one facade).
+const oneFacade: string[][] = [];
+const norm = (s: string) => String(s).replace(/^NL\.IMBAG\.Pand\./, '');
+const FACES = path.join(ROOT, 'scripts/block-face/faces');
+if (fs.existsSync(FACES)) for (const face of fs.readdirSync(FACES)) {
+  const f = path.join(FACES, face, 'intent.json');
+  if (!fs.existsSync(f)) continue;
+  const d = JSON.parse(fs.readFileSync(f, 'utf8'));
+  for (const g of d.continuity?.identical ?? []) if (Array.isArray(g.pands)) oneFacade.push(g.pands.map(norm));
+  for (const h of d.houses ?? []) if (h.sameAs && h.pandId) oneFacade.push([norm(h.pandId), norm(h.sameAs)]);
+}
+const SAME = path.join(STAGING, 'same-building');
+if (fs.existsSync(SAME)) for (const f of fs.readdirSync(SAME).filter(n => n.endsWith('.json'))) {
+  for (const r of (JSON.parse(fs.readFileSync(path.join(SAME, f), 'utf8')).runs ?? []) as Array<{ pids: string[]; answer: string; confidence?: number }>) {
+    if (r.answer === 'one' && (r.confidence ?? 0) >= 0.6) oneFacade.push(r.pids.map(norm));
+  }
+}
+/** The segment's one-facade groups: union of the evidence over its members (groups of 2 or more). */
+function plotGroupsOf(members: string[]): string[][] {
+  const mine = new Set(members), parent = new Map<string, string>();
+  const find = (a: string): string => { while (parent.has(a) && parent.get(a) !== a) a = parent.get(a)!; return a; };
+  for (const g of oneFacade) {
+    const ids = g.filter(p => mine.has(p));
+    for (let i = 1; i < ids.length; i++) { const a = find(ids[0]), b = find(ids[i]); if (a !== b) parent.set(a, b); }
+  }
+  const groups = new Map<string, string[]>();
+  for (const m of members) { const r = find(m); groups.set(r, [...(groups.get(r) ?? []), m]); }
+  return [...groups.values()].filter(g => g.length > 1);
+}
+
 const segments: Segment[] = [];
 let splitUnits = 0;
 const med = (xs: number[]) => { const v = [...xs].sort((a, b) => a - b); return v.length ? v[Math.floor((v.length - 1) / 2)] : null; };
@@ -78,6 +110,10 @@ for (const u of units) {
     // The roof mass behind the front (AHN, m over the line): the median member's roof p90 minus its front p90. Null unread.
     const rises = g.members.map(m => ahn[m]?.riseM).filter((v): v is number => typeof v === 'number').sort((a, b) => a - b);
     g.roofRiseM = rises.length ? +rises[Math.floor((rises.length - 1) / 2)].toFixed(2) : null;
+    const eaves = Object.fromEntries(g.members.filter(m => typeof ahn[m]?.p90 === 'number').map(m => [m, +ahn[m]!.p90.toFixed(2)]));
+    if (Object.keys(eaves).length) g.plotEavesM = eaves;
+    const groups = plotGroupsOf(g.members);
+    if (groups.length) g.plotGroups = groups;
     const r = readsOf(g.members);
     if (r) (g as Segment & { reads?: unknown }).reads = r;
   }
@@ -92,6 +128,8 @@ const stat = {
   unitsSplit: splitUnits, singlesFromSplits: segments.filter(s => s.members.length === 1).length,
   exceptions: multi.reduce((t, s) => t + s.exceptions.length, 0),
   roofMeasured: multi.filter(s => typeof s.roofRiseM === 'number').length, roofStoreys: multi.filter(s => (s.roofRiseM ?? 0) >= 1.8).length,
+  oneFacadeEvidence: oneFacade.length, segmentsWithOneFacadeGroups: multi.filter(s => s.plotGroups?.length).length,
+  pandsInOneFacadeGroups: multi.reduce((t, s) => t + (s.plotGroups ?? []).reduce((u, g) => u + g.length, 0), 0),
   withReads: multi.filter(s => (s as Segment & { reads?: unknown }).reads).length, readsFrom: answers.size,
   eavesSource: { ahn: multi.filter(s => s.eavesSource === 'ahn').length, '3dbag': multi.filter(s => s.eavesSource === '3dbag').length, none: multi.filter(s => s.eavesSource === 'none').length },
   // How far 3DBAG per-pand eaves sit from the segment line today (what the flag removes).

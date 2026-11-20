@@ -64,6 +64,12 @@ export interface Segment {
   at?: [number, number];
   /** AHN roof mass behind the front over the eaves line (m, median member); null unread. Set by build-segments. */
   roofRiseM?: number | null;
+  /** Round 2 (#399, 2026-11-20): each member's own AHN front p90 (m). The renderer draws the plot's cornice there, clamped
+   *  to PLOT_EAVES_M of the segment line. Set by build-segments. */
+  plotEavesM?: Record<string, number>;
+  /** Members photo evidence says are one facade (a face intent `identical`/`sameAs`, a same-building "one" read): each
+   *  group draws one continuous front, with no party-wall break inside it. Every other member is its own house. */
+  plotGroups?: string[][];
 }
 
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; };

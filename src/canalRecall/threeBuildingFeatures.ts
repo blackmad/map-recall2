@@ -15,6 +15,7 @@ import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
 import { designUnitOf } from './designUnits/drawProps.js';
+import { plotTone } from './designUnits/plotTone.js';
 import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
@@ -280,7 +281,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     // Design units: every unpainted member draws its segment's mid-range brick from the measured pool (one per segment,
     // never the darkest tones; measuredWallPool.ts segmentPoolDraw), whatever its own profile or period wall said.
-    const segWall = design?.at && !specLookOf(p)?.painted ? segmentPoolDraw(design.at[0], design.at[1], bay.archetype, design.seed) : null;
+    const familyWall = design?.at && !specLookOf(p)?.painted ? segmentPoolDraw(design.at[0], design.at[1], bay.archetype, design.seed) : null;
+    // Round 2 (#399): each plot its own tone inside the family brick (designUnits/plotTone.ts).
+    const segWall = familyWall && design?.plotSeed ? plotTone(familyWall, design.plotSeed) : familyWall;
     if (segWall) profileWall = segWall;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: segWall ?? bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     // Lane retail-look round 3c (`?retailGround=1`): bay.groundHex here is the shop grammar's guess (no recipe is passed),
@@ -449,7 +452,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Facade extras for every faced building; the plain and Untextured looks stay light.
   // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
   building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
-  if (design) { building.seed = design.seed; building.designSlice = { fromM: design.fromM, toM: design.toM, moduleM: design.moduleM }; if (design.bays) building.designBays = design.bays; if (design.bayPitchM) building.designPitchM = design.bayPitchM; }
+  if (design) { building.seed = design.seed; if (design.plotSeed) building.plotSeed = design.plotSeed; if (design.plotBreak) building.plotBreak = design.plotBreak; building.designSlice = { fromM: design.fromM, toM: design.toM, moduleM: design.moduleM }; if (design.bays) building.designBays = design.bays; if (design.bayPitchM) building.designPitchM = design.bayPitchM; }
   if (Array.isArray(p.registerForce) && p.registerForce.length && building.extras) building.registerForce = p.registerForce as string[];
   // A spec-stated stoop (houseSpec/decorate.ts specStoop, K-stoep #360): the extras draw it typed, first, on the door
   // wall nearest the street (threeBuildingMesh.ts stoopFor).

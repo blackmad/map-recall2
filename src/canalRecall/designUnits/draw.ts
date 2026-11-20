@@ -25,9 +25,9 @@
 import { citywideBuildingRoofPrior, citywideBuildingWallPrior } from '../look/palette.js';
 import { rowFrontFor, rowFrontOn } from '../houseLine/rowFront.js';
 import { segmentLookup, SEGMENTS_SCHEMA, type Segment, type SegmentsExtract, type SegmentSlice } from './segments.js';
-import { designUnitOf, eraWindows, ERA_YEARS, type DesignUnitDraw } from './drawProps.js';
+import { designUnitOf, eraWindows, ERA_YEARS, PLOT_EAVES_M, type DesignUnitDraw } from './drawProps.js';
 
-export { designUnitOf, seedIdOf, segmentBayM, sliceBays, eraWindows, ERA_YEARS, type DesignUnitDraw } from './drawProps.js';
+export { designUnitOf, seedIdOf, segmentBayM, sliceBays, eraWindows, ERA_YEARS, PLOT_EAVES_M, PLOT_TONE_DL, type DesignUnitDraw } from './drawProps.js';
 
 /** The flag, read at call time (never at module load: the structure gate evaluates bundles in Node). */
 export function designUnitsOn(): boolean {
@@ -98,7 +98,14 @@ export function memberDraw(segment: DrawSegment, pandId: string, exception: bool
   const bays = typeof read === 'number' && read > 0 ? read : era ? (sliceM <= moduleM * 1.5 ? eraWindows(sliceM) : Math.max(1, Math.round(sliceM / segPitch))) : undefined;
   const pitch = bays && sliceM <= moduleM * 1.5 ? sliceM / bays : segPitch;
   const bayPitchM = era && pitch > 0 ? +pitch.toFixed(3) : undefined;
-  return { seed: segment.seed, segment: segment.id, eavesM: segment.eavesM, street: main.street, fromM: main.fromM, toM: main.toM, moduleM,
+  // Round 2 (#399): each plot is its own house in the family. Its one-facade group (photo evidence) is its plot; the
+  // breaks fall where the street neighbour is another plot, and at the segment's two ends.
+  const groupOf = (id: string) => segment.plotGroups?.find(g => g.includes(id))?.slice().sort()[0] ?? id;
+  const plot = groupOf(pandId), at = onStreet.indexOf(main);
+  const plotBreak = { left: at <= 0 || groupOf(onStreet[at - 1].pandId) !== plot, right: at < 0 || at >= onStreet.length - 1 || groupOf(onStreet[at + 1].pandId) !== plot };
+  const own = segment.plotEavesM?.[pandId], line = segment.eavesM;
+  const plotEavesM = line === null ? undefined : +(typeof own === 'number' ? Math.min(line + PLOT_EAVES_M, Math.max(line - PLOT_EAVES_M, own)) : line).toFixed(2);
+  return { seed: segment.seed, plotSeed: `${segment.seed}:plot:${plot}`, plotBreak, ...(plotEavesM !== undefined ? { plotEavesM } : {}), segment: segment.id, eavesM: segment.eavesM, street: main.street, fromM: main.fromM, toM: main.toM, moduleM,
     k: onStreet.findIndex(s => s === main), n: onStreet.length, ...(isLngLat(segment.at) ? { at: [segment.at[0], segment.at[1]] as const } : {}), ...(exception ? { exception: true as const } : {}),
     ...(bays ? { bays } : {}), ...(bayPitchM ? { bayPitchM } : {}), ...(look ? { look } : {}), ...(typeof segment.roofRiseM === 'number' ? { roofRiseM: segment.roofRiseM } : {}) };
 }
@@ -116,7 +123,7 @@ export function withDesignUnits<T extends Feature>(feature: T): T {
   const draw = memberDraw(s, key(p.id), !!hit.exception);
   if (!draw) return feature;
   const out: Record<string, unknown> = { ...p, designUnit: draw };
-  if (line !== null && line > 2) out.height = line;
+  if (line !== null && line > 2) out.height = draw.plotEavesM ?? line;
   if (typeof s.year === 'number' && Number.isFinite(s.year) && s.year !== p.constructionYear) {
     out.constructionYear = s.year;
     if (p.constructionYear !== undefined) out.bagConstructionYear = p.constructionYear;
@@ -154,7 +161,7 @@ export function withDesignUnitRoof<T extends Feature>(feature: T): T {
   const p = feature.properties, d = designUnitOf(p);
   if (!d || d.eavesM === null || !(d.eavesM > 4) || !designUnitsOn()) return feature;
   if (!p.facade || p.rowFront || p.roofPlanned || typeof p.monumentGable === 'string' || p.kitRoof) return feature;
-  const roof = segmentRoof(d.seed, String(p.facadeStyle ?? ''), d.roofRiseM), top = d.eavesM;
+  const roof = segmentRoof(d.seed, String(p.facadeStyle ?? ''), d.roofRiseM), top = d.plotEavesM ?? d.eavesM;
   const { roofDormer: _dice, roofShapeTag: _tag, ...rest } = p;
   // A flat top behind the cornice: the flat lid (no roof box; threeBuildingFeatures applyFlatRoof). The measured eaves keep
   // decorateRoof off it.

@@ -15,20 +15,22 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
-## Design units (P0): option A approved on #397 — Ring gate #399 waiting on David
+## Design units (P0): option A approved on #397 — Ring round 2 sheets waiting on David (review page)
 
 David chose **A** on #397 (2026-11-19): units are the identity everywhere, elevations draw in segments, and Centrum plots stay separate unless something joins them. The Ring layer comes first. The staged belt, Centrum and De Pijp looks stay held, and #392 and #393 stay paused.
 
 - **Ring (tier C): on main behind `?designUnits=1`, default off.**
   - 3,235 segments; AHN-measured eaves and roofs; one design per segment; era windows with light frames; mid-range local brick.
-  - Gate: **#399**, 18 blocks on desktop and phone with Node sheets for the two rows. It asks David block by block: better, the same or worse than today.
-  - His verdict decides whether the flag goes on by default. Do nothing more on the Ring until he answers.
+  - Gate **#399**: David, 2026-11-20: "neutral-to-worse - you're over aggressively collapsing buildings". An ordekaart project of 2–6 plots is still separate houses; round 1 drew one slab per project.
+  - **Round 2 (on the branch, flag only, flag-off hashes unchanged):** the unit is a family and each plot is its own house. Shared: AHN eaves line (each plot's own AHN front within 0.3 m), brick family, window type and frames, roof. Per plot: a party-wall pier, the plot's own cornice ending on an end block, its own door place, a wall tone within ±0.03 L, its own window heads, door dressing and an occasional balcony row. Plots merge only on photo evidence (face-intent `identical`/`sameAs`, same-building "one"): 3 segments citywide, none in the gate blocks.
+  - Round 2 sheets: 18 gate blocks plus Marnixplein and Goudsbloemstraat, Node only (`scripts/design-units/review-sheets.ts`), stacked photo, today, round 1 and round 2. They go to David on the planning session's review page, not as an issue. Nassaukade 14713 reads as one palace-like front in the photo, but round 2 splits it into four houses because there is no evidence to merge them.
+  - David's verdict on round 2 decides whether the flag goes on by default. Do nothing more on the Ring until he answers.
 - **What the Ring tier does not draw:** bands, arched portals, stoops, French balconies, wall dormers. Wall colour is seeded where there is no photo read. These are the next kit work once #399 is answered.
 - **Under A, data only so far (staged in `artifacts/design-units/staging/`; `docs/reports/design-units-phase0-20261119.md`):**
   - **Gordel:** with `GORDEL_RULE`, 27% of the units holding liked rows still disagree with them. Next step: let published records split segments.
   - **Centrum joins:** 425 segments; Marnixplein and Goudsbloemstraat each come out as one segment. 18 of the 60 photo-read "separate" runs get joined; tighten the AHN-plus-year join before anything draws.
   - **T8 ledger, Ring fronts with the flag on:** A 3%, B 2%, C 85%, D 10%.
-- **Gordel and Centrum renderer work waits for David's verdict on #399.**
+- **Gordel and Centrum renderer work waits for David's verdict on the Ring (round 2).**
 - Owner: the design-units integrator. Worktree `integrator-design-units-20261119`, port 4720. Hand-off: `docs/handoffs/design-units-inflight-20261119.md`.
 
 ## Paused lanes, 2026-11-16 evening — resumed 2026-11-19 (P0): `docs/handoffs/inflight-20261116.md`

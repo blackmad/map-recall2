@@ -2,6 +2,23 @@
 
 **Ring gate for David: https://github.com/blackmad/map-recall2/issues/399** (18 blocks, desktop and phone, with the Node sheets; filed 2026-11-19 night). His block-by-block verdict decides whether tier C goes on by default for the Ring.
 
+## Round 2 (2026-11-20): plots are houses; sheets waiting on David's review page
+
+- **Verdict on #399** (comment 7033361626), from David: "neutral-to-worse - you're over aggressively collapsing buildings". The flag stays off.
+- **The fix is on the branch, behind the flag; flag-off hashes are unchanged and 31 of 31 design-unit tests pass.**
+  - The unit is now a family:
+    - `designUnits/plotBreak.ts` draws each plot's pier, cornice and end block.
+    - `designUnits/plotTone.ts` sets each plot's wall tone, within ±0.03 L of the family brick.
+    - `memberDraw` gives each plot a `plotSeed`, a `plotEavesM` (its AHN front, clamped to 0.3 m of the line) and a `plotBreak`.
+    - In `facadeExtras`, `PLOT_VARIED_COMPONENTS` are the heads, door dressing and balcony row, which roll per plot; `plotCrown` draws the crown.
+    - In the mesher, `runSeed` places each plot's door.
+  - `build-segments` now writes `plotEavesM` and `plotGroups`, the one-facade evidence from face intents (`identical`/`sameAs`) and same-building "one" reads. Only 3 segments have such groups; none are in the gate blocks.
+  - The oriel (`bay-window`) was tried and dropped: front-on it drew as a blank pale panel.
+- **Sheets:** `artifacts/design-units/r2/sheets/node-<key>.jpg`, 20 of them (the 18 gate blocks plus Marnixplein and Goudsbloemstraat). Each stacks photo cuts, today, round 1 and round 2, all Node renders (`scripts/design-units/review-sheets.ts render <cond>` / `sheets`).
+  - The two Centrum rows are byte-identical in all three conditions, because they are not in the Ring extract.
+  - The planning session loads the sheets into the review page https://claude.ai/artifact/6v5cxnHZAMQ5fvKV4dqdWM. No needs-david issue this round; GitHub issues are retired for verdicts.
+- **Next:** wait for David's verdict on the page. No browser runs or lanes before it.
+
 This is for a fresh session that has only the repo. Read it first. Then read `docs/handoffs/design-units-plan-20261119.md`, `docs/handoffs/design-units-handoff-20261119.md` and `docs/reports/design-units-phase0-20261119.md`.
 
 ## Ownership (from 2026-11-19 ~18:55)

@@ -15,7 +15,8 @@ import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, ty
 import { continuousShopCanopy } from './shopCanopies.js';
 import { specStoopExtra } from './stoopExtra.js';
 import { fitProjectionFor } from './projectionWindowFit.js';
-import { ORNAMENT_COMPONENTS, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
+import { plotBreakBoxes } from './designUnits/plotBreak.js';
+import { ORNAMENT_COMPONENTS, CREAM, WHITE as ORN_WHITE, shadeHex, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
 
 export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
 export type { V3, FlatTri, WallFrame, ExtraContext, RoofContext, WallComponent, RoofComponent, Chance } from './facadeExtraCore.js';
@@ -377,7 +378,18 @@ export function registerFirst<T extends { id: string }>(components: readonly T[]
  */
 export const DESIGN_MEMBER_COMPONENTS: ReadonlySet<string> = new Set(['kroonlijst', 'console-cornice', 'corbel-roofline', 'white-fascia', 'cornice-brackets', 'gutter',
   'door-surround', 'brick-door-arch', 'door-pediment', 'window-sills', 'white-lintels', 'stucco-hoods', 'white-window-frames', 'eared-surrounds', 'floor-cornices',
-  'string-courses', 'stone-plinth-band', 'rusticated-plinth', 'plinth', 'stoop', 'double-stoop']);
+  'string-courses', 'stone-plinth-band', 'rusticated-plinth', 'plinth', 'stoop', 'double-stoop', 'juliet-balcony']);
+/**
+ * Design units round 2 (#399): the parts each plot picks for itself (on its `plotSeriesId`): its window heads, its door
+ * dressing, and an occasional balcony row (an oriel drew as a blank pale panel front-on). The rest (sills, frames, bands, plinth) stay the family's.
+ */
+export const PLOT_VARIED_COMPONENTS: ReadonlySet<string> = new Set(['white-lintels', 'stucco-hoods', 'eared-surrounds', 'door-surround', 'brick-door-arch', 'door-pediment', 'juliet-balcony']);
+
+/** Round 2: the plot's crown cornice, party-wall piers and cornice end blocks (designUnits/plotBreak.ts). */
+function plotCrown(c: ExtraContext, sink: ExtraSink): void {
+  const tones = { pier: shadeHex(c.wallHex, 0.86), cornice: CREAM, lid: ORN_WHITE, end: CREAM };
+  for (const b of plotBreakBoxes(c.f.len, c.base, c.top, !!c.plotBreak?.start, !!c.plotBreak?.end)) sink.box(c.f, b.a0, b.a1, b.o0, b.o1, b.z0, b.z1, tones[b.tone], !!b.bottom);
+}
 
 function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase: 'all' | 'defining' | 'stated' | 'optional'): void {
   const { used, groups } = state, beforeWall = sink.tris.length;
@@ -389,6 +401,11 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     const before=sink.tris.length;
     continuousShopCanopy(c,sink);
     if(sink.tris.length>before){used.push('continuous-shop-canopy');groups.add('door-frame');}
+  }
+  if ((phase === 'optional' || phase === 'all') && street && c.plotBreak && c.roofKind !== 'gable') {
+    const before = sink.tris.length;
+    plotCrown(c, sink);
+    if (sink.tris.length > before) { used.push('plot-crown'); groups.add('crown'); }
   }
   if(c.groundFrontageActive){
     // The wall layer owns the cut portal, panes and frames; stock door dressing would float over it.
@@ -432,7 +449,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     const asStyle = as ?? stated;
     if (!asStyle || (comp.street && !street) || (comp.group && groups.has(comp.group))) continue;
     // House rows: a series member rolls once per component on its series (one design per series, every wall alike).
-    const seed = c.seriesId ?? c.id;
+    const seed = c.plotSeriesId && PLOT_VARIED_COMPONENTS.has(comp.id) ? c.plotSeriesId : c.seriesId ?? c.id;
     const roll = comp.wide || WIDE.has(comp.id) || c.seriesId ? hash01(`${seed}:${comp.id}`) : hash01(`${seed}:${c.wallKey}:${comp.id}`);
     const localChance = RECIPE_TRIM_KEYS[comp.id] && c.recipe?.trim?.[RECIPE_TRIM_KEYS[comp.id]];
     let chance = (assembly && comp.id === 'glass-balconies' || historicAssembly && comp.id === 'historic-balcony-stack') ? 1 : typeof localChance === 'number' ? localChance : chanceFor(comp.p, asStyle);
