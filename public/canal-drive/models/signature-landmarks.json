@@ -115124,6 +115124,186 @@
       "triangles": 12293,
       "bytes": 162380,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "school-marnixstraat-2": {
+      "id": "school-marnixstraat-2",
+      "name": "School, Marnixstraat 2",
+      "modelUrl": "./models/school-marnixstraat-2.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012168723"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88197589,
+          52.38367386
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 27.2,
+        "widthMetres": 34.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.88197589,
+          52.38367386
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012168723 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/school-marnixstraat-2-footprints.json, bag-shell-prepare.ts), the pavilion faces clamped to the eaves line under symmetric gables (shell-gable-fit.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-000703_pano_0000_002894 (2018), TMX7316010203-001068_pano_0004_000016 (2019), b_20241216_0911_Track55_Sphere_00019 (2024), b_20241216_0911_Track46_Sphere_00148 (2024), TMX7316010203-000703_pano_0000_002836 and _002825 (2018), CC BY 4.0. Rijksmonument 518500 (api.data.amsterdam.nl). Per wall in scripts/landmarks/school-marnixstraat-2-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 16,
+      "galleryView": {
+        "theta": 0.8,
+        "phi": 1.1
+      },
+      "bagYear": 1883,
+      "materialOverrides": {
+        "brick": "#4f3a36",
+        "red": "#8c4030",
+        "ochre": "#8a7050",
+        "stone": "#7a736b",
+        "sandstone": "#e2dccd",
+        "slate": "#3e3f44",
+        "frame": "#e6e2d6",
+        "glass": "#33383c",
+        "dark": "#2b3a30"
+      },
+      "attribution": {
+        "title": "School, Marnixstraat 2, Amsterdam (1883)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000703_pano_0000_002894/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012168723 (CC0): the banded dark brick school fronts with red courses, segment-headed ground-floor windows, round-arched first-floor windows with patterned tympana, the console frieze and white cornice, and the pointed pavilion topgevels with oculi, copings, pinnacles and finials, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8823043,
+              52.3837563
+            ],
+            [
+              4.8821747,
+              52.3837869
+            ],
+            [
+              4.8821735,
+              52.3837852
+            ],
+            [
+              4.8821711,
+              52.3837814
+            ],
+            [
+              4.88209,
+              52.3836537
+            ],
+            [
+              4.8818421,
+              52.3837119
+            ],
+            [
+              4.8818357,
+              52.3837134
+            ],
+            [
+              4.8818329,
+              52.383714
+            ],
+            [
+              4.8818272,
+              52.383705
+            ],
+            [
+              4.8818244,
+              52.3837056
+            ],
+            [
+              4.8817986,
+              52.383665
+            ],
+            [
+              4.8818015,
+              52.3836643
+            ],
+            [
+              4.8817957,
+              52.3836552
+            ],
+            [
+              4.8817978,
+              52.3836547
+            ],
+            [
+              4.8817951,
+              52.3836504
+            ],
+            [
+              4.881872,
+              52.3836323
+            ],
+            [
+              4.8818636,
+              52.3836188
+            ],
+            [
+              4.8820846,
+              52.3835668
+            ],
+            [
+              4.8821879,
+              52.3835425
+            ],
+            [
+              4.8822189,
+              52.3835919
+            ],
+            [
+              4.8822023,
+              52.3835958
+            ],
+            [
+              4.8823043,
+              52.3837563
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -12.443105697631836,
+          -5.9604645663569045e-9,
+          -12.729403495788574
+        ],
+        "max": [
+          22.835657119750977,
+          16.799999237060547,
+          14.954765319824219
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88197589,
+          52.38367386
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 35.27876281738281,
+        "heightMetres": 16.799999243021013,
+        "depthMetres": 27.684168815612793,
+        "depthCoverage": 0.7955220924026666
+      },
+      "triangles": 16772,
+      "bytes": 221432,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

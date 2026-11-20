@@ -92,6 +92,13 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     canopyGlass: {slot: 'glass', why: 'the winter garden glazing, reflecting the sky (w02-176)'},
     bronze: {slot: 'paint', why: 'black-painted cast iron: balcony rails, roof rail and finials, letters, the entrance name board'},
   },
+  'school-marnixstraat-2': {
+    red: {slot: 'brick', why: 'palette name only: the red brick courses and window heads of the banded fronts (w02-112)'},
+    ochre: {slot: 'brick', why: 'palette name only: the patterned buff brick tympana and frieze (w02-112, w06-112)'},
+    sandstone: {slot: 'stucco', why: 'white-painted cornice, consoles and gable copings (w02-112)'},
+    slate: {slot: 'roofTile', why: 'dark grey tiled roofs (w03-21, w04-292)'},
+    dark: {slot: 'door', why: 'green-black school door (w06-112)'},
+  },
   'port-van-cleve': {
     brick: {slot: 'brick', measured: '#5e342b', why: 'deep red-brown brick of the hotel front in shade (nzv-0, TMX7316010203-001900_pano_0006_000054; blind review 2026-11-15 read #5a3830-#6b4236; #7e4a3e and #6e3e34 still drew orange-red in the lit game frame)'},
     sandstone: {slot: 'stone', measured: '#776b5e', why: 'weathered buff-grey sandstone bands, pediments, surrounds and pinnacles: nzv-0 reads #5a5654-#64615e overcast, a blind review #8f8170 (2026-11-15: #958a78 and #7a705f drew cream lit, the neutral #6b6560 read cool mauve-grey)'},
