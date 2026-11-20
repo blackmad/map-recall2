@@ -92348,13 +92348,15 @@
   },
   "bagYear": 1903,
   "materialOverrides": {
-   "brick": "#5a3e38",
+   "brick": "#533a36",
    "ochre": "#7a4434",
    "stone": "#b8b2a4",
-   "slate": "#6e4236",
+   "slate": "#4f5257",
    "frame": "#e2ddd0",
    "glass": "#3a4046",
-   "dark": "#2a2d2c"
+   "dark": "#2a2d2c",
+   "red": "#8a4a3a",
+   "bronze": "#2c2e2e"
   },
   "attribution": {
    "title": "Oranjekerk, Van Ostadestraat 149, Amsterdam (1903)",

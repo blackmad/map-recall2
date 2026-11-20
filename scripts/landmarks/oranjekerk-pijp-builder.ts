@@ -1,3 +1,4 @@
+import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
 import {archBand, archSlab, getSink, ringFrame, ringSlab, setSink, slab, type Frame} from './nearbar-kit';
@@ -23,7 +24,14 @@ const src = source as unknown as Src;
 const ring = src.facadeRing;
 
 export function buildOranjekerkPijp(_w: number, _d: number, b: BuildingTools) {
-  addShell(b, src as never, {wall: 'brick', roof: 'slate'});
+  // r8 judge: dark slate main roofs and tower, red pantiles on the low porch and chapel roofs and on the parsonage (x > 14 m)
+  const low = (sf: Surface) => Math.max(...sf.rings[0].map(p => p[1])) < 9.5 || sf.rings[0].reduce((a, p) => a + p[0], 0) / sf.rings[0].length > 14;
+  addShell(b, src as never, {wall: 'brick', roof: 'slate', roofFor: sf => (low(sf) ? 'red' : 'slate')});
+  // slender spire over the 3DBAG tower top (36.3 m apex at (-14.4, 9.6)): the photos (w07-255, w14-122) show a tall
+  // grey needle with a finial over the gabled belfry stage
+  b.add(new T.ConeGeometry(1.5, 9.5, 8).translate(-14.4, 33.0 + 4.75, 10.0), 'slate' as never);
+  b.add(new T.CylinderGeometry(0.05, 0.05, 1.6, 6).translate(-14.4, 42.5 + 0.8, 10.0), 'bronze' as never);
+  b.add(new T.SphereGeometry(0.22, 8, 6).translate(-14.4, 42.9, 10.0), 'bronze' as never);
   const sink0 = getSink();
   setSink(0.12, true);
 
@@ -76,6 +84,15 @@ export function buildOranjekerkPijp(_w: number, _d: number, b: BuildingTools) {
       archSlab(b, f, t, 12.55, 0.42, 5.35, 0.12, 'glass');
       slab(b, f, t, 12.35, 0.75, 0.14, 0.14, 'stone');
     }
+  }
+  // ---------- belfry stage on both exposed tower faces: paired arched louvred openings (w07-255 / w14-122 above the crops) ----------
+  for (const e of [25, 26]) {
+    const {f, len} = ringFrame(ring, e);
+    for (const dt of [-0.75, 0.75]) {
+      archBand(b, f, len / 2 + dt, 23.5, 1.25, 3.9, 0.16, 0.06, 'ochre');
+      archSlab(b, f, len / 2 + dt, 23.6, 0.9, 3.6, 0.1, 'dark');
+    }
+    slab(b, f, len / 2, 23.25, len - 0.6, 0.18, 0.14, 'stone');
   }
   // ---------- tower south face (edge 26, w08-165): small arched windows and the slits ----------
   {

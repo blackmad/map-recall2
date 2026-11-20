@@ -101,7 +101,9 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
   },
   'oranjekerk-pijp': {
     ochre: {slot: 'brick', why: 'palette name only: the redder brick of the window arches and reveals (w01-256, w07-255)'},
-    slate: {slot: 'roofTile', why: 'red-brown tiled roofs of the church, porch and tower (w06-255, w14-122)'},
+    slate: {slot: 'roofTile', why: 'dark grey slate of the main roofs, the tower top and the spire (w01-256, w14-122)'},
+    red: {slot: 'roofTile', why: 'red pantiles of the porch, the low chapel roofs and the parsonage (w06-255, w13-300)'},
+    bronze: {slot: 'paint', why: 'the iron finial on the spire'},
     dark: {slot: 'door', why: 'the dark church doors (w07-255, w06-255)'},
   },
   'port-van-cleve': {

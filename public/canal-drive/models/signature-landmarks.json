@@ -115333,13 +115333,15 @@
       },
       "bagYear": 1903,
       "materialOverrides": {
-        "brick": "#5a3e38",
+        "brick": "#533a36",
         "ochre": "#7a4434",
         "stone": "#b8b2a4",
-        "slate": "#6e4236",
+        "slate": "#4f5257",
         "frame": "#e2ddd0",
         "glass": "#3a4046",
-        "dark": "#2a2d2c"
+        "dark": "#2a2d2c",
+        "red": "#8a4a3a",
+        "bronze": "#2c2e2e"
       },
       "attribution": {
         "title": "Oranjekerk, Van Ostadestraat 149, Amsterdam (1903)",
@@ -115657,7 +115659,7 @@
         ],
         "max": [
           24.72599983215332,
-          36.27899932861328,
+          44.099998474121094,
           13.49536418914795
         ]
       },
@@ -115673,12 +115675,12 @@
       },
       "extent": {
         "widthMetres": 46.19499969482422,
-        "heightMetres": 36.278999376296994,
+        "heightMetres": 44.09999852180481,
         "depthMetres": 34.808363914489746,
         "depthCoverage": 0.7534277903569209
       },
-      "triangles": 16394,
-      "bytes": 191080,
+      "triangles": 17418,
+      "bytes": 204876,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
