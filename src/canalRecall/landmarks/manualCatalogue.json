@@ -83874,7 +83874,7 @@
   },
   "bagYear": 1888,
   "materialOverrides": {
-   "brick": "#64403a",
+   "brick": "#5d3e3b",
    "greyBrick": "#3e3638",
    "stone": "#cdc6b6",
    "frame": "#ece8de",
@@ -84502,9 +84502,7 @@
      ]
     ]
    ]
-  },
-  "status": "held",
-  "heldReason": "Blind review passed in lane landmarks-next (2026-11-15); held out of integration round p by scope (round p ships Schiller and three pools only). Un-hold in the next landmark round."
+  }
  },
  {
   "id": "de-jaren",
@@ -84634,9 +84632,7 @@
      ]
     ]
    ]
-  },
-  "status": "held",
-  "heldReason": "Blind review passed in lane landmarks-next (2026-11-15); held out of integration round p by scope (round p ships Schiller and three pools only). Un-hold in the next landmark round."
+  }
  },
  {
   "id": "handelsbank-singel-250",
@@ -84913,9 +84909,7 @@
      ]
     ]
    ]
-  },
-  "status": "held",
-  "heldReason": "Blind review passed in lane landmarks-next (2026-11-15); held out of integration round p by scope (round p ships Schiller and three pools only). Un-hold in the next landmark round."
+  }
  },
  {
   "id": "holland-casino-amsterdam",
@@ -85896,9 +85890,7 @@
      ]
     ]
    ]
-  },
-  "status": "held",
-  "heldReason": "Blind review passed in lane landmarks-next (2026-11-15); held out of integration round p by scope (round p ships Schiller and three pools only). Un-hold in the next landmark round."
+  }
  },
  {
   "id": "port-van-cleve",

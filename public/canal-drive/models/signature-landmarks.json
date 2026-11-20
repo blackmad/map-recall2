@@ -105190,7 +105190,7 @@
       },
       "bagYear": 1888,
       "materialOverrides": {
-        "brick": "#64403a",
+        "brick": "#5d3e3b",
         "greyBrick": "#3e3638",
         "stone": "#cdc6b6",
         "frame": "#ece8de",
@@ -105380,7 +105380,7 @@
         ],
         "max": [
           9.077255249023438,
-          24.149999618530273,
+          29.75,
           21.581823348999023
         ]
       },
@@ -105396,24 +105396,18 @@
       },
       "extent": {
         "widthMetres": 26.43127727508545,
-        "heightMetres": 24.1499996304512,
+        "heightMetres": 29.75000001192093,
         "depthMetres": 18.972207069396973,
         "depthCoverage": 1.0255247064538904
       },
-      "triangles": 27395,
-      "bytes": 341572,
+      "triangles": 29007,
+      "bytes": 356128,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "04f473be95f21701",
         "buildVersion": 2,
         "bytes": 89768,
         "triangles": 4264
-      },
-      "lod2": {
-        "sourceHash": "04f473be95f21701",
-        "buildVersion": 6,
-        "bytes": 16012,
-        "triangles": 546
       }
     },
     "banks-mansion": {
@@ -105544,20 +105538,14 @@
         "depthMetres": 27.437297821044922,
         "depthCoverage": 1.0237797694419746
       },
-      "triangles": 16330,
-      "bytes": 244488,
+      "triangles": 16366,
+      "bytes": 244948,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "d8cc19330265f9aa",
         "buildVersion": 2,
         "bytes": 64456,
         "triangles": 2908
-      },
-      "lod2": {
-        "sourceHash": "d8cc19330265f9aa",
-        "buildVersion": 6,
-        "bytes": 9036,
-        "triangles": 325
       }
     },
     "schiller-rembrandtplein": {
@@ -105982,8 +105970,7 @@
       },
       "triangles": 7600,
       "bytes": 110072,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "de-jaren": {
       "id": "de-jaren",
@@ -106145,8 +106132,7 @@
       },
       "triangles": 6440,
       "bytes": 97868,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "handelsbank-singel-250": {
       "id": "handelsbank-singel-250",
@@ -106455,8 +106441,7 @@
       },
       "triangles": 16756,
       "bytes": 252360,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "holland-casino-amsterdam": {
       "id": "holland-casino-amsterdam",
@@ -107469,8 +107454,7 @@
       },
       "triangles": 6346,
       "bytes": 96044,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "port-van-cleve": {
       "id": "port-van-cleve",
