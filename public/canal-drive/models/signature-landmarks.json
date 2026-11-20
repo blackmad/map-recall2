@@ -67565,10 +67565,16 @@
       "bytes": 377656,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "1310fc65cf2a62ae",
+        "sourceHash": "bed01e5fc3ba70d1",
         "buildVersion": 2,
         "bytes": 78468,
         "triangles": 4147
+      },
+      "lod2": {
+        "sourceHash": "bed01e5fc3ba70d1",
+        "buildVersion": 6,
+        "bytes": 22840,
+        "triangles": 1316
       }
     },
     "carlton-hotel": {
@@ -105398,10 +105404,16 @@
       "bytes": 360964,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e3ea98ba0cd335d1",
+        "sourceHash": "a214b6ca04899764",
         "buildVersion": 2,
-        "bytes": 93600,
-        "triangles": 4519
+        "bytes": 96076,
+        "triangles": 4584
+      },
+      "lod2": {
+        "sourceHash": "a214b6ca04899764",
+        "buildVersion": 6,
+        "bytes": 17184,
+        "triangles": 582
       }
     },
     "banks-mansion": {
@@ -106540,10 +106552,16 @@
       "bytes": 335928,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "78dca899a0ccfd15",
+        "sourceHash": "035277b8c4379f91",
         "buildVersion": 2,
-        "bytes": 60016,
-        "triangles": 2763
+        "bytes": 84244,
+        "triangles": 3736
+      },
+      "lod2": {
+        "sourceHash": "035277b8c4379f91",
+        "buildVersion": 6,
+        "bytes": 15268,
+        "triangles": 442
       }
     },
     "holland-casino-amsterdam": {
@@ -107582,10 +107600,16 @@
       "bytes": 180400,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "208f869dd6af5267",
+        "sourceHash": "1c5162cc03c5ffd9",
         "buildVersion": 2,
-        "bytes": 39408,
-        "triangles": 1437
+        "bytes": 63240,
+        "triangles": 2405
+      },
+      "lod2": {
+        "sourceHash": "1c5162cc03c5ffd9",
+        "buildVersion": 6,
+        "bytes": 25928,
+        "triangles": 1013
       }
     },
     "port-van-cleve": {
@@ -114943,7 +114967,19 @@
       },
       "triangles": 13413,
       "bytes": 194436,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "196a5b81db5a0303",
+        "buildVersion": 2,
+        "bytes": 66324,
+        "triangles": 2825
+      },
+      "lod2": {
+        "sourceHash": "196a5b81db5a0303",
+        "buildVersion": 6,
+        "bytes": 10360,
+        "triangles": 261
+      }
     },
     "de-kroon-rembrandtplein": {
       "id": "de-kroon-rembrandtplein",
@@ -115201,7 +115237,19 @@
       },
       "triangles": 12293,
       "bytes": 162380,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "8c01dcec9aaaa2f9",
+        "buildVersion": 2,
+        "bytes": 49948,
+        "triangles": 2087
+      },
+      "lod2": {
+        "sourceHash": "8c01dcec9aaaa2f9",
+        "buildVersion": 6,
+        "bytes": 9660,
+        "triangles": 243
+      }
     },
     "school-marnixstraat-2": {
       "id": "school-marnixstraat-2",
@@ -115381,7 +115429,19 @@
       },
       "triangles": 16772,
       "bytes": 221432,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "fec1afd13482856d",
+        "buildVersion": 2,
+        "bytes": 61504,
+        "triangles": 2742
+      },
+      "lod2": {
+        "sourceHash": "fec1afd13482856d",
+        "buildVersion": 6,
+        "bytes": 10368,
+        "triangles": 335
+      }
     },
     "oranjekerk-pijp": {
       "id": "oranjekerk-pijp",
