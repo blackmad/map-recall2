@@ -1,0 +1,209 @@
+{
+ "schemaVersion": 1,
+ "id": "roode-leeuw-damrak",
+ "pand": "0363100012168115",
+ "brief": "scripts/landmarks/roode-leeuw-damrak-brief.md",
+ "signature": [
+  "roof-letters",
+  "terrace",
+  "arched-second-floor",
+  "heraldic-shields",
+  "pilasters",
+  "name-board-balcony"
+ ],
+ "walls": [
+  {
+   "tag": "w01-213",
+   "bearing": 213,
+   "lengthM": 17.3,
+   "centre": [
+    4.8934315,
+    52.37371
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001658_pano_0000_002098",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "steeg-corner",
+     "kind": "window-shape",
+     "where": "Damraksteeg side at the Damrak corner: an arched second-floor window and plain windows above and below, the stone courses running round the corner; the rest of the side is hidden by the neighbouring erker",
+     "approxSizeM": [
+      1.1,
+      2.6
+     ],
+     "plan": "simplified",
+     "how": "one corner bay with an arched window and relieving arch, then plain windows every 3.2 m on four storeys (inferred from the corner; the side is not seen square-on)",
+     "seenIn": "TMX7316010203-001658_pano_0000_002098"
+    }
+   ]
+  },
+  {
+   "tag": "w02-134",
+   "bearing": 134,
+   "lengthM": 15.8,
+   "centre": [
+    4.8936525,
+    52.373705
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002031_pano_0003_000033",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "roof-letters",
+     "kind": "lettering",
+     "where": "red \"DE ROODE LEEUW\" letters standing on the roof behind the eaves",
+     "approxSizeM": [
+      9.4,
+      0.65
+     ],
+     "plan": "modelled",
+     "how": "letters() 0.11 m px on a dark post frame 3.2 m behind the front, 20.15 m",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    },
+    {
+     "id": "terrace",
+     "kind": "canopy",
+     "where": "the 1935 covered terrace across the front: glazed front between dark mullions, dark sign band \"... BRASSERIE DE ROODE LEEUW\", white clerestory with pointed windows",
+     "approxSizeM": [
+      15.8,
+      4.5
+     ],
+     "plan": "modelled",
+     "how": "box 2.85 m deep and 4.45 m high in the near-black iron colour (r7 judge: not a white box), replacing the 3DBAG terrace; 12 mullions, sign band with letters(), three pointed glass archSlab windows under each bay; the photo's white clerestory paint is not drawn",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    },
+    {
+     "id": "name-board-balcony",
+     "kind": "balcony-ironwork",
+     "where": "iron balcony rail on the terrace roof with a long red board lettered \"DE ROODE LEEUW\"",
+     "approxSizeM": [
+      15.6,
+      1.0
+     ],
+     "plan": "modelled",
+     "how": "posts every 0.32 m, top and bottom rails, red board 10.2 m with gold letters",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    },
+    {
+     "id": "arched-second-floor",
+     "kind": "window-shape",
+     "where": "five round-arched second-floor windows under brick relieving arches, each with a small bowed iron balcony",
+     "approxSizeM": [
+      1.4,
+      2.9
+     ],
+     "plan": "modelled",
+     "how": "archSlab frame/glass, ochre archBand relieving arch, dark balcony floor, bars and lattice panel",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    },
+    {
+     "id": "heraldic-shields",
+     "kind": "crest",
+     "where": "red shields with a gold lion on the six pilaster heads over the eaves",
+     "approxSizeM": [
+      0.5,
+      0.6
+     ],
+     "plan": "simplified",
+     "how": "r7: brick blocks with a stone boss on the six pilaster heads (red and gold cubes read as toy blocks at game distance); the painted heraldry is not drawn",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    },
+    {
+     "id": "pilasters",
+     "kind": "other",
+     "where": "six brick pilasters dividing the five bays from the first floor to over the eaves",
+     "approxSizeM": [
+      0.55,
+      14.4
+     ],
+     "plan": "modelled",
+     "how": "slab 0.55 m wide, 0.14 m proud, stone block on the arch band",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    },
+    {
+     "id": "first-floor-windows",
+     "kind": "window-shape",
+     "where": "tall first-floor windows with leaded coloured upper lights",
+     "approxSizeM": [
+      1.3,
+      2.75
+     ],
+     "plan": "modelled",
+     "how": "dark frame, glass, transom at 7.35 m and a darker canopyGlass upper light",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    },
+    {
+     "id": "third-floor-pairs",
+     "kind": "window-shape",
+     "where": "paired third-floor windows on a stone sill in a stone surround",
+     "approxSizeM": [
+      2.0,
+      2.1
+     ],
+     "plan": "modelled",
+     "how": "two 0.66 m windows per bay on a stone sill slab and lintel",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    },
+    {
+     "id": "fourth-floor-railings",
+     "kind": "balcony-ironwork",
+     "where": "iron railings across the wide fourth-floor windows",
+     "approxSizeM": [
+      2.5,
+      0.85
+     ],
+     "plan": "modelled",
+     "how": "top rail and eleven bars per bay",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    },
+    {
+     "id": "stone-courses",
+     "kind": "other",
+     "where": "grey stone string course under the second floor, arch-spring band and eaves cornice",
+     "approxSizeM": [
+      15.8,
+      0.45
+     ],
+     "plan": "modelled",
+     "how": "ledgeStrip courses at 8.7, 11.15 and 18.45 m",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    },
+    {
+     "id": "flags",
+     "kind": "other",
+     "where": "two flag poles from the first floor (Dutch and Amsterdam flags)",
+     "approxSizeM": [
+      0.06,
+      2.2
+     ],
+     "plan": "simplified",
+     "how": "dark poles only; flags change and are not drawn",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    },
+    {
+     "id": "hip-roof",
+     "kind": "other",
+     "where": "tiled hipped roof (schilddak) with the ridge parallel to the street",
+     "approxSizeM": [
+      16,
+      3
+     ],
+     "plan": "modelled",
+     "how": "3DBAG LoD2.2 roof planes in a red-brown tile colour",
+     "seenIn": "TMX7316010203-002031_pano_0003_000033"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -12,10 +12,18 @@
  * destinations, 5 m samples, walls visible within 60 m with a footprint sightline). Score = exposure x recognisability
  * (2 with a Wikipedia article, 1.4 with a wikidata id only (mostly register items), 1.2 with only a monument id, 1 otherwise), kept within `MAX_DAM_KM` of the Dam.
  * Writes docs/reports/landmark-targets-next-raw.json (top 60) for the hand-curated docs/reports/landmark-targets-20261115.json.
+ *
+ * Round 6 options (2026-11-20; without them the run is exactly the 2026-11-15 one):
+ *   --kit-open           a pand covered only by an ordinary/kit install (covers.json ids ordinary-*, chunk-*, recipe-*) is a
+ *                        candidate, drawn as `kit` (misrepresentation weight 0.7; generic city drawing 1.0)
+ *   --monument-types=church,school,...  also take register pands (monument-facts.json) of these types with no OSM tags
+ *   --exclude=<targets.json,...>  drop pands a curated list already ruled (targets + ruledOut `pand` fields)
+ *   --out=<file>         raw report path (default docs/reports/landmark-targets-next-raw.json)
  */
 import fs from 'node:fs';
 import {loadFootprints, sampleRoutes, scorer, METHOD} from '../building-recipes/ride-visibility.ts';
-import {lngLatToRd} from '../../src/canalRecall/facade/rdNew.ts';
+import {lngLatToRd, rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
+const rdToLngLatPair = (x: number, y: number) => rdToLngLat({x, y});
 
 const arg = (n: string, d: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const PREFIX = 'NL.IMBAG.Pand.';
@@ -55,8 +63,17 @@ const pandAt = (lat: number, lng: number) => {
 };
 
 // already modelled
-const covered = new Set<string>();
-for (const m of Object.values(j('public/canal-drive/models/covers.json').models) as any[]) for (const p of m.p ?? []) covered.add(PREFIX + String(p).replace(PREFIX, ''));
+const KIT_OPEN = process.argv.includes('--kit-open');
+const covered = new Set<string>(), kitDrawn = new Set<string>();
+for (const [cid, m] of Object.entries(j('public/canal-drive/models/covers.json').models) as [string, any][]) for (const p of m.p ?? []) {
+  const id = PREFIX + String(p).replace(PREFIX, '');
+  if (KIT_OPEN && /^(ordinary|chunk|recipe)-/.test(cid)) kitDrawn.add(id); else covered.add(id);
+}
+const excluded = new Set<string>();
+for (const f of arg('exclude', '').split(',').filter(Boolean)) {
+  const d = j(f);
+  for (const r of [...(d.targets ?? []), ...(d.ruledOut ?? [])]) for (const p of String(r.pand ?? '').split(/\s+/).filter(Boolean)) excluded.add(PREFIX + p.replace(PREFIX, ''));
+}
 const cat = j('src/canalRecall/landmarks/manualCatalogue.json') as any[];
 const suppressedOsm = new Set<string>();
 for (const m of cat) for (const s of m.suppressOsmIds ?? []) { if (String(s).startsWith(PREFIX)) covered.add(s); else suppressedOsm.add(String(s)); }
@@ -82,23 +99,30 @@ for (const e of osm.elements as any[]) {
   byPand.set(pand, {name, osm: [osmId], pand, tags: {...t}, lat, lng});
 }
 
+const MON_TYPES = new Set(arg('monument-types', '').split(',').filter(Boolean));
+if (MON_TYPES.size) for (const [pand, m] of Object.entries(monuments)) {
+  if (byPand.has(pand) || !MON_TYPES.has(m.type?.key) || !fp.pands.has(pand)) continue;
+  const b = fp.pands.get(pand)!.box, [lng, lat] = rdToLngLatPair((b[0] + b[2]) / 2, (b[1] + b[3]) / 2);
+  byPand.set(pand, {name: `${m.type?.term ?? 'monument'} (rijksmonument ${m.nr})`, osm: [], pand, tags: {}, lat, lng});
+}
 const routes = sampleRoutes(Number(arg('routes', '1500')), Number(arg('seed', '7')));
 const score = scorer(routes.samples, fp);
 const km = (a: {lat: number; lng: number}) => { const dx = (a.lng - DAM.lng) * 68, dy = (a.lat - DAM.lat) * 111.2; return Math.hypot(dx, dy); };
 const rows = [];
 for (const c of byPand.values()) {
-  const modelled = covered.has(c.pand) ? 'covers' : sigPand.get(c.pand) ? `signature:${sigPand.get(c.pand)}` : c.osm.some(o => suppressedOsm.has(o) || suppressedOsm.has(o.replace(/^w/, 'way/'))) ? 'suppressed' : null;
+  const modelled = excluded.has(c.pand) ? 'ruled' : covered.has(c.pand) ? 'covers' : sigPand.get(c.pand) ? `signature:${sigPand.get(c.pand)}` : c.osm.some(o => suppressedOsm.has(o) || suppressedOsm.has(o.replace(/^w/, 'way/'))) ? 'suppressed' : null;
   const v = score(c.pand) ?? {score: 0, routeMetres: 0, wallM: 0, routes: 0};
   const mon = monuments[c.pand];
   const recog = c.tags.wikipedia ? 2 : c.tags.wikidata ? 1.4 : mon ? 1.2 : 1;
+  const drawnAs = kitDrawn.has(c.pand) ? 'kit' : 'generic', misrep = KIT_OPEN ? (drawnAs === 'kit' ? 0.7 : 1) : 1;
   rows.push({name: c.name || '(unnamed)', pand: c.pand.replace(PREFIX, ''), osm: c.osm, wikidata: c.tags.wikidata ?? null, wikipedia: c.tags.wikipedia ?? null,
     kind: [c.tags.amenity, c.tags.tourism, c.tags.historic, c.tags.building].filter(Boolean).join('/'), monument: mon?.nr ?? null, year: mon?.coreDate?.from ?? null,
     footprintM2: Math.round(area(c.pand)), damKm: Math.round(km(c) * 100) / 100, lat: c.lat, lng: c.lng, modelled,
-    exposure: Math.round(v.score), routeMetres: v.routeMetres, routes: v.routes, recognisability: recog, rank: Math.round(v.score * recog)});
+    exposure: Math.round(v.score), routeMetres: v.routeMetres, routes: v.routes, recognisability: recog, ...(KIT_OPEN ? {drawnAs, misrep} : {}), rank: Math.round(v.score * recog * misrep)});
 }
 const open = rows.filter(r => !r.modelled && r.damKm <= MAX_DAM_KM && r.footprintM2 >= 80).sort((a, b) => b.rank - a.rank);
 fs.mkdirSync('docs/reports', {recursive: true});
-fs.writeFileSync('docs/reports/landmark-targets-next-raw.json', JSON.stringify({method: METHOD, routes: routes.routes, candidates: rows.length, open: open.length,
+fs.writeFileSync(arg('out', 'docs/reports/landmark-targets-next-raw.json'), JSON.stringify({method: METHOD, routes: routes.routes, candidates: rows.length, open: open.length,
   modelledSkipped: rows.filter(r => r.modelled).length, top: open.slice(0, Number(arg('top', '60')))}, null, 1) + '\n');
 console.log(`candidates ${rows.length}, modelled ${rows.filter(r => r.modelled).length}, open ${open.length}`);
 open.slice(0, 60).forEach((r, i) => console.log(`${String(i + 1).padStart(2)} ${r.name.slice(0, 40).padEnd(40)} ${String(r.rank).padStart(9)} rm${String(r.routeMetres).padStart(6)} ${r.pand} ${r.kind.slice(0, 30).padEnd(30)} ${(r.wikipedia ?? r.wikidata ?? '-').slice(0, 34)} mon${r.monument ?? '-'} ${r.year ?? ''} ${r.footprintM2}m2`));

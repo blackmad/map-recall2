@@ -587,13 +587,13 @@
       "dateSource": "asset-update"
     },
     "banks-mansion.lod1": {
-      "updatedAt": "2026-11-15T16:41:33.158Z",
-      "version": "7181d3d325cc22ad",
+      "updatedAt": "2026-11-20T06:57:15.648Z",
+      "version": "aaa798e6b4455bef",
       "dateSource": "asset-update"
     },
     "banks-mansion.lod2": {
-      "updatedAt": "2026-11-15T16:41:33.159Z",
-      "version": "043b839081c4f180",
+      "updatedAt": "2026-11-20T06:57:15.648Z",
+      "version": "52fdadb951192db9",
       "dateSource": "asset-update"
     },
     "barbizon-palace": {
@@ -1626,6 +1626,16 @@
       "version": "62e89606fb5a5146",
       "dateSource": "asset-update"
     },
+    "de-jaren.lod1": {
+      "updatedAt": "2026-11-20T06:57:15.649Z",
+      "version": "c5d0112121b346af",
+      "dateSource": "asset-update"
+    },
+    "de-jaren.lod2": {
+      "updatedAt": "2026-11-20T06:57:15.649Z",
+      "version": "771f7b03e14d49bd",
+      "dateSource": "asset-update"
+    },
     "de-krakeling": {
       "updatedAt": "2026-10-20T10:13:08.865Z",
       "version": "aad82236830324a4",
@@ -1639,6 +1649,11 @@
     "de-krakeling.lod2": {
       "updatedAt": "2026-11-07T14:08:58.144Z",
       "version": "8294cda7609da1d9",
+      "dateSource": "asset-update"
+    },
+    "de-kroon-rembrandtplein": {
+      "updatedAt": "2026-11-20T07:58:49.758Z",
+      "version": "14b7adaf60709d8a",
       "dateSource": "asset-update"
     },
     "de-makroon": {
@@ -2591,6 +2606,16 @@
       "version": "78dca899a0ccfd15",
       "dateSource": "asset-update"
     },
+    "handelsbank-singel-250.lod1": {
+      "updatedAt": "2026-11-20T06:57:15.649Z",
+      "version": "eb0d6bfefbea934d",
+      "dateSource": "asset-update"
+    },
+    "handelsbank-singel-250.lod2": {
+      "updatedAt": "2026-11-20T06:57:15.649Z",
+      "version": "50049fa8094c5af0",
+      "dateSource": "asset-update"
+    },
     "hannekes-boom": {
       "updatedAt": "2026-10-20T10:15:50.226Z",
       "version": "a11dbf621df46ba6",
@@ -3016,6 +3041,16 @@
       "version": "208f869dd6af5267",
       "dateSource": "asset-update"
     },
+    "holland-casino-amsterdam.lod1": {
+      "updatedAt": "2026-11-20T06:57:15.650Z",
+      "version": "84c2aeec04539aea",
+      "dateSource": "asset-update"
+    },
+    "holland-casino-amsterdam.lod2": {
+      "updatedAt": "2026-11-20T06:57:15.650Z",
+      "version": "245766e8677b77ac",
+      "dateSource": "asset-update"
+    },
     "hollandsche-manege": {
       "updatedAt": "2026-11-01T18:01:03.941Z",
       "version": "023c8ea79a32b66b",
@@ -3184,6 +3219,16 @@
     "houthavenkade-26": {
       "updatedAt": "2026-11-20T06:41:58.606Z",
       "version": "27b870dee8dfeae6",
+      "dateSource": "asset-update"
+    },
+    "houthavenkade-26.lod1": {
+      "updatedAt": "2026-11-20T06:57:15.650Z",
+      "version": "5de7416c7ebf0517",
+      "dateSource": "asset-update"
+    },
+    "houthavenkade-26.lod2": {
+      "updatedAt": "2026-11-20T06:57:15.650Z",
+      "version": "6ed25309cff5f78f",
       "dateSource": "asset-update"
     },
     "huis-aan-drie-grachten": {
@@ -5412,18 +5457,18 @@
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort": {
-      "updatedAt": "2026-11-20T06:26:15.441Z",
-      "version": "e3ea98ba0cd335d1",
+      "updatedAt": "2026-11-20T08:00:38.979Z",
+      "version": "27f09a4cd394e11c",
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort.lod1": {
-      "updatedAt": "2026-11-15T16:41:33.165Z",
-      "version": "5645777ed62c3dd9",
+      "updatedAt": "2026-11-20T06:57:15.650Z",
+      "version": "8218536aac4e78ab",
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort.lod2": {
-      "updatedAt": "2026-11-15T16:41:33.167Z",
-      "version": "5c0228351d127604",
+      "updatedAt": "2026-11-20T06:57:15.651Z",
+      "version": "46ce1726b2671c91",
       "dateSource": "asset-update"
     },
     "pont-13": {
@@ -5579,6 +5624,16 @@
     "reinwardt-academie": {
       "updatedAt": "2026-11-15T12:48:30.651Z",
       "version": "a97ccea0c49756c8",
+      "dateSource": "asset-update"
+    },
+    "reinwardt-academie.lod1": {
+      "updatedAt": "2026-11-20T06:57:15.651Z",
+      "version": "f2fed700247665ee",
+      "dateSource": "asset-update"
+    },
+    "reinwardt-academie.lod2": {
+      "updatedAt": "2026-11-20T06:57:15.651Z",
+      "version": "e3cb74c1dca13aea",
       "dateSource": "asset-update"
     },
     "rem-eiland": {
@@ -5754,6 +5809,11 @@
     "roode-bioscoop.lod2": {
       "updatedAt": "2026-11-15T08:01:44.713Z",
       "version": "bb061f3879d6f711",
+      "dateSource": "asset-update"
+    },
+    "roode-leeuw-damrak": {
+      "updatedAt": "2026-11-20T08:01:19.151Z",
+      "version": "196a5b81db5a0303",
       "dateSource": "asset-update"
     },
     "room-mate-aitana": {
