@@ -1,0 +1,753 @@
+{
+ "schemaVersion": 1,
+ "id": "technische-school-meeuwenlaan",
+ "pand": "0363100012101771",
+ "brief": "scripts/landmarks/technische-school-meeuwenlaan-brief.md",
+ "signature": [
+  "t-tower",
+  "t-stair-windows",
+  "r-arch-portal",
+  "m-classroom-windows",
+  "n-classroom-windows",
+  "eaves",
+  "s-striped-cladding",
+  "r-gable",
+  "g-car-door"
+ ],
+ "walls": [
+  {
+   "tag": "w01-3",
+   "bearing": 3,
+   "lengthM": 68.1,
+   "centre": [
+    4.926156,
+    52.3891585
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_10-41-53_00306",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-classroom-windows",
+     "kind": "window-shape",
+     "where": "both storeys, 17 axes (narrow ends, 15 wide)",
+     "approxSizeM": [
+      3.2,
+      2.8
+     ],
+     "plan": "modelled",
+     "how": "classWin(): white frame, three lower lights, transom at 62 %, three multi-pane top lights (register: drie benedenramen en drie veelruits bovenlichten), tile sill",
+     "seenIn": "recording_2024-10-22_10-41-53_00306"
+    },
+    {
+     "id": "n-dormers",
+     "kind": "other",
+     "where": "north roof slope, eight dormers evenly along the wing",
+     "approxSizeM": [
+      2.4,
+      1.5
+     ],
+     "plan": "modelled",
+     "how": "dormer(): pale box set into the 3DBAG slope, flat roof, two-light window",
+     "seenIn": "recording_2024-10-22_10-41-53_00306"
+    },
+    {
+     "id": "eaves",
+     "kind": "other",
+     "where": "every tiled roof of the 1931-1935 wings, round the hips",
+     "approxSizeM": [
+      68,
+      0.4
+     ],
+     "plan": "modelled",
+     "how": "eaves(): pale boxed gutter 0.7 m out along every low edge of every sloped 3DBAG roof plane (register: breed overstekende houten bakgoten), running past the gable feet as the doorgestoken goten",
+     "seenIn": "recording_2024-10-22_10-41-53_00306"
+    },
+    {
+     "id": "n-plinth",
+     "kind": "other",
+     "where": "base of the brick walls, about 1 m",
+     "approxSizeM": [
+      68,
+      1
+     ],
+     "plan": "modelled",
+     "how": "dark brick slab per wall",
+     "seenIn": "recording_2024-10-22_10-41-53_00306"
+    }
+   ],
+   "note": "North wing on the plantsoen by the Vliegenbos (2024 crop washed out but legible). Two storeys of classroom windows, 17 axes: a narrow window at each end, 15 wide ones; hipped roof of smoked tiles with eight flat-roofed dormers; wide overhanging boxed eaves."
+  },
+  {
+   "tag": "w02-183",
+   "bearing": 183,
+   "lengthM": 57.5,
+   "centre": [
+    4.926057,
+    52.388987
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "Courtyard side of the north wing, behind the 2024 pand 0363100012254402 (2 m light gap on the orthophoto). Register: classroom windows with new single-pane infill on the schoolplein side. Drawn as plain window rows."
+  },
+  {
+   "tag": "w03-168",
+   "bearing": 168,
+   "lengthM": 42.9,
+   "centre": [
+    4.925838,
+    52.388518
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-10_07-51-45_00148",
+   "capturedAt": "2024-09-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-striped-cladding",
+     "kind": "other",
+     "where": "upper storey band, 2.6-5.3 m, whole length",
+     "approxSizeM": [
+      42.9,
+      2.7
+     ],
+     "plan": "modelled",
+     "how": "vertical panels 0.6-2.4 m wide in cream, pale blue, silver and soft ochre, seeded per wall, 9 cm proud with 1 cm joints, metal cap",
+     "seenIn": "recording_2024-09-10_07-51-45_00148"
+    },
+    {
+     "id": "s-glazed-ground",
+     "kind": "other",
+     "where": "ground storey, 0-2.6 m, whole length",
+     "approxSizeM": [
+      42.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "green-tinted glass band with brown posts at about 1.95 m",
+     "seenIn": "recording_2024-09-10_07-51-45_00148"
+    },
+    {
+     "id": "roof-fence",
+     "kind": "other",
+     "where": "on the roof playground over the wing: low mesh fence, a taller ball cage over the east half",
+     "approxSizeM": [
+      40,
+      5.5
+     ],
+     "plan": "simplified",
+     "how": "posts and top/mid rails round the deck (3 m, 5.5 m over the east half); the wire mesh is left open",
+     "seenIn": "recording_2024-09-10_07-51-45_00148"
+    },
+    {
+     "id": "s-vents",
+     "kind": "other",
+     "where": "small square white vent panels scattered on the cladding",
+     "approxSizeM": [
+      0.5,
+      0.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "half-metre vents, below gallery scale"
+     },
+     "seenIn": "recording_2024-09-10_07-51-45_00148"
+    },
+    {
+     "id": "s-college-letters",
+     "kind": "lettering",
+     "where": "giant grey COLLEGE letters on the matte glass (2022 and earlier)",
+     "approxSizeM": [
+      30,
+      2.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "gone",
+      "note": "removed when the wing was re-clad in stripes (2024 and 2025 crops)"
+     },
+     "seenIn": "TMX7316010203-002568_pano_0001_001072"
+    }
+   ],
+   "note": "Zamenhofstraat side of the 1998-2001 Mastenbroek / Van Gameren wing. 2022 crop still shows the giant COLLEGE letters on matte glass; the 2024 and 2025 crops show it re-clad in vertical stripes (cream, pale blue, silver, ochre) - the 2024 state is drawn."
+  },
+  {
+   "tag": "w04-285",
+   "bearing": 285,
+   "lengthM": 37.7,
+   "centre": [
+    4.925271,
+    52.3886315
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-10_06-50-03_02979",
+   "capturedAt": "2024-09-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-striped-cladding",
+     "kind": "other",
+     "where": "upper storey band",
+     "approxSizeM": [
+      37.7,
+      2.7
+     ],
+     "plan": "modelled",
+     "how": "stripes() as on the Zamenhofstraat side",
+     "seenIn": "recording_2024-09-10_06-50-03_02979"
+    },
+    {
+     "id": "w-glazed-ground",
+     "kind": "other",
+     "where": "ground storey",
+     "approxSizeM": [
+      37.7,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "glass band with posts",
+     "seenIn": "recording_2024-09-10_06-50-03_02979"
+    },
+    {
+     "id": "w-bredero-letters",
+     "kind": "lettering",
+     "where": "BREDERO across the matte glass (2022 and earlier)",
+     "approxSizeM": [
+      30,
+      2.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "gone",
+      "note": "covered by the 2024 striped cladding"
+     },
+     "seenIn": "TMX7316010203-002568_pano_0001_001190"
+    }
+   ],
+   "note": "Meeuwenlaan side of the 2001 wing. 2021/2022 crops: BREDERO in giant letters; 2024: striped cladding over the glazed ground storey (sand heaps and site fencing in front)."
+  },
+  {
+   "tag": "w05-280",
+   "bearing": 280,
+   "lengthM": 30.8,
+   "centre": [
+    4.9253835,
+    52.3889305
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-22_10-53-43_00033",
+   "capturedAt": "2025-09-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "m-classroom-windows",
+     "kind": "window-shape",
+     "where": "three storeys x 8 axes",
+     "approxSizeM": [
+      3.3,
+      2.8
+     ],
+     "plan": "modelled",
+     "how": "classWin() on the two ring edges of the slightly bent front",
+     "seenIn": "recording_2025-09-22_10-53-43_00033"
+    },
+    {
+     "id": "m-roof-lights",
+     "kind": "window-shape",
+     "where": "seven small roof lights low on the west slope",
+     "approxSizeM": [
+      0.7,
+      0.5
+     ],
+     "plan": "modelled",
+     "how": "roofQuad(): glass quads laid 12 cm over the 3DBAG slope",
+     "seenIn": "recording_2025-09-22_10-53-43_00033"
+    },
+    {
+     "id": "m-name-board",
+     "kind": "sign",
+     "where": "small dark board left of the second ground window",
+     "approxSizeM": [
+      2.3,
+      0.4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "blank dark board, 0.4 m"
+     },
+     "seenIn": "recording_2025-09-22_10-53-43_00033"
+    },
+    {
+     "id": "m-chimneys",
+     "kind": "other",
+     "where": "two chimneys on the south end of the ridge",
+     "approxSizeM": [
+      0.8,
+      1.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "below gallery scale; the eaves and roof mass carry the roofline"
+     },
+     "seenIn": "recording_2025-09-22_10-53-43_00033"
+    }
+   ],
+   "note": "Meeuwenlaan front of the three-storey dwarsvleugel (register: drielaags, schilddak, licht gerend). Eight axes per storey: narrow at the ends, six wide classroom windows; seven roof lights; boxed eaves at 13.2 m; the stair tower rises behind the north end."
+  },
+  {
+   "tag": "w06-78",
+   "bearing": 78,
+   "lengthM": 28.8,
+   "centre": [
+    4.926101,
+    52.3886855
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w07-93",
+   "bearing": 93,
+   "lengthM": 24.2,
+   "centre": [
+    4.9266475,
+    52.3890365
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_10-41-53_00344",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-classroom-windows",
+     "kind": "window-shape",
+     "where": "two storeys x 6 axes",
+     "approxSizeM": [
+      3.25,
+      2.8
+     ],
+     "plan": "modelled",
+     "how": "classWin()",
+     "seenIn": "recording_2024-10-22_10-41-53_00344"
+    },
+    {
+     "id": "e-dormer-band",
+     "kind": "window-shape",
+     "where": "continuous dormer over the south 20 m of the east slope",
+     "approxSizeM": [
+      19.5,
+      1.8
+     ],
+     "plan": "modelled",
+     "how": "the band is in the 3DBAG shell (a flat strip at 11.9 m flush with the wall): its pale timber front and nine two-light windows on it",
+     "seenIn": "recording_2024-10-22_10-41-53_00344"
+    }
+   ],
+   "note": "East end of the complex (achtervleugel facing the Vliegenbos path): two storeys of classroom windows, five wide and a narrow one, and a long continuous dormer band in the hipped roof (the third storey in the kap)."
+  },
+  {
+   "tag": "w08-183",
+   "bearing": 183,
+   "lengthM": 21.5,
+   "centre": [
+    4.926626,
+    52.3888315
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w09-89",
+   "bearing": 89,
+   "lengthM": 17.7,
+   "centre": [
+    4.925707,
+    52.3887995
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w10-168",
+   "bearing": 168,
+   "lengthM": 16.2,
+   "centre": [
+    4.9253735,
+    52.3884565
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-22_10-53-43_00778",
+   "capturedAt": "2025-09-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-round-corner",
+     "kind": "other",
+     "where": "the rounded corner on Meeuwenlaan / Zamenhofstraat",
+     "approxSizeM": [
+      8,
+      5.3
+     ],
+     "plan": "modelled",
+     "how": "the BAG ring facets carry the same glass band and stripes",
+     "seenIn": "recording_2025-09-22_10-53-43_00778"
+    },
+    {
+     "id": "c-metropolis-sign",
+     "kind": "sign",
+     "where": "white board with dark METROPOLIS lettering over the stair entrance, east end of the wall",
+     "approxSizeM": [
+      2.2,
+      0.75
+     ],
+     "plan": "modelled",
+     "how": "board slab and 5x7 letters",
+     "seenIn": "recording_2025-09-22_10-53-43_00778"
+    }
+   ],
+   "note": "Rounded south-west corner of the 2001 wing, re-clad in stripes (2025); METROPOLIS board at the stair entrance."
+  },
+  {
+   "tag": "w11-273",
+   "bearing": 273,
+   "lengthM": 15.5,
+   "centre": [
+    4.9264735,
+    52.3889055
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w12-338",
+   "bearing": 338,
+   "lengthM": 11.6,
+   "centre": [
+    4.925913,
+    52.3887
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w13-258",
+   "bearing": 258,
+   "lengthM": 11.6,
+   "centre": [
+    4.925512,
+    52.388528
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001258_pano_0000_000606",
+   "capturedAt": "2019-06-28",
+   "checked": true,
+   "items": [],
+   "note": "West side of the stair slot from the Zamenhofstraat to the roof playground (talud met trap); matte cladding over glazing."
+  },
+  {
+   "tag": "w14-78",
+   "bearing": 78,
+   "lengthM": 11.5,
+   "centre": [
+    4.925472,
+    52.3885225
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002568_pano_0001_001072",
+   "capturedAt": "2022-05-10",
+   "checked": true,
+   "items": [],
+   "note": "East side of the stair slot; same cladding."
+  },
+  {
+   "tag": "w15-3",
+   "bearing": 3,
+   "lengthM": 11.2,
+   "centre": [
+    4.9255755,
+    52.3891965
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_10-41-53_00314",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "r-gable",
+     "kind": "other",
+     "where": "whole front, gable from 9.4 to 16.6 m",
+     "approxSizeM": [
+      11.2,
+      7.2
+     ],
+     "plan": "modelled",
+     "how": "the 3DBAG saddle roof gives the gable wall; the eaves() gutters run past its feet",
+     "seenIn": "recording_2024-10-22_10-41-53_00314"
+    },
+    {
+     "id": "r-arch-portal",
+     "kind": "other",
+     "where": "centre of the ground storey",
+     "approxSizeM": [
+      4.5,
+      5.1
+     ],
+     "plan": "modelled",
+     "how": "brick arch band, oak double door under a semicircular fanlight, three granite steps",
+     "seenIn": "recording_2024-10-22_10-41-53_00314"
+    },
+    {
+     "id": "r-lettering",
+     "kind": "lettering",
+     "where": "iron letters TECHNISCHE SCHOOL round the arch",
+     "approxSizeM": [
+      6,
+      0.3
+     ],
+     "plan": "simplified",
+     "how": "upright 5x7 iron glyphs placed one by one along the arch band (not rotated to the curve)",
+     "seenIn": "recording_2024-10-22_10-41-53_00314"
+    },
+    {
+     "id": "r-stepped-windows",
+     "kind": "window-shape",
+     "where": "first floor 1+wide+1, two windows in the gable, two small ground windows",
+     "approxSizeM": [
+      3.2,
+      2.7
+     ],
+     "plan": "modelled",
+     "how": "classWin() at the measured axes",
+     "seenIn": "recording_2024-10-22_10-41-53_00314"
+    }
+   ],
+   "note": "The risaliet of the former main entrance (register): symmetric front under a topgevel, round-arched portal with granite steps, TECHNISCHE SCHOOL in iron letters along the arch, blank oak double doors; windows stepped up into the gable; the stair tower behind."
+  },
+  {
+   "tag": "w16-93",
+   "bearing": 93,
+   "lengthM": 10.7,
+   "centre": [
+    4.926788,
+    52.388875
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002568_pano_0000_000505",
+   "capturedAt": "2022-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-car-door",
+     "kind": "other",
+     "where": "centre of the gable",
+     "approxSizeM": [
+      3.6,
+      4
+     ],
+     "plan": "modelled",
+     "how": "red round-headed double door in a brick arch band",
+     "seenIn": "TMX7316010203-002568_pano_0000_000505"
+    },
+    {
+     "id": "g-gable-windows",
+     "kind": "window-shape",
+     "where": "two small windows high in the gable",
+     "approxSizeM": [
+      0.45,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "small framed windows",
+     "seenIn": "TMX7316010203-002568_pano_0000_000505"
+    }
+   ],
+   "note": "East gable of the one-storey auto workshop (register: forse rondboogingang voor het binnenrijden van auto's). 2024 crop hidden by trees; 2022 thumb shows the red double doors."
+  },
+  {
+   "tag": "w17-3",
+   "bearing": 3,
+   "lengthM": 10.4,
+   "centre": [
+    4.9267155,
+    52.3889255
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001258_pano_0000_000648",
+   "capturedAt": "2019-06-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-roof-glazing",
+     "kind": "window-shape",
+     "where": "glazed strip along the north roof slope",
+     "approxSizeM": [
+      9,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "roofQuad() glass strip on the slope",
+     "seenIn": "TMX7316010203-001258_pano_0000_000648"
+    }
+   ],
+   "note": "North side of the workshop: low wall with windows and a glazed strip in the roof slope (lichtvelden in de dakschilden)."
+  },
+  {
+   "tag": "w18-93",
+   "bearing": 93,
+   "lengthM": 9.7,
+   "centre": [
+    4.9256315,
+    52.3889555
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w19-273",
+   "bearing": 273,
+   "lengthM": 8.8,
+   "centre": [
+    4.9254905,
+    52.3891595
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-10_07-51-45_00116",
+   "capturedAt": "2024-09-10",
+   "checked": true,
+   "items": [],
+   "note": "West side of the risaliet block next to the tower: two first-floor windows and two low wide ground windows."
+  },
+  {
+   "tag": "w20-22",
+   "bearing": 22,
+   "lengthM": 7.2,
+   "centre": [
+    4.925772,
+    52.388693
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w21-274",
+   "bearing": 274,
+   "lengthM": 6.1,
+   "centre": [
+    4.9254405,
+    52.3890935
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001258_pano_0000_000618",
+   "capturedAt": "2019-06-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-tower",
+     "kind": "tower",
+     "where": "stair tower at the corner of the two wings, rising 10 m over the roofs",
+     "approxSizeM": [
+      6.1,
+      27.5
+     ],
+     "plan": "modelled",
+     "how": "3DBAG shell (saddle roof, ridge 27.5 m) with its eaves",
+     "seenIn": "recording_2025-09-22_10-53-43_00030"
+    },
+    {
+     "id": "t-stair-windows",
+     "kind": "window-shape",
+     "where": "three tall windows on the west face, 4.5-19 m",
+     "approxSizeM": [
+      0.85,
+      14.5
+     ],
+     "plan": "modelled",
+     "how": "tallWin(): frame, glass, a mullion and horizontal bars every 0.6 m",
+     "seenIn": "recording_2025-09-22_10-53-43_00030"
+    },
+    {
+     "id": "t-top-windows",
+     "kind": "window-shape",
+     "where": "four small windows at 20.6 m",
+     "approxSizeM": [
+      0.6,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "small framed windows",
+     "seenIn": "recording_2025-09-22_10-53-43_00030"
+    }
+   ],
+   "note": "West face of the stair tower: three tall stair windows with horizontal bars from the first floor to about 19 m, three small windows below, a row of four small windows under the gable top (register: hoge trappenhuisvensters met horizontaalroeden ... bovenaan een reeks kleine vensters); saddle roof, ridge 27.5 m."
+  },
+  {
+   "tag": "w22-258",
+   "bearing": 258,
+   "lengthM": 6,
+   "centre": [
+    4.9260115,
+    52.3887775
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w23-3",
+   "bearing": 3,
+   "lengthM": 4.4,
+   "centre": [
+    4.9256605,
+    52.388911
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002568_pano_0001_001164",
+   "capturedAt": "2022-05-10",
+   "checked": true,
+   "items": [],
+   "note": "Short return at the tower foot; plain brick."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeentelijk monument 200704 (Meeuwenlaan 132), redengevende omschrijving",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/da40d5a9-465d-48f8-a287-c87256c1e64a?_format=json",
+   "licence": "CC0"
+  }
+ ]
+}
