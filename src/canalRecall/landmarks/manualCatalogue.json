@@ -91943,6 +91943,8 @@
  },
  {
   "id": "de-kroon-rembrandtplein",
+  "status": "held",
+  "heldReason": "Integrator review 2026-11-20 (landmarks r7): the front and arcade read well, but the 3DBAG tower top is taller and boxier than the photo, the Amstel gable is lopsided where the photo shows a symmetric neck/step gable, the balcony spans too many bays and the Amstel back is a jumble of 3DBAG blocks. Round 8 fixes these.",
   "name": "Café-Restaurant De Kroon, Rembrandtplein",
   "modelUrl": "./models/de-kroon-rembrandtplein.glb",
   "suppressOsmIds": [
