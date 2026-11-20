@@ -92412,8 +92412,6 @@
  },
  {
   "id": "oranjekerk-pijp",
-  "status": "held",
-  "heldReason": "Landmarks r8 2026-11-20: fresh judge FIX. Missing the parsonage rounded corner and turret, the octagonal porch roof with lantern, and a belfry stage with corner pinnacles; the main roof colour (slate vs red-brown pantile) is disputed between judges. Round 9 (lane/landmarks-r9-20261120) fixes these.",
   "name": "Oranjekerk, Van Ostadestraat",
   "modelUrl": "./models/oranjekerk-pijp.glb",
   "suppressOsmIds": [
@@ -92963,6 +92961,237 @@
      [
       4.8977122,
       52.3658649
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "kadijksplein-17-18",
+  "name": "Former Zeemanshuis, Kadijksplein 17-18",
+  "modelUrl": "./models/kadijksplein-17-18.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012164985"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.91322191,
+    52.37039442
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 56.7,
+   "widthMetres": 62.9
+  },
+  "surveyed": {
+   "anchor": [
+    4.91322191,
+    52.37039442
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012164985 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/kadijksplein-17-18-footprints.json, bag-shell-prepare.ts), the flat tops snapped to the 18.3 m block, 19.4 m tower and 21.4 m south-east tower lines (shell-gable-fit.ts snap; the two 21.4-21.6 m stair houses at the inner corners lowered to the tower line, unseen from the street); the fronts read from the rectified Gemeente Amsterdam panoramas b_20241210_1246_Track15_Sphere_00047 (2024), TMX7316010203-001181_pano_0000_001188 (2019), recording_2025-06-19_08-30-47_00263 (2025), b_20241210_1246_Track08_Sphere_00082 and _00059 (2024), CC BY 4.0. Gemeentelijk monument 202016 (api.data.amsterdam.nl monumenten, CC0). Per wall in scripts/landmarks/kadijksplein-17-18-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 23.7,
+  "galleryView": {
+   "theta": 0.6,
+   "phi": 1.1
+  },
+  "bagYear": 1856,
+  "materialOverrides": {
+   "brick": "#433330",
+   "stone": "#6f6d66",
+   "sandstone": "#b3a891",
+   "slate": "#4a4a48",
+   "white": "#e8e6de",
+   "frame": "#e6e2d6",
+   "glass": "#6c787c",
+   "dark": "#2f302d",
+   "gold": "#c9a85c",
+   "red": "#5c3326",
+   "concrete": "#9b9a94",
+   "bronze": "#2b2e2c"
+  },
+  "attribution": {
+   "title": "Former Zeemanshuis, Kadijksplein 17-18, Amsterdam (1856)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track15_Sphere_00047/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012164985 (CC0): the dark brick fronts with hardstone courses and white-framed windows on one storey grid, the segment-headed first-floor windows of the Kadijksplein front, the corner towers with round-arched top windows, the entrance surrounds, balconies and white timber surrounds, the ZEEMANS-HUIS and ANNO 1856 boards, the brick portico, concrete cap and glazed penthouse of the south-east tower, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register text. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9137463,
+      52.370405
+     ],
+     [
+      4.9137412,
+      52.3704068
+     ],
+     [
+      4.9136545,
+      52.3704377
+     ],
+     [
+      4.9136494,
+      52.3704395
+     ],
+     [
+      4.9134996,
+      52.3704928
+     ],
+     [
+      4.9134389,
+      52.3705145
+     ],
+     [
+      4.9134094,
+      52.370525
+     ],
+     [
+      4.9131941,
+      52.3706016
+     ],
+     [
+      4.9131957,
+      52.3706033
+     ],
+     [
+      4.9131638,
+      52.3706147
+     ],
+     [
+      4.9131585,
+      52.3706165
+     ],
+     [
+      4.9131344,
+      52.3706251
+     ],
+     [
+      4.9130967,
+      52.3706384
+     ],
+     [
+      4.913053,
+      52.3705923
+     ],
+     [
+      4.9130406,
+      52.3705792
+     ],
+     [
+      4.9130393,
+      52.3705778
+     ],
+     [
+      4.9130421,
+      52.3705768
+     ],
+     [
+      4.9128837,
+      52.37041
+     ],
+     [
+      4.9128809,
+      52.3704109
+     ],
+     [
+      4.9128799,
+      52.3704098
+     ],
+     [
+      4.9128669,
+      52.3703961
+     ],
+     [
+      4.9128376,
+      52.3703654
+     ],
+     [
+      4.9128231,
+      52.3703502
+     ],
+     [
+      4.9128632,
+      52.3703359
+     ],
+     [
+      4.9128858,
+      52.3703278
+     ],
+     [
+      4.9128908,
+      52.3703261
+     ],
+     [
+      4.9129224,
+      52.3703148
+     ],
+     [
+      4.912924,
+      52.3703165
+     ],
+     [
+      4.9129919,
+      52.3702921
+     ],
+     [
+      4.9130084,
+      52.3702861
+     ],
+     [
+      4.9131392,
+      52.370239
+     ],
+     [
+      4.9133456,
+      52.3701646
+     ],
+     [
+      4.9133442,
+      52.3701629
+     ],
+     [
+      4.9134419,
+      52.3701299
+     ],
+     [
+      4.9134986,
+      52.3701929
+     ],
+     [
+      4.9135184,
+      52.3701862
+     ],
+     [
+      4.9135474,
+      52.3702081
+     ],
+     [
+      4.9135821,
+      52.37024
+     ],
+     [
+      4.9135368,
+      52.3702561
+     ],
+     [
+      4.9135885,
+      52.3703104
+     ],
+     [
+      4.9136393,
+      52.3702924
+     ],
+     [
+      4.9137463,
+      52.370405
      ]
     ]
    ]

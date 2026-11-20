@@ -1,0 +1,33 @@
+{
+ "id": "kadijksplein-17-18",
+ "name": "Former Zeemanshuis, Kadijksplein 17-18",
+ "heightMetres": 23.7,
+ "bagYear": 1856,
+ "galleryView": {
+  "theta": 0.6,
+  "phi": 1.1
+ },
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012164985 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/kadijksplein-17-18-footprints.json, bag-shell-prepare.ts), the flat tops snapped to the 18.3 m block, 19.4 m tower and 21.4 m south-east tower lines (shell-gable-fit.ts snap; the two 21.4-21.6 m stair houses at the inner corners lowered to the tower line, unseen from the street); the fronts read from the rectified Gemeente Amsterdam panoramas b_20241210_1246_Track15_Sphere_00047 (2024), TMX7316010203-001181_pano_0000_001188 (2019), recording_2025-06-19_08-30-47_00263 (2025), b_20241210_1246_Track08_Sphere_00082 and _00059 (2024), CC BY 4.0. Gemeentelijk monument 202016 (api.data.amsterdam.nl monumenten, CC0). Per wall in scripts/landmarks/kadijksplein-17-18-inventory.json.",
+ "materialOverrides": {
+  "brick": "#433330",
+  "stone": "#6f6d66",
+  "sandstone": "#b3a891",
+  "slate": "#4a4a48",
+  "white": "#e8e6de",
+  "frame": "#e6e2d6",
+  "glass": "#6c787c",
+  "dark": "#2f302d",
+  "gold": "#c9a85c",
+  "red": "#5c3326",
+  "concrete": "#9b9a94",
+  "bronze": "#2b2e2c"
+ },
+ "attribution": {
+  "title": "Former Zeemanshuis, Kadijksplein 17-18, Amsterdam (1856)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track15_Sphere_00047/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012164985 (CC0): the dark brick fronts with hardstone courses and white-framed windows on one storey grid, the segment-headed first-floor windows of the Kadijksplein front, the corner towers with round-arched top windows, the entrance surrounds, balconies and white timber surrounds, the ZEEMANS-HUIS and ANNO 1856 boards, the brick portico, concrete cap and glazed penthouse of the south-east tower, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register text. No pixels or meshes imported."
+ }
+}

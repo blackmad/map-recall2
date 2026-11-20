@@ -115771,201 +115771,232 @@
       "bytes": 292992,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
-    "utrechtsestraat-9-17": {
-      "id": "utrechtsestraat-9-17",
-      "name": "Utrechtsestraat 9-17, Rembrandtplein",
-      "modelUrl": "./models/utrechtsestraat-9-17.glb",
+    "kadijksplein-17-18": {
+      "id": "kadijksplein-17-18",
+      "name": "Former Zeemanshuis, Kadijksplein 17-18",
+      "modelUrl": "./models/kadijksplein-17-18.glb",
       "suppressOsmIds": [
-        "NL.IMBAG.Pand.0363100012169214"
+        "NL.IMBAG.Pand.0363100012164985"
       ],
       "spatialSuppression": false,
       "footprint": {
         "centre": [
-          4.89804507,
-          52.36571306
+          4.91322191,
+          52.37039442
         ],
         "headingDegrees": 0,
-        "lengthMetres": 93.2,
-        "widthMetres": 52.4
+        "lengthMetres": 56.7,
+        "widthMetres": 62.9
       },
       "surveyed": {
         "anchor": [
-          4.89804507,
-          52.36571306
+          4.91322191,
+          52.37039442
         ],
         "northOffsetDegrees": 0,
-        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012169214 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/utrechtsestraat-9-17-footprints.json, bag-shell-prepare.ts), the rooftop volume snapped flat; the fronts read from the rectified Gemeente Amsterdam panoramas b_20241203_1333_Track01_Sphere_00298 (2024), TMX7316010203-001664_pano_0000_001944 (2020), TMX7316010203-002031_pano_0001_001992 (2021), TMX7316010203-001975_pano_0000_000624 (2021), recording_2025-06-19_03-28-47_01649 (2025, the clock tower) and b_20250120_0926_Track30_Sphere_00347 (2025), CC BY 4.0. Gemeentelijk monument 200500. Per wall in scripts/landmarks/utrechtsestraat-9-17-inventory.json."
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012164985 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/kadijksplein-17-18-footprints.json, bag-shell-prepare.ts), the flat tops snapped to the 18.3 m block, 19.4 m tower and 21.4 m south-east tower lines (shell-gable-fit.ts snap; the two 21.4-21.6 m stair houses at the inner corners lowered to the tower line, unseen from the street); the fronts read from the rectified Gemeente Amsterdam panoramas b_20241210_1246_Track15_Sphere_00047 (2024), TMX7316010203-001181_pano_0000_001188 (2019), recording_2025-06-19_08-30-47_00263 (2025), b_20241210_1246_Track08_Sphere_00082 and _00059 (2024), CC BY 4.0. Gemeentelijk monument 202016 (api.data.amsterdam.nl monumenten, CC0). Per wall in scripts/landmarks/kadijksplein-17-18-inventory.json."
       },
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
-      "heightMetres": 40.5,
+      "heightMetres": 23.7,
       "galleryView": {
-        "theta": 0.55,
-        "phi": 1.05
+        "theta": 0.6,
+        "phi": 1.1
       },
-      "bagYear": 1932,
+      "bagYear": 1856,
       "materialOverrides": {
-        "brick": "#655343",
-        "sandstone": "#7b756c",
-        "stone": "#b9ae94",
-        "copper": "#5f9c86",
-        "frame": "#3f4441",
-        "glass": "#4a5560",
-        "dark": "#2b2f30",
-        "slate": "#5d5f60",
-        "concrete": "#7c8084",
-        "gold": "#b89a52",
-        "blue": "#5fa3ad",
-        "bronze": "#6f8088",
-        "greyBrick": "#b9bab6"
+        "brick": "#433330",
+        "stone": "#6f6d66",
+        "sandstone": "#b3a891",
+        "slate": "#4a4a48",
+        "white": "#e8e6de",
+        "frame": "#e6e2d6",
+        "glass": "#6c787c",
+        "dark": "#2f302d",
+        "gold": "#c9a85c",
+        "red": "#5c3326",
+        "concrete": "#9b9a94",
+        "bronze": "#2b2e2c"
       },
       "attribution": {
-        "title": "Utrechtsestraat 9-17 / Rembrandtplein, Amsterdam (1932)",
+        "title": "Former Zeemanshuis, Kadijksplein 17-18, Amsterdam (1856)",
         "author": "Map Recall",
-        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_1333_Track01_Sphere_00298/",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track15_Sphere_00047/",
         "licence": "CC BY 4.0",
         "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012169214 (CC0): the Utrechtsestraat loggia range rebuilt as a holed wall, the granite base, triple steel windows, pilasters and cornices on every street front, the attic pavilions and ribbons, the clock tower and the Amsterdam arms, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012164985 (CC0): the dark brick fronts with hardstone courses and white-framed windows on one storey grid, the segment-headed first-floor windows of the Kadijksplein front, the corner towers with round-arched top windows, the entrance surrounds, balconies and white timber surrounds, the ZEEMANS-HUIS and ANNO 1856 boards, the brick portico, concrete cap and glazed penthouse of the south-east tower, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register text. No pixels or meshes imported."
       },
       "buildingFootprint": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              4.8977122,
-              52.3658649
+              4.9137463,
+              52.370405
             ],
             [
-              4.8976556,
-              52.3658562
+              4.9137412,
+              52.3704068
             ],
             [
-              4.8978513,
-              52.3653528
+              4.9136545,
+              52.3704377
             ],
             [
-              4.8979172,
-              52.3653652
+              4.9136494,
+              52.3704395
             ],
             [
-              4.8979162,
-              52.3653671
+              4.9134996,
+              52.3704928
             ],
             [
-              4.8979196,
-              52.3653677
+              4.9134389,
+              52.3705145
             ],
             [
-              4.8980171,
-              52.3653863
+              4.9134094,
+              52.370525
             ],
             [
-              4.8980183,
-              52.365384
+              4.9131941,
+              52.3706016
             ],
             [
-              4.8980542,
-              52.3653907
+              4.9131957,
+              52.3706033
             ],
             [
-              4.898053,
-              52.3653931
+              4.9131638,
+              52.3706147
             ],
             [
-              4.8981952,
-              52.36542
+              4.9131585,
+              52.3706165
             ],
             [
-              4.8981964,
-              52.3654176
+              4.9131344,
+              52.3706251
             ],
             [
-              4.8982323,
-              52.3654244
+              4.9130967,
+              52.3706384
             ],
             [
-              4.8982311,
-              52.3654268
+              4.913053,
+              52.3705923
             ],
             [
-              4.8984031,
-              52.3654586
+              4.9130406,
+              52.3705792
             ],
             [
-              4.8984045,
-              52.3654589
+              4.9130393,
+              52.3705778
             ],
             [
-              4.8984041,
-              52.3654597
+              4.9130421,
+              52.3705768
             ],
             [
-              4.8984073,
-              52.3654603
+              4.9128837,
+              52.37041
             ],
             [
-              4.8982777,
-              52.3657177
+              4.9128809,
+              52.3704109
             ],
             [
-              4.8982479,
-              52.3657132
+              4.9128799,
+              52.3704098
             ],
             [
-              4.8981675,
-              52.3659157
+              4.9128669,
+              52.3703961
             ],
             [
-              4.898207,
-              52.3659214
+              4.9128376,
+              52.3703654
             ],
             [
-              4.8982127,
-              52.3659602
+              4.9128231,
+              52.3703502
             ],
             [
-              4.8981821,
-              52.3660076
+              4.9128632,
+              52.3703359
             ],
             [
-              4.898195,
-              52.3661461
+              4.9128858,
+              52.3703278
             ],
             [
-              4.8981975,
-              52.3661729
+              4.9128908,
+              52.3703261
             ],
             [
-              4.8981976,
-              52.3661737
+              4.9129224,
+              52.3703148
             ],
             [
-              4.8976853,
-              52.3661898
+              4.912924,
+              52.3703165
             ],
             [
-              4.8976732,
-              52.3661833
+              4.9129919,
+              52.3702921
             ],
             [
-              4.8976667,
-              52.3661086
+              4.9130084,
+              52.3702861
             ],
             [
-              4.8976404,
-              52.3661047
+              4.9131392,
+              52.370239
             ],
             [
-              4.8976317,
-              52.3660963
+              4.9133456,
+              52.3701646
             ],
             [
-              4.8977162,
-              52.3658654
+              4.9133442,
+              52.3701629
             ],
             [
-              4.8977122,
-              52.3658649
+              4.9134419,
+              52.3701299
+            ],
+            [
+              4.9134986,
+              52.3701929
+            ],
+            [
+              4.9135184,
+              52.3701862
+            ],
+            [
+              4.9135474,
+              52.3702081
+            ],
+            [
+              4.9135821,
+              52.37024
+            ],
+            [
+              4.9135368,
+              52.3702561
+            ],
+            [
+              4.9135885,
+              52.3703104
+            ],
+            [
+              4.9136393,
+              52.3702924
+            ],
+            [
+              4.9137463,
+              52.370405
             ]
           ]
         ]
@@ -115973,20 +116004,20 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -28.922422409057617,
-          -9.536743306171047e-8,
-          -53.459476470947266
+          -27.393096923828125,
+          -1.1920929132713809e-8,
+          -27.407320022583008
         ],
         "max": [
-          24.67709732055664,
-          40.5,
-          40.48522186279297
+          36.754364013671875,
+          24.600000381469727,
+          29.729217529296875
         ]
       },
       "placement": {
         "anchor": [
-          4.89804507,
-          52.36571306
+          4.91322191,
+          52.37039442
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
@@ -115994,13 +116025,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 93.94469833374023,
-        "heightMetres": 40.50000009536743,
-        "depthMetres": 53.59951972961426,
-        "depthCoverage": 1.022891597893402
+        "widthMetres": 64.1474609375,
+        "heightMetres": 24.600000393390655,
+        "depthMetres": 57.13653755187988,
+        "depthCoverage": 0.9083710262620014
       },
-      "triangles": 25689,
-      "bytes": 361888,
+      "triangles": 16451,
+      "bytes": 227884,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

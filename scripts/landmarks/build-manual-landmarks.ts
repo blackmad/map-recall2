@@ -318,6 +318,7 @@ import {buildDeAteliers} from './de-ateliers-builder';
 import {buildHouthavenkade26} from './houthavenkade-26-builder';
 import {buildRoodeLeeuwDamrak} from './roode-leeuw-damrak-builder';
 import {buildSchoolMarnixstraat2} from './school-marnixstraat-2-builder';
+import {buildKadijksplein1718} from './kadijksplein-17-18-builder';
 import {buildOranjekerkPijp} from './oranjekerk-pijp-builder';
 import {buildUtrechtsestraat917} from './utrechtsestraat-9-17-builder';
 import {buildDeKroonRembrandtplein} from './de-kroon-rembrandtplein-builder';
@@ -1204,6 +1205,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='houthavenkade-26')buildHouthavenkade26(w,d,helpers);
     else if(id==='roode-leeuw-damrak')buildRoodeLeeuwDamrak(w,d,helpers);
     else if(id==='school-marnixstraat-2')buildSchoolMarnixstraat2(w,d,helpers);
+    else if(id==='kadijksplein-17-18')buildKadijksplein1718(w,d,helpers);
     else if(id==='oranjekerk-pijp')buildOranjekerkPijp(w,d,helpers);
     else if(id==='utrechtsestraat-9-17')buildUtrechtsestraat917(w,d,helpers);
     else if(id==='de-kroon-rembrandtplein')buildDeKroonRembrandtplein(w,d,helpers);
