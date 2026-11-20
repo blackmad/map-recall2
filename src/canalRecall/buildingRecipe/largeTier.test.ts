@@ -53,8 +53,10 @@ test('fitLarge is deterministic and keeps coplanar surfaces of different wall gr
 
 test('large customers pass the large-tier gates within the 12k budget', async () => {
   for (const id of LARGE) {
-    const {gates, tris} = await gatesOf(validateLargeIntent(raw(id)), facts(id));
-    assert.ok(tris.length <= LARGE_BUDGET_TRIANGLES, `${id}: ${tris.length}`);
+    const intent = validateLargeIntent(raw(id));
+    const {gates, tris} = await gatesOf(intent, facts(id));
+    // A house's opt-in budgetTriangles (12k..40k) is its budget; 2026-11-20: Kattenburgerstraat 32-390 sets 28k.
+    assert.ok(tris.length <= (intent.budgetTriangles ?? LARGE_BUDGET_TRIANGLES), `${id}: ${tris.length}`);
     assert.deepEqual(gates.filter(g => !g.pass).map(g => g.id), [], id);
   }
 });

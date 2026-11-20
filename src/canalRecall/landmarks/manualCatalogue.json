@@ -15887,6 +15887,8 @@
  },
  {
   "id": "haparandaweg-65",
+  "status": "held",
+  "heldReason": "Superseded 2026-11-20 by the large recipe houthavens-238475 (Houthavens round 6-7 blind: new wins against this model; the two drew on the same pand).",
   "category": "ordinary",
   "name": "Haparandaweg 65",
   "modelUrl": "./models/haparandaweg-65.glb",
