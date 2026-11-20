@@ -7,7 +7,12 @@
 import { RETAIL_CHAINS_GEN } from './retailChains.gen.js';
 import type { RetailTemplate } from './retailTemplates.js';
 
-export type RetailChain = { name: string; word: string; wikidata?: string; names: string[]; template: RetailTemplate; fascia: string; letters: string; pois: number };
+export type RetailChain = {
+  name: string; word: string; wikidata?: string; names: string[]; template: RetailTemplate; fascia: string; letters: string; pois: number;
+  /** Lane chain-logos2-20261120: the chain's own pui frame and awning colours (chain-overrides.json), drawn wherever the
+   *  pand has no measured frame or awning of its own (Simon Meijssen's amber-glazed pilasters and brown awning). */
+  frame?: string; awning?: string;
+};
 export const RETAIL_CHAINS: Record<string, RetailChain> = RETAIL_CHAINS_GEN as Record<string, RetailChain>;
 const byWikidata = new Map<string, string>(), byName = new Map<string, string>();
 for (const [k, c] of Object.entries(RETAIL_CHAINS)) { if (c.wikidata) byWikidata.set(c.wikidata, k); for (const n of c.names) byName.set(n.toLowerCase(), k); }
@@ -21,6 +26,11 @@ export function chainForTags(tags: Record<string, string>): string | null {
 export const chainOfWord = (word: string | undefined): string | null => (word && word.startsWith('@') ? word.slice(1) : null);
 /** Lane chain-logos-20261116 (David 2026-11-16, "BENU has specific branding we are missing"): chains that draw their own
  *  board, letters and logo under their type's template even where that template's real look has not won its blind
- *  (Benu's pands are apotheek fronts, which otherwise letter APOTHEEK). Its goods still follow the template. */
-export const CHAINS_OWN_FRONT: ReadonlySet<string> = new Set(['benu']);
+ *  (Benu's pands are apotheek fronts, which otherwise letter APOTHEEK), and even where that template is real-only
+ *  (lane chain-logos2). Its goods still follow the template. */
+export const CHAINS_OWN_FRONT: ReadonlySet<string> = new Set(['benu',
+  // Lane chain-logos2-20261120 (David's Shopfronts notes of 2026-11-20, "find logo"): chains of a real-only type template
+  // that has not won its blind (fast food, restaurant, optician, telecom, liquor, variety) drew no front at all; these
+  // draw it under their own board and logo (round n's window, not the type's goods).
+  'new-york-pizza', 'domino-s', 'subway', 'de-pizzabakkers', 'pearle', 'odido', 'grapedistrict', 'gamma', 'blokker']);
 export const chainOwnFront = (key: string): boolean => CHAINS_OWN_FRONT.has(key);

@@ -501,7 +501,7 @@
     "lat": 52.373401
    },
    "brandAccepted": false,
-   "logoSource": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCyoiFr1TcTIV0-sVK2JF6gS2-jV4WY-6IwQzH16yLMvLIVeSBJjoOzv0&s=10",
+   "logoSource": "https://www.dirk.nl/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-dirk.webp",
    "drawn": true
   },
@@ -565,8 +565,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://newyorkpizza.nl/",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-new-york-pizza.webp",
+   "drawn": true
   },
   {
    "id": "ijscuypje",
@@ -708,7 +708,7 @@
     "lat": 52.379602
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_cigo_nl.png",
+   "logoSource": "https://www.cigo.nl/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-cigo.webp",
    "drawn": true
   },
@@ -725,8 +725,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Domino%27s_2025.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-domino-s.webp",
+   "drawn": true
   },
   {
    "id": "de-pizzabakkers",
@@ -741,8 +741,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:De_Pizzabakkers_Logo.png",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-de-pizzabakkers.webp",
+   "drawn": true
   },
   {
    "id": "holland-and-barrett",
@@ -773,8 +773,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://www.pearle.nl/",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-pearle.webp",
+   "drawn": true
   },
   {
    "id": "subway",
@@ -789,8 +789,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Subway_2016_logo.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-subway.webp",
+   "drawn": true
   },
   {
    "id": "bbrood",
@@ -978,8 +978,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Gamma_logo_2010.png",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-gamma.webp",
+   "drawn": true
   },
   {
    "id": "grapedistrict",
@@ -993,8 +993,9 @@
     "lat": 52.380865
    },
    "brandAccepted": false,
-   "thumb": null,
-   "drawn": false
+   "logoSource": "https://www.grapedistrict.nl/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-grapedistrict.webp",
+   "drawn": true
   },
   {
    "id": "jamin",
@@ -1024,9 +1025,9 @@
     "lat": 52.370637
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Odido_2023_Logo.png",
-   "thumb": null,
-   "drawn": false
+   "logoSource": "https://merk.odido.nl/en/logo",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-odido.webp",
+   "drawn": true
   },
   {
    "id": "the-breakfast-club",
@@ -1103,8 +1104,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Blokker-Logo.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-blokker.webp",
+   "drawn": true
   },
   {
    "id": "ekoplaza-foodmarqt",
@@ -1694,6 +1695,7 @@
     "lat": 52.359779
    },
    "brandAccepted": false,
+   "logoSource": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-30_08-35-53_00865/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-simon-meijssen.webp",
    "drawn": true
   },

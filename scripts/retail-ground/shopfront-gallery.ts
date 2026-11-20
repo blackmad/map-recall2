@@ -87,6 +87,7 @@ function inputFor(template: RetailTemplate, chainKey: string | null, seed: strin
     template, seed, door: { a0: SPAN - 1.9, a1: SPAN - 0.9, depthM: 0.5 }, letters: LOGO, ...(word ? { word } : {}), ...(logo ? { logo } : {}),
     ...(real ? { goods: LOGO + GOODS_BASE, faces: LOGO + TYPE_BASE, ...(VARIETY ? { variety: LOGO + VARIETY_BASE } : {}) } : {}),
     ...(retailChain ? { chain: { fascia: retailChain.fascia, letters: retailChain.letters, word: retailChain.word } } : {}),
+    ...(retailChain?.awning ? { awning: retailChain.awning } : {}), ...(retailChain?.frame ? { frameHex: retailChain.frame } : {}),
     ...(brandKey in BRAND_STYLES ? { brand: brandKey, wallHex: WALL } : {}),
   };
 }
@@ -152,7 +153,7 @@ for (const en of index) {
   if (only && !only.includes(en.id)) continue;
   const tpl = en.template as RetailTemplate;
   if (!(RETAIL_TEMPLATES as readonly string[]).includes(tpl) || !TEMPLATE_LOOKS[tpl]) { console.warn(`skip ${en.id}: no template ${tpl}`); continue; }
-  if ((REAL_ONLY_TEMPLATES as readonly string[]).includes(tpl) && !realAccepted(tpl)) { console.warn(`skip ${en.id}: ${tpl} not accepted`); continue; }
+  if ((REAL_ONLY_TEMPLATES as readonly string[]).includes(tpl) && !realAccepted(tpl) && !(en.kind === 'chain' && RETAIL_CHAINS[en.id] && chainOwnFront(en.id))) { console.warn(`skip ${en.id}: ${tpl} not accepted`); continue; }
   const chainKey = en.kind === 'chain' && RETAIL_CHAINS[en.id] ? en.id : null;
   const size = await thumb(inputFor(tpl, chainKey, `gallery-${en.id}`), path.join(THUMBS, thumbFile(en.kind, en.id)));
   drawn.add(`${en.kind}:${en.id}`); n++; bytes += size; biggest = Math.max(biggest, size);
