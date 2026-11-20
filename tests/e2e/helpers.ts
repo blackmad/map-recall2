@@ -53,6 +53,14 @@ export async function useBundlesDir(page: Page): Promise<void> {
     const file = join(world, /\/world-v1\/([\w/.-]+?)(\?.*)?$/.exec(route.request().url())![1]);
     return existsSync(file) ? route.fulfill({ body: readFileSync(file), contentType: file.endsWith('.json') ? 'application/json' : 'application/octet-stream' }) : route.continue();
   });
+  // `STAGED_CANAL_DIR=<dir>` serves any /canal-drive/<path> file that exists under <dir>/<path> (a lane's staged
+  // ordinary-buildings-data/catalogue.json and models/ordinary-buildings/*.glb), so a lane can frame its staged installs
+  // without touching the committed catalogue; files missing there are served as usual.
+  const staged = process.env.STAGED_CANAL_DIR;
+  if (staged) await page.route(/\/canal-drive\/((?:ordinary-buildings-data|models)\/[\w/.-]+?)(\?.*)?$/, route => {
+    const file = join(staged, /\/canal-drive\/([\w/.-]+?)(\?.*)?$/.exec(new URL(route.request().url()).pathname)![1]);
+    return existsSync(file) ? route.fulfill({ body: readFileSync(file), contentType: file.endsWith('.json') ? 'application/json' : file.endsWith('.glb') ? 'model/gltf-binary' : 'application/octet-stream' }) : route.continue();
+  });
   const dir = process.env.BUNDLES_DIR;
   if (!dir) return;
   await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
