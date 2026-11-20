@@ -1,0 +1,22 @@
+{
+ "pair1": {
+  "key": "kb-ne",
+  "A": "today",
+  "B": "new"
+ },
+ "pair2": {
+  "key": "kb-ne2",
+  "A": "new",
+  "B": "today"
+ },
+ "pair3": {
+  "key": "kb-sw",
+  "A": "today",
+  "B": "new"
+ },
+ "pair4": {
+  "key": "kb-poort",
+  "A": "today",
+  "B": "new"
+ }
+}

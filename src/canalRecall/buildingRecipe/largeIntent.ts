@@ -65,7 +65,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     if (!Array.isArray(m?.groups)) problems.push('measured.groups: list of wall-group indices');
     else m.groups.forEach(g => count(g, 'measured.groups', 0, Math.max(0, (intent.walls?.length ?? 1) - 1)));
     bool(m?.otherWalls, 'measured.otherWalls');
-    for (const k of Object.keys(m ?? {})) if (!['date', 'groups', 'otherWalls'].includes(k)) problems.push(`measured.${k}: unknown field (date, groups, otherWalls)`);
+    bool(m?.stone, 'measured.stone');
+    for (const k of Object.keys(m ?? {})) if (!['date', 'groups', 'otherWalls', 'stone'].includes(k)) problems.push(`measured.${k}: unknown field (date, groups, otherWalls, stone)`);
   }
   if (intent?.draftedBy !== undefined) oneOf(intent.draftedBy, ['factory'], 'draftedBy');
   if (intent?.otherWalls !== undefined) oneOf(intent.otherWalls, [...LARGE_SYSTEMS, OTHER_WINDOW_GRID], 'otherWalls');

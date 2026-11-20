@@ -137,6 +137,131 @@
     "h": 0.55,
     "sill": 0
    }
+  },
+  {
+   "wallSurfaces": [
+    21,
+    25,
+    27,
+    191,
+    199,
+    200,
+    234,
+    245
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "ground": "glazed",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#bfa271",
+    "frame": "#4a3e32",
+    "stone": "#c8b890"
+   },
+   "hand": [
+    "baysPerStorey",
+    "palette",
+    "system",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.48,
+    "h": 0.62,
+    "sill": 0.15
+   }
+  },
+  {
+   "wallSurfaces": [
+    28
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "ground": "glazed",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#bfa271",
+    "frame": "#4a3e32",
+    "stone": "#c8b890"
+   },
+   "hand": [
+    "baysPerStorey",
+    "palette",
+    "system",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.48,
+    "h": 0.62,
+    "sill": 0.15
+   }
+  },
+  {
+   "wallSurfaces": [
+    43
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "deepBars": true,
+   "stringCourses": true,
+   "cornice": true,
+   "windowShape": {
+    "w": 0.3,
+    "h": 0.42,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#534943",
+    "frame": "#2a2e32",
+    "stone": "#8a7a6a"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    17,
+    19
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "deepBars": true,
+   "cornice": true,
+   "arches": {
+    "windows": "round",
+    "storeys": [
+     0
+    ],
+    "band": "brick"
+   },
+   "palette": {
+    "brick": "#352e2a",
+    "frame": "#2a2e32",
+    "stone": "#e0d8c0"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "windowShape": {
+    "w": 0.334,
+    "h": 0.55,
+    "sill": 0
+   }
   }
  ],
  "otherWalls": "blank",
@@ -160,14 +285,18 @@
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #201f1e not used (not darker than the wall #352e2a by 10 L*, or tinted): kit glass kept.",
   "Refit 2026-10-25 (issue #59): the Hyatt Regency (2021) is a grid of deep splayed brick frames in a golden glazed brick, a window of about half the cell's width at the back of each cell. Brick #bfa271 from the sunlit piers of w02-342L (#d0af81 sunlit, #a18a64 shaded spandrel); the gate's crops are overcast or shaded (#6a6350, #594f3b) and FAIL on wall lightness only: a misread of light, allowed as inferred. walls[1] (w02-342L, Spinozastraat): 12 cells of 3.8 m (was 8), windows w 0.48, h 0.62, sill 0.15: glazing and columns now match (0.32 vs 0.32, 12 vs 13). walls[0] (w01-162): its crop is the left wing, a frame grid of large loggia-like cells beside green glazed-tile cladding: 3 cells (was 8), windows w 0.4, the ground as a one-light plinth. Kit cannot say: the deep splayed (chamfered) reveals of the frame grid, the green mottled tile cladding of the side wings, the mansard skylights.",
   "roof.flatHex #81898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 132/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
-  "roof.pitchedHex #81898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 132/140/140, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73)."
+  "roof.pitchedHex #81898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5385: slot slate, rgb 132/140/140, confidence 1; roof-flat.ts --pitched), the colour the city drew its pitched roofs in (issue #73).",
+  "Lane large-buildings-20261120 (2026-11-20): four photographed walls joined groups. 3 the SE yellow grid front (w03-122, 2019-05-14, five bays) and 4 the E front (w06-72, 2021-03-19, four bays), both in group 1's measured brick and window shape; 5 the 1890s warehouse on the N (w07-341L, 2021-03-19), brick #534943 sampled, its proud box windows drawn as plain dark-framed windows (the kit's windowBox is one span per storey, it cannot place single scattered boxes); 6 the dark-brick corner house (w09-341, 2024-12-10) in group 2's palette, three bays."
  ],
  "measured": {
   "date": "2026-10-14",
   "groups": [
    0,
    1,
-   2
+   2,
+   3,
+   4,
+   5
   ]
  }
 }

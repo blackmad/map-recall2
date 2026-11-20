@@ -1,0 +1,253 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "weesperstraat-100-181841",
+ "pandId": "0363100012181841",
+ "address": "Weesperstraat 100-282 (+ Nieuwe Prinsengracht), Amsterdam-Centrum: 1993 housing block, a grey concrete frame grid of nine to ten storeys over a five-storey range, with a dark-brick end wall over an open ground floor",
+ "sources": [
+  {
+   "id": "pano-2024-12-03-w02-73L",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_1333_Track01_Sphere_00102/",
+   "image": "source-data://pand-reference-walls/0363100012181841/w02-73L.jpg",
+   "sha256": "feaf5b06433a4d6935d6696fb74ff184f11755388e8735c65b0903cf76f1d283",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-12-03-w03-67",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_1333_Track01_Sphere_00108/",
+   "image": "source-data://pand-reference-walls/0363100012181841/w03-67.jpg",
+   "sha256": "a9b5b32a662f4430293ce667c0e49617dca309da97e6a22140450c1a14584b90",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-01-09-w04-73",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-09",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250109_1300_Track12_Sphere_00146/",
+   "image": "source-data://pand-reference-walls/0363100012181841/w04-73.jpg",
+   "sha256": "6ba458bf33f8c6ea51d9e5542e749ba3ad68edf2c15baf1f190c3c7952118bac",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-07-06-w05-343",
+   "kind": "street-panorama",
+   "capturedAt": "2017-07-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0002_000333/",
+   "image": "source-data://pand-reference-walls/0363100012181841/w05-343.jpg",
+   "sha256": "2f5449665ce7962fe1d084471475702bae1edc04493a756835b38852f8f548a4",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#8a8b86",
+  "frame": "#3a3e40",
+  "stone": "#9a9b96",
+  "door": "#3a3a3a"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "walls": [
+  {
+   "wallSurfaces": [
+    12
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "windows": "plain",
+   "piers": true,
+   "wallMaterial": "render",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#8a8b86",
+    "frame": "#3a3e40",
+    "stone": "#9a9b96"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial"
+   ],
+   "street": "Weesperstraat"
+  },
+  {
+   "wallSurfaces": [
+    94
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "windows": "plain",
+   "piers": true,
+   "wallMaterial": "render",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#8a8b86",
+    "frame": "#3a3e40",
+    "stone": "#9a9b96"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    112
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "piers": true,
+   "wallMaterial": "render",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#8a8b86",
+    "frame": "#3a3e40",
+    "stone": "#9a9b96"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    67,
+    73,
+    107,
+    108,
+    110
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "plain",
+   "piers": true,
+   "wallMaterial": "render",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#8a8b86",
+    "frame": "#3a3e40",
+    "stone": "#9a9b96"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    8
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "piers": true,
+   "wallMaterial": "render",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#8a8b86",
+    "frame": "#3a3e40",
+    "stone": "#9a9b96"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    37,
+    129
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 3,
+   "ground": "glazed",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.22,
+    "h": 0.25,
+    "sill": 0.4
+   },
+   "palette": {
+    "brick": "#3a3634",
+    "frame": "#2a2a2a",
+    "stone": "#5a5654"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  }
+ ],
+ "notes": [
+  "Lane large-buildings-20261120 (2026-11-20), backlog row 11. Groups: 0 the five-storey E range (w02-73L, 2024-12-03); 1 the nine-storey grid above and behind it (same crop); 2 the E tower front (w04-73, 2025-01-09); 3 and 4 the N fronts (w05-343, 2017-07-06); 5 the dark-brick NE end wall with sparse small windows over a glazed/open ground floor (w03-67, 2024-12-03).",
+  "Colours INFERRED, not measured: the crops are graded green-grey and tree-covered, so concrete #8a8b86 and the end wall's dark brick #3a3634 are read by eye. The W (courtyard) front has no photograph and stays in the window grid.",
+  "Not modelled: the recessed balcony cells in the concrete frame, the open arcade under the NE end wall (drawn glazed)."
+ ]
+}

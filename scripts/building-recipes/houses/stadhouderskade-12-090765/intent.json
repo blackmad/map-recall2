@@ -1,0 +1,245 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "stadhouderskade-12-090765",
+ "pandId": "0363100012090765",
+ "address": "Stadhouderskade 12 (+ Leidsekade), Amsterdam-Centrum: 1974 hotel block, a six-storey buff-brick base of paired windows with French balconies and grey floor bands, red-capped dormer bays, and a brick tower of the same windows to about 33 m",
+ "sources": [
+  {
+   "id": "pano-2021-03-24-w03-337L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002059_pano_0000_003213/",
+   "image": "source-data://pand-reference-walls/0363100012090765/w03-337L.jpg",
+   "sha256": "d4c8ded9bcd41cd91ed0fcc431c4c07d0bc08ee1008a5334705d2ec37f63e07e",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-12-11-w01-157",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241211_0838_Track05_Sphere_00010/",
+   "image": "source-data://pand-reference-walls/0363100012090765/w01-157.jpg",
+   "sha256": "0292e75ed402d292c0ee565105f8856ce214e76ec87800e61fca3ccaa5b509ca",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-24-w02-247",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002059_pano_0000_003246/",
+   "image": "source-data://pand-reference-walls/0363100012090765/w02-247.jpg",
+   "sha256": "8856777f59f08ab3ac79caaa54a806c5d4d964d8a339fc971a54022bf6aca9b0",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    101
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "plain",
+   "stringCourses": true,
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#8c6e56",
+    "frame": "#ece9e0",
+    "stone": "#8e8979"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ],
+   "street": "Stadhouderskade"
+  },
+  {
+   "wallSurfaces": [
+    66
+   ],
+   "system": "brick-bay-grid",
+   "baysPerStorey": 1,
+   "ground": "system",
+   "windows": "plain",
+   "stringCourses": true,
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#8c6e56",
+    "frame": "#ece9e0",
+    "stone": "#8e8979"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ],
+   "alignWith": 0
+  },
+  {
+   "wallSurfaces": [
+    139
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "plain",
+   "stringCourses": true,
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#8c6e56",
+    "frame": "#ece9e0",
+    "stone": "#8e8979"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    202
+   ],
+   "system": "brick-bay-grid",
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "plain",
+   "stringCourses": true,
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#8c6e56",
+    "frame": "#ece9e0",
+    "stone": "#8e8979"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ],
+   "alignWith": 2
+  },
+  {
+   "wallSurfaces": [
+    206,
+    23
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "plain",
+   "stringCourses": true,
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#8c6e56",
+    "frame": "#ece9e0",
+    "stone": "#8e8979"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    115,
+    122,
+    166
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "stringCourses": true,
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#8c6e56",
+    "frame": "#ece9e0",
+    "stone": "#8e8979"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#8c6e56",
+  "frame": "#ece9e0",
+  "stone": "#8e8979",
+  "door": "#3a3a3a",
+  "glass": "#3e4a50"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "measured": {
+  "date": "2024-12-11",
+  "groups": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "otherWalls": true
+ },
+ "notes": [
+  "Stadhouderskade 12 (BAG pand 0363100012090765, built 1974; ordinary-backlog-20261120 row 6, generic today). Lane large-buildings-20261120 round 3. Photographed: the NW front (w03-337L 2021-03-24, straight: tower left, the base with French balconies and red awnings), the SE front (w01-157 2024-12-11, 47 degrees: the six-storey base and the tower over it) and the SW side (w02-247 2021-03-24, 47 degrees).",
+  "walls[0] = surface 101 (NW, 22.9 m, to 32.5 m: tower and base flush) and walls[2] = surface 139 (SE, 22.9 m, to 32.5 m) as 10 storeys x 7 bays with grey floor bands; walls[1] = surface 66 and walls[3] = surface 202 the six-storey base beside them (aligned); walls[4] = S surfaces 206/23 and walls[5] = SW surfaces 115/122/166, six storeys. Brick #8c6e56 and bands #8e8979 sampled from w01-157. Simplified: the French balconies (flush bar rails; the kit's balconies stand proud as cream slabs, tried and dropped), the red-capped dormer bays, the awnings, the set-back top of the tower (3DBAG roof). Not drawn: the low SW range (surfaces 63/36, 7.6 m) and the tower's set-back upper faces (shader grid)."
+ ]
+}

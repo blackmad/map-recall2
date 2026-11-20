@@ -71,3 +71,18 @@ test('wallSplit: validated; the main panel wall right of a bay boundary gets the
   const q = right.geometry.attributes.position.array as Float32Array;
   for (let i = 0; i < q.length; i += 3) assert.ok((q[i] - p.o[0]) * p.r[0] + (q[i + 1] - p.o[1]) * p.r[1] + (q[i + 2] - p.o[2]) * p.r[2] >= g.split!.uM - 0.01);
 });
+
+test('measured.stone: opt-in carries the measured groups\' stone slots as measured; absent leaves the recipe byte-identical', () => {
+  const base = validateLargeIntent(raw()), f = facts(), w0 = base.walls[0];
+  const withGroupStone = {...base, measured: {date: '2026-11-20', groups: [0]}, walls: [{...w0, palette: {...w0.palette, stone: '#8a8a8c'}}, ...base.walls.slice(1)]};
+  const off = fitLarge(validateLargeIntent(withGroupStone), f).recipe;
+  const on = fitLarge(validateLargeIntent({...withGroupStone, measured: {...withGroupStone.measured, stone: true}}), f).recipe;
+  assert.ok(!(off.measuredSlots ?? []).includes('stone@g0'));
+  assert.ok(on.measuredSlots!.includes('stone@g0'));
+  const rest = on.measuredSlots!.filter(s => s !== 'stone@g0'), {measuredSlots: _drop, ...onBare} = on;
+  assert.equal(JSON.stringify(rest.length ? {...onBare, measuredSlots: rest} : onBare), JSON.stringify(off));
+  // a measured group without its own stone carries the house stone
+  const house = fitLarge(validateLargeIntent({...base, measured: {date: '2026-11-20', groups: [0], stone: true}}), f).recipe;
+  assert.ok(house.measuredSlots!.includes('stone'));
+  assert.throws(() => validateLargeIntent({...base, measured: {date: '2026-11-20', groups: [0], stone: 'yes'}}), /measured.stone/);
+});

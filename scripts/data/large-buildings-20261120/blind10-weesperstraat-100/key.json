@@ -1,0 +1,22 @@
+{
+ "pair1": {
+  "key": "ws100-e",
+  "A": "today",
+  "B": "new"
+ },
+ "pair2": {
+  "key": "ws100-ne",
+  "A": "new",
+  "B": "today"
+ },
+ "pair3": {
+  "key": "ws100-e2",
+  "A": "new",
+  "B": "today"
+ },
+ "pair4": {
+  "key": "ws100-n",
+  "A": "today",
+  "B": "new"
+ }
+}

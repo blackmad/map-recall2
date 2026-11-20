@@ -1,0 +1,121 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "keizersgracht-359-253947",
+ "pandId": "0363100012253947",
+ "address": "Keizersgracht 359-371 (+ Huidenstraat), Amsterdam-Centrum: late-1930s office block in brown brick on the canal, six storeys of cream-framed windows over a stone ground storey, a tall stair light and a carved entrance",
+ "sources": [
+  {
+   "id": "pano-2017-07-07-w01-274",
+   "kind": "street-panorama",
+   "capturedAt": "2017-07-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000355_pano_0000_000880/",
+   "image": "source-data://pand-reference-walls/0363100012253947/w01-274.jpg",
+   "sha256": "562dd957dbc4b9340ac3fde79f76286047cf373e8634640be10f234ff09420f7",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-01-08-w06-184L",
+   "kind": "street-panorama",
+   "capturedAt": "2020-01-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001543_pano_0000_002467/",
+   "image": "source-data://pand-reference-walls/0363100012253947/w06-184L.jpg",
+   "sha256": "2ca1710541d7300488361864245a0cb7efb3c21e54ab1ca43d69667bacc04782",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#493b31",
+  "frame": "#d8d0bc",
+  "stone": "#b8b0a0",
+  "door": "#3a2e28"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "walls": [
+  {
+   "wallSurfaces": [
+    1
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "two-light",
+   "frames": true,
+   "sills": true,
+   "cornice": true,
+   "stoneStoreys": [
+    0
+   ],
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#493b31",
+    "frame": "#d8d0bc",
+    "stone": "#b8b0a0"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ],
+   "street": "Keizersgracht"
+  },
+  {
+   "wallSurfaces": [
+    30,
+    31
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "two-light",
+   "frames": true,
+   "sills": true,
+   "cornice": true,
+   "stoneStoreys": [
+    0
+   ],
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#493b31",
+    "frame": "#d8d0bc",
+    "stone": "#b8b0a0"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  }
+ ],
+ "measured": {
+  "date": "2023-03-13",
+  "groups": [
+   0,
+   1
+  ]
+ },
+ "notes": [
+  "Lane large-buildings-20261120 (2026-11-20), backlog row 17 (generic, wrong period). The W canal front (w01-274, 2017-07-07; the 66 m crop also holds the neighbouring classical house on the left, which is not this pand): brown brick, about ten window axes, six storeys under a cornice, cream window frames, a stone ground storey with a carved entrance. Brick #493b31 sampled on the S front (w06-184L) between windows; stone and frame cream by eye.",
+  "Group 1 the S front on the Huidenstraat (w06-184L): the same brick, large cream-framed windows over the stone ground storey.",
+  "Not modelled: the full-height stair light on the canal front, the small balconies on the right-hand window groups, the carved entrance cartouche. The E rear (22 m, no panorama) stays in the window grid."
+ ]
+}

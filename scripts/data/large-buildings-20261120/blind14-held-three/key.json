@@ -1,0 +1,32 @@
+{
+ "pair1": {
+  "key": "stadho-12-w03-337L",
+  "A": "fix",
+  "B": "today"
+ },
+ "pair2": {
+  "key": "stadho-12-w01-157",
+  "A": "fix",
+  "B": "today"
+ },
+ "pair3": {
+  "key": "katten-16493-w10-45L",
+  "A": "fix",
+  "B": "today"
+ },
+ "pair4": {
+  "key": "katten-16493-w11-225",
+  "A": "fix",
+  "B": "today"
+ },
+ "pair5": {
+  "key": "weespe-107-w02-70",
+  "A": "today",
+  "B": "fix"
+ },
+ "pair6": {
+  "key": "weespe-107-w04-344",
+  "A": "fix",
+  "B": "today"
+ }
+}

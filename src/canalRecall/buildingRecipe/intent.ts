@@ -1758,7 +1758,9 @@ export interface LargeBuildingIntent {
    * The intent carries values measured from the rectified photos (`measure.ts --write`, the evidence in
    * `houses/<id>/measured.json`): the date of that run and the wall groups it wrote.
    */
-  measured?: {date: string; groups: number[]; /** `palette.brick` (the unlisted walls' colour) was measured too, so it is drawn as is */ otherWalls?: boolean};
+  measured?: {date: string; groups: number[]; /** `palette.brick` (the unlisted walls' colour) was measured too, so it is drawn as is */ otherWalls?: boolean;
+    /** the measured groups' stone colour (their `palette.stone`, or the house stone they use) was sampled too: the look keeps it instead of lifting a mid-grey stone to cream (lane large-buildings-20261120). Absent: byte-identical. */
+    stone?: boolean};
   /**
    * `factory`: written by the landmark factory's draft (`draftLarge.ts`), so the factory may redraft and measure it
    * (`--write`). Absent: hand-authored, and the factory never writes the intent, its facts or its measured.json.

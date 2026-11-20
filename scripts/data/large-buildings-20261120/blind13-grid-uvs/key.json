@@ -1,0 +1,82 @@
+{
+ "pair1": {
+  "key": "entrep-16498-w02-30",
+  "A": "fix",
+  "B": "nofix"
+ },
+ "pair2": {
+  "key": "entrep-16498-w03-30",
+  "A": "nofix",
+  "B": "fix"
+ },
+ "pair3": {
+  "key": "louise-wents-w04-135L",
+  "A": "fix",
+  "B": "nofix"
+ },
+ "pair4": {
+  "key": "louise-wents-w08-45",
+  "A": "nofix",
+  "B": "fix"
+ },
+ "pair5": {
+  "key": "waagdr-198-w01-16",
+  "A": "nofix",
+  "B": "fix"
+ },
+ "pair6": {
+  "key": "waagdr-198-w08-286",
+  "A": "nofix",
+  "B": "fix"
+ },
+ "pair7": {
+  "key": "wg-plein-w09-67L",
+  "A": "fix",
+  "B": "nofix"
+ },
+ "pair8": {
+  "key": "wg-plein-w12-247L",
+  "A": "fix",
+  "B": "nofix"
+ },
+ "pair9": {
+  "key": "katten-wings-w11-74L",
+  "A": "fix",
+  "B": "nofix"
+ },
+ "pair10": {
+  "key": "katten-wings-w08-254",
+  "A": "nofix",
+  "B": "fix"
+ },
+ "pair11": {
+  "key": "stadho-12-w03-337L",
+  "A": "nofix",
+  "B": "fix"
+ },
+ "pair12": {
+  "key": "stadho-12-w01-157",
+  "A": "fix",
+  "B": "nofix"
+ },
+ "pair13": {
+  "key": "katten-16493-w10-45L",
+  "A": "nofix",
+  "B": "fix"
+ },
+ "pair14": {
+  "key": "katten-16493-w11-225",
+  "A": "fix",
+  "B": "nofix"
+ },
+ "pair15": {
+  "key": "weespe-107-w02-70",
+  "A": "fix",
+  "B": "nofix"
+ },
+ "pair16": {
+  "key": "weespe-107-w04-344",
+  "A": "nofix",
+  "B": "fix"
+ }
+}
