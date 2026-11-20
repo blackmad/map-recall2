@@ -33,7 +33,7 @@ export function shopVarietyOn(): boolean {
 
 /** A goods kind's pane set: how often the signature shows ('once': one tile; 'most': the door's tile and about
  *  `share` of the rest) and the fillers its other tiles draw from. Absent: every tile the signature (exempt). */
-export type PaneSet = { signature: 'once' | 'most'; share?: number; fillers: readonly FillerKind[] };
+export type PaneSet = { signature: 'once' | 'most'; share?: number; /** 'most': at most this share of the tiles (rounded, at least one). */ maxShare?: number; fillers: readonly FillerKind[] };
 
 /** Every goods kind's pane set. Exempt: automatiek (FEBO's wall of hatches is the whole front) and redWindow (lane R's
  *  window front draws its own panes). */
@@ -46,7 +46,8 @@ export const PANE_SETS: Readonly<Partial<Record<GoodsKind, PaneSet>>> = {
   bainMarie: { signature: 'once', fillers: ['tablesBright', 'drinksFridge', 'wallShelves', 'menuPoster'] },
   bowls: { signature: 'once', fillers: ['tablesBright', 'windowBar', 'plantGlass', 'lamps'] },
   deli: { signature: 'once', fillers: ['tablesWarm', 'windowBar', 'drinksFridge', 'wallShelves'] },
-  gelato: { signature: 'once', fillers: ['tablesWarm', 'tablesBright', 'windowBar', 'menuPoster', 'plantGlass'] },
+  // Blind round 1: one case in four panes diluted the ijssalon; the counter shows on about half the panes.
+  gelato: { signature: 'most', share: 0.35, maxShare: 0.5, fillers: ['tablesWarm', 'tablesBright', 'windowBar', 'menuPoster', 'plantGlass'] },
   waffles: { signature: 'once', fillers: ['tablesBright', 'menuPoster', 'windowBar', 'lamps'] },
   pancakes: { signature: 'once', fillers: ['tablesWarm', 'lamps', 'plantGlass', 'blind'] },
   // Cafés and bars: tables are the signature, so it may repeat; the quieter windows break the run.
@@ -123,6 +124,13 @@ export function planPanes(kind: GoodsKind, tiles: readonly PlanTile[], doors: Re
     // At least one filler: the tile furthest from the signature.
     const far = tiles.map((_, i) => i).sort((p, q) => Math.abs(q - sig) - Math.abs(p - sig))[0];
     isSig[far] = false;
+  }
+  if (set.maxShare !== undefined) {
+    // Over the cap: the signatures furthest from the signature tile become fillers.
+    const cap = Math.max(1, Math.round(tiles.length * set.maxShare));
+    const extra = tiles.map((_, i) => i).filter(i => isSig[i] && i !== sig).sort((p, q) => Math.abs(q - sig) - Math.abs(p - sig));
+    const over = isSig.filter(Boolean).length - cap;
+    for (let k = 0; k < over && k < extra.length; k++) isSig[extra[k]] = false;
   }
   const deck: FillerKind[] = [];
   const refill = (k: number) => deck.push(...set.fillers.map((f, j) => ({ f, r: hash01(`${seed}:deck${k}:${j}`) })).sort((p, q) => p.r - q.r).map(x => x.f));

@@ -105,18 +105,23 @@ const PAINTERS: Record<FillerKind, (p: P) => void> = {
     decals(p, p.r() < 0.5);
   },
   drinksFridge(p) {
-    // Glass-door drinks fridges glowing at the side wall, the rest of the shop in its ordinary light.
-    room(p, '#e2dccf', '#a49a8a', '255,246,226', 1);
-    for (const [x0, w] of [[8, 64], [76, 64]] as const) {
-      rect(p, x0 - 3, 40, w + 6, 182, '#d8d8d8'); rect(p, x0, 46, w, 168, '#f4f8fa'); glow(p, x0 + w / 2, 120, 60, '230,244,255', 0.35);
-      const ys = [80, 112, 144, 176, 208];
-      shelves(p, ys, '#c8ccd0', x0, x0 + w);
-      for (const y of ys) for (let x = x0 + 4; x < x0 + w - 6; x += 7) bottle(p, x + 3, y, 22 + 6 * p.r(), pick(p.r, ['#d8302a', '#2a6ab0', '#f2c230', '#3a8a3a', '#e8e8e8', '#1a1a1a', '#f08a2a']), pick(p.r, ['#ffffff', '#f2c230', '#1a1a1a']));
-      rect(p, x0 + 2, 46, w - 4, 10, pick(p.r, ['#d8302a', '#1a4fa0', '#2a8a4a']));
-      rect(p, x0 + w - 6, 90, 2, 70, 'rgba(60,60,60,0.7)');
-      rect(p, x0 + 2, 60, 6, 150, 'rgba(255,255,255,0.35)');
+    // A cold-drinks fridge (blind round 1: a wall of mixed bottles read as a liquor shop in a doner's window): one tall
+    // glass-door fridge glowing cool white, rows of one can colour each under a brand header, and beside it the room
+    // with a small table and a diner.
+    room(p, '#e6e0d4', '#a49a8a', '255,246,226', 1);
+    const x0 = 8, w = 74;
+    rect(p, x0 - 4, 30, w + 8, 196, '#b8bcc0'); rect(p, x0, 50, w, 170, '#eef6fb'); glow(p, x0 + w / 2, 130, 70, '220,240,255', 0.5);
+    rect(p, x0 - 4, 30, w + 8, 18, pick(p.r, ['#d8302a', '#1a4fa0', '#2a8a4a'])); rect(p, x0 + 12, 36, w - 24, 6, '#ffffff');
+    const rows = [['#d8302a', '#d8302a', '#c02420'], ['#2a6ab0', '#e8e8e8'], ['#f2a020', '#f2c230'], ['#3a9a3a', '#7ac04a'], ['#e8e8e8', '#d8302a'], ['#6a3a8a', '#e04a8a']];
+    for (const [k, y] of [74, 98, 122, 146, 170, 194].entries()) {
+      rect(p, x0, y, w, 3, '#c8d0d6');
+      const cols = rows[(k + Math.floor(p.r() * rows.length)) % rows.length];
+      for (let x = x0 + 3; x < x0 + w - 8; x += 8) { round(p, x, y - 15, 7, 15, 1.5, cols[Math.floor((x - x0) / 24) % cols.length]); rect(p, x + 1, y - 13, 1.5, 11, 'rgba(255,255,255,0.4)'); }
     }
-    decals(p, p.r() < 0.5);
+    rect(p, x0 + w / 2 - 1, 50, 2, 170, 'rgba(120,130,140,0.8)'); rect(p, x0 + w - 6, 110, 2, 40, '#888');
+    rect(p, x0 + 2, 52, 5, 166, 'rgba(255,255,255,0.4)');
+    person(p, 118, 188, 0.9); table(p, 118, 194, '#e8e4dc', '#6a6a6a', '#8a2a22');
+    decals(p, true);
   },
   menuPoster(p) {
     // A big menu / food-photo poster stuck to the inside of the glass, the lit shop round it, price strips under it.

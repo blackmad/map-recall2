@@ -81,7 +81,7 @@ test("'most' kinds: the signature beside the door and on more tiles, at least on
       assert.ok(plan.some(c => c.signature) && plan.some(c => !c.signature), `${kind} m${s}`);
       sigs += plan.filter(c => c.signature).length; n += plan.length;
     }
-    assert.ok(sigs / n > 0.35, `${kind}: signature share ${(sigs / n).toFixed(2)}`);
+    assert.ok(sigs / n > (PANE_SETS[kind]!.maxShare !== undefined ? 0.25 : 0.35), `${kind}: signature share ${(sigs / n).toFixed(2)}`);
   }
 });
 
@@ -106,4 +106,11 @@ test('fronts: flag off byte-identical; on, the same triangles with filler tiles 
       if (PANE_SETS[kind]?.signature === 'once') assert.equal(sigTiles, 1, `${t}: one signature tile`);
     }
   } finally { delete g.__canalRecallRetailReal; delete g.__canalRecallShopVariety; }
+});
+
+test('gelato: the counter on at most half the panes (blind round 1: one in four diluted it; David: not in every window)', () => {
+  for (let s = 0; s < 200; s++) for (const n of [2, 3, 4, 5, 6]) {
+    const plan = planPanes('gelato', row(n), [[0.3 + n * 1.15 + 0.1, 0.3 + n * 1.15 + 1.1]], `g${s}`), sig = plan.filter(c => c.signature).length;
+    assert.ok(sig >= 1 && sig <= Math.max(1, Math.round(n * 0.5)), `g${s} n${n}: ${sig}`);
+  }
 });
