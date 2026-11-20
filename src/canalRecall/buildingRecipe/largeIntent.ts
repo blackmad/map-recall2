@@ -254,7 +254,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       const bk = Object.keys(w.balconies);
       for (const k of bk) if (!['storeys', 'rail', 'every', 'first', 'bays', 'colour', 'deep', 'windows', 'run', 'brick', 'edge', 'pane', 'posts'].includes(k)) problems.push(`${at}.balconies.${k}: unknown field (storeys, rail, every, first, bays, colour, deep, windows, run, brick, edge, pane, posts)`);
       if (w.balconies.edge !== undefined) colour(w.balconies.edge, `${at}.balconies.edge`);
-      if (w.balconies.pane !== undefined && w.balconies.pane !== 'glass') colour(w.balconies.pane, `${at}.balconies.pane`);
+      if (w.balconies.pane !== undefined && w.balconies.pane !== 'glass' && w.balconies.pane !== 'clearGlass') colour(w.balconies.pane, `${at}.balconies.pane`);
       if (w.balconies.posts !== undefined) {
         const ps = w.balconies.posts as {colour?: unknown; w?: unknown};
         for (const k of Object.keys(ps ?? {})) if (!['colour', 'w'].includes(k)) problems.push(`${at}.balconies.posts.${k}: unknown field (colour, w)`);
@@ -668,7 +668,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
             const b = h?.[kind] as {storeys?: unknown; bays?: unknown; rail?: unknown} | undefined;
             if (b === undefined) continue;
             const allowed = kind === 'balconies' ? ['storeys', 'bays', 'rail', 'edge', 'pane'] : ['storeys', 'bays', 'w', 'h', 'sill', 'deep', 'rail', 'lights'];
-            for (const ck of ['edge', 'pane'] as const) { const v = (b as Record<string, unknown>)?.[ck]; if (kind === 'balconies' && v !== undefined && !(ck === 'pane' && v === 'glass')) colour(v, `${hat}.balconies.${ck}`); }
+            for (const ck of ['edge', 'pane'] as const) { const v = (b as Record<string, unknown>)?.[ck]; if (kind === 'balconies' && v !== undefined && !(ck === 'pane' && (v === 'glass' || v === 'clearGlass'))) colour(v, `${hat}.balconies.${ck}`); }
             for (const key of Object.keys(b ?? {})) if (!allowed.includes(key)) problems.push(`${hat}.${kind}.${key}: unknown field (${allowed.join(', ')})`);
             if (!Array.isArray(b?.storeys) || !b.storeys.length || b.storeys.some(q => !Number.isInteger(q) || q < 1 || q > 39)) problems.push(`${hat}.${kind}.storeys: list of storeys (1 = first floor)`);
             if (b?.bays !== undefined) {

@@ -47,5 +47,9 @@ test('terraces.wrap / glassRail: validated; wrap runs the slabs on past a panel 
   assert.ok([...slots(base.group)].some(n => /rail@tg4/.test(n)), 'plain rail in its own slot');
   assert.ok(![...slots(glass.group)].some(n => /rail@tg4/.test(n)), 'glass rail drops the rail slot');
   assert.equal(glass.components.terraces, base.components.terraces);
+  assert.throws(() => validateLargeIntent(at({glassRail: 'clearish'})), /terraces.glassRail/);
+  const clear = compileLargeBuilding(validateLargeIntent(at({glassRail: 'clear'})), facts(), opts);
+  assert.ok([...slots(clear.group)].some(n => /clearglass@tg4/.test(n)), 'clear rail in its own slot');
+  assert.ok(clear.recipe.measuredSlots!.includes('clearglass@tg4'), 'drawn as authored');
   assert.ok(wrap.blockGates.floatingOk && glass.blockGates.floatingOk);
 });

@@ -21,8 +21,8 @@ export interface WallLightIntent { along: [number, number]; up: [number, number]
 /** `wrap`: the slabs (not the rails or canopy) run on `deep` past each panel end, so the slabs of two fronts meet round a corner
  *  instead of ending in two loose fins (252692) */
 /** `glassRail`: the rail sheet is the group's glazing under a slab-coloured top bar (a glass balustrade, 252692), not a sheet
- *  in the terrace colour */
-export interface TerraceIntent { storeys: number[]; deep?: number; colour?: string; rail?: boolean; roof?: boolean; posts?: number; wrap?: boolean; glassRail?: boolean }
+ *  in the terrace colour; `"clear"`: the pale clear-glass tint instead of the group's window glass */
+export interface TerraceIntent { storeys: number[]; deep?: number; colour?: string; rail?: boolean; roof?: boolean; posts?: number; wrap?: boolean; glassRail?: boolean | 'clear' }
 
 export interface WallLightFit { along: [number, number]; up: [number, number]; lights: number; rows: number }
 export interface TerraceFit { storeys: number[]; deep: number; rail: boolean; roof: boolean; slot: string; railSlot: string; posts?: number; wrap?: boolean }
@@ -71,8 +71,9 @@ export function terracesProblems(input: unknown, at: string, storeys: number): s
   if (r.posts !== undefined && !(typeof r.posts === 'number' && r.posts >= 2 && r.posts <= 12)) out.push(`${at}.posts: column spacing 2..12 m`);
   if (!Array.isArray(r.storeys) || !r.storeys.length || !r.storeys.every(s => intIn(s, 1, Math.max(1, storeys - 1)))) out.push(`${at}.storeys: upper storey indices 1..${storeys - 1}`);
   if (r.deep !== undefined && !(typeof r.deep === 'number' && r.deep >= 0.3 && r.deep <= 3)) out.push(`${at}.deep: 0.3..3 m`);
-  for (const b of ['rail', 'roof', 'wrap', 'glassRail']) if (r[b] !== undefined && typeof r[b] !== 'boolean') out.push(`${at}.${b} must be true or false`);
-  if (r.glassRail === true && r.rail === false) out.push(`${at}.glassRail: needs the rail (rail false draws none)`);
+  for (const b of ['rail', 'roof', 'wrap']) if (r[b] !== undefined && typeof r[b] !== 'boolean') out.push(`${at}.${b} must be true or false`);
+  if (r.glassRail !== undefined && r.glassRail !== true && r.glassRail !== false && r.glassRail !== 'clear') out.push(`${at}.glassRail must be true, false or "clear"`);
+  if (r.glassRail && r.rail === false) out.push(`${at}.glassRail: needs the rail (rail false draws none)`);
   return out;
 }
 

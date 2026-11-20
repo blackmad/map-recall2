@@ -4,7 +4,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {validateLargeIntent} from './largeIntent.ts';
-import {fitLarge} from './fitLarge.ts';
+import {fitLarge, CLEAR_GLASS} from './fitLarge.ts';
 import {compileLargeBuilding} from './largeCompile.ts';
 import * as T from 'three';
 import type {BuildingFacts} from './facts.ts';
@@ -89,4 +89,16 @@ test('balconies.pane "glass": the rail infill is the group glazing (no own slot)
   assert.match(bal.rail.pane!, /^glass/);
   assert.ok(!Object.keys(fit.spec.palette).some(k => /^pane@/.test(k)), 'no pane slot');
   assert.throws(() => validateLargeIntent(withHouse(0, {}, {balconies: {storeys: [3], pane: 'glas'}})), /balconies.pane/);
+});
+
+test('balconies.pane "clearGlass": a pale clear-glass slot drawn as authored; a house balcony too', () => {
+  const fit = fitLarge(validateLargeIntent(withHouse(0, {balconies: {storeys: [2], rail: 'glass', pane: 'clearGlass'}}, {balconies: {storeys: [3], rail: 'glass', pane: 'clearGlass'}})), facts()).recipe;
+  const b = rowsOf(fit.spec.systems[fit.groups[0].houses!.segs[0].system])['2'];
+  const bal = (b.cycle ?? [b]).find(x => x.kind === 'balcony')!.balcony as unknown as {rail: {pane?: string}};
+  assert.equal(bal.rail.pane, 'clearglass@g0h0');
+  assert.equal(fit.spec.palette['clearglass@g0h0'], CLEAR_GLASS);
+  assert.ok(fit.measuredSlots!.includes('clearglass@g0h0') && fit.measuredSlots!.includes('clearglass@bg0'));
+  const built = compileLargeBuilding(validateLargeIntent(withHouse(0, {}, {balconies: {storeys: [3], rail: 'glass', pane: 'clearGlass'}})), facts(), {budget: 1e9});
+  let n = 0; built.group.traverse(o => { const m = o as T.Mesh; if (m.isMesh && /clearglass@bg0/.test(m.name)) n++; });
+  assert.ok(n > 0, 'a mesh in the clear-glass slot');
 });
