@@ -1,0 +1,750 @@
+{
+ "schemaVersion": 1,
+ "id": "kramatplantsoen",
+ "pand": "0363100012098925",
+ "brief": "scripts/landmarks/kramatplantsoen-brief.md",
+ "signature": [
+  "e-window-pairs",
+  "e-brick-shaft",
+  "flevopoort-letters",
+  "e-plinth-glazing",
+  "n-flue-shaft",
+  "e-lobby-strip"
+ ],
+ "walls": [
+  {
+   "tag": "w01-90",
+   "bearing": 90,
+   "lengthM": 59.6,
+   "centre": [
+    4.9470925,
+    52.3653
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_01916",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-window-pairs",
+     "kind": "window-shape",
+     "where": "both slabs over the east plinth: white-framed windows in pairs (1.9 m lights 0.5 m apart, pairs about 6.8 m apart), one of each pair a storey-high French window with a railing, alternating side storey by storey, eleven storeys over the plinth",
+     "approxSizeM": [
+      59.6,
+      32
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01916",
+     "how": "facade(): frame sheet, inset glass and a mullion per light, sill under the low lights, two rail bars on the French ones; laid on every long 3DBAG render wall"
+    },
+    {
+     "id": "e-brick-shaft",
+     "kind": "tower",
+     "where": "red-brown brick stair/lift shaft between the north and middle slabs, full height and about 1.5 m over the roofs",
+     "approxSizeM": [
+      3,
+      37
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01916",
+     "how": "shell walls over 37.4 m and the junction core walls drawn in brick"
+    },
+    {
+     "id": "e-lobby-strip",
+     "kind": "window-shape",
+     "where": "dark grey glazed lobby strip between the north slab and the brick shaft, one glazed band per storey",
+     "approxSizeM": [
+      1.5,
+      32
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01916",
+     "how": "lobby(): dark panel and glass band per storey on the short east/west junction walls"
+    },
+    {
+     "id": "e-plinth-glazing",
+     "kind": "canopy",
+     "where": "one-storey health-centre front: glass ribbon on slim mullions, a thin white canopy band at about 3 m, frit-glass clerestory above, white coping",
+     "approxSizeM": [
+      59.6,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01916",
+     "how": "glazing(): 1.6 m bays, canopy slab and coping in pieces under 12 m"
+    },
+    {
+     "id": "e-clerestory-signs",
+     "kind": "sign",
+     "where": "small red tenant signs on the clerestory band",
+     "approxSizeM": [
+      2,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-16_07-18-19_01916",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage of the health centre, changes with the tenants"
+     }
+    },
+    {
+     "id": "roof-antenna",
+     "kind": "other",
+     "where": "telecom mast on the north slab roof",
+     "approxSizeM": [
+      0.5,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-16_07-18-19_01916",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin mast, under a pixel at gallery size"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-270",
+   "bearing": 270,
+   "lengthM": 42.4,
+   "centre": [
+    4.9462965,
+    52.3658525
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000243_pano_0001_000380",
+   "capturedAt": "2017-04-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-window-pairs",
+     "kind": "window-shape",
+     "where": "west face of the middle slab: white-framed windows in pairs (1.9 m lights 0.5 m apart, pairs about 6.8 m apart), one of each pair a storey-high French window with a railing, alternating side storey by storey, eleven storeys over the plinth",
+     "approxSizeM": [
+      27,
+      32
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000243_pano_0001_000380",
+     "how": "facade() as on the east faces"
+    },
+    {
+     "id": "w-french-railings",
+     "kind": "balcony-ironwork",
+     "where": "light railings across the lower part of the French windows",
+     "approxSizeM": [
+      1.8,
+      1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000243_pano_0001_000380",
+     "how": "two light rail bars per French window, no balusters"
+    },
+    {
+     "id": "w-plinth-glazing",
+     "kind": "canopy",
+     "where": "glazed plinth with dark fascia under the slab, entrance canopy",
+     "approxSizeM": [
+      42,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000243_pano_0001_000380",
+     "how": "glazing() bays with the white canopy band; the dark fascia drawn in the coping colour"
+    }
+   ]
+  },
+  {
+   "tag": "w03-0",
+   "bearing": 0,
+   "lengthM": 33.8,
+   "centre": [
+    4.946542,
+    52.3660445
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_01952",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "flevopoort-letters",
+     "kind": "lettering",
+     "where": "giant dark-grey letters F L E V O  P O O R T across the whole ribbed north wall of the north wing, about 2 m tall",
+     "approxSizeM": [
+      31,
+      2.1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-16_07-18-19_01952",
+     "how": "letters(): 5x7 block glyphs 0.3 m a cell, spaced over the face with a letter gap between FLEVO and POORT; the real face is a thin sans-serif"
+    },
+    {
+     "id": "n-ribbed-metal",
+     "kind": "other",
+     "where": "grey horizontally ribbed metal cladding of the one-storey north wing",
+     "approxSizeM": [
+      33.8,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01952",
+     "how": "ribs(): lean slabs every 0.42 m in pieces under 12 m over the bronze-grey shell wall"
+    },
+    {
+     "id": "n-flue-shaft",
+     "kind": "tower",
+     "where": "white flue shaft standing proud of the blank north end wall and above the slab roof, three flue pipes on top",
+     "approxSizeM": [
+      3,
+      38
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01952",
+     "how": "shell walls of the 3DBAG shaft piece in white, carried up to 38.6 m with three pipes (northShaft())"
+    },
+    {
+     "id": "n-dark-slots",
+     "kind": "window-shape",
+     "where": "two dark glazed slots, one each side of the white shaft, full height of the end wall",
+     "approxSizeM": [
+      1.3,
+      32
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01952",
+     "how": "endWall(): dark panel and glass per storey at the shaft end of each north end wall"
+    },
+    {
+     "id": "n-roof-units",
+     "kind": "other",
+     "where": "ventilation units at the foot of the shaft on the north wing roof",
+     "approxSizeM": [
+      5,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-16_07-18-19_01952",
+     "skip": {
+      "reason": "too-small",
+      "note": "low units behind the 3.5 m parapet, hidden from the street"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-90",
+   "bearing": 90,
+   "lengthM": 33.4,
+   "centre": [
+    4.947181,
+    52.365718
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_13-32-36_00185",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-pavilion",
+     "kind": "canopy",
+     "where": "east pavilion of the plinth: glass between slim columns under a dark curved fascia",
+     "approxSizeM": [
+      33.4,
+      5.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-26_13-32-36_00185",
+     "how": "glazing() bays with the canopy band; the curved dark fascia drawn straight in the coping colour"
+    }
+   ]
+  },
+  {
+   "tag": "w05-270",
+   "bearing": 270,
+   "lengthM": 26.8,
+   "centre": [
+    4.9467085,
+    52.3651505
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000747_pano_0000_000333",
+   "capturedAt": "2018-05-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-window-pairs",
+     "kind": "window-shape",
+     "where": "west face of the south slab: white-framed windows in pairs (1.9 m lights 0.5 m apart, pairs about 6.8 m apart), one of each pair a storey-high French window with a railing, alternating side storey by storey, eleven storeys over the plinth",
+     "approxSizeM": [
+      26.8,
+      32
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000747_pano_0000_000333",
+     "how": "facade()"
+    },
+    {
+     "id": "sw-scaffold",
+     "kind": "other",
+     "where": "2025: scaffolding and wrapping over the west face (Ymere renovation)",
+     "approxSizeM": [
+      26.8,
+      36
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000747_pano_0000_000333",
+     "skip": {
+      "reason": "temporary",
+      "note": "renovation scaffolding; the 2024 state is drawn"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-0",
+   "bearing": 0,
+   "lengthM": 19.8,
+   "centre": [
+    4.9469375,
+    52.365928
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000048_pano_0000_004294",
+   "capturedAt": "2016-05-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-pavilion",
+     "kind": "canopy",
+     "where": "glazed north front of the plinth pavilion with white canopy band",
+     "approxSizeM": [
+      19.8,
+      4.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000048_pano_0000_004294",
+     "how": "glazing()"
+    }
+   ]
+  },
+  {
+   "tag": "w07-270",
+   "bearing": 270,
+   "lengthM": 18.9,
+   "centre": [
+    4.946555,
+    52.36541
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002140_pano_0001_001516",
+   "capturedAt": "2021-05-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-oosthoek-glazing",
+     "kind": "canopy",
+     "where": "Gezondheidscentrum Oosthoek front: glass ribbon, white canopy band, frit clerestory under the middle slab",
+     "approxSizeM": [
+      18.9,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002140_pano_0001_001516",
+     "how": "glazing()"
+    },
+    {
+     "id": "w-oosthoek-letters",
+     "kind": "sign",
+     "where": "Gezondheidscentrum Oosthoek and SAG lettering on the clerestory",
+     "approxSizeM": [
+      12,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002140_pano_0001_001516",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w08-179",
+   "bearing": 179,
+   "lengthM": 14.8,
+   "centre": [
+    4.9468555,
+    52.364971
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_07-29-39_00589",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-end-wall",
+     "kind": "other",
+     "where": "blank greyer render south end wall of the south slab, ribbed grey ground storey",
+     "approxSizeM": [
+      14.8,
+      36
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-26_07-29-39_00589",
+     "how": "stone-coloured shell wall with a coping; ground storey ribs()"
+    },
+    {
+     "id": "s-scaffold",
+     "kind": "other",
+     "where": "2025: wrapping over the south end",
+     "approxSizeM": [
+      14.8,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-09-26_07-29-39_00589",
+     "skip": {
+      "reason": "temporary",
+      "note": "renovation scaffolding"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-90",
+   "bearing": 90,
+   "lengthM": 13.2,
+   "centre": [
+    4.946791,
+    52.3659865
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_01897",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-ribbed-metal",
+     "kind": "other",
+     "where": "ribbed grey metal east face of the north wing with service doors",
+     "approxSizeM": [
+      13.2,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-16_07-18-19_01897",
+     "how": "ribs() over the whole face, doors not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w10-180",
+   "bearing": 180,
+   "lengthM": 10.1,
+   "centre": [
+    4.9463755,
+    52.365621
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002778_pano_0002_000046",
+   "capturedAt": "2022-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-pavilion",
+     "kind": "canopy",
+     "where": "glass pavilion at the south with white canopy band and clerestory",
+     "approxSizeM": [
+      10.1,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002778_pano_0002_000046",
+     "how": "glazing()"
+    },
+    {
+     "id": "s-lobby-tower",
+     "kind": "window-shape",
+     "where": "dark grey glazed lobby tower beside the brick shaft at the middle/south junction",
+     "approxSizeM": [
+      2,
+      32
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002778_pano_0002_000046",
+     "how": "lobby()"
+    }
+   ]
+  },
+  {
+   "tag": "w11-180",
+   "bearing": 180,
+   "lengthM": 9,
+   "centre": [
+    4.94703,
+    52.365032
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002585_pano_0002_002988",
+   "capturedAt": "2022-05-18",
+   "checked": true,
+   "items": [],
+   "note": "the concrete dike stair and its blue railing in the crop stand outside the pand; the wall itself is the plinth glazing"
+  },
+  {
+   "tag": "w12-179",
+   "bearing": 179,
+   "lengthM": 6.9,
+   "centre": [
+    4.946671,
+    52.3652815
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama within 35 m; nothing claimed"
+  },
+  {
+   "tag": "w13-90",
+   "bearing": 90,
+   "lengthM": 6.9,
+   "centre": [
+    4.9470835,
+    52.365898
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000047_pano_0000_003341",
+   "capturedAt": "2016-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-anthracite",
+     "kind": "other",
+     "where": "anthracite brick wall of the north-east plinth box with a glazed entrance under a canopy",
+     "approxSizeM": [
+      6.9,
+      5.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7315120208-000047_pano_0000_003341",
+     "how": "shell walls in anthracite (greyBrick); the entrance glazing not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w14-179",
+   "bearing": 179,
+   "lengthM": 6.9,
+   "centre": [
+    4.9465175,
+    52.3655775
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002778_pano_0002_000044",
+   "capturedAt": "2022-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-brick-shaft",
+     "kind": "tower",
+     "where": "red-brown brick shaft rising full height at the middle/south junction, dark lobby strip beside it",
+     "approxSizeM": [
+      3,
+      40
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002778_pano_0002_000044",
+     "how": "brick shell walls, lobby()"
+    }
+   ]
+  },
+  {
+   "tag": "w15-270",
+   "bearing": 270,
+   "lengthM": 6.8,
+   "centre": [
+    4.9465535,
+    52.3655365
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002140_pano_0001_001519",
+   "capturedAt": "2021-05-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-entrance-sign",
+     "kind": "sign",
+     "where": "FLEVOPOORT / Gezondheidscentrum letters over the west entrance canopy",
+     "approxSizeM": [
+      5,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002140_pano_0001_001519",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage over the entrance"
+     }
+    },
+    {
+     "id": "w-brick-shaft",
+     "kind": "tower",
+     "where": "red-brown brick shaft beside the west entrance",
+     "approxSizeM": [
+      3,
+      40
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002140_pano_0001_001519",
+     "how": "brick shell walls"
+    }
+   ]
+  },
+  {
+   "tag": "w16-270",
+   "bearing": 270,
+   "lengthM": 6.7,
+   "centre": [
+    4.946747,
+    52.365
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama within 35 m; nothing claimed"
+  },
+  {
+   "tag": "w17-90",
+   "bearing": 90,
+   "lengthM": 6.7,
+   "centre": [
+    4.946964,
+    52.365002
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002585_pano_0002_002991",
+   "capturedAt": "2022-05-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-window-pairs-s",
+     "kind": "window-shape",
+     "where": "east face of the south slab: white-framed windows in pairs (1.9 m lights 0.5 m apart, pairs about 6.8 m apart), one of each pair a storey-high French window with a railing, alternating side storey by storey, eleven storeys over the plinth",
+     "approxSizeM": [
+      19,
+      32
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002585_pano_0002_002991",
+     "how": "facade()"
+    }
+   ]
+  },
+  {
+   "tag": "w18-359",
+   "bearing": 359,
+   "lengthM": 6.5,
+   "centre": [
+    4.9471315,
+    52.3658675
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_01898",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-anthracite",
+     "kind": "other",
+     "where": "anthracite brick north face of the north-east box, glazed pavilion beside it",
+     "approxSizeM": [
+      6.5,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01898",
+     "how": "shell walls in anthracite (greyBrick); pavilion glazing()"
+    }
+   ]
+  },
+  {
+   "tag": "w19-180",
+   "bearing": 180,
+   "lengthM": 6.4,
+   "centre": [
+    4.947136,
+    52.365568
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-16_07-18-19_01914",
+   "capturedAt": "2024-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-plinth-glazing",
+     "kind": "canopy",
+     "where": "south front of the plinth: glass with white canopy band",
+     "approxSizeM": [
+      6.4,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-16_07-18-19_01914",
+     "how": "glazing()"
+    }
+   ]
+  },
+  {
+   "tag": "w20-270",
+   "bearing": 270,
+   "lengthM": 4.6,
+   "centre": [
+    4.946301,
+    52.3656415
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000243_pano_0001_000380",
+   "capturedAt": "2017-04-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-window-pairs-n",
+     "kind": "window-shape",
+     "where": "west face of the north slab: white-framed windows in pairs (1.9 m lights 0.5 m apart, pairs about 6.8 m apart), one of each pair a storey-high French window with a railing, alternating side storey by storey, eleven storeys over the plinth",
+     "approxSizeM": [
+      33.4,
+      32
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000243_pano_0001_000380",
+     "how": "facade()"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG via PDOK",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012098925",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
