@@ -1,0 +1,5 @@
+Blind 15, `?gridReveal=1` (first cut: depth 0.18 m, jamb 0.62, head 0.42, masks cleared over the whole opening) vs off, one fresh Opus judge, sides randomised (key.json), told to ignore the ground.
+16 frames (frames-grid-reveal.json) over 8 installed large recipes: entrepotdok-164981, louise-wentstraat-230-165821, waagdragerhof-198-118320, wg-plein-600-233657, kattenburg-wings-164938, pand-165427 (ll-*), spinozastraat-51-243487 (sp-*), overtoom-283-084999. Poses from --prefer-obliquity 20, panorama 5-35 m, no panorama pin.
+Decoded: on 2 (entrep w02-30, louise w04-135L), off 2 (katten-wings w11-74L, ll-wing2), 12 ties. Flag new on the on side: grey patches round the windows.
+Cause: the reveal shaded the untinted cell and cleared the tint mask over the whole opening, so jambs came out grey. Fixed (blind 16).
+The ground colour differed between the off and on lists in this batch for reasons unrelated to the flag; it was identical in blind 16.

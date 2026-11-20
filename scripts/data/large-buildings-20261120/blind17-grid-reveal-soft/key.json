@@ -1,0 +1,82 @@
+{
+ "pair1": {
+  "key": "rv-entrep-16498-w02-30",
+  "A": "off",
+  "B": "on"
+ },
+ "pair2": {
+  "key": "rv-entrep-16498-w03-30",
+  "A": "on",
+  "B": "off"
+ },
+ "pair3": {
+  "key": "rv-louise-wents-w04-135L",
+  "A": "off",
+  "B": "on"
+ },
+ "pair4": {
+  "key": "rv-louise-wents-w08-45",
+  "A": "off",
+  "B": "on"
+ },
+ "pair5": {
+  "key": "rv-waagdr-198-w01-16",
+  "A": "on",
+  "B": "off"
+ },
+ "pair6": {
+  "key": "rv-waagdr-198-w08-286",
+  "A": "off",
+  "B": "on"
+ },
+ "pair7": {
+  "key": "rv-wg-plein-w09-67L",
+  "A": "off",
+  "B": "on"
+ },
+ "pair8": {
+  "key": "rv-wg-plein-w12-247L",
+  "A": "on",
+  "B": "off"
+ },
+ "pair9": {
+  "key": "rv-katten-wings-w11-74L",
+  "A": "on",
+  "B": "off"
+ },
+ "pair10": {
+  "key": "rv-ll-canal",
+  "A": "off",
+  "B": "on"
+ },
+ "pair11": {
+  "key": "rv-ll-wing2",
+  "A": "on",
+  "B": "off"
+ },
+ "pair12": {
+  "key": "rv-sp-se",
+  "A": "on",
+  "B": "off"
+ },
+ "pair13": {
+  "key": "rv-sp-e",
+  "A": "off",
+  "B": "on"
+ },
+ "pair14": {
+  "key": "rv-overtoom-w10-340",
+  "A": "off",
+  "B": "on"
+ },
+ "pair15": {
+  "key": "rv-overtoom-w04-160L",
+  "A": "off",
+  "B": "on"
+ },
+ "pair16": {
+  "key": "rv-sp-wh",
+  "A": "on",
+  "B": "off"
+ }
+}

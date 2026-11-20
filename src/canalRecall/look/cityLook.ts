@@ -44,7 +44,7 @@ import { CITY_BRICK_LIGHTNESS, CITY_ROOF, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLO
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
-import { WINDOW_GRID_GLSL } from './windowGridGlsl.ts';
+import { WINDOW_GRID_GLSL, WINDOW_GRID_REVEAL_GLSL, gridRevealEnabled } from './windowGridGlsl.ts';
 import { HIGH_ANISOTROPY, pageTextureParams } from './texturePolicy.ts';
 import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, cellTapsUniform, facadeTierAnisoUniform, roofTierUniform } from '../roofTier.ts';
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
@@ -413,9 +413,17 @@ export type CityVariant = {
    * only; absent, every key, define and program is the text it was before.
    */
   reflect?: boolean;
+  /**
+   * Window reveal depth on the shader grid (`?gridReveal=1`, look/windowGridGlsl.ts WINDOW_GRID_REVEAL_GLSL): a slot mesh
+   * whose material carries `windowGrid` draws its grid windows inset behind the wall face. Lit slot variants only;
+   * absent, every key, define and program is the text it was before.
+   */
+  gridReveal?: boolean;
 };
 
-export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.farWindows && v.kind === 'chunk' ? '|fwin' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}${reflectOn(v) ? '|grefl' : ''}`;
+export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.farWindows && v.kind === 'chunk' ? '|fwin' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}${reflectOn(v) ? '|grefl' : ''}${gridRevealOn(v) ? '|grev' : ''}`;
+/** The grid-reveal variant applies to lit slot meshes only. */
+export const gridRevealOn = (v: CityVariant): boolean => !!v.gridReveal && v.lit && v.kind === 'slot';
 /** The reflective-glass variant applies to lit slot meshes only (the unlit path is the legacy layers' baked shade). */
 export const reflectOn = (v: CityVariant): boolean => !!v.reflect && v.lit && v.kind === 'slot';
 /** The record variant applies to lit facade chunks only (the unlit path has no derivative shade yet). */
@@ -434,6 +442,7 @@ export function variantDefines(v: CityVariant): Record<string, string> {
   if (v.taps && v.kind === 'chunk') d.CELL_TAPS = '';
   if (recordsOn(v)) d.CITY_FACADE_RECORD = '';
   if (reflectOn(v)) d.CITY_GLASS_REFLECT = '';
+  if (gridRevealOn(v)) d.CITY_GRID_REVEAL = '';
   if (v.lit) {
     // Lit (the shared frame's look): box UVs and the highlight/dim state are per-material uniforms (cityVariantUniforms),
     // so the uv/box and plain/highlight/dim variants of a kind share one program (#129 P4 registry).
@@ -452,7 +461,7 @@ export function cityVariantUniforms(v: CityVariant): { cityForce: { value: numbe
 }
 
 /** The program key of a variant: lit variants differ only in uniforms beyond their kind; side is a material parameter. */
-export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.farWindows && v.kind === 'chunk' ? '|fwin' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}${reflectOn(v) ? '|grefl' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
+export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.farWindows && v.kind === 'chunk' ? '|fwin' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}${reflectOn(v) ? '|grefl' : ''}${gridRevealOn(v) ? '|grev' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
 
 const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';
@@ -666,6 +675,9 @@ cityC = roofTierColour(cityC, cityUv, vLayer, vFacDist);
 float cityG = cityGrain(cityC);
 cityC *= mix(vec3(1.0), vTint, cityM.r) * mix(vec3(1.0), vAccent, cityM.g);`;
 
+const GRID_CALL = 'cityWindowGrid(vFacUv / vSlot.x, cityC, cityM);';
+const GRID_REVEAL_CALL = 'cityWindowGridReveal(vFacUv / vSlot.x, -vViewPosition, cityC, cityM);';
+
 const UNLIT_VERTEX = /* glsl */ `
 uniform mat3 enuFromWorld;
 ${VERTEX_DECLS}
@@ -848,7 +860,10 @@ export function createCityLookMaterial(THREE: any, variant: CityVariant, uniform
     if (records) recordUniforms = own as unknown as FacadeRecordUniforms;
     const vDecls = records ? RECORD_VERTEX_DECLS : VERTEX_DECLS, vBody = records ? RECORD_VERTEX_BODY : VERTEX_BODY;
     const reflect = reflectOn(variant);
-    const fDecls = (records ? RECORD_FRAGMENT_DECLS : FRAGMENT_DECLS) + (reflect ? GLASS_REFLECT_GLSL : ''), fCell = records ? RECORD_FRAGMENT_CELL : FRAGMENT_CELL;
+    const reveal = gridRevealOn(variant);
+    const fDecls = (records ? RECORD_FRAGMENT_DECLS : FRAGMENT_DECLS) + (reflect ? GLASS_REFLECT_GLSL : '') + (reveal ? WINDOW_GRID_REVEAL_GLSL : '');
+    // `?gridReveal=1`: the grid call takes the fragment's view position (Lambert's vViewPosition) for the inset
+    const fCell = records ? RECORD_FRAGMENT_CELL : reveal ? FRAGMENT_CELL.replace(GRID_CALL, GRID_REVEAL_CALL) : FRAGMENT_CELL;
     material.onBeforeCompile = (shader: any) => {
       for (const key of Object.keys(uniforms) as (keyof CityLookUniforms)[]) shader.uniforms[key] = uniforms[key];
       Object.assign(shader.uniforms, own);
@@ -1076,7 +1091,7 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
         }
         if (found.inferred && found.slot === 'slate' && !found.source) levelFacesAsFlatRoof(THREE, root, o, geometry, found.tint, hints);
         const previous = o.material;
-        o.material = material({ lit, kind: 'slot', uv: hasUv ? 'uv' : 'box', side: previous.side, ...(found.glassFinish === 'reflective' && lit ? { reflect: true } : {}) });
+        o.material = material({ lit, kind: 'slot', uv: hasUv ? 'uv' : 'box', side: previous.side, ...(found.glassFinish === 'reflective' && lit ? { reflect: true } : {}), ...(found.windowGrid && lit && gridRevealEnabled() ? { gridReveal: true } : {}) });
         o.userData.citySlot = { slot: found.slot, tint: found.tint, ...(found.source ? { source: found.source } : {}), ...(found.glassFinish ? { glassFinish: found.glassFinish } : {}), inferred: found.inferred, from: previous.name, layer: slotLayerOf(found.slot, hints) };
         if (!previous.userData?.[CITY_LOOK_SHARED]) previous.dispose();
         changed++;

@@ -1,0 +1,4 @@
+Blind 16, `?gridReveal=1` with the reveal keeping the wall tint (depth 0.18 m, jamb 0.62, head 0.42) vs off. Same 16 frames and poses as blind 15. One fresh Opus judge, sides randomised (key.json).
+Decoded: on 3 (katten-wings w11-74L, ll-canal, ll-wing2: "dark reveals and sills read as real openings"), off 2 (entrep w02-30, waagdr w01-16), 11 ties.
+Flag new on the on side: "dark offset bands/patches beside frames" (entrep w02-30, ll-wing2). The jamb and head are on the physically right sides (far jamb, head seen from below), but on dark brick at 0.62/0.42 they read as black bands.
+Result: wins > losses, but the no-new-flags bar is not met. Softened for blind 17: depth 0.14 m, jamb 0.78, head 0.62, view.z clamp 0.35.
