@@ -420,6 +420,42 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
   - Pilastered separate bays.
 - **Not the kit's:** the window-box slabs on Tribe and Bike Rental come from another layer.
 
+## 11. Round 8
+
+### Magna Plaza re-staged on the rebuilt GLB
+- On main (9888e874ee) the rebuilt GLB carries its own shop glass, but the round-3 staged openings no longer match it: only 2 of the 24 reads landed.
+- `stage-openings.ts` gains `--maxSill` / `--maxTop`. The ground shop panes sit on a 2.75 m plinth up to 7.4 m crowns, and the pavilion arches run 0.75 to 7.35 m. With `--maxSill=2.9 --maxTop=7.5` it finds 38 openings, and `match-reads.ts` (fits.ts's own matcher) lands all 24 reads.
+- The `glassShop` retag patch is dropped.
+- **Blind vs main** (fresh opus judge, sides seeded, `artifacts/retail-fit/blind-magna-r8`): fit 2/0, both high. The dark shop glass and the MANGO lettering decided it.
+- **Still wrong:**
+  - The posters are too small and too pink (the photo has tall SALE and red 50 panels); one is invented and one is missing.
+  - The glass is flat, with no reflection or interior.
+  - One far-right shop pane is still blue.
+
+### Blade size and height re-read
+- `scripts/retail-fit/blade-measure.ts` is new. It inverts the pose camera (`pose.ts` `frameFor`/`rayFor`) at the photo's pixels:
+  - the bracket root is intersected with the wall plane, and the board edges with the plane through the root along the wall normal;
+  - `--ground` calibrates for panorama position error: heights scale about the eye height so that the facade foot sits at 0 m;
+  - `--grid` writes a 3× gridded crop for reading pixels.
+  - Readings were cross-checked against door leaves (about 2.3 m). Expect about ±20%.
+- The rectified all-walls crops don't show blades, because the blades stand off the wall plane.
+- **Blind vs main** (fresh opus judge, sides seeded, `artifacts/retail-fit/blind-blades-r8`): 4 wins, 2 losses.
+
+| Pand | Round 7 → round 8 read | Verdict | Confidence |
+|---|---|---|---|
+| Tribe | z 3.6, 0.55 m disc → z 5.5, 1.1 m | r8 | high |
+| Elfde Gebod | z 3.9, 0.5×0.7 → at 0.8, z 5.9, 0.9×1.6 | r8 | high |
+| Cirkel | z 3.3, 0.7 m disc → z 4.8, 1.1 m | r8 | low |
+| Gabriel | z 2.9, 0.4×0.4 → z 3.5, 0.5×0.7 | r8 | low |
+| Bike Rental | z 3.0, 0.45×0.6 → z 4.0, 0.6×0.85 | main | med (reverted) |
+| Legends | z 3.0, 0.45×0.4 → z 5.0, 0.7×0.8 | main | med (reverted) |
+
+- Mount height relative to the cornice decided every pair. The two losers hang at fascia level in the photo; the measured heights over-read them, because the board sits forward of the wall, where the ground calibration does not hold.
+- **What the kit still can't say:**
+  - A disc straddling the cornice: Cirkel's sits half in front of the cornice. The judge wants it about half a disc lower than r8, which is still better than r7.
+  - Iron scrollwork brackets, lettering on boards, and lit box signs with a coloured panel.
+  - Placement along the front is off by up to half a bay on Tribe and Gabriel.
+
 ## Wiring (for the integrator)
 
 - Add `src/canalRecall/retailFit/retailFit.test.ts` to `test:shopfront-gate` in package.json.
@@ -429,8 +465,9 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
 - Node frames (house:frames) of these two models change by default; `RETAIL_FIT=0` restores the old frames byte-for-byte.
 - Tools: `scripts/retail-fit/{census,bay-strip,blind,iconic,glass-tone,region-tone,openings-probe}.ts`, poses in `scripts/retail-fit/poses*.json`, and node-frame with `RETAIL_FIT=0|1`.
 - Round 3: rebuild the building bundle as well as signature-landmarks, because `threeBuildingMesh.ts` now imports `retailFit/historicPui.ts` (with `historic-puis.json`, a few KB) and `retailFront.ts` gained the `host` branch.
-- Round 3, Magna Plaza (optional, for the game's own glass search and so other consumers see glass): `git apply scripts/retail-fit/magna-plaza-glass-retag.patch`, then `node --import tsx scripts/landmarks/build-manual-landmarks.ts --only=magna-plaza`, then LODs for magna-plaza, then build covers, then `check:covers` and `check:manual-landmarks`. Then rebuild the signature-landmarks bundle. The fits work without it, from the staged openings.
+- Round 3, Magna Plaza: the retag patch is retired, because main's rebuilt GLB carries its own glass (round 8).
 - Round 4: `src/canalRecall/engine/workerPool.ts` adds `'retailFit'` to `withWorkerFlags`, so `?retailFit=0|1` reaches the mesh workers. Rebuild the pool bundles (`build:canal-three-buildings`, the engine bundle and own-ground-game) together.
 - Round 5: `retailFront.ts` (import line 5, the `host?` field at the end of `RetailFrontInput`, an early branch after `new Builder(e)`) and `threeBuildingMesh.ts` (the `historicPuiInput(b.id, !!(b.recipe || b.specRecipe))` spread, `&& !input.host` on rooms, the sign-mode `opening` guard) feed the mesh pool. Rebuild the pool bundles together: `build:canal-three-buildings` (browser and worker), the engine bundle (`scripts/build-canal-engine.mjs`) and own-ground-game (`scripts/build-3d-bundles.mjs --only=own-ground-game`). The Utrechtsestraat chunk GLB, its lod2 record and the roof golden are already committed (above).
 - Round 6: `threeBuildingMesh.ts` changes one line (`opening` is null when the host has read doors); otherwise the work is `retailFit/historicPuiFront.ts`, `historicPui.ts` and `historic-puis.json`. Rebuild the same pool bundles as round 5.
 - Round 7: only `retailFit/historicPuiFront.ts`, `historic-puis.json` and the test change, so there are no new lines in the shared files. Rebuild the same pool bundles.
+- Round 8: `retail-fits.json` (Magna openings re-staged) and `historic-puis.json` (4 blades) only. Rebuild the signature-landmarks bundle (`node scripts/build-3d-bundles.mjs --only=signature-landmarks`) and the same pool bundles as round 5. No GLB, LOD or covers rebuild is needed. New tools: `scripts/retail-fit/{match-reads,blade-measure}.ts`.
