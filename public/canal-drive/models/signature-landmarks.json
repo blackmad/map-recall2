@@ -3137,13 +3137,7 @@
       "triangles": 2812,
       "bytes": 35220,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true,
-      "lod2": {
-        "sourceHash": "1f524a90878f8b55",
-        "buildVersion": 6,
-        "bytes": 6108,
-        "triangles": 160
-      }
+      "held": true
     },
     "the-movies": {
       "id": "the-movies",
@@ -3212,12 +3206,6 @@
         "buildVersion": 2,
         "bytes": 24144,
         "triangles": 908
-      },
-      "lod2": {
-        "sourceHash": "7f4aae83c2b2ffd3",
-        "buildVersion": 6,
-        "bytes": 5156,
-        "triangles": 74
       }
     },
     "delamar": {
@@ -3359,9 +3347,9 @@
       },
       "bagYear": 1899,
       "materialOverrides": {
-        "brick": "#78553a",
-        "stone": "#998f71",
-        "concrete": "#7b7a69",
+        "brick": "#76493e",
+        "stone": "#c2b697",
+        "concrete": "#a09f94",
         "slate": "#5f6157",
         "frame": "#2f2a1e",
         "glass": "#54615f",
@@ -3834,8 +3822,8 @@
         "depthMetres": 56.32029914855957,
         "depthCoverage": 1.0093243575010675
       },
-      "triangles": 35537,
-      "bytes": 460036,
+      "triangles": 39651,
+      "bytes": 493928,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "01f1b99a123fc64a",

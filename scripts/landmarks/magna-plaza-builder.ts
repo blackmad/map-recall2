@@ -3,6 +3,8 @@ import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
 import {archBand, archSlab, getSink, ledgeStrip, poly, put, ringFrame, setSink, slab, type Frame} from './nearbar-kit';
 import {pinnacle, pointedGable, reshapeShell} from './shell-gable-fit';
+import {crocketedSpire, openworkLantern, openworkParapet, rusticatedBase} from './gothic-tower-kit';
+import {polygonRing} from '../../src/canalRecall/landmarks/gothicCrown';
 import source from './magna-plaza-footprints.json';
 
 /**
@@ -105,9 +107,19 @@ function archWindow(b: BuildingTools, f: Frame, t: number, y: number, w: number,
 /** Stone stripes (speklagen) on a run of wall [t0, t1] between y0 and y1, every `pitch` metres. */
 function stripes(b: BuildingTools, f: Frame, t0: number, t1: number, y0: number, y1: number, pitch = 0.42, h = 0.13) {
   if (t1 - t0 < 0.08) return;
-  for (let y = y0 + pitch - h; y + h <= y1; y += pitch) ledgeStrip(b, f, (t0 + t1) / 2, y, t1 - t0, h, 0.06, 'stone');
+  // front faces only, 5 cm proud (clear of the 2-3 cm z-fight band): the strips' tops were never seen from the street and
+  // cost twice the vertices of the whole banding
+  const w = (t1 - t0) / 2;
+  for (let y = y0 + pitch - h; y + h <= y1; y += pitch) flat(b, f, (t0 + t1) / 2, y, [[-w, 0], [w, 0], [w, h], [-w, h]], 0.05, 'stone');
 }
 /** A stone course along [t0, t1] in pieces of at most 12 m (long ledge strips fail the holes gate). */
+/**
+ * Rock-faced granite rustication on a basement course whose face is `out` proud of the wall: blocks in 0.5 m courses,
+ * 1.25 m long in running bond, 5 cm proud with 2.5 cm V-joints, stopping round `holes` ([t0, y0, t1, y1] in the frame).
+ */
+function rustic(b: BuildingTools, f: Frame, t0: number, t1: number, y1: number, holes: [number, number, number, number][], out = 0.15) {
+  rusticatedBase(b, f, {t0: t0 + 0.09, t1: t1 - 0.09, y0: 0.02, y1, course: 0.5, block: 1.25, holes, depth: 0.05, joint: 0.025, out}, 'concrete');
+}
 function course(b: BuildingTools, f: Frame, t0: number, t1: number, y: number, h: number, d: number, colour: Col = 'stone', out = 0) {
   // ends held 9 cm in from the run's ends, so an end face never lies in the plane of the scanned step wall beside it
   t0 += 0.09; t1 -= 0.09;
@@ -142,9 +154,12 @@ function front(b: BuildingTools, f: Frame, len: number, o: FrontOpts) {
   // granite basement and its paired small arched windows
   course(b, f, t0, t1, 0, BASE_TOP, 0.15, 'concrete');
   course(b, f, t0, t1, BASE_TOP - 0.05, 0.2, 0.22, 'concrete');
+  const cellars: [number, number, number, number][] = [];
   for (const t of o.bays) for (const s of [-0.58, 0.58]) {
-    flat(b, f, t + s, 0.45, archPts(0.66, 1.75, 3), 0.2, 'dark');
+    flat(b, f, t + s, 0.45, archPts(0.66, 1.75, 3), 0.21, 'dark');
+    cellars.push([t + s - 0.42, 0.37, t + s + 0.42, 2.28]);
   }
+  rustic(b, f, t0, t1, BASE_TOP - 0.05, cellars);
   // ground storey
   o.bays.forEach((t, i) => { if (!o.groundSkip?.includes(i)) groundArch(b, f, t); });
   const piers = (w: number): [number, number][] => {
@@ -249,23 +264,51 @@ function octOpenings(b: BuildingTools, c: P2, f: Frame, a: number, y: number, w:
   }
 }
 
-/** An entrance tower's top: belfry, parapet, pear-shaped crown, spire (on the shell cut at TOWER_CUT). */
+/**
+ * An entrance tower's top (pitched 2025 panorama recording_2025-06-16_06-42-40_02393, heights by the camera's elevation
+ * angles at 25-27 m): on the shell cut at 27 m, the square stage with two lancets a face to 31.3 m; a gallery with an
+ * openwork parapet and crocketed corner pinnacles; the octagonal open belfry (3.3 m across) to 36.9 m; a second gallery;
+ * the copper openwork lantern (2.6 m across) to 41.6 m under a dome; the crocketed needle and finial to about 50 m.
+ */
 const TOWER_CUT = 27.0;
-function towerTop(b: BuildingTools, f: Frame, len: number, top: number) {
-  const c = world(f, len / 2, -len / 2), yaw = octYaw(f), a = 2.05, R = a / Math.cos(Math.PI / 8);
+function towerTop(b: BuildingTools, f: Frame, len: number) {
+  const c = world(f, len / 2, -len / 2), yaw0 = Math.atan2(f.n[0], f.n[1]), yaw = octYaw(f), a = len / 2 - 0.15;
   slab(b, f, len / 2, TOWER_CUT - 0.05, len + 0.3, 0.4, len + 0.3, 'stone', -len - 0.15);
-  octPrism(b, c, yaw, TOWER_CUT + 0.35, 31.6, R, R, 'brick');
-  octOpenings(b, c, f, a, 28.2, 0.8, 2.9);
-  octPrism(b, c, yaw, 31.6, 32.0, R + 0.3, R + 0.3, 'stone');
-  for (let k = 0; k < 8; k++) { const ang = yaw + k * Math.PI / 4; b.add(new T.BoxGeometry(0.22, 0.75, 0.22).translate(c[0] + Math.sin(ang) * (R + 0.1), 32.37, c[1] + Math.cos(ang) * (R + 0.1)), 'stone' as never); }
-  octPrism(b, c, yaw, 32.0, 32.8, R - 0.2, R - 0.25, 'slate');
-  pear(b, c, 32.8, 40.6, 1.95, 'slate');
-  spire(b, c, 40.5, top, 0.3);
+  // square stage: banded brick, two lancets on every face
+  b.add(new T.BoxGeometry(2 * a, 31.3 - 27.3, 2 * a).rotateY(yaw0).translate(c[0], (27.3 + 31.3) / 2, c[1]), 'brick' as never);
+  for (let k = 0; k < 4; k++) {
+    const ang = yaw0 + k * Math.PI / 2, n: P2 = [Math.sin(ang), Math.cos(ang)], tg: P2 = [n[1], -n[0]];
+    const g: Frame = {origin: [c[0] + n[0] * a - tg[0] * a, c[1] + n[1] * a - tg[1] * a], tangent: tg, n};
+    stripes(b, g, 0.05, 2 * a - 0.05, 27.3, 31.2);
+    for (const s of [-0.62, 0.62]) {
+      archSlab(b, g, a + s, 27.75, 0.86, 3.0, 0.08, 'stone', 0, 4);
+      flat(b, g, a + s, 27.85, archPts(0.6, 2.8, 4), 0.12, 'bronze');
+    }
+  }
+  // first gallery: stone floor, openwork parapet, crocketed pinnacles on the corners
+  b.add(new T.BoxGeometry(len + 0.3, 0.25, len + 0.3).rotateY(yaw0).translate(c[0], 31.3 + 0.125, c[1]), 'stone' as never);
+  const sq = polygonRing(c, a + 0.2, 4, yaw0 + Math.PI / 4);
+  openworkParapet(b, {ring: sq, y0: 31.55, y1: 32.4, pitch: 0.36, baluster: 0.09}, 'stone');
+  for (const p of sq) {
+    b.add(new T.BoxGeometry(0.34, 1.1, 0.34).rotateY(yaw0).translate(p[0], 31.55 + 0.55, p[1]), 'stone' as never);
+    crocketedSpire(b, p, {y0: 32.65, y1: 34.3, apothem: 0.17, sides: 4, yaw: yaw0 + Math.PI / 4, crockets: {pitch: 0.42, size: 0.16}, finial: {height: 0.3}}, {shaft: 'stone'});
+  }
+  // octagonal open belfry
+  openworkLantern(b, c, {y0: 31.55, y1: 36.9, apothem: 1.65, yaw, post: 0.42, base: 0.35, top: 0.5, core: 1.0}, {ring: 'stone', post: 'brick', core: 'bronze'});
+  // second gallery and its pinnacles
+  octPrism(b, c, yaw, 36.9, 37.1, 2.0, 2.0, 'stone');
+  const oct = polygonRing(c, 1.75, 8, yaw);
+  openworkParapet(b, {ring: oct, y0: 37.1, y1: 37.75, pitch: 0.3, baluster: 0.07}, 'stone');
+  for (const p of oct) crocketedSpire(b, p, {y0: 37.1, y1: 38.6, apothem: 0.09, sides: 4, yaw: yaw0, crockets: {pitch: 0.4, size: 0.11}}, {shaft: 'stone'});
+  // copper openwork lantern, dome, crocketed needle and finial
+  openworkLantern(b, c, {y0: 37.1, y1: 41.6, apothem: 1.2, yaw, post: 0.2, base: 0.3, top: 0.35, core: 0.62, cap: {kind: 'dome', height: 1.6}}, {ring: 'copper', post: 'copper', core: 'bronze', cap: 'copper'});
+  crocketedSpire(b, c, {y0: 43.1, y1: 47.6, apothem: 0.2, yaw, crockets: {pitch: 0.75, size: 0.22}, finial: {height: 2.6, ball: 0.13}}, {shaft: 'copper'});
 }
 /** Entrance tower face (4.9 m): side door, lancet group, the giant arch with three tiers of paired lancets, blind arches. */
 function towerFace(b: BuildingTools, f: Frame, len: number) {
   const c = len / 2;
   course(b, f, 0, c - 1.2, 0, BASE_TOP, 0.15, 'concrete'); course(b, f, c + 1.2, len, 0, BASE_TOP, 0.15, 'concrete');
+  rustic(b, f, 0, c - 1.2, BASE_TOP, []); rustic(b, f, c + 1.2, len, BASE_TOP, []);
   archSlab(b, f, c, 0.15, 2.3, 4.0, 0.16, 'stone', 0, 5);
   archSlab(b, f, c, 0.25, 1.6, 3.6, 0.2, 'dark', 0, 5);
   archSlab(b, f, c, 5.7, 2.0, 2.0, 0.07, 'stone', 0, 4);
@@ -317,11 +360,12 @@ export function buildMagnaPlaza(_w: number, _d: number, b: BuildingTools) {
   }
   // Entrance block: towers (edges 54, 58) and the central gable (edge 56, w06-105, w08-108)
   // the scanned tower walls stand 2-3 cm proud of the BAG ring: the tower faces are drawn 4 cm out
-  for (const e of [E54, E58]) { towerFace(b, shift(e.f, 0.04), e.len); towerTop(b, e.f, e.len, 50.0); }
+  for (const e of [E54, E58]) { towerFace(b, shift(e.f, 0.04), e.len); towerTop(b, e.f, e.len); }
   {
     // drawn 4 cm out: the scanned wall bows up to 6 cm out of the merged chord here (native vertex 99)
     const {len} = E56, f = shift(E56.f, 0.04), c = len / 2, bays = [c - 2.3, c, c + 2.3];
     course(b, f, 0, c - 3.25, 0, BASE_TOP, 0.15, 'concrete'); course(b, f, c + 3.25, len, 0, BASE_TOP, 0.15, 'concrete');
+    rustic(b, f, 0, c - 3.25, BASE_TOP, []); rustic(b, f, c + 3.25, len, BASE_TOP, []);
     archSlab(b, f, c, 0, 5.9, 8.1, 0.08, 'stone', 0, 8);
     archBand(b, f, c, 0, 6.3, 8.3, 0.25, 0.16, 'stone', 0, 8);
     archSlab(b, f, c, 0.15, 4.9, 7.5, 0.12, 'dark', 0, 8);
@@ -386,6 +430,7 @@ export function buildMagnaPlaza(_w: number, _d: number, b: BuildingTools) {
   for (const e of [30, 35, 40, 46]) {
     const {f, len} = ringFrame(ring, e), c = len / 2;
     course(b, f, 0, c - 1.75, 0, 1.2, 0.15, 'concrete'); course(b, f, c + 1.75, len, 0, 1.2, 0.15, 'concrete');
+    rustic(b, f, 0, c - 1.75, 1.2, []); rustic(b, f, c + 1.75, len, 1.2, []);
     archSlab(b, f, c, 0.6, 3.4, 7.0, 0.08, 'stone', 0, 6);
     flat(b, f, c, 0.75, archPts(2.9, 6.6), 0.12, 'glass');
     flat(b, f, c, 3.4, [[-1.45, 0], [1.45, 0], [1.45, 0.1], [-1.45, 0.1]], 0.16, 'frame');
