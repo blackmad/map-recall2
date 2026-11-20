@@ -194,9 +194,10 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
   const waterBase = (f: Frame, t0: number, t1: number) => {
     t0 += 0.05; t1 -= 0.05;
     // r7: the water plinth is blue-grey brick (2017 Singelgracht panos), not the dark band brick
-    slab(b, f, (t0 + t1) / 2, 0, t1 - t0, 0.85, 0.05, 'concrete');
-    ledgeStrip(b, f, (t0 + t1) / 2, 0.82, t1 - t0, 0.08, 0.1, 'stone');
-    bands(f, t0, t1, 1.2, 4.6, 0.8, 0.26);
+    // r7 blind A/B: the plinth stands from the waterline (the model's ground) to under the banded storey, ~1.9 m
+    slab(b, f, (t0 + t1) / 2, 0, t1 - t0, 1.9, 0.065, 'concrete');
+    ledgeStrip(b, f, (t0 + t1) / 2, 1.87, t1 - t0, 0.08, 0.1, 'stone');
+    bands(f, t0, t1, 2.2, 4.6, 0.8, 0.26);
     ledgeStrip(b, f, (t0 + t1) / 2, 4.95, t1 - t0, 0.4, 0.12, 'greyBrick');
   };
   for (const i of [2, 3, 4, 5]) {
