@@ -650,6 +650,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   systems.other = largeSystem(otherName, {pitchM: DEFAULT_PITCH_M[otherName], lines: otherLines.lines, ground: 'system', slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}});
   // Measured groups (intent `measured`): their own wall, arch-ring and glass slots also carry the measured colour into the
   // look (with the wall, glass and split slots pushed above); deduplicated.
+  // `measured.stone` (opt-in): the measured groups' stone slots (their own `stone@g<i>`, or the house stone they use) were
+  // sampled too, so the look keeps a mid-grey stone instead of lifting it to cream (Park Centraal's #8a8a8c balcony slabs).
+  if (intent.measured?.stone) for (const gi of intent.measured.groups) { const sl = groups[gi]?.slots.stone; if (sl && palette[sl] !== undefined) measuredSlots.push(sl); }
   for (const gi of intent.measured?.groups ?? []) { const g = groups[gi]; if (g) measuredSlots.push(...[g.slots.wall, `arch@g${gi}`, g.slots.glass, ...(g.brickStoreys?.map(b => b.slot) ?? [])].filter(sl => sl !== 'wall' && sl !== 'glass' && palette[sl] !== undefined)); }
   // `measured.otherWalls`: palette.brick was measured too (the rear and courtyard walls of the same brick as the fronts)
   if (intent.measured?.otherWalls) measuredSlots.push('wall', ...(windowGrid ? [WINDOW_GRID_WALL_SLOT] : []));
