@@ -84,3 +84,21 @@ test('footprintParts / osmAliases: validator; footprintInside measures the model
   assert.equal(footprintInside(f, [[[1, 1], [5, 1], [5, 5], [1, 5]]], [0, 10]), 1);
   assert.ok(Math.abs(footprintInside(f, [[[8, 1], [12, 1], [12, 5], [8, 5]]], [0, 10]) - 0.5) < 0.02);
 });
+
+// Memeleiland 251849 (lane houthavens-memel-wiborg-20261120): broad stone jambs and a tall head panel round each window.
+test('surrounds.jamb / head: validated as shares; widen the jambs and raise the head; absent keeps the 0.13 m frame', async () => {
+  const {surroundJamb, surroundHead, DRESS} = await import('../blockBuilding/dressings.ts');
+  const hole = [0, 1.4, 0, 2.2] as const;
+  assert.equal(surroundJamb({}, hole), DRESS.surround.t);
+  assert.equal(surroundHead({}, hole), DRESS.surround.t);
+  assert.ok(Math.abs(surroundJamb({jamb: 0.2}, hole) - 0.28) < 1e-9);
+  assert.ok(Math.abs(surroundHead({head: 0.25}, hole) - 0.55) < 1e-9);
+  assert.doesNotThrow(() => validateLargeIntent(withHouse(0, {dress: {surrounds: {storeys: [1], jamb: 0.18, head: 0.22}}})));
+  assert.throws(() => validateLargeIntent(withHouse(0, {dress: {surrounds: {jamb: 0.6}}})), /surrounds.jamb/);
+  assert.throws(() => validateLargeIntent(withHouse(0, {dress: {surrounds: {head: 0.01}}})), /surrounds.head/);
+  // the broad frame draws more stone than the default one on the same house
+  const area = (b: ReturnType<typeof compileLargeBuilding>) => { let n = 0; b.group.traverse(o => { const m = o as T.Mesh; if (m.isMesh && /dress@g0h0/.test(m.name)) { const bb = new T.Box3().setFromObject(m), s = bb.getSize(new T.Vector3()); n += s.x * s.y + s.z * s.y; } }); return n; };
+  const thin = compileLargeBuilding(validateLargeIntent(withHouse(0, {dress: {colour: '#e6e2da', surrounds: {storeys: [1]}}})), facts(), {budget: 1e9});
+  const broad = compileLargeBuilding(validateLargeIntent(withHouse(0, {dress: {colour: '#e6e2da', surrounds: {storeys: [1], jamb: 0.25, head: 0.3}}})), facts(), {budget: 1e9});
+  assert.ok(area(broad) >= area(thin), 'broad surround extent at least the thin one');
+});

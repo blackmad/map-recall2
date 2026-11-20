@@ -40,7 +40,12 @@ export interface StoneDressings {
   /** `share`: the stone course's share of its period (thin speklagen: 0.2-0.35); absent = brick and stone courses of equal height (byte-identical) */
   stripes?: { storeys: number[]; count?: number; share?: number };
   heads?: { kind: typeof DRESSING_HEADS[number]; storeys?: number[] };
-  surrounds?: { storeys?: number[]; eared?: boolean };
+  /**
+   * `jamb` / `head` (opt-in, lane houthavens-memel-wiborg-20261120): the jamb width as a share of the opening's width and
+   * the head's height as a share of its height, for the broad stone frames with a tall head panel of the 2020 Memeleiland
+   * fronts (0.13 m both when absent: byte-identical).
+   */
+  surrounds?: { storeys?: number[]; eared?: boolean; jamb?: number; head?: number };
   quoins?: { ends?: boolean; joints?: number[] };
   /** one oriel set, or a list of sets with their own storey spans (a one-storey bay beside a two-storey one) */
   oriels?: OrielSet | OrielSet[];
@@ -72,6 +77,10 @@ export const DRESS = {
   /** corbel table: the course on top (h, projection), the corbels under it (w, h, projection) and their pitch when no count is given */
   corbel: { courseH: 0.18, courseOut: 0.18, w: 0.16, h: 0.32, out: 0.14, pitch: 0.45 },
 } as const;
+
+/** A surround's jamb width and head height in metres: the shares of the opening when given, else `DRESS.surround.t`. */
+export const surroundJamb = (sr: NonNullable<StoneDressings['surrounds']>, h: Readonly<{0: number; 1: number; 2: number; 3: number}>) => sr.jamb !== undefined ? sr.jamb * (h[1] - h[0]) : DRESS.surround.t;
+export const surroundHead = (sr: NonNullable<StoneDressings['surrounds']>, h: Readonly<{0: number; 1: number; 2: number; 3: number}>) => sr.head !== undefined ? sr.head * (h[3] - h[2]) : DRESS.surround.t;
 
 /** `iron`: wrought-iron work (an oriel's `bars` railing); the stone when absent */
 export interface DressingSlots { stone: string; wall: string; frame: string; glass: string; iron?: string }
@@ -155,19 +164,20 @@ export function drawDressings(c: PanelCtx, info: { levels: number[]; cells: Cell
     const S = DRESS.surround;
     for (const h of square(d.surrounds.storeys)) {
       const [u0, u1, v0, v1] = h, ear = d.surrounds.eared ? S.ear : 0;
-      if (!fitsPanel(p, rectPoly(u0 - S.t - ear, u1 + S.t + ear, v0, v1 + S.t)) || free.some(o => o !== h && overlaps(o, u0 - S.t - ear, u1 + S.t + ear, v0, v1 + S.t, 0.02))) continue;
+      const jt = surroundJamb(d.surrounds, h), ht = surroundHead(d.surrounds, h);
+      if (!fitsPanel(p, rectPoly(u0 - jt - ear, u1 + jt + ear, v0, v1 + ht)) || free.some(o => o !== h && overlaps(o, u0 - jt - ear, u1 + jt + ear, v0, v1 + ht, 0.02))) continue;
       const part = c.part();
-      c.box(slots.stone, u0 - S.t, u0 + 0.0, v0, v1 + 0.02, 0, S.out, part);
-      c.box(slots.stone, u1 - 0.0, u1 + S.t, v0, v1 + 0.02, 0, S.out, part);
-      c.box(slots.stone, u0 - S.t - ear, u1 + S.t + ear, v1, v1 + S.t, 0, S.out + 0.01, part);
-      if (ear) { c.box(slots.stone, u0 - S.t - ear, u0 - S.t + 0.02, v1 - S.earH, v1 + 0.02, 0, S.earOut, part); c.box(slots.stone, u1 + S.t - 0.02, u1 + S.t + ear, v1 - S.earH, v1 + 0.02, 0, S.earOut, part); }
+      c.box(slots.stone, u0 - jt, u0 + 0.0, v0, v1 + 0.02, 0, S.out, part);
+      c.box(slots.stone, u1 - 0.0, u1 + jt, v0, v1 + 0.02, 0, S.out, part);
+      c.box(slots.stone, u0 - jt - ear, u1 + jt + ear, v1, v1 + ht, 0, S.out + 0.01, part);
+      if (ear) { c.box(slots.stone, u0 - jt - ear, u0 - jt + 0.02, v1 - S.earH, v1 + 0.02, 0, S.earOut, part); c.box(slots.stone, u1 + jt - 0.02, u1 + jt + ear, v1 - S.earH, v1 + 0.02, 0, S.earOut, part); }
       n++;
     }
   }
   if (d.heads) {
     const L = DRESS.lintel, K = DRESS.keystone, lintel = d.heads.kind !== 'keystone', key = d.heads.kind !== 'lintel';
     for (const h of square(d.heads.storeys)) {
-      const [u0, u1, , v1] = h, uc = (u0 + u1) / 2, above = d.surrounds ? DRESS.surround.t : 0;
+      const [u0, u1, , v1] = h, uc = (u0 + u1) / 2, above = d.surrounds ? surroundHead(d.surrounds, h) : 0;
       const room = Math.min(top, ...free.filter(o => o !== h && o[2] > v1 && o[0] < u1 + L.over && o[1] > u0 - L.over).map(o => o[2] - 0.05)) - v1;
       if (room < K.h + 0.05) continue;
       const part = c.part();

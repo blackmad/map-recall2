@@ -1,0 +1,576 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "wiborgeiland-249707",
+ "pandId": "0363100012249707",
+ "address": "Wiborgeiland, Houthavens: 2020 block whose 150 m north-west street face is a row of separately designed fronts on one BAG pand (brown brick with a balcony column, four red brick spout-gabled houses, dark brick houses with white window bays, two warehouse fronts of mixed brown brick with round-arched windows and loggias, three red gabled houses, red brick with white bays, a dark spout-gabled pair, buff brick with brick pilasters)",
+ "sources": [
+  {
+   "id": "pano-2022-12-14-w02-320L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002854_pano_0023_000045/",
+   "image": "source-data://pand-reference-walls/0363100012249707/w02-320L.jpg",
+   "sha256": "9b0a05615c2dd1c0a7beb31bf13f42b8afb11463dfd57fdac45088f1cd8b2adf",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-14-w06-320",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002854_pano_0023_000053/",
+   "image": "source-data://pand-reference-walls/0363100012249707/w06-320.jpg",
+   "sha256": "9c1acbcd46499a1d0a9e421dda027e58329ab681bff1ad6781f5e3bb368521d0",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-14-w07-320",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002854_pano_0023_000056/",
+   "image": "source-data://pand-reference-walls/0363100012249707/w07-320.jpg",
+   "sha256": "9d1444c009d91b35a30eeec2c889f86cdd853bf1e08d9d3501bd7db78d9a05ac",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-14-w09-320",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002854_pano_0023_000058/",
+   "image": "source-data://pand-reference-walls/0363100012249707/w09-320.jpg",
+   "sha256": "5c9cc6742e757810d1f5462cde121f9297799c4f46c01eb245fc2c4252e90dde",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-14-w05-320n",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002854_pano_0023_000061/",
+   "image": "source-data://pand-reference-walls/0363100012249707/w05-320n.jpg",
+   "sha256": "f9b2b247de00bf35ace76ee6164c9176c2b3a3f2126e5444371f1e4de77a3c0a",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-08-w03-320",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002497_pano_0006_000822/",
+   "image": "source-data://pand-reference-walls/0363100012249707/w03-320.jpg",
+   "sha256": "b7f39125494be18f5fc8b250b8d62cbd1ab3bdde576c428b8275088ef0f5b476",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-08-w03-320",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002497_pano_0006_000822/",
+   "image": "source-data://pand-reference-walls/0363100012249707/w03-320.jpg",
+   "sha256": "b7f39125494be18f5fc8b250b8d62cbd1ab3bdde576c428b8275088ef0f5b476",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-08-w03-320",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002497_pano_0006_000822/",
+   "image": "source-data://pand-reference-walls/0363100012249707/w03-320.jpg",
+   "sha256": "b7f39125494be18f5fc8b250b8d62cbd1ab3bdde576c428b8275088ef0f5b476",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    26,
+    31,
+    73,
+    96,
+    232,
+    347,
+    368,
+    371,
+    500
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "palette": {
+    "brick": "#6a4a3e",
+    "frame": "#2e2c2c"
+   },
+   "houses": [
+    {
+     "w": 0.436,
+     "bays": 6,
+     "brick": "#6a4a3e",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.45,
+      "h": 0.6,
+      "sill": 0.15
+     }
+    },
+    {
+     "w": 0.118,
+     "bays": 3,
+     "brick": "#6a3428",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.42,
+      "h": 0.6,
+      "sill": 0.15
+     },
+     "dress": {
+      "colour": "#e4e2dc",
+      "bands": {
+       "at": [
+        "sill"
+       ],
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      }
+     }
+    },
+    {
+     "w": 0.118,
+     "bays": 3,
+     "brick": "#6a3428",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.42,
+      "h": 0.6,
+      "sill": 0.15
+     },
+     "dress": {
+      "colour": "#e4e2dc",
+      "bands": {
+       "at": [
+        "sill"
+       ],
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      }
+     }
+    },
+    {
+     "w": 0.118,
+     "bays": 3,
+     "brick": "#6a3428",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.42,
+      "h": 0.6,
+      "sill": 0.15
+     },
+     "dress": {
+      "colour": "#e4e2dc",
+      "bands": {
+       "at": [
+        "sill"
+       ],
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      }
+     }
+    },
+    {
+     "w": 0.21,
+     "bays": 4,
+     "brick": "#6a3428",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.42,
+      "h": 0.6,
+      "sill": 0.15
+     },
+     "dress": {
+      "colour": "#e4e2dc",
+      "bands": {
+       "at": [
+        "sill"
+       ],
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    29,
+    207
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "palette": {
+    "brick": "#34282a",
+    "frame": "#2e2c2c"
+   },
+   "houses": [
+    {
+     "w": 0.333,
+     "bays": 1,
+     "brick": "#34282a",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.42,
+      "h": 0.62,
+      "sill": 0.12
+     },
+     "dress": {
+      "colour": "#e4e2dc",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "jamb": 0.3,
+       "head": 0.2
+      }
+     }
+    },
+    {
+     "w": 0.333,
+     "bays": 1,
+     "brick": "#34282a",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.42,
+      "h": 0.62,
+      "sill": 0.12
+     },
+     "dress": {
+      "colour": "#e4e2dc",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "jamb": 0.3,
+       "head": 0.2
+      }
+     }
+    },
+    {
+     "w": 0.333,
+     "bays": 1,
+     "brick": "#34282a",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.42,
+      "h": 0.62,
+      "sill": 0.12
+     },
+     "dress": {
+      "colour": "#e4e2dc",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "jamb": 0.3,
+       "head": 0.2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    357
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 6,
+   "palette": {
+    "brick": "#7a5e4a",
+    "frame": "#2e2c2c"
+   },
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.62,
+    "sill": 0.12
+   },
+   "arches": {
+    "windows": "round",
+    "band": "brick"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "bays": [
+     0,
+     5
+    ],
+    "w": 0.85,
+    "h": 0.75,
+    "rail": "bars"
+   }
+  },
+  {
+   "wallSurfaces": [
+    32,
+    39
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "palette": {
+    "brick": "#7a5e4a",
+    "frame": "#2e2c2c"
+   },
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.62,
+    "sill": 0.12
+   },
+   "arches": {
+    "windows": "round",
+    "band": "brick"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "bays": [
+     3
+    ],
+    "w": 0.85,
+    "h": 0.75,
+    "rail": "bars"
+   }
+  },
+  {
+   "wallSurfaces": [
+    42,
+    68,
+    122,
+    194,
+    391,
+    392,
+    394,
+    396,
+    411
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "palette": {
+    "brick": "#7a4636",
+    "frame": "#2e2c2c"
+   },
+   "houses": [
+    {
+     "w": 0.333,
+     "bays": 2,
+     "brick": "#4e2a22",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.45,
+      "h": 0.62,
+      "sill": 0.12
+     }
+    },
+    {
+     "w": 0.333,
+     "bays": 2,
+     "brick": "#4e2a22",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.45,
+      "h": 0.62,
+      "sill": 0.12
+     }
+    },
+    {
+     "w": 0.333,
+     "bays": 2,
+     "brick": "#4e2a22",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.45,
+      "h": 0.62,
+      "sill": 0.12
+     }
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    41,
+    55,
+    299,
+    47,
+    259
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "palette": {
+    "brick": "#6e3428",
+    "frame": "#2e2c2c"
+   },
+   "houses": [
+    {
+     "w": 0.5,
+     "bays": 1,
+     "brick": "#5a2c24",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.42,
+      "h": 0.62,
+      "sill": 0.12
+     },
+     "dress": {
+      "colour": "#e4e2dc",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "jamb": 0.3,
+       "head": 0.2
+      }
+     }
+    },
+    {
+     "w": 0.5,
+     "bays": 1,
+     "brick": "#5a2c24",
+     "frame": "#2e2c2c",
+     "windowShape": {
+      "w": 0.42,
+      "h": 0.62,
+      "sill": 0.12
+     },
+     "dress": {
+      "colour": "#e4e2dc",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "jamb": 0.3,
+       "head": 0.2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    124,
+    126,
+    339,
+    341,
+    491
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "palette": {
+    "brick": "#2c2424",
+    "frame": "#e4e2dc"
+   },
+   "houses": [
+    {
+     "w": 0.5,
+     "bays": 3,
+     "brick": "#2c2424",
+     "frame": "#e4e2dc",
+     "windowShape": {
+      "w": 0.5,
+      "h": 0.62,
+      "sill": 0.12
+     }
+    },
+    {
+     "w": 0.5,
+     "bays": 3,
+     "brick": "#2c2424",
+     "frame": "#e4e2dc",
+     "windowShape": {
+      "w": 0.5,
+      "h": 0.62,
+      "sill": 0.12
+     }
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    43,
+    48
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "palette": {
+    "brick": "#6e5e4c",
+    "frame": "#2e2c2c"
+   },
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.55,
+    "sill": 0.15
+   },
+   "dressings": {
+    "piers": {
+     "w": 0.12,
+     "from": 1,
+     "ends": true,
+     "deep": 0.06
+    }
+   }
+  },
+  {
+   "wallSurfaces": [
+    273,
+    327,
+    436,
+    584
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#7a3a2e",
+  "frame": "#2e2c2c",
+  "door": "#3a3634"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "budgetTriangles": 40000,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120): the NW face runs straight along the BAG edge, so each LoD2.2 panel is one or more fronts: panel 23 (0-45.7 m from the NE corner, crop w02-320L 2022-12-14), 25 (52.7-69.0, w06-320), 283 (69.0-84.9, w07-320), 27 (84.9-96.0, w09-320), 35 (96.0-112.3, w05-320n 2022), 34+39 (112.3-122.7), 101 (123.1-133.9) and 36 (133.9-147.4) from w03-320 (2022-04-08). Panels 17/18 (45.7-52.6 m) and 41 are left to otherWalls. The SE side (w01-140 is 2019, under construction) is left to otherWalls in the red brick of its 2019 lower storeys.",
+  "Not drawn (no kit part): the spout gables' stepped tops (the 3DBAG roof carries what it surveyed), the white vertical bays as one framed column (drawn as broad white surrounds on every window), the 'ANNO 2018' / 'STAD AMSTERDAM' / 'WIBORG' name stones, the arched ground portal."
+ ],
+ "groundClamp": true
+}

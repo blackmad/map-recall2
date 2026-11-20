@@ -8,7 +8,7 @@ import {DRESSING_BAND_AT, DRESSING_HEADS, type StoneDressings} from '../blockBui
 const HEX = /^#[0-9a-f]{6}$/i;
 const KEYS = ['colour', 'bands', 'stripes', 'heads', 'surrounds', 'quoins', 'oriels', 'voussoirs', 'piers', 'corbels'];
 const SUB: Record<string, string[]> = {
-  bands: ['at', 'storeys', 'double'], stripes: ['storeys', 'count', 'share'], heads: ['kind', 'storeys'], surrounds: ['storeys', 'eared'],
+  bands: ['at', 'storeys', 'double'], stripes: ['storeys', 'count', 'share'], heads: ['kind', 'storeys'], surrounds: ['storeys', 'eared', 'jamb', 'head'],
   quoins: ['ends', 'joints'], oriels: ['bays', 'from', 'to', 'deep', 'canted', 'rail', 'brick'], voussoirs: ['storeys', 'jambs'], piers: ['w', 'from', 'to', 'deep', 'capital', 'base', 'flutes', 'stone', 'ends'], corbels: ['storey', 'count', 'stone', 'drop', 'foot'],
 };
 
@@ -50,7 +50,11 @@ export function stoneDressingsProblems(input: unknown, at: string, storeys?: num
     if (h.storeys !== undefined) storeyList(h.storeys, `${at}.dressings.heads.storeys`);
   }
   const sr = obj('surrounds');
-  if (sr) { if (sr.storeys !== undefined) storeyList(sr.storeys, `${at}.dressings.surrounds.storeys`); bool(sr.eared, `${at}.dressings.surrounds.eared`); }
+  if (sr) {
+    if (sr.storeys !== undefined) storeyList(sr.storeys, `${at}.dressings.surrounds.storeys`); bool(sr.eared, `${at}.dressings.surrounds.eared`);
+    if (sr.jamb !== undefined && !(typeof sr.jamb === 'number' && sr.jamb >= 0.05 && sr.jamb <= 0.4)) p.push(`${at}.dressings.surrounds.jamb: 0.05..0.4 of the opening's width`);
+    if (sr.head !== undefined && !(typeof sr.head === 'number' && sr.head >= 0.05 && sr.head <= 0.5)) p.push(`${at}.dressings.surrounds.head: 0.05..0.5 of the opening's height`);
+  }
   if (h && sr && h.kind !== 'keystone') p.push(`${at}.dressings.heads: only "keystone" together with surrounds (the surround has its own head)`);
   const q = obj('quoins');
   if (q) {
