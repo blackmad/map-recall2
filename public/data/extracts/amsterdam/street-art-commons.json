@@ -1,0 +1,717 @@
+{
+ "version": 1,
+ "reviewed": "2026-11-20",
+ "review": "scripts/data/street-art-photo-review.json",
+ "published": 69,
+ "licence": "each photo keeps its own licence (field licence); credit field author, link field page",
+ "images": [
+  {
+   "id": "n13410980119",
+   "name": "Why not",
+   "file": "recording_2025-06-18_08-56-14_01448",
+   "by": "panorama",
+   "distM": 22,
+   "page": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-18_08-56-14_01448/",
+   "thumb": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-18_08-56-14_01448/?width=600&aspect=1.2&fov=30&heading=19&pitch=-4",
+   "licence": "CC BY 4.0",
+   "author": "Gemeente Amsterdam (panoramabeelden)",
+   "note": "Feedback deb3fc. No Commons file of this Else Ringnalda figure (Commons search \"Ringnalda\", category, 100 m geosearch, 2026-11-19); the slender bronze on its round plinth on the Nassaukade lawn stands 22 m from the camera at bearing 17, the OSM node."
+  },
+  {
+   "id": "n4360169260",
+   "name": "3 bomen, 6 lenzen",
+   "file": "File:Thom Puckey 3 Bomen Amsterdam.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Thom_Puckey_3_Bomen_Amsterdam.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/7/71/Thom_Puckey_3_Bomen_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brbbl",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n12092965909",
+   "name": "Door Wind Bewogen Beweging",
+   "file": "File:2021 Door wind bewogen beweging (2).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2021_Door_wind_bewogen_beweging_(2).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/2021_Door_wind_bewogen_beweging_%282%29.jpg/960px-2021_Door_wind_bewogen_beweging_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n4872872238",
+   "name": "Gebroken cirkel",
+   "file": "File:Gebroken cirkel Ad Dekkers Spaarndammerdijk Amsterdam.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Gebroken_cirkel_Ad_Dekkers_Spaarndammerdijk_Amsterdam.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Gebroken_cirkel_Ad_Dekkers_Spaarndammerdijk_Amsterdam.jpg/960px-Gebroken_cirkel_Ad_Dekkers_Spaarndammerdijk_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brbbl",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q98100879",
+   "name": "Gevouwen bootje",
+   "file": "File:Papieren bootje Suzanne Willems IJburg.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Papieren_bootje_Suzanne_Willems_IJburg.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Papieren_bootje_Suzanne_Willems_IJburg.jpg/960px-Papieren_bootje_Suzanne_Willems_IJburg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC0",
+   "author": "Gouwenaar",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q113988093",
+   "name": "Grave of Ed. Hoornik",
+   "file": "File:2022 Nieuwe Ooster, Graf Ed Hoornik (2).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2022_Nieuwe_Ooster,_Graf_Ed_Hoornik_(2).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/2022_Nieuwe_Ooster%2C_Graf_Ed_Hoornik_%282%29.jpg/960px-2022_Nieuwe_Ooster%2C_Graf_Ed_Hoornik_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n2593697919",
+   "name": "Het begon met een dubbeltje",
+   "file": "File:01Hetbegonmeteendubbeltje StudioWesselsBoer.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:01Hetbegonmeteendubbeltje_StudioWesselsBoer.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/01Hetbegonmeteendubbeltje_StudioWesselsBoer.jpg/960px-01Hetbegonmeteendubbeltje_StudioWesselsBoer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marjetwesselsboer",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n4572279565",
+   "name": "Katja",
+   "file": "File:Katja door Eddy Roos.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Katja_door_Eddy_Roos.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Katja_door_Eddy_Roos.jpg/960px-Katja_door_Eddy_Roos.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC0",
+   "author": "Gouwenaar",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n6291714454",
+   "name": "Kijkende figuur",
+   "file": "File:Kijkende figuur, vooraanzicht.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kijkende_figuur,_vooraanzicht.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Kijkende_figuur%2C_vooraanzicht.jpg/960px-Kijkende_figuur%2C_vooraanzicht.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n13514342635",
+   "name": "lovertjes",
+   "file": "File:2024 Monument van pailletten, Asd (B).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2024_Monument_van_pailletten,_Asd_(B).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/2024_Monument_van_pailletten%2C_Asd_%28B%29.jpg/960px-2024_Monument_van_pailletten%2C_Asd_%28B%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n3203121841",
+   "name": "Moeder Aarde Ma Aisa",
+   "file": "File:2020 Ma Aisa (6).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2020_Ma_Aisa_(6).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/2020_Ma_Aisa_%286%29.jpg/960px-2020_Ma_Aisa_%286%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q113110299",
+   "name": "Monument Hollandia Kattenburg",
+   "file": "File:Hollandia Kattenburg.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Hollandia_Kattenburg.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Hollandia_Kattenburg.jpg/960px-Hollandia_Kattenburg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Marion Golsteijn",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q119198540",
+   "name": "Muurschilderingen Nieuwe Hemweg",
+   "file": "File:2023 Muurschilderingen Nieuwe Hemweg, Asd-Twee vogels (2).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2023_Muurschilderingen_Nieuwe_Hemweg,_Asd-Twee_vogels_(2).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/2023_Muurschilderingen_Nieuwe_Hemweg%2C_Asd-Twee_vogels_%282%29.jpg/960px-2023_Muurschilderingen_Nieuwe_Hemweg%2C_Asd-Twee_vogels_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q85310752",
+   "name": "Pagaai",
+   "file": "File:Pagaai.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Pagaai.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Pagaai.jpg/960px-Pagaai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ainali",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q56395614",
+   "name": "Ter herinnering aan Anthony Winkler Prins",
+   "file": "File:Monument Anthony Winkler Prins André Volten Frederiksplein.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG/960px-Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brbbl",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n8981340303",
+   "name": "Vrede",
+   "file": "File:Hans Reicher, Vrede3.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Hans_Reicher,_Vrede3.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Hans_Reicher%2C_Vrede3.jpg/960px-Hans_Reicher%2C_Vrede3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q61988485",
+   "name": "Without title",
+   "file": "File:Anna Enquist op Vijzelgracht (6).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Anna_Enquist_op_Vijzelgracht_(6).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Anna_Enquist_op_Vijzelgracht_%286%29.jpg/960px-Anna_Enquist_op_Vijzelgracht_%286%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q104588270",
+   "name": "Zonder titel",
+   "file": "File:2020 Jacob Geelstraat-relief III.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2020_Jacob_Geelstraat-relief_III.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/2020_Jacob_Geelstraat-relief_III.jpg/960px-2020_Jacob_Geelstraat-relief_III.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n6054695736",
+   "name": "Boegbeeld",
+   "file": "File:Boegbeeld (1).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Boegbeeld_(1).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Boegbeeld_%281%29.jpg/960px-Boegbeeld_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q98835188",
+   "name": "Bruidssuite",
+   "file": "File:Bruidssuite westerpark amsterdam.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Bruidssuite_westerpark_amsterdam.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Bruidssuite_westerpark_amsterdam.jpg/960px-Bruidssuite_westerpark_amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "BonstraGeert",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q93929045",
+   "name": "Grafmonument van Johannes van Bree",
+   "file": "File:Johannes Bernardus van Bree.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Johannes_Bernardus_van_Bree.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Johannes_Bernardus_van_Bree.JPG/960px-Johannes_Bernardus_van_Bree.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Marion Golsteijn",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n4684390297",
+   "name": "Les Grandes Formes",
+   "file": "File:Les Grandes Formes.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Les_Grandes_Formes.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Les_Grandes_Formes.JPG/960px-Les_Grandes_Formes.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marion Golsteijn",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q78706711",
+   "name": "Light sculpture",
+   "file": "File:Noel Harding.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Noel_Harding.JPG",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Noel_Harding.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marion Golsteijn",
+   "by": "reviewed-replacement"
+  },
+  {
+   "id": "Q124678193",
+   "name": "Raise the Level",
+   "file": "File:2023 Raise the level, NDSM, Amsterdam (1).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2023_Raise_the_level,_NDSM,_Amsterdam_(1).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/2023_Raise_the_level%2C_NDSM%2C_Amsterdam_%281%29.jpg/960px-2023_Raise_the_level%2C_NDSM%2C_Amsterdam_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q96139736",
+   "name": "Wandelend naar de Nieuwmarkt",
+   "file": "File:2020 Wandelaar Nieuwmarkt (NW) (4).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2020_Wandelaar_Nieuwmarkt_(NW)_(4).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/2020_Wandelaar_Nieuwmarkt_%28NW%29_%284%29.jpg/960px-2020_Wandelaar_Nieuwmarkt_%28NW%29_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "Q60269802",
+   "name": "Without title",
+   "file": "File:Figuren en vuur (2).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Figuren_en_vuur_(2).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Figuren_en_vuur_%282%29.jpg/960px-Figuren_en_vuur_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n2608926785",
+   "name": "666/999",
+   "file": "File:Witte de Withplein, object.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Witte_de_Withplein,_object.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Witte_de_Withplein%2C_object.jpg/960px-Witte_de_Withplein%2C_object.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Paul Berendsen",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n13438291747",
+   "name": "Actrice",
+   "file": "File:Josephine van Gasteren (actrice) onthult beeldje Dankende actrice voor Culture, Bestanddeelnr 930-7352.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Josephine_van_Gasteren_(actrice)_onthult_beeldje_Dankende_actrice_voor_Culture,_Bestanddeelnr_930-7352.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Josephine_van_Gasteren_%28actrice%29_onthult_beeldje_Dankende_actrice_voor_Culture%2C_Bestanddeelnr_930-7352.jpg/960px-Josephine_van_Gasteren_%28actrice%29_onthult_beeldje_Dankende_actrice_voor_Culture%2C_Bestanddeelnr_930-7352.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC0",
+   "author": "Hans van Dijk for Anefo",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n11203254808",
+   "name": "Amsterdam Kwijtweg",
+   "file": "File:Station Amsterdam Kwijtweg - panoramio.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Station_Amsterdam_Kwijtweg_-_panoramio.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Station_Amsterdam_Kwijtweg_-_panoramio.jpg/960px-Station_Amsterdam_Kwijtweg_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY 3.0",
+   "author": "Han Jongeneel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n1574833853",
+   "name": "Bevrijde vogel",
+   "file": "File:Sierplein monument (5).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sierplein_monument_(5).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Sierplein_monument_%285%29.jpg/960px-Sierplein_monument_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n4771454407",
+   "name": "Brettensuite 3/20",
+   "file": "File:Amsterdam kunstwerk brettensuite03.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Amsterdam_kunstwerk_brettensuite03.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Amsterdam_kunstwerk_brettensuite03.jpg/960px-Amsterdam_kunstwerk_brettensuite03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC0",
+   "author": "Wikifrits",
+   "by": "reviewed-replacement"
+  },
+  {
+   "id": "n9029852485",
+   "name": "Bruidspaar",
+   "file": "File:Het Bruidspaar-Hubert van Lith.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Het_Bruidspaar-Hubert_van_Lith.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Het_Bruidspaar-Hubert_van_Lith.jpg/960px-Het_Bruidspaar-Hubert_van_Lith.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Klaas `Z4us` van B. V",
+   "by": "commons-near-title",
+   "distM": 37
+  },
+  {
+   "id": "n13958062576",
+   "name": "Cirkel",
+   "file": "File:Cirkel Cortenstaal.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Cirkel_Cortenstaal.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Cirkel_Cortenstaal.jpg/960px-Cirkel_Cortenstaal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Marion Golsteijn",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n9048817827",
+   "name": "Damsko Strijder",
+   "file": "File:Van der Laan, Mercatorplein (1).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Van_der_Laan,_Mercatorplein_(1).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Van_der_Laan%2C_Mercatorplein_%281%29.jpg/960px-Van_der_Laan%2C_Mercatorplein_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n8196260413",
+   "name": "De lus",
+   "file": "File:De Lus.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:De_Lus.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/De_Lus.JPG/960px-De_Lus.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marion Golsteijn",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "w492205616",
+   "name": "De Stelling van Diemen",
+   "file": "File:De stelling van Diemen (Q95918853) - 3.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:De_stelling_van_Diemen_(Q95918853)_-_3.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/De_stelling_van_Diemen_%28Q95918853%29_-_3.jpg/960px-De_stelling_van_Diemen_%28Q95918853%29_-_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY 4.0",
+   "author": "Hay Kranen",
+   "by": "commons-near-title",
+   "distM": 8
+  },
+  {
+   "id": "n8887944605",
+   "name": "Dik Trom",
+   "file": "File:Dik Trom Marktplein Hoofddorp.jpeg",
+   "page": "https://commons.wikimedia.org/wiki/File:Dik_Trom_Marktplein_Hoofddorp.jpeg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Dik_Trom_Marktplein_Hoofddorp.jpeg/960px-Dik_Trom_Marktplein_Hoofddorp.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tasja",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n5126157629",
+   "name": "Duivenprieel",
+   "file": "File:Het Duivenprieel Marte Röling Achteromstraat Weesp v1.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Het_Duivenprieel_Marte_R%C3%B6ling_Achteromstraat_Weesp_v1.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Het_Duivenprieel_Marte_R%C3%B6ling_Achteromstraat_Weesp_v1.JPG/960px-Het_Duivenprieel_Marte_R%C3%B6ling_Achteromstraat_Weesp_v1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brbbl",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n8870446501",
+   "name": "Eendracht",
+   "file": "File:Eendracht West.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Eendracht_West.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Eendracht_West.jpg/960px-Eendracht_West.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Marion Golsteijn",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n4719433800",
+   "name": "Engel",
+   "file": "File:Engel Willem Reijers MLKingpark Amsterdam.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Engel_Willem_Reijers_MLKingpark_Amsterdam.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Engel_Willem_Reijers_MLKingpark_Amsterdam.JPG/960px-Engel_Willem_Reijers_MLKingpark_Amsterdam.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brbbl",
+   "by": "commons-near-title",
+   "distM": 13
+  },
+  {
+   "id": "n7972751844",
+   "name": "Gabriël",
+   "file": "File:Gabriël Henk Spreeuwenberg Sint Barbara begraafplaats Amsterdam.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Gabri%C3%ABl_Henk_Spreeuwenberg_Sint_Barbara_begraafplaats_Amsterdam.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Gabri%C3%ABl_Henk_Spreeuwenberg_Sint_Barbara_begraafplaats_Amsterdam.jpg/960px-Gabri%C3%ABl_Henk_Spreeuwenberg_Sint_Barbara_begraafplaats_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brbbl",
+   "by": "commons-near-title",
+   "distM": 27
+  },
+  {
+   "id": "n8246225634",
+   "name": "Gewichtheffer",
+   "file": "File:Amsterdam Pieter de Monchy 02.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Amsterdam_Pieter_de_Monchy_02.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Amsterdam_Pieter_de_Monchy_02.JPG/960px-Amsterdam_Pieter_de_Monchy_02.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC0",
+   "author": "Gerardus",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n1576976358",
+   "name": "Het gevecht",
+   "file": "File:20110425 Amsterdam 26 Sculpture in Piet Wiedijkpark.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:20110425_Amsterdam_26_Sculpture_in_Piet_Wiedijkpark.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/20110425_Amsterdam_26_Sculpture_in_Piet_Wiedijkpark.JPG/960px-20110425_Amsterdam_26_Sculpture_in_Piet_Wiedijkpark.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mark Ahsmann",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n10694105039",
+   "name": "Hurkende Jongen",
+   "file": "File:Hurkende jongen D. de Goede.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Hurkende_jongen_D._de_Goede.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Hurkende_jongen_D._de_Goede.jpg/960px-Hurkende_jongen_D._de_Goede.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "BonstraGeert",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n3130956442",
+   "name": "Kokadorus",
+   "file": "File:Kokadorus.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kokadorus.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Kokadorus.jpg",
+   "licence": "CC BY 2.0",
+   "author": "tracy ducasse",
+   "by": "reviewed-replacement"
+  },
+  {
+   "id": "n5238714413",
+   "name": "Kunstwerk Oranjesluizen",
+   "file": "File:Old Parts of Oranjesluizen - panoramio.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Old_Parts_of_Oranjesluizen_-_panoramio.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Old_Parts_of_Oranjesluizen_-_panoramio.jpg/960px-Old_Parts_of_Oranjesluizen_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY 3.0",
+   "author": "Gabriele Giuseppini",
+   "by": "commons-near-title",
+   "distM": 14
+  },
+  {
+   "id": "n4989018299",
+   "name": "Max Euwe",
+   "file": "File:Max Euwebeeld.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Max_Euwebeeld.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Max_Euwebeeld.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "licence": "CC BY 2.5 nl",
+   "author": "Original uploader was J.M. Luijt at nl.wikipedia",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n7974453154",
+   "name": "Michael",
+   "file": "File:Michaël Henk Spreeuwenberg Sint Barbara begraafplaats Amsterdam.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Micha%C3%ABl_Henk_Spreeuwenberg_Sint_Barbara_begraafplaats_Amsterdam.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Micha%C3%ABl_Henk_Spreeuwenberg_Sint_Barbara_begraafplaats_Amsterdam.jpg/960px-Micha%C3%ABl_Henk_Spreeuwenberg_Sint_Barbara_begraafplaats_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brbbl",
+   "by": "commons-near-title",
+   "distM": 8
+  },
+  {
+   "id": "n3371146577",
+   "name": "Nereide op Triton",
+   "file": "File:August allebé plein 2.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:August_alleb%C3%A9_plein_2.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/August_alleb%C3%A9_plein_2.JPG/960px-August_alleb%C3%A9_plein_2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mark Ahsmann",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n7931710053",
+   "name": "Nieuwe Naatje",
+   "file": "File:Brug 165 Raampoort, in de Tweede Hugo de Grootstraat over de Singelgracht, Nieuwe Naatje door Hanna Mobach, 1975.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Brug_165_Raampoort,_in_de_Tweede_Hugo_de_Grootstraat_over_de_Singelgracht,_Nieuwe_Naatje_door_Hanna_Mobach,_1975.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Brug_165_Raampoort%2C_in_de_Tweede_Hugo_de_Grootstraat_over_de_Singelgracht%2C_Nieuwe_Naatje_door_Hanna_Mobach%2C_1975.jpg/960px-Brug_165_Raampoort%2C_in_de_Tweede_Hugo_de_Grootstraat_over_de_Singelgracht%2C_Nieuwe_Naatje_door_Hanna_Mobach%2C_1975.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "Public domain",
+   "author": "Alf van Beem",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n4501136323",
+   "name": "Phoenix",
+   "file": "File:Phoenix Willem Reijers Spiegelgracht Amsterdam.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Phoenix_Willem_Reijers_Spiegelgracht_Amsterdam.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Phoenix_Willem_Reijers_Spiegelgracht_Amsterdam.JPG/960px-Phoenix_Willem_Reijers_Spiegelgracht_Amsterdam.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brbbl",
+   "by": "commons-near-title",
+   "distM": 1
+  },
+  {
+   "id": "n7084303792",
+   "name": "Poorter",
+   "file": "File:Poorter Hildo Krop Weesperpoort Amsterdam.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Poorter_Hildo_Krop_Weesperpoort_Amsterdam.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Poorter_Hildo_Krop_Weesperpoort_Amsterdam.JPG/960px-Poorter_Hildo_Krop_Weesperpoort_Amsterdam.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brbbl",
+   "by": "commons-near-title",
+   "distM": 4
+  },
+  {
+   "id": "n418055465",
+   "name": "Rembrandt",
+   "file": "File:Rembrandt Kalfjeslaan.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Rembrandt_Kalfjeslaan.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Rembrandt_Kalfjeslaan.jpg/960px-Rembrandt_Kalfjeslaan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Marion Golsteijn",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n12077061017",
+   "name": "Salami",
+   "file": "File:Carel Visser - Salami - 1967 - Schiphol Airport.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Carel_Visser_-_Salami_-_1967_-_Schiphol_Airport.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Carel_Visser_-_Salami_-_1967_-_Schiphol_Airport.jpg/960px-Carel_Visser_-_Salami_-_1967_-_Schiphol_Airport.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY 4.0",
+   "author": "Sandra Fauconnier",
+   "by": "commons-near-title",
+   "distM": 8
+  },
+  {
+   "id": "n9701568390",
+   "name": "Sleutelgat",
+   "file": "File:Sleutelgat1, oostzijde.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sleutelgat1,_oostzijde.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Sleutelgat1%2C_oostzijde.jpg/960px-Sleutelgat1%2C_oostzijde.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n5434191127",
+   "name": "Social Sofa",
+   "file": "File:Social sofa Amsterdam Amstelpark 11.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Social_sofa_Amsterdam_Amstelpark_11.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Social_sofa_Amsterdam_Amstelpark_11.jpg/960px-Social_sofa_Amsterdam_Amstelpark_11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dickelbers",
+   "by": "commons-near-title",
+   "distM": 17
+  },
+  {
+   "id": "n11051643892",
+   "name": "Strijd",
+   "file": "File:Drie figuren in strijd Gerrit Graas.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Drie_figuren_in_strijd_Gerrit_Graas.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Drie_figuren_in_strijd_Gerrit_Graas.jpg/960px-Drie_figuren_in_strijd_Gerrit_Graas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rutgergraas",
+   "by": "commons-near-title",
+   "distM": 2
+  },
+  {
+   "id": "n9199244050",
+   "name": "Troost",
+   "file": "File:Troost van Hildo Krop.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Troost_van_Hildo_Krop.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Troost_van_Hildo_Krop.jpg/960px-Troost_van_Hildo_Krop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Paul Berendsen",
+   "by": "reviewed-replacement"
+  },
+  {
+   "id": "n286575969",
+   "name": "Van Randwijk-monument",
+   "file": "File:Een volk dat voor tirannen zwicht Van Randwijk Amsterdam 2018 2.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Een_volk_dat_voor_tirannen_zwicht_Van_Randwijk_Amsterdam_2018_2.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Een_volk_dat_voor_tirannen_zwicht_Van_Randwijk_Amsterdam_2018_2.jpg/960px-Een_volk_dat_voor_tirannen_zwicht_Van_Randwijk_Amsterdam_2018_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Steven Lek",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n8185737096",
+   "name": "Verkleed Kleren",
+   "file": "File:Verkleed Kleren Raadhuisplein Landsmeer.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Verkleed_Kleren_Raadhuisplein_Landsmeer.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Verkleed_Kleren_Raadhuisplein_Landsmeer.jpg/960px-Verkleed_Kleren_Raadhuisplein_Landsmeer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Frank Markesteijn",
+   "by": "commons-near-title",
+   "distM": 6
+  },
+  {
+   "id": "n6411836164",
+   "name": "Verloren stad",
+   "file": "File:Verloren Stad.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Verloren_Stad.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Verloren_Stad.jpg/960px-Verloren_Stad.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marion Golsteijn",
+   "by": "commons-near-title",
+   "distM": 28
+  },
+  {
+   "id": "n9088913195",
+   "name": "Voetbal",
+   "file": "File:Voetbalkunst Westpoort.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Voetbalkunst_Westpoort.JPG",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Voetbalkunst_Westpoort.JPG/960px-Voetbalkunst_Westpoort.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marion Golsteijn",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n9721589184",
+   "name": "Vogelgod",
+   "file": "File:Vogelgod.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Vogelgod.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Vogelgod.jpg/960px-Vogelgod.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Marion Golsteijn",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n344899667",
+   "name": "Vredesbeeld",
+   "file": "File:Vredesteken Osdorp 1986.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Vredesteken_Osdorp_1986.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Vredesteken_Osdorp_1986.jpg/960px-Vredesteken_Osdorp_1986.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Klaas `Z4us` van B. V",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "n7814521848",
+   "name": "Vrouw met stier",
+   "file": "File:Stier met vrouw Julia van Verschuer Westzijde Zaandam.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Stier_met_vrouw_Julia_van_Verschuer_Westzijde_Zaandam.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Stier_met_vrouw_Julia_van_Verschuer_Westzijde_Zaandam.jpg/960px-Stier_met_vrouw_Julia_van_Verschuer_Westzijde_Zaandam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brbbl",
+   "by": "commons-near-title",
+   "distM": 7
+  },
+  {
+   "id": "n7395647571",
+   "name": "Vrouwe Fortuna",
+   "file": "File:Amsterdam - Rokin - Muntplein - Vrouwe Fortuna 1948 by Hildo Krop.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Rokin_-_Muntplein_-_Vrouwe_Fortuna_1948_by_Hildo_Krop.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Amsterdam_-_Rokin_-_Muntplein_-_Vrouwe_Fortuna_1948_by_Hildo_Krop.jpg/960px-Amsterdam_-_Rokin_-_Muntplein_-_Vrouwe_Fortuna_1948_by_Hildo_Krop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Txllxt TxllxT",
+   "by": "commons-near-title",
+   "distM": 7
+  },
+  {
+   "id": "n290735740",
+   "name": "Westerman Monument",
+   "file": "File:Amsterdam Zoo (3798545917).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Amsterdam_Zoo_(3798545917).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Amsterdam_Zoo_%283798545917%29.jpg/960px-Amsterdam_Zoo_%283798545917%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 2.0",
+   "author": "Krzysztof Belczyński from Warsaw, POLAND",
+   "by": "wikidata-p18"
+  },
+  {
+   "id": "w892387925",
+   "name": "Wormenhotel",
+   "file": "File:Wormenhotel.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Wormenhotel.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Wormenhotel.jpg/960px-Wormenhotel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mehdi Brun",
+   "by": "commons-near-title",
+   "distM": 9
+  },
+  {
+   "id": "w1215278812",
+   "name": "Zeeslagenkaart",
+   "file": "File:Zeeslagenkaart, overzicht (1).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Zeeslagenkaart,_overzicht_(1).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Zeeslagenkaart%2C_overzicht_%281%29.jpg/960px-Zeeslagenkaart%2C_overzicht_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ceescamel",
+   "by": "wikidata-p18"
+  }
+ ]
+}

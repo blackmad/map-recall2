@@ -1,0 +1,455 @@
+{
+ "reviewed": "2026-11-20",
+ "reviewer": "lane/street-art-review-20261120 (each thumbnail viewed; Wikidata P625 and Commons geotag compared with the point)",
+ "staged": "public/data/extracts/amsterdam/staging/street-art-commons.json",
+ "entries": [
+  {
+   "id": "n13410980119",
+   "name": "Why not",
+   "decision": "accept",
+   "reason": "Panorama view: the bronze figure on its round plinth stands centred on the Nassaukade lawn; small (about a tenth of the frame) with a scaffolded block behind, but the only open image of the work; replace when Commons has one."
+  },
+  {
+   "id": "n4360169260",
+   "name": "3 bomen, 6 lenzen",
+   "decision": "accept",
+   "reason": "Thom Puckey's three bronze trees with lenses, whole work in frame; Wikidata P18, 9 m from the point."
+  },
+  {
+   "id": "n12092965909",
+   "name": "Door Wind Bewogen Beweging",
+   "decision": "accept",
+   "reason": "Wicher Meursing's wind vane on its mast, whole work against the sky; P18, 3 m."
+  },
+  {
+   "id": "n4872872238",
+   "name": "Gebroken cirkel",
+   "decision": "accept",
+   "reason": "Ad Dekkers' broken concrete ring on the Spaarndammerdijk, fills the frame; P18, 1 m."
+  },
+  {
+   "id": "Q98100879",
+   "name": "Gevouwen bootje",
+   "decision": "accept",
+   "reason": "Suzanne Willems' folded paper boat on the IJburg quay, fills the frame; P18, 0 m."
+  },
+  {
+   "id": "Q113988093",
+   "name": "Grave of Ed. Hoornik",
+   "decision": "accept",
+   "reason": "Ed. Hoornik's grave slab at De Nieuwe Ooster; the item is the grave monument itself; P18, 0 m."
+  },
+  {
+   "id": "n2593697919",
+   "name": "Het begon met een dubbeltje",
+   "decision": "accept",
+   "reason": "The Dubbeltjespanden relief wall, whole wall in frame (one passer-by); P18, 2 m."
+  },
+  {
+   "id": "n4572279565",
+   "name": "Katja",
+   "decision": "accept",
+   "reason": "Eddy Roos' Katja, full figure on its plinth; P18, 2 m."
+  },
+  {
+   "id": "n6291714454",
+   "name": "Kijkende figuur",
+   "decision": "accept",
+   "reason": "Kijkende figuur, front view of the whole concrete piece; P18, 0 m."
+  },
+  {
+   "id": "n13514342635",
+   "name": "lovertjes",
+   "decision": "accept",
+   "reason": "Rein Jelle Terpstra's sequin discs on the block's gable (Commons category Zonder titel (Rein Jelle Terpstra)); P18, 5 m."
+  },
+  {
+   "id": "n3203121841",
+   "name": "Moeder Aarde Ma Aisa",
+   "decision": "accept",
+   "reason": "Moeder Aarde Ma Aisa, full figure; P18, 10 m."
+  },
+  {
+   "id": "Q113110299",
+   "name": "Monument Hollandia Kattenburg",
+   "decision": "accept",
+   "reason": "Hollandia Kattenburg memorial stele with its relief plaque; P18, 0 m."
+  },
+  {
+   "id": "Q119198540",
+   "name": "Muurschilderingen Nieuwe Hemweg",
+   "decision": "accept",
+   "reason": "Nieuwe Hemweg bird murals on the pump house, clear; P18, 0 m."
+  },
+  {
+   "id": "Q85310752",
+   "name": "Pagaai",
+   "decision": "accept",
+   "reason": "Pagaai, the paddle inlaid in the paving, whole outline in frame; site cabins behind take the upper half; P18, 0 m (file 47 m)."
+  },
+  {
+   "id": "Q56395614",
+   "name": "Ter herinnering aan Anthony Winkler Prins",
+   "decision": "accept",
+   "reason": "Winkler Prins column by André Volten, whole column in the park; slim at card size but unmistakable; P18, 0 m."
+  },
+  {
+   "id": "n8981340303",
+   "name": "Vrede",
+   "decision": "accept",
+   "reason": "Hans Reicher's Vrede, full figure on its plinth; P18, 11 m."
+  },
+  {
+   "id": "Q61988485",
+   "name": "Without title",
+   "decision": "accept",
+   "reason": "Untitled Vijzelgracht bench carrying Anna Enquist's line; the bench is the work (P18), text small at card size; 0 m."
+  },
+  {
+   "id": "Q104588270",
+   "name": "Zonder titel",
+   "decision": "accept",
+   "reason": "Leo Braat's coloured farm relief on the Jacob Geelstraat wall, fills the frame; P18, 0 m."
+  },
+  {
+   "id": "n6054695736",
+   "name": "Boegbeeld",
+   "decision": "accept",
+   "reason": "Leonie Mijnlieff's figurehead on Brug 173, work in the foreground; P18, 1 m."
+  },
+  {
+   "id": "Q98835188",
+   "name": "Bruidssuite",
+   "decision": "accept",
+   "reason": "Godelieve Smulders' Bruidssuite in the Westerpark, the steel frame grown over with its trees (as the work is meant to be); P18, 0 m."
+  },
+  {
+   "id": "Q93929045",
+   "name": "Grafmonument van Johannes van Bree",
+   "decision": "accept",
+   "reason": "Johannes van Bree grave monument, whole stele; P18, 0 m."
+  },
+  {
+   "id": "n4684390297",
+   "name": "Les Grandes Formes",
+   "decision": "accept",
+   "reason": "Jacques Vieille's Les Grandes Formes, the field of pylons; P18, 8 m."
+  },
+  {
+   "id": "Q78706711",
+   "name": "Light sculpture",
+   "decision": "replace",
+   "reason": "Staged P18 was a Nassauplein crossing with the roof work a speck; replaced by a closer view of Noel Harding's rooftop light frame from the same Commons category (pale sky but the work fills the upper frame).",
+   "replacement": {
+    "file": "File:Noel Harding.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Noel_Harding.JPG",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Noel_Harding.JPG",
+    "licence": "CC BY-SA 4.0",
+    "author": "Marion Golsteijn"
+   }
+  },
+  {
+   "id": "Q124678193",
+   "name": "Raise the Level",
+   "decision": "accept",
+   "reason": "Shepard Fairey's Raise the Level at NDSM, whole mural; P18, 0 m."
+  },
+  {
+   "id": "Q96139736",
+   "name": "Wandelend naar de Nieuwmarkt",
+   "decision": "accept",
+   "reason": "Wandelend naar de Nieuwmarkt, close view of the brick figure's head and shoulders (passers-by at the edge); P18, 0 m."
+  },
+  {
+   "id": "Q60269802",
+   "name": "Without title",
+   "decision": "accept",
+   "reason": "Psalm 128 / Patrimonium mural on the Blomwijckerpad gable, whole panel; P18, 0 m."
+  },
+  {
+   "id": "n2608926785",
+   "name": "666/999",
+   "decision": "accept",
+   "reason": "Wending 666/999 on the Witte de Withplein, whole bent plate; P18, 1 m."
+  },
+  {
+   "id": "n13438291747",
+   "name": "Actrice",
+   "decision": "accept",
+   "reason": "Dankende actrice, 1980 Anefo photo (CC0) of the statue alone, fills the frame; black and white; P18, 0 m."
+  },
+  {
+   "id": "n11203254808",
+   "name": "Amsterdam Kwijtweg",
+   "decision": "accept",
+   "reason": "Amsterdam Kwijtweg: the work is the fake station board beside the old rail bed, legible; P18, 3 m."
+  },
+  {
+   "id": "n1574833853",
+   "name": "Bevrijde vogel",
+   "decision": "accept",
+   "reason": "Siep van den Berg's Bevrijde vogel on the Sierplein, whole column; P18, 31 m (Wikidata vs OSM)."
+  },
+  {
+   "id": "n4771454407",
+   "name": "Brettensuite 3/20",
+   "decision": "replace",
+   "reason": "Staged file was the information plaque, not the sculpture; replaced by Wikifrits' photo of Brettensuite no. 3 itself (CC0, rusted steel blades, same piece as Paul Berendsen's St Barbara photo).",
+   "replacement": {
+    "file": "File:Amsterdam kunstwerk brettensuite03.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Amsterdam_kunstwerk_brettensuite03.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Amsterdam_kunstwerk_brettensuite03.jpg/960px-Amsterdam_kunstwerk_brettensuite03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC0",
+    "author": "Wikifrits"
+   }
+  },
+  {
+   "id": "n9029852485",
+   "name": "Bruidspaar",
+   "decision": "accept",
+   "reason": "Hubert van Lith's Bruidspaar (OSM artist name misspelt 'Huub van Loth') on its wall console; title match 37 m."
+  },
+  {
+   "id": "n13958062576",
+   "name": "Cirkel",
+   "decision": "accept",
+   "reason": "Ineke Visser's corten circle (Wikidata 'Rode Cirkel', Commons 'Rode ring (Visser, Amsterdam)'), fills the frame; P18, 1 m."
+  },
+  {
+   "id": "n7288634672",
+   "name": "Cirkels",
+   "decision": "reject",
+   "reason": "Rob Schreefel's two circles are a white speck in a meadow at card size; Commons has no closer photo (category Rob Schreefel checked)."
+  },
+  {
+   "id": "n9048817827",
+   "name": "Damsko Strijder",
+   "decision": "accept",
+   "reason": "Kamp Seedorf's Damsko Strijder (Van der Laan) mural on the Mercatorplein, whole panel; P18, 1 m."
+  },
+  {
+   "id": "n8196260413",
+   "name": "De lus",
+   "decision": "accept",
+   "reason": "André Volten's De Lus, whole loop against the sky; P18, 2 m."
+  },
+  {
+   "id": "w492205616",
+   "name": "De Stelling van Diemen",
+   "decision": "accept",
+   "reason": "Observatorium's Stelling van Diemen, inside the timber and steel frame; title match 8 m."
+  },
+  {
+   "id": "n8887944605",
+   "name": "Dik Trom",
+   "decision": "accept",
+   "reason": "Nico Onkenhout's Dik Trom on the Hoofddorp Marktplein (the point is there), whole statue; P18, 25 m."
+  },
+  {
+   "id": "n5126157629",
+   "name": "Duivenprieel",
+   "decision": "accept",
+   "reason": "Marte Röling's Duivenprieel in Weesp, whole work; P18, 2 m."
+  },
+  {
+   "id": "n8870446501",
+   "name": "Eendracht",
+   "decision": "accept",
+   "reason": "Aart Lamberts' Eendracht, three figures on the inscribed plinth; P18, 0 m."
+  },
+  {
+   "id": "n4719433800",
+   "name": "Engel",
+   "decision": "accept",
+   "reason": "Willem Reijers' Engel in the Martin Luther Kingpark, full figure; title match 13 m."
+  },
+  {
+   "id": "n7972751844",
+   "name": "Gabriël",
+   "decision": "accept",
+   "reason": "Henk Spreeuwenberg's Gabriël at St Barbara, the named corten figure; title match 27 m (item is the Aartsengelen group)."
+  },
+  {
+   "id": "n8246225634",
+   "name": "Gewichtheffer",
+   "decision": "accept",
+   "reason": "Pieter de Monchy's Gewichtheffer, full figure; P18, 1 m."
+  },
+  {
+   "id": "n1576976358",
+   "name": "Het gevecht",
+   "decision": "accept",
+   "reason": "Paul van Crimpen's Het gevecht in the Piet Wiedijkpark, whole stone; P18, 0 m."
+  },
+  {
+   "id": "n10694105039",
+   "name": "Hurkende Jongen",
+   "decision": "accept",
+   "reason": "David de Goede's Hurkende jongen on the Osdorpplein, full figure; P18. OSM node and Wikidata point are 152 m apart on the same square: data, not photo, question."
+  },
+  {
+   "id": "n3130956442",
+   "name": "Kokadorus",
+   "decision": "replace",
+   "reason": "Staged P18 was the 1977 unveiling with the alderman and crowd beside the statue; replaced by a Flickr (CC BY 2.0) photo of the Kokadorus statue alone on the Amstelveld, same Commons category.",
+   "replacement": {
+    "file": "File:Kokadorus.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kokadorus.jpg",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Kokadorus.jpg",
+    "licence": "CC BY 2.0",
+    "author": "tracy ducasse"
+   }
+  },
+  {
+   "id": "n5238714413",
+   "name": "Kunstwerk Oranjesluizen",
+   "decision": "accept",
+   "reason": "J. Driessen's work of old Oranjesluizen parts (brick piers under a steel frame) beside the locks; title match 14 m."
+  },
+  {
+   "id": "n4989018299",
+   "name": "Max Euwe",
+   "decision": "accept",
+   "reason": "José Fijnaut's Max Euwe head and chess piece in the Max Euweplein passage, fills the frame; small file (333 px) but sharp; P18, 3 m."
+  },
+  {
+   "id": "n7974453154",
+   "name": "Michael",
+   "decision": "accept",
+   "reason": "Henk Spreeuwenberg's Michaël at St Barbara, whole figure; title match 8 m."
+  },
+  {
+   "id": "n3371146577",
+   "name": "Nereide op Triton",
+   "decision": "accept",
+   "reason": "Nic Jonk's Nereïde op Triton in its pond on the August Allebéplein, whole work mid-frame; P18, 2 m."
+  },
+  {
+   "id": "n7931710053",
+   "name": "Nieuwe Naatje",
+   "decision": "accept",
+   "reason": "Hanna Mobach's Nieuwe Naatje, full figure on its plinth; P18 (public domain), 8 m."
+  },
+  {
+   "id": "n4501136323",
+   "name": "Phoenix",
+   "decision": "accept",
+   "reason": "Willem Reijers' Phoenix on the Spiegelgracht, whole figure; title match 1 m."
+  },
+  {
+   "id": "n7084303792",
+   "name": "Poorter",
+   "decision": "accept",
+   "reason": "Hildo Krop's Poorter on the Weesperpoort pier, whole relief figure; title match 4 m."
+  },
+  {
+   "id": "n418055465",
+   "name": "Rembrandt",
+   "decision": "accept",
+   "reason": "Rembrandt als tekenaar on the Kalfjeslaan, whole statue; P18, 4 m."
+  },
+  {
+   "id": "n12077061017",
+   "name": "Salami",
+   "decision": "accept",
+   "reason": "Carel Visser's Salami at Schiphol (the point is there), whole stacked slabs; title match 8 m."
+  },
+  {
+   "id": "n9701568390",
+   "name": "Sleutelgat",
+   "decision": "accept",
+   "reason": "Ad Molendijk's Sleutelgat, whole stone; P18, 1 m."
+  },
+  {
+   "id": "n5434191127",
+   "name": "Social Sofa",
+   "decision": "accept",
+   "reason": "Social Sofa in the Amstelpark, whole mosaic sofa; title match 17 m."
+  },
+  {
+   "id": "n11051643892",
+   "name": "Strijd",
+   "decision": "accept",
+   "reason": "Gerrit Graas' Strijd (three figures), whole stone; title match 2 m."
+  },
+  {
+   "id": "n9199244050",
+   "name": "Troost",
+   "decision": "replace",
+   "reason": "Staged file was the name plaque; replaced by Paul Berendsen's photo of Hildo Krop's Troost itself on the Arie Biemondstraat (same Commons category, geotagged there).",
+   "replacement": {
+    "file": "File:Troost van Hildo Krop.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Troost_van_Hildo_Krop.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Troost_van_Hildo_Krop.jpg/960px-Troost_van_Hildo_Krop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "licence": "CC BY-SA 4.0",
+    "author": "Paul Berendsen"
+   }
+  },
+  {
+   "id": "n286575969",
+   "name": "Van Randwijk-monument",
+   "decision": "accept",
+   "reason": "Van Randwijk monument wall with its inscription, whole wall; P18, 1 m."
+  },
+  {
+   "id": "n8185737096",
+   "name": "Verkleed Kleren",
+   "decision": "accept",
+   "reason": "Theo Schepens' Verkleed Kleren in Landsmeer (the point is there), whole figure in snow; title match 6 m."
+  },
+  {
+   "id": "n6411836164",
+   "name": "Verloren stad",
+   "decision": "accept",
+   "reason": "Harald Schole's Verloren stad corten wall by the water, whole work; title match 28 m."
+  },
+  {
+   "id": "n9088913195",
+   "name": "Voetbal",
+   "decision": "accept",
+   "reason": "Voetbal Spieringhorn football, fills the frame; P18, 1 m."
+  },
+  {
+   "id": "n9721589184",
+   "name": "Vogelgod",
+   "decision": "accept",
+   "reason": "Leo Braat's Vogelgod, whole bronze; P18, 0 m."
+  },
+  {
+   "id": "n344899667",
+   "name": "Vredesbeeld",
+   "decision": "accept",
+   "reason": "Heppe de Moor's Vredesteken Osdorp in its pond, whole work; wide (3:1) file, centred; P18, 2 m."
+  },
+  {
+   "id": "n7814521848",
+   "name": "Vrouw met stier",
+   "decision": "accept",
+   "reason": "Julia van Verschuer's Vrouw met stier in Zaandam (the point is there), whole bronze; title match 7 m."
+  },
+  {
+   "id": "n7395647571",
+   "name": "Vrouwe Fortuna",
+   "decision": "accept",
+   "reason": "Hildo Krop's Vrouwe Fortuna on the Rokin pier, whole figure (lamp post and sign beside it); title match 7 m."
+  },
+  {
+   "id": "n290735740",
+   "name": "Westerman Monument",
+   "decision": "accept",
+   "reason": "Westerman monument in Artis, whole monument; P18, 0 m."
+  },
+  {
+   "id": "w892387925",
+   "name": "Wormenhotel",
+   "decision": "accept",
+   "reason": "Wormenhotel on the Orteliuskade, whole stacked piece; title match 9 m."
+  },
+  {
+   "id": "w1215278812",
+   "name": "Zeeslagenkaart",
+   "decision": "accept",
+   "reason": "Lobke Alkemade's Zeeslagenkaart, overview of the round concrete map; P18, 0 m."
+  }
+ ]
+}

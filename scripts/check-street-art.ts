@@ -4,6 +4,8 @@
 // articles) are the kind of thing a rider stops next to and asks about.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { existsSync } from 'node:fs';
+import { photoProblems, type StreetArtPhoto } from '../src/canalRecall/streetArtPhotoReview.ts';
 import { STREET_ART_KINDS, StreetArtIndex, streetArtCard, streetArtFallbackDetail, type StreetArtFile } from '../src/canalRecall/streetArt.ts';
 
 const file = JSON.parse(readFileSync('public/data/extracts/amsterdam/street-art.json', 'utf8')) as StreetArtFile;
@@ -41,4 +43,18 @@ for (const [name, lng, lat] of expect) {
 // 40 m from the Homomonument is open square, not a click on it.
 assert.equal(index.nearest(4.8847 + 0.0006, 52.3744), null, 'a click 40 m away does not open the card');
 assert.equal(streetArtFallbackDetail({ k: 'mural', a: 'Eduardo Kobra', y: '2016' }), 'A mural by Eduardo Kobra (2016), mapped here.');
-process.stdout.write(`Street art checks passed (${file.points.length} points, ${withArticle.length} with an article)\n`);
+// Reviewed Commons / panorama photos (publish-street-art-photos.ts): each is credited and openly licensed, and its
+// point shows it unless an article image already does. Named regression: Troost (n9199244050) shows the statue,
+// not its name plaque.
+const sidecarPath = 'public/data/extracts/amsterdam/street-art-commons.json';
+const photos = existsSync(sidecarPath) ? (JSON.parse(readFileSync(sidecarPath, 'utf8')) as { images: StreetArtPhoto[] }).images : [];
+for (const photo of photos) {
+  assert.deepEqual(photoProblems(photo), [], `${photo.name} (${photo.id}): photo is credited and open`);
+  const point = index.byId(photo.id);
+  if (point) assert.ok(point.i, `${photo.name} (${photo.id}) shows a photo`);
+}
+if (photos.length) {
+  const troost = photos.find(p => p.id === 'n9199244050');
+  assert.ok(troost && !/bordje/i.test(troost.file) && index.byId('n9199244050')?.i === troost.thumb, 'Troost shows the statue, not its plaque');
+}
+process.stdout.write(`Street art checks passed (${file.points.length} points, ${withArticle.length} with an article, ${photos.length} reviewed photos)\n`);
