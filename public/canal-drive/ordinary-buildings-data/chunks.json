@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-14T22:05:04.137Z",
+ "generatedAt": "2026-11-20T10:20:46.691Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -26235,10 +26235,10 @@
    "id": "chunk-face-utrechtse-48-76",
    "category": "street-survey",
    "name": "face-utrechtse-48-76",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-utrechtse-48-76.glb?asset=c6ca8a61493e87ad",
-   "sha256": "c6ca8a61493e87ad4bff3b9c0ea6ce0263c0d90e1a5004ebf644793a5f697ead",
-   "bytes": 465816,
-   "triangles": 18942,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-utrechtse-48-76.glb?asset=dc22ad39fd3eb833",
+   "sha256": "dc22ad39fd3eb83361e980b9d12197529226cabaeac79a6d7976422bd979f25a",
+   "bytes": 467064,
+   "triangles": 19030,
    "primitives": 43,
    "instance": {
     "anchor": [
@@ -27184,7 +27184,7 @@
        0.32
       ]
      },
-     "triangles": 1999,
+     "triangles": 2087,
      "ranges": [
       {
        "primitive": 3,
@@ -27214,7 +27214,7 @@
       {
        "primitive": 30,
        "firstTriangle": 158,
-       "triangleCount": 66
+       "triangleCount": 154
       },
       {
        "primitive": 31,
@@ -27284,7 +27284,7 @@
       },
       {
        "primitive": 30,
-       "firstTriangle": 224,
+       "firstTriangle": 312,
        "triangleCount": 148
       },
       {
@@ -27306,7 +27306,7 @@
     }
    ],
    "lod2": {
-    "sourceHash": "c6ca8a61493e87ad",
+    "sourceHash": "dc22ad39fd3eb833",
     "buildVersion": 4,
     "bytes": 52500,
     "triangles": 1482
