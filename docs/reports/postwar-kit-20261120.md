@@ -1,5 +1,67 @@
 # Post-1965 housing kit (2026-11-20, lane/postwar-housing-kit-20261120)
 
+## Round 3 (buff calibration)
+
+**Result:** on a fresh clean blind of 20, kit on won **15**, kit off won 1, and 4 were ties. The judge flagged 10 regressions against today and **1 against the kit**: #15 Nieuwe Kerkstraat 105-111, a white render front drawn as red-brown brick. That clears the wins bar but not "no kit regression flagged". The two named fronts re-judged separately both go to the kit, and the judge flags today's draw as wrong on both. Nothing was tuned after the frames were seen.
+
+**The fix (`wallPatch.ts`, postwar path only).** `calibrateThumb` gets a buff branch.
+- Which thumbnail brick it covers:
+  - light and yellow: L* >= 65 and hue >= 65 deg;
+  - yellow at mid lightness: hue >= 80 deg and L* >= 40;
+  - in both cases raw chroma >= 3 and hue <= 110 deg.
+- What it does: the brick keeps its own lightness (up to 78), hue (clamped to 65-90 deg) and chroma (clamped to 8-30). Before, it went through the #118 red-brick clamps: L* <= 60, hue rotated -18 deg and clamped to <= 56 deg.
+- `familyOfHex` calls a hue of 70-110 deg at L* >= 40 buff. Red and brown brick calibrate to a hue of 56 deg or less, so they never reach that test.
+- `applyExposure` and the buurt profiles are untouched, so no profile changes; `git diff` on `buurtProfiles/` and `look/` is empty.
+- Pinned in `kit.test.ts` (9/9 pass):
+  - Spitsbergenstraat 2-36: raw #e9ccad, was pink tan #ac8976, now buff;
+  - Funenpark 440-463: raw #6f685d, was warm brown #826250, now grey-buff;
+  - Bloemgracht 210-286 red brick stays #654436 byte for byte;
+  - Weteringschans red at L 57 / h 77 is not buff.
+- The flag-off chunk hash is still 3e723a1de87c8b73ff117a69bbc7b1b22bce1739.
+
+**Re-measure.**
+- Same 247 accepted pands. 30 change colour; **8 change family, all brick-brown to brick-buff**. The other 22 were already classified buff and now draw yellow buff instead of the shared pink tan.
+- Validation on the reads is unchanged at 22/28 coarse.
+
+**Blind 3.**
+- `split2.ts --round=3`: sha1('postwar-blind3:' + id), excluding round 1's 75 pands and blind 2's 20. Committed in 7d22b87ace before any frame was rendered. Sides are hashed in `blind3-key.json`.
+- One fresh opus judge, given the round-1 prompt unchanged; the named pair was a separate set in the same run.
+- Sheets: map-recall2-screenshots `ui/2026-11-20-postwar-kit/round3-blind-1..4.jpg`, `round3-named-funenpark-spitsbergenstraat.jpg` and the keys.
+
+| # | cluster | address | winner | regression |
+|---|---|---|---|---|
+| 1 | C2 | Polderweg 476-494 | on | off: grey on red-brown brick |
+| 2 | C2 | Funenpark 270-281 | tie | |
+| 3 | C1 | Admiraliteitstraat 19-41 | tie | |
+| 4 | C1 | Buiten Kadijken 2-58 | tie | |
+| 5 | C1 | Majubastraat 20-24 | on | off: pale pink render on red brick |
+| 6 | C2 | Baarsjesweg 188-198 | on | off: grey on red-brown brick |
+| 7 | C1 | Javakade 400-438 | on (low) | |
+| 8 | C1 | 's-Gravesandeplein 40-86 | tie | |
+| 9 | C1 | Uithoornstraat 30 | on | off: dark brown on tan/buff |
+| 10 | C1 | Van Beuningenstraat 94-110 | on | off: grey on red-purple brick |
+| 11 | C1 | Jacob van Lennepkade 372-378 | on (low) | off: white on orange-brown brick |
+| 12 | C1 | Javakade 126-160 | on | |
+| 13 | C1 | Kraaipanstraat 56 | on | off: grey on red-brown brick |
+| 14 | C1 | Van der Hoopstraat 50-56 | on | off: cream render on red-brown brick |
+| 15 | C1 | Nieuwe Kerkstraat 105-111 | **off** | **on: red brick on white/cream render** |
+| 16 | C1 | Celebesstraat 125-185 | on | off: dark grey on salmon-red brick |
+| 17 | C1 | Alexanderkade 153-177 | on | off: red on buff/yellow brick |
+| 18 | C1 | Jacob van Wassenaar Obdamstraat 15-67 | on (low) | |
+| 19 | C4 | Touwbaan 2-28 | on (low) | |
+| 20 | C1 | Oetewalerstraat 9-43 | on | |
+
+Named check: Funenpark 440-463 now draws grey-brown brick (kit wins, medium-high; today flagged as render). Spitsbergenstraat 2-36 now draws buff brick (kit wins, high; today flagged red-brown).
+
+**Why #15 failed.**
+- It is a sunlit white render front, broken up by windows and curtains. The white cluster holds 22 % of the wall pixels, under the 35 % paint bar.
+- A warm cluster (L 52, a 7, b 18, share 22 %, curtains and sun-warmed render) passes the warm-brick rule (share >= 15 %).
+- The likely fix, not applied because the frames had been seen: rank a bright low-chroma cluster (L* >= 85) holding about 20 % or more ahead of a mid-lightness warm one, or require brick clusters to be darker than L* 50 when a bright cluster of similar share exists. This needs its own fresh blind.
+
+**Cost, 6 tiles.** Walls unchanged at 3,213,156 triangles; extras +8,928 (+0.14 %); build time +7 % (51.8 s against 48.4 s on a loaded machine; round 2 measured +9 %).
+
+---
+
 ## Round 2 (colour only, from a corrected source)
 
 **Result:** on a clean blind of 20, kit on won 10, kit off won 3, and 7 were ties. The judge flagged 1 regression against the kit (#5 Funenpark 440-463: orange-red brick on a grey/buff front) and 9 against today. That clears the wins bar but not "no regressions flagged". Do not flip it. Nothing was tuned after the frames were seen.
