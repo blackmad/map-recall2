@@ -130,7 +130,10 @@ export class BeltReviewStore {
     const candidates = await this.candidates(faceId);
     const c = candidates?.pands.find(p => p.pandId === pandId)?.candidates.find(k => k.id === candidateId);
     if (!c) throw new ReviewError('Unknown candidate', 404);
-    if (c.file) return { file: await resolveInside(this.imageRoot ?? this.faceDir(faceId), c.file) };
+    // A face prepared by lane B names its own absolute image root (its source-data worktree); it wins over the env root.
+    const faceRoot = (candidates as { imageRoot?: unknown }).imageRoot;
+    const root = typeof faceRoot === 'string' && faceRoot.startsWith('/') ? faceRoot : (this.imageRoot ?? this.faceDir(faceId));
+    if (c.file) return { file: await resolveInside(root, c.file) };
     if (c.url && /^https?:\/\//.test(c.url)) return { url: c.url };
     throw new ReviewError('Candidate has no image', 404);
   }
