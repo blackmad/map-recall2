@@ -1,0 +1,301 @@
+{
+ "faceId": "hartenstraat-1-49-odd",
+ "street": "Hartenstraat",
+ "side": "odd",
+ "from": 1,
+ "to": 49,
+ "orderNote": "order runs left to right as seen from the street (scripts/belt-review/faceModel.ts faceOrder)",
+ "source": "PDOK BAG OGC API v2 (verblijfsobject + pand), CC0",
+ "fetchedAt": "2026-11-20",
+ "pands": [
+  {
+   "pandId": "0363100012177224",
+   "address": "Hartenstraat 1",
+   "order": 0,
+   "numbers": [
+    1
+   ],
+   "built": 1794,
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012177220",
+   "address": "Hartenstraat 3",
+   "order": 1,
+   "numbers": [
+    3
+   ],
+   "built": 1761,
+   "units": 2,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012177233",
+   "address": "Hartenstraat 5",
+   "order": 2,
+   "numbers": [
+    5
+   ],
+   "letters": [
+    "5A",
+    "5B",
+    "5C"
+   ],
+   "built": 1750,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012169175",
+   "address": "Hartenstraat 7–9",
+   "order": 3,
+   "numbers": [
+    7,
+    9
+   ],
+   "letters": [
+    "7A",
+    "7B"
+   ],
+   "built": 1905,
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012177229",
+   "address": "Hartenstraat 11",
+   "order": 4,
+   "numbers": [
+    11
+   ],
+   "built": 1760,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012177226",
+   "address": "Hartenstraat 13",
+   "order": 5,
+   "numbers": [
+    13
+   ],
+   "built": 1761,
+   "units": 4,
+   "groundUses": [
+    "industriefunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012177231",
+   "address": "Hartenstraat 15",
+   "order": 6,
+   "numbers": [
+    15
+   ],
+   "built": 1767,
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012177230",
+   "address": "Hartenstraat 17",
+   "order": 7,
+   "numbers": [
+    17
+   ],
+   "built": 1754,
+   "units": 3,
+   "groundUses": [
+    "bijeenkomstfunctie,woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012177221",
+   "address": "Hartenstraat 19",
+   "order": 8,
+   "numbers": [
+    19
+   ],
+   "built": 1761,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012169173",
+   "address": "Hartenstraat 21–25",
+   "order": 9,
+   "numbers": [
+    21,
+    23,
+    25
+   ],
+   "letters": [
+    "25A",
+    "25B",
+    "25C",
+    "25D",
+    "25E",
+    "25F",
+    "25G",
+    "25H",
+    "25K"
+   ],
+   "built": 1725,
+   "units": 12,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012169174",
+   "address": "Hartenstraat 27",
+   "order": 10,
+   "numbers": [
+    27
+   ],
+   "built": 1750,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012172305",
+   "address": "Hartenstraat 29",
+   "order": 11,
+   "numbers": [
+    29
+   ],
+   "letters": [
+    "29A"
+   ],
+   "built": 1650,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012172307",
+   "address": "Hartenstraat 29",
+   "order": 12,
+   "numbers": [
+    29
+   ],
+   "built": 1650,
+   "units": 2,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012172308",
+   "address": "Hartenstraat 31",
+   "order": 13,
+   "numbers": [
+    31
+   ],
+   "letters": [
+    "31A",
+    "31B"
+   ],
+   "built": 1732,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012172306",
+   "address": "Hartenstraat 33",
+   "order": 14,
+   "numbers": [
+    33
+   ],
+   "built": 1725,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012172309",
+   "address": "Hartenstraat 35",
+   "order": 15,
+   "numbers": [
+    35
+   ],
+   "built": 1723,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012172299",
+   "address": "Hartenstraat 37",
+   "order": 16,
+   "numbers": [
+    37
+   ],
+   "built": 1724,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  }
+ ]
+}

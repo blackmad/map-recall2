@@ -1,0 +1,467 @@
+{
+ "faceId": "keizersgracht-596-648-even",
+ "street": "Keizersgracht",
+ "side": "even",
+ "from": 596,
+ "to": 648,
+ "orderNote": "order runs left to right as seen from the street (scripts/belt-review/faceModel.ts faceOrder)",
+ "source": "PDOK BAG OGC API v2 (verblijfsobject + pand), CC0",
+ "fetchedAt": "2026-11-20",
+ "pands": [
+  {
+   "pandId": "0363100012165076",
+   "address": "Keizersgracht 648",
+   "order": 0,
+   "numbers": [
+    648
+   ],
+   "letters": [
+    "648A",
+    "648B",
+    "648C"
+   ],
+   "built": 1700,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012165075",
+   "address": "Keizersgracht 646",
+   "order": 1,
+   "numbers": [
+    646
+   ],
+   "letters": [
+    "646A",
+    "646B",
+    "646C",
+    "646D",
+    "646E",
+    "646F",
+    "646G"
+   ],
+   "built": 1700,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012165049",
+   "address": "Keizersgracht 642–644",
+   "order": 2,
+   "numbers": [
+    642,
+    644
+   ],
+   "letters": [
+    "642A",
+    "642B",
+    "642C",
+    "642D",
+    "644A",
+    "644B",
+    "644C",
+    "644D",
+    "644E",
+    "644F",
+    "644G"
+   ],
+   "built": 1700,
+   "units": 11,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175658",
+   "address": "Keizersgracht 640",
+   "order": 3,
+   "numbers": [
+    640
+   ],
+   "built": 1700,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175659",
+   "address": "Keizersgracht 638",
+   "order": 4,
+   "numbers": [
+    638
+   ],
+   "letters": [
+    "638A",
+    "638B"
+   ],
+   "built": 1700,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012571490",
+   "address": "Keizersgracht 634–636",
+   "order": 5,
+   "numbers": [
+    634,
+    636
+   ],
+   "letters": [
+    "634L",
+    "636A",
+    "636B"
+   ],
+   "built": 1700,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012176750",
+   "address": "Keizersgracht 634",
+   "order": 6,
+   "numbers": [
+    634
+   ],
+   "letters": [
+    "634A",
+    "634D",
+    "634E",
+    "634F",
+    "634G",
+    "634H",
+    "634K",
+    "634L",
+    "634M"
+   ],
+   "built": 1700,
+   "units": 9,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012176751",
+   "address": "Keizersgracht 632",
+   "order": 7,
+   "numbers": [
+    632
+   ],
+   "built": 1905,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012176749",
+   "address": "Keizersgracht 630",
+   "order": 8,
+   "numbers": [
+    630
+   ],
+   "built": 1680,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012176748",
+   "address": "Keizersgracht 628",
+   "order": 9,
+   "numbers": [
+    628
+   ],
+   "letters": [
+    "628A",
+    "628B",
+    "628C",
+    "628D"
+   ],
+   "built": 1680,
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012176747",
+   "address": "Keizersgracht 626",
+   "order": 10,
+   "numbers": [
+    626
+   ],
+   "built": 1680,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012176746",
+   "address": "Keizersgracht 624",
+   "order": 11,
+   "numbers": [
+    624
+   ],
+   "built": 1680,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012176745",
+   "address": "Keizersgracht 620",
+   "order": 12,
+   "numbers": [
+    620
+   ],
+   "built": 1680,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175645",
+   "address": "Keizersgracht 618",
+   "order": 13,
+   "numbers": [
+    618
+   ],
+   "built": 1672,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175655",
+   "address": "Keizersgracht 616",
+   "order": 14,
+   "numbers": [
+    616
+   ],
+   "letters": [
+    "616A",
+    "616B",
+    "616C",
+    "616D",
+    "616E",
+    "616F"
+   ],
+   "built": 1800,
+   "units": 9,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175654",
+   "address": "Keizersgracht 614",
+   "order": 15,
+   "numbers": [
+    614
+   ],
+   "built": 1680,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167899",
+   "address": "Keizersgracht 612",
+   "order": 16,
+   "numbers": [
+    612
+   ],
+   "built": 1675,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167896",
+   "address": "Keizersgracht 610",
+   "order": 17,
+   "numbers": [
+    610
+   ],
+   "built": 1730,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012176066",
+   "address": "Keizersgracht 608",
+   "order": 18,
+   "numbers": [
+    608
+   ],
+   "built": 1730,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012176067",
+   "address": "Keizersgracht 606",
+   "order": 19,
+   "numbers": [
+    606
+   ],
+   "letters": [
+    "606A",
+    "606B",
+    "606C",
+    "606D",
+    "606E"
+   ],
+   "built": 1730,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012176068",
+   "address": "Keizersgracht 604",
+   "order": 20,
+   "numbers": [
+    604
+   ],
+   "letters": [
+    "604A",
+    "604B",
+    "604C"
+   ],
+   "built": 1670,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie,woonfunctie",
+    "kantoorfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167895",
+   "address": "Keizersgracht 602",
+   "order": 21,
+   "numbers": [
+    602
+   ],
+   "built": 1669,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012165043",
+   "address": "Keizersgracht 600",
+   "order": 22,
+   "numbers": [
+    600
+   ],
+   "built": 1670,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012165044",
+   "address": "Keizersgracht 598",
+   "order": 23,
+   "numbers": [
+    598
+   ],
+   "built": 1670,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012165045",
+   "address": "Keizersgracht 596",
+   "order": 24,
+   "numbers": [
+    596
+   ],
+   "built": 1740,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AG05",
+   "inWorldTiles": true
+  }
+ ]
+}
