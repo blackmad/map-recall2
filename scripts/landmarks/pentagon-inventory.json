@@ -1,0 +1,1015 @@
+{
+ "schemaVersion": 1,
+ "id": "pentagon",
+ "pand": "0363100012171628",
+ "brief": "scripts/landmarks/pentagon-brief.md",
+ "signature": [
+  "arcade-struts",
+  "arcade-columns",
+  "w08-corner-balconies",
+  "wide-balconies",
+  "w01-71-frame",
+  "arcade-clerestory",
+  "red-shopfronts"
+ ],
+ "walls": [
+  {
+   "tag": "w01-71",
+   "bearing": 71,
+   "lengthM": 19.3,
+   "centre": [
+    4.9007045,
+    52.36981
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000492_pano_0000_000044",
+   "capturedAt": "2017-11-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "arcade-struts",
+     "kind": "canopy",
+     "where": "ground storey, the whole Sint Antoniesbreestraat front: white raking struts forming a row of low gables over the shop windows, one per bay",
+     "approxSizeM": [
+      19.3,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "arcadeBay(): two white bars per bay rising from 2.2 m at the columns to 3.3 m mid-bay",
+     "seenIn": "b_20250108_1349_Track02_Sphere_00036"
+    },
+    {
+     "id": "arcade-clerestory",
+     "kind": "window-shape",
+     "where": "ground storey above the struts: glazed clerestory with close white bars under the first-floor slab",
+     "approxSizeM": [
+      19.3,
+      1.6
+     ],
+     "plan": "modelled",
+     "how": "arcadeBay(): glass with white bars every 0.55 m",
+     "seenIn": "b_20250108_1349_Track02_Sphere_00036"
+    },
+    {
+     "id": "arcade-columns",
+     "kind": "colonnade",
+     "where": "round concrete columns standing clear of the shop fronts, two of them rising to the third-floor balconies, one slender column mid-front to the roof",
+     "approxSizeM": [
+      0.4,
+      10
+     ],
+     "plan": "modelled",
+     "how": "column() in arcadeBay() and mainFront()",
+     "seenIn": "b_20250108_1349_Track02_Sphere_00036"
+    },
+    {
+     "id": "red-shopfronts",
+     "kind": "sign",
+     "where": "red-painted shop frames and doors in the middle and right bays",
+     "approxSizeM": [
+      4,
+      2.4
+     ],
+     "plan": "simplified",
+     "how": "red frame bars on alternate arcade bays; shop names not drawn (too small, they change)",
+     "seenIn": "b_20250108_1349_Track02_Sphere_00036"
+    },
+    {
+     "id": "wide-balconies",
+     "kind": "balcony-ironwork",
+     "where": "two wide curved balconies, 1.5-7.9 m and 11.4-17.8 m, on the first and third floors, dark railings",
+     "approxSizeM": [
+      6.4,
+      1.0
+     ],
+     "plan": "modelled",
+     "how": "mainFront(): curved slabs 1.7 m deep with railing (top rail, bottom rail, balusters)",
+     "seenIn": "b_20250108_1349_Track02_Sphere_00036"
+    },
+    {
+     "id": "round-balconies",
+     "kind": "balcony-ironwork",
+     "where": "small round balconies at 6.9 and 12.4 m on the second floor; round corner balconies at 2.4 and 16.9 m on the second and fourth floors",
+     "approxSizeM": [
+      2.5,
+      1.0
+     ],
+     "plan": "modelled",
+     "how": "mainFront(): half-elliptic slabs with railings",
+     "seenIn": "b_20250108_1349_Track02_Sphere_00036"
+    },
+    {
+     "id": "roof-terrace-rail",
+     "kind": "balcony-ironwork",
+     "where": "railed roof terrace over the middle bay, top storey set back",
+     "approxSizeM": [
+      4.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "railing on the roof line; the set-back top storey is the 3DBAG shell",
+     "seenIn": "b_20250108_1349_Track02_Sphere_00036"
+    },
+    {
+     "id": "christmas-lights",
+     "kind": "other",
+     "where": "string lights hung across the street",
+     "approxSizeM": [
+      1,
+      8
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250108_1349_Track02_Sphere_00036",
+     "skip": {
+      "reason": "temporary",
+      "note": "seasonal string lights / foreground tree, not part of the building"
+     }
+    },
+    {
+     "id": "w01-71-frame",
+     "kind": "other",
+     "where": "whole wall above the arcade: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      19.3,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-000492_pano_0000_000044"
+    }
+   ]
+  },
+  {
+   "tag": "w02-251",
+   "bearing": 251,
+   "lengthM": 9.2,
+   "centre": [
+    4.900564,
+    52.369728
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w02-251-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      9.2,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "inferred from the photographed walls"
+    }
+   ]
+  },
+  {
+   "tag": "w03-315",
+   "bearing": 315,
+   "lengthM": 7.3,
+   "centre": [
+    4.9005475,
+    52.3696085
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002962_pano_0002_000012",
+   "capturedAt": "2023-02-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "w03-round-balcony",
+     "kind": "balcony-ironwork",
+     "where": "round balcony with a reed screen over the ground-floor entrance",
+     "approxSizeM": [
+      2.4,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "cornerBalconies() where the plan turns",
+     "seenIn": "TMX7316010203-002962_pano_0002_000012"
+    },
+    {
+     "id": "w03-315-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      7.3,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-002962_pano_0002_000012"
+    }
+   ]
+  },
+  {
+   "tag": "w04-178",
+   "bearing": 178,
+   "lengthM": 6.8,
+   "centre": [
+    4.900475,
+    52.3694405
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000716",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "w04-tree",
+     "kind": "other",
+     "where": "tree and quay railing in front",
+     "approxSizeM": [
+      5,
+      8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001981_pano_0000_000716",
+     "skip": {
+      "reason": "temporary",
+      "note": "seasonal string lights / foreground tree, not part of the building"
+     }
+    },
+    {
+     "id": "w04-178-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      6.8,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-001981_pano_0000_000716"
+    }
+   ]
+  },
+  {
+   "tag": "w05-251",
+   "bearing": 251,
+   "lengthM": 6.5,
+   "centre": [
+    4.9005155,
+    52.3698135
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000017",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "w05-251-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      6.5,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7315120208-000073_pano_0003_000017"
+    }
+   ]
+  },
+  {
+   "tag": "w06-251",
+   "bearing": 251,
+   "lengthM": 6.1,
+   "centre": [
+    4.900643,
+    52.369666
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w06-251-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      6.1,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "inferred from the photographed walls"
+    }
+   ]
+  },
+  {
+   "tag": "w07-217",
+   "bearing": 217,
+   "lengthM": 6,
+   "centre": [
+    4.9002515,
+    52.3699
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000018",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-217-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      6,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7315120208-000073_pano_0003_000018"
+    }
+   ]
+  },
+  {
+   "tag": "w08-318",
+   "bearing": 318,
+   "lengthM": 5.9,
+   "centre": [
+    4.90027,
+    52.370008
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000029",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "w08-corner-balconies",
+     "kind": "balcony-ironwork",
+     "where": "stacked half-round balconies on a round concrete column at the corners of the stepped plan, one per floor",
+     "approxSizeM": [
+      2.4,
+      15
+     ],
+     "plan": "modelled",
+     "how": "cornerBalconies(): one balcony per housing floor on the convex corners (plan turns 14-110 deg, both walls 1.4 m or longer), a round column at the front",
+     "seenIn": "TMX7315120208-000073_pano_0003_000029"
+    },
+    {
+     "id": "w08-plinth",
+     "kind": "other",
+     "where": "pale brick plinth under the ground-floor glazing",
+     "approxSizeM": [
+      5.9,
+      0.5
+     ],
+     "plan": "modelled",
+     "how": "groundBay() greyBrick plinth",
+     "seenIn": "TMX7315120208-000073_pano_0003_000029"
+    },
+    {
+     "id": "w08-318-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      5.9,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7315120208-000073_pano_0003_000029"
+    }
+   ]
+  },
+  {
+   "tag": "w09-336",
+   "bearing": 336,
+   "lengthM": 5.9,
+   "centre": [
+    4.9003645,
+    52.370033
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000042",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "w09-corner-balconies",
+     "kind": "balcony-ironwork",
+     "where": "stacked half-round balconies at the corners, as w08-318",
+     "approxSizeM": [
+      2.4,
+      15
+     ],
+     "plan": "modelled",
+     "how": "cornerBalconies()",
+     "seenIn": "TMX7315120208-000073_pano_0003_000042"
+    },
+    {
+     "id": "w09-336-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      5.9,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7315120208-000073_pano_0003_000042"
+    }
+   ]
+  },
+  {
+   "tag": "w10-355",
+   "bearing": 355,
+   "lengthM": 5.9,
+   "centre": [
+    4.900467,
+    52.3700385
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000033",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "w10-355-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      5.9,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7315120208-000073_pano_0003_000033"
+    }
+   ]
+  },
+  {
+   "tag": "w11-77",
+   "bearing": 77,
+   "lengthM": 5,
+   "centre": [
+    4.9006495,
+    52.369914
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001177_pano_0000_000864",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "w11-arcade",
+     "kind": "canopy",
+     "where": "ground storey: the arcade struts, clerestory and a red shop frame, same as w01-71",
+     "approxSizeM": [
+      5,
+      4.5
+     ],
+     "plan": "modelled",
+     "how": "arcadeBay() on every Sint Antoniesbreestraat bay",
+     "seenIn": "TMX7316010203-001177_pano_0000_000864"
+    },
+    {
+     "id": "w11-round-balconies",
+     "kind": "balcony-ironwork",
+     "where": "three stacked half-round balconies at the right edge",
+     "approxSizeM": [
+      2.4,
+      8
+     ],
+     "plan": "modelled",
+     "how": "the stacked corner balconies (cornerBalconies())",
+     "seenIn": "TMX7316010203-001177_pano_0000_000864"
+    },
+    {
+     "id": "w11-77-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      5,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-001177_pano_0000_000864"
+    }
+   ]
+  },
+  {
+   "tag": "w12-300",
+   "bearing": 300,
+   "lengthM": 4.9,
+   "centre": [
+    4.9001965,
+    52.369971
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000011",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "w12-300-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      4.9,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7315120208-000073_pano_0003_000011"
+    }
+   ]
+  },
+  {
+   "tag": "w13-135",
+   "bearing": 135,
+   "lengthM": 4.8,
+   "centre": [
+    4.90068,
+    52.3695295
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0001_001609",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "w13-balconies",
+     "kind": "balcony-ironwork",
+     "where": "stacked round-fronted balconies over the Raamgracht quay",
+     "approxSizeM": [
+      2.4,
+      12
+     ],
+     "plan": "modelled",
+     "how": "cornerBalconies()",
+     "seenIn": "TMX7316010203-000355_pano_0001_001609"
+    },
+    {
+     "id": "w13-135-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      4.8,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-000355_pano_0001_001609"
+    }
+   ]
+  },
+  {
+   "tag": "w14-0",
+   "bearing": 0,
+   "lengthM": 4.8,
+   "centre": [
+    4.9004645,
+    52.369591
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-03_04-36-25_00391",
+   "capturedAt": "2025-07-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "w14-arcade",
+     "kind": "canopy",
+     "where": "north corner of the arcade: the raking white struts, a round column with posters, AZIJNMAN sign",
+     "approxSizeM": [
+      4.8,
+      4.5
+     ],
+     "plan": "simplified",
+     "how": "arcadeBay() struts, clerestory and column; the hanging shop sign is skipped (too small, changes)",
+     "seenIn": "recording_2025-07-03_04-36-25_00391"
+    },
+    {
+     "id": "w14-0-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      4.8,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "recording_2025-07-03_04-36-25_00391"
+    }
+   ]
+  },
+  {
+   "tag": "w15-134",
+   "bearing": 134,
+   "lengthM": 4.3,
+   "centre": [
+    4.900584,
+    52.36947
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0001_001608",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "w15-balconies",
+     "kind": "balcony-ironwork",
+     "where": "stacked balconies with railings on the Raamgracht front",
+     "approxSizeM": [
+      3,
+      12
+     ],
+     "plan": "simplified",
+     "how": "cornerBalconies() at the convex corners; the straight recessed loggias are drawn as the frame grid",
+     "seenIn": "TMX7316010203-000355_pano_0001_001608"
+    },
+    {
+     "id": "w15-134-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      4.3,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-000355_pano_0001_001608"
+    }
+   ]
+  },
+  {
+   "tag": "w16-12",
+   "bearing": 12,
+   "lengthM": 4.2,
+   "centre": [
+    4.9005545,
+    52.370025
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002031_pano_0001_001830",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "w16-arcade",
+     "kind": "canopy",
+     "where": "north front, ground storey: arcade struts and red shop frames continuing round the corner",
+     "approxSizeM": [
+      4.2,
+      4.5
+     ],
+     "plan": "modelled",
+     "how": "arcadeBay()",
+     "seenIn": "TMX7316010203-002031_pano_0001_001830"
+    },
+    {
+     "id": "w16-12-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      4.2,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-002031_pano_0001_001830"
+    }
+   ]
+  },
+  {
+   "tag": "w17-135",
+   "bearing": 135,
+   "lengthM": 4.2,
+   "centre": [
+    4.900777,
+    52.3695895
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000787",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "w17-loggias",
+     "kind": "other",
+     "where": "deep loggias with railings and round columns on the canal front",
+     "approxSizeM": [
+      4.2,
+      9
+     ],
+     "plan": "simplified",
+     "how": "frame grid with glazing; loggia depth not modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000787",
+     "note": "the quay wall and the pipe bridge in front are not part of the building"
+    },
+    {
+     "id": "w17-135-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      4.2,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-001981_pano_0000_000787"
+    }
+   ]
+  },
+  {
+   "tag": "w18-134",
+   "bearing": 134,
+   "lengthM": 4.1,
+   "centre": [
+    4.900726,
+    52.3695675
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000787",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "w18-134-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      4.1,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-001981_pano_0000_000787"
+    }
+   ]
+  },
+  {
+   "tag": "b01-36",
+   "bearing": 36,
+   "lengthM": 11.6,
+   "centre": [
+    4.9002485,
+    52.369871
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000046",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "b01-36-frame",
+     "kind": "other",
+     "where": "whole wall (courtyard side): exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      11.6,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7315120208-000073_pano_0003_000046"
+    }
+   ]
+  },
+  {
+   "tag": "b02-40",
+   "bearing": 40,
+   "lengthM": 7.3,
+   "centre": [
+    4.9002685,
+    52.36966
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "b02-40-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      7.3,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "inferred from the photographed walls"
+    }
+   ]
+  },
+  {
+   "tag": "b03-126",
+   "bearing": 126,
+   "lengthM": 7.3,
+   "centre": [
+    4.900247,
+    52.3697635
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "b03-126-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      7.3,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "inferred from the photographed walls"
+    }
+   ]
+  },
+  {
+   "tag": "b04-220",
+   "bearing": 220,
+   "lengthM": 6.8,
+   "centre": [
+    4.8999965,
+    52.3696595
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002031_pano_0001_001407",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "b04-stepped",
+     "kind": "other",
+     "where": "stepped heights: four floors at the left, five and six at the right, roof terraces with railings",
+     "approxSizeM": [
+      6.8,
+      18
+     ],
+     "plan": "modelled",
+     "how": "the 3DBAG shell heights; the frame grid follows each bay top",
+     "seenIn": "TMX7316010203-002031_pano_0001_001407"
+    },
+    {
+     "id": "b04-green",
+     "kind": "other",
+     "where": "pale green panels on part of the ground floor",
+     "approxSizeM": [
+      3,
+      0.8
+     ],
+     "plan": "simplified",
+     "how": "green spandrels on the Moddermolenstraat side only",
+     "seenIn": "TMX7316010203-002031_pano_0001_001407"
+    },
+    {
+     "id": "b04-220-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      6.8,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-002031_pano_0001_001407"
+    }
+   ]
+  },
+  {
+   "tag": "b05-82",
+   "bearing": 82,
+   "lengthM": 4.8,
+   "centre": [
+    4.900232,
+    52.3697105
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "b05-82-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      4.8,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "inferred from the photographed walls"
+    }
+   ]
+  },
+  {
+   "tag": "b06-221",
+   "bearing": 221,
+   "lengthM": 4.8,
+   "centre": [
+    4.90015,
+    52.369573
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1041_Track20_Sphere_00018",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "b06-221-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      4.8,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "b_20250108_1041_Track20_Sphere_00018"
+    }
+   ]
+  },
+  {
+   "tag": "b07-306",
+   "bearing": 306,
+   "lengthM": 4.8,
+   "centre": [
+    4.9000955,
+    52.3698295
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002031_pano_0000_001307",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "b07-green",
+     "kind": "other",
+     "where": "pale green spandrel panels on the Moddermolenstraat side (seen behind the brick house in front)",
+     "approxSizeM": [
+      4.8,
+      15
+     ],
+     "plan": "modelled",
+     "how": "front() green spandrels on walls of the second pand facing west to north",
+     "seenIn": "TMX7316010203-002031_pano_0000_001307",
+     "note": "the brick house with the oriel in the crop is the neighbour in front, not the Pentagon"
+    },
+    {
+     "id": "b07-306-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      4.8,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-002031_pano_0000_001307"
+    }
+   ]
+  },
+  {
+   "tag": "b08-307",
+   "bearing": 307,
+   "lengthM": 4.1,
+   "centre": [
+    4.900017,
+    52.369762
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002962_pano_0002_000018",
+   "capturedAt": "2023-02-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "b08-307-frame",
+     "kind": "other",
+     "where": "whole wall: exposed concrete columns at every bay, slab edges at every floor, white-framed glazing over pale spandrel panels",
+     "approxSizeM": [
+      4.1,
+      15
+     ],
+     "plan": "simplified",
+     "how": "front(): columns, slab edges, spandrel and glass face panels with white mullions and transoms per bay; storey grid from the 3DBAG eaves (2.75 m floors)",
+     "seenIn": "TMX7316010203-002962_pano_0002_000018"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeentelijk monument 200980 (Pentagon)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/45014adf-c8b5-465c-878c-9b3616fe26ab?_format=json",
+   "licence": "CC0"
+  }
+ ]
+}
