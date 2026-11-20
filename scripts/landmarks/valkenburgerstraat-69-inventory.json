@@ -1,0 +1,401 @@
+{
+ "schemaVersion": 1,
+ "id": "valkenburgerstraat-69",
+ "pand": "0363100012185504",
+ "brief": "scripts/landmarks/valkenburgerstraat-69-brief.md",
+ "signature": [
+  "nw-row-of-fronts",
+  "nw-bay-stack",
+  "ne-white-block",
+  "ne-loggia",
+  "w-balcony-stack",
+  "se-white-panel",
+  "nw-ribbons"
+ ],
+ "walls": [
+  {
+   "tag": "w01-237",
+   "bearing": 237,
+   "lengthM": 49.1,
+   "centre": [
+    4.9067506,
+    52.3690411
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-329",
+   "bearing": 329,
+   "lengthM": 40.3,
+   "centre": [
+    4.9070865,
+    52.3694596
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_00975",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-row-of-fronts",
+     "kind": "other",
+     "where": "Valkenburgerstraat: five fronts in a row on one wall plane: dark grey brick, a white glazed bay stack, a narrow red brick strip, two mauve-grey brick fronts (the right one a little proud)",
+     "approxSizeM": [
+      40,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0002_000075",
+     "how": "per-front colour segments along the measured wall line, the right front a 0.15 m proud band"
+    },
+    {
+     "id": "nw-ribbons",
+     "kind": "window-shape",
+     "where": "dark grey front: three storeys of continuous white-framed ribbon windows between dark brick bands, two storeys of windows over grey glass-block panels",
+     "approxSizeM": [
+      10,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0002_000075",
+     "how": "ribbon openings with five lights; glass-block panels as grey slabs under the lower windows"
+    },
+    {
+     "id": "nw-bay-stack",
+     "kind": "other",
+     "where": "white glazed bay window stack, four storeys, about 0.7 m proud, glass rail on top",
+     "approxSizeM": [
+      3.6,
+      11
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0002_000075",
+     "how": "closed white box with a glass pane and transom per storey, bar rail on top"
+    },
+    {
+     "id": "nw-stair-window",
+     "kind": "window-shape",
+     "where": "tall narrow stair window running up the mauve front beside its wide windows",
+     "approxSizeM": [
+      1.2,
+      13.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0002_000075",
+     "how": "one tall opening with a bar at each floor"
+    },
+    {
+     "id": "nw-shopfronts",
+     "kind": "sign",
+     "where": "shopfronts along the ground (furniture showrooms) under a dark sign fascia",
+     "approxSizeM": [
+      40,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002031_pano_0002_000075",
+     "how": "dark-framed glazed openings and a dark fascia band; shop lettering left out (changes with tenants)"
+    },
+    {
+     "id": "nw-penthouse",
+     "kind": "other",
+     "where": "set-back glazed top storey",
+     "approxSizeM": [
+      30,
+      2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002031_pano_0002_000075",
+     "how": "set-back faces get a grey glazed window grid"
+    }
+   ]
+  },
+  {
+   "tag": "w03-57",
+   "bearing": 57,
+   "lengthM": 26.6,
+   "centre": [
+    4.907538,
+    52.3693559
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000711_pano_0000_003407",
+   "capturedAt": "2018-05-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-white-block",
+     "kind": "other",
+     "where": "white rendered upper block over a two-storey dark brown brick maisonette base",
+     "approxSizeM": [
+      26.6,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000711_pano_0000_003407",
+     "how": "colour bands on the faces"
+    },
+    {
+     "id": "ne-slots",
+     "kind": "window-shape",
+     "where": "letterbox slot windows staggered between tall windows, dark blue-grey frames",
+     "approxSizeM": [
+      1.3,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000711_pano_0000_003407",
+     "how": "cut openings at the measured heights"
+    },
+    {
+     "id": "ne-loggia",
+     "kind": "other",
+     "where": "two-level loggia cut into the middle of the white block, brick back walls, rails",
+     "approxSizeM": [
+      5.2,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000711_pano_0000_003407",
+     "how": "1.5 m deep openings with brown brick backs and a rail strip"
+    },
+    {
+     "id": "ne-doors",
+     "kind": "other",
+     "where": "maisonette front doors in red, green and navy with French windows and small rails over them",
+     "approxSizeM": [
+      2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000711_pano_0000_003407",
+     "how": "door openings with coloured backs, rail strips"
+    }
+   ]
+  },
+  {
+   "tag": "w04-328",
+   "bearing": 328,
+   "lengthM": 22,
+   "centre": [
+    4.9066534,
+    52.3692946
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002048_pano_0000_000007",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-balcony-stack",
+     "kind": "balcony-ironwork",
+     "where": "stack of five projecting concrete balconies with grey mesh rails on the left of the red-brown brick front",
+     "approxSizeM": [
+      3.5,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002048_pano_0000_000007",
+     "how": "balcony() slabs with bar rails, canopy slab on top"
+    },
+    {
+     "id": "w-corner-balconies",
+     "kind": "balcony-ironwork",
+     "where": "open concrete balcony stack at the corner carried on a tall slender column",
+     "approxSizeM": [
+      4.6,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002048_pano_0000_000007",
+     "how": "six balcony slabs with rails and a round column"
+    },
+    {
+     "id": "w-strings",
+     "kind": "other",
+     "where": "pale string courses at each storey and a dark loggia slot beside wide white windows in the middle bay",
+     "approxSizeM": [
+      8.6,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002048_pano_0000_000007",
+     "how": "ledge strips, deep dark slot openings"
+    },
+    {
+     "id": "w-shop-fascia",
+     "kind": "sign",
+     "where": "shopfronts under a grey fascia band",
+     "approxSizeM": [
+      19,
+      3.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002048_pano_0000_000007",
+     "how": "glazed openings, grey band; lettering left out"
+    }
+   ]
+  },
+  {
+   "tag": "w05-149",
+   "bearing": 149,
+   "lengthM": 16.8,
+   "centre": [
+    4.9071979,
+    52.3689462
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000711_pano_0000_003370",
+   "capturedAt": "2018-05-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-white-panel",
+     "kind": "other",
+     "where": "white rendered panel 0.2 m proud of the red-brown brick holding two tall grid windows over three storeys",
+     "approxSizeM": [
+      11,
+      9.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000711_pano_0000_003370",
+     "how": "proud render band with two tall gridded openings"
+    }
+   ]
+  },
+  {
+   "tag": "w06-149",
+   "bearing": 149,
+   "lengthM": 14.7,
+   "centre": [
+    4.9075631,
+    52.3690936
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002933_pano_0011_000040",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-brick-grid",
+     "kind": "window-shape",
+     "where": "red-brown brick front with four punched windows per storey and a maroon rendered stair strip",
+     "approxSizeM": [
+      14.7,
+      13.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002933_pano_0011_000040",
+     "how": "cut openings, colour segments"
+    }
+   ]
+  },
+  {
+   "tag": "w07-149",
+   "bearing": 149,
+   "lengthM": 14.1,
+   "centre": [
+    4.9073868,
+    52.3690226
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002370_pano_0000_000074",
+   "capturedAt": "2021-12-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-maroon-panel",
+     "kind": "other",
+     "where": "maroon rendered panel with two tall grid windows, small windows over it",
+     "approxSizeM": [
+      11,
+      9.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002370_pano_0000_000074",
+     "how": "colour segment with two tall gridded openings"
+    }
+   ]
+  },
+  {
+   "tag": "w08-153",
+   "bearing": 153,
+   "lengthM": 11.3,
+   "centre": [
+    4.9070226,
+    52.3688798
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track20_Sphere_00245",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-corner-balconies",
+     "kind": "balcony-ironwork",
+     "where": "white rendered corner front with two rounded projecting balconies with mesh rails over a brick base",
+     "approxSizeM": [
+      5.6,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track20_Sphere_00245",
+     "how": "balcony() with rounded corners, white render band over a brick base"
+    }
+   ]
+  },
+  {
+   "tag": "w09-57",
+   "bearing": 57,
+   "lengthM": 11.1,
+   "centre": [
+    4.9076996,
+    52.3692184
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000711_pano_0000_003407",
+   "capturedAt": "2018-05-08",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-57",
+   "bearing": 57,
+   "lengthM": 6.7,
+   "centre": [
+    4.9073651,
+    52.3695296
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000711_pano_0000_003393",
+   "capturedAt": "2018-05-08",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w11-144",
+   "bearing": 144,
+   "lengthM": 5.4,
+   "centre": [
+    4.9077124,
+    52.3691624
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001051_pano_0001_001480",
+   "capturedAt": "2019-01-14",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

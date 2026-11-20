@@ -1,0 +1,35 @@
+{
+ "id": "valkenburgerstraat-69",
+ "name": "Valkenburgerstraat 69-165 housing block",
+ "heightMetres": 22,
+ "bagYear": 1998,
+ "galleryView": {
+  "theta": 2.6,
+  "phi": 1.05
+ },
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012185504 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/valkenburgerstraat-69-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002031_pano_0002_000075 (2021, Valkenburgerstraat), TMX7316010203-002048_pano_0000_000007 (2021, its west end), TMX7316010203-000711_pano_0000_003407 (2018, Koerierstersplein), TMX7316010203-000711_pano_0000_003370 (2018), TMX7316010203-002933_pano_0011_000040 (2023), TMX7316010203-002370_pano_0000_000074 (2021) and b_20241210_1246_Track20_Sphere_00245 (2024, Rapenburgerstraat), CC BY 4.0. Per wall in scripts/landmarks/valkenburgerstraat-69-inventory.json.",
+ "materialOverrides": {
+  "brick": "#5e4039",
+  "red": "#6e4038",
+  "greyBrick": "#4a494c",
+  "sandstone": "#68615d",
+  "stone": "#e2e0da",
+  "ochre": "#56463f",
+  "concrete": "#b4b0a8",
+  "dark": "#34363a",
+  "frame": "#e6e4de",
+  "glass": "#47525a",
+  "copper": "#a4a5a1",
+  "bronze": "#8e8f8b",
+  "blue": "#46545c",
+  "slate": "#4a4a48"
+ },
+ "attribution": {
+  "title": "Valkenburgerstraat 69-165, Amsterdam (housing block, 1998)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002031_pano_0002_000075/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012185504 (CC0): the row of brick and render fronts with their windows, ribbons, glass-block panels, glazed bay stack, balconies, loggias, shopfronts and maisonette doors, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}
