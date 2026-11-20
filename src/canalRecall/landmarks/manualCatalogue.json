@@ -96490,5 +96490,338 @@
     ]
    ]
   }
+ },
+ {
+  "id": "valkenburgerstraat-69",
+  "name": "Valkenburgerstraat 69-165 housing block",
+  "modelUrl": "./models/valkenburgerstraat-69.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012185504"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.90712568,
+    52.36921242
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 77.5,
+   "widthMetres": 83.6
+  },
+  "surveyed": {
+   "anchor": [
+    4.90712568,
+    52.36921242
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012185504 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/valkenburgerstraat-69-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002031_pano_0002_000075 (2021, Valkenburgerstraat), TMX7316010203-002048_pano_0000_000007 (2021, its west end), TMX7316010203-000711_pano_0000_003407 (2018, Koerierstersplein), TMX7316010203-000711_pano_0000_003370 (2018), TMX7316010203-002933_pano_0011_000040 (2023), TMX7316010203-002370_pano_0000_000074 (2021) and b_20241210_1246_Track20_Sphere_00245 (2024, Rapenburgerstraat), CC BY 4.0. Per wall in scripts/landmarks/valkenburgerstraat-69-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 22,
+  "galleryView": {
+   "theta": 2.6,
+   "phi": 1.05
+  },
+  "bagYear": 1998,
+  "materialOverrides": {
+   "brick": "#5e4039",
+   "red": "#6e4038",
+   "greyBrick": "#4a494c",
+   "sandstone": "#68615d",
+   "stone": "#e2e0da",
+   "ochre": "#56463f",
+   "concrete": "#b4b0a8",
+   "dark": "#34363a",
+   "frame": "#e6e4de",
+   "glass": "#47525a",
+   "copper": "#a4a5a1",
+   "bronze": "#8e8f8b",
+   "blue": "#46545c",
+   "slate": "#4a4a48"
+  },
+  "attribution": {
+   "title": "Valkenburgerstraat 69-165, Amsterdam (housing block, 1998)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002031_pano_0002_000075/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012185504 (CC0): the row of brick and render fronts with their windows, ribbons, glass-block panels, glazed bay stack, balconies, loggias, shopfronts and maisonette doors, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9066476,
+      52.3691401
+     ],
+     [
+      4.9068618,
+      52.3689403
+     ],
+     [
+      4.9068592,
+      52.3689393
+     ],
+     [
+      4.9069487,
+      52.3688561
+     ],
+     [
+      4.9069639,
+      52.3688614
+     ],
+     [
+      4.9070173,
+      52.368881
+     ],
+     [
+      4.9070208,
+      52.3688775
+     ],
+     [
+      4.9070531,
+      52.3688905
+     ],
+     [
+      4.9070571,
+      52.3688869
+     ],
+     [
+      4.9070594,
+      52.3688879
+     ],
+     [
+      4.9070962,
+      52.3689026
+     ],
+     [
+      4.9070925,
+      52.3689061
+     ],
+     [
+      4.9072585,
+      52.3689732
+     ],
+     [
+      4.9072639,
+      52.3689694
+     ],
+     [
+      4.9073031,
+      52.3689853
+     ],
+     [
+      4.9072983,
+      52.3689894
+     ],
+     [
+      4.9074312,
+      52.3690428
+     ],
+     [
+      4.9074355,
+      52.3690391
+     ],
+     [
+      4.907475,
+      52.369055
+     ],
+     [
+      4.907471,
+      52.3690589
+     ],
+     [
+      4.9076115,
+      52.3691154
+     ],
+     [
+      4.9076155,
+      52.3691116
+     ],
+     [
+      4.9076549,
+      52.3691274
+     ],
+     [
+      4.9076511,
+      52.3691313
+     ],
+     [
+      4.9076717,
+      52.3691397
+     ],
+     [
+      4.9076834,
+      52.3691444
+     ],
+     [
+      4.9076801,
+      52.3691474
+     ],
+     [
+      4.9077443,
+      52.3691764
+     ],
+     [
+      4.9076546,
+      52.3692596
+     ],
+     [
+      4.9076445,
+      52.3692555
+     ],
+     [
+      4.9074311,
+      52.3694554
+     ],
+     [
+      4.9074401,
+      52.3694591
+     ],
+     [
+      4.9074397,
+      52.3694598
+     ],
+     [
+      4.9074517,
+      52.3694644
+     ],
+     [
+      4.9074496,
+      52.3694737
+     ],
+     [
+      4.9074463,
+      52.3694828
+     ],
+     [
+      4.9074418,
+      52.3694917
+     ],
+     [
+      4.907436,
+      52.3695004
+     ],
+     [
+      4.907429,
+      52.3695087
+     ],
+     [
+      4.907421,
+      52.3695166
+     ],
+     [
+      4.9074201,
+      52.3695162
+     ],
+     [
+      4.9073923,
+      52.369504
+     ],
+     [
+      4.9073377,
+      52.3695543
+     ],
+     [
+      4.9068349,
+      52.369364
+     ],
+     [
+      4.9068412,
+      52.3693586
+     ],
+     [
+      4.9068144,
+      52.3693483
+     ],
+     [
+      4.906812,
+      52.3693487
+     ],
+     [
+      4.9068095,
+      52.3693491
+     ],
+     [
+      4.906807,
+      52.3693493
+     ],
+     [
+      4.9068044,
+      52.3693493
+     ],
+     [
+      4.9068019,
+      52.3693493
+     ],
+     [
+      4.9067994,
+      52.3693491
+     ],
+     [
+      4.9067969,
+      52.3693487
+     ],
+     [
+      4.9067944,
+      52.3693483
+     ],
+     [
+      4.9067921,
+      52.3693477
+     ],
+     [
+      4.9067898,
+      52.369347
+     ],
+     [
+      4.9067876,
+      52.3693462
+     ],
+     [
+      4.906673,
+      52.3693028
+     ],
+     [
+      4.9065713,
+      52.3692643
+     ],
+     [
+      4.9065731,
+      52.3692625
+     ],
+     [
+      4.9065166,
+      52.3692413
+     ],
+     [
+      4.9065394,
+      52.3692199
+     ],
+     [
+      4.9065523,
+      52.3692251
+     ],
+     [
+      4.9065686,
+      52.3692098
+     ],
+     [
+      4.9066085,
+      52.3691726
+     ],
+     [
+      4.9066447,
+      52.369139
+     ],
+     [
+      4.9066476,
+      52.3691401
+     ]
+    ]
+   ]
+  }
  }
 ]
