@@ -53,6 +53,7 @@ import { applyGlazing, glazingOf } from './glassParts.js';
 import { REAL_ONLY_TEMPLATES, RETAIL_HELD, RETAIL_TEMPLATES, realAccepted, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
 import { paintOverGuess } from './retailPuiPaint.js';
 import { terraceSeedOf, withTerraceSeeds } from './terraceRows.js';
+import { kitRoofEdge, lipMinAreaM2 } from './roofs/roofEdge.js';
 import { bikeFromCode } from './retailBikes.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
@@ -117,7 +118,7 @@ function applyFlatRoof(building: MeshBuilding, p: Record<string, unknown>, look:
   const surfaceLayer = flatRoofSurfaceLayer(cells);
   if (surfaceLayer !== null) building.lid = { ...building.lid, surfaceLayer };
   // A design-unit member's flat top sits behind its cornice with nothing wall-coloured over the eaves line (no lip, no box).
-  building.flatRoof = { lip: areaM2 >= LIP_MIN_M2 && !designUnitOf(p), box: areaM2 >= BOX_MIN_M2 && !building.measuredRoof?.furniture.length && !designUnitOf(p), areaM2 };
+  building.flatRoof = { lip: areaM2 >= lipMinAreaM2(LIP_MIN_M2) && !designUnitOf(p), box: areaM2 >= BOX_MIN_M2 && !building.measuredRoof?.furniture.length && !designUnitOf(p), areaM2 };
 }
 
 /**
@@ -391,6 +392,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (measured?.furniture) building.measuredRoof = measured.furniture;
   // A real flat roof (no planned pitched roof): lane R5-E's tone and surface (roofs/flatRoofTone.ts, flatRoofSurface.ts).
   if ((!p.roofPlanned || p.roofShape === 'parapet') && !p.kitRoof && !p.kitWall && look !== 'untextured') applyFlatRoof(building, p, look, sid, measured, !!mapped, cellSetOf(look), footprintAreaM2(feature.geometry));
+  // `?roofEdge=1` (roofs/roofEdge.ts): a flat kit roof (the generic school, feedback 8022e3's building) takes the edge band only.
+  else if (!building.flatRoof && look !== 'untextured' && (p.kitRoof || p.kitWall)) { const edge = kitRoofEdge(!building.roof, footprintAreaM2(feature.geometry)); if (edge) building.flatRoof = edge; }
   if (p.gardenShed) {
     // A back-garden shed (gardenSheds.ts): bare walls in a weathered muted colour, a tarred flat lid, nothing else.
     building.bare = true; building.wallHex = shedWallHex(id); building.lid = { hex: SHED_LID_HEX, flatLayer: roofBase + 3 };

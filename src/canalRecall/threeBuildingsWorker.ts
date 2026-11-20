@@ -34,6 +34,7 @@ self.onmessage = (event: MessageEvent<Job | WorldRequest | ReliefRequest | Stand
   const job = event.data;
   // `?terraceRows=1` (terraceRows.ts): the page's flag rides on the job; absent, the worker's own default (off).
   if ((job as { terraceRows?: boolean }).terraceRows === true) (globalThis as { __canalRecallTerraceRows?: boolean }).__canalRecallTerraceRows = true;
+  if ((job as { roofEdge?: boolean }).roofEdge === true) (globalThis as { __canalRecallRoofEdge?: boolean }).__canalRecallRoofEdge = true;
   if (job.facadeRecord && !job.special) {
     // The resolved specs first (fetched once per tile and kept); a failed read packs priors, as for an unspec'd pand.
     const t0 = performance.now(), base = job.facadeRecord.specBase;

@@ -61,6 +61,8 @@ export function worldV1Enabled(search: string = typeof location !== 'undefined' 
     if (params.get('designUnits') === '1' && asked !== 'v1') return false;
     // Post-war terraces (`?terraceRows=1`, terraceRows.ts): the cells bake no row seeds, so the flag draws the live tiles.
     if (params.get('terraceRows') === '1' && asked !== 'v1') return false;
+    // Roof edges (`?roofEdge=1`, roofs/roofEdge.ts): the cells bake the wall-coloured lip, so the flag draws the live tiles.
+    if (params.get('roofEdge') === '1' && asked !== 'v1') return false;
     return !(asked === 'live' || asked === '0' || asked === 'off' || asked === 'tiles');
   } catch { return true; }
 }

@@ -36,6 +36,7 @@ import { gableEndWalls } from './streetGableEnds.js';
 import { axisGapDeg } from './roofs/ridgeAxis.js';
 import { zeroArea } from './roofOverhang.js';
 import { terraceSeedOf } from './terraceRows.js';
+import { parapetCopingHex } from './roofs/roofEdge.js';
 import { isRowCrown, ROW_STONE, rowCrownAccents, rowCrownProfile, rowCrownStone, type RowCrown } from './houseLine/crownProfile.js';
 
 /** House rows: the dormer kinds a row roof draws. `ornate-pinnacle`: a tall light-stone dormer, stepped, with a crowned top and
@@ -1219,7 +1220,8 @@ function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: num
     s.slopePoly(inner.map(([x, y]) => [x, y, plan.riseM]), [0, 0, 1]);
     return s.out;
   }
-  if (plan.kind === 'parapet') return parapetTriangles(mesh, h0, plan.parapetM ?? plan.riseM, dims, plan.trimHex ?? TRIM_WHITE);
+  // `?roofEdge=1` (roofs/roofEdge.ts, feedback 8022e3): the parapet's coping band dark; off, the plan's trim colour.
+  if (plan.kind === 'parapet') return parapetTriangles(mesh, h0, plan.parapetM ?? plan.riseM, dims, parapetCopingHex(plan.trimHex ?? TRIM_WHITE));
   if (!plan.pieces) { const rect = fitRect(mesh); return rect ? roofTriangles(rect, withStreetEnds(plan, rect, facing), h0, dims) : []; }
   const { at, mapRect, sx } = footprintToMesh(outer, mesh, kx);
   const out: RoofTri[] = [];
