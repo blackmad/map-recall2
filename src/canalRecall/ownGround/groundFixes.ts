@@ -48,6 +48,12 @@ export const GROUND_FIXES = [
   'railCentre',
   /** Lane fb-bridges-20261119: a covered deck's top drawn in the survey's material at its edges (groundCell coveredTopLayer): the Oost-Indische Huisbrug (935a6807). */
   'coveredTopTone',
+  /** Lane fb-ground2-20261120: the land's water cut lifted inside wet-ground rings (wetGroundEdges.ts liftLandInRings): the Doelensluis water hole (4c1344ce). */
+  'wetHoles',
+  /** Lane fb-ground2-20261120: quay faces along wet-ground ring edges over open water, the OSM shore under a ring buried (wetGroundEdges.ts wetGroundShores): the Doelensluis terrace face (4c1344ce). */
+  'wetFaces',
+  /** Lane fb-ground2-20261120: survey deck edges that narrow abruptly taper at DECK_EDGE_TAPER (bridgeGaps.ts taperDeckEdges): De Clercqstraat's ledge across the road (3b8ca68b). */
+  'edgeTaper',
 ] as const;
 export type GroundFix = (typeof GROUND_FIXES)[number];
 export type GroundFixFlags = Partial<Record<GroundFix, boolean>>;

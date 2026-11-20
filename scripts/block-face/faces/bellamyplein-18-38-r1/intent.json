@@ -54,7 +54,7 @@
     "type": "bellamy-1904-balcony-axis",
     "ground": "door-left",
     "measuredPalette": {
-     "brick": "#3d2f27",
+     "brick": "#54453b",
      "evidence": "strip 2024-12-11 span 220-441: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     }
    },
@@ -68,7 +68,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2024-12-11 span 220-441"
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 220-441"
    }
   },
   {
@@ -143,7 +143,152 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1904-balcony-axis scored 0.87 on eaves 1, storeys 0, roof 1, stucco 1, columns 1; strip 2024-12-11 span 882-1101"
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys -, roof 1, stucco 1, columns 1; strip 2024-12-11 span 882-1101"
+   }
+  },
+  {
+   "pandId": "0363100012162005",
+   "slug": "bellamyplein-162005",
+   "address": "Bellamyplein 28",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#52331e",
+     "evidence": "strip 2024-12-11 span 1101-1323: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "overrides": {
+     "bays": 2,
+     "bayWidths": [
+      1,
+      1.8
+     ],
+     "bayFill": [
+      0.57,
+      0.8
+     ],
+     "axisWindows": {
+      "1": "casement-sidelights-toplight"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 1101-1323"
+   }
+  },
+  {
+   "pandId": "0363100012159962",
+   "slug": "bellamyplein-159962",
+   "address": "Bellamyplein 26",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#8d6139",
+     "evidence": "strip 2024-12-11 span 1323-1542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 1323-1542"
+   }
+  },
+  {
+   "pandId": "0363100012158557",
+   "slug": "bellamyplein-158557",
+   "address": "Bellamyplein 24",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 1543-1763"
+   }
+  },
+  {
+   "pandId": "0363100012163720",
+   "slug": "bellamyplein-163720",
+   "address": "Bellamyplein 22",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "crown": "box-dormer"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 1763-1984"
+   }
+  },
+  {
+   "pandId": "0363100012164492",
+   "slug": "bellamyplein-164492",
+   "address": "Bellamyplein 20",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": {
+     "shopfront": {
+      "colour": "#26261a",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2024-12-11 span 1983-2203"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#73513c",
+     "evidence": "strip 2024-12-11 span 1983-2203: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 1983-2203"
    }
   }
  ],

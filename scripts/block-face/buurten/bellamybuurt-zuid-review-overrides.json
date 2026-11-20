@@ -1,0 +1,17 @@
+{
+ "note": "Per-pand fields read off the Bellamyplein 18-38 strip (2024-12-11, 40 px/m) where the bellamy-1904-balcony-axis defaults do not say them (blockFace/reviewOverrides.ts). Feedback 47d096 (2026-11-13): Bellamyplein 28 was held out of its row and drawn by the generic renderer between the two runs.",
+ "reviewed": "2026-11-20",
+ "pins": [
+  {
+   "pandId": "0363100012162005",
+   "type": "bellamy-1904-balcony-axis",
+   "overrides": {
+    "bays": 2,
+    "bayWidths": [1, 1.8],
+    "bayFill": [0.57, 0.8],
+    "axisWindows": {"1": "casement-sidelights-toplight"}
+   },
+   "reason": "Bellamyplein 28 (strip px 1101-1323): red brick, two axes, not three: a narrow window axis on the left (1.1 m window in a ~2.0 m bay) and a wide four-light French window with sidelights and transom on the right (~2.9 m in a ~3.6 m bay), its full-width iron balcony on storeys 1-3; the door in the left axis; a stepped neck over the right axis"
+  }
+ ]
+}

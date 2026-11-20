@@ -32,3 +32,12 @@ test('natural ground more than 10 cm over the DTM floats', () => {
   assert.ok(run({ lawn: quad(0, 0, 20, 20, 0.5) }).floatM2 > 390);
   assert.equal(run({ lawn: quad(0, 0, 20, 20, 0.05) }).floatM2, 0);
 });
+
+test('a rail bed on a deck top is the bed on its viaduct, not poke (railOnDeck); off counts it', () => {
+  const layers = { ballast: quad(0, 0, 20, 20, 0.6), deckTop: quad(0, 0, 20, 20, 0) };
+  assert.equal(run(layers).pokeM2, 0);
+  const before = auditCell({ cell: cell(layers), dtm: () => 0, resM: 0.5, noTJunctions: true, railOnDeck: false }).total.d;
+  assert.ok(before.pokeSevereM2 > 390, `poke ${before.pokeSevereM2}`);
+  // Paving over a deck top still pokes.
+  assert.ok(run({ paving: quad(0, 0, 20, 20, 0.1), deckTop: quad(0, 0, 20, 20, 0) }).pokeM2 > 390);
+});

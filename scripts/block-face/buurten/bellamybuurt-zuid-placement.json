@@ -1,12 +1,12 @@
 {
  "buurt": "bellamybuurt-zuid",
  "library": "bellamy",
- "generatedAt": "2026-11-01T12:57:31.271Z",
- "seconds": 45.69,
+ "generatedAt": "2026-11-20T05:55:49.321Z",
+ "seconds": 30.05,
  "totals": {
   "faces": 49,
   "pands": 335,
-  "placed": 69
+  "placed": 70
  },
  "faces": [
   {
@@ -357,8 +357,8 @@
    "face": "bellamyplein-18-38",
    "street": "Bellamyplein",
    "pands": 11,
-   "placed": 9,
-   "held": 2,
+   "placed": 10,
+   "held": 1,
    "runs": [
     {
      "face": "bellamyplein-18-38-r1",
@@ -367,31 +367,26 @@
       "0363100012163466",
       "0363100012153217",
       "0363100012159793",
-      "0363100012166965"
-     ],
-     "passed": false,
-     "triangles": 11822
-    },
-    {
-     "face": "bellamyplein-18-38-r2",
-     "pands": [
+      "0363100012166965",
+      "0363100012162005",
       "0363100012159962",
       "0363100012158557",
       "0363100012163720",
       "0363100012164492"
      ],
-     "passed": false,
-     "triangles": 9224
+     "passed": true,
+     "triangles": 24053
     }
    ],
-   "seconds": 17.45,
+   "seconds": 30.04,
    "byType": {
-    "bellamy-1904-balcony-axis": 9
+    "bellamy-1904-balcony-axis": 10
    },
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
-    "likeness": 1,
+    "likeness": 0,
     "run": 0,
     "review": 0
    }

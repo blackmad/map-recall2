@@ -1,0 +1,442 @@
+{
+ "schemaVersion": 1,
+ "id": "houthavenkade-26",
+ "pand": "0363100012247232",
+ "brief": "scripts/landmarks/houthavenkade-26-brief.md",
+ "signature": [
+  "n-orange-erkers",
+  "s-sawtooth-frames",
+  "w06-320-bands",
+  "n-dark-erkers",
+  "s-balcony-slabs"
+ ],
+ "walls": [
+  {
+   "tag": "w01-2",
+   "bearing": 2,
+   "lengthM": 61.1,
+   "centre": [
+    4.8760395,
+    52.3944035
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_29_07_54_42_00183",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-orange-erkers",
+     "kind": "window-shape",
+     "where": "four full-height glazed erker stacks with grey frames on the orange brick block",
+     "approxSizeM": [
+      3,
+      22.7
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00183",
+     "how": "0.55 m glass boxes 3.3-26 m with frame bands at each floor, t 2.0-28.8"
+    },
+    {
+     "id": "n-orange-windows",
+     "kind": "window-shape",
+     "where": "runs of narrow vertical windows between the erkers, seven floors",
+     "approxSizeM": [
+      0.66,
+      1.55
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00183",
+     "how": "11 columns x 7 rows of glass slabs with sills"
+    },
+    {
+     "id": "n-dark-erkers",
+     "kind": "window-shape",
+     "where": "three glazed erker stacks with pale frames on the dark purple-brown brick block",
+     "approxSizeM": [
+      2.7,
+      21
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00183",
+     "how": "0.4 m glass boxes 3.85-24.9 m with frame bands per floor"
+    },
+    {
+     "id": "n-dark-windows",
+     "kind": "window-shape",
+     "where": "alternating wide and narrow tall windows, seven floors",
+     "approxSizeM": [
+      1.8,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00183",
+     "how": "9 columns x 7 rows"
+    },
+    {
+     "id": "n-glazed-top",
+     "kind": "window-shape",
+     "where": "glazed set-back top storey of the dark block with brick piers",
+     "approxSizeM": [
+      30,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00183",
+     "how": "glass band 26.3-28.6 m, five brick piers, mullions every 1.5 m"
+    },
+    {
+     "id": "n-shop-plinth",
+     "kind": "window-shape",
+     "where": "glazed shop and entrance plinth on a dark grey stone band",
+     "approxSizeM": [
+      30,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00183",
+     "how": "ten glazed bays over a 0.45 m stone band and a grey ledge"
+    },
+    {
+     "id": "n-street-sign",
+     "kind": "sign",
+     "where": "HAPARANDAWEG street-name sign on the lamp post",
+     "approxSizeM": [
+      0.8,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "2025_09_29_07_54_42_00183",
+     "skip": {
+      "reason": "too-small",
+      "note": "street furniture under 1 m"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-182",
+   "bearing": 182,
+   "lengthM": 59.4,
+   "centre": [
+    4.8760075,
+    52.3938985
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001596_pano_0001_000109",
+   "capturedAt": "2020-01-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-balcony-slabs",
+     "kind": "balcony-ironwork",
+     "where": "stacked deep grey balcony slabs with mesh rails on the red brick block",
+     "approxSizeM": [
+      14,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001596_pano_0001_000109",
+     "how": "four 1.6 m slabs at 4.6/7.8/11.1/14.4 m with mesh rails, glazing behind"
+    },
+    {
+     "id": "s-sawtooth-frames",
+     "kind": "other",
+     "where": "open sawtooth brick roof frames over the four grey townhouses, glass-railed roof terraces",
+     "approxSizeM": [
+      5.75,
+      4.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001596_pano_0001_000109",
+     "how": "a brick post and a sloping brick beam per bay, set back 0.5 m, glass rail on the roof edge"
+    },
+    {
+     "id": "s-townhouse-windows",
+     "kind": "window-shape",
+     "where": "full-width dark-framed windows on the grey townhouses, three storeys",
+     "approxSizeM": [
+      4.4,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001596_pano_0001_000109",
+     "how": "one glass slab per bay and floor between brick piers"
+    },
+    {
+     "id": "s-white-frames",
+     "kind": "window-shape",
+     "where": "white multi-pane window frames on the three dark brick townhouses",
+     "approxSizeM": [
+      3.6,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001596_pano_0001_000109",
+     "how": "glass with white mullions and transoms, three floors"
+    },
+    {
+     "id": "s-roof-frame",
+     "kind": "other",
+     "where": "open brick frame on the roof of the eastmost dark townhouse",
+     "approxSizeM": [
+      5.5,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001596_pano_0001_000109",
+     "how": "a post and a lintel"
+    },
+    {
+     "id": "s-shop-fascia",
+     "kind": "sign",
+     "where": "grey shop fascia and posters on the red block ground floor",
+     "approxSizeM": [
+      14,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001596_pano_0001_000109",
+     "how": "grey fascia slab; posters skipped as temporary"
+    }
+   ]
+  },
+  {
+   "tag": "w03-272",
+   "bearing": 272,
+   "lengthM": 44.9,
+   "centre": [
+    4.875579,
+    52.3941065
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_07-40-29_00769",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-tower-windows",
+     "kind": "window-shape",
+     "where": "narrow window columns on the dark brick tower",
+     "approxSizeM": [
+      0.6,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_07-40-29_00769",
+     "how": "three columns, eight rows"
+    },
+    {
+     "id": "w-tower-balconies",
+     "kind": "balcony-ironwork",
+     "where": "cantilevered balconies stacked on the tower south face",
+     "approxSizeM": [
+      4,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-22_07-40-29_00769",
+     "skip": {
+      "reason": "not-visible",
+      "note": "on the tower face inside the block, seen edge-on past the corner from this pose; no frontal view"
+     }
+    },
+    {
+     "id": "w-grey-erkers",
+     "kind": "window-shape",
+     "where": "zinc-grey framed erkers on the blue-grey brick range, white floor bands",
+     "approxSizeM": [
+      2.1,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_07-40-29_00769",
+     "how": "two erkers per floor on two floors, white bands at 4.5/7.6/10.7 m, glass roof rail"
+    },
+    {
+     "id": "w-red-french-windows",
+     "kind": "window-shape",
+     "where": "French windows with rails on the red brick corner block, loggia column at the south end",
+     "approxSizeM": [
+      1.2,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_07-40-29_00769",
+     "how": "four columns x four floors with rail slabs; a dark loggia recess with rails"
+    },
+    {
+     "id": "w-anne-max",
+     "kind": "sign",
+     "where": "Anne&Max cafe lettering on the grey fascia",
+     "approxSizeM": [
+      2.2,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-22_07-40-29_00769",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     }
+    },
+    {
+     "id": "w-red-fascia",
+     "kind": "other",
+     "where": "grey shop fascia over the glazed ground floor of the red block",
+     "approxSizeM": [
+      24,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-22_07-40-29_00769",
+     "how": "concrete fascia slab over glazed bays"
+    }
+   ]
+  },
+  {
+   "tag": "w04-140",
+   "bearing": 140,
+   "lengthM": 38.6,
+   "centre": [
+    4.8766605,
+    52.394004
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000074_pano_0000_001158",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [],
+   "note": "Both captures (2016, 2017) show the block under construction behind scaffolding: no evidence. Drawn as the south townhouse colour (inferred)."
+  },
+  {
+   "tag": "w05-50",
+   "bearing": 50,
+   "lengthM": 28.1,
+   "centre": [
+    4.8767435,
+    52.3942125
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-09_07-48-40_00150",
+   "capturedAt": "2024-10-09",
+   "checked": true,
+   "items": [],
+   "note": "The 2024 view shows dark brick and a red brick low range under the tower; the 2017 second view is a building site. Shell colours only."
+  },
+  {
+   "tag": "w06-320",
+   "bearing": 320,
+   "lengthM": 9,
+   "centre": [
+    4.8766135,
+    52.394459
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-09_07-28-34_00531",
+   "capturedAt": "2024-10-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "w06-320-passage",
+     "kind": "colonnade",
+     "where": "two-storey open passage under the gate building on round grey columns",
+     "approxSizeM": [
+      9,
+      7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-09_07-28-34_00531",
+     "how": "dark void on the shell face with two grey columns; the shell walls are kept"
+    },
+    {
+     "id": "w06-320-bands",
+     "kind": "window-shape",
+     "where": "white floor slabs with glass and grey louvre panels on each floor of the gate building",
+     "approxSizeM": [
+      9,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-09_07-28-34_00531",
+     "how": "0.5 m white slab bands every 3.05 m from 7 m, glass between, grey louvre panels"
+    }
+   ]
+  },
+  {
+   "tag": "w07-140",
+   "bearing": 140,
+   "lengthM": 8.9,
+   "centre": [
+    4.876733,
+    52.394373
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001875_pano_0003_001677",
+   "capturedAt": "2020-08-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-140-passage",
+     "kind": "colonnade",
+     "where": "two-storey open passage under the gate building on round grey columns",
+     "approxSizeM": [
+      9,
+      7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001875_pano_0003_001677",
+     "how": "dark void on the shell face with two grey columns; the shell walls are kept"
+    },
+    {
+     "id": "w07-140-bands",
+     "kind": "window-shape",
+     "where": "white floor slabs with glass and grey louvre panels on each floor of the gate building",
+     "approxSizeM": [
+      9,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001875_pano_0003_001677",
+     "how": "0.5 m white slab bands every 3.05 m from 7 m, glass between, grey louvre panels"
+    }
+   ]
+  },
+  {
+   "tag": "w08-272",
+   "bearing": 272,
+   "lengthM": 5.9,
+   "centre": [
+    4.875628,
+    52.3943345
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000469_pano_0000_000166",
+   "capturedAt": "2019-11-06",
+   "checked": true,
+   "items": [],
+   "note": "short return under construction (2019 crop shows a dark grey panel and brick); plain shell"
+  },
+  {
+   "tag": "w09-272",
+   "bearing": 272,
+   "lengthM": 5.3,
+   "centre": [
+    4.87559,
+    52.394386
+   ],
+   "evidence": "photo",
+   "panoId": "2025_10_02_09_32_34_00512",
+   "capturedAt": "2025-10-02",
+   "checked": true,
+   "items": [],
+   "note": "short return under construction (2019 crop shows a dark grey panel and brick); plain shell"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

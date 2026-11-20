@@ -1436,14 +1436,14 @@
    "name": "Memeleiland",
    "shots": [
     {
-     "label": "Memeleiland centre",
-     "lat": 52.39267722000001,
-     "lng": 4.8820537,
+     "label": "Memeleiland, Houthavens",
+     "lat": 52.3922882,
+     "lng": 4.8820812,
      "view": "chase",
      "at": [
-      4.882123,
-      52.393021,
-      187
+      4.881346,
+      52.393128,
+      152
      ]
     },
     {
@@ -3266,14 +3266,14 @@
    "name": "Wiborgeiland",
    "shots": [
     {
-     "label": "Wiborgeiland centre",
-     "lat": 52.39419762,
-     "lng": 4.87827398,
+     "label": "Wiborgeiland, Houthavens",
+     "lat": 52.3940256,
+     "lng": 4.8781874,
      "view": "chase",
      "at": [
-      4.877847,
-      52.394544,
-      143
+      4.878517,
+      52.393076,
+      348
      ]
     },
     {

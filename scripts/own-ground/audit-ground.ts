@@ -29,6 +29,7 @@ Options:
   --lod 0|1        cell level (default 0, the near build)
   --pairs          also tally poke and z-fight per layer pair (which two layers fight; lane G1)
   --map a=b        read extract path a from b under the root (a staged extract: --map open-ground-v2=staging/open-ground-v2)
+  --no-rail-on-deck  count ballast/track on a deck top as poke (groundAudit.ts railOnDeck off; the before)
   --opts <json>    store options merged into every variant, e.g. --opts '{"openGroundClip":false}' (a G1 fix's before)
 
 Definitions: sliver = aspect > ${AUDIT.sliverAspect} and area > ${AUDIT.sliverMinM2} m2; poke = lower-precedence layer above a higher one by more than
@@ -120,7 +121,7 @@ async function auditKey(store: GroundStore, key: string, windows: Window[] = [])
   const openRings: OpenRing[] = [input.openGround, ...(input.openGroundAround ?? [])].filter((c, i, all): c is NonNullable<typeof c> => !!c && all.indexOf(c) === i)
     .flatMap(c => c.areas.map(a => { const r = a.r.map(decodeLine); return { pts: r[0], holes: r.slice(1), bb: ringBox(r[0]) }; })).filter(r => r.pts.length >= 3);
   const t0 = Date.now();
-  const audit = auditCell({ cell, dtm: store.surface.relief, windows, openRings, resM: RES, noTJunctions: NO_TJ, pairs: PAIRS });
+  const audit = auditCell({ cell, dtm: store.surface.relief, windows, openRings, resM: RES, noTJunctions: NO_TJ, pairs: PAIRS, ...(has('no-rail-on-deck') ? { railOnDeck: false } : {}) });
   return { audit, input, buildMs: cell.stats.buildMs, auditMs: Date.now() - t0, triangles: cell.stats.triangles };
 }
 

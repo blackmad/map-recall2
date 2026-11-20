@@ -24,7 +24,8 @@ for (const row of clickFile.points) {
   cardable++;
   if (row[4] !== 'art' || !artHasSubstance(record)) continue; // an address/website/description row opens the building card with that line
   const card = streetArtCard(record!);
-  assert.doesNotMatch(card.detail!, KIND_ONLY, `${row[1]} (${row[0]}): placeholder-only artwork card`);
+  // A reviewed photo (art.i, lane street-art-review-20261120) is the card's substance: its kind line may stay plain.
+  if (!record!.i) assert.doesNotMatch(card.detail!, KIND_ONLY, `${row[1]} (${row[0]}): placeholder-only artwork card`);
   assert(!/^An artwork\b/.test(card.detail!), `${row[0]} still reads "An artwork"`);
   if (record!.e) enrichedText++; else enrichedRegister++;
   if (/^Brettensuite \d+\/20$/.test(row[1])) {

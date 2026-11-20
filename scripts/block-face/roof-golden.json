@@ -1596,42 +1596,44 @@
   },
   "bellamyplein-18-38-r1": {
    "153217": {
-    "hash": "e340e3356cb3a54d",
+    "hash": "b33d8bdc0a6e90d6",
+    "class": "front"
+   },
+   "158557": {
+    "hash": "937e79886ce9d60c",
     "class": "front"
    },
    "159793": {
-    "hash": "6554f5ea9108574a",
-    "class": "front"
-   },
-   "163466": {
-    "hash": "f7fc024b31e3f83e",
-    "class": "front"
-   },
-   "164224": {
-    "hash": "702f34066382c5c2",
-    "class": "front"
-   },
-   "166965": {
-    "hash": "92c578a2490b5d10",
-    "class": "front"
-   }
-  },
-  "bellamyplein-18-38-r2": {
-   "158557": {
-    "hash": "25cdd1586500fff0",
+    "hash": "183ee692e91b1304",
     "class": "front"
    },
    "159962": {
-    "hash": "592a318614d5d5b6",
+    "hash": "e066581914a4b9c0",
     "class": "front+row"
+   },
+   "162005": {
+    "hash": "77c5f7be945c3795",
+    "class": "front"
+   },
+   "163466": {
+    "hash": "d46cf379cc374f32",
+    "class": "front"
    },
    "163720": {
-    "hash": "c5c9bc288ca8b4d9",
+    "hash": "b464924de977b7dd",
     "class": "recipe"
    },
+   "164224": {
+    "hash": "7a52bb6dd4185d1d",
+    "class": "front"
+   },
    "164492": {
-    "hash": "dbcbc47b77631921",
+    "hash": "8aa9043ce141eda1",
     "class": "front+row"
+   },
+   "166965": {
+    "hash": "aa5c15a5e4b0f63d",
+    "class": "front"
    }
   },
   "boeton-2-42-r1": {
@@ -6147,8 +6149,7 @@
   "wallen-ozv-115-125": "d41e7102aa90cf21",
   "evertsen-7-41": "6595762ffe31b864",
   "bellamydwars-4-12": "229858564c3194e8",
-  "bellamyplein-18-38-r1": "b65378d63a879c64",
-  "bellamyplein-18-38-r2": "ac3471f38f1c5ca0",
+  "bellamyplein-18-38-r1": "0c507ebfe204fe22",
   "boeton-2-42-r1": "90b532641306f1fb",
   "bol-12-22-r1": "defee184b02044b1",
   "bol-12-22-r2": "6f2c00e1670d9556",

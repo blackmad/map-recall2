@@ -24,7 +24,9 @@ import {
 
 /** The brief's budget for every lod2 together (the aerial set is fetched on top of lod1/full). 6 MB until 2026-11-13, when the
  *  Houthavens pair took 463 lod2s to 6.01 MB (p50 9.3 KB); raised to 6.5 MB, room for ~40 more at the median. */
-const LOD2_MAX_TOTAL_BYTES = 6.5e6;
+// 6.75 MB since 2026-11-20: landmark round 6 un-held four blind-passed models (Reinwardt, De Jaren, Singel 250, Holland
+// Casino) and took the set to 6.56 MB.
+const LOD2_MAX_TOTAL_BYTES = 6.75e6;
 /** Lane R4-H (#252): the ordinary installs' lod1 + lod2 together (27 models; lod1 at 1024 px). */
 const ORDINARY_LOD_MAX_TOTAL_BYTES = 8e6;
 /**

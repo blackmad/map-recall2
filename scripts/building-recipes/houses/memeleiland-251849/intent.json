@@ -1,0 +1,250 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "memeleiland-251849",
+ "pandId": "0363100012251849",
+ "address": "Memeleiland, Houthavens: 2020 pair of five-storey blocks on one BAG pand, the north-west street face a row of separately designed fronts (dark purple-grey brick with pale stone surrounds and heads, red brick with pale stone strips beside the windows, buff brick with pale stone pilasters, dark purple-red brick with pale surrounds); balconies and set-back terraces on the water side",
+ "sources": [
+  {
+   "id": "pano-2022-06-22-w01-320s1n",
+   "kind": "street-panorama",
+   "capturedAt": "2022-06-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002621_pano_0006_000122/",
+   "image": "source-data://pand-reference-walls/0363100012251849/w01-320s1n.jpg",
+   "sha256": "3214f0beada8a26ac561d851e3a3e442bff41c31ff0d48b3cc1f9b3544bfda5a",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-06-22-w01-320s3n",
+   "kind": "street-panorama",
+   "capturedAt": "2022-06-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002621_pano_0006_000138/",
+   "image": "source-data://pand-reference-walls/0363100012251849/w01-320s3n.jpg",
+   "sha256": "3370ac377d6a4edcbdec36eea3b49ad36764d1f922cd08c40ad9b42093c5b5cf",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-06-22-w01-320s2n",
+   "kind": "street-panorama",
+   "capturedAt": "2022-06-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002621_pano_0006_000130/",
+   "image": "source-data://pand-reference-walls/0363100012251849/w01-320s2n.jpg",
+   "sha256": "5d2cc7065ebba1749a4967e0284b0f4ccf230db6b6f474bdff44645338303262",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-30-w02-140s1nL",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0004_000371/",
+   "image": "source-data://pand-reference-walls/0363100012251849/w02-140s1nL.jpg",
+   "sha256": "375eed47cac10ce1a6300264e3fcf4fbeb411a0ecf2782cd29cd79454340da60",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "shell": 1,
+   "wallSurfaces": [
+    41
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "palette": {
+    "brick": "#34343c",
+    "frame": "#3a3a3c"
+   },
+   "houses": [
+    {
+     "w": 0.343,
+     "bays": 6,
+     "brick": "#34343c",
+     "frame": "#3a3a3c",
+     "windowShape": {
+      "w": 0.5,
+      "h": 0.72,
+      "sill": 0.06
+     },
+     "dress": {
+      "colour": "#c4c2ba",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "jamb": 0.18,
+       "head": 0.22
+      }
+     }
+    },
+    {
+     "w": 0.167,
+     "bays": 3,
+     "brick": "#34343c",
+     "frame": "#3a3a3c",
+     "windowShape": {
+      "w": 0.5,
+      "h": 0.72,
+      "sill": 0.06
+     },
+     "dress": {
+      "colour": "#c4c2ba",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "jamb": 0.18,
+       "head": 0.22
+      }
+     }
+    },
+    {
+     "w": 0.49,
+     "bays": 8,
+     "brick": "#4e2422",
+     "frame": "#3a3a3c",
+     "windowShape": {
+      "w": 0.55,
+      "h": 0.72,
+      "sill": 0.08
+     },
+     "dress": {
+      "colour": "#c4c2ba",
+      "piers": {
+       "stone": true,
+       "w": 0.08,
+       "from": 0,
+       "ends": true,
+       "deep": 0.04
+      }
+     }
+    }
+   ]
+  },
+  {
+   "shell": 2,
+   "wallSurfaces": [
+    28
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "palette": {
+    "brick": "#34343c",
+    "frame": "#3a3a3c"
+   },
+   "houses": [
+    {
+     "w": 0.33,
+     "bays": 9,
+     "brick": "#34343c",
+     "frame": "#3a3a3c",
+     "windowShape": {
+      "w": 0.5,
+      "h": 0.72,
+      "sill": 0.06
+     },
+     "dress": {
+      "colour": "#c4c2ba",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "jamb": 0.18,
+       "head": 0.22
+      }
+     }
+    },
+    {
+     "w": 0.33,
+     "bays": 9,
+     "brick": "#8a7a68",
+     "frame": "#3a3a3c",
+     "windowShape": {
+      "w": 0.6,
+      "h": 0.72,
+      "sill": 0.08
+     },
+     "dress": {
+      "colour": "#c4c2ba",
+      "piers": {
+       "stone": true,
+       "w": 0.08,
+       "from": 0,
+       "ends": true,
+       "deep": 0.04
+      }
+     }
+    },
+    {
+     "w": 0.107,
+     "bays": 3,
+     "brick": "#4a2e34",
+     "frame": "#3a3a3c",
+     "windowShape": {
+      "w": 0.5,
+      "h": 0.72,
+      "sill": 0.06
+     },
+     "dress": {
+      "colour": "#c4c2ba",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "jamb": 0.18,
+       "head": 0.22
+      }
+     }
+    },
+    {
+     "w": 0.233,
+     "bays": 6,
+     "brick": "#4a2e34",
+     "frame": "#3a3a3c",
+     "windowShape": {
+      "w": 0.5,
+      "h": 0.72,
+      "sill": 0.06
+     },
+     "dress": {
+      "colour": "#c4c2ba",
+      "surrounds": {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "jamb": 0.18,
+       "head": 0.22
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#5a3430",
+  "frame": "#3a3a3c",
+  "door": "#3a3634"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120) from crops w01-320s1n/s2n/s3n (2022-06-22; the 2019-2020 crops show scaffolding). walls[0] the NE block's NW face (shell 1, 45.5 m): dark brick 0-15.6 m (6 bays in two triplets), dark brick 15.6-23.2 m (3 bays), red brick with pale strips beside the windows 23.2-45.5 m. walls[1] the SW block's NW face (shell 2, 68.3 m): dark brick 0-22.5 m (9 bays), buff brick with pale pilasters 22.5-45.1 m, dark purple-red 45.1-52.4 m (3 bays, lower) and 52.4-68.3 m (6 bays). The SE water side (balconies, set-back terraces; crop w02-140s1nL) is left to otherWalls in the dark red brick it shows."
+ ],
+ "budgetTriangles": 30000,
+ "shellRepair": true
+}

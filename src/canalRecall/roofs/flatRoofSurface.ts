@@ -132,11 +132,11 @@ export const LIP_MIN_EDGE_M = 2.5;
  * the outer face (the wall carried up `h`), the coping top and the inner face down to the lid at `z`, the inner edge
  * mitred at the corners (miters capped at 3 × `w`). By default 4 triangles an edge, the coping and the inner face: from
  * the air the far side shows its inner face and the near side its coping over the wall, where the outer face would be
- * the wall carried up 0.3 m (`outerFace` adds it: 6 triangles an edge). `exposed(a, b)` drops an edge (a party wall against a roof as high); consecutive kept edges that
+ * the wall carried up 0.3 m (`outerFace` adds it: 6 triangles an edge; `innerFace: false` leaves the inner face out, 2 an edge: roofs/roofEdge.ts's band). `exposed(a, b)` drops an edge (a party wall against a roof as high); consecutive kept edges that
  * turn less than LIP_MERGE_DEG are merged first. Rings closed or open, either winding.
  */
-export function parapetLipTris(rings: ReadonlyArray<ReadonlyArray<readonly [number, number]>>, z: number, hex: string, opts: { outerCount?: number; h?: number; w?: number; exposed?: (a: V2, b: V2) => boolean; outerFace?: boolean; mergeDeg?: number; minEdgeM?: number } = {}): SurfaceTri[] {
-  const { outerCount = 1, h = LIP_H_M, w = LIP_W_M, exposed, outerFace = false, mergeDeg = LIP_MERGE_DEG, minEdgeM = LIP_MIN_EDGE_M } = opts;
+export function parapetLipTris(rings: ReadonlyArray<ReadonlyArray<readonly [number, number]>>, z: number, hex: string, opts: { outerCount?: number; h?: number; w?: number; exposed?: (a: V2, b: V2) => boolean; outerFace?: boolean; innerFace?: boolean; mergeDeg?: number; minEdgeM?: number } = {}): SurfaceTri[] {
+  const { outerCount = 1, h = LIP_H_M, w = LIP_W_M, exposed, outerFace = false, innerFace = true, mergeDeg = LIP_MERGE_DEG, minEdgeM = LIP_MIN_EDGE_M } = opts;
   const out: SurfaceTri[] = [], cosMerge = Math.cos(mergeDeg * Math.PI / 180), copings: V2[][] = [];
   rings.forEach((raw, ri) => {
     let r = raw.map(p => [p[0], p[1]] as V2);
@@ -203,7 +203,7 @@ export function parapetLipTris(rings: ReadonlyArray<ReadonlyArray<readonly [numb
       copings.push(top);
       if (outerFace) quad(out, [a[0], a[1], z], [b[0], b[1], z], [b[0], b[1], z + h], [a[0], a[1], z + h], [-nx, -ny, 0], hex);
       quad(out, [a[0], a[1], z + h], [b[0], b[1], z + h], [bi[0], bi[1], z + h], [ai[0], ai[1], z + h], [0, 0, 1], hex);
-      quad(out, [ai[0], ai[1], z + h], [bi[0], bi[1], z + h], [bi[0], bi[1], z], [ai[0], ai[1], z], [nx, ny, 0], hex);
+      if (innerFace) quad(out, [ai[0], ai[1], z + h], [bi[0], bi[1], z + h], [bi[0], bi[1], z], [ai[0], ai[1], z], [nx, ny, 0], hex);
     }
   });
   return out;

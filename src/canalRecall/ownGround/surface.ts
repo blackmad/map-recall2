@@ -268,10 +268,12 @@ export class GroundSurface {
    * Give a placed deck its riding edges (DeckProfile.edges, bridgeGaps) and index it over its grown box. Called once,
    * before any cell built from this surface reads the deck (groundStore.ts prepareCell awaits it).
    */
-  widenDeck(deck: DeckSurface, edges: { left: Float64Array; right: Float64Array }, bbox: [number, number, number, number]): void {
+  widenDeck(deck: DeckSurface, edges: { left: Float64Array; right: Float64Array }, bbox: [number, number, number, number], ride?: { edges: { left: Float64Array; right: Float64Array }; bbox: [number, number, number, number] }): void {
     deck.profile.edges = edges;
     deck.profile.bbox = bbox;
-    const [x0, y0, x1, y1] = bbox, pad = deckPad(deck.profile);
+    if (ride) deck.profile.rideEdges = ride.edges;
+    // The buckets cover the lift's reach: the tapered edges' box when there is one.
+    const [x0, y0, x1, y1] = ride ? [Math.min(bbox[0], ride.bbox[0]), Math.min(bbox[1], ride.bbox[1]), Math.max(bbox[2], ride.bbox[2]), Math.max(bbox[3], ride.bbox[3])] : bbox, pad = deckPad(deck.profile);
     for (let bx = Math.floor((x0 - pad) / BUCKET_M); bx <= Math.floor((x1 + pad) / BUCKET_M); bx++)
       for (let by = Math.floor((y0 - pad) / BUCKET_M); by <= Math.floor((y1 + pad) / BUCKET_M); by++) {
         const k = bucketKey(bx, by), list = this.buckets.get(k) ?? this.buckets.set(k, []).get(k)!;
@@ -346,9 +348,11 @@ export class GroundSurface {
     const s = lerp(p.s);
     // DeckProfile.edges (bridgeGaps): the half-width on the point's side of the road line.
     let halfWidth = lerp(p.halfWidth);
-    if (p.edges) {
+    // rideEdges (edgeTaper): the same edges with abrupt narrowings tapered, for the lift alone.
+    const edges = p.rideEdges ?? p.edges;
+    if (edges) {
       const j = Math.min(n - 1, bi + 1), left = (p.x[j] - p.x[bi]) * (y - p.y[bi]) - (p.y[j] - p.y[bi]) * (x - p.x[bi]) >= 0;
-      halfWidth = Math.max(halfWidth, lerp(left ? p.edges.left : p.edges.right));
+      halfWidth = Math.max(halfWidth, lerp(left ? edges.left : edges.right));
     }
     // Only the deck span lifts the surface; the approaches are relief.
     const off = s <= deck.span[0] || s >= deck.span[1];

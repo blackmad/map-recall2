@@ -64,6 +64,8 @@ export function bakedCoarseEnabled(touch: boolean, search: string = typeof locat
   if (v === '0' || v === 'off' || v === 'false') return false;
   if (v === '1' || v === 'on' || v === 'true') return true;
   if (v === 'desktop') return !touch;
+  // Roof edges (`?roofEdge=1`, roofs/roofEdge.ts): the baked shells carry the old lip, so the flag draws runtime coarse shells.
+  try { if (new URLSearchParams(search).get('roofEdge') === '1') return false; } catch { /* no location */ }
   return touch ? BAKED_COARSE_TOUCH_DEFAULT : BAKED_COARSE_DESKTOP_DEFAULT;
 }
 

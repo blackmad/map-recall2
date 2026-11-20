@@ -68,7 +68,7 @@ export interface WaterMask {
  * across polygons, so an opening laid over the water either side of a
  * footbridge (openUnderFootbridges) does not cancel where they overlap.
  */
-function rasterInside(geo: WaterGeometry, x0: number, y0: number, res: number, w: number, h: number): Uint8Array {
+export function rasterInside(geo: WaterGeometry, x0: number, y0: number, res: number, w: number, h: number): Uint8Array {
   const inside = new Uint8Array(w * h);
   const edges: [number, number, number, number, number][] = [];
   geo.polygons.forEach((poly, pi) => { for (const ring of poly) for (let i = 0; i < ring.length; i++) {
@@ -123,7 +123,7 @@ export function buildWaterMask(geo: WaterGeometry, x0: number, y0: number, x1: n
 }
 
 /** Exact distance (clamped to `range`) from texel centres to polyline segments, min-accumulated into `dist`. */
-function segmentDistances(dist: Float32Array, lines: readonly (readonly Vec2[])[], closed: boolean, x0: number, y0: number, res: number, width: number, height: number, range: number): void {
+export function segmentDistances(dist: Float32Array, lines: readonly (readonly Vec2[])[], closed: boolean, x0: number, y0: number, res: number, width: number, height: number, range: number): void {
   for (const line of lines) for (let s = 0; s + 1 < line.length + (closed ? 1 : 0); s++) {
     const [ax, ay] = line[s], [bx, by] = line[(s + 1) % line.length], dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy || 1e-9;
     const i0 = Math.max(0, Math.floor((Math.min(ax, bx) - range - x0) / res)), i1 = Math.min(width - 1, Math.ceil((Math.max(ax, bx) + range - x0) / res));

@@ -1,5 +1,66 @@
 # Canal Recall — what is built
 
+## Doelensluis and De Clercqstraat fixed; the ground detector stops flagging rail viaducts (2026-11-20, lane/fb-ground2-20261120 5ffa883692, #396)
+
+Three new ground options, each on by default with a `?name=0` off switch:
+- **Doelensluis (4c1344):** the land mask still cut the canal through the square's wet-ground polygons and the slivers between them, and the square's real edge over the Amstel had no quay face.
+  - `wetHoles` (`wetGroundEdges.ts`) lifts land inside the rings and across gaps that have surveyed ground on both sides within 2 m at street height.
+  - `wetFaces` adds a quay face where a ring meets open water.
+  - BRU0220 hole samples: 41 → 12 → 5, and the 5 are real water. The terrace edge has no face at 2 of 15 points, against 34 of 34 before.
+- **De Clercqstraat (3b8ca6):** BRU0108's survey edge drops from 20.7 m to 6.3 m within one metre, which left a 0.24 m faceless step across the carriageway: the dark and light-blue crack. `edgeTaper` tapers the ride edges at 0.5 m per m (`DeckProfile.rideEdges`, read only by `GroundSurface.locate`, so kits and bodies keep the survey edges). The step is now 0.011 m.
+- **Detector (c57c04):** `groundAudit.ts` counts ballast and track on a deck top as raised, not poke (`railOnDeck`). Poke over 5 cm at Centraal went from 34,884 to 31,423 m²; the false top tile left the list.
+- Pins in `bridge-feedback-pins.ts` each fail with their fix off; spots gain an `alsoOff` field so older pins stay live.
+- Tests are in `test:own-ground`.
+
+## Placement and wall colour fixes (2026-11-20, lane/fb-placement2-20261120 e524e596ab, #396)
+
+- **Bellamyplein 28 (47d096), fixed:** the likeness gate had held it out of the Bellamyplein 18-38 face, so it drew as a generic block between two runs. A reviewer override (2 bays, casement-sidelights-toplight window read from the strip) and an accept pin place it in one run (20-38, NCC 0.195), which replaces the old r2 run. Test: `bellamyplein28.test.ts`.
+- **Dark modern walls, 148 corrected:** `brickTone.ts` reads a wall from the luma mode of warm pixels. On grey, pale or glazed fronts that mode lands on window reveals, loggia shadow and glass, and sky-heavy thumbnails darken the whole front. `darkWallRule.ts` sorts the 289 walls under L* 17:
+  - 96 artefacts: re-read without dark pixels and calibrated by neighbours;
+  - 53 sky-exposed: take the buurt's lower-quartile wall of the same decade;
+  - 87 truly dark: kept.
+  The 148 corrections are in `modern-pand-wall-corrections.json`, each citing its panorama thumbnail.
+- **Behind flags:** `?terraceRows=1` (Haarlemmermeer, 0046bb) and `?roofEdge=1` (8022e3). Their open points are on the board.
+- `bakedCoarse.ts` skips the baked coarse shells when `roofEdge` is on, so the flag can be seen at the note's own view.
+
+## Houthavens: Memeleiland and Wiborgeiland installed (2026-11-20, lane/houthavens-memel-wiborg-20261120 ae759b68fb)
+
+Two more Houthavens blocks are drawn from their own panorama crops as rows of separately designed fronts on one BAG pand, the same way as Narva.
+- **Memeleiland 251849:** seven fronts on its two north-west street faces: dark purple-grey brick with broad pale surrounds, red with pale strips, buff with pale pilasters, dark purple-red with surrounds. `shellRepair` closes 85 m of open 3DBAG edges. 23.8k triangles. Blind: new 3 of 3.
+- **Wiborgeiland 249707:** the 150 m street face: spout-gabled red houses, dark houses with white bays, two arched warehouse fronts with loggias, gabled houses, buff brick with pilasters. `groundClamp` fixes a 3DBAG ground 3.1 m under the garage. 27.1k triangles. Blind: 5 of 5 by a fresh judge after the ground fix, with no blank or floating flags.
+- New opt-in kit fields `dressings.surrounds.jamb`/`.head` (also per house via `houses[].dress`) set the surround widths. 170 of 172 golden meshes are unchanged.
+- `STAGED_CANAL_DIR` in the e2e helpers lets a lane frame staged installs without editing the catalogue.
+- The Haparandaweg block kits from the scope were already installed in round u.
+- Crops are archived in source-data 7acd5ed0f.
+
+## Landmark round 6: four released, Raampoort and Banks Mansion rebuilt (2026-11-20, lane/landmarks-r6-20261120 6672a89c3d)
+
+- **Released:** Reinwardt Academie, De Jaren, Handelsbank Singel 250 and Holland Casino. They passed their blinds in landmarks-next and were held only by round scope. Each GLB rebuilt byte-identical, and audit:glb and the openings check pass. Singel 250 was already split from its canal block.
+- **Merged from landmarks-next:** De Ateliers (Stadhouderskade 86) and Park Centraal with the MOMO corner (Stadhouderskade 25).
+- **Politiebureau Raampoort:** the tower reads as a tower from across the water. The shaft rises to 22 m, with a dial and louvred arch on every face and an octagonal slate needle to 28.3 m. Blind 4–2 for the rebuild, then 6–0 for the new tower.
+- **Banks Mansion:** brighter upper walls and bigger dormers; the corner door is dark timber again, which the judge preferred. Blind 2–1.
+- **Houthavenkade 26:** built but held after failing its photo-pair review; the gaps are on the board.
+- **LOD budget:** the lod2 budget rose from 6.5 to 6.75 MB, because the four released models took the set to 6.56 MB.
+
+## Bent fronts keep whole windows (2026-11-20, lane/fb-facades2-20261120 57ae5e8737, feedback 1a223c)
+
+On fronts that turn every few metres, such as Jacob van Lennepkade r3674867, every 0.75–1.9 m cant or return became its own run with one squeezed bay, so window slivers sat against each turn.
+- `bentFrontFacets.ts` (called once from `threeBuildingMesh`): a facet under 2.5 m and under one cell, with exposed walls turning off it at both ends, now shows one window at its natural width, or plain wall if no window fits with 0.15 m piers.
+- Party-wall fronts, recipes, axis units, row grids, design slices, traced boxes and steps are untouched.
+- Blind, 12 random changed pands (seed 20261120, one opus judge): on won 4, off won 1, 7 ties, no cut or floating windows. The loss is the expected trade-off: a narrow facet with a real window pair now gets plain wall.
+- The note's pose: 2 of 2 wins.
+- It changes baked cells, so the world was recompiled.
+- `scripts/pand-reference/select.ts` `exposedWalls` now merges across jogs under 0.6 m, so jogged fronts such as Prinsengracht 136 (14.3 m, whose crop had picked a 6 m side wall) are cropped from the right wall.
+
+## Street-art photos reviewed and published (2026-11-20, lane/street-art-review-20261120 cb5a3b313a)
+
+69 of the 70 staged photos are published: 65 as staged, and 4 swapped for a photo from the same Commons category that shows the work itself, not its name plaque, info sign, unveiling crowd or a road crossing. The rejected one is Cirkels in the Rembrandtpark, a speck in a meadow with no closer photo on Commons.
+- Every published photo is CC0, public domain, CC BY or CC BY-SA, with author, licence and source page.
+- `streetArtPhotoReview.ts` refuses to publish an unreviewed, double-reviewed, closed-licence or uncredited entry. `npm run publish:street-art-photos` writes the `street-art-commons.json` sidecar and fills `i` on the 69 points.
+- `check-street-art.ts` pins Troost as a named regression: the statue, not the plaque.
+- The review list is `scripts/data/street-art-photo-review.json`.
+- A reviewed photo now counts as card substance (`artHasSubstance` reads `i`), so the 19 photo-only points open a card when their label is tapped. `check-click-poi-placeholders` allows a plain kind line on those cards.
+
 ## Bridge feedback fixes; retail pass merged behind its flags (2026-11-19, #396)
 
 - **Bridges** (lane/fb-bridges-20261119 425520752d). Four new ground options, all on by default and listed in `groundFixes.ts` (`?name=0` turns each off):
