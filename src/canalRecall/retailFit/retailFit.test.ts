@@ -1,20 +1,37 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { retailFitEnabled, RETAIL_FIT_DEFAULT } from './flag.ts';
+import { retailFitEnabled, retailFitModeOf, RETAIL_FIT_DEFAULT } from './flag.ts';
 import { glassOpenings, openingAt } from './openings.ts';
 import { drawLayers, FitBuilder, FIT_OUT } from './geometry.ts';
-import { HAND_FITS, fitsForModel } from './fits.ts';
+import { HAND_FITS, fitsForModel, modelDraws, NODE_FILLS_ENABLED, STAGED_MODELS } from './fits.ts';
+import { checkStaged, layersOfRead } from './photoRead.ts';
 import { retailFitMesh, surveyedNative } from './overlay.ts';
 import { HOST_RULES, expressionAllowed, hostKindOf } from './hosts.ts';
 import type { FitLayer, HostOpening } from './types.ts';
 
-test('flag: off by default, ?retailFit=1 or RETAIL_FIT=1 turns it on', () => {
-  assert.equal(RETAIL_FIT_DEFAULT, false);
-  assert.equal(retailFitEnabled(null, null), false);
-  assert.equal(retailFitEnabled('?a=1&retailFit=1', null), true);
-  assert.equal(retailFitEnabled('?retailFit=0', '1'), false);
-  assert.equal(retailFitEnabled(null, '1'), true);
+test('flag: published reads by default, ?retailFit=1 adds staged ones, ?retailFit=0 draws nothing', () => {
+  assert.equal(RETAIL_FIT_DEFAULT, 'published');
+  assert.equal(retailFitModeOf(null, null), 'published');
+  assert.equal(retailFitModeOf('?a=1&retailFit=1', null), 'all');
+  assert.equal(retailFitModeOf('?retailFit=0', '1'), 'off');
+  assert.equal(retailFitModeOf(null, '1'), 'all');
+  assert.equal(retailFitModeOf(null, '0'), 'off');
+  assert.equal(retailFitEnabled('?retailFit=0', null), false);
+});
+
+test('staged reads: the file is sound, each read becomes in-opening layers, and only published models draw by default', () => {
+  assert.deepEqual(checkStaged(STAGED_MODELS), []);
+  for (const [model, m] of Object.entries(STAGED_MODELS)) {
+    assert.equal(modelDraws(model, 'off'), false);
+    assert.equal(modelDraws(model, 'all'), true);
+    assert.equal(modelDraws(model, 'published'), m.status === 'published', model);
+  }
+  assert.equal(modelDraws('westerkerk', 'all'), false);
+  const L = layersOfRead({ glass: '#303c41', goods: { kind: 'shelves', hexes: ['#8c897f'] }, letters: [{ where: 'head', text: 'ALBERT HEIJN', ink: '#7cc6ee' }], frame: { hex: '#1e2124' }, door: { hex: '#1e2124', leaves: 2 } });
+  assert.deepEqual(L.map(l => l.k), ['interior', 'goods', 'head-letters', 'frame', 'door']);
+  assert.deepEqual(layersOfRead({ glass: '#d3d0c8', panel: { hex: '#d3d0c8', atms: 3 } }).map(l => l.k), ['panel'], 'a panel fills the opening instead of glass');
+  assert.equal(NODE_FILLS_ENABLED, false, 'node-only chain fills lost their blind A/B (2026-11-20)');
 });
 
 /** A round-arched glass slab facing north (-z): front face at z = -0.07, back face at z = 0, 3.3 m wide, crown 5 m. */
@@ -46,8 +63,8 @@ test('openings: one outward round arch per glass slab, its head read off the out
 
 const ROUND: HostOpening = { id: 't', base: [0, 0, 0], n: [0, -1], t: [-1, 0], widthM: 3.3, sillM: 0, springM: 3.35, crownM: 5, head: 'round', bearing: 0, areaM2: 15 };
 const EVERY: FitLayer[] = [
-  { k: 'interior', hex: '#999999' }, { k: 'goods', kind: 'shelves', hexes: ['#ff0000', '#00ff00'] }, { k: 'goods', kind: 'tables', hexes: ['#c8a678', '#6b5a45', '#dfe8f0'] },
-  { k: 'lamps', hex: '#ffffff' }, { k: 'vinyl', base: '#dfe6ef', ink: '#2b4a8f', pattern: 'delft', window: [0.3, 0.7, 0.8, 2.3] }, { k: 'posters', hex: '#00a0e2', n: 2 },
+  { k: 'interior', hex: '#999999' }, { k: 'goods', kind: 'shelves', hexes: ['#ff0000', '#00ff00'] }, { k: 'goods', kind: 'tables', hexes: ['#c8a678', '#6b5a45', '#dfe8f0'] }, { k: 'goods', kind: 'curtains', hexes: ['#d9d6cc', '#bdb9ae'] },
+  { k: 'lamps', hex: '#ffffff' }, { k: 'vinyl', base: '#dfe6ef', ink: '#2b4a8f', pattern: 'delft', window: [0.3, 0.7, 0.8, 2.3] }, { k: 'vinyl', base: '#cdd9e6', ink: '#24427f', pattern: 'landscape', window: [0.36, 0.66, 0.55, 1.35], windowGoods: ['#d9506a'] }, { k: 'posters', hex: '#00a0e2', n: 2 },
   { k: 'panel', hex: '#d3d0c8', atms: 3, text: 'GELDMAAT' }, { k: 'band', hex: '#1d2c5a', v0: 0.15, v1: 0.72, text: 'RIJKS MUSEUM' },
   { k: 'head-letters', text: 'ALBERT HEIJN', ink: '#7cc6ee', bg: '#22313d' }, { k: 'glass-letters', text: 'ABN AMRO', ink: '#fff', v: 3, mark: '#00857a' },
   { k: 'door', hex: '#111111', leaves: 2 }, { k: 'frame', hex: '#111111', transom: true, mullions: 2 },
@@ -95,13 +112,17 @@ test('Hirschgebouw: every hand fit lands in its own arch of the shipped GLB', as
   assert.equal(leidseplein.length, 8, 'eight Leidseplein arches');
   assert.ok(leidseplein.every(o => o.head !== 'flat' && o.widthM > 3 && o.widthM < 3.35 && Math.abs(o.crownM - 5) < 0.05));
   assert.ok(leidseplein.filter(o => o.head === 'round').length >= 7, 'round arches (one arch\'s glass reads 3.08 m wide with a lower springing: segmental)');
-  const fits = fitsForModel('hirschgebouw', ops, toNative);
+  const fits = fitsForModel('hirschgebouw', ops, toNative, false, 'all');
   assert.equal(fits.length, HAND_FITS.filter(f => f.model === 'hirschgebouw').length);
   assert.equal(new Set(fits.map(f => f.op.id)).size, fits.length, 'one tenant per arch');
   const tenantOf = (lng: number, lat: number) => { const [x, z] = toNative(lng, lat); const op = openingAt(ops, x, z, 2.5)!; return fits.find(f => f.op === op)?.tenant; };
   assert.equal(tenantOf(4.882252, 52.3635), 'Shop at Rijksmuseum');
   assert.equal(tenantOf(4.881977, 52.363371), 'Albert Heijn (entrance)');
+  (globalThis as { __canalRecallRetailFit?: string }).__canalRecallRetailFit = 'all';
   const r = retailFitMesh('hirschgebouw', soups, [sx / n, sz / n], toNative)!;
   assert.ok(r.mesh.triangles > 1000 && r.mesh.triangles < 6000, `${r.mesh.triangles} triangles`);
   assert.equal(retailFitMesh('westerkerk', soups, [0, 0], toNative), null, 'a model with no fits gets nothing');
+  (globalThis as { __canalRecallRetailFit?: string }).__canalRecallRetailFit = 'off';
+  assert.equal(retailFitMesh('hirschgebouw', soups, [sx / n, sz / n], toNative), null, '?retailFit=0 draws nothing');
+  delete (globalThis as { __canalRecallRetailFit?: string }).__canalRecallRetailFit;
 });

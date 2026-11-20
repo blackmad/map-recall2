@@ -12,7 +12,8 @@ const rnd = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff
 fs.mkdirSync(OUT, { recursive: true });
 const key: Record<string, { pose: string; A: string; B: string }> = {};
 let i = 0;
-for (const k of fs.readdirSync(FIT).sort()) {
+const only = arg('only')?.split(',');
+for (const k of fs.readdirSync(FIT).sort().filter(k => !only || only.includes(k))) {
   const photo = path.join(OFF, k, 'photo.jpg'), a = path.join(OFF, k, 'likeness.node.png'), b = path.join(FIT, k, 'likeness.node.png');
   if (![photo, a, b].every(f => fs.existsSync(f))) continue;
   const [x0, y0, x1, y1] = crops[k] ?? [0, 0.25, 1, 0.85];

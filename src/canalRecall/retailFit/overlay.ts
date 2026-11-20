@@ -2,7 +2,7 @@
 // give each its tenant (fits.ts), draw the tenant's layers inside it (geometry.ts). Adapters: three.ts (the game's
 // landmark layer), nodeFrame/scene.ts (house:frames without a browser).
 import { drawLayers, FitBuilder } from './geometry.js';
-import { fitsForModel, RETAIL_FIT_MODELS } from './fits.js';
+import { fitsForModel, modelsFor } from './fits.js';
 import { glassOpenings, type GlassSoup } from './openings.js';
 import type { FitMesh, HostOpening } from './types.js';
 
@@ -12,7 +12,8 @@ export const FIT_MAX_TRIANGLES = 20000;
 export type FitPlaced = { opening: string; tenant: string; source: string; triangles: number };
 export type FitResult = { mesh: FitMesh; openings: HostOpening[]; placed: FitPlaced[] };
 
-export const hasRetailFit = (model: string) => RETAIL_FIT_MODELS.has(model);
+/** Does `model` draw a fit in the current mode (`?retailFit=`)? */
+export const hasRetailFit = (model: string) => modelsFor().has(model);
 
 /** Mean-radius Mercator metres east/south of `anchor` (a surveyed model's own frame: x east, z south). */
 export function surveyedNative(anchor: readonly [number, number]): (lng: number, lat: number) => [number, number] {

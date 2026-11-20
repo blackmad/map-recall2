@@ -125,6 +125,14 @@ export function drawLayers(b: FitBuilder, layers: readonly FitLayer[], seed = 0)
           b.quad(-W * 0.4, 1.6, W * 0.4, 1.64, out, hx(0));
           const n = Math.max(4, Math.round(W / 0.12));
           for (let i = 0; i < n; i++) { const ua = -W * 0.38 + W * 0.76 * i / n; b.quad(ua, 0.75 + hash(seed, i) * 0.2, ua + 0.08, 1.6, out, hx(1 + (i % (L.hexes.length - 1 || 1)))); }
+        } else if (L.kind === 'curtains') {
+          // Drawn-back curtains at both jambs (a hotel or café window: the American Hotel's Leidsekade front), folds as
+          // alternating tones, from just under the head to the sill; hexes = [cloth, fold].
+          const cw = Math.min(0.42, W * 0.24), folds = 4;
+          for (const side of [-1, 1]) for (let f = 0; f < folds; f++) {
+            const ua = side < 0 ? -W / 2 + 0.05 + cw * f / folds : W / 2 - 0.05 - cw * (f + 1) / folds, ub = ua + cw / folds;
+            b.region(0.04, C - 0.12, 0, out, hx(f % 2), ua, ub);
+          }
         } else {
           const n = Math.max(2, Math.floor(W / 0.9));
           for (let i = 0; i < n; i++) { const uc = -W / 2 + W * (i + 0.5) / n; b.quad(uc - 0.3, 0.4, uc + 0.3, 0.7, out, hx(i)); b.quad(uc - 0.3, 0.7, uc - 0.22, 1.1, out, hx(i)); }
@@ -147,9 +155,31 @@ export function drawLayers(b: FitBuilder, layers: readonly FitLayer[], seed = 0)
             b.disc(u + (hash(c, r) - 0.5) * 0.08, v, 0.06 + h0 * 0.1, out + 0.001, h0 > 0.75 ? '#7d97c9' : L.ink, 6);
           }
         }
+        if (L.pattern === 'landscape' && L.ink) {
+          // A printed Delft-blue landscape poster (the Rijksmuseum shop's arch, 2025): pale sky, a rolling blue hill line,
+          // a dark foreground and two big tree crowns; one picture, not a repeat.
+          const N = 24, hill = (u: number) => 1.15 + 0.28 * Math.sin(u * 2.3 + seed) + 0.12 * Math.sin(u * 5.1 + 1.7);
+          for (let i = 0; i < N; i++) {
+            const ua = -W / 2 + 0.03 + (W - 0.06) * i / N, ub = -W / 2 + 0.03 + (W - 0.06) * (i + 1) / N, um = (ua + ub) / 2;
+            b.quad(ua, 0.03, ub, Math.min(hill(um), b.top(um) - 0.05), out + 0.001, L.light ?? '#6f8cc4');
+            b.quad(ua, 0.03, ub, Math.min(0.45 + 0.1 * Math.sin(um * 3 + seed), b.top(um) - 0.05), out + 0.0015, L.ink);
+          }
+          for (const [cu, cv, cr] of [[0.22, 0.62, 0.2], [-0.3, 0.5, 0.16]] as const) {
+            const uc = cu * W, vc = Math.min(cv * C, C - 0.9), rc = cr * W;
+            b.quad(uc - 0.04, 0.3, uc + 0.04, vc, out + 0.002, L.ink);
+            for (let k = 0; k < 14; k++) {
+              const a = hash(seed + k, 7) * Math.PI * 2, d = Math.sqrt(hash(k, seed + 3)) * rc, r = 0.12 + hash(k, 11) * 0.16;
+              const u = uc + Math.cos(a) * d, v = vc + Math.sin(a) * d * 0.8;
+              if (Math.abs(u) + r > W / 2 - 0.05 || v + r > b.top(u) - 0.05 || v - r < 0.05) continue;
+              b.disc(u, v, r, out + 0.0025 + k * 0.00001, k % 3 ? L.ink : (L.light ?? '#4a6aa8'), 7);
+            }
+          }
+        }
         if (L.window) {
-          const [f0, f1, v0, v1] = L.window;
-          b.region(v0, v1, 0, out + 0.002, '#556066', -W / 2 + f0 * W, -W / 2 + f1 * W);
+          const [f0, f1, v0, v1] = L.window, u0 = -W / 2 + f0 * W, u1 = -W / 2 + f1 * W;
+          b.region(v0, v1, 0, out + 0.003, L.windowHex ?? '#556066', u0, u1);
+          // A lit display in the cut-out: flowers and goods.
+          if (L.windowGoods) for (let k = 0; k < 10; k++) b.disc(u0 + 0.12 + (u1 - u0 - 0.24) * hash(k, seed), v0 + 0.12 + 0.45 * hash(seed, k), 0.06 + 0.05 * hash(k, k), out + 0.0035, L.windowGoods[k % L.windowGoods.length], 6);
         }
         break;
       }

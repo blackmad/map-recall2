@@ -47,12 +47,12 @@ export type FitLayer =
   /** The lit room behind clear glass: a flat colour over the opening (`v0`/`v1` metres above the sill, default all). */
   | { k: 'interior'; hex: string; v0?: number; v1?: number }
   /** Goods seen through the glass: shop tables (Apple), shelving rows (a supermarket), clothes rails, seats. */
-  | { k: 'goods'; kind: 'tables' | 'shelves' | 'rails' | 'seats'; hexes: string[] }
+  | { k: 'goods'; kind: 'tables' | 'shelves' | 'rails' | 'seats' | 'curtains'; hexes: string[] }
   /** Pendant lamps hanging in the opening's upper glass. */
   | { k: 'lamps'; hex: string; n?: number }
   /** Window vinyl over the glass: a solid colour or a printed pattern (Delft blue on white), with an optional clear
    *  window cut out of it (fractions of the opening's width, metres above the sill). */
-  | { k: 'vinyl'; base: string; ink?: string; pattern?: 'solid' | 'delft'; window?: [number, number, number, number] }
+  | { k: 'vinyl'; base: string; ink?: string; light?: string; pattern?: 'solid' | 'delft' | 'landscape'; window?: [number, number, number, number]; windowHex?: string; windowGoods?: string[] }
   /** A lettered band inside the opening (a vinyl strip or small board): metres above the sill, text in `ink`. */
   | { k: 'band'; hex: string; v0: number; v1: number; text?: string; ink?: string; inset?: number }
   /** Letters in the arch head (the lunette over the transom), on the glass. */
