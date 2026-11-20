@@ -1,0 +1,963 @@
+{
+ "version": 1,
+ "faceId": "_fixture-prinsengracht-130-150",
+ "street": "Prinsengracht",
+ "side": "130-150",
+ "generatedAt": "2026-11-20",
+ "about": "Belt review stage 2 (lane C): the first description per pand from the library, a source and confidence per field (sources strongest first: reviewed > face-intent > own-read > register > survey > based-on > donor > period-default); library = sources above donor, newRead = donor, period-default or absent. Built by scripts/belt-review/describe.ts.",
+ "inputs": {
+  "face": "review-data/belt-review/_fixture-prinsengracht-130-150/face.json",
+  "publishedSpecs": "public/data/extracts/amsterdam/house-specs/14",
+  "d1": "/Users/blackmad/Code/map-recall2-worktrees/_pruned-sheets/d1-belt-20261114/belt-20261114 (answers named in answers-kept; answers-held not used)",
+  "photoReads": "data/buurt-generators/belt/photo-reads.json",
+  "beltLook": "data/buurt-generators/belt/row-front.json",
+  "ahn": "data/buurt-generators/belt/ahn-fronts.json",
+  "register": "public/data/extracts/amsterdam/monument-facts.json",
+  "ordekaart": "/Users/blackmad/Code/map-recall2-worktrees/belt-review-tool-20261120/.cache/ordekaart-20261119/ORDE_CENTRUM_GEBOUWEN.geojson (centrum layer; a pand joins the object holding >= 0.5 of its footprint)",
+  "kitGaps": "review-data/belt-review/kit-gaps.json"
+ },
+ "counts": {
+  "pands": 7,
+  "fields": 119,
+  "library": 66,
+  "newRead": 53,
+  "bySource": {
+   "reviewed": 45,
+   "missing": 53,
+   "face-intent": 6,
+   "survey": 12,
+   "register": 2,
+   "own-read": 1
+  },
+  "libraryShare": 0.555,
+  "byField": {
+   "storeys": {
+    "library": 5,
+    "newRead": 2
+   },
+   "bays": {
+    "library": 5,
+    "newRead": 2
+   },
+   "crown": {
+    "library": 5,
+    "newRead": 2
+   },
+   "cornice": {
+    "library": 5,
+    "newRead": 2
+   },
+   "roofStorey": {
+    "library": 0,
+    "newRead": 7
+   },
+   "dormers": {
+    "library": 0,
+    "newRead": 7
+   },
+   "heads": {
+    "library": 0,
+    "newRead": 7
+   },
+   "windows": {
+    "library": 5,
+    "newRead": 2
+   },
+   "windowSurround": {
+    "library": 5,
+    "newRead": 2
+   },
+   "wallFinish": {
+    "library": 1,
+    "newRead": 6
+   },
+   "wallColour": {
+    "library": 6,
+    "newRead": 1
+   },
+   "whiteFrames": {
+    "library": 0,
+    "newRead": 7
+   },
+   "ground": {
+    "library": 5,
+    "newRead": 2
+   },
+   "door": {
+    "library": 5,
+    "newRead": 2
+   },
+   "stoop": {
+    "library": 5,
+    "newRead": 2
+   },
+   "eavesM": {
+    "library": 7,
+    "newRead": 0
+   },
+   "facadeYear": {
+    "library": 7,
+    "newRead": 0
+   }
+  },
+  "pandsWithKitGaps": 5,
+  "ordekaartUnits": 2,
+  "multiPandUnits": 2
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174415",
+   "address": "Prinsengracht 150",
+   "order": 0,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/storeys (reviewed: house-specs extract)"
+    },
+    "bays": {
+     "value": 3,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/bays (reviewed: house-specs extract)"
+    },
+    "crown": {
+     "value": "bell",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/gable (reviewed: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "none",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/cornice (reviewed: house-specs extract)"
+    },
+    "windows": {
+     "value": "sash",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/windows (reviewed: house-specs extract)"
+    },
+    "windowSurround": {
+     "value": "sill",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/windowSurround (reviewed: house-specs extract)"
+    },
+    "wallColour": {
+     "value": "#9c7a67",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec palette/brick (reviewed: house-specs extract)"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec facts/pui (streetlevel-measured: scripts/block-face/faces/prinsengracht-130-150-ggw/strip.json)"
+    },
+    "door": {
+     "value": 0,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/doorBay (reviewed: house-specs extract)"
+    },
+    "stoop": {
+     "value": "none",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/basement (reviewed: house-specs extract)"
+    },
+    "eavesM": {
+     "value": 4.1,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "bag-tiles 3DBAG eaves"
+    },
+    "facadeYear": {
+     "value": 1750,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "roofStorey",
+    "dormers",
+    "heads",
+    "wallFinish",
+    "whiteFrames"
+   ],
+   "group": {
+    "unit": {
+     "id": "0363100012174415",
+     "source": "single",
+     "faceMembers": [
+      "0363100012174415"
+     ]
+    },
+    "type": "jordaan-1750-neck-gable"
+   },
+   "kitCannotDraw": [
+    {
+     "field": "crown",
+     "why": "facade: the sandstone scrolls (klauwstukken) beside the neck are not drawn",
+     "gapId": "facade-1318f694"
+    },
+    {
+     "field": "crown",
+     "why": "facade: the claw pieces are drawn as the kit's flat wing pieces with scroll tips; their carving and the cap's crest ornament are not drawn",
+     "gapId": "facade-1fe78ffe"
+    },
+    {
+     "field": "crown",
+     "why": "facade: the gable cap ornaments are not drawn",
+     "gapId": "facade-6e37b53f"
+    },
+    {
+     "field": "ground",
+     "why": "facade: the white timber shop pui of Herengracht 261 is the auto-placed shopfront",
+     "gapId": "facade-97217410"
+    },
+    {
+     "field": "ground",
+     "why": "ground: a low shopfront of small-pane lights under the first storey (Prinsengracht 150, 2021-01-25)",
+     "gapId": "ground-f314a9d3"
+    }
+   ],
+   "specParts": [
+    "published",
+    "scripts/house-specs/specs/0363100012174415.json",
+    "scripts/house-specs/generated/AB07/0363100012174415.json",
+    "scripts/block-face/faces/prinsengracht-130-150-r1/intent.json"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 12,
+    "newRead": 5,
+    "bySource": {
+     "reviewed": 9,
+     "missing": 5,
+     "face-intent": 1,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174416",
+   "address": "Prinsengracht 148",
+   "order": 1,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/storeys (reviewed: house-specs extract)"
+    },
+    "bays": {
+     "value": 3,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/bays (reviewed: house-specs extract)"
+    },
+    "crown": {
+     "value": "bell",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/gable (reviewed: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    },
+    "cornice": {
+     "value": "none",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/cornice (reviewed: house-specs extract)"
+    },
+    "windows": {
+     "value": "sash",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/windows (reviewed: house-specs extract)"
+    },
+    "windowSurround": {
+     "value": "sill",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/windowSurround (reviewed: house-specs extract)"
+    },
+    "wallColour": {
+     "value": "#4b3a33",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec palette/brick (reviewed: house-specs extract)"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec facts/pui (streetlevel-measured: scripts/block-face/faces/prinsengracht-130-150-ggw/strip.json)"
+    },
+    "door": {
+     "value": 2,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/doorBay (reviewed: house-specs extract)"
+    },
+    "stoop": {
+     "value": "none",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/basement (reviewed: house-specs extract)"
+    },
+    "eavesM": {
+     "value": 12.9,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "bag-tiles 3DBAG eaves"
+    },
+    "facadeYear": {
+     "value": 1762,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract)",
+     "agree": [
+      "register"
+     ]
+    }
+   },
+   "missing": [
+    "roofStorey",
+    "dormers",
+    "heads",
+    "wallFinish",
+    "whiteFrames"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7049",
+     "source": "ordekaart",
+     "share": 0.991,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012174416",
+      "0363100012174417"
+     ]
+    },
+    "type": "jordaan-1750-neck-gable"
+   },
+   "kitCannotDraw": [
+    {
+     "field": "crown",
+     "why": "facade: the sandstone scrolls (klauwstukken) beside the neck are not drawn",
+     "gapId": "facade-1318f694"
+    },
+    {
+     "field": "crown",
+     "why": "facade: the claw pieces are drawn as the kit's flat wing pieces with scroll tips; their carving and the cap's crest ornament are not drawn",
+     "gapId": "facade-1fe78ffe"
+    },
+    {
+     "field": "crown",
+     "why": "facade: the gable cap ornaments are not drawn",
+     "gapId": "facade-6e37b53f"
+    },
+    {
+     "field": "ground",
+     "why": "facade: the white timber shop pui of Herengracht 261 is the auto-placed shopfront",
+     "gapId": "facade-97217410"
+    },
+    {
+     "field": "ground",
+     "why": "ground: a shopfront across the ground storey",
+     "gapId": "ground-b9ae613d"
+    },
+    {
+     "field": "windows",
+     "why": "windows: red-painted shutters either side of the top storey window (Prinsengracht 148)",
+     "gapId": "windows-21c4e588"
+    }
+   ],
+   "specParts": [
+    "published",
+    "scripts/house-specs/specs/0363100012174416.json",
+    "scripts/house-specs/generated/AB07/0363100012174416.json",
+    "scripts/block-face/faces/prinsengracht-130-150-r1/intent.json"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 12,
+    "newRead": 5,
+    "bySource": {
+     "reviewed": 9,
+     "missing": 5,
+     "face-intent": 1,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174417",
+   "address": "Prinsengracht 146",
+   "order": 2,
+   "fields": {
+    "storeys": {
+     "value": 5,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/storeys (reviewed: house-specs extract)"
+    },
+    "bays": {
+     "value": 3,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/bays (reviewed: house-specs extract)"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/gable (reviewed: house-specs extract)"
+    },
+    "cornice": {
+     "value": "simple",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/cornice (reviewed: house-specs extract)"
+    },
+    "windows": {
+     "value": "sash-small-panes",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/windows (reviewed: house-specs extract)"
+    },
+    "windowSurround": {
+     "value": "full-frame",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/windowSurround (reviewed: house-specs extract)"
+    },
+    "wallColour": {
+     "value": "#5a453b",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec palette/brick (reviewed: house-specs extract)"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec facts/pui (streetlevel-measured: scripts/block-face/faces/prinsengracht-130-150-ggw/strip.json)"
+    },
+    "door": {
+     "value": 2,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/doorBay (reviewed: house-specs extract)"
+    },
+    "stoop": {
+     "value": "none",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/basement (reviewed: house-specs extract)"
+    },
+    "eavesM": {
+     "value": 11.6,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "bag-tiles 3DBAG eaves"
+    },
+    "facadeYear": {
+     "value": 1790,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "house-spec facts/facadeYear (bag: bag-facts:0363100012174417)"
+    }
+   },
+   "missing": [
+    "roofStorey",
+    "dormers",
+    "heads",
+    "wallFinish",
+    "whiteFrames"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:7049",
+     "source": "ordekaart",
+     "share": 0.923,
+     "orde": "1",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012174416",
+      "0363100012174417"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "other",
+     "why": "facade: the iron balconettes of the first floor are not drawn",
+     "gapId": "facade-84ada5ab"
+    },
+    {
+     "field": "other",
+     "why": "facade: the broad eared white frames are drawn as plain full frames",
+     "gapId": "facade-86691855"
+    }
+   ],
+   "specParts": [
+    "published",
+    "scripts/house-specs/specs/0363100012174417.json",
+    "scripts/house-specs/generated/AB07/0363100012174417.json"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 12,
+    "newRead": 5,
+    "bySource": {
+     "reviewed": 9,
+     "missing": 5,
+     "face-intent": 1,
+     "survey": 2
+    }
+   }
+  },
+  {
+   "pandId": "0363100012164999",
+   "address": "Prinsengracht 142",
+   "order": 3,
+   "fields": {
+    "wallColour": {
+     "value": "#5f5c54",
+     "source": "face-intent",
+     "confidence": 0.45,
+     "ref": "house-spec palette/brick (streetlevel-measured: source-data://pand-crops/0363100012164999/front.jpg#fallback)"
+    },
+    "eavesM": {
+     "value": 10.6,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "bag-tiles 3DBAG eaves"
+    },
+    "facadeYear": {
+     "value": 1966,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "house-spec facts/facadeYear (bag: bag-facts:0363100012164999)"
+    }
+   },
+   "missing": [
+    "storeys",
+    "bays",
+    "crown",
+    "cornice",
+    "roofStorey",
+    "dormers",
+    "heads",
+    "windows",
+    "windowSurround",
+    "wallFinish",
+    "whiteFrames",
+    "ground",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6284",
+     "source": "ordekaart",
+     "share": 0.977,
+     "orde": "2",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012164999",
+      "0363100012165018",
+      "0363100012174698",
+      "0363100012173566"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "scripts/house-specs/generated/AB07/0363100012164999.json"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 3,
+    "newRead": 14,
+    "bySource": {
+     "missing": 14,
+     "face-intent": 1,
+     "survey": 2
+    }
+   }
+  },
+  {
+   "pandId": "0363100012165018",
+   "address": "Prinsengracht 136",
+   "order": 4,
+   "fields": {
+    "eavesM": {
+     "value": 14.4,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "bag-tiles 3DBAG eaves"
+    },
+    "facadeYear": {
+     "value": 1941,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "house-spec facts/facadeYear (bag: bag-facts:0363100012165018)"
+    }
+   },
+   "missing": [
+    "storeys",
+    "bays",
+    "crown",
+    "cornice",
+    "roofStorey",
+    "dormers",
+    "heads",
+    "windows",
+    "windowSurround",
+    "wallFinish",
+    "wallColour",
+    "whiteFrames",
+    "ground",
+    "door",
+    "stoop"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6284",
+     "source": "ordekaart",
+     "share": 0.895,
+     "orde": "2",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012164999",
+      "0363100012165018",
+      "0363100012174698",
+      "0363100012173566"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "specParts": [
+    "scripts/house-specs/generated/AB07/0363100012165018.json"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 2,
+    "newRead": 15,
+    "bySource": {
+     "missing": 15,
+     "survey": 2
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174698",
+   "address": "Prinsengracht 134",
+   "order": 5,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/storeys (reviewed: house-specs extract)"
+    },
+    "bays": {
+     "value": 3,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/bays (reviewed: house-specs extract)"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/gable (reviewed: house-specs extract)"
+    },
+    "cornice": {
+     "value": "simple",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/cornice (reviewed: house-specs extract)"
+    },
+    "windows": {
+     "value": "sash-small-panes",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/windows (reviewed: house-specs extract)"
+    },
+    "windowSurround": {
+     "value": "full-frame",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/windowSurround (reviewed: house-specs extract)"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "own-read",
+     "confidence": 0.98,
+     "ref": "house-spec palette/wallMaterial (vision-judge: source-data://pand-crops/0363100012174698/years/2018.jpg)"
+    },
+    "wallColour": {
+     "value": "#8a5d4b",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec palette/brick (reviewed: house-specs extract)"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec facts/pui (streetlevel-measured: scripts/block-face/faces/prinsengracht-130-150-ggw/strip.json)"
+    },
+    "door": {
+     "value": 0,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/doorBay (reviewed: house-specs extract)"
+    },
+    "stoop": {
+     "value": "none",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/basement (reviewed: house-specs extract)"
+    },
+    "eavesM": {
+     "value": 12.5,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "bag-tiles 3DBAG eaves"
+    },
+    "facadeYear": {
+     "value": 1954,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "house-spec facts/facadeYear (bag: bag-facts:0363100012174698)"
+    }
+   },
+   "missing": [
+    "roofStorey",
+    "dormers",
+    "heads",
+    "whiteFrames"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6284",
+     "source": "ordekaart",
+     "share": 0.987,
+     "orde": "2",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012164999",
+      "0363100012165018",
+      "0363100012174698",
+      "0363100012173566"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "other",
+     "why": "facade: the iron balconettes of the first floor are not drawn",
+     "gapId": "facade-84ada5ab"
+    },
+    {
+     "field": "other",
+     "why": "facade: the broad eared white frames are drawn as plain full frames",
+     "gapId": "facade-86691855"
+    },
+    {
+     "field": "ground",
+     "why": "ground: a white shop pui with a central garage-like opening (Prinsengracht 134)",
+     "gapId": "ground-f80f4000"
+    },
+    {
+     "field": "roofStorey",
+     "why": "roof: a tiled roof with one dormer (kept as the 3DBAG roof)",
+     "gapId": "roof-ac1fb7fa"
+    }
+   ],
+   "specParts": [
+    "published",
+    "scripts/house-specs/specs/0363100012174698.json",
+    "scripts/house-specs/generated/AB07/0363100012174698.json"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 13,
+    "newRead": 4,
+    "bySource": {
+     "reviewed": 9,
+     "missing": 4,
+     "own-read": 1,
+     "face-intent": 1,
+     "survey": 2
+    }
+   }
+  },
+  {
+   "pandId": "0363100012173566",
+   "address": "Prinsengracht 130",
+   "order": 6,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/storeys (reviewed: house-specs extract)"
+    },
+    "bays": {
+     "value": 4,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/bays (reviewed: house-specs extract)"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/gable (reviewed: house-specs extract)"
+    },
+    "cornice": {
+     "value": "simple",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/cornice (reviewed: house-specs extract)"
+    },
+    "windows": {
+     "value": "sash-small-panes",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/windows (reviewed: house-specs extract)"
+    },
+    "windowSurround": {
+     "value": "full-frame",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/windowSurround (reviewed: house-specs extract)"
+    },
+    "wallColour": {
+     "value": "#8d6250",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec palette/brick (reviewed: house-specs extract)"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "face-intent",
+     "confidence": 0.85,
+     "ref": "house-spec facts/pui (streetlevel-measured: scripts/block-face/faces/prinsengracht-130-150-ggw/strip.json)"
+    },
+    "door": {
+     "value": 0,
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/doorBay (reviewed: house-specs extract)"
+    },
+    "stoop": {
+     "value": "none",
+     "source": "reviewed",
+     "confidence": 0.9,
+     "ref": "house-spec fronts/0/basement (reviewed: house-specs extract)"
+    },
+    "eavesM": {
+     "value": 12.4,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "bag-tiles 3DBAG eaves"
+    },
+    "facadeYear": {
+     "value": 1954,
+     "source": "survey",
+     "confidence": 0.5,
+     "ref": "house-spec facts/facadeYear (bag: bag-facts:0363100012173566)"
+    }
+   },
+   "missing": [
+    "roofStorey",
+    "dormers",
+    "heads",
+    "wallFinish",
+    "whiteFrames"
+   ],
+   "group": {
+    "unit": {
+     "id": "du:centrum:6284",
+     "source": "ordekaart",
+     "share": 0.942,
+     "orde": "2",
+     "architect": null,
+     "year": null,
+     "faceMembers": [
+      "0363100012164999",
+      "0363100012165018",
+      "0363100012174698",
+      "0363100012173566"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "other",
+     "why": "facade: the iron balconettes of the first floor are not drawn",
+     "gapId": "facade-84ada5ab"
+    },
+    {
+     "field": "other",
+     "why": "facade: the broad eared white frames are drawn as plain full frames",
+     "gapId": "facade-86691855"
+    },
+    {
+     "field": "ground",
+     "why": "ground: a shopfront across the ground storey with iron balconettes on the first storey (Prinsengracht 130)",
+     "gapId": "ground-0a97ab38"
+    },
+    {
+     "field": "roofStorey",
+     "why": "roof: a tiled roof with two dormers (kept as the 3DBAG roof)",
+     "gapId": "roof-1532ccf1"
+    }
+   ],
+   "specParts": [
+    "published",
+    "scripts/house-specs/specs/0363100012173566.json",
+    "scripts/house-specs/generated/AB07/0363100012173566.json"
+   ],
+   "counts": {
+    "fields": 17,
+    "library": 12,
+    "newRead": 5,
+    "bySource": {
+     "reviewed": 9,
+     "missing": 5,
+     "face-intent": 1,
+     "survey": 2
+    }
+   }
+  }
+ ]
+}

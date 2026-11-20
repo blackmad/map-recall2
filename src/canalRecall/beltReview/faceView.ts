@@ -1,6 +1,6 @@
 /**
- * Belt review page, one block face: the four checks in order. Stage 1 (photo pick) is live; stages 2–4 open after it and
- * are filled in by milestone M2 (description fields, grouping, render + pins).
+ * Belt review page, one block face: the four checks in order, each confirmed before the next opens. Stage 1 (photo pick)
+ * lives here; stages 2–4 are in stages.ts (description, grouping, render + pins).
  *
  * Keys (stage 1): 1–6 pick a candidate, 0 or X none usable, J / → next house, K / ← previous house, Z zoom the selected
  * photo, Enter confirm the stage once every house has a pick, ? help. Space flips photo/pick in the zoom.
@@ -10,8 +10,9 @@ import { $, h, replace, typing } from './dom.ts';
 import { stageBlockers } from './logic.ts';
 import {
   STAGES, STAGE_SHORT, STAGE_TITLES, type FaceBundle, type LedgerFile, type PandCandidates, type PhotoCandidate, type PicksFile,
-  type Stage, type StateAction, type StateFile,
+  type EditsFile, type GroupingFile, type Pin, type PinsFile, type Stage, type StateAction, type StateFile,
 } from './types.ts';
+import { go as goStage, keys3, keys4, renderStage2, renderStage3, renderStage4, type Catalogue, type Derived, type FaceCtx, type RenderInfo, type RowInfo } from './stages.ts';
 
 const KEYS = ['1', '2', '3', '4', '5', '6'];
 const pct = (n: number, d: number) => d ? `${Math.round(100 * n / d)}%` : '–';
@@ -55,10 +56,51 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
   const imgUrl = (pandId: string, c: PhotoCandidate) => `/api/belt-review/faces/${faceId}/image/${pandId}/${encodeURIComponent(c.id)}`;
   const editable = (stage: Stage) => b.state.status !== 'accepted' && stage === b.state.stage;
 
+  let derived: Derived | null = null, catalogue: Catalogue | null = null;
+  const renders = new Map<string, Promise<RenderInfo>>();
+  let row: { key: string; p: Promise<RowInfo> } | null = null;
+  const refreshDerived = async () => { derived = await getJson<Derived>(`/faces/${encodeURIComponent(faceId)}/derived`); };
+  await Promise.all([refreshDerived().catch(() => {}), getJson<Catalogue>('/kit-catalogue').then(c => { catalogue = c; }).catch(() => {})]);
+
   async function reload() {
     b = await getJson<FaceBundle>(`/faces/${encodeURIComponent(faceId)}`);
+    await refreshDerived();
     say('Reloaded from disk', 'ok'); render();
   }
+  /** Save a doc write, take the new doc and ledger, re-derive the drawn fields, re-render the stage. */
+  async function saveAnd<T>(path: string, body: () => unknown, apply: (doc: T) => void, ok: string) {
+    try {
+      const r = await post<{ doc: T; ledger: LedgerFile }>(path, b.token, body);
+      apply(r.doc); b.ledger = r.ledger;
+      await refreshDerived();
+      say(ok, 'ok'); render();
+    } catch (e) { fail(e); }
+  }
+  const pandPhoto = (pandId: string): PhotoCandidate | null => {
+    const entry = cands(pandId), id = b.picks.picks[pandId] ? b.picks.picks[pandId].candidateId : entry?.autoPick;
+    return id ? entry?.candidates.find(c => c.id === id) ?? null : null;
+  };
+  const ctx: FaceCtx = {
+    faceId, main: null as unknown as HTMLElement,
+    get b() { return b; }, get derived() { return derived; }, get catalogue() { return catalogue; },
+    get current() { return current; }, set current(i: number) { current = i; },
+    editable, say, render: () => render(), pandStrip: () => pandStrip(),
+    photoUrl: (pandId: string) => { const c = pandPhoto(pandId); return c ? imgUrl(pandId, c) : null; },
+    photoPxPerM: (pandId: string) => pandPhoto(pandId)?.pxPerM ?? 50,
+    saveEdits: (pandId, fields) => saveAnd<EditsFile>(`/faces/${faceId}/edits/${pandId}`, () => ({ expectedRevision: b.edits.edits[pandId]?.revision ?? 0, value: { fields } }), d => { b.edits = d; }, 'Saved; re-rendering'),
+    saveGrouping: value => saveAnd<GroupingFile>(`/faces/${faceId}/grouping`, () => ({ expectedRevision: b.grouping.revision, value }), d => { b.grouping = d; }, 'Grouping saved'),
+    savePin: (pin: Partial<Pin> & { id: string }) => saveAnd<PinsFile>(`/faces/${faceId}/pins/${encodeURIComponent(pin.id)}`, () => ({ expectedRevision: b.pins.pins[pin.id]?.revision ?? 0, value: pin }), d => { b.pins = d; }, 'Pin saved'),
+    renderInfo: (pandId: string) => {
+      const key = `${pandId}:${derived?.pands[pandId]?.hash ?? ''}`;
+      if (!renders.has(key)) renders.set(key, getJson<RenderInfo>(`/faces/${faceId}/render/${pandId}.json`));
+      return renders.get(key)!;
+    },
+    rowInfo: () => {
+      const key = JSON.stringify([Object.values(derived?.pands ?? {}).map(p => p.hash), b.picks.revision]);
+      if (row?.key !== key) row = { key, p: getJson<RowInfo>(`/faces/${faceId}/row.json`) };
+      return row.p;
+    },
+  };
   async function stateAction(action: StateAction, stage?: Stage) {
     try {
       const r = await post<{ doc: StateFile; ledger: LedgerFile }>(`/faces/${faceId}/state`, b.token, () => ({ expectedRevision: b.state.revision, action, stage }));
@@ -85,6 +127,7 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
   const footer = h('footer', { class: 'bar foot' });
   const overlay = h('div', { class: 'zoom', hidden: true });
   replace(root, header, main, footer, overlay);
+  (ctx as { main: HTMLElement }).main = main;
 
   function renderHeader() {
     const st = b.state;
@@ -149,18 +192,14 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
     replace(main, pandStrip(), lockedNote, head, grid, keys);
   }
 
-  function renderLater(stage: Stage) {
-    replace(main, h('section', { class: 'later' },
-      h('h2', {}, `Stage ${stage}: ${STAGE_TITLES[stage]}`),
-      h('p', {}, stage === 2 ? 'Description fields beside the chosen photo, each with its source; edit by choosing a kit value.' : stage === 3 ? 'The block as a row with design units and sameAs / based-on links: split, join, identical to, based on.' : 'The spec render beside the photo at one scale (Q/W/E/R flip, blink), kit gaps, and pins.'),
-      h('p', { class: 'muted' }, 'This stage arrives in milestone M2. You can still confirm it to move the block along, or send it to Claude.')));
-  }
-
   function renderFooter() {
     const st = b.state, blockers = stageBlockers(view, { face: b.face, picks: b.picks, pins: b.pins });
     const l = b.ledger;
-    const ledger = h('span', { class: 'ledger' },
-      `Picks ${l.photos.picked}/${l.photos.pands} · agreed with auto ${pct(l.photos.agreedWithAuto, l.photos.picked)} · none usable ${l.photos.noneUsable} · passes ${l.passes}`);
+    const ledger = h('span', { class: 'ledger', title: `Fields from the library ${l.fields.fromLibrary}, needing a new read ${l.fields.fromNewRead}, edited ${l.fields.edited}; failures per stage ${JSON.stringify(l.stageFailures)}` },
+      view === 1 ? `Picks ${l.photos.picked}/${l.photos.pands} · agreed with auto ${pct(l.photos.agreedWithAuto, l.photos.picked)} · none usable ${l.photos.noneUsable} · passes ${l.passes}`
+      : view === 2 ? `Library ${pct(l.fields.fromLibrary, l.fields.fromLibrary + l.fields.fromNewRead)} of fields · ${l.fields.edited} edited · passes ${l.passes}`
+      : view === 3 ? `Grouping changes ${l.stageFailures['3'] ?? 0} · passes ${l.passes}`
+      : `Pins ${l.pins.total} (${l.pins.open} open) · passes ${l.passes}`);
     const confirm = view === 4
       ? h('button', { class: 'primary', disabled: !editable(4) || blockers.length > 0, onclick: () => stateAction('accept') }, 'Accept block')
       : h('button', { class: 'primary', disabled: !editable(view) || blockers.length > 0, onclick: () => stateAction('confirm-stage', view), title: 'Enter' }, `Confirm stage ${view}`);
@@ -183,7 +222,8 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
     const u = new URL(location.href);
     if (u.searchParams.get('stage') !== String(view)) { u.searchParams.set('stage', String(view)); history.replaceState(null, '', u); }
     renderHeader();
-    if (view === 1) renderStage1(); else renderLater(view);
+    main.className = `face stage-${view}`;
+    if (view === 1) renderStage1(); else if (view === 2) renderStage2(ctx); else if (view === 3) renderStage3(ctx); else renderStage4(ctx);
     renderFooter();
     renderZoom();
   }
@@ -193,13 +233,20 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
     if (typing(e) || e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key;
     if (k === 'Escape' && zoom) { zoom = null; renderZoom(); return; }
+    if (k === 'Escape' && view === 3) { keys3(k); return; }
     if (k === 'R' && e.shiftKey) { e.preventDefault(); void reload(); return; }
     if (k === '?') { $('#keys')?.toggleAttribute('hidden'); return; }
     if (k === 'Enter' && !zoom) {
       if (view === 4) void stateAction('accept'); else void stateAction('confirm-stage', view);
       return;
     }
-    if (view !== 1) return;
+    if (view === 3 && keys3(k)) { e.preventDefault(); return; }
+    if (view === 4 && keys4(ctx, k)) { e.preventDefault(); return; }
+    if (view !== 1) {
+      if (view !== 3 && (k === 'j' || k === 'ArrowRight')) { e.preventDefault(); goStage(ctx, 1); }
+      else if (view !== 3 && (k === 'k' || k === 'ArrowLeft')) { e.preventDefault(); goStage(ctx, -1); }
+      return;
+    }
     const p = pands()[current], entry = p && cands(p.pandId);
     if (k === 'j' || k === 'ArrowRight') { e.preventDefault(); go(1); }
     else if (k === 'k' || k === 'ArrowLeft') { e.preventDefault(); go(-1); }

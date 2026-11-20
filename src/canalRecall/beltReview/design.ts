@@ -3,10 +3,12 @@
  * edits on top, through the grouping links (`sameAs`: the target's fields; `basedOn`: the target's fields plus the link's
  * overrides), mapped onto the HouseSpec design vocabulary that house preview's `overridePatch` reads.
  *
- * `resolveLinked` is the one place links are resolved. When lane C's HouseSpec `basedOn` (R4) lands, swap it for a call to
- * houseSpec/resolve.ts; the page and the render service only see `pandDesign`.
+ * The drawn design goes through HouseSpec `basedOn` (lane C, R4: houseSpec/resolve.ts applyBasedOn); `resolveLinked` gives
+ * the same result as readable fields for the page. Server-side only (resolve.ts).
  */
 import { FAMILY_TONE } from '../houseSpec/wallColour.ts';
+import { applyBasedOn } from '../houseSpec/resolve.ts';
+import type { HouseSpec } from '../houseSpec/spec.ts';
 import { DESC_FIELDS, type DescField } from './fields.ts';
 import type { DescFieldValue, DescriptionFile, EditsFile, FaceFile, GroupingFile } from './types.ts';
 
@@ -107,8 +109,62 @@ export function fieldsToDesign(fields: FieldSet): PandDesign['design'] {
   return { fronts: [front], palette, facts };
 }
 
+/** A pand as a HouseSpec part: the given fields' design at `reviewed` strength, plus a `basedOn` from its grouping link. */
+function specOf(pandId: string, fields: FieldSet, grouping: GroupingFile): HouseSpec {
+  const d = fieldsToDesign(fields);
+  const spec: HouseSpec = { schemaVersion: 1, pandId, design: { fronts: d.fronts, palette: d.palette } as HouseSpec['design'], provenance: { '': { source: 'reviewed', confidence: 1, ref: 'belt-review description + edits', at: null } } };
+  if (Object.keys(d.facts).length) spec.facts = d.facts as HouseSpec['facts'];
+  const link = grouping.links.find(l => l.pandId === pandId);
+  if (link) {
+    const over: FieldSet = {};
+    for (const [k, v] of Object.entries(link.overrides ?? {})) if ((DESC_FIELDS as readonly string[]).includes(k)) over[k as DescField] = { value: v, source: 'override' };
+    const od = applyPathEdits(fieldsToDesign(over), link.overrides ?? {}, false);
+    spec.basedOn = { pandId: link.target, ...(link.kind === 'basedOn' && Object.keys(link.overrides ?? {}).length ? { overrides: { fronts: od.fronts, palette: od.palette } as never } : {}) };
+  }
+  return spec;
+}
+
+/**
+ * The design a pand is drawn from. A linked pand (sameAs / basedOn) keeps only its own edits (plus its measured eaves and
+ * year) and takes the rest from its target through HouseSpec `basedOn` (houseSpec/resolve.ts applyBasedOn: cycles and
+ * chains deeper than 4 are refused; the target is resolved through its own link first). `fields` is the display view
+ * (resolveLinked) of the same thing.
+ */
+/** Edits and overrides keyed by a spec path (`fronts/0/cornice`, `palette/frame`, `facts/x`): written onto the design as
+ *  is, for a fix the readable fields do not cover. */
+export function applyPathEdits(design: PandDesign['design'], edits: Record<string, { value: unknown } | unknown>, wrapped = true): PandDesign['design'] {
+  for (const [key, raw] of Object.entries(edits)) {
+    if (!key.includes('/')) continue;
+    const value = wrapped ? (raw as { value: unknown }).value : raw;
+    const [head, a, b] = key.split('/');
+    if (head === 'fronts' && b) { design.fronts[Number(a)] ??= {}; design.fronts[Number(a)][b] = value; }
+    else if (head === 'palette') design.palette[a] = value;
+    else if (head === 'facts') design.facts[a] = value;
+  }
+  return design;
+}
+
 export function pandDesign(face: FaceFile, pandId: string, description: DescriptionFile | null, edits: EditsFile, grouping: GroupingFile): PandDesign {
   void face;
-  const r = resolveLinked(pandId, description, edits, grouping);
-  return { pandId, fields: r.fields, design: fieldsToDesign(r.fields), chain: r.chain, notes: r.notes };
+  const display = resolveLinked(pandId, description, edits, grouping);
+  const partFields = (id: string): FieldSet => {
+    if (!grouping.links.some(l => l.pandId === id)) return ownFields(id, description, edits);
+    const own = ownFields(id, description, edits), out: FieldSet = {};
+    for (const f of DESC_FIELDS) if (own[f]?.edited || f === 'eavesM' || f === 'facadeYear') if (own[f]) out[f] = own[f];
+    return out;
+  };
+  const known = (id: string) => !!description?.pands.some(p => p.pandId === id) || !!edits.edits[id];
+  const lookup = (id: string) => known(id) ? specOf(id, partFields(id), grouping) : undefined;
+  let design = fieldsToDesign(display.fields);
+  const notes = [...display.notes];
+  try {
+    const spec = lookup(pandId) ?? specOf(pandId, {}, grouping);
+    const resolved = applyBasedOn(spec, lookup);
+    design = structuredClone({ fronts: (resolved.design.fronts ?? [{}]) as Record<string, unknown>[], palette: (resolved.design.palette ?? {}) as Record<string, unknown>, facts: (resolved.facts ?? {}) as Record<string, unknown> });
+  } catch (e) {
+    notes.push(`${(e as Error).message}; drawn from the pand's own fields`);
+    design = fieldsToDesign(ownFields(pandId, description, edits));
+  }
+  applyPathEdits(design, edits.edits[pandId]?.fields ?? {});
+  return { pandId, fields: display.fields, design, chain: display.chain, notes };
 }

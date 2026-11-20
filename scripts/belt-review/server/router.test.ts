@@ -132,9 +132,9 @@ describe('state: stages in order, send to Claude, ledger', () => {
 
 describe('edits, pins, grouping', () => {
   it('saves a field edit and refuses a bad path', async () => {
-    assert.equal((await post(`/faces/test-face/edits/${P1}`, { expectedRevision: 0, value: { fields: { 'fronts/0/gable': { value: 'bell' } } } })).status, 200);
+    assert.equal((await post(`/faces/test-face/edits/${P1}`, { expectedRevision: 0, value: { fields: { crown: { value: 'bell' }, 'fronts/0/cornice': { value: 'heavy' } } } })).status, 200);
     assert.equal((await post(`/faces/test-face/edits/${P1}`, { expectedRevision: 1, value: { fields: { '../x': { value: 1 } } } })).status, 400);
-    assert.equal((await disk('edits')).edits[P1].fields['fronts/0/gable'].value, 'bell');
+    assert.equal((await disk('edits')).edits[P1].fields.crown.value, 'bell');
   });
   it('creates a pin and refuses a stale pin write', async () => {
     const pin = { pandId: P1, target: 'render', x: 0.4, y: 0.2, tag: 'gable-crown', note: 'neck too wide' };
@@ -145,9 +145,24 @@ describe('edits, pins, grouping', () => {
     assert.equal(r.body.ledger.pins.byTag['gable-crown'], 1);
   });
   it('saves grouping with a basedOn link and refuses a pand in two units', async () => {
-    const ok = await post('/faces/test-face/grouping', { expectedRevision: 0, value: { units: [{ id: 'u1', pandIds: [P1, P2], source: 'david' }], links: [{ pandId: P2, kind: 'basedOn', target: P1, overrides: { 'fronts/0/gable': 'neck' } }] } });
+    const ok = await post('/faces/test-face/grouping', { expectedRevision: 0, value: { units: [{ id: 'u1', pandIds: [P1, P2], source: 'david' }], links: [{ pandId: P2, kind: 'basedOn', target: P1, overrides: { crown: 'neck' } }] } });
     assert.equal(ok.status, 200);
     assert.equal((await post('/faces/test-face/grouping', { expectedRevision: 1, value: { units: [{ id: 'u1', pandIds: [P1] }, { id: 'u2', pandIds: [P1] }], links: [] } })).status, 400);
+  });
+});
+
+describe('derived (render adapter over description + edits + grouping)', () => {
+  it('draws description fields with edits on top and follows a basedOn link', async () => {
+    const f = (value: unknown) => ({ value, source: 'own-read', confidence: 0.6, ref: 't' });
+    await fs.writeFile(path.join(data, 'test-face', 'description.json'), JSON.stringify({ version: 1, pands: [{ pandId: P1, fields: { crown: f('bell'), storeys: f(4) } }, { pandId: P2, fields: { crown: f('step') } }] }));
+    const d = (await get('/faces/test-face/derived')).body;
+    // P1's crown was edited to bell earlier in this file; P2 is based on P1 (grouping test above).
+    assert.equal(d.pands[P1].fields.crown.source, 'edit');
+    assert.deepEqual(d.pands[P2].chain, [`basedOn:${P1}`]);
+    assert.equal(d.pands[P2].fields.crown.value, 'neck'); assert.equal(d.pands[P2].fields.storeys.value, 4);
+    assert.match(d.pands[P2].hash, /^[0-9a-f]{24}$/);
+    const l = await disk('ledger');
+    assert.equal(typeof l.fields.fromLibrary, 'number');
   });
 });
 

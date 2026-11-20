@@ -212,12 +212,13 @@ export type PinKind = typeof PIN_KINDS[number];
 export const PIN_STATUSES = ['open', 'fixed', 'resolved', 'reopened'] as const;
 /** `open` (new), `fixed` (Claude says done, David to check), `resolved` (David agrees), `reopened` (David disagrees). */
 export type PinStatus = typeof PIN_STATUSES[number];
-export const PIN_TARGETS = ['photo', 'render', 'row'] as const;
+/** `photo` / `render`: one house; `row-photo` / `row-render`: the row strips (pandId = the house under the pin). */
+export const PIN_TARGETS = ['photo', 'render', 'row-photo', 'row-render'] as const;
 export type PinTarget = typeof PIN_TARGETS[number];
 export interface PinMessage { at: string; by: Actor; text: string }
 export interface Pin extends Entry {
   id: string;
-  /** null for a row pin that is not on one house. */
+  /** The house under the pin; null for a row pin that is not on one house. */
   pandId: string | null;
   target: PinTarget;
   x: number;

@@ -1,6 +1,7 @@
 /**
- * Belt review page smoke (desktop 1440x900 and phone 390x844): index, stage-1 photo pick by keyboard, confirm, compare
- * round flip and verdict. Serves its own express app on PW_PORT (default 4330) over a temporary copy of the fixture face,
+ * Belt review page smoke (desktop 1440x900 and phone 390x844): index; stage 1 photo pick by keyboard; stage 2 field edit
+ * and live re-render; stage 3 join + identical-to; stage 4 pin, row view, resolve, accept; compare round flip and verdict;
+ * every stage at phone width. Serves its own express app on PW_PORT (default 4330) over a temporary copy of the fixture face,
  * so it never writes the committed review-data. Run through the browser queue:
  *
  *   /tmp/canal-pw.sh env PW_PORT=4330 BELT_REVIEW_IMAGE_ROOT=<archive> node --import tsx scripts/belt-review/page-smoke.ts [--shots <dir>]
@@ -74,6 +75,67 @@ try {
       await page.locator('.step', { hasText: 'Crop' }).click();
       await page.waitForSelector('.locked');
       await page.screenshot({ path: path.join(shots, 'belt-review-confirmed-desktop.png') });
+
+      // Stage 2: fields beside photo and live render; a kit value chosen for the crown saves an edit and re-renders.
+      await page.locator('.step', { hasText: 'Description' }).click();
+      const loaded = (sel: string) => page.waitForFunction(q => [...document.querySelectorAll<HTMLImageElement>(q)].length > 0 && [...document.querySelectorAll<HTMLImageElement>(q)].every(i => i.complete && i.naturalWidth > 0), sel, { timeout: 120_000 });
+      await loaded('img.render');
+      const before = await page.locator('img.render').getAttribute('src');
+      await page.locator('select[data-field="crown"]').selectOption('"step"');
+      await page.waitForFunction(b => { const i = document.querySelector<HTMLImageElement>('img.render'); return !!i && i.src && !i.src.endsWith(b ?? '') && i.complete && i.naturalWidth > 0; }, before, { timeout: 60_000 });
+      const pandNow = (await readJson('face.json')).pands.at(-1).pandId;
+      assert.equal((await readJson('edits.json')).edits[pandNow].fields.crown.value, 'step');
+      await page.screenshot({ path: path.join(shots, 'belt-review-stage2-desktop.png') });
+      await page.locator('.pand-head h2').click();
+      await page.keyboard.press('Enter');
+      await page.waitForFunction(() => document.querySelector('.step.done b') && [...document.querySelectorAll('.step.done')].length >= 2);
+
+      // Stage 3: join two houses into a unit, mark a third identical to the second.
+      await page.waitForSelector('.cell', { timeout: 120_000 });
+      await loaded('.rowbox img');
+      const cells = page.locator('.cell');
+      await cells.nth(0).click(); await cells.nth(1).click(); await page.keyboard.press('g');
+      await page.waitForFunction(() => document.querySelector('.status')?.textContent === 'Grouping saved');
+      await page.locator('.cell').nth(2).click(); await page.keyboard.press('i'); await page.locator('.cell').nth(1).click();
+      await page.waitForFunction(() => document.querySelectorAll('.links li').length === 1);
+      const g = await readJson('grouping.json');
+      assert.equal(g.units.find((u: { source: string }) => u.source === 'david').pandIds.length, 2); assert.equal(g.links[0].kind, 'sameAs');
+      await loaded('.rowbox img');
+      await page.screenshot({ path: path.join(shots, 'belt-review-stage3-desktop.png') });
+      await page.keyboard.press('Enter');
+      await page.waitForFunction(() => [...document.querySelectorAll('.step.done')].length >= 3);
+
+      // Stage 4: pin the render (tag key 3 = gable / crown), look at the row, resolve the pin, accept the block.
+      await loaded('.stage4 img.render');
+      const r = await page.locator('.stage4 img.render').boundingBox();
+      await page.mouse.click(r!.x + r!.width / 2, r!.y + r!.height * 0.15);
+      await page.waitForFunction(() => document.activeElement?.id === 'pin-note');
+      await page.keyboard.press('3');
+      await page.waitForFunction(() => document.querySelectorAll('.pinrow').length === 1);
+      const pins = Object.values((await readJson('pins.json')).pins) as Array<{ tag: string; target: string; status: string }>;
+      assert.equal(pins[0].tag, 'gable-crown'); assert.equal(pins[0].target, 'render');
+      await loaded('.stage4 img');
+      await page.screenshot({ path: path.join(shots, 'belt-review-stage4-desktop.png') });
+      await page.keyboard.press('r');
+      await loaded('.rowimgs4 img');
+      await page.screenshot({ path: path.join(shots, 'belt-review-stage4-row-desktop.png') });
+      await page.keyboard.press('e');
+      await page.locator('.pinrow button', { hasText: 'Resolve' }).click();
+      await page.waitForFunction(() => document.querySelector('.pinrow.resolved'));
+      await page.keyboard.press('Enter');
+      await page.waitForFunction(() => document.querySelector('.pill.accepted'));
+      assert.equal((await readJson('state.json')).status, 'accepted');
+      const ledger = await readJson('ledger.json');
+      assert.equal(ledger.pins.total, 1); assert.ok(ledger.fields.edited >= 1); assert.ok(ledger.fields.fromLibrary > 0);
+    } else {
+      // Phone: each stage of the (now accepted) block, read-only.
+      for (const st of [2, 3, 4]) {
+        await page.goto(`${base}?face=${FIXTURE}&stage=${st}`);
+        await page.waitForSelector(st === 3 ? '.rowbox img' : 'img.render', { timeout: 120_000 });
+        await page.waitForFunction(() => [...document.querySelectorAll<HTMLImageElement>('main img')].every(i => i.complete), undefined, { timeout: 120_000 });
+        assert.ok(await noOverflow(page), `${label}: stage ${st} overflows`);
+        await page.screenshot({ path: path.join(shots, `belt-review-stage${st}-${label}.png`) });
+      }
     }
 
     await page.goto(`${base}?round=ring-r2`);

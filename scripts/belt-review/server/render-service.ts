@@ -9,7 +9,7 @@ import { fork, type ChildProcess } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import sharp from 'sharp';
+import sharp, { type OverlayOptions } from 'sharp';
 
 export const RENDER_VERSION = 1;
 export interface RenderMeta { hash: string; pandId: string; file: string; ms: number; cached: boolean; measure: Record<string, any>; widthPx: number; heightPx: number }
@@ -105,7 +105,7 @@ export interface RowLayout { width: number; height: number; pands: Array<{ pandI
 export async function composeRow(pieces: RowPiece[], background = { r: 160, g: 180, b: 200 }): Promise<{ png: Buffer; layout: RowLayout }> {
   const height = Math.max(1, ...pieces.map(p => p.heightPx)), width = Math.max(1, pieces.reduce((n, p) => n + p.widthPx, 0));
   const layout: RowLayout = { width, height, pands: [] };
-  const over: sharp.OverlayOptions[] = [];
+  const over: OverlayOptions[] = [];
   let x = 0;
   for (const p of pieces) {
     layout.pands.push({ pandId: p.pandId, x, w: p.widthPx, h: p.heightPx });

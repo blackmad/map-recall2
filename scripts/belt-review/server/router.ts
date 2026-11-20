@@ -16,6 +16,7 @@
  *   GET  /rounds/:round/file?path=rel         a layer or photo image (path-guarded)
  *   POST /rounds/:round/verdicts/:block       {expectedRevision, value: {verdict, note}}
  *   GET  /page.js                             the page bundle (esbuild, built per request)
+ *   + the render routes (render-routes.ts): derived fields, pand fronts, row strips, render stats, kit catalogue
  *
  * Every POST needs header `x-review-token` (the token from the GET; it changes when the server restarts) and the
  * revision the writer last saw; a stale revision is 409 and nothing is written. Writes go through `lockedJson`.
@@ -25,6 +26,8 @@ import { Router, type Request, type Response } from 'express';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { BeltReviewStore, lockedJson, readJson, resolveInside } from '../../../src/canalRecall/beltReview/store.ts';
+import { mountRenderRoutes } from './render-routes.ts';
+import type { RenderService } from './render-service.ts';
 import { discoverRound } from '../../../src/canalRecall/beltReview/compare.ts';
 import {
   ReviewError, addActivity, applyStateAction, validateEdits, validateGrouping, validatePick, validatePin, validateVerdict,
@@ -42,6 +45,9 @@ export interface BeltReviewOptions {
   /** Fixed token (tests). */
   token?: string;
   repoRoot?: string;
+  /** Render cache (default .cache/belt-review/renders) or a whole service (tests). */
+  renderCacheDir?: string;
+  renderService?: RenderService;
 }
 
 const fail = (res: Response, e: unknown) => {
@@ -194,6 +200,9 @@ export function beltReviewRouter(options: BeltReviewOptions = {}): Router {
       res.json({ doc });
     } catch (e) { fail(res, e); }
   });
+
+  // ---------------------------------------------------------------------------------------------------------- render
+  mountRenderRoutes(router, store, fail, { repoRoot, cacheDir: options.renderCacheDir, service: options.renderService });
 
   // ------------------------------------------------------------------------------------------------------------ page
   router.get('/page.js', async (_req, res) => {
