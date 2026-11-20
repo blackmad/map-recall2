@@ -118245,7 +118245,19 @@
       },
       "triangles": 11570,
       "bytes": 158272,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "80a2019dd0d4c8ac",
+        "buildVersion": 2,
+        "bytes": 55468,
+        "triangles": 2298
+      },
+      "lod2": {
+        "sourceHash": "80a2019dd0d4c8ac",
+        "buildVersion": 6,
+        "bytes": 16876,
+        "triangles": 735
+      }
     },
     "kramatplantsoen": {
       "id": "kramatplantsoen",
@@ -118559,7 +118571,19 @@
       },
       "triangles": 34476,
       "bytes": 468580,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "2734f3776f370264",
+        "buildVersion": 2,
+        "bytes": 101716,
+        "triangles": 5296
+      },
+      "lod2": {
+        "sourceHash": "2734f3776f370264",
+        "buildVersion": 6,
+        "bytes": 18352,
+        "triangles": 727
+      }
     }
   }
 }
