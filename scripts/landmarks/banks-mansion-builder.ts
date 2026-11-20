@@ -164,11 +164,10 @@ export function buildBanksMansion(_w: number, _d: number, b: BuildingTools) {
     for (const s of [-1, 1]) slab(b, f, 3.4 + s * 1.14, 0.1, 0.22, 4.0, 0.34, 'sandstone');
     slab(b, f, 3.4, 3.9, 2.5, 0.25, 0.34, 'sandstone');
     slab(b, f, 3.4, 0.1, 2.05, 3.85, 0.1, 'frame');
-    slab(b, f, 3.4, 0.15, 1.85, 3.0, 0.14, 'glass');
+    // r6 blind A/B (2026-11-20): the judge read the w237 photo's leaves as dark timber under the glazed transom, not glass
+    slab(b, f, 3.4, 0.15, 1.85, 3.0, 0.14, 'dark');
     slab(b, f, 3.4, 3.2, 1.85, 0.65, 0.14, 'glass');
-    slab(b, f, 3.4, 3.12, 1.85, 0.08, 0.18, 'frame');
-    for (const t of [2.53, 3.4, 4.27]) slab(b, f, t, 0.15, 0.12, 2.97, 0.18, 'frame');
-    slab(b, f, 3.4, 0.15, 1.85, 0.45, 0.18, 'frame');
+    slab(b, f, 3.4, 3.12, 1.85, 0.08, 0.18, 'dark');
     for (const t of [1.9, 5.0]) column(f, t, 0.6, 4.6);
     // lanterns and the BANKS letters on the two render panels
     for (const t of [0.95, 5.75]) {

@@ -221,7 +221,8 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
     const ax: [number, number] = [e.tangent[0], e.tangent[1]]; // north-ish
     // the body runs down into the blob to the water-wing roof and up clear of the north-east hip (3DBAG ridge 18.4 m): from across
     // the water the shaft and clock stand above the pavilion under a short cap (TMX7316010203-000790_pano_0000_006114, blind review)
-    const cx = -1.2, cz = 5.2, H = 2.05, y0 = 9.7, y1 = 20.3;
+    // r6 blind A/B (2026-11-20): from across the Singelgracht (w281 pairs) the shaft stood too squat; raised 1.7 m, clock with it.
+    const cx = -1.2, cz = 5.2, H = 2.05, y0 = 9.7, y1 = 22.0, dy = y1 - 20.3;
     const faces: Frame[] = [];
     for (const [nx, nz] of [[ax[0], ax[1]], [ax[1], -ax[0]], [-ax[0], -ax[1]], [-ax[1], ax[0]]] as [number, number][]) {
       const tg: [number, number] = [nz, -nx];
@@ -234,31 +235,25 @@ export function buildPolitiebureauRaampoort(_w: number, _d: number, b: BuildingT
     b.add(body, 'brick' as never);
     faces.forEach((f, k) => {
       ledgeStrip(b, f, H, 15.03, 2 * H, 0.2, 0.12, 'brick');
-      slab(b, f, H, 18.5, 2 * H, 0.2, 0.12, 'stone');
+      slab(b, f, H, 19.95, 2 * H, 0.18, 0.12, 'stone');
       corbels(f, 0.1, 2 * H - 0.1, y1 - 0.45);
-      if (k === 0) { // north face: the clock (TMX7316010203-002552_pano_0002_001693)
-        disc(b, f, H, 19.2, 0.62, 0.08, 'gold');
-        disc(b, f, H, 19.2, 0.52, 0.12, 'dark');
-        slab(b, f, H, 19.2, 0.05, 0.42, 0.16, 'gold');
-        slab(b, f, H - 0.1, 19.2, 0.3, 0.05, 0.16, 'gold');
-        ringSlab(b, f, H, 19.2, 0.62, 0.74, 0.06, 'stone');
-      } else {
-        archSlab(b, f, H - 0.45, 18.75, 0.5, 1.0, 0.08, 'dark');
-        archSlab(b, f, H + 0.45, 18.75, 0.5, 1.0, 0.08, 'dark');
-      }
+      // r6: a dial on every face and a louvred arch under it (2017 Singelgracht view TMX7316010203-000205_pano_0000_000213
+      // shows dial and louvre on the west face as on the north, TMX7316010203-002552_pano_0002_001693)
+      void k;
+      disc(b, f, H, 19.2 + dy, 0.62, 0.08, 'gold');
+      disc(b, f, H, 19.2 + dy, 0.52, 0.12, 'dark');
+      slab(b, f, H, 19.2 + dy, 0.05, 0.42, 0.16, 'gold');
+      slab(b, f, H - 0.1, 19.2 + dy, 0.3, 0.05, 0.16, 'gold');
+      ringSlab(b, f, H, 19.2 + dy, 0.62, 0.74, 0.06, 'stone');
+      archSlab(b, f, H, 18.5, 0.9, 1.35, 0.08, 'dark');
+      for (let j = 0; j < 4; j++) slab(b, f, H, 18.65 + j * 0.24, 0.8, 0.05, 0.11, 'stone');
     });
-    // short slate cap: square pyramid with an overhang, finial and weather vane (w01 thumb: tip near 22.7 m, vane to 24)
-    const top = y1 - 0.12, apex = 22.7, o = H + 0.18; // the spire's foot dips into the body so it is seated, not hovering
-    const corner = (u: number, v: number) => [cx + ax[0] * u * o + ax[1] * v * o, cz + ax[1] * u * o - ax[0] * v * o];
-    const base4 = [corner(1, 1), corner(1, -1), corner(-1, -1), corner(-1, 1)];
-    const v: number[] = [];
-    for (let k = 0; k < 4; k++) { const p = base4[k], q = base4[(k + 1) % 4]; v.push(p[0], top, p[1], q[0], top, q[1], cx, apex, cz); }
-    const g = new T.BufferGeometry();
-    g.setAttribute('position', new T.Float32BufferAttribute(v, 3));
-    g.computeVertexNormals();
-    const nx0 = g.getAttribute('normal').getX(0), nz0 = g.getAttribute('normal').getZ(0);
-    const mx = (base4[0][0] + base4[1][0]) / 2 - cx, mz = (base4[0][1] + base4[1][1]) / 2 - cz;
-    if (nx0 * mx + nz0 * mz < 0) { const a = g.getAttribute('position').array as Float32Array; for (let k = 0; k < a.length; k += 9) for (let j = 0; j < 3; j++) [a[k + 3 + j], a[k + 6 + j]] = [a[k + 6 + j], a[k + 3 + j]]; g.computeVertexNormals(); }
+    // slate spire: square pyramid with an overhang, finial and weather vane. Round r6 (2026-11-20): the camera-matched
+    // overlay of the 2022 Raampoort pano (TMX7316010203-002967_pano_0005_000107, wall 101) puts the photo's spire tip ~6 m
+    // over the shaft top (about 11 px/m at the tower), and the 2022 north view shows a steep needle, not a 2.4 m cap.
+    // The needle is octagonal (2022 north view TMX7316010203-002552_pano_0002_001693), seated on the shaft's corbel ledge.
+    const top = y1 - 0.12, apex = 26.6 + dy;
+    const g = new T.ConeGeometry(H + 0.05, apex - top, 8, 1, true).rotateY(Math.PI / 8 + Math.atan2(ax[0], ax[1])).translate(cx, top + (apex - top) / 2, cz);
     g.userData.role = 'roof';
     b.add(g, 'slate' as never);
     b.add(new T.CylinderGeometry(0.035, 0.035, 1.5, 6).translate(cx, apex + 0.7, cz), 'dark' as never);

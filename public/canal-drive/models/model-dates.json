@@ -582,8 +582,8 @@
       "dateSource": "asset-update"
     },
     "banks-mansion": {
-      "updatedAt": "2026-11-15T11:36:53.684Z",
-      "version": "d8cc19330265f9aa",
+      "updatedAt": "2026-11-20T06:26:48.728Z",
+      "version": "7bece2342c73897d",
       "dateSource": "asset-update"
     },
     "banks-mansion.lod1": {
@@ -1424,6 +1424,21 @@
     "dageraad.lod2": {
       "updatedAt": "2026-11-07T14:08:58.143Z",
       "version": "48024e8407c737c7",
+      "dateSource": "asset-update"
+    },
+    "de-ateliers": {
+      "updatedAt": "2026-11-20T06:16:11.515Z",
+      "version": "d52d59fcbd4ebc2f",
+      "dateSource": "asset-update"
+    },
+    "de-ateliers.lod1": {
+      "updatedAt": "2026-11-20T06:16:11.516Z",
+      "version": "2501570bbd552958",
+      "dateSource": "asset-update"
+    },
+    "de-ateliers.lod2": {
+      "updatedAt": "2026-11-20T06:16:11.517Z",
+      "version": "fd943170779dd7a0",
       "dateSource": "asset-update"
     },
     "de-balie": {
@@ -3166,6 +3181,11 @@
       "version": "fc73e2d70b09f453",
       "dateSource": "asset-update"
     },
+    "houthavenkade-26": {
+      "updatedAt": "2026-11-20T06:41:58.606Z",
+      "version": "27b870dee8dfeae6",
+      "dateSource": "asset-update"
+    },
     "huis-aan-drie-grachten": {
       "updatedAt": "2026-10-20T10:12:58.154Z",
       "version": "dc4023c9be22b568",
@@ -4797,13 +4817,13 @@
       "dateSource": "asset-update"
     },
     "oba-spaarndammerbuurt.lod1": {
-      "updatedAt": "2026-11-14T04:50:28.234Z",
-      "version": "e5a1f30e21990e6a",
+      "updatedAt": "2026-11-20T06:15:54.635Z",
+      "version": "c990521bc0be24d3",
       "dateSource": "asset-update"
     },
     "oba-spaarndammerbuurt.lod2": {
-      "updatedAt": "2026-11-14T04:50:34.649Z",
-      "version": "b1a9a716b2669c15",
+      "updatedAt": "2026-11-20T06:15:54.636Z",
+      "version": "bcd88ab7d39e0d7f",
       "dateSource": "asset-update"
     },
     "oba-staatsliedenbuurt": {
@@ -5191,6 +5211,21 @@
       "version": "ccba08f4dcd5c7a7",
       "dateSource": "asset-update"
     },
+    "park-centraal-stadhouderskade": {
+      "updatedAt": "2026-11-20T06:16:11.518Z",
+      "version": "522dd78c0786eaae",
+      "dateSource": "asset-update"
+    },
+    "park-centraal-stadhouderskade.lod1": {
+      "updatedAt": "2026-11-20T06:16:11.520Z",
+      "version": "962ab58d6985fbed",
+      "dateSource": "asset-update"
+    },
+    "park-centraal-stadhouderskade.lod2": {
+      "updatedAt": "2026-11-20T06:16:11.520Z",
+      "version": "8eed0fb034cb97b9",
+      "dateSource": "asset-update"
+    },
     "pathe-city": {
       "updatedAt": "2026-10-20T10:12:04.614Z",
       "version": "7722dbfe0633ea77",
@@ -5377,8 +5412,8 @@
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort": {
-      "updatedAt": "2026-11-15T11:36:53.564Z",
-      "version": "04f473be95f21701",
+      "updatedAt": "2026-11-20T06:26:15.441Z",
+      "version": "e3ea98ba0cd335d1",
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort.lod1": {
@@ -5722,18 +5757,18 @@
       "dateSource": "asset-update"
     },
     "room-mate-aitana": {
-      "updatedAt": "2026-11-16T02:39:54.408Z",
-      "version": "4c7a46296c749727",
+      "updatedAt": "2026-11-20T06:16:11.522Z",
+      "version": "3d1249a24a77dfed",
       "dateSource": "asset-update"
     },
     "room-mate-aitana.lod1": {
-      "updatedAt": "2026-11-16T07:27:46.303Z",
-      "version": "81706e0f97d33b78",
+      "updatedAt": "2026-11-20T06:16:11.522Z",
+      "version": "e98601a81060ccb5",
       "dateSource": "asset-update"
     },
     "room-mate-aitana.lod2": {
-      "updatedAt": "2026-11-16T07:27:46.303Z",
-      "version": "584bb265346d11f8",
+      "updatedAt": "2026-11-20T06:16:11.522Z",
+      "version": "d51ee9f11bfb462d",
       "dateSource": "asset-update"
     },
     "royal-theater-carre": {
@@ -5874,6 +5909,16 @@
     "schutterstoren": {
       "updatedAt": "2026-11-19T17:59:34.386Z",
       "version": "a7c4ec9611797317",
+      "dateSource": "asset-update"
+    },
+    "schutterstoren.lod1": {
+      "updatedAt": "2026-11-20T06:15:55.112Z",
+      "version": "308f0be4472422da",
+      "dateSource": "asset-update"
+    },
+    "schutterstoren.lod2": {
+      "updatedAt": "2026-11-20T06:15:55.112Z",
+      "version": "d52949b632e3e973",
       "dateSource": "asset-update"
     },
     "sea-palace": {

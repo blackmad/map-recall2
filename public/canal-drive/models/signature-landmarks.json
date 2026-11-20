@@ -105190,7 +105190,7 @@
       },
       "bagYear": 1888,
       "materialOverrides": {
-        "brick": "#64403a",
+        "brick": "#5d3e3b",
         "greyBrick": "#3e3638",
         "stone": "#cdc6b6",
         "frame": "#ece8de",
@@ -105380,7 +105380,7 @@
         ],
         "max": [
           9.077255249023438,
-          24.149999618530273,
+          29.75,
           21.581823348999023
         ]
       },
@@ -105396,24 +105396,18 @@
       },
       "extent": {
         "widthMetres": 26.43127727508545,
-        "heightMetres": 24.1499996304512,
+        "heightMetres": 29.75000001192093,
         "depthMetres": 18.972207069396973,
         "depthCoverage": 1.0255247064538904
       },
-      "triangles": 27395,
-      "bytes": 341572,
+      "triangles": 29007,
+      "bytes": 356128,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "04f473be95f21701",
         "buildVersion": 2,
         "bytes": 89768,
         "triangles": 4264
-      },
-      "lod2": {
-        "sourceHash": "04f473be95f21701",
-        "buildVersion": 6,
-        "bytes": 16012,
-        "triangles": 546
       }
     },
     "banks-mansion": {
@@ -105544,20 +105538,14 @@
         "depthMetres": 27.437297821044922,
         "depthCoverage": 1.0237797694419746
       },
-      "triangles": 16330,
-      "bytes": 244488,
+      "triangles": 16366,
+      "bytes": 244948,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "d8cc19330265f9aa",
         "buildVersion": 2,
         "bytes": 64456,
         "triangles": 2908
-      },
-      "lod2": {
-        "sourceHash": "d8cc19330265f9aa",
-        "buildVersion": 6,
-        "bytes": 9036,
-        "triangles": 325
       }
     },
     "schiller-rembrandtplein": {
@@ -105982,8 +105970,7 @@
       },
       "triangles": 7600,
       "bytes": 110072,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "de-jaren": {
       "id": "de-jaren",
@@ -106145,8 +106132,7 @@
       },
       "triangles": 6440,
       "bytes": 97868,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "handelsbank-singel-250": {
       "id": "handelsbank-singel-250",
@@ -106455,8 +106441,7 @@
       },
       "triangles": 16756,
       "bytes": 252360,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "holland-casino-amsterdam": {
       "id": "holland-casino-amsterdam",
@@ -107469,8 +107454,7 @@
       },
       "triangles": 6346,
       "bytes": 96044,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "port-van-cleve": {
       "id": "port-van-cleve",
@@ -113699,6 +113683,952 @@
         "bytes": 6840,
         "triangles": 212
       }
+    },
+    "houthavenkade-26": {
+      "id": "houthavenkade-26",
+      "status": "held",
+      "heldReason": "Blind photo-pair review 2026-11-20 (lane landmarks-r6): FAIL. The gate building (the block signature) reads as a narrow black door between glazed bays: the 3DBAG/BAG ring gives it a sawtooth plan, so the floor bands break into staggered ledges, where the photo (w06-320, w07-140) shows a flat face with continuous white bands over a full-width two-storey passage on slender columns; the shell would have to be cut for the passage. Also: the Houthavenkade townhouse roof frames are flat-topped portals with a brace, not sawtooth triangles; the Haparandaweg erker stacks read as unbroken glass strips; a stray grey fascia band on the west red block. Colour families sit in the right places.",
+      "name": "Houthavenkade 26 block, Houthavens",
+      "modelUrl": "./models/houthavenkade-26.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012247232"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87636067,
+          52.39432846
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 70.4,
+        "widthMetres": 90.2
+      },
+      "surveyed": {
+        "anchor": [
+          4.87636067,
+          52.39432846
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012247232 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/houthavenkade-26-footprints.json, bag-shell-prepare.ts); fronts read from rectified Gemeente Amsterdam panoramas 2025_09_29_07_54_42_00183 (2025, Haparandaweg), recording_2024-10-22_07-40-29_00769 (2024, west front), TMX7316010203-001596_pano_0001_000109 (2020, Houthavenkade), recording_2024-10-09_07-28-34_00531 (2024) and TMX7316010203-001875_pano_0003_001677 (2020, the gate building), CC BY 4.0. Per wall in scripts/landmarks/houthavenkade-26-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 28.8,
+      "galleryView": {
+        "theta": 0.6,
+        "phi": 1.1
+      },
+      "bagYear": 2018,
+      "materialOverrides": {
+        "ochre": "#b07a45",
+        "brick": "#4e3633",
+        "red": "#7a4639",
+        "greyBrick": "#5d5c60",
+        "stone": "#4a4645",
+        "concrete": "#8d8f91",
+        "sandstone": "#e6e6e2",
+        "white": "#eeeeea",
+        "frame": "#8a8c8a",
+        "glass": "#3f4a52",
+        "canopyGlass": "#9fb0b6",
+        "dark": "#26292c"
+      },
+      "attribution": {
+        "title": "Houthavenkade 26 block, Houthavens, Amsterdam (2018)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00183/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012247232 (CC0): the orange and dark brick Haparandaweg blocks with their glazed erker stacks, the west tower, the blue-grey erker range and the red brick corner block, the Houthavenkade balcony block, the grey townhouses with open sawtooth roof frames and the dark townhouses, and the gate building over its passage, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8766718,
+              52.3942603
+            ],
+            [
+              4.8766141,
+              52.394302
+            ],
+            [
+              4.8766071,
+              52.394307
+            ],
+            [
+              4.8766486,
+              52.3943285
+            ],
+            [
+              4.8766348,
+              52.3943384
+            ],
+            [
+              4.8766662,
+              52.3943547
+            ],
+            [
+              4.8766799,
+              52.3943448
+            ],
+            [
+              4.8767802,
+              52.3943968
+            ],
+            [
+              4.8767665,
+              52.3944067
+            ],
+            [
+              4.8768029,
+              52.3944256
+            ],
+            [
+              4.8768167,
+              52.3944156
+            ],
+            [
+              4.8768588,
+              52.3944375
+            ],
+            [
+              4.8768548,
+              52.3944403
+            ],
+            [
+              4.8768875,
+              52.394457
+            ],
+            [
+              4.8768316,
+              52.3944968
+            ],
+            [
+              4.8767989,
+              52.3944801
+            ],
+            [
+              4.8767389,
+              52.3945235
+            ],
+            [
+              4.8766972,
+              52.3945019
+            ],
+            [
+              4.8767115,
+              52.3944916
+            ],
+            [
+              4.8766756,
+              52.394473
+            ],
+            [
+              4.8766614,
+              52.3944833
+            ],
+            [
+              4.8765606,
+              52.3944309
+            ],
+            [
+              4.8765748,
+              52.3944206
+            ],
+            [
+              4.876539,
+              52.394402
+            ],
+            [
+              4.8765247,
+              52.3944123
+            ],
+            [
+              4.8764877,
+              52.3943931
+            ],
+            [
+              4.8764851,
+              52.3943949
+            ],
+            [
+              4.8760372,
+              52.3944016
+            ],
+            [
+              4.8755883,
+              52.3944083
+            ],
+            [
+              4.8755865,
+              52.3943601
+            ],
+            [
+              4.8755882,
+              52.3943601
+            ],
+            [
+              4.8755881,
+              52.3943597
+            ],
+            [
+              4.8756265,
+              52.3943591
+            ],
+            [
+              4.8756247,
+              52.3943059
+            ],
+            [
+              4.8755864,
+              52.3943065
+            ],
+            [
+              4.8755864,
+              52.3943062
+            ],
+            [
+              4.8755846,
+              52.3943062
+            ],
+            [
+              4.8755823,
+              52.3942468
+            ],
+            [
+              4.8755776,
+              52.3941252
+            ],
+            [
+              4.8755688,
+              52.3939025
+            ],
+            [
+              4.8758993,
+              52.3938975
+            ],
+            [
+              4.8762298,
+              52.3938926
+            ],
+            [
+              4.876441,
+              52.3938896
+            ],
+            [
+              4.8768742,
+              52.3941141
+            ],
+            [
+              4.8767651,
+              52.3941929
+            ],
+            [
+              4.876679,
+              52.394255
+            ],
+            [
+              4.8766718,
+              52.3942603
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -54.33086395263672,
+          0,
+          -21.970626831054688
+        ],
+        "max": [
+          36.35528564453125,
+          29.77199935913086,
+          49.05702590942383
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87636067,
+          52.39432846
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 90.68614959716797,
+        "heightMetres": 29.77199935913086,
+        "depthMetres": 71.02765274047852,
+        "depthCoverage": 0.7874462609809147
+      },
+      "triangles": 15449,
+      "bytes": 228656,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
+    },
+    "park-centraal-stadhouderskade": {
+      "id": "park-centraal-stadhouderskade",
+      "name": "Park Centraal and MOMO, Stadhouderskade 25",
+      "modelUrl": "./models/park-centraal-stadhouderskade.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012233471"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88301102,
+          52.36133511
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 55.6,
+        "widthMetres": 78.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.88301102,
+          52.36133511
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012233471 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/park-centraal-stadhouderskade-footprints.json, bag-shell-prepare.ts); fronts read from rectified Gemeente Amsterdam panoramas TMX7316010203-001675_pano_0000_002449 (2020, hotel), TMX7316010203-002548_pano_0000_000344 (2022) and b_20241211_0838_Track07_Sphere_00080 (2024, MOMO corner), TMX7316010203-002920_pano_0000_000143 (2023, Hobbemastraat range), CC BY 4.0. Per wall in scripts/landmarks/park-centraal-stadhouderskade-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 28.8,
+      "galleryView": {
+        "theta": -2.6,
+        "phi": 1.2
+      },
+      "bagYear": 1930,
+      "materialOverrides": {
+        "greyBrick": "#48484e",
+        "brick": "#7e5646",
+        "white": "#e6e3d6",
+        "slate": "#5f626a",
+        "copper": "#8fb3a2",
+        "concrete": "#4b4844",
+        "canopyGlass": "#8fa3a7",
+        "glass": "#4d5860",
+        "dark": "#2b2d30",
+        "frame": "#a3abad",
+        "stone": "#7d776d",
+        "red": "#504b4f",
+        "ochre": "#8e4f40",
+        "gold": "#c9a54a",
+        "sandstone": "#e3e0d3",
+        "bronze": "#2e3033"
+      },
+      "attribution": {
+        "title": "Park Centraal hotel and the MOMO corner, Stadhouderskade 25, Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002548_pano_0000_000344/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012233471 (CC0): the hotel's concrete balcony grid and canopy, the neo-Renaissance MOMO corner with its arched windows, white dressings, dormers and copper-domed tower, and the Hobbemastraat balcony range, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8832933,
+              52.3615823
+            ],
+            [
+              4.882898,
+              52.3615854
+            ],
+            [
+              4.8828359,
+              52.361586
+            ],
+            [
+              4.8828358,
+              52.3615797
+            ],
+            [
+              4.8825382,
+              52.3615811
+            ],
+            [
+              4.8825382,
+              52.3615774
+            ],
+            [
+              4.8825353,
+              52.3615775
+            ],
+            [
+              4.8825057,
+              52.3615877
+            ],
+            [
+              4.8824721,
+              52.3615833
+            ],
+            [
+              4.8824531,
+              52.3615659
+            ],
+            [
+              4.8824597,
+              52.3615452
+            ],
+            [
+              4.8824857,
+              52.3615342
+            ],
+            [
+              4.882488,
+              52.3615311
+            ],
+            [
+              4.8824823,
+              52.3615295
+            ],
+            [
+              4.8825846,
+              52.3613909
+            ],
+            [
+              4.8825739,
+              52.3613881
+            ],
+            [
+              4.8827906,
+              52.3610896
+            ],
+            [
+              4.8828779,
+              52.3611129
+            ],
+            [
+              4.8828829,
+              52.361106
+            ],
+            [
+              4.8829132,
+              52.3611144
+            ],
+            [
+              4.8829061,
+              52.3611243
+            ],
+            [
+              4.8829452,
+              52.361135
+            ],
+            [
+              4.8829484,
+              52.3611307
+            ],
+            [
+              4.8829653,
+              52.3611354
+            ],
+            [
+              4.8829642,
+              52.3611368
+            ],
+            [
+              4.8831201,
+              52.3611803
+            ],
+            [
+              4.8831295,
+              52.3611671
+            ],
+            [
+              4.8831567,
+              52.3611743
+            ],
+            [
+              4.8832179,
+              52.3611907
+            ],
+            [
+              4.8832209,
+              52.3611865
+            ],
+            [
+              4.8832405,
+              52.3611917
+            ],
+            [
+              4.8832425,
+              52.3611889
+            ],
+            [
+              4.8832503,
+              52.361191
+            ],
+            [
+              4.8832814,
+              52.3611994
+            ],
+            [
+              4.8833144,
+              52.3612081
+            ],
+            [
+              4.8833431,
+              52.3612157
+            ],
+            [
+              4.8834332,
+              52.3612397
+            ],
+            [
+              4.8835267,
+              52.3612646
+            ],
+            [
+              4.8836119,
+              52.3612872
+            ],
+            [
+              4.883599,
+              52.3613058
+            ],
+            [
+              4.8835741,
+              52.3613414
+            ],
+            [
+              4.8835606,
+              52.3613608
+            ],
+            [
+              4.8834864,
+              52.3613414
+            ],
+            [
+              4.8834094,
+              52.3613214
+            ],
+            [
+              4.8833124,
+              52.361466
+            ],
+            [
+              4.8833023,
+              52.3615824
+            ],
+            [
+              4.8832933,
+              52.3615823
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -38.208953857421875,
+          -9.536743306171047e-8,
+          -28.78737449645996
+        ],
+        "max": [
+          40.89400100708008,
+          29.635000228881836,
+          27.5678768157959
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88301102,
+          52.36133511
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 79.10295486450195,
+        "heightMetres": 29.63500032424927,
+        "depthMetres": 56.35525131225586,
+        "depthCoverage": 0.7160768908799982
+      },
+      "triangles": 30272,
+      "bytes": 394296,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "de-ateliers": {
+      "id": "de-ateliers",
+      "name": "De Ateliers (former Quellinusschool), Stadhouderskade 86",
+      "modelUrl": "./models/de-ateliers.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012119240"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89466575,
+          52.35767395
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 40.6,
+        "widthMetres": 62.2
+      },
+      "surveyed": {
+        "anchor": [
+          4.89466575,
+          52.35767395
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012119240 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/de-ateliers-footprints.json, bag-shell-prepare.ts); fronts read from rectified Gemeente Amsterdam panoramas recording_2024-09-04_05-35-54_03349 (2024), recording_2025-07-14_06-43-08_00935 (2025), TMX7316010203-002548_pano_0000_000152 (2022) and TMX7316010203-001674_pano_0000_003199 (2020), CC BY 4.0. Per wall in scripts/landmarks/de-ateliers-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 20.9,
+      "galleryView": {
+        "theta": 3,
+        "phi": 1.2
+      },
+      "bagYear": 1883,
+      "materialOverrides": {
+        "brick": "#7a5f51",
+        "red": "#71574a",
+        "white": "#e9e6dc",
+        "sandstone": "#e4e1d6",
+        "stone": "#93948f",
+        "slate": "#5d6168",
+        "glass": "#4d5860",
+        "dark": "#2c3033",
+        "gold": "#c9a54a",
+        "bronze": "#2c3033"
+      },
+      "attribution": {
+        "title": "De Ateliers (former Quellinusschool, 1883), Stadhouderskade 86, Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-04_05-35-54_03349/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012119240 (CC0): the six tall bays with white-framed windows, relief aprons and scrolled hoods, the stone entablature, the garland frieze and cornice, the pavilions with ball finials and the entrance range, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8946492,
+              52.3577124
+            ],
+            [
+              4.8946378,
+              52.3577131
+            ],
+            [
+              4.8946383,
+              52.3577158
+            ],
+            [
+              4.8946222,
+              52.3577167
+            ],
+            [
+              4.8946218,
+              52.357714
+            ],
+            [
+              4.8945997,
+              52.3577152
+            ],
+            [
+              4.8946001,
+              52.357718
+            ],
+            [
+              4.8945825,
+              52.3577189
+            ],
+            [
+              4.8945821,
+              52.3577162
+            ],
+            [
+              4.8945775,
+              52.3577165
+            ],
+            [
+              4.8945759,
+              52.3577055
+            ],
+            [
+              4.894581,
+              52.3577052
+            ],
+            [
+              4.8945805,
+              52.3577019
+            ],
+            [
+              4.8945755,
+              52.3577022
+            ],
+            [
+              4.8945749,
+              52.3576988
+            ],
+            [
+              4.8944754,
+              52.3577045
+            ],
+            [
+              4.8944759,
+              52.357708
+            ],
+            [
+              4.8944584,
+              52.357709
+            ],
+            [
+              4.8944578,
+              52.3577055
+            ],
+            [
+              4.8943576,
+              52.3577112
+            ],
+            [
+              4.8943582,
+              52.3577148
+            ],
+            [
+              4.8943538,
+              52.357715
+            ],
+            [
+              4.8943542,
+              52.3577177
+            ],
+            [
+              4.8943366,
+              52.3577187
+            ],
+            [
+              4.8943362,
+              52.357716
+            ],
+            [
+              4.8942361,
+              52.3577217
+            ],
+            [
+              4.8942365,
+              52.3577244
+            ],
+            [
+              4.894219,
+              52.3577254
+            ],
+            [
+              4.8942186,
+              52.3577227
+            ],
+            [
+              4.894214,
+              52.357723
+            ],
+            [
+              4.8942135,
+              52.3577186
+            ],
+            [
+              4.8941886,
+              52.3575136
+            ],
+            [
+              4.8943335,
+              52.3575058
+            ],
+            [
+              4.8943176,
+              52.357395
+            ],
+            [
+              4.894907,
+              52.3573633
+            ],
+            [
+              4.894923,
+              52.3574742
+            ],
+            [
+              4.8950468,
+              52.3574675
+            ],
+            [
+              4.8950557,
+              52.3574671
+            ],
+            [
+              4.8950563,
+              52.3574696
+            ],
+            [
+              4.8951001,
+              52.3576712
+            ],
+            [
+              4.8951003,
+              52.3576723
+            ],
+            [
+              4.8950959,
+              52.3576726
+            ],
+            [
+              4.8950964,
+              52.3576752
+            ],
+            [
+              4.8950788,
+              52.3576763
+            ],
+            [
+              4.8950783,
+              52.3576731
+            ],
+            [
+              4.8949781,
+              52.3576789
+            ],
+            [
+              4.8949786,
+              52.357682
+            ],
+            [
+              4.894961,
+              52.357683
+            ],
+            [
+              4.8949605,
+              52.3576799
+            ],
+            [
+              4.8949562,
+              52.3576801
+            ],
+            [
+              4.8949557,
+              52.357677
+            ],
+            [
+              4.8948553,
+              52.3576827
+            ],
+            [
+              4.8948558,
+              52.3576859
+            ],
+            [
+              4.8948382,
+              52.3576869
+            ],
+            [
+              4.8948378,
+              52.3576837
+            ],
+            [
+              4.8947373,
+              52.3576895
+            ],
+            [
+              4.8947378,
+              52.3576929
+            ],
+            [
+              4.8947327,
+              52.3576932
+            ],
+            [
+              4.8947332,
+              52.3576965
+            ],
+            [
+              4.8947383,
+              52.3576962
+            ],
+            [
+              4.89474,
+              52.3577072
+            ],
+            [
+              4.8947356,
+              52.3577075
+            ],
+            [
+              4.894736,
+              52.3577102
+            ],
+            [
+              4.8947185,
+              52.3577112
+            ],
+            [
+              4.8947181,
+              52.3577085
+            ],
+            [
+              4.894696,
+              52.3577097
+            ],
+            [
+              4.8946964,
+              52.3577125
+            ],
+            [
+              4.8946804,
+              52.3577134
+            ],
+            [
+              4.8946799,
+              52.3577107
+            ],
+            [
+              4.8946492,
+              52.3577124
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -33.16672897338867,
+          -2.3841858265427618e-8,
+          -6.473476886749268
+        ],
+        "max": [
+          30.137598037719727,
+          20.763999938964844,
+          34.67499923706055
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89466575,
+          52.35767395
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 63.3043270111084,
+        "heightMetres": 20.7639999628067,
+        "depthMetres": 41.148476123809814,
+        "depthCoverage": 0.661551063083759
+      },
+      "triangles": 12339,
+      "bytes": 168048,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

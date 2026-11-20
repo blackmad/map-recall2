@@ -1,0 +1,479 @@
+{
+ "schemaVersion": 1,
+ "id": "park-centraal-stadhouderskade",
+ "pand": "0363100012233471",
+ "brief": "scripts/landmarks/park-centraal-stadhouderskade-brief.md",
+ "signature": [
+  "momo-arched-windows",
+  "momo-corner-dome",
+  "hotel-frame-grid",
+  "momo-awnings",
+  "momo-dormers",
+  "hobbema-balcony-stacks"
+ ],
+ "walls": [
+  {
+   "tag": "w01-246",
+   "bearing": 246,
+   "lengthM": 36.3,
+   "centre": [
+    4.882685,
+    52.361241
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002920_pano_0000_000143",
+   "capturedAt": "2023-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "hobbema-balcony-stacks",
+     "kind": "balcony-ironwork",
+     "where": "five stacks of cantilevered concrete balconies with iron rails and a white fin, paired French doors",
+     "approxSizeM": [
+      4,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002920_pano_0000_000143"
+    },
+    {
+     "id": "hobbema-stone-plinth",
+     "kind": "other",
+     "where": "grey stone shop plinth with shopfronts and sign boards",
+     "approxSizeM": [
+      36,
+      4.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002920_pano_0000_000143",
+     "how": "stone panels round the openings, a ledge"
+    },
+    {
+     "id": "hobbema-sill-bands",
+     "kind": "other",
+     "where": "thin white sill bands across the dark brick",
+     "approxSizeM": [
+      36,
+      0.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002920_pano_0000_000143"
+    },
+    {
+     "id": "hobbema-overhang-roof",
+     "kind": "other",
+     "where": "overhanging flat roof over an attic window row",
+     "approxSizeM": [
+      31,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002920_pano_0000_000143"
+    },
+    {
+     "id": "hobbema-shop-signs",
+     "kind": "sign",
+     "where": "PC BAGS, POV GALLERY and ROMEO shop signs",
+     "approxSizeM": [
+      5,
+      0.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002920_pano_0000_000143",
+     "how": "plain sign boards without lettering (shop signage changes)"
+    },
+    {
+     "id": "hobbema-flag",
+     "kind": "other",
+     "where": "flagpole and flag on the roof",
+     "approxSizeM": [
+      1,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002920_pano_0000_000143",
+     "skip": {
+      "reason": "temporary",
+      "note": "flag"
+     }
+    },
+    {
+     "id": "hobbema-downpipes",
+     "kind": "other",
+     "where": "dark downpipes between the bays",
+     "approxSizeM": [
+      0.1,
+      17
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002920_pano_0000_000143",
+     "skip": {
+      "reason": "too-small",
+      "note": "10 cm pipes"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-1",
+   "bearing": 1,
+   "lengthM": 31.1,
+   "centre": [
+    4.8830675,
+    52.361586
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001675_pano_0000_002449",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "hotel-frame-grid",
+     "kind": "other",
+     "where": "Park Centraal front: dark concrete frame, seven 3.5 m bays and a narrow end bay, five balcony rows recessed 1.3 m",
+     "approxSizeM": [
+      26.9,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001675_pano_0000_002449",
+     "how": "piers and floor slabs on a recessed pale curtained back wall with white frames (edge 0 shell wall replaced)"
+    },
+    {
+     "id": "hotel-glass-rails",
+     "kind": "balcony-ironwork",
+     "where": "glass balcony rails with a rust-red handrail in every bay, five rows",
+     "approxSizeM": [
+      26,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001675_pano_0000_002449",
+     "how": "canopyGlass panels 0.3 m inside the frame front, ochre handrail"
+    },
+    {
+     "id": "hotel-canopy",
+     "kind": "canopy",
+     "where": "deep dark canopy fascia over the recessed glazed ground floor and the car entrance",
+     "approxSizeM": [
+      25,
+      1.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001675_pano_0000_002449",
+     "how": "2.2 m deep fascia 3.85-5.2 m; dark entrance bay and glazed lobby behind"
+    },
+    {
+     "id": "park-centraal-lettering",
+     "kind": "lettering",
+     "where": "gold serif \"Park Centraal\" in two lines centred on the fascia",
+     "approxSizeM": [
+      2.4,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001675_pano_0000_002449",
+     "how": "5x7 capitals PARK / CENTRAAL in gold (approximate font match: the real letters are a mixed-case serif)"
+    },
+    {
+     "id": "hotel-top-storey",
+     "kind": "other",
+     "where": "glazed set-back top storey behind a glass terrace rail, seven dark boxes on its roof",
+     "approxSizeM": [
+      25,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001675_pano_0000_002449",
+     "how": "shell set-back walls in the pale glazing colour, glass rail on the roof edge, seven dark boxes"
+    },
+    {
+     "id": "hotel-light-ball",
+     "kind": "sculpture",
+     "where": "a dark sphere/lamp hanging in front of the top storey in the 2020 view",
+     "approxSizeM": [
+      1.2,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001675_pano_0000_002449",
+     "skip": {
+      "reason": "temporary",
+      "note": "absent from the 2025 view (recording_2025-07-14_06-43-08_00744)"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-157",
+   "bearing": 157,
+   "lengthM": 27.5,
+   "centre": [
+    4.88343,
+    52.36124
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track10_Sphere_00016",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [],
+   "note": "This pand wall is 5.9-6.9 m tall in the 3DBAG and stands behind the P.C. Hooftstraat / east-side houses; the crop shows those neighbours, not this pand. Plain shell."
+  },
+  {
+   "tag": "w04-1",
+   "bearing": 1,
+   "lengthM": 20.3,
+   "centre": [
+    4.88269,
+    52.3615825
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002548_pano_0000_000344",
+   "capturedAt": "2022-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "momo-arched-windows",
+     "kind": "window-shape",
+     "where": "first floor: arched French windows with white voussoir rings and keystones, fanlights",
+     "approxSizeM": [
+      2.6,
+      4.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002548_pano_0000_000344",
+     "how": "archSlab glass, archBand white ring, keystone, mullion and impost transom"
+    },
+    {
+     "id": "momo-iron-balconies",
+     "kind": "balcony-ironwork",
+     "where": "an iron balcony on a cream slab under every arched window",
+     "approxSizeM": [
+      2.6,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002548_pano_0000_000344",
+     "how": "dark top/bottom rails and balusters on a white slab"
+    },
+    {
+     "id": "momo-second-floor",
+     "kind": "window-shape",
+     "where": "second floor alternating flat-hooded wide windows and round-headed narrow ones in white surrounds with aprons",
+     "approxSizeM": [
+      2.6,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002548_pano_0000_000344"
+    },
+    {
+     "id": "momo-rustication",
+     "kind": "other",
+     "where": "rusticated white pilaster blocks between the second-floor windows",
+     "approxSizeM": [
+      0.5,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002548_pano_0000_000344",
+     "how": "alternating white blocks every 0.45 m"
+    },
+    {
+     "id": "momo-frieze-cornice",
+     "kind": "other",
+     "where": "console frieze and white cornice under the mansard",
+     "approxSizeM": [
+      20,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002548_pano_0000_000344"
+    },
+    {
+     "id": "momo-dormers",
+     "kind": "other",
+     "where": "white pedimented dormers on the slate mansard, every second bay",
+     "approxSizeM": [
+      1.9,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002548_pano_0000_000344",
+     "how": "dormer box behind the cornice, window, triangular pediment"
+    },
+    {
+     "id": "momo-awnings",
+     "kind": "sign",
+     "where": "black awning boxes lettered MOMO in white over every shop window",
+     "approxSizeM": [
+      2.3,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002548_pano_0000_000344",
+     "how": "dark box and flap, MOMO in 5x7 capitals"
+    },
+    {
+     "id": "momo-ground-brick",
+     "kind": "other",
+     "where": "red-brown brick ground storey with a band of white stone blocks and grey stone pedestals",
+     "approxSizeM": [
+      20,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002548_pano_0000_000344"
+    },
+    {
+     "id": "momo-lamps",
+     "kind": "lamp",
+     "where": "small wall lamps between the arched windows",
+     "approxSizeM": [
+      0.2,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002548_pano_0000_000344",
+     "skip": {
+      "reason": "too-small",
+      "note": "fittings under 0.3 m"
+     }
+    },
+    {
+     "id": "momo-corner-dome",
+     "kind": "dome",
+     "where": "green copper dome with a lantern on the round corner tower",
+     "approxSizeM": [
+      6,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002548_pano_0000_000344",
+     "how": "turned copper dome r 2.8 m on a white ring at 24.3 m, lantern and cap to 28.8 m"
+    }
+   ]
+  },
+  {
+   "tag": "w05-68",
+   "bearing": 68,
+   "lengthM": 17.4,
+   "centre": [
+    4.8833635,
+    52.3613955
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241121_0951_Track22_Sphere_00769",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "items": [],
+   "note": "This pand wall is 5.9-6.9 m tall in the 3DBAG and stands behind the P.C. Hooftstraat / east-side houses; the crop shows those neighbours, not this pand. Plain shell."
+  },
+  {
+   "tag": "w06-246",
+   "bearing": 246,
+   "lengthM": 17,
+   "centre": [
+    4.882536,
+    52.3614625
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track07_Sphere_00080",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "momo-hobbema-front",
+     "kind": "other",
+     "where": "the MOMO system continued on the Hobbemastraat: five arched bays, balconies, alternating second-floor windows, a dormer",
+     "approxSizeM": [
+      17,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track07_Sphere_00080",
+     "how": "same builder function as the Stadhouderskade front; the shell carries the second dormer"
+    },
+    {
+     "id": "corner-tower",
+     "kind": "tower",
+     "where": "round corner tower, dark brick with white bands and a window per storey, rising above the cornice",
+     "approxSizeM": [
+      6,
+      24
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track07_Sphere_00080",
+     "how": "ledge, bands and windows on its five shell facets, dome on top"
+    }
+   ]
+  },
+  {
+   "tag": "w07-156",
+   "bearing": 156,
+   "lengthM": 11.7,
+   "centre": [
+    4.883045,
+    52.3611605
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track10_Sphere_00021",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [],
+   "note": "This pand wall is 5.9-6.9 m tall in the 3DBAG and stands behind the P.C. Hooftstraat / east-side houses; the crop shows those neighbours, not this pand. Plain shell."
+  },
+  {
+   "tag": "w08-337",
+   "bearing": 337,
+   "lengthM": 11.2,
+   "centre": [
+    4.8834875,
+    52.361343
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_06-43-08_00749",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [],
+   "note": "This pand wall is 5.9-6.9 m tall in the 3DBAG and stands behind the P.C. Hooftstraat / east-side houses; the crop shows those neighbours, not this pand. Plain shell."
+  },
+  {
+   "tag": "w09-67",
+   "bearing": 67,
+   "lengthM": 9,
+   "centre": [
+    4.883589,
+    52.361326
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_06-43-08_00757",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [],
+   "note": "This pand wall is 5.9-6.9 m tall in the 3DBAG and stands behind the P.C. Hooftstraat / east-side houses; the crop shows those neighbours, not this pand. Plain shell."
+  },
+  {
+   "tag": "w10-157",
+   "bearing": 157,
+   "lengthM": 6.6,
+   "centre": [
+    4.8831765,
+    52.361181
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002117_pano_0000_001377",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "items": [],
+   "note": "This pand wall is 5.9-6.9 m tall in the 3DBAG and stands behind the P.C. Hooftstraat / east-side houses; the crop shows those neighbours, not this pand. Plain shell."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
