@@ -500,6 +500,9 @@ export type RetailFrontInput = {
   /** Round 4 (`?retailParts=1`): a per-pand frame colour read on a photo (data/retail-ground/front-overrides.json, with
    *  its receipt): the posts, mullions, transom and riser in place of the template's surround; the board keeps its own. */
   frameHex?: string;
+  /** Lane retail-fit (item 4): the host's ground storey is a register-named historic pui (retailFit/historicPui.ts): the
+   *  template draws no fascia box; its name goes on the pui's own flush sign band. Absent: unchanged. */
+  host?: 'historic-pui';
 };
 
 /** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
@@ -667,7 +670,9 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   // and the board's ends, the cap and bead their front and underside.
   const board = input.paint && !input.logo ? input.paint : look.fascia, cap = input.paint && !input.logo ? shadeHex(input.paint, 0.85) : look.cap ?? shadeHex(look.fascia, 0.72);
   const ink = input.paint && !input.logo ? (hexLuma(input.paint) > 0.35 ? '#2b2724' : '#f4f1ea') : look.letters;
-  const onWall = look.mount === 'wall', wallHex = input.wallHex ?? '#cfc6b4';
+  // Lane retail-fit (item 4): a register-pui monument (input.host) keeps its pui: no projecting board or cap, the name on
+  // the pui's own flush sign band painted in its frame colour (retailFit/historicPui.ts; hosts.ts 'historic-pui').
+  const pui = input.host === 'historic-pui', onWall = look.mount === 'wall' || pui, wallHex = pui ? frame : input.wallHex ?? '#cfc6b4';
   if (onWall) {
     // Round 7: no board; the wall itself (its colour over whatever the ground cell painted there) carries the letters.
     b.panel(s0, s1, 0.006, bottom, top, wallHex);

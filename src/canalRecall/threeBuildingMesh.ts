@@ -44,6 +44,7 @@ import type { KitPartGeometry } from './landmarkKits.js';
 import type { ChainLook } from './shopfronts.js';
 import type { RetailTemplate } from './retailTemplates.js';
 import { retailFrontTris, retailDoor, retailWindowBays, doorHead, groundFloorFrontTris, FRONT as RETAIL_FRONT } from './retailFront.js';
+import { historicPuiHost } from './retailFit/historicPui.js';
 import { shopInteriorsOn } from './shopProps/flags.js';
 import { roomTemplate } from './shopProps/interiors.js';
 import type { GroundFloorDraw } from './groundFloor/types.js';
@@ -540,7 +541,7 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   // has one.
   const shopCell = b.layers && b.layers.ground < BAY_LAYER_COUNT && (SHOP_KINDS as readonly string[]).includes(BAY_ENTRIES[b.layers.ground]?.kind ?? '') ? b.layers.ground : undefined;
   const input = { template: front.template, word: front.word, seed: b.id, ...(door ? { door } : {}), ...(front.logo ? { logo: front.logo } : {}),
-    ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(bays ? { bays } : {}), ...(front.redLight ? { redLight: { ...front.redLight, span: undefined } } : {}), ...(front.frameHex ? { frameHex: front.frameHex } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}) };
+    ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(bays ? { bays } : {}), ...(front.redLight ? { redLight: { ...front.redLight, span: undefined } } : {}), ...(front.frameHex ? { frameHex: front.frameHex } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}), ...(historicPuiHost(b.id) ? { host: 'historic-pui' as const } : {}) };
   // Lane shop-bikes-perp: the pavement before the front's wall (street centreline less half a carriageway, as the
   // stoops use), so perpendicular bikes stand only where they fit.
   const streetD = front.template === 'bike' && streetM ? streetM(best) : Infinity, pavementM = Number.isFinite(streetD) ? Math.max(0, streetD - GENERIC_STOOP.carriageHalfM) : undefined;

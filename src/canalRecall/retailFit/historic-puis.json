@@ -1,0 +1,132 @@
+{
+ "version": 1,
+ "about": "Register-pui monuments staged for the historic-pui host (historicPui.ts): published = drawn by default after a blind A/B by row; staged = only with ?retailFit=1. Lane retail-fit-20261120.",
+ "puis": {
+  "0363100012168323": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "BAR DU",
+   "monument": "['3737', '4993']",
+   "row": "",
+   "source": "RCE monument register ['3737', '4993']: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012169153": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "MARCELLA",
+   "monument": "273",
+   "row": "",
+   "source": "RCE monument register 273: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012171123": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "LEENTJE",
+   "monument": "5715",
+   "row": "",
+   "source": "RCE monument register 5715: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012171655": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "ELFDE GEBOD",
+   "monument": "6502",
+   "row": "",
+   "source": "RCE monument register 6502: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012171790": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "STOOF",
+   "monument": "['106', '5685', '5686', '5687']",
+   "row": "",
+   "source": "RCE monument register ['106', '5685', '5686', '5687']: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012172030": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "KEFFER",
+   "monument": "6294",
+   "row": "",
+   "source": "RCE monument register 6294: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012172035": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "TRIBE",
+   "monument": "['6261', '6262']",
+   "row": "",
+   "source": "RCE monument register ['6261', '6262']: element 'Winkelpui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012173636": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "T SMALLE",
+   "monument": "990",
+   "row": "",
+   "source": "RCE monument register 990: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012175493": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "DOKTER",
+   "monument": "5050",
+   "row": "",
+   "source": "RCE monument register 5050: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012175559": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "BAR BLEND",
+   "monument": "['4844', '4845']",
+   "row": "",
+   "source": "RCE monument register ['4844', '4845']: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012175623": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "SOHO",
+   "monument": "4861",
+   "row": "",
+   "source": "RCE monument register 4861: element 'Pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012175701": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "ARENDSNEST",
+   "monument": "1728",
+   "row": "",
+   "source": "RCE monument register 1728: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012182544": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "CASABLANCA",
+   "monument": "6550",
+   "row": "",
+   "source": "RCE monument register 6550: element 'Pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  },
+  "0363100012182724": {
+   "status": "staged",
+   "review": "pending blind A/B by row",
+   "template": "brownBar",
+   "word": "RODE LAARS",
+   "monument": "6505",
+   "row": "",
+   "source": "RCE monument register 6505: element 'pui' (monument-facts.json); template brownBar (shop-templates.json)"
+  }
+ }
+}

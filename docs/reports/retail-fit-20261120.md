@@ -159,6 +159,53 @@ The list uses open data only: OSM, Wikidata, RCE, Wikipedia/Commons and the busi
 
 Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke models. Their tenants are hidden, so they are retail-fit candidates rather than modelling work.
 
+## 6. Round 3: chunk hosts, Magna Plaza, register puis
+
+### Stored openings and the block-face chunk adapter
+- `stage-openings.ts` measures a model's ground openings once from its GLB and stages them in `retail-fits.json` (`openings`). The runtime then skips the glass search, so a city-look material swap or a merged street chunk can no longer hide the glass.
+- A chunk's openings each record their pand (the GLB's `pandRanges`). The fit mesh carries `pandRanges` too (browser: `geometry.userData.pandRanges` plus an index; node: `prim.extras.pandRanges`), so the chunk's own per-pand lift moves the fit with its house.
+- `node-frame` appends a chunk's fit primitives into the chunk GLB before `separateChunkPands`.
+- The opening merge now also needs a vertical gap under 0.15 m, so ground and first-floor glass no longer fuse into one tall arch. Side effect: the American Hotel's corner opening is now 1.3 x 2.0 m instead of 1.7 x 5.3 m (more correct; this came after its blind).
+- A fit may name its opening by id (`opening: "<bearing>:<u>"`); otherwise it matches the nearest opening within 2.5 m of `at`.
+
+### Concerto (chunk-face-utrechtse-48-76), published
+- Five fits by opening id: dark glass #2a1d10, record-sleeve goods, an oxblood frame #5a1a17 with a transom, cream CONCERTO glass letters. Blind: won 2/2 (med, med).
+- The judge's notes: the sleeves are too saturated (the photo is pale and monochrome); a second CONCERTO is unconfirmed; the corner template still says WIJNHANDEL where the photo shows WE ARE LABELS OUTLET (that is a template front, not this lane's).
+- Other chunk hosts on the iconic list: none. 't Mandje is a recipe GLB, and the rest are bespoke.
+
+### Magna Plaza, published
+- The ground shop windows were in the `dark` frame material, so no glass was found. The retag (`scripts/retail-fit/magna-plaza-glass-retag.patch`) gives them a new palette colour, `glassShop` (#303b43, slot glass).
+  - The name must start with "glass": geometryAudit's OPENING_MATERIAL regex decides what snapOpenings treats as an opening, and a first try named `shopGlass` changed the geometry.
+  - The rebuilt GLB is geometry-identical: sorted triangle-multiset hash 0902780908ffcbdf, 23,852 triangles before and after; dark 7,616 → 5,824, glassShop 0 → 1,792. The unchanged builder reproduces the committed GLB exactly. `check:manual-landmarks` passed (505 landmarks).
+  - The GLB rebuild is integrator-owned, so the patch is NOT applied on this branch. Because the geometry is identical, the 32 openings staged from the retagged GLB fit the committed GLB too.
+- Panorama reads (2023-01 and 2025-01) are in `artifacts/retail-fit/photos/walls/0363100012167578/`: 24 window reads with tones from `wall-points.ts`. Mango has letters and pink SALE posters, a clothes rail in one window, and the rest is plain dark glass.
+- Only 11 of the 24 reads land within 2.5 m of an opening: the builder spaces the bays at 5.3 m, not at the real window rhythm (a model gap, reported rather than fitted).
+- Blind: fit won 2/2 (Spuistraat low, Nieuwezijds Voorburgwal med). Judge notes: too few posters, MANGO not legible at that distance, the treatment covers only some bays.
+
+### Geldmaat panel and Rijksmuseum poster
+- The Geldmaat panel and glass were re-measured to #97a6a6 (source note in the JSON).
+- Poster offset: checked at the rijksmuseum pose. The poster sits in the 4th arch in both the photo and the render, so nothing changed.
+
+### Register-pui monuments: the brown bars (14)
+- `src/canalRecall/retailFit/historicPui.ts` with `historic-puis.json`: 14 pands whose RCE register names the shopfront and whose template is brownBar, all staged. They use the same modes as the fits: the default draws published ones, `?retailFit=1` adds staged ones, `?retailFit=0` draws none.
+- `retailFront.ts`, behind `input.host === 'historic-pui'`: no projecting board or cap. The name goes on the pui's own flush sign band, painted in the pui frame colour (the existing wall-mount path). With `host` absent, the output is unchanged.
+- `threeBuildingMesh.ts` sets `host` from `historicPuiHost(b.id)` in `retailFrontOn` (the template path only).
+- Node frames never install the shop-template extract (`decorateShopTemplate` is not called under nodeFrame/), so template fronts cannot be judged there: all 14 node pairs were byte-identical. The pairs were therefore shot in the browser instead: `house:frames --lists ...@retailFit=0, ...@retailFit=1 --query '?world=live'` (`artifacts/retail-fit/frames-puis-browser/`).
+- 7 of 14 changed pixels (3.8–8.5 %). The other 7 were byte-identical: their pose sees another pand (Dokter's wall picks were all 0363100012175488), or the template front stands on a wall out of view (Arendsnest and others).
+- Blind, one fresh opus judge, 7 sheets: board-less pui 1 win, template 2, tie 4, every call low confidence. At house-frames distances the board and the flat band are nearly indistinguishable.
+- The photos split: Stoof has its name painted on the band (no board), while De Heeren van Aemstel (Leentje's pand) and Soho do have a projecting board or canopy. So "no fascia on a register pui" is not a safe rule for brown bars.
+- All 14 stay staged (only `?retailFit=1`). The default is unchanged.
+- Next: a per-pand read of the sign kind (painted band, board, letters on the glass) from a square-on crop, staged per pand in `historic-puis.json`, then a blind on close crops.
+
+### Round 3 blind table
+| Host | Pose | Verdict | Confidence |
+|---|---|---|---|
+| Concerto | concerto | fit | med |
+| Concerto | concerto-koffie | fit | med |
+| Magna Plaza | Spuistraat (288) | fit | low |
+| Magna Plaza | Nieuwezijds Voorburgwal (107) | fit | med |
+| Brown bars, register pui (7 visible) | browser rows | 1 pui / 2 template / 4 tie | all low; stays staged |
+
 ## Wiring (for the integrator)
 
 - Add `src/canalRecall/retailFit/retailFit.test.ts` to `test:shopfront-gate` in package.json.
@@ -167,3 +214,5 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
 - Round 2 is default-on for published reads (Hirschgebouw about 3,070 triangles, American Hotel about 1,200, full level only). `?retailFit=0` is the off switch, and `?retailFit=1` shows staged reads.
 - Node frames (house:frames) of these two models change by default; `RETAIL_FIT=0` restores the old frames byte-for-byte.
 - Tools: `scripts/retail-fit/{census,bay-strip,blind,iconic,glass-tone,region-tone,openings-probe}.ts`, poses in `scripts/retail-fit/poses*.json`, and node-frame with `RETAIL_FIT=0|1`.
+- Round 3: rebuild the building bundle as well as signature-landmarks, because `threeBuildingMesh.ts` now imports `retailFit/historicPui.ts` (with `historic-puis.json`, a few KB) and `retailFront.ts` gained the `host` branch.
+- Round 3, Magna Plaza (optional, for the game's own glass search and so other consumers see glass): `git apply scripts/retail-fit/magna-plaza-glass-retag.patch`, then `node --import tsx scripts/landmarks/build-manual-landmarks.ts --only=magna-plaza`, then LODs for magna-plaza, then build covers, then `check:covers` and `check:manual-landmarks`. Then rebuild the signature-landmarks bundle. The fits work without it, from the staged openings.
