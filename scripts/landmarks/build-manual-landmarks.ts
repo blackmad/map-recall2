@@ -320,6 +320,7 @@ import {buildRoodeLeeuwDamrak} from './roode-leeuw-damrak-builder';
 import {buildSchoolMarnixstraat2} from './school-marnixstraat-2-builder';
 import {buildOranjekerkPijp} from './oranjekerk-pijp-builder';
 import {buildDeKroonRembrandtplein} from './de-kroon-rembrandtplein-builder';
+import {buildTechnischeSchoolMeeuwenlaan} from './technische-school-meeuwenlaan-builder';
 import {buildParkCentraalStadhouderskade} from './park-centraal-stadhouderskade-builder';
 import {buildRoomMateAitana} from './room-mate-aitana-builder';
 import {buildObaStaatsliedenbuurt} from './oba-staatsliedenbuurt-builder';
@@ -1205,6 +1206,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='school-marnixstraat-2')buildSchoolMarnixstraat2(w,d,helpers);
     else if(id==='oranjekerk-pijp')buildOranjekerkPijp(w,d,helpers);
     else if(id==='de-kroon-rembrandtplein')buildDeKroonRembrandtplein(w,d,helpers);
+    else if(id==='technische-school-meeuwenlaan')buildTechnischeSchoolMeeuwenlaan(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

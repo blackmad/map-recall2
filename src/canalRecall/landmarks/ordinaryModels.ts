@@ -36,6 +36,9 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   // 2026-11-15) draws the same pand with the MOMO corner tower's green dome, which the recipe cannot express. The
   // recipe's 5/5 blind was against the generic box, not the landmark, so the landmark wins.
   'ordinary-0363100012233471': 'park-centraal-stadhouderskade',
+  // Vijfde Technische School, Meeuwenlaan 132 (large recipe, held 2026-11-14 for a grid that drew more storeys than the
+  // wings have): the bespoke landmark (2026-11-20) draws the stair tower, the entrance risaliet and the 2001 wing's stripes.
+  'ordinary-0363100012101771': 'technische-school-meeuwenlaan',
   // Politiebureau IJ-tunnel 2 (2026-10-13 large recipe) is the same 1972 pand as Brandweerkazerne Nico (2026-10-09),
   // which models every side; the install left three sides blank. Found 2026-10-16 by the overlap check.
   'ordinary-0363100012165618': 'fire-station-nico',
