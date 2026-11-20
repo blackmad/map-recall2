@@ -19,3 +19,7 @@ node --import tsx scripts/building-recipes/install-large.ts --house=weesperflat-
 #   npm run -s build:landmark-lods && npm run -s check:landmark-lods
 #   npm run -s test:fit-golden -- --write && node --import tsx scripts/building-recipes/large-mesh-hashes.ts --write --allow=zeemanlab-170498,weesperflat-169740
 #   npm run -s check:stale-installs && npm run -s check:canal
+
+# valckenierstraat-65-170734 (blank-walls hold, round 2): remove the id from scripts/building-recipes/held-installs.json, then
+node --import tsx scripts/building-recipes/install-large.ts --house=valckenierstraat-65-170734 --install \
+  '--allow-inferred=0:unchanged from the shipped recipe, judged FAIL on 2026-10-29 for tone and window shape, not refit in this lane;1:set-back top floor, no crop reaches it, unchanged from the shipped recipe;2:unchanged from the shipped recipe, judged FAIL on 2026-10-29 for column count, not refit in this lane;3:north steel-window wing unchanged, w04-343L 2021-01-22 confirms the two ribbon storeys;4:E lab faces seen across the canal from the w08-73 pano 2021-01-22, four ribbon storeys in brick, no straight crop;5:N face behind the wing, its top seen over the wing in w04-343L 2021-01-22, ribbon storeys as the S and W fronts'

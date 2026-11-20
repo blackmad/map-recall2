@@ -115,6 +115,40 @@
     "system",
     "baysPerStorey"
    ]
+  },
+  {
+   "wallSurfaces": [
+    9,
+    12,
+    25
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "palette": {
+    "brick": "#765e52",
+    "frame": "#d8dcd6",
+    "stone": "#cdc6b2"
+   },
+   "hand": [
+    "system",
+    "storeys"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    38
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "palette": {
+    "brick": "#765e52",
+    "frame": "#d8dcd6",
+    "stone": "#cdc6b2"
+   },
+   "hand": [
+    "system",
+    "storeys"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -136,7 +170,8 @@
   "Simplified: the brick plinth is the ground storey of the same brick, the stone bands are string courses, window groups are evenly spaced bays; the chimney tower and the two stair towers are the 3DBAG mass in brick colour (the second chimney stack and the roof plant are not modelled). Not drawn: the east front, the courtyard walls and the tower faces, which stay blank wall (no panorama within 35 m).",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #544f3e not used (not darker than the wall #765e52 by 10 L*, or tinted): kit glass kept; walls[3] glass #444946 not used (not darker than the wall #4e4740 by 10 L*, or tinted): kit glass kept.",
   "roof.flatHex #747680: the PDOK orthophoto's reading of this pand (roof-facts 14/8415/5384: slot slate, rgb 115/115/123, confidence 1; roof-flat.ts), the colour the city drew it in before the install.",
-  "walls[0].palette.brick #5b463e -> #ac8678 (sunlit-walls.ts, issue #73): measured from w01-163L in shade (brick luma 60); the same brick reads 188 in the sunlit crop w01-163 (2018-05-08); hue kept, drawn 75 -> 147."
+  "walls[0].palette.brick #5b463e -> #ac8678 (sunlit-walls.ts, issue #73): measured from w01-163L in shade (brick luma 60); the same brick reads 188 in the sunlit crop w01-163 (2018-05-08); hue kept, drawn 75 -> 147.",
+  "2026-11-20 (lane large-buildings-20261120): the blank-walls hold (the shader grid's 3.2 m storeys added storeys to a block of 4 m lab storeys) is met by drawing the large unlisted lab faces as ribbon-window storeys like the photographed S and W fronts (w01-163L, w03-253: continuous ribbons of narrow panes in brick): walls[4] = panels 8 and 21 (E, 58 m and 21.7 m, eaves 16.1; seen across the Nieuwe Herengracht from the w08-73 panorama TMX7316010203-001975_pano_0000_000868 2021-01-22: four ribbon storeys in brick) and walls[5] = panel 34 (N, 37 m behind the two-storey wing, its top seen over the wing in w04-343L 2021-01-22). Still on the grid: the set-back top floor faces and the chimney tower's upper panels. budgetTriangles 17500: the shipped recipe was already 11,908 of the 12,000 default; the two inferred faces add about 5,500 (17,371)."
  ],
  "measured": {
   "date": "2026-10-14",
@@ -145,5 +180,6 @@
    2,
    3
   ]
- }
+ },
+ "budgetTriangles": 17500
 }
