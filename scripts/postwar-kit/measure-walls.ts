@@ -14,7 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import { calibrateThumb, measureWallPatch } from '../../src/canalRecall/postwarKit/wallPatch.ts';
+import { calibrateThumb, isSunlitRaw, measureWallPatch } from '../../src/canalRecall/postwarKit/wallPatch.ts';
 import { median } from '../../src/canalRecall/buurtProfiles/exposure.ts';
 import { familyOfHex } from '../../src/canalRecall/postwarKit/kit.ts';
 import { MEASURED_FRONTS } from '../../src/canalRecall/postwarKit/facts.ts';
@@ -48,9 +48,7 @@ const inQuad = (x: number, y: number, q: Array<[number, number]>) => {
 
 const ONLY = new Set((process.env.ONLY ?? "").split(",").filter(Boolean));
 const DEBUG = new Set((process.env.QUADS ?? '').split(',').filter(Boolean));
-const rows: Record<string, any> = {};
-for (const [id, s] of Object.entries(sample)) {
-  if (!s.photo || !s.wallEnds || (ONLY.size && !ONLY.has(id))) continue;
+async function measureOne(id: string, s: any): Promise<any> {
   const { data, info } = await sharp(path.join(OUT, s.photo)).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const [cLng, cLat] = s.camera as [number, number];
   const enu = ([lng, lat]: [number, number]): [number, number] => [(lng - cLng) * 111_320 * Math.cos(cLat * Math.PI / 180), (lat - cLat) * 110_540];
@@ -58,7 +56,7 @@ for (const [id, s] of Object.entries(sample)) {
   const lerp = (t: number): [number, number] => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
   const top = Math.max(UPPER_FROM_M + 1, s.heightM - 0.8), bottom = s.heightM >= 8 ? UPPER_FROM_M : 1.5;
   const corners = ([[0.08, bottom], [0.92, bottom], [0.92, top], [0.08, top]] as const).map(([t, z]) => { const p = lerp(t); return project([p[0], p[1], z - CAMERA_Z_M], s.headingDeg, s.pitchDeg * PITCH_SCALE, s.fovDeg, info.width, info.height); });
-  if (corners.some(c => !c)) { rows[id] = { skip: 'wall behind camera' }; continue; }
+  if (corners.some(c => !c)) return { skip: 'wall behind camera' };
   const q = corners as Array<[number, number]>;
   const x0 = Math.max(0, Math.floor(Math.min(...q.map(p => p[0])))), x1 = Math.min(info.width - 1, Math.ceil(Math.max(...q.map(p => p[0]))));
   const y0 = Math.max(0, Math.floor(Math.min(...q.map(p => p[1])))), y1 = Math.min(info.height - 1, Math.ceil(Math.max(...q.map(p => p[1]))));
@@ -68,10 +66,33 @@ for (const [id, s] of Object.entries(sample)) {
   if (DEBUG.has(id)) {
     fs.mkdirSync(path.join(OUT, 'quads'), { recursive: true });
     const svg = `<svg width="${info.width}" height="${info.height}"><polygon points="${q.map(p => p.join(',')).join(' ')}" fill="none" stroke="#0f0" stroke-width="2"/><rect x="0" y="0" width="60" height="30" fill="${m?.hex ?? '#000'}"/></svg>`;
-    await sharp(path.join(OUT, s.photo)).composite([{ input: Buffer.from(svg) }]).jpeg().toFile(path.join(OUT, 'quads', `${id}.jpg`));
+    await sharp(path.join(OUT, s.photo)).composite([{ input: Buffer.from(svg) }]).jpeg().toFile(path.join(OUT, 'quads', `${path.basename(s.photo, '.jpg')}.jpg`));
   }
-  rows[id] = m ? { ...m, cluster: s.cluster, address: s.address, pixels: px.length / 3 } : { skip: 'too few wall pixels', pixels: px.length / 3 };
+  return m ? { ...m, cluster: s.cluster, address: s.address, pixels: px.length / 3, panoId: s.panoId, panoDate: s.panoDate } : { skip: 'too few wall pixels', pixels: px.length / 3 };
 }
+
+const rows: Record<string, any> = {};
+for (const [id, s] of Object.entries(sample)) {
+  if (!s.photo || !s.wallEnds || (ONLY.size && !ONLY.has(id))) continue;
+  rows[id] = await measureOne(id, s);
+}
+// Round 5: a shaded front (wallPatch.ts isShadedRaw) takes the first other capture of it (fetch-alternates.ts,
+// sample-alt.json, newest first) that measures accepted brick in sunlight (wallPatch.ts isSunlitRaw: raw L* >= 40). A
+// rescue never changes the material: an alternate aimed past a low brick wing at a glass tower (Hoofdweg 458-576)
+// measured sky and glass as paint, and a backlit 2018 capture of Mauritskade 17 (raw L* 35) only cleared the chroma bar.
+const isSunlitBrick = (r: any) => r.kind === 'brick' && isSunlitRaw([r.L, r.a, r.b]);
+const ALT = path.join(OUT, 'sample-alt.json');
+const alternates = fs.existsSync(ALT) ? JSON.parse(fs.readFileSync(ALT, 'utf8')) as Record<string, any[]> : {};
+let shadedCount = 0, rescued = 0;
+for (const [id, m] of Object.entries(rows)) {
+  if (!m.shaded) continue;
+  shadedCount++;
+  for (const alt of alternates[id] ?? []) {
+    const r = await measureOne(id, alt);
+    if (r.accepted && isSunlitBrick(r)) { rows[id] = { ...r, rescuedFrom: { panoId: m.panoId, raw: m.hex } }; rescued++; break; }
+  }
+}
+console.log(`shaded ${shadedCount}, rescued by another capture ${rescued}`);
 
 // Calibration into today's frame (wallPatch.ts calibrateThumb); the paint cast is this run's painted median a/b.
 const painted = Object.values(rows).filter(m => m.hex && m.painted);
@@ -90,7 +111,7 @@ for (const r of MEASURED_FRONTS) {
   if (coarse(m.family) === coarse(r.wall)) near++; else misses.push(`${r.address}: read ${r.wall}, measured ${m.family} ${m.hex}`);
 }
 const accepted = Object.entries(rows).filter(([, m]) => m.accepted);
-const summary = { members: Object.keys(rows).length, accepted: accepted.length, validation: { reads: n, exactFamily: exact, coarseFamily: near, misses } };
+const summary = { members: Object.keys(rows).length, accepted: accepted.length, shaded: shadedCount, rescued, validation: { reads: n, exactFamily: exact, coarseFamily: near, misses } };
 fs.writeFileSync(path.join(OUT, 'measured-walls.json'), JSON.stringify({ summary, rows }, null, 1));
 console.log(JSON.stringify(summary, null, 1));
 if (process.argv.includes('--publish')) {

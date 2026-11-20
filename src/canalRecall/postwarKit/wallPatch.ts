@@ -27,7 +27,7 @@ export const WARM_CHROMA = 3.5;
 /** Accept a measurement only with this share for its cluster, this many kept pixels and at most this leaf share. */
 export const ACCEPT = { share: 0.15, pixels: 1500, leaf: 0.35 } as const;
 
-export type WallPatch = { kind: 'paint' | 'brick' | 'unsure'; clusters: Array<[number, number, number, number]>; hex: string; painted: boolean; share: number; kept: number; leafShare: number; L: number; a: number; b: number; accepted: boolean };
+export type WallPatch = { shaded: boolean; kind: 'paint' | 'brick' | 'unsure'; clusters: Array<[number, number, number, number]>; hex: string; painted: boolean; share: number; kept: number; leafShare: number; L: number; a: number; b: number; accepted: boolean };
 
 const hex2 = (v: number) => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0');
 const median = (v: number[]) => { const s = [...v].sort((p, q) => p - q); return s[Math.floor(s.length / 2)] ?? 0; };
@@ -83,8 +83,12 @@ export function measureWallPatch(rgb: ArrayLike<number>): WallPatch | null {
   const painted = pick === paint || (sunlitRender && pick === bright);
   const kind = painted ? 'paint' : warm !== undefined ? 'brick' : 'unsure';
   const clusters = order.map(k => [Math.round(centres[k][0]), Math.round(centres[k][1]), Math.round(centres[k][2]), +shareOf(k).toFixed(2)] as [number, number, number, number]);
-  return { kind, clusters, hex: `#${hex2(r)}${hex2(g)}${hex2(b)}`, painted, share: +share.toFixed(3), kept: keep.length, leafShare: +leafShare.toFixed(3), L: Math.round(L), a: Math.round(A), b: Math.round(B),
-    accepted: kind !== 'unsure' && share >= ACCEPT.share && keep.length >= ACCEPT.pixels && leafShare <= ACCEPT.leaf };
+  // Round 5: brick measured in shade at low chroma cannot tell buff from red (Mauritskade 17, tan-brown in shade: raw
+  // L* 35, C* 6, hue 43, the signature of shaded red brick too); it is not accepted, and measure-walls.ts looks for a
+  // sunlit capture of the same front instead.
+  const shaded = kind === 'brick' && isShadedRaw([L, A, B]);
+  return { shaded, kind, clusters, hex: `#${hex2(r)}${hex2(g)}${hex2(b)}`, painted, share: +share.toFixed(3), kept: keep.length, leafShare: +leafShare.toFixed(3), L: Math.round(L), a: Math.round(A), b: Math.round(B),
+    accepted: kind !== 'unsure' && !shaded && share >= ACCEPT.share && keep.length >= ACCEPT.pixels && leafShare <= ACCEPT.leaf };
 }
 
 /**
@@ -105,12 +109,14 @@ export const MODERN_BRICK_CHROMA = 0.55;
  * a warm brown #826250, the round-2 blind's only kit regression. These keep their own lightness (to maxL), hue (clamped
  * to the buff band) and chroma (in minC-maxC). Only the postwar path calls this; applyExposure and the buurt profiles
  * are untouched.
+ * Round 5: buff is a low-to-mid chroma brick (the read buff fronts measure raw C* 20-26); strongly chromatic light brick
+ * (raw C* >= maxRawC: red brick in full sun measures L* 83, C* 33-36) stays on the red-brick path.
  */
-export const BUFF = { minL: 65, minHue: 65, yellowHue: 80, yellowMinL: 40, maxHue: 110, minRawC: 3, maxL: 78, minC: 8, maxC: 30, hue: [65, 90] } as const;
+export const BUFF = { minL: 65, minHue: 65, yellowHue: 80, yellowMinL: 40, maxHue: 110, minRawC: 3, maxRawC: 30, maxL: 78, minC: 8, maxC: 30, hue: [65, 90] } as const;
 const lchOf = (lab: readonly number[]) => [lab[0], Math.hypot(lab[1], lab[2]), (Math.atan2(lab[2], lab[1]) * 180 / Math.PI + 360) % 360];
 export function isBuffRaw(lab: readonly number[]): boolean {
   const [L, C, h] = lchOf(lab);
-  return C >= BUFF.minRawC && h <= BUFF.maxHue && ((L >= BUFF.minL && h >= BUFF.minHue) || (L >= BUFF.yellowMinL && h >= BUFF.yellowHue));
+  return C >= BUFF.minRawC && C < BUFF.maxRawC && h <= BUFF.maxHue && ((L >= BUFF.minL && h >= BUFF.minHue) || (L >= BUFF.yellowMinL && h >= BUFF.yellowHue));
 }
 export function calibrateThumb(hex: string, painted: boolean, paintCast: readonly [number, number] = [0, 0]): string {
   const [L, a, b] = rgbToLab([1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)));
@@ -122,4 +128,15 @@ export function calibrateThumb(hex: string, painted: boolean, paintCast: readonl
   const lab = painted ? applyExposure(THUMB_EXPOSURE, 'thumb', [L, a - paintCast[0], b - paintCast[1]], true)
     : ((l: number[]) => [l[0], l[1] * MODERN_BRICK_CHROMA, l[2] * MODERN_BRICK_CHROMA])(applyExposure(THUMB_EXPOSURE, 'thumb', [L, a, b]));
   return `#${labToRgb(lab).map(hex2).join('')}`;
+}
+
+/** Round 5: brick in shade at low chroma (raw C* < maxC, L* < maxL in the thumbnail's frame) is not a usable measurement. */
+export const SHADED = { maxC: 8, maxL: 40 } as const;
+export function isShadedRaw(lab: readonly number[]): boolean {
+  return lab[0] < SHADED.maxL && Math.hypot(lab[1], lab[2]) < SHADED.maxC;
+}
+/** Round 5: a capture usable to rescue a shaded front: its brick measures at raw L* >= SUNLIT_MIN_L (and is not shaded). */
+export const SUNLIT_MIN_L = 40;
+export function isSunlitRaw(lab: readonly number[]): boolean {
+  return lab[0] >= SUNLIT_MIN_L && !isShadedRaw(lab);
 }

@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { CLUSTER_DISTRIBUTION, MEASURED_FRONTS, clusterFor, measuredFront, validateFronts } from './facts.js';
 import { FAMILY_SWATCHES, coarseFamily, correctedWall, familyOfHex, postwarExtraIds, postwarKitFor, styleFor, validateWalls } from './kit.js';
-import { calibrateThumb, isBuffRaw, measureWallPatch } from './wallPatch.js';
+import { calibrateThumb, isBuffRaw, isShadedRaw, measureWallPatch } from './wallPatch.js';
 import CORRECTED from './corrected-walls.json';
 import { ExtraSink } from '../facadeExtraCore.js';
 import type { ExtraContext } from '../facadeExtraCore.js';
@@ -145,4 +145,23 @@ test('sunlit white render broken by glazing reads as paint (round 4: Nieuwe Kerk
   const addS = (n: number, r: number, g: number, b: number) => { for (let i = 0; i < n; i++) sun.push(r, g, b); };
   addS(3200, 190, 128, 100); addS(2700, 247, 245, 240); addS(1500, 215, 210, 195); addS(1100, 120, 100, 80);
   assert.equal(measureWallPatch(sun)!.kind, 'brick');
+});
+
+test('shaded low-chroma brick is not accepted (round 5: Mauritskade 17); sunlit red brick is not buff', () => {
+  // Mauritskade 17: tan-brown brick in full shade measured raw #5d504c (L* 35, C* 6): round 4 drew it red #704944.
+  const px: number[] = [];
+  for (let i = 0; i < 4000; i++) px.push(0x5d, 0x50, 0x4c);
+  for (let i = 0; i < 1200; i++) px.push(60, 62, 64);
+  const m = measureWallPatch(px)!;
+  assert.equal(m.kind, 'brick');
+  assert.ok(m.shaded);
+  assert.ok(!m.accepted);
+  assert.ok(isShadedRaw(rgbToLab([0x5d, 0x50, 0x4c])));
+  // Shaded red brick with colour left in it (Bloemgracht 210-286, raw #544a42: C* 7) is shaded too; a sunlit front is not.
+  assert.ok(!isShadedRaw(rgbToLab([150, 82, 64])));
+  // Red brick in full sun (raw L* 83, C* 36, hue 80) stays off the buff branch; read buff fronts (C* 20-26) keep it.
+  const lab = (L: number, C: number, h: number) => [L, C * Math.cos(h * Math.PI / 180), C * Math.sin(h * Math.PI / 180)];
+  assert.ok(!isBuffRaw(lab(83, 36, 80)));
+  assert.ok(isBuffRaw(lab(86, 26, 74)));
+  assert.ok(isBuffRaw(rgbToLab([0xe9, 0xcc, 0xad])));
 });
