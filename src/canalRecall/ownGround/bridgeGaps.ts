@@ -293,6 +293,27 @@ export const DRY_EDGE_M = 20;
  * side kept the half-width (15.7 m) and the parapet stood 2 m inside the outer carriageway's hard shoulder, over 53 m
  * once the hole climb ran the deck on over the bank. Off: `?medianEdges=0` (the before).
  */
+/** taperDeckEdges: a survey edge narrows at most this many metres per metre along the deck. */
+export const DECK_EDGE_TAPER = 0.5;
+/**
+ * Survey edges that narrow abruptly along the deck taper instead (`edgeTaper`, lane fb-ground2-20261120, feedback
+ * 3b8ca68b). At De Clercqstraat over the Da Costagracht (BRU0108) the left edge walk reached 20.7 m at s = 51 and 6.3 m
+ * at s = 52: the deck's footprint, and so the riding surface's lift (0.25 m over the relief there), ended in a line
+ * across the carriageway, drawn as a ledge with a crack through it. Each edge is widened to no less than its neighbours
+ * minus DECK_EDGE_TAPER per metre (forward and back), so the lift falls along the deck's side blend at a slant; it
+ * never narrows an edge. The result is DeckProfile.rideEdges, read by the riding surface alone: the kit, deck body and
+ * footprint keep the survey's edges. New arrays; equal to the input where no edge narrows faster than the taper.
+ */
+export function taperDeckEdges(s: ArrayLike<number>, edges: { left: Float64Array; right: Float64Array }, rate = DECK_EDGE_TAPER): { left: Float64Array; right: Float64Array } {
+  const run = (e: Float64Array) => {
+    const out = Float64Array.from(e), n = out.length;
+    for (let i = 1; i < n; i++) out[i] = Math.max(out[i], out[i - 1] - rate * (s[i] - s[i - 1]));
+    for (let i = n - 2; i >= 0; i--) out[i] = Math.max(out[i], out[i + 1] - rate * (s[i + 1] - s[i]));
+    return out;
+  };
+  return { left: run(edges.left), right: run(edges.right) };
+}
+
 export function surveyDeckEdges(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | 'deck' | 'sides'>, onDeckPoly: (x: number, y: number) => boolean, groundRoad?: (x: number, y: number) => boolean, capM = 0, median = false): { left: Float64Array; right: Float64Array } | null {
   const n = p.s.length, raw = [new Float64Array(n), new Float64Array(n)], hwMax = Math.max(...p.halfWidth);
   let widened = false;

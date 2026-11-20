@@ -42,6 +42,15 @@ const COVER_ONLY: GroundLayer[] = ['water', 'deckBody', 'quay'];
 /** Layers whose presence at a sample means the DTM is not the ground there (a deck, a rail bed): no float test. */
 const RAISED: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['deckTop', 'deckBody', 'ballast', 'track']);
 
+/**
+ * A rail bed above a deck top is the bed carried on its deck (a rail viaduct's kit top under the ballast), not a lower
+ * layer poking through (lane fb-ground2-20261120, feedback c57c04: 2,860 m² of the detector's two top tiles, Centraal's
+ * west throat over BRU0147, were ballast and track standing 0.6 to 0.9 m on the viaduct's hidden deck top, drawn right).
+ * Off: AuditInput.railOnDeck false (the before).
+ */
+export const RAIL_ON_DECK: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['ballast', 'track']);
+export const railOnDeck = (lo: GroundLayer, hi: GroundLayer): boolean => hi === 'deckTop' && RAIL_ON_DECK.has(lo);
+
 export interface Window { id: string; x: number; y: number; r: number }
 export interface OpenRing { pts: Vec2[]; holes: Vec2[][]; bb: [number, number, number, number] }
 
@@ -92,6 +101,8 @@ export interface AuditInput {
   noTJunctions?: boolean;
   /** Tally poke and z-fight per layer pair (Tally.pairs; diagnostics, lane G1). */
   pairs?: boolean;
+  /** false: count a rail bed on a deck top as poke (railOnDeck; the before). */
+  railOnDeck?: boolean;
 }
 
 const inRing = (x: number, y: number, ring: readonly Vec2[]): boolean => {
@@ -123,7 +134,7 @@ export function aspect(ax: number, ay: number, bx: number, by: number, cx: numbe
 }
 
 export function auditCell(input: AuditInput): CellAudit {
-  const { cell, dtm } = input, res = input.resM ?? AUDIT.resM, tileM = AUDIT.tileM;
+  const { cell, dtm } = input, res = input.resM ?? AUDIT.resM, tileM = AUDIT.tileM, skipRailOnDeck = input.railOnDeck !== false;
   const [rx0, ry0, rx1, ry1] = cell.rect;
   const windows = input.windows ?? [], openRings = input.openRings ?? [];
   const tiles = new Map<string, Tally>(), total = emptyTally(), win: Record<string, Tally> = Object.fromEntries(windows.map(w => [w.id, emptyTally()]));
@@ -246,6 +257,7 @@ export function auditCell(input: AuditInput): CellAudit {
           if (la.rank === lb.rank) continue;
           const [lo, hi, zlo, zhi] = la.rank < lb.rank ? [la, lb, za, zb] : [lb, la, zb, za];
           const up = zlo - zhi;
+          if (skipRailOnDeck && railOnDeck(lo.layer, hi.layer)) continue;
           if (up > AUDIT.pokeM && up <= AUDIT.pokeMaxM) { record('poke', lo.layer, px, py, sample); pair(`poke:${lo.layer}<${hi.layer}`, px, py, sample); if (up > 0.05) record('pokeS', lo.layer, px, py, sample); flagged = true; }
         }
         if (!flagged && !raised) {
