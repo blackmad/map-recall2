@@ -83853,7 +83853,7 @@
     4.87594087,
     52.37366909
    ],
-   "headingDegrees": 11,
+   "headingDegrees": 0,
    "lengthMetres": 26.2,
    "widthMetres": 18.5
   },
@@ -83874,9 +83874,8 @@
   },
   "bagYear": 1888,
   "materialOverrides": {
-   "brick": "#5d3e3b",
-   "greyBrick": "#3e3638",
-   "concrete": "#5e6670",
+   "brick": "#7b4636",
+   "greyBrick": "#3a383f",
    "stone": "#cdc6b6",
    "frame": "#ece8de",
    "glass": "#34383c",
@@ -91975,9 +91974,9 @@
   },
   "bagYear": 1898,
   "materialOverrides": {
-   "sandstone": "#f4f2ec",
+   "sandstone": "#fdfcf8",
    "stone": "#d4cdbd",
-   "brick": "#9a6446",
+   "brick": "#b37a52",
    "concrete": "#6d6a67",
    "slate": "#4f555c",
    "frame": "#f2efe6",

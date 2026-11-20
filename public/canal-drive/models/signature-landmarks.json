@@ -105169,7 +105169,7 @@
           4.87594087,
           52.37366909
         ],
-        "headingDegrees": 11,
+        "headingDegrees": 0,
         "lengthMetres": 26.2,
         "widthMetres": 18.5
       },
@@ -105190,9 +105190,8 @@
       },
       "bagYear": 1888,
       "materialOverrides": {
-        "brick": "#5d3e3b",
-        "greyBrick": "#3e3638",
-        "concrete": "#5e6670",
+        "brick": "#7b4636",
+        "greyBrick": "#3a383f",
         "stone": "#cdc6b6",
         "frame": "#ece8de",
         "glass": "#34383c",
@@ -105392,7 +105391,7 @@
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 11,
+        "facadeBearingDegrees": 0,
         "scale": 1
       },
       "extent": {
@@ -105402,7 +105401,7 @@
         "depthCoverage": 1.0255247064538904
       },
       "triangles": 29363,
-      "bytes": 360968,
+      "bytes": 360964,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "e3ea98ba0cd335d1",
@@ -114902,9 +114901,9 @@
       },
       "bagYear": 1898,
       "materialOverrides": {
-        "sandstone": "#f4f2ec",
+        "sandstone": "#fdfcf8",
         "stone": "#d4cdbd",
-        "brick": "#9a6446",
+        "brick": "#b37a52",
         "concrete": "#6d6a67",
         "slate": "#4f555c",
         "frame": "#f2efe6",
@@ -115098,11 +115097,11 @@
         "min": [
           -19.92099952697754,
           -9.536743306171047e-8,
-          -47.75150680541992
+          -48.07011032104492
         ],
         "max": [
           9.842000007629395,
-          25.165000915527344,
+          22.700000762939453,
           21.26511573791504
         ]
       },
@@ -115117,13 +115116,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 69.01662254333496,
-        "heightMetres": 25.165001010894777,
+        "widthMetres": 69.33522605895996,
+        "heightMetres": 22.700000858306886,
         "depthMetres": 29.762999534606934,
         "depthCoverage": 0.9987583736445279
       },
-      "triangles": 10911,
-      "bytes": 146644,
+      "triangles": 12293,
+      "bytes": 162380,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
