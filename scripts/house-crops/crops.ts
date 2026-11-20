@@ -64,7 +64,7 @@ const has = (n: string) => process.argv.includes(`--${n}`);
 const round = (v: number, d = 3) => +v.toFixed(d);
 const idOf = (fpId: string) => fpId.replace('NL.IMBAG.Pand.', '');
 const day = (t: string) => t.slice(0, 10);
-const leafOff = (t: string) => { const m = Number(t.slice(5, 7)); return m <= 4 || m >= 11; };
+export const leafOff = (t: string) => { const m = Number(t.slice(5, 7)); return m <= 4 || m >= 11; };
 const USER_AGENT = 'MapRecall-HouseCrops/1.0 (+https://github.com/blackmad/map-recall2; Gemeente Amsterdam panoramas CC BY 4.0)';
 const ATTRIBUTION = 'Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)';
 
@@ -79,7 +79,7 @@ async function writeManifest(m: Manifest) {
 // ---- panorama lists, one request set per 30 m cell -----------------------------------------------------
 const cellCache = new Map<string, any[]>();
 const CELL = 30, CELL_RADIUS = Math.ceil(CELL * Math.SQRT1_2 + 35 + 1);
-async function panosNear(p: { x: number; y: number }): Promise<any[]> {
+export async function panosNear(p: { x: number; y: number }): Promise<any[]> {
   const cx = Math.floor(p.x / CELL), cy = Math.floor(p.y / CELL), key = `${cx}/${cy}`;
   if (!cellCache.has(key)) cellCache.set(key, await listPanos({ x: (cx + 0.5) * CELL, y: (cy + 0.5) * CELL }, CELL_RADIUS));
   if (cellCache.size > 60) cellCache.delete(cellCache.keys().next().value!);
@@ -87,17 +87,17 @@ async function panosNear(p: { x: number; y: number }): Promise<any[]> {
 }
 
 // ---- the two crop routes -------------------------------------------------------------------------------
-type Made = { jpeg: Buffer; width: number; height: number; ppm: number; flags: CropFlags; method: 'wall' | 'strip'; picks: PanoPick[]; wallWidthM: number; wallHeightM: number; baseZ: number; groundSource: string };
+export type Made = { jpeg: Buffer; width: number; height: number; ppm: number; flags: CropFlags; method: 'wall' | 'strip'; picks: PanoPick[]; wallWidthM: number; wallHeightM: number; baseZ: number; groundSource: string };
 
 const r3 = (v: number) => round(v, 3);
 /** All flags of one crop from its decoded pixels plus the pick's geometry. */
-function flagsFor(rgba: Uint8ClampedArray | Uint8Array, alpha: Uint8Array, width: number, height: number, pick: { distM: number; obliquityDeg: number }, o: { blocked: boolean; wallWidthM: number; strip: boolean }): CropFlags {
+export function flagsFor(rgba: Uint8ClampedArray | Uint8Array, alpha: Uint8Array, width: number, height: number, pick: { distM: number; obliquityDeg: number }, o: { blocked: boolean; wallWidthM: number; strip: boolean }): CropFlags {
   const m = measureCrop(rgba, alpha, width, height);
   return { foliage: r3(m.foliage), foliagePlain: r3(m.foliagePlain), wbApplied: m.wbApplied, washedOut: r3(m.washedOut), missing: r3(m.missing), voidShare: r3(m.voidShare), occluderShare: r3(m.occluderShare),
     obliquity: round(pick.obliquityDeg, 1), cameraDistance: round(pick.distM, 1), rayBlocked: o.blocked, wallWidthM: round(o.wallWidthM, 2), heightCover: r3(m.heightCover), edgeDensity: r3(m.edgeDensity), seamStep: round(m.seamStep, 1), strip: o.strip };
 }
 
-async function wallCrop(fp: Footprint, wall: Wall, pick: PanoPick, blocked: boolean): Promise<Made | null> {
+export async function wallCrop(fp: Footprint, wall: Wall, pick: PanoPick, blocked: boolean): Promise<Made | null> {
   const pano = await loadPano(pick);
   if (!pano) return null;
   const crop = rectifyWall(pano.img, pick, wall, fp.height, 50);
@@ -106,14 +106,14 @@ async function wallCrop(fp: Footprint, wall: Wall, pick: PanoPick, blocked: bool
     wallWidthM: round(crop.wallWidthM, 2), wallHeightM: round(crop.wallHeightM, 2), baseZ: round(crop.baseZ), groundSource: crop.groundSource };
 }
 
-/** planStrip route: plan the face's spans on one capture day, median-fuse up to 3 panoramas over the pand's span (+1 m each side), cut the span out. */
-async function stripCrop(fp: Footprint, wall: Wall, face: WallRef[], panos: any[], isBlocked: (p: any) => boolean): Promise<Made | 'no-pano' | null> {
+/** planStrip route: plan the face's spans on one capture day, median-fuse up to 3 panoramas over the pand's span (+1 m each side), cut the span out. `ppm` 40 for house:crops; belt-review/prepare.ts asks 50. */
+export async function stripCrop(fp: Footprint, wall: Wall, face: WallRef[], panos: any[], isBlocked: (p: any) => boolean, ppm = 40): Promise<Made | 'no-pano' | null> {
   const near = face.filter(w => Math.hypot((w.a.x + w.b.x) / 2 - wall.mid.x, (w.a.y + w.b.y) / 2 - wall.mid.y) < 28);
   const spans: FrontSpan[] = near.map(w => ({ pandId: w.id, a: [w.a.x, w.a.y], b: [w.b.x, w.b.y], normal: [w.nx, w.ny] }));
   const records: PanoRecord[] = panos.filter(p => !isBlocked(p)).map(p => { const r = lngLatToRd([p.geometry.coordinates[0], p.geometry.coordinates[1]]); return { panoId: p.pano_id, timestamp: p.timestamp, rd: [r.x, r.y], record: p }; });
   const plan = planStrip(spans, records), mine = plan.spans[spans.findIndex(s => s.pandId === fp.id)];
   if (!mine?.panos.length) return 'no-pano';
-  const MARGIN = 1, ppm = 40, h = wallHeight(fp.height), byId = new Map(records.map(r => [r.panoId, r.record as any]));
+  const MARGIN = 1, h = wallHeight(fp.height), byId = new Map(records.map(r => [r.panoId, r.record as any]));
   const ux = (wall.b.x - wall.a.x) / wall.len, uy = (wall.b.y - wall.a.y) / wall.len;
   const start = { x: wall.a.x - ux * MARGIN, y: wall.a.y - uy * MARGIN }, end = { x: wall.b.x + ux * MARGIN, y: wall.b.y + uy * MARGIN };
   const grounds = mine.panos.map(c => { const l = lensFor(byId.get(c.panoId), undefined); const g = l ? l.pose.z - 2.44 : NaN; return g > -2.5 && g < 3 ? g : 0.4; }).sort((a, b) => a - b);
