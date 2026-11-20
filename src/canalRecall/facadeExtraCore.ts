@@ -56,6 +56,9 @@ export type ExtraContext = {
   /** House rows: the series' stated dressing on this wall (threeBuildingMesh rowDressOnEdge). `windows`: the record's
    *  boxes in this edge's metres with their storey and head; `heads`: spans (edge metres) over the grid's windows. */
   rowDress?: RowDressContext;
+  /** The post-1965 housing kit (`?postwarKit=1`, postwarKit/kit.ts): its balcony and pier colours. The kit owns this wall's
+   *  balconies and gets the row budget. Absent: as before. */
+  postwarKit?: { balconyHex: string; pierHex: string };
 };
 export type RowHeadKind = { shape?: string; dressing?: string };
 export type RowDressContext = {

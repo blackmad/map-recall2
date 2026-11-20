@@ -15,6 +15,8 @@ import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, ty
 import { continuousShopCanopy } from './shopCanopies.js';
 import { specStoopExtra } from './stoopExtra.js';
 import { fitProjectionFor } from './projectionWindowFit.js';
+import { POSTWAR_COMPONENTS, POSTWAR_COMPONENT_IDS } from './postwarKit/components.js';
+import { postwarKitEnabled } from './postwarKit/flag.js';
 import { ORNAMENT_COMPONENTS, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
 
 export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
@@ -295,7 +297,8 @@ export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetRese
 // the crown, the front door and its stoop, the hoist beam, the sills and balconies.
 const FIRST = ['kroonlijst', 'console-cornice', 'corbel-roofline', 'stepped-parapet', 'white-fascia', 'door-surround', 'portiek', 'brick-door-arch',
   'stoop', 'double-stoop', 'hoist-beam', 'hoist-hood', 'window-sills', 'iron-balconies', 'brick-fins'];
-const ALL_WALL = [...ORNAMENT_COMPONENTS, ...STREET_FURNITURE];
+// The post-1965 housing kit's components join only with its flag on (postwarKit/components.ts): off, the list is unchanged.
+const ALL_WALL = [...ORNAMENT_COMPONENTS, ...STREET_FURNITURE, ...(postwarKitEnabled() ? POSTWAR_COMPONENTS : [])];
 export const WALL_COMPONENTS: readonly WallComponent[] = [...FIRST.map(id => ALL_WALL.find(c => c.id === id)!), ...ALL_WALL.filter(c => !FIRST.includes(c.id))];
 const RECIPE_TRIM_KEYS: Record<string, keyof NonNullable<NonNullable<ExtraContext['recipe']>['trim']>> = {
     'door-surround': 'lintels', 'white-window-frames': 'frames', 'white-lintels': 'lintels', 'stucco-hoods': 'arches',
@@ -334,7 +337,7 @@ export function buildingWallExtras(contexts: readonly ExtraContext[], sink: Extr
   sink.budget = Math.max(sink.tris.length, baseline);
   // House rows (lane R): a series member's street wall carries its stated heads and cornice (EXTRA_BUDGET.rowWall);
   // without a row dressing the building budget is unchanged.
-  const rowWalls = ordered.filter(({ c }) => (c.rowDress || c.designMember) && isStreetWall(c)).length;
+  const rowWalls = ordered.filter(({ c }) => (c.rowDress || c.designMember || c.postwarKit) && isStreetWall(c)).length;
   // Stated joinery (row-sash, round 5) draws every upper window's frame and bars: its walls get that much more.
   const glazed = ordered.filter(({ c }) => c.rowDress?.glazing && isStreetWall(c)).length * EXTRA_BUDGET.rowGlazing;
   // A kinked front (Kinkerstraat 126-138: three street walls and a side street) spent the two-wall cap on its first walls,
@@ -383,7 +386,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
   const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
-  const remaining = Math.max(0, (street ? (c.rowDress || c.designMember ? EXTRA_BUDGET.rowWall + (c.rowDress?.glazing ? EXTRA_BUDGET.rowGlazing : 0) : EXTRA_BUDGET.wall) + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
+  const remaining = Math.max(0, (street ? (c.rowDress || c.designMember || c.postwarKit ? EXTRA_BUDGET.rowWall + (c.rowDress?.glazing ? EXTRA_BUDGET.rowGlazing : 0) : EXTRA_BUDGET.wall) + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
   if(phase!=='optional'&&phase!=='stated'&&street&&c.recipe?.shopCanopy&&(!c.onlyExtras||c.onlyExtras.includes('continuous-shop-canopy'))){
     const before=sink.tris.length;
@@ -417,6 +420,8 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     if (c.recipe?.detailPolicy === 'architectural' && !definingComponent && !DEFINING_TRIM.has(comp.id) && !['door-surround','hoist-beam','wall-anchors'].includes(comp.id)) continue;
     if (definingComponent && c.assemblyOwner === false) continue;
     if (c.onlyExtras && !c.onlyExtras.includes(comp.id)) continue;
+    // The post-1965 kit owns its walls' balconies: the dice slabs and glass stacks give way to the read (or none).
+    if (c.postwarKit && (comp.group === 'balcony' || comp.id === 'gallery-walkway') && !POSTWAR_COMPONENT_IDS.has(comp.id)) continue;
     if (phase === 'defining' && !definingComponent || phase === 'optional' && definingComponent) continue;
     if (c.designMember && !DESIGN_MEMBER_COMPONENTS.has(comp.id)) continue;
     // A spec's stated parts (`statedFirst`) dress in their own pass; a later pass never draws one twice.
