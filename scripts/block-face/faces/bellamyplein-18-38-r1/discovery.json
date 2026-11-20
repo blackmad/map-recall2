@@ -6,7 +6,12 @@
   "0363100012163466",
   "0363100012153217",
   "0363100012159793",
-  "0363100012166965"
+  "0363100012166965",
+  "0363100012162005",
+  "0363100012159962",
+  "0363100012158557",
+  "0363100012163720",
+  "0363100012164492"
  ],
  "ends": [
   {
@@ -15,7 +20,7 @@
   },
   {
    "side": "right",
-   "reason": "run of bellamyplein-18-38: 162005 held (auto-place.json)"
+   "reason": "run of bellamyplein-18-38: 164493 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -721,6 +726,56 @@
    "eavesM": 13.46,
    "roofMaxM": 15.83,
    "storeys3dbag": 0,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162005",
+   "alongM": -28.04,
+   "widthM": 5.56,
+   "eavesM": 13.51,
+   "roofMaxM": 15.98,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159962",
+   "alongM": -22.52,
+   "widthM": 5.48,
+   "eavesM": 13.52,
+   "roofMaxM": 16.88,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158557",
+   "alongM": -17.03,
+   "widthM": 5.5,
+   "eavesM": 13.48,
+   "roofMaxM": 15.77,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163720",
+   "alongM": -11.52,
+   "widthM": 5.51,
+   "eavesM": 13.55,
+   "roofMaxM": 15.77,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164492",
+   "alongM": -6.01,
+   "widthM": 5.5,
+   "eavesM": 14.09,
+   "roofMaxM": 16.33,
+   "storeys3dbag": 5,
    "builtYear": 1905,
    "uncertainty": []
   }
