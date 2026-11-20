@@ -18,6 +18,7 @@ import {drawBalconyBands} from '../blockBuilding/balconyBands.ts';
 import {drawStackedBlocks} from '../blockBuilding/stackedBlocks.ts';
 import {applyCladdingSlots, drawCladdingLines} from '../blockBuilding/cladding.ts';
 import {drawFalseFront, drawSignBoards} from '../blockBuilding/signBoards.ts';
+import {drawTerraces, drawWallLights} from '../blockBuilding/wallFeatures.ts';
 import {fitsPanel, pointInRing, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
 import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
@@ -27,7 +28,7 @@ import {isPartyPanel} from './otherWalls.ts';
 import {WINDOW_GRID_WALL_SLOT, fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 import {applyCrownCantilever, type CrownReport} from './crownCantilever.ts';
 
-export interface LargeComponentCounts { claddingLines?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; boxBalconies?: number; balconyBands?: number; stackedBlocks?: number; stackedBalconies?: number; mansards?: number; curtainGrids?: number; spandrels?: number; floorBands?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; crowns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { claddingLines?: number; wallLights?: number; terraces?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; boxBalconies?: number; balconyBands?: number; stackedBlocks?: number; stackedBalconies?: number; mansards?: number; curtainGrids?: number; spandrels?: number; floorBands?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; crowns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -67,6 +68,10 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
     case 'frame': case 'rail': return {materialSlot: 'frame', surface: 'joinery'};
     case 'door': return {materialSlot: 'door', surface: 'door'};
     case 'stone': case 'slab': case 'band': case 'crest': case 'dress': return {materialSlot: 'stone', surface: 'stone'};
+    // balcony slab edge, pale glass pane and gallery posts (balconies.edge / pane / posts): smooth panels in their own colour
+    case 'edge': case 'pane': case 'post': return {materialSlot: 'stone', surface: 'stone'};
+    // white terrace floors over glazed storeys (wallFeatures.ts `terraces`): smooth slabs in their own colour
+    case 'terrace': return {materialSlot: 'stone', surface: 'stone'};
     case 'police-white': case 'board': return {materialSlot: 'stucco', surface: 'sign'};
     case 'board-text': return {materialSlot: 'accent', surface: 'sign'};
     // a sign board on a shop front (blockBuilding/signBoards.ts): a flat painted panel, like a name board
@@ -127,6 +132,16 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   // False front over the gable ends of a hall roof, then sign boards standing proud of it and of the cladding lines.
   if (g.falseFront) { const k = drawFalseFront(c, g.falseFront.slot, eaves); if (k) counts.falseFronts = (counts.falseFronts ?? 0) + k; }
   if (g.signBoards && g.mainPanel === p.index) { const k = drawSignBoards(c, g.signBoards); if (k) counts.signBoards = (counts.signBoards ?? 0) + k; }
+  // wallFeatures.ts (opt-in): framed glazed slots on the main panel, more lettering bands on it, terrace floors on every panel
+  if (g.wallLights && g.mainPanel === p.index) { const k = drawWallLights(c, g.wallLights, {frame: s.frame, glass: s.glass}); if (k) counts.wallLights = (counts.wallLights ?? 0) + k; }
+  if (g.signs && g.mainPanel === p.index) {
+    const H = p.vMax - p.vMin, W = p.uMax - p.uMin;
+    for (const sg of g.signs) {
+      const u0 = p.uMin + W * sg.along[0], u1 = p.uMin + W * sg.along[1], lo = p.vMin + H * sg.up[0], hi = p.vMin + H * sg.up[1];
+      if (fitsPanel(p, rectPoly(u0, u1, lo, hi))) counts.letters += drawLettering(c, sg.text, (u0 + u1) / 2, (lo + hi) / 2, 0.012, hi - lo, u1 - u0, sg.slot, (u, vv, d) => c.onWallAt(u, vv, d));
+    }
+  }
+  if (g.terraces) { const k = drawTerraces(c, levels, g.terraces, eaves); if (k) counts.terraces = (counts.terraces ?? 0) + k; }
   if (g.pilasters && underCornice - Math.max(0, p.vMin) > 3) counts.pilasters = (counts.pilasters ?? 0) + drawPilasters(c, Math.max(0, p.vMin), underCornice, s.stone, g.pilasters);
   if (g.signage?.mount === 'cornice' && g.mainPanel === p.index) {
     const n = drawNameBand(c, g.signage.text, underCornice, s.stone, s.sign, g.cornice && eaves - p.vMin > 3 ? {v0: eaves - 0.45, v1: eaves - 0.02, out: CORNICE_OUT} : undefined);
@@ -225,7 +240,13 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   // Wall lettering on a group without an entrance: centred on the widest panel, in the wall strip between the first
   // storey's window heads and the second storey's sills. With `along` (issue #83) the lettering spans that part of the
   // panel and sits one strip lower, between the ground storey's heads and the first storey's sills.
-  if (!g.entrance && g.signage?.mount === 'wall' && g.mainPanel === p.index && levels.length > 2) {
+  // With `up` the lettering fills that band of the panel's height instead (a painted number on a blank base).
+  const upSign = !g.entrance && g.signage?.mount === 'wall' && g.mainPanel === p.index && g.signage.along && g.signage.up ? g.signage : null;
+  if (upSign) {
+    const H = p.vMax - p.vMin, W = p.uMax - p.uMin, [a0, a1] = upSign.along!, [b0, b1] = upSign.up!;
+    const u0 = p.uMin + W * a0, u1 = p.uMin + W * a1, lo = p.vMin + H * b0, hi = p.vMin + H * b1;
+    if (fitsPanel(p, rectPoly(u0, u1, lo, hi))) counts.letters += drawLettering(c, upSign.text, (u0 + u1) / 2, (lo + hi) / 2, 0.012, hi - lo, u1 - u0, s.sign, (u, vv, d) => c.onWallAt(u, vv, d));
+  } else if (!g.entrance && g.signage?.mount === 'wall' && g.mainPanel === p.index && levels.length > 2) {
     const al = g.signage.along, k = al ? 1 : 2;
     const holes = [...c.holes.values()].flat(), below = Math.max(levels[k - 1], ...holes.filter(h => h[3] <= levels[k] + 0.01).map(h => h[3]));
     const above = Math.min(levels[k] + 1, lowestHoleAbove(c, levels[k])), hgt = Math.min(al ? 1.1 : 0.6, above - below - 0.2), v = (below + above) / 2, W = p.uMax - p.uMin;

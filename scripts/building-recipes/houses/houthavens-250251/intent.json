@@ -1,0 +1,195 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "houthavens-250251",
+ "pandId": "0363100012250251",
+ "address": "SALT, Houthavens, 2018: a six-storey pale concrete grid frame of square bays, each a large mullioned window or a blank concrete square, lettered S A / L T in one bay; a dark boarded west front",
+ "sources": [
+  {
+   "id": "pano-2025-10-02-w04-68",
+   "kind": "street-panorama",
+   "capturedAt": "2025-10-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_11_11_01_00012/",
+   "image": "source-data://pand-reference-walls/0363100012250251/w04-68.jpg",
+   "sha256": "a4ef0bfee79dcca049fc7059769c702bb97ad449f3d7ce54db0f7b28b96824e3",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-30-w03-338s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0003_000399/",
+   "image": "source-data://pand-reference-walls/0363100012250251/w03-338s1.jpg",
+   "sha256": "409a113521dea11dbb7bc38b95249a9de6096583909212ebc8e210f6e4725f9e",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-10-02-w02-158s2",
+   "kind": "street-panorama",
+   "capturedAt": "2025-10-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_11_11_01_00019/",
+   "image": "source-data://pand-reference-walls/0363100012250251/w02-158s2.jpg",
+   "sha256": "96dc090229f2d9e3858662f092d7c77271eb2424022e2699aa9223b5f05bd173",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-30-w01-248s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0003_000391/",
+   "image": "source-data://pand-reference-walls/0363100012250251/w01-248s1.jpg",
+   "sha256": "c3c02eb82ea9b318a0a877a1d91bd54863ddaa5dfff8d7fd05548e7bedfbd725",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    4,
+    5
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 5,
+   "ground": "glazed",
+   "palette": {
+    "brick": "#9a968e",
+    "frame": "#3a3a3c"
+   },
+   "windowShape": {
+    "w": 0.72,
+    "h": 0.72,
+    "sill": 0.12
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#9a968e",
+    "lines": "#7e7a72",
+    "pitch": 5.8,
+    "rowPitch": 3.6
+   },
+   "signs": [
+    {
+     "text": "S A",
+     "colour": "#5a5a58",
+     "along": [
+      0.04,
+      0.16
+     ],
+     "up": [
+      0.27,
+      0.31
+     ]
+    },
+    {
+     "text": "L T",
+     "colour": "#5a5a58",
+     "along": [
+      0.04,
+      0.16
+     ],
+     "up": [
+      0.2,
+      0.24
+     ]
+    }
+   ],
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    14
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 6,
+   "ground": "glazed",
+   "palette": {
+    "brick": "#9a968e",
+    "frame": "#3a3a3c"
+   },
+   "windowShape": {
+    "w": 0.72,
+    "h": 0.72,
+    "sill": 0.12
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#9a968e",
+    "lines": "#7e7a72",
+    "pitch": 5.8,
+    "rowPitch": 3.6
+   }
+  },
+  {
+   "wallSurfaces": [
+    30
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 2,
+   "ground": "glazed",
+   "palette": {
+    "brick": "#9a968e",
+    "frame": "#3a3a3c"
+   },
+   "windowShape": {
+    "w": 0.72,
+    "h": 0.72,
+    "sill": 0.12
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#9a968e",
+    "lines": "#7e7a72",
+    "pitch": 5.8,
+    "rowPitch": 3.6
+   }
+  },
+  {
+   "wallSurfaces": [
+    2
+   ],
+   "system": "ribbon-windows",
+   "storeys": 6,
+   "palette": {
+    "brick": "#3a3632",
+    "frame": "#2a2a2a"
+   },
+   "cladding": {
+    "kind": "boards",
+    "colour": "#3a3632",
+    "lines": "#2a2622",
+    "pitch": 0.15
+   }
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#9a968e",
+  "frame": "#3a3a3c",
+  "door": "#2a2a2a"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "budgetTriangles": 20000,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 5): the E front (surfaces 4, 5) from w04-68 (2025): a pale concrete grid of five bays by six storeys (cladding panel joints at the bay pitch and storey height), a large mullioned square window in each bay, the first bay blank concrete on floors 1-3 (openBays) and lettered S A / L T on the first floor (signs). The N and S fronts from w03-338s1 (2021) and w02-158s2 (2025) in the same grid; the W front from w01-248s1 (2021): dark boards with ribbon glazing.",
+  "Not drawn: the blank concrete bays on the N and S fronts, the mullion grids inside the windows, the external stair on the S."
+ ]
+}

@@ -10,6 +10,7 @@ import {boxBalconyProblems} from '../blockBuilding/boxBalcony.ts';
 import {balconyBandsProblems} from '../blockBuilding/balconyBands.ts';
 import {stackedBlocksProblems} from '../blockBuilding/stackedBlocks.ts';
 import {signBoardsProblems} from '../blockBuilding/signBoards.ts';
+import {signsProblems, terracesProblems, wallLightsProblems} from '../blockBuilding/wallFeatures.ts';
 import {claddingProblems} from './claddingIntent.ts';
 import {wallFamilyProblems} from './wallFamily.ts';
 import {FLOOR_BAND_LIMITS} from '../blockBuilding/components.ts';
@@ -21,8 +22,8 @@ import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 import {ribbonStoreysProblems} from './ribbonStoreysIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily', 'ribbonStoreys'];
-const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'blankWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'footprintParts', 'osmAliases', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily', 'ribbonStoreys', 'signs', 'wallLights', 'terraces'];
+const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'blankWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'shellClose', 'footprint', 'groundClamp', 'footprintParts', 'osmAliases', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
 export function validateLargeIntent(input: unknown): LargeBuildingIntent {
@@ -69,7 +70,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   if (intent?.draftedBy !== undefined) oneOf(intent.draftedBy, ['factory'], 'draftedBy');
   if (intent?.otherWalls !== undefined) oneOf(intent.otherWalls, [...LARGE_SYSTEMS, OTHER_WINDOW_GRID], 'otherWalls');
   problems.push(...blankWallsProblems(intent ?? {}));
-  bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair');
+  bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair'); bool(intent?.shellClose, 'shellClose');
+  if (intent?.shellClose && !intent?.shellRepair) problems.push('shellClose: only with shellRepair');
   if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag', 'core'], 'footprint');
   if (intent?.groundClamp !== undefined && typeof intent.groundClamp !== 'boolean') problems.push('groundClamp: boolean');
   if (intent?.footprintParts !== undefined && intent.footprintParts !== true) problems.push('footprintParts: true or absent');
@@ -163,7 +165,12 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       const sign = typeof w.signage === 'string' ? {text: w.signage} : w.signage;
       if (typeof sign?.text !== 'string' || !SIGN_TEXT.test(sign.text)) problems.push(`${at}.signage.text: 1..60 of A-Z a-z 0-9 & ' - . space`);
       if (typeof w.signage === 'object') {
-        for (const k of Object.keys(w.signage)) if (!['text', 'colour', 'mount', 'along'].includes(k)) problems.push(`${at}.signage.${k}: unknown field (text, colour, mount, along)`);
+        for (const k of Object.keys(w.signage)) if (!['text', 'colour', 'mount', 'along', 'up'].includes(k)) problems.push(`${at}.signage.${k}: unknown field (text, colour, mount, along, up)`);
+        if (w.signage.up !== undefined) {
+          const a = w.signage.up;
+          if (!Array.isArray(a) || a.length !== 2 || !a.every(x => typeof x === 'number' && x >= 0 && x <= 1) || a[1] - a[0] < 0.05 || a[1] - a[0] > 0.6) problems.push(`${at}.signage.up: [from, to] fractions 0..1 of the panel height, 0.05..0.6 apart`);
+          if (w.signage.along === undefined) problems.push(`${at}.signage.up: only with along`);
+        }
         if (w.signage.along !== undefined) {
           const a = w.signage.along;
           if (!Array.isArray(a) || a.length !== 2 || !a.every(x => typeof x === 'number' && x >= 0 && x <= 1) || a[1] - a[0] < 0.1) problems.push(`${at}.signage.along: [from, to] fractions 0..1 of the panel width, at least 0.1 apart`);
@@ -178,6 +185,15 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     if (w.windowBox !== undefined) {
       problems.push(...windowBoxProblems(w.windowBox, `${at}.windowBox`, w.baysPerStorey, typeof w.storeys === 'number' ? w.storeys : undefined));
       if (w.system === 'curtain-wall' || w.system === 'glazed-hall' || w.screen) problems.push(`${at}.windowBox: on a wall with a face (not curtain-wall, glazed-hall or screen)`);
+    }
+    if (w.signs !== undefined) {
+      problems.push(...signsProblems(w.signs, `${at}.signs`));
+      for (const [k, s] of (Array.isArray(w.signs) ? w.signs : []).entries()) if (s?.colour !== undefined) colour(s.colour, `${at}.signs[${k}].colour`);
+    }
+    if (w.wallLights !== undefined) problems.push(...wallLightsProblems(w.wallLights, `${at}.wallLights`));
+    if (w.terraces !== undefined) {
+      problems.push(...terracesProblems(w.terraces, `${at}.terraces`, typeof w.storeys === 'number' ? w.storeys : 0));
+      if (w.terraces?.colour !== undefined) colour(w.terraces.colour, `${at}.terraces.colour`);
     }
     if (w.signBoards !== undefined) {
       problems.push(...signBoardsProblems(w.signBoards, `${at}.signBoards`));
@@ -236,7 +252,15 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.balconies.bays !== undefined) { if (!Array.isArray(w.balconies.bays) || !w.balconies.bays.length) problems.push(`${at}.balconies.bays: list of bay indices`); else w.balconies.bays.forEach(b => count(b, `${at}.balconies.bays`, 0, (w.baysPerStorey ?? 80) - 1)); if (w.baysPerStorey === undefined) problems.push(`${at}.balconies.bays needs baysPerStorey`); }
       if (w.balconies.rail !== undefined) oneOf(w.balconies.rail, ['glass', 'bars', 'solid'], `${at}.balconies.rail`);
       const bk = Object.keys(w.balconies);
-      for (const k of bk) if (!['storeys', 'rail', 'every', 'first', 'bays', 'colour', 'deep', 'windows', 'run', 'brick'].includes(k)) problems.push(`${at}.balconies.${k}: unknown field (storeys, rail, every, first, bays, colour, deep, windows, run, brick)`);
+      for (const k of bk) if (!['storeys', 'rail', 'every', 'first', 'bays', 'colour', 'deep', 'windows', 'run', 'brick', 'edge', 'pane', 'posts'].includes(k)) problems.push(`${at}.balconies.${k}: unknown field (storeys, rail, every, first, bays, colour, deep, windows, run, brick, edge, pane, posts)`);
+      if (w.balconies.edge !== undefined) colour(w.balconies.edge, `${at}.balconies.edge`);
+      if (w.balconies.pane !== undefined) colour(w.balconies.pane, `${at}.balconies.pane`);
+      if (w.balconies.posts !== undefined) {
+        const ps = w.balconies.posts as {colour?: unknown; w?: unknown};
+        for (const k of Object.keys(ps ?? {})) if (!['colour', 'w'].includes(k)) problems.push(`${at}.balconies.posts.${k}: unknown field (colour, w)`);
+        colour(ps?.colour as string, `${at}.balconies.posts.colour`);
+        if (ps?.w !== undefined && !(typeof ps.w === 'number' && ps.w >= 0.04 && ps.w <= 0.3)) problems.push(`${at}.balconies.posts.w: 0.04..0.3 of the bay pitch`);
+      }
       if (w.balconies.brick !== undefined && typeof w.balconies.brick !== 'boolean') problems.push(`${at}.balconies.brick: true or false`);
       if (w.balconies.colour !== undefined) colour(w.balconies.colour, `${at}.balconies.colour`);
       if (w.balconies.deep !== undefined && !(typeof w.balconies.deep === 'number' && w.balconies.deep >= 0.08 && w.balconies.deep <= 0.45)) problems.push(`${at}.balconies.deep: fraction 0.08..0.45 of the storey height`);
@@ -662,7 +686,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
           for (const kind of ['balconies', 'loggias'] as const) {
             const b = h?.[kind] as {storeys?: unknown; bays?: unknown; rail?: unknown} | undefined;
             if (b === undefined) continue;
-            const allowed = kind === 'balconies' ? ['storeys', 'bays', 'rail'] : ['storeys', 'bays', 'w', 'h', 'sill', 'deep', 'rail', 'lights'];
+            const allowed = kind === 'balconies' ? ['storeys', 'bays', 'rail', 'edge', 'pane'] : ['storeys', 'bays', 'w', 'h', 'sill', 'deep', 'rail', 'lights'];
+            for (const ck of ['edge', 'pane'] as const) { const v = (b as Record<string, unknown>)?.[ck]; if (kind === 'balconies' && v !== undefined) colour(v, `${hat}.balconies.${ck}`); }
             for (const key of Object.keys(b ?? {})) if (!allowed.includes(key)) problems.push(`${hat}.${kind}.${key}: unknown field (${allowed.join(', ')})`);
             if (!Array.isArray(b?.storeys) || !b.storeys.length || b.storeys.some(q => !Number.isInteger(q) || q < 1 || q > 39)) problems.push(`${hat}.${kind}.storeys: list of storeys (1 = first floor)`);
             if (b?.bays !== undefined) {

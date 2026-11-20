@@ -163,3 +163,24 @@ test('prepareShell footprint bag: a shifted LoD2.2 shell is rebuilt on the BAG o
   assert.ok(r.facts.wallsRD!.every(w => w.surface >= REPAIR_SURFACE_BASE));
   assert.ok(Math.max(...r.facts.roofsRD.flatMap(x => x.ringsRD[0].map(p => p[2] - 0.5))) <= H + 1e-6);
 });
+
+// shellClose (lane houthavens-memel-wiborg-20261120): fan caps for small warped loops, slivers for lone leftovers.
+test('close: a small warped open top gets a fan cap only with close', () => {
+  const s = 0.6, tops = [1, 1, 1.3, 1], c: [number, number][] = [[0, 0], [s, 0], [s, s], [0, s]];
+  const walls = c.map((a, i) => { const j = (i + 1) % 4, b = c[j]; return [[[a[0], 0, a[1]], [b[0], 0, b[1]], [b[0], tops[j], b[1]], [a[0], tops[i], a[1]]] as V3[]]; });
+  const floor: V3[][] = [[[0, 0, 0], [0, 0, s], [s, 0, s], [s, 0, 0]]];
+  const off = repairHost(hostTriangles(walls, [floor]));
+  const on = repairHost(hostTriangles(walls, [floor]), 3, true);
+  assert.ok(off.openAfterM > 2, `left open without close: ${off.openAfterM}`);
+  assert.equal(on.patches.filter(p => p.kind === 'cap').length, 1);
+  assert.ok(on.openAfterM < 0.05, `closed with close: ${on.openAfterM}`);
+});
+
+test('close: Revaleiland 58 (250187), a warped roof facet ending 6 cm above its neighbour corner, closes with the sliver', async () => {
+  const fs = await import('node:fs');
+  const facts = JSON.parse(fs.readFileSync('scripts/building-recipes/houses/revaleiland-58-250187/facts.json', 'utf8')) as BuildingFacts;
+  const off = prepareShell(facts, {repair: true, footprint: 'lod22'}).report, on = prepareShell(facts, {repair: true, footprint: 'lod22', close: true}).report;
+  assert.ok(off.openAfterM > 2, `open after the passes: ${off.openAfterM}`);
+  assert.ok(on.openAfterM < 0.5, `open with close: ${on.openAfterM}`);
+  assert.equal(on.patches.cap, off.patches.cap + 1);
+});

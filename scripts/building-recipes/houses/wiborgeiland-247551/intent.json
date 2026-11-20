@@ -136,7 +136,9 @@
        1,
        3
       ],
-      "rail": "glass"
+      "rail": "glass",
+      "edge": "#c8c6c0",
+      "pane": "#a8b8bc"
      }
     },
     {
@@ -172,7 +174,9 @@
       "bays": [
        1
       ],
-      "rail": "glass"
+      "rail": "glass",
+      "edge": "#c8c6c0",
+      "pane": "#a8b8bc"
      }
     },
     {
@@ -242,7 +246,9 @@
     "bays": [
      2
     ],
-    "rail": "glass"
+    "rail": "glass",
+    "edge": "#c8c6c0",
+    "pane": "#a8b8bc"
    },
    "dressings": {
     "colour": "#e8e6e0",
@@ -283,7 +289,9 @@
     "bays": [
      2
     ],
-    "rail": "glass"
+    "rail": "glass",
+    "edge": "#c8c6c0",
+    "pane": "#a8b8bc"
    },
    "dressings": {
     "colour": "#e8e6e0",
@@ -342,7 +350,9 @@
        6,
        10
       ],
-      "rail": "glass"
+      "rail": "glass",
+      "edge": "#c8c6c0",
+      "pane": "#a8b8bc"
      }
     }
    ]
@@ -433,7 +443,9 @@
       "bays": [
        0
       ],
-      "rail": "glass"
+      "rail": "glass",
+      "edge": "#c8c6c0",
+      "pane": "#a8b8bc"
      }
     },
     {
@@ -471,7 +483,9 @@
       "bays": [
        0
       ],
-      "rail": "glass"
+      "rail": "glass",
+      "edge": "#c8c6c0",
+      "pane": "#a8b8bc"
      }
     },
     {
@@ -602,7 +616,7 @@
  "budgetTriangles": 40000,
  "notes": [
   "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120): the pand is drawn in the building tiles as OSM w1229657355 (crops via --footprint). NW panel 32 (46 m) split from w02-321s1 (2021-03-24) and w02-321s2 (2024-10-09); SW panels 62 and 37 from w03-230s1, panel 23 from w03-230s2; SE panel 14 (58 m) from w01-140s1 (2021-03-24) and w01-140s3 (2022-04-08), its middle 19 m has no crop and keeps the group brick; NE panels 69 and 1 from w04-50 (2024-10-16), panel 29 from w06-50. Row splits cut at the 3DBAG gable joints of panels 32 and 14 (measured along the panel), so each house takes its own eaves. The building tiles lack the pand and draw it as OSM w1229657355 (18 m): an osmAlias so the runtime hides them under the model.",
-  "New kit fields: dress.shutters (orange leaves beside the centre column of the SE gable) and, round 3, houses[].balconies/loggias: the NW quay gables' balcony columns, the loggia column of the NW brick house, the SE brown house's loggia column (storeys 1-3: the fourth would cut the low roof behind it) and two SE balcony columns. SW panel 23 is a row split again: the buff 3.7 m strip at its west end, then the dark front with three balcony columns. Not drawn: the white balcony column frames on the SW red front (drawn as glass balconies)."
+  "New kit fields: dress.shutters (orange leaves beside the centre column of the SE gable) and, round 3, houses[].balconies/loggias: the NW quay gables' balcony columns, the loggia column of the NW brick house, the SE brown house's loggia column (storeys 1-3: the fourth would cut the low roof behind it) and two SE balcony columns. SW panel 23 is a row split again: the buff 3.7 m strip at its west end, then the dark front with three balcony columns. Not drawn: the white balcony column frames on the SW red front (drawn as glass balconies). Round 4: every glass balcony has a pale concrete slab edge and a pale glass pane between dark cheeks (balconies.edge / pane), as the photos read."
  ],
  "osmAliases": [
   "w1229657355"

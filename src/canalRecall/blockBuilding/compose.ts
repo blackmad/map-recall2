@@ -741,7 +741,7 @@ function drawBalcony(c: Ctx, b: BalconyParams, cell: Cell, seed: number) {
   c.box(slab, a0, a1, v0 - 0.02, v0 - 0.02 + sh, 0, depth, part);
   part = c.part();
   const rv0 = v0 - 0.02 + sh;
-  const rslot = rail.slot ?? (rail.kind === 'glass' ? 'glassRail' : rail.kind === 'solid' ? 'slab' : 'rail');
+  const rslot = rail.pane ?? rail.slot ?? (rail.kind === 'glass' ? 'glassRail' : rail.kind === 'solid' ? 'slab' : 'rail');
   if (rail.kind === 'bars') {
     c.quadRaw(rail.slot ?? 'rail', a0 + 0.05, rv0, a1 - 0.05, rv0 + rh, depth - 0.03, part);
   } else if (rail.kind === 'rods') {
@@ -755,6 +755,10 @@ function drawBalcony(c: Ctx, b: BalconyParams, cell: Cell, seed: number) {
   c.box(cheek, a0, a0 + 0.06, rv0, rv0 + rh, 0, depth, part);
   c.box(cheek, a1 - 0.06, a1, rv0, rv0 + rh, 0, depth, part);
   if (rail.top !== null) { part = c.part(); c.box(rail.top ?? slab, a0, a1, rv0 + rh, rv0 + rh + 0.05, depth - 0.07, depth, part); }
+  if (b.posts) {
+    const pw = b.posts.w ?? 0.2; part = c.part();
+    for (const [lo, hi] of [[a0, a0 + pw], [a1 - pw, a1]]) { const top = postTop(c.p, lo, hi, rv0, v1); if (top > rv0) c.box(b.posts.slot, lo, hi, rv0, top, depth - 0.2, depth + 0.02, part); }
+  }
   drawBalconyBack(c, b, cell, a0, a1, seed);
 }
 
@@ -771,6 +775,17 @@ function drawBalconyBack(c: Ctx, b: BalconyParams, cell: Cell, a0: number, a1: n
     const slot = b.piers.slot ?? 'wall', out = b.piers.out ?? 0.12;
     c.box(slot, u0, a0, v0, v1, 0, out, part); c.box(slot, a1, u1, v0, v1, 0, out, part);
   }
+}
+
+/** Wall a gallery post keeps above its top at the roof line (m): the post stands a slab depth proud of the wall, so from
+ *  the street a post ending flush with the parapet reads as sticking up past it (Revaleiland 253889 NE). */
+export const POST_ROOF_CLEAR = 0.8;
+
+/** A gallery post's top: the storey top, clipped down (10 cm steps) until the wall panel still runs `POST_ROOF_CLEAR`
+ *  above it, so a post at the roof line, a lower roof or a tower junction ends under the wall's top (rv0: none fits). */
+function postTop(p: Panel, lo: number, hi: number, rv0: number, v1: number): number {
+  for (let top = v1; top > rv0 + 0.3; top -= 0.1) if (fitsPanel(p, rectPoly(lo, hi, rv0, top + POST_ROOF_CLEAR))) return top;
+  return rv0;
 }
 
 /** Rods per balcony rail run at most (layered kit): a 40 m run of 13 cm rods cost 600 triangles a storey. */
@@ -795,7 +810,7 @@ function drawBalconyRuns(c: Ctx) {
       const { b, cell } = run[0], a0 = run[0].a0, a1 = run[run.length - 1].a1, v0 = cell.v0;
       const depth = (b.depth ?? 1.4) + (floor % 2) * SHEET_PITCH, sh = b.slab?.h ?? 0.2, slab = b.slab?.slot ?? 'slab', rail = b.rail ?? {}, rh = rail.h ?? 1.05;
       if (!fitsPanel(c.p, rectPoly(a0, a1, v0 - 0.01, Math.min(cell.v1, v0 + sh + rh)))) continue;
-      const part = c.part(), rv0 = v0 - 0.02 + sh, rs = rail.slot ?? (rail.kind === 'glass' ? 'glassRail' : rail.kind === 'solid' ? 'slab' : 'rail');
+      const part = c.part(), rv0 = v0 - 0.02 + sh, rs = rail.pane ?? rail.slot ?? (rail.kind === 'glass' ? 'glassRail' : rail.kind === 'solid' ? 'slab' : 'rail');
       // Faces as needed: closed at the back (3DBAG faces merged into the panel stand a few cm off its plane, so a back edge
       // need not lie on the wall); a cheek's bottom stands on the slab and is left out.
       const F = (slot: Slot, u0: number, u1: number, lo: number, hi: number, d0: number, d1: number, faces: string) => {
@@ -820,6 +835,17 @@ function drawBalconyRuns(c: Ctx) {
         for (let k = 1; k < n; k++) { const u = i0 + (i1 - i0) * k / n; c.quadRaw(rs, u - 0.012, rv0, u + 0.012, railTop, depth - 0.03, part); }
         c.quadRaw(rs, i0, rv0 + 0.05, i1, rv0 + 0.1, depth - 0.03, part);
       } else c.quadRaw(rs, i0, rv0, i1, railTop, depth - 0.03, part);
+      // gallery posts (opt-in): a fin at every bay joint of the run, slab to storey top, proud of the slab front
+      if (b.posts) {
+        const pw = b.posts.w ?? 0.2, joints = [a0, ...run.slice(1).map(x => x.a0), a1];
+        // a post runs to the storey top only under another gallery; on the top gallery it ends at the rail's top
+        const above = byFloor.get(floor + 1) ?? [];
+        for (const u of joints) {
+          const lo = Math.max(a0, u - pw / 2), hi = Math.min(a1, u + pw / 2), carried = above.some(x => x.a0 <= u + 1e-6 && x.a1 >= u - 1e-6);
+          const top = carried ? postTop(c.p, lo, hi, rv0, cell.v1) : rv0 + rh;
+          if (top > rv0) F(b.posts.slot, lo, hi, rv0, top, depth - 0.2, depth + SHEET_PITCH, 'fktblr');
+        }
+      }
     }
   }
 }

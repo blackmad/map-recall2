@@ -37,6 +37,7 @@ import type {ArcadePiersIntent} from '../blockBuilding/arcadePiers.ts';
 import type {WindowBoxIntent} from '../blockBuilding/windowBox.ts';
 import type {GalleryIntent} from '../blockBuilding/gallery.ts';
 import type {SignBoardIntent} from '../blockBuilding/signBoards.ts';
+import type {WallSignIntent, WallLightIntent, TerraceIntent} from '../blockBuilding/wallFeatures.ts';
 
 /**
  * `shouldered` (Transvaalbuurt 1911-1914: Retiefstraat 71D-73A, Transvaalstraat 42-44): a low broad gable whose sides
@@ -1215,7 +1216,8 @@ export interface LargeHouseIntent {
    * group's balconies in this house only, and take the group's `colour`/`deep`/`brick` (lane houthavens-memel-wiborg-20261120:
    * Wiborgeiland 1-72's quay houses each with their own balcony column). Absent: the group's, byte-identical.
    */
-  balconies?: {storeys: number[]; bays?: number[]; rail?: 'glass' | 'bars' | 'solid'};
+  balconies?: {storeys: number[]; bays?: number[]; rail?: 'glass' | 'bars' | 'solid';
+    /** the house's balcony slab edge and rail pane colours (as the group's `balconies.edge` / `pane`; absent: the group's) */ edge?: string; pane?: string};
   /** The house's own loggias, `bays` within the house (default every bay), the group loggia's proportions unless given;
    *  they replace the group's loggias in this house only. Absent: the group's, byte-identical. */
   loggias?: {storeys: number[]; bays?: number[]; w?: number; h?: number; sill?: number; deep?: number; rail?: 'glass' | 'bars' | 'solid' | 'none'; lights?: number};
@@ -1270,7 +1272,11 @@ export interface LargeWallIntent {
   /** Stroke-font lettering: over the entrance (`fascia`, default; on the frieze of a portal), on the wall above the ground floor (`wall`), on the entrance-hall glass (`glazing`), the canopy edge (`canopy`) or a name band under the cornice (`cornice`, on the widest panel). */
   signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice';
     /** `wall` mount only: [from, to] fractions of the widest panel's width from the viewer's left that the lettering spans (default centred over 0.6 of the panel; Nieuwpoortkade 2's white-brick "da vinci creatieve ruimtes" runs over the left half, issue #83) */
-    along?: [number, number]};
+    along?: [number, number];
+    /** `wall` mount with `along` only: [from, to] fractions of the panel's height from its foot that the lettering
+     *  spans, letters as tall as that band (0.15..1, at least 0.05 apart): a painted house number two metres tall on a
+     *  blank base (Danzigerbocht 45, Koivistokade 41). Absent: one strip between the storeys, at most 1.1 m (byte-identical) */
+    up?: [number, number]};
   /** Recessed sectional garage doors in the ground storey, from the right end of the widest panel. */
   garageDoors?: number;
   /** Recessed sectional garage doors in exactly these ground-storey bays of the widest panel (needs `baysPerStorey`); an alternative to `garageDoors`. */
@@ -1289,7 +1295,11 @@ export interface LargeWallIntent {
     /** with `windows`: the balcony runs the full bay pitch, so neighbouring bays join into one front-wide balcony in front of
      *  punched windows (Stadsloket West's continuous galleries); absent: the bay's windows plus 0.2 m, byte-identical */ run?: boolean;
     /** slab (and a `solid` rail: the parapet) in the wall's own brick instead of the stone slot (Revaleiland 437's red
-     *  brick balconies, lane houthavens-memel-wiborg-20261120); absent: stone slab, byte-identical */ brick?: boolean};
+     *  brick balconies, lane houthavens-memel-wiborg-20261120); absent: stone slab, byte-identical */ brick?: boolean;
+    /** the slab in its own colour: a pale concrete or metal fascia edge (absent: stone or brick slab, byte-identical) */ edge?: string;
+    /** the rail infill in its own colour (a pale glass pane between frame-coloured cheeks and top; absent: the rail colour) */ pane?: string;
+    /** gallery posts: a fin at every bay joint of a balcony run, slab to storey top, `w` of the bay pitch (0.04..0.3,
+     *  default 0.2 m), in `colour` (Revaleiland 253889's concrete gallery fins; absent: none) */ posts?: {colour: string; w?: number}};
   /**
    * Grouped windows (issue #35): each bay's opening (`windowShape.w` of the bay) is `count` separate windows with `gap`
    * of the bay (default 0.06) of wall between them, on the listed `storeys` (default every upper storey; 0 = ground).
@@ -1609,6 +1619,16 @@ export interface LargeWallIntent {
    * in `colour` (default the door colour), standing proud of the wall and any cladding. Absent = byte-identical.
    */
   signBoards?: SignBoardIntent[];
+  /** More lettering on the main panel, each in its own `along` / `up` band (blockBuilding/wallFeatures.ts; Danzigerbocht
+   *  45's FIGHT DISTRICT under the painted 45). Absent = byte-identical. */
+  signs?: WallSignIntent[];
+  /** Framed glazed slots or single windows standing on the main panel's wall, `along` / `up` fractions, with `lights`
+   *  columns and `rows` (blockBuilding/wallFeatures.ts; the black base's tall glazed slot). Absent = byte-identical. */
+  wallLights?: WallLightIntent[];
+  /** White layered terrace floors across every panel at these storeys' floor lines, `deep` m (default 1.6), open rail,
+   *  optional thin canopy roof at the top (blockBuilding/wallFeatures.ts; Danzigerbocht 45's office storeys). Absent =
+   *  byte-identical. */
+  terraces?: TerraceIntent;
   /**
    * A false front (blockBuilding/signBoards.ts): on every panel of the group whose top rises above its eaves (the gable
    * ends of a sawtooth or pitched hall roof), a flat slab from the eaves to the top in the cladding sheet's colour (else the
@@ -1696,6 +1716,13 @@ export interface LargeBuildingIntent {
    * caps, wall strips and seams before the fit. Patches are wall surfaces from 90000 up (`walls.ts` lists them).
    */
   shellRepair?: boolean;
+  /**
+   * With `shellRepair`: also close what the passes leave (shellRepair.ts `close`): a small warped loop (open edges at most
+   * 3 m, at most 0.6 m off its plane) gets a fan cap, and a lone leftover piece whose end stands within 0.1 m of a host
+   * vertex gets the sliver triangle to it (Revaleiland 58: a warped roof facet ending 6 cm above its neighbour's corner).
+   * Absent: byte-identical.
+   */
+  shellClose?: boolean;
   /**
    * `bag`: build the massing on the BAG LoD0 outline (LoD2.2 roof planes clipped to it, walls from the repair strips)
    * when the LoD2.2 ground has drifted from it (IoU < 0.90). `core` (coreFootprint.ts, Blend 2026-10-29): the same on

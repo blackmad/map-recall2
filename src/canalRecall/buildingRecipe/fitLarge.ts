@@ -29,6 +29,7 @@ import {wallFamilyCladding} from './wallFamily.ts';
 import {fitArcadePiers, type ArcadePiersFit} from '../blockBuilding/arcadePiers.ts';
 import {fitWindowBox, type WindowBoxFit} from '../blockBuilding/windowBox.ts';
 import type {SignBoardFit} from '../blockBuilding/signBoards.ts';
+import {TERRACE, type TerraceFit, type WallLightFit} from '../blockBuilding/wallFeatures.ts';
 import {fitGallery, type GalleryFit} from '../blockBuilding/gallery.ts';
 import {fitBoxBalconies, type BoxBalconyFit} from '../blockBuilding/boxBalcony.ts';
 import {fitBalconyBands, type BalconyBandsFit} from '../blockBuilding/balconyBands.ts';
@@ -85,7 +86,7 @@ export interface LargeGroupFit {
   /** stone dressings (intent `dressings`, drawn by blockBuilding/dressings.ts) and their slot: the group's stone, or `dress@g<i>` in `dressings.colour` */
   dressings?: StoneDressings & {slot: string};
   garage: {panel: number; bays: number[]} | null;
-  signage: {text: string; colour: string; mount: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'; along?: [number, number]} | null;
+  signage: {text: string; colour: string; mount: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'; along?: [number, number]; up?: [number, number]} | null;
   police: {stripe: boolean; lamp: boolean} | null;
   /** loading-door axis (bay % every === first) and the name boards over its ground portals on the main panel */
   hoist?: {every: number; first: number} | {bays: number[]};
@@ -115,6 +116,12 @@ export interface LargeGroupFit {
   windowBox?: WindowBoxFit;
   /** flat sign boards on the main panel (intent `signBoards`, blockBuilding/signBoards.ts) */
   signBoards?: SignBoardFit[];
+  /** more lettering on the main panel (intent `signs`): text, band and its `sign@g<i>k<k>` slot */
+  signs?: {text: string; along: [number, number]; up: [number, number]; slot: string}[];
+  /** framed glazed slots on the main panel (intent `wallLights`) */
+  wallLights?: WallLightFit[];
+  /** terrace floors (intent `terraces`) in `terrace@g<i>`, the rail in `rail@tg<i>` */
+  terraces?: TerraceFit;
   /** a false front over the panels whose top rises above their eaves (intent `falseFront`), in this slot */
   falseFront?: {slot: string};
   /** open galleries (verandas) over a span of bays of the main panel (intent `gallery`, blockBuilding/gallery.ts), one entry per gallery */
@@ -347,7 +354,7 @@ export function shellOfWalls(walls: readonly {surface?: number}[]): number[] {
 /** The facts the fit works on: the shell-repaired facts when the intent opts in (shellRepair.ts), else the input. */
 export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFacts): {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport; roofTidy?: RoofTidyReport} {
   const shelled: {facts: BuildingFacts; shell?: ShellRepairReport} = !intent.shellRepair && (intent.footprint ?? 'lod22') === 'lod22' ? {facts}
-    : (r => ({facts: r.facts, shell: r.report}))(prepareShell(facts, {repair: !!intent.shellRepair, footprint: intent.footprint ?? 'lod22'}));
+    : (r => ({facts: r.facts, shell: r.report}))(prepareShell(facts, {repair: !!intent.shellRepair, footprint: intent.footprint ?? 'lod22', ...(intent.shellClose ? {close: true} : {})}));
   let out: {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport; roofTidy?: RoofTidyReport} = shelled;
   if (intent.roof?.levelRooftop) {
     // roof.levelRooftop (roofLevel.ts): the rooftop above the photographed fronts becomes one flat level, after any shell repair
@@ -460,6 +467,11 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     // Balcony rails in their own colour (black iron): a slot of their own, `rail@bg<i>`.
     const balconyRail = w.balconies?.colour ? `rail@bg${gi}` : undefined;
     if (balconyRail) palette[balconyRail] = swatch(w.balconies!.colour!);
+    // opt-in balcony slab edge, glass pane and gallery posts in their own slots (absent: byte-identical)
+    const balconyEdge = w.balconies?.edge ? `edge@bg${gi}` : undefined, balconyPane = w.balconies?.pane ? `pane@bg${gi}` : undefined, balconyPost = w.balconies?.posts ? `post@bg${gi}` : undefined;
+    if (balconyEdge) palette[balconyEdge] = swatch(w.balconies!.edge!);
+    if (balconyPane) palette[balconyPane] = swatch(w.balconies!.pane!);
+    if (balconyPost) palette[balconyPost] = swatch(w.balconies!.posts!.colour);
     // A window box in its own frame colour and its deck slab (windowBox.frame, windowBox.deck): slots of their own.
     // A side light's own frame colour (sideLight.colour, GitHub #86) and loggia-band rails in their own colour: joinery slots of their own.
     const sashSlot = w.sideLight ? `frame@sl${gi}` : undefined;
@@ -548,6 +560,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.storeyShapes ? {storeyShapes: w.storeyShapes.flatMap(e => e.storeys.filter(q => q < st.heights.length).map(q => ({storey: q, w: e.w, h: e.h, sillM: r3(e.sill * st.heights[q])})))} : {}),
       ...(w.windowGroup ? {windowGroup: {count: w.windowGroup.count, gapM: r3((w.windowGroup.gap ?? 0.06) * pitchM), ...(w.windowGroup.storeys ? {storeys: [...w.windowGroup.storeys]} : {})}} : {}),
       ...(balconyRail ? {balconyRailSlot: balconyRail} : {}), ...(w.balconies?.deep !== undefined ? {balconyDeepM: r3(w.balconies.deep * (uppers[0] ?? st.heights[0]))} : {}), ...(w.balconies?.windows ? {balconyOnWindows: true} : {}), ...(w.balconies?.run ? {balconyRun: true} : {}), ...(w.balconies?.brick ? {balconyBrick: true} : {}),
+      ...(balconyEdge ? {balconySlabSlot: balconyEdge} : {}), ...(balconyPane ? {balconyPaneSlot: balconyPane} : {}), ...(balconyPost ? {balconyPosts: {slot: balconyPost, w: r3((w.balconies!.posts!.w ?? 0.2 / pitchM) * pitchM)}} : {}),
       ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
       ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {}), ...(w.openBays ? {openBays: w.openBays, bays} : {}),
       ...(w.plinth ? {plinth: {storeys: [...plinthStoreys], ...(w.plinth.bays ? {bays: [...w.plinth.bays]} : {}), lights: w.plinth.lights, sill: w.plinth.sill ?? PLINTH.sill, h: w.plinth.h ?? PLINTH.h, pier: w.plinth.pier ?? PLINTH.pier, transom: w.plinth.transom ?? PLINTH.transom}, bays} : {}),
@@ -593,7 +606,11 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
         // the house's own balconies / loggias (bays within the house) replace the group's; a brick balcony takes the house's brick
         const hb = h.balconies, hl = h.loggias, brickBalcony = !!(w.balconies?.brick && slot !== slots.wall && (hb || w.balconies));
         const houseSlots = frameSlot || brickBalcony ? {slots: {...sysOpts.slots, ...(frameSlot ? {frame: frameSlot} : {}), ...(brickBalcony ? {wall: slot} : {})}} : {};
-        const houseBalconies = hb ? {balconyStoreys: [...hb.storeys], balconyRail: hb.rail ?? w.balconies?.rail, balconyBays: hb.bays ? {bays: [...hb.bays]} : undefined} : {};
+        const hEdge = hb?.edge ? `edge@g${gi}h${k}` : undefined, hPane = hb?.pane ? `pane@g${gi}h${k}` : undefined;
+        if (hEdge) palette[hEdge] = swatch(hb!.edge!);
+        if (hPane) palette[hPane] = swatch(hb!.pane!);
+        const houseBalconies = hb ? {balconyStoreys: [...hb.storeys], balconyRail: hb.rail ?? w.balconies?.rail, balconyBays: hb.bays ? {bays: [...hb.bays]} : undefined,
+          ...(hEdge ? {balconySlabSlot: hEdge} : {}), ...(hPane ? {balconyPaneSlot: hPane} : {})} : {};
         const houseLoggias = hl ? {loggias: {storeys: [...hl.storeys], ...(hl.bays ? {bays: [...hl.bays]} : {}), w: hl.w ?? w.loggias?.w ?? LOGGIA.w, h: hl.h ?? w.loggias?.h ?? LOGGIA.h, sill: hl.sill ?? w.loggias?.sill ?? LOGGIA.sill,
           deep: hl.deep ?? w.loggias?.deep ?? LOGGIA.deep, rail: hl.rail ?? w.loggias?.rail ?? LOGGIA.rail, lights: hl.lights ?? w.loggias?.lights ?? LOGGIA.lights, railSlot: railSlot ?? slots.frame}} : {};
         systems[name] = {...largeSystem(w.system, {...sysOpts, pitchM: pk, lines: stK.lines, bays: nb, ...houseSlots, ...houseBalconies, ...houseLoggias,
@@ -623,7 +640,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     }
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
-      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot && w.spandrels ? {spandrels: {sill: w.spandrels.sill ?? 0, head: w.spandrels.head ?? 0, slot: spandrelSlot}} : {}), ...(spandrelSlot && w.floorBands ? {floorBands: {share: w.floorBands.share, lift: w.floorBands.lift ?? 0, roof: !!w.floorBands.roof, slot: spandrelSlot}} : {}), ...(screenSlot ? {meshScreen: {storeys: [...w.meshScreen!.storeys], from: w.meshScreen!.from ?? MESH_SCREEN.from, to: w.meshScreen!.to ?? MESH_SCREEN.to, joint: w.meshScreen!.joint ?? MESH_SCREEN.joint, slot: screenSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(w.brickStoreys ? {brickStoreys: w.brickStoreys.map((b, k) => { const sl = `painted@g${gi}s${k}`; palette[sl] = swatch(b.brick); return {storeys: [...b.storeys], slot: sl}; })} : {}), ...(w.mansard ? {mansard: {storeys: [...w.mansard.storeys], slot: (palette[`mansard@g${gi}`] = swatch(w.mansard.colour ?? ROOF_COLOURS.slate.steep), `mansard@g${gi}`)}} : {}), ...(pilasters ? {pilasters} : {}), ...(dressings ? {dressings} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia', ...('along' in sign && sign.along ? {along: [sign.along[0], sign.along[1]] as [number, number]} : {})} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
+      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot && w.spandrels ? {spandrels: {sill: w.spandrels.sill ?? 0, head: w.spandrels.head ?? 0, slot: spandrelSlot}} : {}), ...(spandrelSlot && w.floorBands ? {floorBands: {share: w.floorBands.share, lift: w.floorBands.lift ?? 0, roof: !!w.floorBands.roof, slot: spandrelSlot}} : {}), ...(screenSlot ? {meshScreen: {storeys: [...w.meshScreen!.storeys], from: w.meshScreen!.from ?? MESH_SCREEN.from, to: w.meshScreen!.to ?? MESH_SCREEN.to, joint: w.meshScreen!.joint ?? MESH_SCREEN.joint, slot: screenSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(w.brickStoreys ? {brickStoreys: w.brickStoreys.map((b, k) => { const sl = `painted@g${gi}s${k}`; palette[sl] = swatch(b.brick); return {storeys: [...b.storeys], slot: sl}; })} : {}), ...(w.mansard ? {mansard: {storeys: [...w.mansard.storeys], slot: (palette[`mansard@g${gi}`] = swatch(w.mansard.colour ?? ROOF_COLOURS.slate.steep), `mansard@g${gi}`)}} : {}), ...(pilasters ? {pilasters} : {}), ...(dressings ? {dressings} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia', ...('along' in sign && sign.along ? {along: [sign.along[0], sign.along[1]] as [number, number]} : {}), ...('up' in sign && sign.up ? {up: [sign.up[0], sign.up[1]] as [number, number]} : {})} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
       ...(w.hall ? {hall: {baseM: r3(w.hall.base * eaves), lights: w.hall.lights, rows: w.hall.rows}} : {}),
       ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs, ...(colGlass ? {glass: colGlass} : {})}} : {}),
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),
@@ -632,6 +649,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(houses ? {houses} : {}),
       ...(w.arcadePiers ? {arcadePiers: fitArcadePiers(w.arcadePiers, slots.stone)} : {}),
       ...(w.windowBox ? {windowBox: fitWindowBox(w.windowBox, {frame: boxFrame ?? slots.frame, glass: slots.glass, ...(boxDeck ? {deck: boxDeck} : {})}, main ? main.uMax - main.uMin : undefined, bays)} : {}),
+      ...(w.signs ? {signs: w.signs.map((s, k) => { const sl = `sign@g${gi}k${k}`; palette[sl] = swatch(s.colour ?? '#e8e8e4'); return {text: s.text, along: [s.along[0], s.along[1]] as [number, number], up: [s.up[0], s.up[1]] as [number, number], slot: sl}; })} : {}),
+      ...(w.wallLights ? {wallLights: w.wallLights.map(l => ({along: [l.along[0], l.along[1]] as [number, number], up: [l.up[0], l.up[1]] as [number, number], lights: l.lights ?? 1, rows: l.rows ?? 1}))} : {}),
+      ...(w.terraces ? {terraces: ((t) => { const sl = `terrace@g${gi}`, rl = `rail@tg${gi}`; palette[sl] = swatch(t.colour ?? '#e4e4e0'); palette[rl] = swatch(t.colour ?? '#e4e4e0'); return {storeys: [...t.storeys], deep: t.deep ?? TERRACE.deep, rail: t.rail ?? true, roof: !!t.roof, slot: sl, railSlot: rl, ...(t.posts ? {posts: t.posts} : {})}; })(w.terraces)} : {}),
       ...(w.signBoards ? {signBoards: w.signBoards.map((b, k) => { const sl = `signboard@g${gi}k${k}`; palette[sl] = swatch(b.colour ?? pal.door); return {along: [b.along[0], b.along[1]] as [number, number], up: [b.up[0], b.up[1]] as [number, number], slot: sl}; })} : {}),
       ...(w.falseFront ? {falseFront: {slot: cladSlot ?? slots.wall}} : {}),
       ...(w.ribbonStoreys ? {ribbonStoreys: w.ribbonStoreys.flatMap(r => r.storeys)} : {}),

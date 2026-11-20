@@ -1,0 +1,233 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "houthavens-252532",
+ "pandId": "0363100012252532",
+ "address": "The Student Hotel / Student Experience, Houthavens, 2020: stepped blocks of up to ten storeys clad in blue-grey metal panels with staggered square windows over a fully glazed ground storey",
+ "sources": [
+  {
+   "id": "pano-2024-10-22-w03-251s1",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-22_06-34-31_01439/",
+   "image": "source-data://pand-reference-walls/0363100012252532/w03-251s1.jpg",
+   "sha256": "283b651562c2f68ff1980f7209d168246bafe32dcf3ead28872a1b2482504f56",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-22-w03-251s2",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-22_06-34-31_01435/",
+   "image": "source-data://pand-reference-walls/0363100012252532/w03-251s2.jpg",
+   "sha256": "08b77eb8faa6436018ffc12225c50774719f49a3d61fa119d914edf82004e384",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-08-w04-71s1",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002498_pano_0002_000159/",
+   "image": "source-data://pand-reference-walls/0363100012252532/w04-71s1.jpg",
+   "sha256": "1fef6389367cf65ccc71571cc1478330295c2c93c9d955a60d7b58bba20436a1",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-14-w04-71s2",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002854_pano_0020_000682/",
+   "image": "source-data://pand-reference-walls/0363100012252532/w04-71s2.jpg",
+   "sha256": "753862d95a9a3b7e4a682e42d183c594a92e71f843079884880ebabc717ef9ed",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-22-w01-161s1",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-22_06-34-31_01424/",
+   "image": "source-data://pand-reference-walls/0363100012252532/w01-161s1.jpg",
+   "sha256": "e943e716829a52efa17631c77d4d6964953b249a47774602f6497f5c72057426",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-14-w02-341s1",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002854_pano_0020_000691/",
+   "image": "source-data://pand-reference-walls/0363100012252532/w02-341s1.jpg",
+   "sha256": "702c0dc993f32a339379d3801d74c9f7c439506bf362c2c01cc03653f8803fa4",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    160
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 12,
+   "ground": "glazed",
+   "storeyFactors": [
+    1.5,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "palette": {
+    "brick": "#4a5868",
+    "frame": "#d8dade"
+   },
+   "windowShape": {
+    "w": 0.36,
+    "h": 0.5,
+    "sill": 0.25
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#4a5868",
+    "lines": "#3a4654",
+    "pitch": 3.0,
+    "rowPitch": 2.9,
+    "from": 0.15
+   }
+  },
+  {
+   "wallSurfaces": [
+    26,
+    153
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 11,
+   "ground": "glazed",
+   "storeyFactors": [
+    1.5,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "palette": {
+    "brick": "#4a5868",
+    "frame": "#d8dade"
+   },
+   "windowShape": {
+    "w": 0.36,
+    "h": 0.5,
+    "sill": 0.25
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#4a5868",
+    "lines": "#3a4654",
+    "pitch": 3.0,
+    "rowPitch": 2.9,
+    "from": 0.15
+   }
+  },
+  {
+   "wallSurfaces": [
+    47
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 5,
+   "ground": "glazed",
+   "storeyFactors": [
+    1.5,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "palette": {
+    "brick": "#4a5868",
+    "frame": "#d8dade"
+   },
+   "windowShape": {
+    "w": 0.36,
+    "h": 0.5,
+    "sill": 0.25
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#4a5868",
+    "lines": "#3a4654",
+    "pitch": 3.0,
+    "rowPitch": 2.9,
+    "from": 0.15
+   }
+  },
+  {
+   "wallSurfaces": [
+    14,
+    36
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 3,
+   "ground": "glazed",
+   "storeyFactors": [
+    1.5,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "palette": {
+    "brick": "#4a5868",
+    "frame": "#d8dade"
+   },
+   "windowShape": {
+    "w": 0.36,
+    "h": 0.5,
+    "sill": 0.25
+   },
+   "cladding": {
+    "kind": "panels",
+    "colour": "#4a5868",
+    "lines": "#3a4654",
+    "pitch": 3.0,
+    "rowPitch": 2.9,
+    "from": 0.15
+   }
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#4a5868",
+  "frame": "#d8dade",
+  "door": "#2a2a2a"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "budgetTriangles": 40000,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 5): the W and E fronts from w03-251s1/s2 (2024) and w04-71s1/s2 (2022): blue-grey metal panel cladding (panel joints, cladding from 0.15) with square two-light windows on a regular pitch, over a fully glazed ground storey 1.5 times an upper storey. The full-height (30 m) fronts are measured groups; the stepped lower blocks and returns take the same scheme as otherWalls.",
+  "Not drawn: the staggered window rhythm (windows shift by half a bay storey to storey), the rooftop Student Experience sign on its frame, the white-rendered stair core on the N."
+ ]
+}

@@ -1,0 +1,255 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "houthavens-249741",
+ "pandId": "0363100012249741",
+ "address": "Houthavens, 2018 office building (Pontsteiger side): five storeys of dark glazing behind projecting grey concrete floor galleries with mesh rails, on concrete columns",
+ "sources": [
+  {
+   "id": "pano-2021-07-06-w01-138s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-07-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002216_pano_0002_000361/",
+   "image": "source-data://pand-reference-walls/0363100012249741/w01-138s1.jpg",
+   "sha256": "dd0c4035dd7391ac625d6c931ad6de393053d2b378529412369e59deccf7a36c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-07-06-w02-318s2",
+   "kind": "street-panorama",
+   "capturedAt": "2021-07-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002216_pano_0002_000379/",
+   "image": "source-data://pand-reference-walls/0363100012249741/w02-318s2.jpg",
+   "sha256": "6da27f3ed340882192724507d84c90416cfe7b56d407813e6fa45cfac8045027",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-08-w03-228s1",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002497_pano_0006_000474/",
+   "image": "source-data://pand-reference-walls/0363100012249741/w03-228s1.jpg",
+   "sha256": "a45dcabaa7ca04236840ccb02549f8eb1ce855f03a922ae61c556d227c7179bf",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-w03-228s2",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00229/",
+   "image": "source-data://pand-reference-walls/0363100012249741/w03-228s2.jpg",
+   "sha256": "93a147fa61689e3865b6f748c10023cb1f7a58c6d5fd028a80b7e8b1f3bc7379",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    28
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 6,
+   "ground": "glazed",
+   "glazedStoreys": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "palette": {
+    "brick": "#46464a",
+    "frame": "#2a2a2c"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "deep": 1.3,
+    "colour": "#5a5a5c",
+    "rail": true,
+    "roof": true,
+    "posts": 6.5
+   }
+  },
+  {
+   "wallSurfaces": [
+    33,
+    35
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 6,
+   "ground": "glazed",
+   "glazedStoreys": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "palette": {
+    "brick": "#46464a",
+    "frame": "#2a2a2c"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "deep": 1.3,
+    "colour": "#5a5a5c",
+    "rail": true,
+    "roof": true,
+    "posts": 6.5
+   }
+  },
+  {
+   "wallSurfaces": [
+    36
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "glazedStoreys": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "palette": {
+    "brick": "#46464a",
+    "frame": "#2a2a2c"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "deep": 1.3,
+    "colour": "#5a5a5c",
+    "rail": true,
+    "roof": true,
+    "posts": 6.5
+   }
+  },
+  {
+   "wallSurfaces": [
+    30
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "glazedStoreys": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "palette": {
+    "brick": "#46464a",
+    "frame": "#2a2a2c"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "deep": 1.3,
+    "colour": "#5a5a5c",
+    "rail": true,
+    "roof": true,
+    "posts": 6.5
+   }
+  },
+  {
+   "wallSurfaces": [
+    7,
+    31
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 1,
+   "ground": "glazed",
+   "glazedStoreys": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "palette": {
+    "brick": "#46464a",
+    "frame": "#2a2a2c"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "deep": 1.3,
+    "colour": "#5a5a5c",
+    "rail": true,
+    "roof": true,
+    "posts": 6.5
+   }
+  },
+  {
+   "wallSurfaces": [
+    22
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 1,
+   "ground": "glazed",
+   "glazedStoreys": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "palette": {
+    "brick": "#46464a",
+    "frame": "#2a2a2c"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "deep": 1.3,
+    "colour": "#5a5a5c",
+    "rail": true,
+    "roof": true,
+    "posts": 6.5
+   }
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#46464a",
+  "frame": "#2a2a2c",
+  "door": "#2a2a2a"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "budgetTriangles": 20000,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 5): every front from w01-138s1 (SE, 2021), w02-318s2 (NW, 2021) and w03-228s1/s2 (SW, 2022/2025): a dark grey concrete frame of five storeys, glazed floor to ceiling on every storey behind projecting concrete floor galleries with mesh rails (terraces at every upper floor and a thin roof slab), concrete columns every 6-7 m (terraces.posts 6.5). The NE front is not photographed square and takes the SW scheme.",
+  "Not drawn: the entrance canopy on the NW, the flag poles."
+ ]
+}

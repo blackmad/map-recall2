@@ -1,0 +1,222 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "houthavens-238475",
+ "pandId": "0363100012238475",
+ "address": "Houthavens, 2013 school building: a glazed ground storey under four storeys clad in red-brown copper tiles with scattered window groups, the white cut-out numerals 57 at the corner, beige blank flanks",
+ "sources": [
+  {
+   "id": "pano-2024-10-09-w02-140s1",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-09",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-09_07-28-34_00667/",
+   "image": "source-data://pand-reference-walls/0363100012238475/w02-140s1.jpg",
+   "sha256": "4ae275037a523ba6e91480ffa3b08e542a242cd338a2d8af4ce89ad6aaef3cd6",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-w02-140s2",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00159/",
+   "image": "source-data://pand-reference-walls/0363100012238475/w02-140s2.jpg",
+   "sha256": "2548e0f7369f770cb754a27b51f594dbbaa7f0964288b5100148c0ab4a43003e",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-07-06-w04-51",
+   "kind": "street-panorama",
+   "capturedAt": "2021-07-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002216_pano_0002_000292/",
+   "image": "source-data://pand-reference-walls/0363100012238475/w04-51.jpg",
+   "sha256": "1f72588d33602ff33c836ec9a0e4691a5d8aa1f9e90fd6763f849c11bd37d2c2",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-w05-230",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00171/",
+   "image": "source-data://pand-reference-walls/0363100012238475/w05-230.jpg",
+   "sha256": "653e43142f030986baec65f02b8da860fb10f1642132f4922e634c3b221469a3",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    25
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "ground": "blank",
+   "palette": {
+    "brick": "#4e2e28",
+    "frame": "#d8d8d4"
+   },
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "cladding": {
+    "kind": "paint",
+    "colour": "#8a8a88",
+    "to": 0.28
+   },
+   "baysPerStorey": 16,
+   "storeyFactors": [
+    1.45,
+    1,
+    1,
+    1,
+    1
+   ],
+   "signage": {
+    "text": "57",
+    "colour": "#e8e8e4",
+    "mount": "wall",
+    "along": [
+     0.01,
+     0.12
+    ],
+    "up": [
+     0.03,
+     0.24
+    ]
+   },
+   "wallLights": [
+    {
+     "along": [
+      0.2,
+      0.27
+     ],
+     "up": [
+      0.0,
+      0.22
+     ],
+     "lights": 3,
+     "rows": 2
+    },
+    {
+     "along": [
+      0.33,
+      0.4
+     ],
+     "up": [
+      0.0,
+      0.22
+     ],
+     "lights": 3,
+     "rows": 2
+    },
+    {
+     "along": [
+      0.46,
+      0.53
+     ],
+     "up": [
+      0.0,
+      0.22
+     ],
+     "lights": 3,
+     "rows": 2
+    },
+    {
+     "along": [
+      0.6,
+      0.6699999999999999
+     ],
+     "up": [
+      0.0,
+      0.22
+     ],
+     "lights": 3,
+     "rows": 2
+    },
+    {
+     "along": [
+      0.73,
+      0.8
+     ],
+     "up": [
+      0.0,
+      0.22
+     ],
+     "lights": 3,
+     "rows": 2
+    },
+    {
+     "along": [
+      0.86,
+      0.9299999999999999
+     ],
+     "up": [
+      0.0,
+      0.22
+     ],
+     "lights": 3,
+     "rows": 2
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    3
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "palette": {
+    "brick": "#b0a088",
+    "frame": "#d8d8d4"
+   },
+   "windowShape": {
+    "w": 0.3,
+    "h": 0.5,
+    "sill": 0.3
+   },
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "wallSurfaces": [
+    13
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "palette": {
+    "brick": "#b0a088",
+    "frame": "#d8d8d4"
+   },
+   "windowShape": {
+    "w": 0.3,
+    "h": 0.5,
+    "sill": 0.3
+   },
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2,
+    3
+   ]
+  }
+ ],
+ "otherWalls": "brick-bay-grid",
+ "palette": {
+  "brick": "#4e2e28",
+  "frame": "#d8d8d4",
+  "door": "#3a3a3a"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "budgetTriangles": 20000,
+ "notes": [
+  "Rows 2026-11-20 (lane houthavens-memel-wiborg-20261120, round 5): the SE front (surface 25, 43.8 m) from w02-140s1 (2024) and w02-140s2 (2025): a tall grey ground storey (1.45 of an upper storey, a grey paint plinth) with six framed glazed entrances and shop windows (wallLights), four storeys of red-brown metal tiles (drawn as the wall colour) with small window groups, and the white cut-out 57 at the left corner (signage.up). The NE and SW flanks (w04-51, w05-230, 2021/2025, behind trees) are beige and nearly blank. The NW and the upper volumes take the red tile scheme.",
+  "Not drawn: the irregular window groups (the kit draws a regular grid of small windows), the yellow-soffit loggia band on the first floor, the sculptural depth of the 57."
+ ]
+}
