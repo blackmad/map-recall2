@@ -159,6 +159,267 @@ The list uses open data only: OSM, Wikidata, RCE, Wikipedia/Commons and the busi
 
 Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke models. Their tenants are hidden, so they are retail-fit candidates rather than modelling work.
 
+## 6. Round 3: chunk hosts, Magna Plaza, register puis
+
+### Stored openings and the block-face chunk adapter
+- `stage-openings.ts` measures a model's ground openings once from its GLB and stages them in `retail-fits.json` (`openings`). The runtime then skips the glass search, so a city-look material swap or a merged street chunk can no longer hide the glass.
+- A chunk's openings each record their pand (the GLB's `pandRanges`). The fit mesh carries `pandRanges` too (browser: `geometry.userData.pandRanges` plus an index; node: `prim.extras.pandRanges`), so the chunk's own per-pand lift moves the fit with its house.
+- `node-frame` appends a chunk's fit primitives into the chunk GLB before `separateChunkPands`.
+- The opening merge now also needs a vertical gap under 0.15 m, so ground and first-floor glass no longer fuse into one tall arch. Side effect: the American Hotel's corner opening is now 1.3 x 2.0 m instead of 1.7 x 5.3 m (more correct; this came after its blind).
+- A fit may name its opening by id (`opening: "<bearing>:<u>"`); otherwise it matches the nearest opening within 2.5 m of `at`.
+
+### Concerto (chunk-face-utrechtse-48-76), published
+- Five fits by opening id: dark glass #2a1d10, record-sleeve goods, an oxblood frame #5a1a17 with a transom, cream CONCERTO glass letters. Blind: won 2/2 (med, med).
+- The judge's notes: the sleeves are too saturated (the photo is pale and monochrome); a second CONCERTO is unconfirmed; the corner template still says WIJNHANDEL where the photo shows WE ARE LABELS OUTLET (that is a template front, not this lane's).
+- Other chunk hosts on the iconic list: none. 't Mandje is a recipe GLB, and the rest are bespoke.
+
+### Magna Plaza, published
+- The ground shop windows were in the `dark` frame material, so no glass was found. The retag (`scripts/retail-fit/magna-plaza-glass-retag.patch`) gives them a new palette colour, `glassShop` (#303b43, slot glass).
+  - The name must start with "glass": geometryAudit's OPENING_MATERIAL regex decides what snapOpenings treats as an opening, and a first try named `shopGlass` changed the geometry.
+  - The rebuilt GLB is geometry-identical: sorted triangle-multiset hash 0902780908ffcbdf, 23,852 triangles before and after; dark 7,616 → 5,824, glassShop 0 → 1,792. The unchanged builder reproduces the committed GLB exactly. `check:manual-landmarks` passed (505 landmarks).
+  - The GLB rebuild is integrator-owned, so the patch is NOT applied on this branch. Because the geometry is identical, the 32 openings staged from the retagged GLB fit the committed GLB too.
+- Panorama reads (2023-01 and 2025-01) are in `artifacts/retail-fit/photos/walls/0363100012167578/`: 24 window reads with tones from `wall-points.ts`. Mango has letters and pink SALE posters, a clothes rail in one window, and the rest is plain dark glass.
+- Only 11 of the 24 reads land within 2.5 m of an opening: the builder spaces the bays at 5.3 m, not at the real window rhythm (a model gap, reported rather than fitted).
+- Blind: fit won 2/2 (Spuistraat low, Nieuwezijds Voorburgwal med). Judge notes: too few posters, MANGO not legible at that distance, the treatment covers only some bays.
+
+### Geldmaat panel and Rijksmuseum poster
+- The Geldmaat panel and glass were re-measured to #97a6a6 (source note in the JSON).
+- Poster offset: checked at the rijksmuseum pose. The poster sits in the 4th arch in both the photo and the render, so nothing changed.
+
+### Register-pui monuments: the brown bars (14)
+- `src/canalRecall/retailFit/historicPui.ts` with `historic-puis.json`: 14 pands whose RCE register names the shopfront and whose template is brownBar, all staged. They use the same modes as the fits: the default draws published ones, `?retailFit=1` adds staged ones, `?retailFit=0` draws none.
+- `retailFront.ts`, behind `input.host === 'historic-pui'`: no projecting board or cap. The name goes on the pui's own flush sign band, painted in the pui frame colour (the existing wall-mount path). With `host` absent, the output is unchanged.
+- `threeBuildingMesh.ts` sets `host` from `historicPuiHost(b.id)` in `retailFrontOn` (the template path only).
+- Node frames never install the shop-template extract (`decorateShopTemplate` is not called under nodeFrame/), so template fronts cannot be judged there: all 14 node pairs were byte-identical. The pairs were therefore shot in the browser instead: `house:frames --lists ...@retailFit=0, ...@retailFit=1 --query '?world=live'` (`artifacts/retail-fit/frames-puis-browser/`).
+- 7 of 14 changed pixels (3.8–8.5 %). The other 7 were byte-identical: their pose sees another pand (Dokter's wall picks were all 0363100012175488), or the template front stands on a wall out of view (Arendsnest and others).
+- Blind, one fresh opus judge, 7 sheets: board-less pui 1 win, template 2, tie 4, every call low confidence. At house-frames distances the board and the flat band are nearly indistinguishable.
+- The photos split: Stoof has its name painted on the band (no board), while De Heeren van Aemstel (Leentje's pand) and Soho do have a projecting board or canopy. So "no fascia on a register pui" is not a safe rule for brown bars.
+- All 14 stay staged (only `?retailFit=1`). The default is unchanged.
+- Next: a per-pand read of the sign kind (painted band, board, letters on the glass) from a square-on crop, staged per pand in `historic-puis.json`, then a blind on close crops.
+
+### Round 3 blind table
+| Host | Pose | Verdict | Confidence |
+|---|---|---|---|
+| Concerto | concerto | fit | med |
+| Concerto | concerto-koffie | fit | med |
+| Magna Plaza | Spuistraat (288) | fit | low |
+| Magna Plaza | Nieuwezijds Voorburgwal (107) | fit | med |
+| Brown bars, register pui (7 visible) | browser rows | 1 pui / 2 template / 4 tie | all low; stays staged |
+
+## 7. Round 4
+
+### Brown bars: sign kind per pand
+- Square-on crops (`all-walls.ts`, `artifacts/retail-fit/photos/puis/`) give each of the 14 pands a `sign` in `historic-puis.json`, with a `signSource`:
+  - painted band: Leentje and Stoof;
+  - letters on the glass: Elfde Gebod, Keffer, Tribe and 't Smalle;
+  - board or awning, so the template stays: Soho, Arendsnest and Casablanca;
+  - unread (no usable crop): Bar Du, Marcella (awnings), Dokter (the pose frames the next shop), Bar Blend and Rode Laars.
+- `retailFront.ts` `host` is now `'historic-pui' | 'historic-pui-glass'`. The glass mode draws no word on the band and puts the name in cream on the widest window at about 0.6 of the glass height. `historicPuiHost` maps band to `historic-pui` and glass to `historic-pui-glass`; board and unread map to nothing.
+- **Round 3's browser pui frames tested nothing.** The browser serves the committed `three-buildings*.bundle.js`, which did not hold the host branch, and the mesh worker never received `retailFit` (it is not on `engine/workerPool.ts` `withWorkerFlags`; added this round). Round 4 shoots with all four pool bundles built into a scratch `BUNDLES_DIR`. `game.json` confirms `three-buildings-worker.bundle.js?retailFit=1`.
+- **What changes.** With the right code, the host moves at most 0.11 % of each frame (Leentje, Stoof, Tribe). Keffer, Elfde Gebod and 't Smalle show no change in view. `retailGround=0` vs `1` on the same poses changes 5–31 %, so fronts are drawn in view.
+  - On a close crop (Stoof), the brownBar template already draws a near-flush dark band. Dropping the "board" changes little more than the lettering face.
+  - The visible gap is the whole template pui: a dark glazed front with bottle shelves, where the photo has the building's own white small-paned sash windows and the name painted in script on the band.
+  - The useful next step for register-pui bars is a host that draws no template pui at all: the building's own windows stand, and only the painted name goes on the band. That is a larger change than a sign swap.
+- Close-crop blind, cropped to the changed pixels (`scripts/retail-fit/diff-crop.mts`), one fresh opus judge: the host won 3/3. Leentje low (its photo crop frames The Bolster next door), Stoof low (near a tie), Tribe med (glass mode: no fascia, as on the photo).
+- The judge's shared verdict: both renders put a dark fascia and plate over a dark glazed bar front with bottle shelves. Neither can say red script neon on the brick, gilt letters on the upper front, etched letters on cream cast-iron glazing, or the cream small-paned windows these fronts have.
+- All 14 stay staged.
+
+### American Hotel corner and byte identity
+- Re-blind with the current openings, one fresh opus judge: Bar Américain fit (low), Leidsekade fit (med).
+- `RETAIL_FIT=0` node frames are byte-identical to round 2 for all 7 Hirschgebouw, Kinkerstraat, Damrak and Nieuw-Engeland poses.
+- The two American Hotel off frames differ by 0.13–0.21 %. That is exactly the published Hirschgebouw fits across Leidseplein (round 2's off frames were shot at the default mode: `retailFit` 2,776 triangles in their counts, none now). Not a regression.
+
+### Concerto
+- Sleeves desaturated to the photo's pale, near-monochrome display. Re-blind: concerto fit (med), concerto-koffie fit (med-high). The judge still saw a uniform grey grid.
+- After that blind: each sleeve now sits a little high or low on its rack, and now and then a print two sleeves wide stands in the row (unblinded, minor).
+- WIJNHANDEL is not retail-ground's. It is the block-face lane's intent for Utrechtsestraat 50 (pand 0363100012178874), in `scripts/block-face/faces/utrechtse-48-76/intent.json`:
+  - line 99 holds the sign text;
+  - lines 101–103 hold the groundFloor name ("Wijnhandel Neleman", from a stale OSM node), the note and the signage.
+  - The 2025-01-20 panorama (b_20250120_0926_Track30_Sphere_00286/00287) shows WE ARE LABELS OUTLET on that grey front.
+  - Fixing it means a block-face edit and a re-bake of the chunk GLB, so it is not done here.
+
+### Magna Plaza bay rhythm
+- Written up for the landmark lane in `docs/reports/magna-plaza-bay-rhythm-20261120.md`. Retail-fit stops there.
+
+### Round 4 blind table
+| Host | Pose | Verdict | Confidence |
+|---|---|---|---|
+| American Hotel | Bar Américain | fit | low |
+| American Hotel | Leidsekade | fit | med |
+| Concerto (desaturated) | concerto | fit | med |
+| Concerto (desaturated) | concerto-koffie | fit | med-high |
+| Brown bars, close crops | Leentje | host | low |
+| Brown bars, close crops | Stoof | host | low (near tie) |
+| Brown bars, close crops | Tribe (glass) | host | med |
+
+## 8. Round 5
+
+### Historic-pui front host (kit addition)
+- `src/canalRecall/retailFit/historicPuiFront.ts` is new: typed, unit-tested, and byte-identical when absent (`retailFit.test.ts`).
+  - **Kit mode, for a generic pand.** It draws in place of the template pui:
+    - pilasters, a low panelled plinth under a sill, and glass in bays;
+    - the read pane grid (`panes: [cols, rows]`) with glazing bars, plus a grey reflection band over the glass head;
+    - a transom with top lights, the door in the template's own recess, and a flush frieze;
+    - the read sign: a painted band, letters on the glass, or neon script.
+  - **Sign mode, for a pand with its own front** (a recipe or house spec). Only the name is drawn, and the mesher cuts no door and no room.
+  - Per-pand fronts are read on the square-on crops and live in `historic-puis.json` (`front`, `frontSource`).
+  - A `name` field overrides the template word when the photo shows a new tenant.
+- `retailFront.ts`: the round 3/4 band/glass lines are reverted. A new `host?: HistoricPuiHost` field leads to an early branch after `new Builder(e)`. `Builder` is now exported.
+- `threeBuildingMesh.ts`: spreads `historicPuiInput(id, hasOwnFront)`. Rooms are skipped when there is a host, and in sign mode the door cut is skipped.
+- Letters keep `fitWord`'s legibility minimum (script needs about 0.45 m), so the frieze is 0.48 m deep.
+- **Blind**, on close browser crops: scratch `BUNDLES_DIR`, sides seeded, one fresh opus judge per batch.
+  - Brown bars: the kit won 4/0. Leentje low, Stoof med-high, 't Smalle low, Tribe high.
+    - Keffer and Elfde Gebod: no change in view at any pose tried, so they stay staged.
+  - Then hairdresser, coffeeshop and souvenir: 13 register-pui pands, 7 read.
+    - The kit won 5/0. Bike Rental high, Haircuts high, Legends med, Little Souvenirs low-med, New Times med.
+    - Bulldog and Bird Hotel: no change in view, so they stay staged.
+    - Unread, so the template stays: Cirkel, Popeye, souvenir 5575, Gabriel and Prix d'Ami. Raymond's name is a poster panel (a board), so its template stays too.
+- **Published: 9 pands**, with the default mode. 6 are staged.
+- **What the kit still cannot say**, per the judges:
+  - door positions (side doors, a centre door, two doors beside a window): the kit puts one door in the template recess, which is often out of crop;
+  - a transom over one big pane: the bay grid invents mullions on Legends;
+  - barred or leaded small panes;
+  - a two-line sign ("COFFEESHOP" over a script name);
+  - the long full name: "Cafe Bar de Stoof" is shortened by `fitWord`;
+  - cream cast-iron pilasters with an arched centre door (Leentje).
+- **Byte identity:** with no host, `retailFrontTris` is unchanged (unit test). Node frames never install the shop templates. `?retailFit=0` returns no host.
+
+### WIJNHANDEL → WE ARE LABELS OUTLET (commit e4f3dd8d8f)
+- `scripts/block-face/faces/utrechtse-48-76/intent.json` lines 99–103:
+  - sign text "WE ARE LABELS OUTLET";
+  - groundFloor name and category (shop=clothes);
+  - the source note: panorama b_20250120_0926_Track30_Sphere_00286/00287, 2025-01-20.
+- Bake commands:
+  1. `node --import tsx scripts/block-face/compile.ts --face=utrechtse-48-76 --install --force-install`
+     - `--force-install` is needed because the audit FAILs (holes, opening-outside, zfight, geometry-regression) are identical before and after the edit.
+  2. `node --import tsx scripts/landmarks/build-landmark-lods.ts --chunks --only=chunk-face-utrechtse-48-76`
+     - The install drops the row's lod2. The lod2 GLB bytes are unchanged.
+  3. `node --import tsx scripts/block-face/roof-golden.ts --write --face=utrechtse-48-76 --allow=utrechtse-48-76`
+     - Only the intent hash changes.
+- Results: +88 triangles on pand 178874; `test:block-face` 406/406.
+
+### Round 5 blind table
+| Pand | Kind | Verdict | Confidence |
+|---|---|---|---|
+| Leentje | band | kit | low |
+| Stoof | neon script | kit | med-high |
+| 't Smalle | glass | kit | low |
+| Tribe | glass script | kit | high |
+| Bike Rental (souvenir template) | band | kit | high |
+| Haircuts (CUT CRAP template) | band | kit | high |
+| Legends | glass | kit | med |
+| Little Souvenirs | neon script | kit | low-med |
+| New Times | neon script | kit | med |
+
+## 9. Round 6
+
+### Kit changes (`historicPuiFront.ts`, typed, tested, byte-identical without a host)
+- **(a) Glazing bars.** Bars are now at least 7 cm wide (`barM` 0.07). A pane grid too fine for its bay keeps only the columns and rows that leave each pane at least `minPaneM` 0.3 m, so no bar thinner than about a pixel aliases into a dashed line at ride distance.
+- **(b) Top lights** are glass with the sky's reflection, in two tones (`SKY` mixed in at 0.35 and 0.55), not a dark slab.
+- **Doors read per pand:** `front.doors: [{at, w?}]` gives each door's centre as a share of the pui and its width.
+  - The doors stand flush on the pui line, and windows fill the spans between them (`puiDoors`).
+  - The mesher cuts no template recess for a pand with read doors (`threeBuildingMesh.ts`).
+- **One sheet under a transom:** `front.sheet` gives one glass sheet per window span, with no bay mullions. The top-light posts sit over the door edges.
+- **Two-line signs:** `sign.above` puts a smaller sans line over the name, and the frieze grows by 0.4 m. A read `name` keeps its own case in script ("New Times", "Little Souvenirs").
+- **`sign: 'none'`:** the photo's pui carries no lettering. The kit front draws with no name.
+
+### Reads
+- **Doors on the published nine** (same crops):
+  - centre: Leentje, 't Smalle, New Times, Little Souvenirs;
+  - left: Stoof, Tribe, Legends;
+  - left of centre: Haircuts;
+  - two doors right of a window: Bike Rental.
+- Legends is now one sheet under a transom. New Times gets COFFEESHOP over its script, and Leentje gets cream pilasters.
+- **The 5 unread pands, posed at the shop template's node (`at`) with `--prefer-obliquity 30`** (`scripts/retail-fit/poses-puis-r6.json`):
+  - Cirkel: white pui, a sheet under a transom, black door; no lettering.
+  - Gabriel: white pui, door at the left, a sheet window; only a small blade sign.
+  - Souvenir 5575 (2023-01-13): dark pui, cream small-pane frames, door in the centre; no sign.
+  - Popeye: the pose is blocked by a traffic sign, so it stays unread.
+  - Prix d'Ami: no panorama within 35 m at under 55 degrees of the template wall (a narrow street).
+- **The 4 unjudged pands:**
+  - Elfde Gebod: the template pose shows the front, with two red doors at the left. Read and judged.
+  - Keffer and Bird Hotel: no panorama in range (narrow streets).
+  - Bulldog: the only square capture is from 2016-06-09 and shows an older tenant (Holland Experience), so no fair blind.
+
+### Round 6 blinds (fresh opus judge per batch, sides seeded, close browser crops)
+- **Round 6 kit vs round 5 kit, on the 9 published pands** (same poses; the round 5 bundles were built from e48ee86ac6): 8 wins, 0 losses, 1 tie.
+  - 't Smalle tied (the shop is hidden on the photo). Its door read is dropped, so it stays as round 5 apart from the code fixes.
+  - A first round 6 render dropped Stoof's whole pane grid once the door took its share. It was fixed (fewer columns, never none) and re-shot before this blind.
+- **New pands, kit vs template, on the final frames:** 4/0. Cirkel, Elfde Gebod, Gabriel and souvenir 5575 are all published.
+
+| Pand | Comparison | Verdict | Confidence |
+|---|---|---|---|
+| Bike Rental | r6 vs r5 | r6 | med |
+| Haircuts | r6 vs r5 | r6 | low |
+| Leentje | r6 vs r5 | r6 | high |
+| Legends | r6 vs r5 | r6 | med |
+| Little Souvenirs | r6 vs r5 | r6 | med-high |
+| New Times | r6 vs r5 | r6 | med |
+| Stoof | r6 vs r5 | r6 | high |
+| 't Smalle | r6 vs r5 | tie | low |
+| Tribe | r6 vs r5 | r6 | med |
+| Cirkel | kit vs template | kit | high |
+| Elfde Gebod | kit vs template | kit | high |
+| Gabriel | kit vs template | kit | high |
+| Souvenir 5575 | kit vs template | kit | high |
+
+- **Published: 13 of 27.**
+- **What the kit still cannot say**, per the judges:
+  - blade (projecting) signs;
+  - stoops, steps and basement windows;
+  - vent grilles in transoms and a diamond-pane transom;
+  - white 6-over-6 sashes as their own frames (the kit draws one dark grid in the pui's frame colour);
+  - a round logo on the glass;
+  - glazed bays between pilasters in place of a dark infill.
+  - Read doors that do not fit beside the windows are dropped: Bike Rental shows one door where the photo has two.
+- **Not the kit's:** the blue banners on souvenir 5575 and the window-box blocks on Tribe are drawn by other layers.
+- Dashed lines remain on balcony rails, sills and transom edges in both renders. They come from other geometry, not from the kit's bars.
+
+## 10. Round 7
+
+### Kit additions (`historicPuiFront.ts`, typed, tested, byte-identical when absent)
+- **Blade signs (`front.blade`):**
+  - The read fields: bracket place `at` (share along the front), bracket height `z`, board `w` × `h`, `shape` (rect / round / shield), `board`, `iron`, and an optional legible `glyph` with its `ink`.
+  - The drawing: a square iron bar out from the wall and a thin two-faced board hanging under it, perpendicular to the front, with the glyph on both faces (`sideGlyph`).
+  - Blades are also drawn in sign mode.
+  - **Cost (measured):** a rect blade is 14 triangles (bracket 10, board 4), a shield 16, a round blade 22, and a glyph adds 4 (Tribe 26, Gabriel 18).
+- **White sashes (`front.sash`):** a 7 cm rim round each bay's glass, with the glazing bars in the sash colour, over the pui's frame. It costs +24 to +32 triangles (rims, and Little Souvenirs' new pane grid).
+- **Crowded doors:** `puiDoors` packs the doors forward, then back from the right pilaster, so the windows shrink. A door is dropped only when the doors and their mullions outrun the whole pui. Bike Rental now has both doors.
+
+### Reads (at the published poses)
+- **Blades:**
+  - Tribe: a round white disc with a T at the storey line, right of the door.
+  - Bike Rental: a green board at the left end.
+  - Legends: a small white box sign over the door.
+  - Cirkel: a large round disc on the left pilaster.
+  - Elfde Gebod: a black board on its bracket over the window.
+  - Gabriel: a small white board with a G between the door and the window.
+- **No blade at the pose:** Leentje (the pose frames The Bolster), Stoof, 't Smalle (hidden), Haircuts (its disc is a traffic sign), Little Souvenirs, New Times and souvenir 5575 (the yellow disc is on the neighbour).
+- **Sashes:** Stoof (white sashes in a brown pui) and Little Souvenirs (white-framed barred windows, panes 2 × 3).
+
+### Round 7 blind (vs round 6, same poses, fresh opus judge, sides seeded): 7 wins, 1 loss
+| Pand | Change | Verdict | Confidence |
+|---|---|---|---|
+| Bike Rental | blade, two doors | r7 | med |
+| Cirkel | blade | r7 | med |
+| Elfde Gebod | blade | r7 | med |
+| Gabriel | blade | r7 | low-med |
+| Legends | blade | r7 | med |
+| Little Souvenirs | sash, pane grid | r7 | med |
+| Stoof | brown pui, white sashes | r6 | med |
+| Tribe | blade | r7 | med |
+
+- Stoof's round 7 read lost (the judge read the photo's front as cream-framed), so it is reverted to round 6. All 13 stay published.
+- **What the kit still can't say:**
+  - Blades come out smaller and lower than the photos'. The reads are conservative, so this is a read issue rather than a kit one.
+  - A dark rim on a round blade; boxy two-colour blade signs (Bike Rental's yellow and white panels).
+  - Text on a blade: one glyph only.
+  - A plaque that projects versus sits flat: at Gabriel's size the judge saw the board as flat.
+  - Barber poles and flags.
+  - Fine, light glazing bars: the sash bars are 7 cm so they don't alias, and read heavy.
+  - Pilastered separate bays.
+- **Not the kit's:** the window-box slabs on Tribe and Bike Rental come from another layer.
+
 ## Wiring (for the integrator)
 
 - Add `src/canalRecall/retailFit/retailFit.test.ts` to `test:shopfront-gate` in package.json.
@@ -167,3 +428,9 @@ Tuschinski, Magna Plaza, the American Hotel and De Hallen already have bespoke m
 - Round 2 is default-on for published reads (Hirschgebouw about 3,070 triangles, American Hotel about 1,200, full level only). `?retailFit=0` is the off switch, and `?retailFit=1` shows staged reads.
 - Node frames (house:frames) of these two models change by default; `RETAIL_FIT=0` restores the old frames byte-for-byte.
 - Tools: `scripts/retail-fit/{census,bay-strip,blind,iconic,glass-tone,region-tone,openings-probe}.ts`, poses in `scripts/retail-fit/poses*.json`, and node-frame with `RETAIL_FIT=0|1`.
+- Round 3: rebuild the building bundle as well as signature-landmarks, because `threeBuildingMesh.ts` now imports `retailFit/historicPui.ts` (with `historic-puis.json`, a few KB) and `retailFront.ts` gained the `host` branch.
+- Round 3, Magna Plaza (optional, for the game's own glass search and so other consumers see glass): `git apply scripts/retail-fit/magna-plaza-glass-retag.patch`, then `node --import tsx scripts/landmarks/build-manual-landmarks.ts --only=magna-plaza`, then LODs for magna-plaza, then build covers, then `check:covers` and `check:manual-landmarks`. Then rebuild the signature-landmarks bundle. The fits work without it, from the staged openings.
+- Round 4: `src/canalRecall/engine/workerPool.ts` adds `'retailFit'` to `withWorkerFlags`, so `?retailFit=0|1` reaches the mesh workers. Rebuild the pool bundles (`build:canal-three-buildings`, the engine bundle and own-ground-game) together.
+- Round 5: `retailFront.ts` (import line 5, the `host?` field at the end of `RetailFrontInput`, an early branch after `new Builder(e)`) and `threeBuildingMesh.ts` (the `historicPuiInput(b.id, !!(b.recipe || b.specRecipe))` spread, `&& !input.host` on rooms, the sign-mode `opening` guard) feed the mesh pool. Rebuild the pool bundles together: `build:canal-three-buildings` (browser and worker), the engine bundle (`scripts/build-canal-engine.mjs`) and own-ground-game (`scripts/build-3d-bundles.mjs --only=own-ground-game`). The Utrechtsestraat chunk GLB, its lod2 record and the roof golden are already committed (above).
+- Round 6: `threeBuildingMesh.ts` changes one line (`opening` is null when the host has read doors); otherwise the work is `retailFit/historicPuiFront.ts`, `historicPui.ts` and `historic-puis.json`. Rebuild the same pool bundles as round 5.
+- Round 7: only `retailFit/historicPuiFront.ts`, `historic-puis.json` and the test change, so there are no new lines in the shared files. Rebuild the same pool bundles.

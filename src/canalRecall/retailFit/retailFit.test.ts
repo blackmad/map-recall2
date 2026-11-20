@@ -63,7 +63,7 @@ test('openings: one outward round arch per glass slab, its head read off the out
 
 const ROUND: HostOpening = { id: 't', base: [0, 0, 0], n: [0, -1], t: [-1, 0], widthM: 3.3, sillM: 0, springM: 3.35, crownM: 5, head: 'round', bearing: 0, areaM2: 15 };
 const EVERY: FitLayer[] = [
-  { k: 'interior', hex: '#999999' }, { k: 'goods', kind: 'shelves', hexes: ['#ff0000', '#00ff00'] }, { k: 'goods', kind: 'tables', hexes: ['#c8a678', '#6b5a45', '#dfe8f0'] }, { k: 'goods', kind: 'curtains', hexes: ['#d9d6cc', '#bdb9ae'] },
+  { k: 'interior', hex: '#999999' }, { k: 'goods', kind: 'shelves', hexes: ['#ff0000', '#00ff00'] }, { k: 'goods', kind: 'tables', hexes: ['#c8a678', '#6b5a45', '#dfe8f0'] }, { k: 'goods', kind: 'curtains', hexes: ['#d9d6cc', '#bdb9ae'] }, { k: 'goods', kind: 'sleeves', hexes: ['#c9c2b0', '#3c5a8a'] },
   { k: 'lamps', hex: '#ffffff' }, { k: 'vinyl', base: '#dfe6ef', ink: '#2b4a8f', pattern: 'delft', window: [0.3, 0.7, 0.8, 2.3] }, { k: 'vinyl', base: '#cdd9e6', ink: '#24427f', pattern: 'landscape', window: [0.36, 0.66, 0.55, 1.35], windowGoods: ['#d9506a'] }, { k: 'posters', hex: '#00a0e2', n: 2 },
   { k: 'panel', hex: '#d3d0c8', atms: 3, text: 'GELDMAAT' }, { k: 'band', hex: '#1d2c5a', v0: 0.15, v1: 0.72, text: 'RIJKS MUSEUM' },
   { k: 'head-letters', text: 'ALBERT HEIJN', ink: '#7cc6ee', bg: '#22313d' }, { k: 'glass-letters', text: 'ABN AMRO', ink: '#fff', v: 3, mark: '#00857a' },
@@ -125,4 +125,125 @@ test('Hirschgebouw: every hand fit lands in its own arch of the shipped GLB', as
   (globalThis as { __canalRecallRetailFit?: string }).__canalRecallRetailFit = 'off';
   assert.equal(retailFitMesh('hirschgebouw', soups, [sx / n, sz / n], toNative), null, '?retailFit=0 draws nothing');
   delete (globalThis as { __canalRecallRetailFit?: string }).__canalRecallRetailFit;
+});
+
+test('historic pui: staged hosts gated by mode and sign; the kit draws no fascia box, a sign host only its name; byte-identical when absent', async () => {
+  const { STAGED_PUIS, historicPuiHost } = await import('./historicPui.ts');
+  const { retailFrontTris, FRONT } = await import('../retailFront.ts');
+  const ids = Object.keys(STAGED_PUIS);
+  assert.ok(ids.length >= 14);
+  for (const id of ids) {
+    const p = STAGED_PUIS[id], drawn = (p.sign === 'band' || p.sign === 'glass' || p.sign === 'neon' || p.sign === 'none') && !!p.front;
+    assert.match(p.source, /RCE monument register/);
+    assert.ok(p.signSource, `${id} has a sign source`);
+    if (p.front) { assert.ok(p.frontSource, `${id} has a front source`); assert.equal(p.front.sign.kind, p.sign); }
+    assert.equal(!!historicPuiHost(`NL.IMBAG.Pand.${id}`, false, 'all'), drawn);
+    assert.equal(historicPuiHost(id, false, 'off'), undefined);
+    assert.equal(!!historicPuiHost(id, false, 'published'), drawn && p.status === 'published');
+    if (drawn) { assert.equal(historicPuiHost(id, false, 'all')!.mode, 'kit'); assert.equal(historicPuiHost(id, true, 'all')!.mode, 'sign'); }
+  }
+  assert.equal(historicPuiHost('0000000000000000', false, 'all'), undefined);
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  const input = { template: 'brownBar' as const, word: 'STOOF', seed: 'NL.IMBAG.Pand.x', letters: 0, faces: 10 };
+  const plain = retailFrontTris(input, e, 0, 6, 0, 3.2), again = retailFrontTris({ ...input }, e, 0, 6, 0, 3.2);
+  assert.equal(JSON.stringify(plain), JSON.stringify(again));
+  // No member wider than 1 m stands out as far as the template's fascia board (FRONT.fasciaOutM) over the pui.
+  const top = 3.2 - FRONT.fasciaGapM, bottom = top - FRONT.fasciaM;
+  const proud = (tris: typeof plain) => tris.filter(t => t.p.every(p => p[2] >= bottom - 1e-6 && p[2] <= top + FRONT.capM + 1e-6) && t.p.some(p => Math.abs(p[1]) >= FRONT.fasciaOutM - 1e-6) && Math.max(...t.p.map(p => p[0])) - Math.min(...t.p.map(p => p[0])) > 1).length;
+  assert.ok(proud(plain) > 0, 'the template draws a projecting board');
+  const stoof = STAGED_PUIS['0363100012171790'].front!;
+  for (const front of [stoof, { ...stoof, sign: { kind: 'glass' as const, ink: '#ffffff' } }, { ...stoof, panes: undefined, sign: { kind: 'band' as const, ink: '#c9a650' } }]) {
+    const kit = retailFrontTris({ ...input, host: { mode: 'kit', front } }, e, 0, 6, 0, 3.2);
+    assert.ok(kit.length > 20, 'the kit pui draws');
+    assert.equal(proud(kit), 0, 'and no fascia board');
+    // Inside the front's span, out no further than a pilaster, from the ground to the storey top.
+    for (const t of kit) for (const p of t.p) { assert.ok(p[0] >= -1e-6 && p[0] <= 6 + 1e-6); assert.ok(p[2] >= -1e-6 && p[2] <= 3.2 + 1e-6); assert.ok(p[1] <= 0.6); }
+    // The glass carries the front's own colours: its frame appears, the template's surround does not.
+    assert.ok(kit.some(t => t.hex === front.frame));
+  }
+  // Small panes: the 3 x 4 grid draws its bars; a sheet front draws none at bar depth.
+  const bars = (tris: typeof plain) => tris.filter(t => t.p.every(p => Math.abs(Math.abs(p[1]) - 0.04) < 1e-6)).length;
+  assert.ok(bars(retailFrontTris({ ...input, host: { mode: 'kit', front: stoof } }, e, 0, 6, 0, 3.2)) > bars(retailFrontTris({ ...input, host: { mode: 'kit', front: { ...stoof, panes: undefined } } }, e, 0, 6, 0, 3.2)));
+  // A pand with its own front: only the name (lettered quads), flush on the wall.
+  const sign = retailFrontTris({ ...input, host: { mode: 'sign', front: stoof } }, e, 0, 6, 0, 3.2);
+  assert.ok(sign.length > 0 && sign.every(t => t.layer !== undefined), 'only lettering');
+  assert.ok(sign.every(t => t.p.every(p => Math.abs(p[1]) <= 0.05)));
+});
+
+test('historic pui round 6: read doors, sheet glass, two-line signs, legible bars, lit top lights', async () => {
+  const { STAGED_PUIS } = await import('./historicPui.ts');
+  const { retailFrontTris } = await import('../retailFront.ts');
+  const { puiDoors, PUI_KIT } = await import('./historicPuiFront.ts');
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  const input = { template: 'brownBar' as const, word: 'STOOF', seed: 'NL.IMBAG.Pand.x', letters: 0, faces: 10 };
+  // The fixture: Stoof's read without its round 7 sash (the sash has its own checks).
+  const stoof = { ...STAGED_PUIS['0363100012171790'].front!, sash: undefined as string | undefined };
+  const kit = (front: typeof stoof, w = 6, h = 3.6) => retailFrontTris({ ...input, host: { mode: 'kit', front } }, e, 0, w, 0, h);
+  // Doors: clamped inside, sorted, apart by a mullion; a side door hugs its pilaster.
+  assert.deepEqual(puiDoors([{ at: 0 }], 0, 5), [[0, PUI_KIT.doorM]]);
+  const two = puiDoors([{ at: 0.6 }, { at: 0.5 }], 0, 5);
+  assert.equal(two.length, 2); assert.ok(two[1][0] >= two[0][1] + PUI_KIT.mullionM - 1e-9);
+  assert.ok(puiDoors([{ at: 0.5, w: 9 }], 0, 5).every(([a, b]) => a >= 0 && b <= 5));
+  // A read door stands flush (leaf at glass depth, nothing behind the wall line) where the photo has it.
+  const side = kit({ ...stoof, doors: [{ at: 0 }] }), leaf = stoof.door!;
+  const leaves = side.filter(t => t.hex === leaf);
+  assert.ok(leaves.length > 0 && leaves.every(t => t.p.every(p => p[1] <= 0 + 1e-9 && p[0] <= 0.2 + PUI_KIT.doorM + 1e-6)));
+  // Sheet glass: fewer mullions than the bay grid.
+  const posts = (tris: typeof side, hex: string) => tris.filter(t => t.hex === hex && Math.max(...t.p.map(p => p[0])) - Math.min(...t.p.map(p => p[0])) <= PUI_KIT.mullionM + 1e-6).length;
+  const plain = { ...stoof, panes: undefined };
+  assert.ok(posts(kit({ ...plain, sheet: true }, 8), stoof.frame) < posts(kit(plain, 8), stoof.frame));
+  // Two-line sign: more lettering than the name alone.
+  const lettered = (tris: typeof side) => tris.filter(t => t.layer !== undefined).length;
+  assert.ok(lettered(kit({ ...stoof, sign: { ...stoof.sign, above: 'COFFEESHOP' } })) > lettered(kit(stoof)));
+  // 'none': the kit front, no lettering at all.
+  assert.equal(lettered(kit({ ...stoof, sign: { kind: 'none', ink: '#000000' } })), 0);
+  assert.ok(kit({ ...stoof, sign: { kind: 'none', ink: '#000000' } }).length > 20);
+  // Bars: never thinner than 6 cm; none when panes would be smaller than minPaneM.
+  const barTris = (tris: typeof side) => tris.filter(t => t.hex === stoof.frame && t.p.every(p => Math.abs(Math.abs(p[1]) - PUI_KIT.barOutM) < 1e-6));
+  for (const t of barTris(kit(stoof))) { const xs = t.p.map(p => p[0]), zs = t.p.map(p => p[2]); assert.ok(Math.min(Math.max(...xs) - Math.min(...xs), Math.max(...zs) - Math.min(...zs)) >= 0.06 - 1e-6); }
+  // A grid too fine for its bay keeps as many panes as fit at minPaneM, never none.
+  const fine = barTris(kit({ ...stoof, panes: [12, 12] }));
+  assert.ok(fine.length > 0 && fine.length < barTris(kit({ ...stoof, panes: [40, 40] })).length + 1);
+  for (const t of fine) { const zs = t.p.map(p => p[2]), xs = t.p.map(p => p[0]); assert.ok(Math.max(...zs) - Math.min(...zs) < 0.1 || Math.max(...xs) - Math.min(...xs) < 0.1); }
+  // Top lights: lighter than the glass under them (no black slab).
+  const lum = (h: string) => [1, 3, 5].reduce((s, i) => s + parseInt(h.slice(i, i + 2), 16), 0);
+  const tl = kit(stoof).filter(t => t.p.every(p => p[2] > 2.3 + PUI_KIT.transomM - 1e-6) && t.p.every(p => Math.abs(Math.abs(p[1]) - PUI_KIT.glassOutM) < 1e-6));
+  assert.ok(tl.length > 0 && tl.every(t => lum(t.hex) > lum('#2a2420')));
+});
+
+test('historic pui round 7: blade signs, white sashes, crowded doors push the windows aside', async () => {
+  const { STAGED_PUIS } = await import('./historicPui.ts');
+  const { retailFrontTris } = await import('../retailFront.ts');
+  const { puiDoors, PUI_KIT } = await import('./historicPuiFront.ts');
+  const e = { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1 };
+  const input = { template: 'brownBar' as const, word: 'STOOF', seed: 'NL.IMBAG.Pand.x', letters: 0, faces: 10 };
+  // The fixture: Stoof's read without its round 7 sash (the sash has its own checks).
+  const stoof = { ...STAGED_PUIS['0363100012171790'].front!, sash: undefined as string | undefined };
+  const kit = (front: typeof stoof) => retailFrontTris({ ...input, host: { mode: 'kit', front } }, e, 0, 6, 0, 3.6);
+  const base = kit(stoof);
+  // Absent: byte-identical.
+  assert.equal(JSON.stringify(kit({ ...stoof, blade: undefined, sash: undefined })), JSON.stringify(base));
+  // A blade: a bracket and a board, a handful of triangles, perpendicular to the front, out from the wall.
+  for (const [shape, most] of [['rect', 14], ['shield', 16], ['round', 22]] as const) {
+    const blade = { at: 0.9, z: 3.1, w: 0.6, h: 0.5, shape, board: '#3a2a1a' };
+    const withBlade = kit({ ...stoof, blade }), added = withBlade.slice(base.length);
+    assert.equal(JSON.stringify(withBlade.slice(0, base.length)), JSON.stringify(base));
+    assert.ok(added.length > 0 && added.length <= most, `${shape}: ${added.length} triangles`);
+    const board = added.filter(t => t.hex === '#3a2a1a');
+    assert.ok(board.length >= 4);
+    for (const t of board) for (const p of t.p) { assert.ok(p[1] <= -PUI_KIT.bladeGapM + 1e-6, 'off the wall'); assert.ok(p[2] <= 3.1 + 1e-6); }
+    // The board's faces lie across the wall (their normal along the front).
+    for (const t of board.filter(t => Math.abs(t.p[0][0] - t.p[1][0]) < 1e-9 && Math.abs(t.p[0][0] - t.p[2][0]) < 1e-9)) assert.ok(Math.abs(t.n[0]) > 0.99);
+  }
+  // A blade in sign mode too (the pand's own front keeps its blade).
+  assert.ok(retailFrontTris({ ...input, host: { mode: 'sign', front: { ...stoof, blade: { at: 0.1, z: 3, w: 0.5, h: 0.5, shape: 'rect', board: '#123456' } } } }, e, 0, 6, 0, 3.6).some(t => t.hex === '#123456'));
+  // White sashes: a rim per bay and the bars in the sash colour, over the pui's frame.
+  const sashed = kit({ ...stoof, sash: '#f4f2ec' });
+  assert.ok(sashed.filter(t => t.hex === '#f4f2ec').length > 8);
+  // Two crowded doors both stand (Bike Rental), in order, a mullion apart, inside the pui.
+  const two = puiDoors([{ at: 0.55 }, { at: 0.85 }], 0, 3.2);
+  assert.equal(two.length, 2);
+  assert.ok(two[0][0] >= 0 && two[1][1] <= 3.2 + 1e-9 && two[1][0] >= two[0][1] + PUI_KIT.mullionM - 1e-9);
+  // Only when the doors outrun the whole pui is one dropped.
+  assert.equal(puiDoors([{ at: 0.2 }, { at: 0.5 }, { at: 0.8 }], 0, 2.2).length, 2);
 });

@@ -45,6 +45,7 @@ import type { KitPartGeometry } from './landmarkKits.js';
 import type { ChainLook } from './shopfronts.js';
 import type { RetailTemplate } from './retailTemplates.js';
 import { retailFrontTris, retailDoor, retailWindowBays, doorHead, groundFloorFrontTris, FRONT as RETAIL_FRONT } from './retailFront.js';
+import { historicPuiInput } from './retailFit/historicPui.js';
 import { shopInteriorsOn } from './shopProps/flags.js';
 import { roomTemplate } from './shopProps/interiors.js';
 import type { GroundFloorDraw } from './groundFloor/types.js';
@@ -544,7 +545,7 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   // has one.
   const shopCell = b.layers && b.layers.ground < BAY_LAYER_COUNT && (SHOP_KINDS as readonly string[]).includes(BAY_ENTRIES[b.layers.ground]?.kind ?? '') ? b.layers.ground : undefined;
   const input = { template: front.template, word: front.word, seed: b.id, ...(door ? { door } : {}), ...(front.logo ? { logo: front.logo } : {}),
-    ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.variety !== undefined ? { variety: front.variety } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(bays ? { bays } : {}), ...(front.redLight ? { redLight: { ...front.redLight, span: undefined } } : {}), ...(front.frameHex ? { frameHex: front.frameHex } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}) };
+    ...(front.letters !== undefined ? { letters: front.letters } : {}), ...(front.paint ? { paint: front.paint } : {}), ...(front.bike ? { bike: front.bike } : {}), ...(front.awning ? { awning: front.awning } : {}), ...(front.goods !== undefined ? { goods: front.goods } : {}), ...(front.variety !== undefined ? { variety: front.variety } : {}), ...(front.faces !== undefined ? { faces: front.faces } : {}), ...(front.chain ? { chain: front.chain } : {}), ...(bays ? { bays } : {}), ...(front.redLight ? { redLight: { ...front.redLight, span: undefined } } : {}), ...(front.frameHex ? { frameHex: front.frameHex } : {}), ...(shopCell !== undefined ? { interior: { layer: shopCell, rect: puiInteriorUv() } } : {}), ...historicPuiInput(b.id, !!(b.recipe || b.specRecipe)) };
   // Lane shop-bikes-perp: the pavement before the front's wall (street centreline less half a carriageway, as the
   // stoops use), so perpendicular bikes stand only where they fit.
   const streetD = front.template === 'bike' && streetM ? streetM(best) : Infinity, pavementM = Number.isFinite(streetD) ? Math.max(0, streetD - GENERIC_STOOP.carriageHalfM) : undefined;
@@ -552,7 +553,7 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   // Lane retail-pass round 2 (`?shopInteriors=1`): a room behind each window bay that lies on one flush piece of the
   // run; the wall is cut over the glass (riser top to door head) so the room shows through.
   const roomCuts: Array<{ e: Edge; cut: WallCut }> = [], rooms: number[] = [];
-  if (shopInteriorsOn() && roomTemplate(front.template)) {
+  if (shopInteriorsOn() && roomTemplate(front.template) && !input.host) {
     retailWindowBays(input, s0, s1).forEach(([c0, c1], bay) => {
       const p = c1 - c0 >= 0.6 ? run.parts.find(q => q.t0 <= c0 + 1e-6 && q.t1 >= c1 - 1e-6 && q.backM < 0.01) : undefined;
       if (!p) return;
@@ -563,7 +564,9 @@ function retailFrontOn(front: NonNullable<MeshBuilding['retailFront']>, b: MeshB
   const placed = rooms.length ? { ...placed0, rooms } : placed0;
   const tris = retailFrontTris(front.brand ? { ...placed, brand: front.brand, ...(b.wallHex ? { wallHex: b.wallHex } : {}) } : placed, e, s0, s1, base, groundM);
   // Round 3: every template door stands in a recess (retailDoor), traced or not, so the wall is cut over each.
-  const opening = retailDoor(input, s0, s1);
+  // Lane retail-fit round 5: a historic pui on the pand's own front ('sign') adds only its name: nothing is cut.
+  // Round 6: a kit pui with read doors draws them flush where the photo shows them: no recess either.
+  const opening = input.host && (input.host.mode === 'sign' || input.host.front.doors?.length) ? null : retailDoor(input, s0, s1);
   // The wall is cut on the piece of the run behind the door (a piece set back further than the recess needs no cut).
   const part = opening && run.parts.find(p => p.t0 <= opening.a0 + 1e-6 && p.t1 >= opening.a1 - 1e-6 && p.backM < opening.depthM);
   if (!tris.length) return { tris };

@@ -66,12 +66,14 @@ export function glassOpenings(soups: readonly GlassSoup[], centre: [number, numb
     const groups = new Map<number, Tri[]>();
     list.forEach((t, i) => { const r = find(i); let g = groups.get(r); if (!g) groups.set(r, g = []); g.push(t); });
     // A face triangulated with T-junctions falls apart into pieces over the same span: pieces whose spans overlap by
-    // more than half the narrower one are one opening.
-    const span = (g: Tri[]) => { const t = g[0], tx = t.nz, tz = -t.nx; let a = Infinity, b = -Infinity; for (const q of g) for (const p of [q.a, q.b, q.c]) { const u = p[0] * tx + p[2] * tz; a = Math.min(a, u); b = Math.max(b, u); } return [a, b]; };
+    // more than half the narrower one, AND that touch vertically (a gap under 0.15 m), are one opening. Without the
+    // vertical test a shop window and the first-floor window over it (a street chunk's glass) became one 7 m opening.
+    const span = (g: Tri[]) => { const t = g[0], tx = t.nz, tz = -t.nx; let a = Infinity, b = -Infinity, y0 = Infinity, y1 = -Infinity; for (const q of g) for (const p of [q.a, q.b, q.c]) { const u = p[0] * tx + p[2] * tz; a = Math.min(a, u); b = Math.max(b, u); y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); } return [a, b, y0, y1]; };
     const merged: Array<{ g: Tri[]; s: number[] }> = [];
     for (const g of [...groups.values()].map(g => ({ g, s: span(g) })).sort((p, q) => p.s[0] - q.s[0])) {
-      const m = merged.find(m => Math.min(m.s[1], g.s[1]) - Math.max(m.s[0], g.s[0]) > 0.5 * Math.min(m.s[1] - m.s[0], g.s[1] - g.s[0]));
-      if (m) { m.g.push(...g.g); m.s = [Math.min(m.s[0], g.s[0]), Math.max(m.s[1], g.s[1])]; } else merged.push(g);
+      const m = merged.find(m => Math.min(m.s[1], g.s[1]) - Math.max(m.s[0], g.s[0]) > 0.5 * Math.min(m.s[1] - m.s[0], g.s[1] - g.s[0])
+        && Math.max(m.s[2], g.s[2]) - Math.min(m.s[3], g.s[3]) < 0.15);
+      if (m) { m.g.push(...g.g); m.s = [Math.min(m.s[0], g.s[0]), Math.max(m.s[1], g.s[1]), Math.min(m.s[2], g.s[2]), Math.max(m.s[3], g.s[3])]; } else merged.push(g);
     }
     for (const { g } of merged) {
       const op = openingOf(g, centre, o);

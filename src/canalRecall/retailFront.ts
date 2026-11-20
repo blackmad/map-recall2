@@ -2,6 +2,7 @@
 // or the business's lettering, window content just proud of the glass, and what stands on the pavement, built on the
 // street wall nearest the POI. Flat-colour triangles in the sign layer (threeBuildingMesh SignTri), so no texture
 // layer is spent: the atlas has two free layers. Pure (no DOM): runs in the mesh worker and in Node tests.
+import { historicPuiFront, type HistoricPuiHost } from './retailFit/historicPuiFront.js';
 import { glyphLayout } from './retailLogos.js';
 import { goodsCell, goodsTiles, type GoodsKind } from './retailGoods.js';
 import { fillerCell } from './retailPaneFillers.js';
@@ -67,7 +68,7 @@ function hash01(s: string): number {
   return (h >>> 0) / 4294967296;
 }
 
-class Builder {
+export class Builder {
   readonly out: FrontTri[] = [];
   constructor(readonly e: WallFrame) {}
   P(a: number, o: number, z: number): V3 { const e = this.e; return [e.x0 + e.ux * a + e.nx * o, e.y0 + e.uy * a + e.ny * o, z]; }
@@ -506,6 +507,10 @@ export type RetailFrontInput = {
   /** Round 4 (`?retailParts=1`): a per-pand frame colour read on a photo (data/retail-ground/front-overrides.json, with
    *  its receipt): the posts, mullions, transom and riser in place of the template's surround; the board keeps its own. */
   frameHex?: string;
+  /** Lane retail-fit round 5: a register-named historic pui (retailFit/historicPui.ts): the template draws nothing; the
+   *  host's measured kit pui stands in its place, or only its name on the pand's own front (historicPuiFront.ts).
+   *  Absent: unchanged. */
+  host?: HistoricPuiHost;
 };
 
 /** Where the door's head stands: under the fascia, at most FRONT.doorHeadM. */
@@ -676,6 +681,8 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
   const brand = input.brand && retailBrandOn() && brandAccepted(input.brand) ? brandLook(input.brand) : undefined, look: TemplateLook = brand ? { ...look0, ...brand } : look0;
   if (s1 - s0 < 1.2) return [];
   const b = new Builder(e);
+  // Lane retail-fit round 5: a historic pui draws its own front (or only its name) in the template's place.
+  if (input.host) { historicPuiFront(b, input.host, input, s0, s1, base, base + Math.min(Math.max(2.8, groundM), 4.6), retailDoor(input, s0, s1)); return b.out; }
   const top = base + Math.min(Math.max(2.8, groundM), 4.6) - FRONT.fasciaGapM, bottom = top - FRONT.fasciaM;
   // Lane retail-real (coordinator 2026-11-15): a red-light front is lane R's window-front part (groundParts/
   // redLightFront.ts: glazed doors in a cream frame, kick panels, curtains, a lit red tube on the head), with no pui
