@@ -47,7 +47,7 @@ export const PANE_SETS: Readonly<Partial<Record<GoodsKind, PaneSet>>> = {
   bowls: { signature: 'once', fillers: ['tablesBright', 'windowBar', 'plantGlass', 'lamps'] },
   deli: { signature: 'once', fillers: ['tablesWarm', 'windowBar', 'drinksFridge', 'wallShelves'] },
   // Blind round 1: one case in four panes diluted the ijssalon; the counter shows on about half the panes.
-  gelato: { signature: 'most', share: 0.35, maxShare: 0.5, fillers: ['tablesWarm', 'tablesBright', 'windowBar', 'menuPoster', 'plantGlass'] },
+  gelato: { signature: 'most', share: 0.35, maxShare: 0.5, fillers: ['tablesWarm', 'tablesBright', 'windowBar', 'menuPoster'] },
   waffles: { signature: 'once', fillers: ['tablesBright', 'menuPoster', 'windowBar', 'lamps'] },
   pancakes: { signature: 'once', fillers: ['tablesWarm', 'lamps', 'plantGlass', 'blind'] },
   // Cafés and bars: tables are the signature, so it may repeat; the quieter windows break the run.
@@ -75,7 +75,8 @@ export const PANE_SETS: Readonly<Partial<Record<GoodsKind, PaneSet>>> = {
   shoes: { signature: 'most', share: 0.5, fillers: ['plinthDisplay', 'promoPoster', 'counterTill'] },
   optician: { signature: 'most', share: 0.45, fillers: ['plinthDisplay', 'promoPoster', 'counterTill'] },
   phones: { signature: 'most', share: 0.45, fillers: ['promoPoster', 'counterTill', 'plinthDisplay'] },
-  souvenirs: { signature: 'most', share: 0.6, fillers: ['promoPoster', 'counterTill', 'wallShelves'] },
+  // Blind round 2: wall shelving (bottles) read as a liquor shop in a souvenir window.
+  souvenirs: { signature: 'most', share: 0.6, fillers: ['promoPoster', 'counterTill', 'plinthDisplay'] },
   tobacco: { signature: 'most', share: 0.5, fillers: ['promoPoster', 'counterTill', 'drinksFridge'] },
   smartshop: { signature: 'once', fillers: ['lounge', 'lamps', 'blind'] },
   // Services: one display (the rate board, a tattoo flash wall), the rest posters, blinds and the room.
