@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## Whole-building Handelsbank and Holland Casino, De Kroon released, four new markets, Park Centraal (2026-11-20, round 20261120c)
+
+- **Landmarks round 8 (lane/landmarks-r6-20261120 1283ecb55d).**
+  - **Whole pands, at David's request ("so model the whole building").** The Handelsbank Singel 250 and Holland Casino models covered only their landmark's share of a shared pand; the rest was drawn generic. Both now model the whole pand with the new `row-front.ts` kit, and the `pandParts` splits and their osm-under allowlist entries are gone.
+    - Handelsbank: the rest is the Herengracht canal houses around no. 233, Singel 258 and the low north side. Blind 8/8 against the old model.
+    - Holland Casino: the rest is the north-east arm (two 1890s brick houses on rusticated basements). Blind 2 plus 1 tie.
+    - A 23.4 m roof shard from the 3DBAG shell over the north-west Handelsbank house was clamped to the 18.1 m eaves.
+  - **De Kroon is released.** Its symmetric Amstel gable and tower crest come from the new `shell-gable-fit.ts`; one fresh judge passed it.
+  - **School Marnixstraat 2** is new and passed its judge.
+  - **Vijzelbank** is recoloured from the post-renovation panoramas: dark-grey bands, white fins, light glass. No Randstad sign is visible in them.
+  - **Oranjekerk** is held: parsonage turret, octagonal porch, belfry stage, and a disputed roof colour.
+- **Large buildings round 2 (lane/large-buildings-20261120 6d0234a6af).**
+  - Weesperflat now has an open void storey with posts and a cantilever lip: new `loggiaBands[].open` and `.lip`, byte-identical when absent. It beat round 1 3/3.
+  - Park Centraal is installed: glass balcony bands and the MOMO range with quoins, voussoirs and a mansard. Blind 5/5; its openings fault was an end-bay balcony hanging past a stepped panel.
+  - Valckenierstraat 65's blank-walls hold is met: E and N faces drawn from the canal-side panorama.
+  - New how-to: `docs/building-recipes/wall-colour-measured.md`. A hand-sampled colour must be carried as measured, or it is lifted into the city brick range.
+- **Markets, behind `?markets=1` (lane/market-stalls-20261120 a8ad09ed02).** These extend the existing module, not a second kit.
+  - New markets: Dappermarkt (156 stalls), Westerstraat Lapjesmarkt (147, back to back on the median), Noordermarkt (8) and Lindenmarkt (83; the layout is inferred, since no Saturday panorama exists).
+  - Stalls have open sides, garment racks and fabric bolts. A closed `stall-bare` frame shows during setup, and `?marketDay=` applies the register's hours.
+  - `clearance.ts` breaks stall rows wherever a routing-graph line crosses them; three Ten Kate stalls that stood across routed lines are gone.
+  - Blind 7–0. The Bloemenmarkt is already the `bloemenmarkt-stalls` landmark. Nieuwmarkt is not placed, because there are no market-day captures.
+
 ## Shop windows vary, tenants fit the Hirschgebouw arches, seven large buildings installed, ordinary-building backlog (2026-11-20, round 20261120b)
 
 - **Shop variety, default on (`?shopVariety=0` off; lane/shop-variety-20261120 587616ea08).** David: "this place wouldn't have four doners, this wouldn't have gelato in every window."
