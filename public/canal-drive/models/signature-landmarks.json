@@ -55047,10 +55047,16 @@
       "bytes": 352244,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "0d7b1c43143a48cd",
+        "sourceHash": "1165b3419b281bcf",
         "buildVersion": 2,
-        "bytes": 102052,
-        "triangles": 6491
+        "bytes": 100728,
+        "triangles": 6119
+      },
+      "lod2": {
+        "sourceHash": "1165b3419b281bcf",
+        "buildVersion": 6,
+        "bytes": 30228,
+        "triangles": 1500
       }
     },
     "johnny-jordaan-groep": {
@@ -117350,7 +117356,19 @@
       },
       "triangles": 26371,
       "bytes": 347640,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "5f982c7292f3b9bb",
+        "buildVersion": 2,
+        "bytes": 86448,
+        "triangles": 4919
+      },
+      "lod2": {
+        "sourceHash": "5f982c7292f3b9bb",
+        "buildVersion": 6,
+        "bytes": 20956,
+        "triangles": 877
+      }
     },
     "spiegelhof": {
       "id": "spiegelhof",
@@ -117635,7 +117653,19 @@
       },
       "triangles": 33306,
       "bytes": 456932,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "ccedd30f5c5527af",
+        "buildVersion": 2,
+        "bytes": 100620,
+        "triangles": 5328
+      },
+      "lod2": {
+        "sourceHash": "ccedd30f5c5527af",
+        "buildVersion": 6,
+        "bytes": 17756,
+        "triangles": 664
+      }
     }
   }
 }

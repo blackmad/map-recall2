@@ -1124,6 +1124,17 @@
    "name": "Kadijken",
    "shots": [
     {
+     "label": "Former Zeemanshuis, Kadijksplein 17-18",
+     "lat": 52.37039442,
+     "lng": 4.91322191,
+     "view": "chase",
+     "at": [
+      4.912639,
+      52.369751,
+      29
+     ]
+    },
+    {
      "label": "Werf 't Kromhout",
      "lat": 52.36797056,
      "lng": 4.9201477,
@@ -1143,17 +1154,6 @@
       4.912659,
       52.370295,
       163
-     ]
-    },
-    {
-     "label": "Hoogte Kadijk 400, Amsterdam-Centrum",
-     "lat": 52.366934,
-     "lng": 4.9217885,
-     "view": "chase",
-     "at": [
-      4.920318,
-      52.366614,
-      70
      ]
     },
     {

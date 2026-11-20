@@ -6468,6 +6468,42 @@
    "triangles": 503
   }
  },
+ "kadijksplein-17-18": {
+  "sourceHash": "5aef5291c712d334",
+  "buildVersion": 2,
+  "bytes": 56984,
+  "triangles": 2559,
+  "lod2": {
+   "sourceHash": "5aef5291c712d334",
+   "buildVersion": 6,
+   "bytes": 10344,
+   "triangles": 323
+  }
+ },
+ "utrechtsestraat-9-17": {
+  "sourceHash": "b5bf4561fd9b629d",
+  "buildVersion": 2,
+  "bytes": 90180,
+  "triangles": 4793,
+  "lod2": {
+   "sourceHash": "b5bf4561fd9b629d",
+   "buildVersion": 6,
+   "bytes": 16412,
+   "triangles": 609
+  }
+ },
+ "pentagon": {
+  "sourceHash": "5f982c7292f3b9bb",
+  "buildVersion": 2,
+  "bytes": 86448,
+  "triangles": 4919,
+  "lod2": {
+   "sourceHash": "5f982c7292f3b9bb",
+   "buildVersion": 6,
+   "bytes": 20956,
+   "triangles": 877
+  }
+ },
  "spiegelhof": {
   "sourceHash": "ccedd30f5c5527af",
   "buildVersion": 2,
@@ -6478,18 +6514,6 @@
    "buildVersion": 6,
    "bytes": 17756,
    "triangles": 664
-  }
- },
- "pentagon": {
-  "sourceHash": "7bbb05864cf01f4d",
-  "buildVersion": 2,
-  "bytes": 86672,
-  "triangles": 4919,
-  "lod2": {
-   "sourceHash": "7bbb05864cf01f4d",
-   "buildVersion": 6,
-   "bytes": 21068,
-   "triangles": 877
   }
  }
 }
