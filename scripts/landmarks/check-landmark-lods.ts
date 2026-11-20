@@ -26,7 +26,9 @@ import {
  *  Houthavens pair took 463 lod2s to 6.01 MB (p50 9.3 KB); raised to 6.5 MB, room for ~40 more at the median. */
 // 6.75 MB since 2026-11-20: landmark round 6 un-held four blind-passed models (Reinwardt, De Jaren, Singel 250, Holland
 // Casino) and took the set to 6.56 MB.
-const LOD2_MAX_TOTAL_BYTES = 6.75e6;
+// 7 MB since round 20261120g: Magna Plaza's open belfries, lanterns and needles survive the silhouette guard (2.4k tris,
+// 46 KB) and Nieuwe Achtergracht 129 is new; the set reached 6.77 MB.
+const LOD2_MAX_TOTAL_BYTES = 7e6;
 /** Lane R4-H (#252): the ordinary installs' lod1 + lod2 together (27 models; lod1 at 1024 px). */
 const ORDINARY_LOD_MAX_TOTAL_BYTES = 8e6;
 /**

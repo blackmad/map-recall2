@@ -781,15 +781,15 @@
   }
  },
  "magna-plaza": {
-  "sourceHash": "01f1b99a123fc64a",
+  "sourceHash": "9195606b8d88c0d4",
   "buildVersion": 2,
-  "bytes": 73452,
-  "triangles": 3896,
+  "bytes": 125264,
+  "triangles": 6620,
   "lod2": {
-   "sourceHash": "01f1b99a123fc64a",
+   "sourceHash": "9195606b8d88c0d4",
    "buildVersion": 6,
-   "bytes": 11060,
-   "triangles": 476
+   "bytes": 46040,
+   "triangles": 2358
   }
  },
  "felix-meritis": {
@@ -6538,6 +6538,18 @@
    "buildVersion": 6,
    "bytes": 18352,
    "triangles": 727
+  }
+ },
+ "nieuwe-achtergracht-129": {
+  "sourceHash": "52b31c7c8d50836c",
+  "buildVersion": 2,
+  "bytes": 93948,
+  "triangles": 5232,
+  "lod2": {
+   "sourceHash": "52b31c7c8d50836c",
+   "buildVersion": 6,
+   "bytes": 17404,
+   "triangles": 653
   }
  }
 }
