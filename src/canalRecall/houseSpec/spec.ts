@@ -112,9 +112,30 @@ export function drawableDesign<D extends Record<string, any> | undefined>(design
   });
   return { design: out as D, ignored };
 }
-/** Every source a spec field may name: the facade evidence ladder plus `author` (a hand-written spec, ranks as `reviewed`). */
-export type SpecSource = FacadeSource | 'vision-judge' | 'author';
-export const SPEC_SOURCES: readonly SpecSource[] = [...SOURCE_STRENGTH, 'author'];
+/** Every source a spec field may name: the facade evidence ladder plus `author` (a hand-written spec, ranks as `reviewed`)
+ *  and `based-on` (a field taken from another pand's resolved design through `basedOn`, resolve.ts applyBasedOn; it ranks
+ *  above `default`, the period default, and below every source that observed this house). */
+export type SpecSource = FacadeSource | 'vision-judge' | 'author' | 'based-on';
+export const SPEC_SOURCES: readonly SpecSource[] = [...SOURCE_STRENGTH, 'author', 'based-on'];
+
+/**
+ * Lane C (belt review R4, 2026-11-20): "this house is like that one". The spec takes the base pand's resolved design
+ * (fronts, roof, palette; not its notes or facts, which are evidence about the base) plus `overrides`, the same meaning as a
+ * block-face house's `sameAs` + `overrides` (blockFace/intent.ts). Every field it brings in is receipted `based-on` with a
+ * ref naming the base pand, and it only fills fields this house's own sources leave absent or at `default`. A base may itself
+ * be based on another; chains deeper than BASED_ON_MAX_DEPTH and cycles are refused. Absent = byte-identical.
+ */
+export interface SpecBasedOn {
+  /** The base pand (16 digits). */
+  pandId: string;
+  /** What differs from the base: design fields (a front's keys, roof, palette), merged over the base like `sameAs` overrides. */
+  overrides?: SpecDesign;
+  /** Who linked them and why (a review pin, `belt-review <face> pin <id>`). */
+  ref?: string;
+  /** Confidence of the override fields (0..1, default 0.8); inherited fields keep the base's own confidence. */
+  confidence?: number;
+}
+export const BASED_ON_MAX_DEPTH = 4;
 
 /** The receipt for one field (or, keyed by an ancestor path, for every field below it). */
 export type Prov = {
@@ -174,6 +195,8 @@ export interface HouseSpec {
    *  The shape of BlockFaceIntent.schemaLimits since a1's belt lanes (2026-11-10); legacy `"component: what"` strings are
    *  read through `toSpecLimit`. */
   schemaLimits?: SpecLimit[];
+  /** "Like that house": the base pand's resolved design fills what this house's sources leave open (SpecBasedOn). */
+  basedOn?: SpecBasedOn;
   /** Opt-in (toRecipe.ts `withRoute`): `recipe` only when asked for and the spec is a complete, valid canal-house intent, else `generic`. */
   route?: 'generic' | 'recipe';
 }
@@ -203,6 +226,7 @@ export function uniqueLimits(limits: readonly SpecLimit[]): SpecLimit[] {
 
 const STRENGTH = new Map<string, number>(SOURCE_STRENGTH.map((s, i) => [s, i]));
 STRENGTH.set('author', STRENGTH.get('reviewed')!);
+STRENGTH.set('based-on', 0.5); // above `default` (0), below `osm` (1) and every observation of this house
 /** Rank of a source on the evidence ladder (`author` = `reviewed`); unknown sources rank below `default`. */
 export const specStrength = (source: SpecSource): number => STRENGTH.get(source) ?? -1;
 export const isStrongerSpecSource = (a: SpecSource, b: SpecSource): boolean => specStrength(a) > specStrength(b);
@@ -324,6 +348,26 @@ export function specProblems(input: unknown): string[] {
   if (spec.schemaLimits !== undefined && !Array.isArray(spec.schemaLimits)) p.push('schemaLimits must be a list of {component, what}');
   for (const l of spec.schemaLimits ?? []) if (typeof l !== 'object' || toSpecLimit(l) === null) p.push(`schemaLimits: ${JSON.stringify(l)} must be {component, what} (non-empty strings)`);
   if (spec.route !== undefined && spec.route !== 'generic' && spec.route !== 'recipe') p.push('route must be generic|recipe');
+  if (spec.basedOn !== undefined) p.push(...basedOnProblems(spec));
+  return p;
+}
+
+/** Problems with a spec's `basedOn` (shape only; the chain is checked where the base is looked up, resolve.ts applyBasedOn). */
+function basedOnProblems(spec: HouseSpec): string[] {
+  const b = spec.basedOn, p: string[] = [];
+  if (!b || typeof b !== 'object' || Array.isArray(b)) return ['basedOn must be {pandId, overrides?, ref?, confidence?}'];
+  if (!/^\d{16}$/.test(b.pandId ?? '')) p.push('basedOn.pandId must be 16 digits');
+  else if (b.pandId === spec.pandId) p.push('basedOn.pandId is this pand (a house cannot be based on itself)');
+  if (b.ref !== undefined && (typeof b.ref !== 'string' || !b.ref)) p.push('basedOn.ref must be a non-empty string');
+  if (b.confidence !== undefined && !(typeof b.confidence === 'number' && b.confidence >= 0 && b.confidence <= 1)) p.push('basedOn.confidence must be 0..1');
+  if (b.overrides !== undefined) {
+    if (!b.overrides || typeof b.overrides !== 'object' || Array.isArray(b.overrides)) p.push('basedOn.overrides must be a design object');
+    else {
+      if ((b.overrides as Record<string, unknown>).notes !== undefined) p.push('basedOn.overrides: notes are not inherited; state them on the spec');
+      const probe = { schemaVersion: 1, pandId: spec.pandId, design: b.overrides, provenance: { '': { source: 'based-on', confidence: 1, ref: 'basedOn.overrides', at: null } } };
+      for (const q of specProblems(probe)) p.push(`basedOn.overrides: ${q}`);
+    }
+  }
   return p;
 }
 
