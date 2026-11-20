@@ -341,6 +341,15 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
       const chunk = (spec as any).chunkPands ? await separateChunkPands(glb) : null;
       const M = modelMatrix(gf, placement, recentre, chunk ? 0 : base);
       const md = modelDraws(chunk ? chunk.scene : glb, M, envL, `model/${spec.id}`, { atlas, year: typeof (spec as any).bagYear === 'number' ? (spec as any).bagYear : null, exposure: (spec as any).wallExposure ?? null });
+      // Lane retail-fit (`?retailFit=1`, env RETAIL_FIT=1): tenants inside the model's own ground openings (full level only).
+      if (!chunk && !file.endsWith('.lod1.glb')) {
+        const { retailFitOn } = await import('../retailFit/flag.ts');
+        if (retailFitOn()) {
+          const { retailFitScene } = await import('../retailFit/nodeAdapter.ts');
+          const fit = retailFitScene(spec.id, glb, M, (lng, lat) => { const w = worldOfLngLat(gf, lng, lat); return [w[0], w[1]]; });
+          if (fit) { md.push(...modelDraws(fit.scene, M, envL, `retail-fit/${spec.id}`)); N.retailFit = (N.retailFit ?? 0) + fit.triangles; }
+        }
+      }
       if (chunk) {
         const lifted = await liftChunkPands(md, chunk.owners, (x, y) => {
           const [lng, lat] = lngLatOfWorld(gf, x, y), [lx, ly] = toLocal(lng, lat);
