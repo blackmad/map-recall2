@@ -602,3 +602,7 @@ export function goodsTiles(c0: number, c1: number): Array<{ a0: number; a1: numb
   const n = Math.max(1, Math.round((c1 - c0) / GOODS_TILE_M)), w = (c1 - c0) / n;
   return Array.from({ length: n }, (_, k) => ({ a0: c0 + k * w, a1: c0 + (k + 1) * w, flip: k % 2 === 1 }));
 }
+
+/** Lane shop-variety-20261120: the painting helpers, for the pane fillers (retailPaneFillers.ts) to paint in the same hand. */
+export type GoodsPaint = P;
+export const goodsPaint = { stream, pick, rect, round, oval, poly, vgrad, glow, room, shelves, packets, mannequin, rail, loaf, bottle, menuBoard, glassOver, PRODUCT, PASTEL } as const;

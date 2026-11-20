@@ -20,7 +20,10 @@ const { retailFrontTris } = await import('../../src/canalRecall/retailFront.ts')
 const { RETAIL_TEMPLATES } = await import('../../src/canalRecall/retailTemplates.ts');
 const { logoFor, glyphCellBox } = await import('../../src/canalRecall/retailLogos.ts');
 const { GOODS_LAYERS, paintGoodsLayer } = await import('../../src/canalRecall/retailGoods.ts');
-const { GOODS_BASE, TYPE_BASE, CHAIN_LOGO_BASE } = await import('../../src/canalRecall/retailPages.ts');
+const { GOODS_BASE, TYPE_BASE, CHAIN_LOGO_BASE, VARIETY_BASE } = await import('../../src/canalRecall/retailPages.ts');
+// Lane shop-variety: SHOP_VARIETY=1 draws the pane fillers (retailPaneFillers.ts) as the game does with ?shopVariety=1.
+const { FILLER_LAYERS, paintFillerLayer } = await import('../../src/canalRecall/retailPaneFillers.ts');
+const VARIETY = (await import('../../src/canalRecall/shopVariety.ts')).shopVarietyOn();
 const { TYPE_FACES } = await import('../../src/canalRecall/retailTypeFaces.ts');
 const { CHAIN_LOGO_PAGES, chainLogo, TEMPLATE_CHAIN_LOGO } = await import('../../src/canalRecall/retailChainLogos.ts');
 const chains = await import('../../src/canalRecall/retailChains.ts').catch(() => null);
@@ -46,6 +49,7 @@ if (REAL) {
   for (let k = 0; k < GOODS_LAYERS; k++) { const c = createCanvas(SIZE, SIZE); paintGoodsLayer(c.getContext('2d') as never, k, SIZE); pages.set(LOGO + GOODS_BASE + k, c); }
   for (const [k, f] of TYPE_FACES.entries()) if (fs.existsSync(path.join(dir, `type-${f}.png`))) pages.set(LOGO + TYPE_BASE + k, await loadImage(path.join(dir, `type-${f}.png`)));
   for (let k = 0; k < CHAIN_LOGO_PAGES; k++) pages.set(LOGO + CHAIN_LOGO_BASE + k, await loadImage(path.join(dir, `chains-${k + 1}.png`)));
+  if (VARIETY) for (let k = 0; k < FILLER_LAYERS; k++) { const c = createCanvas(SIZE, SIZE); paintFillerLayer(c.getContext('2d') as never, k, SIZE); pages.set(LOGO + VARIETY_BASE + k, c); }
 }
 const isLettering = (layer: number, uv: [number, number][]) => {
   if (REAL && layer >= LOGO + TYPE_BASE && layer < LOGO + TYPE_BASE + TYPE_FACES.length) return true;
@@ -82,7 +86,7 @@ entries.forEach((en, i) => {
   const tris: FrontTri[] = retailFrontTris({ template: en.t, word: en.word, seed: `preview-${en.label}`, door: { a0: SPAN - 1.9, a1: SPAN - 0.9, depthM: 0.5 }, letters: LOGO,
     // Lane retail-pass round 2: SHOP_INTERIORS=1 draws both bays as rooms (the game's mesher cuts the wall behind them).
     ...(process.env.SHOP_INTERIORS === '1' ? { rooms: [0, 1] } : {}),
-    ...(logo ? { logo } : {}), ...(REAL ? { goods: LOGO + GOODS_BASE, faces: LOGO + TYPE_BASE } : {}), ...(en.chain && chains ? { chain: { fascia: chains.RETAIL_CHAINS[en.chain].fascia, letters: chains.RETAIL_CHAINS[en.chain].letters, word: chains.RETAIL_CHAINS[en.chain].word } } : {}) } as never, e, 0, SPAN, 0, GROUND);
+    ...(logo ? { logo } : {}), ...(REAL ? { goods: LOGO + GOODS_BASE, faces: LOGO + TYPE_BASE, ...(VARIETY ? { variety: LOGO + VARIETY_BASE } : {}) } : {}), ...(en.chain && chains ? { chain: { fascia: chains.RETAIL_CHAINS[en.chain].fascia, letters: chains.RETAIL_CHAINS[en.chain].letters, word: chains.RETAIL_CHAINS[en.chain].word } } : {}) } as never, e, 0, SPAN, 0, GROUND);
   totalTris += tris.length;
   const wall: FrontTri[] = [], quad = (a: number[][], hex: string, n: [number, number, number]) => { wall.push({ p: [a[0], a[1], a[2]] as never, hex, n }, { p: [a[0], a[2], a[3]] as never, hex, n }); };
   quad([[-1.5, 0, 0], [SPAN + 1.5, 0, 0], [SPAN + 1.5, 0, 7], [-1.5, 0, 7]], '#7a3a2a', [0, 1, 0]);

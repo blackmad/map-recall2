@@ -10,7 +10,9 @@ import { SHOP_KINDS, bayTextures, releaseBayTextures, type Look } from '../bayTe
 import { retailGroundOn } from '../retailTemplates.js';
 import { glyphCellBox, LOGO_ATLAS_PATH, LOGO_ATLAS_2_PATH, retailLogoLayer } from '../retailLogos.js';
 import { LOOK_VARIANTS, PHOTO_WALL_CELL_MEAN } from './palette.js';
-import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, retailPageCount, retailRealOn } from '../retailPages.js';
+import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, VARIETY_BASE, retailPageCount, retailRealOn } from '../retailPages.js';
+import { FILLER_LAYERS, paintFillerLayer } from '../retailPaneFillers.js';
+import { shopVarietyOn } from '../shopVariety.js';
 import { GOODS_LAYERS, paintGoodsLayer, type Ctx2D } from '../retailGoods.js';
 import { TYPE_FACES } from '../retailTypeFaces.js';
 import { CHAIN_LOGO_PAGES, chainLogoPath } from '../retailChainLogos.js';
@@ -156,6 +158,8 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
     for (let k = 0; k < GOODS_LAYERS; k++) { paintGoodsPage(colour, mask, logoLayer + GOODS_BASE + k, size, k); await yieldBudget(); }
     for (const [k, face] of TYPE_FACES.entries()) await paintLogoLayer(colour, mask, logoLayer + TYPE_BASE + k, size, `materials/retail-logos/type-${face}.png`, true);
     for (let k = 0; k < CHAIN_LOGO_PAGES; k++) await paintLogoLayer(colour, mask, logoLayer + CHAIN_LOGO_BASE + k, size, chainLogoPath(k));
+    // Lane shop-variety (`?shopVariety=1`): the pane-filler layers after the chain logos (retailPaneFillers.ts).
+    if (shopVarietyOn()) for (let k = 0; k < FILLER_LAYERS; k++) { paintGoodsPage(colour, mask, logoLayer + VARIETY_BASE + k, size, k, paintFillerLayer); await yieldBudget(); }
   }
   let brick: CanvasImageSource = document.createElement('canvas');
   if (look === 'photo') {
@@ -198,10 +202,10 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
  * mask zero (the logo's own colours, untinted). An atlas that fails to load leaves a white layer (a plain board).
  */
 /** Lane retail-real: one window-goods layer, painted at `size` (retailGoods.ts paintGoodsLayer), mask zero (own colours). */
-function paintGoodsPage(colour: Uint8Array, mask: Uint8Array, layer: number, size: number, page: number): void {
+function paintGoodsPage(colour: Uint8Array, mask: Uint8Array, layer: number, size: number, page: number, paint: (ctx: Ctx2D, page: number, size: number) => void = paintGoodsLayer): void {
   const px = size * size, canvas = document.createElement('canvas'); canvas.width = canvas.height = size;
   const ctx = canvas.getContext('2d', { willReadFrequently: true })!;
-  paintGoodsLayer(ctx as unknown as Ctx2D, page, size);
+  paint(ctx as unknown as Ctx2D, page, size);
   const pixels = ctx.getImageData(0, 0, size, size).data;
   for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
     const from = ((size - 1 - y) * size + x) * 4, at = layer * px + y * size + x;
