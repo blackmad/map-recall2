@@ -38,10 +38,10 @@
  "heightMetres": 34.5,
  "bagYear": 1973,
  "materialOverrides": {
-  "bronze": "#9ea6a8",
-  "concrete": "#cdcec9",
+  "bronze": "#4a4a48",
+  "concrete": "#e4e1d8",
   "stone": "#878985",
-  "glass": "#c9ccc6",
+  "glass": "#bcc3c4",
   "dark": "#363735",
   "slate": "#5f6166"
  },

@@ -67320,10 +67320,10 @@
       "heightMetres": 34.5,
       "bagYear": 1973,
       "materialOverrides": {
-        "bronze": "#9ea6a8",
-        "concrete": "#cdcec9",
+        "bronze": "#4a4a48",
+        "concrete": "#e4e1d8",
         "stone": "#878985",
-        "glass": "#c9ccc6",
+        "glass": "#bcc3c4",
         "dark": "#363735",
         "slate": "#5f6166"
       },
@@ -67569,12 +67569,6 @@
         "buildVersion": 2,
         "bytes": 78468,
         "triangles": 4147
-      },
-      "lod2": {
-        "sourceHash": "1310fc65cf2a62ae",
-        "buildVersion": 6,
-        "bytes": 22840,
-        "triangles": 1316
       }
     },
     "carlton-hotel": {
@@ -115159,14 +115153,14 @@
       },
       "bagYear": 1883,
       "materialOverrides": {
-        "brick": "#4f3a36",
+        "brick": "#62423a",
         "red": "#8c4030",
         "ochre": "#8a7050",
         "stone": "#7a736b",
         "sandstone": "#e2dccd",
         "slate": "#3e3f44",
         "frame": "#e6e2d6",
-        "glass": "#33383c",
+        "glass": "#4d5860",
         "dark": "#2b3a30"
       },
       "attribution": {
