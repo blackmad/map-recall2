@@ -61,6 +61,12 @@ export interface DeckProfile {
    */
   edges?: { left: Float64Array; right: Float64Array };
   /**
+   * `edges` with abrupt narrowings tapered (ownGround/bridgeGaps.ts taperDeckEdges, `edgeTaper`, feedback 3b8ca68b):
+   * read only by the riding surface's lift (GroundSurface.locate), so the lift ends at a slant across a road and the
+   * kit, footprint and deck body keep the survey's own edges.
+   */
+  rideEdges?: { left: Float64Array; right: Float64Array };
+  /**
    * Drawn half-widths no deck body or deck top may pass, left and right per station (Infinity: no cap), where the road
    * survey's deck-level polygons stop well inside `halfWidth` with nothing surveyed beyond (ownGround/bridgeGaps.ts
    * surveyDeckCaps). Only decks.ts deckWidths reads it; the riding surface keeps `halfWidth`.

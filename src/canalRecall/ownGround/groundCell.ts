@@ -25,6 +25,8 @@
 
 import earcut from 'earcut';
 import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water.js';
+import { insideRings, liftLandInRings, wetGroundShores } from './wetGroundEdges.js';
+import { WET_CLEAR_M } from './wetGround.js';
 import { drapeTriangles, emptyMesh, floatBoundGrid, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, ROAD_MARK_LIFT, type LocalWay } from './streets.js';
 import { bandCorridor, capWidths, COVERED_TOP_SINK_M, DECK_REACH_MAX_M, deckReach, deckWidths, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, movableLeaves, pointInRing, underDeck, type DeckBuildInfo, type WaterTest } from './decks.js';
@@ -128,6 +130,10 @@ export interface CellInput {
   pleinRails?: boolean;
   /** Ground polygons split across a measured deck's lateral blend (roadSurfaces.ts DeckSideFine, lane fb-bridges-20261119, De Clercqstraat 3b8ca68b); default on, off: `?deckSideFine=0`. */
   deckSideFine?: boolean;
+  /** The land's water cut lifted inside the wet-ground rings (wetGroundEdges.ts liftLandInRings, lane fb-ground2-20261120, the Doelensluis 4c1344ce); default on, off: `?wetHoles=0`. */
+  wetHoles?: boolean;
+  /** Quay faces along the wet-ground rings' edges over open water; the OSM shore under a ring buried (wetGroundEdges.ts, lane fb-ground2-20261120, 4c1344ce); default on, off: `?wetFaces=0`. */
+  wetFaces?: boolean;
   /** Tram rails centred in their carriageway within RAIL_CENTRE_TOL_M (railCentre.ts, lane fb-bridges-20261119, Vijzelstraat 62d5a35f); default on, off: `?railCentre=0`. */
   railCentre?: boolean;
   /** A covered deck's top drawn in the survey's material at its edges (groundCell coveredTopLayer, lane fb-bridges-20261119, the Oost-Indische Huisbrug 935a6807); default on, off: `?coveredTopTone=0`. */
@@ -727,7 +733,17 @@ export function buildCell(input: CellInput): BuiltCell {
     add('water', waterSurfaceMesh(input.water, CANAL_WATER_Z), 'water');
     // No municipal quay wall under a bridge deck (its arches) or across a landed platform (the Homomonument's steps bring their own walls).
     const underDecks = input.decks.length ? underDeck(input.decks) : undefined, onPlatform = inLandedPlatform(input.landedPlatforms ?? []);
-    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, fine ? 4 : touch ? TOUCH_QUAY_STEP_M : 8, QUAY_CAP_M, (x, y) => onPlatform(x, y) || !!underDecks?.(x, y)), 'quay');
+    // wetFaces (wetGroundEdges.ts, lane fb-ground2-20261120): the OSM shore under a wet-ground ring is buried, and the
+    // ring's own edges over open water get the quay face (the Doelensluis terrace, 4c1344ce).
+    const wetFaces = input.wetFaces !== false && !!input.wetGround?.length, inWet = wetFaces ? insideRings(input.wetGround!) : null;
+    const quayStep = fine ? 4 : touch ? TOUCH_QUAY_STEP_M : 8;
+    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, quayStep, QUAY_CAP_M, (x, y) => onPlatform(x, y) || !!underDecks?.(x, y) || !!inWet?.(x, y)), 'quay');
+    if (wetFaces) {
+      const onDeckRing = insideRings(input.deckRingsAround);
+      const open = (x: number, y: number) => overWater(x, y) && !onDeckRing(x, y) && !(roadIndex && roadIndex.findAll(x, y).length) && !onPlatform(x, y);
+      const shores = wetGroundShores(input.wetGround!, open);
+      if (shores.length) add('quay', quayWallMesh({ polygons: [], shores, shoreLevels: shores.map(l => waterZAt(input.waterAround, l[0][0], l[0][1], CANAL_WATER_Z)) }, surface.height, CANAL_WATER_Z, Math.min(quayStep, 2), QUAY_CAP_M, (x, y) => !!underDecks?.(x, y)), 'quay');
+    }
   }
   // Piers and pontoons over the water (piers.ts, feedback ee2b30): only their parts over the cell's own water.
   if (input.water && input.piers?.length) {
@@ -876,7 +892,10 @@ export function buildCell(input: CellInput): BuiltCell {
     triangles += byLayer[layer];
     bytes += packedBytes(p);
   }
-  const landMask = cutMask ? { ...cutMask, sdf: mask ? cutMask.sdf.map((d, k) => Math.min(d, mask.sdf[k])) : cutMask.sdf, sdfStreets: mask ? mask.sdfStreets : new Float32Array(cutMask.sdf.length).fill(MASK_RANGE_M) } : mask;
+  // wetHoles (wetGroundEdges.ts, lane fb-ground2-20261120): the land is not cut inside a wet-ground ring (a hole in a plein
+  // over the water, the slivers between its polygons), only the water test (overWater) keeps the mapped water.
+  const wetLand = mask && input.wetHoles !== false && input.wetGround?.length ? { ...mask, sdf: liftLandInRings(mask, input.wetGround, roadIndex ? { covered: (x, y) => roadIndex.findAll(x, y).length > 0, clear: (x, y) => surface.ground(x, y) - waterZAt(input.waterAround, x, y, CANAL_WATER_Z) >= WET_CLEAR_M } : undefined) } : mask;
+  const landMask = cutMask ? { ...cutMask, sdf: wetLand ? cutMask.sdf.map((d, k) => Math.min(d, wetLand.sdf[k])) : cutMask.sdf, sdfStreets: mask ? mask.sdfStreets : new Float32Array(cutMask.sdf.length).fill(MASK_RANGE_M) } : wetLand;
   const maskOut: GroundMask | null = landMask ? { x0: landMask.x0, y0: landMask.y0, res: landMask.res, width: landMask.width, height: landMask.height, texels: maskTexels(landMask) } : null;
   if (maskOut) bytes += maskOut.texels.byteLength;
   phase('pack');

@@ -383,12 +383,15 @@ export async function railCentreOffsets(readExtract: Read, at: [number, number],
   }
   return out;
 }
-export const TOP_LAYER_SPOTS: readonly { id: string; label: string; at: [number, number]; half: number; bad: readonly string[]; flag: string; max: number; pinMin: number }[] = [
+export const TOP_LAYER_SPOTS: readonly { id: string; label: string; at: [number, number]; half: number; bad: readonly string[]; flag: string; max: number; pinMin: number; /** Also off in the before-store: a later default-on fix that hides the same defect. */ alsoOff?: readonly string[] }[] = [
   // The h0 foot polygons reach ~2 m over the Singel beside the deck polygon: too narrow for the inset, now grown from the deck.
   { id: 'BRU0009', label: 'Torensluis, the water slit east of the deck (c16d3403)', at: [4.889675, 52.374683], half: 1.5, bad: ['hole'], flag: 'wetNearDecks', max: 2, pinMin: 12 }, // measured 2026-11-19: 0 / 16
-  { id: 'BRU0220', label: 'Doelensluis, the notch at the near-left abutment (4c1344ce)', at: [4.893858, 52.367682], half: 1.5, bad: ['hole'], flag: 'wetNearDecks', max: 15, pinMin: 35 }, // measured 2026-11-19: 13 / 41
+  // Lane fb-ground2-20261120: the holes between and inside the plein's wet-ground polygons (wetGroundEdges.ts liftLandInRings).
+  // The 5 left are the canal in the concave corner between the terrace and the bridge's parapet (8 cm orthophoto).
+  { id: 'BRU0220', label: 'Doelensluis, the notch at the near-left abutment (4c1344ce)', at: [4.893858, 52.367682], half: 1.5, bad: ['hole'], flag: 'wetNearDecks', max: 7, pinMin: 35 }, // measured 2026-11-19: 13 / 41; 2026-11-20: 5 / 41
+  { id: 'BRU0220', label: 'Doelensluis, the slivers between wet-ground polygons (4c1344ce)', at: [4.893858, 52.367682], half: 1.5, bad: ['hole'], flag: 'wetHoles', max: 7, pinMin: 10 }, // measured 2026-11-20: 5 / 12
   // The carriageway polygon crosses the deck's lateral blend; at a 3 m drape edge it lay 12-15 cm under the deck top.
-  { id: 'BRU0108', label: 'De Clercqstraat, deck grey across the road at the deck side (3b8ca68b)', at: [4.872046, 52.371377], half: 2.5, bad: ['deckTop'], flag: 'deckSideFine', max: 2, pinMin: 10 }, // measured 2026-11-19: 0 / 13
+  { id: 'BRU0108', label: 'De Clercqstraat, deck grey across the road at the deck side (3b8ca68b)', at: [4.872046, 52.371377], half: 2.5, bad: ['deckTop'], flag: 'deckSideFine', alsoOff: ['edgeTaper'], max: 2, pinMin: 10 }, // measured 2026-11-19: 0 / 13; edgeTaper (2026-11-20) hides it too
   // Skewed asphalt deck polygon: the kit's pale top showed between it and the parapet.
   { id: 'BRU0223', label: 'Oost-Indische Huisbrug, the pale wedge beside the asphalt (935a6807)', at: [4.897653, 52.369923], half: 5, bad: ['deckTop'], flag: 'coveredTopTone', max: 2, pinMin: 9 }, // measured 2026-11-19: 0 / 12
 ];
@@ -437,8 +440,94 @@ export async function round396Regressions(readExtract: Read, check: Check): Prom
   const holes = await pandHoles(readExtract, PAND_ON_ABUTMENT.ring);
   check(holes <= PAND_ON_ABUTMENT.maxHoles, `pand ${PAND_ON_ABUTMENT.id} (${PAND_ON_ABUTMENT.label}): ${holes} footprint samples with no ground drawn (<= ${PAND_ON_ABUTMENT.maxHoles})`);
   for (const spot of TOP_LAYER_SPOTS) {
-    const n = await topLayerCount(readExtract, {}, spot), was = await topLayerCount(readExtract, { [spot.flag]: false }, spot);
+    const n = await topLayerCount(readExtract, {}, spot), was = await topLayerCount(readExtract, { [spot.flag]: false, ...Object.fromEntries((spot.alsoOff ?? []).map(f => [f, false])) }, spot);
     check(n <= spot.max, `${spot.id} (${spot.label}): ${n} samples of ${spot.bad.join('/')} on top (<= ${spot.max})`);
-    check(was >= spot.pinMin, `${spot.id}: without ${spot.flag} ${was} (>= ${spot.pinMin}, the pin is live)`);
+    check(was >= spot.pinMin, `${spot.id}: without ${[spot.flag, ...(spot.alsoOff ?? [])].join('+')} ${was} (>= ${spot.pinMin}, the pin is live)`);
   }
+  // Lane fb-ground2-20261120 (4c1344ce): the Doelensluis plein's edge over the Amstel stands on a quay face.
+  const f = DOELENSLUIS_FACE, faces = await faceGaps(readExtract, {}, f.at, f.half), bare = await faceGaps(readExtract, { wetFaces: false }, f.at, f.half);
+  check(faces.bare <= f.maxBare, `${f.label}: ${faces.bare} of ${faces.edge} ground/water boundary points with no quay face (<= ${f.maxBare})`);
+  check(bare.bare >= f.pinMin, `${f.label}: without wetFaces ${bare.bare} (>= ${f.pinMin}, the pin is live)`);
+  // Lane fb-ground2-20261120 (3b8ca68b): no ledge across De Clercqstraat where BRU0108's survey edge narrows.
+  const d = DECLERCQ_SEAM, step = await maxTopStep(readExtract, {}, d.from, d.to), was = await maxTopStep(readExtract, { edgeTaper: false }, d.from, d.to);
+  check(step <= d.maxM, `${d.label}: largest top step ${step.toFixed(3)} m (<= ${d.maxM})`);
+  check(was >= d.pinMinM, `${d.label}: without edgeTaper ${was.toFixed(3)} m (>= ${d.pinMinM}, the pin is live)`);
 }
+
+/**
+ * Lane fb-ground2-20261120 (4c1344ce, the Doelensluis terrace): where the drawn ground meets open water (a 'hole' beside a
+ * drawn top on a 0.25 m grid), a quay face must stand within FACE_NEAR_M of the boundary. Returns the boundary points and
+ * those with no face (the plein's edge read as a slab floating at street height).
+ */
+export const FACE_NEAR_M = 0.4;
+/** The Doelensluis terrace's edge over the Amstel (BRU0220): measured 2026-11-20, 2 of 15 bare / 34 of 34 without wetFaces. */
+export const DOELENSLUIS_FACE = { label: 'Doelensluis, the terrace edge over the Amstel (4c1344ce)', at: [4.893858, 52.367682] as [number, number], half: 4, maxBare: 4, pinMin: 20 };
+export async function faceGaps(readExtract: Read, opts: Record<string, boolean>, at: [number, number], half: number): Promise<{ edge: number; bare: number }> {
+  const st = new GroundStore(readExtract, { roads: true, ...opts });
+  await st.init();
+  const [cx, cy] = toLocal(at[0], at[1]), keys = new Set<string>();
+  for (const dx of [-half, half]) for (const dy of [-half, half]) keys.add(st.cellAt(cx + dx, cy + dy));
+  const cells: { cell: ReturnType<typeof buildCell>; rect: readonly number[] }[] = [];
+  for (const k of keys) if (st.covers(k)) cells.push({ cell: buildCell(await st.cellInput(k, 0)), rect: st.cellRect(k) });
+  const segs: number[] = [];
+  for (const { cell } of cells) {
+    const m = cell.layers.quay;
+    if (!m) continue;
+    const p = m.positions, idx = m.indices;
+    for (let t = 0; t < idx.length; t += 3) for (const [u, v] of [[0, 1], [1, 2], [2, 0]]) {
+      const a = idx[t + u] * 3, b = idx[t + v] * 3;
+      if (Math.max(p[a], p[b]) < cx - half - 1 || Math.min(p[a], p[b]) > cx + half + 1 || Math.max(p[a + 1], p[b + 1]) < cy - half - 1 || Math.min(p[a + 1], p[b + 1]) > cy + half + 1) continue;
+      segs.push(p[a], p[a + 1], p[b], p[b + 1]);
+    }
+  }
+  const near = (x: number, y: number) => {
+    for (let i = 0; i < segs.length; i += 4) {
+      const ax = segs[i], ay = segs[i + 1], dx = segs[i + 2] - ax, dy = segs[i + 3] - ay, l2 = dx * dx + dy * dy;
+      const t = l2 > 1e-12 ? Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / l2)) : 0;
+      if (Math.hypot(ax + dx * t - x, ay + dy * t - y) <= FACE_NEAR_M) return true;
+    }
+    return false;
+  };
+  const topAt = (x: number, y: number) => { const c = cells.find(c => x >= c.rect[0] && x < c.rect[2] && y >= c.rect[1] && y < c.rect[3]); return c ? layersAt(c.cell, x, y).top : undefined; };
+  const s = 0.25, n = Math.round((2 * half) / s), grid: (string | null | undefined)[][] = [];
+  for (let j = 0; j <= n; j++) { const row: (string | null | undefined)[] = []; for (let i = 0; i <= n; i++) row.push(topAt(cx - half + i * s, cy - half + j * s)); grid.push(row); }
+  let edge = 0, bare = 0;
+  for (let j = 0; j <= n; j++) for (let i = 0; i <= n; i++) for (const [di, dj] of [[1, 0], [0, 1]]) {
+    if (i + di > n || j + dj > n) continue;
+    const a = grid[j][i], b = grid[j + dj][i + di];
+    if (a === undefined || b === undefined || (a === null) === (b === null)) continue;
+    const solid = a ?? b;
+    if (solid === 'deckTop' || solid === 'deckBody' || solid === 'quay') continue;
+    edge++;
+    if (!near(cx - half + (i + di / 2) * s, cy - half + (j + dj / 2) * s)) bare++;
+  }
+  return { edge, bare };
+}
+
+/**
+ * The largest jump in the drawn top surface along a short line (0.02 m steps, ground layers only): a step between two
+ * surfaces that meet in plan but not in height (seen at an angle as a crack, or as a ledge). Lane fb-ground2-20261120,
+ * 3b8ca68b: the line is the chase camera's ray at the De Clercqstraat seam, read with ray-pick.mjs / ray-hits.ts.
+ */
+export async function maxTopStep(readExtract: Read, opts: Record<string, boolean>, from: [number, number], to: [number, number]): Promise<number> {
+  const st = new GroundStore(readExtract, { roads: true, ...opts });
+  await st.init();
+  const a = toLocal(from[0], from[1]), b = toLocal(to[0], to[1]);
+  const keys = new Set([st.cellAt(a[0], a[1]), st.cellAt(b[0], b[1])]);
+  const cells: { cell: ReturnType<typeof buildCell>; rect: readonly number[] }[] = [];
+  for (const k of keys) if (st.covers(k)) cells.push({ cell: buildCell(await st.cellInput(k, 0)), rect: st.cellRect(k) });
+  const SKIP = new Set(['kerb', 'deckBody', 'quay', 'bollard', 'furniture', 'hedge', 'water', 'tram', 'paint', 'track', 'ballast']);
+  const len = Math.hypot(b[0] - a[0], b[1] - a[1]), n = Math.ceil(len / 0.02);
+  let prev: number | null = null, worst = 0;
+  for (let i = 0; i <= n; i++) {
+    const x = a[0] + (b[0] - a[0]) * i / n, y = a[1] + (b[1] - a[1]) * i / n;
+    const c = cells.find(c => x >= c.rect[0] && x < c.rect[2] && y >= c.rect[1] && y < c.rect[3]);
+    const hit = c ? layersAt(c.cell, x, y).hits.find(h => !h.cut && !SKIP.has(h.layer)) : undefined;
+    const z = hit ? hit.z : null;
+    if (z !== null && prev !== null) worst = Math.max(worst, Math.abs(z - prev));
+    prev = z;
+  }
+  return worst;
+}
+/** De Clercqstraat over the Da Costagracht (BRU0108, 3b8ca68b): the note's ray across the seam, 3 m, east to west. */
+export const DECLERCQ_SEAM = { label: 'De Clercqstraat, the seam across the road at BRU0108 (3b8ca68b)', from: [4.8723308, 52.3713931] as [number, number], to: [4.8722881, 52.3713863] as [number, number], maxM: 0.03, pinMinM: 0.15 }; // measured 2026-11-20: 0.011 / 0.238
