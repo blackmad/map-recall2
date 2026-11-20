@@ -43,3 +43,9 @@ test('reshapeShell compresses heights above a level inside a region only', () =>
   const out = reshapeShell(s, {compress: [{inside: x => x < 5, y0: 19, s: 0.5}]});
   assert.deepEqual(out[0].rings[0].map(p => p[1]), [22, 20, 25]);
 });
+
+test('reshapeShell snaps a height band inside a region (first matching band wins) and leaves the rest', () => {
+  const s: Surface[] = [{type: 'RoofSurface', rings: [[[0, 13.6, 0], [1, 22.7, 0], [2, 18, 0], [9, 13.6, 0]]]}];
+  const out = reshapeShell(s, {snap: [{inside: x => x < 5, lo: 12.9, hi: 15.3, to: 14}, {inside: x => x < 5, lo: 13, hi: 23, to: 99}, {inside: () => true, lo: 21, hi: 23, to: 22.3}]});
+  assert.deepEqual(out[0].rings[0].map(p => p[1]), [14, 99, 99, 13.6]);
+});

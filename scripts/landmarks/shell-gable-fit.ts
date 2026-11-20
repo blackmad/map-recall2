@@ -49,13 +49,24 @@ export interface Compress {
   y0: number;
   s: number;
 }
+/**
+ * Snap band (2026-11-20, landmarks r9, the Oranjekerk's lumpy hipped roof): inside a region, vertices with lo <= y <= hi
+ * are set to `to`. One eaves line and one ridge height over a scan that drew them 13.4-14.2 m and 21.6-22.8 m.
+ */
+export interface Snap {
+  inside: (x: number, z: number) => boolean;
+  lo: number;
+  hi: number;
+  to: number;
+}
 
 const yspan = (s: Surface) => { const ys = s.rings[0].map(p => p[1]); return Math.max(...ys) - Math.min(...ys); };
 
 /** Vertex edits for a symmetric gable over an irregular shell; returns new surfaces (the input is not touched). */
-export function reshapeShell(surfaces: Surface[], o: {fronts?: FrontClamp[]; compress?: Compress[]}): Surface[] {
+export function reshapeShell(surfaces: Surface[], o: {fronts?: FrontClamp[]; compress?: Compress[]; snap?: Snap[]}): Surface[] {
   const move = (p: number[]): number[] => {
     let y = p[1];
+    for (const sn of o.snap ?? []) if (y >= sn.lo && y <= sn.hi && sn.inside(p[0], p[2])) { y = sn.to; break; }
     for (const c of o.compress ?? []) if (y > c.y0 && c.inside(p[0], p[2])) y = c.y0 + (y - c.y0) * c.s;
     for (const fc of o.fronts ?? []) {
       const {t, d} = frameCoords(fc.frame, p[0], p[2]);

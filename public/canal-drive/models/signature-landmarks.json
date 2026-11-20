@@ -115410,7 +115410,7 @@
       },
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
-      "heightMetres": 33,
+      "heightMetres": 47.5,
       "galleryView": {
         "theta": 0.8,
         "phi": 1.1
@@ -115424,8 +115424,12 @@
         "frame": "#e2ddd0",
         "glass": "#3a4046",
         "dark": "#2a2d2c",
-        "red": "#8a4a3a",
-        "bronze": "#2c2e2e"
+        "red": "#6f5148",
+        "bronze": "#2c2e2e",
+        "greyBrick": "#433031",
+        "white": "#c9c6bd",
+        "gold": "#b08a3e",
+        "concrete": "#8c8f8f"
       },
       "attribution": {
         "title": "Oranjekerk, Van Ostadestraat 149, Amsterdam (1903)",
@@ -115737,14 +115741,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -21.4689998626709,
-          -4.7683716530855236e-8,
+          -21.79838752746582,
+          -3.814697322468419e-7,
           -21.312999725341797
         ],
         "max": [
           24.72599983215332,
-          44.099998474121094,
-          13.49536418914795
+          49.25,
+          13.71310043334961
         ]
       },
       "placement": {
@@ -115758,13 +115762,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 46.19499969482422,
-        "heightMetres": 44.09999852180481,
-        "depthMetres": 34.808363914489746,
-        "depthCoverage": 0.7534277903569209
+        "widthMetres": 46.52438735961914,
+        "heightMetres": 49.25000038146973,
+        "depthMetres": 35.026100158691406,
+        "depthCoverage": 0.7581406960755716
       },
-      "triangles": 17418,
-      "bytes": 204876,
+      "triangles": 25375,
+      "bytes": 292992,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
