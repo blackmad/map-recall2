@@ -142,14 +142,14 @@ type RestHouse = {e: number; t?: [number, number]; wall: string; top: number; ba
  */
 const REST: RestHouse[] = [
   {e: 22, wall: 'brick', top: 12.1, bays: 4, doors: [0], stoop: 1.1, plinth: 1.1, cornice: true},
-  {e: 18, wall: 'brick', top: 11.4, bays: 3, doors: [0], stoop: 1.1, plinth: 1.1, cornice: true},
+  {e: 18, t: [0.9, 7.9], wall: 'brick', top: 11.4, bays: 3, doors: [0], stoop: 1.1, plinth: 1.1, cornice: true},
   {e: 26, wall: 'greyBrick', top: 13.3, bays: 6, doors: [0, 3], stoop: 1.1, plinth: 1.1, cornice: true},
   {e: 24, wall: 'greyBrick', top: 7.3, bays: 2, plinth: 1.1},
   {e: 7, wall: 'brick', top: 4.6, bays: 2, floor: 3.2},
-  {e: 27, wall: 'pink', top: 13.3, bays: 1, doors: [0], stoop: 0.9, plinth: 0.9, cornice: true},
+  {e: 27, wall: 'pink', top: 12.4, bays: 1, doors: [0], stoop: 0.9, plinth: 0.9},
   {e: 14, wall: 'brick', top: 5.5, bays: 3},
   {e: 4, wall: 'brick', top: 18.0, bays: 2, plinth: 1.0, cornice: true},
-  {e: 17, wall: 'greyBrick', top: 12.0, bays: 2, plinth: 1.0},
+  {e: 17, t: [0.3, 4.6], wall: 'greyBrick', top: 12.0, bays: 2, plinth: 1.0},
   {e: 3, wall: 'brick', top: 9.1, bays: 10},
   {e: 5, t: [0, 12.5], wall: 'brick', top: 13.0, bays: 4},
 ];
@@ -159,9 +159,9 @@ function restFronts(b: BuildingTools, ring: number[][]) {
   setSink(0.12, true);
   for (const H of REST) {
     const {f, len} = ringFrame(ring, H.e);
-    const storeys = storeysUnder(H.top, {ground: H.plinth ?? 0.3, floor: H.floor ?? 3.3, winH: 2.4, attic: 0.8});
+    const storeys = storeysUnder(H.top, {ground: H.plinth ?? 0.3, floor: H.floor ?? 3.6, winH: 2.8, attic: 0.7});
     rowFront(b, f, {
-      t0: H.t?.[0] ?? 0, t1: H.t?.[1] ?? len, top: H.top, bays: H.bays, storeys, margin: 0.5, winW: Math.min(1.45, ((H.t?.[1] ?? len) - (H.t?.[0] ?? 0) - 1) / H.bays * 0.62),
+      t0: H.t?.[0] ?? 0, t1: H.t?.[1] ?? len, top: H.top, bays: H.bays, storeys, margin: 0.5, winW: Math.min(1.7, ((H.t?.[1] ?? len) - (H.t?.[0] ?? 0) - 1) / H.bays * 0.74),
       plinth: H.plinth ? {h: H.plinth, colour: 'stone'} : undefined,
       doors: (H.doors ?? []).map(bay => ({bay, stoop: H.stoop})),
       cornice: H.cornice ? 'white' : undefined,

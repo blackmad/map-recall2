@@ -106517,7 +106517,7 @@
         "max": [
           23.560213088989258,
           26.19499969482422,
-          23.249685287475586
+          23.270761489868164
         ]
       },
       "placement": {
@@ -106533,11 +106533,11 @@
       "extent": {
         "widthMetres": 64.37355995178223,
         "heightMetres": 26.19499971103668,
-        "depthMetres": 56.365007400512695,
-        "depthCoverage": 0.8904424549844028
+        "depthMetres": 56.38608360290527,
+        "depthCoverage": 0.8907754123681718
       },
-      "triangles": 22973,
-      "bytes": 347440,
+      "triangles": 22181,
+      "bytes": 336028,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "78dca899a0ccfd15",
@@ -107554,7 +107554,7 @@
         "min": [
           -34.082340240478516,
           -2.3841858265427618e-8,
-          -41.972984313964844
+          -42.06235885620117
         ],
         "max": [
           26.08799934387207,
@@ -107573,13 +107573,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 83.21798324584961,
+        "widthMetres": 83.30735778808594,
         "heightMetres": 29.518999123573302,
         "depthMetres": 60.170339584350586,
         "depthCoverage": 1.0410093353693874
       },
-      "triangles": 12265,
-      "bytes": 187164,
+      "triangles": 11761,
+      "bytes": 180400,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "208f869dd6af5267",

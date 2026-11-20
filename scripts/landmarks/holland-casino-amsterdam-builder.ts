@@ -155,9 +155,9 @@ function restArm(b: BuildingTools, ring: number[][]) {
     // two brick houses over a grey rusticated stone basement, raised ground floors reached by stoops, cream stucco bands and
     // rusticated cream pilasters, an iron balcony over each porch (_01963, review sheet 2025 pano)
     for (const [t0, t1] of [[0.0, 12.0], [12.0, 24.3]]) {
-      rowFront(b, f, {...base, t0, t1, top: 20.5, bays: 4, storeys: storeysUnder(20.5, {ground: 1.5, floor: 3.5, winH: 2.5, attic: 2.0}), plinth: {h: 1.5, colour: 'greyBrick'}, bands: 'sandstone', balconies: [1], doors: [{bay: 0, stoop: 1.5}]});
+      rowFront(b, f, {...base, t0, t1, top: 20.5, bays: 4, winW: 1.55, storeys: storeysUnder(20.5, {ground: 1.5, floor: 3.6, winH: 2.9, attic: 1.8}), plinth: {h: 1.5, colour: 'greyBrick'}, bands: 'sandstone', balconies: [1], doors: [{bay: 0, stoop: 1.5}]});
     }
-    for (const t of [0.35, 12.0, 23.95]) slab(b, f, t, 1.5, 0.6, 17.4, 0.22, 'sandstone');
+    for (const t of [0.5, 12.0, 23.8]) slab(b, f, t, 1.5, 0.9, 17.4, 0.3, 'sandstone');
     // the cream-tiled gateway into the courtyard at the south-west end, in a granite frame (_01963: "max inrijhoogte")
     const g0 = 24.3, g1 = 28.3, gm = (g0 + g1) / 2;
     slab(b, f, gm, 0, 3.3, 3.7, 0.12, 'greyBrick', 0.06);
