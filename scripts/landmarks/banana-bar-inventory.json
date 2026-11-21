@@ -1,0 +1,154 @@
+{
+ "schemaVersion": 1,
+ "id": "banana-bar",
+ "pand": "0363100012177954",
+ "brief": "scripts/landmarks/banana-bar-brief.md",
+ "signature": [
+  "s-sign",
+  "s-neck-gable",
+  "s-claws",
+  "s-panels",
+  "s-black-front"
+ ],
+ "walls": [
+  {
+   "tag": "w01-301",
+   "bearing": 301,
+   "lengthM": 6.4,
+   "centre": [
+    4.899601,
+    52.3738205
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_01565",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-sign",
+     "kind": "sign",
+     "where": "black BANANENBAR board with a yellow banana and red capitals over the shutter (t 0.1-2.75 m, 3.0-3.8 m); a small red-lettered board over the raised door",
+     "approxSizeM": [
+      2.65,
+      0.78
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_01565",
+     "how": "black board with a gold border, a gold crescent banana, Archivo Black (SIL OFL 1.1) red capitals"
+    },
+    {
+     "id": "s-neck-gable",
+     "kind": "other",
+     "where": "neck gable: shoulders at 12.0 m, neck t 1.4-3.75 m to 14.05 m with a white cap",
+     "approxSizeM": [
+      2.35,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00020",
+     "how": "own front wall with the neck outline, white coping"
+    },
+    {
+     "id": "s-claws",
+     "kind": "relief",
+     "where": "white scroll claw pieces on both shoulders of the neck",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00020",
+     "how": "quarter-round white band with volute discs; the carved leafwork is not drawn"
+    },
+    {
+     "id": "s-panels",
+     "kind": "other",
+     "where": "every window opening filled with a painted panel showing figures",
+     "approxSizeM": [
+      1.5,
+      1.9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-30_05-16-46_01565",
+     "how": "plain pale-blue panels in black frames; the painted figures are left out by brief"
+    },
+    {
+     "id": "s-black-front",
+     "kind": "other",
+     "where": "the brick front painted near-black from plinth to neck",
+     "approxSizeM": [
+      6.3,
+      14.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_01565",
+     "how": "brick palette set near-black"
+    },
+    {
+     "id": "s-stoop",
+     "kind": "other",
+     "where": "stone landing and steps down to the left to the raised door, black iron rail; roller shutter to the souterrain",
+     "approxSizeM": [
+      2.6,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_01565",
+     "how": "step slabs, rail tubes, shutter slab with slats"
+    },
+    {
+     "id": "s-round-sign",
+     "kind": "sign",
+     "where": "round projecting sign at the door, 5.0 m",
+     "approxSizeM": [
+      0.4,
+      0.4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 40 cm disc seen edge-on"
+     },
+     "seenIn": "recording_2025-06-30_05-16-46_01565"
+    }
+   ]
+  },
+  {
+   "tag": "w02-121",
+   "bearing": 121,
+   "lengthM": 4.9,
+   "centre": [
+    4.8997625,
+    52.373776
+   ],
+   "evidence": "inferred",
+   "panoId": "TMX7316010203-002356_pano_0003_000093",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [],
+   "note": "hidden: the 121 deg rear wall stands behind the He Hua temple and the 208 deg side behind Cafe Old Sailor (OZA 39) in every 2024-25 view (artifacts banana/w2, w3)"
+  },
+  {
+   "tag": "w03-208",
+   "bearing": 208,
+   "lengthM": 4,
+   "centre": [
+    4.899718,
+    52.3737655
+   ],
+   "evidence": "inferred",
+   "panoId": "TMX7316010203-002862_pano_0004_000207",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [],
+   "note": "hidden: the 121 deg rear wall stands behind the He Hua temple and the 208 deg side behind Cafe Old Sailor (OZA 39) in every 2024-25 view (artifacts banana/w2, w3)"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

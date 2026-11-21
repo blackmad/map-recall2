@@ -1,0 +1,33 @@
+{
+ "id": "in-t-aepjen",
+ "name": "In 't Aepjen, Zeedijk 1",
+ "heightMetres": 15.8,
+ "bagYear": 1550,
+ "galleryView": {
+  "theta": 5.5,
+  "phi": 1.05
+ },
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012177880 (3DBAG CC BY 4.0, BAG CC0; Zeedijk 1) in native east/south metres (scripts/landmarks/in-t-aepjen-footprints.json, bag-shell-prepare.ts), its Zeedijk front replaced by the timber front; read from the rectified Gemeente Amsterdam panorama recording_2025-06-30_05-16-46_01845 (2025-06-30) and the aimed views b_20250114_1026_Track08_Sphere_00126 (2025-01-14) and recording_2025-06-30_05-16-46_01844 and _01846, CC BY 4.0. Rijksmonument 6500. Per wall in scripts/landmarks/in-t-aepjen-inventory.json.",
+ "materialOverrides": {
+  "brick": "#2b2d2f",
+  "copper": "#8fa2ad",
+  "green": "#62737d",
+  "greyBrick": "#5d6c75",
+  "sandstone": "#f3ecd6",
+  "frame": "#1d201f",
+  "glass": "#30302e",
+  "bronze": "#161616",
+  "stone": "#f2f0ea",
+  "red": "#c8312b",
+  "gold": "#f1ead2",
+  "slate": "#4a4846"
+ },
+ "attribution": {
+  "title": "In 't Aepjen, Zeedijk 1, Amsterdam",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_05-16-46_01845/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012177880 (CC0): the cream timber shopfront with the cafe's name (Pacifico, SIL OFL 1.1) and the Gulpener disc, the tarred jettied storey with its window band, the pale planked upper storeys and the hood, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

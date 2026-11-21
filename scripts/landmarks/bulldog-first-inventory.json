@@ -1,0 +1,189 @@
+{
+ "schemaVersion": 1,
+ "id": "bulldog-first",
+ "pand": "0363100012178229",
+ "brief": "scripts/landmarks/bulldog-first-brief.md",
+ "signature": [
+  "s-mosaic",
+  "s-signs",
+  "s-gable",
+  "s-white-front",
+  "s-attic-windows",
+  "s-windows",
+  "s-flower-boxes"
+ ],
+ "walls": [
+  {
+   "tag": "w01-205",
+   "bearing": 205,
+   "lengthM": 11.1,
+   "centre": [
+    4.897642,
+    52.373664
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track02_Sphere_00088",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-side-mosaic",
+     "kind": "other",
+     "where": "the painted mosaic of the ground storey wraps round the corner onto the alley side, first ~3 m from the front corner, 0-4.3 m",
+     "approxSizeM": [
+      3.0,
+      4.3
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track02_Sphere_00088",
+     "how": "mosaicPanel 3 m along the side from the corner under the blue fascia; extent along the alley is approximate (only the corner is visible)"
+    },
+    {
+     "id": "s-side-window",
+     "kind": "window-shape",
+     "where": "one green-framed window on the second floor near the front corner, brick wall otherwise",
+     "approxSizeM": [
+      0.9,
+      1.7
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track02_Sphere_00088",
+     "how": "timberWindow 2 x 3 in green 1.3 m from the corner; position approximate"
+    }
+   ]
+  },
+  {
+   "tag": "w02-128",
+   "bearing": 128,
+   "lengthM": 4.5,
+   "centre": [
+    4.8977365,
+    52.373659
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track02_Sphere_00186",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-mosaic",
+     "kind": "other",
+     "where": "whole ground storey 0-4.3 m painted in a bright multicolour mosaic/mural (blue, yellow, red, green, purple, orange) under a dark blue fascia",
+     "approxSizeM": [
+      4.52,
+      4.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_06-42-40_02070",
+     "how": "mosaicPanel: blue ground with 0.32 m patches in seven flat colours; the painted figures and texts are not drawn"
+    },
+    {
+     "id": "s-signs",
+     "kind": "sign",
+     "where": "two round hanging signs perpendicular to the front, one at each end, ~1 m across, rim just over the fascia: blue rim with THE BULLDOG, yellow face with a brown bulldog head, THE FIRST COFFEESHOP below",
+     "approxSizeM": [
+      1.0,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track02_Sphere_00088",
+     "how": "blue disc, red ring, yellow face, brown head with ears, pale muzzle, dark nose and eyes, both faces, iron arm; rim lettering left out (too small)"
+    },
+    {
+     "id": "s-gable",
+     "kind": "other",
+     "where": "bell gable: shoulders at ~11.8 m, crown at ~13.7 m, white with a moulded coping",
+     "approxSizeM": [
+      4.52,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track02_Sphere_00186",
+     "how": "the 3DBAG pitched front wall replaced by a bell profile wall with a coping band, shoulder ledges and crown block"
+    },
+    {
+     "id": "s-white-front",
+     "kind": "other",
+     "where": "front plastered and painted white above the ground storey",
+     "approxSizeM": [
+      4.52,
+      9.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track02_Sphere_00186",
+     "how": "front wall in the measured off-white"
+    },
+    {
+     "id": "s-attic-windows",
+     "kind": "window-shape",
+     "where": "three round-headed attic windows: centre 1.1 m wide 10.5-11.96 m, sides 0.55 m wide 10.58-11.68 m at t 2.26 +- 1.16, white arch mouldings",
+     "approxSizeM": [
+      1.1,
+      1.46
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track02_Sphere_00186",
+     "how": "timberWindow with arch head, archBand mouldings"
+    },
+    {
+     "id": "s-windows",
+     "kind": "window-shape",
+     "where": "two storeys of two dark-framed windows 1.29 m wide (axes 1.23, 3.29 m): 4.6-6.75 and 7.6-9.9 m, small panes, white hoods",
+     "approxSizeM": [
+      1.29,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track02_Sphere_00186",
+     "how": "timberWindow 2 x 4 panes, hood ledges"
+    },
+    {
+     "id": "s-flower-boxes",
+     "kind": "other",
+     "where": "grey window boxes with red geraniums under each window and the attic centre window",
+     "approxSizeM": [
+      1.3,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_06-42-40_02070",
+     "how": "grey box with a red band on top"
+    },
+    {
+     "id": "s-door",
+     "kind": "other",
+     "where": "dark door right of centre with a yellow 90 board over it; multi-pane brown-framed window on the left",
+     "approxSizeM": [
+      1.0,
+      2.75
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_02070",
+     "how": "door slab, glass light, number board with 90 in Archivo Black; window 4 x 5 panes"
+    },
+    {
+     "id": "s-wall-anchors",
+     "kind": "other",
+     "where": "small black wall anchors between the storeys",
+     "approxSizeM": [
+      0.1,
+      0.15
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "10-15 cm iron anchors, invisible at gallery size"
+     },
+     "seenIn": "b_20250114_1026_Track02_Sphere_00186"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
