@@ -6587,5 +6587,29 @@
    "bytes": 30932,
    "triangles": 1497
   }
+ },
+ "casa-rosso": {
+  "sourceHash": "3f6b29b913982ff7",
+  "buildVersion": 2,
+  "bytes": 60136,
+  "triangles": 2884,
+  "lod2": {
+   "sourceHash": "3f6b29b913982ff7",
+   "buildVersion": 6,
+   "bytes": 9188,
+   "triangles": 179
+  }
+ },
+ "moulin-rouge-amsterdam": {
+  "sourceHash": "69dbff4584f956ea",
+  "buildVersion": 2,
+  "bytes": 45420,
+  "triangles": 2090,
+  "lod2": {
+   "sourceHash": "69dbff4584f956ea",
+   "buildVersion": 6,
+   "bytes": 9672,
+   "triangles": 214
+  }
  }
 }
