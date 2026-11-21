@@ -13,6 +13,7 @@ import { joinDesignUnits, type NamedStreet } from './join.ts';
 import { REGRESSION_ROWS } from './regressionRows.ts';
 import { segmentsOf, SEGMENTS_SCHEMA, type MemberHeights, type Segment } from './segments.ts';
 import type { OrdekaartObject, UnitPand } from './types.ts';
+import type { PlotFacts } from './plotPlan.ts';
 import { designUnitOf, memberDraw, EVIDENCE_HOIST_RISE_M, EVIDENCE_ROOF_RISE_M, segmentBayM, setDesignSegments, sliceBays, withDesignUnits, withDesignUnitRoof, PLOT_EAVES_M, PLOT_TONE_DL, STALE_MEMBER_M, type DrawSegment } from './draw.ts';
 import { hexToOklab } from '../houseSpec/wallColour.ts';
 import { plotBreakBoxes, PIER_HALF_M } from './plotBreak.ts';
@@ -342,4 +343,21 @@ test('plot plan: storeys, ground use, balconies and each plot its own roof eleme
   assert.equal(pb.monumentGable, 'plain', 'the pointed gable plot draws the planner gable');
   assert.equal(pb.roofShape, 'gable');
   assert.ok(Math.abs(Number(pa.roofEavesHeightM) - Number(pb.roofEavesHeightM)) < 0.31, 'one cornice line (within the plot clamp)');
+});
+
+test('Rustenburgerstraat: white frames on every plot; read white heads and courses forced, plain heads marked', () => {
+  // The gate reads (plot-reads.json): 156003 white blocks and string courses, 119632 plain brick heads.
+  const reads: Record<string, PlotFacts> = { '0363100012156003': { src: 'photo', whiteHeads: 'blocks', stringCourses: true }, '0363100012119632': { src: 'photo', whiteHeads: 'none', stringCourses: false } };
+  const saved = allSegments.map(x => x.plots);
+  for (const x of allSegments) if (x.members.some(m => m in reads)) x.plots = { ...(x.plots ?? {}), ...Object.fromEntries(x.members.filter(m => m in reads).map(m => [m, reads[m]])) };
+  let drawn: ReturnType<typeof drawRow>[number]["members"];
+  try { drawn = drawRow('Rustenburgerstraat').flatMap(d => d.members); } finally { allSegments.forEach((x, i) => { x.plots = saved[i]; }); }
+  for (const m of drawn) {
+    const p = m.f.properties as Record<string, unknown>, force = (p.registerForce ?? []) as string[];
+    if (!p.designPlot) continue;
+    assert.equal(p.designFrames, true, `${m.id} frames`);
+    assert.ok(force.includes('white-window-frames'), `${m.id} frames forced`);
+    if (m.id.endsWith('156003')) { assert.deepEqual(p.designHeads, { dressing: 'voussoirs', shape: 'segmental' }); assert.ok(force.includes('row-heads') && force.includes('string-courses')); }
+    if (m.id.endsWith('119632')) { assert.equal(p.designPlainHeads, true); assert.ok(!force.includes('row-heads')); }
+  }
 });

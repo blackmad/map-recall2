@@ -60,6 +60,10 @@ export type ExtraContext = {
   plotBreak?: { start: boolean; end: boolean };
   /** Design units plot plan: the plot's stated balcony storeys (1 = first upper); facadeExtras.ts plotBalconies. */
   plotBalconies?: readonly number[];
+  /** Design units: the plot's white frames (plotPlan.ts plotWhite); white-window-frames draws them at full width. */
+  designFrames?: true;
+  /** Design units: the plot was read with plain brick heads; the dice head dressings stay off it. */
+  plainHeads?: true;
   /** House rows: the series' stated dressing on this wall (threeBuildingMesh rowDressOnEdge). `windows`: the record's
    *  boxes in this edge's metres with their storey and head; `heads`: spans (edge metres) over the grid's windows. */
   rowDress?: RowDressContext;

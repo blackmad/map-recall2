@@ -25,7 +25,7 @@ const GATE = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/design-units/ga
 const READS = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/design-units/plot-reads.json'), 'utf8')).pands as Record<string, { roof?: PlotRoof; dormer?: string }>;
 export const MAX_EDGE_PX = 1568;
 
-export const ROOF_READ_PROMPT = `You are reading the roofs of one street row in Amsterdam from a rectified photo: the street fronts are drawn flat,
+export const ROOF_READ_PROMPT = `You are reading the roofs of one street row in Amsterdam from a rectified photo, and the light dressing of their fronts: the street fronts are drawn flat,
 side by side, ground at the bottom. Thin dark vertical bars separate the plots (separate houses); there are {N} plots, numbered 1 to {N}
 from left to right. Look only at what stands at or above each plot's main cornice (the top of its brick or stucco wall).
 
@@ -36,8 +36,11 @@ For each plot answer:
   "not-visible" (cut off, trees, scaffold).
 - dormerKind: "pediment" (triangular or curved hood with a cornice), "gabled" (pointed small roof), "plain" (flat or shed top), or "none".
 - dormers: how many dormers that plot has (0 if none).
+- whiteHeads: the light (white, cream or buff) dressing at the upper window heads: "keystone" (a light key on a brick arch),
+  "blocks" (light blocks fanned round or set over the head), "band" (a light lintel band or slab), or "none" (brick heads).
+- stringCourses: true if light horizontal courses run across the front through the window sills, else false.
 
-Reply with JSON only, no prose: {"plots":[{"roofStorey":true,"form":"dormers","dormerKind":"pediment","dormers":1}, ...]} with exactly {N} entries.`;
+Reply with JSON only, no prose: {"plots":[{"roofStorey":true,"form":"dormers","dormerKind":"pediment","dormers":1,"whiteHeads":"none","stringCourses":false}, ...]} with exactly {N} entries.`;
 
 const argv = process.argv.slice(2), cmd = argv[0];
 const opt = (k: string) => (argv.includes(k) ? argv[argv.indexOf(k) + 1] : undefined);

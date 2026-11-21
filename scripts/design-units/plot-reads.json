@@ -1,5 +1,5 @@
 {
- "note": "Gate-row photo reads per plot (integrator, 2026-11-21, from artifacts/design-units/r2/layers/<key>/photo-row.jpg): storeys = full storeys with the ground (a roof storey and a souterrain not counted), ground = what the street level shows, roof = the plot roof element, balconies = upper storeys with a balcony (1 = first upper), souterrain, dormer kind and hoist. An absent field was not readable.",
+ "note": "Gate-row photo reads per plot (integrator, 2026-11-21, from artifacts/design-units/r2/layers/<key>/photo-row.jpg): storeys = full storeys with the ground (a roof storey and a souterrain not counted), ground = what the street level shows, roof = the plot roof element, balconies = upper storeys with a balcony (1 = first upper), souterrain, dormer kind and hoist. An absent field was not readable. whiteHeads (none|keystone|blocks|band: a white key on a brick arch, white blocks fanned round or over the head, a white or buff lintel band) and stringCourses (white or buff courses through the sills), read 2026-11-21 from the same rows; buff (Tweede Jacob van Campenstraat, Van Ostadestraat 153176/158962, Tweede Jan Steenstraat 145716) counts as the dressing. Not read: scaffolded or installed plots.",
  "pands": {
   "0363100012155846": {
    "block": "admiraal-de-ruijterweg-14817",
@@ -11,7 +11,9 @@
     2,
     3
    ],
-   "dormer": "gabled"
+   "dormer": "gabled",
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012164154": {
    "block": "admiraal-de-ruijterweg-14817",
@@ -22,7 +24,9 @@
     1,
     2,
     3
-   ]
+   ],
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012152459": {
    "block": "admiraal-de-ruijterweg-14817",
@@ -34,7 +38,9 @@
     2,
     3
    ],
-   "dormer": "gabled"
+   "dormer": "gabled",
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012157379": {
    "block": "admiraal-de-ruijterweg-14817",
@@ -46,7 +52,9 @@
     2,
     3
    ],
-   "dormer": "gabled"
+   "dormer": "gabled",
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012153312": {
    "block": "admiraal-de-ruijterweg-14817",
@@ -57,7 +65,9 @@
     1,
     2,
     3
-   ]
+   ],
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012160851": {
    "block": "admiraal-de-ruijterweg-14817",
@@ -69,14 +79,18 @@
     2,
     3
    ],
-   "dormer": "gabled"
+   "dormer": "gabled",
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012113152": {
    "block": "bilderdijkkade-15291",
    "storeys": 4,
    "ground": "dwelling",
    "roof": "flat",
-   "balconies": []
+   "balconies": [],
+   "whiteHeads": "blocks",
+   "stringCourses": false
   },
   "0363100012112384": {
    "block": "bilderdijkkade-15291",
@@ -87,7 +101,9 @@
     1,
     2,
     3
-   ]
+   ],
+   "whiteHeads": "blocks",
+   "stringCourses": false
   },
   "0363100012136574": {
    "block": "bilderdijkkade-15291",
@@ -98,7 +114,9 @@
     1,
     2,
     3
-   ]
+   ],
+   "whiteHeads": "blocks",
+   "stringCourses": false
   },
   "0363100012136575": {
    "block": "bilderdijkkade-15291",
@@ -109,7 +127,9 @@
     1,
     2,
     3
-   ]
+   ],
+   "whiteHeads": "blocks",
+   "stringCourses": false
   },
   "0363100012157757": {
    "block": "bilderdijkstraat-15353",
@@ -184,7 +204,9 @@
     2
    ],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012166893": {
    "block": "blasiusstraat-12604",
@@ -196,7 +218,9 @@
     2
    ],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012160842": {
    "block": "ceintuurbaan-8543",
@@ -207,7 +231,9 @@
     2,
     3
    ],
-   "dormer": "pediment"
+   "dormer": "pediment",
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012077688": {
    "block": "ceintuurbaan-8543",
@@ -218,7 +244,9 @@
     2,
     3
    ],
-   "dormer": "pediment"
+   "dormer": "pediment",
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012163696": {
    "block": "ceintuurbaan-8543",
@@ -230,7 +258,9 @@
     2,
     3
    ],
-   "dormer": "pediment"
+   "dormer": "pediment",
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012160089": {
    "block": "ceintuurbaan-8823",
@@ -238,7 +268,9 @@
    "ground": "dwelling",
    "roof": "pointedGable",
    "balconies": [],
-   "souterrain": true
+   "souterrain": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012083637": {
    "block": "ceintuurbaan-8823",
@@ -248,7 +280,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012162247": {
    "block": "ceintuurbaan-8823",
@@ -258,7 +292,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012158226": {
    "block": "ceintuurbaan-8823",
@@ -268,7 +304,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012155580": {
    "block": "ceintuurbaan-8823",
@@ -276,7 +314,9 @@
    "ground": "shop",
    "roof": "mansard",
    "balconies": [],
-   "souterrain": true
+   "souterrain": true,
+   "whiteHeads": "band",
+   "stringCourses": true
   },
   "0363100012162783": {
    "block": "ceintuurbaan-8823",
@@ -284,7 +324,9 @@
    "ground": "shop",
    "roof": "mansard",
    "balconies": [],
-   "souterrain": true
+   "souterrain": true,
+   "whiteHeads": "band",
+   "stringCourses": true
   },
   "0363100012156075": {
    "block": "commelinstraat-12327",
@@ -296,7 +338,9 @@
    ],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "keystone",
+   "stringCourses": false
   },
   "0363100012163419": {
    "block": "commelinstraat-12327",
@@ -309,7 +353,9 @@
    ],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "band",
+   "stringCourses": true
   },
   "0363100012158379": {
    "block": "commelinstraat-12327",
@@ -321,7 +367,9 @@
    ],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "keystone",
+   "stringCourses": false
   },
   "0363100012160261": {
    "block": "jan-luijkenstraat-9308",
@@ -329,7 +377,9 @@
    "ground": "dwelling",
    "roof": "pointedGable",
    "balconies": [],
-   "souterrain": true
+   "souterrain": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012160504": {
    "block": "jan-luijkenstraat-9308",
@@ -337,7 +387,9 @@
    "ground": "dwelling",
    "roof": "stepGable",
    "balconies": [],
-   "souterrain": true
+   "souterrain": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012166029": {
    "block": "jan-luijkenstraat-9308",
@@ -348,7 +400,9 @@
     1,
     2
    ],
-   "souterrain": true
+   "souterrain": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012155509": {
    "block": "jan-luijkenstraat-9308",
@@ -359,13 +413,17 @@
     1,
     2
    ],
-   "souterrain": true
+   "souterrain": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012153529": {
    "block": "johannes-verhulststraat-9613",
    "storeys": 4,
    "ground": "dwelling",
-   "balconies": []
+   "balconies": [],
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012162555": {
    "block": "johannes-verhulststraat-9613",
@@ -375,7 +433,9 @@
    "balconies": [
     1,
     2
-   ]
+   ],
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012162414": {
    "block": "johannes-verhulststraat-9613",
@@ -385,7 +445,9 @@
    "balconies": [
     1,
     2
-   ]
+   ],
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012160916": {
    "block": "johannes-verhulststraat-9613",
@@ -394,7 +456,9 @@
    "roof": "mansard",
    "balconies": [
     1
-   ]
+   ],
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012160823": {
    "block": "nassaukade-14713",
@@ -407,7 +471,9 @@
    ],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "keystone",
+   "stringCourses": false
   },
   "0363100012157831": {
    "block": "nassaukade-14713",
@@ -420,7 +486,9 @@
    ],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "keystone",
+   "stringCourses": false
   },
   "0363100012160222": {
    "block": "nassaukade-14713",
@@ -433,7 +501,9 @@
    ],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "keystone",
+   "stringCourses": false
   },
   "0363100012161795": {
    "block": "nassaukade-14713",
@@ -446,7 +516,9 @@
    ],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "keystone",
+   "stringCourses": false
   },
   "0363100012155454": {
    "block": "nicolaas-maesstraat-9232-0",
@@ -454,7 +526,9 @@
    "ground": "shop",
    "roof": "dormers",
    "balconies": [],
-   "dormer": "pediment"
+   "dormer": "pediment",
+   "whiteHeads": "blocks",
+   "stringCourses": false
   },
   "0363100012162481": {
    "block": "roelof-hartstraat-9162",
@@ -466,7 +540,9 @@
     2,
     3
    ],
-   "dormer": "gabled"
+   "dormer": "gabled",
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012156879": {
    "block": "roelof-hartstraat-9162",
@@ -478,7 +554,9 @@
     2,
     3
    ],
-   "dormer": "gabled"
+   "dormer": "gabled",
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012236703": {
    "block": "roelof-hartstraat-9162",
@@ -490,7 +568,9 @@
     2,
     3
    ],
-   "dormer": "gabled"
+   "dormer": "gabled",
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012164845": {
    "block": "roemer-visscherstraat-16068",
@@ -498,7 +578,9 @@
    "ground": "dwelling",
    "roof": "mansard",
    "balconies": [],
-   "souterrain": true
+   "souterrain": true,
+   "whiteHeads": "band",
+   "stringCourses": true
   },
   "0363100012119632": {
    "block": "rustenburgerstraat",
@@ -507,7 +589,9 @@
    "roof": "dormers",
    "balconies": [],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012166734": {
    "block": "rustenburgerstraat",
@@ -516,7 +600,9 @@
    "roof": "dormers",
    "balconies": [],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": false
   },
   "0363100012157322": {
    "block": "rustenburgerstraat",
@@ -525,7 +611,9 @@
    "roof": "dormers",
    "balconies": [],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012159752": {
    "block": "rustenburgerstraat",
@@ -546,7 +634,9 @@
     2
    ],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012156003": {
    "block": "rustenburgerstraat",
@@ -555,7 +645,9 @@
    "roof": "dormers",
    "balconies": [],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012157523": {
    "block": "rustenburgerstraat",
@@ -564,7 +656,9 @@
    "roof": "dormers",
    "balconies": [],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012165571": {
    "block": "rustenburgerstraat",
@@ -573,7 +667,9 @@
    "roof": "dormers",
    "balconies": [],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012165889": {
    "block": "rustenburgerstraat",
@@ -582,7 +678,9 @@
    "roof": "dormers",
    "balconies": [],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012155605": {
    "block": "ruyschstraat-12494",
@@ -595,7 +693,9 @@
     3
    ],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012162696": {
    "block": "ruyschstraat-12494",
@@ -608,7 +708,9 @@
     3
    ],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012159606": {
    "block": "ruyschstraat-12494",
@@ -619,7 +721,9 @@
     1,
     2,
     3
-   ]
+   ],
+   "whiteHeads": "blocks",
+   "stringCourses": false
   },
   "0363100012161684": {
    "block": "ruyschstraat-12494",
@@ -656,7 +760,9 @@
     1,
     2,
     3
-   ]
+   ],
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012146444": {
    "block": "tweede-jacob-van-campenstraat-9051-0",
@@ -664,7 +770,9 @@
    "ground": "shop",
    "roof": "dormers",
    "balconies": [],
-   "dormer": "plain"
+   "dormer": "plain",
+   "whiteHeads": "blocks",
+   "stringCourses": false
   },
   "0363100012153395": {
    "block": "tweede-jacob-van-campenstraat-9051-0",
@@ -673,7 +781,9 @@
    "roof": "dormers",
    "balconies": [],
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": false
   },
   "0363100012158441": {
    "block": "tweede-jacob-van-campenstraat-9051-0",
@@ -681,7 +791,9 @@
    "ground": "shop",
    "roof": "dormers",
    "balconies": [],
-   "dormer": "pediment"
+   "dormer": "pediment",
+   "whiteHeads": "blocks",
+   "stringCourses": false
   },
   "0363100012160616": {
    "block": "tweede-jan-steenstraat-8487",
@@ -691,21 +803,27 @@
    "balconies": [
     2,
     3
-   ]
+   ],
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012145716": {
    "block": "tweede-jan-steenstraat-8487",
    "storeys": 4,
    "ground": "dwelling",
    "balconies": [],
-   "souterrain": true
+   "souterrain": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012166070": {
    "block": "van-ostadestraat",
    "storeys": 4,
    "ground": "shop",
    "roof": "flat",
-   "balconies": []
+   "balconies": [],
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012160643": {
    "block": "van-ostadestraat",
@@ -715,7 +833,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012159402": {
    "block": "van-ostadestraat",
@@ -725,7 +845,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "blocks",
+   "stringCourses": true
   },
   "0363100012160667": {
    "block": "van-ostadestraat",
@@ -735,7 +857,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012156658": {
    "block": "van-ostadestraat",
@@ -745,7 +869,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012153176": {
    "block": "van-ostadestraat",
@@ -755,7 +881,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "band",
+   "stringCourses": true
   },
   "0363100012158962": {
    "block": "van-ostadestraat",
@@ -765,7 +893,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "band",
+   "stringCourses": true
   },
   "0363100012156774": {
    "block": "van-ostadestraat",
@@ -775,7 +905,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012163030": {
    "block": "van-ostadestraat",
@@ -785,7 +917,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012153534": {
    "block": "van-ostadestraat",
@@ -795,7 +929,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   },
   "0363100012156780": {
    "block": "van-ostadestraat",
@@ -805,7 +941,9 @@
    "balconies": [],
    "souterrain": true,
    "dormer": "pediment",
-   "hoist": true
+   "hoist": true,
+   "whiteHeads": "none",
+   "stringCourses": false
   }
  }
 }

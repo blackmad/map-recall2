@@ -1326,7 +1326,8 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     const n = Math.max(0, Math.min(5, c.layout.storeys, Math.floor((s.room() - groundCost) / Math.max(12, windowSpans(c, 0).length * 12))));
     for (let k = -1; k < n; k++) for (const w of windowSpans(c, k)) {
       const colour = c.recipe?.frameHex ?? WHITE;
-      const restrained = !!c.recipe && c.recipe.trimDensity !== 'ornate', frame = restrained ? .025 : .07, out = restrained ? .025 : .05;
+      // A design plot's era frames (plotPlan.ts plotWhite) read at row distance: the full frame whatever the trim density.
+      const restrained = !c.designFrames && !!c.recipe && c.recipe.trimDensity !== 'ornate', frame = restrained ? .025 : .07, out = restrained ? .025 : .05;
       s.strip(c.f, Math.max(0, w.x - w.hw - frame), w.x - w.hw + 0.01, out, w.z0, Math.min(c.top, w.z1 + 0.04), colour);
       s.strip(c.f, w.x + w.hw - 0.01, Math.min(c.f.len, w.x + w.hw + frame), out, w.z0, Math.min(c.top, w.z1 + 0.04), colour);
       s.strip(c.f, Math.max(0, w.x - w.hw - frame), Math.min(c.f.len, w.x + w.hw + frame), out, w.z1 - 0.02, Math.min(c.top, w.z1 + 0.05), colour);

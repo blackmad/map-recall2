@@ -35,6 +35,22 @@ export const ROOF_INSIDE_MAX_M = 3.0;
 /** An upper storey outside this range (m) moves the default count by one (a 12 m top is 3 storeys, a 22 m one 5). */
 export const UPPER_RANGE_M = { min: 2.6, max: 4.4 } as const;
 
+export const WHITE_HEADS = ['none', 'keystone', 'blocks', 'band'] as const;
+export type WhiteHeads = (typeof WHITE_HEADS)[number];
+/**
+ * White window frames and sash bars by rule, no read needed (David, 2026-11-21): the D1 Ring reads say white frames on 49
+ * of 56 (1860-79), 322 of 357 (1880-99) and 304 of 345 (1900-15) readable fronts. Built years, inclusive.
+ */
+export const WHITE_FRAME_YEARS = { from: 1860, to: 1915 } as const;
+/** The kit's head dressing (houseLine/headGrammar.ts) a white head draws as, with the window shape it implies. */
+export const WHITE_HEAD_DRESSING: Readonly<Record<Exclude<WhiteHeads, 'none'>, { dressing: 'keystone' | 'voussoirs' | 'stone-lintel'; shape: 'flat' | 'segmental' }>> = {
+  keystone: { dressing: 'keystone', shape: 'flat' }, blocks: { dressing: 'voussoirs', shape: 'segmental' }, band: { dressing: 'stone-lintel', shape: 'flat' },
+};
+/** The white parts a plot draws: frames by era, heads and string courses as read. */
+export function plotWhite(year: number | null | undefined, facts: PlotFacts | undefined): { frames: boolean; heads: WhiteHeads; courses: boolean } {
+  return { frames: typeof year === 'number' && year >= WHITE_FRAME_YEARS.from && year <= WHITE_FRAME_YEARS.to, heads: facts?.whiteHeads ?? 'none', courses: !!facts?.stringCourses };
+}
+
 export const PLOT_ROOFS = ['flat', 'dormers', 'mansard', 'pointedGable', 'stepGable', 'bellGable'] as const;
 export type PlotRoof = (typeof PLOT_ROOFS)[number];
 export type PlotDormer = 'pediment' | 'gabled' | 'plain';
@@ -49,6 +65,11 @@ export interface PlotFacts {
   hoist?: boolean;
   /** Upper storeys with a balcony, 1 = the first upper. */
   balconies?: number[];
+  /** White dressing at the window heads (2026-11-21, David on Rustenburgerstraat: "missing the white detailing"):
+   *  `keystone` a white key on a brick arch, `blocks` white blocks fanned round the head, `band` a white lintel slab. */
+  whiteHeads?: WhiteHeads;
+  /** White string courses through the sills. */
+  stringCourses?: boolean;
   /** Where the facts came from: the gate photo rows, the D1 reads, or (roof only) the segment's mirror symmetry. */
   src: 'photo' | 'reads';
   roofSrc?: 'photo' | 'reads' | 'pattern';

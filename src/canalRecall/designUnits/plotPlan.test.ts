@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { plotPlan, defaultStoreys, fillRoofPattern, ERA_GROUND_M, ROOF_ON_TOP_RISE_M, ROOF_INSIDE_MAX_M, ROOF_INSIDE_MIN_M, type PlotFacts } from './plotPlan.ts';
+import { plotPlan, defaultStoreys, fillRoofPattern, ERA_GROUND_M, ROOF_ON_TOP_RISE_M, ROOF_INSIDE_MAX_M, ROOF_INSIDE_MIN_M, plotWhite, WHITE_HEAD_DRESSING, type PlotFacts } from './plotPlan.ts';
 
 test('the count is never the top over a short storey: 4 storeys from a 12.4 m to a 19.7 m top by default', () => {
   for (const top of [12.4, 14.9, 16.7, 17.8, 19.7]) assert.equal(defaultStoreys(top, ERA_GROUND_M), 4, `${top}`);
@@ -53,4 +53,11 @@ test('the roof sequence: letters per plot, an unread plot filled from its mirror
   assert.equal(plots.e.roof, 'pointedGable');
   assert.equal(plots.e.roofSrc, 'pattern');
   assert.equal(pattern, 'ABAABA');
+});
+
+test('white detailing: frames by era (1860-1915), heads and string courses only as read', () => {
+  assert.deepEqual(plotWhite(1885, undefined), { frames: true, heads: 'none', courses: false });
+  assert.deepEqual(plotWhite(1920, { src: 'photo', whiteHeads: 'blocks', stringCourses: true }), { frames: false, heads: 'blocks', courses: true });
+  assert.equal(plotWhite(null, undefined).frames, false);
+  assert.equal(WHITE_HEAD_DRESSING.blocks.dressing, 'voussoirs');
 });

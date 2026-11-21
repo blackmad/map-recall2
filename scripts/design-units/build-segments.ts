@@ -17,7 +17,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { GORDEL_RULE, RING_RULE, SEGMENTS_SCHEMA, segmentsOf, type MemberHeights, type Segment, type SegmentsExtract } from '../../src/canalRecall/designUnits/segments.ts';
 import type { DesignUnit } from '../../src/canalRecall/designUnits/types.ts';
-import { fillRoofPattern, type PlotFacts, type PlotRoof } from '../../src/canalRecall/designUnits/plotPlan.ts';
+import { fillRoofPattern, type PlotFacts, type PlotRoof, type WhiteHeads } from '../../src/canalRecall/designUnits/plotPlan.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const STAGING = path.join(ROOT, 'artifacts/design-units/staging');
@@ -48,7 +48,7 @@ for (const x of fs.readdirSync(TILES).filter(n => /^\d+$/.test(n))) for (const f
 }
 const heights = new Map<string, MemberHeights>([...want].map(id => [id, { ahnM: ahn[id]?.p90 ?? null, bagEavesM: bag.get(id) ?? null }]));
 
-type Answer = { readable?: boolean; whiteFrames?: boolean | null; pale?: boolean | null; finish?: string; bays?: number; heads?: string[]; storeyParts?: { roof?: string; full?: number | string; souterrain?: boolean }; dormers?: { count?: number; kind?: string }; ground?: string; basement?: string; crown?: string; balconies?: number[] };
+type Answer = { readable?: boolean; windowSurround?: string; bands?: string; whiteFrames?: boolean | null; pale?: boolean | null; finish?: string; bays?: number; heads?: string[]; storeyParts?: { roof?: string; full?: number | string; souterrain?: boolean }; dormers?: { count?: number; kind?: string }; ground?: string; basement?: string; crown?: string; balconies?: number[] };
 const readsDir = path.resolve(ROOT, arg('reads') ?? 'artifacts/design-units/staging/d1-ring-answers');
 const answers = new Map<string, Answer>();
 if (fs.existsSync(readsDir)) for (const f of fs.readdirSync(readsDir).filter(n => n.endsWith('.json'))) {
@@ -143,6 +143,7 @@ function defaultRoofOf(year: number | null | undefined): Segment['roofEvidence']
 const plotReads = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/design-units/plot-reads.json'), 'utf8')).pands as Record<string, Omit<PlotFacts, 'src'> & { block: string }>;
 const D1_ROOF: Record<string, PlotRoof> = { dormers: 'dormers', mansard: 'mansard', 'roof-storey': 'mansard', none: 'flat', 'gable-attic': 'pointedGable' };
 const D1_CROWN: Record<string, PlotRoof> = { point: 'pointedGable', step: 'stepGable', bell: 'bellGable', neck: 'bellGable', 'raised-neck': 'bellGable' };
+const D1_HEADS: Record<string, WhiteHeads> = { keystone: 'keystone', 'jack-blocks': 'blocks', 'block-dressings': 'blocks', 'dentil-lintel': 'blocks', 'stone-lintel': 'band', none: 'none', sill: 'none', 'full-frame': 'none' };
 function plotFactsOf(id: string): PlotFacts | undefined {
   const ph = plotReads[id];
   if (ph) { const { block: _b, ...f } = ph; return { ...f, src: 'photo' }; }
@@ -156,6 +157,10 @@ function plotFactsOf(id: string): PlotFacts | undefined {
   if (roof) f.roof = roof;
   if (a.dormers?.kind === 'gabled' || a.dormers?.kind === 'plain' || a.dormers?.kind === 'pediment') f.dormer = a.dormers.kind;
   if (Array.isArray(a.balconies)) f.balconies = a.balconies.filter(n => Number.isInteger(n) && n >= 1);
+  // White heads and string courses (2026-11-21): the read surround and bands (speklagen are bacon courses, not a string course).
+  const heads = a.windowSurround ? D1_HEADS[a.windowSurround] : undefined;
+  if (heads) f.whiteHeads = heads;
+  if (a.bands && a.bands !== 'not-visible' && a.bands !== 'speklagen') f.stringCourses = a.bands !== 'none';
   return Object.keys(f).length > 1 ? f : undefined;
 }
 const patternFilled: string[] = [];

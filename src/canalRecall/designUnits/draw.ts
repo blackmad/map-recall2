@@ -26,7 +26,7 @@ import { citywideBuildingRoofPrior, citywideBuildingWallPrior } from '../look/pa
 import { rowFrontFor, rowFrontOn } from '../houseLine/rowFront.js';
 import { segmentLookup, SEGMENTS_SCHEMA, type Segment, type SegmentsExtract, type SegmentSlice } from './segments.js';
 import { designUnitOf, eraWindows, ERA_YEARS, PLOT_EAVES_M, type DesignUnitDraw } from './drawProps.js';
-import { plotPlan, PLOT_GABLE_SHAPE, type PlotPlan } from './plotPlan.js';
+import { plotPlan, plotWhite, WHITE_HEAD_DRESSING, PLOT_GABLE_SHAPE, type PlotPlan } from './plotPlan.js';
 import { roofPlanForFeature } from '../roofMesh.js';
 
 export { designUnitOf, seedIdOf, segmentBayM, sliceBays, eraWindows, ERA_YEARS, PLOT_EAVES_M, PLOT_TONE_DL, type DesignUnitDraw } from './drawProps.js';
@@ -190,6 +190,12 @@ function withPlotPlan<T extends Feature>(feature: T, rest: Record<string, unknow
   // Stated balconies, or a read that saw none (an empty list keeps the dice balconettes off the plot).
   if (plan.balconies.length || d.plot?.balconies) extra.designBalconies = plan.balconies;
   if (plan.souterrain && !force.includes('stoop')) force.push('stoop');
+  // The white detailing (2026-11-21, Rustenburgerstraat): frames by era, the read heads and string courses, each a kit part.
+  const white = plotWhite(d.year, d.plot);
+  if (white.frames) { extra.designFrames = true; if (!force.includes('white-window-frames')) force.push('white-window-frames'); }
+  if (d.plot?.whiteHeads === 'none') extra.designPlainHeads = true;
+  if (white.heads !== 'none') { extra.designHeads = WHITE_HEAD_DRESSING[white.heads]; if (!force.includes('row-heads')) force.push('row-heads'); }
+  if (white.courses && !force.includes('string-courses')) force.push('string-courses');
   if (force.length) extra.registerForce = force;
   const wall = plan.wallM;
   if (plan.roof === 'flat') return { ...feature, properties: { ...rest, ...extra, height: wall, roofEavesHeightM: wall, roofPlanned: false, roofShape: 'flat' } };

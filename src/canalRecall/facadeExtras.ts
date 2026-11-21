@@ -470,6 +470,8 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     if (phase === 'defining' && !definingComponent || phase === 'optional' && definingComponent) continue;
     // A plot plan's stated part (designUnits/draw.ts withPlotPlan: balconies, a souterrain's stoop) is drawn too.
     if (c.designMember && !DESIGN_MEMBER_COMPONENTS.has(comp.id) && !c.registerForce?.includes(comp.id)) continue;
+    // A plot read with brick heads (plotPlan.ts whiteHeads `none`): no dice head dressing either.
+    if (c.plainHeads && comp.group === 'window-head' && !c.registerForce?.includes(comp.id)) continue;
     // A spec's stated parts (`statedFirst`) dress in their own pass; a later pass never draws one twice.
     if (phase === 'stated' ? !c.statedFirst?.includes(comp.id) : c.statedFirst && used.includes(comp.id)) continue;
     // Ornaments follow the building's period; street furniture (a stoop, a hoist beam) also its
