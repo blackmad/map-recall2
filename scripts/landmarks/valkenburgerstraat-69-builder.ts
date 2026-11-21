@@ -34,7 +34,11 @@ const BROWN: Col = 'ochre', LEDGE: Col = 'concrete', DARK: Col = 'dark', BLOCKS:
 type P2 = [number, number];
 type Win = {s: number; w: number; y: [number, number]; o?: OpenOpts};
 type Seg = {s: [number, number]; bands: [number, Col][]; wins: Win[]};
-type Front = {tag: string; a: P2; b: P2; n: P2; segs: Seg[]; extra?: (b: BuildingTools, F: FR) => void};
+/** A string course along the front: centre s, width w, bottom y, height h, depth d. Drawn per rebuilt wall piece in that
+ *  piece's own plane (frontWall), not on the front's averaged plane: the crop line and the 3DBAG strips differ by ~0.6 deg, so a
+ *  strip on the averaged plane sank into one piece and z-fought with it along the rest (2026-11-21 audit). */
+type Ledge = {s: number; w: number; y: number; h: number; d: number; c: Col};
+type Front = {tag: string; a: P2; b: P2; n: P2; segs: Seg[]; ledges?: Ledge[]; extra?: (b: BuildingTools, F: FR) => void};
 
 const rows = (s: number, w: number, ys: [number, number][], o?: OpenOpts): Win[] => ys.map(y => ({s, w, y, o}));
 const shop = (s: number, w: number, y: [number, number] = [0.15, 2.95]): Win => ({s, w, y, o: {depth: 0.3, cols: Math.max(1, Math.round(w / 1.6)), frame: DARK, edge: 0.08}});
@@ -98,10 +102,10 @@ const NW2: Front = {
       ...[3.5, 6.2, 8.9, 11.6, 14.3].map(f => ({s: 19.6, w: 3.6, y: [f + 0.1, f + 2.4] as [number, number], o: {depth: 0.3, cols: 3}})),
     ]},
   ],
+  ledges: [6.1, 8.9, 11.6, 14.3].map(y => ({s: 13.05, w: 8.6, y, h: 0.08, d: 0.05, c: LEDGE})),
   extra: (b, F) => {
     for (const y of [3.7, 6.4, 9.1, 11.8, 14.5]) balcony(b, F, 2.2, 3.5, 1.0, y, {rail: METAL, slab: LEDGE, sides: true});
     slab(b, F.f, 3.95, 17.1, 3.8, 0.25, 1.3, LEDGE);
-    for (const y of [6.1, 8.9, 11.6, 14.3]) ledgeStrip(b, F.f, 13.05, y, 8.6, 0.08, 0.05, LEDGE);
     for (const y of [3.5, 6.2, 8.9, 11.6, 14.3, 17.0]) balcony(b, F, 17.4, 4.6, 1.3, y, {rail: METAL, slab: LEDGE, sides: true});
     strut(b, at(F, 21.0, 1.15, 0), at(F, 21.0, 1.15, 17.0), 0.18, LEDGE, 8);
     band(b, F, 0.2, 19.6, 2.95, 3.35, 0.12, LEDGE);
@@ -226,6 +230,11 @@ function cut(b: BuildingTools, faceAt: (y: number) => Face, t: number, win: Win)
   opening(b, F, t, win.y[0], w, win.y[1] - win.y[0], {depth: 0.18, frame: 'frame', sill: false, ...win.o});
 }
 
+/** The coping band under a wall's top, its upper face 4 cm below the roof edge: flush with it, the band top z-fought the
+ *  slate where the 3DBAG roof ring runs a few cm past the wall line (2026-11-21 audit); raised 4 cm over it instead, the band
+ *  left a 51 m open slot behind its top (holes gate). */
+const eavesBand = (b: BuildingTools, w: WallInfo) => band(b, frOf(w), 0, w.len, w.yt - 0.2, w.yt - 0.04, 0.08, LEDGE, [false, false]);
+
 function frontWall(b: BuildingTools, w: WallInfo, F: Front, s0: number) {
   for (const seg of F.segs) {
     const p0 = Math.max(0, seg.s[0] - s0), p1 = Math.min(w.len, seg.s[1] - s0);
@@ -241,11 +250,16 @@ function frontWall(b: BuildingTools, w: WallInfo, F: Front, s0: number) {
       cut(b, faceAt, (a + c) / 2 - s0 - p0, {...win, s: (a + c) / 2, w: c - a, o: {...win.o, ...(cols ? {cols} : {})}});
     }
   }
-  // wall beyond the measured front (corners): plain in the nearest segment's colour
-  const L = Math.hypot(F.b[0] - F.a[0], F.b[1] - F.a[1]);
-  if (s0 < 0) bandFaces(w, 0, Math.min(w.len, -s0), F.segs[0].bands);
-  if (s0 + w.len > L) bandFaces(w, Math.max(0, L - s0), w.len, F.segs[F.segs.length - 1].bands);
-  if (w.yt - w.yb > 2) band(b, frOf(w), 0, w.len, w.yt - 0.2, w.yt, 0.08, LEDGE, [false, false]);
+  for (const l of F.ledges ?? []) {
+    const a = Math.max(0, l.s - l.w / 2 - s0), c = Math.min(w.len, l.s + l.w / 2 - s0);
+    if (c - a > 0.05) ledgeStrip(b, w.f, (a + c) / 2, l.y, c - a, l.h, l.d, l.c);
+  }
+  // wall beyond the measured segments (corners): plain in the nearest segment's colour, starting where the segments stop
+  // (the front's crop line ends a few cm short of the last segment; filling from the line end doubled that sliver)
+  const S0 = F.segs[0].s[0], S1 = F.segs[F.segs.length - 1].s[1];
+  if (s0 < S0) bandFaces(w, 0, Math.min(w.len, S0 - s0), F.segs[0].bands);
+  if (s0 + w.len > S1) bandFaces(w, Math.max(0, S1 - s0), w.len, F.segs[F.segs.length - 1].bands);
+  if (w.yt - w.yb > 2) eavesBand(b, w);
 }
 
 /** Courtyard, SW (no panorama) and set-back faces: inferred window grid, brick below the set-back line, grey glazing over it. */
@@ -260,7 +274,7 @@ function gridWall(b: BuildingTools, w: WallInfo) {
     if (y1 - y0 < 0.8 || y1 > w.yt - 0.4) continue;
     for (let k = 0; k < n; k++) cut(b, faceAt, (k + 0.5) * pitch, {s: 0, w: Math.min(setback ? 2.0 : 1.6, pitch - 0.6), y: [y0, y1], o: {cols: setback ? 2 : 1}});
   }
-  if (w.yt - w.yb > 2) band(b, frOf(w), 0, w.len, w.yt - 0.2, w.yt, 0.08, LEDGE, [false, false]);
+  if (w.yt - w.yb > 2) eavesBand(b, w);
 }
 
 export function buildValkenburgerstraat69(_w: number, _d: number, b: BuildingTools) {

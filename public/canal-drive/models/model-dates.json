@@ -7667,8 +7667,8 @@
       "dateSource": "asset-update"
     },
     "valkenburgerstraat-69": {
-      "updatedAt": "2026-11-20T16:45:52.330Z",
-      "version": "1868e147da6eab40",
+      "updatedAt": "2026-11-21T19:00:44.077Z",
+      "version": "4aad9865c1855a73",
       "dateSource": "asset-update"
     },
     "casa-rosso": {
@@ -7854,6 +7854,26 @@
     "belle": {
       "updatedAt": "2026-11-21T16:08:38.933Z",
       "version": "b7a0aff5fd65dd68",
+      "dateSource": "asset-update"
+    },
+    "casa-rosso.lod1": {
+      "updatedAt": "2026-11-21T18:44:11.431Z",
+      "version": "3a9588e3ba4af2d5",
+      "dateSource": "asset-update"
+    },
+    "casa-rosso.lod2": {
+      "updatedAt": "2026-11-21T18:44:11.431Z",
+      "version": "6e287bc78d8de65e",
+      "dateSource": "asset-update"
+    },
+    "moulin-rouge-amsterdam.lod1": {
+      "updatedAt": "2026-11-21T18:44:13.161Z",
+      "version": "b1dfa96ee471a495",
+      "dateSource": "asset-update"
+    },
+    "moulin-rouge-amsterdam.lod2": {
+      "updatedAt": "2026-11-21T18:44:13.162Z",
+      "version": "0e188e689ae734b7",
       "dateSource": "asset-update"
     }
   }
