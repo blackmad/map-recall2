@@ -330,6 +330,7 @@ import {buildKramatplantsoen203} from './kramatplantsoen-203-builder';
 import {buildValkenburgerstraat69} from './valkenburgerstraat-69-builder';
 import {buildPieterDeHoochstraat13} from './pieter-de-hoochstraat-13-builder';
 import {buildTweedeAtjehstraat2} from './tweede-atjehstraat-2-builder';
+import {buildWiborgeiland76} from './wiborgeiland-76-builder';
 import {buildAlbatrospad1} from './albatrospad-1-builder';
 import {buildRevaleiland121} from './revaleiland-121-builder';
 import {buildDeKroonRembrandtplein} from './de-kroon-rembrandtplein-builder';
@@ -1230,6 +1231,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='valkenburgerstraat-69')buildValkenburgerstraat69(w,d,helpers);
     else if(id==='pieter-de-hoochstraat-13')buildPieterDeHoochstraat13(w,d,helpers);
     else if(id==='tweede-atjehstraat-2')buildTweedeAtjehstraat2(w,d,helpers);
+    else if(id==='wiborgeiland-76')buildWiborgeiland76(w,d,helpers);
     else if(id==='albatrospad-1')buildAlbatrospad1(w,d,helpers);
     else if(id==='revaleiland-121')buildRevaleiland121(w,d,helpers);
     else if(id==='de-kroon-rembrandtplein')buildDeKroonRembrandtplein(w,d,helpers);
