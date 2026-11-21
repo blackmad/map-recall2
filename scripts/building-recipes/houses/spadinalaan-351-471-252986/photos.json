@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-sausalitolaan",
+  "panoId": "TMX7316010203-002010_pano_0000_000746",
+  "timestamp": "2021-02-17T12:57:52.015970Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/02/17/TMX7316010203-002010/pano_0000_000746/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122041.90261001169,
+   488941.87260344083
+  ],
+  "headingDeg": 80.34753321233643,
+  "fovDeg": 110,
+  "pitchDeg": 36.458611020218704,
+  "distanceM": 10.151670597356354,
+  "image": "artifacts/building-recipes/spadinalaan-351-471-252986/photo-wall-sausalitolaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-spadinalaan",
+  "panoId": "TMX7316010203-002010_pano_0000_000763",
+  "timestamp": "2021-02-17T12:58:15.115840Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/02/17/TMX7316010203-002010/pano_0000_000763/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122109.87241421887,
+   488932.3970939947
+  ],
+  "headingDeg": 348.7680250633824,
+  "fovDeg": 96.89880716223256,
+  "pitchDeg": 41.283528364325754,
+  "distanceM": 10.939688155787744,
+  "image": "artifacts/building-recipes/spadinalaan-351-471-252986/photo-wall-spadinalaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

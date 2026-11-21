@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-van-speijkstraat",
+  "panoId": "TMX7316010203-002853_pano_0004_000014",
+  "timestamp": "2022-12-14T09:19:49.307340Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/12/14/TMX7316010203-002853/pano_0004_000014/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119143.68386474204,
+   486665.1119666503
+  ],
+  "headingDeg": 268.7226079100743,
+  "fovDeg": 110,
+  "pitchDeg": 42.05227767376608,
+  "distanceM": 8.31955728912663,
+  "image": "artifacts/building-recipes/piri-reisplein-1-81-238346/photo-wall-van-speijkstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-witte-de-withstraat",
+  "panoId": "TMX7316010203-002063_pano_0000_003167",
+  "timestamp": "2021-03-26T10:26:03.875700Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/03/26/TMX7316010203-002063/pano_0000_003167/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119042.88538518353,
+   486612.1223953043
+  ],
+  "headingDeg": 82.05735465609541,
+  "fovDeg": 83.2795966365299,
+  "pitchDeg": 35.94857684170214,
+  "distanceM": 11.076750315316069,
+  "image": "artifacts/building-recipes/piri-reisplein-1-81-238346/photo-wall-witte-de-withstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

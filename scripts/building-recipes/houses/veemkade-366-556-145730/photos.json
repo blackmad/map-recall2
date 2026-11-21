@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-purperhoedenveem",
+  "panoId": "TMX7316010203-001195_pano_0000_002521",
+  "timestamp": "2019-05-21T10:27:08.933180Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/05/21/TMX7316010203-001195/pano_0000_002521/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123600.52345079966,
+   487643.5488658722
+  ],
+  "headingDeg": 327.5182364039742,
+  "fovDeg": 63.354052054365035,
+  "pitchDeg": 11.32271786110957,
+  "distanceM": 45.34446216110178,
+  "image": "artifacts/building-recipes/veemkade-366-556-145730/photo-wall-purperhoedenveem.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-piet-heinkade",
+  "panoId": "TMX7316010203-002534_pano_0001_000163",
+  "timestamp": "2022-04-21T11:21:59.961720Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/04/21/TMX7316010203-002534/pano_0001_000163/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123539.05441584741,
+   487638.4651446714
+  ],
+  "headingDeg": 16.08255477939383,
+  "fovDeg": 89.12971955777871,
+  "pitchDeg": 30.340834677728875,
+  "distanceM": 25.494884726543933,
+  "image": "artifacts/building-recipes/veemkade-366-556-145730/photo-wall-piet-heinkade.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-veemkade",
+  "panoId": "TMX7316010203-001587_pano_0000_000512",
+  "timestamp": "2020-01-23T09:19:34.838040Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/01/23/TMX7316010203-001587/pano_0000_000512/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123564.9367888142,
+   487735.7636377373
+  ],
+  "headingDeg": 190.45853234058842,
+  "fovDeg": 96.74035717771166,
+  "pitchDeg": 22.942089450921745,
+  "distanceM": 22.315119019133817,
+  "image": "artifacts/building-recipes/veemkade-366-556-145730/photo-wall-veemkade.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

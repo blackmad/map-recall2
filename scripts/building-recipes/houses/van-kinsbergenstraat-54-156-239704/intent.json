@@ -1,0 +1,625 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "van-kinsbergenstraat-54-156-239704",
+ "pandId": "0363100012239704",
+ "address": "Van Kinsbergenstraat 54-156 / Witte de Withplein / Admiralengracht, Kinkerbuurt: 2011 housing block in dark red-purple brick with regular white-framed French windows, a continuous brick balcony parapet over the ground storey, stacked deep cantilever brick-parapet balconies at the Admiralengracht corners and on Witte de Withplein, shops on the square (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2025-07-31-w05-106",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-31",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-31_12-19-21_00884/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-14-w03-79",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002852_pano_0003_000097/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-14-w04-172",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002852_pano_0003_000098/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-02-w09-260",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002554_pano_0000_001572/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-01-03-w01-352",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002378_pano_0005_000012/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-05-11-w06-260",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001701_pano_0000_005390/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-05-11-w07-260",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001701_pano_0000_005393/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-05-11-w08-260",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001701_pano_0000_005396/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    32
+   ],
+   "street": "north front, east end",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 9,
+   "groundFactor": 1.3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.76,
+    "sill": 0.1
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "window",
+     "door",
+     "window"
+    ],
+    "doors": "#9a6a3c"
+   },
+   "palette": {
+    "brick": "#45302d",
+    "frame": "#ecebe6",
+    "stone": "#8a8580"
+   },
+   "balconyBands": {
+    "storeys": [
+     1
+    ],
+    "kind": "solid",
+    "deep": 0.4,
+    "rail": 0.35,
+    "colour": "#3a2724",
+    "railColour": "#2e2e30"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground",
+    "groundFactor"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    33
+   ],
+   "street": "north front, west part",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 26,
+   "groundFactor": 1.3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.76,
+    "sill": 0.1
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "window",
+     "door",
+     "window",
+     "window",
+     "door",
+     "window",
+     "storage"
+    ],
+    "doors": "#9a5a34"
+   },
+   "palette": {
+    "brick": "#45302d",
+    "frame": "#ecebe6",
+    "stone": "#8a8580"
+   },
+   "balconyBands": {
+    "storeys": [],
+    "kind": "solid",
+    "deep": 0.7,
+    "rail": 0.35,
+    "colour": "#3a2724",
+    "railColour": "#2e2e30",
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        0,
+        25
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        2,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        2,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        2,
+        8
+       ]
+      ]
+     }
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground",
+    "groundFactor"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    30
+   ],
+   "street": "east end",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 7,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.77,
+    "sill": 0.08
+   },
+   "ground": "system",
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": 0.5,
+       "h": 0.72,
+       "sill": 0.08
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.7,
+       "at": 0.5,
+       "h": 0.72,
+       "sill": 0.08
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "pattern": [
+      {
+       "w": 0.22
+      },
+      {
+       "w": 0.62
+      },
+      {
+       "w": 0.62
+      },
+      {
+       "w": 0.62
+      },
+      {
+       "w": 0.62
+      },
+      {
+       "w": 0.62
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "palette": {
+    "brick": "#45302d",
+    "frame": "#ecebe6",
+    "stone": "#8a8580"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    88
+   ],
+   "street": "Witte de Withplein",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 16,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.72,
+    "sill": 0.1
+   },
+   "ground": "plinth-shopfronts",
+   "palette": {
+    "brick": "#45302d",
+    "frame": "#ecebe6",
+    "stone": "#8a8580"
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "kind": "solid",
+    "deep": 0.6,
+    "rail": 0.35,
+    "colour": "#3a2724",
+    "railColour": "#2e2e30"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    46,
+    52,
+    59
+   ],
+   "street": "Witte de Withplein",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 13,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.72,
+    "sill": 0.1
+   },
+   "ground": "plinth-shopfronts",
+   "palette": {
+    "brick": "#45302d",
+    "frame": "#ecebe6",
+    "stone": "#8a8580"
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "kind": "solid",
+    "deep": 0.6,
+    "rail": 0.35,
+    "colour": "#3a2724",
+    "railColour": "#2e2e30"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    9
+   ],
+   "street": "Admiralengracht",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.76,
+    "sill": 0.1
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "window",
+     "window"
+    ],
+    "doors": "#9a6a3c"
+   },
+   "palette": {
+    "brick": "#45302d",
+    "frame": "#ecebe6",
+    "stone": "#8a8580"
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "kind": "solid",
+    "deep": 0.7,
+    "rail": 0.35,
+    "colour": "#3a2724",
+    "railColour": "#2e2e30"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    8
+   ],
+   "street": "Admiralengracht",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.76,
+    "sill": 0.1
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "wall",
+     "window",
+     "window"
+    ],
+    "doors": "#9a6a3c"
+   },
+   "palette": {
+    "brick": "#45302d",
+    "frame": "#ecebe6",
+    "stone": "#8a8580"
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "kind": "solid",
+    "deep": 0.7,
+    "rail": 0.35,
+    "colour": "#3a2724",
+    "railColour": "#2e2e30"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    15
+   ],
+   "street": "Admiralengracht",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.76,
+    "sill": 0.1
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "window",
+     "wall",
+     "window"
+    ],
+    "doors": "#9a6a3c"
+   },
+   "palette": {
+    "brick": "#45302d",
+    "frame": "#ecebe6",
+    "stone": "#8a8580"
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "kind": "solid",
+    "deep": 0.7,
+    "rail": 0.35,
+    "colour": "#3a2724",
+    "railColour": "#2e2e30"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    19
+   ],
+   "street": "Admiralengracht",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.76,
+    "sill": 0.1
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "window",
+     "door",
+     "window"
+    ],
+    "doors": "#9a6a3c"
+   },
+   "palette": {
+    "brick": "#45302d",
+    "frame": "#ecebe6",
+    "stone": "#8a8580"
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "kind": "solid",
+    "deep": 0.7,
+    "rail": 0.35,
+    "colour": "#3a2724",
+    "railColour": "#2e2e30"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#45302d",
+  "frame": "#ecebe6",
+  "door": "#9a6a3c",
+  "stone": "#8a8580"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored from the archived crops: panel 31 (N, 73.7 m, west part with the cantilever stack over bays 2-8) and panel 30 (N, 25.5 m, east end) from w01-352 2022-01-03 (straight-on, overcast); panel 28 (E end, 18.2 m) from w05-106 2025-07-31; panel 82 (E, Witte de Withplein, 38.5 m) from w03-79 2022-12-14; panel 44 (S, Witte de Withplein, 35.6 m, the 6-storey part over 19-29 m) from w04-172 2022-12-14; the four 10.8 m Admiralengracht corner faces (panels 8, 7, 14, 18) from w08-260, w07-260, w06-260 2020-05-11 and w09-260 2022-05-02. The Van Kinsbergenstraat front (panel 59) has no usable panorama and takes otherWalls with the courtyards.",
+  "The cantilever balconies are balconyBands at the kit's deepest (0.7 of a storey, about 2.2 m); the photo's slabs are 3-4 m deep, wrap the saw-tooth corners and have sloping dark soffits, not modelled."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 26000
+}

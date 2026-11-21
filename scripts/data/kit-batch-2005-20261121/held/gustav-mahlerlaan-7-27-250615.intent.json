@@ -1,0 +1,651 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "gustav-mahlerlaan-7-27-250615",
+ "pandId": "0363100012250615",
+ "address": "Gustav Mahlerlaan 7-27 / Rosy Wertheimstraat, Zuidas: 2020 pand of two blocks, the nine-storey GUSTAV on Gustav Mahlerlaan in pale grey textured brick with concrete ledges at every floor line, punched windows and louvres, a full-height glazed stair core and a dark glazed plinth, and a stepped eight-storey block behind it wrapped in continuous cantilever slab balconies with glass balustrades, terracing down to the west (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2025-07-29-w03-0",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-29_09-51-01_00074/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "image": "source-data://pand-reference-walls/0363100012250615/w03-0.jpg",
+   "sha256": "787ad1aea93178e679e551e051d169d8197d96baf222bb835fc9129ce7ffa916"
+  },
+  {
+   "id": "pano-2024-09-03-w02-270",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-03_06-13-33_00820/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "image": "source-data://pand-reference-walls/0363100012250615/w02-270.jpg",
+   "sha256": "7c27c5caa042fc316d364c018f61d4261a9c414389b49d9b715750502bf43bda"
+  },
+  {
+   "id": "pano-2022-03-29-w02-270L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002486_pano_0002_000053/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "image": "source-data://pand-reference-walls/0363100012250615/w02-270L.jpg",
+   "sha256": "3cbc7b4feeb476b7d3e7cbb7c422c024d7242b24374e242aaa9fbf8384fac3ba"
+  },
+  {
+   "id": "pano-2022-01-26-w04-180L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002440_pano_0001_000095/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "image": "source-data://pand-reference-walls/0363100012250615/w04-180L.jpg",
+   "sha256": "32d651bda0cb7b863170def40a245fd5bb30cf0fbe080f11f5a4b937e2bee173"
+  },
+  {
+   "id": "pano-2021-05-03-w04-180",
+   "kind": "street-panorama",
+   "capturedAt": "2021-05-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002126_pano_0000_003063/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "image": "source-data://pand-reference-walls/0363100012250615/w04-180.jpg",
+   "sha256": "a8e64aafb63dce961535fad06e2243df9dbabf42e6c03e477e1f3c61e7b94c33"
+  },
+  {
+   "id": "pano-2021-05-03-w05-270",
+   "kind": "street-panorama",
+   "capturedAt": "2021-05-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002126_pano_0000_004093/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "image": "source-data://pand-reference-walls/0363100012250615/w05-270.jpg",
+   "sha256": "0d9fa159df2f5a97bdba788be2beef2cf57616ae92eedf957b781bb66c526ce6"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    66
+   ],
+   "shell": 1,
+   "street": "Gustav Mahlerlaan",
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 9,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.72,
+    "sill": 0.12
+   },
+   "windowPattern": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.45,
+    0.5,
+    0.95,
+    0.45
+   ],
+   "ground": "glazed",
+   "entrance": true,
+   "glazedStoreys": [
+    1
+   ],
+   "wallLights": [
+    {
+     "along": [
+      0.0,
+      0.222
+     ],
+     "up": [
+      0.26,
+      0.985
+     ],
+     "lights": 2,
+     "rows": 7
+    }
+   ],
+   "openBays": [
+    {
+     "storeys": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "bays": [
+      2,
+      4,
+      6,
+      7
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      2,
+      8
+     ],
+     "colour": "#9fa19e",
+     "along": [
+      0.05,
+      0.55
+     ],
+     "up": [
+      0.12,
+      0.84
+     ]
+    },
+    {
+     "bays": [
+      8,
+      8
+     ],
+     "storeys": [
+      2,
+      8
+     ],
+     "colour": "#9fa19e",
+     "along": [
+      0.05,
+      0.55
+     ],
+     "up": [
+      0.12,
+      0.84
+     ]
+    }
+   ],
+   "palette": {
+    "brick": "#a9a9a7",
+    "frame": "#e2e2dc",
+    "stone": "#d3d3cd",
+    "glass": "#3f4a52"
+   },
+   "balconyBands": {
+    "storeys": [],
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        2,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        2,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        2,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        2,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 5,
+      "bays": [
+       [
+        2,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 6,
+      "bays": [
+       [
+        2,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 7,
+      "bays": [
+       [
+        2,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 8,
+      "bays": [
+       [
+        2,
+        8
+       ]
+      ]
+     }
+    ],
+    "deep": 0.1,
+    "rail": 0.12,
+    "kind": "solid",
+    "colour": "#d6d6d0"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "openBays",
+    "ground",
+    "wallLights",
+    "accentPanels",
+    "windowPattern",
+    "glazedStoreys"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    12
+   ],
+   "shell": 1,
+   "street": "Gustav Mahlerlaan",
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 6,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.72,
+    "sill": 0.12
+   },
+   "windowPattern": [
+    0.5,
+    0.5,
+    0.95,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "ground": "glazed",
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "bays": [
+      1,
+      2,
+      4
+     ]
+    }
+   ],
+   "palette": {
+    "brick": "#a9a9a7",
+    "frame": "#e2e2dc",
+    "stone": "#d3d3cd",
+    "glass": "#3f4a52"
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "deep": 0.1,
+    "rail": 0.12,
+    "kind": "solid",
+    "colour": "#d6d6d0"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "openBays",
+    "ground",
+    "windowPattern"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    10,
+    3
+   ],
+   "shell": 1,
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.72,
+    "sill": 0.12
+   },
+   "ground": "glazed",
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "bays": [
+      0,
+      2
+     ]
+    }
+   ],
+   "palette": {
+    "brick": "#a9a9a7",
+    "frame": "#e2e2dc",
+    "stone": "#d3d3cd",
+    "glass": "#3f4a52"
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "deep": 0.1,
+    "rail": 0.12,
+    "kind": "solid",
+    "colour": "#d6d6d0"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "openBays",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    9,
+    28
+   ],
+   "shell": 1,
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 14,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.72,
+    "sill": 0.12
+   },
+   "ground": "glazed",
+   "palette": {
+    "brick": "#a9a9a7",
+    "frame": "#e2e2dc",
+    "stone": "#d3d3cd",
+    "glass": "#3f4a52"
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "deep": 0.1,
+    "rail": 0.12,
+    "kind": "solid",
+    "colour": "#d6d6d0"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    6,
+    11
+   ],
+   "shell": 1,
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 7,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.72,
+    "sill": 0.12
+   },
+   "ground": "glazed",
+   "palette": {
+    "brick": "#a9a9a7",
+    "frame": "#e2e2dc",
+    "stone": "#d3d3cd",
+    "glass": "#3f4a52"
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "deep": 0.1,
+    "rail": 0.12,
+    "kind": "solid",
+    "colour": "#d6d6d0"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    3,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    13,
+    17,
+    18,
+    20,
+    21,
+    23,
+    24,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    44,
+    45,
+    48,
+    49,
+    52,
+    53,
+    54,
+    56,
+    58,
+    59,
+    62,
+    64,
+    65,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    74,
+    76,
+    77,
+    79,
+    82,
+    84,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    95
+   ],
+   "shell": 2,
+   "mainSurface": 17,
+   "street": "Rosy Wertheimstraat",
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 2,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.82,
+    "h": 0.9,
+    "sill": 0.02
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "window",
+     "window"
+    ]
+   },
+   "palette": {
+    "brick": "#a09b91",
+    "frame": "#5c5e60",
+    "stone": "#d8d4cc",
+    "glass": "#4e5a5e"
+   },
+   "terraces": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "deep": 2.4,
+    "colour": "#d4d0c8",
+    "rail": true,
+    "roof": true,
+    "wrap": true,
+    "glassRail": true
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "terraces",
+    "ground"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#a9a9a7",
+  "frame": "#e2e2dc",
+  "door": "#2a2a2a",
+  "stone": "#d3d3cd"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored. Shell 1 (GUSTAV): panel 58 (N, 23.9 m, surface 66) and panel 10 (N, 15.5 m, surface 12) from w03-0 2025-07-29 straight-on: ground 4.5 m dark glazed plinth then eight 3.35 m storeys, a concrete ledge at every floor line (terraces without rail, 0.35 m), the glazed stair core over the two east bays of panel 58 (columns), the first floor of the west part glazed, punched windows and pale louvre panels (accentPanels) in irregular bays (openBays, windowPattern). Panels 9+2 (W, surfaces 10, 3) from the front-on west end of w02-270 2024-09-03. Panel 8 (S courtyard, surfaces 9, 28) read obliquely from w02-270 2024 and w02-270L 2022; panel 5 (E, surfaces 6, 11) has no usable crop (only a 2017 pre-completion capture; no 2020-2025 panorama found with --date) and takes the same skin.",
+  "Shell 2 (the balcony block): every wall in one group so the slabs wrap round. From w04-180L 2022-01-26 and w04-180 2021-05-03 (S, 35 m) and w05-270 2021-05-03 (W end): eight storeys (3DBAG eaves step 26.8, 23.2, 20.0, 16.7, 13.4, 10.2 m to the west, one storey per step), a continuous concrete slab about 2.4 m deep at every floor line with a clear glass balustrade (terraces, wrap, glassRail clear) and a projecting roof slab on every step (terraces.roof), pale brick between floor-to-ceiling glazing, ground flats with glazed doors in pale brick.",
+  "Not drawn: the glass balustrade on the roof terraces of each step (terraces.roof draws the slab only), the glass side screens between flats, the diamond relief of the GUSTAV brick."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000,
+ "footprintParts": true,
+ "shellClose": true
+}

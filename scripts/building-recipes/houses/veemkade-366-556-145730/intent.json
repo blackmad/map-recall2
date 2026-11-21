@@ -1,0 +1,472 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "veemkade-366-556-145730",
+ "pandId": "0363100012145730",
+ "address": "Veemkade 366-556 / Piet Heinkade / Purperhoedenveem, Oostelijk Havengebied: 2005 block in dark blue-grey brick with a punched grid of transom windows, a ten-storey tower over Piet Heinkade, six-storey wings and a two-storey stone colonnade of glazed shops and offices (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2025-06-16-w02-286",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_01425/",
+   "image": "source-data://pand-reference-walls/0363100012145730/w02-286.jpg",
+   "sha256": "19d90964294787e119bd60deab8216470335ca9c5a854d70ec52f63963bb7442",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-w03-196",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_09-52-43_01628/",
+   "image": "source-data://pand-reference-walls/0363100012145730/w03-196.jpg",
+   "sha256": "53b6893807e410ea20d42ea9d45aa0fe250abac59928a5359340db34b9a64e92",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-w04-16",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_01523/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    5,
+    96,
+    154,
+    164,
+    19,
+    26,
+    150,
+    60,
+    77,
+    119,
+    2,
+    6,
+    39
+   ],
+   "mainSurface": 96,
+   "street": "Veemkade",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "storeyFactors": [
+    3.8,
+    3.8,
+    3.4,
+    3.4,
+    3.4,
+    3.6
+   ],
+   "baysPerStorey": 13,
+   "windows": "transom",
+   "sills": false,
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "ground": "glazed",
+   "glazedStoreys": [
+    1
+   ],
+   "entrance": {
+    "bay": 1,
+    "storeys": 2
+   },
+   "arcadePiers": {
+    "storeys": [
+     0,
+     1
+    ],
+    "count": 11,
+    "w": 0.3,
+    "proud": 0.5,
+    "beam": 0.1
+   },
+   "palette": {
+    "brick": "#22272e",
+    "frame": "#c9cdcf",
+    "stone": "#737a7e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "ground",
+    "glazedStoreys",
+    "entrance",
+    "arcadePiers",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    78
+   ],
+   "street": "Piet Heinkade",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "storeyFactors": [
+    4.4,
+    4.4,
+    3.3,
+    3.3,
+    3.3,
+    3.5
+   ],
+   "baysPerStorey": 4,
+   "windows": "transom",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.55,
+     "h": 0.65,
+     "sill": 0.1
+    }
+   ],
+   "ground": "system",
+   "palette": {
+    "brick": "#22272e",
+    "frame": "#c9cdcf",
+    "stone": "#737a7e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "storeyShapes",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    4,
+    7,
+    8,
+    20
+   ],
+   "street": "Piet Heinkade",
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 11,
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.9,
+    "h": 0.65,
+    "sill": 0.05
+   },
+   "ground": "glazed",
+   "garageBays": [
+    3,
+    4
+   ],
+   "arcadePiers": {
+    "storeys": [
+     0,
+     1
+    ],
+    "count": 12,
+    "w": 0.3,
+    "proud": 0.5,
+    "beam": 0.1
+   },
+   "palette": {
+    "brick": "#22272e",
+    "frame": "#c9cdcf",
+    "stone": "#737a7e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "garageBays",
+    "arcadePiers",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    123
+   ],
+   "street": "Piet Heinkade",
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "storeyFactors": [
+    4.2,
+    3.4,
+    3.2,
+    3.2,
+    3.2,
+    3.2,
+    3.2,
+    3.2,
+    3.2,
+    3.2
+   ],
+   "baysPerStorey": 8,
+   "windows": "transom",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.75,
+     "h": 0.75,
+     "sill": 0.12
+    }
+   ],
+   "ground": "glazed",
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2
+     ],
+     "bays": [
+      0,
+      1,
+      2,
+      5,
+      6,
+      7
+     ]
+    },
+    {
+     "storeys": [
+      6,
+      7,
+      8,
+      9
+     ],
+     "bays": [
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   ],
+   "wallLights": [
+    {
+     "along": [
+      0.45,
+      0.57
+     ],
+     "up": [
+      0.13,
+      0.35
+     ],
+     "lights": 2,
+     "rows": 6
+    }
+   ],
+   "palette": {
+    "brick": "#22272e",
+    "frame": "#c9cdcf",
+    "stone": "#737a7e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "storeyShapes",
+    "ground",
+    "openBays",
+    "wallLights",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    158,
+    122,
+    12,
+    157
+   ],
+   "street": "Piet Heinkade",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 1,
+   "windows": "transom",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "ground": "glazed",
+   "blankStoreys": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "palette": {
+    "brick": "#22272e",
+    "frame": "#c9cdcf",
+    "stone": "#737a7e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "ground",
+    "blankStoreys",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    86
+   ],
+   "street": "Piet Heinkade",
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 5,
+   "windows": "transom",
+   "sills": false,
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.7,
+    "sill": 0.15
+   },
+   "ground": "glazed",
+   "houses": [
+    {
+     "w": 3,
+     "bays": 3,
+     "ground": "blank",
+     "blankStoreys": [
+      1
+     ]
+    },
+    {
+     "w": 2,
+     "bays": 2,
+     "ground": "plinth-shopfronts"
+    }
+   ],
+   "palette": {
+    "brick": "#22272e",
+    "frame": "#c9cdcf",
+    "stone": "#737a7e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "houses",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    9,
+    72,
+    59,
+    111,
+    141
+   ],
+   "street": "Piet Heinkade",
+   "system": "blank",
+   "palette": {
+    "brick": "#22272e",
+    "frame": "#c9cdcf",
+    "stone": "#737a7e"
+   },
+   "hand": [
+    "system",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    47,
+    22,
+    129,
+    48,
+    144,
+    25,
+    101,
+    10,
+    178,
+    50,
+    172
+   ],
+   "mainSurface": 178,
+   "street": "Piet Heinkade",
+   "system": "brick-bay-grid",
+   "alignWith": 3,
+   "baysPerStorey": 10,
+   "windows": "transom",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "ground": "blank",
+   "palette": {
+    "brick": "#22272e",
+    "frame": "#c9cdcf",
+    "stone": "#737a7e"
+   },
+   "hand": [
+    "system",
+    "alignWith",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "ground",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#22272e",
+  "frame": "#c9cdcf",
+  "door": "#2a2a2a",
+  "stone": "#737a7e"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored from the archived 2025-06-16 crops. Group 0: panel 4 (Veemkade N, 26.2 m, main) plus the small coplanar-ish panels east of it, from w04-16: 22 transom-window axes over 45 m, four brick storeys over a two-storey stone colonnade with glazed shops and a glazed mezzanine, the DETROIT entrance recess at the east end of panel 4.",
+  "Group 1: panel 3 surface 78 (W, 12.8 m, 21.5 m) from w02-286: the six-storey north wing, four axes over three tall podium windows. Group 2: panel 6 (W, 30.8 m, 8 m podium) and surface 4 from w02-286: the stone colonnade with the car-park entrance. Groups 3-5: panel 111 (S tower, 18.4 m, 33 m), the tower shoulders (79 surfaces 158/122, panels 10, 139) and the podium surface 86 from w03-196: eight axes on storeys 2-5, four centred axes on storeys 6-9, the glazed stair slot over the entrance. Group 6: the plain brick podium ends (panels 7, 68, 55 W, panel 100 S).",
+  "Group 7: the upper setbacks over the W podium (panels 43 tower W face, 19, 44, 22, 92, 8 mid wing, 153 and 46 upper wing) from w02-286, on the tower's storey lines (alignWith 3), 10 axes on panel 153. The Purperhoedenveem (E) side, the N setback (panel 75) and the courtyard have no straight crop and take otherWalls window-grid in the house brick."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000
+}

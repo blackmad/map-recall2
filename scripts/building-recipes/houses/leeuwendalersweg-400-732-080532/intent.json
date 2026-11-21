@@ -1,0 +1,3225 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "leeuwendalersweg-400-732-080532",
+ "pandId": "0363100012080532",
+ "address": "Leeuwendalersweg 400-732 / Bos en Lommerweg / Dirk Deutekompad, Bos en Lommer: 2009 housing slab of four repeated modules, a dark brick ground and first storey with deep white window surrounds under three orange-red brick storeys of a loggia grid with white slit windows, dark seven-storey stair stubs between modules, a red-brick tower at the south end and a dark brick north head with a grid of deep white surrounds (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2025-07-02-w08-105",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-02_10-16-10_00795/",
+   "image": "source-data://pand-reference-walls/0363100012080532/w08-105.jpg",
+   "sha256": "ed4b2afb99bfce3055f3d605a70a56a7abc8558455ae0e53727372e68820241b",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-18-w07-105",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20240918_0854_Track08_Sphere_00558/",
+   "image": "source-data://pand-reference-walls/0363100012080532/w07-105.jpg",
+   "sha256": "417cfbb5fecfd3ff72610c11181620a19ff7ace8b8c24cb73c845162dc58fde0",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-19-w06-105",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002522_pano_0000_000179/",
+   "image": "source-data://pand-reference-walls/0363100012080532/w06-105.jpg",
+   "sha256": "9c7fd27146a82951585851009f5014f150b1aac477a0be328f085b4cb623ecbf",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-29-w11-195L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002067_pano_0000_000585/",
+   "image": "source-data://pand-reference-walls/0363100012080532/w11-195L.jpg",
+   "sha256": "95f7d5e31815d01f2661d2644bad69debfa6d467acef6f6d89b68c52a78ffdd5",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-05-14-w02-105",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001714_pano_0000_001467/",
+   "image": "source-data://pand-reference-walls/0363100012080532/w02-105.jpg",
+   "sha256": "d6aee3da970d54d6c49d01d5e4421f55efc164cf583b52397e7f092e5d9e41ad",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-05-14-w05-105",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001714_pano_0000_001442/",
+   "image": "source-data://pand-reference-walls/0363100012080532/w05-105.jpg",
+   "sha256": "5177927bb8b2b8b4d3b801aacdd31e2c6535092078832893f857079420d680aa",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-12-10-w09-15",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001503_pano_0002_001071/",
+   "image": "source-data://pand-reference-walls/0363100012080532/w09-15.jpg",
+   "sha256": "5a36238dd6714775cfcc430b78a3ba12423e9e9851f37e2ac5a4997b2dc9eb50",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-07-24-w12-285",
+   "kind": "street-panorama",
+   "capturedAt": "2019-07-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001326_pano_0000_003409/",
+   "image": "source-data://pand-reference-walls/0363100012080532/w12-285.jpg",
+   "sha256": "77ae43af3695c5536df25c1d198541cde06556b5508e3bb382ef6837576afe50",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-12-20-w08-105L",
+   "kind": "street-panorama",
+   "capturedAt": "2018-12-20",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001028_pano_0001_000249/",
+   "image": "source-data://pand-reference-walls/0363100012080532/w08-105L.jpg",
+   "sha256": "17079779e70ea984dde19a442254777e879fd9d86e9b829f772b55d53e701932",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    8
+   ],
+   "street": "Bos en Lommerweg",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 8,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.78,
+    "sill": 0.1
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "window",
+     "window",
+     "window",
+     "door",
+     "window",
+     "wall"
+    ],
+    "doors": "#3a3c3c"
+   },
+   "palette": {
+    "brick": "#3a2c29",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "bays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      6
+     ],
+     "storeys": [
+      1,
+      6
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.16,
+      0.84
+     ],
+     "up": [
+      0.03,
+      0.95
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "openBays",
+    "renderPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    215
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.78,
+    "sill": 0.1
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "window",
+     "window"
+    ],
+    "doors": "#3a3c3c"
+   },
+   "palette": {
+    "brick": "#3a2c29",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      3
+     ],
+     "storeys": [
+      1,
+      6
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.16,
+      0.84
+     ],
+     "up": [
+      0.03,
+      0.95
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "renderPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    225,
+    50,
+    70,
+    71,
+    226,
+    289
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 7,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "window",
+     "door",
+     "window",
+     "door",
+     "window",
+     "door"
+    ],
+    "doors": "#a87a4c"
+   },
+   "palette": {
+    "brick": "#683523",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0,
+      1
+     ],
+     "brick": "#3a2c29"
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4
+    ],
+    "w": 0.7,
+    "h": 0.86,
+    "sill": 0.0,
+    "deep": 0.6,
+    "rail": "glass",
+    "colour": "#55575a",
+    "lining": "#4a2c22",
+    "back": "door-window"
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      6
+     ],
+     "storeys": [
+      1,
+      1
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.2,
+      0.8
+     ],
+     "up": [
+      0.12,
+      0.82
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      4,
+      4
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      6,
+      6
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      4,
+      4
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      6,
+      6
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "brickStoreys",
+    "loggias",
+    "renderPanels",
+    "accentPanels",
+    "ground",
+    "houses"
+   ],
+   "houses": [
+    {
+     "w": 3,
+     "bays": 3,
+     "ownEaves": true,
+     "ground": "residential",
+     "residential": {
+      "pattern": [
+       "door",
+       "window",
+       "door"
+      ],
+      "doors": "#a87a4c"
+     }
+    },
+    {
+     "w": 4,
+     "bays": 4,
+     "ownEaves": true,
+     "ground": "residential",
+     "residential": {
+      "pattern": [
+       "window",
+       "door",
+       "window",
+       "door"
+      ],
+      "doors": "#a87a4c"
+     }
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    236
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 7,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "window",
+     "door",
+     "window",
+     "door",
+     "window",
+     "door"
+    ],
+    "doors": "#a87a4c"
+   },
+   "palette": {
+    "brick": "#683523",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0,
+      1
+     ],
+     "brick": "#3a2c29"
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4
+    ],
+    "w": 0.7,
+    "h": 0.86,
+    "sill": 0.0,
+    "deep": 0.6,
+    "rail": "glass",
+    "colour": "#55575a",
+    "lining": "#4a2c22",
+    "back": "door-window"
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      6
+     ],
+     "storeys": [
+      1,
+      1
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.2,
+      0.8
+     ],
+     "up": [
+      0.12,
+      0.82
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      4,
+      4
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      6,
+      6
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      4,
+      4
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      6,
+      6
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "brickStoreys",
+    "loggias",
+    "renderPanels",
+    "accentPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    221
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 7,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "window",
+     "door",
+     "window",
+     "door",
+     "window",
+     "door"
+    ],
+    "doors": "#a87a4c"
+   },
+   "palette": {
+    "brick": "#683523",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0,
+      1
+     ],
+     "brick": "#3a2c29"
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4
+    ],
+    "w": 0.7,
+    "h": 0.86,
+    "sill": 0.0,
+    "deep": 0.6,
+    "rail": "glass",
+    "colour": "#55575a",
+    "lining": "#4a2c22",
+    "back": "door-window"
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      6
+     ],
+     "storeys": [
+      1,
+      1
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.2,
+      0.8
+     ],
+     "up": [
+      0.12,
+      0.82
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      4,
+      4
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      6,
+      6
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      4,
+      4
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      6,
+      6
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "brickStoreys",
+    "loggias",
+    "renderPanels",
+    "accentPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    285
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "window",
+     "door"
+    ],
+    "doors": "#a87a4c"
+   },
+   "palette": {
+    "brick": "#683523",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0,
+      1
+     ],
+     "brick": "#3a2c29"
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4
+    ],
+    "w": 0.7,
+    "h": 0.86,
+    "sill": 0.0,
+    "deep": 0.6,
+    "rail": "glass",
+    "colour": "#55575a",
+    "lining": "#4a2c22",
+    "back": "door-window"
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      2
+     ],
+     "storeys": [
+      1,
+      1
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.2,
+      0.8
+     ],
+     "up": [
+      0.12,
+      0.82
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "brickStoreys",
+    "loggias",
+    "renderPanels",
+    "accentPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    42,
+    256
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "window"
+    ],
+    "doors": "#a87a4c"
+   },
+   "palette": {
+    "brick": "#683523",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0,
+      1
+     ],
+     "brick": "#3a2c29"
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4
+    ],
+    "w": 0.7,
+    "h": 0.86,
+    "sill": 0.0,
+    "deep": 0.6,
+    "rail": "glass",
+    "colour": "#55575a",
+    "lining": "#4a2c22",
+    "back": "door-window"
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      2
+     ],
+     "storeys": [
+      1,
+      1
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.2,
+      0.8
+     ],
+     "up": [
+      0.12,
+      0.82
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "brickStoreys",
+    "loggias",
+    "renderPanels",
+    "accentPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    99
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 6,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "window",
+     "door",
+     "window",
+     "door",
+     "window"
+    ],
+    "doors": "#a87a4c"
+   },
+   "palette": {
+    "brick": "#683523",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0,
+      1
+     ],
+     "brick": "#3a2c29"
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4
+    ],
+    "w": 0.7,
+    "h": 0.86,
+    "sill": 0.0,
+    "deep": 0.6,
+    "rail": "glass",
+    "colour": "#55575a",
+    "lining": "#4a2c22",
+    "back": "door-window"
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      5
+     ],
+     "storeys": [
+      1,
+      1
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.2,
+      0.8
+     ],
+     "up": [
+      0.12,
+      0.82
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      4,
+      4
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    },
+    {
+     "bays": [
+      4,
+      4
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#2c3034",
+     "finish": "panel",
+     "relief": "proud",
+     "each": true,
+     "along": [
+      0.035,
+      0.12
+     ],
+     "up": [
+      0.12,
+      0.88
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      4,
+      4
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    },
+    {
+     "bays": [
+      4,
+      4
+     ],
+     "storeys": [
+      2,
+      2
+     ],
+     "colour": "#e6e4dc",
+     "along": [
+      0.01,
+      0.145
+     ],
+     "up": [
+      0.06,
+      0.94
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "brickStoreys",
+    "loggias",
+    "renderPanels",
+    "accentPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    185
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 1,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window"
+    ],
+    "doors": "#a87a4c"
+   },
+   "palette": {
+    "brick": "#3a2c29",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "blankStoreys": [
+    6
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      1,
+      5
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.18,
+      0.82
+     ],
+     "up": [
+      0.08,
+      0.86
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "blankStoreys",
+    "renderPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    132
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 1,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window"
+    ],
+    "doors": "#a87a4c"
+   },
+   "palette": {
+    "brick": "#3a2c29",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "blankStoreys": [
+    6
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      1,
+      5
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.18,
+      0.82
+     ],
+     "up": [
+      0.08,
+      0.86
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "blankStoreys",
+    "renderPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    166
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 1,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window"
+    ],
+    "doors": "#a87a4c"
+   },
+   "palette": {
+    "brick": "#3a2c29",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "blankStoreys": [
+    6
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      1,
+      5
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.18,
+      0.82
+     ],
+     "up": [
+      0.08,
+      0.86
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "blankStoreys",
+    "renderPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    89
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 1,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window"
+    ],
+    "doors": "#a87a4c"
+   },
+   "palette": {
+    "brick": "#3a2c29",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "blankStoreys": [
+    6
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      1,
+      5
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.18,
+      0.82
+     ],
+     "up": [
+      0.08,
+      0.86
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "blankStoreys",
+    "renderPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    31,
+    126,
+    140,
+    116,
+    127
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 14,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.75,
+    "sill": 0.08
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "window",
+     "door"
+    ],
+    "doors": "#a87a4c"
+   },
+   "palette": {
+    "brick": "#683523",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0,
+      1
+     ],
+     "brick": "#3a2c29"
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      3
+     ],
+     "storeys": [
+      1,
+      1
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "relief": "deep",
+     "along": [
+      0.2,
+      0.8
+     ],
+     "up": [
+      0.12,
+      0.82
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      0,
+      3
+     ],
+     "storeys": [
+      2,
+      13
+     ],
+     "colour": "#e6e4dc",
+     "each": true,
+     "along": [
+      0.04,
+      0.2
+     ],
+     "up": [
+      0.08,
+      0.92
+     ]
+    }
+   ],
+   "houses": [
+    {
+     "w": 2,
+     "bays": 2,
+     "ownEaves": true
+    },
+    {
+     "w": 2,
+     "bays": 2,
+     "ownEaves": true
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "brickStoreys",
+    "renderPanels",
+    "accentPanels",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    135,
+    248,
+    45
+   ],
+   "street": "Leeuwendalersweg",
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 8,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.1
+   },
+   "ground": "system",
+   "palette": {
+    "brick": "#683523",
+    "frame": "#b4642e",
+    "stone": "#e6e4dc"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#3a2c29",
+  "frame": "#b4642e",
+  "door": "#a87a4c",
+  "stone": "#e6e4dc"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored from the archived crops. Group 0: panel 7 (N, 29 m, Bos en Lommerweg) from w09-15 2019-12-10, 7 window columns plus a blank bay at the balcony corner. Group 1: panel 6 surface 215 (E, 16.5 m) from w02-105 2020-05-14, 4 columns. Group 2: panels 175/47/178 (north module, 3DBAG eaves 19.4 at the canopy) from w02-105 2020-05-14, split 3+4 bays so each half keeps its own eaves. Group 3: panel 106 surface 236 from w06-105 2022-04-19. Group 4: panel 171 from w07-105 2024-09-18 and w07-105L 2021-03-29. Groups 5-6: panels 216 and 39 from w05-105 2020-05-14. Group 7: panel 71 from w08-105L 2018-12-20 and w08-105 2025-07-02 (tree). Groups 8-11: the four dark stair stubs (surfaces 185/132/166/89) from w02, w06, w07, w05, one group each so each carries its white surrounds. Group 12: the south tower's east face (panels 28/113/95/101), from the lower part in w08-105L/w08-105 and w11-195L 2021-03-29 (oblique), split in two so each half keeps its 3DBAG eaves (47.6 and 43.2); its other faces fall to otherWalls. Group 13: the setback storey under the roof canopy (panels 108/187/42).",
+  "Module rhythm read on every module: ground door pairs alternating with windows, dark first storey with deep white surrounds, loggias on storeys 2-4 with white slit windows at the left of alternate loggias (storeys 2 and 4 on odd bays, storey 3 on even bays).",
+  "Where 3DBAG puts the eaves at the canopy (19.4 m) the module takes a sixth storey for the setback top floor; where it stops at the parapet (16.4 m) five storeys."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000
+}

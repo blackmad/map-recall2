@@ -1,0 +1,294 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "piri-reisplein-1-81-238346",
+ "pandId": "0363100012238346",
+ "address": "Piri Reisplein 1-81 / Van Speijkstraat / Witte de Withstraat, De Baarsjes: 2011 neoclassical pastiche housing round the Piri Reisplein square in red-brown brick with white cornices, storey bands and frames, cast-iron balconies, a domed pedimented corner pavilion and a colonnade, shops, the Hotel Not Hotel arch and a garage gateway on the ground (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2025-07-31-w09-264",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-31",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-31_12-19-21_01081/",
+   "image": "source-data://pand-reference-walls/0363100012238346/w09-264.jpg",
+   "sha256": "21c8caf71a7a9682420e3f11d838d697dc5f67200692cd4e0b9c0cba1a5a5343",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-26-w08-84",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002063_pano_0000_004034/",
+   "image": "source-data://pand-reference-walls/0363100012238346/w08-84.jpg",
+   "sha256": "8eabe63a67d4cb17498d12483ac463d43375e9ef3437a31454fc7fe00c2e81a9",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-08-12-w07-175",
+   "kind": "street-panorama",
+   "capturedAt": "2016-08-12",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000017_pano_0001_000376/",
+   "image": "source-data://pand-reference-walls/0363100012238346/w07-175.jpg",
+   "sha256": "7801cca07ed73330384f5539e7c4a07b3168214141d05e2a9569d917cdd79965",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    231,
+    233,
+    266
+   ],
+   "street": "Van Speijkstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "cross",
+   "windowShape": {
+    "w": 0.52,
+    "h": 0.75,
+    "sill": 0.1
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      4
+     ],
+     "w": 0.35,
+     "h": 0.45,
+     "sill": 0.3
+    }
+   ],
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "door",
+     "storage",
+     "door"
+    ],
+    "doors": "#5c5f5c"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "bays": [
+     0
+    ],
+    "w": 0.9,
+    "h": 0.85,
+    "sill": 0.05,
+    "deep": 0.6,
+    "rail": "bars",
+    "colour": "#2f3230",
+    "lining": "#3a3230",
+    "back": "door-window"
+   },
+   "groundFactor": 1.35,
+   "cornice": true,
+   "dressings": {
+    "colour": "#e6e2d8",
+    "bands": {
+     "at": [
+      "floor"
+     ],
+     "storeys": [
+      1,
+      3,
+      4
+     ],
+     "double": true
+    }
+   },
+   "palette": {
+    "brick": "#615049",
+    "frame": "#f2f0ea",
+    "stone": "#e6e2d8"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "storeyShapes",
+    "palette",
+    "ground",
+    "loggias",
+    "groundFactor",
+    "dressings",
+    "cornice"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    120,
+    121
+   ],
+   "street": "Van Speijkstraat",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 1,
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "ground": "plinth-shopfronts",
+   "cornice": true,
+   "dressings": {
+    "colour": "#e6e2d8",
+    "bands": {
+     "at": [
+      "floor"
+     ],
+     "storeys": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "double": true
+    }
+   },
+   "palette": {
+    "brick": "#615049",
+    "frame": "#f2f0ea",
+    "stone": "#e6e2d8"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "dressings",
+    "cornice"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    111
+   ],
+   "street": "Piri Reisplein",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 11,
+   "windows": "cross",
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.7,
+    "sill": 0.15
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      4
+     ],
+     "w": 0.3,
+     "h": 0.35,
+     "sill": 0.35
+    }
+   ],
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "window",
+     "door"
+    ],
+    "doors": "#3e4446"
+   },
+   "groundFactor": 1.2,
+   "cornice": true,
+   "dressings": {
+    "colour": "#e6e2d8",
+    "bands": {
+     "at": [
+      "floor"
+     ],
+     "storeys": [
+      1,
+      3,
+      4
+     ],
+     "double": true
+    }
+   },
+   "palette": {
+    "brick": "#615049",
+    "frame": "#f2f0ea",
+    "stone": "#e6e2d8"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "storeyShapes",
+    "palette",
+    "ground",
+    "groundFactor",
+    "dressings",
+    "cornice"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    140,
+    142,
+    300,
+    11,
+    44
+   ],
+   "street": "Piri Reisplein",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 2,
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.75,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "ground": "plinth-shopfronts",
+   "palette": {
+    "brick": "#615049",
+    "frame": "#f2f0ea",
+    "stone": "#e6e2d8"
+   },
+   "groundFactor": 1.3,
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "groundFactor"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#615049",
+  "frame": "#f2f0ea",
+  "door": "#2a2a2a",
+  "stone": "#e6e2d8"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored from the archived crops: panel 192 (E, 17.1 m) -> group 0 and panel 106 (the banded pavilion beside it, 5.7 m) -> group 1 from w08-84 2021-03-26; panel 98 (S, 26.5 m, the north side of the square) -> group 2 from w07-175 2016-08-12 (no later crop of it); panels 123, 241 and 10 (W, 16.7 m together, the Hotel Not Hotel front) -> group 3 from w09-264 2025-07-31.",
+  "Not modelled, no usable crop: w01-84 (67.5 m, the colonnade and the domed corner) is a close oblique 2016 view of the corner pavilion; w06-84 is a close oblique view of a shopfront; w02-264 and w04-264 show the pre-war blocks in front of the pand's party walls; w03-355 and w05-174 have no crop. Those walls and the courtyard take otherWalls window-grid.",
+  "The kit cannot say: the dome and pediment of the corner pavilion, the colonnade, the curved cast-iron balcony stack (drawn as straight barred balconies), the round attic oculi (drawn as small square windows), the stepped set-back crowns and the heavy multi-member cornices (one cornice plus double floor bands); the Van Speijkstraat garage passage is drawn as a storage leaf because the kit garage door is skipped on a residential ground."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 24000,
+ "footprintParts": true
+}

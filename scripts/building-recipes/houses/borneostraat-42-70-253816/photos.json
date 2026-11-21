@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-madurastraat",
+  "panoId": "TMX7316010203-002417_pano_0021_000099",
+  "timestamp": "2022-01-12T12:19:16.012800Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/01/12/TMX7316010203-002417/pano_0021_000099/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   124236.34921609056,
+   486367.25624429807
+  ],
+  "headingDeg": 3.071122300940658,
+  "fovDeg": 106.18834945933163,
+  "pitchDeg": 41.56422117477481,
+  "distanceM": 6.969765680737869,
+  "image": "artifacts/building-recipes/borneostraat-42-70-253816/photo-wall-madurastraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-borneostraat",
+  "panoId": "TMX7316010203-002909_pano_0002_000043",
+  "timestamp": "2023-01-02T10:45:16.051200Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/01/02/TMX7316010203-002909/pano_0002_000043/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   124281.42276903999,
+   486419.33664283383
+  ],
+  "headingDeg": 208.05958053080298,
+  "fovDeg": 110,
+  "pitchDeg": 20.03321844238152,
+  "distanceM": 16.969223655694755,
+  "image": "artifacts/building-recipes/borneostraat-42-70-253816/photo-wall-borneostraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-sumatrastraat",
+  "panoId": "TMX7316010203-002909_pano_0002_000079",
+  "timestamp": "2023-01-02T10:46:03.760650Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/01/02/TMX7316010203-002909/pano_0002_000079/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   124215.58871105762,
+   486388.4933721397
+  ],
+  "headingDeg": 72.73456624840821,
+  "fovDeg": 110,
+  "pitchDeg": 31.829323737372402,
+  "distanceM": 9.95498527555761,
+  "image": "artifacts/building-recipes/borneostraat-42-70-253816/photo-wall-sumatrastraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

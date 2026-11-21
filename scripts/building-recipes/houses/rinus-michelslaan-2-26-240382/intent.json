@@ -1,0 +1,537 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "rinus-michelslaan-2-26-240382",
+ "pandId": "0363100012240382",
+ "address": "Rinus Michelslaan 2-26 / Jan van Galenstraat / Laan van Spartaan, Bos en Lommer: 2013 housing block in orange-brown strip brick with white-framed loggia-and-window units, cantilevered over a recessed glazed plinth of shops and the Laan van Spartaan sports hall behind grey concrete columns, a 27 m slab on Jan van Galenstraat (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2025-07-02-w01-285",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-02_10-16-10_01761/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-26-w01-285L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002064_pano_0000_003617/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-02-w02-195",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-02_10-16-10_01727/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-02-w03-6",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-02_10-16-10_01621/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-02-w04-7",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-02_10-16-10_01614/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    16
+   ],
+   "street": "Rinus Michelslaan",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 14,
+   "groundFactor": 1.66,
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.76,
+    "h": 0.5,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#6c4e3c",
+    "frame": "#e4e4e0",
+    "stone": "#a9a9a5"
+   },
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4
+    ],
+    "bays": [
+     0,
+     2,
+     4,
+     6,
+     8,
+     10,
+     12
+    ],
+    "w": 0.9,
+    "h": 0.5,
+    "sill": 0.2,
+    "deep": 0.5,
+    "rail": "bars",
+    "colour": "#d8d8d4",
+    "lining": "#6e4a30",
+    "back": "door-window"
+   },
+   "loggiaBands": [
+    {
+     "storeys": [
+      0,
+      1
+     ],
+     "bays": [
+      0,
+      13
+     ],
+     "sill": 0.0,
+     "head": 0.53,
+     "deep": 0.3,
+     "lining": "#a9a9a5",
+     "back": [
+      {
+       "sill": 0.0,
+       "h": 0.52,
+       "every": 1,
+       "w": 0.95
+      },
+      {
+       "sill": 0.75,
+       "h": 0.24,
+       "every": 1,
+       "w": 0.95
+      }
+     ]
+    }
+   ],
+   "arcadePiers": {
+    "storeys": [
+     0,
+     1
+    ],
+    "count": 5,
+    "bays": [
+     4,
+     13
+    ],
+    "w": 0.17,
+    "proud": 0.2,
+    "beam": 0
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "groundFactor",
+    "windowShape",
+    "palette",
+    "loggias",
+    "loggiaBands",
+    "arcadePiers"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    15
+   ],
+   "street": "Rinus Michelslaan",
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 5,
+   "groundFactor": 1.71,
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.76,
+    "h": 0.48,
+    "sill": 0.16
+   },
+   "palette": {
+    "brick": "#6c4e3c",
+    "frame": "#e4e4e0",
+    "stone": "#a9a9a5"
+   },
+   "blankStoreys": [
+    1
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "bays": [
+     0,
+     4
+    ],
+    "w": 0.9,
+    "h": 0.48,
+    "sill": 0.16,
+    "deep": 0.5,
+    "rail": "bars",
+    "colour": "#d8d8d4",
+    "lining": "#6e4a30",
+    "back": "door-window"
+   },
+   "loggiaBands": [
+    {
+     "storeys": [
+      0,
+      0
+     ],
+     "bays": [
+      0,
+      4
+     ],
+     "sill": 0.0,
+     "head": 0.97,
+     "deep": 0.3,
+     "lining": "#a9a9a5",
+     "back": [
+      {
+       "sill": 0.0,
+       "h": 0.6,
+       "every": 1,
+       "w": 0.95
+      },
+      {
+       "sill": 0.85,
+       "h": 0.12,
+       "every": 1,
+       "w": 0.95
+      }
+     ]
+    }
+   ],
+   "arcadePiers": {
+    "storeys": [
+     0
+    ],
+    "count": 3,
+    "w": 0.12,
+    "proud": 0.2,
+    "beam": 0
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "groundFactor",
+    "windowShape",
+    "palette",
+    "blankStoreys",
+    "loggias",
+    "loggiaBands",
+    "arcadePiers"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    4
+   ],
+   "street": "Jan van Galenstraat",
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 18,
+   "groundFactor": 1.71,
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.48,
+    "sill": 0.16
+   },
+   "palette": {
+    "brick": "#6c4e3c",
+    "frame": "#e4e4e0",
+    "stone": "#a9a9a5"
+   },
+   "blankStoreys": [
+    1
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "bays": [
+     1,
+     3,
+     5,
+     7,
+     9,
+     11,
+     13,
+     15,
+     17
+    ],
+    "w": 0.8,
+    "h": 0.48,
+    "sill": 0.16,
+    "deep": 0.5,
+    "rail": "bars",
+    "colour": "#d8d8d4",
+    "lining": "#6e4a30",
+    "back": "door-window"
+   },
+   "loggiaBands": [
+    {
+     "storeys": [
+      0,
+      0
+     ],
+     "bays": [
+      0,
+      17
+     ],
+     "sill": 0.0,
+     "head": 0.97,
+     "deep": 0.3,
+     "lining": "#a9a9a5",
+     "back": [
+      {
+       "sill": 0.0,
+       "h": 0.48,
+       "every": 1,
+       "w": 0.95
+      },
+      {
+       "sill": 0.71,
+       "h": 0.27,
+       "every": 1,
+       "w": 0.95
+      }
+     ]
+    }
+   ],
+   "arcadePiers": {
+    "storeys": [
+     0
+    ],
+    "count": 10,
+    "w": 0.12,
+    "proud": 0.2,
+    "beam": 0
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "groundFactor",
+    "windowShape",
+    "palette",
+    "blankStoreys",
+    "loggias",
+    "loggiaBands",
+    "arcadePiers"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    60
+   ],
+   "street": "Laan van Spartaan",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 6,
+   "groundFactor": 2.0,
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.74,
+    "h": 0.47,
+    "sill": 0.15
+   },
+   "palette": {
+    "brick": "#6c4e3c",
+    "frame": "#e4e4e0",
+    "stone": "#a9a9a5"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "bays": [
+     1
+    ],
+    "w": 0.74,
+    "h": 0.47,
+    "sill": 0.15,
+    "deep": 0.5,
+    "rail": "bars",
+    "colour": "#d8d8d4",
+    "lining": "#6e4a30",
+    "back": "door-window"
+   },
+   "loggiaBands": [
+    {
+     "storeys": [
+      0,
+      0
+     ],
+     "bays": [
+      0,
+      5
+     ],
+     "sill": 0.0,
+     "head": 0.78,
+     "deep": 0.3,
+     "lining": "#a9a9a5",
+     "back": [
+      {
+       "sill": 0.0,
+       "h": 0.44,
+       "every": 1,
+       "w": 0.95
+      },
+      {
+       "sill": 0.7,
+       "h": 0.28,
+       "every": 1,
+       "w": 0.95
+      }
+     ]
+    }
+   ],
+   "arcadePiers": {
+    "storeys": [
+     0
+    ],
+    "count": 7,
+    "w": 0.12,
+    "proud": 0.2,
+    "beam": 0
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "groundFactor",
+    "windowShape",
+    "palette",
+    "loggias",
+    "loggiaBands",
+    "arcadePiers"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    14
+   ],
+   "street": "Laan van Spartaan",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 5,
+   "groundFactor": 2.5,
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.95,
+    "h": 0.44,
+    "sill": 0.27
+   },
+   "palette": {
+    "brick": "#6c4e3c",
+    "frame": "#e4e4e0",
+    "stone": "#a9a9a5"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.95
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.5
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "loggiaBands": [
+    {
+     "storeys": [
+      0,
+      0
+     ],
+     "bays": [
+      0,
+      4
+     ],
+     "sill": 0.0,
+     "head": 0.9,
+     "deep": 0.3,
+     "lights": 12
+    }
+   ],
+   "arcadePiers": {
+    "storeys": [
+     0
+    ],
+    "count": 2,
+    "bays": [
+     1,
+     3
+    ],
+    "w": 0.3,
+    "proud": 0.2,
+    "beam": 0
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "groundFactor",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "loggiaBands",
+    "arcadePiers"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#6c4e3c",
+  "frame": "#e4e4e0",
+  "door": "#3a3a3a",
+  "stone": "#a9a9a5"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored from the archived crops: panel 12 (W, Rinus Michelslaan, 68 m) from w01-285 2025-07-02 checked on w01-285L 2021-03-26, 19 bays, loggia+window units on a 2-bay pitch, the 27 m south end as its own house over bays 14-18; panel 2 (S, Jan van Galenstraat, 67.5 m, 27 m) from w02-195 2025-07-02, 18 bays, window-left loggia-right units, storey 1 blank brick under the cantilever edge, storeys above 20 m not in the crop; panel 48 (N, Laan van Spartaan, 37 m) from w03-6 2025-07-02; panel 11 (N end of the W slab over the sports hall) from w04-7 2025-07-02. Courtyard and party panels take otherWalls.",
+  "The glazed plinth is a loggiaBand recessed under the brick with a grey back carrying two glazing rows (shops, then the upper glazing over the grey band) and arcadePiers for the concrete columns."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000
+}

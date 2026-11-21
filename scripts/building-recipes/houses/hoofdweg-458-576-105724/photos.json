@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-erasmusgracht",
+  "panoId": "TMX7316010203-001953_pano_0000_000311",
+  "timestamp": "2021-01-14T10:48:32.076330Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/01/14/TMX7316010203-001953/pano_0000_000311/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   118275.03842631241,
+   487661.4140161811
+  ],
+  "headingDeg": 345.846703722642,
+  "fovDeg": 45.19797556198019,
+  "pitchDeg": 12.725494795582078,
+  "distanceM": 41.815029623246716,
+  "image": "artifacts/building-recipes/hoofdweg-458-576-105724/photo-wall-erasmusgracht.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-elckerlijcstraat",
+  "panoId": "TMX7316010203-002065_pano_0000_000217",
+  "timestamp": "2021-03-26T13:25:40.233760Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/03/26/TMX7316010203-002065/pano_0000_000217/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   118293.5833047127,
+   487757.591190738
+  ],
+  "headingDeg": 252.3676448186323,
+  "fovDeg": 110,
+  "pitchDeg": 23.28729947280929,
+  "distanceM": 13.320675670075289,
+  "image": "artifacts/building-recipes/hoofdweg-458-576-105724/photo-wall-elckerlijcstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-hoofdweg",
+  "panoId": "b_20241206_1245_Track05_Sphere_00046",
+  "timestamp": "2024-12-06T12:16:48Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241206_1245_Track05_Sphere_00046/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   118208.32704839922,
+   487729.67228602525
+  ],
+  "headingDeg": 71.67658126690168,
+  "fovDeg": 110,
+  "pitchDeg": 17.810186255133885,
+  "distanceM": 29.403745474320655,
+  "image": "artifacts/building-recipes/hoofdweg-458-576-105724/photo-wall-hoofdweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

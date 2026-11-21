@@ -1,0 +1,515 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "spadinalaan-483-699-252988",
+ "pandId": "0363100012252988",
+ "address": "Spadinalaan 483-699 / Docklandsweg / Batteryparkstraat, Zuidas: 2019-2024 housing block in grey-brown brick banded with pale courses, rounded stepped corners and a wavy curved roofline, rounded cantilever slab balconies with dark bar railings, shops (Odin) on the Docklandsweg plinth and ground-floor flats on Spadinalaan (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2025-06-30-w04-254d25",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_12-53-56_00400/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-21-w03-74d25",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-21_08-31-01_01579/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-21-w01-164",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-21_08-31-01_01504/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    23,
+    24,
+    109,
+    111,
+    119,
+    171
+   ],
+   "street": "Docklandsweg",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 13,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.78,
+    "sill": 0.1
+   },
+   "palette": {
+    "brick": "#4c4a47",
+    "frame": "#8a8272",
+    "stone": "#a9aaa4",
+    "glass": "#3e4648"
+   },
+   "ground": "plinth-shopfronts",
+   "balconyBands": {
+    "kind": "glass",
+    "deep": 0.7,
+    "rail": 0.33,
+    "colour": "#b4b5af",
+    "railColour": "#2e302e",
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        0,
+        3
+       ],
+       [
+        5,
+        6
+       ],
+       [
+        8,
+        11
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        1,
+        2
+       ],
+       [
+        4,
+        5
+       ],
+       [
+        7,
+        8
+       ],
+       [
+        10,
+        11
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        2,
+        3
+       ],
+       [
+        5,
+        6
+       ],
+       [
+        8,
+        9
+       ],
+       [
+        11,
+        12
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        4,
+        5
+       ],
+       [
+        7,
+        8
+       ],
+       [
+        10,
+        11
+       ]
+      ]
+     },
+     {
+      "storey": 5,
+      "bays": [
+       [
+        5,
+        6
+       ],
+       [
+        8,
+        9
+       ],
+       [
+        11,
+        12
+       ]
+      ]
+     },
+     {
+      "storey": 6,
+      "bays": [
+       [
+        7,
+        8
+       ]
+      ]
+     }
+    ],
+    "storeys": []
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    34,
+    42
+   ],
+   "street": "Spadinalaan",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 11,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.78,
+    "sill": 0.1
+   },
+   "palette": {
+    "brick": "#4c4a47",
+    "frame": "#8a8272",
+    "stone": "#a9aaa4",
+    "glass": "#3e4648"
+   },
+   "ground": "residential",
+   "balconyBands": {
+    "kind": "glass",
+    "deep": 0.7,
+    "rail": 0.33,
+    "colour": "#b4b5af",
+    "railColour": "#2e302e",
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        1,
+        3
+       ],
+       [
+        4,
+        5
+       ],
+       [
+        6,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        0,
+        2
+       ],
+       [
+        4,
+        5
+       ],
+       [
+        7,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        1,
+        3
+       ],
+       [
+        4,
+        5
+       ],
+       [
+        6,
+        8
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        0,
+        2
+       ],
+       [
+        4,
+        5
+       ],
+       [
+        7,
+        8
+       ]
+      ]
+     }
+    ],
+    "storeys": []
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ],
+   "residential": {
+    "pattern": [
+     "window",
+     "window",
+     "window",
+     "window",
+     "window",
+     "window",
+     "window",
+     "window",
+     "wall",
+     "door",
+     "window"
+    ],
+    "doors": "#8a8272"
+   }
+  },
+  {
+   "wallSurfaces": [
+    43,
+    135,
+    146,
+    149,
+    182
+   ],
+   "street": "Spadinalaan",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.78,
+    "sill": 0.1
+   },
+   "palette": {
+    "brick": "#4c4a47",
+    "frame": "#8a8272",
+    "stone": "#a9aaa4",
+    "glass": "#3e4648"
+   },
+   "ground": "plinth-shopfronts",
+   "balconyBands": {
+    "kind": "glass",
+    "deep": 0.7,
+    "rail": 0.33,
+    "colour": "#b4b5af",
+    "railColour": "#2e302e",
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        2,
+        3
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        2,
+        3
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        2,
+        3
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        2,
+        3
+       ]
+      ]
+     }
+    ],
+    "storeys": []
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    94,
+    95
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 10,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.8,
+    "sill": 0.08
+   },
+   "palette": {
+    "brick": "#4c4a47",
+    "frame": "#8a8272",
+    "stone": "#a9aaa4",
+    "glass": "#3e4648"
+   },
+   "ground": "residential",
+   "balconyBands": {
+    "kind": "glass",
+    "deep": 0.7,
+    "rail": 0.33,
+    "colour": "#b4b5af",
+    "railColour": "#2e302e",
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        0,
+        6
+       ],
+       [
+        8,
+        9
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        2,
+        3
+       ],
+       [
+        4,
+        6
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        4,
+        4
+       ],
+       [
+        5,
+        6
+       ],
+       [
+        8,
+        9
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        4,
+        5
+       ]
+      ]
+     }
+    ],
+    "storeys": []
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground"
+   ],
+   "residential": {
+    "pattern": [
+     "window",
+     "window",
+     "window",
+     "window",
+     "window",
+     "window",
+     "window",
+     "window",
+     "window",
+     "window"
+    ],
+    "doors": "#8a8272"
+   }
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#4c4a47",
+  "frame": "#8a8272",
+  "door": "#8a8272",
+  "stone": "#a9aaa4"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored over the factory draft from the archived crops; every crop before 2023 is the building site, so only the 2024-2025 crops were read.",
+  "Group 0: panel 20 (E, Docklandsweg, 33.3 m) -> w03-74d25 2024-10-21, 11 bays, 7 storeys under the 22 m eaves, shopfront plinth, rounded slab balconies stepping in pairs up the middle. Group 1: panel 28 (S, Spadinalaan, 47.4 m) -> left 0-47 m of w01-164 2024-10-21, 15 bays, 5 storeys, three balcony stacks over bays 0-8, the glazed lobby at bay 9. Group 2: panel 36 (S, 12.6 m, the SE corner) -> right 53-65.5 m of w01-164 2024-10-21, one balcony stack and the Odin shop glazing. Group 3: panel 77 (W, 31.9 m) -> w04-254d25 2025-06-30, the north 12 m hidden behind the slab balconies of Spadinalaan 351-471, balconies read off the visible 20 m.",
+  "The north panels (4, 7, 14 on Batteryparkstraat) have only the 2021 building-site crop w02-344 (no 2023-2025 panorama found) and take otherWalls window-grid with the courtyard and the set-back terrace storeys.",
+  "Not expressible in the kit: the pale horizontal courses banding the grey brick (brickStripes is not in the large tier), the rounded stepped corners and the wavy roofline (3DBAG steps are kept as they are), the rounded ends of the slabs and their sub-bay stagger."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 26000
+}
