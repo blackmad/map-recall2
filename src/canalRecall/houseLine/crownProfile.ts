@@ -65,6 +65,9 @@ export interface RowCrown {
   riseM: number;
   /** Width of the crown at its foot; the whole front when unread. */
   footW?: number;
+  /** A crown narrower than its front standing off centre (design units, Jan Luijkenstraat 160504/166029): its centre's
+   *  shift from the front's centre along the end's v axis (m), kept inside the front. Absent: centred, byte-identical. */
+  offsetM?: number;
   /** Neck (neck gable), cap (bell) or top tread (step) width. */
   neckW?: number;
   /** Attic lights read in the crown (0 = none, absent = unread: one light where it fits). */
@@ -156,11 +159,13 @@ export function rowCrownRoofRise(c: RowCrown, W: number): number {
 /** The kit's outlines want a positive eaves height: they are drawn this far up and moved back down. */
 const KIT_Z = 10;
 
+/** A narrower crown's shift off the front's centre, kept inside the front (0 when centred or as wide as the front). */
+export const crownOffset = (c: RowCrown, W: number): number => { const { half, foot } = crownDims(c, W); return c.offsetM ? clamp(c.offsetM, -(half - foot), half - foot) : 0; };
 export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
-  const d = crownDims(c, W), { half, T, foot, neck } = d;
+  const d = crownDims(c, W), { half, T, foot, neck } = d, off = crownOffset(c, W);
   const slope = (x: number) => R * (1 - Math.abs(x) / half);
-  // Outside a narrower crown's foot: the roof's cheek, the plate just covering the slope.
-  const y0 = foot < half - 0.01 ? slope(-foot) + 0.04 : 0;
+  // Outside a narrower crown's foot: the roof's cheek, the plate just covering the slope (off centre: the lower side's).
+  const y0 = foot < half - 0.01 ? Math.min(slope(-foot + off), slope(foot + off)) + 0.04 : 0;
   let kit: CanalhousePoint[] | null, x0: number;
   if (c.shape === 'raised') {
     const b = c.bandM ?? 0.5, flat = c.cap === 'flat';
@@ -196,10 +201,10 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
     const q = out[out.length - 1];
     if (!q || Math.abs(q[0] - p[0]) > 1e-9 || Math.abs(q[1] - p[1]) > 1e-9) out.push(p);
   };
-  if (c.shape !== 'raised') { push(-half, 0); if (foot < half - 0.01) push(-foot, y0); }
+  if (c.shape !== 'raised') { push(-half, 0); if (foot < half - 0.01) push(-foot + off, y0); }
   // Never back: a point left of the last one moves onto it (the kit's outlines are single-valued already).
-  for (const [x, y] of kit) push(Math.max(out.length ? out[out.length - 1][0] : -Infinity, x + x0), y - KIT_Z);
-  if (c.shape !== 'raised') { if (foot < half - 0.01) push(foot, y0); push(half, 0); }
+  for (const [x, y] of kit) push(Math.max(out.length ? out[out.length - 1][0] : -Infinity, x + x0 + off), y - KIT_Z);
+  if (c.shape !== 'raised') { if (foot < half - 0.01) push(foot + off, y0); push(half, 0); }
   return out;
 }
 
@@ -610,8 +615,19 @@ function openingZ(c: RowCrown, d: ReturnType<typeof crownDims>, y0: number): [nu
   return z1 - z0 < 0.55 ? null : [z0, z1];
 }
 
+/** A sink that moves every vertex `dv` along v (the crown's end plane), for an off-centre crown's trim. */
+function shiftedSink(s: RoofSink, dv: number): RoofSink {
+  const mv = (p: V3): V3 => [p[0], p[1] + dv, p[2]];
+  const o = Object.create(s) as RoofSink & Record<string, unknown>;
+  o.quad = ((a: V3, b: V3, c: V3, d: V3, ...rest: unknown[]) => (s.quad as (...x: unknown[]) => unknown).call(s, mv(a), mv(b), mv(c), mv(d), ...rest)) as RoofSink['quad'];
+  o.tri = ((a: V3, b: V3, c: V3, ...rest: unknown[]) => (s.tri as (...x: unknown[]) => unknown).call(s, mv(a), mv(b), mv(c), ...rest)) as RoofSink['tri'];
+  o.flatPoly = ((pts: V3[], ...rest: unknown[]) => (s.flatPoly as (...x: unknown[]) => unknown).call(s, pts.map(mv), ...rest)) as RoofSink['flatPoly'];
+  return o;
+}
 /** White edge trim, scrolls, cap, shoulder blocks and the crown's light or hoist door on one gable end at u = f. */
-export function rowCrownAccents(s: RoofSink, c: RowCrown, prof: readonly V2[], f: number, e: number, W: number, R: number, trimHex: string): void {
+export function rowCrownAccents(s0: RoofSink, c: RowCrown, prof0: readonly V2[], f: number, e: number, W: number, R: number, trimHex: string): void {
+  // An off-centre crown: its trim and light drawn about its own centre, then shifted with it along v.
+  const off = crownOffset(c, W), s = off ? shiftedSink(s0, off) : s0, prof = off ? prof0.map(([x, y]): V2 => [x - off, y]) : prof0;
   const d = crownDims(c, W), { T, foot, neck } = d;
   const slope = (x: number) => R * (1 - Math.abs(x) / d.half);
   const y0 = foot < d.half - 0.01 ? slope(-foot) + 0.04 : 0;

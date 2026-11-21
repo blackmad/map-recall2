@@ -31,19 +31,33 @@
    "du:ring:8793"
   ],
   "members": [
-   "0363100012166070",
-   "0363100012160643",
-   "0363100012159402",
-   "0363100012164736",
-   "0363100012160667",
-   "0363100012156658",
    "0363100012153176",
    "0363100012158962",
    "0363100012156774",
    "0363100012163030",
    "0363100012153534",
-   "0363100012156780"
+   "0363100012156780",
+   "0363100012160667",
+   "0363100012156658",
+   "0363100012166070",
+   "0363100012160643",
+   "0363100012159402"
   ]
+ },
+ {
+  "key": "ruysdaelkade-8815",
+  "street": "Ruysdaelkade",
+  "gebied": "De Pijp",
+  "segments": [
+   "du:ring:8815"
+  ],
+  "members": [
+   "0363100012164736",
+   "0363100012163999",
+   "0363100012165987",
+   "0363100012161193"
+  ],
+  "cornerOf": "van-ostadestraat"
  },
  {
   "key": "tweede-jacob-van-campenstraat-9051-0",
@@ -87,11 +101,25 @@
   ],
   "members": [
    "0363100012160616",
-   "0363100012145716",
-   "0363100012157451"
+   "0363100012145716"
   ],
   "year": 1883,
   "architect": "Workum, P.J. van"
+ },
+ {
+  "key": "amsteldijk-8487",
+  "street": "Amsteldijk",
+  "gebied": "De Pijp, Rivierenbuurt",
+  "buurt": "Hemonybuurt",
+  "segments": [
+   "du:ring:8487"
+  ],
+  "members": [
+   "0363100012157451"
+  ],
+  "year": 1883,
+  "architect": "Workum, P.J. van",
+  "cornerOf": "tweede-jan-steenstraat-8487"
  },
  {
   "key": "ceintuurbaan-8823",
@@ -121,12 +149,27 @@
    "du:ring:16068"
   ],
   "members": [
-   "0363100012164845",
    "0363100012156785",
    "0363100012236479"
   ],
   "year": 1893,
   "architect": "Vlieken, S.G."
+ },
+ {
+  "key": "roemer-visscherstraat-16068-corner",
+  "street": "Roemer Visscherstraat",
+  "gebied": "Oud-West, De Baarsjes",
+  "buurt": "Vondelparkbuurt-Oost",
+  "segments": [
+   "du:ring:16068"
+  ],
+  "members": [
+   "0363100012164845"
+  ],
+  "year": 1893,
+  "architect": "Vlieken, S.G.",
+  "cornerOf": "roemer-visscherstraat-16068",
+  "note": "the same street name on a face at another bearing (a corner pand): its own front line"
  },
  {
   "key": "bilderdijkstraat-15353",
@@ -178,12 +221,26 @@
    "0363100012113152",
    "0363100012112384",
    "0363100012136574",
-   "0363100012136575",
+   "0363100012136575"
+  ],
+  "year": 1906,
+  "architect": "Tijmensen, A.J."
+ },
+ {
+  "key": "de-clercqstraat-15291",
+  "street": "De Clercqstraat",
+  "gebied": "Oud-West, De Baarsjes",
+  "buurt": "Bellamybuurt-Noord",
+  "segments": [
+   "du:ring:15291"
+  ],
+  "members": [
    "0363100012080836",
    "0363100012096066"
   ],
   "year": 1906,
-  "architect": "Tijmensen, A.J."
+  "architect": "Tijmensen, A.J.",
+  "cornerOf": "bilderdijkkade-15291"
  },
  {
   "key": "nicolaas-maesstraat-9232-0",
@@ -195,12 +252,27 @@
   ],
   "members": [
    "0363100012155454",
+   "0363100012191238"
+  ],
+  "year": 1902,
+  "architect": "Overeem, T. Jzn."
+ },
+ {
+  "key": "van-baerlestraat-9232-0",
+  "street": "Van Baerlestraat",
+  "gebied": "Oud-Zuid",
+  "buurt": "Johannes Vermeerbuurt",
+  "segments": [
+   "du:ring:9232#0"
+  ],
+  "members": [
    "0363100012161109",
    "0363100012156833",
    "0363100012163472"
   ],
   "year": 1902,
-  "architect": "Overeem, T. Jzn."
+  "architect": "Overeem, T. Jzn.",
+  "cornerOf": "nicolaas-maesstraat-9232-0"
  },
  {
   "key": "johannes-verhulststraat-9613",
@@ -297,11 +369,26 @@
   ],
   "members": [
    "0363100012167044",
-   "0363100012166893",
-   "0363100012155375"
+   "0363100012166893"
   ],
   "year": 1887,
   "architect": "Koekkoek, J.H., en Winter, G. de"
+ },
+ {
+  "key": "blasiusstraat-12604-corner",
+  "street": "Blasiusstraat",
+  "gebied": "Oud-Oost",
+  "buurt": "Weesperzijde-Noord",
+  "segments": [
+   "du:ring:12604"
+  ],
+  "members": [
+   "0363100012155375"
+  ],
+  "year": 1887,
+  "architect": "Koekkoek, J.H., en Winter, G. de",
+  "cornerOf": "blasiusstraat-12604",
+  "note": "the same street name on a face at another bearing (a corner pand): its own front line"
  },
  {
   "key": "nassaukade-14713",

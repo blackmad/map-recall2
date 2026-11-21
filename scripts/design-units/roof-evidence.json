@@ -1,0 +1,26 @@
+{
+ "about": "Roof storeys seen in the round-2 photo rows (rectified wall crops, house:crops, Gemeente Amsterdam Panoramabeelden CC BY 4.0; artifacts/design-units/r2/layers/<block>/photo-row.jpg), read 2026-11-20 by the design-units integrator. AHN cannot see these: the DSM is flat at the eaves line from 0.5 m behind the front. storey=true draws a slate roof storey inside the measured top, one dormer per plot. Blocks left out: Jan Luijkenstraat 9308 (stepped and pointed gables, which the segment roof cannot draw) and Tweede Jan Steenstraat 8487 (crops too narrow to read).",
+ "segments": {
+  "du:ring:8276": { "storey": true, "dormer": "pediment", "hoist": true, "block": "rustenburgerstraat" },
+  "du:ring:8275": { "storey": true, "dormer": "pediment", "hoist": true, "block": "rustenburgerstraat" },
+  "du:ring:8274": { "storey": true, "dormer": "pediment", "hoist": true, "block": "rustenburgerstraat" },
+  "du:ring:8815": { "storey": false, "block": "van-ostadestraat", "note": "tower and stepped gable" },
+  "du:ring:8794": { "storey": true, "dormer": "pediment", "hoist": true, "block": "van-ostadestraat" },
+  "du:ring:8792": { "storey": true, "dormer": "pediment", "hoist": true, "block": "van-ostadestraat" },
+  "du:ring:8793": { "storey": true, "dormer": "pediment", "hoist": true, "block": "van-ostadestraat" },
+  "du:ring:9051#0": { "storey": true, "dormer": "plain", "hoist": true, "block": "tweede-jacob-van-campenstraat-9051-0" },
+  "du:ring:8543": { "storey": true, "dormer": "pediment", "block": "ceintuurbaan-8543", "note": "mansard" },
+  "du:ring:8823": { "storey": true, "dormer": "plain", "block": "ceintuurbaan-8823", "note": "mansard" },
+  "du:ring:16068": { "storey": true, "dormer": "pediment", "block": "roemer-visscherstraat-16068" },
+  "du:ring:15353": { "storey": true, "dormer": "gabled", "block": "bilderdijkstraat-15353", "note": "mixed gables and dormers" },
+  "du:ring:14817": { "storey": true, "dormer": "plain", "hoist": true, "block": "admiraal-de-ruijterweg-14817", "note": "two plots carry tall pointed gables the roof cannot draw" },
+  "du:ring:15291": { "storey": true, "dormer": "gabled", "block": "bilderdijkkade-15291" },
+  "du:ring:9232#0": { "storey": true, "dormer": "pediment", "block": "nicolaas-maesstraat-9232-0", "note": "mansard, arched dormer" },
+  "du:ring:9613": { "storey": true, "dormer": "gabled", "block": "johannes-verhulststraat-9613" },
+  "du:ring:9162": { "storey": true, "dormer": "gabled", "block": "roelof-hartstraat-9162", "note": "slate mansard" },
+  "du:ring:12327": { "storey": true, "dormer": "pediment", "hoist": true, "block": "commelinstraat-12327" },
+  "du:ring:12494": { "storey": true, "dormer": "pediment", "hoist": true, "block": "ruyschstraat-12494" },
+  "du:ring:12604": { "storey": true, "dormer": "pediment", "hoist": true, "block": "blasiusstraat-12604" },
+  "du:ring:14713": { "storey": true, "dormer": "pediment", "hoist": true, "block": "nassaukade-14713" }
+ }
+}

@@ -15,7 +15,8 @@ import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, ty
 import { continuousShopCanopy } from './shopCanopies.js';
 import { specStoopExtra } from './stoopExtra.js';
 import { fitProjectionFor } from './projectionWindowFit.js';
-import { ORNAMENT_COMPONENTS, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
+import { plotBreakBoxes } from './designUnits/plotBreak.js';
+import { ORNAMENT_COMPONENTS, CREAM, WHITE as ORN_WHITE, shadeHex, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
 
 export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
 export type { V3, FlatTri, WallFrame, ExtraContext, RoofContext, WallComponent, RoofComponent, Chance } from './facadeExtraCore.js';
@@ -377,7 +378,44 @@ export function registerFirst<T extends { id: string }>(components: readonly T[]
  */
 export const DESIGN_MEMBER_COMPONENTS: ReadonlySet<string> = new Set(['kroonlijst', 'console-cornice', 'corbel-roofline', 'white-fascia', 'cornice-brackets', 'gutter',
   'door-surround', 'brick-door-arch', 'door-pediment', 'window-sills', 'white-lintels', 'stucco-hoods', 'white-window-frames', 'eared-surrounds', 'floor-cornices',
-  'string-courses', 'stone-plinth-band', 'rusticated-plinth', 'plinth', 'stoop', 'double-stoop']);
+  'string-courses', 'stone-plinth-band', 'rusticated-plinth', 'plinth', 'stoop', 'double-stoop', 'juliet-balcony']);
+/**
+ * Design units round 2 (#399): the parts each plot picks for itself (on its `plotSeriesId`): its window heads, its door
+ * dressing, and an occasional balcony row (an oriel drew as a blank pale panel front-on). The rest (sills, frames, bands, plinth) stay the family's.
+ */
+export const PLOT_VARIED_COMPONENTS: ReadonlySet<string> = new Set(['white-lintels', 'stucco-hoods', 'eared-surrounds', 'door-surround', 'brick-door-arch', 'door-pediment', 'juliet-balcony']);
+
+/** Round 2: the plot's crown cornice, party-wall piers and cornice end blocks (designUnits/plotBreak.ts). */
+function plotCrown(c: ExtraContext, sink: ExtraSink): void {
+  const tones = { pier: shadeHex(c.wallHex, 0.86), cornice: CREAM, lid: ORN_WHITE, end: CREAM };
+  for (const b of plotBreakBoxes(c.f.len, c.base, c.top, !!c.plotBreak?.start, !!c.plotBreak?.end)) sink.box(c.f, b.a0, b.a1, b.o0, b.o1, b.z0, b.z1, tones[b.tone], !!b.bottom);
+}
+
+/**
+ * Design units plot plan (2026-11-21, Admiraal De Ruijterweg: "balconies on every upper storey"): the plot's stated
+ * balconies, one on its middle window axis per stated upper storey (1 = the first upper): a stone slab on two consoles
+ * 0.7 m out, an iron railing round its front and sides. The kit's iron-balconies put a shallow Juliet on every window.
+ */
+export const PLOT_BALCONY_OUT_M = 0.7;
+function plotBalconies(c: ExtraContext, s: ExtraSink): void {
+  const spans = windowSpans(c, 0);
+  if (!spans.length || !c.plotBalconies?.length) return;
+  const mid = c.f.len / 2, target = [...spans].sort((a, b) => Math.abs(a.x - mid) - Math.abs(b.x - mid) || a.x - b.x)[0];
+  const width = Math.min(2.6, Math.max(1.4, target.hw * 2 + 0.6)), a0 = Math.max(0.05, target.x - width / 2), a1 = Math.min(c.f.len - 0.05, target.x + width / 2), out = PLOT_BALCONY_OUT_M;
+  for (const n of c.plotBalconies) {
+    const k = n - 1;
+    if (k < 0 || k >= c.layout.storeys) continue;
+    const w = windowSpans(c, k).find(v => Math.abs(v.x - target.x) < 0.05) ?? target, deck = w.z0 - 0.04;
+    if (deck + 1 > c.top) continue;
+    s.box(c.f, a0, a1, 0, out, deck - 0.14, deck, STONE, true);
+    for (const x of [a0 + 0.14, a1 - 0.14]) s.box(c.f, x - 0.07, x + 0.07, 0, out - 0.12, deck - 0.5, deck - 0.14, STONE, true);
+    s.strip(c.f, a0, a1, out, deck + 0.92, deck + 0.98, IRON, 0.04);
+    s.strip(c.f, a0, a1, out, deck + 0.1, deck + 0.14, IRON, 0.03);
+    const bars = Math.max(3, Math.round((a1 - a0) / 0.2));
+    for (let i = 0; i <= bars; i++) { const x = a0 + 0.03 + ((a1 - a0 - 0.06) * i) / bars; s.strip(c.f, x - 0.012, x + 0.012, out, deck, deck + 0.95, IRON, 0.02); }
+    for (const x of [a0, a1 - 0.04]) s.box(c.f, x, x + 0.04, 0, out, deck + 0.92, deck + 0.98, IRON);
+  }
+}
 
 function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase: 'all' | 'defining' | 'stated' | 'optional'): void {
   const { used, groups } = state, beforeWall = sink.tris.length;
@@ -389,6 +427,18 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     const before=sink.tris.length;
     continuousShopCanopy(c,sink);
     if(sink.tris.length>before){used.push('continuous-shop-canopy');groups.add('door-frame');}
+  }
+  if ((phase === 'optional' || phase === 'all') && street && c.plotBreak && c.roofKind !== 'gable') {
+    const before = sink.tris.length;
+    plotCrown(c, sink);
+    if (sink.tris.length > before) { used.push('plot-crown'); groups.add('crown'); }
+  }
+  // A plot read that saw no balcony: no dice balconette either.
+  if (street && c.plotBalconies && !c.plotBalconies.length) groups.add('balcony');
+  if ((phase === 'optional' || phase === 'all') && street && c.plotBalconies?.length && !groups.has('balcony')) {
+    const before = sink.tris.length;
+    plotBalconies(c, sink);
+    if (sink.tris.length > before) { used.push('plot-balconies'); groups.add('balcony'); }
   }
   if(c.groundFrontageActive){
     // The wall layer owns the cut portal, panes and frames; stock door dressing would float over it.
@@ -418,7 +468,10 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     if (definingComponent && c.assemblyOwner === false) continue;
     if (c.onlyExtras && !c.onlyExtras.includes(comp.id)) continue;
     if (phase === 'defining' && !definingComponent || phase === 'optional' && definingComponent) continue;
-    if (c.designMember && !DESIGN_MEMBER_COMPONENTS.has(comp.id)) continue;
+    // A plot plan's stated part (designUnits/draw.ts withPlotPlan: balconies, a souterrain's stoop) is drawn too.
+    if (c.designMember && !DESIGN_MEMBER_COMPONENTS.has(comp.id) && !c.registerForce?.includes(comp.id)) continue;
+    // A plot read with brick heads (plotPlan.ts whiteHeads `none`): no dice head dressing either.
+    if (c.plainHeads && comp.group === 'window-head' && !c.registerForce?.includes(comp.id)) continue;
     // A spec's stated parts (`statedFirst`) dress in their own pass; a later pass never draws one twice.
     if (phase === 'stated' ? !c.statedFirst?.includes(comp.id) : c.statedFirst && used.includes(comp.id)) continue;
     // Ornaments follow the building's period; street furniture (a stoop, a hoist beam) also its
@@ -432,7 +485,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     const asStyle = as ?? stated;
     if (!asStyle || (comp.street && !street) || (comp.group && groups.has(comp.group))) continue;
     // House rows: a series member rolls once per component on its series (one design per series, every wall alike).
-    const seed = c.seriesId ?? c.id;
+    const seed = c.plotSeriesId && PLOT_VARIED_COMPONENTS.has(comp.id) ? c.plotSeriesId : c.seriesId ?? c.id;
     const roll = comp.wide || WIDE.has(comp.id) || c.seriesId ? hash01(`${seed}:${comp.id}`) : hash01(`${seed}:${c.wallKey}:${comp.id}`);
     const localChance = RECIPE_TRIM_KEYS[comp.id] && c.recipe?.trim?.[RECIPE_TRIM_KEYS[comp.id]];
     let chance = (assembly && comp.id === 'glass-balconies' || historicAssembly && comp.id === 'historic-balcony-stack') ? 1 : typeof localChance === 'number' ? localChance : chanceFor(comp.p, asStyle);

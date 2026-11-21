@@ -2,6 +2,39 @@
 
 **Ring gate for David: https://github.com/blackmad/map-recall2/issues/399** (18 blocks, desktop and phone, with the Node sheets; filed 2026-11-19 night). His block-by-block verdict decides whether tier C goes on by default for the Ring.
 
+## Round 3 (2026-11-21): ring-r2 verdicts answered; layers waiting on David (`ring-r3`)
+
+- Verdicts: `belt-review-serve/review-data/belt-review/rounds/ring-r2/verdicts.json` (13 better, 4 same, 0 worse).
+- Render: `DESIGN_ROUND=r3 node --import tsx scripts/design-units/review-sheets.ts render today|new [--env DESIGN_UNITS=1]`; r2 is rendered with `--root` on a detached worktree at d394792053; layers with `layers --conds today:today,r2:r2,new:r3`. Crops stay in `artifacts/design-units/r2/crops-archive/` (one archive for all rounds).
+- Gate blocks: 24 (corner units split per street face; Roemer Visscherstraat 164845 and Blasiusstraat 155375 split off by bearing).
+- Re-crops installed: Nicolaas Maesstraat 155454 (12.5 m, bearing 160; the old 4.66 m Van Baerlestraat-side crop kept beside the archive) and 191238; Ruysdaelkade 163999/165987/161193 (bearing 270); Tweede Jan Steenstraat 145716 (6.1 m, bearing 153).
+- Not done: re-pricing B with the extended prompt, and `score` for the new fields.
+
+## Round 2 (2026-11-20): plots are houses; sheets waiting on David's review page
+
+- **Verdict on #399** (comment 7033361626), from David: "neutral-to-worse - you're over aggressively collapsing buildings". The flag stays off.
+- **The fix is on the branch, behind the flag; flag-off hashes are unchanged and 31 of 31 design-unit tests pass.**
+  - The unit is now a family:
+    - `designUnits/plotBreak.ts` draws each plot's pier, cornice and end block.
+    - `designUnits/plotTone.ts` sets each plot's wall tone, within ±0.03 L of the family brick.
+    - `memberDraw` gives each plot a `plotSeed`, a `plotEavesM` (its AHN front, clamped to 0.3 m of the line) and a `plotBreak`.
+    - In `facadeExtras`, `PLOT_VARIED_COMPONENTS` are the heads, door dressing and balcony row, which roll per plot; `plotCrown` draws the crown.
+    - In the mesher, `runSeed` places each plot's door.
+  - `build-segments` now writes `plotEavesM` and `plotGroups`, the one-facade evidence from face intents (`identical`/`sameAs`) and same-building "one" reads. Only 3 segments have such groups; none are in the gate blocks.
+  - The oriel (`bay-window`) was tried and dropped: front-on it drew as a blank pale panel.
+- **Sheets:** `artifacts/design-units/r2/sheets/node-<key>.jpg`, 20 of them (the 18 gate blocks plus Marnixplein and Goudsbloemstraat). Each stacks photo cuts, today, round 1 and round 2, all Node renders (`scripts/design-units/review-sheets.ts render <cond>` / `sheets`).
+  - The two Centrum rows are byte-identical in all three conditions, because they are not in the Ring extract.
+  - The planning session loads the sheets into the review page https://claude.ai/artifact/6v5cxnHZAMQ5fvKV4dqdWM. No needs-david issue this round; GitHub issues are retired for verdicts.
+- **Review layers (2026-11-20):** `artifacts/design-units/r2/layers/<key>/` holds `{today,r1,r2}.jpg`, which share one scale and left edge, with shorter strips padded with sky. It also holds a `photo-NN.jpg` per pand, rectified wall crops from `house:crops` run into `r2/crops-archive` (manifests are in `r2/crops-manifests`, never the committed ones), plus `photo-row.jpg` and `photos.json`. Make them with `review-sheets.ts layers`. The local review tool (lane `belt-review-tool-20261120`) loads the folder as a compare round.
+- **Found in the photo rows:** many Ring rows have a mansard with dormers on every plot, even though the AHN rise is under 1.8 m: Rustenburgerstraat, Blasiusstraat, Van Ostadestraat, Ruyschstraat and Commelinstraat. The flat-top rule drops these, and the roof rule should be revisited after the verdict.
+- **Roof fix and photo registration (2026-11-20):** see the TODO entry. `photo-row.jpg` is now registered to the drawings. Each pand's rectified crop is resampled to its slice of the block line, at the strips' px/m and ground line. `photo-row.json` holds each pand's x0/x1. On Rustenburgerstraat, the last two pands appear in the photo but not in the drawing; the Node preview leaves them out (probably a tile edge).
+- **2026-11-21, round 2b (flag only):**
+  - The preview row fix: `chunkFeatures` keeps every `PREVIEW_ROW_IDS` pand and loads their tiles. `review-sheets render` composites installed models over their own spans, anchors on a generic pand, and takes `--root` to render r1 from a worktree at d10e4790d6.
+  - The plot plan (`designUnits/plotPlan.ts`): storeys, cornice, the roof element per plot, ground use, balconies. The gate table is `scripts/design-units/plot-table.ts`.
+  - A's era default (`roofSource: 'default'`) stays the fallback roof for unread plots.
+  - B, priced (pilot only; no batch until David decides): `scripts/design-units/roof-read.ts` (pick, crops, rows, call, score), output in `artifacts/design-units/roof-read/`. One Opus 5.5 call per unit at low effort, through the `ant` CLI, on the row of rectified crops. 37 calls: 47,779 input and 6,213 output tokens, $0.32 in total. A unit averages about 1,300 input and 170 output tokens, about $0.009. The 2,942 A-default segments would cost about $25, or about $13 through Batches, plus house:crops for 12,406 pands (80% get a usable crop; about 2 requests and 2 MB each).
+  - Gate agreement with my reads: roof storey yes/no 71 of 76 plots; exact form 52 of 76; class (gable vs dormer/mansard vs flat) 63 of 71 visible. Over the 19 pilot units, the read changes A's form on 16 of 55 plots (29%) and only the dormer kind on 27 more.
+
 This is for a fresh session that has only the repo. Read it first. Then read `docs/handoffs/design-units-plan-20261119.md`, `docs/handoffs/design-units-handoff-20261119.md` and `docs/reports/design-units-phase0-20261119.md`.
 
 ## Ownership (from 2026-11-19 ~18:55)
@@ -20,7 +53,20 @@ Review bar (check sheets and pairs at full size, never from counts) before anyth
 - nothing above an eaves line that is not measured; no invented hips or gables;
 - with the flag on, no front worse than today on window proportion, frame colour or storey count.
 
-## Gate status (22:45)
+## Done state (2026-11-20)
+
+- Main is at d10e4790d6 (fast-forward from e0c200a7e3; peer map-recall2-40 approved). The flag is off by default.
+  The gate passed: check:canal core, rail and joins, plus the structure test and pre-push smoke.
+- Gate issue #399 is filed: 88 of 88 framed on desktop and phone, with the Roemer Visscherstraat reshoot. We are waiting
+  for David's block-by-block verdict.
+- The overnight data-only work under A is done (phase 0 report, "Under option A" section):
+  - Gordel check: 27% of units with liked rows disagree with the segments.
+  - Centrum joins: 425 segments.
+  - T8 ledger: on the Ring with the flag on, tier D is 10.3%; it is 95% with the flag off.
+- Next: wait for David on #399. If he passes the Ring, turn tier C on by default there, then start Gordel and Centrum.
+  Before David's verdict, make no renderer change and start no lanes.
+
+## Gate status (22:45, superseded by Done state)
 
 - Desktop: both halves are framed, 88 of 88. Three pands show `sameAsBefore` (Ruyschstraat 161684 and 155674,
   Bilderdijkstraat 157757). They are HouseSpec-described members that keep their own description, which is expected.
@@ -205,4 +251,4 @@ Work in worktree `~/Code/map-recall2-worktrees/integrator-design-units-20261119`
   - `integrator-design-units-20261119`: locked, port 4720.
   - `design-units-render-20261119`: the lane, done; port 4723 and e2e ports 4724–4726. It can be removed once main has its commit.
   - `~/Code/map-recall2-source-data-ordekaart-20261119`: on branch `archive/ordekaart-20261119`, pushed. Its sparse cone is `datasets/ordekaart-20261119`.
-- **Tokens:** phase 0 about 298k; renderer lane about 289k; the integrator's phase 1 work is not metered separately (roughly 150–200k).
+- **Tokens:** phase 0 about 298k; renderer lane about 289k; the integrator (phase 1, gate round, overnight data work, two main merges) was not metered separately, roughly 600–700k across its contexts.
