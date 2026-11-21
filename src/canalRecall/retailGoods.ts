@@ -9,6 +9,8 @@
 // Pure: a painter takes a 2D context (the browser's or @napi-rs/canvas's) and a square cell. Every cell is painted in a
 // design space of GOODS_W x GOODS_H units (the tile's shape on the wall: ~1.15 m wide by the 1.9 m of glass under the
 // transom bar), scaled to the square cell; the quad stretches it back. Deterministic (seeded), no text, no images.
+import { roomOf, type RoomSpec } from './retailRoomTone.js';
+import { shopVarietyOn } from './shopVariety.js';
 
 /** A pane tile's width on the wall (m): a pane wider than 1.5 tiles takes two, and so on. */
 export const GOODS_TILE_M = 1.15;
@@ -63,7 +65,8 @@ function stream(seed: number): () => number {
 }
 const pick = <T>(r: () => number, list: readonly T[]): T => list[Math.floor(r() * list.length) % list.length];
 
-type P = { c: Ctx2D; r: () => number };
+/** `room`: the shop's family room (retailRoomTone.ts, round m): room() paints it whatever the painter asked for. */
+type P = { c: Ctx2D; r: () => number; room?: RoomSpec };
 const W = GOODS_W, H = GOODS_H;
 function rect(p: P, x: number, y: number, w: number, h: number, fill: string): void { p.c.fillStyle = fill; p.c.fillRect(x, y, w, h); }
 function round(p: P, x: number, y: number, w: number, h: number, rad: number, fill: string): void {
@@ -82,10 +85,16 @@ function vgrad(p: P, x: number, y: number, w: number, h: number, stops: Readonly
 function glow(p: P, x: number, y: number, rad: number, rgb: string, a: number): void {
   const g = p.c.createRadialGradient(x, y, 0, x, y, rad); g.addColorStop(0, `rgba(${rgb},${a})`); g.addColorStop(1, `rgba(${rgb},0)`); p.c.fillStyle = g; p.c.fillRect(x - rad, y - rad, rad * 2, rad * 2);
 }
+/** Where a family room's dado starts (design units from the top): the same height in every pane of a shop. */
+export const DADO_Y = 168;
 /** A lit room behind the glass: back wall, ceiling band with lights, floor. */
 function room(p: P, wall: string, floor: string, ceilingLight = '255,236,200', lights = 3): void {
+  const o = p.room;
+  if (o) { wall = o.wall; floor = o.floor; ceilingLight = o.light; lights = o.lights; }
   rect(p, 0, 0, W, H, wall);
   vgrad(p, 0, 0, W, 40, [[0, 'rgba(0,0,0,0.35)'], [1, 'rgba(0,0,0,0)']]);
+  // The family room's dado: one line along the lower wall that runs on from pane to pane.
+  if (o) { rect(p, 0, DADO_Y, W, H - 26 - DADO_Y, o.dado); rect(p, 0, DADO_Y - 3, W, 3, shade(o.dado, 0.8)); }
   rect(p, 0, H - 26, W, 26, floor);
   vgrad(p, 0, H - 26, W, 26, [[0, 'rgba(0,0,0,0.25)'], [1, 'rgba(0,0,0,0)']]);
   for (let k = 0; k < lights; k++) { const x = W * (k + 0.5) / lights; rect(p, x - 9, 6, 18, 3, `rgb(${ceilingLight})`); glow(p, x, 10, 34, ceilingLight, 0.28); }
@@ -348,8 +357,7 @@ const PAINTERS: Record<GoodsKind, (p: P) => void> = {
   },
   coffeeshop(p) {
     // A coffeeshop: dim, warm, painted inside, plants in the window, low lamps over a counter.
-    rect(p, 0, 0, W, H, '#1d241e');
-    vgrad(p, 0, 0, W, H, [[0, '#2a3628'], [0.6, '#1a2018'], [1, '#121510']]);
+    if (p.room) room(p, '', ''); else { rect(p, 0, 0, W, H, '#1d241e'); vgrad(p, 0, 0, W, H, [[0, '#2a3628'], [0.6, '#1a2018'], [1, '#121510']]); }
     for (const x of [30, 90, 130]) { rect(p, x, 0, 1, 60, '#111'); glow(p, x, 64, 28, '255,170,90', 0.55); oval(p, x, 62, 8, 4, '#ffb060'); }
     rect(p, 0, 150, W, 18, '#3a2a1a');
     for (let k = 0; k < 4; k++) { const x = 18 + k * 38; poly(p, [[x - 12, 230], [x + 12, 230], [x + 9, 206], [x - 9, 206]], '#6a4a2a');
@@ -357,7 +365,7 @@ const PAINTERS: Record<GoodsKind, (p: P) => void> = {
   },
   smartshop(p) {
     // A smartshop/headshop: dark, lit glass cabinets with coloured jars and pipes, a neon line.
-    rect(p, 0, 0, W, H, '#140f1e');
+    if (p.room) room(p, '', ''); else rect(p, 0, 0, W, H, '#140f1e');
     for (const [y, c] of [[30, '#ff4fd8'], [40, '#3fe0ff']] as const) { rect(p, 10, y, W - 20, 2.5, c); glow(p, W / 2, y, 60, c === '#ff4fd8' ? '255,79,216' : '63,224,255', 0.18); }
     for (const x0 of [6, 78]) { rect(p, x0, 60, 66, 150, '#2a2238'); vgrad(p, x0 + 2, 62, 62, 146, [[0, 'rgba(180,220,255,0.25)'], [1, 'rgba(180,220,255,0.05)']]);
       for (const y of [96, 132, 168, 204]) { rect(p, x0 + 2, y, 62, 2, '#cfe8ff'); for (let x = x0 + 5; x < x0 + 60; x += 9) { const h = 10 + p.r() * 14; round(p, x, y - h, 6, h, 2, pick(p.r, ['#9dff4f', '#ff4fd8', '#3fe0ff', '#ffb13f', '#c08aff', '#ffffff'])); } } }
@@ -505,8 +513,7 @@ const PAINTERS: Record<GoodsKind, (p: P) => void> = {
   },
   brownBar(p) {
     // A bruin café by day: dark wood, a bar with bottles on a lit back shelf, globe lamps, a figure or two at the bar.
-    rect(p, 0, 0, W, H, '#2a1a10');
-    vgrad(p, 0, 0, W, H, [[0, '#3a2414'], [0.5, '#24160c'], [1, '#160d07']]);
+    if (p.room) room(p, '', ''); else { rect(p, 0, 0, W, H, '#2a1a10'); vgrad(p, 0, 0, W, H, [[0, '#3a2414'], [0.5, '#24160c'], [1, '#160d07']]); }
     rect(p, 0, 70, W, 56, '#3a2412'); glow(p, W * 0.5, 96, 70, '255,170,90', 0.28);
     shelves(p, [96, 122], '#6a4a2a');
     for (const y of [96, 122]) for (let x = 6; x < W - 6; x += 9) bottle(p, x, y, 20 + p.r() * 4, pick(p.r, ['#2f5a2a', '#6a3a1a', '#c8a050', '#3a1a12', '#a8642a']), pick(p.r, ['#f4efe2', '#e8d090', '#c8262d']));
@@ -529,8 +536,7 @@ const PAINTERS: Record<GoodsKind, (p: P) => void> = {
   },
   tattoo(p) {
     // A tattoo studio: a dark room, the wall covered in framed flash sheets, a neon sign, the chair under a lamp.
-    rect(p, 0, 0, W, H, '#1c1a1a');
-    vgrad(p, 0, 0, W, H, [[0, '#2a2626'], [1, '#121010']]);
+    if (p.room) room(p, '', ''); else { rect(p, 0, 0, W, H, '#1c1a1a'); vgrad(p, 0, 0, W, H, [[0, '#2a2626'], [1, '#121010']]); }
     for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) { const x = 6 + c * 36, y = 24 + r * 40; rect(p, x, y, 32, 36, '#0e0c0c'); rect(p, x + 2, y + 2, 28, 32, '#efe6cf');
       for (let k = 0; k < 3; k++) oval(p, x + 8 + p.r() * 16, y + 8 + p.r() * 20, 3 + p.r() * 3, 3 + p.r() * 3, pick(p.r, ['#c8262d', '#1d1d1b', '#2f6fb0', '#f2b92e', '#3f8f4a'])); }
     rect(p, 24, 150, 100, 3, '#ff4f7a'); glow(p, 74, 152, 60, '255,79,122', 0.35); rect(p, 40, 158, 70, 3, '#3fe0ff'); glow(p, 74, 160, 50, '63,224,255', 0.25);
@@ -574,24 +580,27 @@ const LIT: Partial<Record<GoodsKind, number>> = {
 
 /**
  * Paints `kind`'s cell into the square [x, y, x + size]² of `ctx`. `seed` varies the arrangement (a kind's cell is one
- * picture city-wide; the seed is fixed per kind so the published look is stable).
+ * picture city-wide; the seed is fixed per kind so the published look is stable). `oneRoom` (round m, with the
+ * shop-variety flag): the cell is painted on its family's room (retailRoomTone.ts) and glass light, the room its pane
+ * fillers share; off, byte-identical to before.
  */
-export function paintGoods(ctx: Ctx2D, kind: GoodsKind, x: number, y: number, size: number): void {
+export function paintGoods(ctx: Ctx2D, kind: GoodsKind, x: number, y: number, size: number, oneRoom = shopVarietyOn()): void {
   ctx.save();
   ctx.beginPath(); ctx.rect(x, y, size, size); ctx.clip();
   ctx.translate(x, y); ctx.scale(size / W, size / H);
   let h = 2166136261; for (const ch of kind) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); }
-  const p: P = { c: ctx, r: stream(h >>> 0) };
+  const fam = oneRoom ? roomOf(kind) : undefined;
+  const p: P = fam ? { c: ctx, r: stream(h >>> 0), room: fam } : { c: ctx, r: stream(h >>> 0) };
   ctx.globalAlpha = 1; ctx.lineWidth = 1;
   PAINTERS[kind](p);
-  glassOver(p, LIT[kind] ?? 0.6);
+  glassOver(p, fam ? fam.lit : LIT[kind] ?? 0.6);
   ctx.restore();
 }
 
 /** Paints goods layer `page` (0-based) into a `size` px square context, every cell of it. */
-export function paintGoodsLayer(ctx: Ctx2D, page: number, size: number): void {
+export function paintGoodsLayer(ctx: Ctx2D, page: number, size: number, oneRoom = shopVarietyOn()): void {
   ctx.fillStyle = '#2a2420'; ctx.fillRect(0, 0, size, size);
-  for (const kind of GOODS_KINDS) { const c = goodsCellPx(kind, size); if (c.page === page) paintGoods(ctx, kind, c.x, c.y, c.w); }
+  for (const kind of GOODS_KINDS) { const c = goodsCellPx(kind, size); if (c.page === page) paintGoods(ctx, kind, c.x, c.y, c.w, oneRoom); }
 }
 
 /**

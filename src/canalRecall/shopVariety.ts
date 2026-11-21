@@ -14,7 +14,6 @@
 import { hash01 } from './shopProps/kit.js';
 import type { GoodsKind } from './retailGoods.js';
 import type { FillerKind } from './retailPaneFillers.js';
-import { toneDistance, toneFits } from './retailRoomTone.js';
 
 type G = { location?: { search?: string }; process?: { env?: Record<string, string | undefined> }; __canalRecallShopVariety?: boolean };
 /** Default on since its blind A/B (2026-11-20, one opus judge, photo | A | B at the panorama poses, sides shuffled):
@@ -40,53 +39,56 @@ export function shopVarietyOn(): boolean {
 export type PaneSet = { signature: 'once' | 'most'; share?: number; /** 'most': at most this share of the tiles (rounded, at least one). */ maxShare?: number; fillers: readonly FillerKind[] };
 
 /** Every goods kind's pane set. Exempt: automatiek (FEBO's wall of hatches is the whole front) and redWindow (lane R's
- *  window front draws its own panes). */
+ *  window front draws its own panes). Round m (one room per shop): a kind's fillers are those painted on its family's
+ *  room (retailRoomTone.ts FAMILY_FILLERS), so every pane looks into the signature's room. */
 export const PANE_SETS: Readonly<Partial<Record<GoodsKind, PaneSet>>> = {
-  // Takeaway and sit-down food: the counter display once, the room's other windows show tables, fridges and posters.
+  // Takeaway and sit-down food (the cream takeaway room): the counter display once, the room's other windows show
+  // tables, the fridge, the menu poster and the stool bar at the glass.
   doner: { signature: 'once', fillers: ['tablesBright', 'drinksFridge', 'menuPoster', 'windowBar'] },
   frites: { signature: 'once', fillers: ['tablesBright', 'menuPoster', 'drinksFridge', 'windowBar'] },
   fastfood: { signature: 'most', share: 0.4, fillers: ['tablesBright', 'menuPoster', 'windowBar'] },
-  pizza: { signature: 'once', fillers: ['tablesWarm', 'tablesBright', 'drinksFridge', 'menuPoster'] },
-  bainMarie: { signature: 'once', fillers: ['tablesBright', 'drinksFridge', 'wallShelves', 'menuPoster'] },
-  bowls: { signature: 'once', fillers: ['tablesBright', 'windowBar', 'plantGlass', 'lamps'] },
-  deli: { signature: 'once', fillers: ['tablesWarm', 'windowBar', 'drinksFridge', 'wallShelves'] },
-  // Blind round 1: one case in four panes diluted the ijssalon; the counter shows on about half the panes.
-  gelato: { signature: 'most', share: 0.35, maxShare: 0.5, fillers: ['tablesWarm', 'tablesBright', 'windowBar', 'menuPoster'] },
-  waffles: { signature: 'once', fillers: ['tablesBright', 'menuPoster', 'windowBar', 'lamps'] },
-  pancakes: { signature: 'once', fillers: ['tablesWarm', 'lamps', 'plantGlass', 'blind'] },
-  // Cafés and bars: tables are the signature, so it may repeat; the quieter windows break the run.
-  cafe: { signature: 'most', share: 0.45, fillers: ['lamps', 'windowBar', 'plantGlass', 'blind'] },
-  // The dark rooms keep dark fillers (a lit filler beside a dark signature read as another shop).
-  brownBar: { signature: 'most', share: 0.45, fillers: ['lamps', 'blind', 'lounge'] },
-  coffeeshop: { signature: 'once', fillers: ['lounge', 'lamps', 'blind'] },
-  // Food shops: a bakery's and a butcher's counter once; a cheese shop, greengrocer, florist stock every window.
+  pizza: { signature: 'once', fillers: ['tablesBright', 'drinksFridge', 'menuPoster'] },
+  bainMarie: { signature: 'once', fillers: ['tablesBright', 'drinksFridge', 'menuPoster'] },
+  bowls: { signature: 'once', fillers: ['tablesBright', 'windowBar', 'drinksFridge'] },
+  deli: { signature: 'once', fillers: ['windowBar', 'drinksFridge', 'tablesBright'] },
+  // The pastel sweets room. Blind round 1: one case in four panes diluted the ijssalon; the counter shows on about half.
+  gelato: { signature: 'most', share: 0.35, maxShare: 0.5, fillers: ['tablesBright', 'windowBar', 'menuPoster'] },
+  waffles: { signature: 'once', fillers: ['tablesBright', 'menuPoster', 'windowBar'] },
+  // The warm wood room. Cafés: tables are the signature, so it may repeat; the quieter windows break the run.
+  // Blind round m1: three tables panes in a row read as one picture repeated; now that the fillers share the room, the
+  // tables show on at most half the panes, as the ijssalon's counter.
+  cafe: { signature: 'most', share: 0.35, maxShare: 0.5, fillers: ['lamps', 'windowBar', 'plantGlass'] },
+  pancakes: { signature: 'once', fillers: ['tablesWarm', 'lamps', 'plantGlass'] },
+  // A bakery's counter once; a cheese shop, greengrocer, florist stock every window.
   bread: { signature: 'once', fillers: ['counterTill', 'tablesWarm', 'plinthDisplay'] },
-  butcher: { signature: 'once', fillers: ['counterTill', 'drinksFridge', 'wallShelves', 'promoPoster'] },
   cheese: { signature: 'most', share: 0.7, fillers: ['counterTill', 'wallShelves', 'plinthDisplay'] },
   produce: { signature: 'most', share: 0.6, fillers: ['counterTill', 'wallShelves'] },
   flowers: { signature: 'most', share: 0.6, fillers: ['counterTill', 'plantGlass'] },
-  jars: { signature: 'most', share: 0.55, fillers: ['counterTill', 'wallShelves', 'plinthDisplay'] },
-  liquor: { signature: 'most', share: 0.55, fillers: ['counterTill', 'promoPoster', 'wallShelves'] },
-  ducks: { signature: 'most', share: 0.7, fillers: ['plinthDisplay', 'counterTill'] },
-  // Stock shops: shelves and racks in most windows, a campaign poster, the till or a dressed plinth among them.
+  books: { signature: 'most', share: 0.6, fillers: ['plinthDisplay', 'counterTill', 'lamps'] },
+  // The dark room: bars and coffeeshops keep the lamps and the lounge; dark counter shops the till and a poster.
+  brownBar: { signature: 'most', share: 0.45, fillers: ['lamps', 'lounge'] },
+  coffeeshop: { signature: 'once', fillers: ['lounge', 'lamps'] },
+  smartshop: { signature: 'once', fillers: ['lounge', 'lamps', 'plinthDisplay'] },
+  tattoo: { signature: 'once', fillers: ['lounge', 'lamps'] },
+  hair: { signature: 'most', share: 0.5, fillers: ['lamps', 'promoPoster', 'plinthDisplay'] },
+  cosmetics: { signature: 'most', share: 0.5, fillers: ['promoPoster', 'plinthDisplay', 'counterTill'] },
+  tobacco: { signature: 'most', share: 0.5, fillers: ['promoPoster', 'counterTill'] },
+  liquor: { signature: 'most', share: 0.55, fillers: ['counterTill', 'promoPoster'] },
+  // The white shop room: shelves and racks in most windows, a campaign poster, the till or a dressed plinth among them.
   aisles: { signature: 'most', share: 0.6, fillers: ['promoPoster', 'counterTill', 'drinksFridge'] },
   drugstore: { signature: 'most', share: 0.55, fillers: ['promoPoster', 'counterTill', 'plinthDisplay'] },
   pharmacy: { signature: 'most', share: 0.5, fillers: ['promoPoster', 'counterTill', 'plinthDisplay'] },
-  cosmetics: { signature: 'most', share: 0.5, fillers: ['promoPoster', 'plinthDisplay', 'counterTill'] },
-  books: { signature: 'most', share: 0.6, fillers: ['plinthDisplay', 'counterTill', 'lamps'] },
   magazines: { signature: 'most', share: 0.55, fillers: ['promoPoster', 'counterTill', 'drinksFridge'] },
-  clothing: { signature: 'most', share: 0.5, fillers: ['plinthDisplay', 'promoPoster', 'counterTill', 'plantGlass'] },
+  clothing: { signature: 'most', share: 0.5, fillers: ['plinthDisplay', 'promoPoster', 'counterTill'] },
   shoes: { signature: 'most', share: 0.5, fillers: ['plinthDisplay', 'promoPoster', 'counterTill'] },
   optician: { signature: 'most', share: 0.45, fillers: ['plinthDisplay', 'promoPoster', 'counterTill'] },
   phones: { signature: 'most', share: 0.45, fillers: ['promoPoster', 'counterTill', 'plinthDisplay'] },
   // Blind round 2: wall shelving (bottles) read as a liquor shop in a souvenir window.
   souvenirs: { signature: 'most', share: 0.6, fillers: ['promoPoster', 'counterTill', 'plinthDisplay'] },
-  tobacco: { signature: 'most', share: 0.5, fillers: ['promoPoster', 'counterTill', 'drinksFridge'] },
-  smartshop: { signature: 'once', fillers: ['lounge', 'lamps', 'blind'] },
-  // Services: one display (the rate board, a tattoo flash wall), the rest posters, blinds and the room.
-  exchange: { signature: 'once', fillers: ['promoPoster', 'blind', 'plantGlass'] },
-  hair: { signature: 'most', share: 0.5, fillers: ['lamps', 'plantGlass', 'promoPoster', 'counterTill'] },
-  tattoo: { signature: 'once', fillers: ['lounge', 'lamps', 'blind'] },
+  butcher: { signature: 'once', fillers: ['counterTill', 'drinksFridge', 'promoPoster'] },
+  jars: { signature: 'most', share: 0.55, fillers: ['counterTill', 'plinthDisplay'] },
+  ducks: { signature: 'most', share: 0.7, fillers: ['plinthDisplay', 'counterTill'] },
+  exchange: { signature: 'once', fillers: ['promoPoster', 'blind', 'counterTill'] },
   bikes: { signature: 'most', share: 0.6, fillers: ['counterTill', 'promoPoster'] },
 };
 
@@ -137,9 +139,7 @@ export function planPanes(kind: GoodsKind, tiles: readonly PlanTile[], doors: Re
     const over = isSig.filter(Boolean).length - cap;
     for (let k = 0; k < over && k < extra.length; k++) isSig[extra[k]] = false;
   }
-  // One room per shop (retailRoomTone.ts): fillers far from the signature's brightness leave the deck; the two nearest always stay (no repeats).
-  const fits = set.fillers.filter(f => toneFits(kind, f));
-  const fillers = fits.length >= 2 ? fits : set.fillers.slice().sort((p, q) => toneDistance(kind, p) - toneDistance(kind, q)).slice(0, 2);
+  const fillers = set.fillers;
   const deck: FillerKind[] = [];
   const refill = (k: number) => deck.push(...fillers.map((f, j) => ({ f, r: hash01(`${seed}:deck${k}:${j}`) })).sort((p, q) => p.r - q.r).map(x => x.f));
   const draw = (prev: FillerKind | undefined, k: number): FillerKind => {

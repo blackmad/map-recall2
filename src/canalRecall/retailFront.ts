@@ -6,7 +6,7 @@ import { historicPuiFront, type HistoricPuiHost } from './retailFit/historicPuiF
 import { glyphLayout } from './retailLogos.js';
 import { goodsCell, goodsTiles, type GoodsKind } from './retailGoods.js';
 import { fillerCell } from './retailPaneFillers.js';
-import { toneTint } from './retailRoomTone.js';
+import { ROOM_FAMILY_OF } from './retailRoomTone.js';
 import { planPanes, shopVarietyOn } from './shopVariety.js';
 import { drawRedLightFront, type RedLightFront } from './groundParts/redLightFront.js';
 import { retailBrandOn, retailPartsOn } from './retailPages.js';
@@ -621,16 +621,15 @@ type GoodsTileRec = { out: FrontTri[]; first: number; end: number; a0: number; a
  *  tile keeps its two triangles and takes the filler cell's layer and a seeded stretch of it (goodsTileRect). */
 function varyPanes(recs: GoodsTileRec[], doors: ReadonlyArray<readonly [number, number]>, kind: GoodsKind, input: RetailFrontInput): void {
   if (input.variety === undefined || recs.length < 2) return;
-  const sorted = recs.slice().sort((p, q) => p.a0 - q.a0), plan = planPanes(kind, sorted, doors, input.seed);
+  const sorted = recs.slice().sort((p, q) => p.a0 - q.a0), plan = planPanes(kind, sorted, doors, input.seed), family = ROOM_FAMILY_OF[kind];
+  if (!family) return;
   for (const [i, r] of sorted.entries()) {
     const c = plan[i];
     if (c.signature) continue;
-    const cell = fillerCell(c.filler), to = goodsTileRect(cell.rect, input.seed, r.bay, r.tile), [f0, g0, f1, g1] = r.rect;
-    // One room per shop: the filler's back wall tinted to the signature's (retailRoomTone.ts).
-    const tint = toneTint(kind, c.filler);
+    // One room per shop (retailRoomTone.ts): the filler as painted on the signature's family room.
+    const cell = fillerCell(family, c.filler), to = goodsTileRect(cell.rect, input.seed, r.bay, r.tile), [f0, g0, f1, g1] = r.rect;
     for (const t of r.out.slice(r.first, r.end)) {
       t.layer = input.variety + cell.page;
-      t.hex = tint;
       t.uv = t.uv!.map(([u, v]) => [to[0] + (to[2] - to[0]) * (u - f0) / (f1 - f0), to[1] + (to[3] - to[1]) * (v - g0) / (g1 - g0)] as [number, number]);
     }
   }

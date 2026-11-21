@@ -111,8 +111,6 @@ function drawFront(tris: FrontTri[]): Canvas {
       ctx.save(); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.lineTo(x2, y2); ctx.closePath(); ctx.clip();
       ctx.setTransform(a, b, c, d, x0 - a * u0 - c * v0, y0 - b * u0 - d * v0); ctx.drawImage(img as Image, 0, 0, SIZE, SIZE);
       ctx.setTransform(1, 0, 0, 1, 0, 0);
-      // A pane-filler tile takes its shop's room tone (retailRoomTone.ts): the game's tint channel, multiplied here.
-      if (tr.layer >= LOGO + VARIETY_BASE && tr.hex !== '#ffffff') { ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = tr.hex; ctx.fill(); ctx.globalCompositeOperation = 'source-over'; }
       if (k < 1) { ctx.fillStyle = `rgba(0,0,0,${(1 - k).toFixed(3)})`; ctx.fill(); }
       ctx.restore();
       continue;

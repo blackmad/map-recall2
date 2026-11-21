@@ -1,69 +1,61 @@
-// One room per shop (David 2026-11-20, on the Shopfronts page after shop-variety: "these now look like they are
-// different stores due to differing ambient colors"). Every goods cell (retailGoods.ts) and pane filler
-// (retailPaneFillers.ts) paints its own room. Beside a cafe's warm brown room, a white-tiled seating filler and a dark
-// reflecting plant window read as three shops. The filler panes of a front now take the signature's room: each filler
-// tile is tinted by the per-channel ratio of the two cells' mean colours (the filler pages carry a full tint mask, so
-// the tile's colour multiplies the texture and can only darken it), and a filler much darker than the signature (it
-// cannot be brightened to match) leaves that shop's deck.
+// One room per shop.
 //
-// The table is measured from the painters (scripts/retail-real/room-tones.ts --write); retailRoomTone.test.ts fails when
-// a repainted cell leaves it stale.
+// Round l (2026-11-20; David: "these now look like they are different stores due to differing ambient colors") tinted
+// each filler tile to the signature's measured brightness. It did not fix the room: every goods cell (retailGoods.ts)
+// and pane filler (retailPaneFillers.ts) still painted its own back wall, floor and lights, so one café's windows looked
+// into a bottle-shelf room, a white poster wall with a plant, and a café with pendant lamps (David 2026-11-21, on
+// Bagels & Beans, Coffee Company and IJscuypje: "these still look very inconsistent").
+//
+// Round m (lane shop-one-room-20261121): a real shop shows ONE room through all its windows. The goods kinds fall into a
+// few room families (bright shop, cream takeaway, pastel sweets, warm wood, dark). With the shop-variety flag on, a
+// signature cell paints on its family's room (retailGoods.ts paintGoods), and each filler is painted once per family on
+// that same room (retailPaneFillers.ts), so a shop's panes share wall, floor, dado, ceiling lights and the glass's
+// light level exactly, and differ only in what stands in the room. No tint: the tile keeps its own colours.
 import type { GoodsKind } from './retailGoods.js';
 import type { FillerKind } from './retailPaneFillers.js';
 
-// <room-tones>
-/** Each goods cell's mean colour as painted. */
-export const GOODS_ROOM_TONE: Readonly<Record<GoodsKind, string>> = {
-  aisles: '#968b79', drugstore: '#b2acaf', bread: '#8f7558', butcher: '#a29d9b', cheese: '#695036', produce: '#614d3e',
-  flowers: '#57584e', books: '#56483e', phones: '#838481', gelato: '#a79f9f', waffles: '#ad9396', doner: '#8c7e70',
-  souvenirs: '#91877f', tobacco: '#5c5243', exchange: '#4d5052', bikes: '#7c7e7e', coffeeshop: '#33352a',
-  smartshop: '#44414b', clothing: '#887c74', magazines: '#938b83', ducks: '#b5a97e', deli: '#918c80', bowls: '#a5a596',
-  automatiek: '#a88c6c', fastfood: '#7c7265', bainMarie: '#988f82', jars: '#93887a', liquor: '#564c42',
-  hair: '#4d4e4d', pharmacy: '#a7abac', frites: '#a09371', cafe: '#796853', optician: '#a9a7a5', shoes: '#958f88',
-  cosmetics: '#756e67', pancakes: '#7a4331', brownBar: '#3e3227', pizza: '#746a5a', redWindow: '#752434',
-  tattoo: '#4b4745',
+export const ROOM_FAMILIES = ['shop', 'takeaway', 'sweet', 'warm', 'dark'] as const;
+export type RoomFamily = (typeof ROOM_FAMILIES)[number];
+
+/** A family's room: back wall, floor, a dado band along the lower wall (the line that runs on through every pane),
+ *  ceiling light colour and count, and how lit the room reads through the glass (retailGoods glassOver). */
+export type RoomSpec = { wall: string; floor: string; dado: string; light: string; lights: number; lit: number };
+
+/** Each family's room, from the signature painters' own rooms (retailGoods.ts room() calls) at the family's middle. */
+export const FAMILY_ROOMS: Readonly<Record<RoomFamily, RoomSpec>> = {
+  // Supermarket, chemist, phones, clothes, souvenirs: white walls under strip lights, pale floor.
+  shop: { wall: '#eeebe4', floor: '#c4bdb2', dado: '#e2ded6', light: '255,252,242', lights: 2, lit: 0.85 },
+  // Doner, frites, pizza, toko: cream walls, a darker tiled floor, warm white strips.
+  takeaway: { wall: '#f1e6cf', floor: '#9a8a70', dado: '#e4d6ba', light: '255,240,210', lights: 2, lit: 0.72 },
+  // Ijssalon, waffles: a pink-white room.
+  sweet: { wall: '#f8e6ec', floor: '#c8a8b2', dado: '#efd4de', light: '255,246,250', lights: 2, lit: 0.78 },
+  // Café, bakery, pancakes, cheese, books, greengrocer, florist: warm plaster over wood panelling, wood floor.
+  warm: { wall: '#c49a70', floor: '#6a4a30', dado: '#8a6440', light: '255,214,150', lights: 3, lit: 0.58 },
+  // Brown bar, coffeeshop, smartshop, tattoo, tobacco, liquor, hair, cosmetics: dark wood, warm low light.
+  dark: { wall: '#33281f', floor: '#1e1712', dado: '#24190f', light: '255,200,140', lights: 2, lit: 0.3 },
 };
-/** Each pane filler's mean colour as painted. */
-export const FILLER_ROOM_TONE: Readonly<Record<FillerKind, string>> = {
-  tablesBright: '#9f9892', tablesWarm: '#7e6956', windowBar: '#92897e', drinksFridge: '#99979a', menuPoster: '#807163',
-  lamps: '#534535', promoPoster: '#a2786e', plinthDisplay: '#8d877c', counterTill: '#857669', wallShelves: '#6e5d49',
-  plantGlass: '#797468', blind: '#888073', lounge: '#3a322c',
+
+/** Each goods kind's room family. Absent (automatiek, redWindow): the front is its own window, no fillers. */
+export const ROOM_FAMILY_OF: Readonly<Partial<Record<GoodsKind, RoomFamily>>> = {
+  aisles: 'shop', drugstore: 'shop', pharmacy: 'shop', phones: 'shop', magazines: 'shop', souvenirs: 'shop', optician: 'shop',
+  clothing: 'shop', shoes: 'shop', exchange: 'shop', bikes: 'shop', butcher: 'shop', jars: 'shop', ducks: 'shop',
+  doner: 'takeaway', frites: 'takeaway', fastfood: 'takeaway', pizza: 'takeaway', bainMarie: 'takeaway', bowls: 'takeaway', deli: 'takeaway',
+  gelato: 'sweet', waffles: 'sweet',
+  cafe: 'warm', pancakes: 'warm', bread: 'warm', cheese: 'warm', produce: 'warm', flowers: 'warm', books: 'warm',
+  brownBar: 'dark', coffeeshop: 'dark', smartshop: 'dark', tattoo: 'dark', hair: 'dark', cosmetics: 'dark', tobacco: 'dark', liquor: 'dark',
 };
-// </room-tones>
 
-const rgb = (hex: string): [number, number, number] => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)) as [number, number, number];
-const lum = ([r, g, b]: readonly number[]) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
+/** The fillers painted on each family's room (one atlas cell each): only what suits that family's shops. */
+export const FAMILY_FILLERS: Readonly<Record<RoomFamily, readonly FillerKind[]>> = {
+  shop: ['promoPoster', 'counterTill', 'plinthDisplay', 'drinksFridge', 'blind'],
+  takeaway: ['tablesBright', 'drinksFridge', 'menuPoster', 'windowBar'],
+  sweet: ['tablesBright', 'windowBar', 'menuPoster'],
+  warm: ['tablesWarm', 'counterTill', 'wallShelves', 'lamps', 'windowBar', 'plinthDisplay', 'plantGlass'],
+  dark: ['lounge', 'lamps', 'counterTill', 'promoPoster', 'plinthDisplay'],
+};
 
-/** A filler fits a shop when its mean luminance is within this band of the signature's: much darker cannot be
- *  brightened to match, much brighter goes murky when darkened (blind round 1, 2026-11-20: 8-6-2, the losses a bright
- *  room darkened to mud and a pane swapped for a brighter one). */
-export const TONE_LUM_BAND: readonly [number, number] = [0.7, 1.35];
-/** How far the tint may move hue per channel. Zero: a brightness match only (blind round 1: a full per-channel ratio
- *  turned a pink poster cyan; round 2 at 0.12 still cast posters cyan, 4 of its 5 losses). */
-export const TONE_HUE_SLACK = 0;
-/** The darkest the brightness match goes. */
-export const TONE_MIN_SCALE = 0.62;
-
-const lumRatio = (kind: GoodsKind, filler: FillerKind) => lum(rgb(GOODS_ROOM_TONE[kind])) / Math.max(1, lum(rgb(FILLER_ROOM_TONE[filler])));
-
-/** Whether a filler's room can be brought to the signature's (TONE_LUM_BAND). */
-export function toneFits(kind: GoodsKind, filler: FillerKind): boolean {
-  const r = lumRatio(kind, filler);
-  return r >= 1 / TONE_LUM_BAND[1] && r <= 1 / TONE_LUM_BAND[0];
-}
-
-/** How far a filler is from the band (0 inside it): picks the nearest when no filler of a set fits. */
-export function toneDistance(kind: GoodsKind, filler: FillerKind): number {
-  const r = Math.log(lumRatio(kind, filler));
-  return Math.max(0, Math.log(1 / TONE_LUM_BAND[1]) - r, r - Math.log(1 / TONE_LUM_BAND[0]));
-}
-
-/** The colour a filler tile is multiplied by so its room takes the signature's: the luminance ratio (never above 1,
- *  never under TONE_MIN_SCALE) times each channel's chroma ratio held within 1 ± TONE_HUE_SLACK. */
-export function toneTint(kind: GoodsKind, filler: FillerKind): string {
-  const s = rgb(GOODS_ROOM_TONE[kind]), f = rgb(FILLER_ROOM_TONE[filler]), ls = Math.max(1, lum(s)), lf = Math.max(1, lum(f));
-  const scale = Math.max(TONE_MIN_SCALE, Math.min(1, ls / lf));
-  const ch = s.map((c, i) => Math.max(1 - TONE_HUE_SLACK, Math.min(1 + TONE_HUE_SLACK, (c / ls) / (Math.max(1, f[i]) / lf))));
-  const top = Math.max(...ch.map(c => c * scale));
-  return '#' + ch.map(c => Math.round(255 * c * scale / Math.max(1, top)).toString(16).padStart(2, '0')).join('');
+/** A goods kind's family room, if it has one. */
+export function roomOf(kind: GoodsKind): RoomSpec | undefined {
+  const f = ROOM_FAMILY_OF[kind];
+  return f ? FAMILY_ROOMS[f] : undefined;
 }

@@ -4,7 +4,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { GOODS_KINDS, goodsCell, type GoodsKind } from './retailGoods.js';
-import { FILLER_KINDS, FILLER_LAYERS, fillerCell } from './retailPaneFillers.js';
+import { FILLER_CELLS, FILLER_KINDS, FILLER_LAYERS, fillerCell } from './retailPaneFillers.js';
 import { PANE_SETS, planPanes, shopVarietyEnabled, signatureTile, type PlanTile } from './shopVariety.js';
 import { CHAIN_LOGO_BASE, VARIETY_BASE, retailPageCount } from './retailPages.js';
 import { CHAIN_LOGO_PAGES } from './retailChainLogos.js';
@@ -43,7 +43,7 @@ test('layers: the fillers come after the chain logos, only with the flag, and th
   assert.equal(retailPageCount(false, true), 2);
   const first = retailLogoLayer('bay')!;
   assert.ok(first + retailPageCount(true, true) - 1 < 256, `last layer ${first + retailPageCount(true, true) - 1}`);
-  for (const f of FILLER_KINDS) assert.ok(fillerCell(f).page < FILLER_LAYERS, f);
+  for (const c of FILLER_CELLS) assert.ok(fillerCell(c.family, c.filler).page < FILLER_LAYERS, `${c.family}/${c.filler}`);
 });
 
 test('doner: one spit, in the tile beside the door when the door is chosen; the rest fillers, no two neighbours alike', () => {
@@ -102,8 +102,8 @@ test('fronts: flag off byte-identical; on, the same triangles with filler tiles 
       assert.equal(on.length, off.length, `${t}: no extra triangles`);
       for (const [i, tri] of on.entries()) {
         assert.deepEqual(tri.p, off[i].p);
-        // A filler tile takes the signature's room (retailRoomTone.ts): a tint no brighter than the white it replaced.
-        if ((tri.layer ?? 0) >= 330) assert.match(tri.hex, /^#[0-9a-f]{6}$/); else assert.equal(tri.hex, off[i].hex);
+        // A filler tile keeps the tile's colour (round m: painted on the signature's family room, no tint).
+        assert.equal(tri.hex, off[i].hex);
       }
       const sigPage = 300 + goodsCell(kind).page;
       const sigTiles = on.filter(tri => tri.layer === sigPage).length / 2, fillerTiles = on.filter(tri => (tri.layer ?? 0) >= 330).length / 2;
