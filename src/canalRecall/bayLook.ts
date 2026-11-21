@@ -357,8 +357,10 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   // The post-1965 housing kit (`?postwarKit=1`, postwarKit/kit.ts): a dated 1965+ housing block this lane read takes its
   // read (wall, preset, features); one with a brick-only panorama measurement takes that wall colour only, in today's preset
   // (its brick or smooth twin when the material changes). No evidence, or off: null, nothing changes.
-  const postwar: PostwarKit | null = modern && !recipe && !spec && look === 'photo' && archetype === 'modern' && postwarKitEnabled()
+  const postwarAll: PostwarKit | null = modern && !recipe && !spec && look === 'photo' && archetype === 'modern' && postwarKitEnabled()
     ? postwarKitFor({ id, year, heightM, use: modernUseFor({ id, year, heightM, ...modern }) }) : null;
+  // Round 2: a features-only kit (no wall evidence) keeps today's wall, preset and material; only its extras change.
+  const postwar = postwarAll?.wall ? postwarAll : null;
   const postwarRead = postwar?.wallSource === 'read';
   const todayStyle = contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : null;
   const todayPainted = contemporary ? contemporary.painted : vocab ? vocab.family.endsWith('paint') || vocab.family === 'render' || vocab.family === 'concrete' : null;
@@ -405,14 +407,14 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   if (vocab) { palette.wall = vocab.wall; if (vocab.accent) palette.accent = vocab.accent; }
   if (contemporary) palette.wall = lookHex(contemporary.wall, look);
   // A kit ribbon front takes a pale spandrel (modernFacades.ts SPANDREL_ACCENTS), never the period's red or teal accent.
-  if (postwar) palette.wall = postwar.wall;
+  if (postwar) palette.wall = postwar.wall!;
   if (postwarRead) palette.accent = postwar!.style === 'ribbon' ? SPANDREL_ACCENTS[1] : paletteFor(id, archetype, look).accent;
   if (periodWall && look === 'photo') palette.wall = periodWall;
   if (recipe?.wallHex) palette.wall = lookHex(recipe.wallHex, look);
   // A shop's ground floor is painted, and the paint is its own colour, not the brick's.
   const paints = GROUND_PAINTS[look];
   return {
-    archetype, style, ...(vocab && !postwarRead ? { modern: vocab } : {}), ...(postwar ? { postwar } : {}), ...(contemporary ? { contemporary } : {}), variant: { archetype, ...BAY_STYLES[archetype][style] }, ...((poolWall ?? traits?.wall) && !periodWall && !recipe?.wallHex ? { profileWall: (poolWall ?? traits!.wall)! } : {}), layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: recipe?.openingGroup ? lookHex(recipe.frameHex ?? '#f1ede2', look) : palette.accent,
+    archetype, style, ...(vocab && !postwarRead ? { modern: vocab } : {}), ...(postwarAll ? { postwar: postwarAll } : {}), ...(contemporary ? { contemporary } : {}), variant: { archetype, ...BAY_STYLES[archetype][style] }, ...((poolWall ?? traits?.wall) && !periodWall && !recipe?.wallHex ? { profileWall: (poolWall ?? traits!.wall)! } : {}), layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: recipe?.openingGroup ? lookHex(recipe.frameHex ?? '#f1ede2', look) : palette.accent,
     groundHex: recipe?.groundWallHex ? lookHex(recipe.groundWallHex, look) : shop ? (shopfront && shopfront !== 'quiet' && shopGrammarEnabled() ? shopGroundHex(id, look) : paints[(h >>> 21) % paints.length]) : undefined,
     layers: painted
       ? { upper: painted.upper, ground: shop ? bayLayer(archetype, style, shopKind) : painted.ground, door: painted.groundDoor }

@@ -1,5 +1,52 @@
 # Post-1965 housing kit (2026-11-20, lane/postwar-housing-kit-20261120)
 
+## Kit round 2 (2026-11-21, lane/postwar-kit-r2-20261121): stairs and erkers ship; inferred balconies held
+
+There were five approved items. Three blinds ran (r2, r2b, r2c). Each set was pre-registered by a sha1 split and committed before any frame was rendered. Frames came from 2024-2025 panoramas. One fresh opus judge per blind was shown photo | A | B, with the sides shuffled.
+
+| item | result | blind (kit on-off-tie) | status |
+|---|---|---|---|
+| 4 glazed stair towers/strips | `postwar-stair-glazing`, drawn on door bays | 2-0 | **ships** |
+| 5 erkers (white, brick) | `postwar-white-erkers`, `postwar-brick-erkers`; count, plan, read face | 2-0-1 (r2) + 0-0-1 (r2b) | **ships** |
+| 2 balconies on unread pands, own read | feature reads on pands with no wall read | 3-1 (r2), 2-2-3 (r2b) | **held**, `?postwarSiblings=1` |
+| 2 balconies inferred from the complex | 35 siblings: same BAG year, touching within 3 hops/150 m, height within 1.5 m | 0-2 | **held**, same flag |
+| 1 grey brick from repeated captures | grey accepted when two days repeat it (7 walls) | 3-1 | **ships** |
+| 1 warm median over agreeing captures | median colour over days | 1-2-4 | **held** (`R2_WARM=1`) |
+| 1 drop when captures disagree | — | not framed: validation fell 16/22 to 12/18 | **held** (`R2_DROP=1`) |
+| 3 curved fronts | bands/arcades continue through short curved facets | no block changed | mechanism only |
+| 5 arched heads | eye read: 4 of 438 upper storeys | — | not built (not common) |
+
+**Feature reads.** There are 92 pands in `feature-reads.json`. Each read was made on a sampled photo and then confirmed on a 2024-2025 capture by a fresh judge. The confirmation dropped or corrected 17 features, and pands with no recent capture lost all of theirs. Every read stores the bearing of the face it was read on. The components draw only on walls within 50 deg of that bearing (the r2b fix, after an erker appeared on a side wall).
+
+**Losses and their reasons.**
+- Entrepotdok 146-163 lost twice. The balconies drawn there are not in the photo.
+- Laagte Kadijk 63-85 lost: teal round balconies that are not in the photo.
+- Both sibling blocks lost: the complex rule invents balconies the photo does not show. Unread balconies are held until a better source exists, either a per-face read on a recent capture or Ordekaart, which covers only 15 of the 541 cluster members.
+- Colour r2c, Jeltje de Bosch Kemperpad 83-117: the warm median turned a grey front pink. Of the four warm ties, three were near-identical.
+
+**Grey vs warm from one capture (item 1).** Over every clear capture of each wall (`consensusOf`, `wallPatch.ts`), the calls were warm 37, grey 7, unsure 203 of 247. Most walls have only one or two usable days, so the evidence settles only a small share:
+- grey is accepted where at least two days repeat it (`calibrateGrey`);
+- an unsure wall keeps today's measured colour.
+- Named fronts:
+  - Mariadistelkade 3-27 has only one capture, so it stays unsure, which is the honest verdict.
+  - Lutmastraat 2-8: warm over 4 captures.
+  - Pieter Langendijkstraat 13-19: warm over 5.
+
+**Curves (item 3).** Every curved run in the pool belongs to the Pentagon, which is a landmark. `curve.ts` (`curvedRunEdges`) adds extras contexts for curved facets of 0.5 m or more, and the balcony band and arcade run continuously through them. It is tested, but no visible block changed. Smooth shading needs a normal attribute in the chunk format, which belongs to the engine lane.
+
+**Byte identity.**
+- With `POSTWAR_KIT=0`, the chunk hash over 12 tiles (`chunk-hash.ts`, `SAMPLE=sample-all.json`) matches the base: `ec8dc0b767`.
+- With the kit on, walls are unchanged and extras grow by 0.02 %.
+- Tests: `round2.test.ts` plus `kit.test.ts`, 22/22.
+
+**What the kit still cannot say.**
+- A balcony on a face nobody has read.
+- Loggias and accent panels (lane/large-kit-gaps-20261121).
+- Smooth curved walls.
+- Arched window heads: they are rare, so none were built.
+- Grey-brown vs red from a single capture. This is still guesswork and stays unsure.
+- Mixed red and grey bays on one wall (Pieter Langendijkstraat): there is one colour per wall.
+
 ## Round 5 (shaded brick, sunlit rescue): ready for default-on
 
 **Result:** on a fresh clean blind of 20, kit on won **11**, kit off won 4, and 5 were ties. **No kit regression was flagged**; 5 were flagged against today. That meets the bar (wins > losses, no kit regression). The named check, Mauritskade 17, now goes to the kit (low confidence; today flagged as pale render). The flag now defaults on in this branch (`postwarKit/flag.ts`); `?postwarKit=0` or `POSTWAR_KIT=0` turns it off. **The baked world-v1 cells need a recompile to carry it.**

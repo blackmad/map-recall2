@@ -58,7 +58,14 @@ export type ExtraContext = {
   rowDress?: RowDressContext;
   /** The post-1965 housing kit (`?postwarKit=1`, postwarKit/kit.ts): its balcony and pier colours. The kit owns this wall's
    *  balconies and gets the row budget. Absent: as before. */
-  postwarKit?: { balconyHex: string; pierHex: string };
+  postwarKit?: { balconyHex: string; pierHex: string;
+    /** Round 2 (postwarKit/kit.ts): the read's erker count and plan, and its glazed stairs. Absent: as round 1. */
+    erkerCount?: number; erkerPlan?: 'box' | 'canted' | 'round'; stair?: 'glazed-strip' | 'glazed-tower'; stairCount?: number;
+    /** Round 2, curved fronts: this facet continues the previous (start) / next (end) facet of a curved run, so a band
+     *  runs on through the joint instead of stopping short of it. */
+    joinStart?: boolean; joinEnd?: boolean; curved?: boolean;
+    /** Round 2b: the bearing of the wall the features were read on (components.ts onReadFace). */
+    faceBearing?: number };
 };
 export type RowHeadKind = { shape?: string; dressing?: string };
 export type RowDressContext = {

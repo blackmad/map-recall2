@@ -28,8 +28,13 @@ const sample = JSON.parse(fs.readFileSync(path.join(OUT, 'sample-all.json'), 'ut
 const rows = JSON.parse(fs.readFileSync(path.join(OUT, 'measured-walls.json'), 'utf8')).rows as Record<string, any>;
 const ALT = path.join(OUT, 'sample-alt.json');
 const out: Record<string, any[]> = fs.existsSync(ALT) ? JSON.parse(fs.readFileSync(ALT, 'utf8')) : {};
-const ids = Object.keys(rows).filter(id => rows[id].shaded && !out[id]);
-console.log(`${ids.length} shaded fronts`);
+// Round 2 (lane postwar-kit-r2-20261121, SELECT=r2): also the fronts one capture cannot call: accepted brick at a low raw
+// chroma (raw C* < AMBIGUOUS_C, where grey-brown and red overlap) and every 'unsure' front (grey brick, cladding).
+export const AMBIGUOUS_C = 12;
+const r2 = process.env.SELECT === 'r2';
+const wanted = (m: any) => m.shaded || (r2 && ((m.accepted && m.kind === 'brick' && Math.hypot(m.a, m.b) < AMBIGUOUS_C) || m.kind === 'unsure'));
+const ids = Object.keys(rows).filter(id => wanted(rows[id]) && !out[id]);
+console.log(`${ids.length} fronts`);
 for (const id of ids) {
   const s = sample[id];
   try {

@@ -1,0 +1,479 @@
+{
+ "schemaVersion": 1,
+ "revision": "postwar-features/v1 2026-11-21",
+ "licence": "read by eye from Gemeente Amsterdam panoramas, CC BY 4.0",
+ "method": "scripts/postwar-kit/feature-sheets.ts + feature-reads.ts (usable, high-confidence reads only)",
+ "features": {
+  "0363100012061525": {
+   "balcony": "round",
+   "balconyTone": "dark",
+   "bearing": 192
+  },
+  "0363100012061690": {
+   "balcony": "round",
+   "balconyTone": "dark",
+   "bearing": 248
+  },
+  "0363100012061791": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "bearing": 192
+  },
+  "0363100012062705": {
+   "balcony": "projecting",
+   "balconyTone": "colour",
+   "bearing": 66
+  },
+  "0363100012063104": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 192
+  },
+  "0363100012064632": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "bearing": 159
+  },
+  "0363100012066844": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "bearing": 337
+  },
+  "0363100012067444": {
+   "balcony": "projecting",
+   "balconyTone": "glass",
+   "bearing": 131
+  },
+  "0363100012067983": {
+   "balcony": "projecting",
+   "balconyTone": "glass",
+   "erker": "white-glass",
+   "erkerPlan": "canted",
+   "erkerCount": 3,
+   "bearing": 161
+  },
+  "0363100012068068": {
+   "stair": "glazed-strip",
+   "stairCount": 1,
+   "bearing": 57
+  },
+  "0363100012068832": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 255
+  },
+  "0363100012069855": {
+   "balcony": "band",
+   "balconyTone": "white",
+   "stair": "glazed-tower",
+   "stairCount": 1,
+   "bearing": 45
+  },
+  "0363100012073607": {
+   "erker": "white-glass",
+   "erkerPlan": "round",
+   "erkerCount": 2,
+   "bearing": 328
+  },
+  "0363100012074725": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "bearing": 65
+  },
+  "0363100012075138": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 282
+  },
+  "0363100012077174": {
+   "stair": "glazed-strip",
+   "stairCount": 1,
+   "bearing": 5
+  },
+  "0363100012080820": {
+   "erker": "white-glass",
+   "erkerPlan": "round",
+   "erkerCount": 1,
+   "bearing": 315
+  },
+  "0363100012082596": {
+   "stair": "glazed-tower",
+   "stairCount": 1,
+   "bearing": 258
+  },
+  "0363100012082890": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 164
+  },
+  "0363100012084209": {
+   "balcony": "projecting",
+   "balconyTone": "glass",
+   "bearing": 311
+  },
+  "0363100012085009": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "bearing": 250
+  },
+  "0363100012086079": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "bearing": 247
+  },
+  "0363100012087152": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 78
+  },
+  "0363100012091343": {
+   "balcony": "band",
+   "balconyTone": "dark",
+   "bearing": 338
+  },
+  "0363100012091899": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "bearing": 248
+  },
+  "0363100012092481": {
+   "balcony": "band",
+   "balconyTone": "glass",
+   "bearing": 196
+  },
+  "0363100012092587": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 185
+  },
+  "0363100012094544": {
+   "balcony": "band",
+   "balconyTone": "dark",
+   "bearing": 339
+  },
+  "0363100012094781": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 102
+  },
+  "0363100012095174": {
+   "stair": "glazed-tower",
+   "stairCount": 1,
+   "bearing": 334
+  },
+  "0363100012096427": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 164
+  },
+  "0363100012098652": {
+   "balcony": "round",
+   "balconyTone": "white",
+   "bearing": 172
+  },
+  "0363100012101441": {
+   "stair": "glazed-strip",
+   "stairCount": 2,
+   "bearing": 335
+  },
+  "0363100012105031": {
+   "stair": "glazed-strip",
+   "stairCount": 1,
+   "bearing": 16
+  },
+  "0363100012106168": {
+   "balcony": "band",
+   "balconyTone": "white",
+   "bearing": 156
+  },
+  "0363100012108216": {
+   "stair": "glazed-tower",
+   "stairCount": 1,
+   "bearing": 77
+  },
+  "0363100012110173": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "bearing": 12
+  },
+  "0363100012111453": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "bearing": 224
+  },
+  "0363100012112106": {
+   "balcony": "band",
+   "balconyTone": "glass",
+   "bearing": 180
+  },
+  "0363100012115810": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 96
+  },
+  "0363100012116139": {
+   "stair": "glazed-strip",
+   "stairCount": 1,
+   "bearing": 221
+  },
+  "0363100012117197": {
+   "balcony": "round",
+   "balconyTone": "colour",
+   "bearing": 159
+  },
+  "0363100012120520": {
+   "balcony": "band",
+   "balconyTone": "glass",
+   "bearing": 162
+  },
+  "0363100012123823": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 339
+  },
+  "0363100012125391": {
+   "balcony": "round",
+   "balconyTone": "colour",
+   "bearing": 271
+  },
+  "0363100012126724": {
+   "balcony": "projecting",
+   "balconyTone": "glass",
+   "bearing": 202
+  },
+  "0363100012129788": {
+   "balcony": "band",
+   "balconyTone": "glass",
+   "bearing": 181
+  },
+  "0363100012130193": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 66
+  },
+  "0363100012130876": {
+   "stair": "glazed-strip",
+   "stairCount": 1,
+   "bearing": 77
+  },
+  "0363100012135055": {
+   "stair": "glazed-strip",
+   "stairCount": 1,
+   "bearing": 347
+  },
+  "0363100012135871": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "bearing": 248
+  },
+  "0363100012139300": {
+   "balcony": "round",
+   "balconyTone": "dark",
+   "bearing": 264
+  },
+  "0363100012140019": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 255
+  },
+  "0363100012141114": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 153
+  },
+  "0363100012141505": {
+   "balcony": "band",
+   "balconyTone": "dark",
+   "bearing": 167
+  },
+  "0363100012145102": {
+   "balcony": "band",
+   "balconyTone": "white",
+   "bearing": 338
+  },
+  "0363100012145524": {
+   "balcony": "round",
+   "balconyTone": "colour",
+   "bearing": 258
+  },
+  "0363100012146061": {
+   "balcony": "projecting",
+   "balconyTone": "glass",
+   "bearing": 282
+  },
+  "0363100012146384": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 64
+  },
+  "0363100012151073": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "stair": "glazed-strip",
+   "stairCount": 1,
+   "bearing": 65
+  },
+  "0363100012151123": {
+   "erker": "white-glass",
+   "erkerPlan": "box",
+   "erkerCount": 1,
+   "bearing": 341
+  },
+  "0363100012155012": {
+   "balcony": "band",
+   "balconyTone": "dark",
+   "bearing": 196
+  },
+  "0363100012164932": {
+   "balcony": "band",
+   "balconyTone": "white",
+   "bearing": 45
+  },
+  "0363100012165002": {
+   "balcony": "round",
+   "balconyTone": "dark",
+   "bearing": 161
+  },
+  "0363100012168722": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "bearing": 112
+  },
+  "0363100012169094": {
+   "stair": "glazed-strip",
+   "stairCount": 1,
+   "bearing": 225
+  },
+  "0363100012170382": {
+   "balcony": "band",
+   "balconyTone": "dark",
+   "bearing": 44
+  },
+  "0363100012171626": {
+   "balcony": "round",
+   "balconyTone": "white",
+   "bearing": 265
+  },
+  "0363100012171628": {
+   "balcony": "round",
+   "balconyTone": "dark",
+   "bearing": 71
+  },
+  "0363100012173278": {
+   "erker": "dark-glass",
+   "erkerPlan": "box",
+   "erkerCount": 1,
+   "bearing": 292
+  },
+  "0363100012180528": {
+   "balcony": "band",
+   "balconyTone": "dark",
+   "bearing": 212
+  },
+  "0363100012180549": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "bearing": 225
+  },
+  "0363100012180576": {
+   "balcony": "round",
+   "balconyTone": "white",
+   "bearing": 45
+  },
+  "0363100012180618": {
+   "balcony": "round",
+   "balconyTone": "colour",
+   "bearing": 30
+  },
+  "0363100012181261": {
+   "balcony": "round",
+   "balconyTone": "white",
+   "bearing": 30
+  },
+  "0363100012185423": {
+   "stair": "glazed-tower",
+   "stairCount": 1,
+   "bearing": 45
+  },
+  "0363100012233557": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "bearing": 159
+  },
+  "0363100012240951": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 168
+  },
+  "0363100012241618": {
+   "balcony": "round",
+   "balconyTone": "dark",
+   "bearing": 281
+  },
+  "0363100012242648": {
+   "balcony": "band",
+   "balconyTone": "glass",
+   "bearing": 247
+  },
+  "0363100012243732": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 302
+  },
+  "0363100012243829": {
+   "balcony": "band",
+   "balconyTone": "dark",
+   "bearing": 259
+  },
+  "0363100012244665": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "bearing": 296
+  },
+  "0363100012244666": {
+   "balcony": "projecting",
+   "balconyTone": "glass",
+   "bearing": 291
+  },
+  "0363100012244667": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 286
+  },
+  "0363100012246557": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 213
+  },
+  "0363100012247154": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "bearing": 35
+  },
+  "0363100012247676": {
+   "balcony": "projecting",
+   "balconyTone": "glass",
+   "bearing": 50
+  },
+  "0363100012249108": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 302
+  },
+  "0363100012252175": {
+   "balcony": "projecting",
+   "balconyTone": "glass",
+   "bearing": 122
+  },
+  "0363100012253061": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 122
+  },
+  "0363100012253635": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "bearing": 123
+  }
+ }
+}
