@@ -26,7 +26,8 @@ import { citywideBuildingRoofPrior, citywideBuildingWallPrior } from '../look/pa
 import { rowFrontFor, rowFrontOn } from '../houseLine/rowFront.js';
 import { segmentLookup, SEGMENTS_SCHEMA, type Segment, type SegmentsExtract, type SegmentSlice } from './segments.js';
 import { designUnitOf, eraWindows, ERA_YEARS, PLOT_EAVES_M, type DesignUnitDraw } from './drawProps.js';
-import { plotPlan, plotWhite, WHITE_HEAD_DRESSING, PLOT_GABLE_SHAPE, type PlotPlan } from './plotPlan.js';
+import { plotPlan, plotWhite, plotHeads, plotDormers, plotLook, PLOT_GABLE_SHAPE, POINT_GABLE_RISE_PER_M, type PlotPlan } from './plotPlan.js';
+import { rowCrownRoofRise, type RowCrown } from '../houseLine/crownProfile.js';
 import { roofPlanForFeature } from '../roofMesh.js';
 
 export { designUnitOf, seedIdOf, segmentBayM, sliceBays, eraWindows, ERA_YEARS, PLOT_EAVES_M, PLOT_TONE_DL, type DesignUnitDraw } from './drawProps.js';
@@ -87,7 +88,7 @@ export function memberDraw(segment: DrawSegment, pandId: string, exception: bool
   const widths = onStreet.map(s => s.toM - s.fromM).sort((a, b) => a - b), moduleM = +widths[Math.floor((widths.length - 1) / 2)].toFixed(2);
   // The era rules (pre-1920 segments): the plot is the bay module, light frames and tall sashes unless the reads say otherwise.
   const era = typeof segment.year === 'number' && segment.year >= ERA_YEARS.from && segment.year <= ERA_YEARS.to;
-  const r = segment.reads, read = r?.bays?.[pandId];
+  const r = segment.reads, read = segment.plots?.[pandId]?.bays ?? r?.bays?.[pandId];
   // Era fronts: tall sashes under a transom light in light frames (the photographed rows; 85 % of the D1 ring reads say
   // white frames). An era front stays light even where the D1 reads say dark: Roemer Visscherstraat 164845's three reads
   // said dark and the photo shows cream frames (gate, 2026-11-19); the reads still set pale and arch.
@@ -107,7 +108,10 @@ export function memberDraw(segment: DrawSegment, pandId: string, exception: bool
   const plotBreak = { left: at <= 0 || groupOf(onStreet[at - 1].pandId) !== plot, right: at < 0 || at >= onStreet.length - 1 || groupOf(onStreet[at + 1].pandId) !== plot };
   const own = segment.plotEavesM?.[pandId], line = segment.eavesM;
   const plotEavesM = line === null ? undefined : +(typeof own === 'number' ? Math.min(line + PLOT_EAVES_M, Math.max(line - PLOT_EAVES_M, own)) : line).toFixed(2);
-  return { seed: segment.seed, plotSeed: `${segment.seed}:plot:${plot}`, plotBreak, ...(plotEavesM !== undefined ? { plotEavesM } : {}), segment: segment.id, eavesM: segment.eavesM, street: main.street, fromM: main.fromM, toM: main.toM, moduleM,
+  // Round 3 (Ruyschstraat: "they're all basically identical"): a plot read like an earlier one on the street takes its
+  // seed, so its tone, door and dice draw the same; unread plots keep their own.
+  const plotKey = plotLook(segment.plots?.[pandId]), twin = plotKey ? onStreet.find(s => plotLook(segment.plots?.[s.pandId]) === plotKey)?.pandId : undefined;
+  return { seed: segment.seed, plotSeed: `${segment.seed}:plot:${twin ? groupOf(twin) : plot}`, plotBreak, ...(plotEavesM !== undefined ? { plotEavesM } : {}), segment: segment.id, eavesM: segment.eavesM, street: main.street, fromM: main.fromM, toM: main.toM, moduleM,
     k: onStreet.findIndex(s => s === main), n: onStreet.length, ...(isLngLat(segment.at) ? { at: [segment.at[0], segment.at[1]] as const } : {}), ...(exception ? { exception: true as const } : {}),
     ...(bays ? { bays } : {}), ...(bayPitchM ? { bayPitchM } : {}), ...(look ? { look } : {}), ...(typeof segment.roofRiseM === 'number' ? { roofRiseM: segment.roofRiseM } : {}), ...(segment.roofEvidence ? { roofEvidence: segment.roofEvidence } : {}),
     ...(segment.plots?.[pandId] ? { plot: segment.plots[pandId] } : {}), ...(typeof segment.year === 'number' ? { year: segment.year } : {}) };
@@ -193,9 +197,17 @@ function withPlotPlan<T extends Feature>(feature: T, rest: Record<string, unknow
   // The white detailing (2026-11-21, Rustenburgerstraat): frames by era, the read heads and string courses, each a kit part.
   const white = plotWhite(d.year, d.plot);
   if (white.frames) { extra.designFrames = true; if (!force.includes('white-window-frames')) force.push('white-window-frames'); }
-  if (d.plot?.whiteHeads === 'none') extra.designPlainHeads = true;
-  if (white.heads !== 'none') { extra.designHeads = WHITE_HEAD_DRESSING[white.heads]; if (!force.includes('row-heads')) force.push('row-heads'); }
+  const heads = plotHeads(d.plot);
+  if (d.plot?.whiteHeads === 'none' && !heads) extra.designPlainHeads = true;
+  if (heads) { extra.designHeads = heads; if (!force.includes('row-heads')) force.push('row-heads'); }
   if (white.courses && !force.includes('string-courses')) force.push('string-courses');
+  // Round 3: the read stone, bands and pilasters, each through its kit part.
+  const f = d.plot, dress: Record<string, string> = {};
+  if (f?.stone === 'plinth' || f?.stone === 'ground') { dress.stone = f.stone; const id = f.stone === 'plinth' ? 'stone-plinth-band' : 'rusticated-plinth'; if (!force.includes(id)) force.push(id); }
+  if (f?.bands === 'ground' || f?.bands === 'all') { dress.bands = f.bands; if (!force.includes('speklagen')) force.push('speklagen'); }
+  if (f?.pilasters === 'corners' || f?.pilasters === 'centre') { dress.pilasters = f.pilasters; if (!force.includes('corner-pilasters')) force.push('corner-pilasters'); }
+  if (Object.keys(dress).length) extra.designDress = dress;
+  if (typeof f?.wallHex === 'string' && /^#[0-9a-f]{6}$/i.test(f.wallHex)) extra.designWallHex = f.wallHex;
   if (force.length) extra.registerForce = force;
   const wall = plan.wallM;
   if (plan.roof === 'flat') return { ...feature, properties: { ...rest, ...extra, height: wall, roofEavesHeightM: wall, roofPlanned: false, roofShape: 'flat' } };
@@ -204,15 +216,25 @@ function withPlotPlan<T extends Feature>(feature: T, rest: Record<string, unknow
     // The planner's gable on this plot, its foot on the cornice line: plan it on a probe height, then stand it there.
     const probe = { ...feature, properties: { ...rest, height: wall + 6, roofPlanned: false, monumentGable: shape } };
     const g = roofPlanForFeature(probe as never);
+    // Round 3: a read gable (its rise, foot width, offset and light) is the kit's row crown on the planner's saddle; a
+    // narrower crown keeps its saddle low (its share of the front), so the cheeks beside it stay low roof, not wall.
+    const gr = d.plot?.gable, W = d.toM - d.fromM;
+    if (g && g.kind === 'gable' && gr) {
+      const foot = gr.widthM && gr.widthM < W - 0.3 ? gr.widthM : undefined, crownShape = shape === 'plain' ? 'point' : shape;
+      const riseM = +(gr.riseM ?? (crownShape === 'point' ? Math.min(5, POINT_GABLE_RISE_PER_M * (foot ?? W)) : g.riseM)).toFixed(2);
+      const crown: RowCrown = { shape: crownShape as RowCrown['shape'], riseM, ...(foot ? { footW: foot } : {}), ...(foot && gr.offsetM ? { offsetM: gr.offsetM } : {}),
+        attic: gr.window === 'none' ? 0 : 1, ...(gr.window === 'round' || gr.window === 'segmental' ? { atticHead: gr.window } : {}) };
+      return { ...feature, properties: { ...rest, ...extra, monumentGable: shape, height: +(wall + riseM).toFixed(3), roofEavesHeightM: wall, roofPlanned: true, roofShape: g.kind,
+        rowCrown: crown, rowCrownRoofRiseM: foot ? +Math.min(rowCrownRoofRise(crown, W), riseM * foot / W).toFixed(3) : rowCrownRoofRise(crown, W), designPlot: { ...extra.designPlot as object, riseM } } };
+    }
     if (g && g.kind === 'gable') return { ...feature, properties: { ...rest, ...extra, monumentGable: shape, height: +(wall + g.riseM).toFixed(3), roofEavesHeightM: wall, roofPlanned: true, roofShape: g.kind, designPlot: { ...extra.designPlot as object, riseM: g.riseM } } };
     // A plot the planner cannot gable (too narrow or ragged) keeps the row's dormer roof.
   }
-  const n = Math.max(1, Math.round((d.toM - d.fromM) / DORMER_FRONT_M));
-  const dormers = Array.from({ length: n }, (_, i) => ({ a: +((i + 0.5) / n).toFixed(3), kind: plan.dormer, ...(plan.hoist ? { hoist: true } : {}) }));
+  const dormers = plotDormers(d.toM - d.fromM, DORMER_FRONT_M, d.plot, plan.dormer, plan.hoist);
   // Inside: wall + rise is the measured top; on top: the roof storey stands over it.
   const rise = plan.riseM > 0.5 ? plan.riseM : EVIDENCE_HOIST_RISE_M, height = +(wall + rise).toFixed(3);
   return { ...feature, properties: { ...rest, ...extra, height, roofEavesHeightM: wall, roofPlanned: true, roofShape: 'mansardHip', roofDormer: true,
-    rowRoof: { riseM: rise, material: roof.material, dormers, series: d.seed, tone: roof.tone, joins: { left: true, right: true } } } };
+    rowRoof: { riseM: rise, material: roof.material, dormers, series: d.seed, tone: roof.tone, joins: { left: true, right: true }, ...(plan.hoist ? { hoistOut: true } : {}) } } };
 }
 
 /** Step 2 (after withRowFront, before decorateRoof): the segment's one roof on this member, its front at the line. */

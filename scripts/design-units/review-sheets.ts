@@ -20,7 +20,8 @@ import { coverOf } from '../house-preview/preview.ts';
 import { REGRESSION_ROWS } from '../../src/canalRecall/designUnits/regressionRows.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
-const OUT = path.join(ROOT, 'artifacts/design-units/r2');
+// The round folder (DESIGN_ROUND=r3 for round 3; r2 stays as David judged it).
+const OUT = path.join(ROOT, 'artifacts/design-units', process.env.DESIGN_ROUND ?? 'r2');
 const PPM = 50, SKY_RGB = [159, 184, 207]; // preview.ts px per metre and SKY
 const GATE = path.join(ROOT, 'artifacts/design-units/gate/desktop/after');
 type LngLat = [number, number];
@@ -126,14 +127,16 @@ if (cmd === 'render') {
   // stays put when flipping), at least 1800 px wide; photo-NN.jpg per pand left to right from the rectified wall crops
   // (scripts/house-crops/crops.ts, run into r2/crops-archive), at least 1200 px wide; photo-row.jpg when every pand on
   // the street has a crop; photos.json with each photo's source and flags.
-  const ARCH = path.join(OUT, 'crops-archive/pand-crops'), LAYERS = path.join(OUT, 'layers');
+  // Crops live in r2's archive (one archive for every round).
+  const ARCH = path.join(ROOT, 'artifacts/design-units/r2/crops-archive/pand-crops'), LAYERS = path.join(OUT, 'layers');
   const poor: Record<string, string[]> = {};
   for (const b of todo.filter(x => !x.key.startsWith('regression-'))) {
     const dir = path.join(LAYERS, b.key);
     fs.mkdirSync(dir, { recursive: true });
-    const conds = [['today', 'today'], ['r1', 'r1'], ['new', 'r2']] as const;
+    // --conds today:today,r2:r2,new:r3 (render folder:layer name); default round 2's.
+    const conds = (flag('--conds') ?? 'today:today,r1:r1,new:r2').split(',').map(x => x.split(':') as [string, string]);
     const metas = await Promise.all(conds.map(([c]) => sharp(path.join(OUT, b.key, c, 'front.png')).metadata()));
-    const w0 = Math.max(...metas.map(m => m.width ?? 0)), h0 = Math.max(...metas.map(m => m.height ?? 0)), k = Math.max(1, 1800 / w0);
+    const w0 = Math.max(...metas.map(m => m.width ?? 0)), h0 = Math.max(...metas.map(m => m.height ?? 0)), k = 1; // one scale for every block (coordinator 2026-11-21): 50 px/m, the page scales it
     const W = Math.round(w0 * k), H = Math.round(h0 * k);
     for (let i = 0; i < conds.length; i++) {
       const src = path.join(OUT, b.key, conds[i][0], 'front.png'), m = metas[i];
@@ -166,30 +169,42 @@ if (cmd === 'render') {
     // width is the drawings' sky.
     let row: Record<string, unknown> | null = null;
     const PPM = 50, s = PPM * k, skyPx = await sharp(path.join(OUT, b.key, 'today', 'front.png')).extract({ left: 0, top: 0, width: 1, height: 1 }).raw().toBuffer();
-    const placed: Array<{ pandId: string; x0: number; x1: number; photo: string | null }> = [], comp: sharp.OverlayOptions[] = [];
+    const placed: Array<{ pandId: string; x0: number; x1: number; photo: string | null; coverage: number; scale: 'fit' | 'true' | 'none'; cropWallM?: number }> = [], comp: sharp.OverlayOptions[] = [];
+    // A slice the photo does not cover: hatched, so a gap never reads as a wall (Nicolaas Maesstraat 155454: a 4.7 m crop was
+    // stretched 2.7x into its 12.5 m slice).
+    const hatch = async (x0: number, x1: number) => {
+      const w = x1 - x0; if (w < 2) return;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${H}"><defs><pattern id="h" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="24" height="24" fill="#d9d4cc"/><rect width="8" height="24" fill="#b9b2a6"/></pattern></defs><rect width="${w}" height="${H}" fill="url(#h)"/><text x="${w / 2}" y="${H / 2}" font-family="sans-serif" font-size="28" text-anchor="middle" fill="#6b6459">no photo</text></svg>`;
+      comp.push({ input: Buffer.from(svg), left: x0, top: 0 });
+    };
     for (const id of b.order) {
       const span = b.spans[id], jpg = path.join(ARCH, id, 'front.jpg'), meta = path.join(ARCH, id, 'front.json');
       if (!span) continue;
       const x0 = Math.max(0, Math.round(span[0] * s)), x1 = Math.round(span[1] * s), have = fs.existsSync(jpg) && fs.existsSync(meta);
-      placed.push({ pandId: id, x0, x1, photo: have ? photos.find(p => p.pandId === id)?.file as string ?? null : null });
-      if (!have || x1 - x0 < 2) continue;
+      if (!have || x1 - x0 < 2) { placed.push({ pandId: id, x0, x1, photo: null, coverage: 0, scale: 'none' }); await hatch(x0, x1); continue; }
       const j = JSON.parse(fs.readFileSync(meta, 'utf8')), m = await sharp(jpg).metadata(), ppm = Number(j.crop?.pixelsPerMetre) || 50;
+      const sliceM = span[1] - span[0], wallM = Number(j.crop?.wallWidthM) || (m.width ?? 0) / ppm;
+      // Stretch only a crop within 15% of its slice; otherwise its true scale from the slice start, the rest hatched.
+      const fit = Math.abs(wallM / sliceM - 1) <= 0.15, w = fit ? x1 - x0 : Math.min(x1 - x0, Math.max(1, Math.round(wallM * s)));
       const h = Math.max(1, Math.round((m.height ?? 0) / ppm * s));
-      const img = await sharp(jpg).resize({ width: x1 - x0, height: h, fit: 'fill', kernel: 'lanczos3' }).png().toBuffer();
+      let img = await sharp(jpg).resize({ width: fit ? w : Math.max(1, Math.round(wallM * s)), height: h, fit: 'fill', kernel: 'lanczos3' }).png().toBuffer();
+      if (!fit && wallM * s > w + 1) img = await sharp(img).extract({ left: 0, top: 0, width: w, height: h }).png().toBuffer();
+      placed.push({ pandId: id, x0, x1, photo: photos.find(p => p.pandId === id)?.file as string ?? null, coverage: +Math.min(1, w / (x1 - x0)).toFixed(3), scale: fit ? 'fit' : 'true', cropWallM: wallM });
+      if (!fit && w < x1 - x0) await hatch(x0 + w, x1);
       const top = H - h;
-      comp.push(top >= 0 ? { input: img, left: x0, top } : { input: await sharp(img).extract({ left: 0, top: -top, width: x1 - x0, height: H }).png().toBuffer(), left: x0, top: 0 });
+      comp.push(top >= 0 ? { input: img, left: x0, top } : { input: await sharp(img).extract({ left: 0, top: -top, width: w, height: H }).png().toBuffer(), left: x0, top: 0 });
     }
     if (comp.length) {
       // A span past the drawn line's end (a corner pand's slice) is cut at the strip's edge.
       const CW = Math.max(W, ...placed.map(q => q.x1)), canvas = await sharp({ create: { width: CW, height: H, channels: 3, background: { r: skyPx[0], g: skyPx[1], b: skyPx[2] } } }).composite(comp).png().toBuffer();
       await sharp(canvas).extract({ left: 0, top: 0, width: W, height: H }).jpeg({ quality: 88 }).toFile(path.join(dir, 'photo-row.jpg'));
       const dates = [...new Set(photos.filter(p => p.file && b.order.includes(String(p.pandId))).map(p => p.date))];
-      row = { file: 'photo-row.jpg', registeredTo: 'today.jpg / r1.jpg / r2.jpg (same width, height, scale, left edge and ground line)', pxPerMetre: +s.toFixed(3),
-        note: `each pand's rectified wall crop resampled to its slice of the block line${dates.length > 1 ? `; mixed capture dates (${dates.join(', ')})` : ''}` };
-      fs.writeFileSync(path.join(dir, 'photo-row.json'), JSON.stringify({ width: W, height: H, pxPerMetre: +s.toFixed(3), groundY: H, pands: placed }, null, 1));
+      row = { file: 'photo-row.jpg', registeredTo: `${conds.map(([, n]) => n + '.jpg').join(' / ')} (same width, height, scale, left edge and ground line)`, pxPerMetre: +s.toFixed(3),
+        note: `each pand's rectified wall crop resampled to its slice of the block line when within 15% of it, else at its true scale with the uncovered rest hatched${dates.length > 1 ? `; mixed capture dates (${dates.join(', ')})` : ''}` };
+      fs.writeFileSync(path.join(dir, 'photo-row.json'), JSON.stringify({ width: W, height: H, pxPerMetre: +s.toFixed(3), groundY: H, coverage: +(placed.reduce((a, q) => a + q.coverage * (q.x1 - q.x0), 0) / Math.max(1, placed.reduce((a, q) => a + q.x1 - q.x0, 0))).toFixed(3), pands: placed }, null, 1));
     }
     fs.writeFileSync(path.join(dir, 'photos.json'), JSON.stringify({ block: b.key, street: b.street, buurt: b.buurt, title: b.title,
-      layers: { today: 'today.jpg', r1: 'r1.jpg', r2: 'r2.jpg', width: W, height: H, note: 'one scale and left edge; shorter strips padded with sky at the top' },
+      layers: { ...Object.fromEntries(conds.map(([, n]) => [n, `${n}.jpg`])), width: W, height: H, pxPerMetre: PPM, note: 'one scale (50 px/m) and left edge; shorter strips padded with sky at the top' },
       photos, row, attribution: 'Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)',
       source: 'rectified wall crops, scripts/house-crops/crops.ts (rankPanos, yearCandidates: clear straight views, then leaf-off, then newer years)' }, null, 1));
     console.log(`${b.key}: ${W}x${H} strips, ${n}/${ids.length} photos${row ? ', row' : ''}`);

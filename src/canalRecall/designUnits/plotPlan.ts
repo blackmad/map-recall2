@@ -53,7 +53,14 @@ export function plotWhite(year: number | null | undefined, facts: PlotFacts | un
 
 export const PLOT_ROOFS = ['flat', 'dormers', 'mansard', 'pointedGable', 'stepGable', 'bellGable'] as const;
 export type PlotRoof = (typeof PLOT_ROOFS)[number];
-export type PlotDormer = 'pediment' | 'gabled' | 'plain';
+export type PlotDormer = 'pediment' | 'gabled' | 'plain' | 'ornate-pinnacle';
+export const HEAD_SHAPES = ['flat', 'segmental', 'round'] as const;
+export type HeadShape = (typeof HEAD_SHAPES)[number];
+/** A plot gable as read (ring-r2 verdicts, 2026-11-21: Admiraal De Ruijterweg "not tall enough and missing the window in
+ *  the triangle"; Jan Luijkenstraat 160504/166029 "an offset triangle roof that doesn't go the whole width"). */
+export interface PlotGable { riseM?: number; widthM?: number; offsetM?: number; window?: 'none' | 'square' | 'round' | 'segmental' }
+/** The default pointed-gable rise over its foot width (Admiraal De Ruijterweg: about 4.2 m on a 3.4 m foot). */
+export const POINT_GABLE_RISE_PER_M = 1.1;
 
 /** What is known about one plot (build-segments `plots`), each field from its source. */
 export interface PlotFacts {
@@ -70,6 +77,22 @@ export interface PlotFacts {
   whiteHeads?: WhiteHeads;
   /** White string courses through the sills. */
   stringCourses?: boolean;
+  /** Round 3 (ring-r2 verdicts): the window heads' shape (the kit's head grammar arches the glass). */
+  headShape?: HeadShape;
+  /** Grey stone at the foot: a bluestone plinth band, or a banded stucco ground storey. */
+  stone?: 'none' | 'plinth' | 'ground';
+  /** Bacon courses (speklagen): over the ground storey only, or up the whole front. */
+  bands?: 'none' | 'ground' | 'all';
+  /** White pilasters: at the plot's two ends, or one on its axis (Commelinstraat's white centre column). */
+  pilasters?: 'none' | 'corners' | 'centre';
+  /** The wall colour as read (hex), where the plot differs from its family (Commelinstraat's middle house). */
+  wallHex?: string;
+  /** Window axes on the upper storeys as read (Bilderdijkkade 113152: two wide windows on 14.8 m). */
+  bays?: number;
+  /** Roof windows across the plot (Tweede Jacob van Campenstraat, Ceintuurbaan 8543: three on the roofline). */
+  dormers?: number;
+  /** The gable's read size, place and light. */
+  gable?: PlotGable;
   /** Where the facts came from: the gate photo rows, the D1 reads, or (roof only) the segment's mirror symmetry. */
   src: 'photo' | 'reads';
   roofSrc?: 'photo' | 'reads' | 'pattern';
@@ -150,4 +173,30 @@ export function fillRoofPattern(order: string[], plots: Record<string, PlotFacts
   const letters = new Map<string, string>();
   const pattern = order.map(id => { const r = plots[id]?.roof; if (!r) return '.'; if (!letters.has(r)) letters.set(r, String.fromCharCode(65 + letters.size)); return letters.get(r)!; }).join('');
   return { filled, pattern };
+}
+
+/** The window head the kit draws for a plot: its white dressing as read, else a brick arch ring over an arched head. */
+export function plotHeads(facts: PlotFacts | undefined): { dressing: string; shape: HeadShape } | null {
+  const shape = facts?.headShape, white = facts?.whiteHeads ?? 'none';
+  if (white !== 'none') { const w = WHITE_HEAD_DRESSING[white]; return { dressing: w.dressing, shape: shape ?? w.shape }; }
+  return shape && shape !== 'flat' ? { dressing: 'brick-arch-ring', shape } : null;
+}
+
+/** The plot's roof windows, left to right: the read count (else one per DORMER_FRONT_M of front); a hoist sits on the
+ *  middle one, the side ones plain (Tweede Jacob van Campenstraat 153395: a hoist dormer between two small lights). */
+export function plotDormers(frontM: number, perM: number, facts: PlotFacts | undefined, kind: PlotDormer, hoist: boolean): Array<{ a: number; kind: PlotDormer; hoist?: true }> {
+  const n = facts?.dormers && facts.dormers >= 1 ? Math.min(5, Math.round(facts.dormers)) : Math.max(1, Math.round(frontM / perM));
+  const read = !!facts?.dormers, mid = (n - 1) / 2;
+  return Array.from({ length: n }, (_, i) => {
+    const lead = !read || n < 3 || i === mid || (n % 2 === 0 && Math.abs(i - mid) === 0.5 && i < mid);
+    return { a: +((i + 0.5) / n).toFixed(3), kind: lead ? kind : 'plain', ...(hoist && lead ? { hoist: true as const } : {}) };
+  });
+}
+
+/** Plots that read alike draw alike (ring-r2, Ruyschstraat: "they're all basically identical except one of the roofs"):
+ *  the facts that shape a front, without their sources. */
+export function plotLook(f: PlotFacts | undefined): string {
+  if (!f) return '';
+  const { src: _s, roofSrc: _r, ...rest } = f;
+  return JSON.stringify(Object.keys(rest).sort().map(k => [k, (rest as Record<string, unknown>)[k]]));
 }

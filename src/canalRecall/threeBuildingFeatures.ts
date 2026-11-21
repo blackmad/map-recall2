@@ -283,7 +283,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     // never the darkest tones; measuredWallPool.ts segmentPoolDraw), whatever its own profile or period wall said.
     const familyWall = design?.at && !specLookOf(p)?.painted ? segmentPoolDraw(design.at[0], design.at[1], bay.archetype, design.seed) : null;
     // Round 2 (#399): each plot its own tone inside the family brick (designUnits/plotTone.ts).
-    const segWall = familyWall && design?.plotSeed ? plotTone(familyWall, design.plotSeed) : familyWall;
+    // Round 3: a plot whose wall colour was read (Commelinstraat's middle house) draws that colour.
+    const readWall = design && typeof p.designWallHex === 'string' && /^#[0-9a-f]{6}$/i.test(p.designWallHex) ? p.designWallHex : null;
+    const segWall = readWall ?? (familyWall && design?.plotSeed ? plotTone(familyWall, design.plotSeed) : familyWall);
     if (segWall) profileWall = segWall;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: segWall ?? bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     // Lane retail-look round 3c (`?retailGround=1`): bay.groundHex here is the shop grammar's guess (no recipe is passed),
@@ -455,6 +457,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (design) { building.seed = design.seed; if (design.plotSeed) building.plotSeed = design.plotSeed; if (design.plotBreak) building.plotBreak = design.plotBreak; building.designSlice = { fromM: design.fromM, toM: design.toM, moduleM: design.moduleM }; if (design.bays) building.designBays = design.bays; if (design.bayPitchM) building.designPitchM = design.bayPitchM; const ds = p.designStoreys as { storeys?: unknown; groundM?: unknown } | undefined; if (ds && Number(ds.storeys) >= 2 && Number(ds.groundM) > 0) building.designStoreys = { storeys: Number(ds.storeys), groundM: Number(ds.groundM) }; if (Array.isArray(p.designBalconies)) building.plotBalconies = (p.designBalconies as unknown[]).map(Number).filter(n => Number.isInteger(n) && n >= 1);
     if (p.designFrames === true) building.designFrames = true;
     if (p.designPlainHeads === true) building.plainHeads = true;
+    const dd = p.designDress as Record<string, unknown> | undefined;
+    if (dd && typeof dd === 'object') building.designDress = { ...(dd.stone === 'plinth' || dd.stone === 'ground' ? { stone: dd.stone } : {}), ...(dd.bands === 'ground' || dd.bands === 'all' ? { bands: dd.bands } : {}), ...(dd.pilasters === 'corners' || dd.pilasters === 'centre' ? { pilasters: dd.pilasters } : {}) };
     // The plot's read white heads (plotPlan.ts WHITE_HEAD_DRESSING): the house rows' head dressing over every upper window.
     const dh = p.designHeads as { dressing?: unknown; shape?: unknown } | undefined;
     if (dh && typeof dh.dressing === 'string' && (dh.shape === 'flat' || dh.shape === 'segmental')) building.rowDress = { ...(building.rowDress ?? {}), heads: [{ a0: 0, a1: 1, shape: dh.shape, dressing: dh.dressing as never }] }; }

@@ -73,3 +73,13 @@ test('spout (Herengracht 71/73, round 5): symmetric, a narrow upright top on sma
   for (const c of crest) assert.ok(p.some(q => Math.abs(q[0] - c[0]) < 1e-6 && top - q[1] >= 0.8 - 1e-6), 'upright top');
   for (const [x, y] of p) assert.ok(p.some(([u, v]) => Math.abs(u + x) < 1e-6 && Math.abs(v - y) < 1e-6), `asymmetric at ${x}`);
 });
+
+test('an off-centre crown (Jan Luijkenstraat 166029): its outline shifts by offsetM, kept inside the front; absent: unchanged', () => {
+  const base = { shape: 'point', riseM: 4.2, footW: 4.4 } as const, W = 7.3;
+  const c0 = rowCrownProfile(base, W, 2), c1 = rowCrownProfile({ ...base, offsetM: -1.3 }, W, 2);
+  const apex = (p: ReadonlyArray<readonly [number, number]>) => p.reduce((a, q) => (q[1] > a[1] ? q : a));
+  assert.ok(Math.abs(apex(c0)[0]) < 1e-6);
+  assert.ok(Math.abs(apex(c1)[0] + 1.3) < 1e-6, `apex at ${apex(c1)[0]}`);
+  assert.ok(Math.abs(apex(rowCrownProfile({ ...base, offsetM: -9 }, W, 2))[0] + (W / 2 - 2.2)) < 1e-6, 'clamped inside the front');
+  assert.deepEqual(rowCrownProfile({ ...base, offsetM: 0 }, W, 2), c0);
+});

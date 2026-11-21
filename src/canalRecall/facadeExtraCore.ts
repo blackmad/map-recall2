@@ -12,6 +12,8 @@ export type V3 = [number, number, number];
 export type FlatTri = { p: V3[]; hex: string; n: V3; texture?: 'glass-block'; uv?: [number, number][]; /** The primitive that drew it (look/thinFade.ts owner classes); absent for wall quads, slopes and profiles. */ prim?: 'box' | 'strip' };
 /** Wall frame: origin at the wall's start (ground of this building), x along, y outward. */
 export type WallFrame = { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number; len: number };
+/** Design units: a plot's read stone, bands and pilasters, each drawn by an existing kit part (absent: as before). */
+export interface DesignDress { stone?: 'plinth' | 'ground'; bands?: 'ground' | 'all'; pilasters?: 'corners' | 'centre' }
 export type ExtraContext = {
   recipe?: ArchitecturalRecipe;
   runStart?: boolean; runEnd?: boolean;
@@ -64,6 +66,8 @@ export type ExtraContext = {
   designFrames?: true;
   /** Design units: the plot was read with plain brick heads; the dice head dressings stay off it. */
   plainHeads?: true;
+  /** Design units: the plot's read dress (designUnits/plotPlan.ts): grey stone at the foot, bacon courses, white pilasters. */
+  designDress?: DesignDress;
   /** House rows: the series' stated dressing on this wall (threeBuildingMesh rowDressOnEdge). `windows`: the record's
    *  boxes in this edge's metres with their storey and head; `heads`: spans (edge metres) over the grid's windows. */
   rowDress?: RowDressContext;

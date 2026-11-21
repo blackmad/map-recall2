@@ -15,7 +15,7 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
-## Design units (P0): option A approved on #397 — Ring round 2 sheets waiting on David (review page)
+## Design units (P0): option A approved on #397 — Ring round 3 layers waiting on David (`ring-r3`)
 
 David chose **A** on #397 (2026-11-19): units are the identity everywhere, elevations draw in segments, and Centrum plots stay separate unless something joins them. The Ring layer comes first. The staged belt, Centrum and De Pijp looks stay held, and #392 and #393 stay paused.
 
@@ -37,7 +37,13 @@ David chose **A** on #397 (2026-11-19): units are the identity everywhere, eleva
     - Balconies are a new kit part, `plotBalconies`: one per stated storey on the middle axis. A read that saw none switches off the dice balconettes.
     - On the 18 gate blocks, r2's storeys now match the photo. today drew 3–6 and r1 5–6. Those 18 are the read source, so this is not an independent test.
     - The preview row fix: Rustenburgerstraat drew 7 of 9 plots and Van Ostadestraat 7 of 11. Bilderdijkstraat drew 2 of 6 because an installed anchor drew only its model; all 6 of its pands are installed chunk faces, so the flag changes nothing there.
-  - David's verdict on round 2 decides whether the flag goes on by default. Do nothing more on the Ring until he answers.
+  - **Round 2 verdicts (2026-11-21, `ring-r2`): 13 better, 4 same, 0 worse.** Round 3 (flag only, flag-off hashes unchanged) answers them; layers in `artifacts/design-units/r3/layers/` (today, r2, r3, photo-row at 50 px/m):
+    - White detailing: Ring plots built 1860–1915 draw full white frames (D1: 88–90% white frames per era); read `whiteHeads`/`stringCourses` draw the kit heads and courses; a plot read with plain heads drops the dice lintels.
+    - New per-plot read fields in `plot-reads.json` and the B prompt: `headShape`, `stone`, `bands`, `pilasters` (corners/centre), `wallHex`, `bays`, `dormers` (count), `gable {riseM, widthM, offsetM, window}`.
+    - Kit changes: off-centre crowns (`RowCrown.offsetM`), a centre white column, ground-only speklagen, bluestone plinth on a read, hoist beams no longer push a dormer off the slope (`rowHoistOut`), a narrow crown keeps its saddle low.
+    - Gate blocks split per street face and per bearing (24 blocks); the photo row never stretches a crop more than 15% (true scale plus a hatched "no photo" gap, `coverage` in `photo-row.json`).
+    - Open: Nicolaas Maesstraat 155454 (corner pand) draws its read colour but not its heads and dormer. Johannes Verhulststraat needs a new kit for asymmetric two-bay 1900s fronts (not built). Ruyschstraat's grey middle pair is an installed chunk model, not design units. Short crops remain on Bilderdijkkade 113152, Roemer Visscherstraat, Tweede Jan Steenstraat 160616, Blasiusstraat 155375 and Amsteldijk 157451 (BAG walls shorter than the slice; no panorama gave the whole wall).
+  - David's verdict on round 3 decides whether the flag goes on by default.
 - **What the Ring tier does not draw:** bands, arched portals, stoops, French balconies, wall dormers. Wall colour is seeded where there is no photo read. These are the next kit work once #399 is answered.
 - **Under A, data only so far (staged in `artifacts/design-units/staging/`; `docs/reports/design-units-phase0-20261119.md`):**
   - **Gordel:** with `GORDEL_RULE`, 27% of the units holding liked rows still disagree with them. Next step: let published records split segments.

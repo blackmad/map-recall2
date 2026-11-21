@@ -39,8 +39,14 @@ For each plot answer:
 - whiteHeads: the light (white, cream or buff) dressing at the upper window heads: "keystone" (a light key on a brick arch),
   "blocks" (light blocks fanned round or set over the head), "band" (a light lintel band or slab), or "none" (brick heads).
 - stringCourses: true if light horizontal courses run across the front through the window sills, else false.
+- headShape: the upper window heads' shape: "flat", "segmental" (a shallow arch) or "round".
+- stone: grey natural stone or stucco at the foot: "plinth" (a band under the ground windows), "ground" (the whole ground storey), or "none".
+- bands: horizontal stripes of light brick or stone (speklagen): "ground" (ground storey only), "all", or "none".
+- pilasters: white vertical pilasters: "corners" (at the house's two ends), "centre" (one column on the axis), or "none".
+- gable: only when the roof is a gable: {"widthM": its foot width in metres, "offsetM": its centre's shift from the front's centre in metres (right positive, 0 when centred), "riseM": its height over the cornice, "window": "none" | "square" | "round" | "segmental"}.
+- dormers counts every roof window on the roofline, small ones too (often 3, not 1).
 
-Reply with JSON only, no prose: {"plots":[{"roofStorey":true,"form":"dormers","dormerKind":"pediment","dormers":1,"whiteHeads":"none","stringCourses":false}, ...]} with exactly {N} entries.`;
+Reply with JSON only, no prose: {"plots":[{"roofStorey":true,"form":"dormers","dormerKind":"pediment","dormers":1,"whiteHeads":"none","stringCourses":false,"headShape":"flat","stone":"none","bands":"none","pilasters":"none"}, ...]} with exactly {N} entries.`;
 
 const argv = process.argv.slice(2), cmd = argv[0];
 const opt = (k: string) => (argv.includes(k) ? argv[argv.indexOf(k) + 1] : undefined);

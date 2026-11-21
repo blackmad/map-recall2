@@ -2,6 +2,14 @@
 
 **Ring gate for David: https://github.com/blackmad/map-recall2/issues/399** (18 blocks, desktop and phone, with the Node sheets; filed 2026-11-19 night). His block-by-block verdict decides whether tier C goes on by default for the Ring.
 
+## Round 3 (2026-11-21): ring-r2 verdicts answered; layers waiting on David (`ring-r3`)
+
+- Verdicts: `belt-review-serve/review-data/belt-review/rounds/ring-r2/verdicts.json` (13 better, 4 same, 0 worse).
+- Render: `DESIGN_ROUND=r3 node --import tsx scripts/design-units/review-sheets.ts render today|new [--env DESIGN_UNITS=1]`; r2 is rendered with `--root` on a detached worktree at d394792053; layers with `layers --conds today:today,r2:r2,new:r3`. Crops stay in `artifacts/design-units/r2/crops-archive/` (one archive for all rounds).
+- Gate blocks: 24 (corner units split per street face; Roemer Visscherstraat 164845 and Blasiusstraat 155375 split off by bearing).
+- Re-crops installed: Nicolaas Maesstraat 155454 (12.5 m, bearing 160; the old 4.66 m Van Baerlestraat-side crop kept beside the archive) and 191238; Ruysdaelkade 163999/165987/161193 (bearing 270); Tweede Jan Steenstraat 145716 (6.1 m, bearing 153).
+- Not done: re-pricing B with the extended prompt, and `score` for the new fields.
+
 ## Round 2 (2026-11-20): plots are houses; sheets waiting on David's review page
 
 - **Verdict on #399** (comment 7033361626), from David: "neutral-to-worse - you're over aggressively collapsing buildings". The flag stays off.

@@ -151,6 +151,8 @@ export type MeshBuilding = {
   designFrames?: true;
   /** Design units: the plot's heads were read plain (facadeExtras skips the dice head dressings). */
   plainHeads?: true;
+  /** Design units: the plot's read stone, bands and pilasters (facadeExtraCore DesignDress). */
+  designDress?: import('./facadeExtraCore.ts').DesignDress;
   designStoreys?: { storeys: number; groundM: number };
   layoutScale?: LayoutScale;
   /** Design units (`?designUnits=1`): the segment seed every per-building dice here hashes on instead of `id`, and the
@@ -298,10 +300,10 @@ export function designRunScale<S extends { bay: number }>(slice: { fromM: number
  *  (round 2, #399: each plot is its own house with its own door bay), the segment's before round 2. */
 /** Round 2 (#399): a design member's street wall dresses as its own plot (plotSeriesId) and breaks at its party walls:
  *  `plotBreak` (left/right as seen) mapped onto this wall's start/end; only a run's first and last wall reach a plot end. */
-function plotContext(b: MeshBuilding, leftToRight: boolean, runStart: boolean, runEnd: boolean): { plotSeriesId?: string; plotBreak?: { start: boolean; end: boolean }; plotBalconies?: readonly number[]; designFrames?: true; plainHeads?: true } {
+function plotContext(b: MeshBuilding, leftToRight: boolean, runStart: boolean, runEnd: boolean): { plotSeriesId?: string; plotBreak?: { start: boolean; end: boolean }; plotBalconies?: readonly number[]; designFrames?: true; plainHeads?: true; designDress?: import('./facadeExtraCore.ts').DesignDress } {
   if (!b.plotSeed) return {};
   const pb = b.plotBreak, startSide = leftToRight ? pb?.left : pb?.right, endSide = leftToRight ? pb?.right : pb?.left;
-  return { plotSeriesId: b.plotSeed, ...(pb ? { plotBreak: { start: runStart && !!startSide, end: runEnd && !!endSide } } : {}), ...(b.plotBalconies ? { plotBalconies: b.plotBalconies } : {}), ...(b.designFrames ? { designFrames: true as const } : {}), ...(b.plainHeads ? { plainHeads: true as const } : {}) };
+  return { plotSeriesId: b.plotSeed, ...(pb ? { plotBreak: { start: runStart && !!startSide, end: runEnd && !!endSide } } : {}), ...(b.plotBalconies ? { plotBalconies: b.plotBalconies } : {}), ...(b.designFrames ? { designFrames: true as const } : {}), ...(b.plainHeads ? { plainHeads: true as const } : {}), ...(b.designDress ? { designDress: b.designDress } : {}) };
 }
 function runSeed(b: MeshBuilding, first: { x0: number; y0: number }, streetRun: boolean): number {
   return b.designSlice && b.seed && streetRun ? hash01(b.plotSeed ? `${b.plotSeed}:front` : `${b.seed}:front`) : hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`);

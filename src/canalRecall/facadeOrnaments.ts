@@ -1372,9 +1372,13 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     // floor-line band read as nothing at row distance (Weteringschans 171218). Course height and projection are the block
     // faces' stripe (blockBuilding/dressings.ts DRESS.stripe out; SPEKLAAG_M); forced only (p 0).
     if (rowBands(c, s, 'speklagen', CREAM)) return;
-    const o = openingsOf(c), l = c.layout, n = Math.min(6, l.storeys);
+    // A plot read with bands on its ground storey only (Nassaukade 14713) keeps them there.
+    const o = openingsOf(c), l = c.layout, n = c.designDress?.bands === 'ground' ? 1 : Math.min(6, l.storeys);
     const zones: Array<[number, number]> = [[c.base + (o.ground?.head ?? o.door.top) * l.groundM, storeyZ(c, 0) + o.upper.sill * l.storeyM]];
     for (let k = 0; k < n - 1; k++) zones.push([storeyZ(c, k) + o.upper.head * l.storeyM, storeyZ(c, k + 1) + o.upper.sill * l.storeyM]);
+    // The ground storey's foot under its sills too, on a plot read with banded ground storey.
+    const gs = c.designDress?.bands === 'ground' ? windowSpans(c, -1)[0]?.z0 : undefined;
+    if (gs !== undefined && gs - c.base > 0.5) zones.push([c.base + 0.15, gs - 0.08]);
     for (const [z0, z1] of zones) {
       const room = Math.min(z1, c.top) - z0 - 0.06, count = Math.max(0, Math.min(SPEKLAAG.max, Math.floor(room / SPEKLAAG.pitch)));
       if (!count) continue;
@@ -1407,10 +1411,17 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     // Pilasters at both ends of the front, with a capital; on a wide patrician house, on every pier.
     if (c.layout.storeys < 1) return;
     // A dice pilaster takes the wall's own colour; a stated one stays pale (look/pilasterTone.ts, `?pilasterTone=0`).
-    const hex = pilasterHex(c, r < 0.6 ? WHITE : STONE), z0 = storeyZ(c, 0) - 0.15, z1 = c.top - 0.45;
-    const xs = c.f.len >= 9 && r < 0.3 ? pierXs(c) : [0, c.f.len];
-    for (const x of xs.slice(0, 6)) {
-      const a0 = Math.max(0, Math.min(c.f.len - 0.42, x - 0.21)), a1 = a0 + 0.42;
+    const dp = c.designDress?.pilasters;
+    const hex = dp ? WHITE : pilasterHex(c, r < 0.6 ? WHITE : STONE), z0 = storeyZ(c, 0) - 0.15, z1 = c.top - 0.45;
+    // A plot read with white pilasters: at its ends, or one on its axis (Commelinstraat's centre column).
+    const xs = dp === 'corners' ? [0, c.f.len] : c.f.len >= 9 && r < 0.3 ? pierXs(c) : [0, c.f.len];
+    let spans = xs.slice(0, 6).map(x => { const a0 = Math.max(0, Math.min(c.f.len - 0.42, x - 0.21)); return [a0, a0 + 0.42] as const; });
+    if (dp === 'centre') {
+      // The centre column: white piers either side of the middle window axis, never over its glass.
+      const ws = windowSpans(c, 0), m = ws.length ? ws.reduce((q, w) => Math.abs(w.x - c.f.len / 2) < Math.abs(q.x - c.f.len / 2) ? w : q) : null;
+      spans = m ? [[Math.max(0, m.x - m.hw - 0.42), m.x - m.hw - 0.04], [m.x + m.hw + 0.04, Math.min(c.f.len, m.x + m.hw + 0.42)]] : [[c.f.len / 2 - 0.21, c.f.len / 2 + 0.21]];
+    }
+    for (const [a0, a1] of spans) {
       s.box(c.f, a0, a1, 0, 0.1, z0, z1, hex, true);
       s.box(c.f, a0 - 0.05, a1 + 0.05, 0, 0.16, z1, z1 + 0.18, hex, true);
     }
@@ -1453,7 +1464,8 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   { id: 'stone-plinth-band', styles: ['school'], p: 0.45, wide: true, group: 'plinth', build: (c, s, r) => {
     // A band of natural stone or glazed tile along the foot, under a pale course.
     if (!c.groundLevel) return;
-    const hex = r < 0.5 ? BLUESTONE : pickOf(GLAZED_TILE, r * 2);
+    // A plot read with a grey stone foot: always the bluestone (Nassaukade, Jan Luijkenstraat).
+    const hex = c.designDress?.stone ? BLUESTONE : r < 0.5 ? BLUESTONE : pickOf(GLAZED_TILE, r * 2);
     for (const [a0, a1] of aroundDoor(c, 0, c.f.len, 0.02)) { s.strip(c.f, a0, a1, 0.05, c.base, c.base + 0.85, hex); s.strip(c.f, a0, a1, 0.08, c.base + 0.85, c.base + 0.95, CREAM); }
   } },
   // --- Canal-house specials -----------------------------------------------------------------

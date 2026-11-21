@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { plotPlan, defaultStoreys, fillRoofPattern, ERA_GROUND_M, ROOF_ON_TOP_RISE_M, ROOF_INSIDE_MAX_M, ROOF_INSIDE_MIN_M, plotWhite, WHITE_HEAD_DRESSING, type PlotFacts } from './plotPlan.ts';
+import { plotPlan, defaultStoreys, fillRoofPattern, ERA_GROUND_M, ROOF_ON_TOP_RISE_M, ROOF_INSIDE_MAX_M, ROOF_INSIDE_MIN_M, plotWhite, plotHeads, plotDormers, plotLook, WHITE_HEAD_DRESSING, type PlotFacts } from './plotPlan.ts';
 
 test('the count is never the top over a short storey: 4 storeys from a 12.4 m to a 19.7 m top by default', () => {
   for (const top of [12.4, 14.9, 16.7, 17.8, 19.7]) assert.equal(defaultStoreys(top, ERA_GROUND_M), 4, `${top}`);
@@ -60,4 +60,14 @@ test('white detailing: frames by era (1860-1915), heads and string courses only 
   assert.deepEqual(plotWhite(1920, { src: 'photo', whiteHeads: 'blocks', stringCourses: true }), { frames: false, heads: 'blocks', courses: true });
   assert.equal(plotWhite(null, undefined).frames, false);
   assert.equal(WHITE_HEAD_DRESSING.blocks.dressing, 'voussoirs');
+});
+
+test('round 3: heads from the read shape, dormer count with the hoist on the middle one, alike plots share a look', () => {
+  assert.deepEqual(plotHeads({ src: 'photo', headShape: 'segmental' }), { dressing: 'brick-arch-ring', shape: 'segmental' });
+  assert.deepEqual(plotHeads({ src: 'photo', whiteHeads: 'keystone', headShape: 'round' }), { dressing: 'keystone', shape: 'round' });
+  assert.equal(plotHeads({ src: 'photo', whiteHeads: 'none' }), null);
+  const d = plotDormers(5.6, 5.5, { src: 'photo', dormers: 3 }, 'pediment', true);
+  assert.deepEqual(d.map(x => [x.kind, !!x.hoist]), [['plain', false], ['pediment', true], ['plain', false]]);
+  assert.equal(plotDormers(11, 5.5, undefined, 'pediment', false).length, 2);
+  assert.equal(plotLook({ src: 'photo', storeys: 4 }), plotLook({ src: 'reads', storeys: 4 }));
 });
