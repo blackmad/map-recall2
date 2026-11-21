@@ -24,7 +24,8 @@
   - The preview row fix: `chunkFeatures` keeps every `PREVIEW_ROW_IDS` pand and loads their tiles. `review-sheets render` composites installed models over their own spans, anchors on a generic pand, and takes `--root` to render r1 from a worktree at d10e4790d6.
   - The plot plan (`designUnits/plotPlan.ts`): storeys, cornice, the roof element per plot, ground use, balconies. The gate table is `scripts/design-units/plot-table.ts`.
   - A's era default (`roofSource: 'default'`) stays the fallback roof for unread plots.
-  - B (pricing a narrow roof read) is next, then stop for David.
+  - B, priced (pilot only; no batch until David decides): `scripts/design-units/roof-read.ts` (pick, crops, rows, call, score), output in `artifacts/design-units/roof-read/`. One Opus 5.5 call per unit at low effort, through the `ant` CLI, on the row of rectified crops. 37 calls: 47,779 input and 6,213 output tokens, $0.32 in total. A unit averages about 1,300 input and 170 output tokens, about $0.009. The 2,942 A-default segments would cost about $25, or about $13 through Batches, plus house:crops for 12,406 pands (80% get a usable crop; about 2 requests and 2 MB each).
+  - Gate agreement with my reads: roof storey yes/no 71 of 76 plots; exact form 52 of 76; class (gable vs dormer/mansard vs flat) 63 of 71 visible. Over the 19 pilot units, the read changes A's form on 16 of 55 plots (29%) and only the dormer kind on 27 more.
 
 This is for a fresh session that has only the repo. Read it first. Then read `docs/handoffs/design-units-plan-20261119.md`, `docs/handoffs/design-units-handoff-20261119.md` and `docs/reports/design-units-phase0-20261119.md`.
 
