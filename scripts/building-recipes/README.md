@@ -54,3 +54,20 @@ The 23 BAG-matched stations are staged in `tmp/public` (not published). Use
 `police: {stripe, lamp}`, `entrance.canopy` and `garageDoors` only when the
 panorama shows them. The Van Leijenberghlaan station (1976) shows none of them,
 so its intent leaves them out; the kit is covered by `largeTier.test.ts`.
+
+## Housing-block kit (lane large-kit-gaps-20261121)
+
+The kit gaps the kit-vs-hand test found on Valkenburgerstraat 69-165 are closed in the large tier, each opt-in and
+byte-identical when absent (`largeKitGaps.test.ts`):
+
+- **Per-house components** in a row split: `houses[]` take `windows`, `sills`, `blankStoreys`, `ribbonStoreys`,
+  `bayWindows`, `brickStoreys`, `ground`, `residential` and `wallMaterial`, bays and storeys counted within the house
+  (`houseComponents.ts`; validated by the group rules of the same name).
+- **Render panels** (`renderPanels`) and **accent panels** (`accentPanels`): a panel in its own colour and finish over a
+  span of bays and storeys of the main panel, round the cut windows (`blockBuilding/facePanels.ts`). Openings that could
+  not be cut (laid flush) are covered, so keep ribbons off a panel's outer edge under a panel.
+- **Loggia look**: `lining` (returns and back wall in their own colour) on `loggias`, `houses[].loggias` and
+  `loggiaBands`; `back: "door-window"` on cell loggias (`blockBuilding/loggia.ts`, shared with other lanes).
+- **Residential ground**: `ground: "residential"` with an optional `residential: {pattern, doors}` of entrance doors,
+  storage doors, windows and wall per bay, no fascia (`blockBuilding/residentialGround.ts`). The factory draft gives
+  housing pands this ground when the queue item says `use: "housing"`.

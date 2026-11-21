@@ -10,6 +10,7 @@ import { MeshBuilder, type V3, cross, sub, add, scale, norm, dot } from './mesh.
 import { buildHost, fitsPanel, rectPoly, pt, insidePoly, newell, triangulate3, type Panel } from './panels.ts';
 import type { BlockSpec, System, Row, WinParams, BalconyParams, Band, Slot, Sign, PanesParams } from './spec.ts';
 import { drawArchedOpening, drawArchedProud } from './arch.ts';
+import { rectMinusRects } from './loggia.ts';
 
 export interface TextShaper { (text: string, font?: string): { shapes: T.Shape[]; width: number; ascent: number } }
 export interface ComposeOptions {
@@ -415,10 +416,11 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   if (corners) {
     c.stats.recessed++;
     const R = w.loggia?.depth ?? c.recess, inner = corners.map(q => add(q, scale(n, -R))), [bl, br, tr, tl] = corners, [ibl, ibr, itr, itl] = inner;
-    c.mesh.quad(c.wallSlot, bl, br, ibr, ibl, part, UP);
-    c.mesh.quad(c.wallSlot, tl, tr, itr, itl, part, DOWN);
-    c.mesh.quad(c.wallSlot, bl, tl, itl, ibl, part, c.p.r);
-    c.mesh.quad(c.wallSlot, br, tr, itr, ibr, part, scale(c.p.r, -1));
+    const rs = w.loggia?.lining ?? c.wallSlot;
+    c.mesh.quad(rs, bl, br, ibr, ibl, part, UP);
+    c.mesh.quad(rs, tl, tr, itr, itl, part, DOWN);
+    c.mesh.quad(rs, bl, tl, itl, ibl, part, c.p.r);
+    c.mesh.quad(rs, br, tr, itr, ibr, part, scale(c.p.r, -1));
     // Bilinear over the back corners: ring and glass vertices weld exactly with the reveals.
     const lerp = (a: V3, b: V3, k: number): V3 => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k];
     Q = (u, v, d) => {
@@ -440,6 +442,18 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
       const pp = c.part(), half = posts.w / 2;
       for (const f of posts.at) { const u = u0 + (u1 - u0) * f; if (u - half > u0 + 0.05 && u + half < u1 - 0.05) c.box(c.wallSlot, u - half, u + half, v0, v1, back, -0.05, pp); }
     }
+  } else if (w.loggia?.items?.length) {
+    // a loggia back wall (the lining) round its door and window: abutting quads on the back plane, a frame ring and the
+    // glass in each opening, nothing overlapping (loggia.ts)
+    const ws = w.loggia.lining ?? c.wallSlot, W = u1 - u0, H = v1 - v0, wp = c.part();
+    const items = w.loggia.items.map(it => [u0 + W * it.u[0], u0 + W * it.u[1], v0 + H * it.v[0], v0 + H * it.v[1]] as [number, number, number, number]);
+    for (const [a, b, lo, hi] of rectMinusRects(u0, u1, v0, v1, items, 0.005)) g(a, b, lo, hi, ws, 0, wp);
+    for (const [a, b, lo, hi] of items) {
+      const f = Math.min(fw > 0 ? fw : 0.05, (b - a) / 4, (hi - lo) / 4);
+      g(a, b, lo, lo + f, frameSlot, 0, wp); g(a, b, hi - f, hi, frameSlot, 0, wp);
+      g(a, a + f, lo + f, hi - f, frameSlot, 0, wp); g(b - f, b, lo + f, hi - f, frameSlot, 0, wp);
+      g(a + f, b - f, lo + f, hi - f, glassSlot, 0, wp);
+    }
   } else if (w.paneSplit) {
     // one frame sheet at the back, the panes in front of it: ring and bars are the sheet between the panes
     g(u0, u1, v0, v1, frameSlot, 0);
@@ -449,19 +463,19 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   } else if (w.loggia?.back) {
     // a loggia whose back is a wall with rows of windows: abutting quads on the back plane (wall strips between the
     // rows, piers between the windows), no frame ring, no overlap
-    const rows = [...w.loggia.back.rows].sort((p, q) => p.lo - q.lo), wp = c.part();
+    const rows = [...w.loggia.back.rows].sort((p, q) => p.lo - q.lo), wp = c.part(), bs = w.loggia.lining ?? c.wallSlot;
     let vAt = v0;
     for (const r of rows) {
       const lo = Math.max(vAt, v0 + (v1 - v0) * r.lo), hi = Math.min(v1, v0 + (v1 - v0) * r.hi);
       if (hi - lo < 0.2) continue;
-      if (lo > vAt) g(u0, u1, vAt, lo, c.wallSlot, 0, wp);
+      if (lo > vAt) g(u0, u1, vAt, lo, bs, 0, wp);
       const n = Math.max(1, Math.round((u1 - u0) / r.pitch)), step = (u1 - u0) / n, ww = Math.min(r.winW, step - 0.1);
       let at = u0;
-      for (let k = 0; k < n; k++) { const a = u0 + step * (k + 0.5) - ww / 2; g(at, a, lo, hi, c.wallSlot, 0, wp); g(a, a + ww, lo, hi, glassSlot, 0, wp); at = a + ww; }
-      g(at, u1, lo, hi, c.wallSlot, 0, wp);
+      for (let k = 0; k < n; k++) { const a = u0 + step * (k + 0.5) - ww / 2; g(at, a, lo, hi, bs, 0, wp); g(a, a + ww, lo, hi, glassSlot, 0, wp); at = a + ww; }
+      g(at, u1, lo, hi, bs, 0, wp);
       vAt = hi;
     }
-    if (vAt < v1) g(u0, u1, vAt, v1, c.wallSlot, 0, wp);
+    if (vAt < v1) g(u0, u1, vAt, v1, bs, 0, wp);
   } else {
     g(u0, u1, v0, v0 + fw, frameSlot, 0); g(u0, u1, v1 - fw, v1, frameSlot, 0);
     g(u0, u0 + fw, v0 + fw, v1 - fw, frameSlot, 0); g(u1 - fw, u1, v0 + fw, v1 - fw, frameSlot, 0);

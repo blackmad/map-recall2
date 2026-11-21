@@ -1,0 +1,340 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "vanlohuizenlaan-202-oldkit-129788",
+ "pandId": "0363100012129788",
+ "address": "Th. K. van Lohuizenlaan 202-286, Amsterdam-Oost: 2006 housing, an eight-storey glass tower with wrap-around balcony slabs over a four-storey glazed block with green perforated panels (old-kit A/B recipe, lane large-kit-gaps-20261121: not installed)",
+ "sources": [
+  {
+   "id": "pano-2024-09-16-w01-181",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-16_07-18-19_02313/",
+   "image": "source-data://pand-reference-walls/0363100012129788/w01-181.jpg",
+   "sha256": "0f91c7691c7912ea8bbedd16c5d2968238a0e5ec197674fb3af722f81d5abec8",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-16-w03-1",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-16_12-04-41_00207/",
+   "image": "source-data://pand-reference-walls/0363100012129788/w03-1.jpg",
+   "sha256": "4e63b5e32d829c64d50fadb2bfe0069e802ae40607b8928985c3fbfeeba41169",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-16-w05-271",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-16_12-04-41_00337/",
+   "image": "source-data://pand-reference-walls/0363100012129788/w05-271.jpg",
+   "sha256": "a50cde5eb7c87f2e381cbdb8a782d6ad5690b952940f5800b8ecb41437a43bed",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w06-270",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_13-53-26_00254/",
+   "image": "source-data://pand-reference-walls/0363100012129788/w06-270.jpg",
+   "sha256": "00a6339afe05df028b43075ce7689e2c9a9d5a09fc47bcd55c69555714a1908b",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#a6aaa6",
+  "frame": "#c9cdcb",
+  "stone": "#9a9d99",
+  "glass": "#7d9396",
+  "door": "#3a3d3c"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "budgetTriangles": 30000,
+ "walls": [
+  {
+   "wallSurfaces": [
+    14
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.96,
+    "h": 0.9,
+    "sill": 0.04
+   },
+   "palette": {
+    "brick": "#a6aaa6",
+    "frame": "#c9cdcb",
+    "stone": "#9a9d99",
+    "glass": "#7d9396"
+   },
+   "balconyBands": {
+    "deep": 0.65,
+    "rail": 0.36,
+    "kind": "glass",
+    "colour": "#a9aba6",
+    "railColour": "#c9cdcb",
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands"
+   ],
+   "street": "Th. K. van Lohuizenlaan"
+  },
+  {
+   "wallSurfaces": [
+    22
+   ],
+   "street": "Th. K. van Lohuizenlaan",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 11,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.94,
+    "h": 0.86,
+    "sill": 0.06
+   },
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.22
+   },
+   "palette": {
+    "brick": "#a6aaa6",
+    "frame": "#c9cdcb",
+    "stone": "#9a9d99",
+    "glass": "#7d9396"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "windowGroup",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    1
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.96,
+    "h": 0.9,
+    "sill": 0.04
+   },
+   "palette": {
+    "brick": "#a6aaa6",
+    "frame": "#c9cdcb",
+    "stone": "#9a9d99",
+    "glass": "#7d9396"
+   },
+   "balconyBands": {
+    "deep": 0.65,
+    "rail": 0.36,
+    "kind": "glass",
+    "colour": "#a9aba6",
+    "railColour": "#c9cdcb",
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    21,
+    10
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.96,
+    "h": 0.9,
+    "sill": 0.04
+   },
+   "palette": {
+    "brick": "#a6aaa6",
+    "frame": "#c9cdcb",
+    "stone": "#9a9d99",
+    "glass": "#a3bab4"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ],
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.3
+   },
+   "blankStoreys": [
+    0
+   ]
+  },
+  {
+   "wallSurfaces": [
+    8
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 11,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.94,
+    "h": 0.86,
+    "sill": 0.06
+   },
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.22
+   },
+   "palette": {
+    "brick": "#a6aaa6",
+    "frame": "#c9cdcb",
+    "stone": "#9a9d99",
+    "glass": "#7d9396"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "windowGroup",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    11
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.96,
+    "h": 0.9,
+    "sill": 0.04
+   },
+   "palette": {
+    "brick": "#a6aaa6",
+    "frame": "#c9cdcb",
+    "stone": "#9a9d99",
+    "glass": "#a3bab4"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ],
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.3
+   },
+   "blankStoreys": [
+    0
+   ]
+  },
+  {
+   "wallSurfaces": [
+    23,
+    26
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.96,
+    "h": 0.9,
+    "sill": 0.04
+   },
+   "palette": {
+    "brick": "#a6aaa6",
+    "frame": "#c9cdcb",
+    "stone": "#9a9d99",
+    "glass": "#a3bab4"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ],
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.3
+   }
+  }
+ ],
+ "notes": [
+  "Old-kit read for the blind A/B (lane large-kit-gaps-20261121): fields that existed before the lane only. The green perforated panels show as grey wall between grouped lights; the ground repeats the upper windows."
+ ]
+}

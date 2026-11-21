@@ -25,6 +25,8 @@ export interface QueueItem {
   status: QueueStatus; house?: string; owner?: string; model?: string; turns?: number; ms?: Partial<Record<'crops' | 'facts' | 'draft' | 'measure' | 'compile' | 'strip' | 'install', number>>; claimedAt?: string; updatedAt?: string;
   report?: Record<string, unknown>; sheets?: string[]; verdict?: {outcome: 'pass' | 'fix' | 'hold' | 'no-evidence'; note?: string; fix?: Record<string, unknown>; reviewer?: string; date?: string; strip?: string};
   notes?: string[];
+  /** the pand's main BAG use (`housing`: the draft gives every group the residential ground; lane large-kit-gaps-20261121) */
+  use?: string;
 }
 export interface Queue { version: 1; generatedAt: string; method: string; items: QueueItem[] }
 
