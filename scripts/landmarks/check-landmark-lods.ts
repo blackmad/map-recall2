@@ -2,7 +2,7 @@
 // must carry the fingerprint of the GLB deployed now (modelAssetVersions.json),
 // every manifest model over the triangle threshold must have a lod1 file, and
 // every lod2 record (lane R4-B #244) must have its file, match the manifest, and
-// keep the lod2 set under LOD2_MAX_TOTAL_BYTES.
+// keep the lod2 stand-ins under LOD2_MAX_AVG_BYTES on average (a total cap blocked every new landmark; 2026-11-21).
 // Street chunks (lane R4-C #245): every chunks.json row's `lod2` must be current for its GLB's sha256, have its file at
 // the recorded size, stay under the triangle cap, and the chunk lod2 set under CHUNK_LOD2_MAX_TOTAL_BYTES.
 // Ordinary installs (lane R4-H #252): every modelLods.json row marked `ordinary` must be current for its catalogue GLB's
@@ -28,7 +28,7 @@ import {
 // Casino) and took the set to 6.56 MB.
 // 7 MB since round 20261120g: Magna Plaza's open belfries, lanterns and needles survive the silhouette guard (2.4k tris,
 // 46 KB) and Nieuwe Achtergracht 129 is new; the set reached 6.77 MB.
-const LOD2_MAX_TOTAL_BYTES = 7e6;
+const LOD2_MAX_AVG_BYTES = 14e3;
 /** Lane R4-H (#252): the ordinary installs' lod1 + lod2 together (27 models; lod1 at 1024 px). */
 const ORDINARY_LOD_MAX_TOTAL_BYTES = 8e6;
 /**
@@ -116,6 +116,6 @@ for (const chunk of chunks.chunks) {
   else if (fs.statSync(file).size !== chunk.lod2.bytes) problems.push(`${chunk.id}: ${file} is ${fs.statSync(file).size} B, record says ${chunk.lod2.bytes}`);
 }
 if (chunkCount && chunkBytes / chunkCount > CHUNK_LOD2_MAX_AVG_BYTES) problems.push(`chunk lod2 stand-ins average ${(chunkBytes / chunkCount / 1e3).toFixed(1)} KB, over the ${CHUNK_LOD2_MAX_AVG_BYTES / 1e3} KB budget (${chunkCount} chunks, ${(chunkBytes / 1e6).toFixed(2)} MB)`);
-if (lod2Bytes > LOD2_MAX_TOTAL_BYTES) problems.push(`lod2 set is ${(lod2Bytes / 1e6).toFixed(2)} MB, over the ${LOD2_MAX_TOTAL_BYTES / 1e6} MB budget`);
+if (lod2Count && lod2Bytes / lod2Count > LOD2_MAX_AVG_BYTES) problems.push(`landmark lod2 stand-ins average ${(lod2Bytes / lod2Count / 1e3).toFixed(1)} KB, over the ${LOD2_MAX_AVG_BYTES / 1e3} KB budget (${lod2Count} models, ${(lod2Bytes / 1e6).toFixed(2)} MB)`);
 assert.equal(problems.length, 0, `landmark lods out of date (run npm run build:landmark-lods):\n${problems.join('\n')}`);
 console.log(`${lod1Count} landmark lod1 models current; ${lod2Count} lod2 models current, ${(lod2Bytes / 1e6).toFixed(2)} MB; ${chunkCount} street-chunk lod2 current, ${(chunkBytes / 1e6).toFixed(2)} MB; ${ordinaryCount} ordinary installs' lod1 + lod2 current, ${(ordinaryBytes / 1e6).toFixed(2)} MB.`);

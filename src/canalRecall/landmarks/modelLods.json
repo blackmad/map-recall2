@@ -6611,5 +6611,185 @@
    "bytes": 9672,
    "triangles": 214
   }
+ },
+ "rapenburgerstraat-220": {
+  "sourceHash": "c29cbd603ef9cc9e",
+  "buildVersion": 2,
+  "bytes": 142428,
+  "triangles": 9041,
+  "lod2": {
+   "sourceHash": "c29cbd603ef9cc9e",
+   "buildVersion": 6,
+   "bytes": 32584,
+   "triangles": 1498
+  }
+ },
+ "rapenburgerstraat-4": {
+  "sourceHash": "1970d2972392d8a5",
+  "buildVersion": 2,
+  "bytes": 158924,
+  "triangles": 10013,
+  "lod2": {
+   "sourceHash": "1970d2972392d8a5",
+   "buildVersion": 6,
+   "bytes": 32244,
+   "triangles": 1500
+  }
+ },
+ "westerdoksdijk-215": {
+  "sourceHash": "e3c043513f0eb199",
+  "buildVersion": 2,
+  "bytes": 293256,
+  "triangles": 20186,
+  "lod2": {
+   "sourceHash": "e3c043513f0eb199",
+   "buildVersion": 6,
+   "bytes": 33452,
+   "triangles": 1463
+  }
+ },
+ "sumatrakade-1101": {
+  "sourceHash": "f20cdc2214411113",
+  "buildVersion": 2,
+  "bytes": 117696,
+  "triangles": 7284,
+  "lod2": {
+   "sourceHash": "f20cdc2214411113",
+   "buildVersion": 6,
+   "bytes": 30828,
+   "triangles": 1499
+  }
+ },
+ "albatrospad-1": {
+  "sourceHash": "c6529817e625c6a1",
+  "buildVersion": 2,
+  "bytes": 220820,
+  "triangles": 15738,
+  "lod2": {
+   "sourceHash": "c6529817e625c6a1",
+   "buildVersion": 6,
+   "bytes": 24068,
+   "triangles": 1496
+  }
+ },
+ "rinus-michelslaan-1": {
+  "sourceHash": "ccc79ce77f4e2aa4",
+  "buildVersion": 2,
+  "bytes": 210100,
+  "triangles": 14237,
+  "lod2": {
+   "sourceHash": "ccc79ce77f4e2aa4",
+   "buildVersion": 6,
+   "bytes": 27936,
+   "triangles": 1494
+  }
+ },
+ "revaleiland-121": {
+  "sourceHash": "b67eae9faa5ccc15",
+  "buildVersion": 2,
+  "bytes": 124004,
+  "triangles": 8159,
+  "lod2": {
+   "sourceHash": "b67eae9faa5ccc15",
+   "buildVersion": 6,
+   "bytes": 30404,
+   "triangles": 1499
+  }
+ },
+ "tweede-atjehstraat-2": {
+  "sourceHash": "415fafdca0bd9621",
+  "buildVersion": 2,
+  "bytes": 140072,
+  "triangles": 9480,
+  "lod2": {
+   "sourceHash": "415fafdca0bd9621",
+   "buildVersion": 6,
+   "bytes": 27616,
+   "triangles": 1500
+  }
+ },
+ "pieter-de-hoochstraat-13": {
+  "sourceHash": "8179e7406930013b",
+  "buildVersion": 2,
+  "bytes": 138668,
+  "triangles": 9316,
+  "lod2": {
+   "sourceHash": "8179e7406930013b",
+   "buildVersion": 6,
+   "bytes": 29476,
+   "triangles": 1492
+  }
+ },
+ "wiborgeiland-76": {
+  "sourceHash": "420f2f49da79b72b",
+  "buildVersion": 2,
+  "bytes": 153716,
+  "triangles": 9508,
+  "lod2": {
+   "sourceHash": "420f2f49da79b72b",
+   "buildVersion": 6,
+   "bytes": 31180,
+   "triangles": 1494
+  }
+ },
+ "erotic-museum": {
+  "sourceHash": "a05520b737935c0f",
+  "buildVersion": 2,
+  "bytes": 33444,
+  "triangles": 1227,
+  "lod2": {
+   "sourceHash": "a05520b737935c0f",
+   "buildVersion": 6,
+   "bytes": 8044,
+   "triangles": 149
+  }
+ },
+ "condomerie": {
+  "sourceHash": "cffc8c1356cf9c17",
+  "buildVersion": 2,
+  "bytes": 40492,
+  "triangles": 1328,
+  "lod2": {
+   "sourceHash": "cffc8c1356cf9c17",
+   "buildVersion": 6,
+   "bytes": 6260,
+   "triangles": 98
+  }
+ },
+ "red-light-secrets": {
+  "sourceHash": "39f7ff7622fd2b92",
+  "buildVersion": 2,
+  "bytes": 44180,
+  "triangles": 1659,
+  "lod2": {
+   "sourceHash": "39f7ff7622fd2b92",
+   "buildVersion": 6,
+   "bytes": 8364,
+   "triangles": 196
+  }
+ },
+ "banana-bar": {
+  "sourceHash": "b630c146377e31f7",
+  "buildVersion": 2,
+  "bytes": 35092,
+  "triangles": 1146,
+  "lod2": {
+   "sourceHash": "b630c146377e31f7",
+   "buildVersion": 6,
+   "bytes": 5912,
+   "triangles": 80
+  }
+ },
+ "belle": {
+  "sourceHash": "b7a0aff5fd65dd68",
+  "buildVersion": 2,
+  "bytes": 21128,
+  "triangles": 884,
+  "lod2": {
+   "sourceHash": "b7a0aff5fd65dd68",
+   "buildVersion": 6,
+   "bytes": 5220,
+   "triangles": 115
+  }
  }
 }

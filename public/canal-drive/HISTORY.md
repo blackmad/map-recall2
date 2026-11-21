@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## Ten hand blocks, more Wallen, post-war round 2 (2026-11-21, round 20261121p)
+
+- **Hand blocks (lanes hand-blocks-a/-b):** Rapenburgerstraat 220 and 4, Sumatrakade 1101, Westerdoksdijk 215, Pieter de Hoochstraat 13, Tweede Atjehstraat 2, Albatrospad 1, Revaleiland 121, Wiborgeiland 76, Rinus Michelslaan 1; each beat today in a fresh blind (Rinus Michelslaan marginal: east wing weak). Held: Westerdok 4 (59k tris, balconies read flat, shell storeys above the photo roofline) and Klapmutsenveem 30 (3DBAG covers only 87 of 192 m). Albatrospad was a kit candidate by the triage rule but shipped because it beats the generic box. Shadows added for Westerdoksdijk, Revaleiland and Wiborgeiland.
+- **Wallen (lane lm-wallen-more):** Erotic Museum, Condomerie, Red Light Secrets (two panden), Bananenbar and the Belle statue (TripoSR from a CC BY-SA photo by Ceescamel, sculpture by Els Rijerse). Bulldog The First (OZV 90; the Bulldog Palace is at Leidseplein 15) and In 't Aepjen are held after two failed blinds and draw today's building.
+- **Post-war kit round 2:** grey brick on 7 walls where two capture days agree (3-1), glazed stair towers (2-0), white and brick erkers (2-0-1). Held: the warm median over captures (drew a grey front pink) and sibling balconies (0-2), behind `?postwarSiblings=1`.
+- **LOD budget:** the landmark lod2 check is now an average (14 KB per stand-in) instead of a 7 MB total; main sat at the cap and every new landmark would trip it. Mirrors the chunk lod2 change.
+- **Crash 17:46:** a machine crash wiped /tmp; integrator scripts now live in `~/Code/map-recall2-worktrees/_integrator-tools`.
+
 ## One room per shop, for real (2026-11-21, round 20261121o)
 
 - David on round l's tint: "these still look very inconsistent". The tint matched light, but each filler still painted its own room (bottle shelf, white poster wall, café). Lane/shop-one-room-20261121 (d375e8a08d): five room families (shop white, takeaway cream, sweet pink-white, warm wood, dark) in `retailRoomTone.ts` set wall, floor, a dado at one height, lights and glass level; with shopVariety on, signature cells and fillers paint on their family's room, and every filler is painted once per family and dressed for it (no supermarket packets in a cheese shop or bakery, no diners in a shop's fridge window). Round l's tint, tone table and measuring scripts are removed. Café tables cap at half the panes. `?shopVariety=0` stays byte-identical.

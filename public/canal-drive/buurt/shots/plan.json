@@ -1035,6 +1035,17 @@
      ]
     },
     {
+     "label": "Sumatrakade 1101-1247 housing slab",
+     "lat": 52.37927797,
+     "lng": 4.9265374,
+     "view": "chase",
+     "at": [
+      4.92792,
+      52.378886,
+      295
+     ]
+    },
+    {
      "label": "Woongebouw Wladiwostok",
      "lat": 52.37750540889138,
      "lng": 4.936266441562724,
@@ -1043,17 +1054,6 @@
       4.937195,
       52.377427,
       278
-     ]
-    },
-    {
-     "label": "Bogortuin 101",
-     "lat": 52.376374223915306,
-     "lng": 4.936062018713485,
-     "view": "chase",
-     "at": [
-      4.935494,
-      52.377302,
-      160
      ]
     },
     {
@@ -2281,6 +2281,17 @@
      ]
     },
     {
+     "label": "Revaleiland 121-286 housing block",
+     "lat": 52.3936686,
+     "lng": 4.88035597,
+     "view": "chase",
+     "at": [
+      4.881893,
+      52.393412,
+      285
+     ]
+    },
+    {
      "label": "Revaleiland 58, Houthavens",
      "lat": 52.3929639,
      "lng": 4.8789651,
@@ -2289,17 +2300,6 @@
       4.877741,
       52.393641,
       132
-     ]
-    },
-    {
-     "label": "Revaleiland, Houthavens",
-     "lat": 52.3936897,
-     "lng": 4.8802354,
-     "view": "chase",
-     "at": [
-      4.881706,
-      52.39332,
-      292
      ]
     },
     {
@@ -3288,25 +3288,25 @@
    "name": "Wiborgeiland",
    "shots": [
     {
-     "label": "Wiborgeiland 1-72, Houthavens",
-     "lat": 52.3935765,
-     "lng": 4.8769975,
+     "label": "Wiborgeiland 76-171 housing row",
+     "lat": 52.3940991,
+     "lng": 4.87833156,
      "view": "chase",
      "at": [
-      4.876118,
-      52.392927,
-      40
+      4.87677,
+      52.394347,
+      105
      ]
     },
     {
-     "label": "Wiborgeiland 177-193, Houthavens",
-     "lat": 52.3946698,
-     "lng": 4.8795232,
+     "label": "Wiborgeiland, Houthavens",
+     "lat": 52.3950821,
+     "lng": 4.880224,
      "view": "chase",
      "at": [
-      4.880097,
-      52.394474,
-      299
+      4.880271,
+      52.394349,
+      358
      ]
     },
     {
