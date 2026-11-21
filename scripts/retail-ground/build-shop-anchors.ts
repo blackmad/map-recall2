@@ -6,8 +6,9 @@
  *
  *   node --import tsx scripts/retail-ground/build-shop-anchors.ts --cache=.cache/retail-ground/overpass.json
  *   node --import tsx scripts/retail-ground/build-shop-anchors.ts --cache=... --publish
- *   (--vbo=.cache/retail-ground/vbo: also BAG shop/horeca verblijfsobject points; --vbo-fetch first fills the cache for
- *   shop pands it does not cover;
+ *   (--vbo=.cache/retail-ground/vbo: also BAG verblijfsobject points with a ground-floor non-residential use
+ *   (shopRun.ts bagUnitAnchors); --vbo-fetch first fills the cache for shop pands it does not cover; --vbo-refetch also
+ *   re-fetches cached pand_*.json files written before they carried the toevoeging (the storey proxy);
  *   --bag=path/to/bag-uses.json: the BAG use table, default .cache/industrial/bag-uses.json)
  *
  * Stages tmp/shop-anchors/shop-anchors.json and prints coverage; --publish also writes
@@ -18,7 +19,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { shopKindForTags, type ShopfrontExtract } from '../../src/canalRecall/shopfronts.ts';
 import { bagAllowsShop, hostForPoi, isTradeBusiness, type BagUsesTable } from '../../src/canalRecall/shopGate.ts';
-import type { ShopAnchorExtract } from '../../src/canalRecall/shopRun.ts';
+import { bagUnitAnchors, type ShopAnchorExtract } from '../../src/canalRecall/shopRun.ts';
 import { insideRing } from '../../src/canalRecall/retailHosting.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
@@ -74,7 +75,8 @@ for (const node of nodes) {
   if (!list.some(p => p[0] === at[0] && p[1] === at[1])) list.push(at);
 }
 // Round 2 (coordinator 2026-11-21): every BAG verblijfsobject with a shop (winkelfunctie) or horeca (bijeenkomstfunctie)
-// use whose address point lies in a shop pand is an anchor too, so a street run faced by a registered shop unit keeps its
+// use whose address point lies in a shop pand is an anchor too; round 3: any ground-floor non-residential use
+// (office, school, clinic, studio ...; shopRun.ts bagUnitAnchors, the storey read from the toevoeging), so a street run faced by a registered shop unit keeps its
 // shopfront even when OSM has no node there. --vbo=<dir>: the retail-ground PDOK cache (.cache/retail-ground/vbo, one
 // {vbos: [{use, at}]} file per bbox); absent, OSM only.
 const vboDir = process.argv.find(a => a.startsWith('--vbo='))?.slice(6);
@@ -87,11 +89,12 @@ if (vboDir && process.argv.includes('--vbo-fetch')) {
   for (const p of cached) { const k = `${Math.floor(p[0] / CELL)},${Math.floor(p[1] / CELL)}`; let l = cgrid.get(k); if (!l) cgrid.set(k, l = []); l.push(p); }
   const ringOf = new Map<string, [number, number][]>();
   for (const list of grid.values()) for (const b of list) if (shops.buildings[b.id] !== undefined) ringOf.set(b.id, b.ring);
-  const todo = [...ringOf].filter(([, ring]) => !ring.some(([x, y]) => { for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (const p of cgrid.get(`${Math.floor(x / CELL) + dx},${Math.floor(y / CELL) + dy}`) ?? []) if (insideRing(ring, p[0], p[1])) return true; return false; }));
+  const stale = (file: string) => process.argv.includes('--vbo-refetch') && fs.existsSync(file) && (JSON.parse(fs.readFileSync(file, 'utf8')).vbos as Array<Record<string, unknown>>).some(v => !('add' in v));
+  const todo = [...ringOf].filter(([id]) => stale(path.join(dir, `pand_${bagKey(id)}.json`))).concat([...ringOf].filter(([, ring]) => !ring.some(([x, y]) => { for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (const p of cgrid.get(`${Math.floor(x / CELL) + dx},${Math.floor(y / CELL) + dy}`) ?? []) if (insideRing(ring, p[0], p[1])) return true; return false; })));
   let fetched = 0, failed = 0;
   for (const [id, ring] of todo) {
     const file = path.join(dir, `pand_${bagKey(id)}.json`);
-    if (fs.existsSync(file)) continue;
+    if (fs.existsSync(file) && !stale(file)) continue;
     const xs = ring.map(p => p[0]), ys = ring.map(p => p[1]), lng = (x: number) => (x / KX + 4.9).toFixed(6), lat = (y: number) => (y / KY + LAT0).toFixed(6);
     const url = `https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?f=json&limit=1000&bbox=${lng(Math.min(...xs))},${lat(Math.min(...ys))},${lng(Math.max(...xs))},${lat(Math.max(...ys))}`;
     try {
@@ -99,19 +102,19 @@ if (vboDir && process.argv.includes('--vbo-fetch')) {
       if (res.status === 429 || res.status >= 500) { console.log(`  PDOK ${res.status}: stopping; re-run to resume from the cache`); failed++; break; }
       if (!res.ok) { failed++; continue; }
       const j = await res.json() as { features: Array<{ properties: Record<string, unknown>; geometry: { coordinates: [number, number] } }> };
-      fs.writeFileSync(file, JSON.stringify({ url, fetched: new Date().toISOString().slice(0, 10), vbos: j.features.map(f => ({ use: String(f.properties.gebruiksdoel ?? ''), m2: Number(f.properties.oppervlakte ?? 0), at: [+f.geometry.coordinates[0].toFixed(7), +f.geometry.coordinates[1].toFixed(7)] })) }));
+      fs.writeFileSync(file, JSON.stringify({ url, fetched: new Date().toISOString().slice(0, 10), vbos: j.features.map(f => ({ street: String(f.properties.openbare_ruimte_naam ?? ''), nr: Number(f.properties.huisnummer), letter: (f.properties.huisletter as string | null) ?? null, add: (f.properties.toevoeging as string | null) ?? null, use: String(f.properties.gebruiksdoel ?? ''), m2: Number(f.properties.oppervlakte ?? 0), at: [+f.geometry.coordinates[0].toFixed(7), +f.geometry.coordinates[1].toFixed(7)] })) }));
       if (++fetched % 200 === 0) console.log(`  fetched ${fetched} of ${todo.length}`);
       await new Promise(r => setTimeout(r, 150)); // polite: about six requests a second, one at a time
     } catch { failed++; }
   }
-  console.log(`BAG fetch: ${todo.length} shop pands had no cached verblijfsobject; ${fetched} fetched, ${failed} failed`);
+  console.log(`BAG fetch: ${todo.length} shop pands had no cached verblijfsobject (or a stale cache); ${fetched} fetched, ${failed} failed`);
 }
 let vboAdded = 0, vboPands = new Set<string>();
 if (vboDir) {
   const seen = new Set<string>();
   for (const f of fs.readdirSync(path.resolve(vboDir)).filter(f => f.endsWith('.json'))) {
-    for (const v of (JSON.parse(fs.readFileSync(path.join(path.resolve(vboDir), f), 'utf8')).vbos ?? []) as Array<{ use?: string; at?: [number, number] }>) {
-      if (!v.at || !/winkelfunctie|bijeenkomstfunctie/.test(v.use ?? '')) continue;
+    for (const v of (JSON.parse(fs.readFileSync(path.join(path.resolve(vboDir), f), 'utf8')).vbos ?? []) as Array<{ use?: string; add?: string | null; at?: [number, number] }>) {
+      if (!v.at || !bagUnitAnchors(v.use, v.add)) continue;
       const at: [number, number] = [Math.round(v.at[0] * 1e6) / 1e6, Math.round(v.at[1] * 1e6) / 1e6], k = at.join(',');
       if (seen.has(k)) continue; seen.add(k);
       const [x, y] = local(at[0], at[1]);
@@ -122,9 +125,9 @@ if (vboDir) {
       list.push(at); vboAdded++; vboPands.add(host.id);
     }
   }
-  console.log(`BAG verblijfsobjecten (shop/horeca): ${seen.size} points, ${vboAdded} anchors added on ${vboPands.size} shop pands`);
+  console.log(`BAG verblijfsobjecten (ground-floor non-residential): ${seen.size} points, ${vboAdded} anchors added on ${vboPands.size} shop pands`);
 }
-const out: ShopAnchorExtract = { version: 1, source: `OSM shop/amenity nodes (${stamp}), hosted by shopGate.hostForPoi${vboDir ? '; BAG verblijfsobjecten with winkel/horeca use (PDOK BAG OGC, retail-ground cache)' : ''}`, buildings: Object.fromEntries([...anchors].sort(([a], [b]) => a < b ? -1 : 1)) };
+const out: ShopAnchorExtract = { version: 1, source: `OSM shop/amenity nodes (${stamp}), hosted by shopGate.hostForPoi${vboDir ? '; BAG verblijfsobjecten with a ground-floor non-residential use (shopRun.ts bagUnitAnchors; PDOK BAG OGC, retail-ground cache)' : ''}`, buildings: Object.fromEntries([...anchors].sort(([a], [b]) => a < b ? -1 : 1)) };
 const text = JSON.stringify(out);
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, text);

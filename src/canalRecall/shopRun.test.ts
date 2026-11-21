@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { CORNER_REACH_M, TIE_REACH_M, setShopAnchors, shopRunEnabled, shopRunsFor, type ShopRunGeom } from './shopRun.ts';
+import { CORNER_REACH_M, TIE_REACH_M, bagUnitAnchors, setShopAnchors, shopRunEnabled, shopRunsFor, upperFloorToevoeging, type ShopRunGeom } from './shopRun.ts';
 import { buildFeatureChunk, meshBuildingFor } from './threeBuildingFeatures.ts';
 import { decorateShopfront, setShopfronts } from './shopfronts.ts';
 
@@ -18,6 +18,23 @@ test('flag parsing: default off, query beats env', () => {
   assert.equal(shopRunEnabled('?shopRun=1', '0'), true);
   assert.equal(shopRunEnabled('?a=1&shopRun=0', '1'), false);
   assert.equal(shopRunEnabled(null, '1'), true);
+});
+
+test('BAG units: ground-floor non-residential uses anchor; homes, storage and upper floors do not', () => {
+  assert.equal(bagUnitAnchors('winkelfunctie', null), true);
+  assert.equal(bagUnitAnchors('bijeenkomstfunctie', 'H'), true);
+  assert.equal(bagUnitAnchors('woonfunctie,winkelfunctie', null), true, 'a shop-home keeps round 2 behaviour');
+  // Zakslootje / Brandewijnsteeg (0363100012182300): office and school units.
+  assert.equal(bagUnitAnchors('kantoorfunctie', null), true);
+  assert.equal(bagUnitAnchors('onderwijsfunctie', null), true);
+  for (const u of ['gezondheidszorgfunctie', 'sportfunctie', 'celfunctie', 'industriefunctie', 'logiesfunctie']) assert.equal(bagUnitAnchors(u, 'H'), true, u);
+  assert.equal(bagUnitAnchors('woonfunctie', null), false);
+  assert.equal(bagUnitAnchors('overige gebruiksfunctie', 'H'), false);
+  assert.equal(bagUnitAnchors('woonfunctie,kantoorfunctie', null), false, 'a home office');
+  assert.equal(bagUnitAnchors('', null), false);
+  // Storeys from the Amsterdam toevoeging.
+  for (const add of ['1', '2', '3V', '1A', '01', '12']) { assert.equal(upperFloorToevoeging(add), true, add); assert.equal(bagUnitAnchors('kantoorfunctie', add), false, add); assert.equal(bagUnitAnchors('winkelfunctie', add), false, add); }
+  for (const add of [null, undefined, '', 'H', 'O', 'HL', '0', 'A']) assert.equal(upperFloorToevoeging(add), false, String(add));
 });
 
 test('one shop mid-front keeps only its own run (Valkenburgerstraat 69-165, Roche Bobois)', () => {

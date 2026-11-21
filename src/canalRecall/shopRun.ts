@@ -14,7 +14,8 @@
 //      is a corner unit fronting both (Brasserie Keyzer, Van Baerlestraat 96, pand 0363100012164883: its BAG horeca
 //      point is 6.2 m from one street run and 7.0 m from the Van Baerlestraat run).
 // Anchors are OSM ground-floor businesses and (round 2) BAG verblijfsobjecten with a winkel or horeca use, so a street
-// run faced by a registered shop unit keeps its shopfront when OSM has no node there.
+// run faced by a registered shop unit keeps its shopfront when OSM has no node there. Round 3: any ground-floor
+// non-residential BAG unit (office, school, clinic ...; bagUnitAnchors below) is an anchor too.
 // A shop pand with no anchor (a busy-stretch guess, scripts/build-shopfronts.ts) keeps the shop on its street runs and
 // loses it on back and courtyard runs. A pand with one run, or no street run, is unchanged.
 //
@@ -51,6 +52,32 @@ export function setShopAnchors(data: ShopAnchorExtract | null): void {
 export function shopAnchorsFor(id: string): Array<[number, number]> | undefined {
   const list = anchors?.buildings[id];
   return Array.isArray(list) && list.length ? list : undefined;
+}
+
+/**
+ * Round 3 (coordinator 2026-11-21, loss at Zakslootje / Brandewijnsteeg, 0363100012182300): which BAG verblijfsobjecten
+ * anchor a shop run. A glazed ground front is as often an office, school, clinic or studio as a shop, so every
+ * non-residential gebruiksdoel counts, not only winkel and horeca (bijeenkomst):
+ *  - shop and horeca uses count as in round 2, also when the unit is a dwelling too;
+ *  - the other non-residential uses (kantoor, onderwijs, gezondheidszorg, sport, cel, industrie, logies) count only when
+ *    the unit is not also a woonfunctie (a registered home office or atelier-at-home has no glazed front);
+ *  - woonfunctie alone and "overige gebruiksfunctie" (bergingen, parking) never count.
+ * BAG carries no storey (neither the PDOK verblijfsobject nor the nummeraanduiding), so the ground floor is read from
+ * the Amsterdam toevoeging: one that starts with a storey number 1+ ("1", "2", "3V", "1A", "01") is an upper-floor
+ * unit and does not count; none, "H" (huis), "O", "HL", "0" and the rest are taken as ground floor.
+ */
+export const BAG_SHOP_USES = ['winkelfunctie', 'bijeenkomstfunctie'] as const;
+export const BAG_FRONT_USES = ['kantoorfunctie', 'onderwijsfunctie', 'gezondheidszorgfunctie', 'sportfunctie', 'celfunctie', 'industriefunctie', 'logiesfunctie'] as const;
+/** True when a BAG toevoeging names an upper storey (1 and up). */
+export function upperFloorToevoeging(add?: string | null): boolean {
+  return typeof add === 'string' && /^0*[1-9]/.test(add.trim());
+}
+/** True when a BAG verblijfsobject (gebruiksdoel, comma-separated, and toevoeging) anchors a shop run; see above. */
+export function bagUnitAnchors(use: string | null | undefined, add?: string | null): boolean {
+  if (!use || upperFloorToevoeging(add)) return false;
+  const uses = use.split(',').map(u => u.trim());
+  if (uses.some(u => (BAG_SHOP_USES as readonly string[]).includes(u))) return true;
+  return !uses.includes('woonfunctie') && uses.some(u => (BAG_FRONT_USES as readonly string[]).includes(u));
 }
 
 /** A wall run in local metres: its walls as [x0, y0, x1, y1], and whether any of them faces a street. */
