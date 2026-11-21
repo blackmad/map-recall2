@@ -13,7 +13,7 @@ const pick = (panoId: string, timestamp: string, obliquityDeg: number, cam: [num
 const flags = (o: Partial<CropFlags> = {}): CropFlags => ({ foliage: 0, foliagePlain: 0, wbApplied: false, washedOut: 0, missing: 0, voidShare: 0, occluderShare: 0, obliquity: 10, cameraDistance: 15, rayBlocked: false, wallWidthM: 6, heightCover: 1, edgeDensity: 0.1, seamStep: 0, strip: false, ...o });
 const cand = (id: string, o: Partial<Candidate> = {}): Candidate => ({
   id, file: `p/${id}.jpg`, year: 2022, month: 3, distM: 15, obliquityDeg: 10, source: 'wall', flags: flags(), reasons: [], hardPass: true, usable: true,
-  pano: { id: `pano-${id}`, date: '2022-03-01' }, leafOff: true, rayBlocked: false, ppm: 80, nativePpm: 85, width: 500, height: 1400, ...o,
+  pano: { id: `pano-${id}`, date: '2022-03-01' }, leafOff: true, rayBlocked: false, ppm: 80, nativePpm: 85, width: 500, height: 1400, pandSpanPx: [120, 380], marginM: 1.5, ...o,
 });
 
 test('same view: same panorama, or the same day with cameras under 3 m apart', () => {
@@ -115,4 +115,34 @@ test('forced front edge: the longest footprint edge facing the face bearing', as
   assert.equal(displayPpm(8000, 6, 16).ppm, 100);
   const far = displayPpm(8000, 30, 16);
   assert.equal(far.ppm, 50); assert.ok(far.native < 50);
+});
+
+test('facade width: window columns, a BAG edge through a window, and spacing continued past the span', async () => {
+  const { windowColumns, facadeExtension } = await import('./facadeWidth.ts');
+  // 8 m wide at 50 px/m, brick (120) with 0.8 m dark windows (30) every 1.6 m starting at 0.6 m: centres 1.0, 2.6, 4.2, 5.8, 7.4 m.
+  const ppm = 50, W = 400, H = 600, g = new Uint8Array(W * H).fill(120);
+  for (let y = 60; y < 540; y++) for (const c of [1.0, 2.6, 4.2, 5.8, 7.4]) for (let x = Math.round((c - 0.4) * ppm); x < Math.round((c + 0.4) * ppm); x++) if (y % 120 < 80) g[y * W + x] = 30;
+  const cols = windowColumns(g, W, H, ppm);
+  assert.equal(cols.length, 5);
+  assert.ok(Math.abs(cols[2].c / ppm - 4.2) < 0.1);
+  // BAG span 1.5-5.0 m: the right edge (5.0) is 0.4 m from column 5.8's left side (5.4)... no cut; column 5.8 continues the 1.6 m spacing.
+  const a = facadeExtension(cols, [75, 250], ppm, 1.5);
+  assert.equal(a.columnsInSpan, 2); assert.ok(a.extendsRight); assert.ok(a.extendsLeft, 'column 1.0 continues the spacing on the left');
+  // A span edge through the middle of a window (4.2 m) is a cut.
+  const b = facadeExtension(cols, [60, 210], ppm, 1.5);
+  assert.ok(b.extendsRight); assert.match(b.why, /cuts a window/);
+  // Plain wall: no columns, no flag.
+  const plain = facadeExtension(windowColumns(new Uint8Array(W * H).fill(120), W, H, ppm), [75, 325], ppm, 1.5);
+  assert.ok(!plain.extendsLeft && !plain.extendsRight);
+});
+
+test('uncertain front: the footprint extent along the face line', async () => {
+  const { footprintFront } = await import('./prepare.ts');
+  // An L-shaped plot whose street edge is 2.8 m of a 6 m wide footprint; the wall line stays where it was.
+  const ring = [{ x: 0, y: 0 }, { x: 2.8, y: 0 }, { x: 2.8, y: 1 }, { x: 6, y: 1 }, { x: 6, y: 15 }, { x: 0, y: 15 }, { x: 0, y: 0 }];
+  const wall = { a: { x: 0, y: 0 }, b: { x: 2.8, y: 0 }, len: 2.8, nx: 0, ny: -1, mid: { x: 1.4, y: 0 }, roadDistM: 5, facing: 1 };
+  const w = footprintFront(ring, wall);
+  assert.equal(+w.len.toFixed(2), 6);
+  assert.deepEqual([w.a.y, w.b.y], [0, 0]);
+  assert.equal(+w.mid.x.toFixed(2), 3);
 });
