@@ -342,7 +342,9 @@ function priorBays(b: MeshBuilding, streetRun: boolean, corner: boolean, base: n
 export type LayoutProbeRun = { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number;
   /** Lane PR1 (structure priors): the layout style, window axes per cell, whether a street-appearance recipe or a
    *  HouseSpec / structure prior fitted the run, and the exposed height the grid was laid on. */
-  style?: FacadeStyle; axes?: number; recipe?: boolean; fit?: 'spec' | 'prior' | null; exposedM?: number };
+  style?: FacadeStyle; axes?: number; recipe?: boolean; fit?: 'spec' | 'prior' | null; exposedM?: number;
+  /** The run's first start and last end, metres from the chunk origin (house preview: the run on the framed wall). */
+  at?: [number, number, number, number] };
 export const layoutProbe: { sink?: (id: string, run: LayoutProbeRun) => void } = {};
 export const lookVariant = (id: string) => Math.floor(hash01(`${id}:look`) * CELL_VARIANTS);
 
@@ -1140,7 +1142,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const hs = profiledStoreys(soloStoreys.shares.slice(1), layout.storeys, layout.storeys * layout.storeyM);
         if (hs) layout.storeyHeightsM = hs;
       }
-      if (layoutProbe.sink && layout) layoutProbe.sink(b.id, { storeys: layout.storeys, groundM: layout.groundM, storeyM: layout.storeyM, bays: units ? layout.bays : layout.bays * (b.openings?.upper?.axes.length ?? 1), street: run.some(({ e }) => doorAllowed.has(e)), lengthM: layout.lengthM, base, style: b.style, axes: b.openings?.upper?.axes.length ?? 1, recipe: !!b.recipe, fit: specBays ? (b.specRecipe?.bays || b.specRecipe?.storeys ? 'spec' : 'prior') : null, exposedM: facadeTop - base });
+      if (layoutProbe.sink && layout) layoutProbe.sink(b.id, { storeys: layout.storeys, groundM: layout.groundM, storeyM: layout.storeyM, bays: units ? layout.bays : layout.bays * (b.openings?.upper?.axes.length ?? 1), street: run.some(({ e }) => doorAllowed.has(e)), lengthM: layout.lengthM, base, style: b.style, axes: b.openings?.upper?.axes.length ?? 1, recipe: !!b.recipe, fit: specBays ? (b.specRecipe?.bays || b.specRecipe?.storeys ? 'spec' : 'prior') : null, exposedM: facadeTop - base, at: [first.x0, first.y0, run[run.length - 1].e.x1, run[run.length - 1].e.y1] });
       if(layout&&b.recipe?.facadeAssembly==='stacked-open-balcony'&&base<.5){
         const center=(layout.bays-1)/2;
         const eligible=Array.from({length:layout.bays},(_,i)=>i).filter(i=>{

@@ -23,3 +23,26 @@ export function frontLineArg(wall: FaceWall | undefined, edges?: { facadeSpanPx?
   const f = (v: number) => v.toFixed(8);
   return `line:${f(a[0])},${f(a[1])},${f(b[0])},${f(b[1])}`;
 }
+
+/**
+ * House preview's measured run (measure.json `layout`): the street run lying on the framed wall, parallel within 25 deg,
+ * within 1.5 m of its line, with the most of its length inside the frame; undefined when none is (the caller takes the
+ * longest street run, as before). A corner house's longest street run is not the framed front: Herengracht 82 measured
+ * its 10.6 m side-street wall under the 6.68 m canal front the photo shows. `at` and the frame are metres from the chunk
+ * origin (threeBuildingMesh layoutProbe).
+ */
+export function framedRun<R extends { at?: readonly [number, number, number, number] }>(runs: readonly R[], frame: { origin: readonly number[]; right: readonly number[]; normal: readonly number[]; len: number }): R | undefined {
+  let best: R | undefined, bestM = 0.5;
+  for (const r of runs) {
+    if (!r.at) continue;
+    const [x0, y0, x1, y1] = r.at, len = Math.hypot(x1 - x0, y1 - y0);
+    if (!(len > 0)) continue;
+    const t = (x: number, y: number) => (x - frame.origin[0]) * frame.right[0] + (y - frame.origin[1]) * frame.right[1];
+    const d = (x: number, y: number) => (x - frame.origin[0]) * frame.normal[0] + (y - frame.origin[1]) * frame.normal[1];
+    if (Math.abs(((x1 - x0) * frame.right[0] + (y1 - y0) * frame.right[1]) / len) < Math.cos(25 * Math.PI / 180)) continue;
+    if (Math.abs(d((x0 + x1) / 2, (y0 + y1) / 2)) > 1.5) continue;
+    const a = t(x0, y0), b = t(x1, y1), inside = Math.min(frame.len, Math.max(a, b)) - Math.max(0, Math.min(a, b));
+    if (inside > bestM) { best = r; bestM = inside; }
+  }
+  return best;
+}

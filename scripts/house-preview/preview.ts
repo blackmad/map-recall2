@@ -21,6 +21,7 @@ import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.ts';
 import { GABLE_SHAPES } from '../../src/canalRecall/roofMesh.ts';
 import { specView } from '../../src/canalRecall/houseSpec/view.ts';
 import { beltDesignUnit, type BeltPlot } from '../../src/canalRecall/beltReview/plotRead.ts';
+import { framedRun } from '../../src/canalRecall/beltReview/frontLine.ts';
 import { specDesignOn, type HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import type { HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
@@ -700,15 +701,17 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   tm.mark('context');
   const look = session.look as 'photo';
   // The own pand's street-run grid as the mesher laid it (threeBuildingMesh layoutProbe): drawn storeys and window columns.
-  const runs: { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number }[] = [];
+  const runs: { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number; at?: [number, number, number, number] }[] = [];
   // PREVIEW_ROW_IDS: every row pand's street runs too (row-layout.json beside front.png, for the design-units row tables).
   const rowRuns = new Map<string, typeof runs>();
   layoutProbe.sink = (id, r) => { if (id === own.properties.id) runs.push(r); if (rowIds.size && rowIds.has(String(id))) rowRuns.set(String(id), [...(rowRuns.get(String(id)) ?? []), r]); };
   let walls: ReturnType<typeof buildFeatureChunk>;
   const records = args.shaderFacades || process.env.SHADER_FACADES === '1';
   try { walls = buildFeatureChunk(features as never, look, 'walls', streets, profiles, context as never, [], new Map(), records ? { facadeRecord: true, specFor: previewSpecFor() } : {}); } finally { layoutProbe.sink = undefined; }
-  const streetRun = runs.filter(r => r.street && r.base < 0.5).sort((a, b) => b.lengthM - a.lengthM)[0];
-  const drawn = streetRun ? { storeys: streetRun.storeys + 1, upperStoreys: streetRun.storeys, groundM: +streetRun.groundM.toFixed(2), storeyM: +streetRun.storeyM.toFixed(2), columns: streetRun.bays, runM: +streetRun.lengthM.toFixed(2) } : null;
+  const streetRuns = runs.filter(r => r.street && r.base < 0.5).sort((a, b) => b.lengthM - a.lengthM);
+  // The run the frame shows (below, once the wall is known): a corner house's longest street run is not always the framed
+  // front (Herengracht 82 measured its 10.6 m side street wall under a 6.68 m canal front).
+  const drawnOf = (streetRun: typeof runs[number] | undefined) => streetRun ? { storeys: streetRun.storeys + 1, upperStoreys: streetRun.storeys, groundM: +streetRun.groundM.toFixed(2), storeyM: +streetRun.storeyM.toFixed(2), columns: streetRun.bays, runM: +streetRun.lengthM.toFixed(2) } : null;
   if (rowIds.size && args.out) {
     const rowLayout: Record<string, unknown> = {};
     for (const [id, rs] of rowRuns) { const st = rs.filter(r => r.street && r.base < 0.5).sort((x, y) => y.lengthM - x.lengthM)[0]; if (st) rowLayout[bare(id)] = { storeys: st.storeys + 1, groundM: +st.groundM.toFixed(2), storeyM: +st.storeyM.toFixed(2), columns: st.bays, runM: +st.lengthM.toFixed(2) }; }
@@ -728,6 +731,7 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
 
   const wall = await frontWall(pandId, own, neighbours, args.wall);
   const frame = wallFrame(wall);
+  const drawn = drawnOf(framedRun(streetRuns, frame) ?? streetRuns[0]);
   let zMax = 0;
   for (let v = 0; v < inOwn.length; v++) if (inOwn[v]) zMax = Math.max(zMax, mesh.positions[v * 3 + 2]);
   const top = Math.ceil((zMax + 0.5) * 2) / 2;
