@@ -20,6 +20,7 @@ import type { FacadeStyle } from './genericFacades.js';
 import { pilasterHex } from './look/pilasterTone.js';
 import { fitProjectionFor } from './projectionWindowFit.js';
 import { HEAD, headGrammarOf, headPieces, headRise, type HeadGrammar } from './houseLine/headGrammar.js';
+import { groundPilasters } from './designUnits/soloGround.js';
 
 // --- Palette ---------------------------------------------------------------------
 export const WHITE = '#efece4', CREAM = '#e4d9bf', STONE = '#cfc6b4', SANDSTONE = '#cdbb98', BLUESTONE = '#5b6066';
@@ -373,6 +374,90 @@ function grammarHead(c: ExtraContext, s: ExtraSink, w: RowWindow, g: HeadGrammar
   // bottle shapes on 90 and 92); only the keystone is white.
   const hex = { white: WHITE, brick: shadeHex(c.wallHex, 0.78), stone: shadeHex(c.wallHex, 0.6), glass: ARCH_GLASS } as const;
   for (const p of headPieces(g, w.x0, w.x1, z, w.z0)) s.wallQuad(c.f, p.pts, p.out, hex[p.tone]);
+}
+
+/**
+ * A read ground storey's facing (kit-ground lane; Herengracht 2-4, 12: cream stucco with pilasters and a cornice band under
+ * brick; 86: white surrounds and pilasters on brick): `full` faces the storey between its openings (a frame's width clear
+ * round each), `frames` draws a wide surround round each opening instead; pilasters on the piers and at the ends with a base
+ * and a capital, rustication joints, and the band (a fascia and a cornice) on the storey's top. Sizes from the crops.
+ */
+export const SOLO_GROUND_FACE = { out: 0.03, clear: 0.08, surround: 0.14, pilOut: 0.1, base: 0.28, capital: 0.16, course: 0.36, joint: 0.035, fascia: 0.3, cornice: 0.12, bandOut: 0.12, corniceOut: 0.22, shadow: 0.06 } as const;
+function soloGroundFace(c: ExtraContext, s: ExtraSink): void {
+  const g = c.groundFace;
+  if (!g || !c.groundLevel) return;
+  const K = SOLO_GROUND_FACE, L = c.f.len, zt = storeyZ(c, 0), bandH = g.band ? K.fascia + K.cornice : 0;
+  const z0 = Math.max(g.z0, c.basementBand?.z1 ?? c.base), zf = zt - bandH;
+  if (zf - z0 < 0.8) return;
+  const d = doorSpan(c), opens = [...windowSpans(c, -1), ...(d && d.z1 > z0 ? [d] : [])].sort((p, q) => p.x - q.x);
+  const f = g.face;
+  if (f) {
+    if (f.fill === 'full') {
+      const holes = opens.map(w => [w.x - w.hw - K.clear, w.x + w.hw + K.clear, Math.max(z0, w.z0 - K.clear), w.z1 + K.clear] as const);
+      for (const [za, zb, xs] of groundWallBands(holes, 0, L, z0, zf)) for (const [a, b] of xs) s.strip(c.f, a, b, K.out, za, zb, f.hex);
+      // Rustication: a sunk joint every course, cut at the openings.
+      if (f.rusticated) for (let z = z0 + K.course; z < zf - K.course / 2; z += K.course) for (const [za, zb, xs] of groundWallBands(holes, 0, L, z - K.joint / 2, z + K.joint / 2)) for (const [a, b] of xs) s.strip(c.f, a, b, K.out + 0.005, za, zb, shadeHex(f.hex, 0.72));
+    } else for (const w of opens) {
+      // A wide surround: jambs and head (a sill under a window).
+      const a = w.x - w.hw - K.surround, b = w.x + w.hw + K.surround, top = Math.min(zf, w.z1 + K.surround), foot = Math.max(z0, w === d ? w.z0 : w.z0 - K.surround);
+      for (const [p, q] of [[a, w.x - w.hw], [w.x + w.hw, b]] as const) s.strip(c.f, Math.max(0, p), Math.min(L, q), K.out, foot, top, f.hex);
+      s.strip(c.f, Math.max(0, a), Math.min(L, b), K.out, w.z1, top, f.hex);
+      if (w !== d) s.strip(c.f, Math.max(0, a), Math.min(L, b), K.out, foot, w.z0, f.hex);
+    }
+    if (f.pilasters) for (const [a, b] of groundPilasters(opens.map(w => ({ x0: (w.x - w.hw) / L, x1: (w.x + w.hw) / L })), L)) {
+      // Each pilaster's shadows on the facing, its shaft, base and capital.
+      for (const [p, q] of [[a - K.shadow, a], [b, b + K.shadow]] as const) if (p >= 0 && q <= L) s.strip(c.f, p, q, K.out + 0.01, z0, zf, shadeHex(f.hex, 0.62));
+      s.box(c.f, a, b, 0, K.pilOut, z0, zf, f.hex);
+      s.box(c.f, Math.max(0, a - 0.03), Math.min(L, b + 0.03), 0, K.pilOut + 0.03, z0, z0 + K.base, f.hex);
+      s.box(c.f, Math.max(0, a - 0.04), Math.min(L, b + 0.04), 0, K.pilOut + 0.04, zf - K.capital, zf, f.hex);
+    }
+  }
+  if (g.band) {
+    s.strip(c.f, 0, L, K.bandOut + 0.005, zf - 0.05, zf, shadeHex(g.band, 0.6));
+    s.box(c.f, 0, L, 0, K.bandOut, zf, zt - K.cornice, g.band);
+    s.box(c.f, 0, L, 0, K.corniceOut, zt - K.cornice, zt + 0.04, g.band);
+  }
+}
+/** A street tier under the ground windows (Herengracht 20: glazed double doors and a door between stone piers under a dark
+ *  fascia; 70: a double door and a glazed opening under a stone frieze): the tier faced in its paint, its fascia, and its
+ *  openings, a door a timber leaf with glazed panels (a meeting stile on a pair), a window dark glass in a frame. */
+export const SOLO_GROUND_TIER = { out: 0.04, fascia: 0.32, fasciaOut: 0.1, frame: 0.07, leaf: '#3b2a22', glass: '#2b3138', panel: 0.6 } as const;
+function soloGroundTier(c: ExtraContext, s: ExtraSink): void {
+  const t = c.groundTier;
+  if (!t || !c.groundLevel || t.z1 - c.base < 1) return;
+  const K = SOLO_GROUND_TIER, L = c.f.len, F = t.fascia ? K.fascia : 0;
+  const holes = t.openings.map(o => [o.x - o.hw, o.x + o.hw, o.z0, o.z1] as const);
+  for (const [za, zb, xs] of groundWallBands(holes, 0, L, c.base, t.z1 - F)) for (const [a, b] of xs) s.strip(c.f, a, b, K.out, za, zb, t.hex);
+  if (t.fascia) s.box(c.f, 0, L, 0, K.fasciaOut, t.z1 - F, t.z1, t.fascia);
+  for (const o of t.openings) {
+    const x0 = o.x - o.hw, x1 = o.x + o.hw, top = Math.min(o.z1, t.z1 - F);
+    if (o.kind === 'window') { s.strip(c.f, x0, x1, 0.02, o.z0, top, K.glass); for (const [p, q] of [[x0, x0 + K.frame], [x1 - K.frame, x1]] as const) s.strip(c.f, p, q, 0.03, o.z0, top, shadeHex(t.hex, 0.8)); s.strip(c.f, x0, x1, 0.03, top - K.frame, top, shadeHex(t.hex, 0.8)); continue; }
+    s.strip(c.f, x0, x1, 0.02, o.z0, top, K.leaf);
+    // Glazed panels over a solid foot, on each leaf.
+    const xm = (x0 + x1) / 2, cols: ReadonlyArray<readonly [number, number]> = o.leaves === 2 ? [[x0 + K.frame, xm - K.frame / 2], [xm + K.frame / 2, x1 - K.frame]] : [[x0 + K.frame, x1 - K.frame]];
+    const g0 = o.z0 + (top - o.z0) * (1 - K.panel);
+    for (const [p, q] of cols) if (q - p > 0.12) s.strip(c.f, p, q, 0.03, g0, top - K.frame, K.glass);
+  }
+}
+/**
+ * A flat crown in place of the cornice, inside the wall top: a `canopy` (Herengracht 20) is a fascia slab projecting
+ * `outM` with a raked soffit back to the wall `depthM` under the top; a `slab-on-piers` (34) is the slab on short piers
+ * standing proud of the set-back storey, its dark recess seen between them, over a ledge.
+ */
+export const FLAT_CROWN = { ledge: 0.08, ledgeOut: 0.05, pierOut: 0.06, recess: '#2a2c2e' } as const;
+function flatCrown(c: ExtraContext, s: ExtraSink): void {
+  const fc = c.flatCrown;
+  if (!fc) return;
+  const K = FLAT_CROWN, L = c.f.len, top = c.top, zs = top - fc.slabM, zw = top - fc.depthM;
+  if (zw < c.base + 2) return;
+  // The canopy: one prism, its fascia `slabM` tall at `outM`, its soffit raked back to the wall at the zone's foot.
+  if (fc.kind === 'canopy' && zs - zw > 0.1 && fc.outM > 0.1) { s.wallProfile(c.f, [[0, zw], [fc.outM, zs], [fc.outM, top], [0, top]], fc.hex); return; }
+  s.box(c.f, 0, L, 0, Math.max(0.05, fc.outM), zs, top, fc.hex, true);
+  if (fc.kind === 'canopy') return;
+  s.strip(c.f, 0, L, 0.01, zw, zs, fc.recessHex ?? K.recess);
+  s.box(c.f, 0, L, 0, K.ledgeOut, zw - K.ledge, zw, fc.hex);
+  const w = fc.pierW ?? 0.3;
+  for (const x of fc.piers ?? []) { const a = Math.max(0, x * L - w / 2), b = Math.min(L, x * L + w / 2); if (b - a > 0.05) s.box(c.f, a, b, 0, K.pierOut, zw, zs, fc.hex); }
 }
 
 /** A stated basement front (row-basement): stone courses and their sunk joints, the ledge on top, arched doorways. */
@@ -845,14 +930,20 @@ function wallBar(c: ExtraContext, s: ExtraSink, p: readonly [number, number], q:
 function rowDoorcase(c: ExtraContext, s: ExtraSink, d: Span, dc: NonNullable<NonNullable<NonNullable<ExtraContext['rowDress']>['stoop']>['doorcase']>, z0 = d.z0, own = true): void {
   const K = ROW_DOORCASE, hex = dc.material === 'stone' ? K.stone : WHITE, x0 = d.x - d.hw, x1 = d.x + d.hw;
   const leaf = dc.door === 'black' ? K.black : dc.door ?? STOOP.door;
-  const fan = dc.fanlight === false ? 0 : Math.min(K.fan, (d.z1 - d.z0) * 0.25), zf = d.z1 - fan;
-  // The leaf with two raised panels, and the fanlight's glass with its transom and bars.
+  // A read light's share of the opening (kit-ground lane), else a quarter of it, at most K.fan.
+  const fan = dc.fanlight === false ? 0 : dc.fanShare ? (d.z1 - d.z0) * dc.fanShare : Math.min(K.fan, (d.z1 - d.z0) * 0.25), zf = d.z1 - fan;
+  // The leaf with two raised panels (a pair of leaves: a meeting stile, two panels on each), and the fanlight's glass with
+  // its transom and bars.
   s.strip(c.f, x0, x1, 0.03, d.z0, zf, leaf);
-  for (const [a, b] of [[d.z0 + 0.15, d.z0 + (zf - d.z0) * 0.42], [d.z0 + (zf - d.z0) * 0.5, zf - 0.15]] as const) s.strip(c.f, x0 + 0.1, x1 - 0.1, 0.045, a, b, shadeHex(leaf, 1.1));
+  const xm = (x0 + x1) / 2, cols: ReadonlyArray<readonly [number, number]> = dc.leaves === 2 ? [[x0 + 0.07, xm - 0.05], [xm + 0.05, x1 - 0.07]] : [[x0 + 0.1, x1 - 0.1]];
+  for (const [p, q] of cols) for (const [a, b] of [[d.z0 + 0.15, d.z0 + (zf - d.z0) * 0.42], [d.z0 + (zf - d.z0) * 0.5, zf - 0.15]] as const) s.strip(c.f, p, q, 0.045, a, b, shadeHex(leaf, 1.1));
+  if (dc.leaves === 2) s.strip(c.f, xm - 0.02, xm + 0.02, 0.05, d.z0, zf, shadeHex(leaf, 0.7));
   if (fan > 0) {
     s.strip(c.f, x0, x1, 0.03, zf, d.z1, K.glass);
     s.strip(c.f, x0, x1, 0.05, zf, zf + K.bar * 1.5, hex);
-    if (dc.fanlight === 'oval' || dc.fanlight === 'oval-spoked') {
+    if (dc.fanlight === 'leaded') leadedLight(c, s, x0, x1, zf + K.bar * 1.5, d.z1, hex);
+    else if (dc.fanlight === 'arched') archedLight(c, s, x0, x1, zf + K.bar * 1.5, d.z1, hex);
+    else if (dc.fanlight === 'oval' || dc.fanlight === 'oval-spoked') {
       // An oval ring touching the fanlight's frame; `oval` a small lozenge at its centre (judged closer on
       // Herengracht 144, 2026-11-15), `oval-spoked` four short spokes from the ring to the frame instead.
       const xm = (x0 + x1) / 2, zm = (zf + d.z1) / 2, hx = (x1 - x0) / 2 - 0.03, hz = (d.z1 - zf) / 2 - 0.03, n = 18;
@@ -903,6 +994,41 @@ function rowDoorcase(c: ExtraContext, s: ExtraSink, d: Span, dc: NonNullable<Non
       s.wallQuad(c.f, [[a + (b - a) * t0, top], [a + (b - a) * t1, top], [a + (b - a) * t1, top + h(t1)], [a + (b - a) * t0, top + h(t0)]], K.corniceOut - 0.04, hex);
     }
   }
+}
+/** A leaded light (kit-ground lane: Herengracht 58, 64): a lattice of lead cames on the diagonal, LEADED.pitch apart,
+ *  clipped to the light, under a frame bar on each side. */
+export const LEADED = { pitch: 0.16, came: 0.018, lead: '#3a3d3f' } as const;
+/** The segment of the line x - z = k (k2 = -1: x + z = k) inside [x0, x1] x [z0, z1], if any. */
+export function diagonalIn(k: number, sign: 1 | -1, x0: number, x1: number, z0: number, z1: number): [[number, number], [number, number]] | null {
+  // On the line, z = sign * (x - k): clip x to where z is inside [z0, z1].
+  const xa = sign > 0 ? z0 + k : k - z1, xb = sign > 0 ? z1 + k : k - z0;
+  const a = Math.max(x0, Math.min(xa, xb)), b = Math.min(x1, Math.max(xa, xb));
+  if (!(b - a > 0.01)) return null;
+  const z = (x: number) => sign > 0 ? x - k : k - x;
+  return [[a, z(a)], [b, z(b)]];
+}
+function leadedLight(c: ExtraContext, s: ExtraSink, x0: number, x1: number, z0: number, z1: number, hex: string): void {
+  const L = LEADED;
+  for (const sign of [1, -1] as const) {
+    const lo = sign > 0 ? x0 - z1 : x0 + z0, hi = sign > 0 ? x1 - z0 : x1 + z1;
+    for (let k = lo + L.pitch / 2; k < hi; k += L.pitch) { const seg = diagonalIn(k, sign, x0, x1, z0, z1); if (seg) wallBar(c, s, seg[0], seg[1], L.came, 0.04, L.lead); }
+  }
+  for (const [a, b] of [[x0, x0 + 0.05], [x1 - 0.05, x1]] as const) s.strip(c.f, a, b, 0.05, z0, z1, hex);
+}
+/** An arched light (Herengracht 10, 66): a round head (segmental when the light is lower than half its width) with the
+ *  spandrels over it filled in the frame's paint, an arch ring and bars radiating from the light's foot centre. */
+export const ARCHED_LIGHT = { ring: 0.05, bars: 5, steps: 12 } as const;
+export function archHead(x0: number, x1: number, z0: number, z1: number, steps = ARCHED_LIGHT.steps): Array<[number, number]> {
+  // The arch's springing: a half circle where the light is tall enough, else a segment through both top corners' feet.
+  const w = (x1 - x0) / 2, xm = (x0 + x1) / 2, rise = Math.min(w, z1 - z0), r = (w * w + rise * rise) / (2 * rise), zc = z1 - r;
+  return Array.from({ length: steps + 1 }, (_, i) => { const x = x0 + (x1 - x0) * i / steps, dx = x - xm; return [x, Math.max(z0, zc + Math.sqrt(Math.max(0, r * r - dx * dx)))] as [number, number]; });
+}
+function archedLight(c: ExtraContext, s: ExtraSink, x0: number, x1: number, z0: number, z1: number, hex: string): void {
+  const A = ARCHED_LIGHT, arc = archHead(x0, x1, z0, z1), xm = (x0 + x1) / 2;
+  // The spandrels: from the arc up to the light's top, in the frame's paint.
+  for (let i = 0; i + 1 < arc.length; i++) { const [p, q] = [arc[i], arc[i + 1]]; if (Math.max(p[1], q[1]) < z1 - 0.01) s.wallQuad(c.f, [[p[0], p[1]], [q[0], q[1]], [q[0], z1], [p[0], z1]], 0.045, hex); }
+  for (let i = 0; i + 1 < arc.length; i++) wallBar(c, s, arc[i], arc[i + 1], A.ring, 0.05, hex);
+  for (let k = 1; k < A.bars + 1; k++) { const p = arc[Math.round(k * (arc.length - 1) / (A.bars + 1))]; wallBar(c, s, [xm, z0], p, 0.035, 0.05, hex); }
 }
 export function stoopDoor(c: ExtraContext): Span | null {
   const st = c.rowDress?.stoop;
@@ -1102,6 +1228,11 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       for (let i = 1; i < n; i++) { const x = w.x - w.hw + 2 * w.hw * i / n; s.strip(c.f, x - K.bar / 2, x + K.bar / 2, 0.03, w.z0, w.z1, K.grille); }
     }
   } },
+  // Kit-ground lane (designUnits/soloGround.ts): a read ground storey's stucco facing, pilasters and band; a street tier
+  // under the ground windows; a flat canopy or slab on piers in place of the cornice.
+  { id: 'solo-ground-face', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-ground-wall', build: (c, s) => soloGroundFace(c, s) },
+  { id: 'solo-ground-tier', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'solo-ground-tier', build: (c, s) => soloGroundTier(c, s) },
+  { id: 'flat-crown', styles: ['canal', 'c19', 'school', 'postwar', 'modern', 'tower'], p: 0, wide: true, street: true, group: 'crown', build: (c, s) => flatCrown(c, s) },
   { id: 'row-basement', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-basement', build: (c, s) => {
     // A stated basement front (RowGround.basementFront, Herengracht 25-29): the souterrain faced in a stone plinth with
     // sunk joints, arched doorways in it (a stone ring, a dark recess, a door leaf), the basement windows left open.
@@ -1223,7 +1354,7 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
     // The pilasters stand on the dark plinth strip, not through it.
     const z0 = Math.max(d.z0, Math.min(c.base + ROW_DOORCASE.plinthTop, d.z1 - 1));
     if (dc.span === 'frame') { rowGroundFrame(c, s, d, dc, z0); return; }
-    rowDoorcase(c, s, d, dc, z0, dc.span !== 'ground');
+    rowDoorcase(c, s, d, dc, z0, dc.span !== 'ground' && !dc.bare);
     if (dc.span === 'ground') rowGroundSurround(c, s, d, dc, z0);
   } },
   { id: 'row-cornice', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'crown', rise: 1.6, build: (c, s) => {

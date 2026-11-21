@@ -11,6 +11,7 @@ import { BALCONY_STYLES, BASEMENTS, DORMER_STYLES, GABLES, ROOF_MATERIALS, WINDO
 import { STOOP_FLIGHTS } from '../buildingRecipe/stoop.ts';
 import { SPEC_CORNICES, SPEC_WINDOW_SURROUNDS } from '../houseSpec/spec.ts';
 import type { DescField, FieldCandidate } from './description.ts';
+import { flatCrownOf, groundFrontOf, type FlatCrown, type GroundFront } from '../designUnits/soloGround.ts';
 
 export const WALL_FAMILIES = ['white', 'grey', 'buff', 'orange', 'red', 'red-brown', 'brown', 'dark'] as const;
 /** The enums each read field may take (kit values; the extra spec-level values the page also offers). */
@@ -78,6 +79,11 @@ export interface HouseRead {
   corniceRatio?: number;
   /** The crown's form, read by a second focused call (crownFormPrompt; read-house.ts --part crown). */
   crownForm?: CrownForm;
+  /** The ground storey's own front (designUnits/soloGround.ts): its openings, facing, band, street tier and door, measured
+   *  on the crop (by eye in the kit-ground lane, 2026-11-21). */
+  groundFront?: GroundFront;
+  /** A flat projecting canopy or slab on piers in place of a cornice (designUnits/soloGround.ts). */
+  flatCrown?: FlatCrown;
 }
 
 // ------------------------------------------------------------------------------------------------------------ crown form
@@ -335,6 +341,8 @@ export function readExtras(a: Partial<HouseRead>) {
     ...(typeof a.basementRatio === 'number' ? { basementRatio: a.basementRatio } : {}),
     ...(typeof a.corniceRatio === 'number' ? { corniceRatio: a.corniceRatio } : {}),
     ...(a.crownForm && !crownFormProblems(a.crownForm).length ? { crownForm: a.crownForm } : {}),
+    ...((gf => gf ? { groundFront: gf } : {})(groundFrontOf(a.groundFront))),
+    ...((fc => fc ? { flatCrown: fc } : {})(flatCrownOf(a.flatCrown))),
   };
 }
 

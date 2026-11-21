@@ -318,7 +318,14 @@ export interface RowDoorcase {
   material: 'stone' | 'timber'; top?: 'entablature' | 'pediment' | 'segmental';
   /** The fanlight: absent or true plain bars, `diamond` a lozenge in its frame (Herengracht 144), `oval` an oval ring
    *  with a small lozenge inside, `oval-spoked` the ring with four short spokes to the frame, false none. */
-  fanlight?: boolean | 'diamond' | 'oval' | 'oval-spoked';
+  fanlight?: boolean | 'diamond' | 'oval' | 'oval-spoked' | 'leaded' | 'arched';
+  /** Kit-ground lane (belt review): the light's share of the opening's height (absent: a quarter, at most 0.55 m). A
+   *  `leaded` light is a lattice of small leaded panes; an `arched` one a round-headed light with radiating bars. */
+  fanShare?: number;
+  /** A pair of leaves (a centre meeting stile, panels on each). */
+  leaves?: 2;
+  /** The door's frame only: no pilasters or entablature of its own (a door inside a pilastered ground facing). */
+  bare?: true;
   /** `ground`: one pilastered frame over the whole ground storey, the door and the windows beside it under one
    *  entablature (Herengracht 142's shop surround). `frame`: a white timber frame of tall openings over the whole ground
    *  storey, posts between the door and every window and an entresol rail across them with a light over each opening

@@ -914,7 +914,7 @@
     "crownRiseM": 6.04,
     "groundWindowRatio": 1.77,
     "doorRatio": 0.7,
-    "basementRatio": 0.12,
+    "basementRatio": 0.36,
     "crownForm": {
      "kind": "bell",
      "px": {
@@ -945,6 +945,45 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "none"
+    },
+    "groundFront": {
+     "openings": [
+      {
+       "kind": "window",
+       "x0": 0.015,
+       "x1": 0.211,
+       "z0": 0.391,
+       "z1": 0.942
+      },
+      {
+       "kind": "window",
+       "x0": 0.264,
+       "x1": 0.506,
+       "z0": 0.391,
+       "z1": 0.942
+      },
+      {
+       "kind": "door",
+       "x0": 0.657,
+       "x1": 0.86,
+       "z0": 0.242,
+       "z1": 0.931
+      }
+     ],
+     "face": {
+      "hex": "#e6e3da",
+      "fill": "frames",
+      "pilasters": true
+     },
+     "band": {
+      "hex": "#e6e3da"
+     },
+     "door": {
+      "fanlight": "plain",
+      "fanShare": 0.29,
+      "case": "frame"
+     },
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002879"
    },
@@ -2773,13 +2812,57 @@
      "dark brick piers with light stone window frames"
     ],
     "storeyShares": [
-     0.2,
-     0.3,
-     0.23,
-     0.27
+     0.37,
+     0.18,
+     0.19,
+     0.26
     ],
     "groundWindowRatio": 0.35,
     "doorRatio": 0.64,
+    "groundFront": {
+     "openings": [
+      {
+       "kind": "window",
+       "x0": 0.067,
+       "x1": 0.317,
+       "z0": 0.371,
+       "z1": 0.843
+      },
+      {
+       "kind": "window",
+       "x0": 0.373,
+       "x1": 0.609,
+       "z0": 0.371,
+       "z1": 0.843
+      }
+     ],
+     "band": {
+      "hex": "#7a756d"
+     },
+     "tier": {
+      "top": 0.357,
+      "hex": "#3f3b3b",
+      "fascia": "#5d5a56",
+      "openings": [
+       {
+        "kind": "door",
+        "x0": 0.075,
+        "x1": 0.299,
+        "z0": 0.04,
+        "z1": 0.8,
+        "leaves": 2
+       },
+       {
+        "kind": "window",
+        "x0": 0.373,
+        "x1": 0.616,
+        "z0": 0.04,
+        "z1": 0.776
+       }
+      ]
+     },
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
+    },
     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000527"
    },
    "specParts": [
@@ -3353,6 +3436,15 @@
      "consoles": "even",
      "frieze": "windows"
     },
+    "groundFront": {
+     "door": {
+      "fanlight": "oval",
+      "fanShare": 0.38,
+      "case": "frame",
+      "leaf": "#8a5832"
+     },
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
+    },
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394"
    },
    "specParts": [
@@ -3609,6 +3701,14 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "none"
+    },
+    "groundFront": {
+     "door": {
+      "fanlight": "leaded",
+      "fanShare": 0.42,
+      "case": "frame"
+     },
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000393"
    },
@@ -4477,6 +4577,15 @@
      "centreLight": "none",
      "consoles": "ends",
      "frieze": "plain"
+    },
+    "groundFront": {
+     "door": {
+      "leaves": 2,
+      "fanlight": "leaded",
+      "fanShare": 0.22,
+      "case": "pilasters"
+     },
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003512"
    },
@@ -7260,7 +7369,7 @@
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-02-06-TMX7316010203-002961_pano_0025_000065"
     },
     "ground": {
-     "value": "shop",
+     "value": "dwelling",
      "source": "photo-read",
      "confidence": 0.5,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-02-06-TMX7316010203-002961_pano_0025_000065"
@@ -7366,6 +7475,56 @@
      "centreLight": "none",
      "consoles": "even",
      "frieze": "plain"
+    },
+    "groundFront": {
+     "openings": [
+      {
+       "kind": "window",
+       "x0": 0.068,
+       "x1": 0.282,
+       "z0": 0.015,
+       "z1": 0.859
+      },
+      {
+       "kind": "window",
+       "x0": 0.321,
+       "x1": 0.521,
+       "z0": 0.015,
+       "z1": 0.859
+      },
+      {
+       "kind": "window",
+       "x0": 0.603,
+       "x1": 0.803,
+       "z0": 0.121,
+       "z1": 0.799
+      },
+      {
+       "kind": "window",
+       "x0": 0.856,
+       "x1": 1,
+       "z0": 0.121,
+       "z1": 0.799
+      }
+     ],
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
+    },
+    "flatCrown": {
+     "kind": "slab-on-piers",
+     "depthM": 1.1,
+     "slabM": 0.5,
+     "outM": 0.5,
+     "hex": "#cfcabb",
+     "piers": [
+      0.026,
+      0.315,
+      0.582,
+      0.835,
+      0.975
+     ],
+     "pierW": 0.4,
+     "recessHex": "#3e3f3e",
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
     "candidateId": "w-2023-02-06-TMX7316010203-002961_pano_0025_000065"
    },
@@ -9183,11 +9342,11 @@
      "wall: dark grey/near-black glazed brick"
     ],
     "storeyShares": [
-     0.351,
-     0.179,
-     0.167,
-     0.151,
-     0.151
+     0.307,
+     0.146,
+     0.148,
+     0.134,
+     0.265
     ],
     "groundWindowRatio": 1.2,
     "doorRatio": 0.85,
@@ -9217,6 +9376,62 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "groundFront": {
+     "openings": [
+      {
+       "kind": "window",
+       "x0": 0.094,
+       "x1": 0.305,
+       "z0": 0.455,
+       "z1": 0.918
+      },
+      {
+       "kind": "window",
+       "x0": 0.387,
+       "x1": 0.598,
+       "z0": 0.455,
+       "z1": 0.918
+      },
+      {
+       "kind": "window",
+       "x0": 0.684,
+       "x1": 0.891,
+       "z0": 0.455,
+       "z1": 0.918
+      }
+     ],
+     "tier": {
+      "top": 0.448,
+      "hex": "#4a4642",
+      "fascia": "#1e1d1d",
+      "openings": [
+       {
+        "kind": "door",
+        "x0": 0.094,
+        "x1": 0.492,
+        "z0": 0.017,
+        "z1": 0.733,
+        "leaves": 2
+       },
+       {
+        "kind": "door",
+        "x0": 0.68,
+        "x1": 0.891,
+        "z0": 0.017,
+        "z1": 0.683
+       }
+      ]
+     },
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
+    },
+    "flatCrown": {
+     "kind": "canopy",
+     "depthM": 2.5,
+     "slabM": 0.6,
+     "outM": 1.2,
+     "hex": "#f2f1ec",
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002834"
    },
@@ -10292,7 +10507,7 @@
     ],
     "groundWindowRatio": 1.68,
     "doorRatio": 0.47,
-    "basementRatio": 0.12,
+    "basementRatio": 0.3,
     "corniceRatio": 0.171,
     "crownForm": {
      "kind": "cornice",
@@ -10322,6 +10537,46 @@
      "centreLight": "none",
      "consoles": "even",
      "frieze": "panels"
+    },
+    "groundFront": {
+     "openings": [
+      {
+       "kind": "door",
+       "x0": 0.083,
+       "x1": 0.213,
+       "z0": 0.309,
+       "z1": 0.938
+      },
+      {
+       "kind": "window",
+       "x0": 0.379,
+       "x1": 0.592,
+       "z0": 0.345,
+       "z1": 0.92
+      },
+      {
+       "kind": "window",
+       "x0": 0.753,
+       "x1": 0.896,
+       "z0": 0.345,
+       "z1": 0.938
+      }
+     ],
+     "face": {
+      "hex": "#dcd6c2",
+      "fill": "full",
+      "pilasters": true,
+      "rusticated": true
+     },
+     "band": {
+      "hex": "#d6d0bb"
+     },
+     "door": {
+      "fanlight": "oval",
+      "fanShare": 0.42,
+      "case": "frame"
+     },
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005285"
    },
@@ -10606,6 +10861,15 @@
      "centreLight": "none",
      "consoles": "dense",
      "frieze": "plain"
+    },
+    "groundFront": {
+     "door": {
+      "fanlight": "arched",
+      "fanShare": 0.37,
+      "case": "pilasters",
+      "top": "segmental"
+     },
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003479"
    },
@@ -11354,6 +11618,45 @@
      "centreLight": "round",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "groundFront": {
+     "openings": [
+      {
+       "kind": "window",
+       "x0": 0.102,
+       "x1": 0.299,
+       "z0": 0.056,
+       "z1": 0.887
+      },
+      {
+       "kind": "window",
+       "x0": 0.395,
+       "x1": 0.599,
+       "z0": 0.056,
+       "z1": 0.887
+      },
+      {
+       "kind": "door",
+       "x0": 0.719,
+       "x1": 0.88,
+       "z0": 0.028,
+       "z1": 0.864
+      }
+     ],
+     "face": {
+      "hex": "#e5dfc6",
+      "fill": "full",
+      "pilasters": true
+     },
+     "band": {
+      "hex": "#e0d9bd"
+     },
+     "door": {
+      "fanlight": "plain",
+      "fanShare": 0.47,
+      "case": "frame"
+     },
+     "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000521"
    },

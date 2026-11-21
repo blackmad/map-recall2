@@ -12,6 +12,7 @@
 import { ERA_GROUND_M, SOUTERRAIN_M, type PlotDormer, type PlotFacts, type PlotGableForm, type PlotRoof } from '../designUnits/plotPlan.ts';
 import type { CrownForm } from './houseRead.ts';
 import { CORNICE_RATIO } from './pixelProfile.ts';
+import { flatCrownOf, groundFrontOf, type FlatCrown, type GroundFront } from '../designUnits/soloGround.ts';
 
 /** The photo read's extras as describe.ts stores them per pand (houseRead.ts readExtras). */
 export interface PhotoReadExtras {
@@ -40,6 +41,10 @@ export interface PhotoReadExtras {
   corniceRatio?: number;
   /** The crown read (houseRead.ts CrownForm): the gable's or the cornice's form and its pixel landmarks. */
   crownForm?: CrownForm & { px: CrownForm['px'] & { w?: number; h?: number; ppm?: number } };
+  /** The ground storey's own front, measured on the crop (designUnits/soloGround.ts). */
+  groundFront?: GroundFront;
+  /** A flat canopy or slab on piers in place of a cornice (designUnits/soloGround.ts). */
+  flatCrown?: FlatCrown;
 }
 
 /** The crown read's measures (m), from its pixel landmarks at the crop's pixels per metre. */
@@ -248,6 +253,11 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
     // A measured basement band: pavement-level windows under the ground windows, the door up the stoop when one is read.
     ...(br >= 0.12 && br <= 0.5 ? { basementRatio: +br.toFixed(2), ...(stoopUp ? { raisedDoor: true } : {}) } : {}) };
 
+  // The ground storey's own front and a flat crown, as measured (kit-ground lane): a dwelling ground only (a shop keeps
+  // its shopfront); the flat crown replaces the cornice.
+  const gf = groundFrontOf(read.groundFront), fc = flatCrownOf(read.flatCrown);
+  if (gf && facts.ground === 'dwelling') facts.groundFront = gf;
+  if (fc && !isGable) { facts.flatCrown = fc; delete facts.cornice; delete facts.corniceForm; delete facts.attic; }
   const eaves = Number(fields.eavesM), widthM = opts.widthM && opts.widthM > 0 ? opts.widthM : 6;
   let eavesM = Number.isFinite(eaves) && eaves > 4 && eaves >= MIN_STOREY_M * (facts.storeys ?? 2) ? +eaves.toFixed(2) : null;
   // A gable front's crown read: the gable stands on its photo foot (3DBAG's eaves on a gabled house is the saddle's foot
@@ -258,7 +268,7 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
   }
   // The cornice zone's depth as measured, on a cornice front (the share of the measured wall, whose top is the cornice's).
   const cr = Number(read.corniceRatio);
-  if (!isGable && eavesM !== null && cr >= CORNICE_RATIO.min && cr <= CORNICE_RATIO.max) facts.corniceDepthM = +(cr * eavesM).toFixed(2);
+  if (!isGable && !facts.flatCrown && eavesM !== null && cr >= CORNICE_RATIO.min && cr <= CORNICE_RATIO.max) facts.corniceDepthM = +(cr * eavesM).toFixed(2);
   // A raised ground storey over a souterrain (stoop and basement windows), where the measured front has room for it.
   if ((fields.stoop === 'stoop-and-windows' || fields.stoop === 'windows') && eavesM !== null && eavesM - ERA_GROUND_M - SOUTERRAIN_M >= ((facts.storeys ?? 3) - 1) * SOUTERRAIN_UPPER_MIN_M) facts.souterrain = true;
   const year = Number(fields.facadeYear);

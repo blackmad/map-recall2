@@ -28,7 +28,8 @@ import { segmentLookup, SEGMENTS_SCHEMA, type Segment, type SegmentsExtract, typ
 import { designUnitOf, eraWindows, ERA_YEARS, PLOT_EAVES_M, type DesignUnitDraw } from './drawProps.js';
 import { plotPlan, plotWhite, plotHeads, plotDormers, plotLook, PLOT_GABLE_SHAPE, POINT_GABLE_RISE_PER_M, type PlotPlan } from './plotPlan.js';
 import { rowCrownRoofRise, type RowCrown } from '../houseLine/crownProfile.js';
-import type { RowCorniceDress } from '../houseSpec/row/types.js';
+import type { RowCorniceDress, RowDoorcase } from '../houseSpec/row/types.js';
+import type { GroundDoorRead } from './soloGround.ts';
 import { roofPlanForFeature } from '../roofMesh.js';
 
 export { designUnitOf, seedIdOf, segmentBayM, sliceBays, eraWindows, ERA_YEARS, PLOT_EAVES_M, PLOT_TONE_DL, type DesignUnitDraw } from './drawProps.js';
@@ -335,8 +336,29 @@ function soloDress(props: Record<string, unknown>, f: DesignUnitDraw['plot'], pl
   const basementForce = out.designGround && (out.designGround as { basementRatio?: number }).basementRatio ? ['solo-basement'] : [];
   const forced = Array.isArray(props.registerForce) ? [...forcedB.filter(id => !basementForce.length || id !== 'stone-plinth-band'), ...basementForce] : [...basementForce];
   if (basementForce.length) out.registerForce = forced;
-  if (f?.door && plan.ground !== 'shop') {
-    out.designDoorcase = { material: f.door.surround ? 'stone' : 'timber', fanlight: !!f.door.fanlight, door: 'black' };
+  // Kit-ground lane: the ground storey's own front as measured (its openings, facing, band, street tier, door) and a flat
+  // crown in place of the cornice (soloGround.ts); absent, nothing below changes.
+  const gf = plan.ground !== 'shop' ? f?.groundFront : undefined;
+  if (gf?.openings?.length || (gf && out.designGround)) out.designGround = { ...(f?.groundOpenings ?? SOLO_FRONT_RATIOS), front: gf };
+  if (gf?.face || gf?.band || gf?.tier) {
+    // The facing is the ground's dress: the register's stucco plinth bands and full-height corner pilasters stay off it.
+    // The read put its pilasters in the ground storey (12, 20, 70, 86), not up the front.
+    const drop = gf.face ? ['rusticated-plinth', 'corner-pilasters'] : ['corner-pilasters'];
+    const kept = forced.filter(id => !drop.includes(id));
+    forced.length = 0; forced.push(...kept, ...(gf.face || gf.band ? ['solo-ground-face'] : []), ...(gf.tier ? ['solo-ground-tier'] : []));
+    out.registerForce = forced;
+  }
+  if (f?.flatCrown) {
+    out.designFlatCrown = f.flatCrown;
+    const kept = forced.filter(id => id !== 'kroonlijst' && id !== 'console-cornice' && id !== 'row-cornice');
+    forced.length = 0; forced.push(...kept, 'flat-crown');
+    out.registerForce = forced;
+  }
+  // A read ground front whose openings hold no door (the doors are in its street tier): no doorcase over a window.
+  const doorless = !!gf?.openings?.length && !gf.openings.some(o => o.kind === 'door');
+  if (doorless) { const k = forced.indexOf('door-surround'); if (k >= 0) { forced.splice(k, 1); out.registerForce = forced; } }
+  if (f?.door && plan.ground !== 'shop' && !doorless) {
+    out.designDoorcase = { material: f.door.surround ? 'stone' : 'timber', fanlight: !!f.door.fanlight, door: 'black', ...(gf?.door ? soloDoorRead(gf.door) : {}) };
     if (!forced.includes('row-doorcase')) forced.push('row-doorcase');
     // The doorcase is the door's frame (the same group): the register's surround would draw first, with a white leaf.
     const k = forced.indexOf('door-surround'); if (k >= 0) forced.splice(k, 1);
@@ -350,6 +372,14 @@ function soloDress(props: Record<string, unknown>, f: DesignUnitDraw['plot'], pl
     out.registerForce = force.includes('row-cornice') ? force : [...force, 'row-cornice'];
   }
   return out;
+}
+
+/** The ground ratios a read ground front stands on when the self-check measured none (only its openings are drawn). */
+export const SOLO_FRONT_RATIOS = { windowRatio: 1.2, doorRatio: 0.8 } as const;
+/** A read street door (soloGround.ts GroundDoorRead) as the doorcase's parts (houseSpec/row/types.ts RowDoorcase). */
+export function soloDoorRead(d: GroundDoorRead): Partial<RowDoorcase> {
+  return { ...(d.fanlight ? { fanlight: d.fanlight === 'none' ? false : d.fanlight === 'plain' ? true : d.fanlight } : {}), ...(d.leaves ? { leaves: d.leaves } : {}),
+    ...(d.fanShare ? { fanShare: d.fanShare } : {}), ...(d.case === 'frame' ? { bare: true as const } : {}), ...(d.top ? { top: d.top } : {}), ...(d.leaf ? { door: d.leaf } : {}) };
 }
 
 /** Step 2 (after withRowFront, before decorateRoof): the segment's one roof on this member, its front at the line. */

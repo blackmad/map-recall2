@@ -1,4 +1,5 @@
 import { groundFloorOf, groundFloorOn } from './groundFloor/extract.js';
+import { flatCrownOf, groundFrontOf } from './designUnits/soloGround.js';
 import { logoFor, retailLogoLayer } from './retailLogos.js';
 import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, VARIETY_BASE, retailBrandOn, retailPartsOn, retailRealOn } from './retailPages.js';
 import { shopVarietyOn } from './shopVariety.js';
@@ -484,7 +485,10 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       if (building.designStoreys && Array.isArray(shares) && shares.length === building.designStoreys.storeys && shares.every(x => typeof x === 'number' && x > 0)) building.designStoreys.shares = shares as number[];
       if (typeof p.designFrameHex === 'string' && /^#[0-9a-f]{6}$/i.test(p.designFrameHex) && !building.shopfront) building.accentHex = p.designFrameHex;
       const gr = p.designGround as { windowRatio?: unknown; doorRatio?: unknown; basementRatio?: unknown; raisedDoor?: unknown } | undefined;
-      if (gr && Number(gr.windowRatio) > 0 && Number(gr.doorRatio) > 0) building.designGround = { windowRatio: Number(gr.windowRatio), doorRatio: Number(gr.doorRatio), ...(Number(gr.basementRatio) > 0 ? { basementRatio: Number(gr.basementRatio) } : {}), ...(gr.raisedDoor === true ? { raisedDoor: true as const } : {}) };
+      if (gr && Number(gr.windowRatio) > 0 && Number(gr.doorRatio) > 0) building.designGround = { windowRatio: Number(gr.windowRatio), doorRatio: Number(gr.doorRatio), ...(Number(gr.basementRatio) > 0 ? { basementRatio: Number(gr.basementRatio) } : {}), ...(gr.raisedDoor === true ? { raisedDoor: true as const } : {}) , ...(groundFrontOf((gr as { front?: unknown }).front) ? { front: groundFrontOf((gr as { front?: unknown }).front)! } : {}) };
+      // Kit-ground lane: a flat canopy or slab on piers in place of the cornice; the storeys stop under its zone.
+      const fc = flatCrownOf(p.designFlatCrown);
+      if (fc) { building.flatCrown = fc; building.parapetM = fc.depthM; }
       const dc = p.designDoorcase as import('./houseSpec/row/types.js').RowDoorcase | undefined;
       if (dc && typeof dc === 'object' && building.rowDress?.door) building.rowDress = { ...building.rowDress, door: { ...building.rowDress.door, doorcase: dc } };
       const cd = p.designCorniceDress as Record<string, unknown> | undefined;
