@@ -109,7 +109,9 @@ if (R2) for (const [id, m] of Object.entries(rows)) {
   // Held (R2_DROP=1 to apply): dropping an ambiguous warm front to 'unsure' lost 5 of the 6 read fronts it touched that
   // the single capture had right (validation 16/22 -> 12/18 coarse), so a lone or vetoed warm capture keeps its call.
   if (c.verdict === 'unsure') { if (process.env.R2_DROP === '1' && m.kind !== 'unsure') rows[id] = { ...m, accepted: false, r2: 'unsure' }; }
-  else if (c.verdict === 'warm') rows[id] = { ...m, hex: toHex(c.lab!), L: Math.round(c.lab![0]), a: Math.round(c.lab![1]), b: Math.round(c.lab![2]), accepted: true, r2: `warm over ${c.captures}` };
+  // Held (R2_WARM=1 to apply): the median over agreeing days lost its blind 1-2-4 (r2c: Jeltje de Bosch Kemperpad 83-117
+  // drawn pink on grey), so a warm front keeps its primary capture's colour.
+  else if (c.verdict === 'warm') { if (process.env.R2_WARM === '1') rows[id] = { ...m, hex: toHex(c.lab!), L: Math.round(c.lab![0]), a: Math.round(c.lab![1]), b: Math.round(c.lab![2]), accepted: true, r2: `warm over ${c.captures}` }; }
   else rows[id] = { ...m, hex: toHex(c.lab!), L: Math.round(c.lab![0]), a: Math.round(c.lab![1]), b: Math.round(c.lab![2]), kind: 'brick', painted: false, grey: true, accepted: true, r2: `grey over ${c.captures}` };
 }
 if (R2) { fs.writeFileSync(path.join(OUT, 'consensus-r2.json'), JSON.stringify(r2Log, null, 1)); const v = Object.values(r2Log) as any[]; console.log('r2', ['warm', 'grey', 'unsure'].map(k => `${k} ${v.filter(x => x.verdict === k).length}`).join(', '), 'of', v.length); }
