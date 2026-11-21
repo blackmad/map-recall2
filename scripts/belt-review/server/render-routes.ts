@@ -1,13 +1,19 @@
 /**
  * Belt review render routes (plan R2), mounted by router.ts under /api/belt-review:
  *
- *   GET /faces/:face/derived            per pand: drawn fields (description + edits + links), link chain, notes, what the kit
+ *   Houses: a pand split in stage 1 is several houses `<pand>#n` (houses.ts); each is derived, rendered and cropped alone.
+ *
+ *   GET /faces/:face/derived            per house: drawn fields (description + edits + links), link chain, notes, what the kit
  *                                       cannot draw (lane C kitGaps.ts), render hash
  *   GET /faces/:face/render/:pand.png   the pand's front at the face's px/m (cached by design hash)
  *   GET /faces/:face/render/:pand.json  its meta: ms, cached, hash, heights, applied / not applied overrides
- *   GET /faces/:face/row.json           the row: renders every pand, returns the layout and the two strip URLs
+ *   GET /faces/:face/photo/:house.jpg   the picked photo cropped to the house: David's facade span or split slice, else
+ *                                       the BAG span (pandSpanPx), else whole; at the candidate's own px/m
+ *   GET /faces/:face/row.json           the row: renders every house, returns the layout and the two strip URLs; houses
+ *                                       are registered on the BAG span, so a corrected facade span overhangs its slot
  *   GET /faces/:face/row-render.png     the rendered row, bottoms aligned        (?key= from row.json)
  *   GET /faces/:face/row-photo.png      the picked photos at the same scale     (?key= from row.json)
+ *   GET /faces/:face/pano-link/:pand    {url, from: camera|front, lat, lng, heading}: the city panorama viewer at this house
  *   GET /render-stats                   cold / warm render latency
  *   GET /kit-catalogue                  review-data/belt-review/kit-catalogue.json (lane C, R5)
  */
@@ -21,7 +27,11 @@ import { pandDesign } from '../../../src/canalRecall/beltReview/design.ts';
 import { DESC_FIELDS, type DescField } from '../../../src/canalRecall/beltReview/fields.ts';
 import { kitCannotDraw, parseKitGaps, type KitGap } from '../../../src/canalRecall/beltReview/kitGaps.ts';
 import { readJson, type BeltReviewStore } from '../../../src/canalRecall/beltReview/store.ts';
+import { cropSpanPx } from '../../../src/canalRecall/beltReview/logic.ts';
+import { expandDescription, expandFace, type HouseEntry } from '../../../src/canalRecall/beltReview/houses.ts';
+import type { PhotoCandidate, Pick as PickEntry } from '../../../src/canalRecall/beltReview/types.ts';
 import type { DescFieldValue } from '../../../src/canalRecall/beltReview/description.ts';
+import { panoLink } from './pano-link.ts';
 import { RenderService, composeRow, designHash, type RowLayout, type RowPiece } from './render-service.ts';
 
 export interface DerivedPand {
@@ -46,14 +56,16 @@ export function mountRenderRoutes(router: Router, store: BeltReviewStore, fail: 
   };
 
   async function derive(faceId: string) {
-    const [face, description, edits, grouping] = await Promise.all([store.face(faceId), store.description(faceId), store.doc(faceId, 'edits'), store.doc(faceId, 'grouping')]);
+    const [raw, rawDesc, edits, grouping, picks] = await Promise.all([store.face(faceId), store.description(faceId), store.doc(faceId, 'edits'), store.doc(faceId, 'grouping'), store.doc(faceId, 'picks')]);
+    const face = expandFace(raw, picks), description = expandDescription(rawDesc, face);
     const ppm = face.pxPerM ?? 50, list = await kitGaps();
-    const pands: Record<string, DerivedPand & { design: unknown }> = {};
+    const pands: Record<string, DerivedPand & { design: unknown; house: HouseEntry }> = {};
     for (const p of face.pands) {
-      const d = pandDesign(face, p.pandId, description, edits, grouping);
+      const d = pandDesign(face as never, p.pandId, description, edits, grouping);
       const asDesc: Partial<Record<DescField, DescFieldValue>> = {};
       for (const f of DESC_FIELDS) if (d.fields[f]) asDesc[f] = { value: d.fields[f]!.value, source: d.fields[f]!.source as never, confidence: 1, ref: d.fields[f]!.ref ?? '' };
-      pands[p.pandId] = { pandId: p.pandId, fields: d.fields as DerivedPand['fields'], chain: d.chain, notes: d.notes, cannotDraw: kitCannotDraw(p.pandId, asDesc, list), hash: designHash(p.pandId, d.design, ppm), design: d.design };
+      const notes = p.part ? [...d.notes, `Split house ${p.part}: the renderer draws whole pands, so this is pand ${p.basePandId} drawn with this house's fields, cut to ${p.spanM![0]}–${p.spanM![1]} m.`] : d.notes;
+      pands[p.pandId] = { pandId: p.pandId, fields: d.fields as DerivedPand['fields'], chain: d.chain, notes, cannotDraw: kitCannotDraw(p.basePandId, asDesc, list), hash: designHash(p.pandId, d.design, ppm, p.spanM), design: d.design, house: p };
     }
     return { face, ppm, pands };
   }
@@ -61,15 +73,15 @@ export function mountRenderRoutes(router: Router, store: BeltReviewStore, fail: 
   router.get('/faces/:face/derived', async (req, res) => {
     try {
       const { pands, ppm } = await derive(req.params.face);
-      res.set('Cache-Control', 'no-store').json({ ppm, pands: Object.fromEntries(Object.entries(pands).map(([k, { design: _d, ...rest }]) => [k, rest])) });
+      res.set('Cache-Control', 'no-store').json({ ppm, pands: Object.fromEntries(Object.entries(pands).map(([k, { design: _d, house: _h, ...rest }]) => [k, rest])) });
     } catch (e) { fail(res, e); }
   });
 
   const renderOne = async (faceId: string, pandId: string) => {
     const { pands, ppm } = await derive(faceId);
     const d = pands[pandId];
-    if (!d) throw new ReviewError(`Pand ${pandId} is not on this face`, 404);
-    return service.front(pandId, d.design, ppm);
+    if (!d) throw new ReviewError(`House ${pandId} is not on this face`, 404);
+    return service.front(pandId, d.design, ppm, { base: d.house.basePandId, sliceM: d.house.spanM });
   };
   router.get('/faces/:face/render/:pand.png', async (req, res) => {
     try {
@@ -87,18 +99,40 @@ export function mountRenderRoutes(router: Router, store: BeltReviewStore, fail: 
     } catch (e) { fail(res, e); }
   });
 
-  /** The picked photo's file and its size at `ppm` (null when none usable or unpicked). */
-  async function photoPiece(faceId: string, pandId: string, ppm: number): Promise<{ file: string; w: number; h: number } | null> {
+  /** The house's picked photo: file, the candidate, and the span to show (source pixels, and metres from the BAG span start;
+   *  null when the candidate has no BAG span, i.e. the whole image as today). */
+  async function housePhoto(faceId: string, house: HouseEntry): Promise<{ file: string; c: PhotoCandidate; w: number; h: number; px: [number, number] | null; m: [number, number] | null } | null> {
     const [picks, candidates] = await Promise.all([store.doc(faceId, 'picks'), store.candidates(faceId)]);
-    const id = picks.picks[pandId]?.candidateId ?? candidates?.pands.find(p => p.pandId === pandId)?.autoPick;
+    const pk: PickEntry | undefined = picks.picks[house.basePandId];
+    const entry = candidates?.pands.find(p => p.pandId === house.basePandId);
+    const id = pk ? pk.candidateId : entry?.autoPick;
     if (!id) return null;
-    const c = candidates?.pands.find(p => p.pandId === pandId)?.candidates.find(k => k.id === id);
-    const target = await store.candidateImage(faceId, pandId, id).catch(() => null);
+    const c = entry?.candidates.find(k => k.id === id);
+    const target = await store.candidateImage(faceId, house.basePandId, id).catch(() => null);
     if (!c || !target || !('file' in target)) return null;
     const meta = await sharp(target.file).metadata();
-    const k = ppm / (c.pxPerM ?? 50);
-    return { file: target.file, w: Math.max(1, Math.round((meta.width ?? 1) * k)), h: Math.max(1, Math.round((meta.height ?? 1) * k)) };
+    const cp = c.pxPerM ?? 50, p0 = c.pandSpanPx?.[0] ?? 0;
+    let px = cropSpanPx(c, pk?.candidateId === id ? pk : null);
+    if (px && house.spanM) px = [p0 + house.spanM[0] * cp, p0 + house.spanM[1] * cp];
+    const m: [number, number] | null = px ? [(px[0] - p0) / cp, (px[1] - p0) / cp] : null;
+    return { file: target.file, c, w: meta.width ?? 1, h: meta.height ?? 1, px, m };
   }
+  const extractOf = (ph: { w: number }, px: [number, number]) => {
+    const left = Math.max(0, Math.min(ph.w - 1, Math.round(px[0])));
+    return { left, width: Math.max(1, Math.min(ph.w - left, Math.round(px[1]) - left)) };
+  };
+
+  router.get('/faces/:face/photo/:house.jpg', async (req, res) => {
+    try {
+      const { pands } = await derive(req.params.face), d = pands[req.params.house];
+      if (!d) throw new ReviewError(`House ${req.params.house} is not on this face`, 404);
+      const ph = await housePhoto(req.params.face, d.house);
+      if (!ph) throw new ReviewError('No usable photo picked for this house', 404);
+      let img = sharp(ph.file);
+      if (ph.px) img = img.extract({ ...extractOf(ph, ph.px), top: 0, height: ph.h });
+      res.set({ 'Cache-Control': 'no-store', 'x-crop-m': ph.m ? ph.m.map(v => v.toFixed(2)).join(',') : '' }).type('image/jpeg').send(await img.jpeg({ quality: 90 }).toBuffer());
+    } catch (e) { fail(res, e); }
+  });
 
   router.get('/faces/:face/row.json', async (req, res) => {
     try {
@@ -106,12 +140,25 @@ export function mountRenderRoutes(router: Router, store: BeltReviewStore, fail: 
       const renders: RowPiece[] = [], photos: RowPiece[] = [];
       const t0 = performance.now();
       for (const p of face.pands) {
-        const r = await service.front(p.pandId, pands[p.pandId].design, ppm).catch(() => null);
-        const ph = await photoPiece(faceId, p.pandId, ppm);
-        const w = r?.widthPx ?? ph?.w ?? Math.round((p.widthM ?? 6) * ppm);
-        renders.push({ pandId: p.pandId, file: r?.file ?? null, widthPx: w, heightPx: r?.heightPx ?? Math.round(12 * ppm) });
-        // The photo takes the render's slot width so the two rows line up house by house.
-        photos.push({ pandId: p.pandId, file: ph?.file ?? null, widthPx: w, heightPx: ph ? Math.round(ph.h * (w / ph.w)) : Math.round(12 * ppm) });
+        const d = pands[p.pandId], house = d.house;
+        const r = await service.front(p.pandId, d.design, ppm, { base: house.basePandId, sliceM: house.spanM }).catch(() => null);
+        const ph = await housePhoto(faceId, house);
+        const rw = r?.widthPx ?? Math.round((p.widthM ?? 6) * ppm), rh = r?.heightPx ?? Math.round(12 * ppm);
+        if (!ph?.m || !ph.px) {
+          // No BAG span in the photo: as before, the photo fills the render's slot so the rows line up house by house.
+          renders.push({ pandId: p.pandId, file: r?.file ?? null, widthPx: rw, heightPx: rh });
+          photos.push({ pandId: p.pandId, file: ph?.file ?? null, widthPx: rw, heightPx: ph ? Math.round(ph.h * (rw / ph.w)) : rh });
+          continue;
+        }
+        // Registered on the BAG span: the render starts at its drawn left edge (0 m, or a split slice's clamped start), the
+        // photo at its span's start, both at the face's px/m; the slot covers both.
+        const slice = r?.measure?.slice as { leftPx: number } | undefined;
+        const rStart = house.spanM ? (slice?.leftPx ?? Math.max(0, house.spanM[0] * ppm)) / ppm : 0;
+        const k = ppm / (ph.c.pxPerM ?? 50), pw = Math.max(1, Math.round((ph.m[1] - ph.m[0]) * ppm));
+        const m0 = Math.min(rStart, ph.m[0]), m1 = Math.max(rStart + rw / ppm, ph.m[1]);
+        const slotW = Math.max(1, Math.round((m1 - m0) * ppm));
+        renders.push({ pandId: p.pandId, file: r?.file ?? null, widthPx: rw, heightPx: rh, dx: (rStart - m0) * ppm, slotW });
+        photos.push({ pandId: p.pandId, file: ph.file, widthPx: pw, heightPx: Math.max(1, Math.round(ph.h * k)), dx: (ph.m[0] - m0) * ppm, slotW, extract: extractOf(ph, ph.px) });
       }
       const key = createHash('sha256').update(JSON.stringify([renders, photos])).digest('hex').slice(0, 20);
       let layout: RowLayout;
@@ -131,6 +178,20 @@ export function mountRenderRoutes(router: Router, store: BeltReviewStore, fail: 
   };
   router.get('/faces/:face/row-render.png', rowImage('r'));
   router.get('/faces/:face/row-photo.png', rowImage('p'));
+
+  router.get('/faces/:face/pano-link/:pand', async (req, res) => {
+    try {
+      const faceId = req.params.face, [face, picks, candidates] = await Promise.all([store.face(faceId), store.doc(faceId, 'picks'), store.candidates(faceId)]);
+      const pandId = req.params.pand;
+      if (!face.pands.some(p => p.pandId === pandId)) throw new ReviewError(`Pand ${pandId} is not on this face`, 404);
+      const entry = candidates?.pands.find(p => p.pandId === pandId) as (NonNullable<typeof candidates>['pands'][number] & { wall?: { bearingDeg?: number } }) | undefined;
+      const id = picks.picks[pandId]?.candidateId ?? entry?.autoPick;
+      const c = id ? entry?.candidates.find(k => k.id === id) : undefined;
+      const link = await panoLink(pandId, face.pands.map(p => p.pandId), (c?.pano ?? null) as never, entry?.wall?.bearingDeg);
+      if (!link) throw new ReviewError('No camera position on the photo and no footprint for this pand in the building tiles', 404);
+      res.set('Cache-Control', 'no-store').json(link);
+    } catch (e) { fail(res, e); }
+  });
 
   router.get('/render-stats', (_req, res) => { res.set('Cache-Control', 'no-store').json({ ...service.summary(), recent: service.stats.slice(-20) }); });
   router.get('/kit-catalogue', async (_req, res) => {

@@ -6,6 +6,7 @@
  * faceView.ts owns the page shell, stage 1 and the saves; these render into `ctx.main` and handle their stage's keys.
  */
 import { h, replace } from './dom.ts';
+import { basePand } from './houses.ts';
 import { DESC_FIELDS, FIELD_SPECS, isKitValue, same, showValue, type DescField } from './fields.ts';
 import {
   PIN_TAGS, PIN_TAG_LABELS, type DescFieldValue, type FaceBundle, type GroupingFile, type GroupingLinkKind, type Pin, type PinTag,
@@ -170,7 +171,7 @@ export function effectiveUnits(b: FaceBundle): GroupingFile['units'] {
   const by = new Map<string, GroupingFile['units'][number]>();
   for (const p of b.face.pands) {
     const u = b.description?.pands.find(d => d.pandId === p.pandId)?.group?.unit;
-    const id = u?.id ?? `pand:${p.pandId}`;
+    const id = u?.id ?? `pand:${basePand(p.pandId)}`;
     if (!by.has(id)) by.set(id, { id: id.replace(/[^A-Za-z0-9._-]/g, '_'), pandIds: [], source: u ? u.source : 'none', ...(u ? { ordekaartId: u.id } : {}) });
     by.get(id)!.pandIds.push(p.pandId);
   }

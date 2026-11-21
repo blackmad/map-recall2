@@ -4,7 +4,8 @@
  *
  *   GET  /faces                               face summaries
  *   GET  /faces/:face                         the face bundle (all docs + a session token)
- *   POST /faces/:face/picks/:pand             {expectedRevision, value: {candidateId|null, note?}}
+ *   POST /faces/:face/picks/:pand             {expectedRevision, value: {candidateId|null, note?, facadeSpanPx?: [x0,x1]|null,
+ *                                              houses?: [{fromM, toM, label?}]|null}}
  *   POST /faces/:face/edits/:pand             {expectedRevision, value: {fields: {path: {value, note?}}}}
  *   POST /faces/:face/pins/:pin               {expectedRevision, value: Pin fields}         (expectedRevision 0 = new)
  *   POST /faces/:face/grouping                {expectedRevision, value: {units, links}}
@@ -22,6 +23,7 @@
  * revision the writer last saw; a stale revision is 409 and nothing is written. Writes go through `lockedJson`.
  * An `x-review-actor: claude` header marks a Claude-side write (default david).
  */
+import { HOUSE_PATTERN } from '../../../src/canalRecall/beltReview/houses.ts';
 import { Router, type Request, type Response } from 'express';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
@@ -79,9 +81,11 @@ export function beltReviewRouter(options: BeltReviewOptions = {}): Router {
     try {
       guard(req);
       const faceId = req.params.face, id = req.params.entry, rev = expected(req), actor = actorOf(req), at = now();
-      if (doc !== 'pins' && !PAND_PATTERN.test(id)) throw new ReviewError('Invalid pand id', 400);
+      if (doc === 'picks' && !PAND_PATTERN.test(id)) throw new ReviewError('Invalid pand id', 400);
+      if (doc === 'edits' && !HOUSE_PATTERN.test(id)) throw new ReviewError('Invalid house id', 400);
       if (doc === 'pins' && !ENTRY_ID_PATTERN.test(id)) throw new ReviewError('Invalid pin id', 400);
-      const face = await store.face(faceId);
+      // Picks are per BAG pand; edits and pins are per house (a pand David split in stage 1 is several houses).
+      const face = doc === 'picks' ? await store.face(faceId) : await store.houseFace(faceId);
       const candidates = doc === 'picks' ? await store.candidates(faceId) : null;
       const state = await store.doc(faceId, 'state');
       if (doc === 'picks' && (state.stage !== 1 || state.status === 'accepted')) throw new ReviewError('Stage 1 is confirmed. Reopen stage 1 to change a pick.', 409);
@@ -90,7 +94,7 @@ export function beltReviewRouter(options: BeltReviewOptions = {}): Router {
         const prior = map[id];
         if ((prior?.revision ?? 0) !== rev) throw conflict(doc === 'pins' ? 'This pin' : `The ${doc.slice(0, -1)} for this pand`);
         const value = req.body?.value;
-        const clean = doc === 'picks' ? validatePick(face, candidates, id, value)
+        const clean = doc === 'picks' ? validatePick(face, candidates, id, value, prior as never)
           : doc === 'edits' ? validateEdits(face, id, value)
           : validatePin(face, id, value, prior as never, actor, state.passes, at);
         map[id] = { ...clean, revision: (prior?.revision ?? 0) + 1, at, by: actor } as never;
@@ -109,7 +113,7 @@ export function beltReviewRouter(options: BeltReviewOptions = {}): Router {
   router.post('/faces/:face/grouping', async (req, res) => {
     try {
       guard(req);
-      const faceId = req.params.face, rev = expected(req), at = now(), face = await store.face(faceId);
+      const faceId = req.params.face, rev = expected(req), at = now(), face = await store.houseFace(faceId);
       const doc = await lockedJson(store.docPath(faceId, 'grouping'), initialDocs.grouping(faceId), file => {
         if (file.revision !== rev) throw conflict('The grouping');
         Object.assign(file, validateGrouping(face, req.body?.value, actorOf(req), at));

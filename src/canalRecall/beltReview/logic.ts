@@ -5,10 +5,11 @@
 import {
   ENTRY_ID_PATTERN, GROUPING_LINK_KINDS, PAND_PATTERN, PIN_KINDS, PIN_STATUSES, PIN_TAGS, PIN_TARGETS, STAGES, VERDICTS,
   type Actor, type CandidatesFile, type DescriptionFile, type EditsFile, type FaceFile, type FieldEdit, type GroupingFile,
-  type LedgerFile, type Pick as PickEntry, type PinsFile, type PicksFile, type Pin, type Stage, type StateAction, type StateFile,
+  type LedgerFile, type PhotoCandidate, type Pick as PickEntry, type PinsFile, type PicksFile, type Pin, type Stage, type StateAction, type StateFile,
   type Verdict,
 } from './types.ts';
 import { DESC_FIELDS, LIBRARY_SOURCES } from './fields.ts';
+import { HOUSE_PATTERN, basePand } from './houses.ts';
 
 export class ReviewError extends Error {
   constructor(message: string, readonly status = 400) { super(message); }
@@ -22,8 +23,68 @@ const str = (v: unknown, max: number, what: string): string => {
 
 // ------------------------------------------------------------------------------------------------------------ picks
 
-/** A pick body: `{candidateId: string|null, note?}`; the candidate must exist for that pand in candidates.json. */
-export function validatePick(face: FaceFile, candidates: CandidatesFile | null, pandId: string, body: unknown): Pick<PickEntry, 'candidateId' | 'autoPick' | 'note'> {
+const span = (v: unknown): [number, number] | null =>
+  Array.isArray(v) && v.length === 2 && v.every(n => typeof n === 'number' && Number.isFinite(n)) && v[0] < v[1] ? [v[0], v[1]] : null;
+const r2 = (n: number) => Math.round(n * 100) / 100;
+
+/** The facade span in metres from the BAG span start, from pixels in a candidate with `pandSpanPx` and a scale. */
+export function facadeSpanToM(c: Pick<PhotoCandidate, 'pandSpanPx' | 'pxPerM'>, px: [number, number]): [number, number] | null {
+  if (!c.pandSpanPx || !c.pxPerM) return null;
+  return [r2((px[0] - c.pandSpanPx[0]) / c.pxPerM), r2((px[1] - c.pandSpanPx[0]) / c.pxPerM)];
+}
+/** The span to crop a candidate to, pixels: David's facade span (from metres, so it survives a re-crop), else the BAG span,
+ *  else null (the whole image). */
+export function cropSpanPx(c: Pick<PhotoCandidate, 'pandSpanPx' | 'pxPerM'>, pick?: Pick<PickEntry, 'facadeSpanM'> | null): [number, number] | null {
+  if (!c.pandSpanPx) return null;
+  if (pick?.facadeSpanM && c.pxPerM) return [c.pandSpanPx[0] + pick.facadeSpanM[0] * c.pxPerM, c.pandSpanPx[0] + pick.facadeSpanM[1] * c.pxPerM];
+  return c.pandSpanPx;
+}
+
+/** candidates.json as lane B writes it, onto PhotoCandidate: `flags` may be a measurement object (its `reasons` become the
+ *  flags), `ppm`/`width`/`height` alias `pxPerM`/`widthPx`/`heightPx`, a malformed `pandSpanPx` is dropped. */
+export function parseCandidates(raw: unknown): CandidatesFile | null {
+  if (!isObj(raw) || !Array.isArray(raw.pands)) return null;
+  const pands = (raw.pands as unknown[]).filter(isObj).map(p => ({
+    ...p,
+    candidates: (Array.isArray(p.candidates) ? p.candidates : []).filter(isObj).map(c => {
+      const o = { ...c } as Record<string, unknown>;
+      if (!Array.isArray(o.flags)) o.flags = Array.isArray(o.reasons) ? (o.reasons as unknown[]).map(String) : [];
+      o.pxPerM ??= typeof o.ppm === 'number' ? o.ppm : undefined;
+      o.widthPx ??= typeof o.width === 'number' ? o.width : undefined;
+      o.heightPx ??= typeof o.height === 'number' ? o.height : undefined;
+      o.month ??= null; o.distM ??= null; o.obliquityDeg ??= null;
+      o.pano = isObj(o.pano) ? o.pano : { id: '', date: '' };
+      const sp = span(o.pandSpanPx);
+      if (sp) o.pandSpanPx = sp; else delete o.pandSpanPx;
+      return o as unknown as PhotoCandidate;
+    }),
+    autoPick: typeof p.autoPick === 'string' ? p.autoPick : null,
+  })) as unknown as CandidatesFile['pands'];
+  return { ...(raw as object), pands } as CandidatesFile;
+}
+
+/** picks.json from disk: an older file without facade spans reads as is; a malformed span is dropped, never fatal. */
+export function parsePicks(raw: unknown, faceId: string): PicksFile {
+  const base: PicksFile = { schemaVersion: 1, faceId, revision: 0, updatedAt: null, picks: {} };
+  if (!isObj(raw)) return base;
+  const out: PicksFile = { ...base, ...(raw as object), picks: {} } as PicksFile;
+  for (const [id, v] of Object.entries(isObj(raw.picks) ? raw.picks : {})) {
+    if (!isObj(v) || !(typeof v.candidateId === 'string' || v.candidateId === null)) continue;
+    const e = { ...v } as unknown as PickEntry;
+    const px = span(v.facadeSpanPx), m = span(v.facadeSpanM);
+    if (px && m && e.candidateId !== null) { e.facadeSpanPx = px; e.facadeSpanM = m; } else { delete e.facadeSpanPx; delete e.facadeSpanM; }
+    const hs = Array.isArray(v.houses) ? (v.houses as unknown[]).filter(isObj).filter(x => typeof x.fromM === 'number' && typeof x.toM === 'number' && x.fromM < x.toM) : [];
+    if (hs.length >= 2 && e.candidateId !== null) e.houses = hs.map(x => ({ fromM: x.fromM as number, toM: x.toM as number, ...(typeof x.label === 'string' && x.label ? { label: x.label } : {}) }));
+    else delete e.houses;
+    out.picks[id] = e;
+  }
+  return out;
+}
+
+/** A pick body: `{candidateId: string|null, note?, facadeSpanPx?: [x0, x1] | null}`; the candidate must exist for that pand
+ *  in candidates.json. A facade span needs a candidate with `pandSpanPx` and a scale; it is stored with its metres. Re-picking
+ *  the same candidate without `facadeSpanPx` keeps the prior span; another candidate drops it; `null` clears it. */
+export function validatePick(face: FaceFile, candidates: CandidatesFile | null, pandId: string, body: unknown, prior?: PickEntry): Pick<PickEntry, 'candidateId' | 'autoPick' | 'note' | 'facadeSpanPx' | 'facadeSpanM' | 'houses'> {
   if (!face.pands.some(p => p.pandId === pandId)) throw bad(`Pand ${pandId} is not on this face`);
   if (!isObj(body)) throw bad('Invalid pick');
   const { candidateId, note } = body;
@@ -32,8 +93,41 @@ export function validatePick(face: FaceFile, candidates: CandidatesFile | null, 
     if (typeof candidateId !== 'string') throw bad('candidateId must be a candidate id or null (none usable)');
     if (!entry?.candidates.some(c => c.id === candidateId)) throw bad(`Unknown candidate ${candidateId} for pand ${pandId}`);
   }
-  const out: { candidateId: string | null; autoPick: string | null; note?: string } = { candidateId: candidateId as string | null, autoPick: entry?.autoPick ?? null };
+  const out: Pick<PickEntry, 'candidateId' | 'autoPick' | 'note' | 'facadeSpanPx' | 'facadeSpanM' | 'houses'> = { candidateId: candidateId as string | null, autoPick: entry?.autoPick ?? null };
   if (note !== undefined && note !== '') out.note = str(note, 2000, 'note');
+  const cand = candidateId === null ? undefined : entry?.candidates.find(c => c.id === candidateId);
+  if ('facadeSpanPx' in body && body.facadeSpanPx !== null) {
+    const px = span(body.facadeSpanPx);
+    if (!px) throw bad('facadeSpanPx must be [x0, x1] with x0 < x1');
+    if (!cand) throw bad('A facade span needs a picked photo');
+    const m = facadeSpanToM(cand, px);
+    if (!m) throw bad('This photo has no BAG span (pandSpanPx) or scale to measure the facade against');
+    const w = cand.widthPx ?? Infinity;
+    if (px[0] < -1 || px[1] > w + 1) throw bad('facadeSpanPx is outside the photo');
+    if (px[1] - px[0] < cand.pxPerM! * 1) throw bad('A facade is at least 1 m wide');
+    out.facadeSpanPx = [r2(px[0]), r2(px[1])]; out.facadeSpanM = m;
+  } else if (!('facadeSpanPx' in body) && prior?.facadeSpanPx && prior.facadeSpanM && prior.candidateId === candidateId && candidateId !== null) {
+    out.facadeSpanPx = prior.facadeSpanPx; out.facadeSpanM = prior.facadeSpanM;
+  }
+  // Houses: given (null clears), else kept from the same candidate's prior pick; the outer ends always follow the span.
+  const sameCand = prior?.candidateId === candidateId && candidateId !== null;
+  const rawHouses = 'houses' in body ? body.houses : sameCand ? prior?.houses : undefined;
+  if (rawHouses !== undefined && rawHouses !== null) {
+    if (!cand?.pandSpanPx || !cand.pxPerM) throw bad('Splitting needs a picked photo with a BAG span (pandSpanPx) and a scale');
+    if (!Array.isArray(rawHouses) || rawHouses.length < 2 || rawHouses.length > 12) throw bad('houses must list 2–12 houses');
+    const hs = rawHouses.map((x, i) => {
+      if (!isObj(x) || typeof x.fromM !== 'number' || typeof x.toM !== 'number' || !Number.isFinite(x.fromM) || !Number.isFinite(x.toM)) throw bad(`houses[${i}] needs fromM and toM`);
+      const label = x.label === undefined || x.label === '' ? undefined : str(x.label, 40, 'label');
+      return { fromM: r2(x.fromM), toM: r2(x.toM), ...(label ? { label } : {}) };
+    });
+    const bagW = (cand.pandSpanPx[1] - cand.pandSpanPx[0]) / cand.pxPerM, [s0, s1] = out.facadeSpanM ?? [0, r2(bagW)];
+    hs[0].fromM = s0; hs[hs.length - 1].toM = s1;
+    for (let i = 0; i < hs.length; i++) {
+      if (i > 0 && Math.abs(hs[i].fromM - hs[i - 1].toM) > 0.02) throw bad('Split houses must be contiguous');
+      if (hs[i].toM - hs[i].fromM < 1) throw bad('A split house is at least 1 m wide');
+    }
+    out.houses = hs;
+  }
   return out;
 }
 
@@ -110,7 +204,7 @@ export function validateGrouping(face: FaceFile, body: unknown, actor: Actor, no
     const pandId = String(l.pandId), target = String(l.target);
     if (!pands.has(pandId)) throw bad(`Link pand ${pandId} is not on this face`);
     // A target may be outside the face (a library house), but must be a pand id.
-    if (!PAND_PATTERN.test(target) || target === pandId) throw bad('Invalid link target');
+    if (!HOUSE_PATTERN.test(target) || target === pandId) throw bad('Invalid link target');
     const link: GroupingFile['links'][number] = { pandId, kind: l.kind as 'sameAs' | 'basedOn', target, by: l.by === 'claude' ? 'claude' : actor, at: typeof l.at === 'string' ? l.at : now };
     if (isObj(l.overrides)) link.overrides = l.overrides;
     return link;
@@ -203,6 +297,8 @@ export function deriveLedger(ledger: LedgerFile, x: LedgerInputs): LedgerFile {
     agreedWithAuto: picks.filter(p => p.candidateId !== null && p.candidateId === p.autoPick).length,
     overridden: picks.filter(p => p.candidateId !== null && p.candidateId !== p.autoPick).length,
     noneUsable: picks.filter(p => p.candidateId === null).length,
+    spanCorrected: picks.filter(p => p.candidateId !== null && p.facadeSpanM).length,
+    pandSplits: picks.filter(p => p.candidateId !== null && (p.houses?.length ?? 0) >= 2).length,
   };
   let fromLibrary = 0, fromNewRead = 0;
   // Lane C's split: a field from a library source (fields.ts LIBRARY_SOURCES) against a donor, period default or absent field.

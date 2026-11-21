@@ -3,6 +3,8 @@
  * path-guarded image resolution. Claude-side commands should write through `lockedJson` too, so the lock file keeps a
  * command and the page server from interleaving.
  */
+import { parseCandidates, parsePicks } from './logic.ts';
+import { expandFace, type HouseFace } from './houses.ts';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
@@ -80,10 +82,13 @@ export class BeltReviewStore {
     face.pands = [...face.pands].sort((a, b) => a.order - b.order);
     return face;
   }
-  async candidates(faceId: string) { return readJson<CandidatesFile | null>(this.docPath(faceId, 'candidates'), null); }
+  async candidates(faceId: string) { return parseCandidates(await readJson<unknown>(this.docPath(faceId, 'candidates'), null)); }
+  /** The houses stages 2–4 review: the face with split pands expanded (houses.ts). */
+  async houseFace(faceId: string): Promise<HouseFace> { const [f, p] = await Promise.all([this.face(faceId), this.doc(faceId, 'picks')]); return expandFace(f, p); }
   async description(faceId: string) { return readJson<DescriptionFile | null>(this.docPath(faceId, 'description'), null); }
   async doc<N extends DocName>(faceId: string, name: N): Promise<ReturnType<typeof initialDocs[N]>> {
-    return readJson(this.docPath(faceId, name), initialDocs[name](faceId) as ReturnType<typeof initialDocs[N]>);
+    const v = await readJson(this.docPath(faceId, name), initialDocs[name](faceId) as ReturnType<typeof initialDocs[N]>);
+    return (name === 'picks' ? parsePicks(v, faceId) : v) as ReturnType<typeof initialDocs[N]>;
   }
 
   async listFaces(): Promise<FaceSummary[]> {
