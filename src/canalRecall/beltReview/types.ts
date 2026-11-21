@@ -127,7 +127,7 @@ export interface CandidatesFile {
 /**
  * The format lane C writes (scripts/belt-review/describe.ts, beltReview/description.ts on lane/belt-review-library-20261120):
  * per pand, readable fields in the DESC_FIELDS vocabulary (fields.ts), each the winning statement with its source.
- * Sources, strongest first: reviewed > face-intent > own-read > register > survey > based-on > donor > period-default.
+ * Sources, strongest first: reviewed > face-intent > photo-read > own-read > register > survey > based-on > donor > period-default.
  */
 export interface DescFieldValue {
   value: unknown;

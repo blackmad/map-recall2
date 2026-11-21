@@ -20,7 +20,9 @@
  *   - monument-facts.json: register; AHN front bands (data/buurt-generators/belt/ahn-fronts.json) and 3DBAG eaves
  *     (bag-tiles): survey;
  *   - the ordekaart Centrum layer (designUnits/join.ts pandOverlaps over BAG footprints): the design unit;
- *   - review-data/belt-review/kit-gaps.json (R6): open gaps per pand.
+ *   - review-data/belt-review/kit-gaps.json (R6): open gaps per pand;
+ *   - review-data/belt-review/<faceId>/photo-read.json (read-house.ts): the per-house read of David's picked crop, source
+ *     `photo-read` (above own-read, below reviewed and face-intent; David's edits.json stays on top of everything).
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -37,6 +39,7 @@ import {
   countFields, pickFields, DESC_FIELDS, DESC_SOURCES, LIBRARY_SOURCES, type DescCounts, type DescField, type DescFieldValue, type FieldCandidate,
 } from '../../src/canalRecall/beltReview/description.ts';
 import { kitCannotDraw, parseKitGaps, type CannotDraw, type KitGap } from '../../src/canalRecall/beltReview/kitGaps.ts';
+import { candidatesFromHouseRead, readExtras, type HouseRead } from '../../src/canalRecall/beltReview/houseRead.ts';
 
 const REPO = path.resolve(import.meta.dirname, '../..');
 const EXTRACT = path.join(REPO, 'public/data/extracts/amsterdam');
@@ -173,6 +176,11 @@ const GAPS = path.join(REPO, 'review-data/belt-review/kit-gaps.json');
 const gaps: KitGap[] = fs.existsSync(GAPS) ? parseKitGaps(json(GAPS)).gaps : [];
 inputs.kitGaps = fs.existsSync(GAPS) ? rel(GAPS) : 'none';
 
+// Per-house photo reads (read-house.ts).
+const READS_FILE = path.join(path.dirname(faceFile), 'photo-read.json');
+const houseReads = (jsonIf(READS_FILE)?.reads ?? {}) as Record<string, { answer: Partial<HouseRead>; candidateId: string; model: string; at: string }>;
+inputs.photoRead = fs.existsSync(READS_FILE) ? `${rel(READS_FILE)} (${Object.keys(houseReads).length} houses)` : 'none';
+
 // --- describe ---------------------------------------------------------------------------------------------------------
 interface PandDescription {
   pandId: string; address: string; order: number;
@@ -186,6 +194,8 @@ interface PandDescription {
     readSameAs?: { side: string; pandIds: string[] };
   };
   kitCannotDraw: CannotDraw[];
+  /** The photo read's statements beyond the fields (roof material, wall hex, white heads, ornaments, what the kit cannot say). */
+  photoRead?: ReturnType<typeof readExtras> & { candidateId: string };
   /** What the spec parts were (published, hand, staged, generated, face intent). */
   specParts: string[];
   counts: DescCounts;
@@ -210,6 +220,10 @@ for (const p of pands) {
   const rm = rowMember.get(d1PandOf.get(p.pandId) ?? p.pandId) ?? rowMember.get(p.pandId);
   if (rm && Number.isFinite(rm.heightM) && /cut/.test(rm.widthSource ?? '')) cands.push({ field: 'eavesM', value: rm.heightM, source: 'survey', confidence: 0.65, ref: `scripts/house-specs/rows/rows.json ${rm.row}: the cut's wall height` });
   if (beltLook.has(p.pandId)) cands.push(...candidatesFromBeltLook(beltLook.get(p.pandId)));
+  const hr = houseReads[p.pandId];
+  // A style-dated year from the photo never outranks a dated source (the register, a spec): it only fills a gap.
+  if (hr?.answer) cands.push(...candidatesFromHouseRead(hr.answer, `photo-read ${hr.model} ${hr.at.slice(0, 10)} crop ${hr.candidateId}`).filter(c => c.field !== 'facadeYear' || !cands.some(o => o.field === 'facadeYear')));
+  const extras = hr?.answer ? readExtras(hr.answer) : null;
   const fields = pickFields(cands);
   const u = unitOf.get(p.pandId);
   const faceMembers = u ? pands.filter(q => unitOf.get(q.pandId)?.key === u.key).map(q => q.pandId) : [p.pandId];
@@ -225,7 +239,7 @@ for (const p of pands) {
   };
   out.push({
     pandId: p.pandId, address: p.address, order: p.order, fields, missing: DESC_FIELDS.filter(f => !fields[f]), group,
-    kitCannotDraw: kitCannotDraw(p.pandId, fields, gaps), specParts: partRefs.get(p.pandId) ?? [], counts: countFields([fields]),
+    kitCannotDraw: kitCannotDraw(p.pandId, fields, gaps), ...(extras ? { photoRead: { ...extras, candidateId: hr.candidateId } } : {}), specParts: partRefs.get(p.pandId) ?? [], counts: countFields([fields]),
   });
 }
 

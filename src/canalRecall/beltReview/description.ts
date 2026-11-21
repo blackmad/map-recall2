@@ -8,6 +8,7 @@
  * facade year. Sources, strongest first (DESC_SOURCES):
  *   reviewed       a person looked (a reviewed or authored HouseSpec field, a row review)
  *   face-intent    a block-face intent measured on its rectified strip (HouseSpec streetlevel-measured)
+ *   photo-read     the belt review's per-house read of David's picked crop, every field in kit values (houseRead.ts)
  *   own-read       this house's own photo read (D1 describer answer, the belt photo readers, a vision-judge spec field)
  *   register       the Rijksmonument register's words (monument-facts, HouseSpec monument-text)
  *   survey         a measurement not read off the front photo (AHN front band, 3DBAG eaves, BAG)
@@ -28,14 +29,14 @@ export const DESC_FIELDS = [
 ] as const;
 export type DescField = (typeof DESC_FIELDS)[number];
 
-export const DESC_SOURCES = ['reviewed', 'face-intent', 'own-read', 'register', 'survey', 'based-on', 'donor', 'period-default'] as const;
+export const DESC_SOURCES = ['reviewed', 'face-intent', 'photo-read', 'own-read', 'register', 'survey', 'based-on', 'donor', 'period-default'] as const;
 export type DescSource = (typeof DESC_SOURCES)[number];
 /** Sources that count as "from the library" in the ledger; the rest (and an absent field) need a new read. */
-export const LIBRARY_SOURCES: ReadonlySet<DescSource> = new Set(['reviewed', 'face-intent', 'own-read', 'register', 'survey', 'based-on']);
+export const LIBRARY_SOURCES: ReadonlySet<DescSource> = new Set(['reviewed', 'face-intent', 'photo-read', 'own-read', 'register', 'survey', 'based-on']);
 const RANK = new Map<DescSource, number>(DESC_SOURCES.map((s, i) => [s, DESC_SOURCES.length - i]));
 /** Default confidence per source when the input states none. */
 export const SOURCE_CONFIDENCE: Readonly<Record<DescSource, number>> = {
-  reviewed: 0.95, 'face-intent': 0.85, 'own-read': 0.6, register: 0.7, survey: 0.75, 'based-on': 0.7, donor: 0.35, 'period-default': 0.2,
+  reviewed: 0.95, 'face-intent': 0.85, 'photo-read': 0.75, 'own-read': 0.6, register: 0.7, survey: 0.75, 'based-on': 0.7, donor: 0.35, 'period-default': 0.2,
 };
 
 /** One statement of one field by one source. */

@@ -50,7 +50,7 @@ export interface FaceCtx {
 
 /** Description field -> kit catalogue enum (lane C kit-catalogue.json). */
 const CATALOGUE_ENUM: Partial<Record<DescField, string>> = { crown: 'gable', cornice: 'cornice', heads: 'windowHead', windowSurround: 'windowSurround', windows: 'windows', stoop: 'basement', wallFinish: 'wallMaterial' };
-const SOURCE_CLASS = (s: string) => s === 'edit' ? 'edit' : /^(reviewed|face-intent)/.test(s) ? 'strong' : /^(own-read|register|survey|based-on|sameAs|basedOn)/.test(s) ? 'mid' : 'weak';
+const SOURCE_CLASS = (s: string) => s === 'edit' ? 'edit' : /^(reviewed|face-intent)/.test(s) ? 'strong' : /^(photo-read|own-read|register|survey|based-on|sameAs|basedOn)/.test(s) ? 'mid' : 'weak';
 
 function header(ctx: FaceCtx, extra: (Node | null)[] = []) {
   const p = ctx.b.face.pands[ctx.current], n = ctx.b.face.pands.length;
