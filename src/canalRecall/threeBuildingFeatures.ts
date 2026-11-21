@@ -463,7 +463,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const ids = postwarExtraIds(postwar);
     if (ids.length) {
       building.registerForce = [...(building.registerForce ?? []), ...ids];
-      building.postwarKit = { balconyHex: postwar.balconyHex, pierHex: postwar.painted ? '#e4e0d6' : levelWallHex(building.wallHex) };
+      building.postwarKit = { balconyHex: postwar.balconyHex, pierHex: postwar.painted ? '#e4e0d6' : levelWallHex(building.wallHex),
+        ...(postwar.erkerCount ? { erkerCount: postwar.erkerCount, erkerPlan: postwar.erkerPlan } : {}), ...(postwar.stair ? { stair: postwar.stair, stairCount: postwar.stairCount ?? 1 } : {}) };
     }
   }
   if (design) { building.seed = design.seed; building.designSlice = { fromM: design.fromM, toM: design.toM, moduleM: design.moduleM }; if (design.bays) building.designBays = design.bays; if (design.bayPitchM) building.designPitchM = design.bayPitchM; }

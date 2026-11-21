@@ -1,0 +1,187 @@
+{
+ "schemaVersion": 1,
+ "revision": "postwar-siblings/v1 2026-11-21",
+ "method": "scripts/postwar-kit/siblings.ts: same BAG year, touching footprints (<= 3 hops, <= 150 m), height within 1.5 m, no disagreeing read in the complex",
+ "siblings": {
+  "0363100012063827": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "from": "0363100012091899"
+  },
+  "0363100012066455": {
+   "balcony": "round",
+   "balconyTone": "white",
+   "from": "0363100012108575"
+  },
+  "0363100012072791": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "from": "0363100012061791"
+  },
+  "0363100012076042": {
+   "balcony": "round",
+   "balconyTone": "dark",
+   "from": "0363100012061690"
+  },
+  "0363100012083698": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "from": "0363100012135871"
+  },
+  "0363100012084323": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "from": "0363100012110173"
+  },
+  "0363100012086718": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "from": "0363100012067983"
+  },
+  "0363100012087230": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "from": "0363100012091899"
+  },
+  "0363100012090151": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "from": "0363100012146061"
+  },
+  "0363100012096892": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "from": "0363100012094781"
+  },
+  "0363100012098294": {
+   "balcony": "round",
+   "balconyTone": "dark",
+   "from": "0363100012139300"
+  },
+  "0363100012101170": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "from": "0363100012146061"
+  },
+  "0363100012101225": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "from": "0363100012094781"
+  },
+  "0363100012103872": {
+   "balcony": "round",
+   "balconyTone": "colour",
+   "from": "0363100012117197"
+  },
+  "0363100012110279": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "from": "0363100012061791"
+  },
+  "0363100012112341": {
+   "balcony": "round",
+   "balconyTone": "white",
+   "from": "0363100012108575"
+  },
+  "0363100012113143": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "from": "0363100012146061"
+  },
+  "0363100012119450": {
+   "balcony": "round",
+   "balconyTone": "white",
+   "from": "0363100012108575"
+  },
+  "0363100012122189": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "from": "0363100012140019"
+  },
+  "0363100012122451": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "from": "0363100012061791"
+  },
+  "0363100012123225": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "from": "0363100012094781"
+  },
+  "0363100012125134": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "from": "0363100012067983"
+  },
+  "0363100012126736": {
+   "balcony": "round",
+   "balconyTone": "colour",
+   "from": "0363100012117197"
+  },
+  "0363100012129349": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "from": "0363100012061791"
+  },
+  "0363100012134214": {
+   "balcony": "projecting",
+   "balconyTone": "dark",
+   "from": "0363100012094781"
+  },
+  "0363100012138881": {
+   "balcony": "round",
+   "balconyTone": "glass",
+   "from": "0363100012146061"
+  },
+  "0363100012147884": {
+   "balcony": "round",
+   "balconyTone": "white",
+   "from": "0363100012108575"
+  },
+  "0363100012180741": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "from": "0363100012169760"
+  },
+  "0363100012180742": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "from": "0363100012169760"
+  },
+  "0363100012180743": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "from": "0363100012169760"
+  },
+  "0363100012181435": {
+   "balcony": "band",
+   "balconyTone": "white",
+   "from": "0363100012164932"
+  },
+  "0363100012181436": {
+   "balcony": "band",
+   "balconyTone": "white",
+   "from": "0363100012164932"
+  },
+  "0363100012183006": {
+   "balcony": "band",
+   "balconyTone": "white",
+   "from": "0363100012183007"
+  },
+  "0363100012184744": {
+   "balcony": "projecting",
+   "balconyTone": "white",
+   "from": "0363100012168722"
+  },
+  "0363100012243830": {
+   "balcony": "band",
+   "balconyTone": "dark",
+   "from": "0363100012243829"
+  },
+  "0363100012246331": {
+   "balcony": "band",
+   "balconyTone": "dark",
+   "from": "0363100012243829"
+  }
+ }
+}

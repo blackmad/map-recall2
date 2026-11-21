@@ -4,6 +4,8 @@ import { CLUSTER_DISTRIBUTION, MEASURED_FRONTS, clusterFor, measuredFront, valid
 import { FAMILY_SWATCHES, coarseFamily, correctedWall, familyOfHex, postwarExtraIds, postwarKitFor, styleFor, validateWalls } from './kit.js';
 import { calibrateThumb, isBuffRaw, isShadedRaw, measureWallPatch } from './wallPatch.js';
 import CORRECTED from './corrected-walls.json';
+import FEATURES from './feature-reads.json';
+import SIBLINGS from './sibling-features.json';
 import { ExtraSink } from '../facadeExtraCore.js';
 import type { ExtraContext } from '../facadeExtraCore.js';
 import { arcade, balconyBand, darkErkers, projectingBalconies, roundBalconies } from './components.js';
@@ -47,10 +49,10 @@ test('a read pand draws its own read; not housing, no year or pre-1965: null', (
   assert.equal(postwarKitFor({ id: 'x', year: 1950, heightM: 17, use: 'housing' }), null);
 });
 
-test('a measured unread pand takes its brick-only wall and nothing else; the file validates', () => {
+test('a measured unread pand without a feature read takes its brick-only wall and nothing else; the file validates', () => {
   assert.throws(() => validateWalls({ schemaVersion: 1, revision: 'x', walls: { '123': 'b9a5240' } }));
   assert.throws(() => validateWalls({ schemaVersion: 1, revision: 'x', walls: { '0363100012171628': 'x9a5240' } }));
-  const id = Object.keys(CORRECTED.walls).find(k => !measuredFront(k));
+  const id = Object.keys(CORRECTED.walls).find(k => !measuredFront(k) && !(k in FEATURES.features) && !(k in SIBLINGS.siblings));
   if (!id) return;
   const k = postwarKitFor({ id, year: 1990, heightM: 15, use: 'housing' })!;
   assert.equal(k.wallSource, 'measured');
