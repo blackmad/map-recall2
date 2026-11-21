@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+## One room per shop, for real (2026-11-21, round 20261121o)
+
+- David on round l's tint: "these still look very inconsistent". The tint matched light, but each filler still painted its own room (bottle shelf, white poster wall, café). Lane/shop-one-room-20261121 (d375e8a08d): five room families (shop white, takeaway cream, sweet pink-white, warm wood, dark) in `retailRoomTone.ts` set wall, floor, a dado at one height, lights and glass level; with shopVariety on, signature cells and fillers paint on their family's room, and every filler is painted once per family and dressed for it (no supermarket packets in a cheese shop or bakery, no diners in a shop's fridge window). Round l's tint, tone table and measuring scripts are removed. Café tables cap at half the panes. `?shopVariety=0` stays byte-identical.
+- Cost: filler cells 13 → 24, filler layers 4 → 6 (+~1 MB at 256 px with mips).
+- Blind, fresh opus judge, 24 Shopfronts thumbnails, today vs new shuffled: round 1 11-1-12 (the brown bar lost to a purple lounge cast, fixed), round 2 12-0-12. Ties are fronts that barely changed (supermarkets, doners, phone shop).
+- Still not said: the signature repeats on 'most' shops (souvenirs, tobacco, gelato case); butcher and florist windows look empty at thumbnail size; Ekoplaza uses the generic promo poster; coffeeshop and smartshop lost their green/purple tint to the shared dark room.
+
 ## Casa Rosso and Moulin Rouge; the housing-block kit (2026-11-21, round 20261121n)
 
 - **Wallen theatres** (lane/lm-wallen-theatres-20261121 bd6bac78cb; David: "add the famous red light district theaters"). Casa Rosso (`casa-rosso`, Oudezijds Achterburgwal 106-108, one pand, 9.5k tris): the black screen front with the traced pink-neon elephant, planted walls, the gilt marquee (Cinzel outlines, OFL) and canopy. Theater Moulin Rouge (`moulin-rouge-amsterdam`, Oudezijds Achterburgwal 5-7, 10.7k tris): blue-black four-bay house, red letters, neon display cases, hanging board. Both blind PASS, today FAIL. No windmill sign appears in any 2024-2025 panorama, so none was modelled; the figure drawings and "LIVE SEX" text were left out. New shared `wallen-theatres-kit.ts` (signText relief letters). Banana Bar moved to lane/lm-wallen-more-20261121 with six more Wallen sights (Bulldog Palace, In 't Aepjen, Erotic Museum, Red Light Secrets, Condomerie, the Belle statue).
