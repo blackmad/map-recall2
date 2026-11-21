@@ -1,0 +1,130 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "tweede-hugo-de-grootstraat-43-148379",
+ "pandId": "0363100012148379",
+ "address": "Tweede Hugo de Grootstraat 43-97, Amsterdam-West: 1995 housing in buff brick over a two-storey glazed supermarket podium (kit batch 8504, lane kit-batch-8504-20261121: not installed)",
+ "sources": [
+  {
+   "id": "pano-2025-06-18-w04-204b",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-18_08-56-14_02004/",
+   "image": "source-data://pand-reference-walls/0363100012148379/w04-204b.jpg",
+   "sha256": "40158e848cacd9e017295186c0dc24b8767d542bde90c81424e2a8f892139ec6",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-18-w03-24b",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-18_08-56-14_01786/",
+   "image": "source-data://pand-reference-walls/0363100012148379/w03-24b.jpg",
+   "sha256": "cc606c9034f53bd4dfe59b00fe16bc0be1331ad367d3d6c741b387e436a4b593",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-22-w01-114b",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002055_pano_0000_000532/",
+   "image": "source-data://pand-reference-walls/0363100012148379/w01-114b.jpg",
+   "sha256": "aa666b8c867601a08863c2fed90065e68f9cc15072afc0719c0ab3b1ef6c6eb4",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#a8957a",
+  "frame": "#e4e2dc",
+  "stone": "#b4b8b8",
+  "door": "#2a3440"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "walls": [
+  {
+   "wallSurfaces": [
+    60,
+    61,
+    21,
+    23,
+    8,
+    10,
+    12,
+    14,
+    17,
+    18,
+    20,
+    36,
+    38,
+    41,
+    96,
+    101,
+    114,
+    127,
+    11,
+    13,
+    15,
+    16,
+    19,
+    22,
+    39,
+    78,
+    128
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "cornice": true,
+   "palette": {
+    "brick": "#a69c8c",
+    "frame": "#2a3440",
+    "stone": "#b4b8b8"
+   },
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "sill": 0.05,
+     "h": 0.78,
+     "lights": 2,
+     "spandrel": {
+      "h": 0.12,
+      "colour": "#b8352c"
+     },
+     "frame": "#2a3440"
+    },
+    {
+     "storeys": [
+      1
+     ],
+     "sill": 0.06,
+     "h": 0.66,
+     "lights": 2,
+     "frame": "#2a3440"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "palette",
+    "ribbonStoreys",
+    "cornice"
+   ]
+  }
+ ],
+ "notes": [
+  "Group 0: the two-storey podium on every side the crops show (w04-204b 2025-06-18 SW, w03-24b 2025-06-18 NE, w01-114b 2021-03-22 SE behind a bare tree): a glazed shop storey in dark frames with the red sill band, a band of grey-buff brick, a glazed first storey in dark frames, and a metal canopy edge at the top. The sawtooth teeth of the SW and NE podium (3.3-5 m 3DBAG planes, no crop of their own) take the same front by continuity.",
+  "Not drawn (window grid in the buff upper brick): the housing storeys over the podium. Their long SW and NE fronts (35 m, 29 m and 14+12+12 m) stand 7-11 m behind the podium edge and are not BAG footprint walls, so all-walls.ts gives them no crop (its --inset stops at 5 m); the SE end (2.5 m back) is behind a tree in every capture (2021-03-22 bare branches, 2025-06-18 in leaf). The NE end crop w03-24b shows buff brick with punched windows and blue-railed balconies over the podium.",
+  "Brick: upper buff from the 2022-12-14 NE crop (w03-24bL #897e6c, lifted); podium grey-buff band from w04-204b (#9fa493 sunlit)."
+ ]
+}

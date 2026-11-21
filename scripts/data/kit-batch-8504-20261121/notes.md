@@ -1,0 +1,7 @@
+G1: veemkade-1106-068169 (9570 tris; allow 0,1,2), veemkade-1000-099696 (9299; weaker, fragmented 3DBAG; allow 0-4), celebesstraat-125-104501 (2753; allow 0,1). Panamalaan -> hand (4 fronts + poem relief).
+Kit can't: mesh balustrades, roof mesh rail/sawtooth pavilions, continuous bay rhythm across fragmented 3DBAG plane, Celebes archipelago relief map, split-level storeys, set-back top volume in 3DBAG front plane.
+G3: lijnbaansgracht-208-167466 (5218 tris, allow 0-4), tweede-hugo-de-grootstraat-43-148379 (2990, podium only; upper set back >5 m no crop; allow 0), bos-en-lommerplein-2-097332 (10590; allow 0-4), van-der-palmkade-kit2-120309 (4652 vs installed 6463; allow 0,1).
+Allow strings in agent report (copied below in install.sh when written).
+Kit can't: per-storey loggia rail kind, faceted oriel, speklaag lines in plinth; set-back storey within one 3DBAG plane; recessed balcony voids in balcony band; bayWindows w>1 in houses[] draws nothing (possible bug); arched loggias, roundels, pier caps/pergola; face panels only on group's main panel. Crop tooling: walls set back >5 m from footprint.
+G2: grote-wittenburgerstraat-210-170653 (8090), windroosplein-2-169221 (4662, brick too red?), windrooskade-2-180754 (4390), flevoparkweg-2-136169 (10251, atrium not modelled).
+Kit can't: curved balcony plan; square-headed gateway; per-house glass colour (glass block); timber wall material; cladding+houses combination; residential.pattern cap 12; accentPanels over ribbons; bayWindows glazing bars; roof-edge terrace rail; cantilevered metal box.

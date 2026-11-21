@@ -1,0 +1,113 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "veemkade-1106-068169",
+ "pandId": "0363100012068169",
+ "address": "Veemkade 1106-1210, Amsterdam-Centrum (Oostelijke Handelskade): 1995 housing block, grey fibre-cement panel storey between two recessed balcony storeys with mesh balustrades over a tall glazed raised ground on the street side, ribbed grey metal bands and ribbon windows over the same glazed ground on the quay side (kit batch kit-batch-8504-20261121: not installed)",
+ "sources": [
+  {
+   "id": "pano-2024-10-16-w02-196",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-16_13-17-24_01836/",
+   "image": "source-data://pand-reference-walls/0363100012068169/w02-196.jpg",
+   "sha256": "5eb9d03f17f3b68880d3ca4060455301f78367fc51f1d3245e1d64ba9b9e42f4",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-w03-196",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_09-52-43_01140/",
+   "image": "source-data://pand-reference-walls/0363100012068169/w03-196.jpg",
+   "sha256": "c6f8e94dc0dfe5aa8e3ec1fb0c719c72e92dd305cbf2697896f3761baaf5fd71",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-w01-16",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_01642/",
+   "image": "source-data://pand-reference-walls/0363100012068169/w01-16.jpg",
+   "sha256": "67b61ab77ec3b4124b07f55d44885d394894ea7f6f94d6e285ab283241f595d5",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#8ea6b0",
+  "frame": "#3e4c54",
+  "stone": "#9aa4a8",
+  "door": "#6a3a28"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "walls": [
+  {
+   "wallSurfaces": [8, 73, 105, 122],
+   "street": "Veemkade",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "groundFactor": 2.5,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "three-light",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {"w": 0.7, "h": 0.34, "sill": 0.32},
+   "palette": {"brick": "#8ea6b0", "frame": "#3e4c54", "stone": "#9aa4a8"},
+   "loggias": {"storeys": [1, 3], "w": 0.95, "h": 0.8, "sill": 0.0, "deep": 0.6, "rail": "solid", "lights": 3, "colour": "#4a5a63", "lining": "#2a3236", "back": "door-window"},
+   "ribbonStoreys": [
+    {"storeys": [0], "sill": 0.12, "h": 0.8, "lights": 3, "rows": [0.6], "frame": "#6a3a28"}
+   ],
+   "hand": ["system", "storeys", "baysPerStorey", "windowShape", "palette", "wallMaterial", "loggias", "ribbonStoreys", "groundFactor", "ground"]
+  },
+  {
+   "wallSurfaces": [39, 140],
+   "street": "Veemkade",
+   "system": "brick-bay-grid",
+   "alignWith": 0,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "three-light",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {"w": 0.7, "h": 0.34, "sill": 0.32},
+   "palette": {"brick": "#8ea6b0", "frame": "#3e4c54", "stone": "#9aa4a8"},
+   "loggias": {"storeys": [1, 3], "w": 0.95, "h": 0.8, "sill": 0.0, "deep": 0.6, "rail": "solid", "lights": 3, "colour": "#4a5a63", "lining": "#2a3236", "back": "door-window"},
+   "ribbonStoreys": [
+    {"storeys": [0], "sill": 0.12, "h": 0.8, "lights": 3, "rows": [0.6], "frame": "#6a3a28"}
+   ],
+   "hand": ["system", "storeys", "baysPerStorey", "windowShape", "palette", "wallMaterial", "loggias", "ribbonStoreys", "ground"]
+  },
+  {
+   "wallSurfaces": [46],
+   "street": "Veemkade",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "groundFactor": 2.4,
+   "baysPerStorey": 12,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {"w": 0.9, "h": 0.55, "sill": 0.35},
+   "palette": {"brick": "#8a959a", "frame": "#363b41", "stone": "#9aa4a8"},
+   "cladding": {"kind": "boards", "colour": "#8a959a", "lines": "#6c777c", "pitch": 0.15},
+   "ribbonStoreys": [
+    {"storeys": [0], "sill": 0.08, "h": 0.84, "lights": 3, "rows": [0.6], "frame": "#6a3a28"},
+    {"storeys": [1, 2, 3, 4, 5, 6], "sill": 0.35, "h": 0.55, "lights": 3, "frame": "#363b41"}
+   ],
+   "hand": ["system", "storeys", "baysPerStorey", "windowShape", "palette", "wallMaterial", "cladding", "ribbonStoreys", "groundFactor", "ground"]
+  }
+ ],
+ "notes": [
+  "Kit batch kit-batch-8504-20261121 (2026-11-21), group 1 (Eastern docklands).",
+  "Groups: 0 the west 38 m of the Veemkade street wall (w02-196 2024-10-16): seven bays of a grey fibre-cement panel storey with one wide three-light window per bay between two recessed balcony storeys with dark mesh balustrades and dark soffits, the thin grey fins at the bay joints left as wall between per-bay loggias; ground a tall glazed storey with red-brown timber frames under the cantilevered slab; 1 the east 22 m of the same wall (w03-196 2025-06-16), four bays, aligned with 0; 2 the 68 m quay wall (w01-16 2025-06-16, 42 % foliage): ribbed grey metal bands with ribbon windows on six upper storeys over the same glazed timber ground.",
+  "Storeys read from the rectified crops: the glazed ground is about 7 m to the first slab (raised garden behind a mesh fence), upper storeys about 2.8 m.",
+  "otherWalls: the stepped set-back walls behind the street front (15-23 m, the sawtooth timber roof pavilions) and the short east and west ends have no straight crop; they stay in the shader window grid."
+ ]
+}

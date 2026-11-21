@@ -1,0 +1,375 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "van-der-palmkade-kit2-120309",
+ "pandId": "0363100012120309",
+ "address": "Van der Palmkade 1-207, Amsterdam-West: 2001 serpentine block in dark brown brick, warehouse pastiche: a cream first-floor panel per bay, round arches on the second storey, blue-panelled windows over them and a light attic (kit batch 8504 kit2, lane kit-batch-8504-20261121: not installed; the shipped recipe is van-der-palmkade-191-120309)",
+ "sources": [
+  {
+   "id": "pano-2021-01-14-w02-97",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001951_pano_0000_000564/",
+   "image": "source-data://pand-reference-walls/0363100012120309/w02-97.jpg",
+   "sha256": "21791230afac0bb5b497a1f87142fd245c8f0ecdf37b0222ec9b55ff0b74166a",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#504140",
+  "frame": "#ece9e2",
+  "stone": "#d4cfc2",
+  "door": "#2a2a2a"
+ },
+ "roof": {
+  "material": "slate",
+  "flatHex": "#848d90",
+  "pitchedHex": "#848d90"
+ },
+ "closedBands": true,
+ "walls": [
+  {
+   "wallSurfaces": [
+    550,
+    224
+   ],
+   "mainSurface": 550,
+   "street": "Van der Palmkade",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 2,
+   "storeyFactors": [
+    3.0,
+    2.6,
+    3.0,
+    3.6,
+    3.7
+   ],
+   "ground": "system",
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.74,
+    "h": 0.67,
+    "sill": 0.07
+   },
+   "palette": {
+    "brick": "#504140",
+    "frame": "#ece9e2",
+    "stone": "#d4cfc2"
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      2
+     ],
+     "w": 0.68,
+     "h": 0.8,
+     "sill": 0.03
+    },
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.55,
+     "h": 0.54,
+     "sill": 0.23
+    },
+    {
+     "storeys": [
+      3
+     ],
+     "w": 0.86,
+     "h": 0.45,
+     "sill": 0.17
+    },
+    {
+     "storeys": [
+      4
+     ],
+     "w": 0.75,
+     "h": 0.43,
+     "sill": 0.05
+    }
+   ],
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.1,
+    "storeys": [
+     1,
+     3
+    ]
+   },
+   "arches": {
+    "windows": "round",
+    "storeys": [
+     2
+    ],
+    "band": "brick"
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      1,
+      1
+     ],
+     "colour": "#d4cfc2",
+     "along": [
+      0.16,
+      0.87
+     ],
+     "up": [
+      0.15,
+      1.0
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      1,
+      1
+     ],
+     "colour": "#d4cfc2",
+     "along": [
+      0.16,
+      0.87
+     ],
+     "up": [
+      0.15,
+      1.0
+     ]
+    },
+    {
+     "bays": [
+      0,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#d4cfc2",
+     "up": [
+      0.0,
+      0.62
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      0,
+      1
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#3d5a80",
+     "along": [
+      0.45,
+      0.55
+     ],
+     "up": [
+      0.2,
+      0.6
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "storeyShapes",
+    "windowGroup",
+    "arches",
+    "renderPanels",
+    "accentPanels",
+    "storeyFactors"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    290
+   ],
+   "mainSurface": 290,
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 2,
+   "storeyFactors": [
+    3.0,
+    2.6,
+    3.0,
+    3.6,
+    3.7
+   ],
+   "ground": "system",
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.74,
+    "h": 0.67,
+    "sill": 0.07
+   },
+   "palette": {
+    "brick": "#504140",
+    "frame": "#ece9e2",
+    "stone": "#d4cfc2"
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      2
+     ],
+     "w": 0.68,
+     "h": 0.8,
+     "sill": 0.03
+    },
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.55,
+     "h": 0.54,
+     "sill": 0.23
+    },
+    {
+     "storeys": [
+      3
+     ],
+     "w": 0.86,
+     "h": 0.45,
+     "sill": 0.17
+    },
+    {
+     "storeys": [
+      4
+     ],
+     "w": 0.75,
+     "h": 0.43,
+     "sill": 0.05
+    }
+   ],
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.1,
+    "storeys": [
+     1,
+     3
+    ]
+   },
+   "arches": {
+    "windows": "round",
+    "storeys": [
+     2
+    ],
+    "band": "brick"
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      1,
+      1
+     ],
+     "colour": "#d4cfc2",
+     "along": [
+      0.16,
+      0.87
+     ],
+     "up": [
+      0.15,
+      1.0
+     ]
+    },
+    {
+     "bays": [
+      1,
+      1
+     ],
+     "storeys": [
+      1,
+      1
+     ],
+     "colour": "#d4cfc2",
+     "along": [
+      0.16,
+      0.87
+     ],
+     "up": [
+      0.15,
+      1.0
+     ]
+    },
+    {
+     "bays": [
+      0,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#d4cfc2",
+     "up": [
+      0.0,
+      0.62
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      0,
+      1
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#3d5a80",
+     "along": [
+      0.45,
+      0.55
+     ],
+     "up": [
+      0.2,
+      0.6
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "storeyShapes",
+    "windowGroup",
+    "arches",
+    "renderPanels",
+    "accentPanels",
+    "storeyFactors"
+   ]
+  }
+ ],
+ "notes": [
+  "Kit2 of the shipped van-der-palmkade-191-120309 (lane kit-batch-8504-20261121): the same east canal front (panel 216: group 0 surfaces 550 and 224, group 1 surface 290 in the same system so the per-bay render and accent panels reach both halves; w02-97 2021-01-14; the 13 m surface 380 behind the middle bay is left to the window grid as in the shipped recipe) with the kit gaps closed since: a cream render panel per bay round the first floor's window pairs (renderPanels), round-arched second-storey openings, the third storey's windows in pairs either side of a blue panel (windowGroup + accentPanels), the light attic as a render panel over its lower part, storey heights from the crop (storeyFactors).",
+  "Not expressed: the open loggias behind the three left arches (the kit's loggias are square-headed, so the arches stay glazed), the white roundels in the brick over the arches, the white pier caps and pergola beams of the attic terrace.",
+  "roof.flatHex / pitchedHex from the shipped recipe (PDOK orthophoto reading, roof-facts 14/8413/5383).",
+  "Other walls: the rest of the S-shaped block (window grid); no other crop was archived."
+ ]
+}

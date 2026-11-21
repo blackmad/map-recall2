@@ -1,0 +1,359 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "celebesstraat-125-104501",
+ "pandId": "0363100012104501",
+ "address": "Celebesstraat 125-185 (+2 streets), Amsterdam-Oost (Indische Buurt): 1998 housing block in salmon brick, French-window stacks with glass rail balconettes on the south half of the Celebesstraat front, thin staggered strip windows and the yellow Indonesian-archipelago relief on the north half, a grey metal-clad bay at its foot and a grey metal-clad set-back top volume (kit batch kit-batch-8504-20261121: not installed)",
+ "sources": [
+  {
+   "id": "pano-2020-02-17-w01-78L",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001648_pano_0004_000158/",
+   "image": "source-data://pand-reference-walls/0363100012104501/w01-78L.jpg",
+   "sha256": "c575c0b0b1a4270c55f842cc7238366f772cca68e25146d0ada0026204848904",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#a87060",
+  "frame": "#d8dad6",
+  "stone": "#a8a49c",
+  "door": "#4a4e50"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "walls": [
+  {
+   "wallSurfaces": [
+    96
+   ],
+   "street": "Celebesstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "groundFactor": 1.3,
+   "ground": "residential",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.76,
+    "sill": 0.05
+   },
+   "palette": {
+    "brick": "#a87060",
+    "frame": "#d8dad6"
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "rail": "glass",
+    "windows": true,
+    "deep": 0.08,
+    "colour": "#c9cccc",
+    "pane": "clearGlass"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconies",
+    "ground",
+    "residential",
+    "groundFactor",
+    "houses"
+   ],
+   "houses": [
+    {
+     "w": 0.54,
+     "bays": 3,
+     "residential": {
+      "pattern": [
+       "window",
+       "window",
+       "window"
+      ],
+      "doors": "#4a4e50"
+     }
+    },
+    {
+     "w": 0.125,
+     "bays": 1,
+     "blankStoreys": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "residential": {
+      "pattern": [
+       "wall"
+      ]
+     }
+    },
+    {
+     "w": 0.16,
+     "bays": 1,
+     "residential": {
+      "pattern": [
+       "window"
+      ]
+     }
+    },
+    {
+     "w": 0.175,
+     "bays": 1,
+     "blankStoreys": [
+      2,
+      3,
+      4
+     ],
+     "windowShape": {
+      "w": 0.5,
+      "h": 0.9,
+      "sill": 0.05
+     },
+     "residential": {
+      "pattern": [
+       "door"
+      ],
+      "doors": "#4a4e50"
+     }
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    13,
+    210,
+    157
+   ],
+   "street": "Celebesstraat",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "groundFactor": 1.24,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.22,
+    "sill": 0.45
+   },
+   "palette": {
+    "brick": "#a87060",
+    "frame": "#4a4e50"
+   },
+   "houses": [
+    {
+     "w": 0.78,
+     "bays": 4,
+     "ownEaves": true,
+     "brickStoreys": [
+      {
+       "storeys": [
+        6
+       ],
+       "brick": "#8e9496"
+      }
+     ],
+     "bayWindows": [
+      {
+       "storeys": [
+        0
+       ],
+       "pattern": [
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        },
+        {
+         "w": 0.95,
+         "h": 0.15,
+         "sill": 0.3
+        },
+        {
+         "w": 0.95,
+         "h": 0.15,
+         "sill": 0.3
+        }
+       ]
+      },
+      {
+       "storeys": [
+        1,
+        3
+       ],
+       "pattern": [
+        {
+         "w": 0.95,
+         "h": 0.2,
+         "sill": 0.45
+        },
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        },
+        {
+         "w": 0.95,
+         "h": 0.2,
+         "sill": 0.45
+        }
+       ]
+      },
+      {
+       "storeys": [
+        2,
+        4
+       ],
+       "pattern": [
+        {
+         "w": 0
+        },
+        {
+         "w": 0.95,
+         "h": 0.2,
+         "sill": 0.45
+        },
+        {
+         "w": 0
+        },
+        {
+         "w": 0.95,
+         "h": 0.2,
+         "sill": 0.45
+        }
+       ]
+      },
+      {
+       "storeys": [
+        5
+       ],
+       "pattern": [
+        {
+         "w": 0.95,
+         "h": 0.2,
+         "sill": 0.1
+        },
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        },
+        {
+         "w": 0.95,
+         "h": 0.2,
+         "sill": 0.1
+        }
+       ]
+      },
+      {
+       "storeys": [
+        6
+       ],
+       "pattern": [
+        {
+         "w": 0
+        },
+        {
+         "w": 0.95,
+         "h": 0.25,
+         "sill": 0.4
+        },
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "w": 0.22,
+     "bays": 1,
+     "ownEaves": true,
+     "brickStoreys": [
+      {
+       "storeys": [
+        0,
+        1
+       ],
+       "brick": "#8e9496"
+      },
+      {
+       "storeys": [
+        6
+       ],
+       "brick": "#8e9496"
+      }
+     ],
+     "bayWindows": [
+      {
+       "storeys": [
+        0,
+        1,
+        6
+       ],
+       "pattern": [
+        {
+         "w": 0
+        }
+       ]
+      },
+      {
+       "storeys": [
+        2,
+        3,
+        4,
+        5
+       ],
+       "pattern": [
+        {
+         "w": 0.9,
+         "h": 0.2,
+         "sill": 0.45
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "houses",
+    "bayWindows",
+    "groundFactor",
+    "ground"
+   ]
+  }
+ ],
+ "notes": [
+  "Kit batch kit-batch-8504-20261121 (2026-11-21), group 1 (Indische Buurt). Front only: the 34 m Celebesstraat wall from w01-78L (2020-02-17, leaf-off; the 2020-05 and 2021 crops are behind a tree in leaf).",
+  "Groups: 0 the south half (3DBAG surface 96, 15 m): five storeys, French windows with clear glass rail balconettes on four axes and one blank axis, the stair column with its tall entrance door; ground French windows and the entrance (residential pattern). 1 the north half (surfaces 13/210/157, which 3DBAG runs up to 20-22 m through the set-back grey metal-clad top volume): sparse thin strip windows staggered storey by storey on a blank brick wall, and the grey metal-clad bay at the foot of the north end (house 1, storeys 0-1 in grey); storey 6 in grey stands for the set-back metal top volume.",
+  "Storey lines are approximate on group 1: the strip windows sit on split levels the kit storey grid does not follow; the bays were chosen so the two strip columns and the right-hand column of the photo land on bay centres.",
+  "The top row of small dark openings over the south half is read as parapet openings of roof terraces (no glazing visible in the leaf-off crop) and is not drawn.",
+  "otherWalls: the other walls of this large pand (archived crops w02-305, w06-215, w07-204, w09-307, w11-210, w12-348 exist) are not described in this pass and stay in the shader window grid."
+ ]
+}

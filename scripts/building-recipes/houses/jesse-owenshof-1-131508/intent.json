@@ -1,0 +1,1014 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "jesse-owenshof-1-131508",
+ "pandId": "0363100012131508",
+ "address": "Jesse Owenshof 1-89, Amsterdam Nieuw-West: 1995 U-shaped courtyard block over a car park deck, pale grey-cream brick wings of four and five storeys with punched white windows and stacked loggias, a darker brick top storey on the five-storey side, glazed stair towers with blue spandrels at the wing ends, red brick end walls under a ribbon-window top storey (kit2 recipe, lane kit-batch-8504-20261121: not installed)",
+ "sources": [
+  {
+   "id": "pano-2024-10-23-w07-114n",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_09-43-14_01411/",
+   "image": "source-data://pand-reference-walls/0363100012131508/w07-114n.jpg",
+   "sha256": "b3907a1b082c02e31fa68c5bec10296d8e95ad0e5b875c1d9e3651d44f1f8b26",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-23-w06-114n",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_09-43-14_01417/",
+   "image": "source-data://pand-reference-walls/0363100012131508/w06-114n.jpg",
+   "sha256": "9cb6a11666a9c6c44f8e9a0788ce7800fa89e92897dda6469717da2dc003c9de",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-08-02-w08-294",
+   "kind": "street-panorama",
+   "capturedAt": "2018-08-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000895_pano_0004_002266/",
+   "image": "source-data://pand-reference-walls/0363100012131508/w08-294.jpg",
+   "sha256": "863e2453b90fe938182bc9a11281880116a5ffecc9b564262c80635aef16a68d",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-05-26-w05-294",
+   "kind": "street-panorama",
+   "capturedAt": "2017-05-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000311_pano_0000_001598/",
+   "image": "source-data://pand-reference-walls/0363100012131508/w05-294.jpg",
+   "sha256": "5f797e78cc9d74bbb93d5e50df0bd2e6e457aaedf15ecb9c5ba34bd6ad23f570",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-23-w02-24n",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_09-43-14_01435/",
+   "image": "source-data://pand-reference-walls/0363100012131508/w02-24n.jpg",
+   "sha256": "6d333754bfee3515b517fb2b441e8844194b50f39147a99d74c8779978f94808",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-23-w09-24n",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_09-43-14_01428/",
+   "image": "source-data://pand-reference-walls/0363100012131508/w09-24n.jpg",
+   "sha256": "3a27af6588255e87af8a22a6de6ddf492e763f4163b3477fce095d863fa049f3",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w10-24n",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02121/",
+   "image": "source-data://pand-reference-walls/0363100012131508/w10-24n.jpg",
+   "sha256": "95826b6e5d593f06bb8c852529f6dd83d7e820bc583eed69f83372d47cc7f0f3",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w13-99n",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02175/",
+   "image": "source-data://pand-reference-walls/0363100012131508/w13-99n.jpg",
+   "sha256": "67807f817c097f0a056cab2bddd616fd9e7119aa12cfc7ea09c8e6187dcc9cf4",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-08-02-w11-309",
+   "kind": "street-panorama",
+   "capturedAt": "2018-08-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000895_pano_0004_002266/",
+   "image": "source-data://pand-reference-walls/0363100012131508/w11-309.jpg",
+   "sha256": "c7b3a583c39dedd2dbb785f2a1a823420ae586311d728f18a9b89c6e69d140b7",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-07-11-w12-309",
+   "kind": "street-panorama",
+   "capturedAt": "2016-07-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000108_pano_0000_002124/",
+   "image": "source-data://pand-reference-walls/0363100012131508/w12-309.jpg",
+   "sha256": "e2abf55930d095fd03c1527103711ab0ec6e775097eecf48758099c1873f031b",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    190
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 6,
+   "groundFactor": 0.9,
+   "ground": "system",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.33
+   },
+   "palette": {
+    "brick": "#cdc8bb",
+    "frame": "#ecece6"
+   },
+   "blankStoreys": [
+    0
+   ],
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.5,
+       "at": 0.06
+      },
+      {
+       "w": 0.54,
+       "at": 0.2
+      },
+      {
+       "w": 0.31,
+       "at": 0.21
+      },
+      {
+       "w": 0.35,
+       "at": -0.07
+      },
+      {
+       "w": 0.92
+      },
+      {
+       "w": 0.92
+      }
+     ]
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3
+    ],
+    "bays": [
+     3,
+     4,
+     5
+    ],
+    "w": 0.92,
+    "h": 0.55,
+    "sill": 0.33,
+    "deep": 0.45,
+    "rail": "none",
+    "lining": "#c4bfb2",
+    "back": "door-window"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "loggias",
+    "garageBays"
+   ],
+   "garageBays": [
+    0,
+    1
+   ],
+   "street": "Jesse Owenshof"
+  },
+  {
+   "wallSurfaces": [
+    261
+   ],
+   "system": "brick-bay-grid",
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.33
+   },
+   "palette": {
+    "brick": "#cdc8bb",
+    "frame": "#ecece6"
+   },
+   "blankStoreys": [
+    0
+   ],
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.95
+      },
+      {
+       "w": 0.25,
+       "at": 0.07
+      },
+      {
+       "w": 0.45,
+       "at": -0.19
+      },
+      {
+       "w": 0.45,
+       "at": -0.14
+      },
+      {
+       "w": 0.25,
+       "at": -0.19
+      },
+      {
+       "w": 0.42,
+       "at": -0.23
+      }
+     ]
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3
+    ],
+    "bays": [
+     1
+    ],
+    "w": 0.92,
+    "h": 0.55,
+    "sill": 0.33,
+    "deep": 0.45,
+    "rail": "none",
+    "lining": "#c4bfb2",
+    "back": "door-window"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "loggias",
+    "garageBays"
+   ],
+   "garageBays": [
+    5,
+    6
+   ],
+   "alignWith": 0
+  },
+  {
+   "wallSurfaces": [
+    218
+   ],
+   "system": "brick-bay-grid",
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.33
+   },
+   "palette": {
+    "brick": "#cdc8bb",
+    "frame": "#ecece6"
+   },
+   "blankStoreys": [
+    0
+   ],
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.92
+      },
+      {
+       "w": 0.92
+      },
+      {
+       "w": 0.35,
+       "at": 0.07
+      },
+      {
+       "w": 0.31,
+       "at": -0.21
+      },
+      {
+       "w": 0.54,
+       "at": -0.2
+      },
+      {
+       "w": 0.5,
+       "at": -0.06
+      }
+     ]
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3
+    ],
+    "bays": [
+     0,
+     1,
+     2
+    ],
+    "w": 0.92,
+    "h": 0.55,
+    "sill": 0.33,
+    "deep": 0.45,
+    "rail": "none",
+    "lining": "#c4bfb2",
+    "back": "door-window"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "loggias",
+    "garageBays"
+   ],
+   "garageBays": [
+    4,
+    5
+   ],
+   "alignWith": 0
+  },
+  {
+   "wallSurfaces": [
+    288
+   ],
+   "system": "brick-bay-grid",
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.55,
+    "sill": 0.33
+   },
+   "palette": {
+    "brick": "#cdc8bb",
+    "frame": "#ecece6"
+   },
+   "blankStoreys": [
+    0
+   ],
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.42,
+       "at": 0.23
+      },
+      {
+       "w": 0.25,
+       "at": 0.19
+      },
+      {
+       "w": 0.45,
+       "at": 0.14
+      },
+      {
+       "w": 0.45,
+       "at": 0.19
+      },
+      {
+       "w": 0.25,
+       "at": -0.07
+      },
+      {
+       "w": 0.95
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     2,
+     3
+    ],
+    "bays": [
+     5
+    ],
+    "w": 0.92,
+    "h": 0.55,
+    "sill": 0.33,
+    "deep": 0.45,
+    "rail": "none",
+    "lining": "#c4bfb2",
+    "back": "door-window"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "loggias",
+    "garageBays"
+   ],
+   "garageBays": [
+    0,
+    1
+   ],
+   "alignWith": 0
+  },
+  {
+   "wallSurfaces": [
+    232
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 12,
+   "ground": "system",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.5,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#cdc8bb",
+    "frame": "#ecece6"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.95
+      },
+      {
+       "w": 0.95
+      },
+      {
+       "w": 0.25,
+       "at": -0.17
+      },
+      {
+       "w": 0.46,
+       "at": -0.26
+      },
+      {
+       "w": 0.42,
+       "at": -0.1
+      },
+      {
+       "w": 0.46,
+       "at": 0.19
+      },
+      {
+       "w": 0.46,
+       "at": 0.26
+      },
+      {
+       "w": 0.25,
+       "at": 0.18
+      },
+      {
+       "w": 0.95
+      },
+      {
+       "w": 0.95
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "bays": [
+     1,
+     2,
+     9,
+     10
+    ],
+    "w": 0.92,
+    "h": 0.55,
+    "sill": 0.33,
+    "deep": 0.45,
+    "rail": "none",
+    "lining": "#c4bfb2",
+    "back": "door-window"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      4
+     ],
+     "brick": "#8c8781"
+    }
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "loggias",
+    "brickStoreys"
+   ],
+   "street": "Jesse Owenshof"
+  },
+  {
+   "wallSurfaces": [
+    102
+   ],
+   "system": "brick-bay-grid",
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.5,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#cdc8bb",
+    "frame": "#ecece6"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0.33,
+       "at": 0.25
+      },
+      {
+       "w": 0.33,
+       "at": -0.04
+      },
+      {
+       "w": 0.54,
+       "at": 0.06
+      },
+      {
+       "w": 0.33,
+       "at": -0.04
+      },
+      {
+       "w": 0.95
+      },
+      {
+       "w": 0.95
+      }
+     ]
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "bays": [
+     3,
+     4,
+     5
+    ],
+    "w": 0.92,
+    "h": 0.55,
+    "sill": 0.33,
+    "deep": 0.45,
+    "rail": "none",
+    "lining": "#c4bfb2",
+    "back": "door-window"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      4
+     ],
+     "brick": "#8c8781"
+    }
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "loggias",
+    "brickStoreys"
+   ],
+   "alignWith": 4
+  },
+  {
+   "wallSurfaces": [
+    121
+   ],
+   "system": "brick-bay-grid",
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.5,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#cdc8bb",
+    "frame": "#ecece6"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0.95
+      },
+      {
+       "w": 0.95
+      },
+      {
+       "w": 0.33,
+       "at": 0.04
+      },
+      {
+       "w": 0.54,
+       "at": -0.06
+      },
+      {
+       "w": 0.33,
+       "at": 0.04
+      },
+      {
+       "w": 0.33,
+       "at": -0.25
+      }
+     ]
+    }
+   ],
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "bays": [
+     0,
+     1,
+     2
+    ],
+    "w": 0.92,
+    "h": 0.55,
+    "sill": 0.33,
+    "deep": 0.45,
+    "rail": "none",
+    "lining": "#c4bfb2",
+    "back": "door-window"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      4
+     ],
+     "brick": "#8c8781"
+    }
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "loggias",
+    "brickStoreys"
+   ],
+   "alignWith": 4
+  },
+  {
+   "wallSurfaces": [
+    188,
+    70,
+    31,
+    123
+   ],
+   "system": "curtain-wall",
+   "storeys": 5,
+   "palette": {
+    "brick": "#e2e2dc",
+    "frame": "#ecece6",
+    "glass": "#7d9fb0"
+   },
+   "hand": [
+    "system",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    189
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.2,
+    "h": 0.5,
+    "sill": 0.35
+   },
+   "palette": {
+    "brick": "#8f5f52",
+    "frame": "#ecece6"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0,
+      1,
+      2
+     ],
+     "pattern": [
+      {
+       "w": 1.03,
+       "at": 0.42,
+       "h": 0.22,
+       "sill": 0.62
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.2,
+       "at": 0.47
+      },
+      {
+       "w": 0.18,
+       "at": -0.07
+      }
+     ]
+    }
+   ],
+   "brickStoreys": [
+    {
+     "storeys": [
+      3
+     ],
+     "brick": "#dcdcd6"
+    }
+   ],
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      3
+     ],
+     "sill": 0.3,
+     "h": 0.41,
+     "lights": 3,
+     "frame": "#ecece6"
+    }
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "brickStoreys",
+    "ribbonStoreys"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    42
+   ],
+   "system": "brick-bay-grid",
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.2,
+    "h": 0.5,
+    "sill": 0.35
+   },
+   "palette": {
+    "brick": "#8f5f52",
+    "frame": "#ecece6"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0,
+      1,
+      2
+     ],
+     "pattern": [
+      {
+       "w": 1.03,
+       "at": 0.42,
+       "h": 0.22,
+       "sill": 0.62
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.2,
+       "at": 0.47
+      },
+      {
+       "w": 0.18,
+       "at": -0.07
+      }
+     ]
+    }
+   ],
+   "brickStoreys": [
+    {
+     "storeys": [
+      3
+     ],
+     "brick": "#dcdcd6"
+    }
+   ],
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      3
+     ],
+     "sill": 0.3,
+     "h": 0.41,
+     "lights": 3,
+     "frame": "#ecece6"
+    }
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "brickStoreys",
+    "ribbonStoreys"
+   ],
+   "alignWith": 8
+  },
+  {
+   "wallSurfaces": [
+    59
+   ],
+   "system": "brick-bay-grid",
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.2,
+    "h": 0.5,
+    "sill": 0.35
+   },
+   "palette": {
+    "brick": "#8f5f52",
+    "frame": "#ecece6"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0,
+      1,
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.18,
+       "at": 0.07
+      },
+      {
+       "w": 0.2,
+       "at": -0.47
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.03,
+       "at": -0.42,
+       "h": 0.22,
+       "sill": 0.62
+      }
+     ]
+    }
+   ],
+   "brickStoreys": [
+    {
+     "storeys": [
+      3
+     ],
+     "brick": "#dcdcd6"
+    }
+   ],
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      3
+     ],
+     "sill": 0.3,
+     "h": 0.41,
+     "lights": 3,
+     "frame": "#ecece6"
+    }
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "brickStoreys",
+    "ribbonStoreys"
+   ],
+   "alignWith": 8
+  }
+ ],
+ "otherWalls": "window-grid",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#cdc8bb",
+  "frame": "#ecece6",
+  "door": "#a8443c",
+  "stone": "#d8d6cf"
+ },
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 24000,
+ "measured": {
+  "date": "2026-11-21",
+  "groups": [
+   0,
+   1,
+   4,
+   5,
+   6,
+   8
+  ]
+ },
+ "notes": [
+  "Kit2 read (lane kit-batch-8504-20261121). Newer captures archived with all-walls.ts --date=2023,2024,2025 --suffix=n --min-len=8 (2024-10-23 and 2025-06-30, straight-on, 2-8 deg obliquity); the north-west faces and two red end walls are seen only in 2016-2018 crops.",
+  "walls[0] (surface 190, w07-114n 2024-10-23) and walls[1] (261, w06-114n 2024-10-23): the low wing fronts, four storeys: a blank ground storey over the car park with red INRIT / UITRIT garage doors (garageBays), three storeys of pale brick with white two-light windows and a stack of loggias at one end (storeys 2-3; storey 1 glazed there); window positions per bay from the crops (bayWindows at).",
+  "walls[2] (218, w08-294 2018-08-02) and walls[3] (288, w05-294 2017-05-26, 50 deg oblique): the north-west wing, read as mirrors of walls[0] and walls[1]; the 2018 crop confirms loggias at the far end and the stair tower beside it, the garage positions are inferred from the mirror.",
+  "walls[4] (232, w02-24n 2024-10-23, tree over the left third, mirrored from the visible right half), walls[5] (102, w09-24n 2024-10-23) and walls[6] (121, w10-24n 2025-06-30, the mirror of 102): the five-storey courtyard-street fronts, a raised ground floor over a vent band, loggia stacks on storeys 1-4, the top storey in darker grey-brown brick (brickStoreys).",
+  "walls[7] (188, 70, 31, 123): the glazed stair towers at the wing ends, white mullions and blue-grey spandrel panels (curtain wall), from w06-114n / w07-114n.",
+  "walls[8] (189, w13-99n 2025-06-30, sunlit), walls[9] (42, w11-309 2018-08-02), walls[10] (59, w12-309 2016-07-11): red-brown brick end walls, a wide low two-light window on the left and two narrow tall windows on the right per storey, under a white top storey with a continuous ribbon of 12 lights (ribbonStoreys).",
+  "Colours white-balanced on the white window frames: pale brick #cdc8bb (w06/w07, overcast), darker top-storey brick #8c8781 (w02-24n, w09-24n), red-brown #8f5f52 (w13-99n sunlit, by eye: the raw crop is sky-exposed). Garage doors red #a8443c via the door colour.",
+  "Not drawn (no field): the row of small dark ventilation grilles in the car-park storey, the teal roof-edge fascia over the red ends, the street-name boards. No photo: the courtyard faces (deck at 2.7 m), the east red end (51), the upper set-back walls and the south-west faces: otherWalls window-grid."
+ ]
+}

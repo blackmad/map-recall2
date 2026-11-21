@@ -1,0 +1,524 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "bos-en-lommerplein-2-097332",
+ "pandId": "0363100012097332",
+ "address": "Bos en Lommerplein 2-136, Amsterdam-West: 2003 housing in dark brown brick over shops, continuous balcony bands with bar rails on the square front and a taller corner tower with white-framed windows (kit batch 8504, lane kit-batch-8504-20261121: not installed)",
+ "sources": [
+  {
+   "id": "pano-2024-09-18-w04-163",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20240918_0854_Track07_Sphere_00821/",
+   "image": "source-data://pand-reference-walls/0363100012097332/w04-163.jpg",
+   "sha256": "369e0ba18d8f544eb1389101ac410a4cd72a770af9fe8f0b46e316747f2d6571",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-18-w05-163",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20240918_0854_Track07_Sphere_00815/",
+   "image": "source-data://pand-reference-walls/0363100012097332/w05-163.jpg",
+   "sha256": "3ffa4729f9145dc376e02b22bde8c2183771d2b7f37d5f5ac8566cf8d1745e22",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-21-w01-73L",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/terdam_21112024_Track85_Sphere_00022/",
+   "image": "source-data://pand-reference-walls/0363100012097332/w01-73L.jpg",
+   "sha256": "7d462c568819b2a814fd0d01d9a1f5e7de241375aa0e5788e3ee9fe37b1c9109",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#5e4a44",
+  "frame": "#e6e6e2",
+  "stone": "#9a9488",
+  "door": "#2e2e30"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "walls": [
+  {
+   "wallSurfaces": [
+    58
+   ],
+   "street": "Bos en Lommerplein",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.62,
+    "sill": 0.15
+   },
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#e6e6e2",
+    "stone": "#9a9488"
+   },
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 3,
+    "sill": 0.0,
+    "h": 0.72,
+    "pier": 0.12,
+    "transom": 0.7,
+    "factor": 2.5
+   },
+   "houses": [
+    {
+     "w": 0.375,
+     "bays": 1,
+     "bayWindows": [
+      {
+       "storeys": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+       ],
+       "pattern": [
+        {
+         "w": 0.58,
+         "at": -0.2,
+         "h": 0.56,
+         "sill": 0.18
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "w": 0.625,
+     "bays": 4,
+     "blankStoreys": [
+      5
+     ],
+     "bayWindows": [
+      {
+       "storeys": [
+        1,
+        2,
+        3,
+        4
+       ],
+       "pattern": [
+        {
+         "w": 0.9,
+         "h": 0.86,
+         "sill": 0.02
+        },
+        {
+         "w": 0.9,
+         "h": 0.86,
+         "sill": 0.02
+        },
+        {
+         "w": 0.74,
+         "h": 0.86,
+         "sill": 0.02
+        },
+        {
+         "w": 0.37,
+         "h": 0.86,
+         "sill": 0.02
+        }
+       ]
+      },
+      {
+       "storeys": [
+        6
+       ],
+       "pattern": [
+        {
+         "w": 0.9,
+         "h": 0.55,
+         "sill": 0.2
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "balconyBands": {
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        1,
+        4
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        1,
+        4
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        1,
+        4
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        1,
+        4
+       ]
+      ]
+     }
+    ],
+    "storeys": [],
+    "deep": 0.4,
+    "rail": 0.36,
+    "kind": "bars",
+    "colour": "#9a9488",
+    "railColour": "#a8a8a4"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "houses",
+    "plinth",
+    "balconyBands"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    27,
+    57
+   ],
+   "mainSurface": 27,
+   "street": "Bos en Lommerplein",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.86,
+    "sill": 0.02
+   },
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#e6e6e2",
+    "stone": "#9a9488"
+   },
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 3,
+    "sill": 0.0,
+    "h": 0.72,
+    "pier": 0.12,
+    "transom": 0.7,
+    "factor": 2.5
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "pattern": [
+      {
+       "w": 1.55,
+       "at": 0.5,
+       "h": 0.86,
+       "sill": 0.02
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.75,
+       "h": 0.86,
+       "sill": 0.02
+      },
+      {
+       "w": 0.4,
+       "h": 0.86,
+       "sill": 0.02
+      }
+     ]
+    }
+   ],
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "deep": 0.4,
+    "rail": 0.36,
+    "kind": "bars",
+    "colour": "#9a9488",
+    "railColour": "#a8a8a4"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "plinth",
+    "bayWindows",
+    "balconyBands"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    1,
+    66,
+    82,
+    83
+   ],
+   "system": "brick-bay-grid",
+   "alignWith": 1,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.86,
+    "sill": 0.02
+   },
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#e6e6e2",
+    "stone": "#9a9488"
+   },
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 3,
+    "sill": 0.0,
+    "h": 0.72,
+    "pier": 0.12,
+    "transom": 0.7
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "pattern": [
+      {
+       "w": 1.55,
+       "at": 0.5,
+       "h": 0.86,
+       "sill": 0.02
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.75,
+       "h": 0.86,
+       "sill": 0.02
+      },
+      {
+       "w": 0.4,
+       "h": 0.86,
+       "sill": 0.02
+      }
+     ]
+    }
+   ],
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "deep": 0.4,
+    "rail": 0.36,
+    "kind": "bars",
+    "colour": "#9a9488",
+    "railColour": "#a8a8a4"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "plinth",
+    "bayWindows",
+    "balconyBands"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    115,
+    64,
+    26
+   ],
+   "system": "brick-bay-grid",
+   "alignWith": 1,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.86,
+    "sill": 0.02
+   },
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#e6e6e2",
+    "stone": "#9a9488"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    11
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 22,
+   "ground": "system",
+   "windows": "three-light",
+   "sills": false,
+   "stringCourses": true,
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#e6e6e2",
+    "stone": "#9a9488"
+   },
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 3,
+    "sill": 0.0,
+    "h": 0.72,
+    "pier": 0.12,
+    "transom": 0.7,
+    "factor": 2.5
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      4,
+      3
+     ],
+     "pattern": [
+      {
+       "w": 1.15,
+       "at": 0.5,
+       "h": 0.62,
+       "sill": 0.18
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.38,
+       "h": 0.62,
+       "sill": 0.18
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 1.15,
+       "at": 0.5,
+       "h": 0.62,
+       "sill": 0.18
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.38,
+       "h": 0.62,
+       "sill": 0.18
+      },
+      {
+       "w": 0.38,
+       "h": 0.62,
+       "sill": 0.18
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "plinth",
+    "bayWindows",
+    "stringCourses"
+   ]
+  }
+ ],
+ "notes": [
+  "Groups: 0 the square front's west 16 m (surface 58, w04-163 2024-09-18): the corner tower (a column of white-framed three-light windows to the top) beside the first balcony bays, the tower's top storeys over them; 1 the rest of the square front (surfaces 27, 57; w04-163 and w05-163 2024-09-18; groups 2 and 3 are its middle stretch, which 3DBAG cuts at 13.9 m (surfaces 1, 66, 82, 83) with the upper face set back behind the balconies (115, 64, 26), aligned to group 1's storey lines): four storeys of continuous balcony slabs with bar rails over a tall shop ground with a brick band, French windows between brick piers in a wide/two-light/one-light cadence; 4 the east front (surface 11, w01-73L 2024-11-21, behind autumn trees): punched windows whose cadence changes by storey (three-light pairs, singles), thin concrete ledges at the floor lines, tall shop ground.",
+  "Colours: brick sampled sunlit on w04-163 and w05-163 (#85725a..#9a8067 in warm morning light) and set darker and cooler towards the overcast 2022 triage crop's purple-brown; slab edges and rails grey.",
+  "Other walls (window grid): the west and north fronts (no panorama within 35 m; walls w02-253, w03-343, w06-343 have no crop at any date) and the courtyard."
+ ]
+}

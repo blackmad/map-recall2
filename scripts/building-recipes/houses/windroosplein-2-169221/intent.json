@@ -1,0 +1,458 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "windroosplein-2-169221",
+ "pandId": "0363100012169221",
+ "address": "Windroosplein 2-220, Amsterdam-Centrum (Kattenburg): 1989 housing block round the square, purple-brown brick, a six-storey front with two stacks of recessed loggias, a seven-storey tower over a glass-block ground and a low wing with a grey metal-clad box (kit batch 8504, lane kit-batch-8504-20261121: not installed; only the NE square front is described)",
+ "sources": [
+  {
+   "id": "pano-2025-01-30-w01-45L",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250130_0915_Track13_Sphere_00003/",
+   "image": "source-data://pand-reference-walls/0363100012169221/w01-45L.jpg",
+   "sha256": "d71a836263666176a526244b756e1b6333fdc6a586c6d6cb5229b44c1610873c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#93725f",
+  "frame": "#d9d6cf",
+  "stone": "#6f9c8e",
+  "door": "#2c2826"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "shellClose": true,
+ "closedBands": true,
+ "budgetTriangles": 20000,
+ "walls": [
+  {
+   "wallSurfaces": [
+    53
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 12,
+   "ground": "system",
+   "windows": "cross",
+   "sills": false,
+   "cornice": true,
+   "windowShape": {
+    "w": 0.9,
+    "h": 0.5,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#93725f",
+    "frame": "#d9d6cf",
+    "stone": "#6f9c8e"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.17,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.5,
+       "at": 0.26,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.45,
+       "at": 0.02,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 1,
+       "at": 0.44,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": 0.32,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1,
+       "at": 0.12,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.34,
+       "at": 0.09,
+       "door": true,
+       "sill": 0,
+       "h": 0.85
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1,
+       "at": 0.39
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1,
+       "at": 0.23
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      5
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 1,
+       "at": -0.2
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1,
+       "at": -0.45
+      },
+      {
+       "w": 1,
+       "at": 0.39
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1,
+       "at": 0.23
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1,
+       "at": -0.17
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "loggiaBands": [
+    {
+     "storeys": [
+      1,
+      1
+     ],
+     "bays": [
+      1,
+      3
+     ],
+     "sill": 0.45,
+     "head": 0.97,
+     "deep": 0.5,
+     "rail": "none",
+     "lining": "#9a948c"
+    },
+    {
+     "storeys": [
+      1,
+      1
+     ],
+     "bays": [
+      8,
+      10
+     ],
+     "sill": 0.45,
+     "head": 0.97,
+     "deep": 0.5,
+     "rail": "none",
+     "lining": "#9a948c"
+    },
+    {
+     "storeys": [
+      2,
+      2
+     ],
+     "bays": [
+      1,
+      3
+     ],
+     "sill": 0.45,
+     "head": 0.97,
+     "deep": 0.5,
+     "rail": "none",
+     "lining": "#9a948c"
+    },
+    {
+     "storeys": [
+      2,
+      2
+     ],
+     "bays": [
+      8,
+      10
+     ],
+     "sill": 0.45,
+     "head": 0.97,
+     "deep": 0.5,
+     "rail": "none",
+     "lining": "#9a948c"
+    },
+    {
+     "storeys": [
+      3,
+      3
+     ],
+     "bays": [
+      1,
+      3
+     ],
+     "sill": 0.45,
+     "head": 0.97,
+     "deep": 0.5,
+     "rail": "none",
+     "lining": "#9a948c"
+    },
+    {
+     "storeys": [
+      3,
+      3
+     ],
+     "bays": [
+      8,
+      10
+     ],
+     "sill": 0.45,
+     "head": 0.97,
+     "deep": 0.5,
+     "rail": "none",
+     "lining": "#9a948c"
+    },
+    {
+     "storeys": [
+      4,
+      4
+     ],
+     "bays": [
+      1,
+      3
+     ],
+     "sill": 0.45,
+     "head": 0.97,
+     "deep": 0.5,
+     "rail": "none",
+     "lining": "#9a948c"
+    },
+    {
+     "storeys": [
+      4,
+      4
+     ],
+     "bays": [
+      8,
+      10
+     ],
+     "sill": 0.45,
+     "head": 0.97,
+     "deep": 0.5,
+     "rail": "none",
+     "lining": "#9a948c"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "loggiaBands",
+    "cornice"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    54
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "cross",
+   "sills": false,
+   "cornice": true,
+   "windowShape": {
+    "w": 0.77,
+    "h": 0.5,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#93725f",
+    "frame": "#d9d6cf",
+    "stone": "#6f9c8e"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "pattern": [
+      {
+       "w": 0.77,
+       "at": 0.05
+      },
+      {
+       "w": 0.77,
+       "at": 0.14
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 6,
+    "sill": 0.04,
+    "h": 0.9,
+    "pier": 0.04,
+    "transom": 0.5
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "plinth",
+    "cornice"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    467
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 1,
+   "ground": "system",
+   "windows": "cross",
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.5,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#93725f",
+    "frame": "#d9d6cf",
+    "stone": "#6f9c8e"
+   },
+   "wallFamily": {
+    "kind": "metal",
+    "colour": "#646d70",
+    "ribPitch": 0.3,
+    "from": 0.5
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallFamily"
+   ]
+  }
+ ],
+ "notes": [
+  "Kit batch 8504 (lane kit-batch-8504-20261121, group 2): the NE front on Windroosplein from w01-45L (2025-01-30, oblique 46 deg, rectified): 0 the six-storey slab with two stacks of loggias (storeys 1-4, a brick parapet under each opening), two window columns between and a passage at the right end; 1 the seven-storey tower over a glass-block ground; 2 the low wing whose top two storeys are a grey ribbed metal box.",
+  "Not described: the stepped terrace fronts on the SW side (w03-225 2025-06-19, tree), the NW end (w06-315 2025-01-30; storey heights there do not match the 3DBAG walls), the courtyard and every other face of this 555-surface pand stay in the window grid. The metal box cantilevers in the photo; the 3DBAG wall is flat."
+ ]
+}
