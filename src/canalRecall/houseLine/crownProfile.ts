@@ -19,6 +19,8 @@
 import type { RoofSink, V2, V3 } from '../roofSink.js';
 import { canalhouseCrownProfile, capRiseOf, crownProfile, type CanalhousePoint } from '../crownOutline.js';
 import type { FrontIntent } from '../buildingRecipe/intent.js';
+import { CLAW_SCROLL, clawScrollPieces, clawTop, type ClawScroll } from './clawScroll.js';
+import { sweepOutline, sweepParts, sweepRoofRise, type CrownSweep } from './crownSweep.js';
 
 export type RowCrownShape = 'neck' | 'bell' | 'point' | 'step' | 'raised' | 'spout';
 /** The shapes a lane 2 front record's measured crown draws (unchanged: a spout there keeps the planner's gable). */
@@ -115,6 +117,16 @@ export interface RowCrown {
   lowerLights?: number;
   /** The head of the stated neck and lower lights (absent: square). */
   lightHead?: 'round' | 'segmental';
+  /** Belt neck: carved claw pieces as measured scrolls (clawScroll.ts), in place of the stock carved claw. */
+  claw?: ClawScroll;
+  /** The stated lower lights' size (m, width and height) as measured: an elevated neck's full-width rise is a storey and
+   *  its window is a storey window (Herengracht 64: 1.48 x 1.6 m). Absent: CROWN_LIGHTS' sizes. */
+  lowerLightM?: [number, number];
+  /** Two equal crowns side by side over one front (a double house under one pand, Herengracht 76-78): each drawn on half
+   *  the front with this crown's parts, the saddle behind them low. */
+  pair?: true;
+  /** A Jugendstil sweep (crownSweep.ts) in place of the shape's outline. */
+  sweep?: CrownSweep;
 }
 /** The stated crown lights (RowCrown.neckLights / lowerLights): sizes (m). */
 export const CROWN_LIGHTS = { maxH: 1.45, minH: 0.55, gap: 0.32, neckHw: 0.45, lowerMaxW: 1.1, margin: 0.28, base: 0.3 } as const;
@@ -158,9 +170,21 @@ export function crownDims(c: RowCrown, W: number) {
 
 /** The saddle's rise behind the crown: its ridge meets the crown under its top, and its slope stays inside the profile. */
 export function rowCrownRoofRise(c: RowCrown, W: number): number {
+  if (c.sweep) return sweepRoofRise(c.sweep, W, c.riseM);
+  // A pair: the saddle stays under the valley between the two crowns.
+  if (c.pair) return r3(Math.min(PAIR_VALLEY_M, rowCrownRoofRise(pairHalf(c), W / 2)));
   const d = crownDims(c, W);
   if (c.shape === 'point') return r3(d.T);
   if (c.shape === 'raised') return r3(Math.max(0.2, (c.bandM ?? 0.5) - 0.06));
+  if (c.shape === 'neck' && c.claw && c.dress === 'belt') {
+    // Measured claws: the saddle stays under each claw's hollow (the sky shows there on Herengracht 16, 28, 76-78), so its
+    // slope passes under the claw's silhouette everywhere outside the neck (0.05 m clear).
+    let R = d.T - d.cap - 0.15;
+    const yS = d.raise, reach = Math.max(0.3, Math.min(c.claw.reachM ?? d.foot - d.neck, d.foot - d.neck)), H = c.claw.heightM;
+    const w = Math.max(0.08, Math.min(0.45, c.claw.waist ?? CLAW_SCROLL.waist)), b = Math.max(0.12, Math.min(0.4, c.claw.band ?? CLAW_SCROLL.band));
+    for (let i = 0; i <= 20; i++) { const u = i / 20, x = d.neck + u * reach; if (x < d.half - 1e-6) R = Math.min(R, (yS + clawTop(u, Math.max(CLAW_SCROLL.minH, Math.min(CLAW_SCROLL.maxH, H)), w, b) - 0.05) / (1 - x / d.half)); }
+    return r3(Math.max(0.8, R));
+  }
   if (c.shape === 'neck') return r3(Math.max(0.8, d.T - d.cap - 0.15));
   if (c.shape === 'bell') return r3(Math.max(0.8, d.T - 0.3));
   // Step: the highest ridge whose slope passes under every tread's inner corner (0.1 m clear).
@@ -179,7 +203,20 @@ const KIT_Z = 10;
 
 /** A narrower crown's shift off the front's centre, kept inside the front (0 when centred or as wide as the front). */
 export const crownOffset = (c: RowCrown, W: number): number => { const { half, foot } = crownDims(c, W); return c.offsetM ? clamp(c.offsetM, -(half - foot), half - foot) : 0; };
+/** A pair's saddle rise at most (m): the valley between the two crowns stays low brick. */
+export const PAIR_VALLEY_M = 0.3;
+/** One crown of a pair: this crown's parts on half the front. */
+const pairHalf = (c: RowCrown): RowCrown => { const { pair: _p, offsetM: _o, footW: _f, ...h } = c; return h; };
+/** The outline lifted to stay over the saddle `R` behind it (never under its slope inside the front). */
+const overSaddle = (prof: readonly V2[], W: number, R: number): V2[] => prof.map(([x, y]): V2 => [x, Math.abs(x) < W / 2 - 1e-6 ? Math.max(y, R * (1 - Math.abs(x) / (W / 2)) + 0.04) : y]);
 export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
+  if (c.sweep) return overSaddle(sweepOutline(c.sweep, W, c.riseM), W, R);
+  if (c.pair) {
+    // Two crowns side by side: each half's outline (no saddle of its own), the valley between them at the foot.
+    const h = rowCrownProfile(pairHalf(c), W / 2, 0), q = W / 4;
+    const both = [...h.map(([x, y]): V2 => [x - q, y]), ...h.map(([x, y]): V2 => [x + q, y])];
+    return overSaddle(both.filter((p, i) => i === 0 || Math.abs(p[0] - both[i - 1][0]) > 1e-9 || Math.abs(p[1] - both[i - 1][1]) > 1e-9), W, R);
+  }
   const d = crownDims(c, W), { half, T, foot, neck } = d, off = crownOffset(c, W);
   const slope = (x: number) => R * (1 - Math.abs(x) / half);
   // Outside a narrower crown's foot: the roof's cheek, the plate just covering the slope (off centre: the lower side's).
@@ -436,7 +473,13 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
   const upright = prof.filter(([x, y]) => Math.abs(Math.abs(x) - neck) < 0.02 && y > y0 + 0.05).map(([, y]) => y);
   const neckFoot = upright.length ? Math.min(...upright) : NaN;
   const tN = upright.length > 1 ? Math.max(...upright) : T - d.cap;
-  if (necked && st.claws !== false && Number.isFinite(neckFoot) && neckFoot < tN - 0.4) {
+  if (necked && st.claws !== false && c.claw && Number.isFinite(neckFoot) && neckFoot < tN - 0.4) {
+    // A measured claw (RowCrown.claw): the carved scroll (clawScroll.ts) in place of the band, quarter round and foot volute.
+    for (const sg of [-1, 1] as const) for (const pc of clawScrollPieces(c.claw, sg, neck, foot, yS, x => edgeAt(prof, x))) {
+      if (pc.kind === 'volute') volute(s, f, e, pc.cx, pc.cy, pc.r, tone(), pc.proud);
+      else prism(s, pc.pts, f, e, pc.proud, pc.shade === 1 ? S.back * 0.5 : 0, pc.shade === 1 ? tone() : shade(tone(), pc.shade));
+    }
+  } else if (necked && st.claws !== false && Number.isFinite(neckFoot) && neckFoot < tN - 0.4) {
     for (const sg of [-1, 1]) {
       // The claw: a broad band along the shoulder from the foot to the neck.
       const claw = prof.filter(([x, y]) => sg * x >= neck - 1e-3 && sg * x <= foot + 1e-6 && y <= neckFoot + 1e-3 && y > (d.raise > 0 ? yS - 1e-3 : -1e-3));
@@ -639,10 +682,12 @@ export function statedCrownLights(c: RowCrown, d: ReturnType<typeof crownDims>, 
   let lowerTop = -Infinity;
   const nl = Math.max(0, Math.min(5, Math.round(c.lowerLights ?? 0)));
   if (nl > 0 && prof) {
-    const z0 = y0 + L.base + (c.footLedge ? 0.12 : 0), top = d.raise > 0 ? yS - 0.3 : z0 + L.maxH, h = Math.min(L.maxH, top - z0);
+    // A measured light (lowerLightM) in an elevated neck's rise: a storey window, centred in the rise.
+    const lm = c.lowerLightM && c.lowerLightM[0] > 0.3 && c.lowerLightM[1] > 0.4 ? c.lowerLightM : null, lmH = lm && d.raise > 0 ? Math.min(lm[1], d.raise - 2 * L.base) : 0;
+    const z0 = lmH >= L.minH ? y0 + (d.raise - lmH) / 2 : y0 + L.base + (c.footLedge ? 0.12 : 0), top = d.raise > 0 ? yS - 0.3 : z0 + L.maxH, h = lmH >= L.minH ? lmH : Math.min(L.maxH, top - z0);
     const sp = h >= L.minH ? spanAt(prof, z0 + h + 0.1) : null;
     if (sp) {
-      const a = sp[0] + L.margin, b = sp[1] - L.margin, pitch = (b - a) / nl, w = Math.min(L.lowerMaxW, pitch * 0.62);
+      const a = sp[0] + L.margin, b = sp[1] - L.margin, pitch = (b - a) / nl, w = lmH >= L.minH ? Math.min(lm![0], pitch * 0.9) : Math.min(L.lowerMaxW, pitch * 0.62);
       if (w >= 0.35) { for (let i = 0; i < nl; i++) { const xm = a + pitch * (i + 0.5); out.lower.push([xm - w / 2, xm + w / 2, z0, z0 + h]); } lowerTop = z0 + h; }
     }
   }
@@ -716,6 +761,18 @@ function shiftedSink(s: RoofSink, dv: number): RoofSink {
 }
 /** White edge trim, scrolls, cap, shoulder blocks and the crown's light or hoist door on one gable end at u = f. */
 export function rowCrownAccents(s0: RoofSink, c: RowCrown, prof0: readonly V2[], f: number, e: number, W: number, R: number, trimHex: string): void {
+  if (c.sweep) {
+    // A Jugendstil sweep (crownSweep.ts): its coping, piers, pinnacles and window (x along v; the roof planner hands the
+    // far end its side mirrored, as it does an offset).
+    const stone = mixHex(trimHex, ROW_STONE_WEATHER.hex, ROW_STONE_WEATHER.mix), hex = { stone: shade(stone, 0.86), coping: shade(stone, 0.72), glass: GLASS, frame: trimHex } as const;
+    for (const pc of sweepParts(c.sweep, W, c.riseM)) prism(s0, pc.pts, f, e, pc.proud, pc.back, hex[pc.tone]);
+    return;
+  }
+  if (c.pair) {
+    const h = pairHalf(c), hp = rowCrownProfile(h, W / 2, 0);
+    for (const sg of [-1, 1]) rowCrownAccents(shiftedSink(s0, sg * W / 4), h, hp, f, e, W / 2, 0, trimHex);
+    return;
+  }
   // An off-centre crown: its trim and light drawn about its own centre, then shifted with it along v.
   const off = crownOffset(c, W), s = off ? shiftedSink(s0, off) : s0, prof = off ? prof0.map(([x, y]): V2 => [x - off, y]) : prof0;
   const d = crownDims(c, W), { T, foot, neck } = d;

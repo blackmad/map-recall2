@@ -67,6 +67,8 @@ export interface HouseRead {
   storeyShares?: number[];
   /** A gable's rise over the eaves line (m), measured on the crop by the self-check; absent from the first read. */
   crownRiseM?: number;
+  /** The roof's visible rise over the cornice's top where no roof storey is read (m), measured on the crop by eye. */
+  roofSeenRiseM?: number;
   /** Ground window height over a first-upper window's, and the street door's height over the ground storey's: measured on
    *  the crop by the self-check; absent from the first read. */
   groundWindowRatio?: number;
@@ -146,6 +148,16 @@ export interface CrownForm {
   centreLight: CE['centreLight'][number];
   consoles: CE['consoles'][number];
   frieze: CE['frieze'][number];
+  /** Measured by eye (belt kit roofs lane, not asked of the model): carved claws' waist (the upright part against the neck)
+   *  and foot band, as shares of their reach and height (clawScroll.ts). */
+  clawWaist?: number;
+  clawBand?: number;
+  /** Measured by eye: the lower lights' size in px (width, height) on the crop. */
+  lowerLightPx?: [number, number];
+  /** Measured by eye: two equal gables over one front (a double house), the neck landmarks the left one's. */
+  pair?: boolean;
+  /** Measured by eye: a curved (Jugendstil) gable's sweep (crownSweep.ts CrownSweep), shares of the house's own front. */
+  sweep?: import('../houseLine/crownSweep.ts').CrownSweep;
 }
 
 /** The crown read's prompt: the crop is `w` x `h` px as sent. */
@@ -330,6 +342,7 @@ export function readExtras(a: Partial<HouseRead>) {
     ...(a.notes ? { notes: a.notes } : {}),
     ...(Array.isArray(a.storeyShares) && a.storeyShares.length ? { storeyShares: a.storeyShares } : {}),
     ...(typeof a.crownRiseM === 'number' ? { crownRiseM: a.crownRiseM } : {}),
+    ...(typeof a.roofSeenRiseM === 'number' ? { roofSeenRiseM: a.roofSeenRiseM } : {}),
     ...(typeof a.groundWindowRatio === 'number' ? { groundWindowRatio: a.groundWindowRatio } : {}),
     ...(typeof a.doorRatio === 'number' ? { doorRatio: a.doorRatio } : {}),
     ...(typeof a.basementRatio === 'number' ? { basementRatio: a.basementRatio } : {}),

@@ -68,7 +68,7 @@ export interface PlotGable { riseM?: number; widthM?: number; offsetM?: number; 
    *  (its shape, neck, shoulders, an elevated neck's rise, cap, stone, lights). Absent: the shape's stock form. */
   form?: PlotGableForm }
 /** The RowCrown parts a crown read states (houseLine/crownProfile.ts RowCrown). */
-export type PlotGableForm = Partial<Pick<RowCrown, 'shape' | 'neckW' | 'shoulderRise' | 'cap' | 'raiseM' | 'capM' | 'footLedge' | 'neckLights' | 'lowerLights' | 'lightHead' | 'steps' | 'stone' | 'finials'>>;
+export type PlotGableForm = Partial<Pick<RowCrown, 'shape' | 'neckW' | 'shoulderRise' | 'cap' | 'raiseM' | 'capM' | 'footLedge' | 'neckLights' | 'lowerLights' | 'lightHead' | 'steps' | 'stone' | 'finials' | 'claw' | 'lowerLightM' | 'pair' | 'sweep'>>;
 /** The default pointed-gable rise over its foot width (Admiraal De Ruijterweg: about 4.2 m on a 3.4 m foot). */
 export const POINT_GABLE_RISE_PER_M = 1.1;
 
@@ -105,6 +105,9 @@ export interface PlotFacts {
   dormers?: number;
   /** The gable's read size, place and light. */
   gable?: PlotGable;
+  /** Belt review: the roof's rise over the cornice where the read sees a covering but no roof storey (m); absent: a roof
+   *  storey's (ROOF_ON_TOP_RISE_M, or AHN's). */
+  roofRiseM?: number;
   /** Belt review (2026-11-21, a per-house photo read): the roof covering seen behind the cornice (absent: the row slate). */
   roofMaterial?: 'tile' | 'slate';
   /** The main cornice as read (the house rows' row-cornice kinds); absent: the dice cornice. */
@@ -184,7 +187,8 @@ export function plotPlan(topM: number, facts: PlotFacts | undefined, hint: Segme
   const wallM = +(topM - inside).toFixed(3);
   // A gable stands on the cornice line its neighbours keep; the roof planner sets its rise.
   if (roof === 'pointedGable' || roof === 'stepGable' || roof === 'bellGable') return { ...base, wallM, rule: 'none', riseM: 0 };
-  const riseM = onTop ? (ahnRoof ? clamp(hint.ahnRiseM!, 2.4, 4) : ROOF_ON_TOP_RISE_M) : inside;
+  const seen = facts?.roofRiseM && facts.roofRiseM > 0.5 ? facts.roofRiseM : 0;
+  const riseM = onTop ? (seen || (ahnRoof ? clamp(hint.ahnRiseM!, 2.4, 4) : ROOF_ON_TOP_RISE_M)) : inside;
   return { ...base, wallM, rule: onTop ? 'onTop' : 'inside', riseM: +riseM.toFixed(3) };
 }
 

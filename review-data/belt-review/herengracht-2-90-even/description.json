@@ -636,12 +636,12 @@
       "ground": 840,
       "foot": 310,
       "raise": 135,
-      "shoulder": 60,
-      "capBase": 12,
-      "apex": 0,
+      "shoulder": 40,
+      "capBase": 0,
+      "apex": -30,
       "left": 0,
       "right": 357,
-      "neckLeft": 160,
+      "neckLeft": 100,
       "neckRight": 250,
       "w": 357,
       "h": 865,
@@ -1449,6 +1449,7 @@
      0.198,
      0.19
     ],
+    "roofSeenRiseM": 0.7,
     "groundWindowRatio": 1.1,
     "doorRatio": 0.75,
     "corniceRatio": 0.072,
@@ -1723,7 +1724,9 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.15,
+     "clawBand": 0.2
     },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002874"
    },
@@ -1933,9 +1936,9 @@
      "px": {
       "ground": 1150,
       "foot": 425,
-      "shoulder": 355,
+      "shoulder": 205,
       "capBase": 210,
-      "apex": 165,
+      "apex": 135,
       "left": 0,
       "right": 645,
       "neckLeft": 100,
@@ -1956,7 +1959,10 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "pair": true,
+     "clawWaist": 0.15,
+     "clawBand": 0.18
     },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873"
    },
@@ -2219,7 +2225,28 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "sweep": {
+      "side": "left",
+      "startShare": 0.2,
+      "topShare": 0.43,
+      "ledgeM": 0.12,
+      "roundShare": 0.45,
+      "pierM": [
+       0.4,
+       0.82
+      ],
+      "pinnacleM": [
+       0.45,
+       0.55
+      ],
+      "window": {
+       "lights": 3,
+       "widthShare": 0.52,
+       "headGapM": 1,
+       "archNearSweep": true
+      }
+     }
     },
     "candidateId": "w-2023-03-13-TMX7316010203-002998_pano_0002_000059"
    },
@@ -2491,18 +2518,15 @@
     "groundWindowRatio": 1.25,
     "doorRatio": 0.58,
     "crownForm": {
-     "kind": "elevated-neck",
+     "kind": "cornice",
      "px": {
       "ground": 1095,
-      "foot": 345,
-      "raise": 150,
-      "shoulder": 150,
-      "capBase": 115,
-      "apex": 25,
+      "foot": 130,
+      "apex": 30,
       "left": 0,
       "right": 210,
-      "neckLeft": 10,
-      "neckRight": 200,
+      "neckLeft": 0,
+      "neckRight": 210,
       "w": 210,
       "h": 1112,
       "ppm": 50
@@ -2511,15 +2535,15 @@
      "cap": "pediment",
      "crest": false,
      "neckLights": 0,
-     "lowerLights": 2,
+     "lowerLights": 0,
      "lightHead": "square",
      "shoulderOvals": false,
-     "footLedge": true,
+     "footLedge": false,
      "hoistBeam": false,
-     "centre": "none",
+     "centre": "pediment",
      "centreLight": "none",
-     "consoles": "none",
-     "frieze": "none"
+     "consoles": "dense",
+     "frieze": "oculi"
     },
     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000496"
    },
@@ -2780,6 +2804,34 @@
     ],
     "groundWindowRatio": 0.35,
     "doorRatio": 0.64,
+    "crownForm": {
+     "kind": "cornice",
+     "claws": "none",
+     "cap": "pediment",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "pediment",
+     "centreLight": "none",
+     "consoles": "dense",
+     "frieze": "panels",
+     "px": {
+      "ground": 1175,
+      "foot": 100,
+      "apex": 0,
+      "left": 0,
+      "right": 209,
+      "neckLeft": 0,
+      "neckRight": 209,
+      "w": 209,
+      "h": 1200,
+      "ppm": 50.06
+     }
+    },
     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000527"
    },
    "specParts": [
@@ -3602,13 +3654,19 @@
      "neckLights": 1,
      "lowerLights": 1,
      "lightHead": "square",
-     "shoulderOvals": false,
+     "shoulderOvals": true,
      "footLedge": false,
      "hoistBeam": false,
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.28,
+     "clawBand": 0.29,
+     "lowerLightPx": [
+      74,
+      80
+     ]
     },
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000393"
    },
@@ -5219,6 +5277,7 @@
      0.327,
      0.294
     ],
+    "roofSeenRiseM": 0.7,
     "groundWindowRatio": 1.29,
     "doorRatio": 0.7,
     "corniceRatio": 0.171,
@@ -5757,7 +5816,7 @@
      "px": {
       "ground": 1150,
       "foot": 262,
-      "shoulder": 245,
+      "shoulder": 50,
       "capBase": 40,
       "apex": 0,
       "left": 0,
@@ -5780,7 +5839,9 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.21,
+     "clawBand": 0.22
     },
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003501"
    },
@@ -6035,7 +6096,9 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.1,
+     "clawBand": 0.2
     },
     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005305"
    },
@@ -8135,7 +8198,9 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.13,
+     "clawBand": 0.18
     },
     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458"
    },
@@ -9802,7 +9867,9 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.24,
+     "clawBand": 0.28
     },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002832"
    },

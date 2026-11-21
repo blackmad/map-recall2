@@ -381,12 +381,12 @@
       "ground": 840,
       "foot": 310,
       "raise": 135,
-      "shoulder": 60,
-      "capBase": 12,
-      "apex": 0,
+      "shoulder": 40,
+      "capBase": 0,
+      "apex": -30,
       "left": 0,
       "right": 357,
-      "neckLeft": 160,
+      "neckLeft": 100,
       "neckRight": 250,
       "w": 357,
       "h": 865,
@@ -405,6 +405,19 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "none"
+    },
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "crownForm.px.neckLeft",
+      "crownForm.px.neckRight",
+      "crownForm.px.shoulder",
+      "crownForm.px.capBase",
+      "crownForm.px.apex"
+     ],
+     "note": "the gable top is above the crop and the middle behind the tree: the neck is x 100-250 (centred; the read had 160-250), the plain stone claws reach y 40, the cap and apex estimated over the neck light (head y 35), unseen"
     }
    },
    "crownRead": {
@@ -827,6 +840,16 @@
       "storeyShares",
       "corniceRatio"
      ]
+    },
+    "roofSeenRiseM": 0.7,
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "roofSeenRiseM"
+     ],
+     "note": "the tiled hip shows 35 px (0.7 m) over the cornice top (y 288 -> 253), 2.4 m of the 6.6 m front wide at the cornice; no roof storey, no dormers"
     }
    },
    "crownRead": {
@@ -958,7 +981,19 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.15,
+     "clawBand": 0.2
+    },
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "crownForm.clawWaist",
+      "crownForm.clawBand"
+     ],
+     "note": "narrow scroll claws, waist 0.15, curled foot band 0.2"
     }
    },
    "crownRead": {
@@ -1070,9 +1105,9 @@
      "px": {
       "ground": 1150,
       "foot": 425,
-      "shoulder": 355,
+      "shoulder": 205,
       "capBase": 210,
-      "apex": 165,
+      "apex": 135,
       "left": 0,
       "right": 645,
       "neckLeft": 100,
@@ -1093,7 +1128,23 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "pair": true,
+     "clawWaist": 0.15,
+     "clawBand": 0.18
+    },
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "crownForm.pair",
+      "crownForm.clawWaist",
+      "crownForm.clawBand",
+      "crownForm.px.shoulder",
+      "crownForm.px.apex"
+     ],
+     "note": "two gables over the one front (left neck x 100-215 of the left half 0-322, right gable centred at 475 of 322-645); claws to y 205; apex 135 between the left crown (105) and the right (165)"
     }
    },
    "crownRead": {
@@ -1219,7 +1270,37 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "sweep": {
+      "side": "left",
+      "startShare": 0.2,
+      "topShare": 0.43,
+      "ledgeM": 0.12,
+      "roundShare": 0.45,
+      "pierM": [
+       0.4,
+       0.82
+      ],
+      "pinnacleM": [
+       0.45,
+       0.55
+      ],
+      "window": {
+       "lights": 3,
+       "widthShare": 0.52,
+       "headGapM": 1,
+       "archNearSweep": true
+      }
+     }
+    },
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "crownForm.sweep"
+     ],
+     "note": "curved gable is a one-sided sweep: a low ledge to 0.2 of the front, upright then a quarter round to the flat top at 0.43, a 0.4 x 0.82 m stone pier at the left end, a 0.45 x 0.55 m pinnacle at the right; one three-light window 0.52 of the front wide, its head 1.0 m under the top and following the sweep (the read's \"two round lights\"); the left light round-headed"
     }
    },
    "crownRead": {
@@ -1323,18 +1404,15 @@
      ]
     },
     "crownForm": {
-     "kind": "elevated-neck",
+     "kind": "cornice",
      "px": {
       "ground": 1095,
-      "foot": 345,
-      "raise": 150,
-      "shoulder": 150,
-      "capBase": 115,
-      "apex": 25,
+      "foot": 130,
+      "apex": 30,
       "left": 0,
       "right": 210,
-      "neckLeft": 10,
-      "neckRight": 200,
+      "neckLeft": 0,
+      "neckRight": 210,
       "w": 210,
       "h": 1112,
       "ppm": 50
@@ -1343,15 +1421,34 @@
      "cap": "pediment",
      "crest": false,
      "neckLights": 0,
-     "lowerLights": 2,
+     "lowerLights": 0,
      "lightHead": "square",
      "shoulderOvals": false,
-     "footLedge": true,
+     "footLedge": false,
      "hoistBeam": false,
-     "centre": "none",
+     "centre": "pediment",
      "centreLight": "none",
-     "consoles": "none",
-     "frieze": "none"
+     "consoles": "dense",
+     "frieze": "oculi"
+    },
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "crownForm.kind",
+      "crownForm.claws",
+      "crownForm.cap",
+      "crownForm.centre",
+      "crownForm.centreLight",
+      "crownForm.consoles",
+      "crownForm.frieze",
+      "crownForm.neckLights",
+      "crownForm.lowerLights",
+      "crownForm.footLedge",
+      "crownForm.px"
+     ],
+     "note": "not a neck gable: a dentil cornice (top y 130) with an oculi frieze under it and a pediment over it; the pediment spans 72 and 70 (rising to the right here, its apex at the 70/72 seam, ~y 30)"
     }
    },
    "crownRead": {
@@ -1452,6 +1549,44 @@
       "groundWindowRatio",
       "doorRatio"
      ]
+    },
+    "crownForm": {
+     "kind": "cornice",
+     "claws": "none",
+     "cap": "pediment",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "pediment",
+     "centreLight": "none",
+     "consoles": "dense",
+     "frieze": "panels",
+     "px": {
+      "ground": 1175,
+      "foot": 100,
+      "apex": 0,
+      "left": 0,
+      "right": 209,
+      "neckLeft": 0,
+      "neckRight": 209,
+      "w": 209,
+      "h": 1200,
+      "ppm": 50.06
+     }
+    },
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "crownForm",
+      "crownForm.px"
+     ],
+     "note": "crown read absent: a dentil cornice (top y 100) over a frieze of carved shell panels, the half pediment of the 70-72 front over it (falling to the right, its apex at the seam above the crop top)"
     }
    },
    "crownRead": {
@@ -1860,13 +1995,31 @@
      "neckLights": 1,
      "lowerLights": 1,
      "lightHead": "square",
-     "shoulderOvals": false,
+     "shoulderOvals": true,
      "footLedge": false,
      "hoistBeam": false,
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.28,
+     "clawBand": 0.29,
+     "lowerLightPx": [
+      74,
+      80
+     ]
+    },
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "crownForm.clawWaist",
+      "crownForm.clawBand",
+      "crownForm.lowerLightPx",
+      "crownForm.shoulderOvals"
+     ],
+     "note": "the elevated storey window is a storey window (74 x 80 px = 1.48 x 1.6 m, x 128-202, y 278-358); carved oval cartouches beside it (the read said none); claw waist 25 of 88 px, foot band 43 of 148 px"
     }
    },
    "crownRead": {
@@ -2726,6 +2879,16 @@
       "corniceRatio"
      ],
      "note": "five window axes, the door in the middle one (two, door, two); the read said six"
+    },
+    "roofSeenRiseM": 0.7,
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "roofSeenRiseM"
+     ],
+     "note": "the tiled roof shows about 35 px (0.7 m) over the cornice top (y ~320 -> 285), its one small dormer about as high; the 2.8 m roof storey drew far over it"
     }
    },
    "crownRead": {
@@ -3001,7 +3164,7 @@
      "px": {
       "ground": 1150,
       "foot": 262,
-      "shoulder": 245,
+      "shoulder": 50,
       "capBase": 40,
       "apex": 0,
       "left": 0,
@@ -3024,7 +3187,20 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.21,
+     "clawBand": 0.22
+    },
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "crownForm.clawWaist",
+      "crownForm.clawBand",
+      "crownForm.px.shoulder"
+     ],
+     "note": "claw top at y 50 (the read's shoulder 245 sat 17 px over the foot 262); waist 20 of 95 px, band 0.22"
     }
    },
    "crownRead": {
@@ -3156,7 +3332,9 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.1,
+     "clawBand": 0.2
     },
     "pixelMeasured": {
      "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
@@ -3166,6 +3344,16 @@
       "groundWindowRatio"
      ],
      "note": "neck gable: three storeys under the claw pieces"
+    },
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "crownForm.clawWaist",
+      "crownForm.clawBand"
+     ],
+     "note": "claw sweep from the neck at y 200 to the band at y 320 (x 185-270): waist 0.1, band 0.2"
     }
    },
    "crownRead": {
@@ -4271,7 +4459,9 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.13,
+     "clawBand": 0.18
     },
     "pixelMeasured": {
      "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
@@ -4281,6 +4471,16 @@
       "groundWindowRatio"
      ],
      "note": "neck gable: corniceBottom is the eaves line under the claw pieces"
+    },
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "crownForm.clawWaist",
+      "crownForm.clawBand"
+     ],
+     "note": "claws hug the neck narrowly (15 of 120 px), the curled foot band 0.5 m"
     }
    },
    "crownRead": {
@@ -5114,7 +5314,19 @@
      "centre": "none",
      "centreLight": "none",
      "consoles": "none",
-     "frieze": "none"
+     "frieze": "none",
+     "clawWaist": 0.24,
+     "clawBand": 0.28
+    },
+    "byEye": {
+     "by": "claude lane, measured by eye",
+     "lane": "belt kit roofs (lane/belt-kit-roofs-20261121)",
+     "at": "2026-11-21",
+     "fields": [
+      "crownForm.clawWaist",
+      "crownForm.clawBand"
+     ],
+     "note": "claw waist and foot band measured on the crop (waist x 68-90 of a 90 px reach at 0.6 of the claw; band 0.65 m of 2.33 m)"
     }
    },
    "crownRead": {

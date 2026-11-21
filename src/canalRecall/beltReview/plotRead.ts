@@ -9,7 +9,7 @@
  *
  * Pure and browser-safe. Absent read: null (the design is drawn as before, byte for byte).
  */
-import { ERA_GROUND_M, SOUTERRAIN_M, type PlotDormer, type PlotFacts, type PlotGableForm, type PlotRoof } from '../designUnits/plotPlan.ts';
+import { ERA_GROUND_M, ROOF_ON_TOP_RISE_M, SOUTERRAIN_M, type PlotDormer, type PlotFacts, type PlotGableForm, type PlotRoof } from '../designUnits/plotPlan.ts';
 import type { CrownForm } from './houseRead.ts';
 import { CORNICE_RATIO } from './pixelProfile.ts';
 
@@ -38,6 +38,9 @@ export interface PhotoReadExtras {
   basementRatio?: number;
   /** The cornice zone's share of the pavement-to-cornice-top height, read on a pixel grid (pixelProfile.ts). */
   corniceRatio?: number;
+  /** The roof behind a cornice with no roof storey (a covering seen, no dormers): its visible rise over the cornice's top
+   *  (m), measured on the crop. Absent: ROOF_SEEN_RISE_M. */
+  roofSeenRiseM?: number;
   /** The crown read (houseRead.ts CrownForm): the gable's or the cornice's form and its pixel landmarks. */
   crownForm?: CrownForm & { px: CrownForm['px'] & { w?: number; h?: number; ppm?: number } };
 }
@@ -56,6 +59,10 @@ export interface CrownMeasures {
   shoulderRise?: number;
   /** The cap's rise. */
   capM?: number;
+  /** The claws' top over the shoulders' foot (the read's shoulder landmark: the claw pieces' top). */
+  clawM?: number;
+  /** The front's width on the crop (m), edge to edge. */
+  frontM?: number;
 }
 export function crownMeasures(cf: PhotoReadExtras['crownForm']): CrownMeasures | null {
   const px = cf?.px, ppm = Number(px?.ppm);
@@ -69,6 +76,8 @@ export function crownMeasures(cf: PhotoReadExtras['crownForm']): CrownMeasures |
   const base = elevated ? px.raise! : px.foot;
   if (fin(px.shoulder) && px.shoulder < base && px.shoulder > px.apex) out.shoulderRise = +((base - px.shoulder) / (base - px.apex)).toFixed(3);
   if (fin(px.capBase) && px.capBase > px.apex && px.capBase < px.foot) out.capM = +((px.capBase - px.apex) / ppm).toFixed(2);
+  if (fin(px.shoulder) && px.shoulder < base && px.shoulder > px.apex) out.clawM = +((base - px.shoulder) / ppm).toFixed(2);
+  if (fin(px.left) && fin(px.right) && (px.right - px.left) / ppm > 2) out.frontM = +((px.right - px.left) / ppm).toFixed(2);
   return out;
 }
 /** Crown read kinds -> the roof planner's gable (roofMesh.ts GABLE_SHAPES) and the kit's crown (RowCrown shape). */
@@ -110,8 +119,22 @@ export function gableForm(cf: CrownForm, m: CrownMeasures | null, widthM: number
   if (cf.lightHead === 'round' || cf.lightHead === 'segmental') f.lightHead = cf.lightHead;
   if (cf.footLedge) f.footLedge = true;
   if (f.shape === 'step' && Number.isInteger(cf.steps) && cf.steps! >= 1 && cf.steps! <= 8) f.steps = cf.steps;
+  // Belt kit roofs (2026-11-21): the parts measured on the crop by eye where the read lacks them.
+  // Carved or scroll claws on a neck: the scroll at the claws' measured top (clawScroll.ts).
+  if (f.shape === 'neck' && (cf.claws === 'carved' || cf.claws === 'scroll') && m?.clawM && m.clawM > 0.6) {
+    const share = (v: unknown, lo: number, hi: number) => typeof v === 'number' && v >= lo && v <= hi ? v : undefined;
+    const waist = share(cf.clawWaist, 0.08, 0.45), band = share(cf.clawBand, 0.12, 0.4);
+    f.claw = { heightM: m.clawM, ...(waist ? { waist } : {}), ...(band ? { band } : {}) };
+  }
+  const lp = cf.lowerLightPx, ppm = Number((cf.px as { ppm?: number } | undefined)?.ppm);
+  if (Array.isArray(lp) && lp.length === 2 && lp.every(v => typeof v === 'number' && v > 0) && ppm > 5) f.lowerLightM = [+(lp[0] / ppm).toFixed(2), +(lp[1] / ppm).toFixed(2)];
+  if (cf.pair === true && necked) f.pair = true;
+  if (cf.kind === 'curved' && cf.sweep && ['left', 'right', 'both'].includes(cf.sweep.side)) f.sweep = { ...cf.sweep };
   return f;
 }
+
+/** A roof seen over a cornice with no roof storey, its rise unmeasured (m): low, behind the cornice. */
+export const ROOF_SEEN_RISE_M = 1.2;
 
 /** What design.ts hands house preview (`design.plot`): the plot facts and the measures the stamp needs. */
 export interface BeltPlot {
@@ -190,7 +213,9 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
   if (isGable) {
     const rise = Number(read.crownRiseM);
     facts.gable = { window: rs === 'gable-attic' ? 'square' : 'none', belt: true, ...(Number.isFinite(rise) && rise > 0.8 && rise < 12 ? { riseM: +rise.toFixed(2) } : {}) };
-    if (cf) facts.gable.form = gableForm(cf, cm, opts.widthM && opts.widthM > 0 ? opts.widthM : 6);
+    // The front's width: the face's, else the crop's own edge to edge (the 6 m stand-in drew every belt neck 1.4x wide:
+    // Herengracht 80's 1.64 m neck as 2.41 m).
+    if (cf) facts.gable.form = gableForm(cf, cm, opts.widthM && opts.widthM > 0 ? opts.widthM : cm?.frontM ?? 6);
   }
   // A cornice front's read form: what carries the cornice, its frieze, and what stands on it over the centre.
   if (cf && !isGable && cf.kind === 'cornice') {
@@ -215,6 +240,12 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
     if (kind) facts.dormer = crown === 'shouldered' && kind === 'plain' ? 'pediment' : kind;
   }
   if (covering) facts.roofMaterial = covering === 'red-tile' ? 'tile' : 'slate';
+  // A covering seen over a cornice with no roof storey (no dormers, none read): the roof's top showing over the cornice at
+  // its measured rise, not a roof storey (Herengracht 82 drew a 2.8 m tiled pyramid over a 0.7 m glimpse).
+  // A measured glimpse sets the rise of any roof behind a cornice (Herengracht 50-52: 0.7 m with its one small dormer).
+  const seen = Number(read.roofSeenRiseM), measured = Number.isFinite(seen) && seen >= 0.55 && seen < ROOF_ON_TOP_RISE_M;
+  if ((roof === 'dormers' || roof === 'mansard') && measured) facts.roofRiseM = +seen.toFixed(2);
+  else if (roof === 'dormers' && covering && !(count ?? 0) && rs !== 'dormers' && rs !== 'mansard' && crown !== 'pitched-eaves' && crown !== 'shouldered') facts.roofRiseM = ROOF_SEEN_RISE_M;
   const text = textOf(read);
   // A hoist: on the lead dormer where the roof has dormers, else the front's own beam at the top (gable or cornice).
   const hoistDormer = (roof === 'dormers' || roof === 'mansard') && (facts.dormers ?? 0) > 0;
