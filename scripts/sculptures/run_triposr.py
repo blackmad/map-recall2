@@ -9,7 +9,7 @@
 """Route B: single-photo image-to-3D with TripoSR (MIT, Tripo AI & Stability AI) on Apple silicon.
 
     python -I scripts/sculptures/run_triposr.py --src=<TripoSR checkout> --image=<photo> --out=<dir> \
-        [--box=x0,y0,x1,y1] [--rembg=u2net|isnet-general-use] [--mc=256] [--device=mps|cpu] [--fg=0.85]
+        [--box=x0,y0,x1,y1] [--rembg=u2net|isnet-general-use] [--mc=256] [--device=mps|cpu] [--fg=0.85] [--weights=<dir>] [--cutout=<rgba.png>]
 
 Changes against upstream run.py, nothing else touched:
   * torchmcubes (a CUDA/C++ extension) is replaced by skimage.measure.marching_cubes through a stub module;
@@ -54,7 +54,8 @@ device = args.get("device", "mps")
 if device == "mps" and not torch.backends.mps.is_available():
     device = "cpu"
 t0 = time.time()
-model = TSR.from_pretrained("stabilityai/TripoSR", config_name="config.yaml", weight_name="model.ckpt")
+# --weights=<dir holding config.yaml + model.ckpt> skips the hub download (a slow link stalls hf_hub_download).
+model = TSR.from_pretrained(args.get("weights", "stabilityai/TripoSR"), config_name="config.yaml", weight_name="model.ckpt")
 model.renderer.set_chunk_size(8192)
 model.to(device)
 t["loadS"] = round(time.time() - t0, 1)
@@ -67,8 +68,11 @@ if "box" in args:
         b = [b[0] * img.width, b[1] * img.height, b[2] * img.width, b[3] * img.height]
     x0, y0, x1, y1 = (int(v) for v in b)
     img = img.crop((max(0, x0), max(0, y0), min(img.width, x1), min(img.height, y1)))
-session = rembg.new_session(args.get("rembg", "u2net"))
-cut = rembg.remove(img, session=session)
+if "cutout" in args:  # --cutout=<RGBA png>: a ready cut-out (e.g. BiRefNet's) instead of rembg
+    cut = Image.open(args["cutout"]).convert("RGBA")
+else:
+    session = rembg.new_session(args.get("rembg", "u2net"))
+    cut = rembg.remove(img, session=session)
 alpha = np.array(cut)[:, :, 3]
 lab = measure.label(alpha > 128)
 if lab.max() > 0:
