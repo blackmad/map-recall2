@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## Thirty-one kit blocks from 1985 on; Valkenburgerstraat z-fight (2026-11-22, round 20261121q)
+
+- **Kit batch 1985-2004 (lane kit-batch-8504):** 14 block-sized recipes installed after fresh blind judges preferred them to today (Veemkade 1106 and 1000, Celebesstraat 125, Lijnbaansgracht 208, Bos en Lommerplein 2, Van der Palmkade and Nieuwpoortstraat (kit2 intents copied over the installed ids), Grote Wittenburgerstraat 210, Windroosplein 2, Windrooskade 2, Flevoparkweg 2, Laanweg 92, Lucien Gaudinstraat 144, Jesse Owenshof 1). Held: Tweede Hugo de Grootstraat 43 (clipped windows, hides the Dirk van den Broek fascia), Panamalaan 10 (four fronts and a relief poem: hand lane). Funenpark stays needs-photo.
+- **Kit batch 2005+ (lane kit-batch-2005):** 17 of 33 installed (Nida Senffstraat 5, Bos en Lommerplein 73, Veemkade 366, Hoofdweg 458 and 578, Cornelis Vermuydenstraat, Leeuwendalersweg 400, Polderweg 502, Vlaardingenlaan 158, Rinus Michelslaan 2, Poeldijkstraat 14, Borneostraat 42, Van Kinsbergenstraat 54, Laing's Nekstraat 1, Soendastraat 1, Spadinalaan 351, Piri Reisplein 1). Held: Gustav Mahlerlaan 7 (a 0.23 m parapet spike under clampSpikes' 0.3 m), Spadinalaan 483 (skewed wall pieces), Ottho Heldringstraat 3 (3DBAG surveyed mid-construction). Six not authored. The lane's install.sh had Piri Reisplein appended to Laing's Nekstraat's line; fixed at integration.
+- **Valkenburgerstraat 69:** coplanar overlap 2.1 to 0 m2 (string courses drawn per wall piece, corner fill de-duplicated, coping 4 cm under the roof edge). audit-glb-quality is not in check:canal, which is how it reached main.
+- **Shop runs (`?shopRun=1`, off):** round 2 (BAG winkel/horeca units as anchors) blind 6-1-3; the loss is a glazed non-shop corner front (Zakslootje 0363100012182300), so round 3 keeps glazed ground for any non-residential BAG unit.
+- **Push path:** SSH had no key after the reboot; pushes went over HTTPS with gh's credential helper.
+
 ## Ten hand blocks, more Wallen, post-war round 2 (2026-11-21, round 20261121p)
 
 - **Hand blocks (lanes hand-blocks-a/-b):** Rapenburgerstraat 220 and 4, Sumatrakade 1101, Westerdoksdijk 215, Pieter de Hoochstraat 13, Tweede Atjehstraat 2, Albatrospad 1, Revaleiland 121, Wiborgeiland 76, Rinus Michelslaan 1; each beat today in a fresh blind (Rinus Michelslaan marginal: east wing weak). Held: Westerdok 4 (59k tris, balconies read flat, shell storeys above the photo roofline) and Klapmutsenveem 30 (3DBAG covers only 87 of 192 m). Albatrospad was a kit candidate by the triage rule but shipped because it beats the generic box. Shadows added for Westerdoksdijk, Revaleiland and Wiborgeiland.

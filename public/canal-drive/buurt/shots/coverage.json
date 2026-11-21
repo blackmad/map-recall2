@@ -63,7 +63,7 @@
  },
  {
   "slug": "chassebuurt",
-  "buildings": 4,
+  "buildings": 6,
   "kits": 0,
   "facts": 29,
   "origins": 40,
@@ -74,7 +74,7 @@
  },
  {
   "slug": "czaar-peterbuurt",
-  "buildings": 1,
+  "buildings": 2,
   "kits": 0,
   "facts": 12,
   "origins": 20,
@@ -96,7 +96,7 @@
  },
  {
   "slug": "de-baarsjes",
-  "buildings": 18,
+  "buildings": 20,
   "kits": 710,
   "facts": 31,
   "origins": 87,
@@ -292,7 +292,7 @@
  },
  {
   "slug": "jordaan",
-  "buildings": 30,
+  "buildings": 31,
   "kits": 0,
   "facts": 96,
   "origins": 140,
@@ -364,7 +364,7 @@
  },
  {
   "slug": "landlust",
-  "buildings": 30,
+  "buildings": 31,
   "kits": 0,
   "facts": 17,
   "origins": 56,
@@ -490,7 +490,7 @@
  },
  {
   "slug": "oostelijk-havengebied",
-  "buildings": 18,
+  "buildings": 21,
   "kits": 29,
   "facts": 69,
   "origins": 117,
@@ -503,7 +503,7 @@
  },
  {
   "slug": "oostelijke-eilanden",
-  "buildings": 16,
+  "buildings": 20,
   "kits": 0,
   "facts": 67,
   "origins": 98,
@@ -558,7 +558,7 @@
  },
  {
   "slug": "overhoeks",
-  "buildings": 7,
+  "buildings": 8,
   "kits": 0,
   "facts": 13,
   "origins": 18,
@@ -731,13 +731,13 @@
  },
  {
   "slug": "sportheldenbuurt",
-  "buildings": 1,
+  "buildings": 2,
   "kits": 0,
   "facts": 5,
   "origins": 22,
   "bridges": 2,
   "shots": 3,
-  "plan": 3,
+  "plan": 4,
   "lacks": []
  },
  {
@@ -938,7 +938,7 @@
  },
  {
   "slug": "wittenburg",
-  "buildings": 2,
+  "buildings": 5,
   "kits": 0,
   "facts": 27,
   "origins": 31,

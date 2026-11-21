@@ -2665,6 +2665,17 @@
    "name": "Sportheldenbuurt",
    "shots": [
     {
+     "label": "Nida Senffstraat 5-201 / Mary van der Sluisstraat, Zeeburgereiland",
+     "lat": 52.3731049,
+     "lng": 4.9642129,
+     "view": "chase",
+     "at": [
+      4.964663,
+      52.372154,
+      344
+     ]
+    },
+    {
      "label": "Politiebureau Oost Zeeburg, Atje Keulen-Deelstrastraat 2, Amsterdam (IJburg/Zeeburgereiland)",
      "lat": 52.3690872,
      "lng": 4.9715896,
@@ -3388,25 +3399,25 @@
      ]
     },
     {
-     "label": "Ezelsbrug",
-     "lat": 52.370356,
-     "lng": 4.922243,
+     "label": "Grote Wittenburgerstraat 210-258, Amsterdam-Centrum (Wittenburg)",
+     "lat": 52.3723554,
+     "lng": 4.9231233,
      "view": "chase",
      "at": [
-      4.922712,
-      52.370073,
-      315
+      4.924372,
+      52.372169,
+      284
      ]
     },
     {
-     "label": "Zebrabrug",
-     "lat": 52.373639,
-     "lng": 4.923357,
+     "label": "Windrooskade 2-70, Amsterdam-Centrum (Oostelijke Eilanden)",
+     "lat": 52.3733428,
+     "lng": 4.9257502,
      "view": "chase",
      "at": [
-      4.922907,
-      52.373885,
-      132
+      4.924851,
+      52.37323,
+      78
      ]
     },
     {

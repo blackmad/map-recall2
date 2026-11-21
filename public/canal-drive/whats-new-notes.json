@@ -2,6 +2,11 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-22",
+      "title": "Thirty-one newer housing blocks get their own fronts",
+      "text": "Thirty-one big housing blocks from 1985 onwards, which drew as one repeated grid of windows, are now built from street photos with the parts they really have: the balcony bands and piers of the Veemkade warehouses-turned-flats, the loggia stacks of Jesse Owenshof, the gallery side and balcony side of the curved Lucien Gaudinstraat slab, the red ground and beige upper storey of Laanweg, and the long fronts along Hoofdweg, Leeuwendalersweg, Soendastraat and Spadinalaan. Each beat the old block in a blind comparison with the photo."
+    },
+    {
       "date": "2026-11-21",
       "title": "Ten big housing blocks get their real fronts",
       "text": "Ten large blocks that were plain boxes or one repeated grid are now modelled from street photos: the two Rapenburgerstraat blocks by the Wertheimpark, Sumatrakade and Westerdoksdijk on the eastern and western docks, Revaleiland and Wiborgeiland, Albatrospad, Pieter de Hoochstraat, Tweede Atjehstraat and the Rinus Michelslaan block. Each has its own brick, balconies, loggias and towers.",
