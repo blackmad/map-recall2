@@ -2,7 +2,7 @@
  "faceId": "keizersgracht-596-648-even",
  "imageRoot": "/Users/blackmad/Code/map-recall2-source-data-belt-review-evidence-20261120/belt-review/keizersgracht-596-648-even",
  "archivePath": "belt-review/keizersgracht-596-648-even",
- "generatedAt": "2026-11-20T09:34:17.032Z",
+ "generatedAt": "2026-11-21T09:56:03.505Z",
  "pands": [
   {
    "pandId": "0363100012165076",
@@ -52,14 +52,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 48.1,
-     "width": 284,
-     "height": 1051,
+     "width": 434,
+     "height": 1081,
+     "pandSpanPx": [
+      75,
+      359
+     ],
+     "marginM": 1.5,
+     "groundPx": 1051,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.99 m NAP); the panorama gives only 48.1 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.383,
-      "score": 0.44,
-      "occluded": 0.13,
-      "closeUp": 0.08,
+      "quality": 0.454,
+      "score": 0.51,
+      "occluded": 0.11,
+      "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -100,14 +107,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.7,
-     "width": 483,
-     "height": 1786,
+     "width": 738,
+     "height": 1837,
+     "pandSpanPx": [
+      128,
+      610
+     ],
+     "marginM": 1.5,
+     "groundPx": 1786,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.221,
-      "score": 0.23,
-      "occluded": 0.04,
-      "closeUp": 0.17,
+      "quality": 0.237,
+      "score": 0.25,
+      "occluded": 0.05,
+      "closeUp": 0.13,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -148,14 +162,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.7,
-     "width": 483,
-     "height": 1786,
+     "width": 738,
+     "height": 1837,
+     "pandSpanPx": [
+      128,
+      610
+     ],
+     "marginM": 1.5,
+     "groundPx": 1786,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.395,
-      "score": 0.42,
-      "occluded": 0.06,
-      "closeUp": 0.18,
+      "quality": 0.475,
+      "score": 0.5,
+      "occluded": 0.05,
+      "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -196,14 +217,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 89.2,
-     "width": 483,
-     "height": 1786,
+     "width": 738,
+     "height": 1837,
+     "pandSpanPx": [
+      128,
+      610
+     ],
+     "marginM": 1.5,
+     "groundPx": 1786,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.019,
-      "score": 0.04,
-      "occluded": 0.52,
-      "closeUp": 0.32,
+      "quality": 0.024,
+      "score": 0.05,
+      "occluded": 0.53,
+      "closeUp": 0.23,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -244,20 +272,34 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 46.5,
-     "width": 284,
-     "height": 1051,
+     "width": 434,
+     "height": 1081,
+     "pandSpanPx": [
+      75,
+      359
+     ],
+     "marginM": 1.5,
+     "groundPx": 1051,
+     "bottomMarginM": 0.6,
      "note": "the panorama gives only 46.5 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.166,
-      "score": 0.18,
+      "quality": 0.138,
+      "score": 0.15,
       "occluded": 0.08,
-      "closeUp": 0.21,
+      "closeUp": 0.24,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2019-01-14-TMX7316010203-001053_pano_0000_002226",
-   "autoPickWhy": "judge: highest quality 0.395 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.475 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2019-01-14-TMX7316010203-001053_pano_0000_002226",
+    "columnsInSpan": 0,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "0 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012165075",
@@ -307,14 +349,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 48.7,
-     "width": 276,
-     "height": 1053,
+     "width": 426,
+     "height": 1083,
+     "pandSpanPx": [
+      75,
+      351
+     ],
+     "marginM": 1.5,
+     "groundPx": 1053,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.99 m NAP); the panorama gives only 48.7 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.245,
-      "score": 0.48,
-      "occluded": 0.49,
-      "closeUp": 0.06,
+      "quality": 0.269,
+      "score": 0.56,
+      "occluded": 0.52,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -355,14 +404,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 89.2,
-     "width": 469,
-     "height": 1789,
+     "width": 724,
+     "height": 1840,
+     "pandSpanPx": [
+      128,
+      597
+     ],
+     "marginM": 1.5,
+     "groundPx": 1789,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.212,
-      "score": 0.23,
-      "occluded": 0.08,
-      "closeUp": 0.14,
+      "quality": 0.2,
+      "score": 0.22,
+      "occluded": 0.09,
+      "closeUp": 0.1,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -403,14 +459,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.5,
-     "width": 469,
-     "height": 1789,
+     "width": 724,
+     "height": 1840,
+     "pandSpanPx": [
+      128,
+      597
+     ],
+     "marginM": 1.5,
+     "groundPx": 1789,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.218,
-      "score": 0.23,
+      "quality": 0.266,
+      "score": 0.28,
       "occluded": 0.05,
-      "closeUp": 0.13,
+      "closeUp": 0.12,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -453,14 +516,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 44,
-     "width": 276,
-     "height": 1053,
+     "width": 426,
+     "height": 1083,
+     "pandSpanPx": [
+      75,
+      351
+     ],
+     "marginM": 1.5,
+     "groundPx": 1053,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.99 m NAP); the panorama gives only 44 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.002,
+      "quality": 0.003,
       "score": 0.03,
-      "occluded": 0.92,
-      "closeUp": 0.29,
+      "occluded": 0.91,
+      "closeUp": 0.36,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -503,20 +573,34 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 48,
-     "width": 276,
-     "height": 1053,
+     "width": 426,
+     "height": 1083,
+     "pandSpanPx": [
+      75,
+      351
+     ],
+     "marginM": 1.5,
+     "groundPx": 1053,
+     "bottomMarginM": 0.6,
      "note": "the panorama gives only 48 px/m at this distance (upsampled to 50)",
      "judge": {
       "quality": 0.016,
       "score": 0.02,
-      "occluded": 0.2,
+      "occluded": 0.22,
       "closeUp": 0.93,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2021-01-22-TMX7316010203-001975_pano_0000_000083",
-   "autoPickWhy": "judge: highest quality 0.245 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.269 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000083",
+    "columnsInSpan": 1,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "1 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012165049",
@@ -564,16 +648,23 @@
      },
      "leafOff": true,
      "rayBlocked": false,
-     "ppm": 88,
+     "ppm": 90,
      "nativePpm": 90.5,
-     "width": 986,
-     "height": 1825,
+     "width": 1279,
+     "height": 1922,
+     "pandSpanPx": [
+      135,
+      1144
+     ],
+     "marginM": 1.5,
+     "groundPx": 1868,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.149,
-      "score": 0.16,
-      "occluded": 0.07,
-      "closeUp": 0.1,
+      "quality": 0.16,
+      "score": 0.17,
+      "occluded": 0.06,
+      "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -614,12 +705,19 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 48.8,
-     "width": 561,
-     "height": 1038,
+     "width": 711,
+     "height": 1068,
+     "pandSpanPx": [
+      75,
+      636
+     ],
+     "marginM": 1.5,
+     "groundPx": 1038,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.99 m NAP); the panorama gives only 48.8 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.186,
-      "score": 0.29,
+      "quality": 0.23,
+      "score": 0.36,
       "occluded": 0.36,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
@@ -660,16 +758,23 @@
      },
      "leafOff": true,
      "rayBlocked": false,
-     "ppm": 88,
+     "ppm": 90,
      "nativePpm": 90.7,
-     "width": 986,
-     "height": 1825,
+     "width": 1279,
+     "height": 1922,
+     "pandSpanPx": [
+      135,
+      1144
+     ],
+     "marginM": 1.5,
+     "groundPx": 1868,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.209,
-      "score": 0.22,
+      "quality": 0.266,
+      "score": 0.28,
       "occluded": 0.05,
-      "closeUp": 0.08,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -710,13 +815,20 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 89.2,
-     "width": 953,
-     "height": 1764,
+     "width": 1208,
+     "height": 1815,
+     "pandSpanPx": [
+      128,
+      1081
+     ],
+     "marginM": 1.5,
+     "groundPx": 1764,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.118,
-      "score": 0.13,
-      "occluded": 0.09,
+      "quality": 0.147,
+      "score": 0.16,
+      "occluded": 0.08,
       "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
@@ -758,14 +870,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.7,
-     "width": 953,
-     "height": 1764,
+     "width": 1208,
+     "height": 1815,
+     "pandSpanPx": [
+      128,
+      1081
+     ],
+     "marginM": 1.5,
+     "groundPx": 1764,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.257,
-      "score": 0.27,
+      "quality": 0.218,
+      "score": 0.23,
       "occluded": 0.05,
-      "closeUp": 0.1,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -804,22 +923,36 @@
      },
      "leafOff": false,
      "rayBlocked": false,
-     "ppm": 88,
+     "ppm": 90,
      "nativePpm": 90.3,
-     "width": 986,
-     "height": 1825,
+     "width": 1279,
+     "height": 1922,
+     "pandSpanPx": [
+      135,
+      1144
+     ],
+     "marginM": 1.5,
+     "groundPx": 1868,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.167,
-      "score": 0.18,
+      "quality": 0.177,
+      "score": 0.19,
       "occluded": 0.07,
-      "closeUp": 0.07,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
-   "autoPick": "w-2017-03-31-TMX7316010203-000234_pano_0005_000072",
-   "autoPickWhy": "judge: highest quality 0.257 among hard-passing candidates (pick.ts choose)"
+   "autoPick": "w-2019-01-14-TMX7316010203-001053_pano_0000_002223",
+   "autoPickWhy": "judge: highest quality 0.266 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2019-01-14-TMX7316010203-001053_pano_0000_002223",
+    "columnsInSpan": 3,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "3 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012175658",
@@ -869,14 +1002,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 49.7,
-     "width": 279,
-     "height": 1057,
+     "width": 429,
+     "height": 1087,
+     "pandSpanPx": [
+      75,
+      354
+     ],
+     "marginM": 1.5,
+     "groundPx": 1057,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.99 m NAP); the panorama gives only 49.7 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.486,
-      "score": 0.54,
-      "occluded": 0.1,
-      "closeUp": 0.05,
+      "quality": 0.498,
+      "score": 0.56,
+      "occluded": 0.11,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -919,14 +1059,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.5,
-     "width": 475,
-     "height": 1796,
+     "width": 730,
+     "height": 1847,
+     "pandSpanPx": [
+      128,
+      602
+     ],
+     "marginM": 1.5,
+     "groundPx": 1796,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.059,
-      "score": 0.08,
-      "occluded": 0.26,
-      "closeUp": 0.14,
+      "quality": 0.079,
+      "score": 0.1,
+      "occluded": 0.21,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -967,14 +1114,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.2,
-     "width": 475,
-     "height": 1796,
+     "width": 730,
+     "height": 1847,
+     "pandSpanPx": [
+      128,
+      602
+     ],
+     "marginM": 1.5,
+     "groundPx": 1796,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.33,
-      "score": 0.34,
+      "quality": 0.417,
+      "score": 0.43,
       "occluded": 0.03,
-      "closeUp": 0.1,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -1015,13 +1169,20 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.7,
-     "width": 475,
-     "height": 1796,
+     "width": 730,
+     "height": 1847,
+     "pandSpanPx": [
+      128,
+      602
+     ],
+     "marginM": 1.5,
+     "groundPx": 1796,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.503,
-      "score": 0.53,
-      "occluded": 0.05,
+      "quality": 0.557,
+      "score": 0.58,
+      "occluded": 0.04,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
@@ -1063,14 +1224,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 47.9,
-     "width": 279,
-     "height": 1057,
+     "width": 429,
+     "height": 1087,
+     "pandSpanPx": [
+      75,
+      354
+     ],
+     "marginM": 1.5,
+     "groundPx": 1057,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.99 m NAP); the panorama gives only 47.9 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.437,
-      "score": 0.52,
-      "occluded": 0.16,
-      "closeUp": 0.05,
+      "quality": 0.433,
+      "score": 0.51,
+      "occluded": 0.15,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -1113,20 +1281,34 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 35.2,
-     "width": 279,
-     "height": 1057,
+     "width": 429,
+     "height": 1087,
+     "pandSpanPx": [
+      75,
+      354
+     ],
+     "marginM": 1.5,
+     "groundPx": 1057,
+     "bottomMarginM": 0.6,
      "note": "the panorama gives only 35.2 px/m at this distance (upsampled to 50)",
      "judge": {
       "quality": 0.094,
       "score": 0.1,
       "occluded": 0.06,
-      "closeUp": 0.3,
+      "closeUp": 0.26,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2023-01-11-TMX7316010203-002925_pano_0008_000123",
-   "autoPickWhy": "judge: highest quality 0.503 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.557 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2023-01-11-TMX7316010203-002925_pano_0008_000123",
+    "columnsInSpan": 3,
+    "extendsLeft": true,
+    "extendsRight": false,
+    "why": "left: a column 1.0 m outside continues the 2.0 m spacing"
+   }
   },
   {
    "pandId": "0363100012175659",
@@ -1176,14 +1358,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 49.4,
-     "width": 278,
-     "height": 1062,
+     "width": 428,
+     "height": 1092,
+     "pandSpanPx": [
+      75,
+      353
+     ],
+     "marginM": 1.5,
+     "groundPx": 1062,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.99 m NAP); the panorama gives only 49.4 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.018,
-      "score": 0.18,
-      "occluded": 0.9,
-      "closeUp": 0.07,
+      "quality": 0.015,
+      "score": 0.14,
+      "occluded": 0.89,
+      "closeUp": 0.1,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -1224,14 +1413,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 87.6,
-     "width": 473,
-     "height": 1805,
+     "width": 728,
+     "height": 1856,
+     "pandSpanPx": [
+      128,
+      600
+     ],
+     "marginM": 1.5,
+     "groundPx": 1805,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.199,
-      "score": 0.21,
+      "quality": 0.351,
+      "score": 0.37,
       "occluded": 0.05,
-      "closeUp": 0.16,
+      "closeUp": 0.1,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -1272,14 +1468,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 47.4,
-     "width": 278,
-     "height": 1062,
+     "width": 428,
+     "height": 1092,
+     "pandSpanPx": [
+      75,
+      353
+     ],
+     "marginM": 1.5,
+     "groundPx": 1062,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.99 m NAP); the panorama gives only 47.4 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.548,
-      "score": 0.63,
+      "quality": 0.505,
+      "score": 0.58,
       "occluded": 0.13,
-      "closeUp": 0.05,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -1320,13 +1523,20 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.1,
-     "width": 473,
-     "height": 1805,
+     "width": 728,
+     "height": 1856,
+     "pandSpanPx": [
+      128,
+      600
+     ],
+     "marginM": 1.5,
+     "groundPx": 1805,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.665,
-      "score": 0.7,
-      "occluded": 0.05,
+      "quality": 0.67,
+      "score": 0.72,
+      "occluded": 0.07,
       "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
@@ -1368,14 +1578,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 86.1,
-     "width": 473,
-     "height": 1805,
+     "width": 728,
+     "height": 1856,
+     "pandSpanPx": [
+      128,
+      600
+     ],
+     "marginM": 1.5,
+     "groundPx": 1805,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.162,
-      "score": 0.17,
-      "occluded": 0.05,
-      "closeUp": 0.14,
+      "quality": 0.188,
+      "score": 0.2,
+      "occluded": 0.06,
+      "closeUp": 0.15,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -1418,13 +1635,27 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 87.4,
-     "width": 473,
-     "height": 1805,
+     "width": 728,
+     "height": 1856,
+     "pandSpanPx": [
+      128,
+      600
+     ],
+     "marginM": 1.5,
+     "groundPx": 1805,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply"
     }
    ],
    "autoPick": "w-2023-03-06-TMX7316010203-002988_pano_0021_000080",
-   "autoPickWhy": "judge: highest quality 0.665 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.67 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2023-03-06-TMX7316010203-002988_pano_0021_000080",
+    "columnsInSpan": 4,
+    "extendsLeft": true,
+    "extendsRight": false,
+    "why": "left: a column 0.9 m outside continues the 1.7 m spacing"
+   }
   },
   {
    "pandId": "0363100012571490",
@@ -1474,13 +1705,20 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 48.9,
-     "width": 283,
-     "height": 1057,
+     "width": 433,
+     "height": 1087,
+     "pandSpanPx": [
+      75,
+      358
+     ],
+     "marginM": 1.5,
+     "groundPx": 1057,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.66 m NAP); the panorama gives only 48.9 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.602,
-      "score": 0.7,
-      "occluded": 0.14,
+      "quality": 0.598,
+      "score": 0.72,
+      "occluded": 0.17,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
@@ -1522,13 +1760,20 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.6,
-     "width": 480,
-     "height": 1797,
+     "width": 735,
+     "height": 1848,
+     "pandSpanPx": [
+      128,
+      608
+     ],
+     "marginM": 1.5,
+     "groundPx": 1797,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.58,
-      "score": 0.63,
-      "occluded": 0.08,
+      "quality": 0.594,
+      "score": 0.66,
+      "occluded": 0.1,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
@@ -1570,12 +1815,19 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.3,
-     "width": 480,
-     "height": 1797,
+     "width": 735,
+     "height": 1848,
+     "pandSpanPx": [
+      128,
+      608
+     ],
+     "marginM": 1.5,
+     "groundPx": 1797,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.338,
-      "score": 0.36,
+      "quality": 0.348,
+      "score": 0.37,
       "occluded": 0.06,
       "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
@@ -1618,14 +1870,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 87.6,
-     "width": 480,
-     "height": 1797,
+     "width": 735,
+     "height": 1848,
+     "pandSpanPx": [
+      128,
+      608
+     ],
+     "marginM": 1.5,
+     "groundPx": 1797,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.18,
+      "quality": 0.196,
       "score": 0.22,
-      "occluded": 0.18,
-      "closeUp": 0.1,
+      "occluded": 0.11,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -1666,14 +1925,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 87.1,
-     "width": 480,
-     "height": 1797,
+     "width": 735,
+     "height": 1848,
+     "pandSpanPx": [
+      128,
+      608
+     ],
+     "marginM": 1.5,
+     "groundPx": 1797,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.226,
-      "score": 0.24,
-      "occluded": 0.06,
-      "closeUp": 0.11,
+      "quality": 0.278,
+      "score": 0.29,
+      "occluded": 0.04,
+      "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -1714,20 +1980,34 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88,
-     "width": 480,
-     "height": 1797,
+     "width": 735,
+     "height": 1848,
+     "pandSpanPx": [
+      128,
+      608
+     ],
+     "marginM": 1.5,
+     "groundPx": 1797,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.264,
-      "score": 0.29,
-      "occluded": 0.09,
-      "closeUp": 0.05,
+      "quality": 0.331,
+      "score": 0.36,
+      "occluded": 0.08,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2021-01-22-TMX7316010203-001975_pano_0000_000085",
-   "autoPickWhy": "judge: highest quality 0.602 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.598 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000085",
+    "columnsInSpan": 1,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "1 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012176750",
@@ -1777,14 +2057,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 49,
-     "width": 278,
-     "height": 1058,
+     "width": 428,
+     "height": 1088,
+     "pandSpanPx": [
+      75,
+      353
+     ],
+     "marginM": 1.5,
+     "groundPx": 1058,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.66 m NAP); the panorama gives only 49 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.009,
-      "score": 0.13,
+      "quality": 0.01,
+      "score": 0.14,
       "occluded": 0.93,
-      "closeUp": 0.12,
+      "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -1825,14 +2112,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.4,
-     "width": 473,
-     "height": 1798,
+     "width": 728,
+     "height": 1849,
+     "pandSpanPx": [
+      128,
+      600
+     ],
+     "marginM": 1.5,
+     "groundPx": 1798,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.204,
-      "score": 0.21,
-      "occluded": 0.03,
-      "closeUp": 0.15,
+      "quality": 0.211,
+      "score": 0.22,
+      "occluded": 0.04,
+      "closeUp": 0.12,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -1873,13 +2167,20 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 87.8,
-     "width": 473,
-     "height": 1798,
+     "width": 728,
+     "height": 1849,
+     "pandSpanPx": [
+      128,
+      600
+     ],
+     "marginM": 1.5,
+     "groundPx": 1798,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.355,
-      "score": 0.39,
-      "occluded": 0.09,
+      "quality": 0.322,
+      "score": 0.35,
+      "occluded": 0.08,
       "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
@@ -1921,13 +2222,20 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88,
-     "width": 473,
-     "height": 1798,
+     "width": 728,
+     "height": 1849,
+     "pandSpanPx": [
+      128,
+      600
+     ],
+     "marginM": 1.5,
+     "groundPx": 1798,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.515,
-      "score": 0.56,
-      "occluded": 0.08,
+      "quality": 0.57,
+      "score": 0.6,
+      "occluded": 0.05,
       "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
@@ -1969,14 +2277,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 87.5,
-     "width": 473,
-     "height": 1798,
+     "width": 728,
+     "height": 1849,
+     "pandSpanPx": [
+      128,
+      600
+     ],
+     "marginM": 1.5,
+     "groundPx": 1798,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.422,
-      "score": 0.44,
-      "occluded": 0.04,
-      "closeUp": 0.09,
+      "quality": 0.342,
+      "score": 0.36,
+      "occluded": 0.05,
+      "closeUp": 0.13,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2017,20 +2332,34 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.2,
-     "width": 473,
-     "height": 1798,
+     "width": 728,
+     "height": 1849,
+     "pandSpanPx": [
+      128,
+      600
+     ],
+     "marginM": 1.5,
+     "groundPx": 1798,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.344,
-      "score": 0.37,
-      "occluded": 0.07,
+      "quality": 0.396,
+      "score": 0.44,
+      "occluded": 0.1,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2019-01-14-TMX7316010203-001053_pano_0000_002218",
-   "autoPickWhy": "judge: highest quality 0.515 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.57 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2019-01-14-TMX7316010203-001053_pano_0000_002218",
+    "columnsInSpan": 3,
+    "extendsLeft": false,
+    "extendsRight": true,
+    "why": "right edge cuts a window column"
+   }
   },
   {
    "pandId": "0363100012176751",
@@ -2080,14 +2409,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.3,
-     "width": 503,
-     "height": 1778,
+     "width": 743,
+     "height": 1826,
+     "pandSpanPx": [
+      120,
+      623
+     ],
+     "marginM": 1.5,
+     "groundPx": 1778,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.602,
-      "score": 0.64,
+      "quality": 0.743,
+      "score": 0.79,
       "occluded": 0.06,
-      "closeUp": 0.06,
+      "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2128,12 +2464,19 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 83.2,
-     "width": 503,
-     "height": 1778,
+     "width": 743,
+     "height": 1826,
+     "pandSpanPx": [
+      120,
+      623
+     ],
+     "marginM": 1.5,
+     "groundPx": 1778,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.23,
-      "score": 0.25,
+      "quality": 0.212,
+      "score": 0.23,
       "occluded": 0.08,
       "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
@@ -2176,14 +2519,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 47.2,
-     "width": 315,
-     "height": 1112,
+     "width": 465,
+     "height": 1142,
+     "pandSpanPx": [
+      75,
+      390
+     ],
+     "marginM": 1.5,
+     "groundPx": 1112,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.66 m NAP); the panorama gives only 47.2 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.386,
-      "score": 0.42,
+      "quality": 0.331,
+      "score": 0.36,
       "occluded": 0.08,
-      "closeUp": 0.04,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2224,14 +2574,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.4,
-     "width": 503,
-     "height": 1778,
+     "width": 743,
+     "height": 1826,
+     "pandSpanPx": [
+      120,
+      623
+     ],
+     "marginM": 1.5,
+     "groundPx": 1778,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.624,
-      "score": 0.65,
+      "quality": 0.557,
+      "score": 0.58,
       "occluded": 0.04,
-      "closeUp": 0.05,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2272,14 +2629,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 82.9,
-     "width": 503,
-     "height": 1778,
+     "width": 743,
+     "height": 1826,
+     "pandSpanPx": [
+      120,
+      623
+     ],
+     "marginM": 1.5,
+     "groundPx": 1778,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.605,
-      "score": 0.63,
+      "quality": 0.643,
+      "score": 0.67,
       "occluded": 0.04,
-      "closeUp": 0.06,
+      "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2320,20 +2684,34 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.4,
-     "width": 503,
-     "height": 1778,
+     "width": 743,
+     "height": 1826,
+     "pandSpanPx": [
+      120,
+      623
+     ],
+     "marginM": 1.5,
+     "groundPx": 1778,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.586,
-      "score": 0.61,
+      "quality": 0.595,
+      "score": 0.62,
       "occluded": 0.04,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
-   "autoPick": "w-2025-01-15-b_20250115_1329_Track12_Sphere_00036",
-   "autoPickWhy": "judge: highest quality 0.624 among hard-passing candidates (pick.ts choose)"
+   "autoPick": "w-2023-03-06-TMX7316010203-002988_pano_0021_000077",
+   "autoPickWhy": "judge: highest quality 0.743 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2023-03-06-TMX7316010203-002988_pano_0021_000077",
+    "columnsInSpan": 0,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "0 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012176749",
@@ -2383,14 +2761,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.8,
-     "width": 414,
-     "height": 1789,
+     "width": 669,
+     "height": 1840,
+     "pandSpanPx": [
+      128,
+      542
+     ],
+     "marginM": 1.5,
+     "groundPx": 1789,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.589,
-      "score": 0.62,
+      "quality": 0.665,
+      "score": 0.7,
       "occluded": 0.05,
-      "closeUp": 0.05,
+      "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2431,14 +2816,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 48.9,
-     "width": 244,
-     "height": 1053,
+     "width": 394,
+     "height": 1083,
+     "pandSpanPx": [
+      75,
+      319
+     ],
+     "marginM": 1.5,
+     "groundPx": 1053,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.66 m NAP); the panorama gives only 48.9 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.185,
-      "score": 0.35,
-      "occluded": 0.47,
-      "closeUp": 0.05,
+      "quality": 0.173,
+      "score": 0.34,
+      "occluded": 0.49,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2481,14 +2873,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.3,
-     "width": 414,
-     "height": 1789,
+     "width": 669,
+     "height": 1840,
+     "pandSpanPx": [
+      128,
+      542
+     ],
+     "marginM": 1.5,
+     "groundPx": 1789,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.386,
-      "score": 0.42,
-      "occluded": 0.08,
-      "closeUp": 0.08,
+      "quality": 0.418,
+      "score": 0.45,
+      "occluded": 0.07,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2529,14 +2928,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.6,
-     "width": 414,
-     "height": 1789,
+     "width": 669,
+     "height": 1840,
+     "pandSpanPx": [
+      128,
+      542
+     ],
+     "marginM": 1.5,
+     "groundPx": 1789,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.395,
-      "score": 0.42,
-      "occluded": 0.06,
-      "closeUp": 0.09,
+      "quality": 0.389,
+      "score": 0.41,
+      "occluded": 0.05,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2577,14 +2983,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 89.2,
-     "width": 414,
-     "height": 1789,
+     "width": 669,
+     "height": 1840,
+     "pandSpanPx": [
+      128,
+      542
+     ],
+     "marginM": 1.5,
+     "groundPx": 1789,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.703,
-      "score": 0.74,
+      "quality": 0.665,
+      "score": 0.7,
       "occluded": 0.05,
-      "closeUp": 0.05,
+      "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2625,20 +3038,34 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.9,
-     "width": 414,
-     "height": 1789,
+     "width": 669,
+     "height": 1840,
+     "pandSpanPx": [
+      128,
+      542
+     ],
+     "marginM": 1.5,
+     "groundPx": 1789,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.682,
-      "score": 0.71,
-      "occluded": 0.04,
-      "closeUp": 0.05,
+      "quality": 0.665,
+      "score": 0.7,
+      "occluded": 0.05,
+      "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2019-01-10-TMX7316010203-001047_pano_0000_001131",
-   "autoPickWhy": "judge: highest quality 0.703 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.665 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2019-01-10-TMX7316010203-001047_pano_0000_001131",
+    "columnsInSpan": 0,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "0 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012176748",
@@ -2688,14 +3115,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 89.9,
-     "width": 422,
-     "height": 1754,
+     "width": 677,
+     "height": 1805,
+     "pandSpanPx": [
+      128,
+      549
+     ],
+     "marginM": 1.5,
+     "groundPx": 1754,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.282,
-      "score": 0.31,
+      "quality": 0.309,
+      "score": 0.34,
       "occluded": 0.09,
-      "closeUp": 0.07,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2736,14 +3170,21 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 90.4,
-     "width": 447,
-     "height": 1857,
+     "width": 717,
+     "height": 1911,
+     "pandSpanPx": [
+      135,
+      582
+     ],
+     "marginM": 1.5,
+     "groundPx": 1857,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.446,
-      "score": 0.46,
-      "occluded": 0.03,
-      "closeUp": 0.09,
+      "quality": 0.451,
+      "score": 0.47,
+      "occluded": 0.04,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2784,14 +3225,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 49.1,
-     "width": 248,
-     "height": 1032,
+     "width": 398,
+     "height": 1062,
+     "pandSpanPx": [
+      75,
+      323
+     ],
+     "marginM": 1.5,
+     "groundPx": 1032,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.66 m NAP); the panorama gives only 49.1 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.36,
-      "score": 0.4,
-      "occluded": 0.1,
-      "closeUp": 0.06,
+      "quality": 0.426,
+      "score": 0.49,
+      "occluded": 0.13,
+      "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2832,13 +3280,20 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 90.8,
-     "width": 447,
-     "height": 1857,
+     "width": 717,
+     "height": 1911,
+     "pandSpanPx": [
+      135,
+      582
+     ],
+     "marginM": 1.5,
+     "groundPx": 1857,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.636,
-      "score": 0.67,
-      "occluded": 0.05,
+      "quality": 0.662,
+      "score": 0.69,
+      "occluded": 0.04,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
@@ -2880,14 +3335,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 44,
-     "width": 248,
-     "height": 1032,
+     "width": 398,
+     "height": 1062,
+     "pandSpanPx": [
+      75,
+      323
+     ],
+     "marginM": 1.5,
+     "groundPx": 1032,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.66 m NAP); the panorama gives only 44 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.128,
-      "score": 0.2,
-      "occluded": 0.36,
-      "closeUp": 0.1,
+      "quality": 0.143,
+      "score": 0.22,
+      "occluded": 0.35,
+      "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -2928,12 +3390,19 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 90.7,
-     "width": 447,
-     "height": 1857,
+     "width": 717,
+     "height": 1911,
+     "pandSpanPx": [
+      135,
+      582
+     ],
+     "marginM": 1.5,
+     "groundPx": 1857,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.662,
-      "score": 0.69,
+      "quality": 0.672,
+      "score": 0.7,
       "occluded": 0.04,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
@@ -2941,7 +3410,14 @@
     }
    ],
    "autoPick": "w-2016-08-16-TMX7316060226-000022_pano_0000_000503",
-   "autoPickWhy": "judge: highest quality 0.662 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.672 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2016-08-16-TMX7316060226-000022_pano_0000_000503",
+    "columnsInSpan": 2,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "2 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012176747",
@@ -2991,14 +3467,21 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 90.8,
-     "width": 441,
-     "height": 1850,
+     "width": 711,
+     "height": 1904,
+     "pandSpanPx": [
+      135,
+      576
+     ],
+     "marginM": 1.5,
+     "groundPx": 1850,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.171,
+      "quality": 0.169,
       "score": 0.18,
-      "occluded": 0.05,
-      "closeUp": 0.12,
+      "occluded": 0.06,
+      "closeUp": 0.11,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3039,14 +3522,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 49.7,
-     "width": 245,
-     "height": 1028,
+     "width": 395,
+     "height": 1058,
+     "pandSpanPx": [
+      75,
+      320
+     ],
+     "marginM": 1.5,
+     "groundPx": 1028,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.45 m NAP); the panorama gives only 49.7 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.51,
-      "score": 0.56,
+      "quality": 0.555,
+      "score": 0.61,
       "occluded": 0.09,
-      "closeUp": 0.05,
+      "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3087,14 +3577,21 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 90.3,
-     "width": 441,
-     "height": 1850,
+     "width": 711,
+     "height": 1904,
+     "pandSpanPx": [
+      135,
+      576
+     ],
+     "marginM": 1.5,
+     "groundPx": 1850,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.055,
-      "score": 0.09,
-      "occluded": 0.39,
-      "closeUp": 0.12,
+      "quality": 0.087,
+      "score": 0.11,
+      "occluded": 0.21,
+      "closeUp": 0.1,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3135,12 +3632,19 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 91.1,
-     "width": 441,
-     "height": 1850,
+     "width": 711,
+     "height": 1904,
+     "pandSpanPx": [
+      135,
+      576
+     ],
+     "marginM": 1.5,
+     "groundPx": 1850,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.461,
-      "score": 0.48,
+      "quality": 0.49,
+      "score": 0.51,
       "occluded": 0.04,
       "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
@@ -3183,12 +3687,19 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 90.9,
-     "width": 441,
-     "height": 1850,
+     "width": 711,
+     "height": 1904,
+     "pandSpanPx": [
+      135,
+      576
+     ],
+     "marginM": 1.5,
+     "groundPx": 1850,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.351,
-      "score": 0.37,
+      "quality": 0.285,
+      "score": 0.3,
       "occluded": 0.05,
       "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
@@ -3231,20 +3742,34 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 91.2,
-     "width": 441,
-     "height": 1850,
+     "width": 711,
+     "height": 1904,
+     "pandSpanPx": [
+      135,
+      576
+     ],
+     "marginM": 1.5,
+     "groundPx": 1850,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.566,
-      "score": 0.59,
+      "quality": 0.614,
+      "score": 0.64,
       "occluded": 0.04,
-      "closeUp": 0.06,
+      "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2016-08-16-TMX7316060226-000022_pano_0000_000502",
-   "autoPickWhy": "judge: highest quality 0.566 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.614 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2016-08-16-TMX7316060226-000022_pano_0000_000502",
+    "columnsInSpan": 3,
+    "extendsLeft": true,
+    "extendsRight": true,
+    "why": "left: a column 1.1 m outside continues the 1.9 m spacing; right: a column 1.1 m outside continues the 1.9 m spacing"
+   }
   },
   {
    "pandId": "0363100012176746",
@@ -3294,14 +3819,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 86.7,
-     "width": 433,
-     "height": 1828,
+     "width": 688,
+     "height": 1879,
+     "pandSpanPx": [
+      128,
+      561
+     ],
+     "marginM": 1.5,
+     "groundPx": 1828,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.077,
-      "score": 0.08,
+      "quality": 0.115,
+      "score": 0.12,
       "occluded": 0.04,
-      "closeUp": 0.21,
+      "closeUp": 0.17,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3342,14 +3874,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 86.1,
-     "width": 433,
-     "height": 1828,
+     "width": 688,
+     "height": 1879,
+     "pandSpanPx": [
+      128,
+      561
+     ],
+     "marginM": 1.5,
+     "groundPx": 1828,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.085,
-      "score": 0.11,
-      "occluded": 0.23,
-      "closeUp": 0.13,
+      "quality": 0.113,
+      "score": 0.13,
+      "occluded": 0.13,
+      "closeUp": 0.14,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3390,13 +3929,20 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 48.9,
-     "width": 255,
-     "height": 1075,
+     "width": 405,
+     "height": 1105,
+     "pandSpanPx": [
+      75,
+      330
+     ],
+     "marginM": 1.5,
+     "groundPx": 1075,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.55 m NAP); the panorama gives only 48.9 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.11,
-      "score": 0.16,
-      "occluded": 0.31,
+      "quality": 0.175,
+      "score": 0.24,
+      "occluded": 0.27,
       "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
@@ -3438,14 +3984,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 86.6,
-     "width": 433,
-     "height": 1828,
+     "width": 688,
+     "height": 1879,
+     "pandSpanPx": [
+      128,
+      561
+     ],
+     "marginM": 1.5,
+     "groundPx": 1828,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.376,
-      "score": 0.4,
-      "occluded": 0.06,
-      "closeUp": 0.06,
+      "quality": 0.332,
+      "score": 0.35,
+      "occluded": 0.05,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3486,14 +4039,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 43.5,
-     "width": 255,
-     "height": 1075,
+     "width": 405,
+     "height": 1105,
+     "pandSpanPx": [
+      75,
+      330
+     ],
+     "marginM": 1.5,
+     "groundPx": 1075,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.55 m NAP); the panorama gives only 43.5 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.065,
-      "score": 0.21,
-      "occluded": 0.69,
-      "closeUp": 0.1,
+      "quality": 0.045,
+      "score": 0.16,
+      "occluded": 0.72,
+      "closeUp": 0.12,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3534,20 +4094,34 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 87.1,
-     "width": 433,
-     "height": 1828,
+     "width": 688,
+     "height": 1879,
+     "pandSpanPx": [
+      128,
+      561
+     ],
+     "marginM": 1.5,
+     "groundPx": 1828,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.384,
-      "score": 0.4,
-      "occluded": 0.04,
-      "closeUp": 0.11,
+      "quality": 0.257,
+      "score": 0.27,
+      "occluded": 0.05,
+      "closeUp": 0.1,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
-   "autoPick": "w-2016-08-16-TMX7316060226-000022_pano_0000_000501",
-   "autoPickWhy": "judge: highest quality 0.384 among hard-passing candidates (pick.ts choose)"
+   "autoPick": "w-2019-01-10-TMX7316010203-001047_pano_0000_001128",
+   "autoPickWhy": "judge: highest quality 0.332 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2019-01-10-TMX7316010203-001047_pano_0000_001128",
+    "columnsInSpan": 2,
+    "extendsLeft": true,
+    "extendsRight": false,
+    "why": "left edge cuts a window column"
+   }
   },
   {
    "pandId": "0363100012176745",
@@ -3597,13 +4171,20 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 49.1,
-     "width": 549,
-     "height": 1049,
+     "width": 699,
+     "height": 1079,
+     "pandSpanPx": [
+      75,
+      624
+     ],
+     "marginM": 1.5,
+     "groundPx": 1049,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.55 m NAP); the panorama gives only 49.1 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.08,
-      "score": 0.12,
-      "occluded": 0.33,
+      "quality": 0.118,
+      "score": 0.16,
+      "occluded": 0.26,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
@@ -3645,12 +4226,19 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.9,
-     "width": 934,
-     "height": 1782,
+     "width": 1189,
+     "height": 1833,
+     "pandSpanPx": [
+      128,
+      1062
+     ],
+     "marginM": 1.5,
+     "groundPx": 1782,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.563,
-      "score": 0.58,
+      "quality": 0.601,
+      "score": 0.62,
       "occluded": 0.03,
       "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
@@ -3693,14 +4281,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 87.5,
-     "width": 934,
-     "height": 1782,
+     "width": 1189,
+     "height": 1833,
+     "pandSpanPx": [
+      128,
+      1062
+     ],
+     "marginM": 1.5,
+     "groundPx": 1782,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.134,
-      "score": 0.17,
-      "occluded": 0.21,
-      "closeUp": 0.08,
+      "quality": 0.166,
+      "score": 0.2,
+      "occluded": 0.17,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3741,14 +4336,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.2,
-     "width": 934,
-     "height": 1782,
+     "width": 1189,
+     "height": 1833,
+     "pandSpanPx": [
+      128,
+      1062
+     ],
+     "marginM": 1.5,
+     "groundPx": 1782,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.339,
-      "score": 0.35,
+      "quality": 0.359,
+      "score": 0.37,
       "occluded": 0.03,
-      "closeUp": 0.07,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3789,14 +4391,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 87.3,
-     "width": 934,
-     "height": 1782,
+     "width": 1189,
+     "height": 1833,
+     "pandSpanPx": [
+      128,
+      1062
+     ],
+     "marginM": 1.5,
+     "groundPx": 1782,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.456,
-      "score": 0.47,
+      "quality": 0.533,
+      "score": 0.55,
       "occluded": 0.03,
-      "closeUp": 0.05,
+      "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3837,20 +4446,34 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 89.5,
-     "width": 934,
-     "height": 1782,
+     "width": 1189,
+     "height": 1833,
+     "pandSpanPx": [
+      128,
+      1062
+     ],
+     "marginM": 1.5,
+     "groundPx": 1782,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.648,
-      "score": 0.72,
-      "occluded": 0.1,
-      "closeUp": 0.03,
+      "quality": 0.614,
+      "score": 0.69,
+      "occluded": 0.11,
+      "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2025-06-16-recording_2025-06-16_06-21-55_00247",
-   "autoPickWhy": "judge: highest quality 0.648 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.614 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2025-06-16-recording_2025-06-16_06-21-55_00247",
+    "columnsInSpan": 6,
+    "extendsLeft": false,
+    "extendsRight": true,
+    "why": "right: a column 1.0 m outside continues the 1.8 m spacing"
+   }
   },
   {
    "pandId": "0363100012175645",
@@ -3900,14 +4523,21 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 90.5,
-     "width": 679,
-     "height": 1858,
+     "width": 949,
+     "height": 1913,
+     "pandSpanPx": [
+      135,
+      814
+     ],
+     "marginM": 1.5,
+     "groundPx": 1859,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.314,
-      "score": 0.33,
+      "quality": 0.361,
+      "score": 0.38,
       "occluded": 0.05,
-      "closeUp": 0.1,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3948,14 +4578,21 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 91,
-     "width": 679,
-     "height": 1858,
+     "width": 949,
+     "height": 1913,
+     "pandSpanPx": [
+      135,
+      814
+     ],
+     "marginM": 1.5,
+     "groundPx": 1859,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.298,
-      "score": 0.31,
-      "occluded": 0.04,
-      "closeUp": 0.11,
+      "quality": 0.446,
+      "score": 0.47,
+      "occluded": 0.05,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -3996,14 +4633,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 50.3,
-     "width": 377,
-     "height": 1033,
+     "width": 527,
+     "height": 1063,
+     "pandSpanPx": [
+      75,
+      452
+     ],
+     "marginM": 1.5,
+     "groundPx": 1033,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.55 m NAP)",
      "judge": {
-      "quality": 0.029,
-      "score": 0.1,
-      "occluded": 0.71,
-      "closeUp": 0.12,
+      "quality": 0.009,
+      "score": 0.04,
+      "occluded": 0.77,
+      "closeUp": 0.22,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4044,14 +4688,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88.4,
-     "width": 641,
-     "height": 1755,
+     "width": 896,
+     "height": 1806,
+     "pandSpanPx": [
+      128,
+      769
+     ],
+     "marginM": 1.5,
+     "groundPx": 1755,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.106,
-      "score": 0.12,
-      "occluded": 0.12,
-      "closeUp": 0.15,
+      "quality": 0.126,
+      "score": 0.14,
+      "occluded": 0.1,
+      "closeUp": 0.11,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4092,14 +4743,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 89.1,
-     "width": 641,
-     "height": 1755,
+     "width": 896,
+     "height": 1806,
+     "pandSpanPx": [
+      128,
+      769
+     ],
+     "marginM": 1.5,
+     "groundPx": 1755,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.122,
-      "score": 0.13,
-      "occluded": 0.06,
-      "closeUp": 0.2,
+      "quality": 0.228,
+      "score": 0.24,
+      "occluded": 0.05,
+      "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4140,20 +4798,34 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 90.6,
-     "width": 679,
-     "height": 1858,
+     "width": 949,
+     "height": 1913,
+     "pandSpanPx": [
+      135,
+      814
+     ],
+     "marginM": 1.5,
+     "groundPx": 1859,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.115,
-      "score": 0.12,
-      "occluded": 0.04,
-      "closeUp": 0.19,
+      "quality": 0.281,
+      "score": 0.29,
+      "occluded": 0.03,
+      "closeUp": 0.1,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
-   "autoPick": "w-2019-01-14-TMX7316010203-001053_pano_0000_002209",
-   "autoPickWhy": "judge: highest quality 0.314 among hard-passing candidates (pick.ts choose)"
+   "autoPick": "w-2023-03-27-TMX7316010203-003014_pano_0005_000096",
+   "autoPickWhy": "judge: highest quality 0.446 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2023-03-27-TMX7316010203-003014_pano_0005_000096",
+    "columnsInSpan": 2,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "2 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012175655",
@@ -4203,14 +4875,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.1,
-     "width": 602,
-     "height": 1766,
+     "width": 842,
+     "height": 1814,
+     "pandSpanPx": [
+      120,
+      722
+     ],
+     "marginM": 1.5,
+     "groundPx": 1766,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.173,
-      "score": 0.18,
+      "quality": 0.144,
+      "score": 0.15,
       "occluded": 0.04,
-      "closeUp": 0.18,
+      "closeUp": 0.17,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4251,14 +4930,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 50.6,
-     "width": 376,
-     "height": 1104,
+     "width": 526,
+     "height": 1134,
+     "pandSpanPx": [
+      75,
+      451
+     ],
+     "marginM": 1.5,
+     "groundPx": 1104,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.55 m NAP)",
      "judge": {
-      "quality": 0.022,
-      "score": 0.13,
-      "occluded": 0.83,
-      "closeUp": 0.1,
+      "quality": 0.04,
+      "score": 0.2,
+      "occluded": 0.8,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4301,14 +4987,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 83.4,
-     "width": 602,
-     "height": 1766,
+     "width": 842,
+     "height": 1814,
+     "pandSpanPx": [
+      120,
+      722
+     ],
+     "marginM": 1.5,
+     "groundPx": 1766,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.072,
-      "score": 0.09,
-      "occluded": 0.2,
-      "closeUp": 0.13,
+      "quality": 0.073,
+      "score": 0.1,
+      "occluded": 0.27,
+      "closeUp": 0.15,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4349,14 +5042,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84,
-     "width": 602,
-     "height": 1766,
+     "width": 842,
+     "height": 1814,
+     "pandSpanPx": [
+      120,
+      722
+     ],
+     "marginM": 1.5,
+     "groundPx": 1766,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.361,
-      "score": 0.38,
-      "occluded": 0.05,
-      "closeUp": 0.11,
+      "quality": 0.329,
+      "score": 0.35,
+      "occluded": 0.06,
+      "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4397,14 +5097,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.3,
-     "width": 602,
-     "height": 1766,
+     "width": 842,
+     "height": 1814,
+     "pandSpanPx": [
+      120,
+      722
+     ],
+     "marginM": 1.5,
+     "groundPx": 1766,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.422,
-      "score": 0.44,
+      "quality": 0.499,
+      "score": 0.52,
       "occluded": 0.04,
-      "closeUp": 0.11,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4445,20 +5152,34 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.8,
-     "width": 602,
-     "height": 1766,
+     "width": 842,
+     "height": 1814,
+     "pandSpanPx": [
+      120,
+      722
+     ],
+     "marginM": 1.5,
+     "groundPx": 1766,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.134,
-      "score": 0.14,
+      "quality": 0.182,
+      "score": 0.19,
       "occluded": 0.04,
-      "closeUp": 0.12,
+      "closeUp": 0.13,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2019-01-10-TMX7316010203-001047_pano_0000_001123",
-   "autoPickWhy": "judge: highest quality 0.422 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.499 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2019-01-10-TMX7316010203-001047_pano_0000_001123",
+    "columnsInSpan": 1,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "1 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012175654",
@@ -4508,14 +5229,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84,
-     "width": 431,
-     "height": 1786,
+     "width": 671,
+     "height": 1834,
+     "pandSpanPx": [
+      120,
+      551
+     ],
+     "marginM": 1.5,
+     "groundPx": 1786,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.414,
-      "score": 0.44,
+      "quality": 0.423,
+      "score": 0.45,
       "occluded": 0.06,
-      "closeUp": 0.08,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4556,14 +5284,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 83.9,
-     "width": 431,
-     "height": 1786,
+     "width": 671,
+     "height": 1834,
+     "pandSpanPx": [
+      120,
+      551
+     ],
+     "marginM": 1.5,
+     "groundPx": 1786,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
       "quality": 0.317,
       "score": 0.33,
       "occluded": 0.04,
-      "closeUp": 0.09,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4604,14 +5339,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 51.3,
-     "width": 269,
-     "height": 1117,
+     "width": 419,
+     "height": 1147,
+     "pandSpanPx": [
+      75,
+      344
+     ],
+     "marginM": 1.5,
+     "groundPx": 1117,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.64 m NAP)",
      "judge": {
-      "quality": 0.058,
-      "score": 0.17,
-      "occluded": 0.66,
-      "closeUp": 0.15,
+      "quality": 0.048,
+      "score": 0.13,
+      "occluded": 0.63,
+      "closeUp": 0.13,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4652,14 +5394,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 81.8,
-     "width": 431,
-     "height": 1786,
+     "width": 671,
+     "height": 1834,
+     "pandSpanPx": [
+      120,
+      551
+     ],
+     "marginM": 1.5,
+     "groundPx": 1786,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.018,
+      "quality": 0.015,
       "score": 0.03,
-      "occluded": 0.4,
-      "closeUp": 0.27,
+      "occluded": 0.5,
+      "closeUp": 0.23,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4700,14 +5449,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 83.8,
-     "width": 431,
-     "height": 1786,
+     "width": 671,
+     "height": 1834,
+     "pandSpanPx": [
+      120,
+      551
+     ],
+     "marginM": 1.5,
+     "groundPx": 1786,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.342,
-      "score": 0.36,
-      "occluded": 0.05,
-      "closeUp": 0.08,
+      "quality": 0.336,
+      "score": 0.35,
+      "occluded": 0.04,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4748,20 +5504,34 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 44.1,
-     "width": 269,
-     "height": 1117,
+     "width": 419,
+     "height": 1147,
+     "pandSpanPx": [
+      75,
+      344
+     ],
+     "marginM": 1.5,
+     "groundPx": 1117,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.64 m NAP); the panorama gives only 44.1 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.004,
-      "score": 0.04,
-      "occluded": 0.89,
-      "closeUp": 0.22,
+      "quality": 0.006,
+      "score": 0.05,
+      "occluded": 0.88,
+      "closeUp": 0.19,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2023-03-20-TMX7316010203-003004_pano_0002_000039",
-   "autoPickWhy": "judge: highest quality 0.414 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.423 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2023-03-20-TMX7316010203-003004_pano_0002_000039",
+    "columnsInSpan": 1,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "1 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012167899",
@@ -4813,13 +5583,20 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 91.8,
-     "width": 847,
-     "height": 1842,
+     "width": 1117,
+     "height": 1896,
+     "pandSpanPx": [
+      135,
+      982
+     ],
+     "marginM": 1.5,
+     "groundPx": 1842,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.647,
-      "score": 0.66,
-      "occluded": 0.02,
+      "quality": 0.718,
+      "score": 0.74,
+      "occluded": 0.03,
       "closeUp": 0.03,
       "model": "jev-1.14.0/v1"
      }
@@ -4861,14 +5638,21 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 90.7,
-     "width": 847,
-     "height": 1842,
+     "width": 1117,
+     "height": 1896,
+     "pandSpanPx": [
+      135,
+      982
+     ],
+     "marginM": 1.5,
+     "groundPx": 1842,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.601,
-      "score": 0.62,
+      "quality": 0.592,
+      "score": 0.61,
       "occluded": 0.03,
-      "closeUp": 0.05,
+      "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -4909,12 +5693,19 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 91.1,
-     "width": 847,
-     "height": 1842,
+     "width": 1117,
+     "height": 1896,
+     "pandSpanPx": [
+      135,
+      982
+     ],
+     "marginM": 1.5,
+     "groundPx": 1842,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.698,
-      "score": 0.72,
+      "quality": 0.757,
+      "score": 0.78,
       "occluded": 0.03,
       "closeUp": 0.03,
       "model": "jev-1.14.0/v1"
@@ -4957,13 +5748,20 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 52.3,
-     "width": 471,
-     "height": 1024,
+     "width": 621,
+     "height": 1054,
+     "pandSpanPx": [
+      75,
+      546
+     ],
+     "marginM": 1.5,
+     "groundPx": 1024,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.64 m NAP)",
      "judge": {
-      "quality": 0.073,
-      "score": 0.43,
-      "occluded": 0.83,
+      "quality": 0.074,
+      "score": 0.39,
+      "occluded": 0.81,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
@@ -5005,14 +5803,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 88,
-     "width": 800,
-     "height": 1740,
+     "width": 1055,
+     "height": 1791,
+     "pandSpanPx": [
+      128,
+      927
+     ],
+     "marginM": 1.5,
+     "groundPx": 1740,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.636,
-      "score": 0.67,
-      "occluded": 0.05,
-      "closeUp": 0.04,
+      "quality": 0.653,
+      "score": 0.68,
+      "occluded": 0.04,
+      "closeUp": 0.03,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5053,20 +5858,34 @@
      "rayBlocked": false,
      "ppm": 90,
      "nativePpm": 91,
-     "width": 847,
-     "height": 1842,
+     "width": 1117,
+     "height": 1896,
+     "pandSpanPx": [
+      135,
+      982
+     ],
+     "marginM": 1.5,
+     "groundPx": 1842,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.518,
-      "score": 0.54,
+      "quality": 0.662,
+      "score": 0.69,
       "occluded": 0.04,
-      "closeUp": 0.05,
+      "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2019-01-14-TMX7316010203-001053_pano_0000_002205",
-   "autoPickWhy": "judge: highest quality 0.698 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.757 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2019-01-14-TMX7316010203-001053_pano_0000_002205",
+    "columnsInSpan": 1,
+    "extendsLeft": false,
+    "extendsRight": true,
+    "why": "right edge cuts a window column"
+   }
   },
   {
    "pandId": "0363100012167896",
@@ -5116,14 +5935,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 83.1,
-     "width": 603,
-     "height": 1802,
+     "width": 843,
+     "height": 1850,
+     "pandSpanPx": [
+      120,
+      723
+     ],
+     "marginM": 1.5,
+     "groundPx": 1802,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.05,
+      "quality": 0.041,
       "score": 0.07,
-      "occluded": 0.29,
-      "closeUp": 0.1,
+      "occluded": 0.42,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5164,14 +5990,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 52.4,
-     "width": 377,
-     "height": 1126,
+     "width": 527,
+     "height": 1156,
+     "pandSpanPx": [
+      75,
+      452
+     ],
+     "marginM": 1.5,
+     "groundPx": 1126,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.64 m NAP)",
      "judge": {
       "quality": 0.007,
       "score": 0.12,
       "occluded": 0.94,
-      "closeUp": 0.09,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5212,14 +6045,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 82.7,
-     "width": 603,
-     "height": 1802,
+     "width": 843,
+     "height": 1850,
+     "pandSpanPx": [
+      120,
+      723
+     ],
+     "marginM": 1.5,
+     "groundPx": 1802,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.316,
-      "score": 0.34,
-      "occluded": 0.07,
-      "closeUp": 0.1,
+      "quality": 0.273,
+      "score": 0.29,
+      "occluded": 0.06,
+      "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5260,14 +6100,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 82.5,
-     "width": 603,
-     "height": 1802,
+     "width": 843,
+     "height": 1850,
+     "pandSpanPx": [
+      120,
+      723
+     ],
+     "marginM": 1.5,
+     "groundPx": 1802,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.423,
-      "score": 0.46,
+      "quality": 0.534,
+      "score": 0.58,
       "occluded": 0.08,
-      "closeUp": 0.05,
+      "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5308,14 +6155,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 81.7,
-     "width": 603,
-     "height": 1802,
+     "width": 843,
+     "height": 1850,
+     "pandSpanPx": [
+      120,
+      723
+     ],
+     "marginM": 1.5,
+     "groundPx": 1802,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.432,
-      "score": 0.45,
+      "quality": 0.48,
+      "score": 0.5,
       "occluded": 0.04,
-      "closeUp": 0.07,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5356,20 +6210,34 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 82.5,
-     "width": 603,
-     "height": 1802,
+     "width": 843,
+     "height": 1850,
+     "pandSpanPx": [
+      120,
+      723
+     ],
+     "marginM": 1.5,
+     "groundPx": 1802,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.237,
-      "score": 0.25,
+      "quality": 0.446,
+      "score": 0.47,
       "occluded": 0.05,
-      "closeUp": 0.1,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
-   "autoPick": "w-2017-03-31-TMX7316010203-000234_pano_0005_000062",
-   "autoPickWhy": "judge: highest quality 0.432 among hard-passing candidates (pick.ts choose)"
+   "autoPick": "w-2020-01-08-TMX7316010203-001543_pano_0000_001862",
+   "autoPickWhy": "judge: highest quality 0.534 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_001862",
+    "columnsInSpan": 0,
+    "extendsLeft": true,
+    "extendsRight": false,
+    "why": "left edge cuts a window column"
+   }
   },
   {
    "pandId": "0363100012176066",
@@ -5419,14 +6287,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.7,
-     "width": 596,
-     "height": 1757,
+     "width": 836,
+     "height": 1805,
+     "pandSpanPx": [
+      120,
+      716
+     ],
+     "marginM": 1.5,
+     "groundPx": 1757,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.432,
-      "score": 0.45,
+      "quality": 0.403,
+      "score": 0.42,
       "occluded": 0.04,
-      "closeUp": 0.08,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5467,12 +6342,19 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 55,
-     "width": 373,
-     "height": 1098,
+     "width": 523,
+     "height": 1128,
+     "pandSpanPx": [
+      75,
+      448
+     ],
+     "marginM": 1.5,
+     "groundPx": 1098,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.64 m NAP)",
      "judge": {
-      "quality": 0.41,
-      "score": 0.54,
+      "quality": 0.441,
+      "score": 0.58,
       "occluded": 0.24,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
@@ -5515,14 +6397,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84,
-     "width": 596,
-     "height": 1757,
+     "width": 836,
+     "height": 1805,
+     "pandSpanPx": [
+      120,
+      716
+     ],
+     "marginM": 1.5,
+     "groundPx": 1757,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
       "quality": 0.033,
       "score": 0.05,
       "occluded": 0.33,
-      "closeUp": 0.13,
+      "closeUp": 0.11,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5563,14 +6452,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.3,
-     "width": 596,
-     "height": 1757,
+     "width": 836,
+     "height": 1805,
+     "pandSpanPx": [
+      120,
+      716
+     ],
+     "marginM": 1.5,
+     "groundPx": 1757,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.413,
-      "score": 0.43,
+      "quality": 0.394,
+      "score": 0.41,
       "occluded": 0.04,
-      "closeUp": 0.06,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5611,12 +6507,19 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.5,
-     "width": 596,
-     "height": 1757,
+     "width": 836,
+     "height": 1805,
+     "pandSpanPx": [
+      120,
+      716
+     ],
+     "marginM": 1.5,
+     "groundPx": 1757,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.47,
-      "score": 0.5,
+      "quality": 0.489,
+      "score": 0.52,
       "occluded": 0.06,
       "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
@@ -5659,20 +6562,34 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.8,
-     "width": 596,
-     "height": 1757,
+     "width": 836,
+     "height": 1805,
+     "pandSpanPx": [
+      120,
+      716
+     ],
+     "marginM": 1.5,
+     "groundPx": 1757,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.418,
-      "score": 0.44,
-      "occluded": 0.05,
+      "quality": 0.285,
+      "score": 0.31,
+      "occluded": 0.08,
       "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2019-01-14-TMX7316010203-001053_pano_0000_002202",
-   "autoPickWhy": "judge: highest quality 0.47 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.489 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2019-01-14-TMX7316010203-001053_pano_0000_002202",
+    "columnsInSpan": 3,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "3 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012176067",
@@ -5722,13 +6639,20 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.5,
-     "width": 593,
-     "height": 1763,
+     "width": 833,
+     "height": 1811,
+     "pandSpanPx": [
+      120,
+      713
+     ],
+     "marginM": 1.5,
+     "groundPx": 1763,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.557,
-      "score": 0.58,
-      "occluded": 0.04,
+      "quality": 0.484,
+      "score": 0.51,
+      "occluded": 0.05,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
@@ -5770,14 +6694,21 @@
      "rayBlocked": false,
      "ppm": 55,
      "nativePpm": 55.3,
-     "width": 408,
-     "height": 1212,
+     "width": 573,
+     "height": 1245,
+     "pandSpanPx": [
+      83,
+      490
+     ],
+     "marginM": 1.5,
+     "groundPx": 1212,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.93 m NAP)",
      "judge": {
-      "quality": 0.38,
-      "score": 0.55,
-      "occluded": 0.31,
-      "closeUp": 0.07,
+      "quality": 0.328,
+      "score": 0.52,
+      "occluded": 0.37,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5818,14 +6749,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.2,
-     "width": 593,
-     "height": 1763,
+     "width": 833,
+     "height": 1811,
+     "pandSpanPx": [
+      120,
+      713
+     ],
+     "marginM": 1.5,
+     "groundPx": 1763,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.317,
-      "score": 0.33,
-      "occluded": 0.04,
-      "closeUp": 0.09,
+      "quality": 0.351,
+      "score": 0.37,
+      "occluded": 0.05,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5866,14 +6804,21 @@
      "rayBlocked": false,
      "ppm": 85,
      "nativePpm": 85.1,
-     "width": 630,
-     "height": 1873,
+     "width": 885,
+     "height": 1924,
+     "pandSpanPx": [
+      128,
+      757
+     ],
+     "marginM": 1.5,
+     "groundPx": 1873,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.442,
-      "score": 0.46,
+      "quality": 0.566,
+      "score": 0.59,
       "occluded": 0.04,
-      "closeUp": 0.08,
+      "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5914,14 +6859,21 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 82,
-     "width": 593,
-     "height": 1763,
+     "width": 833,
+     "height": 1811,
+     "pandSpanPx": [
+      120,
+      713
+     ],
+     "marginM": 1.5,
+     "groundPx": 1763,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.355,
-      "score": 0.39,
-      "occluded": 0.09,
-      "closeUp": 0.1,
+      "quality": 0.405,
+      "score": 0.44,
+      "occluded": 0.08,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -5962,20 +6914,34 @@
      "rayBlocked": false,
      "ppm": 80,
      "nativePpm": 84.6,
-     "width": 593,
-     "height": 1763,
+     "width": 833,
+     "height": 1811,
+     "pandSpanPx": [
+      120,
+      713
+     ],
+     "marginM": 1.5,
+     "groundPx": 1763,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.05,
-      "score": 0.09,
-      "occluded": 0.45,
-      "closeUp": 0.09,
+      "quality": 0.095,
+      "score": 0.13,
+      "occluded": 0.27,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
-   "autoPick": "w-2023-03-20-TMX7316010203-003004_pano_0002_000033",
-   "autoPickWhy": "judge: highest quality 0.557 among hard-passing candidates (pick.ts choose)"
+   "autoPick": "w-2020-01-08-TMX7316010203-001543_pano_0000_001865",
+   "autoPickWhy": "judge: highest quality 0.566 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_001865",
+    "columnsInSpan": 2,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "2 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012176068",
@@ -6025,14 +6991,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 54.8,
-     "width": 748,
-     "height": 1102,
+     "width": 898,
+     "height": 1132,
+     "pandSpanPx": [
+      75,
+      823
+     ],
+     "marginM": 1.5,
+     "groundPx": 1102,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.93 m NAP)",
      "judge": {
-      "quality": 0.25,
-      "score": 0.39,
-      "occluded": 0.36,
-      "closeUp": 0.07,
+      "quality": 0.33,
+      "score": 0.59,
+      "occluded": 0.44,
+      "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6071,16 +7044,23 @@
      },
      "leafOff": true,
      "rayBlocked": false,
-     "ppm": 73.9,
+     "ppm": 80,
      "nativePpm": 84.4,
-     "width": 1105,
-     "height": 1629,
+     "width": 1436,
+     "height": 1811,
+     "pandSpanPx": [
+      120,
+      1316
+     ],
+     "marginM": 1.5,
+     "groundPx": 1763,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.414,
-      "score": 0.44,
-      "occluded": 0.06,
-      "closeUp": 0.06,
+      "quality": 0.522,
+      "score": 0.55,
+      "occluded": 0.05,
+      "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6119,16 +7099,23 @@
      },
      "leafOff": true,
      "rayBlocked": false,
-     "ppm": 73.9,
+     "ppm": 80,
      "nativePpm": 84.2,
-     "width": 1105,
-     "height": 1629,
+     "width": 1436,
+     "height": 1811,
+     "pandSpanPx": [
+      120,
+      1316
+     ],
+     "marginM": 1.5,
+     "groundPx": 1763,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.32,
-      "score": 0.33,
+      "quality": 0.504,
+      "score": 0.52,
       "occluded": 0.03,
-      "closeUp": 0.1,
+      "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6167,16 +7154,23 @@
      },
      "leafOff": true,
      "rayBlocked": false,
-     "ppm": 73.9,
+     "ppm": 80,
      "nativePpm": 83.3,
-     "width": 1105,
-     "height": 1629,
+     "width": 1436,
+     "height": 1811,
+     "pandSpanPx": [
+      120,
+      1316
+     ],
+     "marginM": 1.5,
+     "groundPx": 1763,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.427,
-      "score": 0.45,
+      "quality": 0.598,
+      "score": 0.63,
       "occluded": 0.05,
-      "closeUp": 0.06,
+      "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6215,16 +7209,23 @@
      },
      "leafOff": false,
      "rayBlocked": false,
-     "ppm": 73.9,
+     "ppm": 80,
      "nativePpm": 85,
-     "width": 1105,
-     "height": 1629,
+     "width": 1436,
+     "height": 1811,
+     "pandSpanPx": [
+      120,
+      1316
+     ],
+     "marginM": 1.5,
+     "groundPx": 1763,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.598,
-      "score": 0.63,
+      "quality": 0.665,
+      "score": 0.7,
       "occluded": 0.05,
-      "closeUp": 0.05,
+      "closeUp": 0.04,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6265,15 +7266,29 @@
      },
      "leafOff": true,
      "rayBlocked": false,
-     "ppm": 73.9,
+     "ppm": 80,
      "nativePpm": 84.8,
-     "width": 1105,
-     "height": 1629,
+     "width": 1436,
+     "height": 1811,
+     "pandSpanPx": [
+      120,
+      1316
+     ],
+     "marginM": 1.5,
+     "groundPx": 1763,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply"
     }
    ],
    "autoPick": "w-2025-06-16-recording_2025-06-16_06-21-55_00234",
-   "autoPickWhy": "judge: highest quality 0.598 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.665 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2025-06-16-recording_2025-06-16_06-21-55_00234",
+    "columnsInSpan": 5,
+    "extendsLeft": false,
+    "extendsRight": true,
+    "why": "right edge cuts a window column"
+   }
   },
   {
    "pandId": "0363100012167895",
@@ -6323,14 +7338,21 @@
      "rayBlocked": false,
      "ppm": 55,
      "nativePpm": 55.3,
-     "width": 282,
-     "height": 1057,
+     "width": 447,
+     "height": 1090,
+     "pandSpanPx": [
+      83,
+      364
+     ],
+     "marginM": 1.5,
+     "groundPx": 1057,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.93 m NAP)",
      "judge": {
-      "quality": 0.175,
-      "score": 0.38,
-      "occluded": 0.54,
-      "closeUp": 0.07,
+      "quality": 0.145,
+      "score": 0.33,
+      "occluded": 0.56,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6371,14 +7393,21 @@
      "rayBlocked": false,
      "ppm": 95,
      "nativePpm": 97.6,
-     "width": 486,
-     "height": 1826,
+     "width": 771,
+     "height": 1883,
+     "pandSpanPx": [
+      143,
+      629
+     ],
+     "marginM": 1.5,
+     "groundPx": 1826,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.095,
-      "score": 0.1,
-      "occluded": 0.05,
-      "closeUp": 0.14,
+      "quality": 0.132,
+      "score": 0.14,
+      "occluded": 0.06,
+      "closeUp": 0.11,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6419,14 +7448,21 @@
      "rayBlocked": false,
      "ppm": 95,
      "nativePpm": 97.9,
-     "width": 486,
-     "height": 1826,
+     "width": 771,
+     "height": 1883,
+     "pandSpanPx": [
+      143,
+      629
+     ],
+     "marginM": 1.5,
+     "groundPx": 1826,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.248,
+      "quality": 0.251,
       "score": 0.27,
-      "occluded": 0.08,
-      "closeUp": 0.09,
+      "occluded": 0.07,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6467,14 +7503,21 @@
      "rayBlocked": false,
      "ppm": 95,
      "nativePpm": 96.2,
-     "width": 486,
-     "height": 1826,
+     "width": 771,
+     "height": 1883,
+     "pandSpanPx": [
+      143,
+      629
+     ],
+     "marginM": 1.5,
+     "groundPx": 1826,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.171,
-      "score": 0.18,
-      "occluded": 0.05,
-      "closeUp": 0.12,
+      "quality": 0.259,
+      "score": 0.27,
+      "occluded": 0.04,
+      "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6515,14 +7558,21 @@
      "rayBlocked": false,
      "ppm": 95,
      "nativePpm": 96.1,
-     "width": 486,
-     "height": 1826,
+     "width": 771,
+     "height": 1883,
+     "pandSpanPx": [
+      143,
+      629
+     ],
+     "marginM": 1.5,
+     "groundPx": 1826,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.199,
-      "score": 0.21,
-      "occluded": 0.05,
-      "closeUp": 0.14,
+      "quality": 0.226,
+      "score": 0.24,
+      "occluded": 0.06,
+      "closeUp": 0.09,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6563,20 +7613,34 @@
      "rayBlocked": false,
      "ppm": 95,
      "nativePpm": 98,
-     "width": 486,
-     "height": 1826,
+     "width": 771,
+     "height": 1883,
+     "pandSpanPx": [
+      143,
+      629
+     ],
+     "marginM": 1.5,
+     "groundPx": 1826,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.538,
-      "score": 0.56,
-      "occluded": 0.04,
+      "quality": 0.461,
+      "score": 0.49,
+      "occluded": 0.06,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     }
    ],
    "autoPick": "w-2025-06-16-recording_2025-06-16_06-21-55_00231",
-   "autoPickWhy": "judge: highest quality 0.538 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.461 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2025-06-16-recording_2025-06-16_06-21-55_00231",
+    "columnsInSpan": 1,
+    "extendsLeft": true,
+    "extendsRight": false,
+    "why": "left edge cuts a window column"
+   }
   },
   {
    "pandId": "0363100012165043",
@@ -6626,14 +7690,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 54.4,
-     "width": 259,
-     "height": 972,
+     "width": 409,
+     "height": 1002,
+     "pandSpanPx": [
+      75,
+      334
+     ],
+     "marginM": 1.5,
+     "groundPx": 972,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.99 m NAP)",
      "judge": {
-      "quality": 0.006,
-      "score": 0.09,
+      "quality": 0.005,
+      "score": 0.07,
       "occluded": 0.93,
-      "closeUp": 0.12,
+      "closeUp": 0.1,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6674,14 +7745,21 @@
      "rayBlocked": false,
      "ppm": 95,
      "nativePpm": 95.7,
-     "width": 493,
-     "height": 1847,
+     "width": 778,
+     "height": 1904,
+     "pandSpanPx": [
+      143,
+      635
+     ],
+     "marginM": 1.5,
+     "groundPx": 1847,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.282,
-      "score": 0.32,
-      "occluded": 0.12,
-      "closeUp": 0.09,
+      "quality": 0.319,
+      "score": 0.35,
+      "occluded": 0.09,
+      "closeUp": 0.1,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6722,14 +7800,21 @@
      "rayBlocked": false,
      "ppm": 95,
      "nativePpm": 95.1,
-     "width": 493,
-     "height": 1847,
+     "width": 778,
+     "height": 1904,
+     "pandSpanPx": [
+      143,
+      635
+     ],
+     "marginM": 1.5,
+     "groundPx": 1847,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.442,
-      "score": 0.47,
-      "occluded": 0.06,
-      "closeUp": 0.08,
+      "quality": 0.475,
+      "score": 0.5,
+      "occluded": 0.05,
+      "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6770,14 +7855,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 35.3,
-     "width": 259,
-     "height": 972,
+     "width": 409,
+     "height": 1002,
+     "pandSpanPx": [
+      75,
+      334
+     ],
+     "marginM": 1.5,
+     "groundPx": 972,
+     "bottomMarginM": 0.6,
      "note": "the panorama gives only 35.3 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.15,
-      "score": 0.19,
-      "occluded": 0.21,
-      "closeUp": 0.14,
+      "quality": 0.18,
+      "score": 0.24,
+      "occluded": 0.25,
+      "closeUp": 0.1,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6820,13 +7912,27 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 37.1,
-     "width": 259,
-     "height": 972,
+     "width": 409,
+     "height": 1002,
+     "pandSpanPx": [
+      75,
+      334
+     ],
+     "marginM": 1.5,
+     "groundPx": 972,
+     "bottomMarginM": 0.6,
      "note": "the panorama gives only 37.1 px/m at this distance (upsampled to 50)"
     }
    ],
    "autoPick": "w-2017-03-31-TMX7316010203-000234_pano_0005_000058",
-   "autoPickWhy": "judge: highest quality 0.442 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.475 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2017-03-31-TMX7316010203-000234_pano_0005_000058",
+    "columnsInSpan": 0,
+    "extendsLeft": false,
+    "extendsRight": false,
+    "why": "0 columns inside, none cut or continued past the span"
+   }
   },
   {
    "pandId": "0363100012165044",
@@ -6876,14 +7982,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 52.1,
-     "width": 259,
-     "height": 954,
+     "width": 409,
+     "height": 984,
+     "pandSpanPx": [
+      75,
+      334
+     ],
+     "marginM": 1.5,
+     "groundPx": 954,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.99 m NAP)",
      "judge": {
-      "quality": 0.039,
-      "score": 0.07,
-      "occluded": 0.45,
-      "closeUp": 0.16,
+      "quality": 0.049,
+      "score": 0.09,
+      "occluded": 0.46,
+      "closeUp": 0.19,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -6924,12 +8037,19 @@
      "rayBlocked": false,
      "ppm": 95,
      "nativePpm": 98.3,
-     "width": 493,
-     "height": 1812,
+     "width": 778,
+     "height": 1869,
+     "pandSpanPx": [
+      143,
+      635
+     ],
+     "marginM": 1.5,
+     "groundPx": 1812,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.595,
-      "score": 0.62,
+      "quality": 0.557,
+      "score": 0.58,
       "occluded": 0.04,
       "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
@@ -6972,14 +8092,21 @@
      "rayBlocked": false,
      "ppm": 95,
      "nativePpm": 97.9,
-     "width": 493,
-     "height": 1812,
+     "width": 778,
+     "height": 1869,
+     "pandSpanPx": [
+      143,
+      635
+     ],
+     "marginM": 1.5,
+     "groundPx": 1812,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.547,
-      "score": 0.57,
+      "quality": 0.557,
+      "score": 0.58,
       "occluded": 0.04,
-      "closeUp": 0.07,
+      "closeUp": 0.05,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -7020,14 +8147,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 36.1,
-     "width": 259,
-     "height": 954,
+     "width": 409,
+     "height": 984,
+     "pandSpanPx": [
+      75,
+      334
+     ],
+     "marginM": 1.5,
+     "groundPx": 954,
+     "bottomMarginM": 0.6,
      "note": "the panorama gives only 36.1 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.158,
-      "score": 0.17,
-      "occluded": 0.07,
-      "closeUp": 0.17,
+      "quality": 0.137,
+      "score": 0.15,
+      "occluded": 0.09,
+      "closeUp": 0.2,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -7068,14 +8202,21 @@
      "rayBlocked": false,
      "ppm": 95,
      "nativePpm": 98.4,
-     "width": 493,
-     "height": 1812,
+     "width": 778,
+     "height": 1869,
+     "pandSpanPx": [
+      143,
+      635
+     ],
+     "marginM": 1.5,
+     "groundPx": 1812,
+     "bottomMarginM": 0.6,
      "note": "camera under 8 m from the wall: the cornice is seen steeply",
      "judge": {
-      "quality": 0.323,
-      "score": 0.34,
-      "occluded": 0.05,
-      "closeUp": 0.09,
+      "quality": 0.317,
+      "score": 0.33,
+      "occluded": 0.04,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -7118,13 +8259,27 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 35.9,
-     "width": 259,
-     "height": 954,
+     "width": 409,
+     "height": 984,
+     "pandSpanPx": [
+      75,
+      334
+     ],
+     "marginM": 1.5,
+     "groundPx": 954,
+     "bottomMarginM": 0.6,
      "note": "the panorama gives only 35.9 px/m at this distance (upsampled to 50)"
     }
    ],
    "autoPick": "w-2023-01-30-TMX7316010203-002951_pano_0018_000097",
-   "autoPickWhy": "judge: highest quality 0.595 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.557 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2023-01-30-TMX7316010203-002951_pano_0018_000097",
+    "columnsInSpan": 2,
+    "extendsLeft": true,
+    "extendsRight": false,
+    "why": "left: a column 0.9 m outside continues the 2.4 m spacing"
+   }
   },
   {
    "pandId": "0363100012165045",
@@ -7176,14 +8331,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 49.1,
-     "width": 717,
-     "height": 870,
+     "width": 867,
+     "height": 900,
+     "pandSpanPx": [
+      75,
+      792
+     ],
+     "marginM": 1.5,
+     "groundPx": 870,
+     "bottomMarginM": 0.6,
      "note": "from a boat on the canal; ground set to the street (0.99 m NAP); the panorama gives only 49.1 px/m at this distance (upsampled to 50)",
      "judge": {
       "quality": 0.016,
       "score": 0.02,
       "occluded": 0.22,
-      "closeUp": 0.25,
+      "closeUp": 0.28,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -7224,14 +8386,21 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 48.7,
-     "width": 717,
-     "height": 870,
+     "width": 867,
+     "height": 900,
+     "pandSpanPx": [
+      75,
+      792
+     ],
+     "marginM": 1.5,
+     "groundPx": 870,
+     "bottomMarginM": 0.6,
      "note": "the panorama gives only 48.7 px/m at this distance (upsampled to 50)",
      "judge": {
-      "quality": 0.31,
-      "score": 0.33,
-      "occluded": 0.06,
-      "closeUp": 0.06,
+      "quality": 0.147,
+      "score": 0.16,
+      "occluded": 0.08,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -7272,13 +8441,20 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 52.1,
-     "width": 717,
-     "height": 870,
+     "width": 867,
+     "height": 900,
+     "pandSpanPx": [
+      75,
+      792
+     ],
+     "marginM": 1.5,
+     "groundPx": 870,
+     "bottomMarginM": 0.6,
      "judge": {
-      "quality": 0.394,
-      "score": 0.41,
-      "occluded": 0.04,
-      "closeUp": 0.05,
+      "quality": 0.158,
+      "score": 0.17,
+      "occluded": 0.07,
+      "closeUp": 0.07,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -7319,12 +8495,19 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 53.9,
-     "width": 717,
-     "height": 870,
+     "width": 867,
+     "height": 900,
+     "pandSpanPx": [
+      75,
+      792
+     ],
+     "marginM": 1.5,
+     "groundPx": 870,
+     "bottomMarginM": 0.6,
      "judge": {
-      "quality": 0.355,
-      "score": 0.37,
-      "occluded": 0.04,
+      "quality": 0.158,
+      "score": 0.17,
+      "occluded": 0.07,
       "closeUp": 0.06,
       "model": "jev-1.14.0/v1"
      }
@@ -7366,13 +8549,20 @@
      "rayBlocked": false,
      "ppm": 60,
      "nativePpm": 61.6,
-     "width": 860,
-     "height": 1044,
+     "width": 1040,
+     "height": 1080,
+     "pandSpanPx": [
+      90,
+      950
+     ],
+     "marginM": 1.5,
+     "groundPx": 1044,
+     "bottomMarginM": 0.6,
      "judge": {
-      "quality": 0.113,
-      "score": 0.12,
-      "occluded": 0.06,
-      "closeUp": 0.12,
+      "quality": 0.121,
+      "score": 0.13,
+      "occluded": 0.07,
+      "closeUp": 0.08,
       "model": "jev-1.14.0/v1"
      }
     },
@@ -7415,12 +8605,26 @@
      "rayBlocked": false,
      "ppm": 50,
      "nativePpm": 52.2,
-     "width": 717,
-     "height": 870
+     "width": 867,
+     "height": 900,
+     "pandSpanPx": [
+      75,
+      792
+     ],
+     "marginM": 1.5,
+     "groundPx": 870,
+     "bottomMarginM": 0.6
     }
    ],
    "autoPick": "w-2020-01-08-TMX7316010203-001543_pano_0000_001877",
-   "autoPickWhy": "judge: highest quality 0.394 among hard-passing candidates (pick.ts choose)"
+   "autoPickWhy": "judge: highest quality 0.158 among hard-passing candidates (pick.ts choose)",
+   "facadeWidth": {
+    "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_001877",
+    "columnsInSpan": 4,
+    "extendsLeft": true,
+    "extendsRight": true,
+    "why": "left: a column 0.8 m outside continues the 3.6 m spacing; right: a column 1.1 m outside continues the 3.6 m spacing"
+   }
   }
  ],
  "judgeModel": "jev-1.14.0/v1"
