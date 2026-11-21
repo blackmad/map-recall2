@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-batteryparkstraat",
+  "panoId": "TMX7316010203-002336_pano_0000_000125",
+  "timestamp": "2021-12-23T12:58:16.163650Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/12/23/TMX7316010203-002336/pano_0000_000125/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122158.59670285405,
+   489006.38928789133
+  ],
+  "headingDeg": 186.43524303079343,
+  "fovDeg": 110,
+  "pitchDeg": 32.38815223249685,
+  "distanceM": 14.526567383122282,
+  "image": "artifacts/building-recipes/spadinalaan-483-699-252988/photo-wall-batteryparkstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-spadinalaan",
+  "panoId": "TMX7316010203-002896_pano_0003_000318",
+  "timestamp": "2022-12-27T12:21:41.264800Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/12/27/TMX7316010203-002896/pano_0003_000318/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122170.71006051311,
+   488949.42387348536
+  ],
+  "headingDeg": 336.58032545871777,
+  "fovDeg": 110,
+  "pitchDeg": 29.123128875200134,
+  "distanceM": 11.650135701952406,
+  "image": "artifacts/building-recipes/spadinalaan-483-699-252988/photo-wall-spadinalaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-docklandsweg",
+  "panoId": "TMX7316010203-002336_pano_0000_000695",
+  "timestamp": "2021-12-23T13:06:45.233910Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/12/23/TMX7316010203-002336/pano_0000_000695/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122206.5364490469,
+   488988.947112808
+  ],
+  "headingDeg": 255.04772147350445,
+  "fovDeg": 103.76566339107404,
+  "pitchDeg": 37.67864085736957,
+  "distanceM": 14.223478438727623,
+  "image": "artifacts/building-recipes/spadinalaan-483-699-252988/photo-wall-docklandsweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

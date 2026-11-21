@@ -1,0 +1,813 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "soendastraat-1-127-249646",
+ "pandId": "0363100012249646",
+ "address": "Soendastraat 1-127 / Molukkenstraat / Billitonstraat / Madurastraat, Indische Buurt Oost: 2017 closed housing block in red-brown brick with white frames, a four-storey middle on each long side with two storeys of deep barred loggias, brick stair towers with gateways, a zinc-and-glass penthouse storey on the wings and staggered cantilever balconies with vertical slat balustrades on the short ends (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2025-09-26-w01-269d25",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_07-29-39_00198/",
+   "image": "source-data://pand-reference-walls/0363100012249646/w01-269d25.jpg",
+   "sha256": "7baf66198eec055c0c1a05c9e5db44be5af356bf6353e79189b4d88882b1fe5d",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w02-89d25",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_07-29-39_00165/",
+   "image": "source-data://pand-reference-walls/0363100012249646/w02-89d25.jpg",
+   "sha256": "70fd1a8f7ad0eb609a0760f191c45a74115a1c5c3d2b7ec267a228d6cef62b22",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w03-179d25",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_07-29-39_00147/",
+   "image": "source-data://pand-reference-walls/0363100012249646/w03-179d25.jpg",
+   "sha256": "be6436f0da57ff01c72e86233c38ff590511355344ae6392d897ce1b6f1ab1b1",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w04-359d25",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_07-29-39_00182/",
+   "image": "source-data://pand-reference-walls/0363100012249646/w04-359d25.jpg",
+   "sha256": "7bd9e6e3efcb902b4984955d490ecb7b0f162bcc165df3e448219df8635e28d4",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "system": "brick-bay-grid",
+   "windows": "two-light",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    27,
+    135
+   ],
+   "street": "Soendastraat",
+   "storeys": 5,
+   "baysPerStorey": 12,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "window",
+     "storage"
+    ],
+    "doors": "#8a8c86"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#a7aeb0"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "mansard"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "windows": "plain",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    36,
+    37
+   ],
+   "street": "Soendastraat",
+   "storeys": 5,
+   "baysPerStorey": 1,
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.12,
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "ground": "blank",
+   "garageBays": [
+    0
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "windowGroup",
+    "palette",
+    "ground",
+    "garageBays"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "windows": "two-light",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    8
+   ],
+   "street": "Soendastraat",
+   "storeys": 4,
+   "baysPerStorey": 20,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "storage",
+     "window"
+    ],
+    "doors": "#8a8c86"
+   },
+   "loggias": {
+    "storeys": [
+     2,
+     3
+    ],
+    "w": 0.65,
+    "h": 0.85,
+    "sill": 0.05,
+    "deep": 0.35,
+    "rail": "bars",
+    "colour": "#9a9c98",
+    "lining": "#2e2624",
+    "back": "door-window"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "loggias"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "windows": "plain",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    11,
+    12
+   ],
+   "street": "Soendastraat",
+   "storeys": 5,
+   "baysPerStorey": 1,
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.12,
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "ground": "blank",
+   "garageBays": [
+    0
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "windowGroup",
+    "palette",
+    "ground",
+    "garageBays"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "windows": "two-light",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    32,
+    34
+   ],
+   "street": "Soendastraat",
+   "storeys": 5,
+   "baysPerStorey": 16,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "window",
+     "storage"
+    ],
+    "doors": "#8a8c86"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#a7aeb0"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "mansard"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "windows": "two-light",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    80
+   ],
+   "street": "Molukkenstraat",
+   "storeys": 5,
+   "baysPerStorey": 16,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "window",
+     "storage"
+    ],
+    "doors": "#8a8c86"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#a7aeb0"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "mansard"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "windows": "plain",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    5,
+    90
+   ],
+   "street": "Molukkenstraat",
+   "storeys": 5,
+   "baysPerStorey": 1,
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.12,
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "ground": "blank",
+   "garageBays": [
+    0
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "windowGroup",
+    "palette",
+    "ground",
+    "garageBays"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "windows": "two-light",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    115
+   ],
+   "street": "Molukkenstraat",
+   "storeys": 4,
+   "baysPerStorey": 20,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "storage",
+     "window"
+    ],
+    "doors": "#8a8c86"
+   },
+   "loggias": {
+    "storeys": [
+     2,
+     3
+    ],
+    "w": 0.65,
+    "h": 0.85,
+    "sill": 0.05,
+    "deep": 0.35,
+    "rail": "bars",
+    "colour": "#9a9c98",
+    "lining": "#2e2624",
+    "back": "door-window"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "loggias"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "windows": "plain",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    26,
+    75
+   ],
+   "street": "Molukkenstraat",
+   "storeys": 5,
+   "baysPerStorey": 1,
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "windowGroup": {
+    "count": 2,
+    "gap": 0.12,
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "ground": "blank",
+   "garageBays": [
+    0
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "windowGroup",
+    "palette",
+    "ground",
+    "garageBays"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "windows": "two-light",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    39
+   ],
+   "street": "Molukkenstraat",
+   "storeys": 5,
+   "baysPerStorey": 12,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "window",
+     "storage"
+    ],
+    "doors": "#8a8c86"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#a7aeb0"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "mansard"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "windows": "two-light",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    121,
+    123
+   ],
+   "street": "Billitonstraat",
+   "storeys": 5,
+   "baysPerStorey": 17,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.57,
+    "sill": 0.25
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "window",
+     "storage",
+     "window",
+     "window",
+     "window",
+     "window",
+     "storage",
+     "window",
+     "window",
+     "storage",
+     "storage"
+    ],
+    "doors": "#8a8c86"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#a7aeb0"
+   },
+   "balconies": {
+    "storeys": [
+     1
+    ],
+    "bays": [
+     0,
+     1,
+     2,
+     3,
+     13,
+     14,
+     15,
+     16
+    ],
+    "rail": "solid",
+    "brick": true,
+    "deep": 0.45
+   },
+   "balconyBands": {
+    "storeys": [],
+    "kind": "solid",
+    "deep": 0.7,
+    "rail": 0.45,
+    "colour": "#77797a",
+    "railColour": "#a3a49f",
+    "spans": [
+     {
+      "storey": 2,
+      "bays": [
+       [
+        0,
+        3
+       ],
+       [
+        8,
+        10
+       ],
+       [
+        13,
+        16
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        0,
+        3
+       ],
+       [
+        8,
+        10
+       ],
+       [
+        13,
+        16
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        0,
+        3
+       ],
+       [
+        8,
+        10
+       ],
+       [
+        13,
+        16
+       ]
+      ]
+     }
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "mansard",
+    "balconies",
+    "balconyBands"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "windows": "two-light",
+   "sills": false,
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#f0efe9",
+    "stone": "#b9b4ac"
+   },
+   "wallSurfaces": [
+    10,
+    35
+   ],
+   "street": "Madurastraat",
+   "storeys": 5,
+   "baysPerStorey": 17,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.57,
+    "sill": 0.25
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "window",
+     "window",
+     "window",
+     "window",
+     "storage",
+     "storage",
+     "window",
+     "storage",
+     "window",
+     "window",
+     "storage"
+    ],
+    "doors": "#8a8c86"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#a7aeb0"
+   },
+   "balconies": {
+    "storeys": [
+     1
+    ],
+    "bays": [
+     0,
+     1,
+     2,
+     3,
+     13,
+     14,
+     15,
+     16
+    ],
+    "rail": "solid",
+    "brick": true,
+    "deep": 0.45
+   },
+   "balconyBands": {
+    "storeys": [],
+    "kind": "solid",
+    "deep": 0.7,
+    "rail": 0.45,
+    "colour": "#77797a",
+    "railColour": "#a3a49f",
+    "spans": [
+     {
+      "storey": 2,
+      "bays": [
+       [
+        0,
+        3
+       ],
+       [
+        8,
+        9
+       ],
+       [
+        13,
+        16
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        0,
+        3
+       ],
+       [
+        8,
+        9
+       ],
+       [
+        13,
+        16
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        0,
+        3
+       ],
+       [
+        8,
+        9
+       ],
+       [
+        13,
+        16
+       ]
+      ]
+     }
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "mansard",
+    "balconies",
+    "balconyBands"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#5e4a44",
+  "frame": "#f0efe9",
+  "door": "#2a2a2a",
+  "stone": "#b9b4ac"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored from the 2025-09-26 archived crops (the 2019 primary capture shows scaffold sheeting). West front (Soendastraat, crop w01-269d25, 109.8 m): panel 23 north wing -> group 0, panel 29 stair tower -> 1, panel 7 four-storey middle -> 2, panel 10 stair tower -> 3, panel 27 south wing -> 4. East front (Molukkenstraat, crop w02-89d25): panel 69 south wing -> 5, panel 4 tower -> 6, panel 93 middle -> 7, panel 22 tower -> 8, panel 31 north wing -> 9. North end (Billitonstraat, w04-359d25): panel 98 -> 10. South end (Madurastraat, w03-179d25): panel 9 -> 11.",
+  "The middle's 3DBAG eaves are 12.1 m (four storeys); its set-back top (panels 16 and 96) and the courtyard walls have no crop and take otherWalls window-grid. The wing and end top storey is a set-back zinc-and-glass penthouse, drawn as a mansard face in the wall plane; the towers rise about 1 m over the wings in the photo but 3DBAG keeps them at the wing eaves.",
+  "The short ends' cantilevered slat balconies are balconyBands spans at the kit's deepest (0.7 of a storey, about 2.3 m); the photo's slabs are about 2.5-3 m deep. The storey-1 corner terraces with brick parapets are brick balconies. The tower gateways are grey roller gates under a thin canopy, drawn as sectional garage doors; the Madurastraat garage gate (bay 8, about 2.8 m) is narrower than the kit garage door needs on a 2 m bay and is drawn as a storage leaf, and the kit garage door is silently skipped on a residential ground, so it is not used there."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000,
+ "footprintParts": true
+}

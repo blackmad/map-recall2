@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-billitonstraat",
+  "panoId": "TMX7316010203-001524_pano_0000_000113",
+  "timestamp": "2019-12-18T09:36:13.479390Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/12/18/TMX7316010203-001524/pano_0000_000113/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   124477.12764653703,
+   486511.2380675421
+  ],
+  "headingDeg": 190.6725356189916,
+  "fovDeg": 110,
+  "pitchDeg": 42.52701925593975,
+  "distanceM": 6.998123305746261,
+  "image": "artifacts/building-recipes/soendastraat-1-127-249646/photo-wall-billitonstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-molukkenstraat",
+  "panoId": "TMX7316010203-002909_pano_0004_000011",
+  "timestamp": "2023-01-02T10:52:10.042700Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/01/02/TMX7316010203-002909/pano_0004_000011/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   124527.66699162294,
+   486442.8258113482
+  ],
+  "headingDeg": 261.1450625002883,
+  "fovDeg": 104.09169460261879,
+  "pitchDeg": 10.64921908786966,
+  "distanceM": 34.17266244619806,
+  "image": "artifacts/building-recipes/soendastraat-1-127-249646/photo-wall-molukkenstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-madurastraat",
+  "panoId": "TMX7316010203-001524_pano_0000_000779",
+  "timestamp": "2019-12-18T09:46:50.073710Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/12/18/TMX7316010203-001524/pano_0000_000779/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   124477.43310753634,
+   486387.1384680728
+  ],
+  "headingDeg": 356.5562200988577,
+  "fovDeg": 110,
+  "pitchDeg": 36.84870329773247,
+  "distanceM": 7.948885863801517,
+  "image": "artifacts/building-recipes/soendastraat-1-127-249646/photo-wall-madurastraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]
