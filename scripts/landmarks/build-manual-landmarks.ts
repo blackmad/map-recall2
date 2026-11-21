@@ -328,6 +328,7 @@ import {buildKramatplantsoen} from './kramatplantsoen-builder';
 import {buildMagnaPlaza} from './magna-plaza-builder';
 import {buildKramatplantsoen203} from './kramatplantsoen-203-builder';
 import {buildValkenburgerstraat69} from './valkenburgerstraat-69-builder';
+import {buildRinusMichelslaan1} from './rinus-michelslaan-1-builder';
 import {buildPieterDeHoochstraat13} from './pieter-de-hoochstraat-13-builder';
 import {buildTweedeAtjehstraat2} from './tweede-atjehstraat-2-builder';
 import {buildWiborgeiland76} from './wiborgeiland-76-builder';
@@ -1229,6 +1230,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='magna-plaza')buildMagnaPlaza(w,d,helpers);
     else if(id==='kramatplantsoen-203')buildKramatplantsoen203(w,d,helpers);
     else if(id==='valkenburgerstraat-69')buildValkenburgerstraat69(w,d,helpers);
+    else if(id==='rinus-michelslaan-1')buildRinusMichelslaan1(w,d,helpers);
     else if(id==='pieter-de-hoochstraat-13')buildPieterDeHoochstraat13(w,d,helpers);
     else if(id==='tweede-atjehstraat-2')buildTweedeAtjehstraat2(w,d,helpers);
     else if(id==='wiborgeiland-76')buildWiborgeiland76(w,d,helpers);

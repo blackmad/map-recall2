@@ -1,0 +1,36 @@
+{
+ "id": "rinus-michelslaan-1",
+ "name": "Rinus Michelslaan 1-343 housing block",
+ "heightMetres": 50,
+ "bagYear": 2020,
+ "galleryView": {
+  "theta": 2.6,
+  "phi": 1.05
+ },
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012252166 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/rinus-michelslaan-1-footprints.json, bag-shell-prepare.ts); fronts read from the rectified Gemeente Amsterdam panoramas b_20250114_1307_Track14_Sphere_00121 and TMX7316010203-002387_pano_0002_000078 (2022, south), TMX7316010203-002064_pano_0000_003047 (2021, north), recording_2025-07-02_10-16-10_01761 (2025, east), TMX7316010203-002064_pano_0000_003202 (2021, west), b_20250114_1307_Track14_Sphere_00115 (2025, south-east), TMX7316010203-002387_pano_0002_000030 (2022, tower), CC BY 4.0. Per wall in scripts/landmarks/rinus-michelslaan-1-inventory.json.",
+ "materialOverrides": {
+  "greyBrick": "#a6a7a4",
+  "ochre": "#5f564c",
+  "sandstone": "#ab9f88",
+  "red": "#633a30",
+  "brick": "#5d4a44",
+  "dark": "#2e3032",
+  "bronze": "#5f5446",
+  "concrete": "#b2a790",
+  "blue": "#8f9c9b",
+  "copper": "#8a6a4c",
+  "stone": "#cfcbc2",
+  "frame": "#e4e2dc",
+  "glass": "#46525a",
+  "slate": "#4a4a48",
+  "pink": "#6d6152"
+ },
+ "attribution": {
+  "title": "Rinus Michelslaan 1-343, Amsterdam (housing, 2020)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002387_pano_0002_000078/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012252166 (CC0): the pale brick grid, beige concrete frame with staggered balcony boxes, red-brown brick, townhouse and loggia fronts with their windows, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

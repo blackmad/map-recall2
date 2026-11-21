@@ -1,0 +1,303 @@
+{
+ "schemaVersion": 1,
+ "id": "rinus-michelslaan-1",
+ "pand": "0363100012252166",
+ "brief": "scripts/landmarks/rinus-michelslaan-1-brief.md",
+ "signature": [
+  "s-three-fronts",
+  "s-balcony-boxes",
+  "s-concrete-frame",
+  "n-townhouses",
+  "n-pale-grid",
+  "e-loggia-frame"
+ ],
+ "walls": [
+  {
+   "tag": "w01-6",
+   "bearing": 6,
+   "lengthM": 101.8,
+   "centre": [
+    4.8377015,
+    52.3735845
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002064_pano_0000_003047",
+   "capturedAt": "2021-03-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-townhouses",
+     "kind": "other",
+     "where": "north low block east half: mixed brown-grey brick townhouses, timber doors with a tall window above, paired windows, pale jamb panels at the top storey",
+     "approxSizeM": [
+      48,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002064_pano_0000_003047",
+     "how": "5.4 m house rhythm: timber door + tall window, paired upper windows, pale jamb slabs on the top storey"
+    },
+    {
+     "id": "n-pale-grid",
+     "kind": "other",
+     "where": "north low block west half: pale grey brick pilaster grid with double-height ground openings and two rows of narrow windows",
+     "approxSizeM": [
+      49,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002064_pano_0000_003047",
+     "how": "2.4 m pilaster rhythm: 5.8 m ground openings with a transom, two rows of deep narrow windows"
+    }
+   ]
+  },
+  {
+   "tag": "w02-194",
+   "bearing": 194,
+   "lengthM": 54.3,
+   "centre": [
+    4.837846,
+    52.3730935
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002387_pano_0002_000078",
+   "capturedAt": "2022-01-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-three-fronts",
+     "kind": "other",
+     "where": "south slab: three fronts in a row on one curved wall: pale grey brick grid (west), beige concrete frame with balconies (middle), red-brown brick (east)",
+     "approxSizeM": [
+      115,
+      28
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1307_Track14_Sphere_00121",
+     "how": "per-front wall colour and window system chosen by position along the curved south wall"
+    },
+    {
+     "id": "s-balcony-boxes",
+     "kind": "balcony-ironwork",
+     "where": "beige frame front: cantilevered balcony boxes with solid soffits and glass rails, staggered bay by bay up eight storeys",
+     "approxSizeM": [
+      3.2,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1307_Track14_Sphere_00121",
+     "how": "3.2 x 1.7 m slab boxes with rails on the left or right of each 7.6 m bay, alternating per storey"
+    },
+    {
+     "id": "s-concrete-frame",
+     "kind": "other",
+     "where": "beige concrete frame of 7.6 m bays and storey beams with the glazing set about 1.4 m back",
+     "approxSizeM": [
+      54,
+      28
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1307_Track14_Sphere_00121",
+     "how": "7 m wide, 1.4 m deep openings per bay and storey in a beige face, three-light glazing at the back"
+    },
+    {
+     "id": "s-ground-units",
+     "kind": "other",
+     "where": "glazed ground-floor units with timber-brown frames under the frame front",
+     "approxSizeM": [
+      54,
+      4.2
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1307_Track14_Sphere_00121",
+     "how": "one four-light opening per bay, bronze frames; tenant signs left out"
+    }
+   ]
+  },
+  {
+   "tag": "w03-105",
+   "bearing": 105,
+   "lengthM": 52.9,
+   "centre": [
+    4.838668,
+    52.373264
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-02_10-16-10_01761",
+   "capturedAt": "2025-07-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-loggia-frame",
+     "kind": "other",
+     "where": "east wing: dark mixed brick frame, each bay a loggia with a rail and a narrow window, over a recessed two-storey glazed ground with glass balconies",
+     "approxSizeM": [
+      50,
+      19
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-02_10-16-10_01761",
+     "how": "5 m bays: a 1.2 m deep loggia opening and a narrow window per storey; 6.5 m deep-set ground glazing"
+    }
+   ]
+  },
+  {
+   "tag": "w04-276",
+   "bearing": 276,
+   "lengthM": 39.8,
+   "centre": [
+    4.836927,
+    52.373429
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002064_pano_0000_003202",
+   "capturedAt": "2021-03-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-gates",
+     "kind": "other",
+     "where": "low pale brick courtyard wall with three dark gates under the west end",
+     "approxSizeM": [
+      20,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002064_pano_0000_003202",
+     "how": "dark door openings in the low west wall"
+    }
+   ]
+  },
+  {
+   "tag": "w05-196",
+   "bearing": 196,
+   "lengthM": 18.6,
+   "centre": [
+    4.838421,
+    52.373006
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250114_1307_Track14_Sphere_00115",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-red-curve",
+     "kind": "window-shape",
+     "where": "red-brown brick curved corner with wide windows and a canopy over the ground-floor cafe",
+     "approxSizeM": [
+      18,
+      28
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1307_Track14_Sphere_00115",
+     "how": "red-brown faces with wide two-light windows and a dark canopy band at 4.2 m on the curved strips"
+    }
+   ]
+  },
+  {
+   "tag": "w06-197",
+   "bearing": 197,
+   "lengthM": 13.7,
+   "centre": [
+    4.8371545,
+    52.3731935
+   ],
+   "evidence": "photo",
+   "panoId": "b_20240918_0854_Track06_Sphere_00710",
+   "capturedAt": "2024-09-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-pale-grid",
+     "kind": "window-shape",
+     "where": "pale grey brick slab with deep square windows and black French rails over a dark glazed ground",
+     "approxSizeM": [
+      40,
+      28
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20240918_0854_Track06_Sphere_00710",
+     "how": "3 m grid of 0.55 m deep two-light windows with a rail bar; 5 m dark ground openings"
+    }
+   ]
+  },
+  {
+   "tag": "w07-6",
+   "bearing": 6,
+   "lengthM": 13.3,
+   "centre": [
+    4.838633,
+    52.373527
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001310_pano_0000_001766",
+   "capturedAt": "2019-07-12",
+   "checked": true,
+   "items": [],
+   "note": "2019 capture is the tower under scaffolding; read from w08-3 and w03-105"
+  },
+  {
+   "tag": "w08-3",
+   "bearing": 3,
+   "lengthM": 6.1,
+   "centre": [
+    4.8384865,
+    52.373523
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002387_pano_0002_000030",
+   "capturedAt": "2022-01-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-tower",
+     "kind": "tower",
+     "where": "49.5 m red-brown brick corner tower with punched windows and rails, rounded balcony ends",
+     "approxSizeM": [
+      25,
+      49.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002387_pano_0002_000030",
+     "how": "punched two-light windows with a rail bar on every storey of the tower faces; rounded balcony ends left square on the shell"
+    }
+   ]
+  },
+  {
+   "tag": "w09-194",
+   "bearing": 194,
+   "lengthM": 5.6,
+   "centre": [
+    4.837019,
+    52.37322
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001028_pano_0003_000070",
+   "capturedAt": "2018-12-20",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-207",
+   "bearing": 207,
+   "lengthM": 4.8,
+   "centre": [
+    4.8369465,
+    52.3732335
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002387_pano_0002_000065",
+   "capturedAt": "2022-01-04",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
