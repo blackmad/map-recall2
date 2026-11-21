@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { CORNER_REACH_M, setShopAnchors, shopRunEnabled, shopRunsFor, type ShopRunGeom } from './shopRun.ts';
+import { CORNER_REACH_M, TIE_REACH_M, setShopAnchors, shopRunEnabled, shopRunsFor, type ShopRunGeom } from './shopRun.ts';
 import { buildFeatureChunk, meshBuildingFor } from './threeBuildingFeatures.ts';
 import { decorateShopfront, setShopfronts } from './shopfronts.ts';
 
@@ -28,6 +28,15 @@ test('a corner shop keeps both street faces', () => {
   assert.deepEqual(shopRunsFor(block, [[2, 1]]), [true, false, false, true]);
   // ... but not a face beyond the corner reach.
   assert.deepEqual(shopRunsFor(block, [[CORNER_REACH_M + 2, 1]]), [true, false, false, false]);
+});
+
+test('a point about as far from two street runs keeps both (Brasserie Keyzer, 0363100012164883)', () => {
+  const tall = [run(0, 0, 40, 0), run(40, 0, 40, 30), run(40, 30, 0, 30), run(0, 30, 0, 0)];
+  // 6.2 m from the south run, 7.0 m from the west run: past the corner reach, inside the tie margin.
+  assert.deepEqual(shopRunsFor(tall, [[7, 6.2]]), [true, false, false, true]);
+  // ... but not when the second street is clearly farther, nor past TIE_REACH_M.
+  assert.deepEqual(shopRunsFor(tall, [[9.5, 6.5]]), [true, false, false, false]);
+  assert.deepEqual(shopRunsFor(tall, [[TIE_REACH_M + 0.5, TIE_REACH_M + 0.2]]), [true, false, false, false]);
 });
 
 test('two shops on two streets keep both runs', () => {

@@ -4,7 +4,7 @@
  * Each z14 tile is built alone with its streets (walls mode, photo look), so a wall at a tile border whose neighbour sits
  * in the next tile counts as exposed: the counts are a slight overestimate there.
  *
- *   SHOP_RUN=1 node --import tsx scripts/retail-ground/shop-run-census.ts [--tiles=N] [--out=artifacts/shop-run/census.json]
+ *   SHOP_RUN=1 node --import tsx scripts/retail-ground/shop-run-census.ts [--tiles=N] [--only=x/y,x/y] [--out=artifacts/shop-run/census.json]
  */
 import '../world/useBrowserMath.ts';
 import fs from 'node:fs';
@@ -18,15 +18,15 @@ const { shopRunProbe } = await import('../../src/canalRecall/threeBuildingMesh.t
 const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.slice(k.length + 3);
 const out = path.resolve(arg('out') ?? path.join(ROOT, 'artifacts/shop-run/census.json'));
 const root = path.join(EXTRACT, 'building-tiles/14');
-const tiles = fs.readdirSync(root).flatMap(x => fs.readdirSync(path.join(root, x)).map(f => `${x}/${f.replace(/\.geojson\.gz$/, '')}`)).sort().slice(0, Number(arg('tiles') ?? Infinity));
+const tiles = fs.readdirSync(root).flatMap(x => fs.readdirSync(path.join(root, x)).map(f => `${x}/${f.replace(/\.geojson\.gz$/, '')}`)).sort().filter(t => !arg('only') || arg('only')!.split(',').includes(t)).slice(0, Number(arg('tiles') ?? Infinity));
 const chain = gameChain();
-type Row = { id: string; tile: string; anchors: number; runs: number; streetRuns: number; shopRuns: number; quietRuns: number; quietM: number; quietStreetRuns: number; shopM: number; /** The longest quieted street run and the longest kept street run: middle [lng, lat], bearing, length. */ quietWall?: { at: [number, number]; bearing: number; lenM: number }; shopWall?: { at: [number, number]; bearing: number; lenM: number } };
+type Row = { id: string; tile: string; anchors: number; runs: number; streetRuns: number; shopRuns: number; quietRuns: number; quietM: number; quietStreetRuns: number; shopM: number; /** The longest quieted street run and the longest kept street run: middle [lng, lat], bearing, length. */ quietWall?: { at: [number, number]; bearing: number; lenM: number }; shopWall?: { at: [number, number]; bearing: number; lenM: number }; /** The longest quieted back (non-street) run. */ quietBack?: { at: [number, number]; bearing: number; lenM: number } };
 const rows = new Map<string, Row>();
 let tile = '';
-const wall = (rs: ReadonlyArray<{ lenM: number; street: boolean; mid: [number, number]; bearing: number }>) => { const r = rs.filter(r => r.street).sort((a, b) => b.lenM - a.lenM)[0]; return r ? { at: [Math.round(r.mid[0] * 1e6) / 1e6, Math.round(r.mid[1] * 1e6) / 1e6] as [number, number], bearing: Math.round(r.bearing), lenM: Math.round(r.lenM * 10) / 10 } : undefined; };
+const wall = (rs: ReadonlyArray<{ lenM: number; street: boolean; mid: [number, number]; bearing: number }>, street = true) => { const r = rs.filter(r => r.street === street).sort((a, b) => b.lenM - a.lenM)[0]; return r ? { at: [Math.round(r.mid[0] * 1e6) / 1e6, Math.round(r.mid[1] * 1e6) / 1e6] as [number, number], bearing: Math.round(r.bearing), lenM: Math.round(r.lenM * 10) / 10 } : undefined; };
 shopRunProbe.sink = (id, keep, runs, anchors) => {
   const quiet = runs.filter((_, i) => !keep[i]), shop = runs.filter((_, i) => keep[i]);
-  rows.set(id, { id, tile, anchors, runs: runs.length, streetRuns: runs.filter(r => r.street).length, shopRuns: shop.length, quietRuns: quiet.length, quietM: Math.round(quiet.reduce((s, r) => s + r.lenM, 0) * 10) / 10, quietStreetRuns: quiet.filter(r => r.street).length, shopM: Math.round(shop.reduce((s, r) => s + r.lenM, 0) * 10) / 10, quietWall: wall(quiet), shopWall: wall(shop) });
+  rows.set(id, { id, tile, anchors, runs: runs.length, streetRuns: runs.filter(r => r.street).length, shopRuns: shop.length, quietRuns: quiet.length, quietM: Math.round(quiet.reduce((s, r) => s + r.lenM, 0) * 10) / 10, quietStreetRuns: quiet.filter(r => r.street).length, shopM: Math.round(shop.reduce((s, r) => s + r.lenM, 0) * 10) / 10, quietWall: wall(quiet), shopWall: wall(shop), quietBack: wall(quiet, false) });
 };
 const t0 = performance.now();
 for (const [i, t] of tiles.entries()) {

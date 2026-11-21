@@ -5,11 +5,16 @@
 // residential sides included. With the flag on, only the runs that hold a shop keep the shop ground; the others draw the
 // quiet residential ground the same building would draw without a shop.
 //
-// Which runs hold a shop: every anchor point the pand carries (its OSM ground-floor businesses, `shop-anchors.json`,
+// Which runs hold a shop: every anchor point the pand carries (its OSM and BAG ground-floor businesses, `shop-anchors.json`,
 // plus the template, chain and signature points already stamped) picks
 //   1. the street run nearest it, unless some other run is nearer by more than NEAREST_MARGIN_M (a node by a forecourt
 //      or courtyard entrance), then that run; a point more than FRONT_SNAP_M from every wall keeps the nearest street run;
-//   2. every other street run within CORNER_REACH_M (a corner shop keeps both street faces).
+//   2. every other street run within CORNER_REACH_M (a corner shop keeps both street faces), or within NEAREST_MARGIN_M
+//      of the nearest street run's distance while no farther than TIE_REACH_M: a point about as far from two streets
+//      is a corner unit fronting both (Brasserie Keyzer, Van Baerlestraat 96, pand 0363100012164883: its BAG horeca
+//      point is 6.2 m from one street run and 7.0 m from the Van Baerlestraat run).
+// Anchors are OSM ground-floor businesses and (round 2) BAG verblijfsobjecten with a winkel or horeca use, so a street
+// run faced by a registered shop unit keeps its shopfront when OSM has no node there.
 // A shop pand with no anchor (a busy-stretch guess, scripts/build-shopfronts.ts) keeps the shop on its street runs and
 // loses it on back and courtyard runs. A pand with one run, or no street run, is unchanged.
 //
@@ -18,6 +23,8 @@ import { FRONT_SNAP_M, NEAREST_MARGIN_M, segDist } from './retailHosting.js';
 
 /** A street run within this distance of an anchor keeps the shop too: the corner shop's other face (m). */
 export const CORNER_REACH_M = 6;
+/** A street run about as near a point as the nearest street run keeps the shop up to this distance (m). */
+export const TIE_REACH_M = 10;
 
 export const SHOP_RUN_DEFAULT = false;
 export function shopRunEnabled(search?: string | null, env?: string | null): boolean {
@@ -65,8 +72,11 @@ export function shopRunsFor(runs: readonly ShopRunGeom[], points: ReadonlyArray<
     d.forEach((v, i) => { if (all < 0 || v < d[all]) all = i; if (runs[i].street && (street < 0 || v < d[street])) street = i; });
     // A node more than FRONT_SNAP_M from every wall (deep in a large footprint: a supermarket in a block) keeps the
     // street run nearest it, as retailHosting.ts rule 4 does.
-    keep[street >= 0 && (d[street] <= d[all] + NEAREST_MARGIN_M || d[all] > FRONT_SNAP_M) ? street : all] = true;
-    d.forEach((v, i) => { if (runs[i].street && v <= CORNER_REACH_M) keep[i] = true; });
+    const fronts = street >= 0 && (d[street] <= d[all] + NEAREST_MARGIN_M || d[all] > FRONT_SNAP_M);
+    keep[fronts ? street : all] = true;
+    // The tie reach only for a point that fronts a street (not one by a forecourt or courtyard wall).
+    const tie = fronts ? Math.min(d[street] + NEAREST_MARGIN_M, TIE_REACH_M) : -1;
+    d.forEach((v, i) => { if (runs[i].street && (v <= CORNER_REACH_M || v <= tie)) keep[i] = true; });
   }
   return keep;
 }

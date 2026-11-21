@@ -327,7 +327,7 @@ export type LayoutProbeRun = { storeys: number; groundM: number; storeyM: number
    *  HouseSpec / structure prior fitted the run, and the exposed height the grid was laid on. */
   style?: FacadeStyle; axes?: number; recipe?: boolean; fit?: 'spec' | 'prior' | null; exposedM?: number };
 /** Lane shop-band-ground census (scripts/retail-ground/shop-run-census.ts): each shop pand's run decision, walls mode only. */
-export const shopRunProbe: { sink?: (id: string, keep: readonly boolean[], runs: ReadonlyArray<{ lenM: number; street: boolean; /** The run's longest wall: its middle [lng, lat] and outward bearing (deg). */ mid: [number, number]; bearing: number }>, anchors: number) => void } = {};
+export const shopRunProbe: { sink?: (id: string, keep: readonly boolean[], runs: ReadonlyArray<{ lenM: number; street: boolean; /** The run's longest wall: its middle [lng, lat] and outward bearing (deg). */ mid: [number, number]; bearing: number; /** The run's walls in local metres (diagnostics). */ segs?: ReadonlyArray<readonly [number, number, number, number]> }>, anchors: number, /** The anchors in the same local metres. */ points?: ReadonlyArray<readonly [number, number]>) => void } = {};
 export const layoutProbe: { sink?: (id: string, run: LayoutProbeRun) => void } = {};
 export const lookVariant = (id: string) => Math.floor(hash01(`${id}:look`) * CELL_VARIANTS);
 
@@ -952,7 +952,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     // Lane shop-band-ground (`?shopRun=1`, shopRun.ts): the runs that hold a shop; the rest draw the quiet ground.
     const shopKeep = b.shopRun ? shopRunsFor(runList.map(run => ({ segs: run.map(({ e }) => [e.x0, e.y0, e.x1, e.y1] as const), street: run.some(({ e }) => doorAllowed.has(e)) })),
       b.shopRun.anchors.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as const)) : null;
-    if (shopKeep && shopRunProbe.sink && mode === 'walls') shopRunProbe.sink(b.id, shopKeep, runList.map(run => { const e = run.reduce((l, r) => r.e.len > l.len ? r.e : l, run[0].e); return { lenM: run.reduce((sum, { e }) => sum + e.len, 0), street: run.some(({ e }) => doorAllowed.has(e)), mid: [origin.lng + (e.x0 + e.x1) / 2 / kxLocal, origin.lat + (e.y0 + e.y1) / 2 / M_PER_DEG_LAT] as [number, number], bearing: (Math.atan2(e.nx, e.ny) * 180 / Math.PI + 360) % 360 }; }), b.shopRun!.anchors.length);
+    if (shopKeep && shopRunProbe.sink && mode === 'walls') shopRunProbe.sink(b.id, shopKeep, runList.map(run => { const e = run.reduce((l, r) => r.e.len > l.len ? r.e : l, run[0].e); return { lenM: run.reduce((sum, { e }) => sum + e.len, 0), street: run.some(({ e }) => doorAllowed.has(e)), mid: [origin.lng + (e.x0 + e.x1) / 2 / kxLocal, origin.lat + (e.y0 + e.y1) / 2 / M_PER_DEG_LAT] as [number, number], bearing: (Math.atan2(e.nx, e.ny) * 180 / Math.PI + 360) % 360, segs: run.map(({ e }) => [e.x0, e.y0, e.x1, e.y1] as const) }; }), b.shopRun!.anchors.length, b.shopRun!.anchors.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as const));
     for (const run of runList) {
       const first = run[0].e;
       const sourceSegments=run.flatMap(({e})=>sourceEdgeFor(fallbackBuilding,e)?.segments??[]);
