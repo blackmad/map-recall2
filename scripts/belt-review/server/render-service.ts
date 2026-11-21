@@ -16,7 +16,7 @@ export interface RenderMeta { hash: string; pandId: string; file: string; ms: nu
 export interface RenderStat { at: string; pandId: string; ms: number; cached: boolean; cold: boolean }
 
 const sha = (v: unknown) => createHash('sha256').update(JSON.stringify(v)).digest('hex').slice(0, 24);
-export const designHash = (pandId: string, design: unknown, ppm: number) => sha({ v: RENDER_VERSION, pandId, design, ppm });
+export const designHash = (pandId: string, design: unknown, ppm: number, sliceM?: [number, number]) => sha(sliceM ? { v: RENDER_VERSION, pandId, design, ppm, sliceM } : { v: RENDER_VERSION, pandId, design, ppm });
 
 export class RenderService {
   private worker: ChildProcess | null = null;
@@ -61,9 +61,11 @@ export class RenderService {
     return new Promise((resolve, reject) => { this.waiting.set(id, { resolve, reject }); this.worker!.send({ id, ...job }); });
   }
 
-  /** The pand's front at `ppm` for `design`; cached by hash. `force` re-renders into a fresh directory (tests). */
-  async front(pandId: string, design: unknown, ppm: number, opts: { force?: boolean } = {}): Promise<RenderMeta> {
-    const hash = designHash(pandId, design, ppm);
+  /** The pand's front at `ppm` for `design`; cached by hash. `force` re-renders into a fresh directory (tests). A split
+   *  house (`<pand>#n`) renders its pand (`base`) with its own design and keeps the slice `sliceM` (metres from the BAG
+   *  span start, clamped to the drawn front): the renderer draws whole pands, so the slice is the honest approximation. */
+  async front(pandId: string, design: unknown, ppm: number, opts: { force?: boolean; base?: string; sliceM?: [number, number] } = {}): Promise<RenderMeta> {
+    const hash = designHash(pandId, design, ppm, opts.sliceM);
     const dir = path.join(this.cacheDir, opts.force ? `${hash}-${Date.now()}-${++this.seq}` : hash);
     if (!opts.force) {
       const hit = await fs.readFile(path.join(dir, 'meta.json'), 'utf8').then(JSON.parse, () => null);
@@ -73,7 +75,14 @@ export class RenderService {
     }
     const job = (async () => {
       await fs.mkdir(dir, { recursive: true });
-      const r = await this.ask({ pandId, design, ppm, out: dir });
+      const r = await this.ask({ pandId: opts.base ?? pandId, design, ppm, out: dir });
+      if (opts.sliceM) {
+        const whole = await sharp(r.file).metadata(), W = whole.width ?? 1;
+        const left = Math.max(0, Math.min(W - 1, Math.round(opts.sliceM[0] * ppm))), right = Math.max(left + 1, Math.min(W, Math.round(opts.sliceM[1] * ppm)));
+        const buf = await sharp(r.file).extract({ left, top: 0, width: right - left, height: whole.height ?? 1 }).png().toBuffer();
+        await fs.writeFile(r.file, buf);
+        r.measure = { ...r.measure, slice: { sliceM: opts.sliceM, leftPx: left, rightPx: right, wholeWidthPx: W } };
+      }
       const img = await sharp(r.file).metadata();
       const meta = { hash, pandId, ms: r.ms, measure: r.measure, widthPx: img.width ?? 0, heightPx: img.height ?? 0, timings: r.timings };
       await fs.writeFile(path.join(dir, 'meta.json'), JSON.stringify(meta, null, 1));
@@ -98,21 +107,31 @@ export class RenderService {
   }
 }
 
-export interface RowPiece { pandId: string; file: string | null; widthPx: number; heightPx: number }
+/** A row piece: the image drawn at `widthPx`×`heightPx`, `dx` into a slot `slotW` wide (default: the image's width). An
+ *  `extract` crops the source first (pixels of the source image). */
+export interface RowPiece { pandId: string; file: string | null; widthPx: number; heightPx: number; dx?: number; slotW?: number; extract?: { left: number; width: number } }
 export interface RowLayout { width: number; height: number; pands: Array<{ pandId: string; x: number; w: number; h: number }> }
 
 /** Pieces side by side, bottoms aligned (the ground), a missing piece as a dark slot of its width. */
 export async function composeRow(pieces: RowPiece[], background = { r: 160, g: 180, b: 200 }): Promise<{ png: Buffer; layout: RowLayout }> {
-  const height = Math.max(1, ...pieces.map(p => p.heightPx)), width = Math.max(1, pieces.reduce((n, p) => n + p.widthPx, 0));
+  const slot = (p: RowPiece) => Math.max(1, p.slotW ?? p.widthPx);
+  const height = Math.max(1, ...pieces.map(p => p.heightPx)), width = Math.max(1, pieces.reduce((n, p) => n + slot(p), 0));
   const layout: RowLayout = { width, height, pands: [] };
   const over: OverlayOptions[] = [];
   let x = 0;
   for (const p of pieces) {
-    layout.pands.push({ pandId: p.pandId, x, w: p.widthPx, h: p.heightPx });
-    const input = p.file ? await sharp(p.file).resize(p.widthPx, p.heightPx, { fit: 'fill' }).png().toBuffer()
-      : await sharp({ create: { width: Math.max(1, p.widthPx), height: Math.max(1, p.heightPx), channels: 3, background: '#2a2d31' } }).png().toBuffer();
-    over.push({ input, left: x, top: height - p.heightPx });
-    x += p.widthPx;
+    layout.pands.push({ pandId: p.pandId, x, w: slot(p), h: p.heightPx });
+    const w = Math.max(1, Math.min(p.widthPx, slot(p))), dx = Math.max(0, Math.min(slot(p) - w, Math.round(p.dx ?? 0)));
+    let src = p.file ? sharp(p.file) : null;
+    if (src && p.extract) {
+      const m = await sharp(p.file!).metadata(), W = m.width ?? 1;
+      const left = Math.max(0, Math.min(W - 1, Math.round(p.extract.left))), ew = Math.max(1, Math.min(W - left, Math.round(p.extract.width)));
+      src = sharp(await src.extract({ left, top: 0, width: ew, height: m.height ?? 1 }).toBuffer());
+    }
+    const input = src ? await src.resize(w, p.heightPx, { fit: 'fill' }).png().toBuffer()
+      : await sharp({ create: { width: w, height: Math.max(1, p.heightPx), channels: 3, background: '#2a2d31' } }).png().toBuffer();
+    over.push({ input, left: x + dx, top: height - p.heightPx });
+    x += slot(p);
   }
   const png = await sharp({ create: { width, height, channels: 3, background } }).composite(over).png().toBuffer();
   return { png, layout };

@@ -18,11 +18,12 @@ const jpeg = Buffer.from('ffd8ffe000104a46494600010100000100010000ffd9', 'hex');
 before(async () => {
   tmp = await fs.mkdtemp(path.join(os.tmpdir(), 'belt-review-test-'));
   data = path.join(tmp, 'data'); images = path.join(tmp, 'images'); roundRoot = path.join(tmp, 'round');
-  const face: FaceFile = { faceId: 'test-face', street: 'Prinsengracht', side: 'even', pands: [{ pandId: P2, address: 'Prinsengracht 148', order: 1 }, { pandId: P1, address: 'Prinsengracht 150', order: 0 }] };
+  const face: FaceFile = { faceId: 'test-face', street: 'Prinsengracht', side: 'even', pands: [{ pandId: P2, address: 'Prinsengracht 146–148', order: 1, numbers: [146, 148] }, { pandId: P1, address: 'Prinsengracht 150', order: 0 }] };
   const cand = (id: string, file: string) => ({ id, file, year: 2022, month: 3, distM: 12, obliquityDeg: 4, source: 'wall' as const, flags: [], pano: { id: 'pano', date: '2022-03-20' } });
   const candidates: CandidatesFile = { pands: [
     { pandId: P1, candidates: [cand('a', 'p1/a.jpg'), cand('b', 'p1/b.jpg'), cand('evil', '../secret.jpg'), cand('abs', '/etc/hosts.jpg'), cand('link', 'p1/link.jpg'), cand('txt', 'p1/notes.txt')], autoPick: 'a' },
-    { pandId: P2, candidates: [cand('c', 'p2/c.jpg')], autoPick: 'c' },
+    // `c` is a lane B crop with a 1.5 m margin each side of a 3.46 m BAG front at 50 px/m.
+    { pandId: P2, candidates: [{ ...cand('c', 'p2/c.jpg'), pandSpanPx: [75, 248] as [number, number], marginM: 1.5, pxPerM: 50, widthPx: 323 }], autoPick: 'c' },
   ] };
   await fs.mkdir(path.join(data, 'test-face'), { recursive: true });
   await fs.writeFile(path.join(data, 'test-face', 'face.json'), JSON.stringify(face));
@@ -91,6 +92,55 @@ describe('picks: save, token, revision conflict', () => {
     assert.equal(onDisk.picks[P1].candidateId, 'b'); assert.equal(onDisk.picks[P1].revision, 2); assert.equal(onDisk.picks[P1].autoPick, 'a');
     assert.equal(onDisk.revision, 2);
     assert.equal(second.body.ledger.photos.overridden, 1);
+  });
+});
+
+describe('picks: facade span and split houses', () => {
+  // Its own face (a copy of test-face's face and candidates), so the stage tests below see test-face untouched.
+  before(async () => {
+    await fs.mkdir(path.join(data, 'span-face'));
+    for (const f of ['face.json', 'candidates.json']) {
+      const j = JSON.parse(await fs.readFile(path.join(data, 'test-face', f), 'utf8'));
+      if (f === 'face.json') j.faceId = 'span-face';
+      await fs.writeFile(path.join(data, 'span-face', f), JSON.stringify(j));
+    }
+  });
+  const sdisk = async (doc: string) => JSON.parse(await fs.readFile(path.join(data, 'span-face', `${doc}.json`), 'utf8'));
+  it('stores the dragged facade span with its metres from the BAG start, and counts it', async () => {
+    const r = await post(`/faces/span-face/picks/${P2}`, { expectedRevision: 0, value: { candidateId: 'c', facadeSpanPx: [50, 300] } });
+    assert.equal(r.status, 200, JSON.stringify(r.body));
+    const pk = (await sdisk('picks')).picks[P2];
+    assert.deepEqual(pk.facadeSpanPx, [50, 300]); assert.deepEqual(pk.facadeSpanM, [-0.5, 4.5]);
+    assert.equal(r.body.ledger.photos.spanCorrected, 1);
+  });
+  it('refuses a malformed span or one on a photo without a BAG span', async () => {
+    const rev = (await sdisk('picks')).picks[P2].revision;
+    assert.equal((await post(`/faces/span-face/picks/${P2}`, { expectedRevision: rev, value: { candidateId: 'c', facadeSpanPx: [300, 50] } })).status, 400);
+    assert.equal((await post(`/faces/span-face/picks/${P2}`, { expectedRevision: rev, value: { candidateId: 'c', facadeSpanPx: [50, 70] } })).status, 400);
+    const p1 = (await sdisk('picks')).picks[P1]?.revision ?? 0;
+    assert.equal((await post(`/faces/span-face/picks/${P1}`, { expectedRevision: p1, value: { candidateId: 'b', facadeSpanPx: [0, 100] } })).status, 400);
+  });
+  it('splits a pand into houses (outer ends snap to the span), keeps them on a re-pick, expands the house face', async () => {
+    let rev = (await sdisk('picks')).picks[P2].revision;
+    const r = await post(`/faces/span-face/picks/${P2}`, { expectedRevision: rev, value: { candidateId: 'c', houses: [{ fromM: 0, toM: 2.5, label: '146' }, { fromM: 2.5, toM: 9, label: '148' }] } });
+    assert.equal(r.status, 200, JSON.stringify(r.body));
+    let pk = (await sdisk('picks')).picks[P2];
+    assert.deepEqual(pk.houses, [{ fromM: -0.5, toM: 2.5, label: '146' }, { fromM: 2.5, toM: 4.5, label: '148' }]);
+    assert.deepEqual(pk.facadeSpanM, [-0.5, 4.5], 'span kept when only houses are sent');
+    assert.equal(r.body.ledger.photos.pandSplits, 1);
+    const d = (await get('/faces/span-face/derived')).body;
+    assert.deepEqual(Object.keys(d.pands).sort(), [P1, `${P2}#1`, `${P2}#2`].sort());
+    // Edits address a split house.
+    assert.equal((await post(`/faces/span-face/edits/${P2}%231`, { expectedRevision: 0, value: { fields: { crown: { value: 'neck' } } } })).status, 200);
+    rev = pk.revision;
+    assert.equal((await post(`/faces/span-face/picks/${P2}`, { expectedRevision: rev, value: { candidateId: 'c' } })).status, 200);
+    pk = (await sdisk('picks')).picks[P2];
+    assert.equal(pk.houses.length, 2, 'a re-pick of the same photo keeps the split');
+    assert.equal((await post(`/faces/span-face/picks/${P2}`, { expectedRevision: pk.revision, value: { candidateId: 'c', houses: [{ fromM: 0, toM: 0.3 }, { fromM: 0.3, toM: 4 }] } })).status, 400, 'a house under 1 m');
+    // Clear the split (later tests address the pand as one house); the span stays.
+    assert.equal((await post(`/faces/span-face/picks/${P2}`, { expectedRevision: pk.revision, value: { candidateId: 'c', houses: null } })).status, 200);
+    pk = (await sdisk('picks')).picks[P2];
+    assert.equal(pk.houses, undefined); assert.deepEqual(pk.facadeSpanM, [-0.5, 4.5]);
   });
 });
 

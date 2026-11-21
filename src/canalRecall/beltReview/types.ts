@@ -51,6 +51,8 @@ export interface FacePand {
   order: number;
   /** Frontage width in metres when known (row layout; the render scale is fixed per face). */
   widthM?: number;
+  /** House numbers on this pand (lane B); more than one may mean BAG lumps separate houses into one pand. */
+  numbers?: number[];
 }
 
 export interface FaceFile {
@@ -99,6 +101,10 @@ export interface PhotoCandidate {
   pxPerM?: number;
   /** One line for the page, e.g. "tram mast in front of bay 2". */
   note?: string;
+  /** The BAG front's span inside the image, pixels [x0, x1] (lane B crops with a margin each side). Absent: no edge lines. */
+  pandSpanPx?: [number, number];
+  /** The margin cropped each side of the BAG span, metres. */
+  marginM?: number;
 }
 
 export interface PandCandidates {
@@ -183,7 +189,16 @@ export interface DocHeader { schemaVersion: 1; faceId: string; revision: number;
 export interface Entry { revision: number; at: string; by: Actor }
 
 /** picks.json: David's photo per pand. `candidateId: null` = none usable. */
-export interface Pick extends Entry { candidateId: string | null; /** the automatic pick when David chose (for the ledger) */ autoPick: string | null; note?: string }
+export interface Pick extends Entry {
+  candidateId: string | null; /** the automatic pick when David chose (for the ledger) */ autoPick: string | null; note?: string;
+  /** Where the facade really starts and ends in the picked image, pixels, when David dragged the edges off the BAG span. */
+  facadeSpanPx?: [number, number];
+  /** The same in metres from the BAG span start (negative = left of it); the durable value later stages crop and register by. */
+  facadeSpanM?: [number, number];
+  /** The facade split into separate houses (BAG registers them as one pand), metres from the BAG span start, left to
+   *  right, contiguous, covering the facade span. Two or more; absent = one house. */
+  houses?: Array<{ fromM: number; toM: number; label?: string }>;
+}
 export interface PicksFile extends DocHeader { picks: Record<string, Pick> }
 
 /** edits.json: per pand, field patches keyed by description field (`crown`, `storeys`; fields.ts DESC_FIELDS) or by a
@@ -254,7 +269,7 @@ export interface StateFile extends DocHeader {
 export interface LedgerFile extends DocHeader {
   david: { activeSeconds: number; byStage: Record<string, number> };
   claude: { tokens: number; passes: Array<{ at: string; tokens: number; note?: string }> };
-  photos: { pands: number; picked: number; agreedWithAuto: number; overridden: number; noneUsable: number };
+  photos: { pands: number; picked: number; agreedWithAuto: number; overridden: number; noneUsable: number; spanCorrected?: number; pandSplits?: number };
   fields: { fromLibrary: number; fromNewRead: number; edited: number };
   pins: { total: number; open: number; byTag: Record<string, number>; byKind: Record<string, number> };
   /** Failures per stage: 1 picks overriding the auto pick or none usable, 2 pands with field edits, 3 grouping changes, 4 pins. */
@@ -312,7 +327,7 @@ export const initialDocs = {
     ...header(faceId),
     david: { activeSeconds: 0, byStage: {} },
     claude: { tokens: 0, passes: [] },
-    photos: { pands: 0, picked: 0, agreedWithAuto: 0, overridden: 0, noneUsable: 0 },
+    photos: { pands: 0, picked: 0, agreedWithAuto: 0, overridden: 0, noneUsable: 0, spanCorrected: 0, pandSplits: 0 },
     fields: { fromLibrary: 0, fromNewRead: 0, edited: 0 },
     pins: { total: 0, open: 0, byTag: {}, byKind: {} },
     stageFailures: {}, reopens: {}, passes: 0, acceptedAt: null,
