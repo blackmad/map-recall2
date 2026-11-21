@@ -33,13 +33,19 @@ test('a features-only pand keeps today\'s wall and draws its read (Spitsbergenst
   assert.equal(postwarKitFor({ id: '0363100012068068', year: 1988, heightM: 7, use: 'housing' }), null);
 });
 
-test('a measured pand with a feature read takes both (Wagenaarstraat 485-501: canted white erkers, dark projecting balconies)', () => {
+test('a measured pand with a feature read takes its erkers; its read balconies only with the held flag (Wagenaarstraat 485-501)', () => {
+  const held = postwarKitFor({ id: '0363100012067983', year: 1981, heightM: 14, use: 'housing' })!;
+  assert.equal(held.balcony, 'none');
+  assert.deepEqual(postwarExtraIds(held), ['postwar-white-erkers']);
+  (globalThis as { __canalRecallPostwarSiblings?: boolean }).__canalRecallPostwarSiblings = true;
   const k = postwarKitFor({ id: '0363100012067983', year: 1981, heightM: 14, use: 'housing' })!;
+  delete (globalThis as { __canalRecallPostwarSiblings?: boolean }).__canalRecallPostwarSiblings;
   assert.equal(k.wallSource, 'measured');
   assert.equal(k.erker, 'white-glass');
   assert.equal(k.erkerPlan, 'canted');
   assert.equal(k.erkerCount, 3);
   assert.equal(k.balcony, 'projecting');
+  assert.equal(k.balconyHex, '#9fb0b8');
   assert.deepEqual(postwarExtraIds(k), ['postwar-projecting-balconies', 'postwar-white-erkers']);
 });
 

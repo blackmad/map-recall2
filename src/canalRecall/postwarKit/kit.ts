@@ -153,7 +153,7 @@ export function postwarKitFor(f: PostwarFacts): PostwarKit | null {
   if (!read) {
     // Balconies: the pand's own feature read, else a read sibling in the same complex (siblings.ts).
     const own = feat?.balcony ? { balcony: feat.balcony, tone: feat.balconyTone } : sib ? { balcony: sib.balcony, tone: sib.balconyTone, from: sib.from } : null;
-    const bal: Partial<PostwarKit> = own && tall && ('from' in own ? postwarSiblingsEnabled() : true) ? { balcony: own.balcony, balconyHex: toneHex(own.tone), ...('from' in own && own.from ? { balconyFrom: own.from } : {}) } : {};
+    const bal: Partial<PostwarKit> = own && tall && postwarSiblingsEnabled() ? { balcony: own.balcony, balconyHex: toneHex(own.tone), ...('from' in own && own.from ? { balconyFrom: own.from } : {}) } : {};
     const more = extras('none');
     const hasFeatures = !!bal.balcony || !!more.stair || !!more.erker;
     if (!measured && !hasFeatures) return null;

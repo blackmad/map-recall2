@@ -16,9 +16,11 @@ export function postwarKitEnabled(): boolean {
 }
 
 /**
- * Round 2 (lane postwar-kit-r2-20261121): balconies inferred from a read sibling of the same complex (sibling-features.json)
- * are held, off by default: the blind gave them 0 wins, 2 losses, each a balcony the photo does not have. On:
- * `?postwarSiblings=1` (main thread only; not forwarded to the worker pool) or POSTWAR_SIBLINGS=1 in Node.
+ * Round 2 (lane postwar-kit-r2-20261121): balconies on unread pands are held, off by default. Inferred from a read sibling
+ * of the same complex (sibling-features.json) the blind gave 0 wins, 2 losses; from the pand's own feature read
+ * (feature-reads.json), 5 wins, 3 losses, 3 ties over two rounds, every loss a balcony the frame's photo does not have
+ * (the face rule did not cure Entrepotdok 146-163). On: `?postwarSiblings=1` (main thread only; not forwarded to the
+ * worker pool) or POSTWAR_SIBLINGS=1 in Node.
  */
 export function postwarSiblingsEnabled(): boolean {
   const g = globalThis as { __canalRecallPostwarSiblings?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
