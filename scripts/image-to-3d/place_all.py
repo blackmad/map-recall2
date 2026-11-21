@@ -1,4 +1,4 @@
-"""Place and render every output of one model run: python3 -I place_all.py <runs/<model>> <front axis> <up axis> <glb name>
+"""Place and render every output of one model run: python3 -I place_all.py <runs/<model>> <front axis> <up axis> <glb name, {id} = input id> [--force]
 
 Fronts: scaled to the game's building top height (house:preview measure.json heights.topM), framed at the BAG wall
 length. Ornaments: scaled to the crop's height in metres (crop px x the view's m/px at the target)."""
@@ -8,7 +8,9 @@ A = "artifacts/image-to-3d"
 inputs = json.load(open(f"{A}/inputs/inputs.json"))
 for k, meta in inputs.items():
     d = os.path.join(run, k)
-    glb = os.path.join(d, glbname)
+    glb = os.path.join(d, glbname.replace("{id}", k))
+    if os.path.exists(f"{d}/placed/place.json") and "--force" not in sys.argv:
+        continue
     if not os.path.exists(glb):
         print(k, "no", glbname); continue
     if meta["kind"] == "front":

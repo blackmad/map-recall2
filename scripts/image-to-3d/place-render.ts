@@ -89,6 +89,9 @@ await doc.transform(dequantize());
 // vertex-coloured meshes (TripoSR, Hunyuan3D shape) a plain dielectric material instead.
 const plainMat = doc.createMaterial('dielectric').setMetallicFactor(0).setRoughnessFactor(1);
 for (const m of doc.getRoot().listMeshes()) for (const p of m.listPrimitives()) if (!p.getMaterial()) p.setMaterial(plainMat);
+// The Node raster reads metallicFactor but not the metallic-roughness texture: TRELLIS.2's PBR GLBs (factor 1, metal
+// in the texture's blue channel) would draw black. Buildings and stone are dielectric, so draw them with metallic 0.
+for (const m of doc.getRoot().listMaterials()) if (m.getMetallicRoughnessTexture()) { m.setMetallicFactor(0); m.setMetallicRoughnessTexture(null); }
 const scene = doc.getRoot().getDefaultScene() ?? doc.getRoot().listScenes()[0];
 const wrap = doc.createNode('placed');
 for (const c of scene.listChildren()) { scene.removeChild(c); wrap.addChild(c); }

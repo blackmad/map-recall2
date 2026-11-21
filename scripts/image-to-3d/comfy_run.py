@@ -23,7 +23,6 @@ seed = int(args.get("seed", 42))
 if model in ("trellis2", "pixal3d"):
     api = json.load(open(args["api"]))
     api["122"]["inputs"]["image"] = f"i2d-{img_id}.png"
-    api["316"]["inputs"]["value"] = model == "trellis2"
     for k in ("3", "12", "18", "23"):
         api[k]["inputs"]["seed"] = seed
     if "upsample" in args:
@@ -31,6 +30,19 @@ if model in ("trellis2", "pixal3d"):
     if "tex" in args:
         api["288"]["inputs"]["value"] = int(args["tex"])
     api.pop("322", None)
+    # Resolve the model switch statically, so the other model's loaders (and, for TRELLIS.2, MoGe) never load:
+    # 314/315 pick the conditioning, 318 the diffusion model; node 15 is the image encoder (Pixal3D's NAF DINOv3
+    # in the template, TRELLIS.2's own DINOv3 ViT-L file for TRELLIS.2).
+    t = model == "trellis2"
+    pick = {"314": ["299", 0] if t else ["298", 0], "315": ["299", 1] if t else ["298", 1], "318": ["40", 0] if t else ["319", 0]}
+    for n in api.values():
+        for k2, v in list(n["inputs"].items()):
+            if isinstance(v, list) and len(v) == 2 and v[0] in pick:
+                n["inputs"][k2] = pick[v[0]]
+    for k2 in ["314", "315", "318", "316"] + (["298", "242", "56", "55", "319"] if t else ["299", "40"]):
+        api.pop(k2, None)
+    if t:
+        api["15"]["inputs"]["clip_name"] = "dino_v3_vit_l.safetensors"
     for name, src in (("textured", "285"), ("painted", "282"), ("coarse", "247")):
         api[f"save_{name}"] = {"class_type": "SaveGLB", "inputs": {"mesh": [src, 0], "filename_prefix": f"{prefix}-{name}"}}
 else:
@@ -51,7 +63,7 @@ else:
         "14": {"class_type": "SaveImage", "inputs": {"images": ["5", 0], "filename_prefix": f"{prefix}-cutout"}},
     }
 
-pid = subprocess.run(["pgrep", "-f", f"--port {server.split(':')[1]}"], capture_output=True, text=True).stdout.split()[0]
+pid = subprocess.run(["pgrep", "-f", "--", f"port {server.split(':')[1]}"], capture_output=True, text=True).stdout.split()[0]
 peak, stop = [0], [False]
 
 
