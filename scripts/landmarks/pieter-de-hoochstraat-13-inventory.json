@@ -1,0 +1,404 @@
+{
+ "schemaVersion": 1,
+ "id": "pieter-de-hoochstraat-13",
+ "pand": "0363100012121704",
+ "brief": "scripts/landmarks/pieter-de-hoochstraat-13-brief.md",
+ "signature": [
+  "e-attic",
+  "e-red-bays",
+  "w-white-bays",
+  "e-lobby",
+  "e-punched"
+ ],
+ "walls": [
+  {
+   "tag": "w01-88",
+   "bearing": 88,
+   "lengthM": 43.8,
+   "centre": [
+    4.8861505,
+    52.3562305
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001709_pano_0000_000089",
+   "capturedAt": "2020-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-attic",
+     "kind": "other",
+     "where": "whole length over the brick: dark recess, then a green steel-and-glass roof storey cantilevered ~1.6 m with a steep glazed face and a shallow glazed slope",
+     "approxSizeM": [
+      72,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001709_pano_0000_000089",
+     "how": "attic(): soffit, fascia, steep glass and glazed slope lofted along an offset polyline over the E, S and W fronts, glazing bars every ~1.8 m"
+    },
+    {
+     "id": "e-red-bays",
+     "kind": "window-shape",
+     "where": "red-framed glazed bay stacks, single and double, four storeys over the ground floor, between groups of 2-4 punched windows",
+     "approxSizeM": [
+      4,
+      12.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001709_pano_0000_000089",
+     "how": "the BAG ring's 0.33 m proud strips rebuilt red with white-framed sashes and a balustrade bar per storey"
+    },
+    {
+     "id": "e-punched",
+     "kind": "window-shape",
+     "where": "small red-framed punched windows in groups of two to four between the bays, four rows",
+     "approxSizeM": [
+      0.9,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001709_pano_0000_000089",
+     "how": "punchedRow() per recessed strip"
+    },
+    {
+     "id": "e-ground",
+     "kind": "other",
+     "where": "ground floor: dark-green framed glazing between grey concrete piers, glass-block strip below",
+     "approxSizeM": [
+      50,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001709_pano_0000_000089",
+     "how": "grey plinth band with dark-green framed glazing per strip; glass blocks drawn as the grey plinth"
+    },
+    {
+     "id": "e-lamps",
+     "kind": "lamp",
+     "where": "gilded globe lamps on the brick top under the soffit",
+     "approxSizeM": [
+      0.4,
+      0.4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m globes in the shadow of the soffit"
+     },
+     "seenIn": "TMX7316010203-001709_pano_0000_000089"
+    }
+   ]
+  },
+  {
+   "tag": "w02-88",
+   "bearing": 88,
+   "lengthM": 27.8,
+   "centre": [
+    4.886177,
+    52.355909
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track01_Sphere_00101",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-lobby",
+     "kind": "other",
+     "where": "south end: double-height dark-green framed hotel lobby glazing with a transom, two red bays hanging over it",
+     "approxSizeM": [
+      18,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track01_Sphere_00101",
+     "how": "lobbyPiece(): three glazed openings 0.15-6.05 m, hangingBay() boxes from 6.3 m"
+    }
+   ]
+  },
+  {
+   "tag": "w03-179",
+   "bearing": 179,
+   "lengthM": 10.6,
+   "centre": [
+    4.8861075,
+    52.3557825
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002455_pano_0000_000096",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-entrance",
+     "kind": "other",
+     "where": "south-east corner: glazed two-storey entrance pavilion (TIH Museum Quarter) with a sign",
+     "approxSizeM": [
+      6,
+      6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002455_pano_0000_000096",
+     "how": "ground glazing of the south strips; sign lettering not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w04-181",
+   "bearing": 181,
+   "lengthM": 8.6,
+   "centre": [
+    4.885844,
+    52.3557725
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002455_pano_0000_000100",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w05-181",
+   "bearing": 181,
+   "lengthM": 8.4,
+   "centre": [
+    4.885968,
+    52.3557765
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001062_pano_0000_000270",
+   "capturedAt": "2019-01-17",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-269",
+   "bearing": 269,
+   "lengthM": 8.1,
+   "centre": [
+    4.885491,
+    52.3559855
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002411_pano_0007_000071",
+   "capturedAt": "2022-01-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-white-bays",
+     "kind": "window-shape",
+     "where": "garden side: white glazed bay stacks, five storeys, on orange-red brick",
+     "approxSizeM": [
+      4,
+      12.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002411_pano_0007_000071",
+     "how": "proud strips rebuilt white with two sashes per storey"
+    }
+   ]
+  },
+  {
+   "tag": "w07-177",
+   "bearing": 177,
+   "lengthM": 8.1,
+   "centre": [
+    4.885678,
+    52.355769
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002455_pano_0000_000102",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-269",
+   "bearing": 269,
+   "lengthM": 8,
+   "centre": [
+    4.8854785,
+    52.356309
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-27-21_00365",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w09-269",
+   "bearing": 269,
+   "lengthM": 8,
+   "centre": [
+    4.8854955,
+    52.355877
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-27-21_00375",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-269",
+   "bearing": 269,
+   "lengthM": 7.9,
+   "centre": [
+    4.8854825,
+    52.3562015
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002411_pano_0007_000076",
+   "capturedAt": "2022-01-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-balcony-band",
+     "kind": "balcony-ironwork",
+     "where": "green steel balcony band along the garden side over the ground storey",
+     "approxSizeM": [
+      70,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002411_pano_0007_000076",
+     "how": "a 1.2 m slab at 3.05 m with a top rail, per wall strip"
+    }
+   ]
+  },
+  {
+   "tag": "w11-269",
+   "bearing": 269,
+   "lengthM": 7.9,
+   "centre": [
+    4.8854865,
+    52.3560935
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001062_pano_0000_000250",
+   "capturedAt": "2019-01-17",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w12-269",
+   "bearing": 269,
+   "lengthM": 4.6,
+   "centre": [
+    4.885475,
+    52.3564015
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-27-21_00363",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w13-177",
+   "bearing": 177,
+   "lengthM": 4,
+   "centre": [
+    4.8855465,
+    52.355765
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002455_pano_0000_000104",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w14-268",
+   "bearing": 268,
+   "lengthM": 4,
+   "centre": [
+    4.885471,
+    52.356255
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track17_Sphere_00023",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w15-268",
+   "bearing": 268,
+   "lengthM": 4,
+   "centre": [
+    4.885479,
+    52.35604
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track17_Sphere_00028",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w16-269",
+   "bearing": 269,
+   "lengthM": 4,
+   "centre": [
+    4.8854665,
+    52.356363
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-27-21_00364",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w17-269",
+   "bearing": 269,
+   "lengthM": 4,
+   "centre": [
+    4.8854745,
+    52.356147
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002913_pano_0011_000056",
+   "capturedAt": "2023-01-03",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w18-269",
+   "bearing": 269,
+   "lengthM": 4,
+   "centre": [
+    4.8854835,
+    52.355931
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002454_pano_0000_000777",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w19-269",
+   "bearing": 269,
+   "lengthM": 4,
+   "centre": [
+    4.8854865,
+    52.355823
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-27-21_00376",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
