@@ -1,0 +1,30 @@
+{
+ "id": "erotic-museum",
+ "name": "Erotic Museum, Oudezijds Achterburgwal 54",
+ "heightMetres": 15.0,
+ "bagYear": 1737,
+ "galleryView": {
+  "theta": 0.6,
+  "phi": 1.05
+ },
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012172007 (3DBAG CC BY 4.0, BAG CC0; Oudezijds Achterburgwal 54) in native east/south metres (scripts/landmarks/erotic-museum-footprints.json, bag-shell-prepare.ts), its pitched front wall replaced by the spout gable; the canal front (facade ring edge 3, 6.17 m) read from the rectified Gemeente Amsterdam panoramas b_20250114_1026_Track06_Sphere_00148 and _00149 (2025-01-14) and recording_2025-06-30_05-16-46_01529 (2025-06-30), CC BY 4.0. Rijksmonument 87. Per wall in scripts/landmarks/erotic-museum-inventory.json.",
+ "materialOverrides": {
+  "brick": "#82503e",
+  "stone": "#e4e1d8",
+  "frame": "#e8e6df",
+  "glass": "#2d3238",
+  "dark": "#2a1a1a",
+  "green": "#26382f",
+  "bronze": "#151515",
+  "red": "#ff3b3b",
+  "slate": "#4c4a48"
+ },
+ "attribution": {
+  "title": "Erotic Museum, Oudezijds Achterburgwal 54, Amsterdam",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250114_1026_Track06_Sphere_00148/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012172007 (CC0): the brick spout-gabled warehouse front with white block quoins, its loading windows and round-headed side windows, oculi, ANNO stone, ground-storey arches and the red neon script sign (Pacifico, SIL OFL 1.1), read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

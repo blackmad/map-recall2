@@ -1,5 +1,5 @@
 {
-  "toolchain": "a6ccf7e3310b52fafd4f4874f9e21634bdc5a4e669824c2271a1f8a1fe2ad2f2",
+  "toolchain": "71bbd563f1521b414151954612a4ac6ce4da3c56fd8ca481675377ba7b6913ca",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -545,6 +545,11 @@
     "revaleiland-121": "fa2f96d6a8393a3371c49026017a5ae997a0d6aaee9359ae5a1225564c46e715",
     "rinus-michelslaan-1": "cb2a25d2c4b6e7488165ba0e7f21898698d352a191e7a5d2b78be4e171e1fe4f",
     "tweede-atjehstraat-2": "9117a31132c712ff11fb88dbac68a4549c8db15acfd80e7e019ee9093eaccce8",
-    "wiborgeiland-76": "6b35e88e1823467a81ba66a130587f8a1f7ff96323461971142aa22e2a81eaae"
+    "wiborgeiland-76": "6b35e88e1823467a81ba66a130587f8a1f7ff96323461971142aa22e2a81eaae",
+    "banana-bar": "3fafd76f64b34af820d98811d5013163a81b128289c3a3af32ea54e61cfb47d7",
+    "belle": "c09d1dd390e58edcd5aa7386c5c56c2d3ea56faa26eeb5766c1e6dab85f39368",
+    "condomerie": "14ca9d66e461854ee71114305531387a970e41bc8fad194cb172d30f8b951d0d",
+    "erotic-museum": "f292bb350bd7e39fe406b02d83dd12f6bb1f5d277a1a3e9a6af2dd08b18ed2fb",
+    "red-light-secrets": "41a82f8bd2c747e0a2cd8edacce2bc6f8642fb058aa7c2fb918e8ae7019ff178"
   }
 }

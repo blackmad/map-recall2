@@ -24,6 +24,31 @@ export type SlotTag = {readonly slot: MaterialSlot; readonly why: string; readon
 export const MATERIAL_SLOT_TAG = 'builder';
 
 export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string, SlotTag>>>> = {
+
+  'erotic-museum': {
+    bronze: {slot: 'paint', why: 'black painted sign board behind the neon'},
+  },
+  condomerie: {
+    sandstone: {slot: 'stucco', why: 'cream painted timber shopfront'},
+    bronze: {slot: 'paint', why: 'black painted iron railings'},
+    gold: {slot: 'paint', why: 'painted fascia letter'}, blue: {slot: 'paint', why: 'painted fascia letter'},
+    ochre: {slot: 'paint', why: 'painted fascia letter'}, pink: {slot: 'paint', why: 'painted fascia letter'},
+    copper: {slot: 'paint', why: 'painted fascia letter, not metal'}, greyBrick: {slot: 'brick', why: 'dark brick relieving arches, frieze shadow and plinth'},
+  },
+  'red-light-secrets': {
+    sandstone: {slot: 'stucco', why: 'white-painted ground storeys'},
+    red: {slot: 'glass', why: 'shop windows lit red behind the glass'},
+    pink: {slot: 'paint', why: 'red neon sign'},
+  },
+  'banana-bar': {
+    brick: {slot: 'paint', why: 'brick front painted near-black (recording_2025-06-30_05-16-46_01565)'},
+    sandstone: {slot: 'paint', why: 'painted window panels, drawn plain'},
+    copper: {slot: 'paint', why: 'painted window panels, drawn plain'},
+    bronze: {slot: 'paint', why: 'black sign boards and iron rail'},
+    gold: {slot: 'paint', why: 'painted banana and sign border'},
+    concrete: {slot: 'paint', why: 'painted steel roller shutter'},
+  },
+
   'american-hotel': {
     slate: {slot: 'roofTile', why: 'red-orange clay tiles on the Leidseplein roofs (ref-se-sun.jpg), not slate'},
     sandstone: {slot: 'brick', why: 'the buff Jugendstil walls are yellow-buff brick with stone dressings (ref-se-sun.jpg); the shell walls are most of this material'},

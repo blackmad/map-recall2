@@ -2,6 +2,7 @@
   "note": "Per-statue defaults for scripts/sculptures/reconstruct.ts (batch 1, 2026-10-14). heightM and facingDeg come from the kit model (bounding-box height; FACING in its builder). plinthTopM is where the kit plinth ends: with --kit-plinth the figure is scaled to heightM - plinthTopM and stood on the kit's plinth triangles; otherwise triangles under plinthTopM get the stone slot. box is a crop x0,y0,x1,y1 in photo pixels at the downloaded width.",
   "width": 2000,
   "statues": {
+    "belle": {"title": "File:2020 Belle (Els Rijerse) (1).jpg", "heightM": 1.85, "facingDeg": 268, "plinthTopM": 0.8, "rembg": "isnet-general-use"},
     "de-dokwerker": {"kit": "de-dokwerker", "title": "File:Amsterdam, De dokwerker 07.JPG", "heightM": 4.13, "facingDeg": 252, "plinthTopM": 1.675},
     "gandhi-churchill-laan": {"kit": "gandhi-churchill-laan", "title": "File:Statue of Gandhi, Amsterdam.jpg", "heightM": 3.2, "facingDeg": 90, "plinthTopM": 0.85, "rembg": "isnet-general-use"},
     "mama-baranka": {"kit": "mama-baranka", "title": "File:Mama Baranka in 2019 (1).jpg", "heightM": 2.05, "facingDeg": 200},

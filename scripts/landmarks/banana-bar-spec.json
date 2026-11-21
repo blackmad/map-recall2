@@ -1,0 +1,33 @@
+{
+ "id": "banana-bar",
+ "name": "Bananenbar, Oudezijds Achterburgwal 37",
+ "heightMetres": 14.0,
+ "bagYear": 1664,
+ "galleryView": {
+  "theta": 4.3,
+  "phi": 1.05
+ },
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012177954 (3DBAG CC BY 4.0, BAG CC0; Oudezijds Achterburgwal 37) in native east/south metres (scripts/landmarks/banana-bar-footprints.json, bag-shell-prepare.ts), its pitched front wall replaced by the neck gable; the canal front (facade ring edge 0, 6.32 m) read from the rectified Gemeente Amsterdam panoramas recording_2025-06-30_05-16-46_01565 and _01566 (2025-06-30) and b_20250114_1026_Track06_Sphere_00020 (2025-01-14), CC BY 4.0. Rijksmonument 8. Per wall in scripts/landmarks/banana-bar-inventory.json.",
+ "materialOverrides": {
+  "brick": "#26272b",
+  "stone": "#eeece6",
+  "frame": "#17181a",
+  "sandstone": "#c9cfd6",
+  "copper": "#9fb4c0",
+  "greyBrick": "#55575a",
+  "concrete": "#8c8f92",
+  "bronze": "#0f0f10",
+  "gold": "#f2cf2a",
+  "red": "#d6382e",
+  "dark": "#1d1f22",
+  "slate": "#46484b"
+ },
+ "attribution": {
+  "title": "Bananenbar, Oudezijds Achterburgwal 37, Amsterdam",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_05-16-46_01565/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012177954 (CC0): the black-painted neck gable with white claw pieces, its window openings as plain pale panels (the painted figures are not drawn), the BANANENBAR boards with the yellow banana (Archivo Black, SIL OFL 1.1), the stoop and shutter, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

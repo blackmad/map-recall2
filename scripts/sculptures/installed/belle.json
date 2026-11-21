@@ -1,0 +1,110 @@
+{
+ "id": "belle",
+ "provenance": "scripts/sculptures/rebuild-sources/belle.json",
+ "figures": [
+  {
+   "name": "pedestal",
+   "glb": "scripts/sculptures/installed/belle/pedestal.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     -9,
+     0
+    ],
+    "max": [
+     0,
+     -9,
+     0
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "dark",
+   "route": "measured on the photo and panoramas, drawn (statue-parts.ts --pedestal)"
+  },
+  {
+   "name": "plaque",
+   "glb": "scripts/sculptures/installed/belle/plaque.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     -9,
+     0
+    ],
+    "max": [
+     0,
+     -9,
+     0
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "gold",
+   "route": "measured on the photo, drawn (statue-parts.ts --plaque)"
+  },
+  {
+   "name": "figure",
+   "glb": "scripts/sculptures/installed/belle/figure.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     -9,
+     0
+    ],
+    "max": [
+     0,
+     -9,
+     0
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TripoSR, one photo (sheared upright, base narrowed; scripts/sculptures/statue-parts.ts)"
+  },
+  {
+   "name": "frame",
+   "glb": "scripts/sculptures/installed/belle/frame.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     -9,
+     0
+    ],
+    "max": [
+     0,
+     -9,
+     0
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "measured on the photo and panoramas, drawn (statue-parts.ts --frame)"
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "id": "belle",
+ "sculptor": {
+  "name": "Els Rijerse",
+  "year": 2007,
+  "born": null,
+  "died": null,
+  "publicDomain": false
+ },
+ "subject": "Belle, bronze woman in a door frame on a stepped bronze base and a black granite pedestal; Oudekerksplein, unveiled 31 March 2007, commissioned by the Prostitutie Informatie Centrum (nl.wikipedia.org/wiki/Belle_(standbeeld))",
+ "photos": {
+  "File:2020 Belle (Els Rijerse) (1).jpg": {
+   "title": "File:2020 Belle (Els Rijerse) (1).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2020_Belle_(Els_Rijerse)_(1).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2020-08-02 11:22:28",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "b663a6f5a04517467f401e3d34ecbd71192d94c9"
+  }
+ },
+ "figures": {
+  "frame": {
+   "route": "door frame measured on the photo and on Gemeente Amsterdam panoramas (CC BY 4.0), drawn as boxes (scripts/sculptures/statue-parts.ts): outer width 0.365 m, posts 0.85-1.85 m, 30 mm bar, 0.06 m behind the plan centre; rembg drops the 30 mm bars",
+   "views": [
+    {
+     "title": "File:2020 Belle (Els Rijerse) (1).jpg",
+     "box": null,
+     "keepTop": null
+    }
+   ]
+  },
+  "pedestal": {
+   "route": "granite pedestal measured on the photo and on Gemeente Amsterdam panoramas (CC BY 4.0), drawn as boxes (scripts/sculptures/statue-parts.ts): 0.47 x 0.47 x 0.80 m (the TripoSR pedestal was 0.62 m deep and skewed)",
+   "views": [
+    {
+     "title": "File:2020 Belle (Els Rijerse) (1).jpg",
+     "box": null,
+     "keepTop": null
+    }
+   ]
+  },
+  "plaque": {
+   "route": "brass plaque measured on the photo and on Gemeente Amsterdam panoramas (CC BY 4.0), drawn as boxes (scripts/sculptures/statue-parts.ts): 0.22 x 0.115 m, centre 0.57 m",
+   "views": [
+    {
+     "title": "File:2020 Belle (Els Rijerse) (1).jpg",
+     "box": null,
+     "keepTop": null
+    }
+   ]
+  },
+  "figure": {
+   "route": "TripoSR, one photo (isnet-general-use cut-out), decimated to 12k then split at the plinth top",
+   "views": [
+    {
+     "title": "File:2020 Belle (Els Rijerse) (1).jpg",
+     "box": null,
+     "keepTop": null
+    }
+   ],
+   "corrections": {
+    "shearPerM": 0.19,
+    "why": "the photo looks down; the reconstructed granite pedestal (a vertical prism) leant forward 0.19 m per metre, the same drift as the figure, so the whole mesh is sheared back by that amount",
+    "recentredOnPedestalM": [
+     0.099,
+     0.001
+    ],
+    "baseScale": {
+     "k": 0.78,
+     "y0": 0.93,
+     "y1": 1.0,
+     "why": "the cut-out merged the bronze stepped base with the granite top; the photo shows the base about 0.35 m wide on a 0.47 m pedestal"
+    }
+   }
+  }
+ },
+ "placement": {
+  "lngLat": [
+   4.89741,
+   52.3742
+  ],
+  "rd": [
+   121646.17,
+   487482.21
+  ],
+  "source": "triangulated from eight 2024/2025 Gemeente Amsterdam panorama views (pano-views.ts, statue bearing per view); OSM node 3371945363 (4.8974056, 52.3741786) is 2.4 m south of the statue",
+  "facingDeg": 268,
+  "facingSource": "pedestal front and plaque face the 2025 panorama recording_2025-07-03_03-29-47_02792 looking east (bearing 88 deg) square-on; the Commons photo is taken from the same side (the red-shuttered house with the grey downpipe behind)",
+  "heightM": 1.85,
+  "heightSource": "panorama measurement, three views (2024 Track12 Sphere_00025, 2025 02792 and 02794): frame top 1.78-1.88 m from the triangulated distance, 1.88-2.18 m from the assumed 2.44 m camera height; pedestal top 0.84-0.99 m; Commons photo proportions pedestal/total 0.40-0.46. No published dimension found (nl.wikipedia, Commons, buitenbeeldinbeeld blocked)"
+ },
+ "pano": {
+  "views": "artifacts/sculpture-reconstruction/belle/pano-views/source.json",
+  "licence": "CC BY 4.0",
+  "author": "Gemeente Amsterdam"
+ },
+ "timingsS": {
+  "loadS": 31,
+  "cutoutS": 187.5,
+  "modelS": 77.1,
+  "meshS": 310.9,
+  "device": "mps",
+  "rawTriangles": 37444,
+  "rawVertices": 18722,
+  "box": null,
+  "triposrWall": 634.8,
+  "decimateWall": 914.7,
+  "networkTotalS": 606.5
+ },
+ "generated": "2026-11-21",
+ "command": "HF_HUB_OFFLINE=1 node --import tsx scripts/sculptures/reconstruct.ts --id=belle --rembg=isnet-general-use --no-strip; venv-o3d/bin/python -I scripts/sculptures/decimate_scale_glb.py work/raw.ply work/plain-12k.glb --height=1.85 --facing=268 --tris=12000 --no-colors; node --import tsx scripts/sculptures/statue-parts.ts --in=work/plain-12k.glb --out=parts --split=0.8 --facing=268 --shear=0.19 --pedestal=0.47,0.47 --base-scale=0.78,0.93,1.0 --frame=0.365,0.85,1.85,0.03,0.06 --plaque=0.22,0.115,0.57 --stone-tint=#2a2c2e"
+}

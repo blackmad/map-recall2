@@ -1,0 +1,140 @@
+{
+ "schemaVersion": 1,
+ "id": "in-t-aepjen",
+ "pand": "0363100012177880",
+ "brief": "scripts/landmarks/in-t-aepjen-brief.md",
+ "signature": [
+  "s-timber-front",
+  "s-jetties",
+  "s-window-bands",
+  "s-shopfront",
+  "s-name",
+  "s-gulpener"
+ ],
+ "walls": [
+  {
+   "tag": "w01-232",
+   "bearing": 232,
+   "lengthM": 5.8,
+   "centre": [
+    4.9001095,
+    52.3763005
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_01845",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-timber-front",
+     "kind": "other",
+     "where": "the whole Zeedijk front in timber: tarred black boards on the first storey, pale grey-green planks above",
+     "approxSizeM": [
+      7.0,
+      14.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_01845",
+     "how": "own front wall, board slabs per storey, plank seams"
+    },
+    {
+     "id": "s-jetties",
+     "kind": "other",
+     "where": "each storey jettied out over the one below (about 0.15, 0.3, 0.42 m) under a projecting hood at 14 m",
+     "approxSizeM": [
+      7.0,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-30_05-16-46_01845",
+     "how": "storey slabs stepped out, beams and hood slab; the hood's carved brackets not drawn"
+    },
+    {
+     "id": "s-window-bands",
+     "kind": "window-shape",
+     "where": "continuous window bands: five multi-pane windows at 6.2-8.25 m, four on the right of the second storey at 10.6-12.2 m",
+     "approxSizeM": [
+      1.2,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_01845",
+     "how": "timberWindow per window, dark frames"
+    },
+    {
+     "id": "s-shopfront",
+     "kind": "other",
+     "where": "cream timber shopfront: slim pilasters, four glazed bays with transom lights, dark green plinth",
+     "approxSizeM": [
+      7.0,
+      4.7
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track08_Sphere_00126",
+     "how": "pilaster slabs and timberWindow bays"
+    },
+    {
+     "id": "s-name",
+     "kind": "lettering",
+     "where": "In 't Aepjen in cream script on the glass of the left bay, about 1.6 m",
+     "approxSizeM": [
+      1.6,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track08_Sphere_00126",
+     "how": "Pacifico (SIL OFL 1.1) relief"
+    },
+    {
+     "id": "s-gulpener",
+     "kind": "sign",
+     "where": "round white Gulpener sign on a bracket at 4 m, perpendicular to the front",
+     "approxSizeM": [
+      0.76,
+      0.76
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track08_Sphere_00126",
+     "how": "black-rimmed white disc with a red emblem dot on a bracket; the brewery lettering not drawn"
+    },
+    {
+     "id": "s-flag",
+     "kind": "other",
+     "where": "a flag on a pole over the shopfront",
+     "approxSizeM": [
+      1.0,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "flag present in the June capture only"
+     },
+     "seenIn": "recording_2025-06-30_05-16-46_01845"
+    },
+    {
+     "id": "s-lamp",
+     "kind": "lamp",
+     "where": "floodlight on an arm over the shopfront",
+     "approxSizeM": [
+      0.3,
+      0.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm lamp"
+     },
+     "seenIn": "b_20250114_1026_Track08_Sphere_00126"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

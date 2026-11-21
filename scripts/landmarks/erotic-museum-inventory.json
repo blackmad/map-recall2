@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "id": "erotic-museum",
+ "pand": "0363100012172007",
+ "brief": "scripts/landmarks/erotic-museum-brief.md",
+ "signature": [
+  "s-sign",
+  "s-gable",
+  "s-quoins",
+  "s-centre-column",
+  "s-side-windows",
+  "s-ground-arches"
+ ],
+ "walls": [
+  {
+   "tag": "w01-125",
+   "bearing": 125,
+   "lengthM": 6.2,
+   "centre": [
+    4.8992935,
+    52.373883
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track06_Sphere_00148",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-sign",
+     "kind": "sign",
+     "where": "black board with a rounded top over the entrance arch, t 1.4-4.3 m, 1.95-3.05 m: Erotic Museum in red neon script, a swash underline with an arrow and two neon hearts",
+     "approxSizeM": [
+      2.9,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00148",
+     "how": "black arched board, Erotic Museum in Pacifico (SIL OFL 1.1) red relief, swash and arrow as red tubes; the hearts are left in the swash"
+    },
+    {
+     "id": "s-gable",
+     "kind": "other",
+     "where": "spout gable (tuitgevel): rakes from ~10.9 m to the 2.3-3.2 m wide spout, 14.4-15.0 m, with a white coping",
+     "approxSizeM": [
+      6.17,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00148",
+     "how": "own front wall with the spout outline (never under the 3DBAG roof), white coping band"
+    },
+    {
+     "id": "s-quoins",
+     "kind": "other",
+     "where": "white block quoins (alternating long and short blocks) round every window",
+     "approxSizeM": [
+      0.3,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00148",
+     "how": "0.3/0.18 x 0.2 m white blocks every 0.4 m both sides of each opening"
+    },
+    {
+     "id": "s-centre-column",
+     "kind": "window-shape",
+     "where": "centre column of loading windows at t 2.75 m: 10.0-11.6, 7.6-9.3, 5.1-6.9 (white frames, 2 x 3 panes) and a low arched one at 3.4-4.4 m; a small arched hatch 12.4-13.3 m",
+     "approxSizeM": [
+      1.32,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00148",
+     "how": "timberWindow per opening, white frames"
+    },
+    {
+     "id": "s-side-windows",
+     "kind": "window-shape",
+     "where": "small round-headed side windows 0.6 m wide at t 0.85 and 4.85 m on three storeys; the right low one a larger arched window",
+     "approxSizeM": [
+      0.6,
+      0.85
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00148",
+     "how": "timberWindow with arch heads, quoins"
+    },
+    {
+     "id": "s-oculi",
+     "kind": "window-shape",
+     "where": "two round oculi in the gable at 11.2 m, t 0.75 and 4.75 m",
+     "approxSizeM": [
+      0.45,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00148",
+     "how": "white ring disc with a dark glass disc"
+    },
+    {
+     "id": "s-anno",
+     "kind": "gable-stone",
+     "where": "ANNO stone left of the centre column at t 0.85 m, 5.0-5.3 m",
+     "approxSizeM": [
+      0.6,
+      0.3
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00148",
+     "how": "plain white stone; the 1 cm lettering is too small to draw"
+    },
+    {
+     "id": "s-ground-arches",
+     "kind": "other",
+     "where": "ground storey: dark green arched door left, wide entrance arch under the sign, barred arched window right, all in white arches",
+     "approxSizeM": [
+      2.4,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_01529",
+     "how": "archSlab surrounds and fills, a 3 x 3 window"
+    },
+    {
+     "id": "s-posters",
+     "kind": "sign",
+     "where": "two poster display boards either side of the entrance",
+     "approxSizeM": [
+      0.8,
+      1.3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "free-standing poster boards changed between the January and June 2025 captures"
+     },
+     "seenIn": "recording_2025-06-30_05-16-46_01529"
+    },
+    {
+     "id": "s-round-sign",
+     "kind": "sign",
+     "where": "small round red hanging sign right of the board at 2.6 m",
+     "approxSizeM": [
+      0.35,
+      0.35
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 35 cm disc, unreadable at gallery size"
+     },
+     "seenIn": "b_20250114_1026_Track06_Sphere_00148"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

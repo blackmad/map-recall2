@@ -3345,6 +3345,41 @@
   }
  },
  {
+  "id": "belle",
+  "name": "Belle",
+  "assetKind": "memorial",
+  "modelUrl": "./models/belle.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89741,
+    52.3742
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 0.6,
+   "widthMetres": 0.6
+  },
+  "surveyed": {
+   "anchor": [
+    4.89741,
+    52.3742
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Triangulated from eight 2024/2025 Gemeente Amsterdam panorama views (CC BY 4.0); OSM node 3371945363 (artwork Belle) sits 2.4 m south of the statue and is not used. Facing 268 deg (west) baked into the installed meshes, from panorama recording_2025-07-03_03-29-47_02792."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+   "title": "Belle - reconstruction from photographs",
+   "author": "Map Recall; sculpture by Els Rijerse (2007); figure reconstructed from photographs by Ceescamel",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:2020_Belle_(Els_Rijerse)_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "modifications": "Figures reconstructed (TripoSR single-view) from Wikimedia Commons photographs: \"2020 Belle (Els Rijerse) (1).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2020_Belle_(Els_Rijerse)_(1).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/belle.json."
+  }
+ },
+ {
   "id": "willet-holthuysen",
   "name": "Willet-Holthuysen House",
   "landmarkId": "extract_landmarks_154293883",
@@ -40741,12 +40776,12 @@
    "greyBrick": "#4f504f"
   },
   "attribution": {
-   "title": "Johnny Jordaanplein group - original low-poly reconstruction",
-   "author": "Map Recall; after the bronzes by Kees Verkade (Tante Leen, Johnny Jordaan) and Rob Cerneus (Johnny Meijer) on the plein of 1990",
-   "sourceUrl": "https://www.openstreetmap.org/node/1704741755",
-   "modifications": "Original texture-free low-poly figures, busts, plinths and bench built from Commons photographs: Statues in Johnny Jordaanplein 01-03 (HJ Mitchell, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg) and 2024 Johnny Jordaanplein ... (Ceescamel, CC0). No pixels or third-party meshes imported.",
+   "title": "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer) - reconstruction from photographs",
+   "author": "Map Recall; sculpture by Kees Verkade (Johnny Jordaan, Tante Leen); others per the plaques (Manke Nelis, Johnny Meijer, Mien and Jan Froger, signed 'Dominic 2010') (1991); figure reconstructed from photographs by Ceescamel",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(A).jpg",
    "licence": "CC BY 4.0",
-   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/"
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Figures reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"2024 Johnny Jordaanplein, Asd-Manke Nelis (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Manke Nelis (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Manke Nelis (E).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(E).jpg); \"2024 Johnny Jordaanplein, Asd-Tante leen (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Tante leen (B).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(B).jpg); \"2024 Johnny Jordaanplein, Asd-Tante leen (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Jordaan (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Jordaan (B).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(B).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Jordaan (E).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(E).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (D).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(D).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (F).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(F).jpg); \"2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (D).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(D).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/johnny-jordaan-groep.json."
   }
  },
  {
@@ -40782,12 +40817,12 @@
    "concrete": "#7f8283"
   },
   "attribution": {
-   "title": "Theo Thijssen monument - original low-poly reconstruction",
-   "author": "Map Recall; after the 1960 monument by Hans Bayens",
-   "sourceUrl": "https://www.openstreetmap.org/node/250624675",
-   "modifications": "Original texture-free low-poly man, boy, desk and block built from Commons photographs: Lindengracht, Theo Thijssen beeld foto 1 (Alf van Beem, public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg) and 2023 Theo Thijssen door Bayens (Ceescamel, CC0). No pixels or third-party meshes imported.",
+   "title": "Theo Thijssen monument (Lindengracht) - reconstruction from photographs",
+   "author": "Map Recall; sculpture by Hans Bayens (1960); figure reconstructed from photographs by Alf van Beem, Ceescamel",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg",
    "licence": "CC BY 4.0",
-   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/"
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Lindengracht, Theo Thijssen beeld foto 1.jpg\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg); \"Lindengracht, Theo Thijssen beeld foto 2.jpg\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_2.jpg); \"2023 Theo Thijssen door Bayens, Asd (3).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2023_Theo_Thijssen_door_Bayens,_Asd_(3).jpg); \"2023 Theo Thijssen door Bayens, Asd (2).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2023_Theo_Thijssen_door_Bayens,_Asd_(2).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/theo-thijssen-standbeeld.json."
   }
  },
  {
@@ -40823,12 +40858,12 @@
    "greyBrick": "#4b4c4c"
   },
   "attribution": {
-   "title": "Simon Carmiggelt bust - original low-poly reconstruction",
-   "author": "Map Recall; after the 1988 bust by Kees Verkade",
-   "sourceUrl": "https://www.openstreetmap.org/node/440673918",
-   "modifications": "Original texture-free low-poly bust and pillar built from Anefo photographs (Rob Croes / Anefo, CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam,_Bestanddeelnr_934-3464.jpg). No pixels or third-party meshes imported.",
-   "licence": "CC BY 4.0",
-   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/"
+   "title": "Simon Carmiggelt bust (Weteringplantsoen) - reconstruction from photographs",
+   "author": "Map Recall; sculpture by Kees Verkade (1988); figure reconstructed from photographs by Ceescamel, Rob Croes / Anefo",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Simon_Carmiggeltbeeld.jpg",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Simon Carmiggeltbeeld.jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Simon_Carmiggeltbeeld.jpg); \"Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdamweduwe Tiny Carmigge…, Bestanddeelnr 934-3460.jpg\" by Rob Croes / Anefo (CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdamweduwe_Tiny_Carmigge%E2%80%A6,_Bestanddeelnr_934-3460.jpg); \"Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam Ton van Duinhoven en, Bestanddeelnr 934-3461.jpg\" by Rob Croes / Anefo (CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam_Ton_van_Duinhoven_en,_Bestanddeelnr_934-3461.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/carmiggelt-borstbeeld.json."
   }
  },
  {
@@ -96819,6 +96854,456 @@
      [
       4.9066476,
       52.3691401
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "erotic-museum",
+  "name": "Erotic Museum, Oudezijds Achterburgwal 54",
+  "modelUrl": "./models/erotic-museum.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012172007"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8991987,
+    52.3738964
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 10,
+   "widthMetres": 13.3
+  },
+  "surveyed": {
+   "anchor": [
+    4.8991987,
+    52.3738964
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012172007 (3DBAG CC BY 4.0, BAG CC0; Oudezijds Achterburgwal 54) in native east/south metres (scripts/landmarks/erotic-museum-footprints.json, bag-shell-prepare.ts), its pitched front wall replaced by the spout gable; the canal front (facade ring edge 3, 6.17 m) read from the rectified Gemeente Amsterdam panoramas b_20250114_1026_Track06_Sphere_00148 and _00149 (2025-01-14) and recording_2025-06-30_05-16-46_01529 (2025-06-30), CC BY 4.0. Rijksmonument 87. Per wall in scripts/landmarks/erotic-museum-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 15,
+  "galleryView": {
+   "theta": 0.6,
+   "phi": 1.05
+  },
+  "bagYear": 1737,
+  "materialOverrides": {
+   "brick": "#82503e",
+   "stone": "#e4e1d8",
+   "frame": "#e8e6df",
+   "glass": "#2d3238",
+   "dark": "#2a1a1a",
+   "green": "#26382f",
+   "bronze": "#151515",
+   "red": "#ff3b3b",
+   "slate": "#4c4a48"
+  },
+  "attribution": {
+   "title": "Erotic Museum, Oudezijds Achterburgwal 54, Amsterdam",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250114_1026_Track06_Sphere_00148/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012172007 (CC0): the brick spout-gabled warehouse front with white block quoins, its loading windows and round-headed side windows, oculi, ANNO stone, ground-storey arches and the red neon script sign (Pacifico, SIL OFL 1.1), read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.899316,
+      52.3739041
+     ],
+     [
+      4.8991572,
+      52.3739471
+     ],
+     [
+      4.8991211,
+      52.373898
+     ],
+     [
+      4.89915,
+      52.37389
+     ],
+     [
+      4.8991823,
+      52.3738811
+     ],
+     [
+      4.8992656,
+      52.3738581
+     ],
+     [
+      4.899316,
+      52.3739041
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "condomerie",
+  "name": "Condomerie, Warmoesstraat 141",
+  "modelUrl": "./models/condomerie.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012171794"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89600696,
+    52.37363658
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 14.4,
+   "widthMetres": 26
+  },
+  "surveyed": {
+   "anchor": [
+    4.89600696,
+    52.37363658
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012171794 (3DBAG CC BY 4.0, BAG CC0; Warmoesstraat 141) in native east/south metres (scripts/landmarks/condomerie-footprints.json, bag-shell-prepare.ts); the Warmoesstraat front (facade ring edge 0, 5.91 m) read from the rectified Gemeente Amsterdam panoramas b_20250108_1349_Track26_Sphere_00039 (2025-01-08) and recording_2025-07-03_03-29-47_02680 and _02679 (2025-07-03), CC BY 4.0. Gemeentelijk monument 328916. Per wall in scripts/landmarks/condomerie-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 19.1,
+  "galleryView": {
+   "theta": 4.39,
+   "phi": 1.05
+  },
+  "bagYear": 2007,
+  "materialOverrides": {
+   "brick": "#9a6553",
+   "stone": "#ffffff",
+   "sandstone": "#f6f1e4",
+   "greyBrick": "#5b5d5f",
+   "frame": "#ffffff",
+   "glass": "#2e3a44",
+   "bronze": "#1c1d1f",
+   "slate": "#4d4c4a",
+   "red": "#d7342c",
+   "gold": "#f0c419",
+   "green": "#3aa04a",
+   "blue": "#2f6fc4",
+   "ochre": "#ee8a24",
+   "pink": "#d0489a",
+   "copper": "#45b5d8"
+  },
+  "attribution": {
+   "title": "Condomerie, Warmoesstraat 141, Amsterdam",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250108_1349_Track26_Sphere_00039/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012171794 (CC0): the cream shopfront with the multicoloured CONDOMERIE fascia letters (Archivo Black, SIL OFL 1.1), the white sash windows under segmental arches, the iron balconies and railings and the white cornice with consoles, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8958445,
+      52.3737159
+     ],
+     [
+      4.8957842,
+      52.3736777
+     ],
+     [
+      4.8959207,
+      52.3736374
+     ],
+     [
+      4.8959722,
+      52.3736222
+     ],
+     [
+      4.8960911,
+      52.3735872
+     ],
+     [
+      4.8961181,
+      52.3736216
+     ],
+     [
+      4.8961581,
+      52.3736098
+     ],
+     [
+      4.8961668,
+      52.3736209
+     ],
+     [
+      4.8958445,
+      52.3737159
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "red-light-secrets",
+  "name": "Red Light Secrets, Oudezijds Achterburgwal 60",
+  "modelUrl": "./models/red-light-secrets.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012172006",
+   "NL.IMBAG.Pand.0363100012171848"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89898733,
+    52.37367103
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 14.3,
+   "widthMetres": 16.7
+  },
+  "surveyed": {
+   "anchor": [
+    4.89898733,
+    52.37367103
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shells of BAG panden 0363100012172006 and 0363100012171848 (3DBAG CC BY 4.0, BAG CC0; Oudezijds Achterburgwal 60, the museum's VBO 60-H spans both) merged in the native east/south metres of the first (scripts/landmarks/red-light-secrets-footprints.json); both canal fronts (5.5 and 5.6 m, facing 125 deg) read from the rectified Gemeente Amsterdam panoramas b_20250114_1026_Track06_Sphere_00141 and _00142 (2025-01-14) and recording_2025-06-30_05-16-46_01522 (2025-06-30), CC BY 4.0. Per wall in scripts/landmarks/red-light-secrets-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 16.3,
+  "galleryView": {
+   "theta": 0.85,
+   "phi": 1.05
+  },
+  "bagYear": 1610,
+  "materialOverrides": {
+   "brick": "#8a4535",
+   "stone": "#ffffff",
+   "sandstone": "#e9e6dd",
+   "greyBrick": "#4e4f50",
+   "frame": "#ffffff",
+   "glass": "#2f3438",
+   "green": "#1f2b26",
+   "red": "#9a2f24",
+   "pink": "#ff3b30",
+   "dark": "#1c1a1a",
+   "slate": "#4a4846"
+  },
+  "attribution": {
+   "title": "Red Light Secrets, Oudezijds Achterburgwal 60, Amsterdam",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250114_1026_Track06_Sphere_00142/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the merged 3DBAG LoD2.2 shells (CC BY 4.0) of BAG panden 0363100012172006 and 0363100012171848 (CC0): the twin step gables with white sandstone bands and blocks, white cross windows, white-painted ground storeys with red-lit windows and the red neon name (DM Serif Display, SIL OFL 1.1), read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "MultiPolygon",
+   "coordinates": [
+    [
+     [
+      [
+       4.8988892,
+       52.3737213
+      ],
+      [
+       4.8988697,
+       52.3736997
+      ],
+      [
+       4.8988531,
+       52.3736763
+      ],
+      [
+       4.899011,
+       52.3736349
+      ],
+      [
+       4.8990272,
+       52.3736491
+      ],
+      [
+       4.8990305,
+       52.3736521
+      ],
+      [
+       4.8990403,
+       52.3736606
+      ],
+      [
+       4.8990433,
+       52.3736633
+      ],
+      [
+       4.8990573,
+       52.3736757
+      ],
+      [
+       4.8990517,
+       52.3736772
+      ],
+      [
+       4.8988892,
+       52.3737213
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       4.8988531,
+       52.3736763
+      ],
+      [
+       4.8988293,
+       52.3736827
+      ],
+      [
+       4.8988234,
+       52.3736743
+      ],
+      [
+       4.8988387,
+       52.3736702
+      ],
+      [
+       4.8988127,
+       52.3736336
+      ],
+      [
+       4.898964,
+       52.3735934
+      ],
+      [
+       4.8989824,
+       52.3736097
+      ],
+      [
+       4.89899,
+       52.3736163
+      ],
+      [
+       4.898995,
+       52.3736208
+      ],
+      [
+       4.8990111,
+       52.3736349
+      ],
+      [
+       4.8988531,
+       52.3736763
+      ]
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "banana-bar",
+  "name": "Bananenbar, Oudezijds Achterburgwal 37",
+  "modelUrl": "./models/banana-bar.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012177954"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89965315,
+    52.37379689
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 9.8,
+   "widthMetres": 13.9
+  },
+  "surveyed": {
+   "anchor": [
+    4.89965315,
+    52.37379689
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012177954 (3DBAG CC BY 4.0, BAG CC0; Oudezijds Achterburgwal 37) in native east/south metres (scripts/landmarks/banana-bar-footprints.json, bag-shell-prepare.ts), its pitched front wall replaced by the neck gable; the canal front (facade ring edge 0, 6.32 m) read from the rectified Gemeente Amsterdam panoramas recording_2025-06-30_05-16-46_01565 and _01566 (2025-06-30) and b_20250114_1026_Track06_Sphere_00020 (2025-01-14), CC BY 4.0. Rijksmonument 8. Per wall in scripts/landmarks/banana-bar-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 14,
+  "galleryView": {
+   "theta": 4.3,
+   "phi": 1.05
+  },
+  "bagYear": 1664,
+  "materialOverrides": {
+   "brick": "#26272b",
+   "stone": "#eeece6",
+   "frame": "#17181a",
+   "sandstone": "#c9cfd6",
+   "copper": "#9fb4c0",
+   "greyBrick": "#55575a",
+   "concrete": "#8c8f92",
+   "bronze": "#0f0f10",
+   "gold": "#f2cf2a",
+   "red": "#d6382e",
+   "dark": "#1d1f22",
+   "slate": "#46484b"
+  },
+  "attribution": {
+   "title": "Bananenbar, Oudezijds Achterburgwal 37, Amsterdam",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_05-16-46_01565/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012177954 (CC0): the black-painted neck gable with white claw pieces, its window openings as plain pale panels (the painted figures are not drawn), the BANANENBAR boards with the yellow banana (Archivo Black, SIL OFL 1.1), the stoop and shutter, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8996223,
+      52.3738426
+     ],
+     [
+      4.8996111,
+      52.3738312
+     ],
+     [
+      4.8995988,
+      52.3738186
+     ],
+     [
+      4.8995857,
+      52.3738053
+     ],
+     [
+      4.8995745,
+      52.3737939
+     ],
+     [
+      4.8996772,
+      52.3737609
+     ],
+     [
+      4.8996892,
+      52.373772
+     ],
+     [
+      4.8997412,
+      52.3737552
+     ],
+     [
+      4.8997784,
+      52.3737924
+     ],
+     [
+      4.8996223,
+      52.3738426
      ]
     ]
    ]
