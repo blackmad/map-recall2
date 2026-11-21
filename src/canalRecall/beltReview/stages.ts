@@ -13,7 +13,7 @@ import { basePand } from './houses.ts';
 import { DESC_FIELDS, FIELD_SPECS, isKitValue, same, showValue, type DescField } from './fields.ts';
 import {
   FOCUS_PIN_TAGS, PIN_TAG_LABELS, type DescFieldValue, type FaceBundle, type GroupingFile, type GroupingLinkKind, type MarkValue, type Pin,
-  type PinTag, type PinTarget, type Stage,
+  type PairAnswer, type PinTag, type PinTarget, type Stage,
 } from './types.ts';
 
 export interface DerivedPand {
@@ -47,7 +47,7 @@ export interface FaceCtx {
   photoUrl(pandId: string): string | null;
   photoPxPerM(pandId: string): number;
   saveEdits(pandId: string, fields: Record<string, { value: unknown; note?: string }>): Promise<void>;
-  saveGrouping(value: Pick<GroupingFile, 'units' | 'links'>): Promise<void>;
+  saveGrouping(value: Pick<GroupingFile, 'units' | 'links' | 'pairs'>): Promise<void>;
   savePin(pin: Partial<Pin> & { id: string }): Promise<void>;
   saveMark(houseId: string, value: { mark: MarkValue; note?: string; tags?: string[]; hash: string | null }): Promise<void>;
   renderInfo(pandId: string): Promise<RenderInfo>;
@@ -370,8 +370,104 @@ export function effectiveUnits(b: FaceBundle): GroupingFile['units'] {
   return [...by.values()];
 }
 
+// ------------------------------------------------------------------------------------------- stage 3, one pair at a time
+/** One pair of neighbours at a time (default), or the whole row with join/split tools (R). */
+let view3: 'pairs' | 'row' = 'pairs';
+let pairAt = 0;
+const PAIR_KEYS: Record<string, PairAnswer> = { s: 'separate', d: 'twin', j: 'one', '?': 'unsure' };
+const pairKey = (a: string, z: string) => `${a}|${z}`;
+
+/** The neighbour pairs worth asking about: the city's ordekaart puts both in one object. Houses David split out in the
+ *  row view (a one-house `david` unit) are not asked again. Every other pair is separate houses by default (#397). */
+export function pairQueue(b: FaceBundle): Array<[string, string]> {
+  const order = b.face.pands.map(p => p.pandId);
+  const unit = (id: string) => b.description?.pands.find(d => d.pandId === id)?.group?.unit?.id;
+  const splitOut = new Set(b.grouping.units.filter(u => u.source === 'david' && u.pandIds.length === 1).map(u => u.pandIds[0]));
+  const out: Array<[string, string]> = [];
+  for (let i = 0; i + 1 < order.length; i++) {
+    const a = order[i], z = order[i + 1], ua = unit(a);
+    if (ua && ua === unit(z) && !splitOut.has(a) && !splitOut.has(z)) out.push([a, z]);
+  }
+  return out;
+}
+/** Units and links from the pair answers: "one building" joins neighbours, "same design" links the right house to the left
+ *  one (sameAs), everything else stays its own house. */
+export function groupingFromPairs(b: FaceBundle, pairs: NonNullable<GroupingFile['pairs']>): Pick<GroupingFile, 'units' | 'links' | 'pairs'> {
+  const order = b.face.pands.map(p => p.pandId), units: GroupingFile['units'] = [], links: GroupingFile['links'] = [];
+  for (let i = 0; i < order.length; i++) {
+    const prev = i ? pairs[pairKey(order[i - 1], order[i])]?.answer : undefined;
+    if (prev === 'one') units[units.length - 1].pandIds.push(order[i]);
+    else units.push({ id: `house-${order[i].replace(/[^A-Za-z0-9._-]/g, '_')}`, pandIds: [order[i]], source: 'david' });
+    if (prev === 'twin') links.push({ pandId: order[i], kind: 'sameAs', target: order[i - 1], by: 'david', at: pairs[pairKey(order[i - 1], order[i])].at });
+  }
+  return { units, links, pairs };
+}
+
+function renderPairs(ctx: FaceCtx, can: boolean) {
+  const b = ctx.b, q = pairQueue(b), pairs = b.grouping.pairs ?? {};
+  const addr = (id: string) => b.face.pands.find(p => p.pandId === id)?.address ?? id.slice(-6);
+  const done = q.filter(([a, z]) => pairs[pairKey(a, z)]).length;
+  const head = h('div', { class: 'pand-head one' },
+    h('h2', {}, 'Built as one building?'),
+    h('div', { class: 'progress', title: `${done} of ${q.length} answered` }, h('div', { style: `width:${q.length ? (100 * done / q.length).toFixed(1) : 100}%` })),
+    h('span', { class: 'muted small' }, `${done} of ${q.length} pairs`),
+    h('button', { class: 'ghost', onclick: () => { view3 = 'row'; ctx.render(); }, title: 'Whole row with join/split tools (R)' }, h('span', { class: 'key' }, 'R'), ' Whole row'));
+  if (!q.length) { replace(ctx.main, head, h('p', { class: 'ask' }, 'Nothing to ask: no neighbours here are grouped by the city map. Every house is its own building.')); return; }
+  pairAt = Math.max(0, Math.min(q.length - 1, pairAt));
+  const [a, z] = q[pairAt], cur = pairs[pairKey(a, z)]?.answer;
+  const imgs: HTMLImageElement[] = [];
+  const fig = (id: string) => {
+    const url = ctx.photoUrl(id);
+    if (!url) return h('figure', {}, h('div', { class: 'nophoto' }, 'no photo'), h('figcaption', {}, addr(id)));
+    const img = h('img', { class: 'photo', src: url, alt: addr(id), 'data-pand': id }) as HTMLImageElement;
+    imgs.push(img);
+    img.addEventListener('load', () => scaleTogether(imgs, ctx));
+    return h('figure', {}, img, h('figcaption', {}, addr(id)));
+  };
+  const answer = (v: PairAnswer) => {
+    if (!can) { ctx.say('Grouping is open while stage 3 is', 'err'); return; }
+    const next = { ...pairs, [pairKey(a, z)]: { answer: v, by: 'david' as const, at: new Date().toISOString() } };
+    const todo = q.findIndex(([x, y], i) => i > pairAt && !next[pairKey(x, y)]);
+    pairAt = todo >= 0 ? todo : Math.min(q.length - 1, pairAt + 1);
+    void ctx.saveGrouping(groupingFromPairs(b, next));
+  };
+  const btn = (k: string, label: string, sub: string) => h('button', { class: `big pairbtn${cur === PAIR_KEYS[k] ? ' on' : ''}`, disabled: !can, onclick: () => answer(PAIR_KEYS[k]) },
+    h('span', {}, label, h('small', {}, sub)), h('span', { class: 'key' }, k.toUpperCase()));
+  pairKeys = (k: string) => {
+    if (PAIR_KEYS[k]) { answer(PAIR_KEYS[k]); return true; }
+    if (k === 'ArrowRight') { pairAt++; ctx.render(); return true; }
+    if (k === 'ArrowLeft') { pairAt--; ctx.render(); return true; }
+    return false;
+  };
+  replace(ctx.main,
+    can ? null : h('p', { class: 'locked' }, b.state.stage > 3 ? 'Stage 3 is confirmed; grouping is read-only.' : 'Stage 3 opens after stage 2.'),
+    head,
+    h('div', { class: 'pand-head one' },
+      h('button', { class: 'nav', onclick: () => { pairAt--; ctx.render(); }, disabled: pairAt === 0, title: 'Previous pair (←)' }, '‹'),
+      h('span', {}, `Pair ${pairAt + 1} of ${q.length}: `, h('strong', {}, `${addr(a)} and ${addr(z)}`)),
+      h('button', { class: 'nav', onclick: () => { pairAt++; ctx.render(); }, disabled: pairAt >= q.length - 1, title: 'Next pair (→)' }, '›')),
+    h('div', { class: 'onepair twopair' }, fig(a), fig(z)),
+    h('p', { class: 'ask' }, 'The city map lists these two together. What are they?'),
+    h('div', { class: 'marks3' },
+      btn('s', 'Two separate houses', 'different fronts'),
+      btn('d', 'Same design', 'two houses, built alike'),
+      btn('j', 'One building', 'one front across both'),
+      btn('?', "Can't tell", '')),
+    h('p', { class: 'muted small center' }, 'Pairs the city map does not group are separate houses already. You only see the ones it groups.'));
+}
+let pairKeys: (k: string) => boolean = () => false;
+/** Photos side by side at one px/m: each image's height in metres sets its drawn height. */
+function scaleTogether(imgs: HTMLImageElement[], ctx: FaceCtx) {
+  const metres = imgs.map(i => i.naturalHeight / ctx.photoPxPerM(i.dataset.pand ?? ''));
+  const tallest = Math.max(...metres); if (!tallest || !isFinite(tallest)) return;
+  const box = imgs[0]?.closest('.onepair') as HTMLElement | null;
+  const avail = Math.max(200, (box?.clientHeight || innerHeight * 0.6) - 30);
+  imgs.forEach((i, k) => { if (metres[k]) i.style.height = `${Math.round(avail * metres[k] / tallest)}px`; });
+}
+
 export function renderStage3(ctx: FaceCtx) {
   const b = ctx.b, can = ctx.editable(3);
+  if (view3 === 'pairs') { keys3 = (k: string) => { if (k === 'r') { view3 = 'row'; ctx.render(); return true; } return pairKeys(k); }; renderPairs(ctx, can); return; }
   const units = effectiveUnits(b);
   const unitOf = new Map<string, number>();
   units.forEach((u, i) => u.pandIds.forEach(p => unitOf.set(p, i)));
@@ -432,7 +528,7 @@ export function renderStage3(ctx: FaceCtx) {
   };
   const unlink = () => { if (!selected.size) return; save(units, b.grouping.links.filter(l => !selected.has(l.pandId))); };
   keys3 = (k: string) => {
-    if (k === 'g') join(); else if (k === 's') split(); else if (k === 'i') startLink('sameAs'); else if (k === 'b') startLink('basedOn'); else if (k === 'x') unlink();
+    if (k === 'r') { view3 = 'pairs'; ctx.render(); } else if (k === 'g') join(); else if (k === 's') split(); else if (k === 'i') startLink('sameAs'); else if (k === 'b') startLink('basedOn'); else if (k === 'x') unlink();
     else if (k === 'Escape') { linking = null; selected = new Set(); ctx.render(); } else return false;
     return true;
   };

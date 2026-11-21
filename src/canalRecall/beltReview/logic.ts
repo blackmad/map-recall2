@@ -3,9 +3,9 @@
  * of the ledger. No I/O here (store.ts does the files), so every rule is unit-testable.
  */
 import {
-  ENTRY_ID_PATTERN, FOCUS_PIN_TAGS, GROUPING_LINK_KINDS, MARKS, PAND_PATTERN, PIN_KINDS, PIN_STATUSES, PIN_TAGS, PIN_TARGETS, STAGES, VERDICTS,
+  ENTRY_ID_PATTERN, FOCUS_PIN_TAGS, GROUPING_LINK_KINDS, PAIR_ANSWERS, MARKS, PAND_PATTERN, PIN_KINDS, PIN_STATUSES, PIN_TAGS, PIN_TARGETS, STAGES, VERDICTS,
   type Actor, type CandidatesFile, type DescriptionFile, type EditsFile, type FaceFile, type FieldEdit, type GroupingFile,
-  type LedgerFile, type Mark, type MarksFile, type PhotoCandidate, type Pick as PickEntry, type PinsFile, type PicksFile, type Pin, type Stage, type StateAction, type StateFile,
+  type LedgerFile, type Mark, type PairAnswer, type MarksFile, type PhotoCandidate, type Pick as PickEntry, type PinsFile, type PicksFile, type Pin, type Stage, type StateAction, type StateFile,
   type Verdict,
 } from './types.ts';
 import { DESC_FIELDS, LIBRARY_SOURCES } from './fields.ts';
@@ -184,7 +184,7 @@ export function validatePin(face: FaceFile, pinId: string, body: unknown, prior:
 
 // ------------------------------------------------------------------------------------------------------------ grouping
 
-export function validateGrouping(face: FaceFile, body: unknown, actor: Actor, now: string): Pick<GroupingFile, 'units' | 'links'> {
+export function validateGrouping(face: FaceFile, body: unknown, actor: Actor, now: string): Pick<GroupingFile, 'units' | 'links' | 'pairs'> {
   if (!isObj(body) || !Array.isArray(body.units) || !Array.isArray(body.links)) throw bad('Grouping needs {units: [], links: []}');
   const pands = new Set(face.pands.map(p => p.pandId)), seen = new Set<string>();
   const units = body.units.map((u: unknown) => {
@@ -211,7 +211,16 @@ export function validateGrouping(face: FaceFile, body: unknown, actor: Actor, no
   });
   const linked = new Set<string>();
   for (const l of links) { if (linked.has(l.pandId)) throw bad(`Pand ${l.pandId} has two links`); linked.add(l.pandId); }
-  return { units, links };
+  if (body.pairs === undefined) return { units, links };
+  if (!isObj(body.pairs)) throw bad('pairs must be an object');
+  const pairs: NonNullable<GroupingFile['pairs']> = {};
+  for (const [key, v] of Object.entries(body.pairs)) {
+    const [a, z] = key.split('|');
+    if (!pands.has(a) || !pands.has(z) || a === z) throw bad(`Pair ${key} is not two houses on this face`);
+    if (!isObj(v) || !PAIR_ANSWERS.includes(v.answer as never)) throw bad(`Pair ${key}: answer must be ${PAIR_ANSWERS.join(', ')}`);
+    pairs[key] = { answer: v.answer as PairAnswer, by: v.by === 'claude' ? 'claude' : actor, at: typeof v.at === 'string' ? v.at : now };
+  }
+  return { units, links, pairs };
 }
 
 // ------------------------------------------------------------------------------------------------------------ state

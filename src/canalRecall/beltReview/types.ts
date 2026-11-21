@@ -212,7 +212,10 @@ export const GROUPING_LINK_KINDS = ['sameAs', 'basedOn'] as const;
 export type GroupingLinkKind = typeof GROUPING_LINK_KINDS[number];
 export interface GroupingUnit { id: string; pandIds: string[]; source: string; ordekaartId?: string; note?: string }
 export interface GroupingLink { pandId: string; kind: GroupingLinkKind; target: string; overrides?: Record<string, unknown>; by: Actor; at: string }
-export interface GroupingFile extends DocHeader { units: GroupingUnit[]; links: GroupingLink[] }
+/** Stage 3 pair answers, keyed `${left}|${right}` (neighbours in face order): separate houses, same design (twin), one building. */
+export const PAIR_ANSWERS = ['separate', 'twin', 'one', 'unsure'] as const;
+export type PairAnswer = typeof PAIR_ANSWERS[number];
+export interface GroupingFile extends DocHeader { units: GroupingUnit[]; links: GroupingLink[]; pairs?: Record<string, { answer: PairAnswer; by: Actor; at: string }> }
 
 /** pins.json: stage-4 pins. Coordinates are 0…1 on the image they were dropped on. */
 export const PIN_TAGS = ['grouping', 'height-roofline', 'gable-crown', 'windows', 'wall-colour-material', 'white-accents', 'ground-floor-door-stoop', 'missing-ornament', 'other',
