@@ -26,10 +26,22 @@ export type Candidate = {
   leafOff: boolean; rayBlocked: boolean;
   /** pixels per metre of the image file (>= 50 unless the wall is too large for the pixel budget), and the panorama's native resolution at the wall */
   ppm: number; nativePpm: number; width: number; height: number;
+  /** where the BAG pand's own span sits in the image, in pixels [x0, x1), and the side margin around it in metres. The BAG
+   *  boundary is not always the facade boundary: the margin lets the reviewer see (and lane A drag) the real edges. A strip
+   *  slice has no margin. */
+  pandSpanPx: [number, number]; marginM: number;
+  /** image row of the street ground line (pixels from the top) and the margin below it, in metres (wall candidates) */
+  groundPx?: number; bottomMarginM?: number;
   /** a plain-language warning (oblique, strip, below 50 px/m) */
   note?: string;
 };
-export type PandCandidates = { pandId: string; address: string; order: number; wall: { lenM: number; bearingDeg: number; note: string } | null; status: 'ok' | 'no-wall' | 'no-pano' | 'error'; note?: string; candidates: Candidate[]; autoPick: string | null; autoPickWhy?: string };
+export type PandCandidates = { pandId: string; address: string; order: number; wall: { lenM: number; bearingDeg: number; note: string } | null; status: 'ok' | 'no-wall' | 'no-pano' | 'error'; note?: string; candidates: Candidate[]; autoPick: string | null; autoPickWhy?: string;
+  /** does the facade visibly run past the BAG span (facadeWidth.ts window-column check on the auto-pick)? */
+  facadeWidth?: FacadeWidthCheck;
+  /** the front is a guess (a forced edge, or a BAG front edge under 3.5 m): the wall was widened from the BAG edge to the
+   *  footprint's full extent along the face line; the reviewer should check the edges first */
+  frontUncertain?: true; front?: { bagEdgeM: number; extentM: number; why: string } };
+export type FacadeWidthCheck = { candidateId: string; columnsInSpan: number; extendsLeft: boolean; extendsRight: boolean; why: string };
 export type CandidatesFile = { faceId: string; imageRoot: string; archivePath: string; generatedAt: string; judgeModel?: string; pands: PandCandidates[] };
 
 /** Left-to-right order along a face as seen from the street: project each wall middle on u = (-ny, nx) of the mean outward

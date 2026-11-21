@@ -19,7 +19,9 @@ import path from 'node:path';
 import { http, neighbourhood, findPands, CACHE_DIR, lngLatToRd, type Footprint } from '../pand-reference/core.ts';
 import { pickWall, rankPanos, options as selectOptions, type Wall, type PanoPick } from '../pand-reference/select.ts';
 import jpeg from 'jpeg-js';
-import { loadPano, rectifyWall, wallHeight, FALLBACK_GROUND_NAP } from '../pand-reference/rectify.ts';
+import { loadPano, rectifyWall, wallHeight, maxPixelsFor, FALLBACK_GROUND_NAP } from '../pand-reference/rectify.ts';
+import { lensFor } from '../da-costa-block/neighbourhood-core.ts';
+import { AMSTERDAM_WORLD_ALIGNED, rectifyFacade, type FacadePlane } from '../../src/canalRecall/facade/rectify.ts';
 import { panosNear, wallCrop, stripCrop, flagsFor, leafOff, type Made } from '../house-crops/crops.ts';
 import { usability, rayBlocked, groupFaces, diskGate, DISK_FLOOR_BYTES, type WallRef } from '../house-crops/flags.ts';
 import { centroid } from '../house-crops/buurt.ts';
@@ -28,6 +30,7 @@ import sharp from 'sharp';
 import { ask, judgeSize, parseAnswers, quality, MODEL, USD_PER_TOKEN, type PromptVersion } from '../house-crops/judge.ts';
 import { planWallPicks, stripYears, wantsStrips, finalCandidates, autoPick, reviewHardPass, MAX_CANDIDATES, type PoolPick } from './candidates.ts';
 import { USER_AGENT, faceDir } from './face.ts';
+import { windowColumns, facadeExtension } from './facadeWidth.ts';
 import type { Candidate, CandidatesFile, FaceFile, PandCandidates } from './faceModel.ts';
 
 const arg = (n: string) => { const i = process.argv.indexOf(`--${n}`); return i >= 0 ? process.argv[i + 1] : undefined; };
@@ -44,6 +47,28 @@ const shortPano = (id: string) => id.replace(/[^A-Za-z0-9_-]+/g, '');
 
 /** Extra height of the display crop over the flags crop (house:crops covers the tile height + 1.5 m). */
 export const DISPLAY_EXTRA_M = 3;
+/** Display margins around the BAG pand span: the BAG boundary is not the facade boundary (Herengracht 62's three window
+ *  columns are ~5 m on a 3.46 m BAG front; Herengracht 60's sideways stoop runs past its edge). The image covers the span
+ *  plus SIDE_MARGIN_M each side and BOTTOM_MARGIN_M below the street ground; `pandSpanPx` and `groundPx` say where they are. */
+export const SIDE_MARGIN_M = 1.5;
+export const BOTTOM_MARGIN_M = 0.6;
+
+/** The display crop: the wall widened by SIDE_MARGIN_M each side, from BOTTOM_MARGIN_M below the ground to the tile height +
+ *  1.5 m + DISPLAY_EXTRA_M. Ground as rectifyWall decides it (published camera height - 2.44 m, or `baseZ` for a boat). */
+export function displayRectify(pano: { width: number; height: number; data: Uint8Array }, pick: PanoPick, wall: Wall, tileHeightM: number, ppm: number, baseZ?: number) {
+  let lens = lensFor(pick.record, baseZ);
+  if (!lens) lens = lensFor(pick.record, baseZ ?? FALLBACK_GROUND_NAP);
+  if (!lens) return null;
+  let ground = baseZ ?? lens.pose.z - 2.44;
+  if (baseZ === undefined && (ground < -2.5 || ground > 3)) { ground = FALLBACK_GROUND_NAP; lens = { ...lens, pose: { ...lens.pose, z: ground + 2.44 } }; }
+  const ux = (wall.b.x - wall.a.x) / wall.len, uy = (wall.b.y - wall.a.y) / wall.len, m = SIDE_MARGIN_M;
+  const h = wallHeight(tileHeightM + DISPLAY_EXTRA_M) + BOTTOM_MARGIN_M;
+  const plane: FacadePlane = { start: { x: wall.a.x - ux * m, y: wall.a.y - uy * m }, end: { x: wall.b.x + ux * m, y: wall.b.y + uy * m }, baseZ: ground - BOTTOM_MARGIN_M, topZ: ground - BOTTOM_MARGIN_M + h };
+  const out = rectifyFacade(pano, { ...lens.pose, headingDeg: 0, pitchDeg: 0, rollDeg: 0 }, plane, { pixelsPerMetre: ppm, camera: AMSTERDAM_WORLD_ALIGNED, maxPixels: maxPixelsFor(h) * 1.6 });
+  const enc = jpeg.encode({ data: Buffer.from(out.data.buffer, out.data.byteOffset, out.data.byteLength), width: out.width, height: out.height }, 82);
+  const k = out.pixelsPerMetre;
+  return { jpeg: enc.data, width: out.width, height: out.height, ppm: k, pandSpanPx: [Math.round(m * k), Math.min(out.width, Math.round((m + wall.len) * k))] as [number, number], groundPx: out.height - Math.round(BOTTOM_MARGIN_M * k) };
+}
 
 type Ctx = { faceId: string; root: string; maxCands: number };
 
@@ -62,7 +87,7 @@ async function candidatesFor(fp: Footprint, wall: Wall, face: WallRef[], ctx: Ct
   const dir = path.join(ctx.root, 'belt-review', ctx.faceId, idOf(fp.id));
   await fs.mkdir(dir, { recursive: true });
   const out: Candidate[] = [];
-  const emit = async (made: Made, pick: PanoPick, source: 'wall' | 'strip', img: { jpeg: Buffer; ppm: number; width: number; height: number; native: number }, note: string[]) => {
+  const emit = async (made: Made, pick: PanoPick, source: 'wall' | 'strip', img: { jpeg: Buffer; ppm: number; width: number; height: number; native: number; pandSpanPx: [number, number]; marginM: number; groundPx?: number; bottomMarginM?: number }, note: string[]) => {
     const u = usability(made.flags), date = pick.timestamp.slice(0, 10), year = Number(date.slice(0, 4));
     const id = `${source === 'wall' ? 'w' : 's'}-${date}-${shortPano(pick.panoId)}`;
     const file = `${idOf(fp.id)}/${id}.jpg`;
@@ -72,7 +97,7 @@ async function candidatesFor(fp: Footprint, wall: Wall, face: WallRef[], ctx: Ct
     out.push({
       id, file, year, month: Number(date.slice(5, 7)), distM: r1(pick.distM), obliquityDeg: r1(pick.obliquityDeg), source, flags: made.flags, reasons: u.reasons, hardPass: reviewHardPass(u.reasons, made.flags.wallWidthM), usable: u.usable,
       pano: { id: pick.panoId, date, surface: pick.surface === 'W' ? 'water' : 'land',...(made.picks.length > 1 ? { ids: made.picks.map(p => p.panoId) } : {}) }, leafOff: leafOff(pick.timestamp), rayBlocked: made.flags.rayBlocked,
-      ppm: r1(img.ppm), nativePpm: img.native, width: img.width, height: img.height, ...(note.length ? { note: note.join('; ') } : {}),
+      ppm: r1(img.ppm), nativePpm: img.native, width: img.width, height: img.height, pandSpanPx: img.pandSpanPx, marginM: img.marginM, ...(img.groundPx !== undefined ? { groundPx: img.groundPx, bottomMarginM: img.bottomMarginM } : {}), ...(note.length ? { note: note.join('; ') } : {}),
     });
   };
 
@@ -85,12 +110,10 @@ async function candidatesFor(fp: Footprint, wall: Wall, face: WallRef[], ctx: Ct
     if (!made) continue;
     const pano = await loadPano(pick);
     const { native, ppm } = displayPpm(pano!.img.width, pick.distM, wallHeight(fp.height + DISPLAY_EXTRA_M));
-    let img = { jpeg: made.jpeg, ppm: made.ppm, width: made.width, height: made.height, native };
-    // The display crop reaches DISPLAY_EXTRA_M higher than the flags crop: the tile height + 1.5 m cuts step and neck gables off.
-    {
-      const big = rectifyWall(pano!.img, pick, wall, fp.height + DISPLAY_EXTRA_M, ppm, baseZ);
-      if (big) img = { jpeg: big.jpeg, ppm: big.ppm, width: big.width, height: big.height, native };
-    }
+    // The display crop: margins on both sides and below the ground, and DISPLAY_EXTRA_M above the flags crop (gables).
+    const big = displayRectify(pano!.img, pick, wall, fp.height, ppm, baseZ);
+    if (!big) continue;
+    const img = { jpeg: big.jpeg, ppm: big.ppm, width: big.width, height: big.height, native, pandSpanPx: big.pandSpanPx, marginM: SIDE_MARGIN_M, groundPx: big.groundPx, bottomMarginM: BOTTOM_MARGIN_M };
     const note: string[] = [];
     if (pick.blocked) note.push('camera ray crosses another building');
     if (pick.distM < 8) note.push('camera under 8 m from the wall: the cornice is seen steeply');
@@ -111,7 +134,7 @@ async function candidatesFor(fp: Footprint, wall: Wall, face: WallRef[], ctx: Ct
       const best = [...made.picks].sort((a, b) => a.obliquityDeg - b.obliquityDeg)[0];
       const pano = await loadPano(best);
       const native = displayPpm(pano?.img.width ?? 8000, best.distM, wallHeight(fp.height)).native;
-      await emit(made, { ...best, timestamp: best.timestamp } as PanoPick, 'strip', { jpeg: made.jpeg, ppm: made.ppm, width: made.width, height: made.height, native },
+      await emit(made, { ...best, timestamp: best.timestamp } as PanoPick, 'strip', { jpeg: made.jpeg, ppm: made.ppm, width: made.width, height: made.height, native, pandSpanPx: [0, made.width], marginM: 0 },
         [`strip slice: ${made.picks.length} panoramas median-fused over the face, weaker evidence`]);
     }
   }
@@ -121,6 +144,16 @@ async function candidatesFor(fp: Footprint, wall: Wall, face: WallRef[], ctx: Ct
   const keep = new Set(kept.map(c => path.basename(c.file)));
   for (const f of await fs.readdir(dir)) if (f.endsWith('.jpg') && !keep.has(f)) await fs.rm(path.join(dir, f));
   return { wall: wallInfo, status: out.length ? 'ok' : 'error', ...(out.length ? {} : { note: 'no panorama could be decoded or rectified' }), candidates: kept };
+}
+
+export const NARROW_FRONT_M = 3.5;
+/** The footprint's full extent along a wall's line: every vertex projected on the wall direction, from the lowest to the highest
+ *  projection, on the wall's own line (so the facade plane stays put). */
+export function footprintFront(ring: { x: number; y: number }[], wall: Wall): Wall {
+  const ux = (wall.b.x - wall.a.x) / wall.len, uy = (wall.b.y - wall.a.y) / wall.len;
+  const ts = ring.map(p => (p.x - wall.a.x) * ux + (p.y - wall.a.y) * uy), t0 = Math.min(0, ...ts), t1 = Math.max(wall.len, ...ts);
+  const a = { x: wall.a.x + ux * t0, y: wall.a.y + uy * t0 }, b = { x: wall.a.x + ux * t1, y: wall.a.y + uy * t1 };
+  return { ...wall, a, b, len: t1 - t0, mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 } };
 }
 
 /** The footprint's longest edge (>= 2.5 m) whose outward normal lies within 30 degrees of `bearingDeg`, as a Wall; null without one. */
@@ -162,17 +195,17 @@ async function judgeAll(file: CandidatesFile, prior: Map<string, Candidate>, pro
   let spent = 0, asked = 0;
   for (const p of file.pands) for (const c of p.candidates) {
     const was = prior.get(`${p.pandId}/${c.id}`);
-    if (was?.judge && was.pano.id === c.pano.id && was.width === c.width && was.height === c.height) { c.judge = was.judge; continue; }
+    if (was?.judge && sameImage(was, c)) { c.judge = was.judge; continue; }
     if (!c.hardPass) continue;
     if (spent >= budget) { console.error('judge budget reached'); return { asked, spent }; }
-    // Jev needs both sides >= 280 px after a resize to <= 1400 px: a tall narrow front (aspect over ~5, Herengracht 6 and 62) is
-    // padded with grey sides for the judge only.
-    let img = path.join(file.imageRoot, c.file);
-    if (!judgeSize(c.width, c.height)) {
-      const w = Math.ceil(c.height / 4.5), side = Math.ceil((w - c.width) / 2);
-      img = path.join(os.tmpdir(), `belt-review-judge-${process.pid}.jpg`);
-      await sharp(path.join(file.imageRoot, c.file)).extend({ left: side, right: side, background: { r: 128, g: 128, b: 128 } }).jpeg({ quality: 90 }).toFile(img);
-    }
+    // The judge sees the BAG pand span only (its questions ask for ONE building; the margins show the neighbours). Jev needs
+    // both sides >= 280 px after a resize to <= 1400 px: a tall narrow front (aspect over ~5, Herengracht 6 and 62) is padded
+    // with grey sides for the judge only.
+    const [x0, x1] = c.pandSpanPx, sw = Math.max(1, x1 - x0);
+    const img = path.join(os.tmpdir(), `belt-review-judge-${process.pid}.jpg`);
+    let im = sharp(path.join(file.imageRoot, c.file)).extract({ left: x0, top: 0, width: sw, height: c.height });
+    if (!judgeSize(sw, c.height)) { const side = Math.ceil((Math.ceil(c.height / 4.5) - sw) / 2); im = sharp(await im.toBuffer()).extend({ left: side, right: side, background: { r: 128, g: 128, b: 128 } }); }
+    await im.jpeg({ quality: 90 }).toFile(img);
     let r = await ask(key, img, prompt);
     // A network error (status 0, e.g. a DNS blip) is retried twice after a pause; the judge costs nothing when it fails.
     for (let i = 0; i < 2 && r.status === 0 && String(r.body?.error ?? '').startsWith('network'); i++) { await new Promise(res => setTimeout(res, 3000 * (i + 1))); r = await ask(key, img, prompt); }
@@ -185,6 +218,9 @@ async function judgeAll(file: CandidatesFile, prior: Map<string, Candidate>, pro
   }
   return { asked, spent };
 }
+
+/** A stored judge score still applies: same panorama, same image size and the same pand span inside it. */
+const sameImage = (was: Candidate, c: Candidate) => was.pano.id === c.pano.id && was.width === c.width && was.height === c.height && JSON.stringify(was.pandSpanPx) === JSON.stringify(c.pandSpanPx);
 
 export function report(face: FaceFile, file: CandidatesFile, extra: string[]): string {
   const n = file.pands.length;
@@ -216,12 +252,14 @@ export function report(face: FaceFile, file: CandidatesFile, extra: string[]): s
     `Candidates: ${all.length} (${all.filter(c => c.source === 'wall').length} wall, ${all.filter(c => c.source === 'strip').length} strip), ${(all.length / Math.max(1, n)).toFixed(1)} per pand; ${all.filter(c => c.hardPass).length} pass the hard flags, ${all.filter(c => c.usable).length} pass every flag; ${all.filter(c => c.leafOff).length} leaf-off; ${judged.length} judged.`,
     `Distinct capture years per pand: median ${median(file.pands.map(p => new Set(p.candidates.map(c => c.year)).size))}.`,
     `Resolution: display images are ${Math.min(...all.map(c => c.ppm))}-${Math.max(...all.map(c => c.ppm))} px/m (median ${median(all.map(c => c.ppm))}); ${small} below 50 px/m (pixel budget on a wide wall), ${lowRes} where the panorama itself gives under 50 px/m (camera over ~25 m away, upsampled).`, '',
+    `Facade wider than the BAG span (window columns on the auto-pick, facadeWidth.ts; a flag for the reviewer, not a measurement): ${file.pands.filter(p => p.facadeWidth?.extendsLeft || p.facadeWidth?.extendsRight).length} of ${file.pands.filter(p => p.facadeWidth).length} pands${(() => { const l = file.pands.filter(p => p.facadeWidth?.extendsLeft || p.facadeWidth?.extendsRight).map(p => p.address.replace(/^.* /, '')); return l.length ? ` (${l.join(', ')})` : ''; })()}. Wall images carry ${SIDE_MARGIN_M} m each side of the span and ${BOTTOM_MARGIN_M} m below the ground line (\`pandSpanPx\`, \`groundPx\`).`, '',
+    `Uncertain fronts (forced, or a BAG front edge under ${NARROW_FRONT_M} m; widened to the footprint's extent along the face line, \`frontUncertain\`): ${file.pands.filter(p => p.frontUncertain).length}${file.pands.some(p => p.frontUncertain) ? ' - ' + file.pands.filter(p => p.frontUncertain).map(p => `${p.address.replace(/^.* /, '')} ${p.front!.bagEdgeM} -> ${p.front!.extentM} m`).join(', ') : ''}.`, '',
     '## Failure reasons', '', 'Every broken flag over all candidates (a candidate can break several):', '',
     '| reason | candidates |', '|---|---:|', ...[...reasons].sort((a, b) => b[1] - a[1]).map(([r, k]) => `| ${r} | ${k} |`), '',
     'Pands with no hard-passing candidate, by the reasons their candidates broke:', '',
     '| reasons | pands |', '|---|---:|', ...[...primary].sort((a, b) => b[1] - a[1]).map(([r, k]) => `| ${r} | ${k} |`), '',
-    '## Per pand', '', '| # | address | wall m | cands | hard | strip | auto-pick | why |', '|---:|---|---:|---:|---:|---:|---|---|',
-    ...file.pands.map(p => `| ${p.order} | ${p.address} | ${p.wall?.lenM ?? '-'} | ${p.candidates.length} | ${p.candidates.filter(c => c.hardPass).length} | ${p.candidates.filter(c => c.source === 'strip').length} | ${p.autoPick ?? '-'} | ${p.autoPickWhy ?? p.note ?? ''} |`),
+    '## Per pand', '', '| # | address | wall m | cands | hard | strip | auto-pick | why | facade past span |', '|---:|---|---:|---:|---:|---:|---|---|---|',
+    ...file.pands.map(p => `| ${p.order} | ${p.address} | ${p.wall?.lenM ?? '-'} | ${p.candidates.length} | ${p.candidates.filter(c => c.hardPass).length} | ${p.candidates.filter(c => c.source === 'strip').length} | ${p.autoPick ?? '-'} | ${p.autoPickWhy ?? p.note ?? ''} | ${p.facadeWidth ? (p.facadeWidth.extendsLeft || p.facadeWidth.extendsRight ? p.facadeWidth.why : 'no') : '-'} |`),
     '', ...extra,
   ];
   return L.join('\n') + '\n';
@@ -270,6 +308,16 @@ async function main() {
       else { walls.delete(id); notes.set(id, `wall faces ${Math.round(bearing(w))} deg, the face ${faceBearing}; no footprint edge toward the face`); }
     }
   }
+  // A forced or narrow front (under 3.5 m) is a guess (Herengracht 6: a 2.8 m forced edge on a wide 1880 front): widen it to
+  // the footprint's full extent along the face line, and mark it uncertain so the reviewer checks the edges first.
+  const fronts = new Map<string, { bagEdgeM: number; extentM: number; why: string }>();
+  for (const [id, w] of walls) {
+    const forced = notes.get(id)?.startsWith('front edge forced') ?? false;
+    if (!forced && w.len >= NARROW_FRONT_M) continue;
+    const wide = footprintFront(fps.get(`NL.IMBAG.Pand.${id}`)!.ring, w);
+    fronts.set(id, { bagEdgeM: +w.len.toFixed(2), extentM: +wide.len.toFixed(2), why: forced ? 'forced front edge (no exposed wall toward the face)' : `front edge under ${NARROW_FRONT_M} m` });
+    if (wide.len > w.len + 0.05) walls.set(id, wide);
+  }
   const refs: WallRef[] = [...walls].map(([id, w]) => ({ id: `NL.IMBAG.Pand.${id}`, a: w.a, b: w.b, nx: w.nx, ny: w.ny }));
   const faceOf = new Map<string, WallRef[]>();
   for (const g of groupFaces(refs)) for (const w of g) faceOf.set(w.id, g);
@@ -290,6 +338,8 @@ async function main() {
       catch (e: any) { entry = { pandId: p.pandId, address: p.address, order: p.order, wall: null, status: 'error', note: String(e?.message ?? e).slice(0, 200), candidates: [], autoPick: null }; }
       if (notes.has(p.pandId) && entry.wall) entry.wall.note = [entry.wall.note, notes.get(p.pandId)].filter(Boolean).join('; ');
     }
+    const fr = fronts.get(p.pandId);
+    if (fr) { entry.frontUncertain = true; entry.front = fr; }
     file.pands.push(entry);
     const c = entry.candidates;
     console.log(`${String(p.order).padStart(3)} ${p.address.padEnd(22)} ${entry.status} ${c.length} cands (${c.filter(x => x.hardPass).length} hard-pass, ${c.filter(x => x.source === 'strip').length} strip) [${http.requests} req, ${http.status429} x429, ${Math.round((Date.now() - t0) / 1000)} s]`);
@@ -302,8 +352,16 @@ async function main() {
     const j = await judgeAll(file, prior, prompt, Number(arg('budget') ?? 0.5));
     file.judgeModel = `${MODEL}/${prompt}`;
     judgeLine = `Judged with ${MODEL} prompt ${prompt}: ${j.asked} new requests, $${j.spent.toFixed(4)}.`;
-  } else for (const p of file.pands) for (const c of p.candidates) { const was = prior.get(`${p.pandId}/${c.id}`); if (was?.judge && was.pano.id === c.pano.id && was.width === c.width && was.height === c.height) c.judge = was.judge; }
+  } else for (const p of file.pands) for (const c of p.candidates) { const was = prior.get(`${p.pandId}/${c.id}`); if (was?.judge && sameImage(was, c)) c.judge = was.judge; }
   for (const p of file.pands) { const a = autoPick(p.candidates); p.autoPick = a.id; p.autoPickWhy = a.why; }
+  // Does the facade run past the BAG span? Window columns on the auto-pick (or the first wall candidate) with its margins.
+  for (const p of file.pands) {
+    const c = p.candidates.find(x => x.id === p.autoPick && x.marginM > 0) ?? p.candidates.find(x => x.marginM > 0);
+    if (!c) { delete p.facadeWidth; continue; }
+    const { data, info } = await sharp(path.join(file.imageRoot, c.file)).greyscale().raw().toBuffer({ resolveWithObject: true });
+    const cols = windowColumns(new Uint8Array(data.buffer, data.byteOffset, data.length), info.width, info.height, c.ppm, c.groundPx);
+    p.facadeWidth = { candidateId: c.id, ...facadeExtension(cols, c.pandSpanPx, c.ppm, c.marginM) };
+  }
   await fs.writeFile(outFile, JSON.stringify(file, null, 1) + '\n');
   await fs.writeFile(path.join(file.imageRoot, 'candidates.json'), JSON.stringify({ ...file, attribution: ATTRIBUTION, sourceUrl: 'https://api.data.amsterdam.nl/panorama/panoramas/<pano id>/' }, null, 1) + '\n');
   const extra = [`## Run`, '', `${judgeLine} Panorama API: ${http.requests} requests, ${(http.bytes / 1024 ** 2).toFixed(0)} MB, ${http.retries} retries, ${http.status429} x 429; ${Math.round((Date.now() - t0) / 1000)} s.`,
