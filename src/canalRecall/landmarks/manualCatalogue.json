@@ -96490,5 +96490,220 @@
     ]
    ]
   }
+ },
+ {
+  "id": "casa-rosso",
+  "name": "Casa Rosso, Oudezijds Achterburgwal 106-108",
+  "modelUrl": "./models/casa-rosso.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012178727"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89776394,
+    52.37265045
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 15.9,
+   "widthMetres": 20.8
+  },
+  "surveyed": {
+   "anchor": [
+    4.89776394,
+    52.37265045
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012178727 (3DBAG CC BY 4.0, BAG CC0; one pand for Oudezijds Achterburgwal 106 and 108, VBO 0363010003761628) in native east/south metres (scripts/landmarks/casa-rosso-footprints.json, bag-shell-prepare.ts); the canal front (edge 3, 8.8 m) read from the rectified Gemeente Amsterdam panoramas b_20250114_1026_Track06_Sphere_00114 (2025-01-14) and recording_2025-06-30_05-16-46_01495 (2025-06-30), the marquee depth from b_20250114_1026_Track06_Sphere_00056 and recording_2025-06-30_05-16-46_01599/_01602 (2025), CC BY 4.0. Per wall in scripts/landmarks/casa-rosso-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 14.6,
+  "galleryView": {
+   "theta": 0.5,
+   "phi": 1.1
+  },
+  "materialOverrides": {
+   "brick": "#4f4842",
+   "greyBrick": "#2a2a2c",
+   "stone": "#8a8c8c",
+   "concrete": "#a3a5a5",
+   "green": "#56652f",
+   "copper": "#46542b",
+   "bronze": "#1e1e21",
+   "pink": "#ec86a8",
+   "red": "#8a2232",
+   "gold": "#c3a052",
+   "sandstone": "#e2ddd2",
+   "slate": "#4b4b49"
+  },
+  "attribution": {
+   "title": "Casa Rosso, Oudezijds Achterburgwal 106-108, Amsterdam",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250114_1026_Track06_Sphere_00114/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012178727 (CC0): the black screen front with its coping, the pale grey T-panel and the two planted walls, the cut-out elephant with its pink neon outline, XXX tie and rose, the marquee with the gilt THEATRE CASA ROSSO letters (Cinzel, SIL OFL 1.1, as an approximation of the sign's serif), the gabled canopy with its medallion and pink pig figures, the posts with gilt triangles and the roller shutter with the painted elephant, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8978091,
+      52.3726804
+     ],
+     [
+      4.8977859,
+      52.3726876
+     ],
+     [
+      4.8976957,
+      52.3727155
+     ],
+     [
+      4.897674,
+      52.3727222
+     ],
+     [
+      4.897616,
+      52.3726526
+     ],
+     [
+      4.8977106,
+      52.372623
+     ],
+     [
+      4.8977285,
+      52.3726174
+     ],
+     [
+      4.8978492,
+      52.3725797
+     ],
+     [
+      4.8978495,
+      52.3725802
+     ],
+     [
+      4.897921,
+      52.3726458
+     ],
+     [
+      4.8978091,
+      52.3726804
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "moulin-rouge-amsterdam",
+  "name": "Theater Moulin Rouge, Oudezijds Achterburgwal 5-7",
+  "modelUrl": "./models/moulin-rouge-amsterdam.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012177983"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.90023245,
+    52.37432288
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 15.4,
+   "widthMetres": 16.4
+  },
+  "surveyed": {
+   "anchor": [
+    4.90023245,
+    52.37432288
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012177983 (3DBAG CC BY 4.0, BAG CC0; Oudezijds Achterburgwal 5, 5-H, 5-1 and 7) in native east/south metres (scripts/landmarks/moulin-rouge-amsterdam-footprints.json, bag-shell-prepare.ts); the canal front (facade ring edge 1, 7.9 m) read from the rectified Gemeente Amsterdam panoramas b_20250114_1026_Track06_Sphere_00006 (2025-01-14) and recording_2025-06-30_05-16-46_01551 (2025-06-30), the hanging sign on its own plane from b_20250114_1026_Track05_Sphere_00014, recording_2025-07-03_03-29-47_02844 and recording_2025-06-30_05-16-46_01546, the stoop from recording_2025-06-30_05-16-46_01543 (2025), CC BY 4.0. Per wall in scripts/landmarks/moulin-rouge-amsterdam-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 15.2,
+  "galleryView": {
+   "theta": 5.6,
+   "phi": 1.1
+  },
+  "bagYear": 1748,
+  "materialOverrides": {
+   "brick": "#40444f",
+   "stone": "#c9c4b4",
+   "frame": "#e6e4dc",
+   "glass": "#2c333b",
+   "dark": "#1d1f22",
+   "bronze": "#1b1c1f",
+   "red": "#a8302f",
+   "pink": "#d6343c",
+   "slate": "#4d4c4a",
+   "concrete": "#7e8184"
+  },
+  "attribution": {
+   "title": "Theater Moulin Rouge, Oudezijds Achterburgwal 5-7, Amsterdam",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250114_1026_Track06_Sphere_00006/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012177983 (CC0): the blue-black painted front, cream cornice and hoist housing, four bays of white timber windows, the red MOULIN ROUGE letters (Cinzel, SIL OFL 1.1, approximating the serif), the black display cases with red neon frames, the stoop with its steps and railings, the souterrain doors under a red-edged hood, and the black hanging sign with MOULIN Rouge (Pacifico, SIL OFL 1.1, for the script), read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9002892,
+      52.3743484
+     ],
+     [
+      4.9001873,
+      52.3743838
+     ],
+     [
+      4.9001738,
+      52.3743697
+     ],
+     [
+      4.9001642,
+      52.3743596
+     ],
+     [
+      4.9001552,
+      52.3743503
+     ],
+     [
+      4.9001287,
+      52.3743228
+     ],
+     [
+      4.9002238,
+      52.3742903
+     ],
+     [
+      4.9002451,
+      52.3742831
+     ],
+     [
+      4.9003527,
+      52.3742464
+     ],
+     [
+      4.9003705,
+      52.3742806
+     ],
+     [
+      4.9002664,
+      52.3743167
+     ],
+     [
+      4.9002892,
+      52.3743484
+     ]
+    ]
+   ]
+  }
  }
 ]

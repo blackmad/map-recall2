@@ -323,6 +323,8 @@ import {buildNieuweAchtergracht129} from './nieuwe-achtergracht-129-builder';
 import {buildOostenburgergracht15} from './oostenburgergracht-15-builder';
 import {buildOranjekerkPijp} from './oranjekerk-pijp-builder';
 import {buildUtrechtsestraat917} from './utrechtsestraat-9-17-builder';
+import {buildCasaRosso} from './casa-rosso-builder';
+import {buildMoulinRougeAmsterdam} from './moulin-rouge-amsterdam-builder';
 import {buildPentagon} from './pentagon-builder';
 import {buildKramatplantsoen} from './kramatplantsoen-builder';
 import {buildMagnaPlaza} from './magna-plaza-builder';
@@ -1218,6 +1220,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='oostenburgergracht-15')buildOostenburgergracht15(w,d,helpers);
     else if(id==='oranjekerk-pijp')buildOranjekerkPijp(w,d,helpers);
     else if(id==='utrechtsestraat-9-17')buildUtrechtsestraat917(w,d,helpers);
+    else if(id==='casa-rosso')buildCasaRosso(w,d,helpers);
+    else if(id==='moulin-rouge-amsterdam')buildMoulinRougeAmsterdam(w,d,helpers);
     else if(id==='pentagon')buildPentagon(w,d,helpers);
     else if(id==='kramatplantsoen')buildKramatplantsoen(w,d,helpers);
     else if(id==='magna-plaza')buildMagnaPlaza(w,d,helpers);
