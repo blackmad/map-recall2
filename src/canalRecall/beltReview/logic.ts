@@ -3,7 +3,7 @@
  * of the ledger. No I/O here (store.ts does the files), so every rule is unit-testable.
  */
 import {
-  ENTRY_ID_PATTERN, GROUPING_LINK_KINDS, MARKS, PAND_PATTERN, PIN_KINDS, PIN_STATUSES, PIN_TAGS, PIN_TARGETS, STAGES, VERDICTS,
+  ENTRY_ID_PATTERN, FOCUS_PIN_TAGS, GROUPING_LINK_KINDS, MARKS, PAND_PATTERN, PIN_KINDS, PIN_STATUSES, PIN_TAGS, PIN_TARGETS, STAGES, VERDICTS,
   type Actor, type CandidatesFile, type DescriptionFile, type EditsFile, type FaceFile, type FieldEdit, type GroupingFile,
   type LedgerFile, type Mark, type MarksFile, type PhotoCandidate, type Pick as PickEntry, type PinsFile, type PicksFile, type Pin, type Stage, type StateAction, type StateFile,
   type Verdict,
@@ -235,6 +235,10 @@ export function validateMark(face: FaceFile, houseId: string, body: unknown, pri
   const mark = body.mark as Mark['mark'];
   const out: Omit<Mark, 'revision' | 'at' | 'by'> = { mark, hash: typeof body.hash === 'string' && /^[0-9a-f]{8,64}$/.test(body.hash) ? body.hash : null, pass, history: [...(prior?.history ?? []), { pass, mark, at: now }].slice(-50) };
   if (body.note !== undefined && body.note !== '') out.note = str(body.note, 500, 'note');
+  if (mark === 'wrong' && Array.isArray(body.tags)) {
+    const tags = [...new Set(body.tags.filter((t): t is string => typeof t === 'string' && (FOCUS_PIN_TAGS as readonly string[]).includes(t)))];
+    if (tags.length) out.tags = tags;
+  }
   return out;
 }
 

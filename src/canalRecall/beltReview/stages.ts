@@ -49,7 +49,7 @@ export interface FaceCtx {
   saveEdits(pandId: string, fields: Record<string, { value: unknown; note?: string }>): Promise<void>;
   saveGrouping(value: Pick<GroupingFile, 'units' | 'links'>): Promise<void>;
   savePin(pin: Partial<Pin> & { id: string }): Promise<void>;
-  saveMark(houseId: string, value: { mark: MarkValue; note?: string; hash: string | null }): Promise<void>;
+  saveMark(houseId: string, value: { mark: MarkValue; note?: string; tags?: string[]; hash: string | null }): Promise<void>;
   renderInfo(pandId: string): Promise<RenderInfo>;
   rowInfo(): Promise<RowInfo>;
 }
@@ -84,6 +84,8 @@ function renderImage(ctx: FaceCtx, pandId: string, meta?: HTMLElement, onInfo?: 
 // ============================================================================================================ stage 2
 let focus: string | null = null;
 let order: 'worst' | 'street' = 'worst';
+/** One house at a time (default), or the whole row with marks under it (R). */
+let view: 'one' | 'row' = 'one';
 let allFields = false;
 const MARK_KEYS: Record<string, MarkValue> = { g: 'good', w: 'wrong', '?': 'unsure' };
 const MARK_TEXT: Record<MarkValue, string> = { good: 'G', wrong: 'W', unsure: '?' };
@@ -107,6 +109,7 @@ export function renderStage2(ctx: FaceCtx) {
   const b = ctx.b, can = ctx.editable(2), houses = b.face.pands;
   if (!houses.length) { replace(ctx.main, h('p', { class: 'empty' }, 'This face has no houses.')); return; }
   const cur = houses[Math.min(ctx.current, houses.length - 1)];
+  if (view === 'one') { renderOne(ctx, cur, can); return; }
   const state = (id: string) => markState(b, ctx.derived, id);
   const counts = { marked: 0, wrong: 0, changed: 0 };
   for (const p of houses) { const st = state(p.pandId); if (st && st !== 'changed') counts.marked++; if (st === 'wrong') counts.wrong++; if (st === 'changed') counts.changed++; }
@@ -140,7 +143,8 @@ export function renderStage2(ctx: FaceCtx) {
     h('h2', {}, cur.address, h('small', {}, ` ${pos + 1} of ${seq.length} ${order === 'worst' ? 'worst first' : 'in street order'}`)),
     h('button', { class: 'ghost', onclick: () => { order = order === 'worst' ? 'street' : 'worst'; ctx.render(); }, title: 'Review order (O)' }, h('span', { class: 'key' }, 'O'), order === 'worst' ? ' worst first' : ' street order'),
     h('span', { class: 'muted small' }, `${counts.marked}/${houses.length} marked · ${counts.wrong} wrong${counts.changed ? ` · ${counts.changed} changed, recheck` : ''}`),
-    focus ? h('button', { class: 'ghost', onclick: () => { focus = null; ctx.render(); } }, 'Close focus (Esc)') : h('button', { class: 'ghost', onclick: () => { focus = cur.pandId; ctx.render(); } }, h('span', { class: 'key' }, 'F'), ' Focus'));
+    focus ? h('button', { class: 'ghost', onclick: () => { focus = null; ctx.render(); } }, 'Close focus (Esc)') : h('button', { class: 'ghost', onclick: () => { focus = cur.pandId; ctx.render(); } }, h('span', { class: 'key' }, 'F'), ' Focus'),
+    h('button', { class: 'ghost', onclick: () => { view = 'one'; focus = null; ctx.render(); }, title: 'One house at a time (R)' }, h('span', { class: 'key' }, 'R'), ' One house'));
   replace(ctx.main,
     can ? null : h('p', { class: 'locked' }, ctx.b.state.status === 'accepted' ? 'The block is accepted.' : ctx.b.state.stage > 2 ? 'Stage 2 is confirmed; marks are read-only (pins can still be resolved).' : 'Stage 2 opens after stage 1.'),
     head, row,
@@ -152,9 +156,9 @@ function mark(ctx: FaceCtx, id: string, m: MarkValue, note?: string) {
   if (!ctx.editable(2)) { ctx.say('Marks are open while stage 2 is', 'err'); return; }
   const hash = ctx.derived?.pands[id]?.hash ?? null;
   const prior = ctx.b.marks.marks[id];
-  if (m === 'wrong') focus = id;
+  if (m === 'wrong' && view === 'row') focus = id;
   else if (focus === id) focus = null;
-  void ctx.saveMark(id, { mark: m, note: note ?? (m === 'wrong' ? prior?.note : undefined), hash }).then(() => {
+  void ctx.saveMark(id, { mark: m, note: note ?? (m === 'wrong' ? prior?.note : undefined), tags: m === 'wrong' ? prior?.tags : undefined, hash }).then(() => {
     // Good / can't tell move on to the next house still to mark (unmarked or changed) in review order, wrapping; wrong
     // stays for pins.
     if (m === 'wrong') return;
@@ -178,6 +182,12 @@ export function keys2(ctx: FaceCtx, k: string): boolean {
     if (k === 'Escape') { draft = null; ctx.render(); return true; }
   }
   const id = ctx.b.face.pands[ctx.current]?.pandId;
+  if (k === 'r') { view = view === 'one' ? 'row' : 'one'; focus = null; ctx.render(); return true; }
+  if (view === 'one' && id && ctx.b.marks.marks[id]?.mark === 'wrong') {
+    const i = Number(k) - 1;
+    if (Number.isInteger(i) && i >= 0 && i < FOCUS_PIN_TAGS.length) { toggleTag(ctx, id, FOCUS_PIN_TAGS[i]); return true; }
+    if (k === 'Enter' || k === ' ') { next(ctx, id); return true; }
+  }
   if (MARK_KEYS[k] && id) { mark(ctx, id, MARK_KEYS[k]); return true; }
   if (k === 'ArrowRight' || k === 'j') { step(ctx, 1); return true; }
   if (k === 'ArrowLeft' || k === 'k') { step(ctx, -1); return true; }
@@ -185,6 +195,62 @@ export function keys2(ctx: FaceCtx, k: string): boolean {
   if (k === 'o') { order = order === 'worst' ? 'street' : 'worst'; ctx.render(); return true; }
   if (k === 'Escape' && focus) { focus = null; draft = null; ctx.render(); return true; }
   return false;
+}
+
+// ------------------------------------------------------------------------------------------- one house at a time
+/** Move on to the next house still to mark (unmarked or changed) in review order, wrapping. */
+function next(ctx: FaceCtx, id: string) {
+  const seq = reviewOrder(ctx.b, ctx.derived, order), at = seq.indexOf(id);
+  const todo = [...seq.slice(at + 1), ...seq.slice(0, at)].find(x => { const st = markState(ctx.b, ctx.derived, x); return st === null || st === 'changed'; });
+  ctx.current = ctx.b.face.pands.findIndex(p => p.pandId === (todo ?? seq[Math.min(seq.length - 1, at + 1)]));
+  ctx.render();
+}
+function toggleTag(ctx: FaceCtx, id: string, tag: string) {
+  const m = ctx.b.marks.marks[id]; if (!m || !ctx.editable(2)) return;
+  const tags = new Set(m.tags ?? []); if (tags.has(tag)) tags.delete(tag); else tags.add(tag);
+  void ctx.saveMark(id, { mark: 'wrong', note: m.note, tags: [...tags], hash: ctx.derived?.pands[id]?.hash ?? null });
+}
+
+/** Stage 2, one house: photo and render big at one scale, three buttons; a wrong house asks what is most wrong. */
+function renderOne(ctx: FaceCtx, p: FaceBundle['face']['pands'][number], can: boolean) {
+  const b = ctx.b, houses = b.face.pands, der = ctx.derived?.pands[p.pandId];
+  const seq = reviewOrder(b, ctx.derived, order), pos = seq.indexOf(p.pandId);
+  let done = 0; for (const x of houses) { const st = markState(b, ctx.derived, x.pandId); if (st && st !== 'changed') done++; }
+  const st = markState(b, ctx.derived, p.pandId), m = b.marks.marks[p.pandId];
+  const imgs: HTMLImageElement[] = [];
+  const photo = ctx.photoUrl(p.pandId);
+  const ph = photo ? h('img', { class: 'photo', src: photo, alt: 'photo' }) as HTMLImageElement : null;
+  const rimg = renderImage(ctx, p.pandId, undefined, () => alignScale(imgs, ctx, p.pandId));
+  if (ph) { imgs.push(ph); ph.addEventListener('load', () => alignScale(imgs, ctx, p.pandId)); }
+  imgs.push(rimg);
+  const btn = (k: 'g' | 'w' | '?', label: string) => h('button', { class: `big ${MARK_KEYS[k]}${st === MARK_KEYS[k] ? ' on' : ''}`, disabled: !can, onclick: () => mark(ctx, p.pandId, MARK_KEYS[k]) }, label, h('span', { class: 'key' }, k.toUpperCase()));
+  let wrongBox: HTMLElement | null = null;
+  if (m?.mark === 'wrong' && st !== 'changed') {
+    const on = new Set(m.tags ?? []);
+    const note = h('input', { type: 'text', placeholder: 'Anything to add? (optional)', value: m.note ?? '', disabled: !can, 'aria-label': 'Note' }) as HTMLInputElement;
+    note.addEventListener('change', () => { void ctx.saveMark(p.pandId, { mark: 'wrong', note: note.value.trim(), tags: m.tags, hash: der?.hash ?? null }); });
+    note.addEventListener('keydown', e => { e.stopPropagation(); if (e.key === 'Enter' || e.key === 'Escape') note.blur(); });
+    wrongBox = h('div', { class: 'wrongbox' },
+      h('strong', {}, 'What is most wrong? '), h('span', { class: 'muted small' }, 'pick one or more, then Next'),
+      h('div', { class: 'chips' }, ...FOCUS_PIN_TAGS.map((t, i) => h('button', { class: `chip${on.has(t) ? ' on' : ''}`, disabled: !can, onclick: () => toggleTag(ctx, p.pandId, t) }, h('span', { class: 'key' }, String(i + 1)), ' ', PIN_TAG_LABELS[t]))),
+      h('div', { class: 'chips' }, note, h('button', { class: 'big next', onclick: () => next(ctx, p.pandId) }, 'Next house', h('span', { class: 'key' }, '↵'))));
+  }
+  replace(ctx.main,
+    can ? null : h('p', { class: 'locked' }, b.state.status === 'accepted' ? 'The block is accepted.' : b.state.stage > 2 ? 'Stage 2 is confirmed; marks are read-only.' : 'Stage 2 opens after stage 1.'),
+    h('div', { class: 'pand-head one' },
+      h('button', { class: 'nav', onclick: () => step(ctx, -1), disabled: pos <= 0, title: 'Previous (←)' }, '‹'),
+      h('h2', {}, p.address),
+      h('button', { class: 'nav', onclick: () => step(ctx, 1), disabled: pos >= seq.length - 1, title: 'Next (→)' }, '›'),
+      h('div', { class: 'progress', title: `${done} of ${houses.length} marked` }, h('div', { style: `width:${(100 * done / houses.length).toFixed(1)}%` })),
+      h('span', { class: 'muted small' }, `${done} of ${houses.length} done`),
+      h('button', { class: 'ghost', onclick: () => { view = 'row'; ctx.render(); }, title: 'Whole row (R)' }, h('span', { class: 'key' }, 'R'), ' Whole row')),
+    h('div', { class: 'onepair' },
+      h('figure', {}, ph ?? h('div', { class: 'nophoto' }, 'no usable photo'), h('figcaption', {}, 'Photo')),
+      h('figure', {}, rimg, h('figcaption', {}, 'Our drawing'))),
+    h('p', { class: 'ask' }, 'Does the drawing look like the photo?'),
+    h('div', { class: 'marks3' }, btn('g', 'Looks right'), btn('w', 'Wrong'), btn('?', "Can't tell")),
+    st === 'changed' ? h('p', { class: 'muted small center' }, 'The drawing changed since you marked it: mark it again.') : null,
+    wrongBox);
 }
 
 /** The focus view of one house: photo and render large (pinnable), the W note, its pins, kit gaps, and the fields folded. */
@@ -281,7 +347,7 @@ function alignScale(imgs: HTMLImageElement[], ctx: FaceCtx, pandId: string) {
   });
   const tallest = Math.max(...metres);
   if (!tallest) return;
-  const box = imgs[0].closest('.pair, .stage4') as HTMLElement | null;
+  const box = imgs[0].closest('.pair, .stage4, .onepair') as HTMLElement | null;
   const avail = Math.max(200, (box?.clientHeight || innerHeight * 0.6) - 30);
   imgs.forEach((i, k) => { if (metres[k]) i.style.height = `${Math.round(avail * metres[k] / tallest)}px`; });
 }

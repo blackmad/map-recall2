@@ -426,7 +426,7 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
     if (k === 'Escape' && zoom) { zoom = null; renderZoom(); return; }
     if (k === 'Escape' && view === 3) { keys3(k); return; }
     if (k === 'R' && e.shiftKey) { e.preventDefault(); void reload(); return; }
-    if (view === 2 && k !== 'Enter' && keys2(ctx, k)) { e.preventDefault(); return; }
+    if (view === 2 && keys2(ctx, k)) { e.preventDefault(); return; }
     if (k === '?') { $('#keys')?.toggleAttribute('hidden'); return; }
     if (k === 'Enter' && !zoom) {
       if (view === 4) void stateAction('accept'); else void stateAction('confirm-stage', view);

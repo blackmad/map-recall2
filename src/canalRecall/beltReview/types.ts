@@ -289,7 +289,7 @@ export interface LedgerFile extends DocHeader {
  *  judged; when Claude re-renders the house (another hash) the mark reads "changed, recheck" and no longer counts. */
 export const MARKS = ['good', 'wrong', 'unsure'] as const;
 export type MarkValue = typeof MARKS[number];
-export interface Mark extends Entry { mark: MarkValue; note?: string; hash: string | null; pass: number; history: Array<{ pass: number; mark: MarkValue; at: string }> }
+export interface Mark extends Entry { mark: MarkValue; note?: string; /** For a wrong mark: what is most wrong (FOCUS_PIN_TAGS). */ tags?: string[]; hash: string | null; pass: number; history: Array<{ pass: number; mark: MarkValue; at: string }> }
 export interface MarksFile extends DocHeader { marks: Record<string, Mark> }
 
 export type DocName = 'picks' | 'edits' | 'grouping' | 'pins' | 'marks' | 'state' | 'ledger';
