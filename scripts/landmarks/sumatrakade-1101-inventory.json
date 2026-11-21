@@ -1,0 +1,307 @@
+{
+ "schemaVersion": 1,
+ "id": "sumatrakade-1101",
+ "pand": "0363100012077391",
+ "brief": "scripts/landmarks/sumatrakade-1101-brief.md",
+ "signature": [
+  "n-rainbow-bands",
+  "n-row-of-fronts",
+  "n-columned-void",
+  "s-loggia-frames",
+  "n-scattered-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-16",
+   "bearing": 16,
+   "lengthM": 65.5,
+   "centre": [
+    4.926377,
+    52.3793975
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002136_pano_0000_003844",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-row-of-fronts",
+     "kind": "other",
+     "where": "Sumatrakade: dark grey brick with scattered windows, a dark brick frame of white ribbon windows, the coloured middle between two dark towers, a second ribbon frame, red brick with scattered vertical windows",
+     "approxSizeM": [
+      65,
+      24
+     ],
+     "plan": "modelled",
+     "how": "per-front colour segments along the measured wall line, each with its own window system",
+     "seenIn": "TMX7316010203-002136_pano_0000_003844"
+    },
+    {
+     "id": "n-rainbow-bands",
+     "kind": "other",
+     "where": "three stacks of ribbed spandrel bands in pink, green, purple, yellow, blue, orange, teal and red between strips of glazing, in the middle of the quay front",
+     "approxSizeM": [
+      4.2,
+      18.5
+     ],
+     "plan": "modelled",
+     "how": "per-storey colour bands on the wall face with glazed strips between, one palette colour per band colour",
+     "seenIn": "TMX7316010203-002136_pano_0000_003844"
+    },
+    {
+     "id": "n-columned-void",
+     "kind": "colonnade",
+     "where": "a two-storey void under the middle fronts with white round columns and a dark soffit; the entrance block with a canopy in the middle",
+     "approxSizeM": [
+      20,
+      5.2
+     ],
+     "plan": "modelled",
+     "how": "deep dark recesses, round columns, canopy slab",
+     "seenIn": "TMX7316010203-002136_pano_0000_003844"
+    },
+    {
+     "id": "n-scattered-windows",
+     "kind": "window-shape",
+     "where": "the end fronts: deep-set windows of varied width scattered over the dark grey brick, narrow slots and windows over the red brick, two white window boxes",
+     "approxSizeM": [
+      26,
+      22
+     ],
+     "plan": "simplified",
+     "how": "a fixed per-storey pattern of wide, narrow and blank cells (not each window measured), the two boxes proud",
+     "seenIn": "TMX7316010203-002136_pano_0000_003844"
+    },
+    {
+     "id": "n-glazed-bay",
+     "kind": "other",
+     "where": "red front: a white-framed glazed bay stack and two loggias",
+     "approxSizeM": [
+      2.7,
+      10
+     ],
+     "plan": "modelled",
+     "how": "white box with glass panes, dark recesses",
+     "seenIn": "TMX7316010203-002136_pano_0000_003844"
+    },
+    {
+     "id": "n-tower-tops",
+     "kind": "tower",
+     "where": "the two dark brick towers rise about 0.8 m over the roofline",
+     "approxSizeM": [
+      2.3,
+      0.8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a sub-metre rise above the 3DBAG roof at 24 m, not readable from the quay"
+     },
+     "seenIn": "TMX7316010203-002136_pano_0000_003844"
+    }
+   ]
+  },
+  {
+   "tag": "w02-196",
+   "bearing": 196,
+   "lengthM": 35.4,
+   "centre": [
+    4.926379,
+    52.3792605
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002533_pano_0002_000406",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-loggia-frames",
+     "kind": "balcony-ironwork",
+     "where": "south side: three dark brick frames of deep railed loggias, alternating with two rainbow spandrel stacks, over the columned void and a glazed entrance",
+     "approxSizeM": [
+      35,
+      24
+     ],
+     "plan": "modelled",
+     "how": "deep two-light openings with rails, colour stacks as on the quay, columns and a gridded entrance",
+     "seenIn": "TMX7316010203-002533_pano_0002_000406"
+    }
+   ]
+  },
+  {
+   "tag": "w03-196",
+   "bearing": 196,
+   "lengthM": 12.5,
+   "centre": [
+    4.926779,
+    52.3791265
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002533_pano_0002_000413",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w04-16",
+   "bearing": 16,
+   "lengthM": 11.4,
+   "centre": [
+    4.9269875,
+    52.379291
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_01970",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w05-300",
+   "bearing": 300,
+   "lengthM": 9.3,
+   "centre": [
+    4.9259685,
+    52.3792955
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002134_pano_0000_000375",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-196",
+   "bearing": 196,
+   "lengthM": 8.7,
+   "centre": [
+    4.9259165,
+    52.3793415
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002533_pano_0002_000399",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-301",
+   "bearing": 301,
+   "lengthM": 7.1,
+   "centre": [
+    4.926718,
+    52.3791695
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002533_pano_0002_000407",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-106",
+   "bearing": 106,
+   "lengthM": 6.9,
+   "centre": [
+    4.9268805,
+    52.379141
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002134_pano_0000_000396",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w09-107",
+   "bearing": 107,
+   "lengthM": 6.8,
+   "centre": [
+    4.926115,
+    52.3792745
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002134_pano_0000_000385",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-197",
+   "bearing": 197,
+   "lengthM": 5.9,
+   "centre": [
+    4.9259765,
+    52.3792505
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002533_pano_0002_000400",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w11-196",
+   "bearing": 196,
+   "lengthM": 5.4,
+   "centre": [
+    4.9260625,
+    52.3792515
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002533_pano_0002_000403",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w12-191",
+   "bearing": 191,
+   "lengthM": 5,
+   "centre": [
+    4.92667,
+    52.379227
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002134_pano_0000_000389",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w13-189",
+   "bearing": 189,
+   "lengthM": 5,
+   "centre": [
+    4.926975,
+    52.3791735
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002134_pano_0000_000393",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w14-301",
+   "bearing": 301,
+   "lengthM": 4.1,
+   "centre": [
+    4.9268475,
+    52.379299
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001667_pano_0000_001684",
+   "capturedAt": "2020-04-22",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
