@@ -130,5 +130,53 @@
   "bearing": 195,
   "key": "rinus-michelslaan-s-240382",
   "maxDistM": 45
+ },
+ {
+  "pandId": "0363100012247952",
+  "bearing": 90,
+  "key": "poeldijkstraat-14-1018-247952",
+  "maxDistM": 45
+ },
+ {
+  "pandId": "0363100012247952",
+  "bearing": 1,
+  "key": "poeldijkstraat-n-247952",
+  "maxDistM": 45
+ },
+ {
+  "pandId": "0363100012253816",
+  "bearing": 26,
+  "key": "borneostraat-42-70-253816",
+  "maxDistM": 45
+ },
+ {
+  "pandId": "0363100012253816",
+  "bearing": 179,
+  "key": "borneostraat-s-253816",
+  "maxDistM": 45
+ },
+ {
+  "pandId": "0363100012239704",
+  "bearing": 352,
+  "key": "van-kinsbergenstraat-54-156-239704",
+  "maxDistM": 45
+ },
+ {
+  "pandId": "0363100012239704",
+  "bearing": 79,
+  "key": "van-kinsbergenstraat-plein-239704",
+  "maxDistM": 45
+ },
+ {
+  "pandId": "0363100012241221",
+  "bearing": 158,
+  "key": "laing-s-nekstraat-1-17-241221",
+  "maxDistM": 45
+ },
+ {
+  "pandId": "0363100012241221",
+  "bearing": 65,
+  "key": "laing-s-nekstraat-e-241221",
+  "maxDistM": 45
  }
 ]
