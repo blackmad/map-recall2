@@ -107,7 +107,7 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
     photoPxPerM: (pandId: string) => pandPhoto(pandId)?.pxPerM ?? 50,
     saveEdits: (pandId, fields) => saveAnd<EditsFile>(`/faces/${faceId}/edits/${pandId}`, () => ({ expectedRevision: b.edits.edits[pandId]?.revision ?? 0, value: { fields } }), d => { b.edits = d; }, 'Saved; re-rendering'),
     saveGrouping: value => saveAnd<GroupingFile>(`/faces/${faceId}/grouping`, () => ({ expectedRevision: b.grouping.revision, value }), d => { b.grouping = d; }, 'Grouping saved'),
-    saveMark: (houseId, value) => saveAnd<MarksFile>(`/faces/${faceId}/marks/${encodeURIComponent(houseId)}`, () => ({ expectedRevision: b.marks.marks[houseId]?.revision ?? 0, value }), d => { b.marks = d; }, value.mark === 'wrong' ? 'Marked wrong: pin what is wrong' : `Marked ${value.mark === 'good' ? 'good' : "can't tell"}`),
+    saveMark: (houseId, value) => saveAnd<MarksFile>(`/faces/${faceId}/marks/${encodeURIComponent(houseId)}`, () => ({ expectedRevision: b.marks.marks[houseId]?.revision ?? 0, value }), d => { b.marks = d; }, value.mark === 'wrong' ? 'Marked wrong: pick what is most wrong (1–8)' : `Marked ${value.mark === 'good' ? 'good' : "can't tell"}`),
     savePin: (pin: Partial<Pin> & { id: string }) => saveAnd<PinsFile>(`/faces/${faceId}/pins/${encodeURIComponent(pin.id)}`, () => ({ expectedRevision: b.pins.pins[pin.id]?.revision ?? 0, value: pin }), d => { b.pins = d; }, 'Pin saved'),
     renderInfo: (pandId: string) => {
       const key = `${pandId}:${derived?.pands[pandId]?.hash ?? ''}`;
